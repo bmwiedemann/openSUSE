@@ -1,0 +1,2161 @@
+-------------------------------------------------------------------
+Tue Jul 30 12:40:19 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.4
+
+-------------------------------------------------------------------
+Tue Jul  9 17:29:07 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.3
+
+-------------------------------------------------------------------
+Tue Jun 25 12:41:18 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.2
+
+-------------------------------------------------------------------
+Tue Jun 18 16:38:16 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.1
+
+-------------------------------------------------------------------
+Thu Jun  6 14:07:09 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.0
+- Switch to tumbleweed branch
+- Update to version 84.87~git20190606T185118~3d37a0c:
+  * Update lnf preview screenshots with Plasma 5.16 Beta on TW
+- Adjust sddmtheme.diff
+
+-------------------------------------------------------------------
+Thu May 16 16:56:39 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.90
+- Adjust sddmtheme.diff
+
+-------------------------------------------------------------------
+Tue May  7 11:04:57 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.5
+
+-------------------------------------------------------------------
+Tue Apr  2 12:40:59 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.4
+
+-------------------------------------------------------------------
+Tue Mar 12 13:15:23 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.3
+
+-------------------------------------------------------------------
+Tue Feb 26 14:05:48 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.2
+
+-------------------------------------------------------------------
+Sat Feb 23 18:51:18 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 15.0~git20190223T194652~7f4983a:
+  * konversationrc: change #opensuse to #suse
+- Generate the tarball during build and enable changelog generation
+
+-------------------------------------------------------------------
+Tue Feb 19 12:26:29 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.1
+
+-------------------------------------------------------------------
+Thu Feb  7 16:02:52 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.0
+
+-------------------------------------------------------------------
+Thu Jan 17 18:48:23 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.90
+
+-------------------------------------------------------------------
+Tue Jan  8 13:37:20 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.5
+
+-------------------------------------------------------------------
+Tue Nov 27 17:48:43 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.4
+
+-------------------------------------------------------------------
+Wed Nov 14 18:10:33 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 15.0~git20181114T190445~21cb8a6:
+  * kickoffrc: use preferred://browser instead of Firefox 
+  * kickoffrc: fix Amarok entry
+
+-------------------------------------------------------------------
+Wed Nov 14 15:20:09 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 15.0~git20181114T161846~e5e62ec:
+  * Update Favorites in kickoffrc (boo#1099859)
+
+-------------------------------------------------------------------
+Tue Nov  6 15:53:49 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.3
+
+-------------------------------------------------------------------
+Tue Oct 23 13:56:07 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.2
+
+-------------------------------------------------------------------
+Tue Oct 16 13:25:59 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.1
+
+-------------------------------------------------------------------
+Fri Oct  5 10:01:12 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.0
+
+-------------------------------------------------------------------
+Thu Sep 13 17:25:03 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.90
+
+-------------------------------------------------------------------
+Tue Sep  4 10:58:42 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.5
+
+-------------------------------------------------------------------
+Mon Aug 27 12:02:58 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to version 15.0~git20180827T140000~c0d552e:
+  * Remove explicit list of enabled thumbnail plugins
+
+-------------------------------------------------------------------
+Fri Aug  3 09:39:40 UTC 2018 - fabian@ritter-vogt.de
+
+- Drop panel.diff:
+  * Switch to kickoff by default (boo#1100088)
+
+-------------------------------------------------------------------
+Tue Jul 31 13:18:33 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.4
+
+-------------------------------------------------------------------
+Tue Jul 10 12:02:16 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.3
+
+-------------------------------------------------------------------
+Tue Jun 26 14:01:08 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.2
+
+-------------------------------------------------------------------
+Tue Jun 19 12:45:17 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.1
+
+-------------------------------------------------------------------
+Thu Jun  7 18:03:52 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.0
+
+-------------------------------------------------------------------
+Sat May 19 14:16:37 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.90
+
+- Refresh sddmtheme.diff
+
+-------------------------------------------------------------------
+Fri May  4 11:03:30 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to version 15.0~git20180504T125857~b35c1c4:
+  * Bump theme versions to cause cache refresh
+
+-------------------------------------------------------------------
+Thu May  3 13:41:06 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to version 15.0~git20180503T153654~628130a:
+  * Remove outdated and incompatible calendar.svg (boo#1091832)
+
+-------------------------------------------------------------------
+Wed May  2 09:24:20 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.5
+
+-------------------------------------------------------------------
+Mon Apr 23 07:08:56 UTC 2018 - fabian@ritter-vogt.de
+
+- Adjust sddmtheme.diff to changes in plasma5-workspace
+
+-------------------------------------------------------------------
+Sat Apr 21 07:37:56 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 15.0~git20180421T093411~6c02346:
+  * Change protocol to https in plasma settings
+
+-------------------------------------------------------------------
+Wed Mar 28 15:24:24 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 20180328T172058~30e1414:
+  * Enable native file dialogs in digikam and showfoto
+
+-------------------------------------------------------------------
+Tue Mar 27 15:40:48 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.4
+
+-------------------------------------------------------------------
+Thu Mar 22 14:23:54 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 20180322T150725~d7ae3c4:
+  * Provide kcm-about-distrorc in the tarball
+  * Add a new distributor icon
+  * Add a new splash screen
+
+-------------------------------------------------------------------
+Tue Mar  6 16:07:51 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.3
+
+-------------------------------------------------------------------
+Thu Feb 22 00:07:40 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.12.2
+
+-------------------------------------------------------------------
+Tue Feb 13 16:25:29 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.1
+
+-------------------------------------------------------------------
+Fri Feb  2 21:03:44 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0
+
+-------------------------------------------------------------------
+Sun Jan 28 13:34:08 UTC 2018 - wbauer@tmo.at
+
+- Provide the KDE4 branding and plasma5-desktop-branding-openSUSE
+  in version 43 and obsolete (or conflict with) < 43 to prevent
+  upgrade problems from Leap 42 to 15, which has a lower version
+  (boo#1077854)
+
+-------------------------------------------------------------------
+Mon Jan 15 15:54:06 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.95
+- Switch to a openSUSE/plasma-openSUSE on GitHub
+- "Bump" version to 15.0 for Leap 15
+- Run spec-cleaner
+- Clean up .spec
+
+-------------------------------------------------------------------
+Tue Jan  2 16:40:09 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.5
+
+-------------------------------------------------------------------
+Thu Nov 30 10:46:09 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.4
+
+-------------------------------------------------------------------
+Sun Nov 12 20:44:54 UTC 2017 - fabian@ritter-vogt.de
+
+- Add plasma5-openSUSE/config-files/etc/xdg/systemsettingsrc
+  to switch back to systemsettings' icon mode by default
+
+-------------------------------------------------------------------
+Tue Nov  7 15:15:43 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.3
+
+-------------------------------------------------------------------
+Tue Oct 24 18:13:37 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+
+-------------------------------------------------------------------
+Sat Oct 21 13:47:14 UTC 2017 - fabian@ritter-vogt.de
+
+- Add #!BuildIgnore to break the
+  plasma5-workspace-devel -> plasma5-workspace -> kwin5 -> kdialog
+  dep chain which results in pulling in kdebase4-runtime on 42.2
+
+-------------------------------------------------------------------
+Tue Oct 17 17:19:11 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+
+-------------------------------------------------------------------
+Thu Oct  5 12:39:18 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+
+-------------------------------------------------------------------
+Thu Sep 14 14:29:06 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.95
+- Fix minor issues in org.opensuse.desktop.defaultPanel metadata
+- Force "Regular" font style in /etc/xdg/kdeglobals by default
+
+-------------------------------------------------------------------
+Tue Aug 22 19:11:31 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.5
+
+-------------------------------------------------------------------
+Tue Jul 18 16:14:48 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.4
+
+-------------------------------------------------------------------
+Tue Jun 27 17:50:45 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.3
+
+-------------------------------------------------------------------
+Tue Jun 13 21:35:01 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.2
+
+-------------------------------------------------------------------
+Tue Jun  6 17:19:56 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+
+-------------------------------------------------------------------
+Fri May 26 14:10:32 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0
+
+-------------------------------------------------------------------
+Thu May 11 20:26:30 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.95
+
+-------------------------------------------------------------------
+Tue May  9 14:46:05 UTC 2017 - fabian@ritter-vogt.de
+
+- Same for opendocumentthumbnail
+- Enable ffmpegthumbs and kdegraphics-thumbnailers by default in
+  /etc/xdg/dolphinrc
+
+-------------------------------------------------------------------
+Sat Apr 15 13:26:24 UTC 2017 - fabian@ritter-vogt.de
+
+- Enable "only basic indexing" in /etc/xdg/baloofilerc
+
+-------------------------------------------------------------------
+Sun Apr  9 19:56:09 UTC 2017 - fabian@ritter-vogt.de
+
+- Add fullscreenpreview.jpg to look-and-feel
+
+-------------------------------------------------------------------
+Sat Apr  8 16:01:38 UTC 2017 - fabian@ritter-vogt.de
+
+- Specify default AnimationSpeed=2 in /etc/xdg/kwinrc.
+  Slightly faster than the default, appears "snappier".
+
+-------------------------------------------------------------------
+Tue Mar 21 19:21:47 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.4
+
+-------------------------------------------------------------------
+Tue Feb 28 19:55:21 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+
+-------------------------------------------------------------------
+Sun Feb 26 10:00:17 UTC 2017 - fabian@ritter-vogt.de
+
+- Add default fonts to /etc/xdg/kdeglobals to make KDE4 applications
+  use the Plasma5 fonts as well (same as set by plasma5-integration)
+  * boo#1026970
+
+-------------------------------------------------------------------
+Thu Feb 23 09:12:52 UTC 2017 - fabian@ritter-vogt.de
+
+- Move metadata.desktop from sddmtheme.diff and preview.png into
+  plasma5-openSUSE:tar.xz
+
+-------------------------------------------------------------------
+Tue Feb 14 17:58:13 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.2
+
+-------------------------------------------------------------------
+Tue Feb  7 18:54:39 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.1
+
+-------------------------------------------------------------------
+Thu Jan 26 20:21:52 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0
+
+-------------------------------------------------------------------
+Thu Jan 12 20:39:58 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.8.95 (Plasma 5.9 Beta)
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.95.php
+- Rename plasma5-openSUSE-13.2.tar.xz to plasma5-openSUSE.tar.xz
+
+-------------------------------------------------------------------
+Sun Jan  1 14:04:58 UTC 2017 - fabian@ritter-vogt.de
+
+- Increase contrast on splash/images/bulb.png to get rid of
+  noise and visible edges
+
+-------------------------------------------------------------------
+Tue Dec 27 18:31:45 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.5.php
+
+-------------------------------------------------------------------
+Sun Dec 25 18:29:12 UTC 2016 - fabian@ritter-vogt.de
+
+- Only keep metadata.json, remove breeze's metadata.desktop
+
+-------------------------------------------------------------------
+Wed Nov 23 10:59:30 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.4.php
+
+-------------------------------------------------------------------
+Wed Nov 16 12:31:23 UTC 2016 - wbauer@tmo.at
+
+- sddm-theme-openSUSE should require plasma5-workspace, the breeze
+  theme doesn't work without it
+
+-------------------------------------------------------------------
+Wed Nov  9 18:02:56 UTC 2016 - fabian@ritter-vogt.de
+
+- Add org.opensuse.desktop.defaultPanel/metadata.json into tar
+  instead of metadata.desktop in panel.diff
+- Simplify lookandfeel.diff
+- Replace org.openSUSE.desktop/metadata.desktop with
+  org.openSUSE.desktop/metadata.json in tar
+
+-------------------------------------------------------------------
+Mon Nov  7 13:37:39 UTC 2016 - wbauer@tmo.at
+
+- Install kdeglobals to /etc/kde4/share/config/ as well to set
+  Firefox as default browser for KDE4 applications (boo#997199)
+
+-------------------------------------------------------------------
+Tue Nov  1 10:36:40 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.3.php
+- Remove git URL for now
+
+-------------------------------------------------------------------
+Sun Oct 23 12:02:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Remove libqt5-qtgraphicaleffects dependency, fixed in plasma-workspace
+
+-------------------------------------------------------------------
+Sat Oct 22 19:26:08 UTC 2016 - fabian@ritter-vogt.de
+
+- Add explicit dependencies to QML modules used by the sddm theme
+
+-------------------------------------------------------------------
+Tue Oct 18 15:16:03 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.2.php
+- Use preview.png instead of breeze.jpg
+
+-------------------------------------------------------------------
+Wed Oct 12 05:29:24 UTC 2016 - lbeltrame@kde.org
+
+- Update to 5.8.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.1.php
+
+-------------------------------------------------------------------
+Tue Oct 11 20:51:56 UTC 2016 - wbauer@tmo.at
+
+- Provide/Obsolete kdebase4-openSUSE-lang too, to prevent cases
+  where the branding won't be installed on updates/upgrades
+
+-------------------------------------------------------------------
+Sat Oct  8 22:06:34 UTC 2016 - wbauer@tmo.at
+
+- Let openSUSEdefault ("Air openSUSE") desktop theme inherit from
+  Air instead of Breeze, as the name implies
+
+-------------------------------------------------------------------
+Thu Oct  6 07:15:27 UTC 2016 - fabian@ritter-vogt.de
+
+- Use a constant Version: 42.1.1 everywhere to allow upgrades
+
+-------------------------------------------------------------------
+Thu Sep 29 14:28:25 UTC 2016 - fabian@ritter-vogt.de
+
+- Use folderview as default desktop containment
+  * IMO more useful for new users
+- Update preview images
+
+-------------------------------------------------------------------
+Tue Sep 27 07:27:05 UTC 2016 - fabian@ritter-vogt.de
+
+- Fix %pre script (when will this misery come to an end???)
+
+-------------------------------------------------------------------
+Sat Sep 24 08:31:00 UTC 2016 - fabian@ritter-vogt.de
+
+- Add a %pre script to allow upgrading on 42.2 beta 3 and KUF
+
+-------------------------------------------------------------------
+Fri Sep 23 12:40:54 UTC 2016 - fabian@ritter-vogt.de
+
+- Set X-Plasma-API to 5.0 to allow for proper fallback processing
+  in desktoptheme colors
+
+-------------------------------------------------------------------
+Thu Sep 22 15:26:15 UTC 2016 - fabian@ritter-vogt.de
+
+- Use default color schemes as base for openSUSE color schemes
+  and remove uses of LabelBackground
+- Bump desktoptheme version numbers
+- Add /etc/xdg/kscreenlockerrc to use the wallpaper plugin
+- Make a symlink components -> components-real (boo#1000003)
+- Append .1 to version to make it meaningful (needed to obsolete
+  kdebase4-* from 42.1)
+
+-------------------------------------------------------------------
+Wed Sep 21 17:38:05 UTC 2016 - fabian@ritter-vogt.de
+
+- Fix self-obsoletion
+
+-------------------------------------------------------------------
+Wed Sep 21 14:31:00 UTC 2016 - fabian@ritter-vogt.de
+
+- Add a black rectangle to avoid blue screen until wallpaper loaded
+
+-------------------------------------------------------------------
+Wed Sep 21 13:47:26 UTC 2016 - wbauer@tmo.at
+
+- Use package version for the Provides/Obsoletes of
+  plasma5-desktop-branding-openSUSE, this is based on the openSUSE
+  release (13.2, 13.3, 42.1) that is higher than the
+  %plasma_version in any case, which made the Obsoletes ineffective
+  and led to conflicts on updates/upgrades
+
+-------------------------------------------------------------------
+Mon Sep 19 13:13:31 UTC 2016 - wbauer@tmo.at
+
+- Set widgetStyle=Breeze (not breeze) in the openSUSE look-and-feel
+  again, this change got lost in the upgrade to 5.8 beta
+
+-------------------------------------------------------------------
+Mon Sep 19 12:30:16 UTC 2016 - fabian@ritter-vogt.de
+
+- Do not turn off bulb to avoid black screen
+
+-------------------------------------------------------------------
+Sun Sep 18 19:42:35 UTC 2016 - fabian@ritter-vogt.de
+
+- Make plasma5-openSUSE empty so it won't get generated
+- Add conflict for kdebase4-openSUSE in plasma5-theme-openSUSE
+
+-------------------------------------------------------------------
+Sat Sep 17 13:03:36 UTC 2016 - fabian@ritter-vogt.de
+
+- Change design of logout screen background
+  - Black overlay to make focus more obvious
+  - More readable as well
+
+-------------------------------------------------------------------
+Thu Sep 15 12:49:41 UTC 2016 - fabian@ritter-vogt.de
+
+- Make layout script readable by everyone
+
+-------------------------------------------------------------------
+Wed Sep 14 13:38:23 UTC 2016 - fabian@ritter-vogt.de
+
+- Do not conflict with other plasma5-workspace-branding providers
+
+-------------------------------------------------------------------
+Sat Sep  3 21:46:21 UTC 2016 - fabian@ritter-vogt.de
+
+- Restructure branding packaging:
+  - Subpackages for sddm, desktop theme and defaults
+  - Co-installable with upstream branding
+  - BuildArch: noarch
+- Remove greeter
+- New sddm branding
+- New start-here-branding.svg that uses plasma theme colors
+- Use panel config to set start icon
+- dolphinrc: Enable SVG and krita thumbnails
+- Resize icons to correct sizes
+- Adjust look-and-feel components
+- Sync sddm theme components with look-and-feel
+- New splash screen
+- Remove:
+  - plasma-change-defaults.diff
+  - oS.diff
+- Add:
+  - panel.diff
+  - lookandfeel.diff
+  - sddmtheme.diff
+  - layout.diff
+
+-------------------------------------------------------------------
+Sat Aug 27 13:48:41 UTC 2016 - fabian@ritter-vogt.de
+
+- Disable oS.diff for now as it doesn't apply to 5.8
+
+-------------------------------------------------------------------
+Wed Aug 24 16:24:37 UTC 2016 - wbauer@tmo.at
+
+- Set widgetStyle=Breeze in the openSUSE look-and-feel. Using
+  breeze (lowercase) breaks the kconf update tool that should
+  change the KDE4 config on first login, resulting in KDE4
+  applications still using oxygen.
+
+-------------------------------------------------------------------
+Tue Aug  2 11:46:01 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.7.3
+
+-------------------------------------------------------------------
+Fri Jul 29 18:11:30 UTC 2016 - fabian@ritter-vogt.de
+
+- Update plasma-change-defaults.diff to latest upstream code
+
+-------------------------------------------------------------------
+Thu Jul 28 21:16:51 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update plasma-change-defaults.diff to latest upstream code
+
+-------------------------------------------------------------------
+Wed Jul 20 09:17:15 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.7.2
+
+-------------------------------------------------------------------
+Sat Jul 16 00:42:56 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Supply default plasmoidscript for systray icon size
+
+-------------------------------------------------------------------
+Fri Jul 15 15:51:21 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.7.1
+
+-------------------------------------------------------------------
+Wed Jul 13 16:58:14 UTC 2016 - fvogt@suse.com
+
+- Add sleep(100) in plasma-change-defaults.diff to workaround
+    kde#365606
+
+-------------------------------------------------------------------
+Thu Jun 30 12:04:08 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.7.0
+
+-------------------------------------------------------------------
+Mon Jun 27 15:53:22 UTC 2016 - wbauer@tmo.at
+
+- Add icons/start.svgz (based on
+  /usr/share/icons/oxygen/scalable/places/start-here-branding.svgz)
+  to the openSUSE themes to have the openSUSE logo as icon for the
+  application menus (boo#985937)
+
+-------------------------------------------------------------------
+Fri Jun 10 07:12:32 UTC 2016 - fvogt@suse.com
+
+- Various dependency fixes (boo#968427):
+  - Remove duplicate Requires:
+  - Do not obsolete itself
+  - Add missing Provides:
+
+-------------------------------------------------------------------
+Sun May 15 16:51:40 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.6.4
+
+-------------------------------------------------------------------
+Tue Apr 19 20:44:17 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.6.3
+
+-------------------------------------------------------------------
+Tue Apr  5 16:00:37 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.6.2
+
+-------------------------------------------------------------------
+Tue Mar 29 16:30:16 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.6.1
+
+-------------------------------------------------------------------
+Fri Mar 25 11:02:09 UTC 2016 - wbauer@tmo.at
+
+- Explicitly set icon theme to breeze in kdeglobals, otherwise
+  Plasma will use oxygen on first login.
+
+-------------------------------------------------------------------
+Tue Mar  1 17:33:51 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.5.5
+
+-------------------------------------------------------------------
+Thu Jan 28 15:18:33 UTC 2016 - tittiatcoke@gmail.com
+
+- Also obsolete the non-existent kdebase4-runtime-branding-openSUSE.
+
+-------------------------------------------------------------------
+Tue Jan 26 22:18:33 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.5.4
+
+-------------------------------------------------------------------
+Wed Jan  6 14:13:28 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.5.3
+
+-------------------------------------------------------------------
+Tue Dec 22 22:56:27 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.5.2
+
+-------------------------------------------------------------------
+Sun Dec 20 10:00:41 UTC 2015 - dimstar@opensuse.org
+
+- Bump version to 13.3 - the current internal version of
+  Tumbleweed.
+
+-------------------------------------------------------------------
+Tue Dec 15 18:15:38 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.5.1
+
+-------------------------------------------------------------------
+Sat Dec 12 17:32:35 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.5.0
+
+-------------------------------------------------------------------
+Mon Nov 16 16:21:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- BuildRequire oxygen5-icon-theme
+
+-------------------------------------------------------------------
+Sun Nov  8 19:03:30 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.4.3
+
+-------------------------------------------------------------------
+Tue Oct 27 17:20:47 UTC 2015 - wbauer@tmo.at
+
+- disable kmix autostart on login by default (boo#944766)
+- remove the MaximumSize preview settings in kdeglobals: the
+  default limit is 5 MiB upstream, it doesn't really make sense to
+  lower it further (boo#815232)
+
+-------------------------------------------------------------------
+Thu Oct 22 11:58:17 UTC 2015 - wbauer@tmo.at
+
+- Update the "Favorites" entries for dolphin and konsole in the
+  shipped kickoffrc, we ship the KF5 versions now (boo#946011)
+
+-------------------------------------------------------------------
+Wed Oct 21 19:08:05 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Rebase oS.diff after applying fix for boo#950799
+- Show introduction to KDE
+
+-------------------------------------------------------------------
+Wed Oct 21 12:36:05 UTC 2015 - dimstar@opensuse.org
+
+- Remove SUSE greeter for now (boo#950863#c6).
+
+-------------------------------------------------------------------
+Sun Oct 18 16:22:34 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Create openSUSE branded sddm theme (boo#950796)
+
+-------------------------------------------------------------------
+Mon Oct 12 13:57:02 UTC 2015 - coolo@suse.com
+
+- use the proper version require for leap
+
+-------------------------------------------------------------------
+Tue Oct  6 14:11:28 UTC 2015 - wbauer@tmo.at
+
+- Set the mouse cursor theme to "breeze_cursors" in kcminputrc.
+  "Oxygen_White" is not installed by default and causes the
+  fallback X11 cursors to be used on a fresh installation.
+
+-------------------------------------------------------------------
+Sun Oct  4 10:44:15 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.4.2
+
+-------------------------------------------------------------------
+Thu Sep 17 07:10:54 UTC 2015 - wbauer@tmo.at
+
+- Install a kcm-about-distrorc to have KInfocenter display the
+  openSUSE logo
+
+-------------------------------------------------------------------
+Thu Sep 10 17:18:57 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.4.1
+
+-------------------------------------------------------------------
+Sun Aug 16 10:41:08 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.3.95
+
+-------------------------------------------------------------------
+Thu Jul 23 10:52:52 UTC 2015 - mlin@suse.com
+
+- Fix those version condition for 42
+
+-------------------------------------------------------------------
+Sun Jun 28 18:32:29 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Bump to 5.3.2
+
+-------------------------------------------------------------------
+Wed Jun 10 16:50:01 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Use %plasma_version instead of no longer existing %{_plasma5_branding_version}
+
+-------------------------------------------------------------------
+Fri May 22 17:37:20 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Bump Plasma (Build)Requires to 5.3.1
+- Provide and Obsolete kdebase4-openSUSE and kdebase4-workspace-branding-openSUSE
+  on openSUSE > 13.2
+
+-------------------------------------------------------------------
+Wed May  6 20:02:54 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Also copy osd look-and-feel directory in order to have the openSUSE
+  branded screenlocker work correctly again
+
+-------------------------------------------------------------------
+Thu Apr 23 13:27:37 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Bump to 5.3
+- Use breeze plasma theme as default
+
+-------------------------------------------------------------------
+Wed Apr 15 09:30:31 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Rebuild against Plasma 5.2.95
+
+-------------------------------------------------------------------
+Wed Mar 25 17:08:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Rebuild against latest plasma5-workspace to pull in the locker fix
+
+-------------------------------------------------------------------
+Fri Mar 20 02:06:08 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Rebuild against Plasma 5.2.2
+
+-------------------------------------------------------------------
+Fri Feb 20 02:52:21 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Rebuild against Plasma 5.2.1
+
+-------------------------------------------------------------------
+Mon Feb  9 21:24:12 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Make sure greeter is only started within KDE sessions, boo#911205
+
+-------------------------------------------------------------------
+Thu Jan 15 15:58:31 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update oS.diff patch to sync with upstream changes
+- (Build)Require plasma5-[desktop,workspace] at atleast 5.1.95
+
+-------------------------------------------------------------------
+Thu Nov  6 22:26:27 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update oS.diff patch to sync with upstream changes
+
+-------------------------------------------------------------------
+Fri Oct 17 21:13:43 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Activate contrast effect for the plasma theme
+- Don't hardcode colorscheme within kdeglobals, this is redundant
+  with Plasma5 mechanism, and also has bad side-effect where users
+  can't change the scheme
+- Forward-port plasma-change-defaults.diff from kdebase4-openSUSE;
+  in adition to adjusting the patch for Plasma5, also change the
+  default launcher to Application Menu aka Kicker
+
+-------------------------------------------------------------------
+Thu Sep 25 08:33:26 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add toolbox icon
+- Don't ship icons, they are install by kdebase4 branding
+
+-------------------------------------------------------------------
+Wed Sep 24 08:38:32 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add 13.2 branding
+
+-------------------------------------------------------------------
+Thu Jul 24 21:34:11 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Activate plasma5-branding-openSUSE (history of kdebase4-openSUSE
+  preserved)
+
+-------------------------------------------------------------------
+Wed May 21 13:08:40 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Comment out graphicssystem from kwinrc branding: test to see does
+  explicitly requiring raster rendering from KWin triggers OOM on cyrrus
+
+-------------------------------------------------------------------
+Thu Apr 17 20:52:57 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Try to apply plasma-change-defaults.diff without offset
+- Bump kdebase4-workspace BuildRequires to 4.11.8, as the above
+  patch would fail with earlier versions
+
+-------------------------------------------------------------------
+Mon Mar 30 14:18:21 UTC 2014 - tittiatcoke@gmail.com
+
+- Remove an unwanted remainder of one of the patch commands
+
+-------------------------------------------------------------------
+Sun Mar  2 18:53:21 UTC 2014 - tittiatcoke@gmail.com
+
+- Bump version to 13.2
+- Tarball update to fix building issues with new rpm version
+
+-------------------------------------------------------------------
+Fri Dec 20 11:10:56 UTC 2013 - tittiatcoke@gmail.com
+
+- Revert:  Bump version to 13.2
+  * other packages are not ready yet (branding-openSUSE)
+
+-------------------------------------------------------------------
+Thu Dec 19 13:15:56 UTC 2013 - tittiatcoke@gmail.com
+
+- Bump version to 13.2
+
+-------------------------------------------------------------------
+Tue Dec 10 16:15:56 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Rebuild for 4.12 update/branding
+
+-------------------------------------------------------------------
+Tue Oct 29 23:11:24 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Remove apper tray script, as was agreed in bnc#802960
+- Make plasma-nm icon works with the latest naming
+
+-------------------------------------------------------------------
+Fri Oct  4 18:46:01 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Updated tar from github
+  * Activate VolumeOverdrive for KMix - this enable boosting the
+    volume over 100% (as with e.g. Pavucontrol)
+  * By default disable kactivitymanagerd_fileitem_linking_plugin
+  * Added plasmanm plasma script, so the applet is auto added to
+    tray if available
+  * Added plasma-nm tray icon for the plasma theme
+  * Updated translations
+
+-------------------------------------------------------------------
+Fri Aug 30 12:43:24 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Updated tar from github
+  * New KTP tray icons
+  * Added weatherstation svg
+  * Tweaked scrollbar
+  * Added OpenSUSEdarkalternate colorcheme (bnc#802707)
+  * Configuration updates
+  * Added apper and ktp presence applet plasma scripts
+  * Added plasma-cache cleaning scripts
+- Removed plasma-cache cleaning scripts from the package
+
+-------------------------------------------------------------------
+Mon Aug 26 15:37:51 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Restore launchers to default panel, now that bnc#829298 is resolved
+- Copy files which are patched to buildroot, instead of patching them
+  on filesystem
+
+-------------------------------------------------------------------
+Sun Jul 14 00:48:38 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Explicitly require kdebase4-runtime-branding-oS, until kde#320855
+  is properly resolved
+- Adjust plasma-change-defaults.diff, as workaround for bnc#829298
+  and kde#322283
+
+-------------------------------------------------------------------
+Tue Jul  2 12:39:25 UTC 2013 - tittiatcoke@gmail.com
+
+- Utilize the new variable _kde_branding_version for the provides/
+  requires of the KDE branding packages
+
+-------------------------------------------------------------------
+Tue May 14 09:17:06 UTC 2013 - coolo@suse.com
+
+- don't hardcode kdebase4-runtime branding version
+
+-------------------------------------------------------------------
+Tue May  7 08:28:02 UTC 2013 - coolo@suse.com
+
+- bump version to 13.1
+
+-------------------------------------------------------------------
+Fri Apr  5 18:19:49 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update plasma-change-defaults.diff for KDE 4.10.2
+
+-------------------------------------------------------------------
+Thu Mar  7 18:26:08 UTC 2013 - wbauer@tmo.at
+
+- fix typo in nepomukserverrc
+
+-------------------------------------------------------------------
+Fri Mar  1 16:32:05 UTC 2013 - wstephenson@suse.com
+
+- Update Activities icon
+- Remove unnecessary hardcoding of Nepomuk db location
+- Correct Lancelot background theming
+- Disable Windowed Widgets KRunner by default
+
+-------------------------------------------------------------------
+Mon Feb 18 20:47:32 UTC 2013 - tittiatcoke@gmail.com
+
+- Minor updates
+  Reasoning for the change:
+  http://userbase.kde.org/Desktop_Effects_Performance#Qt_Graphics_System
+
+  * Last touches for the plasma-theme:
+  * Added: phone, lazy eyes and activities icons
+  * Improved contrast for widget icons
+  * Adjust Lancelot background for modern times
+  * Fixed scrollbar as per bnc#803437
+  * Slighty tweak dialog/panel svg, so notifications don't get cut
+     off (mostly noticeable when new mail arrives in multiple folders)
+
+-------------------------------------------------------------------
+Sun Feb 10 13:32:18 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Make colorscheme tooltip colors the same as plasma theme colors
+- Fix folderview popups (bnc#802940)
+- Fix opaque widgets not able to resize (bnc#802978)
+- Reduce the theme size, and make rpmlint more happy with making
+  appropriate symlinks
+- Remove references to video
+- Fix different icons for greeter (bnc#802705)
+
+-------------------------------------------------------------------
+Fri Feb  8 11:07:38 UTC 2013 - tittiatcoke@gmail.com
+
+- remove superfluous '+' in krunnerrc, caused error messages
+  when starting krunner (Thanks to wbauer@tmo.at)
+
+-------------------------------------------------------------------
+Thu Feb  7 15:37:22 UTC 2013 - coolo@suse.com
+
+- remove the video
+
+-------------------------------------------------------------------
+Tue Feb  5 19:44:21 UTC 2013 - tittiatcoke@gmail.com
+
+- Ensure that the new nepomuk-fileindexer is switched off by
+  default
+
+-------------------------------------------------------------------
+Mon Feb  4 21:35:11 UTC 2013 - tittiatcoke@gmail.com
+
+- Update KDE theme
+  * Fix Clock Color
+  * Fix composited, but not-blurred version
+
+-------------------------------------------------------------------
+Mon Jan 28 15:57:39 UTC 2013 - tittiatcoke@gmail.com
+
+- Correct the section headers to be in the right order.
+
+-------------------------------------------------------------------
+Mon Jan 28 11:17:59 UTC 2013 - tittiatcoke@gmail.com
+
+- Plasma theme:
+  * Additional and updated systray icons
+- Greeter:
+  * Ensure that Firefox is playing the video (due to webm format)
+  * Translation updates (not complete yet)
+
+-------------------------------------------------------------------
+Sat Jan 26 12:05:16 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added kconf scripts for clearing the plasma cache
+
+-------------------------------------------------------------------
+Tue Jan 22 19:25:15 UTC 2013 - tittiatcoke@gmail.com
+
+- Adjustments to the KDE Greeter
+  *  Add video button
+  *  change the name of the window from SUSE to openSUSE
+
+-------------------------------------------------------------------
+Sat Jan 19 21:11:23 UTC 2013 - tittiatcoke@gmail.com
+
+- Updated greeter text
+- Actually delete the patch file (remove_sysinfo_from_cmake.diff)
+  from the sources
+
+-------------------------------------------------------------------
+Sat Jan 19 10:51:55 UTC 2013 - tittiatcoke@gmail.com
+
+- Replace sysinfo icon by kinfocentre if exists
+
+-------------------------------------------------------------------
+Fri Jan 18 20:42:44 UTC 2013 - tittiatcoke@gmail.com
+
+- Adjusted close button on the greeter so that it sits within the
+  window
+
+-------------------------------------------------------------------
+Wed Jan 16 14:24:45 UTC 2013 - tittiatcoke@gmail.com
+
+- Updated the KDE Greeter with its new theme.
+- Remove patch (remove_sysinfo_from_cmake.diff). Now coming from
+  upstream.
+
+-------------------------------------------------------------------
+Sun Jan 13 14:15:00 UTC 2013 - ctrippe@opensuse.org
+
+- added patch (remove_sysinfo_from_cmake.diff) to remove
+  kio_sysinfo and replace with kinfocenter.
+
+-------------------------------------------------------------------
+Wed Jan  9 12:21:14 UTC 2013 - tittiatcoke@gmail.com
+
+- Updates
+  * Make the Plasma theme slightly more transparant
+  * Updated systray icons for konversation and device notifier
+  * Change opaque for the shutdown dialog
+
+-------------------------------------------------------------------
+Wed Jan  2 15:23:33 UTC 2013 - tittiatcoke@gmail.com
+
+- Updates
+  * Minor improvement to the plasma theme
+  * Added dark colorscheme
+  * Update oxygen glow color
+
+-------------------------------------------------------------------
+Sun Dec 30 20:22:17 UTC 2012 - tittiatcoke@gmail.com
+
+- Link to userbase instead of http://help.opensuse.org/kde4/ which
+  is totally outdated. "Fixes" bnc#774509
+  Patch created by Christian Trippe
+
+-------------------------------------------------------------------
+Thu Dec 20 16:42:51 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Screenlocker requires now the full path to the image in
+  plasma-desktoprc, otherwise it will just show a white background
+
+-------------------------------------------------------------------
+Sat Dec  8 11:12:09 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to the new openSUSE plasmatheme
+  * More ksystray icons
+  * Minor improvements
+- Introduce an alternative lighter colorscheme
+
+-------------------------------------------------------------------
+Thu Nov 22 21:22:43 UTC 2012 - tittiatcoke@gmail.com
+
+- Darkened colorscheme and properly name it
+- minor fixes (improvements) for taskbar
+- Bump version to 12.3
+
+-------------------------------------------------------------------
+Thu Nov 22 07:27:02 UTC 2012 - tittiatcoke@gmail.com
+
+- Following patches were incorporated upstream
+  * kdebase4-openSUSE-bnc721114.patch
+  * link-to-qtxml.patch
+  * noakonadi.diff
+  * noproxy.diff
+
+- Added openSUSE Plasma theme and openSUSE Color scheme
+- Updated kde4 defaults to have the correct background with the
+  new screenlocker (KDE 4.10) and with lightdm
+
+-------------------------------------------------------------------
+Sun Oct 28 14:43:03 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Properly apply noakonadi.diff, so krunnerrc shows up in the right place
+
+-------------------------------------------------------------------
+Mon Oct  8 18:28:06 UTC 2012 - dmitry@roshchin.org
+
+- Using openSUSE plasma theme by default
+- Fix for Oxygen_white mouse cursor icon theme using by default
+
+-------------------------------------------------------------------
+Sat Sep  8 20:37:46 UTC 2012 - ctrippe@opensuse.org
+
+- Adjust the version of openSUSE used for rpm queries on
+  software.opensuse.org to the current version
+  (bnc#695417,bnc#681131)
+
+-------------------------------------------------------------------
+Wed Jun 20 16:01:08 UTC 2012 - coolo@suse.com
+- disable akonadi users by default as it's useless for new users.
+  We can't reenable them if akonadi is being used, but some death
+  we have to die
+
+-------------------------------------------------------------------
+Wed Jun 20 14:53:34 UTC 2012 - coolo@suse.com
+
+- use the suse icon for start menu and not a 2400x2400 "icon"
+
+-------------------------------------------------------------------
+Sun May 13 15:10:55 UTC 2012 - mlin@suse.com
+
+- Add Recommends: Mesa-demo-x in kio_sysinfo, it provides glxinfo
+
+-------------------------------------------------------------------
+Tue Apr 17 17:43:22 UTC 2012 - ctrippe@opensuse.org
+
+- Install battery.png for sysinfo (bnc#683738)
+
+-------------------------------------------------------------------
+Sat Feb 11 21:05:21 UTC 2012 - freespacer@gmx.de
+
+- Add sysinfo-fixed-opengl-detecting.patch (bnc#746599)
+
+-------------------------------------------------------------------
+Tue Nov 22 09:05:04 UTC 2011 - coolo@suse.com
+
+- we're 12.2 now - and no longer support using the factory package
+  on older distros
+
+-------------------------------------------------------------------
+Tue Nov  8 15:04:47 UTC 2011 - idonmez@suse.com
+
+- Add kdebase4-openSUSE-bnc721114.patch to fix bnc#721114
+- Small spec cleanup
+
+-------------------------------------------------------------------
+Fri Nov  4 13:00:05 UTC 2011 - coolo@suse.com
+
+- do not set a proxy by default, we just don't know and
+  KDE requires root password for package updates if there is
+  one set (even if empty variables)
+
+-------------------------------------------------------------------
+Wed Nov  2 09:37:37 UTC 2011 - coolo@suse.com
+
+- add suse artwork overlay from Marcus
+
+-------------------------------------------------------------------
+Fri Oct 28 10:12:22 UTC 2011 - coolo@suse.com
+
+- some fixes for the greeter
+
+-------------------------------------------------------------------
+Mon Oct 24 04:49:04 UTC 2011 - coolo@suse.com
+
+- own directory
+
+-------------------------------------------------------------------
+Wed Oct 19 15:32:37 UTC 2011 - idonmez@suse.com
+
+- Remove dependency on plasma-theme-aya
+
+-------------------------------------------------------------------
+Thu Oct 13 11:26:20 UTC 2011 - coolo@suse.com
+
+- patch plasma config to:
+  * readd folderview widget for topleft screen (KDE 4.7 removed it)
+  * make panel larger for more resolutions
+  * add global shortcut for launcher widget
+- increase number of virtual desktops to 2 (pager appears)
+
+-------------------------------------------------------------------
+Wed Oct 12 19:34:24 UTC 2011 - coolo@suse.com
+
+- copy over plasma setups for kdebase4-workspace-branding-openSUSE
+  (later to be patched)
+
+-------------------------------------------------------------------
+Wed Oct 12 14:32:10 UTC 2011 - coolo@suse.com
+
+- update from git to merge branding and config-files
+
+-------------------------------------------------------------------
+Wed Oct  5 19:46:33 UTC 2011 - coolo@suse.com
+
+- show desktop icons for default plasma
+- use libreoffice icon
+
+-------------------------------------------------------------------
+Wed Oct  5 09:04:52 UTC 2011 - coolo@suse.com
+
+- remove stripes (bnc#722091)
+
+-------------------------------------------------------------------
+Tue Oct  4 12:51:34 UTC 2011 - coolo@suse.com
+
+- require susegreeter-branding-openSUSE and split
+  tar balls by source
+
+-------------------------------------------------------------------
+Wed Sep 28 13:04:13 UTC 2011 - coolo@suse.com
+
+- move kdm theme to branding-openSUSE too
+
+-------------------------------------------------------------------
+Tue Sep 27 20:21:26 UTC 2011 - coolo@suse.com
+
+- move ksplashx and wallpapers out of here into branding-openSUSE
+
+-------------------------------------------------------------------
+Thu Sep 22 11:50:05 UTC 2011 - coolo@suse.com
+
+- move kdelibs4-branding-openSUSE out of here
+
+-------------------------------------------------------------------
+Sun Sep 18 18:07:48 UTC 2011 - idonmez@suse.com
+
+- kdebase4 package is no more, add requires for plasmoid-folderview
+  package, which contains what kdebase4 package contained
+
+-------------------------------------------------------------------
+Thu Sep  6 16:00:35 UTC 2011 - toddrme2178@gmail.com
+
+- Added Url tag (fix for RPMLINT warning)
+- Added check for duplicate files (fix for RPMLINT warning)
+- Added versions for some requires (fix for RPMLINT warning)
+- Added %kde4_runtime_requires tags (fix for RPMLINT warning)
+- Fixed script permissions (fix for RPMLINT warning)
+- Removed commented files (fix for RPMLINT warning)
+- Added %config tag (fix for RPMLINT warning)
+- Removed KDE SC 3 provides
+- Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Thu Aug 25 08:16:32 UTC 2011 - idonmez@novell.com
+
+- Add link-to-qtxml.patch: link to QtXml to fix build failure on
+  Factory
+
+-------------------------------------------------------------------
+Wed Aug 10 23:31:46 CEST 2011 - dmueller@suse.de
+
+- fix search provider link
+- include updated translations
+
+-------------------------------------------------------------------
+Thu Jul 21 12:22:31 UTC 2011 - idonmez@novell.com
+
+- Update for 12.1
+
+-------------------------------------------------------------------
+Wed Mar 30 12:02:00 UTC 2011 - javier@opensuse.org
+
+- remove Source4 (sysinfo_background.png) since it is already
+  included in kdebase4-openSUSE-11.4.tar.bz2 (bnc#680328)
+
+-------------------------------------------------------------------
+Thu Mar 10 00:39:48 UTC 2011 - javier@opensuse.org
+
+- update kio_sysinfo background to 11.4 artwork
+
+-------------------------------------------------------------------
+Tue Mar  1 12:59:54 UTC 2011 - wstephenson@novell.com
+
+- another update to kio_sysinfo branding, increase text contrast
+  vs background
+
+-------------------------------------------------------------------
+Fri Feb 25 11:05:42 UTC 2011 - javier@opensuse.org
+
+- adding kio_sysinfo branding
+
+-------------------------------------------------------------------
+Fri Feb 25 10:51:23 UTC 2011 - coolo@novell.com
+
+- restore kdeglobalsrc for firefox default (bnc#665497)
+
+-------------------------------------------------------------------
+Fri Feb 18 22:21:37 UTC 2011 - wstephenson@novell.com
+
+- Update KDM theme and KSplash metadata, remove extra pixels
+  (bnc#663029)
+
+-------------------------------------------------------------------
+Fri Feb 18 13:39:30 UTC 2011 - wstephenson@novell.com
+
+- Update existing firefox icons Url in line with desktop file
+  rename
+
+-------------------------------------------------------------------
+Thu Feb 17 14:38:04 UTC 2011 - wstephenson@novell.com
+
+- Call update-mime-database in pre/post install scripts
+
+-------------------------------------------------------------------
+Thu Feb 10 20:27:59 UTC 2011 - wstephenson@novell.com
+
+- Remove Locale/Country preconfiguration from SUSE KDE start
+  script, KDE 4.6 can detect these itself (bko#262488)
+
+-------------------------------------------------------------------
+Fri Feb  4 06:44:29 UTC 2011 - wstephenson@novell.com
+
+- Update SUSEGreeter splash and more wallpapers
+- Fix kdeui about background again
+
+-------------------------------------------------------------------
+Wed Jan 26 15:14:27 UTC 2011 - wstephenson@novell.com
+
+- Update openSUSE logo
+
+-------------------------------------------------------------------
+Sun Jan 23 10:52:05 UTC 2011 - wstephenson@novell.com
+
+- Use final Celadon green version of the artwork
+
+-------------------------------------------------------------------
+Thu Jan 20 10:13:46 UTC 2011 - wstephenson@novell.com
+
+- Disable Nepomuk on Live CDs too, too much IO for slow media
+- Add synaptiksrc to enable tapping by default again
+
+-------------------------------------------------------------------
+Mon Jan 17 09:36:10 UTC 2011 - coolo@novell.com
+
+- fix build of live cd
+
+-------------------------------------------------------------------
+Fri Jan 14 15:16:41 UTC 2011 - wstephenson@novell.com
+
+- Another artwork update for 11.4
+
+-------------------------------------------------------------------
+Fri Jan 14 14:59:11 UTC 2011 - wstephenson@novell.com
+
+- Update Firefox' desktop filename for default browser and
+  default Kickoff favourites
+
+-------------------------------------------------------------------
+Thu Jan 13 22:04:50 UTC 2011 - wstephenson@novell.com
+
+- Move config files into /etc/kde4 from /usr/share/kde4
+- Index xdg-user-dirs by default with Strigi
+- Disable Akonadi from starting by default in Live CDs
+- Use smaller Akonadi logfiles in Live CDs
+- Disable KPackageKit icon and kded module in Live CDs
+
+-------------------------------------------------------------------
+Thu Dec 16 10:17:20 UTC 2010 - wstephenson@novell.com
+
+- Update timestamp on artwork so wallpaper cache notices
+
+-------------------------------------------------------------------
+Sun Dec 12 19:17:19 UTC 2010 - javier@opensuse.org
+
+- added artwork by Ivan Čukić
+
+-------------------------------------------------------------------
+Wed Nov 24 12:18:47 UTC 2010 - coolo@novell.com
+
+- fixed one more version provides
+
+-------------------------------------------------------------------
+Wed Nov 24 07:33:27 UTC 2010 - coolo@novell.com
+
+- bump to 11.4 and enable nepomuk again
+
+-------------------------------------------------------------------
+Mon Oct  4 19:53:30 UTC 2010 - wstephenson@novell.com
+
+- Remove Konsole default branding to simplify packaging
+
+-------------------------------------------------------------------
+Tue Sep 14 19:46:55 CEST 2010 - dmueller@suse.de
+
+- fix runtime dependencies
+
+-------------------------------------------------------------------
+Thu Sep  2 09:50:36 UTC 2010 - wstephenson@novell.com
+
+- Fix Konsole Root Shell profile cannot be edited (bnc#581582)
+
+-------------------------------------------------------------------
+Thu Sep  2 08:20:19 UTC 2010 - wstephenson@novell.com
+
+- Modify the openSUSE Air desktop theme to use fallback components
+  from upstream Air.  Bugs fixed in Air were still present in our
+  variant, so only keep the modified elements.
+
+-------------------------------------------------------------------
+Wed Sep  1 07:44:22 UTC 2010 - aj@suse.de
+
+- Change lang package Requires to Recommends since it is not
+  mandatory at runtime.
+
+-------------------------------------------------------------------
+Fri Jun 25 15:22:08 UTC 2010 - llunak@novell.com
+
+- updated translations (bnc#615385)
+
+-------------------------------------------------------------------
+Wed Jun 23 06:22:56 UTC 2010 - wstephenson@novell.com
+
+- Update default akregator feed URL file.
+
+-------------------------------------------------------------------
+Mon Jun 21 13:27:12 UTC 2010 - llunak@novell.com
+
+- unify wallpapers, avoids startup flicker
+
+-------------------------------------------------------------------
+Fri Jun 18 14:39:11 UTC 2010 - wstephenson@novell.com
+
+- Fix Plasma theme background when panel at top or left (sr41256)
+- have Strigi index only the xdg-user-dirs by default
+- Clean old version stuff out of the specfile
+
+-------------------------------------------------------------------
+Wed Jun 16 15:46:53 UTC 2010 - wstephenson@novell.com
+
+- show new default wallpaper (bnc#614748)
+
+-------------------------------------------------------------------
+Mon Jun 14 15:49:18 UTC 2010 - wstephenson@novell.com
+
+- updated branding for openSUSE 11.3
+
+-------------------------------------------------------------------
+Mon Jun 14 08:34:06 UTC 2010 - llunak@novell.com
+
+- updated translations
+
+-------------------------------------------------------------------
+Fri Jun  4 12:53:58 UTC 2010 - llunak@novell.com
+
+- add workaround for gconf default browser setting (bnc#601392)
+
+-------------------------------------------------------------------
+Fri May 28 11:19:42 UTC 2010 - llunak@novell.com
+
+- updated translations
+- make kio_sysinfo aware of fbdev driver
+
+-------------------------------------------------------------------
+Thu May 20 12:19:36 UTC 2010 - llunak@novell.com
+
+- disable all debug output (bnc#588154)
+
+-------------------------------------------------------------------
+Tue May 18 14:01:13 UTC 2010 - llunak@novell.com
+
+- make krpmview show filelist also with recent rpm (bnc#574742)
+
+-------------------------------------------------------------------
+Thu May 13 14:58:31 UTC 2010 - llunak@novell.com
+
+- updated translations
+- avoid kio_sysinfo crash (bnc#600902)
+
+-------------------------------------------------------------------
+Thu May  6 12:28:22 UTC 2010 - javier@opensuse.org
+
+- Fixed a typo and changed planetsuse.org to planet.opensuse.org
+  in bookmarks.xml
+
+-------------------------------------------------------------------
+Fri Apr 30 14:16:22 UTC 2010 - llunak@novell.com
+
+- remove setting up of gtk style, done by kcm_gtk now
+
+-------------------------------------------------------------------
+Fri Apr 23 12:39:49 UTC 2010 - llunak@novell.com
+
+- update versions to 11.3
+
+-------------------------------------------------------------------
+Thu Apr 22 11:15:37 UTC 2010 - wstephenson@novell.com
+
+- fix Unknown network status appearing in sysinfo:// (bnc#596118)
+- fix missing NVidia driver version number. (bnc#570200)
+  Patch by Rafał Miłecki
+
+-------------------------------------------------------------------
+Mon Mar 15 15:38:41 UTC 2010 - llunak@novell.com
+
+- update kdm theme fixes for bnc#533189
+
+-------------------------------------------------------------------
+Tue Mar  9 13:25:46 UTC 2010 - llunak@novell.com
+
+- fix problems when fingerprint support is enabled (bnc#533189)
+
+-------------------------------------------------------------------
+Tue Oct 20 17:41:16 CEST 2009 - llunak@novell.com
+
+- revert initial disabled ksycoca as it breaks default settings
+ (bnc#536545, bnc#547989, bnc#547378)
+
+-------------------------------------------------------------------
+Tue Oct 13 17:25:16 UTC 2009 - coolo@novell.com
+
+- fix live scripts to fix build on x86_64
+
+-------------------------------------------------------------------
+Sun Oct 11 20:42:20 UTC 2009 - beineri@opensuse.org
+
+- updated translations
+- add konversationrc: join #opensuse by default
+- assign Next/Play_Pause/Prev/Stop keys to global Amarok shortcuts
+- replace compiz cap logo with guideline compliant one (bnc#540516)
+- 11.2 theme derived branding for sysinfo:/ and SUSEgreeter
+
+-------------------------------------------------------------------
+Thu Oct  8 23:15:43 CEST 2009 - llunak@novell.com
+
+- use xdg-user-dir locations (bnc#540574)
+
+-------------------------------------------------------------------
+Tue Oct  6 17:14:20 CEST 2009 - llunak@novell.com
+
+- make disabling initial ksycoca check work (bnc#536545)
+
+-------------------------------------------------------------------
+Fri Sep 25 09:08:26 UTC 2009 - beineri@opensuse.org
+
+- updated translations
+- adapt kdm list background color to rest of theme
+- sysinfo:/ label and (un)mount fixes (bnc#533851, bnc#509125)
+
+-------------------------------------------------------------------
+Tue Sep 22 20:02:01 UTC 2009 - llunak@novell.com
+
+- kdeui about branding
+
+-------------------------------------------------------------------
+Tue Sep 15 22:14:33 UTC 2009 - beineri@opensuse.org
+
+- updated translations
+- updated update_rpm for new hosting location
+- rename default wallpaper to "Air openSUSE" (bnc#538840)
+- add kwin branded cube cap
+- switch to release greeter (bnc#535946)
+
+-------------------------------------------------------------------
+Mon Sep  7 21:02:53 UTC 2009 - beineri@opensuse.org
+
+- add missing metadata.desktop for new Plasma theme
+
+-------------------------------------------------------------------
+Mon Sep  7 15:56:09 CEST 2009 - llunak@suse.cz
+
+- 11.2 KDE artwork
+
+-------------------------------------------------------------------
+Fri Sep  4 16:02:40 CEST 2009 - llunak@suse.cz
+
+- updated translations
+
+-------------------------------------------------------------------
+Mon Aug 31 23:26:29 CEST 2009 - llunak@novell.com
+
+- build with rpm 4.7
+
+-------------------------------------------------------------------
+Tue Aug 18 20:52:02 CEST 2009 - beineri@opensuse.org
+
+- updated translations
+- update Shell.profile (bnc#492290), move Root_Shell.profile in
+- fix poor readabibity of kdm labels (bnc#456381)
+- set Firefox as default browser in gconf to prevent Firefox popup
+
+-------------------------------------------------------------------
+Thu Aug 13 11:06:59 CEST 2009 - beineri@opensuse.org
+
+- fix defaulting to "default" plasma containment
+
+-------------------------------------------------------------------
+Mon Aug 10 09:45:46 CEST 2009 - beineri@opensuse.org
+
+- move sysconfig.displaymanager-kdm to kdm-branding package
+
+-------------------------------------------------------------------
+Thu Aug  6 23:43:26 CEST 2009 - beineri@opensuse.org
+
+- default to "default" plasma containment
+- default to breadcrumb navigation in kfile and dolphin
+
+-------------------------------------------------------------------
+Sun Aug  2 17:51:59 CEST 2009 - llunak@novell.com
+
+- firefox as the default KDE browser (fate#306644)
+
+-------------------------------------------------------------------
+Fri Jul 24 16:32:51 CEST 2009 - beineri@opensuse.org
+
+- add branded background.svgz
+
+-------------------------------------------------------------------
+Wed Jul 22 18:23:47 CEST 2009 - beineri@opensuse.org
+
+- rename sysconfig.displaymanager-kde4-kdm to follow renames
+
+-------------------------------------------------------------------
+Tue Jul 14 17:36:18 CEST 2009 - beineri@opensuse.org
+
+- fix kde4-kdm-branding-openSUSE obsoletes
+
+-------------------------------------------------------------------
+Tue Jun 30 13:00:53 CEST 2009 - beineri@opensuse.org
+
+- change default to Air theme
+
+-------------------------------------------------------------------
+Sun Jun 21 11:31:08 CEST 2009 - beineri@opensuse.org
+
+- rename kde4-kio_sysinfo* to kio_sysinfo*
+- rename kde4-kdm-branding-openSUSE to kdm-branding-openSUSE
+
+-------------------------------------------------------------------
+Thu Jun 11 17:13:34 CEST 2009 - wstephenson@suse.de
+
+- Disable Nepomuk globally by default
+
+-------------------------------------------------------------------
+Mon Jun  8 13:26:13 CEST 2009 - llunak@suse.cz
+
+- support for global proxy settings (bnc#334811)
+
+-------------------------------------------------------------------
+Wed Jun  3 14:33:12 CEST 2009 - llunak@suse.cz
+
+- use kio_sysinfo from KDE SVN
+
+-------------------------------------------------------------------
+Mon Jun  1 09:52:13 CEST 2009 - binner@kde.org
+
+- fix build with glibc 2.10
+
+-------------------------------------------------------------------
+Tue May 26 10:53:31 CEST 2009 - beineri@opensuse.org
+
+- fix live installer icon showing up as gear
+- fix default containment and wallpaper
+
+-------------------------------------------------------------------
+Mon May 18 10:33:05 CEST 2009 - beineri@opensuse.org
+
+- Plasma 4.3 wants to have ~/Desktop/*.desktop files executable
+- provide start-here-branding icon also in non-scalable form
+
+-------------------------------------------------------------------
+Sun May 10 12:21:27 CEST 2009 - beineri@opensuse.org
+
+- special SUSEgreeter splash for development releases
+- add (web)pin search provider definition
+- don't require kde-susetranslations
+
+-------------------------------------------------------------------
+Sat May  2 19:10:46 CEST 2009 - beineri@opensuse.org
+
+- add kdebase4-runtime-branding-openSUSE sub-package
+
+-------------------------------------------------------------------
+Fri Apr 24 11:32:25 CEST 2009 - coolo@suse.de
+
+- create the live installer icon again
+
+-------------------------------------------------------------------
+Wed Apr 15 11:20:35 CEST 2009 - coolo@suse.de
+
+- fix file list again (sorry, I'm PrjMgr)
+
+-------------------------------------------------------------------
+Wed Apr 15 10:00:19 CEST 2009 - coolo@suse.de
+
+- fix file list
+
+-------------------------------------------------------------------
+Thu Apr  9 14:54:28 CEST 2009 - coolo@suse.de
+
+- move some kde specific code from the livecd setup into
+  the generic branding package
+
+-------------------------------------------------------------------
+Mon Apr  6 15:38:24 CEST 2009 - llunak@suse.cz
+
+- disable Nepomuk on LiveCD (patch from stbinner)
+
+-------------------------------------------------------------------
+Tue Feb 17 20:29:45 CET 2009 - stbinner@suse.de
+
+- bump version to 11.2
+- change Kickoff Favorites to Amarok/KDE4 and Digikam/KDE4
+
+-------------------------------------------------------------------
+Tue Dec 16 13:46:55 CET 2008 - stbinner@suse.de
+
+- versionized split-provides are not supported
+
+-------------------------------------------------------------------
+Sat Nov 29 16:18:32 CET 2008 - stbinner@suse.de
+
+- readd Kontact to Kickoff Favorites (bnc#386374)
+- translation update (fixes also bnc#449786)
+
+-------------------------------------------------------------------
+Thu Nov 27 00:03:56 CET 2008 - stbinner@suse.de
+
+- greeter: link help.o.o for "Introduction to KDE4" text
+- Amarok2 -> Amarok/KDE3 in Kickoff favorites (bnc#449422)
+- translation update
+
+-------------------------------------------------------------------
+Wed Nov 26 20:51:59 CET 2008 - llunak@suse.cz
+
+- Amarok2 -> Amarok/KDE3 in favorites (bnc#449422)
+
+-------------------------------------------------------------------
+Mon Nov 24 10:33:07 CET 2008 - llunak@suse.cz
+
+- set up locale properly (bnc#446983)
+
+-------------------------------------------------------------------
+Fri Nov 21 13:25:47 CET 2008 - stbinner@suse.de
+
+- update kio_sysinfo background
+- translation update
+
+-------------------------------------------------------------------
+Thu Nov 20 19:04:56 CET 2008 - stbinner@suse.de
+
+- add SLE provides/obsoletes
+
+-------------------------------------------------------------------
+Wed Nov 19 19:00:00 CET 2008 - stbinner@suse.de
+
+- updated config for low disc space notification disable (bnc#437911)
+- make desktop containment and Kickoff favorites defaults branding
+- updated translations
+
+-------------------------------------------------------------------
+Tue Nov 11 14:59:40 CET 2008 - dmueller@suse.de
+
+- update from SVN:
+  * translation updates
+  * kio_sysinfo fixes
+  * migrate kopete chat logs
+  * fix One click install requires confirmation (bnc#416660)
+
+-------------------------------------------------------------------
+Fri Nov  7 16:40:23 CET 2008 - dmueller@suse.de
+
+- kdm4 branding update
+- translation updates
+
+-------------------------------------------------------------------
+Fri Nov  7 11:24:33 CET 2008 - stbinner@suse.de
+
+- don't run updater on Live-CD reloaded (bnc#440329)
+- show "Copy To"/"Move To" context menu in Dolphin by default
+- SUSEgreeter: add link to online KDE4 introduction
+- translation updates
+
+-------------------------------------------------------------------
+Wed Oct 29 19:31:09 CET 2008 - stbinner@suse.de
+
+- require kde-susetranslations for KDE3 libs & apps translations
+
+-------------------------------------------------------------------
+Mon Oct 27 17:47:33 CET 2008 - stbinner@suse.de
+
+- translation update
+- default to expandable folders in Dolphin's details view
+- no breadcrumb navigation in Dolphin and file dialogs by default
+
+-------------------------------------------------------------------
+Thu Oct 23 11:02:51 CEST 2008 - llunak@suse.cz
+
+- Use 11.1 splash (bnc#434784)
+
+-------------------------------------------------------------------
+Thu Oct 16 13:21:30 CEST 2008 - stbinner@suse.de
+
+- use 11.1 wallpaper
+
+-------------------------------------------------------------------
+Mon Oct 13 18:43:06 CEST 2008 - stbinner@suse.de
+
+- translation update
+
+-------------------------------------------------------------------
+Tue Oct  7 12:57:51 CEST 2008 - sbrabec@suse.cz
+
+- Conflict with other branding providers (FATE#304881).
+
+-------------------------------------------------------------------
+Thu Sep 18 09:42:24 CEST 2008 - stbinner@suse.de
+
+- bump branding version number to 11.1
+
+-------------------------------------------------------------------
+Fri Sep  5 14:14:37 CEST 2008 - stbinner@suse.de
+
+- more 11.1 changes including documentation bookmark (Fate#305003)
+
+-------------------------------------------------------------------
+Fri Jul 25 14:16:37 CEST 2008 - stbinner@suse.de
+
+- brand root window cursor theme
+- don't install trash.desktop to ~/Desktop anymore
+
+-------------------------------------------------------------------
+Tue Jul 15 16:00:07 CEST 2008 - stbinner@suse.de
+
+- default to Oxygen_white mouse cursor icon theme
+- don't install kmix_autostart.desktop
+
+-------------------------------------------------------------------
+Mon Jun 30 20:57:16 CEST 2008 - dmueller@suse.de
+
+- branding requires at 11.0.42
+
+-------------------------------------------------------------------
+Thu Jun 26 10:18:12 CEST 2008 - stbinner@suse.de
+
+- update from SVN; bump version number to 11.1
+
+-------------------------------------------------------------------
+Mon Jun  9 14:29:41 CEST 2008 - dmueller@suse.de
+
+- translation update
+
+-------------------------------------------------------------------
+Thu Jun  5 02:01:55 CEST 2008 - dmueller@suse.de
+
+- fix requires for older distros
+- do not migrate khotkeys, doesn't work (bnc#397817)
+
+-------------------------------------------------------------------
+Wed Jun  4 19:17:17 CEST 2008 - stbinner@suse.de
+
+- translation updates
+
+-------------------------------------------------------------------
+Tue Jun  3 17:38:45 CEST 2008 - dmueller@suse.de
+
+- fix requires on translation package
+- fix translations for sysinfo:/ (bnc#389605)
+- translation update
+- remove conflicht with branding packages again
+- fix desktop icon look
+
+-------------------------------------------------------------------
+Thu May 29 15:31:52 CEST 2008 - dmueller@suse.de
+
+- translation updates
+
+-------------------------------------------------------------------
+Tue May 27 23:42:15 CEST 2008 - dmueller@suse.de
+
+- opt-in kde3->kde4 config migration (bnc#372170)
+
+-------------------------------------------------------------------
+Mon May 26 22:37:40 CEST 2008 - dmueller@suse.de
+
+- fix context menu of sysinfo:/ media urls
+
+-------------------------------------------------------------------
+Mon May 26 16:35:19 CEST 2008 - stbinner@suse.de
+
+- put new default windeco color also in branding package
+- kio_sysinfo: new theme doesn't need autorepeating background
+- translation update
+
+-------------------------------------------------------------------
+Fri May 23 19:41:39 CEST 2008 - llunak@suse.de
+
+- update artwork for greeter (bnc#386486)
+
+-------------------------------------------------------------------
+Fri May 23 18:39:37 CEST 2008 - stbinner@suse.de
+
+- don't show "untrusted link" warning for IRC links on help.o.o
+- fix Konsole shell profile history setting
+- greeter: no frame, fix avoiding scrollbars.
+- kio_sysinfo: update icon, actually install repeated background
+- translation update
+
+-------------------------------------------------------------------
+Mon May 19 14:23:35 CEST 2008 - stbinner@suse.de
+
+- move the kdm error message more up (bnc#391830)
+- don't start some services on the Live-CD (bnc#345135)
+
+-------------------------------------------------------------------
+Fri May 16 16:22:15 CEST 2008 - dmueller@suse.de
+
+- translation update
+- fix system button disappearing on kdm when shutdownmode=none is set
+- enable dpms by default
+- enable screensaver by default
+
+-------------------------------------------------------------------
+Fri May 16 10:33:49 CEST 2008 - stbinner@suse.de
+
+- add additional bookmarks requested by AJ/Zonker
+- add +DISPLAYMANAGER_KDM_LOCALARGS (bnc#294491)
+- add /usr/bin/preloadkde
+- remove /etc/kde4rc (moved to kdelibs4)
+- translations updates
+
+-------------------------------------------------------------------
+Fri May  9 15:00:50 CEST 2008 - stbinner@suse.de
+
+- make start menu branding graphics transparent (bnc#386679)
+- translation updates
+
+-------------------------------------------------------------------
+Tue May  6 17:34:39 CEST 2008 - dmueller@suse.de
+
+- kdm4 branding update
+- translation updates
+
+-------------------------------------------------------------------
+Mon Apr 28 11:37:40 CEST 2008 - dmueller@suse.de
+
+- translation update
+- fix kdm4 branding
+
+-------------------------------------------------------------------
+Fri Apr 25 18:38:31 CEST 2008 - dmueller@suse.de
+
+- add kde4-kdm branding (bnc#369319)
+
+-------------------------------------------------------------------
+Tue Apr 22 16:58:11 CEST 2008 - stbinner@suse.de
+
+- conflict with kdebase4-workspace-branding-upstream
+
+-------------------------------------------------------------------
+Wed Apr 16 16:41:01 CEST 2008 - stbinner@suse.de
+
+- adapt live-installer detection for 11.0
+
+-------------------------------------------------------------------
+Wed Apr 16 15:25:22 CEST 2008 - stbinner@suse.de
+
+- remove self conflicts (bnc#380122)
+
+-------------------------------------------------------------------
+Mon Apr 14 17:31:39 CEST 2008 - dmueller@suse.de
+
+- add kde4 config migration wizard
+- implement various missing features in kde4-kio_sysinfo
+
+-------------------------------------------------------------------
+Sun Apr 13 16:11:41 CEST 2008 - coolo@suse.de
+
+- do not install on base system (see opensuse-packaging thread)
+
+-------------------------------------------------------------------
+Fri Apr 11 18:23:29 CEST 2008 - stbinner@suse.de
+
+- add search provider for Novell Bugzilla "bnc" (bnc#377521)
+- add default bookmarks, feeds and browser start page
+- fix Konq asks what to do with YMP instead of opening (bnc#377151)
+
+-------------------------------------------------------------------
+Thu Apr 10 14:00:59 CEST 2008 - stbinner@suse.de
+
+- add openSUSE workspace branding and default desktop configuration
+
+-------------------------------------------------------------------
+Wed Apr  9 23:49:58 CEST 2008 - dmueller@suse.de
+
+- split off kde4-kio_sysinfo-branding-openSUSE,
+  kdebase4-workspace-branding-openSUSE
+- add kde4-kdm theming
+
+-------------------------------------------------------------------
+Thu Feb 21 20:02:48 CET 2008 - stbinner@suse.de
+
+- ported krpmview
+
+-------------------------------------------------------------------
+Mon Feb 18 17:55:15 CET 2008 - dmueller@suse.de
+
+- better integration of kio_sysinfo
+
+-------------------------------------------------------------------
+Fri Feb 15 01:19:48 CET 2008 - dmueller@suse.de
+
+- add kde4-kio_sysinfo
+
+-------------------------------------------------------------------
+Thu Feb  7 11:23:26 CET 2008 - stbinner@suse.de
+
+- rename package to kdebase4-openSUSE
+- move Kicker/KDesktop autostart prevention to kdelibs4
+- fix icon of SUSEgreeter
+- add Live Installer desktop icon on Live-CD
+
+-------------------------------------------------------------------
+Mon Feb  4 20:24:07 CET 2008 - stbinner@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Feb  4 18:16:41 CET 2008 - llunak@suse.cz
+
+- prevent Kicker/KDesktop from autostarting in KDE4
+
+-------------------------------------------------------------------
+Mon Feb  4 16:04:56 CET 2008 - stbinner@suse.de
+
+- add files to have kmix autostarted by default
+
+-------------------------------------------------------------------
+Wed Jan 30 13:25:43 CET 2008 - stbinner@suse.de
+
+- initial version in abuild
+

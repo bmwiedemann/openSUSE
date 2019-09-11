@@ -1,0 +1,132 @@
+-------------------------------------------------------------------
+Wed Nov 21 10:56:19 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2.4.12:
+  * Bug fixes:
+    - dbfwrite.m: avoid crash and vectorize writing data to file
+      (bug #53899)
+    - dbfwrite.m: add unwind_protect block to be able to avoid
+      dangling file handles in case of errors; better checks on
+      data column homogeneity; texinfo (help) header fixes
+    - A little more robust Java check
+    - csv2cell: improper string indexing (bug #54407), fix by
+      Orion Paplowski
+  * Code improvements:
+    - POI interface: adapt to POI-4.0.0 (new getCelltype enums)
+    - POI: overhaul cell type handling when reading and writing
+    - dbfread.m: improve speed when reading a subset of data
+
+-------------------------------------------------------------------
+Wed Jun  6 08:33:35 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2.4.11:
+  * OCT interface: fix reading shared formula results (bug #52875)
+  * OCT interface: fix a rare case of nested text cell XML with
+    special formatting attributes (bug # 53298)
+  * OCT interface: don't over-allocate memory when reading text
+    cells in xlsx (bug 533910, credits to Peter Giles
+  * OCT interface: return correct date values for .ods file (bug
+    #53401)
+  * dbfwrite.m: don't prepend space before string values
+  * bug #53510: fix detection of Java version for Java > 8
+  * OCT interface: (part of) bug #53459, i.e. reading .xlsx files
+    with a more complex mix of chartsheets, macrosheets and
+    worksheets, and exploring such files with xlsfinfo. Writing to
+    such files however isn't guaranteed to be bug free. However,
+    other interfaces (POI, UNO) provide a workaround.
+  * COM interface: clearly distinguish between worksheets and e.g.,
+    chartsheets when referencing sheets by number.
+
+-------------------------------------------------------------------
+Thu Nov  9 16:28:49 UTC 2017 - badshah400@gmail.com
+
+- Update to version 2.4.8:
+  * csv2cell(): Improve ignoring CR (char (13)) in csv files (bugs
+    #50979 and #50297)
+  * OCT interface:
+    - More robust identification of worksheets (spreadsheets
+      written with POI interface were misinterpreted)
+    - Overhauled reading .xlsx files; catches more types:
+      inlineString, Boolean, ...
+  * read_namelist.m: improve reading when ending char is not fist
+    on line (bug #52242) 
+  * Replace utf82unicode with native2unicode v.v. in Octave 4.4+
+  * If no filename extension is given, default to .xlsx rather
+    than .xls
+  * xlsread.m and odsread.m now accept a function handle, an
+    output options struct and interface as arguments after the
+    third (range) argument, in any order.
+  * all spreadsheet I/O functions now accept an empty string as
+    worksheet name, implying the first worksheet.
+
+-------------------------------------------------------------------
+Thu Nov 24 13:17:37 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 2.4.5
+  * New functions.
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Sat Sep 17 18:01:59 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 2.4.3
+  * io_xls_testscript.m, io_ods_testscript.m: return results rather
+    than bail out when hitting errors
+  * cell2csv: increase precision hen writing double values
+  * Bug fixes
+
+-------------------------------------------------------------------
+Fri Jul  8 10:02:20 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 2.4.2
+  * Changed several calls to (now deprecated) octave_config_info into
+    calls to __have_feature__.m
+  * Add support for complex numbers in read_namelist.m and write_namelist.m
+  * Bug fixes
+
+-------------------------------------------------------------------
+Fri Jun 10 16:35:46 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 2.4.1
+  - xmlread.m and xmlwrite.m as replacement of the undocumented,
+    unsupported and unusable binary code.
+  - New function tidyxml.m:  simply strips characters < 32 or > 126 from
+    character arrays or cell arrays (including mixed cell arrays).
+  - test_spsh.m now shows a nice summary of test results for each interface.
+
+-------------------------------------------------------------------
+Thu Oct 22 20:35:44 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.2.11
+  * Bug fixes
+
+-------------------------------------------------------------------
+Mon Sep 28 14:09:10 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.2.10
+  * Support for Named Ranges
+  * Bug fixes
+
+-------------------------------------------------------------------
+Tue Jul 14 19:51:38 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.2.9
+  * Bug fixes
+
+-------------------------------------------------------------------
+Mon Jun 22 19:46:25 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.2.8
+  * Bug fixes
+
+-------------------------------------------------------------------
+Sun Mar  8 21:46:51 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.2.7
+  * Bug fixes
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 2.2.6
+

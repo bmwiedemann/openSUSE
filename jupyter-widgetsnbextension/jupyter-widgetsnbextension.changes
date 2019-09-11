@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Sun Aug 11 01:36:21 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.5.1
+  * Add $el to BoxView and ControllerView
+  * Fix setting a selection index when having duplicate values
+  * Fixup build of documentation
+  * Fix controls base dep
+  * Reduce count of deprecation warnings
+  * Update LayoutTemplate example
+  * update html manager
+  * js integrity
+
+-------------------------------------------------------------------
+Sat Jul 27 03:30:24 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.5.0
+  * New `AppLayout` and `GridLayout` templates for positioning interactive widgets.
+  * New `FileUpload` widget allowing users to upload files from the browser.
+  * New `ComboBox` widget.
+  * JupyterLab CSS variables are now exposed by default even in the case of the classic notebook.
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to to match jupyter package naming guidelines.
+
+-------------------------------------------------------------------
+Sun Sep 16 16:23:28 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * remove devel from noarch
+
+- update to version 3.4.2:
+  * Add `click` method to the Button Widget
+  * Fix JS remove_buffers view check
+  * Add tests for JS remove_buffers
+  * Use data-jupyter-widgets-cdn attribute to make the CDN
+  * configurable
+  * update lerna
+
+-------------------------------------------------------------------
+Fri Sep  7 15:48:30 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 3.4.1
+  * New `Video` and `Audio` widgets have been introduced. [#2162](https://github.com/jupyter-widgets/ipywidgets/pull/2162)
+    We updated the `@jupyter-widgets/controls` widget specification version to `1.4.0`, leading to the version bump to 7.4.
+  * The use of mappings for the `options` attribute of selection widgets is deprecated. [#2130](https://github.com/jupyter-widgets/ipywidgets/pull/2130)
+
+-------------------------------------------------------------------
+Thu Aug  2 17:11:42 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 3.3.1
+  * A new `GridBox` widget is introduced and associated CSS gridproperties are added to the layout. This enables using the CSS Grid spec for laying out widgets. See the [Widget Styling](http://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Styling.html) documentation for some examples. Because of this and other model specification changes, the view and module versions of widgets was incremented in both the base and controls packages. ([#2107](https://github.com/jupyter-widgets/ipywidgets/pull/2107), [#2064](https://github.com/jupyter-widgets/ipywidgets/pull/2064), [#1942](https://github.com/jupyter-widgets/ipywidgets/issues/1942))
+  * Widgets with a `description` attribute now also have a `description_tooltip` attribute to set a tooltip on the description. The tooltip defaults to the description text. Setting `description_tooltip` to `''` removes it, and setting it to `None` makes the tooltip default to the description text. ([#2070](https://github.com/jupyter-widgets/ipywidgets/pull/2070))
+  * `'transparent'` is now a valid color for color attributes. ([#2128](https://github.com/jupyter-widgets/ipywidgets/pull/2128))
+  * Dropdowns now have extra padding to make room for the dropdown arrow. ([#2052](https://github.com/jupyter-widgets/ipywidgets/issues/2052), [#2101](https://github.com/jupyter-widgets/ipywidgets/pull/2101))
+  * Image widget `repr` now truncates the image value to prevent huge amounts of output in notebooks. ([#2111](https://github.com/jupyter-widgets/ipywidgets/pull/2111))
+  * Python 3.3 support is dropped. Python 3.3 support was dropped in the Python community in [September 2017](https://www.python.org/dev/peps/pep-0398/#x-end-of-life). ([#2129](https://github.com/jupyter-widgets/ipywidgets/pull/2129))
+  * The license information has been consolidated into the LICENSE file, and the COPYING.md file is removed. If you are repackaging ipywidgets or widgetsnbextension, please make sure to include LICENSE instead of COPYING.md. ([#2133](https://github.com/jupyter-widgets/ipywidgets/pull/2133), [#2048](https://github.com/jupyter-widgets/ipywidgets/pull/2048), [#1701](https://github.com/jupyter-widgets/ipywidgets/issues/1701), [#1706](https://github.com/jupyter-widgets/ipywidgets/pull/1706))
+- License now included in wheel
+
+-------------------------------------------------------------------
+Thu Apr 19 04:36:31 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 3.2.1
+  * A new `FloatLogSlider` widget is a slider with a log scale, suitable for exploring a wide range of magnitudes.
+  * `link` and `dlink` are now exported from ipywidgets for convenience, so that you can import them directly from ipywidgets instead of needing to import them from traitlets. ([#1923](https://github.com/jupyter-widgets/ipywidgets/pull/1923))
+  * A new option `manual_name` has been added to `interact_manual()` to change the name of the update button, for example `interact_manual(manual_name='Update')`. ([#1924](https://github.com/jupyter-widgets/ipywidgets/pull/1923))
+  * The Output widget now has a `.capture()` method, which returns a decorator to capture the output of a function.
+  * The Output widget has much more comprehensive documentation in its own section. ([#2020](https://github.com/jupyter-widgets/ipywidgets/pull/2020))
+  * Installing `widgetsnbextension` now automatically enables the nbextension in Jupyter Notebook 5.3 or later. ([#1911](https://github.com/jupyter-widgets/ipywidgets/pull/1911))
+  * The default rendering of a widget if widgets are not installed is now a short description of the widget in text instead of a much longer HTML message. ([#2007](https://github.com/jupyter-widgets/ipywidgets/pull/2007))
+  * The JavaScript base widget manager class now has a `resolveUrl` method to resolve a URL relative to the current notebook location. ([#1993](https://github.com/jupyter-widgets/ipywidgets/pull/1993))
+  * The html manager now exposes a way to specify which JavaScript file is fetched for a package and the loader used to fetch the library. ([#1995](https://github.com/jupyter-widgets/ipywidgets/pull/1995), [#1998](https://github.com/jupyter-widgets/ipywidgets/pull/1998))
+  * The `@jupyter-widgets/controls` widget specification version was bumped to `1.2.0`. Changes include the FloatLogSlider widget and more specific documentation about array element types. ([#2017](https://github.com/jupyter-widgets/ipywidgets/pull/2017))
+  
+-------------------------------------------------------------------
+Mon Mar 19 20:19:04 UTC 2018 - toddrme2178@gmail.com
+
+- Re-remove bashisms
+
+-------------------------------------------------------------------
+Tue Mar 13 12:21:35 UTC 2018 - toddrme2178@gmail.com
+
+- Switch to simpler and more reliable wheels
+
+-------------------------------------------------------------------
+Sun Mar  4 11:09:32 UTC 2018 - jengelh@inai.de
+
+- Avoid bashisms in scripts.
+
+-------------------------------------------------------------------
+Mon Feb 26 01:26:14 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 3.1.4
+  * Bugfix release
+
+-------------------------------------------------------------------
+Thu Feb 15 15:49:31 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 3.1.3
+  * Bugfix release
+
+-------------------------------------------------------------------
+Tue Feb 13 19:38:54 UTC 2018 - toddrme2178@gmail.com
+
+- update url
+
+-------------------------------------------------------------------
+Wed Jan  3 23:17:05 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 3.1.0:
+  * No changelog
+
+-------------------------------------------------------------------
+Wed Nov 22 22:51:38 UTC 2017 - arun@gmx.de
+
+- update to version 3.0.8:
+  * No changelog
+
+-------------------------------------------------------------------
+Tue Nov 14 16:38:21 UTC 2017 - arun@gmx.de
+
+- update to version 3.0.7:
+  * No changelog
+
+-------------------------------------------------------------------
+Thu Oct 26 17:29:33 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 3.0.6
+  * No changelog
+
+-------------------------------------------------------------------
+Wed Sep 20 22:03:42 UTC 2017 - toddrme2178@gmail.com
+
+- Fix license download urls
+
+-------------------------------------------------------------------
+Tue Sep 19 21:17:09 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 3.0.3
+  * No changelog
+
+-------------------------------------------------------------------
+Thu Apr 27 08:07:01 UTC 2017 - toddrme2178@gmail.com
+
+- Split python-independent nbextension directory into subpackage.
+
+-------------------------------------------------------------------
+Wed Apr 26 20:42:35 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

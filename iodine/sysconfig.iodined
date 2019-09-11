@@ -1,0 +1,21 @@
+## Description: systemd iodined.service configuration file
+## URL: 
+## License: GPL-2.0
+## Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
+## Path: System/iodined
+## Description:	iodined systemd service parameters
+## Type:	string
+## Default:	""
+## ServiceRestart: systemctl restart iodined.service
+#
+# You may provide a password in two ways, via IODINED_PASS, or provide it in IODINED_OPTIONS
+#
+IODINED_PASS="-P mypass"
+
+## Type:        string
+## Default:     ""
+#
+# Additional parameters for iodined, see the iodined man page for more options.
+# Example option -P PASSWORD NAMESERVER DOMAIN
+#
+IODINED_OPTIONS="-u iodined -c -t /var/lib/iodined -f 10.53.0.1/24 myhost.domain.lan"

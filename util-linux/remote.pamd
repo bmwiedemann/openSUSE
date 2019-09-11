@@ -1,0 +1,13 @@
+#%PAM-1.0
+# This file is used by /bin/login in case of remote logins (means where
+# the -h option is used
+auth	 requisite	pam_nologin.so
+auth	 [user_unknown=ignore success=ok ignore=ignore auth_err=die default=bad]	pam_securetty.so
+auth	 include	common-auth
+account  include 	common-account
+password include	common-password
+session  required	pam_loginuid.so
+session  optional       pam_keyinit.so force revoke
+session	 include	common-session
+session  optional       pam_lastlog.so nowtmp showfailed
+session  optional       pam_mail.so standard

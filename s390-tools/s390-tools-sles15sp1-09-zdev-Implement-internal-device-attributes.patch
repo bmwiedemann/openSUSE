@@ -1,0 +1,507 @@
+Subject: zdev: Implement internal device attributes
+From: Peter Oberparleiter <oberpar@linux.ibm.com>
+
+Summary:     zdev: Add support for handling I/O configuration data
+Description: LPARs that are running in IBM Dynamic Partition Manager (DPM) mode
+             can access a firmware-generated I/O configuration data file that
+             contains s390-specific information about available I/O devices
+             such as qeth device numbers and parameters, and FCP device IDs.
+
+             This data file is intended to remove the need for users to
+             manually enter the corresponding device data during installation.
+
+             Linux kernels with the corresponding support make the I/O
+             configuration data available at the following location:
+
+               /sys/firmware/sclp_sd/config/data
+
+             This patch set adds support for handling this data file using the
+             chzdev and lszdev tools:
+
+               - I/O configuration data can be applied using chzdev's --import
+                 option
+               - Initial RAM-Disk scripts automatically apply the
+                 I/O configuration data to the system configuration
+               - lszdev can be used to display the applied auto-configuration
+                 data
+               - chzdev can be used to manually override the
+                 auto-configuration data
+
+Upstream-ID: c0392efa39e48cb12fdf3524b2f9e683e46f0f14
+Problem-ID:  LS1604
+
+Upstream-Description:
+
+             zdev: Implement internal device attributes
+
+             This change adds base infrastructure for implementing internal device
+             attributes. In the context of the zdev tools, an internal device
+             attribute is a new type of device attribute with the following
+             characteristics:
+
+               - Can be set and removed like normal device attributes
+               - Affects zdev-internal handling only
+               - Does not correspond to an actual device attribute, that is
+                 it has no representation in SysFS
+               - Can not be set in the active configuration
+               - Name starts with "zdev:" to prevent conflicts with actual
+                 device attributes
+
+             Values for internal device attributes are stored in udev rules alongside
+             the normal persistent configuration of a device. They are encoded as
+             udev environment variables. Note that they have no further effect on
+             udev processing.
+
+             Signed-off-by: Peter Oberparleiter <oberpar@linux.vnet.ibm.com>
+             Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Peter Oberparleiter <oberpar@linux.ibm.com>
+---
+ zdev/include/attrib.h    |    2 
+ zdev/include/internal.h  |   20 +++++++++
+ zdev/include/misc.h      |    1 
+ zdev/include/udev.h      |    7 +++
+ zdev/src/Makefile        |    4 -
+ zdev/src/device.c        |   15 +++++++
+ zdev/src/internal.c      |   25 ++++++++++++
+ zdev/src/misc.c          |   15 +++++++
+ zdev/src/udev.c          |   32 +++++++++++++++
+ zdev/src/udev_ccw.c      |   16 +++++++
+ zdev/src/udev_ccwgroup.c |   11 +++++
+ zdev/src/udev_zfcp_lun.c |   80 ++++++++++++++++++++++++++++++++++++---
+ 12 files changed, 220 insertions(+), 8 deletions(-)
+
+--- a/zdev/include/attrib.h
++++ b/zdev/include/attrib.h
+@@ -189,6 +189,7 @@ struct value_map {
+  *              in the persistent configuration
+  * @nounload:   (Device type attributes only) This attribute can be set while
+  *              the corresponding kernel module remains loaded.
++ * @internal:   This attribute only affects internal handling
+  * @order:	A number indicating the order in which to apply attribute
+  * @order_cmp:  A function determining if a setting for this attribute should
+  *              be applied before (-1) or after (1) another setting, or
+@@ -216,6 +217,7 @@ struct attrib {
+ 	unsigned int activerem	:1;
+ 	unsigned int defunset	:1;
+ 	unsigned int nounload	:1;
++	unsigned int internal	:1;
+ 
+ 	/* Optional */
+ 	int order;
+--- /dev/null
++++ b/zdev/include/internal.h
+@@ -0,0 +1,20 @@
++/*
++ * zdev - Modify and display the persistent configuration of devices
++ *
++ * Copyright IBM Corp. 2017
++ *
++ * s390-tools is free software; you can redistribute it and/or modify
++ * it under the terms of the MIT license. See LICENSE for details.
++ */
++
++#ifndef INTERNAL_H
++#define INTERNAL_H
++
++#include <stdbool.h>
++
++#define INTERNAL_ATTR_PREFIX	"zdev:"
++
++const char *internal_get_name(const char *name);
++bool internal_by_name(const char *name);
++
++#endif /* INTERNAL_H */
+--- a/zdev/include/misc.h
++++ b/zdev/include/misc.h
+@@ -183,6 +183,7 @@ bool str_to_config(const char *, config_
+ char *quote_str(const char *, int);
+ char *unquote_str(const char *);
+ char *shrink_str(const char *);
++char *misc_strrstr(const char *haystack, const char *needle);
+ 
+ struct util_list *strlist_new(void);
+ void strlist_free(struct util_list *);
+--- a/zdev/include/udev.h
++++ b/zdev/include/udev.h
+@@ -13,6 +13,9 @@
+ #include "lib/util_list.h"
+ #include "exit_code.h"
+ 
++struct attrib;
++struct setting_list;
++
+ extern int udev_need_settle;
+ extern int udev_no_settle;
+ 
+@@ -46,4 +49,8 @@ exit_code_t udev_remove_rule(const char
+ 
+ void udev_settle(void);
+ 
++void udev_add_internal_from_entry(struct setting_list *list,
++				  struct udev_entry_node *entry,
++				  struct attrib **attribs);
++
+ #endif /* UDEV_H */
+--- a/zdev/src/Makefile
++++ b/zdev/src/Makefile
+@@ -8,7 +8,7 @@ ALL_CPPFLAGS += -I ../include -std=gnu99
+ chzdev_objects += attrib.o chzdev.o device.o devnode.o devtype.o exit_code.o \
+ 		  export.o hash.o inuse.o misc.o namespace.o opts.o path.o \
+ 		  root.o select.o setting.o subtype.o table.o table_attribs.o \
+-		  table_types.o net.o firmware.o
++		  table_types.o net.o firmware.o internal.o
+ 
+ # Devtype Helpers
+ chzdev_objects += blkinfo.o ccw.o ccwgroup.o findmnt.o modprobe.o module.o \
+@@ -38,7 +38,7 @@ chzdev_objects += generic_ccw.o
+ lszdev_objects += attrib.o lszdev.o device.o devnode.o devtype.o exit_code.o \
+ 		  export.o hash.o inuse.o misc.o namespace.o opts.o path.o \
+ 		  root.o select.o setting.o subtype.o table.o table_types.o \
+-		  net.o
++		  net.o internal.o
+ 
+ # Devtype Helpers
+ lszdev_objects += blkinfo.o ccw.o ccwgroup.o findmnt.o modprobe.o module.o \
+--- a/zdev/src/device.c
++++ b/zdev/src/device.c
+@@ -16,6 +16,7 @@
+ #include "attrib.h"
+ #include "device.h"
+ #include "devtype.h"
++#include "internal.h"
+ #include "misc.h"
+ #include "namespace.h"
+ #include "setting.h"
+@@ -221,6 +222,9 @@ static exit_code_t apply_setting(struct
+ 			goto err_activeonly_forceable;
+ 		if (!force && SCOPE_AUTOCONF(config) && a->activeonly)
+ 			goto err_activeonly_forceable;
++		/* Check for internal. */
++		if (config == config_active && a->internal)
++			goto err_int_noactive;
+ 		/* Check for multiple values. */
+ 		if (!force && !a->multi && strlist_find(processed, key))
+ 			goto err_multi_forceable;
+@@ -230,6 +234,9 @@ static exit_code_t apply_setting(struct
+ 			goto err_unknown;
+ 		if (!force)
+ 			goto err_unknown_forceable;
++		/* Check for internal. */
++		if (config == config_active && internal_by_name(key))
++			goto err_int_noactive;
+ 	}
+ 
+ 	strlist_add(processed, "%s", key);
+@@ -294,6 +301,11 @@ err_activeonly_forceable:
+ 	delayed_forceable("Attribute '%s' should only be changed in the active "
+ 			  "config\n", a->name);
+ 	return EXIT_INVALID_SETTING;
++
++err_int_noactive:
++	delayed_err("Internal attribute '%s' cannot be set in the active config\n",
++		    key);
++	return EXIT_INVALID_SETTING;
+ }
+ 
+ /* Apply device settings from strlist to device. */
+@@ -542,6 +554,9 @@ exit_code_t device_write_active_settings
+ 		s = p->ptr;
+ 		if (!s->modified || s->removed)
+ 			continue;
++		if ((s->attrib && s->attrib->internal) ||
++		    internal_by_name(s->name))
++			continue;
+ 
+ 		path = subtype_get_active_attrib_path(st, dev, s->name);
+ 		if (!path) {
+--- /dev/null
++++ b/zdev/src/internal.c
+@@ -0,0 +1,25 @@
++/*
++ * zdev - Modify and display the persistent configuration of devices
++ *
++ * Copyright IBM Corp. 2017
++ *
++ * s390-tools is free software; you can redistribute it and/or modify
++ * it under the terms of the MIT license. See LICENSE for details.
++ */
++
++#include <stdbool.h>
++
++#include "internal.h"
++#include "misc.h"
++
++/* Return identifier of internal attribute with specified @name. */
++const char *internal_get_name(const char *name)
++{
++	return name + sizeof(INTERNAL_ATTR_PREFIX) - 1;
++}
++
++/* Check if attribute is internal by name. */
++bool internal_by_name(const char *name)
++{
++	return starts_with(name, INTERNAL_ATTR_PREFIX);
++}
+--- a/zdev/src/misc.c
++++ b/zdev/src/misc.c
+@@ -1717,3 +1717,18 @@ void debug_init(int argc, char *argv[])
+ 		fprintf(stderr, "%s\"%s\"", i > 0 ? ", " : "", argv[i]);
+ 	fprintf(stderr, "\n");
+ }
++
++/* Return the last occurrence of @needle in @haystack, or %NULL if @needle
++ * was not found. */
++char *misc_strrstr(const char *haystack, const char *needle)
++{
++	char *result, *next;
++
++	result = strstr(haystack, needle);
++	if (result) {
++		while ((next = strstr(result + 1, needle)))
++			result = next;
++	}
++
++	return result;
++}
+--- a/zdev/src/udev.c
++++ b/zdev/src/udev.c
+@@ -409,3 +409,35 @@ void udev_settle(void)
+ 		return;
+ 	misc_system(err_ignore, "%s settle", PATH_UDEVADM);
+ }
++
++/* Extract internal attribute settings from @entry and add to @list.
++ * Associate corresponding attribute if found in @attribs. */
++void udev_add_internal_from_entry(struct setting_list *list,
++				  struct udev_entry_node *entry,
++				  struct attrib **attribs)
++{
++	char *copy, *name, *end, *u;
++	struct attrib *a;
++
++	/* ENV{zdev_var}="1" */
++	copy = misc_strdup(entry->key);
++
++	/* Find attribute name start. */
++	name = strchr(copy, '{');
++	end = strrchr(copy, '}');
++	if (!name || !end)
++		goto out;
++	*end = 0;
++	name++;
++
++	/* zdev_ => zdev: */
++	u = strchr(name, '_');
++	if (u)
++		*u = ':';
++
++	a = attrib_find(attribs, name);
++	setting_list_apply_actual(list, a, name, entry->value);
++
++out:
++	free(copy);
++}
+--- a/zdev/src/udev_ccw.c
++++ b/zdev/src/udev_ccw.c
+@@ -18,6 +18,7 @@
+ #include "attrib.h"
+ #include "ccw.h"
+ #include "device.h"
++#include "internal.h"
+ #include "misc.h"
+ #include "path.h"
+ #include "setting.h"
+@@ -49,6 +50,12 @@ static void add_setting_from_entry(struc
+ 	char *copy, *name, *end;
+ 	struct attrib *a;
+ 
++	/* ENV{zdev_var}="1" */
++	if (starts_with(entry->key, "ENV{zdev_") &&
++	    strcmp(entry->op, "=") == 0) {
++		udev_add_internal_from_entry(list, entry, attribs);
++		return;
++	}
+ 	/* ATTR{[ccw/0.0.37bf]online}=1 */
+ 	if (strncmp(entry->key, "ATTR{[ccw/", 10) != 0 ||
+ 	    strcmp(entry->op, "=") != 0)
+@@ -190,7 +197,14 @@ exit_code_t udev_ccw_write_device(struct
+ 		s = p->ptr;
+ 		if (s->removed)
+ 			continue;
+-		fprintf(fd, "ATTR{[ccw/%s]%s}=\"%s\"\n", id, s->name, s->value);
++		if ((s->attrib && s->attrib->internal) ||
++		    internal_by_name(s->name)) {
++			fprintf(fd, "ENV{zdev_%s}=\"%s\"\n",
++				internal_get_name(s->name), s->value);
++		} else {
++			fprintf(fd, "ATTR{[ccw/%s]%s}=\"%s\"\n", id, s->name,
++				s->value);
++		}
+ 	}
+ 
+ 	/* Write udev rule epilog. */
+--- a/zdev/src/udev_ccwgroup.c
++++ b/zdev/src/udev_ccwgroup.c
+@@ -18,6 +18,7 @@
+ #include "attrib.h"
+ #include "ccwgroup.h"
+ #include "device.h"
++#include "internal.h"
+ #include "misc.h"
+ #include "path.h"
+ #include "setting.h"
+@@ -68,6 +69,12 @@ static void add_setting_from_entry(struc
+ 	char *copy, *name, *end;
+ 	struct attrib *a;
+ 
++	/* ENV{zdev_var}="1" */
++	if (starts_with(entry->key, "ENV{zdev_") &&
++	    strcmp(entry->op, "=") == 0) {
++		udev_add_internal_from_entry(list, entry, attribs);
++		return;
++	}
+ 	/* ATTR{[ccwgroup/0.0.f5f0]online}=1 */
+ 	if (strncmp(entry->key, "ATTR{[ccwgroup/", 10) != 0 ||
+ 	    strcmp(entry->op, "=") != 0)
+@@ -282,6 +289,10 @@ exit_code_t udev_ccwgroup_write_device(s
+ 				fprintf(fd, "ATTR{[ccwgroup/%s]%s}=\"%s\"\n",
+ 					ccw_id, s->name, str->str);
+ 			}
++		} else if ((s->attrib && s->attrib->internal) ||
++			   internal_by_name(s->name)) {
++			fprintf(fd, "ENV{zdev_%s}=\"%s\"\n",
++				internal_get_name(s->name), s->value);
+ 		} else {
+ 			fprintf(fd, "ATTR{[ccwgroup/%s]%s}=\"%s\"\n", ccw_id,
+ 				s->name, s->value);
+--- a/zdev/src/udev_zfcp_lun.c
++++ b/zdev/src/udev_zfcp_lun.c
+@@ -18,6 +18,7 @@
+ 
+ #include "attrib.h"
+ #include "device.h"
++#include "internal.h"
+ #include "misc.h"
+ #include "path.h"
+ #include "scsi.h"
+@@ -128,7 +129,7 @@ static bool zfcp_lun_devid_from_entry(st
+ 				      struct udev_entry_node *entry)
+ {
+ 	struct zfcp_lun_devid id;
+-	char *copy = NULL, *s;
++	char *copy = NULL, *s, *e, *u;
+ 	int i;
+ 	bool rc = false;
+ 
+@@ -182,6 +183,28 @@ static bool zfcp_lun_devid_from_entry(st
+ 		goto out;
+ 	}
+ 
++	/*ENV{zdev_var__0_0_1941_0x500507630510c1ae_0x402340d400000000}="1"*/
++	if (starts_with(entry->key, "ENV{zdev_")) {
++		copy = misc_strdup(entry->key);
++
++		/* Find ID start (last __) and end (last }). */
++		s = misc_strrstr(copy, "__");
++		e = strrchr(copy, '}');
++		if (!s || !e)
++			goto out;
++		*e = 0;
++		s += 2;
++		/* Convert variable name to ID format. */
++		for (i = 0, u = s; (u = strchr(u, '_')); i++, u++) {
++			if (i < 2)
++				*u = '.';
++			else
++				*u = ':';
++		}
++		rc = zfcp_lun_parse_devid(&id, s, err_ignore) == EXIT_OK ?
++			true : false;
++	}
++
+ out:
+ 	free(copy);
+ 	if (rc)
+@@ -211,11 +234,46 @@ static struct zfcp_lun_node *zfcp_lun_no
+ 	return node;
+ }
+ 
++static void add_internal_setting_from_entry(struct udev_entry_node *entry,
++					    struct zfcp_lun_node *node)
++{
++	char *copy, *name, *end, *u;
++	struct attrib *a;
++
++	/*ENV{zdev_var__0_0_1941_0x500507630510c1ae_0x402340d400000000}="1"*/
++	copy = misc_strdup(entry->key);
++
++	/* Find attribute name start and end. */
++	name = strchr(copy, '{');
++	end = misc_strrstr(copy, "__");
++	if (!name || !end)
++		goto out;
++	*end = 0;
++	name++;
++
++	/* zdev_ => zdev: */
++	u = strchr(name, '_');
++	if (u)
++		*u = ':';
++
++	a = attrib_find(zfcp_lun_subtype.dev_attribs, name);
++	setting_list_apply_actual(node->fc_settings, a, name, entry->value);
++
++out:
++	free(copy);
++}
++
+ static void add_fc_setting_from_entry(struct udev_entry_node *entry,
+ 				      struct zfcp_lun_node *node)
+ {
+ 	char *copy, *s, *e;
+ 
++	/*ENV{zdev_var__0_0_1941_0x500507630510c1ae_0x402340d400000000}="1"*/
++	if (starts_with(entry->key, "ENV{zdev_") &&
++	    strcmp(entry->op, "=") == 0) {
++		add_internal_setting_from_entry(entry, node);
++		return;
++	}
+ 	/*ATTR{[ccw/0.0.1941]0x500507630510c1ae/0x402340d400000000/failed}="0"*/
+ 	if (!starts_with(entry->key, "ATTR{[ccw/"))
+ 		return;
+@@ -490,7 +548,7 @@ static struct zfcp_lun_node *state_to_zf
+ 					s->value);
+ 			setting_list_add(node->scsi_settings, n);
+ 		} else {
+-			n = setting_new(NULL, s->name, s->value);
++			n = setting_new(s->attrib, s->name, s->value);
+ 			setting_list_add(node->fc_settings, n);
+ 		}
+ 	}
+@@ -580,9 +638,21 @@ static exit_code_t write_luns_rule(const
+ 			node->id.lun);
+ 
+ 		util_list_iterate(&node->fc_settings->list, s) {
+-			fprintf(fd, "ATTR{[ccw/%s]0x%016" PRIx64 "/0x%016"
+-				PRIx64 "/%s}=\"%s\"\n", hba_id, node->id.wwpn,
+-				node->id.lun, s->name, s->value);
++			if ((s->attrib && s->attrib->internal) ||
++			    internal_by_name(s->name)) {
++				fprintf(fd, "ENV{zdev_%s__%x_%x_%04x_0x%016"
++					PRIx64 "_0x%016" PRIx64 "}=\"%s\"\n",
++					internal_get_name(s->name),
++					node->id.fcp_dev.cssid,
++					node->id.fcp_dev.ssid,
++					node->id.fcp_dev.devno, node->id.wwpn,
++					node->id.lun, s->value);
++			} else {
++				fprintf(fd, "ATTR{[ccw/%s]0x%016" PRIx64
++					"/0x%016" PRIx64 "/%s}=\"%s\"\n",
++					hba_id, node->id.wwpn, node->id.lun,
++					s->name, s->value);
++			}
+ 		}
+ 		last_node = node;
+ 	}

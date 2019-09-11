@@ -1,0 +1,43 @@
+--- a/touchegg/src/touchegg/util/Include.h
++++ b/touchegg/src/touchegg/util/Include.h
+@@ -23,8 +23,9 @@
+     // Qt
+     #include <QtCore>
+     #include <QtGui>
+-    #include <QtGui/QX11Info>
++    #include <QtWidgets>
+     #include <QtXml>
++    #include <QX11Info>
+ 
+     // Xlib
+     #include <X11/Xlib.h>
+--- a/touchegg/touchegg.pro
++++ b/touchegg/touchegg.pro
+@@ -1,6 +1,6 @@
+ TEMPLATE     = app
+ TARGET       = touchegg
+-QT          += gui core xml
++QT          += core gui widgets xml x11extras
+ LIBS        += -lgeis -lX11 -lXtst -lXext
+ //DEFINES      = QT_NO_DEBUG_OUTPUT
+ 
+--- a/touchegg-gui/src/touchegg-gui/util/Include.h
++++ b/touchegg-gui/src/touchegg-gui/util/Include.h
+@@ -16,6 +16,7 @@
+ 
+     #include <QtCore>
+     #include <QtGui>
++    #include <QtWidgets>
+     #include <QtXml>
+ 
+ #endif // INCLUDE_H
+--- a/touchegg-gui/touchegg-gui.pro
++++ b/touchegg-gui/touchegg-gui.pro
+@@ -1,6 +1,6 @@
+ TEMPLATE        = app
+ TARGET          = touchegg-gui
+-QT             += core gui xml
++QT             += core gui widgets xml
+ OBJECTS_DIR    += build
+ MOC_DIR        += build
+ RCC_DIR        += build

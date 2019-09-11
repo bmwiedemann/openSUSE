@@ -1,0 +1,20 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2018-11-20 00:09:16.003548811 +0100
+
+---
+ mkfs/erofs_config.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: erofs-utils-0.0.1~23/mkfs/erofs_config.c
+===================================================================
+--- erofs-utils-0.0.1~23.orig/mkfs/erofs_config.c
++++ erofs-utils-0.0.1~23/mkfs/erofs_config.c
+@@ -20,7 +20,7 @@ void mkfs_init_configure(void)
+ 	memset(&erofs_cfg, 0, sizeof(erofs_cfg));
+ 	erofs_cfg.c_alg_name = "none";
+ 	erofs_cfg.c_dbg_lvl  = 0;
+-	erofs_cfg.c_version  = PACKAGE_VERSION "   " __DATE__ " " __TIME__;
++	erofs_cfg.c_version  = PACKAGE_VERSION;
+ }
+ 
+ void mkfs_dump_config(void)

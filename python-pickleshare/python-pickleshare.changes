@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:51:30 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Oct 11 18:48:37 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- update to version 0.7.5
+  * path.py is no longer used
+  * Fixed test issues
+
+-------------------------------------------------------------------
+Wed Jul 12 17:12:05 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Fix source URL
+- update to version 0.7.4:
+  * Accept any str-able object for the root path
+  * Convert test fixture tmpdir to string before creating
+    PickleShareDB
+  * Don't convert Py2 unicode path to str
+- update to version 0.7.3:
+  * Fix environment marker
+  * Include license and test files in sdists
+  * Fix for multiple processes creating a folder
+  * handle exception and keep Python 2 support
+  * Remove unused import
+- update to version 0.7.2:
+  * Fix environment marker
+  * Fix error when db location does not already exist
+  * Require pathlib2 on Python 3.3 as well
+- changes from version 0.7.0:
+  * Update metadata
+  * Fix environment marker
+  * Update .travis.yml
+  * Switch from path.py to pathlib
+  * Add MIT license
+  * Cleanup: Python 3 compatible example, remove .idea folder
+  * Update setup.py classifiers
+  * Enable 3.5 on travis
+  * specify path.py version dependency
+- update to version 0.6:
+  * Fix module import to work with the latest version
+  * remove pkg.info
+  * update main page URL
+  
+-------------------------------------------------------------------
+Wed Aug 12 14:07:31 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

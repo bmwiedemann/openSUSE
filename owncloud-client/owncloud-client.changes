@@ -1,0 +1,323 @@
+-------------------------------------------------------------------
+Mon May 20 12:36:11 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Explicitly require zlib to build owncloud-client.
+
+-------------------------------------------------------------------
+Wed Mar 20 19:58:37 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream release 2.5.4 with various bugfixes
+  Details at https://github.com/owncloud/client/releases/tag/v2.5.4 
+
+-------------------------------------------------------------------
+Thu Feb  7 20:44:44 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream release 2.5.3:
+ * Connectivity: Add a noUnauthedRequests branding option
+ * Credentials: Warn in log if keychain-write jobs fail (#6776)
+ * Database: Move drop-index to after pragmas are set (#6881)
+ * Download: Ignore Content-length for compressed HTTP2/SPDY replies (#6885)
+
+-------------------------------------------------------------------
+Tue Jan 29 21:28:47 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 2.5.2
+  Changelog available at https://owncloud.org/changelog/desktop-client/
+- Added no_theme_icons.patch to avoid icon mix in the app 
+
+-------------------------------------------------------------------
+Fri Nov  9 20:14:20 UTC 2018 - Klaas Freitag <opensuse@freisturz.de>
+
+- update to upstream version 2.5.1 
+  Changelog available at https://owncloud.org/changelog/desktop-client/ 
+
+-------------------------------------------------------------------
+Tue Sep 18 15:12:04 UTC 2018 - klaas.freitag@suse.com
+
+- Really removed the rpath.diff file. 
+
+-------------------------------------------------------------------
+Tue Sep 18 09:19:12 UTC 2018 - klaas.freitag@suse.com
+
+- update to upstream version 2.5.0
+  Changelog available at https://owncloud.org/changelog/desktop-client/
+  
+  * Removed patch rpath.diff as not longer required.
+  * Added some doc cleanup as the version installs too much.
+
+-------------------------------------------------------------------
+Tue Sep  4 05:27:18 UTC 2018 - klaas.freitag@suse.com
+
+- Fixed patch fix-systray-menu-pos.patch to avoid segfault as
+  described in boo#1106103. Should be fixed with this. 
+
+-------------------------------------------------------------------
+Wed Aug 15 09:45:40 UTC 2018 - klaas.freitag@suse.com
+
+- Update to upstream version 2.4.3
+
+  * OAuth2: Fix infinite loop when the refresh token is expired
+  * Nautilus: Guard against None state (#6643)
+
+-------------------------------------------------------------------
+Wed Jul 25 16:06:20 UTC 2018 - klaas.freitag@suse.com
+
+- Update to upstream version 2.4.2
+  * Coming with some bugfixes, Changelog:
+    https://owncloud.org/changelog/desktop-client/
+- Added patch fix-systray-menu-pos.patch to fix a problem with 
+  older Qt versions. Applies only to versions Leap 15 and older,
+  fixes https://github.com/owncloud/client/issues/5968
+ 
+-------------------------------------------------------------------
+Fri Mar 16 20:58:43 UTC 2018 - freitag@owncloud.com
+
+- Updated changelog for upstream release. 
+
+-------------------------------------------------------------------
+Tue Mar  6 11:03:15 UTC 2018 - klaas.freitag@suse.com
+
+- Update to upstream version 2.4.1 
+  * Enhanced Nautilus integration.
+  * Cleaner User Experience and overall improvements to 
+    notifications and the synchronization of files.
+  * Better implementation and integration of Client Filesystems.
+  * Improved Sharing dialogue
+  * and a lot more... 
+  Changelog: https://github.com/owncloud/client/releases 
+
+-------------------------------------------------------------------
+Wed Feb 28 10:58:38 UTC 2018 - klaas.freitag@suse.com
+
+- Add explicit BuildRequires on Qt5Sql to fix TW build. 
+
+-------------------------------------------------------------------
+Mon Jan  1 21:03:19 UTC 2018 - freitag@owncloud.com
+
+- Removed superflous patch force_qdbus_tray_workaround.patch 
+
+-------------------------------------------------------------------
+Mon Jan  1 19:50:51 UTC 2018 - freitag@owncloud.com
+
+- Bring back the doc macro to mark the documentation files.
+  Fix building by utilizing the exclude macro. 
+
+-------------------------------------------------------------------
+Fri Dec 29 11:41:41 UTC 2017 - freitag@owncloud.com
+
+- Fixed documentation installation by avoiding the %doc macro. 
+
+-------------------------------------------------------------------
+Thu Dec 28 21:15:16 UTC 2017 - freitag@owncloud.com
+
+- Added rpath.diff: Fix the rpath to the private libs of owncloud
+  Fixed documentation file list issue  
+
+-------------------------------------------------------------------
+Wed Dec 27 11:58:22 UTC 2017 - freitag@owncloud.com
+
+- Feedback from review:
+  * Use %{buildroot} instead of ${RPM_BUILD_ROOT}
+  * Leave license- and few other readme files with the main package
+
+-------------------------------------------------------------------
+Mon Dec 25 11:34:37 UTC 2017 - freitag@owncloud.com
+
+- Update to version 2.4.0 with lots of fixes and additions.
+  Detailed changelog:
+  https://raw.githubusercontent.com/owncloud/client/master/ChangeLog
+- Drop force_qdbus_tray_workaround.patch: Problem fixed upstream. 
+
+-------------------------------------------------------------------
+Sat Oct 21 20:34:57 UTC 2017 - klaas.freitag@suse.com
+
+- Do not install README.source file as requested in sr 
+
+-------------------------------------------------------------------
+Tue Sep 12 07:21:21 UTC 2017 - freitag@opensuse.org
+
+- Install README.source to doc. Make pack checker in Factory happy. 
+
+-------------------------------------------------------------------
+Fri Sep  8 21:33:53 UTC 2017 - freitag@opensuse.org
+
+- Reworked the source tarball coming from upstream and removed not
+  needed stuff as well as questionable licensed files.
+
+  See https://github.com/owncloud/client/issues/6005 for details
+  and README.source which was added and explains that.
+
+-------------------------------------------------------------------
+Wed Sep  6 10:02:11 UTC 2017 - freitag@suse.com
+
+- Added updstream patch force_qdbus_tray_workaround.patch to fix a 
+  problem with the Qt lib on Leap 42.2 only  
+
+-------------------------------------------------------------------
+Mon Sep  4 13:50:42 UTC 2017 - klaas.freitag@suse.com
+
+- Update to upstream version 2.3.3
+
+* Chunking NG: Don't use old chunking on new DAV endpoint (5855)
+* Selective Sync: Skip excluded folders when reading DB, don't let them show errors (5772)
+* Settings: Make window bigger so Qt version is always visible (5760)
+* Share links: Show warning that public link shares are public (5786)
+* Downloads: Re-trigger folder discovery on HTTP 404 (5799)
+* Notifications: Propagate "Dismiss" as DELETE to server (5922)
+* Overlay Icons: Fix potential hangs on Windows
+* SyncJournalDB: Don't use ._ as filename pattern if that does not work because of SMB storage settings (5844)
+* SyncJournalDB: Log reason for sqlite3 opening errors
+* Windows: Fix a memory leak in FileSystem::longWinPath
+* Switch Linux builds also to Qt 5.6.2 (5470)
+* Stopped maintaining Qt 4 support
+* Linux packaging fixes: install the owncloud-client-nemo, owncloud-client-nautilus, owncloud-client-caja, owncloud-client-dolphin package for sync-state icons and a share-with menu in your file manager.
+* Linux deprecation: Releases after 2.3.3 do not support Fedora 24 or lower, openSUSE Leap 42.1 or lower, Debian 7.0 or lower.
+* 2.4.0 deprecation: We will drop 32-bit Linux support and MacOS X 10.9 support or lower.
+*  Supported platforms are documented at Desktop System Requirements.
+
+-------------------------------------------------------------------
+Tue Jun 13 11:05:10 UTC 2017 - klaas.freitag@suse.com
+
+- Fix: Build the dolphin overlays also for Tumbleweed. 
+
+-------------------------------------------------------------------
+Wed May 10 15:17:37 UTC 2017 - klaas.freitag@suse.com
+
+- version 2.3.2 (2017-05-08)
+
+* Fix more crashes (thanks to everyone submitting to our crash reporter!)
+* Improve compatibility with server 10.0 (#5691, X-OC-Total-Size)
+* Share dialog: UI improvements, Bring to front on tray click
+* owncloudcmd: Align process return value with sync return value (#3936)
+* Fix disk free check on Windows when opening the local DB
+
+-------------------------------------------------------------------
+Wed May  3 11:28:41 UTC 2017 - klaas.freitag@suse.com
+
+- Use desktop database update script in postinstall and uninstall 
+
+-------------------------------------------------------------------
+Fri Apr 28 12:53:02 UTC 2017 - klaas.freitag@suse.com
+
+- update to version 2.3.2 rc1
+
+* Fix more crashes (thanks to everyone submitting to our crash reporter!)
+* Improve compatibility with server 10.0 (5691, X-OC-Total-Size)
+* Share dialog: UI improvements, Bring to front on tray click
+* owncloudcmd: Align process return value with sync return value (3936)
+
+-------------------------------------------------------------------
+Fri Apr 28 05:09:04 UTC 2017 - badshah400@gmail.com
+
+- Use full URL for source code.
+- Run post-install/uninstall scriptlets for %{name} to update the
+  hicolor icon theme cache, as it installs icons to that theme.
+  This fixes an issue where a generic icon instead of the app icon
+  showed up in the desktop menus after installation; necessitates
+  a BuildRequires on the hicolor-icon-theme, which provides the
+  appropriate macros.
+
+-------------------------------------------------------------------
+Thu Mar 30 11:59:14 UTC 2017 - klaas.freitag@suse.com
+
+- fix condition for kde dolphin plugin, do not build on 13.2 
+
+-------------------------------------------------------------------
+Thu Mar 30 09:14:02 UTC 2017 - freitag@opensuse.org
+
+version 2.3.1 (2017-03-2x)
+* Fix several crashes (thanks to everyone submitting to our crash reporter!)
+* Improve HTTP redirect handling (#5555)
+* Blacklist: Escalate repeated soft error to normal error (#5500)
+* NTFS: Do not attempt to upload two existing files with similar casing (#5544)
+* Fix URL for linking to application password generation for ownCloud 10.0 (#5605)
+
+-------------------------------------------------------------------
+Fri Mar  3 16:22:55 UTC 2017 - freitag@opensuse.org
+
+- version 2.3.0 (2017-03-03)
+  * Decreased memory usage during sync
+  * Overlay icons: Lower CPU usage
+  * Allow to not sync the server's external storages by default
+  * Switch Windows and OS X build to Qt 5.6.2
+  * Switch to new ownCloud server WebDAV endpoint
+  * Chunking NG: New file upload chunking algorithmn for ownCloud server 9.2
+  * Allow to sync a folder to multiple different servers (Filename change from .csync_journal.db to _sync_$HASH.db)
+  * Conflicts: Use the local mtime for the conflict file name (#5273)
+  * "Sync now" menu item
+  * SSL Client certificate support improved (Show UI, Store keys in keychain)
+  * Propagator: Upload more small files in parallel
+  * Sync Engine: Read data-fingerprint property to detect backups (#2325)
+  * GUI: Show link to ceate an app password/token for syncing
+  * Share dialog: Add 'Mail link' button
+  * Caja file manager plugin
+  * Make "backup detected" message to not trigger in wrong cases
+  * SyncEngine: Fix renaming of folder when file are changed (#5192)
+  * Fix reconnect bug if status.php intermittently returns wrong data (#5188)
+  * Improve sync scheduling (#5317)
+  * Overlay icons: Improvements in correctnes
+  * Tray menu: Only update on demand to fix Linux desktop integration glitches
+  * Progress: Better time/bandwidth estimations
+  * Network: Follow certain HTTP redirects (#2791)
+  * Network: Remove all cookies (including load balancers etc) when logging out
+  * Discovery thread: Low priority
+  * owncloudsync.log: Write during propagation
+  * Better error message for files with trailing spaces on Windows
+  * Excludes: Consider files in hidden folders excluded (#5163)
+  * Allow sync directory to be a symlinked directory
+  * Add manifest file on Windows to make the application UAC aware
+  * macOS: Improve monochrome tray icons
+  * Shibboleth bugfixes
+  * Fixes with regards to low disk space
+  * A ton of other bugfixes
+  * Refactorings
+  * Improved documentation
+  * Crash fixes
+
+-------------------------------------------------------------------
+Sat Dec  3 09:41:26 UTC 2016 - freitag@opensuse.org
+
+- Renamed inotify configuration file to not conflict with nc client 
+
+-------------------------------------------------------------------
+Fri Dec  2 21:34:05 UTC 2016 - freitag@opensuse.org
+
+- README file removed from package source dir. Not used. 
+
+-------------------------------------------------------------------
+Fri Dec  2 21:26:40 UTC 2016 - freitag@opensuse.org
+
+- Auto-formatted the spec to add a Copyright header
+
+-------------------------------------------------------------------
+Fri Dec  2 20:27:32 UTC 2016 - freitag@opensuse.org
+
+- Removed bogus stuff from changes file and use pkgconfig, following
+  suggestions in the pull request.  
+
+-------------------------------------------------------------------
+Thu Dec  1 16:59:40 UTC 2016 - freitag@opensuse.org
+
+- Build dolphin plugin only in newer SUSE distros 
+
+-------------------------------------------------------------------
+Wed Nov 30 11:45:40 UTC 2016 - freitag@opensuse.org
+
+- More specfile refinements and cleanups. 
+
+-------------------------------------------------------------------
+Fri Nov 18 09:36:36 UTC 2016 - freitag@opensuse.org
+
+- Added accidentially removed file again. 
+
+-------------------------------------------------------------------
+Fri Nov 18 09:28:46 UTC 2016 - freitag@opensuse.org
+
+- Remove left-over files 
+
+-------------------------------------------------------------------
+Fri Nov 18 09:27:03 UTC 2016 - freitag@opensuse.org
+
+- Stripped down to a simple openSUSE-only spec to use it to push the
+  client to Tumbleweed. 
+

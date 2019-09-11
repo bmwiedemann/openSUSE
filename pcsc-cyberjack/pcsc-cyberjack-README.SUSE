@@ -1,0 +1,10 @@
+Warning for users of Cyberjack utilities
+========================================
+
+Cyberjack utilities require exclusive access to the card reader. Ensure
+that other applications accessing to your card reader are down. You
+should especially check for pcscd and openct system services:
+
+Start "YaST -> System -> System Services (Runlevel)" and disable these
+services either temporarily or permanently (disabling access to the
+smart card reader for software using these services).

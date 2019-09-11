@@ -1,0 +1,11 @@
+--- server/templates.go	2017-07-25 21:52:51.504718922 +0100
++++ server/templates.go.new	2017-09-15 11:28:13.043220453 +0100
+@@ -90,7 +90,7 @@
+ 		c.issuer = "dex"
+ 	}
+ 	if c.dir == "" {
+-		c.dir = "./web"
++		c.dir = "/usr/share/caasp-dex/web"
+ 	}
+ 	if c.logoURL == "" {
+ 		c.logoURL = join(c.issuerURL, "theme/logo.png")

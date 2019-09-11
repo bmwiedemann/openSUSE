@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Sun Oct 19 01:29:22 UTC 2014 - crrodriguez@opensuse.org
+
+- run spec cleaner 
+- gtk2-devel is not required.
+- xorg-x11-devel use has been replaced by individual pkgconfig
+  buildrequires for current products.
+
+-------------------------------------------------------------------
+Thu Feb 23 11:28:41 UTC 2012 - coolo@suse.com
+
+- fix build on factory
+
+-------------------------------------------------------------------
+Sat Nov 19 16:00:06 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Aug 30 10:13:47 UTC 2011 - pgajdos@suse.com
+
+- build with --no-copy-dt-needed-entries
+  * no-copy-dt-needed-entries.patch
+
+-------------------------------------------------------------------
+Sun Aug 12 12:31:20 CEST 2007 - stbinner@suse.de
+
+- disable start-up notification under KDE
+- fix GenericName capitalization for after 10.3
+
+-------------------------------------------------------------------
+Mon Jan  8 19:51:40 CET 2007 - dkukawka@suse.de
+
+- Fixed b.n.c #222484: added GenericName 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:28 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 28 23:40:22 CEST 2005 - dmueller@suse.de
+
+- add norootforbuild 
+
+-------------------------------------------------------------------
+Sat May  7 20:14:27 CEST 2005 - dkukawka@suse.de
+
+- added desktopfile and icon for menu entry
+
+-------------------------------------------------------------------
+Wed Jan 19 16:32:21 CET 2005 - behlert@suse.de
+
+- added various files into doc-dir 
+
+-------------------------------------------------------------------
+Tue Jan 18 14:46:28 CET 2005 - behlert@suse.de
+
+- initial version 
+

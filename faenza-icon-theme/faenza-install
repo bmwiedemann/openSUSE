@@ -1,0 +1,174 @@
+#!/usr/bin/env python
+#
+# Copyright (c) 2011-2012 Nelson Marques <nmo.marques@gmail.com>
+# 
+# crap script to rebrand and install faenza icon theme; this is aimed to
+# be invoked from the .spec file during the install process.
+#
+
+
+import os, shutil, sys
+from fnmatch import fnmatch
+from optparse import OptionParser, OptionGroup
+
+
+VERSION       = '0.2'
+
+icons         = []
+base          = os.getcwd()
+variants      = ( 'Faenza-Ambiance', 'Faenza-Dark', 'Faenza-Darker',
+                'Faenza-Darkest', 'Faenza-Mint', 'Faenza-Radiance',
+                'Faenza')
+
+
+class Faenza():
+
+
+    '''
+         print header
+    '''
+    def header(self):
+        print '\n    faenza-install -- version %s \n' % VERSION
+        print '  This script performs minimum rebranding and installs the'
+        print '  faenza-icon-theme in INSTALL_DIR (sys.argv[1]). For help'
+        print '  run the following this script with "-h" or "--help".  \n'
+
+
+    '''
+         returns a list of matching targets
+    '''
+    def scan(self, target):
+        for variant in variants:
+            for root, dirs, files in os.walk(variant):
+                for f in files:
+                    if fnmatch(f, target + '.png') or fnmatch(f, target + '.svg'):
+                        icons.append(root + '/' + f)
+        return 0
+
+
+    '''
+         delete designated file
+    '''
+    def delete(self, target):
+        try:
+            if os.path.exists(target):
+                os.unlink(target)
+            else:
+                print '    - file not found: %s' % target
+        except Exception, errno:
+            print errno
+            sys.exit(1)
+        return 0
+
+
+
+    '''
+         install a file
+    '''
+    def rebrand(self, distribution):
+        self.scan('start-here')
+        self.scan('distributor-logo')
+        if not icons:
+            print '\n - NO icons found.. Exiting!\n'
+            sys.exit(1)
+        else:
+            for icon in icons:
+                dirname, myfile = os.path.split(icon)
+                filename, myext = os.path.splitext(myfile)
+                print ' - %s' % icon
+                try:
+                     self.delete(icon)
+                     print '     + delete file:         %s' % icon
+                except Exception, errno:
+                    print errno
+                    sys.exit(1)
+                os.chdir(dirname)
+                os.system('ln -s %s %s' % ( filename + '-' + dist + myext, myfile))
+                print '     + file rebranded to:   %s' % ( filename + '-' + distribution + myext )
+                os.chdir(base)
+        return 0
+
+               
+
+    '''
+         install Faenza themes on sys.argv[1]
+    '''
+    def install(self, target):
+        print ' - Installation \n'
+        for variant in variants:
+            fs_dir = os.path.join(target, variant)
+            if not os.path.isdir(fs_dir):
+                try:
+                    shutil.copytree(variant, fs_dir)
+                    print '     + file installed:      %s' % fs_dir
+                except Exception, err:
+                    print err
+                    return 1
+        return 0
+
+
+
+
+
+def main():
+
+    faenza  = OptionParser(
+    usage   = '%prog [OPTIONS] INSTALL_DIR',
+    epilog  = ''' A simple python script to install icon theme with branding ''')
+
+
+    f_group = OptionGroup(faenza, 'Distribution Options:               \n' +
+           '      - opensuse, fedora, debian, frugalware, linux-mint,  \n' +
+           '        archlinux, gnome, mandriva, slackware, archlinux,  \n' +
+           '        ubuntu')
+
+
+    faenza.add_option('-v', '--version', action='store_true', dest='version',
+           default=False, help='print version and exit to shell')
+    faenza.add_option('-i', '--install', action='store_true', dest='install',
+           default=False, help='install icon themes on INSTALL_DIR')
+    faenza.add_option('-r', '--rebrand', action='store_true', dest='rebrand',
+           default=True, help='rebrand "start-here" and "distributor-logo" (default)')
+    faenza.add_option('--dist', action='store', dest='distribution',
+           default='opensuse', help='set default distribution for branding')
+    
+
+    faenza.add_option_group(f_group)
+    (option, args) = faenza.parse_args()
+
+
+    if len(args) != 1:
+        faenza.print_help()
+        return 1
+
+
+    if option.version:
+        print '\n    faenza-install -- version %s \n' % VERSION
+        print '  This script performs minimum rebranding and installs the'
+        print '  faenza-icon-theme in INSTALL_DIR (sys.argv[1]). For help'
+        print '  run the following this script with "-h" or "--help".  \n'
+        sys.exit(0)
+
+    global dist
+    dist = str(option.distribution)
+    run  = Faenza()
+    fs   = args[0]
+    run.header()
+
+
+    if option.rebrand:
+        run.rebrand(dist)
+
+
+    if option.install:
+        if not os.path.isdir(fs):
+            os.makedirs(fs)
+        run.install(fs)
+        return 0
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass

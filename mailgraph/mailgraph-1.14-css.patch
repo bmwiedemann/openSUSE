@@ -1,0 +1,13 @@
+Index: mailgraph-1.14/mailgraph.css
+===================================================================
+--- mailgraph-1.14.orig/mailgraph.css
++++ mailgraph-1.14/mailgraph.css
+@@ -12,7 +12,7 @@ hr    { height: 1px;
+ 	border-top: 1px solid #aaa }
+ table { border: 0px; width: 100% }
+ img   { border: 0 }
+-a     { text-decoration: none; color: #00e }
++a     { text-decoration: none; color: #00e; font-family: sans-serif; font-size: 9pt; }
+ a:hover  { text-decoration: underline; }
+ #jump    { margin: 0 0 10px 4px }
+ #jump li { list-style: none; display: inline;

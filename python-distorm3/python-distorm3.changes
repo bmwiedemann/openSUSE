@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Fri Mar  8 13:26:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.4.1:
+  * various small fixes around
+- Merged patches:
+  * 0001-don-t-stutter-static-on-BigEndian.patch
+  * reproducible.patch
+
+-------------------------------------------------------------------
+Fri Nov  9 11:37:56 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Updated 0001-don-t-stutter-static-on-BigEndian.patch from personal
+  communication with the upstream developer to make test suite pass
+  completely on Big Endian machines.
+
+-------------------------------------------------------------------
+Thu Jul 26 10:38:47 UTC 2018 - jengelh@inai.de
+
+- Remove rhetorics from descriptions.
+- Avoid bashisms in %install.
+
+-------------------------------------------------------------------
+Mon Jul 23 10:25:20 UTC 2018 - tchvatal@suse.com
+
+- Fix i586 build
+
+-------------------------------------------------------------------
+Thu Jun 21 12:52:53 UTC 2018 - mcepl@suse.com
+
+- License is BSD-3-Clause, not GPL
+
+-------------------------------------------------------------------
+Thu Jun 21 12:40:12 UTC 2018 - mcepl@suse.com
+
+- Clean SPEC file
+
+-------------------------------------------------------------------
+Thu Aug 24 13:36:13 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Mon Jul 24 06:14:18 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort file list to fix build-compare (boo#1041090)
+
+-------------------------------------------------------------------
+Mon Apr 22 10:20:20 UTC 2013 - speilicke@suse.com
+
+- Drop custom sitelib/arch hacks, providing --install-lib also helps distorm3
+  to find the correct installation location. It's still a workaround though.
+- Drop unused pkg-config dependency
+
+-------------------------------------------------------------------
+Fri Jan 11 17:15:31 UTC 2013 - p.drouand@gmail.com
+
+- Update to 3.3 version:
+  * The structure of a decoded instruction now contains new fields 
+    that let one know how the instruction affected the CPU flags (modified,
+    tested, undefined). For more info see the last three fields of the
+    DInst structure inside DecomposeInterface.
+  * Compacted the DB of instructions much more, with another level of
+    shared data among similar instructions...
+  * The Python bindings now support the control flow features that 
+    diStorm3 itself support, thanks to Vext01. 
+- Remove duplicate files with fdupes
+
+-------------------------------------------------------------------
+Fri Jan 11 17:14:12 UTC 2013 - p.drouand@gmail.com
+
+- Update to 3.2 version:
+  * Fixed many instructions, either operand accuracy problems or typos
+    in mnemonics. 
+  * Fixed a few bugs introduced in July 2011. 
+  * Added new instructions such as: INVPCID, TZCNT, RDxSBASE, WRxSBASE,
+    CVTPS2PH, CVTPH2PS and more. Added a new compiler directive DISTORM_LIGHT
+    to compile only distorm_decompose (no text formatting) to make diStorm 
+    smaller in size (should save around 20kb), thanks to Marius Negrutiu of BullGuard. 
+  * Fixed the Java wrapper to support latest version. 
+
+-------------------------------------------------------------------
+Thu Jan  3 19:03:02 UTC 2013 - toddrme2178@gmail.com
+
+- Fix builds for SLES 11
+
+-------------------------------------------------------------------
+Fri Jul 27 08:40:20 UTC 2012 - dvaleev@suse.com
+
+- don't stutter static on BigEndian 
+
+-------------------------------------------------------------------
+Mon Feb 27 08:34:56 UTC 2012 - saschpe@suse.de
+
+- Package copying
+- Platform-dependent Python packages belong into %python_sitearch,
+  only noarch packages may go nito %python_sitelib. Seems to be an
+  upstream issue
+
+-------------------------------------------------------------------
+Mon Feb  6 23:20:54 UTC 2012 - Greg.Freemyer@gmail.com
+
+- initial package
+
+ distorm is a powerful disassembler library for x86/AMD64.  
+ It is used by volatility for memory (RAM) forensics.
+
+

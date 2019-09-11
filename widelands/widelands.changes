@@ -1,0 +1,122 @@
+-------------------------------------------------------------------
+Wed Jul 10 16:50:24 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to build 20
+  Changelog see https://www.widelands.org/changelog/
+  Drop patch widelands-build19-fix-build-icu.patch (included upstream)
+  Add build20-libGL.patch to fix build order
+
+-------------------------------------------------------------------
+Tue Oct  9 08:25:07 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM erros while linking
+
+-------------------------------------------------------------------
+Mon Jun 18 05:46:38 UTC 2018 - antoine.belvire@opensuse.org
+
+- Fix build on Tumbleweed (boo#1097928, lp#1760581):
+  * Add widelands-build19-fix-build-icu.patch (picked from
+    upstream).
+- Modernize spec file.
+
+-------------------------------------------------------------------
+Wed Oct 11 20:43:40 UTC 2017 - okurz@suse.com
+
+- Use specific boost BuildRequires (bsc#1062802)
+
+-------------------------------------------------------------------
+Sat Jul 15 08:49:27 UTC 2017 - mailaender@opensuse.org
+
+- Install man page
+- Install appdata file (lp#1271595)
+- Use upstream supplied .desktop entry
+- Add post macros for icons and desktop files
+- Don't own standard icon directories
+
+-------------------------------------------------------------------
+Sat Jul  8 20:35:26 UTC 2017 - jengelh@inai.de
+
+- Remove irrelevant parts from description,
+  and add more description about the particule RTS style.
+
+-------------------------------------------------------------------
+Wed Jul  5 19:17:42 UTC 2017 - okurz@suse.com
+
+- Fix fatal error on startup referencing wrong data directory
+
+-------------------------------------------------------------------
+Thu Jun 22 07:43:39 UTC 2017 - okurz@suse.com
+
+- Update to build 19
+  See https://wl.widelands.org/changelog/ for details
+- Use ninja for faster build
+- Split out debug package
+
+-------------------------------------------------------------------
+Thu Jun 22 07:06:49 UTC 2017 - okurz@suse.com
+
+- Update package description with current description on webpage, more user centric
+
+-------------------------------------------------------------------
+Tue Feb 25 17:02:06 UTC 2014 - adrian@suse.de
+
+- update to build 18
+
+-------------------------------------------------------------------
+Sat Nov 24 17:59:02 UTC 2012 - joop.boonen@opensuse.org
+
+- Quick n lazy lua fix
+- Added a gcc47 patch
+
+-------------------------------------------------------------------
+Sat May  5 19:26:16 UTC 2012 - opensuse@dstoecker.de
+
+- update to build 17
+
+-------------------------------------------------------------------
+Fri Nov 25 22:06:22 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Simplify call to perl-rename
+
+-------------------------------------------------------------------
+Fri Nov 25 08:07:31 UTC 2011 - jreidinger@suse.com
+
+- fix locale detection 
+
+-------------------------------------------------------------------
+Sat May  7 22:18:39 UTC 2011 - andrea@opensuse.org
+
+- update to build 16 
+- fixed rpm group
+
+-------------------------------------------------------------------
+Wed Nov 17 18:11:10 UTC 2010 - opensuse@dstoecker.de
+
+- update to daily source version 2010-11-17 (bzr revision 5723)
+
+-------------------------------------------------------------------
+Wed Apr 28 15:24:35 CEST 2010 - prusnak@suse.cz
+
+- updated to build 15
+
+-------------------------------------------------------------------
+Sat Feb 20 22:32:05 UTC 2010 - prusnak@suse.cz
+
+- updated to build 14
+
+-------------------------------------------------------------------
+Fri May  1 22:04:14 CEST 2009 - dominique.leuenberger@tmf-group.com
+
+- fixed spec file to actually build release 13
+
+-------------------------------------------------------------------
+Thu Jun  5 23:32:19 CEST 2008 - claes.backstrom@fsfe.org
+
+- New upstream build-12
+
+-------------------------------------------------------------------
+Fri Apr 11 23:02:49 CEST 2008 - claes.backstrom@fsfe.org
+
+- Initial package (build11-1)
+

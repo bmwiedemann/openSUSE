@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 Ryan Lerch <rlerch@redhat.com> -->
+<!--
+EmailAddress: neckelmann@gmail.com
+SentUpstream: 2014-09-25
+-->
+<application>
+  <id type="desktop">xmoto.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <summary>2D motocross platform game</summary>
+  <description>
+    <p>
+      xmoto is a side-scrolling 2D motocross platform game where the objective
+      is to collect all the floating items in the level and proceed to the
+      checkered finishing ball.
+      The motocross bike that the player rides in
+      xmoto has a lot of bounce, and the if the player hits their head on any
+      solid object the level has to be restarted.
+    </p>
+    <p>
+      There are hundreds of levels available in xmoto, both included in the
+      initial install, and downloadable from the internet.
+      There is also the
+      ability to challenge fastest times with other players from around the world.
+      and saved ghost data to visually see the runs of other players through the
+      levels.
+    </p>
+  </description>
+  <url type="homepage">http://xmoto.sourceforge.net/</url>
+  <screenshots>
+    <screenshot type="default">http://wiki.xmoto.tuxfamily.org/images/7/7d/Screenshot0022.png</screenshot>
+    <screenshot>http://wiki.xmoto.tuxfamily.org/images/6/65/Xmoto01.png</screenshot>
+    <screenshot>http://wiki.xmoto.tuxfamily.org/images/0/04/Screenshot0005.png</screenshot>
+  </screenshots>
+</application>

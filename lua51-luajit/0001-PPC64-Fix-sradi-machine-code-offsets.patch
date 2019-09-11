@@ -1,0 +1,39 @@
+From d2ba9ab5700fdf86853fd6f6de71d3adb216b634 Mon Sep 17 00:00:00 2001
+From: Gustavo Serra Scalet <gsscalet@gmail.com>
+Date: Tue, 2 Jun 2015 14:36:20 -0300
+Subject: [PATCH 01/15] PPC64: Fix sradi machine code offsets
+
+---
+ dynasm/dasm_ppc.lua | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/dynasm/dasm_ppc.lua b/dynasm/dasm_ppc.lua
+index f73974dd7f9e..b294d1063eed 100644
+--- a/dynasm/dasm_ppc.lua
++++ b/dynasm/dasm_ppc.lua
+@@ -764,7 +764,7 @@ map_op = {
+   lfddx_3 =	"7c000646FRR",
+   stvepx_3 =	"7c00064eVRR",
+   srawi_3 =	"7c000670RR~A.",
+-  sradi_3 =	"7c000674RR~H.",
++  sradi_3 =	"7c000674RR~f.",
+   eieio_0 =	"7c0006ac",
+   lfiwax_3 =	"7c0006aeFR0R",
+   divdeuo_3 =	"7c000712RRR.",
+@@ -1718,7 +1718,12 @@ op_template = function(params, template, nparams)
+     elseif p == "G" then
+       op = op + parse_imm(params[n], 8, 12, 0, false); n = n + 1
+     elseif p == "H" then
+-      op = op + parse_shiftmask(params[n], true); n = n + 1
++      v = parse_imm(params[n], 6, 0, 0, false);
++      op = op + shl(band(v,31), 11)+shl(shr(v,5), 1);
++      n = n + 1;
++    elseif p == "f" then
++      v = tonumber(params[n]);
++      op = op + shl(band(v,31), 11)+shl(shr(v,5), 1);
+     elseif p == "M" then
+       op = op + parse_shiftmask(params[n], false); n = n + 1
+     elseif p == "J" or p == "K" then
+-- 
+2.20.1
+

@@ -1,0 +1,638 @@
+-------------------------------------------------------------------
+Thu Mar 14 10:43:39 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 5.0.7.2
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.7.2 (March 11, 2019) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
+Sat Dec  8 16:12:42 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 5.0.7.1
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.7.1 (November 27, 2018) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
+Fri Mar 30 04:29:07 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 5.0.7
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.7 (March 29, 2018) ##
+  
+  *   Remove deprecation on `ActionController::Parameters#to_hash` when the instance is
+      permitted.
+  
+      *Edouard Chin*
+
+-------------------------------------------------------------------
+Mon Sep 11 12:30:37 UTC 2017 - coolo@suse.com
+
+- updated to version 5.0.6
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.6 (September 07, 2017) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 5.0.6.rc1 (August 24, 2017) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
+Thu Aug  3 18:58:50 UTC 2017 - coolo@suse.com
+
+- updated to version 5.0.5
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.5 (July 31, 2017) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 5.0.5.rc2 (July 25, 2017) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 5.0.5.rc1 (July 19, 2017) ##
+  
+  *   Fallback `ActionController::Parameters#to_s` to `Hash#to_s`.
+  
+      *Kir Shatrov*
+
+-------------------------------------------------------------------
+Tue Jun 20 06:42:28 UTC 2017 - coolo@suse.com
+
+- updated to version 5.0.4
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.4 (June 19, 2017) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 5.0.3 (May 12, 2017) ##
+
+-------------------------------------------------------------------
+Tue May 23 09:35:00 UTC 2017 - coolo@suse.com
+
+- updated to version 5.0.3
+ see installed CHANGELOG.md
+
+  *   Raise exception when calling `to_h` in an unfiltered Parameters.
+  
+      This method will raise on unfiltered Parameters if
+      `config.action_controller.raise_on_unfiltered_parameters` is true.
+  
+      Before we returned either an empty hash or only the always permitted parameters
+      (`:controller` and `:action` by default).
+  
+      The previous behavior was dangerous because in order to get the attributes users
+      usually fallback to use `to_unsafe_h` that could potentially introduce security issues.
+  
+      *Rafael Mendonça França*
+  
+  *   Add `ActionController::Parameters#to_hash` to implicit conversion.
+  
+      Now methods that implicit convert objects to a hash will be able to work without
+      requiring the users to change their implementation.
+  
+      This method will return a `Hash` instead of a `ActiveSupport::HashWithIndefirentAccess`
+      to mimic the same implementation of `ActiveSupport::HashWithIndefirentAccess#to_hash`.
+  
+      This method will raise on unfiltered Parameters if
+      `config.action_controller.raise_on_unfiltered_parameters` is true.
+  
+      *Rafael Mendonça França*
+  
+  *   Undeprecate `ActionController::Parameters#to_query` and `#to_param`.
+  
+      Previously it was raising a deprecation because it may be unsafe to use those methods
+      in an unfiltered parameter. Now we delegate to `#to_h` that already raise an error when
+      the Parameters instance is not permitted.
+  
+      This also fix a bug when using `#to_query` in a hash that contains a
+      `ActionController::Parameters` instance and was returning the name of the class in the
+      string.
+  
+      *Rafael Mendonça França*
+  
+  *   Use more specific check for :format in route path
+  
+      The current check for whether to add an optional format to the path is very lax
+      and will match things like `:format_id` where there are nested resources, e.g:
+  
+      ``` ruby
+      resources :formats do
+        resources :items
+      end
+      ```
+  
+      Fix this by using a more restrictive regex pattern that looks for the patterns
+      `(.:format)`, `.:format` or `/` at the end of the path. Note that we need to
+      allow for multiple closing parenthesis since the route may be of this form:
+  
+      ``` ruby
+      get "/books(/:action(.:format))", controller: "books"
+      ```
+  
+      This probably isn't what's intended since it means that the default index action
+      route doesn't support a format but we have a test for it so we need to allow it.
+  
+      Fixes #28517.
+  
+      *Andrew White*
+  
+  *   Don't include default headers in `ActionController::Metal` responses
+  
+      The commit e16afe6 introduced an unintentional change of behavior where the default
+      headers were included in responses from `ActionController::Metai` based controllers.
+      This is now reverted to the previous behavior of having no default headers.
+  
+      Fixes #25820.
+  
+      *Jon Moss*
+  
+  *   Fix malformed URLS when using `ApplicationController.renderer`
+  
+      The Rack environment variable `rack.url_scheme` was not being set so `scheme` was
+      returning `nil`. This caused URLs to be malformed with the default settings.
+      Fix this by setting `rack.url_scheme` when the environment is normalized.
+  
+      Fixes #28151.
+  
+      *George Vrettos*
+  
+  *   Commit flash changes when using a redirect route.
+  
+      Fixes #27992.
+  
+      *Andrew White*
+
+-------------------------------------------------------------------
+Thu Mar  2 05:29:59 UTC 2017 - coolo@suse.com
+
+- updated to version 5.0.2
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.2 (March 01, 2017) ##
+  
+  *   Make `with_routing` test helper work when testing controllers inheriting from `ActionController::API`.
+  
+      *Julia López*
+
+-------------------------------------------------------------------
+Wed Dec 21 05:29:08 UTC 2016 - coolo@suse.com
+
+- updated to version 5.0.1
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.1 (December 21, 2016) ##
+  
+  *   Restored correct `charset` behavior on `send_data` and `send_file`: while
+      they should pass along any supplied value, they should not add a default.
+  
+      Fixes #27344.
+  
+      *Matthew Draper*
+  
+  
+  ## Rails 5.0.1.rc2 (December 10, 2016) ##
+  
+  *   Move `cookies`, `flash`, and `session` methods back to
+      `ActionDispatch::Integration::Session`.
+  
+      *Matthew Draper*
+  
+  *   Do not reset in `ActionDispatch::IntegrationTest#open_session`; doing so
+      is incompatible with existing (unintended) API usage.
+  
+      *Sean Griffin*
+  
+  
+  ## Rails 5.0.1.rc1 (December 01, 2016) ##
+  
+  *   Fixed error caused by `force_ssl_redirect` when `session_store` is
+      enabled.
+  
+      Fixes #19679
+  
+      *Taishi Kasuga*
+  
+  *   Use accept header in integration tests with `as: :json`
+  
+      Instead of appending the `format` to the request path. Rails will figure
+      out the format from the header instead.
+  
+      This allows devs to use `:as` on routes that don't have a format.
+  
+      Fixes #27144.
+  
+      *Kasper Timm Hansen*
+  
+  *   Fixed integration test requests appending and changing request paths.
+  
+          #Before
+          post "/anything", params: params, headers: headers, as: :json
+  
+      "/anything" would be converted to "/anything.json" based on format.
+      The path is now maintained and the format is respected based on `:as`
+      option.
+  
+      Fixes #27144.
+  
+  *   Fixes incorrect output from rails routes when using singular resources.
+  
+      Fixes #26606.
+  
+      *Erick Reyna*
+  
+  *   Fixes multiple calls to `logger.fatal` instead of a single call,
+      for every line in an exception backtrace, when printing trace
+      from `DebugExceptions` middleware.
+  
+      Fixes #26134.
+  
+      *Vipul A M*
+  
+  *   Add `ActionController::Parameters#merge!`, which behaves the same as `Hash#merge!`.
+  
+      *Yuji Yaginuma*
+  
+  *   Added `ActionController::Parameters#deep_dup` which actually creates
+      a params copy, instead of refereing to old references in params.
+  
+      Fixes #26566.
+  
+      *Pavel Evstigneev*, *Rafael Mendonça França*
+  
+  *   Make `fixture_file_upload` work in integration tests.
+  
+      *Yuji Yaginuma*
+  
+  *   Add `to_param` to `ActionController::Parameters` deprecations.
+  
+      In the future `ActionController::Parameters` are discouraged from being used
+      in URLs without explicit whitelisting. Go through `to_h` to use `to_param`.
+  
+      *Kir Shatrov*
+  
+  *   Fix nested multiple roots
+  
+      The PR #20940 enabled the use of multiple roots with different constraints
+      at the top level but unfortunately didn't work when those roots were inside
+      a namespace and also broke the use of root inside a namespace after a top
+      level root was defined because the check for the existence of the named route
+      used the global :root name and not the namespaced name.
+  
+      This is fixed by using the name_for_action method to expand the :root name to
+      the full namespaced name. We can pass nil for the second argument as we're not
+      dealing with resource definitions so don't need to handle the cases for edit
+      and new routes.
+  
+      Fixes #26148.
+  
+      *Ryo Hashimoto*, *Andrew White*
+  
+  *   SSL: Changes redirect behavior for all non-GET and non-HEAD requests
+      (like POST/PUT/PATCH etc) to `http://` resources to redirect to `https://`
+      with a [307 status code](http://tools.ietf.org/html/rfc7231#section-6.4.7) instead of [301 status code](http://tools.ietf.org/html/rfc7231#section-6.4.2).
+  
+      307 status code instructs the HTTP clients to preserve the original
+      request method while redirecting. It has been part of HTTP RFC since
+      1999 and is implemented/recognized by most (if not all) user agents.
+  
+          # Before
+          POST http://example.com/articles (i.e. ArticlesContoller#create)
+          redirects to
+          GET https://example.com/articles (i.e. ArticlesContoller#index)
+  
+          # After
+          POST http://example.com/articles (i.e. ArticlesContoller#create)
+          redirects to
+          POST https://example.com/articles (i.e. ArticlesContoller#create)
+  
+      *Chirag Singhal*
+  
+  *   Add `:as` option to `ActionController:TestCase#process` and related methods.
+  
+      Specifying `as: mime_type` allows the `CONTENT_TYPE` header to be specified
+      in controller tests without manually doing this through `@request.headers['CONTENT_TYPE']`.
+  
+      *Everest Stefan Munro-Zeisberger*
+  
+  *   Prevent autoload from deadlocking while ActionController::Live is streaming.
+  
+      *Alex Chinn*
+  
+  *   Don't override the `Accept` header in integration tests when called with `xhr: true`.
+  
+      Fixes #25859.
+  
+      *David Chen*
+  
+  *   Reset a new session directly after its creation in `ActionDispatch::IntegrationTest#open_session`.
+  
+      Fixes #22742.
+  
+      *Tawan Sierek*
+  
+  *   Fix 'defaults' option for root route.
+  
+      A regression from some refactoring for the 5.0 release, this change
+      fixes the use of 'defaults' (default parameters) in the 'root' routing method.
+  
+      *Chris Arcand*
+  
+  *   Check `request.path_parameters` encoding at the point they're set.
+  
+      Check for any non-UTF8 characters in path parameters at the point they're
+      set in `env`. Previously they were checked for when used to get a controller
+      class, but this meant routes that went directly to a Rack app, or skipped
+      controller instantiation for some other reason, had to defend against
+      non-UTF8 characters themselves.
+  
+      *Grey Baker*
+  
+  *   Don't raise ActionController::UnknownHttpMethod from ActionDispatch::Static
+  
+      Pass `Rack::Request` objects to `ActionDispatch::FileHandler` to avoid it
+      raising `ActionController::UnknownHttpMethod`. If an unknown method is
+      passed, it should exception higher in the stack instead, once we've had a
+      chance to define exception handling behaviour.
+  
+      *Grey Baker*
+  
+  *   Handle `Rack::QueryParser` errors in `ActionDispatch::ExceptionWrapper`
+  
+      Updated `ActionDispatch::ExceptionWrapper` to handle the Rack 2.0 namespace
+      for `ParameterTypeError` and `InvalidParameterError` errors.
+  
+      *Grey Baker*
+  
+  *   Deprecated omitting the route path.
+      Specify the path with a String or a Symbol instead.
+  
+          # Before
+          get action: :show, as: :show
+          # After
+          get "", action: :show, as: :show
+  
+      *Volmer*
+  
+  *   Added new `ActionDispatch::DebugLocks` middleware that can be used
+      to diagnose deadlocks in the autoload interlock.
+      To use it, insert it near the top of the middleware stack, using
+      `config/application.rb`:
+  
+          config.middleware.insert_before Rack::Sendfile, ActionDispatch::DebugLocks
+  
+      After adding, visiting `/rails/locks` will show a summary of all
+      threads currently known to the interlock.
+  
+      *Matthew Draper*
+  
+  *   Fix request encoding in Integration tests when string literals are
+      frozen using `--enable-frozen-string-literal` or `# frozen_string_literal: true`.
+  
+      *Volmer*
+  
+  *   Since long keys are truncated when passed to ciphers, Ruby 2.4
+      doesn't accept keys greater than their max length.
+      Fixed default key length on cipher for `ActiveSupport::MessageEncryptor`,
+      which was causing errors on Ruby 2.4.
+  
+      *Vipul A M*
+  
+  *   Fixed adding implicitly rendered template digests to ETags.
+      Properly ignore implicit template cache option to ETag, if `template: false`
+      is passed when rendering.
+  
+      *Javan Makhmali*
+
+-------------------------------------------------------------------
+Fri Aug 12 04:30:28 UTC 2016 - coolo@suse.com
+
+- updated to version 5.0.0.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Jul  4 09:08:07 UTC 2016 - coolo@suse.com
+
+- updated to rails 5.0 - see http://weblog.rubyonrails.org/2016/6/30/Rails-5-0-final/
+
+-------------------------------------------------------------------
+Tue Mar  8 05:29:36 UTC 2016 - coolo@suse.com
+
+- updated to version 4.2.6
+ see installed CHANGELOG.md
+
+  ## Rails 4.2.6 (March 07, 2016) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
+Tue Mar  1 05:30:50 UTC 2016 - coolo@suse.com
+
+- updated to version 4.2.5.2
+ see installed CHANGELOG.md
+
+  ## Rails 4.2.5.2 (February 26, 2016) ##
+  
+  *   Do not allow render with unpermitted parameter.
+  
+      Fixes CVE-2016-2098.
+  
+      *Arthur Neves*
+  
+  
+  ## Rails 4.2.5.1 (January 25, 2015) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
+Tue Jan 26 05:29:36 UTC 2016 - coolo@suse.com
+
+- updated to version 4.2.5.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Nov 13 05:29:06 UTC 2015 - coolo@suse.com
+
+- updated to version 4.2.5
+ see installed CHANGELOG.md
+
+  ## Rails 4.2.5 (November 12, 2015) ##
+  
+  *   `ActionController::TestCase` can teardown gracefully if an error is raised
+      early in the `setup` chain.
+  
+      *Yves Senn*
+  
+  *   Parse RSS/ATOM responses as XML, not HTML.
+  
+      *Alexander Kaupanin*
+  
+  *   Fix regression in mounted engine named routes generation for app deployed to
+      a subdirectory. `relative_url_root` was prepended to the path twice (e.g.
+      "/subdir/subdir/engine_path" instead of "/subdir/engine_path")
+  
+      Fixes #20920. Fixes #21459.
+  
+      *Matthew Erhard*
+  
+  *   `url_for` does not modify its arguments when generating polymorphic URLs.
+  
+      *Bernerd Schaefer*
+  
+  *   Update `ActionController::TestSession#fetch` to behave more like
+      `ActionDispatch::Request::Session#fetch` when using non-string keys.
+  
+      *Jeremy Friesen*
+
+-------------------------------------------------------------------
+Tue Aug 25 04:29:18 UTC 2015 - coolo@suse.com
+
+- updated to version 4.2.4
+ see installed CHANGELOG.md
+
+  ## Rails 4.2.4 (August 24, 2015) ##
+  
+  *   ActionController::TestSession now accepts a default value as well as
+      a block for generating a default value based off the key provided.
+  
+      This fixes calls to session#fetch in ApplicationController instances that
+      take more two arguments or a block from raising `ArgumentError: wrong
+      number of arguments (2 for 1)` when performing controller tests.
+  
+      *Matthew Gerrior*
+  
+  *   Fix to keep original header instance in `ActionDispatch::SSL`
+  
+      `ActionDispatch::SSL` changes headers to `Hash`.
+      So some headers will be broken if there are some middlewares
+      on `ActionDispatch::SSL` and if it uses `Rack::Utils::HeaderHash`.
+  
+      *Fumiaki Matsushima*
+
+-------------------------------------------------------------------
+Fri Jun 26 04:29:34 UTC 2015 - coolo@suse.com
+
+- updated to version 4.2.3
+ see installed CHANGELOG.md
+
+  ## Rails 4.2.3 (June 25, 2015) ##
+  
+  *   Fix rake routes not showing the right format when
+      nesting multiple routes.
+  
+      See #18373.
+  
+      *Ravil Bayramgalin*
+  
+  *   Fix regression where a gzip file response would have a Content-type,
+      even when it was a 304 status code.
+  
+      See #19271.
+  
+      *Kohei Suzuki*
+  
+  *   Fix handling of empty X_FORWARDED_HOST header in raw_host_with_port
+  
+      Previously, an empty X_FORWARDED_HOST header would cause
+      Actiondispatch::Http:URL.raw_host_with_port to return nil, causing
+      Actiondispatch::Http:URL.host to raise a NoMethodError.
+  
+      *Adam Forsyth*
+  
+  *   Fallback to `ENV['RAILS_RELATIVE_URL_ROOT']` in `url_for`.
+  
+      Fixed an issue where the `RAILS_RELATIVE_URL_ROOT` environment variable is not
+      prepended to the path when `url_for` is called. If `SCRIPT_NAME` (used by Rack)
+      is set, it takes precedence.
+  
+      Fixes #5122.
+  
+      *Yasyf Mohamedali*
+  
+  *   Fix regression in functional tests. Responses should have default headers
+      assigned.
+  
+      See #18423.
+  
+      *Jeremy Kemper*, *Yves Senn*
+
+-------------------------------------------------------------------
+Wed Jun 17 04:30:01 UTC 2015 - coolo@suse.com
+
+- updated to version 4.2.2
+ see installed CHANGELOG.md
+
+  ## Rails 4.2.2 (June 16, 2015) ##
+  
+  * No Changes *
+
+-------------------------------------------------------------------
+Sun Mar 22 09:07:28 UTC 2015 - coolo@suse.com
+
+- updated to version 4.2.1, see CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Jan 28 12:29:23 UTC 2015 - adrian@suse.de
+
+- update to 4.2.0
+
+-------------------------------------------------------------------
+Mon Jan 19 21:09:53 UTC 2015 - dmueller@suse.com
+
+-  update to 4.1.9:
+   * Fixed handling of positional url helper arguments when `format: false`.
+   * Restore handling of a bare `Authorization` header, without `token=`
+     prefix.
+   * Fix regression where path was getting overwritten when route anchor was false, and X-Cascade pass
+   * Fix a bug where malformed query strings lead to 500.
+   * Fix arbitrary file existence disclosure in Action Pack (CVE-2014-7829)
+   * Fix arbitrary file existence disclosure in Action Pack (CVE-2014-7818)
+
+-------------------------------------------------------------------
+Mon Nov 10 14:00:03 UTC 2014 - tboerger@suse.com
+
+- To get rails 4 running on SLE 11 i have switched the
+  rb_build_versions definition to rub21 as it is activated within
+  devel:languages:ruby. That way we can get running rails 4 on
+  SLE 11 too.
+
+-------------------------------------------------------------------
+Sun Oct 12 16:20:05 UTC 2014 - coolo@suse.com
+
+- updated to version 4.1.6
+ *   Prepend a JS comment to JSONP callbacks. Addresses CVE-2014-4671
+     ("Rosetta Flash")
+ *   Because URI paths may contain non US-ASCII characters we need to force
+     the encoding of any unescaped URIs to UTF-8 if they are US-ASCII.
+     This essentially replicates the functionality of the monkey patch to
+     URI.parser.unescape in active_support/core_ext/uri.rb.
+     Fixes #16104.
+ *   Generate shallow paths for all children of shallow resources.
+     Fixes #15783.
+ *   JSONP responses are now rendered with the `text/javascript` content type
+     when rendering through a `respond_to` block.
+     Fixes #15081.
+ *   Fix env['PATH_INFO'] missing leading slash when a rack app mounted at '/'.
+     Fixes #15511.
+ *   ActionController::Parameters#require now accepts `false` values.
+     Fixes #15685.
+
+-------------------------------------------------------------------
+Wed Jul 23 13:26:43 UTC 2014 - mrueckert@suse.com
+
+- - initial package
+

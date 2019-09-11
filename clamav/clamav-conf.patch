@@ -1,0 +1,208 @@
+--- etc/clamav-milter.conf.sample.orig
++++ etc/clamav-milter.conf.sample
+@@ -2,10 +2,6 @@
+ ## Example config file for clamav-milter
+ ##
+ 
+-# Comment or remove the line below.
+-Example
+-
+-
+ ##
+ ## Main options
+ ##
+@@ -17,8 +13,7 @@ Example
+ # inet6:port@[hostname|ip-address] - to specify an ipv6 socket
+ #
+ # Default: no default
+-#MilterSocket /tmp/clamav-milter.socket
+-#MilterSocket inet:7357
++MilterSocket /var/run/clamav/clamav-milter-socket
+ 
+ # Define the group ownership for the (unix) milter socket.
+ # Default: disabled (the primary group of the user running clamd)
+@@ -37,7 +32,7 @@ Example
+ # to work)
+ #
+ # Default: unset (don't drop privileges)
+-#User clamav
++User vscan
+ 
+ # Waiting for data from clamd will timeout after this time (seconds).
+ # Value of 0 disables the timeout.
+@@ -61,7 +56,7 @@ Example
+ # daemon (main thread).
+ #
+ # Default: disabled
+-#PidFile /var/run/clamav-milter.pid
++PidFile /var/run/clamav/clamav-milter.pid
+ 
+ # Optional path to the global temporary directory.
+ # Default: system specific (usually /tmp or /var/tmp).
+@@ -88,7 +83,7 @@ Example
+ # fashion.
+ #
+ # Default: no default
+-#ClamdSocket tcp:scanner.mydomain:7357
++ClamdSocket unix:/var/run/clamav/clamd-socket
+ 
+ 
+ ##
+@@ -238,13 +233,13 @@ Example
+ # Use system logger (can work together with LogFile).
+ #
+ # Default: no
+-#LogSyslog yes
++LogSyslog yes
+ 
+ # Specify the type of syslog messages - please refer to 'man syslog'
+ # for facility names.
+ #
+ # Default: LOG_LOCAL6
+-#LogFacility LOG_MAIL
++LogFacility LOG_MAIL
+ 
+ # Enable verbose logging.
+ #
+--- etc/clamd.conf.sample.orig
++++ etc/clamd.conf.sample
+@@ -1,12 +1,8 @@
+ ##
+-## Example config file for the Clam AV daemon
++## Config file for the Clam AV daemon
+ ## Please read the clamd.conf(5) manual before editing this file.
+ ##
+ 
+-
+-# Comment or remove the line below.
+-Example
+-
+ # Uncomment this option to enable logging.
+ # LogFile must be writable for the user running daemon.
+ # A full path is required.
+@@ -41,12 +37,12 @@ Example
+ 
+ # Use system logger (can work together with LogFile).
+ # Default: no
+-#LogSyslog yes
++LogSyslog yes
+ 
+ # Specify the type of syslog messages - please refer to 'man syslog'
+ # for facility names.
+ # Default: LOG_LOCAL6
+-#LogFacility LOG_MAIL
++LogFacility LOG_MAIL
+ 
+ # Enable verbose logging.
+ # Default: no
+@@ -71,7 +67,7 @@ Example
+ # This option allows you to save a process identifier of the listening
+ # daemon (main thread).
+ # Default: disabled
+-#PidFile /var/run/clamd.pid
++PidFile /var/run/clamav/clamd.pid
+ 
+ # Optional path to the global temporary directory.
+ # Default: system specific (usually /tmp or /var/tmp).
+@@ -90,7 +86,7 @@ Example
+ 
+ # Path to a local socket file the daemon will listen on.
+ # Default: disabled (must be specified by a user)
+-#LocalSocket /tmp/clamd.socket
++LocalSocket /var/run/clamav/clamd-socket
+ 
+ # Sets the group ownership on the unix socket.
+ # Default: disabled (the primary group of the user running clamd)
+@@ -106,7 +102,7 @@ Example
+ 
+ # TCP port address.
+ # Default: no
+-#TCPSocket 3310
++TCPSocket 3310
+ 
+ # TCP address.
+ # By default we bind to INADDR_ANY, probably not wise.
+@@ -114,7 +110,7 @@ Example
+ # from the outside world. This option can be specified multiple
+ # times if you want to listen on multiple IPs. IPv6 is now supported.
+ # Default: no
+-#TCPAddr 127.0.0.1
++TCPAddr 127.0.0.1
+ 
+ # Maximum length the queue of pending connections may grow to.
+ # Default: 200
+@@ -204,7 +200,7 @@ Example
+ 
+ # Run as another user (clamd must be started by root for this option to work)
+ # Default: don't drop privileges
+-#User clamav
++User vscan
+ 
+ # Stop daemon when libclamav reports out of memory condition.
+ #ExitOnOOM yes
+@@ -613,6 +609,10 @@ Example
+ ##
+ ## On-access Scan Settings
+ ##
++#
++# When enabling this, you most probably have to set "User root" above,
++# so that clamav can access the files to be scanned.
++#
+ 
+ # Enable on-access scanning. Currently, this is supported via fanotify.
+ # Clamuko/Dazuko support has been deprecated.
+--- etc/freshclam.conf.sample.orig
++++ etc/freshclam.conf.sample
+@@ -1,12 +1,8 @@
+ ##
+-## Example config file for freshclam
++## Config file for freshclam
+ ## Please read the freshclam.conf(5) manual before editing this file.
+ ##
+ 
+-
+-# Comment or remove the line below.
+-Example
+-
+ # Path to the database directory.
+ # WARNING: It must match clamd.conf's directive!
+ # Default: hardcoded (depends on installation options)
+@@ -35,12 +31,12 @@ Example
+ 
+ # Use system logger (can work together with UpdateLogFile).
+ # Default: no
+-#LogSyslog yes
++LogSyslog yes
+ 
+ # Specify the type of syslog messages - please refer to 'man syslog'
+ # for facility names.
+ # Default: LOG_LOCAL6
+-#LogFacility LOG_MAIL
++LogFacility LOG_MAIL
+ 
+ # Enable log rotation. Always enabled when LogFileMaxSize is enabled.
+ # Default: no
+@@ -48,12 +44,12 @@ Example
+ 
+ # This option allows you to save the process identifier of the daemon
+ # Default: disabled
+-#PidFile /var/run/freshclam.pid
++PidFile /var/run/clamav/freshclam.pid
+ 
+ # By default when started freshclam drops privileges and switches to the
+ # "clamav" user. This directive allows you to change the database owner.
+ # Default: clamav (may depend on installation options)
+-#DatabaseOwner clamav
++DatabaseOwner vscan
+ 
+ # Use DNS to verify virus database version. Freshclam uses DNS TXT records
+ # to verify database and software versions. With this directive you can change
+@@ -127,7 +123,7 @@ DatabaseMirror database.clamav.net
+ 
+ # Send the RELOAD command to clamd.
+ # Default: no
+-#NotifyClamd /path/to/clamd.conf
++NotifyClamd /etc/clamd.conf
+ 
+ # Run command after successful database update.
+ # Default: disabled

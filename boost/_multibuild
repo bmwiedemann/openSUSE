@@ -1,0 +1,7 @@
+<multibuild>
+  <package>base</package>
+  <package>extra</package>
+  <package>gnu-hpc</package>
+  <package>gnu-openmpi2-hpc</package>
+  <package>gnu-mvapich2-hpc</package>
+</multibuild>

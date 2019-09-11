@@ -1,0 +1,159 @@
+-------------------------------------------------------------------
+Tue Aug 13 16:55:33 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to 3.0.6:
+  + Issue full command logging using DEBUG log level to avoid
+    logging sensible data when log level is INFO.
+  + Fix possible crash when parsing ansible inventories.
+  + Support using alternative kubeconfig file in kubectl
+    connections.
+  + Support parsing ProxyCommand from ssh_config for paramiko
+    connections.
+
+-------------------------------------------------------------------
+Mon Jun  3 10:06:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0.5:
+  * Set default timeout to 10s on ssh/paramiko connections
+  * Add support for ansible inventory parameter ansible_private_key_file
+
+-------------------------------------------------------------------
+Fri May 24 19:26:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0.4:
+  * Add support for ansible lxc and lxd connections
+
+-------------------------------------------------------------------
+Thu May 16 20:39:31 UTC 2019 - ranand@suse.com
+
+- Removed _multibuild, not needed here. 
+
+-------------------------------------------------------------------
+Thu May 16 20:27:54 UTC 2019 - ranand@suse.com
+
+- update to version 3.0.3
+  3.0.3
+  * Fix paramiko parsing RequestTTY from ssh configs
+  * Re-add "groups" key from ansible.get_variables()
+    to be backward compatible with testinfra 2.X
+  3.0.2
+  * Fix ansible with no inventory resolving to "localhost"
+  * Fix support for ansible 2.8 with no inventory
+  * Fix ansible/paramiko which wasn't reading hosts config
+    from ~/.ssh/config
+  * Allow to pass --ssh-config and --ssh-identity-file to
+    ansible connection
+  3.0.1
+  * Fix parsing of ipv6 adresses for paramiko, ssh and
+    ansible backends.
+  * Fix --connection=ansible invocation when no hosts are provided
+  3.0.0
+  * New ansible backend fixing support for ansible 2.8 and
+    license issue.
+  * Windows support is improved.
+
+-------------------------------------------------------------------
+Tue Apr 16 10:10:11 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 2.1.0
+  * socket: fix parsing of ipv6 addresses with new versions of ss
+  * Add addr module, used to test network connectivity
+  * Drop deprecated "testinfra" command, you should use "py.test" 
+    instead
+  * Drop support for ansible <= 2.4
+  * Drop deprecated top level fixtures, access them through the 
+    fixture "host" instead.
+  1.1?.0
+  * Fix pytest 4 compatibility
+  * Allow to urlencode character in host specification "user:pass@host"
+  * Drop support for python 2.6
+  * Allow to configure timeouts for winrm backend
+  * Add support for ansible "become" user in ansible module
+  * packaging: Use setuptools_scm instead of pbr
+  * iptables: add ip6tables support
+  * Fix no_ssl and no_verify_ssl options for WinRM backend
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:11 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jul 19 19:57:27 UTC 2018 - sean.marlow@suse.com
+
+- Update to v1.14.0
+  + Add a new lxc backend
+  + Socket: fix is_listening for unix sockets
+  + Add namespace and container support for kubernetes backend
+  + Add a cache of parsed ansible inventories for ansible backend
+  + Service: fix service detection on Centos 6 hosts
+  + File: implement file comparison with string paths
+- Update to v1.13.1
+  + package: fix is_installed and version behavior for uninstalled
+    packages
+  + ansible: Use predictibles test ordering when using pytest-xdist
+    to fix random test collections errors
+- Update to v1.13.0
+  + socket: fix detection of udp listening sockets
+  + ssh backend: Add support for GSSAPI
+
+-------------------------------------------------------------------
+Tue May  1 18:11:56 UTC 2018 - sean.marlow@suse.com
+
+- Update to v1.12.0
+  + ansible: fix compatibility with ansible 2.5
+  + pip: fix compatibility with pip 10
+- Update to v1.11.1
+  + Socket: fix error with old versions of ss without the
+    --no-header option
+- Update to v1.11.0
+  + Fix bad error reporting when using ansible module without
+    ansible backend
+  + Socket: add a new implementation using ss instead of netstat
+  + Add service, process, and systeminfo support for Alpine
+- Update to v1.10.1
+  + Fix get_variables() for ansible>=2.0,<2.4
+  + Paramiko: Use the RequireTTY setting if specified in a
+    provided SSHConfig
+- Update to v1.10.0
+  + New iptables module
+- Update to v1.9.1
+  + Fix running testinfra within a suite using doctest (#268)
+  + Service: add is_valid method for systemd
+  + Fix file.linked_to() for Mac OS
+- Update to v1.9.0
+  + Interface: allow to find 'ip' command ousite of PATH
+  + Fix --nagios option with python 3
+- Update to v1.8.0
+  + Deprecate testinfra command (will be dropped in 2.0), use
+    py.test instead.
+  + Handle --nagios option when using py.test command
+- Update to v1.7.1
+  + Support for ansible 2.4
+- Update to v1.7.0
+  + Salt: allow specifiy config directory
+  + Add a WinRM backend
+  + Socket: ipv6 sockets can handle ipv4 clients
+  + Service: Enhance upstart detection
+
+-------------------------------------------------------------------
+Mon Aug 28 22:20:05 UTC 2017 - sean.marlow@suse.com
+
+- Update to v1.6.5
+  + Service: add is_enabled() support for OpenBSD
+  + Add ssh identity file option for paramiko and ssh backends
+  + Expand tilde (~) to user home directory for ssh-config,
+    ssh-identity-file and ansible-inventory options
+- Update to v1.6.4
+  + Service: Allow to find 'service' command outside of $PATH #211
+  + doc fixes
+- Update to v1.6.3
+  + Fix unwanted deprecation warning when running tests with
+    pytest 3.1 #204
+- Update to v1.6.2
+  + Fix wheel package for 1.6.1
+
+-------------------------------------------------------------------
+Wed May 17 22:24:33 UTC 2017 - sean.marlow@suse.com
+
+- Initial release (v1.6.1) 

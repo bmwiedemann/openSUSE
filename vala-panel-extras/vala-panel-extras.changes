@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Mon Aug 27 16:29:10 UTC 2018 - jengelh@inai.de
+
+- Avoid repetition of package name (rpmlint)
+
+-------------------------------------------------------------------
+Mon Aug 27 11:59:46 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.1.9:
+  * Build with new GWeather.
+  * Fix Vala 0.40 warnings.
+  * Update Chinese translation.
+- Remove Fix-build-new-libgweather.patch,
+  vala040-fixup-warnings.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed May  2 07:33:34 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.1.8:
+  + Volume applet got beep on change volume.
+- Changes from version 0.1.7:
+  + Even more fixes for vala 0.36.
+- Changes from version 0.1.6:
+  + Fixes for vala 0.36.
+- Add pkgconfig(libcanberra-gtk3) BuildRequires: New dependency.
+- Drop vala-panel-extras-0.1.4-vala-0.36.patch: Fixed upstream.
+- Add vala040-fixup-warnings.patch: Fix warnings with vala 0.40.
+- Add Fix-build-new-libgweather.patch: Fix build with new
+  libgweather.
+- Drop no longer needed post(un) handling of
+  glib2_gsettings_schema_post(un).
+- Run spec-cleaner, modernize spec.
+- Add fdupes BuildRequires and pass fdupes macro, remove duplicates
+  and silence rpmlint.
+
+-------------------------------------------------------------------
+Wed Apr  5 14:54:33 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.1.5:
+  * No changelog available.
+- Remove the glib-2.0.vapi hack.
+- Remove vala-panel-extras-fix-gquarks.patch,
+  vala-panel-extras-fix-xkb-build.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Apr  1 11:12:25 UTC 2017 - sor.alexei@meowr.ru
+
+- Add vala-panel-extras-0.1.4-vala-0.36.patch: Fix build with
+  Vala 0.36 and newer.
+
+-------------------------------------------------------------------
+Sat May  7 07:12:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Add vala-panel-extras-fix-gquarks.patch: fix build by using int
+  instead of GQuark.
+- Fix build by using upstream glib-2.0.vapi.
+
+-------------------------------------------------------------------
+Thu Aug 20 17:47:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Add vala-panel-extras-fix-xkb-build.patch: fix XKB module build
+  in some conditions.
+
+-------------------------------------------------------------------
+Fri Jun 19 12:43:17 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

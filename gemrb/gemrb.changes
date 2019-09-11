@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Fri Aug 31 06:30:59 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- use OpenGL GLVND driver
+- install libgemrb_core directly to %{_libdir}
+
+-------------------------------------------------------------------
+Fri Dec  8 22:21:47 UTC 2017 - mimi.vx@gmail.com
+
+- update to 0.8.5
+- use SDL2 and enable openGL support
+* new features:
+   - SDL2 resolution-independent window scaling, environmental audio
+   - regeneration during sleep, time dilation
+   - iwd2 ability stacking, iwd ZZ* weapon bonuses
+   - portrait.2da handling, avatar shadows, dialogF.tlk handling
+* impoved features:
+   - infravision
+   - better compatibility with bgt, 10pp, ia, kelsey, dr
+   - sdl2 input, mouse scrolling, opengl driver
+   - iwd2 cg&lu, item (un)usability, avatar sizes, permanent clabs
+   - ambients, verbal constants, random walk, walk sounds
+   - bugfixes
+
+-------------------------------------------------------------------
+Thu Sep 29 13:35:47 UTC 2016 - jengelh@inai.de
+
+- Trim redundant words from description.
+  Remove unnecessary ldconfig call (no direct shared libs)
+
+-------------------------------------------------------------------
+Mon Jun 20 07:00:38 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.8.4
+* New features:
+  - pst should be roughly completable
+  - iwd2 level-up, concealment, hardcoded clabs, tracking
+  - ToBEx simplified "concentration" option, spontaneous casting for everyone
+  - bg1, iwd2, (pst) casting sounds
+* Improved features:
+  - iwd2 spells (shapes, songs, crossclass mixing, learning), action bar
+  - lots of pst details and annoyances
+  - stores, dialogs, scripts, iwd and pst effects
+  - bugfixes
+
+-------------------------------------------------------------------
+Wed Dec 30 11:25:42 UTC 2015 - mailaender@opensuse.org
+
+- update to version 0.8.3.1
+
+-------------------------------------------------------------------
+Sun Aug 25 17:07:01 UTC 2013 - mailaender@opensuse.org
+
+- initial packaging
+

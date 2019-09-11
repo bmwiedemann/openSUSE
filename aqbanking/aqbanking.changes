@@ -1,0 +1,724 @@
+-------------------------------------------------------------------
+Fri Aug 16 06:45:16 UTC 2019 - Johannes Engel <jcnengel@gmail.com>
+
+- Update to 5.8.1
+  + Enable FinTS registration mandatory according to PSD2
+
+-------------------------------------------------------------------
+Sat Apr 21 18:48:02 UTC 2018 - jcnengel@gmail.com
+
+- Update to 5.7.8
+  + Bugfixes
+  + Updates of German bankinfo files
+
+-------------------------------------------------------------------
+Mon Nov 27 09:52:31 UTC 2017 - dimstar@opensuse.org
+
+- Drop --with-qt4-libs configure parameter: no longer understood by
+  configure.
+- Remove libqt4-devel BuildRequires: since --with-qt4-libs is not
+  understood anyway, we do not require the libst.
+
+-------------------------------------------------------------------
+Sun Jul  2 07:55:25 UTC 2017 - bwiedemann@suse.com
+
+- override build date to make build reproducible and fix build-compare
+
+-------------------------------------------------------------------
+Tue May 30 21:39:09 UTC 2017 - nico.kruber@gmail.com
+
+- enable paypal back-end
+- enable EBICS back-end (for openSUSE 42.3+)
+- Update to 5.7.6beta
+  + finally fix unclean TLS connection shutdown by HBCI servers
+  + fix passing user flags to the http module
+- Update to 5.7.5beta
+  + support for ZKA cards (by Holger Magnussen)
+  + updated bank information for German banks
+  + some bugfixes
+  + adapted and re-activated the paypal plugin (by Holger Magnussen)
+  + HBCI: allow changing the server address in RDH and DDV mode
+
+-------------------------------------------------------------------
+Fri Oct 14 19:05:15 UTC 2016 - jcnengel@gmail.com
+
+- Update to 5.7.4beta
+  + Fix crash pulling new accounts
+  + Enable setting the new flag tlsgnPrematureClose from console
+
+-------------------------------------------------------------------
+Tue Oct  4 09:19:21 UTC 2016 - jcnengel@gmail.com
+
+- Update to 5.7.2beta
+  + Fix crash receiving account list
+
+-------------------------------------------------------------------
+Wed Sep  7 22:15:09 UTC 2016 - nico.kruber@gmail.com
+
+- quick fix for $CPP being unset and configure failing to handle
+  include dirs properly
+
+-------------------------------------------------------------------
+Wed Sep  7 20:22:26 UTC 2016 - nico.kruber@gmail.com
+
+- Update to 5.7.1beta:
+  + re-retrieval of the account list is not required anymore to
+    continue using existing accounts
+- Update to 5.7.0beta:
+  + finally fixes the problem of not correlating accounts correctly
+    if the bank returns multiple accounts with the same account
+    number and IBAN
+
+-------------------------------------------------------------------
+Sun Aug 21 21:53:06 UTC 2016 - jcnengel@gmail.com
+
+- Update to 5.6.12
+  + Improvement in handling account owners
+
+-------------------------------------------------------------------
+Sat Apr 30 07:21:22 UTC 2016 - nico.kruber@gmail.com
+
+- Update to 5.6.10:
+  + fixes problems with some special HBCI messages
+  + support HHD 1.3.2 (Flicker codes for PIN/TAN) again
+    (thanks to Martin Kuehn)
+- Update to 5.6.9beta:
+  + support old-version Flicker codes which are still used by
+    some banks (thanks to Martin Kuehn)
+
+-------------------------------------------------------------------
+Wed Apr  6 10:42:51 UTC 2016 - nico.kruber@gmail.com
+
+- Update to 5.6.8beta:
+  + this should finally fix problems with the comdirect bank
+    (and others)
+- Update to 5.6.7beta:
+  + fixes further problems using the "Unterkontomerkmal" field
+    for multiple accounts with the same account number,
+    e.g. comdirect bank
+- Update to 5.6.6beta:
+  + fix an error with the version number
+- Update to 5.6.5beta:
+  + fix SWIFT parser problems with banks using non-standard
+    conform data, e.g. also extract the IBAN from the account
+    number field
+  + store UPD seperately for each account depending on account
+    number and sub-account number ("Konto-Unterkennung") - this
+    should fix problems with banks using the same account number
+    for multiple accounts, e.g. comdirect bank
+
+-------------------------------------------------------------------
+Wed Jan 13 14:58:17 UTC 2016 - jcnengel@gmail.com
+
+- Update to 5.6.4beta
+  + Fix error in SWIFT importer (missing import of :NS: fields)
+  + Fix transmission of Flicker codes (HHD 1.4)
+
+-------------------------------------------------------------------
+Thu Nov  5 23:41:04 UTC 2015 - nico.kruber@gmail.com
+
+- Update to 5.6.1 (beta):
+  + improve the SWIFT parser
+    (NOTE: duplicates may arise after first updating your accounts)
+- Update to 5.6.0 (beta):
+  + make the SWIFT parser tolerate non-specification conforming
+    information, e.g. from the SpardaBank and Netbank
+    (NOTE: duplicates will arise for those banks after first
+     updating your accounts)
+  + support a HBCI module for COR1-SEPA direct debits (not fully
+    tested yet)
+  + some improvements in the build system
+
+-------------------------------------------------------------------
+Sat Jan  3 11:59:05 UTC 2015 - jcnengel@gmail.com
+
+- Update to 5.5.1
+  + SEPA transactions mostly working now
+  + stable version
+
+-------------------------------------------------------------------
+Tue Dec 16 22:09:43 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 5.5.0.2
+  + Shorten paths of some AqHBCI files.
+    "tar" has a filename limit of 99, so we need to shorten the total
+    path, otherwise "make dist" will fail.
+- Add a dependency on cmake; aqbanking now provides cmake configuration
+  files for development
+
+-------------------------------------------------------------------
+Fri Apr 18 22:07:14 UTC 2014 - jcnengel@gmail.com
+
+- Update to 5.4.3beta
+  + Fix a bug in aqbanking-cli concerning standing orders
+
+-------------------------------------------------------------------
+Mon Mar 31 09:23:53 UTC 2014 - jcnengel@gmail.com
+
+- Update to 5.4.2beta
+  + Introduce command sepadebitnotes for aqbanking-cli
+
+-------------------------------------------------------------------
+Mon Mar  3 09:54:55 UTC 2014 - jcnengel@gmail.com
+
+- Update to 5.4.1beta
+  + Bugfixes by Elias Oltmanns
+
+-------------------------------------------------------------------
+Wed Feb 19 11:26:38 UTC 2014 - jcnengel@gmail.com
+
+- Update to 5.4.0beta
+  + Fix problems with SEPA debit orders
+  + Fix wrong key length for RDH10
+
+-------------------------------------------------------------------
+Sun Feb  9 21:46:29 UTC 2014 - jcnengel@gmail.com
+
+- Update to 5.3.6beta
+  + Fix an issue with RDH10
+- Fixes in previous versions:
+  + Change in plugin architecture
+  + Bugfixes for SEPA (e.g. missing sum field)
+
+-------------------------------------------------------------------
+Sun Jan 12 20:36:02 UTC 2014 - nico.kruber@gmail.com
+
+- Update to version 5.3.0beta:
+  + fixes some problems with SEPA orders and simplifies the code
+    of AqHBCI (better extensibility for future order types)
+  + extends the SWIFT parser to decode SEPA fields in Netbank
+    statements (may yield to duplicates)
+
+-------------------------------------------------------------------
+Mon Jan  6 21:45:54 UTC 2014 - nico.kruber@gmail.com
+
+- Update to version 5.2.0beta:
+  + contains the EBICS module (now under GPL license)
+  + some minor internal improvements regarding BIC and IBAN
+
+-------------------------------------------------------------------
+Wed Oct 23 15:19:46 UTC 2013 - nico.kruber@gmail.com
+
+- fix build for SLE
+
+-------------------------------------------------------------------
+Wed Oct 23 14:56:19 UTC 2013 - nico.kruber@gmail.com
+
+- Update to version 5.1.0beta:
+  + improvements to the SEPA exporter
+    (ability to create bank valid transfers and debits)
+  + add fields required for SEPA debits to AB_TRANSACTION
+  + SEPA debits should work (not tested yet)
+  + add a command to AqBanking-CLI to add a SEPA debit to a
+    ImExporterContext file from which orders in SEPA format can be
+    exported
+
+-------------------------------------------------------------------
+Wed Sep 18 07:35:18 UTC 2013 - nico.kruber@gmail.com
+
+- Update to version 5.0.32beta:
+  + fixes a compiler problem with missing source code files
+
+-------------------------------------------------------------------
+Wed Aug 21 20:04:59 UTC 2013 - nico.kruber@gmail.com
+
+- Update to version 5.0.31beta:
+  + contains further code for SEPA transactions
+  + request for help: please fetch your latest statements with
+    this version and have a look whether there is information on
+    the segment "HICDS" in the user settings
+    ("$HOME/.aqbanking/settings/users/*.conf")
+  + requires at least Gwenhywfar 4.7.0beta
+- Update to version 5.0.30beta:
+  + adds a missing file
+- Update to version 5.0.29beta:
+  + fixes a few compile warnings
+  + fixes a bug in the SEPA module
+  + add support for REINVEST tags in the OFX parser
+    (thanks to Paul Conrady)
+  + let the OFX DirectConnect module send the HTTP-Header
+    "user-agent"
+- drop aqbanking-5.0.28beta.no-return-in-nonvoid-function.diff
+  patch (included upstream)
+
+-------------------------------------------------------------------
+Sun Jun 23 11:04:12 UTC 2013 - nico.kruber@gmail.com
+
+- Update to version 5.0.28beta:
+  + fixes some bugs in the previous version
+  + improvements to the German translation (thanks to Christian)
+  + adds support for downloading credit card transactions from
+    some Sparkasse banks (thanks to Matthias)
+- Update to version 5.0.27beta:
+  + adds a missing file in the last version's package
+- Update to version 5.0.26beta:
+  + implements SEPA transactions via HBCI
+    (tested with some Sparkasse and Postbank banks)
+  + adds commands to aqhbci-cli for retrieving SEPA information
+    about bank accounts needed for SEPA transactions
+  + removes (unmaintained) paypal back-end
+- add aqbanking-5.0.28beta.no-return-in-nonvoid-function.diff patch
+
+-------------------------------------------------------------------
+Tue Aug  7 20:29:13 UTC 2012 - nico.kruber@gmail.com
+
+- Update to version 5.0.25:
+  + added support for exporting bank transfers/direct debits via CSV
+    (new CSV profile "transfers")
+
+-------------------------------------------------------------------
+Tue Jun  5 15:18:15 UTC 2012 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.24:
+  + fixes several bugs, particularly in the various HBCI keyfile
+    methods and creating INI mails in HTML
+  + mark PIN as bad in PIN/TAN mode if dialogue calcelled
+
+-------------------------------------------------------------------
+Wed May 16 14:49:15 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-Free-Art-1.3
+  Added SUSE-Free-Art-1.3 to the spreadsheet linked at license.opensuse.org
+
+-------------------------------------------------------------------
+Fri Mar  9 07:32:53 UTC 2012 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.23:
+  + minor improvements to the CSV profile editor
+
+-------------------------------------------------------------------
+Wed Jan 11 07:43:54 UTC 2012 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.22:
+  + fixes some problems with the SWIFT parser
+  + fixes a crash with empty configuration files
+  + added an option to set that (when using mTAN) the SMS account
+    is not being charged (required by GAD-based banks)
+
+-------------------------------------------------------------------
+Mon Jan  2 20:35:40 UTC 2012 - Nico.Laus.2001@gmx.de
+
+- included %{_datadir}/aclocal in the devel package
+
+-------------------------------------------------------------------
+Mon Jan  2 07:06:01 UTC 2012 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.21:
+  + more flexible SWIFT parser
+  + improved flicker message display of optical chipTAN methods
+
+-------------------------------------------------------------------
+Fri Dec 30 08:17:37 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.20:
+  + added support for newer TAN methods (HKTAN5)
+  + added a dialogue to change account settings
+    (allows changing e.g. "Prefer Single Transfer")
+
+-------------------------------------------------------------------
+Mon Dec 19 23:01:26 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.19:
+  + support for optical chipTAN methods (in principal - for now only
+    implemented in the FOX front-end)
+
+-------------------------------------------------------------------
+Wed Nov 30 22:12:00 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.17:
+  + additionally licensed under GPLv3
+  + fixes a bug in the PIN/TAN definition files (HBCI backend)
+
+-------------------------------------------------------------------
+Sun Sep 25 12:24:40 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.16:
+  + fixes a write error
+  + supports setting the charset during OFX import
+
+-------------------------------------------------------------------
+Sat Sep 17 12:09:59 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Sat Sep 10 19:28:58 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.15:
+  + fixed some bugs in OFX DirectConnect
+  + cmd tools now also link to libstdc++ to fix some segfaults
+
+-------------------------------------------------------------------
+Tue Jul 19 14:14:53 UTC 2011 - malcolmlewis@opensuse.org
+
+- Update to version 5.0.14:
+  + Bug fix in applayer.
+- Changes from version 5.0.13:
+  + Added some safeguards in SWIFT.
+  + Fixed a bug in SWIFT parser. This bug caused the plugin to
+    hang while parsing subtags which contain question marks.
+  + Fixed a bug in dlg_pintan_special.dlg
+- Changes from version 5.0.11:
+  + Bug fixes for the parameter list.
+  + Use "void" in functions with empty argument list.
+  + Add argument "--charset" to aqbanking-cli and also fixes a
+    typo.
+  + Fixed a memory leak in banking plugin.
+  + Removed a leftover LDADD.
+  + Increased debug verbosity and comments in joblayer plugin.
+- Update spec file License field from GPLv2+ to GPL-2.0+ to
+  conform with spdx.org identifier.
+- Clean up and reformat spec file.
+- Add FIXME as still unable to parallel make.
+- Update BuildRequires to use pkgconfig(gtk+-2.0) instead
+  of gtk2-devel.
+- Remove service usage, following the new consensus on Factory
+  packaging.
+
+-------------------------------------------------------------------
+Mon Jun 13 18:39:53 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.10:
+  + some bug fixes
+  + internal symbols of AqHBCI are not exported anymore
+  + better handling of standing orders and terminated bank
+    transfers during imports
+- Update to version 5.0.9beta:
+  + added "aqhbci-tool logfile" to anonymise log files
+  + bug fixes for manual ChipTAN methods
+- Update to version 5.0.8beta:
+  + support for new iTAN methods (some manual ChipTAN methods might
+    now work)
+
+-------------------------------------------------------------------
+Thu May 26 21:31:45 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.7:
+  + added support for HKTAN version 5 in the HBCI backend
+   (this should improve support for some manual ChipTan methods)
+
+-------------------------------------------------------------------
+Fri May 20 15:52:19 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.6:
+  + fixes bugs with long RDH keys (HBCI)
+
+-------------------------------------------------------------------
+Thu Mar 17 20:10:08 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.5:
+  + bugfixes in the HBCI-NewKeyFile dialogue and Q43 import
+  + added a first version of the C++ wrappers to aqbanking
+    (by Christian)
+
+-------------------------------------------------------------------
+Sun Feb 20 12:28:44 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.4:
+  + do not assert() when failing to save user/account
+  + improved handling of iTAN modes
+- Update to version 5.0.3:
+  + fixes some bugs in the OFX back-end
+  + added support for TanMediumId when using smsTAN
+
+-------------------------------------------------------------------
+Sat Jan 15 09:54:11 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.2:
+  + fixed some errors with HBCI version 2.2 and above
+  + some fixes for Windows
+
+-------------------------------------------------------------------
+Fri Dec 10 11:03:25 CET 2010 - vuntz@opensuse.org
+
+- Remove unneeded BuildRequires: libqt4-devel python-devel pyxml
+  qt3-devel.
+- Add BuildRequires: gcc-c++ (we need it), gtk2-devel (needed for
+  --enable-gui-tests configure option).
+- Remove qt3-devel Requires from devel package.
+- Pass --enable-gui-tests to configure: while we do not care much
+  about this, it is useful to work around a bug in the configure
+  script that causes ktoblzcheck to not be detected.
+- Do not pass --with-qt3-libs and --with-qt4-libs to configure:
+  these options don't exist anymore.
+
+-------------------------------------------------------------------
+Thu Sep  2 20:34:26 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 5.0.1:
+  + Fix issue when querying HBCI system identification.
+
+-------------------------------------------------------------------
+Thu Sep  2 10:27:06 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 5.0.0:
+  + Fix several issues with HBCI, mainly PIN/TAN.
+  + Usage of the new dialog framework of gwenhywfar.
+  + Support querying of paypac account balance.
+  + Improved dialogs for HBCI and OFX DirectConnect.
+  + New dialogs of EBICS and PayPal.
+- Change lang Requires to Recommends.
+- Drop aqbanking-qt3, aqbanking-qt4, aqbanking-ofx-qt3,
+  aqbanking-ofx-qt4 subpackages as aqbanking now uses the new
+  dialog framework of gwenhywfar.
+
+-------------------------------------------------------------------
+Wed Feb 10 23:47:21 CET 2010 - vuntz@opensuse.org
+
+- Update to version 4.2.4:
+  + Probably fixed a problem in definition of HITAN:1.
+  + Fixed a bug in SecProfile definition.
+  + Added CSV profile for Nederlandse SNS Bank.
+  + Added a few SEPA-related fields to AB_TRANSACTION.
+  + Improved handling of SWIFT fields within TAGS, special handling
+    for SEPA transactions.
+  + CSV-Im-/Exporter: Added profile variables "commaThousands" and
+    "commaDecimal".
+  + Added tanMethod version 3 and make HITANS:2 use that.
+  + Improved debug and error messages concerning itan modes.
+  + The three digit code in a :86: field is the transaction code,
+    not the text key.
+  + DTAUS-Exporter: Segment too long purpose lines instead of
+    rejecting them.
+  + Added missing segment description "HKTAN:3".
+  + Build fixes.
+- Add libqt4-devel BuildRequires, and create qt4 and ofx-qt4
+  subpackages.
+- Pass --with-qt4-libs to configure to fix detection of where qt4
+  libraries live.
+
+-------------------------------------------------------------------
+Mon Jan  4 15:28:41 CET 2010 - vuntz@opensuse.org
+
+- Update to version 4.2.3:
+  + Decrease verbosity.
+  + Fixed a bug in "Verfahrensparameter Zwei-Schritt-Verfahren" of
+    HITANS:3.
+
+-------------------------------------------------------------------
+Mon Jan  4 12:13:00 CET 2010 - vuntz@opensuse.org
+
+- Update handbook to 20091231 version.
+
+-------------------------------------------------------------------
+Sat Jan  2 16:16:34 CET 2010 - vuntz@opensuse.org
+
+- Update to version 4.2.2:
+  + Decreased verbosity.
+  + Fixed a bug in the description of HITAN(1).
+
+-------------------------------------------------------------------
+Mon Dec 28 14:22:22 CET 2009 - vuntz@opensuse.org
+
+- Update to version 4.2.1:
+  + Applied a series of SWIFT-patches.
+  + Decrease debug level of several non-critical messages.
+  + Updated German bank info files.
+
+-------------------------------------------------------------------
+Wed Dec 16 11:49:55 CET 2009 - vuntz@opensuse.org
+
+- Remove autoreconf call since it's unneeded.
+- Add gwenhywfar-tools BuildRequires, since some binaries were
+  moved from gwenhywfar-devel to gwenhywfar-tools.
+- Move the handbook to a doc subpackage, since its big and has a
+  different license.
+- Remove .la files.
+
+-------------------------------------------------------------------
+Tue Dec  1 22:41:00 CET 2009 - Nico.Laus.2001@gmx.de
+
+- Update to version 4.2.0:
+  + better import of previous configurations
+  + use pin file for chipcards in non-interactive mode
+  + DTAUS import now sets order type correctly
+- Changes from version 4.1.8:
+  + fixes problems with locks inside the HBCI module
+- Changes from version 4.1.7:
+  + fixes OFX parser not being linked into the application
+- Changes from version 4.1.6:
+  + fixes an important bug in the HBCI module that was preventing
+    users to store certain user and account information
+- Changes from version 4.1.5:
+  + fixes some minor bugs in the HBCI module
+  + removes unused code
+  + special support for statistical modules has been removed again
+    to simplify the build system
+- Changes from version 4.1.4:
+  + made max number of payments per (collective) order configurable
+- Changes from version 4.1.3:
+  + fixes a bug in newer RDH modes (HTML output did not contain the
+    correct hash value)
+  + improved the CSV import so that columns can be exchanged based
+    on their leading sign (this is being used by the new CSV
+    profile of the Postbank Frankfurt/Main)
+  + AqHBCI tool now checks valid combinations of RDH mode and HBCI
+    version
+- Changes from version 4.1.2:
+  + fixes a crash in the QT3 frontend when editing accounts
+- Drop aqbanking-strncat.patch: unneeded now.
+- Added pdf-handbook
+
+-------------------------------------------------------------------
+Thu Oct  1 21:56:58 CEST 2009 - vuntz@opensuse.org
+
+- Remove gtk2-devel, kdelibs3-devel, libchipcard4,
+  libchipcard4-devel and libglade2-devel BuildRequires: they're
+  either redundant or unneeded.
+- Remove gtk2-devel, kdelibs3-devel, libchipcard4-devel,
+  libglade2-devel Requires of devel package.
+- Change libchipcard3-devel Requires to libchipcard4-devel Requires
+  in devel package.
+- Remove --enable-python and --with-kde3-libs configure option:
+  they don't exist anymore.
+
+-------------------------------------------------------------------
+Thu Oct  1 14:49:03 CEST 2009 - vuntz@opensuse.org
+
+- Remove the yellownet-related subpackages: there's no such backend
+  anymore in this version. This fixes the build on i586.
+
+-------------------------------------------------------------------
+Thu Aug  6 21:31:34 CEST 2009 - mkudlvasr@suse.cz
+
+- update to 4.0.0, triggered by gwenhywfar
+  - too long without update to describe in a few lines,
+    this is very active project
+
+-------------------------------------------------------------------
+Fri Mar 27 23:12:51 CET 2009 - vuntz@novell.com
+
+- Add aqbanking-remove-datetime.patch to be more build-compare
+  friendly.
+
+-------------------------------------------------------------------
+Sat Mar 21 18:41:17 CET 2009 - crrodriguez@suse.de
+
+- fix build with gcc 4.4 
+
+-------------------------------------------------------------------
+Thu Feb 28 16:02:38 CET 2008 - ro@suse.de
+
+- update to 2.3.3 (last in 2.3 series)
+  - Very minor improvements: One windows function signature has been
+    fixed. DTAUS export has been improved. Error messages at
+    aqbanking-tool have been improved.
+- update to 2.3.2
+  - Windows registry lookup issues have been solved.  This release is only
+    interesting for windows users.
+- update to 2.3.1
+  - Fix translations when using qt4, especially on Windows. Improve
+    cross-compiling. (This release brings no changes for the conventional
+    qt3 compile.)
+- update to 2.3.0
+  - Fix some path lookup issues on MS Windows. Fix a crash with erroneous
+    bank codes. Fix check function in PIN/TAN mode. Improved
+    aqhbci-tool. Add a function for easier initial setup (hence the
+    incremented version number).
+- disabled ofx backend build (incompatible with current libofx)
+
+-------------------------------------------------------------------
+Thu Jan 24 11:16:17 CET 2008 - coolo@suse.de
+
+- fix open call
+
+-------------------------------------------------------------------
+Wed Aug  8 18:50:32 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Mon Jul 30 19:32:13 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.2.9:
+  * Improvements in the setup wizard.
+  * Fix qt4 porting code.
+  * Fix crashes when actions have no selected items in qbanking.
+  * Improve aqbanking-tool and aqhbci-tool usage messages.
+  * Fix command line processing in tool hbcixml.
+  * Fixed changes in aqofxconnect to be enabled only for new libofx
+    versions.
+  * The config file is saved correctly.
+  * Adaptation on gwenhywfar changes.
+  * AqGeldKarte has been fixed and adapted to Libchipcard3.
+  * The QBanking frontend is now less verbous.
+  * Allows to setup iTAN HBCI accounts.
+  * Import profile for ABN AMRO Bank (NL).
+  * Other fixes and improvements, see NEWS for details.
+
+-------------------------------------------------------------------
+Thu May 24 11:05:54 CEST 2007 - stbinner@suse.de
+
+- add missing %run_ldconfig calls
+
+-------------------------------------------------------------------
+Sat Dec 16 12:35:11 CET 2006 - prusnak@suse.cz
+
+- fixed comparison with string literal (strcmp.patch) [#224464]
+
+-------------------------------------------------------------------
+Wed Oct 18 14:33:19 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 2.2.3:
+  * Allows to setup iTAN HBCI accounts.
+  * Improved support for HBCI iTAN mode, added an import profile
+    for ABN AMRO Bank (NL).
+  * Fixes some errors.
+
+-------------------------------------------------------------------
+Fri Sep 15 23:49:01 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.2.1
+- fixed a bug in DTAUS importer profile "default"
+- src/libs/aqbanking/types/transaction.xml: Fix typos
+- added aqbanking-tool command "chkiban" which checks whether a given IBAN
+  is valid
+- AqOfxConnect: Fixed a bug in provider.c which could lead to a segfault
+- generic bankinfo plugin:
+  - implemented a mechanism to update bank info files via additional files
+  - Germany: Updated HBCI and bank info files (now reads new
+    format of Bundesbank files)
+  - Austria:
+    - updated BLZ file (now reads new, more extensive format)
+    - added OFX server information for BAWAG P.S.K and EasyBank
+- AqHBCI:
+  - removed functions AH_HBCI_HbciToUtf8() and AH_JobQueue_AddAsUtf8() because
+    they are no longer needed since the whole server response is transformed
+    to UTF8 -> finally fixes Umlaut problems
+  - implemented iTAN process type 2: It now works against the test server,
+    tomorrow I will have to test it against a real server
+- Fix rule srcdoc if directory was not existing 
+
+-------------------------------------------------------------------
+Wed Aug 23 18:06:09 CEST 2006 - schwab@suse.de
+
+- Work around broken configure check.
+
+-------------------------------------------------------------------
+Tue May  9 18:06:00 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 2.0.0 (new branch).
+- Split package to follow upstream packaging.
+
+-------------------------------------------------------------------
+Thu Feb 23 11:16:35 CET 2006 - sbrabec@suse.cz
+
+- Fixed documentation path (#146744).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:14 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 25 15:31:53 CEST 2005 - sbrabec@suse.cz
+
+- Fixed libtool patch.
+
+-------------------------------------------------------------------
+Mon Oct 24 19:55:59 CEST 2005 - sbrabec@suse.cz
+
+- New SuSE package, version 1.2.0.
+  Based on spec file from Rajesh Singh <rajeshsingh.geo@yahoo.com>.
+

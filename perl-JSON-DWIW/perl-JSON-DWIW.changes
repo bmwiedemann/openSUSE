@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Jul 21 07:40:22 UTC 2011 - coolo@novell.com
+
+- updated to 0.47, see JSON::DWIW::Changes for newer changes
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:24 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:20 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:42 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Oct 26 00:00:00 UTC 2008 - gerrit.beine@gmx.de
+
+- first release 0.27
+
+

@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Tue Apr 15 01:11:00 UTC 2014 - brian@aljex.com
+
+- v2.1
+-Fixes bnc#870855 
+-Fixes CVE-2013-6369
+
+-------------------------------------------------------------------
+Fri Jul 19 09:20:49 UTC 2013 - schwab@linux-m68k.org
+
+- Don't strip binaries
+
+-------------------------------------------------------------------
+Thu Mar 28 12:49:05 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Jun 13 14:33:07 UTC 2012 - coolo@suse.com
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Fri Jun  8 12:02:54 UTC 2012 - seife+obs@b1-systems.com
+
+- build -32bit packages to make libtiff5-32bit installable
+
+-------------------------------------------------------------------
+Tue Apr 10 17:00:40 UTC 2012 - brian@aljex.com
+
+- Initial SUSE package.
+

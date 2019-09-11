@@ -1,0 +1,373 @@
+-------------------------------------------------------------------
+Fri Apr  7 06:45:08 UTC 2017 - coolo@suse.com
+
+- updated to 1.412
+   see /usr/share/doc/packages/perl-SQL-Statement/Changes
+
+  1.412	2017-04-06
+      * Release 1.411_001 without further changes as 1.412
+  
+  1.411_001 2017-03-30
+      [Bug fixes]
+      * Fix http://www.perlmonks.org/?node_id=1167381 (NumericEval: fix
+        typo on error handling) (thanks to Yanick Champoux, James R. Leu)
+      * fix repo url and t/02execute.t (Reini Urban, Mohammad S Anwar)
+      * fix test failing with blead-perl (Jens Rehsack)
+  
+      [Improvements]
+      * Refactor constraints processing (Ovidiu Gheorghies)
+      * Support parsing of complex JOIN clause (containing OR and ()'s) (James R. Leu)
+      * handle backtick quoting (Ben Hengst)
+
+-------------------------------------------------------------------
+Tue Apr 12 14:08:38 UTC 2016 - coolo@suse.com
+
+- updated to 1.410
+   see /usr/share/doc/packages/perl-SQL-Statement/Changes
+
+  1.410 2016-04-11
+      [Bug fixes]
+      * Fix RT#113625 - Unnecessary x-bits (Kent Fredric)
+  
+      [Documentation]
+      * pod2markdown README.md from lib/SQL/Statement.pm
+
+-------------------------------------------------------------------
+Thu Apr  7 09:58:39 UTC 2016 - coolo@suse.com
+
+- updated to 1.409
+   see /usr/share/doc/packages/perl-SQL-Statement/Changes
+
+  1.409 2016-04-06
+      * Release 1.408_001 without further changes as 1.409
+  
+  1.408_001 2016-03-07
+      [Bug fixes]
+      * Fix RT#112530 - t/06virtual.t fails with -Duselongdouble (thanks
+        Slaven Rezic)
+      * Fix RT#105852 - dependency installation isn't triggered properly in
+        cpan (thanks Mithaldu)
+      * Fix RT#99349 - bind variables are not bound to placeholders in the
+        correct order (thanks vulpeculus@gmx.de)
+  
+      [Documentation]
+      * Update Copyright statements, add where missing (according to records)
+      * Add license conditions where missing
+      * bundle copy of license conditions to distribution
+
+-------------------------------------------------------------------
+Sat Oct 10 09:23:00 UTC 2015 - coolo@suse.com
+
+- updated to 1.407
+   see /usr/share/doc/packages/perl-SQL-Statement/Changes
+
+-------------------------------------------------------------------
+Tue Jun 18 09:42:11 UTC 2013 - coolo@suse.com
+
+- updated to 1.405
+  [Bug fixes]
+  * INSERT now expands incomplete rows (Thanks to H.Merijn Brand)
+  
+  Version 1.404, released May 23, 2013
+  -------------------------------------------------
+  [Bug fixes]
+  * re-enable cleanup test_output* after test done
+  * recommend Text::Soundex and do soundex-test only when have it,
+    because it's going to be removed from core for Perl 5.19 (thank Merijn)
+  
+  Version 1.403, released May 22, 2013
+  -------------------------------------------------
+  [Bug fixes]
+  * fix documentation (rt#84889 - thanks Xavier Guimard and Florian,
+    rt#85257 - thanks Andreas Koenig)
+  
+  Version 1.402, released December 19, 2012
+  -------------------------------------------------
+  
+  [Misc]
+  * add Math::Complex 1.56 as recommendation (RT#81926, Sam Ferencik)
+  * add Math::BigInt 1.88 as recommendation (RT#81927, Sam Ferencik)
+  * clarify Test::Simple 1.90 is required for building (RT#81925, Sam Ferencik)
+  
+  [Bug fixes]
+  * fix leaking reference to open tables outside SQL::Statement::execute
+    (fixes RT#81523)
+  * looks_like_number identifies 'nan' as number sometimes (add regex to
+    t/06virtual.t)
+
+-------------------------------------------------------------------
+Thu Mar 31 12:07:05 UTC 2011 - coolo@novell.com
+
+- update to 1.33
+[Bug fixes]
+* Move test dependencies to (unreleased) Bundle::Test::SQL::Statement
+  to avoid circular dependencies
+* Fixed invalid check for escaped single quotes
+* Fixed unpermitted modification of array source for table creation
+  (CREATE TABLE AS IMPORT(?),[[..],[..]])
+* Fixing alias used in ORDER BY (RT#61384, thanks jvm)
+* Fixing ORDER BY behavior for multiple sort columns
+  (slower, but guaranteed correct)
+
+[Improvements]
+* renamed fetch-method into fetch_row (keep fetch() as alias) and
+  add a fetch_rows() to fetch all rows at once
+* Different accessors for direction of ORDER BY clause query part
+  and it's boolean equivalent "desc" (0 or 1, respectively)
+* Add a lot of Pure-Perl DBD's as build dependency for testing
+  (skip DBD::AnyData for now, because it seems to be broken - check
+  for next release)
+
+[Misc]
+* Bump requirement of DBI to 1.616
+* switch for fully external DBD tests from DBD::XBase to DBD::SQLite
+* Document another limitation (lacking implicit creating temp table
+  during processing a query using the same table with different aliases
+  twice)
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:18 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Aug 23 12:52:39 UTC 2010 - chris@computersalat.de
+
+- update to 1.31
+- [Bug fixes]
+  * Fix misbehaviour of DELETE/UPDATE for tables with only basic capabilities
+    and no matching where clause (reported by H.Merijn Brand and Drew ...)
+  * Fix some column identifier splits to respect quoted tables
+- [Improvements]
+  * Optimized some core routines between 25% and 50%.
+- fixed deps (Requires)
+  o DBD::File, DBI::DBD::SqlEngine > Recommends
+  
+-------------------------------------------------------------------
+Tue Aug 10 08:35:21 UTC 2010 - chris@computersalat.de
+
+- update to 1.30
+  - [Bug fixes]
+    * remove blib directory from distfile
+- Version 1.29, released August 1st, 2010
+  - [Bug fixes]
+    * add some getters as documented in SQL::Statement::Structure
+      (fixes RT#59834, thanks John Wiersba)
+    * add missing import of function croak to SQL::Statement::Term::ColumnValue
+    * fix assignment of parser result (doesn't run with perl-5.13.3)
+- spec mods
+  o rpmlint wrong-file-end-of-line-encoding
+    replaced dos2unix with %{__perl} -p -i -e "s|\r\n|\n|"
+  o removed BuildReq perl-macros
+    pkg only build for suse_version >= 1120, and perl-macros
+    is delivered with perl
+
+-------------------------------------------------------------------
+Tue Jul 20 13:07:15 UTC 2010 - chris@computersalat.de
+
+- update to 1.28
+  - [Improvements]
+    * Introduce new "capability" method for SQL::Statement and SQL::Eval::Table
+      + Add capability for "insert_new_row" to allow DBD::DBM to fix PK
+        constrain on INSERT statements.
+    * Performance of IMPORT feature improved (thanks to Sven Probst, RT#57322)
+  - [Bug fixes]
+    * expect every table object being derived from SQL::Eval::Table
+    * rewrite DELETE and UPDATE command based on table capabilities
+    * add abstract methods for all methods derived classes must override
+      (this means, open_table for SQL::Statement deriveds must be overridden
+       and all data access methods of tables - see SQL::Eval::Table for details)
+    * Tests are fixed to use TEMP TABLES explicitely when required
+    * check for invalid column names fixed
+    * Don't let depreciated parser structures stay alive in SQL::Statement when
+      reusing the Parser
+  - [Documentation]
+    * Method documentation of SQL::Statement and SQL::Eval::Table are improved
+    * Add a Roadmap describing future plans for SQL::Statement (in addition to
+      DBD::File::Roadmap).
+    * POD spelling fixes provided by H.Merijn Brand and Pod::Spell::CommonMistakes
+      (thanks Tux)
+    * POD grammar fixes and reasonable sentences created by Martin Evans 
+  - [Things that may break your code]
+    * SQL::Statement 1.28 is expected not to work proper in combination with
+      DBI 1.611 and below
+    * SQL::Statement::ColumnValue expects now every table being derived from
+      SQL::Eval::Table
+- recreated by cpanspec 1.78
+- added Authors
+
+-------------------------------------------------------------------
+Thu Jun  3 15:37:47 UTC 2010 - chris@computersalat.de
+
+- update to 1.27
+  - [Bug fixes]
+    * use originally given table name for open_table() on SELECT, too
+      (all other command still use the originally given name)
+    * warn/die -> carp/croak
+    * fix delete_one_row & update_one_row ability using
+  - [Documentation]
+    * Apply spelling fix patch from Ansgar Burchardt (RT#56475)
+- Version 1.26, release April 09th, 2010
+  - [Bug fixes]
+    * Handle NULL columns in concatenation as empty strings
+  - [Improvements]
+    * Change regex's in parser to use \p{Word} instead of \w to allow unicode
+      support
+  - [Documentation]
+    * Make clear, that identifiers are handled case insensetive and there is
+      a real good solution provided by DBI which allows to live great with
+      that behaviour.
+- fix build Cycle DBD-CSV
+  * only needed for testsuite
+- noarch package
+
+-------------------------------------------------------------------
+Sun May 23 16:57:52 UTC 2010 - coolo@novell.com
+
+- do not build noarch
+
+-------------------------------------------------------------------
+Sun Apr  4 21:30:32 UTC 2010 - chris@computersalat.de
+
+- update to 1.25
+  - [Bug fixes]
+    * Keep org_table_names with schema information to allow derived
+      table classes to handle as it seems reasonable there
+    * Separate columns with "\0" in multi-column aggregation to be
+      able to difference between ('1','1foo') and ('11','foo')
+  - [Misc]
+    * More resources added to META.yml
+- Version 1.24, release March 15th, 2010
+  - [Misc]
+    * Ignore *.rej in MANIFEST.SKIP (fixes RT #52081 reported by
+      Lars Thegler)
+  - [Bug fixes]
+    * Add missing import of _INSTANCE in
+      SQL::Statement::Function::NumericEval
+      fixes RT #52356 - reported by Detlef Pilzecker)
+    * Fix wrongly discarded DISTINCT clause (RT#53186)
+  - [Improvements]
+    * Fix parsing errors of plain numbers (RT#16931)
+    * Fix parsing errors of nested calculation / functions
+      (RT#16931, RT#52356)
+    * Rewrite result calculation of aggregation functions
+      (simplify code, speed up)
+    * Upgrade Makefile.PL (patch from Alexandr Ciornii) to handle
+      different EU::MM versions and abilities properly
+    * Update documentation to show how 'column_defs' and
+      SQL::Statement::Term instances shall be used
+    * Introduce SQL::Dialect::Role providing ini-style data access
+      to SQL::Dialects (patch from Michael Schwern)
+  - [Things that may break your code]
+    * SQL::Parser now didn't deliver a struct containing
+      'column_names', 'computed_columns' and 'set_functions' - it's
+       combined into one member 'column_defs'.
+    * Minimum required perl version is now 5.8 - upcoming next
+      version of DBI requires perl 5.8, too - and I could simplify
+      some code that's why
+- cleanup spec
+  o cpan_name
+  o sort TAGS
+  o modified deps
+    - added perl-macros
+    - added Test::Pod,.. DBD::CSV for testsuite
+  o removed self obsoletes/provides p_sqlst
+  o macros
+
+-------------------------------------------------------------------
+Tue Feb  9 16:41:27 UTC 2010 - coolo@novell.com
+
+- update to version 1.23:
+ * Added a fixed version of test reported via RT #34121
+ * Fix an issue in UPDATE command which 'shift's the values from
+   the list of parameters which causes there're no more parameters
+   left after first row get's updated (Fixes RT #50788)
+ * Fix aggregate function handling of new code since 1.21_01
+ * Correct handling of DISTINCT in aggregate functions
+ ... see Changes for more
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Fri Oct 20 18:52:35 CEST 2006 - mrueckert@suse.de
+
+- update to version 1.15:
+  * fixed placeholder bug in SQL::Statement::UPDATE
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:56 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug  1 13:36:57 CEST 2005 - cthiel@suse.de
+
+- update to version 1.14
+- build as user
+
+-------------------------------------------------------------------
+Mon Oct 11 04:39:43 CEST 2004 - nashif@suse.de
+
+- Update to version 1.09
+
+-------------------------------------------------------------------
+Fri Aug 22 15:41:04 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Fri Jul 18 16:44:57 CEST 2003 - nashif@suse.de
+
+- use DESTDIR
+- fixed fileslist
+
+-------------------------------------------------------------------
+Tue Jul  1 13:00:12 CEST 2003 - ro@suse.de
+
+- use perl_process_packlist macro
+
+-------------------------------------------------------------------
+Fri Jun 13 06:52:47 CEST 2003 - nashif@suse.de
+
+- Update to 1.005
+- Fixed file list 
+
+-------------------------------------------------------------------
+Mon Jul  8 06:15:22 CEST 2002 - nashif@suse.de
+
+- Update to 1.004
+- Use more macros in spec file
+
+-------------------------------------------------------------------
+Tue Dec 11 14:15:16 CET 2001 - nashif@suse.de
+
+- Update to version 0.1021
+
+-------------------------------------------------------------------
+Wed Mar  7 07:34:19 MET 2001 - nashif@suse.de
+
+- Update to version 0.1017
+
+-------------------------------------------------------------------
+Wed Nov  8 15:16:25 MET 2000 - nashif@suse.de
+
+-  Removed build root path from paclist
+
+-------------------------------------------------------------------
+Tue Nov  7 06:03:01 MET 2000 - nashif@suse.de
+
+- Chnaged to long package name
+
+-------------------------------------------------------------------
+Wed Oct 11 16:55:20 MEST 2000 - nashif@suse.de
+
+- Fixed man path
+
+-------------------------------------------------------------------
+Thu Aug 24 16:22:01 MEST 2000 - nashif@suse.de
+
+- Initial Release (Version 0.1016)
+

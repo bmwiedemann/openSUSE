@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Jun 23 12:05:44 CEST 2016 - tiwai@suse.de
+
+- Wrap with a namespace for own exp2() implementation to fix the
+  build error with gcc6:
+  preamp-ext2-conflict.patch
+
+-------------------------------------------------------------------
+Mon Mar  3 13:58:32 CET 2014 - tiwai@suse.de
+
+- Run spec-cleaner
+- Remove obsoleted autoreq/autoprov tags
+
+-------------------------------------------------------------------
+Wed Feb 26 10:56:09 CET 2014 - tiwai@suse.de
+
+- correct the license to GPL-2.0+
+
+-------------------------------------------------------------------
+Mon Dec 16 11:24:37 CET 2013 - tiwai@suse.de
+
+- Split from ladspa package
+- Patch carried from the original ladspa package:
+  preamp.dif
+

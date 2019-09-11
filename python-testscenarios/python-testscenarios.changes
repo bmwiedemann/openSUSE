@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Tue Dec 18 23:20:07 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:13 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Apr  9 15:32:54 UTC 2017 - aloisio@gmx.com
+
+- Disabled tests to avoid dependency loop with testtools
+
+-------------------------------------------------------------------
+Sun Apr  2 08:11:06 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Updated source URL
+
+-------------------------------------------------------------------
+Fri May 15 12:47:31 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.5.0:
+  * Tests fixed for Python 3.3, 3.4, 3.5. (Robert Collins)
+- add new build dependency python-pbr
+- add new runtime dependencies python-pbr and python-testtools
+
+-------------------------------------------------------------------
+Mon May  6 07:14:03 UTC 2013 - speilicke@suse.com
+
+- Properly run testsuite, but not (currently) on SLE_11_SP2
+
+-------------------------------------------------------------------
+Thu May  2 13:43:11 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.4:
+  + Python 3.2 support added. (Robert Collins)
+
+-------------------------------------------------------------------
+Fri Apr  6 21:18:20 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 0.3:
+  * New function per_module_scenarios for tests that should be applied across
+    multiple modules providing the same interface, some of which may not be
+    available at run time. (Martin Pool)
+  * TestWithScenarios is now backed by a mixin - WithScenarios - which can be
+    mixed into different unittest implementations more cleanly (e.g.
+    unittest2). (James Polley, Robert Collins)
+- Recreate spec with current conventions
+
+-------------------------------------------------------------------
+Sat Apr 16 18:56:49 UTC 2011 - jfunk@funktronics.ca
+
+- Initial release
+

@@ -1,0 +1,189 @@
+-------------------------------------------------------------------
+Thu Jan 25 18:57:34 UTC 2018 - jason.record@suse.com
+
+- Clarified web user set string (bsc#1077666)
+
+-------------------------------------------------------------------
+Mon Jan 22 20:05:51 UTC 2018 - jason.record@suse.com
+
+- Detect web and scripting module
+
+-------------------------------------------------------------------
+Fri Jan 19 19:06:55 UTC 2018 - jason.record@suse.com
+
+- Active services as needed or exclude activation with -a
+
+-------------------------------------------------------------------
+Tue Jan  9 18:31:50 UTC 2018 - jason.record@suse.com
+
+- Correct ownership of /var/lib/php? (bsc#1075216)
+
+-------------------------------------------------------------------
+Wed Jan  3 19:31:11 UTC 2018 - jason.record@suse.com
+
+- Removed additional /usr/bin/[ references
+
+-------------------------------------------------------------------
+Tue Jan  2 20:01:57 UTC 2018 - jason.record@suse.com
+
+- Removed references to /usr/bin/[
+
+-------------------------------------------------------------------
+Mon Dec 18 23:44:38 UTC 2017 - jason.record@suse.com
+
+- Updated spec file with spec-cleaner suggestions
+- Removed COPYING.GPLv2
+- Updated schema locations
+
+-------------------------------------------------------------------
+Fri Jun  2 23:12:53 UTC 2017 - jason.record@suse.com
+
+- Fixed incorrect SLE12SP2 global library value (bsc#1042515)
+- setup-sca correctly checks mysql (bsc#975651)
+
+-------------------------------------------------------------------
+Fri Jul  4 18:28:50 UTC 2014 - jrecord@suse.com
+
+- Updated man pages
+- Uniform email from address
+
+-------------------------------------------------------------------
+Fri Jun 13 17:14:03 UTC 2014 - jrecord@suse.com
+
+- Added email from address
+- Fixed restart error in setup-sca
+
+-------------------------------------------------------------------
+Mon Jun  9 19:58:43 UTC 2014 - jrecord@suse.com
+
+- Fixed header lines
+- Removed targets for opening tabs
+- Added SR and OES views to index.php (bnc#881000)
+
+-------------------------------------------------------------------
+Wed Jun  4 22:33:29 UTC 2014 - jrecord@suse.com
+
+- Fixed pattern source links
+
+-------------------------------------------------------------------
+Wed May 28 22:31:53 UTC 2014 - jrecord@suse.com
+
+- Fixed FTP server validation (bnc#879714)
+- Added summary usage to setup-sca (bnc#879715)
+
+-------------------------------------------------------------------
+Mon May 19 18:18:42 UTC 2014 - jrecord@suse.com
+
+- Checks for mysqli library with setup-sca
+
+-------------------------------------------------------------------
+Fri May 16 21:40:55 UTC 2014 - jrecord@suse.com
+
+- Added web module checks to setup-sca
+- setup-sca now checks for PHP modules (bnc#877402)
+- SDP database reference updated (bnc#876919)
+- Report checks web login (bnc#876347)
+- Check for reportfull.php before running
+
+-------------------------------------------------------------------
+Mon May 12 21:44:26 UTC 2014 - jrecord@suse.com
+
+- Added ArchiveID to scadb active,done,pending,error
+- Converted reportfull.php to mysqli
+- Fixed connection errors
+- Converted mysql PHP calls to mysqli (bnc#876918)
+- Fixed build errors for common directory
+
+-------------------------------------------------------------------
+Wed Apr 23 22:14:33 UTC 2014 - jrecord@suse.com
+
+- Added scadb results to find pattern results in the db
+
+-------------------------------------------------------------------
+Tue Apr 22 22:01:59 UTC 2014 - jrecord@suse.com
+
+- Added web password to setup-sdbroker and setup-sca (bnc#874632)
+- Removed clear screen
+- Added scadb config to show current configuration
+
+-------------------------------------------------------------------
+Wed Mar 26 22:44:30 UTC 2014 - jrecord@suse.com
+
+- User password removed from setup-sca
+- Fixed setup-sca status checks (bnc#870402)
+
+-------------------------------------------------------------------
+Thu Mar 20 22:32:49 UTC 2014 - jrecord@suse.com
+
+- Added current report options to scadb
+- Added missing content to scadb man page
+- Updated curl error processing
+- Corrected man page location
+- Fixed man page headers
+- Moved section 1 man pages to section 8
+- Updated man page content
+- Added setup-sca.8 and sdbroker-monitor.8 man pages
+
+-------------------------------------------------------------------
+Thu Mar 13 20:15:06 UTC 2014 - jrecord@suse.com
+
+- Fixed FSF address in files
+- Removed setup-sdp.1 (bnc#868235)
+- Change to System/Monitoring spec Group
+
+-------------------------------------------------------------------
+Sat Feb  8 22:05:45 UTC 2014 - jrecord@suse.com
+
+- Packaged COPYING.GPLv2
+
+-------------------------------------------------------------------
+Fri Jan 31 19:20:09 UTC 2014 - jrecord@suse.com
+
+- added postun
+- fixed supportconfig date sort order
+- updated docs.html with web-config.php
+- added supportconfig run date to index.php
+- added report tag to scadb to manuall generate an html report
+- Converted to .changes
+
+-------------------------------------------------------------------
+Wed Jan 22 17:27:26 MST 2014 jrecord@suse.com
+
+- fixed config dir references in websca/docs.html
+- added pattern update in websca/docs.html
+- commented out debug statements to avoid xss
+
+-------------------------------------------------------------------
+Fri Jan 17 17:27:26 MST 2014 jrecord@suse.com
+
+- documented backup and restore
+
+-------------------------------------------------------------------
+Thu Jan 16 17:27:26 MST 2014 jrecord@suse.com
+
+- relocated files according to FHS
+- updated DEF_HOME for FHS in /var/tmp
+- fixed incorrect bin paths
+
+-------------------------------------------------------------------
+Thu Jan 06 17:27:26 MST 2014 jrecord@suse.com
+
+- updated docs with archive file link
+- updated docs with --no-gpg-checks
+- separated sca-appliance-common files
+
+-------------------------------------------------------------------
+Mon Dec 23 17:27:26 MST 2013 jrecord@suse.com
+
+- setup-sca package names changes
+- fixed blank hypervisor lines
+- sdbroker no longer inserts FileLocation
+
+-------------------------------------------------------------------
+Thu Dec 20 17:27:26 MST 2013 jrecord@suse.com
+
+- separated as individual RPM package
+- SCA reports page sorts by all columns
+- fixed SCA XSS vulnerabilities
+- fixed SCA SQL injection vulnerabilities
+

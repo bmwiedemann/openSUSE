@@ -1,0 +1,190 @@
+-------------------------------------------------------------------
+Wed May 25 09:05:01 UTC 2016 - martin.liska@suse.com
+
+- Add patch gcc6-fix-errors.patch to remove errors seen by GCC6.
+
+-------------------------------------------------------------------
+Sat Nov 19 20:43:03 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Apr 14 13:38:21 UTC 2011 - toddrme2178@gmail.com
+  
+- added 32bit compatibility libraries
+- package no longer obsoletes itself (fix for RPMLINT warning)
+- added BuildRequires:  pkg-config (fix for RPMLINT warning)
+
+-------------------------------------------------------------------
+Sat Dec 12 16:47:24 UTC 2009 - aj@suse.de
+
+- Do not package Makefiles since they only work within the build
+  directory.
+
+-------------------------------------------------------------------
+Sat Aug 16 21:56:37 CEST 2008 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+- correct -devel package dependencies
+
+-------------------------------------------------------------------
+Mon Jan  7 11:51:20 CET 2008 - ssommer@suse.de
+
+- fix build with gcc43 
+
+-------------------------------------------------------------------
+Mon Jul 30 00:50:52 CEST 2007 - ro@suse.de
+
+- provide old name 
+
+-------------------------------------------------------------------
+Wed Jul 25 16:06:14 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.1.5:
+  * Fixed compilation on GCC 4.3.
+  * Fix the patch for buffer overflows in rdfparse.c.
+  * Patch to allow manually entering the CD TOC information.
+  * Fixed configure.in to work with newer versions of autoconf.
+  * Buffer overflow in MBHttp::WriteToBuffer.
+  * Python bindings: No shebang in non-executable scripts.
+- Name package according to shared library packaging policy.
+
+-------------------------------------------------------------------
+Fri Apr 27 23:36:56 CEST 2007 - dmueller@suse.de
+
+- fix -devel requires
+
+-------------------------------------------------------------------
+Fri Apr 27 18:56:16 CEST 2007 - aj@suse.de
+
+- Add libexpat-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Thu Aug 31 18:24:16 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 2.1.4 (#199134):
+  * Security fix CVE-2006-4197:
+    * Fixed buffer overflows in the RDF parsing and HTTP code.
+    * Fixed invalid memory access in the HTTP code.
+  * Fixed memory leaks in RDFExtract.
+
+-------------------------------------------------------------------
+Mon Jul 17 17:24:12 CEST 2006 - lmichnovic@suse.cz
+
+- fixed failing build (buildhack.patch) 
+  just workaround, needs further investigation
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:34 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 10 17:27:11 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 2.1.2.
+
+-------------------------------------------------------------------
+Mon Oct 31 20:12:26 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Mon Apr 11 19:32:35 CEST 2005 - sbrabec@suse.cz
+
+- Fixed invalid cast.
+
+-------------------------------------------------------------------
+Fri Aug  6 10:18:33 CEST 2004 - adrian@suse.de
+
+- add c++ enviroment to nfb
+
+-------------------------------------------------------------------
+Fri Aug  6 09:53:21 CEST 2004 - adrian@suse.de
+
+- update to version 2.1.1
+
+-------------------------------------------------------------------
+Wed Apr 21 01:43:10 CEST 2004 - ro@suse.de
+
+- specify void return for tiger_compress
+
+-------------------------------------------------------------------
+Fri Apr 16 11:39:37 CEST 2004 - ro@suse.de
+
+- remove un-neccessary version line in devel subpackage
+
+-------------------------------------------------------------------
+Tue Feb 10 09:31:35 CET 2004 - coolo@suse.de
+
+- fix build on x86_64
+
+-------------------------------------------------------------------
+Sat Aug 16 15:28:14 CEST 2003 - coolo@suse.de
+
+- fix require after rename
+
+-------------------------------------------------------------------
+Tue Aug 12 14:15:18 CEST 2003 - sbrabec@suse.cz
+
+- Package renamed and splitted.
+- Updated to version 2.0.2.
+
+-------------------------------------------------------------------
+Thu Oct 17 16:17:21 CEST 2002 - sbrabec@suse.cz
+
+- Update to version 1.1.0.
+
+-------------------------------------------------------------------
+Fri Aug 30 15:58:06 CEST 2002 - pmladek@suse.cz
+
+- fixed dependency of the devel subpackage on the main package (used %version)
+
+-------------------------------------------------------------------
+Tue Jan 15 17:46:58 CET 2002 - pmladek@suse.cz
+
+- updated to version 1.0.1
+
+-------------------------------------------------------------------
+Thu Jan 10 16:02:37 CET 2002 - pmladek@suse.cz
+
+- used macro %{_libdir} to fix for lib64
+- added libmusicbrainz.la to the devel package
+
+-------------------------------------------------------------------
+Fri Jul 20 08:54:12 CEST 2001 - pmladek@suse.cz
+
+- updated to stable version 1.0.0
+- removed endian patch (it's fixed in curent version)
+
+-------------------------------------------------------------------
+Sat Jun 23 18:16:18 CEST 2001 - schwab@suse.de
+
+- Fix missing declarations.
+
+-------------------------------------------------------------------
+Thu Jun 14 14:27:05 CEST 2001 - pmladek@suse.cz
+
+- fixed to compile with new autoconf
+
+-------------------------------------------------------------------
+Fri Mar 16 17:15:57 CET 2001 - uli@suse.de
+
+- fixed spec file
+
+-------------------------------------------------------------------
+Thu Mar 15 13:28:47 CET 2001 - nadvornik@suse.cz
+
+- fixed to compile on axp
+
+-------------------------------------------------------------------
+Wed Mar 14 11:45:48 CET 2001 - nadvornik@suse.cz
+
+- update to 1.0.0pre7
+
+-------------------------------------------------------------------
+Fri Dec  1 10:58:15 CET 2000 - smid@suse.cz
+
+- initial version
+
+

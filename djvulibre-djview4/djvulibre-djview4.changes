@@ -1,0 +1,151 @@
+-------------------------------------------------------------------
+Thu Apr 19 10:34:08 UTC 2018 - schwab@suse.de
+
+- npsdk-aarch64-support.patch: remove obsolete patch
+
+-------------------------------------------------------------------
+Tue Nov 22 10:01:59 UTC 2016 - pgajdos@suse.com
+
+- updated to 4.10.6
+  - Support for pinch gestures
+  - New shortcuts on mac
+  - Support for high dpi displays
+  - Spanish translations
+  - Bug fixes
+  - Workaround for qt5.5 embed bug
+
+-------------------------------------------------------------------
+Thu Mar 19 08:09:54 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use url for source 
+- Build qt5 version
+- Remove no longer needed patches
+  * djview4-nsplugin_manpage.patch
+  * djview4-nsplugin_dir.patch
+- Update to 4.10
+  * Bug fixes: layout, usability, preferences, locale selection
+  * Works with both Qt4 and Qt5
+  * Build uses automake/qmake hybrid (instead of autoconf/qmake).
+  * Layout annotations are honored in multipage mode
+  * Experimental OpenGL rendering
+  * Slideshow mode
+
+-------------------------------------------------------------------
+Wed Sep 11 09:18:32 UTC 2013 - schwab@suse.de
+
+- npsdk-aarch64-support.patch: Add support for AArch64 in npsdk
+
+-------------------------------------------------------------------
+Wed Mar 27 07:04:09 UTC 2013 - pgajdos@suse.com
+
+- updated to 4.9:
+  * Added language selection in preference.
+  * Added option to override printing and saving restrictions.
+  * Automatic reloading of djvu documents when the file is changed.
+  * New chinese translations.
+  * Improved network code (needs Qt>=4.4.)
+  * Remember the last visited position for the last 50 documents.
+- dropped qt-4.8.patch, upstream is using qSwap()
+
+-------------------------------------------------------------------
+Mon Dec 19 10:34:30 UTC 2011 - pgajdos@suse.com
+
+- build with qt 4.8
+  * added qt-4.8.patch
+
+-------------------------------------------------------------------
+Mon Oct 31 14:02:14 UTC 2011 - pgajdos@suse.com
+
+- updated to version 4.8:
+  * Added option to invert luminance.
+  * Added shortcut ctrl+g to go to the page combo.
+  * Fixed export issues under win32.
+  * Mouse wheel can be configured to control the zoom.
+  * Animated page movements.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue May 24 09:43:48 UTC 2011 - pgajdos@novell.com
+
+- updated to version 4.7:
+  * Fix for crash on quick PgUp PgDn sequences.
+  * Fix scrollbars in continuous mode.
+  * Fix plugin for some webkit based browsers.
+
+-------------------------------------------------------------------
+Tue Nov 16 15:57:22 CET 2010 - pgajdos@suse.cz
+
+- updated to version 4.6:
+  * Show total page number in page combo and page info box.
+  * Decode percent encoding in annotation and outline hyperlinks.
+  * Properly handle non-ascii filenames in export and save dialogs.
+  * Subtle changes to PgUp/PgDn/Home/End/Space/Backspace view changes.
+  * Fixed suffix management in export/save/print dialogs.
+
+-------------------------------------------------------------------
+Wed Aug  5 08:37:51 CEST 2009 - mseben@suse.cz
+
+- update to version 4.5
+ * Fixed priority of annotation options.
+ * Fixed plugin for recent versions of gcc.
+ * Added showposition in advanced option copyUrl.
+ * New advanced mode to display hidden text.
+ * Lens display annotations and hidden text.
+ * Nsdejavu can use the XEmbed protocol when available.
+ * Plugin is scriptable from JavaScript.
+
+-------------------------------------------------------------------
+Mon Aug 25 15:39:47 CEST 2008 - lmichnovic@suse.cz
+
+- update to version 4.4
+ * Full session management under X11.
+ * Added advanced feature check box.
+ * Added advanced command to copy urls, outline, etc.
+ * New translation (russian)
+ * History in the find dialog.
+ * Option to display hidden text in status bar.
+ * Option to display the first page alone in side-by-side mode.
+ * Option to display side-by-side in right-to-left mode.
+ * Drag'n drop files into the viewer.
+ * Support for Lizardtech's plugin option -showposition.
+
+-------------------------------------------------------------------
+Fri Feb  1 14:48:54 CET 2008 - lmichnovic@suse.cz
+
+- update to version 4.3
+ * Undo/Redo
+ * New translations (german,czech)
+ * Fixed double free bug in plugin mode.
+
+-------------------------------------------------------------------
+Mon Dec 10 17:03:44 CET 2007 - lmichnovic@suse.cz
+
+- update to version 4.2
+  obsoletes semicolon.patch
+  * Better support of Qt/Mac
+  * Recent files menu
+  * Open Location
+  * Undo/Redo
+  * Escape can be used to exit full screen mode
+  * New translation (german)
+
+-------------------------------------------------------------------
+Fri Jul 13 17:33:44 CEST 2007 - lmichnovic@suse.cz
+
+- made conflict with splitted off djvulibre-djview3 package
+- added missing ending semicolon in desktop file (semicolon.patch)
+- changed SuSE default browser plugin path in man page 
+  (nsplugin_manpage.patch) and for installation (nsplugin_dir.patch)
+
+-------------------------------------------------------------------
+Thu Jul 12 19:14:54 CEST 2007 - lmichnovic@suse.cz
+
+- initial package djvulibre-djview4 version 4.1 
+

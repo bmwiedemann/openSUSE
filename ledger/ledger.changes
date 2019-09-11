@@ -1,0 +1,122 @@
+-------------------------------------------------------------------
+Tue Apr  9 13:43:12 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.3:
+  + Properly reject postings with a comment right after the flag (bug #1753)
+  + Make sorting order of lot information deterministic (bug #1747)
+  + Fix bug in tag value parsing (bug #1702)
+  + Remove the org command, which was always a hack to begin with (bug #1706)
+  + Provide Docker information in README
+  + Various small documentation improvements 
+
+-------------------------------------------------------------------
+Wed Mar 20 08:35:19 UTC 2019 - lars@linux-schulserver.de - 3.1.2
+
+- update to 3.1.2:
+  + Increase maximum length for regex from 255 to 4095 (bug #981)
+  + Initialize periods from from/since clause rather than earliest 
+    transaction date (bug #1159)
+  + Check balance assertions against the amount after the posting (bug #1147)
+  + Allow balance assertions with multiple posts to same account (bug #1187)
+  + Fix period duration of "every X days" and similar statements (bug #370)
+  + Make option --force-color not require --color anymore (bug #1109)
+  + Add quoted_rfc4180 to allow CVS output with RFC 4180 compliant quoting.
+  + Add support for --prepend-format in accounts command
+  + Fix handling of edge cases in trim function (bug #520)
+  + Fix auto xact posts not getting applied to account total during 
+    journal parse (bug #552)
+  + Transfer null_post flags to generated postings
+  + Fix segfault when using --market with --group-by
+  + Use amount_width variable for budget report
+  + Keep pending items in budgets until the last day they apply
+  + Fix bug where .total used in value expressions breaks totals
+  + Make automated transactions work with assertions (bug #1127)
+  + Improve parsing of date tokens (bug #1626)
+  + Don't attempt to invert a value if it's already zero (bug #1703)
+  + Do not parse user-specified init-file twice
+  + Fix parsing issue of effective dates 
+    (bug #1722, TALOS-2017-0303, CVE-2017-2807)
+  + Fix use-after-free issue with deferred postings 
+    (bug #1723, TALOS-2017-0304, CVE-2017-2808)
+  + Fix possible stack overflow in option parsing routine 
+    (bug #1222, CVE-2017-12481)
+  + Fix possible stack overflow in date parsing routine 
+    (bug #1224, CVE-2017-12482)
+  + Fix use-after-free when using --gain (bug #541)
+  + Python: Removed double quotes from Unicode values.
+  + Python: Ensure that parse errors produce useful RuntimeErrors
+  + Python: Expose journal expand_aliases
+  + Python: Expose journal_t::register_account
+  + Improve bash completion
+  + Emacs Lisp files have been moved to 
+    https://github.com/ledger/ledger-mode
+  + Fix build under MSYS (32-bit).
+  + Fix build under Cygwin.
+  + Various documentation improvements
+- removed upstreamed patches:
+  + 465.patch
+  + boost_168.patch
+- add libboost_system-devel as build requires
+- package the bashcompletion script as config file
+- re-introduce BuildRoot and defattr macros for older distributions 
+  (they don't harm on newer ones, so don't use a if condition)
+- get rid of the suse_version conditional for boost libraries, as 
+  the package gets build only from SLE-12 and beyond anyway
+- do not use macros in the URL, as OBS is not expending these for 
+  the WebUI
+
+-------------------------------------------------------------------
+Fri Aug 17 07:27:43 UTC 2018 - adam.majer@suse.de
+
+- cleanup specfile - install license as %license
+- boost_168.patch: fix building with Boost 1.68. Sha1 compatibility
+  header was removed from Uuid library (boo#1105084)
+
+-------------------------------------------------------------------
+Wed Feb  1 12:34:15 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Tue Sep 13 14:37:46 UTC 2016 - adam.majer@suse.de
+
+- 465.patch
+  + Fix compilation with Boost 1.61 (boo#994382)
+  + upstream PR https://github.com/ledger/ledger/pull/465
+
+-------------------------------------------------------------------
+Wed Jan 27 10:19:14 UTC 2016 - mimi.vx@gmail.com
+
+- update to 3.1.1
+- drop  ledger-3.1-fix-build-with-boost-1.58.patch
+        ledger-3.1-convert-boost::optional-objects-to-bool-explicitly.patch
+* Added a --no-revalued option
+* Improved Embedded Python Support
+* Use ./.ledgerrc if ~/.ledgerrc doesn't exist
+* Fixed parsing of transactions with single-character payees and comments
+* Fixed crash when using -M option with empty result
+* Fixed sorting for option --auto-match
+* Fixed treatment of year 2015 and Y2014 directives
+* Fixed crash when using --trace 10 or above
+* Build fix for boost 1.58, 1.59, 1.60
+* Build fix for Cygwin
+* Various documentation improvements
+* Examples in the documentation are tested just like unit tests
+
+-------------------------------------------------------------------
+Sun Aug  2 20:42:30 UTC 2015 - antoine.belvire@laposte.net
+
+- Fix build with boost 1.58:
+  * add ledger-3.1-convert-boost::optional-objects-to-bool-explicitly.patch
+  * add ledger-3.1-fix-build-with-boost-1.58.patch
+
+-------------------------------------------------------------------
+Fri Feb  6 14:24:22 UTC 2015 - jmatejka@suse.cz
+
+- Install license file
+
+-------------------------------------------------------------------
+Thu Jan 22 16:46:28 UTC 2015 - jmatejka@suse.cz
+
+- Init package
+

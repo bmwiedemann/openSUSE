@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Thu Sep 21 12:20:24 UTC 2017 - sndirsch@suse.com
+
+- fixed build on Leap (apparently there is no %make_build macro yet) 
+
+-------------------------------------------------------------------
+Fri Aug 18 09:29:59 UTC 2017 - zaitor@opensuse.org
+
+- Initial packaging of cmrt in openSUSE, version 1.0.6.

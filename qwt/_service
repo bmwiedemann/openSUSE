@@ -1,0 +1,14 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="changesgenerate">enable</param>
+    <param name="versionformat">5.2.3_qt5+git%cd.%h</param>
+    <param name="url">https://github.com/gbm19/qwt5-qt5.git</param>
+    <param name="scm">git</param>
+    <param name="filename">qwt</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services> 

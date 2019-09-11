@@ -1,0 +1,212 @@
+--- id3tag.h-dist	2004-02-26 12:40:29.000000000 +0100
++++ id3tag.h	2004-02-26 12:40:36.000000000 +0100
+@@ -273,7 +273,7 @@
+ signed long id3_tag_query(id3_byte_t const *, id3_length_t);
+ 
+ struct id3_tag *id3_tag_parse(id3_byte_t const *, id3_length_t);
+-id3_length_t id3_tag_render(struct id3_tag const *, id3_byte_t *);
++id3_length_t id3_tag_render(struct id3_tag *, id3_byte_t *);
+ 
+ /* frame interface */
+ 
+--- tag.c-dist	2004-02-26 12:40:29.000000000 +0100
++++ tag.c	2004-02-26 12:40:36.000000000 +0100
+@@ -45,6 +45,12 @@
+ # include "field.h"
+ # include "util.h"
+ 
++/* If a v2 tag is too small to fit and the file needs to be rewritten, add at least
++ * TAG_PADDING number of bytes to hopefully prevent having to rewrite the file
++ * in the future.
++ */
++#define TAG_PADDING 256
++
+ /*
+  * NAME:	tag->new()
+  * DESCRIPTION:	allocate and return a new, empty tag
+@@ -765,7 +771,10 @@
+  * NAME:	tag->render()
+  * DESCRIPTION:	render a complete ID3 tag
+  */
+-id3_length_t id3_tag_render(struct id3_tag const *tag, id3_byte_t *buffer)
++/* RAK: Note: This file used to be const, but since the padding might be
++ * adjusted by this function, we can't do that anymore.
++ */
++id3_length_t id3_tag_render(struct id3_tag *tag, id3_byte_t *buffer)
+ {
+   id3_length_t size = 0;
+   id3_byte_t **ptr,
+@@ -876,6 +885,9 @@
+   /* padding */
+ 
+   if (!(flags & ID3_TAG_FLAG_FOOTERPRESENT)) {
++    if (size > tag->paddedsize)
++       tag->paddedsize += TAG_PADDING + size;
++
+     if (size < tag->paddedsize)
+       size += id3_render_padding(ptr, 0, tag->paddedsize - size);
+     else if (tag->options & ID3_TAG_OPTION_UNSYNCHRONISATION) {
+--- file.c-dist	2004-02-26 12:40:29.000000000 +0100
++++ file.c	2004-02-26 12:43:11.000000000 +0100
+@@ -42,6 +42,10 @@
+ # include "tag.h"
+ # include "field.h"
+ 
++#define TMP_SUFFIX       ".temp"
++#define OLD_SUFFIX       ".old"
++#define COPY_BUFFER_SIZE 4096
++
+ struct filetag {
+   struct id3_tag *tag;
+   unsigned long location;
+@@ -575,6 +579,11 @@
+ int v2_write(struct id3_file *file,
+ 	     id3_byte_t const *data, id3_length_t length)
+ {
++  FILE  *out;
++  char  *newpath = NULL, *buffer = NULL, *oldpath = NULL;
++  int    numread = 0, numwritten = 0;
++  struct id3_file *newfile = NULL;
++
+   assert(!data || length > 0);
+ 
+   if (data &&
+@@ -592,8 +601,137 @@
+   }
+ 
+   /* hard general case: rewrite entire file */
++  newpath = malloc(strlen(file->path) + sizeof(TMP_SUFFIX) + 1);
++  if (! newpath)
++    return -1;
++  strcpy(newpath, file->path);
++  strcat(newpath, TMP_SUFFIX);
++  out = fopen(newpath, "wb");
++  if (out == NULL)
++  {
++      free(newpath);
++      return -1;
++  }
+ 
+-  /* ... */
++  /* Write the new tag out */
++  if (fwrite(data, length, 1, out) == 0)
++  {
++      fclose(out);
++      unlink(newpath);
++      free(newpath);
++
++      return -1;
++  }
++
++  if (fseek(file->iofile, (file->tags) ? file->tags[0].length : 0, SEEK_SET) == -1)
++  {
++      fclose(out);
++      unlink(newpath);
++      free(newpath);
++      return -1;
++  }
++  
++  buffer = malloc(COPY_BUFFER_SIZE);
++  if (! buffer) {
++    fclose(out);
++    unlink(newpath);
++    free(newpath);
++    return -1;
++  }
++  for(;;)
++  {
++      numread = fread(buffer, sizeof(char), COPY_BUFFER_SIZE, file->iofile);
++      if (numread <= 0)
++          break;
++
++      numwritten = fwrite(buffer, sizeof(char), numread, out);
++      if (numwritten != numread)
++      {
++          fclose(out);
++          unlink(newpath);
++          free(newpath);
++          free(buffer);
++          return -1;
++      }
++  }
++  free(buffer);
++
++  fclose(out);
++  fclose(file->iofile);
++
++  /* Now rename the file. let's be more paranoid here than id3lib */
++  /* Move the old file to the same name with .old appended */
++  oldpath = malloc(strlen(file->path) + sizeof(OLD_SUFFIX) + 1);
++  if (! oldpath) {
++    unlink(newpath);
++    free(newpath);
++    return -1;
++  }
++  strcpy(oldpath, file->path);
++  strcat(oldpath, OLD_SUFFIX);
++
++  if (rename(file->path, oldpath))
++  {
++      unlink(newpath);
++      unlink(oldpath);
++      free(newpath);
++      free(oldpath);
++      return -1;
++  }
++
++  /* Now rename the new file to proper file */
++  if (rename(newpath, file->path))
++  {
++      /* Something failed, so let's try to put things back */
++      rename(oldpath, file->path);
++      unlink(newpath);
++      unlink(oldpath);
++      free(newpath);
++      free(oldpath);
++      return -1;
++  }
++
++  /* now that the rename succeeded, remove the old file */
++  unlink(oldpath);
++
++  free(oldpath);
++  free(newpath);
++
++  /* Now do the housekeeping to make sure we leave things as we found them */
++  newfile = id3_file_open(file->path, file->mode);
++  if (newfile)
++  {
++      int i;
++
++      /* Clean up the old data */
++      if (file->path)
++        free(file->path);
++
++      if (file->primary) {
++        id3_tag_delref(file->primary);
++        id3_tag_delete(file->primary);
++      }
++
++      for (i = 0; i < file->ntags; ++i) {
++        struct id3_tag *tag;
++
++        tag = file->tags[i].tag;
++        if (tag) {
++          id3_tag_delref(tag);
++          id3_tag_delete(tag);
++        }
++      }
++
++      if (file->tags)
++        free(file->tags);
++
++      memcpy(file, newfile, sizeof(struct id3_file));
++  }
++  else
++  {
++      /* Hmmm. Something is wrong. Let's zero out the current info */
++      memset(file, 0, sizeof(struct id3_file));
++  }
+ 
+  done:
+   return 0;

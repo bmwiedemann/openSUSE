@@ -1,0 +1,23 @@
+Index: b/panel-plugin/net.c
+===================================================================
+--- a/panel-plugin/net.c
++++ b/panel-plugin/net.c
+@@ -35,6 +35,8 @@
+ 
+ #include <libxfce4util/libxfce4util.h>
+ 
++#include <glib.h>
++
+ /* From Wormulon */
+ #include "net.h"
+ #include "os.h"
+@@ -81,8 +83,7 @@ int init_netload(netdata* data, const ch
+         return TRUE;
+     }
+     
+-    strncpy( data->ifdata.if_name, device, INTERFACE_NAME_LENGTH);
+-    data->ifdata.if_name[INTERFACE_NAME_LENGTH] = '\0';
++    g_strlcpy(data->ifdata.if_name, device, sizeof(data->ifdata.if_name));
+     
+     init_osspecific( data );
+     

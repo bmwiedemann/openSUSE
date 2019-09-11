@@ -1,0 +1,50 @@
+Index: Canna37p3/canuum/jhlp.c
+===================================================================
+--- Canna37p3.orig/canuum/jhlp.c
++++ Canna37p3/canuum/jhlp.c
+@@ -41,6 +41,7 @@ static char *rcs_id = "jhlp.c,v 1.13 200
+ #include <stdio.h>
+ #include <setjmp.h>
+ #include <signal.h>
++#include <unistd.h>
+ #if STDC_HEADERS
+ #  include <stdlib.h>
+ #  include <string.h>
+Index: Canna37p3/cmd/catdic/can.c
+===================================================================
+--- Canna37p3.orig/cmd/catdic/can.c
++++ Canna37p3/cmd/catdic/can.c
+@@ -32,6 +32,7 @@ static char rcs[] = "@(#) 112.1 $Id: can
+ 
+ #include <stdio.h>
+ #include <signal.h>
++#include <unistd.h>
+ #include <canna/RK.h>
+ #include <ctype.h>
+ #include <pwd.h>
+Index: Canna37p3/cmd/catdic/rutil.c
+===================================================================
+--- Canna37p3.orig/cmd/catdic/rutil.c
++++ Canna37p3/cmd/catdic/rutil.c
+@@ -32,6 +32,7 @@ static const char rcs[] = "@(#) 112.1 $I
+ #endif
+ 
+ #include <stdio.h>
++#include <unistd.h>
+ #define CANNA_NEW_WCHAR_AWARE
+ #include <canna/RK.h>
+ 
+Index: Canna37p3/server/misc.c
+===================================================================
+--- Canna37p3.orig/server/misc.c
++++ Canna37p3/server/misc.c
+@@ -40,6 +40,9 @@ static char rcs_id[]="@(#) $Id: misc.c,v
+ #include <sys/ioctl.h>
+ #include <net/if.h>
+ 
++#define __USE_BSD
++#include <grp.h>
++
+ #define ERRFILE     "CANNA"
+ #define ERRFILE2    "msgs"
+ #define ERRSIZE     64

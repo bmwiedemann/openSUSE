@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Mon Dec  4 18:17:28 UTC 2017 - crrodriguez@opensuse.org
+
+- Convert to pkgconfig() style buildrequires
+- Do not buildrequire xorg-x11-devel metapackage.
+
+-------------------------------------------------------------------
+Sat Nov  4 22:25:56 UTC 2017 - aavindraa@gmail.com
+
+- updated to v1.3.6:
+  - includes fixes from 1.3.5
+  - see ChangeLog for all changes
+- clean with spec-cleaner
+- drop cellwriter-no-copy-dt-needed-entries.patch, fixed upstream
+
+-------------------------------------------------------------------
+Wed Nov 30 10:33:34 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Sep 17 22:45:13 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Sep  9 08:11:58 UTC 2011 - pgajdos@suse.com
+
+- build with --no-copy-dt-needed-entries
+  * no-copy-dt-needed-entries.patch
+
+-------------------------------------------------------------------
+Sun Aug  2 07:47:40 CEST 2009 - beineri@opensuse.org
+
+- fix capitalization of GenericName in .desktop file
+
+-------------------------------------------------------------------
+Tue Jun 10 10:11:06 CEST 2008 - dkukawka@suse.de
+
+- updated to v1.3.4:
+  - stroke.c, averages.c: Fixed two memory leak
+
+-------------------------------------------------------------------
+Thu Jan 31 19:33:47 CET 2008 - dkukawka@suse.de
+
+- updated to v1.3.3
+
+-------------------------------------------------------------------
+Mon Nov 12 22:49:24 CET 2007 - dkukawka@suse.de
+
+- updated to v1.3.1 
+
+-------------------------------------------------------------------
+Fri Nov  2 21:57:05 CET 2007 - dkukawka@suse.de
+
+- initial package v1.3.0 
+

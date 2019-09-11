@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Thu Feb  1 16:57:32 CET 2018 - ro@suse.de
+
+- do not build on s390, only on s390x (no go on s390)
+
+-------------------------------------------------------------------
+Fri Dec  2 09:20:59 UTC 2016 - tboerger@suse.com
+
+- Recursively test all packages
+
+-------------------------------------------------------------------
+Fri Dec  2 09:20:59 UTC 2016 - tboerger@suse.com
+
+- Added rpmlintrc for common golang linting
+
+-------------------------------------------------------------------
+Fri Dec  2 09:20:59 UTC 2016 - tboerger@suse.com
+
+- Always call gobuild and goinstall
+
+-------------------------------------------------------------------
+Fri Dec  2 09:20:59 UTC 2016 - tboerger@suse.com
+
+- Using the new golang-packaging now
+
+-------------------------------------------------------------------
+Fri Dec  2 09:20:59 UTC 2016 - tboerger@suse.com
+
+- Refactoed spec with a new unified layout
+
+-------------------------------------------------------------------
+Thu Dec  1 16:03:19 UTC 2016 - jmassaguerpla@suse.com
+
+- add the generation of the source package. With go1.7 we need
+  the source in order to build other golang-* which depend on this
+  one.
+
+-------------------------------------------------------------------
+Sun Jan 17 09:48:00 UTC 2016 - i@marguerite.su
+
+- Update to version 0.0.0+git20151027.10ef21a
+  * pollute repository with an extraneous non-executable file
+- don't build -source sub-package
+
+-------------------------------------------------------------------
+Tue Jul 28 14:11:06 UTC 2015 - i@marguerite.su
+
+- initial version 0.0.0+git20150514.11a20b7
+

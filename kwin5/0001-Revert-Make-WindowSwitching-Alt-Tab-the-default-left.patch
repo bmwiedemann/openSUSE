@@ -1,0 +1,71 @@
+From 53c3f29e67660edcd2c3b5f6a468f361275d17fd Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 13 Jun 2017 21:04:27 +0200
+Subject: [PATCH] Revert "Make WindowSwitching (Alt+Tab) the default left touch
+ screen edge"
+
+This reverts commit c453eb696cc97208f8ebf2f632995b891bb425c3.
+
+This causes a 1px wide window on the left screen edge
+that steals clicks from windows. Very annoying.
+
+---
+ kcmkwin/kwinscreenedges/touch.cpp | 4 +---
+ tabbox/tabbox.cpp                 | 6 +++---
+ 2 files changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/kcmkwin/kwinscreenedges/touch.cpp b/kcmkwin/kwinscreenedges/touch.cpp
+index df5cb38be..cc8347caf 100644
+--- a/kcmkwin/kwinscreenedges/touch.cpp
++++ b/kcmkwin/kwinscreenedges/touch.cpp
+@@ -252,7 +252,7 @@ void KWinScreenEdgesConfig::monitorLoad()
+     KConfigGroup tabBoxConfig(m_config, "TabBox");
+     list.clear();
+     // TabBox
+-    list.append(int(ElectricLeft));
++    list.append(int(ElectricNone));
+     list = tabBoxConfig.readEntry("TouchBorderActivate", list);
+     foreach (int i, list) {
+         monitorChangeEdge(ElectricBorder(i), int(TabBox));
+@@ -347,8 +347,6 @@ void KWinScreenEdgesConfig::monitorDefaults()
+     // Clear all edges
+     for (int i = 0; i < 8; i++)
+         m_ui->monitor->selectEdgeItem(i, 0);
+-    // select TabBox
+-    m_ui->monitor->selectEdgeItem(int(Monitor::Left), int(TabBox));
+ }
+ 
+ void KWinScreenEdgesConfig::monitorShowEvent()
+diff --git a/tabbox/tabbox.cpp b/tabbox/tabbox.cpp
+index d6d3c7849..4dc2a599a 100644
+--- a/tabbox/tabbox.cpp
++++ b/tabbox/tabbox.cpp
+@@ -821,14 +821,14 @@ void TabBox::reconfigure()
+         borderConfig = QStringLiteral("BorderAlternativeActivate");
+     }
+ 
+-    auto touchConfig = [this, config] (const QString &key, QHash<ElectricBorder, QAction *> &actions, TabBoxMode mode, const QStringList &defaults = QStringList{}) {
++    auto touchConfig = [this, config] (const QString &key, QHash<ElectricBorder, QAction *> &actions, TabBoxMode mode) {
+         // fist erase old config
+         for (auto it = actions.begin(); it != actions.end(); ) {
+             delete it.value();
+             it = actions.erase(it);
+         }
+         // now new config
+-        const QStringList list = config.readEntry(key, defaults);
++        const QStringList list = config.readEntry(key, QStringList());
+         for (const auto &s : list) {
+             bool ok;
+             const int i = s.toInt(&ok);
+@@ -841,7 +841,7 @@ void TabBox::reconfigure()
+             actions.insert(ElectricBorder(i), a);
+         }
+     };
+-    touchConfig(QStringLiteral("TouchBorderActivate"), m_touchActivate, TabBoxWindowsMode, QStringList{QString::number(int(ElectricLeft))});
++    touchConfig(QStringLiteral("TouchBorderActivate"), m_touchActivate, TabBoxWindowsMode);
+     touchConfig(QStringLiteral("TouchBorderAlternativeActivate"), m_touchAlternativeActivate, TabBoxWindowsAlternativeMode);
+ }
+ 
+-- 
+2.13.2
+

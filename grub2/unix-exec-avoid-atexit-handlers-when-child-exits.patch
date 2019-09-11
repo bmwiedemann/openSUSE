@@ -1,0 +1,70 @@
+From: Patrick Steinhardt <ps@pks.im>
+Date: Mon, 28 Aug 2017 20:57:19 +0200
+Subject: unix exec: avoid atexit handlers when child exits
+Git-commit: e75cf4a58b5eaf482804e5e1b2cc7d4399df350e
+Patch-mainline: Yes, but not released yet
+References: bsc#1086670
+
+The `grub_util_exec_redirect_all` helper function can be used to
+spawn an executable and redirect its output to some files. After calling
+`fork()`, the parent will wait for the child to terminate with
+`waitpid()` while the child prepares its file descriptors, environment
+and finally calls `execvp()`. If something in the children's setup
+fails, it will stop by calling `exit(127)`.
+
+Calling `exit()` will cause any function registered via `atexit()` to be
+executed, which is usually the wrong thing to do in a child. And
+actually, one can easily observe faulty behaviour on musl-based systems
+without modprobe(8) installed: executing `grub-install --help` will call
+`grub_util_exec_redirect_all` with "modprobe", which obviously fails if
+modprobe(8) is not installed. Due to the child now exiting and invoking
+the `atexit()` handlers, it will clean up some data structures of the
+parent and cause it to be deadlocked in the `waitpid()` syscall.
+
+The issue can easily be fixed by calling `_exit(127)` instead, which is
+especially designed to be called when the atexit-handlers should not be
+executed.
+
+Signed-off-by: Patrick Steinhardt <ps@pks.im>
+---
+ grub-core/osdep/unix/exec.c |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+--- a/grub-core/osdep/unix/exec.c
++++ b/grub-core/osdep/unix/exec.c
+@@ -99,7 +99,7 @@ grub_util_exec_redirect_all (const char
+ 	{
+ 	  fd = open (stdin_file, O_RDONLY);
+ 	  if (fd < 0)
+-	    exit (127);
++	    _exit (127);
+ 	  dup2 (fd, STDIN_FILENO);
+ 	  close (fd);
+ 	}
+@@ -108,7 +108,7 @@ grub_util_exec_redirect_all (const char
+ 	{
+ 	  fd = open (stdout_file, O_WRONLY | O_CREAT, 0700);
+ 	  if (fd < 0)
+-	    exit (127);
++	    _exit (127);
+ 	  dup2 (fd, STDOUT_FILENO);
+ 	  close (fd);
+ 	}
+@@ -117,7 +117,7 @@ grub_util_exec_redirect_all (const char
+ 	{
+ 	  fd = open (stderr_file, O_WRONLY | O_CREAT, 0700);
+ 	  if (fd < 0)
+-	    exit (127);
++	    _exit (127);
+ 	  dup2 (fd, STDERR_FILENO);
+ 	  close (fd);
+ 	}
+@@ -126,7 +126,7 @@ grub_util_exec_redirect_all (const char
+       setenv ("LC_ALL", "C", 1);
+ 
+       execvp ((char *) argv[0], (char **) argv);
+-      exit (127);
++      _exit (127);
+     }
+   waitpid (pid, &status, 0);
+   if (!WIFEXITED (status))

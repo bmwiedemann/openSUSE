@@ -1,0 +1,40 @@
+From 35a1af25f7b58e96fb19accb4b3c376a9b362571 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 27 Sep 2018 19:53:55 +0200
+Subject: [PATCH] Revert "Adds sourcing of /etc/profile to fish"
+
+This reverts commit f749f1d65165de7ce7b9ae073b19f057b205ab35.
+
+See https://github.com/sddm/sddm/issues/1059
+---
+ data/scripts/Xsession        | 1 -
+ data/scripts/wayland-session | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/data/scripts/Xsession b/data/scripts/Xsession
+index c7fa214..2a0691e 100755
+--- a/data/scripts/Xsession
++++ b/data/scripts/Xsession
+@@ -39,7 +39,6 @@ case $SHELL in
+     rm -f $xsess_tmp
+     ;;
+   */fish)
+-    [ -f /etc/profile ] && . /etc/profile
+     xsess_tmp=`mktemp /tmp/xsess-env-XXXXXX`
+     $SHELL --login -c "/bin/sh -c 'export -p' > $xsess_tmp"
+     . $xsess_tmp
+diff --git a/data/scripts/wayland-session b/data/scripts/wayland-session
+index 42be624..de4f519 100755
+--- a/data/scripts/wayland-session
++++ b/data/scripts/wayland-session
+@@ -39,7 +39,6 @@ case $SHELL in
+     rm -f $wlsess_tmp
+     ;;
+   */fish)
+-    [ -f /etc/profile ] && . /etc/profile
+     xsess_tmp=`mktemp /tmp/xsess-env-XXXXXX`
+     $SHELL --login -c "/bin/sh -c 'export -p' > $xsess_tmp"
+     . $xsess_tmp
+-- 
+2.18.0
+

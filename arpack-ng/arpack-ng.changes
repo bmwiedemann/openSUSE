@@ -1,0 +1,167 @@
+-------------------------------------------------------------------
+Sun Jul  9 12:06:49 UTC 2017 - badshah400@gmail.com
+
+- Update to version 3.5.0:
+   * Improve cmake build system: disable C++ detection, set
+     default build type.
+   * Use AC_PROG_FC instead of AC_PROG_F77 for proper
+     inizialization for the usage of AC_FC_LINE_LENGTH.
+   * Improve cmake build system: add make install and fix shared
+     libraries.
+   * fix usages of DLACPY to not alias inputs
+     (patch from
+     https://software.intel.com/en-us/articles/how-to-resolve-arpack-issues-with-intel-mkl-110-update-3)
+   * Fix possible deadlock when PARPACK call uses communicator
+     with a larger number of CPUs than previous call
+   * Portability improvements to the autotools build system.
+   * Let cmake guess the default installation directories.  Can be
+     overridden by changing CMAKE_INSTALL_LIBDIR and
+     CMAKE_INSTALL_BINDIR.
+   * Shared libraries built by cmake now have their SONAME set
+     identical to those built by autotools.
+   * Avoid purification stage in [d,s]neupd.f if it requires
+     division by zero (Closes: gh#opencollab/arpack-ng#58).
+
+-------------------------------------------------------------------
+Fri Jul  8 09:38:13 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 3.4.0
+  * Build system updates
+
+-------------------------------------------------------------------
+Tue May 31 15:21:21 UTC 2016 - ronisbr@gmail.com
+
+- Update to version 3.3.0
+  * Rename pdlamch to pdlamch10 to avoid symbol collision with
+    Scalapack 2.0.2 in MPI context.
+  * General improvements on the build system.
+  * libparpack links against libarpack (instead of doing a static
+    link).
+  * Reverts using {d,s}lahqr from lapack 2.
+  * Use dlahqr from lapack 3 instead of dlaqrb.
+- Run spec-cleaner.
+- Minor improvements in the .spec file.
+
+-------------------------------------------------------------------
+Sat Dec 13 20:14:54 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 3.2.0
+  * See included CHANGES file for details
+  * Remove obsolete 0001-Do-not-install-test-binaries.patch
+
+-------------------------------------------------------------------
+Wed Jan  8 06:55:25 UTC 2014 - badshah400@gmail.com
+
+- Add baselibs.conf file for multiarch binaries.
+
+-------------------------------------------------------------------
+Tue Dec 10 13:48:49 UTC 2013 - sweet_f_a@gmx.de
+
+- Update to version 3.1.4
+  * libparpack2: missing dependency on MPI:
+    http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=718790
+  * Replace LAPACK second function with ARPACK's own arscnd in PARPACK
+  * Fix issue #1259 in DSEUPD and SSEUPD
+    The Ritz vector purification step assumes workl(iq) still contains the
+    original Q matrix. This is however overwritten by the call to xGEQR2
+    earlier.
+  * Use configure supplied blas and lapack in the pkg-config.
+    Thanks to Ward Poelmans (Closes: #1320)
+  * Switch to automake 1.14 + libtool 2.4.2.
+    Thanks to Ward Poelmans (Closes: #1321)
+  * dseupd routine may lead to a segmentation fault
+    Thanks to Edouard Canot (Closes: #1323)
+  * dsaupd and 'BE' option returns wrong eigenvalues for a SPD matrix
+    Thanks to Edouard Canot (Closes: #1329)
+- enable test suite
+- add 0001-Do-not-install-test-binaries.patch to remove useless
+  test binaries, this removes the whole default arpack-ng package 
+
+-------------------------------------------------------------------
+Fri Sep  6 22:08:30 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 3.1.3
+  * Replace depcomp symlink with actual file.
+  * Replace arpack.pc with proper autotooled arpack.pc.in
+  * Add debug.h to TESTS/Makefile.am sources
+  * "make dist" is functionnal
+  * Also build the library "libparpacksrcblacs" (PARPACK/UTIL/BLACS/)
+  * Wrong call to pdlamch was causing segfaults
+  * Get rid of the mpif.h occurences in the source code
+  * Configure detected built-in LAPACK and BLAS, but refused to use them
+  * Fixed division by zero in smlnum by usind p[d,s]lamch instead of the
+    serial
+
+-------------------------------------------------------------------
+Sun Aug 26 18:05:43 UTC 2012 - scorot@free.fr
+
+- fix source file Url 
+
+-------------------------------------------------------------------
+Sun Aug 26 14:11:06 UTC 2012 - scorot@free.fr
+
+- fix borken obsoletes/provides in devel package 
+
+-------------------------------------------------------------------
+Tue Jul 10 21:57:20 UTC 2012 - scorot@free.fr
+
+- version 3.1.1
+   * Many bug fixes in the parpack lib. It is an old patch from
+     upstream. Thanks to Viral Shah for pinging us on this subject.
+     See the PARPACK_CHANGES file for the details.
+   * Fixed a lack of appropriate bounds check in DNAUP2.
+     Thanks to Pauli Virtanen for the patch (Closes: #632)
+   * Update of the doc about TOL in dnaupd.
+   * Reorder bug fixed when eigenvectors are requested and the
+     resulting number of converged eigenvalues is less than the
+     number requested. Patches from Tim Mitchell. (Closes: #664) 
+- spec file cleanup
+
+-------------------------------------------------------------------
+Thu Jun  7 20:24:35 UTC 2012 - scorot@free.fr
+
+- add missing requirements of blas and lapack in devel package 
+
+-------------------------------------------------------------------
+Mon May 14 21:23:45 UTC 2012 - scorot@free.fr
+
+- Modify Requires of devel subpackages to match changes in lapack
+  and blas packages
+
+-------------------------------------------------------------------
+Thu May 10 21:18:49 UTC 2012 - scorot@free.fr
+
+- Modify BuildRequires to match recent name changes of lapack and
+  blas in project. 
+
+-------------------------------------------------------------------
+Tue May  8 00:08:28 UTC 2012 - scorot@free.fr
+
+- link against reference blas and lapack instead of openblas
+- build parallel parpack libs for openmpi and mvapich2 
+- add examples files in the doc of devel package
+
+-------------------------------------------------------------------
+Sun May  6 21:56:21 UTC 2012 - scorot@free.fr
+
+- spec file cleanup
+- fix license flag
+
+-------------------------------------------------------------------
+Wed Mar 21 22:11:10 UTC 2012 - scorot@free.fr
+
+- add provides %%name in devel package 
+
+-------------------------------------------------------------------
+Tue Feb 28 18:37:14 UTC 2012 - scorot@free.fr
+
+- add BuildRoot flag in order to fix build on SLE
+- fix wrong library minor number
+- fix wrong requirement in devel package
+
+-------------------------------------------------------------------
+Sun Feb 26 17:48:21 UTC 2012 - scorot@free.fr
+
+- initial package
+- version 3.0.2 
+

@@ -1,0 +1,36 @@
+From af0fe879800e72101b6d306c1b510880aec7cdaa Mon Sep 17 00:00:00 2001
+From: Samuel Cabrero <scabrero@suse.de>
+Date: Mon, 14 Jan 2019 13:14:47 +0100
+Subject: [PATCH 5/9] krb5-1.6.3-ktutil-manpage
+
+Import krb5-1.6.3-ktutil-manpage.dif
+---
+ src/man/ktutil.man | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/src/man/ktutil.man b/src/man/ktutil.man
+index 4e174c0fe..f6d6ae814 100644
+--- a/src/man/ktutil.man
++++ b/src/man/ktutil.man
+@@ -171,6 +171,18 @@ ktutil:
+ .sp
+ See kerberos(7) for a description of Kerberos environment
+ variables.
++.SH REMARKS
++Changes to the keytab are appended to the keytab file (i.e., the keytab file
++is never overwritten).  To directly modify a keytab, save the changes to a
++temporary file and then overwrite the keytab file of interest.
++.TP
++.nf
++Example:
++ktutil> rkt /etc/krb5.keytab
++(modifications to keytab)
++ktutil> wkt /tmp/krb5.newtab
++ktutil> q
++# mv /tmp/krb5.newtab /etc/krb5.keytab
+ .SH SEE ALSO
+ .sp
+ kadmin(1), kdb5_util(8), kerberos(7)
+-- 
+2.20.1
+

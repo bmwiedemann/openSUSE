@@ -1,0 +1,1312 @@
+Index: openssl-1.0.2l/doc/crypto/OPENSSL_s390xcap.pod
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ openssl-1.0.2l/doc/crypto/OPENSSL_s390xcap.pod	2017-07-04 10:44:15.311146555 +0200
+@@ -0,0 +1,175 @@
++=pod
++
++=head1 NAME
++
++OPENSSL_s390xcap - the z processor capabilities vector
++
++=head1 SYNOPSIS
++
++ env OPENSSL_s390xcap=... <application>
++
++=head1 DESCRIPTION
++
++libcrypto supports z architecture instruction set extensions. These
++extensions are denoted by individual bits in the capability vector.
++When libcrypto is initialized, the bits returned by the STFLE instruction
++and by the QUERY functions are stored in the vector.
++
++The OPENSSL_s390xcap environment variable can be set before starting an
++application to affect capability detection. It is specified by a
++colon-separated list of 64-bit values in hexadecimal notation, the 0x
++prefix being optional. The ~ prefix means bitwise NOT and a point
++indicates the end of the STFLE bits respectively the beginning of the
++QUERY bits.
++
++After initialization, the capability vector is ANDed bitwise with the
++corresponding parts of the environment variable.
++
++The following bits are significant:
++
++:
++:
++
++=over
++
++=item #62 vector facility
++
++=back
++
++.
++
++=over
++
++=item #60 KIMD-SHA-512
++
++=item #61 KIMD-SHA-256
++
++=item #62 KIMD-SHA-1
++
++=back
++
++:
++
++=over
++
++=item #62 KIMD-GHASH
++
++=back
++
++:
++
++=over
++
++=item #11 KM-XTS-AES-256
++
++=item #13 KM-XTS-AES-128
++
++=item #43 KM-AES-256
++
++=item #44 KM-AES-192
++
++=item #45 KM-AES-128
++
++=back
++
++:
++:
++
++=over
++
++=item #43 KMC-AES-256
++
++=item #44 KMC-AES-192
++
++=item #45 KMC-AES-128
++
++=back
++
++:
++:
++
++=over
++
++=item #43 KMAC-AES-256
++
++=item #44 KMAC-AES-192
++
++=item #45 KMAC-AES-128
++
++=back
++
++:
++:
++:
++:
++
++=over
++
++=item #43 KMO-AES-256
++
++=item #44 KMO-AES-192
++
++=item #45 KMO-AES-128
++
++=back
++
++:
++:
++
++=over
++
++=item #43 KMF-AES-256
++
++=item #44 KMF-AES-192
++
++=item #45 KMF-AES-128
++
++=back
++
++:
++:
++
++=over
++
++=item #60 PRNO-SHA-512-DRNG
++
++=back
++
++:
++
++=over
++
++=item #13 PRNO-TRNG
++
++=back
++
++:
++
++=over
++
++=item #43 KMA-GCM-AES-256
++
++=item #44 KMA-GCM-AES-192
++
++=item #45 KMA-GCM-AES-128
++
++=back
++
++=head1 EXAMPLES
++
++OPENSSL_s390xcap=0:0:~0x4000000000000000 disables the vector facility.
++
++OPENSSL_s390xcap=.0:0 disables KIMD.
++
++OPENSSL_s390xcap=.::~0x2800 disables KM-XTS-AES.
++
++=head1 COPYRIGHT
++
++Copyright 2017 The OpenSSL Project Authors. All Rights Reserved.
++
++Licensed under the OpenSSL license (the "License").  You may not use
++this file except in compliance with the License.  You can obtain a copy
++in the file LICENSE in the source distribution or at
++L<https://www.openssl.org/source/license.html>.
++
++=cut
+Index: openssl-1.0.2l/crypto/aes/asm/aes-s390x.pl
+===================================================================
+--- openssl-1.0.2l.orig/crypto/aes/asm/aes-s390x.pl	2017-05-25 14:54:34.000000000 +0200
++++ openssl-1.0.2l/crypto/aes/asm/aes-s390x.pl	2017-07-04 10:46:19.041026703 +0200
+@@ -1,4 +1,11 @@
+-#!/usr/bin/env perl
++#! /usr/bin/env perl
++# Copyright 2007-2016 The OpenSSL Project Authors. All Rights Reserved.
++#
++# Licensed under the OpenSSL license (the "License").  You may not use
++# this file except in compliance with the License.  You can obtain a copy
++# in the file LICENSE in the source distribution or at
++# https://www.openssl.org/source/license.html
++
+ 
+ # ====================================================================
+ # Written by Andy Polyakov <appro@fy.chalmers.se> for the OpenSSL
+@@ -92,10 +99,12 @@ if ($flavour =~ /3[12]/) {
+ 	$g="g";
+ }
+ 
+-while (($output=shift) && ($output!~/^\w[\w\-]*\.\w+$/)) {}
++while (($output=shift) && ($output!~/\w[\w\-]*\.\w+$/)) {}
+ open STDOUT,">$output";
+ 
+-$softonly=0;	# allow hardware support
++# 0: Enable hardware support.
++# 1: Disable hardware support. Requires -DAES_SOFTONLY built.
++$softonly=0;
+ 
+ $t0="%r0";	$mask="%r0";
+ $t1="%r1";
+@@ -814,13 +823,10 @@ $code.=<<___ if (!$softonly);
+ 	ar	%r5,%r0
+ 
+ 	larl	%r1,OPENSSL_s390xcap_P
+-	lg	%r0,0(%r1)
+-	tmhl	%r0,0x4000	# check for message-security assist
+-	jz	.Lekey_internal
+-
+ 	llihh	%r0,0x8000
+ 	srlg	%r0,%r0,0(%r5)
+-	ng	%r0,48(%r1)	# check kmc capability vector
++	ng	%r0,40(%r1)	# check km capability vector
++	ng	%r0,56(%r1)	# check kmc capability vector
+ 	jz	.Lekey_internal
+ 
+ 	lmg	%r0,%r1,0($inp)	# just copy 128 bits...
+@@ -1388,6 +1394,7 @@ $code.=<<___;
+ .type	AES_ctr32_encrypt,\@function
+ .align	16
+ AES_ctr32_encrypt:
++.cfi_startproc
+ 	xgr	%r3,%r4		# flip %r3 and %r4, $out and $len
+ 	xgr	%r4,%r3
+ 	xgr	%r3,%r4
+@@ -1399,7 +1406,45 @@ $code.=<<___ if (!$softonly);
+ 	clr	%r0,%r1
+ 	jl	.Lctr32_software
+ 
+-	stm${g}	%r6,$s3,6*$SIZE_T($sp)
++	stm${g}	$s2,$s3,10*$SIZE_T($sp)
++	.cfi_rel_offset $s2,10*$SIZE_T
++	.cfi_rel_offset $s3,11*$SIZE_T
++	llgfr	$s2,%r0
++	larl	%r1,OPENSSL_s390xcap_P
++	llihh	%r0,0x8000	# check if kma supports the function code
++	srlg	%r0,%r0,0($s2)
++	ng	%r0,152(%r1)	# check kma capability vector
++	lgr	%r0,$s2
++	jz	.Lctr32_nokma
++
++	aghi	$sp,-112
++	.cfi_adjust_cfa_offset 112
++	lhi	%r1,0x0600
++	sllg	$len,$len,4
++	or	%r0,%r1		# set HS and LAAD flags
++	lmg	$s2,$s3,0($ivp)
++	la	%r1,0($sp)	# prepare parameter block
++	ahi	$s3,-1		# decrement counter
++	mvc	80(32,$sp),0($key)	# copy key
++	stmg	$s2,$s3,64($sp)	# copy iv
++	st	$s3,12($sp)	# copy counter
++	lghi	$s3,0		# no AAD
++
++	.long	0xb929a042	# kma $out,$s2,$inp
++	brc	1,.-4		# pay attention to "partial completion"
++
++	xc	80(32,$sp),80($sp)	# wipe key copy
++	la	$sp,112($sp)
++	.cfi_adjust_cfa_offset -112
++	lm${g}	$s2,$s3,10*$SIZE_T($sp)
++	.cfi_restore $s2
++	.cfi_restore $s3
++	br	$ra
++
++.align	16
++.Lctr32_nokma:
++
++	stm${g}	%r6,$s1,6*$SIZE_T($sp)
+ 
+ 	slgr	$out,$inp
+ 	la	%r1,0($key)	# %r1 is permanent copy of $key
+@@ -1432,18 +1477,13 @@ $code.=<<___ if (!$softonly);
+ 
+ .Lctr32_hw_switch:
+ ___
+-$code.=<<___ if (0);	######### kmctr code was measured to be ~12% slower
+-	larl	$s0,OPENSSL_s390xcap_P
+-	lg	$s0,8($s0)
+-	tmhh	$s0,0x0004	# check for message_security-assist-4
+-	jz	.Lctr32_km_loop
+-
++$code.=<<___ if (!$softonly && 0);# kmctr code was measured to be ~12% slower
+ 	llgfr	$s0,%r0
+ 	lgr	$s1,%r1
+ 	larl	%r1,OPENSSL_s390xcap_P
+ 	llihh	%r0,0x8000	# check if kmctr supports the function code
+ 	srlg	%r0,%r0,0($s0)
+-	ng	%r0,64(%r1)	# check kmctr capability vector
++	ng	%r0,88(%r1)	# check kmctr capability vector
+ 	lgr	%r0,$s0
+ 	lgr	%r1,$s1
+ 	jz	.Lctr32_km_loop
+@@ -1481,7 +1521,7 @@ $code.=<<___ if (0);	######### kmctr cod
+ 	br	$ra
+ .align	16
+ ___
+-$code.=<<___;
++$code.=<<___ if (!$softonly);
+ .Lctr32_km_loop:
+ 	la	$s2,16($sp)
+ 	lgr	$s3,$fp
+@@ -1563,6 +1603,7 @@ $code.=<<___;
+ 
+ 	lm${g}	%r6,$ra,6*$SIZE_T($sp)
+ 	br	$ra
++.cfi_endproc
+ .size	AES_ctr32_encrypt,.-AES_ctr32_encrypt
+ ___
+ }
+@@ -1593,7 +1634,7 @@ $code.=<<___ if(1);
+ 	larl	%r1,OPENSSL_s390xcap_P
+ 	llihh	%r0,0x8000
+ 	srlg	%r0,%r0,32($s1)		# check for 32+function code
+-	ng	%r0,32(%r1)		# check km capability vector
++	ng	%r0,40(%r1)		# check km capability vector
+ 	lgr	%r0,$s0			# restore the function code
+ 	la	%r1,0($key1)		# restore $key1
+ 	jz	.Lxts_km_vanilla
+@@ -1628,7 +1669,7 @@ $code.=<<___ if(1);
+ 	llgc	$len,2*$SIZE_T-1($sp)
+ 	nill	$len,0x0f		# $len%=16
+ 	br	$ra
+-	
++
+ .align	16
+ .Lxts_km_vanilla:
+ ___
+@@ -1855,7 +1896,7 @@ $code.=<<___;
+ 	xgr	$s1,%r1
+ 	lrvgr	$s1,$s1			# flip byte order
+ 	lrvgr	$s3,$s3
+-	srlg	$s0,$s1,32		# smash the tweak to 4x32-bits 
++	srlg	$s0,$s1,32		# smash the tweak to 4x32-bits
+ 	stg	$s1,$tweak+0($sp)	# save the tweak
+ 	llgfr	$s1,$s1
+ 	srlg	$s2,$s3,32
+@@ -1906,7 +1947,7 @@ $code.=<<___;
+ 	xgr	$s1,%r1
+ 	lrvgr	$s1,$s1			# flip byte order
+ 	lrvgr	$s3,$s3
+-	srlg	$s0,$s1,32		# smash the tweak to 4x32-bits 
++	srlg	$s0,$s1,32		# smash the tweak to 4x32-bits
+ 	stg	$s1,$tweak+0($sp)	# save the tweak
+ 	llgfr	$s1,$s1
+ 	srlg	$s2,$s3,32
+@@ -2098,7 +2139,7 @@ $code.=<<___;
+ 	xgr	$s1,%r1
+ 	lrvgr	$s1,$s1			# flip byte order
+ 	lrvgr	$s3,$s3
+-	srlg	$s0,$s1,32		# smash the tweak to 4x32-bits 
++	srlg	$s0,$s1,32		# smash the tweak to 4x32-bits
+ 	stg	$s1,$tweak+0($sp)	# save the tweak
+ 	llgfr	$s1,$s1
+ 	srlg	$s2,$s3,32
+@@ -2218,9 +2259,211 @@ $code.=<<___;
+ .size	AES_xts_decrypt,.-AES_xts_decrypt
+ ___
+ }
++
++################
++# void s390x_aes_gcm_blocks(unsigned char *out, GCM128_CONTEXT *ctx,
++#                           const unsigned char *in, size_t len,
++#                           const unsigned char *aad, size_t alen,
++#                           const AES_KEY *key, int enc)
++{
++my ($out,$ctx,$in,$len,$aad,$alen,$key,$enc) = map("%r$_",(2..9));
++$code.=<<___ if (!$softonly);
++.globl	s390x_aes_gcm_blocks
++.type	s390x_aes_gcm_blocks,\@function
++.align	16
++s390x_aes_gcm_blocks:
++.cfi_startproc
++	stm$g	$alen,$enc,7*$SIZE_T($sp)
++	.cfi_rel_offset $alen,7*$SIZE_T
++	.cfi_rel_offset $key,8*$SIZE_T
++	.cfi_rel_offset $enc,9*$SIZE_T
++	lm$g	$alen,$enc,$stdframe($sp)
++
++	aghi	$sp,-112
++	.cfi_adjust_cfa_offset 112
++
++	lmg	%r0,%r1,0($ctx)
++	ahi	%r1,-1
++
++	mvc	16(32,$sp),64($ctx)	# copy Xi/H
++	#mvc	48(16,$sp),48($ctx)	# copy len
++	mvc	80(32,$sp),0($key)	# copy key
++	st	%r1,12($sp)		# copy Yi
++	stmg	%r0,%r1,64($sp)
++
++	lhi	%r1,128
++	l	%r0,240($key)	# kma capability vector checked by caller
++	sll	$enc,7
++	xr	$enc,%r1
++	or	%r0,$enc
++
++	la	%r1,0($sp)
++
++	.long	0xb9296024	# kma $out,$aad,$in
++	brc	1,.-4		# pay attention to "partial completion"
++
++	l	%r0,12($sp)
++	mvc	64(16,$ctx),16($sp)	# update Xi
++	xc	0(112,$sp),0($sp)	# wipe stack
++
++	la	$sp,112($sp)
++	.cfi_adjust_cfa_offset -112
++	ahi	%r0,1
++	st	%r0,12($ctx)
++
++	lm$g	$alen,$enc,7*$SIZE_T($sp)
++	.cfi_restore $alen
++	.cfi_restore $key
++	.cfi_restore $enc
++	br	$ra
++.cfi_endproc
++.size	s390x_aes_gcm_blocks,.-s390x_aes_gcm_blocks
++___
++}
++
++################
++# void s390x_aes_ofb_blocks(unsigned char *out,
++#                           unsigned char iv[AES_BLOCK_SIZE],
++#                           const unsigned char *in, size_t len,
++#                           const AES_KEY *key)
++{
++my ($out,$iv,$in,$len,$key) = map("%r$_",(2..6));
++
++$code.=<<___ if (!$softonly);
++.globl	s390x_aes_ofb_blocks
++.type	s390x_aes_ofb_blocks,\@function
++.align	16
++s390x_aes_ofb_blocks:
++.cfi_startproc
++	aghi	$sp,-48
++	.cfi_adjust_cfa_offset 48
++	l	%r0,240($key)	# kmo capability vector checked by caller
++
++	mvc	0(16,$sp),0($iv)
++	mvc	16(32,$sp),0($key)
++	la	%r1,0($sp)
++
++	.long	0xb92b0024	# kmo $out,$in
++	brc	1,.-4		# pay attention to "partial completion"
++
++	mvc	0(16,$iv),0($sp)
++	xc	0(48,$sp),0($sp)	# wipe iv,key
++	la	$sp,48($sp)
++	.cfi_adjust_cfa_offset -48
++	br	$ra
++.cfi_endproc
++.size	s390x_aes_ofb_blocks,.-s390x_aes_ofb_blocks
++___
++}
++
++################
++# void s390x_aes_ecb_blocks(unsigned char *out, const AES_KEY *key,
++#                           const unsigned char *in, size_t len)
++{
++my ($out,$key,$in,$len) = map("%r$_",(2..5));
++
++$code.=<<___ if (!$softonly);
++.globl	s390x_aes_ecb_blocks
++.type	s390x_aes_ecb_blocks,\@function
++.align	16
++s390x_aes_ecb_blocks:
++	l	%r0,240($key)	# km capability vector checked by caller
++	la	%r1,0($key)
++
++	.long	0xb92e0024	# km $out,$in
++	brc	1,.-4		# pay attention to "partial completion"
++
++	br	$ra
++.size	s390x_aes_ecb_blocks,.-s390x_aes_ecb_blocks
++___
++}
++
++################
++# void s390x_aes_cfb_blocks(unsigned char *out,
++#                           unsigned char iv[AES_BLOCK_SIZE],
++#                           const unsigned char *in, size_t len,
++#                           const AES_KEY *key, int s, int enc)
++{
++my ($out,$iv,$in,$len,$key,$s,$enc) = map("%r$_",(2..8));
++$code.=<<___ if (!$softonly);
++.globl	s390x_aes_cfb_blocks
++.type	s390x_aes_cfb_blocks,\@function
++.align	16
++s390x_aes_cfb_blocks:
++.cfi_startproc
++	stm$g	$s,$enc,7*$SIZE_T($sp)
++	.cfi_rel_offset $s,7*$SIZE_T
++	.cfi_rel_offset $enc,8*$SIZE_T
++	lm$g	$s,$enc,$stdframe($sp)
++	aghi	$sp,-48
++	.cfi_adjust_cfa_offset 48
++	lhi	%r1,128
++
++	sllg	%r0,$s,24
++	sll	$enc,7
++	xr	$enc,%r1
++	o	%r0,240($key)	# kmf capability vector checked by caller
++	or	%r0,$enc
++
++	mvc	0(16,$sp),0($iv)
++	mvc	16(32,$sp),0($key)
++	la	%r1,0($sp)
++
++	.long	0xb92a0024	# kmf $out,$in
++	brc	1,.-4		# pay attention to "partial completion"
++
++	mvc	0(16,$iv),0($sp)
++	xc	0(48,$sp),0($sp)	# wipe iv,key
++
++	la	$sp,48($sp)
++	.cfi_adjust_cfa_offset -48
++	lm$g	$s,$enc,7*$SIZE_T($sp)
++	.cfi_restore $s
++	.cfi_restore $enc
++	br	$ra
++.cfi_endproc
++.size	s390x_aes_cfb_blocks,.-s390x_aes_cfb_blocks
++___
++}
++
++################
++# void s390x_aes_cbc_mac_blocks(unsigned char mac[AES_BLOCK_SIZE],
++#                               const AES_KEY *key, const unsigned char *in,
++#                               size_t len)
++{
++my ($mac,$key,$in,$len) = map("%r$_",(2..6));
++$code.=<<___ if (!$softonly);
++.globl	s390x_aes_cbc_mac_blocks
++.type	s390x_aes_cbc_mac_blocks,\@function
++.align	16
++s390x_aes_cbc_mac_blocks:
++.cfi_startproc
++	aghi	$sp,-48
++	.cfi_adjust_cfa_offset 48
++	l	%r0,240($key)	# kmac capability vector checked by caller
++	nill	%r0,0xff7f	# clear "decrypt" bit
++
++	mvc	0(16,$sp),0($mac)
++	mvc	16(32,$sp),0($key)
++	la	%r1,0($sp)
++
++	.long	0xb91e0024	# kmac %r2,$in
++	brc	1,.-4		# pay attention to "partial completion"
++
++	mvc	0(16,$mac),0($sp)
++	xc	0(48,$sp),0($sp)	# wipe mac,key
++
++	la	$sp,48($sp)
++	.cfi_adjust_cfa_offset -48
++	br	$ra
++.cfi_endproc
++.size	s390x_aes_cbc_mac_blocks,.-s390x_aes_cbc_mac_blocks
++___
++}
++
+ $code.=<<___;
+ .string	"AES for s390x, CRYPTOGAMS by <appro\@openssl.org>"
+-.comm	OPENSSL_s390xcap_P,80,8
++.comm	OPENSSL_s390xcap_P,168,8
+ ___
+ 
+ $code =~ s/\`([^\`]*)\`/eval $1/gem;
+Index: openssl-1.0.2l/crypto/s390x_arch.h
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ openssl-1.0.2l/crypto/s390x_arch.h	2017-07-04 10:44:15.315146616 +0200
+@@ -0,0 +1,80 @@
++/*
++ * Copyright 2017 The OpenSSL Project Authors. All Rights Reserved.
++ *
++ * Licensed under the OpenSSL license (the "License").  You may not use
++ * this file except in compliance with the License.  You can obtain a copy
++ * in the file LICENSE in the source distribution or at
++ * https://www.openssl.org/source/license.html
++ */
++
++#ifndef S390X_ARCH_H
++# define S390X_ARCH_H
++
++# include <stdint.h>
++
++/*
++ * The elements of OPENSSL_s390xcap_P are the doublewords returned by the STFLE
++ * instruction followed by the doubleword pairs returned by instructions' QUERY
++ * functions. If STFLE returns fewer doublewords or an instruction is not
++ * supported, the corresponding element is zero. The order is as follows:
++ *
++ * STFLE:STFLE:STFLE.
++ * KIMD:KIMD:KM:KM:KMC:KMC:KMAC:KMAC:KMCTR:KMCTR:KMO:KMO:KMF:KMF:PPNO:PPNO:
++ * KMA:KMA
++ */
++# define S390X_STFLE_DWORDS	3
++# define S390X_QUERY_DWORDS	18
++# define S390X_CAP_DWORDS	(S390X_STFLE_DWORDS + S390X_QUERY_DWORDS)
++extern uint64_t OPENSSL_s390xcap_P[];
++
++/* OPENSSL_s390xcap_P[2] flags */
++# define S390X_STFLE_VXE	(1ULL << 56)
++# define S390X_STFLE_VXD	(1ULL << 57)
++# define S390X_STFLE_VX		(1ULL << 62)
++
++/* OPENSSL_s390xcap_P[5] flags */
++# define S390X_KM_AES_256	(1ULL << 43)
++# define S390X_KM_AES_192	(1ULL << 44)
++# define S390X_KM_AES_128	(1ULL << 45)
++
++/* OPENSSL_s390xcap_P[7] flags */
++# define S390X_KMC_AES_256	(1ULL << 43)
++# define S390X_KMC_AES_192	(1ULL << 44)
++# define S390X_KMC_AES_128	(1ULL << 45)
++
++/* OPENSSL_s390xcap_P[9] flags */
++# define S390X_KMAC_AES_256	(1ULL << 43)
++# define S390X_KMAC_AES_192	(1ULL << 44)
++# define S390X_KMAC_AES_128	(1ULL << 45)
++
++/* OPENSSL_s390xcap_P[13] flags */
++# define S390X_KMO_AES_256	(1ULL << 43)
++# define S390X_KMO_AES_192	(1ULL << 44)
++# define S390X_KMO_AES_128	(1ULL << 45)
++
++/* OPENSSL_s390xcap_P[15] flags */
++# define S390X_KMF_AES_256	(1ULL << 43)
++# define S390X_KMF_AES_192	(1ULL << 44)
++# define S390X_KMF_AES_128	(1ULL << 45)
++
++/* OPENSSL_s390xcap_P[17] flags */
++# define S390X_PRNO_SHA_512_DRNG	(1ULL << 60)
++
++/* OPENSSL_s390xcap_P[18] flags */
++# define S390X_PRNO_TRNG	(1ULL << 13)
++
++/* OPENSSL_s390xcap_P[19] flags */
++# define S390X_KMA_GCM_AES_256	(1ULL << 43)
++# define S390X_KMA_GCM_AES_192	(1ULL << 44)
++# define S390X_KMA_GCM_AES_128	(1ULL << 45)
++
++/* %r0 flags */
++# define S390X_PRNO_SEED	(1ULL <<  7)
++# define S390X_KMA_LPC		(1ULL <<  8)
++# define S390X_KMA_LAAD		(1ULL <<  9)
++# define S390X_KMA_HS		(1ULL << 10)
++
++/* %r0 function codes */
++# define S390X_PRNO_SHA_512_DRNG_FC	3
++
++#endif
+Index: openssl-1.0.2l/crypto/s390xcap.c
+===================================================================
+--- openssl-1.0.2l.orig/crypto/s390xcap.c	2017-07-04 10:44:04.942989018 +0200
++++ openssl-1.0.2l/crypto/s390xcap.c	2017-07-04 10:47:22.797994083 +0200
+@@ -4,8 +4,7 @@
+ #include <setjmp.h>
+ #include <signal.h>
+ #include "cryptlib.h"
+-
+-extern unsigned long OPENSSL_s390xcap_P[];
++#include "s390x_arch.h"
+ 
+ static sigjmp_buf ill_jmp;
+ static void ill_handler(int sig)
+@@ -13,17 +12,47 @@ static void ill_handler(int sig)
+     siglongjmp(ill_jmp, sig);
+ }
+ 
+-unsigned long OPENSSL_s390x_facilities(void);
++/*-
++ * os-specific function to check if "vector enablement control"-bit and
++ * "AFP register control"-bit in control register 0 are set.
++ */
++static int vx_enabled(void)
++{
++#if defined(OPENSSL_SYS_LINUX)
++    FILE *fd;
++    char buf[4096];
++
++    if ((fd = fopen("/proc/cpuinfo", "r")) == NULL)
++        return 0;
++
++    buf[0] = '\0';
++
++    while ((fgets(buf, sizeof(buf), fd) != NULL)
++           && (strstr(buf, "features") != buf));
++
++    fclose(fd);
++    return (strstr(buf, " vx ") != NULL) ? 1 : 0;
++#else
++    return 0;
++#endif
++}
++
++
++void OPENSSL_s390x_facilities(void);
+ 
+ void OPENSSL_cpuid_setup(void)
+ {
+     sigset_t oset;
+     struct sigaction ill_act, oact;
++    uint64_t vec;
++    char *env;
++    int off;
++    int i;
+ 
+     if (OPENSSL_s390xcap_P[0])
+         return;
+ 
+-    OPENSSL_s390xcap_P[0] = 1UL << (8 * sizeof(unsigned long) - 1);
++    OPENSSL_s390xcap_P[0] = 1ULL << (8 * sizeof(uint64_t) - 1);
+ 
+     memset(&ill_act, 0, sizeof(ill_act));
+     ill_act.sa_handler = ill_handler;
+@@ -39,4 +68,32 @@ void OPENSSL_cpuid_setup(void)
+ 
+     sigaction(SIGILL, &oact, NULL);
+     sigprocmask(SIG_SETMASK, &oset, NULL);
++
++    /* protection against disabled vector facility */
++    if (!vx_enabled()) {
++        OPENSSL_s390xcap_P[2] &= ~(S390X_STFLE_VXE | S390X_STFLE_VXD |
++                                   S390X_STFLE_VX);
++    }
++
++    if ((env = getenv("OPENSSL_s390xcap")) != NULL) {
++        for (i = 0; i < S390X_CAP_DWORDS; i++) {
++            off = (env[0] == '~') ? 1 : 0;
++
++            if (sscanf(env + off, "%llx", (unsigned long long *)&vec) == 1)
++                OPENSSL_s390xcap_P[i] &= off ? ~vec : vec;
++
++            if (i == S390X_STFLE_DWORDS - 1)
++                env = strchr(env, '.');
++            else
++                env = strpbrk(env, ":.");
++
++            if (env == NULL)
++                break;
++
++            if (env[0] == '.')
++                i = S390X_STFLE_DWORDS - 1;
++
++            env++;
++        }
++    }
+ }
+Index: openssl-1.0.2l/crypto/s390xcpuid.S
+===================================================================
+--- openssl-1.0.2l.orig/crypto/s390xcpuid.S	2017-07-04 10:44:04.942989018 +0200
++++ openssl-1.0.2l/crypto/s390xcpuid.S	2017-07-04 10:44:15.315146616 +0200
+@@ -1,4 +1,10 @@
+ .text
++// Copyright 2009-2016 The OpenSSL Project Authors. All Rights Reserved.
++//
++// Licensed under the OpenSSL license (the "License").  You may not use
++// this file except in compliance with the License.  You can obtain a copy
++// in the file LICENSE in the source distribution or at
++// https://www.openssl.org/source/license.html
+ 
+ .globl	OPENSSL_s390x_facilities
+ .type	OPENSSL_s390x_facilities,@function
+@@ -15,35 +21,76 @@ OPENSSL_s390x_facilities:
+ 	stg	%r0,56(%r4)
+ 	stg	%r0,64(%r4)
+ 	stg	%r0,72(%r4)
++	stg	%r0,80(%r4)
++	stg	%r0,88(%r4)
++	stg	%r0,96(%r4)
++	stg	%r0,104(%r4)
++	stg	%r0,112(%r4)
++	stg	%r0,120(%r4)
++	stg	%r0,128(%r4)
++	stg	%r0,136(%r4)
++	stg	%r0,144(%r4)
++	stg	%r0,152(%r4)
++	stg	%r0,160(%r4)
+ 
+ 	.long	0xb2b04000	# stfle	0(%r4)
+ 	brc	8,.Ldone
+ 	lghi	%r0,1
+ 	.long	0xb2b04000	# stfle 0(%r4)
++	brc	8,.Ldone
++	lghi	%r0,2
++	.long	0xb2b04000	# stfle 0(%r4)
+ .Ldone:
+ 	lmg	%r2,%r3,0(%r4)
+ 	tmhl	%r2,0x4000	# check for message-security-assist
+ 	jz	.Lret
+ 
+ 	lghi	%r0,0		# query kimd capabilities
+-	la	%r1,16(%r4)
++	la	%r1,24(%r4)
+ 	.long	0xb93e0002	# kimd %r0,%r2
+ 
+ 	lghi	%r0,0		# query km capability vector
+-	la	%r1,32(%r4)
++	la	%r1,40(%r4)
+ 	.long	0xb92e0042	# km %r4,%r2
+ 
+ 	lghi	%r0,0		# query kmc capability vector
+-	la	%r1,48(%r4)
++	la	%r1,56(%r4)
+ 	.long	0xb92f0042	# kmc %r4,%r2
+ 
++	lghi	%r0,0		# query kmac capability vector
++	la	%r1,72(%r4)
++	.long	0xb91e0042	# kmac %r4,%r2
++
+ 	tmhh	%r3,0x0004	# check for message-security-assist-4
+ 	jz	.Lret
+ 
+ 	lghi	%r0,0		# query kmctr capability vector
+-	la	%r1,64(%r4)
++	la	%r1,88(%r4)
+ 	.long	0xb92d2042	# kmctr %r4,%r2,%r2
+ 
++	lghi	%r0,0		# query kmo capability vector
++	la	%r1,104(%r4)
++	.long	0xb92b0042	# kmo %r4,%r2
++
++	lghi	%r0,0		# query kmf capability vector
++	la	%r1,120(%r4)
++	.long	0xb92a0042	# kmf %r4,%r2
++
++	tml	%r2,0x40	# check for message-security-assist-5
++	jz	.Lret
++
++	lghi	%r0,0		# query prno capability vector
++	la	%r1,136(%r4)
++	.long	0xb93c0042	# prno %r4,%r2
++
++	lg	%r2,16(%r4)
++	tmhl	%r2,0x2000	# check for message-security-assist-8
++	jz	.Lret
++
++	lghi	%r0,0		# query kma capability vector
++	la	%r1,152(%r4)
++	.long	0xb9294022	# kma %r2,%r4,%r2
++
+ .Lret:
+ 	br	%r14
+ .size	OPENSSL_s390x_facilities,.-OPENSSL_s390x_facilities
+@@ -125,7 +172,49 @@ OPENSSL_cleanse:
+ 	br	%r14
+ .size	OPENSSL_cleanse,.-OPENSSL_cleanse
+ 
++.globl	OPENSSL_instrument_bus
++.type	OPENSSL_instrument_bus,@function
++.align	16
++OPENSSL_instrument_bus:
++	lghi	%r2,0
++	br	%r14
++.size	OPENSSL_instrument_bus,.-OPENSSL_instrument_bus
++
++.globl	OPENSSL_instrument_bus2
++.type	OPENSSL_instrument_bus2,@function
++.align	16
++OPENSSL_instrument_bus2:
++	lghi	%r2,0
++	br	%r14
++.size	OPENSSL_instrument_bus2,.-OPENSSL_instrument_bus2
++
++.globl	s390x_trng
++.type	s390x_trng,@function
++.align	16
++s390x_trng:
++	lghi	%r5,0
++	lghi	%r0,114		# prno capability vector checked by caller
++	.long	0xb93c0042	# prno %r4,%r2
++	brc	1,.-4		# pay attention to "partial completion"
++	br	%r14
++.size	s390x_trng,.-s390x_trng
++
++.globl	s390x_drng
++.type	s390x_drng,@function
++.align	16
++s390x_drng:
++#if !defined(__s390x__) && !defined(__s390x)
++	l	%r1,96(%r15)
++#else
++	lg	%r1,160(%r15)
++#endif
++	lr	%r0,%r6		# prno capability vector checked by caller
++	.long	0xb93c0024	# prno %r2,%r4
++	brc	1,.-4		# pay attention to "partial completion"
++	br	%r14
++.size	s390x_drng,.-s390x_drng
++
+ .section	.init
+ 	brasl	%r14,OPENSSL_cpuid_setup
+ 
+-.comm	OPENSSL_s390xcap_P,80,8
++.comm	OPENSSL_s390xcap_P,168,8
+Index: openssl-1.0.2l/crypto/modes/asm/ghash-s390x.pl
+===================================================================
+--- openssl-1.0.2l.orig/crypto/modes/asm/ghash-s390x.pl	2017-07-04 10:44:04.942989018 +0200
++++ openssl-1.0.2l/crypto/modes/asm/ghash-s390x.pl	2017-07-04 10:44:15.315146616 +0200
+@@ -1,4 +1,11 @@
+-#!/usr/bin/env perl
++#! /usr/bin/env perl
++# Copyright 2010-2016 The OpenSSL Project Authors. All Rights Reserved.
++#
++# Licensed under the OpenSSL license (the "License").  You may not use
++# this file except in compliance with the License.  You can obtain a copy
++# in the file LICENSE in the source distribution or at
++# https://www.openssl.org/source/license.html
++
+ 
+ # ====================================================================
+ # Written by Andy Polyakov <appro@openssl.org> for the OpenSSL
+@@ -47,7 +54,7 @@ if ($flavour =~ /3[12]/) {
+ 	$g="g";
+ }
+ 
+-while (($output=shift) && ($output!~/^\w[\w\-]*\.\w+$/)) {}
++while (($output=shift) && ($output!~/\w[\w\-]*\.\w+$/)) {}
+ open STDOUT,">$output";
+ 
+ $softonly=0;
+@@ -81,21 +88,27 @@ gcm_gmult_4bit:
+ ___
+ $code.=<<___ if(!$softonly && 0);	# hardware is slow for single block...
+ 	larl	%r1,OPENSSL_s390xcap_P
+-	lg	%r0,0(%r1)
+-	tmhl	%r0,0x4000	# check for message-security-assist
+-	jz	.Lsoft_gmult
+ 	lghi	%r0,0
+-	lg	%r1,24(%r1)	# load second word of kimd capabilities vector
++	lg	%r1,32(%r1)	# load second word of kimd capabilities vector
+ 	tmhh	%r1,0x4000	# check for function 65
+ 	jz	.Lsoft_gmult
++	lghi	%r1,-16
+ 	stg	%r0,16($sp)	# arrange 16 bytes of zero input
+ 	stg	%r0,24($sp)
++	la	$Htbl,0(%r1,$Htbl)	# H lies right before Htable
++
+ 	lghi	%r0,65		# function 65
+-	la	%r1,0($Xi)	# H lies right after Xi in gcm128_context
++	la	%r1,32($sp)
++	mvc	32(16,$sp),0($Xi)	# copy Xi/Yi
++	mvc	48(16,$sp),0($Htbl)	# copy H
+ 	la	$inp,16($sp)
+ 	lghi	$len,16
+ 	.long	0xb93e0004	# kimd %r0,$inp
+ 	brc	1,.-4		# pay attention to "partial completion"
++
++	mvc	0(16,$Xi),32($sp)
++	xc	32(32,$sp),32($sp)	# wipe stack
++
+ 	br	%r14
+ .align	32
+ .Lsoft_gmult:
+@@ -119,14 +132,8 @@ gcm_ghash_4bit:
+ ___
+ $code.=<<___ if(!$softonly);
+ 	larl	%r1,OPENSSL_s390xcap_P
+-	lg	%r0,0(%r1)
+-	tmhl	%r0,0x4000	# check for message-security-assist
+-	jz	.Lsoft_ghash
+-	lghi	%r0,0
+-	la	%r1,16($sp)
+-	.long	0xb93e0004	# kimd %r0,%r4
+-	lg	%r1,24($sp)
+-	tmhh	%r1,0x4000	# check for function 65
++	lg	%r0,32(%r1)	# load second word of kimd capabilities vector
++	tmhh	%r0,0x4000	# check for function 65
+ 	jz	.Lsoft_ghash
+ 	lghi	%r0,65		# function 65
+ 	la	%r1,0($Xi)	# H lies right after Xi in gcm128_context
+@@ -151,7 +158,7 @@ $code.=<<___;
+ 	lg	$Zhi,0+1($Xi)
+ 	lghi	$tmp,0
+ .Louter:
+-	xg	$Zhi,0($inp)		# Xi ^= inp 
++	xg	$Zhi,0($inp)		# Xi ^= inp
+ 	xg	$Zlo,8($inp)
+ 	xgr	$Zhi,$tmp
+ 	stg	$Zlo,8+1($Xi)
+Index: openssl-1.0.2l/crypto/sha/asm/sha1-s390x.pl
+===================================================================
+--- openssl-1.0.2l.orig/crypto/sha/asm/sha1-s390x.pl	2017-07-04 10:44:04.942989018 +0200
++++ openssl-1.0.2l/crypto/sha/asm/sha1-s390x.pl	2017-07-04 10:44:15.315146616 +0200
+@@ -1,4 +1,11 @@
+-#!/usr/bin/env perl
++#! /usr/bin/env perl
++# Copyright 2007-2016 The OpenSSL Project Authors. All Rights Reserved.
++#
++# Licensed under the OpenSSL license (the "License").  You may not use
++# this file except in compliance with the License.  You can obtain a copy
++# in the file LICENSE in the source distribution or at
++# https://www.openssl.org/source/license.html
++
+ 
+ # ====================================================================
+ # Written by Andy Polyakov <appro@fy.chalmers.se> for the OpenSSL
+@@ -28,7 +35,8 @@
+ # instructions and achieve "64-bit" performance even in 31-bit legacy
+ # application context. The feature is not specific to any particular
+ # processor, as long as it's "z-CPU". Latter implies that the code
+-# remains z/Architecture specific.
++# remains z/Architecture specific. On z990 it was measured to perform
++# 23% better than code generated by gcc 4.3.
+ 
+ $kimdfunc=1;	# magic function code for kimd instruction
+ 
+@@ -42,7 +50,7 @@ if ($flavour =~ /3[12]/) {
+ 	$g="g";
+ }
+ 
+-while (($output=shift) && ($output!~/^\w[\w\-]*\.\w+$/)) {}
++while (($output=shift) && ($output!~/\w[\w\-]*\.\w+$/)) {}
+ open STDOUT,">$output";
+ 
+ $K_00_39="%r0"; $K=$K_00_39;
+@@ -164,10 +172,7 @@ sha1_block_data_order:
+ ___
+ $code.=<<___ if ($kimdfunc);
+ 	larl	%r1,OPENSSL_s390xcap_P
+-	lg	%r0,0(%r1)
+-	tmhl	%r0,0x4000	# check for message-security assist
+-	jz	.Lsoftware
+-	lg	%r0,16(%r1)	# check kimd capabilities
++	lg	%r0,24(%r1)	# check kimd capabilities
+ 	tmhh	%r0,`0x8000>>$kimdfunc`
+ 	jz	.Lsoftware
+ 	lghi	%r0,$kimdfunc
+@@ -234,7 +239,7 @@ $code.=<<___;
+ 	br	%r14
+ .size	sha1_block_data_order,.-sha1_block_data_order
+ .string	"SHA1 block transform for s390x, CRYPTOGAMS by <appro\@openssl.org>"
+-.comm	OPENSSL_s390xcap_P,80,8
++.comm	OPENSSL_s390xcap_P,168,8
+ ___
+ 
+ $code =~ s/\`([^\`]*)\`/eval $1/gem;
+Index: openssl-1.0.2l/crypto/sha/asm/sha512-s390x.pl
+===================================================================
+--- openssl-1.0.2l.orig/crypto/sha/asm/sha512-s390x.pl	2017-07-04 10:44:04.942989018 +0200
++++ openssl-1.0.2l/crypto/sha/asm/sha512-s390x.pl	2017-07-04 10:44:15.315146616 +0200
+@@ -1,4 +1,11 @@
+-#!/usr/bin/env perl
++#! /usr/bin/env perl
++# Copyright 2007-2016 The OpenSSL Project Authors. All Rights Reserved.
++#
++# Licensed under the OpenSSL license (the "License").  You may not use
++# this file except in compliance with the License.  You can obtain a copy
++# in the file LICENSE in the source distribution or at
++# https://www.openssl.org/source/license.html
++
+ 
+ # ====================================================================
+ # Written by Andy Polyakov <appro@fy.chalmers.se> for the OpenSSL
+@@ -33,7 +40,7 @@
+ # instructions and achieve "64-bit" performance even in 31-bit legacy
+ # application context. The feature is not specific to any particular
+ # processor, as long as it's "z-CPU". Latter implies that the code
+-# remains z/Architecture specific. On z900 SHA256 was measured to
++# remains z/Architecture specific. On z990 SHA256 was measured to
+ # perform 2.4x and SHA512 - 13x better than code generated by gcc 4.3.
+ 
+ $flavour = shift;
+@@ -64,7 +71,7 @@ $tbl="%r13";
+ $T1="%r14";
+ $sp="%r15";
+ 
+-while (($output=shift) && ($output!~/^\w[\w\-]*\.\w+$/)) {}
++while (($output=shift) && ($output!~/\w[\w\-]*\.\w+$/)) {}
+ open STDOUT,">$output";
+ 
+ if ($output =~ /512/) {
+@@ -237,10 +244,7 @@ $Func:
+ ___
+ $code.=<<___ if ($kimdfunc);
+ 	larl	%r1,OPENSSL_s390xcap_P
+-	lg	%r0,0(%r1)
+-	tmhl	%r0,0x4000	# check for message-security assist
+-	jz	.Lsoftware
+-	lg	%r0,16(%r1)	# check kimd capabilities
++	lg	%r0,24(%r1)	# check kimd capabilities
+ 	tmhh	%r0,`0x8000>>$kimdfunc`
+ 	jz	.Lsoftware
+ 	lghi	%r0,$kimdfunc
+@@ -304,11 +308,11 @@ $code.=<<___;
+ 	cl${g}	$inp,`$frame+4*$SIZE_T`($sp)
+ 	jne	.Lloop
+ 
+-	lm${g}	%r6,%r15,`$frame+6*$SIZE_T`($sp)	
++	lm${g}	%r6,%r15,`$frame+6*$SIZE_T`($sp)
+ 	br	%r14
+ .size	$Func,.-$Func
+ .string	"SHA${label} block transform for s390x, CRYPTOGAMS by <appro\@openssl.org>"
+-.comm	OPENSSL_s390xcap_P,80,8
++.comm	OPENSSL_s390xcap_P,168,8
+ ___
+ 
+ $code =~ s/\`([^\`]*)\`/eval $1/gem;
+Index: openssl-1.0.2l/crypto/modes/gcm128.c
+===================================================================
+--- openssl-1.0.2l.orig/crypto/modes/gcm128.c	2017-07-04 10:44:04.942989018 +0200
++++ openssl-1.0.2l/crypto/modes/gcm128.c	2017-07-04 10:44:15.315146616 +0200
+@@ -882,6 +882,10 @@ void CRYPTO_gcm128_init(GCM128_CONTEXT *
+         ctx->ghash = NULL;
+ #  endif
+     }
++# elif defined(GHASH_ASM)
++    gcm_init_4bit(ctx->Htable, ctx->H.u);
++    ctx->gmult = gcm_gmult_4bit;
++    ctx->ghash = gcm_ghash_4bit;
+ # else
+     gcm_init_4bit(ctx->Htable, ctx->H.u);
+ # endif
+Index: openssl-1.0.2l/crypto/evp/e_aes.c
+===================================================================
+--- openssl-1.0.2l.orig/crypto/evp/e_aes.c	2017-07-04 10:44:04.942989018 +0200
++++ openssl-1.0.2l/crypto/evp/e_aes.c	2017-07-04 10:44:15.319146676 +0200
+@@ -873,6 +873,181 @@ static const EVP_CIPHER aes_##keylen##_#
+ const EVP_CIPHER *EVP_aes_##keylen##_##mode(void) \
+ { return SPARC_AES_CAPABLE?&aes_t4_##keylen##_##mode:&aes_##keylen##_##mode; }
+ 
++#elif defined(OPENSSL_CPUID_OBJ) && defined(__s390__) && !defined(AES_SOFTONLY)
++/*
++ * IBM S390X support
++ */
++# include "s390x_arch.h"
++
++/*-
++ * If KM and KMC support the function code, AES_KEY structure holds
++ * key/function code (instead of key schedule/number of rounds).
++ */
++# define S390X_AES_FC(key)	(((AES_KEY *)(key))->rounds)
++
++# define S390X_aes_128_CAPABLE ((OPENSSL_s390xcap_P[5]&S390X_KM_AES_128)&&\
++                                (OPENSSL_s390xcap_P[7]&S390X_KMC_AES_128))
++# define S390X_aes_192_CAPABLE ((OPENSSL_s390xcap_P[5]&S390X_KM_AES_192)&&\
++                                (OPENSSL_s390xcap_P[7]&S390X_KMC_AES_192))
++# define S390X_aes_256_CAPABLE ((OPENSSL_s390xcap_P[5]&S390X_KM_AES_256)&&\
++                                (OPENSSL_s390xcap_P[7]&S390X_KMC_AES_256))
++
++# define s390x_aes_init_key aes_init_key
++static int s390x_aes_init_key(EVP_CIPHER_CTX *ctx, const unsigned char *key,
++                              const unsigned char *iv, int enc);
++
++# define S390X_aes_128_cbc_CAPABLE	1	/* checked by callee */
++# define S390X_aes_192_cbc_CAPABLE	1
++# define S390X_aes_256_cbc_CAPABLE	1
++
++# define s390x_aes_cbc_cipher aes_cbc_cipher
++static int s390x_aes_cbc_cipher(EVP_CIPHER_CTX *ctx, unsigned char *out,
++                                const unsigned char *in, size_t len);
++
++# define S390X_aes_128_ecb_CAPABLE	0
++# define S390X_aes_192_ecb_CAPABLE	0
++# define S390X_aes_256_ecb_CAPABLE	0
++
++# define s390x_aes_ecb_cipher aes_ecb_cipher
++static int s390x_aes_ecb_cipher(EVP_CIPHER_CTX *ctx, unsigned char *out,
++                                const unsigned char *in, size_t len);
++
++# define S390X_aes_128_ofb_CAPABLE	0
++# define S390X_aes_192_ofb_CAPABLE	0
++# define S390X_aes_256_ofb_CAPABLE	0
++
++# define s390x_aes_ofb_cipher aes_ofb_cipher
++static int s390x_aes_ofb_cipher(EVP_CIPHER_CTX *ctx, unsigned char *out,
++                                const unsigned char *in, size_t len);
++
++# define S390X_aes_128_cfb_CAPABLE	0
++# define S390X_aes_192_cfb_CAPABLE	0
++# define S390X_aes_256_cfb_CAPABLE	0
++
++# define s390x_aes_cfb_cipher aes_cfb_cipher
++static int s390x_aes_cfb_cipher(EVP_CIPHER_CTX *ctx, unsigned char *out,
++                                const unsigned char *in, size_t len);
++
++# define S390X_aes_128_cfb8_CAPABLE	0
++# define S390X_aes_192_cfb8_CAPABLE	0
++# define S390X_aes_256_cfb8_CAPABLE	0
++
++# define s390x_aes_cfb8_cipher aes_cfb8_cipher
++static int s390x_aes_cfb8_cipher(EVP_CIPHER_CTX *ctx, unsigned char *out,
++                                 const unsigned char *in, size_t len);
++
++# define S390X_aes_128_cfb1_CAPABLE	0
++# define S390X_aes_192_cfb1_CAPABLE	0
++# define S390X_aes_256_cfb1_CAPABLE	0
++
++# define s390x_aes_cfb1_cipher aes_cfb1_cipher
++static int s390x_aes_cfb1_cipher(EVP_CIPHER_CTX *ctx, unsigned char *out,
++                                 const unsigned char *in, size_t len);
++
++# define S390X_aes_128_ctr_CAPABLE	1	/* checked by callee */
++# define S390X_aes_192_ctr_CAPABLE	1
++# define S390X_aes_256_ctr_CAPABLE	1
++
++# define s390x_aes_ctr_cipher aes_ctr_cipher
++static int s390x_aes_ctr_cipher(EVP_CIPHER_CTX *ctx, unsigned char *out,
++                                const unsigned char *in, size_t len);
++
++# define S390X_aes_128_gcm_CAPABLE	0
++# define S390X_aes_192_gcm_CAPABLE	0
++# define S390X_aes_256_gcm_CAPABLE	0
++
++# define s390x_aes_gcm_init_key aes_gcm_init_key
++static int s390x_aes_gcm_init_key(EVP_CIPHER_CTX *ctx,
++                                  const unsigned char *key,
++                                  const unsigned char *iv, int enc);
++
++# define s390x_aes_gcm_cipher aes_gcm_cipher
++static int s390x_aes_gcm_cipher(EVP_CIPHER_CTX *ctx, unsigned char *out,
++                                const unsigned char *in, size_t len);
++
++# define S390X_aes_128_xts_CAPABLE	1	/* checked by callee */
++# define S390X_aes_256_xts_CAPABLE	1
++
++# define s390x_aes_xts_init_key aes_xts_init_key
++static int s390x_aes_xts_init_key(EVP_CIPHER_CTX *ctx,
++                                  const unsigned char *key,
++                                  const unsigned char *iv, int enc);
++
++# define s390x_aes_xts_cipher aes_xts_cipher
++static int s390x_aes_xts_cipher(EVP_CIPHER_CTX *ctx, unsigned char *out,
++                                const unsigned char *in, size_t len);
++
++# define S390X_aes_128_ccm_CAPABLE	0
++# define S390X_aes_192_ccm_CAPABLE	0
++# define S390X_aes_256_ccm_CAPABLE	0
++
++# define s390x_aes_ccm_init_key aes_ccm_init_key
++static int s390x_aes_ccm_init_key(EVP_CIPHER_CTX *ctx,
++                                  const unsigned char *key,
++                                  const unsigned char *iv, int enc);
++
++# define s390x_aes_ccm_cipher aes_ccm_cipher
++static int s390x_aes_ccm_cipher(EVP_CIPHER_CTX *ctx, unsigned char *out,
++                                const unsigned char *in, size_t len);
++
++# ifndef OPENSSL_NO_OCB
++#  define S390X_aes_128_ocb_CAPABLE	0
++#  define S390X_aes_192_ocb_CAPABLE	0
++#  define S390X_aes_256_ocb_CAPABLE	0
++
++#  define s390x_aes_ocb_init_key aes_ocb_init_key
++static int s390x_aes_ocb_init_key(EVP_CIPHER_CTX *ctx, const unsigned char *key,
++                                  const unsigned char *iv, int enc);
++#  define s390x_aes_ocb_cipher aes_ocb_cipher
++static int s390x_aes_ocb_cipher(EVP_CIPHER_CTX *ctx, unsigned char *out,
++                                const unsigned char *in, size_t len);
++# endif
++
++# define BLOCK_CIPHER_generic(nid,keylen,blocksize,ivlen,nmode,mode,MODE,flags)	\
++static const EVP_CIPHER s390x_aes_##keylen##_##mode = { \
++        nid##_##keylen##_##nmode,blocksize,keylen/8,ivlen, \
++        flags|EVP_CIPH_##MODE##_MODE,   \
++        s390x_aes_init_key,             \
++        s390x_aes_##mode##_cipher,      \
++        NULL,                           \
++        sizeof(EVP_AES_KEY),            \
++        NULL,NULL,NULL,NULL }; \
++static const EVP_CIPHER aes_##keylen##_##mode = { \
++        nid##_##keylen##_##nmode,blocksize,     \
++        keylen/8,ivlen, \
++        flags|EVP_CIPH_##MODE##_MODE,   \
++        aes_init_key,                   \
++        aes_##mode##_cipher,            \
++        NULL,                           \
++        sizeof(EVP_AES_KEY),            \
++        NULL,NULL,NULL,NULL }; \
++const EVP_CIPHER *EVP_aes_##keylen##_##mode(void) \
++{ return S390X_aes_##keylen##_##mode##_CAPABLE?&s390x_aes_##keylen##_##mode: \
++                                               &aes_##keylen##_##mode; }
++
++# define BLOCK_CIPHER_custom(nid,keylen,blocksize,ivlen,mode,MODE,flags) \
++static const EVP_CIPHER s390x_aes_##keylen##_##mode = { \
++        nid##_##keylen##_##mode,blocksize, \
++        (EVP_CIPH_##MODE##_MODE==EVP_CIPH_XTS_MODE?2:1)*keylen/8, ivlen, \
++        flags|EVP_CIPH_##MODE##_MODE,   \
++        s390x_aes_##mode##_init_key,    \
++        s390x_aes_##mode##_cipher,      \
++        aes_##mode##_cleanup,           \
++        sizeof(EVP_AES_##MODE##_CTX),   \
++        NULL,NULL,aes_##mode##_ctrl,NULL }; \
++static const EVP_CIPHER aes_##keylen##_##mode = { \
++        nid##_##keylen##_##mode,blocksize, \
++        (EVP_CIPH_##MODE##_MODE==EVP_CIPH_XTS_MODE?2:1)*keylen/8, ivlen, \
++        flags|EVP_CIPH_##MODE##_MODE,   \
++        aes_##mode##_init_key,          \
++        aes_##mode##_cipher,            \
++        aes_##mode##_cleanup,           \
++        sizeof(EVP_AES_##MODE##_CTX),   \
++        NULL,NULL,aes_##mode##_ctrl,NULL }; \
++const EVP_CIPHER *EVP_aes_##keylen##_##mode(void) \
++{ return S390X_aes_##keylen##_##mode##_CAPABLE?&s390x_aes_##keylen##_##mode: \
++                                               &aes_##keylen##_##mode; }
++
+ # else
+ 
+ #  define BLOCK_CIPHER_generic(nid,keylen,blocksize,ivlen,nmode,mode,MODE,flags) \

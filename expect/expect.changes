@@ -1,0 +1,242 @@
+-------------------------------------------------------------------
+Thu Oct 25 09:10:24 UTC 2018 - Reinhard Max <max@suse.com>
+
+- New version 5.45.4:
+  * Fix two bugs in EOF handling.
+
+-------------------------------------------------------------------
+Wed Nov  8 20:29:35 UTC 2017 - aavindraa@gmail.com
+
+- New version 5.45.3:
+  * expect.c: On finding a full buffer during matching the sliding
+    window mechanism slides too far, truncating the whole buffer and
+    preventing matches across the boundary. Fix is shortening the
+    slide distance (slide only one 1/3).
+  * expect.c: Replaced a cc==0 check with proper Tcl_Eof() check.
+- Includes changes from 5.45.2:
+  * configure: Extended Tcl header detection for OS X Mountain Lion.
+  * expect.c: Replaced memcpy with memmove to properly handle
+    overlapping memory.
+- Includes changes from 5.45.1:
+  * exp_chan.c: Fix a problem when talking a tty where the writer
+    dies. Some operating systems report the condition as EIO with
+    nothing read, while this actually an EOF. Previously, returned
+    data was incomplete due to the error causing data in buffers to
+    be dropped.
+  * exp_chan.c: Fix a problem with the iteration over the expect
+    channel list where the loop code may modify the list, breaking
+    the iterator.
+  * Fixes for exp_chan.c and exp_command.h
+  * expect.c: Convert #bytes information to #chars to prevent later
+    code to fail when copying strings around and miscalculating how
+    much to copy, for strings containing non-ASCII utf chars.
+  * exp_inter.c: Hack access to TCL_REG_BOSONLY when not present,
+    became private with Tcl 8.5 and higher.
+  * expect.h: Remove the local fiddling with the memory allocation
+    and panic macros.
+  * example/unbuffer: Prevent unbuffer from swallowing exit code of
+    the command it ran (regular mode only, not -p)
+  * Various deduplications and cleanups
+- cleanup with spec-cleaner
+- use %make_install macro
+
+-------------------------------------------------------------------
+Fri Jul 17 09:01:09 UTC 2015 - max@suse.com
+
+- Don't ship the 'weather' example anymore (fate#318342).
+
+-------------------------------------------------------------------
+Tue Mar 26 13:12:41 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Feb  6 10:49:32 UTC 2013 - schwab@suse.de
+
+- Update config.guess/sub for aarch64
+
+-------------------------------------------------------------------
+Sat Apr 14 15:33:53 UTC 2012 - schwab@linux-m68k.org
+
+- Remove execute permission from logfiles
+
+-------------------------------------------------------------------
+Tue Dec 20 20:19:12 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Oct  7 13:15:19 UTC 2011 - max@suse.com
+
+- New version 5.45:
+  * Examples now use the expect package instead of /usr/bin/expect.
+  * Countless other bug fixes. For details, see
+    /usr/share/doc/packages/expect/ChangeLog
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Mon May 25 16:30:18 CEST 2009 - max@suse.de
+
+- Fix buffer overflow in the "stty" command
+  (bnc#506873, bnc#501291).
+
+-------------------------------------------------------------------
+Tue Oct 14 18:31:49 CEST 2008 - max@suse.de
+
+- Update to version 5.44.1.11 from CVS. The changes mainly consist
+  of our former expect-fixes.patch and expect-warnings.patch, plus
+  some more bug fixes, e.g. for the [expect -exact] crash reported
+  at bnc#427270 .
+
+-------------------------------------------------------------------
+Tue Oct 14 17:42:41 CEST 2008 - meissner@suse.de
+
+- fixed fortify implicits.
+
+-------------------------------------------------------------------
+Tue May  6 21:22:31 CEST 2008 - aj@suse.de
+
+- Add missing return values.
+
+-------------------------------------------------------------------
+Thu Apr  3 14:00:24 CEST 2008 - max@suse.de
+
+- Fixed swapped arguments in prototype of exp_cmd_init()
+- Adjusted installation to the new Tcl file system layout
+
+-------------------------------------------------------------------
+Thu Mar 20 19:13:00 CET 2008 - max@suse.de
+
+- Update to version 5.44.1.5 from CVS:
+  * Improved internal buffer management
+  * Ported script-level commands to the newer Tcl object API
+  * Optimized regular expression matching 
+- Split off a -devel subpackage
+- Don't package the example subdir anymore.
+- Fix all critical and part of the non-critical warnings that
+  show up with gcc 4.3. To be continued...
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:10 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Dec 13 15:41:15 CET 2005 - max@suse.de
+
+- Fixed a typo in tcl.m4 that broke configure with bash 3.1.
+
+- Updated expect-CVS.patch.bz2 .
+
+-------------------------------------------------------------------
+Fri Sep 23 01:31:50 CEST 2005 - ro@suse.de
+
+- fix some missing declarations 
+
+-------------------------------------------------------------------
+Tue Jun 14 15:54:14 CEST 2005 - max@suse.de
+
+- New version: 5.43 plus patch to current CVS head.
+- Disabled building of the static library.
+- Moved script library to /usr/share/tcl .
+
+-------------------------------------------------------------------
+Tue Jul 13 16:58:00 CEST 2004 - max@suse.de
+
+- New version: 5.41.
+
+-------------------------------------------------------------------
+Mon Mar  1 15:48:15 CET 2004 - max@suse.de
+
+- Re-enabled the test suite and added expect-send_tty.patch to
+  prevent it from crashing.
+
+-------------------------------------------------------------------
+Fri Feb 27 18:44:33 CET 2004 - max@suse.de
+
+- New version: 5.40
+
+- Fixed warnings that broke build (expect-warnings.patch).
+
+- Temporarily disabled "make test" to prevent crashes in autobuild
+  on some architectures (ppc, s390).
+
+-------------------------------------------------------------------
+Fri Oct 31 17:13:46 CET 2003 - max@suse.de
+
+- New version: 5.39
+- Buliding as non-root user
+
+-------------------------------------------------------------------
+Wed May 28 00:39:00 CEST 2003 - ro@suse.de
+
+- package include files and static lib as well 
+
+-------------------------------------------------------------------
+Tue Jan 28 15:27:08 CET 2003 - max@suse.de
+
+- Fixed path to /usr/bin/write in kibitz.
+
+-------------------------------------------------------------------
+Fri Jan 10 16:12:49 CET 2003 - max@suse.de
+
+- Fixed a segfault case during application shutdown, and sent
+  the patch to the author.
+
+-------------------------------------------------------------------
+Tue Nov 26 17:27:49 CET 2002 - max@suse.de
+
+- New version: 5.38
+
+- Don't build the expectk binary anymore to remove the buildtime
+  dependency on Tk and X. Scripts that needed to run in expectk
+  before can be fixed by running them in expect and adding a line
+  that says "package require Tk" before the first tk command
+  is executed.
+
+-------------------------------------------------------------------
+Mon Aug 19 08:27:51 CEST 2002 - aj@suse.de
+
+- Read all input from invoked program.
+
+-------------------------------------------------------------------
+Wed Apr  3 18:18:19 CEST 2002 - max@suse.de
+
+- Replaced autoreconf by autoconf because it breaks on
+  autoconf-2.53 and was overkill anyways.
+
+-------------------------------------------------------------------
+Wed Feb 20 19:28:39 CET 2002 - max@suse.de
+
+- Fixed for lib64-s390x.
+
+-------------------------------------------------------------------
+Thu Jan 24 09:29:01 CET 2002 - max@suse.de
+
+- Removed the mkpasswd manpage due to a file name conflict and
+  because the respective program is also not included.
+
+-------------------------------------------------------------------
+Fri Jan 18 19:10:46 CET 2002 - max@suse.de
+
+- added tk to neededforbuild to prevent linking to static libtk
+  which is included in tcl-devel
+
+-------------------------------------------------------------------
+Fri Jan 18 00:52:40 CET 2002 - ro@suse.de
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------
+Thu Jan 17 19:26:42 CET 2002 - max@suse.de
+
+- New version 5.34.
+- Separated this package from the tcl source RPM, because it
+  doesn not any longer need the Tcl and Tk sources at hand.

@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Tue Feb  5 21:33:10 UTC 2019 - mardnh@gmx.de
+
+- Update to new upstream release 1.3.0
+  * ggsn: ctrl iface: listen on IP configured by VTY
+  * gtp: Allow recv DEL CTX REQ in sgsn and DEL CTX RSP in ggsn
+  * gtp: Log ignore CTX DEL REQ due to no teardown and only 1
+    ctxactive
+  * gtp: Add new API to avoid freeing pdp contexts during
+    DEL CTX REQ
+  * fix support for multiple IPCP in PDP protocol configuration
+    options
+
+-------------------------------------------------------------------
+Tue Dec 11 13:08:04 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.2.2
+  * Add support for IPv4v6 End User Addresses
+  * ggsn: Add 'ipv6 link-local' vty cmd
+  * Add talloc context introspection via VTY
+- Remove 0001-fix-compiler-warnings-return-0-in-main-in-3-tests.patch
+  (merged)
+
+-------------------------------------------------------------------
+Fri Dec 29 16:38:27 UTC 2017 - mardnh@gmx.de
+
+- Use systemd service file from tarball
+- Fix URL
+- Use correct libversion
+- Minor specfile cleanup
+- Disable kernel-gtp support
+- Add patch:
+  - 0001-fix-compiler-warnings-return-0-in-main-in-3-tests.patch
+
+-------------------------------------------------------------------
+Thu Dec 28 00:36:08 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.1.0
+  * sgsnemu: Add IPv6 support via tun device and "-t v6 --createif"
+  * Allow Common flags 0x94 and ignore them in PDP activation
+  * gtpie.h: Add IE identifier definitions up to 29.60 v11.8.0
+    Release 11
+  * sgsnemu: Add "--tun-device" option to specify TUN device name
+  * ggsn: Avoid crash on wrong EUA type
+
+-------------------------------------------------------------------
+Mon Oct  2 23:35:06 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream snapshot 1.0.0.30
+
+-------------------------------------------------------------------
+Sat Apr 29 01:21:17 UTC 2017 - jengelh@inai.de
+
+- Initial package (version 0.93.7) for build.opensuse.org
+- Add build-fixes.diff

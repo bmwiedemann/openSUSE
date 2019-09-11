@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Sun Mar  3 18:20:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Describe package, not project.
+
+-------------------------------------------------------------------
+Sat Mar  2 13:25:08 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial package of plexus-cli 1.6
+- Generate and customize the ant build file

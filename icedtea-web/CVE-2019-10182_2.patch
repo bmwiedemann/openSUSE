@@ -1,0 +1,23 @@
+commit 5437234c59f6c375a8ad0b07f93d459eefd571ba
+Author: Jiri Vanek <jvanek@redhat.com>
+Date:   Tue Jul 9 12:10:39 2019 +0200
+
+    Preventively, hash also .. in queue
+
+diff --git a/netx/net/sourceforge/jnlp/cache/CacheUtil.java b/netx/net/sourceforge/jnlp/cache/CacheUtil.java
+index 5c8652b6..15e8865c 100644
+--- a/netx/net/sourceforge/jnlp/cache/CacheUtil.java
++++ b/netx/net/sourceforge/jnlp/cache/CacheUtil.java
+@@ -703,7 +703,11 @@ public class CacheUtil {
+             path.append(File.separatorChar);
+         }
+         String locationPath = location.getPath().replace('/', File.separatorChar);
+-        if (locationPath.contains("..")){
++        String query = "";
++        if (location.getQuery() != null) {
++            query = location.getQuery();
++        }
++        if (locationPath.contains("..") || query.contains("..")){
+             try {
+                 /**
+                  * if path contains .. then it can harm lcoal system

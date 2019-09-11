@@ -1,0 +1,124 @@
+-------------------------------------------------------------------
+Wed Feb 21 10:59:28 UTC 2018 - kbabioch@suse.com
+
+- Added libid3tag-utf16.patch: Fixed id3_utf16_deserialize() in utf16.c,
+  which previously misparsed ID3v2 tags encoded in UTF-16 with an odd
+  number of bytes, triggering an endless loop allocating memory until
+  OOM leading to DoS. (CVE-2004-2779 bsc#1081959 CVE-2017-11551
+  bsc#1081961)
+
+- Added libid3tag-unknown-encoding.patch: Fixed the handling of unknown
+  encodings when parsing ID3 tags. (CVE-2017-11550 bsc#1081962
+  CVE-2008-2109 bsc#387731)
+
+- Removed libid3tag-0.15.1b-fix_overflow.patch, since it is handled
+  differently by libid3tag-utf16.patch already.
+
+-------------------------------------------------------------------
+Wed Oct 11 08:15:53 UTC 2017 - lnussel@suse.de
+
+- dont BuildRequire zypper to avoid unecessary dependency chain.
+  Check for %suse_version instead.
+
+-------------------------------------------------------------------
+Thu May 11 09:35:46 UTC 2017 - alarrosa@suse.com
+
+- Add BuildRequires: zypper and use it to check for gperf version so
+  the package builds with all versions of gperf (boo#1027205)
+
+-------------------------------------------------------------------
+Wed May 10 18:52:12 UTC 2017 - alarrosa@suse.com
+
+- Add fix-build-with-gperf-3.1.diff to fix build with gperf 3.1
+  which now uses size_t instead of unsigned int for the len parameter
+  of the hash/lookup function (boo#1027205)
+
+-------------------------------------------------------------------
+Tue Jun 16 12:18:10 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Add baselibs.conf as source
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Nov 23 19:06:26 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+- Employ shared library naming
+- Have makeinstall succeed on non-SUSE
+
+-------------------------------------------------------------------
+Thu Nov 22 18:26:13 UTC 2012 - crrodriguez@opensuse.org
+
+- libid3tag-visibility.patch: Hide all symbols that are not
+  part of the public API.
+- spec file: DO not inject bogus dependencies into the
+  system via pkgconfig files. 
+
+-------------------------------------------------------------------
+Sat Nov 19 20:32:46 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Apr 12 17:13:49 UTC 2011 - toddrme2178@gmail.com
+
+- Added 32bit compatibility libraries
+- Added BuildRequires:  pkg-config (fixes RPMLINT warning)
+
+-------------------------------------------------------------------
+Thu May  8 16:21:29 CEST 2008 - tiwai@suse.de
+
+- VUL-0: libid3tag overflow (CVE-2008-2109, bnc#387731)
+- don't install static and *.la files
+- clean up spec file
+
+-------------------------------------------------------------------
+Thu Mar 29 08:26:34 CEST 2007 - meissner@suse.de
+
+- zlib-devel to buildrequires
+
+-------------------------------------------------------------------
+Tue Oct 31 10:29:01 CET 2006 - meissner@suse.de
+
+- fixed configure.ac to accept more than 1 -O/-f option, added
+  requires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:29 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 11 16:47:50 CET 2006 - tiwai@suse.de
+
+- compile with -fstack-protector.
+
+-------------------------------------------------------------------
+Mon Jul  5 22:38:34 CEST 2004 - hvogel@suse.de
+
+- add pgkconfig file 
+
+-------------------------------------------------------------------
+Thu Feb 26 12:45:36 CET 2004 - tiwai@suse.de
+
+- updated to version 0.15.1b.
+- fixed memory allocation check.
+- fixed for autoreconf.
+
+-------------------------------------------------------------------
+Tue Jan 13 20:18:23 CET 2004 - tiwai@suse.de
+
+- build as non-root.
+
+-------------------------------------------------------------------
+Mon Aug 11 16:38:43 CEST 2003 - tiwai@suse.de
+
+- fixed the handling of v2 tag.
+
+-------------------------------------------------------------------
+Thu Jul  3 16:57:50 CEST 2003 - tiwai@suse.de
+
+- split from mad: version 0.15.0b.
+

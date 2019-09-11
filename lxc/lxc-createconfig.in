@@ -1,0 +1,168 @@
+#!/bin/bash
+# @configure_input@
+
+# lxc: linux Container library
+#
+# Authors:
+# Mike Friesenegger <mikef@suse.com>
+# Daniel Lezcano <daniel.lezcano@free.fr>
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+
+usage() {
+    echo "usage: lxc-createconfig -n <name> [-i <ipaddr/cidr>] [-b <bridge>] [-t <template]"
+}
+
+help() {
+    usage
+    echo
+    echo "creates a lxc container config file which can be in"
+    echo "turn used by lxc-create to create the lxc system object."
+    echo
+    echo "Options:"
+    echo "name         : name of the container"
+    echo "ipaddr       : ip address/cidr of the container"
+    echo "bridge       : bridge device for container (br0 if undefined)"
+    echo "template     : template is an accessible template script (opensuse if undefined)"
+}
+
+shortoptions='hn:i:b:t:'
+longoptions='help,name:,ipaddr:,bridge:,template:'
+lxc_confpath=$HOME
+templatedir=@LXCTEMPLATEDIR@
+lxc_bridge=br0
+lxc_template=opensuse
+
+getopt=$(getopt -o $shortoptions --longoptions  $longoptions -- "$@")
+if [ $? != 0 ]; then
+    usage
+    exit 1;
+fi
+
+eval set -- "$getopt"
+
+while true; do
+        case "$1" in
+            -h|--help)
+                help
+                exit 1
+                ;;
+            -n|--name)
+                shift
+                lxc_name=$1
+                lxc_confname=$lxc_name.config
+                shift
+                ;;
+            -i|--ipaddr)
+                shift
+                lxc_ipaddr=$1
+                shift
+                ;;
+            -b|--bridge)
+                shift
+                lxc_bridge=$1
+                shift
+                ;;
+            -t|--template)
+                shift
+                lxc_template=$1
+                shift
+                ;;
+            --)
+                shift
+                break;;
+            *)
+                echo $1
+                usage
+                exit 1
+                ;;
+        esac
+done
+
+if [ -z "$lxc_name" ]; then
+    echo "no container name specified"
+    usage
+    exit 1
+fi
+
+if [ -f "$lxc_confpath/$lxc_confname" ]; then
+    echo "'$lxc_confname' already exists"
+    exit 1
+fi
+
+if [ ! -z "$lxc_ipaddr" ]; then
+    echo $lxc_ipaddr | grep -E '/(([^C9]{0,1}[0-9])|(3[0-2]))$'
+    if [ $? -ne 0 ]; then
+        echo "$lxc_ipaddr is missing a cidr"
+        usage
+        exit 1
+    fi
+fi
+
+if [ -z "$lxc_ipaddr" ]; then
+    lxc_ipaddr=DHCP
+fi
+
+if [ ! -z $lxc_bridge ]; then
+    brctl show | grep $lxc_bridge >/dev/null
+    if [ $? -ne 0 ]; then
+        echo "$lxc_bridge not defined"
+        exit 1
+    fi
+fi
+
+if [ ! -z $lxc_template ]; then
+    type ${templatedir}/lxc-$lxc_template >/dev/null
+    if [ $? -ne 0 ]; then
+        echo "unknown template '$lxc_template'"
+        exit 1
+    fi
+fi
+
+echo
+echo "Container Name            = " $lxc_name
+echo "IP Address                = " $lxc_ipaddr
+echo "Bridge                    = " $lxc_bridge
+echo
+echo -n "Create container config? (n): "
+read ANSWER
+if [ "$ANSWER" != "y" -a "$ANSWER" != "Y" ]
+then
+    exit 1
+fi
+echo
+echo "Creating container config $lxc_confpath/$lxc_confname"
+
+# generate a MAC for the IP
+lxc_hwaddr="02:00:`(date ; cat /proc/interrupts ) | md5sum | sed -r 's/^(.{8}).*$/\1/;s/([0-9a-f]{2})/\1:/g;s/:$//;'`"
+
+cat >"$lxc_confpath/$lxc_confname" <<%%
+lxc.network.type = veth
+lxc.network.flags = up
+lxc.network.link = $lxc_bridge
+lxc.network.hwaddr = $lxc_hwaddr
+%%
+if [ ! $lxc_ipaddr = "DHCP" ]; then
+    cat >>"$lxc_confpath/$lxc_confname" <<%%
+lxc.network.ipv4 = $lxc_ipaddr
+%%
+fi
+cat >>"$lxc_confpath/$lxc_confname" <<%%
+lxc.network.name = eth0
+%%
+
+echo
+echo "Run 'lxc-create -n $lxc_name -f $lxc_confpath/$lxc_confname -t $lxc_template' to create the lxc system object."

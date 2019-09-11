@@ -1,0 +1,3 @@
+# Filter out rpmlint warning about shlib-policy-missing-lib, package
+# is called libyami-utils upstream
+addFilter("libyami-utils\..*W: shlib-policy-missing-lib");

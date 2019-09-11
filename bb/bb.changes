@@ -1,0 +1,141 @@
+-------------------------------------------------------------------
+Tue Dec  5 13:56:58 UTC 2017 - crrodriguez@opensuse.org
+
+- Remove unused buildrequires on xorg-x11-devel 
+
+-------------------------------------------------------------------
+Fri Dec  2 06:24:18 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Sep 17 19:15:10 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Mon Aug 29 17:48:45 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix wrong linking 
+- include <time.h> to avoid warnings.
+
+-------------------------------------------------------------------
+Wed Sep 29 02:38:04 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Do not use internal minilzo, it turns that it includes
+  build dates that causes this package to republish when
+  not needed. 
+
+-------------------------------------------------------------------
+Wed Apr 11 16:18:16 CEST 2007 - sbrabec@suse.cz
+
+- Require just created libmikmod-devel instead of libmikmod.
+
+-------------------------------------------------------------------
+Tue Oct 17 13:37:05 CEST 2006 - dmueller@suse.de
+
+- reduce BuildRequires
+
+-------------------------------------------------------------------
+Thu Jul 20 13:11:46 CEST 2006 - schwab@suse.de
+
+- Don't run autoconf.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec  2 19:25:47 CET 2005 - schwab@suse.de
+
+- Fix undefined operation [#136688].
+
+-------------------------------------------------------------------
+Wed Jul  6 15:04:09 CEST 2005 - schwab@suse.de
+
+- Fix missing includes.
+
+-------------------------------------------------------------------
+Sat Apr 17 18:46:08 CEST 2004 - schwab@suse.de
+
+- Pacify autobuild.
+
+-------------------------------------------------------------------
+Fri Feb 27 16:43:21 CET 2004 - sf@suse.de
+
+-  fixed timers.c
+
+-------------------------------------------------------------------
+Sun Jan 11 10:49:59 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Thu Jun 12 07:56:36 CEST 2003 - kukuk@suse.de
+
+- Add missing directory to filelist
+
+-------------------------------------------------------------------
+Thu Feb  6 01:26:26 CET 2003 - ro@suse.de
+
+- update to 1.3rc1 
+
+-------------------------------------------------------------------
+Mon Nov 11 20:13:14 CET 2002 - schwab@suse.de
+
+- Fix multiline string literals.
+
+-------------------------------------------------------------------
+Fri May 31 15:57:21 CEST 2002 - ro@suse.de
+
+- changed neededforbuild <slang> to <slang slang-devel>
+
+-------------------------------------------------------------------
+Thu Apr  4 11:08:06 CEST 2002 - schwab@suse.de
+
+- Use exec instead of system.
+- Fix descriptor leaks.
+
+-------------------------------------------------------------------
+Thu Apr  4 00:38:16 CEST 2002 - schwab@suse.de
+
+- Fix sound playing.
+- Fix types for portability.
+
+-------------------------------------------------------------------
+Fri Aug 31 00:36:35 CEST 2001 - ro@suse.de
+
+- added slang to neededforbuild 
+
+-------------------------------------------------------------------
+Tue May  8 23:57:15 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Mon Dec 11 18:51:38 CET 2000 - ro@suse.de
+
+- changed neededforbuild <aalibdev> to <aalib-devel>
+
+-------------------------------------------------------------------
+Mon Oct 16 11:05:27 CEST 2000 - schwab@suse.de
+
+- Fix link order.
+
+-------------------------------------------------------------------
+Mon Sep 25 16:50:24 CEST 2000 - schwab@suse.de
+
+- Add group tag.
+
+-------------------------------------------------------------------
+Mon Dec  6 00:19:51 CET 1999 - ro@suse.de
+
+- fix to compile on alpha 
+
+-------------------------------------------------------------------
+Thu Nov 11 18:03:24 CET 1999 - schwab@suse.de
+
+- New package
+

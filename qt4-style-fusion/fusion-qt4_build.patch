@@ -1,0 +1,37 @@
+diff -rupN fusion-qt4/fusion.pro fusion-qt4-new/fusion.pro
+--- fusion-qt4/fusion.pro	2015-11-12 22:52:32.544225869 +0100
++++ fusion-qt4-new/fusion.pro	2015-11-12 23:17:43.000000000 +0100
+@@ -7,18 +7,20 @@ TEMPLATE = lib
+ CONFIG += plugin
+ 
+ # Set this variable to Qt sources directory
+-QTSRC = E:/Soft/QtSDK/QtSources/4.8.0/src
++QTSRC = /usr
+ 
+-INCLUDEPATH += $$QTSRC/gui/styles
++INCLUDEPATH += $$QTSRC/include
++INCLUDEPATH += $$QTSRC/include/QtGui
++INCLUDEPATH += $$QTSRC/include/QtGui/private
++INCLUDEPATH += $$QTSRC/include/QtCore
+ 
+ TARGET = $$qtLibraryTarget($$TARGET)
+-DESTDIR = $$[QT_INSTALL_PLUGINS]/styles
+ 
+ SOURCES += \
+     qfusionstyle.cpp \
+     qstyleanimation.cpp \
+     fusionstyleplugin.cpp \
+-    $$QTSRC/gui/styles/qstylehelper.cpp
++    qstylehelper.cpp
+ 
+ HEADERS += \
+     qfusionstyle.h \
+@@ -36,7 +35,7 @@ unix:!symbian {
+     maemo5 {
+         target.path = /opt/usr/lib
+     } else {
+-        target.path = /usr/lib
++        target.path = $$[QT_INSTALL_PLUGINS]/styles
+     }
+     INSTALLS += target
+ }

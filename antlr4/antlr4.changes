@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Sun Jun  2 18:10:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid name repetition in summaries.
+- Fix RPM groups.
+- Trim bias from descriptions.
+
+-------------------------------------------------------------------
+Sun Feb 17 08:16:47 UTC 2019 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to 4.7.2
+  * release notes:
+    https://github.com/antlr/antlr4/releases/tag/4.7.2
+- Change installation paths for docs&libs to openSUSE default:
+  * antlr4-install-path.patch
+
+-------------------------------------------------------------------
+Sun Sep  9 20:28:18 UTC 2018 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- ANTLR4 packages
+  * complete JAR isn't built ATM, as
+    1) Maven hasn't come oficially to openSUSE yet
+    2) ANTLR4 needs bootstrap package
+  * Runtime C++ library package

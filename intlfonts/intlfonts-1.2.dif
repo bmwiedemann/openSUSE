@@ -1,0 +1,74 @@
+--- README.SUSE
++++ README.SUSE	Thu Apr 15 22:29:03 1999
+@@ -0,0 +1,34 @@
++
++      International Fonts
++      ===================
++
++Accordingly to the README we have built serveral ready
++for installation packages for the following languages:
++
++  ifntarab ... Arab fonts for X11
++  ifntasia ... Asian fonts for X11
++  ifntchia ... Chinese fonts for X11
++  ifntchib ... Big Chinese fonts for X11
++  ifntethi ... Ethiopic fonts for X11
++  ifnteuro ... European fonts for X11
++  ifntjapa ... Japanese fonts for X11
++  ifntjapb ... Big Japanese fonts for X11
++  ifntphon ... IPA font for X11
++
++-------------------------------------------------------------
++
++Ganz nach den README sind mehrere Pakete für die folgenden
++Sprachen fertig gebaut zum Installieren:
++
++  ifntarab ... Arabische Fonts für X11
++  ifntasia ... Asiatische Fonts für X11
++  ifntchia ... Chinesische Fonts für X11
++  ifntchib ... Große Chinesische Fonts für X11
++  ifntethi ... Äthopische Fonts für X11
++  ifnteuro ... Europäische Fonts für X11
++  ifntjapa ... Japanische Fonts für X11
++  ifntjapb ... Große Japanische Fonts für X11
++  ifntphon ... IPA-Font für X11
++
++
++         Your SusE Team
+--- Chinese/fonts.alias
++++ Chinese/fonts.alias	Thu Apr 15 22:22:16 1999
+@@ -1,3 +1,7 @@
+--ETL-Fixed-Medium-R-Normal--24-240-72-72-C-120-SiSheng_CWNN-0 -ETL-Fixed-Medium-R-Normal--24-240-72-72-C-120-OMRON_UDC_ZH-0
+--ETL-Fixed-Medium-R-Normal--16-160-72-72-C-80-SiSheng_CWNN-0 -ETL-Fixed-Medium-R-Normal--16-160-72-72-C-80-OMRON_UDC_ZH-0
+--ETL-Fixed-Medium-R-Normal--14-140-72-72-C-70-SiSheng_CWNN-0 -ETL-Fixed-Medium-R-Normal--14-140-72-72-C-70-OMRON_UDC_ZH-0
++!
++! Chinese Font Aliases for MULE
++!
++-etl-fixed-medium-r-normal--24-240-72-72-c-120-sisheng_cwnn-0 -etl-fixed-medium-r-normal--24-240-72-72-c-120-omron_udc_zh-0
++-etl-fixed-medium-r-normal--16-160-72-72-c-80-sisheng_cwnn-0 -etl-fixed-medium-r-normal--16-160-72-72-c-80-omron_udc_zh-0
++-etl-fixed-medium-r-normal--14-140-72-72-c-70-sisheng_cwnn-0 -etl-fixed-medium-r-normal--14-140-72-72-c-70-omron_udc_zh-0
++
+--- European/fonts.alias.orig	Fri Jun 11 10:28:05 1999
++++ European/fonts.alias	Fri Jan 19 15:29:08 2001
+@@ -1,6 +1,10 @@
++!
++! European Font Aliases for MULE
++!
+ a14 -ETL-Fixed-Medium-R-Normal--14-140-72-72-C-70-ISO8859-1
+ a16 -ETL-Fixed-Medium-R-Normal--16-160-72-72-C-80-ISO8859-1
+ a18 -ETL-Fixed-Medium-R-Normal--18-180-72-72-C-90-ISO8859-1
+ a24 -ETL-Fixed-Medium-R-Normal--24-240-72-72-C-120-ISO8859-1
+--ETL-Fixed-Medium-R-Normal--16-160-72-72-C-80-GOST19768.74-1 -ETL-Fixed-Medium-R-Normal--16-160-72-72-C-80-KOI8-R
+--ETL-Fixed-Medium-R-Normal--16-160-72-72-C-80-KOI8-1 -ETL-Fixed-Medium-R-Normal--16-160-72-72-C-80-KOI8-R
++-etl-fixed-medium-r-normal--14-140-72-72-c-70-koi8-1 -etl-fixed-medium-r-normal--14-140-72-72-c-70-gost19768.74-1
++-etl-fixed-medium-r-normal--16-160-72-72-C-80-KOI8-1 -etl-fixed-medium-r-normal--16-160-72-72-C-80-KOI8-R
++-etl-fixed-medium-r-normal--24-240-72-72-c-120-koi8-1 -etl-fixed-medium-r-normal--24-240-72-72-c-120-gost19768.74-1
+--- Japanese/fonts.alias.orig	Wed May 12 12:36:29 1999
++++ Japanese/fonts.alias	Fri Jan 19 15:31:28 2001
+@@ -1,3 +1,6 @@
++!
++! Japanese Font Aliases for MULE
++!
+ k18 -JIS-Fixed-Medium-R-Normal--18-180-72-72-C-180-JISX0208.1983-0
+ k32 -watanabe-fixed-medium-r-normal--32-300-75-75-c-320-jisx0208.1983-0
+ k48 -watanabe-fixed-medium-r-normal--48-450-75-75-c-480-jisx0208.1983-0

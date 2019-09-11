@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Thu Nov 24 10:16:25 UTC 2016 - mpluskal@suse.com
+
+- Update to version 4.7.0:
+  * New icons:
+    + Add handshake-o icon (thanks, Linode!)
+    + Add envelope-open icon (thanks, Linode!)
+    + Add bath, shower icons (thanks, Linode!)
+    + Add id-card, address-book icons (thanks, Linode!)
+    + Add thermometer icon (thanks, Linode!)
+    + Add Linode logo
+    + Add Free Code Camp logo
+  * Updated icons:
+    + Update Mastercard logo
+    + Update QQ logo
+
+-------------------------------------------------------------------
+Fri Jul 29 12:39:11 UTC 2016 - petr@cervinka.net
+
+- Updated to version 4.6.3
+   * Fixed  fa-instagram 
+   * Updated google plus icon
+- Changes in version 4.6.2
+   * Updated pied-piper logo
+   * New icon fa-first-order
+- Changes in version 4.6.1
+   * Fixed aria-hidden attribute
+   * Fixed invalid US-ASCII character "\xC3"
+- Changes in major version 4.6.0
+   * 30 new icons
+   * New Icon Category: Accessibility
+   * Fixes in CSS, SCSS and Less
+   * Fixed icon "1px size taller" issue introduced in 4.5.0
+
+-------------------------------------------------------------------
+Wed Feb 10 20:41:02 UTC 2016 - mpluskal@suse.com
+
+- Update to 4.5.0
+- Use url for source
+
+-------------------------------------------------------------------
+Tue Sep  8 14:46:28 CEST 2015 - tiwai@suse.de
+
+- Add Group to fontawesome-fonts-web subpackage to fix the build
+  for older distros
+- Add missing defattr to filelist
+- Add missing buildroot tag to fix the build failures on old distros
+
+-------------------------------------------------------------------
+Mon Jun  1 14:40:00 UTC 2015 - hguo@suse.com
+
+- New package.
+

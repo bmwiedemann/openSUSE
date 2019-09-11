@@ -1,0 +1,13 @@
+Index: pacemaker-1.1.18+20180430.c0d7ba798/cts/patterns.py
+===================================================================
+--- pacemaker-1.1.18+20180430.c0d7ba798.orig/cts/patterns.py
++++ pacemaker-1.1.18+20180430.c0d7ba798/cts/patterns.py
+@@ -114,7 +114,7 @@ class crm_corosync(BasePatterns):
+         BasePatterns.__init__(self, name)
+ 
+         self.commands.update({
+-            "StartCmd"       : "service corosync start && service pacemaker start",
++            "StartCmd"       : "service pacemaker start",
+             "StopCmd"        : "service pacemaker stop; [ ! -e /usr/sbin/pacemaker-remoted ] || service pacemaker_remote stop; service corosync stop",
+ 
+             "EpochCmd"      : "crm_node -e",

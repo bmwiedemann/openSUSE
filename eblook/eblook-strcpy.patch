@@ -1,0 +1,22 @@
+diff -ru eblook-1.6.1.orig/eblook.c eblook-1.6.1/eblook.c
+--- eblook-1.6.1.orig/eblook.c	2004-06-18 01:09:01.000000000 +0900
++++ eblook-1.6.1/eblook.c	2010-04-06 11:59:31.234479094 +0900
+@@ -765,7 +765,7 @@
+ 	argv[num++] = p;
+ 	reserved = 1;
+       }
+-      strcpy (p, p + 1);
++      memmove (p, p + 1, strlen (p));
+       p--;
+       in_quote = !in_quote;
+       break;
+@@ -779,7 +779,7 @@
+       break;
+ 
+     case '\\':
+-      strcpy (p, p + 1);
++      memmove (p, p + 1, strlen (p));
+     default:
+       if (!reserved) {
+ 	argv[num++] = p;
+Only in eblook-1.6.1: eblook.c~

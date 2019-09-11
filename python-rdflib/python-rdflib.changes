@@ -1,0 +1,402 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:53:34 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed May  3 16:47:44 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 4.2.2
+  + Bug fixes:
+    * SPARQL bugs fixed:
+      * Fix for filters in sub-queries
+      * Fixed bind, initBindings and filter problems
+      * Fixed unexpected None value in SPARQL-update
+      * Fix sparql, group by and count of null values with `optional`
+      * Fixed sparql sub-query and aggregation bugs
+      * Fixed parsing Complex BGPs as triples
+      * Fixed DISTINCT being ignored inside aggregate functions
+      * Fix unicode encoding errors in sparql processor
+      * Fixed SPARQL select nothing no longer returning a `None` row
+      * Fixed aggregate operators COUNT and SAMPLE to ignore unbound / NULL values
+      * Fix sparql relative uris
+      * SPARQL can now compare xsd:date type as well, fixes #532
+      * fix sparql path order on python3: "TypeError: unorderable types: SequencePath() < SequencePath()""
+      * SPARQL parser now robust to spurious semicolon
+      * Let paths be comparable against all nodes even in py3 (preparedQuery error)
+      * Made behavior of `initN` in `update` and `query` more consistent
+    * SparqlStore:
+      * SparqlStore now closes underlying urllib response body
+      * SparqlStore injectPrefixes only modifies query if prefixes present and if adds a newline in between
+    * Fixes and tests for AuditableStore
+    * Trig bugs fixed:
+      * trig export of multiple graphs assigns wrong prefixes to prefixedNames
+      * Trig serialiser writing empty named graph name for default graph
+      * Trig parser can creating multiple contexts for the default graph
+      * Trig serialisation handling prefixes incorrectly
+    * Fixed Nquads parser handling of triples in default graph
+    * Fixed TypeError in Turtle serializer (unorderable types: DocumentFragment() > DocumentFragment())
+    * Fixed serialization and parsing of inf/nan
+    * Fixed RDFa parser from failing on time elements with child nodes
+    * Fix double reduction of \\ escapes in from_n3
+    * Fixed handling of xsd:base64Binary
+    * Fixed Collection.__setitem__ broken
+    * Fix ImportError when __main__ already loaded
+    * Fixed broken top_level.txt file in distribution
+  + Enhancements:
+    * Added support for Python 3.5+
+    * More aliases for common formats (nt, turtle)
+    * Improved RDF1.1 ntriples support
+    * Dependencies updated and improved compatibility with pyparsing, html5lib, SPARQLWrapper and elementtree
+    * Improved prefix for SPARQL namespace in XML serialization
+    * Performance improvements:
+      * SPARQL Aggregation functions don't build up memory for each row
+      * Collections now support += (__iadd__), fixes slow creation of large lists
+      * SPARQL Optimisation to expand BGPs in a smarter way
+    * SPARQLStore improvements
+      * improved SPARQLStore BNode customizability
+      * Adding the option of using POST for long queries in SPARQLStore
+      * Exposed the timeout of SPARQLWrapper
+    * SPARQL prepared query now carries the original (unparsed) parameters
+    * added .n3 methods for path objects
+    * Added support for xsd:gYear and xsd:gYearMonth
+    * Allow duplicates in rdf:List
+    * Improved slicing of Resource objects
+  + Cleanups:
+    * cleanup: SPARQL Prologue and Query new style classes
+    * Reduce amount of warnings, especially closing opened file pointers
+    * Improved ntriples parsing exceptions to actually tell you what's wrong
+    * remove ancient and broken 2.3 support code.
+    * Logger output improved
+    * properly cite RGDA1
+    * Avoid class reference to imported function
+    * Use find_packages for package discovery.
+    * Prepared ClosedNamespace (and _RDFNamespace) to inherit from Namespace (5.0.0)
+    * Avoid verbose build logging
+    * (ultra petty) Remove an unused import
+  + Testing improvements:
+    * updating deprecated testing syntax
+    * make test 375 more portable (use sys.executable rather than python)
+    * Removed outdated, skipped test for #130 that depended on content from the internet
+    * enable all warnings during travis nosetests
+    * travis updates
+    * travis also builds release branches
+  + Doc improvements:
+    * Update list of builtin serialisers in docstring
+    * Update reference to "Emulating container types"
+    * docs: clarify the use of an identifier when persisting a triplestore
+    * DOC: unamed -> unnamed, typos
+- Implement single-spec version
+- Fix source URL.
+
+-------------------------------------------------------------------
+Mon Sep 12 13:58:57 UTC 2016 - aplanas@suse.com
+
+- Break cycle removing BuildRequires from python-SPARQLWrapper 
+
+-------------------------------------------------------------------
+Mon Sep 12 13:36:30 UTC 2016 - aplanas@suse.com
+
+- update to version 4.2.1:
+  * Minor enhancements:
+    + Added a Networkx connector #471, #507
+    + Added a graph_tool connector #473
+    + Added a graphs method to the Dataset object #504, #495
+    + Batch commits for SPARQLUpdateStore #486
+  * Bug fixes:
+    + Fixed bnode collision bug #506, #496, #494
+    + fix util.from_n3() parsing Literals with datatypes and Namespace
+      support #503, #502
+    + make Identifier.__hash__ stable wrt. multi processes #501, #500
+    + fix handling URLInputSource without content-type #499, #498
+    + no relative import in algebra when run as a script #497
+    + Duplicate option in armstrong theme.conf removed #491
+    + Variable.__repr__ returns a python representation string, not n3 #488
+    + fixed broken example #482
+    + trig output fixes #480
+    + set PYTHONPATH to make rdfpipe tests use the right rdflib
+      version #477
+    + fix RDF/XML problem with unqualified use of rdf:about #470, #468
+    + AuditableStore improvements #469, #463
+    + added asserts for graph.set([s,p,o]) so s and p aren't None #467
+    + threading.RLock instances are context managers #465
+    + SPARQLStore does not transform Literal('') into Literal('None')
+      anymore #459, #457
+    + slight performance increase for graph.all_nodes() #458
+  * Testing improvements:
+    + travis: migrate to docker container infrastructure #508
+    + test for narrow python builds (chars > 0xFFFF) (related to #453,
+      #454 ) #456, #509
+    + dropped testing py3.2 #448
+    + Running a local fuseki server on travis and making it failsafe
+      #476, #475, #474, #466, #460
+    + exclude def main(): functions from test coverage analysis #472
+
+-------------------------------------------------------------------
+Wed Jul  1 13:43:16 UTC 2015 - toddrme2178@gmail.com
+
+- Split documentation into doc subpackage
+
+-------------------------------------------------------------------
+Tue May 12 13:24:19 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 4.2.0:
+  * Supporting N-Triples 1.1 syntax using UTF-8 encoding #447,
+    #449, #400
+  * Graph comparison now really works using RGDA1 (RDF Graph Digest
+    Algorithm 1) #441 #385
+  * More graceful degradation than simple crashing for unicode
+    chars > 0xFFFF on narrow python builds
+  * URLInputSource now supports json-ld #425
+  * SPARQLStore is now graph aware #401, #402
+  * SPARQLStore now uses SPARQLWrapper for updates #397
+  * Certain logging output is immediately shown in interactive mode
+    #414
+  * Python 3.4 fully supported #418
+  * Fixed double invocation of 2to3 #437
+  * PyRDFa parser missing brackets #434
+  * Correctly handle \uXXXX and \UXXXXXXXX escapes in n3 files #426
+  * Logging cleanups and keeping it on stderr #420 #414 #413
+  * n3: allow @base URI to have a trailing '#' #407 #379
+  * microdata: add file:// to base if it's a filename so rdflib can
+    parse its own output #406 #403
+  * TSV Results parse skips empty bindings in result #390
+  * fixed accidental test run due to name #389
+  * Bad boolean list serialization to Turtle & fixed ambiguity
+    between Literal(False) and None #387 #382
+  * Current version number & PyPI link in README.md #383
+- remove *.pyc deletion: fixed upstream
+- remove unwanted shebang in rdflib
+- fix update-alternatives
+- remove end-of-line encoding fix: fixed upstream
+
+-------------------------------------------------------------------
+Sat Nov 08 20:27:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in pre script
+
+-------------------------------------------------------------------
+Thu Sep 11 12:31:20 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 4.1.2
+  * This is a bug-fix release.
+    * Fixed unicode/str bug in py3 for rdfpipe
+      [#375](https://github.com/RDFLib/rdflib/issues/375)
+- Update to 4.1.1
+  * This is a bug-fix release.
+  * This will be the last RDFLib release to support python 2.5.
+    * The RDF/XML Parser was made stricter, now raises exceptions for
+      illegal repeated node-elements.
+      [#363](https://github.com/RDFLib/rdflib/issues/363)
+    * The SPARQLUpdateStore now supports non-ascii unicode in update
+      statements
+      [#356](https://github.com/RDFLib/rdflib/issues/356)
+    * Fixed a bug in the NTriple/NQuad parser wrt. to unicode escape sequences
+      [#352](https://github.com/RDFLib/rdflib/issues/352)
+    * HTML5Lib is no longer pinned to 0.95
+      [#355](https://github.com/RDFLib/rdflib/issues/360)
+    * RDF/XML Serializer now uses parseType=Literal for well-formed XML literals
+    * A bug in the manchester OWL syntax was fixed
+      [#355](https://github.com/RDFLib/rdflib/issues/355)
+- Update to 4.1
+  * This is a new minor version RDFLib, which includes a handful of new features:
+    * A TriG parser was added (we already had a serializer) - it is
+      up-to-date wrt. to the newest spec from: http://www.w3.org/TR/trig/
+    * The Turtle parser was made up to date wrt. to the latest Turtle spec.
+    * Many more tests have been added - RDFLib now has over 2000
+      (passing!) tests. This is mainly thanks to the NT, Turtle, TriG,
+      NQuads and SPARQL test-suites from W3C. This also included many
+      fixes to the nt and nquad parsers.
+    * ```ConjunctiveGraph``` and ```Dataset``` now support directly adding/removing
+      quads with ```add/addN/remove``` methods.
+    * ```rdfpipe``` command now supports datasets, and reading/writing context
+      sensitive formats.
+    * Optional graph-tracking was added to the Store interface, allowing
+      empty graphs to be tracked for Datasets. The DataSet class also saw
+      a general clean-up, see: [#309](https://github.com/RDFLib/rdflib/pull/309)
+    * After long deprecation, ```BackwardCompatibleGraph``` was removed.
+  * Minor enhancements/bugs fixed:
+    * Many code samples in the documentation were fixed thanks to @PuckCh
+    * The new ```IOMemory``` store was optimised a bit
+    * ```SPARQL(Update)Store``` has been made more generic.
+    * MD5 sums were never reinitialized in ```rdflib.compare```
+    * Correct default value for empty prefix in N3
+      [#312](https://github.com/RDFLib/rdflib/issues/312)
+    * Fixed tests when running in a non UTF-8 locale
+      [#344](https://github.com/RDFLib/rdflib/issues/344)
+    * Prefix in the original turtle have an impact on SPARQL query
+      resolution
+      [#313](https://github.com/RDFLib/rdflib/issues/313)
+    * Duplicate BNode IDs from N3 Parser
+      [#305](https://github.com/RDFLib/rdflib/issues/305)
+    * Use QNames for TriG graph names
+      [#330](https://github.com/RDFLib/rdflib/issues/330)
+    * \uXXXX escapes in Turtle/N3 were fixed
+      [#335](https://github.com/RDFLib/rdflib/issues/335)
+    * A way to limit the number of triples retrieved from the
+      ```SPARQLStore``` was added
+      [#346](https://github.com/RDFLib/rdflib/pull/346)
+    * Dots in localnames in Turtle
+      [#345](https://github.com/RDFLib/rdflib/issues/345)
+      [#336](https://github.com/RDFLib/rdflib/issues/336)
+    * ```BNode``` as Graph's public ID
+      [#300](https://github.com/RDFLib/rdflib/issues/300)
+    * Introduced ordering of ```QuotedGraphs```
+      [#291](https://github.com/RDFLib/rdflib/issues/291)
+
+-------------------------------------------------------------------
+Fri Dec  6 13:57:34 UTC 2013 - toddrme2178@gmail.com
+
+- Update to 4.0.1
+  * Bugfixes
+- Update to 4.0
+  * The new SPARQL 1.1 engine (rdflib-sparql) has been included in the core distribution. SPARQL 1.1 queries and updates should work out of the box.
+  * Several RDF 1.1 features are available:
+    * A new DataSet class
+    * XMLLiteral and HTMLLiterals
+    * BNode (de)skolemization is supported through BNode.skolemize, URIRef.de_skolemize, Graph.skolemize and Graph.de_skolemize
+  * Handled of Literal equality was split into lexical comparison (for normal == operator) and value space (using new Node.eq methods). This introduces some slight backwards incomaptible changes, but was necessary, as the old version had inconsisten hash and equality methods that could lead the literals not working correctly in dicts/sets. The new way is more in line with how SPARQL 1.1 works. For the full details, see:
+  * Iterating over QueryResults will generate ResultRow objects, these allow access to variable bindings as attributes or as a dict. I.e.
+  * "Slicing" of Graphs and Resources as syntactic sugar: (#271)
+  * The SPARQLStore and SPARQLUpdateStore are now included in the RDFLib core
+  * The documentation has been given a major overhaul, and examples for most features have been added.
+- Update to 3.4
+  * This release introduced new parsers for structured data in HTML. In particular formats: hturtle, rdfa, mdata and an auto-detecting html format were added. Thanks to Ivan Herman for this!
+  * This release includes a lot of admin maintentance - correct dependencies for different python versions, etc. Several py3 bugs were also fixed.
+  * This release drops python 2.4 compatability - it was just getting too expensive for us to maintain. It should however be compatible with any cpython from 2.5 through 3.3.
+  * node.md5_term is now deprecated, if you use it let us know.
+- Add additional dependencies
+- Implement update-alternatives
+
+-------------------------------------------------------------------
+Thu Jan 31 13:27:04 UTC 2013 - saschpe@suse.de
+
+- Drop shipped bytecode files and recompile them
+
+-------------------------------------------------------------------
+Wed Jan 30 13:06:06 UTC 2013 - saschpe@suse.de
+
+- Run testsuite everywhere
+- Macro cleanup
+
+-------------------------------------------------------------------
+Sun Jan 13 16:52:06 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Sun Jan 13 15:25:33 UTC 2013 - p.drouand@gmail.com
+
+- Remove the hidden file after documentation is build
+
+-------------------------------------------------------------------
+Mon Dec  3 15:31:28 UTC 2012 - saschpe@suse.de
+
+- Disable testsuite on SLE_11_SP2 to fix build
+
+-------------------------------------------------------------------
+Tue Oct 16 18:29:32 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 3.2.3:
+  * Fixes broken querying
+    https://github.com/RDFLib/rdflib/issues/234
+  * graph.transitiveClosure now works with loops
+    https://github.com/RDFLib/rdflib/issues/206
+
+- Changes in 3.2.2:
+  * Improved serialization/parsing roundtrip tests led to some fixes
+    of obscure parser/serializer bugs. In particular complex string 
+    Literals in ntriples improved a lot. 
+  * The terms of a triple are now asserted to be RDFLib Node's in graph.add
+    This should avoid getting strings and other things in the store.
+    https://github.com/RDFLib/rdflib/issues/200
+  * Added a specific TurtleParser that does not require the store to be 
+    non-formula aware.
+    https://github.com/RDFLib/rdflib/issues/214
+  * A trig-serializer was added, see:
+    http://www4.wiwiss.fu-berlin.de/bizer/trig/
+  * BNode generation was made thread-safe 
+    https://github.com/RDFLib/rdflib/issues/209
+    (also fixed better by dzinxed)
+  * Illegal BNode IDs removed from NT output: 
+    https://github.com/RDFLib/rdflib/issues/212
+  * and more minor bug fixes that had no issues
+
+-------------------------------------------------------------------
+Mon Jun 11 09:34:31 UTC 2012 - dimstar@opensuse.org
+
+- Add python-isodate Requires: rdflib imports it.
+
+-------------------------------------------------------------------
+Wed Jun  6 18:17:39 UTC 2012 - jfunk@funktronics.ca
+
+- Require python-Sphinx instead of python-sphinx
+- Change Source to full URL
+
+-------------------------------------------------------------------
+Thu May 24 19:41:43 UTC 2012 - jfunk@funktronics.ca
+
+- Run tests
+- Add missing requirements
+- Build documentation
+
+-------------------------------------------------------------------
+Sat Apr 28 18:14:50 UTC 2012 - msuman@gnome.org
+
+- Update to version 3.2.1:
+  + New setuptools entry points for query processors and results
+  + Many bugfixes
+
+-------------------------------------------------------------------
+Tue Mar 13 13:39:19 UTC 2012 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  SPDX format
+
+-------------------------------------------------------------------
+Wed Feb 15 20:17:16 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.2.0:
+  + rdflib now works under python3
+  + Unit tests were updated and cleaned up
+  + Updated documentations
+  + A new resource oriented API was added
+  + Many bugfixes.
+
+-------------------------------------------------------------------
+Thu Sep 22 09:47:20 UTC 2011 - saschpe@suse.de
+
+- Fixed SLE build by adding a %define python_sitelib
+
+-------------------------------------------------------------------
+Tue Sep 20 14:26:18 UTC 2011 - saschpe@suse.de
+
+- Update to version 3.1.0:
+  * Literal.__str__ does not behave like unicode
+  * (RDFa Parser) Does not handle application/xhtml+xml
+  * RDFa TC #117: Fragment identifiers stripped from BASE
+  * Malformed literals produced when rdfa contains newlines
+  * Namespaces beginning with _ are invalid
+  * Turtle Files with a UTF-8 BOM fail to parse
+  * ClosedNamespace.__str__ returns URIRef not str
+  * IOMemory does not override open
+  * Timestamps with microseconds *and* "Z" timezone are not parsed
+  * DateTime literals with offsets fail to convert to Python
+  * Timestamps with timezone information are not parsed
+  * problem with unicode literals in rdflib.compare.graph_diff
+  * Sleepycat Store broken with create=False
+  * Would be useful if Graph.query could propagate kwargs to a
+    plugin processor
+  * Graph.connected exception when passed empty graph
+  * Not compatible with Python 2.4
+  * Support Python's set operations on Graph
+  * NT output encoding to utf-8 broken as it goes through
+    _xmlcharrefreplace
+  * Store SPARQL Support
+- Fix non-executable bits rpmlint issue
+
+-------------------------------------------------------------------
+Thu Aug 12 16:59:54 UTC 2010 - jmatejek@novell.com
+
+- version update to 3.0.0
+- cleaned up the spec a bit and added noarch

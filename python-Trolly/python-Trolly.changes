@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Thu Dec  6 14:36:31 CET 2018 - mcepl@suse.com
+
+- Fix tests and remove unnecessary BR for nose.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:26 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Aug 31 07:07:44 UTC 2017 - toddrme2178@gmail.com
+
+- update to version 0.2.2
+  * No upstream changelog
+
+-------------------------------------------------------------------
+Thu Aug 24 13:56:23 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Thu May 14 11:24:57 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.2.1:
+  * Trolly has recently been updated to start the deprecation of
+    non-pythonic conventions and improve PEP8 compliance. All the
+    old pascal cased methods are now deprecated, they have been
+    left in and point to the new method names. There are no
+    breaking changes in this release but it is recommended you
+    change your code to use the pythonic naming conventions.
+- get the zip archive from pypi (tar.gz not available)
+- add unzip as BuildRequires
+- remove LICENCE.txt README.md: not provided anymore
+
+-------------------------------------------------------------------
+Tue Jun 25 10:57:15 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.1.1:
+  + setup.py now requires httplib2
+
+-------------------------------------------------------------------
+Wed Apr 10 08:40:39 UTC 2013 - speilicke@suse.com
+
+- Initial version
+
+

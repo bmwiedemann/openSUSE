@@ -1,0 +1,6 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter("openmpi.* rpath-in-buildconfig")
+addFilter("openmpi.* script-without-shebang")
+addFilter("openmpi.* shared-lib-calls-exit")

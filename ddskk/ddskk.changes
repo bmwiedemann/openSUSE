@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Thu Mar  8 15:33:31 UTC 2018 - ftake@geeko.jp
+
+- Remove unnecessary script: SKK-JISYO.rb
+- Add download-dic.sh to Source
+
+-------------------------------------------------------------------
+Wed Mar  7 14:51:08 UTC 2018 - ftake@geeko.jp
+
+- Update to ddskk-16.2
+  * Drop support for GNU Emacs 22
+  * Support GNU Emacs 26
+  * bayesian/bskk: Support Ruby 2.4
+  * A New variable, skk-candidate-buffer-delete-other-windows
+    for users of popwin.el or shackle.el
+  * A New variable, skk-show-candidates-nth-henkan-char
+    to configure the number of space keys to show a candidate list
+  * A New variable, skk-henkan-number-to-display-candidates
+    to specify the number of candidates on a candidate list at once
+    obsoleting skk-henkan-show-candidates-rows
+- Update to ddskk-16.1
+  * Support GNU Emacs 25
+  * Update documents
+- Update dictionary to 20180304
+- Drop edict dictionary
+  * edict is now considered as non-free
+- Remove unnecessary documents
+- Fix License tag since some dictionary files are not distributed
+  under GPL-2.0+
+- Update the source code URL to GitHub
+
+-------------------------------------------------------------------
+Tue Feb 20 15:09:22 UTC 2018 - crrodriguez@opensuse.org
+
+- remove unused xorg-x11-devel BuildRequires 
+
+-------------------------------------------------------------------
+Sat Aug 12 06:12:08 UTC 2017 - bwiedemann@suse.com
+
+- Add ddskk-drop-build-date.patch to fix build-compare (boo#1047218)
+
+-------------------------------------------------------------------
+Fri Aug 21 15:43:04 UTC 2015 - i@marguerite.su
+
+- update version 20150816
+  * dictionaries version 20150821
+  * wiki version 20150326
+  * changes see ChangeLog.5
+
+-------------------------------------------------------------------
+Mon Jun  9 15:18:22 UTC 2014 - i@marguerite.su
+
+- update version 20140608
+  * changes see ChangeLog.4 and ChangeLog.5
+- drop flavour.patch
+  * upstream now doesn't have this code
+- drop skk-emacs-type.patch, upstreamed
+
+-------------------------------------------------------------------
+Fri May 30 20:37:56 UTC 2014 - jengelh@inai.de
+
+- Drop unused build-time requirements on libpng, libgif, libtiff,
+  krb5, openldap2
+
+-------------------------------------------------------------------
+Wed Oct 10 12:17:58 UTC 2012 - werner@suse.de
+
+- Solve update problem due date based version number scheme and
+  current number scheme with 14.4
+
+-------------------------------------------------------------------
+Wed Jul  4 13:34:18 UTC 2012 - werner@suse.de
+
+- Update to ddskk-14.4 and skkdic-20110529
+  * Don't know to much as I do not speak nor read Japanese but
+    it compiles with latest emacs 24.1 
+- Take some patches from Debian as well add some own patches
+- Drop superfluous patches
+
+-------------------------------------------------------------------
+Fri Jan  6 15:33:15 UTC 2012 - pgajdos@suse.com
+
+- remove %{_infodir}/* from skkdic %files section, it is packaged
+  in main package yet
+
+-------------------------------------------------------------------
+Wed Oct 26 17:56:57 UTC 2011 - ftake@geeko.jp
+
+- fix bnc#724242 - skk-autoloads.el is newer than byte-compiled file 
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Thu Aug 27 11:20:45 UTC 2009 - aj@suse.de
+
+- Use xemacs-packages instead of apel-xemacs as requirement.
+- Disable building for xemacs for now since the current xemacs does
+  not byte-compile everything.
+
+-------------------------------------------------------------------
+Tue Dec 04 18:25:31 CET 2007 - mfabian@suse.de
+
+- remove openldap2 from BuildRequires.
+
+-------------------------------------------------------------------
+Wed Mar 01 11:58:08 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(...)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:02 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 10 17:38:45 CET 2006 - mfabian@suse.de
+
+- bugzilla #141756: add a workaround to make the package build.
+
+-------------------------------------------------------------------
+Thu Jan 27 17:55:18 CET 2005 - mfabian@suse.de
+
+- move info pages to skkdic subpackage and delete the copy
+  of the info pages in the XEmacs package directory to same some
+  space. On top of that the copy in the XEmacs package directory
+  was broken, texinfo.el could not format it correctly, the copy
+  produced by the Emacs build is correct.
+
+-------------------------------------------------------------------
+Thu Jan 27 16:48:58 CET 2005 - mfabian@suse.de
+
+- new package: ddskk, version 20050123.

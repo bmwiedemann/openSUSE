@@ -1,0 +1,158 @@
+Index: glibc-2.27/sunrpc/bindrsvprt.c
+===================================================================
+--- glibc-2.27.orig/sunrpc/bindrsvprt.c
++++ glibc-2.27/sunrpc/bindrsvprt.c
+@@ -29,6 +29,9 @@
+  *   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
+ 
++#include <stdio.h>
++#include <ctype.h>
++#include <stdlib.h>
+ #include <errno.h>
+ #include <unistd.h>
+ #include <string.h>
+@@ -42,6 +45,93 @@
+  */
+ __libc_lock_define_initialized (static, lock);
+ 
++#define STARTPORT 600
++#define LOWPORT 512
++#define ENDPORT (IPPORT_RESERVED - 1)
++#define NPORTS	(ENDPORT - STARTPORT + 1)
++
++/* Read the file /etc/rpc.blacklisted, so that we don't bind to these
++   ports.  */
++
++static int blacklist_read;
++static int *list;
++static int list_size = 0;
++
++static void
++load_blacklist (void)
++{
++  FILE *fp;
++  char *buf = NULL;
++  size_t buflen = 0;
++  int size = 0, ptr = 0;
++
++  __libc_lock_lock (lock);
++  if (blacklist_read)
++    goto unlock;
++  blacklist_read = 1;
++
++  fp = fopen ("/etc/bindresvport.blacklist", "r");
++  if (fp == NULL)
++    goto unlock;
++
++  while (!feof_unlocked (fp))
++    {
++      unsigned long port;
++      char *tmp, *cp;
++      ssize_t n = __getline (&buf, &buflen, fp);
++      if (n < 1)
++        break;
++
++      cp = buf;
++      /* Remove comments.  */
++      tmp = strchr (cp, '#');
++      if (tmp)
++        *tmp = '\0';
++      /* Remove spaces and tabs.  */
++      while (isspace ((unsigned char) *cp))
++        ++cp;
++      /* Ignore empty lines.  */
++      if (*cp == '\0')
++        continue;
++      if (cp[strlen (cp) - 1] == '\n')
++        cp[strlen (cp) - 1] = '\0';
++
++      port = strtoul (cp, &tmp, 0);
++      while (isspace ((unsigned char) *tmp))
++        ++tmp;
++      if (*tmp != '\0' || (port == ULONG_MAX && errno == ERANGE))
++	continue;
++
++      /* Don't bother with out-of-range ports.  */
++      if (port < LOWPORT || port > ENDPORT)
++        continue;
++
++      if (ptr >= size)
++	{
++	  size += 10;
++	  int *new_list = realloc (list, size * sizeof (int));
++	  if (new_list == NULL)
++	    {
++	      free (list);
++	      list = NULL;
++	      free (buf);
++	      goto unlock;
++	    }
++	  list = new_list;
++	}
++
++      list[ptr++] = port;
++    }
++
++  fclose (fp);
++  free (buf);
++  list_size = ptr;
++
++ unlock:
++  __libc_lock_unlock (lock);
++}
++
++
+ /*
+  * Bind a socket to a privileged IP port
+  */
+@@ -52,12 +142,11 @@ bindresvport (int sd, struct sockaddr_in
+   struct sockaddr_in myaddr;
+   int i;
+ 
+-#define STARTPORT 600
+-#define LOWPORT 512
+-#define ENDPORT (IPPORT_RESERVED - 1)
+-#define NPORTS	(ENDPORT - STARTPORT + 1)
+   static short startport = STARTPORT;
+ 
++  if (!blacklist_read)
++    load_blacklist ();
++
+   if (sin == (struct sockaddr_in *) 0)
+     {
+       sin = &myaddr;
+@@ -75,6 +164,7 @@ bindresvport (int sd, struct sockaddr_in
+       port = (__getpid () % NPORTS) + STARTPORT;
+     }
+ 
++  __set_errno (EADDRINUSE);
+   /* Initialize to make gcc happy.  */
+   int res = -1;
+ 
+@@ -86,12 +176,22 @@ bindresvport (int sd, struct sockaddr_in
+  again:
+   for (i = 0; i < nports; ++i)
+     {
+-      sin->sin_port = htons (port++);
+-      if (port > endport)
+-	port = startport;
++      int j;
++
++      sin->sin_port = htons (port);
++
++      /* Check that this port is not blacklisted.  */
++      for (j = 0; j < list_size; j++)
++	if (port == list[j])
++	  goto try_next_port;
++
+       res = __bind (sd, sin, sizeof (struct sockaddr_in));
+       if (res >= 0 || errno != EADDRINUSE)
+ 	break;
++
++    try_next_port:
++      if (++port > endport)
++	port = startport;
+     }
+ 
+   if (i == nports && startport != LOWPORT)

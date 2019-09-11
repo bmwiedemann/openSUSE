@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Wed Mar 25 09:19:05 UTC 2015 - fstrba@suse.com
+
+- Upgrade to upstream version 0.32
+
+-------------------------------------------------------------------
+Wed Feb 25 09:16:26 UTC 2015 - fstrba@suse.com
+
+- Create a new package qpid-tools
+  * Version 0.30
+  * Tools were moved to a separate tarball from the qpid package
+

@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Tue Mar 15 08:44:20 UTC 2011 - coolo@novell.com
+
+- update to 0.12:
+ * Grok dist names ending with something numeric 
+   containing underscores [Florian Ragwitz]
+ * Remove potential -withoutworldwriteables suffix [Vincent Pit]
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:01 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Jul 10 16:14:21 UTC 2010 - chris@computersalat.de
+
+- update to 0.10
+  * Support -TRAIL in distribution version to indicate developer
+    release
+- recreated spec by cpanspec 1.78
+- noarch pkg
+
+-------------------------------------------------------------------
+Tue Feb  9 16:20:27 UTC 2010 - coolo@novell.com
+
+- initial package created by cpanspec 1.78
+

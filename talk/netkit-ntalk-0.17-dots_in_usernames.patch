@@ -1,0 +1,11 @@
+--- talk/get_names.c
++++ talk/get_names.c
+@@ -80,7 +80,7 @@
+ 	my_machine_name = hostname;
+ 	/* check for, and strip out, the machine name of the target */
+ 	names = strdup(argv[1]);
+-	for (cp = names; *cp && !index("@:!.", *cp); cp++)
++	for (cp = names; *cp && !index("@:!", *cp); cp++)
+ 		;
+ 	if (*cp == '\0') {
+ 		/* this is a local to local talk */

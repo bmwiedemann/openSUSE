@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Dec 12 13:15:37 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix grammar.
+
+-------------------------------------------------------------------
+Tue Dec 11 15:37:23 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
+
+- Fix devel package description.
+
+-------------------------------------------------------------------
+Mon Oct 22 14:31:09 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
+
+- Initial release - 1.4
+- Add GNUInstallDirs.path: allow to specify libdir

@@ -1,0 +1,16 @@
+--- libformula-1.1.3/build.properties	2009-11-17 16:11:48.000000000 +0000
++++ libformula-1.1.3/build.properties	2009-11-17 16:12:05.000000000 +0000
+@@ -1,8 +1,10 @@
+-project.revision=TRUNK-SNAPSHOT
++project.revision=1.1.3
+ ivy.artifact.group=pentaho-library
+ ivy.artifact.id=libformula
+ impl.title=LibFormula
+ impl.productID=libformula
+ src.dir=${basedir}/source
+ dependency.libbase.revision=1.1.3
+-testsrc.dir=${basedir}/test
+\ No newline at end of file
++testsrc.dir=${basedir}/test
++antcontrib.available=true
++build.cache.dir=lib

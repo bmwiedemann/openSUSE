@@ -1,0 +1,47 @@
+--- xselection.c
++++ xselection.c	1996/12/17 16:10:10
+@@ -1,3 +1,4 @@
++#define  XLIB_ILLEGAL_ACCESS
+ #ifndef lint
+ static char rcsid[] =
+    "$Xukc: xselection.c,v 1.6 91/06/18 15:22:40 rlh2 Exp $";
+@@ -51,7 +52,7 @@
+ static void send_selection();
+ static void own_selection();
+ 
+-static Atom selection_atom = NULL;
++static Atom selection_atom = (int)NULL;
+ static unsigned char *current_selection = NULL;
+ static unsigned char *old_selection = NULL;
+ 
+@@ -277,7 +278,7 @@
+ 
+ 	selection_atom = XInternAtom(dpy, argv[1], argc == 2);
+ 
+-	if (selection_atom == NULL) {
++	if (selection_atom == (int)NULL) {
+ 		fprintf(stderr,
+ 			"%s: %s is not a name of a known selection property.\n",
+ 			PROG_NAME, argv[1]);
+@@ -396,8 +397,10 @@
+ 				ptr_event->xselectionrequest.requestor,
+ 				ptr_event->xselectionrequest.property,
+ 				ptr_event->xselectionrequest.target,
+-				32, PropModeReplace, &length,
+-				sizeof(unsigned int));
++				32, 
++				PropModeReplace, 
++				(void*)&length,
++				(int)sizeof(unsigned int));
+ 
+ 		req_event = &(ptr_event->xselectionrequest);
+ 
+@@ -489,7 +492,7 @@
+                         if (XPending(dpy) > 0)
+                                 result = 1;
+                         else {
+-                                result = select(32, &server_fd_mask,
++                                result = select(32, (void*)&server_fd_mask,
+ 						(int *)NULL, (int *)NULL,
+ 						&timeout);
+                                 if (result == -1 && errno != EINTR) {

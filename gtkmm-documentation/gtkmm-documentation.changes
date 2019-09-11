@@ -1,0 +1,415 @@
+-------------------------------------------------------------------
+Mon Dec  3 19:38:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.24.0:
+  + Add Gtk::FileChooserNative example.
+  + Document Gtk::make_managed().
+  + Require gtkmm-3.0 >= 3.24.0.
+- Changes from version 3.22.1:
+  + Headers and Linking section: Replace broken link.
+  + Fix buildapp/Makefile.am and buildapp/README. Fix the build of
+    resources.c in steps 8 and 9.
+  + Mixing C & C++: Clarify ownership of wrap() result.
+  + Don't use the deprecated Gdk::screen_width() and
+    screen_height().
+  + Clarify: ColumnRecords can be static *singletons*.
+  + Fix a broken link to www.gtkmm.org.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:32:46 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sun Nov 20 18:47:47 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Add the "Building applications" chapter with example code
+    (bgo#772391).
+  + Document that Gtk::Action and some other classes are
+    deprecated.
+  + Add the ListModel example (bgo#755149).
+  + Printing examples: Add missing menu items and toolbar.
+  + Printing advanced example: Don't use deprecated methods.
+  + Calendar example: Don't use deprecated font: CSS syntax.
+  + Custom widget and calendar examples: Don't crash when showing
+    errors.
+  + gmmproc section:
+    - Document new options in _CLASS_GTKOBJECT (bgo#767951).
+    - Describe the err_return_value argument in _WRAP_VFUNC.
+    - Document all options in _WRAP_ENUM and _WRAP_GERROR.
+    - Add description of _CUSTOM_MOVE_OPERATIONS macro.
+
+-------------------------------------------------------------------
+Wed Mar 30 12:03:22 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.0:
+  + Builder chapter and example: Describe additional parameters to
+    get_widget_derived() (bgo#134161).
+  + CellrendererPopup example: Don't use deprecated methods.
+  + Custom widget and ListBox examples: Update use of CSS files.
+  + Custom widget example: Avoid some warnings.
+  + ProgressBar example: Fix the type of a signal connection id
+    data member.
+  + Update the Internationalization chapter (bgo#701908).
+  + gmmproc section: Add "String Parameter Processing" section.
+  + C++11: Use nullptr instead of 0.
+
+-------------------------------------------------------------------
+Wed Dec 23 23:16:33 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.19.3:
+  + Require the latest gtkmm and glibmm.
+  + Multi-threaded chapter: Remove warnings about sigc::slots and
+    Glib::Threads::Thread (bgo#755091).
+  + multithread example: Use std::thread, etc, instead of
+    Glib::Threads::*. Because C++11 now has this concurrency API
+    and we should use standard C++ where possible (bgo#755091).
+  + Input example: Fix high CPU load, by opening the fifo in
+    read/write mode.
+  + command_line_handling example: handle_local_options(): Correct
+    the return.
+
+-------------------------------------------------------------------
+Mon Nov 30 11:52:22 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0:
+  + Input example: Fix high CPU load, by opening the fifo in
+    read/write mode.
+  + command_line_handling example: handle_local_options(): Correct
+    the return values, now that glib bug #750796 was fixed
+    (bgo#754763).
+  + combobox/complex example: Show use of a cell_data_func().
+  + examples: Remove unnecessary virtual keywords.
+  + C++11: examples:
+    - Replace deprecated std::auto_ptr by std::unique_ptr.
+    - Use the override keyword.
+  + gmmproc chapter: Document _CUSTOM_* gmmproc macros.
+
+-------------------------------------------------------------------
+Sat Jul 25 12:16:10 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.50:
+  + Use (and require) C++11.
+  + C++11: Use the auto, override, and nullptr keywords.
+  + Update the "Menus and Toolbars" chapter.
+  + recent_files example: Add toolbar and accelerator keys.
+  + placessidebar example: Remove use of deprecated
+    set_show_connect_to_server().
+  + gmmproc chapter:
+    - Add description of the 'newin' parameter of some _WRAP macros
+      (bgo#748856).
+    - Add description of the detail_name parameter in _WRAP_SIGNAL
+      (bgo#749034).
+    - Add description of _IGNORE_PROPERTY and
+      _IGNORE_CHILD_PROPERTY.
+    - Add description of the keep_return parameter in _WRAP_VFUNC.
+  + Fix the build with -Wshadow.
+  + Examples: Remove remaining uses of
+    GLIBMM_DEFAULT_SIGNAL_HANDLERS_ENABLED.
+
+-------------------------------------------------------------------
+Mon Mar  2 09:28:57 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.1:
+  + Replace use of deprecated Widget::override_*() methods.
+  + Add ScaleButton example.
+  + Add VolumeButton example.
+  + Add the "Gio::Resource and glib-compile-resources" section.
+  + drawingarea/image and menus_and_toolbars examples: Use resource
+    files.
+  + Custom widget example: Use Gtk::StyleProperty.
+  + Improve the UI definitions in the menu examples.
+  + Main menu example: Use Gtk::Application to display an app menu.
+  + Menus and Toolbars: Update the text and examples.
+  + Completed _WRAP_SIGNAL and _WRAP_VFUNC documentation.
+  + Arrow example: Arrow icons have been renamed.
+  + Remove the example with the deprecated StatusIcon.
+  + Add _WRAP_CHILD_PROPERTY section to tutorial.
+  + others/cellrenderercustom/testpopup: Use the new base class
+    order.
+  + Application/app_and_win_menus example: Hide the window when
+    quitting (bgo#731126).
+  + Mention that Arrow, Alignment and most Button signals are
+    deprecated.
+  + Fix 'make check' after Gtk::Alignment has been deprecated.
+  + Fix 'make check' after Gtk::Misc has been deprecated.
+  + Fix 'make check' after Gtk::Arrow has been deprecated.
+  + PlacesSidebar example: use new show-enter-location.
+  + Application example: Show the new command-line parsing API
+    (bgo#727822).
+  + Builder examples: Don't use deprecated API in the Glade files.
+
+-------------------------------------------------------------------
+Mon Apr 14 11:42:37 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Added Gtk::ActionBar.
+  + Added FlowBox example.
+  + Added HeaderBar example (bgo#708866).
+  + Added ListBox example.
+  + Added PlacesSidebar example.
+  + Added Popover example.
+  + Added Revealer example (bgo#705460).
+  + Added SearchBar example.
+  + Add a multi-threaded example program.
+  + Application example: Add a window menu.
+  + Remove stock items and other deprecated API from the tutorial.
+  + App_and_win_menus example: Add a menu item that sends a
+    Gio::Notification.
+  + ToolPalette example: Skip non-existent and large icons.
+  + EventBox example: Make it possible to clip the label.
+  + InfoBar example: Really show the infobar.
+- Replace gnome-doc-utils-devel for yelp-tools BuildRequires,
+  following upstream changes.
+- No longer pass the obsolete --disable-scrollkeeper to configure.
+
+-------------------------------------------------------------------
+Tue Oct 22 16:07:21 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.1:
+  + Port examples from GtkUIManager, GtkAction and GtkMenu to
+    GtkBuilder, GAction and GMenu. We have not yet updated the book
+    text about these.
+  + Remove use of (deprecated) stock items.
+  + Added HeaderBar example, though we do not yet have a book
+    chapter about it.
+  + Added ListBox example, though we do not yet have a book chapter
+    about it.
+  + Added PlacesSidebar example, though we do not yet have a book
+    chapter about it.
+  + Added Revealer example, though we do not yet have a book
+    chapter about it.
+  + Added SearchBar example, though we do not yet have a book
+    chapter about it.
+  + Multi-Threaded Programs chapter: Added a multi-threaded example
+    program.
+  + treemodelcustom: Use the new base class order.
+  + gmmproc appendix: Document new features.
+  + Build: Move to a generated ChangeLog.
+
+-------------------------------------------------------------------
+Sun Jun 16 12:12:29 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.8.0:
+  + Dialogs chapter: Add Non-modal AboutDialog section.
+  + Fix some details in the Clipboard chapter.
+  + Add some info to the custom/custom_container example.
+  + Add "Multi-threaded programs" chapter (bgo#512348).
+  + Builder examples: Update the Glade files to gtkmm3 status.
+  + Update the description of Box to gtkmm3 status.
+  + Fix the box example.
+  + Fix the book/application/app_menu example (bgo#683645).
+  + Clipboard and Socket examples: Make them non-unique
+    (bgo#681323).
+  + Basics, Simple Example: Synchronize code and description
+    (bgo#681323).
+  + I18n and L10n chapter: Fix broken links (bgo#680546).
+  + gmmproc: 
+    - _WRAP_METHOD: Include docs on wrapping methods with slots
+      (bgo#688587).
+    - _WRAP_CTOR: Document the new "errthrow" extra argument
+      option.
+    - _WRAP_METHOD: Document gmmproc's output parameter
+      functionality.
+    - _WRAP_VFUNC: Add the errthrow optional parameter
+      documentation.
+  + Fix 'make check' with the latest versions of glib and glibmm.
+
+-------------------------------------------------------------------
+Wed Mar 20 20:47:21 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Mon Jul 16 15:55:59 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.4.1:
+  + Entry, ComboBox sections: Adapt because
+    Entry::signal_activate() has been undeprecated. (bgo#655489).
+  + Memory management chapter: Improve the Widgets section.
+    (bgo#678566).
+  + Signals Appendix: Mention exceptions. (bgo#677104).
+  + ComboBox and Range widgets examples: Set an active ComboBox
+    entry.
+  + Range Widgets example: Really show a Position combo.
+  + SpinButton example: Fix orientation of vertical boxes.
+  + Update some screenshots.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:46:58 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Application examples: Add an AppMenu example.
+  + Improve the Entry and ComboBox with Entry sections
+    (bgo#655489).
+  + Replace the deprecated Gtk::Entry::signal_activate() by
+    signal_key_press_event() (bgo#655489).
+  + Install all screenshots used in the tutorial (bgo#655489).
+
+-------------------------------------------------------------------
+Tue Mar 13 17:04:56 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.3.18:
+  + Remove Table and other deprecated classes.
+  + Use and mention Gtk::Application instead of Gtk::Main.
+  + Use Gtk::ApplicationWindow.
+  + Use ColorChooserDialog instead of deprecated
+    ColorSelectionDialog.
+  + Keyboard Events chapter: Clarify keyboard event propagation.
+    (bgo#661857).
+  + New example programs in the DrawingArea chapter. (bgo#666885).
+
+-------------------------------------------------------------------
+Mon Feb 13 10:47:23 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Tue Nov 22 10:33:22 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.1:
+  + Corrected the list of authors.
+
+-------------------------------------------------------------------
+Fri Nov 18 14:31:13 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.0:
+  + New chapter: Keyboard Events [bgo#661857]
+  + "Working with gtkmm's Source Code" appendix, "Recently Used
+    Documents" chapter, "Drawing Area Widget chapter" chapter,
+   "Dialogs" chapter: Update for gtkmm 3 [bgo#658265]
+  + Various examples: Correct orientation and packing, which were
+    wrong since we ported to these examples to gtkmm 3 [bgo#658265]
+  + Use the new FontChooserDialog instead of FontSelectionDialog.
+  + Use Gtk::Box instead of the now-deprecated Gtk::HBox and
+    Gtk::VBox. Likewise for other H and V classes.
+  + Gtk::Builder examples: Update the Glade files.
+  + gmmproc appendix
+    - More about Gtk::Object.
+    - Use {OUT} instead of {RET} for output params.
+      . Initializations: Add comment about type substitution.
+      . Mention new support for optional parameters.
+      . Update for gtkmm 3 [bgo#658265]
+  + Replace Bitmap and Pixmap by Pixbuf. [bgo#658265]
+  + Update links to the git repository. [bgo#658265]
+
+-------------------------------------------------------------------
+Fri May 27 12:04:16 CEST 2011 - vuntz@opensuse.org
+
+- Replace glibmm2-devel BuildRequires with pkgconfig(giomm-2.4).
+- Stop shipping the HTML-generated version of the doc: we're
+  completely happy with having the docbook version, as it's visible
+  in yelp.
+- Adapt to the fact that this is now tracking gtkmm3:
+  + rename gtkmm2-tutorial to gtkmm3-tutorial
+  + change gtkmm2-doc Requires/Supplements to gtkmm3-doc
+  + update descriptions to stop mentioning gtkmm2
+  + add a gtkmm2-tutorial Conflicts, since we ship the same files
+- Add gtkmm-documentation, gtkmm3-documentation and gtkmm-tutorial
+  Provides to gtkmm3-tutorial.
+
+-------------------------------------------------------------------
+Wed May 25 12:38:05 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.0.3:
+  + Small documentation fixes
+- Changes from version 3.0.2:
+  + Rename the book to Programming with gtkmm 3.
+  + Small documentation improvement
+- Changes from version 3.0.1:
+  + Correct mentions of version numbers.
+- Changes from version 3.0.0:
+  + Just a version increase.
+- Changes from version 2.99.4:
+  + Remove use of Gtk::Application because it was removed from
+    gtkmm 3.0.
+  + Builder section: Remove a now non-existent property.
+  + ComboBox section: Mention set_entry_text_column() instead of
+    set_text_column().
+  + Add basic information on Gtk::Grid.
+  + Modify the custom_container and custom_widget examples.
+  + Replace gtkmm-2.24 mentions with gtkmm-3.0.
+  + Build: Fix the installation path.
+- Changes from version 2.99.3:
+  + Ported to the latest gtkmm API.
+  + Modified the custom_container and custom_widget examples to use
+    the extended layout API.
+  + Fix the print preview dialog in the printing/advanced example.
+  + Build: Check for mm-common (bgo#628713).
+  + Book: Fix some typos.
+- Changes from version 2.91.6:
+  + Ported to the recent gtkmm API, using Gdk::RGBA and
+    Gtk::StyleContext and the slightly-changed ComboBoxText API.
+- Changes from version 2.91.5:
+  + Removed use of widgets removed from gtkmm.
+- Changes from version 2.91.4:
+  + Improved the clipboard/ideal example.
+  + Label section: Fix a /<b> -> </b> typo.
+  + Rearranged an include to fix the build due to a
+    not-yet-explained compiler error.
+- Changes from version 2.91.2:
+  + Book:
+    - Remove mentions of the removed STL-style container APIs.
+    - Fix/Hide remaining TODO comments.
+    - Mark examples as being for gtkmm 3, not gtkmm 2.
+- Changes from version 2.91.1:
+  + Book: Combo Boxes: Update for the removal of ComboBoxEntry.
+  + Fix the build with latest gtkmm.
+- Changes from version 2.91.0:
+  + Adapt example code to gtkmm-3.0.
+  + Wrapping C Libraries with gmmproc:
+    Correct the skeletonmm directory paths (bgo#627425).
+- For changes of all the unstable releases since 2.22.0, please see
+  NEWS and ChangeLog.
+- Replace gtkmm2-devel BuildRequires with pkgconfig(gtkmm-3.0)
+
+-------------------------------------------------------------------
+Sun Feb 13 18:43:56 CET 2011 - vuntz@opensuse.org
+
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Wed Dec 15 10:24:16 CET 2010 - vuntz@opensuse.org
+
+- Own /usr/share/doc/packages/gtkmm2, /usr/share/gnome and
+  /usr/share/gnome/help to fix build.
+
+-------------------------------------------------------------------
+Fri Oct 29 17:18:06 EDT 2010 - vuntz@opensuse.org
+
+- Update to version 2.22.0:
+  + Make the API reference links go to /stable instead of
+    /unstable, to avoid sending people to the (different) gtkmm 3
+    API.
+  + Example code links: Use the gtkmm-2-22 branch instead of
+    master, to avoid sending people to the examples for the gtkmm 3
+    API.
+
+-------------------------------------------------------------------
+Tue Sep 21 23:24:33 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.21.8.1:
+  + Builds with the latest gtkmm-2.4 (2.21.8.1) release.
+  + Improve the Assistant example.
+  + Buttons chapter: Remove text about non-existant XPMLabelBox
+    class.
+  + Recommend non-deprecated Tooltip API in Tooltips chapter.
+  + Remove the optional API appendix, because it is not supported
+    in recent gtkmm versions.
+  + Remove use of reduced API.
+
+-------------------------------------------------------------------
+Fri Jul 23 12:45:48 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.20.1:
+  + Multiple-Item Widgets chapter: Added Assistant sub-section.
+
+-------------------------------------------------------------------
+Mon Mar 29 18:06:31 CEST 2010 - vuntz@opensuse.org
+
+- New package.
+

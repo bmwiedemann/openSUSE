@@ -1,0 +1,224 @@
+-------------------------------------------------------------------
+Thu Jan 11 16:11:28 UTC 2018 - tchvatal@suse.com
+
+- Format with spec-cleaner
+- Drop sle11 support as we use just py3
+- Drop the BR on python in favor of python3-base
+
+-------------------------------------------------------------------
+Tue Jan  9 17:22:51 UTC 2018 - dimstar@opensuse.org
+
+- Add freefont-build-using-py3.patch: Fix build when using python3.
+
+-------------------------------------------------------------------
+Sun Apr 17 14:36:22 UTC 2016 - bwiedemann@suse.com
+
+- Add reproducible.patch to fix build-compare
+
+-------------------------------------------------------------------
+Thu Aug  2 21:54:31 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 0.20120503:
+  * Lots of changes (see http://savannah.gnu.org/forum/forum.php?forum_id=7216
+    and ChangeLog for details).
+- Use the package scripts for generating the fonts in openSUSE > 11.2. Use the
+  "GenerateTrueType" external script only for older versions (package fails to
+  compile otherwise).
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:05 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed Mar 14 16:42:20 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-GPL-3.0+-with-font-exception
+  There are GPL-3.0 licensed fonts - also, use SUSE- proprietary prefix
+  until license is accepted upstream at spdx.org
+
+-------------------------------------------------------------------
+Wed Dec 21 14:54:06 UTC 2011 - toms@suse.de
+
+- Renamed freefont -> gnu-free-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+
+
+-------------------------------------------------------------------
+Tue Nov  1 08:05:41 UTC 2011 - pgajdos@suse.com
+
+- freefont changed to svn:
+  svn co svn://svn.savannah.gnu.org/freefont/trunk/freefont
+- updated to 0.20111101:
+  * Cyrillic: added 'locl' lookup for Serbian/Macedonian 'be' 
+  * Latin, Diacritics, etc: hungarian umlaut, double grave adjustments 
+  * Latin: small adjustment to letter spacing
+  * Latin: much messing with accents for Vietnamese, some kerning 
+  * etc. see svn changelog
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Sat Aug 13 12:15:36 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typo in freefont.spec
+
+-------------------------------------------------------------------
+Mon May 23 12:56:11 UTC 2011 - pgajdos@novell.com
+
+- updated to 20110523
+
+-------------------------------------------------------------------
+Thu Nov 18 16:17:29 CET 2010 - pgajdos@suse.cz
+
+- updated to 0.20101118
+
+-------------------------------------------------------------------
+Thu Apr  8 15:53:32 CEST 2010 - tiwai@suse.de
+
+- fix build with new fontforge
+- minor clean-ups
+
+-------------------------------------------------------------------
+Tue Dec  8 10:52:31 CET 2009 - pgajdos@suse.cz
+
+- updated to 0.20091208
+- used old but working GenerateTrueType script
+
+-------------------------------------------------------------------
+Mon May 26 12:12:35 CEST 2008 - mfabian@suse.de
+
+- bnc#246804: update to latest release (0.20080323), this seems
+  to finally fix the spacing issues in the monospace font.
+
+-------------------------------------------------------------------
+Tue Aug 08 12:26:03 CEST 2006 - mfabian@suse.de
+
+- BuildRequires: xorg-x11-devel is necessary to detect Xorg X11R7.
+
+-------------------------------------------------------------------
+Mon Aug 07 14:55:54 CEST 2006 - mfabian@suse.de
+
+- move fonts to /usr/share/fonts because of the move to Xorg X11R7.
+
+-------------------------------------------------------------------
+Fri Aug 04 10:31:01 CEST 2006 - mfabian@suse.de
+
+- remove "#!BuildIgnore: NX". It is not necessary anymore, on
+  the contrary it makes the build fail now for xorg7-SUSE_Factory
+  in the openSUSE build service.
+
+-------------------------------------------------------------------
+Thu Jul 20 11:49:31 CEST 2006 - mfabian@suse.de
+
+- add "chmod 755 $RPM_SOURCE_DIR/remove-kana-glyphs" to make
+  it build in the openSUSE build service.
+  Permissions for any file in $RPM_SOURCE_DIR are nowhere guaranteed
+  to be preserved.
+
+-------------------------------------------------------------------
+Tue Jul 18 23:49:53 CEST 2006 - mfabian@suse.de
+
+- add "#!BuildIgnore: NX" to make it build for the
+  xorg7-SUSE_Factory in the openSUSE build service.
+- add "vi" to the "Provides: locale".
+
+-------------------------------------------------------------------
+Tue Jul 18 12:42:06 CEST 2006 - mfabian@suse.de
+
+- update to 0.20060718.
+  + All the fonts now conform to MES-1 (Minimum European Subset) of
+    Unicode/ISO 10646. In addition, thanks to Solaiman Karim,
+    Omi Azad, K.H. Hussain and R. Chitrajan, OpenType support for
+    Bengali (in FreeSerif, FreeSerifItalic, FreeSans and
+    FreeSansOblique) and traditional Malayalam (FreeSerif) might
+    be mentioned as major new features. 
+
+-------------------------------------------------------------------
+Wed Mar 01 14:53:47 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(bg;el;he;ru)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:24 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec 03 19:05:44 CET 2004 - mfabian@suse.de
+
+- use new macro "%run_suseconfig_fonts".
+
+-------------------------------------------------------------------
+Mon Sep 13 17:34:40 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #45156: add "Provides:     scalable-font-el,
+  scalable-font-he, scalable-font-ru, scalable-font-bg".
+
+-------------------------------------------------------------------
+Thu Aug 19 11:49:26 CEST 2004 - ro@suse.de
+
+- PfaEdit has been renamed to fontforge
+
+-------------------------------------------------------------------
+Sat Apr 24 11:28:46 CEST 2004 - sndirsch@suse.de
+
+- fixed neededforbuild (XFree86-libs --> xorg-x11-libs)
+
+-------------------------------------------------------------------
+Thu Apr  1 16:12:22 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #37113: remove Kana to improve the appearance of
+  Japanese during the installation.
+  Kana without Kanji are completely useless.
+  They can only cause problems because it can happen
+  that they are combined with Kanji from a completely different
+  font which looks very ugly. This happens easily in Qt
+  applications because Qt unfortunately treats "Hiragana",
+  "Katakana", and "Han" as 3 different Unicode regions and may
+  select a different font for each of these regions. I.e. if
+  FreeSans is set as the main font in Qt while using Japanese,
+  FreeSans will be used no only for Latin but also for Kana and
+  only for the Kanji a "real" Japanese font like "Kochi Gothic"
+  will be used. This looks very bad. If FreeSans doesn't have
+  Kana at all, the "real" Japanese font will be used for the
+  Kana and the Kanji, which looks much nicer.
+
+-------------------------------------------------------------------
+Thu Mar 18 18:56:53 CET 2004 - mfabian@suse.de
+
+- use %suseconfig_fonts_prereq
+
+-------------------------------------------------------------------
+Fri Feb 27 12:17:32 CET 2004 - mfabian@suse.de
+
+- update to 0.20040227.
+- run SuSEconfig.fonts and SuSEconfig.pango in %post and %postun
+
+-------------------------------------------------------------------
+Tue Feb 24 10:47:54 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Sun Sep 14 02:29:56 CEST 2003 - mfabian@suse.de
+
+- Bugzilla #30768: update to version 0.20030914 which includes
+  the U+30FC KATAKANA-HIRAGANA PROLONGED SOUND MARK glyph missing
+  in previous versions.
+
+-------------------------------------------------------------------
+Mon Aug 18 08:24:20 CEST 2003 - mfabian@suse.de
+
+- new package, version 0.20030815

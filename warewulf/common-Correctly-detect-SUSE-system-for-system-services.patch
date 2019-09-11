@@ -1,0 +1,44 @@
+From: Egbert Eich <eich@suse.com>
+Date: Sat Sep 15 19:51:23 2018 +0200
+Subject: common: Correctly detect SUSE system for system services
+Patch-mainline: Upstream
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: 884fa86849077a75b6df9781a8e811af997d98e2
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ common/lib/Warewulf/SystemFactory.pm | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
+diff --git a/common/lib/Warewulf/SystemFactory.pm b/common/lib/Warewulf/SystemFactory.pm
+index c4cf58b..2484bc9 100644
+--- a/common/lib/Warewulf/SystemFactory.pm
++++ b/common/lib/Warewulf/SystemFactory.pm
+@@ -47,13 +47,24 @@ new($$)
+     my ($mod_name, $obj);
+ 
+     if (! $type) {
++        $type = "unsupported";
+         if (-f "/etc/redhat-release") {
+             $type = "rhel";
+         } elsif (-f "/etc/SuSE-release") {
+             $type = "Suse";
+-        }
+-		else {
++        } elsif ( -f "/etc/debian_version" ) {
+             $type = "Deb";
++        } elsif ( -f "/etc/os-release") {
++            open(SYSTEM, "/etc/os-release");
++            while (<SYSTEM>) {
++                if (/^NAME=/) {
++                    if (/SUSE|SLE/) {
++                        $type = "Suse";
++                    }
++                    last;
++                }
++            }
++            close SYSTEM;
+         }
+     }
+ 

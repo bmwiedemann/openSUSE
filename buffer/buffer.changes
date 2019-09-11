@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Fri Sep 30 14:43:20 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Sat Sep 17 20:58:49 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:46 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jul  5 13:40:39 CEST 2005 - schwab@suse.de
+
+- Add missing includes.
+- Fix printf format.
+
+-------------------------------------------------------------------
+Thu Sep 16 10:09:48 CEST 2004 - schwab@suse.de
+
+- Fix return type.
+
+-------------------------------------------------------------------
+Tue Jan 20 11:29:10 CET 2004 - schwab@suse.de
+
+- Remove conflicting declaration.
+
+-------------------------------------------------------------------
+Wed Apr 23 17:28:24 CEST 2003 - schwab@suse.de
+
+- Use BuildRoot.
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Mon Sep 25 16:55:49 CEST 2000 - schwab@suse.de
+
+- Add group tag.
+
+-------------------------------------------------------------------
+Thu Jan 20 14:58:00 CET 2000 - schwab@suse.de
+
+- /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Aug 27 16:15:51 CEST 1999 - schwab@suse.de
+
+- update to 1.19
+
+-------------------------------------------------------------------
+Mon Nov  9 13:22:07 MET 1998 - ro@suse.de
+
+- cast argument for semctl to union semun
+
+-------------------------------------------------------------------
+Thu Aug 27 23:18:18 MEST 1998 - ro@suse.de
+
+- define sem_semun for glibc
+

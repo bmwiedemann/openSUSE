@@ -1,0 +1,17 @@
+--- libslp/libslp_network.c.orig	2018-03-01 16:08:38.813669170 +0000
++++ libslp/libslp_network.c	2018-03-05 15:59:56.140618236 +0000
+@@ -1426,7 +1426,13 @@ SLPError NetworkUcastRqstRply(SLPHandleI
+    /*In reality, this function just sets things up for NetworkRqstRply to operate*/
+ 
+    if(handle->unicastsock == SLP_INVALID_SOCKET) /*The unicast code will certainly reuse this socket*/
+-      handle->unicastsock  = SLPNetworkCreateDatagram(handle->ucaddr.ss_family);
++   {
++      struct timeval timeout;
++      int maxwait = SLPPropertyAsInteger("net.slp.unicastMaximumWait");
++      timeout.tv_sec = maxwait / 1000;
++      timeout.tv_usec = (maxwait % 1000) * 1000;
++      handle->unicastsock  = SLPNetworkConnectStream(&handle->ucaddr, &timeout);
++   }
+ 
+    if (handle->unicastsock == SLP_INVALID_SOCKET)
+       return SLP_NETWORK_ERROR;

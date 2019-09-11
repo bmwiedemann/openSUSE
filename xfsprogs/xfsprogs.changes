@@ -1,0 +1,1818 @@
+-------------------------------------------------------------------
+Sat May 04 07:20:03 UTC 2019 - seanlew@opensuse.org
+
+- Update to v5.0.0
+  * xfs_db: scan all sparse inodes when using 'frag'
+  * Fix build with newer statx headers
+  * libxfs: fix buffer & inode lifetimes
+  * misc: fix strncpy length complaints from gcc
+  * Merge libxfs from kernel 5.0
+
+-------------------------------------------------------------------
+Sat Feb 23 06:47:06 UTC 2019 - seanlew@opensuse.org
+
+- Update to v4.20.0
+  * mkfs.xfs: null-term symlinks created via protofile
+  * xfs_repair: allow '.' in attribute names
+  * xfs_repair: skip block reservations when fixing freelist
+  * xfs_repair: rebuild dir when nonroot blocks corrupt
+  * xfs_repair: int nonleaf finobt blocks with proper magic
+  * xfs_repair: fix off by one error rebuilding high keys
+  * xfs_io: allow open file permissions to be changed
+  * xfs_io: open pipes in non-blocking mode
+  * xfs_metadump: multiple stale data zeroing fixes
+  * xfs_quota: allow reg files w/o prjinherit flag
+  * xfs_db: properly decode finobt record w/ sparse inodes
+  * xfs_scrub: move all eecutables to /usr/sbin
+  * xfs_scrub: handle totally empty inode chunks
+  * xfs.5 manpage: remove barrier related options 
+  * xfs_io.8 manpage: rearrange command listings by section
+  * remove generated scrub files under make clean
+  * skip scrub manpage install if not configured
+  * Merge libxfs from kernel 4.20
+
+-------------------------------------------------------------------
+Sat Nov 10 05:55:21 UTC 2018 - sean@suspend.net
+
+- Update to v4.19.0
+  * Fix up debian subdir build w.r.t. CHECK_CMD
+  * Remove non-linux platforms
+  * Remove retpoline support
+  * Add sparse checking & related fixes/cleanups
+  * Fix cross-platform building w.r.t. crc32selftest
+  * libxfs: add agfl free deferred op type
+  * mkfs.xfs: discard only after all validations
+  * xfs_repair: fix segfault in longform_dir2_entry_check
+  * xfs_repair: fix ASSERT in xfs_bunmapi
+  * xfs_repair: fix redahead thread deadlock/stall
+  * xfs_repair: avoid wriing back all inodes
+  * xfs_repair: don't treat directory root LEAFN as corrupt
+  * xfs_io: add crc32 self test
+  * xfs_io: remove useless do_preadv and do_pwritev arguments
+  * xfs_scrub: make scrub build config-optional
+  * xfs_scrub: lack of kernel support is not a service failure
+  * xfs_scrub_all: fix systemd escaping
+  * majority of 4.19 libxfs changes merged from kernel
+  * big sparse static checker cleanup
+  * mkfs.xfs discard fixes
+  * xfs_io readv/writev cleanup
+  * libxfs transaction commit error checking
+
+-------------------------------------------------------------------
+Sat Oct 20 00:12:21 UTC 2018 - jeffm@suse.com
+
+- Update to v4.18.0
+  * xfs_repair: notify user if free inodes are corrupt
+  * xfs_repair: use extent size validation helpers
+  * xfs_quota: don't stop the directory tree walk at DEPTH 
+  * xfs_scrub: ongoing updates 
+  * xfs_io: document shutdown -f 
+  * xfs_io: wire up online repair ioctls 
+  * misc: adddebian initramfs hook to package 
+  * misc: remove unused macros 
+  * misc: remove many XFS_BUF macros 
+  * Majority of 4.18 libxfs changes merged from kernel
+- Update to v4.17.0
+  * mkfs.xfs: only stat block devices during mkfs init 
+  * xfs_repair: multiple fixes and improvements 
+  * xfs_repair: check and repair quota metadata 
+  * xfs_repair: fix shortform root inode parent 
+  * xfs_db: don't ASSERT on unrecognized metadata 
+  * xfs_db: add superblock info command ala xfs_info 
+  * xfs_spaceman: add superblock info command ala xfs_info 
+  * xfs_info: call xfs_db for unmounted devices 
+  * xfs_io: add online label command 
+  * xfs_io: add O_PATH and O_NOFOLLOW options 
+  * xfs_io: recognize *iB units in copy_range 
+- Removed now-obsolete patches:
+  * xfsprogs-mkfs-avoid-divide-by-zero-when-hardware-reports-opti.patch
+
+-------------------------------------------------------------------
+Tue Aug 21 19:09:54 UTC 2018 - jeffm@suse.com
+
+- Update xfsprogs-mkfs-avoid-divide-by-zero-when-hardware-reports-opti.patch
+  * Refresh to match upstream version.
+
+-------------------------------------------------------------------
+Tue Aug 21 19:08:50 UTC 2018 - jeffm@suse.com
+
+- repair: shift inode back into place if corrupted by bad log
+  replay (bsc#1105396).
+  * Added 0001-repair-shift-inode-back-into-place-if-corrupted-by-b.patch
+
+-------------------------------------------------------------------
+Fri Jul 20 00:07:14 UTC 2018 - jeffm@suse.com
+
+- mkfs: avoid divide-by-zero when hardware reports optimal i/o size as 0
+  (bsc#1089777).
+  * Added xfsprogs-mkfs-avoid-divide-by-zero-when-hardware-reports-opti.patch
+
+-------------------------------------------------------------------
+Wed Jul 18 21:49:33 UTC 2018 - jeffm@suse.com
+
+- Revert to %doc for license in SLE11 and SLE12.
+- xfsprogs-devel should depend on uuid-devel to build on SLE11 and
+  match the package's build dependencies.
+
+-------------------------------------------------------------------
+Tue Jul  3 12:14:02 UTC 2018 - tchvatal@suse.com
+
+- Require %libname in the develpackage to not have dangling symlink
+  and actually work
+
+-------------------------------------------------------------------
+Thu May 24 19:38:41 UTC 2018 - tchvatal@suse.com
+
+- Fix build for SLE11 again
+
+-------------------------------------------------------------------
+Thu May 24 14:29:20 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Tue May 22 13:49:03 UTC 2018 - tchvatal@suse.com
+
+- Do not probe for lto on older GCCs as it exposes errors that
+  might cause random runtime issues
+
+-------------------------------------------------------------------
+Wed May 16 12:31:58 UTC 2018 - tchvatal@suse.com
+
+- Do not distribute static libraries they are not needed
+- Remove the crazy part about avoiding shared library policies
+  it does work on SLE11 even if it is not mandated
+- Make sure to run only proper parts of services on reloads for
+  xfs unitfiles
+
+-------------------------------------------------------------------
+Thu May 10 23:48:29 UTC 2018 - lurodriguez@suse.com
+
+- Remove xfsprogs.spec useless blunder (bsc#1092843)
+
+-------------------------------------------------------------------
+Tue May  8 22:35:08 UTC 2018 - lurodriguez@suse.com
+
+- Fix OpenSUSE Tumbleweed package build (bsc#1091300) due to the libhandle1
+  library shared object (so) name expectations, this is documented here:
+  https://en.opensuse.org/openSUSE:Shared_library_packaging_policy
+- Move systemd check to use a macro, to make it clear when the check is
+  used and for what purpose exactly. Perhaps this should be moved later
+  into a generic OpenSUSE/SUSE macro as a generic check as I suspect tons
+  of other rpms will likely need the same.
+- Address -Werror errors on old compilers, for the life of me I can't see
+  how xfsprogs is at fault, so just disable -Werror on older compilers for
+  now. In the future we can consider adding a work around for the compiler
+  instead of disabling -Werror entirely, but for now this is the best I can
+  come up with.
+- Drop make_xfs_scrub_interp_explicit.patch, this is now upstream
+- Update to v4.16.1 (using verbiage from xfsprogs/doc/CHANGES now):
+  * fsck.xfs: remove bashism which may interfere with boot (Eric Sandeen)
+  * platforms: warn of impending deprecation of irix, freebsd, darwin
+  * mkfs.xfs : enable sparse inodes by default (Darrick Wong)
+  * fsck.xfs: allow forced boot-time repairs using xfs_repair (Jan Tulak)
+  * xfs_repair: new -e flag alters exit code for fixed errors (Jan Tulak)
+  * xfs_repair: fix to allow zeroing of corrupt log (Xiao Yang)
+  * xfs_repair: remove old dead code (Eric Sandeen)
+  * xfs_io: fix operation time reporting (Dave Chinner)
+  * xfs_io: add RWF_DSYNC support to pwrite (Dave Chinner)
+  * xfs_io: support a basic extent swap command (Brian Foster)
+  * xfs_scrub: Many updates, still experimental (Darrick Wong)
+  * xfs_db: print transaction reservation type information
+  * libxfs: framework to detect memory leaks (Eric Sandeen)
+  * misc: Fix up new warnings from gcc 7.3 (Darrick Wong)
+  * misc: enable link time optimization, if requested (Darrick Wong)
+  * misc: enable retpolines across all xfsprogs utilities (Darrick Wong)
+
+-------------------------------------------------------------------
+Thu Apr 19 20:46:25 UTC 2018 - lurodriguez@suse.com
+
+- Fix SLE15 build (bsc#1090290) due to systemd. Systemd is present since
+  OpenSUSE Leap 42.1 and SLE12-SP1, so we need to ensure the build
+  has systemd available on these release. We also then need to indicate
+  the new files installed when on systemd. So this fixes the build issue
+  on SLE15 and also makes available the systemd service unit files now
+  on all releases which support systemd.
+
+-------------------------------------------------------------------
+Tue Apr 17 21:02:42 UTC 2018 - olaf@aepfle.de
+
+- xfsprogs-devel needs uuid/uuid.h, Require pkgconfig(uuid) (bsc#1089947)
+
+-------------------------------------------------------------------
+Wed Mar  7 19:51:21 UTC 2018 - lurodriguez@suse.com
+
+- Bump release to v4.15.1, which has these minor fixes:
+  * po/pl.po: update Polish translation for 4.15.0
+  * debian: don't fail postinst when upgrading chroot
+  * debian: add build-depends on pkg-config
+
+-------------------------------------------------------------------
+Wed Mar  7 19:26:57 UTC 2018 - lurodriguez@suse.com
+
+- Fix build on SLE11-SP4 by making the m4 macros required available.
+
+-------------------------------------------------------------------
+Sat Feb 24 01:18:02 UTC 2018 - lurodriguez@suse.com
+
+- drops drop xfs_io-fix-copy_file_range-symbol-name-collision.patch,
+  this is now part of this release.
+- adds make_xfs_scrub_interp_explicit.patch, rpm lint complains about
+  using env python, when this is used the dependency checker for rpm
+  will not be able to resolve dependencies correctly, so an explicit
+  interpreter is needed.
+- Update to v4.15.0:
+  * xfs_scrub: experimental new tool added
+  * xfs_metadump: fix issues with -i flag
+  * mkfs.xfs: don't allow creation of realtime+reflink
+  * mkfs.xfs: don't crash on dswidth overflow
+  * mkfs.xfs: much refactoring
+  * xfs_copy: fix copy of v5 filesystems
+  * xfs_io: add a new 'log_writes' command
+  * xfs_io: add MAP_SYNC support to mmap()
+
+-------------------------------------------------------------------
+Wed Feb  7 14:24:01 UTC 2018 - jeffm@suse.com
+
+- xfs_io: fix copy_file_range symbol name collision (bsc#1079756).
+- Added xfs_io-fix-copy_file_range-symbol-name-collision.patch
+
+-------------------------------------------------------------------
+Tue Dec 19 17:12:09 UTC 2017 - lurodriguez@suse.com
+
+- Deletes already merged xfs_io-stat-fix-typo-in-statfs-f_flags.patch
+- Deletes already merged xfs_io-stat-treat-statfs.f_flags-as-optional.patch
+- Refreshes patch xfsprogs-docdir.diff
+- Update to v4.14.0:
+  * xfs_io: stat: treat statfs.f_flags as optional
+  * xfs_io: stat: fix typo in statfs->f_flags
+  * xfsprogs: fix wrong variable types in pwrite/pread code
+  * xfs_io: Allow partial writes
+  * xfs_io: Add RWF_NOWAIT to pwritev2()
+  * xfs_io: Add support for pwritev2()
+  * xfs_io: Disable -V if pwritev is not available
+  * xfs_repair: always release btree buffers when refcountbt checks fail
+  * misc: fix ubsan warnings
+  * misc: enable thread sanitizer if the builder wants it
+  * misc: enable gcc/clang address sanitizer if the builder wants it
+  * misc: enable ubsan if the builder wants it
+  * xfs_repair: fix cowextsize field checking and repairing
+  * xfs_repair: clear DAX flag from non-file inodes
+  * xfs_repair: fix bag memory overwrite problems
+  * xfs_io: add new error injection knobs to inject command
+  * xfsprogs: explicitly cast troublesome types to match printf  format specifiers
+  * db: increase metadump's default overly long extent discard  threshold
+  * build: define _DEFAULT_SOURCE with _BSD_SOURCE for preadv
+  * xfsprogs: add xfs_spaceman to .gitignore
+  * xfs_io: report io error for pwrite -W and -w
+  * xfs_metadump: zap stale data in DIR2_LEAF1 dirs
+  * metadump: update manpage for dirty log/obfuscation issue
+  * kill off u_int*_t types
+  * xfs: trim writepage mapping to within eof
+  * xfs: handle error if xfs_btree_get_bufs fails
+  * xfs: Fix bool initialization/comparison
+  * xfs: Don't log uninitialised fields in inode structures
+  * xfs: revert "xfs: factor rmap btree size into the indlen calculations"
+  * xfs: perag initialization should only touch m_ag_max_usable for AG 0
+  * xfs: fix compiler warnings
+  * xfs: simplify the rmap code in xfs_bmse_merge
+  * xfs: use xfs_iext_*_extent helpers in xfs_bmap_split_extent_at
+  * xfs: use xfs_iext_*_extent helpers in xfs_bmap_shift_extents
+  * xfs: move some code around inside xfs_bmap_shift_extents
+  * xfs: use xfs_iext_get_extent in xfs_bmap_first_unused
+  * xfs: switch xfs_bmap_local_to_extents to use xfs_iext_insert
+  * xfs: add a xfs_iext_update_extent helper
+  * xfs: relog dirty buffers during swapext bmbt owner change
+  * xfs: skip bmbt block ino validation during owner change
+  * xfs: don't log dirty ranges for ordered buffers
+  * xfs: remove the ip argument to xfs_defer_finish
+  * xfs: rename xfs_defer_join to xfs_defer_ijoin
+  * xfs: refactor xfs_trans_roll
+  * xfs: stop searching for free slots in an inode chunk when there are none
+
+-------------------------------------------------------------------
+Fri Nov 17 19:46:15 UTC 2017 - jeffm@suse.com
+
+- Fix building on SLE11
+- Added xfs_io-stat-fix-typo-in-statfs-f_flags.patch
+- Added xfs_io-stat-treat-statfs.f_flags-as-optional.patch
+
+-------------------------------------------------------------------
+Fri Nov 17 18:58:47 UTC 2017 - jeffm@suse.com
+
+- Update to 4.13.1
+  * mkfs: don't overflow the subopts array
+
+- Update to 4.13.0
+  * xfs_repair: handle missing extent states
+  * mkfs: pass a custom cowextsize into the created filesystem
+  * xfs_db: version command misses RMAPBT feature string
+  * xfs_repair: don't use do_warn for normal log message
+  * libxfs: remove getcwd/chdir dance from initialization
+  * xfs_repair: take the ag_lock before recording rmap for a bmbt record
+  * mkfs.xfs: Don't stagger AG for a single disk
+  * xfs: fix inobt inode allocation search optimization
+  * xfs_io: clarify the fsmap documentation
+  * fiemap: Fix semantics of max_extents (-n arguments)
+  * xfs_repair: fix thread creation failure recovery
+  * xfs_repair: add prefetch trace calls to debug thread creation failures
+  * xfs_repair: clear pthread_t when pthread_create fails
+  * xfs_io: add seek consistency checks
+  * fsr: fix uninitialized fs usage after timeout
+  * xfs_db: bit fuzzing should read the right bit when flipping
+  * xfs_db: make write/fuzz -c and -d work on non-crc filesystems
+  * xfs_db: free field list when failing out of fuzz
+  * xfs_db: reset metadump output flag
+  * xfs_db: btdump should avoid eval for push and pop of cursor
+  * xfs_db: use TYP_F_CRC_FUNC for inodes & dquots
+  * xfs_db: introduce fuzz command
+  * xfs_db: write values into dir/attr blocks and recalculate CRCs
+  * xfs_db: print attribute remote value blocks
+  * xfs_db: dump dir/attr btrees
+  * xfs_db: fix metadump redirection (again)
+  * xfs_repair: fix symlink target length checks by changing MAXPATHLEN to XFS_SYMLINK_MAXLEN
+  * xfs_metadump: properly handle obfuscation of all remote attribute blocks
+  * xfs_io: allow lsattr & lsproj on foreign filesystems
+  * libxfs: init ->b_maps on contig buffers for uncached compatibility
+  * xfs_db: associate proper type with free inode btree root
+  * xfs_io: Print filesystem statfs flags in 'statfs' command
+  * xfs: fix multi-AG deadlock in xfs_bunmapi
+  * xfs: check that dir block entries don't off the end of the buffer
+  * xfs: check _alloc_read_agf buffer pointer before using
+  * xfs: set firstfsb to NULLFSBLOCK before feeding it to _bmapi_write
+  * xfs: check _btree_check_block value
+  * xfs: don't crash on unexpected holes in dir/attr btrees
+  * xfs: export _inobt_btrec_to_irec and _ialloc_cluster_alignment for scrub
+  * xfs: try to avoid blowing out the transaction reservation when bunmaping a shared extent
+
+- Update to 4.12.0
+  * libxfs: propagate transaction block reservations
+  * xfs_db: properly set inode type
+  * xfs_db: redirect printfs when metadumping to stdout
+  * mkfs.xfs: allow specification of 0 data stripe width & unit
+  * mkfs: set inode alignment and cluster size for minimum log size estimation
+  * mkfs: set agblklog when we're verifying minimum log size
+  * libxfs: fix fsmap.h inclusion
+  * xfs_db: identify attr dabtree field types correctly
+  * xfs_spaceman: fix potential overflowing expression in trim_f()
+  * xfs_spaceman: close open file for error case in openfile()
+  * xfs_spaceman: fix potential memory leak by malloc in scan_ag
+  * xfs_db: improve argument naming in set_cur and set_iocur_type
+  * xfs_db: update buffer size when new type is set
+  * xfs_spaceman: add group summary mode
+  * xfs_spaceman: add a man page
+  * xfs_spaceman: Free space mapping command
+  * xfs_spaceman: add new speculative prealloc control
+  * xfs_spaceman: add FITRIM support
+  * xfs_spaceman: space management tool
+  * xfs_repair: replace rmap_compare with libxfs version
+  * xfs_io: support the new getfsmap ioctl
+  * xfs: introduce the XFS_IOC_GETFSMAP ioctl
+  * libxfs: use crc32c slice-by-8 variant by default
+  * libxcmd: add cvt{int, long} to convert strings to int and long
+  * metadump: warn about corruption if log is dirty
+  * xfs_metadump: tag metadump image with informational flags
+  * xfs_repair: handle reading superblock from image on larger sector size filesystem
+  * xfs_db: add alignment filter to freesp command
+  * xfs_growfs: ensure target path is an active xfs mountpoint
+  * libxfs: fix xfs_trans_alloc_empty namespace
+  * xfs: fix unaligned access in xfs_btree_visit_blocks
+  * xfs: avoid mount-time deadlock in CoW extent recovery
+  * xfs: fix indlen accounting error on partial delalloc conversion
+  * xfs: abstract PF_FSTRANS to PF_MEMALLOC_NOFS
+  * xfs: reserve enough blocks to handle btree splits when remapping
+  * xfs: simplify validation of the unwritten extent bit
+  * xfs: introduce xfs_bmapi_remap
+  * xfs: pass individual arguments to xfs_bmap_add_extent_hole_real
+  * xfs: fix integer truncation in xfs_bmap_remap_alloc
+  * xfs: simplify xfs_calc_dquots_per_chunk
+  * xfs: implement the GETFSMAP ioctl
+  * xfs: add a couple of queries to iterate free extents in the rtbitmap
+  * xfs: create a function to query all records in a btree
+  * xfs: provide a query_range function for freespace btrees
+  * xfs: plumb in needed functions for range querying of the freespace btrees
+  * xfs: fix up inode validation failure message
+
+- Update to 4.11.0
+  * xfs_io: add missed quotation marks in man page
+  * xfs_io: add missed inode command into man page
+  * xfs_io: fix statx call for changed UAPI
+  * xfs_db: dump metadata btrees via 'btdump'
+  * xfs_db: use iocursor type to guess btree geometry if bad magic
+  * xfs_db: don't print arrays off the end of a buffer
+  * mkfs.xfs: Assign proper defaults to rmapbt and reflink flags
+  * xfs_io: Add statx support for PowerPC architecture
+  * xfs_io: fix statx definition for non-x86 architecture
+  * xfs_db: allow write -d to dqblks
+  * xfs_db: allow write -d to inodes
+  * xfs_io: hook up statx
+  * xfsprogs: fix build dep on configure.ac
+  * xfs_repair: pass btnum not magic to phase5 functions
+  * xfs_io: Fix "falloc -p" to pass KEEP_SIZE
+  * xfs_repair: warn about dirty log with -n option
+  * xfs_repair: detect invalid zero-sized symlink inodes
+  * xfs_io: support shutdown command on foreign fses
+  * libxfs: fix xfs_extent_busy_flush macro definition
+  * xfs: verify inline directory data forks
+  * xfs: try any AG when allocating the first btree block when reflinking
+  * xfs: use iomap new flag for newly allocated delalloc blocks
+  * xfs: tune down agno asserts in the bmap code
+  * xfs: Use xfs_icluster_size_fsb() to calculate inode chunk alignment
+  * xfs: split indlen reservations fairly when under reserved
+  * xfs: handle indlen shortage on delalloc extent merge
+  * xfs: improve handling of busy extents in the low-level allocator
+  * xfs: go straight to real allocations for direct I/O COW writes
+  * xfs: allow unwritten extents in the CoW fork
+  * xfs: verify free block header fields
+  * xfs: check for obviously bad level values in the bmbt root
+  * xfs: filter out obviously bad btree pointers
+  * xfs: fail _dir_open when readahead fails
+  * xfs: fix toctou race when locking an inode to access the data map
+  * xfs: glean crc status from mp not flags in xfs_btree_init_block_int
+
+- Update to 4.10.0
+  * xfs_metadump: ignore attr leaf with 0 entries
+  * libxfs: sync up FSGETXATTR names and definitions with the kernel
+  * xfsprogs: Fix building xfsprogs on 32-bit platforms (again)
+  * xfs: extsize hints are not unlikely in xfs_bmap_btalloc
+  * xfs: use per-AG reservations for the finobt
+  * xfs: only update mount/resv fields on success in __xfs_ag_resv_init
+  * xfs: verify dirblocklog correctly
+  * xfs: fix COW writeback race
+  * xfs: fix xfs_mode_to_ftype() prototype
+  * xfs_db: Interpret inode's di_format field as unsigned
+  * xfs_repair: trash dirattr btrees that cycle to the root
+  * xfs_repair: strengthen geometry checks
+  * xfs_db: fix the 'source' command when passed as a -c option
+  * libxfs: sanitize agcount on load
+  * xfs_io: add DAX and CoW extent-size flags to chattr manpage
+  * xfs_io: fix missing syncfs command
+  * xfs_logprint: handle log operation split of inode item correctly
+  * xfs: sanity check inode di_mode
+  * xfs: sanity check directory inode di_size
+  * xfs_repair: update the manual content about xfs_repair exit status
+  * xfs_repair.8: document dirty log conditions
+  * xfs_io: implement 'utimes' command
+  * libxcmd: add non-iterating user commands
+  * xfs_io: make various commands one-shot only
+  * libxcmd: don't check generic library commands
+  * libxcmd: merge command() and iterate_command()
+  * libxcmd: rename args_command to command_iterator
+  * libxcmd: check CMD_FLAG_GLOBAL inside args_command()
+  * xfs_io: fix some documentation problems
+  * xfs_io: fix the minimum arguments to the reflink command
+  * xfs_io: prefix dedupe command error messages consistently
+  * xfs_io: Improvements to copy_range return code handling
+  * xfs_io: implement 'set_encpolicy' and 'get_encpolicy' commands
+  * xfs_logprint: di_gen is unsigned
+  * xfs_io: fix building with musl
+  * xfs: don't rely on ->total in xfs_alloc_space_available
+  * xfs: adjust allocation length in xfs_alloc_space_available
+  * xfs: fix bogus minleft manipulations
+  * xfs: bump up reserved blocks in xfs_alloc_set_aside
+  * xfs: use the actual AG length when reserving blocks
+  * xfs: use GPF_NOFS when allocating btree cursors
+  * xfs: ignore leaf attr ichdr.count in verifier during log replay
+  * xfs: optimise CRC updates
+  * xfs: make xfs btree stats less huge
+  * xfs: don't allow di_size with high bit set
+  * xfs: error out if trying to add attrs and anextents > 0
+  * xfs: don't crash if reading a directory results in an unexpected hole
+  * xfs: complain if we don't get nextents bmap records
+  * xfs: check for bogus values in btree block headers
+  * xfs: forbid AG btrees with level == 0
+  * xfs: several xattr functions can be void
+  * xfs: handle cow fork in xfs_bmap_trace_exlist
+  * xfs: pass state not whichfork to trace_xfs_extlist
+  * xfs: Move AGI buffer type setting to xfs_read_agi
+  * xfs: track preallocation separately in xfs_bmapi_reserve_delalloc()
+  * fs: xfs: libxfs: constify xfs_nameops structures
+  * repair: use new extent lookup helpers in bmap_next_offset
+  * xfs: use new extent lookup helpers in __xfs_bunmapi
+  * xfs: use new extent lookup helpers in xfs_bmapi_write
+  * xfs: use new extent lookup helpers in xfs_bmapi_read
+  * xfs: new inode extent list lookup helpers
+  * xfs: check minimum block size for CRC filesystems
+  * xfs: provide helper for counting extents from if_bytes
+  * xfs: check return value of _trans_reserve_quota_nblks
+  * xfs: set XFS_DA_OP_OKNOENT in xfs_attr_get
+- Removed now-obsolete patches:
+  * Removed xfs_repair-clear-pthread_t-when-pthread_create-fails.patch
+  * Removed xfs_repair-add-prefetch-trace-calls-to-debug-thread-creation-failures.patch
+  * Removed xfs_repair-fix-thread-creation-failure-recovery.patch
+  * Removed fsr-fix-uninitialized-fs-usage-after-timeout.patch
+
+-------------------------------------------------------------------
+Mon Aug 28 13:42:33 UTC 2017 - mmarek@suse.com
+
+- Add missing coreutils dependency for initrd macros (bsc#1055492).
+
+-------------------------------------------------------------------
+Thu Jun 22 20:15:28 UTC 2017 - jeffm@suse.com
+
+- Fix crash in xfs_repair when threads fail to start (bsc#1019938).
+  * Added xfs_repair-clear-pthread_t-when-pthread_create-fails.patch
+  * Added xfs_repair-add-prefetch-trace-calls-to-debug-thread-creation-failures.patch
+  * Added xfs_repair-fix-thread-creation-failure-recovery.patch
+
+-------------------------------------------------------------------
+Fri Jun  2 18:23:03 UTC 2017 - jeffm@suse.com
+
+- fsr: fix uninitialized fs usage after timeout (bsc#1002699).
+  * Added fsr-fix-uninitialized-fs-usage-after-timeout.patch
+
+-------------------------------------------------------------------
+Tue May 16 14:52:53 UTC 2017 - jeffm@suse.com
+
+- Update to 4.9.0
+  * xfs_quota: handle wrapped id from GETNEXTQUOTA
+  * xfs_repair: don't indicate dirtiness if FSGEOMETRY fails
+  * xfs_repair: junk leaf attribute if count == 0
+  * xfs_repair: fix some potential null pointer deferences
+  * xfs_repair: fix bogus rmapbt record owner check
+  * xfs.h: require transparent LFS for all users
+  * xfs_io: Fix initial -m option
+  * xfs_io: add command line option -i to start an idle thread
+  * xfsprogs: Update FSF address in COPYING file
+  * mkfs.xfs: format reflink enabled filesystems
+  * xfs_repair: use thread pools to sort rmap data
+  * xfs_repair: check for mergeable refcount records
+  * xfs_repair: use range query when while checking rmaps
+  * xfs_repair: check the CoW extent size hint
+  * xfs_repair: complain about copy-on-write leftovers
+  * xfs_repair: rebuild the refcount btree
+  * xfs_repair: check the refcount btree against our observed reference counts when -n
+  * xfs_repair: fix inode reflink flags
+  * xfs_repair: record reflink inode state
+  * xfs_repair: process reverse-mapping data into refcount data
+  * xfs_repair: handle multiple owners of data blocks
+  * xfs_repair: check the existing refcount btree
+  * xfs_repair: fix get_agino_buf to avoid corrupting inodes
+  * xfs_logprint: support bmap redo items
+  * xfs_logprint: support refcount redo items
+  * xfs_logprint: support cowextsize reporting in log contents
+  * xfs_io: try to unshare copy-on-write blocks via fallocate
+  * xfs_io: provide long-format help for falloc
+  * xfs_io: support injecting the 'per-AG reservation critically low' error
+  * xfs_io: add refcount+bmap error injection types
+  * xfs_io: get and set the CoW extent size hint
+  * libxfs: add autoconf mechanism to override system header fsxattr
+  * xfs_io: bmap should support querying CoW fork, shared blocks
+  * xfs_growfs: report the presence of the reflink feature
+  * xfs_db: print one array element per line
+  * xfs_db: deal with the CoW extent size hint
+  * xfs_db: metadump should copy the refcount btree too
+  * xfs_db: add support for checking the refcount btree
+  * xfs_db: dump refcount btree data
+  * libxfs: add fsxattr flags and fields for cowextsize
+  * libxfs: free the CoW fork from an inode
+  * libxfs: plumb in bmap deferred op log items
+  * libxfs: plumb in refcount deferred op log items
+  * libxfs: add xfs_refcount.h to the standard include list
+  * libxfs: initialize the in-core mount context for refcount btrees
+  * xfs_buflock: handling parsing errors more gracefully
+  * xfs_logprint: fix up the RUI printing code to reflect new format
+  * xfs: defer should abort intent items if the trans roll fails
+  * xfs: add xfs_trim_extent
+  * libxfs: clean up _calc_dquots_per_chunk
+  * xfs: rework refcount cow recovery error handling
+  * xfs: implement swapext for rmap filesystems
+  * xfs: recognize the reflink feature bit
+  * xfs: simulate per-AG reservations being critically low
+  * xfs: don't mix reflink and DAX mode for now
+  * xfs: check for invalid inode reflink flags
+  * xfs: convert unwritten status of reverse mappings for shared files
+  * xfs: use interval query for rmap alloc operations on shared files
+  * xfs: add shared rmap map/unmap/convert log item types
+  * xfs: increase log reservations for reflink
+  * xfs: try other AGs to allocate a BMBT block
+  * xfs: preallocate blocks for worst-case btree expansion
+  * xfs: create a separate cow extent size hint for the allocator
+  * xfs: teach get_bmapx about shared extents and the CoW fork
+  * xfs: store in-progress CoW allocations in the refcount btree
+  * xfs: support removing extents from CoW fork
+  * xfs: support allocating delayed extents in CoW fork
+  * xfs: support bmapping delalloc extents in the CoW fork
+  * xfs: introduce the CoW fork
+  * xfs: don't allow reflinked dir/dev/fifo/socket/pipe files
+  * xfs: add reflink feature flag to geometry
+  * xfs: return work remaining at the end of a bunmapi operation
+  * xfs: implement deferred bmbt map/unmap operations
+  * xfs: pass bmapi flags through to bmap_del_extent
+  * xfs: map an inode's offset to an exact physical block
+  * xfs: log bmap intent items
+  * xfs: create bmbt update intent log items
+  * xfs: introduce reflink utility functions
+  * xfs: reserve AG space for the refcount btree root
+  * xfs: adjust refcount when unmapping file blocks
+  * xfs: connect refcount adjust functions to upper layers
+  * xfs: adjust refcount of an extent of blocks in refcount btree
+  * xfs: log refcount intent items
+  * xfs: create refcount update intent log items
+  * xfs: add refcount btree operations
+  * xfs: account for the refcount btree in the alloc/free log reservation
+  * xfs: define the on-disk refcount btree format
+  * xfs: refcount btree add more reserved blocks
+  * xfs: introduce refcount btree definitions
+  * xfs: remote attribute blocks aren't really userdata
+  * xfs: set up per-AG free space reservations
+  * xfs: defer should allow ->finish_item to request a new transaction
+  * xfs: count the blocks in a btree
+  * xfs: create a standard btree size calculator code
+  * xfs: convert RUI log formats to use variable length arrays
+  * xfs: track log done items directly in the deferred pending work item
+  * xfs: fix superblock inprogress check
+
+- Update to 4.8.0
+  * Add support for reflinks
+  * xfs_io: fix inode command with "-n" for bogus inode
+  * xfs_io: fix inode command help and argsmax
+  * xfs_repair: add freesp btree block overflow to the free space
+  * xfs_repair: fix bogosity when rmapping new AGFL blocks
+  * libxcmd: fix counting of xfs entries in fs_table_insert
+  * xfs_copy: Fix meta UUID handling on multiple copies
+  * xfs_repair: fix segfault from uninitialized tp in mv_orphanage
+  * xfs_io: allow chattr & chproj on foreign filesystems
+  * xfs_quota: fix free command for foreign fs
+  * xfs_quota: un-flag non-foreign-capable commands
+  * xfs_quota: Enable 3 more foreign commands
+  * xfs_quota: add case for foreign fs, disabled regardless of foreign_allowed
+  * xfs_quota: print and path output formatting: maintain reverse compatibility
+  * libxcmd: populate fs table with xfs entries first, foreign entries last
+  * xfs_repair: exit with status 2 if log dirtiness is unknown
+  * xfs_db: pass the inode cluster offset when copying inodes
+  * xfs_repair: don't crash on ENOSPC rebuilding a btree
+  * libxfs/linux.c: Replace use of ustat by stat
+  * db: write via array indexing doesn't work
+  * xfs_db: properly set dquot_buf when operating on dquot
+  * xfs_quota: fix missing break after foreign_allowed option
+  * xfs_db: add crc manipulation commands
+  * xfs_quota: certain commands must always be available
+  * xfs_quota: add capabilities for use on non-XFS filesystems
+  * xfs_quota: wire up XFS_GETQSTATV
+  * xfs_metadump: don't warn about unobfuscated log with -o
+  * xfs_repair: fix naming problems in repair/rmap.c
+  * misc: fix libxfs api violations
+  * misc: fix Coverity errors
+  * libxcmd: fix mount option parsing to find rt/log devices
+  * xfs: simple btree query range should look right if LE lookup fails
+  * xfs: fix some key handling problems in _btree_simple_query_range
+  * xfs: don't perform lookups on zero-height btrees
+  * mkfs.xfs: create filesystems with reverse-mappings
+  * mkfs: set agsize prior to calculating minimum log size
+  * xfs_repair: check for impossible rmap record field combinations
+  * xfs_repair: look for mergeable rmaps
+  * xfs_repair: merge data & attr fork reverse mappings
+  * xfs_repair: add per-AG btree blocks to rmap data and add to rmapbt
+  * xfs_repair: rebuild reverse-mapping btree
+  * xfs_repair: check existing rmapbt entries against observed rmaps
+  * xfs_repair: add fixed-location per-AG rmaps
+  * xfs_repair: add inode bmbt block rmaps
+  * xfs_repair: record and merge raw rmap data
+  * xfs_repair: collect reverse-mapping data for refcount/rmap tree rebuilding
+  * xfs_repair: create a slab API for allocating arrays in large chunks
+  * xfs_repair: fix fino_bno calculation when rmapbt is enabled
+  * xfs_repair: use rmap btree data to check block types
+  * xfs_logprint: support rmap redo items
+  * xfs_io: add rmap-finish error injection type
+  * xfs_growfs: report rmapbt presence
+  * xfs_db: introduce the 'fsmap' command to find what owns a set of fsblocks
+  * xfs_db: copy the rmap btree
+  * xfs_db: spot check rmapbt
+  * xfs_db: display rmap btree contents
+  * libxfs: add deferred ops item handlers for userspace
+  * libxfs: fix various oddities in the kernel import
+  * xfs: store rmapbt block count in the AGF
+  * xfs_io: add free-extent error injection type
+  * xfs_logprint: fix formatting issues with the EFI printing code
+  * xfs_repair: preserve in-core meta_uuid while zeroing unused sb portions
+  * xfs_io: bmap should print 'delalloc', not '-2'
+  * xfs_buflock: add a tool that can be used to find buffer deadlocks
+  * libxfs: fix xfs_isset pointer calculation
+  * xfs: increase XFS_BTREE_MAXLEVELS to fit the rmapbt
+  * xfs: change xfs_bmap_{finish,cancel,init,free} -> xfs_defer_*
+  * xfs: rework xfs_bmap_free callers to use xfs_defer_ops
+  * xfs: enable the xfs_defer mechanism to process extents to free
+  * xfs: introduce interval queries on btrees
+  * xfs: support btrees with overlapping intervals for keys
+  * xfs: add function pointers for get/update keys to the btree
+  * xfs: during btree split, save new block key & ptr for future insertion
+  * xfs: set *stat=1 after iroot realloc
+  * xfs: fix locking of the rt bitmap/summary inodes
+  * xfs: fix attr shortform structure alignment on cris
+
+- Update to 4.7.0
+  * xfs_quota: fall back silently if XFS_GETNEXTQUOTA fails
+  * xfs_io: implement 'copy_range' command
+  * xfs_repair: low memory shouldn't indicate corruption on exit
+  * xfs_repair: don't call xfs_sb_quota_from_disk twice
+  * xfs_repair: resolve Coverity OVERFLOW_BEFORE_WIDEN
+  * libxfs: fix double free in libxfs_alloc_file_space
+  * libxfs: fix use after from in xfs_trans_roll
+  * xfs: always set rvalp in xfs_dir2_node_trim_free
+  * xfs: borrow indirect blocks from freed extent when available
+  * xfs: update freeblocks counter after extent deletion
+  * xfs: fix computation of inode btree maxlevels
+  * xfs_check: process sparse inode chunks correctly
+  * xfs_db: Revert "xfs_db: make check work for sparse inodes"
+  * xfs_repair: set rsumino version to 2
+  * mkfs: better error with incorrect b/s value suffix usage
+  * mkfs: fix -l su minval
+  * xfs.h: define XFS_IOC_FREEZE even if FIFREEZE is defined
+  * xfs_quota: only round up timer reporting > 1 day
+  * xfs_quota: check report_mount return value
+  * xfs_repair: new secondary superblock search method
+  * libxcmd: generalize topology functions
+  * xfs_db: defang frag command
+  * db: limit AGFL bno array printing
+  * xfs_db: allow recalculating CRCs on invalid metadata
+  * xfs_db: fix unaligned accesses
+  * metadump: limit permissible sector sizes
+  * mkfs: conflicting values with disabled crc should fail
+  * mkfs: add optional 'reason' for illegal_option
+  * mkfs: unit conversions are case insensitive
+  * mkfs: don't treat files as though they are block devices
+  * mkfs: add string options to generic parsing
+  * mkfs: encode conflicts into parsing table
+  * mkfs: merge getnum
+  * mkfs: table based parsing for converted parameters
+  * mkfs: add respecification detection to generic parsing
+  * mkfs: use getnum_checked for all ranged parameters
+  * mkfs: getbool is redundant
+  * mkfs: structify input parameter passing
+  * mkfs: validate logarithmic parameters sanely
+  * mkfs: validate all input values
+  * mkfs: Sanitise the superblock feature macros
+  * mkfs: sanitise ftype parameter values.
+  * xfsprogs: use common code for multi-disk detection
+  * xfs_repair: fix agf limit error messages
+  * xfs_quota: print quota id number if the name can't be found
+  * xfs_quota: fully support users and groups beginning with digits
+  * xfs_io: allow mmap command to reserve some free space
+  * xfs_io: modify argument errors of mremap command
+  * Merge branch 'progs-misc-fixes-for-4.6' into for-master
+  * Merge branch 'libxfs-4.6-sync' into for-master
+  * xfs_io: implement 'inode' command
+  * mkfs: fix crash when initializing rbmip
+  * libxfs: fix up mismerge in libxfs_iflush_int
+  * xfs: RT bitmap and summary buffers need verifiers
+  * xfs: RT bitmap and summary buffers are not typed
+  * xfs: handle errors from ->free_blocks in xfs_btree_kill_iroot
+  * xfs: wire up Q_XGETNEXTQUOTA / get_nextdqblk
+-------------------------------------------------------------------
+Tue May 16 14:48:49 UTC 2017 - jeffm@suse.com
+
+- Advise user of fs recovery options when we fail to mount (fate#320443)
+ * Add dracut-fsck-help.txt
+ * Add module-setup.sh.in
+
+------------------------------------------------------------------
+Mon Mar 28 09:12:17 UTC 2016 - mlin@suse.com
+
+- Update to 4.5.0
+  * xfs_io: prevent divide-by-zero on random IO
+  * xfs_db: dquot command documentation fixes
+  * xfs_quota: better command line parsing and documentation
+  * libxfs: update to match kernel 4.5-rc1 code base
+  * xfs_io: add DAX inode flag support
+  * repair: scalability improvements on large corrupt filesystems
+  * repair: directory rebuild fixes
+  * mdrestore: progress accounting now works
+  * metadump: fix btree block unused region zeroing
+  * quota: timer command fixes
+  * mkfs: man page cleanups
+  * xfs_io: reflink, dedupe and other fixes
+  * quota: Q_XGETNEXTQUOTA support
+  * build cleanups for alternate C librarys
+  * db: check fixes for sparse inodes
+  * various: Fixes for Coverity reports
+  * xfs_io: Document zero and help commands
+  * mkfs: DIO can use logical sector size limits
+  * repair: don't reset log cycle numbers when zeroing
+  * db: add ability to format log to a specific cycle
+
+-------------------------------------------------------------------
+Tue Dec 29 18:58:55 UTC 2015 - mpluskal@suse.com
+
+- Trigger regeneration of initrd n recent releases (bsc#960273)
+- Remove conditions for unsupported releases
+- Make building more verbose
+
+-------------------------------------------------------------------
+Thu Nov 26 09:32:27 UTC 2015 - jack@suse.cz
+
+- Update to 4.3.0
+  * xfs_fsr: improved temp file attr fork handling
+  * libxfs: output verifier names in warnings
+  * xfs_repair: enable verifier corruption warnings on very verbose
+    output settings
+  * xfs_fsr: abstract mntinfo/mntent differences
+  * xfs_io: reflink and dedupe operation support
+  * libxcmd: factoring of runtime reporting
+  * man page fixes
+  * xfs_db: blockget/blocktrash support for v5 filesystems
+  * xfs_repair: many directory/attr cleanups and fixes
+  * Log zeroing rework for v5 filesystems to prevent log sequence
+    numbers from going backwards
+
+- xfsprogs-ppc64.diff: Removed since we use asm/types.h for definitions now
+
+-------------------------------------------------------------------
+Wed Nov 18 20:06:03 UTC 2015 - jeffm@suse.com
+
+- Update to 4.2.0
+  * db: show sparse inodes feature state in version command output
+  * db: support sparse inode chunk inobt record and sb fields
+  * growfs: display sparse inode status from xfs_info
+  * libxfs: clear buffer state flags in libxfs_getbuf and variants
+  * libxfs: error negation rework
+  * libxfs: Fix attr leaf block definition
+  * libxfs: Fix file type directory corruption for btree directories
+  * libxfs: fix memory leasks in libxfs_umount()
+  * libxfs: fix uuid check durign inode allocation
+  * libxfs: fix XFS_WANT_CORRUPTED_* macros to return negative error codes
+  * libxfs: readahead of dir3 data blocks should use the read verifier
+  * libxfs: v3 inodes are only valid on crc-enabled filesystems
+  * libxfs: verifier should set buffer error when da block has a bad magic
+    number
+  * metadump: reorder inode record sanity checks and inode buffer read
+  * metadump: support sparse inode records
+  * mkfs: sparse inode chunk support
+  * mkfs.xfs: always use underlying fs sector size when mkfs'ing a file
+  * repair: access helpers for on-disk inobt record freecount
+  * repair: do not account sparse inodes in phase 5 cursor init.
+  * repair: do not prefetch holes in sparse inode chunks
+  * repair: factor out sparse inodes from finobt reconstruction
+  * repair: fix wrong logic when validating node magic number
+  * repair: handle sparse format inobt record freecount correctly
+  * repair: handle sparse inode alignment
+  * repair: helper for inode chunk alignment and start/end ino number
+    verification
+  * repair: helper to import on-disk inobt records to in-core trees
+  * repair: helper to transition inode blocks to inode state
+  * repair: process sparse inode records correctly
+  * repair: reconstruct sparse inode records correctly on disk
+  * repair: remove duplicate field from aghdr_cnts
+  * repair: scan and track sparse inode chunks correctly
+  * repair: scan sparse finobt records correctly
+  * repair: use ir_count for filesystems with sparse inode support
+  * repair: use sb_meta_uuid for checking of metadata headers
+  * repair: validate ir_count field for sparse format records
+  * xfs: add fs geometry bit for sparse inode chunks
+  * xfs: add sparse inode chunk alignment superblock field
+  * xfs: allocate sparse inode chunks on full chunk allocation failure
+  * xfs: always log the inode on unwritten extent conversion
+  * xfs: check min blks for random debug mode sparse allocations
+  * xfs: clean up XFS_MIN_FREELIST macros
+  * xfs_copy: fix copy of hard 4k devices
+  * xfs_copy: fix up initial sb buffer read on CRC fs
+  * xfs: create individual inode alloc. helper
+  * xfs_db: don't crash on a corrupt inode
+  * xfs: enable sparse inode chunks for v5 superblocks
+  * xfs: extent size hints can round up extents past MAXEXTLEN
+  * xfs: filter out sparse regions from individual inode allocation
+  * xfs_fsr: Fix parentheses around truth value
+  * xfs: helper to convert holemask to inode alloc. bitmap
+  * xfs: introduce inode record hole mask for sparse inode chunks
+  * xfs: kill unsupported superblock versions
+  * xfs: only free allocated regions of inode chunks
+  * xfs: pass inode count through ordered icreate log item
+  * xfs: randomly do sparse inode allocations in DEBUG mode
+  * xfs: remote attribute headers contain an invalid LSN
+  * xfs: remote attributes need to be considered data
+  * xfs_repair: automatically enable -f (file) mode when needed
+  * xfs_repair: call IRELE(ip) after libxfs_trans_iget calls
+  * xfs_repair: check v5 filesystem attr block header sanity
+  * xfs_repair: fix broken EFSBADCRC/EFSCORRUPTED usage with buffer errors
+  * xfs_repair: Fix malloc size of rt_ext_tree_ptr
+  * xfs_repair: force not-so-bad bmbt blocks back through the verifier
+  * xfs_repair: free msgbuf on exit
+  * xfs_repair: ignore "repaired" flag after we decide to clear xattr block
+  * xfs_repair: include any realloc'ed buffers in final putbuf
+  * xfs_repair: refuse to unset lazycount on V5 filesystems
+  * xfs_repair: release corrupt directory node buffer
+  * xfs_repair: set args.geo in dir2_kill_block
+  * xfs_repair: set args.geo in longform_dir2_entry_check_data
+  * xfs_repair: unconditionally free blockmaps when threads complete
+  * xfs_repair: update btree ptr when attr node level moves to next buffer
+  * xfs: skip unallocated regions of inode chunks in xfs_ifree_cluster()
+  * xfs: support min/max agbno args in block allocator
+  * xfs: update free inode record logic to support sparse inode records
+  * xfs: xfs_alloc_fix_freelist() can use incore perag structures
+  * xfs: xfs_attr_inactive leaves inconsistent attr fork state behind
+  * xfs: xfs_bunmapi() does not need XFS_BMAPI_METADATA flag
+  * Other minor fixes and build system rework
+
+- Added new dependency on libblkid-devel.
+
+-------------------------------------------------------------------
+Fri Jul 31 10:21:06 UTC 2015 - jack@suse.cz
+
+- Update to 3.2.4
+  * properly obfuscate images created by xfs_metadump
+
+-------------------------------------------------------------------
+Sat Jul 11 21:36:04 UTC 2015 - mpluskal@suse.com
+
+- Update to 3.2.3
+  * xfs_repair: handle speciall atribute names correctly
+  * xfs_repair: handle v5 format feature flags correctly
+  * xfs_repair: Better v5 format validation for directories
+  * mkfs.xfs: enable metadata CRCs by default
+  * mkfs.xfs: enable free inode btrees by default
+  * build: glibc support updates
+  * man page updates
+  * xfs_admin: Changing UUIDs disable for CRC enabled filesystems
+  * xfs_repair: Separate pquota inode fixes
+  * xfs_db: inode alignment fixes 
+  * mkfs.xfs: fix failures creating file images
+  * libxfs: zero new buffers before use 
+  * xfs_repair: handle directory leaf CRC errors gracefully
+  * xfs_repair: validate and repair inode CRCs
+  * xfs_repair: lots of broken directory repair fixes
+  * xfs_db: handle v3 inodes properly
+  * xfs_db: allow writing corrupted metadata on CRC enabled 
+    filesystems
+  * xfs_repair: gracefully handle > 512 byte sector superblocks
+  * mkfs.xfs: take into acocunt log stripe unit when sizing log
+  * xfs_metadump: inode alignment and null inode fixes
+  * xfs_io: FALLOC_FL_INSERT_RANGE support
+  * build: libtool static library build fixes
+  * mkfs.xfs: large block size inode alignment fixes
+  * xfs_repair: secondary superblock scan fixes
+  * xfs_repair: don't care about symlink compenent lengths
+- Rebase patches
+  * xfsprogs-docdir.diff
+  * xfsprogs-ppc64.diff
+
+-------------------------------------------------------------------
+Thu Mar 19 13:38:47 UTC 2015 - mpluskal@suse.com
+
+- Update url
+- Do not use full path for make
+
+-------------------------------------------------------------------
+Thu Mar 19 13:06:46 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Add gpg signature
+- Cleanup spec-file with spec-clener
+
+-------------------------------------------------------------------
+Thu Dec 11 10:06:01 UTC 2014 - jack@suse.cz
+
+- Updated to 3.2.2
+   - xfs_repair, mkfs.xfs stripe geometry fixes
+   - libxcmd path handling fixes
+   - xfs_crash crash fix
+   - xfs_logprint AGI/AGF handling improvements
+   - libhandle support for symlinked /usr
+   - fix multiple Coverity and sparse reported issues
+   - new mremap, sync, syncfs commands for xfs_io
+   - man page updates
+   - xfs_repair sets ftype in lost+found dirents
+   - xfs_repair handles bad inodes better
+   - xfs_repair freelist rebuild improvements
+   - xfs_repair finobt crash fixes
+   - xfs_copy handles 4k sector devices better
+logprint-Fix-printing-of-AGF-and-AGI-buffers.patch: Removed (merged upstream)
+
+-------------------------------------------------------------------
+Tue Jul 22 09:59:46 UTC 2014 - jack@suse.cz
+
+- Updated to 3.2.1
+  - fix xfs_mdrestore so that non-crc filesystem is properly restored as non-crc
+  - minor xfs_fsr fixes to be more robust
+  - various fixes to xfs_repair to properly fix filesystems with v5 superblock
+  - fix data corruption when using xfs_copy
+  - fix adding extended attributes using xfs_db
+  - add support for free inode btree feature
+logprint-Fix-printing-of-AGF-and-AGI-buffers.patch:
+  - fix printing of AGF and AGI buffers in xfs_logprint
+
+-------------------------------------------------------------------
+Mon May 19 14:19:11 UTC 2014 - jeffm@suse.com
+
+- Updated to 3.2.0
+  - xfs_repair has full CRC validation and repair
+  - xfs_repair prefetch fix
+  - xfs_repair block tracking scalability fix
+  - disambiguous of CRC validation errors from IO errors.
+  - Improved dangerous mode handling in repair
+  - repair handles garbage in zeroed areas of superblocks better
+  - repair validates dirent ftype field fully
+  - metadump fully supports discontiguous directory blocks
+  - metadump only recalculates CRCs on metadata it obfuscates so as to
+    preserve errors in the metadata where possible.
+  - default log size that mkfs creates is now reverted to the same size
+    as 3.1.x releases create.
+  - mkfs sets the ftype on directory entries correctly during protofile
+    population
+  - xfs_io support O_TMPFILE, flink, FALLOC_FL_ZERO_RANGE and
+    FALLOC_FL_COLLAPSE_RANGE,
+  - logprint handles split entries better
+  - Enable xfs_db write support and xfs_metadump support for CRC
+    enabled filesystems.
+  - Add directory entry filetype support for non-CRC filesystems.
+  - Ensure all inodes created by xfs_repair have a proper d_type set.
+  - Fix build on big endian machines.
+  - Properly handle symlinks to devices on various tool commandlines.
+  - Fix xfs_repair's dirty log detection for 4k sector logs, broken
+    in Alpha1.
+  - Fix a potential segfault in xfs_repair when issuing progress
+    reports.
+  - Fix potential xfs_fsr failures when running w/ selinux.
+  - Stop wasting memory by caching inode structures in xfs_repair -
+    they are never re-used.
+  - Improved xfs_repair performance on large filesystems
+    (always use prefetch and strided AG scanning functionality)
+  - Remove all vestiges of old, unsupported version 1 directory code.
+  - Add a "readdir" command to xfs_io, thanks to Brian Foster.
+  - Fix potential segfault in xfs_repair when creating lost+found.
+  - Zero out unused parts of on-disk superblocks during repair, to
+    avoid metadata verifier failures at runtime.
+  - Add directory entry type support to mkfs.xfs and xfs_db.
+  - Add the icreate transaction to xfs_logprint, and fix continuation
+    transactions.
+  - Add the lseek SEEK_DATA/SEEK_HOLE support into xfs_io.
+  - Print all AGI unlinked buckets in xfs_logprint.
+  - Fix mkfs.xfs ENOSPC with protofile which creates a very large
+    directory.
+  - Do all file reads in xfs_fsr using O_DIRECT.
+  - Add support for concurrent group and project quota usage on CRC
+    enabled filesystems.
+  - Ensure mkfs creates log sizes that are always large enough for
+    the configured fileystem geometry.
+
+-------------------------------------------------------------------
+Wed May 15 18:44:22 UTC 2013 - jack@suse.cz
+
+- Added patch xfsprogs-avoid-no-return-in-nonvoid-warning.diff to silence
+  (bogus) compiler warnings.
+
+-------------------------------------------------------------------
+Wed May 15 13:30:46 UTC 2013 - jack@suse.cz
+
+- Updated to 3.1.11
+  - Support for relative paths in xfs_quota thanks to Satoru Takeuchi.
+  - mkfs.xfs will always go into multidisk mode when filesystem
+    geometry is specified on the command line.
+  - Document all commands in xfs_io.
+  - Remove setfl command from xfs_io.
+  - xfs_metadump will obfuscate symlinks by path component.
+  - mkfs.xfs no longer accepts geometry settings smaller than the
+    physical sector size.
+  - xfs_logprint now supports multiply-logged inode fields and
+    handles continued inode transactions correctly.
+  - kill XLOG_SET
+  - Update release scripts to use git archive to address a
+    missing source file reported by Arkadiusz Mi?kiewicz
+  - Fix a build error with -Werror=format-security, reported
+    by Arkadiusz Mi?kiewicz
+  - mkfs.xfs no longer attempts to discard when -N option is used.
+  - Update 'make deb' to use tarball
+  - Sync up with log reservation changes in the kernel.
+  - Fix possible unallocated memory access in fiemap.
+  - Guard against string overflow in path_to_fspath.
+  - Fix setup_cursor array allocation.
+  - Fix free of unintialized pointer in xfs_acl_valid error path.
+  - Guard against path string overflows.
+  - Check strdup results properly in initallfs().
+  - Fix attribute no_change_count logic.
+  - Remove extraneous close() in fsrallfs().
+  - xfs_repair now skips the freelist scan of a corrupt agf
+    when in no-modify mode.
+  - xfs_db now skips freelist scans of corrupt agfs.
+  - Remove unconditional ASSERT(0) in xfs_repair.
+  - Reduce bb_numrecs in bno/cnt btrees when log consumes all agf space.
+  - Add depraction message for xfs_check.
+  - xfs_quota allow user or group names beginning with digits reported by
+    James Carter.
+  - Fix manpages and usage() spelling, errors and omissions.
+  ...
+
+-------------------------------------------------------------------
+Thu Oct  4 11:19:30 UTC 2012 - ddiss@suse.com
+
+- Build with readline support; (bnc#783510).
+
+-------------------------------------------------------------------
+Sat May 26 11:42:47 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Mon May  7 20:12:41 UTC 2012 - jeffm@suse.com
+
+- Updated BuildRequires to use libuuid-devel and properly build on RHEL.
+
+-------------------------------------------------------------------
+Thu Mar 15 13:41:03 UTC 2012 - coolo@suse.com
+
+- no need to link the lib in /lib
+
+-------------------------------------------------------------------
+Mon Feb  6 22:33:58 UTC 2012 - rschweikert@suse.com
+
+- use %configure
+
+-------------------------------------------------------------------
+Fri Feb  3 14:50:27 UTC 2012 - rschweikert@suse.com
+
+- move libs and executables to /usr tree (UsrMerge project)
+
+-------------------------------------------------------------------
+Fri Oct 14 17:15:56 CEST 2011 - dsterba@suse.cz
+
+- updated to 3.1.6
+  - Re-synch of the header and libxfs files with the kernel
+    code as of Linux 2.6.37, including reviving xfs_repair
+    radix tree code.
+  - Fix a xfs_repair phase 4 hang, thanks to Ajeet Yadav.
+  - Subcommand names within various programs are no longer
+    translated/localized, thanks to Arkadiusz Mi?kiewicz.
+  - Build system fixes, thanks to Ted Ts'o.
+  - Updates to teh xfs_info(8)/xfs_growfs(8) man page, thanks
+    to Roman Ovchinnikov.
+  - xfs_quota "df" no longer reports values twice what they
+    should have been for project quotas.
+  - mkfs.xfs now requires that sub-options are non-empty
+    strings; thanks to Chris Pearson for reporting.
+  - Better handling of short reads in libxfs.
+  - xfs_quota now prints "N/A" rather than a large number for
+    the quota file inode number for disabled quota types.
+  - Bogus (unrelated) mount point entries no longer cause
+    xfs_growfs, xfs_quota, and xfs_io to quit early.
+  - xfs_repair no longer fails when the sector size of an
+    underlying device is larger than the sector size in a
+    hosted filesystem image.
+  - Various other internal improvements, including refactoring
+    and eliminating more build warnings.
+
+-------------------------------------------------------------------
+Mon Jun 20 11:21:03 UTC 2011 - mmarek@novell.com
+
+- updated to 3.1.5
+  - Polish translation update, thanks to Jakub Bogusz
+  - xfs_repair now warns if running in low memory mode
+  - Phase 2 of xfs_repair is now multithreaded
+  - xfs_quota no longer attempts to get quota information if not
+    enabled
+  - Inode flags are now properly validated by xfs_repair
+  - Metadump now obfuscates all file names reliably
+  - xfs_io now supports the "fiemap" command, a more generic form
+    of the "bmap" command
+  - xfs_io now supports the "fpunch" command, as well as a "-p"
+    flag to the "fallocate command.  Both implement hole punching.
+    Thanks to Josef Bacik
+  - A number of other bug fixes thanks to Ajeet Yadav
+
+-------------------------------------------------------------------
+Wed Dec 15 01:36:53 CET 2010 - ro@suse.de
+
+- update to xfsprogs-3.1.4 (9 November 2010)
+  - Add projid32bit handling to userspace, resolving type
+    sizing issues when dealing with 32 bit project ids.
+  - Make xfs_fsr use /proc/mounts if available.
+
+- update to xfsprogs-3.1.3 (26 August 2010)
+  - Add xfs_io support for XFS_IOC_ZERO_RANGE
+  - Allow xfs_io resvsp command for foreign filesystems.
+  - Make xfs_db check for valid inode data pointer before dereferencing.
+  - Validate btree block magic in the xfs_db freesp command,
+  - Fix linking of libxfs and librt detection (needs pthread),
+
+-------------------------------------------------------------------
+Tue Jun 29 20:17:31 UTC 2010 - seife@opensuse.org
+
+- updated to 3.1.2, see
+  /usr/share/doc/packages/xfsprogs/CHANGES.gz for details
+
+-------------------------------------------------------------------
+Fri Feb 19 21:26:53 CET 2010 - mmarek@suse.cz
+
+- Fix build on SLES9.
+
+-------------------------------------------------------------------
+Tue Jun 23 11:54:03 CEST 2009 - mmarek@suse.cz
+
+- updated to 3.0.1
+  - New project(5) and projid(5) man pages.
+  - Fix extent array reallocation in the xfs_io bmap command,
+    thanks to Tomasz Majkowski.
+  - Allow xfs_freeze to freeze non-XFS filesystems.
+  - Fix the xfs_db bmbta command.
+  - Various smaller xfs_repair improvements.
+  - Various gettext improvements, thanks to Jakub Bogusz.
+  - Polish translation update, thanks to Jakub Bogusz.
+  - Various xfs_quota fixes, thanks to Arkadiusz Miskiewicz.
+  - Support parallel builds.
+  - Detection of btrfs, gfs and gfs2 in libdisk.
+  - Addition of the xfs_fsr and xfs_estimate tools previous found
+    in the xfsdump package.
+  - Resync libxfs to latest kernel implemenation.
+  - Update all of xfsprogs to latest kernel interfaces.
+  - Cleanup devel package for xfsctl, libhandle and libdisk only
+    (remove libxfs interfaces).
+
+-------------------------------------------------------------------
+Mon Jan 12 15:25:02 CET 2009 - mmarek@suse.cz
+
+- added fixes needed to run xfsdump on ia64 with 64k page size
+  (bnc#450668)
+
+-------------------------------------------------------------------
+Tue Dec  9 16:59:57 CET 2008 - mmarek@suse.cz
+
+- updated to version 2.10.2 (bnc#457407)
+  - Fix an mkfs.xfs regression where -i maxpct option was ignored.
+  - Fix mkfs.xfs -d agcount and su/sw options when used together.
+  - Fix a regression where repaired inodes in xfs_repair were not
+    written to disk.
+  - Allow 64K block size support in xfs_repair.
+  - Fix up unaligned accesses in 64 bit platforms in xfs_repair.
+ 
+
+-------------------------------------------------------------------
+Thu Sep 11 15:22:02 CEST 2008 - jeffm@suse.com
+
+- updated to version 2.10.1
+  - Improve xfs_repair -P option to disable xfs_buf_t locking.
+  - Fix inode cluster I/O size for > 8KB block size filesystems.
+  - Fix up ASCII CI output for mkfs.xfs and xfs_growfs.
+  - Fix buffer handling in error cases in xfs_db (includes xfs_check
+    and xfs_metadump).
+  - Add packed on-disk shortform directory for ARM's old ABI, thanks to
+    Eric Sandeen.
+  - Increase default valid block count for a directory extent in
+    xfs_metadump (from 20 to 1000).
+  - Improve libxfs cache handling with (un)referenced blocks.
+  - Check that directory size is not too big in xfs_repair.
+  - Improve xfs_repair to restore bad or missing ".." entries.
+
+-------------------------------------------------------------------
+Tue Sep  2 15:15:05 CEST 2008 - mmarek@suse.cz
+
+- mkfs.xfs: Don't destroy file with -N -d file options (bnc#409360)
+
+-------------------------------------------------------------------
+Tue Apr 29 12:26:30 CEST 2008 - mmarek@suse.cz
+
+- updated to version 2.9.8
+ * Add support for sb_features2 in wrong location in mkfs.xfs,
+   xfs_repair and xfs_db.
+ * Improve memory limits for libxfs cache in xfs_repair and added
+   a -m option to manually limit usage of xfs_repair.
+ * Add -c option to xfs_admin to turn lazy-counters on/off.
+ * Added support for mdp in libdisk/mkfs.xfs, thanks to
+   Hubert Verstraete.
+ * Add -p option to fsck.xfs, thanks to Markus Rothe.
+ * Cleanup sys v3 bzero/bcopy calls, thanks to Nigel Kukard.
+
+-------------------------------------------------------------------
+Thu Mar 20 09:59:53 CET 2008 - mmarek@suse.cz
+
+- updated to version 2.9.7
+  * Add -y (another no-op) fsck option.
+  * Resolve mkfs allocation group count issue with small devices.
+  * Fix mkfs to sector align the device size so zeroing the end
+    of the device doesn't fail.
+  * Fix regression introduced by changing the mkfs.xfs defaults.
+
+-------------------------------------------------------------------
+Mon Feb  4 11:29:42 CET 2008 - mmarek@suse.cz
+
+- updated to version 2.9.5
+  * Updated mkfs.xfs defaults.
+  * Make xfs_info handle mount points with spaces.
+  * Improve xfs_repair's handling of invalid freespace btree
+    extents.
+  * Rebuild directories in xfs_repair if "." and ".." aren't the
+    first two directory entries. This guarantees a directory is
+    deletable.
+  * Changed mkfs.xfs -f to wipe all old AG headers, not just the
+    ones up to the end of the new filesystem size.
+  * Purged the end of device whack buffer in mkfs.xfs to prevent a
+    warning in certain device sizes.
+  * Man page fixes. Thanks to Utako Kusaka <u-kusaka@wm.jp.nec.com>
+    for this.
+  * Disable the ability to turn off unwritten extents in mkfs.
+
+
+-------------------------------------------------------------------
+Tue Oct 23 14:59:04 CEST 2007 - mmarek@suse.cz
+
+- updated to version 2.9.4
+  * Fixed xfs_repair segfaulting with directory block size
+    different to the filesystem blocksize.
+  * Fixed xfs_quota disable, enable, off and remove commands.
+    Thanks to Utako Kusaka <utako@tnes.nec.co.jp> for this.
+  * Improved the robustness of xfs_metadump.
+  * Fix link issues with pthread library.
+  * Make xfs_repair support > 512 byte sector sizes.
+  * Fixed include Makefile for new common header (xfs_metadump.h).
+  * Fixed xfs_quota state command segfaulting with no mounted
+    XFS filesystems.
+  * Fixed xfs_quota printing out unusual message with "path n"
+    command with no mounted XFS filesystems.
+  * Fixed "quota -n" command with project IDs.
+  * Improved "free" output when project quotas are defined, but
+    haven't been enable on the filesystem.
+    Thanks to Utako Kusaka <utako@tnes.nec.co.jp> for the above
+    four fixes.
+  * Next major round of xfs_repair performance improvements:
+    - Cache disk nlink values in Phase 3 for Phase 7.
+    - Do multithreaded prefetch/processing based on AG stride
+      option (ie. for concats).
+    - Don't trash lost+found at the start of Phase 4, eliminates
+      repeated "moving disconnected inode to lost+found" with
+      successive xfs_repair runs.
+    - Do multi-threaded sequential metadata prefetch.
+      Method based on Agami patches posted for 2.7.18 xfsprogs.
+    - Improve the libxfs cache with priority tagging to keep
+      blocks around that have unfavourable I/O characteristics.
+  * Make mkfs.xfs -f zero the old secondary superblocks before
+    writing the new superblocks.
+  * Fix up xfs_info and xfs_quota's -c handling with global
+    commands.
+  * Improve xfs_bmap -vp output to always show the FLAGS column.
+  * Update man pages.
+  * Added filestreams support to xfs_io.
+  * Fix up libattr Makefile to append to LTLDFLAGS. Thanks to
+    Arfrever Frehtes Taifersar Arahesis <Arfrever.FTA@GMail.Com>
+    for this.
+  * Fix up build not to ignore LDFLAGS generated by configure.
+    Thanks to SpanKY <vapier@gentoo.org> for this.
+  * Added new tools: xfs_metadump and xfs_mdrestore.
+  * Fix up the HAVE___U32 fix from 2.8.20
+    Thanks to Eric Sandeen for pointing this out.
+
+-------------------------------------------------------------------
+Fri Jun 22 16:36:46 CEST 2007 - mmarek@suse.cz
+
+- updated to 2.8.21
+  * Add support for lazy superblock counters in mkfs.xfs, xfs_db,
+    xfs_repair, xfs_growfs and also libxfs.
+  * Fix xfs_quota project command to stop it operating on special files.
+    Thanks to Leo Baltus.
+- specfile cleanup
+
+-------------------------------------------------------------------
+Wed Apr  4 14:44:40 CEST 2007 - mmarek@suse.cz
+
+- updated to version 2.8.20
+  * Fix xfs_repair not detecting invalid btree root in inodes.
+  * Fix xfs_repair restoring corrupted superblock after repairing
+    it.
+  * Fix xfs_repair crashing on invalid quota inode values.
+  * Fix xfs_quota gracetime reporting.
+    Thanks to Utako Kusaka <utako@tnes.nec.co.jp> for this.
+  * Fix libxfs IO_DEBUG output.
+  * Instead of using AC_CHECK_TYPES which isn't supported for
+    older versions of autoconf, add our own type check in the
+    m4/package_types.m4 file for __u32.  Suggested by Nathan Scott
+    and discovered by wookey@aleph1.co.uk.
+  * Fix pthread stack size setting in xfs_repair.
+  * Fix xfs_bmap -n option displaying a truncated extent.
+  * Fix xfs_io mwrite segfault. Thanks to Utako Kusaka for these
+    two fixes.
+  * Fix errors in xfs_quota(8) man page.
+  * <xfs/list.h> is an installed file, we cannot simply rename it,
+    as other applications using it (accidentally or not) may break.
+    The xfs_list.h name was inconsistent with everything else too.
+  * Fix "pointer targets in assignment differ in signedness"
+    warnings
+  * Update Debian packaging.
+  * Fix up two issues with xfs_db and bmap. If the data/attr fork
+    is local, it either infinite loops or crashes. If both are
+    displayed, the attrs are wrong.
+  * Fix up xfs_io mmap read that read from the wrong offset.
+  * Updated xfs_io man page.
+    Thanks to Utako Kusaka <utako@tnes.nec.co.jp> for the above
+    three fixes.
+  * Fix up libxfs SEGV when attempting to mount a non-XFS
+    filesystem.  Thanks to Utako Kusaka <utako@tnes.nec.co.jp> for
+    this.
+  * Fix up xfs_repair aborting if it finds an inode with an invalid
+    inode type.
+  * Fix up default realtime extent size for large block sizes.
+  * Rename include/list.h to xfs_list.h so that other applications
+    do not accidentally use it.
+  * Fix up an endian problem for nlink setting in phase 7 for
+    xfs_repair.
+  * Fix up nlink checks and repairs in phase 7 for xfs_repair.
+  * Remove a bogus LEAFN warning for a single leaf node v2 dir.
+  * Fix up the ring command in xfs_db,
+    thanks to Utako Kusaka
+  * Set the blocksize on the device to the given sector
+    size which is _not_ necessarily 512 bytes;
+    idea suggested by Shailendra Tripathi.
+  * Fix up xfs_copy and its variable argument handling
+    around vfprintf; xfs_copy was seg faulting on x86_64.
+  * Fix v2 directory checking with holes and unreadable blocks.
+  * Fix a memory leak in dir2 checking.
+  * Update libdisk/md support to work out the stripe width
+    based on (# raid-disks - # parity disks) which
+    doesn't include any spare disks (which we mistakenly did before).
+    Thanks to Shailendra Tripathi's suggestions.
+  * Get the kernel int types of __u32 and friends from <asm/types.h>
+    if we can, otherwise define them ourselves.
+  * Multi-thread modifications to xfs_repair.
+  * Updated Polish translation, thanks to Jakub Bogusz.
+  * Change default mkfs realtime extent size setting to
+    perform better for buffered writes.
+- added Supplements: filesystem(xfs), so that xfsprogs is installed
+  when an xfs filesystem is used (fate #301966)
+
+
+-------------------------------------------------------------------
+Wed Oct 25 11:33:10 CEST 2006 - mjancar@suse.cz
+
+- fix xfq_quota man page (#214590)
+
+-------------------------------------------------------------------
+Fri Oct 20 19:04:59 CEST 2006 - mjancar@suse.cz
+
+- update to 2.8.11
+  * xfs_repair prefetch optimisations.
+  * Make many tools use direct I/O on Linux if the underlying
+    device supports it.  Mainly for speeding up xfs_repair as
+    libxfs does its own internal metadata buffering now.
+  * Fix warnings from mkfs.xfs on ramdisk devices.
+  * Fix issues with symbolic link handling in Makefiles.
+  * Fix v2 directory rebuilds in phase6 of xfs_repair.
+  * Fix buffer sizing issue for large pagesize systems,
+    affecting mkfs auto-device-type-detection heuristics.
+  * Fix rpm issue with install targets as uid/gid zero (we now
+    using symbolic names rather than the numeric versions).
+  * Fix issues with makedepend on libtool libraries.
+  * Fix build of xfs_logprint for different uuid_t definitions;
+    thanks to Craig Rodrigues.
+  * Fixed xfs_repair handling of duplicate names in a directory.
+  * Update translation Makefile to work better with the Ubuntu
+    translation system.  Thanks to feedback from Martin Pitt.
+  * Fix annoying "ignores datarootdir" warning from configure.
+  * Fix issues with makedepend build infrastructure.
+  * Add prefetch code for improved xfs_repair run times.
+
+-------------------------------------------------------------------
+Fri Jul 28 15:37:41 CEST 2006 - ro@suse.de
+
+- fix file list (remove pl locale directory) 
+
+-------------------------------------------------------------------
+Thu Jul 27 16:09:27 CEST 2006 - mjancar@suse.cz
+
+- update to 2.8.4
+  * Fix a situation where xfs_growfs can fail to match a block
+    device to a filesystem correctly; thanks to Bastian Kleineidam.
+  * Minor corrections to the xfs_growfs man page.
+  * Fix a possible segv in xfs_growfs; thanks to Bastian Kleineidam.
+  * More updates to repair/libxfs for improving performance
+  * Incorporate librt into the build process for lio_listio
+  * Minor xfs_logprint tweaks and fixes.
+  * Small updates to xfs_io manual page.
+  * Several fixes from earler 2.8 releases with respect to
+    inode/buffer cache refcounting.
+  * Initial pass at user space caching, ultimately provides
+    a starting point for a faster, parallel version of repair.
+  * Fix several inode/buffer reference counting issues.
+  * Fix compiler warnings, and builds on certain glibc versions
+    having issues with the device major() macro.
+  * Added code to xfs_db and xfs_admin to allow conversion
+    from version 1 to version 2 logs.
+  * Fixed a case where xfs_repair was reporting a valid used
+    block as a duplicate during phase 4.
+  * Fixed a case where xfs_repair could incorrectly flag extent
+    b+tree nodes as corrupt.
+  * Parent pointer updates in xfs_io checker command.
+  * Fix libxfs access(2) check on /proc/mounts, which was
+    causing issues when xfs_check/xfs_repair run on readonly
+    root filesystem mounts.
+  * Fix freespace accounting in xfs_quota(8) df command.
+  * Fix a typo on the xfs_quota(8) man page.
+  * Fix the way external log/realtime devices were handled in
+    userspace with older kernels (subtely different in procfs)
+  * Fix a corruption problem in xfs_copy(8) when attempting to
+    zero the (old) log, a section was sometimes missed (depends
+    on log and I/O buffer (mis)alignment).
+  * Convert fsck into a shell script and make it provide a
+    hint to run repair/check (in non-auto fsck modes).
+    Thanks to Marian Jancar <mjancar@suse.cz> for this.
+  * Added initial Polish translation.
+    Thanks to Jakub Bogusz <qboosh@pld-linux.org> for this.
+- drop obsolete patches
+  * xfs-cmds-25183a-fix-xfs-headers-for-dmf
+  * xfs-cmds-25194a-fix-parents-interface
+  * xfs-copy-bug.diff
+
+-------------------------------------------------------------------
+Wed Jun 14 23:43:27 CEST 2006 - dmueller@suse.de
+
+- build parallel 
+
+-------------------------------------------------------------------
+Tue Apr 18 11:46:13 CEST 2006 - ro@suse.de
+
+- fix build on ppc64: don't redefine __s64 and __u64 
+
+-------------------------------------------------------------------
+Tue Mar  7 15:42:59 CET 2006 - agruen@suse.de
+
+- xfs-copy-bug.diff: Fix a bug in the xfs_copy log re-write code
+  avoiding duplicate UUIDs.  Also fix the logic for sizing the
+  direct write buffer, which fails for large maxdio sizes
+  (155749).
+
+-------------------------------------------------------------------
+Fri Feb 17 14:18:38 CET 2006 - mjancar@suse.cz
+
+- include bugfixes from SGI (#151782)
+
+-------------------------------------------------------------------
+Thu Feb  9 18:37:30 CET 2006 - mjancar@suse.cz
+
+- make fsck.xfs verbose (#146670)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:08 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 19 17:22:31 CET 2006 - mjancar@suse.cz
+
+- fix some files not owned by root:root
+
+-------------------------------------------------------------------
+Tue Jan 17 18:32:10 CET 2006 - mjancar@suse.cz
+
+- the tarball labeled 2.7.11 was wrong version,
+  use a corrected one received from SGI
+
+-------------------------------------------------------------------
+Mon Jan 16 17:07:46 CET 2006 - mjancar@suse.cz
+
+- update to 2.7.11
+
+-------------------------------------------------------------------
+Wed Jan 11 17:38:39 CET 2006 - mjancar@suse.cz
+
+- update to 2.7.3
+
+-------------------------------------------------------------------
+Wed Sep  7 17:57:18 CEST 2005 - lmichnovic@suse.cz
+
+- changed atributes of file /lib/libhandle.so.1.0.3 to 0755 (#114848)
+
+-------------------------------------------------------------------
+Sun Aug 21 19:23:20 CEST 2005 - ro@suse.de
+
+- no .a/.la files in / 
+
+-------------------------------------------------------------------
+Tue Aug  2 20:24:22 CEST 2005 - mjancar@suse.cz
+
+- Update to 2.6.36 with the following changes since .28:
+  o Fix mkfs stripe unit alignment checks for external logs
+  o Fix running xfs_db on non-XFS devices (was segfaulting)
+  o Fix a 32 bit wrap in xfs_repair searching for secondary
+    superblocks.
+  o Add back fd_to_handle() to libhandle.
+  o Add handle call mappings to xfsctl() for IRIX.
+  o Switch to the fsxattr xfsctl for getting/setting project
+    identifiers on inodes, remove the shortolived specialised
+    ioctls for doing this.
+  o Make the "blocktrash" xfs_db command available in expert-
+    mode only.
+  o Another libhandle fix on 64bit, Big Endian systems.
+  o Minor endian cleanups in some tools.
+  o Fix a couple of xfs_quota double-reporting issues when
+    issuing commands via the oc (command line) 0option.
+  o Fix previous MD driver-specific change to correctly handle
+    (i.e. not "stripe align") linear arrays.
+  o Add MD RAID level 4, 6, and 10 support.
+  o Make mkfs.xfs automatically adjiust the geometry to use
+    a sector size that matches the block size when MD RAID
+    level 4/5/6 are in use.
+  o Couple of minor man page fixups, including patch botch on
+    initial revision of xfs_quota(8).
+  o Add xfs_quota(8) command which knows how to do all things
+    quota related, and can also do the XFS specific extensions
+    like project quota, realtime device quota, etc.
+  o Created a library of common code (libxcmd.a) shared by
+    xfs_growfs, xfs_io and xfs_quota.
+  o Fix use of regular files for realtime subvolumes (debugging
+    only, really).
+  o Fix bug in xfs_io command line option handling when commands
+    where specified for multiple files at once.
+  o Allow xfs_io to specify O_NONBLOCK for regular file IO.
+  o Fix MD driver-specific code to not attempt stripe alignment
+    for volumes that are not stripes (e.g. concat/mirror).
+  o Fix mkfs.xfs -dfile.
+  o Fix libhandle on 64bit, Big Endian systems.
+
+-------------------------------------------------------------------
+Tue Apr  5 21:48:30 CEST 2005 - mmj@suse.de
+
+- Add gettext-devel to #nfb since it needs msgfmt
+- Update to 2.6.28 with the following changes since .25:
+  o Fix compiler warning in repair/dir.c size checks.
+  o Fix more compilation problem with version 4 of gcc
+  o Make xfs_db and xfs_repair cope with filesystems that
+    have project quota enabled.
+  o Fix default mkfs allocation group size calculations
+    for filesystem sizes in the range 32 - 64 terabytes.
+  o Add noalign mkfs suboptions for -d/-r to disable the
+    sunit/swidth auto-alignment (based on logical volume
+    geometry, extracted from the driver).
+  o Fix compilation problem with version 4 of gcc
+  o Added a streamlined <xfs/xfs.h> for programs wanting
+    to make use of the XFS-specific kernel interfaces (to
+    address complaints that <xfs/libxfs.h> was "heavy").
+  o Add imap as an expert command in xfs_io, making it
+    more easily accessible to those who need it.
+  o Extended statistics reporting for xfs_io command.
+  o Fixed readline support for current distributions.
+  o Add an --enable-termcap=[yes/no] configure option,
+    and changed --enable-readline=[yes/no] to not force
+    linking with libtermcap.  Builds on some platforms
+    may need to use both options, but most distributions
+    do not require --enable-termcap when linking against
+    libreadline.
+  o Minor man page updates.
+
+-------------------------------------------------------------------
+Mon Feb  7 20:40:14 CET 2005 - mjancar@suse.cz
+
+- update to 2.6.25
+
+-------------------------------------------------------------------
+Fri Aug 06 18:46:46 CEST 2004 - mjancar@suse.cz
+
+- update to 2.6.13
+
+-------------------------------------------------------------------
+Thu Feb 26 14:44:12 CET 2004 - mjancar@suse.cz
+
+- update to 2.6.3
+
+-------------------------------------------------------------------
+Sat Jan 10 16:07:41 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Oct  3 17:01:26 CEST 2003 - schwab@suse.de
+
+- Fix broken ioctl definitions.
+
+-------------------------------------------------------------------
+Thu Aug 21 15:17:58 CEST 2003 - ja@suse.cz
+
+- Update to version 2.5.6.
+- Fix a mkfs problem where it could exit inappropriately when
+  a large data volume stripe unit was either specified on the
+  command line or via querying the underlying volume manager.
+
+-------------------------------------------------------------------
+Fri Aug 08 13:00:59 CEST 2003 - ja@suse.cz
+
+- Updated to 2.5.5 (XFS 1.3 release).
+- Introducing xfs_copy.
+- Fix shell quoting problem in xfs_bmap script.
+- Fix xvm stripe detection in libdisk - pass correctly
+  sized structures to xvm ioctls.
+- Fix missing initialisation of stripe unit/width alignment
+  information during libxfs_mount.
+- Fix botched repair typecast for multi-terabyte filesystems.
+- Fix libdisk device driver (volume managers) detection code
+  used by mkfs, so that drivers with multiple majors are not
+  incorrectly processed.
+
+-------------------------------------------------------------------
+Fri Jun 20 14:00:25 CEST 2003 - ja@suse.cz
+
+- Upgrade to version 2.5.0.
+- Allow xfs_repair to run on read-only filesystems.
+- Fix a bug in mkfs - creating version 2 logs, an incorrect
+  stripe unit value was being passed to libxfs_clear_log.
+- Fix error in xfs_io pwrite code with large request sizes.
+- Fix rounding-down-input problems in several xfs_io commands.
+- Changed mkfs.xfs default log size scaling algorithm slightly,
+  to create larger logs at smaller filesystem sizes by default
+  (thanks to Andi Kleen for the patch).
+- Enable support for sector sizes larger than 512 bytes.
+
+-------------------------------------------------------------------
+Mon Jun 16 18:45:21 CEST 2003 - ja@suse.cz
+
+- File list fixed for xfsprogs-devel.
+
+-------------------------------------------------------------------
+Mon Apr 28 18:16:41 CEST 2003 - jderfina@suse.cz
+
+- upgrade to version 2.4.7
+- Fix a bug in detection of "clean" and "error" states with MD devices.
+- Added the xfs_io(8) command, an xfs_db(8) alike command for testing
+  and debugging the XFS file IO path.
+- Corrected size check for realtime summary inode (not the same as
+  the realtime bitmap inode) in xfs_repair.
+- Enable unwritten extents by default in mkfs.xfs. Should be used with
+  kernel code newer than Mar  3 2003.
+
+-------------------------------------------------------------------
+Wed Feb 12 12:38:31 CET 2003 - jderfina@suse.cz
+
+- update to version 2.3.9
+- Additional xfs_repair check in v2 directory handling for blks
+  with no data entries (merged from IRIX), includes several
+  handy comments sprinkled throughout this v2 dir code.
+- Fix an endian bug in the same area of code (v2 dirs, phase 6,
+  longform_dir2_rebuild_setup)
+- xfs_repair has additional checks for bad sector values now.
+- Fixed obscure issue in mkfs where only the first AG would
+  get its AGFL freelist "fixed" - not clear this caused any
+  issues in practice.
+- Fixed an issue in xfs_repair where data past the end of the
+  valid superblock fields was sometimes not cleared, when it
+  really should have been (due to a libxfs problem).
+- Fix an endian bug in xfs_db freesp command when descending
+  into multi-level agf cnt/bno btrees.
+
+-------------------------------------------------------------------
+Tue Jan 21 14:01:21 CET 2003 - agruen@suse.de
+
+- Remove (Prereq: /sbin/ldconfig) tag, and use %run_ldconfig
+  in %post and %postun instead.
+
+-------------------------------------------------------------------
+Fri Dec 13 12:36:01 CET 2002 - jderfina@suse.cz
+
+- upgrade to version 2.3.6.
+
+-------------------------------------------------------------------
+Wed Oct 09 14:44:41 CEST 2002 - jderfina@suse.cz
+
+- update to version 2.3.3
+
+-------------------------------------------------------------------
+Tue Aug 20 13:00:37 CEST 2002 - mge@suse.de
+
+- update to 2.2.1 (mostly by gd@suse.de)
+
+-------------------------------------------------------------------
+Thu May  9 19:47:59 CEST 2002 - tcrhak@suse.cz
+
+- fixed for 64 bit platforms
+
+-------------------------------------------------------------------
+Fri Apr 19 11:19:10 CEST 2002 - kukuk@suse.de
+
+- Look at first in lib64 for libuuid.a before using lib
+
+-------------------------------------------------------------------
+Tue Feb 26 00:12:46 CET 2002 - ro@suse.de
+
+- update to 2.0.0
+- split off attr and acl subpacks 
+
+-------------------------------------------------------------------
+Tue Aug 21 12:27:09 CEST 2001 - adostal@suse.cz
+
+- split xfsprogs to package xfsprogs-1.2.8, package xfsdump-1.0.9 
+  and package dmapi-0.1.1
+- create patches destdir and dirs for xfsprogs version 1.2.8
+
+-------------------------------------------------------------------
+Wed Aug 15 14:41:52 CEST 2001 - adostal@suse.cz
+
+- update acl to 1.0.7 ver.
+- update xfsprogs to 1.2.8 ver. 
+- update dmapi to 0.1.1 ver.
+- using $RPM_BUILD_ROOT
+- create makefile and dirs patches
+- split sources to acl, attr, dmapi, xfsdump, xfsprogs
+
+-------------------------------------------------------------------
+Mon Jul 23 12:49:07 CEST 2001 - schwab@suse.de
+
+- Build with -fPIC, for inclusion in shared library.
+- Use aclocal.
+
+-------------------------------------------------------------------
+Wed Jun 20 02:54:09 CEST 2001 - ro@suse.de
+
+- make it build (libtoolize, fix filelist) 
+
+-------------------------------------------------------------------
+Fri Jun 15 10:36:23 CEST 2001 - choeger@suse.de
+
+- did a cvs up today
+
+-------------------------------------------------------------------
+Mon May 21 14:30:40 CEST 2001 - choeger@suse.de
+
+- first version
+

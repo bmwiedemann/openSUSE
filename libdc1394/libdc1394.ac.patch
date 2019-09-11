@@ -1,0 +1,37 @@
+Index: libdc1394-2.2.3/configure.ac
+===================================================================
+--- libdc1394-2.2.3.orig/configure.ac
++++ libdc1394-2.2.3/configure.ac
+@@ -8,12 +8,6 @@ m4_include([ax_check_framework.m4])
+  
+ AC_CANONICAL_SYSTEM
+ 
+-case "$host" in
+-*-*-cygwin* | *-*-mingw*)
+-AC_LIBTOOL_WIN32_DLL
+-;;
+-esac
+-
+ #
+ DX_HTML_FEATURE(OFF)
+ DX_CHM_FEATURE(OFF)
+@@ -26,11 +20,11 @@ DX_PS_FEATURE(OFF)
+ #
+ DX_INIT_DOXYGEN([libdc1394], [Doxyfile.in])
+ #
+-AM_PROG_AR
+ AM_INIT_AUTOMAKE([--warnings=all 1.9.6])
+ AC_CONFIG_HEADERS([config.h])
+ 
+ AC_PROG_CC
++AC_LIBTOOL_WIN32_DLL
+ AC_PROG_LIBTOOL
+ AM_PROG_CC_C_O
+ 
+@@ -242,4 +236,4 @@ if test "x$EXAMPLESMSG" = xYes; then
+       Build V4L examples:               ${VIDEXAMPLESMSG}"
+ fi
+ dnl extra newline:
+-echo ""
+\ No newline at end of file
++echo ""

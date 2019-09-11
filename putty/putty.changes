@@ -1,0 +1,244 @@
+-------------------------------------------------------------------
+Mon Aug 12 15:24:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.72 [boo#1144547, boo#1144548]
+  * Fixed two separate vulnerabilities affecting the obsolete
+    SSH-1 protocol, both available before host key checking.
+  * Fixed a vulnerability in all the SSH client tools (PuTTY,
+    Plink, PSFTP and PSCP) if a malicious program can impersonate
+    Pageant.
+  * Fixed a crash in GSSAPI / Kerberos key exchange triggered if
+    the server provided an ordinary SSH host key as part of the
+    exchange.
+- Drop 0001-Revert-settings.c-allow-load_open_settings-NULL.patch
+  (merged)
+
+-------------------------------------------------------------------
+Wed Apr 24 07:24:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Reenable Xresources / remove -DNOT_X_WINDOWS [boo#1133181],
+  the crash under Wayland appears gone.
+- Add 0001-Revert-settings.c-allow-load_open_settings-NULL.patch
+  [boo#1133181]
+
+-------------------------------------------------------------------
+Mon Mar 18 17:57:39 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Unbreak the Leap 42.3 build of putty.
+- Update package descriptions.
+
+-------------------------------------------------------------------
+Sun Mar 17 11:28:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.71 [boo#1129633]
+  * Fixed a remotely triggerable memory overwrite in RSA key
+    exchange, which can occur before host key verification
+    potential recycling of random numbers used in cryptography.
+  * Fixed a remotely triggerable buffer overflow in any kind of
+    server-to-client forwarding.
+  * Fixed multiple denial-of-service attacks that can be triggered
+    by writing to the terminal.
+  * Major rewrite of the crypto code to remove cache and timing
+    side channels.
+
+-------------------------------------------------------------------
+Thu Jun  7 03:56:51 UTC 2018 - jnwang@suse.com
+
+- Turn on -DNOT_X_WINDOWS, for Wayland system.
+  Fixes a crash occurring in libX11 when running under
+  Wayland [boo#1098962].
+
+-------------------------------------------------------------------
+Sat Mar  3 16:13:59 UTC 2018 - jengelh@inai.de
+
+- Turn off -Werror.
+
+-------------------------------------------------------------------
+Thu Dec 14 18:31:53 UTC 2017 - jengelh@inai.de
+
+- Update python BuildRequire to python-base
+
+-------------------------------------------------------------------
+Thu Dec 14 11:21:17 UTC 2017 - jengelh@inai.de
+
+- Add missing python BuildRequire (for mkicon.py)
+
+-------------------------------------------------------------------
+Tue Jul 11 22:22:08 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.70
+  * Update Unicode data to version 9
+- Remove gtk-buildfix.diff (merged upstream)
+
+-------------------------------------------------------------------
+Tue May  2 13:07:52 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to use convert -strip to not have timestamps
+  in png files to make build fully reproducible
+
+-------------------------------------------------------------------
+Tue May  2 12:11:41 UTC 2017 - idonmez@suse.com
+
+- Update to new upstream release 0.69
+  * You can now explicitly configure SSH terminal mode settings
+    not to be sent to the server, if your server objects to them.
+- Switch to gtk+3 interface, add gtk-buildfix.diff.
+
+-------------------------------------------------------------------
+Wed Mar 15 08:26:13 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.68
+  * resolve integer overflow in the ssh_agent_channel_data
+    [CVE-2017-6542, boo#1029256]
+- Drop reproducible.patch, no longer applies
+
+-------------------------------------------------------------------
+Tue Mar  8 18:35:39 UTC 2016 - bwiedemann@suse.com
+
+- Add reproducible.patch to fix build-compare
+
+-------------------------------------------------------------------
+Tue Mar  8 16:43:24 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 0.67
+* resolved a security issue with the PSCP protocol implementation
+
+-------------------------------------------------------------------
+Mon Nov  9 08:47:47 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 0.66
+* Resolve integer overflow, buffer underrun in terminal emulator's
+  ECH handling. [CVE-2015-5309, bnc#954191]
+* Resolve format string vulnerabilities
+
+-------------------------------------------------------------------
+Mon Jul 27 12:16:00 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 0.65
+* Cryptography speedup on 64-bit Unix platforms by using gcc and
+  clang's __uint128_t built-in type. 
+* Bug fix: PSFTP now returns a failure exit status if a command
+  fails in a batch-mode script.
+* Bug fix: ESC [ 13 t can no longer elicit an invalid escape
+  sequence as a response. 
+
+-------------------------------------------------------------------
+Wed May 13 13:21:36 UTC 2015 - aj@ajaissle.de
+
+- Build icons and add a .desktop file for putty
+
+-------------------------------------------------------------------
+Mon Mar  2 10:19:15 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 0.64
+* Security fix: PuTTY no longer retains the private half of users'
+  keys in memory by mistake after authenticating with them.
+  [bnc#920167] (CVE-2015-2157)
+* Support for SSH connection sharing, so that multiple instances of
+  PuTTY to the same host can share a single SSH connection instead
+  of all having to log in independently.
+* Bug fix: IPv6 literals are handled sensibly throughout the suite,
+  if you enclose them in square brackets to prevent the colons
+  being mistaken for a :port suffix.
+- Remove 0001-Revert-the-default-for-font-bolding-style.patch
+  (merged upstream), putty-04-nodate.diff (no longer needed).
+
+-------------------------------------------------------------------
+Tue Sep 23 15:43:40 UTC 2014 - jengelh@inai.de
+
+- Drop gpg-offline build-time requirement; this is now handled by
+  the local source validator
+
+-------------------------------------------------------------------
+Wed Aug  7 09:28:25 UTC 2013 - jengelh@inai.de
+
+- Add 0001-Revert-the-default-for-font-bolding-style.patch
+  (upstream patch fixing a cosmetic change introduced in 0.63)
+- Add Conflict tag against pssh package (Parallel SSH) due to
+  conflicting files in /usr/bin
+
+-------------------------------------------------------------------
+Tue Aug  6 19:47:43 UTC 2013 - jengelh@inai.de
+
+- Do signature verification
+
+-------------------------------------------------------------------
+Tue Aug  6 19:09:06 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 0.63
+  * Security fix: prevent a nefarious SSH server or network attacker
+    from crashing PuTTY at startup in three different ways by 
+    presenting a maliciously constructed public key and signature.
+    [bnc#833567] CVE-2013-4852
+  * Security fix: PuTTY no longer retains the private half of users' 
+    keys in memory by mistake after authenticating with them.
+  * Revamped the internal configuration storage system to remove all 
+    fixed arbitrary limits on string lengths. In particular, there 
+    should now no longer be an unreasonably small limit on the number 
+    of port forwardings PuTTY can store.
+  * Forwarded TCP connections which close one direction before the
+    other should now be reliably supported, with EOF propagated 
+    independently in the two directions. This also fixes some instances 
+    of forwarding data corruption (if the corruption consisted of
+    losing data from the very end of the connection) and some instances
+    of PuTTY failing to close when the session is over (because it 
+    wrongly thought a forwarding channel was still active when it was 
+    not).
+  * The terminal emulation now supports xterm's bracketed paste mode 
+    (allowing aware applications to tell the difference between typed
+    and pasted text, so that e.g. editors need not apply inappropriate
+    auto-indent).
+  * You can now choose to display bold text by both brightening the 
+    foreground colour and changing the font, not just one or the other.
+  * PuTTYgen will now never generate a 2047-bit key when asked for 2048 
+    (or more generally n−1 bits when asked for n).
+  * Some updates to default settings: PuTTYgen now generates 2048-bit 
+    keys by default (rather than 1024), and PuTTY defaults to UTF-8 
+    encoding and 2000 lines of scrollback (rather than ISO 8859-1 and
+    200).
+  * Unix: PSCP and PSFTP now preserve the Unix file permissions, on 
+    copies in both directions.
+  * Unix: dead keys and compose-character sequences are now supported.
+  * Unix: PuTTY and pterm now permit font fallback (where glyphs not 
+    present in your selected font are automatically filled in from other 
+    fonts on the system) even if you are using a server-side X11 font 
+    rather than a Pango client-side one.
+  * Bug fixes too numerous to list, mostly resulting from running the 
+    code through Coverity Scan which spotted an assortment of memory
+    and resource leaks, logic errors, and crashes in various circumstances. 
+- packaging changes:
+  * run make from base directory
+  * run tests
+  * remove putty-01-werror.diff (currently not needed)
+  * remove putty-02-remove-gtk1.diff, putty-05-glib-deprecated.diff,
+    putty-06-gtk2-indivhdr.diff (no longer needed)
+  * refresh putty-03-config.diff
+  * remove autoconf calls and requirements
+  * package HTML documentation
+  * package LICENCE file
+
+-------------------------------------------------------------------
+Sun Dec 11 14:04:30 UTC 2011 - andreas.stieger@gmx.de
+
+- update to upstream 0.62:
+* Security fix: PuTTY no longer retains passwords in memory by
+  mistake.
+* Bug fix: Pageant now talks to both new-style clients (0.61 and
+  above) and old-style (0.60 and below).
+* Bug fix: PuTTY no longer prints a spurious "Access denied"
+  message when GSSAPI authentication fails.
+* Bug fix: PSCP and PSFTP now honour nonstandard port numbers in
+  SSH saved sessions.
+* Bug fix: Pageant no longer leaks a file handle when an
+  authentication fails.
+* Bug fix: PuTTYtel no longer crashes when saving a session.
+* Bug fix: PuTTY now draws underlines under the underlined text
+  instead of sometimes putting them somewhere off to the right.
+* Bug fix: PuTTY now should not draw VT100 line drawing characters
+  at the wrong vertical offset.  
+- fix SLE build
+
+-------------------------------------------------------------------
+Tue Jul 26 23:25:28 UTC 2011 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

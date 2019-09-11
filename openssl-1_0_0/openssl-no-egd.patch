@@ -1,0 +1,13 @@
+Index: openssl-1.0.2a/crypto/rand/rand_egd.c
+===================================================================
+--- openssl-1.0.2a.orig/crypto/rand/rand_egd.c	2015-03-19 14:19:00.000000000 +0100
++++ openssl-1.0.2a/crypto/rand/rand_egd.c	2015-05-24 13:42:06.277601355 +0200
+@@ -95,7 +95,7 @@
+  *   RAND_egd() is a wrapper for RAND_egd_bytes() with numbytes=255.
+  */
+ 
+-#if defined(OPENSSL_SYS_WIN32) || defined(OPENSSL_SYS_VMS) || defined(OPENSSL_SYS_MSDOS) || defined(OPENSSL_SYS_VXWORKS) || defined(OPENSSL_SYS_NETWARE) || defined(OPENSSL_SYS_VOS) || defined(OPENSSL_SYS_BEOS)
++#if defined(__linux__) || defined(OPENSSL_SYS_WIN32) || defined(OPENSSL_SYS_VMS) || defined(OPENSSL_SYS_MSDOS) || defined(OPENSSL_SYS_VXWORKS) || defined(OPENSSL_SYS_NETWARE) || defined(OPENSSL_SYS_VOS) || defined(OPENSSL_SYS_BEOS)
+ int RAND_query_egd_bytes(const char *path, unsigned char *buf, int bytes)
+ {
+     return (-1);

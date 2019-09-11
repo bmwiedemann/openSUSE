@@ -1,0 +1,36 @@
+# PATCH-FIX-UPSTREAM
+
+    use cmake TIMESTAMP
+    
+    instead of the 'date' command.
+    This is not only more portable, but also allows to override the build date
+    to enable reproducible builds.
+    
+    See https://reproducible-builds.org/ for why this is good
+
+
+commit c53529ffaa4c42130c2b6799441cf8d164f85343
+Author: Christophe Geuzaine <cgeuzaine@ulg.ac.be>
+Date:   Tue Jul 25 11:09:19 2017 +0200
+
+    fix #40
+
+Index: getdp-2.11.2-source/CMakeLists.txt
+===================================================================
+--- getdp-2.11.2-source.orig/CMakeLists.txt
++++ getdp-2.11.2-source/CMakeLists.txt
+@@ -76,8 +76,12 @@ set(GETDP_API
+   Kernel/GetDP.h
+ )
+ 
+-execute_process(COMMAND date "+%Y%m%d" OUTPUT_VARIABLE DATE
+-                OUTPUT_STRIP_TRAILING_WHITESPACE)
++if(${CMAKE_MAJOR_VERSION} GREATER 2)
++  string(TIMESTAMP DATE "%Y%m%d")
++else(${CMAKE_MAJOR_VERSION} GREATER 2)
++  execute_process(COMMAND date "+%Y%m%d" OUTPUT_VARIABLE DATE
++                  OUTPUT_STRIP_TRAILING_WHITESPACE)
++endif(${CMAKE_MAJOR_VERSION} GREATER 2)
+ execute_process(COMMAND hostname OUTPUT_VARIABLE HOSTNAME
+                 OUTPUT_STRIP_TRAILING_WHITESPACE)
+ execute_process(COMMAND whoami OUTPUT_VARIABLE PACKAGER

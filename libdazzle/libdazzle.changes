@@ -1,0 +1,484 @@
+-------------------------------------------------------------------
+Thu Jul 25 00:50:54 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.3:
+  + Workaround changes in GTK action muxing.
+
+-------------------------------------------------------------------
+Tue May  7 13:20:25 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.2:
+  + Improved fuzzy highlighting pango markup when <> are
+    discovered.
+  + Fix improper GValue usage in DzlTab.
+  + Documentation improvements.
+
+-------------------------------------------------------------------
+Thu Apr 11 09:29:19 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Fix subproject builds.
+  + Fix macOS symbol versioning.
+  + Fix missing error propagation for reaper task.
+  + Fix adwaita menu padding.
+
+-------------------------------------------------------------------
+Wed Mar 13 08:36:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + No changes since 3.31.92.
+
+-------------------------------------------------------------------
+Tue Mar  5 22:25:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Cross-compilation fixes.
+  + Subproject build fixes.
+  + Allow disabling search entry in preferences.
+
+-------------------------------------------------------------------
+Thu Feb 14 21:56:05 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + A number of improvements to DzlSuggestionEntry to act more like
+    GtkEntryCompletion. It now uses pointer grabs while the popover
+    is displayed.
+  + Styling for the suggestion entry was tweaked to allow themes
+    more control over styling.
+  + DzlProgressMenuButton got a fix for improper gvalue accessor
+    usage.
+
+-------------------------------------------------------------------
+Thu Jan 10 16:18:53 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  + Improvements to documentation.
+  + Improvements to suggestion entry resiliency.
+  + GIR fixes for DzlGraphModel.
+  + Fixes for ctrl+shift+d.
+  + Use GtkPopover for GMenuModel.
+  + Animation improvements.
+  + Various memory leaks were plugged.
+  + Additional Radio API was added.
+  + A new remove-file signal was added to the directory reaper.
+    This is not efficient as it passes state to the main thread
+    from a worker thread. It may be optimized in the future.
+  + Various performance improvements.
+  + File transfer progress callback improvements.
+
+-------------------------------------------------------------------
+Thu Jan  3 22:06:15 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.1:
+  + DzlPrefernces gained API to do simplified table layouts.
+  + DzlMenuButton hides separators that are not needed.
+  + Build requires gtk+-3.0 3.24.0.
+  + Handle changes to fullscreen state by the window-manager.
+  + Fixes for mouse tracking on fullscreen windows.
+  + Align menu shortcuts to the right.
+  + Fixes for shift-tab to move between widgets.
+  + Add helper for shortcut tooltips.
+  + Correctness fixes for listmodel filter.
+
+-------------------------------------------------------------------
+Fri Nov  2 18:21:47 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.2:
+  + Fix build dependency to properly check for gtk+ >= 3.24.
+  + App-window now uses GtkEventControllerMotion to provide
+    improved tracking of the app window fullscreen toolbar.
+  + Shortcut placement was tweaked in menu popover.
+  + Fixes for shift+tab and ctrl+shift+d keyboard shortcuts.
+  + Various build fixes for -Bsymbolic and assertions.
+
+-------------------------------------------------------------------
+Wed Sep 26 11:56:22 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Correctness fixes to DzlListModelFilter.
+  + DzlMenuButton now properly hides empty menu sections.
+
+-------------------------------------------------------------------
+Wed Sep 12 20:26:13 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Fix for shift-modifier in keybindings, fixes some issues on
+    AZERTY keyboards.
+  + Added DzlListModelFilter for filtering GListModel using a
+    wrapper model. This has been used in Sysprof for a while now.
+  + DzlApplication will avoid setting the application app menu
+    unless it has been set by the application/plugins.
+
+-------------------------------------------------------------------
+Sun Sep  2 18:40:26 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.92:
+  + Fixes to the DzlGraphModel for va_list usage on various
+    architectures.
+  + State machine is a bit more defensive against improper input.
+  + Fullscreen transitions now change the headerbar to be
+    immediately visible after the transition.
+  + A new DzlReadOnlyListModel wrapper has been added which allows
+    developers to create an opaque wrapper around a GListModel.
+- Drop libdazzle-fix-meson-build.patch: fixed upstream.
+- Enable tests run to increase QA of package.
+
+-------------------------------------------------------------------
+Fri Aug 17 00:24:51 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.91:
+  + Many leaks have been fixed.
+  + Some memory safety improvements and safe-guards across the
+    library.
+  + Animations of zero-length have been improved. This fixes some
+    long-standing issues for systems where shell/gtk animations
+    were disabled.
+- Add libdazzle-fix-meson-build.patch: fix bindir expanding to
+  /usr/lib rather than /usr/bin.
+
+-------------------------------------------------------------------
+Fri Jul 27 03:29:04 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.4:
+  + Add various missing object _new() functions
+  + ApplicationWindow ref count fixes when doing fullscreen
+    transitions
+  + Preferences layout tweaks to allow for stackswitcher use.
+  + A new DzlDockItem::presented signal that can be used to track
+    when a dock item has been displayed by its relative container.
+  + Transient grab improvements with dock panels.
+  + A correctness fix in the action muxer.
+  + A leak was fixed in the bolding label's use of pango
+    attributes.
+  + DzlSuggestion gained new API for acquiring GIcon or
+    cairo_surface_t
+- Changes from version 3.29.3:
+  + Various fixes due to increased warnings in GCC.
+  + Preferences can now optionally use stackswitcher instead of
+    stacksidebar.
+  + Animation uses g_signal_connect_object() to simplify lifecycle
+    tracking.
+  + CPU graph model now re-uses FDs and parse buffers.
+  + Realtime graphs now try harder to detect when the widget is
+    obscured to reduce overhead in that situation.
+  + GCancellable chaining tries harder to release state struct.
+  + A number of improvements to be more defensive.
+
+-------------------------------------------------------------------
+Fri Jul 27 03:29:01 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.1:
+  + DzlListBox allows ellipsis control in GtkBuilder interfaces.
+  + DzlThemeManager avoids creating CSS providers when no resources
+    were found within the given path.
+  + Various fixes to the shortcut engine to closer match gtk.
+  + Various GObject Introspection fixes.
+
+-------------------------------------------------------------------
+Fri Jul 27 03:28:05 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.5:
+  + An issue was introduced in menu merging in 3.28.4 and this
+    release fixes that and many other issues discovered with ASAN.
+  + Fuzzy indexes now properly release metadata variant.
+  + Various fixes to g_variant_parse() usage and floating
+    references.
+  + Menu merging has been fixed in DzlMenuButton.
+  + A leak in DzlRing was fixed.
+  + Shortcut closure chains now properly concat GSList links.
+  + A leak in GDateTime usage was fixed.
+  + DzlTreeNode no longer leaks emblem names or GIcon instances.
+  + DockManager now releases it's final transient grab.
+  + DzlStateMachine now properly cleans up property stack items.
+  + Multi-paned and dock-bin now properly unregister GdkWindows.
+
+-------------------------------------------------------------------
+
+Thu Jul 26 20:53:06 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.4:
+  + Fixes for ref counting on titlebar widget.
+  + Fix a leak in DzlBoldingLabel of Pango attribute lists.
+  + Action muxer is now more defensive about string usage.
+  + Menu popover is now more defensive when destroying widgets.
+  + A potential, albeit unlikely, leak was plugged in signal
+    dispatching via the shortcut engine.
+  + The shortcut controller is now more defensive during widget
+    destruction.
+
+-------------------------------------------------------------------
+Tue Jun 19 16:47:10 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.3:
+  + Animation uses g_signal_connect_object() to simplify lifecycle
+    tracking.
+  + CPU graph model now re-uses FDs and parse buffers.
+  + Realtime graphs now try harder to detect when the widget is
+    obscured to reduce overhead in that situation.
+  + GCancellable chaining tries harder to release state struct.
+
+-------------------------------------------------------------------
+Thu May 24 20:02:49 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.2:
+  + theming: avoid creating unnecessary css providers.
+
+-------------------------------------------------------------------
+Wed Apr 11 02:46:37 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.28.1:
+  + Speciy pkg-config package in gir file.
+  + Add Dazzle.StackList.push() to vala wrapper.
+  + DzlFileChooserEntry will now notify when files change.
+  + Shortcuts now ignore caps-lock when activating shortcuts,
+    to be more like gtk+ itself does.
+  + Transfer ownership fix for registering signals in code.
+
+-------------------------------------------------------------------
+Wed Mar 14 04:27:55 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.28.0:
+  + DzlRecursiveFileMonitor will now translate symlink root
+    directories up-front to increase the chance that the GFile you
+    see will match GFile in other GIO based API.
+  + dzl_g_date_time_format_for_display() now uses the new %OB
+    format present in glib 3.56.
+- Update URL tag to https://gitlab.gnome.org/GNOME/libdazzle: the
+  closest thing to a web page.
+
+-------------------------------------------------------------------
+Mon Mar  5 13:06:34 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Improvements to animation frame timings to more closely match
+    upstream changes in Gtk.
+  + DZL_DEFINE_ACTION_GROUP macro will now set initial action
+    state.
+  + ElasticBin will avoid animating when duration is 0.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:34:12 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb 21 16:25:29 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.91:
+  + libdazzle now properly sets the default ABI visibility for
+    symbols so that symbols without DZL_AVAILABLE_IN_* macros are
+    not exported.
+  + DzlTab now supports tooltips using the tab's title.
+  + Various gtk-doc generation issues have been fixed.
+  + DzlGraphModel now provides an accessor to get the column count.
+  + Some fixes for pedantic compiler warnings.
+- Update license tag to SPDX-3.0:
+  GPL-3.0-or-later AND LGPL-2.1-or-later.
+
+-------------------------------------------------------------------
+Mon Feb  5 12:44:48 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.90:
+  + Further protections to ensure we don't follow symlinks in the
+    directory reaper.
+  + DzlSignalGroup now uses GWeakRef. Additionally, it allows
+    objects to invalidate closures instead of doing weak-ref
+    tracking. This should improve a number of situations.
+
+-------------------------------------------------------------------
+Sat Feb  3 03:27:05 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.5:
+  + A memory leak in the fuzzy index builder was fixed.
+  + DzlTab now properly sinks a variant floating ref.
+  + Various memory leak fixes in DzlTree and associated objects.
+  + The shortcut manager now properly activates mnemonics.
+  + Signal group ties to be more flexible with re-entrancy
+    situations.
+  + DirectoryReaper and FileTransfer attempt to be more defensive
+    against following through symlinks.
+
+-------------------------------------------------------------------
+Sat Feb  3 03:27:04 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.4:
+  + DzlTree has gained a number of improvements for dynamically
+    styling tree nodes.
+  + DzlMultiPaned gained a helper to locate a widget at an X,Y
+    coordinate.
+  + Various memory leak fixes in shortcuts and unit tests.
+  + DzlListBox allows setting the number of rows to recycle.
+    This may improve performance in some situations.
+  + A new cancellation chain helper that can be used until
+    g_cancellable_chain() lands upstream. When that happens,
+    this will wrap that API, or be removed in case it lands in 2.56.
+  + DzlTree gained support for inserting a child at a specific
+    position.
+  + Fixes for: API deprecations in Gdk and main thread assertions
+    on Linux.
+- Update package description turning it impersonal.
+
+-------------------------------------------------------------------
+Sat Feb  3 03:27:03 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.3:
+  + A new DzlRecursiveFileMonitor for recursive file monitors.
+  + Fixes for age comparison in directory reaper.
+  + Improvements to legacy activation in shortcuts.
+  + Avoid potential spinning in progress-menu-button.
+  + DzlFileTransfer is a new high-level API to help in copying or
+    moving directory trees.
+  + DzlTreeBuilder has broken ABI this cycle and gained padding to
+    help us avoid breaking ABI in the future. Those who only use it
+    from signals and dzl_tree_builder_new() are not effected by
+    this alone.
+  + DzlTreeBuilder has also added build-children signal so that it
+    can disambiguate between building nodes and creating children
+    in a lazy tree. This does, unfortunately, break existing code
+    as it needs to switch to using build-children.
+
+-------------------------------------------------------------------
+Sat Feb  3 03:27:02 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.2:
+  + A performance improvement to CSS and resource loading by
+    ensuring resource directory paths are suffixed with a /.
+  + Use export macros instead of linker script to simplify ABI
+    conformance on alternative platforms.
+  + Add missing dzl_preferences_view_new() symbol.
+  + Various gobject introspection annotation fixes.
+  + Use g_build_path() when appropriate.
+  + Add dzl_state_machine_is_state() for checking the current
+    state.
+- Add gio-2.0 and gmodule-2.0 pkgconfig BuildRequires: they were
+  already being pulled with pkgconfig(glib-2.0) BuildRequires and
+  used since they all live in the same devel package.
+
+-------------------------------------------------------------------
+Sat Feb  3 03:27:01 UTC 2018 - badshah400@gmail.com
+
+- Update to version 3.27.1:
+  + actions: add DZL_DEFINE_ACTION_GROUP() for creating action
+    groups.
+
+-------------------------------------------------------------------
+Fri Feb  2 10:28:51 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to vresion 3.26.3:
+  + A number of fixes to DzlSignalGroup to be more re-entrant safe
+    and handle disposal cycles better.
+  + DzlPreferences is more aggressive about protecting against
+    widget disposal.
+  + A static inline dzl_clear_signal_handler() was backported for
+    use in other backports from master.
+  + A number of protections were added to DzlDirectoryReaper to
+    protect against potentially following through symlinks.
+  + Max age in DzlDirectoryReaper was changed to always ensure a
+    positive value for use in date comparisons.
+  + A leak of GFile instances in the directory reaper was fixed.
+- Drop unused base define.
+
+-------------------------------------------------------------------
+Fri Jan 19 23:30:40 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.2:
+  + Progress menu button will now avoid spinning in some
+    conditions.
+  + Leak fixed in DzlTree text rendering.
+  + Shortcut mneumonics are now properly activated.
+  + Fixes to avoid various deprecated API.
+  + A number of leaks detected by ASAN were fixed.
+  + The directory reaper handles various mtime comparisons more
+    correctly now.
+  + Some G-I annotations were improved.
+  + DzlMenuMerger is more flexible with input.
+  + Some performance improvements when dealing with CSS and other
+    resources paths.
+
+-------------------------------------------------------------------
+Thu Oct  5 13:18:52 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.1:
+  + icons: avoid thrashing the GtkIconTheme on startup.
+  + prefs: track destruction state of pref widgets.
+  + macros: add a few internally used macros to public API.
+  + tests: crib some test data for portable tests.
+  + file-chooser-entry: be lazy with dialog construction.
+
+-------------------------------------------------------------------
+Mon Sep 11 23:19:18 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + Fix tab/shift+tab to change focus when using shortcut manager.
+  + Manually set marshaller and va marshallers on DzlTreeBuilder
+    which helps slightly with performance of signal emission.
+  + Various Mingw build fixes.
+- Add gtk-doc BuildRequires, build documentation.
+- Pass  enable_tracing=false, enable_profiling=false,
+  enable_rdtscp=false, enable_tools=true, with_introspection=true,
+  with_vapi=true, enable_gtk_doc=true and enable_tests=false to
+  meson, ensure we build the features we want.
+
+-------------------------------------------------------------------
+Thu Sep  7 07:54:37 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.92:
+  + Enforce GNU11 C standard when configuring project.
+  + DzlApplicationWindow automatically queries the shortcut
+    manager.
+  + The shortcut manager now checks GtkApplication registered
+    accelerators providing an improved migration strategy for
+    applications.
+  + Lifecycle tests were removed from the test-fuzzy-index as they
+    were racy via delayed disposal of threaded workers. This should
+    fix unit tests for various distributions on less common
+    hardware.
+  + Menu buttons now remove the proper section item when handling
+    GMenuModel changes.
+  + Our meson-based build system now checks if version-script is
+    supported and only applies the ABI map in that case. We may
+    consider switching to export macros in the future.
+  + Counters are now disabled on Windows.
+  + Various compiler pre-processor checks have been improved.
+  + A fallback for strcasecmp() is included for Windows.
+  + DzlSuggestion will now use intern'd strings for icon-names to
+    help reduce the number of duplicate strings in memory.
+  + Various CSS styling refinements.
+  + DzlListBox fixed a lingering pointer to the cached row during
+    disposal.
+
+-------------------------------------------------------------------
+Fri Aug 25 20:15:12 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + DzlDirectoryReaper now properly removes recursive directories.
+  + DzlListStoreAdapter is a new GListModel->GtkTreeModel adapter.
+  + DzlSignalGroup had an overzealous assertion which was removed
+    and corner case handled.
+  + DzlShortcutTheme properly handles closure chain parse failure
+    case.
+  + DzlShortcutManager can handle DzlShortcutEntry that are not
+    static allocations.
+
+-------------------------------------------------------------------
+Mon Aug 14 17:43:06 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.90:
+  + DzlSignalGroup and DzlBIndingGroup were made LGPLv2.1+ so they
+    can be copied into projects that cannot link against libdazzle.
+  + DzlDockBin got a number of bug fixes.
+  + Various compilation fixes for less used compilers.
+  + DzlTree gained support for "expanded icon names".
+  + DzlTree has a new "always-expand" property to ensure it stays
+    expanded.
+  + DzlDockStack no longer requires homogeneous sized children.
+  + DzlStackList transition animations have been tweaked to more
+    closely reflect physical locality.
+  + Calculated animation duration was sped up 1.5x.
+
+-------------------------------------------------------------------
+Sat Jul 22 22:46:41 UTC 2017 - zaitor@opensuse.org
+
+- Initial packaging for openSUSE, version 3.25.5.
+
+

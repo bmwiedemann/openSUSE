@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Tue Oct  3 08:14:03 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Tue Jul 22 14:36:44 UTC 2014 - coolo@suse.com
+
+- updated to 0.004
+  - Fix against Perl 5.19 (#1, by tomhukins)
+
+-------------------------------------------------------------------
+Fri Sep 30 09:31:27 UTC 2011 - pascal.bleser@opensuse.org
+
+- skip tests on < 11.3, Test::More too old there
+
+-------------------------------------------------------------------
+Fri Sep 30 07:14:15 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.003)
+

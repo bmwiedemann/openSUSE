@@ -1,0 +1,273 @@
+From 73ef905b37bbf4cd1b13f3aaa4da5457f793d1ac Mon Sep 17 00:00:00 2001
+From: Jeffrey Mahoney <jeffm@suse.com>
+Date: Tue, 21 Aug 2018 13:41:20 -0400
+Subject: [PATCH] repair: shift inode back into place if corrupted by bad log
+ replay
+References: bsc#1105396
+
+SUSE kernels 3.12.74-60.64.40 through 3.12.74-60.64.99 contained
+a regression where xfs_icdinode_t modified di_dmstate to be
+an atomic_t.  Since we only complain if an inode item is too large,
+if a kernel with this patch applied mounted a file system with inode
+items in the log formatted by a kernel without this patch, they would
+be used but would be interpreted using the structure with the atomic_t.
+
+As a result, the inode would be copied incorrectly, corrupting di_dmstate
+and the members that follow it.
+
+For v3 inodes, we can detect that the UUID is shifted forward
+8 bytes and recover di_uuid, di_ino, di_crtime, di_pad2, di_cowextsize,
+di_flags2, and di_lsn.  The UUID and inode number being incorrect
+will trip the verifier on iread, but it will have been flushed from the
+log in a broken state.
+
+di_changecount is lost entirely since half is overwritten by the CRC
+being updated and the other half fell in a hole in the structure.
+di_flags is lost entirely since it is overwritten by the half of
+the generation number.  Half of the generation number is lost since
+it falls in a hole in the structure.
+
+For v2 inodes, the corruption is more limited but impossible to
+detect beyond invalid flags being in use.
+
+Without this fix, xfs_repair will clear the affected inodes, causing
+big problems.
+
+Signed-off-by: Jeff Mahoney <jeffm@suse.com>
+---
+ repair/dinode.c | 184 ++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 178 insertions(+), 6 deletions(-)
+
+--- a/repair/dinode.c
++++ b/repair/dinode.c
+@@ -2200,6 +2200,158 @@ _("would clear obsolete nlink field in v
+ 	}
+ }
+ 
++static int
++check_shifted_uuid(xfs_dinode_t *dino, xfs_mount_t *mp)
++{
++	uint64_t tmp64;
++	char tmpuuid[16];
++	uuid_t uuid;
++
++	tmp64 = be64_to_cpu(dino->di_ino);
++	memcpy(tmpuuid, &tmp64, sizeof(tmp64));
++	memcpy(tmpuuid + 8, &dino->di_uuid, 8);
++	memcpy(uuid, tmpuuid, 16);
++
++	return !platform_uuid_compare(&uuid, &mp->m_sb.sb_meta_uuid);
++}
++
++/*
++ * There was a kernel that would use incorrectly-formatted log items.
++ * If it recovered a dirty log, corrupted inodes would result.
++ * 12 bytes of the inode are completely unrecoverable. Those are
++ * documented below.
++ */
++static void
++repair_inode_with_bad_atomic(xfs_dinode_t *dino, xfs_mount_t *mp)
++{
++	xfs_dinode_t fixed;
++	uint64_t tmp64;
++	uint32_t tmp32;
++	char tmpuuid[16];
++	char *tmpptr;
++
++	uuid_t uuid;
++
++	tmp64 = be64_to_cpu(dino->di_ino);
++	memcpy(tmpuuid, &tmp64, sizeof(tmp64));
++	tmpptr = (char *)dino->di_uuid;
++	memcpy(tmpuuid + 8, tmpptr, 8);
++	memcpy(uuid, tmpuuid, 16);
++
++	memcpy(&fixed, dino, sizeof(fixed));
++	memcpy(&fixed.di_uuid, uuid, sizeof(uuid));
++
++	tmp32 = *(uint32_t *)&dino->di_pad2[4];
++	fixed.di_crtime.t_sec = cpu_to_be32(tmp32);
++	tmp32 = *(uint32_t *)&dino->di_pad2[8];
++	fixed.di_crtime.t_nsec = cpu_to_be32(tmp32);
++
++	tmp64 = be32_to_cpu(dino->di_crtime.t_nsec);
++	tmp64 <<= 32;
++	tmp64 |= be32_to_cpu(dino->di_crtime.t_sec);
++	fixed.di_ino = cpu_to_be64(tmp64);
++
++	tmp64 = be64_to_cpu(fixed.di_ino);
++
++	memcpy(fixed.di_pad2 + 8, dino->di_pad2, 4);
++
++	tmp32 = be32_to_cpu(dino->di_cowextsize);
++	memcpy(fixed.di_pad2 + 4, &tmp32, 4);
++
++	tmp64 = be64_to_cpu(dino->di_flags2);
++	tmp32 = tmp64 >> 32;
++	memcpy(fixed.di_pad2, &tmp32, 4);
++
++	fixed.di_cowextsize = cpu_to_be32(tmp64);
++	fixed.di_flags2 = dino->di_lsn;
++	fixed.di_lsn = dino->di_changecount;
++
++	/*
++	 * This is lost entirely.  Half falls in padding and half
++	 * is overwritten by the CRC.
++	*/
++	fixed.di_changecount = 0;
++
++#if __BYTE_ORDER == __LITTLE_ENDIAN
++	/*
++	 * Half of the generation number is lost, but it's the high bits.
++	 * Pick a high number and hope for the best.
++	 */
++	tmp32 = 0xff000000;
++	tmp32 |= be16_to_cpu(dino->di_flags);
++	fixed.di_gen = cpu_to_be32(tmp32);
++#else
++	/*
++	 * Half of the generation number is lost, but it's the low bits,
++	 * so we can fake it.
++	 */
++	tmp32 = be16_to_cpu(dino->di_flags) + 1;
++	tmp32 <<= 16;
++	fixed.di_gen = cpu_to_be32(tmp32);
++#endif
++
++	/*
++	 * The flags are lost since the atomic_t was 32-bit and we
++	 * only keep 16.
++	 */
++	fixed.di_flags = 0;
++
++	memcpy(dino, &fixed, sizeof(*dino));
++	xfs_dinode_calc_crc(mp, dino);
++}
++
++static int
++process_dinode_int(xfs_mount_t *mp, xfs_dinode_t *dino, xfs_agnumber_t agno,
++		   xfs_agino_t ino, int was_free, int *dirty, int *used,
++		   int verify_mode, int uncertain, int ino_discovery,
++		   int check_dups, int extra_attr_check, int *isa_dir,
++		   xfs_ino_t *parent, int recurse);
++
++static int
++handle_malformed_inode(xfs_mount_t *mp, xfs_dinode_t *dino,
++		       xfs_agnumber_t agno, xfs_agino_t ino, int was_free,
++		       int *dirty, int *used, int verify_mode, int uncertain,
++		       int ino_discovery, int check_dups, int extra_attr_check,
++		       int *isa_dir, xfs_ino_t *parent)
++{
++	xfs_dinode_t save;
++	int retval;
++	xfs_ino_t lino = XFS_AGINO_TO_INO(mp, agno, ino);
++
++	if (!uncertain)
++		do_warn(_("malformed inode %" PRIu64 " found%c"),
++			lino, verify_mode ? '\n' : ',');
++
++	/*
++	 * We can't just pass a local copy to verify since we need the
++	 * data fork to check directories.
++	 */
++	if (verify_mode || no_modify)
++		memcpy(&save, dino, sizeof(*dino));
++
++	repair_inode_with_bad_atomic(dino, mp);
++	retval = process_dinode_int(mp, dino, agno, ino, was_free, dirty,
++				    used, verify_mode, uncertain, ino_discovery,
++				    check_dups, extra_attr_check,
++				    isa_dir, parent, 1);
++
++	if (verify_mode || no_modify) {
++		memcpy(dino, &save, sizeof(*dino));
++		*dirty = 0;
++	}
++
++	if (retval == 0 && !verify_mode) {
++		if (no_modify)
++			do_warn(_(" would repair\n"));
++		else {
++			do_warn(_(" repairing\n"));
++			*dirty = 1;
++		}
++	}
++
++	return retval;
++}
++
+ /*
+  * returns 0 if the inode is ok, 1 if the inode is corrupt
+  * check_dups can be set to 1 *only* when called by the
+@@ -2224,7 +2376,8 @@ process_dinode_int(xfs_mount_t *mp,
+ 					 * duplicate blocks		*/
+ 		int extra_attr_check, /* 1 == do attribute format and value checks */
+ 		int *isa_dir,		/* out == 1 if inode is a directory */
+-		xfs_ino_t *parent)	/* out -- parent if ino is a dir */
++		xfs_ino_t *parent,	/* out -- parent if ino is a dir */
++		int recurse)
+ {
+ 	xfs_rfsblock_t		totblocks = 0;
+ 	xfs_rfsblock_t		atotblocks = 0;
+@@ -2322,6 +2475,25 @@ process_dinode_int(xfs_mount_t *mp,
+ 	 * memory and hence invalidated the CRC.
+ 	 */
+ 	if (xfs_sb_version_hascrc(&mp->m_sb)) {
++		int good_uuid = 1;
++
++		if (platform_uuid_compare(&dino->di_uuid,
++					  &mp->m_sb.sb_meta_uuid))
++			good_uuid = 0;
++
++		/*
++		 * Only check to see if it's a malformed inode if it has
++		 * a valid magic, crc, and version and an invalid uuid.
++		 */
++		if (!good_uuid && !retval && !recurse &&
++		    check_shifted_uuid(dino, mp))
++			return handle_malformed_inode(mp, dino, agno, ino,
++						was_free, dirty, used,
++						verify_mode, uncertain,
++						ino_discovery, check_dups,
++						extra_attr_check,
++						isa_dir, parent);
++
+ 		if (be64_to_cpu(dino->di_ino) != lino) {
+ 			if (!uncertain)
+ 				do_warn(
+@@ -2332,8 +2504,7 @@ _("inode identifier %llu mismatch on ino
+ 				return 1;
+ 			goto clear_bad_out;
+ 		}
+-		if (platform_uuid_compare(&dino->di_uuid,
+-					  &mp->m_sb.sb_meta_uuid)) {
++		if (!good_uuid) {
+ 			if (!uncertain)
+ 				do_warn(
+ 			_("UUID mismatch on inode %" PRIu64 "\n"), lino);
+@@ -2878,7 +3049,8 @@ process_dinode(
+ #endif
+ 	return process_dinode_int(mp, dino, agno, ino, was_free, dirty, used,
+ 				verify_mode, uncertain, ino_discovery,
+-				check_dups, extra_attr_check, isa_dir, parent);
++				check_dups, extra_attr_check, isa_dir, parent,
++				0);
+ }
+ 
+ /*
+@@ -2905,7 +3077,7 @@ verify_dinode(
+ 
+ 	return process_dinode_int(mp, dino, agno, ino, 0, &dirty, &used,
+ 				verify_mode, uncertain, ino_discovery,
+-				check_dups, 0, &isa_dir, &parent);
++				check_dups, 0, &isa_dir, &parent, 0);
+ }
+ 
+ /*
+@@ -2931,5 +3103,5 @@ verify_uncertain_dinode(
+ 
+ 	return process_dinode_int(mp, dino, agno, ino, 0, &dirty, &used,
+ 				verify_mode, uncertain, ino_discovery,
+-				check_dups, 0, &isa_dir, &parent);
++				check_dups, 0, &isa_dir, &parent, 0);
+ }

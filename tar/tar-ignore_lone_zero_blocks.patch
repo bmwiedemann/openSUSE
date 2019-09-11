@@ -1,0 +1,29 @@
+Index: tar-1.26/src/list.c
+===================================================================
+--- tar-1.26.orig/src/list.c	2011-02-16 23:12:16.000000000 +0100
++++ tar-1.26/src/list.c	2014-06-11 11:48:38.129824435 +0200
+@@ -212,6 +212,14 @@ read_and (void (*do_something) (void))
+ 
+ 	  if (!ignore_zeros_option)
+ 	    {
++             /*
++              * According to POSIX tar specs, this is wrong, but on the web
++              * there are some tar specs that can trigger this, and some tar
++              * implementations create tars according to that spec.  For now,
++              * let's not be pedantic about issuing the warning.
++              */
++#if 0
++
+ 	      char buf[UINTMAX_STRSIZE_BOUND];
+ 
+ 	      status = read_header (&current_header, &current_stat_info,
+@@ -221,6 +229,9 @@ read_and (void (*do_something) (void))
+ 	      WARNOPT (WARN_ALONE_ZERO_BLOCK,
+ 		       (0, 0, _("A lone zero block at %s"),
+ 			STRINGIFY_BIGINT (current_block_ordinal (), buf)));
++#endif
++	      status = read_header (&current_header, &current_stat_info,
++	                            read_header_auto);
+ 	      break;
+ 	    }
+ 	  status = prev_status;

@@ -1,0 +1,319 @@
+---
+ info2html      |   91 +++++++++++++++++++++++++++++++++++++++++----------------
+ info2html.conf |   27 ++++++++--------
+ infocat        |   14 +++++++-
+ 3 files changed, 91 insertions(+), 41 deletions(-)
+
+--- info2html
++++ info2html	2017-08-07 12:10:40.074152757 +0000
+@@ -62,15 +62,20 @@ $FTAG          = '[^\)]+';         #-- p
+ #---------------------------------------------------------
+ # Don't reveal where we're looking... --jonh 5/20/97 (and reapplied 5/4/1998)
+ sub DieFileNotFound{
+-  local($FileName) = @_;
++  local($FileName) = CGI::escape(@_);
+   #-- TEXT : error message if a file could not be opened
+   print <<"EOF";
+-<html><head><title>Info Files  - Error Message</title>
++<html>
++<head>
++<title>Info Files  - Error Message</title>
+ $BOTS_STAY_AWAY
+-$HTML_HEAD_STUFF</head><body class='error noopen'>
++$HTML_HEAD_STUFF
++</head>
++<body bgcolor="#ffffff" link="#008000" alink="#008000" vlink="#fb8000" class='error noopen'>
+ <h1>File IO Error</h1>
+ The Info file could not be opened for reading.
+-</body></html>
++</body>
++</html>
+ EOF
+   die "\n";
+ }
+@@ -91,6 +96,28 @@ sub Escape{
+ }
+ 
+ #----------------------------------------------------------
++#                    DirnameCheck
++#----------------------------------------------------------
++sub DirnameCheck{
++  local($Base) = @_;
++  local($Dir)  = @_;
++ 
++  $Base =~ s@.*/@@g;
++  $Dir  =~ s@/[^/]*$@@;
++
++  if ($Dir eq $Base) {
++     $Dir = "";
++     return(1);
++  }
++ 
++  for (@INFODIR) {
++      return(1)  if ( $Dir eq $_ );
++  }
++ 
++  return(0);
++}
++
++#----------------------------------------------------------
+ #                    DeEscape
+ #----------------------------------------------------------
+ sub DeEscape{
+@@ -100,6 +127,10 @@ sub DeEscape{
+   $Tag =~ s/%20/ /g;
+   #-- oh yes it is -- jonh 5/16/1997
+   #$Tag;
++  $Tag =~ s/^ //g;
++  $Tag =~ s|\.\./||g;
++  $Tag =~ s|\.\.||g;
++  $Tag =~ s|\./||g;
+   return CGI::unescape($Tag);
+ }
+ 
+@@ -172,23 +203,23 @@ sub MenuItem2HTML{
+     $Line = &Tab2Space($Line);	# make sure columns line up well
+ 
+     if ($Line =~ /\* ([^:]+)::/){ # -- is a simple entry ending with :: ?
+-	$MenuLinkTag = $1;
++	$MenuLinkTag  = $1;
+ 	$MenuLinkRef  = $1;
+ 	$MenuLinkText = $';
+ 	$MenuLinkFile = &Escape($BaseInfoFile);
+ 
+     } elsif ($Line =~ /\* ([^:]+):(\s*\(($FTAG)\)\.?)?(.*)$/) {
+ 	$MenuLinkFile = $BaseInfoFile;
+-	$MenuLinkRef = $1;
++	$MenuLinkRef  = $1;
+ 	$MenuLinkText = $4;
+ 	if ($2) {
+ 	    $MenuLinkFile = $3;
+-	    $MenuLinkTag = 'Top';
++	    $MenuLinkTag  = 'Top';
+ 	    $MenuLinkText = ($2 ? ' ' x (length($2)+1) : '') . "$4\n";
+ 	} else {
+ 	    $Line = "$4\n";
+ 	    if ($Line =~ /( *($TAG)?$TE(.*))$/) {
+-		$MenuLinkTag = $2;
++		$MenuLinkTag  = $2;
+ 		$MenuLinkText = $Line;
+ 	    }
+ 	}
+@@ -213,11 +244,10 @@ sub MenuItem2HTML{
+ sub ReadIndirectTable{
+   local($FileName,*InfoFiles,*Offsets) = @_;
+   local($i,$Next);
+-#  open(FH1,$FileName) || &DieFileNotFound($FileName);
+   if ( $FileName =~ /^(.+)\.gz$/ ) {
+-    open(FH1,"gunzip < " . $FileName . " 2>/dev/null |") || &DieFileNotFound($FileName);
++    open(FH1,"gunzip -q -d -c  < " . $FileName . " 2>/dev/null |") || &DieFileNotFound($FileName);
+   } elsif ( $FileName =~ /^(.+)\.bz2$/ ) {
+-    open(FH1,"bzcat " . $FileName . " 2>/dev/null |") || &DieFileNotFound($FileName);
++    open(FH1,"bunzip2 -q -d -c < " . $FileName . " 2>/dev/null |") || &DieFileNotFound($FileName);
+   } else {
+     open(FH1,$FileName) || &DieFileNotFound($FileName);
+   }
+@@ -260,9 +290,9 @@ sub ReadTagTable{
+   local($File,$Offset);
+ 
+   if ( $FileName =~ /^(.+)\.gz$/ ) {
+-    open(FH,"gunzip < " . $FileName . " 2>/dev/null |") || &DieFileNotFound($FileName);
++    open(FH,"gunzip -q -d -c  < " . $FileName . " 2>/dev/null |") || &DieFileNotFound($FileName);
+   } elsif ( $FileName =~ /^(.+)\.bz2$/ ) {
+-    open(FH,"bzcat " . $FileName . " 2>/dev/null |") || &DieFileNotFound($FileName);
++    open(FH,"bunzip2 -q -d -c < " . $FileName . " 2>/dev/null |") || &DieFileNotFound($FileName);
+   } else {
+     open(FH,$FileName) || &DieFileNotFound($FileName);
+   }
+@@ -304,8 +334,9 @@ sub ReadTagTable{
+ #  transforms them to HTML using a little icon
+ #----------------------------------------------------------
+ sub ParsCrossRefs{
+-  local($prev,$Line,$BaseInfoFile) = @_;
+-  local($*,$NewLine,$Token) = (1);
++  my ($prev,$Line,$BaseInfoFile) = @_;
++  my ($NewLine,$Token);
++  my ($CrossRef, $CrossRefFile, $CrossRefTag, $CrossRefRef, $CrossRefText);
+   $Line = " ".$Line;
+   if ($prev =~ /\*Note([^\t\,\.]*)$/i) {
+       if ($Line =~ /^$TAG$TE/) {
+@@ -437,8 +468,11 @@ sub PrintHeader{
+   ;
+ 
+   print <<"EOF";
+-<html><head><title>Info: ($BaseInfoFile) $LinkList[1]</title>
+-$HTML_HEAD_STUFF</head><body class='node'>
++<html>
++<head>
++<title>Info: ($BaseInfoFile) $LinkList[1]</title>
++$HTML_HEAD_STUFF</head>
++<body bgcolor="#ffffff" link="#008000" alink="#008000" vlink="#fb8000" class='node'>
+ EOF
+ 
+   print "\n<div class='nav navtop'\n>", 
+@@ -484,7 +518,7 @@ EOF
+     print "<!-- info2html v$VERSION -->\n";
+   }
+ 
+-  print "</body></html>\n";
++  print "</body>\n</html>\n";
+   return;
+ }
+ 
+@@ -493,14 +527,21 @@ EOF
+ #----------------------------------------------------------
+ sub ReplyNotFoundMessage{
+   local($FileName,$Tag) = @_;
++  $FileName = CGI::escape($FileName);
++  $Tag      = CGI::escape($Tag);
+   print <<"EOF";
+-<html><head><title>Info Files  -  Error Message</title>
++<html>
++<head>
++<title>Info Files  -  Error Message</title>
+ $BOTS_STAY_AWAY
+-$HTML_HEAD_STUFF</head><body class='error nonesuch'>
++$HTML_HEAD_STUFF
++</head>
++<body bgcolor="#ffffff" link="#008000" alink="#008000" vlink="#fb8000" class='error nonesuch'>
+ <h1>Error</h1>
+ The Info node <em>$Tag</em> in Info file <em>$FileName</em>
+ does not exist.
+-</body></html>
++</body>
++</html>
+ EOF
+ }
+ #-----------------------------------------------------------
+@@ -514,9 +555,9 @@ sub InfoNode2HTML{
+   local($FileName,$Offset,$Tag,$BaseInfoFile) = @_;
+   local($Found);
+   if ( $FileName =~ /^(.+)\.gz$/ ) {
+-    open(FH2,"gunzip < " . $FileName . " 2>/dev/null |") || &DieFileNotFound($FileName);
++    open(FH2,"gunzip -q -d -c  < " . $FileName . " 2>/dev/null |") || &DieFileNotFound($FileName);
+   } elsif ( $FileName =~ /^(.+)\.bz2$/ ) {
+-    open(FH2,"bzcat " . $FileName . " 2>/dev/null |") || &DieFileNotFound($FileName);
++    open(FH2,"bunzip2 -q -d -c < " . $FileName . " 2>/dev/null |") || &DieFileNotFound($FileName);
+   } else {
+     open(FH2,$FileName) || &DieFileNotFound($FileName);
+   }
+@@ -657,8 +698,8 @@ $PROGRAM = $ENV{'SCRIPT_NAME'};
+ $CommandLine = DeEscape($ENV{'QUERY_STRING'});	# jonh DeEscape() 1997.05.16
+ if ($CommandLine =~ /\(([^\)]+)\)(.+)/) {
+     $BaseInfoFile = &DeEscape($1);
+-	$BaseInfoFile =~ s#\.\./##g;    # jonh 5/20/97 -- sanitize up-references
+     $NodeName     = &DeEscape($2);
++    &DirnameCheck($BaseInfoFile) || &DieFileNotFound($BaseInfoFile);
+ } elsif( $CommandLine =~ /^([-_0-9a-zA-Z]+)$/) {  # tolerate bare queries
+     $BaseInfoFile = &DeEscape($1);
+     $NodeName     = 'Top';
+@@ -674,7 +715,7 @@ $File = $BaseInfoFile if $File eq "";
+ $FileNameFull = &FindFile($File);
+ &InfoNode2HTML($FileNameFull,$Offset,$NodeName,$BaseInfoFile);
+ 
+-exit;
++exit 0;
+ 
+ ###############################################################################
+ #                                                                             #
+--- info2html.conf
++++ info2html.conf	2017-08-07 11:20:18.864788475 +0000
+@@ -26,7 +26,8 @@
+ 
+ #-- URL for an icon for cross references
+ #$CR_URL        = '';
+-$CR_URL        = '&#8658;';
++#$CR_URL        = '&#8658;';
++$CR_URL		= '<img src="/gif/r_hand.gif" align=top border=0 alt="See">';
+ 
+ #-- Leading decoration for menu items
+ #$MENU_DOT = "* ";
+@@ -34,20 +35,23 @@ $MENU_DOT = "&#183; ";
+ 
+ #-- URL specifying an icon for an 'up' link
+ #$UP_URL        = '<img border=1 width=20 height=22 src="/icons/up.gif" alt="up">';
+-$UP_URL        = '<span class="icon">&#8593;</span>';
++#$UP_URL        = '<span class="icon">&#8593;</span>';
++$UP_URL		= '<img src="/gif/u_arrow.gif" align=top border=0 alt="Up">';
+ 
+ #-- URL specifying an icon for a 'next' link
+ #$NEXT_URL      = '<img border=1 width=20 height=22 src="/icons/right.gif" alt="next">';
+-$NEXT_URL      = '<span class="icon">&#8594;</span>';
++#$NEXT_URL      = '<span class="icon">&#8594;</span>';
++$NEXT_URL	= '<img src="/gif/r_arrow.gif" align=top border=0 alt="Next">';
+ 
+ #-- URL specifying an icon for a 'prev' link
+ #$PREV_URL      = '<img border=1 width=20 height=22 src="/icons/left.gif" alt="previous">';
+-$PREV_URL      = '<span class="icon">&#8592;</span>';
++#$PREV_URL      = '<span class="icon">&#8592;</span>';
++$PREV_URL = '<img src="/gif/l_arrow.gif" align=top border=0 alt="Prev">';
+ 
+ #-- URL specifying an icon for a link to the catalog page
+ #$CATALOG_URL   = '<img src="/icons/ball.red.gif" title="catalog" alt="catalog" border=1 width=20 height=22>';
+-$CATALOG_URL   = '<span class="icon">&#8662;</span>';
+-
++#$CATALOG_URL   = '<span class="icon">&#8662;</span>';
++$CATALOG_URL	= '<img src="/gif/r-ball.gif" align=top border=0 alt="*">';
+ 
+ #-- Location of info files.  Customize as necessary!
+ # Note that we (currently) don't use quite the same path-resolution
+@@ -56,15 +60,10 @@ $CATALOG_URL   = '<span class="icon">&#8
+ 
+ @INFODIR = (
+  		'/usr/share/info/',
+- 		'/usr/share/info/emacs-21/',
+-
+- 		'/usr/local/GNU/info',
+- 		'/usr/local/GNU/emacs18.58/info',
++ 		'/usr/info/',
+  		'/usr/local/info',
+- 		'/opt/FSFgzip/info',
+- 		'/opt/FSFgmake/info',
+- 		'/opt/GCC2721/info',
+- 		'/usr/local/lib/bash-doc-2.01/lib/readline/doc/'
++ 		'/usr/local/lib/info',
++ 		'/usr/share/xemacs/info'
+ );
+ 
+ #-- URL for documentation of info2html
+--- infocat
++++ infocat	2017-08-07 12:24:27.423036335 +0000
+@@ -66,6 +66,10 @@ sub DeEscape{
+   #$Tag =~ s/%20/ /g;
+   #-- yes it is jonh 5/16/97
+   #$Tag;
++  $Tag =~ s/^ //g;
++  $Tag =~ s|\.\./||g;
++  $Tag =~ s|\.\.||g;
++  $Tag =~ s|\./||g;
+   return CGI::unescape($Tag);
+ }
+ 
+@@ -83,6 +87,7 @@ print "$HTML_HEAD_STUFF</head><body clas
+ 
+ my( %Desc2BaseExt, %BaseFreq, %BaseExt2Base );
+ 
++$SIG{'PIPE'} = 'IGNORE';
+ foreach $dir (@INFODIR) {
+     opendir(DIR, $dir) or next;
+     while ($baseext = readdir(DIR)) {
+@@ -90,12 +95,17 @@ foreach $dir (@INFODIR) {
+         my $base;
+         if ($baseext =~ m/^(.+)\.info\.bz2$/ ) {
+ 	    $base = $1;
+-            next unless open INFOFILE, "bzcat $dir/$baseext|";
++            next unless open INFOFILE, "bunzip2 -q -d -c < $dir/$baseext|";
+             $collect = 0;
+         }
+         elsif ($baseext =~ m/^(.+)\.info\.gz$/ ) {
+ 	    $base = $1;
+-            next unless open INFOFILE, "gzip -dc $dir/$baseext|";
++            next unless open INFOFILE, "gunzip -q -d -c < $dir/$baseext|";
++            $collect = 0;
++        }
++        elsif ($baseext =~ m/^(.+)\.info\.xz$/ ) {
++	    $base = $1;
++            next unless open INFOFILE, "xz -q -d -c < $dir/$baseext|";
+             $collect = 0;
+         }
+         elsif ($baseext =~ m/^(.+)\.info$/) {

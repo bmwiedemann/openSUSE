@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Fri Apr 27 13:54:00 UTC 2018 - vcizek@suse.com
+
+- update to 0.6.1
+- packaged as a dependency for apache2-mod_auth_openidc which was
+  requested in fate#323817
+
+-------------------------------------------------------------------
+Wed Dec 13 10:25:46 UTC 2017 - christof.hanke@mpcdf.mpg.de
+
+- update to version 0.5.1
+
+-------------------------------------------------------------------
+Wed Nov  2 01:08:42 UTC 2016 - crrodriguez@opensuse.org
+
+- Initial version
+

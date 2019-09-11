@@ -1,0 +1,1041 @@
+-------------------------------------------------------------------
+Mon Sep 10 10:31:03 UTC 2018 - sndirsch@suse.com
+
+- also require mkfontdir, so fonts-config can create the appropriate
+  fonts.dir/fonts.scale/encodings.dir files (boo#1106850) 
+
+-------------------------------------------------------------------
+Thu Sep  6 13:40:48 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Revert workaround from locale patch as it breaks UTF-8 text
+  in file and object handling 
+
+-------------------------------------------------------------------
+Thu Sep  6 11:32:18 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Add workaround in locale patch for systems with large endcoding.dir
+  below /usr/share/fonts/encodings (boo#1106850) 
+  * With this fallback to "C" for LC_CTYPE is used for UTF-8 locales
+    to allow that Xt library will find a useful FontSet
+- Require mkfontscale
+- Modernize international-std-fonts patch to fit for more fonts
+
+-------------------------------------------------------------------
+Mon May  7 07:47:46 UTC 2018 - werner@suse.de
+
+- Update to xfig 3.2.7 Patchlevel 7a (May 2017)
+  o Export to pdf now allows to choose between output to a full-page pdf,
+    or cropping to the bounding box (the default behavior).
+  o Enable horizontal scrolling with mouse buttons 6 and 7 (sideway push
+    of mouse wheel, or horizontal movement on touchpad).
+  o Rename the text flag "Special Flag" to "TeX Flag".
+  o Interpolated splines are now created with the recommended value of the
+    shape factor of -0.5, not with -1.0. A description of the shape factor
+  o Really fix ticket #9, debian bug #270113. When entering the "Open.."
+    dialog, moving to a new directory, pressing Cancel, a subsequent
+    "Save" placed the figure file into the new directory.
+  o Center canvas around cursor when zooming by pressing CTRL and using a
+    wheel-mouse.
+  o Apply xfig-3.2.6a-fallback-for-nonscalable-fonts.patch and
+    xfig-3.2.6a-scalable-fonts.patch from Hans de Goede.
+  o Apply debian patches 08_every_time.patch, 10_RELEASE_DATE.patch,
+    11_declare_swap_colors.patch, from Roland Rosenfeld.
+  o Apply debian patch 07_colorsliderarrows.patch. Debian bug #870365.
+  o Change map of India to disputed boundaries, from
+    https://en.wikipedia.org/wiki/File:India_disputed_areas_map.svg,
+    retrieved 2018-02-25. Debian bug #270799, 09_india_disputed.patch
+  o Prevent integer overflow in {floor,ceil}_coords_{x,y}(). Fixes debian
+    bug #300436. Also prevent integer overflow in round_coords().
+  o Completely remove alloca.h and alloca() from the code.
+  o When entering the "Save as..." dialog, moving to a new directory and
+    pressing "Cancel", a subsequent "Save" wrote to the new directory.
+    This happened analogously for the "Export" dialog. Fixed, ticket #9.
+
+-------------------------------------------------------------------
+Thu Mar  1 21:03:21 UTC 2018 - crrodriguez@opensuse.org
+
+- use default libpng for build, problems with newer library 
+  already fixed in version 3.2.6
+
+-------------------------------------------------------------------
+Thu Feb  2 13:40:36 UTC 2017 - werner@suse.de
+
+- Update to xfig 3.2.6 Patchlevel 6a (January 2017)
+  CHANGES:
+    o Draw lines with the same width as in PostScript and other outputs.
+  BUGS FIXED:
+    o Add compile-switch --enable-tablet for using an input tablet.
+    o Eventually, sorted out the xpm switches. Only use --enable-xpm-splash.
+    o Improve ./configure and add diagnostic output. Looks now for headers
+      and libraries in unusal places, for compilation under mac darwin when
+      using fink or macports.
+
+-------------------------------------------------------------------
+Sat Jan 14 01:58:36 CET 2017 - oliver@getspam.de
+
+- Fix: Added preprocessor flag GSBIT to fix a 3.2.6 regression, that
+  resulted in EPS file preview not working, see: 
+  https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=848040
+
+-------------------------------------------------------------------
+Thu Sep 22 10:40:28 UTC 2016 - werner@suse.de
+
+- Update to xfig 3.2.6
+  New features:
+    o Add compile switch to enable xpm-icon and xpm-splash screen
+      independently (--enable-xpm-icon, --enable-xpm-splash).
+    o New compile switch --enable-versioning, calls update_version_m4
+      to get version information from a source control system.
+    o Should compile on Mac (Darwin) after installing dependencies using
+      Macports, Fink or Homebrew.
+    o Add two rudimentary tests. Run with make check.
+    o New tikz and pict2e export drivers.
+    o Build using autoconf (./configure; make; make install).
+  UI changes:
+    From Brian V. Smith. These changes were made because the original
+    view was of the drawing on the page instead of the modern view
+    of the observer moving left/right/up/down:
+      o Left arrow moves observer left (used to scroll canvas left)
+      o Right arrow moves observer right
+      o Up arrow moves observer up
+      o Down arrow moves observer down
+      o Ctrl+Wheel up zooms in, Ctrl+Wheel down zooms out (was the other way around)
+  Bugs fixed:
+    o Update documentation to LaTeX and Xfig.
+    o Change \r\n to \n in all files.
+    From Roland Rosenfeld <roland@spinnaker.de>:
+      o Update LaTeX documentation, use \documentclass instead of
+        \documentstyle, \usepackage instead of \input.
+      o Builds on hurd, had to #include <limits.h> in a few places.
+      o Use application/x-xfig, not image/x-xfig in xfig.desktop file.
+        See https://bugs.launchpad.net/ubuntu/+source/xfig/+bug/690067 and
+        https://bugs.launchpad.net/ubuntu/+source/xfig/+bug/1045848 .
+      o To compile on ancient systems, try make -DANCIENT.
+      o Report correct paths to installed files in the man page.
+    From Vladislav Zavjalov; Commit numbers refer to
+    http://git.altlinux.org/people/slazav/packages/?p=xfig.git;a=commit;h=#
+      o Preserve comments when deleting objects; Commit #6c42e5c
+      o Restore colors and main comment after Delete All + Undo; #34f6105
+      o Draw horizontal scrollbar if property buttons are too wide to fit
+        on the screen. Commit #e9c1394
+      o Add save8bit app-resource to allow saving 8-bit files. #5bd9fbb
+      o Move Xfuncs.h and Xosdefs.h out from fig.h. Commit #b433478
+      o Move -l flags from LDFLAGS to LDADD. Commit #2d57c85
+    From Roland Rosenfeld. Bug numers refer to https://bugs.debian.org/#.
+      o Do not link with -lXmu, if linking with Xaw3d > 1.5e.
+      o Make japanese documentation available for LANG=ja_JP.ujis.
+      o Set the Creation date in xfig_man.html to the date when
+        creating the source tarball.
+      o Really fix reading png files,
+        https://bugzilla.redhat.com/show_bug.cgi?id=1150330
+      o Delete some superfluos files, fix typos (Caribbean),
+        add semicolon in xfig.desktop (bug # 812477).
+    From Brian V. Smith:
+      o old link for "Xfig On Microsoft Windows" (Getting and Installing Xfig html page)
+      o dash_list wrong dimension causes segfault on some line styles
+      o Should handle systems where REG_NOERROR (regular expression) is undefined now
+      o Missing xfig_man.html
+      o Modify a few places where to set locale to "C".
+      o Didn't allocate enough space for fonts (would segfault when popping up File panels)
+      o Moving arc point would segfault
+    From Roland Rosenfeld. Bug numbers refer to https://bugs.debian.org/#.
+      In fact, most of the bugs below, also those from other sources, were
+      fixed by applying the debian-patches.
+      o Position independent executables work, fixes bug # 756791.
+      o Revert previous change of X-spline parameter.
+      o Use C locale for fig2dev, to correctly interpret decimal point.
+        Fixes bug # 782737.
+      o Correct grid mode distances in man page. Bug # 314820.
+      o Extend xfig.desktop.
+      o Fix unsecure use of temporary file. From Thomas Hoger, gentoo.
+        Debian Bug # 565341.
+      o Escape - in man-page.
+      o Securely print string.
+      o Restore old shadow behaviour.
+      o Fix reading "/MediaBox" when importing pdf. Closes Bug # 530898.
+      o With -papersize b1, use B1, not B10. Bug 535181.
+    From Vladislav Zavjalov. Information on bugs is found
+      at https://bugzilla.altlinux.org/show_bug.cgi?id=#
+      o Do not use fontsets for symbol and dingbat fonts, bug # 26579.
+      o Fix compiler warnigs in w_indpanel.c. Commit feabe27.
+      o Restore correct depths when loading a figure, then undo.
+        Commit b5c79b3.
+      o Restore filename after delete region, undo. Commit 219d690.
+      o Restore user color when opening new fig-file. Commit fccd915.
+      o Restore correct depths when joining lines with different depths.
+        Commit a77bcaf.
+      o Fix xfontlist->fset initialization. Commit a592399.
+      o Fix default origin (100000,100000) -> (0,0) for filled objects.
+        Commit 4d87e60.
+      o Fix 100% cpu-load by save panel. Commit 81a4596.
+      o Do not use local SimpleMenu.c with XAW3D1_5E. Would segfault on
+        some 64-bit systems when opening main menu.
+      o Missing argument may cause crash or undefined behaviour.
+        Debian bug # 795642. From Michael Tautschnig.
+    From Hans de Goede. Bug information
+      at https://bugzilla.redhat.com/show_bug.cgi?id=#.
+      o Patch for importing png-files, Red Hat bug # 1150330. From David Kaufmann.
+      o Fix crash when changing arrow size. Bug # 1046102.
+      o Fix crash when creating dash-dotted lines. Bug # 1023744.
+        From Michael Srb, thanks to Maurizio Pollini and David Kaufmann.
+      o Fix crash on exit. From Peter Volkov at gentoo
+- Remove browser script as for now xdg-open is used
+- Patch xfig.3.2.5b.dif becomes xfig-3.2.6.dif
+- Remove patch xfig.3.2.5b-mediaboxrealnb.dif and collection
+  xfig.3.2.5c-patches.tar.bz2 as now upstream
+- Port the patches
+   xfig.3.2.3d-international-std-fonts.dif
+   xfig.3.2.5-urw-fonts.dif
+   xfig.3.2.5-xim.dif
+   xfig.3.2.5b-fixes.dif
+   xfig.3.2.5b-locale.dif
+   xfig.3.2.5b-null.dif
+   xfig.3.2.5b-preview.dif
+   xfig.3.2.5b-pspdftex.dif
+  to 3.2.6
+
+-------------------------------------------------------------------
+Fri Mar 11 09:34:01 UTC 2016 - werner@suse.de
+
+- Add BuildRequires on libXmu-devel 
+
+-------------------------------------------------------------------
+Thu Jun 18 19:53:44 UTC 2015 - crrodriguez@opensuse.org
+
+- Remove xorg-x11-devel from builrequires, replaced 
+  by the individual required libraries.
+
+-------------------------------------------------------------------
+Tue Nov 18 23:10:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix shebang in xfig.sh script:
+  option '-a' of 'exec' command may be unsupported in other
+  POSIX-complete shells
+
+-------------------------------------------------------------------
+Fri Jul  4 12:48:32 UTC 2014 - werner@suse.de
+
+- Fix patches 
+  xfig.3.2.5b-mediaboxrealnb.dif
+  xfig.3.2.5b-pspdftex.dif (bnc#882692)
+- Add patch set from Debian xfig package as well
+  31_spelling.patch
+  39_man_hyphen.patch
+  40_XAW3D1_5E_notlocal.patch
+  41_mkstemp.patch (CVE-2009-1962)
+
+-------------------------------------------------------------------
+Tue Feb 11 10:26:27 UTC 2014 - werner@suse.de
+
+- Provide a pkgconfig file for older Xaw3d package 
+
+-------------------------------------------------------------------
+Tue Feb 11 09:34:13 UTC 2014 - werner@suse.de
+
+- Make if build for oS 13.1 
+
+-------------------------------------------------------------------
+Tue Feb 11 08:17:58 UTC 2014 - werner@suse.de
+
+- Add upstream patch to patch tar ball to fix Xfig crash on
+  dash-dotted lines (bnc#860322)
+
+-------------------------------------------------------------------
+Tue Dec 10 14:06:39 UTC 2013 - werner@suse.de
+
+- Update underlying source tar ball to xfig.3.2.5c
+- Delete patches 
+  xfig.3.2.5b-bnc777469.diff and xfig.3.2.5b-bnc657393.dif
+  as those are part of xfig.3.2.5c
+- Change patches
+  xfig.3.2.5-urw-fonts.dif, xfig.3.2.3d-international-std-fonts.dif,
+  xfig.3.2.5b-locale.dif, xfig.3.2.5b-pspdftex.dif, and
+  xfig.3.2.5b-preview.dif to fit xfig.3.2.5c
+- Modify Imakefile to support new libXaw3d-1.6.2
+
+-------------------------------------------------------------------
+Fri Feb  8 11:14:39 UTC 2013 - werner@suse.de
+
+- User original patches from Debian 
+
+-------------------------------------------------------------------
+Thu Feb  7 14:12:21 UTC 2013 - werner@suse.de
+
+- Add xfig.3.2.5b-mediaboxrealnb.dif to fix regarding pdf import,
+  reported by Loic Le Guyader compare with Debian bug #530898
+
+-------------------------------------------------------------------
+Wed Oct 10 07:25:44 UTC 2012 - werner@suse.de
+
+- Add standard X11 fonts to be able to use it with xfig
+
+-------------------------------------------------------------------
+Fri Sep 28 14:13:06 UTC 2012 - werner@suse.de
+
+- Fix bnc #777469 - CVE-2009-4227: xfig: stack based overflows
+
+-------------------------------------------------------------------
+Thu May 31 07:33:50 UTC 2012 - cfarrell@suse.com
+
+- license update: MIT
+  SPDX compliant license short name. MIT chosen as majority of files are
+  under this license (Fedora also chose MIT)
+
+-------------------------------------------------------------------
+Wed May 30 11:48:30 UTC 2012 - werner@suse.de
+
+- Remove forbidden file aircraft.fig (bnc#754676) 
+
+-------------------------------------------------------------------
+Fri Oct 21 09:40:57 UTC 2011 - werner@suse.de
+
+- Reenable Japanese support (bnc#720554) 
+
+-------------------------------------------------------------------
+Fri Jun 17 15:07:40 CEST 2011 - werner@suse.de
+
+- Fix broken append mode for eps/ps import (bnc#696368)
+
+-------------------------------------------------------------------
+Fri Dec  3 15:23:11 CET 2010 - werner@suse.de
+
+- Fix overflow in formatted output conversion (bnc#657393)
+
+-------------------------------------------------------------------
+Wed Dec  1 12:27:48 CET 2010 - werner@suse.de
+
+- Do canonicalize the eps files used with the previous fix
+  (thanks goes to Hans de Goede from RedHat)
+- Make previous fix more clear by adding a command how the
+  used .locksafe operator works
+
+-------------------------------------------------------------------
+Tue Aug 10 13:00:25 CEST 2010 - werner@suse.de
+
+- Make eps/ps import work again.  This trouble was caused  by the
+  security fix for ghostscript of bug bnc#608071
+
+-------------------------------------------------------------------
+Tue Apr 20 17:24:01 CEST 2010 - werner@suse.de
+
+- Add compatibility switch for libpng 1.4 or higher
+
+-------------------------------------------------------------------
+Mon Apr 19 11:29:36 CEST 2010 - sndirsch@suse.de
+
+- fixed libpng buildrequires for openSUSE >= 11.3
+
+-------------------------------------------------------------------
+Mon Dec 14 14:08:05 CET 2009 - werner@suse.de
+
+- Update to xfig 3.2.5b including various bug fixes (including the
+  bug fix for bnc#560351):
+  * Dimension line indicator incorrectly showed arrow length/width
+  * Several patches from Fedora xfig maintainer
+  * divide by 0 under certain circumstances in ruler code
+    From Libor Pechacek
+  * Segfault if PRINTER env variable was not defined
+  * Fig-color merged into Fig app-defaults file because almost no one knows about
+    the "*customization: -color" option to make X programs read the color def file.
+  * dimension line arrowhead width and length used %d instead of %f in
+    dialog, always displaying 0
+  * leftover debugging printf(...color = ) in startup
+  * finally fixed size of mode panel so it doesn't cover indicator panel
+    under certain circumstances
+  * removed "Alpha" from splash
+  * updated copyright date in Help/About
+  * problem with depth panel height due to snap mode indicator
+  * snap indicator indicated "Focus" when "Diameter" was selected
+  * w_keyboard.c had pointer assignment reversed
+  * extraneous "done" in Imakefile in "install.jhtml" section
+    From Eric Scott
+  * many protoytpe cleanups from Eric Scott
+  * #ifndef __FreeBSD__ added around #include  from Eric Scott
+  * uses rint() instead of lrint() for those with non-C99 compilers
+  * Solaris doesn't have REG_NOERROR for regex, so have new #define for that
+  * added dependency on version.h and patchlevel.h for f_util.c and f_save.c to
+    Imakefile
+  * In imperial fractional scale mode, if the user scale factor wasn't 1.0, xfig
+    would switch to decimal mode.  This has been fixed to remain in fractional mode.
+  * Added condition for GLIBC to not declare srandom(int)
+  * Better resizing of message popup panel
+  * Map of Spain included Portugal. From Eugen Dedu.
+  * Double-clicking on either style or family would crash xfig
+  * Export/Print grid units were not reset when loading Fig file of different units
+  * When converting empty export/print grid units to fractional inches would make 0/2
+  * Escaped hyphens in man page
+    From Roland Rosendfeld
+  * When exporting to all three: PostScript, PDF and TeX, incorrectly generated
+    PostScript and PDF that included LaTeX-only (special) text
+  * Bug when doing Save As to a shorter filename - would corrupt name sometimes
+  * Note about 450 pixels/cm didn't make it from the FORMAT3.1 file to FORMAT3.2
+  * Print command was using -P instead of -d for lp
+  * On Cygwin, needed to double-escape PRINTER environment when backslashes in name
+  * w_library.c had incompatible poiner type in call to ScanLibraryDirectory
+  * Not enough characters allocated for ruler inch/cm indicators.  Would cause segfault
+    on zooming out because of longer ruler text, e.g. -10210cm
+  * 22 new arrowhead types
+  * changed default browser to firefox and default pdf viewer to xpdf
+  * HTML MAP export (fig2dev) produces reference to .png file instead of .gif now
+  * A note added to i18n.html that says if you run fig2dev standalone, you must
+    pass the -j option to it
+  * No need to have the C99 complex functions in the math library.
+  * New computers from Andre Esser (Libraries/Computers)
+  * Some network icons colored and/or combined by Roland Rosenfeld.
+  * When exporting only active layers have choice of bounding area of whole
+    figure or only the active layers
+  * Two new library figures - piano_keyboard.fig, top view of a piano keyboard
+    by Reinaert Albrecht, and piano_keyboard_perspect.fig, a perspective
+    view of a piano keyboard by Brian Smith, both in the Libraries/Music
+    directory.
+  * New library figure - scissors.fig in Libraries/OfficeEquip from Kasie
+    Breezer Talbot
+  * Search tolerance increased from 4 pixels to 10 for zoom < 20
+  * Isometric grid to ease making isometric drawings
+    From Jasper Wesselingh
+  * New 37-pin D connector and 50-pin ribbon connector in Libraries/Electronic/Physical
+
+-------------------------------------------------------------------
+Sun Nov 15 14:48:07 CET 2009 - meissner@suse.de
+
+- refresh patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Apr  6 11:23:08 CEST 2009 - werner@suse.de
+
+- Add fix to avoid FPE aftger zoom in (bnc#492295)
+
+-------------------------------------------------------------------
+Wed May 14 19:13:00 CEST 2008 - werner@suse.de
+
+- Fix buffer overflow in zoom handling (bnc#390283)
+
+-------------------------------------------------------------------
+Fri Apr 25 18:17:48 CEST 2008 - werner@suse.de
+
+- Make PS/PDF/LaTeX work similar to PS/LaTeX and PDF/LaTeX (bnc#383669)
+
+-------------------------------------------------------------------
+Tue Dec 18 14:22:49 UTC 2007 - werner@suse.de
+
+- Close comment in patch xfig.3.2.5-fixes.dif (bug #349439)
+
+-------------------------------------------------------------------
+Fri Nov 23 12:30:59 CET 2007 - werner@suse.de
+
+- Make browser script know about firefox
+
+-------------------------------------------------------------------
+Fri Jun  1 17:15:10 CEST 2007 - dmueller@suse.de
+
+- fix buildrequires
+
+-------------------------------------------------------------------
+Mon May  7 16:44:45 CEST 2007 - werner@suse.de
+
+- Make it work as it should:
+  * Be sure that horizontal sidebar ruler and other elements are
+    visible all the time.  This requires small modifications in the
+    calculations of the positions of a lot of elements/classes.
+  * Make splash screen show `3.2.5' instead of `3.2.5 - alpha5'
+  * Supress not wanted debug message
+- Update to xfig 3.2.5 including various bug fixes, from the
+  CHANGES file (bug #267840):
+  * Shift-U accelerator added to popup units panel
+  * The library menu button sizes with the library panel, to show longer
+    path names if the user wants.
+  * The cursor for drawing lines, splines, etc. is a crosshair now instead
+    of an arrow.
+  * Snap features to allow snapping points to endpoints, midpoints and
+    intersections of other objects.
+    From Chris Moller.
+  * Keyboard input of object coordinates for precise positioning.
+    From Chris Moller.
+  * Can grab arc anywhere along the curve instead of just at grab points
+    From Chris Moller.
+  * Added -noflipvisualhints for cases where, due to "different" pointer
+    devices, they aren't really flipped, but the mapping indicates they are.
+  * Export to all of PS, PDF and LaTeX in one operation
+    From Alistair Ramsey
+  * Reorganized Networks library and new devices: ASX-200, 1000, and 4000
+    by Bill Chimiak
+  * New figures "betty.fig" (Betty Boop) and "nikke.fig" (German detective
+    Nick Knatter) in Libraries/Examples drawn by Markku Reunanen
+  * Can finish text input by pressing Escape.  This removes the cancellation
+    of a compose sequence (e.g. a-umlaut)
+  * Actually a bug fix, import of PDF files is now possible.  The code was
+    there since version 3.2.3, but the user interface was not.
+  * Nearly-full ANSI protoization of code by Harald Koenig
+  * Installation of Libraries and doc files faster with tar instead of shell loop
+  * New Gregorian chant music symbols from Bill Chimiak.  Also, Music library
+    divided into "chant" and "modern"
+  * Popup edit panel slightly more compact vertically
+  * New library "Fasteners" containing various bolts and screws
+    From Jim Yuzwalk
+  * Increased size of numeric entry fields in indicator panels
+  * N-channel IGBT in Electronic/Schematics Library from Art Blair
+  * starting values for arrow type, width, length, thickness may be specified
+    on command-line or in X resources:
+    -startarrowtype, -startarrowwidth, -startarrowlength, -startarrowthick
+  * xfig would crash on 64-bit processors because of a missing include, which 
+    causes new_string() to be declared implicitly as returning an integer.
+    This may cause the top 32 bits to get lost and hence the crash.
+  * Blanks not preserved in imported picture filename when reading Fig file
+  * When in metric mode, decimal precision was ignored for dimension lines
+  * When showing vertex numbers on objects, first vertex is now 0 to match
+    edit window vertex numbers
+  * Also, vertex numbers are not shown on inactive (grayed) layers
+  * Widget shadow resources moved from Fig-color to Fig because they don't
+    really have anything to do with color. There was a problem when running
+    KDE because it set a global resource *Scrollbar*height: which made xfig 
+    freeze when *customization: -color was NOT used.
+  * The point positioning indicator is turned on when editing a compound
+    object to show the user that it is used
+  * Increased the maximum size of images that can be imported.  There was
+    a limit in the PostScript image encoder of 4096x4096 pixels.  This was
+    increased to 8192x8192.
+  * Centered text was changed to left-justified when flipped horizontally
+    inside a compound object.
+  * With -v option, after reporting the version, xfig would say that -v
+    was an unknown option 
+  * Local locale was being used when writing the xfig cut buffer file
+    instead of switching to "C" locale.  This created commas instead of
+    decimal (.) for numbers in those particular locales.
+    From Dirk Osswald 
+  * Local locale was used when forming command for calling fig2dev,
+    resulting in commas instead of decimals for floating point numbers.
+  * count_user_colors buffer overflow fixed
+  * Under Cygwin, temporary file stayed around after unlink(), causing
+    error when importing more than one ps/eps/pdf file
+  * Segfault when using -update because appres resources were NULL
+  * -update option failed when not first option passed to xfig
+  * Clicking window manager "close window" button in library titlebar
+    didn't close the window
+  * Wasn't distributing objects in compounds when there were only 2 objects
+  * Some compilers complain about the order of declaration in u_fonts.h - fixed
+  * Northern part of map of India was incorrect (Libraries/Maps/Asia/india.fig)
+  * Map of Serbia was misnamed "yugoslavia.fig" (Libraries/Maps/Europe/yugoslavia.fig)
+  * Map of Central Europe had old Yugoslavia instead of Croatia, Serbia, Bosnia-
+    Herzegovina, and Macedonia (also, Slovenia was mistakenly inside the border)
+  * Editing a compound object with more than 200 texts would crash xfig
+  * Added note to README and FAQ html file:
+    If the Xaw or Xaw3d Athena widget sets are compiled with the
+    ARROW_SCROLLBAR style of scrollbars, there is no StartScroll action
+    and you won't be able to scroll using the wheel on the mouse.  
+    If you want to be able to scroll using the wheel, you must recompile
+    the Xaw library from sources, disabling the ARROW_SCROLLBAR option.
+  * Astrological symbols for planets in Miscellaneous/Astrology by Andrew Collier
+  * Added key bindings to text dialogs to be more like modern systems (the
+    Athena Widget Set that xfig uses is very old):
+      Home:  beginning-of-line
+      End:   end-of-line
+      Del:   delete-character-right
+  * Added *.jpeg* to picture browse options
+  * New libraries for electronics from Fabio González in
+    Libraries/Electronics/Schematic/More 
+  * typo in latex_and_xfig.html and LATEX_AND_XFIG files. Text should be:
+    \convertMPtoPDF{foo.0}{1}{1}
+    It was missing parameters {1}{1}
+  * -correct_font_size missing from -help option list and man pages
+  * -help and -version didn't work unless they were first in the options
+  * -O option wasn't passed to fig2dev for overlapping pages in multiple
+    page mode for PostScript export
+  * Introduction.html and installation.html updated to include Macintosh
+    port of xfig
+  * Button to collapse depths of a compound object (make all same depth)
+    in popup object editor
+  * Grid changed from dotted line to light red solid line
+  * Candle in Libraries/Miscellaneous by Dr. Lyman Hazelton
+  * Right-click on depth checkbox sets current depth in indicator panel
+    to that depth
+  * Library of symbols used when diagramming folding instructions to make
+    origami models and example contributed by Marc Vigo
+  * Can adjust width and height directly in popup editor for picture
+    objects
+  * Support for David Hawkey's Xaw3D version 1.5E
+    (http://www.visi.com/~hawkeyd/xaw3d.html)
+  * When loading a library object, if it contained only a compound and
+    nothing else, when xfig promoted that compound to the toplevel the
+    main comment was lost
+  * Incorrect header files used for SmeBSB resulted in either segfault or
+    none of the command panel entries being underlined
+  * Drawing very large splines (e.g. at zoom = 0.01) caused integer
+    roundoff errors, making xfig loop indefinitely
+  * Bug where a line that had a zero width or length arrowhead was not
+    redrawn after being moved, copied, canvas redraw, etc.
+  * The page border and axis lines would obscure Fig objects when moving,
+    copying etc. other objects on the canvas.
+  * In the popup picture editor, if the relative position of the corners
+    of the picture were changed, the rotation field was not updated
+    (this bug was in 3.2.5-alpha3 only)
+  * line, arc, ellipse length tool was reporting 0 length
+  * URL for information about the color optimization code (written by
+    Anthony Dekker) has changed to:
+    http://members.ozemail.com.au/~dekker/NEUQUANT.HTML
+  * -autorefresh command-line option (resource: Fig.autorefresh) which
+    will make xfig look at the timestamp on the .fig file and
+    automatically load it and display it everytime it changes.
+  * Removed requirement to compile with WHEELMOUSE when using wheelmouse
+  * New tower computers (Libraries/Computers/AOpenKF45E.fig and
+    AOpenKF45E.fig from Dirko van Schalkwyk)
+  * New 10/100 8port hub (Libraries/Networks/3Com3C16750.fig also from
+    Dirko van Schalkwyk)
+  * When placing library objects, the name and comments are displayed in
+    message window
+  * New flags (Libraries/Flags): Africa/Eritrea, Africa/Zimbabwe,
+    Asia/Myanmar, Asia/Tajikstan, Asia/Kyrgystan, Europe/Croatia
+  * non-polar capacitor added to Libraries/Electronic/Schematic
+  * Mouse wheel can be used to scroll through filename lists in File and
+    Export panels and icons or object lists in Library panel
+  * Thickness of ticks in dimension lines are user-adjustable now
+  * For attribute popup dialogs with only one text entry, keyboard now
+    focuses on the entry as long as the pointer is anywhere in the dialog
+  * When using the "Open compound, keep rest visible", the other objects
+    are drawn in shades of gray similar to the inactive layers feature.
+  * New library objects: adder, multiplier, sine-source and voltage-source
+    in Electronic/Schematic by Hubert Lam
+  * Zooming in or out with the Z or z key respectively will keep the canvas
+    centered on the mouse pointer
+  * Full version and patchlevel is included in Fig file header for
+    diagnostics
+  * Can explicitly set the rotation of imported pictures in edit panel
+    after importing
+  * Export option to produce both EPS and PDF (in two files) in one step.
+    Useful for those who both use LaTeX and PDFLaTeX
+  * "Epoch" added to rpm spec
+  * New HP/GL2 (fig2dev) driver from Glenn Burkhardt with paper size
+    selection, offset, centering and orientation options
+  * New library object "atom" in Libraries/Miscellaneous is the classic
+    drawing of an atom with electrons circling
+    From Andrew B. Collier
+  * Missing #ifdef XAW3D in SimpleMenu.c
+  * Bug when breaking a compound object - depths were added twice to the
+    counts
+  * When implicitly cancelling the placement of a library object by
+    choosing another mode, xfig would do one of two things:
+      1. tell user to cancel or finish the current operation, but there
+         was no way to do that
+      2. create the object that was being cancelled with extremely large,
+         negative coordinates
+  * Picture Reread button was active before file was read the first time
+  * Rereading picture in edit popup produced bad colors
+  * When using multiple copies of an imported picture, h/w ratio was not
+    computed for copies
+  * Importing PCX images were incorrect when bytes per line different from
+    width*bpp
+  * When passed a filename containing a directory name for a Fig object
+    library using -library_dir, and that directory only contains Fig files
+    and no subdirectories with Fig files, xfig segfaulted
+  * Several checks for memory allocation failure added to the library
+    loading procs
+  * Forgot to free allocated memory when return abnormally from loading
+    libraries
+  * Path length check in loading libraries fixed
+  * Missing include for put_msg prototype in e_measeure.c
+  * Needed #ifdef for XtVersion in SmeBSB.c (X11R5 doesn't have
+    international fontset)
+  * Added SIGPIPE signal to ignore in case an external program dies when we're
+    using pipes
+  * Screen capture on an MSBFirst X server with 24/32 bits per pixel was
+    incorrect.
+  * Importing any image file on such a server was incorrect (bytes/bits
+    reversed).
+  * Reading GIF or PCX files on 24-bit server *and* on big-endian machine
+    (e.g. Sparcstation) resulted in bytes being swapped and funny colors
+  * Could popup unit dialog when drawing/editing objects
+  * Embedded whitespace in filenames in recently loaded files weren't
+    parsed properly (.xfigrc)
+  * When pasting an object on the canvas, point positioning grid wasn't used
+  * Bug when reading a compressed eps file (file handle was passed to open
+    proc instead of name)
+  * Minor grid spec used twice instead of minor/major when passed to fig2dev
+  * Fixed conversions of export/print grid values when switching to/from
+    metric, decimal or fraction
+  * When loading or merging a file, xfig appended ".fig" to the name if
+    there wasn't ".fig" in the name. Now it only appends ".fig" if there
+    is no suffix (no ".").
+  * When appending the ".fig" before the previous change, xfig would segfault
+  * Libraries/Electronic/Schematic/transformer and transformer_ironcore
+    aligned to 1/16" grid
+  * Bugs in indicator panel display of text flags, dimension line params
+    and arrow size params when cycling through settings with middle or
+    right mouse button
+  * Bug in callbacks for dimension line checkboxes that select actual
+    length or user text
+  * When exporting to Combined PDF/LaTeX it uses ".pdf" and ".pdf_t"
+    suffixes because LaTeX doesn't recognize ".pdftex" as a PDF file
+  * Better clipping around arrowheads on thick lines (lines that are
+    thicker than the arrowhead is wide)
+  * Checks for open splines of < 2 points when reading figure file and
+    removes them
+  * Clicking middle mouse button after creating first point of closed
+    spline switched to freehand mode
+  * Export panel sections would get messed up when changing export
+    languages
+  * Now checks whether scrollbars support StartScroll before trying to use
+    it for the wheel scrolling.  When the Xaw widgets are compiled with
+    ARROW_SCROLLBAR, there is no such action.
+  * pstex_t export lacked border option (-b) to align LaTeX text when
+    pstex figure specified border (also fixed in fig2dev)
+  * Create one picture object with no filename, then create another and
+    xfig crashed
+  * Some bugs when freeing dimension line components
+  * Bad choices for grid dot spacing in metric mode in the 5mm grid, and
+    decimal inch mode in the 0.5 and 1.0 inch grids
+  * -international flag missing from xfig.html and xfig.man docs
+  * Added call to XsetLocaleModifiers() when initializing input method
+    (-international mode only)
+  * xfig was limiting arrowhead lengths to 50 pixels instead of 50 inches,
+    and the width to 10 pixels instead of 10 inches.
+  * edit panel for circles shouldn't have "angle" entry
+  * edit panel wasn't allowing typing in of negative angles for text and
+    ellipses
+  * Objects were sometimes drawn with a wild point when zooming
+  * Full path was being added to default export filename and wasn't
+    changing when user changed directories
+  * When drawing a box or rounded box with the "show line lengths" on, the
+    sizes were in Fig units (1200ppi) instead of user units.
+  * Spacing cedilla (ISO 0xB8 / octal 270) was missing from CompKeyDB file
+  * Changing the units in the popup edit panel for a text object caused a
+    segfault.
+  * Rulers and grid didn't change scale when user scale was != 1.0.  Even
+    though the message window showed the correct user scale when drawing
+    objects, the rulers and grid still showed the unscaled values.
+  * Axis lines through 0,0 now drawn after page border so it remains
+    visible when there is a grid
+  * Segfault if current directory was deleted after starting xfig
+  * Positioning grid was set to "ANY" when editing a compound object,
+    causing the original bounding box to be lost
+  * Bug in arc drawing caused arcs to be drawn as circles at high zoom
+  * Computing the area of a polygon larger than 38x38 inches overflowed
+    calculation
+  * Bug in bounds calculation for ellipses and circles that increased
+    bounding box even with line width = 1
+  * Limit on number of styles in a family wasn't checked
+  * If all depths were turned off and any edit operation was attempted on
+    the canvas such as move object, delete object, xfig would hang,
+    searching for objects indefinitely.
+
+-------------------------------------------------------------------
+Thu Nov 16 14:18:54 CET 2006 - werner@suse.de
+
+- Set LC_NUMERIC to POSIX before print or export data (bug #213942)
+
+-------------------------------------------------------------------
+Tue Nov  7 16:01:20 CET 2006 - ro@suse.de
+
+- fix docu permissions 
+
+-------------------------------------------------------------------
+Mon Jul 31 19:17:02 CEST 2006 - werner@suse.de
+
+- Use Imake defines for LIBDIR/SHAREDIR switch
+
+-------------------------------------------------------------------
+Fri Jul 28 19:22:50 CEST 2006 - werner@suse.de
+
+- Make it build with X11R7
+
+-------------------------------------------------------------------
+Wed Feb 15 10:36:07 CET 2006 - stbinner@suse.de
+
+- add GenericName to .desktop file
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:07 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Oct  6 19:28:43 CEST 2005 - werner@suse.de
+
+- Make URW fonts an option, use Adobe as fallback
+
+-------------------------------------------------------------------
+Wed Aug 31 13:33:19 CEST 2005 - werner@suse.de
+
+- Fix single byte buffer overflow due pedantic gcc4 (bug #114344)
+
+-------------------------------------------------------------------
+Mon Aug 29 11:30:10 CEST 2005 - ro@suse.de
+
+- use own desktop file with icon (#113672)
+
+-------------------------------------------------------------------
+Tue Mar  1 10:35:20 CET 2005 - meissner@suse.de
+
+- fixed font struct definitions to be after struct
+  definition for gcc4.
+- -Wno-all is actually -w.
+
+-------------------------------------------------------------------
+Thu Aug 26 11:53:39 CEST 2004 - werner@suse.de
+
+- Allow arguments in the wrapper script for xfig
+
+-------------------------------------------------------------------
+Wed Aug 25 15:05:13 CEST 2004 - werner@suse.de
+
+- Avoid nasty warnings about not found actions
+- Use wrapper script to avoid UTF-8 for the program its self
+
+-------------------------------------------------------------------
+Fri Aug 13 16:03:35 CEST 2004 - werner@suse.de
+
+- Filelist: Add pixmap of xfig (#43698)
+- Package docu: correct dir name in PDB (#43698)
+
+-------------------------------------------------------------------
+Fri May 28 11:35:57 CEST 2004 - adrian@suse.de
+
+- fix invalid Categories (#41338)
+
+-------------------------------------------------------------------
+Tue Apr  6 17:00:46 CEST 2004 - werner@suse.de
+
+- Add application desktop file for xfig (bug #38507 ???)
+
+-------------------------------------------------------------------
+Mon Mar 22 13:29:27 CET 2004 - werner@suse.de
+
+- Fix NULL pointer access (bug #36650)
+
+-------------------------------------------------------------------
+Thu Mar 18 17:43:45 CET 2004 - werner@suse.de
+
+- Remove .bak's from file list (bug #36311)
+
+-------------------------------------------------------------------
+Thu Mar 11 15:53:55 CET 2004 - werner@suse.de
+
+- Add browser script for detection of varisou web browsers (#35669)
+- Add security fix for temporary files
+- Fix doc location
+- Avoid extrem long build logs
+
+-------------------------------------------------------------------
+Tue Feb  3 18:55:23 CET 2004 - werner@suse.de
+
+- Update to 3.2.4
+
+-------------------------------------------------------------------
+Sat Jan 10 17:38:27 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Tue Jul 22 13:20:15 CEST 2003 - hare@suse.de
+
+- Fixed function declaration.
+
+-------------------------------------------------------------------
+Fri Jun 13 08:39:58 CEST 2003 - kukuk@suse.de
+
+- Add workaround for brp-symlink script
+
+-------------------------------------------------------------------
+Thu Jun 12 10:51:39 CEST 2003 - kukuk@suse.de
+
+- Use BuildRoot
+- Fix filelist
+
+-------------------------------------------------------------------
+Fri May  9 12:35:24 CEST 2003 - mfabian@suse.de
+
+- fix Bugzilla #26734: extend the fontsets in
+  xfig-international-std-fonts.dif to always match something to
+  avoid warnings "Missing charsets in String to FontSet conversion"
+  even if only few fonts are installed.
+  
+-------------------------------------------------------------------
+Thu May  8 20:46:46 CEST 2003 - mfabian@suse.de
+
+- adapt font names in xfig.3.2.3d-urw-fonts.dif to the names
+  as they are auto generated by mkfontscale since SuSE Linux 8.2.
+- don't print warnings concerning input styles when compose is
+  used, input styles don't matter for compose.
+
+-------------------------------------------------------------------
+Mon Mar 18 21:19:14 CET 2002 - mfabian@suse.de
+
+- fix bug #15077, don't exit when XSetLocaleModifiers("") fails,
+  this would make it impossible to use the '-international' option
+  unless some input server is running, which is nonsense for most
+  non-Asian languages e.g. for Czech.
+- enable '-international' automatically when
+  NULL == strcasestr(nl_langinfo(CODESET),"ISO-8859-1")
+  (i.e. enable it automatically for Czech as well).
+- use better fonts for on screen display of Times-Roman and
+  Times-Bold when '-international' is used.
+
+-------------------------------------------------------------------
+Mon Mar 18 12:45:13 CET 2002 - werner@suse.de
+
+- Fix bug # 15076: add link /usr/X11R6/lib/X11/xfig/html/
+  pointing to /usr/share/doc/packages/xfig/html/,
+  add link /usr/X11R6/lib/X11/xfig/xfig.html pointing to 
+  /usr/share/doc/packages/xfig/xfig.html, add link
+  /usr/X11R6/lib/X11/xfig/xfig-howto.pdf pointing to
+  /usr/share/doc/packages/xfig/xfig-howto.pdf
+  
+-------------------------------------------------------------------
+Thu Mar  7 12:43:21 CET 2002 - werner@suse.de
+
+- Fix bug # 14588: add link /usr/X11R6/lib/X11/xfig/Libraries
+  pointing to /usr/share/doc/packages/xfig/Examples/Libraries
+
+-------------------------------------------------------------------
+Fri Feb 22 18:28:57 CET 2002 - mfabian@suse.de
+
+- use the URW fonts for display on X11 instead of bitmap fonts.
+  Using the URW fonts for display on X11 *and* for printing with
+  Ghostscript has the advantage that printout looks much more
+  similar to the preview on X11. Much more WYSIWYG now.
+  On top of that, the bitmap fonts could not be scaled anymore
+  because we now have ":unscaled" added to every directory in
+  the font path which contains only bitmap fonts. Therefore
+  changing the font size in xfig ceased to work on X11, it worked
+  only in the PostScript output. Because of this the X11 display
+  was very different from the PostScript output.
+- add font-test.fig as a sample file to test the correct display
+  of the URW fonts.
+- add xfig.3.2.3d-xim.dif to fix XIM for Japanese and Korean.
+  (didn't work at all previously because a call to
+  XSetLocaleModifiers() was missing)
+- switch on the '-international' option for all locales using
+  codesets different from 'ISO-8859-*' on by default.
+- remove Korean app-defaults. The only reason for it's existence
+  was to set 'Fig.international: true' apart from that it was
+  identical to the standard app-defaults file. And because of
+  some bug (which I still don't understand) it wasn't read anyway
+  and therefore achieved nothing.
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:07 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Tue Dec 11 12:45:56 CET 2001 - werner@suse.de
+
+- Add forgotten examples
+- Add forgotten docs
+
+-------------------------------------------------------------------
+Mon Dec 10 16:33:10 CET 2001 - werner@suse.de
+
+- Update to version 3.2.3d
+
+-------------------------------------------------------------------
+Tue May  8 18:47:29 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Thu Jan 25 17:17:38 CET 2001 - violiet@suse.de
+
+- added Korean resource.
+
+-------------------------------------------------------------------
+Thu Dec 14 15:31:00 CET 2000 - werner@suse.de
+
+- Fixed the improve of the object searching at higher zooms (bug#4672)
+
+-------------------------------------------------------------------
+Tue Oct 10 16:46:11 CEST 2000 - werner@suse.de
+
+- Move XtSetLanguageProc after XtAppInitialize because otherwise
+  LC_NUMERIC will be overwritten by LANG.
+  
+-------------------------------------------------------------------
+Fri Sep 15 17:17:22 CEST 2000 - werner@suse.de
+
+- Update to 3.2.3c
+  * include bug fix for f_read.c
+  * Enable international support at compile time but disable
+    it at run time (works only for Japanese and Korean).
+    User could use -international
+  * Mention  -international in the manual and html page
+
+-------------------------------------------------------------------
+Fri Jun 30 15:37:59 CEST 2000 - werner@suse.de
+
+- Workaround for un-initialized label in sme_bsb class
+
+-------------------------------------------------------------------
+Wed May 31 16:22:54 CEST 2000 - werner@suse.de
+
+- use %{_defaultdocdir}
+
+-------------------------------------------------------------------
+Mon Mar 27 12:48:09 CEST 2000 - werner@suse.de
+
+- Avoid sparc nasties
+
+-------------------------------------------------------------------
+Fri Mar 24 14:46:11 CET 2000 - werner@suse.de
+
+- Update to new version 3.2.3a
+- Add patch for special jpeg version
+- Change some minor shadow colorings
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Apr  7 20:35:51 CEST 1999 - werner@suse.de
+
+- Use the macro __need___va_list instead of moving varargs.h
+- Integrate the cut+paste patch
+- Use colored XPM icon
+
+-------------------------------------------------------------------
+Fri Mar  5 01:00:51 MET 1999 - ro@suse.de
+
+- move varargs topward to make it compile
+
+-------------------------------------------------------------------
+Wed Dec  9 16:40:43 MET 1998 - max@suse.de
+
+- added whole /usr/X11R6/lib/X11/xfig path to the file list, to get
+  online documentation and cliparts into the rpm package.  
+
+-------------------------------------------------------------------
+Fri Oct 30 11:24:41 MET 1998 - ro@suse.de
+
+- update to 3.2.2
+
+-------------------------------------------------------------------
+Thu Sep 17 16:56:38 MEST 1998 - ro@suse.de
+
+- don't redeclare sys_errlist for glibc
+
+-------------------------------------------------------------------
+Mon Oct 20 13:35:40 MEST 1997 - ro@suse.de
+
+- ready for autobuild
+
+-------------------------------------------------------------------
+Tue May 27 20:03:59 MEST 1997 - florian@suse.de
+
+
+- update to version 3.2
+
+-------------------------------------------------------------------
+Tue May 27 20:03:59 MEST 1997 - florian@suse.de
+
+
+- update to version 3.2.0-beta3
+
+- add more docu and examples
+
+
+-------------------------------------------------------------------
+Wed Nov  6 00:13:26 CET 1996 - florian@suse.de
+
+
+- changed to use cm as default metric and not inches
+
+

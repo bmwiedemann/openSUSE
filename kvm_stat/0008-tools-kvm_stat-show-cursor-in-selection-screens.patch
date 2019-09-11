@@ -1,0 +1,44 @@
+From a53f6e2cf574e240e400e147f10f92e6076eae4d Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Date: Wed, 7 Jun 2017 21:08:34 +0200
+Subject: [PATCH 08/43] tools/kvm_stat: show cursor in selection screens
+
+Show the cursor in the interactive screens to specify pid, filter or guest
+name as an orientation for the user.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 664751dfc302363b8e9686b492e837bc4f15830e)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index a725e02d6f88..b9fa1ae12346 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1151,13 +1151,19 @@ class Tui(object):
+                     self.refresh_header(0)
+                     self.update_pid(0)
+                 if char == 'f':
++                    curses.curs_set(1)
+                     self.show_filter_selection()
++                    curses.curs_set(0)
+                     sleeptime = DELAY_INITIAL
+                 if char == 'g':
++                    curses.curs_set(1)
+                     self.show_vm_selection_by_guest_name()
++                    curses.curs_set(0)
+                     sleeptime = DELAY_INITIAL
+                 if char == 'p':
++                    curses.curs_set(1)
+                     self.show_vm_selection_by_pid()
++                    curses.curs_set(0)
+                     sleeptime = DELAY_INITIAL
+                 if char == 'r':
+                     self.stats.reset()
+-- 
+2.12.3
+

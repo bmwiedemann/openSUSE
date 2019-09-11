@@ -1,0 +1,41 @@
+#!/bin/sh
+# 
+# saxon script
+# JPackage Project <http://www.jpackage.org/>
+
+. /usr/share/java-utils/java-functions
+
+MAIN_CLASS=com.icl.saxon.StyleSheetBatch
+
+BASE_JARS="saxon6.jar xml-commons-apis.jar jaxp_parser_impl.jar"
+
+# Optional jars
+CLASSPATH="$CLASSPATH:"$(build-classpath docbook-xsl-saxon saxon-fop \
+  avalon-logkit xml-commons-resolver 2>/dev/null) || :
+
+# If we have resolver, add the CatalogManager.properties dir to CLASSPATH,
+# and tweak command line options so that it's used.
+args=
+if echo "$CLASSPATH" | grep xml-commons-resolver >/dev/null 2>&1 ; then
+  CLASSPATH="$CLASSPATH:__RESOLVERDIR__"
+  # Tune options to use resolver.
+  r=org.apache.xml.resolver.tools.ResolvingXMLReader
+  for opt in -x -y ; do
+    if ! echo $@ | grep "\\$opt " >/dev/null 2>&1 ; then
+      args="$args $opt $r"
+    fi
+  done
+  r=org.apache.xml.resolver.tools.CatalogResolver
+  if ! echo $@ | grep "\\-r " >/dev/null 2>&1 ; then
+    args="$args -r $r"
+  fi
+fi
+
+# Set parameters
+set_jvm
+set_classpath $BASE_JARS
+set_flags $BASE_FLAGS
+set_options $BASE_OPTIONS
+
+# Let's start
+run $args "$@"

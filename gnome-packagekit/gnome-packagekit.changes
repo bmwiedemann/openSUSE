@@ -1,0 +1,2252 @@
+-------------------------------------------------------------------
+Fri Mar  8 13:02:07 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Use newer meson features to avoid a build warning.
+  + Remove the app menu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  8 09:18:30 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Updated translations.
+- Use autosetup macro.
+- Remove lang package from recommended packages as it already
+  supplements main package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Tue Mar 20 17:22:33 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Mon Mar 12 15:11:48 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:29:11 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Sep 11 11:56:41 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.0:
+  + Application: update application ID to match .desktop file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  8 16:16:22 UTC 2017 - jengelh@inai.de
+
+- Update summaries.
+
+-------------------------------------------------------------------
+Tue Aug 15 13:25:36 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.90:
+  + Switch to meson build system.
+  + Updated translations.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+
+-------------------------------------------------------------------
+Thu May 11 02:05:45 UTC 2017 - sckang@suse.com
+
+- Add gnome-packagekit-fix-not-responding-after-update.patch: Fix
+  gpk-update-viewer not responding after installing all available
+  updates (bgo#782673, bsc#1036542).
+
+-------------------------------------------------------------------
+Mon Mar 20 20:36:22 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 11 19:37:52 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.92:
+  + Install appstream data to /usr/share/metainfo (bgo#778559).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 15 08:19:41 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.90:
+  + Port away from intltool.
+  + Updated translations.
+- Drop intltool BuildRequires: no longer needed.
+- Rebase gnome-packagekit-OnlyShowIn.patch.
+- Rebase bnc-946886-install-signatures-in-viewer.patch.
+
+-------------------------------------------------------------------
+Tue Oct 25 08:59:45 UTC 2016 - zaitor@opensuse.org
+
+- Replace pkgconfig(libsystemd-login) for pkgconfig(libsystemd)
+  BuildRequires, this was changed upstream during the 3.22
+  development, but we missed changing it.
+
+-------------------------------------------------------------------
+Wed Oct 12 10:27:27 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Modernize metainfo.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 15:24:19 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 16 07:45:16 UTC 2016 - zaitor@opensuse.org
+
+- Run spec-clean: Modernize macros, add pkgconfig BuildRequires,
+  and generally clean up spec.
+- Stop passing V=1 to make, we do debugging locally.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Wed Sep 14 07:52:03 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  8 14:40:28 UTC 2016 - dimstar@opensuse.org
+
+- Re-enable and rebase gnome-packagekit-displaysize.patch.
+
+-------------------------------------------------------------------
+Wed Sep  7 20:31:28 UTC 2016 - mgorse@suse.com
+
+- Rebased bnc-946886-install-signatures-in-viewer.patch.
+
+-------------------------------------------------------------------
+Tue Aug 30 10:42:12 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Re-instate the gpk-application app-menu (bgo#769931).
+  + Don't use the deprecated GNOME_COMPILE_WARNINGS.
+  + Remove duplicate prototypes for _get_type().
+  + Ensure gpk-application gets the warning flags set.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 17 09:43:15 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Use new-style application IDs for flatpak.
+  + Remove the broken markdown parsing module.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 15 11:14:46 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.21.4:
+  + Depend on a non-obsolete PackageKit version.
+  + Remove some unused API.
+  + Remove unused animations.
+  + Remove unused functionality.
+  + Use new-style application IDs for flatpak.
+  + Updated translations.
+- Replace PackageKit-devel BuildRequires with
+  pkgconfig(packagekit-glib2), matching what configure looks for.
+- Rebase patches:
+  + gnome-packagekit-OnlyShowIn.patch
+  + bnc#881245-update-test-affects-package-manager-should-restart-gpk-update-viewer.patch
+  + bnc#939278-gnome-packagekit-asks-for-reboot-password-too-early.patch
+- Disabled bnc-946886-install-signatures-in-viewer.patch: patch
+  needs rebase.
+
+-------------------------------------------------------------------
+Thu Jul 14 13:53:37 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Installation of local files has been removed from gpk, avoid
+  registration of bad rpm mime handler. See boo#941862, bgo#766896
+
+-------------------------------------------------------------------
+Thu Apr 14 16:12:30 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+- Drop patch license-agreement-title.patch: fixed upstream.
+- Rebase bnc#881245-update-test-affects-package-manager-should-restart-gpk-update-viewer.patch
+
+-------------------------------------------------------------------
+Wed Apr  6 10:22:42 UTC 2016 - dimstar@opensuse.org
+
+- Remove py_requires: The python helper functions have been removed
+  since version 3.11.1.
+
+-------------------------------------------------------------------
+Mon Mar 21 14:34:08 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Add a missing tag to the AppData file.
+  + Add resizing to various modal dialogs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 13 23:18:43 UTC 2016 - zaitor@opensuse.org
+
+- Disable gnome-packagekit-displaysize.patch: Upstream solved the
+  issue an other way, lets test if we can drop the patch we carry.
+
+-------------------------------------------------------------------
+Tue Dec 29 11:19:36 UTC 2015 - zaitor@opensuse.org
+
+- Replace libcanberra-devel for pkgconfig(libcanberra-gtk3)
+  BuildRequires: Needed now that libcanberra-devel has been split,
+  and it is what configure looks for.
+
+-------------------------------------------------------------------
+Tue Dec  1 10:43:50 UTC 2015 - rlmu@suse.com
+
+- Add bnc#939278-gnome-packagekit-asks-for-reboot-password-too-early.patch
+  Asks for reboot passwd too early (bnc#939278).
+
+-------------------------------------------------------------------
+Tue Nov 17 13:51:02 UTC 2015 - dimstar@opensuse.org
+
+- Move gpk-application.appdata.xml to -extras package, where also
+  the .desktop file resides.
+
+-------------------------------------------------------------------
+Thu Oct 22 21:06:25 UTC 2015 - mgorse@suse.com
+
+- Add bnc-946886-install-signatures-in-viewer.patch -- install
+  signatures in gpk-update-viewer if needed (bsc#946886).
+
+-------------------------------------------------------------------
+Mon Sep 21 11:41:32 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 19 19:12:58 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Ensure to escape package and vendor name.
+  + Consider available packages as updatable.
+  + Set minimum content height for scrolledwindows.
+  + Avoid registering two main desktop file categories.
+  + Updated translations.
+- Rebase gnome-packagekit-OnlyShowIn.patch.
+
+-------------------------------------------------------------------
+Wed Apr 15 15:27:13 UTC 2015 - fcrozat@suse.com
+
+- Add patch license-agreement-title.patch: fix license agreement
+  title (bsc#927319).
+
+-------------------------------------------------------------------
+Mon Mar 23 11:54:29 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 10:07:37 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 00:22:37 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 16 21:25:38 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Remove the dialog to run newly installed software.
+
+-------------------------------------------------------------------
+Mon Jan 26 12:00:42 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.4:
+  + Add suitable Keywords to the package updater desktop file.
+  + Update executable blacklist for gnome-terminal.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Dec 19 01:48:32 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.3:
+  + Avoid conflict with new GTK+ API.
+  + Updated translations.
+- Rebase gnome-packagekit-OnlyShowIn.patch.
+
+-------------------------------------------------------------------
+Tue Nov 11 21:30:54 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Bugfix: Set a more reasonable size request for
+    gpk-update-viewer.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 30 11:52:52 UTC 2014 - dimstar@opensuse.org
+
+- Add gpk-prefs to category X-GNOME-SystemSettings so it shows up
+  in gnome-control-center.
+
+-------------------------------------------------------------------
+Mon Sep 22 11:01:09 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 19 14:59:29 UTC 2014 - fcrozat@suse.com
+
+- Add patch
+  bnc#881245-update-test-affects-package-manager-should-restart-gpk-update-viewer.patch:
+  ensure gpk-update-viewer is restarted when restart_suggested is
+  part of the update flags. Initial patch by Roy Ley Mu
+  (bnc#881245).
+
+-------------------------------------------------------------------
+Fri Sep 12 19:02:08 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Bugfix: Do not use PkDesktop.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  1 15:36:33 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + Bugfix: Properly call polkit and dbus for reboot.
+  + Updated translations.
+- Drop gnome-packagekit-fix-polkit-usage.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Aug 19 17:00:57 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Add <project_license> to the AppData file.
+  + Disable check for updates if gpk-update-viewer is uninstalled.
+  + Don't default to -g -fexceptions.
+  + Fixed first character eating.
+  + Improve Application column results in gpk-log.
+  + Remove out-of-date user help.
+  + Rename gpk-log to Package Log.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 19 16:21:00 UTC 2014 - fcrozat@suse.com
+
+- Add gnome-packagekit-fix-polkit-usage.patch: properly call polkit
+  and dbus for reboot (bnc#881221).
+
+-------------------------------------------------------------------
+Tue Jul 15 22:55:26 UTC 2014 - dimstar@opensuse.org
+
+- Drop gnome-icon-theme Requires: no longer required after the
+  merging of the themes into Adwaita theme, which in turn is a
+  dependency to GTK+ 3.0.
+
+-------------------------------------------------------------------
+Fri Jun 13 09:57:32 UTC 2014 - fezhang@suse.com
+
+- Add category X-GNOME-SystemSettings to gpk-prefs.desktop so that
+  gnome-control-center can recongnize and show it (bnc#866235).
+
+-------------------------------------------------------------------
+Fri Jun 13 09:19:41 UTC 2014 - fezhang@suse.com
+
+- Add category X-GNOME-SystemSettings to gpk-prefs.desktop so
+  that gnome-control-center can recongnize and show it (bnc#866235)
+
+-------------------------------------------------------------------
+Sat May 17 08:38:24 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Apr 12 05:59:41 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 12:38:23 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Fix grammar.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 17 12:36:29 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Consistently name gpk-prefs as Package Sources.
+  + Remove uses of the term "software update".
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  3 11:08:24 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5:
+  + Fix compile with --disable-systemd.
+  + Rename the 'Software Install' action to 'Package Install'.
+  + Consistently use the name 'Packages'.
+  + Use the name 'Package Updater' to avoid confusion with
+    gnome-software.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan 25 17:56:10 UTC 2014 - zaitor@opensuse.org
+
+- Drop gpk-expand-repos-and-softwarelog.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Sat Jan 25 12:00:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Adjust for PackageKit depends/requires API changes.
+  + Drop the rest of service pack support.
+  + Fix incorrect-fsf-address.
+  + Fix progress label in Software Sources.
+  + Revert "Use the term software more consistently".
+  + Spelling fixes.
+  + Wrap license text.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan 25 11:00:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Remove catalog support.
+  + Remove the service pack support.
+  + Bugfixes:
+    - Do not use deprecated libpackagekit functionality.
+    - Do not use the deprecated (and unused) PkMessage.
+    - Do not use the deprecated (and unused) UpgradeSystem.
+    - Fix compile with newer versions of PackageKit.
+    - Never, ever, use Werror.
+    - Standardize Help/About/Quit in the app menu.
+  + Updated translations.
+- Rebase gnome-packagekit-OnlyShowIn.patch.
+
+-------------------------------------------------------------------
+Sat Jan 25 10:00:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.1:
+  + New (and removed) Features:
+    - Modernise a few of the Glade files.
+    - Remove gpk-distro-upgrade.
+    - Remove the gpk-install-catalog binary.
+    - Remove the gpk-install-mime-type binary.
+    - Remove the gpk-install-package-name binary.
+    - Remove the gpk-install-provide-file binary.
+    - Remove the python helper functions.
+    - Translate the AppData file.
+  + Bugfixes:
+    - Do not set gnome-settings-daemon schema in the prefs program.
+    - Do not show a 'Check now' button in the prefs.
+    - Do not show a critical warning when we try to remove a
+      missing GSource.
+    - Do not support ConsoleKit anymore for restart detection.
+    - Do not use deprecated GTK symbols.
+    - Do not use the DesktopDB in gpk-application.
+    - Don't link to UPower as it is not needed by anything.
+    - Fix the AppData name to be less generic.
+    - Never pass relative paths to the session interface.
+    - Remove EggDBusMonitor as it was basically unused.
+    - Show the whole list in the window when showing repos.
+    - Use 16:9 screenshots in the AppData files.
+  + Updated translations.
+- Dro plibupower-glib-devel BuildRequires: no longer required.
+- Rebase gnome-packagekit-OnlyShowIn.patch.
+- Clean .desktop file handling as per removed features.
+
+-------------------------------------------------------------------
+Sat Jan 25 08:52:18 UTC 2014 - zaitor@opensuse.org
+
+- Add gpk-expand-repos-and-softwarelog.patch, properly expand list
+  of repositories and software log, making them readable.
+  Taken from upstream git.
+- Add missing patchtag to patch1.
+
+-------------------------------------------------------------------
+Thu Oct 17 11:33:20 UTC 2013 - gber@opensuse.org
+
+- Remove conflict with
+  otherproviders(org.freedesktop.PackageKit.service): the conflict
+  was solved on file-level by renaming the service file provided by
+  apper (bnc#846342).
+
+-------------------------------------------------------------------
+Mon Oct 14 13:14:29 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Use the new 16:9 AppData screenshots.
+  + Add Copyright information to the AppData files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 24 12:06:10 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 13 17:55:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.92:
+  + New Features:
+    - Add some desktop file categories.
+    - Add two AppData files for gnome-software.
+    - Open Listaller packages with gpk-install-local-file.
+  + Bugfix:
+    - Change the name of the package installer from 'Software' to
+      'Packages'.
+    - Do not maximize by default as we do not have a draggable
+      header yet.
+    - Do not try and duplicate all the PackageKit errors in the
+      session helper.
+    - Do not use the deprecated
+      gtk_icon_size_lookup_for_settings().
+    - Don't pass relative file-paths to the session-service.
+    - Ignore package progress updates when the transaction is being
+      simulated.
+    - Mark some strings as translatable.
+    - Never show two modal dialog boxes when using the install
+      helpers.
+    - Port from a homegrown EggTest to GTest.
+    - Remove redundant calls to g_type_init.
+    - Set the default height of the details expander.
+    - Show a meaningful name in the about dialog.
+    - Show the update viewer in the app overview.
+    - Swapped "Required packages" and "Dependent packages" button
+      functionality.
+    - Updated the man pages to reflect reality.
+    - Use a reasonable default window size.
+  + Updated translations.
+- Drop gnome-packagekit-larger-details-pane.patch: fixed upstream.
+- Drop gnome-packagekit-spinner.patch: fixed upstream.
+- Rebase gnome-packagekit-OnlyShowIn.patch.
+
+-------------------------------------------------------------------
+Wed Aug 14 14:48:03 UTC 2013 - dimstar@opensuse.org
+
+- Add gnome-packagekit-spinner.patch: Fix gnome-packagekit
+  'hanging' for a long time after executing the update and
+  consuming CPU resources (bnc#813176).
+
+-------------------------------------------------------------------
+Mon May 13 09:55:45 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2:
+  + Fix the search menu.
+  + Open Listaller packages with gpk-install-local-file.
+  + Update the man pages to reflect reality.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 15 17:40:29 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Show the update viewer in the app overview.
+  + Add some translator comments.
+  + Do not maximize by default as we do not have a draggable header
+    yet.
+  + Do not try and duplicate all the PackageKit errors in the
+    session helper.
+  + Mark strings as translatable.
+  + Never show two modal dialog boxes when using the install
+    helpers.
+  + Show a meaningful name in the about dialog.
+  + Updated translations.
+- Rebase gnome-packagekit-OnlyShowIn.patch.
+
+-------------------------------------------------------------------
+Thu Apr  4 21:36:40 UTC 2013 - dimstar@opensuse.org
+
+- Add org.freedesktop.PackageKit.service provides and
+  conflict otherproviders(org.freedesktop.PackageKit.service).
+
+-------------------------------------------------------------------
+Tue Mar 26 11:47:39 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Fix icon size of pk-wait 48x48 icon.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 18 17:35:43 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Do not use GTK deprecated functions.
+  + Don't show confirmation dialog by default.
+  + Don't use horizontal scrollbars.
+  + Fix alignment of dialog.
+  + Ignore the selection-changed after clearing.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 27 19:14:28 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + New Features:
+    - Add keywords for better discoverability.
+    - Support notification filtering.
+  + Bugfix:
+    - Be more careful when dealing with windows.
+    - Don't call gpk_dbus_task_set_xid twice.
+    - Don't crash if the window that invoked the task exits before
+      the task starts up.
+    - Don't use the deprecated INCLUDES in Makefile.am.
+    - Fix a segfault when there is a distribution upgrade
+      available.
+    - Use the correct titles for any encoder or decoder version.
+    - Use the UTF-8 '…' rather than '...' in UI code.
+  + Updated translations.
+- Drop gpk-Dont-crash-if-the-window-invoking-task-exits.patch,
+  fixed upstream.
+
+-------------------------------------------------------------------
+Tue Feb 26 22:26:58 UTC 2013 - dimstar@opensuse.org
+
+- Update gnome-packagekit-OnlyShowIn.patch: change NoDisplay to
+  false for gpk-prefs and gpk-update-viewer (bnc#803201).
+- Don't mangle categories of gpk-prefs: the upstream ones are just
+  fine (showing up in Settings).
+
+-------------------------------------------------------------------
+Sun Feb 10 00:54:33 UTC 2013 - zaitor@opensuse.org
+
+- Add gpk-Dont-crash-if-the-window-invoking-task-exits.patch, Don't
+  crash if the window that invoked the task exits before the task
+  starts up (rh#756208).
+
+-------------------------------------------------------------------
+Sun Jan 20 10:50:32 UTC 2013 - dimstar@opensuse.org
+
+- Do not ship gpk-distro-upgrade (also not in -extras package):
+  Neither does the zypp backend offer this capability at this
+  moment nor do our repositories publish the needed product
+  information.
+
+-------------------------------------------------------------------
+Wed Nov 14 07:46:57 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Fix a segfault when distribution upgrades available
+    (bgo#685579)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov  8 19:00:44 UTC 2012 - dimstar@opensuse.org
+
+- Switch on systemd support: change with_systemd defines to 1.
+
+-------------------------------------------------------------------
+Tue Sep 25 15:45:02 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Bug fixes:
+    - Add trailing semicolon to satisfy desktop-file-validate
+    - Fix help links
+  + Updated translations.
+- Rebase gnome-packagekit-OnlyShowIn.patch.
+
+-------------------------------------------------------------------
+Fri Aug 24 13:29:34 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Do not show the preferences program in the application view
+  + Do not show the update viewer in the application overview
+  + Don't show the clear button when installing or removing
+    packages
+  + Just call the install/remove program 'Software'
+  + Make the header of gpk-application draggable
+  + Reword the welcome message now we have no find button
+  + Use 'Clear' for the clear packages button
+  + Updated translations.
+- Rebase gnome-packagekit-OnlyShowIn.patch.
+- Replace gnome-doc-utils-devel BuildRequires with yelp-tools,
+  following upstream.
+- Replace docbook-utils BuildRequires with docbook-utils-minimal:
+  It's sufficient for the build and avoids pulling in an entire
+  texlive stack.
+- No longer pass --disable-scrollkeeper to conigure.
+
+-------------------------------------------------------------------
+Wed Aug 16 19:15:39 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Update the UI in gpk-prefs to reflect the changes in g-s-d
+  + Remove any references to UpdateSystem
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 16 18:15:05 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + Don't use the deprecated g_thread_init and raise the required
+    glib version
+  + Ensure the native and newest filters are synced at startup
+  + Port away from the deprecated gdk_window_get_pointer()
+  + Port away from the deprecated PackageKit subpercentage
+    properties
+  + Raise the required PackageKit version to something non-obsolete
+  + Remove PK_MESSAGE_ENUM_UNTRUSTED_PACKAGE, it's been removed in
+    PackageKit
+  + Remove support for rollback, it's been removed in PackageKit
+  + Remove support for SimulateX roles as these are no longer
+    present in PackageKit
+  + We're only automatically downloading updates only now, so
+    change the label in the UI
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 16 17:12:57 CEST 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.1:
+  + New Features:
+    - Change the name of the package installer to be
+      'Install Software'.
+    - Maximise the 'Install Software' window by default.
+    - Move the 'Help' menu into the application menu.
+    - Move the installer filter options into the application bar.
+    - Move the selection items into actual buttons.
+    - Move the 'System' menu item in the 'Software Installer' into
+      the application menu.
+    - Nuke the 'Find' button in gpk-application.
+    - Remove the run button from gpk-application.
+    - Use a prettier, smaller, info panel in gpk-application.
+  + Bugfix:
+    - Do not try to use the GSD schema if it has not been installed
+    - Remove the newest metagroup -- it's just not useful.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 15 16:01:49 UTC 2012 - dimstar@opensuse.org
+
+- Add gnome-packagekit-displaysize.patch: Never stretch more than
+  90% of the screen area (bnc#730968).
+
+-------------------------------------------------------------------
+Sun Jul  1 18:02:07 UTC 2012 - badshah400@gmail.com
+
+- Add gnome-packagekit-larger-details-pane.patch to make the
+  details pane in the update viewer larger (bnc#730971,bgo#666635);
+  patch came from Gary and was pushed to the upstream bug report.
+
+-------------------------------------------------------------------
+Mon May 14 11:44:30 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.2:
+  + Do not try to use the GSD schema if it has not been installed
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:27:44 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Bugfix:
+    - Return with success if we try to install no packages
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:57:54 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.92:
+  + Improved strings in the UI.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  7 10:55:37 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.5:
+  + New Features:
+    - Add optional systemd support
+  + Bugfix:
+    - Drop an unneeded include
+    - Ensure that non-arch packages get the correct update size set
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Get ready for full-switch to systemd:
+  + Add a with_systemd macro, currently set to 0 as the systemd
+    support implies no support for ConsoleKit, which we want to
+    keep until sysvinit is not supported anymore.
+  + Add pkgconfig(libsystemd-login) and pkgconfig(polkit-gobject-1)
+    BuildRequires if we build systemd support.
+  + Pass --enable-systemd to configure if we build systemd support.
+
+-------------------------------------------------------------------
+Mon Dec 19 16:19:38 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.3:
+  + Actually exit the GTK tools when the user closes the window
+  + Add a friendly name for g-s-d in the log program
+  + Don't autoclose when no updates but distro upgrades are
+    available
+  + Don't spin in a loop in the updater when results come quicker
+    than we expect
+  + Don't use the deprecated g_format_size_for_display
+  + Don't use the deprecated gtk_hbox_new
+  + Mark the '32-bit' and '64-bit' strings as translatable
+  + Move the gtk-module support files to PK
+  + New versions of GTK show image-broken when we specify an empty
+    string
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Fri Oct 28 13:47:54 UTC 2011 - badshah400@gmail.com
+
+- Change category in gpk-prefs.desktop to
+  X-SuSE-ServiceConfiguration to avoid rpmlint warnings
+
+-------------------------------------------------------------------
+Wed Oct 26 16:38:13 UTC 2011 - badshah400@gmail.com
+
+- Modified categories in .desktop file so that it is grouped with
+  "System" applications in the desktop menus (bnc#714333)
+
+-------------------------------------------------------------------
+Mon Oct 17 18:21:15 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 26 19:33:01 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Bugfix:
+    - Correctly count the list of packages in the update viewer
+    - Ensure the full path is sent to PackageKit when installing
+      files
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 08:06:37 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.92:
+  + Never duplicate the 'Remove' tab for obsoleted software
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  1 13:32:05 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90:
+  + New Features:
+    - Allow the list of package dependencies to expand horizontally
+    - Don't make each package have a bold summary now that the
+      package details are grey
+    - Make the version and architecture gray in the GUI tools
+    - Move the '7 Updates (45Mb)' text to the button box to match
+      the mockup
+    - Split up the updates in the update viewer into sections to
+      match the mockup
+    - Turn the cryptic i86_64 into a human readable string, e.g.
+      '64-bit'
+  + Bugfix:
+    - Better default dialog height for the main application and the
+      update viewer
+    - Better default position for the package update description
+      vpane
+    - Better default size for the Log Viewer
+    - Better default size in the repositories prefs dialog
+    - Correctly use the theme colors rather than hardcoding gray
+    - Do not allow vertical scrollbars on the package metadata
+    - Do not show the full path when installing local files
+    - Do not use deprecated #defines from PackageKit
+    - Don't clear the welcome screen when starting gpk-application
+    - Fix the update viewer's progressbar alignment
+    - Give more space for error messages
+    - Hide the details expander by default in the updates viewer to
+      match the mockup
+    - Never set a window title if the dialog has no parent
+    - Nuke the 'Help' button in the update viewer to closer match
+      the mockups
+    - Rename the 'Software Updates' to 'Software Settings' to make
+      searching clearer
+    - Service Pack dialog: affirmative action goes to the right
+    - Show the application name in the run listbox
+    - Use a 'Cancel' button for a confirm dialog rather than
+      'Close'
+- Drop gnome-packagekit-gpk-prefs-desktop.patch: the name has been
+  changed to 'Software Settings' upstream, which is good enough for
+  us.
+
+-------------------------------------------------------------------
+Tue Jul  5 08:13:39 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.3:
+  + New Features:
+    - Support looking up Plasma services
+    - Pack package dependency lists into tabs
+  + Bugfix:
+    - Add desktop file for gpk-dbus-service
+    - Add the new enumerated types
+    - Add two new translated error codes
+    - Do not set the package checkboxes to be selectable if the
+      backend is not able to do UpdatePackages
+    - Do not show the menu path of installed software as this makes
+      no sense with either GNOME Shell or Unity
+    - Don't use hardcoded paths to executables
+    - Fix compile warnings when using the latest GTK+
+    - Fix some sensitivity problems with gpk-application
+    - Make the session RemovePackageByFiles API match what we have
+      in kpackagekit
+    - Never auto-close the update-viewer if there are restarts to
+      agree to
+    - Remove the foo_DISABLE_DEPRECATED CPPFLAGS as it's hurting
+      with the GTK+ and Glib changes
+    - Rename to Software Install
+    - Use a proper application name
+    - Use GpkTask rather than PkClient while searching
+    - Use /org/gnome as starting path for schemas
+  + Updated translations.
+- Drop gnome-packagekit-gtk-3_1_6.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jun 22 19:22:26 UTC 2011 - dimstar@opensuse.org
+
+- Add gnome-packagekit-gtk-3_1_6.patch: Fix build with gtk+ 3.1.6,
+  which has gtk_[hv]box_new deprecated. Patch taken from git.
+
+-------------------------------------------------------------------
+Fri Jun  3 11:54:13 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.0.3:
+  + Pack the tarball with a non-broken version of libtool this time
+  + Add the gpk-dbus-service.desktop.in file to POTFILES.in as it
+    was missing
+  + Never auto-close the update-viewer if there are restarts to
+    agree to.
+- Remove call to autoreconf and gtk-doc BuildRequires. A working
+  libtool is in the tarball again.
+
+-------------------------------------------------------------------
+Mon May 30 16:22:42 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.2:
+  + Only use the window title if the user set a parent window XID.
+    Fixes rh#700229.
+  + Updated translations.
+- Call autoreconf and add gtk-doc to BuildRequires to replace
+  tarball libtool with the one from openSUSE.
+- Own /usr/share/GConf and /usr/share/GConf/gsettings directories.
+
+-------------------------------------------------------------------
+Wed May 18 21:00:58 UTC 2011 - dimstar@opensuse.org
+
+- Add pkgconfig(dbus-glib-1) BuildRequires.
+
+-------------------------------------------------------------------
+Mon Apr 25 15:35:22 CEST 2011 - vuntz@opensuse.org
+
+- Drop gconf2-devel, libunique-devel, sqlite-devel BuildRequires.
+- Drop gnome-packagekit-BNC538353.patch: this needs to be moved to
+  gnome-settings-daemon. See bnc#689592.
+
+-------------------------------------------------------------------
+Wed Apr  6 10:38:16 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Add desktop file for gpk-dbus-service
+  + Don't use hardcoded paths to executables
+  + Rename to Software Install
+  + Use a proper application name
+  + Use /org/gnome as starting path for schemas
+  + Updated translations.
+- Update to version 2.91.92:
+  + New Features:
+    - Toggle subpackages when toggling the main package
+  + Bugfix:
+    - Don't show Distro Upgrade in Application view
+    - Don't show log viewer in Application view
+    - Don't show Service Pack Creator in application view
+    - Ensure we show the correct icon after unticking a to-be
+      installed item.
+    - Remove obsolete compile time version checks
+  + Updated translations
+- Changes from version 2.91.90:
+  + New Features:
+    - Add a nice name for the pk-command-not-found executable in
+      gpk-log
+  + Bugfix:
+    - Do not show a notification icon when the notification server
+      has persistence support. Fixes bgo#631726
+    - Do not use sounds in the update viewer
+    - Honor aclocal flags (bgo#641584)
+    - Make the warning dialog work
+    - Remove LTSP install root setting as it has moved to
+      gnome-settings-daemon.
+    - Remove the gpk-update-icon process, the functionality has
+      been moved to gnome-settings-daemon
+    - Remove the proxy setting functionality, it's been moved into
+      gnome-settings-daemon
+    - Remove the update preferences from the control center
+    - Remove useless 'FIXME' schema
+    - Sensitize the app's 'Find' button when pasting into the
+      GtkEntry
+- Changes from version 2.91.5:
+  + Do not use the deprecated gdk_app_launch_context_new
+  + Fix gcc uninitialized variable warning
+  + Raise the PackageKit dep to 0.6.5 for
+    pk_task_refresh_cache_async
+  + Translations update
+- Changes from version 2.91.4:
+  + switch to GTK3
+  + Updated translations
+  + move repositories configuration into control center panel
+  + allow to check for updates from control center panel
+  + Port to latest GNOME3 API (libnotify 0.7 / glib logging
+    framework, GtkComboBoxTest / GtkApplication...)
+  + remove gpk-backend-status
+  + Improve update settings UI
+  + Use pk_client_set_cache_age() to optimize the amount of
+    downloaded data
+  + Add a simple distribution upgrade tool that uses PackageKit
+  + Avoid multi-search in gpk-application at the same time
+- Drop gnome-packagekit-BNC383261.patch,
+  gnome-packagekit-fate302445.patch: this needs to move to
+  gnome-settings-daemon. See bnc#689592.
+- Drop gnome-packagekit-opensuse-libexec.patch: fixed upstream.
+- Add docbook-utils BuildRequires and replace gtk2-devel
+  BuildRequires with pkgconfig(gtk+-3.0).
+- Replace GConf2 schemas handling with GSettings schemas handling,
+  with %glib2_gsettings_schema_* macros.
+- Remove --disable-schemas-install option, which was needed for
+  gconf only.
+- Remove .desktop autostart workaround in install section: there's
+  no autostart file anymore.
+
+-------------------------------------------------------------------
+Sun Feb 13 16:07:59 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Dec 14 15:08:09 CET 2010 - vuntz@opensuse.org
+
+- Own /usr/share/gnome and /usr/share/gnome/help to fix build.
+
+-------------------------------------------------------------------
+Thu Oct  7 16:59:50 CEST 2010 - vuntz@opensuse.org
+
+- Update gnome-packagekit-opensuse-libexec.patch to the patch
+  committed to git.
+
+-------------------------------------------------------------------
+Mon Sep 27 17:49:32 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Ensure we reset the GCancellable before doing each async method
+  + Make apply button insensitive while applying
+  + When showing the dep dialog, allow the addition packages to
+    scroll horizontally. Fixes rh#585554
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 22 15:16:23 CEST 2010 - vuntz@opensuse.org
+
+- Move gpk-log to the extras subpackage: it's not really useful by
+  default, for users.
+- Make the extras subpackage require the same version of
+  gnome-packagekit.
+
+-------------------------------------------------------------------
+Fri Sep 17 09:36:22 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.92:
+  + Add required compat defines for PackageKit < 0.6.5. Fixes
+    fdo#30139
+  + Convert to using libupower-glib, rather than
+    devkit-power-gobject
+  + Fix an update viewer crash if the GetUpdates call produced any
+    messages
+  + Fix the gpk-application GetDepends and GetRequires calls
+  + Only disable deprecated code for --enable-strict builds
+  + Updated translations.
+- Change DeviceKit-power-devel BuildRequires to
+  libupower-glib-devel.
+
+-------------------------------------------------------------------
+Tue Sep  7 16:35:36 CEST 2010 - vuntz@opensuse.org
+
+- Add gnome-packagekit-opensuse-libexec.patch to use the right path
+  for libexecdir in openSUSE when checking if a binary is trusted.
+
+-------------------------------------------------------------------
+Wed Sep  1 12:20:03 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.91:
+  + New Features:
+    - Show a GtkInfoBar explaining if updates have been held back
+      and an incomplete update list is shown
+  + Bugfix:
+    - Fix the .desktop files
+    - Mark "_Install Update(s)" string as translatable
+    - Mark items in the Selection menu translatable
+  + Updated translations.
+- Rebase gnome-packagekit-gpk-prefs-desktop.patch.
+
+-------------------------------------------------------------------
+Tue Aug 10 01:30:13 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.6:
+  + Nuke the '7 messages from the package manager' functionality
+  + When the icon gets UpdatesChanged then hide until the new
+    GetUpdate is complete as the information is likely inaccurate
+  + Updated translations.
+- Changes from version 2.30.3:
+  + Ensure we wait for the users response when an application uses
+    InstallMimeTypes. Fixes #28323
+  + Fix an important bug that stopped GetUpdates from working
+    correctly. Fixes rh#615099
+  + Ignore message types we do not recognize. Fixes rh#575669
+  + Ensure files created with gpk-service-pack do not have ';' in
+    them
+  + Save the package lists to the specified directory, not the
+    system default. Fixes rh#609531
+  + Ensure we reset the UI to sensitive after creating the system
+    package list
+  + Use the correct URL in the about dialog to fix an error. Fixes
+    rh#598261
+  + Only mark the find button sensitive if we have valid text _and_
+    are not searching. Fixes rh#602422
+  + Fix default value of ignored_messages key
+  + Fix crash in gpk-dbus-service when looking for printer drivers
+  + Updated translations.
+- Rebase gnome-packagekit-BNC538353.patch.
+- Drop gnome-packagekit-fix-default-ignored_messages.patch: fixed
+  upstream.
+- Drop gnome-packagekit-crash-install-print-driver.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Tue Jun 29 10:42:15 CEST 2010 - vuntz@opensuse.org
+
+- Add gnome-packagekit-gpk-prefs-desktop.patch to change the name
+  of the "Software Update" menu entry: this makes it possible to
+  get the translations from the po files during the build, while
+  suse_update_desktop_file requires manual translations by openSUSE
+  translators, which is duplicate work.
+
+-------------------------------------------------------------------
+Fri Jun 18 17:21:37 UTC 2010 - dimstar@opensuse.org
+
+- bnc#380665 - Rename one of the "Software Update" menu entries to
+  "Software Update Preferences".
+- Split out an -extras package which contains GUI frontends to
+  functionality that openSUSE provides in YaST Package Management.
+  Have -extras Require gnome-packagekit.
+
+-------------------------------------------------------------------
+Thu Jun 17 16:19:12 CEST 2010 - vuntz@opensuse.org
+
+- Add gnome-packagekit-crash-install-print-driver.patch to fix a
+  crash when looking for printer drivers. Fix bnc#614774.
+
+-------------------------------------------------------------------
+Fri Jun  4 02:06:48 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.2:
+  + Always show the search type menu icons. Fixes rh#530595
+  + Ignore other-updates-held-back messages by default
+  + Ignore repo-metadata-download-failed messages by default
+  + Fix up a crash where installing a file failed. Fixes rh#586414
+  + Fix compile with -Wshadow
+  + Do not set the Add/Remove search to name but instead use the
+    GConf defaults
+- This update fixes the search that is too strict by default,
+  bnc#597772.
+- Add gnome-packagekit-fix-default-ignored_messages.patch to fix
+  the default value of the ignored_messages key. See bgo#620524.
+
+-------------------------------------------------------------------
+Sun May 23 16:45:55 CEST 2010 - vuntz@opensuse.org
+
+- Update gnome-packagekit-fate302445.patch: we shouldn't look for
+  /usr/share/applications/YaST2/suse_register.desktop to decide
+  whether to run smolt or not. The check for
+  /var/run/smolt_do_opensuse_run and smoltGui should be enough.
+  Fix bnc#607132.
+
+-------------------------------------------------------------------
+Thu Apr 29 14:27:54 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1:
+  + Ensure the session UI always shows a package name rather than
+    a package-id
+  + Ensure we process font requests by correctly processing the
+    session ignore blacklist
+  + rh#581682: Fix a crash where the desktop file that was
+    installed has no root directory
+  + Set the cancel button to be initially insensitive
+  + rh#531878: Use GIO to launch the desktop file application after
+    it is installed
+  + Use /proc/%i/exe instead of cmdline when getting the exec of a
+    sender
+  + Zero the size value when the package finished signal is
+    recieved
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 29 15:10:47 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + New Features:
+    - Allow the user to select the GPG key information to be able
+      to verify it
+    - Use libunique to ensure we only ever have one update icon
+      running in the session
+  + Bugfix:
+    - Added and updated screenshots
+    - Check if we got an invalid pixbuf to prevent a crash
+    - Ensure we close the previous dialog before we show an error
+      dialog. Fixes rh#569842
+    - Ensure we remove the timeout source of the auto-closing
+      dialogs. Fixes rh#570436
+    - Fix the error when the user clicks the about menu item
+    - Fix the second install in gpk-update-viewer when a backend is
+      reporting detailed errors
+    - Fix checking for updates every day when the user had
+      specified 'Never'. Fixes rh#544573
+    - Hide the update icon when all updates are blocked
+    - Mark a few menu items translatable
+    - Use gtk_buildable_get_name() rather than
+      gtk_widget_get_name()
+- Rebase gnome-packagekit-fate302445.patch.
+- Rebase gnome-packagekit-BNC383261.patch.
+
+-------------------------------------------------------------------
+Wed Mar 24 02:09:47 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.91:
+  + New Features:
+    - Add InstallPrinterDrivers into the session API
+  + Bugfixes:
+    - Do not assume that we are just installing when we get the
+      simulate request
+    - Do not schedule a refresh-cache if one is already waiting
+    - Do not show '0 bytes' in the confirmation dialog, just show
+      the message title
+    - Do not show the list of packages in the updates-available
+      bubble. Fixes bgo#609233
+    - Ensure parent window is set modal when installing packages
+      with deps using the DBus interface. Fixes rh#566741
+    - Fix an infinite loop in
+      gpk_update_viewer_are_all_updates_selected()
+    - Fixed incorrect use of g_ascii_strdown
+    - If we failed to update the system, wait a lot longer than two
+      seconds before we try again
+    - Read the PkClient error code enum and try to map it to a
+      PkErrorEnum code
+    - Return TRUE when InstallPackageFiles succeeds
+    - Use correct provides tag for postscriptdriver what-provides
+      query
+- Add libgudev-1_0-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Feb 12 13:28:05 CET 2010 - vuntz@opensuse.org
+
+- Move the change of gconf schema in gnome-packagekit_release.patch
+  to the gconf2-branding package, and rename
+  gnome-packagekit_release.patch to
+  gnome-packagekit-OnlyShowIn.patch.
+- Drop gnome-packagekit-BNC542819.patch: the logic for patch based
+  updates should be done in PackageKit itself now.
+
+-------------------------------------------------------------------
+Thu Feb 11 15:50:19 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.3:
+  + New Features:
+    - Remove the 'Install only security updates' button from the
+      security updates popup and open the update viewer instead
+    - Show transaction messages in gpk-repo
+    - Show the size of the extra packages that need to be
+      downloaded as deps
+    - Filter by the timespec in gpk-log, not the localised date.
+      Fixes rh#544667
+    - Show internal errors with modal dialogs, rather than just
+      failing quietly with an error on stderr
+    - Nest child updates in the update viewer so we don't show the
+      same update description multiple times
+  + Bugfix:
+    - Fix menu entry capitalisation in gpk-application
+    - Make the security update notification dialog timeout after 15
+      seconds
+    - Ensure we detect and use x11 to fix the compile when linking
+      with --as-needed
+    - Actually cancel the transaction when the GpkWatch cancel
+      button is pressed
+    - Process every transaction finish, even if we're not watching
+      it
+    - Only wait 3 seconds (not 60) when we get the updates changed
+      signal
+    - Re-get the update list in the update viewer if the network
+      state changes. Fixes rh#543871
+    - Fix two potential crashers when gpk-update-viewer has
+      finished applying updates
+    - Don't hide the restart status icon just because the daemon
+      exited. Fixes rh#553966
+    - Fix some i18n bugs. Fixes bgo#606629
+- Update to version 2.29.2:
+  + New Features:
+    - Ensure the gpk-update-icon service is running by activating
+      it if somebody uses the interface. Fixes rh#548095
+    - Split up the DBus interface part of gpk-update-icon into an
+      session-activated gpk-dbus-service binary
+  + Bugfix:
+    - Check the GpkDbusTask object only replies once to each
+      session request
+- Update to version 2.29.1:
+  + New Features:
+    - Convert all the client applications to use packagekit-glib2
+    - When the update viewer is no longer being shown, force an
+      update of the updates
+    - Remove a lot of the helpers and create a GpkTask module that
+      implements PkTask to handle the transaction interactions
+    - Use a GtkInfoBar to display the mobile broadband warning, not
+      a modal dialog box
+    - Add RemovePackageByFile() to match the API provided by
+      KPackageKit
+    - Format the dates in the update viewer according to the users
+      locale. Fixes bgo#601493
+    - Add a GConf key to add program exec names to ignore all DBus
+      requests from. Fixes rh#501023
+    - Make the update viewer cope with multiple packages
+      downloading at the same time
+    - Add a new GConf key to control whether we show all packages
+      in the add/remove UI
+  + Bugfix:
+    - Fix thinko in spinner cell renderer's rendering
+    - Fix duplicate mnemonics in menu. Fixes bgo#601581
+    - Use the correct show-confirm key when installing a font
+    - Some more fixes to the session interface
+    - Don't escape the desktop summary in the run dialog. Fixes
+      bgo#596010
+    - Ignore cleanup and finished packages when we a simulating a
+      remove or install
+    - Never show the role text in the GpkWatch tooltip
+    - Only show 'and n other security updates when there are other
+      updates to list. Fixes rh#527149
+    - Don't show 4Gb as the file size when we actually get -1,
+      meaning percentage unknown
+    - Use seporate messages when we've finished installing all or
+      some of the updates
+    - If command line contains (deleted) the original binary is
+      invalid, and don't show it in the UI. Fixes rh#524873
+    - Don't show finished tasks in the menu dropdown
+    - Run the gpk-install-foo helpers with interaction
+      'hide-finished,hide-warnings' as we are handling failure
+    - Check we're not already doing GetUpdates or GetDistroUpgrades
+      before we try to do the action
+    - Ensure we use the progress callback to update the UI when
+      processing session DBus requests
+    - Use the desktop icon when we unselect the installed
+      application in gpk-application. Fixes fdo#25098
+- Rebase gnome-packagekit-fate302445.patch.
+- Rebase gnome-packagekit-BNC383261.patch.
+
+-------------------------------------------------------------------
+Tue Dec  8 13:33:28 CET 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.2:
+  + Don't cache the length of the deps array if we are removing
+    items from it
+  + rh#530595 - Always show the search type menu icons
+  + Remove the original package from the dep-confirmation screen
+  + Ignore generic errors such as 'Failed' and do not show UI in
+    this case
+  + Only wait 3 seconds (not 60) when we get the updates changed
+    signal
+  + fdo#25098 - Use the desktop icon when we unselect the installed
+    application in gpk-application
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Nov 14 21:53:11 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.28.1:
+  + Fix thinko in spinner cell renderer's render
+  + Don't escape the desktop summary in the run dialog. Fixes
+    bgo#596010
+  + Simulate removal for PackageKit >= 0.5.2 to fix removing
+    packages
+  + Ignore cleanup and finished packages when we a simulating
+    remove or install
+  + If command line contains (deleted) the original binary is
+    invalid. Fixes rh#524873
+  + Never show the role text in the GpkWatch tooltip
+  + Only show 'and n other security updates' when there are no
+    updates to list. Fixes rh#527149
+  + Run the helpers with interaction 'hide-finished,hide-warnings'
+    as we are handling failure
+  + Don't show the the 'all updates installed' dialog if we've just
+    shown the restart required dialog
+  + Dont segfault if error_local is not set
+  + Call gpk_dbus_task_install_files when installing local files
+  + Updated translations.
+- Drop gnome-packagekit-BNC543595.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Oct 10 21:54:49 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Only show installing and updating packages in the
+    GpkHelperDepsUpdate UI
+  + fdo#23888 - Add a --enable-small-form-factor which disables the
+                auto-maximise code by default
+  + Connect to the correct signal name for gnome-session idle
+    detection
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct  8 18:08:19 UTC 2009 - sreeves@novell.com
+
+- Fix bnc#543595 - install local files.
+
+-------------------------------------------------------------------
+Wed Sep 30 06:57:15 UTC 2009 - sreeves@novell.com
+
+- Fix for bnc#542819 - update dependencies failure
+
+-------------------------------------------------------------------
+Fri Sep 25 17:45:49 UTC 2009 - sreeves@novell.com
+
+- Fix for bnc#538353
+
+-------------------------------------------------------------------
+Thu Sep 10 02:07:35 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.27.92:
+  + New Features:
+    - Add simulation of installed files if the backend support it
+  + Bugfix:
+    - Fix the help buttons
+    - Don't show duplicate package names in the reboot tooltip
+    - Fix a typo where the codec dialog would have no text
+    - Fix small memory leak and possible crash in the firmware code
+    - Fix a possible crash if X is misbehaving
+    - Fix a possible crash in the service pack code
+    - String fixes.
+    - Build fixes.
+  + Updated translations.
+- Changes from version 2.27.91:
+  + New Features:
+    - Show the notifications pointing at the status icon when
+      possible
+    - Watch /dev/.udev/firmware-missing for changes so we pick up
+      hotplug requests too
+    - Add the pk-device-rebind functionality to replug hardware
+  + Bugfix:
+    - Wrap license in about dialogue
+    - Remove markup from .ui files
+    - Add accelerator. Fixes bgo#590999
+    - Only return the newest packages for mime, fonts and codec
+      helpers. Fixes rh#514879
+    - Only install the newest native-arch package when using the
+      session methods. Fixes rh#509569
+    - Don't show a modal dialog when the user cancels the file
+      install
+    - Egg update to fix compile on FreeBSD
+    - Reduce in weight X-GNOME-Autostart-Phase desktop files
+    - Ignore hidden desktop files when we show the list of new
+      applications
+    - Only run the update if the dep check was successful
+    - Don't show the auth-failure dialog in the update viewer
+    - Show errors when using the firmware client
+    - Add CanStop and CanRestart methods on the ConsoleKit helper
+    - Never use a title on a modal error dialog
+    - Check in more places if a user is able to restart
+    - Add application/x-deb to the list of files we try to open
+    - Improve the firmware code when multiple devices are
+      requesting the same files
+    - Resize the deps list in a better way. Fixes rh#517662
+    - Don't show a single menu item for the left click on the
+      updates star
+    - Only show the on-battery warning only if we would have
+      performed the update
+    - Don't allow double click on a help item. Fixes rh#518854
+    - Change the firmware 'Do not show again' to a 'Ignore devices'
+      button
+  + Updated translations.
+- Drop gnome-packagekit-XGetWindowProperty.patch: upstream has
+  changed the code and the original issue shouldn't be there
+  anymore.
+- Respin gnome-packagekit-BNC383261.patch.
+
+-------------------------------------------------------------------
+Mon Aug  3 20:02:26 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.5:
+  + New Features:
+    - Port all the code to using PolicyKit1 rather than PolicyKit
+    - Reduce the size displayed as the package is downloaded in the
+      update viewer
+    - Scroll to the package being processed in the update list.
+      Fixes rh#510984
+  + Bugfix:
+    - Don't unconditionally force on NEWEST filtering in the update
+      viewer
+    - Fix compile with old versions of PackageKit
+    - Fix up few translations to include trailing full stop. Fixes
+      fd#22745
+    - Don't do the update check as soon as the UpdatesChanged
+      signal is recieved
+    - Don't flash the gpk-repo UI when we enable or disable repos.
+      Fixes half of rh#510730
+    - Check the language tags before trying to parse them. Fixes
+      fd#22792
+    - Ensure we re-set the proxy when packagekitd re-appears on the
+      bus
+    - When doing queries automatically, don't spam them with
+      locking failure messages. Fixes gnome#588698
+    - Build a private library and link that to reduce the size of
+      the package by 300kb
+    - Don't set the package view insensitive when doing searches,
+      and add a delay to prevent flicker. Fixes rh#510730
+    - Make some of the libnotify bubbles more sane
+    - Don't show (0) in the update viewer if there is nothing to
+      download
+    - Don't show the 'Update System Now' link in the update
+      dropdown, the user should use the update viewer
+    - Add in different translations for encode, decode and unknown.
+      Fixes rh#497737
+    - Make the arch filter a single tickbox, not an option group
+    - Don't print the package list when we have a RestartRequired
+      of a security type
+    - Add some missing punctuation in some of the restart strings
+    - Reduce the size of two of the messagebox titles
+    - Add a 'Selected packages' group in add/remove programs like
+      kpackagekit
+    - Use the correct icon in the panel when restarts are required
+    - Actually make the gnome-session code work by using the
+      correct callback signatures
+    - We don't require DeviceKit, so don't check for it. Fixes
+      bgo#590157
+    - Only return the newest packages for mime, fonts and codec
+      helpers and to perhaps fix rh#514879
+  + Updated translations.
+- Respin gnome-packagekit-BNC383261.patch.
+- Respin gnome-packagekit-fate302445.patch.
+- Drop DeviceKit-devel and PolicyKit-gnome-devel BuildRequires.
+
+-------------------------------------------------------------------
+Thu Jul 30 00:45:42 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.3:
+  + New Features:
+    - Add a link to gpk-log in gpk-application
+    - Enable nice build output on automake1.11
+    - Enable the warning GSEAL_ENABLE and fix up build failures
+    - Check for dependancies before downloading updates in the
+      update viewer
+    - Add --parent-window options to the client tools so they are
+      set transient in gpk-application
+  + Bugfix:
+    - Include <locale.h> in gpk-update-viewer.c
+    - Use gtk_show_uri instead of deprecated gnome-open
+    - Don't use English enumerated values in GConf, instead use
+      seconds
+    - Check packages content-type before sending them to the daemon
+    - Add a tooltip to the package entry box in the service pack
+      creator
+    - Fix a double free when we fail to find packages
+    - Show normal updates in the update viewer severity column
+    - Populate the manpage package names correctly
+    - Force intltool to recognise .ui files as gettext/glade files
+    - Set the GpkHelperRun window to be modal. Fixes rh#506010
+    - Connect to gnome-session to get the idle status, not
+      gnome-screensaver
+    - Don't show a generic icon when we have messages
+    - Get rid of the 'Display Notification' section in the
+      preferences pane
+    - Don't try to update previously added deps to be installed in
+      the update viewer
+    - Fix mnemonic conflict in gpk-application
+    - When the user clicks hide, do so until the session is
+      restarted. Fixes rh#507062
+    - Move a few GConf keys to the correct places
+    - Add preference to be able to see every PackageKit
+      transaction, even if it's active
+    - Don't ignore the user pressing escape to dismiss a
+      GpkHelperChooser
+    - Use small form factor mode when the window is nearly as big
+      as the display
+    - Don't use a large package screen on notebooks with small
+      displays
+    - Use the newest filter by default in the update viewer. Fixes
+      rh#508505
+    - Use better wording when a package sent RequireRestart
+    - Don't include the size column in the Status column. Fixes
+      rh#509067
+    - Run all the packages after install, not just the selected
+      package
+    - Clear the run list when we setup a new GpkHelperRun. Fixes
+      fd#22489
+    - Use a PkPackageList in gpk-appliction to store the package
+      list
+    - If the use has set get-updates policy to never, then ignore
+      updates-changed events. Fixes rh#509104
+    - Fix up a translation string. Fixes fd#22623
+    - Don't connect to key press _and_ release in gpk-log. Fixes
+      rh#509636
+  + Updated translations.
+- Add py_requires.
+- Do not package omf files twice.
+- Pass --disable-schemas-install to configure.
+
+-------------------------------------------------------------------
+Sat Jun 13 02:35:12 CEST 2009 - sreeves@novell.com
+
+- Update to version 2.27.2:
+  + New Features:
+    - Replace GpkCellRendererProgress with GpkCellRendererSpinner
+      in the update viewer
+    - Set a busy cursor in the update viewer when the transaction
+      is not cancellable
+    - Warn when we use the update viewer when on mobile broadband
+    - Remove libsexy requirement, and raise our GTK+ dep to 2.15.0
+    - Raise our dep on GIO to 2.18.0
+    - Add a hard dep on libunique 1.0.0
+    - Remove the old update viewer, and rename gpk-update-viewer2
+      to gpk-update-viewer
+    - Convert glade files into GtkBuilder files, and drop the
+      libglade dep completely
+    - Remove the legacy org.freedesktop.PackageKit session
+      interface
+    - Use PkClient rather than GpkClient in gpk-application
+    - Add UI helpers for media changing
+    - Add media change functionality into gpk-application
+    - Remove GpkClient and move to a 99% asyncronous model of
+      operation
+    - Add DOAP project description
+  + Bugfix:
+    - Use the busy cursor when we are in a transaction, not just
+      when we cannot cancel
+    - Make the install button the default widget in the update
+      viewer
+    - Make typeahead search work in the update list
+    - Add a silly hack until we get some metadata about animated
+      icon sizes
+    - Only get the distro upgrades in the update viewer if we
+      support it
+    - Make the tooltip past and present tense in the update viewer,
+      and also add a downloaded icon
+    - When we launch the update viewer manually, ensure we set the
+      title text correctly
+    - Allow the user to resize the gpk-log dialog. Fixes rh#493934
+    - Do the find callback when we paste text into the add-remove
+      software window. Fixes rh#492160
+    - If we have force-login set to true, never repeat the startup
+      check even if it fails
+    - Don't show cancel and close in the update viewer
+    - Preload all the common GConf keys in the update icon
+    - Never show the checkbox for the search welcome. Fixes
+      rh#496024
+    - Add a commits file taken from Nautilus, and autogenerate the
+      ChangeLog
+    - Denote the size column in the update viewer to belong to the
+      status column
+    - Set the size value to zero when we get an info update
+    - Add a completed modal dialog at the end of a successful
+      update, rather than just quitting
+    - Show the package name in the repo-signature dialog. Fixes
+      fd#21236
+    - Use libcanberra to do event sounds when we succeed in doing
+      an update
+    - Don't re-get the update list after a failed install, just
+      undisable the checkboxes. Fixes rh#496870
+    - Enable autocode for compiler defines in the markdown parser.
+      Fixes rh#497162
+    - Only select the package item after all the results have
+      appeared
+    - Add another helper to cope with deps from the update process
+    - Don't inhibit to gnome-power-manager, use gnome-session
+    - Use DeviceKit-power rather than gnome-power-manager to get
+      the on-battery status
+    - Pop up a modal dialog if any of the methods in
+      gpk-install-foo fail. Fixes rh#500237
+    - Provide some #ifdef compatibility so that git master GPK can
+      build with >= 0.4.4 PK
+    - Export InstallCatalogs on the session bus. Fixes rh#502562
+    - Don't show a long list of packages in the catalog install
+      screen, instead use a scrollable package list
+    - Refresh the system package list if it does not exist in the
+      service pack creation tool. Fixes rh#502589
+    - Remove GpkSmartIcon and use GpkStatusIcon directly
+    - Only show the monitor icon when the task is no longer
+      connected to the bus but running
+    - Inhibit the icon in GpkCheckUpdate rather than having
+      last-set policy. Fixes rh#492005
+    - Add a loading string when loading details in the update
+      viewer
+    - Fix the window icon, title, and some inconsistent text in the
+      update viewer
+    - Don't critically warn when we have no packages selected after
+      install
+  + Updated translations.
+- Rewrite gnome-packagekit-BNC383261.patch to apply to the new
+  layout of 2.27.2
+- Add DeviceKit-devel, DeviceKit-power-devel, libcanberra-devel,
+  libunique-devel BuildRequires.
+- Remove libglade2-devel BuildRequires.
+
+-------------------------------------------------------------------
+Wed Apr 29 14:27:40 CEST 2009 - vuntz@novell.com
+
+- Do not explicitly specify the path to the gconf schemas in the
+  file list, and instead use the list that was generated with the
+  gconf macros.
+
+-------------------------------------------------------------------
+Sat Apr  4 15:09:15 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.1:
+  + New Features:
+    - Switch gnome-packagekit to the GNOME release guidelines and
+      version numbers
+    - Provide tooltips for the icons in the new update viewer
+    - Add a new menu item 'Select security updates' to the new
+      update viewer. Fixes rh#491713
+    - Hide the update icon notification when the update viewer is
+      opened
+    - Switch the default update viewer to gpk-update-viewer2
+  + Bugfix:
+    - Fix some window icons in gpk-repo
+    - Don't set the default widget to the install button when we
+      reconsider. Fixes rh#492645
+    - Don't scroll to the downloading object.
+    - Fix the MimeType entry of gpk-install-catalog.
+      Fixes rh#489473
+    - Set an icon for gpk-backend-status. Fixes fdo#20681
+    - Make gpk-application file list resizable, and a good default
+      size. Fixes rh#490334
+    - Don't use newline as a paragraph spacer in the Markdown
+      parser
+    - The changelog data is markup formatted, so use the markdown
+      parser before displaying
+    - Don't escape markdown code sections, and enable autocode for
+      certain special words
+    - Make the new update viewer respond to
+      PkControl::updates-changed and update the update list
+    - Set an initial size of the update viewer using
+      gpk_window_set_size_request. Fixes rh#491422
+    - Wrap the header text to allow the new update viewer to be
+      made much smaller
+    - Don't resize the main window when no updates are available,
+      use a modal window. Fixes rh#491708
+    - If the new update viewer is running in a transaction when
+      it's closed, just hide the window
+    - Don't set the model with finished, as working round it in the
+      CellRenderer breaks things
+    - Allow gpk-update-icon to be run in XFCE. Fixes rh#491104
+    - Set the update viewer title properly when there are no
+      updates. Fixes rh#492096
+    - After we've applied updates, close the UI rather than getting
+      the new update list. Fixes rh#491710
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 14:46:16 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Wed Mar 11 09:32:34 CET 2009 - mboman@suse.de
+
+- Update to version 0.4.5:
+  + New Features:
+    * Merge in a new update viewer with a very different UI
+  + Bugfix:
+    * Allow markup in the error dialog message
+    * Disable the polling in GpkAnimatedIcon if the widget is
+      disabled
+    * Don't check for local for all the GUI tools, so we can use
+      vncviewer
+    * Correct some of the strings we show the user about the
+      restart mode
+  + Translation updates
+- Removed gnome-packagekit-fate303359.patch as per bnc#440498 (it
+  was not applied anyway)
+- Remove BuildRequires cairo-devel and gtk-doc
+- Don't use autoreconf
+
+-------------------------------------------------------------------
+Fri Mar  6 17:28:52 CET 2009 - vuntz@novell.com
+
+- Update to version 0.4.4:
+  + Small improvement on PK_ROLE_ENUM_SEARCH_DETAILS
+  + Fix compile failure with gcc-4.4.0 and old versions of glib2
+  + Correct the specification in that we shouldn't send the provide
+    name encoded with the provides prefix, as this is distro
+    specific
+  + Don't show the filter UI when we offer applications to install
+  + Bump the required version of PackageKit to 0.4.4 now we are
+    turning on lots of compiler warnings
+  + Use GTK 2.15.x new GtkEntry features to remove dep on libsexy
+  + Fix infinite recursion when we try to format invalid markdown.
+    Fixes rh#486334
+  + Provide a GConf key to allow ignoring some daemon messages
+  + Change the update viewer UI to be 'Ignore this update' not
+    'Ignore this package'
+  + When we loose network and have updates, hide the icon as we
+    can't do the updates
+  + Updated translations.
+- Remove BuildRequires: libsexy-devel.
+
+-------------------------------------------------------------------
+Sat Feb 14 00:48:02 CET 2009 - vuntz@novell.com
+
+- Update gnome-packagekit-fate302445.patch to fix compilation.
+- Drop changes that were not done in GNOME:Factory and that were
+  not needed anymore.
+
+-------------------------------------------------------------------
+Fri Feb 13 02:22:38 CET 2009 - ro@suse.de
+
+- do not define GTK_DISABLE_DEPRECATED to fix build
+
+-------------------------------------------------------------------
+Tue Feb 10 21:03:00 CET 2009 - vuntz@novell.com
+
+- Remove non-upstream translations: they'll get out-of-date.
+
+-------------------------------------------------------------------
+Thu Feb  4 23:51:22 CET 2009 - mboman@suse.de
+
+- Update to version 0.4.3:
+  + New Features:
+    * Don't spam the user with PackageManager messages, queue them
+      and show another menu item on the info status icon
+  + Bugfix:
+    * Fix typo in Russian translation. Fixes rh#481479
+    * Don't infer precision we don't have when printing an
+      estimated time
+    * Make sure we set the icon and text of the client dialog after
+      setup is called, not before. Fixes rh#480908
+    * Stop abusing a PkPackageList as a list to store package_id's,
+      as the PkInfoEnum changes when we do a filter change.
+      Fixes rh#481123
+    * Reset the client when we monitor a tid, else we ignore the
+      second request when the fist is running
+    * When the user switches the task to monitor, re-use the
+      existing monitor rather than using a new window. Fixes half
+      of rh#481293
+    * Disable the 'Apply updates' button when none are selected.
+      Fixes fd#19779
+    * Ensure we select the first entry in the details treeview
+      after we've got the update list. Fixes fd#19780
+    * We don't use a PkControl action in gpk-update-viewer
+      anymore, use the GpkClient cancel method
+    * Hook up the distro upgrade notification actions
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Feb  2 06:07:51 CET 2009 - mboman@suse.de
+
+- Update to version 0.4.2:
+  + New Features:
+    * Show the remaining time in the client UI if it's available
+  + Bugfix:
+    * Don't retry a policy action if the previous one failed
+    * Drop obsolete InstallPackageNames definition
+    * Use gtk_window_set_default_size() to set the window size so
+      the user can still resize it a little
+    * Reduce the weight of autostart desktop files to avoid showing
+      hidden entries in the run dialog
+    * Allow pattern matches in the banned firmware list
+    * Add intel microcode to the banned firmware list
+    * Lots of translation bugfixes. Fixes bgo#19564
+    * Show the package that caused the restart required signal in
+      the icon tooltip
+    * Add a keyboard shortcut to the 'Continue Anyway' button when
+      running an application as root. Fixes fd#19595
+    * Clear the 'updates are being installed' notification if the
+      update finishes before the notification times out. Fixes
+      bnc#407347
+    * Use scrollbars in the description, and set the hbox to a
+      fixed size to avoid flicker. Fixes fd#19633
+    * Increase the anti-flicker timout when getting the package
+      details to prevent flicker when scrolling through packages
+    * Call gpk_check_privileged_user in the update viewer
+    * Dont reference already freed pointer when help is not
+      installed
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Feb  2 02:51:54 CET 2009 - vuntz@novell.com
+
+- Move the autostart desktop file to /etc/xdg/autostart
+
+-------------------------------------------------------------------
+Mon Jan 12 20:11:12 CET 2009 - mboman@suse.de
+
+- Update to version 0.4.1:
+  + Add an option to the prefs dialog to prevent checking for
+    updates when using mobile broadband connections
+  + Allow the admin to restrict getting updates when on WiFi
+    connections
+  + Set the default search mode to details (not name) and preserve
+    the search type in GConf if changed in the UI
+  + Add a simple markdown parser
+  + Add dbus_default_interaction and dbus_enforced_interaction
+    GConf keys and some documentation
+  + Send different errors when we fail a method on session DBus
+    interface
+  + Support setting timeouts via the interaction mode from DBus
+    interface
+  + Add quit and contents accelerators in gpk-application
+  + Define a macro directory so we work with newer versions of
+    libtool
+  + Make the confirm interaction more granular
+  + When the restart mode is session then offer logout, rather than
+    restart. Fixes RH#475781
+  + We should do idle network actions on ONLINE (wireless or
+    unknown) and FAST (ethernet)
+  + Use the markdown parser in gpk-application and
+    gpk-update-viewer
+  + Don't keep spinning the animation if the backend fails to send
+    an update detail signal
+  + Put the security updates in an array before we show the
+    notification else the number on the session critical
+    notification is wrong
+  + Output update descriptions with valid escaping to fix some
+    descriptions
+  + Fix a crash in gpk-application when doing run multiple times
+  + Make error dialog resizable when error details are being shown.
+    Fixes RH#478378
+  + Allow copy pasting of the update text in the update viewer
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Jan 12 16:56:43 CET 2009 - sreeves@suse.de
+
+- Move to 0.3.13 - Bugfix only release
+  + Add quit and contents accelerators in gpk-application
+  + Correct the number of critical updates on the notification
+  + Don't keep spinning the animation if the backend fails to
+    send an update detail signal
+- Update translations from lcn.
+
+-------------------------------------------------------------------
+Sat Jan  3 09:09:14 EST 2009 - mboman@suse.de
+
+- Update to version 0.4.0:
+  + Add InstallFonts to the session DBUS interface
+  + Add a key to gnome-settings-daemon GConf so we can load the gtk
+    module
+  + Add a fontconfig dep for the new font code
+  + Show the menu path in Add/Remove programs when we install new
+    software
+  + Add two prototype interfaces to make the session interface more
+    sane
+  + Fix the self tests in GpkCommon
+  + Set the dialog type up in a setup function, and then present it
+    like a normal
+  + window -- fixes funny icons in different places
+  + Don't clear the list in gpk-repo when the list is refreshed,
+    just update it in place.
+  + Use the same approach in gpk-log. Fixed first part of fd#18733
+  + Convert the iso639 language codes to localised language names
+  + Add ISO639-2B language names to the language hash also
+  + Don't emit a critical warning if the desktop file contains
+    invalid markup
+  + Set an interaction mode in gpk-application when we refresh the
+    package lists to avoid getting an empty window
+  + Set the run window modal over the parent window to fix
+    rh#475046
+  + Translation updates
+- Remove gnome-packagekit-UI-polish.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Tue Dec 09 17:42:15 CET 2008 - sreeves@suse.de
+
+- Move to 0.3.12 - Bugfix only release
+    Fix to show the force install button on unsigned dialog
+    Fix for BNC#450185 - abort on small form factor mode
+    Fix for BNC#457803 - respect the force_get_updates_login flag
+    Set an interaction mode in gpk-application to avoid an empty
+    window
+  Add YaST option on dependency failures to fix BNC#383261
+
+-------------------------------------------------------------------
+Tue Dec  9 15:22:54 CET 2008 - schwab@suse.de
+
+- Fix use of XGetWindowProperty.
+
+-------------------------------------------------------------------
+Mon Dec  1 22:47:39 CET 2008 - sreeves@suse.de
+
+- Fix for BNC #450105 - don't run smolt until it's updated.
+
+-------------------------------------------------------------------
+Mon Nov 24 17:42:15 CET 2008 - sreeves@suse.de
+
+- Match PackageKit version 0.3.11
+  Pull in updated translations (.po)
+
+-------------------------------------------------------------------
+Fri Nov 21 17:46:15 CET 2008 - sreeves@suse.de
+
+- Fix memory leaks with combined translatable strings not freed
+    Unfortunately means a string change.
+  Fix crash if users installs two bits of software and runs neither of them
+  Ensure that libnotify is init before use
+  Ensure we set the GpkClientDialog properly when doing a repo signature
+  Add prefix to notifications so users know where they came from
+  Match PackageKit version 0.3.10
+    Fix showing non local warning on terminal client
+
+  Roll in updated .po translations from lcn.
+
+-------------------------------------------------------------------
+Sat Nov  8 00:09:00 CET 2008 - sreeves@suse.de
+
+- Translation fixes
+    Mark existing strings that were missed for translation
+    Redo badly worded strings
+    Add lots of translator comments to help in unclear cases
+  Fix BNC #440498 - registration problems
+  Fix RH #467987 - size request of gpk-application
+  Fix installing local files by only showing copy dialog for non native paths
+  Fix the signature required window to be modal over the client dialog
+  Fix RH #469966 - Dont use bullets when there is only one item in a list
+
+-------------------------------------------------------------------
+Mon Oct 27 21:29:19 CET 2008 - sreeves@suse.de
+
+- Match PackageKit version - 0.3.9
+    Check if the GUI programs are being used on local and active consoles
+    Don't force large window sizes so we work on the eee and OLPC.
+    Don't crash gpk-application if a package contains no files
+    Don't show 'untitled window' when we review updates and then update them
+
+-------------------------------------------------------------------
+Mon Oct 13 22:41:39 CEST 2008 - sreeves@suse.de
+
+- Match PackageKit version - 0.3.7
+    Fix the bug where GetUpdates is unconditionally run at startup.
+    Watch for GConf keys to change so we can reassess actions based on policy
+  Fix for BNC #422176 - non useful error notifications
+
+-------------------------------------------------------------------
+Thu Oct  9 00:09:47 CEST 2008 - sreeves@suse.de
+
+- Move to 0.3.6  Bug fix release
+   (from the release news...)
+    Allow double clicking on an application in the run dialog. Fixes fd#17845
+    Set the window title if we go from being modal to non-modal
+    Set an interaction mode for the client used in GpkDbus so we don't get a finished dialog
+    Menu item tooltips should be phrased as imperative verbs
+    Always force width to avoid the dialog width changing between phases
+    Mark some more text translatable to fix fd#17899
+    Fix segfault in gpk_package_id_name_version if id was null
+
+-------------------------------------------------------------------
+Mon Sep 29 19:20:49 CEST 2008 - sreeves@suse.de
+
+- Move to 0.3.5
+    Match PackageKit version
+    Finish support for hardware driver install - FATE #303677
+
+-------------------------------------------------------------------
+Tue Sep 23 03:01:25 CEST 2008 - sreeves@suse.de
+
+- Move to 0.3.4
+    Match PackageKit version
+    Start of support for hardware driver install - FATE #303677
+
+-------------------------------------------------------------------
+Fri Sep 12 21:06:29 CEST 2008 - sreeves@suse.de
+
+- Update to 0.3.2.
+    Match PackageKit version
+    only show firmware prompt if firmware is available.
+
+-------------------------------------------------------------------
+Mon Sep  1 00:45:39 CEST 2008 - sreeves@suse.de
+
+- Match PackageKit version change to 0.3.1
+
+-------------------------------------------------------------------
+Mon Aug 18 07:56:42 CEST 2008 - sreeves@suse.de
+
+- Match PackageKit version change to 0.3.0
+
+-------------------------------------------------------------------
+Thu Jul 31 22:26:54 CEST 2008 - cthiel@suse.de
+
+- really remove restart-gpk-update-icon.sh
+
+-------------------------------------------------------------------
+Tue Jul 29 18:38:20 CEST 2008 - jpr@suse.de
+
+- Remove %post action and script, it is not needed for factory
+
+-------------------------------------------------------------------
+Fri Jul 18 19:17:28 CEST 2008 - sreeves@suse.de
+
+- Move to 0.2.3
+    add support for installing catalogs
+    rework the gpk-application gui
+    Don't allow the GTK tools to be run as the root user
+    Allow users to install and remove multiple packages using gpk-application
+    Give the user a chance to update only the security updates.
+
+-------------------------------------------------------------------
+Fri Jun 27 03:12:57 CEST 2008 - sreeves@suse.de
+
+- More work for BNC#401057 - better loop handling
+
+-------------------------------------------------------------------
+Wed Jun 18 02:40:35 CEST 2008 - sreeves@suse.de
+
+- Fix for BNC#401057 - better loop handling
+    swampid for this - 18244
+
+-------------------------------------------------------------------
+Fri Jun  6 22:32:21 CEST 2008 - sreeves@suse.de
+
+- Fix for BNC#390658 - don't show dialog again if they decline to run.
+
+-------------------------------------------------------------------
+Fri Jun  6 02:09:42 CEST 2008 - sreeves@suse.de
+
+- Update translations
+    Includes initial translations for new dialog - BNC#390658
+
+-------------------------------------------------------------------
+Fri May 30 21:18:54 CEST 2008 - sreeves@suse.de
+
+- Fix for BNC#395445 - gpk-update-icon crash
+  Fix for BNC#390658 - don't show piwo
+
+-------------------------------------------------------------------
+Sat May 24 21:21:57 CEST 2008 - sreeves@suse.de
+
+- Fix for BNC#392064 - weird notifications
+
+-------------------------------------------------------------------
+Tue May 13 08:53:29 CEST 2008 - aj@suse.de
+
+- Remove requires on scrollkeeper, we build with
+  --disable-scrollkeeper.
+- Package lang files only once.
+- Remove unneeded BuildRequires and Requires.
+
+-------------------------------------------------------------------
+Fri May  9 23:30:38 CEST 2008 - sreeves@suse.de
+
+- Move to official upstream 0.2.1 release
+  Add in Fate #303359
+  Fix for BNC#386472 - move "Software Updates" to CC
+
+-------------------------------------------------------------------
+Mon Apr 28 18:36:36 CEST 2008 - sreeves@suse.de
+
+-  Fix for BNC#378342
+
+-------------------------------------------------------------------
+Mon Apr 14 20:56:17 CEST 2008 - sreeves@suse.de
+
+- Make this package replace opensuse-updater-gnome - BNC #379564
+
+-------------------------------------------------------------------
+Mon Apr 14 17:43:19 CEST 2008 - sreeves@suse.de
+
+- Update to version 0.2.0
+    Needed update to match the API change in PackageKit 0.2.0
+
+-------------------------------------------------------------------
+Sat Apr  5 01:54:23 CEST 2008 - sreeves@suse.de
+
+- Update to version 0.1.11
+    Needed update to match the API change in PackageKit 0.1.11
+
+-------------------------------------------------------------------
+Thu Mar 27 17:52:43 CET 2008 - sreeves@suse.de
+
+- Update to version 0.1.9.2
+    Needed update to match the API change in PackageKit 0.1.9.2
+    Improved interface in updater tool.
+
+-------------------------------------------------------------------
+Fri Mar 14 01:13:26 CET 2008 - sreeves@suse.de
+
+- Update version to 0.1.9.1:
+  * Include updates to work with API change of PackageKit
+  * Add a new icons for a bugfix to make it more obvious
+  * Remove the GtkTextView and replace with a GtkTreeView in p-u-v
+  * Add checkboxes to the update viewer, but can't be changed yet
+  * Display the history viewer as the transaction is progressing
+
+-------------------------------------------------------------------
+Thu Feb 28 14:32:11 CET 2008 - sreeves@suse.de
+
+- Update to (git pull on 2/28) ~0.1.9
+
+-------------------------------------------------------------------
+Tue Dec 11 23:11:08 CET 2007 - sreeves@suse.de
+
+- Add .desktop files to suse_update_desktop_file
+  Add full path for .desktop file not /usr/share/applications
+  Add descriptions to pdb database
+
+-------------------------------------------------------------------
+Mon Dec 10 21:35:33 CET 2007 - btimothy@suse.de
+
+- Updated to version 0.1.5git20071210a.
+
+-------------------------------------------------------------------
+Tue Dec 04 00:31:00 CEST 2007 - btimothy@suse.de
+
+- Removed backend-status-crash.patch since it's now included
+  upstream.
+
+-------------------------------------------------------------------
+Fri Nov 30 21:39:00 CEST 2007 - btimothy@suse.de
+
+- Update to version 0.1.5git20071130a.
+
+-------------------------------------------------------------------
+Thu Nov 22 01:55:00 CEST 2007 - sreeves@suse.de
+
+- Apply temp patch backend-status-crash.patch until fix gets
+  applied upstream
+
+-------------------------------------------------------------------
+Wed Nov 21 00:40:00 CEST 2007 - btimothy@suse.de
+
+- Updated tar.bz2 with one from git a few minutes ago.
+
+-------------------------------------------------------------------
+Tue Nov 13 22:07:00 CEST 2007 - btimothy@suse.de
+
+- init

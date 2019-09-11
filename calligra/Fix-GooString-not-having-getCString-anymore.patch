@@ -1,0 +1,64 @@
+From 3a65c7f6586380e39e7030ff3e01de9ad32ac64f Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Tue, 15 Jan 2019 22:46:41 +0100
+Subject: Fix GooString not having getCString anymore
+
+---
+ filters/karbon/pdf/CMakeLists.txt   |  4 ++++
+ filters/karbon/pdf/SvgOutputDev.cpp | 14 +++++++++++++-
+ 2 files changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/filters/karbon/pdf/CMakeLists.txt b/filters/karbon/pdf/CMakeLists.txt
+index 3521571..71537f8 100644
+--- a/filters/karbon/pdf/CMakeLists.txt
++++ b/filters/karbon/pdf/CMakeLists.txt
+@@ -2,6 +2,10 @@ if(Poppler_VERSION VERSION_LESS "0.64.0")
+     add_definitions("-DHAVE_POPPLER_PRE_0_64")
+ endif()
+ 
++if(Poppler_VERSION VERSION_LESS "0.72.0")
++    add_definitions("-DHAVE_POPPLER_PRE_0_72")
++endif()
++
+ set(pdf2svg_PART_SRCS PdfImportDebug.cpp PdfImport.cpp SvgOutputDev.cpp )
+ 
+ add_library(calligra_filter_pdf2svg MODULE ${pdf2svg_PART_SRCS})
+diff --git a/filters/karbon/pdf/SvgOutputDev.cpp b/filters/karbon/pdf/SvgOutputDev.cpp
+index e412b3d..ba31f18 100644
+--- a/filters/karbon/pdf/SvgOutputDev.cpp
++++ b/filters/karbon/pdf/SvgOutputDev.cpp
+@@ -409,7 +409,11 @@ void SvgOutputDev::drawString(GfxState * state, const GooString * s)
+ #ifdef HAVE_POPPLER_PRE_0_64
+     char * p = s->getCString();
+ #else
+-    const char * p = s->getCString();
++    #ifdef HAVE_POPPLER_PRE_0_72
++        const char * p = s->getCString();
++    #else
++        const char * p = s->c_str();
++    #endif
+ #endif
+     int len = s->getLength();
+     CharCode code;
+@@ -459,10 +463,18 @@ void SvgOutputDev::drawString(GfxState * state, const GooString * s)
+     *d->body << " y=\"" << y << "px\"";
+ 
+     if (font && font->getFamily()) {
++#ifdef HAVE_POPPLER_PRE_0_72
+         *d->body << " font-family=\"" << QString::fromLatin1(font->getFamily()->getCString()) << "\"";
++#else
++        *d->body << " font-family=\"" << QString::fromLatin1(font->getFamily()->c_str()) << "\"";
++#endif
+         //debugPdf << "font family:" << QString::fromLatin1( font->getFamily()->getCString() );
+     } else if (font && font->getName()) {
++#ifdef HAVE_POPPLER_PRE_0_72
+         *d->body << " font-family=\"" << QString::fromLatin1(font->getName()->getCString()) << "\"";
++#else
++        *d->body << " font-family=\"" << QString::fromLatin1(font->getName()->c_str()) << "\"";
++#endif
+         //debugPdf << "font name:" << QString::fromLatin1( font->getName()->getCString() );
+     }
+     *d->body << " font-size=\"" << qMax(state->getFontSize(), state->getTransformedFontSize()) << "px\"";
+-- 
+cgit v1.1
+

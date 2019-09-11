@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Thu May 16 23:24:53 UTC 2019 - Guang Yee <gyee@suse.com>
+
+- Update to version 1.15.1
+  * Widen range for 'google-cloud-core'
+
+- Update to version 1.15.0
+  * New Features
+    - Add support for V4 signed URLs
+    - Add generation arguments to bucket / blob methods
+  * Implementation Changes
+    - Remove classifier for Python 3.4 for end-of-life
+    - Ensure that 'Blob.reload' passes encryption headers
+  * Documentation
+    - Update client library documentation URLs
+  * Iternal / Testing Changes
+    - Fix failing system tests
+    - Increase number of retries for 429 errors
+    - Un-flake KMS integration tests expecting empty bucket
+
+-------------------------------------------------------------------
+Mon Feb 18 08:05:01 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Increase minimum versions:
+  * google-api-core >= 0.6.1
+  * google-cloud-core >= 0.29.0
+- Adds new dependency google-cloud-kms
+- Update to version 1.14.0
+  * New Features
+    - Add 'Bucket.iam_configuration' property, enabling Bucket-Policy-Only.
+  * Documentation
+    - Improve docs for 'generate_signed_url'
+- from 1.13.2
+  * Implementation Changes
+    - Update Blob.update_storage_class to support rewrite tokens.
+  * Internal / Testing Changes
+    - Skip signing tests for insufficient credentials
+    - Document Python 2 deprecation
+    - Normalize docs for page_size / max_results / page_token.
+- from 1.13.1
+  * Implementation Changes
+    - Import iam.policy from google.api_core.
+    - Accomodate new back-end restriction on retention period.
+    - Avoid deleting a blob renamed to itself
+  * Dependencies
+    - Update dependency to google-cloud-core
+    - Bump minimum api_core version for all GAPIC libs to 1.4.1.
+  * Documentation
+    - Normalize use of support level badges
+  * Internal / Testing Changes
+    - Blacken libraries
+    - Add templates for flake8, coveragerc, noxfile, and black.
+    - Harden teardown in system tests.
+    - Harden create_bucket call in systests vs. 429 TooManyRequests.
+    - Skip public bucket test in VPC Service Controls
+    - Fix lint failure.
+    - Disable test running in VPC Service Controls restricted environment
+    - Use new Nox
+- from 1.13.0
+  * New Features
+    - Add support for bucket retention policies
+    - Allow destination.content_type to be None in Blob.compose.
+  * Implementation Changes
+    - Ensure that method for Blob.generate_signed_url is uppercase.
+  * Documentation
+    - Clarify GCS URL signing limitations on GCE
+    - Redirect renamed 'usage.html'/'client.html' -> 'index.html'.
+- from 1.12.0
+  * New Features
+    - Add support for Python 3.7, drop support for Python 3.4.
+    - Add lifecycle rules helpers to bucket.
+  * Implementation Changes
+    - Add 'stacklevel=2' to deprecation warnings.
+  * Documentation
+    - Storage docs: fix typos.
+    - Prep storage docs for repo split.
+  * Internal / Testing Changes
+    - Harden systest teardown further.
+    - Nox: use inplace installs
+
+-------------------------------------------------------------------
+Tue Dec  4 12:48:39 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri May 18 04:42:37 UTC 2018 - tbechtold@suse.com
+
+- Initial packaging (version 1.11.0)

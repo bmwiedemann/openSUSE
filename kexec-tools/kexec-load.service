@@ -1,0 +1,12 @@
+[Unit]
+Description=load default kernel into the current kernel
+Documentation=man:kexec(8)
+DefaultDependencies=no
+Before=shutdown.target umount.target final.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/kexec-bootloader
+
+[Install]
+WantedBy=kexec.target

@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Mon Apr 29 14:11:16 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add gcc9-Wdeprecated-copy-1.patch and gcc9-Wdeprecated-copy-2.patch
+  in order to fix boo#1121281.
+
+-------------------------------------------------------------------
+Wed Feb  7 13:02:04 UTC 2018 - jengelh@inai.de
+
+- Fix RPM group of shlib subpackage.
+
+-------------------------------------------------------------------
+Wed Feb  7 10:09:21 UTC 2018 - tchvatal@suse.com
+
+- Fix description bsc#1079783
+
+-------------------------------------------------------------------
+Sun Apr 16 19:15:54 UTC 2017 - tchvatal@suse.com
+
+- Version update to 1.14.0:
+  * TestCaller supports any callable that can be put into
+    std::function<void()>.
+  * CPPUNIT_TEST_PARAMETERIZED executes a test for any value in
+    an iteratable.
+  * Added new Assertion macros: ASSERT_LESS, ASSERT_GREATER,
+                    ASSERT_LESSEQUAL, ASSERT_GREATEREQUAL
+  * Remove QT test runner
+
+-------------------------------------------------------------------
+Thu Nov 14 09:51:33 UTC 2013 - tchvatal@suse.com
+
+- Avoid collisions with libcppunit.
+
+-------------------------------------------------------------------
+Wed Nov 13 09:54:32 UTC 2013 - tchvatal@suse.com
+
+- Fix the desktop file placement and help location within it.
+
+-------------------------------------------------------------------
+Tue Nov 12 09:51:22 UTC 2013 - tchvatal@suse.com
+
+- Fix baselibs.conf
+- Run tests and split documentation in own devel-doc subpackage.
+- Remove la file and do not build static lib.
+
+-------------------------------------------------------------------
+Mon Nov 11 23:59:56 UTC 2013 - tbehrens@suse.com
+
+- Version bump to 1.13.2
+  * report dlopen errors now correctly
+
+-------------------------------------------------------------------
+Mon Dec 17 18:08:56 UTC 2012 - tchvatal@suse.com
+
+- Version bump to 1.13.1
+  * remove unused patches that are incorporated in the build system
+  * cleanup the spec file at least a bit
+
+-------------------------------------------------------------------
+Fri Nov 23 17:16:53 UTC 2012 - joop.boonen@opensuse.org
+
+- Fixed SLE build replaced make_install makro by 
+  make DESTDIR=\%{buildroot} install
+
+-------------------------------------------------------------------
+Fri Apr 20 12:03:31 UTC 2012 - joop.boonen@opensuse.org
+
+- Build cppunit 1.12.1
+- Passed  the spec file through spec-cleaner
+
+-------------------------------------------------------------------
+Thu Feb  9 02:11:29 UTC 2012 - jengelh@medozas.de
+
+- Simply regeneration of autotools scripts
+
+-------------------------------------------------------------------
+Sun Nov 13 15:12:52 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building
+- Add missing "make" call in %build
+
+-------------------------------------------------------------------
+Sun Nov 13 09:14:42 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit buildrequire to avoid implicit dependency from prjconf
+
+-------------------------------------------------------------------
+Fri Jun 19 10:35:46 CEST 2009 - coolo@novell.com
+
+- disable as-needed for this package as it fails to build with it
+
+-------------------------------------------------------------------
+Sun Jul 15 08:15:03 CEST 2007 - aj@suse.de
+
+- Use libcppunit-devel to follow lib package name scheme
+
+-------------------------------------------------------------------
+Wed Jul  4 16:03:35 CEST 2007 - adrian@suse.de
+
+- update to version 0.12.0
+  - minor bugfixes
+  - now generated with doxygen 1.4.7 new 'tabs' style.
+- rename package to follow lib package name scheme
+
+-------------------------------------------------------------------
+Sun Apr 22 16:18:49 CEST 2007 - dmueller@suse.de
+
+- don't install devel files as executable
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:11 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Aug 12 22:27:17 CEST 2005 - dmueller@suse.de
+
+- actually apply the quoting patch 
+
+-------------------------------------------------------------------
+Tue Dec  7 18:53:06 CET 2004 - pth@suse.de
+
+- Fix quoting in AC_DEFUN
+
+-------------------------------------------------------------------
+Tue Nov 16 17:26:22 CET 2004 - adrian@suse.de
+
+- do not package debug dir
+- translate suse help desktop file
+
+-------------------------------------------------------------------
+Thu Aug 12 12:24:36 CEST 2004 - ro@suse.de
+
+- added libpng to neededforbuild (for doxygen)
+
+-------------------------------------------------------------------
+Mon Jul 26 09:35:31 CEST 2004 - adrian@suse.de
+
+- remove unneeded /usr/bin/simple to solve conflicts
+
+-------------------------------------------------------------------
+Mon Jun 21 10:31:59 CEST 2004 - adrian@suse.de
+
+- update to version 1.10.2
+- add susehelp desktop file
+
+-------------------------------------------------------------------
+Sat Mar 20 21:19:34 CET 2004 - adrian@suse.de
+
+- remove executable permissions of header files (#36337)
+
+-------------------------------------------------------------------
+Tue Jul 29 15:52:02 CEST 2003 - adrian@suse.de
+
+- initial package of version 1.8.0
+

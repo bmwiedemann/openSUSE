@@ -1,0 +1,54 @@
+--- man/mailstat.man
++++ man/mailstat.man	Mon Feb 23 13:53:50 2004
+@@ -0,0 +1,40 @@
++.TH MAILSTAT 1
++.SH NAME
++mailstat \- shows mail-arrival statistics
++.SH SYNOPSIS
++.B mailstat
++[\-klmots] [logfile]
++.SH DESCRIPTION
++.B mailstat
++parses a procmail-generated $LOGFILE and displays
++a summary about the messages delivered to all folders
++(total size, average size, nr of messages).
++The $LOGFILE is truncated to zero length, unless the
++.B -k
++option is used.
++Exit code 0 if mail arrived, 1 if no mail arrived.
++.SH OPTIONS
++.TP
++.I \-k
++keep logfile intact
++.TP
++.I \-l
++long display format
++.TP
++.I \-m
++merge any errors into one line
++.TP
++.I \-o
++use the old logfile
++.TP
++.I \-t
++terse display format
++.TP
++.I \-s
++silent in case of no mail
++.SH NOTES
++Customise to your heart's content, this program is only provided as a
++guideline.
++.SH AUTHOR
++This manual page was written by Santiago Vila <sanvila@ctv.es>
++for the Debian GNU/Linux distribution (but may be used by others).
+--- src/exopen.h
++++ src/exopen.h	Mon Feb 23 13:54:04 2004
+@@ -7,7 +7,7 @@
+  rlink P((const char*const old,const char*const newn,struct stat*st)),
+  hlink P((const char*const old,const char*const newn));
+ 
+-#define UNIQnamelen	30	 /* require how much space as a first guess? */
++#define UNIQnamelen	64	 /* require how much space as a first guess? */
+ #define MINnamelen	14		      /* cut to this on ENAMETOOLONG */
+ 
+ #define doCHOWN		1

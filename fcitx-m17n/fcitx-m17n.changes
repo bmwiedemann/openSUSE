@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Sat Dec  2 05:37:25 UTC 2017 - i@marguerite.su
+
+- update version 0.2.4
+  * fix some memory leak
+
+-------------------------------------------------------------------
+Mon Jun  9 05:00:34 UTC 2014 - i@marguerite.su
+
+- update version 0.2.3
+  * Fix github issue fcitx/fcitx#153
+
+-------------------------------------------------------------------
+Wed Nov  6 15:44:44 UTC 2013 - i@marguerite.su
+
+- update version 0.2.2
+  * fix problem under non-utf8 locale
+  * fix key translation with two modifier
+
+-------------------------------------------------------------------
+Mon Jul  1 03:48:08 UTC 2013 - i@marguerite.su
+
+- update version 0.2.1
+  * Translation Update
+
+-------------------------------------------------------------------
+Sat Jan 26 18:54:27 UTC 2013 - i@marguerite.su
+
+- update to 0.2.0
+  * Fix py hide by default bug.
+
+-------------------------------------------------------------------
+Mon Jan 21 09:07:32 UTC 2013 - i@marguerite.su
+
+- update to 0.1.4
+  * Fix a typo in default m17n list 
+  * Fix latn-post u + : and some similar composition
+
+-------------------------------------------------------------------
+Fri Oct 19 11:58:16 UTC 2012 - i@marguerite.su
+
+- Bugfix release, and introduce a new override file that can disable and enable
+some input method on some system by default.
+
+-------------------------------------------------------------------
+Mon Jun 25 11:18:07 UTC 2012 - i@marguerite.su
+
+- fix fedora builds.
+
+-------------------------------------------------------------------
+Sun May  6 23:14:11 UTC 2012 - i@marguerite.su
+
+- update version 0.1.2
+  * add surrounding text support
+
+-------------------------------------------------------------------
+Sun Apr  8 02:41:26 UTC 2012 - i@marguerite.su
+
+- update version 0.1.1
+  * Fix wrong option name. 
+  * If available, don’t display preedit in input window.
+
+------------------------------------------------------------------
+Sat Mar 23:29:17 UTC+8 2011 - hillwood@linuxfans.org
+
+- first package for 0.1.0
+  * New release, with m17n support.

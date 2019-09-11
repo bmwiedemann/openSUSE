@@ -1,0 +1,184 @@
+-------------------------------------------------------------------
+Fri Jun  2 20:42:27 UTC 2017 - dimstar@opensuse.org
+
+- Simplify situation around vala versions:
+  + BuildRequire libvala-devel: this is a virtual symbol provided
+    by the various libvala-*-devel versions.
+  + Programatically find the API version provided by libvala-devel
+    to pass this to configure.
+
+-------------------------------------------------------------------
+Fri Jun  2 19:25:11 UTC 2017 - zaitor@opensuse.org
+
+- Add 0%{?leap_version} == 420300 to allow build on Leap 42.3.
+
+-------------------------------------------------------------------
+Tue Mar 28 15:26:41 UTC 2017 - zaitor@opensuse.org
+
+- Add support for vala 0.36 in Factory, replacing vala 0.34.
+
+-------------------------------------------------------------------
+Sat Nov 26 18:04:33 UTC 2016 - seife+obs@b1-systems.com
+
+- fix build on Leap 42.2 (vala version 0.32)
+
+-------------------------------------------------------------------
+Fri Sep 23 18:32:25 UTC 2016 - zaitor@opensuse.org
+
+- Add support for vala 0.34 in Factory, replacing vala 0.32.
+
+-------------------------------------------------------------------
+Wed Mar 30 08:59:36 UTC 2016 - zaitor@opensuse.org
+
+- Add support for vala 0.32 in Factory, replacing vala 0.30.
+
+-------------------------------------------------------------------
+Mon Oct 12 20:55:57 UTC 2015 - zaitor@opensuse.org
+
+- Add support for vala 0.30 in Factory, replacing vala 0.28.
+
+-------------------------------------------------------------------
+Mon Aug 31 11:22:41 CEST 2015 - tiwai@suse.de
+
+- Use is_opensuse macro instead for opensuse_bs (boo#940315)
+
+-------------------------------------------------------------------
+Tue Aug 11 14:46:48 CEST 2015 - tiwai@suse.de
+
+- Set the proper vala version for suse_version == 1315 (SLE12 and
+  openSUSE Leap)
+
+-------------------------------------------------------------------
+Fri Apr  3 18:45:36 UTC 2015 - zaitor@opensuse.org
+
+- Add support for vala 0.28 in Factory
+
+-------------------------------------------------------------------
+Wed Oct  1 13:22:46 UTC 2014 - zaitor@opensuse.org
+
+- Add support for vala 0.26 in Factory, replacing vala 0.24.
+
+-------------------------------------------------------------------
+Sun May 18 07:31:53 UTC 2014 - gber@opensuse.org
+
+- add support for vala 0.24 in Factory, remove support for 12.2
+
+-------------------------------------------------------------------
+Sun Aug 18 10:52:54 UTC 2013 - gber@opensuse.org
+
+- add support for vala 0.22 in Factory
+
+-------------------------------------------------------------------
+Sat Aug 17 13:53:00 UTC 2013 - gber@opensuse.org
+
+- update to version 4.10.3
+  - Make the pkgconfig file noarch
+  - Add --with-vala-api option to allow packagers select vala api
+    version
+- drop now obsolete xfce4-vala-multiple-vala-versions.patch
+- remove support for openSUSE 12.1
+
+-------------------------------------------------------------------
+Mon Apr 29 09:38:55 UTC 2013 - gber@opensuse.org
+
+- add support for vala 0.20
+
+-------------------------------------------------------------------
+Mon Nov  5 09:48:43 UTC 2012 - gber@opensuse.org
+
+- remove support for openSUSE 11.4
+
+-------------------------------------------------------------------
+Wed Oct 24 07:54:17 UTC 2012 - gber@opensuse.org
+
+- use most recent vala version available in an openSUSE release
+
+-------------------------------------------------------------------
+Tue Oct 23 07:25:56 UTC 2012 - gber@opensuse.org
+
+- update to version 4.10.2
+  - added garcon (package, VAPI, and test program)
+  - updated API to Xfce 4.10.0
+  - updated package to Vala 0.16
+
+-------------------------------------------------------------------
+Mon Oct  8 09:43:00 UTC 2012 - gber@opensuse.org
+
+- depend on vala-0_12 for >= 12.1
+
+-------------------------------------------------------------------
+Wed Apr  4 13:00:47 UTC 2012 - gber@opensuse.org
+
+- loosen vala version constraints to make package installable
+
+-------------------------------------------------------------------
+Fri Mar 30 20:59:58 UTC 2012 - gber@opensuse.org
+
+- specfile cleanup
+- correct dependencies
+
+-------------------------------------------------------------------
+Thu Jan 19 10:26:53 UTC 2012 - gber@opensuse.org
+
+- add support for vala 0.16
+
+-------------------------------------------------------------------
+Fri Jul 15 11:24:45 UTC 2011 - gber@opensuse.org
+
+- allow build against vala 0.14
+
+-------------------------------------------------------------------
+Fri May 13 10:42:44 UTC 2011 - gber@opensuse.org
+
+- update to version 4.8.1
+  - update to vala 0.12
+- added xfce4-vala-multiple-vala-versions.patch to retain
+  compatibility with vala 0.10
+
+-------------------------------------------------------------------
+Thu Feb 17 09:25:20 UTC 2011 - gber@opensuse.org
+
+- update to version 4.8.0
+  - dropped Xfconf.get/set_array functions, since tests didn't pass
+    and using GLib.Value with Vala changed
+
+-------------------------------------------------------------------
+Mon Dec 27 17:56:46 UTC 2010 - gber@opensuse.org
+
+- corrected build dependencies
+- use fdupes
+- added rpmlintrc
+
+-------------------------------------------------------------------
+Thu Dec 16 10:50:05 UTC 2010 - gber@opensuse.org
+
+- explictily require vala >= 0.10
+
+-------------------------------------------------------------------
+Wed Dec 15 16:52:52 UTC 2010 - prusnak@opensuse.org
+
+- fix filelist and require vala
+
+-------------------------------------------------------------------
+Sun Dec  5 12:16:15 UTC 2010 - gber@opensuse.org
+
+- updated to version 4.6.99_git20101205
+  - compatibility with XFCE 4.8pre1
+
+-------------------------------------------------------------------
+Fri Dec  3 18:46:42 UTC 2010 - gber@opensuse.org
+
+- fixed version number
+- fixed build dependencies on exo, vala
+
+-------------------------------------------------------------------
+Fri Dec  3 01:36:47 UTC 2010 - prusnak@opensuse.org
+
+- updated to 4.6.1
+  - compatibility with vala 0.10
+
+-------------------------------------------------------------------
+Fri Nov 13 18:59:28 CET 2009 - prusnak@suse.cz
+
+- created package (version 4.6.0)
+

@@ -1,0 +1,13 @@
+Index: artha-1.0.3/configure.ac
+===================================================================
+--- artha-1.0.3.orig/configure.ac
++++ artha-1.0.3/configure.ac
+@@ -16,7 +16,7 @@ AM_INIT_AUTOMAKE([-Wall -Werror check-ne
+ 
+ # Checks for programs.
+ AM_PROG_CC_C_O
+-AM_PROG_AR
++m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
+ AC_LANG([C])
+ AC_LANG_CONFTEST(
+ [AC_LANG_SOURCE([[const char hw[] = "Hello, World\n";]])])

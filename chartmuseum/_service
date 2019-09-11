@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/chartmuseum/chartmuseum.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">0.2.1</param>
+    <param name="revision">v0.2.1</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">chartmuseum-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">chartmuseum</param>
+  </service>
+</services>

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Exec=vmware-user-autostart-wrapper
+Name=VMware User Agent
+Type=Application
+X-KDE-autostart-phase=1

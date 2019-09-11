@@ -1,0 +1,11 @@
+[Unit]
+Description=Argus generates network transaction audit records
+After=syslog.target network.target
+
+[Service]
+PIDFile=/var/run/argus.pid
+ExecStart=/usr/sbin/argus -d 
+
+[Install]
+WantedBy=multi-user.target
+

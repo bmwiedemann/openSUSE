@@ -1,0 +1,98 @@
+Author: Erik Kurzinger <ekurzinger@nvidia.com>
+Subject: don't flag extra reply in xcb_take_socket
+Patch-Mainline: To-be-upstreamed
+Signed-off-by: Michal Srb <msrb@suse.com>
+References: bnc#1101560
+
+If any flags are specified in a call to xcb_take_socket,
+they should only be applied to replies for requests sent
+after that function returns (and until the socket is
+re-acquired by XCB).
+
+Previously, they would also be incorrectly applied to the
+reply for the last request sent before the socket was taken.
+For instance, in this example program the reply for the
+GetInputFocus request gets discarded, even though it was
+sent before the socket was taken. This results in the
+call to retrieve the reply hanging indefinitely.
+
+static void return_socket(void *closure) {}
+
+int main(void)
+{
+    Display *dpy = XOpenDisplay(NULL);
+    xcb_connection_t *c = XGetXCBConnection(dpy);
+
+    xcb_get_input_focus_cookie_t cookie = xcb_get_input_focus_unchecked(c);
+    xcb_flush(c);
+
+    uint64_t seq;
+    xcb_take_socket(c, return_socket, dpy, XCB_REQUEST_DISCARD_REPLY, &seq);
+
+    xcb_generic_error_t *err;
+    xcb_get_input_focus_reply(c, cookie, &err);
+}
+
+In practice, this has been causing intermittent KWin crashes when
+used in combination with the proprietary NVIDIA driver such as
+https://bugs.kde.org/show_bug.cgi?id=386370 since when Xlib fails to
+retrieve one of these incorrectly discarded replies it triggers
+an IO error.
+
+Signed-off-by: Erik Kurzinger <ekurzinger@nvidia.com>
+---
+ src/xcb_in.c  | 21 +++++++++++++++++++--
+ src/xcb_out.c | 10 ++++++++--
+ 2 files changed, 27 insertions(+), 4 deletions(-)
+
+diff --git a/src/xcb_in.c b/src/xcb_in.c
+index 73209e0..4333ad3 100644
+--- a/src/xcb_in.c
++++ b/src/xcb_in.c
+@@ -958,8 +958,20 @@ void _xcb_in_replies_done(xcb_connection_t *c)
+         pend = container_of(c->in.pending_replies_tail, struct pending_reply, next);
+         if(pend->workaround == WORKAROUND_EXTERNAL_SOCKET_OWNER)
+         {
+-            pend->last_request = c->out.request;
+-            pend->workaround = WORKAROUND_NONE;
++            if (XCB_SEQUENCE_COMPARE(pend->first_request, <=, c->out.request)) {
++                pend->last_request = c->out.request;
++                pend->workaround = WORKAROUND_NONE;
++            } else {
++                /* The socket was taken, but no requests were actually sent
++                 * so just discard the pending_reply that was created.
++                 */
++                struct pending_reply **prev_next = &c->in.pending_replies;
++                while (*prev_next != pend)
++                    prev_next = &(*prev_next)->next;
++                *prev_next = NULL;
++                c->in.pending_replies_tail = prev_next;
++                free(pend);
++            }
+         }
+     }
+ }
+diff --git a/src/xcb_out.c b/src/xcb_out.c
+index 3601a5f..c9593e5 100644
+--- a/src/xcb_out.c
++++ b/src/xcb_out.c
+@@ -387,8 +387,14 @@ int xcb_take_socket(xcb_connection_t *c, void (*return_socket)(void *closure), v
+     {
+         c->out.return_socket = return_socket;
+         c->out.socket_closure = closure;
+-        if(flags)
+-            _xcb_in_expect_reply(c, c->out.request, WORKAROUND_EXTERNAL_SOCKET_OWNER, flags);
++        if(flags) {
++            /* c->out.request + 1 will be the first request sent by the external
++             * socket owner. If the socket is returned before this request is sent
++             * it will be detected in _xcb_in_replies_done and this pending_reply
++             * will be discarded.
++             */
++            _xcb_in_expect_reply(c, c->out.request + 1, WORKAROUND_EXTERNAL_SOCKET_OWNER, flags);
++        }
+         assert(c->out.request == c->out.request_written);
+         *sent = c->out.request;
+     }
+-- 
+2.16.4
+

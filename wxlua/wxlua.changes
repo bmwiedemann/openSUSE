@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Tue Dec 12 06:18:57 UTC 2017 - mailaender@opensuse.org
+
+- Update to the 3.1 series fork
+- Drop wxlstate.patch
+- Add desktop.patch
+
+-------------------------------------------------------------------
+Thu Sep  7 21:21:49 UTC 2017 - jengelh@inai.de
+
+- Add wx-webview.patch which disables building the Lua wrapper for
+  of wxWebView, since that class is going away in the C++ part.
+
+-------------------------------------------------------------------
+Tue Jul 11 08:47:18 UTC 2017 - tchvatal@suse.com
+
+- Fix build with namespaced lua
+
+-------------------------------------------------------------------
+Thu Jul 21 21:45:14 UTC 2016 - mailaender@opensuse.org
+
+- install shared library and MIME files
+
+-------------------------------------------------------------------
+Thu Jul 21 07:56:21 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging for openSUSE
+

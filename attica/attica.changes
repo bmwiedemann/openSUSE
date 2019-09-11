@@ -1,0 +1,210 @@
+-------------------------------------------------------------------
+Thu Jun 13 00:28:45 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 0.4.2
+  * Do HTTP basic authentication the right way
+  * Add API to get the URL for registering an account from the
+    providers file
+  * Qt5 build fixes
+
+-------------------------------------------------------------------
+Tue Nov 20 10:30:12 UTC 2012 - cgiboudeaux@gmx.com
+
+- Fix installation on SLES
+
+-------------------------------------------------------------------
+Thu Aug 23 10:26:30 UTC 2012 - mlin@suse.com
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Mon Aug 20 17:20:19 UTC 2012 - mlin@suse.com
+
+- Update to version 0.4.1
+  * Add some Qt5 support in tests
+  * Comment out some qDebug calls
+  * Fix various Qt5 issues
+
+-------------------------------------------------------------------
+Mon Jul 16 16:01:41 UTC 2012 - dev@dominik-schmidt.de
+
+- update to 0.4.0:
+* fixes for proxy support
+
+-------------------------------------------------------------------
+Wed Jan 25 15:05:41 UTC 2012 - coolo@suse.com
+
+- fix baselibs.conf after library name change
+
+-------------------------------------------------------------------
+Fri Jan 20 20:37:21 UTC 2012 - crrodriguez@opensuse.org
+
+- Build with -fvisibility-inlines-hidden (around 50 symbols less)
+- libattica-devel Requires: libqt4-devel
+
+-------------------------------------------------------------------
+Tue Jan 10 20:02:45 UTC 2012 - idonmez@suse.com
+
+- Fix library name
+
+-------------------------------------------------------------------
+Wed Jan  4 19:37:07 CET 2012 - dmueller@suse.de
+
+- update to 0.3.0:
+  - Bump soname from .0 to .0.3 since we have a BIC change.
+  - Fix upload errors resulting from content-id not being set.
+  - Add Forum, Achievement, services and related dependencies.
+  - Make it build against Qt 4.8.
+  - Add static build option
+
+-------------------------------------------------------------------
+Sat Sep 17 13:32:58 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Add libattica-devel to baselibs
+
+-------------------------------------------------------------------
+Wed Aug 24 08:40:31 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed sentence in attica.spec
+
+-------------------------------------------------------------------
+Thu Nov 25 18:39:24 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 0.2.2
+  * add support for openSUSE OBS
+
+-------------------------------------------------------------------
+Mon Oct 18 12:36:46 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to 0.2.0
+  * final release
+
+-------------------------------------------------------------------
+Fri Sep 10 20:00:00 CEST 2010 - johannesobermayr@gmx.de
+
+- update to released 0.1.91 tarball
+  - makes gluon compile against K:D:F
+
+-------------------------------------------------------------------
+Fri Sep 10 17:58:53 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 0.1.91 (0.2.0-rc1)
+  - Update voting function (add overload) to take uint 0..100
+    according to ocs 1.6 spec
+  - Add comments interface to request comments, add new comments
+    and vote for comments
+  - Add distribution interface to request distributions available
+    in the server
+  - Add homepagetype interface to request home page types from
+    the server
+  - Add methods to access home page entries in content
+  - Add support of icons to content (OCS 1.6)
+  - Add support of videos to content (OCS 1.6)
+  - Add summary description to content (OCS 1.6)
+  - Add size to download description (OCS 1.6)
+  - Add fields to download item for package name, package repository,
+    gpg fingerprint, mimetype (OCS 1.6)
+
+-------------------------------------------------------------------
+Tue Aug 17 15:08:58 UTC 2010 - tittiatcoke@gmail.com
+
+- update to a new svn snapshot of the upcoming 0.2.0
+  * beginning of the attributes API
+  * make it clear that attributes belongs to persons
+  * improve apidox
+  * bugfixes (bko#243168,)
+  * new voting api for ocs 1.6
+  * Added comments interface to request comments, add new
+    comments and vote for comment
+  * Added distribution interface to request distributions
+    available in the server
+  * Added homepagetype interface to request home page types
+    from the server
+  * Added support of icons to content (OCS 1.6)
+  * Added support of videos to content (OCS 1.6)
+  * Added summary description to content (OCS 1.6)
+  * Added size to download description (OCS 1.6)
+  * Added fields to download item for package name, package
+    repository, gpg fingerprint, mimetype (OCS 1.6)
+  * Added methods to access home page entries in a content
+
+-------------------------------------------------------------------
+Wed May 19 14:31:42 CEST 2010 - dmueller@suse.de
+
+- update to released 0.1.4 tarball:
+  - includes upstream changelog (no code change)
+
+-------------------------------------------------------------------
+Fri May  7 13:05:00 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 0.1.4 (trunk)
+  - Remove function decls without body introduced in 0.1.3
+  - Add functions to check for provider services (parts of the api
+    they implement)
+  - Make adding, disabling and removing default providers possible
+    (so we can have other providers than openDesktop.org)
+
+
+-------------------------------------------------------------------
+Fri May  7 11:20:46 CEST 2010 - dmueller@suse.de
+
+- update to 0.1.3:
+ - Add possibility to get Licenses from server
+ - Add search for contents by username
+ - Add convenience function to get list of download links and fix some related strings
+ - Fix qt-only hasCredentials
+ - Win and Mac compile/link fixes
+ - Fix crash when multiple apps would use attica simultaneously: do not delete root component of qtplugins
+
+-------------------------------------------------------------------
+Mon Apr 26 12:29:26 CEST 2010 - ro@suse.de
+
+- try to fix version in pkgconfig file
+
+-------------------------------------------------------------------
+Thu Jan 14 23:00:53 CET 2010 - dmueller@suse.de
+
+- update to 0.1.2:
+  - Don't define qHash for QUrl in Qt 4.7
+  - fix memlead for aborted requests
+  - qt platform plugin implements basic password/user name handling
+  - copying file: lesser gpl 2.1
+  - don't link qtgui without reason
+  - make hasCredentials const (new function
+
+-------------------------------------------------------------------
+Thu Dec 31 15:08:57 CET 2009 - dmueller@suse.de
+
+- add libattica0 baselibs, needed for libkde4
+
+-------------------------------------------------------------------
+Fri Dec 18 23:06:58 CET 2009 - dmueller@suse.de
+
+- packaging cleanups
+
+-------------------------------------------------------------------
+Tue Dec 15 10:34:38 UTC 2009 - wstephenson@novell.com
+
+- Update to released stable version 0.1.1
+
+-------------------------------------------------------------------
+Mon Dec 14 12:01:19 UTC 2009 - tittiatcoke@gmail.com
+
+- update to svn1060455
+
+-------------------------------------------------------------------
+Sat Dec  5 21:07:03 UTC 2009 - tittiatcoke@gmail.com
+
+- update to svn1058931
+
+-------------------------------------------------------------------
+Fri Nov 27 07:03:08 UTC 2009 - wstephenson@novell.com
+
+- Update to svnr1054392
+
+-------------------------------------------------------------------
+Fri Nov 20 16:56:41 UTC 2009 - wstephenson@novell.com
+
+- Initial version
+

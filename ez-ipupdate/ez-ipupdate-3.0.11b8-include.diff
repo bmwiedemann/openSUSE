@@ -1,0 +1,11 @@
+--- ez-ipupdate-3.0.11b8/ez-ipupdate.c
++++ ez-ipupdate-3.0.11b8/ez-ipupdate.c
+@@ -205,6 +205,8 @@
+ #  define OS "unknown"
+ #endif
+ 
++#include <time.h>
++
+ // the min period for checking the interface
+ #define MIN_UPDATE_PERIOD 10
+ // the min/max time to wait if we fail to update

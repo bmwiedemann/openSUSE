@@ -1,0 +1,601 @@
+-------------------------------------------------------------------
+Wed May 15 10:30:35 UTC 2019 - trenn@suse.de
+
+- For obs regression checker, this version includes following SLE
+  fixes:
+  - enable build for aarch64 (fate#319973) (bsc#976199)
+     factory has an extra patch to disable ARM 32 bit archs which
+     looks a bit misleading as %arm macro only covers 32 bit ARM.
+  -  Bug 955334 - numactl/libnuma: add patch for Dynamic Reconfiguration
+     bsc#955334
+
+-------------------------------------------------------------------
+Tue Apr 23 12:34:40 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133098).
+
+-------------------------------------------------------------------
+Wed Nov 07 14:04:26 UTC 2018 - egotthold@suse.com
+
+- Update to version 2.0.12:
+  * Release numactl 2.0.12
+  * Cleanup whitespace from *.c and *.h files
+  * Add Travis build status to numactl README
+  * Convert README and INSTALL to Markdown
+  * Remove `threadtest.c`
+  * Remove `mkolddemo` script
+  * Remove file TODO, which has outdated contents
+  * Remove file DESIGN, which has no contents
+  * Remove changelogs from the repository
+  * Revert "make clearcache work on x86/PIC"
+  * Add "NAME" section to numastat manpage
+  * Allow building on ARM systems
+  * Add pkg-config file for NUMA library
+  * readdir_r(3) is deprecated, use readdir(3) instead
+  * Avoid filename truncation in numastat
+  * fix coding style in last change
+  * Fix: numademo test between sparse nodes
+  * Fix: allocation of dynamic array
+  * Fix: numactl distance between sparse nodes
+  * include sys/sysmacros.h for major/minor
+  * make clearcache work on x86/PIC
+  * Fix regress test for invalid hard code of nodenames
+  * Fix end of line check in distance parsing
+  * Optimize numa_distance check
+  * affinity: Include sys/sysmacros.h to fix warning
+  * numademo: Increase buffer to avoid theoretical buffer overflow
+  * Check for invalid nodes in numa_distance
+
+-------------------------------------------------------------------
+Wed Aug  1 14:14:39 UTC 2018 - schwab@suse.de
+
+- sysmacros.patch: Include <sys/sysmacros.h> for major/minor
+
+-------------------------------------------------------------------
+Fri Jan  5 15:32:35 UTC 2018 - matwey.kornilov@gmail.com
+
+- Disable building at 32-bit ARM.
+  NUMA is not supported by 32-bit ARM Linux Kernel, so build failed
+  with
+  
+  #error "Add syscalls for your architecture or update kernel headers"
+
+-------------------------------------------------------------------
+Fri Jul 07 12:49:19 UTC 2017 - fschnizlein@suse.com
+
+- Update to latest HEAD (ea3a70681c2f523fe58e1d44527f478ca76db74e)
+  * Fix usage of __GLIBC_PREREQ for non-glibc toolchains
+  * Fix usage of __GLIBC_PREREQ for non-glibc toolchains
+  * Clean up numa_error() calls.
+  * Handle sched_getaffinity() failing with errno != EINVAL.
+  * "Further more" should be a single word
+  * Fix for numa_police_memory()
+  * Segment fault when numa nodes not sequential or contiguous
+  * Update prototype of get_mempolicy
+
+-------------------------------------------------------------------
+Thu Mar  9 08:22:02 UTC 2017 - fschnizlein@suse.com
+
+- Update to 2.0.11
+  * 150116 libnuma: numa_node_to_cpu skips over non-existing
+    nodes (Petr Holasek)
+  * 151210 libnuma: supress warnings for non-existing node (Petr Holasek)
+
+-------------------------------------------------------------------
+Sun Aug  2 17:08:54 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use autoreconf to update configure
+
+-------------------------------------------------------------------
+Mon Feb 23 16:28:34 UTC 2015 - crrodriguez@opensuse.org
+
+- package fails to build with PIE globally enabled, due to 
+  error: inconsistent operand constraints in an 'asm'.
+  Turns out there is a GCC builtin for doing the operation 
+  cleanly. (numactl-clearcache-pie.patch)
+
+-------------------------------------------------------------------
+Tue Jan 27 11:07:47 UTC 2015 - trenn@suse.de
+
+- Change license from GPL-2.0+ to GPL-2.0
+
+-------------------------------------------------------------------
+Tue Jan 20 19:04:49 UTC 2015 - trenn@suse.de
+
+- Make latest factory version build against SLE11 as well
+
+-------------------------------------------------------------------
+Thu Nov 27 07:35:32 UTC 2014 - meissner@suse.com
+
+- cleanup, also build for i586
+- remove move_pages.2 , as it is in manual-pages rpm.
+
+-------------------------------------------------------------------
+Sat Nov 22 17:59:49 UTC 2014 - mailaender@opensuse.org
+
+- Update to version 2.0.10:
+  * 131123 numactl: numactl check for NUMA available (Elena Ufimtseva)
+  * 140715 numactl: fix numactl --show  and preferrred node (Bill Gray)
+  * 140722 makefile: remove warning about missing .depend (Filipe Brandenburger)
+  * 140820 convert the build procedure to automake (Filipe Brandenburger)
+- Cleanup spec file
+  * use RPM macros where possible
+  * remove redundant %clean
+
+-------------------------------------------------------------------
+Tue Jul 29 08:26:28 UTC 2014 - juwolf@suse.com
+
+- Fixed patch 0001-Fixed-segfault-when-no-node-could-be-found-in-sysfs-.patch
+  for bnc#872922
+
+-------------------------------------------------------------------
+Fri Jun 13 14:27:32 UTC 2014 - juwolf@suse.com
+
+- Add: 0001-Fixed-segfault-when-no-node-could-be-found-in-sysfs-.patch
+  Fixes segfault when no node could be found in sysfs. bnc#872922
+
+-------------------------------------------------------------------
+Tue Dec 10 19:01:57 UTC 2013 - dvaleev@suse.com
+
+- enable ppc64le 
+
+-------------------------------------------------------------------
+Wed Oct  9 14:39:00 UTC 2013 - trenn@suse.de
+
+- Update to version 2.0.9:
+- 130207 Add a prototype for numa_bitmask_weight (Cliff W.)
+- 130725 Fix hubstats huge pages bug, version number, man page (Bill Gray)
+- 130726 Disable the regress-io test (Cliff W.)
+- 130730 Fix typos in numactl man page; add short opts to --help
+  (Petr Holasek)
+- 130906 numactl: option --all/-a added for policy settings (Petr Holasek)
+- 130906 libnuma: new function numa_run_on_node_mask_all (Petr Holasek)
+ 
+
+-------------------------------------------------------------------
+Thu Nov  8 21:39:52 UTC 2012 - trenn@suse.de
+
+- Update to version 2.0.8:
+  Drop patch numactl_install_all_manpages, merged upstream
+- Removed __DATE__ in numastat to avoid constant rebuilding in build
+  service (added patch revert_date_in_numastat.patch)
+- adjusted license strings
+
+-------------------------------------------------------------------
+Wed Oct 12 22:06:22 UTC 2011 - tabraham@novell.com
+
+- Update from 2.0.6 to 2.0.7
+  * Add numa_realloc() (and realloc_test)
+  * Re-fix numa_get_run_node_mask() and fix numa_get_run_node_mask
+  * Fix the numa_get_run_node_mask() man page (cpus vs nodes)
+  * Fix the cpu and node parsing to be cpuset aware
+  * Fix test/checkaffininty to be cpuset aware
+  * Fix two typos in numactl.8
+
+-------------------------------------------------------------------
+Wed Mar 16 11:02:22 UTC 2011 - trenn@novell.com
+
+- Only use LGPL for the library licence, remove the gpl part.
+
+-------------------------------------------------------------------
+Wed Mar 16 09:43:28 UTC 2011 - trenn@novell.com
+
+- Add lesser GPL public license to libnuma as metioned in the
+  sources
+
+-------------------------------------------------------------------
+Wed Mar 16 09:39:02 UTC 2011 - trenn@novell.com
+
+- Adjust/refresh patch, no functional change
+
+-------------------------------------------------------------------
+Tue Jan  4 15:42:37 UTC 2011 - trenn@novell.com
+
+- Update from 2.0.6-rc3 to final version 2.0.6
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Oct 12 10:00:03 UTC 2010 - trenn@novell.com
+
+- Updated to version 2.0.6-rc3
+  * Fix numa_get_run_node_mask() to return a cpuset-aware node mask (Cliff W.)
+  * Add a better warning to numa_node_to_cpus()
+
+-------------------------------------------------------------------
+Tue Oct  5 15:34:17 UTC 2010 - trenn@novell.com
+
+- Updated to version 2.0.6-rc1
+  * numa_num_task_cpus()/..nodes() to return actual counts (Cliff W.)
+  * Correct numa_max_node() use of broken numa_num_configured_nodes() (Tim Pepper)
+  * Use numa_max_node() not numa_num_configured_nodes() (Tim Pepper)
+  * Fix numa_num_configured_nodes() to match man page description (Tim Pepper)
+  * Clarify comment for numa_all_nodes_ptr extern (Tim Pepper)
+  * numactl --hardware should handle sparse node numbering (Tim Pepper)
+  * Maintain compatibility with 2.0.3 numa_num_thread...()'s (Cliff W.)
+
+-------------------------------------------------------------------
+Sun Oct  3 07:47:48 UTC 2010 - aj@suse.de
+
+- Update to 2.0.5:
+  * Remove merged patch numactl_fix_mem_corrup_numa_init.patch
+  * Various bug fixes.
+
+-------------------------------------------------------------------
+Mon Jun 21 17:17:17 UTC 2010 - trenn@novell.com
+
+- Forgot to increase the version string from 2.0.4-rc1 to 2.0.4-rc2
+
+-------------------------------------------------------------------
+Wed Jun  9 09:32:15 UTC 2010 - trenn@novell.com
+
+- Fixed corrupt tar.bz2 and added a mem corruption fix from Jan.
+
+-------------------------------------------------------------------
+Thu May 20 12:07:19 UTC 2010 - trenn@novell.com
+
+- Update to version 2.0.4-rc2
+
+-------------------------------------------------------------------
+Thu Feb 11 01:31:44 UTC 2010 - jengelh@medozas.de
+
+- workaround broken Makefile which uses uname -m to detect bitness
+  and libdir
+- remove sparcv9 from special-casing in baselibs.conf
+
+-------------------------------------------------------------------
+Wed Dec 16 00:27:34 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+- add baselibs for SPARC
+- add SPARC to ExclusiveArch
+- enable parallel building
+
+-------------------------------------------------------------------
+Fri Dec 11 14:18:35 CET 2009 - trenn@suse.de
+
+- Update to version 2.0.4-rc1
+- Added missing manpages: numastat, migspeed, migratepages
+
+-------------------------------------------------------------------
+Thu Dec 10 13:36:45 CET 2009 - meissner@suse.de
+
+- fixed build with asneeded on platforms with non-builtin sqrt()
+
+-------------------------------------------------------------------
+Wed Feb  4 12:21:09 CET 2009 - cthiel@suse.de
+
+- fix baselibs.conf syntax
+
+-------------------------------------------------------------------
+Wed Jan 28 18:32:07 CET 2009 - bwalle@suse.de
+
+- Fixes the function to print all available CPUs.
+
+-------------------------------------------------------------------
+Mon Jan 26 11:06:25 CET 2009 - cthiel@suse.de
+
+- fix baselibs.conf, to require libnuma1-32bit on ppc
+
+-------------------------------------------------------------------
+Thu Jan 15 17:36:01 CET 2009 - bwalle@suse.de
+
+- Update to 2.0.3-rc1
+  o Fixes to libnuma.c numa.h numacompat1.h by Daniel Gollub to fix
+    v1 compatiblity
+  o Fixes for 64-bit big-endian systems
+  o Restore nodemask_zero() and nodemask_equal()
+  o Fixes to read_mask()
+  o Drops a warning message about this not being a NUMA system
+  o Remove the numa_maps.5 man page (it's in Linux now)
+  o Fix makefiles in tests
+  o Fix off-by-ones in test mbind_mig_pages
+- Drop numactl-compat.diff: Mainline.
+- Drop numactl-fix-for-ppc64.patch: Mainline.
+
+-------------------------------------------------------------------
+Wed Jan 14 17:13:29 CET 2009 - ro@suse.de
+
+- baselibs.conf: really create libnuma-devel-32bit only on ppc 
+
+-------------------------------------------------------------------
+Wed Jan 14 13:40:03 CET 2009 - bwalle@suse.de
+
+- Don't include the numa_maps(5) manpage since it's in man-pages
+  for some time (bnc #456823).
+- Add libnuma-devel to baselibs.conf to get a libnuma-devel-32bit
+  on PPC (bnc #456823)
+
+-------------------------------------------------------------------
+Tue Jan 13 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Jan 13 09:48:27 CET 2009 - bwalle@suse.de
+
+- Fix "memset fails with 'mbind: Invalid argument'" on PPC64
+  (bnc #455977).
+
+-------------------------------------------------------------------
+Mon Dec  8 16:46:29 CET 2008 - kukuk@suse.de
+
+- Fix baselibs.conf
+
+-------------------------------------------------------------------
+Fri Dec  5 20:57:07 CET 2008 - bwalle@suse.de
+
+- Revert last change, it breaks other architectures.
+
+-------------------------------------------------------------------
+Fri Dec  5 14:38:41 CET 2008 - bwalle@suse.de
+
+- Fix numademo memset fails with 'mbind: Invalid argument'
+  (bnc #455977).
+
+-------------------------------------------------------------------
+Thu Nov 20 11:58:59 CET 2008 - bwalle@suse.de
+
+- Fixes to libnuma.c numa.h numacompat1.h by Daniel Gollub to fix
+  v1 compatiblity (bnc#441440).
+
+-------------------------------------------------------------------
+Tue Aug 05 15:50:11 CEST 2008 - bwalle@suse.de
+
+- update to 2.0.2
+  o Various numademo improvements:
+    * Fix random benchmark to use all specified memory
+    * Rename to random2 to signify it's different
+    * Optimize random benchmark by inlining random number generator
+      fast path.
+    * Clear caches between runs for more stable results
+    * Add new random pointer chaser benchmark
+    * Compile benchmarks with gcc vectorization if available
+    * run numademo in regression test
+  o Add numa_exit_on_warn
+  o Fix no cpuset fallback in libnuma.c
+  o Install symlinks for the manpages of all new functions
+  o Make internal libnuma functions static
+  o Add copy_bitmask_to_bitmask() to numa.h
+  o Some cleanups
+  o Fix line reading in proc
+  o Add versions.ldscript to libnuma.so dependencies
+  o Remove the non-"numa_" functions from numacompat1.h and numa.h
+  o Add ia64 clearcache() to numademo
+  o Add -t to numademo for regression testing
+  o Remove "numa_all_cpus" from numa.h
+  o Changed VERSION1_COMPATIBILITY to NUMA_VERSION1_COMPATIBILITY
+  o Defined LIBNUMA_API_VERSION 2 in numa.h
+  o Fix numaif.h and numaint.h (migrate_pages)
+  o Fixes to numademo (min/max, and array index)
+
+-------------------------------------------------------------------
+Wed Jun 25 10:39:24 CEST 2008 - bwalle@suse.de
+
+- change RPM version to '2.0.1+2.0.2_rc1' for a clean update path
+- don't package the static library
+- update baselibs.conf to reflect the package split
+- remove Provides/Obsoletes since the 'numactl' package still
+  exists and provides the numactl binary
+- move Changelog from 'libnuma1' package to 'numactl' package
+
+-------------------------------------------------------------------
+Tue Jun 17 20:41:52 CEST 2008 - bwalle@suse.de
+
+- update to 2.0.2-rc1
+  o Various numademo improvements:
+    * Fix random benchmark to use all specified memory
+    * Rename to random2 to signify it's different
+    * Optimize random benchmark by inlining random number generator
+      fast path.
+    * Clear caches between runs for more stable results
+    * Add new random pointer chaser benchmark
+    * Compile benchmarks with gcc vectorization if available
+    * run numademo in regression test
+  o Add numa_exit_on_warn
+  o Fix no cpuset fallback in libnuma.c
+  o Fix no cpuset fallback in libnuma.c
+  o Install symlinks for the manpages of all new functions
+  o Make internal libnuma functions static
+  o Add copy_bitmask_to_bitmask() to numa.h
+  o Some cleanups
+  o Fix line reading in proc
+  o Add versions.ldscript to libnuma.so dependencies
+  o Remove the non-"numa_" functions from numacompat1.h and numa.h
+  o Add ia64 clearcache() to numademo
+  o Add -t to numademo for regression testing
+
+-------------------------------------------------------------------
+Wed Jun 11 10:45:49 CEST 2008 - bwalle@suse.de
+
+- update to 2.0.1 (see CHANGES file for a changelog)
+- follow shared library packaging policy
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Mar 17 16:49:58 CET 2008 - jeffm@suse.com
+
+- Update to 1.0.2
+  * Fix parallel Makefile build (Andreas Herrmann)
+  * Fix target command argument parsing for numactl
+  * Clarify numa_node_to_cpus() manpage
+
+-------------------------------------------------------------------
+Thu Aug 16 01:33:42 CEST 2007 - ak@suse.de
+
+- Update to 1.0.1
+  * Only bug fixes since the previous version, no
+    new functionality.
+
+-------------------------------------------------------------------
+Thu Jun  8 17:04:54 CEST 2006 - ak@suse.de
+
+- Save/restore errno correctly (#182158)
+
+-------------------------------------------------------------------
+Thu Jun  8 11:59:32 CEST 2006 - ak@suse.de
+
+- Fix cpu buffer sizing for affinity syscalls (#182145)
+
+-------------------------------------------------------------------
+Tue May 23 23:22:30 CEST 2006 - ak@suse.de
+
+- Fix cpumap parsing again (#177749)
+
+-------------------------------------------------------------------
+Thu Mar 30 19:17:22 CEST 2006 - ak@suse.de
+
+- Fix the cpumap parsing fix to not corrupt memory (still #161089)
+
+-------------------------------------------------------------------
+Tue Mar 28 10:33:00 CEST 2006 - ak@suse.de
+
+- Update to 0.9.6: (#161089)
+  * consolidates earlier changes
+  * fix migrate pages error handling
+  * add numa_maps manpage
+  * fix cpumap parsing on large systems
+  * some build fixes
+
+-------------------------------------------------------------------
+Thu Mar 23 21:37:24 CET 2006 - ak@suse.de
+
+- Don't install syscall manpages which are in the normal
+  manpages now (#158550)
+
+-------------------------------------------------------------------
+Sun Feb 12 22:45:34 CET 2006 - ak@suse.de
+
+- Install migratepages manpage (followon for #143825)
+
+-------------------------------------------------------------------
+Wed Feb  8 12:41:06 CET 2006 - ak@suse.de
+
+- Add support for page migration (#143825)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan  4 21:24:14 CET 2006 - ak@suse.de
+
+- Update to numactl 0.9.1 to fix ppc32 build.
+
+-------------------------------------------------------------------
+Tue Jan  3 21:40:11 CET 2006 - ak@suse.de
+
+- Update to numactl 0.9
+
+-------------------------------------------------------------------
+Mon Dec 19 08:52:45 CET 2005 - ak@suse.de
+
+- Update to numactl 0.8
+
+-------------------------------------------------------------------
+Fri Dec 16 12:05:26 CET 2005 - ro@suse.de
+
+- do not build as root
+
+-------------------------------------------------------------------
+Mon Oct 10 23:09:58 CEST 2005 - ak@suse.de
+
+- use RPM_OPT_FLAGS
+- fix build on ia64 with debuginfo package
+
+-------------------------------------------------------------------
+Mon Oct 10 10:57:36 CEST 2005 - ak@suse.de
+
+- Fix includes in manpages (#72853)
+- Fix buffer length calculation (#118980)
+
+-------------------------------------------------------------------
+Wed Apr 27 12:04:33 CEST 2005 - jplack@suse.de
+
+- override broken calculation of libdir in Makefile by using
+  %{_libdir} rpm macro (#75249). Now it builds on ppc also.
+
+-------------------------------------------------------------------
+Mon Apr 25 18:26:27 CEST 2005 - jplack@suse.de
+
+- added numactl-LDPS1255-ppc (#75249 - LTC14536)
+
+-------------------------------------------------------------------
+Tue Apr  5 20:31:55 CEST 2005 - ak@suse.de
+
+- Fix manpages (#72835, #65944)
+- Fix thread handling with NPTL (#64496)
+
+-------------------------------------------------------------------
+Mon Nov 22 17:50:42 CET 2004 - ak@suse.de
+
+- Fix C++ compilation (#45796)
+
+-------------------------------------------------------------------
+Tue Sep  7 15:43:47 CEST 2004 - ak@suse.de
+
+- Fix numa_node_to_cpus on big machines (#44433)
+
+-------------------------------------------------------------------
+Wed Jun 16 03:27:52 CEST 2004 - ak@suse.de
+
+- Fix --cpubind on kernels with large NR_CPUS (#42041)
+
+-------------------------------------------------------------------
+Sat Jun  5 20:32:23 CEST 2004 - ak@suse.de
+
+- update to 0.6.4:
+  * add copyright headers for GPL and LGPL (#41685)
+- Add requires to perl for numastat
+
+-------------------------------------------------------------------
+Thu May 20 20:26:10 CEST 2004 - ak@suse.de
+
+- update to 0.6.3:
+  * fix cpu map parsing with large number of CPUs (#40820)
+
+-------------------------------------------------------------------
+Tue May 11 15:25:04 CEST 2004 - ak@suse.de
+
+- update to 0.6.2:
+  * fix numademo to use STREAM
+  * make headers C++ clean
+  * some other bug fixes.
+  * add preliminary i386 syscalls
+
+-------------------------------------------------------------------
+Sun Apr  4 16:22:14 CEST 2004 - ak@suse.de
+
+- compile on ia64 too
+
+-------------------------------------------------------------------
+Thu Apr  1 20:43:27 CEST 2004 - ak@suse.de
+
+- update to 0.6 final. fix a few bugs in numactl and libnuma and
+work on IA64 too
+
+-------------------------------------------------------------------
+Mon Mar 22 18:10:29 CET 2004 - ak@suse.de
+
+- update to 0.6pre.
+
+-------------------------------------------------------------------
+Mon May 19 09:35:53 CEST 2003 - ak@suse.de
+
+- update to numactl-0.3. add libnuma and new manpages. add numademo.
+
+-------------------------------------------------------------------
+Wed May  7 15:39:48 CEST 2003 - ak@suse.de
+
+- package written and created
+

@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Wed Jul 12 03:20:21 UTC 2017 - plinnell@opensuse.org
+- Update to version 1.3.0
+- * New switch: "-b <file>". This enables "batch mode" where the
+    list of files to crawl is read from the specified file
+    (Thanks Tw)
+  * New switch: "-0". When this is enabled, the files in
+    "batch mode" are separated by NUL bytes instead of newlines
+  * New switch: "-F". Prevents vmtouch from traversing separate
+    filesystems (requested by mailinglists35)
+  * Lots of updates to the debian packaging (Thanks anarcat)
+  * Use standard path for manpages (Thanks anarcat)
+  * On linux, if an open fails due to EPERM then try again
+    without O_NOATIME
+
+-------------------------------------------------------------------
+Fri Jan 13 12:34:23 UTC 2017 - idonmez@suse.com
+
+- Update to version 1.2.0
+  * -i feature which lets you ignore entire files and directories
+    (Thanks Etienne Bruines)
+  * -I feature which lets you only process filenames matching
+    certain patterns.
+  * Both -i and -I support wildcards
+  * Specify C99 standard during compile (Thanks ecebuzz)
+  * Better error checking for extremely large values to command
+    line parameters (Thanks Matthew Fernandez)
+  * Fix some boundary conditions in the range support added
+    in 1.0.1 (Thanks Justas Lavišius)
+  * On Linux, support touching/evicting/displaying block devices
+    directly. This displays the underlying buffer cache, not the
+    filesystem cache (Thanks to maq123 for the suggestion)
+  * On Linux, open files with O_NOATIME so that we don't cause
+    unnecessary disk activity recording access times
+    (Thanks Mat R.)
+  * Replaces a stat() call with an fstat() call which is slightly
+    more efficient.
+  * Skipped symlinks are no longer included in total file count
+  * Closes file descriptors after locking memory since there is
+    no need to keep them open. This makes it less likely you will
+    hit the RLIMIT_NOFILE when using -l or -L.
+  * TUNING.md file (Thanks to Artem Sheremet for the idea and
+    to Vladimir Kotal for Solaris tuning info)
+
+-------------------------------------------------------------------
+Tue Mar 22 13:09:08 UTC 2016 - idonmez@suse.com
+
+- Initial release 
+

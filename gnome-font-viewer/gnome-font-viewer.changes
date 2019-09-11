@@ -1,0 +1,380 @@
+-------------------------------------------------------------------
+Fri Mar 15 12:35:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Update the icon to follow the GNOME 3.32 guidelines.
+  + Replace deprecated API.
+  + Improve usability of the Install button.
+  + Remove app menu following GNOME 3.32 guidelines.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  1 17:47:33 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.0:
+  + Show some more OpenType features.
+  + Improve app data.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:24:31 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Tue Mar 13 11:08:07 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:28:10 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Feb  9 23:50:33 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.90:
+  + Fix icon loading.
+  + Allow searching for fonts. And scrolling in both directions.
+  + Turn the info dialog into a page in the main window.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Dec 31 03:27:00 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.27.0:
+  + Show:
+    - More general font information.
+    - OpenType:
+      . Font variation information.
+      . Layout feature information.
+  + Handle ttf and otf mimetypes (bgo#788383).
+  + Fix a crash (bgo#789511).
+  + Updated translations.
+- Drop gfv-handle-ttf-otf-mime-types.patch and
+  gfv-update-nb-translations.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Dec 30 15:44:46 UTC 2017 - zaitor@opensuse.org
+
+- Add gfv-handle-ttf-otf-mime-types.patch: Handle new font/ttf and
+  font/otf mime types (bgo#788383).
+- Add gfv-update-nb-translations.patch: Update Norwegian Bokmål
+  translations.
+
+-------------------------------------------------------------------
+Mon Sep 18 23:17:24 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.0:
+  + Rename to "Fonts" in AppData file too (bgo#786128).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 14 12:10:53 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.90:
+  + Use "Fonts" as user-visible application name (bgo#783640).
+  + Port to use the Meson build system (bgo#783613).
+  + Fix regression during startup sequence (bgo#782738).
+  + Don't use gnome-common or intltool (bgo#783611).
+  + Unconditionally source config.h (bgo#783612).
+  + Updated translations.
+- Drop intltool BuildRequires following upstream changes.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+- Drop post(un) handling, desktop_database_post(un) macro no longer
+  needed as file-triggers takes care of it.
+
+-------------------------------------------------------------------
+Fri May 12 08:49:03 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.0:
+  + Improve usage of GApplication API.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  2 13:32:11 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.91:
+  + Listen to fontconfig timestamp notifications instead of using
+    file monitors.
+  + Only show scalable fonts (bgo#771857).
+- Drop gnome-font-viewer-only-show-scalable-fonts.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Fri Sep 23 00:36:00 UTC 2016 - zaitor@opensuse.org
+
+- Add gnome-font-viewer-only-show-scalable-fonts.patch: Only show
+  fonts that makes sense and are modern.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Tue Sep 20 07:54:54 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Add an icon name to the window.
+  + Don't explicitly load RTL icons.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 12 13:30:00 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Use GApplication's internal handling of commandline arguments,
+    for correcting DBus activation (bgo#765518).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 30 08:23:30 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.0:
+  + Add support for the TrueType Collection format (bgo#752005).
+  + Update AppData file.
+  + Fix support for HiDpi when rendering sample strings
+    (bgo#742428).
+  + Fix crash when no sample string can be constructed
+    (bgo#757680).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 13 09:34:27 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 24 08:17:59 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 19 13:31:52 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.15.90:
+  + Add --help and --version (bgo#702809).
+  + Update for deprecations (bgo#739224).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 18 02:04:43 UTC 2015 - badshah400@gmail.com
+
+- Update to version 3.14.1:
+  + Fix a crash due to an uninitialized variable.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 10:22:33 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Add X-GNOME-Utilities category to desktop file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 21 18:58:40 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Make DBus activatable.
+  + Create cairo surfaces always in the main thread.
+  + Show regular close button instead of Cancel in info dialog.
+  + Add a title to info dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 26 18:51:28 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Add support for rendering complex scripts.
+  + Fix header bar item positions.
+  + Use header bar in the info dialog.
+  + Standardize app menu Help/About/Quit.
+  + Add appdata file.
+- Add pkgconfig(harfbuzz) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Tue Sep 24 14:45:41 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 20 16:34:36 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Fix back button direction for RTL locales.
+  + Port to GtkStack and GtkHeaderBar.
+  + Support Hi-Dpi displays.
+  + Make sure not to append extra header buttons when loading a
+    file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 25 15:30:06 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 14 20:43:53 CET 2013 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Tue Mar  5 11:48:12 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Port to use GdStack and GdHeaderBar.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb  6 20:50:24 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + Use a better padding for the font preview.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 14 16:19:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + Don't paint a white background below font thumbnails.
+  + Add keywords to the desktop file.
+  + Don't call g_type_init(), depends on GLib 2.35.1.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan  8 19:13:24 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.3:
+  + Show an error dialog when we fail to load a font file.
+  + Fix a crasher when opening a non-existing file from the command
+    line.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec  6 09:42:22 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.2:
+  + Fix Install button not refreshing correctly when opening an
+    installed font.
+  + Fix a crasher when installing a new font.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 13 07:47:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Fix application name showing in dialog title.
+  + Fix a possible crasher when updating the font list.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 24 16:16:54 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 20:45:21 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  7 15:55:34 UTC 2012 - vuntz@opensuse.org
+
+- Add pkgconfig(fontconfig) BuildRequires: new dependency
+  introduced in 3.5.2.
+- Do not add System category to gnome-font-viewer.desktop: it moves
+  the application to the System Tools menu, which we don't want.
+
+-------------------------------------------------------------------
+Tue Sep  4 16:38:33 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + Use the libgd submodule for GdMainToolbar
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 20 15:56:57 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Improve performance when loading the application's overview
+  + Make loading of the overview model completely asynchronous
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 17 13:01:22 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Fix a compiler warning
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 25 17:31:42 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + Refactor thumbnailing code to use g_io_scheduler_push_job() for
+    robustness
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun  4 20:08:41 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.2:
+  + Fall back to C locale when constructing the sample string
+    before picking an entirely random-glyph string.
+  + Flip font widget orientation for RTL locales.
+  + Always pick a valid size for fixed-size fonts.
+  + Fix missing string compression before display for PS fonts.
+  + Improve string sanitizing before display for information
+    fetched out of the font files.
+  + Monitor fontconfig directories for new fonts.
+  + Support fontconfig XDG_DATA_HOME directory for font install, if
+    present.
+  + Set a fallback icon when thumbnails are not available.
+  + Force black on white for font text display.
+  + Quit with Ctrl+Q.
+  + Use GResource for UI files.
+  + Correctly update the install button when install complete.
+- Add System, Settings and Utility categories to
+  gnome-font-viewer.desktop now that it's not hidden anymore.
+
+-------------------------------------------------------------------
+Wed May  2 20:53:07 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.1:
+  + Rewrite the user interface using a GNOME 3 style.
+  + Implement a gallery mode for all the fonts on the system.
+  + Add an application menu and an about dialog.
+  + Make "Install" button insensitive if the font is already
+    installed.
+  + Port the thumbnailer to cairo drawing.
+  + Updated translations.
+- Add pkgconfig(gnome-desktop-3.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:29:25 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 19 21:31:46 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.3.92:
+  + Fix unused variables GCC warnings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov  1 18:52:49 UTC 2011 - dimstar@opensuse.org
+
+- Initial package, version 3.3.2.1, split out from gnome-utils.
+

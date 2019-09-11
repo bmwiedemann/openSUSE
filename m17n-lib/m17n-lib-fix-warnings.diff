@@ -1,0 +1,36 @@
+---
+ src/font.c    |    5 +++--
+ src/fontset.c |    1 -
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+--- a/src/font.c
++++ b/src/font.c
+@@ -1354,7 +1354,7 @@
+ {
+   int i;
+   MSymbol spec_list[MFONT_REGISTRY + 1];
+-  MSymbol registry;
++  MSymbol registry = Mnil;
+   char *reg;
+ 
+   MFONT_INIT (spec);
+@@ -1365,7 +1365,8 @@
+ 	MERROR (MERROR_FONT, Mnil);	
+       spec_list[i] = MPLIST_SYMBOL (plist);
+     }
+-  registry = spec_list[i - 1];
++  if (i > 0)
++    registry = spec_list[i - 1];
+   if (i > 1 && registry != Mnil)
+     {
+       reg = MSYMBOL_NAME (registry);
+--- a/src/fontset.c
++++ b/src/fontset.c
+@@ -846,7 +846,6 @@
+ 
+ 	if (MPLIST_KEY (plist) != Mlatin)
+ 	  request.property[MFONT_FOUNDRY]
+-	    = request.property[MFONT_FAMILY]
+ 	    = request.property[MFONT_FAMILY] = 0;
+ 	if ((per_lang = mplist_get (MPLIST_PLIST (plist), language))
+ 	    && (rfont = try_font_group (realized, &request, per_lang,

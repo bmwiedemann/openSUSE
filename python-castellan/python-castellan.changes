@@ -1,0 +1,230 @@
+-------------------------------------------------------------------
+Mon Apr  8 13:56:51 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.2.2
+  - Bump HashiCorp Vault version for tests.
+  - Change openstack-dev to openstack-discuss
+  - fix tox python3 overrides
+  - Fix Vault K/V API compatibility.
+  - Add release note link in README
+  - Switch to stestr
+  - Add Castellan Oslo Config Driver.
+  - Fix length usage in VaultKeyManager.create_key.
+  - vault: add AppRole support
+  - Update reno for stable/rocky
+  - Update min tox version to 2.0
+  - Don't quote {posargs} in tox.ini
+  - Use template for lower-constraints
+  - Add method to wrap HashiCorp Vault HTTP API calls.
+  - Set py3 tests according to Stein runtimes.
+  - add python 3.6 unit test job
+  - vault: support configuration of KV mountpoint
+  - add python 3.7 unit test job
+  - import zuul job settings from project-config
+  - Add code to generate private keys
+
+-------------------------------------------------------------------
+Tue Sep 11 07:52:14 UTC 2018 - cloud-devel@suse.de
+
+- update to version 0.19.0
+  - Update UPPER_CONSTRAINTS_FILE for stable/rocky
+  - Update .gitreview for stable/rocky
+  - import zuul job settings from project-config
+  - Add code to generate private keys
+
+-------------------------------------------------------------------
+Mon Sep  3 18:09:06 UTC 2018 - cloud-devel@suse.de
+
+- update to version 0.18.0
+  - Add config option for Barbican endpoint type
+  - Add barbican-tempest experimental job
+  - Update unreachable links in contributor document
+  - Promote castellan's barbican-tempest-plugin job
+  - Update reno for stable/queens
+  - Update links in README
+  - Zuul: Remove project name
+  - pypy is not checked at gate
+  - set default python to python3
+  - fix list of default virtualenvs
+  - Use Zuul v3 fetch-subunit-output
+  - Updated from global requirements
+  - add lower-constraints job
+
+-------------------------------------------------------------------
+Fri Feb 23 12:50:18 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Tue Jan 16 15:32:00 UTC 2018 - cloud-devel@suse.de
+
+- update to version 0.17.0
+  - Updated from global requirements
+- convert to singlespec
+
+-------------------------------------------------------------------
+Mon Jan 15 10:50:24 UTC 2018 - cloud-devel@suse.de
+
+- update to version 0.16.0
+  - Add releasenotes for castellan
+  - Append a forward slash to the base_url
+  - Remove genconfig from functional tests
+  - Avoid tox_install.sh for constraints support
+  - Replace LOG.warn with LOG.warning
+  - Add list capability
+  - Include domain info when creating identity token
+  - Add ID to managed objects
+  - Remove use of tox-siblings role
+  - Add a functional vault job
+  - Use generic user for both zuul v2 and v3
+  - Rename barbican client import
+  - Use Stevedore for better extensions
+  - Makes list method not abstract
+  - Fix retrieving barbican endpoint from service catalog
+  - Improve docs around configuring Castellan
+  - Remove setting of version/release from releasenotes
+  - Support handling legacy all-zeros key ID
+  - Vault based key manager
+  - Migrate to zuulv3
+  - Updated from global requirements
+  - allow redirects in .htaccess files on the static web servers
+
+-------------------------------------------------------------------
+Mon Aug  7 08:04:58 UTC 2017 - cloud-devel@suse.de
+
+- update to version 0.12.0
+  - Correct config path in functional test
+  - removed the older version of python
+  - Enable some off-by-default checks
+  - Remove outdated comment
+  - Add ability to get only metadata
+  - Add option for verifying TLS (https) requests
+  - MockKeyManager should return a copy of the object instead of actual object
+  - Fix incorrect config in usage doc
+  - Removes unnecessary utf-8 encoding
+  - rearrange existing documentation to fit the new standard layout
+  - Fix gate failure on pep8
+  - Optimize the link address
+  - Replacing six.iteritems() with .items()
+  - Change keystone endpoint
+  - Update docs on config generation
+  - Switch from oslosphinx to openstackdocstheme
+  - Update the doc URL in the documents
+  - Fix error in credential_factory
+  - Update .gitignore
+  - Enable warning-is-error in doc build
+  - Fixes all current typo errors on Castellan project.
+  - Remove log translations
+  - Replaces uuid.uuid4 with uuidutils.generate_uuid()
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Feb 10 15:37:48 UTC 2017 - cloud-devel@suse.de
+
+- update to version 0.5.0:
+  - Cleanup created secrets after functional test
+  - Remove tempest plugin from Castellan
+  - Cookiecutter commit for Security Tempest plugin
+  - Add Python 3.5 classifier and venv for castellan
+  - Add keystoneauth to requirements.txt
+  - H803 hacking has been removed
+  - Remove default=None when set value in Config
+  - Add a bandit environment to tox
+  - Remove discover from test-requirements
+  - Update docs for reading conf files
+  - Update doc
+  - Show team and repo badges on README
+  - Support upper-constraints in tox.ini
+  - Enable coverage report in console output
+  - Correct castellan reraising of exception
+  - Use international logging message
+  - Use keystoneauth1 instead of keystoneclient
+  - Update .gitignore
+  - Update flake8 ignore list
+  - MockKeyManager create_key change key_length to length
+  - Use generic keystoneauth plugin identity interfaces
+  - remove obsolete oslo incubator code
+  - Add prefix "$" for command examples
+  - Refactor Barbican Key Manager Tests
+  - Remove unused requirements
+  - Modify the home-page info
+  - Updated from global requirements
+  - Making sensitive parameters secret to avoid logging
+  - Add Barbicanclient dependancy
+
+-------------------------------------------------------------------
+Tue Nov 22 06:24:36 UTC 2016 - tbechtold@suse.com
+
+- Switch to stable/newton
+
+-------------------------------------------------------------------
+Thu Sep  8 08:16:42 UTC 2016 - tbechtold@suse.com
+
+- Update _service and switch to upstream spec template
+
+-------------------------------------------------------------------
+Mon Jun 20 08:07:16 UTC 2016 - dmueller@suse.com
+
+- update to 0.4.0:
+  * Add Credential Authentication Usage Documentation
+  * Allow Barbican Key Manager to accept different auth credentials
+  * Updated from global requirements
+  * Add help to Castellan Credential Factory Opts
+  * Updated from global requirements
+  * Introduce Castellan Credential Factory
+  * Updated from global requirements
+  * Introduce Castellan Credential Objects
+  * Add created property to Managed Objects
+  * Update MockKeyManager to use given algorithm
+  * Remove functional test dependency on config file
+  * Mock key manager takes configuration as an arg
+  * Updated from global requirements
+  * Clean up removed hacking rule from [flake8] ignore lists
+  * Use Keystone V3 Identity Plugins for Functional Tests
+  * Updated from global requirements
+  * Add logic to error out of key creation if order errors out
+  * Update docs with parsing config files
+  * Removes MANIFEST.in as it is not needed explicitely by PBR
+  * Remove py26 support from castellan
+  * Updated from global requirements
+  * Move line of code to ensure context and client stay in sync
+
+-------------------------------------------------------------------
+Wed Apr 13 10:41:25 UTC 2016 - dmueller@suse.com
+
+- install license
+
+-------------------------------------------------------------------
+Tue Dec 15 21:58:15 UTC 2015 - dmueller@suse.com
+
+- update to 0.3.1:
+  * Add some documentation on enabling logging
+  * Allow for default logging configuration to be user enabled
+  * Mark castellan as being a universal wheel
+  * Add gate hooks for Castellan functional tests
+  * Update managed object __eq__ and __ne__
+  * Updated from global requirements
+  * Add the debug flag to tox.ini
+  * Can not set auth_endpoint in runtime
+  * Updated from global requirements
+  * Allow log statements to be printed out in stdout
+  * Add documentation links and fixup README.rst
+  * Updated from global requirements
+  * Add testing documentation to Castellan
+  * Add contributing documentation to Castellan
+  * Fix typo and add name to not_implemented and mock key_manager
+  * Adds documentation on creating Oslo RequestContext in Castellan
+  * Updated from global requirements
+  * Add name to Castellan Objects and Barbican Key Manager
+  * Fix some spelling typo in manual
+  * Updated from global requirements
+  * Update Barbican functional tests
+  * Add ManagedObjectNotFoundError
+  * Change ignore-errors to ignore_errors
+  * Standardize Barbican error messages
+
+-------------------------------------------------------------------
+Tue Sep 15 09:27:22 UTC 2015 - tbechtold@suse.com
+
+- Initial packaging (version 0.2.1)
+

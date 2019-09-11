@@ -1,0 +1,13 @@
+Index: BLAS/SRC/Makefile
+===================================================================
+--- BLAS/SRC/Makefile.orig
++++ BLAS/SRC/Makefile
+@@ -166,5 +166,8 @@ cleanobj:
+ cleanlib:
+ 	#rm -f $(BLASLIB)  # May point to a system lib, e.g. -lblas
+ 
++dcabs1.o: dcabs1.f
++	$(FORTRAN) $(NOOPT) -c $< -o $@
++
+ .f.o:
+ 	$(FORTRAN) $(OPTS) -c -o $@ $<

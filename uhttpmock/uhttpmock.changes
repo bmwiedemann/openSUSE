@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Fri Dec 28 10:54:55 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.5.1:
+  + Fix header include path in GIR/VAPI file.
+  + Various build system cleanups.
+- Tweak Group to silence rpmlint.
+- Add pkgconfig(vapigen) BuildRequires: Build vala support.
+
+-------------------------------------------------------------------
+Mon Feb 26 11:46:14 UTC 2018 - dimstar@opensuse.org
+
+- Use SPDX3.0 license tags and package COPYING as %license.
+
+-------------------------------------------------------------------
+Sun Jul 12 13:09:09 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.5.0:
+  + Major changes: Minor documentation updates.
+  + API changes:
+    - Add uhm_server_filter_ignore_parameter_values().
+    - Add uhm_server_compare_messages_remove_filter().
+
+-------------------------------------------------------------------
+Mon May  4 13:31:03 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.4.0:
+  + Fix comparison mode.
+  + Add optional support for libsoup 2.47.3’s new SoupServer API.
+  + Fix some memory leaks.
+  + Fix parsing of certain trace files.
+  + Various build system updates.
+  + Move home page from gitorious to
+    https://gitlab.com/groups/uhttpmock
+  + Port from GAsyncResult to GTask, requiring a GIO dependency
+    bump to 2.36.0.
+  + Bugs fixed: bgo#748200.
+
+-------------------------------------------------------------------
+Thu Jan  1 22:53:03 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.3.3:
+  + Fix comparison mode.
+- Changes from version 0.3.2:
+  + Fix some memory leaks.
+  + Rearchitect trace file parsing to correctly handle buffer
+    boundaries.
+- Changes from version 0.3.1:
+  + Add optional support for libsoup ≥ 2.47.3.
+- Changes from version 0.3.0:
+  + Major changes:
+    - Drop useless gthread dependency.
+    - Thread safety fixes.
+  + API changes:
+    - Add uhm_server_set_expected_domain_names().
+    - Add uhm_server_received_message_chunk_with_direction(),
+      uhm_server_received_message_chunk_from_soup().
+  + Bugs fixed:
+    - rh#1026764: Review Request: uhttpmock - HTTP web service
+      mocking library.
+    - bgo#731040: libgdata-0.14.3 tests fail.
+- Drop pkgconfig(gthread-2.0) BuildRequires following upstream.
+- Add ldconfig calls to libuhttpmock-0_0-0 post and postun.
+
+-------------------------------------------------------------------
+Thu Dec 19 19:49:22 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 0.2.0.
+

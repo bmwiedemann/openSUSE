@@ -1,0 +1,17 @@
+--- Makefile.orig	2018-04-14 15:36:01.945104483 +0200
++++ Makefile	2018-04-14 15:36:52.649267940 +0200
+@@ -5,13 +5,7 @@
+ UNAME := $(shell uname)
+ PKG_CONFIG ?= pkg-config
+ ifeq ($(UNAME), Linux)
+-    ifeq (, $(shell which $(PKG_CONFIG) 2> /dev/null))
+-    $(error "pkg-config command not found")
+-    endif
+-    ifeq (, $(shell $(PKG_CONFIG) ncurses --libs 2> /dev/null))
+-    $(error "ncurses package not found")
+-    endif
+-    override LDFLAGS += $(shell $(PKG_CONFIG) ncurses --libs)
++    override LDFLAGS += -lncursesw
+ endif
+ ifeq ($(UNAME), Darwin)
+     override LDFLAGS += -lncurses

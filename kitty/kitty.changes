@@ -1,0 +1,433 @@
+-------------------------------------------------------------------
+Mon Jul 29 05:59:15 UTC 2019 - mvetter@suse.com
+
+- Update to 0.14.3:
+  * Remote control: Add a command kitty @ scroll-window to scroll windows
+  * Allow passing a !neighbor argument to the new_window mapping to open
+    a new window next to the active window (#1746)
+  * Document the kitty remote control protocol (#1646)
+  * Add a new option pointer_shape_when_grabbed that allows you to control
+    the mouse pointer shape when the terminal programs grabs the pointer (#1808)
+  * Add an option terminal_select_modifiers to control which modifiers are
+    used to override mouse selection even when a terminal application has
+    grabbed the mouse (#1774)
+  * When piping data to a child in the pipe command do it in a thread so as
+    not to block the UI (#1708)
+  * unicode_input kitten: Fix a regression that broke using indices to select
+    recently used symbols.
+  * Fix a regression that caused closing an overlay window to focus the previously
+    focused window rather than the underlying window (#1720)
+  * Linux: Fix incorrect scaling for fallback fonts when the font has an underscore
+    that renders out of bounds (#1713)
+  * Fix an out of bounds read causing a crash when selecting text with the mouse
+    in the alternate screen mode (#1578)
+  * Linux: Use the system "bell" sound for the terminal bell. Adds libcanberra as a
+    new dependency to play the system sound.
+  * Linux: Fix a regression in 0.14.0 that caused the event loop to tick continuously,
+    wasting CPU even when idle (#1782)
+  * ssh kitten: Make argument parsing more like ssh (#1787)
+  * When using strip_trailing_spaces do not remove empty lines (#1802)
+  * Fix a crash when displaying very large number of images (#1825)
+
+-------------------------------------------------------------------
+Wed Jun 26 18:24:44 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- enable build of doc for Leap 15.1+ 
+
+-------------------------------------------------------------------
+Tue Jun 11 03:23:45 UTC 2019 - mvetter@suse.com
+
+- Update to 0.14.2:
+  * Add an option placement_strategy to control how the cell area is aligned inside the window when the window size is not an exact multiple of the cell size (#1670)
+  * hints kitten: Add a kitty +kitten hints --multiple-joiner option to control how multiple selections are serialized when copying to clipboard or inserting into the terminal. You can have them on separate lines, separated by arbitrary characters, or even serialized as JSON (#1665)
+  * panel kitten: Fix the contents of the panel kitten not being positioned correctly on the vertical axis
+  * icat kitten: Fix a regression that broke passing directories to icat (#1683)
+  * clipboard kitten: Add a kitty +kitten clipboard --wait-for-completion option to have the kitten wait till copying to clipboard is complete (#1693)
+  * Allow using the pipe command to send screen and scrollback contents directly to the clipboard (#1693)
+  * Linux: Disable the Wayland backend on GNOME by default as GNOME has no support for server side decorations. Can be controlled by linux_display_server.
+  * Add an option to control the default update_check_interval when building kitty packages
+  * Wayland: Fix resizing the window on a compositor that does not provide server side window decorations, such a GNOME or Weston not working correctly (#1659)
+  * Wayland: Fix crash when enabling disabling monitors on sway (#1696)
+
+-------------------------------------------------------------------
+Thu May 30 07:14:43 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.1:
+  * Add an option command_on_bell to run an arbitrary command when a bell occurs (#1660)
+  * Add a shortcut to toggle maximized window state ctrl+shift+f10
+  * Add support for the underscore key found in some keyboard layouts (#1639)
+  * Fix a missing newline when using the pipe command between the scrollback and screen contents (#1642)
+  * Fix colors not being preserved when using the pipe command with the pager history buffer (#1657)
+  * When resizing and only a single window is present in the current layout, use that window's background color to fill in the blank areas.
+  * Linux: Automatically increase cell height if the font being used is broken and draws the underscore outside the bounding box (#690)
+  * Wayland: Fix maximizing the window on a compositor that does not provide server side window decorations, such a GNOME or Weston not working (#1662)
+- Update kitty-no-docs.patch
+
+-------------------------------------------------------------------
+Fri May 24 12:30:14 UTC 2019 - mvetter@suse.com
+
+- Update to 0.14.0:
+  * Support for an arbitrary number of internal clipboard buffers to copy/paste from, see (Multiple copy/paste buffers)
+  * Allow using the new private internal clipboard buffers with the copy_on_select option (#1390)
+  * Add an option disable_ligatures to disable multi-character ligatures under the cursor to make editing easier or disable them completely (#461)
+  * Allow creating new OS windows in session files (#1514)
+  * Allow setting OS window size in session files
+  * Add an option tab_switch_strategy to control which tab becomes active when the current tab is closed (#1524)
+  * Allow specifying a value of none for the selection_foreground which will cause kitty to not change text color in selections (#1358)
+  * Make live resizing of OS windows smoother and add an option resize_draw_strategy to control what is drawn while a resize is in progress.
+  * When a window is closed, switch focus to the previously active window (if any) instead of picking the previous window in the layout (#1450)
+  * icat kitten: Add support for displaying images at http(s) URLs (#1340)
+  * A new option strip_trailing_spaces to optionally remove trailing spaces from lines when copying to clipboard.
+  * A new option tab_bar_min_tabs to control how many tabs must be present before the tab-bar is shown (#1382)
+  * Automatically check for new releases and notify when an update is available, via the system notification facilities. Can be controlled by update_check_interval (#1342)
+  * Fix using remote control to set cursor text color causing errors when creating new windows (#1326)
+  * Fix window title for minimized windows not being updated (#1332)
+  * Fix scrollback pager history not being cleared when clearing the main scrollback buffer (#1387)
+  * Wayland: Use the kitty Wayland backend by default. Can be switched back to using XWayland by setting the environment variable: KITTY_DISABLE_WAYLAND=1
+  * Add a no-append setting to clipboard_control to disable the kitty copy concatenation protocol extension for OSC 52.
+  * Update to using the Unicode 12 standard
+  * Unicode input kitten: Allow using the arrow keys in code mode to go to next and previous unicode symbol.
+  * Fix a regression in version 0.13.0 that caused background colors of space characters after private use unicode characters to not be respected (#1455)
+  * Only update the selected text to clipboard when the selection is finished, not continuously as it is updated. (#1460)
+  * Allow setting active_border_color to none to not draw a border around the active window (#805)
+  * Use negative values for mouse_hide_wait to hide the mouse cursor immediately when pressing a key (#1534)
+  * When encountering errors in kitty.conf report them to the user instead of failing to start.
+  * Allow the user to control the resize debounce time via resize_debounce_time.
+  * Remote control: Make the kitty @ set-font-size command more capable. It can now increment font size and reset it. It also only acts on the active top-level window, by default (#1581)
+  * When launching child processes set the PWD environment variable (#1595)
+  * X11: use the window manager's native full-screen implementation when making windows full-screen (#1605)
+  * Mouse selection: When extending by word, fix extending selection to non-word characters not working well (#1616)
+
+-------------------------------------------------------------------
+Sat Apr 20 20:05:26 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim metadata redundancies and bias from descriptions.
+
+-------------------------------------------------------------------
+Tue Jan 22 10:03:06 UTC 2019 - mvetter@suse.com
+
+- Update to 0.13.3:
+  * icat kitten: Add a --stdin option to control if image data is read from STDIN (#1308)
+  * hints kitten: Start hints numbering at one instead of zero by default. Added an option --hints-offset to control it. (#1289)
+  * Fix a regression in the previous release that broke using background for cursor_text_color (#1288)
+  * Add a list of user-created kittens to the docs
+  * Fix a regression that broke changing mouse wheel scroll direction with negative wheel_scroll_multiplier values in full-screen applications like vim (#1299)
+  * Fix background_opacity not working with pure white backgrounds (#1285)
+
+-------------------------------------------------------------------
+Tue Jan  8 08:20:43 UTC 2019 - mvetter@suse.com
+
+- Update to 0.13.2:
+  * Add a new option tab_title_template to control how tab titles are formatted. In particular the template can be used to display the tab number next to the title (#1223)
+  * Report the current foreground processes as well as the original child process, when using kitty @ ls
+  * Use the current working directory of the foreground process for the *_with_cwd actions that open a new window with the current working directory.
+  * Add a new copy_or_interrupt action that can be mapped to kbd:ctrl+c. It will copy if there is a selection and interrupt otherwise (#1286)
+  * Fix setting background_opacity causing window margins/padding to be slightly different shade from background (#1221)
+  * Handle keyboards with a "+" key (#1224)
+  * Fix Private use Unicode area characters followed by spaces at the end of text not being rendered correctly (#1210)
+  * Fix changing cursor_text_color via remote control not working (#1229)
+  * Add an action to resize windows that can be mapped to shortcuts in kitty.conf (#1245)
+  * Fix using the new_tab !neighbor action changing the order of the non-neighboring tabs (#1256)
+
+-------------------------------------------------------------------
+Sat Dec 15 07:46:46 UTC 2018 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.1:
+  * Fix passing input via the pipe action to a program without a window not working.
+  * Linux: Fix a regression in the previous release that caused automatic selection of bold/italic fonts when using aliases such as "monospace" to not work (#1209)
+  * Fix resizing window smaller and then restoring causing some wrapped lines to not be properly unwrapped (#1206)
+  Changelog from 0.13.0:
+  * Add an option scrollback_pager_history_size to tell kitty to store extended scrollback to use when viewing the scrollback buffer in a pager (#970)
+  * Modify the kittens sub-system to allow creating custom kittens without any user interface. This is useful for creating more complex actions that can be bound to key presses in kitty.conf. See doc:kittens/custom. (#870)
+  * Add a new nth_window action that can be used to go to the nth window and also previously active windows, using negative numbers. Similarly, goto_tab now accepts negative numbers to go to previously active tabs (#1040)
+  * Allow hiding the tab bar completely, by setting tab_bar_style to hidden. (#1014)
+  * Allow private use unicode characters to stretch over more than a single neighboring space (#1036)
+  * Add a new touch_scroll_multiplier option to modify the amount scrolled by high precision scrolling devices such as touchpads (#1129)
+  * icat kitten: Implement reading image data from STDIN, if STDIN is not connected to a terminal (#1130)
+  * hints kitten: Insert trailing spaces after matches when using the --multiple option. Also add a separate --add-trailing-space option to control this behavior (#1132)
+  * Fix the *_with_cwd actions using the cwd of the overlay window rather than the underlying window's cwd (#1045)
+  * Fix incorrect key repeat rate on wayland (#1055)
+  * Linux: Fix incorrect rendering of some fonts when hinting is disabled at small sizes (#1173)
+  * Linux: Fix match rules used as aliases in Fontconfig configuration not being respected (#1085)
+  * Linux: Fix a crash when using the GNU Unifont as a fallback font (#1087)
+  * Wayland: Fix copying from hidden kitty windows hanging (#1051)
+  * Wayland: Add support for the primary selection protocol implemented by some compositors (#1095)
+  * Fix expansion of env vars not working in the env directive (#1075)
+  * Fix mouse_hide_wait only taking effect after an event such as cursor blink or key press (#1073)
+  * Fix the set_background_opacity action not working correctly (#1147)
+  * Fix second cell of emoji created using variation selectors not having the same attributes as the first cell (#1109)
+  * Fix focusing neighboring windows in the grid layout with less than 4 windows not working (#1115)
+  * Fix ctrl+shift+special key not working in normal and application keyboard modes (#1114)
+  * Add a terminfo entry for full keyboard mode.
+  * Fix incorrect text-antialiasing when using very low background opacity (#1005)
+  * When double or triple clicking ignore clicks if they are "far" from each other (#1093)
+  * Follow xterm's behavior for the menu key (#597)
+  * Fix hover detection of URLs not working when hovering over the first colon and slash characters in short URLs (#1201)
+
+-------------------------------------------------------------------
+Tue Nov 27 08:59:28 UTC 2018 - mvetter@suse.com
+
+- Add: kitty-no-docs.patch: Fix build for Leap 15.0
+  There is no python-sphincs >= 1.7 for Leap 15.0.
+  After receiving many requests for a package for this version,
+  I decided to ship one without docs for it.
+
+-------------------------------------------------------------------
+Tue Oct 23 13:48:08 UTC 2018 - mvetter@suse.com
+
+- Add sphinx version requirements
+
+-------------------------------------------------------------------
+Tue Oct  2 11:03:57 UTC 2018 - mvetter@suse.com
+
+- Update to 0.12.3:
+  * Unicode input: Fix an error when searching for the string 'fir' (#1035)
+
+-------------------------------------------------------------------
+Mon Sep 24 08:56:24 UTC 2018 - mvetter@suse.com
+
+- Update to 0.12.2:
+  * A new last_used_layout function that can be mapped to a shortcut to switch to the previously used window layout (#870)
+  * New neighboring_window and move_window functions to switch to neighboring windows in the current layout, and move them around, similar to window movement in vim (#916)
+  * A new pipe function that can be used to pipe the contents of the screen and scrollback buffer to any desired program running in a new window, tab or overlay window. (#933)
+  * Add a new kitty --start-as command line flag to start kitty full-screen/maximized/minimized. This replaces the --start-in-fullscreen flag introduced in the previous release (#935)
+  * When mapping the new_tab action allow specifying that the tab should open next to the current tab instead of at the end of the tabs list (#979)
+  * Fix a bug causing incorrect line ordering when viewing the scrollback buffer if the scrollback buffer is full (#960)
+  * Fix drag-scrolling not working when the mouse leaves the window confines (#917)
+  * Workaround for broken editors like nano that cannot handle newlines in pasted text (#994)
+  * Linux: Ensure that the python embedded in the kitty binary build uses UTF-8 mode to process command-line arguments (#924)
+  * Linux: Handle fonts that contain monochrome bitmaps (such as the Terminus TTF font) (#934)
+  * Have the kitty --title flag apply to all windows created using kitty --session (#921)
+  * Revert change for backspacing of wide characters in the previous release, as it breaks backspacing in some wide character aware programs (#875)
+  * Fix kitty @set-colors not working for tab backgrounds when using the fade tabbar style (#937)
+  * Linux: Fix window icon not set on X11 for the first OS window (#961)
+  * Remote control: Fix the focus_window command not focusing the top-level OS window of the specified kitty window (#1003)
+  * Fix using focus_follows_mouse causing text selection with the mouse to malfunction when using multiple kitty windows (#1002)
+
+-------------------------------------------------------------------
+Mon Sep 10 12:06:28 UTC 2018 - mvetter@suse.com
+
+- Update to 0.12.1:
+  * Add a new kitty --start-in-fullscreen command line flag to start kitty in full screen mode (#856)
+  * Linux: Do not enable IME input via ibus unless the GLFW_IM_MODULE=ibus environment variable is set. IME causes key processing latency and even missed keystrokes for many people, so it is now off by default.
+  * Fix backspacing of wide characters in wide-character unaware programs not working (#875)
+  * Linux: Fix number pad arrow keys not working when Numlock is off (#857)
+  * Wayland: Implement support for clipboard copy/paste (#855)
+  * Allow mapping shortcuts using the raw key code from the OS (#848)
+  * Allow mapping of individual key-presses without modifiers as shortcuts
+  * Fix legacy invocation of icat as kitty icat not working (#850)
+  * Improve rendering of wavy underline at small font sizes (#853)
+  * Fix a regression in 0.12.0 that broke dynamic resizing of layouts (#860)
+  * Wayland: Allow using the kitty --class command line flag to set the app id (#862)
+  * Add completion of the kitty command for the fish shell (#829)
+  * Linux: Fix XCompose rules with no defined symbol not working (#880)
+  * Linux: Fix crash with some Nvidia drivers when creating tabs in the first top level-window after creating a second top-level window. (#873)
+
+-------------------------------------------------------------------
+Tue Sep  4 06:27:08 UTC 2018 - mvetter@suse.com
+
+- Update to 0.12.0:
+  * Preserve the mouse selection even when the contents of the screen are scrolled or overwritten provided the new text does not intersect the selected lines.
+  * Linux: Implement support for Input Method Extensions (multilingual input using standard keyboards) via IBus (#469)
+  * Implement completion for the kitty command in bash and zsh. See Completion for kitty.
+  * Render the text under the cursor in a fixed color, configurable via the option cursor_text_color (#126)
+  * Add an option env to set environment variables in child processes from kitty.conf
+  * Implement high precision scrolling with the trackpad on platforms such as macOS and Wayland that implement it. (#819)
+  * Remote control: Allow changing the current window layout with a new kitty @ goto-layout command (#845)
+  * Remote control: Allow matching windows by the environment variables of their child process as well
+  * Allow running kittens via the remote control system (#738)
+  * Allow enabling remote control in only some kitty windows
+  * Add a keyboard shortcut to reset the terminal (ctrl+shift+delete). It takes parameters so you can define your own shortcuts to clear the screen/scrollback also (#747)
+  * Fix one-pixel line appearing at window edges at some window sizes when displaying images with background opacity enabled (#741)
+  * diff kitten: Fix error when right hand side file is binary and left hand side file is text (#752)
+  * kitty @ new-window: Add a new option kitty @ new-window --window-type to create top-level OS windows (#770)
+  * Fix detection of URLs in HTML source code (URLs inside quotes) (#785)
+  * Implement support for emoji skin tone modifiers (#787)
+  * Round-trip the zwj unicode character. Rendering of sequences containing zwj is still not implemented, since it can cause the collapse of an unbounded number of characters into a single cell. However, kitty at least preserves the zwj by storing it as a combining character.
+  * Linux: Fix slow startup on some systems caused by GLFW searching for joysticks. Since kitty does not use joysticks, disable joystick support. (#830)
+
+-------------------------------------------------------------------
+Mon Jul 16 08:53:36 UTC 2018 - mvetter@suse.com
+
+- Update to 0.11.3:
+  * Draw only the minimum borders needed for inactive windows. That is only the borders that separate the inactive window from a neighbor. Note that setting a non-zero window margin overrides this and causes all borders to be drawn. The old behavior of drawing all borders can be restored via the draw_minimal_borders setting in kitty.conf.
+  * Fix triple-click to select line not working when the entire line is filled (#703)
+  * When dragging to select with the mouse "grab" the mouse so that if it strays into neighboring windows, the selection is still updated (#624)
+  * When clicking in the margin/border area of a window, map the click to the nearest cell in the window. Avoids selection with the mouse failing when starting the selection just outside the window.
+  * When drag-scrolling stop the scroll when the mouse button is released.
+  * Fix a regression in the previous release that caused pasting large amounts of text to be duplicated (#709)
+
+-------------------------------------------------------------------
+Mon Jul  2 09:44:23 UTC 2018 - mvetter@suse.com
+
+- Update to 0.11.2:
+  * Linux: Allow using XKB key names to bind shortcuts to keys not supported by GLFW (#665)
+  * kitty shell: Ignore failure to read readline history file. Happens if the user migrates their kitty cache directory between systems with incompatible readline implementations.
+  * hints kitten: Add a kitty +kitten hints --multiple option to select multiple items (#687)
+  * Fix pasting large amounts of text very slow (#682)
+  * Add an option single_window_margin_width to allow different margins when only a single window is visible in the layout (#688)
+  * Add a kitty --hold command line option to stay open after the child process exits (#667)
+  * diff kitten: When triggering a search scroll to the first match automatically
+  * kitty --debug-font-fallback also prints out what basic fonts were matched
+  * When closing a kitty window reset the mouse cursor to its default shape and ensure it is visible (#655).
+  * Remote control: Speed-up reading of command responses
+  * Linux installer: Fix installer failing on systems with python < 3.5
+  * Support “-T” as an alias for “–title” (#659)
+
+-------------------------------------------------------------------
+Mon Jun 18 07:20:17 UTC 2018 - mvetter@suse.com
+
+- Update to 0.11.1:
+  * diff kitten: Implement searching for text in the diff (#574)
+  * Add an option startup_session to kitty.conf to specify a default startup session (#641)
+  * Add a command line option kitty --wait-for-single-instance-window-close to make kitty --single-instance wait for the closing of the newly opened window before quitting (#630)
+  * diff kitten: Allow theming the selection background/foreground as well
+  * diff kitten: Display CRLF line endings using the unicode return symbol instead of <d> as it is less intrusive (#638)
+  * diff kitten: Fix default foreground/background colors not being restored when kitten quits (#637)
+  * Fix kitty @ set-colors --all not working when more than one window present (#632)
+  * Fix a regression that broke the legacy increase/decrease_font_size actions
+  * Clear scrollback on reset (#631)
+
+-------------------------------------------------------------------
+Tue Jun 12 07:43:11 UTC 2018 - mvetter@suse.com
+
+- Update to 0.11.0:
+  * A new tab bar style "fade" in which each tab's edges fade into the background.
+  * A new kitten to create dock panels on X11 desktops showing the output from arbitrary terminal programs.
+  * Reduce data sent to the GPU per render by 30% (commit: 8dea5b3e)
+  * Implement changing the font size for individual top level (OS) windows (#408)
+  * When viewing the scrollback in less using ctrl+shift+h and kitty is currently scrolled, position the scrollback in less to match kitty's scroll position. (#148)
+  * ssh kitten: Support all SSH options. It can now be aliased directly to ssh for convenience. (#591)
+  * icat kitten: Add kitty +kitten icat --print-window-size to easily detect the window size in pixels from scripting languages (#581)
+  * hints kitten: Allow selecting hashes from the terminal with ctrl+shift+p>h useful for git commits. (#604)
+  * Allow specifying initial window size in number of cells in addition to pixels (#436)
+  * Add a setting to control the margins to the left and right of the tab-bar (#584)
+  * When closing a tab switch to the last active tab instead of the right-most tab (#585)
+  * Wayland: Fix kitty not starting when using wl_roots based compositors (#157)
+  * Wayland: Fix mouse wheel/touchpad scrolling in opposite direction to other apps (#594)
+  * Add a config option (editor) to set the EDITOR kitty uses (#580)
+  * Add a config option (x11_hide_window_decorations) to hide window decorations under X11/Wayland (#607)
+  * Add an option to @set-window-title to make the title change non-permanent (#592)
+  * Add support for the CSI t escape code to query window and cell sizes (#581)
+  * Linux: Fix fonts not being correctly read from TrueType Collection (.ttc) files (#577)
+  * Fix inactive_text_alpha also applying to the tab bar (#612)
+  * hints kitten: Fix a regression that caused some blank lines to be not be displayed.
+  * Linux: Include a man page and the HTML docs when building the linux-package
+  * Remote control: Fix kitty @ sometimes failing to read the response from kitty. (#614)
+  * Fix kitty @ set-colors not working with the window border colors. (#623)
+- Add BuildRequires: python3-Sphinx for docu building
+- Add documentation and man pages to files section
+
+-------------------------------------------------------------------
+Thu May 24 15:17:48 UTC 2018 - mvetter@suse.com
+
+- Update to 0.10.1:
+  * Add a kitten to easily ssh into servers that automatically copies the terminfo files over. kitty +kitten ssh myserver.
+  * diff kitten: Make the keyboard shortcuts configurable (#563)
+  * Allow controlling background_opacity via either keyboard shortcuts or remote control. Note that you must set dynamic_background_opacity yes in kitty.conf first. (#569)
+  * diff kitten: Add keybindings to scroll by page
+  * diff kitten: Fix incorrect syntax highlighting for a few file formats such as yaml
+  * Fix Ctrl+Alt+Space not working in normal and application keyboard modes (#562)
+
+-------------------------------------------------------------------
+Tue May 22 08:13:06 UTC 2018 - mvetter@suse.com
+
+- Update to 0.10.0:
+  * A diff kitten to show side-by-side diffs with syntax highlighting and support for images. See diff README.
+  * Make windows in the various kitty layouts manually resizable. See the Layouts section of the README for details.
+  * Implement support for the SGR faint escape code to make text blend into the background (#446).
+  * Make the hints kitten a little smarter, so that URLs that stretch over multiple lines are detected.
+    Also improve detection of surrounding brackets/quotes.
+  * Make the kitty window id available as the environment variable KITTY_WINDOW_ID (#532).
+  * Add a "fat" layout that is similar to the "tall" layout but vertically oriented.
+  * Expand environment variables in config file include directives
+  * Allow programs running in kitty to read/write from the clipboard. By default only writing is allowed.
+  * Fix moving cursor outside a defined page area incorrectly causing the cursor to be placed inside the page area.
+    Caused incorrect rendering in neovim, in some situations (#542).
+  * Render a couple more powerline symbols directly, bypassing the font (#550).
+  * Fix ctrl+alt+<special> not working in normal and application keyboard (#548).
+  * Partial fix for rendering Right-to-left languages like Arabic.
+  * Fix Ctrl+backspace acting as plain backspace in normal and application keyboard modes (#538).
+  * Have the paste_from_selection action paste from the clipboard on platforms
+    that do not have a primary selection such as Wayland and macOS (#529)
+  * Fix cursor_stop_blinking_after=0 not working (#530)
+
+-------------------------------------------------------------------
+Sun May  6 08:18:05 UTC 2018 - mvetter@suse.com
+
+- Update to 0.9.1:
+  * Show a bell symbol on the tab if a bell occurs in one of the windows in the
+    tab and the window is not the currently focused window
+  * Change the window border color if a bell occurs in an unfocused window. Can
+    be disabled by setting the bell_border_color to be the same as the
+    inactive_border_color.
+  * Unicode input: When searching by name search for prefix matches as well as whole word matches
+  * Dynamically allocate the memory used for the scrollback history buffer.
+  * Reduces startup memory consumption when using very large scrollback buffer sizes.
+  * Add an option to not request window attention on bell.
+  * Remote control: Allow matching windows by number (visible position).
+  * When triple-clicking select all wrapped lines belonging to a single logical line.
+  * hints kitten: Detect bracketed URLs and dont include the closing bracket in the URL.
+  * When calling pass_selection_to_program use the current directory of the child process as the cwd of the program.
+  * Add a setting to clear all shortcuts defined up to that point in the config file(s)
+  * Add a setting (kitty_mod) to change the modifier used by all the default kitty shortcuts, globally
+  * Fix Shift+function key not working
+  * Support the F13 to F25 function keys
+  * Don't fail to start if the user deletes the hintstyle key from their fontconfig configuration.
+  * When rendering a private use unicode codepoint and a space as a two cell
+    ligature, set the foreground colors of the space cell to match the colors of
+    the first cell. Works around applications like powerline that use different
+    colors for the two cells.
+  * Fix passing @text to other programs such as when viewing the scrollback
+    buffer not working correctly if kitty is itself scrolled up.
+  * Fix window focus gained/lost events not being reported to child programs
+    when switching windows/tabs using the various keyboard shortcuts.
+  * Fix tab title not changing to reflect the window title when switching between different windows in a tab
+  * Ignore -e if it is specified on the command line. This is for compatibility
+    with broken software that assumes terminals should run with an -e option to
+    execute commands instead of just passing the commands as arguments.
+
+-------------------------------------------------------------------
+Sun Apr 15 17:17:24 UTC 2018 - avindra@opensuse.org
+
+- Update to 0.9.0
+  * A new kitty command shell to allow controlling kitty via
+    commands. Press ctrl+shift+escape to run the shell.
+  * The hints kitten has become much more powerful. Now in addition
+    to URLs you can use it to select word, paths, filenames, lines,
+    etc. from the screen. These can be inserted into the terminal,
+    copied to clipboard or sent to external programs.
+  * Switch to libxkbcommon for keyboard handling. It allows kitty to
+    support XCompose and dead keys and also react to keyboard
+    remapping/layout change without needing a restart.
+  * Add support for multiple-key-sequence shortcuts
+  * A new remote control command set-colors to change the current
+    and/or configured colors.
+  * When double-clicking to select a word, select words that continue
+    onto the next/prev line as well.
+  * Add an include directive for the config files to read multiple
+    config files
+  * Improve mouse selection for windows with padding. Moving the
+    mouse into the padding area now acts as if the mouse is over
+    the nearest cell.
+  * Allow setting all 256 terminal colors in the config file
+  * Fix using kitty --single-instance to open a new window in a
+    running kitty instance, not respecting the --directory flag
+  * URL hints: Exclude trailing punctuation from URLs
+  * URL hints: Launch the browser from the kitty parent process
+    rather than the hints kitten. Fixes launching on some systems
+    where xdg-open doesn't like being run from a kitten.
+  * Allow using rectangle select mode by pressing shift in addition
+    to the rectangle select modifiers even when the terminal program
+    has grabbed the mouse.
+
+-------------------------------------------------------------------
+Mon Apr  2 06:55:11 UTC 2018 - glin@suse.com
+
+- Update to 0.8.4
+- Drop upstreamed patch: kitty-0.8.2-desktopfile-category.patch
+
+-------------------------------------------------------------------
+Tue Mar 20 16:07:57 UTC 2018 - mvetter@suse.com
+
+- Initial package for openSUSE in version 0.8.2

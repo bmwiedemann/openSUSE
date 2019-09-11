@@ -1,0 +1,806 @@
+-------------------------------------------------------------------
+Mon Jun 24 10:17:15 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch to python3
+- Update dependcies
+- Get rid of env usage
+
+-------------------------------------------------------------------
+Tue Mar 19 05:31:20 UTC 2019 - Felix Zhang <fezhang@suse.com>
+
+- GNU Global 6.6.3:
+  * gtags: New --skip-symlink option.
+  * gtags-cscope: 'Find assignments to this symbol:' was
+    implemented.
+  * gtags-cscope.vim: the following key assignment was added.
+    <C-\>a, <C-@>a, <C-@><C-@>a
+  * various bug fixes.
+- includes changes from 6.6.2:
+  * gozilla: Deleted functions to reduce or eliminate possibility
+    of future security risks.
+  * various bug fixes.
+
+-------------------------------------------------------------------
+Sat Dec 16 19:37:42 UTC 2017 - astieger@suse.com
+
+- GNU Global 6.6.1:
+  * CVE-2017-17531: Command injection vulnerability in gozilla
+    allowed arbitrary command execution via crafted URLs
+    (boo#1073197)
+- includes changes from 6.6.0:
+  * gtags: Add support for glob patterns in langmap variable
+  * gozilla: Change the default browser from 'mozilla' to 'firefox'
+  * gtags.conf.in: Updated to adapt to the latest ctags(s).
+    Removed: common-ctags-maps
+    Updated: exuberant-ctags, universal-ctags
+  * incompatible change: universal-ctags.la: The --extra option in
+    Exuberant-ctags is renamed to --extras (plural) in
+    Universal-ctags for making consistent with --kinds-<LANG> and
+    --fields.
+  * various bug fixes
+- rebase fix_paths.patch
+
+-------------------------------------------------------------------
+Thu May 25 10:20:51 UTC 2017 - mpluskal@suse.com
+
+- Update to version 6.5.7:
+  * global: Now global(1) accept a file as --nearness option.
+    If it is a file, tags in the file are shown first.
+  * global: Added aliases for MAKEOBJDIR and MAKEOBJDIRPREFIX.
+    GTAGSOBJDIR: alias for MAKEOBJDIR
+    GTAGSOBJDIRPREFIX: alias for MAKEOBJDIRPREFIX
+    These aliases are given higher priority than the originals.
+  * global: New command --print=<name>.
+    <name> may be one of: root, dbpath or conf.
+    This is a generic version of the -p (--print-dbpath) command.
+	  'global -p' is equal to 'global --print=dbpath'
+	  'global -pr' is equal to 'global --print=root'
+   * gtags: Updated the built-in PHP parser to support namespaces
+     and traits, which were introduced in PHP5. The following
+     keywords have been removed:
+     + failure: not a keyword
+	   + header: normal built-in function
+	   + is_array: normal built-in function
+	   + is_set: typo -> isset
+	   + printf: normal built-in function
+	   + setcookie: normal built-in function
+	  + success: not a keyword
+- Refresh patches
+- Update dependencies
+
+-------------------------------------------------------------------
+Thu Dec 29 09:05:13 UTC 2016 - astieger@suse.com
+
+- GNU global 6.5.6:
+  * htags-server: New --retry[=n] option
+  * htags: Changed the format of function header (--show-position)
+    to make copying text easier.
+  * geco.rc: Added 'fzf' as a selector candidate.
+  * gtags: New configuration variable 'gtags_hook'.
+  * htags: Now --cvsweb option always insert 'view=log' to the
+    generated URLs.
+  * fix gtags: Gtags often aborted with a message "buffer overflow
+  * fix htags: CGI scripts (completion.cgi, global.cgi) included by
+    mistake are now generated during package build
+- includes changes from 6.5.5:
+  * fix exuberant-ctags.la: The path name of ctags command couldn't
+    be changed. (new configuration variable 'ctagscom')
+  * fix Tag files got corrupted when the built-in C++ parser gave
+    up parsing and aborted
+  * Some inappropriate error messages were changed.
+
+-------------------------------------------------------------------
+Fri May 13 14:24:26 UTC 2016 - sleep_walker@opensuse.org
+
+- set correctly path paths for parsers (bnc#977967)
+  new patch: fix_paths.patch
+
+-------------------------------------------------------------------
+Sun Mar 27 09:27:02 UTC 2016 - mpluskal@suse.com
+
+- Update to 6.5.4
+  * gtags.conf: The entries which include '.xml' were commented
+    out, because they require libxml.a. If you use them, please
+    uncomment them.
+  * universal-ctags.la: Universal ctags plug-in parser did not
+    work on almost files. Now it works.
+
+-------------------------------------------------------------------
+Fri Mar 18 07:37:36 UTC 2016 - mpluskal@suse.com
+
+- Update to 6.5.3
+  * Added new plug-in parser 'universal-ctags.la'.
+  * gtags.conf:
+    + Added new entry 'universal-ctags'.
+    + Added new variable 'ctagscom'. You can overwrite the path of
+      ctags(1) dynamically for exuberant-ctags.la,
+      universal-ctags.la and pygments-parser.la.
+  * gtags.conf: Added the following patterns to the skip list.
+    '*.o,*.a,*.so,*.lo,*.zip,*.gz,*.bz2,*.xz,*.lzh,*.Z,*.tgz,*.min.js,*min.css'
+  *  gtags: Added some explanations for the --explain option.
+- Small spec file cleanups
+
+-------------------------------------------------------------------
+Thu Dec 17 09:05:01 UTC 2015 - mpluskal@suse.com
+
+- Update to 6.5.2
+  * See attached NEWS for detailed list of changes
+
+-------------------------------------------------------------------
+Tue Sep 22 07:35:58 UTC 2015 - mpluskal@suse.com
+
+- Update to 6.5.1
+  * See attached NEWS for detailed list of changes
+- Drop unreferenced patches as none of them seems necessary
+  * global-5.7-gcc.diff
+  * global-5.9.5-fix-gcc-warnings.patch
+
+-------------------------------------------------------------------
+Wed Aug  5 14:59:27 UTC 2015 - mpluskal@suse.com
+
+- Update to 6.5
+  * See attached NEWS for detailed list of changes
+
+-------------------------------------------------------------------
+Sat May 23 08:18:28 UTC 2015 - mpluskal@suse.com
+
+- Update dependencies
+- Enable exuberant-ctags
+- Enable sqlite3 support
+
+-------------------------------------------------------------------
+Sat Mar 28 11:12:51 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Add gpg signature
+
+-------------------------------------------------------------------
+Fri Mar 27 13:23:48 UTC 2015 - sleep_walker@suse.cz
+
+- update to 6.4
+  see /usr/share/doc/packages/global/NEWS for complete list
+  of changes since 6.3.2
+
+-------------------------------------------------------------------
+Mon Sep  8 15:06:07 UTC 2014 - puzel@suse.com
+
+- update to globa-6.3.2
+- see /usr/share/doc/packages/global/NEWS for complete list
+  of changes since 6.2.4
+
+-------------------------------------------------------------------
+Thu May 31 09:45:15 UTC 2012 - puzel@suse.com
+
+- update to global-6.2.4
+[BUG FIXED]
+  - Built-in parser: When attribute specifier appeared immediately
+    after the `struct', `union' or `enum' keyword, GLOBAL could not
+    pick up tag name.  Now it works correctly.
+[CHANGES]
+ - New facilities:
+  - gtags: --single-update option support addition of a file.
+  - global: New --single-update option.
+  - gtags.el: New custom variables:
+    - gtags-ignore-case
+    - gtags-auto-update.
+  - gtags.vim: New custom variables 'Gtags_Auto_Update' (default 0).
+
+-------------------------------------------------------------------
+Mon May 28 06:37:21 UTC 2012 - puzel@suse.com
+
+- update to global-6.2.2
+[BUG FIXED]
+  - configure: The --disable-gtagscscope option didn't avoid
+    building gtags-cscope completely. So, ./configure failed when
+    there is no curses library.  Now it avoids building
+    gtags-cscope completely.
+  - htags: Imported a patch to fix htags on Windows Vista+ (tmpfile
+    wants to create its file in the root directory, which is not
+    writable by normal users).
+
+-------------------------------------------------------------------
+Fri Feb 24 08:53:46 UTC 2012 - puzel@suse.com
+
+- update to global-6.2.1
+[CHANGES]
+  - gtags: New --accept-dotfiles option.
+  - gtags.el: Key mapping was changed to follow "Key binding
+    conventions" of Emacs Lisp.
+[BUG FIXED]
+  - global: The -L option with '-' didn't work. Now it works.
+  - Pick up symbols in expression in enumerator-list as "reference
+    or other symbol".
+  - C/C++ parser couldn't handle typedef of the form of 'typedef
+    enum tag_name TYPEDEF_NAME;' correctly. Now, it works.
+
+-------------------------------------------------------------------
+Mon Jan 23 12:42:36 UTC 2012 - puzel@suse.com
+
+- update to global-6.2
+[CHANGES]
+  - gtags.el: Added support for TRAMP. Now gtags.el works almost
+    transparently with TRAMP.
+  - gtags-cscope: Enables an environment variable EDITOR allow
+    options.
+  - gtags-cscope: New -i option.
+  - gtags-cscope.vim: New custom variable GtagsCscope_Kepp_Alive.
+  - globash: Added long name options
+  - gtags: Add keywords introduced in ISO/IEC 9899:2011.
+[INCOMPATIBLE CHANGES]
+  - less-global: Quoting is required for the pattern which should be
+    interpreted by the shell.
+[BUG FIXED]
+  - The icase_path config variable didn't affect the -c command with
+    the -P option of global. Now it works.
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:08 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Fri Oct 14 12:26:01 UTC 2011 - puzel@suse.com
+
+- update to global-6.1
+ [CHANGES]
+  - Now GLOBAL allows path names which include blanks.
+  - Now GLOBAL refuses looping symbolic links.
+  - global: the -c command accepts -T option.
+  - global: the -c command locates symbols in the directories in
+    GTAGSLIBPATH.
+  - global: New --match-part option.
+  - global: New environment variable GTAGSTHROUGH. If this variable
+    is set, the -T option is specified.
+  - global: New output format 'ctags-mod'. It is used in gtags.vim.
+  - global: New environment variable GTAGSBLANKENCODE.
+  - htags: Changed the cflow loader to accept "_' and HTML special
+    chars (&XXXX;).
+  - gtags.vim: Now allows the use of the -s and -r option at the
+    same time.
+  - gtags.vim: Now custom variables: 'Gtags_Auto_Map' (default 0).
+  - gtags.el: New custom variable 'gtags-grep-all-text-files'.
+  - gtags-cscope: New -a option.
+  - gtags-cscope.vim: New custom variables:
+    'GtagsCscope_Use_Old_Key_Map', 'GtagsCscope_Ignore_Case',
+    'GtagsCscope_Absolute_Path'.
+ [BUG FIXED]
+  - gtags.el: gtags-mode-hook and gtags-select-mode-hook were not
+    the last thing run when entering the mode. It has been fixed.
+
+-------------------------------------------------------------------
+Thu Sep  8 15:22:27 UTC 2011 - puzel@suse.com
+
+- update to global-6.0
+ [CHANGES]
+  - Now GLOBAL allows path names which include blanks.
+  - Now GLOBAL refuses looping symbolic links.
+  - global: the -c command accepts -T option.
+  - global: the -c command locates symbols in the directories in
+    GTAGSLIBPATH.
+  - global: New --match-part option.
+  - global: New environment variable GTAGSTHROUGH. If this variable
+    is set, the -T option is specified.
+  - global: New output format 'ctags-mod'. It is used in gtags.vim.
+  - global: New environment variable GTAGSBLANKENCODE.
+  - htags: Changed the cflow loader to accept "_' and HTML special
+    chars (&XXXX;).
+  - gtags.vim: Now allows the use of the -s and -r option at the
+    same time.
+  - gtags.vim: Now custom variables: 'Gtags_Auto_Map' (default 0).
+  - gtags.el: New custom variable 'gtags-grep-all-text-files'.
+  - gtags-cscope: New -a option.
+  - gtags-cscope.vim: New custom variables:
+    'GtagsCscope_Use_Old_Key_Map', 'GtagsCscope_Ignore_Case',
+    'GtagsCscope_Absolute_Path'.
+ [BUG FIXED]
+  - gtags.el: gtags-mode-hook and gtags-select-mode-hook were not
+    the last thing run when entering the mode. It has been fixed.
+- do not install INSTALL file
+
+-------------------------------------------------------------------
+Fri Jul  1 11:03:20 UTC 2011 - puzel@novell.com
+
+- update to global-5.9.7
+[CHANGES]
+  * global: the -c command accepts new -P and -r option.
+  * gozilla: Now support firefox.
+  * globash: Added two commands: d and rs.
+[INCOMPATIBLE CHANGES]
+  * globash: The -l option in each search command was removed.
+  * gtags.el: Removed the default mouse key mapping in gtags-mode
+    and gtags-select-mode.
+
+-------------------------------------------------------------------
+Tue Jun  7 11:08:16 UTC 2011 - puzel@novell.com
+
+- update to global-5.9.6
+ [CHANGES]
+  * global: New option --literal
+  * htags: New --fixed-guide option
+ [FIXED BUGS]
+  * htags: didn't make FILEMAP file which is referred by Doxgen
+  * gtags-cscope: 'Find this text string:' didn't work correctly in
+    some cases
+  * gtags-cscope/Makefile: setting of gtags_cscope_DEPENDENCIES was
+    wrong
+- use spec-cleaner
+
+-------------------------------------------------------------------
+Wed May 18 07:56:08 UTC 2011 - puzel@novell.com
+
+- update to global-5.9.5
+ [FIXED BUGS]
+  * The processing of the --ncol option was missing.
+ [CHANGES]
+  * gtags-cscope: re-implemented using cscope's code.
+    Now, it is almost compatible with cscope itself.
+  * Config variable 'suffixes' was completely removed.
+    Instead, config variable 'langmap' was actualized.
+ [INCOMPATIBLE CHANGES]
+  * Removed GPATH,GTAGS,GRTAGS,GSYMS and html/ from the skip
+    variable in gtags.conf file. From now on, gtags unconditionally
+    ignore the tag files. Though 'html/' was added for Windows, it
+    brought troubles for UNIX.
+
+-------------------------------------------------------------------
+Tue Mar 15 09:56:53 UTC 2011 - puzel@novell.com
+
+- update to global-5.9.4
+ [FIXED BUGS]
+  * htags: A certain kind of files which does not end with newline
+    bring segmentation fault.
+  * global: --from-here option didn't locate definitions in the
+    GTAGSLIBPATH.
+  * htags: Htags with the -g and -d option didn't work correctly.
+ [CHANGES]
+  * gtags.el: New custom variables:
+    'gtags-disable-pushy-mouse-mapping' and
+    'gtags-suggested-key-mapping'.
+  * gtags.el: Command gtags-parse-file was rewritten.
+  * gtags.vim: New custom variable Gtags_Use_Tags_Format.
+  * global: New optional files arguments for the -g command.
+  * global: New -V(--invert-match) option for the -g command.
+  * global: New --print0 option.
+  * global: New --file-list=file option.
+  * htags: New --html-header option.
+  * gtags.vim: Activate input completion also on the prompt 'Gtags
+    for pattern:'.
+ [INCOMPATIBLE CHANGES]
+  * htags: Ceases making ID database arbitrarily when the -g option
+    is specified.
+  * htags: The --no-map-file option was removed. Instead, new
+    --map-file option was added. Htags doesn't make the mapping
+    files (FILEMAP, MAP) any longer.
+  * htags: The -c (--compact) option was deleted from the option list of the
+  --suggest2 option.
+  * GLOBAL's commands locates gtags.conf also in the sysconfdir.
+- drop global-5.9.2-fix-htags-makefile.patch (in upstream)
+
+-------------------------------------------------------------------
+Thu Mar 10 15:32:55 UTC 2011 - coolo@novell.com
+
+- switch to autoreconf for better libtool support
+
+-------------------------------------------------------------------
+Fri Sep 17 15:21:20 UTC 2010 - puzel@novell.com
+
+- update to global-5.9.2
+  o gtags.vim: Added -m(--vim) option to the show command.
+  o Renamed the -S(--secure-cgi) option to --system-cgi. This is
+    because the parameter of the --secure-cgi was changed in
+    GLOBAL-5.9.1.
+  o The site key directory for the --system-cgi option was moved
+    from datadir(/usr/local/share) to localstatedir(/usr/local/var)
+    because datadir should be used for read-only data.  By default,
+    you must execute "cd HTML; sh bless.sh" as a root user, since the
+    site key directory can not be written except for root user.
+- added global-5.9.2-fix-htags-makefile.patch (fixes build)
+
+-------------------------------------------------------------------
+Tue Jul 20 19:55:39 UTC 2010 - puzel@novell.com
+
+- update to global-5.9.1
+ - notable changes since global-5.8
+  o Caution:
+    This version of GLOBAL doesn't support tag files of the former
+    version.  If you install this version, you should remake all
+    tag files again using gtags(1) in this package. Though new
+    gtags's speed has improved very much, you need not hurry up to
+    upgrade it if you have a lot of tag files of former version.
+    Thank you for your cooperation.
+  o gtags: New gtags.files file.
+    If a file called 'gtags.files' exists in the current directory,
+    gtags(1) treats it as a list of files which are candidates of
+    the target.
+  o Safe-CGI mechanism was modified.
+  o globash: New command.
+  o gtags, global, htags: Allows path name which includes blanks.
+  o gtags, htags: Changed the algorithm for detecting binary file.
+  o gtags: Added support of function layer plug-in parser by
+    Hideki IWAMOTO.
+  o htags: Added call-tree facility using cflow(1).
+- clean up specfile
+- add global-disable-plugin-example.patch
+
+-------------------------------------------------------------------
+Fri Feb  5 15:05:11 UTC 2010 - puzel@novell.com
+
+- update to global-5.8
+ o gtags: Built-in parser by Hideki IWAMOTO.  This improvement has
+   shortened the processing time to about 1/3.  Built-in parser is
+   not effective by default in this version.  To use built-in parser,
+   please define 'use_builtin_parser' in your configuration file
+ o gtags.el: Single 'GTAGS SELECT MODE' buffer of gtags.el by Yushi
+   Oka.  If "gtags-select-buffer-single" is non-nil, then 'GTAGS
+   SELECT MODE' buffer is kept single.
+ o gtags-cscope.vim: Plug-in script which integrates GLOBAL and vim
+   editor using cscope interface. Since this script makes vim think
+   GLOBAL is cscope, you can use the tag stack facility of vim like
+   cscope. Gtags-cscope can coexist with gtags.vim.
+ o gtags.el: the completion read in the gtags-find-file fails into
+   endless loop when the input string is NULL.
+ [INCOMPATIBLE CHANGE]:
+ o gtags(built-in parser): In the existing parser (gtags-parser),
+   some symbols were stored in both GRTAGS and GSYMS. In the built-in
+   parser, all the symbols defined in GTAGS have been moved from
+   GSYMS to GRTAGS. New specification is more consistent, and useful
+   for efficiency improvement. If you feel this a problem, please
+   inform bug mailing list of your insistence.
+
+-------------------------------------------------------------------
+Mon Jan  4 13:35:47 UTC 2010 - puzel@novell.com
+
+- update to global-5.7.7
+  o htags: More accurate statistics mechanism using gettimeofday(2)
+    and getrusage(2).
+  o gtags: New --statistics option.
+  o gtags.el: Added completion support for the 'gtags-find-file'.
+  o global: Allows tag files in the system's root directory.
+    This does not recommend tag files to be put on the system's
+	root directory.
+    In some systems except UNIX, putting tag files there might be
+	suitable.
+  o The --from-here option didn't work with compact format
+    GTAGS (gtags -c).
+
+-------------------------------------------------------------------
+Fri Nov 13 16:07:55 UTC 2009 - puzel@novell.com
+
+- update to 5.7.6
+ - New options:
+  o gtags: --single-update=file
+    Update tag files for single file. It is considered that the file was updated,
+    and other files were not updated. This option implies the -i option.
+    If the file is new then --single-update is ignored, and the processing is
+    automatically switched to the normal incremental updating.
+  o gtags: --dump=tag-files
+    Dump a tag file. Output format is 'key<tab>data'.
+
+-------------------------------------------------------------------
+Mon Mar 16 16:16:59 CET 2009 - puzel@suse.cz
+
+- update to 5.7.5
+ - Change of gtags:
+  - Revived the -c option.
+    If this option is specified, gtags uses compact format for GTAGS.
+    This option does not influence GRTAGS and GSYMS, because they are always
+    made using compact format.
+    If you think that GTAGS is too big, please use this option.
+  - Removed the limitation of the depth of the directory hierarchy.
+  - Changed not to do useless inspection for the files in the directories
+    which are listed in the skip list.
+- rebased patches
+
+-------------------------------------------------------------------
+Mon Jan  5 15:37:05 CET 2009 - puzel@suse.cz
+
+- update to 5.7.4
+  Changes
+  - in compact format, operation to non-existent lines was changed
+    to avoid needless abnormal termination
+  Fixed bugs
+  - gtags-parser now correctly parses some declarations that were
+    overlooked before
+
+-------------------------------------------------------------------
+Thu Dec  4 17:07:35 CET 2008 - puzel@suse.cz
+
+- update to 5.7.3
+  Changes
+  - gtags-parser: Pick up symbols in #{if,elif,ifdef,ifndef} line in assembly
+    source
+  - gtags.conf: Added new skip files: cscope.po.out,cscope.in.out
+  - gtags: New -O(--objdir) option added
+  - gtags.el: New gtags-select-tag-other-window and gtags-find-tag-other-window
+    command added
+  - htags: Supported 'include', 'required' and 'required_once' statement in PHP
+
+  Fixed bugs
+  - fixed imperfect symbolic link support
+  - gtags: Gtags causes segmentation fault if it read its input file names from
+    a file list (use -f option), and the input files aren't in the working
+    directory or its sub-directories
+
+-------------------------------------------------------------------
+Wed Mar 26 08:12:11 CET 2008 - anosek@suse.cz
+
+- updated to version 5.7
+  Changes
+  o gtags: Allows the symbolic links which point to directories.
+    In older version, such symbolic links were ignored with warning messages.
+  o gtags-parser: Pick up the names of struct, union, enum and enum member
+    as definitions.
+  o gtags.el, gtags.vim, gtags.pl: More accurate, language independent context jump.
+
+  Fixed bugs
+  o gtags: Failed to process new GCC source code.
+  o gtags.vim: Completion facility didn't work with the -f option of Gtags.
+  o htags: Self-referred links.
+
+-------------------------------------------------------------------
+Tue Oct 30 11:45:30 CET 2007 - anosek@suse.cz
+
+- updated to version 5.6.2
+  * gtags-parser: In C++, ignore forward definitions of classes (e.g. "class name;")
+  * gtags.conf: Added '.git/' to the DEFAULTSKIP list.
+  * global: Global(1) with the -t option didn't print correct line number.
+    Gtags.vim also didn't work correctly due to this bug. This bug was
+    introduced in GLOBAL-5.4.
+
+-------------------------------------------------------------------
+Mon Jul  9 08:11:25 CEST 2007 - anosek@suse.cz
+
+- updated to version 5.6
+  * All commands: According to the GNU coding standard,
+    the --version option shows always verbose message without
+    --verbose option.
+  * gtags-parser: Added support of assembler directive ".macro"
+    and ".equ".
+  * global(1): Fix memory leak.
+
+-------------------------------------------------------------------
+Mon May  7 17:45:24 CEST 2007 - anosek@suse.cz
+
+- updated to version 5.5
+  * gtags-parser: Support of 'enum' (java).
+  * gtags.el: Changed to work without event-point function.
+
+-------------------------------------------------------------------
+Fri Mar 30 15:11:20 CEST 2007 - rguenther@suse.de
+
+- add emacs site-lisp directories
+
+-------------------------------------------------------------------
+Tue Mar 13 08:44:42 CET 2007 - anosek@suse.cz
+
+- updated to version 5.4.1
+  * htags: Added new --item-order option.
+    Specify order of items in the top page. The spec is a string
+    consists of item signs in order. Each sign means as follows:
+    c: caution, s: search form, m: mains, d: definition, f: files.
+    The default is 'csmdf'.
+  * fixed: htags: didn't extract some '#include' correctly.
+
+-------------------------------------------------------------------
+Mon Jan 29 08:41:24 CET 2007 - anosek@suse.cz
+
+- updated to 5.4
+  * Further compression of tag file (format version 5).
+    Though new global can read older tag file since version-5.0,
+    older global cannot read new format.
+  * global: Improved performance when the -x option
+    is not specified.
+  * globash.rc: Added new option -l for tag search command
+    (x,r,s,g,P,I,f). This option invokes less(1) directly
+    without tag stack.
+  * global: Changed not to locate other symbols (-s)
+    in GTAGSLIBPATH. This is the original specification of GLOBAL.
+  * global: Stop sorting when the -I(--idutils) option specified.
+    The output of gid(idutils) is sorted by the suitable way.
+    Though the order is slightly differ from global(1), it need
+    not be sorted again.
+  * global:  Added new option -O(--only-other).
+  * htags: Added some new options and new arguments which are
+    synonyms of config variable. This decreases dependence
+    on configration file
+  * gtags.el:
+    - Shorten path names in [GTAGS SELECT MODE]:
+      If project directory is specified using
+      'gtags-visit-rootdir', gtags.el print path using the relative
+      path name from the project directory, else print absolute
+      path name.
+    - Support dynamic completing-read of tag name.
+      gtags-make-complete-list is deprecated. You can enjoy
+      tag name completetion without invoking this command.
+
+-------------------------------------------------------------------
+Fri Sep  8 14:51:29 CEST 2006 - anosek@suse.cz
+
+- updated to 5.2
+  * htags: Added new options:
+    - -h(--func-header) option.
+    - -I(--icon) option.
+    - -T(table-flist[=fields]) option.
+  * htags: Always enable 'Grep pattern' form when the -f(--form)
+    option specified. Removed config variable 'enable_grep'
+    since it became meaningless. Instead, added a new variable
+    'disable_grep'.
+  * htags: Removed config variable 'enable_grep' since it is meaningless.
+    Instead, added a new variable 'disable_grep'.
+  * Changed the priority about the --result option to make the format
+    specification easy. The --result option is given to priority more
+    than the -t and -x option. (This option appeared in version 5.0.)
+  * Added new program 'gtags-cscope'.
+    Gtags-cscope is a pseudo cscope which implements the line-oriented
+    interface. You can use this command for various clients instead of
+    true cscope.
+  * Moved to new tag format. (GTAGS, GRTAGS, GSYMS, GPATH)
+    Hereafter, older tag format is not supported.
+    Compact format was progressively canceled with the adoption of
+    the new tag format. The -c(--compact) option of gtags(1)
+    was removed.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:13 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct 10 14:16:53 CEST 2005 - mmarek@suse.cz
+
+- update to 4.8.7
+
+-------------------------------------------------------------------
+Mon Aug  1 16:43:46 CEST 2005 - anicka@suse.cz
+
+- update to 4.8.6
+
+-------------------------------------------------------------------
+Thu Apr 21 18:08:21 CEST 2005 - postadal@suse.cz
+
+- fixed for gcc 4.0
+
+-------------------------------------------------------------------
+Fri Jan 21 14:07:22 CET 2005 - postadal@suse.cz
+
+- updated to version 4.8.2
+
+-------------------------------------------------------------------
+Mon Oct 25 15:14:25 CEST 2004 - postadal@suse.cz
+
+- switched heimdal-* to kerberos-devel-packages in #needforbuild
+
+-------------------------------------------------------------------
+Thu Aug 12 18:33:57 CEST 2004 - postadal@suse.cz
+
+- updated to version 4.7.2
+
+-------------------------------------------------------------------
+Fri Feb 13 16:45:59 CET 2004 - postadal@suse.cz
+
+- updated to version 4.7
+- added gtags.conf config file
+
+-------------------------------------------------------------------
+Sat Jan 10 18:30:33 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Thu Nov 20 00:41:16 CET 2003 - ro@suse.de
+
+- added heimdal-lib to neededforbuild (postgres)
+
+-------------------------------------------------------------------
+Mon Jul 28 18:27:17 CEST 2003 - postadal@suse.cz
+
+- updated to version 4.6
+  * the default value of the config variable 'definition_header' was changed
+    to 'no', because the definition header is unsightly according to the place,
+    especially in class definition
+  * support for PHP language
+  * support for SCM_DEFINE macro which is part of guile-snarf
+  * added 'right' as a value of config variable 'definition_header'
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Thu Feb 13 01:13:21 CET 2003 - mmj@suse.de
+
+- Use %install_info_macro [#23413]
+
+-------------------------------------------------------------------
+Thu Jan 09 16:15:57 CET 2003 - postadal@suse.cz
+
+- updated to version 4.5.1
+  * btreeop was replaced with gtags and was removed
+  * a lot of new options and bug fixes
+
+-------------------------------------------------------------------
+Wed Apr  3 20:51:00 CEST 2002 - postadal@suse.cz
+
+- fixed to compile with autoconf-2.53 (fix DJGPP conditional)
+- gozilla return to GLOBAL
+- fixed security hole in the CGI program generated by htags(1)
+- path conversion optimized and bug fixed
+
+-------------------------------------------------------------------
+Wed Jan 16 15:13:01 CET 2002 - cihlar@suse.cz
+
+- update to version 4.2:
+  * bug fixes
+  * nvi-1.81.5 support added
+  * DJGPP support added
+  * Documentation added
+
+-------------------------------------------------------------------
+Thu Nov 29 13:00:43 CET 2001 - cihlar@suse.cz
+
+- update to version 4.2:
+  * bug fixes and improvements
+  * postgres support added
+
+-------------------------------------------------------------------
+Wed Jul 25 14:07:27 CEST 2001 - cihlar@suse.cz
+
+- update to version 4.1
+
+-------------------------------------------------------------------
+Thu Nov  2 14:15:12 CET 2000 - cihlar@suse.cz
+
+- update to version 4.0.1
+- bzipped sources
+
+-------------------------------------------------------------------
+Thu Aug 10 10:57:49 CEST 2000 - cihlar@suse.cz
+
+- added BuildRoot
+- added gtags.el
+- fixed bug in htags
+
+-------------------------------------------------------------------
+Mon Jun 19 17:58:13 CEST 2000 - kasal@suse.cz
+
+- Added Group: tag.
+
+-------------------------------------------------------------------
+Thu Feb  3 10:01:02 CET 2000 - kasal@suse.cz
+
+- Oops!  I forgot to include gozilla to the filelist.
+
+-------------------------------------------------------------------
+Mon Jan 31 15:52:02 CET 2000 - kasal@suse.cz
+
+- upgraded to version 3.55, fixed
+- don't require emacs (fixes Bug #281)
+- added gozilla
+- /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Nov 16 17:59:08 MET 1998 - ro@suse.de
+
+- use libdb for now (glibc-2.0)
+- include sys/types.h in global.c
+
+-------------------------------------------------------------------
+Mon Oct  5 01:32:56 MEST 1998 - ro@suse.de
+
+- use libdb1 and usr/include/db1 for glibc
+
+-------------------------------------------------------------------
+Fri Jul 17 15:06:23 MEST 1998 - bs@suse.de
+
+- don't include gctags (is in ge_exec).
+
+-------------------------------------------------------------------
+Fri Jun  5 15:14:53 MEST 1998 - rj@suse.de
+
+	- new package (version 2.24)

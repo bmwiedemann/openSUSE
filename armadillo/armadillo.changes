@@ -1,0 +1,1388 @@
+-------------------------------------------------------------------
+Tue Jul 16 11:39:07 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.600.4:
+  * faster handling of sparse submatrices.
+  * faster handling of sparse diagonal views.
+  * faster handling of sparse matrices by symmatu() and symmatl().
+  * faster handling of sparse matrices by join_cols().
+  * expanded clamp() to handle sparse matrices.
+  * added .clean() to replace elements below a threshold with
+    zeros; can be used to sparsify matrices.
+
+-------------------------------------------------------------------
+Tue Jun 25 09:56:07 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.500.2:
+  * expanded solve() with solve_opts::likely_sympd to indicate
+    that the given matrix is likely positive definite
+  * more robust automatic detection of positive definite matrices
+    by solve() and inv()
+  * faster handling of sparse submatrices
+  * expanded eigs_sym() to print a warning if the given matrix is
+    not symmetric
+  * extended LAPACK function prototypes to follow Fortran passing
+    conventions for so-called "hidden arguments", in order to
+    address GCC Bug 90329;
+  * to use previous LAPACK function prototypes without the "hidden
+    arguments", #define ARMA_DONT_USE_FORTRAN_HIDDEN_ARGS before
+    #include <armadillo>
+
+-------------------------------------------------------------------
+Sat May 18 12:48:45 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.400.3:
+  + Faster cov() and cor()
+  + Added .as_col() and .as_row()
+  + Expanded .shed_rows() / .shed_cols() / .shed_slices() to
+    remove rows/columns/slices specified in a vector
+  + Expanded vectorise() to handle sparse matrices
+  + Expanded element-wise versions of max() and min() to handle
+    sparse matrices
+  + Optimised handling of sparse matrix expressions: sparse %
+    (sparse +- scalar) and sparse / (sparse +- scalar)
+  + Expanded eig_sym(), chol(), expmat_sym(), logmat_sympd(),
+    sqrtmat_sympd(), inv_sympd() to print a warning if the given
+    matrix is not symmetric
+  + More consistent detection of vector expressions
+
+-------------------------------------------------------------------
+Fri Apr 12 14:06:16 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.300.2:
+  + faster handling of compound complex matrix expressions by
+    trace().
+  + more efficient handling of element access for inplace
+    modifications in sparse matrices.
+  + added .is_sympd() to check whether a matrix is
+    symmetric/hermitian positive definite.
+  + added interp2() for 2D data interpolation.
+  + added expm1() and log1p().
+  + expanded .is_sorted() with options "strictascend" and
+    "strictdescend".
+  + expanded eig_gen() to optionally perform balancing prior to
+    decomposition.
+
+-------------------------------------------------------------------
+Fri Mar 15 16:46:42 UTC 2019 - badshah400@gmail.com
+
+- Update to version 9.200.8:
+  + Misc bug fixes.
+
+-------------------------------------------------------------------
+Fri Jan 25 11:11:30 UTC 2019 - badshah400@gmail.com
+
+- Update to version 9.200.7:
+  + Misc bug fixes.
+
+-------------------------------------------------------------------
+Thu Nov 15 15:50:25 UTC 2018 - badshah400@gmail.com
+
+- Update to version 9.200.4:
+  + Faster handling of symmetric positive definite matrices by
+    rcond().
+  + Faster transpose of matrices with size ≥ 512x512.
+  + Faster handling of compound sparse matrix expressions by
+    accu(), diagmat(), trace().
+  + Faster handling of sparse matrices by join_rows().
+  + Added sinc().
+  + Expanded sign() to handle scalar arguments.
+  + Expanded operators (*, %, +, −) to handle sparse matrices with
+    differing element types (eg. multiplication of complex matrix
+    by real matrix).
+  + Expanded conv_to() to allow conversion between sparse matrices
+    with differing element types.
+  + Expanded solve() to optionally allow keeping solutions of
+    systems singular to working precision.
+
+-------------------------------------------------------------------
+Thu Aug 16 06:36:12 UTC 2018 - badshah400@gmail.com
+
+- Update to version 9.100.5:
+  + Faster handling of symmetric/hermitian positive definite
+    matrices by solve().
+  + Faster handling of inv_sympd() in compound expressions.
+  + Added .is_symmetric().
+  + Added .is_hermitian().
+  + Expanded spsolve() to optionally allow keeping solutions of
+    systems singular to working precision.
+  + New configuration options ARMA_OPTIMISE_SOLVE_BAND and
+    ARMA_OPTIMISE_SOLVE_SYMPD.
+  + Smarter use of the element cache in sparse matrices.
+- Pass a more robust regexp to sed for fixing end-of-line encoding
+  changes.
+- Update shlib package name in keeping with upstream versioning.
+- Use %%license instead of %%doc to install license file.
+
+-------------------------------------------------------------------
+Wed May 16 07:44:11 UTC 2018 - badshah400@gmail.com
+
+- Update to version 8.500.1:
+  + Faster handling of sparse matrices by kron() and repmat().
+  + Faster transpose of sparse matrices.
+  + Faster element access in sparse matrices.
+  + Faster row iterators for sparse matrices.
+  + Faster handling of compound expressions by trace().
+  + More efficient handling of aliasing in submatrix views.
+  + Expanded normalise() to handle sparse matrices.
+  + Expanded .transform() and .for_each() to handle sparse
+    matrices.
+  + Added reverse() for reversing order of elements.
+  + Added repelem() for replicating elements.
+  + Added roots() for finding the roots of a polynomial.
+
+-------------------------------------------------------------------
+Wed Feb 21 14:53:47 UTC 2018 - badshah400@gmail.com
+
+- Update to version 8.400.0:
+  + Faster handling of sparse matrices by repmat()
+  + Faster loading of CSV files
+  + Expanded kron() to handle sparse matrices
+  + Expanded index_min() and index_max() to handle cubes
+  + Expanded randi(), randu(), randn(), randg() to output single
+    scalars
+  + Added submatrix & subcube iterators
+  + Added normcdf()
+  + Added mvnrnd()
+  + Added chi2rnd()
+  + Added wishrnd() and iwishrnd()
+
+-------------------------------------------------------------------
+Tue Jan  9 15:02:12 UTC 2018 - badshah400@gmail.com
+
+- Update to version 8.300.3:
+  + Misc bug fixes.
+
+-------------------------------------------------------------------
+Mon Dec 18 06:14:55 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.300.2:
+  + Misc bug fixes.
+
+-------------------------------------------------------------------
+Wed Nov 22 09:21:39 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.300.0:
+  + Faster handling of band matrices by solve().
+  + Faster handling of band matrices by chol().
+  + Faster randg() when using OpenMP.
+  + Added normpdf().
+  + Expanded .save() to allow appending new datasets to existing
+    HDF5 files.
+
+-------------------------------------------------------------------
+Sun Nov  5 14:29:27 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.200.2:
+  + Misc bug fixes.
+
+-------------------------------------------------------------------
+Wed Oct 18 12:50:38 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.200.1:
+  + Misc bug fixes.
+
+-------------------------------------------------------------------
+Sun Oct 15 12:24:13 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.200.0:
+  + Added intersect() for finding common elements in two
+    vectors/matrices.
+  + Expanded affmul() to handle non-square matrices.
+
+-------------------------------------------------------------------
+Tue Sep 12 05:55:54 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.100.1:
+  + Misc bug fixes.
+
+-------------------------------------------------------------------
+Tue Sep  5 21:45:23 UTC 2017 - jengelh@inai.de
+
+- Trim descriptions, keeping the full description just for the
+  one that is installed most often (libarmadillo8).
+  Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Fri Sep  1 17:31:45 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.100.0:
+  + Faster incremental construction of sparse matrices via element
+    access operators
+  + Faster diagonal views in sparse matrices
+  + Expanded SpMat to save/load sparse matrices in coord format
+  + Expanded .save()/.load() to allow specification of datasets
+    within HDF5 files
+  + Added affmul() to simplify application of affine
+    transformations
+  + Warnings and errors are now printed by default to the
+    std::cerr stream
+  + Added set_cerr_stream() and get_cerr_stream() to replace
+    set_stream_err1(), set_stream_err2(), get_stream_err1(),
+    get_stream_err2()
+  + New configuration options ARMA_COUT_STREAM and
+    ARMA_CERR_STREAM
+- Adapt shared lib and baselibs.conf to updated shared object
+  numbering.
+
+-------------------------------------------------------------------
+Wed Aug 16 15:26:57 UTC 2017 - badshah400@gmail.com
+
+- Update to version 7.960.1:
+  + Undocumented bug fixes. 
+
+-------------------------------------------------------------------
+Fri Aug  4 10:36:47 UTC 2017 - badshah400@gmail.com
+
+- Update to version 7.960.0:
+  + Faster randn() when using OpenMP.
+  + Faster gmm_diag class, for Gaussian mixture models with
+    diagonal covariance matrices.
+  + Added .sum_log_p() to the gmm_diag class.
+  + Added gmm_full class, for Gaussian mixture models with full
+    covariance matrices.
+  + Expanded .each_slice() to optionally use OpenMP for
+    multi-threaded execution.
+- Drop %%check section entirely, this is not expected to work
+  going forward. Also drop armadillo-tests.patch, which was meant
+  for the tests in the %%check section.
+
+-------------------------------------------------------------------
+Wed Jun 21 12:07:23 UTC 2017 - badshah400@gmail.com
+
+- Update to version 7.950.1:
+  + Expanded accu() and sum() to use OpenMP for processing
+    expressions with computationally expensive element-wise
+    functions.
+  + Expanded trimatu() and trimatl() to allow specification of the
+    diagonal which delineates the boundary of the triangular part.
+
+-------------------------------------------------------------------
+Mon May 15 14:07:43 UTC 2017 - badshah400@gmail.com
+
+- Update to version 7.900.1:
+  + Expanded clamp() to handle cubes.
+  + Computationally expensive element-wise functions (such as
+    exp(), log(), cos(), etc) can now be automatically sped up via
+    OpenMP; this requires a C++11/C++14 compiler with OpenMP 3.0+
+    support.
+- Rebase armadillo-tests.patch for updated version.
+- Drop tests because upstream acknowledges some tests are intended
+  to fail without ARPACK.
+
+-------------------------------------------------------------------
+Sat Feb 18 22:37:01 UTC 2017 - badshah400@gmail.com
+
+- Update to version 7.800.0:
+  + Changed license to the permissve Apache License 2.0.
+- Update License tag in specfile in keeping with upstream.
+- Update package file list:
+  + Include the license doc NOTICE.txt.
+  + Additional documentation file: armadillo_joss_2016.pdf.
+
+-------------------------------------------------------------------
+Wed Feb  8 13:58:57 UTC 2017 - badshah400@gmail.com
+
+- Update to version 7.700.0:
+  + Added polyfit() and polyval().
+  + Added second form of log_det() to directly return the result
+    as a complex number.
+  + Added range() to statistics functions.
+  + Expanded trimatu()/trimatl() and symmatu()/symmatl() to handle
+    sparse matrices.
+
+-------------------------------------------------------------------
+Sun Dec 25 16:04:39 UTC 2016 - badshah400@gmail.com
+
+- Update to version 7.600.2:
+  + Undocumented bug fixes. 
+
+-------------------------------------------------------------------
+Mon Dec 19 08:54:52 UTC 2016 - badshah400@gmail.com
+
+- Update to version 7.600.1:
+  + More accurate eigs_sym() and eigs_gen().
+  + Expanded floor(), ceil(), round(), trunc(), sign() to handle
+    sparse matrices.
+  + Added arg(), atan2(), hypot().
+- Drop armadillo-install-pkgconfig.patch: resolved upstream.
+
+-------------------------------------------------------------------
+Mon Nov 21 00:38:17 UTC 2016 - badshah400@gmail.com
+
+- Update to version 7.500.2:
+  + Undocumented bug fixes.
+
+-------------------------------------------------------------------
+Mon Nov 14 00:25:09 UTC 2016 - badshah400@gmail.com
+
+- Update to version 7.500.1:
+  + Undocumented bug fixes.
+
+-------------------------------------------------------------------
+Sat Oct 29 10:05:40 UTC 2016 - badshah400@gmail.com
+
+- Add armadillo-install-pkgconfig.patch: Generate and install a
+  pkgconfig file (PATCH-FEATURE-OPENSUSE for now, but in
+  discussions with upstream to have this included).
+- Add armadillo-tests.patch: Generate tests/Makefile by
+  configuring tests/Makefile.in using cmake so that the tests can
+  be run before actually installing the library. Then, use a
+  make check section to test the built library
+  (PATCH-FEATURE-OPENSUSE for now, but in discussions with
+  upstream to have this included).
+
+-------------------------------------------------------------------
+Mon Oct 24 13:16:30 UTC 2016 - badshah400@gmail.com
+
+- Update to version 7.500.0:
+  + Expanded qz() to optionally specify ordering of the Schur
+    form.
+  + Expanded .each_slice() to support matrix multiplication.
+
+-------------------------------------------------------------------
+Wed Sep 28 11:44:58 UTC 2016 - badshah400@gmail.com
+
+- Update to version 7.400.3:
+  + Undocumented bug fixes.
+
+-------------------------------------------------------------------
+Mon Aug 29 11:42:41 UTC 2016 - badshah400@gmail.com
+
+- Update to version 7.400.2:
+  + Added expmat_sym(), logmat_sympd(), sqrtmat_sympd().
+  + Added .replace().
+
+-------------------------------------------------------------------
+Fri Jul 29 01:45:47 UTC 2016 - badshah400@gmail.com
+
+- Update to version 7.300.1:
+  + Undocumented bug fixes.
+
+-------------------------------------------------------------------
+Thu Jul 28 02:02:26 UTC 2016 - badshah400@gmail.com
+
+- Update to version 7.300.0:
+  + Added index_min() and index_max() standalone functions.
+  + Expanded .subvec() to accept size() arguments.
+  + More robust handling of non-square matrices by lu().
+
+-------------------------------------------------------------------
+Sat Jul  2 00:46:29 UTC 2016 - badshah400@gmail.com
+
+- Update to version 7.200.2:
+  + added .index_min() and .index_max().
+  + expanded ind2sub() to handle vectors of indices.
+  + expanded sub2ind() to handle matrix of subscripts.
+  + expanded expmat(), logmat() and sqrtmat() to optionally return
+    a bool indicating success faster handling of compound
+    expressions by vectorise().
+- Changes from Version 7.100.0:
+  + added erf(), erfc(), lgamma().
+  + added .head_slices() and .tail_slices() to subcube views.
+  + spsolve() now requires SuperLU 5.2.
+  + eigs_sym(), eigs_gen() and svds() now use a built-in
+    reimplementation of ARPACK for real (non-complex) matrices;
+    contributed by Yixuan Qiu.
+- Source tarballs are now xz compressed.
+- Update BuildRequires for superlu-devel: >= version 5.2 now
+  required.
+- Update shlib version (libarmadillo6 -> libarmadillo7) in spec
+  file and baselibs.conf.
+
+-------------------------------------------------------------------
+Mon May 30 14:34:07 UTC 2016 - jengelh@inai.de
+
+- Drop ATLAS support, for libatlas itself is too much work and
+  is getting dropped.
+
+-------------------------------------------------------------------
+Tue May  3 03:07:50 UTC 2016 - badshah400@gmail.com
+
+- Update to version 6.700.6:
+  + Undocumented bug fixes.
+
+-------------------------------------------------------------------
+Wed Apr 27 04:43:12 UTC 2016 - badshah400@gmail.com
+
+- Update to version 6.700.5:
+  + Undocumented bug fixes.
+
+-------------------------------------------------------------------
+Wed Apr 20 01:38:35 UTC 2016 - badshah400@gmail.com
+
+- Update to version 6.700.4:
+  + Undocumented bug fixes.
+
+-------------------------------------------------------------------
+Wed Apr  6 00:27:03 UTC 2016 - badshah400@gmail.com
+
+- Update to version 6.700.3 (Catabolic Amalgamator Deluxe):
+  + Added logmat() for calcuating the matrix logarithm
+  + Added regspace() for generating vectors with regularly spaced
+    elements
+  + Added logspace() for generating vectors with logarithmically
+    spaced elements
+  + Added approx_equal() for determining approximate equality
+  + Added trapz() for numerical integration
+  + Expanded .save() and .load() with hdf5_binary_trans file type,
+    to save/load data with columns transposed to rows  
+
+-------------------------------------------------------------------
+Thu Mar 24 20:35:06 UTC 2016 - badshah400@gmail.com
+
+- Update to version 6.600.5 (Catabolic Amalgamator):
+  + Expanded sum(), mean(), min(), max() to handle cubes.
+  + Expanded Cube class to handle arbitrarily sized empty cubes
+    (eg. 0x5x2).
+  + Added shift() for circular shifts of elements.
+  + Added sqrtmat() for finding the square root of a matrix.
+  + Fix for gmm_diag when using Mahalanobis distance.
+
+-------------------------------------------------------------------
+Wed Feb 17 00:40:59 UTC 2016 - badshah400@gmail.com
+
+- Update to version 6.500.5:
+  + Bug fixes (undocumented by upstream).
+
+-------------------------------------------------------------------
+Wed Jan 27 23:28:38 UTC 2016 - badshah400@gmail.com
+
+- Update to version 6.500.4 (Gourmet Electron Jumper):
+  + Added conv2() for 2D convolution.
+  + Added stand-alone kmeans() function for clustering data.
+  + Added trunc().
+  + Extended conv() to optionally provide central convolution.
+  + Faster handling of multiply-and-accumulate by accu() when
+    using Intel MKL, ATLAS or OpenBLAS.
+
+-------------------------------------------------------------------
+Tue Dec 15 12:53:57 UTC 2015 - badshah400@gmail.com
+
+- Update to version 6.400.2 (Flying Spaghetti Monster Deluxe):
+  + Expanded each_col(), each_row() and each_slice() to handle
+    C++11 lambda functions.
+  + Added ind2sub() and sub2ind().
+  + Fixes for corner cases in gmm_diag class.
+
+-------------------------------------------------------------------
+Sat Dec  5 11:09:18 UTC 2015 - badshah400@gmail.com
+
+- Update to version Version 6.300.2 (Flying Spaghetti Monster):
+  + Expanded solve() to find approximate solutions for
+    rank-deficient systems.
+  + Faster handling of non-contiguous submatrix views in compound
+    expressions.
+  + Added .for_each() to Mat, Row, Col, Cube and field classes.
+  + Added rcond() for estimating the reciprocal condition number.
+  + Fixes for spsolve(), eigs_sym(), eigs_gen(), svds().
+
+-------------------------------------------------------------------
+Sun Nov 15 10:11:08 UTC 2015 - badshah400@gmail.com
+
+- Update to version 6.200.4:
+  + Bug fixes (undocumented by upstream).
+
+-------------------------------------------------------------------
+Tue Nov 10 12:24:51 UTC 2015 - badshah400@gmail.com
+
+- Update to version 6.200.3:
+  + Bug fixes (undocumented by upstream).
+
+-------------------------------------------------------------------
+Tue Nov  3 22:46:40 UTC 2015 - badshah400@gmail.com
+
+- Version 6.200.2 (Midnight Blue Deluxe):
+  + Expanded diagmat() to handle non-square matrices and arbitrary
+    diagonals.
+  + Expanded trace() to handle non-square matrices.
+  + Correction for datum::Z_0 constant.
+
+-------------------------------------------------------------------
+Sat Oct 24 02:44:52 UTC 2015 - badshah400@gmail.com
+
+- Update to version 6.100.1:
+  + Bug fixes (undocumented by upstream).
+
+-------------------------------------------------------------------
+Thu Oct 15 16:03:24 UTC 2015 - badshah400@gmail.com
+
+- Version 6.100.0 (Midnight Blue):
+  + Faster norm() and normalise() when using Intel MKL, ATLAS or
+    OpenBLAS.
+  + Added Schur decomposition: schur().
+  + Stricter handling of matrix objects by hist() and histc().
+  + Advanced constructors for using auxiliary memory now have the
+    default of strict = false.
+  + Cube class now delays allocation of .slice() related
+    structures until needed.
+  + Expanded join_slices() to handle joining cubes with matrices.
+- Update shlib package name to libarmadillo6 in keeping with
+  shlib version upgrade.
+
+-------------------------------------------------------------------
+Thu Sep  3 11:11:50 UTC 2015 - badshah400@gmail.com
+
+- Update to version 5.500.2:
+  + Undocumented fixes.
+- Changes from version 5.500.0 (Molotov Cocktail):
+  + Expanded object constructors and generators to handle size()
+    based specification of dimensions.
+  + Faster handling of submatrix rows.
+  + Faster clamp().
+  + Fixes for handling sparse matrices.
+
+-------------------------------------------------------------------
+Wed Aug 19 04:44:22 UTC 2015 - badshah400@gmail.com
+
+- Update to version 5.400.2:
+  + Undocumented fixes.
+- Changes from version 5.400.0 (Plutocracy Incorporated Deluxe):
+  + Added find_unique() for finding indices of unique values.
+  + Added diff() for calculating differences between consecutive
+    elements.
+  + Added cumprod() for calculating cumulative product.
+  + Added null() for finding the orthonormal basis of null space.
+  + Expanded interp1() to handle repeated locations.
+  + Expanded unique() to handle complex numbers.
+  + Faster flipud().
+  + Faster row-wise cumsum().
+  + Fix for k-means clustering in gmm_diag class.
+
+-------------------------------------------------------------------
+Fri Aug  7 23:02:46 UTC 2015 - badshah400@gmail.com
+
+- Update to version 5.300.4:
+  + Undocumented fixes.
+- Changes from Version 5.300.0 (Plutocracy Incorporated):
+  + Added generalised Schur decomposition: qz().
+  + Added .has_inf() and .has_nan().
+  + Expanded interp1() to handle out-of-domain locations.
+  + Expanded sparse matrix class with .set_imag() and .set_real().
+  + Expanded imag(), real() and conj() to handle sparse matrices.
+  + Expanded diagmat(), reshape() and resize() to handle sparse
+    matrices.
+  + Faster sparse sum().
+  + Faster row-wise sum(), mean(), min(), max().
+  + Updated physical constants to NIST 2014 CODATA values.
+  + Fixes for handling sparse submatrix views.
+  + Armadillo can make use of GPUs by linking with NVIDIA NVBLAS
+    (a GPU-accelerated implementation of BLAS),
+    or by linking with AMD ACML (which can use GPUs via OpenCL).
+
+-------------------------------------------------------------------
+Wed Jun 24 07:50:21 UTC 2015 - badshah400@gmail.com
+
+- Update to version 5.200.2:
+  + Bugfix in interp1().
+
+-------------------------------------------------------------------
+Mon May 25 23:22:57 UTC 2015 - badshah400@gmail.com
+
+- Update to version 5.200 (Boston Tea Smuggler):
+  + Added orth() for finding the orthonormal basis of the range
+    space of a matrix.
+  + Expanded element initialisation to handle nested initialiser
+    lists (C++11).
+  + Workarounds for bugs in GCC, Intel and MSVC C++ compilers.
+
+-------------------------------------------------------------------
+Fri May 15 03:55:25 UTC 2015 - badshah400@gmail.com
+
+- Update to version 5.100.2:
+  + Undocumented fixes.
+- Update to version 5.100.1:
+  + Undocumented fixes.
+- Changes from version Version 5.100.0 (Ankle Biter Deluxe):
+  + Added interp1() for 1D interpolation.
+  + Added .is_sorted() for checking whether a vector or matrix
+    has sorted elements.
+  + Updated physical constants to NIST 2010 CODATA values.
+
+-------------------------------------------------------------------
+Thu Apr 16 06:16:24 UTC 2015 - badshah400@gmail.com
+
+- Update to version 5.000.1:
+  + Fix an issue with C++11 support.
+- Add superlu-devel as BuildRequires, and as Requires for
+  armadillo.
+
+-------------------------------------------------------------------
+Mon Apr 13 17:50:44 UTC 2015 - badshah400@gmail.com
+
+- Update to version 5.000.0 (Ankle Biter):
+  + Added spsolve() for solving sparse systems of linear
+    equations.
+  + Added svds() for singular value decomposition of sparse
+    matrices.
+  + Added nonzeros() for extracting non-zero values from matrices.
+  + Added handling of diagonal views by sparse matrices.
+  + Expanded repmat() to handle sparse matrices.
+  + Expanded join_rows() and join_cols() to handle sparse
+    matrices.
+  + sort_index() and stable_sort_index() have been placed in the
+    delayed operations framework for increased efficiency.
+  + Use of 64 bit integers is automatically enabled when using a
+    C++11 compiler.
+  + Workaround for a bug in recent releases of Apple Xcode.
+  + Workaround for a bug in LAPACK 3.5.
+- New dependency: superlu >= 4.3.
+- Updated shared library name to libarmadillo5 in track with
+  upstream so name change.
+
+-------------------------------------------------------------------
+Sat Mar 21 00:29:27 UTC 2015 - badshah400@gmail.com
+
+- Update to version 4.650.4:
+  + List of changes not documented upstream.
+- Changes from version 4.650.2 and 4.650.3:
+  + List of changes not documented upstream.
+
+-------------------------------------------------------------------
+Wed Feb 18 03:20:26 UTC 2015 - badshah400@gmail.com
+
+- Update to version 4.650.1:
+  + List of changes not documented upstream.
+- Changes from version 4.650 (Intravenous Caffeine Injector):
+  + Added randg() for generating random values from gamma
+    distributions (C++11 only).
+  + Added .head_rows() and .tail_rows() to submatrix views.
+  + Added .head_cols() and .tail_cols() to submatrix views.
+  + Expanded eigs_sym() to optionally calculate eigenvalues with
+    smallest/largest algebraic values fixes for handling of sparse
+    matrices.
+
+-------------------------------------------------------------------
+Tue Jan 20 02:13:42 UTC 2015 - badshah400@gmail.com
+
+- Update to version 4.600.3:
+  + List of changes not documented upstream.
+- Changes from version 4.600.2: 
+  + List of changes not documented upstream.
+
+-------------------------------------------------------------------
+Sun Dec 28 04:46:19 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.600.1:
+  + List of changes not documented upstream.
+- Changes from version 4.600 (Off The Reservation):
+  + Added .head() and .tail() to submatrix views
+  + Faster matrix transposes within compound expressions
+  + Faster accu() and norm() when compiling with
+    -O3 -ffast-math -march=native (gcc and clang)
+  + Workaround for a bug in GCC 4.4 
+
+-------------------------------------------------------------------
+Sat Dec 27 01:44:31 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.550.4: 
+  + List of changes not documented upstream.
+- Update to version 4.550.3: 
+  + List of changes not documented upstream.
+
+-------------------------------------------------------------------
+Tue Dec  2 00:55:41 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.550.2:
+  + List of changes not documented upstream.
+- Changes from version 4.550.1:
+  + List of changes not documented upstream.
+
+-------------------------------------------------------------------
+Thu Nov 20 19:12:24 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.550 (Singapore Sling Deluxe):
+  + Added matrix exponential function: expmat()
+  + Faster .log_p() and .avg_log_p() functions in the gmm_diag
+    class when compiling with OpenMP enabled
+  + Faster handling of in-place addition/subtraction of
+    expressions with an outer product.
+
+-------------------------------------------------------------------
+Mon Nov  3 17:51:28 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.500.1:
+  + List of changes not documented upstream. 
+
+-------------------------------------------------------------------
+Thu Oct 30 18:44:50 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.500.0:
+  + Faster handling of complex vectors by norm()
+  + Expanded chol() to optionally specify output matrix as upper
+    or lower triangular
+  + Better handling of non-finite values when saving matrices as
+    text files.
+
+-------------------------------------------------------------------
+Mon Oct 13 18:12:52 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.450.4:
+  + No list of changes documented upstream.
+
+-------------------------------------------------------------------
+Thu Oct  9 19:04:57 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.450.3:
+  + No list of changes documented upstream. 
+
+-------------------------------------------------------------------
+Fri Oct  3 06:21:56 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.450.2:
+  + No list of changes documented upstream. 
+
+-------------------------------------------------------------------
+Fri Sep 19 03:42:44 UTC 2014 - badshah400@gmail.com
+
+- Update to Version 4.450 (Spring Hill Fort):
+  + Faster handling of matrix transposes within compound
+    expressions
+  + Expanded symmatu()/symmatl() to optionally disable taking the
+    complex conjugate of elements
+  + Expanded sort_index() to handle complex vectors
+  + Expanded the gmm_diag class with functions to generate random
+    samples 
+
+-------------------------------------------------------------------
+Wed Aug 20 18:31:39 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.400.1:
+  + No changes documented
+- Changes from version 4.400 (Winter Shark Alley):
+  + Faster handling of subvectors by dot()
+  + Faster handling of aliasing by submatrix views
+  + Expanded batch insertion constructors for sparse matrices to
+    add values at repeated locations
+  + Added clamp() for clamping values to be between lower and
+    upper limits
+  + Added gmm_diag class for statistical modelling using Gaussian
+    Mixture Models (GMM);
+  + Includes multi-threaded implementation of k-means and
+    Expectation-Maximisation (EM) for parameter estimation.
+
+-------------------------------------------------------------------
+Wed Jul  2 20:17:08 UTC 2014 - badshah400@gmail.com
+
+- Update to Version 4.320   (Daintree Tea Raider)
+  + Expanded eigs_sym() and eigs_gen() to use an optional
+    tolerance parameter
+  + Expanded eig_sym() to automatically fall back to standard
+    decomposition method if divide-and-conquer fails
+  + Automatic installer enables use of C++11 random number
+    generator when using gcc 4.8.3+ in C++11 mode.
+
+-------------------------------------------------------------------
+Tue Jun  3 00:11:13 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.300.8:
+  + List of changes not documented upstream.
+
+-------------------------------------------------------------------
+Wed May 21 15:45:26 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.300.5:
+  + List of changes not documented upstream.
+
+-------------------------------------------------------------------
+Mon May 12 10:19:20 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.300.2:
+  + Fix for detection of HDF5 library during automatic
+    installation
+  + Faster find()
+
+-------------------------------------------------------------------
+Sat May  3 00:47:07 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.300 (Medieval Cornea Scraper):
+  + Faster find()
+  + Added find_finite() and find_nonfinite() for finding indices
+    of finite and non-finite elements
+  + Expressions X=inv(A)*B*C and X=A.i()*B*C are automatically
+    converted to X=solve(A,B*C)
+  + Cmake-based installer enables use of C++11 random number
+    generator when using gcc 4.9+ in C++11 mode
+ 
+-------------------------------------------------------------------
+Mon Apr  7 11:22:36 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.200.0 (Flintlock Swoop):
+  + Faster transpose of sparse matrices
+  + More efficient handling of aliasing during matrix
+    multiplication
+  + Faster inverse of matrices marked as diagonal. 
+
+-------------------------------------------------------------------
+Sat Mar  8 09:34:02 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.100.2:
+  + Fix for handling null vectors by normalise()
+  + Fix for memory handling by sparse matrices.
+
+-------------------------------------------------------------------
+Fri Feb 28 22:11:56 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.100 (Dirt Cruiser)
+  + added normalise() for normalising vectors to unit p-norm
+  + extended the field class to handle 3D layout
+  + extended eigs_sym() and eigs_gen() to obtain eigenvalues of
+    various forms (eg. largest or smallest magnitude)
+  + automatic SIMD vectorisation of elementary expressions
+    (eg. matrix addition) when using Clang 3.4+ with -O3
+    optimisation
+  + faster handling of sparse submatrix views
+  + workaround for a bug in LAPACK 3.4
+- Changes from version 4.000.4:
+  + fix for randi() generating out-of-interval values
+  + fix for saving field objects
+  + workaround for a bug in the Intel compiler
+
+-------------------------------------------------------------------
+Fri Jan 17 20:33:40 UTC 2014 - badshah400@gmail.com
+
+- Update to version 4.000.2:
+  + List of changes not documented upstream
+- Changes from version 4.000.1:
+  + Fix for randi() generating out-of-interval values
+  + Workaround for a bug in the Intel compiler
+ 
+-------------------------------------------------------------------
+Wed Jan  8 04:40:56 UTC 2014 - badshah400@gmail.com
+
+- Armadillo no longer depends on boost libraries, and requires
+  arpack-ng instead; adapt build and run-time requirements
+  appropriately
+- Fix baselibs.conf for so name version update
+- Add libatlas3 dependencies as recommended by upstream. 
+
+-------------------------------------------------------------------
+Mon Jan  6 21:27:36 UTC 2014 - badshah400@gmail.com
+
+- Update to Version 4.000.0 (Feral Steamroller)
+  + added eigen decompositions of sparse matrices: eigs_sym() and
+    eigs_gen()
+  + added eigen decomposition for pair of matrices: eig_pair()
+  + added simpler forms of eig_gen()
+  + added condition number of matrices: cond()
+  + expanded find() to handle cubes
+  + expanded subcube views to access elements specified in a vector
+  + template argument for running_stat_vec expanded to accept
+    vector types
+  + more robust fast inverse of 4x4 matrices
+  + faster divide-and-conquer decompositions are now used by
+    default for eig_sym(), pinv(), princomp(), rank(), svd(),
+    svd_econ()
+  + the form inv(sympd(X)) no longer assumes that X is positive
+    definite; use inv_sympd() instead
+  + added MEX connector for interfacing Octave/Matlab with
+    Armadillo matrices (contributed by George Yammine)
+- Packaging changes:
+  + SO version update to 4
+  + Remove appropriate win64 examples instead of win32
+
+-------------------------------------------------------------------
+Tue Dec 10 07:44:43 UTC 2013 - badshah400@gmail.com
+
+- Update to version 3.930.1:
+  + Changes not documented upstream.
+
+-------------------------------------------------------------------
+Tue Dec 10 02:45:09 UTC 2013 - badshah400@gmail.com
+
+- Update to version 3.930.0 (Dragon's Back):
+  + added divide-and-conquer variant of svd_econ(), for faster SVD
+  + added divide-and-conquer variant of pinv(), for faster
+    pseudo-inverse
+  + added element-wise variants of min() and max()
+  + added size() based specifications of submatrix view sizes
+  + added randi() for generating matrices with random integer
+    values
+  + added inplace_trans() for memory efficient in-place transposes
+    (contributed by Alexandre Drouin)
+  + added more intuitive specification of sort direction in sort()
+    and sort_index()
+  + added more intuitive specification of method in det(), .i(),
+    inv() and solve()
+  + added more precise timer for the wall_clock class when using
+    C++11 
+
+-------------------------------------------------------------------
+Sat Sep 28 19:32:08 UTC 2013 - badshah400@gmail.com
+
+- Update to version 3.920.1:
+  + Fix ambigious overload
+- Changes from version 3.920.0 (Agencia Nacional Stasi):
+  + Faster .zeros()
+  + Faster round(), exp2() and log2() when using C++11
+  + Added signum function: sign()
+  + Added move constructors when using C++11
+  + Added 2D fast Fourier transform: fft2()
+  + Added .tube() for easier extraction of vectors and subcubes
+    from cubes
+  + Added specification of a fill type during construction of Mat,
+    Col, Row and Cube classes, eg. mat X(4, 5, fill::zeros).
+
+-------------------------------------------------------------------
+Wed Sep 11 15:16:31 UTC 2013 - badshah400@gmail.com
+
+- Update to version 3.910.1:
+  + Minor fix for handling of complex matrices by braindead
+    compilers (MSVC).
+
+-------------------------------------------------------------------
+Mon Aug 12 21:02:40 UTC 2013 - badshah400@gmail.com
+
+- Update to version 3.910.0 (Pyrenees):
+  + Faster multiplication of a matrix with a transpose of itself,
+    ie. X*X.t() and X.t()*X
+  + Added vectorise() for reshaping matrices into vectors
+  + Added all() and any() for indicating presence of elements
+    satisfying a relational condition
+
+-------------------------------------------------------------------
+Wed Jul 31 19:09:57 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 3.900.7
+  * minor fix for inplace reshape()
+  * minor corrections for compilation issues under GCC 4.8+
+
+-------------------------------------------------------------------
+Wed Jun 26 21:34:28 UTC 2013 - badshah400@gmail.com
+
+- Update to version 3.900.6:
+  + No list of changes documented by upstream for 3.900.6 and
+    3.900.5.
+
+-------------------------------------------------------------------
+Thu Jun 13 05:50:37 UTC 2013 - badshah400@gmail.com
+
+- Update to version 3.900.4:
+  + Minor corrections for compilation issues under GCC 4.8+
+- Changes from version 3.900.1, 3.900.2 and 3.900.3 not
+  documented by upstream.
+
+-------------------------------------------------------------------
+Wed Jun  5 00:45:22 UTC 2013 - badshah400@gmail.com
+
+- Update to version 3.900.0:
+  + Added automatic SSE2 vectorisation of elementary expressions
+    (eg. matrix addition) when using GCC 4.7+ with -O3
+    optimisation
+  + Added support for saving & loading of cubes in HDF5 format
+  + Faster median()
+  + Faster handling of compound expressions with transposes of
+    submatrix rows
+  + Faster handling of compound expressions with transposes of
+    complex vectors.
+
+-------------------------------------------------------------------
+Wed May 22 17:43:44 UTC 2013 - badshah400@gmail.com
+
+- Update to version 3.820.1:
+  + Added detection of the OpenBLAS library during installation,
+    which provides high-speed matrix multiplication
+
+-------------------------------------------------------------------
+Sun May 12 21:07:19 UTC 2013 - badshah400@gmail.com
+
+- Update to version 3.820.0 (Mt Cootha):
+  + Faster as_scalar() for compound expressions
+  + Faster transpose of small vectors
+  + Faster matrix-vector product for small vectors
+  + Faster multiplication of small fixed size matrices.
+
+-------------------------------------------------------------------
+Fri Apr 19 13:43:45 UTC 2013 - badshah400@gmail.com
+
+- Update to version 3.810.0 (Newell Highway):
+  + Added fast Fourier transform: fft()
+  + Added handling of .imbue() and .transform() by submatrices and
+    subcubes
+  + Added batch insertion constructors for sparse matrices
+  + Minor fix for multiplication of complex sparse matrices
+  + Better detection of recent Intel MKL versions during
+    installation.
+
+-------------------------------------------------------------------
+Mon Mar 25 22:13:02 UTC 2013 - badshah400@gmail.com
+
+- Update to version 3.800.2:
+  * minor fix for installation on Mac OS X systems
+
+-------------------------------------------------------------------
+Tue Mar 12 21:05:42 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 3.800.1
+  * workaround for a bug in ATLAS 3.8 on 64 bit systems
+  * faster matrix-vector multiply for small matrices
+
+-------------------------------------------------------------------
+Fri Mar  1 06:25:15 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 3.800.0
+  * Armadillo is now licensed using the Mozilla Public License 2.0
+  * added .imbue() for filling a matrix/cube with values provided
+    by a functor or lambda expression
+  * added .swap() for swapping contents with another matrix
+  * added .transform() for transforming a matrix/cube using a
+    functor or lambda expression
+  * added round() for rounding matrix elements towards nearest integer
+  * faster find()
+  * fixes for handling non-square matrices by qr() and qr_econ()
+  * minor fixes for handling empty matrices
+  * reduction of pedantic compiler warnings
+
+-------------------------------------------------------------------
+Wed Feb 20 09:24:21 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 3.6.3
+  * faster find()
+  * minor fix for non-contiguous submatrix views to handle
+    empty vectors of indices
+
+-------------------------------------------------------------------
+Tue Jan 29 09:24:54 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 3.6.2
+  * faster determinant for matrices marked as diagonal or triangular
+  * more fine-grained handling of 64 bit integers 
+
+-------------------------------------------------------------------
+Fri Dec 21 18:03:59 UTC 2012 - dmitry_r@opensuse.org
+
+- Update to version 3.6.1
+  Changes in 3.6.1
+  * faster trace()
+  * fix for handling sparse matrices by dot()
+  * fixes for interactions between sparse and dense matrices
+  Changes in 3.6.0
+  * faster handling of compound expressions with submatrices
+    and subcubes
+  * added support for loading matrices as text files with
+    NaN and Inf elements
+  * added stable_sort_index(), which preserves the relative
+    order of elements with equivalent values
+  * added handling of sparse matrices by mean(), var(),
+    norm(), abs(), square(), sqrt()
+  * added saving and loading of sparse matrices in 
+    arma_binary format
+
+-------------------------------------------------------------------
+Thu Nov 22 16:46:33 UTC 2012 - cgiboudeaux@gmx.com
+
+- Update to 3.4.4
+  * Fix for handling complex numbers by sparse matrices
+  * Fix for minor memory leak by sparse matrices
+
+-------------------------------------------------------------------
+Sun Oct  7 23:53:46 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.4.3:
+  + Fix for aliasing issue in diagmat()
+  + Fix for speye() signature
+  + Fixes for handling empty sparse matrices
+  + Minor fixes for handling sparse submatrix views
+  + Minor speedups for sparse matrices
+  + Workaround for a bug in the Mac OS X accelerate framework
+  + Added documentation for saving & loading matrices in HDF5
+    format
+  + Faster dot() and cdot() for complex numbers.
+
+-------------------------------------------------------------------
+Wed Sep 26 05:25:05 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.4.2:
+  + Minor fixes for handling sparse submatrix views
+  + Minor speedups for sparse matrices.
+
+-------------------------------------------------------------------
+Sat Sep 22 01:19:51 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.4.1:  
+  +  Workaround for a bug in the Mac OS X accelerate framework
+  +  Fixes for handling empty sparse matrices
+  +  Added documentation for saving & loading matrices in HDF5
+     format
+  +  Faster dot() and cdot() for complex numbers.
+
+-------------------------------------------------------------------
+Fri Sep  7 16:37:55 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.4.0 (Ku De Ta):
+  + Faster .randn().
+
+-------------------------------------------------------------------
+Sat Sep  1 03:47:24 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.3.91 (3.4 Beta 1):
+  + Faster singular value decomposition via "divide and conquer"
+    algorithm
+  + Added economical QR decomposition: qr_econ()
+  + Added .each_col() & .each_row() for vector operations repeated
+    on each column or row
+  + Added preliminary support for sparse matrices.
+
+-------------------------------------------------------------------
+Wed Jul 11 15:44:44 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.2.4:
+  + Workaround for a regression (bug) in GCC 4.7.0 and 4.7.1.
+
+-------------------------------------------------------------------
+Fri Jun 29 06:41:42 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.2.3:
+  + Minor correction for declaration of fixed size vectors and
+    matrices.
+
+-------------------------------------------------------------------
+Fri Jun 22 19:04:09 UTC 2012 - scorot@free.fr
+
+- fix build on SLE 11 
+
+-------------------------------------------------------------------
+Thu May 31 17:33:30 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.2.2:
+  + Better detection of ATLAS on Fedora and Red Hat systems
+  + Minor fix for compiling without debugging enabled (aka release
+    mode).
+
+-------------------------------------------------------------------
+Tue May 29 03:56:47 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.2.1:
+  + Minor fix for compiling without debugging enabled (aka release
+    mode).
+
+-------------------------------------------------------------------
+Fri May 18 13:30:23 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.2.0:
+  + Faster eigen decomposition via "divide and conquer" algorithm
+  + Faster transpose of vectors and compound expressions
+  + Faster handling of diagonal views
+  + Faster handling of tiny fixed size vectors (≤ 4 elements)
+  + Added unique(), for finding unique elements of a matrix.
+
+-------------------------------------------------------------------
+Thu May  3 21:44:48 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.0.3:
+  + Fixes for inplace transpose of complex number matrices
+  + Fixes for complex number version of svd_econ()
+  + Fixes for potential aliasing issues with submatrix views. 
+
+-------------------------------------------------------------------
+Sun Apr 29 05:02:15 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.0.2:
+  + Fixes for handling diagonal matrices
+  + Fixes for compilation errors
+  + Fixes for potential aliasing issues. 
+
+-------------------------------------------------------------------
+Fri Apr 13 03:01:43 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.0.1:
+  + Fixes for compilation errors
+  + Fixes for potential aliasing issues.
+
+-------------------------------------------------------------------
+Mon Apr  9 20:16:36 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.0.0:
+  + Added non-contiguous submatrix views
+  + Added shorthand for inverse: .i()
+  + Added hist() and histc()
+  + Faster repmat()
+  + Faster handling of submatrix views with one row or column
+  + Faster generation of random numbers
+  + Faster element access in fixed size matrices
+  + Better detection of vector expressions by various functions
+  + Expressions X=A.i()*B and X=inv(A)*B are automatically
+    converted to X=solve(A,B)
+- Rename shared library package to libarmadillo3 in keeping with
+  .so file number change
+- Update baselibs.conf in keeping with changes to the shared
+  library package name.
+
+-------------------------------------------------------------------
+Wed Apr  4 06:37:58 UTC 2012 - badshah400@gmail.com
+
+- Update to version 2.4.4:
+  + Fixes for qr() and syl()
+  + More portable wall_clock class
+  + Faster relational operators on submatrices.
+- Update lapack dependencies in keeping with lapack changes in
+  devel project to fix builds on openSUSE 12.1 and 11.4.
+
+-------------------------------------------------------------------
+Tue Feb  7 23:23:50 UTC 2012 - badshah400@gmail.com
+
+- Update to version 2.4.3 (no summary of changes documented
+  upstream)
+
+-------------------------------------------------------------------
+Mon Dec 12 11:52:42 UTC 2011 - badshah400@gmail.com
+
+- Update to version 2.4.2:
+  + Clarified documentation for .reshape()
+  + Fix for handling of empty matrices by .resize()
+
+-------------------------------------------------------------------
+Mon Dec  5 01:02:01 UTC 2011 - badshah400@gmail.com
+
+- Update to version 2.4.1:
+  + Added .resize()
+  + Fix for vector initialisation
+
+-------------------------------------------------------------------
+Mon Dec  5 00:09:19 UTC 2011 - badshah400@gmail.com
+
+- Update to version 2.4.0:
+  + Added shorter forms of transposes: .t() and .st()
+  + Added optional use of 64 bit indices, allowing matrices to
+    have more than 4 billion elements
+  + Added experimental support for C++11 initialiser lists
+  + Faster pinv()
+  + Faster inplace transpose
+  + Faster handling of expressions with diagonal views
+  + Fixes for handling expressions with aliasing and submatrices
+  + Fixes for linking on Ubuntu and Debian systems
+  + Fixes for inconsistencies in interactions between matrices
+    and cubes
+  + Refactored code to eliminate warnings when using the Clang
+    C++ compiler
+  + .print_trans() and .raw_print_trans() are deprecated.
+- Spec file cleanups:
+  + Use upstream provided tarballs (in tar.gz format) instead of
+    recompressing to tar.bz2
+  + Modify License tag in confomity with spdx.org specifications
+
+-------------------------------------------------------------------
+Tue Nov 22 20:06:40 UTC 2011 - badshah400@gmail.com
+
+- Update to version 2.3.91 (2.4 beta 1):
+  + Added shorter forms of transposes: .t() and .st()
+  + Added optional use of 64 bit indices, allowing matrices to
+    have more than 4 billion elements
+  + Added experimental support for C++11 initialiser lists
+  + Faster pinv()
+  + Faster inplace transpose
+  + Bugfixes for handling expressions with aliasing and
+    submatrices
+  + Refactored code to eliminate warnings when using the Clang
+    C++ compiler
+  + .print_trans() and .raw_print_trans() are deprecated
+ 
+
+-------------------------------------------------------------------
+Tue Nov 15 05:30:02 UTC 2011 - badshah400@gmail.com
+
+- Update to version 2.2.5 (bug-fix release; no summary of changes
+  documented upstream)
+
+-------------------------------------------------------------------
+Wed Oct 19 09:06:08 UTC 2011 - badshah400@gmail.com
+
+- Update to version 2.2.4 (bug-fix release; no summary of changes
+  documented upstream)
+
+-------------------------------------------------------------------
+Sun Sep 25 19:27:52 UTC 2011 - jengelh@medozas.de
+
+- Remove forbidden Obsoletes (cf. shlib guide)
+
+-------------------------------------------------------------------
+Sat Sep 17 12:14:14 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Implement baselibs for package
+
+-------------------------------------------------------------------
+Sat Aug 27 10:45:46 UTC 2011 - badshah400@gmail.com
+
+- Update to version 2.2.3
+  + Bug fix for speed issue in as_scalar()
+
+-------------------------------------------------------------------
+Tue Aug 23 19:01:04 UTC 2011 - badshah400@gmail.com
+
+- Update to version 2.2.2 (no summary of changes documented by
+  upstream)
+
+-------------------------------------------------------------------
+Tue Aug  2 17:08:49 UTC 2011 - badshah400@gmail.com
+
+- Update to version 2.2.1
+  + Faster multiplication of small matrices
+  + Faster trans()
+  + Faster handling of submatrices by norm()
+  + Added economical singular value decomposition: svd_thin()
+  + Added circ_toeplitz()
+  + Added .is_colvec() & .is_rowvec()
+  + Fixes for handling of complex numbers by cov(), cor(),
+    running_stat_vec
+
+-------------------------------------------------------------------
+Sat Jul 16 20:39:49 UTC 2011 - badshah400@gmail.com
+
+- Update to version 2.0.2
+  + Various bug fixes
+
+- Changes from version 2.0.0
+  + Faster multiplication of tiny matrices
+  + Faster compound expressions containing submatrices
+  + Faster inverse of symmetric positive definite matrices
+  + Faster element access for fixed size matrices
+  + Added handling of arbitrarily sized empty matrices (eg. 5x0)
+  + Added loading & saving of matrices as CSV text files
+  + Added .count() member function to running_stat and
+    running_stat_vec
+  + Added syl(), strans(), symmatu()/symmatl()
+  + Added submatrices of submatrices
+  + det(), inv() and solve() can be forced to use more precise
+    algorithms for tiny matrices
+  + htrans() has been deprecated; use trans() instead
+  + API change: trans() now takes the complex conjugate when
+    transposing a complex matrix
+  + API change: .is_vec() now outputs true for empty vectors (eg. 0x1)
+  + API change: forms of chol(), eig_sym(), eig_gen(), inv(),
+    lu(), pinv(), princomp(), qr(), solve(), svd(), syl() that
+    do not return a bool indicating success now throw
+    std::runtime_error exceptions when failures are detected
+  + API change: princomp_cov() has been removed;
+    eig_sym() in conjunction with cov() can be used instead
+  + API change: set_log_stream() & get_log_stream() have been
+    replaced by set_stream_err1() & get_stream_err1()
+  + Rename shared library package to libarmadillo2; obsoletes
+    libarmadillo1
+
+-------------------------------------------------------------------
+Mon Apr 18 12:08:06 UTC 2011 - badshah400@gmail.com
+
+- Update to version 1.2.0
+  + Added ability to use Blas & Lapack libraries with capitalised
+    function names
+  + Reduction of pedantic compiler warnings
+
+-------------------------------------------------------------------
+Fri Apr  1 22:51:28 CEST 2011 - badshah400@gmail.com
+
+- Update to version 1.1.92:
+  + Bugfix in function cor()
+  + Automatic installation now requires CMake >= 2.6
+- Add licenses to libarmadillo package
+
+-------------------------------------------------------------------
+Wed Mar 23 16:32:17 UTC 2011 - badshah400@gmail.com
+
+- Spec file cleanup 
+
+-------------------------------------------------------------------
+Wed Mar 23 02:00:39 UTC 2011 - badshah400@gmail.com
+
+- Initial package (following spec file from fedora)
+

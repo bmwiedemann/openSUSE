@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:08:38 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Mon Jul 29 08:01:50 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro 
+- Cleaned up spec file
+- Use %license for COPYING
+- Added bcond for git master builds 
+
+-------------------------------------------------------------------
+Thu Apr 26 18:30:14 UTC 2018 - seife+obs@b1-systems.com
+
+- update to version 2.0.0
+  * Switch from GTK2 to GTK3
+  * DBUS support and verve-focus have been removed
+  * allow to override the colors of the input area
+  * Update translations
+
+-------------------------------------------------------------------
+Sun Dec 25 18:58:12 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 1.1.0
+  - add ability to use xfce4-verve-plugin as a smartbookmark plugin
+  - add ability to direct commands starting in ! or \ to DuckDuckGo
+  - run commands through shell by default, to allow aliases,
+    variables, etc.
+  - use wordexp to expand directory names (when available), to
+    allow variables, etc.
+  - add an optional label on the left side of the plugin
+  - expand properties window to configure the new features
+  - increase maximum width of plugin
+- do not package ChangeLog file, NEWS is enough
+
+-------------------------------------------------------------------
+Tue Jan 27 08:51:45 UTC 2015 - gber@opensuse.org
+
+- update to version 1.0.1
+  - Use exo-open instead of the deprecated xfterm4 to launch
+    commands in a term via ctrl-enter (bxo#9978)
+  - Fix style when the entry loses focus (bxo#3525)
+  - Build the plugin as a module
+  - Port to libxfce4ui
+  - Tons of translation updates
+
+-------------------------------------------------------------------
+Sun Apr 29 09:55:41 UTC 2012 - gber@opensuse.org
+
+- add dependency on exo-tools since exo-open is used
+
+-------------------------------------------------------------------
+Fri Apr 20 11:46:07 UTC 2012 - gber@opensuse.org
+
+- added documentation files
+
+-------------------------------------------------------------------
+Tue Apr 17 22:40:57 UTC 2012 - gber@opensuse.org
+
+- corrected source URL
+
+-------------------------------------------------------------------
+Wed Apr  4 08:20:30 UTC 2012 - gber@opensuse.org
+
+- specfile cleanup
+- correct dependencies
+- split off -lang subpackage
+
+-------------------------------------------------------------------
+Wed Mar  9 11:00:00 UTC 2011 - gber@opensuse.org
+
+- new package (split off from xfce4-panel-plugins)
+

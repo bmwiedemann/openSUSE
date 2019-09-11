@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Wed Jul 31 16:12:22 CEST 2019 - Tina Müller <tina.mueller@suse.com>
+
+- Remove patch
+  * Patch libyaml-revert-emitter-changes.patch is not needed anymore
+-------------------------------------------------------------------
+Thu Apr 18 13:17:19 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.2.2
+- refreshed libyaml-revert-emitter-changes.patch
+ * Fix comparison in tests/run-emitter.c
+ * Allow colons in plain scalars inside flow collections
+ * The closing single quote needs to be indented...
+ * Revert removing of open_ended after top level plain scalar
+
+-------------------------------------------------------------------
+Mon Jan 28 13:21:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- --with-pic is useless without static libs, remove it.
+- Update RPM groups and descriptions.
+
+-------------------------------------------------------------------
+Thu Jan 17 13:23:23 UTC 2019 - bjorn.lie@gmail.com
+
+- Add libyaml-revert-emitter-changes.patch: Revert "This code is
+  not needed and breaks tests" (gh#yaml/libyaml#122).
+
+-------------------------------------------------------------------
+Tue Dec  4 08:48:50 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.2.1
+ * Fixed most compiler warnings -Wall -Wextra
+ * Support static and dynamic libraries
+ * Add support for `make test`
+ * Apply old fix for `\/` that is not in master.
+ * Port bug fix from Perl binding
+ * Removed trailing-whitespaces
+ *  Fix -Wformat compilation errors in tests
+ * Added missing Cflags path in pkg-config file
+ * Forbid escaped singlequote in doublequotes
+
+-------------------------------------------------------------------
+Sun Dec 31 22:20:11 UTC 2017 - avindra@opensuse.org
+
+- update to 0.1.7
+  * Fixed segfault in yaml_string_write_handler
+  * Fixed invalid simple key assertion (CVE-2014-9130)
+  * Fixed error handling in some examples
+- remove CVE-2014-9130.patch
+  - fixed upstream in 946596172d140497b560e016e581accb0a92cca4
+- cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Dec  3 12:49:34 UTC 2014 - jmassaguerpla@suse.com
+
+- fix CVE-2014-9130: libyaml: assert failure when processing
+  wrapped strings (bnc#907809)
+
+  CVE-2014-9130.patch contains the fix
+
+-------------------------------------------------------------------
+Fri Mar 28 16:10:41 UTC 2014 - jmassaguerpla@suse.com
+
+- update to 0.1.6 is a security update release for:
+  * CVE-2014-2525: heap overflow during parsing (bnc#868944)
+  bnc#860617)
+
+-------------------------------------------------------------------
+Fri Feb  7 16:25:48 UTC 2014 - dmueller@suse.com
+
+- update to 0.1.5:
+  * Manually define PTRDIFF_MAX for VS C compiler
+  * Limit input size to SIZE_MAX/2 
+  * Guard against overflows in indent and flow_level (CVE-2013-6393, bnc#860617)
+  * Prevent node index overflow (Reported by Florian Weimer).
+  * Fixed invalid size_t->int cast (Thank to Florian Weimer).
+
+-------------------------------------------------------------------
+Tue Mar 26 12:25:02 UTC 2013 - dmueller@suse.com
+
+- update to 0.1.4:
+  * documentation update
+  * add pkgconfig support 
+
+-------------------------------------------------------------------
+Sun Jan 29 21:44:24 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+
+-------------------------------------------------------------------
+Wed Feb  9 19:05:55 UTC 2011 - pascal.bleser@opensuse.org
+
+- fixed erroneous license from GPLv2 to MIT, bnc#670525
+
+-------------------------------------------------------------------
+Tue Apr  6 22:55:47 UTC 2010 - mrueckert@suse.de
+
+- initial package of version 0.1.3
+

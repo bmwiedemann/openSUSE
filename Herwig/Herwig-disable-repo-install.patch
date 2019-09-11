@@ -1,0 +1,16 @@
+Index: Herwig-7.1.1/src/Makefile.am
+===================================================================
+--- Herwig-7.1.1.orig/src/Makefile.am
++++ Herwig-7.1.1/src/Makefile.am
+@@ -174,11 +174,6 @@ THEPEGREPO=$(THEPEGLIBPATH)/ThePEGDefaul
+ 
+ install-data-hook:
+ 	@echo Creating repository
+-	@./Herwig init -L$(DESTDIR)$(pkglibdir) -i$(DESTDIR)$(pkgdatadir) -i$(DESTDIR)$(pkgdatadir)/snippets $(DESTDIR)$(defaultsdir)/HerwigDefaults.in --repo=$(DESTDIR)$(pkgdatadir)/HerwigDefaults.rpo
+-	@if test -n "$(DESTDIR)"; \
+-        then sed -i.bak -e "s@$(DESTDIR)@@g" $(DESTDIR)$(pkgdatadir)/HerwigDefaults.rpo; \
+-	rm -f $(DESTDIR)$(pkgdatadir)/HerwigDefaults.rpo.bak; \
+-        fi
+ 
+ uninstall-hook:
+ 	rm -f $(DESTDIR)$(pkgdatadir)/HerwigDefaults.rpo

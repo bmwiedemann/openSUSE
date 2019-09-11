@@ -1,0 +1,4 @@
+Name: libqt4
+BuildRequires: libqt4-devel
+#!BuildIgnore: brp-trim-desktopfiles
+#!BuildIgnore: cputype-armv6

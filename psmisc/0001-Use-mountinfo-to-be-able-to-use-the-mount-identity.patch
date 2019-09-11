@@ -1,0 +1,1183 @@
+From 8d0edbbb8d09bc7998bf926b318270b6f7989195 Mon Sep 17 00:00:00 2001
+From: Werner Fink <werner@suse.de>
+Date: Mon, 22 Oct 2018 12:02:50 +0200
+Subject: [PATCH] Use mountinfo to be able to use the mount identity
+
+which allows to distinguish different mounts with the
+same device number as it happens with NFS shares.
+Smaller cleanup as support of chroot environments
+and older systems.
+
+Add support for name_to_handle_at() system call to
+get the real mount ID for each file
+
+Support also BtrFS with its various subvolumes
+On BtrFS stat(2) on binary does not see subvol dev
+
+Signed-off-by: Werner Fink <werner@suse.de>
+---
+ configure.ac                       |  18 +-
+ src/fuser.c                        | 647 ++++++++++++++++++++++++++++---------
+ src/fuser.h                        |  27 +-
+ testsuite/Makefile.am              |   3 +-
+ testsuite/killall.test/killall.exp |   4 +
+ 5 files changed, 546 insertions(+), 153 deletions(-)
+
+diff --git configure.ac configure.ac
+index 176a2fc..d8d3366 100644
+--- configure.ac
++++ configure.ac
+@@ -27,6 +27,9 @@ if test "$enable_selinux" = "yes"; then
+   AC_DEFINE([WITH_SELINUX], [1], [Use Security-Enhanced Linux features])
+   AC_CHECK_LIB([selinux], [getfilecon], [SELINUX_LIB=-lselinux], [
+      AC_MSG_ERROR([Cannot find selinux static library]) ])
++  echo 'set has_selinux 1' > testsuite/selinux.exp
++else
++  echo 'set has_selinux 0' > testsuite/selinux.exp
+ fi
+ AC_SUBST([SELINUX_LIB])
+ 
+@@ -44,6 +47,19 @@ if test "$enable_timeout_stat" = "static"; then
+ fi
+ AM_CONDITIONAL([WANT_TIMEOUT_STAT], [test "$enable_timeout_stat" = "static"])
+ 
++# Use /proc/self/mountinfo if available
++if test -e /proc/self/mountinfo ; then
++  AC_DEFINE([HAS_MOUNTINFO], [1], [System has /proc/self/mountinfo which can used instead /proc(/self)/mounts])
++fi
++# Use /proc/self/fdinfo if available
++if test -e /proc/self/fdinfo ; then
++  AC_DEFINE([HAS_FDINFO], [1], [System has /proc/self/fdinfo for informations on file descriptors])
++fi
++
++# Check for Linux specific name_to_handle_at(2) system call for getting mount IDs
++AC_CHECK_FUNC([name_to_handle_at],[
++  AC_DEFINE([HAS_NAME_TO_HANDLE_AT], [1], [System has name_to_handle_at(2) system call])])
++
+ # Use string search for network based file systems but only if the system
+ # has /proc/self/mountinfo
+ AC_SUBST([WITH_MOUNTINFO_LIST])
+@@ -85,7 +101,7 @@ dnl Checks for header files.
+ AC_HEADER_DIRENT
+ AC_HEADER_STDC
+ AC_HEADER_SYS_WAIT
+-AC_CHECK_HEADERS([arpa/inet.h fcntl.h langinfo.h libintl.h limits.h locale.h mntent.h netdb.h netinet/in.h stdlib.h string.h sys/ioctl.h sys/socket.h termios.h unistd.h])
++AC_CHECK_HEADERS([arpa/inet.h fcntl.h langinfo.h libintl.h limits.h locale.h mntent.h netdb.h netinet/in.h stdlib.h string.h sys/ioctl.h sys/mount.h sys/param.h sys/stat.h sys/socket.h sys/types.h termios.h unistd.h])
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+diff --git src/fuser.c src/fuser.c
+index c44cee8..48d52d0 100644
+--- src/fuser.c
++++ src/fuser.c
+@@ -32,6 +32,10 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <errno.h>
++#include <fcntl.h>
++#if defined(HAS_GETFH)
++#include <sys/mount.h>
++#endif
+ #include <sys/param.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -79,7 +83,7 @@ static void check_map(const pid_t pid, const char *filename,
+ 		      struct device_list *dev_head,
+ 		      struct inode_list *ino_head, const uid_t uid,
+ 		      const char access);
+-static struct stat *get_pidstat(const pid_t pid, const char *filename);
++static struct stat *get_pidstat(const pid_t pid, const char *filename, int *id);
+ static uid_t getpiduid(const pid_t pid);
+ static int print_matches(struct names *names_head, const opt_type opts,
+ 			 const int sig_number);
+@@ -88,9 +92,9 @@ static int kill_matched_proc(struct procs *pptr, const opt_type opts,
+ 
+ /*int parse_mount(struct names *this_name, struct device_list **dev_list);*/
+ static void add_device(struct device_list **dev_list,
+-		       struct names *this_name, dev_t device);
+-void fill_unix_cache(struct unixsocket_list **unixsocket_head);
+-void clear_unix_cache(struct unixsocket_list **unixsocket_head);
++		       struct names *this_name, dev_t device, dev_t subvol);
++static void fill_unix_cache(struct unixsocket_list **unixsocket_head);
++static void clear_unix_cache(struct unixsocket_list **unixsocket_head);
+ static void atexit_clear_unix_cache();
+ static dev_t find_net_dev(void);
+ static void scan_procs(struct names *names_head, struct inode_list *ino_head,
+@@ -109,9 +113,12 @@ static void debug_match_lists(struct names *names_head,
+ 			      struct device_list *dev_head);
+ #endif
+ 
+-#if defined(WITH_MOUNTINFO_LIST)
++static list_t mntinfo = { &mntinfo, &mntinfo };
+ static void clear_mntinfo(void) __attribute__ ((__destructor__));
+ static void init_mntinfo(void) __attribute__ ((__constructor__));
++static int get_fdinfo(const pid_t pid, const char *fd, struct fdinfo *info);
++static int find_mountpoint(const char *path, mntinfo_t **mountinfo);
++#if defined(WITH_MOUNTINFO_LIST)
+ static int mntstat(const char *path, struct stat *buf);
+ #endif
+ static stat_t thestat = stat;
+@@ -199,6 +206,7 @@ scan_procs(struct names *names_head, struct inode_list *ino_head,
+ 		struct stat *cwd_stat = NULL;
+ 		struct stat *exe_stat = NULL;
+ 		struct stat *root_stat = NULL;
++		int cwd_id, exe_id, root_id;
+ 
+ 		if (topproc_dent->d_name[0] < '0' || topproc_dent->d_name[0] > '9')	/* Not a process */
+ 			continue;
+@@ -208,9 +216,9 @@ scan_procs(struct names *names_head, struct inode_list *ino_head,
+ 			continue;
+ 		uid = getpiduid(pid);
+ 
+-		cwd_stat = get_pidstat(pid, "cwd");
+-		exe_stat = get_pidstat(pid, "exe");
+-		root_stat = get_pidstat(pid, "root");
++		cwd_stat = get_pidstat(pid, "cwd", &cwd_id);
++		exe_stat = get_pidstat(pid, "exe", &exe_id);
++		root_stat = get_pidstat(pid, "root", &root_id);
+ 		cwd_dev = cwd_stat ? cwd_stat->st_dev : 0;
+ 		exe_dev = exe_stat ? exe_stat->st_dev : 0;
+ 		root_dev = root_stat ? root_stat->st_dev : 0;
+@@ -218,21 +226,33 @@ scan_procs(struct names *names_head, struct inode_list *ino_head,
+ 		/* Scan the devices */
+ 		for (dev_tmp = dev_head; dev_tmp != NULL;
+ 		     dev_tmp = dev_tmp->next) {
+-			if (exe_dev == dev_tmp->device)
+-				add_matched_proc(dev_tmp->name, pid, uid,
+-						 ACCESS_EXE);
+-			if (root_dev == dev_tmp->device)
+-				add_matched_proc(dev_tmp->name, pid, uid,
+-						 ACCESS_ROOT);
+-			if (cwd_dev == dev_tmp->device)
+-				add_matched_proc(dev_tmp->name, pid, uid,
+-						 ACCESS_CWD);
++			struct subvol *vol_tmp;
++			char access = 0;
++			if (exe_dev == dev_tmp->device && dev_tmp->mnt_id == exe_id)
++				access |= ACCESS_EXE;
++			if (root_dev == dev_tmp->device && dev_tmp->mnt_id == root_id)
++				access |= ACCESS_ROOT;
++			if (cwd_dev == dev_tmp->device && dev_tmp->mnt_id == cwd_id)
++				access |= ACCESS_CWD;
++			for (vol_tmp = dev_tmp->vol; vol_tmp != NULL;
++				vol_tmp = vol_tmp->next) {
++				/* For BtrFS sub volumes there are different
++				   mount ids for the same device */
++				if (exe_dev == vol_tmp->device && vol_tmp->mnt_id == exe_id)
++					access |= ACCESS_EXE;
++				if (root_dev == vol_tmp->device && vol_tmp->mnt_id == root_id)
++					access |= ACCESS_ROOT;
++				if (cwd_dev == vol_tmp->device && vol_tmp->mnt_id == cwd_id)
++					access |= ACCESS_CWD;
++			}
++			if (access)
++				add_matched_proc(dev_tmp->name, pid, uid, access);
+ 		}
+ 		for (ino_tmp = ino_head; ino_tmp != NULL;
+ 		     ino_tmp = ino_tmp->next) {
+ 			if (exe_dev == ino_tmp->device) {
+ 				if (!exe_stat)
+-					exe_stat = get_pidstat(pid, "exe");
++					exe_stat = get_pidstat(pid, "exe", NULL);
+ 				if (exe_stat
+ 				    && exe_stat->st_dev == ino_tmp->device
+ 				    && exe_stat->st_ino == ino_tmp->inode)
+@@ -241,7 +261,7 @@ scan_procs(struct names *names_head, struct inode_list *ino_head,
+ 			}
+ 			if (root_dev == ino_tmp->device) {
+ 				if (!root_stat)
+-					root_stat = get_pidstat(pid, "root");
++					root_stat = get_pidstat(pid, "root", NULL);
+ 				if (root_stat
+ 				    && root_stat->st_dev == ino_tmp->device
+ 				    && root_stat->st_ino == ino_tmp->inode)
+@@ -250,7 +270,7 @@ scan_procs(struct names *names_head, struct inode_list *ino_head,
+ 			}
+ 			if (cwd_dev == ino_tmp->device) {
+ 				if (!cwd_stat)
+-					cwd_stat = get_pidstat(pid, "cwd");
++					cwd_stat = get_pidstat(pid, "cwd", NULL);
+ 				if (cwd_stat
+ 				    && cwd_stat->st_dev == ino_tmp->device
+ 				    && cwd_stat->st_ino == ino_tmp->inode)
+@@ -291,18 +311,42 @@ add_inode(struct inode_list **ino_list, struct names *this_name,
+ 	ino_tmp->name = this_name;
+ 	ino_tmp->device = device;
+ 	ino_tmp->inode = inode;
++	ino_tmp->mnt_id = this_name->mnt_id;
+ 	ino_tmp->next = ino_head;
+ 	*ino_list = ino_tmp;
+ }
++	
++static void
++add_subvol(struct subvol **head, dev_t device, int mnt_id)
++{
++	struct subvol *vol_tmp, *vol_head;
++
++	if ((vol_tmp =
++	     (struct subvol *)malloc(sizeof(struct subvol))) == NULL)
++		return;
++	vol_head = *head;
++	vol_tmp->device = device;
++	vol_tmp->mnt_id = mnt_id;
++	vol_tmp->next = vol_head;
++	*head = vol_tmp;
++}
+ 
+ static void
+-add_device(struct device_list **dev_list, struct names *this_name, dev_t device)
++add_device(struct device_list **dev_list, struct names *this_name, dev_t device, dev_t subvol)
+ {
+ 	struct device_list *dev_tmp, *dev_head;
+ #ifdef DEBUG
+ 	fprintf(stderr, "add_device(%s %u\n", this_name->filename,
+ 		(unsigned int)device);
+ #endif				/* DEBUG */
++	/* For BtrFS there are many sub volumes all on the same block device */
++	for (dev_tmp = *dev_list; dev_tmp != NULL; dev_tmp = dev_tmp->next)
++		if (dev_tmp->device == device) {
++			if (dev_tmp->device != subvol)
++				add_subvol(&dev_tmp->vol, subvol, this_name->mnt_id);
++			*dev_list = dev_tmp;
++			return;
++		}
+ 
+ 	if ((dev_tmp =
+ 	     (struct device_list *)malloc(sizeof(struct device_list))) == NULL)
+@@ -310,6 +354,10 @@ add_device(struct device_list **dev_list, struct names *this_name, dev_t device)
+ 	dev_head = *dev_list;
+ 	dev_tmp->name = this_name;
+ 	dev_tmp->device = device;
++	dev_tmp->mnt_id = this_name->mnt_id;
++	dev_tmp->vol = NULL;
++	if (dev_tmp->device != subvol)
++		add_subvol(&dev_tmp->vol, subvol, this_name->mnt_id);
+ 	dev_tmp->next = dev_head;
+ 	*dev_list = dev_tmp;
+ }
+@@ -451,13 +499,15 @@ add_special_proc(struct names *name_list, const char ptype, const uid_t uid,
+ int parse_file(struct names *this_name, struct inode_list **ino_list,
+ 	       const opt_type opts)
+ {
++	mntinfo_t *mountinfo;
+ 	char *new = expandpath(this_name->filename);
+ 	if (new) {
+ 		if (this_name->filename)
+ 			free(this_name->filename);
+ 		this_name->filename = strdup(new);
+ 	}
+-	if (timeout(thestat, this_name->filename, &(this_name->st), 5) != 0) {
++	if (timeout(thestat, this_name->filename, &(this_name->st), 5) != 0 ||
++	    find_mountpoint(this_name->filename, &mountinfo) != 0) {
+ 		if (errno == ENOENT)
+ 			fprintf(stderr,
+ 				_("Specified filename %s does not exist.\n"),
+@@ -467,10 +517,12 @@ int parse_file(struct names *this_name, struct inode_list **ino_list,
+ 				this_name->filename, strerror(errno));
+ 		return -1;
+ 	}
++	this_name->mnt_id = mountinfo->id;
+ #ifdef DEBUG
+-	printf("adding file %s %lX %lX\n", this_name->filename,
++	printf("adding file %s %lX %lX %d nfs=%s\n", this_name->filename,
+ 	       (unsigned long)this_name->st.st_dev,
+-	       (unsigned long)this_name->st.st_ino);
++	       (unsigned long)this_name->st.st_ino,
++	       mountinfo->id, mountinfo->isremote ? "yes" : "no");
+ #endif				/* DEBUG */
+ 	add_inode(ino_list, this_name, this_name->st.st_dev,
+ 		  this_name->st.st_ino);
+@@ -502,12 +554,54 @@ parse_mounts(struct names *this_name, struct device_list **dev_list,
+ 	     const opt_type opts)
+ {
+ 	dev_t match_device;
++	mntinfo_t *mountinfo = NULL;
++	list_t *ptr;
++	int count;
+ 
+ 	if (S_ISBLK(this_name->st.st_mode))
+ 		match_device = this_name->st.st_rdev;
+ 	else
+ 		match_device = this_name->st.st_dev;
+-	add_device(dev_list, this_name, match_device);
++
++	count = 0;
++	list_for_each(ptr, &mntinfo) {
++		mntinfo_t *mnt = list_entry(ptr, mntinfo_t);
++		if (match_device != mnt->dev && match_device != mnt->vol)
++			continue;
++		if (S_ISBLK(this_name->st.st_mode)) {
++			/* Skip mount IDs check if a block device
++			 * was specified */
++			this_name->mnt_id = mnt->id;
++			add_device(dev_list, this_name, match_device, mnt->dev);
++			if (mnt->dev == mnt->vol)
++				count++;
++			else	count = 1;
++			continue;
++		}
++		if (this_name->mnt_id != mnt->id)
++			continue;
++		if (!mountinfo)
++			mountinfo = mnt;
++		count++;
++	}
++	if (count == 0) {
++		errno = ENOENT;
++		fprintf(stderr,
++			_("Specified filename %s has no mountpoint.\n"),
++			this_name->filename);
++		return -1;
++	}
++	if (count > 1) {
++		errno = ENOTUNIQ;
++		fprintf(stderr,
++			_("The device %u:%u is not unique. Please change!\n"),
++			major(match_device), minor(match_device));
++		/* return -1 */
++	}
++	if (S_ISBLK(this_name->st.st_mode))
++		return 0;
++	this_name->mnt_id = mountinfo->id;
++	add_device(dev_list, this_name, match_device, match_device);
+ 	return 0;
+ }
+ 
+@@ -621,7 +715,7 @@ int parse_inet(struct names *this_name, struct ip_connections **ip_list)
+ 			fprintf(stderr, _("Unknown local port AF %d\n"),
+ 				res->ai_family);
+ 			freeaddrinfo(res);
+-            free(lcl_port_str);
++			free(lcl_port_str);
+ 			return -1;
+ 		}
+ 		freeaddrinfo(res);
+@@ -684,10 +778,12 @@ int parse_inet(struct names *this_name, struct ip_connections **ip_list)
+ 					break;
+ #endif
+ 				}
+-			}	/*while */
+-		    freeaddrinfo(res);
++			}	/* for (;;) */
++
++			freeaddrinfo(res);
+ 			return 0;
+-		}
++
++		}	/* if getaddrinfo */
+ 	}
+ 	return 1;
+ }
+@@ -953,6 +1049,21 @@ free_inodes(struct inode_list **match_inodes)
+ /*
+  * Free up structures allocated in add_device
+  */
++
++static void
++free_subvol(struct subvol **volumes)
++{
++	struct subvol *vol_tmp, *vol_next;
++
++	vol_tmp = *volumes;
++	while (vol_tmp != NULL) {
++		vol_next = vol_tmp->next;
++		free(vol_tmp);
++		vol_tmp = vol_next;
++	}
++	*volumes =NULL;
++}
++
+ static void
+ free_devices(struct device_list **match_devices)
+ {
+@@ -960,6 +1071,8 @@ free_devices(struct device_list **match_devices)
+ 
+ 	device_tmp = *match_devices;
+ 	while(device_tmp != NULL) {
++		if (device_tmp->vol)
++			free_subvol(&device_tmp->vol);
+ 		device_next = device_tmp->next;
+ 		free(device_tmp);
+ 		device_tmp = device_next;
+@@ -1162,16 +1275,11 @@ int main(int argc, char *argv[])
+ 					skip_argv = 1;
+ 					//while(option != '\0') option++;
+ 					if (strcmp(argv[argc_cnt], "tcp") == 0)
+-						default_namespace =
+-						    NAMESPACE_TCP;
+-					else if (strcmp(argv[argc_cnt], "udp")
+-						 == 0)
+-						default_namespace =
+-						    NAMESPACE_UDP;
+-					else if (strcmp(argv[argc_cnt], "file")
+-						 == 0)
+-						default_namespace =
+-						    NAMESPACE_FILE;
++						default_namespace = NAMESPACE_TCP;
++					else if (strcmp(argv[argc_cnt], "udp") == 0)
++						default_namespace = NAMESPACE_UDP;
++					else if (strcmp(argv[argc_cnt], "file") == 0)
++						default_namespace = NAMESPACE_FILE;
+ 					else
+ 						usage(_
+ 						      ("Invalid namespace name"));
+@@ -1211,7 +1319,7 @@ int main(int argc, char *argv[])
+ 		}
+ 
+ #if defined(WITH_MOUNTINFO_LIST)
+-		if ((opts & OPT_ALWAYSSTAT) == 0)
++		if ((opts & (OPT_MOUNTS|OPT_ALWAYSSTAT)) == OPT_MOUNTS)
+ 			thestat = mntstat;
+ #endif
+ 		/* an option */
+@@ -1525,7 +1633,7 @@ print_matches(struct names *names_head, const opt_type opts,
+ 
+ }
+ 
+-static struct stat *get_pidstat(const pid_t pid, const char *filename)
++static struct stat *get_pidstat(const pid_t pid, const char *filename, int *id)
+ {
+ 	char pathname[256];
+ 	struct stat *st;
+@@ -1537,6 +1645,15 @@ static struct stat *get_pidstat(const pid_t pid, const char *filename)
+ 		free(st);
+ 		return NULL;
+ 	}
++
++	if (id) {
++		mntinfo_t *info;
++		char *new = expandpath(pathname);
++		if (new && find_mountpoint(new, &info) == 0)
++			*id = info->id;
++		else	*id = -1;
++	}
++
+ 	return st;
+ }
+ 
+@@ -1551,7 +1668,8 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
+ 	struct inode_list *ino_tmp;
+ 	struct device_list *dev_tmp;
+ 	struct unixsocket_list *sock_tmp;
+-	struct stat st, lst;
++	struct fdinfo fd;
++	struct stat st;
+ 	char *dirpath;
+ 	char filepath[PATH_MAX];
+ 
+@@ -1590,11 +1708,27 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
+ 			}
+ 			for (dev_tmp = dev_head; dev_tmp != NULL;
+ 			     dev_tmp = dev_tmp->next) {
+-				if (thedev != dev_tmp->device)
++				if (thedev != dev_tmp->device) {
++					struct subvol *vol_tmp;
++					int found = 0;
++					for (vol_tmp = dev_tmp->vol; vol_tmp != NULL;
++					     vol_tmp = vol_tmp->next) {
++						/* Check for BtrFS sub volumes as well */
++						if (thedev == vol_tmp->device) {
++							found++;
++							break;
++						}
++					}
++ 
++					if (!found)
++						continue;
++				}
++				if (get_fdinfo(pid, direntry->d_name, &fd) != 0)
++					continue;
++				if (fd.mnt_id != dev_tmp->mnt_id)
+ 					continue;
+ 				if (access == ACCESS_FILE
+-				    && (lstat(filepath, &lst) == 0)
+-				    && (lst.st_mode & S_IWUSR)) {
++				    && (fd.flags & (O_WRONLY|O_RDWR))) {
+ 					add_matched_proc(dev_tmp->name,
+ 							 pid, uid,
+ 							 ACCESS_FILEWR |
+@@ -1616,9 +1750,10 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
+ 					continue;
+ 				}
+ 				if (st.st_ino == ino_tmp->inode) {
++					if (get_fdinfo(pid, direntry->d_name, &fd) != 0)
++						continue;
+ 					if (access == ACCESS_FILE
+-					    && (lstat(filepath, &lst) == 0)
+-					    && (lst.st_mode & S_IWUSR)) {
++					    && (fd.flags & (O_WRONLY|O_RDWR))) {
+ 						add_matched_proc(ino_tmp->name,
+ 								 pid, uid,
+ 								 ACCESS_FILEWR |
+@@ -1647,31 +1782,54 @@ check_map(const pid_t pid, const char *filename,
+ 	FILE *fp;
+ 	unsigned long long tmp_inode;
+ 	unsigned int tmp_maj, tmp_min;
+-	dev_t tmp_device;
+ 
+ 	if (asprintf(&pathname, "/proc/%d/%s", pid, filename) < 0)
+         return;
+ 	if ((fp = fopen(pathname, "r")) == NULL) {
+-        free(pathname);
++		free(pathname);
+ 		return;
+-    }
+-    free(pathname);
++	}
++	free(pathname);
+ 	while (fgets(line, BUFSIZ, fp)) {
+-		if (sscanf(line, "%*s %*s %*s %x:%x %lld",
+-			   &tmp_maj, &tmp_min, &tmp_inode) == 3) {
+-			tmp_device = tmp_maj * 256 + tmp_min;
++		char *scanned_path = NULL;
++		if (sscanf(line, "%*s %*s %*s %x:%x %lld %ms",
++			   &tmp_maj, &tmp_min, &tmp_inode, &scanned_path) == 4) {
++			dev_t tmp_device = makedev(tmp_maj, tmp_min);
++			int mnt_id = -1;
++
++			if (scanned_path) {
++				if (*scanned_path == '/') {
++					mntinfo_t *mountinfo;
++					if (find_mountpoint(scanned_path, &mountinfo) == 0)
++						mnt_id = mountinfo->id;
++				}
++				free(scanned_path);
++			}
++
+ 			for (dev_tmp = dev_head; dev_tmp != NULL;
+-			     dev_tmp = dev_tmp->next)
+-				if (dev_tmp->device == tmp_device)
++			     dev_tmp = dev_tmp->next) {
++				struct subvol *vol_tmp;
++				if (dev_tmp->device == tmp_device &&
++				    mnt_id == dev_tmp->mnt_id)
+ 					add_matched_proc(dev_tmp->name, pid,
+ 							 uid, access);
++				for (vol_tmp = dev_tmp->vol; vol_tmp != NULL;
++				     vol_tmp = vol_tmp->next) {
++					/* For BtrFS sub volumes there are different
++					   mount ids for the same device */
++					if (vol_tmp->device == tmp_device && mnt_id == vol_tmp->mnt_id)
++						add_matched_proc(dev_tmp->name, pid,
++								 uid, access);
++				}
++			}
+ 			for (ino_tmp = ino_head; ino_tmp != NULL;
+ 			     ino_tmp = ino_tmp->next)
+ 				if (ino_tmp->device == tmp_device
+ 				    && ino_tmp->inode == tmp_inode)
+ 					add_matched_proc(ino_tmp->name, pid,
+ 							 uid, access);
+-		}
++		} else if (scanned_path)
++			free(scanned_path);
+ 	}
+ 	fclose(fp);
+ }
+@@ -1695,6 +1853,7 @@ static uid_t getpiduid(const pid_t pid)
+  * fill_unix_cache : Create a list of Unix sockets
+  *   This list is used later for matching purposes
+  */
++static
+ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
+ {
+ 	FILE *fp;
+@@ -1711,6 +1870,8 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
+ 	while (fgets(line, BUFSIZ, fp) != NULL) {
+ 		char *path;
+ 		char *scanned_path = NULL;
++		int mnt_id = -1;
++		mntinfo_t *mountinfo;
+ 		if (sscanf(line, "%*x: %*x %*x %*x %*x %*d %d %ms",
+ 			   &scanned_inode, &scanned_path) != 2) {
+ 			if (scanned_path)
+@@ -1726,6 +1887,8 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
+ 			free(path);
+ 			continue;
+ 		}
++		if (find_mountpoint(scanned_path, &mountinfo) == 0)
++			mnt_id = mountinfo->id;
+ 		if ((newsocket = (struct unixsocket_list *)
+ 		     malloc(sizeof(struct unixsocket_list))) == NULL) {
+ 			free(path);
+@@ -1734,6 +1897,7 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
+ 		newsocket->sun_name = strdup(scanned_path);
+ 		newsocket->inode = st.st_ino;
+ 		newsocket->dev = st.st_dev;
++		newsocket->mnt_id = mnt_id;
+ 		newsocket->net_inode = scanned_inode;
+ 		newsocket->next = *unixsocket_head;
+ 		*unixsocket_head = newsocket;
+@@ -1746,6 +1910,7 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
+ /*
+  * Free up the list of Unix sockets
+  */
++static
+ void clear_unix_cache(struct unixsocket_list **unixsocket_head)
+ {
+ 	while(*unixsocket_head != NULL) {
+@@ -1913,30 +2078,22 @@ scan_mounts(struct names *names_head, struct inode_list *ino_head,
+ {
+ 	struct device_list *dev_tmp;
+ 	struct inode_list *ino_tmp;
+-	FILE *fp;
+-	char line[BUFSIZ];
+-	char *find_mountp;
+-	char *find_space;
+ 	struct stat st;
+ 
+-	if ((fp = fopen(PROC_MOUNTS, "r")) == NULL) {
+-		fprintf(stderr, "Cannot open %s\n", PROC_MOUNTS);
+-		return;
+-	}
+-	while (fgets(line, BUFSIZ, fp) != NULL) {
+-		if ((find_mountp = strchr(line, ' ')) == NULL)
+-			continue;
+-		find_mountp++;
+-		if ((find_space = strchr(find_mountp, ' ')) == NULL)
+-			continue;
+-		*find_space = '\0';
+-		if (timeout(thestat, find_mountp, &st, 5) != 0) {
++	list_t *ptr;
++
++	list_for_each(ptr, &mntinfo) {
++		mntinfo_t *mnt = list_entry(ptr, mntinfo_t);
++		const char *find_mountp = mnt->mpoint;
++
++		if (timeout(thestat, find_mountp, &st, 5) != 0)
+ 			continue;
+-		}
++
+ 		/* Scan the devices */
+ 		for (dev_tmp = dev_head; dev_tmp != NULL;
+ 		     dev_tmp = dev_tmp->next) {
+-			if (st.st_dev == dev_tmp->device)
++			if (st.st_dev == dev_tmp->device &&
++			    mnt->id == dev_tmp->mnt_id)
+ 				add_special_proc(dev_tmp->name, PTYPE_MOUNT, 0,
+ 						 find_mountp);
+ 		}
+@@ -1948,7 +2105,6 @@ scan_mounts(struct names *names_head, struct inode_list *ino_head,
+ 						 find_mountp);
+ 		}
+ 	}
+-	fclose(fp);
+ }
+ 
+ static void
+@@ -1998,16 +2154,44 @@ scan_swaps(struct names *names_head, struct inode_list *ino_head,
+ 	fclose(fp);
+ }
+ 
+-#if defined(WITH_MOUNTINFO_LIST)
+ /*
+  * Use /proc/self/mountinfo of modern linux system to determine
+  * the device numbers of the mount points. Use this to avoid the
+- * stat(2) system call wherever possible.
++ * stat(2) system call for remote file system.
+  */
+ 
+-static list_t mntinfo = { &mntinfo, &mntinfo };
++static mntinfo_t*
++add_mntinfo(const char *mpoint, const char *type, int mid, int parid, dev_t dev)
++{
++	const size_t nlen = strlen(mpoint);
++	mntinfo_t *restrict mnt;
++	if (posix_memalign
++	    ((void *)&mnt, sizeof(void *),
++	     alignof(mntinfo_t) + (nlen + 1)) != 0) {
++		fprintf(stderr,
++			_
++			("Cannot allocate memory for matched proc: %s\n"),
++			strerror(errno));
++		exit(1);
++	}
++	append(mnt, mntinfo);
++	mnt->mpoint = ((char *)mnt) + alignof(mntinfo_t);
++	strcpy(mnt->mpoint, mpoint);
++	mnt->nlen = nlen;
++	mnt->parid = parid;
++	mnt->dev = dev;
++	mnt->id = mid;
++	if (strncmp("nfs", type, 3) == 0 || strncmp("afs", type, 3) == 0 || strncmp("autofs", type, 6))
++		mnt->isremote = 1;
++	else	mnt->isremote = 0;
++	/* E.g. sub volumes of BtrFS do not show main device number in
++	   /proc/self/mountinfo, for now just map the device to this */
++	mnt->vol = dev;
++	return mnt;
++}
+ 
+-static void clear_mntinfo(void)
++static void
++clear_mntinfo(void)
+ {
+ 	list_t *ptr, *tmp;
+ 
+@@ -2018,72 +2202,247 @@ static void clear_mntinfo(void)
+ 	}
+ }
+ 
+-static void init_mntinfo(void)
++static void
++init_mntinfo(void)
+ {
++	char type[256];
+ 	char mpoint[PATH_MAX *4 + 1]; // octal escaping takes 4 chars per 1 char
+-	int mid, parid, max = 0;
++	char devname[PATH_MAX];
++	int mid, parid;
++	mntinfo_t *mntinf;
++#if defined(HAS_MOUNTINFO)
+ 	uint maj, min;
+-	list_t sort;
++#endif
+ 	FILE *mnt;
+ 
+ 	if (!list_empty(&mntinfo))
+ 		return;
+-	if ((mnt = fopen("/proc/self/mountinfo", "r")) == (FILE *) 0)
++#if defined(HAS_MOUNTINFO)
++	if ((mnt = fopen(PROC_MOUNTINFO, "r")) == (FILE *) 0)
+ 		return;
+ 	while (fscanf
+-	       (mnt, "%i %i %u:%u %*s %s %*[^\n]", &mid, &parid, &maj, &min,
+-		&mpoint[0]) == 5) {
+-		const size_t nlen = strlen(mpoint);
+-		mntinfo_t *restrict mnt;
+-		if (posix_memalign
+-		    ((void *)&mnt, sizeof(void *),
+-		     alignof(mntinfo_t) + (nlen + 1)) != 0) {
+-			fprintf(stderr,
+-				_
+-				("Cannot allocate memory for matched proc: %s\n"),
+-				strerror(errno));
+-			exit(1);
++	       (mnt, "%i %i %u:%u %*s %s %*[^-] - %s %s %*[^\n]",
++		&mid, &parid, &maj, &min, &mpoint[0], &type[0], &devname[0]) == 7) {
++		struct stat st;
++		mntinf = add_mntinfo(mpoint, type, mid, parid, makedev(maj, min));
++		if (mntinf && strncmp(devname, "/dev/", 5) == 0 && stat(devname, &st) == 0) {
++			if (st.st_rdev != 0 && mntinf->dev != st.st_rdev) {
++				mntinf->vol = st.st_rdev;
++				stat(mpoint, &st);
++				mntinf->dev = st.st_dev;	/* stat(2) on binary does not see subvol dev */
++			}
+ 		}
+-		append(mnt, mntinfo);
+-		mnt->mpoint = ((char *)mnt) + alignof(mntinfo_t);
+-		strcpy(mnt->mpoint, mpoint);
+-		mnt->nlen = nlen;
+-		mnt->parid = parid;
+-		mnt->dev = makedev(maj, min);
+-		mnt->id = mid;
+-		if (mid > max)
+-			max = mid;
+ 	}
++#else
++	if ((mnt = fopen(PROC_MOUNTS, "r")) == (FILE *) 0)
++		return;
++	mid = 1;
++	parid = -1;
++	while (fscanf (mnt, "%s %s %s %*[^\n]", &devname[0], &mpoint[0], &type[0]) == 3) {
++		struct stat st;
++		if (stat(mpoint, &st) != 0) {
++			if (errno != EACCES) {
++				fprintf(stderr, _("Cannot stat %s: %s\n"),
++					mnt->mpoint, strerror(errno));
++				exit(1);
++			}
++			st.st_dev = (dev_t)-1;
++		}
++		mntinf = add_mntinfo(mpoint, type, mid++, parid, st.st_dev);
++		if (mntinf && strncmp(devname, "/dev/", 5) == 0 && stat(devname, &st) == 0) {
++			if (st.st_rdev != 0 && mntinf->dev != st.st_rdev)
++				mntinf->vol = st.st_rdev;
++		}
++	}
++#endif
+ 	fclose(mnt);
++}
++
++static int
++get_fdinfo(const pid_t pid, const char *fd, struct fdinfo *info)
++{
++	int ret = 0;
++	char pathname[256];
++#if defined(HAS_FDINFO)
++	const static char delimiters[] = ": \t\n";
++	char line[BUFSIZ];
++	FILE *fp;
++	int mnt_id = 0, flags = 0;
++
++	snprintf(pathname, 256, "/proc/%d/fdinfo/%s", pid, fd);
++	if ((fp = fopen(pathname, "r")) == NULL)
++               goto out;
++	while (fgets(line, BUFSIZ, fp) && ret < 2) {
++		char *fp, *vp, *ep;
++		unsigned long ul;
++		fp = strtok(&line[0], delimiters);
++		if (!fp || *fp == 0)
++			continue;
++		vp = strtok(NULL, delimiters);
++		if (!vp || *vp == 0)
++			continue;
++		if (strcmp(fp, "flags")  == 0 && (ul = strtoul(vp, &ep, 0)) != ULONG_MAX && ep && *ep == 0) {
++			info->flags = (mode_t)ul;
++			flags++;
++			ret++;
++		}
++		if (strcmp(fp, "mnt_id") == 0 && (ul = strtoul(vp, &ep, 0)) != ULONG_MAX && ep && *ep == 0) {
++			info->mnt_id = (int)ul;
++			mnt_id++;
++			ret++;
++		}
++	}
++	fclose(fp);
++out:
++#endif
++	if (!flags || !mnt_id) {
++		struct stat lst;
++
++		snprintf(pathname, 256, "/proc/%d/fd/%s", pid, fd);
++		if (!flags && lstat(pathname, &lst) == 0) {
++			if (lst.st_mode & S_IWUSR)
++				info->flags |= O_WRONLY;
++			ret++;
++		}
++
++		if (!mnt_id) {
++			char *realname = expandpath(pathname);
++			if (realname) {
++				mntinfo_t *mountinfo;
++				if (find_mountpoint(realname, &mountinfo) == 0) {
++					info->mnt_id = mountinfo->id;
++					ret++;
++				}
++			}
++		}
++	}
++	return ret == 2 ? 0 : -1;
++}
+ 
+-	/* Sort mount points accordingly to the reverse mount order */
+-	initial(&sort);
+-	for (mid = 1; mid <= max; mid++) {
+-		list_t *ptr, *tmp;
+-		list_for_each_safe(ptr, tmp, &mntinfo) {
++#if defined(HAS_NAME_TO_HANDLE_AT)
++static int
++get_mountid(const char *path)
++{
++	union fh_u {
++	    struct file_handle handle;
++	    char buffer[sizeof(struct file_handle) + MAX_HANDLE_SZ];
++	} fh = { .handle.handle_bytes = MAX_HANDLE_SZ };
++	int mnt_id = -1;
++
++	errno = 0;
++	if (name_to_handle_at(0, path, &fh.handle, &mnt_id, 0) == -1)
++		mnt_id = -1;
++	return mnt_id;
++}
++#endif
++
++static int
++find_mountpoint(const char *path, mntinfo_t **mountinfo)
++{
++	char *use, *end;
++	ssize_t nlen;
++#if defined(HAS_NAME_TO_HANDLE_AT)
++	int mnt_id = get_mountid(path);
++#endif
++	int ret = -1;
++
++	*mountinfo = NULL;
++
++#if defined(HAS_NAME_TO_HANDLE_AT)
++	if (mnt_id >= 0) {
++		list_t *ptr;
++
++		errno = ENOENT;
++		list_for_each(ptr, &mntinfo) {
+ 			mntinfo_t *mnt = list_entry(ptr, mntinfo_t);
+-			if (mid != mnt->id)
++
++			if (mnt_id != mnt->id)
+ 				continue;
+-			move_head(ptr, &sort);
++
++			ret = 0;
++			errno = 0;
++			*mountinfo = mnt;
+ 			break;
+ 		}
+-		list_for_each_safe(ptr, tmp, &mntinfo) {
++		if (*mountinfo)
++			goto out;
++
++		if (strlen(path) == 1 && path[0] == '/') {
++			struct stat st;
++
++			/* could be a chroot or a container */
++
++			if (stat(path, &st) != 0) {
++				if (errno != EACCES) {
++					fprintf(stderr, _("Cannot stat %s: %s\n"),
++						path, strerror(errno));
++					exit(1);
++				}
++				st.st_dev = (dev_t)-1;
++			}
++			ret = 0;
++			errno = 0;
++			*mountinfo = add_mntinfo(path, "unkown", mnt_id, -1, st.st_dev);
++			goto out;
++		}
++	}
++#endif
++	use = strdup(path);
++	if (!use)
++		goto out;
++
++	nlen = strlen(use);
++	end = use+nlen;
++	errno = ENOENT;
++	do {
++		list_t *ptr;
++		if (*end == '/') {
++			if (end == use)	{	/* root file system */
++				end++;
++				if (nlen == 1) {
++					struct stat st;
++
++					/* could be a chroot or a container */
++
++					if (stat(use, &st) != 0) {
++						if (errno != EACCES) {
++							fprintf(stderr, _("Cannot stat %s: %s\n"),
++								use, strerror(errno));
++							exit(1);
++						}
++						st.st_dev = (dev_t)-1;
++					}
++					ret = 0;
++					errno = 0;
++					*mountinfo = add_mntinfo(use, "unkown", 0, -1, st.st_dev);
++					break;
++				}
++			}
++		}
++		*end = '\0';
++		nlen = end-use;
++		list_for_each(ptr, &mntinfo) {
+ 			mntinfo_t *mnt = list_entry(ptr, mntinfo_t);
+-			if (mid != mnt->parid)
++
++			if (nlen != mnt->nlen)
++				continue;
++
++			if (strcmp(use, mnt->mpoint))
+ 				continue;
+-			move_head(ptr, &sort);
++
++			ret = 0;
++			errno = 0;
++			*mountinfo = mnt;
++			break;
+ 		}
+-	}
+-	if (!list_empty(&mntinfo)) {
+-#ifdef EBADE
+-		errno = EBADE;
+-#else
+-		errno = ENOENT;
+-#endif				/* EBADE */
+-	}
+-	join(&sort, &mntinfo);
++
++	} while (!*mountinfo && (end = strrchr(use, '/')));
++	free(use);
++out:
++	return ret;
+ }
+ 
++#if defined(WITH_MOUNTINFO_LIST)
+ /*
+  * Determine device of links below /proc/
+  */
+@@ -2091,8 +2450,7 @@ static int mntstat(const char *path, struct stat *buf)
+ {
+ 	char name[PATH_MAX + 1];
+ 	const char *use;
+-	ssize_t nlen;
+-	list_t *ptr;
++	mntinfo_t *mnt;
+ 
+ 	if ((use = realpath(path, name)) == NULL || *use != '/')
+ 	{
+@@ -2104,27 +2462,26 @@ static int mntstat(const char *path, struct stat *buf)
+ 		errno = 0;
+ 		return stat(path, buf);
+ 	}
++	if (strncmp("/dev/", use, 5) == 0) {
++		/*
++		 * Could be a special file (socket, pipe, inotify)
++		 */
++		errno = 0;
++		return stat(path, buf);
++	}
+ 
+-	nlen = strlen(use);
+-	list_for_each(ptr, &mntinfo) {
+-		mntinfo_t *mnt = list_entry(ptr, mntinfo_t);
+-		if (nlen < mnt->nlen)
+-			continue;
+-		if (mnt->nlen == 1) {	/* root fs is the last entry */
+-			buf->st_dev = mnt->dev;
+-			buf->st_ino = 0;
+-			return 0;
+-		}
+-		if (use[mnt->nlen] != '\0' && use[mnt->nlen] != '/')
+-			continue;
+-		if (strncmp(use, mnt->mpoint, mnt->nlen) == 0) {
+-			buf->st_dev = mnt->dev;
+-			buf->st_ino = 0;
+-			return 0;
+-		}
++	if (find_mountpoint(use, &mnt) < 0) {
++		errno = ENOENT;
++		return -1;
+ 	}
+-	errno = ENOENT;
+-	return -1;
++
++	if (mnt->isremote) {
++		buf->st_dev = mnt->dev;
++		buf->st_ino = mnt->id;	    /* inode substitute */
++		return 0;		    /* found on NFS */
++	}
++
++	return stat(path, buf);
+ }
+ #endif				/* WITH_MOUNTINFO_LIST */
+ 
+diff --git src/fuser.h src/fuser.h
+index 93020d5..ca20081 100644
+--- src/fuser.h
++++ src/fuser.h
+@@ -37,10 +37,16 @@ struct procs {
+ #define PTYPE_KNFSD 2
+ #define PTYPE_SWAP 3
+ 
++struct fdinfo {
++	mode_t	flags;
++	int	mnt_id;
++};
++
+ struct names {
+ 	char *filename;
+ 	unsigned char name_space;
+-    struct stat st;
++	struct stat st;
++	int mnt_id;
+ 	struct procs *matched_procs;
+ 	struct names *next;
+ };
+@@ -65,12 +71,21 @@ struct inode_list {
+ 	struct names *name;
+ 	dev_t	device;
+ 	ino_t	inode;
++	int	mnt_id;
+ 	struct inode_list *next;
+ };
+ 
++struct subvol {
++	dev_t	device;
++	int	mnt_id;
++	struct subvol *next;
++};
++
+ struct device_list {
+ 	struct names *name;
++	struct subvol *vol;
+ 	dev_t	device;
++	int	mnt_id;
+ 	struct device_list *next;
+ };
+ 
+@@ -79,6 +94,7 @@ struct unixsocket_list {
+ 	ino_t	inode;
+ 	ino_t	net_inode;
+ 	dev_t	dev;
++	int	mnt_id;
+ 	struct unixsocket_list *next;
+ };
+ 
+@@ -87,18 +103,16 @@ struct mount_list {
+ 	struct mount_list *next;
+ };
+ 
+-#if defined (__GNUC__) && defined(WITH_MOUNTINFO_LIST)
+-# include "lists.h"
++#include "lists.h"
+ typedef struct mntinfo_s {
+     list_t   this;
+     int id, parid;
++    char isremote;
+     dev_t     dev;
+     size_t   nlen;
++    dev_t     vol;
+     char  *mpoint;
+ } mntinfo_t;
+-#else
+-# undef WITH_MOUNTINFO_LIST
+-#endif
+ 
+ #define NAMESPACE_FILE 0
+ #define NAMESPACE_TCP 1
+@@ -109,5 +123,6 @@ typedef struct mntinfo_s {
+ #endif /* PATH_MAX */
+ 
+ #define KNFSD_EXPORTS "/proc/fs/nfs/exports"
++#define PROC_MOUNTINFO "/proc/self/mountinfo"
+ #define PROC_MOUNTS "/proc/mounts"
+ #define PROC_SWAPS "/proc/swaps"
+diff --git testsuite/Makefile.am testsuite/Makefile.am
+index 696a44a..739237e 100644
+--- testsuite/Makefile.am
++++ testsuite/Makefile.am
+@@ -1,6 +1,8 @@
+ AUTOMAKE_OPTIONS = dejagnu
+ export DEJAGNU
+ 
++EXTRA_DEJAGNU_SITE_CONFIG=$(srcdir)/selinux.exp
++
+ # Programs that are expected across the board.
+ DEJATOOL = killall
+ DEJATOOL += pslog
+@@ -9,5 +11,4 @@ if WANT_FUSER
+   DEJATOOL += fuser
+ endif
+ 
+-
+ EXTRA_DIST =
+diff --git testsuite/killall.test/killall.exp testsuite/killall.test/killall.exp
+index 8bb3889..a345582 100644
+--- testsuite/killall.test/killall.exp
++++ testsuite/killall.test/killall.exp
+@@ -7,7 +7,11 @@ set fake_proc_name "afakeprocname"
+ 
+ set test "killall with no arguments"
+ spawn $killall
++if { $has_selinux == 0 } {
+ expect_pass "$test" "^Usage: killall \\\[OPTION\\\]\\.\\.\\. \\\[--\\\] NAME\\.\\.\\."
++} else {
++expect_pass "$test" "^Usage: killall \\\[ -Z CONTEXT \\\] \\\[ -u USER \\\] \\\[ -y TIME \\\] \\\[ -o TIME \\\] \\\[ -eIgiqrvw \\\]"
++} 
+ 
+ set test "killall list signals"
+ spawn $killall -l
+-- 
+2.16.4
+

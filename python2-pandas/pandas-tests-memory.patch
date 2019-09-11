@@ -1,0 +1,48 @@
+From 5a73ff8b4e10d016e0fd4162fa14c8f1a41345d9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Chv=C3=A1tal?= <tchvatal@suse.com>
+Date: Thu, 21 Feb 2019 15:05:21 +0100
+Subject: [PATCH] Mark test_pct_max_many_rows as high memory
+
+Fixes issue #25384
+---
+ pandas/tests/frame/test_rank.py  | 1 +
+ pandas/tests/series/test_rank.py | 1 +
+ pandas/tests/test_algos.py       | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/pandas/tests/frame/test_rank.py b/pandas/tests/frame/test_rank.py
+index 10c42e0d1a1..6bb9dea15d1 100644
+--- a/pandas/tests/frame/test_rank.py
++++ b/pandas/tests/frame/test_rank.py
+@@ -310,6 +310,7 @@ def test_rank_pct_true(self, method, exp):
+         tm.assert_frame_equal(result, expected)
+ 
+     @pytest.mark.single
++    @pytest.mark.high_memory
+     def test_pct_max_many_rows(self):
+         # GH 18271
+         df = DataFrame({'A': np.arange(2**24 + 1),
+diff --git a/pandas/tests/series/test_rank.py b/pandas/tests/series/test_rank.py
+index 510a51e0029..dfcda889269 100644
+--- a/pandas/tests/series/test_rank.py
++++ b/pandas/tests/series/test_rank.py
+@@ -499,6 +499,7 @@ def test_rank_first_pct(dtype, ser, exp):
+ 
+ 
+ @pytest.mark.single
++@pytest.mark.high_memory
+ def test_pct_max_many_rows():
+         # GH 18271
+         s = Series(np.arange(2**24 + 1))
+diff --git a/pandas/tests/test_algos.py b/pandas/tests/test_algos.py
+index 888cf78a1c6..cb7426ce2f7 100644
+--- a/pandas/tests/test_algos.py
++++ b/pandas/tests/test_algos.py
+@@ -1484,6 +1484,7 @@ def test_too_many_ndims(self):
+             algos.rank(arr)
+ 
+     @pytest.mark.single
++    @pytest.mark.high_memory
+     @pytest.mark.parametrize('values', [
+         np.arange(2**24 + 1),
+         np.arange(2**25 + 2).reshape(2**24 + 1, 2)],

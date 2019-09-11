@@ -1,0 +1,345 @@
+-------------------------------------------------------------------
+Sat Oct 17 12:10:53 UTC 2015 - meissner@suse.com
+
+- aavga.dif: add -fno-stack-protector to shared aavga.so object build
+
+-------------------------------------------------------------------
+Wed Sep  9 09:36:35 UTC 2015 - dimstar@opensuse.org
+
+- Add aalib-ncurses-6.0-accessors.patch: Fix build with
+  NCurses 6.0 with WINDOW_OPAQUE set to 1.
+
+-------------------------------------------------------------------
+Sun May 17 09:06:56 UTC 2015 - meissner@suse.com
+
+- info deinstall needs to be in preun section.
+
+-------------------------------------------------------------------
+Mon Sep 15 16:56:57 UTC 2014 - crrodriguez@opensuse.org
+
+- Use pkgconfig(x11) not metapackage xorg-x11-devel 
+
+-------------------------------------------------------------------
+Fri Mar 22 10:11:58 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Mon Mar 18 13:09:55 UTC 2013 - mmeister@suse.com
+
+- Replace Source with Link to source
+
+-------------------------------------------------------------------
+Sat Feb 11 02:32:17 UTC 2012 - jengelh@medozas.de
+
+- Strip distinct version from -devel subpackage
+
+-------------------------------------------------------------------
+Wed Dec  7 11:10:03 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:38 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Fri Sep 16 18:32:28 UTC 2011 - jengelh@medozas.de
+
+- Implement shlib policy
+- Remove redundant tags; use %_smp_mflags
+
+-------------------------------------------------------------------
+Mon Sep  5 09:49:47 UTC 2011 - coolo@suse.com
+
+- fix build with newer ld
+
+-------------------------------------------------------------------
+Tue Sep  7 11:52:45 UTC 2010 - aj@suse.de
+
+- BuildRequire gpm-devel
+
+-------------------------------------------------------------------
+Wed Jan 27 18:21:54 CET 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Mon Oct  5 23:04:53 UTC 2009 - crrodriguez@opensuse.org
+
+- fix aalib-1.4.0-477.9: possible missing call to fclose [bnc#523344] 
+
+-------------------------------------------------------------------
+Wed Apr 22 15:52:34 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files
+- fix -devel package dependencies
+- fix aalib-config so it only returns needed libraries 
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Mar 29 12:42:16 CEST 2007 - meissner@suse.de
+
+- Buildrequires: gpm
+
+-------------------------------------------------------------------
+Fri Sep  8 23:31:52 CEST 2006 - dmueller@suse.de
+
+- explicitely disable slang driver
+
+-------------------------------------------------------------------
+Thu Sep  7 08:18:39 CEST 2006 - mskibbe@suse.de
+
+- fix compiler problems 
+- fix Requires lsit for devel package
+
+-------------------------------------------------------------------
+Fri Sep  1 09:08:24 CEST 2006 - mskibbe@suse.de
+
+- fix Requires 
+
+-------------------------------------------------------------------
+Thu Aug 31 13:52:50 CEST 2006 - dmueller@suse.de
+
+- build against ncurses instead of slang
+
+-------------------------------------------------------------------
+Wed Aug 16 18:10:00 CEST 2006 - aj@suse.de
+
+- Remove unneeded BuildRequires.
+
+-------------------------------------------------------------------
+Wed May 17 12:04:20 CEST 2006 - schwab@suse.de
+
+- Avoid crash when resizing window with X driver.
+
+-------------------------------------------------------------------
+Mon Apr 10 13:36:18 CEST 2006 - meissner@suse.de
+
+- added requires slang-devel to aalib-devel
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 28 23:43:49 CEST 2005 - dmueller@suse.de
+
+- add norootforbuild 
+
+-------------------------------------------------------------------
+Thu Jul  7 18:42:31 CEST 2005 - hvogel@suse.de
+
+- fix some more decls
+
+-------------------------------------------------------------------
+Tue Jul  5 16:32:52 CEST 2005 - hvogel@suse.de
+
+- fix implicit functions
+
+-------------------------------------------------------------------
+Sun Jul  3 16:22:55 CEST 2005 - hvogel@suse.de
+
+- sign chars to make comparison work. Patch from olh (Bug #95092)
+
+-------------------------------------------------------------------
+Thu Jun 23 18:03:31 CEST 2005 - hvogel@suse.de
+
+- require exact aalib version
+- add %clean section
+
+-------------------------------------------------------------------
+Wed Jan 19 19:51:22 CET 2005 - hvogel@suse.de
+
+- fix the uninitialized variables fix, NULL is for pointers, use 0
+
+-------------------------------------------------------------------
+Wed Jan 19 18:13:19 CET 2005 - hvogel@suse.de
+
+- fix use of uninitialized variables 
+
+-------------------------------------------------------------------
+Sat Oct 23 19:28:28 CEST 2004 - hvogel@suse.de
+
+- move config script to the devel package 
+
+-------------------------------------------------------------------
+Tue Aug 31 17:45:14 CEST 2004 - hvogel@suse.de
+
+- remove insecure temp file creation in asciiview [Bug #44386] 
+
+-------------------------------------------------------------------
+Mon Apr 19 11:39:39 CEST 2004 - ro@suse.de
+
+- fix "control reaches end of non-void function" warning
+
+-------------------------------------------------------------------
+Thu Jan 29 12:38:51 CET 2004 - hvogel@suse.de
+
+- run ldconfig after install/deinstall
+- mark man pages as documentation
+
+-------------------------------------------------------------------
+Mon Jan 26 16:58:06 CET 2004 - hvogel@suse.de
+
+- move autoconf macro file to the devel subpackage 
+
+-------------------------------------------------------------------
+Tue Jan 13 17:34:44 CET 2004 - schwab@suse.de
+
+- Fix quoting in autoconf macros.
+
+-------------------------------------------------------------------
+Fri Jan  9 14:10:07 CET 2004 - kukuk@suse.de
+
+- Fix underquoted definition of AM_PATH_AALIB in aalib.m4
+
+-------------------------------------------------------------------
+Tue Jul 29 15:06:04 CEST 2003 - aj@suse.de
+
+- Fix for chown change.
+
+-------------------------------------------------------------------
+Mon May 26 01:05:00 CEST 2003 - ro@suse.de
+
+- added man pages for mem_d and save_d to filelist 
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Wed Apr 23 09:29:20 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Fri Feb  7 15:19:46 CET 2003  - fehr@suse.de
+
+- Use %install_info macro
+
+-------------------------------------------------------------------
+Thu Feb  6 11:35:59 CET 2003  - fehr@suse.de
+
+- add patch to link aavga lib also in systems with use lib64
+
+-------------------------------------------------------------------
+Tue Feb  4 14:29:27 CET 2003  - fehr@suse.de
+
+- update to aalib-1.4rc5, aavga-1.0rc1, aview-1.3.0rc1
+
+-------------------------------------------------------------------
+Mon Dec  2 10:58:04 CET 2002  - fehr@suse.de
+
+- fixed problem with new gcc/glibc 
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Wed Aug 14 14:08:10 CEST 2002 - fehr@suse.de
+
+- fix bug handling gmp_fd variable in aaslnkbd.c (#17426)
+
+-------------------------------------------------------------------
+Fri Jul  5 10:07:01 CEST 2002 - kukuk@suse.de
+
+- Use %ix86 macro
+
+-------------------------------------------------------------------
+Mon Jun 10 17:26:52 CEST 2002 - meissner@suse.de
+
+- copy over system auto* tools so we build on new platforms.
+
+-------------------------------------------------------------------
+Fri May 31 15:57:21 CEST 2002 - ro@suse.de
+
+- changed neededforbuild <slang> to <slang slang-devel>
+
+-------------------------------------------------------------------
+Wed Apr 24 11:45:54 CEST 2002 - fehr@suse.de
+
+- make it build on architectures with X11-libs in /usr/X11R6/lib64
+
+-------------------------------------------------------------------
+Wed Jan 30 13:15:14 CET 2002 - coolo@suse.de
+
+- use %_libdir
+
+-------------------------------------------------------------------
+Tue Jan 29 10:51:48 CET 2002 - nadvornik@suse.cz
+
+- fixed initialization of slang library [bug #12933]
+
+-------------------------------------------------------------------
+Wed Aug 29 13:34:02 CEST 2001 - fehr@suse.de
+
+- add packages aview and aavga
+
+-------------------------------------------------------------------
+Thu Mar  1 21:36:28 CET 2001 - bk@suse.de
+
+- add platform optimisation flags
+- move suse_update_config to %prep and move install to %install
+
+-------------------------------------------------------------------
+Wed Jan 17 18:10:30 CET 2001 - schwab@suse.de
+
+- Add Obsoletes: aalibdev to aalib-devel package.
+- Move libaa.so to aalib-devel.
+- Require aalib from aalib-devel package.
+
+-------------------------------------------------------------------
+Sat Dec  9 17:16:04 MET 2000 - nashif@suse.de
+
+- Set the right Groups
+- Changed package name: aalibdev -> aalib-devel
+
+-------------------------------------------------------------------
+Fri May 19 12:50:07 MEST 2000 - fehr@suse.de
+
+- move documentation to /usr/share/doc/packages
+
+-------------------------------------------------------------------
+Thu Mar 30 18:11:07 CEST 2000 - schwab@suse.de
+
+- Update config.{status,guess} from automake.
+
+-------------------------------------------------------------------
+Fri Feb 25 11:34:44 CET 2000 - kukuk@suse.de
+
+- Move /usr/info -> /usr/share/info, add group tag
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+----------------------------------------------------------------------------
+Mon Jan 11 17:40:11 MET 1999  - fehr@suse.de
+
+- make SuSE package from version 1.2 of aalib 
+
+----------------------------------------------------------------------------

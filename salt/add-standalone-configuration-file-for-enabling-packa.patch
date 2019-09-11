@@ -1,0 +1,26 @@
+From 74160010c0fdddb04980ad664e155550382ef82b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 22 May 2019 13:00:46 +0100
+Subject: [PATCH] Add standalone configuration file for enabling package
+ formulas
+
+---
+ conf/suse/standalone-formulas-configuration.conf | 4 ++++
+ 1 file changed, 4 insertions(+)
+ create mode 100644 conf/suse/standalone-formulas-configuration.conf
+
+diff --git a/conf/suse/standalone-formulas-configuration.conf b/conf/suse/standalone-formulas-configuration.conf
+new file mode 100644
+index 0000000000..94d05fb2ee
+--- /dev/null
++++ b/conf/suse/standalone-formulas-configuration.conf
+@@ -0,0 +1,4 @@
++file_roots:
++  base:
++    - /usr/share/salt-formulas/states
++    - /srv/salt
+-- 
+2.17.1
+
+

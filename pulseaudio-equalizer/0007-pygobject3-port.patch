@@ -1,0 +1,298 @@
+--- a/usr/share/pulseaudio-equalizer/pulseaudio-equalizer.py
++++ b/usr/share/pulseaudio-equalizer/pulseaudio-equalizer.py
+@@ -8,11 +8,13 @@
+ # Version: (see '/usr/pulseaudio-equalizer' script)
+ #
+ 
+-import pygtk
+-pygtk.require('2.0')
+-import glib as GLib, gtk as Gtk
++import gi
++gi.require_version("Gtk", "3.0")
++from gi.repository import GLib, Gtk
+ import os
+ 
++GTK_VERSION = (Gtk.MAJOR_VERSION, Gtk.MINOR_VERSION, Gtk.MICRO_VERSION)
++
+ configdir = GLib.get_user_config_dir() + "/pulse"
+ eqconfig = configdir + "/equalizerrc"
+ eqconfig2 = configdir + "/equalizerrc.test"
+@@ -300,12 +302,16 @@ class Equalizer:
+     def on_removepreset(self,widget):
+         global preset
+         global presets
+-        dialog = Gtk.FileChooserDialog("Choose preset to remove...",
+-                               None,
+-                               Gtk.FILE_CHOOSER_ACTION_OPEN,
+-                               (Gtk.STOCK_CANCEL, Gtk.RESPONSE_CANCEL,
+-                                Gtk.STOCK_OK, Gtk.RESPONSE_OK))
+-        dialog.set_default_response(Gtk.RESPONSE_OK)
++        dialog = Gtk.FileChooserDialog(title="Choose preset to remove...",
++                                       transient_for=widget.get_toplevel(),
++                                       action=Gtk.FileChooserAction.OPEN)
++
++        button = dialog.add_button("_Cancel", Gtk.ResponseType.CANCEL)
++        button.set_image(Gtk.Image.new_from_icon_name("gtk-cancel", Gtk.IconSize.BUTTON))
++        button = dialog.add_button("_Open", Gtk.ResponseType.OK)
++        button.set_image(Gtk.Image.new_from_icon_name("document-open", Gtk.IconSize.BUTTON))
++        button.grab_default()
++        dialog.set_default_response(Gtk.ResponseType.OK)
+ 
+         filter = Gtk.FileFilter()
+         filter.set_name("Preset files")
+@@ -315,7 +321,7 @@ class Equalizer:
+         dialog.show()
+ 
+         response = dialog.run()
+-        if response == Gtk.RESPONSE_OK:
++        if response == Gtk.ResponseType.OK:
+             filename = dialog.get_filename()
+             path_and_name = os.path.split(filename)
+             name = path_and_name[1]
+@@ -358,14 +364,13 @@ class Equalizer:
+     def __init__(self):
+         GetSettings()
+ 
+-        self.window = Gtk.Window(Gtk.WINDOW_TOPLEVEL)
++        self.window = Gtk.Window()
+         self.window.set_resizable(True)
+ 
+         self.window.connect("destroy", self.destroy_equalizer)
+         self.window.set_title(windowtitle + " [" + realstatus + "]")
+-        self.window.set_border_width(0)
+ 
+-        icon_theme = Gtk.icon_theme_get_default()
++        icon_theme = Gtk.IconTheme.get_default()
+         if icon_theme.has_icon("multimedia-volume-control"):
+             self.window.set_icon_name("multimedia-volume-control")
+         elif icon_theme.has_icon("gnome-volume-control"):
+@@ -377,42 +382,61 @@ class Equalizer:
+ 
+         menu = Gtk.Menu()
+ 
+-        menu_item = Gtk.MenuItem("Reset to defaults")
++        menu_item = Gtk.MenuItem(label="Reset to defaults")
+         menu_item.connect("activate", self.on_resetsettings)
+         menu.append(menu_item)
+         menu_item.show()
+-        menu_item = Gtk.MenuItem("Remove user preset...")
++        menu_item = Gtk.MenuItem(label="Remove user preset...")
+         menu_item.connect("activate", self.on_removepreset)
+         menu.append(menu_item)
+         menu_item.show()
+-        root_menu = Gtk.MenuItem("Advanced")
++        root_menu = Gtk.MenuItem(label="Advanced")
+         root_menu.show()
+         root_menu.set_submenu(menu)
+ 
+-        vbox1 = Gtk.VBox(False, 0)
++        if GTK_VERSION >= (3, 0, 0):
++            vbox1 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
++        else:
++            vbox1 = Gtk.VBox()
+         self.window.add(vbox1)
+         vbox1.show()
+         menu_bar = Gtk.MenuBar()
+-        vbox1.pack_start(menu_bar, False, False, 2)
++        if GTK_VERSION >= (3, 0, 0):
++            menu_bar.set_margin_bottom(4)
++            vbox1.add(menu_bar)
++        else:
++            vbox1.pack_start(menu_bar, False, False, 2)
+         menu_bar.show()
+-        menu_bar.append (root_menu)
++        menu_bar.append(root_menu)
+ 
+-        hbox1 = Gtk.HBox(False, 1)
+-        #hbox1.set_border_width(10)
++        if GTK_VERSION >= (3, 0, 0):
++            hbox1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=1)
++        else:
++            hbox1 = Gtk.HBox(spacing=1)
++        #hbox1.props.margin = 10
+         vbox1.add(hbox1)
+         hbox1.show()
+ 
+-        table = Gtk.Table(3, 17, False)
+-        table.set_border_width(5)
+-        hbox1.add(table)
++        if GTK_VERSION >= (3, 10, 0):
++            grid = Gtk.Grid()
++            grid.props.margin = 5
++        else:
++            grid = Gtk.Table(n_rows=3, n_columns=17)
++            grid.set_border_width(5)
++        hbox1.add(grid)
+ 
+         # Preamp widget
+         global preampscale
+         global preampscalevalue
+-        preampscale = Gtk.VScale()
++        if GTK_VERSION >= (3, 2, 0):
++            preampscale = Gtk.Scale(orientation=Gtk.Orientation.VERTICAL)
++            preampscale.set_hexpand(True)
++            preampscale.set_vexpand(True)
++        else:
++            preampscale = Gtk.VScale()
+         preampscale.set_draw_value(0)
+         preampscale.set_inverted(1)
+-        preampscale.set_value_pos(Gtk.POS_BOTTOM)
++        preampscale.set_value_pos(Gtk.PositionType.BOTTOM)
+         preampscale.set_range(0.0, 2.0)
+         preampscale.set_increments(1, 0.1)
+         preampscale.set_digits(1)
+@@ -423,16 +447,25 @@ class Equalizer:
+         label.set_markup("<small>Preamp</small>")
+         preampscalevalue = Gtk.Label()
+         preampscalevalue.set_markup(str(preampscale.get_value()) + "x")
+-        table.attach(label, 1, 2, 0, 1)
+-        table.attach(preampscale, 1, 2, 1, 2)
+-        table.attach(preampscalevalue, 1, 2, 2, 3)
++        if GTK_VERSION >= (3, 10, 0):
++            grid.attach(label, 1, 0, 1, 1)
++            grid.attach(preampscale, 1, 1, 1, 1)
++            grid.attach(preampscalevalue, 1, 2, 1, 1)
++        else:
++            grid.attach(label, 1, 2, 0, 1, yoptions=Gtk.AttachOptions.SHRINK)
++            grid.attach(preampscale, 1, 2, 1, 2, yoptions=(Gtk.AttachOptions.EXPAND | Gtk.AttachOptions.FILL))
++            grid.attach(preampscalevalue, 1, 2, 2, 3, yoptions=Gtk.AttachOptions.SHRINK)
+         #label.show()
+         #preampscale.show()
+         #preampscalevalue.show()
+ 
+         # Separator between preamp and bands
+-        separator = Gtk.VSeparator()
+-        table.attach(separator, 2, 3, 1, 2)
++        if GTK_VERSION >= (3, 10, 0):
++            separator = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
++            grid.attach(separator, 2, 1, 1, 1)
++        else:
++            separator = Gtk.VSeparator()
++            grid.attach(separator, 2, 3, 1, 2)
+         #separator.show()
+ 
+         # Equalizer bands
+@@ -441,11 +474,16 @@ class Equalizer:
+         self.labels = {}
+         self.scalevalues = {}
+         for x in range(1,num_ladspa_controls+1):
+-            scale = Gtk.VScale()
++            if GTK_VERSION >= (3, 2, 0):
++                scale = Gtk.Scale(orientation=Gtk.Orientation.VERTICAL)
++                scale.set_hexpand(True)
++                scale.set_vexpand(True)
++            else:
++                scale = Gtk.VScale()
+             self.scales[x] = scale
+             scale.set_draw_value(0)
+             scale.set_inverted(1)
+-            scale.set_value_pos(Gtk.POS_BOTTOM)
++            scale.set_value_pos(Gtk.PositionType.BOTTOM)
+             scale.set_range(float(ranges[0]), float(ranges[1]))
+             scale.set_increments(1, 0.1)
+             scale.set_digits(1)
+@@ -459,67 +497,80 @@ class Equalizer:
+             scalevalue = Gtk.Label()
+             self.scalevalues[x] = scalevalue
+             scalevalue.set_markup("<small>" + str(scale.get_value()) + "\ndB</small>")
+-            table.attach(label, x + 2, x + 3, 0, 1)
+-            table.attach(scale, x + 2, x + 3, 1, 2)
+-            table.attach(scalevalue, x + 2, x + 3, 2, 3)
++            if GTK_VERSION >= (3, 10, 0):
++                grid.attach(label, x + 2, 0, 1, 1)
++                grid.attach(scale, x + 2, 1, 1, 1)
++                grid.attach(scalevalue, x + 2, 2, 1, 1)
++            else:
++                grid.attach(label, x + 2, x + 3, 0, 1, yoptions=Gtk.AttachOptions.SHRINK)
++                grid.attach(scale, x + 2, x + 3, 1, 2, yoptions=(Gtk.AttachOptions.EXPAND | Gtk.AttachOptions.FILL))
++                grid.attach(scalevalue, x + 2, x + 3, 2, 3, yoptions=Gtk.AttachOptions.SHRINK)
+             label.show()
+             scale.show()
+             scalevalue.show()
+ 
+-        table.show()
++        grid.show()
+ 
+-        vbox2 = Gtk.VBox(True, 1)
+-        vbox2.set_border_width(10)
+-        hbox1.add(vbox2)
++        if GTK_VERSION >= (3, 0, 0):
++            vbox2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, homogeneous=True, spacing=1)
++            vbox2.props.margin = 10
++            hbox1.add(vbox2)
++        else:
++            vbox2 = Gtk.VBox(homogeneous=True, spacing=1)
++            vbox2.set_border_width(10)
++            hbox1.pack_start(vbox2, False, True, 0)
+         vbox2.show()
+ 
+         presetslabel = Gtk.Label()
+         presetslabel.set_markup("<small>Preset:</small>")
+-        vbox2.pack_start(presetslabel, False, False, 0)
++        vbox2.add(presetslabel)
+         presetslabel.show()
+ 
+         global presetsbox
+-        presetsbox = Gtk.combo_box_entry_new_text()
+-        vbox2.pack_start(presetsbox, False, False, 0)
++        presetsbox = Gtk.ComboBoxText.new_with_entry()
++        vbox2.add(presetsbox)
+         presetsbox.get_child().set_text(preset)
+         for i in range(len(rawpresets)):
+             presetsbox.append_text(rawpresets[i])
+         presetsbox.connect("changed", self.on_presetsbox, x)
+         presetsbox.show()
+ 
+-        savepreset = Gtk.Button("Save Preset")
+-        vbox2.pack_start(savepreset, False, False, 0)
++        savepreset = Gtk.Button(label="Save Preset")
++        vbox2.add(savepreset)
+         savepreset.connect("clicked", self.on_savepreset)
+         savepreset.show()
+ 
+         global eqenabled
+-        eqenabled = Gtk.CheckButton("EQ Enabled")
++        eqenabled = Gtk.CheckButton(label="EQ Enabled")
+         eqenabled.set_active(status)
+-        eqenabled.unset_flags(Gtk.CAN_FOCUS)
++        eqenabled.set_can_focus(False)
+         eqenabled.connect("clicked", self.on_eqenabled)
+-        vbox2.pack_start(eqenabled, False, False, 0)
++        vbox2.add(eqenabled)
+         eqenabled.show()
+ 
+         global keepsettings
+-        keepsettings = Gtk.CheckButton("Keep Settings")
++        keepsettings = Gtk.CheckButton(label="Keep Settings")
+         keepsettings.set_active(persistence)
+-        keepsettings.unset_flags(Gtk.CAN_FOCUS)
++        keepsettings.set_can_focus(False)
+         keepsettings.connect("clicked", self.on_keepsettings)
+-        vbox2.pack_start(keepsettings, False, False, 0)
++        vbox2.add(keepsettings)
+         keepsettings.show()
+ 
+-        applysettings = Gtk.Button("Apply Settings")
+-        vbox2.pack_start(applysettings, False, False, 0)
++        applysettings = Gtk.Button(label="Apply Settings")
++        vbox2.add(applysettings)
+         applysettings.connect("clicked", self.on_applysettings)
+         applysettings.show()
+ 
+-        quitbutton = Gtk.Button("Quit")
+-        vbox2.pack_start(quitbutton, False, False, 0)
++        quitbutton = Gtk.Button(label="Quit")
++        vbox2.add(quitbutton)
+         quitbutton.connect("clicked", lambda w: Gtk.main_quit())
+         quitbutton.show()
+ 
+-        separator = Gtk.HSeparator()
+-        vbox2.pack_start(separator, False, False, 0)
++        if GTK_VERSION >= (3, 2, 0):
++            separator = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
++        else:
++            separator = Gtk.HSeparator()
++        vbox2.add(separator)
+         separator.set_size_request(100, 10)
+         #separator.show()
+ 

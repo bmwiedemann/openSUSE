@@ -1,0 +1,164 @@
+-------------------------------------------------------------------
+Thu Oct 26 09:59:24 UTC 2017 - coolo@suse.com
+
+- updated to version 4.9.0
+ see installed NEWS
+
+  4.9.0 (October 23, 2017)
+    Deprecate factory_girl in favor of factory_bot
+
+-------------------------------------------------------------------
+Wed Oct 11 06:03:07 UTC 2017 - coolo@suse.com
+
+- updated to version 4.8.1
+ see installed NEWS
+
+  4.8.1 (September 28, 2017)
+    Explicitly define `#destroyed?` within the `Stub` strategy to return `nil` instead of raising
+    Update various dependencies
+    Update internal test suite to use RSpec's mocking/stubbing instead of mocha
+
+-------------------------------------------------------------------
+Sat Dec 17 05:35:00 UTC 2016 - coolo@suse.com
+
+- updated to version 4.8.0
+ see installed NEWS
+
+  4.8.0 (December 16, 2016)
+    Improve documentation
+    Add `FactoryGirl.generate_list` to be consistent with `build_list`/`create_list` and friends
+    Add `FactoryGirl.use_parent_strategy` configuration to allow associations to leverage parent build strategy
+
+-------------------------------------------------------------------
+Wed Apr  6 06:18:31 UTC 2016 - coolo@suse.com
+
+- updated to version 4.7.0
+ see installed NEWS
+
+  4.7.0 (April 1, 2016)
+    Improve documentation
+    Improve instrumentation payload to include traits, overrides, and the factory itself
+    Allow linting of traits
+    Deprecate factory lookup by class name in preparation for 5.0
+    Improve internal performance by using flat_map instead of map and compact
+    Improve handling of dirty attributes after building a stubbed object
+    Reduce warnings from redefining methods
+  
+  4.6.0 (skipped)
+
+-------------------------------------------------------------------
+Tue Feb 10 17:42:41 UTC 2015 - coolo@suse.com
+
+- updated to version 4.5.0
+
+-------------------------------------------------------------------
+Mon Oct 13 12:06:00 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Sat Feb 22 06:25:43 UTC 2014 - coolo@suse.com
+
+- updated to version 4.4.0
+   Add FactoryGirl.lint
+   Fix memory leak in duplicate traits
+   Update documentation
+
+-------------------------------------------------------------------
+Fri Nov 22 08:40:37 UTC 2013 - coolo@suse.com
+
+- updated to version 4.3.0
+   Start testing against Rails 4.0 and Ruby 2.0.0
+   Stop testing against Rails 3.0 and Ruby 1.9.2
+   Add *_pair methods to only build two objects
+   Raise if a method is defined with a FactoryGirl block (factory or trait)
+   Allow use of Symbol#to_proc in callbacks
+   Add global callbacks
+   Improve GETTING_STARTED and README
+
+-------------------------------------------------------------------
+Sun Jun  9 07:02:09 UTC 2013 - coolo@suse.com
+
+- updated to version 4.2.0, no changlog provided
+
+-------------------------------------------------------------------
+Thu Sep 13 09:10:34 UTC 2012 - coolo@suse.com
+
+- updated to version 4.1.0
+  Allow multiple callbacks to bind to the same block
+  Fix documentation surrounding the stub strategy
+
+-------------------------------------------------------------------
+Sat Aug  4 19:02:11 UTC 2012 - coolo@suse.com
+
+- updated to version 4.0.0
+  Remove deprecated cucumber_steps
+  Remove deprecated alternate syntaxes
+  Deprecate duplicate_attribute_assignment_from_initialize_with, which is now unused
+   as attributes assigned within initialize_with are not subsequently assigned
+
+-------------------------------------------------------------------
+Fri Aug  3 13:56:29 UTC 2012 - coolo@suse.com
+
+- updated to version 3.6.1
+  Update README to include info about running with JRuby
+  Update dependencies on RSpec and tiny versions of Rails in Appraisal
+  Improve flexibility of using traits with associations and add documentation
+  Stub update_column to raise to mirror ActiveRecord's change from update_attribute
+
+-------------------------------------------------------------------
+Mon May 28 15:40:08 UTC 2012 - jreidinger@suse.com
+
+- update to version 3.3.0
+- clean up spec 
+- fix requirements to match gemspec requirements
+
+-------------------------------------------------------------------
+Tue Feb 21 13:49:37 UTC 2012 - jreidinger@suse.com
+
+- update to version 2.6.0 :
+  * inline trait support to build|create list
+  * Deprecate :method in favor of :strategy when overwritting build
+    strategy 
+
+-------------------------------------------------------------------
+Tue Feb  7 14:23:57 UTC 2012 - fcastelli@suse.com
+
+- require activesupport 3.1
+
+-------------------------------------------------------------------
+Tue Feb  7 14:16:01 UTC 2012 - fcastelli@suse.com
+
+- update to 2.5.1
+
+-------------------------------------------------------------------
+Wed Oct  5 14:17:36 UTC 2011 - fcastelli@suse.com
+
+- Add provides factory_girl-2_1
+
+-------------------------------------------------------------------
+Wed Oct  5 14:11:01 UTC 2011 - fcastelli@suse.com
+
+- update to version 2.1.2
+
+-------------------------------------------------------------------
+Mon Feb 14 15:54:55 UTC 2011 - mrueckert@suse.de
+
+- update to version 1.3.3
+  rails 3 support. for rails 2 you need 1.2.4.
+
+-------------------------------------------------------------------
+Fri Jun 11 16:16:50 UTC 2010 - mrueckert@suse.de
+
+- update to version 1.3.0
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Fri Dec 18 14:35:53 CET 2009 - prusnak@suse.cz
+
+- created package
+

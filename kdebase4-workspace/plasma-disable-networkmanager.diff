@@ -1,0 +1,25 @@
+commit dda8f95f9d810cf3f14f7be410bb612b1c6c0744
+Author: Stephan Kulow <coolo@suse.de>
+Date:   Thu Oct 13 15:36:58 2011 +0200
+
+    openSUSE has NetworkManager installed on all installations, but doesn't
+    necessarly run it. While checking for some dbus interface might be
+    the better solution, it's also the more fragile one because NM might
+    still startup or be down just the second we check the default applets.
+    
+    So simply make it possible to disable it on KDE start depending on sysconfig
+    and if the system changes, the user is expected to reconfigure plasma too
+
+Index: kde-workspace-4.8.5/plasma/generic/applets/systemtray/ui/applet.cpp
+===================================================================
+--- kde-workspace-4.8.5.orig/plasma/generic/applets/systemtray/ui/applet.cpp
++++ kde-workspace-4.8.5/plasma/generic/applets/systemtray/ui/applet.cpp
+@@ -706,7 +706,7 @@ void Applet::checkDefaultApplets()
+ 
+ 
+     QStringList applets = s_manager->applets(this);
+-    if (!applets.contains("org.kde.networkmanagement")) {
++    if (!applets.contains("org.kde.networkmanagement") && !getenv("KDE_NETWORKMANAGER_DISABLED")) {
+         s_manager->addApplet("org.kde.networkmanagement", this);
+     }
+ 

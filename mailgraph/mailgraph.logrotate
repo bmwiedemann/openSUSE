@@ -1,0 +1,14 @@
+/var/log/mailgraph/mailgraph.log {
+	compress
+	dateext
+	maxage 365
+	rotate 99
+	size=+4096k
+	notifempty
+	missingok
+	create 644 root root
+	sharedscripts
+	postrotate
+		/usr/sbin/rcmailgraph restart
+	endscript
+}

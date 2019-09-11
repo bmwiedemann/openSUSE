@@ -1,0 +1,958 @@
+-------------------------------------------------------------------
+Fri May 31 12:41:14 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Tue Dec  4 13:27:20 UTC 2018 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Security audit fix: Documented external command usage and added
+  warning if calling an external command without an absolute path
+  (bsc#1118291)
+- 4.1.2
+
+-------------------------------------------------------------------
+Mon Nov 26 05:04:52 UTC 2018 - Noah Davis <noahadvs@gmail.com>
+
+- Provide icon with module (boo#1109310)
+- 4.1.1
+
+-------------------------------------------------------------------
+Thu Aug 23 14:34:31 UTC 2018 - dgonzalez@suse.com
+
+- Update calls to Yast2 systemd classes (related to fate#319428)
+- 4.1.0
+
+-------------------------------------------------------------------
+Wed Aug 22 14:50:06 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Mon Aug 20 17:11:37 CEST 2018 - schubi@suse.de
+
+- Changed dir of COPYING file.
+
+-------------------------------------------------------------------
+Wed Jun 27 15:37:57 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.1
+
+-------------------------------------------------------------------
+Fri Apr  6 18:54:26 UTC 2018 - mfilka@suse.com
+
+- bnc#1087957 - version bump
+- 4.0.0
+
+-------------------------------------------------------------------
+Thu Jun  2 08:28:37 UTC 2016 - igonzalezsosa@suse.com
+
+- Drop yast2-sysconfig-devel-doc package (fate#320356)
+- 3.1.4
+
+-------------------------------------------------------------------
+Mon Jul  6 13:22:47 UTC 2015 - ancor@suse.com
+
+- Improved restarting/reloading of services for better
+  maintainability and full systemd compatibility (bnc#926485)
+- New automated test suite (unit tests with RSpec)
+- 3.1.3
+
+-------------------------------------------------------------------
+Thu Dec  4 09:51:41 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+
+-------------------------------------------------------------------
+Fri Mar 28 15:56:52 CET 2014 - locilka@suse.com
+
+- Removed any mention about SuSEconfig, that has been already
+  dropped a while ago (bnc#869408)
+- 3.1.1
+
+-------------------------------------------------------------------
+Thu Sep 19 17:33:13 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Thu Aug  1 19:08:22 UTC 2013 - lslezak@suse.cz
+
+- move the development documentation to devel-doc subpackage
+- 3.0.1
+
+-------------------------------------------------------------------
+Wed Jul 31 08:43:04 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Tue Jul 16 08:45:18 UTC 2013 - lslezak@suse.cz
+
+- do not call /sbin/SuSEconfig, it has been dropped (bnc#828254)
+- 2.24.0
+
+-------------------------------------------------------------------
+Fri Mar 30 14:18:00 UTC 2012 - lslezak@suse.cz
+
+- fixed displaying UTF-8 values (bnc#728588), fixed handling values
+  containing single quotes
+- 2.22.0
+
+-------------------------------------------------------------------
+Thu Mar 29 16:09:54 CEST 2012 - jsuchome@suse.cz
+
+- merge proofread texts 
+
+-------------------------------------------------------------------
+Tue Sep 27 10:44:00 CEST 2011 - visnov@suse.cz
+
+- set dialog title
+- 2.21.2 
+
+-------------------------------------------------------------------
+Mon Aug  8 11:35:31 UTC 2011 - lslezak@suse.cz
+
+- use ButtonBox for push button widgets (bnc#701273)
+- removed unnecessary text from summary dialog
+- 2.21.1
+
+-------------------------------------------------------------------
+Fri Aug  5 12:35:30 CEST 2011 - tgoettlicher@suse.de
+
+- fixed .desktop file (bnc #681249)
+
+-------------------------------------------------------------------
+Wed Jul 27 12:53:34 UTC 2011 - lslezak@suse.cz
+
+- command line help text - added description and example for full
+  file name specification (bnc#689844)
+- 2.21.0
+
+------------------------------------------------------------------
+Wed Jan 13 18:56:03 CET 2010 - kmachalkova@suse.cz
+
+- Adjusted .desktop file(s) to wrap /sbin/yast2/ calls in xdg-su
+  where root privileges are needed, removed X-KDE-SubstituteUID key 
+  (bnc#540627)
+
+-------------------------------------------------------------------
+Tue Jun 16 14:29:29 CEST 2009 - mvidner@suse.cz
+
+- Using autodocs-ycp.ami, which contains a fix for automake 1.11.
+
+-------------------------------------------------------------------
+Mon Jun 16 14:18:31 CEST 2008 - lslezak@suse.cz
+
+- OK/Cancel button in the main dialog (bnc#398491)
+- 2.17.0
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Mon Apr  7 16:51:11 CEST 2008 - lslezak@suse.cz
+
+- 'clear' command line option works properly (bnc#377068)
+- 2.16.0
+
+-------------------------------------------------------------------
+Mon Mar 17 12:43:32 CET 2008 - jsrain@suse.cz
+
+- added 'StartupNotify=true' to the desktop file (bnc #304964)
+
+-------------------------------------------------------------------
+Mon May 28 07:16:57 CEST 2007 - lslezak@suse.cz
+
+- check UID after evaluating command line arguments (#269909)
+- 2.15.3
+
+-------------------------------------------------------------------
+Fri May 25 13:30:04 CEST 2007 - jsrain@suse.cz
+
+- removed outdated translations from .desktop-files (#271209)
+
+-------------------------------------------------------------------
+Wed Apr 11 14:08:40 CEST 2007 - lslezak@suse.cz
+
+- dropped yast2-powertweak subpackage (FATE #301978)
+- 2.15.2
+
+-------------------------------------------------------------------
+Fri Mar  9 13:48:02 CET 2007 - locilka@suse.cz
+
+- Removing yast2-installation from RPM dependencies.
+- 2.15.1
+
+-------------------------------------------------------------------
+Fri Dec  8 13:43:03 CET 2006 - lslezak@suse.cz
+
+- append a long empty string to the header text to avoid cutting
+  of a long text after a change (do not use UI::RecalcLayout(),
+  it produces flickering in ncurses UI) (#227044)
+- 2.15.0
+
+-------------------------------------------------------------------
+Mon Nov 13 13:45:22 CET 2006 - lslezak@suse.cz
+
+- 2.14.0
+
+-------------------------------------------------------------------
+Thu Nov  9 14:30:48 CET 2006 - lslezak@suse.cz
+
+- added RNC schema for Autoyast profile validation (#219011)
+- 2.13.8
+
+-------------------------------------------------------------------
+Mon Jul 17 13:09:32 CEST 2006 - lslezak@suse.cz
+
+- refresh UI layout after change of the selected variable (#172356)
+- ignore backup files in /etc/sysconfig directory (#177463)
+- 2.13.7
+
+-------------------------------------------------------------------
+Wed May 17 13:02:34 CEST 2006 - lslezak@suse.cz
+
+- display warning if not running as root (#171197)
+- 2.13.6
+
+-------------------------------------------------------------------
+Mon Feb 20 09:42:31 CET 2006 - lslezak@suse.cz
+
+- updated BuildRequires (replaced yast2-devel-packages macro)
+- 2.13.5
+
+-------------------------------------------------------------------
+Mon Dec 19 14:08:07 CET 2005 - jsuchome@suse.cz
+
+- merged proofread texts
+- 2.13.4
+
+-------------------------------------------------------------------
+Fri Dec 16 15:37:06 CET 2005 - lslezak@suse.cz
+
+- sysconfig.ycp: added a note for translators about
+  splitted help text
+- 2.13.3
+
+-------------------------------------------------------------------
+Fri Dec  2 09:46:37 CET 2005 - lslezak@suse.cz
+
+- Sysconfig::search renamed to Search (search is a built-in
+  function now)
+- Powertweak - fixed line break in Y2CC (#135803)
+- 2.13.2
+
+-------------------------------------------------------------------
+Mon Nov 21 18:05:00 CET 2005 - lslezak@suse.cz
+
+- redirect stdout and stderr output of restarted service to
+  /dev/null - do not hang at service restart (#86631)
+- version 2.13.1
+
+-------------------------------------------------------------------
+Fri Sep 23 14:01:57 CEST 2005 - lslezak@suse.cz
+
+- powerteak - wrap long description lines (#118517)
+- enhanced set command (in command line mode) to accept form
+  VARIABLE=value, enhanced the help text (#94417)
+- 2.13.0
+
+-------------------------------------------------------------------
+Mon Sep  5 16:43:32 CEST 2005 - lslezak@suse.cz
+
+- don't install powertweak-extra package by default (#105273)
+- 2.12.3
+
+-------------------------------------------------------------------
+Tue Aug 30 17:59:22 CEST 2005 - lslezak@suse.cz
+
+- fixed dialog header in powertweak mode (#106731)
+- 2.12.2
+
+-------------------------------------------------------------------
+Thu Jul 28 10:12:52 CEST 2005 - lslezak@suse.cz
+
+- updated detktop files
+- 2.12.1
+
+-------------------------------------------------------------------
+Fri Jul 22 15:22:13 CEST 2005 - lslezak@suse.cz
+
+- updated icon in .desktop files
+- 2.12.0
+
+-------------------------------------------------------------------
+Thu Apr 21 10:42:04 CEST 2005 - lslezak@suse.cz
+
+- fixed typo in the help text (#79275)
+
+-------------------------------------------------------------------
+Wed Nov 24 13:22:09 CET 2004 - lslezak@suse.cz
+
+- display default value or empty string instead of the current
+  value in aytoyast mode (#36874)
+- version 2.11.3
+
+-------------------------------------------------------------------
+Mon Nov 15 16:31:21 CET 2004 - lslezak@suse.cz
+
+- merged commandline mode fixes from 9.1 branch:
+  - fixed option properties (#48133)
+  - added 'clear' command to set empty value ("")
+- version 2.11.2
+
+-------------------------------------------------------------------
+Wed Oct 27 09:07:43 CEST 2004 - lslezak@suse.cz
+
+- adapted to new Mode:: API
+- version 2.11.1
+
+-------------------------------------------------------------------
+Mon Oct 18 16:22:49 CEST 2004 - lslezak@suse.cz
+
+- removed help text from search dialog (#46605)
+- version 2.11.0
+
+-------------------------------------------------------------------
+Mon Sep 27 17:21:09 CEST 2004 - lslezak@suse.cz
+
+- register agent during autoinstallation (#45836)
+- version 2.10.5
+
+-------------------------------------------------------------------
+Tue Sep 14 13:10:42 CEST 2004 - lslezak@suse.cz
+
+- GetModified/SetModified functions (AutoYaST API)
+- don't call Read() in Import()
+- version 2.10.4
+
+-------------------------------------------------------------------
+Mon Aug 23 15:08:50 CEST 2004 - lslezak@suse.cz
+
+- fixed datatype (value returned from command line)
+- version 2.10.3
+
+-------------------------------------------------------------------
+Wed Jun 16 16:17:28 CEST 2004 - lslezak@suse.cz
+
+- updated testsuite (use Testsuite:: module, set testedfiles)
+- version 2.10.2
+
+-------------------------------------------------------------------
+Tue Jun 15 10:44:19 CEST 2004 - lslezak@suse.cz
+
+- don't escape values in single quotes (#41984)
+- version 2.10.1
+
+-------------------------------------------------------------------
+Fri Jun 11 12:52:57 CEST 2004 - lslezak@suse.cz
+
+- read also files from /etc/sysconfig/uml/ (UML config. directory)
+- version 2.10.0
+
+-------------------------------------------------------------------
+Tue May  4 14:42:30 CEST 2004 - lslezak@suse.cz
+
+- merged proofread texts
+- version 2.9.15
+
+-------------------------------------------------------------------
+Sat Apr  3 04:49:20 CEST 2004 - nashif@suse.de
+
+- 
+
+-------------------------------------------------------------------
+Fri Apr  2 22:51:16 CEST 2004 - nashif@suse.de
+
+- Adapt to use new Wizard (#37581)
+- 2.9.14
+
+-------------------------------------------------------------------
+Fri Apr  2 16:33:02 CEST 2004 - lslezak@suse.cz
+
+- changed license to GPL
+- version 2.9.13
+
+-------------------------------------------------------------------
+Fri Mar 26 14:29:59 CET 2004 - lslezak@suse.cz
+
+- [Default] button - fixed layout problem (#36745)
+- version 2.9.12
+
+-------------------------------------------------------------------
+Thu Mar 25 06:24:41 CET 2004 - nashif@suse.de
+
+- Dont run complete suseconfig when writing autoyast configuration
+
+-------------------------------------------------------------------
+Fri Mar 12 10:25:53 CET 2004 - lslezak@suse.cz
+
+- use new Wizard
+- use Package module
+- fixed module description (#35372)
+- version 2.9.11
+
+-------------------------------------------------------------------
+Fri Mar  5 14:42:53 CET 2004 - lslezak@suse.cz
+
+- data type fixes
+- use Sequencer:: module
+- version 2.9.10
+
+-------------------------------------------------------------------
+Tue Mar  2 08:52:36 CET 2004 - lslezak@suse.cz
+
+- don't use Product:: module
+- version 2.9.9
+
+-------------------------------------------------------------------
+Mon Mar  1 15:57:40 CET 2004 - lslezak@suse.cz
+
+- merged proofread texts
+- more strict data types (typed lists and maps)
+- version 2.9.8
+
+-------------------------------------------------------------------
+Mon Feb 23 17:42:03 CET 2004 - lslezak@suse.cz
+
+- fixed reading values containing '=' character (#34864)
+- fixed editing values with '\$' substring (#34809)
+- version 2.9.7
+
+-------------------------------------------------------------------
+Fri Feb 13 10:55:54 CET 2004 - lslezak@suse.cz
+
+- read /etc/sysconfig/powersave/* files
+- use CommandLine::Run
+- NI fixes: nil checking
+- version 2.9.6
+
+-------------------------------------------------------------------
+Sat Feb 07 23:52:17 CET 2004 - arvin@suse.de
+
+- removed config files (*.y2cc)
+
+-------------------------------------------------------------------
+Wed Feb  4 14:17:45 CET 2004 - lslezak@suse.cz
+
+- testsuite update
+- packages gcc and yast2-network are not required
+  or needed for build
+- version 2.9.4
+
+-------------------------------------------------------------------
+Fri Jan 30 10:07:26 CET 2004 - lslezak@suse.cz
+
+- fixes for the new interpreter (nil checking,
+  data types, removed globals, build fix)
+- version 2.9.3
+
+-------------------------------------------------------------------
+Tue Jan 13 11:18:08 CET 2004 - lslezak@suse.cz
+
+- fixes for the new interpreter
+- version 2.9.2
+
+-------------------------------------------------------------------
+Thu Dec 18 13:54:59 CET 2003 - lslezak@suse.cz
+
+- use Service:: module instead of Runlevel::
+- removed unused imports
+
+-------------------------------------------------------------------
+Wed Nov 26 13:26:55 CET 2003 - lslezak@suse.cz
+
+- fixes for the new interpreter
+- version 2.9.1
+
+-------------------------------------------------------------------
+Tue Nov 25 15:32:34 CET 2003 - lslezak@suse.cz
+
+- use String::ParseOptions function
+- support multiline values
+
+-------------------------------------------------------------------
+Thu Nov 13 13:50:00 CET 2003 - lslezak@suse.cz
+
+- command line UI
+- use IP:: module
+- version 2.9.0
+
+-------------------------------------------------------------------
+Thu Sep 25 12:32:52 CEST 2003 - lslezak@suse.cz
+
+- use Require module (#31673)
+
+-------------------------------------------------------------------
+Mon Sep 15 12:33:31 CEST 2003 - lslezak@suse.de
+
+- fixed empty ("") value bug (#30644)
+- documentation update
+- version 2.8.7
+
+-------------------------------------------------------------------
+Fri Sep 12 20:28:56 CEST 2003 - nashif@suse.de
+
+- Dont turn Progress on in autoinst mode
+
+-------------------------------------------------------------------
+Fri Sep 12 07:09:02 CEST 2003 - nashif@suse.de
+
+- #30291: return list of required packages for autoinstallation
+
+-------------------------------------------------------------------
+Fri Aug 29 14:36:11 CEST 2003 - lslezak@suse.de
+
+- small fixes in perl parser (#29526)
+- don't show empty commands in the description
+- fixed 'Go to' button functionality
+- powertweak mode fixes
+- added missing translation marks
+- version 2.8.4
+
+-------------------------------------------------------------------
+Tue Aug 26 14:32:30 CEST 2003 - lslezak@suse.de
+
+- new metadata keyword PreSaveCommand: (#29212)
+- version 2.8.3
+
+-------------------------------------------------------------------
+Mon Aug 25 16:05:41 CEST 2003 - lslezak@suse.cz
+
+- removed "Initializing..." dialog
+- version 2.8.2
+
+-------------------------------------------------------------------
+Mon Aug 11 09:44:51 CEST 2003 - lslezak@suse.de
+
+- merged proofread texts
+- version 2.8.1
+
+-------------------------------------------------------------------
+Wed Aug  6 09:46:55 CEST 2003 - lslezak@suse.cz
+
+- use the new metadata (the activation commands)
+- use Label:: and Popup:: modules instead of includes
+- fixed double quote backslashing bug (character before
+  the double quote character was lost)
+- fixed testsuites
+- added .desktop files
+- .spec: added yast2-installation package to Requires
+  and neededforbuild (Product.ycp module)
+- version 2.8.0
+
+-------------------------------------------------------------------
+Wed Mar 12 14:33:47 CET 2003 - lslezak@suse.de
+
+- fixed undefined function call UI::ErrorMessage
+  (changed to UI::ErrorPopup), fixed translation
+- version 2.7.12
+
+-------------------------------------------------------------------
+Mon Mar 10 09:40:37 CET 2003 - lslezak@suse.de
+
+- fixed ifcfg.template location, comment reading from template
+  (for /etc/sysconfig/network/ifcfg-* files)
+- version 2.7.11
+
+-------------------------------------------------------------------
+Wed Mar  5 08:33:05 CET 2003 - lslezak@suse.de
+
+- ignore escaped slash in Path tag (#24571)
+- remove new line characters from description in search
+  result dialog
+- wrap lines in node description text
+- don't display multiple instances of variable in one file
+- version 2.7.10
+
+-------------------------------------------------------------------
+Tue Mar  4 04:53:11 CET 2003 - nashif@suse.de
+
+- define variable files module wide (#24494)
+- renamed files to custom_files
+
+-------------------------------------------------------------------
+Thu Feb 27 15:26:39 CET 2003 - lslezak@suse.de
+
+- ignore header in config file (#23876)
+- updated testsuite
+- version 2.7.9
+
+-------------------------------------------------------------------
+Tue Feb 25 13:12:54 CET 2003 - lslezak@suse.de
+
+- don't change comment formatting (#24205)
+- testsuite updated
+- version 2.7.8
+
+-------------------------------------------------------------------
+Mon Feb 24 13:48:06 CET 2003 - lslezak@suse.de
+
+- removed workaround for bug #23721 ("&lt;" was not interpreted
+  in ncurses)
+- fixed parsing and validating integer and regexp types (#24033)
+- added testsuites
+- added yast2-network to neededforbuild
+- powertweak mode fixes
+- Powermanagement path description update
+- version 2.7.7
+
+-------------------------------------------------------------------
+Mon Feb 17 17:09:41 CET 2003 - lslezak@suse.de
+
+- convert '<', '>' to '&lt;', '&gt;' in richtext comment
+- version 2.7.6
+
+-------------------------------------------------------------------
+Wed Feb  5 14:03:09 CET 2003 - lslezak@suse.cz
+
+- don't show comments after three hash characters
+- added metadata documentation
+- added missing 'descriptions' in *.spec
+- version 2.7.5
+
+-------------------------------------------------------------------
+Mon Feb  3 14:31:59 CET 2003 - lslezak@suse.cz
+
+- merged proof-read texts
+- bugfixes in sysconfig_auto.ycp
+- version 2.7.4
+
+-------------------------------------------------------------------
+Fri Jan 17 17:46:24 CET 2003 - lslezak@suse.cz
+
+- export/import data in 8.1 format
+- version 2.7.3
+
+-------------------------------------------------------------------
+Thu Jan 16 15:15:01 CET 2003 - lslezak@suse.cz
+
+- autoinstallation support
+- autoinst. config mode: added "use current value"
+  and "add new variable..." functions
+- fixed parsing metadata type value
+- removed obsoleted and unused files
+  sysconfig_proposal.ycp and sysconfig_write.ycp
+- added missing descriptions of predefined paths
+- added descriptions for translatiors
+- small code clean up
+
+-------------------------------------------------------------------
+Wed Jan  8 13:19:42 CET 2003 - lslezak@suse.cz
+
+- added descriptions of predefined paths
+- support for /etc/sysconfig/network/ifcfg-* files
+- read network metadata from ifcg.template file
+- support IPv4 and IPv6 data types
+- support "variable = 'value'" lines in config files
+- fixes - shortcuts, translations, ycpdoc comments
+- version 2.7.2
+
+-------------------------------------------------------------------
+Thu Nov 28 16:26:32 CET 2002 - lslezak@suse.cz
+
+- check if new value is valid (according to specified data type)
+- save modified values to files
+- search in configuration files
+- use metadata from previous variable if comment is missing
+- powertweak subpackage is working now
+- install powertweak packages on request (removed from Require:)
+- version 2.7.1
+
+-------------------------------------------------------------------
+Tue Nov 19 11:14:39 CET 2002 - lslezak@suse.cz
+
+- removed metadata database (now part of configuration files)
+- read and parse metadata
+- merged with CVS head
+- version 2.7.0
+
+-------------------------------------------------------------------
+Thu Oct  3 12:20:20 CEST 2002 - lslezak@suse.cz
+
+- added possible values ("grub", "lilo") for LOADER_TYPE variable
+  (#20385)
+- version 2.6.15
+
+-------------------------------------------------------------------
+Fri Sep 27 13:26:37 CEST 2002 - lslezak@suse.cz
+
+- use string::size_type instead of int - fixes endless loop
+  at start on 64-bit architectures (#20236)
+- version 2.6.14
+
+-------------------------------------------------------------------
+Thu Sep 19 18:35:23 CEST 2002 - lslezak@suse.cz
+
+- do not start SuSEconfig after saving powertweak configuration
+- version 2.6.13
+
+-------------------------------------------------------------------
+Wed Sep 11 16:17:19 CEST 2002 - lslezak@suse.cz
+
+- fixed progress label (rc.config -> sysconfig) (#19398)
+- added new metadata
+- version 2.6.12
+
+-------------------------------------------------------------------
+Fri Sep  6 17:01:56 CEST 2002 - lslezak@suse.cz
+
+- fixed metadata
+- reenabled SuSEconfig after save
+- do not show powertweak settings in sysconfig mode
+- provide/obsolete old packages
+- version 2.6.11
+
+-------------------------------------------------------------------
+Thu Sep  5 11:50:45 CEST 2002 - lslezak@suse.cz
+
+- added new metadata
+- fixed spec file - powertweak.ycp was missing
+- version 2.6.10
+
+-------------------------------------------------------------------
+Mon Sep  2 16:23:02 CEST 2002 - lslezak@suse.cz
+
+- log missing comments
+- added new metadata
+- added powetweak alias (allow 'yast2 powertweak')
+- new icon for yast2-powertweak
+- version 2.6.9
+
+-------------------------------------------------------------------
+Tue Aug 27 20:00:00 CEST 2002 - jsuchome@suse.cz
+
+- provide/obsolete old translation packages
+
+-------------------------------------------------------------------
+Fri Aug 23 15:13:47 CEST 2002 - lslezak@suse.cz
+
+- added new metadata
+- version 2.6.8
+
+-------------------------------------------------------------------
+Fri Aug 16 14:44:15 CEST 2002 - lslezak@suse.cz
+
+- escape double quotes in values, remove redundant beginning
+  and trailing double quotes (#16727)
+- read multi line values (#17766)
+- added new metadata
+- version 2.6.7
+
+-------------------------------------------------------------------
+Wed Aug 14 15:55:38 CEST 2002 - lslezak@suse.cz
+
+- read really all files at /etc/sysconfig directory
+- changed tree level separator from '/' to '$' (allows displaying
+  powertweak variables with '/' in name), fixed metadata scripts,
+  regenerated metadata file
+- merged proofread text
+- added script for searching missing variables in metadata file
+- added new metadata
+- changed maintainer to lslezak@suse.cz
+- version 2.6.6
+
+-------------------------------------------------------------------
+Fri Aug  9 16:03:09 CEST 2002 - lslezak@suse.de
+
+- added ycpdoc comments
+- use OKButtonLabel(), Cancel...(), ...
+- code cleanup - removed obsoleted functions, any type
+- version 2.6.5
+
+-------------------------------------------------------------------
+Thu Aug  8 08:51:27 CEST 2002 - lslezak@suse.de
+
+- added new meta data
+- added support for /etc/sysconfig/network/wireless file
+- fixed powertweak question dialog
+- version 2.6.4
+
+-------------------------------------------------------------------
+Thu Aug  1 11:10:08 CEST 2002 - lslezak@suse.cz
+
+- added powertweak support
+- created yast2-powertweak subpackage
+- added new entries to meta_sys.config file
+- added comments for translators
+- version 2.6.3
+
+-------------------------------------------------------------------
+Fri Jul 12 16:12:24 CEST 2002 - arvin@suse.de
+
+- use proper namespace for Args and CallFunction (#16776)
+
+-------------------------------------------------------------------
+Sat Jul 06 20:40:12 CEST 2002 - arvin@suse.de
+
+- moved non binary files to /usr/share/YaST2
+
+-------------------------------------------------------------------
+Mon Jul  1 17:13:14 CEST 2002 - msvec@suse.cz
+
+- renamed to yast2-sysconfig
+- 2.6.0
+
+-------------------------------------------------------------------
+Thu Mar 21 18:12:38 CET 2002 - mike@suse.de
+
+- bug 13694: missing variables in sysconfig editor
+
+-------------------------------------------------------------------
+Wed Mar 20 17:15:10 CET 2002 - mike@suse.de
+
+- ro request: bug in spec fixed
+
+-------------------------------------------------------------------
+Thu Mar 14 14:39:23 CET 2002 - mike@suse.de
+
+- Bug 14992: sysconfig editor asks me if I wish to see the installation log
+
+-------------------------------------------------------------------
+Tue Feb 26 14:03:46 CET 2002 - mike@suse.de
+
+- enameing from yast2-trans-rcconfig to  yast2-trans-sysconfig
+
+-------------------------------------------------------------------
+Tue Feb 26 12:16:17 CET 2002 - mike@suse.de
+
+- renameing from yast2-config-rcconfig to  yast2-config-sysconfig
+
+-------------------------------------------------------------------
+Mon Feb 18 18:41:05 CET 2002 - mike@suse.de
+
+- new libtool version was required
+
+-------------------------------------------------------------------
+Mon Feb 18 17:50:45 CET 2002 - mike@suse.de
+
+- changes due to /etc/sysconfig and deleted firewall option
+
+-------------------------------------------------------------------
+Fri Feb  8 18:05:19 CET 2002 - lnussel@suse.de
+
+- command line argument is of type string
+
+-------------------------------------------------------------------
+Fri Feb  8 17:31:05 CET 2002 - mike@suse.de
+
+- changes due to /etc/sysconfig changes
+
+-------------------------------------------------------------------
+Mon Sep 24 14:14:34 CEST 2001 - mike@suse.de
+
+- fixed: broken logfile of scripts
+  fixed: deleted stop of pers. firewall
+
+-------------------------------------------------------------------
+Thu Sep 20 14:47:23 CEST 2001 - mike@suse.de
+
+- moved menuentry to group security
+
+-------------------------------------------------------------------
+Thu Sep 20 13:27:25 CEST 2001 - mike@suse.de
+
+- change request of draht:
+  for proper work, we have to start firewall2 script before personal firewall
+  script
+
+-------------------------------------------------------------------
+Wed Sep 19 17:46:15 CEST 2001 - mike@suse.de
+
+- added START_FW2 variable for firewall module.
+- change start, stop to restart2 for firewall2
+
+-------------------------------------------------------------------
+Tue Sep 18 18:03:27 CEST 2001 - mike@suse.de
+
+- firewall scripts started
+
+-------------------------------------------------------------------
+Fri Sep 14 17:22:34 CEST 2001 - mike@suse.de
+
+- new firewall configuration  added
+
+-------------------------------------------------------------------
+Mon Sep 10 14:14:34 CEST 2001 - lnussel@suse.de
+
+- moved icon in Control Center from Group "Misc" to "System"
+  (Bug #10256)
+
+-------------------------------------------------------------------
+Sat Aug 11 18:21:36 CEST 2001 - arvin@suse.de
+
+- fixed for gcc 3.0
+
+-------------------------------------------------------------------
+Wed Jul 25 15:26:46 CEST 2001 - lnussel@suse.de
+
+- ported to libstdc++, libg++ no longer necessary
+
+-------------------------------------------------------------------
+Tue May  8 14:53:45 CEST 2001 - mike@suse.de
+
+- added varaiables for 7.2, added Documentation
+
+-------------------------------------------------------------------
+Tue Apr 24 07:08:11 CEST 2001 - jbuch@suse.de
+
+- define -> global define
+
+-------------------------------------------------------------------
+Thu Mar  8 10:48:42 CET 2001 - curry@suse.de
+
+- faster reading and processing of rc.config variables
+
+-------------------------------------------------------------------
+Fri Jan 19 18:42:53 CET 2001 - mike@suse.de
+
+- tag a string (make it translatable)
+
+-------------------------------------------------------------------
+Thu Jan 18 15:09:07 CET 2001 - mike@suse.de
+
+- added new 7.1 variables to database
+
+-------------------------------------------------------------------
+Mon Jan 15 19:58:51 CET 2001 - mike@suse.de
+
+- bugfix in search
+
+-------------------------------------------------------------------
+Wed Jan  3 21:29:01 CET 2001 - mike@suse.de
+
+- new database (added meta information)
+  enums allowed
+
+-------------------------------------------------------------------
+Fri Dec 15 10:07:59 CET 2000 - mike@suse.de
+
+- new database (added meta information )
+
+-------------------------------------------------------------------
+Wed Dec 13 19:10:20 CET 2000 - mike@suse.de
+
+- new menuentry
+
+-------------------------------------------------------------------
+Fri Dec  8 18:32:21 CET 2000 - mike@suse.de
+
+- fix bzip2 helptext
+
+-------------------------------------------------------------------
+Fri Dec  8 17:11:41 CET 2000 - mike@suse.de
+
+- new module for 7.1
+  graphical /etc/rc.config editor

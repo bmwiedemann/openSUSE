@@ -1,0 +1,40 @@
+From: Alistair Francis <Alistair.Francis@wdc.com>
+Date: Tue, 30 Apr 2019 23:29:01 +0000
+Subject: linux-user/elfload: Fix GCC 9 build warnings
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fix this warning when building with GCC9 on Fedora 30:
+In function ‘strncpy’,
+    inlined from ‘fill_psinfo’ at /home/alistair/qemu/linux-user/elfload.c:3208:12,
+    inlined from ‘fill_note_info’ at /home/alistair/qemu/linux-user/elfload.c:3390:5,
+    inlined from ‘elf_core_dump’ at /home/alistair/qemu/linux-user/elfload.c:3539:9:
+/usr/include/bits/string_fortified.h:106:10: error: ‘__builtin_strncpy’ specified bound 16 equals destination size [-Werror=stringop-truncation]
+  106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <c4d2b1de9efadcf1c900b91361af9302823a72a9.1556666645.git.alistair.francis@wdc.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+(cherry picked from commit d7eb2b928a855a2e8038e8e75f7edf1a12226bd3)
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ linux-user/elfload.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index c1a26021f8..d08fe23466 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -2872,7 +2872,7 @@ struct target_elf_prpsinfo {
+     target_gid_t pr_gid;
+     target_pid_t pr_pid, pr_ppid, pr_pgrp, pr_sid;
+     /* Lots missing */
+-    char    pr_fname[16];           /* filename of executable */
++    char    pr_fname[16] QEMU_NONSTRING; /* filename of executable */
+     char    pr_psargs[ELF_PRARGSZ]; /* initial part of arg list */
+ };
+ 

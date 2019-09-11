@@ -1,0 +1,48 @@
+From 3135c6e58ec533b28e695840273f9a84e0b194d2 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Thu, 9 May 2019 16:50:25 +0200
+Subject: [PATCH 11/18] add "jshint validthis" to silence warnings about strict
+ mode
+
+I haven't found a more elegant way to fix these warnings,
+which break "make test-style".
+---
+ extension/widgets/panelWidget.js       | 1 +
+ extension/widgets/todaysFactsWidget.js | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/extension/widgets/panelWidget.js b/extension/widgets/panelWidget.js
+index 7328ba0..de77f4a 100644
+--- a/extension/widgets/panelWidget.js
++++ b/extension/widgets/panelWidget.js
+@@ -165,6 +165,7 @@ class PanelWidget extends PanelMenu.Button {
+          *
+          * Returns ``null`` if there is no *ongoing fact*.
+          */
++        /* jshint validthis: true */
+ 		function getOngoingFact(facts) {
+ 		    let result = null;
+ 		    if (facts.length) {
+diff --git a/extension/widgets/todaysFactsWidget.js b/extension/widgets/todaysFactsWidget.js
+index 1b7f84a..cb74fd7 100644
+--- a/extension/widgets/todaysFactsWidget.js
++++ b/extension/widgets/todaysFactsWidget.js
+@@ -66,6 +66,7 @@ class TodaysFactsWidget extends St.ScrollView {
+             /**
+              * Check if two facts have the same activity.
+              */
++	    /* jshint validthis: true */
+             function checkSameActivity(fact, otherFact) {
+                 // Check if two facts have the same activity.
+                 let result = true;
+@@ -112,6 +113,7 @@ class TodaysFactsWidget extends St.ScrollView {
+                     factStr += " #" + fact.tags.join(", #");
+                 }
+ 
++		/* jshint validthis: true */
+                 controller.apiProxy.AddFactRemote(factStr, 0, 0, false, Lang.bind(this, function(response, err) {
+                     // not interested in the new id - this shuts up the warning
+                 }));
+-- 
+2.21.0
+

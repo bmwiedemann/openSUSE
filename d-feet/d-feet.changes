@@ -1,0 +1,388 @@
+-------------------------------------------------------------------
+Wed Jan  2 16:37:27 UTC 2019 - bwiedemann@suse.com
+
+- Do not have useless arch-dependent libdir in noarch package
+  (boo#1109534).
+
+-------------------------------------------------------------------
+Tue Dec 11 19:47:41 UTC 2018 - bjorn.lie@gmail.com
+
+- Own metainfo dir to fix build on old versions of openSUSE.
+
+-------------------------------------------------------------------
+Fri Nov  9 21:37:35 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.3.14:
+  + Correctly honour theme foreground colour.
+  + dbus_utils:
+    - stringify "h" (UNIX FD).
+    - simplify converting simple types.
+    - simplify looking ahead 1 character.
+  + Cleanup doap file.
+  + settings:
+    - fix regexp syntax, add a test.
+    - use r'' strings for regexps.
+  + Ignore W504 line break after binary operator.
+  + Fix a few unused variable/import warnings.
+  + Remove bare 'except:' clauses.
+  + Detect 'pycodestyle', the new name for 'pep8'.
+  + Run tests with same Python version as application.
+  + Fix coding style errors reported by make check.
+  + executedialog:
+    - include bus name.
+    - allow selecting name/path/interface fields.
+  + Fix format string with python3.
+  + Honor theme's foreground color.
+  + Display statistics and match rules from the D-Bus Stats
+    interface.
+  + Remove unused DFeetWindow.package field.
+  + Set icon_name to org.gnome.dfeet.
+  + Do not use hyphen for the reverse-DNS names.
+  + Rename the icons, appdata and desktop files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  7 22:27:11 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop python-pep8 BuildRequires and pass --disable-tests to
+  configure, pep8 is only needed for the test-suite, that we do not
+  even run.
+- Add explicit python3 BuildRequires, and export
+  PYTHON=%%{_bindir}/python3 before calling configure, switch to
+  python3.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:24:46 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Nov 24 22:09:50 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.3.13:
+  + Use locale.textdomain otherwise gtkbuilder translations don't
+    work.
+  + gitignore: Ignore generated localized help files.
+  + build:
+    - Put various Autotools droppings in build-aux.
+    - Stop using GNOME_COMPILE_WARNINGS.
+    - Replace deprecated use of gnome-autogen.sh with recommended
+      autogen.sh.
+    - Put third-party macros in m4.
+  + Make pep8 happy.
+  + ExecuteMethodDialog: set_transient_for().
+  + ExecuteMethodDialog: Pretty-print multiple results.
+  + Fix PEP8 305 style error.
+  + Show values that have a logical False representation.
+  + Updated translations.
+- Drop
+  d-feet-Show-values-that-have-logical-False-representation.patch:
+  Fixed upstream.
+- Drop update-desktop-files BuildRequires and
+  suse_update_desktop_file macro, no longer needed.
+- Drop obsolete post(un) handling of icon_theme_cache_post(un),
+  desktop_database_post(un) and glib2_gsettings_schema_post(un), we
+  have file-triggers taking care of this now.
+- Run spec-cleaner, modernize spec, use autosetup and make_build
+  macros.
+
+-------------------------------------------------------------------
+Sun Aug 20 16:56:20 UTC 2017 - zaitor@opensuse.org
+
+- Add
+  d-feet-Show-values-that-have-logical-False-representation.patch:
+  Show values that have a logical False representation. Correctly
+  test whether a value has been retrieved (not None) instead of
+  testing whether the value is logically True to decide on showing
+  it (bgo#783006).
+
+-------------------------------------------------------------------
+Tue Jul  4 10:26:25 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.3.12:
+  + Make pep8 happy.
+  + Revert "Don't use Wnck to get app-icons under non-X11".
+  + Assume Wnck is absent on non-X11.
+  + Specify the Wnck version to silence a warning.
+  + Add Language headers to po files.
+  + Fix desktop file keywords translations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Apr 23 11:20:35 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.3.11:
+  + Don't use Wnck to get app-icons under non-X11.
+  + Add a missing tag to the AppData file.
+  + Update the AppData file to spec version 0.7+.
+  + UI: make the stack animation slide-left-right.
+  + Ignore pep8 E402 error.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul  6 20:44:49 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.3.10:
+  + Remove deprecated {x,y}pad properties.
+  + Use correct license which is GPL-2.0.
+  + Set transient parent for GtkDialog.
+  + Remove usage of "margin-{left,right}" #2.
+  + Use margin-{start,end} for bus box.
+  + Remove usage of "margin-{left,right}".
+  + Allow connections to arbitrary buses.
+  + Use open-menu-symbolic for gear icon.
+  + Use the path detected by autoconf instead of hard-coding
+    /usr/bin/python.
+  + Make pep8 happy.
+  + Add missing appdata file to dist tarball.
+  + Add more keywords to desktop file.
+  + Fix desktop file keywords translation.
+  + Update links to wiki homepage.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 11 20:56:17 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.3.9:
+  + Wrap method signature in exec dialog.
+  + Remove references to the obsoleted paned_buswatch.
+  + introspection.ui: Use symbolic icons for the reload button.
+  + Make AppData file translatable,
+  + Update wiki page link.
+  + data: Don't run update-desktop-database if DESTDIR is set.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 20 11:54:02 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.3.8:
+  + Fix appdata distribution.
+  + Add appdata file for gnome-software.
+  + Update screenshot according to appdata guidelines.
+  + Add screenshot for appdata.
+  + Introspection:
+    - Fix showing unique-name for services with a well-known name.
+    - Use a 'reload' image button instead of a text button.
+  + Pep8 updates.
+  + Change ' to " in .ui files.
+  + Build:
+    - Update ignored files.
+    - Don't use AM_GNU_GETTEXT.
+  + Window:
+    - Keep track of whether Session and System bus are already
+      open.
+    - Allow closing currently visible bus.
+    - Use a GtkStack instead of a GtkNotebook.
+    - Use a GtkHeaderBar and a gear menu.
+  + Bus:
+    - Add margins to the bus box 
+    - Use a GtkSearchEntry instead of the filter box.
+  + Application: Load app menu from ui file.
+  + Fix desktop file keywords translation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 28 07:41:28 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.3.7:
+  + Show inactive bus names in italic.
+  + Also install dfeet-icon-default-service.png.
+  + Update POTFILES.in.
+  + Also show activatable bus names.
+  + Remove duplicate if-clause.
+  + Fix Makefile for data/ui.
+  + threads_init no longer needs to be called.
+  + Bring back the application icons.
+  + Use pformat to show method call results.
+  + Use GtkListBox instead of a TreeView.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 10 18:06:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.3.6:
+  + Replace live.gnome.org with wiki.gnome.org.
+  + Add a flag to not run the testsuite.
+  + Fix markup string handling for tuple.
+  + Update HACKING.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jun 22 11:27:01 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.3.5:
+  + Fix Annotation handling.
+  + Removed markup from Ui files. See
+    https://live.gnome.org/GnomeGoals/RemoveMarkupInMessages
+  + Add empty (for now) LINGUAS file to satisfy Damned Lies.
+  + Remove unneeded context from strings.
+  + Updated POTFILES.in and POTFILES.skip.)
+  + Use GTestDBus instead of Systembus and Sessionbus.
+  + Use dbus_is_address() instead of dbus_is_supported_address().
+  + Require gobject introspection >= 0.9.6.
+  + GI imports: require Gtk 3.0.
+  + Update HACKING.
+  + Updated translations.
+- Drop d-feet-require-gtk-3.0.patch, fixed upstream.
+- Replace gobject-introspection BuildRequires with
+  pkgconfig(gobject-introspection-1.0), as this is what configure
+  now checks for.
+- Split out lang package and recommend it for install.
+- Add fdupes BuildRequires and make use of it.
+
+-------------------------------------------------------------------
+Thu May 23 10:55:24 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.3.4:
+  + Update README and HACKING.
+  + Improve the HighContrast icon.
+  + Add missing source.
+  + Add scalable HighContrast icon.
+  + Remove useless text and duplicate icons from scalable logo.
+  + Don't fail if no systembus or sessionbus is available.
+  + Add app menu.
+  + Move window logic to own file and use GtkApplicationWindow.
+  + Add help files.
+  + Check source for pep8.
+  + Fix unittests.
+  + Use correct data dir.
+  + Use autotools for d-feet.
+  + Fix whitespaces.
+- Drop python-setuptools BuildRequires: no longer needed after the
+  move to autotools based build system.
+- Add intltool, yelp-tools, pkgconfig(gio-2.0), python-pep8 and
+  pkgconfig(gtk+-3.0) BuildRequires: needed for the help system and
+  dependencies verified by configure.
+- Update build and install section to use %configure and
+  %make_install instead of the python specific calls.
+- Add glib schema handling script macros to post/postun.
+- Rebase d-feet-require-gtk-3.0.patch.
+
+-------------------------------------------------------------------
+Sun May 12 11:47:22 UTC 2013 - dimstar@opensuse.org
+
+- Add d-feet-require-gtk-3.0.patch: Require Gtk 3.0. This helps the
+  automatic dep generator to add the correct dependencies to the
+  rpm (bgo#700163, bnc#818808).
+
+-------------------------------------------------------------------
+Fri Jan 25 12:47:24 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.3.3:
+  + Don't close dialog after method execution.
+  + Add close-button to exception dialog.
+  +  Fix needed double click to close method execution dialog.
+  + Update HACKING.
+- Changes from version 0.3.2:
+  + Fix input parameter handling for method execution dialog.
+  + Update requirements in README.
+  + Make d-feet ready for Python 3.
+
+-------------------------------------------------------------------
+Sun Dec  2 13:52:02 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.3.1:
+  + Update setup.py.
+  + Enlarge icon.
+  + Fix icon handling.
+  + Adjust UI.
+  + Fix d-feet icon usage.
+  + Merge branch 'pygi' (use gobject-introspection).
+- Add gobject-introspection BuildRequires: Needed for the typelib()
+  requires rpm magic.
+- Drop gettext and scrollkeeper BuildRequires: no longer needed.
+- Drop dbus-1-pyton and python-gtk Requires: no longer needed after
+  the port to gobject-introspection.
+- Add hicolor-icon-theme BuldRequires: needed for the icon_*
+  macros (it used to be pulled in by python-gtk/gtk2).
+
+-------------------------------------------------------------------
+Sun Oct 21 23:22:39 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.1.15:
+  + Fixed tree model crash.
+  + Fix crash on empty selection.
+  + Removed gap between window titlebar and menubar.
+  + Import gtk early in a try except block so we catch if display
+    is not set.
+  + Use XDG config dir.
+  + Fix icon globbing in setup.py
+
+-------------------------------------------------------------------
+Wed Nov 16 14:00:29 UTC 2011 - malcolmlewis@opensuse.org
+
+- Update spec file License field from GPLv2+ to GPL-2.0+ to
+  conform with spdx.org identifier.
+- Used spec-cleaner to tidy up spec file.
+- Add icon_theme_cache and desktop_database macros to update
+  icons and desktop entry.
+
+-------------------------------------------------------------------
+Tue Nov 15 16:01:49 UTC 2011 - jreidinger@suse.com
+
+- Update to version 0.1.14:
+  + Replace old icon with new hi-res icons
+  + Deal with None config values by making them empty strings
+  + Add dbus type wrappers global scope of methods executed by the
+    exec dialog
+  + Remove lingering glade import
+  + Fix quoting and unquoting config lists
+  + Add a reconnect button to the main panel that will allow to
+    close and reconnect the dbus connection for the current tab if
+    this tab address is not either Session Bus or System Bus.
+  + Close the bus connection when we close a connection tab for the
+    buses different than Session Bus and System Bus.
+  + Quote and unquote list items to avoid splitting on comma
+    litterals
+  + Add a persistant history to the combobox in the "connect to
+    other bus" dialog.
+  + Pressing "Enter" in the add connection combobox activates the
+    connect action
+- Drop bugfix_python27_not_start.patch: fixed upstream.
+- Add dbus-1-python Requires that was missing earlier.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Fri Aug 12 06:10:37 UTC 2011 - dmzhang@novell.com
+
+- bugfix for bgo#644701: can't start the d-feet after the previous start
+- when using python2.7,d-feet configuration failed
+
+-------------------------------------------------------------------
+Mon Dec 20 10:19:07 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.12:
+  + Add the ability to specify a bus on the command line using the
+    --bus-address or -a switch
+  + Fix up some UI bugs
+- Change from version 0.1.11:
+  + Fix .desktop file.
+- Change from version 0.1.10:
+  + Add the rest of the basic types.
+  + Fix for methods that return 0.
+  + Use pprint to slightly prettify method output.
+  + UI fixes.
+- Add python-setuptools BuildRequires.
+- Remove explicit python Requires: it's already set with
+  %py_requires.
+- Add python-gtk Requires.
+- Update Url tag since the project moved to gnome.org.
+- Improve summary.
+- Do not add any category to the desktop file: they're all already
+  there.
+
+-------------------------------------------------------------------
+Sun Aug  9 16:36:10 CEST 2009 - coolo@novell.com
+
+- use new python macros, make it noarch
+
+-------------------------------------------------------------------
+Tue Jan  8 13:50:43 CET 2008 - thoenig@suse.de
+
+- initial check-in: D-Feet 0.1.8
+

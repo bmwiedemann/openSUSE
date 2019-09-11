@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Sun Apr 28 07:27:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from descriptions. Remove double %setup.
+
+-------------------------------------------------------------------
+Wed Apr 24 18:53:34 UTC 2019 - Dany Marcoux <dmarcoux@suse.com>
+
+- Initial packaging at 1.1.0

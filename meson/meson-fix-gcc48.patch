@@ -1,0 +1,101 @@
+--- a/mesonbuild/compilers/cpp.py
++++ b/mesonbuild/compilers/cpp.py
+@@ -140,8 +140,8 @@ class ClangCPPCompiler(ClangCompiler, CP
+     def get_options(self):
+         opts = CPPCompiler.get_options(self)
+         opts.update({'cpp_std': coredata.UserComboOption('cpp_std', 'C++ language standard to use',
+-                                                         ['none', 'c++98', 'c++03', 'c++11', 'c++14', 'c++17', 'c++1z', 'c++2a',
+-                                                          'gnu++11', 'gnu++14', 'gnu++17', 'gnu++1z', 'gnu++2a'],
++                                                         ['none', 'c++98', 'c++03', 'c++11', 'c++1y', 'c++14', 'c++17', 'c++1z', 'c++2a',
++                                                          'gnu++11', 'gnu++1y', 'gnu++14', 'gnu++17', 'gnu++1z', 'gnu++2a'],
+                                                          'none')})
+         return opts
+ 
+@@ -171,8 +171,8 @@ class ArmclangCPPCompiler(ArmclangCompil
+     def get_options(self):
+         opts = CPPCompiler.get_options(self)
+         opts.update({'cpp_std': coredata.UserComboOption('cpp_std', 'C++ language standard to use',
+-                                                         ['none', 'c++98', 'c++03', 'c++11', 'c++14', 'c++17',
+-                                                          'gnu++98', 'gnu++03', 'gnu++11', 'gnu++14', 'gnu++17'],
++                                                         ['none', 'c++98', 'c++03', 'c++11', 'c++1y', 'c++14', 'c++17',
++                                                          'gnu++98', 'gnu++03', 'gnu++11', 'gnu++1y', 'gnu++14', 'gnu++17'],
+                                                          'none')})
+         return opts
+ 
+@@ -197,10 +197,12 @@ class GnuCPPCompiler(GnuCompiler, CPPCom
+                           '3': default_warn_args + ['-Wextra', '-Wpedantic']}
+ 
+     def get_options(self):
++        cpp_stds = ['c++98', 'c++03', 'c++11', 'c++1y', 'gnu++11', 'gnu++1y']
++        if version_compare(self.version, '>=5.0.0'):
++            cpp_stds += ['c++14', 'c++17', 'c++1z', 'c++2a', 'gnu++14', 'gnu++17', 'gnu++1z', 'gnu++2a']
+         opts = CPPCompiler.get_options(self)
+         opts.update({'cpp_std': coredata.UserComboOption('cpp_std', 'C++ language standard to use',
+-                                                         ['none', 'c++98', 'c++03', 'c++11', 'c++14', 'c++17', 'c++1z', 'c++2a',
+-                                                          'gnu++03', 'gnu++11', 'gnu++14', 'gnu++17', 'gnu++1z', 'gnu++2a'],
++                                                         ['none'] + cpp_stds,
+                                                          'none'),
+                      'cpp_debugstl': coredata.UserBooleanOption('cpp_debugstl',
+                                                                 'STL debug mode',
+@@ -276,7 +278,7 @@ class IntelCPPCompiler(IntelCompiler, CP
+         c_stds = ['c++98', 'c++03']
+         g_stds = ['gnu++98', 'gnu++03']
+         if version_compare(self.version, '>=15.0.0'):
+-            c_stds += ['c++11', 'c++14']
++            c_stds += ['c++11', 'c++1y', 'c++14']
+             g_stds += ['gnu++11']
+         if version_compare(self.version, '>=16.0.0'):
+             c_stds += ['c++17']
+--- a/mesonbuild/minit.py
++++ b/mesonbuild/minit.py
+@@ -143,7 +143,7 @@ int main(int argc, char **argv) {{
+ hello_cpp_meson_template = '''project('{project_name}', 'cpp',
+   version : '{version}',
+   default_options : ['warning_level=3',
+-                     'cpp_std=c++14'])
++                     'cpp_std=c++1y'])
+ 
+ exe = executable('{exe_name}', '{source_name}',
+   install : true)
+@@ -214,7 +214,7 @@ int main(int argc, char **argv) {{
+ 
+ lib_cpp_meson_template = '''project('{project_name}', 'cpp',
+   version : '{version}',
+-  default_options : ['warning_level=3', 'cpp_std=c++14'])
++  default_options : ['warning_level=3', 'cpp_std=c++1y'])
+ 
+ # These arguments are only used to build the shared library
+ # not the executables that use the library.
+@@ -404,7 +404,7 @@ def create_meson_build(options):
+     default_options = ['warning_level=3']
+     if options.language == 'cpp':
+         # This shows how to set this very common option.
+-        default_options += ['cpp_std=c++14']
++        default_options += ['cpp_std=c++1y']
+     # If we get a meson.build autoformatter one day, this code could
+     # be simplified quite a bit.
+     formatted_default_options = ', '.join("'{}'".format(x) for x in default_options)
+--- "a/test cases/common/152 simd/simdchecker.c"
++++ "b/test cases/common/152 simd/simdchecker.c"
+@@ -10,11 +10,12 @@ int check_simd_implementation(float *fou
+         const float *expected,
+         simd_func fptr,
+         const int blocksize) {
++    int i;
+     int rv = 0;
+     memcpy(four, four_initial, blocksize*sizeof(float));
+     printf("Using %s.\n", simd_type);
+     fptr(four);
+-    for(int i=0; i<blocksize; i++) {
++    for(i=0; i<blocksize; i++) {
+         if(four[i] != expected[i]) {
+             printf("Increment function failed, got %f expected %f.\n", four[i], expected[i]);
+             rv = 1;
+--- "a/test cases/unit/17 prebuilt shared/patron.c"
++++ "b/test cases/unit/17 prebuilt shared/patron.c"
+@@ -5,4 +5,5 @@ int main(int argc, char **argv) {
+     printf("You are standing outside the Great Library of Alexandria.\n");
+     printf("You decide to go inside.\n\n");
+     alexandria_visit();
++    return 0;
+ }

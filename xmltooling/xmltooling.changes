@@ -1,0 +1,202 @@
+-------------------------------------------------------------------
+Wed Mar 20 12:51:06 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
+
+- update to 3.0.4
+  * [CPPXT-143] - Crash due to uncaught DOMException
+    [bsc#1129537] [CVE-2019-9628]
+  * [CPPXT-144] - CURL SOAP Transport: unset Expect Header
+
+-------------------------------------------------------------------
+Mon Feb 11 13:39:27 UTC 2019 - kstreitova@suse.com
+
+- update to 3.0.3
+  * [CPPXT-136] - Likely issues with empty element content in
+    KeyInfo handling code
+  * [CPPXT-138] - xmltooling does not build with OpenSSL-1.1.1
+  * [CPPXT-139] - DataSealer needs to catch both Santuario
+    exception types
+  * [CPPXT-137] - OpenSSL 1.1.1 work
+
+-------------------------------------------------------------------
+Tue Nov 27 16:56:30 UTC 2018 - kstreitova@suse.com
+
+- update to 3.0.2
+  * [CPPXT-135] - Lite half of library has unintentional zlib
+    dependency
+  * [CPPXT-134] - Reloadable configuration deleting backing file
+    on a 304
+  * [CPPXT-33] - Credential::getCredentialContext method misspelled
+  * [CPPXT-81] - Use of LIBS in place of LDFLAGS in configure tests
+    break custom builds
+  * [CPPXT-111] - Build flags leak into pkg-config files
+  * [CPPXT-114] - ExplicitKeyTrustEngine doesn't handle EC in the
+    OpenSSL case
+  * [CPPXT-116] - Apache 2.4 / Shibboleth Deadlock
+  * [CPPXT-127] - DTD-defined entities can be added to XML without
+    breaking signature
+  * [CPPXT-133] - Eliminate uses of getTextContent in DOM helpers
+  * [CPPXT-110] - OpenSSL 1.1 compatibility
+  * [CPPXT-123] - Updates and next releases of Xerces and Santuario
+  * [CPPXT-126] - TODO and cleanup tasks for V3
+  * [CPPXT-118] - Address any deprecated CURL options
+  * [CPPXT-120] - Set disallow-doctype property on DOMLSParser
+  * [CPPXT-122] - Replace DateTime class with Xerces version
+  * [CPPXT-125] - Consider making
+    AbractPKIXTrustEngine::checkEntityNames virtual
+  * [CPPXT-130] - auto_ptr cleanup
+  * [CPPXT-132] - Slow down dependent on curl version
+- update soname for libxmltooling library from 7 to 8
+- require libxerces-c-devel >= 3.2 and libxml-security-c-devel
+  >= 2.0.0
+- add Buildrequires: zlib-devel
+- remove upstream patches supporting building with openssl 1.1
+  that are no longer needed
+  * 0023-CPPXT-110-OpenSSL-1.1-removes-BIO_s_file_internal.patch
+  * 0011-CPPXT-110-Clean-up-some-collateral-damage-from-previ.patch
+  * 0005-CPPXT-110-OpenSSL-1.1-removes-BIO_s_file_internal.patch
+  * 0026-CPPXT-110-OpenSSL-1.1-library-names-have-changes.patch
+  * 0027-Commit-a-xmltoolingtest.vcxproj.user.patch
+  * 0010-CPPXT-110-Start-to-add-tests-to-exercise-XSEC-paths-.patch
+  * 0003-CPPXT-110-OpenSSL-1.1-makes-DSA-opaque.patch
+  * 0002-CPPXT-110-Add-new-OpenSSL-support-files-to-Unix-buil.patch
+  * 0012-CPPXT-110-Add-test-path-for-RSA-loadXXXBigNums.patch
+  * 0009-CPPXT-110-Start-to-add-tests-to-exercise-XSEC-paths-.patch
+  * 0020-CPPXT-110-Add-new-OpenSSL-support-files-to-Unix-buil.patch
+  * 0024-CPPXT-110-OpenSSL-1.1-internalizes-locking.patch
+  * 0006-CPPXT-110-OpenSSL-1.1-internalizes-locking.patch
+  * 0028-CPPXT-110-OpenSSL-1.1-OpenSSL1.1-changes-to-newly-in.patch
+  * 0025-CPPXT-110-OpenSSL-1.1-Fix-some-signatures-and-names.patch
+  * 0016-CPPXT-110-Round-trip-verify-test-for-OpenSSLCryptoKe.patch
+  * 0021-CPPXT-110-OpenSSL-1.1-makes-DSA-opaque.patch
+  * 0007-Unwind-previous.patch
+  * 0013-CPPXT-110-Used-Named-curves-for-EC-testing.patch
+  * 0030-CPPXT-110-OpenSSL-1.1-New-build-mechanisms.patch
+  * 0031-Missed-file-for-OpenSSL1.1-support.patch
+  * 0029-CPPXT-110-OpenSSL-1.1-Cleanup-tests.patch
+  * 0022-CPPXT-110-OpenSSL-1.1-makes-EVP_PKEY-opaque.patch
+  * 0017-CPPXT-110-Inverted-parameters-to-TSM_ASSERT-in-DSA-t.patch
+  * 0008-CPPXT-110-Checkin-prototypical-vcxproj.user-file-for.patch
+  * 0019-CPPXT-110-OpenSSL-1.1-makes-X509_STORE_CTX-and-X509_.patch
+  * 0001-CPPXT-110-OpenSSL-1.1-makes-X509_STORE_CTX-and-X509_.patch
+  * 0018-CPPXT-110-Test-for-OpenSSL-part-of-ExplicitKeyTrustE.patch
+  * 0004-CPPXT-110-OpenSSL-1.1-makes-EVP_PKEY-opaque.patch
+  * 0015-CPPXT-110-test-for-code-changes-to-OpenSSLCryptoKeyE.patch
+  * 0014-CPPXT-110-test-for-code-changes-to-OpenSSLCryptoKeyD.patch
+- introduce libxmltooling-lite subpackage
+
+-------------------------------------------------------------------
+Wed Feb 28 11:13:56 UTC 2018 - kstreitova@suse.com
+
+- update to 1.6.4
+  * [CPPXT-128] - Additional nodes can be added to XML without
+    breaking signature [bsc#1083247] [CVE-2018-0489]
+
+-------------------------------------------------------------------
+Mon Jan 15 12:00:19 UTC 2018 - kstreitova@suse.com
+
+- update to 1.6.3
+  * [CPPXT-127] - DTD-defined entities can be added to XML without
+    breaking signature [CVE-2018-0486], [bsc#1075975]
+- 'Url' -> 'URL'
+
+-------------------------------------------------------------------
+Wed Nov 15 13:05:17 UTC 2017 - kstreitova@suse.com
+
+- update to 1.6.2
+  * 1.6.2:
+    [CPPXT-124] - Regression caused by CPPXT-116
+  * 1.6.1:
+    [CPPXT-107] - Issues compiling with Boost and VC15
+
+-------------------------------------------------------------------
+Thu Nov  9 16:43:11 UTC 2017 - vcizek@suse.com
+
+- add upstream patches to support building with openssl 1.1 (bsc#1067419)
+  * 0023-CPPXT-110-OpenSSL-1.1-removes-BIO_s_file_internal.patch
+  * 0011-CPPXT-110-Clean-up-some-collateral-damage-from-previ.patch
+  * 0005-CPPXT-110-OpenSSL-1.1-removes-BIO_s_file_internal.patch
+  * 0026-CPPXT-110-OpenSSL-1.1-library-names-have-changes.patch
+  * 0027-Commit-a-xmltoolingtest.vcxproj.user.patch
+  * 0010-CPPXT-110-Start-to-add-tests-to-exercise-XSEC-paths-.patch
+  * 0003-CPPXT-110-OpenSSL-1.1-makes-DSA-opaque.patch
+  * 0002-CPPXT-110-Add-new-OpenSSL-support-files-to-Unix-buil.patch
+  * 0012-CPPXT-110-Add-test-path-for-RSA-loadXXXBigNums.patch
+  * 0009-CPPXT-110-Start-to-add-tests-to-exercise-XSEC-paths-.patch
+  * 0020-CPPXT-110-Add-new-OpenSSL-support-files-to-Unix-buil.patch
+  * 0024-CPPXT-110-OpenSSL-1.1-internalizes-locking.patch
+  * 0006-CPPXT-110-OpenSSL-1.1-internalizes-locking.patch
+  * 0028-CPPXT-110-OpenSSL-1.1-OpenSSL1.1-changes-to-newly-in.patch
+  * 0025-CPPXT-110-OpenSSL-1.1-Fix-some-signatures-and-names.patch
+  * 0016-CPPXT-110-Round-trip-verify-test-for-OpenSSLCryptoKe.patch
+  * 0021-CPPXT-110-OpenSSL-1.1-makes-DSA-opaque.patch
+  * 0007-Unwind-previous.patch
+  * 0013-CPPXT-110-Used-Named-curves-for-EC-testing.patch
+  * 0030-CPPXT-110-OpenSSL-1.1-New-build-mechanisms.patch
+  * 0031-Missed-file-for-OpenSSL1.1-support.patch
+  * 0029-CPPXT-110-OpenSSL-1.1-Cleanup-tests.patch
+  * 0022-CPPXT-110-OpenSSL-1.1-makes-EVP_PKEY-opaque.patch
+  * 0017-CPPXT-110-Inverted-parameters-to-TSM_ASSERT-in-DSA-t.patch
+  * 0008-CPPXT-110-Checkin-prototypical-vcxproj.user-file-for.patch
+  * 0019-CPPXT-110-OpenSSL-1.1-makes-X509_STORE_CTX-and-X509_.patch
+  * 0001-CPPXT-110-OpenSSL-1.1-makes-X509_STORE_CTX-and-X509_.patch
+  * 0018-CPPXT-110-Test-for-OpenSSL-part-of-ExplicitKeyTrustE.patch
+  * 0004-CPPXT-110-OpenSSL-1.1-makes-EVP_PKEY-opaque.patch
+  * 0015-CPPXT-110-test-for-code-changes-to-OpenSSLCryptoKeyE.patch
+  * 0014-CPPXT-110-test-for-code-changes-to-OpenSSLCryptoKeyD.patch
+
+-------------------------------------------------------------------
+Thu Sep 21 14:43:12 UTC 2017 - kstreitova@suse.com
+
+- update to 1.6.0
+  * [CPPXT-108] - Potential nullpointer dereference in
+    InlineCredential::getKeyInfo
+  * [CPPXT-109] - XSECCryptoX509CRL::loadX509CRLPEM() can read past
+    unterminated buffer
+- update soname for libxmltooling library from 6 to 7
+- add version for boost-devel buildrequires
+- add %{opensaml_version} macro
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Sat Feb 11 22:17:24 UTC 2017 - jengelh@inai.de
+
+- Update RPM groups
+
+-------------------------------------------------------------------
+Thu Feb  2 15:42:04 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Mon Sep  7 14:39:36 UTC 2015 - kstreitova@suse.com
+
+- update to xmltooling 1.5.6 
+  * [CPPXT-105] - PKIX revocation checking calls OpenSSL's 
+    X509_verify_cert in an unsupported way (breaks with OpenSSL
+    1.0.1p/1.0.2d and later)
+
+-------------------------------------------------------------------
+Wed Aug  5 18:04:11 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+
+-------------------------------------------------------------------
+Thu Jul 30 09:40:32 UTC 2015 - kstreitova@suse.com
+
+- adjust Summary in the specfile
+- remove unused conditionals
+
+-------------------------------------------------------------------
+Mon Jul 27 08:33:52 UTC 2015 - kstreitova@suse.com
+
+- use spec-cleaner
+- package cleaning 
+- add xmltooling-1.5.5-doxygen_timestamp.patch to remove timestamps
+  in a documentation generated by Doxygen and avoid RPMLINT warnings
+  (file-contains-date-and-time).
+
+-------------------------------------------------------------------
+Fri Jul 24 15:15:45 UTC 2015 - kstreitova@suse.com
+
+- initial revision 
+

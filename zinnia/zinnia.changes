@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Fri Jun 17 13:27:42 UTC 2016 - i@marguerite.su
+
+- fix boo#985148: GCC6: zinnia fails to build
+- add patch: zinnia-gcc6.patch
+  * fix no matching function for call to 'make_pair' error
+
+-------------------------------------------------------------------
+Wed Mar 13 12:13:22 CET 2013 - pgajdos@suse.cz
+
+- builds with automake 1.13
+  * automake-1.13.patch
+
+-------------------------------------------------------------------
+Wed Jan  9 23:33:54 UTC 2013 - jengelh@inai.de
+
+- Parallel build with %_smp_mflags
+- Set license field: "BSD-3-Clause" (from "New BSD")
+- Use more robust make install call
+
+-------------------------------------------------------------------
+Tue Jun  5 16:03:57 UTC 2012 - i@marguerite.su
+
+- fix sles and factory builds.
+
+-------------------------------------------------------------------
+Tue Aug  9 16:08:02 CEST 2011 - tiwai@suse.de
+
+- Split libzinnia0 subpackage for shared libraries
+- Add python-zinnia subpackage for Python binding
+- Include detailed documents in the package
+- Clean up spec file
+
+-------------------------------------------------------------------
+Fri Jul  1 09:45:37 UTC 2011 - ftake@geeko.jp
+
+- Initial import
+ * upstream version: 0.06 
+

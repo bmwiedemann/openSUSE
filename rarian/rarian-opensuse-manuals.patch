@@ -1,0 +1,282 @@
+commit 476e44b5a13bd5d410124874416b5ca40e08b97c
+Author: Hans Petter Jansson <hpj@cl.no>
+Date:   Tue Jan 11 17:49:58 2011 +0100
+
+    Patch 4: rarian-opensuse-manuals.patch
+
+diff --git a/librarian/rarian-main.c b/librarian/rarian-main.c
+index 044055f..f46dbe1 100644
+--- a/librarian/rarian-main.c
++++ b/librarian/rarian-main.c
+@@ -76,6 +76,7 @@ static void process_locale_dirs (char * dir);
+ #if ENABLE_OMF_READ
+ static void process_omf_dir     (char *dir);
+ #endif
++void scan_opensuse_manuals ();
+ 
+ void 
+ rrn_set_language (char *lang_code)
+@@ -245,6 +246,8 @@ past:
+                   "%s/help-bundle", int_path);                          
+         scan_directory (check_path); 
+ 
++	scan_opensuse_manuals ();
++
+ 		if (int_path && *int_path) {
+ 			free (int_path);
+ 		}
+@@ -640,3 +643,90 @@ rrn_shutdown ()
+     head = tail = NULL;
+     return;
+ }
++
++typedef struct
++{
++    char *meta_path;
++    char *doc_path;
++}
++SuseDocRef;
++
++static const SuseDocRef suse_docs [] =
++{
++  { "/usr/share/susehelp/meta/release-notes-openSUSE.desktop",                             NULL },
++  { "/usr/share/susehelp/meta/opensuse-manual_%s/.directory",                              "/usr/share/doc/manual/opensuse-manual_%s/manual/index.html" },
++  { "/usr/share/susehelp/meta/opensuse-gnomeuser_%s/.directory",                           NULL },
++  { "/usr/share/susehelp/meta/opensuse-manual_%s/book_apparmor_admin/.directory",          NULL },
++  { "/usr/share/susehelp/meta/opensuse-manual_%s/book_opensuse_aaquick/.directory",        NULL },
++  { "/usr/share/susehelp/meta/opensuse-manual_%s/book_opensuse_gnomequick/.directory",     NULL },
++  { "/usr/share/susehelp/meta/opensuse-manual_%s/book_opensuse_kdequick/.directory",       NULL },
++  { "/usr/share/susehelp/meta/opensuse-manual_%s/book_opensuse_kdeuser/.directory",        NULL },
++  { "/usr/share/susehelp/meta/opensuse-manual_%s/book_opensuse_reference/.directory",      NULL },
++  { "/usr/share/susehelp/meta/opensuse-manual_%s/book_opensuse_startup/.directory",        NULL },
++  { NULL, NULL }
++};
++
++static void
++process_opensuse_file (char *filename, char *docpath, char *language)
++{
++    RrnReg *reg;
++    Link *link;
++    char *localized;
++
++    localized = malloc (sizeof (char)*(strlen(filename)+strlen(language) + 1));
++    snprintf (localized, sizeof (char)*(strlen(filename)+strlen(language) + 1), filename, language);
++
++    reg = rrn_reg_parse_suse_manual (localized, docpath, language);
++    free (localized);
++
++    if (!reg)
++        return;
++
++    if (handle_duplicate (reg)) {
++	    return;
++    }
++
++    link = malloc (sizeof (Link));
++    link->reg.reg = reg;
++    link->next = NULL;
++
++    if (!tail) {
++        if (head) {
++            fprintf (stderr, "ERROR: Tail not pointing anywhere.  Aborting");
++            exit (3);
++        }
++        head = link;
++        tail = link;
++    } else {
++        tail->next = link;
++        tail = link;
++
++    }
++}
++
++void scan_opensuse_manuals ()
++{
++    int i, j;
++
++    static char *language [] =
++    {
++	"cs", "de", "en", "es", "fr", "it", "ja", "pt_BR", "zh_CN", "zh_TW", NULL
++    };
++
++    for (i = 0; language [i]; i++) {
++	for (j = 0; suse_docs [j].meta_path; j++) {
++	    SuseDocRef *doc_ref = (SuseDocRef *) &suse_docs [j];
++
++	    if (!strchr (doc_ref->meta_path, '%') &&
++		strcmp (language [i], "en")) {
++		/* This package doesn't have per-language desktop files.
++		 * Only print its desktop file once. */
++		continue;
++	    }
++
++	    process_opensuse_file (doc_ref->meta_path, doc_ref->doc_path, language [i]);
++	}
++    }
++
++    insert_orphans ();
++}
+diff --git a/librarian/rarian-reg-utils.c b/librarian/rarian-reg-utils.c
+index bac3ccb..9e8bfc5 100644
+--- a/librarian/rarian-reg-utils.c
++++ b/librarian/rarian-reg-utils.c
+@@ -37,6 +37,7 @@ static void     process_sect_pair (RrnSect *sect, char *key, char *value);
+ static int      rrn_reg_add_sect (RrnReg *reg, RrnSect *sect);
+ static void     process_path (RrnReg *reg);
+ static void     process_section_path (char *owner_path, RrnSect *section);
++static char   **process_categories (char *cat_string);
+ 
+ 
+ RrnReg *
+@@ -65,6 +66,126 @@ rrn_reg_new ()
+ }
+ 
+ RrnReg *
++rrn_reg_parse_suse_manual (char *filename, char *docpath, char *language)
++{
++    RrnReg *reg = NULL;
++    int parse_line = 0;
++    FILE *file;
++    char *buf;
++
++    if (access(filename, R_OK)) {
++        /* fprintf (stderr, "WARNING: cannot access file %s\n", filename); */
++        return NULL;
++    }
++    reg = rrn_reg_new ();
++
++    /* First, figure out it's ghelp name */
++    {
++      char *dot = strrchr (filename, '.');
++      char *sep = strrchr (filename, '/');
++      if (!dot || !sep) {
++	fprintf (stderr, "Error parsing file %s for ghelp name.  Ignoring\n", filename);
++      } else {
++	sep++;
++	reg->ghelp_name = rrn_strndup (sep, dot-sep);
++      }
++    }
++
++    file = fopen (filename, "r");
++    if (!file) {
++	    rrn_reg_free (reg);
++	    return NULL;
++    }
++
++    buf = malloc (sizeof (char) * 1024);
++    while (fgets (buf, 1023, file)) {
++    	char *real = NULL;
++    	while (buf[strlen(buf)-1] != '\n') {
++    		char *tmp;
++    		char *result = NULL;
++                int len;
++
++                len = strlen (buf);
++                tmp = malloc (len >= 1024 ? len + 1 : 1024);
++                memcpy (tmp, buf, len + 1);
++
++    		if (fgets (buf, 1023, file)) {
++			len += strlen (buf);
++			result = malloc (sizeof (char) * (len >= 1023 ? len + 2 : 1024));
++			strcpy (result, tmp);
++			strcat (result, buf);
++			free (tmp);
++			free (buf);
++			buf = result;
++		} else {
++			free (buf);
++			buf = tmp;
++			break;
++		}
++    	}
++		real = buf;
++    	while (*real && isspace(*real) && *real != '\n') {
++    		real++;
++    	}
++		if (!real || real[0] == '\n' || real[0] == '#') {
++			/* Black Line or comment.  Ignore. */
++		} else if (real[0] == '[') {
++			if (!strncmp (real, "[Desktop Entry]", 15) ||
++			    !strncmp (real, "[KDE Desktop Entry]", 19)) {
++				parse_line = 1;
++			} else {
++				parse_line = 0;
++				fprintf (stderr, "Unknown section header: %s.  Ignoring\n", real);
++			}
++		} else if (strchr ( real, '=') && parse_line) {
++			process_line (buf, reg);
++		} else {
++			fprintf (stdout, "WARNING: Don't know how to handle line: %s\n", buf);
++		}
++    }
++    free (buf);
++    fclose (file);
++
++    reg->categories = process_categories ("Core;");
++
++    if (docpath) {
++	    if (reg->uri)
++		    free (reg->uri);
++	    reg->uri = malloc (sizeof (char)*(strlen(docpath)+strlen(language) + 1));
++	    snprintf (reg->uri, sizeof (char)*(strlen(docpath)+strlen(language) + 1), docpath, language);
++    }
++
++    if (!reg->name || !reg->uri || !reg->categories ) {
++        rrn_reg_free (reg);
++        reg = NULL;
++    }
++
++	if (reg && !reg->identifier) {
++		char *last;
++		char *sep;
++		char *basename;
++
++		sep = strrchr (filename, '/');
++		last = strrchr (filename, '.');
++		if (!last || !sep || last < sep) {
++			fprintf (stderr, "Error: Can't cut put basename properly\n");
++			rrn_reg_free (reg);
++			return NULL;
++		}
++		basename = rrn_strndup (sep + 1, last - (sep + 1));
++		reg->identifier = malloc (sizeof (char)*(strlen(basename)+11));
++		sprintf (reg->identifier, "org.other.%s", basename);
++		free (basename);
++		printf ("identifier is %s\n", reg->identifier);
++
++	}
++	if (reg)
++		process_path (reg);
++
++    return reg;
++}
++
++RrnReg *
+ rrn_reg_parse_file (char *filename)
+ {
+     RrnReg *reg = NULL;
+@@ -384,6 +505,12 @@ process_pair (RrnReg *reg, char *key, char *value)
+     reg->default_section = strdup (value);
+   } else if (!strcmp (key, "Icon")) {
+     reg->icon = strdup (value);
++  } else if (!strcmp (key, "X-DOC-DocumentType")) {
++    reg->type = strdup (value);
++  } else if (!strcmp (key, "X-DOC-Identifier")) {
++    reg->identifier = strdup (value);
++  } else if (!strcmp (key, "X-DOC-Weight")) {
++    reg->weight = atoi (value);
+   } else {
+     fprintf (stderr, "WARNING: Unknown element %s: %s\n", key, value);
+   }
+diff --git a/librarian/rarian-reg-utils.h b/librarian/rarian-reg-utils.h
+index ffc3caa..575dd82 100644
+--- a/librarian/rarian-reg-utils.h
++++ b/librarian/rarian-reg-utils.h
+@@ -73,6 +73,7 @@ RrnSect * rrn_sect_new ();
+ 
+ RrnReg *  rrn_reg_parse_file (char *filename);
+ RrnSect * rrn_sect_parse_file (char *filename);
++RrnReg * rrn_reg_parse_suse_manual (char *filename, char *docpath, char *language);
+ 
+ RrnSect * rrn_reg_add_sections (RrnReg *reg, RrnSect *sects);
+ 

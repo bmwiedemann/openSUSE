@@ -1,0 +1,12 @@
+ RabbitMQ and EPMD
+===================
+
+RabbitMQ requires epmd to listen on more interfaces than just localhost.
+The easiest solution is to set the listening address to "0.0.0.0". But
+you can also limit it to certain interfaces/IPs.
+
+For non systemd based distributions you can set EPMD_ADDRESSES in
+/etc/sysconfing/erlang.
+
+For systemd based distributions please follow
+/usr/share/doc/packages/erlang/README.SUSE

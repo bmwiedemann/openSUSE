@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Mon Jan 29 13:22:57 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2018.01.01
+  * This is a firmware maintenance release that improves
+    reliability of HackRF One when booting from the DFU bootloader.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Nov  3 11:41:35 UTC 2017 - jengelh@inai.de
+
+- Description and group updates.
+
+-------------------------------------------------------------------
+Sun Apr 23 19:42:13 UTC 2017 - mardnh@gmx.de
+
+- Update group handling
+
+-------------------------------------------------------------------
+Sat Apr 15 18:50:04 UTC 2017 - mardnh@gmx.de
+
+- Use proper cmake options
+- Package firmware
+
+-------------------------------------------------------------------
+Wed Mar  8 12:51:12 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Feb 17 20:04:54 UTC 2017 frede@b1-systems.de
+
+- update to version 2017.02.1
+
+-------------------------------------------------------------------
+Thu Aug 13 20:18:58 CEST 2015 frede@b1-systems.de
+
+- update to version 2015.07.2
+- add group hackrf for udev rules
+- add patch for typo in rad1o udev rule
+
+-------------------------------------------------------------------
+Fri Sep  5 13:23:04 UTC 2014 - dl8fcl@darc.de
+
+- update to version 2014.08.1
+
+-------------------------------------------------------------------
+Sun Nov  3 18:55:47 UTC 2013 - lnt-sysadmin@lists.lrz.de
+
+- Changes to spec file:
+  * Update udev paths for openSUSE 13.1 and ensure udev rules are
+    updated when package is installed / updated / uninstalled.
+  * Define %libname to ease reuse of %post(un) macros
+
+-------------------------------------------------------------------
+Sat Nov  2 13:17:26 UTC 2013 - dl8fcl@darc.de
+
+- import into build service 
+

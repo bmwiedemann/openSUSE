@@ -1,0 +1,31 @@
+The result of $(wildcard *) is random.
+Sort input files to reduce build-compare noise.
+
+---
+ docs/Makefile |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+Index: xen-4.12.0-testing/docs/Makefile
+===================================================================
+--- xen-4.12.0-testing.orig/docs/Makefile
++++ xen-4.12.0-testing/docs/Makefile
+@@ -179,7 +179,7 @@ uninstall: uninstall-man-pages uninstall
+ 
+ # Individual file build targets
+ html/index.html: $(DOC_HTML) $(CURDIR)/gen-html-index INDEX
+-	$(PERL) -w -- $(CURDIR)/gen-html-index -i INDEX html $(DOC_HTML)
++	$(PERL) -w -- $(CURDIR)/gen-html-index -i INDEX html $(sort $(DOC_HTML))
+ 
+ html/%.txt: %.txt
+ 	@$(INSTALL_DIR) $(@D)
+@@ -194,8 +194,8 @@ html/hypercall/%/index.html: $(CURDIR)/x
+ 	$(INSTALL_DIR) $(@D)
+ 	$(PERL) -w $(CURDIR)/xen-headers -O $(@D) \
+ 		-T 'arch-$* - Xen public headers' \
+-		$(patsubst %,-X arch-%,$(filter-out $*,$(DOC_ARCHES))) \
+-		$(patsubst %,-X xen-%,$(filter-out $*,$(DOC_ARCHES))) \
++		$(sort $(patsubst %,-X arch-%,$(filter-out $*,$(DOC_ARCHES)))) \
++		$(sort $(patsubst %,-X xen-%,$(filter-out $*,$(DOC_ARCHES)))) \
+ 		$(EXTRA_EXCLUDE) \
+ 		$(XEN_ROOT)/xen include/public include/xen/errno.h
+ 

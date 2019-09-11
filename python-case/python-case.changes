@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Mon Aug 13 14:07:19 UTC 2018 - mcepl@suse.com
+
+- Remove dependency on unittest2
+  Add remove_unittest2.patch to facilitate that
+
+-------------------------------------------------------------------
+Wed Mar 15 10:57:58 UTC 2017 - tbechtold@suse.com
+
+- update to 1.5.3:
+  - ``patch.multiple`` now works.
+  - Using setup/teardown instead of setup_method/teardown_method was a bad idea.
+  - 1.5.0 had a left over print statement :blush:
+  - Pytest: When decorating classes using the ``skip.*`` and ``mock.*``
+    decorators, these now augment ``cls.setup``/``cls.teardown`` instead of
+    ``cls.setup_method``/``cls.teardown_method``.
+  - Pytest: Adds ``patching.object``.
+  - Adds new helper: ``case.pytest.fixture_with_options``.
+  - All case decorators now works with py.test classes.
+  - Py.test: Adds new `stdouts` fixture that patches :data:`sys.stdout`,
+    and :data:`sys.stderr`.
+  - Py.test: The `patching` fixture can now mock modules.
+  - Case is now a py.test plug-in and provides a `patching` fixture
+    as a shortcut to `monkeypatch` setting the value to a mock.
+  - Case decorators now supports py.test.
+  - Patcher created by create_patcher now accepts *args.
+  - ``mock.reload_modules``: Fixed compatibility with Python 3.
+  - ``mock.reload_modules`` now re-imports the module and
+    calls ``reload()`` on it.
+  - Adds ``mock.mute`` decorator to suppress stdout with no return value.
+  - Adds ``Mock.on_nth_call_do_raise(excA, excB, n)``.
+- Fix license
+- Convert to singlespec approach
+
+-------------------------------------------------------------------
+Fri Jun  3 17:12:53 UTC 2016 - tbechtold@suse.com
+
+- Initial packaging (version 1.1.4)
+

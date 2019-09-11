@@ -1,0 +1,1 @@
+addFilter("non-etc-or-var-file-marked-as-conffile /usr/share/pnp4nagios/templates/check_mailstat.php");

@@ -1,0 +1,2 @@
+# This entire package is a devel package, no point in spliting out the .pc files
+addFilter("devel-file-in-non-devel-package.*/usr/share/pkgconfig/.*")

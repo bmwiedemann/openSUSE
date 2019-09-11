@@ -1,0 +1,22 @@
+diff -Naur a/src/ma_dnp.cpp b/src/ma_dnp.cpp
+--- a/src/ma_dnp.cpp	2009-11-24 14:39:43.000000000 -0600
++++ b/src/ma_dnp.cpp	2014-11-26 13:09:27.614852764 -0600
+@@ -246,12 +246,12 @@
+ */
+ 
+ unsigned long CMassDnp::StringToId( const char *str )
+-{
+-#ifdef UNIX
+-	typedef unsigned long long t_uint64;
+-#else
+-	typedef unsigned __int64 t_uint64;
+-#endif
++{
++#ifdef _UNIX
++	typedef unsigned long long t_uint64;
++#else
++	typedef unsigned __int64 t_uint64;
++#endif
+ 
+ 	unsigned long Hash=0xF4FA8928;
+ 	unsigned long A=0;

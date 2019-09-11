@@ -1,0 +1,683 @@
+-------------------------------------------------------------------
+Wed Nov 14 12:28:56 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 2.10.2:
+  * Fix: Add liblttng-ust dependency to liblttng-ust-fd.
+  * Fix: Use LIBDL/LIBC_DL to select either libdl or libc.
+  * Fix: AM_CONDITIONAL should be outside AS_IF block.
+  * Fix: Build jni libs with openjdk >= 10.
+  * Fix: ustfork: Save and restore errno in syscall wrappers.
+  * Fix: Cache the result of getpid() internally.
+  * Fix: Reset cached vpid context on fork.
+  * Fix: String comparison on incorrect length in context provider.
+  * Fix: Remove for() loop initial declarations.
+  * Use ust_lock during sock_info operations for atomicity against
+    fork.
+  * Force tracked fd to be bigger than STDERR_FILENO.
+- Remove lttng-ust-copying.patch and add the licence file through
+  the %license tag on the library package.
+
+-------------------------------------------------------------------
+Sun Apr  8 15:47:49 UTC 2018 - sor.alexei@meowr.ru
+
+- Build the Python agent and add new subpackages: python3-lttngust
+  and liblttng-ust-python-agent0.
+
+-------------------------------------------------------------------
+Fri Jan 19 11:50:18 UTC 2018 - tchvatal@suse.com
+
+- Format with spec-cleaner
+- Drop tex/asciidoc/xmlto dependencies as the manpages are already
+  generated in the tarball so we produce the same result and this
+  way we are not pulling in python2
+
+-------------------------------------------------------------------
+Fri Dec 29 18:52:22 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 2.10.1:
+  * Fix: Specify SONAME in python-lttngust's LoadLibrary.
+  * Fix: Ensure the fd tracker is initialised when called from
+    constructors.
+  * Fix: fd of an elf object must be registered to the fd tracker.
+  * Fix: liblttng-ust-fd.so: Override the fclose symbol.
+  * Fix: lttng-gen-tp: Only replace the file extension.
+  * Fix: Move fsync after ftruncate.
+  * Fix: Synch buffer file metadata on buffer allocation.
+- Drop baselibs.conf.
+
+-------------------------------------------------------------------
+Fri Sep 15 18:30:13 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 2.10.0:
+  * Clean-up: Remove unused variables to silence a gcc warning.
+  * Add ustctl_snapshot_sample_positions ustctl command.
+  * Cleanup: Formatting in strutils_star_glob_match explanation.
+  * Use SIZE_MAX instead of -1ULL for the size_t parameter.
+  * filter: Use SIZE_MAX rather than UINT_MAX and tuncating -1ULL.
+  * Fix: Out of bound array access in filter code.
+  * Correctly clean all generated JAR files.
+  * Fix: List a missing file in Java agent's Makefile.
+  * Support generic globbing patterns in the Java agent.
+  * Log more information in the Java TCP client.
+  * Cleanup: Remove an unused import in JUL Java agent.
+  * Add support for star globbing patterns in event names.
+  * Filtering: Add support for star-only globbing patterns.
+  * Add string utilities.
+  * Filter code relicensing to the MIT licence.
+  * Fix: blocking mode: Add the missing stdbool.h include.
+  * Implement LTTNG_UST_BLOCKING_RETRY_TIMEOUT.
+  * Introduce the LTTNG_UST_ALLOW_BLOCKING environment variable.
+  * Rework the configure script.
+  * Move m4 scripts to the m4 directory.
+  * doc: Remove the duplicate LTTNG_UST_BLOCKING_RETRY_TIMEOUT
+    man page entry.
+  * lttng-ust(3): Reword and fix style of the
+    LTTNG_UST_ALLOW_BLOCKING variable.
+  * lttng-ust(3): Specify "If set" instead of "if set to 1" for
+    some variables.
+  * Fix: doc/man: Use a single XSL file and match local names.
+  * Fix: Expand the shmobj size for the sequence number.
+- Move manpages out of the library package to lttng-ust-doc.
+- Use tarball signing.
+
+-------------------------------------------------------------------
+Tue Jul 11 07:40:09 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 2.9.1:
+  * lttng-ust-elf.c: Define NT_GNU_BUILD_ID if not defined.
+  * Quote CMAKE variable assignment in Makefile.
+  * Fix a typo in doc/examples/Makefile.am.
+  * Don't override user variables within the build system.
+  * Add a missing getenv.h include to ustctl.c.
+  * Fix a race between lttng-ust getenv() and application setenv().
+  * doc/man: Add typical `$` and `#` prompts to command lines.
+  * Fix (un)install targets of Python agent.
+  * Fix include config.h to resolve HAVE_DLMOPEN.
+  * Validate the presence of dlmopen at configure time.
+  * Fix CMake examples integration.
+  * doc/examples/Makefile.am: Define C and C++ compilers for CMake.
+- Replace the lttng-ust package with liblttng-ust0 and
+  liblttng-ust-ctl2.
+- Move lttng-gen-tp to the devel package.
+
+-------------------------------------------------------------------
+Mon Jun 12 15:20:29 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 2.9.0 (changes since 2.7.1):
+  * Remove assertions in lttng-ust-comm init.
+  * Add tracepoint_disable_destructors().
+  * Fix manpage typo.
+  * Move lttng_context_is_app to core file.
+  * Move dummy functions to a common file.
+  * Handle backward probe compatibility for application contexts.
+  * Fix application context header size.
+  * Event ctx get size should be after chan ctx.
+  * Clarify and simplify the Java agent "Hello" examples.
+  * Export the stream instance ID.
+  * Generate and export the sequence number.
+  * Add stream instance id to the packet header.
+  * configure.ac: Print an empty line after AC_OUTPUT.
+  * configure.ac: Macros with no arguments do not need ().
+  * configure.ac: Standardise indentation to tabs.
+  * configure.ac: Move AC_PROG_SED() close to other AC_PROG_*().
+  * configure.ac: Test -a -> shell's && (more portable).
+  * configure.ac: Use test "x$var" = "xyes".
+  * configure.ac: AM_CONDITIONAL() accepts two arguments.
+  * configure.ac: Use dnl at appropriate places.
+  * configure.ac: if -> AS_IF().
+  * configure.ac: case -> AS_CASE().
+  * configure.ac: Add missing quotes in macro calls.
+  * configure.ac: Use macros for version name and description.
+  * configure.ac: Do not use shell eval for known values.
+  * Add CONTRIBUTING.md.
+  * Output "(null)" when ctf_string()'s arg is NULL.
+  * Disable use of __builtin_return_address(0) on 32-bit PowerPC.
+  * Fix java agent 32-bit pointer to jlong warning.
+  * Use Java 6 syntax in JUL examples.
+  * Add missing example file to dist tarball.
+  * Add missing header to dist tarball.
+  * Add missing LttngContextApi.java to dist tarball.
+  * Pass the Java application context information using two
+    separate arrays.
+  * Correctly report filter notifications on Java agent teardown.
+  * Add some logging to the AbstractLttngAgent.
+  * Clear tracked application contexts upon closing a Java agent.
+  * Introduce a verbose mode for the Java agent.
+  * Implement Java agent application context retrieval.
+  * Turn ISessiondCommand into an abstract class.
+  * Split the JNI APIs in separate classes.
+  * Add application context support to ust-ctl protocol.
+  * Handle application context cmd.
+  * Implement dynamic types, and application context provider
+    support.
+  * Handle negative range for LTTNG_UST_REGISTER_TIMEOUT.
+  * nsure the Java JUL messages are correctly formatted.
+  * Fix double-free on error sending fields.
+  * Add CTF enum type support to tracepoint event.
+  * Fix a missing _GNU_SOURCE define.
+  * python-lttngust/setup.py.in: Update setup() fields.
+  * Refactor Python agent build and install.
+  * Remove debugging print() call from Python agent.
+  * Python agent: Support Agent protocol v2.0.
+  * Fix Java agent protocol network endianness inconsistency.
+  * examples jul: Add missing files to make dist
+  * Fix Filer -> Filter typo in an example.
+  * Fix: Return the correct list of available Java events.
+  * Add a toString() to Java agent's EventRule.
+  * Add API stubs for the Java context info retrievers.
+  * Receive the event filter string in the Java agent.
+  * Document the Java filter notification model.
+  * Add filter change notification mechanism to the Java agent.
+  * Manage complete "event rules" in the Java agent.
+  * Introduce a new client listener interface for the Java agent.
+  * Turn ILttngAgentResponse into an abstract class.
+  * Clean-up: remove extraneous "found" parameters in ust-elf.
+  * Fix: potential leaks in error paths.
+  * Fix: double free in liblttng-ust-dl.
+  * Fix: make check in OOT build with absolute path.
+  * Fix: elf: leaks on error paths.
+  * Cleanup: coding style.
+  * Cleanup: elf: use off_t for offsets, size_t for len.
+  * Cleanup: eliminate implicit sign-extension.
+  * Fix: elf: NULL pointer dereference.
+  * Fix: add missing ust-elf.h header to dist.
+  * Fix: make check in out of tree build.
+  * Fix: old gcc warnings.
+  * Fix: remove stale lttng-ust-elf.h from makefile.
+  * Fix: elf: uninitialised ret.
+  * Fix: test elf: handle NULL debug file.
+  * test: elf move constants to top of implementation.
+  * Fix: elf test prog arg checking.
+  * baddr statedump: remove dependency on file streams.
+  * baddr statedump: hold ust lock around allocations.
+  * Add unit tests for lttng_ust_elf.
+  * Add memory size, build id, and debug link info to statedump and
+    dl.
+  * Fix: Send the correct Java agent return code when disabling
+    events.
+  * Fix: Correctly handle the command to disable all events.
+  * Small refactor of the Java agent's TCP client.
+  * Rename Java Agent event names to "event".
+  * Allow compiling the Java agent with Java 1.6.
+  * Restore concurrent build when Java agent is enabled.
+  * Refactor Java agent to let applications manage the log
+    handlers.
+  * Cleanup: Add Javadoc to all public methods and members.
+  * Fix: Small fixes to the Java agent example files.
+  * Update doc/java-agent.txt to reflect the new packaging.
+  * Split Java agent library in 3 separate jars.
+  * Remove deprecated org.lttng.ust.jul.LTTngAgent class.
+  * Use tar-ustar format for the dist archive.
+  * Fix: cmake example with configure based oot build.
+  * Fix: perform statedump before replying to sessiond.
+  * build: check for CXX_WORKS for cmake example.
+  * Implement liblttng-ust-fd.
+  * Introduce file descriptor tracker.
+  * Fix: honor send timeout on unix socket connect.
+  * Fix: perform TLS fixup in all UST entry points from each
+    thread.
+  * Fix: build: pass configure flags to cmake example.
+  * Performance: implement lttng_inline_memcpy.
+  * Performance: mark ring buffer do_copy callers always inline.
+  * Performance: cache the backend pages pointer in context.
+  * Add ctx_len field to ring buffer context.
+  * ring buffer: handle shmp errors.
+  * Cleanup: libringbuffer: remove duplicate shmp() invocations in
+    slow paths.
+  * Performance: Only dereference shmp once.
+  * Performance: Mark channel and buffer event disabled check
+    unlikely.
+  * Performance: Relax atomicity constraints for crash handling.
+  * Fix: compat: -ust suffix sprintf error handling.
+  * Performance: disable event counting by default.
+  * Fix: remove unlock in getcpu.
+  * Performance: remove rcu read lock from ring buffer get/put cpu.
+  * Performance: define _LGPL_SOURCE in LGPL c files.
+  * Performance: split check deliver fast/slow paths.
+  * Fix: perf counters build against kernel headers < 3.12.
+  * Fix: perf counter context deadlock.
+  * Fix: many-events registration/unregistration speed.
+  * Fix: pre-fault TLS in ust-malloc instrumentation.
+  * Fix: ust-ctl: use LTTNG_UST_HAVE_PERF_EVENT to report perf
+    counter availability.
+  * Fix: reset vtid cache before releasing urcu locks.
+  * Fix: cleanup local_apps.allowed flag on lib cleanup.
+  * Fix: Correctly handle invalid agent port file.
+  * Fix: memory corruption in compat.h.
+  * Introduce lttng_ust_loaded weak symbol.
+  * Fix: remove invalid free.
+  * Use AC_PROG_MKDIR_P (generic mkdir -p).
+  * Split CMake example build steps on different lines.
+  * Fix: CMake example: specify source/built includes/libs.
+  * configure: allow building perf support across all
+    architectures.
+  * Fix: use-after-free in statedump lib iter_end.
+  * Add generic fallback for perf counter read.
+  * Fix: perf counters: sign-extend pmc register.
+  * doc: Add flags for JUL and python agent compiling.
+  * tests/hello.cxx: add ctf_enum_auto() entries.
+  * Add ctf_enum_auto() for autoincrementing enumeration values.
+  * Add missing ust_lib.c and ust_lib.h.
+  * dl instrumentation: add dlmopen event, trace dlopen flags.
+  * Add library load/unload tracking events.
+  * Communication protocol: use fixed-size integer rather than
+    enum.
+  * Add ustctl command to regenerate the statedump.
+  * Implement statedump command in UST.
+  * tests/hello.cxx: add enumeration field.
+  * Fix: ctf_enum_value() does not work with g++.
+  * Fix: lttng context perf: missing stdbool.h header include.
+  * Add perf context support for ARMv7.
+  * Keep perf context FD open for other architectures.
+  * Doc: cmake example: fix coding style.
+  * Doc: ship cmake example with "make distcheck".
+  * Doc: add CMake example.
+  * configure.ac: check cmake availability.
+  * Only build python lib when agent is enabled.
+  * doc: information has no plural.
+  * Fix: allow non-LGPL modules to use tracepoints.
+  * Add -ust to the name of UST threads of the application.
+  * Comment the locking mechanisms in ContextInfoManager.
+  * Fix: Null-check return value of
+    log4j.Category.getAllAppenders().
+  * Add liblttng-ust-agent.jar to the .gitignore.
+  * Fix: Specify encoding when reading agent port file.
+  * Fix: Include child loggers in the output of "lttng list".
+  * Fix: Handle both agent config files pointing to same port.
+  * Suppress static method warning.
+  * Add more logging to the LttngTcpSessiondClient.
+  * Use config.h to detect sched_getcpu support.
+  * Fix: use limits.h in ust-elf test.
+  * Fix: strerror_r behaviour is glibc specific.
+  * Add support for musl libc to ust-dlfcn.h.
+  * Fix: don't generate 0-len array in tracepoint probes.
+  * Fix: log4j example: set logger level to prevent unexpected
+    level inheritance.
+  * Fix: no LGPL define for malloc and pthread wrappers.
+  * Fix: all lttng-ust source files should be tagged _LGPL_SOURCE.
+  * Fix: initialise RCU callbacks with mixed LGPL/non-LGPL objects.
+  * Fix: incorrect structure layout with mixed LGPL/non-LGPL
+    objects.
+  * Fix: don't call __builtin_return_address(0) on 32-bit powerpc.
+  * Update version name TBD.
+  * Fix: tracepoint header: declare tracepoint_dlopen_ptr.
+  * Fix: update debug message about weak-hidden symbols.
+  * Fix: tracepoint-rcu header: use tracepoint_dlopen_ptr.
+  * Fix: test: relax requirement on weak-hidden symbol address.
+  * Fix: work-around gcc optimisation oddness on 32-bit powerpc.
+  * Fix: test weak-hidden symbols.
+  * Print DBG() message about compiler weak hidden symbol
+    behaviour.
+  * test: add test for gcc issue with weak hidden symbol on
+    powerpc.
+  * Restrict Java context retriever names to a set of valid
+    characters.
+  * Fix: Correctly compute Java agent list loggers response size.
+  * Add support for aarch64_be.
+  * Fix: Fix synchronization of LTTngAgent#dispose.
+  * Fix: Verify number of bytes contained in sessiond agent
+    commands.
+  * Fix: Avoid potential null dereference with log4j loggers.
+  * Specify UTF-8 encoding for all Java agent commands.
+  * Fix: merge tap tests stdout and stderr.
+  * Documentation: ring buffer: SWITCH_FLUSH can be used when
+    active.
+  * Fix: unchecked return value in trace_clock_read64_monotonic.
+  * Fix: portability: no arith on void pointer.
+  * Fix: initialize build id and debug link flags to 0.
+  * Tests: Add tap-driver.sh for automake < 1.12.
+  * Fix: add "has_build_id" and "has_debug_link" fields to
+    debuginfo events.
+  * Tests: Replace prove by autotools tap runner.
+  * bootstrap: Standardise on autoreconf -vi.
+  * Harmonize bootstrap script across projects.
+  * lttng-ust(3): order environment variables.
+  * lttng-ust(3): fix syntax of env. variables section.
+  * lttng-ust(3): document $LTTNG_HOME.
+  * Fix: Java agent should use LTTNG_HOME.
+  * Fix: examples make distcheck failure.
+  * Cleanup: add static for internal symbols.
+  * Cleanup: Remove unused max() macros from
+    ring_buffer_frontend.c.
+  * Use min_t/max_t macros in lttng-ust-elf.c.
+  * Tests: update ust-elf tests to reflect correct memsz
+    computation.
+  * Fix: erroneous computation of ELF in-memory size.
+  * Make code and man pages share the same default values.
+  * Fix: remove NULL check of nonnull parameter in dlclose.
+  * Tracepoint array/sequence: add nowrite hex macros.
+  * Tracepoint: add ctf array for network byte order integers.
+  * Tracepoint: add ctf sequence for network byte order integers.
+  * Fix: endianness of integers received by filter.
+  * Doc: Update README.md.
+  * Fix: jul and log4j agents makefile missing line and
+    indentation.
+  * Fix: re-introduce exported symbols.
+  * Doc: update manpages for soinfo/sopath name change.
+  * Rename statedump and dl events and fields.
+  * Tests: list ust-elf test data explicitly in EXTRA_DIST.
+  * Tests: add tests for lttng_ust_elf_is_pic.
+  * Add is_pic field to statedump soinfo event.
+  * Fix: add common jar to lttng-ust-agent-all dependencies.
+  * Fix: add version to lttng-ust-agent-all jar file.
+  * Fix: rename liblttng-ust-agent to lttng-ust-agent-all.
+  * Fix: re-add liblttng-ust-agent.jar.
+  * Fix: lttng java agent: dispose is non-static.
+  * doc/man: do not use macros in the NAME section.
+  * doc/man: remove duplicate copyrights section.
+  * doc/man: lttng-ust(3): add tracing control to example.
+  * doc/man: lttng-ust(3): split example files in subsections.
+  * doc/man/common-copyrights: add missing THANKS section.
+  * doc/man: lttng-ust(3): add missing ENVIRONMENT VARIABLES
+    section.
+  * README.md: bolden dependencies and update links.
+  * README.md: split required and optional dependencies.
+  * Convert man pages to AsciiDoc.
+  * Fix: remove dead code from filter interpreter.
+  * Fix: convey enum value signedness into metadata.
+  * lttng-ust(3): document `lttng_ust_loaded` symbol.
+  * lttng-ust(3): document `perf:thread:raw:rN:NAME` context.
+  * lttng-ust-dl(3): update documentation.
+  * lttng-ust(3): document liblttng-ust-fd.
+  * doc/man: document the lttng_ust_lib events.
+  * doc/man: add full stop to descriptive table cells.
+  * doc/man: reorganise source for tables.
+  * lttng-ust(3): sort ctf_*() macro parameter definitions.
+  * lttng-ust(3): fix alignment and indentation.
+  * lttng-ust(3): document new ctf_*() array/sequence network/hex
+    macros.
+  * Performance: add missing "caa_unlikely" on fast-path.
+  * Fix: loglevel and model_emf_uri build fix.
+  * Fix: loglevel and model_emf_uri with g++ compiled probes.
+  * Fix: Out of tree build of liblttng-ust-java.
+- Rename lttng-ust-docs to lttng-ust-doc and fix its RPM group.
+- Remove explicit liburcu-devel requirement for the devel package:
+  is autodetected already.
+- Rebase lttng-ust-copying.patch.
+- Remove lttng-ust-aarch64-aligned-access.patch: fixed upstream.
+- Minor spec cleanup.
+
+-------------------------------------------------------------------
+Tue Aug  2 12:51:52 UTC 2016 - normand@linux.vnet.ibm.com
+
+- add ppc64/ppc64le in ExclusiveArch
+
+-------------------------------------------------------------------
+Thu Jan 28 19:26:44 UTC 2016 - tonyj@suse.com
+
+- Update to relese version v2.7.1 for SLE12-SP2
+  Changelog:
+    http://git.lttng.org/?p=lttng-ust.git;a=blob_plain;f=ChangeLog;hb=v2.7.1
+
+-------------------------------------------------------------------
+Mon Oct  5 19:03:12 UTC 2015 - tonyj@suse.com
+
+- Update to relese version v2.7.0 (FATE#319273)
+  See http://git.lttng.org/?p=lttng-ust.git;a=blob_plain;f=ChangeLog;hb=v2.7.0
+  for changelog from v2.7.0-rc1 to v2.7.0
+
+-------------------------------------------------------------------
+Mon Aug 31 19:42:09 UTC 2015 - dmueller@suse.com
+
+- add lttng-ust-aarch64-aligned-access.patch (fate#318370)
+  * enable build for aarch64
+
+-------------------------------------------------------------------
+Tue Jul 28 22:41:08 UTC 2015 - tonyj@suse.com
+
+- Update to version 2.7.0-rc1 (FATE#319273)
+  Changelog for differences between 2.4.0 and this point may be found at:
+    http://git.lttng.org/?p=lttng-ust.git;a=blob_plain;f=ChangeLog;hb=717e921558631baa4f132676eda9c9398fe7141f
+
+-------------------------------------------------------------------
+Tue Apr 15 17:17:46 UTC 2014 - tonyj@suse.com
+
+- Update to version 2.4.1
+  Changelog:
+   * Revert "Fix: disable liblttng-ust-dl if dlinfo is not available in C library"
+   * Fix: .split() the CC environment variable in lttng-gen-tp
+   * Fix: disable liblttng-ust-dl if dlinfo is not available in C library
+   * Fix: python invocation through env
+   * Fix: Override AM_PATH_PYTHON's default action-if-not-found
+   * Fix: don't accept configure --disable-shared
+   * Fix: configure.ac: add missing result to alignment req. check
+   * Fix: malloc wrapper: infinite recursion with compat TLS
+   * Fix: liblttng-ust-libc-wrapper recursive use of calloc
+   * Fix: mismatch between code and comments
+   * Fix: incorrect urcu git URL in README
+
+-------------------------------------------------------------------
+Fri Feb 28 21:49:08 UTC 2014 - tonyj@suse.com
+
+- Update to version 2.4.0. Changelog for changes between 2.3.0 and 2.4.0 
+  may be found at: http://git.lttng.org/?p=lttng-ust.git;a=blob_plain;f=ChangeLog;hb=refs/heads/stable-2.4
+
+-------------------------------------------------------------------
+Mon Feb 10 18:16:04 UTC 2014 - tonyj@suse.com
+
+- Update to version 2.3.1
+
+-------------------------------------------------------------------
+Thu Mar 14 16:09:23 UTC 2013 - lpechacek@suse.com
+
+- Include COPYING file in lttng-ust-docs
+
+-------------------------------------------------------------------
+Mon Mar 11 21:22:02 UTC 2013 - tonyj@suse.com
+
+- Upgrade to version 2.1.1 (FATE#314846)
+  Changelog 2.1.1:
+	* Introduce hash table for lttng_create_event_if_missing()
+	* Fix: don't build C++ example if a C++ compiler isn't available
+
+  Changelog 2.1.0:
+	* Bump liblttng-ust-ctl lib version major number
+	* Bump UST proto version minor number
+	* Helper to debug: add object name
+	* Tests: Fix rundir not created in ust-basic-tracing
+	* ust test: add missing return -1
+	* Test: update ust tracing unit tests to 2.1 internal ABI
+	* Tests: Fix rundir not created in ust-multi-test
+	* Adapt internal files and examples to TRACEPOINT_INCLUDE
+	* Adapt tests to TRACEPOINT_INCLUDE
+	* Cleanup: tests remove hello.cxx/ust_tests_demo.h
+	* Fix: don't do macro expansion in tracepoint file name
+	* Fix lttng-gen-tp: Template file must end in .tp
+	* Pack structures in comm protocol between UST and sessiond
+	* Cleanup lttng-gen-tp: Help not showing when using -h,--help
+	* Cleanup lttng-gen-tp: remove leading underscore before include guard
+	* fix memleak: ustctl free shadow chan on ustctl_unmap_channel()
+	* Update license text
+	* Fix: check if event enabled for bytecode-less events
+	* Fix: handle enablers without bytecode
+	* Print probe provider mismatch error even without -Wsystem-headers
+	* filter: Add missing padding
+
+  Changelog 2.1.0-rc2:
+	* filter interpreter cleanup: use uint64_t for retval
+	* Fix: filter linking can dereference NULL pointer on alloc failure
+	* Cleanup: remove whitespaces and EOL in tests
+	* Filter: use only single lower bit of filter return value
+	* Fix: filter: var len array at end of external structure
+	* Fix: filter link fail handling
+	* Fix: add missing seqnum field to filter
+	* filters: perform union rather than intersection
+	* Implement support for overlapping wildcard/events
+	* Cleanup: add lttng_/lttng-/LTTNG_ prefixes
+	* filter: add seqnum field to filter command
+	* Filter iteration: iterate on list of filters
+	* document that tracepoint names should ideally not be re-used
+	* Remove LIBFORMAT config declaration, unused
+	* Add libc errno translation layer to UST error code
+	* Fix: add const qualifier for filter local void *
+	* Fix: re-allow non-lvalue string, sequence, array parameters
+	* Tear down handles associated with a closed sessiond socket
+	* Distinguish UST return codes from transport return codes
+	* Fix: Conditionally disable tests requiring shared libs support
+	* Cleanup: don't spawn per-user thread if HOME is not set
+	* Manpage: document supported UST contexts
+	* Fix: procname context semantic
+	* Fix: Fix self-assign warning on struct ustfork_clone_info init
+	* Fix: memcpy of string is larger than source
+	* Implement liblttng-ust-fork daemon() override test
+	* liblttng-ust-fork: override daemon() call
+	* ustfork: set errno to ENOSYS if symbol lookup fails
+	* Fix: be quiet on filter linker error
+	* Build out of src tree
+	* Fix: filter bytecode specializer stack leak
+	* Fix: reloc offset validation error out on filters with no reloc table
+	* Perform calculation on bit size in 64-bit
+	* Use uint64_t for packet header content size and packet size
+	* Fix: manpage typo "-lllttng-ust" -> "-llttng-ust"
+	* Fix: BSD getprogname null pointer dereference
+	* Add support for model.emf.uri event info
+	* Filter error message cleanup
+	* Manpage update: document use in daemons
+	* Fix: get_wait_shm() ust mutex deadlock (add 2 missing exit calls)
+	* Fix: get_wait_shm() ust mutex deadlock
+	* Fix: add events with 0 field to field list
+
+  Changelog 2.1.0-rc1:
+	* Fix make dist: fix liblttng-ust-java dependencies
+	* Fix make dist: add missing filter header
+	* Fix: backward compatibility with UST 2.0 app probes
+	* Fix: Filter ABI changes to support FILTER_BYTECODE_MAX_LEN (65536)
+	* Export "written" information about fields
+	* Fix filter: pointer to string, not string, should be on stack
+	* Fix: tracepoint float nowrite
+	* Fix: accept 65536 bytes long bytecodes
+	* Add hostname to env
+	* ABI change: bump internal version to 3.0.0
+	* Fix: threads should be created in DETACHED state
+	* Fix: 32-bit x86 strict-aliasing warnings
+	* Fix UST SIGPIPE handling
+	* Fix: Libtool fails to find dependent libraries when cross-compiling lttng-ust
+	* Cleanup: filter: turn bytecode linking error msg into debug
+	* Make lttng-ust robust against -finstrument-functions.
+	* Filter: keep aliased ax and bx registers
+	* Filter: remove interpreter dynamic typing
+	* Filter: add missing specialized op names
+	* Filter: specialize double-s64 binary comparators
+	* Fix filter: fix stack leak on taken branch
+	* Filter: Implement stack-based interpreter
+	* Filter: double comparator produces s64
+	* Filter: use hash table to check merge points
+	* Filter: split passes into separate components
+	* Filter: cleanup macros
+	* Filter: validate range overflow with end of insn
+	* Filter: validate that field ref strings are non-NULL
+	* Filter: ensure logical operator merge is always s64
+	* Filter: we don't care if double/s64 are literals
+	* Filter: specialize 'and' and 'or' ops.
+	* Implement dispatch-table based interpretor
+	* Filter: Specialize unary operators
+	* Define switch use as macro in interpreter
+	* Filter interpreter: mark float test as unlikely
+	* Filter: fix bytecode validation typo
+	* Filter: specialize comparators
+	* Specialize load and unary ops
+	* Validate registers, no need to initialize to 0
+	* Filter: opcode for ref loads
+	* Remove redundant validation from interpreter
+	* filter: Add bytecode validation pass
+	* TRACEPOINT_EVENT: add *_nowrite fields for filter
+	* Only print filter errors if LTTNG_UST_DEBUG is set
+	* Cleanup: remove debug define
+	* Filter: add floating point support
+	* Remove filter test printouts
+	* Implement filter bytecode interpreter and linker
+	* Filter: receive, attach and link empty filter
+	* Filter: prepare filter stack data
+	* Wrap dynamic len array into stackvar union
+	* liblttng-ust-comm/lttng-ust-com.c: remove unnecessary goto in ustcomm_accept_unix_sock()
+	* liblttng-ust/lttng-ust-comm.c: fixing typo.
+	* Fix: remove unused texinfo dep from configure.ac
+	* Fix C99 strict compatibility: don't use void * for function pointers
+	* Fix c99 compatibility: tp_rcu_dereference_bp() should not use braced-groups within expressions
+	* Revert "Fix c99 compatibility: tp_rcu_dereference_bp() should not use braced-groups within expressions"
+	* Fix c99 compatibility: tp_rcu_dereference_bp() should not use braced-groups within expressions
+	* Fix: perform TLS fixup of nest count outside of UST mutex
+	* Fix: liblttng-ust-fork deadlock
+	* Fix: handle pthread errors
+	* Fix: local apps allowed should disable local (not global) tracing
+	* Fix strict ISO-C compatibility for ust-tracepoint-event.h public header
+	* Fix: support -std=c99 in tracepoint macros
+	* Fix c99 compatibility: use __typeof__ instead of typeof in public headers
+	* hello test: fail on old style definition
+	* Fix: tracepoint.h should not generate old-style definitions
+	* Fix: don't define variables in headers
+	* test "hello": add boolean test
+	* Fix: perform macro expansion on tracepoint signatures
+	* UST check pointer/de-reference order
+	* Fix list field: handle error
+	* Implement event fields listing
+	* Implement field listing command
+	* Fix: Block all signals in listener thread
+	* Add CodingStyle document to tarball
+	* Add coding style document
+	* endian.h: support cygwin
+	* align.h: support cygwin page size
+	* Add cygwin support to libringbuffer getcpu.h
+	* Add "2x int" and "2x long" types to the Java interface
+	* Add Integer and Long tracepoint types to the Java interface
+	* Fix: don't SIGBUS when filesystem is full
+	* tracepoint: include stdio.h for NULL definition
+	* manpage update: document that probes need gcc
+	* Fix: remove # in front on extern "C" {
+	* Cleanup: don't use GNU old-style field designator extension
+	* Fix: remove padding field after variable sized array
+	* Use unsigned long type for events discarded counter
+	* Fix: getcpu build with modern uClibc versions
+	* Fix: lttng-ust.pc needs to specify -ldl
+	* Fix: examples Makefiles should pass $(LIBS) at last
+	* Build a jar for the Java side of the JNI interface
+	* Fix: ustctl need to send the second fd upon error of 1st fd
+	* Fix: Add missing fork test program dependency library
+	* Fix: Make the JNI interface actually work
+	* Merge branch 'dev'
+	* Fix: stringify version description 
+
+-------------------------------------------------------------------
+Thu Jun 21 19:02:45 UTC 2012 - tonyj@suse.com
+
+- Update to release 2.0.4
+
+-------------------------------------------------------------------
+Thu Jun 14 16:18:46 CEST 2012 - ro@suse.de
+
+- change specfile license to GPL-2.0 
+
+-------------------------------------------------------------------
+Mon Jun  4 19:59:37 UTC 2012 - tonyj@suse.com
+
+- Update to release 2.0.3
+
+-------------------------------------------------------------------
+Fri Apr 20 19:48:58 UTC 2012 - tonyj@suse.com
+
+- Update to release 2.0.2
+
+-------------------------------------------------------------------
+Thu Apr 12 07:09:54 UTC 2012 - tonyj@suse.com
+
+- Update to release 2.0.1
+
+-------------------------------------------------------------------
+Thu Mar 22 00:00:41 UTC 2012 - tonyj@suse.com
+
+- Update to release 2.0.0
+
+-------------------------------------------------------------------
+Wed Mar 14 16:33:54 UTC 2012 - tonyj@suse.com
+
+- Update to version 2.0.0-rc2
+
+-------------------------------------------------------------------
+Mon Feb 27 22:49:04 UTC 2012 - tonyj@suse.com
+
+- Update to version 2.0.0-rc1
+
+-------------------------------------------------------------------
+Wed Jan  4 19:42:05 UTC 2012 - tonyj@suse.com
+
+- Update to version 1.9.4

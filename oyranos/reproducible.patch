@@ -1,0 +1,32 @@
+https://github.com/oyranos-cms/oyranos/pull/52.patch
+
+From 87483d149ea3a30b6da7276a931ac5665d56b70b Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Thu, 4 Apr 2019 02:02:05 +0200
+Subject: [PATCH] Drop build host kernel version
+
+This caused variations in build results
+when building in a chroot or container on hosts with different
+Linux kernel versions.
+
+For openSUSE Tumbleweed we also update the kernel often,
+but do not want to publish new oyranos binaries that
+did not differ otherwise.
+
+See also https://reproducible-builds.org/ for why this matters.
+---
+ src/include_private/config.log.h.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/include_private/config.log.h.in b/src/include_private/config.log.h.in
+index adc2842b..c3cd807e 100644
+--- a/src/include_private/config.log.h.in
++++ b/src/include_private/config.log.h.in
+@@ -12,7 +12,6 @@ OY_LOCALEDIR = OY_DATADIR/locale \n\
+  \n\
+  \n\
+ CMAKE_SYSTEM_NAME: @CMAKE_SYSTEM_NAME@ \n\
+-CMAKE_SYSTEM: @CMAKE_SYSTEM@ \n\
+ CMAKE_SYSTEM_PROCESSOR: @CMAKE_SYSTEM_PROCESSOR@ \n\
+ \n\
+ HAVE_OPENMP: @HAVE_OPENMP@ \n\

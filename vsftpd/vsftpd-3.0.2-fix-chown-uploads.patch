@@ -1,0 +1,28 @@
+Index: vsftpd-3.0.2/seccompsandbox.c
+===================================================================
+--- vsftpd-3.0.2.orig/seccompsandbox.c
++++ vsftpd-3.0.2/seccompsandbox.c
+@@ -475,6 +475,10 @@ seccomp_sandbox_setup_postlogin(const st
+       /* Need to send file descriptors to privileged broker. */
+       allow_nr_1_arg_match(__NR_sendmsg, 3, 0);
+     }
++    if (is_anon && tunable_chown_uploads)
++    {
++      allow_nr(__NR_fchmod);
++    }
+   }
+ 
+   if (tunable_syslog_enable)
+@@ -538,6 +542,12 @@ seccomp_sandbox_setup_postlogin_broker()
+   seccomp_sandbox_setup_base();
+   seccomp_sandbox_setup_data_connections();
+   allow_nr_1_arg_match(__NR_sendmsg, 3, 0);
++  if (tunable_chown_uploads)
++  {
++    allow_nr(__NR_fstat);
++    allow_nr(__NR_fchown);
++    allow_nr_1_arg_match(__NR_recvmsg, 3, 0);
++  }
+ }
+ 
+ void

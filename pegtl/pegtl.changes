@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sat Sep  9 08:02:26 UTC 2017 - jengelh@inai.de
+
+- Replace old RPM shell vars by macros. Trim description of SRPM.
+  Have testsuite built and run in parallel.
+
+-------------------------------------------------------------------
+Fri Sep  8 08:01:52 UTC 2017 - meissner@suse.com
+
+- 1.3.1 pegtl version to meet usbguard requirements.
+
+-------------------------------------------------------------------
+Thu Sep  7 06:02:07 UTC 2017 - meissner@suse.com
+
+- header only parsing library based on C++ templates.

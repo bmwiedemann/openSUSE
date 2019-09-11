@@ -1,0 +1,211 @@
+-------------------------------------------------------------------
+Thu Jul 13 05:36:59 UTC 2017 - coolo@suse.com
+
+- updated to 1.41
+   see /usr/share/doc/packages/perl-Image-Info/CHANGES
+
+  2017-07-12  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.41
+  
+      Stable release with the change in 1.40_50
+  
+      Additionally more diagnostics in t/string.t
+  
+  2017-06-30  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.40_50
+  
+      Support iTXt chunks in PNGs (RT #122285) (by Nicholas Clark)
+
+-------------------------------------------------------------------
+Wed Mar 22 06:43:40 UTC 2017 - coolo@suse.com
+
+- updated to 1.40
+   see /usr/share/doc/packages/perl-Image-Info/CHANGES
+
+  2017-03-21  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.40
+  
+      Stable release with the change in 1.39_50
+  
+  2017-03-19  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.39_50
+  
+      Rational values work again (RT #117480)
+  
+      Fix warnings while processing PNGs (RT #118495) (by Johan Vromans)
+  
+      Pod spelling fixes (by Salvatore Bonaccorso and Slaven Rezic)
+
+-------------------------------------------------------------------
+Sat Oct  8 14:33:01 UTC 2016 - coolo@suse.com
+
+- updated to 1.39
+   see /usr/share/doc/packages/perl-Image-Info/CHANGES
+
+  2016-10-08  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.39
+  
+      Stable release with all changes in 1.38_50..1.38_51
+  
+  2016-10-01  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.38_51
+  
+      Just recreated distribution with a changed SIGNATURE.
+  
+      Release 1.38_50
+  
+      Don't allow XXE (XML External Entities) processing while parsing
+      SVG files. Addresses RT #118205. This is a potentially
+      incompatible change; however usually SVG files do not rely on XXE.
+
+-------------------------------------------------------------------
+Mon Apr 20 08:46:00 UTC 2015 - coolo@suse.com
+
+- updated to 1.38
+   see /usr/share/doc/packages/perl-Image-Info/CHANGES
+
+  2015-04-19  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.38
+  
+      Pod typo fixes (by hatorikibble)
+  
+      New xt tests (synopsis, strict, kwalitee, by hatorikibble)
+
+-------------------------------------------------------------------
+Tue Apr 14 18:26:59 UTC 2015 - coolo@suse.com
+
+- updated to 1.37
+   see /usr/share/doc/packages/perl-Image-Info/CHANGES
+
+  2014-12-31  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.37
+  
+      Stable release with all changes in 1.36_51..1.36_52
+  
+  2014-12-29  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.36_52
+  
+      Handle invalid TIFF chunks: stop processing if an unrecognized
+      fieldtype is encountered. This is an additional fix for RT #100847.
+  
+  2014-12-19  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.36_51
+  
+      Use IO::Scalar instead of opening a scalar, for all
+      perls < 5.21.7. This is to prevent possible segmentation faults
+      with faulty images. See RT #100847 and
+      https://rt.perl.org/Ticket/Display.html?id=123443
+  
+      Fix a "Variable declared in conditional statement" error.
+  
+      Fix a couple of typos.
+  
+  2012-07-05  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.36
+  
+      Stable release with all changes in 1.35_50..1.35_51
+  
+  2013-06-28  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.35_51
+  
+      Ignore reading jpeg thumbnail image with no content, patch
+      provided by Kosei Moriyama,
+      https://github.com/eserte/image-info/pull/2)
+  
+  2013-05-06  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.35_50
+  
+      Fixed pod_cov.t test.
+  
+  2013-04-10  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.35
+  
+      Stable release with the change in 1.34_50
+  
+  2013-04-03  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.34_50
+  
+      image_info on Jpeg with bad EXIF data produced "substr outside of
+      string" exception in Image::TIFF (RT #84122, patch provided by
+      Steve Purkis)
+  
+  2013-02-29  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.34
+  
+      Stable release with all changes in 1.33_50..1.33_51
+  
+  2013-01-28  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.33_51
+  
+      Handle corrupt JPEG files with extraneous bytes
+  
+  2013-01-25  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.33_50
+  
+      Limited support for WBMP files.
+  
+  2012-11-03  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.33
+  
+      Added test image for RT #78471.
+  
+  2012-10-25  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.32_52
+  
+      Handle BMP files with negative heights (RT #78471).
+  
+  2012-10-24  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.32_51
+  
+      Signature fix.
+  
+  2012-10-23  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.32_50
+  
+      Repacked because of Module::Install 1.04 problems (see mail from
+      Miyagawa). Now Image::Info is again using good old EUMM.
+  
+  2012-02-21  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.32
+  
+      Stable release with all changes in 1.31_50..1.31_51
+  
+  2011-12-28  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.31_51
+  
+      Release 1.31_50
+  
+      SVG files without XML preamble are now also recognized.
+  
+      Bundled Module::Install 1.04.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:15:16 UTC 2011 - coolo@novell.com
+
+- initial package 1.31
+    * created by cpanspec 1.78.04
+

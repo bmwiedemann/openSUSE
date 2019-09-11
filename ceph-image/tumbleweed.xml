@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<param>
+  <image>obsrepositories:/opensuse/tumbleweed</image>
+  <name>opensuse/ceph/ceph</name>
+  <prefix>org.opensuse.ceph</prefix>
+  <title>Ceph container image</title>
+  <url>registry.opensuse.org/opensuse/ceph/ceph:%PKG_VERSION%</url>
+  <reference>opensuse/ceph/ceph:%PKG_VERSION%</reference>
+  <packages_boot>
+    <package>
+      <name>kubic-locale-archive</name>
+    </package>
+    <package>
+      <name>openSUSE-release-ftp</name>
+    </package>
+  </packages_boot>
+</param>

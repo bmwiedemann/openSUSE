@@ -1,0 +1,18 @@
+Changes for openSUSE / SLE:
+
+* ignition-mount-initrd-fstab.service / ignition-umount-initrd-fstab.service /
+  ignition-suse-generator:
+  Ignition has very limited file system support, e.g. it doesn't support
+  btrfs subvolumes (used in any default installation) or overlayfs mounts
+  (Used by MicroOS for mounting /etc). For this reason Ignition's "mount"
+  stage cannot be used for mounting the basic file systems for the "files"
+  stage.
+  To work around this limitation in addition to Ignition's own mount / umount
+  stage all files systems tagged for being mounted in the initrd
+  ("x-initrd.mount mount flag) will be mounted / umounted.
+* The user configuration can be stored on a device with the label "ignition"
+  (e.g. by attaching a USB flash drive with that name) instead of putting the
+  file onto the root partition
+* change-ignition-firstboot-path.conf / 01_suse_set_ignition:
+  For triggering an Ignition run manually it is possible to create the file
+  "/boot/writable/ignition.firstboot" (instead of "/boot/ignition.firstboot")

@@ -1,0 +1,27 @@
+The material in this package has been assembled from various resources on the
+internet.
+
+Marco Mornati has written a couple of blog pages which provide a step-by-step
+guide to set up Airprint for Ubuntu. The content of this package is basically
+an adaptation of those instructions for openSUSE:
+
+  https://blog.mornati.net/linux-as-airprint-server/
+  https://blog.mornati.net/linux-airprint-server-for-ios6-devices/
+
+A crucial tool mentioned in those blog posts is the python script to generate
+Avahi service files for CUPS printers:
+
+  https://github.com/tjfontaine/airprint-generate
+  http://www.finnie.org/2010/11/13/airprint-and-linux/
+
+The openSUSE forums and wiki provide some background information:
+
+  http://forums.opensuse.org/showthread.php/490716-airprint-serving-linux
+  http://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings
+
+Finally, a useful search for related information:
+
+  https://duckduckgo.com/?q=cups+dns-sd+airprint&t=opensuse
+
+Thanks to all the authors of those great resources.
+

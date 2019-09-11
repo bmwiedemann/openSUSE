@@ -1,0 +1,170 @@
+========
+OVERVIEW
+
+This package is a dummy package that always depends on the
+version of corresponding LLVM packages that openSUSE
+currently supports.  This file documents the procedure for
+updating the various LLVM components.
+
+There are three major update scenarios that will be addressed
+here, patch-level updates to the current LLVM version,
+patch-level updates to older LLVM versions, and major/minor
+version updates.
+
+LLVM version numbers come in three levels.  For version
+X.Y.Z, changes to the X level are major updates, changes to
+the Y level are minor updates, and changes to the Z level
+are patch-level updates. Since LLVM 4, the minor version
+is always expected to be 0. [1]  Library .so numbers are
+based on the major version, for example libLLVM.so.X.
+Patch-level updates do not update the version number of
+libraries.  For this reason, only changes to the major
+version number get a new llvm package.
+
+There are up to three packages that need to be handled in a
+given update.  This package, the base "llvm" package, the
+current "llvmX" package (X is the major version numbers),
+and the next "llvmX" package if the major version has changed.
+
+NOTE: This package should always have the same "License"
+tag as the currently-supported version of the llvmX package.
+
+[1] http://blog.llvm.org/2016/12/llvms-new-versioning-scheme.html
+
+
+===========================================
+PATCH-LEVEL UPDATES TO CURRENT LLVM VERSION
+
+For patch level updates, this package (llvm) and the current
+llvmX package need to be updated.
+
+1. llvmX package:
+   1. Add the new sources to the package and delete the old
+      ones.  This will not include cfe-docs-X.Y.Z.src.tar.xz 
+      or llvm-docs-X.Y.Z.src.tar.xz (see next item).
+   2. Build cfe-docs-X.Y.Z.src.tar.xz and 
+      llvm-docs-X.Y.Z.src.tar.xz.  The instructions are in
+      the %install section of llvmX.spec.  The version
+      numbers in the instructions will need to be updated
+      first.  Add those sources as well and delete the old
+      ones.
+   3. Update the "Version" tag in llvmX.spec to match the
+      new sources.
+   4. Update the version number in the patches to match the
+      new sources.
+   5. Update the "_revsn" tag in llvmX.spec to match the
+      revision number of the tag.  This can be found on
+      https://lists.llvm.org/pipermail/llvm-branch-commits
+      and should have like "[llvm-tag]" and 
+      "Creating release candidate final" in the subject
+      line.  You want to find the one for the current LLVM
+      release.
+   6. Update the "_relver" tag in llvmX.spec to match
+      the "Version" tag.
+   7. Confirm everything builds successfully and there are
+      no new rpmlint issues.
+   8. Update the llvmX.changes file.
+2. llvm package:
+   1. Update the "Version" tag to match the new llvmX
+      version.
+   2. Update the llvm.changes file.
+
+
+========================================
+PATCH-LEVEL UPDATES TO OLD LLVM VERSIONS
+
+For patch-level updates to versions of LLVM before the
+current version, only the corresponding llvmX package
+needs to be updated.
+
+1. llvmX package:
+   1. Add the new sources to the package and delete the old
+      ones.  This will not include cfe-docs-X.Y.Z.src.tar.xz 
+      or llvm-docs-X.Y.Z.src.tar.xz (see next item).
+   2. Build cfe-docs-X.Y.Z.src.tar.xz and 
+      llvm-docs-X.Y.Z.src.tar.xz.  The instructions are in
+      the %install section of llvmX.spec.  The version
+      numbers in the instructions will need to be updated
+      first.  Add those sources as well and delete the old
+      ones.
+   3. Update the "Version" tag in llvmX.spec to match the
+      new sources.
+   4. Update the version number in the patches to match the
+      new sources.
+   5. Update the "_revsn" tag in llvmX.spec to match the
+      revision number of the tag.  This can be found on
+      https://lists.llvm.org/pipermail/llvm-branch-commits
+      and should have like "[llvm-tag]" and 
+      "Creating release candidate final" in the subject
+      line.  You want to find the one for the current LLVM
+      release.
+   6. Update the "_relver" tag in llvmX.spec to match
+      the "Version" tag.
+   7. Confirm everything builds successfully and there are
+      no new rpmlint issues.  Some patches may need to be 
+      removed or rebased.
+   8. Update the llvmX.changes file.
+
+
+===============================
+MAJOR AND MINOR VERSION UPDATES
+
+For updates that change the major or minor version number,
+this package (llvm) needs to be updated, a new llvmX
+package needs to be created, and the old llvmX package
+needs to be modified.
+
+1. New llvmX package:
+   1. Copy (do not link) the old llvmX to the new
+      major/minor version number.
+   2. Add the new sources to the package and delete the old
+      ones.  This will not include cfe-docs-X.Y.Z.src.tar.xz 
+      or llvm-docs-X.Y.Z.src.tar.xz (see next item).
+   3. Build cfe-docs-X.Y.Z.src.tar.xz and 
+      llvm-docs-X.Y.Z.src.tar.xz.  The instructions are in
+      the %install section of llvmX.spec.  The version
+      numbers in the instructions will need to be updated
+      first.  Add those sources as well and delete the old
+      ones.
+   4. Rename the .spec, .changes, and rpmlintrc files in the
+      new llvmX package to the new major/minor version
+      number
+   5. Rename the packages in llvmX.spec files to match the
+      new package name.
+   6. Change the "_sonum" tag in llvmX.spec to match the
+      new major/minor versions. It should be of the form "X".
+   7. Change the "_minor" tag in llvmX.spec to match
+      the new major/minor versions.  It should be of the
+      form "X.0".
+   8. Change the "_uaver" tag in llvmX.spec to match the
+      new major/minor versions. It should be of the form "X00".
+   9. Update the "Version", "_revsn", and "_relver" tags
+      and the version numbers in the patches as described in
+      PATCH-LEVEL UPDATES above.
+  10. Confirm llvmX.spec builds successfully and there are
+      no new rpmlint issues.
+  11. Check whether the .so number of "libc++.so.W.V" has
+      changed.  If so, change "_socxx" tag to match.
+      It should be of the form "W" if the "V" value is 0
+      or "W_V" if the "V" value is greater than 0.
+  12. Confirm everything builds successfully and there are
+      no new rpmlint issues.  Some patches may need to be 
+      removed or rebased.
+  13. Update the llvmX.changes file.
+2. Old llvmX package:
+   1. If the .so number of libc++.so.W.V has not changed,
+      remove the "%if" and %ifarch" tests around 
+      %bcond_without/%bcond_with libcxx in llvmX.spec
+      and make it always %bcond_with.  If the .so numbers
+      have changed, these can be left-as-is.
+   3. Change "%bcond_without pyclang" to 
+      "%bcond_with pyclang" in llvmX.spec.
+   4. Confirm everything builds successfully and there are
+      no new rpmlint issues.
+   5. Update the llvmX.changes file.
+3. llvm package:
+   1. Update the "Version" tag to match the new llvmX
+      version.
+   2. Change the "_sonum" tag to match the one in the
+      new "llvmX.spec" file.
+   3. Update the llvm.changes file.

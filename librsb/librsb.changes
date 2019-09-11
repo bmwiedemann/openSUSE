@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Thu Jul 12 05:02:16 UTC 2018 - bwiedemann@suse.com
+
+- Add reproducible.patch and set an explicit memory hierarchy
+  to make build reproducible (boo#1100677)
+
+-------------------------------------------------------------------
+Tue Dec 26 14:10:41 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.2.0~rc7
+  * bugfix: rsb_spmv/rsb_spmm/BLAS_cusmv/BLAS_zusmv/BLAS_cusmm/
+    BLAS_zusmm could compute wrong values on complex hermitian
+    matrices if rhs imaginary part non null.
+  * bugfix: complex conjugated transpose
+    rsb_spsv/rsb_spsm/BLAS_cussv/BLAS_zussv/BLAS_cussm/BLAS_zussm
+    could compute wrong values if rhs imaginary part non null.
+  * bugfix: rsb_sppsp/rsb_mtx_clone would compute scaled
+    conjugate of complex matrices wrong if alpha imaginary part
+    non null.
+  * might detect a forgotten rsb_lib_init() at first matrix
+    allocation and return an error.
+
+-------------------------------------------------------------------
+Sat Apr 29 23:53:40 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.2.0~rc6
+  * BLAS_zusget_element & co will behave one-based in Fortran.
+  * rsb_sppsp was summing incorrectly certain non-overlapping
+    sparse matrices.
+  * rsb_file_mtx_save and rsb_file_vec_save's output use
+    full-precision.
+- Add pun.diff
+
+-------------------------------------------------------------------
+Thu Oct 20 23:10:35 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.2.0~rc5
+* Fixed EPS rendering of matrices, e.g.
+  `./rsbench --plot-matrix -aRzd -f matrix.mtx >matrix.eps`
+- Drop shlib.diff (applied upstream)
+
+-------------------------------------------------------------------
+Wed Jun  8 21:11:26 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.2.0~rc3
+* Extension: if parameter flagsA of mtx_set_vals() has
+  RSB_FLAG_DUPLICATES_SUM, then values will be summed up into the
+  matrix.
+* Bugfix: rsb_mtx_get_nrm on symmetric matrices was buggy.
+* Bugfix: rsb_spsm potentially wrong in --enable-openmp and
+  (nrhs>1). (ussm affected)
+* Bugfix: rsb_spsm wrong in --disable-openmp version and
+  (nrhs>1). (ussm affected)
+* Bugfix: rsb_spsm used to scale only first rhs when (*alphap!=1
+  and nrhs>1). (ussm affected)
+* Bugfix: rsb_spsm used to solve only first rhs when (y != x).
+  (ussm not affected)
+* Bugfix: rsb_spmm used to scale only first rhs when (*betap!=1
+  and nrhs>1). (usmm not affected)
+* Bugfix: rsb_tune_spmm/rsb_tune_spsm returned (false positive)
+  error on ( mtxAp != NULL && mtxOpp != NULL ) rather than on (
+  mtxAp != NULL && mtxOpp != NULL && *mtxOpp != NULL ).
+* Will use memset() on systems with no bzero() (e.g. mingw).
+
+-------------------------------------------------------------------
+Sun Jan 17 14:15:30 UTC 2016 - jengelh@inai.de
+
+- Initial package (versoin 1.2.0~rc2) for build.opensuse.org

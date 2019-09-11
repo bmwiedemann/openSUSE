@@ -1,0 +1,21 @@
+make searches for -lfoo targets in /lib and /usr/lib after mangling
+them with .LIBPATTERNS into libfoo.so
+
+This patch extends the search path to /lib64 and /usr/lib64
+---
+ remake.c |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: make-4.1/remake.c
+===================================================================
+--- make-4.1.orig/remake.c	2014-10-05 17:24:51.000000000 +0100
++++ make-4.1/remake.c	2014-10-15 23:20:42.000000000 +0100
+@@ -1549,6 +1549,8 @@ library_search (const char *lib, FILE_TI
+   static const char *dirs[] =
+     {
+ #ifndef _AMIGA
++      "/lib64",
++      "/usr/lib64",
+       "/lib",
+       "/usr/lib",
+ #endif

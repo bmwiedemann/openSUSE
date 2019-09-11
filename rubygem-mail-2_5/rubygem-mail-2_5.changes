@@ -1,0 +1,170 @@
+-------------------------------------------------------------------
+Tue Jun 13 20:50:32 UTC 2017 - coolo@suse.com
+
+- updated to version 2.5.5
+ see installed CHANGELOG.rdoc
+
+-------------------------------------------------------------------
+Thu Oct 16 07:16:45 UTC 2014 - coolo@suse.com
+
+- fork off 2.5 branch for rails 3.2
+
+-------------------------------------------------------------------
+Sun Oct 12 11:31:29 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Wed May 15 04:02:20 UTC 2013 - coolo@suse.com
+
+- updated to version 2.5.4
+ Features:
+ * Save settings passed to TestMailer#new (svanderbleek)
+ * Allow the setting of envelope from directly (jeremy)
+ * Accept other IETF/IANA-registered Content-Types and Content-Transfer-Encodings (jeremy)
+ * Alias shift-jis charset to Shift_JIS Ruby encoding (jeremy)
+ * Add support for ks_c_5601-1987 charset, aliased to CP949 Ruby encoding (jeremy)
+ * Don't allow colons in header names (jeremy)
+ * Can assign arrays of Message-IDs to References and In-Reply-To (jeremy)
+ * Setting the html_ or text_part sets a default text/html or text/plain content type (jeremy)
+ * Setting the html_ or text_part to nil removes it (jeremy)
+ * Addresses without a parsable email or display name still format as their raw text (jeremy)
+ * Close pull request 504 - Alias GB2312 charset to GB18030 Ruby encoding (bpot)
+ * Close pull request 399 - Accept :ca_path and :ca_file options for SMTP delivery (ndbroadbent)
+ * Close pull request 389 - Don't add superfluous message headers to MIME parts (djmaze, jeremy)
+ 
+ Performance:
+ * Close pull request 488 - Speed up field construction & comparison (bpot)
+ 
+ Bugs:
+ * Don't include separating semicolon in paramter value when sanitizing (bpot)
+ * Fix fencepost encoding problem with binhex strings and only one token (drasch)
+ * Fix sendmail delivery to addresses with a leading hyphen (lifo, jeremy)
+ * Correctly format mbox From headers per RFC4155 (bpot, jeremy)
+ * Fix bogus '=' at the end of some quoted-printable messages (jeremy)
+ * Shouldn't be fooled into encoding strings on 1.8 by unrelated Encoding constant (emiellohr, jeremy)
+ * Header encoding should be US-ASCII, not the default external encoding (jeremy)
+ * Address elements should return decoded display names by default (jeremy)
+ * Fix up tests that depend on utf-8 external encoding; read fixtures as binary (jeremy)
+ * Capture stderr from Sendmail and Exim deliveries (jeremy)
+ * RFC2822 quoted_string content may be empty (jeremy)
+ * Calling #to_s on a field with a nil value returns an empty string instead of nil (jeremy)
+ * The Received header may contain zero name/value pairs, qmail-style (jeremy)
+ * Fix that setting an attachment with a :mime_type and :encoding would override the :encoding (jeremy)
+ * Fix that declaring an html_part but no text_part would use multipart/alternative anyway (jeremy)
+ * Close pull request 508 - Don't add an extra CRLF to MIME parts; split MIME parts on correct CRLF boundaries (Aalanar)
+ * Close pull request 506 - Escape backslashes in quoted strings (ConradIrwin)
+ * Close pull request 496 - Correctly handle quoted-printable line breaks (jeremy)
+ * Close pull request 493 - Repair misencoded quoted-printable line breaks (jeremy)
+ * Close pull request 487 - Extract comments from group email addresses (bpot)
+ * Close pull request 481 - Correctly quote filename attributes (bpot)
+ * Close pull request 480 - Support mixed encodings in a single header body (adamvaughan)
+ * Close pull request 471 - Fix Ruby 1.8 build when UTF16/32 default to little-endian (kennyj)
+ 
+ Coping with third-party bugs:
+ * Parse multipart boundary from Content-Type headers containing extra semicolons (jeremy)
+ * Close pull request 389 - Only add Content-ID to inline attachments to appease Outlook (djmaze, jeremy)
+ 
+ Housekeeping:
+ * Add development gem dependency on rdoc (jeremy)
+
+-------------------------------------------------------------------
+Fri Dec  7 09:05:39 UTC 2012 - coolo@suse.com
+
+- updated to version 2.5.3
+ * Close pull request 468 - Remove debug output to STDOUT (tadman)
+ * Fix up spec warnings
+ * Remove un needed require
+ * Ensure spec_helper constants only defined once
+ * Use stub against time instead of DateTime to avoid double redefinition error
+
+-------------------------------------------------------------------
+Mon Nov 26 17:42:39 UTC 2012 - coolo@suse.com
+
+- updated to version 2.5.2
+ * Removing double loading of treetop parsers to remove warnings
+ * Making parsers auto compile on spec suite and load in production code to avoid error that caused yank of 2.5.0
+ * Reapply pull request 443 - CC fields with semicolon are now parsed right (paulwittmann)
+ 
+ Features:
+ * Close pull request 406 - Add Mail#eager_autoload! to load all autoloaded files on demand (bpot)
+ * Close pull request 461 - Allow string as delivery_method (skyeagle, radar)
+ * Close pull request 407 - Do not require Net::IMAP or Net::POP if they're already loaded (bpot)
+ * Close pull request 400 - Raise exception if delivery values or from values are missing completely from an email that is getting delivered (dmathieu)
+ * Close pull request 397 - Support dots in local part of the addresses (eac)
+ * Close pull request 477 - Fixed handling content_type with superfluous spaces (ledermann)
+ * Close pull request 451 - Ignore nil in addresses so things do not blow up when e.g. a user had no email (grosser)
+ * Close pull request 362 - Enable TLS in Ruby 1.8 (kingargyle)
+ * Close pull request 358 - Fix Mail::CommonAddress#value=, Mail::CommonAddress#<< and Mail::Encodings.encode_non_usascii (mrkn)
+ * Close pull request 350 - Makes mail Header object ennumerable (ged)
+ 
+ Performance:
+ * Close pull request 369 - Mail::Header#charset is called pretty often during header parser work (bogdan)
+ * Close pull request 368 - Improve existing code by moving some objects to contstant instead of constructing them over and over again. (bogdan)
+ * Close pull request 366 - Headers parsing performance optimization (bogdan)
+ * Close pull request 365 - Add maximum_amount of parsed headers configuration parameter (bogdan)
+ 
+ Bugs:
+ * Close pull request 444 - Fix typo in spec (cczona)
+ * Close pull request 439 - Fix Ruby 1.9 behaviour to match 1.8.7 behaviour on ignoring invalid or undefined characters (ochko)
+ * Close pull request 430 - Unstructured field converts to string before calling encoding on it (brupm mikel)
+ * Close pull request 424 - Use String#to_crlf instead of String#gsub (okkez)
+ * Close pull request 429 - Fix an obvious bug in exim delivery_method (dskim)
+ * Close pull request 425 - Remove Gemfile.lock from generated gem (kbackowski)
+ * Close pull request 414 - Fix typo on "ignoring" (derwiki)
+ * Close pull request 405 - Fix stack overflow (RegexpError) triggered by large emails with an envelope (bpot)
+ * Close pull request 402 - Prevent InReplyTo, Keyword, References or ResentMessageId fields from  generating lines longer than 998 chars (pplr)
+ * Close pull request 391 - Fixed failed attachment parsing when file name in headers contains spaces and is not wrapped in quotes (danieltreacy)
+ * Close pull request 385 - Fix Multibyte::Chars#upcase/downcase (technoweenie)
+ * Close pull request 384 - copy dat unicode over from active support (technoweenie)
+ * Close pull request 380 - Split strictly on MIME boundary lines (ConradIrwin)
+ * Close pull request 277 - Fix specific email decoding failure example (yalab)
+ * Close pull request 361 - Support 8bit encoding for ruby 1.9 (bogdan)
+ * Close pull request 346 - Fix two bugs of TestRetriever (ermaker)
+ * Close pull request 337 - Make the behavior of value_decode the same between Ruby 1.8 and Ruby 1.9. (kennyj)
+ * Close pull request 336 - Fix more warning: possibly useless use of == in void context (kennyj)
+ * Close pull request 293 - make charset and mime type more resliant to bad header values (kmeehl)
+ * Fix failing spec Issue 453 on Ruby 1.9.3
+ * Fix mail reading: don't raise invalid byte sequence in UTF-8 when reading non-UTF-8 emails (mreinsch)
+ * Close pull request 353 - define NilClass#blank? only if not defined yet (amatsuda)
+ * Close pull request 357 - Fixes #349 an inverted condition on imap open read_only (felixroeser)
+ * Remove duplicated line feed from regexp
+ * Remove unused variable
+ * Updated IMAP documentation
+ * Tweak publisher
+
+-------------------------------------------------------------------
+Sat Aug  4 11:30:16 UTC 2012 - coolo@suse.com
+
+- rename useless suffix
+
+-------------------------------------------------------------------
+Sat Aug  4 11:27:39 UTC 2012 - coolo@suse.com
+
+- updated to version 2.4.4
+
+-------------------------------------------------------------------
+Mon Apr 23 08:57:30 UTC 2012 - saschpe@suse.de
+
+- Also require rubygem-i18n-0_6 instead of rubygem-i18n
+
+-------------------------------------------------------------------
+Tue Apr  3 07:59:12 UTC 2012 - coolo@suse.com
+
+- update to 2.4.4
+ * Fix security vulnerability allowing command line exploit when using file delivery method
+ * Fix security vulnerability allowing command line exploit when using exim or sendmail from the command line
+ * Change Mail#deliver! to also inform the interceptors
+ * Encodings.value_decode(str): Treat lines with mixed encoding correctly when the line ends with a plain text part.
+
+-------------------------------------------------------------------
+Fri Mar 23 11:06:14 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Factory preparation
+
+-------------------------------------------------------------------
+Thu Jan 26 16:04:36 UTC 2012 - mrueckert@suse.de
+
+- initial package 2.4 branch
+

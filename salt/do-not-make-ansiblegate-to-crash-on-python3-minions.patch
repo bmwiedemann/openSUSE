@@ -1,0 +1,219 @@
+From 189a19b6e8d28cc49e5ad5f2a683e1dfdce66a86 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Fri, 28 Jun 2019 15:17:56 +0100
+Subject: [PATCH] Do not make ansiblegate to crash on Python3 minions
+
+Fix pylint issues
+
+Move MockTimedProc implementation to tests.support.mock
+
+Add unit test for ansible caller
+---
+ salt/modules/ansiblegate.py            | 14 +++++++--
+ tests/support/mock.py                  | 31 +++++++++++++++++++
+ tests/unit/modules/test_ansiblegate.py | 41 ++++++++++++++++++++++++++
+ tests/unit/modules/test_cmdmod.py      | 34 +--------------------
+ 4 files changed, 84 insertions(+), 36 deletions(-)
+
+diff --git a/salt/modules/ansiblegate.py b/salt/modules/ansiblegate.py
+index 771db6d6aa..88e8147573 100644
+--- a/salt/modules/ansiblegate.py
++++ b/salt/modules/ansiblegate.py
+@@ -147,6 +147,10 @@ class AnsibleModuleCaller(object):
+         :param kwargs: keywords to the module
+         :return:
+         '''
++        if six.PY3:
++            python_exec = 'python3'
++        else:
++            python_exec = 'python'
+ 
+         module = self._resolver.load_module(module)
+         if not hasattr(module, 'main'):
+@@ -162,9 +166,13 @@ class AnsibleModuleCaller(object):
+             ["echo", "{0}".format(js_args)],
+             stdout=subprocess.PIPE, timeout=self.timeout)
+         proc_out.run()
++        if six.PY3:
++            proc_out_stdout = proc_out.stdout.decode()
++        else:
++            proc_out_stdout = proc_out.stdout
+         proc_exc = salt.utils.timed_subprocess.TimedProc(
+-            ['python', module.__file__],
+-            stdin=proc_out.stdout, stdout=subprocess.PIPE, timeout=self.timeout)
++            [python_exec, module.__file__],
++            stdin=proc_out_stdout, stdout=subprocess.PIPE, timeout=self.timeout)
+         proc_exc.run()
+ 
+         try:
+@@ -263,7 +271,7 @@ def help(module=None, *args):
+             description = doc.get('description') or ''
+             del doc['description']
+             ret['Description'] = description
+-        ret['Available sections on module "{}"'.format(module.__name__.replace('ansible.modules.', ''))] = doc.keys()
++        ret['Available sections on module "{}"'.format(module.__name__.replace('ansible.modules.', ''))] = [i for i in doc.keys()]
+     else:
+         for arg in args:
+             info = doc.get(arg)
+diff --git a/tests/support/mock.py b/tests/support/mock.py
+index 38b68bd5c4..4b44c112ee 100644
+--- a/tests/support/mock.py
++++ b/tests/support/mock.py
+@@ -510,6 +510,37 @@ class MockOpen(object):
+                     ret.extend(fh_.writelines_calls)
+         return ret
+ 
++class MockTimedProc(object):
++    '''
++    Class used as a stand-in for salt.utils.timed_subprocess.TimedProc
++    '''
++    class _Process(object):
++        '''
++        Used to provide a dummy "process" attribute
++        '''
++        def __init__(self, returncode=0, pid=12345):
++            self.returncode = returncode
++            self.pid = pid
++
++    def __init__(self, stdout=None, stderr=None, returncode=0, pid=12345):
++        if stdout is not None and not isinstance(stdout, bytes):
++            raise TypeError('Must pass stdout to MockTimedProc as bytes')
++        if stderr is not None and not isinstance(stderr, bytes):
++            raise TypeError('Must pass stderr to MockTimedProc as bytes')
++        self._stdout = stdout
++        self._stderr = stderr
++        self.process = self._Process(returncode=returncode, pid=pid)
++
++    def run(self):
++        pass
++
++    @property
++    def stdout(self):
++        return self._stdout
++
++    @property
++    def stderr(self):
++        return self._stderr
+ 
+ # reimplement mock_open to support multiple filehandles
+ mock_open = MockOpen
+diff --git a/tests/unit/modules/test_ansiblegate.py b/tests/unit/modules/test_ansiblegate.py
+index 1fbb083eb7..70b47f8bc2 100644
+--- a/tests/unit/modules/test_ansiblegate.py
++++ b/tests/unit/modules/test_ansiblegate.py
+@@ -29,6 +29,7 @@ from tests.support.unit import TestCase, skipIf
+ from tests.support.mock import (
+     patch,
+     MagicMock,
++    MockTimedProc,
+     NO_MOCK,
+     NO_MOCK_REASON
+ )
+@@ -36,6 +37,7 @@ from tests.support.mock import (
+ import salt.modules.ansiblegate as ansible
+ import salt.utils.platform
+ from salt.exceptions import LoaderError
++from salt.ext import six
+ 
+ 
+ @skipIf(NO_MOCK, NO_MOCK_REASON)
+@@ -137,3 +139,42 @@ description:
+         '''
+         with patch('salt.modules.ansiblegate.ansible', None):
+             assert ansible.__virtual__() == 'ansible'
++
++    def test_ansible_module_call(self):
++        '''
++        Test Ansible module call from ansible gate module
++
++        :return:
++        '''
++
++        class Module(object):
++            '''
++            An ansible module mock.
++            '''
++            __name__ = 'one.two.three'
++            __file__ = 'foofile'
++
++            def main():
++                pass
++
++        ANSIBLE_MODULE_ARGS = '{"ANSIBLE_MODULE_ARGS": ["arg_1", {"kwarg1": "foobar"}]}'
++
++        proc = MagicMock(side_effect=[
++            MockTimedProc(
++                stdout=ANSIBLE_MODULE_ARGS.encode(),
++                stderr=None),
++            MockTimedProc(stdout='{"completed": true}'.encode(), stderr=None)
++        ])
++
++        with patch.object(ansible, '_resolver', self.resolver), \
++            patch.object(ansible._resolver, 'load_module', MagicMock(return_value=Module())):
++            _ansible_module_caller = ansible.AnsibleModuleCaller(ansible._resolver)
++            with patch('salt.utils.timed_subprocess.TimedProc', proc):
++                ret = _ansible_module_caller.call("one.two.three", "arg_1", kwarg1="foobar")
++                if six.PY3:
++                    proc.assert_any_call(['echo', '{"ANSIBLE_MODULE_ARGS": {"kwarg1": "foobar", "_raw_params": "arg_1"}}'], stdout=-1, timeout=1200)
++                    proc.assert_any_call(['python3', 'foofile'], stdin=ANSIBLE_MODULE_ARGS, stdout=-1, timeout=1200)
++                else:
++                    proc.assert_any_call(['echo', '{"ANSIBLE_MODULE_ARGS": {"_raw_params": "arg_1", "kwarg1": "foobar"}}'], stdout=-1, timeout=1200)
++                    proc.assert_any_call(['python', 'foofile'], stdin=ANSIBLE_MODULE_ARGS, stdout=-1, timeout=1200)
++                assert ret == {"completed": True, "timeout": 1200}
+diff --git a/tests/unit/modules/test_cmdmod.py b/tests/unit/modules/test_cmdmod.py
+index 8da672dd22..a20afaca0f 100644
+--- a/tests/unit/modules/test_cmdmod.py
++++ b/tests/unit/modules/test_cmdmod.py
+@@ -24,6 +24,7 @@ from tests.support.paths import FILES
+ from tests.support.mock import (
+     mock_open,
+     Mock,
++    MockTimedProc,
+     MagicMock,
+     NO_MOCK,
+     NO_MOCK_REASON,
+@@ -36,39 +37,6 @@ MOCK_SHELL_FILE = '# List of acceptable shells\n' \
+                   '/bin/bash\n'
+ 
+ 
+-class MockTimedProc(object):
+-    '''
+-    Class used as a stand-in for salt.utils.timed_subprocess.TimedProc
+-    '''
+-    class _Process(object):
+-        '''
+-        Used to provide a dummy "process" attribute
+-        '''
+-        def __init__(self, returncode=0, pid=12345):
+-            self.returncode = returncode
+-            self.pid = pid
+-
+-    def __init__(self, stdout=None, stderr=None, returncode=0, pid=12345):
+-        if stdout is not None and not isinstance(stdout, bytes):
+-            raise TypeError('Must pass stdout to MockTimedProc as bytes')
+-        if stderr is not None and not isinstance(stderr, bytes):
+-            raise TypeError('Must pass stderr to MockTimedProc as bytes')
+-        self._stdout = stdout
+-        self._stderr = stderr
+-        self.process = self._Process(returncode=returncode, pid=pid)
+-
+-    def run(self):
+-        pass
+-
+-    @property
+-    def stdout(self):
+-        return self._stdout
+-
+-    @property
+-    def stderr(self):
+-        return self._stderr
+-
+-
+ @skipIf(NO_MOCK, NO_MOCK_REASON)
+ class CMDMODTestCase(TestCase, LoaderModuleMockMixin):
+     '''
+-- 
+2.21.0
+
+

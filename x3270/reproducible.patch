@@ -1,0 +1,21 @@
+commit cfd52cccf0a25c8a3d20cbb2f2e359c9fad8b2ad
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Sun Jun 18 19:40:24 2017 +0200
+
+    Call gzip -n to make build fully reproducible
+    
+    See https://reproducible-builds.org/ for why that matters
+
+diff --git a/x3270/Makefile.obj.in b/x3270/Makefile.obj.in
+index 716c7085..de2f8261 100644
+--- a/x3270/Makefile.obj.in
++++ b/x3270/Makefile.obj.in
+@@ -82,7 +82,7 @@ x3270: $(OBJS1) $(DEP3270) $(DEP3270I) $(DEP32XX) $(DEP3270STUBS)
+ 	$(CC) -o $@ $(OBJS1) $(LDFLAGS) $(LD3270) $(LD3270I) $(LD32XX) $(LD3270STUBS) $(LIBS)
+ 
+ %.pcf.gz: %.bdf
+-	bdftopcf $< | gzip >$@
++	bdftopcf $< | gzip -n9 >$@
+ 
+ dryrun: dryrun.in
+ 	/bin/cp $< $@

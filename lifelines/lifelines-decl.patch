@@ -1,0 +1,13 @@
+Index: lifelines-3.0.62/src/gedlib/init.c
+===================================================================
+--- lifelines-3.0.62.orig/src/gedlib/init.c
++++ lifelines-3.0.62/src/gedlib/init.c
+@@ -65,7 +65,7 @@ STRING editfile=NULL; /* file used for e
+ extern BOOLEAN writeable;
+ extern STRING readpath,readpath_file;
+ extern STRING illegal_char;
+-extern INT opt_finnish, opt_mychar;
++extern BOOLEAN opt_finnish, opt_mychar;
+ 
+ /*********************************************
+  * local function prototypes

@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Mon Aug 27 11:59:46 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.4.61:
+  * No changelog available.
+- Remove vala-panel-lower-reqs.patch.
+
+-------------------------------------------------------------------
+Wed Apr  5 14:54:33 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.3.8:
+  * No changelog available.
+- Remove vala-panel-0.3.6-vala-0.36.patch: fixed upstream.
+- Add vala-panel-lower-reqs.patch: lower requirements for
+  openSUSE Leap 42.x.
+
+-------------------------------------------------------------------
+Sat Apr  1 11:12:25 UTC 2017 - sor.alexei@meowr.ru
+
+- Add vala-panel-0.3.6-vala-0.36.patch: Fix build with Vala 0.36
+  and newer (commits 01bb0cd, 466bc4b).
+
+-------------------------------------------------------------------
+Mon Jan 23 12:25:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.3.6:
+  * No changelog available.
+- Fix recommends.
+
+-------------------------------------------------------------------
+Sat May  7 07:12:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Fix build by using upstream glib-2.0.vapi.
+
+-------------------------------------------------------------------
+Wed Jun 24 13:48:32 UTC 2015 - cdenicolo@suse.com
+
+- correct license is GPL-3.0+, see LICENSE-file
+
+-------------------------------------------------------------------
+Fri Jun 19 12:43:17 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

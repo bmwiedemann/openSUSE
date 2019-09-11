@@ -1,0 +1,12 @@
+Index: mplex/stream_params.hpp
+===================================================================
+--- mplex/stream_params.hpp.orig
++++ mplex/stream_params.hpp
+@@ -23,7 +23,6 @@
+ #ifndef __STREAM_PARAMS_HH__
+ #define __STREAM_PARAMS_HH__
+ 
+-#include <config.h>
+ #include <mjpeg_types.h>
+ class LpcmParams
+ {

@@ -1,0 +1,999 @@
+-------------------------------------------------------------------
+Thu Dec 21 13:28:39 CET 2017 - jsmeix@suse.de
+
+- Using newest rear-2.3.tar.gz tarball from sourceforge
+  cf. https://github.com/rear/rear/issues/1656
+
+-------------------------------------------------------------------
+Wed Dec 20 16:56:11 CET 2017 - jsmeix@suse.de
+
+- Version upgrade to 2.3
+  (fate#323930 fate#323931 fate#323932)
+  New features and bigger enhancements:
+  * First steps towards running ReaR unattended in general
+  * SSH support in the recovery system is now secure by default
+  * Improved verification of the recovery system contents
+  * ReaR is now more safe against recreating on a wrong disk
+  Possibly backward incompatible changes:
+  * In addition to STDERR now also STDOUT is redirected into the
+    log file so that when programs prompt via STDOUT to get input
+    the program's prompt could be no longer visible to the user
+  * There are no longer private SSH keys in the recovery system by
+    default and a RSA key is generated from scratch when starting
+    sshd during recovery system startup so that it does no longer
+    work by default to use SSH in the recovery system via the
+    SSH keys that exist on the original system
+  * By default it is now fatal when 'ldd' reports a 'not found'
+    library for any file in a /bin/ or /sbin/ directory in the
+    recovery system so that now 'rear mkrescue/mkbackup'
+    may fail where it had (blindly) worked before
+  * Improved autodetection when the disk layout looks ambiguous.
+    Now 'rear recover' switches by default more often into the
+    MIGRATION_MODE where manual disk layout configuration happens
+    via several user dialogs so that by default 'rear recover'
+    shows more often user dialogs
+  A detailed list can be found in the rear-release-notes.txt file
+
+-------------------------------------------------------------------
+Wed Jul 26 12:58:25 CEST 2017 - jsmeix@suse.de
+
+- Version upgrade to 2.2
+  A detailed list can be found in the rear-release-notes.txt file.
+  Changes include (excerpt):
+  * Let the get_disk_size() function retry several times to be more
+    fail-safe when udev needs some time until device files appear.
+    This introduces the new generic helper function retry_command()
+    plus the new config variables REAR_SLEEP_DELAY and
+    REAR_MAX_RETRIES. For details see default.conf and
+    lib/layout-functions.sh (issue #1370)
+  * ReaR failed to continue due incorrect check of presence
+    of USB device (REAR-000) in /proc/mounts, despite foregoing
+    script (060_mount_NETFS_path.sh) did mounting of this device
+    (issue #1415)
+  * Add missing privilege separation dir to start sshd
+    on Debian 9 (issue #1381)
+  * Redirect rsync verbose output to backup log (issue #1387)
+  * Load storage controllers in rescue system in same order
+    as on host system (issue #1384):
+    Copy over modules from initrd on SUSE LINUX and prevent sorting
+    of MODULES_LOAD array to keep the order intended.
+  * Add /yaboot to ISO_FILE when running SUSE ppc64 (issue #1414)
+  * Add SSL cert directories so we can interact
+    with Google Cloud Storage (issue #1402)
+  * Modified the "unattended" into "automatic" with ISO_DEFAULT
+    required for automated recovery tests (issue #1397)
+  * Use the original fds when ReaR was launched (which are now
+    saved as fd6, fd7, and fd8 for stdin, stdout, and stderr
+    respectively) for actually intended user input and user output.
+    To keep backward compatible behaviour all old deprecated usage
+    of '>&8' is converted into '>/dev/null' but /dev/null usage
+    in general should be cleaned up later (issues #887, #1395)
+  * Added new generic UserInput and UserOutput plus LogUserOutput
+    functions that are intended to replace current user input
+    functionality that calls select or read directly.
+    For the next ReaR version 2.3 it is planned to also
+    redirect stdout into the log file in addition to stderr
+    (issues #885, #1366, #1398, #1399)
+  * The 'make rpm' now relies on 'make srpm' which creates
+    the src.rpm package first. This src.rpm package can then
+    be easily copied to another computer to rebuild a rpm package
+    from it without needed the sources itself (or git checkout)
+    (issue #1389)
+  * Replaced some perl regexp with grep native extended regexp
+    (issue #1376)
+  * Introducing SECURE_BOOT_BOOTLOADER variable in default.conf
+    This variable should enable users booting with Secure Boot,
+    to use whatever custom signed boot loader they like, and
+    removes hard coded entry "shim.efi" from ReaRs code
+    (issue #1374)
+  * Enhanced and cleaned up making ISO on POWER (ppc64/ppc64le).
+    Now the backup can be stored in the ISO (via BACKUP_URL=iso...)
+    and even multiple ISOs work on POWER now (issues #697, #1383)
+  * Create multipath.conf only during migration (from non-mulitpath
+    to multipath), and always copy /etc/multipath/bindings to the
+    TARGET_FS_ROOT (issues #1382, #1393)
+- Version upgrade to 2.1
+  A detailed list can be found in the rear-release-notes.txt file.
+  Changes include (excerpt):
+  * Support for Grub2 installation with software RAID1 on Linux
+    on POWER (ppc64/ppc64le) (issue #1369)
+  * REBUILD_INITRAMFS variable was introduced.
+    The new default.conf setting REBUILD_INITRAMFS="yes" rebuilds
+    the initramfs/initrd during "rear recover" to be more on the
+    safe side. With REBUILD_INITRAMFS="" the old behaviour
+    can still be specified (issue #1321)
+  * ISO_RECOVER_MODE=unattended mode (issue #1351) - required
+    for automated ReaR testing with OUTPUT=ISO
+  * MODULES variable supports now special values like
+    'all_modules', 'loaded_modules', 'no_modules'
+    (issues #1202, #1355)
+  * Include systemd/network to preserve
+    "Predictable Network Interface Names" (issue #1349)
+  * Various improvements regarding multipath
+    (issues #1190, #1309, #1310, #1311, #1314, #1315, #1324,
+     #1325, #1328, #1329, #1344, #1346)
+  * Show OUTPUT variables in rear dump (issue #1337)
+  * Added support for "grub PXE style" via PXE_CONFIG_GRUB_STYLE
+    and PXE_TFTP_IP on non x86 platform (issue #1339)
+  * Try 'wipefs -force' and use 'dd' as fallback to better
+    clean up disk partitions (issue #1327)
+  * Reorganized "finalize" scripts ordering and cleanup of the
+    PPC bootloader installation (issue #1323)
+  * Avoid long default wait in 'dig' when DNS servers are not set
+    (issue #1319)
+  * Fail-safe calculations in partitioning code
+    (issues #1269, #1307)
+  * Improved support on ppc/ppc64/ppc64le architectures
+    (issues #1178, #1311, #1313, #1322)
+  * Define hostname in both /etc/HOSTNAME and /etc/hostname
+    in rescue image (for Arch) (issue #1316)
+  * Rename network interface when MAC not present in udev
+    (issue #1312)
+  * Added support for 'nano' editor (in addition to 'vi')
+    (issues #1298, #1306)
+  * mmcblk disk types are now supported (issues #1301, #1302)
+  * NETFS_RESTORE_CAPABILITIES variable was introduced
+    to restore file capabilities in a proper way (issue #1283)
+  * Added required libs and files for 'curl' with HTTPs
+    by default (issues #1267, #1279)
+  * More precise XFS file system creation during rear recover
+    (issues #1208, #1213, #1276)
+  * DRLM management and security improvements (issue #1252)
+  * Improved BOOTLOADER support (issue #1242)
+  * DRLM support for multiple backups via multiple config files
+    (issue #1229)
+  * FIRMWARE_FILES support to exclude firmware files
+    in rescue image to reduce the size of image (issue #1216)
+  * Enable SELinux in the rescue image for tar internal
+    backup method if BACKUP_SELINUX_DISABLE=0 (issue #1215)
+  * BOOT_OVER_SAN is now fully supported
+    (issues #1190, #1309, #1314, #1315, #1325, #1329, #1344)
+  * NVME disks are now fully supported (issue #1191)
+  * Some initial basic support for new backup type ZYPPER
+    was added (issues #1085, #1209)
+  * Finding UEFI boot loaders on non standard places
+    (issues #1204, #1225, #1293)
+  * The USB UEFI partition size USB_UEFI_PART_SIZE for kernel
+    image has been increased from 100 to 200 MB (issue #1205)
+  * REAR_INITRD_COMPRESSION variable was introduced to specify
+    initrd compression (e.g. 'lzma' for PPC64)
+    (issues #1142, #1218, #1290)
+  * New backup type BLOCKCLONE was added to backup
+    non-Linux partitions (e.g. Windows NTFS partitions)
+    (issues #1078, #1162, #1172, #1180)
+  * Bareos 16.2 is now supported (issue #1169)
+  * New USB_PARTITION_ALIGN_BLOCK_SIZE and
+    USB_DEVICE_FILESYSTEM_PARAMS variables
+    were added (issue #1217)
+  * Improved the USB backup selection menu during the recovery
+    via USB (issue #1166)
+  * USB_SUFFIX variable was introduced to align backup on USB
+    with backup on NFS (issues #1164, #1160, #1145)
+  * Forbid incremental backup to work on BACKUP_URL=usb://
+    (issue #1146)
+  * The USB_DEVICE_PARTED_LABEL=gpt setting is now honered
+    while formatting the USB disk (issue #1153)
+- Version upgrade to 2.0
+  Backward incompatible change: ReaR 2.00 introduced the 3-digits
+  scripts instead of the 2-digits script. This means all scripts
+  must begin with 3 digits, e.g. 010-my-script.sh instead
+  of 10-my-script. Therefore, if you wrote your own scripts
+  make sure to renumber these.
+  A detailed list can be found in the rear-release-notes.txt file.
+  Changes include (excerpt):
+  * Bareos support: add missing directory /var/run/bareos
+    in recovery system (issue #1148)
+  * Forbid BACKUP_URL=usb for BACKUP_TYPE=incremental/differential
+    (issues #1141 and #1145)
+  * Improved and added new example configurations
+    (issue #1068, #1058)
+  * Modified/Improved the exit code messages of ReaR
+    (issues #1089, #1133)
+  * Fix documentation regarding OUTPUT_URL=null
+    (issues #734, #1130)
+  * Better and fail safe progress messages
+    while tar backup restore (issue #1116)
+  * Implement simulation mode with simulation with the workflows
+    validate and shell (issue #1098)
+  * Update 11-multiple-backups.adoc : Multiple backups are
+    in general not supported for BACKUP_TYPE=incremental
+    or BACKUP_TYPE=differential (issues #1074 and #1123)
+  * Using RUNTIME_LOGFILE in all scripts as needed (issue #1119)
+  * New Backup method was added - BORG
+    (issues #1030, #1037, #1046, #1048, #1118)
+  * Multiple backups are now possible (issues #1088, #1102, #1096)
+    see the documentation page (New)
+  * Support partitioning and formatting huge USB devices
+    (issue #1105)
+  * Skip remount async when systemd is used (issue #1097)
+  * Fixed and enhanced code for multiple ISOs (issue #1081)
+  * BACKUP_TYPE=incremental (New) and BACKUP_TYPE=differential
+    were updated (issues #974, #1069)
+  * Added support for setting a UUID on XFS with
+    enabled CRC (RHEL 7) (issue #1065)
+  * Fix for ISO not bootable for SLES11 ppc64
+    with root LVM (issue #1061)
+  * PXE booting enhancement with new style of uploading
+    the boot files (issue #193)
+  * Renumbering the ReaR scripts from 2-digits to 3-digits
+    (issue #1051)
+  * Improved boot loader detection (issue #1038)
+
+-------------------------------------------------------------------
+Tue Nov 22 07:05:55 UTC 2016 - ecsos@opensuse.org
+
+- Version upgrade to 1.19
+  A detailed list can be found in the rear-release-notes.txt file.
+  Changes include (excerpt):
+  * Save bootloader info from POWER architecture and rebuild initrd
+    after migration (issues #1029, #1031)
+  * Improved documentation and man page in general (issues #918,
+    #930, #1004, #1007, #1008)
+  * New SLE12-SP2-btrfs-example.conf file because since SLES12-SP2
+    btrfs quota setup for snapper via "snapper setup-quota" is
+    needed (issue #999)
+  * Simplified reboot halt poweroff and shutdown in the
+    rescue/recovery system in case of systemd (issue #953)
+  * If TSM parameters contain a dot, the dot is replaced by an
+    underscore in the TSM_SYS variable names (issue #985 and #986)
+  * Check if /dev/disk/by-label/RELAXRECOVER exist
+    (issue #979 and #326)
+  * Added PRE_BACKUP_SCRIPT and POST_BACKUP_SCRIPT to be able to
+    do custom tasks in the mkbackup/mkbackuponly workflows
+    (issue #977)
+  * Make TMPDIR work in compliance with Unix standards (issue #969)
+  * USE_STATIC_NETWORKING now really overrides USE_DHCLIENT
+    (issue #964)
+  * Make it safe against wrong btrfs subvolumes on SLES12
+   (issue #963, #966)
+  * Encrypted incremental backup cannot read the tar label
+    (issue #952)
+  * Introduction of the NETWORKING_PREPARATION_COMMANDS variable
+    to prepare network setup in the rescue/recovery system
+    (issue #960)
+  * After migration fs_uuid for root partition wasn't changed in
+    ELILO config file /etc/elilo.conf (issue #956)
+  * Clarified rear man page and default.conf file around
+    BACKUP_URL=rsync: (issues #930 and #918)
+  * Make "rear recover" work with default btrfs on SLES12-SP2
+    (issue #944)
+  * Dropped GRUB_SUPERUSER and GRUB_RESCUE_PASSWORD to avoid that
+    GRUB_RESCUE could change the behaviour of the GRUB2 bootloader
+    in the currently running system in unexpected ways. With the
+    new optional GRUB_RESCUE_USER setting GRUB_RESCUE works in
+    compliance with the existing GRUB2 configuration
+    (issues #938, #942)
+  * Bail out if not enough disk space for GRUB and GRUB2 rescue
+    image (issue #913)
+  * Use BACKUP_PROG_COMPRESS_OPTIONS as an array so that one can
+    use it to provide more complex values (issue #904)
+  * Add /usr/lib/syslinux/bios to the search path for mbr.bin
+    (issue #908)
+  * Always load modules in /etc/modules (issue #905)
+  * Ask user for EFI partition size on USB disk (issue #849)
+  * Insure /etc/rear/mappings directory exists before doing a
+    recovery (issue #861)
+  * First steps for rescue/recovery system update support via
+    RECOVERY_UPDATE_URL (issue #841)
+  * NFS mount points are not recreated after a recover (issue #818)
+  * Correcting rear return code handling in auto recover mode
+    (issue #893)
+  * Added NFSv4 support for security 'sys' only so far (issue #754)
+  * Changed the usage of 'rpcinfo -p' a bit to have the same
+    outcome of different Linux flavours (issue #889)
+  * RSYNC: /boot/efi needs -relative rsync option (issue #871)
+  * New variables added for Bareos: BAREOS_RESTORE_JOB and
+    BAREOS_FILESET
+  * Multipath partition not found in rhel7.2 (issue #875)
+  * Adding support for ppc64le PowerNV (non-virtualized aka
+    Bare-Metal) (issue #863)
+  * First steps to support new ftpfs BACKUP_URL scheme
+    (issue #845)
+  * Clean up 'url_host()' (issue #856)
+  * Fix that libaio (needed for multipath) could be missing in
+    rescue/recovery system because libaio can be located in
+    different directories (issue #852)
+  * Improved the Relax-and-Recover menu for GRUB2
+    (issues #844, #849, #850)
+  * Check for valid BACKUP_URL schemes (issue #842)
+  * USB UEFI boot support (issue #831)
+  * Mitigate the problem that btrfs subvolums are not restored by
+    default via TSM (issue #833)
+  * Determine EFI virtual disk size automatically (issue #816)
+  * ebiso image size is too small if BACKUP=TSM (issue #811)
+  * Improving the logics around ebiso usage in UEFI mode
+    (issue #801)
+  * Fix for wrong UUID in initrd for bootfs (issues #649 and #851)
+
+-------------------------------------------------------------------
+Tue Mar 22 10:36:19 CET 2016 - jsmeix@suse.de
+
+- Version upgrade to 1.18
+  A detailed list can be found in the rear-release-notes.txt file.
+  Changes include (excerpt):
+  * Support was added for NVME SSD type of disk devices
+    (issue #787)
+  * Script 99_sysreqs.sh was added to save the minimal system
+    requirements necessary for cloning a system in a remote DRP
+    data center (issue #798)
+  * New 99_move_away_restored_files.sh to remove restored files
+    after recover (issue #799) New array was introduced to make
+    this - BACKUP_RESTORE_MOVE_AWAY_FILES=()
+  * Add example configuration for NetBackup Master/Media server
+  * Added backup capabilities; getcap and setcap are used
+    to backup and restore (issue #771)
+  * Added support for new backup method Novastor NovaBACKUP DC
+    (+BACKUP=NBKDC+) (issue #669)
+  * Code was improved to have network teaming support (issue #655)
+  * Example configuration to put backup and rescue image
+    on same ISO image, eg. DVD (issue #430)
+  * /mnt/local became a global variable TARGET_FS_ROOT (issue #708)
+  * Copy rear.log from recovery into /var/log/rear/recovery/
+    directory after "rear recover" (issue #706)
+  * wipefs will be used when available (issue #649)
+  * SAN related improvements with btrfs (issue #695)
+  * Support for shim.efi (UEFI booting) added (issue #702)
+  * Added support for elilo (used by SLES 11/12)
+    (issue #583, #691, #692, #693)
+  * Bareos team added BAREOS_FILESET and ISO_DEFAULT to
+    default.conf (for automated DR tests executed by
+    Bareos team; issue #686, #719)
+  * New SLE11-SLE12-SAP-HANA-UEFI-example.conf (issue #683)
+  * usr/share/rear/conf/examples/SLE12-SP1-btrfs-example.conf
+    added as an example configuration file
+  * Added support for the SUSE specific gpt_sync_mbr partitioning
+    scheme (issue #544)
+  * Improved btrfs snapshot support with SLES 12 (issue #556)
+  * Unload scsi_debug driver in recovery mode (issue #626)
+  * Saved the current mount points and permissions;
+    in order to improve and avoid missing mount points
+    after recovery (issue #619)
+  * grub support for ppc64 (issue #673)
+  * grub2 supported was added for ppc64 (issue #672)
+  * ppc64le support was added into the rear.spec (issue #665)
+  * Network code partially rewritten to improve teaming
+    (issue #662)
+  * Changed default value of USE_CFG2HTML from 1 to empty
+    (means do not run cfg2html by default) (issue #643)
+  * Move the 50_selinux_autorelabel.sh script to the default
+    location so it gets picked up by all backup methods.
+    This was required for RHEL 7 (issue #650)
+  * Check via NSR if the ISO image is not obsolete (issue #653)
+  * Added ebiso support within rear (required for UEFI booting
+    with SLES 11 & 12 (issue #657)
+  * FDR/Upstream (BACKUP=FDRUPSTREAM) (NEW!) (issue #659)
+- SLE11-ext3-example.conf, SLE12-SP1-btrfs-example.conf,
+  and SLE12-btrfs-example.conf are now provided in the
+  upstream sources.
+- SLE12-SP1-btrfs.patch and rear1172a-gpt_sync_mbr.patch
+  are obsolete because it is now implemented in the upstream
+  sources.
+
+-------------------------------------------------------------------
+Tue Nov  3 15:00:49 CET 2015 - jsmeix@suse.de
+
+- Create a separate directory /usr/share/rear/conf/examples/ for
+  example config files, see https://github.com/rear/rear/pull/681
+  and install the SUSE example config files there - i.e.:
+  /usr/share/rear/conf/examples/SLE11-ext3-example.conf
+  /usr/share/rear/conf/examples/SLE12-btrfs-example.conf
+  /usr/share/rear/conf/examples/SLE12-SP1-btrfs-example.conf
+
+-------------------------------------------------------------------
+Wed Oct 28 15:27:59 CET 2015 - jsmeix@suse.de
+
+- rear1172a-gpt_sync_mbr.patch adds support for the
+  SUSE specific gpt_sync_mbr partitioning
+  see https://github.com/rear/rear/issues/544
+  (bsc#950610).
+
+-------------------------------------------------------------------
+Fri Oct 16 13:02:44 CEST 2015 - jsmeix@suse.de
+
+- Enhanced SLE12-SP1-btrfs.patch so that for mounted btrfs
+  subvolumes that have the 'no copy on write' attribute set
+  those btrfs subvolumes are recreated with that attribute set
+  (by using 'chattr' on the btrfs subvolume directory),
+  see https://github.com/rear/rear/issues/556
+  (bsc#946006 fate#318701).
+- Enhanced SLE12-SP1-btrfs-example.conf so that also lsattr is
+  in the recovery system (useful but not strictly required).
+
+-------------------------------------------------------------------
+Thu Oct  8 11:04:18 CEST 2015 - jsmeix@suse.de
+
+- Version 1.17.2.a is rear 1.17.2 with SLE12-SP1-btrfs.patch that
+  makes it work specifically for the default btrfs structure
+  in SLE12-SP1, see https://github.com/rear/rear/issues/556
+  (bsc#946006 fate#318701).
+- SLE12-SP1-btrfs-example.conf is an example for SLE12-SP1
+  with default btrfs subvolumes that gets installed
+  as /usr/share/rear/conf/SLE12-SP1-btrfs-example.conf
+- Warning for users who upgrade Relax-and-Recover (rear):
+  Users who already use it must re-validate that their
+  particular disaster recovery procedure still works.
+  See in particular "Version upgrades" at
+  http://en.opensuse.org/SDB:Disaster_Recovery
+  Automatic version upgrades are not possible in practice.
+  The user must explicitly specify his intended rear version.
+  For one product like SLE11 or SLE12 we provide several versions
+  in parallel so that users where version N does not support their
+  particular needs can upgrade to version M but on the other hand
+  users who have a working disaster recovery procedure with
+  version N do not need to upgrade. Therefore the package name
+  contains the version and all packages conflict with each other
+  to avoid that an installed version gets accidentally
+  replaced with another version.
+
+-------------------------------------------------------------------
+Mon Sep  7 12:42:05 CEST 2015 - jsmeix@suse.de
+
+- Update to version 1.17.2
+  * Fixed the NTP startup script (issue #641)
+  * Fixed the vfat label issue (issue #647)
+  * Improved the DUPLICITY method with finding all required
+    libraries and python scripts
+  * Added the /run directory to the list of recreating missing
+    directories (issue #619)
+  * Fix issue with USB disk and rsync as internal backup
+    program (issue #645)
+  * Fix rsync restore: -anchored invalid rsync option (issue #642)
+  * A new variable was introduced NSR_POOLNAME (issue #640)
+  * Replaced almost all temporary files from /tmp/ to $TMP_DIR/
+    (issue #607)
+    Related to security recommendations for Fedora and RHEL:
+    https://bugzilla.redhat.com/show_bug.cgi?id=1239009 (f22)
+    https://bugzilla.redhat.com/show_bug.cgi?id=1238843 (rhel 7.2)
+  * In script 27_hpraid_layout.sh added the missing
+    HPSSACLI_BIN_INSTALLATION_DIR variable to the COPY_AS_IS
+    array (issue #630)
+  * Syslinux version > 5.00 is now supported (ISO and USB output)
+    works on Debian 8, Ubuntu 15.04 (issue #624)
+  * Bail out when syslinux/modules are not found in lib/
+    bootloader-functions.sh (issues #467 and #596)
+    You could also define a variable SYSLINUX_MODULES_DIR if rear
+    cannot find it automatically (should not be necessary)
+  * Support was added for SLES11 on PPC64 hardware
+    (issues #616 and #628)
+  * Support was added for new hardware - PPC64LE - RHEL
+    and Ubuntu (issue # 627)
+  * FIX the hashed password (SSH_ROOT_PASSWORD variable) and
+    added a missing library libfreeblpriv3 (issue #560)
+  * Insert a 3 seconds sleep after a volume group restauration
+    to give udevd or systemd-udevd time to create needed devices
+    (issue #608 and #617)
+  * Variable MANUAL_INCLUDE=YES has been introduced to work with
+    array BACKUP_PROG_INCLUDE (issue #597)
+  * Add new variable NSR_DEFAULT_POOL_NAME (defaulting to Default)
+    to use a different default pool name.
+    Renamed the RETENTION_TIME variable to NSR_RETENTION_TIME
+    (issue #640)
+  * new document 10-integrating-external-backup.adoc which
+    explains the steps to take for a new backup integration
+    into rear
+  * All AsciiDoc documentation changed extention
+    from .txt to .adoc
+- Known restrictions on openSUSE and SUSE Linux Enterprise
+  (in general see https://en.opensuse.org/SDB:Disaster_Recovery):
+  * rear 1.17.2 will not work with default btrfs on SLES12-SP1
+    because support for btrfs in rear explicitly excludes
+    snapshot subvolumes but on SLES12-SP1 what is mounted
+    at '/' will be a btrfs snapshot subvolume (issue #556)
+  * rear 1.17.2 does not work with UEFI because of various
+    different reasons (issues #588 #585 #583 #229 #214)
+  * rear does not support partitions of type 'gpt_sync_mbr'
+    aka. 'hybrid (synced) MBR' (issue #544)
+
+-------------------------------------------------------------------
+Thu Sep  3 15:55:49 CEST 2015 - jsmeix@suse.de
+
+- Use "ExclusiveArch: %ix86 x86_64 ppc ppc64 ppc64le" instead
+  of "BuildArch: noarch" in the spec file.
+  rear contains only bash scripts plus documentation so that
+  on first glance it could be "BuildArch: noarch" but actually
+  it is not "noarch" because it only works on those architectures
+  that are explicitly supported. Of course the rear bash scripts
+  can be installed on any architecture just as any binaries can be
+  installed on any architecture. But the meaning of architecture
+  dependent packages should be on what architectures they will
+  work. Therefore only those architectures that are actually
+  supported are explicitly listed. This avoids that rear can
+  be "just installed" on architectures that are actually
+  not supported (e.g. ARM or IBM z Systems).
+  Furthermore for some architectures it requires architecture
+  dependent packages (like syslinux for x86 and x86_64)
+  so that rear must be architecture dependent.
+  See the GitHub issue https://github.com/rear/rear/issues/629
+
+-------------------------------------------------------------------
+Tue Jun 30 13:57:05 CEST 2015 - jsmeix@suse.de
+
+- Update to version 1.17.1
+  * Removed the plain password in the logs (and output) coming
+    from BACKUP_PROG_CRYPT_KEY to avoid crib (issue #568)
+  * Mount vfat file system without special mount options
+    seems to work much better then with these options in recovery
+    mode, therefore, we do not use these anymore (especially
+    for /boot/efi) (issue #576)
+  * Elilo support has been added for SLES
+    (not fully tested yet) - issue #583
+  * Grub2 rescue menu has been added (enable this feature
+    with GRUB_RESCUE=y) - issue #589
+  * splitted script 31_include_uefi_tools.sh in two pieces:
+    31_include_uefi_tools.sh: to grab the UEFI tools (as long
+    as /boot/efi is mounted), and 32_include_uefi_env.sh: to dig
+    deeper into the configuration when UEFI is active
+    (related to issue #214). This is necessary to have to UEFI
+    tools on SLES 11/12 where we cannot create an UEFI bootable
+    ISO image. We must boot in BIOS mode, and need the UEFI tools
+    to make the system bootable over UEFI.
+  * It is now possible to format an USB disk with a vfat and ext3
+    partition (for UEFI booting) - issue #593
+      rear -v format -- --efi /dev/<usbdevice>
+    However, UEFI booting from an USB disk has not been
+    implemented yet (sponsoring?).
+  * Simplified the code for ext* fs and added StopIfError calls
+    to prevent divide by zero during recovery (issue #598)
+  * Syslinux version >6 requires some special handling due to
+    splitting up the package (Ubuntu 15.04) (issue #584)
+  * Debian 8 support added with ISO booting with latest syslinux
+    release as well (issues #596, #599 and #600)
+  * Changed the behavior of SSH_ROOT_PASSWORD - now saved as MD5
+    hash password, but backwards compatibility is still respected
+    (issue #560)
+  * For EMC NetWorker server/client we added some exclude items
+    to COPY_AS_IS_EXCLUDE_NSR (issue #571)
+  * Removed the Warning message from main rear script as it was
+    misleading (issues #563 and #564)
+  * output/ISO/Linux-i386/80_create_isofs.sh: make sure
+    ISO_FILES[@] are copied to isofs directory (issue #569)
+- SLE11-ext3-example.conf is an example for SLE11
+  with default ext3 filesystem that gets installed as
+  /usr/share/rear/conf/SLE11-ext3-example.conf
+- SLE12-btrfs-example.conf is an example for SLE12
+  with default btrfs subvolumes that gets installed
+  as /usr/share/rear/conf/SLE12-btrfs-example.conf
+- Have config(noreplace) also for all files in /usr/share/rear/
+  to avoid that RPM package update overwrites user edited files
+  because Relax-and-Recover (rear) is meant to be adapted and
+  enhanced by the user according to his particular needs
+  (see http://en.opensuse.org/SDB:Disaster_Recovery).
+- Added rear-rpmlintrc to filter the following false positives
+  rpmlint warning messages:
+  * non-etc-or-var-file-marked-as-conffile
+    because config(noreplace) is intentionally for all files
+    in /usr/share/rear/ (see above)
+  * systemd-service-without-service_del_preun
+    systemd-service-without-service_del_postun
+    systemd-service-without-service_add_pre
+    systemd-service-without-service_add_post
+    because the systemd unit files in /usr/share/rear/skel/
+    are not meant to be used in the running system.
+    They are used to build the rear recovery system ISO image.
+
+-------------------------------------------------------------------
+Sun Mar 15 19:42:07 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.17.0
+  * rear 1.17 introduced a new stage directory (init) which
+    is called before any workflow. Can be used for extra
+    initialization code, custom configurations and other stuff
+    that should happen each time that ReaR is used (was added
+    especially for DRLM as plugin for their DRLM variables)
+    (issue #557)
+  * RHEL 5 could not mount NFS share as portmap daemon was not
+    started yet. Reason was that script
+    verify/NETFS/default/08_start_required_daemons.sh
+    was executed after the mount test instead of before.
+    (issue #547)
+  * RHEL 6 on PPC64 architecture has problems with seclabel mount
+    option. There was a fix which cuts the seclabel mount option
+    (as rear is by default not using SELinux) (issue #545)
+  * Disaster Recovery Linux Manager (DRLM) is a new Open Source
+    project to centrally manage Disaster Recovery for Linux.
+    ReaR 1.17 adds support for DRLM with a new configuration
+    option DRLM_MANAGED=y (issue #522)
+  * Adding /etc/crypto-policies/ when openssl is requested
+    (prep/NETFS/default/09_check_encrypted_backup.sh) - required
+    for https://bugzilla.redhat.com/show_bug.cgi?id=1179239
+    (issue #523)
+  * Introduced USING_UEFI_BOOTLOADER in default.conf file and
+    modified all the involved scripts to follow the logic
+    (issue #214)
+  * Archicture PPC64 has been enhanced (partition recognition
+    issue #536, console #537)
+  * TSM restore filespace has been enhanced (issue #535)
+  * Correct the usage of set -e and StopIfError function
+    (issue #534, #541)
+  * With BACKUP_TYPE=incremental disable variable
+    NETFS_KEEP_OLD_BACKUP_COPY (mutual exclusive with this mode)
+    (issue #143)
+  * Increased to start variable from 32768 to 2097152 in script
+    10_include_partition_code.sh (issue #492)
+  * Adding /run/resolvconf/resolv.conf (Ubuntu) to rear image
+    when found (issue #520)
+  * When using /etc/rear/mappings/ip_addresses IPADDR/cidr
+    must be translated into IPADDR and NETMASK (for RHEL 5 and 6)
+    (issue #460)
+  * mdadm layout code was changed in RHEL 7; code to deal with it
+    (issue #518)
+  * Adding missing driver xhci_hcd to GNU/Linux.conf (issue #519)
+  * Adding findmnt command to GNU/Linux.conf file; request
+    from https://bugzilla.opensuse.org/show_bug.cgi?id=908854
+  * BTRFS code has been rewritten by J. Meixner to get
+    SUSE rear116 fork back into our master tree of rear. BTRFS is
+    now properly recreated on Fedora 20 and 21 and on SLES 12 and
+    openSUSE 13 (issue #233, #497, #538) See also
+    https://bugzilla.opensuse.org/show_bug.cgi?id=908854
+  * Enhanced the systemd start-up of udev daemons which is
+    different on Fedora 20 and 21 (issue #507, #531)
+  * BACKUP_PROG_OPTIONS="anchored" became a default option
+    in default.conf (issue #475)
+  * Fixed an issue with auto-detection of the client name
+    in BAREOS (issue #542)
+  * Ubuntu 14.04 did not detect /dev/sda automatically - added
+    upstart script 99-makedev.sh to create missing block devices
+    like sda (issue #446)
+  * New script
+    usr/share/rear/layout/save/GNU/Linux/34_false_blacklisted.sh
+    added as work-around. Sometimes we might see the HP Smart
+    Storage Array disk listed as a multipath device. Most likely
+    this device was not blacklisted in the blacklist section of
+    the /etc/multipath.conf file (do not forget to rebuilt the
+    initial ramdisk after this) e.g.
+    falsempathdev=$( multipath -l | grep "HP,LOGICAL" | awk '{print $1}' )
+    # mpatha
+  * Added a systemd service script for SEP Sesam to start sesam
+    client automatically (issue #498)
+  * Disk Layout Generation with HP SmartArray with more than
+    one Logical Drive correction introduced by issue #208
+    (issue #455)
+  * OUTPUT_URL=null was added to avoid 2 ISO images on the local
+    system (issue #501, #419)
+  * Fix drbd restore code so it can handle multiple volumes in
+    single resource (issue #495)
+  * Function get_device_name was enhanced to properly translate
+    /dev/vg/lv to /dev/mapper/vg-lv (issue #494)
+  * Fixed the "lvm wait yes" problem (issue #493)
+  * Device name conflict when grep disklayout file without proper
+    space (issue #491)
+  * Several fixes with mdadm code
+    (issue #480, #489, #490, #508, #539)
+  * Several fixes in the 10_include_partition_code.sh script
+    (issue #487, #492)
+  * Being a bit more careful when deleting the outputfs directory
+    when rear finishes (issue #465)
+  * Add a new config option USE_STATIC_NETWORKING (issue #488)
+  * Resolving library search with duply (issue #482)
+  * Improved the RPM package build for SLES, removed
+    the lsb requirement (issue #479)
+  * Integrated the patch skip_sysconfig_kernel_if_not_exist.diff
+    from SUSE (issue #477)
+  * Debian 7 reference to grub.conf was corrected (issue #473)
+  * Debian packing was improved (issue #474, #484)
+  * Commercial backup solution Galaxy 10 support added to rear
+    (issue #471)
+    Also, point in time recovery was implemented (issue #472)
+  * Fixed the error "unary operator expected with BACKUP_TYPE"
+    (issue #422)
+  * lvm release 2.02.72 had already the knowledge
+    of norestorefile (issue #462)
+  * Add prefix $OUTPUT_PREFIX to all PXE related files
+    (issue #464)
+  * 55-migrate-network-devices.sh: fixed type with /sys/class/net
+    (issue #459)
+  * Removed Get_Start_Date function with Netbackup because
+    (depending on backup strategy) it led to partial restore
+    only (issue #456)
+  * 26_crypt_layout.sh: fixed issue when cypher contains :
+    (issue #425)
+  * 55-migrate-network-devices.sh: rebuild the array instead
+    of unset (issue #452)
+  * skel/default/etc/scripts/system-setup : change uname -n
+    by $HOSTNAME to avoid short/long hostname problems
+    (issue #439)
+  * Added a mkdir for $VAR_DIR/output if dir does not exist
+    (issue #440)
+  * 95_check_missing_programs.sh to find REQUIRED_PROGS before
+    proceeding (issue #418)
+  * Added a fix for autorizing and recognizong the boot flag
+    in the partition (issue #443)
+  * udev showing error message during startup (issue #442)
+  * Prevent "ntpd -q" from waiting forever if, for example,
+    no network is available, by killing it after 10 seconds
+    (issue #438)
+  * Several improvements around duply and duplicity
+    [Debian related] (issues #426, #478)
+  * 95_copy_result_files.sh uses now [*] instead of [@] with
+    array (issue #431)
+  * New variable introduced for TSM in default.conf file
+    called LANG_RECOVER (issue #424)
+  * Added Pre check script for removing older releases first
+    during upgrade (RPM - issue #361)
+  * Prevent udev rule rewrites if systemd-udevd is running
+    issue #405
+  * Fix "Networker backup fails if pool name contains spaces"
+    (issue #427 and #429)
+  * Fix the "More than 128 partitions is not supported" problem
+    (issue #373 and #428) during recreating the partition layout
+  * A new configuration option, USE_STATIC_NETWORKING=y, will
+    cause statically configured network settings to be applied
+    even when USE_DHCLIENT is in effect (issue #447).
+- Remove rear-release-notes.txt-1.16; rear-release-notes.txt has
+  been updated
+- Remove traditional_style_for_bash_3.diff; merged on upstream
+  release
+
+-------------------------------------------------------------------
+Tue May 13 12:28:52 CEST 2014 - jsmeix@suse.de
+
+- Provide also the other documentation ("make install" only
+  installs the man page).
+
+-------------------------------------------------------------------
+Fri May  9 14:48:24 CEST 2014 - jsmeix@suse.de
+
+- Version upgrade to 1.16 from upstream (fate#316508)
+  that has in particular VLAN tagging support (fate#317032).
+  For details see the rear-release-notes.txt file.
+  Warning for users who upgrade Relax-and-Recover (rear):
+  Users who already use it must re-validate that their
+  particular disaster recovery procedure still works.
+  See in particular "Version upgrades" at
+  http://en.opensuse.org/SDB:Disaster_Recovery
+- bug-859436_40_restore_with_tsm.sh.diff is obsolete
+  because the issue is fixed in the uptream sources.
+- rear-release-notes.txt-1.16 replaces the outdated
+  doc/rear-release-notes.txt from rear-1.16.tar.gz.
+- traditional_style_for_bash_3.diff replaces bash 4.x syntax
+  with traditional style for bash 3.x if bash 3.x is used
+  (i.e. up to openSUSE:11.1 and SLE11 where we have bash 3.x)
+  where the test in the build environment assumes that the
+  same bash major version is also used by the end-user in his
+  runtime environment but even if the end-user had upgraded
+  his bash it should not matter because bash 3.x syntax
+  should also work for bash 4.x.
+- Added an explicit os.conf to not depend on LSB dependencies
+  to avoid calling "lsb_release" in config-functions.sh
+  that might result inconsistent values (bnc#877042).
+
+-------------------------------------------------------------------
+Fri Feb  7 17:23:08 CET 2014 - jsmeix@suse.de
+
+- Added "Requires: lsb-release" because rear calls "lsb_release"
+  in /usr/share/rear/lib/config-functions.sh (bnc#861871).
+
+-------------------------------------------------------------------
+Fri Feb  7 12:08:12 CET 2014 - jsmeix@suse.de
+
+- Cleanup of the LSB RPM requirements (bnc#861871):
+  Replaced "Requires: lsb" by explicitly requiring
+  only those RPM packages that are mandatory for rear
+  (in particular when a binary is called in a script)
+  because "Requires: lsb" would require much too much,
+  see https://bugzilla.novell.com/show_bug.cgi?id=807747#c4
+  "A distribution is LSB Certified or LSB compliant if and only if
+   the distribution provides all requirements as outlined in the
+   specification."
+  Accordingly the lsb RPM requires tons of stuff that is not
+  needed by rear (in particular various graphical libraries,
+  sound stuff, printing stuff, and so on).
+- Replaced rear-1.15.tar.gz with the current one from upstream at
+  https://sourceforge.net/projects/rear/files/rear/1.15/rear-1.15.tar.gz
+  that contains exactly same files but the tarball differs
+  (probably it was re-packed at upstream) and that causes
+  failures of our automated factory-auto check scripts like:
+  "download_files is configured to fail when the upstream file
+   is different then the committed file".
+
+-------------------------------------------------------------------
+Wed Jan 22 13:00:39 CET 2014 - jsmeix@suse.de
+
+- Version upgrade to 1.15 from upstream (fate#316508).
+  For details see the rear-release-notes.txt file.
+- bug-859436_40_restore_with_tsm.sh.diff fixes recovery
+  with TSM (Tivoli Storage Manager) since version 6.4 that
+  results in an error message "ANS1102E" as fixed upstream
+  in https://github.com/rear/rear/issues/356 (bnc#859436).
+- Warning for users who upgrade from rear 1.10.0
+  (e.g. when upgrading from SUSE Linux Enterprise 11):
+  Rear 1.15 has many new features and fundamental changes.
+  In particular the filesystem creation is totally different
+  (via the so called "layout workflow" instead of the old
+  "dr workflow" that has been removed in rear 1.14).
+  Users who already use rear must completely re-validate that
+  their particular disaster recovery procedure still works.
+  See in particular "Version upgrades" at
+  http://en.opensuse.org/SDB:Disaster_Recovery
+
+-------------------------------------------------------------------
+Wed Jun 12 08:30:00 UTC 2013 - werner@suse.com
+
+- Require /usr/bin/mkisofs instead of mkisofs
+- The default getty is agetty now
+
+-------------------------------------------------------------------
+Wed Jun  5 16:16:09 UTC 2013 - jengelh@inai.de
+
+- Require mkisofs instead of genisoimage, as we plan to switch to
+  it. (rear works both /usr/bin/mkisofs and /usr/bin/genisoimage)
+- Avoid UUOC: better deletion strategy for gitignore
+
+-------------------------------------------------------------------
+Sun Feb 10 11:31:02 UTC 2013 - p.drouand@gmail.com
+
+- updated to rear 1.14 from upstream
+  * see rear-release-notes.txt for more informations
+- clean and rebase specfile
+- remove debian files
+- don't include manfiles and makefile in documentation
+
+-------------------------------------------------------------------
+Sun Feb 20 19:04:45 UTC 2011 - schlomo.schapiro@novell.com
+
+- updated to rear 1.10.0 from upstream
+  * remove symlinks that conflict with directories to resolve
+    RPM upgrade problems
+  * add OS_MASTER_* variables to define a parent distro,
+    e.g. Fedora for CentOS
+  * remove Linux-x86_64 and map it to Linux-i386 to remove
+    a lot of symlinks pointing to directories
+  * bugfixes for tape blocksize and bootable USB media
+
+-------------------------------------------------------------------
+Mon Feb 14 10:41:25 UTC 2011 - schlomo.schapiro@novell.com
+
+- updated to rear 1.9.0 from upstream
+  * many bugfixes
+  * (new) P2V/V2V/V2P/P2P with system reconfiguration
+  * (new) support Data Protector, Bacula, OBDR, Tapes
+  * (new) use udev for module loading, support firmware loading
+  * see full list of changes at
+    http://rear.svn.sourceforge.net/viewvc/rear/releases/1.9.0/usr/share/rear/CHANGES
+
+-------------------------------------------------------------------
+Fri Dec 11 08:24:44 UTC 2009 - schlomo.schapiro@novell.com
+
+- updated to rear 1.7.23 from upstream
+  * some bugfixing
+  * added validation info for openSUSE 11.2 i386 and x86_64
+  * improved library collection for 64bit Linux
+    (e.g. /lib*/libnss*)
+  * symlink doc and contrib in the dist archive
+    to reduce the size
+  * clone required system users/groups to rescue system
+    (daemon and rpc)
+
+-------------------------------------------------------------------
+Wed Dec  2 14:18:45 UTC 2009 - schlomo.schapiro@novell.com
+
+- updated to rear 1.7.22 from upsteam
+  * added -L to stat call to read real device in
+    29_find_required_devices.sh
+  * make svn2host report scp errors
+  * updated rear.spec, rear.sourcespec of SUSE and FEDORA
+  * updated contrib/mkvendorrp to pull version nr from
+    rear, CHANGED
+  * updated lib/spec/Fedora/rear.sourcespec Require field
+    and doc/
+  * updated skel/default/etc/scripts/system-setup to improve
+    loading modules
+  * updated finalize/default/88_check_for_mount_by_id.sh
+  * added prep/GNU/Linux/28_include_vmware_tools.sh
+  * moved some misplaced scripts from pack to build
+  * added contrib/svn2hosts (continuous integration script)
+  * fixed up mkdist-workflow.sh and contrib/svn2tar to share
+    more code
+  * removed the UTF-8 conversion
+    (IMHO should be only done manually)
+  * removed the overwriting of the generic spec file
+    with vendor specific spec file
+  * fixed the copying of /dev/shm/* by adding it to
+    COPY_AS_IS_EXCLUDE
+  * support open-vm-tools and loading of vmxnet
+  * removed the usage of udev_volume_id (for RHEL4) in favour
+    of internal vol_id
+  * fixed internal vol_id to correctly strip leading spaces
+    from the values
+  * fixed 31_create_filesystems.sh to actually correctly
+    create ext* and support FS labels with < or > in them
+    (https://sourceforge.net/tracker/?func=detail&aid=2891970&group_id=171835&atid=859452)
+  * added usleep and mktemp
+  * Fixed all wrong occurences of [*] with [@].
+    See https://sourceforge.net/tracker/?func=detail&atid=859452&aid=2877091&group_id=171835
+  * backup/NETFS/default/40_create_include_exclude_files.sh
+    fixed variable name for excluded mountpoints to actually
+    read EXCLUDE_MOUNTPOINTS
+  * recreate/GNU/Linux/22_create_lvm2_devices.sh
+    move lvm vgchange -a y  in loop to avoid old VGs to activate
+
+-------------------------------------------------------------------
+Sun Sep 27 07:15:19 UTC 2009 - schlomo.schapiro@novell.com
+
+- updated to rear 1.7.21 from upstream
+  * support openSUSE 11.2 (M6)
+  * rsyslogd
+  * ext4
+
+-------------------------------------------------------------------
+Sun Mar  8 09:05:17 CET 2009 - Schlomo.Schapiro@novell.com
+
+- import into Factory
+
+-------------------------------------------------------------------
+Tue Jan 29 12:00:00 CET 2009 - Schlomo Schapiro <rear@schlomo.schapiro.org>
+
+- 1.7.14-1
+- added man page
+- fixed TSM bug with result files
+- patch rear binary to point to correct _datadir and _sysconfdir
+- move distribution config files to /usr/share/rear/conf
+- add hpacucli support
+- TSM point-in-time restore
+- fix bonding for multiple bonding devices
+
+-------------------------------------------------------------------
+Tue Jan 20 12:00:00 CET 2009 - Gratien D'haese <gdha@sourceforge.net>
+
+- 1.7.13-1
+- add COPYING license file
+- linux-functions.sh: added rpmtopdir function;
+- mkdist-workflow.sh: updated with rpmtopdir function; convert
+  doc files to UTF-8
+
+-------------------------------------------------------------------
+Fri Jan 09 12:00:00 CET 2009 - Gratien D'haese <gdha@sourceforge.net>
+
+- 1.7.12-1
+- NetBackup integration completed
+- moved validation from /etc/rear to doc directory
+
+-------------------------------------------------------------------
+Tue Dec 30 12:00:00 CET 2008 - Gratien D'haese <gdha@sourceforge.net>
+
+- 1.7.11-1
+- added scriptfor Data Protector and NetBackup integration
+
+-------------------------------------------------------------------
+Wed Dec 17 12:00:00 CET 2008 - Gratien D'haese <gdha@sourceforge.net>
+
+- 1.7.10-1
+- completed verify/NBU/default/40_verify_nbu.sh script for NBU
+- remove contrib entry from %%doc line in spec file
+
+-------------------------------------------------------------------
+Mon Dec 01 12:00:00 CET 2008 - Gratien D'haese <gdha@sourceforge.net>
+
+- 1.7.9-1
+- remove from skel/default the symbolic links sh->bash,
+  bin/init->init and the empty files etc/mtab, var/log/lastlog
+  and var/lib/nfs/state
+- add the link sh-bash into file
+  pack/GNU/Linux/00_create_symlinks.sh
+- add new file pack/GNU/Linux/10_touch_empty_files.sh
+  to create the empty files
+- add pack/GNU/Linux/20_create_dotfiles.sh and removed
+  .bash_history from skel/default
+- Added intial scripts for rear integration with NetBackup
+  (of Symantec)
+- copy rear.sourcespec according OS_VENDOR
+- correct rear.spec file according comment 11 of bugzilla #468189
+
+-------------------------------------------------------------------
+Mon Oct 27 12:00:00 CET 2008 - Gratien D'haese <gdha@sourceforge.net>
+
+- 1.7.8-1
+- Fix rpmlint error/warnings for Fedora packaging
+- updated the Summary line and %%install section
+
+-------------------------------------------------------------------
+Thu Oct 24 12:00:00 CET 2008 - Gratien D'haese <gdha@sourceforge.net>
+
+- 1.7.7-1
+- rewrote rear.spec for Fedora Packaging request
+
+-------------------------------------------------------------------
+Tue Aug 28 12:00:00 CET 2006 - Schlomo Schapiro <rear@schlomo.schapiro.org>
+
+- 1.0-1
+- Initial RPM Release

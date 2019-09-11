@@ -1,0 +1,331 @@
+-------------------------------------------------------------------
+Sat Apr 29 15:31:59 UTC 2017 - bwiedemann@suse.com
+
+- call gzip -n to make build fully reproducible
+
+-------------------------------------------------------------------
+Mon Apr 14 13:08:55 CEST 2014 - kukuk@suse.de
+
+- Fix typos in Obsoletes
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:09:51 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Mon Apr  2 14:11:37 UTC 2012 - cfarrell@suse.com
+
+- license update: HPND
+  SPDX format (and choose the correct license)
+
+-------------------------------------------------------------------
+Fri Jan 20 12:01:29 CET 2012 - tiwai@suse.de
+
+- fix build with older distros due to lack of freetype shlib
+
+-------------------------------------------------------------------
+Thu Dec 22 17:30:54 CET 2011 - tiwai@suse.de
+
+- Renamed baekmuk -> baekmuk-bitmap-fonts and
+  baekmuk-ttf -> baekmuk-ttf-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+
+-------------------------------------------------------------------
+Sat Sep 17 16:34:40 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Thu Apr  8 17:49:57 CEST 2010 - tiwai@suse.de
+
+- removed unnecessary buildrequires for too old distros
+
+-------------------------------------------------------------------
+Wed Jan 23 13:02:24 CET 2008 - mfabian@suse.de
+
+- remove NoSource tag, it was only there to save space, not
+  because of license reasons.
+- remove check for obsolete SuSE version.
+
+-------------------------------------------------------------------
+Mon Aug 07 09:25:08 CEST 2006 - mfabian@suse.de
+
+- add /usr/share/fonts/truetype directory to file list.
+
+-------------------------------------------------------------------
+Fri Aug 04 15:13:51 CEST 2006 - mfabian@suse.de
+
+- make it build again on STABLE (paths changed because of the
+  move to Xorg X11R7).
+
+-------------------------------------------------------------------
+Wed Mar 01 12:56:33 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(...)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:50 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec 10 01:52:17 CET 2004 - ro@suse.de
+
+- use run_suseconfig_fonts also for main package 
+
+-------------------------------------------------------------------
+Fri Dec 03 16:47:10 CET 2004 - mfabian@suse.de
+
+- use new macro "%run_suseconfig_fonts -c"
+
+-------------------------------------------------------------------
+Sun Oct 10 19:50:58 CEST 2004 - schwab@suse.de
+
+- Fix requires.
+
+-------------------------------------------------------------------
+Mon Sep 13 16:35:57 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #45156: add "Provides: scalable-font-ko" to baekmuk-tff
+  sub-package.
+
+-------------------------------------------------------------------
+Wed Jul 28 20:41:16 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #37396: fix the glyphs for U+CAF4 in gulim18.bdf
+  (new glyph received from Mitsuru CHINEN) and gulim18b.bdf.
+
+-------------------------------------------------------------------
+Thu Mar 18 14:33:55 CET 2004 - mfabian@suse.de
+
+- use %suseconfig_fonts_prereq
+- run SuSEconfig.ghostscript-cjk in %post and %postun of
+  TrueType subpackage.
+
+-------------------------------------------------------------------
+Sat Feb 14 03:21:08 CET 2004 - mfabian@suse.de
+
+- run SuSEconfig.fonts and SuSEconfig.pango in %post and %postun
+
+-------------------------------------------------------------------
+Sun Nov  2 22:49:15 CET 2003 - ro@suse.de
+
+- updated neededforbuild
+- don't build as root 
+
+-------------------------------------------------------------------
+Fri Aug 29 09:31:31 CEST 2003 - kukuk@suse.de
+
+- Add %verify for fonts.alias
+
+-------------------------------------------------------------------
+Fri Jun 13 08:45:41 CEST 2003 - kukuk@suse.de
+
+- Add missing directory to filelist
+
+-------------------------------------------------------------------
+Thu Oct 17 12:41:20 CEST 2002 - mfabian@suse.de
+
+- Bug #21024: remove old versions of bitmap fonts and
+  fix fonts.alias
+
+-------------------------------------------------------------------
+Sat Oct 12 03:39:36 CEST 2002 - mfabian@suse.de
+
+- update to 2.1
+- replace mkbold and mkitalic by newer and faster versions from
+  the efont-unicode package and remove mkitalic-autobuild.patch
+
+-------------------------------------------------------------------
+Thu Mar  7 17:21:40 CET 2002 - mfabian@suse.de
+
+- add ksx1001.1997-0 and iso10646-1 entries to fonts.scale
+  (iso10646-1 entries '-p-', others '-m-')
+
+-------------------------------------------------------------------
+Mon Feb 11 23:45:20 CET 2002 - ro@suse.de
+
+- tar option for bz2 is "j" 
+
+-------------------------------------------------------------------
+Mon May 21 23:34:25 CEST 2001 - mfabian@suse.de
+
+- prepare a tarball containing the complete set of fonts, including
+  the bold and italic versions, to avoid having to rebuild the
+  bold and italic versions always on all architectures. Always
+  rebuilding them burns a lot of build power, which is not
+  available on some architectures. Especially the script used to
+  generate the italic versions (awk script mkitalic) is
+  extremely slow. 
+
+-------------------------------------------------------------------
+Thu May  3 14:42:33 CEST 2001 - mfabian@suse.de
+
+- remove %post and %postun, it is enough when SuSEconfig
+  updates the font directory, better don't duplicate the code
+  here.
+
+-------------------------------------------------------------------
+Wed Mar  7 12:10:19 CET 2001 - mfabian@suse.de
+
+- add xf86 to "# neededforbuild"
+
+-------------------------------------------------------------------
+Mon Jan 22 04:25:58 CET 2001 - violiet@suse.de
+
+- update to gulim12.bdf and gulim12b.bdf.
+
+-------------------------------------------------------------------
+Tue Jan 16 12:36:25 CET 2001 - mfabian@suse.de
+
+- removed superfluous pcf-files from sources, they are generated
+  from the bdf-files anyway, therefore they are not needed.
+
+-------------------------------------------------------------------
+Fri Jan 12 11:18:49 CET 2001 - mfabian@suse.de
+
+- use bzip2 instead of gzip for sources
+- install a bare bones fonts.scale.baekmuk which is understood
+  by both freetype and xtt. Using xtt's TTCap options it is
+  possible to create bold and italic versions of regular fonts,
+  which is a very nice feature. But if xtt's TTCap options are
+  used in the fonts.dir of a directory with TrueType fonts,
+  the whole directory won't work anymore with freetype.
+  Therefore, I install a very simple fonts.scale.baekmuk for the 
+  time being, until we have a better idea what to do.
+
+-------------------------------------------------------------------
+Fri Jan 12 00:52:10 CET 2001 - mfabian@suse.de
+
+- added the missing "mkbold"
+  (used the "mkbold" by NAGAO, Sadakazu <snagao@cs.titech.ac.jp>)
+
+-------------------------------------------------------------------
+Thu Jan 11 22:13:03 CET 2001 - mfabian@suse.de
+
+- fixed errors in spec-file.
+- patched 'mkitalic' which caused autobuild to fail
+
+-------------------------------------------------------------------
+Tue Dec 26 2000 - violiet@susekorea.net
+
+- made baekmuk fonts bold and italic with mkbold and mkitalic
+- new fonts.alias
+- merged another 10pt
+- modified fonts.dir and fonts.scale
+
+-------------------------------------------------------------------
+Tue Nov 28 15:02:41 CET 2000 - mfabian@suse.de
+
+- changed name of subpackage "baekmukt" to "baekmuk-ttf"
+- improved %post and %postun scripts. The previous version
+  failed when this package was installed by autobuild into
+  the buildsystem's chroot environment. I hope this is fixed now.
+
+-------------------------------------------------------------------
+Mon Nov 27 17:29:26 CET 2000 - mfabian@suse.de
+
+- removed workaround in .spec file to prevent %{?suse_check}
+  from gzipping the fonts.scale.baekmuk file
+  %{?suse_check} works correctly now, this workaround is no longer
+  needed.
+
+-------------------------------------------------------------------
+Sat Nov 25 00:25:32 CET 2000 - mfabian@suse.de
+
+- changed directory to install the True Type fonts in to
+  /usr/X11R6/lib/X11/fonts/truetype
+- changed to new way of creating fonts.scale in 
+  /usr/X11R6/lib/X11/fonts/truetype to share it with other
+  font packages which install in the same directory.
+
+-------------------------------------------------------------------
+Thu Oct  5 16:41:24 CEST 2000 - mfabian@suse.de
+
+- true type fonts were not correctly unpacked
+
+-------------------------------------------------------------------
+Tue Aug 29 10:52:12 CEST 2000 - mfabian@suse.de
+
+- tested whether mkfontdir is available
+
+-------------------------------------------------------------------
+Tue Aug 22 00:25:54 CEST 2000 - mfabian@suse.de
+
+- adapted .spec file to SuSE 
+
+-------------------------------------------------------------------
+Sat Nov 20 1999 - Sang-Jin Hwang, <accel@accellinux.org>
+
+- update to 1.3
+
+-------------------------------------------------------------------
+Thu Nov 11 1999 - Sang-Jin Hwang, <accel@accellinux.org>
+
+- Accel Linux 6.1 build release.
+
+-------------------------------------------------------------------
+Fri Nov 05 1999 - Seo, Young-Jin <yjseo@mizi.co.kr>
+
+- upgrade to 1.2
+
+-------------------------------------------------------------------
+Tue Sep 01 1999 - Woohyun JANG <louis@mizi.co.kr>
+
+- add gulim12-19990901.bdf
+
+-------------------------------------------------------------------
+Wed Aug  4 1999 - Seo, Young-Jin <yjseo@mizi.co.kr>
+
+- ttf font name fields are corrected.
+- Thanks Cha, Jae-Choon <jccha@knot.kaist.ac.kr>
+
+-------------------------------------------------------------------
+Wed Aug  3 1999 - Woohyun JANG <louis@mizi.co.kr>
+
+- add attr() in files section
+
+-------------------------------------------------------------------
+Wed Jul 29 1999 - Woohyun JANG <louis@mizi.co.kr>
+
+- add hconfig.ps.sample in baekmuk-doc package
+
+-------------------------------------------------------------------
+Mon Jul 26 1999 - Woohyun JANG <louis@mizi.co.kr>
+
+- add :unscaled. thanks to Kim Hyunchul <mindgame@plp.postech.ac.kr>
+
+-------------------------------------------------------------------
+Sat Jul 24 1999 - Seo, Young-Jin <yjseo@mizi.co.kr>
+
+- unscaled is removed from fontpath in post and postun script
+
+-------------------------------------------------------------------
+Thu Jul 22 1999 - Woohyun JANG <louis@mizi.co.kr>
+
+- bug fix in fonts.dir(in baekmuk-ttf)
+
+-------------------------------------------------------------------
+Thu Jul 22 1999 - Woohyun JANG <louis@mizi.co.kr>
+
+- initial release of baekmuk font 
+
+-------------------------------------------------------------------
+Mon Jul 05 1999 - Woohyun JANG <louis@mizi.co.kr>
+
+- add %triggerin 
+
+-------------------------------------------------------------------
+Wed Jun 23 1999 - Woohyun JANG <louis@mizi.co.kr>
+
+- initial released
+
+

@@ -1,0 +1,1197 @@
+-------------------------------------------------------------------
+Thu May  9 19:45:23 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Tweak runtime Requires(post): graphviz to same or newer version.
+  Needed after change to git checkout instead of released tarballs.
+
+-------------------------------------------------------------------
+Tue Apr 16 11:04:44 UTC 2019 - Christian Vögl <christian.voegl@suse.com>
+
+- Disabled Visio plugin
+
+-------------------------------------------------------------------
+Mon Apr 15 18:14:39 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use %%python3_sitearch macro to package python3 modules.
+- use correct ruby version (2.5) for openSUSE 15.1 and earlier.
+
+-------------------------------------------------------------------
+Tue Apr  2 15:10:04 UTC 2019 - Christian Vögl <christian.voegl@suse.com>
+
+- Now using master branch of upstream, as there have been no releases for 
+  over two years
+  * this should fix CVE-2019-11023 (boo#1132091)
+  
+- Removed  graphviz-qt5.patch (now in upstream)
+- Removed reproducible.patch (now in upstream)
+- graphviz-smyrna-link_against_glu.patch changed to be applicable to current files
+- graphviz-no_strict_aliasing.patch changed to be applicable to current files
+- Added graphviz-fix-ruby-version.patch to remove hardcoded dependency on ruby 1.9
+- graphviz.spec updated for new version
+- created _service file
+
+-------------------------------------------------------------------
+Fri Nov 30 07:34:24 UTC 2018 - jbrielmaier@suse.de
+
+- use pkg-config with correct parameter, reported by Werner Fink 
+
+-------------------------------------------------------------------
+Thu Nov 29 10:21:10 UTC 2018 - jbrielmaier@suse.de
+
+- Support dynamic move to Guile 2.2, part of boo#1117121:
+  - Replace conditional pkgconfig(guile-2.[02]) BuildRequires with
+    guile-devel: The package name is unchanged, which allows the
+    distro projects to move wihout step-locking changes.
+  - Patch configure.ac to look for guile-2.2 if guile 2.2 is being
+    used.
+- order inputs alphabetically
+
+-------------------------------------------------------------------
+Fri Nov 16 15:21:38 UTC 2018 - trenn@suse.de
+
+- Fixed double file declaration in graphviz and graphviz-addons (x11)
+- Mark license files with %license instead of %doc
+
+-------------------------------------------------------------------
+Thu Oct 25 14:52:00 UTC 2018 - trenn@suse.de
+
+- Build with gts support (bsc#1108978, bsc#1108976)
+  SLE12 flavors do not provide gts, so explicitly exclude
+  gts support there.
+
+-------------------------------------------------------------------
+Mon Jul 30 11:24:20 UTC 2018 - bwiedemann@suse.com
+
+- Extend reproducible.patch to make build reproducible (boo#1041534)
+
+-------------------------------------------------------------------
+Tue Mar 27 20:12:49 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Build with PHP5 for Leap 42.x and earlier, PHP7 requires swig 3.0.11
+  Drop graphviz-plugins-fix_install_dirs.patch, use sed script to
+  fix directories, same as for Lua
+
+-------------------------------------------------------------------
+Tue Mar 27 19:53:42 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Do not delete dotty/lefty/lneato man pages which are part of
+  the x11 subpackage, built from the addons package/spec.
+  (No changelog entry).
+
+-------------------------------------------------------------------
+Sat Feb 10 17:36:20 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Drop harmful modification of tclpkg/gv/gv_doc_langs.tcl, which
+  changes the timestamp, although the file does not contain LIB_DIR.
+  Graphviz ships prebuilt manpages in man and PDF format. Modifying
+  the tcl script rebuilt the documentation, and replaced the PDFs
+  with empty documents (due to missing groff). This also made the
+  doc subpackage nonreproducible, causing rebuilds in all dependent
+  packages.
+
+-------------------------------------------------------------------
+Thu Feb  8 18:22:25 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Disable guile 2.2 modifications temporarily
+- Move lefty/dotty/lneato graph editor tools to x11 subpackage and
+  build as part of addons package. Removes any X11 dependency from
+  core package, both build and runtime.
+- Drop unused libXaw6 build dependency
+- move libpng, libjpeg, freetype and fontconfig build dependencies
+  to addons, unused for core
+
+-------------------------------------------------------------------
+Thu Jan 25 16:12:41 UTC 2018 - dimstar@opensuse.org
+
+- Move to pkgconfig(guile-2.2) BuildRequires on suse_version >=
+  1500.
+
+-------------------------------------------------------------------
+Tue Jan 16 13:50:45 UTC 2018 - dimstar@opensuse.org
+
+- Disable building the graphviz-ocaml package: we have no consumer
+  of it, but not building it allows us to elminiate a build cycle.
+
+-------------------------------------------------------------------
+Thu Oct 26 10:01:19 CEST 2017 - pth@suse.de
+
+- Reverse last change.
+
+-------------------------------------------------------------------
+Wed Oct 25 10:58:28 CEST 2017 - pth@suse.de
+
+- Remove pre_checkin.sh and graphviz-addon.* as they aren't needed
+  anymore.
+
+-------------------------------------------------------------------
+Mon Oct 23 15:57:03 CEST 2017 - pth@suse.de
+
+- Replace the recommends for graphviz-gnome by a 'supplements packageand'
+  so that graphviz doesn't pull in all the X11 related stuff on a
+  machine without graphical desktop (bsc#930442).
+
+-------------------------------------------------------------------
+Wed Oct  4 15:43:37 UTC 2017 - dimstar@opensuse.org
+
+- Exclude %{_mandir}/man1/smyrna.1%{ext_man} from graphiz' main
+  package, since the man page is packaged in the -smyrna sub
+  package already.
+
+-------------------------------------------------------------------
+Mon Aug  7 11:45:08 UTC 2017 - tchvatal@suse.com
+
+- Add bcond for java and ocaml that can be overriden in staging prj
+
+-------------------------------------------------------------------
+Thu Aug  3 12:56:24 UTC 2017 - tchvatal@suse.com
+
+- Drop smyrna and gvedit separate spec, now handled by
+  graphviz-addons
+  * Switch graphviz-gvedit to Qt5:
+    + graphviz-qt5.patch
+- Drop graphviz-plugin subkpg in favor of graphviz-addons.spec
+  that is generated from graphviz directly
+- Make sure all patches are applied also in main package so none
+  get lost by accident
+- Refresh patch graphviz-plugins-fix_install_dirs.patch
+- Make sure graphviz php plugins are generated using php7
+  * set the php7 path in graphviz-plugins-fix_install_dirs.patch
+- Remove tkspline from tcl package as it is no longer shipped
+- Make sure the pic/pie is enforced on all the libs/bins
+
+-------------------------------------------------------------------
+Wed Aug  2 12:46:02 UTC 2017 - tchvatal@suse.com
+
+- Update to 2.40.1 release:
+  * Remove usage of ast_common.h
+  * network-simplex fixes and optimization (Stephen North)
+  * built-in tred tool now available in the various swig generated
+    language bindings (John Ellson)
+  * number rounding added to SVG renderer (same as PS and TK rounding)
+    to aid regression testing. (John Ellson)
+  * additional regressson test framework, used in Travis CI builds. (Erwin Janssen)
+  * PHP7 support (requires swig-3.0.11 or later). (John Ellson)
+  * Allow user to specify clustering algorithm in gvmap. (Emden Gansner)
+  * Add Sierpinski graph generator to gvgen. (Emden Gansner)
+  * Extensive code cleanup (Erwin Janssen)
+  * Removal of libgd source - use vanilla libgd from separate install 
+  * Windows builds (Erwin Janssen)
+  * Appveyor CI for automated Windows build testing (Erwin Janssen)
+  * Travis CI for Fedora/Centos builds (Erwin Janssen)
+  * Added JSON output format, -Tjson  (Emden Gansner)
+  * New curved arrowhead, cylinder node shape.
+  * Resolves bugs: 2599, 1172
+  * Add cylinder shape for databases.
+  * Free installed plugins
+  * Update makefile for dot so that the using libpanco_C in the static build include PANGOFT2
+    as well as PANGOCAIRO_LIBS (needed for some versions of Ubuntu)
+  * Add json output format
+  * output class value in svg files
+  * Add plain shape for use with HTML-like labels.
+  * Add icurve arrowhead.
+  * Revert to old, translate to origin semantics in neato, etc. Add flag notranslate if that is
+    what the user desires.
+- Run over with spec-cleaner and convert deps to pkgconfig
+- Fix Group
+- Remove unused pre requirements as there is no pre phase
+- Inline sed changes and do not rely on pipes
+- Do not add needless requires to devel pkg, there are no such stated
+  dependencies in any of the .pc files provided
+- Add pre_checkin.sh scriptlet to allow generating of the extras subpkg
+  instead of having independent spec files
+
+-------------------------------------------------------------------
+Sun May 28 11:46:05 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to not have binaries depend on build system timings
+
+-------------------------------------------------------------------
+Wed Jun 10 06:54:27 UTC 2015 - mpluskal@suse.com
+
+- Remove pangocairo and lasi support as it introduces build cycle
+
+-------------------------------------------------------------------
+Thu Apr  9 07:38:01 UTC 2015 - opensuse.lietuviu.kalba@gmail.com
+
+- Build with pangocairo and lasi support.
+
+-------------------------------------------------------------------
+Mon Nov 17 03:14:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix ksh-specific constrictions in gvmap.sh script
+- add patches:
+  + graphviz-2.38.0-fix-gvmap.patch
+
+-------------------------------------------------------------------
+Tue Jul 15 11:33:27 UTC 2014 - toddrme2178@gmail.com
+
+- Remove upstream-included patch graphviz-ppc64le_lib64_support.patch
+  from graphviz-plugins.spec
+
+-------------------------------------------------------------------
+Fri May 23 16:46:05 CEST 2014 - pth@suse.de
+
+- Fix URL to point to the new location of the sources.
+
+-------------------------------------------------------------------
+Fri May 23 14:23:57 CEST 2014 - pth@suse.de
+
+- Update to 2.38.0. Changes since 2.36.0:
+   - Resolve bugs: 2409, 2413, 2417, 2420, 2422, 2423, 2425
+   - Enable packing for dot
+   - Allow scaling to work for all non-dot layouts
+   - Add overline text characteristic.
+   - Fix bugs in gvpr and gv.cpp so edges can be created in subgraphs.
+   - Add edgepaint program for coloring edges to make them easier to
+     tell apart.
+   - Modify neato to avoid unnecessary translations of output. This
+     allows positions given on input to remain the same on output.
+   - Fix swig java package to work and support gv.renderresult.
+   - Fix test for the absence of layout (old test relied on statically
+     allocated Agraphinfo_t).
+   - HTML-like tables and cells can now specify which borders should be drawn.
+   - The fixedsize attribute now takes the value "shape" which allows
+     labels much larger than the node shape.
+
+- Remove graphviz-fix-includes.patch as the fix has been done 
+  upstream.
+- Add graphviz-array_overflow.patch to fix an off-by-one error.
+
+-------------------------------------------------------------------
+Tue Feb  4 15:52:00 CET 2014 - pth@suse.de
+
+- Update to 2.36,0:
+  (graphviz tracker lives at http://www.graphviz.org/mantisbt/my_view_page.php)
+
+  Fixed bugs:
+  * The xdot pad attribute is documented to have a default value of
+    0.0555 (inches, equals 0002091:0000004 points).  However when no
+    pad attribute was specified, xdot output behaved as though the
+    default was 0 (graphviz tracker 2372).
+  * Graphviz gave incorrect svg when labels contained HTML entities
+    (graphviz tracker 2384).
+  * Building gvedit failed with undefined references (graphviz
+    tracker 2388).
+  * Document that edge[style=tapered] does not support colorList and
+    that edge[style=tapered] does not work with arrowType:none
+    (graphviz tracker 2391).
+  * Use a stronger test for orthogonal routing and, if it fails, revert
+    to line segments for edges (graphviz tracker 2393).
+  * Fix xdot background polygon coordinates being "nan" with no nodes
+    (graphviz tracker 2393).
+  * Circo couldn't rescale a graph using the mindist attribute
+    (graphviz tracker 2395).
+  - Remove old libgraph sources from distributions.
+  - Move master git repo to github.com
+
+  September 15, 2013
+  - Add <S> element for strike-through to HTML-like labels.
+
+  - This version also fixes the security bugs reported in january.
+
+-------------------------------------------------------------------
+Tue Feb  4 13:19:20 CET 2014 - pth@suse.de
+
+- Change license to EPL-1.0. Remove contrib/gprof2dot.awk as it
+  contains a non-working uri.
+
+-------------------------------------------------------------------
+Wed Dec 11 16:17:50 UTC 2013 - matz@suse.de
+
+- graphviz-fix-includes.patch: Use #include "cgraph.h", not <cgraph.h>
+  in graphviz/types.h.
+
+-------------------------------------------------------------------
+Tue Oct 29 12:22:26 CET 2013 - pth@suse.de
+
+- Add graphviz-getaddrinfo.patch to use getaddrinfo instead of
+  gethostbyname.
+
+-------------------------------------------------------------------
+Wed Oct 23 12:30:42 CEST 2013 - pth@suse.de
+
+- Split off smyrna into its own package and spec to eliminate the
+  dependency cycle for graphiz.
+
+-------------------------------------------------------------------
+Mon Oct 14 14:06:03 CEST 2013 - pth@suse.de
+
+- Remove gvedit files from filelist in grapfviz.spec.
+- Remove build requirement for libqt4.
+
+-------------------------------------------------------------------
+Thu Sep 12 17:56:06 CEST 2013 - pth@suse.de
+
+- Add graphviz-python3_version.patch that put the call to print in
+  Parentheses.
+
+-------------------------------------------------------------------
+Wed Sep 11 18:55:22 CEST 2013 - pth@suse.de
+
+- Split off gvedit to it's own spec to avoid circular dependency
+  for graphviz and its sup packages.
+- Add graphviz-type_punning.patch which compiles the vmalloc sources
+  with -fno-strict-aliasing.
+
+-------------------------------------------------------------------
+Mon Sep  9 13:27:19 CEST 2013 - pth@suse.de
+
+- Update to 2.34.0:
+  - Resolved bugs: 
+    * graphviz will hangs if only one point and attribute given (gvz#2326)
+    * Inconsistent text position in xdot with HTML-like label (gvz#2333)
+    * Graphviz createsedges not asked for, with rank=same (gvz#2334)
+    * Graph padding rectangle too big (gvz#2337)
+    * labelloc has no effect for HTML-like labels with formatting (gvz#2338)
+    * Global search and replace operation in the documentation seems to 
+      have gone awry (gvz#2340)
+    * Rotated graph not quite centered (gvz#2343)
+    * When arrowType is list and contains none all subsequent
+      arrowTypes are dropped (gvz#2345)
+    * arrowType none when included as a multiple arrowtype fails to
+      render empty space (gvz#2346)
+    * Buffer overflow in lib/common/shapes.c(round_corners) (gvz#2349).
+    * Add aarch64 to the architectures using lib64 (gvz#2350)
+    * Ask guile-config for includes and libraries (gvz#2351).
+    * If string.h present, don't declare memcmp and strcmp (gvz#2352).
+    * Include ast_common.h in cdt sources (gvz#2353)
+    * Alternative way to get python's version (gvz#2354)
+    * Unportable test(1) construct in configure script (gvz#2357)
+    * Use parantheses around qw() call in loop (gvz#2359)
+    * Saving in Vimdot can crash the graphical window (rh#847458).
+  - Added mingle command and library for edge bundling
+- Removed Patches that where accepted upstream:
+  graphviz-missing_headers.patch
+  graphviz-aarch64_lib64_support.patch
+  graphviz-type_punning.patch
+  graphviz-buffer_overflow.patch
+  graphviz-proper_prototypes.patch
+
+-------------------------------------------------------------------
+Tue Sep  3 13:55:25 CEST 2013 - pth@suse.de
+
+- Update to 2.32.0. Changes since 2.28.0:
+  2.32.0:
+  - New version of xdot format, annotating gradient color schemes
+  - Support for reading pdf images using poppler
+  - Lefty/dotty/lneato now accept anonymous graphs
+  - Add star node shape
+  - Add two-tone (non-gradient) fill
+  2.30.1:
+  - various build fixes
+  2.30.0:
+  - Replaced libgraph with libcgraph; use of libgraph is now deprecated
+  - New ranking algorithm that allows multiple subgraph constraints
+  - Support edges using curved arcs.
+  - Added new shapes used by the synthetic biology community.
+  - For HTML-like labels, provide rounded cells, and dashed or dotted borders.
+  - Add lcurve and rcurve arrowheads.
+  - Add prototype pie chart and striped fills.
+  - Support insets in treemaps to make containment clear
+  - Add random rooted tree generation to gvgen
+  - Allow GVPRPATH to specify that the default path be prepended or
+    appended to it.
+  - Support arbitrary lists of layers; allow the user to specify arbitrary
+    layers for output.
+  - A collection of gvpr scripts, which were part of the source package,
+    are now installed in <prefix>/share/graphviz/gvpr, and the that path
+    is used as part of th default built-in path for gvpr.
+  - Update libexpr to reflect Glenn Fowler's changes including scopes for
+    variables.
+  - Add next graph variable to gvpr
+  - Modify dot and fdp so that a cluster's margin attribute will affect
+    the space between the bounding box and nodes
+  - Modify the dijkstra tool to use only directed edges
+  - Output numbers without quotes if quotes are not needed on input
+  - Support gradient fill
+  - Provide support for webp images
+  - Fix tapered edges to use the dir attribute and arrowhead
+  - Add imagepath attribute
+  - Add help functionality to Graphviz.app
+  - Add <B>,<I>,<U> to html strings via svg
+  - Add tapered edges
+  - Add support for external labels
+  - Add initial implementation of graphml2gv
+  - Add basic horizontal and vertical rules to html tables
+
+- Remove graphviz-gd_png_check_sig.patch as the file to patch doesn't
+  exist anymore.
+- Add graphviz-buffer_overflow.patch to fix a buffer ovderflow in
+  lib/common/shapes.c(round_corners) by increasing the number of
+  elements in the array.
+- Add graphviz-proper_prototypes.patch that changes dthdr.h to
+  include ast_common.h to get __STD_C defined, which in turn
+  enables proper prototypes.
+- Run autoreconf to use -fno-strict-aliasing for libvmalloc sources
+- Add patch tags in the spec files
+- Upstreamed all patches that aren't SUSE specific.
+
+-------------------------------------------------------------------
+Thu Mar 28 11:51:09 CET 2013 - pth@suse.de
+
+- Rename aarch64-lib64-support.diff to graphviz-aarch64_lib64_support.patch.
+- Add graphviz-type_punning.patch to compile the code in lib/vmalloc
+  with -fno-strict-aliasing as it does type punning.
+
+-------------------------------------------------------------------
+Sat Mar 16 22:26:37 UTC 2013 - dmueller@suse.com
+
+- add aarch64-lib64-support.diff:
+  * add aarch64 to the list of lib64 architectures 
+
+-------------------------------------------------------------------
+Wed Jan 16 18:02:58 CET 2013 - pth@suse.de
+
+- Add BuildRequires for libXaw which isn't pulled in by x11 anymore
+  (bnc#797258).
+
+-------------------------------------------------------------------
+Mon Jun 25 14:32:50 UTC 2012 - coolo@suse.com
+
+- do not buildrequire the whole X stuff but only the libs required
+
+-------------------------------------------------------------------
+Tue Oct  4 18:41:12 CEST 2011 - pth@suse.de
+
+- Rename and prefix patch for uniformity within the package.
+
+-------------------------------------------------------------------
+Mon Oct  3 13:55:01 UTC 2011 - coolo@suse.com
+
+- fix compilation of yast2-qt-graph
+
+-------------------------------------------------------------------
+Mon Oct  3 11:53:27 UTC 2011 - coolo@suse.com
+
+- disable GD plugin completely
+
+-------------------------------------------------------------------
+Wed Sep 28 19:08:30 UTC 2011 - idonmez@suse.com
+
+- Update to version 2.28.0
+    - incremented library api version:
+        libcdt, libgraph, libcgraph, libgvpr, libgvc
+    - Add gvmap, cluster and gvmap.sh
+    - Deprecate dotty; prefer gvedit
+    - Add patchwork supporting squarified tree maps
+    - Add ordering as a node attribute
+    - Fix problems with font resolution
+    - Fix problems with text placement
+    - Fix twopi to set root attribute
+    - Make available layouts and formats available via the API
+    - Fix error message system so that an application can capture the messages
+    - New attributes and features for sfdp
+    - gvgen now allows the user to specify graph name and node name template
+    - Make overlap=false denote overlap=prism
+    - More efficient xdot library
+    - HTML-like labels provide ID
+    - Fixed bugs: 1480 1980 2044 2087 2088 2089 2091 2093 2094 
+        2095 2101 2102 2103 2104 2112 2113 2118 2128 2129 2139 2149 
+        2157 2113 2159 2160 2161 2163
+    - Add scale attribute to twopi
+    - Add <B>,<I>,<U> to html strings
+    - migrated to 2005 version of cdt  
+
+-------------------------------------------------------------------
+Fri Mar 11 12:25:36 UTC 2011 - coolo@novell.com
+
+- fix conflict with libltdl (http://bugs.gentoo.org/339298)
+
+-------------------------------------------------------------------
+Fri Jun 18 09:15:07 UTC 2010 - coolo@novell.com
+
+- fix typo 
+
+-------------------------------------------------------------------
+Fri Jun 11 12:13:12 CEST 2010 - pth@suse.de
+
+- Fix cut&paste error.
+- Plugin configuration file is now named config6 so adapt spec file
+  (bnc#607114).
+
+-------------------------------------------------------------------
+Tue Jun  1 16:29:05 UTC 2010 - pth@suse.de
+
+- Fix array underflow in lib/gvpr/compile.c
+  (graphviz-wrong_index.patch).
+- Mention in description that graphviz-gnome is needed for png
+  output.
+
+-------------------------------------------------------------------
+Mon May 17 12:22:51 UTC 2010 - coolo@novell.com
+
+- remove ksh from build requires - no longer needed
+
+-------------------------------------------------------------------
+Sun Apr  4 18:47:39 CEST 2010 - ro@suse.de
+
+- fix build of gd library with new libpng14
+  (should use system gd lib ?) 
+
+-------------------------------------------------------------------
+Tue Mar 16 18:52:54 CET 2010 - ro@suse.de
+
+- update to 2.26.3
+  - libcgraph.so   version bumped from 4 to 5 due to API changes
+  - Allow ranksep to specify multiple radial differences in twopi
+  - Allow the user to specify all pairwise distances in neato with
+  - added: "smyrna" - a new opengl-based viewer for large graphs
+  - added: rudimentary "gml2gv", "gv2gml" converters
+  - extended support for various image formats in node images
+  - removed vestiges of codegens, now all putput formats supported
+    through plugins.  Dropped some output formats for which
+    plugins have not been developed: -Tdia, -Tmif
+  - gvpr converted to a library; additional array handling and
+    text processing functions added; language extended to allow 
+    multiple BEG_G/N/E blocks. 
+  - allow background images specified via xdot
+  - add new layout engine for large graphs: sfdp
+  - add new layout engine for nested graphs: osage
+  - fix for buffer overflow (present in 2.22.0 and 2.22.1)
+  - libgvc api changed, version bumped.  Affects third party
+    applications using libgvc.
+  - plugin api changed, version bumped.  Affects third party
+    plugins for graphviz.
+  - 90% conversion to cgraph has been done, but not enabled yet,
+    (and yes, its true what they say about the last 10% )
+  - drop libagraph from distribution  (use libcgraph)
+  - layout code completely converted to floating point.
+  - new "dot -P" option for generating a graph of available
+    plugins.
+  - registered MIME type:  text/vnd.graphviz for .gv files
+  - rename files from .dot to .gv to avoid conflict with
+    Word templates.  .dot still supported, but deprecated.
+  - new command: mm2gv   (matrix-market graph file conversion)
+  - rename commands:      dot2gxl -> gv2gxl
+  			gxl2dot -> gxl2gv
+  - new rsvg plugin for support of node shapes in SVG format
+  - new gs plugin for support of node shapes in PS format
+  - new lasi plugin for support of UTF-8 characters in PS output
+    (the above thee plugins are Linux only, at the moment)
+  - new quartz plugin (MacOSx only)
+  - new gdiplus plugin (Windows only)
+  - new -Tvml support in core plugin (thanks Steve Roush)
+  - new -Ttk support in core plugin (also used by Tcldot and
+    gv_tcl language bindings.)
+  - disabled old style codegens completely
+
+-------------------------------------------------------------------
+Tue Dec 15 21:30:37 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Fri Oct 24 16:04:56 CEST 2008 - mrueckert@suse.de
+
+- fix build with newer libtool
+- fix requires of debug package
+
+-------------------------------------------------------------------
+Mon Oct 13 15:03:50 CEST 2008 - pth@suse.de
+
+- Fix vulnerability that allowed overflowing gstack (bnc#433747)
+
+-------------------------------------------------------------------
+Thu Jul 10 12:11:47 CEST 2008 - pth@suse.de
+
+- Update to 2.20.2. Changes since 2.18:
+
+  2.20.2:
+  - Fix bug in HTML-like labels
+
+  2.20.1:
+  - Fix bug in ccomps related to conversion to cgraph
+
+  2.20.0:
+  - Fixed bugs (see http://www.graphviz.org/bugs/buglist.html for
+    details: 
+    - 1315: Different/error output for *.os and *.pdf
+    - 1317: Graphviz fails to open more than 512 files.
+    - 1324: Graphviz crashes in atexit().
+    - 1336: Plain format label delimiters change randomly.
+    - 1343: Layouts other than 'dot' seem broken in tcldot due to
+            documentation error.
+    - 1364: Dot fails with failed assertion.
+  - Add new "folder" shape for nodes.
+  - Migration of gvpr tools to libcgraph.
+  - New output format -Teps  (encapsulated postscript)
+  - Various NetBSD and SuSE fixes incorporated
+  - ./configure now provides a summary
+
+-------------------------------------------------------------------
+Sun Apr 27 14:41:01 CEST 2008 - coolo@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Tue Apr 22 14:37:18 CEST 2008 - pth@suse.de
+
+- Move all GTK/GNOME related stuff to plugins package.
+
+-------------------------------------------------------------------
+Tue Apr 15 16:02:22 CEST 2008 - pth@suse.de
+
+- Readd plugins left out by accident.
+- Add upstream patch that makes 'dot -c' completely verifiy all
+  cross-plugin dependencies. In case of a failed dependency
+  it comments out the failed plugin in the config that it writes.
+
+-------------------------------------------------------------------
+Mon Apr  7 13:32:38 CEST 2008 - pth@suse.de
+
+- Fix paths for lua and php in examples
+
+-------------------------------------------------------------------
+Fri Mar 28 12:53:29 CET 2008 - pth@suse.de
+
+- Update to 2.18. Changes since 2.12:
+  - Lots of bugs fixed, see ChangeLog for detailed list.
+  - in -Tps use a new number formatter that suppresses trailing 0.
+  - support tcl/tk-8.5
+  - support gcc-4.3
+  - support for node usershapes/images in svg format
+  - install: perl, php, python, ruby, tcl, bindings in
+    language-specified directories
+  - add arrowhead scaling with edge penwidth
+  - add "folder" node shape
+  - add "smyna" large graph view (thanks Arif) (not yet included
+    in binary distros)
+  
+  * 2.16.1
+  - Improvements to PHP binding
+  - Improvements to OCAML binding
+  - Make regression tests run from the build tree, rather than require
+    installation
+  - Repair freetype detection on RedHat-7 (Yes, people still use it!!)
+  - Fix zoom-at-mouse-location in -Txlib and -Tgtk
+  - Fix some dotty regressions
+  
+  * 2.15
+  - new regression test suite
+  - new cgraph library (will eventually replace graph and agraph)
+  - add "image" and "imagescale" for simpler support for images in nodes
+  - add "tab" "box3d" and "component" shapes.  - Diomidis Spinellis
+  - replace arith.h in distro
+  - add functions to access version info to avoid need for gvcint.h
+  - Fix problem with irregular character spacing at 96dpi in pango/cairo
+    output formats.
+  - Add gdk_pixbuf plugin providing: .bmp .ico .jpg .png .tif 
+  - Add DevIL plugin providing: .bmp .jpg .png .tif .tga
+  - Extend GD plugin to provide a backend to cairo for: .gif .jpg .png .gd
+    .gd2 .wbmp  <- gifs are now antialiased
+  - Rework plugin framework to separate device from renderer, and to
+    autoload load dependendent plugins
+  - show defaults in output from: ./configure --help
+  - add more info to dot -v  and dot -v2 debug outputs
+  - various issues with CR/LF in windows, but not in binary outputs.
+
+  * 2.14.1
+  - Add xdot parsing library to source distros
+  - graphviz.spec fixes for rpm distros from Gareth Armstrong
+  - moved language binding man pages to mann
+    (gv_php.n, gv_ocaml.n, etc.)
+  - New access functions for version info in GVC_t - permits
+    gvcint.h to be private.
+
+  * 2.14:  
+  - Using system version of libgd if gd-2.0.34 or later.
+    internal copy of gd updated to gd-2.0.35.
+  - Updated GVGUI viewer for Windows
+  - Added support for selection of edge routing types:
+    line, polyline, orthogonal, spline
+  - Added -Tvml support
+- Adapt the patch to allow ^LT_(CURRENT|REVISION|AGE)$ in
+  configure script and reenable the use of these variables.
+  
+-------------------------------------------------------------------
+Thu Mar 13 18:36:18 CET 2008 - schwab@suse.de
+
+- Allow ^LT_(CURRENT|REVISION|AGE)$ in configure script.
+- Remove broken autoconf macros.
+
+-------------------------------------------------------------------
+Fri Oct 26 17:33:40 CEST 2007 - pth@suse.de
+
+- Add missing includes.
+
+-------------------------------------------------------------------
+Mon Aug 13 19:23:50 CEST 2007 - pth@suse.de
+
+- lib/sfio/sfhdr.h(SFSETLOCALE): fix test for null pointer.
+- use -fno-strict-aliasing for gv_php
+
+-------------------------------------------------------------------
+Fri May 11 10:32:20 CEST 2007 - ro@suse.de
+
+- added get_release_number.sh to sync rel-number between
+  graphviz and graphviz-plugins 
+
+-------------------------------------------------------------------
+Thu May 10 01:48:27 CEST 2007 - ro@suse.de
+
+- split off plugins to separate specfile to break build cycles 
+
+-------------------------------------------------------------------
+Tue May  8 12:11:16 CEST 2007 - pth@suse.de
+
+- Update to 2.12
+  - PostScript output had an extraneous '%' character on the first line,
+    which would cause printing to fail.
+  - Text handling, during both sizing and layout, incorrectly handled
+    empty lines such as label="\nabc".
+  - HTML-like tables had been changed to use too much vertical space,
+    to possibly use the wrong font in calculating the height of a line,
+    and to use the wrong offset when moving the baseline from one line to
+    the next.
+  - dot - New pango+cairo renderer plugin (was in separate graphviz-cairo tree).
+      -- -Tpng now uses cairo   (-Tpng:gd for old gd based renderer)
+      -- -Tpdf now available
+      -- -Tps:cairo now available (-Tps is a direct ps renderer not based on 
+          cairo)
+      -- -Tsvg:cairo now available (-Tsvg is a direct svg renderer not based
+          on cairo)
+      -- -Txlib now available -- "dot -Tx11 foo.dot"  watches foo.dot with
+          inotify and updates
+      -- -Tgtk now available -- eventually to provide a graph editing capability
+          - not fully working
+      -- -Tswf "Flash" now available using the ming library. Currently has 
+          incomplete font support and not yet in Fedora rpms because ming not 
+          yet available as rpm.
+  - remove hard gd dependencies from dot.  gd renderers now provided
+    as optional plugin.   Deprecated, but required for -Tjpg, -Tgif and -Tvrml.
+  - gvpr - Add kindOf function, plus functions to set and get default values
+  - dot - Implement esep attribute to allow graph to specify room
+    around nodes for spline routing.
+  - neato - add vpsc library and DIGCOLA
+  - neato - add IPSEPCOLA additions from Tim Dwyer
+  - move: -Tps, -Tfig, -Tsvg, -Timap/ismap/cmap/cmapx, -Tdot/xdot,
+    from codegens to a "core" plugin.
+  - dot - new usershape plugin mechanism potentially supporting
+    a wider range of input shape format -> output format combinations.
+    display on changes
+  - dot - new -O switch to automatically generate output file
+    names based on the input filename and the -T value.
+    e.g.  "dot -Tpng -O *.dot"   
+    Also works for case of multiple graphs in a single input file.
+  - add support for "Brewer" color nameset
+  - move reusable .so libraries to $PREFIX/lib per frequent request
+    from Debian community.   Plugin .so's remain in $PREFIX/lib/graphviz.
+  - (POTENTIAL INCOMPATIBILITY) The default input scaling, in the
+    absence of a "-s" switch, has been changed from inches to points.
+    The new behavior of "neato" is equivalent to "neato -s72".
+    The old behavior can be restored with "neato -s1".
+    The purpose of this change is to avoid a Frequently-Made-Mistake
+    when using "neato -n" to process a previously generated layout.
+    Previously it was necessary to use "neato -n -s72", but with this
+    change the default matches dot's output and the "-s72" is not required.
+  - Added pseudo layout engines: "dot -Knop" and dot -Knop1" equivalent
+    to "neato -n"
+  - Added pseodo layout engine: "dot -Knop2" equivalent to "neato -n2"
+  - Add support for color namespaces; add Brewer color data
+  - Add support for simulated duplex edges using parallel edges:
+    head arrow takes first color, tail arrow takes second color.
+  - Add a small pad region around graph renderings to allow for finite
+    penwidths at the drawing edges
+  - Add protonode(g) and E=protoedge(g) functions to simplify language
+    bindings.
+  - Add special purpose code to deal with html labels from language
+    bindings.
+
+- Split off language support into subpackages.
+- build php,ruby,C#,python,guile and java support in addition to tcl
+- swig >= 1.3.21 differentiates between php4 and php5, so adapt
+  configure test.
+- Don't move tcl libraries to _libdir but instead add the graphviz 
+  sublibrary paths via /etc/ld.so.conf.d
+- Use SONAMEs to generate pkgIndex.tcl. That way tcl can actually
+  load the libraries via 'package require'
+- Don't compare pointer with string literal.
+
+-------------------------------------------------------------------
+Thu May  3 18:44:39 CEST 2007 - prusnak@suse.cz
+
+- changed expat to libexpat-devel in [Build]Requires
+
+-------------------------------------------------------------------
+Thu Mar 29 21:11:37 CEST 2007 - aj@suse.de
+
+- Add bison to BuildRequires.
+
+-------------------------------------------------------------------
+Fri Aug 11 11:30:14 CEST 2006 - pth@suse.de
+
+- Adapt to new X11 paths.
+
+-------------------------------------------------------------------
+Mon Apr  3 11:33:45 CEST 2006 - pnemec@suse.cz
+
+- add pkgconfig files to devel package
+
+-------------------------------------------------------------------
+Sun Feb 19 19:31:51 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Thu Feb  9 19:00:59 CET 2006 - pth@suse.de
+
+- Fix segfault in neato when using splines (#144275)
+
+-------------------------------------------------------------------
+Fri Feb  3 18:01:07 CET 2006 - pth@suse.de
+
+- Fix swig template to include declaration.
+- Fix BuildRequires
+- Fix dependencies for -devel package
+
+-------------------------------------------------------------------
+Thu Nov 24 18:56:26 CET 2005 - agruen@suse.de
+
+- Add missing plugin config file.
+- Fix gcc aliasing bugs.
+
+-------------------------------------------------------------------
+Mon Aug 29 15:42:52 CEST 2005 - agruen@suse.de
+
+- Update to version 2.6: numerous bugfixes.
+
+-------------------------------------------------------------------
+Tue Aug  9 17:27:30 CEST 2005 - agruen@suse.de
+
+- fix-pkgIndex.diff: Fix tcl library search for "package require
+  Tkspline" and similar statements by (a) moving the tcl/tk
+  libraries from _libdir/graphviz/ to _libdir/, and removing
+  path names from library names in pkgIndex.tcl so that 32bit
+  and 64bit libraries are searched as appropriate.
+
+-------------------------------------------------------------------
+Tue Aug  2 01:11:47 CEST 2005 - ro@suse.de
+
+- move pkgIndex.tcl to /usr/share 
+
+-------------------------------------------------------------------
+Thu Feb 10 15:14:15 CET 2005 - agruen@suse.de
+
+- Update to version 2.2.
+- Drop graphviz-graphs subpackage.
+
+-------------------------------------------------------------------
+Sun Aug 29 02:04:21 CEST 2004 - garloff@suse.de
+
+- Drop EULA notification message.
+
+-------------------------------------------------------------------
+Sat Mar 27 20:13:52 CET 2004 - sndirsch@suse.de
+
+- update to graphviz-1.12
+  * general
+    - rename bcc -> bcomps to avoid name conflict with 
+      "Bruce's C Compiler" on Redhat distributions.
+    - all build without X11 (fix problem in lefty tree)
+    - remove from distribution:
+      dag, fdp, geo, grid, incr, shape, tcldgr, tcldgl
+  * dotneato
+    - fix "brown-bag" problem resulting in PNG and JPEG errors on 
+      RH8 and RH9.
+- removed hunks for dag, fdp, grid, tcldgl from codecleanup patch;
+  directories were dropped upstream (see 1.12 changelog above)
+- no need to rename bcc any longer (see 1.12 changelog above)
+- removed libtcldgl/libtcldgr (see 1.12 changelog above)
+
+-------------------------------------------------------------------
+Tue Mar  9 00:04:51 CET 2004 - garloff@suse.de
+
+- Rename bcc to bcc-graphviz due to conflict with bcc from dev86.
+
+-------------------------------------------------------------------
+Mon Mar  1 17:42:43 CET 2004 - garloff@suse.de
+
+- Update to graphviz-1.11:
+  * Drop lots of patches (merged upstream) ;-)
+  * dotneato: add -Gviewport, fix memleak in gdft, clean up calc
+    of whitespace around labels
+
+-------------------------------------------------------------------
+Wed Feb 25 15:40:49 CET 2004 - garloff@suse.de
+
+- Update to graphviz-1.10:
+  * enhanced gpr: string matching, lock primitive to save graphs
+  * zoomable 2 1/2 D graph viewer (Java)
+  * neato -gpack
+
+-------------------------------------------------------------------
+Fri Jan 16 10:49:32 CET 2004 - meissner@suse.de
+
+- Change freetype detection to new one, so the internal libGD is build
+  against it again.  
+
+-------------------------------------------------------------------
+Sat Jan 10 11:23:19 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Oct  6 12:17:24 CEST 2003 - kukuk@suse.de
+
+- Remove curl (source code does not use it) and lynx from
+  neededforbuild.
+
+-------------------------------------------------------------------
+Mon Jul 28 17:23:10 CEST 2003 - ro@suse.de
+
+- updated neededforbuild 
+
+-------------------------------------------------------------------
+Tue May 13 20:02:40 CEST 2003 - pthomas@suse.de
+
+- Add hacks to work around problems with libtool 1.5.
+
+-------------------------------------------------------------------
+Mon Apr 14 19:42:24 CEST 2003 - pthomas@suse.de
+
+- Get rid of nearly all compiler warnings.
+
+-------------------------------------------------------------------
+Mon Apr  7 12:34:14 CEST 2003 - pthomas@suse.de
+
+- Use posix-2001 conforming syntax for sort.
+
+-------------------------------------------------------------------
+Fri Feb  7 19:13:50 CET 2003 - pthomas@suse.de
+
+- Update to 1.9
+- Split off subpackages devel, graphs and tcl like
+  it's done in the specfile included with graphviz.
+- remove obsolete patches
+
+-------------------------------------------------------------------
+Wed Jan 29 13:47:12 CET 2003 - ro@suse.de
+
+- fix png library detection in configure 
+- removed perl-GD and blt from neededforbuild
+
+-------------------------------------------------------------------
+Thu Jan  9 00:58:22 CET 2003 - ro@suse.de
+
+- fixed configure.in 
+
+-------------------------------------------------------------------
+Thu Nov 14 17:05:40 CET 2002 - tcrhak@suse.cz
+
+- fixed for new bison: end rules with semicolons
+
+-------------------------------------------------------------------
+Tue Aug 20 02:08:25 CEST 2002 - mmj@suse.de
+
+- Correct PreReq
+
+-------------------------------------------------------------------
+Sat Aug 10 15:47:28 CEST 2002 - aj@suse.de
+
+- Fix typo in license.
+
+-------------------------------------------------------------------
+Fri Jul  5 10:24:42 CEST 2002 - kukuk@suse.de
+
+- Use %ix86 macro 
+
+-------------------------------------------------------------------
+Tue Jul  2 14:55:10 MEST 2002 - garloff@suse.de
+
+- Update to 1.8.6:
+  * FPU handling fix got included
+  * arch independent stuff in /usr/share/graphviz now
+  * arrow fixes and improvements and more arrow types
+  * new pack option to neato
+  * bugfixes
+- Change licensor from SuSE GmbH to SuSE Linux AG
+
+-------------------------------------------------------------------
+Wed May 22 14:48:29 MEST 2002 - garloff@suse.de
+
+- Add prune binary and man page to file list.
+
+-------------------------------------------------------------------
+Fri May 10 12:04:39 MEST 2002 - garloff@suse.de
+
+- Fix FPU excpetion handling. (Use feenableexcept() rather than
+  _FPU_GETCW(), if available.)
+
+-------------------------------------------------------------------
+Wed May  8 21:01:46 MEST 2002 - garloff@suse.de
+
+- Update to graphviz-1.8.5:
+  * fixed various Win and MacOSX probs
+  * minimal Type1 font support
+  * webdot.cgi perl script accepts same args as webgot.tcl now
+  * various SVG enhancements and fixes
+  * various portability/64bit fixes
+  * various bug fixes
+
+-------------------------------------------------------------------
+Fri May  3 10:57:57 CEST 2002 - meissner@suse.de
+
+- %_lib fixes (to find tclConfig.sh and tkConfig.sh)
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:14 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Mon Jan 28 17:58:45 MET 2002 - garloff@suse.de
+
+- Some more missing decls found and fixed.
+
+-------------------------------------------------------------------
+Mon Jan 28 17:12:04 MET 2002 - garloff@suse.de
+
+- Added patch to fix lots of warnings (and potential bugs on 64bit
+  platforms).
+
+-------------------------------------------------------------------
+Mon Jan 28 12:20:44 MET 2002 - garloff@suse.de
+
+- Pass TK_DEFS to gcc for tkspline (which uses tkInt.h)
+
+-------------------------------------------------------------------
+Mon Jan 28 02:14:55 MET 2002 - garloff@suse.de
+
+- Update to 1.7.16:
+  * Various bug fixes
+  * Support for xfig, svgz, 
+  * Text output improvements
+  * New twopi tool
+- Drop patches that have been included in official source ball.
+
+-------------------------------------------------------------------
+Wed May 23 00:30:21 CEST 2001 - garloff@suse.de
+
+- Fix cast warnings on 64bit archs and add missing includes 
+  where necessary.
+
+-------------------------------------------------------------------
+Wed May  9 19:53:12 CEST 2001 - garloff@suse.de
+
+- Cleanup patches.
+
+-------------------------------------------------------------------
+Tue May  8 21:37:33 CEST 2001 - mfabian@suse.de
+ 
+- bzip2 sources
+ 
+-------------------------------------------------------------------
+Mon Apr 30 17:28:11 MEST 2001 - garloff@suse.de
+
+- Update to release 1.7.6 with lots of bugfixes:
+  * Lots of font related fixes
+  * Fix various bugs WRT labels
+  * UTF-8 fixes
+  * cluster and neato layout fixes
+  * -Timap (mouse sensitive graphs for web pages) fixes
+  * PNG by default does white background now instead of transp.
+- New features in 1.7.6:
+  * New graph processing tools: acyclic, ccomps, colorize, gc, 
+    gpr, nop, sccmap, tred, unflatten (See ChangeLog for details)
+- Spec file: Consistently use %{prefix}
+
+-------------------------------------------------------------------
+Thu Mar 22 16:05:02 CET 2001 - ro@suse.de
+
+- changed neededforbuild to freetype2 
+- updated to 1.7.5 for freetype2
+
+-------------------------------------------------------------------
+Mon Feb 26 12:50:47 CET 2001 - uli@suse.de
+
+- fixed for new glibc
+
+-------------------------------------------------------------------
+Fri Jan 19 17:18:16 MET 2001 - garloff@suse.de
+
+- Assorted patches from Stephen C. North to
+  * fix runtime error in graphs having multiple nodes in the min
+    or max rank set
+  * fix layout thinko (mincross)
+
+-------------------------------------------------------------------
+Sat Dec 16 10:55:33 CET 2000 - garloff@suse.de
+
+- Update to 1.7.4:
+  * various fixes
+  * support various linestyles
+  * Remove Tcldot dependence on libgdtclft
+  * support for long label strings (fixing a reported crash)
+
+-------------------------------------------------------------------
+Tue Dec 12 01:27:03 MET 2000 - garloff@suse.de
+
+- Specfile cleanups.
+
+-------------------------------------------------------------------
+Mon Dec 11 23:08:39 MET 2000 - garloff@suse.de
+
+- Update to 1.7.3:
+  * Better font drawing support
+  * Bugfixes
+- Removed most explicit Requires: from spec, as AutoReqProv works
+  just fine.
+- Split off webdot.
+
+-------------------------------------------------------------------
+Wed Nov 29 17:26:55 CET 2000 - ro@suse.de
+
+- changed neededforbuild <tcld> to <tcl-devel>
+
+-------------------------------------------------------------------
+Wed Nov  8 16:32:06 CET 2000 - ro@suse.de
+
+- fixed neededforbuild gd -> perl-GD 
+
+-------------------------------------------------------------------
+Wed Nov  1 14:55:33 CET 2000 - garloff@suse.de
+
+- Use %{?suse_update_config} -> support for S/390 added
+
+-------------------------------------------------------------------
+Tue Oct 31 19:49:41 MET 2000 - garloff@suse.de
+
+- Update to 1.7: * dot/neato again separate binaries
+  * 64 bit patches integrated
+  * Some bugfixes and feature enhancements
+
+-------------------------------------------------------------------
+Wed Oct 18 21:46:09 MEST 2000 - garloff@suse.de
+
+- Change the wording of the license notification to match the
+  wording from the letter from AT&T.
+
+-------------------------------------------------------------------
+Tue Sep 19 15:39:53 MEST 2000 - garloff@suse.de
+
+- Cleanups for 64 bit archs.
+
+-------------------------------------------------------------------
+Mon Sep 18 18:34:53 MEST 2000 - garloff@suse.de
+
+- Add a notification for the sysadmin, that (s)he and the users
+  need to agree with the license termn in MINTERMS.txt. According
+  to "Stephen C. North" <north@research.att.com>, this is all that
+  needs to be done to fulfill the license requirements.
+
+-------------------------------------------------------------------
+Wed Sep  6 13:28:50 CEST 2000 - garloff@suse.de
+
+- LICENSOR is SuSE: Filled in MINTERMS.txt
+
+-------------------------------------------------------------------
+Tue Sep  5 20:46:59 CEST 2000 - garloff@suse.de
+
+- Creation of package graphviz-1.6
+- Fix lneato Makefile to install into $DESTDIR
+

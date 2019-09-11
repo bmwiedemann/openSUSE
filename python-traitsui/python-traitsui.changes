@@ -1,0 +1,227 @@
+-------------------------------------------------------------------
+Tue Jul 23 15:25:22 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to Release 6.1.2
+  + Fixes
+    * Fix tree node copy failure to copy
+    * Fix/scroll to row preserve column
+    * Call correct object on label change for TreeNodeObject
+    * Remove uses of etsdevtools
+    * Fix modal view application
+    * Remove unicode usage
+    * Update Travis CI configuration to be compatible with Ubuntu Xenial.
+    * Build CI on maintenance branches
+    * Fix an erroneous handler removal
+    * Fix the sizeHint() default for TreeItemDelegate.
+    * Update unittest import
+- Update to Release 6.1.1
+  + Fixes
+    * Fix TreeNodeObject listener cache.
+    * Fix tree node insertion.
+- Update to Release 6.1.0
+  + Enhancemenrs
+    * Switch to using six instead of 2to3.
+    * Experimental Pyside2 support.
+    * Allow arbitrary rendering of tree nodes in Qt backend.
+    * Use tooltip metadata on a trait instead of desc, if available.
+    * Enable scroll to column for TabularEditor
+    * Add demo for tabular editor with context menu.
+    * Allow the use of extended trait names in TreeNodes where possible.
+    * Allow drag move and drag copy modes on Qt TabularEditor.
+  + Fixes
+    * Fixes to README.
+    * Documentation fixes.
+    * Fixes to setup.py.
+    * Fix an attribute error on Qt TextRangeEditor.
+    * Use SimpleEditor for Qt TextEditor's "text" style.
+    * Fix handling of Range traits with a mix of constant and named bounds.
+    * Fix display selection on Wx backend.
+    * Fixes for Qt TableEditor selections.
+    * Fix deprecation warnings for inspect.getargspec.
+    * Fixes to etstool.
+    * Fix TreeEditor unhashable type errors.
+    * Fix crash when TabularEditor has no columns.
+    * Clone editor factories so they don't share traits.
+    * Avoid creation of dummy traits by springy items.
+    * Fix drag and drop crash in Python 3.
+    * Fix Undo/Redo for readonly items and error handling.
+    * Fix source parsing in demo app.
+    * Fix signature of close() method of Qt modal dialog.
+    * Fix incorrect code in Wx ColorEditor.
+    * Fix incorrect code in Wx ProgressEditor.
+    * Remove uses of deprecated HasTraits.set() calls.
+    * Fix rendering of CheckboxColumn on OS X and Qt.
+
+-------------------------------------------------------------------
+Wed May  9 14:05:26 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 6.0.0
+  + Enhancements
+    * Support for Qt5 (#347, #352, #350, #433)
+    * Remove TraitsUI Themes (#342)
+    * Improve Toolkit selection and handling (#425, #429)
+    * API Documentation (#438)
+    * Adapter documentation (#340)
+    * Support multi-selection in DataFrameEditor (#413)
+    * DataFrameEditor demo (#444)
+    * Common BasePanel class for toolkits (#392)
+    * Labels honor enable_when values (#401)
+    * Better error messages when toolkit doesn’t implement methods (#391)
+    * Improve TraitsUI Action handling (#384)
+    * ListEditor UI improvements (#338, #396, #395)
+    * Remove old style signals and slots for Qt backend (#330, #346, #347, #403)
+    * Expose a “refresh” trait for the DataFrameEditor (#288)
+    * Use Enthought Deployment Manager to automate CI and testing (#321, #357)
+    * Continuous integration on OS X (#322)
+    * Reduce circular dependencies of PyFace on TraitsUI (#304)
+    * PEP8-compliant formatting of source (#290)
+    * Add progress bar column for TableEditor (#287)
+    * Add codecov coverage reports (#285, #328)
+  + Fixes
+    * Fix some issues for newer WxPython (#418)
+    * Fix Wx simple FileEditor (#426)
+    * Fixes for DataFrameEditor (#415)
+    * Fixes for preferences state saving under Qt (#410, #447)
+    * Fix panel state after setting preferences (#253)
+    * Fix TableEditor ColorColumn (#399)
+    * Prevent loopback from slider in Qt RangeEditor (#400)
+    * Fix Action buttons under Qt (#393, #394)
+    * Fix ValueEditor icons (#386)
+    * Fix bug in update_object (#379)
+    * Avoid reading Event trait values in sync_value (#375)
+    * Fix raise_to_debug calls (#362, #372)
+    * Fix errors during garbage collection (#359)
+    * Remove unused argument in wx.hook_events (#360)
+    * Fix button label updates (#358)
+    * Fix TreeEditor label updates (#335)
+    * Proper InstanceEditor dialog lifecycle (#332)
+    * Don’t explicitly destroy child widgets under Qt (#283)
+    * Test fixes and improvements (#329, #369, #371, #327)
+    * Fixes for demos and examples (#320, #445)
+    * Fix CheckListEditor string comparison (#318)
+    * Remove some spurious print statements (#305)
+    * Documentation fixes (#301, #326, #380, #438, #443)
+    * Fixes for Python 3 compatibility (#295, #300, #165, #311, #410)
+    * Fix error with Qt table model mimetype (#296)
+    * Fixes for continuous integration (#299, #345, #365, #397, #420, #427)
+    * Fix offset issue when dragging from Qt TreeEditor (#293)
+    * Fix Wx kill-focus event issues (#291)
+    * Fix readthedocs build (#281)
+- Update to version 5.1.0
+  + Enhancements
+    * Add support for multi-select in the DataFrameEditor (#413).
+- Use license tag
+
+-------------------------------------------------------------------
+Wed Aug 23 20:30:09 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 5.1.0
+  + Enhancements
+    * Enthought Sphinx Theme Support (#219)
+    * Allow hiding groups in split layouts on Qt (#246)
+    * Allow subclass of Controller to set a default model (#255)
+    * Add toolbar in Qt UI panel (#263)
+  + Fixes
+    * Fix Qt TableEditor segfault on editing close (#277)
+    * Update tree nodes when adding children to am empty tree (#251)
+    * Change default backend from Wx to Qt (#254, #256)
+    * Improve toolkit selection (#259)
+    * Fix capturing the mouse and click events on Wx (#265, #266)
+    * Remove duplicated traits in NotebookEditor (#268)
+    * Fix exception during disposal of ListStrEditor (#270)
+    * Version number in documentation (#273)
+
+-------------------------------------------------------------------
+Thu Apr 14 14:06:28 UTC 2016 - stecue@gmail.com
+
+- Removed python-pandas dependency.
+
+-------------------------------------------------------------------
+Tue Apr 12 19:14:58 UTC 2016 - toddrme2178@gmail.com
+
+- Update to version 5.0.0
+  - New Features
+    * Experimental Python 3 support (#230)
+    * A DataFrameEditor for Pandas DataFrames, similar to the ArrayViewEditor
+      (#196)
+  - Enhancements
+    * Add a Qt version of the ProgressEditor (#217)
+    * Links to demos in the documentation (#159)
+    * Add minimal support for the dock_styles option to the Qt tabbed List
+      Editor. (#143)
+  - Fixes
+    * Fix failure to disconnect selection listeners for ListStrEditor in Qt (#223)
+    * Fix layout of TextEditors in some situations (#216)
+    * Fix removal of _popEventHandlers not owned by TraitsUI in Wx (#215)
+    * Remove some old (TraitsUI 3.0-era) documentation (#214)
+    * Help button now works on Qt (#160)
+
+-------------------------------------------------------------------
+Wed Mar 16 20:33:37 UTC 2016 - stecue@gmail.com
+
+- Fixed the "have choice" error by adding "BuildRequires:  python-wxWidgets"
+
+-------------------------------------------------------------------
+Fri Sep  4 11:05:13 UTC 2015 - toddrme2178@gmail.com
+
+- Release 4.5.1
+  - Fixes
+    * Fix pypi installation problem (#206)
+- Release 4.5.0
+  - Fixes
+     * Application-modal Traits UI dialogs are correctly styled as
+       application-modal under Qt. On Macs, they will now appear as independent
+       windows rather than drop-down sheets. (#164)
+     * Qt CodeEditor now honors 'show_line_numbers' and the 'readonly' style (#137)
+     * Deprecated `implements` declaration removed, use `provides` instead (#152)
+     * Fix TableEditor so that Qt.QSplitter honors 'orientation' trait (#171)
+     * Show row labels in Qt TableEditor when requested (#176)
+     * Fix TupleEditor so that multiple change events are not fired (#179)
+     * Numpy dependency is now optional. `ArrayEditor` will not be available
+       if numpy cannot be imported (#181)
+     * Add development versioning (#200)
+
+-------------------------------------------------------------------
+Mon Oct 13 15:19:20 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 4.4.0
+  * No upstream changelog
+- Update source to pypi url.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:16:18 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Sat Apr 20 15:35:16 UTC 2013 - toddrme2178@gmail.com
+
+- Added a note about being part of the Enthought Tool Suite (ETS).
+
+-------------------------------------------------------------------
+Thu Apr 18 12:12:24 UTC 2013 - toddrme2178@gmail.com
+
+- Update to 4.3.0
+  * no changelog
+
+-------------------------------------------------------------------
+Tue May 22 08:58:34 UTC 2012 - toddrme2178@gmail.com
+
+- Renamed to python-traitsui to reflect upstream name change
+- Updated to version 4.2.0
+- Updated to version 4.1.0
+- Package now includes Qt and wx backends
+
+-------------------------------------------------------------------
+Tue May 31 14:36:19 UTC 2011 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Added license header
+  * Use proper SUSE version checks
+
+-------------------------------------------------------------------
+Sat Apr 23 18:30:24 UTC 2011 - ocefpaf@yahoo.com.br
+
+- first import from Fedora src rpm
+

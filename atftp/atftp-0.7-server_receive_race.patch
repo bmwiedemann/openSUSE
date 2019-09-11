@@ -1,0 +1,102 @@
+Index: tftpd_file.c
+===================================================================
+--- tftpd_file.c.orig
++++ tftpd_file.c
+@@ -115,7 +115,7 @@ int tftpd_receive_file(struct thread_dat
+      struct sockaddr_storage from;
+      char addr_str[SOCKADDR_PRINT_ADDR_LEN];
+      struct tftphdr *tftphdr = (struct tftphdr *)data->data_buffer;
+-     FILE *fp;
++     FILE *fp = NULL;
+      char filename[MAXLEN];
+      char string[MAXLEN];
+      int timeout = data->timeout;
+@@ -145,18 +145,6 @@ int tftpd_receive_file(struct thread_dat
+           return ERR;
+      }
+ 
+-     /* Open the file for writing. */
+-     if ((fp = fopen(filename, "w")) == NULL)
+-     {
+-          /* Can't create the file. */
+-          logger(LOG_INFO, "Can't open %s for writing", filename);
+-          tftp_send_error(sockfd, sa, EACCESS, data->data_buffer, data->data_buffer_size);
+-          if (data->trace)
+-               logger(LOG_DEBUG, "sent ERROR <code: %d, msg: %s>", EACCESS,
+-                      tftp_errmsg[EACCESS]);
+-          return ERR;
+-     }
+-
+      /* tsize option */
+      if (((result = opt_get_tsize(data->tftp_options)) > -1) && !convert)
+      {
+@@ -173,7 +161,6 @@ int tftpd_receive_file(struct thread_dat
+                if (data->trace)
+                     logger(LOG_DEBUG, "sent ERROR <code: %d, msg: %s>", EOPTNEG,
+                            tftp_errmsg[EOPTNEG]);
+-               fclose(fp);
+                return ERR;
+           }
+           timeout = result;
+@@ -190,7 +177,6 @@ int tftpd_receive_file(struct thread_dat
+                if (data->trace)
+                     logger(LOG_DEBUG, "sent ERROR <code: %d, msg: %s>", EOPTNEG,
+                            tftp_errmsg[EOPTNEG]);
+-               fclose(fp);
+                return ERR;
+           }
+ 
+@@ -200,7 +186,6 @@ int tftpd_receive_file(struct thread_dat
+           if (data->data_buffer == NULL)
+           {
+                logger(LOG_ERR, "memory allocation failure");
+-               fclose(fp);
+                return ERR;
+           }
+           tftphdr = (struct tftphdr *)data->data_buffer;
+@@ -211,7 +196,6 @@ int tftpd_receive_file(struct thread_dat
+                if (data->trace)
+                     logger(LOG_DEBUG, "sent ERROR <code: %d, msg: %s>", ENOSPACE,
+                            tftp_errmsg[ENOSPACE]);
+-               fclose(fp);
+                return ERR;
+           }
+           opt_set_blksize(result, data->tftp_options);
+@@ -346,6 +330,20 @@ int tftpd_receive_file(struct thread_dat
+                }
+                break;
+           case S_DATA_RECEIVED:
++               if (fp == NULL) {
++                       /* Open the file for writing. */
++                       if ((fp = fopen(filename, "w")) == NULL)
++                       {
++                               /* Can't create the file. */
++                               logger(LOG_INFO, "Can't open %s for writing", filename);
++                               tftp_send_error(sockfd, sa, EACCESS, data->data_buffer, data->data_buffer_size);
++                               if (data->trace)
++                                       logger(LOG_DEBUG, "sent ERROR <code: %d, msg: %s>", EACCESS,
++                                                       tftp_errmsg[EACCESS]);
++                               return ERR;
++                       }
++               }
++
+                /* We need to seek to the right place in the file */
+ 	       block_number = tftp_rollover_blocknumber(
+ 		      ntohs(tftphdr->th_block), prev_block_number, 0);
+@@ -374,13 +372,13 @@ int tftpd_receive_file(struct thread_dat
+                state = S_SEND_ACK;
+                break;
+           case S_END:
+-               fclose(fp);
++               if (fp != NULL) fclose(fp);
+                return OK;
+           case S_ABORT:
+-               fclose(fp);
++               if (fp != NULL) fclose(fp);
+                return ERR;
+           default:
+-               fclose(fp);
++               if (fp != NULL) fclose(fp);
+                logger(LOG_ERR, "%s: %d: tftpd_file.c: huh?",
+                       __FILE__, __LINE__);
+                return ERR;

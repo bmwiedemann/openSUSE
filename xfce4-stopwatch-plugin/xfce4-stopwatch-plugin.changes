@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:13:14 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Mon Jul 29 13:08:11 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro
+- Cleaned up spec file
+- Added bcond for git master builds
+
+-------------------------------------------------------------------
+Thu Jun 13 12:21:06 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Initial build for 0.3.1
+  * Port to Gtk3
+  * Fix build with vala and GObject instrospection. xfce4-vala is no
+    longer needed.

@@ -1,0 +1,12 @@
+[Unit]
+Description=Power Daemon
+Documentation=man:powerd(8)
+ConditionPathExists=/etc/powerd.conf
+
+[Service]
+Type=forking
+PIDFile=/var/run/powerd.pid
+ExecStart=/sbin/powerd
+
+[Install]
+WantedBy=multi-user.target

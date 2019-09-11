@@ -1,0 +1,15 @@
+diff -aurp mhvtl-1.60_release.orig/kernel/mhvtl.c mhvtl-1.60_release/kernel/mhvtl.c
+--- mhvtl-1.60_release.orig/kernel/mhvtl.c	2019-03-27 20:37:28.000000000 -0700
++++ mhvtl-1.60_release/kernel/mhvtl.c	2019-03-28 11:19:34.908351926 -0700
+@@ -320,7 +320,11 @@ static struct scsi_host_template vtl_dri
+ 	.cmd_per_lun =		32,
+ 	.max_sectors =		4096,
+ 	.unchecked_isa_dma =	0,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,0,0)
+ 	.use_clustering =	ENABLE_CLUSTERING,
++#else
++	.dma_boundary =		PAGE_SIZE - 1,
++#endif
+ 	.module =		THIS_MODULE,
+ };
+ 

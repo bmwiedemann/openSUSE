@@ -1,0 +1,3 @@
+#!/bin/sh
+test -e /lib/firmware/b43/ucode11.fw && exit 0
+exec /usr/sbin/install_bcm43xx_firmware

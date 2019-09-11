@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Mon Jan 15 12:00:00 UTC 2018 - ku.b@gmx.de
+
+- remove icon files (git#55f9bc59 patch-remove-icon-files.patch)
+
+-------------------------------------------------------------------
+Thu Dec 22 12:00:00 UTC 2016 - ku.b@gmx.de - 1.1.0
+
+- update to 1.1.0 release
+- port core to libOyranosSynnefo
+- port to Qt5/KF5
+- add Settings::Effect tab
+- send native update events on changes to update color server
+- [watch libelektra D-Bus update messages][1] and update device list
+- fix multibyte string display
+- fix showing 2D graph without ICC Examin
+- 0001-fix_CMakeLists.patch is integrated upstream and not needed
+- 0002-fix-header-includes-for-uint32_t-and-friends.patch is integrated upstream and not needed
+- do not set a device profile unquestioned; just view
+
+-------------------------------------------------------------------
+Tue Nov 29 07:20:36 UTC 2016 - olaf@aepfle.de
+
+- Expand macro kde4_runtime_requires only when its available
+  to fix quilt setup
+
+-------------------------------------------------------------------
+Fri Jun 24 12:00:00 UTC 2016 - sfalken@opensuse.org
+
+- Added 0002-fix-header-includes-for-uint32_t-and-friends.patch, 
+  to fix building building. Extracted from git master.
+
+-------------------------------------------------------------------
+Fri Jan 30 22:02:23 UTC 2015 - sfalken@opensuse.org
+
+- Added 0001-fix_CMakeLists.patch, as the INCLUDES breaks building on
+  cmake3.   Found solution from gentoo.  
+  https://www.mail-archive.com/gentoo-commits@lists.gentoo.org/msg90105.html 
+
+-------------------------------------------------------------------
+Thu May 15 12:00:00 UTC 2014 - ku.b@gmx.de
+
+- require icc-examin
+
+-------------------------------------------------------------------
+Sun May 10 12:00:00 UTC 2014 - ku.b@gmx.de - 1.0.2
+
+- update to 1.0.2 release
+- xcm libraries linking
+- update to Oyranos 0.9.5 API changes
+
+-------------------------------------------------------------------
+Sat Jan 19 12:00:00 UTC 2013 - ku.b@gmx.de
+
+- update to 1.0.1 release
+
+-------------------------------------------------------------------
+Tue Jan 15 12:00:00 UTC 2013 - ku.b@gmx.de
+
+- use pkg-kde-tools for debian packages with: dh @ --with kde
+
+-------------------------------------------------------------------
+Fri Jan 11 12:00:00 UTC 2013 - ku.b@gmx.de
+
+- Fix selection of no device related profiles
+- Fix missing Taxi results while changing device
+- Add cmake Copying file
+- bump version
+
+-------------------------------------------------------------------
+Fri Jan  4 12:00:00 UTC 2013 - ku.b@gmx.de
+
+- Display profile graph in information panel
+- Add Taxi DB support
+- add dist + debsrc targets
+- KS: be resonable about capabilities in KDE 4.10
+- KS: fix removal of device atom
+- update to release 1.0.0
+
+-------------------------------------------------------------------
+Fri Nov 16 12:00:00 UTC 2012 - ku.b@gmx.de
+
+- update to Release 0.99
+- update to Oyranos 0.9.x API bko#307542
+- includes kolor-server kded
+- fixes and minor improvements 
+- kolor-manager-gcc47.patch was integrated upstream
+
+-------------------------------------------------------------------
+Sat Mar 24 15:20:26 UTC 2012 - dimstar@opensuse.org
+
+- Add kolor-manager-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Tue Mar 06 13:01:00 UTC 2012 - Kai-Uwe Behrmann <ku.b@gmx.de> - 691cd53c
+
+- update to recent git
+
+-------------------------------------------------------------------
+Mon Feb 27 13:01:00 UTC 2012 - Kai-Uwe Behrmann <ku.b@gmx.de> - df2beb5e
+
+- update to recent git
+
+-------------------------------------------------------------------
+Mon Feb 13 13:01:00 UTC 2012 - Kai-Uwe Behrmann <ku.b@gmx.de> - r1252330
+
+- require libtool package to build
+
+-------------------------------------------------------------------
+Thu Nov 15 13:01:00 UTC 2011 - Kai-Uwe Behrmann <ku.b@gmx.de> - r1252330
+
+- fix for bug bnc#730109 KolorManager does not pass ICC profile name to Oyranos
+- rename visible panel title from Kolor Management to Color Management
+- i18n fixes
+- adaptions to KDE coding style
+
+-------------------------------------------------------------------
+Fri Sep 23 11:54:04 UTC 2011 - Kai-Uwe Behrmann <ku.b@gmx.de> - r1252330
+
+- Requires oyranos for basic policy files and icon
+
+-------------------------------------------------------------------
+Thu Sep 22 11:54:04 UTC 2011 - cfarrell@suse.com
+
+- license update: BSD-2-Clause
+  Use SPDX syntax
+
+-------------------------------------------------------------------
+Thu Sep  8 17:01:14 UTC 2011 - Kai-Uwe Behrmann <ku.b@gmx.de> - r1252330
+
+- switch from PKGCONFIG to pkg_check_modules
+
+-------------------------------------------------------------------
+Thu Sep  8 17:01:14 UTC 2011 - Kai-Uwe Behrmann <ku.b@gmx.de> - r1243368
+
+- skip cmake_kde4 macros as they dont smile with osc ci
+- improve icon placing in systemsettings
+

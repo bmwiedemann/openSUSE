@@ -1,0 +1,357 @@
+-------------------------------------------------------------------
+Fri Mar 29 07:54:57 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add missing python helpers to the package (bsc#1103497)
+
+-------------------------------------------------------------------
+Wed Feb 13 13:11:34 UTC 2019 - nmoreychaisemartin@suse.com
+
+- Update to v4.11.0-3 (bsc#1103497)
+  - Added option to query only flashed FW version, which reduces the CPU usage during the query.
+    To use this option you should use "--next_boot_fw_ver" flag.
+  - Fixed issue of missing information during query.
+  - Added support for python 3.
+  - Added option to reduce cpu utilization with "--low_cpu" flag.
+  - Added compatibility to 1.1.X version, in addition to previously supported 1.0.2 version.
+  - Added support for Mellanox Quantum switch systems and
+    ConnectX-6 Ready adapter cards.
+  - mstarchive tool
+    The mstarchive tool allows the user to create a file with the mfa2 extension.
+    The new file contains several binary files of a given firmware for
+    different adapter cards.
+  - mstprivhost
+    The ability to restrict the hosts from configuring the NIC.
+    Meaning, only the Arm side will have the privilege to configure the NIC.
+    Note: This utility is supported in BlueField devices only.
+  - mstconfig in BlueField
+    Enables the user to manage (grand/restrict) mlxconfig configuration
+    privileges for BlueField Arm systems.
+- Refresh patchest against latest sources:
+  - Add-armv6-and-armv7-support.patch
+  - Add-s390-s390x-support.patch
+  - Fix-gcc7-and-gcc8.patch
+  - Remove-date-time-info-from-build.patch
+  - fix-race-condition-during-install.patch
+- Drop Fixed-licenses-of-files.patch as it was merged upstream
+
+-------------------------------------------------------------------
+Mon Nov 19 07:52:54 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Add Fixed-licenses-of-files.patch from upstream that
+  fixes license issues (bsc#1086923)
+
+-------------------------------------------------------------------
+Mon Oct 15 07:35:36 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to v4.10.0-3 (fate#325998)
+  - Added mstcongestion 
+- Add fix-race-condition-during-install.patch
+  to fix install on parallel builds
+
+-------------------------------------------------------------------
+Tue Jul 31 07:45:02 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to v4.10.0-2
+  - mstfwreset not supported
+  - mstflint now handles all the burn parameters when MCC
+    is enabled and displays the secure-FW CS tokens.
+  - mstconfig
+    - Added the option to query partial parameters
+    - Added the following new parameters:
+        FLEX_PARSER_PROFILE_ENABLE
+        ECPF_ESWITCH_MANAGER
+        ECPF_PAGE_SUPPLIER
+        SAFE_MODE_ENABLE
+        SAFE_MODE_THERSHOLD
+        BOOT_UNDI_NETWORK_WAIT
+  - Fixed bug in firmware burning flow
+- Refresh patchest against latest sources:
+  - Remove-date-time-info-from-build.patch
+  - Add-s390-s390x-support.patch
+  - Add-armv6-and-armv7-support.patch
+  - Fix-gcc7-and-gcc8.patch
+
+-------------------------------------------------------------------
+Mon Jun 18 06:31:30 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update patches to fit science:HPC worflow
+  - Remove old format patches
+    - mstflint-4.4.0-implicit-declaration.patch
+    - mstflint-4.4.0-no-date-time.patch
+    - mstflint-armv6_arch.patch
+    - mstflint-armv7_arch.patch
+    - mstflint-gcc7.patch
+    - mstflint-s390_arch.patch
+  - Replaced with new format patches
+    - Remove-date-time-info-from-build.patch
+    - Add-s390-s390x-support.patch
+    - Add-armv6-and-armv7-support.patch
+    - Fix-gcc7-and-gcc8.patch
+      - Patch was updated to also fix Gcc8 compilation issues
+  - Drop obsolete patch
+    - mstfint-mtcr_ul_no_static_lib.patch
+- Update to v4.9.0-3
+  - No release notes available
+
+-------------------------------------------------------------------
+Sun Mar 25 11:17:55 UTC 2018 - kasimir_@outlook.de
+
+- Add mstflint-armv6_arch.patch to support build on armv6l
+
+-------------------------------------------------------------------
+Tue Mar 20 07:44:34 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to v4.9.0-1
+  * mstfwreset
+    * Added support for a hot swap (or hot plug) of the PCIe slot.
+  * Secure Firmware Update
+    * Added support for Secure Firmware Update to ConnectX-4 adapter cards.
+    * Enabled signing the package with an RSA 4096 bit keys.
+    * Added support for setting the GUIDs when Secure Firmware Update is enabled.
+  * mstconfig
+    * Added the following mstconfig configuration parameters:
+      * AUTO_RELOAD
+      * DRIVER_SETTINGS
+      * EXP_ROM_PXE_ENABLE
+      * EXP_ROM_UEFI_ARM_ENABLE
+      * EXP_ROM_UEFI_X86_ENABLE
+      * INTERNAL_CPU_MODEL
+      * IPV4
+      * IPV6
+      * PCI_DATA_WR_ORDERING_MODE
+      * PXE_UNDI
+      * STATUS_UPDATE
+      * TCP
+      * TCPIP
+      * TRACER_ENABLE
+  * mstflint
+    * Added support for FreeBSD with BSD license.
+  * Secure Boot
+    * Added support for secure boot to ConnectX-3 adapter cards.
+
+-------------------------------------------------------------------
+Thu Nov  9 11:19:43 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to v4.8.0-2
+  * Drop proprietary Mellanox file
+
+-------------------------------------------------------------------
+Tue Oct 31 12:32:47 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to v4.8.0-1, No info of changes available (bsc#1046293, fate#322949)
+- Update mstflint-gcc7.patch to the latest sources
+
+-------------------------------------------------------------------
+Wed Aug  9 15:36:35 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to v4.7.0-1, No info of changes available
+
+-------------------------------------------------------------------
+Fri Jun 23 15:40:51 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Replace dependency from libibmad-devel to infiniband-diags-devel
+
+-------------------------------------------------------------------
+Tue May 30 12:21:38 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add mstflint-gcc7.patch for GCC7 support
+
+-------------------------------------------------------------------
+Thu May 18 05:54:00 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add mstflint-armv7_arch.patch to support build on armv7l
+- Adapt mstflint-s390_arch.patch to work with s390 and s390x
+
+-------------------------------------------------------------------
+Fri Mar 31 11:21:24 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to v4.6.0-1, No info of changes available (fate#321683).
+- Adapt patches to changed sources.
+- Support build outside of SCM.
+
+-------------------------------------------------------------------
+Mon Mar 20 12:04:43 CET 2017 - pth@suse.de
+
+- Update to 4.5.0-1.17.g8a0c39d, No info of changes available
+  (fate#321683).
+- Adapt mstflint-s390_arch.patch to changed sources.
+- Remove mstflint-4.4.0-gcc6.patch as it isn't needed anymore.
+
+-------------------------------------------------------------------
+Wed Jun 29 17:36:04 UTC 2016 - i@marguerite.su
+
+- update version 4.4.0
+- drop patch: mstflint-autotools.patch, not needed
+- drop patch: mstflint-no_Werror.patch, not needed
+- add patch: mstflint-4.4.0-gcc6.patch
+  * fix boo#985145
+  * fix unable to find string literal operator
+- add patch: mstflint-4.4.0-implicit-declaration.patch
+  * fix implicit declaration of mset_cr_access
+  * neither mset_cr_access or MST_MLNXOS exists
+- add patch: mstflint-4.4.0-no-date-time.patch
+  * fix file-contains-date-and-time
+
+-------------------------------------------------------------------
+Mon Feb 22 10:35:49 CET 2016 - pth@suse.de
+
+- Add mstflint-common_int_handling.patch to fix integer types handling
+  and use common code instead of duplication. This creates two new
+  headers, int_handling.h and tools_arch.h. The former has the type
+  and print formatting code common to all files.
+- Use date and time of .changes file to avoid useless rebuilds.
+
+-------------------------------------------------------------------
+Thu Feb 18 14:39:47 CET 2016 - pth@suse.de
+
+- Update to 4.3.0 git 9b9af70 (fate#320235 bsc#66196).
+- Remove mstflint-autotools.patch as it's not needed anymore.
+- Generate ChangeLog from git log and include it.
+- Refresh and fix mstflint-s390_arch.patch to apply cleanly.
+- Build with Checksums enabled.
+- Add placeholder man pages from Debian.
+
+-------------------------------------------------------------------
+Sun Mar  8 10:46:01 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 4.0.0
+  * No changelog available
+- Use download Url as source
+- Update mstflint-autotools.patch 
+
+-------------------------------------------------------------------
+Fri Aug  8 19:27:26 CEST 2014 - pth@suse.de
+
+- Rename mstfint-mtcr_ul_no_static_lib to mstfint-mtcr_ul_no_static_lib.patch
+  and include the patch for building and using a dynamic library
+  as a source.
+
+-------------------------------------------------------------------
+Thu Jul 24 16:42:27 CEST 2014 - pth@suse.de
+
+- Don't install header and library and thus the devel package can
+  be removed.
+
+-------------------------------------------------------------------
+Tue Jun  3 11:24:34 CEST 2014 - pth@suse.de
+
+- Update to OFED 3.12 final.
+
+-------------------------------------------------------------------
+Fri May 16 13:50:49 CEST 2014 - pth@suse.de
+
+- Fix mstflint-s390_arch.patch to cover all new cases where
+  architecture is checked.
+- Add mstflint-no_Werror.patch because currently there are
+  warnings where printf formats don't match passed vars.
+
+-------------------------------------------------------------------
+Wed May 14 04:19:49 CEST 2014 - pth@suse.de
+
+- Update to 3.6.0 from OFED 3.12 RC2.
+- Remove patches as the code was fixed upstream:
+  mstflint-fix_type-punning.patch
+  aarch64-arch-detection.diff
+- Adapt mstflint-s390_arch.patch to the new code.
+- Remove mstflint-shared_lib.patch as it causes more work with
+  few gains.
+
+-------------------------------------------------------------------
+Tue Apr 22 16:22:50 CEST 2014 - pth@suse.de
+
+- Add all defines needed for s390.
+
+-------------------------------------------------------------------
+Tue Mar  4 12:52:48 CET 2014 - pth@suse.de
+
+- Fix mstflint-s390_arch.patch so that it applies.
+
+-------------------------------------------------------------------
+Mon Mar  3 17:25:46 CET 2014 - pth@suse.de
+
+- Add all necessary defines or s390x (mstflint-s390_arch.patch).
+
+-------------------------------------------------------------------
+Mon Feb 10 20:35:40 UTC 2014 - dmueller@suse.com
+
+- add aarch64-arch-detection.diff: Fix aarch64 detection 
+
+-------------------------------------------------------------------
+Mon Feb  3 13:23:02 CET 2014 - pth@suse.de
+
+- Update to latest 3.5.0. No change log in package.
+- Specify full source URL.
+- Use spdx.org format for license specification
+- Add mstflint-autotools.patch that modifies configure.ac so
+  that autoreconf can run successfully.
+- Remove configure.in as configure.ac is present.
+- Create devel subpackage.
+- Add mstflint-fix_type-punning.patch that fixes all cases of
+  type-punning by using memcpy.
+- Add COPYING and LICENSE to documentation.
+
+-------------------------------------------------------------------
+Fri Dec  7 19:19:48 CET 2012 - pth@suse.de
+
+- Update to from OFED 1.5.4.1 (fate#314255)
+- Remove patches that were integrated:
+  mstflint-includefix.patch
+  mstflint-1.4-0.6.g63179f4-connectX3.diff
+
+-------------------------------------------------------------------
+Tue Jan 10 10:21:38 UTC 2012 - stefan.fent@suse.com
+
+- Add Connect X3 support (bnc #732326)
+
+-------------------------------------------------------------------
+Thu Oct 28 16:37:49 UTC 2010 - jjolly@novell.com
+
+- Update to v1.4--0.6.g63179f4 from OFED 1.5.2
+- Refreshed include error patch
+
+-------------------------------------------------------------------
+Thu Dec 11 22:52:53 CET 2008 - jjolly@suse.de
+
+- Updated to package from OFED 1.4 GA
+  - Added hca_self_test.ofed installation
+
+-------------------------------------------------------------------
+Tue Oct 28 08:23:16 CET 2008 - jjolly@suse.de
+
+- Updated to v1.4 from OFED 1.3 rc3
+
+-------------------------------------------------------------------
+Mon Oct 27 23:07:12 CET 2008 - ro@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Fri Sep 12 08:37:19 CEST 2008 - jjolly@suse.de
+
+- Updated to v1.3 from OFED 1.4 RC1
+
+-------------------------------------------------------------------
+Tue Aug  7 12:16:05 CEST 2007 - hvogel@suse.de
+
+- Update to version from OFED 1.2c
+
+-------------------------------------------------------------------
+Thu Jul 12 14:39:12 CEST 2007 - hvogel@suse.de
+
+- package include/mtcr.h
+
+-------------------------------------------------------------------
+Wed Jul  4 12:04:03 CEST 2007 - hvogel@suse.de
+
+- Add GPL COPYING file [#288876]
+
+-------------------------------------------------------------------
+Tue Jul  3 13:33:43 CEST 2007 - hvogel@suse.de
+
+- Use correct git checkout from OFED 1.2 
+
+-------------------------------------------------------------------
+Wed Jun 20 17:40:25 CEST 2007 - hvogel@suse.de
+
+- Initial Package, Version 1.2
+

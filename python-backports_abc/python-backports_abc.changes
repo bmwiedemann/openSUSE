@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:45:57 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Apr 19 20:21:29 UTC 2018 - toddrme2178@gmail.com
+
+- Undo only building for lower python3 versions.  Some packages
+  use it even when not strictly necessary.
+
+-------------------------------------------------------------------
+Fri Mar 23 14:43:20 UTC 2018 - toddrme2178@gmail.com
+
+- Only build for python3 versions that need it.
+
+-------------------------------------------------------------------
+Thu Apr  6 15:42:34 UTC 2017 - jmatejek@suse.com
+
+- update for singlespec (this is the one backports module that we
+  need in python 3.4 too)
+- update to 0.5
+  * support old-style (mro-missing) classes
+
+-------------------------------------------------------------------
+Wed Dec 16 19:05:52 UTC 2015 - aboe76@gmail.com
+
+- Initial version
+

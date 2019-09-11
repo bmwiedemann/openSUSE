@@ -1,0 +1,227 @@
+-------------------------------------------------------------------
+Sat Aug  3 15:10:41 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.3.2:
+  * Only calculate dataset stats once (#453)
+  * Fixes #436 (#452)
+  * Fix a crash if trying to read a file whose created_by value is not
+    set
+  * COMPAT: Fix for pandas DeprecationWarning (#446)
+  * Apply timezone to index (#439)
+  * Handle NaN partition values (#438)
+  * Pandas meta (#431)
+  * Only strip _metadata from end of file path (#430)
+  * Simple nesting fix (#428)
+  * Disallow bad tz on save, warn on load (#427)
+
+-------------------------------------------------------------------
+Tue Jul 30 14:23:21 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix spurious test failure
+
+-------------------------------------------------------------------
+Mon May 20 15:12:11 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
+Tue Apr 30 14:28:46 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- update to 0.3.1
+  * Add schema == (__eq__) and != (__ne__) methods and tests. 
+  * Fix item iteration for decimals
+  * List missing columns in error message
+  * Fix tz being None case
+- Update to 0.3.0
+  * Squash some warnings and import failures
+  * Improvements to in and not in operators
+  * Fixes because pandas released
+
+-------------------------------------------------------------------
+Sat Jan 26 17:05:09 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.2.1:
+  * Compat for pandas 0.24.0 refactor (#390)
+  * Change OverflowError message when failing on large pages (#387)
+  * Allow for changes in dictionary while reading a row-group column
+    (#367)
+  * Correct pypi project names for compression libraries (#385)
+
+-------------------------------------------------------------------
+Thu Nov 22 22:47:24 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.2.0:
+  * Don't mutate column list input (#383) (#384)
+  * Add optional requirements to extras_require (#380)
+  * Fix "broken link to parquet-format page" (#377)
+  * Add .c file to repo
+  * Handle rows split across 2 pages in the case of a map (#369)
+  * Fixes 370 (#371)
+  * Handle multi-page maps (#368)
+  * Handle zero-column files. Closes #361. (#363)
+
+-------------------------------------------------------------------
+Sun Sep 30 16:22:56 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update url
+  * make %files section more specific
+
+- update to version 0.1.6:
+  * Restrict what categories get passed through (#358)
+  * Deep digging for multi-indexes (#356)
+  * allow_empty is the default in >=zstandard-0.9 (#355)
+  * Remove setup_requires from setup.py (#345)
+  * Fixed error if a certain partition is empty, when writing a
+    partioned (#347)
+  * Allow UTF8 column names to be read (#342)
+  * readd test file
+  * Allow for NULL converted type (#340)
+  * Robust partition names (#336)
+  * Fix accidental multiindex
+  * Read multi indexes (#331)
+  * Allow reading from any file-like (#330)
+  * change `parquet-format` link to apache repo (#328)
+  * Remove extra space from api.py (#325)
+  * numba bool fun (#324)
+
+- changes from version 0.1.5:
+  * Fix _dtypes to be more efficient, to work with files with lots of
+    columns (#318)
+  * Buildfix (#313)
+  * Use LZ4 block compression for compatibility with parquet-cpp
+    (#314) (#315)
+  * Fix typo in ParquetFile docstring (#312)
+  * Remove annoying print() when reading file with CategoricalDtype
+    index (#311)
+  * Allow lists of multi-file data-sets (#309)
+  * Acceleate dataframe.empty for small/medium sizes (#307)
+  * Include dictionary page in column size (#306)
+  * Fix for selecting columns which were used for partitioning (#304)
+  * Remove occurances of np.fromstring (#303)
+  * Add support for zstandard compression (#296)
+  * Int96time order (#298)
+
+- changes from version 0.1.4:
+  * Add handling of keyword arguments for compressor (#294)
+  * Fix setup.py duplication (#295)
+  * Integrate pytest with setup.py (#293)
+  * Get setup.py pytest to work. (#287)
+  * Add LZ4 support (#292)
+  * Update for forthcoming thrift release (#281)
+  * If timezones are in pandas metadata, assign columns as required
+    (#285)
+  * Pandas import (#284)
+  * Copy FMDs instead of mutate (#279)
+  * small fixes (#278)
+  * fixes to get benchmark to work (#276)
+  * backwards compat with Dask
+  * Fix test_time_millis on Windows (#275)
+  * join paths os-independently (#271)
+  * Adds int32 support for object encoding (#268)
+  * Fix a couple small typos in documentation (#267)
+  * Partition order should be sorted (#265)
+  * COMPAT: Update thrift (#264)
+  * Speedups result (#253)
+  * Remove thrift_copy
+  * Define `__copy__` on thrift structures
+  * Update rtd deps
+
+- changes from version 0.1.3:
+  * More care over append when partitioning multiple columns
+  * Sep for windows cats filtering
+  * Move pytest imports to tests/ remove requirememnt
+  * Special-case only zeros
+  * Cope with partition values like "07"
+  * fix for s3
+  * Fix for list of paths rooted in the current directory
+  * add test
+  * Explicit file opens
+  * update docstring
+  * Refactor partition interpretation
+  * py2 fix
+  * Error in test changed
+  * Better error messages when failed to cnovert on write
+
+- changes from version 0.1.2:
+  * Revert accidental removal of s3 import
+  * Move thrift things together, and make thrift serializer for pickle
+  * COMPAT: for new pandas CategoricalDtype
+  * Fixup for backwards seeking.
+  * Fix some test failures
+  * Protptype version using thrift instead of thriftpy
+  * Not all mergers have cats
+  * Revert accidental deletion
+  * remove warnings
+  * Sort keys in json for metadata
+  * Check column chunks for categories sizes
+  * Account for partition dir names with numbers
+  * Fix map/list doc
+  * Catch more stats errors
+  * Prevent pandas auto-names being given to index
+
+- changes from version 0.1.1:
+  * Add workaround for single-value-partition
+  * update test
+  * Simplify and fix for py2
+  * Use thrift encoding on statistics strings
+  * remove redundant SNAPPY from supported compressions list
+  * Fix statistics
+  * lists again
+  * Always convert int96 to times
+  * Update docs
+  * attribute typo
+  * Fix definition level
+  * Add test, clean columns
+  * Allow optional->optional lists and maps
+  * Flatten schema to enable loading of non-repeated columns
+  * Remove extra file
+  * Fix py2
+  * Fix "in" filter to cope with strings that could be numbers
+  * Allow pip install without NumPy or Cython
+
+- changes from version 0.1.0:
+  * Add ParquetFile attribute documentation
+  * Fix tests
+  * Enable append to an empty dataset
+  * More warning words and check on partition_on
+  * Do not fail stats if there are no row-groups
+  * Fix "numpy_dtype"->"numpy_type
+  * "in" was checking range not exact membership of set
+  * If metadata gives index, put in columns
+  * Fix pytest warning
+  * Fail on ordering dict statistics
+  * Fix stats filter
+  * clean test
+  * Fix ImportWarning on Python 3.6+
+  * TEST: added updated test file for special strings used in filters
+  * fix links
+  * [README]: indicate dependency on LLVM 4.0.x.
+  * Filter stats had unfortunate converted_type check
+  * Ignore exceptions in val_to_num
+  * Also for TODAY
+  * Very special case for partition: NOW should be kept as string
+  * Allow partition_on; fix category nuls
+  * Remove old category key/values on writing
+  * Implement writing pandas metadata and auto-setting cats/index
+  * Pandas compatability
+  * Test and fix for filter on single file
+  * Do not attempt to recurse into schema elements with zero childrean
+
+-------------------------------------------------------------------
+Thu Jun  7 20:41:31 UTC 2018 - jengelh@inai.de
+
+- Fixup grammar./Replace future aims with what it does now.
+
+-------------------------------------------------------------------
+Thu May  3 14:07:08 UTC 2018 - toddrme2178@gmail.com
+
+- Use %license tag
+
+-------------------------------------------------------------------
+Thu May 25 12:19:26 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

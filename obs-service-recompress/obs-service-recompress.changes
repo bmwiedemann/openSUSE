@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Fri Sep 01 11:11:35 UTC 2017 - adrian@suse.de
+
+- Update to version 0.3.1+git20170704.59bf231:
+  * Add README.md file
+  * [dist] added spec file to git
+
+-------------------------------------------------------------------
+Wed Feb 17 13:14:50 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 0.3.1+git20160217.7897d3f:
+  + security fixes (boo#967265) 
+
+-------------------------------------------------------------------
+Wed Jun 24 15:56:34 UTC 2015 - hib@hiberis.nl
+
+- Fix build for Debian 8.0
+- Use install target from Makefile
+- Include git revision in version number
+- Update to version 0.3.1+git20150622.d908b54:
+  + Tell rm not to prompt
+  + Change debian source format to 'native'
+  + Add Makefile with install target
+
+-------------------------------------------------------------------
+Wed Jul  9 15:36:43 UTC 2014 -  jblunck@infradead.org
+
+- Update to version 0.3.1:
+  + debian: use install-file to simplify rules-file
+  + Initial debianization
+  + - avoid problematic quoting
+  + Fix typo
+
+-------------------------------------------------------------------
+Tue Nov  5 16:17:34 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.3.1:
+  + Fix diffing uncompressed files
+
+-------------------------------------------------------------------
+Mon Nov  4 09:13:15 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.3:
+  + Don't overwrite identical files
+
+-------------------------------------------------------------------
+Tue Oct 29 13:53:50 UTC 2013 - speilicke@suse.com
+
+- Move service to github.com/openSUSE/obs-service-recompress
+- Add _service file to update package from there
+- Drop local sources and use tarball from source services
+
+-------------------------------------------------------------------
+Thu Mar  1 18:50:01 GMT 2012 - aspiers@suse.com
+
+- Display message on successful (re)compression.
+
+-------------------------------------------------------------------
+Thu Feb 14 15:52:17 UTC 2012 - aspiers@suse.com
+
+- always remove uncompressed files
+- fix rpmlint warnings

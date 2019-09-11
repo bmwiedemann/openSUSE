@@ -1,0 +1,46 @@
+--- Makefile
++++ Makefile
+@@ -1,11 +1,11 @@
+-DESTDIR=/usr/lib/ispell
++installdir=/usr/lib/ispell
+ 
+ all: slovak.hash
+ 
+ install: slovak.hash slovak.aff
+-	mkdir -p $(DESTDIR)
+-	install -o root -g bin -m 0444 slovak.hash $(DESTDIR)
+-	install -o root -g bin -m 0444 slovak.aff $(DESTDIR)
++	mkdir -p $(DESTDIR)$(installdir)
++	install -m 0444 slovak.hash $(DESTDIR)$(installdir)
++	install -m 0444 slovak.aff $(DESTDIR)$(installdir)
+ 
+ slovak.hash: slovak.aff slovak.words
+ 	buildhash slovak.words slovak.aff slovak.hash
+--- README.en
++++ README.en
+@@ -31,9 +31,9 @@
+ 	# make install
+ 
+ The default install directory is /usr/lib/ispell/, if you want to change
+-it, use the $(DESTDIR) variable, e.g.:
++it, use the $(installdir) variable, e.g.:
+ 
+-	# make DESTDIR=/usr/local/lib/ispell/ install
++	# make installdir=/usr/local/lib/ispell/ install
+ 
+ If you don't have ``make'' installed on your system or can't use it for
+ whatever reason, you can install dictionary with the provided install.sh
+--- README.sk
++++ README.sk
+@@ -35,9 +35,9 @@
+ 	# make install
+ 
+ V prípade, ¾e chcete in¹talova» slovník do iného adresára, pou¾ite
+-parameter $(DESTDIR), napr.
++parameter $(installdir), napr.
+ 
+-	# make DESTDIR=/usr/local/lib/ispell/ install
++	# make installdir=/usr/local/lib/ispell/ install
+ 
+ V prípade, ¾e nemáte na svojom systéme nain¹talovaný program 'make'
+ alebo z iného dôvodu ho nechcete alebo nemô¾ete pou¾i», mô¾ete spusti»

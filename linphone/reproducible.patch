@@ -1,0 +1,35 @@
+https://gitlab.linphone.org/BC/public/linphone/issues/5
+https://github.com/BelledonneCommunications/linphone/pull/112
+http://lists.nongnu.org/archive/html/linphone-developers/2018-04/msg00012.html 
+
+From 0a98667d1306097dcda9ea59c7627952eaee6db5 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Thu, 12 Apr 2018 08:55:48 +0200
+Subject: [PATCH] Sort input file list
+
+so that liblinphone++.so builds in a reproducible way
+in spite of indeterministic filesystem readdir order
+
+---
+While working on the reproducible builds effort, I found that
+when building the linphone package for openSUSE Linux (in disposable VMs),
+there were differences between each build,
+because ordering of functions in linphone++.cc
+depended on the indeterministic filesystem order.
+---
+ tools/genapixml.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: linphone-3.12.0/tools/genapixml.py
+===================================================================
+--- linphone-3.12.0.orig/tools/genapixml.py
++++ linphone-3.12.0/tools/genapixml.py
+@@ -617,7 +617,7 @@ class Project:
+ 		self.__discoverClasses()
+ 
+ 	def initFromDir(self, xmldir):
+-		files = [ os.path.join(xmldir, f) for f in os.listdir(xmldir) if (os.path.isfile(os.path.join(xmldir, f)) and f.endswith('.xml')) ]
++		files = [ os.path.join(xmldir, f) for f in sorted(os.listdir(xmldir)) if (os.path.isfile(os.path.join(xmldir, f)) and f.endswith('.xml')) ]
+ 		self.initFromFiles(files)
+ 
+ 	def check(self):

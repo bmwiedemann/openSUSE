@@ -1,0 +1,28 @@
+From 8fa674375a3ea5609ffe8dadeb697915347a4072 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Thu, 4 Jul 2019 15:57:00 +0200
+Subject: [PATCH 6/7] PySide2/QtCore: Remove duplicated type entry for "bool"
+
+Another entry with converters exists a few lines below.
+
+Change-Id: Id1de3835e42869a55e0bf865aa992f38748f2e88
+Reviewed-by: Christian Tismer <tismer@stackless.com>
+---
+ sources/pyside2/PySide2/QtCore/typesystem_core_common.xml | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/sources/pyside2/PySide2/QtCore/typesystem_core_common.xml b/sources/pyside2/PySide2/QtCore/typesystem_core_common.xml
+index 4f800cc9..2173e747 100644
+--- a/sources/pyside2/PySide2/QtCore/typesystem_core_common.xml
++++ b/sources/pyside2/PySide2/QtCore/typesystem_core_common.xml
+@@ -171,7 +171,6 @@
+   <primitive-type name="quint16"/>
+   <primitive-type name="quint32"/>
+   <primitive-type name="quint64"/>
+-  <primitive-type name="bool"/>
+   <primitive-type name="double"/>
+   <primitive-type name="qreal"/>
+   <primitive-type name="float"/>
+-- 
+2.22.0
+

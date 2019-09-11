@@ -1,0 +1,313 @@
+-------------------------------------------------------------------
+Sun Nov 11 18:15:12 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.8.16:
+  * Negative plugin improvements.
+  * Add Ezoom plugin AT-SPI support.
+  * Import icons from CCSM.
+- Remove compiz-plugins-main-better-neg.patch: fixed upstream.
+- Add a licence file to the package.
+
+-------------------------------------------------------------------
+Wed May  3 19:29:07 UTC 2017 - sor.alexei@meowr.ru
+
+- Add compiz-plugins-main-better-neg.patch: neg plugin improvements
+  (commits 10c31d4, 2265ce0, 5e40455).
+
+-------------------------------------------------------------------
+Tue Apr 18 11:10:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.8.14:
+  * Improve Static Switcher.
+  * Add more colorfilters.
+  * Update Catalan translation.
+- Workaround /usr/@DATADIRNAME@/locale/ on openSUSE Leap 42.1 and
+  older.
+
+-------------------------------------------------------------------
+Sun Apr 10 21:46:26 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.8.12.2:
+  * Drop glib-gettext dependency.
+    This fixes usage of autogen.sh with newer glib.
+
+-------------------------------------------------------------------
+Tue Mar  1 23:39:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.8.12.1:
+  * Fix a crash in plugins on configurations with older gcc that
+    depend on animation plugin. Note that plugins have to rebuild
+    against fixed version for a fix to take effect.
+  * Minor fixes.
+- Remove compiz-fusion-plugins-main-bnc511578.patch: merged
+  upstream.
+
+-------------------------------------------------------------------
+Sat Feb 13 09:25:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.8.12:
+  * Add font family configuration in Resize info, Ring switcher,
+    Scale addon, Shift switcher, and Thumbnail plugins.
+  * Resize info plugin:
+    - Do not ignore gradient colours 2 and 3 in Resize info plugin.
+    - Border for size info was fixed with white instead of being
+      some other colour the user might like better.
+    - Enable 'always_show' option by default.
+  * Change minimum and default amount of waves to 0 for Magic Lamp.
+  * Move Desktop Wall plugin to compiz-core project.
+- Remove compiz-fusion-plugins-main-defaults.patch:
+  Desktop Wall has been moved to compiz-core.
+- Exclude s390 and s390x architectures.
+
+-------------------------------------------------------------------
+Sat Dec 19 21:13:15 UTC 2015 - sor.alexei@meowr.ru
+
+- Use a better upstream tarball.
+
+-------------------------------------------------------------------
+Mon Nov  9 11:48:58 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.8.9.
+- Update dependencies.
+- Change group to "System/GUI/Other".
+
+-------------------------------------------------------------------
+Thu May 16 12:00:00 UTC 2014 - ku.b@gmx.de
+
+- fix Group of devel package
+- remove %{buildroot} from build section
+- remove outcommented and unused cmake build commands
+- remove old compiz-fusion-plugins-main-devel obsoletes and provides
+- run spec-cleaner over spec file
+
+-------------------------------------------------------------------
+Thu May 31 12:00:00 UTC 2012 - robertherb@arcor.de
+
+- use correct license format
+
+-------------------------------------------------------------------
+Tue Apr 28 12:00:00 UTC 2011 - robertherb@arcor.de
+
+- Update to version 0.8.8
+
+-------------------------------------------------------------------
+Tue Mar 30 13:48:16 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.8.6:
+  + Bug fix release
+  + Keep version in sync with compiz.
+
+-------------------------------------------------------------------
+Wed Dec  9 14:59:53 CET 2009 - dimstar@opensuse.org
+
+- Fix obsoletion of compiz-fusion-plugins-main (syntax error).
+- Do not self-obsolete, fixes a rpmlint warning.
+
+-------------------------------------------------------------------
+Mon Nov 23 10:26:43 CET 2009 - dimstar@opensuse.org
+
+- Provide / Obsolete also compiz-fusion-plugins-main-devel package. 
+
+-------------------------------------------------------------------
+Mon Nov 16 11:28:11 CET 2009 - dimstar@opensuse.org
+
+- Update to 0.8.4
+- Rename package to compiz-plugins-main to follow upstream naming
+- Drop NOMAD and workarounds-any-super-key-shows-main-menu.diff
+- clean spec-file using spec-cleaner.
+
+-------------------------------------------------------------------
+Sun Oct  4 18:46:48 UTC 2009 - aj@suse.de
+
+- compiz-kde only exists until openSUSE 11.1.
+
+-------------------------------------------------------------------
+Mon Aug 24 19:16:57 CEST 2009 - dimstar@opensuse.org
+
+- Add compiz-fusion-plugins-main-bnc511578.patch (bnc#511578,
+  upstream http://bugs.opencompositing.org/show_bug.cgi?id=1199). 
+
+-------------------------------------------------------------------
+Mon Apr 20 18:33:41 CEST 2009 - crrodriguez@suse.de
+
+- use --disable-static instead of removing static libraries 
+
+-------------------------------------------------------------------
+Mon Feb  2 11:10:57 EST 2009 - davidr@novell.com
+
+- Fix a number of issues to make animation plugin work
+  better with non top-level windows and remote desktops.
+  (bnc#471559)
+
+-------------------------------------------------------------------
+Fri Jan 30 18:16:14 EST 2009 - davidr@novell.com
+
+- Enable wobbly support in expo plugin again as compiz core
+  now includes the appropriate fix. (bnc#470020)
+
+-------------------------------------------------------------------
+Wed Jan 28 17:16:04 EST 2009 - davidr@novell.com
+
+- Disable wobbly support in expo plugin. (bnc#470020)
+
+-------------------------------------------------------------------
+Tue Jan 27 15:31:32 EST 2009 - davidr@novell.com
+
+- Add super keys as extra main menu keys in workaround
+  plugin. (bnc#358713)
+
+-------------------------------------------------------------------
+Mon Jan 26 10:55:38 EST 2009 - davidr@novell.com
+
+- Use walkDepthFirst function. (bnc#468433)
+
+-------------------------------------------------------------------
+Tue Nov 18 14:50:24 EST 2008 - davidr@novell.com
+
+- Update NOMAD patch to track changes to NOMAD patch
+  for compiz core.
+
+-------------------------------------------------------------------
+Sun Nov 16 23:59:44 EST 2008 - davidr@novell.com
+
+- Add fixes for non top-level window support in neg,
+  staticswitcher, shift, ring, thumbnail, animation,
+  colorfilter plugins to NOMAD patch.
+- Add fix for opacity plugin crash to NOMAD patch.
+- Add fix related to use of unhookWindowFromScreen in
+  staticswitcher plugin to NOMAD patch.
+- Add fixes for staticswitcher, shift, ring plugin clipping
+  issues to NOMAD patch.
+
+-------------------------------------------------------------------
+Mon Oct 13 12:19:30 CEST 2008 - rodrigo@novell.com
+
+- Review and merge changes from X11:Compiz
+
+-------------------------------------------------------------------
+Sun Oct 12 13:00:39 IST 2008 - cyberorg@opensuse.org
+
+- compiz-fusion-plugins-main-defaults.patch (bnc#434249)
+
+-------------------------------------------------------------------
+Wed Oct  8 13:42:18 CEST 2008 - rodrigo@novell.com
+
+- NOMAD updates from David Reveman (bnc#432313)
+
+-------------------------------------------------------------------
+Wed Oct  8 13:42:18 CEST 2008 - rodrigo@novell.com
+
+- NOMAD updates from David Reveman (bnc#432313)
+
+-------------------------------------------------------------------
+Mon Sep 29 16:50:38 CEST 2008 - rodrigo@novell.com
+
+- Review and merge changes from X11:Compiz
+
+-------------------------------------------------------------------
+Mon Sep 22 10:59:48 IST 2008 - cyberorg@opensuse.org
+
+- Performance improvements on all animations
+
+-------------------------------------------------------------------
+Wed Sep 17 20:22:09 IST 2008 - cyberorg@opensuse.org
+
+- Release 0.7.8
+- Fix constant damage of thumbnail while it is shown
+- Animation plugin restructured
+- Reorder groups and subgroups in metadata
+- l10n updates
+
+-------------------------------------------------------------------
+Tue Jul  1 16:59:39 CEST 2008 - mhopf@suse.de
+
+- Update from buildservice.
+
+-------------------------------------------------------------------
+Sat May 31 19:30:00 IST 2008 - cyberorg@opensuse.org
+
+- update to version 0.7.6
+  - New plugin: Static Switcher, a simpler switcher with a moving
+    caret instead of moving thumbnails
+  - Ezoom: New Zoom Box action allows using the mouse to select a
+    zoom region.
+
+-------------------------------------------------------------------
+Mon Apr 14 20:20:03 CEST 2008 - mhopf@suse.de
+
+- Update from buildservice.
+
+-------------------------------------------------------------------
+Thu Apr 03 22:03:00 IST 2008 - cyberorg@cyberorg.info
+
+- 0.7.4 release
+- Fix high cpu usage during expo mode
+- Bring back inactive viewport saturation/brightness on exit
+- Fixed expo reflection for vsize > 1
+- Fix artifacts in Rollup animation
+
+-------------------------------------------------------------------
+Fri Mar 07 01:20:00 IST 2008 - cyberorg@opensuse.org
+
+- 0.7.2 development release
+- session: Communicates with session manager to save/restore window state
+- bs: Change window brightness and saturation with key/button bindings
+- mousepoll: Provides a generic system for other plugins to get the current
+  mouse position
+- mag: Provides a magnifying glass under the mouse pointer with 3 different
+  display modes (simple/image overlay/fisheye)
+
+-------------------------------------------------------------------
+Fri Feb 08 22:44:00 IST 2008 - cyberorg@cyberorg.info
+
+- sync to latest git
+- BS brightness saturation plugin is back
+- some animation plugin fixes
+- new plugin mousepoll
+
+-------------------------------------------------------------------
+Tue Dec 04 13:40:00 IST 2007 - cyberorg@cyberorg.info
+
+- sync to latest git
+
+-------------------------------------------------------------------
+Tue Oct 16 13:40:00 IST 2007 - cyberorg@cyberorg.info
+
+- Update to release 0.6.0
+
+-------------------------------------------------------------------
+Thu Sep 06 23:00:00 IST 2007 - cyberorg@cyberorg.info
+
+- Add compiz-fusion-vpswitch-initiate-fix.diff
+
+-------------------------------------------------------------------
+Tue Aug 24 14:25:00 IST 2007 - cyberorg@cyberorg.info
+
+- Sync to the latest git.
+- new action settings rework
+- Shift animation improvement
+
+-------------------------------------------------------------------
+Wed Aug 22 19:11:00 IST 2007 - cyberorg@cyberorg.info
+
+- Add %post and %postun to run ldconfig- shut rpmlint up
+
+-------------------------------------------------------------------
+Mon Aug 13 18:03:15 IST 2007 - cyberorg@cyberorg.info
+
+- Update to 0.5.2 release.
+- Some animation default changes.
+- Fix gnome 2.19.X shutdown dialog & dimming layer handling.
+- Switcher bug fixes
+- Fix build for SLE
+
+-------------------------------------------------------------------
+Wed Aug  8 16:17:34 CEST 2007 - schwab@suse.de
+
+- Fix specfile.
+
+-------------------------------------------------------------------
+Mon Aug  6 17:26:13 CEST 2007 - dreveman@suse.de
+
+- Initial version of package 
+

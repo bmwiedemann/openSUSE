@@ -1,0 +1,175 @@
+-------------------------------------------------------------------
+Sat Jun  2 00:23:34 UTC 2018 - mrueckert@suse.de
+
+- https://src.fedoraproject.org/rpms/opendkim/raw/master/f/opendkim.ticket35+37.patch
+  allow building on newer distros (openssl 1.1 support)
+
+-------------------------------------------------------------------
+Fri Jun  1 23:55:05 UTC 2018 - mrueckert@suse.de
+
+- fix the previous change:
+  source files got added but the renumbering was not applied to the
+  reference to the source files -> signature file was installed as
+  services file
+
+-------------------------------------------------------------------
+Fri Jun  1 08:11:56 UTC 2018 - kbabioch@suse.com
+
+- Applied spec-cleaner to spec file
+- Removed conditionals around %license macro
+- Used OpenPGP signature provided upstream
+- Added opendkim.keyring containing the key used to sign official
+  releases.  
+
+-------------------------------------------------------------------
+Mon May 28 15:35:07 UTC 2018 - opensuse@dstoecker.de
+
+- enable DNSSEC support (requires unbound library)
+  ATTENTION: The file /var/lib/unbound/root.key must be readable by
+  user opendkim, which is not the fact for older unbound packages
+
+-------------------------------------------------------------------
+Fri Apr 28 19:31:12 UTC 2017 - jengelh@inai.de
+
+- Remove some idempotent %if blocks.
+
+-------------------------------------------------------------------
+Tue Apr  4 23:34:05 UTC 2017 - rpm@fthiessen.de
+
+- Implemented shared-library-packaging-policy
+  * Splitted shared libraries
+- Some spec file cleanup
+- Splitted autobuild and miltertest programs into own subpackages
+
+-------------------------------------------------------------------
+Thu Feb 11 12:31:57 UTC 2016 - mrueckert@suse.de
+
+- require main package from devel package
+- fix conditional for sql support. it was mixed with sql and
+  opendkim_sql
+- make RRD support optional pulls a lot of things.
+- use correct license for the sendmail part
+
+-------------------------------------------------------------------
+Wed Feb 10 02:15:11 UTC 2016 - mrueckert@suse.de
+
+- update to 2.10.3
+  - LIBOPENDKIM: Make strict header checking non-destructive. The
+    last change to this code resulted in failing signatures.
+    Reported by Pedro Morales and Wez Furlong.
+- changes from 2.10.2
+  - Fix bug #221: Report a DKIM result of "policy" if
+    MinimumKeyBits or UnprotectedKey cause the signature to result
+    in a "pass" override.  Reported by Kurt Roeckx.
+  - Fix bug #227: Revert removal of SenderHeaders configuration
+    setting.  Document that it is now limited to signature
+    selection.
+  - LIBOPENDKIM: Fix bug #226: Deal with header fields that are
+    wrapped before there's any content.  Reported by Alessandro
+    Vesely.
+  - CONTRIB: Update to contrib/systemd/opendkim.service.in from
+    Steve Jenkins.
+- refreshed opendkim-2.9.2_default_config.patch to apply cleanly
+  again
+
+-------------------------------------------------------------------
+Mon Apr 27 16:05:48 UTC 2015 - mrueckert@suse.de
+
+- cleanup build requires
+
+-------------------------------------------------------------------
+Mon Apr 27 15:20:53 UTC 2015 - mrueckert@suse.de
+
+- update to 2.10.1
+  Make DB_SIGNINGTABLE symbol available in Lua scripts.  Problem noted
+    by Klaus Heinrich.
+  Fix bug #214: Handle arbitrarily large From: fields.  Reported by
+    Tomohiko Sasaki.
+  LIBOPENDKIM: Fix bug #213: Remove "dkim_default_senderhdrs" from
+    dkim.h.  Problem noted by Daniel J. Luke.
+  LIBOPENDKIM: Fix bug #219: Unresolved CNAMEs are not failures,
+    according to the DNS (see RFC6604), so report them as
+    NXDOMAIN or similar.  Reported by Alessandro Vesely.
+- changes from 2.10.0
+  Feature request #182: Remove "AddAllSignatureResults".  All signature
+    results will now be added via Authentication-Results header
+    fields.  Requested by Tomki Camp.
+  Feature request #180: Rename "LDAPSoftStart" to "SoftStart" and apply
+    it to SQL connections as well.  Requested by Daniel Kauffman.
+  Feature request #179: Add "IgnoreMalformedMail" option.
+  Fix bug #183: Discontinue support for ADSP.  This removes the
+    following configuration file items:
+    AddAllSignatureResults  LocalADSP
+    ADSPAction    NoDiscardableMailTo
+    ADSPNoSuchDomain  On-PolicyError
+    BogusPolicy   SendADSPReports
+    DisableADSP   SenderHeaders
+    LDAPSoftStart   UnprotectedPolicy
+  Make "rrvs" and "smime" recognized Authentication-Results methods.
+  LIBOPENDKIM: Feature request #157: Add dkim_mail_parse_multi().
+    Suggested by Alessandro Vesely.
+  LIBOPENDKIM: Feature request #185: Add dkim_set_dnssec().  Patch
+    from Alec Peterson.
+  LIBOPENDKIM: Fix bug #183: Discontinue support for ADSP.  This
+    means all of the following:
+    - the dkim_policy_t type has been removed
+    - the DKIM_POLICY_* constants have been removed
+    - the DKIM_PRESULT_* constants have been removed
+    - passing DKIM_OPTS_SENDERHDRS to dkim_options() now
+      results in an error
+    - the DKIM_PSTATE structure has been removed
+    - all of the following functions have been removed:
+      dkim_policy(), dkim_policy_dnssec(),
+      dkim_policy_getqueries(), dkim_policy_getreportinfo(),
+      dkim_policy_state_free(), dkim_policy_state_new(),
+      dkim_policy_syntax(), dkim_getpolicystr(),
+      dkim_getpresult(), dkim_getpresultstr(),
+      dkim_set_policy_lookup(), dkim_test_adsp()
+  LIBOPENDKIM: DKIM_LIBFLAGS_STRICTHDRS now also confirms syntactical
+    validity of the From field before proceeding with a signing or
+    verifying operation.  Suggested by Wez Furlong.
+  CONTRIB: Fix bug #207: Clean up the "stats" directory.
+  CONTRIB: Add "repute" directory which could eventually replace the
+    PHP implementation.  Submitted by Daniel Black.
+  CONTRIB: Patches to systemd and init/redhat from Steve Jenkins.
+- changes from 2.9.3
+  Fix bug #177: Plug leaking "result" structures when OpenLDAP is in use.
+  Truncate configuration file lines at carriage return.
+  Replace overlapping strlcpy() with memmove() in dkim_get_key_file().
+    Reported by Daniel J. Luke.
+  Patch #32: Re-arrange the execution logic to drop privileges in
+    proper order.
+  LIBOPENDKIM: dkim_header() is now a lot more strict about the input
+    it will accept (see RFC5322 Section 2.2).
+  LIBOPENDKIM: Tighten relaxed modes to break on only DKIM-defined
+    whitespace characters.  Problem noted by Elizabeth Zwicky.
+  LIBOPENDKIM: Fix bug #208: If a signature fails to verify for either
+    reason (header hash mismatched or body hash mismatched), set
+    DKIM_SIGERROR_BADSIG so that Authentication-Results doesn't
+    report a failure with "no signature error".
+  TOOLS: Feature request #178: Add "-F" flag to opendkim-genzone so
+    records are created with the FQDN.  Patch from Andreas Schulze.
+  REPUTATION: Handle parameters safely in repute.php.  Reported by
+    Daniel Black.
+- refreshed patches to apply cleanly again:
+  opendkim-2.9.2_compiler_warnings.patch
+  opendkim-2.9.2_default_config.patch
+- use the correct signal for reloading the config
+- make sure that all the buildrequires we added are actually used
+  by adding the needed --with-* options
+
+-------------------------------------------------------------------
+Sun Dec 14 02:13:05 UTC 2014 - mrueckert@suse.de
+
+- more work on integration with the distribution
+  - added init system support (systemd,sysvinit)
+  - adapt the default config to change some defaults
+    new patch: opendkim-2.9.2_default_config.patch
+- a few more buildrequires:
+  libevent-devel, tre-devel, unbound-devel, erlang
+
+-------------------------------------------------------------------
+Mon Dec  1 18:35:24 UTC 2014 - mrueckert@suse.de
+
+- initial package
+

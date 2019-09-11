@@ -1,0 +1,654 @@
+-------------------------------------------------------------------
+Sun Mar  3 20:03:39 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.12.19:
+  + Fix incorrect Requires in pc files when using meson.
+  + Various meson-related fixes and cleanups.
+
+-------------------------------------------------------------------
+Thu Feb 21 15:58:17 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.12.18:
+  + Fix incorrect so version when using meson.
+  + Avoid exporting marshaler functions by dropping the use of
+    glib-genmarshal and using the generic marshaler instead.
+  + Don't use glib-mkenums for champlain-gtk where it's not needed.
+- Changes from version 0.12.17:
+  + Use of meson build system, CI tests and automatized generation
+    of documentation.
+  + Various map wrapping fixes.
+  + Pass data as uint8 pointer in champlain_renderer_set_data() and
+    make this function introspectable.
+  + Bump versions of some dependencies - clutter (1.24), glib
+    (2.38) - and fix depreciation warnings.
+  + Use https for all map sources that support it.
+  + Don't version-control generated vapi files.
+  + Combine champlain and champlain-gtk documentations into one.
+  + More helpful README.md with links to pages related to
+    libchamplain.
+  + Various housekeeping and cleanups.
+- Drop patch fixed upstream:
+  libchamplain-Fix-wrapping-champlain_view_x_to_longitude.patch.
+- Switch to meson build system, add meson BuildRequires and macros.
+
+-------------------------------------------------------------------
+Thu Jan  3 21:13:30 UTC 2019 - bjorn.lie@gmail.com
+
+- No longer build mephis support: Drop memphis-devel BuildRequires,
+  memphis upstream is dead and gone from the web for several years.
+  libchamplain upstream have disabled mephis support in git 5 years
+  ago, so we should not build it either. Pass --disable-memphis to
+  configure to be ensure we do not.
+- Pkgconfigify spec, align with what configure checks for:
+  + Drop clutter-devel, clutter-gtk-devel, gtk3-devel,
+    libsoup-devel, sqlite3-devel and vala BuildRequires.
+  + Add pkgconfig, pkgconfig(cairo), pkgconfig(clutter-1.0),
+    pkgconfig(clutter-gtk-1.0), pkgconfig(gdk-3.0),
+    pkgconfig(gio-2.0), pkgconfig(glib-2.0),
+    pkgconfig(gobject-2.0), pkgconfig(gtk+-3.0),
+    pkgconfig(libsoup-2.4), pkgconfig(sqlite3) and
+    pkgconfig(vapigen) BuildRequires.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:34:03 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sun Jan 28 23:43:23 UTC 2018 - bjorn.lie@gmail.com
+
+- Add
+  libchamplain-Fix-wrapping-champlain_view_x_to_longitude.patch:
+  Fix wrapping in champlain_view_x_to_longitude. Previous
+  implementation assumed that after using x_to_wrap_x further
+  wrapping would be needed only if x + priv->viewport_x >= width.
+- Do minor spec cleanup, use autosetup, make_build and make_install
+  macros, drop obsolete and unused BUILD_FROM_VCS conditional
+  gnome-common and gtk-doc BuildRequires and autogen.sh call.
+
+-------------------------------------------------------------------
+Wed Sep  6 23:32:59 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.12.16:
+  + Add possibility to set User-Agent for requests.
+  + Fix touch gesture zoom.
+  + Python demo fixes and cleanups.
+
+-------------------------------------------------------------------
+Wed Mar  8 12:53:48 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.12.15:
+  + Fix path layer surface exporting when no clone is visible.
+  + Fix printing in gnome-maps.
+  + Fix build on RHEL 7.3.
+  + Minor example updates.
+
+-------------------------------------------------------------------
+Wed Sep  7 15:29:17 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.12.14:
+  + Add support for horizontal map wrapping.
+  + Make the number of parallel connections of network tile source
+    configurable.
+  + Remove Mapquest map source as the tile server is not accessible
+    any more.
+  + Remove Maemo-related code.
+  + Fix small memory leaks.
+  + Bump libsoup dependency requirement to 2.42 and drop deprecated
+    function calls.
+  + Various minor improvements, fixes, depreciaton warning removals
+    and cleanups.
+
+-------------------------------------------------------------------
+Fri Apr 15 22:17:46 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Fri Feb 26 08:22:32 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.12.13:
+  + Implement ChamplainExportable in MarkerLayer and
+    ChamplainPoint.
+  + Avoid runtime warnings due to the use of deprecated API.
+  + Make sure enums are introspectable.
+  + Fix occasional crash when closing map with layers.
+  + Various minor fixes and improvements.
+
+-------------------------------------------------------------------
+Tue Dec  8 11:30:20 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.12.12:
+  + Add possibility to export maps.
+  + Fix map getting blank after some mouse actions.
+  + Fix tile loading at higher zoom levels.
+  + Improve mouse wheel zoom handling.
+
+-------------------------------------------------------------------
+Fri Sep 18 17:40:03 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.12.11:
+  + Improved touch-screen support, pinch-to-zoom.
+  + Add champlain_view_set_world() to limit the world to the
+    specified bounding box.
+  + Various minor fixes.
+
+-------------------------------------------------------------------
+Wed Mar 18 10:56:42 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.12.10:
+  + Improve key-press event handling to better support custom
+    keybindings.
+  + Add a simple demo demonstrating custom keybindings.
+  + Handle CLUTTER_SCROLL_SMOOTH to fix moouse-wheel zooming with
+    newer clutter versions.
+  + Make ChamplainLabel shadow optional.
+  + Emit animation-completed::zoom signal when zoom ends.
+
+-------------------------------------------------------------------
+Wed Sep 17 23:26:36 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.12.9:
+  + For privacy reasons use https instead of http in map sources 
+    that support it.
+  + Fixed leaked idle function in ChamplainPathLayer and
+    ChamplainScale.
+  + Don't deselect all markers when a marker got deselected.
+  + Various minor fixes and compilation warning removal.
+
+-------------------------------------------------------------------
+Tue Jul  1 21:11:32 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.12.8:
+  + Fix crash when changing a map source.
+  + Drop the dependency on libsoup-gnome by using libsoup 2.34 or
+    newer.
+  + Add basic touchscreen support.
+
+-------------------------------------------------------------------
+Thu Feb  6 22:00:52 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.12.7:
+  + Use correct LIBRARY_VERSION string.
+
+-------------------------------------------------------------------
+Tue Feb  4 17:18:20 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.12.6:
+  + Make sure Maemo is disabled when --disable-maemo is used.
+  + Add the new weather map sources for Maemo builds as well.
+  + ChamplainView:
+    - More reliable notifications for max/min-zoom-level
+      properties.
+    - Add API to determine appropriate zoom-level for a particular
+      bounding box.
+  + Update project homepage link.
+  + Fixes to build.
+
+-------------------------------------------------------------------
+Mon Sep 16 21:47:23 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.12.5:
+  + Add properties for animation mode & duration.
+  + Add support for OpenWeatherMap overlays.
+  + Performance improvements.
+  + Minor fixes and improvements.
+- Add gtk-doc BuildRequires: needed in order to build the html
+  docs.
+
+-------------------------------------------------------------------
+Fri May 17 08:29:01 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.12.4:
+  + Add dependency on clutter 1.12 and fix all the deprecation
+    warnings.
+  + Many internal cleanups and minor improvements.
+  + Fix gtk and libsoup deprecation warnings.
+  + Deprecate CHAMPLAIN_MAP_SOURCE_OSM_OSMARENDER and
+    CHAMPLAIN_MAP_SOURCE_OAM which don't exist any more and remove
+    them from the factory.
+  + Deprecate ChamplainCustomMarker.
+  + Deprecate champlain_view_bin_layout_add().
+  + Fix blurry map when view resized.
+  + Use more neutral map background color.
+  + Add champlain_view_get_bounding_box() and
+    champlain_bounding_box_covers().
+  + Add a possibility to set a background texture.
+  + Add Mapquest Open Aerial map source.
+  + Added the possibility to use TMS correct y-axis.
+  + Minor fixes and improvements.
+
+-------------------------------------------------------------------
+Sun Jul 15 12:31:13 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.12.3:
+  + Fix OpenCycleMap source URL.
+  + Fix ChmplainPoint resizing issue.
+  + Many minor documentation improvements.
+  + New polygons.py Python demo.
+  + Other minor fixes and improvements.
+
+-------------------------------------------------------------------
+Mon Mar 12 20:20:41 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.12.2:
+  + Call vapigen with --pkg cogl-pango-1.0.
+  + Don't call vapigen during distcheck and use pre-generated vapi
+    instead to become independent of vala version during distcheck.
+  + Minor changes here and there.
+- Drop libchamplain-vapi-cogl-pango.patch: fixed upstream.
+- Remove libtool BuildRequires and call to autoreconf: we don't
+  carry any patches anymore.
+- Remove xz BuildRequires since it now comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Mon Feb 27 14:24:10 UTC 2012 - vuntz@opensuse.org
+
+- Add libchamplain-vapi-cogl-pango.patch: fix build with vala 0.15.
+- Add libtool BuildRequires and call to autoreconf, needed for
+  above patch.
+
+-------------------------------------------------------------------
+Tue Dec 20 09:40:10 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.12.1:
+  + Fix scale drawing
+  + Don't call g_thread_init
+  + Redraw path when its properties change
+  + Fix crashes on ChamplainView destruction
+  + Add dashed lines drawing to paths
+  + Fix factory methods for introspection-based bindings
+  + Fix wrong zoom actor placement at low zoom levels
+  + Minor fixes and improvements
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Drop libchamplain-move-88dc672.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Dec  9 09:29:35 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib files into typelib-1_0-Champlain-0_12 subpackage.
+- Add typelib-1_0-Champlain-0_12 Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Wed Nov 23 08:22:54 UTC 2011 - dimstar@opensuse.org
+
+- Add libchamplain-move-88dc672.patch: Fixes build with new glib.
+
+-------------------------------------------------------------------
+Wed Sep 28 19:12:09 UTC 2011 - zaitor@opensuse.org
+
+- Changed BuildRequires from vala-devel to vala, as vala-devel 
+  is an old deprecated name.
+  
+-------------------------------------------------------------------
+Sun Sep 18 08:20:14 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.12.0:
+  + Minor fixes.
+
+-------------------------------------------------------------------
+Sun Sep  4 16:25:52 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.11.0:
+  + Animated zoom-in/out.
+  + Various fixes.
+- Drop libchamplain-build.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Aug 18 19:06:54 UTC 2011 - dimstar@opensuse.org
+
+- Add libchamplain-build.patch: Fix build.
+
+-------------------------------------------------------------------
+Mon Apr  4 12:22:41 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.10.0:
+  + Vala bindings generated from gir's
+  + Various build-related fixes
+  + Performance improvements in path node and marker addition code
+- Add vala-devel BuildRequires and enable building vala bindings
+  explicitly with --enable-vala options to configure.
+
+-------------------------------------------------------------------
+Mon Mar 28 17:34:26 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.9.1:
+  + Fix the redrawing bug caused by more aggressive clutter
+    clipping.
+  + Return to tidy from mx
+  + Port event handling from mx to tidy
+  + Reduce the amount of tidy source files and move them to the
+    champlain directory.
+  + Custom pick implementation for markers so markers are selected
+    only when clicked inside them.
+  + Fixes of several memory leaks on object destruction
+  + Deprecated symbols removal from ChamplainGtk
+  + Minimal Python demo added
+  + Minor bugfixes, cleanups, documentation additions, alignment
+    fixes.
+
+-------------------------------------------------------------------
+Tue Feb 22 12:01:04 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.9.0:
+  + Port to GTK3
+  + Rethink layer, marker, polygon and custom widget hierarchy
+  + Make ChamplainView more independent of layers and polygons
+  + Move license and scale actors outside of ChamplainView
+  + Add possibility to align custom widget actors to different
+    positions of ChamplainView
+  + Inherit all libchamplain actors from ClutterActor instead of
+    ClutterGroup
+  + Replace tidy with mx
+  + Make markers and paths movable
+  + Change ChamplainMapSourceDesc to be a class
+  + Speed up marker addition by using custom ClutterGroup without
+    depth ordering
+  + Depend on clutter 1.2 (needed for alignment) and
+    clutter-gtk 1.0 (needed by GTK 3 port)
+  + Many other fixes, cleanups, renames, improvements
+- Change gtk2-devel BuildRequires to gtk3-devel.
+- Rename libchamplain-0_8-0 to libchamplain-0_10-0 following soname
+  change.
+- Add support for source service checkout, with %BUILD_FROM_VCS:
+  + Add gnome-common and gtk-doc BuildRequires.
+  + Add call to ./autogen.sh.
+
+-------------------------------------------------------------------
+Tue Dec 14 15:04:08 CET 2010 - vuntz@opensuse.org
+
+- Own /usr/share/vala and /usr/share/vala/vapi to fix build.
+
+-------------------------------------------------------------------
+Mon Sep 27 19:55:50 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.8.0:
+  + Version bump to a stable version number, without any change.
+
+-------------------------------------------------------------------
+Sat Sep 18 10:19:15 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.7.2:
+  + Added missing header file for vala bindings generation
+  + Cleaned up build system
+  + Fixed documentation creation when compiled without memphis
+  + Updated for newer gobject-introspection
+- Explicitly list libraries, typelib, pkg-config and vala files to
+  be sure that the packaging is right.
+
+-------------------------------------------------------------------
+Sun Aug 29 12:15:34 CEST 2010 - vuntz@opensuse.org
+
+- Add memphis-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sun Aug 29 12:11:19 CEST 2010 - vuntz@opensuse.org
+
+- Remove explicit Requires in devel subpackage: they will be
+  automatically added with pkgconfig() Requires.
+
+-------------------------------------------------------------------
+Fri Aug 27 13:05:38 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.7.1:
+  + bgo#623043 champlain.pc file has too much requires
+  + Layer speedup by using clutter functions for marker ordering
+  + Use the renderer to render cached tiles
+  + Fixed crashes caused by improper tile loading termination
+  + Fixed many memory leaks
+  + Use memory cache in addition to file cache by default
+  + Use memphis_renderer_tile_has_data() as it works with
+    libmemphis 0.2.1
+  + On double click center to the clicked area
+  + Make ChamplainRenderer inherit from GInitiallyUnowned
+  + Access the elements in memory cache directly, not sequentially
+  + Updated documentation
+  + Use stable api version in soname also in development releases
+  + Minor fixes and cleanups
+- Rename libchamplain0 to libchamplain-0_8-0.
+
+-------------------------------------------------------------------
+Wed Aug 18 19:14:04 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.7.0:
+  + Separation of map sources and renderers
+  + Add null tile source (a dummy data source not reading any data)
+    and error tile renderer. Remove error tile source
+  + Get rid of non-persistent file tile cache and introduce memory
+    cache
+  + Minor fixes and cleanups
+- Changes from version 0.6.1:
+  + New Vala bindings
+  + Updated Python bindings
+  + Do not distribute gir files
+  + Minimal libchamplain usage demos
+  + Minor fixes and improvements
+- Changes from version 0.6.0:
+  + Fix a problem on some machines when tiles are being destroyed
+  + Add minimal demos
+  + Some other minor fixes
+- Changes from version 0.5.2:
+  + Different tile reference management eliminating tile leaks 
+  + General performance improvements
+  + Tile download cancellation when tile not displayed any more
+  + Build process improvements, libmemphis dependency made
+    optional
+  + Removal of unmaintained mono bindings, removal of perl bindings 
+  + New demo using introspection written in javascript
+  + Many bugfixes and cleanups
+- Changes from version 0.5.1:
+  + Disable Python and Instrospection until libMemphis gets
+    bindings
+  + Add missing files in tarball
+  + Remove generated headers from build
+- Changes from version 0.5.0:
+  + Add local rendering of OpenStreetMap data
+  + New map source infrastructure (à la Pipe and Filter)
+  + ChamplainPolygon and ChamplainMapSource inherit from
+    GInitiallyUnowned
+- Move .gir file to -devel package
+
+-------------------------------------------------------------------
+Sat Aug  7 11:56:01 CEST 2010 - vuntz@opensuse.org
+
+- Drop libchamplain-use-new-clutter-gtk.patch: we're going back to
+  a released version of clutter-gtk, so we don't need this anymore.
+
+-------------------------------------------------------------------
+Mon Mar 29 17:10:29 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.4.5:
+  + Fix missing lat/lon property notifications
+  + Remove the need to explicitly set the size of actors
+  + Properly get rid of marker's previous image
+- Add libchamplain-use-new-clutter-gtk.patch to fix build against
+  newer clutter-gtk.
+
+-------------------------------------------------------------------
+Sun Jan 31 23:53:49 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.4.4:
+  + Fixes:
+    - bgo#580372: Get rid of champlain_view_set_size, replaced by
+      clutter_actor_set_size
+    - Fix the Python demos to use ChamplainEmbed instead of
+      ClutterEmbed
+    - Ship all the python .defs files in tarballs, fixes the Python
+      bindings
+    - Simplification of the internal licence displaying code
+    - Optimize the initialization process, now loads only the
+      needed tiles
+    - Limit further more the number of times the scale is redrawn
+    - Limit the internal operations that happen when the user moves
+    - Async loading of tiles from the cache
+    - Use the shared tile cache paths when built with
+      --enable-maemo
+    - bgo#606393: The display of tiles looks very programmatic,
+      they now load in spiral order
+    - Limit the number of times notify::latitude and
+      notify::longitude are emited
+
+-------------------------------------------------------------------
+Thu Jan 14 03:47:21 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 0.4.3:
+  + GObject-introspection, Python and Perl bindings are in a
+    working state
+  + Additions:
+    - A scale
+    - User configurable additional license text to view
+    - An option to highligh points in Polygons
+  + Fixes:
+    - Also report as loading when validating the cache
+    - Fix linking with gold
+    - bgo#604784: SIGSEGV in function cairo_set_operator
+    - Fix segfault when polygon has been delete before redraw
+    - Make queue_redraw visible to subclasses
+    - Some memory usage improvements by reusing images already
+      loaded
+    - Don't eat clicks on the map when using
+      ChamplainSelectionLayer
+
+-------------------------------------------------------------------
+Wed Dec 23 12:05:55 CET 2009 - vuntz@opensuse.org
+
+- Drop gir-repository BuildRequires: it's not needed with recent
+  gtk2 that have introspection data.
+
+-------------------------------------------------------------------
+Sat Nov 14 02:34:56 CET 2009 - vuntz@opensuse.org
+
+- Update to version 0.4.2:
+  + Fixes:
+    - bgo#595552: ChamplainView "decel-rate" accepts values below
+      1.0
+    - bgo#598942: Fix champlain-gtk GObject introspection
+    - Fix compiler warning "function declaration isn't a prototype"
+- Changes from version 0.4.1:
+  + Enhancements:
+    - Added champlain_view_remove_layer
+    - ChamplainSelectionLayer now have a "changed" signal
+    - Added champlain_marker_set_highlighted_text_color
+    - Added champlain_marker_get_highlighted_text_color
+    - Added champlain_marker_get_highlighted_color
+  + Fixes:
+    - Selection color is always blue
+    - bgo#595534: Fix building on Solaris
+    - Emit map-source notifications
+    - Don't emit invalid lat and lon notifications
+    - bgo#597272: Adjust the typedefs to to keep the C++ bindings
+      happy
+    - Fix OSM licences
+    - Fix slowdowns with big caches
+    - bgo#598106: champlain plugin: map isn't displayed
+
+-------------------------------------------------------------------
+Wed Sep 16 18:54:51 CEST 2009 - lmedinas@opensuse.org
+
+- Update to version 0.4.0:
+  + Enhancements:
+    - Updated documentation
+    - Don't reload tiles if we are zooming at a level we just left
+  + Fixes:
+    - Remove OpenAerialMap from available sources
+    - Get rid of black lines between tiles at high zoom levels
+    - Fix polygon not visible at higher zoom levels
+    - bgo#594963: Initial scrolling results in map being in
+      Antarctica
+    - Make default selection mode in ChamplainSelectionMode single
+      to match Gtk+
+    - Remove deprecated symbols introduced in 0.3 and removed in
+      0.3
+- Rename includedir to from 0.3 to 0.4
+
+-------------------------------------------------------------------
+Fri Sep  4 14:18:00 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.3.92:
+  + Enhancements:
+    - New marker downloading demo: url-marker
+    - ChamplainView now has keyboard shortcuts (but not when used
+      with GtkChamplainEmbed)
+    - Updated to PyClutter 1.0 Python bindings
+  + Fixes:
+    - bgo#594003: invalid write of size 4
+    - Memory leaks in ChamplainLayer
+    - bgo#577592: Use _priv instead of the GET_PRIVATE macro
+    - bgo#590692: Workaround for X error when using
+      GtkChamplainEmbed
+    - bgo#592096: champlain_map_source_desc_copy and _free are
+      incomplete
+    - bgo#585754: Nicer compilation output with AM_SILENT_RULES
+      automake option
+    - Tiles are now loaded if view is resized vertically only
+    - Comment misleading event on markers in demos
+    - bgo#591132: Attempting to remove actor when zooming in/out
+    - Respect OSM tile usage policy
+    - bgo#593505: Memory leak in ChamplainLayer
+    - bgo#590727: Events are not send until the mouse move
+
+-------------------------------------------------------------------
+Tue Aug 25 13:34:52 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.3.91:
+  + Improved documentation
+  + Fix in animation being an out animation
+  + Simplified flickr Perl demo
+
+-------------------------------------------------------------------
+Tue Aug 11 12:26:27 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.3.90:
+  + Fix memory management
+  + bgo#590818: Fix build of introspection data with clutter 1.0
+  + bgo#591128: Perl bindings are not provided in the tar.gz
+- Drop libchamplain-clutter-1.0.patch: fixed upstream.
+- Drop call to gnome-autogen.sh, and remove gnome-common
+  BuildRequires.
+
+-------------------------------------------------------------------
+Wed Aug  5 11:27:09 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.3.6:
+  + Enhancements:
+    - New marker animation API
+  + Fixes:
+    - bgo#576391: Port to Clutter 1.0
+    - bgo#586029: ChamplainPolygon should inherit from
+      GInitiallyUnowned
+    - Make buildable with Gtk 2.12 instead of 2.14
+- Changes from version 0.3.5:
+  + Fixes:
+    - Fix a division by 0 experienced by MacBooks users
+- Changes from version 0.3.4:
+  + Enhancements:
+    - bgo#577909: Marker selection API
+    - Updated Perl bindings
+    - Updated Python bindings
+  + Fixes:
+    - bgo#585854: Make distcheck required --enable-python but
+      doesn't say so
+    - bgo#588224: Does not build with automake 1.11
+    - bgo#586157: libchamplain-gtk does not build with GTK 2.2
+    - And numerous other fixes
+- Drop libchamplain-clutter-1.0.patch.bz2: was taken from upstream.
+- Add libchamplain-clutter-1.0.patch to fix introspection build.
+
+-------------------------------------------------------------------
+Thu Jul 30 16:18:29 CEST 2009 - vuntz@novell.com
+
+- Add libchamplain-clutter-1.0.patch.bz2, taken from upstream, to
+  make it compile with clutter 1.0.
+- Remove clutter-cairo-devel BuildRequires.
+- Add gtk2-devel and clutter-gtk-devel Requires to devel package.
+- Add gir-repository and gobject-introspection-devel BuildRequires
+  to get introspection support.
+
+-------------------------------------------------------------------
+Wed Jun 17 18:29:52 CEST 2009 - vuntz@novell.com
+
+- Initial package.
+

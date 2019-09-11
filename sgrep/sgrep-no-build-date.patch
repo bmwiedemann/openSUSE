@@ -1,0 +1,30 @@
+Index: index.c
+===================================================================
+--- index.c.orig	1998-12-22 00:43:02.000000000 +0100
++++ index.c	2010-08-31 05:01:16.016031000 +0200
+@@ -1988,8 +1988,8 @@ int parse_index_options(IndexOptions *o,
+ 			if (!o->input_stop_word_file) return SGREP_ERROR;
+ 			break;
+ 		case 'V':
+-			printf("sgindex version %s compiled at %s\n",
+-				VERSION,__DATE__);
++			printf("sgindex version %s\n",
++				VERSION);
+ 			o->index_mode=IM_DONE;
+ 			break;
+ 		case 'v':
+Index: main.c
+===================================================================
+--- main.c.orig	1998-12-12 05:13:53.000000000 +0100
++++ main.c	2010-08-31 05:00:50.635112000 +0200
+@@ -727,8 +727,8 @@ int get_options(char *argv[])
+ 			print_help();
+ 			break;
+ 		case 'V':
+-			printf("sgrep version %s compiled at %s\n",
+-				VERSION,__DATE__);
++			printf("sgrep version %s\n",
++				VERSION);
+ 			exit(0);
+ 			break;
+ 		case 'v':

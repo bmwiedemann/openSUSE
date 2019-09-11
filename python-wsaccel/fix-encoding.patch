@@ -1,0 +1,11 @@
+Index: wsaccel-0.6.2/tests/test_4.py
+===================================================================
+--- wsaccel-0.6.2.orig/tests/test_4.py
++++ wsaccel-0.6.2/tests/test_4.py
+@@ -3,5 +3,5 @@ import wsaccel.utf8validator
+ 
+ def test_validate():
+     v = wsaccel.utf8validator.Utf8Validator()
+-    x = "Hello-µ@ßöäüàá-UTF-8!!"  # taken from case 6.2.1
++    x = "Hello-µ@ßöäüàá-UTF-8!!".encode('utf-8')  # taken from case 6.2.1
+     assert v.validate(x) == (True, True, 29, 29)

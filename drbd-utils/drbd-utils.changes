@@ -1,0 +1,1706 @@
+-------------------------------------------------------------------
+Tue Jun 11 12:42:01 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Tue May 28 05:59:13 UTC 2019 - nwang@suse.com
+
+- Update to 9.9.0
+ * drbdadm,v9: do not ignore stacked/upper implicit paths.
+ * docker: provide initial integration.
+ * doc,v9: document transport keyword
+ * drbdmeta,v9: support for PMEM activity log format
+ * drbdadm: allow faking of drbdsetup show output
+ * drbdmeta,v9: fix forget-peer
+
+-------------------------------------------------------------------
+Thu Jan 17 07:16:25 UTC 2019 - nwang@suse.com
+
+- Update to 9.8.0
+ * i18n: use propper po files
+ * v9,stacked: allow node-id in stacked section
+   but one should not use stacked with v9 anyways
+ * dry run: remove trailing white space
+   This eases test integration.
+   Mentioned here because strictly speaking output changed.
+ * regression tests: if at ./configure time "clitest" is detected,
+  one can run tests via "make test". Target is a noop otherwise.
+ * drbdsetup,v9: fix wait-for (same patch as in 9.7.1)
+ * doc,v9:  require-drbd-module-version-*, events2 --now --poll
+ * drbdadm,v9: allow stacked-on-top-of sections without address
+ * drbdadm,v9: bring up only the correct paths in multi-site scenaios.
+ * drbdadm,v9: fix parser segfault if node-id is missing.
+ * tests: require that they pass on release.
+ * drbdsetup,v9: fix key collision in show --json. 
+- bsc#1121794, use drbd9 man pages.
+
+-------------------------------------------------------------------
+Wed Dec  5 09:01:02 UTC 2018 - nwang@suse.com
+
+- Update to 9.7.0 
+ * drbdadm,v9,v84: fix resync-after
+ * drbd.ocf: connect_only_after_promote, require kernel version
+ * drbdmon: display resync progress
+ * parser,v9: require-drbd-module-version
+ * windrbd: add WinDRBD support
+
+-------------------------------------------------------------------
+Tue Oct 30 08:05:03 UTC 2018 - nwang@suse.com
+
+- bsc#1115606. Update to new upstream release 9.6.0
+ * usage-count: also count notty users if possible.
+ * drbd-overview: remove it, we have drbdtop/drbdmon. saves all the Perl deps.
+ * drbdmon: update frequency limiting, debug log for drbdevents, use
+   altbuffer,...
+ * drbdsetup show: on 9 allow json output.
+   mainly used in our CI, don't expect a stable field names yet.
+ * drbdsetup satus: on 9 fix json output to not include NaN/Infinity
+ * allow higher resync rates: first customers hit a limit. this requires an
+   updated kernel module as well (e.g., 9.0.16)
+ * init: fix some 8-only leftovers (sh-b-pri), sanitize the retry logic
+ * doc: document various 9 features that got forgotten (e.g., quorum-lost)
+ * build: various small fixes that popped up while playing with meson
+- Remove patch: skip_sh-b-pri_in_v9.patch fix in ace704aac
+
+-------------------------------------------------------------------
+Mon Jul 23 03:05:33 UTC 2018 - nwang@suse.com
+
+- Update to 9.5.0
+ * drbdmon: allow to start in problems view (--problems)
+ * drbdadm,v9: fix always failing stacked handlers from kernel
+ * drbdadm,v9: adjust now hands over the information that a
+   diskfull->diskless change was intentional.
+ * drbdadm,v9: adjust verifies now IPs
+- Remove patch: fix_call_khelper_with_stack.patch in 60ec9fa68
+
+-------------------------------------------------------------------
+Thu May 10 09:11:09 UTC 2018 - nwang@suse.com
+
+- Update to 9.4.0
+ * drbdmeta: don't exit with negative return codes
+ * usage counts: only register if we know driver version
+ * drbdsetup,v9: expose detailed verify/resync statistics
+ * drbdsetup,v9,json: saner types for client/peer-client/quorum
+   on --json
+ * drbdsetup,v9: expose client/peer-client in status if !isatty()
+- Including fix for SLE12SP3:
+  bsc#1064402, remove hardcoded local5 of logfacility 
+  bsc#1037109, drbdmeta does not propagate full bitmap
+
+-------------------------------------------------------------------
+Sun Apr  8 02:43:23 UTC 2018 - nwang@suse.com
+
+- bsc#1090167, Update to 9.3.1
+  * update to Japanese man pages
+  * fixes for stacking in drbd-9.0
+  * fixes for proxy support in drbd-9.0
+  * fix adjusting --bitmap=no peer to diskfull
+  * VCS: typos and fixes for stacked resources
+- Remove upstream patch Fix-no-bitmap-allocate-for-stacked-res.patch
+- Remove upstream patch Support-pass-force-to-dump-md.patch
+- Remove patch fix-segfault-up-stacked-resource.patch with
+  upstream fix 74b1cbb274
+- drbdadm v84: fixup for disable-write-same
+- Fix IPv4 & IPv6 address comparisons for 'drbdadm adjust'
+
+-------------------------------------------------------------------
+Mon Feb  5 07:09:33 UTC 2018 - nwang@suse.com
+
+- bsc#1077176, pass the string to backend. 
+- bsc#1058770, fix kernel trace while starting
+  sync stacked drbd
+- Add patch Fix-no-bitmap-allocate-for-stacked-res.patch
+- Add patch Support-pass-force-to-dump-md.patch
+
+-------------------------------------------------------------------
+Mon Jan 22 05:02:12 UTC 2018 - nwang@suse.com
+
+- bsc#1076936, from bwiedemann@suse.com.
+  Reproducible builds support merged in upstream, but 
+  the changes in spec is lost.
+
+-------------------------------------------------------------------
+Wed Dec  6 07:19:50 UTC 2017 - nwang@suse.com
+
+- bsc#1074169, Update to 9.2.0
+ * Japanese man pages
+ * initial vertias cluster agent support
+ * quorum integration (including agents)
+ * improve drbd9 (mesh)/drbd-proxy integration
+ * pull fixups from 9.1.1 branch
+ * switch to github
+ * drbdmon: page naviagation
+ * debian: add mount as dependency
+
+-------------------------------------------------------------------
+Mon Oct 16 09:38:35 UTC 2017 - nwang@suse.com
+
+- bsc#1061145, fencing is moved from disk secion to net
+  Add move_fencing_from_disk_to_net_in_example.patch 
+- bsc#1061147, skip running drbdadm sh-b-pri in drbd9
+  Add skip_sh-b-pri_in_v9.patch
+
+-------------------------------------------------------------------
+Fri Sep  1 08:13:38 UTC 2017 - nwang@suse.com
+
+- Update to 9.1.0
+ * allow events2 --now polling
+ * fix ambiguous inheritance for peer-device-options
+ * fixup fallback path for BLKZEROOUT for older kernels
+ * fix v9 proxy support
+ * modernized XEN scripts
+ * reproducible builds support
+ * create-md --force for v8.4 (for compat to v9)
+ * fix cstate output
+ * resize: give resize more time (same as attach)
+ * drbdmon: peer-device status, version info, node name
+ * "drbdadm status" for v8.4
+ * set peer-device-options only once
+- Remove Update-block-drbd-script-to-support-xen.patch 
+
+-------------------------------------------------------------------
+Fri Aug 25 06:45:36 UTC 2017 - nwang@suse.com
+
+- fate#323392, enable drbdmon which imported in 8.9.10 
+
+-------------------------------------------------------------------
+Fri Aug 11 06:09:20 UTC 2017 - nwang@suse.com
+
+- bsc#1052352, support block drbd for legacy format.
+- Add Update-block-drbd-script-to-support-xen.patch 
+
+-------------------------------------------------------------------
+Tue Jul 25 08:35:18 UTC 2017 - nwang@suse.com
+
+- bsc#1048671, Fix handler called from kernel always invalid 
+  for stacking resource
+- Add fix_call_khelper_with_stack.patch 
+
+-------------------------------------------------------------------
+Wed Jun  7 08:13:07 UTC 2017 - nwang@suse.com
+
+- Update to v9.0.0 
+ * drbd udev: fix inconsistent inheritance of implicit volumes
+ * Fix regressions of the out-of-the-box DRBD 8.4 experience
+ * DrbdMon: can now focus on "problem" resources
+ * v9: support new option on_no_quorum
+ * drbdadm: fix segfaults, improve error reporting
+ * adjust: fix deleting unrelated peer(s) on "adjust resource:specific-peer"
+ * drbdmeta create-md/convert: fix check for existing external meta-data
+- Merged into upstream, remove Pass-md_index-information-to-detect_md.patch
+
+-------------------------------------------------------------------
+Thu Apr 27 06:19:24 UTC 2017 - nwang@suse.com
+
+- bsc#1032074, fix Inconsistent metadata after upgrade
+- Add Pass-md_index-information-to-detect_md.patch
+  * will be merged into upstream in v8.9.12
+
+-------------------------------------------------------------------
+Tue Apr  4 12:21:55 UTC 2017 - kgronlund@suse.com
+
+- Update to v8.9.11
+  * No source changes from v8.9.11rc1
+
+-------------------------------------------------------------------
+Tue Apr  4 09:25:09 UTC 2017 - kgronlund@suse.com
+
+- Disable quorum in default configuration (bsc#1032142)
+- Add 0001-Disable-quorum-in-default-configuration-bsc-1032142.patch 
+
+-------------------------------------------------------------------
+Fri Mar 24 07:06:02 UTC 2017 - nwang@suse.com
+
+- Update to v8.9.11rc1
+- OCF resource agent and crm-fence-peer for drbd9
+  introduce quorum support
+  JSON output fixes
+  set bitmap to 0 on metadata creation
+- Remove patch support-drbd9-ra.patch
+  Remove patch initialize-node-id-when-create-md.patch
+- Corresponding user space change of bsc#1031299
+
+-------------------------------------------------------------------
+Wed Mar 22 09:10:59 UTC 2017 - nwang@suse.com
+
+- Update to v8.9.10 for drbd9.0.6 and drbdmanage
+- new drbdmon tool
+  drbdadm parser got faster
+  send SIGKILL to childs if parent drbdadm dies
+  compat fixes for linux kernel
+
+-------------------------------------------------------------------
+Mon Feb 20 16:30:37 CET 2017 - kukuk@suse.de
+
+- Remove obsolete Requires for pre/post install sections
+
+-------------------------------------------------------------------
+Tue Feb 14 07:36:34 UTC 2017 - nwang@suse.com
+
+- bsc#1025585, update to v8.9.8
+- Remove patch zeroout-discard-devices.patch
+  Remove patch service-mod.patch
+
+-------------------------------------------------------------------
+Tue Dec  6 08:06:00 UTC 2016 - nwang@suse.com
+
+- bsc#1006105, initialize node id when creating md. 
+- Add patch initialize-node-id-when-create-md.patch
+
+-------------------------------------------------------------------
+Wed Aug  3 03:39:18 UTC 2016 - nwang@suse.com
+
+- bsc#990834, remove the warning with experimental.
+- Add warning when using multiple nodes.
+
+-------------------------------------------------------------------
+Wed Jun 29 01:54:54 UTC 2016 - nwang@suse.com
+
+- bsc#986215, fix segfault of up a DRBD9 stacked resource.
+- Add patch fix-segfault-up-stacked-resource.patch
+
+-------------------------------------------------------------------
+Wed Jun 29 01:53:49 UTC 2016 - nwang@suse.com
+
+- bsc#986784, fix DRBD9 stacked resource could not started by RA.
+
+-------------------------------------------------------------------
+Fri Apr  8 13:04:00 UTC 2016 - lchiquitto@suse.de
+
+- bsc#972886, add pkg-config as build requirement to ensure udev's
+  rules directory will be detected at build time
+
+-------------------------------------------------------------------
+Mon Mar 14 08:01:22 UTC 2016 - nwang@suse.com
+
+- fate#320495. Support ha resource agent of drbd9.
+  Add patch support-drbd9-ra.patch
+
+-------------------------------------------------------------------
+Mon Mar  7 08:18:08 UTC 2016 - nwang@suse.com
+
+- bsc#955177, fence when another node pacemaker shutdown.
+  add patch fence-after-pacemaker-down.patch 
+
+-------------------------------------------------------------------
+Mon Mar  7 08:13:43 UTC 2016 - nwang@suse.com
+
+- Update to v8.9.6
+  * Call "drbdsetup resize" only as often as necessary on
+    "drbdadm resize"
+  * Disconnect connection first on single path deletion from connection
+  * Add unfence-peer handler
+  * Fix "drbdadm adjust" for proxy configurations 
+
+-------------------------------------------------------------------
+Tue Feb 23 05:19:07 UTC 2016 - nwang@suse.com
+
+- bsc#967753. Fix different udev rules folder in Leap and openSUSE.
+
+-------------------------------------------------------------------
+Thu Dec 24 06:17:48 UTC 2015 - nwang@suse.com
+
+- Update to v8.9.5
+  * add support for new disk option
+    'rs-discard-granularity' (module v8.4.7)
+  * add support for new disk option
+    'discard-zeroes-if-aligned' (module v8.4.7)
+  * add support for v9 "path" commands
+  * doc improvements/corrections
+  * improvements to drbd ocf resource agent
+    and pacemaker "constraint based fencing"
+    (crm-fence-peer.sh)
+  * drbd-overview improvements
+  * Add an autoconf switch for building without man pages
+  * Fix compatibility with the musl C library
+  * Introduce the concept of paths within a connection to
+    the config file; add support for paths to drbdadm adjust
+  * Allow multiple connection-mesh statements within one resource
+  * Document peer-device-options on the drbd-9.0 man pages
+  * increase the lower boundary for al-extents from 7 to 67;
+    drbdadm clamps al-extents to 67 implicitly if you configures
+    something lower than 67
+  * Document the events2 command on the drbd-8.4 man page
+  * Fix environment variables for handlers
+  * Rewrite the parser for configure options; Reuse the data
+    structures describing drbdsetup options
+  * No longer try to set peer-device-options with the connect
+    or attach commands; Only do it with the up and attach commands
+  * Fixed issues with stderr messages might go into arbitrary FDs
+  * Allow recursive includes; drbdadm includes each config
+    file only once
+  * Fix parsing cut-off proxy sections
+  * When converting 8.4 to 9.0 meta-data produce meta-data the drbd9
+    kernel driver will accept
+  * Obey max-peers for all volumes when creating meta-data
+  * Do not re-register at usage.drbd.org when the module is not
+    loaded when drbdadm is invoked
+
+-------------------------------------------------------------------
+Tue Nov  3 02:14:24 UTC 2015 - nwang@suse.com
+
+- BSC#949045. Remove execute of drbd.service.
+- Add patch service-mod.patch
+
+-------------------------------------------------------------------
+Wed Aug 19 09:00:49 UTC 2015 - nwang@suse.com
+
+- Fate#317940. Support zeroout/discard instead of zap-devices
+- Add patch zeroout-discard-devices.patch
+- Remove zap-devices-xml.patch and zap-devices.patch
+
+-------------------------------------------------------------------
+Thu Jul 23 02:28:37 UTC 2015 - nwang@suse.com
+
+- Add Patch zap-devices-xml.patch and zap-devices.patch
+  for user space entrance to zap-devices of new-current-uuid.
+- Patch fix-libdir-in-Makefile.patch
+
+-------------------------------------------------------------------
+Fri Apr 17 06:59:04 UTC 2015 - nwang@suse.com
+
+- Upgrade to released v8.9.2 for Fate#317940
+  * change systemd unit file: basically just call the init script
+  * make some previously hardcoded timeouts configurable
+  * drbdadm: New command peer-device-options
+  * drbd 9: Move max_buffers to net_conf
+  * drbd 9: Log errors to syslog if stderr is not available
+  * init script: fixes for stacked resources
+  * fix regression corner cases in bitmap size calculation
+  * allow create-md to initialize peer-max-bio-size to 1M
+  * drbd 9: make transport selectable
+  * fix aggregating drbdsetup / drbdmeta exit statii
+  * some documentation fixes (content and build)
+  * added direct-connect command
+  * incompatible drbd-9 metadata format change. use: node_id as index for
+    peer_md instead of the bitmap_index
+  * drbdadm/meta/usage_cnt: ensure output is visible
+  * drbdsetup: fix arguments for all commands expecting a peer_device
+  * exit codes: redefine E_USAGE to 1 (not 3)
+  * some build changes
+  * init script: on start, first try to load the module
+  * drbdsetup events2: Improve how timestamps are assigned
+  * udev rules (symlinks in /dev/by-res and by-disk) got fixed
+  * Fixed upper limit for drbd-8.4 activity log entries
+  * many fixes to drbdadm adjust and proxy commands for drbd-9
+  * rhcs_fence: Do not invoke fence agents in parallel, rewrite in bash
+  * drbdsetup events2 is now also available in drbd-8.4 (backported from
+    drbd-9)
+  * reorganized the repository have common code for drbd-9, drbd-8.4
+    and drbd-8.3 only once
+  * Fix drbd.ocf for resources without volume 0
+
+-------------------------------------------------------------------
+Wed Feb 18 09:16:33 UTC 2015 - rgoldwyn@suse.com
+
+- Upgrade to v8.9.2rc2 with _service file for latest git
+
+-------------------------------------------------------------------
+Wed Dec 17 09:16:21 UTC 2014 - lwang@suse.com
+
+- modify spec to set %attr(700,root,root) to %{_sysconfdir}/xen explicitly
+  to avoid mismatch with xen-tools/xen-xend-tools.
+
+-------------------------------------------------------------------
+Fri Nov 21 07:11:22 UTC 2014 - lwang@suse.com
+
+- add to drbd-utils.spec 
+   Obsoletes: drbd < 8.4.5 
+
+-------------------------------------------------------------------
+Fri Nov  7 13:33:42 UTC 2014 - lwang@suse.com
+
+- Delete requires for drbd-kmp for drbd driver is built in kernel
+  since 8.4.5
+
+-------------------------------------------------------------------
+Sat Oct 11 10:13:33 UTC 2014 - lwang@suse.com
+
+- update to drbd-utils-8.9.1
+- drbd-utils-8.9.1
+   * add DRBD systemd service
+   * new configuration options socket-check-timeout and csums-after-crash-only
+   * update xen block-drbd helper: allow for type "phy"
+   * update udev rules and move from /etc/ to /lib/
+   * fix various regressions/fallout from the kernel/userland package split,
+       re-add scripts drbddisk and drbdupper,
+       re-add "become-on-primary" feature to init script
+   * crm-fence-peer.sh: improve detection of "clean down"
+   * updated fencing scripts stonith_admin-fence-peer.sh and rhcs_fence
+   * improved "proxy" configuration section parsing
+   * added manpage for drbd-overview, minor review of man pages
+   * build: various changes in configure.ac, makefiles, debian/* and spec file 
+- Upstream version cs: 87039e4993dc682232ec6365900ace657e060c73
+- Delete patch: 
+    add_phy_to_block-drbd.diff: included in upstream latest version
+
+-------------------------------------------------------------------
+Fri Jul 11 01:53:22 UTC 2014 - lwang@suse.com
+
+- created drbd-utils-8.9.0 (drbd tools )
+  (since 8.4.5 drbd only includes kernel space source)
+- drbd-utils-8.9.0
+  * Initial release of unified drbd-utils
+  * Supports drbd drivers 8.3, 8.4 and 9.0
+  * Ships with man page links defaulting to 8.4
+  * Fixed offline resizing in drbdmeta; A regression that causes
+    data loss, since meta-data was written with wrong offset.
+    The regression was introduced with 8.4.3 
+- Upstream version cs: 79677f478d5b0b9bf6ee23cd7f97bc7ca6b99929
+- drbd-utils-8.9.0 not support congfigure device name any longer
+  del: fix-udev-for-drbd-start-timeout.patch
+
+-------------------------------------------------------------------
+
+- modify drbd.rules by removing NAME and adding SYMLINK in case that
+  configuration has a device name diffrent from kernel node (bnc#878119)
+  add: fix-udev-for-drbd-start-timeout.patch
+
+-------------------------------------------------------------------
+Tue May 20 09:13:32 UTC 2014 - lmb@suse.com
+
+- Packages drbd-xen, drbd-utils, drbd-bash-completion, and
+  drbd-pacemaker were merged into drbd (bnc#878793)
+
+-------------------------------------------------------------------
+Mon Mar 31 21:44:23 UTC 2014 - rgoldwyn@suse.com
+
+- Add Module.supported and preamble (bnc#871132)
+
+-------------------------------------------------------------------
+Thu Mar 27 03:06:03 UTC 2014 - xli@suse.com
+
+- Update to 8.4.4.7
+- fix potential BUG_ON in mempool_alloc for older kernels (<2.6.23)
+- fix cornercase of resync finished detection
+- fix drbd_ldev_destroy to run exactly once and in worker context
+- fix spurious detach/disconnect: don't announce WRITE_SAME
+- fix NULL pointer deref in blk_add_request_payload
+  (DISCARD/TRIM handling in sd)
+- fix regression: potential NULL pointer dereference
+- fix regression: potential list corruption
+- fix regression: potential deadlock in adm functions (drbdsetup)
+- fix regression: /sbin vs /usr/sbin in scripts
+- fix race stopping the worker thread
+- linux 3.13 compatibility
+- improve adaptive resync controler
+- reduce bitmap IO during resync
+- allow write-ordering policy to be bumped up again
+- trigger tcp_flush_pending_frames() for PING/PING_ACK
+- new sysfs oldest_requests attribute (may be moved to debugfs)
+- fix potential segfault in drbdadm adjust
+- drbdsetup improvements: fix socket buffers; detect modprobe failure
+- Upstream version cs: 3c1f46cb19993f98b22fdf7e18958c21ad75176d
+
+-------------------------------------------------------------------
+Tue Mar  4 00:18:04 UTC 2014 - mlatimer@suse.com
+
+- Handle drbd devices when presented as phy devices by xenstore with
+  libxl (bnc#865682)
+
+-------------------------------------------------------------------
+Mon Oct 14 09:27:25 UTC 2013 - lmb@suse.com
+
+- Update to official 8.4.4
+- drbd: evaluate disk and network timeout on different requests
+- drbd: Fix a hole in the challange-response connection authentication
+- drbd: always implicitly close last epoch when idle
+- drbd: add back some fairness to AL transactions
+- drbd: keep max-bio size during detach/attach on disconnected primary
+- drbd: fix a race between start_resync and send_and_submit
+- drbd: fix deadlock in discard fallback code
+- Build drbd KMPs.
+
+-------------------------------------------------------------------
+Thu Oct 10 14:04:56 UTC 2013 - lmb@suse.com
+
+- Update to 8.4.4rc2
+- fix potential deadlock when concurrently fencing and establishing a
+  connection
+- fix potential distributed deadlock during verify or resync
+- fix decoding of bitmap vli rle for device sizes > 64 TB
+- fix for deadlock when using automatic split-brain-recovery
+- only fail empty flushes if no good data is reachable
+- avoid to shrink max_bio_size due to peer re-configuration
+- fix resume-io after reconnect with broken fence-peer handler
+- crm-fence-peer: less cib polling, peer-alive detection using crmadmin,
+  and other improvements
+- OCF RA: avoid too tight pacemaker driven recovery loop on failed
+  promote, implement adjust_master_score parameter
+- fix too large bursts for very slow resync rates
+- don't let application IO throttle resync to a stall
+- Fixed attaching to disks with fixed size external meta-data (This
+  regressions was introduced with 8.4.3)
+- Fixed a crash when the connection broke at a very exact point in time
+  while a graceful disconnect executes
+- Support for REQ_DISCARD
+- Allow parallel promote/demote
+- Allow online changing of al-stripes and al-stripe-size with the resize
+  command
+- drbdadm adjust now deals with IP-address changes correctly
+- Align the internal object model with drbd-9.0 (away from drbd-8.3)
+- New drbd-proxy option "bwlimit"; allow proxy options on host level
+- Compiles on Linux v3.10
+
+-------------------------------------------------------------------
+Wed Sep 18 09:56:22 UTC 2013 - lmb@suse.com
+
+- Update drbd version string in specfile so that a future 8.4.4 check-in
+  will be considered newer than 8.4.4rc1.
+- Clean-up specfile based on spec-cleaner
+
+-------------------------------------------------------------------
+Mon Sep 16 11:22:46 UTC 2013 - lmb@suse.com
+
+- Update to drbd 8.4.4rc1
+- Disable heartbeat support (heartbeat no longer ships on openSUSE)
+- fix decoding of bitmap vli rle for device sizes > 64 TB
+- fix for deadlock when using automatic split-brain-recovery
+- only fail empty flushes if no good data is reachable
+- avoid to shrink max_bio_size due to peer re-configuration
+- fix resume-io after reconnect with broken fence-peer handler
+- fencing script improvements
+- Fixed attaching to disks with fixed size external meta-data (This
+  regressions was introduced with 8.4.3)
+- Allow online changing of al-stripes and al-stripe-size with the resize
+  command
+- drbdadm adjust now deals with IP-address changes correctly
+- Align the internal object model with drbd-9.0 (away from drbd-8.3)
+- Do not end up in Unconnected state if the connection breaks at a
+  certain point during the handshake (was introduced with 8.3.12)
+- Closed a race condition between promoting and connection handshake,
+  that could lead to an inconsistent view of the peer's UUIDS
+- Fixed a race condition that could lead to a full sync, if connection
+  breaks at a certain point while starting a regular resync
+- Fixed crm-fence-peer.sh for pacemaker 1.1.8
+- Fixed a list corruption for read requests that complete with an error
+  after they were aborted
+- Fixed a kernel panic if the device size was an exact multiple of
+  128MiB
+- Fixed a potential memory allocation during deadlock online resize
+- Improve the handling of read-errors: Make sure that sectors that had a
+  read error are overwritten with data from the peer on the next resync
+- Expose the data-generation-uuids through /sys/block/drbdXX/drbd/
+- The new flag --peer-max-bio-size for drbdmeta create-md is of use if
+  you plan to use the device for long time without peer
+- Fixed a potential protocol error and resulting disconnect/reconnect,
+  when a disk fails on the secondary node. (Introduced with 8.4.2)
+- Do not fail empty flushed on diskless, primary node
+- Fixed calculation of master scores for single volume and unconfigured
+  resources in the drbd.ocf RA
+- When the connection breaks during a grace full disconnect DRBD failed
+  to call the eventually configured fence-peer handler. Fixed.
+- Obey md-barrier setting when changed via the disk-options command
+- Non blocking queuing of AL-updates; This change significantly improves
+  the number of IOPs in case the workload does not fit into the
+  configured AL size. (Backport from drbd-9)
+- New options for drbdmeta create-md --al-stripes and --al-stripe-size
+  to create a larger and striped AL
+- Fixed drbdadm adjust of max-bio-bvecs
+- Fixed a memory leak of 336 byte per attach/detach cycle
+- Fix a potential null-pointer deference when configuring invalid resync
+  after dependencies
+- Fixed IO resuming after connection was established before fence peer
+  handler returned
+- Fixed an issue in the state engine that could cause state lockup with
+  multiple volumes
+- Write all pages of the bitmap if it gets moved during an online resize
+  operation. (This issue was introduced with 8.3.10)
+- Fixed a race condition could cause DRBD to go through a NetworkFailure
+  state during disconnect
+- Fixed a race condition in the disconnect code path that could lead to
+  a BUG() (introduced with 8.4.0)
+- Fixed a write ordering problem on SyncTarget nodes for a write to a
+  block that gets resynced at the same time. The bug can only be
+  triggered with a device that has a firmware that actually reorders
+  writes to the same block (merged from 8.3.13)
+- Fixed a potential deadlock during restart of conflicting writes
+- Disable the write ordering method "barrier" by default, since it is
+  not possible for a driver to find out if it works reliably since
+  2.6.36
+- All fixes that went into 8.3.13
+- Removed a null pointer access when using on-congestion policy on a
+  diskless device
+- In case of a graceful detach under IO load, wait for the outstanding
+  IO. (As opposed to aborting IOs as a forcefully detach does)
+- Reinstate disabling AL updates with invalidate-remote (8.4.0
+  regression)
+- Reinstate the 'disk-barrier no', 'disk-flushes no', and 'disk-drain
+  no' switches (8.4.0 regression)
+- Backported the request code from DRBD-9. Improves handling of many
+  corner cases.
+- Support FLUSH/FUA bio flags
+- Made the establishing of connections faster
+- New option 'al-updates no' to disable writing transactions into the
+- activity log. It is use full if you prefer a full sync after a primary
+  crash, for improved performance of a spread out random write work load
+- Expose the data generation identifies via sysfs
+- "--stop" option for online verify to specify a stop sector
+- Fixed a bug that might cause in kernel list corruption triggered by
+  simultaneous IO on multiple volumes in a single resource
+- Fixed a bug that might cause a kernel OOPS in the worker thread while
+  the receiver tied to establish a connection (drbd-8.4.0 regression)
+- Fixed an issue in the receiver that could cause connection triggered
+  by simultaneous IO on multiple volumes in a single resource
+- Consider the discard-my-data flag for all volumes
+- Fixed attaching to backing devices that do not support
+  barriers/flushes, when barriers/flushes are not disabled by the
+  configuration.  (drbd-8.4.0 regression)
+- Fixed a rare compatibility issue with DRBD's older than 8.3.7 when
+  negotiating the bio_size
+- Fixed a rare race condition where an empty resync could stall with if
+  pause/unpause events happen in parallel
+- Made the re-establishing of connections quicker, if it got a broken
+  pipe once. Previously there was a bug in the code caused it to waste
+  the first successful established connection after a broken pipe event.
+- crm-fence-peer.sh: Can now deal with multiple DRBD instances being in
+  a master/slave group
+- Optional load balancing for read requests: new keyword "read-balance"
+
+-------------------------------------------------------------------
+Mon May 13 10:44:16 CEST 2013 - ohering@suse.de
+
+- Make /etc/xen mode 0700 to protect vnc passwords.
+
+-------------------------------------------------------------------
+Tue Jul 10 07:51:21 UTC 2012 - tserong@suse.com
+
+- Don't use /var/lock/subsys in init script (bnc#714643)
+
+-------------------------------------------------------------------
+Fri Dec 16 03:45:16 UTC 2011 - tserong@suse.com
+
+- update to 8.3.11
+ * Added missing spinlock in compressed bitmap receive (regression introduced
+   in 8.3.10, could lead to "negative" out-of-sync stats and non-terminating
+   resync when "use-rle" is enabled)
+ * Fixed handling of read errors during online verify runs
+ * Fixes for possible distributed deadlocks during online verify and
+   checksum based resync processes
+ * Fixed handling of IO errors with an on-io-error=pass-on policy; the
+   disk state goes to inconsistent
+ * Fixed the behavior in case ping-timeout and ping-int are set to the
+   same value
+ * Fix for connecting on high latency network links
+ * Fixed wrong connection drops ("PingAck did not arrive in time") with
+   asymmetrically congested networks
+ * Fixed state transitions if fence-peer handler returns after connection was
+   established again
+ * Fixes to drbdmeta and drbdsetup for the > 16TByte support
+ * Made negotiation of max_bio_size conservative instead of optimistic
+ * Network timeouts for mirrored write requests are now always enforced,
+   no longer only when the socket is congested
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Mon Feb 21 14:10:49 UTC 2011 - ro@novell.com
+
+- update to 8.3.10
+  * Fixed a subtle performance degradation that might affected synchronous
+    work loads (databases) (introduced in 8.3.9)
+  * Fixed a locking regression (introduced in 8.3.9)
+  * Fixed on-no-data-accessible for Primary, SyncTarget nodes (Bugz 332)
+  * Progress bar for online verify
+  * Optionally use the resync speed control loop code for the online verify
+    process as well
+  * Added code to detect false positives when using data-integrity-alg
+  * New config option on-congestion and new connection states ahead and behind
+  * Reduced IO latencies during resync, bitmap exchange and temporal states
+  * Only build a single kernel module package on distributions that provide
+    the infrastructure to have kernel version independent modules
+  * On 64bit architectures allow device sizes up to one petabyte
+
+- update to 8.3.9
+  * Fix for possible deadlock on IO error during resync
+  * Fixed a race condition between adding and removing network configuration.
+    Lead to a BUG_ON() when triggered.
+  * Fixed spurious full syncs that could happen after an empty resync and
+    concurrent connection loss.
+  * Fixed spurious full syncs that happened when connection got lost while
+    one node was in WFSyncUUID state (Bugz 318)
+  * Fixed a race in the meta-data update code path, that could lead to forgotten
+    updates to the meta-data. That in fact could lead to unexpected behavior
+    at the next connect
+  * Fixed potential deadlock on detach
+  * Fixed potential data divergence after multiple failures
+  * Implicitly create unconfigured devices which are referenced in sync-after
+    dependencies.
+  * OCF RA now also works with pacemaker 1.1
+  * Allow BIO sizes of up to 128kByte. Note: In case drbd-proxy is used, at least
+    version 1.0.16 of drbd-proxy is required.
+  * New configuration keyword on-no-data-accessible. Possible values
+    io-error, and suspend-io. The default is "io-error", which matches the
+    previous behavior.
+  * If the fencing policy is set to resource-and-stonith, the primary node
+    will creates the new current UUID _after_ the fencing handler
+    returned. (Before it did immediately)
+  * Rewrote the resync speed control loop code. New configuration parameters
+    c-plan-ahead, c-fill-target, c-delay-target, c-max-rate, c-min-rate.
+  * Disable activity log updates when all blocks of an unconnected device is
+    are out of sync. That can be activated by using "invalidate-remote" on an
+    unconnected primary.
+  * Improved IPv6 support: link local addresses
+  * Improved resync speed display in /proc/drbd
+
+-------------------------------------------------------------------
+Fri Oct 22 00:40:04 CEST 2010 - ro@suse.de
+
+- update to 8.3.8.1
+  * Revert delay probes, they could potentially lead to stalled resync.
+    Feature is being re-implemented differently
+  * DRBD ocf resource agent now treats hostnames case insensitive
+
+- update to 8.3.8
+  * Do not expose failed local READs to upper layers, regression introduced
+    in 8.3.3
+  * Fixed support for devices with 4k hard sector size (again)
+  * Fixed a potential Oops in the disconnect code
+  * Fixed a race condition that could cause DRBD to consider the peers disk
+    as Inconstent after resync instead of UpToDate (Bugz 271)
+  * Fixed a reace condition that could cause DRBD to consider the peers disk
+    as Outdated instead of Inconsistent during resync (Bugz 277)
+  * Disallow to start a resync with invalidate / invalidate-remote when the
+    source disk is not UpToDate
+  * Forcing primary works now also for Consistent, not only for Outdated and
+    Inconsistent (Bugz 266)
+  * Improved robustness against corrupt or malicous sector addresses when
+    receiving data
+  * Added the initial-split-brain, it gets called also if the split-brain gets
+    automatically resolved
+  * Added the --assume-clean option for the resize command, it causes drbd to
+    not resync the new storage after an online grow operation
+  * drbdadm: Do not segfault if stacked-on-top-of refers to an undefined res
+  * drbdadm: Do not consider configs with invalid after statements as invalid
+  * drbdadm: Do not segfault if the peer's proxy section is missing
+  * drbdadm: Allow nullglob in include statement
+  * drbdadm: Fixed the use of waitpid
+  * init script: fix insserv headers (Debian 576901)
+  * Gave the receiving code the ability to use multiple BIOs for writing a
+    single data packet; now DRBD works with BIOs up to 32kByte also on LVM
+    devices; from now on the use_bmbv config option does nothing
+  * New command check-resize, that allows DRBD to detect offline resizing
+    and to move internal meta-data accordingly
+  * Added a control loop, that allows DRBD to find auto tune the resync
+    speed, on connections with large queues (drbd-proxy)
+  * --dry-run option for connect; disconnects after sync handshake
+  * --overwrite-data-of-peer got an alias named --force
+  * Improvements to crm-fence-peer
+  * Fixed option parsing and stacking in snapshot-resync-target-lvm.sh
+  * Compiles on 2.6.33 and 2.6.34
+
+- removed patches:
+  64bit-fixes.diff (upstream/obsolete)
+
+-------------------------------------------------------------------
+Fri Jun 25 05:39:10 UTC 2010 - tserong@novell.com
+
+- Include Linbit RA
+
+-------------------------------------------------------------------
+Sun Apr 11 14:29:39 CEST 2010 - dmueller@suse.de
+
+- remove KMP subpackage, the kernel modules are part of the kernel
+  and don't build out of tree anymore
+
+- update to 8.3.7:
+ * Lots of fixes to the new RPM packaging
+ * Lots of fixes to the autoconfig stuff
+ * Following the rename of CONFIG_LBD to CONFIG_LBDAF
+ * Silenced an assert. Could trigger after changing write ordering (Bugz 261)
+ * Fixed a race condition between detach and ongoing IO. Very hard to
+   trigger, caused an OOPS in make_request/drbd_make_request. (Bugz 262)
+ * Fixed a regression in the resync handshake code introduced before 8.3.3.
+   That bug causes DRBD to block during the initial handshake when a partial
+   resync is not possible but a full resync is necessary. Happens very rarely.
+   (Bugz 260)
+ * Do not drop into StandAlone mode when connection is lost during authentication
+ * Corrected a null test in the authentication code, found by conccinelle,
+   thanks to upstream integration. The chance to trigger that was probably 10^-9.
+ * crm-fence-peer.sh is now also usable if DRBD is managed from the xen block
+   helper script
+ * Fixes to the init script's dependencies
+ * Backported cleanups that where contributed to the in kernel DRBD
+ * Allow online resizing of disconnected devices, new option to drbdsetup
+   drbdsetup /dev/drbdX resize --assume-peer-has-space
+ * Allow multiple after options in the syncer section for stacked setups
+ * Correctly process relative paths in include statements in drbd.conf
+ * New option (-t) for drbdadm to test syntax of config snippets
+ * Following Linux upstream changes 2.6.32 (SHASH and in_flight issues)
+ * New /etc/drbd.conf example that suggests the use of /etc/drbd.d/xxx.res
+ * Fixed a regression introduced shortly before 8.3.3, which might
+   case a deadlock in DRBD's disconnect code path. (Bugz 258)
+ * Fixed drbdsetup X resume-io which is needed for the recovery
+   from the effects of broken fence-peer scripts. (Bugz 256)
+ * Do not reduce master score of a current Primary on connection loss,
+   to avoid unnecessary migrations
+ * Do not display the usage count dialog for /etc/inti.d/drbd status
+
+-------------------------------------------------------------------
+Fri Jan  8 16:54:23 CET 2010 - vuntz@opensuse.org
+
+- Remove unneeded glib-devel BuildRequires.
+
+-------------------------------------------------------------------
+Wed Oct  7 19:16:37 UTC 2009 - aj@suse.de
+
+- update to 8.3.4:
+  * Support kernel 2.6.31
+  * Numerous bug fixes
+  * Support for Infiniband via SDP (sockets direct protocol)
+- Add build fix from upstream.
+
+-------------------------------------------------------------------
+Sun Jul 19 21:51:40 CEST 2009 - coolo@novell.com
+
+- trying to get installation right
+
+-------------------------------------------------------------------
+Tue Jul 14 12:13:04 CEST 2009 - teelynn19@aim.com
+
+- update to 8.3.2
+  * For kernel 2.6.30 support - see internal changelog of source
+ 
+-------------------------------------------------------------------
+Mon Apr 20 01:13:04 CEST 2009 - ro@suse.de
+
+- update to 8.3.1
+  * Fixed drbdadm invalidate on disconnected devices (reg in 8.2.7)
+  * Fixed a hard to trigger spinlock deadlock when using device stacking
+    with the upper device having a smaller minor number than the lower device.
+    (Bugz 210)
+  * Adding a missing range check in ensure_mdev()
+  * Implemented a congested_fn; the kernel can keep its pdflushes running now
+  * Improvements the connection code for high latency links
+  * Fix for several potential memory leaks when allocating a device
+  * Use an additional meta data bit to store the fact of an old crashed primary
+  * Udev rule that populates /dev/drbd/by-res/ and /dev/drbd/by-disk/
+  * New timeout option: outdated-wfc-timeout
+  * New drbdmeta option: --ignore-sanity-checks
+  * Include statement for drbd.conf
+  * Improvements to drbd-overview.pl
+  * Fixed snapshot-resync-target-lvm.sh to work with more than 10 devices
+  * Do not force a full resync after a detach on a primary node
+  * Compatibility with Linux 2.6.27, 2.6.28 and 2.6.29
+
+- update to 8.3.0 
+  * Fixed 'sleep with spinlock held' in case online verify found a difference
+  * Fixed error code pathes in request processing.
+  * Fix for stack smashing in drbdmeta
+  * Fixed a bug that could lead to a crash when detaching/attaching
+    on the primary under heavy IO (Bugz 171)
+  * Fixed a bug in the new epoch code (introduced with 8.2.7).
+    Might cause crash at reconnect after connection loss during heavy IO
+    (Bugz 160)
+  * Fixed a bug in drbdsetup that could cause drbdsetup wait-connect to
+    miss the connection event.
+  * Fixed a race condition in the new barrier code. (Reordered barrier ACKs)
+  * Do not rely on blkdev_issue_flush() returning ENOTSUPP
+  * bitmap in unmapped pages = support for devices > 4TByte (was DRBD+)
+  * checksum based resync (was DRBD+)
+  * support for stacked resource (was DRBD+)
+  * Added support for stacked resources to the bash completion stuff
+  * Added missing documentation (manpages)
+  * Fixed drbdadm handlers for stacked resources
+  * Support of drbd-proxy in stacked setups
+  * RedHat cluster suite (rgmanager) integration scripts
+  * Renamed 'state' to 'role'
+  * More build compatibility with older vendor kernels
+  * Added drbd-overview.pl to the packages
+
+- update filelist
+
+-------------------------------------------------------------------
+Tue Jan 13 14:16:41 CET 2009 - dgollub@suse.de
+
+- Add kernel-syms-rt to build requires to build SLERT KMPs
+
+-------------------------------------------------------------------
+Wed Dec 10 13:30:00 CET 2008 - lmb@suse.de
+
+- Update with changes from 8a9ba53abe973301639beacc55eec569b43507e5:
+- Fix buffer overflow and off-by-one errors in drbd user-space token
+  parser (bnc#450883).
+- Fix resizing of devices.
+- Fix a NULL pointer dereference in barrier handling.
+- Handle failing request better.
+- Race in UUID synchronization.
+- Fix a call to a blocking function from within a spinlock.
+- drbd-optflags.patch: removed, is now upstream.
+
+-------------------------------------------------------------------
+Fri Nov 21 14:00:00 CET 2008 - lmb@suse.de
+
+- Update from 8.2.7-rc1 to 8.2.7 proper.
+- Endianness fixes.
+- Handle out-of-sequence barrier acks.
+- Allow DRBD to user other cn_idx values in case our default value is
+  already taken.
+- Although Primary/Diskless/StandAlone is invalid it is not unconfigured
+- become UpToDate on both after detach-attach on a connected secondary
+  device pair
+- 2.6.28 compatibility (needed for SLE11 kernel)
+- Bugfixes to write barrier handling.
+
+-------------------------------------------------------------------
+Mon Oct 27 14:00:00 CET 2008 - lmb@suse.de
+
+- Include fixes from upstream
+  (0e87a13b63e2ef87af6cfcc0d875721c53f37ed9).
+- Fixed possible Oops on connection loss during sync handshake.
+- Latency improvements.
+- Improved barrier support.
+
+-------------------------------------------------------------------
+Thu Sep  4 12:13:27 CEST 2008 - lmb@suse.de
+
+- Imported some changes from upstream, including:
+- Made it to compile on Linux-2.6.26
+- Fixed online resizing if there is application IO on the fly when the
+  resize is triggered.
+- Fixed online resizing if it is triggered from the secondary node.
+- Fixed a possible deadlock in case "become-primary-on-both" is used, and
+  a resync starts
+- Fixed the invocation of the pri-on-incon-degr handler
+- Fixed the exit codes of drbdsetup
+- sock_create_lite() to avoid a socket->sk leak
+- Auto-tune socket buffers if sndbuf-size is set to zero
+
+-------------------------------------------------------------------
+Mon Aug 18 18:07:48 CEST 2008 - mrueckert@suse.de
+
+- remove outdated options in the fillup_and_insserv call
+
+-------------------------------------------------------------------
+Mon Aug 18 11:26:43 CEST 2008 - schwab@suse.de
+
+- Fix name of completions file.
+
+-------------------------------------------------------------------
+Tue Jul 15 09:41:31 CEST 2008 - lmb@suse.de
+
+- Update to 8.2.6 and include all bugfixes from upstream.
+- Fix loading of module (bnc#403731).
+- Include bash completion for drbdadm.
+- Added the before-resync-target handler.
+- Fixed the out-of-sync handler.
+- Added the max-bio-bvecs option to workaround issues in a stack of
+  DRBD/LVM/Xen.
+- Fix online resizing in case if triggered from secondary.
+- Includes bugfixes from 8.0.11 -> 8.0.12 branch.
+
+-------------------------------------------------------------------
+Wed Jun  4 12:04:56 CEST 2008 - ro@suse.de
+
+- buildreq xen-tools only on x86,x86_64 
+
+-------------------------------------------------------------------
+Tue Jun  3 21:57:39 CEST 2008 - coolo@suse.de
+
+- avoid packaging a directory of xen-tools with different permissions
+
+-------------------------------------------------------------------
+Tue Apr 15 15:03:25 CEST 2008 - lmb@suse.de
+
+- Update to 8.2.5 (FATE#302403)
+- Include online-verify + various fixes to it.
+- Fix races between online-verify and application writes.
+- Fixed data-integrity-alg features.
+- Improved latency.
+- Full support for migration of meta-data from 0.7 -> 0.8.
+- Fix some more races, bugs, and memory leaks.
+
+-------------------------------------------------------------------
+Wed Dec  5 15:03:58 CET 2007 - ro@suse.de
+
+- hack to compile with 2.6.24 
+
+-------------------------------------------------------------------
+Tue Sep 18 12:07:34 CEST 2007 - ro@suse.de
+
+- do really build a module 
+
+-------------------------------------------------------------------
+Mon Sep 17 14:41:31 CEST 2007 - lmb@suse.de
+
+- Update to drbd 8.0.6 for kernel-compatibility (310187)
+
+-------------------------------------------------------------------
+Wed Apr  4 22:13:20 CEST 2007 - lrupp@suse.de
+
+- added module-init-tools to BuildRequires
+
+-------------------------------------------------------------------
+Fri Mar 30 15:20:11 CEST 2007 - rguenther@suse.de
+
+- add flex BuildRequires
+- add /etc/modprobe.d directory
+
+-------------------------------------------------------------------
+Fri Mar 30 02:26:42 CEST 2007 - ro@suse.de
+
+- added bison to buildreq 
+
+-------------------------------------------------------------------
+Mon Jan 15 09:43:01 CET 2007 - lmb@suse.de
+
+- Update to 0.7.23 for Linux kernels >2.6.19.
+
+-------------------------------------------------------------------
+Mon Oct 30 23:33:13 CET 2006 - lmb@suse.de
+
+- Update to the officially released 0.7.22 version.
+- Implement "freeze_io" feature.
+- convert-MODULE_PARM.diff: drop unneeded patch.
+
+-------------------------------------------------------------------
+Fri Oct  6 14:03:21 CEST 2006 - lmb@suse.de
+
+- Update to 0.7.22:
+  - In protocol A and B, on connection loss, drbd could "forget" to set
+    certain areas out of sync.
+  - fix races between failure in drbd_send_dblock and concurrently
+    running tl_clear.
+  - fix potential access-afer-free in drbd_dio_end.
+  - fix possible list corruption respective resulting deadlock in
+    receive_DataRequest.
+  - improved the drbd_thread_stop / start code.
+
+-------------------------------------------------------------------
+Mon Aug 14 21:44:10 CEST 2006 - lmb@suse.de
+
+- Update to 0.7.21.
+  * Fixed the "syncer stalled" after reconnect symptom.
+  * Fixed the "stalled in WFParams" after reconnect symptom. The cause
+    of this bug was actually a misuse of the data socket.
+  * Allow to set the uplug_watermark to 1, only usefull for very strange
+    cases.
+  * The GC comparison code failed to start a resync in case the two
+    cluster node failed simultaniously (common power failure).
+  * Fixed DRBD's code to start kernel threads to work on 2.6.17 also.
+  * IOCTL return codes fixed for 32bit userland - 64 bit kernel
+    setups.
+  * New config option "unplug-watermark".
+  * Released the drbd_alloc_ee() / drbd_free_ee() implementation from
+    the DRBD+ branch to the main branch.
+  * Fixed a bug where lc_del() left a list poison in an LRU chache's
+    hash table. The only way to trigger this bug was:
+    up (>>200M), primary, mkfs, resize to 200M, down, up
+  * DRBD now propagates the backing storage's read ahead properties
+    to upper layers. With devices that read very fast, this is
+    important.
+  * GFP_KERNEL was changed to GFP_NOIO in a few places, to make it
+    more save against deadlocks in the memory subsystem.
+
+-------------------------------------------------------------------
+Thu May  4 17:10:38 CEST 2006 - lmb@suse.de
+
+- Import fixes from 0.7.18:
+- Under high memory pressure it was possible to hit a deadlock on a
+  kmalloc(). Changed the GFP mask, it is no longer possible to deadlock
+  it with memory pressure.
+- With very unlucky network timing during connect DRBD falls into a
+  connect / drop-connection loop, that as soon as DRBD is in this loop
+  is very stable. This is fixed now, DRBD detects this situation an
+  breaks out of it.
+- Fix to the init-script. Now it waits until udev has created the device
+  nodes of _all_ resources.
+- A small fix for the 32bit userland 64bit kernel people, running older
+  kernels.
+- Improved handling of IO errors during initial read in of the activity
+  log.
+
+-------------------------------------------------------------------
+Sun Apr  2 20:01:34 CEST 2006 - agruen@suse.de
+
+- convert-MODULE_PARM.diff: Convert from the obsolete MODULE_PARM
+  to the new module_param.
+
+-------------------------------------------------------------------
+Mon Mar 27 17:43:40 CEST 2006 - lmb@suse.de
+
+- Fix memory allocation flags for the activity log (GFP_KERNEL ->
+  GFP_NOIO) to avoid possible deadlock.
+
+-------------------------------------------------------------------
+Mon Mar  6 17:09:05 CET 2006 - lmb@suse.de
+
+- Import upstream fixes from 0.7.17:
+ - There was a bug that could cause the activity log to be not applied
+   after a primary crash, when an other size than 127 elements was
+   configured.
+ - There was a bug in the activity log code, that could cause that the
+   latest update to the AL is omitted at recovery time.
+ - The "Marked additional XXKB as out-of-synced based on AL." message
+   showed one one eighth of the real amount.
+
+-------------------------------------------------------------------
+Thu Feb 16 16:41:19 CET 2006 - lmb@suse.de
+
+- Update to 0.7.16, new fixes:
+ - DRBD no longer shrinks an consistent device if it gets connected to
+   an smaller peer or attached to a smaller disk.
+ - There was a bug related to the degr-wcf-timeout config option, it was
+   never used in recent DRBD releases. Fixed.
+
+-------------------------------------------------------------------
+Fri Feb  3 11:59:29 CET 2006 - agruen@suse.de
+
+- drbd.spec: Replace %arch with %_target_cpu.
+
+-------------------------------------------------------------------
+Thu Feb  2 12:04:52 CET 2006 - ro@suse.de
+
+- added KMP subpackage (required with suse_kernel_module_package) 
+
+-------------------------------------------------------------------
+Tue Jan 31 15:04:10 CET 2006 - lmb@suse.de
+
+- Change km_drbd to a KMP.
+- Import fix to deal with serialized recursive calls to
+  generic_make_request() and avoid a deadlock (SVN r2056).
+
+-------------------------------------------------------------------
+Thu Jan 26 12:25:02 CET 2006 - lmb@suse.de
+
+- Compile fix for 2.6.16-rc1.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 17:57:02 CET 2006 - lmb@suse.de
+
+- Import some updated documentation.
+
+-------------------------------------------------------------------
+Tue Dec 20 14:14:54 CET 2005 - lmb@suse.de
+
+- Update to 0.7.15.
+
+-------------------------------------------------------------------
+Thu Dec  1 15:57:58 CET 2005 - lmb@suse.de
+
+- Update to 0.7.14/SVN.
+
+-------------------------------------------------------------------
+Thu Sep  1 12:18:25 CEST 2005 - lmb@suse.de
+
+- Switch to stable version 0.7.13.
+
+-------------------------------------------------------------------
+Thu Jun 30 09:43:19 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS correctly.
+
+-------------------------------------------------------------------
+Mon Feb 21 18:08:00 CET 2005 - lmb@suse.de
+
+- Update to upstream 0.8_pre1 (SVN 1763).
+
+-------------------------------------------------------------------
+Wed Feb  2 18:42:01 CET 2005 - lmb@suse.de
+
+- Update to upstream 0.7.10 (1754).
+
+-------------------------------------------------------------------
+Fri Jan 14 01:32:35 CET 2005 - ro@suse.de
+
+- fix typo in specfile 
+
+-------------------------------------------------------------------
+Wed Dec  1 14:51:29 CET 2004 - lmb@suse.de
+
+- Update to upstream version 0.7.6.
+
+-------------------------------------------------------------------
+Mon Sep 20 15:54:07 CEST 2004 - lmb@suse.de
+
+- Merge fixes from SLES9 SP1 with STABLE.
+
+-------------------------------------------------------------------
+Fri Sep  3 15:36:21 CEST 2004 - lmb@suse.de
+
+- Realign with upstream.
+
+-------------------------------------------------------------------
+Fri Aug 27 12:41:43 CEST 2004 - lmb@suse.de
+
+- Allow invalidate if cstate<Connected and Secondary
+- Data integrity protection: Disallow the user to make a primary node
+  SyncTarget via IOCTLs
+- Fix modprobe.d documentation (for users who do want to use the new
+  block major explicitly).
+- Cosmetic: Disable XFS statistics by default.
+
+-------------------------------------------------------------------
+Wed Aug 25 17:49:55 CEST 2004 - lmb@suse.de
+
+- Fix human-count handling to avoid more data inconsistency.
+- SLES9/SL9.1: Do NOT use new major number by default.
+- Pre-generate documentation. Shorten dependencies even more!
+
+-------------------------------------------------------------------
+Mon Aug 16 12:38:43 CEST 2004 - lmb@suse.de
+
+- Shrink dependency list even further.
+
+-------------------------------------------------------------------
+Mon Aug 16 11:57:16 CEST 2004 - lmb@suse.de
+
+- Remove subversion requirement for building with perl hack.
+
+-------------------------------------------------------------------
+Tue Aug 10 14:29:28 CEST 2004 - lmb@suse.de
+
+- Add modprobe.d file so that upgrading from previous versions is
+  smooth.
+
+-------------------------------------------------------------------
+Fri Aug  6 15:09:20 CEST 2004 - lmb@suse.de
+
+- Update to 0.7.2-final (still from SVN).
+  - Proper handling of backing storage devices that occasionally fail
+    READA (=read ahead) requests. (E.g. LVM and MD) DRBD now fails READA
+    requests itself, if a resynchronisation is running and it would need
+    to fetch the block from its peer. 
+  - "drbdadm adjust" had a race, which caused random errors. ( Missing
+    waitpid() ). Fixed now.                                           
+  - Properly substract SyncPause times from the syncer performance
+    numbers.
+  - Fix to the syncer progress bar in /proc/drbd.
+
+-------------------------------------------------------------------
+Fri Aug  6 10:56:41 CEST 2004 - lmb@suse.de
+
+- Fix minor module build issue.
+
+-------------------------------------------------------------------
+Wed Aug  4 13:35:02 CEST 2004 - lmb@suse.de
+
+- Upgrade to 0.7.2-pre from SVN
+- Changes block major from 43 to officially reserved 147 and from
+  /dev/nbXX to /dev/drbdXX.
+- Work-around for XFS bug.
+- Handle human and timeout counters correctly.
+- Some bugfixes and speedups in particular for protocol A and B.
+
+-------------------------------------------------------------------
+Wed Jul  7 16:40:38 CEST 2004 - lmb@suse.de
+
+- Fix various 64bit issues. (Final part of #41538)
+
+-------------------------------------------------------------------
+Thu Jul  1 20:14:50 CEST 2004 - lmb@suse.de
+
+- Reenable fixed zero-copy again. (#42222)
+- Fix drbd to work with hard sector sizes != 512bytes (dasd)
+  (#41538)
+- Fix 64bit problem when calling wait_event_interruptible_timeout()
+- Merge upstream code cleanups.
+
+-------------------------------------------------------------------
+Fri Jun 18 14:56:31 CEST 2004 - lmb@suse.de
+
+- Update to drbd-0.7-pre8 from upstream:
+  - Disabling zero-copy IO for now (#41852).
+  - Bitmap code restructured and lots of bugs fixed.
+  - Safe default: Always force a full-resync on initial setup.
+  - Ensuring that we never sync/read from an inconsistent peer.
+  - Various other fixes.
+
+------------------------------------------------------------------
+Wed Jun  9 00:25:46 CEST 2004 - lmb@suse.de
+
+- fix ioctls on s390x
+- Fix failure in local disk handling.
+
+-------------------------------------------------------------------
+Wed Jun  2 10:37:14 CEST 2004 - lmb@suse.de
+
+- Do not go into in an infinite loop on recursive symlinks under /dev.
+- More consistent error handling in the kernel module.
+
+-------------------------------------------------------------------
+Tue Jun  1 16:06:23 CEST 2004 - lmb@suse.de
+
+- Import test harness.
+- More fixes from upstream:
+  + Rate-limit printks to prevent DoS
+  + Test for whether the lower level device is detached in all cases
+  + Do not send several Write Hints in a row
+
+-------------------------------------------------------------------
+Thu May 27 13:27:15 CEST 2004 - lmb@suse.de
+
+- Import bugfixes from upstream (equivalent to drbd-0.7-rc1).
+  (Replaces some previously separate patches.)
+- Fix drbddisk to reply to heartbeat status inquiries correctly.
+- Clean up build.
+- Enable more verbose logging.
+
+-------------------------------------------------------------------
+Tue May 18 10:59:06 CEST 2004 - lmb@suse.de
+
+- Fix recalc_sigpending useage.
+- Activate additional debugging useful for test harness runs.
+
+-------------------------------------------------------------------
+Wed May 12 13:18:50 CEST 2004 - lmb@suse.de
+
+- Update to drbd 0.7-pre7, bugfix release
+
+-------------------------------------------------------------------
+Thu Apr 29 10:53:14 CEST 2004 - kraxel@suse.de
+
+- one more kernel build fix, previous was incomplete :-/
+
+-------------------------------------------------------------------
+Wed Apr 28 09:36:49 CEST 2004 - kraxel@suse.de
+
+- fix kernel build failure.
+
+-------------------------------------------------------------------
+Sat Apr 24 09:00:00 CEST 2004 - lmb@suse.de
+
+- Fix random memory corruption bug.
+
+-------------------------------------------------------------------
+Fri Apr 23 14:30:00 CEST 2004 - lmb@suse.de
+
+- Update to latest CVS to fix SMP issues.
+
+-------------------------------------------------------------------
+Tue Apr  6 02:49:26 CEST 2004 - agruen@suse.de
+
+- Add missing include path (testing with Makefile.suse currently
+  does not catch this case).
+
+-------------------------------------------------------------------
+Tue Mar 30 10:55:25 CEST 2004 - lmb@suse.de
+
+- Update to CVS-2004-03-30
+- Should fix #37446
+- Add new magic for km test builds if kernel-source is present.
+
+-------------------------------------------------------------------
+Fri Mar 19 14:43:46 CET 2004 - lmb@suse.de
+
+- Update to latest CVS once more.
+- Kill any files laying around from patches or CVS artifacts.
+
+-------------------------------------------------------------------
+Mon Mar 15 16:15:07 CET 2004 - lmb@suse.de
+
+- Update to latest CVS.
+
+-------------------------------------------------------------------
+Thu Mar  4 16:17:59 CET 2004 - kraxel@suse.de
+
+- add olh's regparm fix.
+
+-------------------------------------------------------------------
+Thu Feb 19 19:13:08 CET 2004 - lmb@suse.de
+
+- Upgrade to 0.7_pre5 from upstream. 
+- Include some hacks to test build of the km_ modules.
+
+-------------------------------------------------------------------
+Tue Feb 17 13:07:19 CET 2004 - lmb@suse.de
+
+- Stale patch included last time.
+
+-------------------------------------------------------------------
+Tue Feb 17 11:41:01 CET 2004 - lmb@suse.de
+
+- Fix at least the build on ppc64, x86_64 and ia64.
+
+-------------------------------------------------------------------
+Mon Feb 16 16:11:29 CET 2004 - lmb@suse.de
+
+- Upgrade to drbd 0.7
+- Reenable new & wonderful km_drbd package
+
+-------------------------------------------------------------------
+Mon Jan 26 17:17:15 CET 2004 - ro@suse.de
+
+- comment out km_drbd package
+
+-------------------------------------------------------------------
+Sat Jan 10 17:11:00 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Wed Sep 10 16:14:31 CEST 2003 - lmb@suse.de
+
+- Fix some build failures on ppc64.
+- Honor CONFIG_DEBUGSYM for UML build.
+
+-------------------------------------------------------------------
+Tue Aug 26 20:57:06 CEST 2003 - lmb@suse.de
+
+- No longer build the ja & pt docs.
+
+-------------------------------------------------------------------
+Tue Aug 19 14:14:11 CEST 2003 - lmb@suse.de
+
+- Do apply the patch.
+
+-------------------------------------------------------------------
+Mon Aug 18 19:34:57 CEST 2003 - lmb@suse.de
+
+- Fix distribution detection.
+
+-------------------------------------------------------------------
+Mon Aug 18 17:59:34 CEST 2003 - lmb@suse.de
+
+- Added build fixes for building under UML.
+- Fix for unacked count << 0.
+
+-------------------------------------------------------------------
+Thu Jul 31 03:30:59 CEST 2003 - lmb@suse.de
+
+- Upgrade to 0.6.6.
+
+-------------------------------------------------------------------
+Fri Jul 25 14:16:50 CEST 2003 - schwab@suse.de
+
+- Respect INSTALL_MOD_PATH.
+
+-------------------------------------------------------------------
+Wed Jun 11 11:20:05 CEST 2003 - kukuk@suse.de
+
+- Add all directories to filelist
+
+-------------------------------------------------------------------
+Tue Jun  3 16:12:31 CEST 2003 - jg@suse.de
+
+- Update to 0.6.4, changes:
+  - Reworked build system (i.e. better Makefiles)
+  - SyncAll works forward insead of backwards. Improves performance on some
+    storage controlers.
+  - Reworked /etc/init.d/drbd script (i.e. better support of different bash
+    releases)
+
+-------------------------------------------------------------------
+Wed Mar 26 11:43:36 CET 2003 - jg@suse.de
+
+- Update to 0.6.3, changes:
+  - Lockup of primary if secondary fails during resync. Fixed. (Stupid!)
+  - Probabely SMP only deadlock in the drop-conection code path.
+  - Improved connect code. (The old code could trap into a distributed
+    deadlock, resulting in an endless connect/disconnect loop.)
+  - The 'BitMap too small bug' was actually caused by a patch in
+    SuSE's distribution kernel. This patch makes DRBD 'more' compatible
+    with SuSE's kernel.
+  - Improved code to allocate buffers for the rsynchronisation process.
+    The old code allocated physical adjacent pages although the syncer
+    does not need them! The old code could fail under high memory pressure.
+- Removed BitMap too small patch (is part of 0.6.3)
+- added /etc/ha.d/resource.d/datadisk to filelist so it is possible
+  to install heartbeat after drbd
+- removed unneeded /etc/ha.d/resource.d/drbd-control
+
+-------------------------------------------------------------------
+Mon Mar 17 11:27:40 CET 2003 - jg@suse.de
+
+- Added "BitMap too small" fix (Bug #25384)
+
+-------------------------------------------------------------------
+Wed Feb 12 10:51:57 CET 2003 - jg@suse.de
+
+- Updated to 0.6.2
+  - SMP fix in drbd_dio_end_sec()
+  - /etc/init.d/drbd knows about returncodes of fsck
+
+-------------------------------------------------------------------
+Tue Dec 17 10:44:16 CET 2002 - jg@suse.de
+
+- Moved drbdsetup from /usr/sbin to /sbin to support /usr on nfs
+- Removed accidentialy included CVS directories from tar-file
+
+-------------------------------------------------------------------
+Wed Dec 11 16:04:44 CET 2002 - jg@suse.de
+
+- Updated to 0.6.1 final
+
+-------------------------------------------------------------------
+Mon Nov 11 11:26:13 CET 2002 - ro@suse.de
+
+- changed neededforbuild <jade_dsl> to <openjade>
+- changed neededforbuild <sp> to <opensp>
+
+-------------------------------------------------------------------
+Wed Oct  2 14:23:53 CEST 2002 - jg@suse.de
+
+- Updated to 0.6.1-pre17, changes:
+  - Merged syncer speedup code by Lars G. Ellenberg
+  - Merged most of Lars' modifications to the ioctl interface
+  - Marged the bug-fixes from the lge-branch
+  - Implemented the TimoutCounter in the meta-data code.
+  - Fixed a bug that could cause lockup of the primary node on
+    SMP systems using a SCSI device for DRBD, it always happened
+    during resynchronisation. (!)
+- Checking /.buildenv now in buildsystem instead of /etc/*-release
+
+-------------------------------------------------------------------
+Tue Sep  3 18:18:48 CEST 2002 - jg@suse.de
+
+- Init script fixes:
+  - Removed abortion on non existing block devices (may
+    break LVM setups)
+  - Sourcing . /etc/rc.status earlier now
+  - Allowing execution via rcdrbd link
+
+-------------------------------------------------------------------
+Mon Sep  2 22:09:22 CEST 2002 - jg@suse.de
+
+- Incorporated latest changes from CVS
+- Using lge branch now (syncer much faster)
+
+-------------------------------------------------------------------
+Wed Aug 21 10:32:08 CEST 2002 - jg@suse.de
+
+- Fixed manpage generation (should now even build on ppc64)
+
+-------------------------------------------------------------------
+Tue Aug 20 11:17:55 CEST 2002 - jg@suse.de
+
+- Added PreReq tag
+
+-------------------------------------------------------------------
+Mon Aug 19 12:07:53 CEST 2002 - kukuk@suse.de
+
+- fix compilation on UL
+
+-------------------------------------------------------------------
+Tue Aug 13 15:28:49 CEST 2002 - jg@suse.de
+
+- Added documentation stuff again
+- Modified init script to comply with LSB
+
+-------------------------------------------------------------------
+Mon Aug 12 15:18:40 CEST 2002 - jg@suse.de
+
+- Updated to latest version from CVS repository
+- Removed temporary documentation path from Makefile (does 
+  not build)
+
+-------------------------------------------------------------------
+Tue Mar  5 08:38:28 CET 2002 - jg@suse.de
+
+- Fixed broken specfile
+
+-------------------------------------------------------------------
+Mon Mar  4 17:37:13 CET 2002 - jg@suse.de
+
+- updated to bugfix release 0.6.1pre10
+  - Data-corruption bug in SyncAll fixed (was introduced in pre9)
+  - Fixed an OOPS in tl_check_sector() (was introduced in pre9)
+  - Fixed Linux-2.2.x compability (was broken in pre9)
+- removed documentation patch (not needed anymore)
+
+-------------------------------------------------------------------
+Wed Feb 20 18:14:04 CET 2002 - jg@suse.de
+
+- modified init script to honor inittimeout settings
+
+-------------------------------------------------------------------
+Wed Feb 20 17:55:05 CET 2002 - jg@suse.de
+
+- added -include /usr/src/linux/include/linux/modversions.h
+  to km_drbd Makefile in case CONFIG_MODVERSIONS is set
+- modified the init script to comply to LSB and to skip
+  the "interactive" part on boot
+
+-------------------------------------------------------------------
+Tue Feb 12 15:47:56 CET 2002 - jg@suse.de
+
+- added -DMODVERSION and -D__SMP__ to km_drbd Makefile (according
+  to kernel configuration)
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:06 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Tue Jan 29 18:26:07 CET 2002 - jg@suse.de
+
+- updated to 0.6.1-pre9
+
+-------------------------------------------------------------------
+Thu Dec 20 10:22:14 CET 2001 - jg@suse.de
+
+- replaced insserv call in specfile with respective macro
+
+-------------------------------------------------------------------
+Wed Dec 19 21:01:42 CET 2001 - jg@suse.de
+
+- updated to 0.6.1-pre7 (supports now kernel 2.4)
+- removed insserv call after installing
+- removed fillup template
+- removed some outdated documentation files
+
+-------------------------------------------------------------------
+Fri Jul 27 17:21:10 MEST 2001 - mt@suse.de
+
+- fixed init script to be LSB compliant
+
+-------------------------------------------------------------------
+Fri Jul 20 12:06:42 CEST 2001 - kukuk@suse.de
+
+- changed neededforbuild <gs_fonts> to <ghostscript-fonts-std>
+- changed neededforbuild <gs_lib> to <ghostscript-library>
+- changed neededforbuild <gs_serv> to <ghostscript-serv>
+
+-------------------------------------------------------------------
+Sun Jan 14 11:01:43 CET 2001 - mt@suse.de
+
+- added km_drbd subpackage with drbd kernel module source
+
+-------------------------------------------------------------------
+Fri Dec  1 14:07:17 CET 2000 - mt@suse.de
+
+- added mkdir $RPM_BUILD_ROOT/sbin in spec
+
+-------------------------------------------------------------------
+Fri Dec  1 10:43:41 CET 2000 - kukuk@suse.de
+
+- move sbin/init.d -> etc/init.d
+
+-------------------------------------------------------------------
+Mon Nov 27 12:45:16 CET 2000 - mt@suse.de
+
+- fixed link src for rcdrbd in spec file
+- changed group to Applications/Clustering
+
+-------------------------------------------------------------------
+Thu Nov 23 09:42:31 CET 2000 - mt@suse.de
+
+- removed heartbeat from neededforbuild
+
+-------------------------------------------------------------------
+Wed Nov 22 13:40:05 CET 2000 - mt@suse.de
+
+- changed to LSB installation of run level links
+
+-------------------------------------------------------------------
+Fri Nov 10 16:01:54 CET 2000 - mt@suse.de
+
+- no module build in spec - drbd module is patched into the kernel
+
+-------------------------------------------------------------------
+Wed Nov  8 10:42:33 CET 2000 - mt@suse.de
+
+- new package
+

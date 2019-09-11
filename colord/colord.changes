@@ -1,0 +1,1549 @@
+-------------------------------------------------------------------
+Wed Jun 26 11:17:53 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Change BuildRequires to docbook-utils-minimal, otherwise the build
+  pulls in half of texlive and all its dependencies. Only man pages
+  and HTML API docs are generated, no need for PS/PDF generation.
+
+-------------------------------------------------------------------
+Mon Feb 11 12:37:27 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix meson parameters: -Dargyllcms-sensor=true must be
+  -Dargyllcms_sensor=true (boo#1124388).
+
+-------------------------------------------------------------------
+Sun Apr 22 16:35:34 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.4.3:
+  + Bugfixes:
+    - Make cd_color_get_blackbody_rgb_full safer.
+    - Update style of Meson build options.
+    - Update warning about running daemon as root.
+- Update options passed to meson following upstream changes.
+
+-------------------------------------------------------------------
+Tue Mar 13 10:27:17 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.4.2:
+  + New Features:
+    - Add cd_icc_set_created.
+    - Add --enable-timestamps option for CREATED header.
+  + Bugfixes:
+    - Avoid buffer overflow when reading profile_id.
+    - Fix the detection of duplicate EDIDs.
+    - Make udev hwdb optional by using pnp.ids as fallback.
+    - Raise _XOPEN_SOURCE to 700 to enable C99 on FreeBSD.
+    - Refactor build directory selection.
+    - Set cd-create-profile date to SOURCE_DATE_EPOCH.
+- Pass new option enable-udev-rules=true to meson.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:24:28 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Oct  6 10:55:06 UTC 2017 - dimstar@opensuse.org
+
+- Collapse files section for gtk-doc.
+
+-------------------------------------------------------------------
+Mon Oct  2 22:13:40 UTC 2017 - jengelh@inai.de
+
+- Update package summaries. Replace old RPM shell variables.
+
+-------------------------------------------------------------------
+Tue Sep 26 18:42:03 UTC 2017 - zaitor@opensuse.org
+
+- Add ulimit -Sv 2000000 entry before build, set ~2 GiB limit so
+  that colprof is forced to work in chunks when generating the
+  print profile rather than trying to allocate a 3.1 GiB chunk of
+  RAM to put the entire B-to-A tables in.
+
+-------------------------------------------------------------------
+Mon Sep 11 14:05:14 UTC 2017 - zaitor@opensuse.org
+
+- Add pkgconfig(vapigen) BuildRequires and pass
+  enable-session-example=false, enable-bash-completion=true,
+  enable-systemd=true, enable-libcolordcompat=true,
+  enable-argyllcms-sensor=true, enable-reverse=false,
+  enable-sane=false, enable-vala=true, enable-print-profiles=true,
+  enable-tests=false, enable-installed-tests=false,
+  with-daemon-user=colord, enable-man=true and enable-docs=true to
+  meson, ensure we build the feature we want.
+
+-------------------------------------------------------------------
+Thu Sep  7 19:56:12 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 1.4.1:
+  + Bugfixes:
+    - Add back the meson -Denable-systemd=false configure argument.
+    - Add the fallback rules for older PolicyKit versions.
+    - Define PATH_MAX if not available.
+    - Enable C99 support in meson.build.
+    - Include all the files in the GIR target.
+    - Include the correct file when using Colord-1.0.gir.
+    - Use appropriate feature macro for realpath().
+    - Use gio-2.0 when generating the VAPI.
+- Changes from version 1.4.0:
+  + New Features:
+    - Port to the Meson build system.
+    - Enable Travis CI for Fedora 25 and Debian Stretch.
+    - Make PolicyKit, gusb and udev a hard requirement.
+  + Bugfixes:
+    - Add some experimental tools for the HueyCOLOR sensor as found
+      in the P70.
+    - Conditionally build documentation and man pages.
+    - Correctly build the ICC transfer curve for Rec709.
+    - Do not build the examples as part of the regular build.
+    - Do not spin the Huey LEDs when the sensor is embedded.
+    - Do not use /tmp to create profiles.
+    - Fix the version numbers in cd-version.h to reflect reality.
+    - Get the Huey status before trying to unlock.
+    - Use a different Huey unlock code on the W700 laptop.
+- Add meson BuildRequires, and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson Build System.
+- Add gtk-doc and docbook-utils BuildRequires: new dependencies.
+- Drop %glib2_gsettings_schema_* post/postun macros: the
+  functionality is now covered by file triggers.
+- Drop intltool and vala BuildRequires: no longer needed.
+- Upstream rename of ColorHug-1.0.typelib file to
+  Colorhug-1.0.typelib, thus its package has been renamed as well.
+
+-------------------------------------------------------------------
+Tue Mar  7 14:35:51 UTC 2017 - fezhang@suse.com
+
+- Apparmor profile (usr.lib.colord): Allow reading / writing
+  /var/lib/colord/.cache (bsc#1024933).
+
+-------------------------------------------------------------------
+Wed Mar  1 14:04:36 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.3.5:
+  + New Features:
+    - Add cd_color_get_blackbody_rgb_full().
+    - Add cd_spectrum_multiply_scalar().
+  + Bugfixes: Check the parsed context arguments in the session
+    helper.
+
+-------------------------------------------------------------------
+Tue Jan 24 13:54:20 UTC 2017 - zaitor@opensuse.org
+
+- Split out color profiles in sub package colord-color-profiles.
+  Add shared-color-profiles Obsoletes and Provides.
+- Replace shared-color-profiles with colord-color-profiles
+  Requires.
+- Pass --enable-libcolordcompat, build compatability lib.
+- Pass --enable-print-profiles, build print profiles.
+- Pass --disable-examples, ensure we do not build examples.
+
+-------------------------------------------------------------------
+Mon Dec  5 16:38:49 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.3.4:
+  + New Features:
+    - colord:
+      . Add cd_color_rgb_from_wavelength().
+      . Add cd_spectrum_resample_to_size().
+    - colorhug:
+      . Add commands for getting the device calibration spectra.
+      . Increase the size of the EP0 transfer.
+      . Support enabling the illuminants on the ColorHug+.
+  + Bugfixes:
+    - Fix a possible NULL dereference when talking to Spark
+      devices.
+    - Fix compile with -Wformat-signedness.
+    - Fix possible division by zero if parsing /proc/cpuinfo fails.
+
+-------------------------------------------------------------------
+Fri Aug  5 13:24:06 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.3.3:
+  + Check polkit version before defining g_autoptr macros.
+  + Fix an assert failure when connecting to sensors.
+  + Fix gtk-doc build when srcdir != builddir.
+  + Increase timeout to 60s for argyll spotread sampling.
+  + Use the USB path to match the ArgyllCMS port.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 14 11:08:55 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Mon Mar 21 16:44:58 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.3.2:
+  + New Features:
+    - Make building the daemon optional.
+    - Make the session helper optional.
+    - libcolorhug: Add initial support for the v2 protocol used by
+      ColorHug+.
+  + Bugfixes:
+    - libcolord: Fix a hard-to-reproduce bug when cancelling async
+      operations.
+    - libcolorhug: Fix a crash when submitting lots of commands at
+      the same time.
+    - Replace '/' with '-' on the basename to fix calibration
+      crash.
+
+-------------------------------------------------------------------
+Thu Feb 18 10:04:55 UTC 2016 - fcrozat@suse.com
+
+- Rely on _tmpfilesdir macro to locate the directory to use for
+  store tmpfiles config files by using --with-tmpfilesdir to
+  configure.
+
+-------------------------------------------------------------------
+Tue Feb 16 13:55:44 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.3.1:
+  + New Features:
+    - Add a sensor error for missing dark calibration.
+    - Add g_autoptr() defines for cd_color*.
+    - Add get-spectral-reading command to colormgr.
+    - Add the GetSpectrum() sensor D-Bus method.
+    - Allow returning spectral readings from the Spark sensor.
+    - libcolord:
+      . Add an error enum for missing irradiance calibration.
+      . Add a spectral sensor capability.
+      . Add cd_sensor_get_spectrum().
+      . Add cd_spectrum_get_value_max().
+      . Add cd_spectrum_limit_min().
+      . Add cd_spectrum_planckian_new_full().
+      . Add cd_spectrum_resample().
+      . Add cd_spectrum_set_wavelength_cal().
+      . Add cd_spectrum_subtract().
+      . Add cd_spectrum_to_string().
+  + Bugfixes:
+    - Add a systemd user service corresponding to the D-Bus session
+      service.
+    - Add a tmpfiles.d snippet to fix stateless systems.
+    - data: Build Rec709 correctly.
+    - Ignore the ColorHug+ in DFU mode.
+    - Install the tmpfiles.d snippet in the right place.
+    - Reset the sensor back to idle after each action.
+    - libcolord:
+      . Fix a tiny memory leak in cd_icc_get_tag_data().
+      . Fix saving non-normalized spectra.
+      . Make cd_spectrum_free() NULL-safe.
+      . Return an error when we fail to estimate the gamma value.
+
+-------------------------------------------------------------------
+Wed Oct  7 14:27:19 UTC 2015 - dimstar@opensuse.org
+
+- Apparmor profile (usr.lib.colord): Add capability dac_override
+  (boo#948892).
+
+-------------------------------------------------------------------
+Mon Sep  7 19:40:11 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+
+-------------------------------------------------------------------
+Mon Sep  7 09:40:33 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.2.12:
+  + New Features: Add a new private library libospark for future
+    use.
+  + Bugfixes:
+    - Allow creating devices with the same device ID from different
+      users.
+    - Check for, and prefer, libsystemd over libsystemd-login.
+    - ColorHug:
+      . Add ch_device_queue_read_firmware().
+      . When converting HEX to BIN pad out the entire size.
+- Replace pkgconfig(libsystemd-login) for pkgconfig(libsystemd)
+  following upstreams new preferance. Also pass
+  --enable-systemd-login to configure to ensure we build this
+  support.
+
+-------------------------------------------------------------------
+Sun Jun 21 09:34:57 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.2.11:
+  + New Features:
+    - Add defines and artwork for the Spyder5 device.
+    - Add defines for the OceanOptics Spark sensor.
+    - libcolorhug:
+      . Add ch_device_close.
+      . Handle low-level commands when in Sensor HID mode.
+  + Bugfixes:
+    - libcolord:
+      . Fix leak in cd_context_lcms_free.
+      . Fix leak previously in cd_client_connect_cb.
+    - Only return devices created by the calling user when doing
+      GetDevices.
+
+-------------------------------------------------------------------
+Fri May 22 11:57:12 UTC 2015 - zaitor@opensuse.org
+
+- Add explicit pkgconfig(libudev) BuildRequires: Configure checks
+  for it.
+
+-------------------------------------------------------------------
+Thu Apr  9 02:37:54 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.2.10:
+  + New Features: colorhug: Add GUIDs for each device.
+  + Bugfixes:
+    - Add a vendor quirk for Google.
+    - Fix session-helper failing to find argyll tool.
+
+-------------------------------------------------------------------
+Fri Feb 27 09:32:10 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.2.9:
+  + New Features of colorhug:
+    - Add support for the ColorHug ALS device.
+    - Return the exact address on verification failure.
+  + Bugfixes:
+    - Fix cd-test-private linking.
+    - Fix reporting of logind errors.
+
+-------------------------------------------------------------------
+Tue Jan 27 18:12:09 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.2.8:
+  + Bugfixes:
+    - Check for dbus when enabling sane.
+    - Do not use the deprecated GUsbDeviceList.
+    - Fix build without gobject-introspection.
+    - Fix possible critical warning when using g_dbus_watch_name().
+
+-------------------------------------------------------------------
+Mon Dec 22 16:52:20 UTC 2014 - fcrozat@suse.com
+
+- Update apparmor profile for USB profiling (boo#901148).
+
+-------------------------------------------------------------------
+Tue Dec 16 10:48:19 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.2.7:
+  + Bugfixes:
+    - Don't build the daemon when compiling for MinGW.
+    - Use wine to run the client build tools when compiling under
+      MinGW.
+
+-------------------------------------------------------------------
+Thu Nov 27 09:50:45 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.2.6:
+  + New Features:
+    - Allowing compile using mingw.
+    - Make the ArgyllCMS sensor driver optional.
+    - libcolord:
+      . Add cd_it8_get_xyz_for_rgb().
+      . Add cd_it8_utils_calculate_gamma().
+      . Add cd_spectrum_get_resolution().
+      . Add cd_spectrum_get_value_raw().
+      . Add cd_spectrum_normalize_max().
+      . Add cd_spectrum_set_value().
+  + Bugfixes:
+    - libcolord:
+      . Allow a SPECTRAL_START_NM value of zero.
+      . Always replace CCSS spectral data of the same ID.
+      . Deep copy the spectral data when using cd_spectrum_dup().
+      . Fix using cd_it8_add_spectrum() where the spectra have no
+        ID values.
+      . Never allow duplicate CCSS IDs for small wavelength ranges.
+      . Only set SPECTRAL_NORM when the normalisation is enabled.
+      . Return correct values when no LUMINANCE_XYZ_CDM2 is
+        specified.
+      . Use double precision for SPECTRAL_START_NM and
+        SPECTRAL_END_NM.
+      . When using cd_it8_add_spectrum() replace any with the same
+        ID.
+- Changes from version 1.2.5:
+  + New Features:
+    - Add a branding-less ColorHug2 figure.
+    - Add the calculate-ccmx subcommand to cd-it8.
+    - Install the now-useful cd-it8 helper.
+  + Bugfixes:
+    - Drop nb.po, its superfluous with nb_NO.po around.
+    - Fix a crash in the session helper while calibrating.
+    - Remove the private cd-find-broken tool.
+- Add argyllcms BuildRequires and Requires.
+
+-------------------------------------------------------------------
+Sun Oct 19 20:57:45 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.2.4:
+  + New Features:
+    - libcolord: Add cd_mat33_init() helper function.
+    - libcolorhug: Retry the command if the response is incomplete.
+  + Bugfixes:
+    - Don't enable PIE support when --without-pic is specified.
+    - libcolord: Build with PIE enabled.
+
+-------------------------------------------------------------------
+Tue Oct 14 18:22:29 UTC 2014 - opensuse@cboltz.de
+
+- AppArmor profile: allow reading /etc/udev/hwdb.bin (bnc#901148)
+
+-------------------------------------------------------------------
+Mon Sep 15 06:47:53 UTC 2014 - kkaempf@suse.com
+
+- Update to version 1.2.3:
+  + New Features:
+    - colorhug:
+      . Add ch_device_check_firmware().
+      . Add ch_device_mode_from_firmware().
+      . Use a different PID for the ColorHug2 bootloader.
+  + Bugfixes:
+    - Fix the device path to allow uid or username to be omitted.
+    - There is no seat if running in a chroot.
+- Add systemd %pre and %post macros for colord.service.
+- Add rccolord symlink.
+
+-------------------------------------------------------------------
+Sat Aug 23 21:27:22 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.2.2:
+  + New Features:
+    - Add a helper to calculate the ΔE of two colors.
+    - Bump the lcms2 dep to 2.6.
+    - Use the ColorHug sensor driver for the ColorHug2 hardware.
+  + Bugfixes:
+    - Actually parse the EDID for better duplicate detection.
+    - Actually write a file when using cd_icc_save_default().
+    - Do not try to return a CdIcc instance for virtual profiles.
+    - Use __attribute__(cleanup) to simplify memory cleanup.
+
+-------------------------------------------------------------------
+Fri Aug 22 09:29:50 UTC 2014 - meissner@suse.com
+
+- AppArmor profile: Allow sessions of greeter style seats also to
+  be read (bnc#893081).
+
+-------------------------------------------------------------------
+Tue Jul  1 17:47:51 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.2.1:
+  + New Features:
+    - Allow users to rename session and system ICC profiles.
+  + Bugfixes:
+    - Fix building the CMF spectra on OpenBSD/sparc64.
+    - Fix the style of two colorimeter figures.
+    - Make colord polkit policy usable on servers.
+    - Trim out the CUPS-supplied prefix for the printer serial
+      number.
+  + Updated translations.
+- Drop type-mismatch.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun May 18 22:16:01 UTC 2014 - schwab@linux-m68k.org
+
+- type-mismatch.patch: fix type mismatch (fdo#77535).
+
+-------------------------------------------------------------------
+Mon Apr  7 17:50:42 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.2.0:
+  + New Features:
+    - Generate the CMFs from source data.
+    - Install several standard illuminants.
+    - Install the CRI Test Color Samples.
+    - Make colormgr script friendly by allowing filtering.
+    - Colord:
+      . Add a RGB32 pixel format for GdkPixbuf.
+      . Add a utility function to calculate an XYZ value from a
+        CMF.
+      . Add a whitepoint value to cd_color_xyz_to_uvw().
+      . Add CdColorUVW and some useful functionality.
+      . Add cd_color_xyz_to_cct().
+      . Add cd_icc_get_context() to get the internal cmsContext
+        used lcms2.
+      . Add cd_it8_utils_calculate_cri_from_cmf() to generate a
+        CRI.
+      . Add cd_spectrum_multiply() to multiply two spectra.
+      . Add cd_spectrum_planckian_new().
+      . Add functionality to read and write raw tag data.
+      . Support CCSS data files.
+      . Support SPECTRAL_NORM in it8 files.
+    - colorhug: Support setting and getting the DAC value.
+  + Bugs fixed:
+    - Correctly convert all of the image when using CdTransform.
+    - EDID strings can be up to 13 bytes.
+    - Fix the blue primary check so ProPhotoRGB is not marked as
+      invalid.
+    - Fix the tag 'size' when viewing a profile in cd-iccdump with
+      newer lcms versions.
+    - Colord:
+      . Do not invalidate the CdTransform if the CdIcc object does
+        not change.
+      . Do not use G_GNUC_WARN_UNUSED_RESULT when uninhibiting.
+      . Fix a potential crash when destroying a CdIt8 object.
+      . Fix the GObject introspection for cd_device_get_profiles().
+      . Improve the error handling in CdIt8.
+      . Load the profile defaults when using
+        cd_icc_create_default().
+    - colorhug:
+      . Handle failure to initialise GUsb in self-tests.
+      . Rename 'ColorHug Spectro' to 'ColorHug+' for trademark
+        reasons.
+
+-------------------------------------------------------------------
+Sat Mar  8 12:47:22 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.1.7:
+  + New Feature: Use the new cmsContext functionality in LCMS 2.6.
+  + Bugfixes in libcolord:
+    - Fix the GObject introspection for cd_device_get_profiles().
+    - Load the profile defaults when using cd_icc_create_default().
+
+-------------------------------------------------------------------
+Fri Jan 24 14:57:33 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.1.6:
+  + Bugs fixed:
+    - Fix the tag 'size' when viewing a profile in cd-iccdump.
+    - Only include libudev in Requires.private on Linux.
+    - Use the corect sensor-kind values for GretagMacbeth sensors.
+    - libcolord: Do not use G_GNUC_WARN_UNUSED_RESULT when
+      uninhibiting.
+    - libcolorhug: Handle failure to initialise GUsb in self-tests.
+
+-------------------------------------------------------------------
+Sun Dec 15 11:04:36 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.1.5:
+  + New Features:
+    - Change the --enable-gudev parameter into --enable-udev.
+    - Fall back to parsing pnp.ids if udev is not available.
+  + Bugs fixed:
+    - Don't crash with zero-sized ICC file.
+    - Never add USB hubs as scanner devices even if tagged.
+    - Never create color managed webcam devices.
+    - session-helper: Do not crash when moving the sensor position.
+    - libcolord:
+      . Check that the vendor and model are valid UTF-8.
+      . Do not write invalid data when the resaving a profile.
+      . Don't create legacy locations.
+      . Ensure the parsed EDID strings are valid UTF-8.
+      . Ensure the version is set when creating from the EDID.
+      . Fix crash when using cd_color_get_blackbody_rgb().
+      . No critical warning if udev_hwdb_new() fails.
+
+-------------------------------------------------------------------
+Wed Nov 20 21:10:43 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.1.4:
+  + Only syslog() profile additions when they're added via DBus.
+  + Reset the LCMS log handlers to default after use.
+  + Use the threadsafe versions of the LCMS functions.
+- Changes from version 1.1.3:
+  + Fix a very mild security bug: If you send keep sending hundreds
+    of megabytes of random text data to the SetProperty() method
+    you can eventually cause the daemon to use a lot of memory and
+    then crash with an out-of-memory condition. As the daemon runs
+    as restricted user and is respawned by any client, the system
+    automatically recovers from it.
+  + Never print incomplete 'colormgr dump' output.
+  + Restrict the length of key and values when setting metadata.
+
+-------------------------------------------------------------------
+Wed Oct 23 21:49:30 UTC 2013 - opensuse@cboltz.de
+
+- Another update for the apparmor profile (bnc#846301#c9).
+
+-------------------------------------------------------------------
+Thu Oct 17 12:08:56 UTC 2013 - opensuse@cboltz.de
+
+- Update apparmor profile (bnc#846301).
+
+-------------------------------------------------------------------
+Fri Sep 13 20:58:36 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.1.2:
+  + New Features:
+    - Add a 'dump' colormgr command to aid debugging.
+    - libcolord: Add ability to create a CdIcc object from an EDID
+      blob.
+    - libcolord: Add cd_icc_create_default() to use the default
+      sRGB profile.
+    - libcolord: Export cd_icc_utils_get_coverage() for comparing
+      two profiles.
+    - Set 'GAMUT_coverage(srgb)' when generating standard space
+      profiles.
+  + Bugs fixed:
+    - Allow profiles to be added or removed when the device is not
+      enabled.
+    - Always return soft-add calibration profiles before soft-add
+      EDID profiles.
+    - Do not add fake metadata to avoid creating an empty
+      dictionary.
+    - Do not mix up device paths and device IDs in the
+      documentation.
+    - Fix an error when building the print profiles.
+    - Fix creation of the dummy sensor device.
+    - Fix the AdobeRGB and WideGamutRGB gamma values.
+    - Fix transposed bits for EDID red y.
+    - Fix up various vendor quirks.
+    - Fix warning when any test profile has an EDID source and no
+      ICC file.
+    - libcolord: Always calculate the fallback checksum when using
+      CdIccStore.
+    - libcolord: Do not assert on finalize if connecting to the
+      profile failed.
+    - Migrate from usb_id and usb_db to udev builtins usb_id and
+      hwdb.
+    - Show a warning for incorrect or extra command line arguments.
+    - Use %ghost in the example spec file to avoid removing
+      databases on upgrades.
+    - Use the exact D50 whitepoint values.
+- Drop colord-udev-hwdb.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jul 31 17:31:04 UTC 2013 - fcrozat@suse.com
+
+- Add colord-udev-hwdb.patch: call udev hwdb to fill appropriately
+  usb device informations (backport from upstream GIT).
+
+-------------------------------------------------------------------
+Tue Jul 30 16:24:33 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.1.1:
+  + Notes:
+    - This release bumps the soname of libcolord as long deprecated
+      methods have finally been removed.
+    - This unstable branch is full of new features and experimental
+      code.
+    - The colord.conf file has been removed and features are now
+      autodetected at runtime where possible or specified in
+      configure.
+  + New Features:
+    - Add a shim libcolordcompat library with some helpers for
+      ArgyllCMS.
+    - Add SystemVendor and SystemModel string properties to the
+      main interface.
+    - Add the sub-command import-profile to colormgr.
+    - libcolord:
+      . Add cd_icc_save_data() so that we can set _ICC_PROFILE.
+      . Add cd_icc_save_default() to save a profile to the default
+        location.
+      . Add functionality to set and get the profile
+        characterization data.
+      . Add methods to create a profile using CdClient with a CdIcc
+        object.
+    - List the required parameters in the 'colormgr --help' output.
+    - Remove the AlwaysUseXrandrName config option and auto-detect
+      it at runtime.
+    - Show the viewing conditions when dumping the ICC profile.
+  + Bugs fixed:
+    - Add a quirk for ThinkPads so that we show 'ThinkPad T510'
+      rather than '4384BR2'.
+    - Add optional installed tests.
+    - Allow colormgr to take an object path or an ID as input.
+    - Allow the user to specify a non-qualified path when using
+      FindProfileByFilename.
+
+-------------------------------------------------------------------
+Mon Jul  8 07:46:10 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.0.2:
+  + New Features:
+    - Add cd_icc_save_data() so that we can easily set
+      _ICC_PROFILE.
+    - Add CdIccStore to monitor directories of ICC profiles.
+    - Add SystemVendor and SystemModel properties to the main
+      interface.
+  + Bugfixes:
+    - Allow to specify a non-qualified path when using
+      FindProfileByFilename.
+    - Allow using the key 'Filename' when using
+      FindProfileByProperty.
+    - Always return the error if any sync method failed.
+    - Fix GObject introspection when getting lists.
+    - Fix GObject introspection when getting metadata.
+
+-------------------------------------------------------------------
+Sun Jun 16 10:36:57 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.1:
+  + Add 0.1.34 to 1.0.0 deprecated methods to preserve ABI.
+  + Do not unconditionally enable BPC on the color transform.
+  + Fix profile created time for non-UTC timezones.
+  + Record the gamma table in the session helper error message.
+
+-------------------------------------------------------------------
+Wed May 22 12:45:35 UTC 2013 - dimstar@opensuse.org
+
+- Move %glib2_gsettings_schema_post from %pre to %post: if we
+  execute this prior to installation, the schema will not be
+  registered, as the files are not yet in place.
+
+-------------------------------------------------------------------
+Mon May 13 18:14:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.0.0:
+  + New Features:
+    - Add a config option for monitors with identical EDID values.
+    - Add API to control the use of BPC in CdTransform.
+    - Add a simple BGRA32 pixel format.
+    - Add a simple CMYK32 pixel format.
+    - Add a simple colord.conf manpage.
+    - Allow a different input and output format in CdTransform.
+    - Show all the translations when dumping an ICC profile.
+  + Bugfixes:
+    - Add some missing G_BEGIN_DECLS/G_END_DECLS in header files.
+    - Always return an error if cd_main_device_add() failed.
+    - Build all installed binaries with PIE.
+    - Build the colord binary with full RELRO.
+    - Do not show a warning when using 'colormgr
+      device-get-profile-for-qualifier'.
+    - Ensure the parent directories exist when calling
+      cd_icc_save_file.
+    - Fix crash in cd-iccdump by working around an lcms2 bug.
+    - Fix using the ColorHug color sensor on ARM hardware.
+    - Fix using the Huey color sensor on ARM hardware.
+    - Set the STANDARD_space metadata for the print profiles.
+    - Use G_GNUC_WARN_UNUSED_RESULT in public and private headers.
+    - Use the same pixel format names as Cairo and the same
+      in-memory value as lcms2.
+
+-------------------------------------------------------------------
+Wed May  1 19:33:55 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.1.34:
+  + New Features:
+    - Add a ICC transform object for simple RGB conversions.
+    - Add an example for using CdIcc in applications.
+    - Add an internal program to scan a directory of ICC profiles
+      for warnings.
+    - Add a warning for RGB profiles with unlikely whitepoint
+      values.
+    - Add a webservice URI example that can upload a profile to the
+      Internet.
+    - Add device metadata OutputEdidMd5 so we can build a UCMM shim
+      layer.
+    - Add functionality to return the response of the CdIcc profile
+      object.
+    - Add getting and setting the VCGT table in CdIcc.
+    - Add new systemd macros to the example spec file.
+    - Add Qt DBus annotations.
+  + Bugfixes:
+    - Allow clients to call org.freedesktop.DBus.Peer.
+    - Correct a lot more company names when creating devices.
+    - Do not automatically add EDID profiles with warnings to
+      devices.
+    - Fix building RGB working space profiles when using
+      OpenBSD/sparc64.
+    - Fix standard-space property name into a compilable name.
+    - Increase the delay between patches in the session-helper.
+    - Install the bash completion support into /usr.
+- Add pkgconfig(bash-completion) BuildRequires: allow configure to
+  detect where to install the bash completion.
+
+-------------------------------------------------------------------
+Tue Apr 16 14:53:42 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.1.33:
+  + New Features:
+    - Add some profile descriptions for the CMYK profiles.
+    - Add the FOGRA45L and FOGRA47L CMYK profiles.
+    - Include the eciRGBv1 gamma 1.8 profile.
+    - libcolord: Add cd_it8_set_enable_created.
+    - libcolord: Add helpers for int and double values from the
+      DOM.
+  + Bugfixes:
+    - Add ifdef for cmsGetToneCurveEstimatedTableEntries.
+    - Build the print profiles from XML descriptions.
+    - Check the generated CCMX matrix for invalid data.
+    - Do not print a warning if the DBus property does not exist.
+    - Ensure mbstowcs() has an LC_CTYPE of 'en_US.UTF-8'.
+    - libcolord: Always write C-locale floating point values in IT8
+      files.
+    - libcolord: Initialize the value of the CCMX matrix.
+    - libcolord: Return the correct result from
+      cd_mat33_matrix_multiply.
+    - Never promote localized v2 ICC profiles to v4.
+    - Rename ISOnewspaper26 to IFRA26S_2004_newsprint.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 29 08:49:11 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.1.32:
+  + New Features:
+    - Add a new tool 'cd-iccdump' that can dump V4 and V2 profiles.
+    - Add translated descriptions to the ICC profiles.
+    - libcolord:
+      . Add an object which is a named colord.
+      . Add an object to factor out the profile load and save.
+      . Add a really simple XML DOM extractor.
+      . Add some helpers for dealing with CdColorLab objects.
+    - Translate some of the profile source XML file descriptions
+      and licences.
+    - Use an XML source format for the generated profiles.
+  + Bugfixes:
+    - libcolord: Correctly copy CdColorYxy->Y when used as a
+      property.
+    - lib: Fix the licence boilerplate in the sensor libs.
+    - Set the default profile locale to be en_US, not EN_us.
+    - Use gtkdocize --copy in autogen.sh
+
+-------------------------------------------------------------------
+Mon Mar 18 18:40:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.1.31:
+  + New Features:
+    - Add more sensor capabilities to support the latest ArgyllCMS
+      release.
+    - Calculate the display calibration based on the Lab and target
+      display gamma.
+    - Emulate a perfect sRGB screen when returning XYZ values from
+      the dummy sensor.
+    - Interpolate the gamma data to the VCGT size using Akima.
+    - libcolord: Add Akima and Linear 2D interpolation classes.
+    - libcolord: Switch CdColor to using the GSlice allocator.
+    - libcolorhug: Add commands to get the ADC Vref+ and Vref-.
+    - libcolorhug: Add extensions to the take_reading_x() commands
+      to set the sensor type.
+    - libcolorhug: Add the ability to get and set the CCD
+      calibration values.
+    - libcolorhug: Add the ability to get a spectral reading from
+      the device.
+    - Run the self test programs in 'make check' under valgrind.
+  + Bugfixes:
+    - Add a warning if compiling with --with-daemon-user=root.
+    - Add some more display vendor names to the display fixup
+      table.
+    - Deprecate both the cd_profile_set_$foo_sync() functions.
+    - Do not show a critical warning if an unmatched sensor is
+      connected.
+    - Fix build on OpenBSD.
+    - Fix compile with --disable-gusb.
+    - Fix the argyll sensor driver when using the ColorMunki Smile.
+    - Fix the gamut warning to check primaries wider than CIERGB
+      and ProPhoto.
+    - Fix unusual crash in cd_main_get_cmdline_for_pid.
+    - Guess the option type when using 'colormgr
+      sensor-set-options'.
+    - libcolord: ArgyllCMS uses 'YES' for IT8 options.
+    - libcolord: Fix two small memory leaks when getting details
+      about a sensor.
+    - Move the private sensor libraries out of the pure lib space.
+    - Rename the colormgr 'profile-set-$foo' commands to
+      'profile-set-property'.
+    - Return an error if the client tries to change the profile
+      filename after creation.
+    - Set the target gamma when using the session-helper.
+    - Setup the devices for another embedded Huey colorimeter and
+      the original Spyder.
+- Drop colord-privlib.patch: fixed upstream.
+- Remove gnome-common BuildRequires and call to gnome-autogen.sh,
+  as we don't carry any patch touching the build system anymore.
+- Add post/postun scriptlets to libcolorhug1 subpackage.
+
+-------------------------------------------------------------------
+Wed Feb 27 12:11:08 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.1.30:
+  + New features:
+    - Load the instrospection to the colord binary as a GResource
+    - Save the common ICC profiles as GResources in the colord
+      binary to reduce I/O
+    - Support setting the blue LED in the ColorHug Spectro
+  + Bugfixes:
+    - Append -private to the driver libraries as they have no
+      headers installed
+    - cd_sensor_get_caps() returns a bitfield, so make it
+      explicitly 64 bits wide
+    - Do not expect a system proxy when checking if the daemon
+      exists
+    - Do not remove the database files when upgrading the package
+    - Do not show duplicate profiles when icc-profiles-openicc is
+      installed
+    - Fix Colord-1.0.gir build with --no-add-needed
+    - Fix linking of ch-self-test
+    - Fix symbol-prefix passed to g-ir-scanner
+    - Fix up the model name for the ColorMunki
+    - Skip more self tests if the daemon could not be started
+- Changes from version 0.1.29:
+  + New Features:
+    - Add an interface for plugins to decline to load
+    - Add a --verbose and --version argument to colormgr
+    - Add DTP94 native sensor support
+    - Add the 'Plasma' sensor capability
+    - Allow profiles to have a 'score' which affects the standard
+      space
+    - Detect profiles from adobe.com and color.org and add metadata
+    - Install libdtp94 for access to the DTP94 colorimeter
+    - Install libhuey for access to the Huey colorimeter
+    - Install libmunki for access to the ColorMunki Photo hardware
+    - Move libcolorhug from colorhug-client for access to the
+      ColorHug colorimeter
+    - Reintroduce SANE support
+    - session-helper:
+      . Return extra data from the calibration in the Finished
+        signal
+      . Return the correct sensor images when calibrating
+  + Bugfixes:
+    - Allow the user to specify the device type when using
+      'colormgr create-device'
+    - Change the Adobe RGB description to be 'Compatible with Adobe
+      RGB (1998)'
+    - Do not auto-add profiles due to device-id metadata if they
+      have been manually removed
+    - Do not include the size of the NULL byte when writing data
+      from CCMX files
+    - Do not log a critical warning if the daemon is replaced at
+      runtime
+    - Do not make the libsystemd-login dep automatic
+    - Do not return an error if a user manually adds a profile that
+      has already been automatically added
+    - Don't emit a warning if the profile warnings or owner changes
+    - Ensure profiles with MAPPING_device_id get auto-added to
+      devices
+    - Fix timezone problem in colord_client_random_func test
+    - Include cd-buffer.c in libcolordprivate for future use
+    - Make libcolord/device_async test pass everywhere
+    - Return an error if a client tries to create a device of an
+      unknown type
+    - Set the additional 'OwnerCmdline' metadata on each device
+    - Show all the possible capabilities on one line when doing
+      'colormgr get-sensors'
+    - Specify the sensor caps in the code for native sensors
+    - Split the libcolord.so into libcolordprivate.so so it can be
+      used without a GObject dep
+    - Write the CdIt8 'CREATED' date string in all files
+- Changes from version 0.1.28:
+  + New Features:
+    - Add some default GSetting schema values for the calibration
+      helper
+    - Add a Sensor.Metadata property
+    - - Add the sensor images as metadata on the D-Bus interface
+  + Bugfixes:
+    - Quit the session helper if the device or sensor was not found
+    - Never build more than one print profile at a time
+    - Don't use the deprecated INCLUDES in Makefile.am
+- Changes from version 0.1.27:
+  + New Features:
+    - Add ColorMunki Smile defines and calibration attach image
+    - Add Spyder4 calibration attach image
+    - Add the ability to generate Rec. 709 gamma curves
+    - Export a Device.Embedded property that is set for fixed
+      hardware
+    - Import shared-color-profiles into colord
+    - Install a header with all the session helper defines
+    - Support L* gamma encoding in cd-create-profile
+    - Write the profile quality into to the .icc file as metadata
+  + Bugfixes:
+    - Allow passing no value as properties to CreateDevice
+    - Do not return zero profiles when the device is being
+      calibrated or disabled
+    - Ensure the color types are methods in GObject Introspection
+      rather than functions
+    - Fix build when srcdir != builddir
+    - Fix floating point number parsing in non C locale
+      environments
+    - Remove 'Monitor' suffix from display devices model string.
+- Add colord-privlib.patch: Move private libraries out of
+  %{_libdir}.
+- Add gnome-common BuildRequires and call to autogen.sh, as above
+  patch touches the build system.
+
+-------------------------------------------------------------------
+Mon Feb 18 15:10:01 UTC 2013 - abergmann@novell.com
+
+- Adjusted last editions to AppAmor profile (bnc#803281):
+  + Replaced
+    - @{HOME}/.local/share/color/*.icc r
+    with
+    - @{HOME}/.local/share/color/icc/*.icc r
+  + Added
+    - allow reading all /sys/class/video4linux/ r
+
+-------------------------------------------------------------------
+Mon Feb 18 08:16:46 UTC 2013 - meissner@suse.com
+
+- Additions to the AA profile (bnc#803281)
+  + allow /proc/*/cgroup r (unkown why).
+  + allow reading all /sys/class/video4linux/** r (video4linux
+    devices).
+  + allow user local ICC files:
+    - @{HOME}/.local/share/icc/*.icc r
+    - @{HOME}/.local/share/color/*.icc r
+
+-------------------------------------------------------------------
+Fri Jan 11 11:00:10 UTC 2013 - meissner@suse.com
+
+- allow /usr/share/mime/** readable in AA profile (bnc#797907)
+
+-------------------------------------------------------------------
+Thu Dec 20 08:16:40 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.1.26:
+  + New Features:
+    - Add 4 more defined sensor types.
+    - Add a create-temperature subcommand to colormgr to test VCGT
+      generation.
+    - Add a 'SensorId' property to the sensor interface.
+    - Add a session helper that can be used to calibrate the screen
+    - Add cd_it8_save_to_data() to save the data to some allocated
+      memory.
+    - Add FindSensorById() to the main interface.
+    - Add some defines for the Spyder4 display colorimeter.
+    - Add some device figures from gnome-color-manager used in KDE
+      and GNOME.
+    - Add some example calibration ti1 files from
+      gnome-color-manager.
+    - Add support for reading and writing .cal files to CdIt8.
+    - Add the ability to 'disable' a device so that color
+      management can be turned off.
+    - Export cd_color_rgb_interpolate() as it's useful to
+      applications.
+    - Recognise the internal sensor on W700 laptops and set a
+      property for the calibration tools.
+    - Use spotread when there is no native sensor driver.
+  + Bugfixes:
+    - Add some missing entries in cd_sensor_kind_from_string.
+    - Create ICCv2 profiles when using cd-create-profile.
+    - Do 3 reads in quick succession for colormgr
+      get-sensor-reading.
+    - Fix a crash when saving a ti3 file where white is not the
+      last sample.
+    - Fix a critical warning when writing using cd_it8_add_data()
+      with no XYZ value.
+    - If ti1 values are > 1.0 then assume they are normalized.
+    - Return class specific error codes if authentication fails.
+    - Scale the ti3 RGB values to 100 when writing with
+      NORMALIZED_TO_Y_100.
+    - Set DEVICE_CLASS when saving a cal IT8 file.
+    - Support doing sensor user actions when using 'colormgr
+      get-sensor-reading'.
+    - Update the device scope if it changes at runtime.
+    - Use enumerated error values in the client library.
+
+-------------------------------------------------------------------
+Thu Nov 29 08:33:29 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.1.25:
+  + New Features:
+    - Add a create-standard-space sub-command to cd-create-profile.
+    - Add a FAQ entry describing application support of color
+      management.
+    - Add a 'make coverity' helper to scan the project for errors.
+    - Add a profile metadata key of 'License'.
+    - Add a profile warning if any of the primaries are outside of
+      ROMM RGB.
+    - Add a set-version command to the cd-fix-profile command line
+      tool.
+    - Add a warning if the profile calibration data is
+      non-monotonic.
+    - Add a warning if the profile copyright is missing.
+    - Add a warning if the profile description is missing.
+    - Add a warning if the profile gray axis is invalid.
+    - Move the named color examples to shared-color-profiles.
+    - Print if the profile is system-wide when doing 'colormgr
+      get-profiles'.
+    - Show the primaries when dumping the profile using
+      cd-fix-profile.
+    - Use syslog to be able to debug what the daemon is doing
+      without restarting it.
+  + Bugfixes:
+    - Check the return value of mbstowcs before using the buffer.
+    - Convert cd-create-profile to using sub-commands to make it
+      more modular.
+    - Create linear vcgt tables when using create-x11-gamma to
+      match the xserver behaviour.
+    - Create version 2.2 ICC files when creating named color
+      profiles.
+    - Do not ever manually set a ICC profile version when creating
+      profiles.
+    - Do not try to connect to colord in cd-fix-profile until
+      actually needed.
+    - Don't optimize the profile check transforms to speed up
+      daemon startup.
+    - Don't set the StandardSpaces override, the generated profiles
+      have the correct metadata now.
+    - Fix a crash in the example code if the device has a
+      non-standard qualifier format.
+    - Fix GetStandardSpace so it can actually work.
+    - huey: Ensure we return an error if we ran out of retries.
+    - If the copyright string is not set when creating a profile
+      use a good default.
+    - Improve the formatting of 'get-profiles' and 'get-devices'.
+    - libcolord: Fix up a warning if GetStandardSpace fails to find
+      a profile.
+    - Return an error if the client does not set a profile or
+      device id.
+    - Return an error if the client uses an unsupported scope
+      value.
+    - Set a default copyright string when creating profiles without
+      using --copyright.
+
+-------------------------------------------------------------------
+Wed Oct 31 20:53:05 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.1.24:
+  + New Features:
+    - Add a extract-vcgt subcommand to cd-fix-profile.
+    - Add a general plugin interface for adding and removing
+      devices.
+    - Add defines for the 'ColorHug Spectro' hardware.
+    - Add a 'seat' property to each device.
+    - Add FindProfileByProperty() to the main interface.
+    - Allow the user to specify a custom udev rules directory.
+  + Bugfixes:
+    - Append usernames to dbus object paths before sanitising the
+      object path.
+    - colorhug:
+      . Add support for firmware >= 1.2.0 by accepting a full HID
+        buffer.
+      . Update the private files to the latest libcolorhug code.
+    - Fix a critical warning when user tries to dump a non-icc
+      file.
+    - Fix automatic dep on libusb and vala.
+    - Fix a warning in the daemon if a device property is NULL at
+      setup.
+    - Initialise global connection variable earlier.
+    - More paranoia in construction of object paths.
+    - Never use Werror by default in configure.
+    - Remove libsane support and rely only on udev for scanner
+      device information.
+    - Set FILE_checksum on discovered system profiles.
+    - Set the seat for devices created in the session and from
+      udev.
+- Drop sane-backends-devel BuildRequires: no longer needed.
+- Add pkgconfig(libsystemd-login) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Wed Oct 17 11:10:24 UTC 2012 - fcrozat@suse.com
+
+- Fix build with new udev rules directory location.
+
+-------------------------------------------------------------------
+Tue Sep 18 18:28:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.1.23:
+  + New Features:
+    - Get udevrulesdir from pkg-config
+  + Bugfixes:
+    - Assorted documentation fixes
+    - Do not try to add duplicate sysfs devices
+- Changes from version 0.1.22:
+  + New Features:
+    - Add a Vala version of cd-gtk-demo
+    - Split out colord-gtk to a new sub-project to prevent a dep
+      loop
+  + Bugfixes:
+    - Add many generic introspection type arguments
+    - Check any files in /usr/share/color/icc have the content type
+      application/vnd.iccprofile
+    - Do not try to create the same object paths if two sensors of
+      the same type are plugged in
+    - Fix the udev rules entry for the i1Display3.
+- Drop all colord-gtk related things (split in an own package with
+  own tarball):
+  + colord-gtk.spec, colord-gtk.changes
+  + subpackages libcolord-gtk1, libcolord-gtk-devel and
+    typelib-1_0-ColordGtk-1_0. No obsoletes added, as they will
+    appear in their form from the new package, based on colord-gtk
+    tarballs, again.
+  + Remove libcolord-gtk1 from baselibs.conf.
+- Drop pre_checkin.sh: as this is now a simple package, there is no
+  need for a pre_checkin script anymore.
+
+-------------------------------------------------------------------
+Thu Jul  5 14:47:17 UTC 2012 - meissner@suse.com
+
+- Add a apparmor profile for usr.lib.colord
+
+-------------------------------------------------------------------
+Wed May 23 19:18:54 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.1.21:
+  + Do not add sensors that are ignored or have no caps.
+  + Do not install any parts of colord-sane if --disable-sane is
+    specified.
+  + Do not use 'WantedBy=graphical.target' in the shipped systemd
+    file.
+  + Fix autotools when configuring without systemd.
+  + Fix InstallSystemWide() by not writing a private file.
+  + Fix srcdir != builddir with introspection enabled.
+  + Fix the description in the systemd service file.
+  + Isolate gtk dependency to cd-convert.
+  + Save the CCMX and ITx files to be compatible with argyllcms
+  + The ColorHug has a new VID and PID.
+- Drop colord-build-no-gtk.patch, fixed upstream.
+- Removed call to gnome-autogen.sh and drop gnome-common
+  buildrequires, only needed for above dropped patch.
+
+-------------------------------------------------------------------
+Mon May 14 09:53:20 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.1.20:
+  + New Features:
+    - Add a bash completion file for colormgr
+    - Add a BUSY state value for sensor devices
+    - Add a GObject Introspection example
+    - Add a sensor-set-options command to the colormgr tool
+    - Add async and sync methods in libcolord to support sensor
+      options
+    - Add CdIt8 as a helper for reading and writing ti1, ti3 and
+      ccmx files
+    - Add cd_it8_utils_calculate_ccmx() to libcolorhug
+    - Add CdSampleWindow to libcolord-gtk
+    - Add CdWindow which allows us to get the color profile for a
+      GtkWidget
+    - Add functionality to colord-convert to sample ti1 -> ti3
+      files
+    - Add gio-2.0 to the requires line of colord.pc for GFile
+    - Add the concept of 'options' on each color sensor device
+    - colorhug: Allow saving the remote hash as a sensor option
+    - Print any sensor options when doing 'colormgr get-sensors'
+  + Bugfixes:
+    - colorhug: Save the EEPROM after setting sensor options
+    - Enable gtk-doc in the default distro build
+    - Fix build failure when colord is not installed system-wide
+- Add colord-build-no-gtk.patch: fix build without GTK+.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh,
+  needed for above patch.
+- Enable the build of colord-gtk, by creating a colord-gtk.spec
+  based on colord.spec (with pre_checkin.sh). We do it this way to
+  avoid a build loop between colord and gtk3, since gtk3 depends on
+  colord. The differences are:
+  + Add a pkgconfig(gtk+-3.0) BuildRequires.
+  + Add colord and libcolord-devel BuildRequires, so we can use rpm
+    to remove the files from colord.spec subpackages in %install
+    (in order to only package colord-gtk files).
+  + Create libcolord-gtk1, typelib-1_0-ColordGtk-1_0 and
+    libcolord-gtk-devel subpackages.
+
+-------------------------------------------------------------------
+Wed Apr 18 07:31:39 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.1.19:
+  + New Features:
+    - Add a user suffix to the object path of user-created devices
+      and profiles
+  + Bugfixes:
+    - Add User key to colord-sane's DBus service file
+    - Do not enable PrivateNetwork=yes as it breaks hotplugging
+      devices
+    - Ensure colord-sane can create devices and profiles
+    - Fix usage of CD_OBJECT_SCOPE_* enums
+    - Honor aclocal flags
+    - Remove the 'Default,' profile title prefix if legacy profiles
+      are installed
+
+-------------------------------------------------------------------
+Thu Mar 15 19:29:33 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.1.18:
+  + New Features:
+    - Add a Manager.CreateProfileWithFd() method for QtDBus
+    - Add the GAMUT_coverage metadata key to the spec
+    - Add the GAMUT_volume metadata key to the spec
+    - Depend on lcms2 >= 2.2
+    - Make cd-fix-profile add the GAMUT keys to the ICC file
+    - Split out the SANE support into it's own process
+  + Bugfixes:
+    - Do not delete 'disk' or 'normal' devices when the session
+      exits
+    - Ensure we return NULL for missing device properties
+    - Fix a small leak when creating devices and profiles in
+      clients
+    - Fix cd-fix-profile to add and remove metadata entries
+    - Install per-machine profiles in /var/lib/colord/icc
+    - Show what DBus names have inhibited each device
+    - When doing 'get-devices' show the profile ID and filename
+- Add new colord-sane.service as argument to calls to
+  %service_{add,del}_* macros.
+
+-------------------------------------------------------------------
+Mon Feb 27 13:24:10 UTC 2012 - vuntz@opensuse.org
+
+- Fix systemd-related packaging:
+  + Use %{?systemd_requires}.
+  + Call %service_{add,del}_* macros in scriptlets for
+    colord.service.
+
+-------------------------------------------------------------------
+Thu Feb 23 07:51:54 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.1.17:
+  + New Features:
+    - Add an LED sample type
+    - Add a metadata key to store the calibration brightness
+    - Show the profile title when using colormgr get-profiles
+  + Bugfixes:
+    - Add PrivateNetwork and PrivateTmp to the systemd service file
+    - Don't leak a GVariantIter when setting the device metadata
+    - Fix a critical warning if a client tries to get the profile
+      metadata
+    - Fix InstallSystemWide() when running as the colord user
+    - Increase the colorhug sample timeout to 5 seconds
+    - Make underscores into spaces for the profile title
+    - Return from cd_profile_has_access() with TRUE for virtual
+      profiles
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Wed Jan 18 10:47:23 UTC 2012 - vuntz@opensuse.org
+
+- Add pkgconfig(gusb) BuildRequires to build with libgusb support,
+  which matters even more now than libusb support is gone.
+
+-------------------------------------------------------------------
+Tue Jan 17 18:02:05 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.1.16:
+  + New Features:
+    - Add a device-inhibit command to the colormgr client
+    - Add org.freedesktop.policykit.owner annotations to .policy
+      file
+    - Add profile metadata MAPPING_device_id for automatic profile
+      mapping
+    - Add some profile metadata keys
+    - Install a systemd service file if systemd is used
+    - Support 2nd generation Huey hardware
+    - Use GUsb for the Huey sensor
+  + Bugfixes:
+    - Fix a Wformat error when printing a gsize
+    - If /usr/share/color appears at runtime, don't rescan the
+      parent dir
+    - Set the colorimeter sensor group so the dameon can access the
+      sensor
+    - Split the spyder hardware into different types
+- Add pkgconfig(systemd) BuildRequires, following upstream change,
+  to know where to install the .service file.
+- Remove pkgconfig(libusb-1.0) BuildRequires: the dependency is
+  gone now.
+- Drop colord-polkit-annotate-owner.patch: fixed upstream.
+- Remove libtool BuildRequires and call to autoreconf and
+  intltoolize, that were only needed for above patch.
+
+-------------------------------------------------------------------
+Thu Dec  8 20:25:09 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib file into typelib-1_0-Colord-1_0 subpackage.
+- Add typelib-1_0-Colord-1_0 Requires to libcolord-devel
+  subpackage.
+
+-------------------------------------------------------------------
+Tue Dec  6 16:06:22 UTC 2011 - vuntz@opensuse.org
+
+- Run the colord daemon as user colord (bnc#698250):
+  + Add colord-polkit-annotate-owner.patch: add
+    org.freedesktop.policykit.owner annotations to policy file so
+    that running as colord user works.
+  + Add a %pre script to create the colord user and change
+    ownership of /var/lib/colord.
+  + Add pwdutils Requires(pre), to make sure we can create the
+    user.
+  + Pass --with-daemon-user=colord to configure.
+  + Package /var/lib/colord with the right user.
+  + Add libtool BuildRequires and calls to autoreconf and
+    intltoolize, as needed by above patch.
+
+-------------------------------------------------------------------
+Tue Nov 29 21:27:11 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.1.15:
+  + This release fixes an important security bug: CVE-2011-4349.
+  + New Features:
+    - Add a native driver for the Hughski ColorHug hardware
+    - Export cd-math as three projects are now using it
+  + Bugfixes:
+    - Documentation fixes and improvements
+    - Do not crash the daemon if adding the device to the db failed
+    - Do not match any sensor device with a kernel driver
+    - Don't be obscure when the user passes a device-id to colormgr
+    - Fix a memory leak when getting properties from a device
+    - Fix colormgr device-get-default-profile
+    - Fix some conection bugs in colormgr
+    - Fix some potential SQL injections
+    - Make gusb optional
+    - Only use the udev USB helper if the PID and VID have matches
+    - Output the Huey calibration matrices when dumping the sensor
+
+-------------------------------------------------------------------
+Wed Nov 16 10:27:26 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.1.14:
+  + New Features:
+    - Add defines for the i1 Display 3
+    - Add two more DATA_source values to the specification
+    - Align the output from colormgr get-devices and get-profiles
+    - Allow cd-fix-profile to append and edit new metadata
+  + Bugfixes:
+    - Ensure non-native device are added with no driver module
+    - Split the sensor and device udev code
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct 28 14:31:58 UTC 2011 - lnussel@suse.de
+
+- don't recommend colord from libcolord1 to prevent automatic
+  installation (bnc#698250)
+
+-------------------------------------------------------------------
+Mon Oct  3 20:50:40 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.1.13:
+  + New Features:
+    - Add an 'Owner' property on device and profile objects
+    - Add cd_profile_has_access() to filter profiles from other
+      user accounts
+    - Add the crayon named color palette
+    - Add --xorg-gamma to cd-create-profile to create custom gamma
+      ramps
+  + Bugfixes:
+    - Add a note in the naming specification about the username
+      suffix
+    - colormgr only needs one argument for find-device
+    - Ensure remote DBus errors are registered at startup
+    - Ensure uid 0 can always create devices and profiles
+    - Fix an error in configure if there is no sane .pc file
+    - Fix the --disable-polkit build
+    - Documentation: cd_device_get_modified() returns microseconds
+    - Reduce the CPU load of clients when assigning profiles from
+      the session
+    - Return an error if a client tries to create a duplicate
+      device
+    - Return an error when trying to register a duplicate profile
+
+-------------------------------------------------------------------
+Sat Sep 17 23:39:25 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Fri Sep  9 16:28:41 UTC 2011 - vuntz@opensuse.org
+
+- Add baselibs.conf.
+
+-------------------------------------------------------------------
+Fri Sep  2 08:20:51 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.1.12:
+  + New Features:
+    - Add a configure argument --enable-volume-search
+    - Add a configure argument of --enable-fd-fallback
+    - Add cd_client_import_profile() to be able to easily import a
+      GFile
+    - Allow the daemon to run with a different user
+  + Bugfixes:
+    - Add daemon user to acl of sensor devices
+    - Add lcms2 to Requires.private
+    - Check if a file is really an ICC profile before importing it
+    - Detect libusb_strerror in configure rather than relying on
+      the version
+    - Do not fail make check if there is no available local colord
+      process to use
+    - Ensure the profiles are sorted by their timestamp during
+      login
+    - Ensure the volume-sourced profiles are not marked as
+      systemwide profiles
+    - Exit with an error when trying to connect to a device that
+      does not exist
+    - Remove duplicate call to complete in libcolord
+    - Try harder to use the ICC profile checksum
+- Changes from version 0.1.11:
+  + New Features:
+    - Enable GObject introspection generation on libcolord
+    - Generate a Vala API binding from the GObject Introspection
+      GIR
+    - Move the project home to freedesktop.org
+    - Ship generated man pages in tarballs
+  + Bugfixes:
+    - Add all of the required GObject Introspection annotations
+      required
+    - Allow FindDeviceByProperty() to match on model, vendor and
+      serial number
+    - Don't crash the example program if there is no default
+      profile assigned
+    - Fix the bugzilla and mailing list links on the webpage
+      (fdo#39129).
+    - Fix the licence headers in colord.h and cd-color.h
+    - Fix up some translatable strings
+    - Honor ACLOCAL_FLAGS when running autoreconf
+    - Use the const formatter when unwrapping GVariants to reduce
+      memory allocation
+  + Updated translations.
+- Add gobject-introspection-devel and vala BuildRequires to build
+  introspection data and vala bindings.
+- Manually install pre-built man pages, since the build system
+  cannot install them if docbook2man is not there (and we don't
+  want to add a BuildRequires on it since it's big).
+
+-------------------------------------------------------------------
+Mon Jul 11 12:43:32 CEST 2011 - vuntz@opensuse.org
+
+- Remove docbook-utils BuildRequires as an attempt to remove a
+  build cycle in Factory.
+- This means we lose man pages for now, but upstream will ship them
+  pre-generated in tarballs in the future.
+
+-------------------------------------------------------------------
+Wed Jul  6 18:21:17 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.1.10:
+  + New Features:
+    - Add a find-profile-by-filename command to the colormgr client
+      tool
+    - Add the object scope to the DBus interface as a property
+    - Write a document detailing the colord security attack surface
+  + Bugfixes:
+    - Actually store the device ID in the mapping database
+    - Fix include statements to search from current libcolord
+      folder
+    - Fix mbstowcs usage
+    - Fix the build for old versions of lcms2
+    - Fix up the location of the libcolord header files
+    - Remove the DBus annotations in the introspection
+
+-------------------------------------------------------------------
+Mon Jul  4 15:31:22 CEST 2011 - vuntz@opensuse.org
+
+- Drop rpmlintrc as bnc#698250 got fixed and
+  suse-dbus-unauthorized-service/polkit-unauthorized-privilege
+  warnings are now gone.
+
+-------------------------------------------------------------------
+Fri Jun 17 00:33:14 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.1.9:
+  + New Features:
+    - Add a 'Format' property to the device interface
+    - Add a new method Client:FindDeviceByProperty for when only a
+      property is known
+    - Add methods to get the connected state of each object
+    - Define the DATA_source profile metadata item
+    - Define three metadata keys for the framework creator to set
+    - Define two keys to allow the profile to contain the mapping
+      parameters
+  + Bugfixes:
+    - Allow GUDEV to be disabled at compile time
+    - Autodetect SANE in configure
+    - Fix 3 small memory leaks
+    - Fix a bug that caused a critical warning in client code
+    - Only warn if we fail to get the PolicyKit authority
+    - Save any additional disk device metadata in the property
+      database
+    - Use upstream gettext instead the glib one
+    - Write the new metadata entries in the utility programs
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Thu Jun 16 16:51:34 CEST 2011 - vuntz@opensuse.org
+
+- Add docbook-utils BuildRequires to build man pages.
+- Add colord Recommends to libcolord1 as the library is not too
+  useful without the daemon.
+- Add shared-color-profiles Requires to colord, as we want to have
+  profiles.
+
+-------------------------------------------------------------------
+Mon Jun  6 13:46:22 UTC 2011 - dimstar@opensuse.org
+
+- Initial package, version 0.1.8.
+

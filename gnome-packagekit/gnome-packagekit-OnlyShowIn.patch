@@ -1,0 +1,49 @@
+Index: gnome-packagekit-3.23.90/data/gpk-log.desktop.in
+===================================================================
+--- gnome-packagekit-3.23.90.orig/data/gpk-log.desktop.in
++++ gnome-packagekit-3.23.90/data/gpk-log.desktop.in
+@@ -9,4 +9,4 @@ Type=Application
+ NoDisplay=true
+ Categories=GNOME;GTK;System;
+ StartupNotify=true
+-
++OnlyShowIn=GNOME;
+Index: gnome-packagekit-3.23.90/data/gpk-prefs.desktop.in
+===================================================================
+--- gnome-packagekit-3.23.90.orig/data/gpk-prefs.desktop.in
++++ gnome-packagekit-3.23.90/data/gpk-prefs.desktop.in
+@@ -6,7 +6,7 @@ Icon=gpk-prefs
+ Exec=gpk-prefs
+ Terminal=false
+ Type=Application
+-Categories=Settings;X-GNOME-SystemSettings;
+-NotShowIn=KDE;
++Categories=Settings;X-GNOME-Settings-Panel;
++OnlyShowIn=GNOME;
+ StartupNotify=true
+-NoDisplay=true
++NoDisplay=false
+Index: gnome-packagekit-3.23.90/data/org.gnome.PackageUpdater.desktop.in
+===================================================================
+--- gnome-packagekit-3.23.90.orig/data/org.gnome.PackageUpdater.desktop.in
++++ gnome-packagekit-3.23.90/data/org.gnome.PackageUpdater.desktop.in
+@@ -9,6 +9,6 @@ Type=Application
+ Categories=GNOME;GTK;System;
+ # Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+ Keywords=Updates;Upgrade;
+-NotShowIn=KDE;
++OnlyShowIn=GNOME;
+ StartupNotify=true
+ X-GNOME-UsesNotifications=true
+Index: gnome-packagekit-3.23.90/data/org.gnome.Packages.desktop.in
+===================================================================
+--- gnome-packagekit-3.23.90.orig/data/org.gnome.Packages.desktop.in
++++ gnome-packagekit-3.23.90/data/org.gnome.Packages.desktop.in
+@@ -9,6 +9,6 @@ Type=Application
+ Categories=GNOME;GTK;System;PackageManager;
+ # Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+ Keywords=Sources;Repositories;Preferences;Install;Store;
+-NotShowIn=KDE;
++OnlyShowIn=GNOME;
+ StartupNotify=true
+ X-GNOME-UsesNotifications=true

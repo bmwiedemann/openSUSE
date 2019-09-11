@@ -1,0 +1,2445 @@
+-------------------------------------------------------------------
+Thu Aug  8 11:25:30 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.3.4
+  * Use i18nc for Not Applicable
+  * Clean up how group debug options are parsed
+  * Rolloff roof handling introduced
+  * Comment unused variable
+  * use rangeHA to make sure -12 < HA <= 12
+  * Proper disconnection of Dark Library signals and slots in
+    various Ekos modules
+  * Read astrometry config file on other platforms than OS X
+  * Fix bug#410573 in addition to initial support for dust caps in
+    Dark Library (kde#410573)
+  * always evaluate statistics after opening regardless of
+    histogram
+  * Fix double/float conversion in Java code
+  * Fix missing include in Android build
+- Clean up spec file: remove conditionals for no longer supported
+  distribution versions
+
+-------------------------------------------------------------------
+Mon Aug  5 10:52:45 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.3.3
+  * qMin --> qMax since we need rate 0 to 3
+  * Fix proper disconnection for KSMessageBox signals
+  * Another attempt at fixing odd behavior of accept and reject
+    roles. Now using ActionRole and simply connecting the button
+    click to the dialog accept and reject signals
+  * Further improvements to the reliability of the system after a
+    crashed driver is restarted
+  * Add support to restarting crashed drivers for local servers
+  * sizeInBytes is only available in Qt 5.10+, thanks to jpaana
+    for the heads up
+  * Send preview JPEGs when they are generated to the client
+  * Migrate more KMessageBox --> KSMessageBox
+  * Try to solve Qt warning about adding to existing layout
+  * Bug fix paused during dithering not resuming
+  * Fix minor warning
+  * Migrate dark library to async KSMessageBox
+  * Remove rest of autonomous option that was deleted
+  * remove & when comparing button texts
+  * Removing unnecessary autonomous option for dialog with the
+    introduction of the new KSMessageBox class that open message
+    box asynchronous and can be programmatically activated with a
+    timer
+  * Fix crash in downloadJob due to possible using raw pointer
+    before
+  * Add new KSMessageBox class to fulfill some KStars specific
+    requirements
+  * Add helpful comments
+  * Autofocus disturbing meridian flip corrected
+  * Show the tracking box on the inital focusing frame
+  * refactor isSlewDirty and set it as false in cases of IDLE and
+    ALERT states for EqNP (kde#410094)
+  * Check for refocus also during the calibration stage
+  * Add support to CONFIG_PURGE and add more options to clear some
+    mount data in case of trouble
+  * Add more protection boundary checks
+  * remove unnecessary cast
+  * Reset autofocus when executing a job, so that focus step is
+    applied properly when checked
+  * Fix regression for non-guide dithering and re-arrange guide
+    option to make dither frequency has its own row
+  * Add option to control auto park post PAA tool operation
+  * Introduce autonomousMode option to run KStars in autonomous
+    mode whereas user interaction is not expected so popup dialogs
+    are suppressed whenever possible. All KMessageBox calls are
+    convereted to application to KSNotification calls
+  * Fix translation issues with solar system objects
+  * Precess sun to get correct accurate geocentric coordinates
+  * When evaluating twilight restriction, shift dusk to next day
+    when it happens before dawn on the same day
+  * Display more information about version and interface once
+    device is online
+  * Fix non-static warning
+  * Only construct histogram synchronously when required
+  * Explicitly use setCurrentIndex since setCurrentText is
+    problematic
+  * Motion control for domes added
+
+-------------------------------------------------------------------
+Wed Jul  3 09:28:12 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.3.2
+  * http://knro.blogspot.com/2019/06/kstars-v331-is-released.html
+  * New Ekos Observatory Module
+  * Meridian Flip moved from the Capture Module to the Mount Module
+  * FPS control in the Stream window is replaced by Frame Duration
+    in seconds control
+  * Reset focus frame when mount slews
+  * Do not abort PHD2 guiding while suspended
+  * Check if dust cap is detected before checking whether the
+    camera is shutterful or shutterless
+  * Fix translation issue with Sun, Moon, and Earth designations
+
+-------------------------------------------------------------------
+Fri May 31 18:11:19 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.2.3
+  * http://knro.blogspot.com/2019/05/kstars-v323-is-released.html
+  * The Sky Map cursor can now be configured
+  * New option to make left click immediately snap to the object
+    under the cursor
+  * Include the profile name directly into the Window title for
+    Ekos
+  * A few icon changes in Ekos
+  * Fixed a race condition when using a guide camera (kde#407952)
+  * Improved the estimated time of scheduler jobs where there are
+    repeated jobs in the sequence
+
+-------------------------------------------------------------------
+Sun May 12 06:44:35 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.2.2
+  * http://knro.blogspot.com/2019/05/kstars-v322-is-released.html
+  * Important stability fix for crashes reported with FITS Viewer
+  * Ignore Video Streaming when guiding via PHD2 with a video
+    device
+  * Automatic syncing for Active Devices on Startup
+  * Meridian Flip Fixes
+  * Keep GUI parameters for scheduler and capture in sync with row
+    selection
+  * When a manual filter is detected, prompt user to change the
+    filter and update the driver accordingly
+  * Fix observing list wizard object filter by time and altitude
+    and introduce a coverage param where the user can control the
+    percentage
+  * Improved saving of settings in all Ekos modules
+
+-------------------------------------------------------------------
+Thu Apr 25 11:56:14 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.2.1
+  * expand bsd license in cmake modules
+  * Saving after reordering jobs enabled
+  * Fix minor typo
+  * Refactor and simplify guide settings and init
+  * Simplify some default settings
+  * Focus settings complete
+  * More work on refactor settings
+  * Use qCWarning
+  * Bug fix for calculating required light frames
+
+-------------------------------------------------------------------
+Tue Apr 16 09:48:53 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.2.0
+  * Capture counting corrected
+  * Do not connect to EkosLive with empty username
+  * Also accept .fits.fz in FITSViewer
+  * Fix slew and sync in KStars Lite
+  * Clean module registration
+  * Use click to trigger the change since the signals are attached
+    to the button clicked event
+  * Show toolip explicitly on button click
+  * Add information icon to explain what the guiding rate control
+    is for
+  * Resume KStars if paused in EkosLive
+  * Make sure clock is ticking and sync with system time when
+    websocket connection is established
+  * Move auto star selection for calibration to main guide module
+    to make it more accessible
+  * Fix issue with online solver args
+  * Add RC telescope type
+  * Fix capture delay when using legacy polar alignment tool
+  * If primary or guide IDs are zero or less, set profile scope to
+    Default
+  * Add support to updating scopes and profiles
+  * Scope commands do not require active connection
+  * GET_SCOPES can now be sent before Ekos is online
+  * Add scope websocket functions to add and delete scopes.
+    Improve getScopes to cover all available telescopes
+  * Send profile when deleting or adding one
+  * Unchecking the meridian flip checkbox reset the meridian flip
+    state
+  * Do not change filter directly, use the filter manager
+  * Fix infobox setting not sticking for some reason under Qt 5.12
+  * Save focus module filter wheel and filter in options
+  * Fix altitude restriction log and allow restriction down to -15
+    degrees
+  * Wait until backlash builds up before moving to more aggressive
+    pulses that might cause overshooting the target position
+  * Add debug log for remaining angle for mount rotation in
+    alignment module
+  * Add websocket function to get all drivers
+  * Update docs
+  * Profile management via websocket is ready for testing
+  * Initial work for profile and driver exposure to ekoslive
+  * Bugfix: proper usage of abort() for finishing a capture
+    sequence queue
+  * Reduce calibration iterations to 3 by default as it is mostly
+    what is required for most cases
+  * Prevent rescheduling aborted jobs until all jobs are processed
+  * Make Scheduler robust against guiding problems
+  * Keep meridian flip in capture and mount in sync (kde#405325)
+  * Fix websocket getting called from a different thread
+  * Add EkosLive DBus methods and properties
+  * Display saved DSLR infos
+  * Making the StarProfile Viewer fix from 3.1.0 work for Guide
+    and Focus Views too
+  * Load captured RAW images in summary without have to
+    double-covert them since they are converted once in INDI::CCD
+  * Only remove .fits explicitly from base name instead of finding
+    last decimal point since this causes conflicts with exposures
+    in file names
+  * Make the mount window resizable to fit on different DPIs
+
+-------------------------------------------------------------------
+Mon Mar 11 06:28:12 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.1.1
+  * Comment out obsolete slot connect
+  * Remove unrequired attributes (kde#405188)
+  * Notify user of error in focusing even when not in autofocus
+  * Add support to sending horizontal coordinates from the mount
+    box
+  * Improve behavior for dark and flat frames capture when it comes
+    to covering the mount
+  * Support converting images to FITS
+  * Before loading next image, check if current image is temporary
+    and if yes remove it from disk
+  * Add notification dialog for user to cover scope with flat field
+    light source in case of manual source
+  * Making the initial astrometry.net path change automatic
+  * More PHD2 fixes
+  * Add comet and asteroid orbital elements auto update on startup
+  * Make selection behavior single rows for the capture jobs
+  * Deleting arbitrary imaging sequence in the Capture module
+    corrected
+  * Fix upload issues to the cloud with compressed images
+  * Fix state of ekoslive button toggle on startup
+  * fitsviewer: Do not exit program on error, return error code
+
+-------------------------------------------------------------------
+Wed Feb 27 12:57:51 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.1.0
+  * http://knro.blogspot.com/2019/02/kstars-v310-is-released.html
+  * Fixed a few bugs with the Ekos Scheduler along with making
+    steady improvements to cover all corner cases for multi-object
+    multi-night scheduling which can become quite complex
+  * Added a new feature to the Focus module: Ring-field focusing
+  * Migrated the Meridian Flip handling code to the Ekos Mount tab
+  * Migrated online Ekos documentation to KStars official
+    documentation
+  * Introduced manual workflow for users who would like to use Ekos
+    Polar Alignment Assistant Tool with manual non-GOTO mounts
+  * The LiveView window received a few enhancement to enable
+    zooming and panning for supported DSLR cameras
+  * The FITS Viewer window is now automatically raised to the
+    foreground when a new image arrives
+  * Dark Library now considers all DSLRs to be shutterless
+  * Mounts are grouped by manufacturer in the Equipment Profile
+    Editor
+  * Preliminary support for websocket to INDI::CCD on the client
+    side
+  * DBus interface expansion to provide more fine control over
+    KStars
+  * Fixed relative focuser bug in autofocus mode
+  * Improved multi-channel histogram by providing dedicated controls
+    to each channel
+  * Fixed Auto-Stretch affecting raw image values
+  * Support for compressed FITS (*.fits.fz) in INDI. This can cut
+    the transmission time to 30%!
+  * Improved display of Parked status
+  * KStars defaults to limited resource mode on ARM architecture
+  * When there is binning change, always FORCE setting of frame
+    values even if they did not change
+- Add "AND GPL-3.0-or-later" to the license, a few source files
+  require that
+
+-------------------------------------------------------------------
+Thu Dec 20 21:17:16 UTC 2018 - wbauer@tmo.at
+
+- Update to 3.0.0
+  * http://knro.blogspot.com/2018/12/kstars-v300-is-released.html
+  * New XPlanet Solar System Viewer
+  * Improved FITS Viewer GUI
+  * Ekos scheduler improvements
+  * Improvements to Scripting & DBus support
+  * Lunar Eclipses: added functionality to calculate and draw the
+    earth's shadow disk on the Moon from any distance. There is a
+    new eclipse tool in the astrocalc which can find lunar eclipses
+    quite fast.
+  * Find Dialog is now persistent so it remembers the past searches
+  * The capture module now incorporates a cooler On/Off button.
+    Additionally, user can now clear Camera configuration.
+  * Dedicated Binary Object channels when communicate with INDI
+    driver to increase throughput and responsiveness of drivers
+  * Fixed performance regression in Star Profile viewer
+  * Guide mode resets calibration when it detects pier side
+    changing
+  * Migrating code to new style Qt Signal/Slot connections
+  * J2000/JNow support in Mount Module
+  * Do not cast DSO coords seconds to int as we lose important
+    precision. Use full resolution as double.
+  * Fix issue with subframed calibration when auto-select star is
+    not enabled. Now subframed star position is set properly in the
+    internal guider before.
+  * Support for compressed FITS files (.fits.gz)
+  * Add live view support to focus module and rework existing one
+    in capture to be icon based
+  * Show loaded coords in sexigesimal format and in high precision
+    when possible
+  * Do not add any camera or ST4 devices to guide module if guider
+    is external. Instead put guider type in guider dropdown and
+    disable it.
+  * Honor settling time in Polar Alignment Assistant tool
+  * Add warning when slewing to Sun. Adjust tracking rate if
+    supported by the mount depending on the object type.
+  * Add option to control DSLR image viewer. It can now be turned
+    off.
+  * Improve PHD2 support
+- Drop disable_downloading_into_system_dirs.patch, the kauth helper
+  that writes files to system dirs has been disabled upstream
+  because of reliability problems
+
+-------------------------------------------------------------------
+Mon Aug 20 08:49:40 UTC 2018 - wbauer@tmo.at
+
+- Update to 2.9.8
+  * http://knro.blogspot.com/2018/08/kstars-298-released.html
+  * Fixed several issues in the Ekos scheduler to enable running
+    duplicate jobs
+  * Fixed many problematic i18n strings that accumulated over the
+    years
+  * Improved KStars Lite android build process and fixed touch
+    support
+  * Fixed several issues with Ekos PHD2 support
+  * Fixed logging out in capture module
+  * Fixed minor EBN issues
+  * Using Max RMS value as the threshold to abort the guider
+    instead of maximum pulse length
+
+-------------------------------------------------------------------
+Fri Jul 27 06:31:39 UTC 2018 - jengelh@inai.de
+
+- Trim redundancies from the description again.
+
+-------------------------------------------------------------------
+Thu Jul 26 10:02:11 UTC 2018 - wbauer@tmo.at
+
+- Update to 2.9.7
+  * http://knro.blogspot.com/2018/07/kstars-v297-is-released.html
+  * The Ekos scheduler's behavior has been improved under a number
+    of scenarios
+  * The Polar Alignment Assistant tool received few improvements to
+    simplify the process, it's now literally a 1-button click
+    operation
+  * Support for EkosLive is added in this release
+  * KStars now offers an easy method to add INDI custom drivers
+  * Support for loading compressed FITS (*.fits.gz) in FITS Viewer
+  * Android fixes + improvements by GSoC 2018 student Csaba
+  * Disabled internet check for online astrometry solver to
+    workaround Qt bug
+  * Fixed PHD2 file not found issue
+  * Added option to restart alignment process in scheduler in case
+    of calibration failure
+  * Support for manual dither plus dithering to a specific X,Y
+    location
+  * Support for Auto Park Timer in Mount Module
+  * Support for Remote Drivers in the Profile Editor
+  * Added video exposure duration control to the Video Stream
+    window
+- Rebase disable_downloading_into_system_dirs.patch
+- Update build requirements
+- Build with gcc7 on Leap 42.3, it doesn't compile with 4.8 anymore
+- Update package description
+
+-------------------------------------------------------------------
+Mon Jul  9 11:02:20 UTC 2018 - wbauer@tmo.at
+
+- Update to 2.9.6
+  * http://knro.blogspot.com/2018/05/kstars-296-is-released.html
+  * Fixed long-standing bug where Time zone was not updated
+    correctly from INDI GPS
+  * Fixed Filter Manager settings as it was not updating the
+    database properly
+  * Fixed centering & tracking of empty sky
+  * Fixed Polar Alignment Assistant rotation in the southern
+    hemisphere
+  * Added a method to clear DSLR info in case they were entered
+    incorrectly
+  * Added J2000 support in the Mount Control panel in addition to
+    the standard JNow
+  * Alignment FOV is now always editable
+  * CCD Capture format and directory are now persistent
+  * Guiding is aborted when mount is slewing or parking
+  * Clang fixes by Csaba Kertesz as part of GSoC 2018
+- Drop Fix-build-with-Qt-511.patch, merged upstream
+
+-------------------------------------------------------------------
+Sun Jun  3 17:04:41 UTC 2018 - christophe@krop.fr
+
+- Add Fix-build-with-Qt-511.patch
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Apr 25 07:58:45 UTC 2018 - wbauer@tmo.at
+
+- Update to 2.9.5
+  * http://knro.blogspot.co.at/2018/04/kstars-295-is-out.html
+  * New experimental adaptive HFR Thresholding algorithm that
+    selects the median HFR value filter-wise
+  * Ekos Scheduler module has received major patches from Eric
+    Dejouhanet to improve its reliability and fix some corner cases
+  * A quite illusive and annoying time-zone related bug was fixed
+    when using INDI GPS devices
+  * Align module FOV now defaults to zero on startup
+
+-------------------------------------------------------------------
+Wed Apr 18 06:30:35 UTC 2018 - wbauer@tmo.at
+
+- Update to 2.9.4
+  * http://knro.blogspot.co.at/2018/04/spring-season-kstars-v294-is-released.html
+  * New highly efficient binary interface for asteroids that would
+    allow quite large (> 100MB) and distant catalogs to be loaded
+    into KStars without a major impact on performance
+  * Automatic Flat field calculations were fixed for multi-channel
+    DSLR frames along with an improved DSLR popup dialog
+  * The Ekos scheduler workflow was revamped to evaluate all jobs
+    every time a new job is invoked to ensure all scores are
+    updated accordingly and not only on the first job run
+  * More SEP work for star & galaxy detection is merged into the
+    internal guide module resulting in a better object detection
+    even in noisy environments
+  * The guide module is now a lot more tolerant to passing clouds
+  * Users can now instruct Ekos to take flat field frames exactly
+    at the same focus position where light frames of the same
+    filter were captured
+  * FITS handling code was optimized with loading times improving
+    on the order of 300%
+- Mark license files as %license instead of %doc
+
+-------------------------------------------------------------------
+Sat Mar  3 02:09:32 UTC 2018 - wbauer@tmo.at
+
+- Update to 2.9.3
+  * http://knro.blogspot.co.at/2018/02/kstars-293-is-out-with-numerous-fixes.html
+  * several important fixes, mostly in Ekos scheduler and capture
+    modules
+
+-------------------------------------------------------------------
+Mon Jan 29 13:23:34 UTC 2018 - wbauer@tmo.at
+
+- Update to 2.9.2
+  * http://knro.blogspot.co.at/2018/01/kstars-292-released.html
+  * New theming support
+  * Add the found stars to the Zoom Menu
+  * Add Mount Control Panel access to the telescope tool bar
+  * Add support to Sensor FOV that can be triggered from the Ekos
+    tool bar, Color can be set from color scheme
+  * Use Human counting in the Star Profile Viewer
+  * Nicer icons for the Star Profile Viewer
+  * Only apply PA calculation on square FOVs
+  * Adding experimental support for differential slewing in align
+    module
+  * Sync INDI drivers list
+  * Remove completed jobs from sorted jobs
+  * Display local meridian even if grids are off or in equatorial
+    mode (kde#389289)
+  * Add option to skip sorting jobs and run them as-is in the order
+    they are added
+  * Reset to correct page in wizard
+  * Remove Breeze icons and relying on install theme. Changing some
+    icon to look better with the default KStars theme
+  * Add logging when saving FITS to disk
+  * Update appstream screenshots
+  * band-aid fix for cursor bug in FITS View
+- Drop upstreamed fix-build-with-gcc48.patch
+
+-------------------------------------------------------------------
+Sat Jan 20 16:43:31 UTC 2018 - wbauer@tmo.at
+
+- Update to 2.9.1
+  * http://knro.blogspot.co.at/2018/01/kstars-291-is-off-to-fantastic-start-in.html
+  * Easier to set Park Position
+  * Additional PHD 2 Support
+  * Drift Graphics Updates
+  * New 3D Star Profile and Data Visualization Tool
+  * Bugfixes and other improvements
+- Add fix-build-with-gcc48.patch to make it build with gcc 4.8 on
+  Leap 42
+- Build with Qt5DataVisualization (new in Qt 5.7) on Tumbleweed and
+  Leap 15 to enable the new "3D Star Profile and Data Visualization
+  Tool"
+
+-------------------------------------------------------------------
+Wed Dec 20 17:42:00 UTC 2017 - wbauer@tmo.at
+
+- Update to 2.8.9
+  * kstars is released independently from KDE Applications now
+  * Lots of changes since 2.7.10 that was shipped with KDE Applications
+    17.08.3, please see http://knro.blogspot.co.at/ or the
+    included ChangeLog file (in /usr/share/doc/packages/kstars/)
+    for details
+
+-------------------------------------------------------------------
+Thu Nov 09 23:12:23 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 00:32:35 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 07 07:02:26 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * None
+
+-------------------------------------------------------------------
+Fri Aug 11 22:46:02 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Aug  5 18:18:49 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.07.90.php
+- Add disable_downloading_into_system_dirs.patch. Saving runtime files into
+  system directories is not allowed.
+
+-------------------------------------------------------------------
+Sat Jul 15 23:00:38 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:58 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * None
+
+-------------------------------------------------------------------
+Wed May 17 20:37:01 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * None
+
+-------------------------------------------------------------------
+Mon May  1 19:27:48 UTC 2017 - wbauer@tmo.at
+
+- Add libnova-devel and gsl-devel build requirements, necessary
+  when building with libindi now
+
+-------------------------------------------------------------------
+Sun Apr 16 10:45:10 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:55 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * None
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:42 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.03.80.php
+- Changes since 16.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar  9 12:41:20 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * None
+
+-------------------------------------------------------------------
+Sat Feb 25 20:26:28 UTC 2017 - asterios.dramis@gmail.com
+
+- Enable wcslib-devel build requirement also for Leap >= 42.3.
+
+-------------------------------------------------------------------
+Thu Feb  9 07:08:29 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 09:02:11 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Tue Dec 13 19:54:24 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Wed Dec  7 21:39:22 UTC 2016 - asterios.dramis@gmail.com
+
+- Added new build requirement libraw-devel.
+- Added new build requirement wcslib-devel for openSUSE Tumbleweed.
+- Renamed libeigen3-devel build requirement to eigen3-devel.
+- Removed libcfitsio-devel build requirement (already included as
+  cfitsio-devel).
+
+-------------------------------------------------------------------
+Sat Dec  3 16:38:40 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:37:00 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Wed Nov  9 06:23:07 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Tue Oct 11 21:02:48 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Fri Sep  9 08:34:25 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Fri Aug 12 10:24:40 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Tue Aug  9 09:09:34 UTC 2016 - wbauer@tmo.at
+
+- Cleanup build requirements
+
+-------------------------------------------------------------------
+Mon Aug  8 15:23:50 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.07.90.php
+
+
+-------------------------------------------------------------------
+Fri Jul  8 00:17:01 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+
+-------------------------------------------------------------------
+Fri Jun 10 18:05:40 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Sat May  7 10:37:11 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+
+-------------------------------------------------------------------
+Sun Apr 17 06:13:14 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Mon Apr 11 06:48:52 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+
+-------------------------------------------------------------------
+Sun Mar 13 15:50:58 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.3
+   * KDE Applications 15.12.3
+   * https://www.kde.org/announcements/announce-applications-15.12.3.php
+   * boo#970855
+
+
+-------------------------------------------------------------------
+Sat Feb 13 08:19:07 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.2
+   * KDE Applications 15.12.2
+   * https://www.kde.org/announcements/announce-applications-15.12.2.php
+   * boo#966605
+
+
+-------------------------------------------------------------------
+Sat Jan  9 18:28:52 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.1
+   * KDE Applications 15.12.1
+   * https://www.kde.org/announcements/announce-applications-15.12.1.php
+   * boo#961265
+
+
+-------------------------------------------------------------------
+Sun Dec 13 13:27:03 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.0
+   * KDE Applications 15.12.0
+   * https://www.kde.org/announcements/announce-applications-15.12.0.php
+   * boo#958887
+
+
+-------------------------------------------------------------------
+Tue Nov 10 20:16:56 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.3
+   * KDE Applications 15.08.3
+   * https://www.kde.org/announcements/announce-applications-15.08.3.php
+   * boo#954531
+
+
+-------------------------------------------------------------------
+Sun Oct 11 13:39:41 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.2
+   * KDE Applications 15.08.2
+   * https://www.kde.org/announcements/announce-applications-15.08.2.php
+
+
+-------------------------------------------------------------------
+Mon Oct  5 07:27:57 UTC 2015 - wbauer@tmo.at
+
+- Own directory %_datadir/appdata to fix build on Leap
+
+-------------------------------------------------------------------
+Sun Sep 13 19:27:58 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.1
+   * KDE Applications 15.08.1
+   * https://www.kde.org/announcements/announce-applications-15.08.1.php
+
+
+-------------------------------------------------------------------
+Wed Aug 19 19:43:56 UTC 2015 - cgiboudeaux@gmx.com
+
+- Update to KDE Applications 15.08.0
+   * KDE Applications 15.08.0
+   * https://www.kde.org/announcements/announce-applications-15.08.0.php
+
+-------------------------------------------------------------------
+Fri Aug  7 07:00:28 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.07.90
+   * KDE Applications 15.08.0 RC1
+   * https://www.kde.org/announcements/announce-applications-15.07.90.php
+
+
+-------------------------------------------------------------------
+Mon Jul  6 05:27:06 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.3
+   * KDE Applications 15.04.3
+   * https://www.kde.org/announcements/announce-applications-15.04.3.php
+
+
+-------------------------------------------------------------------
+Sat May 30 14:27:51 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.2
+   * KDE Applications 15.04.2
+   * https://www.kde.org/announcements/announce-applications-15.04.2.php
+
+
+-------------------------------------------------------------------
+Mon May 11 11:13:12 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.1
+   * KDE Applications 15.04.1
+   * https://www.kde.org/announcements/announce-applications-15.04.1.php
+
+
+-------------------------------------------------------------------
+Sat Apr 11 13:22:03 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.0
+   * KDE Applications 15.04.0
+   * https://www.kde.org/announcements/announce-applications-15.04.0.php
+
+
+-------------------------------------------------------------------
+Sat Mar 21 18:18:43 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.03.95
+   * KDE Applications 15.04 RC
+
+
+-------------------------------------------------------------------
+Sun Mar  8 12:49:10 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.03.80
+   * KDE Applications 15.04 Beta
+
+
+-------------------------------------------------------------------
+Tue Mar  3 10:43:26 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 14.12.3
+   * KDE Applications 14.12.3
+   * See https://www.kde.org/announcements/announce-applications-14.12.3.php
+
+-------------------------------------------------------------------
+Sun Feb  1 11:05:47 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 14.12.2
+   * KDE Applications 14.12.2
+   * See https://www.kde.org/announcements/announce-applications-14.12.2.php
+
+-------------------------------------------------------------------
+Mon Jan 12 20:03:44 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 14.12.1
+   * KDE Applications 14.12.1
+   * See https://www.kde.org/announcements/announce-applications-14.12.1.php
+
+-------------------------------------------------------------------
+Wed Dec 17 20:40:04 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 14.12.0
+   * KDE Applications 14.12.0
+   * See https://www.kde.org/announcements/announce-applications-14.12.0.php
+
+-------------------------------------------------------------------
+Sun Nov  9 20:35:43 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.3
+   * KDE 4.14.3 SC Bugfix Release
+   * See http://www.kde.org/announcements/announce-4.14.3.php
+
+-------------------------------------------------------------------
+Sun Oct 12 12:05:45 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.2
+   * KDE 4.14.2 SC Bugfix Release
+   * See http://www.kde.org/announcements/announce-4.14.2.php
+
+-------------------------------------------------------------------
+Sat Sep 13 16:31:27 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.1
+   * KDE 4.14.1 SC Bugfix Release
+   * See http://www.kde.org/announcements/announce-4.14.1.php
+
+-------------------------------------------------------------------
+Fri Aug 15 08:32:21 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.0
+   * KDE 4.14.0 SC Final Release
+   * See http://www.kde.org/announcements/4.14/
+
+-------------------------------------------------------------------
+Thu Jul 17 16:47:26 UTC 2014 - cgiboudeaux@gmx.com
+
+- Update to 4.13.90
+   * KDE 4.14 Beta 2 release
+   * See http://www.kde.org/announcements/announce-4.14-beta2.php
+
+-------------------------------------------------------------------
+Thu Jul 10 22:20:11 UTC 2014 - cgiboudeaux@gmx.com
+
+- Update to 4.13.80
+   * KDE 4.14 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.14-beta1.php
+
+-------------------------------------------------------------------
+Sun Jun  8 18:35:06 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.13.2
+   * KDE 4.13  release
+   * See http://www.kde.org/announcements/announce-4.13.2.php
+
+-------------------------------------------------------------------
+Fri May  9 16:47:16 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.13.1
+   * KDE 4.13.1  bug fix release
+   * See http://www.kde.org/announcements/announce-4.13.1.php
+
+-------------------------------------------------------------------
+Sun May  4 00:20:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added libqjson-devel BuildRequires: enables KStars to utilize
+  online web services to perform astrometric solving for images in
+  Ekos alignment module
+
+-------------------------------------------------------------------
+Fri Apr 11 16:50:29 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.13.0
+   * KDE 4.13  release
+   * See http://www.kde.org/announcements/4.13/
+
+-------------------------------------------------------------------
+Thu Mar 27 17:46:25 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.97
+   * KDE 4.13 RC  release
+   * See http://www.kde.org/announcements/announce-4.13-rc.php
+
+-------------------------------------------------------------------
+Thu Mar 20 18:10:50 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.95
+   * KDE 4.13 Beta 3  release
+   * See http://www.kde.org/announcements/announce-4.13-beta3.php
+
+-------------------------------------------------------------------
+Thu Mar 13 20:16:47 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.90
+   * KDE 4.13 Beta 2  release
+   * See http://www.kde.org/announcements/announce-4.13-beta2.php
+
+-------------------------------------------------------------------
+Fri Mar  7 10:08:01 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.80
+   * KDE 4.13 Beta 1  release
+   * See http://www.kde.org/announcements/announce-4.13-beta1.php
+
+-------------------------------------------------------------------
+Sat Feb  1 10:14:19 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.2
+   * KDE 4.12.2  release
+   * See http://www.kde.org/announcements/announce-4.12.2.php
+
+-------------------------------------------------------------------
+Sat Jan 11 15:39:50 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.1
+   * KDE 4.12.1  release
+   * See http://www.kde.org/announcements/announce-4.12.1.php
+
+-------------------------------------------------------------------
+Sat Dec 14 18:07:17 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.12.0
+   * KDE 4.12.0  release
+   * See http://www.kde.org/announcements/4.12.php
+
+-------------------------------------------------------------------
+Fri Nov 29 07:09:50 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.97
+   * KDE 4.12 RC 1 release
+   * See http://www.kde.org/announcements/announce-4.12-rc.php
+
+-------------------------------------------------------------------
+Sat Nov 23 22:24:06 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.95
+   * KDE 4.12 Beta 3 release
+   * See http://www.kde.org/announcements/announce-4.12-beta3.php
+
+-------------------------------------------------------------------
+Sat Nov 16 17:56:38 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.90
+   * KDE 4.12 Beta 2 release
+   * See http://www.kde.org/announcements/announce-4.12-beta2.php
+
+-------------------------------------------------------------------
+Sat Nov  9 22:57:58 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.80
+   * KDE 4.12 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.12-beta1.php
+
+-------------------------------------------------------------------
+Sat Nov  2 15:11:36 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.3
+   * KDE 4.11.3 bugfix release
+   * See http://www.kde.org/announcements/announce-4.11.3.php
+
+-------------------------------------------------------------------
+Sat Sep 28 15:12:20 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.2
+   * KDE 4.11.2 bugfix release
+   * See http://www.kde.org/announcements/announce-4.11.2.php
+
+-------------------------------------------------------------------
+Sun Sep  1 10:03:38 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.1
+   * KDE 4.11.1 bugfix release
+   * See http://www.kde.org/announcements/announce-4.11.1.php
+
+-------------------------------------------------------------------
+Thu Aug  8 15:07:07 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.0
+   * KDE 4.11 Final release
+   * See http://www.kde.org/announcements/4.11/
+
+-------------------------------------------------------------------
+Thu Jul 25 23:22:08 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 4.10.97
+  * KDE 4.11 RC 2 release
+  * See http://www.kde.org/announcements/announce-4.11-rc2.php
+
+-------------------------------------------------------------------
+Mon Jul 15 08:13:54 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update to 4.10.95
+ * KDE 4.11 RC 1 release
+ * See http://www.kde.org/announcements/announce-4.11-rc1.php
+
+-------------------------------------------------------------------
+Thu Jun 27 18:18:12 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.90
+   * KDE 4.11 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.11-beta2.php
+
+-------------------------------------------------------------------
+Thu Jun 13 19:24:18 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.80
+   * KDE 4.11 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.11-beta1.php
+
+-------------------------------------------------------------------
+Sat Jun  1 09:44:10 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.4
+   * Bugfix release
+   * See http://www.kde.org/announcements/announce-4.10.4.php
+   * resolves bnc#8122760
+
+-------------------------------------------------------------------
+Sat May  4 17:00:06 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.3
+   * Bugfix release
+   * See http://www.kde.org/announcements/announce-4.10.3.php
+   * resolves bnc#818500
+
+-------------------------------------------------------------------
+Mon Apr  1 19:17:58 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.2 \n  * Bugfixes
+
+-------------------------------------------------------------------
+Sat Mar  2 15:40:40 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.1
+ * Contains bug fixes. See http://www.kde.org/announcements/
+   for more information
+
+-------------------------------------------------------------------
+Thu Jan 31 17:52:06 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.0
+ * This is the final release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Thu Jan 17 08:09:44 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.9.98
+ * This is the third RC release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Thu Jan  3 21:14:49 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.9.97
+ * This is the second RC release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Wed Dec 19 18:41:49 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.95
+ * This is the first RC release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Sat Dec  1 20:08:17 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.90
+ * This is the second Beta release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Sat Nov 24 12:55:26 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.80
+  * See http://www.kde.org/announcements/announce-4.10-beta1.php
+
+-------------------------------------------------------------------
+Fri Nov  2 16:54:26 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.3
+  * see http://kde.org/announcements/announce-4.9.3.php for details
+
+-------------------------------------------------------------------
+Sat Sep 29 10:04:59 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.2
+  * see http://kde.org/announcements/announce-4.9.2.php for details
+
+-------------------------------------------------------------------
+Wed Sep  5 12:05:27 UTC 2012 - dmueller@suse.com
+
+- update to 4.9.1
+  * see http://kde.org/announcements/4.9.1/ for details
+
+
+-------------------------------------------------------------------
+Mon Jul 30 16:58:03 UTC 2012 - dmueller@suse.com
+
+- update to 4.8.5
+  * see http://kde.org/announcements/changelogs/changelog4_8_4to4_8_5.php for details
+- remove upstreamed patch
+
+-------------------------------------------------------------------
+Mon Jul 30 08:02:48 UTC 2012 - aj@suse.de
+
+- Fix build with glibc 2.16 (TIME_UTC is a macro).
+
+-------------------------------------------------------------------
+Fri Jun  1 13:59:03 UTC 2012 - dmueller@suse.com
+
+- update to 4.8.4
+  * see http://kde.org/announcements/changelogs/changelog4_8_3to4_8_4.php for details
+
+-------------------------------------------------------------------
+Thu May 24 21:10:05 UTC 2012 - asterios.dramis@gmail.com
+
+- Removed FindCFitsio.cmake.patch (not needed anymore after the update of the
+  cfitsio package and the cfitsio.pc fix to correctly find the library).
+- Removed libSatLib4 subpackage entry (which was disabled anyway) since it has
+  been removed from the kstars package.
+
+-------------------------------------------------------------------
+Sun Apr 29 20:58:50 UTC 2012 - dmueller@suse.com
+
+- update to 4.8.3
+  * see http://kde.org/announcements/changelogs/changelog4_8_2to4_8_3.php for details
+
+-------------------------------------------------------------------
+Sat Mar 31 11:08:50 UTC 2012 - wstephenson@suse.com
+
+- Add xz to BuildRequires
+
+-------------------------------------------------------------------
+Fri Mar 30 01:20:30 CEST 2012 - dmueller@suse.de
+
+- update to 4.8.2
+  * see http://kde.org/announcements/changelogs/changelog4_8_1to4_8_2.php for details
+
+-------------------------------------------------------------------
+Fri Mar  2 23:23:41 CET 2012 - dmueller@suse.de
+
+- update to 4.8.1
+  * see http://kde.org/announcements/changelogs/changelog4_8_0to4_8_1.php for details
+
+-------------------------------------------------------------------
+Wed Jan 18 20:59:10 CET 2012 - dmueller@suse.de
+
+- update to 4.8.0
+  * first stable release of KDE 4.8 (only critical fixes over 4.7.98)
+  * see http://kde.org/announcements/4.8/ for details
+
+
+-------------------------------------------------------------------
+Tue Jan 10 16:33:40 CET 2012 - dmueller@suse.de
+
+- update to 4.7.98
+  * RC2+ milestone release of KDE 4.8
+  *  see http://kde.org/announcements/4.8/ for details
+
+
+-------------------------------------------------------------------
+Wed Dec  7 11:02:23 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Fri Dec  2 02:00:54 CET 2011 - dmueller@suse.de
+
+- update to 4.7.4
+  * see http://kde.org/announcements/changelogs/changelog4_7_3to4_7_4.php for details
+
+-------------------------------------------------------------------
+Wed Nov  2 20:29:35 CET 2011 - dmueller@suse.de
+
+- update to 4.7.3
+  * see http://kde.org/announcements/changelogs/changelog4_7_2to4_7_3.php for details
+
+-------------------------------------------------------------------
+Sun Oct  2 17:12:05 CEST 2011 - dmueller@suse.de
+
+- update to 4.7.2
+  * see http://kde.org/announcements/changelogs/changelog4_7_1to4_7_2.php for details
+
+-------------------------------------------------------------------
+Thu Sep 22 21:22:12 UTC 2011 - asterios.dramis@gmail.com
+
+- Added a patch for FindCFitsio.cmake to correctly find the cfitsio library.
+
+-------------------------------------------------------------------
+Tue Sep 20 18:22:46 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Changed License: to GPL-2.0+.
+  * Cleanup in BuildRequires: (removed depedencies left from the kdeedu package
+    and added Mesa-devel, libindi, libkde4-devel and update-desktop-files).
+  * Removed libkeduvocdocument4 from Requires: and %py_requires (not needed).
+  * Recommend libindi and xplanet.
+  * Don't install the static library (libhtmesh.a).
+  * Changed the Group: of libSatLib4 to System/Libraries.
+  * Removed /sbin/ldconfig %post/%postun sections for the main package (not
+    needed).
+  * Minor other updates.
+
+-------------------------------------------------------------------
+Thu Sep  7 13:44:34 UTC 2011 - toddrme2178@gmail.com
+
+- Added xplanet buildrequires
+- Removed tests for obsolete openSUSE versions
+  (fix for RPMLINT warning)
+- Removed redundant buildrequires
+- Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Thu Sep  1 23:25:48 CEST 2011 - dmueller@suse.de
+
+- update to 4.7.1
+  * Bugfixes over KDE 4.7.0
+  *  see http://kde.org/announcements/changelogs/changelog4_7_0to4_7_1.php for details
+
+-------------------------------------------------------------------
+Fri Jul 22 20:26:37 CEST 2011 - dmueller@suse.de
+
+- update to 4.7.0
+  * Small fixes over KDE 4.7 RC2
+  *  see http://kde.org/announcements/4.7 for details
+
+
+-------------------------------------------------------------------
+Sat Jul  9 10:00:11 CEST 2011 - dmueller@suse.de
+
+- update to 4.6.95
+
+-------------------------------------------------------------------
+Tue Jun 28 14:19:55 CEST 2011 - dmueller@suse.de
+
+- update to 4.6.90
+
+-------------------------------------------------------------------
+Sat May 21 00:55:59 CEST 2011 - dmueller@suse.de
+
+- update to 4.6.80
+
+-------------------------------------------------------------------
+Sun May  8 06:01:10 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110508
+
+-------------------------------------------------------------------
+Mon May  2 16:14:21 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110502
+
+-------------------------------------------------------------------
+Sat Apr 23 07:49:00 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110423
+
+-------------------------------------------------------------------
+Wed Apr 20 16:13:59 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110420
+
+-------------------------------------------------------------------
+Mon Apr 18 19:36:35 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110418
+
+-------------------------------------------------------------------
+Sun Apr 10 15:00:13 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110410
+
+-------------------------------------------------------------------
+Sun Apr 10 13:18:04 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110410
+
+-------------------------------------------------------------------
+Sat Apr  9 18:51:03 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110409
+
+-------------------------------------------------------------------
+Fri Apr  8 17:30:18 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110408
+
+-------------------------------------------------------------------
+Thu Apr  7 17:04:59 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110407
+
+-------------------------------------------------------------------
+Wed Apr  6 19:38:17 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110406
+
+-------------------------------------------------------------------
+Tue Apr  5 19:40:45 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110405
+
+-------------------------------------------------------------------
+Mon Apr  4 15:25:24 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110404
+- Build based on standalone package in GIT
+
+-------------------------------------------------------------------
+Sun Apr  3 07:22:06 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110403
+
+-------------------------------------------------------------------
+Fri Apr  1 14:21:57 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110401
+
+-------------------------------------------------------------------
+Thu Mar 31 17:45:14 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110331
+
+-------------------------------------------------------------------
+Wed Mar 30 17:36:14 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110330
+
+-------------------------------------------------------------------
+Tue Mar 29 16:34:43 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110329
+
+-------------------------------------------------------------------
+Mon Mar 28 15:53:05 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110328
+
+-------------------------------------------------------------------
+Mon Mar 28 14:49:15 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110328
+
+-------------------------------------------------------------------
+Mon Mar 28 14:21:52 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110328
+
+-------------------------------------------------------------------
+Thu Mar 24 19:02:21 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110324
+
+-------------------------------------------------------------------
+Wed Mar 23 17:56:29 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110323
+
+-------------------------------------------------------------------
+Mon Mar 21 19:08:21 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110321
+
+-------------------------------------------------------------------
+Mon Mar 21 07:10:31 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110321
+
+-------------------------------------------------------------------
+Sat Mar 19 16:09:03 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110319
+
+-------------------------------------------------------------------
+Fri Mar 18 18:12:57 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110318
+
+-------------------------------------------------------------------
+Thu Mar 17 17:40:57 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110317
+
+-------------------------------------------------------------------
+Wed Mar 16 18:02:52 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110316
+
+-------------------------------------------------------------------
+Tue Mar 15 12:04:05 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110315
+
+-------------------------------------------------------------------
+Tue Mar 15 07:23:19 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110315
+
+-------------------------------------------------------------------
+Mon Mar 14 17:53:12 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110314
+
+-------------------------------------------------------------------
+Sun Mar 13 18:00:22 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110313
+
+-------------------------------------------------------------------
+Sat Mar 12 07:00:26 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110312
+
+-------------------------------------------------------------------
+Fri Mar 11 10:57:19 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110311
+
+-------------------------------------------------------------------
+Fri Mar 11 08:06:43 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110311
+
+-------------------------------------------------------------------
+Thu Mar 10 21:27:14 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110310
+
+-------------------------------------------------------------------
+Thu Mar 10 18:15:24 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110310
+
+-------------------------------------------------------------------
+Wed Mar  9 19:04:06 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110309
+
+-------------------------------------------------------------------
+Tue Mar  8 18:50:43 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110308
+
+-------------------------------------------------------------------
+Mon Mar  7 16:33:01 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110307
+
+-------------------------------------------------------------------
+Sun Mar  6 15:50:30 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110306
+
+-------------------------------------------------------------------
+Sat Mar  5 18:52:52 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110305
+
+-------------------------------------------------------------------
+Fri Mar  4 22:06:07 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110304
+
+-------------------------------------------------------------------
+Fri Mar  4 17:42:26 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110304
+
+-------------------------------------------------------------------
+Fri Mar  4 06:51:58 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110304
+
+-------------------------------------------------------------------
+Thu Mar  3 15:32:13 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110303
+
+-------------------------------------------------------------------
+Wed Mar  2 18:38:13 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110302
+
+-------------------------------------------------------------------
+Tue Mar  1 17:15:20 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110301
+
+-------------------------------------------------------------------
+Mon Feb 28 19:39:50 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110228
+
+-------------------------------------------------------------------
+Sun Feb 27 21:36:17 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110227
+
+-------------------------------------------------------------------
+Sun Feb 27 08:48:41 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110227
+
+-------------------------------------------------------------------
+Sat Feb 26 13:24:50 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110226
+
+-------------------------------------------------------------------
+Fri Feb 25 21:08:39 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110225
+
+-------------------------------------------------------------------
+Thu Feb 24 20:19:03 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110224
+
+-------------------------------------------------------------------
+Tue Feb 22 07:59:33 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110222
+
+-------------------------------------------------------------------
+Tue Feb 22 00:06:19 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110222
+
+-------------------------------------------------------------------
+Sun Feb 20 20:52:45 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110220
+
+-------------------------------------------------------------------
+Sat Feb 19 19:44:05 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110219
+
+-------------------------------------------------------------------
+Fri Feb 18 16:42:49 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110218
+
+-------------------------------------------------------------------
+Thu Feb 17 20:15:06 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110217
+
+-------------------------------------------------------------------
+Wed Feb 16 23:24:00 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110217
+
+-------------------------------------------------------------------
+Wed Feb 16 17:23:42 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110216
+
+-------------------------------------------------------------------
+Tue Feb 15 23:43:21 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110216
+
+-------------------------------------------------------------------
+Tue Feb 15 06:00:07 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110215
+
+-------------------------------------------------------------------
+Mon Feb 14 18:29:42 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110214
+
+-------------------------------------------------------------------
+Sun Feb 13 18:10:43 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110213
+
+-------------------------------------------------------------------
+Sat Feb 12 13:33:36 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110212
+
+-------------------------------------------------------------------
+Sat Feb 12 08:50:39 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110212
+
+-------------------------------------------------------------------
+Thu Feb 10 18:22:28 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110210
+
+-------------------------------------------------------------------
+Wed Feb  9 20:53:29 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110209
+
+-------------------------------------------------------------------
+Wed Feb  9 07:10:06 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110209
+
+-------------------------------------------------------------------
+Mon Feb  7 17:54:19 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110207
+
+-------------------------------------------------------------------
+Sun Feb  6 15:38:09 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110206
+
+-------------------------------------------------------------------
+Sat Feb  5 18:31:19 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110205
+
+-------------------------------------------------------------------
+Fri Feb  4 07:18:04 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110204
+
+-------------------------------------------------------------------
+Thu Feb  3 22:18:55 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110203
+
+-------------------------------------------------------------------
+Wed Feb  2 20:07:56 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110202
+
+-------------------------------------------------------------------
+Tue Feb  1 18:21:54 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110201
+
+-------------------------------------------------------------------
+Mon Jan 31 18:28:08 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110131
+
+-------------------------------------------------------------------
+Sun Jan 30 12:46:32 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110130
+
+-------------------------------------------------------------------
+Sun Jan 30 12:14:43 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 4.6.41_20110130
+
+-------------------------------------------------------------------
+Tue Jan 25 11:33:25 CET 2011 - ro@suse.de
+
+- split off cantor devel to silence some rpmlint warnings
+
+-------------------------------------------------------------------
+Tue Jan 25 00:24:32 CET 2011 - ro@suse.de
+
+- fix filelist to fix build again
+
+-------------------------------------------------------------------
+Wed Jan  5 23:00:17 CET 2011 - dmueller@suse.de
+
+- update to 4.6.41_20110106
+
+-------------------------------------------------------------------
+Sun Dec 19 16:32:17 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to 4.5.86svn1207757
+
+-------------------------------------------------------------------
+Fri Dec 10 17:43:17 CET 2010 - dmueller@suse.de
+
+- update to 4.5.86svn1205247
+
+-------------------------------------------------------------------
+Thu Dec  2 00:44:19 CET 2010 - dmueller@suse.de
+
+- update to 4.5.82svn1202688
+
+-------------------------------------------------------------------
+Mon Nov 29 17:39:47 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to 4.5.81svn1202101
+
+-------------------------------------------------------------------
+Sun Nov 28 10:12:12 UTC 2010 - tittiatcoke@gmail.com
+
+- Added patch to avoid building rocs on openSUSE 11.1 and 11.2
+
+-------------------------------------------------------------------
+Fri Nov 19 17:12:16 CET 2010 - dmueller@suse.de
+
+- update to 4.5.80
+  * KDE 4.6 Beta1
+  * no upstream changelog available.
+
+
+-------------------------------------------------------------------
+Thu Oct 28 22:10:32 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.3
+  * see http://kde.org/announcements/changelogs/changelog4_5_2to4_5_3.php for details
+
+-------------------------------------------------------------------
+Fri Oct  1 00:04:41 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.2
+  * see http://kde.org/announcements/changelogs/changelog4_5_1to4_5_2.php for details
+
+-------------------------------------------------------------------
+Fri Aug 27 15:44:19 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.1
+  * see http://kde.org/announcements/changelogs/changelog4_5_0to4_5_1.php for details
+
+-------------------------------------------------------------------
+Thu Aug 19 10:52:28 CEST 2010 - dmueller@suse.de
+
+- correct parley description
+
+-------------------------------------------------------------------
+Thu Jul 29 13:52:45 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.0
+  * KDE 4.5.0 final (version bump over RC3)
+
+
+-------------------------------------------------------------------
+Sat Jul 24 00:01:46 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.95
+  * KDE 4.5 RC3 (not announced)
+  * critical fixes for 4.5.0 release
+
+
+-------------------------------------------------------------------
+Fri Jul 16 18:18:14 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.93svn1149349
+
+-------------------------------------------------------------------
+Thu Jul  8 01:22:08 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.5
+  * bugfixes over 4.4.4
+  * see http://kde.org/announcements/changelogs/changelog4_4_4to4_4_5.php for details
+
+-------------------------------------------------------------------
+Fri Jun 18 16:29:49 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.4
+  * bugfixes over 4.4.3
+  * see http://kde.org/announcements/changelogs/changelog4_4_3to4_4_ 4.php for details
+  * for most modules only version number as a change (4_4_BRANCH.diff already contained the diff
+
+-------------------------------------------------------------------
+Mon May 17 13:00:25 UTC 2010 - llunak@novell.com
+
+- update 4_4_BRANCH.diff: various fixes, translation updates
+
+-------------------------------------------------------------------
+Thu Apr 29 22:38:54 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.3
+  * bugfixes over 4.4.2
+  * see http://kde.org/announcements/changelogs/changelog4_4_2to4_4_3.php for details
+
+-------------------------------------------------------------------
+Fri Mar 26 19:17:48 CET 2010 - dmueller@suse.de
+
+- update to 4.4.2
+  * bugfixes over 4.4.1
+  * see http://kde.org/announcements/changelogs/changelog4_4_1to4_4_2.php for details
+
+-------------------------------------------------------------------
+Fri Feb 26 20:52:37 CET 2010 - dmueller@suse.de
+
+- update to 4.4.1
+  * bugfixes over 4.4.0
+  * see http://kde.org/announcements/changelogs/changelog4_4_0to4_4_1.php for details
+
+-------------------------------------------------------------------
+Thu Feb  4 11:40:27 CET 2010 - dmueller@suse.de
+
+- update to 4.4.0
+  * Critical bugfixes only over 4.3.98
+  * see http://www.kde.org/announcements/4.4/ for general overview
+
+-------------------------------------------------------------------
+Sun Jan 31 21:37:35 CET 2010 - dmueller@suse.de
+
+- update to 4.3.98
+  * see http://www.kde.org/announcements/announce-4.4-rc3.php for details
+
+-------------------------------------------------------------------
+Wed Jan 20 02:08:06 CET 2010 - dmueller@suse.de
+
+- update to 4.3.95
+  * see http://www.kde.org/announcements/announce-4.4-rc2.php for details
+
+-------------------------------------------------------------------
+Sun Jan 10 14:55:39 CET 2010 - ro@suse.de
+
+- rediff patches to apply without fuzz
+
+-------------------------------------------------------------------
+Wed Jan  6 19:01:58 CET 2010 - dmueller@suse.de
+
+- update to 4.3.90
+  * see http://www.kde.org/announcements/announce-4.4-rc1.php for details
+
+-------------------------------------------------------------------
+Fri Dec 18 13:46:20 CET 2009 - dmueller@suse.de
+
+- update to 4.3.85
+  * see http://www.kde.org/announcements/announce-4.4-beta2.php for details
+
+-------------------------------------------------------------------
+Tue Dec  8 14:27:19 CET 2009 - ro@suse.de
+
+- remove ocaml buildrequires from noarch specfile (unused)
+
+-------------------------------------------------------------------
+Fri Dec  4 18:58:36 CET 2009 - dmueller@suse.de
+
+- update to 4.3.80:
+  * see http://techbase.kde.org/Schedules/KDE4/4.4_Feature_Plan
+
+-------------------------------------------------------------------
+Thu Nov 19 00:35:20 CET 2009 - ro@suse.de
+
+- rediff desktop-files.diff for fuzz=0
+
+-------------------------------------------------------------------
+Mon Nov  2 22:00:39 CET 2009 - dmueller@suse.de
+
+- update to 4.3.3
+  * see http://kde.org/announcements/changelogs/changelog4_3_2to4_3_3.php for details
+
+-------------------------------------------------------------------
+Thu Sep 24 17:28:15 UTC 2009 - beineri@opensuse.org
+
+- update 4_3_BRANCH.diff: khangman fixes and translation updates
+
+-------------------------------------------------------------------
+Wed Sep 16 20:22:09 CEST 2009 - coolo@novell.com
+
+- branch update for improved translations
+
+-------------------------------------------------------------------
+Fri Aug 28 13:56:26 CEST 2009 - dmueller@suse.de
+
+- update to 4.3.1
+  * see http://kde.org/announcements/changelogs/changelog4_3_0to4_3_1.php for details
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Wed Jul 29 18:08:09 CEST 2009 - dmueller@suse.de
+
+- update to 4.3.0
+  * see http://kde.org/announcements/4.3 for details
+
+-------------------------------------------------------------------
+Tue Jul 21 22:24:08 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.98
+
+-------------------------------------------------------------------
+Thu Jul  9 12:22:19 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.96
+
+-------------------------------------------------------------------
+Wed Jun 24 21:14:46 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.95
+
+-------------------------------------------------------------------
+Sat Jun 20 15:12:27 CEST 2009 - beineri@opensuse.org
+
+- drop kde4 package prefixes
+
+-------------------------------------------------------------------
+Fri Jun 19 14:19:43 CEST 2009 - beineri@opensuse.org
+
+- update build requires of -noarch
+
+-------------------------------------------------------------------
+Wed Jun  3 18:25:51 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.90
+
+-------------------------------------------------------------------
+Wed May 27 22:09:14 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.88svn973768
+
+-------------------------------------------------------------------
+Tue May 19 14:34:44 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.87svn969966
+
+-------------------------------------------------------------------
+Mon May 18 21:39:56 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.86svn967995
+
+-------------------------------------------------------------------
+Thu May 14 19:31:22 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.85 (KDE 4.3 Beta1)
+
+-------------------------------------------------------------------
+Tue May 12 12:08:15 CEST 2009 - dmueller@suse.de
+
+- fix dependencies
+
+-------------------------------------------------------------------
+Sat May  2 16:50:14 CEST 2009 - beineri@opensuse.org
+
+- fix kde4-khangman missing data (bnc#481119)
+
+-------------------------------------------------------------------
+Thu Apr 30 21:17:57 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.3
+  * see http://kde.org/announcements/changelogs/changelog4_2_2to4_2_3.php
+
+-------------------------------------------------------------------
+Fri Mar 27 00:41:18 CET 2009 - dmueller@suse.de
+
+- update to 4.2.2
+  * see http://kde.org/announcements/changelogs/changelog4_2_1to4_2_2.php
+
+-------------------------------------------------------------------
+Sat Mar  7 15:56:18 CET 2009 - coolo@suse.de
+
+- update 4.2 branch to add stdio.h
+
+-------------------------------------------------------------------
+Fri Feb 27 01:43:17 CET 2009 - dmueller@suse.de
+
+- update to 4.2.1
+  * see http://kde.org/announcements/changelogs/changelog4_2_0to4_2_1.php
+
+-------------------------------------------------------------------
+Thu Feb 12 18:10:54 CET 2009 - dmueller@suse.de
+
+- update branch diff again for marble
+
+-------------------------------------------------------------------
+Mon Feb  9 16:08:21 CET 2009 - dmueller@suse.de
+
+- update branch diff again for marble
+
+-------------------------------------------------------------------
+Sun Feb  8 10:03:55 CET 2009 - stbinner@suse.de
+
+- update branch diff: fix Designer crash due to Marble plugin
+
+-------------------------------------------------------------------
+Thu Feb  5 13:12:45 CET 2009 - stbinner@suse.de
+
+- fix -noarch build on ppc64
+
+-------------------------------------------------------------------
+Thu Jan 22 02:33:14 CET 2009 - dmueller@suse.de
+
+- update to 4.2.0
+
+-------------------------------------------------------------------
+Tue Jan 13 19:14:24 CET 2009 - dmueller@suse.de
+
+- update to 4.1.96
+
+-------------------------------------------------------------------
+Sun Jan 11 19:05:03 CET 2009 - stbinner@suse.de
+
+- update to 4.1.87 (KDE 4.2 Januar snapshot)
+
+-------------------------------------------------------------------
+Mon Dec  1 17:27:07 CET 2008 - ro@suse.de
+
+- no ocaml on s390 and s390x (as on ppc ppc64)
+
+-------------------------------------------------------------------
+Thu Nov  6 11:25:36 CET 2008 - dmueller@suse.de
+
+- fix kdeedu4-noarch buildrequires
+
+-------------------------------------------------------------------
+Wed Nov  5 01:56:17 CET 2008 - dmueller@suse.de
+
+- use minimal-toc to fix build on ppc(64)
+
+-------------------------------------------------------------------
+Fri Oct 31 11:25:20 CET 2008 - dmueller@suse.de
+
+- update to 4.1.3
+  * see http://kde.org/announcements/changelogs/changelog4_1_2to4_1_3.php
+
+-------------------------------------------------------------------
+Thu Sep 25 18:57:35 CEST 2008 - dmueller@suse.de
+
+- update to 4.1.2
+  * see http://kde.org/announcements/changelogs/changelog4_1_1to4_1_2.php
+
+-------------------------------------------------------------------
+Fri Sep  5 10:34:06 CEST 2008 - stbinner@suse.de
+
+- build separate kde4-kstars-data package again
+
+-------------------------------------------------------------------
+Thu Aug 28 12:33:17 CEST 2008 - dmueller@suse.de
+
+- update to 4.1.1
+  * see http://kde.org/announcements/changelogs/changelog4_1to4_1_1.php
+
+-------------------------------------------------------------------
+Tue Aug 19 16:12:31 CEST 2008 - stbinner@suse.de
+
+- branch diff update: many Kalzium and Marble bug fixes
+
+-------------------------------------------------------------------
+Wed Aug 13 11:20:49 CEST 2008 - dmueller@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Aug  4 18:11:50 CEST 2008 - dmueller@suse.de
+
+- branch diff update
+
+-------------------------------------------------------------------
+Wed Jul 30 13:18:45 CEST 2008 - dmueller@suse.de
+
+- enable kde4-step build
+
+-------------------------------------------------------------------
+Wed Jul 23 11:38:14 CEST 2008 - dmueller@suse.de
+
+- update to 4.1.0
+
+-------------------------------------------------------------------
+Tue Jul 22 18:52:42 CEST 2008 - dmueller@suse.de
+
+- file list fix
+
+-------------------------------------------------------------------
+Fri Jul 18 01:38:31 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.99
+
+-------------------------------------------------------------------
+Thu Jul 10 00:43:05 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.98
+
+-------------------------------------------------------------------
+Mon Jul  7 14:23:27 CEST 2008 - dmueller@suse.de
+
+- fix kde4-marble maps packaging error
+
+-------------------------------------------------------------------
+Fri Jul  4 00:20:23 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.85
+
+-------------------------------------------------------------------
+Tue Jul  1 12:59:50 CEST 2008 - dmueller@suse.de
+
+- fix filelist again
+
+-------------------------------------------------------------------
+Tue Jul  1 01:28:47 CEST 2008 - dmueller@suse.de
+
+- update filelist
+
+-------------------------------------------------------------------
+Thu Jun 26 17:43:45 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.84
+
+-------------------------------------------------------------------
+Wed Jun 18 21:21:09 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.83
+
+-------------------------------------------------------------------
+Tue Jun 10 14:25:57 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.82
+
+-------------------------------------------------------------------
+Mon Jun  9 23:03:47 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.81
+
+-------------------------------------------------------------------
+Thu May 29 09:17:24 CEST 2008 - dmueller@suse.de
+
+- make sure that the right version of kde4-marble-data is installed
+  (kde#162254)
+
+-------------------------------------------------------------------
+Thu May  1 18:41:34 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.4
+   * http://www.kde.org/announcements/changelogs/changelog4_0_3to4_0_4.php
+
+-------------------------------------------------------------------
+Fri Apr 25 17:24:24 CEST 2008 - dmueller@suse.de
+
+- branch diff update
+
+-------------------------------------------------------------------
+Mon Apr 21 16:17:37 CEST 2008 - stbinner@suse.de
+
+- fix file lists
+- branch diff update
+
+-------------------------------------------------------------------
+Thu Mar 27 22:57:01 CET 2008 - dmueller@suse.de
+
+- update to 4.0.3
+
+-------------------------------------------------------------------
+Tue Mar 11 17:54:27 CET 2008 - dmueller@suse.de
+
+- 4_0_BRANCH.diff update:
+  * include fullscreen window handling fixes
+
+-------------------------------------------------------------------
+Wed Feb 27 16:19:28 CET 2008 - dmueller@suse.de
+
+- update to 4.0.2
+
+-------------------------------------------------------------------
+Wed Feb 27 15:23:10 CET 2008 - dmueller@suse.de
+
+- update branch diff, add pre_checkin to make upgrade easier
+
+-------------------------------------------------------------------
+Thu Jan 31 02:23:03 CET 2008 - dmueller@suse.de
+
+- update to 4.0.1
+
+-------------------------------------------------------------------
+Sun Jan 20 10:14:03 CET 2008 - stbinner@suse.de
+
+- update KDE_4_0_BRANCH.diff
+
+-------------------------------------------------------------------
+Sat Jan  5 21:47:23 CET 2008 - dmueller@suse.de
+
+- update to 4.0
+
+-------------------------------------------------------------------
+Wed Jan  2 15:57:56 CET 2008 - stbinner@suse.de
+
+- update to 3.97.2
+
+-------------------------------------------------------------------
+Fri Dec 21 10:23:42 CET 2007 - stbinner@suse.de
+
+- fix file conflict
+
+-------------------------------------------------------------------
+Sun Dec 16 15:19:21 CET 2007 - dmueller@suse.de
+
+- update to 3.97.1
+
+-------------------------------------------------------------------
+Thu Dec  6 14:51:43 CET 2007 - dmueller@suse.de
+
+- adjust desktop files
+
+-------------------------------------------------------------------
+Wed Dec  5 19:04:58 CET 2007 - dmueller@suse.de
+
+- update to 3.97.0
+
+-------------------------------------------------------------------
+Tue Dec  4 16:34:07 CET 2007 - dmueller@suse.de
+
+- update to 3.96.3
+
+-------------------------------------------------------------------
+Wed Nov 21 18:55:57 CET 2007 - dmueller@suse.de
+
+- update to 3.96.1
+
+-------------------------------------------------------------------
+Wed Nov 14 17:34:17 CET 2007 - dmueller@suse.de
+
+- update to 3.96.0
+
+-------------------------------------------------------------------
+Wed Nov  7 10:39:02 CET 2007 - dmueller@suse.de
+
+- update to 3.95.2
+
+-------------------------------------------------------------------
+Mon Nov  5 18:18:55 CET 2007 - dmueller@suse.de
+
+- fix build on ppc
+
+-------------------------------------------------------------------
+Thu Nov  1 12:19:25 CET 2007 - dmueller@suse.de
+
+- update to 3.95.1
+
+-------------------------------------------------------------------
+Wed Oct 31 16:49:20 CET 2007 - dmueller@suse.de
+
+- update to KDE 4.0 Beta4
+
+-------------------------------------------------------------------
+Sat Oct 20 17:39:33 CEST 2007 - dmueller@suse.de
+
+- update to 3.94.1
+
+-------------------------------------------------------------------
+Tue Oct  9 01:29:56 CEST 2007 - dmueller@suse.de
+
+- update to KDE 4.0 Beta 3
+
+-------------------------------------------------------------------
+Tue Oct  2 15:49:41 CEST 2007 - stbinner@suse.de
+
+- update to 3.93.0.svn720124
+
+-------------------------------------------------------------------
+Wed Sep 26 14:44:27 CEST 2007 - stbinner@suse.de
+
+- update to 3.93.0.svn717255
+
+-------------------------------------------------------------------
+Thu Sep 13 15:01:26 CEST 2007 - stbinner@suse.de
+
+- update to 3.93.0.svn712059
+
+-------------------------------------------------------------------
+Sat Sep  1 19:18:37 CEST 2007 - stbinner@suse.de
+
+- update to KDE 4.0 Beta 2
+
+-------------------------------------------------------------------
+Thu Aug 23 17:40:39 CEST 2007 - stbinner@suse.de
+
+- update to 3.92.0.svn703905
+
+-------------------------------------------------------------------
+Thu Aug 16 13:43:01 CEST 2007 - stbinner@suse.de
+
+- update to 3.92.0.svn700953
+
+-------------------------------------------------------------------
+Thu Aug  9 10:09:28 CEST 2007 - stbinner@suse.de
+
+- update to 3.92.0.svn697375
+- fix file conflict
+
+-------------------------------------------------------------------
+Sun Jul 29 04:30:55 CEST 2007 - stbinner@suse.de
+
+- update to KDE 4.0 Beta 1
+
+-------------------------------------------------------------------
+Thu Jul 12 15:46:14 CEST 2007 - stbinner@suse.de
+
+- update to 3.91.0.svn685967
+
+-------------------------------------------------------------------
+Sat Jun 23 10:27:47 CEST 2007 - stbinner@suse.de
+
+- update to 3.90.1.svn678988
+
+-------------------------------------------------------------------
+Wed Jun 13 18:22:14 CEST 2007 - dmueller@suse.de
+
+- update buildrequires (ocaml-facile)
+
+-------------------------------------------------------------------
+Fri Jun  8 09:51:59 CEST 2007 - stbinner@suse.de
+
+- update to 3.90.1.svn670254
+
+-------------------------------------------------------------------
+Mon Jun  4 17:31:01 CEST 2007 - stbinner@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Fri Jun  1 13:31:58 CEST 2007 - coolo@suse.de
+
+- simplify spec file by using macros from kde4-filesystem
+
+-------------------------------------------------------------------
+Wed May 30 19:15:43 CEST 2007 - coolo@suse.de
+
+- fix spec file after kdelibs moves
+
+-------------------------------------------------------------------
+Mon May 28 23:13:45 CEST 2007 - dmueller@suse.de
+
+- update to 3.90.1.svn668119
+
+-------------------------------------------------------------------
+Wed May 23 11:52:54 CEST 2007 - stbinner@suse.de
+
+- use %fdupes
+
+-------------------------------------------------------------------
+Fri May 18 15:24:40 CEST 2007 - dmueller@suse.de
+
+- remove facile requirement from Factory
+
+-------------------------------------------------------------------
+Sun May 13 21:59:19 CEST 2007 - schwab@suse.de
+
+- Fix file list.
+
+-------------------------------------------------------------------
+Sat May 12 15:59:32 CEST 2007 - schwab@suse.de
+
+- Fix dependencies.
+
+-------------------------------------------------------------------
+Fri May 11 09:57:04 CEST 2007 - stbinner@suse.de
+
+- initial package in abuild
+

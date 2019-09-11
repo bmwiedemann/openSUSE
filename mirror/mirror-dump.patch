@@ -1,0 +1,12 @@
+diff -Nru mirror-2.9.old/mirror.pl mirror-2.9/mirror.pl
+--- mirror-2.9.old/mirror.pl	1998-06-08 12:55:27.000000000 +0200
++++ mirror-2.9/mirror.pl	2018-06-27 09:55:05.347301382 +0200
+@@ -656,7 +656,7 @@
+ 		# THIS DOES NOT YET WORK!!!!!
+ 		$dumped_version = 1;
+ 		warn "Dumping perl\n";
+-		dump parse_args;
++		CORE::dump parse_args;
+ 	}
+ 
+ 	warn "Unknown arg $arg, skipping\n";

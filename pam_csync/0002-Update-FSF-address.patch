@@ -1,0 +1,25 @@
+From 5d42880c167cf2925dd3c15d1ba1295ef432fb19 Mon Sep 17 00:00:00 2001
+From: Jim McDonough <jmcd@samba.org>
+Date: Mon, 10 Mar 2014 10:16:57 -0400
+Subject: [PATCH 2/2] Update FSF address
+
+---
+ COPYING | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/COPYING b/COPYING
+index 9ed3415..e095850 100644
+--- a/COPYING
++++ b/COPYING
+@@ -2,7 +2,7 @@
+                        Version 2, June 1991
+ 
+  Copyright (C) 1989, 1991 Free Software Foundation, Inc.
+-                          675 Mass Ave, Cambridge, MA 02139, USA
++ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  Everyone is permitted to copy and distribute verbatim copies
+  of this license document, but changing it is not allowed.
+ 
+-- 
+1.8.4.5
+

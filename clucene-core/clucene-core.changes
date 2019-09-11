@@ -1,0 +1,158 @@
+-------------------------------------------------------------------
+Wed Feb  7 14:12:14 UTC 2018 - tchvatal@suse.com
+
+- Add patch clucene-new-gcc.patch to fix visibility issues
+- Use %cmake macros
+- Remove few obsolete codepaths
+
+-------------------------------------------------------------------
+Wed Feb  1 10:28:36 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Tue Apr 21 13:22:11 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Use fdupes to reduce amount of duplicate files
+- Cleanup spec-file with spec-cleaner
+- Do not install empty NEWS file
+
+-------------------------------------------------------------------
+Fri Jan 25 01:20:56 UTC 2013 - jengelh@inai.de
+
+- Replace wrong shlib package name "libclucene2" (the SONAME is
+  libclucene*.so.1, not .2) by libclucene-{core,shared}1
+- Use more robust make install command
+- Add patch clucene-kill-ext-includes.diff
+
+-------------------------------------------------------------------
+Mon Dec 17 10:34:05 CET 2012 - ro@suse.de
+
+- fix build on s390x which also uses lib64
+
+-------------------------------------------------------------------
+Wed Mar 21 12:05:21 UTC 2012 - tchvatal@suse.cz
+
+- build contrib libs too
+
+-------------------------------------------------------------------
+Thu Mar 15 15:02:01 UTC 2012 - dvaleev@suse.com
+
+- fix ppc64 build 
+
+-------------------------------------------------------------------
+Fri Nov 25 10:08:15 UTC 2011 - saschpe@suse.de
+
+- Avoid line continuation in last cmake parameter
+
+-------------------------------------------------------------------
+Fri Nov 25 09:42:10 UTC 2011 - dev@dominik-schmidt.de
+
+- Fixed typo in cmake arguments 
+
+-------------------------------------------------------------------
+Thu Nov 24 09:29:56 UTC 2011 - saschpe@suse.de
+
+- Darix doesn't want a renamed devel package, thus revert that part
+
+-------------------------------------------------------------------
+Wed Nov 23 12:45:56 UTC 2011 - tittiatcoke@gmail.com
+
+- Removed the link as source. It seems very hard to determine the
+  exactly link with sourceforge. 
+
+-------------------------------------------------------------------
+Wed Nov 23 03:29:48 UTC 2011 - dev@dominik-schmidt.de
+
+- put clucene-config.h in %_libdir/CLucene/ as it's not multilib 
+  ready and fixfix libclucene-core.pc to know about it [rh#748196]
+- put CLuceneConfig.cmake there as well as it only includes version
+  information but no include path or link targets
+- don't use bundled boost
+
+-------------------------------------------------------------------
+Tue Nov 15 15:45:48 UTC 2011 - saschpe@suse.de
+
+- Honor shared library policy:
+  * Obsolete devel package, introduce libclucene0 + libclucene-devel
+- Simplified cmake usage, no need for that many env vars
+
+-------------------------------------------------------------------
+Fri Nov 11 13:48:25 UTC 2011 - dev@dominik-schmidt.de
+
+- Update to 2.3.3.4:
+  * Static object fields have been changed to method accessors
+    Classes changed: FieldCache, ScoreDocComparator.
+    This was necessary for creating static libraries work on certain
+    platforms.
+  * Folders were reorganised, this seems like a good time to do it
+  * Some deprecated functions were removed.
+  * moved platform configuration type code and utility code into
+    'shared' project. This enables tests to be built with a shared
+    library on windows
+  * Moved moved of the platform specific logic into cmake in order
+    to reduce #ifdefs in code
+  * added contributions code into the trunk. this will hopefully mean
+    more exposure to the contributions.
+  * Deletor::Array was renamed to Deletor::vArray.
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:49 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Wed Sep 14 15:09:49 UTC 2011 - idonmez@suse.com
+
+- Fix license string to be LGPL-2.1 or Apache-2.0 , bnc#717711
+
+-------------------------------------------------------------------
+Tue Sep 13 11:38:36 UTC 2011 - idonmez@suse.com
+
+- Fix license string
+- Use the correct tarball URL
+
+-------------------------------------------------------------------
+Tue Dec 15 23:05:09 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Mon May 18 12:21:21 CEST 2009 - dmueller@suse.de
+
+- fix build with gcc 4.4
+
+-------------------------------------------------------------------
+Wed Jan 28 16:16:08 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files
+
+-------------------------------------------------------------------
+Sun Sep 21 08:20:59 CEST 2008 - stbinner@suse.de
+
+- update to 0.9.21: no changelog available
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Oct  9 00:46:52 CEST 2007 - dmueller@suse.de
+
+- update to 0.9.20:
+  * no changelog available
+
+-------------------------------------------------------------------
+Mon Mar 12 17:27:19 CET 2007 - dmueller@suse.de
+
+- disable static libs
+- remove reuters test data from tarball (#253602)
+
+-------------------------------------------------------------------
+Fri Mar  9 15:07:48 CET 2007 - dmueller@suse.de
+
+- Initial package (0.9.16, taken from server:search)
+

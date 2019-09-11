@@ -1,0 +1,12 @@
+Index: SConstruct
+===================================================================
+--- SConstruct.orig	2018-03-04 08:13:17.000000000 +0200
++++ SConstruct	2019-01-03 16:16:05.422174226 +0200
+@@ -29,6 +29,7 @@ FFADO_VERSION="2.4.1"
+ 
+ from subprocess import Popen, PIPE, check_output
+ import os
++import sys
+ import re
+ import sys
+ from string import Template

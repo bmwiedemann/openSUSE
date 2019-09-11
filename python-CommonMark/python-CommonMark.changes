@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Thu May 23 08:13:19 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.9.0
+  * The CommonMark spec has been updated to 0.29. 
+
+-------------------------------------------------------------------
+Tue Mar  5 14:36:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.8.1:
+  * Added the Node.normalize() method. (from @lez)
+  * Renamed package name to commonmark for PEP8 compliance. You can now do import commonmark as well as import CommonMark. Closes #60
+  * Added testing on Python 3.7.
+  * Removed CommonMark symlink. So, as of this version, you need to replace all instances of CommonMark with commonmark in your code.
+- Remove the not-needed subpackages
+- Run the tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:47 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Apr  7 21:30:12 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 0.7.5:
+  * Fixed smart dashes bug in Python 3 (from @alvra)
+
+-------------------------------------------------------------------
+Mon Oct 30 01:51:43 UTC 2017 - arun@gmx.de
+
+- update to version 0.7.4:
+  * The CommonMark spec has been updated to 0.28.
+
+-------------------------------------------------------------------
+Wed Jun 21 22:11:08 UTC 2017 - dimstar@opensuse.org
+
+- Fix typo in Requires (pyython3 -> python3).
+
+-------------------------------------------------------------------
+Fri Jun  9 13:22:57 UTC 2017 - jengelh@inai.de
+
+- A roadmap does not belong into the description.
+- Resolve typographicly wrong apostrophe.
+
+-------------------------------------------------------------------
+Sat May  6 03:31:54 UTC 2017 - toddrme2178@gmail.com
+
+- Fix Provides/Obsoletes.
+
+-------------------------------------------------------------------
+Fri Apr 21 14:11:41 UTC 2017 - toddrme2178@gmail.com
+
+- Split "cmark" executable into own package to avoid conflicts with
+  the cmark C reference implementation.
+
+-------------------------------------------------------------------
+Mon Apr  3 14:56:45 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.7.3
+  * The CommonMark spec has been updated to 0.27.
+- Update to 0.7.2
+  * Removed outdated files from distributed packages, reported by @hyperknot
+- Update to 0.7.1
+  * Updated CommonMark spec to 0.26.
+  * Fixed JSON output invoked by `cmark -aj somefile.md`, reported by @rplCloud
+  * Fixed a bug with `dumpAST()` on ordered lists, from @rflynn
+- Update to 0.7.0
+  * The `cmark.py` script is now just called `cmark`.
+  * Fixed a bug where the `cmark.py` script contained a bogus path, reported
+    by @yuhui-lin.
+  * Fixed a bug where a TypeError could occur, reported by @civalin.
+- Update to 0.6.4
+  * The CommonMark spec has been updated to 0.25.
+  * The HtmlRenderer has been refactored based on upstream changes in commonmark.js.
+  * Python 2 fixes from @eric-wieser
+  * Contributions from @funkybob and @hyperknot
+- Update to 0.6.3
+  * CommonMark-py now supports Python 2.6.
+  * The CommonMark spec has been updated to 0.24.
+- Update to 0.6.2
+  * Fixed a UnicodeEncodeError when parsing unicode entities on
+    Python 2. As a result, CommonMark-py now relies on the "future"
+    module in Python 2, as documented in setup.py. This can be found on
+    pypi: https://pypi.python.org/pypi/future
+- Update to 0.6.1
+  * Fixed an IndexError exception that occurred when input string
+    was empty.
+- Update to 0.6.0
+  * CommonMark-py now complies to the 0.23 CommonMark spec
+    http://spec.commonmark.org/0.23/
+  * The ExtensionBlock has been removed in this release, since
+    the parser has been rewritten.
+  * Added a compatibility fix for Python 2.6, but this version
+    of Python still isn't really supported.
+  * `HTMLRenderer` has been renamed to `HtmlRenderer`.
+  * `DocParser` has been renamed to `Parser`.
+- Update to 0.5.5
+  * Random bug fixes
+  * Internal code structure changes
+  * Compatibility fixes for Python 3
+- Initial singlespec version
+
+-------------------------------------------------------------------
+Sun May  8 07:15:15 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * changed to https for source url
+  * updated source url to files.pythonhosted.org
+
+
+-------------------------------------------------------------------
+Wed Dec  9 18:26:59 UTC 2015 - bruno@ioda-net.ch
+
+- Initial packaging on obs 
+

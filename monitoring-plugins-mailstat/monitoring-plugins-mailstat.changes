@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Wed Jul 30 19:17:09 UTC 2014 - lars@linux-schulserver.de
+
+- Renamed package to monitoring-plugins-mailstat
+
+-------------------------------------------------------------------
+Thu Jun 19 20:00:14 UTC 2014 - lars@linux-schulserver.de
+
+- initial version
+- added:
+  + check_mailstat_plugin_v0.9.1-initial_values.patch
+  + check_mailstat_plugin_v0.9.1-stat_file.patch

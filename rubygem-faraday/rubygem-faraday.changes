@@ -1,0 +1,167 @@
+-------------------------------------------------------------------
+Sat Dec  8 16:20:56 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.15.4
+  no changelog found
+
+-------------------------------------------------------------------
+Wed May 23 16:04:31 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.15.2
+  no changelog found
+
+-------------------------------------------------------------------
+Wed May 16 07:59:41 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.15.1
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Apr 20 08:05:59 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.15.0
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Feb  8 06:01:18 UTC 2018 - coolo@suse.com
+
+- updated to version 0.14.0
+  no changelog found
+
+-------------------------------------------------------------------
+Sun Sep  3 09:01:16 UTC 2017 - coolo@suse.com
+
+- updated to version 0.13.1
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Aug  3 19:12:53 UTC 2017 - coolo@suse.com
+
+- updated to version 0.12.2
+  no changelog found
+
+-------------------------------------------------------------------
+Tue May 23 09:52:09 UTC 2017 - coolo@suse.com
+
+- updated to version 0.12.1
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Apr 13 04:30:06 UTC 2017 - coolo@suse.com
+
+- updated to version 0.12.0.1
+  no changelog found
+
+-------------------------------------------------------------------
+Sun Apr  2 04:31:49 UTC 2017 - coolo@suse.com
+
+- updated to version 0.12.0
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Jan 14 05:31:15 UTC 2017 - coolo@suse.com
+
+- updated to version 0.11.0
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Dec 31 05:33:17 UTC 2016 - coolo@suse.com
+
+- updated to version 0.10.1
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Nov 12 05:33:33 UTC 2016 - coolo@suse.com
+
+- updated to version 0.10.0
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Oct  7 04:29:45 UTC 2015 - coolo@suse.com
+
+- updated to version 0.9.2
+ CHANGELOG.md removed upstream
+
+-------------------------------------------------------------------
+Mon Feb  9 12:30:34 UTC 2015 - coolo@suse.com
+
+- updated to version 0.9.1
+ * Refactor Net:HTTP adapter so that with_net_http_connection can be overridden to allow pooled connections. (@Ben-M)
+ * Add configurable methods that bypass `retry_if` in the Retry request middleware.  (@mike-bourgeous)
+
+-------------------------------------------------------------------
+Thu Oct 23 09:40:00 UTC 2014 - tboerger@suse.com
+
+- Updated last pieces for new macros
+
+-------------------------------------------------------------------
+Sun Oct 12 10:56:10 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Mon Jan 20 09:29:44 UTC 2014 - coolo@suse.com
+
+- updated to version 0.9.0
+ * Add HTTPClient adapter (@hakanensari)
+ * Improve Retry handler (@mislav)
+ * Remove autoloading by default (@technoweenie)
+ * Improve internal docs (@technoweenie, @mislav)
+ * Respect user/password in http proxy string (@mislav)
+ * Adapter options are structs.  Reinforces consistent options across adapters
+   (@technoweenie)
+ * Stop stripping trailing / off base URLs in a Faraday::Connection. (@technoweenie)
+ * Add a configurable URI parser. (@technoweenie)
+ * Remove need to manually autoload when using the authorization header helpers on `Faraday::Connection`. (@technoweenie)
+ * `Faraday::Adapter::Test` respects the `Faraday::RequestOptions#params_encoder` option. (@technoweenie)
+
+-------------------------------------------------------------------
+Sun Jul 28 15:14:55 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.8, no changelog
+
+-------------------------------------------------------------------
+Mon Mar 25 09:18:54 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.7
+
+-------------------------------------------------------------------
+Sun Mar  3 19:31:49 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.6
+
+-------------------------------------------------------------------
+Tue Feb  5 15:53:24 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.5
+
+-------------------------------------------------------------------
+Mon Aug 27 19:56:28 UTC 2012 - coolo@suse.com
+
+- updated to version 0.8.4
+
+-------------------------------------------------------------------
+Wed Dec 21 16:53:43 UTC 2011 - jmassaguerpla@suse.com
+
+- Updated BuildRequires to rack-1_1 as there are multiple versions of this gem 
+
+-------------------------------------------------------------------
+Fri Oct  7 12:50:00 UTC 2011 - fcastelli@suse.com
+
+- Update to v0.7.5
+
+-------------------------------------------------------------------
+Wed Jul 27 14:37:56 UTC 2011 - fcastelli@novell.com
+
+- Fix building
+
+-------------------------------------------------------------------
+Tue Apr 26 10:41:49 UTC 2011 - aduffeck@novell.com
+
+- Update to v0.6.1
+
+-------------------------------------------------------------------
+Mon Jan 10 10:33:30 UTC 2011 - aduffeck@novell.com
+
+- initial version
+

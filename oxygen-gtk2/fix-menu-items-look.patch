@@ -1,0 +1,32 @@
+From: Mariusz Fik <fisiu@opensuse.org>
+Date: 2014-09-07 22:37:19 +02:00
+Subject: Vertical center text in menuitems
+References: https://reviewboard.kde.org/r/118715/
+Upstream: submitted
+
+Center text in menuitem and make it more compact, to look closer to native widgets.
+
+---
+ rc/gtkrc |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: rc/gtkrc
+===================================================================
+--- rc/gtkrc.orig
++++ rc/gtkrc
+@@ -99,13 +99,13 @@ class "GtkMenuBar" style "oxygen-menubar
+ style "oxygen-menubaritem" = "oxygen-default"
+ {
+     xthickness = 3
+-    ythickness = 2
++    ythickness = 3
+ }
+ 
+ style "oxygen-menuitem" = "oxygen-default"
+ {
+     xthickness = 1
+-    ythickness = 5
++    ythickness = 3
+ }
+ 
+ style "oxygen-separator-menuitem" = "oxygen-default"

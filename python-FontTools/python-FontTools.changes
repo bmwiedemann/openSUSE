@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Mon Apr  1 12:14:15 UTC 2019 - pgajdos@suse.com
+
+- version update to 3.39.0
+  see NEWS.rst
+- deleted patches
+  - 349cd94d171cf4e1e7541884df0d12bb6d4e841a.patch (upstreamed)
+  - fix-missing-sys.patch (upstreamed)
+- run the testsuite
+- do not provide extra subpackage for tools
+- do not require python-munkres, it is suprefluous when scipy is
+  required
+
+-------------------------------------------------------------------
+Thu Sep  6 07:22:24 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Upstream provided fix for the issue with big endian machines. Remove
+  fonttools-disable_failing_tests_bigendian.patch and replace with
+  349cd94d171cf4e1e7541884df0d12bb6d4e841a.patch
+- Upstream fix has a missing import; thus fix-missing-sys.patch
+
+-------------------------------------------------------------------
+Tue Sep  4 20:41:54 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Update to 3.29.0:
+    too many changes to enlist here, complete list is on
+    https://github.com/fonttools/fonttools/releases
+
+-------------------------------------------------------------------
+Thu Mar 15 08:53:18 CET 2018 - tiwai@suse.de
+
+- add fonttools-disable_failing_tests_bigendian.patch
+  disable two tests currently failing on bigendian archs 
+
+-------------------------------------------------------------------
+Thu Mar  8 16:02:24 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 3.24.1
+  * [varLib] Don’t remap the same DeviceTable twice in VarStore
+    optimizer (#1206).
+  * [varLib] Add --disable-iup option to fonttools varLib script,
+    and a optimize=True keyword argument to varLib.build function,
+    to optionally disable IUP optimization while building varfonts.
+  * [ttCollection] Fixed issue while decompiling ttc with python3
+    (#1207).
+- Update to version 3.24.0
+  * [ttGlyphPen] Decompose composite glyphs if any components’
+    transform is too large to fit a F2Dot14 value, or clamp
+    transform values that are (almost) equal to +2.0 to make them
+    fit and avoid decomposing (#1200, #1204, #1205).
+  * [ttx] Added new -g option to dump glyphs from the glyf table
+    splitted as individual ttx files (#153, #1035, #1132, #1202).
+  * Copied ufoLib.filenames module to fontTools.misc.filenames,
+    used for the ttx split-glyphs option (#1202).
+  * [feaLib] Added support for cvParameters blocks in Character
+    Variant feautures cv01-cv99 (#860, #1169).
+  * [Snippets] Added checksum.py script to generate/check SHA1
+    hash of ttx files (#1197).
+  * [varLib.mutator] Fixed issue while instantiating some variable
+    fonts whereby the horizontal advance width computed from gvar
+    phantom points could turn up to be negative (#1198).
+  * [varLib/subset] Fixed issue with subsetting GPOS variation
+    data not picking up ValueRecord Device objects (54fd71f).
+  * [feaLib/voltLib] In all AST elements, the location is no
+    longer a required positional argument, but an optional
+    kewyord argument (defaults to None). This will make it easier
+    to construct feature AST from code (#1201).
+- Update to version 3.23.0
+  * [designspaceLib] Added an optional lib element to the
+    designspace as a whole, as well as to the instance elements,
+    to store arbitrary data in a property list dictionary, similar
+    to the UFO’s lib. Added an optional font attribute to the
+    SourceDescriptor, to allow operating on in-memory font objects
+    (#1175).
+  * [cffLib] Fixed issue with lazy-loading of attributes when
+    attempting to set the CFF TopDict.Encoding (#1177, #1187).
+  * [ttx] Fixed regression introduced in 3.22.0 that affected
+    the split tables -s option (#1188).
+  * [feaLib] Added IncludedFeaNotFound custom exception subclass,
+    raised when an included feature file cannot be found (#1186).
+  * [otTables] Changed VarIdxMap to use glyph names internally
+    instead of glyph indexes. The old ttx dumps of HVAR/VVAR
+    tables that contain indexes can still be imported
+    (21cbab8, 38a0ffb).
+  * [varLib] Implemented VarStore optimizer (#1184).
+  * [subset] Implemented pruning of GDEF VarStore, HVAR and
+    MVAR (#1179).
+  * [sfnt] Restore backward compatiblity with numFonts attribute
+    of SFNTReader object (#1181).
+  * [merge] Initial support for merging LangSysRecords (#1180).
+  * [ttCollection] don’t seek(0) when writing to possibly
+    unseekable strems.
+  * [subset] Keep all --name-IDs from 0 to 6 by default
+    (#1170, #605, #114).
+  * [cffLib] Added width module to calculate optimal CFF default
+    and nominal glyph widths.
+  * [varLib] Don’t fail if STAT already in the master fonts
+    (#1166).
+- Fix conflict with old single-package version
+
+-------------------------------------------------------------------
+Mon Feb 26 17:42:47 UTC 2018 - toddrme2178@gmail.com
+
+- Fix building on tumbleweed
+
+-------------------------------------------------------------------
+Tue Feb 20 19:05:53 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

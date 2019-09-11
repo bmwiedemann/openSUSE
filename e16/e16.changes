@@ -1,0 +1,441 @@
+-------------------------------------------------------------------
+Sun Jun  2 12:36:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias and filler wording from description.
+
+-------------------------------------------------------------------
+Wed May 29 12:10:41 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- Update to 16.0.19
+  * Fix focus after slide-in
+  * Fix issue with initially shaded windows in certain cases
+  * Add new macros for theming in 'definitions'
+  * Update the restart cursor which looked a bit dated
+  * Do proper rendering of transparent icons in menus
+  * Fix magnifier pixel value display
+  * Remove long disabled pseudotransparency support
+  * Fix focus-if-group-focused cases
+  * (warning) fixes for gcc8
+  * (warning) fixes for recent support package versions
+  * autotool updates
+- use %license macro
+- add fix-compile-gtk.patch as a hack for pango dropping gobj
+  flags
+
+-------------------------------------------------------------------
+Wed Sep 27 16:50:54 UTC 2017 - dimstar@opensuse.org
+
+- Fixup sound dependencies: we pass --enable-sound to configure,
+  which, according to configure, implies 'pulseaudio' (unless
+  specified as --enable-sound=esound).
+  + Drop esound-devel BuildRequires: not needed, since we never
+    passed --enable-sound=esound to configure.
+  + Drop pkgconfig(alas) BuildRequires: no needed, since e16 has no
+    alsa support.
+  + Add pkgconfig(libpulse) BuildRequires: Enable the implied sound
+    module for 16.
+- Toggle with_sound to 0, until somebody actually fixes the build
+  with PulseAudio (note: this is defacto the same as we had before
+  as the dependencies were simply not in place and configure
+  silently switched off --enable-sound).
+
+-------------------------------------------------------------------
+Fri Jun 16 09:03:03 UTC 2017 - simonf.lees@suse.com
+
+- Fix license should be MIT-advertising and GPL-2.0+
+
+-------------------------------------------------------------------
+Wed May 10 01:33:11 UTC 2017 - sflees@suse.de
+
+- Update to 1.0.18 - warnings / autotools fixes
+
+-------------------------------------------------------------------
+Fri Oct  9 12:24:51 UTC 2015 - sleep_walker@opensuse.org
+
+- add cairo as build requirement
+- add harfbuzz as build requirement
+
+-------------------------------------------------------------------
+Thu Aug  6 08:35:52 UTC 2015 - simon@simotek.net
+
+- update to 1.0.17 - bug fixes
+
+-------------------------------------------------------------------
+Sat Oct 18 23:53:23 UTC 2014 - crrodriguez@opensuse.org
+
+- Run spec-cleaner
+- Discontinue use of metapackage xorg-x11-devel replacing it
+  by specific pkgconfig() requires.
+- Enable verbose build.
+
+-------------------------------------------------------------------
+Tue Apr  8 03:54:16 UTC 2014 - simon@simotek.net
+
+- Update to 1.0.14 - Release Notes Below
+
+
+    There are apparently still a couple of e16 users out there, so
+
+    e16-1.0.14 is available for download:
+    http://sourceforge.net/projects/enlightenment/files/
+
+    There are no major changes since e16-1.0.13.
+    Mostly a couple of minor bug fixes and some internal reworkings.
+
+-------------------------------------------------------------------
+Tue Jan 21 11:47:36 UTC 2014 - cfarrell@suse.com
+
+- license update: MIT and GPL-2.0+
+  SPDX
+
+-------------------------------------------------------------------
+Fri Jan 17 09:21:01 UTC 2014 - simon@simotek.net
+
+- License is really MIT and GPL2+ (epp)
+
+-------------------------------------------------------------------
+Tue Jan 14 03:22:41 UTC 2014 - simon@simotek.net
+
+- Recreated e16 package in X11:Enlightenment:E16:Factory from
+  enlightenment package in X11:WindowMangers
+
+-------------------------------------------------------------------
+Fri Sep 13 12:56:04 UTC 2013 - jmatejek@suse.com
+
+- update to 1.0.13
+  * translation updates
+  * minor cleanup/bugfixes
+  * many warnings cleared
+- restored xsession menu entry
+- simplified spec filelist
+
+-------------------------------------------------------------------
+Wed Aug  7 16:02:54 CEST 2013 - ro@suse.de
+
+- fix filelist to fix build on factory: recent rpm allows only
+  directories with a trailing "/", not regular files
+
+-------------------------------------------------------------------
+Wed Dec  5 11:22:58 UTC 2012 - sleep_walker@suse.cz
+
+- use fdupes only for SUSE > 11
+- disable autoreconf for SLE10
+
+-------------------------------------------------------------------
+Tue Dec  4 07:04:05 UTC 2012 - sleep_walker@suse.cz
+
+- remove duplicates with fdupes
+- don't explicitly require imlib2
+- fix provides/obsoletes
+
+-------------------------------------------------------------------
+Fri Nov 30 15:11:43 UTC 2012 - sleep_walker@suse.cz
+
+- bump to 1.0.11
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:58 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Thu Aug  6 15:32:46 CEST 2009 - matejcik@suse.cz
+
+- update to 1.0.0
+  * mostly bugfix release
+  * should've been 0.16.8.18, but upstream decided that the package
+  is "done"
+
+-------------------------------------------------------------------
+Fri Sep 12 14:04:24 CEST 2008 - matejcik@suse.cz
+
+- update to 0.16.8.14
+  * mostly bugfix release
+
+-------------------------------------------------------------------
+Thu Apr 17 21:31:55 CEST 2008 - matejcik@suse.cz
+
+- update to 0.16.8.12
+  * support for pango fonts
+  * better menu configuration
+  * bugfixes
+- requires imlib2-loaders, to offset imlib2 packaging bug on 10.3
+- removed nonfunctional e16-kde and e16-gnome sessions
+
+-------------------------------------------------------------------
+Sun Mar 16 01:57:48 CET 2008 - crrodriguez@suse.de
+
+- fix file-not-in-lang errors
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Thu Jun 21 15:54:45 CEST 2007 - adrian@suse.de
+
+- fix changelog entry order
+
+-------------------------------------------------------------------
+Wed Feb 28 13:49:00 CET 2007 - jmatejek@suse.cz
+
+- removed /usr/share/xsessions directory from filelist
+  (bug #248719)
+
+-------------------------------------------------------------------
+Fri Feb 16 16:53:30 CET 2007 - matejcik@suse.cz
+
+- fixed wrong ${prefix} expansion that that was effectively disabling
+  system-wide themes and making enlightenment unusable
+  in default configuration
+  (bug #246294)
+
+-------------------------------------------------------------------
+Thu Dec 14 02:33:25 CET 2006 - ro@suse.de
+
+- move from usr/X11R6 to usr
+
+-------------------------------------------------------------------
+Tue Aug  8 11:44:53 CEST 2006 - pnemec@suse.cz
+
+- fix spec file to build with new gettext 0.15
+
+-------------------------------------------------------------------
+Fri Jul 14 14:13:15 CEST 2006 - pnemec@suse.cz
+
+- updated to 0.16.8.1
+- package enlightenment was transfered to BuildService
+- cleared spec file
+- removed nearly all patches
+- added susemenu.diff
+- themes subpackage is removed completly
+
+-------------------------------------------------------------------
+Tue Jul  4 17:30:28 CEST 2006 - pnemec@suse.cz
+
+- updated to 0.16.7.2
+- cleared spec file
+- themes are not part of source file anymore
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:43 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Dec 21 01:24:24 CET 2005 - ro@suse.de
+
+- added locale dirs to filelist
+
+-------------------------------------------------------------------
+Thu Oct  6 14:48:51 CEST 2005 - pnemec@suse.cz
+
+- fixed uninitialized variables
+
+-------------------------------------------------------------------
+Thu Apr 14 17:17:06 CEST 2005 - sbrabec@suse.cz
+
+- Added audiofile-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Thu Feb 10 14:59:56 CET 2005 - adrian@suse.de
+
+- install session desktop file
+
+-------------------------------------------------------------------
+Sat Mar 20 10:09:51 CET 2004 - mmj@suse.de
+
+- Compile with -fno-strict-aliasing
+- Remove rogue .xvpics dirs
+- Use %_lib
+
+-------------------------------------------------------------------
+Sat Jan 10 16:01:57 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Nov 07 12:11:10 CET 2003 - ltinkl@suse.cz
+
+- update to latest stable version 0.16.6
+
+-------------------------------------------------------------------
+Mon Jun 16 14:09:59 CEST 2003 - kukuk@suse.de
+
+- Use %find_lang macro
+
+-------------------------------------------------------------------
+Mon Mar 03 17:54:31 CET 2003 - pmladek@suse.cz
+
+- fixed themes to use iso8859-* instead of iso8859-1 in config files
+  to work also with East European languages, many thanks to Stanislav
+  Brabec <sbrabec@suse.cz> for hint [#20658]
+
+-------------------------------------------------------------------
+Tue Nov 12 18:39:54 CET 2002 - pmladek@suse.cz
+
+- used x-devel-packages and XFree86 in neededforbuild to conform to
+  the new naming scheme of the XFree86 stuff
+
+-------------------------------------------------------------------
+Fri Sep 27 14:34:58 CEST 2002 - ro@suse.de
+
+- Added alsa alsa-devel to neededforbuild (esound)
+
+-------------------------------------------------------------------
+Mon Jun 24 00:19:03 CEST 2002 - ro@suse.de
+
+- fix directories permissions
+
+-------------------------------------------------------------------
+Wed Feb 20 12:55:03 CET 2002 - postadal@suse.cz
+
+- fixed eesh to work on the first attempt
+- fixed to read also menu from KDE 3
+
+-------------------------------------------------------------------
+Tue Feb 12 14:26:58 CET 2002 - pmladek@suse.cz
+
+- used %defattr(-,root,root)
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:12 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Mon Nov  5 13:42:29 CET 2001 - pmladek@suse.cz
+
+- added support for SuSE menu generated by susewm
+- fixed test on KDE, GNOME menu presence
+- added test on gnome-config presence
+
+-------------------------------------------------------------------
+Tue Oct  2 13:14:29 CEST 2001 - pmladek@suse.cz
+
+- fixed menu from KDE 2
+- cleaned up spec file
+- removed unneeded patch for configure
+
+-------------------------------------------------------------------
+Mon Feb 19 17:36:15 CET 2001 - ro@suse.de
+
+- changed neededforbuild <libghtt> to <libghttp>
+- changed neededforbuild <libghtt-devel> to <libghttp-devel>
+
+-------------------------------------------------------------------
+Fri Jan 26 18:02:40 CET 2001 - violiet@suse.de
+
+- Added korean-pack package support for Korean.
+- Install international message.
+
+-------------------------------------------------------------------
+Fri Dec 29 18:03:58 MET 2000 - egger@suse.de
+
+- Fixed bug 5049 by including esound-devel.
+- Use SuSE optimisation flags.
+- General specfile cleanup.
+
+-------------------------------------------------------------------
+Sun Nov  5 18:48:41 CET 2000 - ro@suse.de
+
+- fixed neededforbuild
+
+-------------------------------------------------------------------
+Wed Nov  1 01:21:05 MET 2000 - egger@suse.de
+
+- Updated specfile to new long packagenames.
+- Reworked specfile.
+- Probably needs some more work; I'm taking care of that.
+
+-------------------------------------------------------------------
+Sun Oct  1 18:05:54 MEST 2000 - egger@suse.de
+
+- Cleaned up specfile.
+- Removed unnecessary ImageMagick dependency.
+- Updated to version 0.16.5.
+
+-------------------------------------------------------------------
+Mon May 15 17:54:45 CEST 2000 - egger@suse.de
+
+- Updated to version 0.16.4.
+
+-------------------------------------------------------------------
+Sat Mar  4 16:33:18 CET 2000 - ro@suse.de
+
+- try to avoid specfile bug
+
+-------------------------------------------------------------------
+Tue Feb 29 18:49:52 MET 2000 - grimmer@suse.de
+
+- Update to 0.16.3 (#2026)
+- reworked spec file (BuildRoot, group tag, version macro, URL)
+- now uses sane path names (--enable-fsstd)
+- enabled sound
+- removed obsolete patches and profile script
+
+-------------------------------------------------------------------
+Fri Jan 21 14:55:23 CET 2000 - ro@suse.de
+
+- freetype is in /usr/include/freetype now
+
+-------------------------------------------------------------------
+Tue Oct 12 06:52:47 MEST 1999 - grimmer@suse.de
+
+- Updated to 0.16.0
+- Specfile cleanups, created more symlinks for binaries
+- Added Authors to PAC file and rewrote package descriptions
+
+-------------------------------------------------------------------
+Mon Sep 20 16:43:36 CEST 1999 - ro@suse.de
+
+- added Provides windowmanager
+
+-------------------------------------------------------------------
+Fri Sep 17 11:28:09 MEST 1999 - kettner@suse.de
+
+- Reinserted old # Commandline line.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Jul 13 12:42:22 MEST 1999 - bs@suse.de
+
+- use gtk and glib instead of gtkn and glibn
+
+-------------------------------------------------------------------
+Thu Jul  1 16:55:18 MEST 1999 - uli@suse.de
+
+- changed refs to libgif to libungif
+
+-------------------------------------------------------------------
+Tue May  4 16:27:30 MEST 1999 - mb@suse.de
+
+- updated to version 0.15.5 using autospec
+
+Fri Feb 19 16:42:56 MET 1999
+
+- updated to version 0.14
+
+-------------------------------------------------------------------
+Thu Oct 29 11:01:33 MET 1998 - ro@suse.de
+
+- updated neededforbuild
+
+-------------------------------------------------------------------
+Sat Jul 18 12:47:04 MEST 1998 -mb@suse.de
+
+- this is the SNAP release of the enlightenment window manager
+- version 0.14
+- the manager has been completely redesigned
+-------------------------------------------------------------------
+Wed Nov 05 12:20:00 MET 1997 - kgw@suse.de
+
+first SuSE version, ready for autobuild.

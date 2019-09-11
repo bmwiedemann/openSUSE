@@ -1,0 +1,402 @@
+-------------------------------------------------------------------
+Fri Jul 19 09:46:45 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.9.20
+ see installed CHANGELOG.md
+
+  # 0.9.20 - June 27th, 2019
+  
+  [0.9.20]: https://github.com/lsegal/yard/compare/v0.9.19...v0.9.20
+  
+  - Fix parsing of stringified Symbols in Ruby source (#1256).
+  - Fix path traversal vulnerability in `yard server`. This bug would allow
+   unsanitized HTTP requests to access arbitrary files on the machine of a
+   `yard server` host under certain conditions. Thanks to CuongMX from
+   Viettel Cyber Security for discovering this vulnerability.
+
+-------------------------------------------------------------------
+Sun May  5 09:48:54 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.9.19
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Sat Mar  2 15:42:52 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.9.18
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Sep  5 10:48:53 UTC 2018 - coolo@suse.com
+
+- updated to version 0.9.16
+ see installed CHANGELOG.md
+
+  # master
+  
+  # [0.9.16] - August 11th, 2018
+  
+  [0.9.16]: https://github.com/lsegal/yard/compare/v0.9.15...v0.9.16
+  
+  - Documentation fixes (#1175, #1178).
+  - Fixed stack overflow issue when parsing extremely large lists (#1176).
+  
+  # [0.9.15] - July 17th, 2018
+  
+  [0.9.15]: https://github.com/lsegal/yard/compare/v0.9.14...v0.9.15
+  
+  - Fixed security issue in parsing of Ruby code that could allow for arbitrary
+    execution. Credit to Nelson Elhage <nelhage@nelhage.com> for discovering this
+    issue.
+
+-------------------------------------------------------------------
+Mon Jun  4 21:27:49 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.9.14
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Sun Jun  3 23:26:23 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.9.14
+ see installed CHANGELOG.md
+
+  # [0.9.14] - June 2nd, 2018
+  
+  [0.9.14]: https://github.com/lsegal/yard/compare/v0.9.13...v0.9.14
+  
+  - Fixed a regression in symbol parsing (#1170).
+  
+  # [0.9.13] - May 28th, 2018
+  
+  [0.9.13]: https://github.com/lsegal/yard/compare/v0.9.12...v0.9.13
+  
+  - Added support for grouped constants via `@!group` directive (#1056).
+  - Added support for quoted symbols (#1168).
+  - Added support for i18n in tag text (#1169).
+  - Fixed HTML rendering of inline code blocks (#1152).
+  - Fixed rendering of anchor URLs in rendered HTML (#1154).
+
+-------------------------------------------------------------------
+Mon May 28 23:18:49 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.9.13
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue Feb 27 05:41:50 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.9.12
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue May 23 10:25:36 UTC 2017 - coolo@suse.com
+
+- updated to version 0.9.9
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Sat Jan 14 05:40:26 UTC 2017 - coolo@suse.com
+
+- updated to version 0.9.8
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Sun Jan  8 05:48:56 UTC 2017 - coolo@suse.com
+
+- updated to version 0.9.6
+ see installed CHANGELOG.md
+
+  # Master branch (unreleased)
+  
+  - Removed official support for Ruby 1.x (1.8/1.9). YARD can still be installed
+    in these versions, but support is not guaranteed. Simple bug fixes may still
+    be considered via pull request only. Issues without code will be automatically
+    closed.
+  - Added {YARD::Tags::Tag#explain_types} returning a plain English summary
+    of the type specification of a given tag. Also adds {YARD::Tags::TypesExplainer}
+    as an implementation class for the method.
+  - Added support for automatic linking of constants and method calls of
+    Ruby syntax highlighted source code in generated HTML. Also adds the
+    {YARD::Parser::Ruby::TokenResolver} implementation class to iterate over
+    tokenized code with extra resolved object information.
+  - Added support for compound constant assignments (`A::B::C = true`).
+  - Added `LibraryVersion#yardoc_file_for_SOURCE` callback method for sources with
+    a pre-determined yardoc file location. Implement this method instead of
+    manually setting `library.yardoc_file = ...` in your load method (you can
+    still assign the attribute manually).
+  - Use RubyGems 2.x+ API to query gems when available instead of using backport.
+
+-------------------------------------------------------------------
+Mon Jul 25 04:32:14 UTC 2016 - coolo@suse.com
+
+- updated to version 0.9.5
+ see installed CHANGELOG.md
+
+  # 0.9.5 - July 22nd, 2016
+  
+  - `yard doc` will now generate `.yardoc/processing` and `.yardoc/complete` files
+    to allow other tools to properly detect when YARD is in the middle of parsing
+    source files, and when it has completed writing the database.
+  - Added support for on-demand generation of LibraryVersion objects using the
+    `:disk` source type. LibraryVersion objects pointing to a .yardoc database
+    directory will now auto-generate if there is a `source_path` attached.
+  - Added warning for macros attached to non-method objects.
+  - Fixed a few more parsing errors.
+  
+  # 0.9.4 - July 21st, 2016
+  
+  - Minor Ruby file parsing and CSS bug fixes.
+  
+  # 0.9.3 - July 20th, 2016
+  
+  - Added support for {YARD::Server::RackAdapter} to be mounted under prefix URIs.
+  - Fixed regression in `yard server -g` that caused static file assets on index
+    page to return 404 errors.
+  - Fixed regression in `yard server -g` index page that disabled scrolling and
+    caused other HTML rendering glitches.
+  
+  # 0.9.2 - July 19th, 2016
+  
+  - Added `yard config --gem-install-[yri|yard]` commands which auto-configure
+    your `~/.gemrc` file to run yri/yard instead of ri/rdoc on a `gem install`.
+  - Added support for gemspec metadata key `"yard.run"`, which can be either
+    `"yard"` or `"yri"` to run the respective commands on a `gem install`.
+  - Added `yard doc --no-progress` to hide the progress bar.
+  - Fix resolution error for compound proxy namespaces.
+  - YRI will now search across all gem versions (latest first) for the .yardoc
+    database.
+
+-------------------------------------------------------------------
+Tue Jul 19 04:32:44 UTC 2016 - coolo@suse.com
+
+- updated to version 0.9.1
+ see installed CHANGELOG.md
+
+  # 0.9.1 - July 18th, 2016
+  
+  - Added "Attributes" section to `yard stats`.
+  - Added support for RubyGems 2.x `--document=yri,yard` flags. You can now run
+    YARD documentation generation against installed gems by running:
+    `gem install mygem --document=yard,yri`.
+  - Added `/static/*` routing for library-specific routing. This enables static
+    template files to be served on a per-library basis instead of globally shared
+    across the `yard server`.
+  - Added support for inlining of `{include:*}` syntax. Using this syntax in
+    the middle of a docstring paragraph will no longer create a separate paragraph
+    for the included text.
+  - Added support for resolving `{}` syntax in text templates, specifically for
+    use in `{include:*}` syntax.
+  - Improved object resolution logic in `{Foo::Bar}` syntax and {YARD::Registry.resolve}.
+    New resolution logic should now more accurately support resolving compound paths
+    across namespaces and through the inheritance tree (as Ruby does).
+  - The `frozen_string_literal: true` comment line in Ruby source files will now be
+    excluded from docstrings.
+  - Added a workaround for https://bugs.ruby-lang.org/issues/11485
+  - Fixed an issue where type using a docstring reference on an `@!attribute` macro
+    would be incorrectly parsed as a type specifier. This change updates the tag
+    parser to disallow newlines between the tag name and opening bracket of the
+    type specification.
+  - Fixed an issue where `--embed-mixins` would improperly embed methods from
+    inherited classes instead of modules.
+  - Fixed various parsing errors and YARD exceptions.
+  - Added a warning for modules or classes being redefined as constants.
+  - Reverted stripping of HTML in {YARD::Docstring#summary}.
+  - Added optimization to remove initial docstring parse on newly created code objects.
+  - {YARD::CodeObjects::Base#format} now passes the :type parameter to templates.
+  - Hide methods with filtered namespaces in Method Listing.
+
+-------------------------------------------------------------------
+Tue Jul  5 04:33:04 UTC 2016 - coolo@suse.com
+
+- updated to version 0.9.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Mar 23 12:07:48 UTC 2016 - olaf@aepfle.de
+
+- Force fixed timestamps for patched gems (bsc#916047)
+
+-------------------------------------------------------------------
+Sun Feb  1 05:58:49 UTC 2015 - coolo@suse.com
+
+- add yard-do-not-record-timestamps.diff to avoid always changing
+  yast documentation (bsc#931226)
+
+-------------------------------------------------------------------
+Sun Feb  1 05:54:42 UTC 2015 - coolo@suse.com
+
+- updated to version 0.8.7.6
+ - Support using `@option` tag on keyword arg splat parameter. (#729)
+ - Add `.stats_options` for `YardocTask`. (#800, #801)
+ 
+ # 0.8.7.5 - October 26, 2014
+ 
+ - Fix linking of methods in top level namespace in method listing. (#776)
+ - Support using C macros in function declarations. (#810)
+ - YARD will no longer group comment blocks starting on the same column if they
+   are preceded by code. (#798)
+ - Handle anonymous lambda calls in toplevel scope. (#774)
+ - Support I18n in `@overload` tags. (#794)
+ - Support `yard stats` for objects with no file property. (#792)
+ - Support for named arguments in Ruby >= 2.1. (#785)
+ - Exclude README backup files from YARD generation. (#790)
+ - Turned on the lax spacing option in Redcarpet to comply with the
+   Markdown standard.
+ - Escape HTML in YARD server search placeholder template.
+ - Fix issue with `private_class_method` support. (#760, #767)
+ - Enable tables support by default in Redcarpet Markdown provider. (#765)
+
+-------------------------------------------------------------------
+Mon Oct 13 18:54:40 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Sun Mar 23 06:56:32 UTC 2014 - coolo@suse.com
+
+- updated to version 0.8.7.4, no changelog
+
+-------------------------------------------------------------------
+Fri Nov 22 08:40:30 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.7.3
+   - Handle Unicode method/class/file names in server URL encoding (lsegal/rubydoc.info#69).
+   - Style keyword style hashes with same symbol color in code highlighting (#707).
+   - Fix broken JS when visiting docs in file:// scheme (#706).
+   - Add support for new AsciiDoc file extensions (#704).
+   - Fix issues where non-Ruby code blocks would not display in Ruby 2 (#702).
+   - Add support for extra Ruby 2 symbol types in Ripper (#701).
+   - Ensure config directory exists before saving config file (#700).
+
+-------------------------------------------------------------------
+Sun Oct 20 12:05:38 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.7.2
+    - Disallow absolute URLs when using frame anchor support.
+    - Support casted functions in CRuby method declarations (#697)
+
+-------------------------------------------------------------------
+Fri Sep 13 11:06:18 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.7.1
+    - Fix potential XSS issue with frame anchor support.
+    - Add support for gettext 3.x gem.
+
+-------------------------------------------------------------------
+Tue Jul 30 18:43:59 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.7
+    - Added `--hide-api API` option to hide objects with a given `@api` tag (#685).
+    - Added "Returns ...." prefix to summary when a lone @return tag is used.
+    - Fixed issue that caused ref tags to be added to a docstring twice (#678).
+    - Fixed formatting issue in docstring summaries (#686)
+
+-------------------------------------------------------------------
+Fri Jul 12 18:49:32 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.6.2
+ - Fixed issue where `yard graph` was not displaying methods
+
+-------------------------------------------------------------------
+Sun Apr 21 10:58:49 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.6.1
+ **Added `--layout` to `yard display` command**
+
+-------------------------------------------------------------------
+Sun Apr 14 08:19:05 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.6
+
+-------------------------------------------------------------------
+Sun Mar  3 08:04:08 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.5.2
+
+-------------------------------------------------------------------
+Sat Feb  9 09:13:46 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.4.1
+  * See ChangeLog for details (git log basically)
+
+-------------------------------------------------------------------
+Mon Oct 15 20:08:39 UTC 2012 - coolo@suse.com
+
+- updated to version 0.8.3
+  * See ChangeLog for details (git log basically)
+
+-------------------------------------------------------------------
+Thu Sep 27 08:54:42 UTC 2012 - coolo@suse.com
+
+- update to 0.8.2.1:
+  * See ChangeLog for details (git log basically)
+- switch to new gem2rpm template
+
+-------------------------------------------------------------------
+Fri Apr 13 08:47:16 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.7.5:
+  * See ChangeLog for details
+- Provide rubygem-yard-0_7
+
+-------------------------------------------------------------------
+Fri Aug 26 16:53:00 UTC 2011 - fcastelli@novell.com
+
+- update to 0.7.2
+
+-------------------------------------------------------------------
+Tue Apr 26 16:27:08 UTC 2011 - mrueckert@suse.de
+
+- update to 0.6.8
+  too many changes to list here please see
+  /usr/lib*/ruby/gems/1.8/gems/yard-0.6.8/ChangeLog
+- drop unneeded buildrequires on rubygem-rdoc
+- moved docs and testsuite in subpackages
+
+-------------------------------------------------------------------
+Sat Mar 19 20:33:01 UTC 2011 - kkaempf@novell.com
+
+- Fix the build for 11.4 by using newer rdoc
+
+-------------------------------------------------------------------
+Tue Sep 14 14:51:11 UTC 2010 - mrueckert@suse.de
+
+- update to version 0.6.1
+  too many changes to list here please see
+  /usr/lib*/ruby/gems/1.8/gems/yard-0.6.1/ChangeLog
+
+-------------------------------------------------------------------
+Mon Jun 14 19:22:24 UTC 2010 - mrueckert@suse.de
+
+- update to version 0.5.6
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Fri Jan 15 16:58:04 UTC 2010 - dmacvicar@novell.com
+
+- update to 0.5.3
+  * Incremental parsing and output generation with yardoc -c
+  * Generating HTML docs now adds frames view
+  * Tree view for class list
+  * Ability to specify markup format of extra files
+
+-------------------------------------------------------------------
+Thu Dec 24 14:39:20 UTC 2009 - prusnak@suse.cz
+
+- update to 0.5.2
+
+-------------------------------------------------------------------
+Mon Nov 16 15:08:45 UTC 2009 - mrueckert@suse.de
+
+- update to 0.4.0
+
+-------------------------------------------------------------------
+Thu Aug  6 10:37:16 CEST 2009 - dmacvicar@novell.com
+
+- initial package
+

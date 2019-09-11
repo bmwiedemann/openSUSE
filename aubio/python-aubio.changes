@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Tue Feb 12 15:55:52 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.4.9:
+  * No upstream changes provided, please see
+    https://git.aubio.org/?p=aubio.git;a=shortlog
+- Changes from version 0.4.8:
+  * src/notes: new option release_drop.
+  * src/spectral: new parameters added to filterbank and mfcc.
+  * python/lib: start documenting module, improve build for
+    win-amd64.
+  * src fixes: prevent crash when using fft sizes unsupported by
+    vDSP, prevent saturation when down-mixing a multi-channel
+    source (avcodec/ffmpeg).
+- Changes from version 0.4.7:
+  * src/io/, src/notes/, src/pitch: prevent crashes on corrupted
+    files.
+  * src/spectral/dct.h: add dct type II object with optimised
+    versions.
+  * examples/: fix jack midi output, improve messages when jack
+    disabled.
+  * python/: add dct support, minor bug fixes tests and demos.
+  * wscript: improve support for BLAS/ATLAS.
+- Run spec-cleaner, modernize spec.
+
+-------------------------------------------------------------------
+Mon Jan  1 17:38:57 UTC 2018 - coolo@suse.com
+
+- update to 0.4.6
+  This version includes:
+    * yinfast, a new version of the YIN pitch detection algorithm,
+    that uses spectral convolution to compute the same results as
+    the original yin, but with a cost O(N log(N)), making it much
+    faster than the plain implementation (O(N^2))
+
+    * Intel IPP optimisations (thanks to Eduard Mueller)
+
+    * improved support for emscripten (thanks to Martin Hermant),
+      which compiles the aubio library as a javascript module and
+      lets you run aubio's algorithm directly from within a web-page.
+  0.4.6 also comes with several bug fixes and improvements.
+
+-------------------------------------------------------------------
+Mon Apr 24 08:36:52 UTC 2017 - alarrosa@suse.com
+
+- Use singlespec macros
+- Update to 0.4.5:
+  * aubio: New python command line tool to extract information
+  * Improved default parameters for onset detection, using adaptive
+    spectral whitening and compression
+  * Add support for libswresample
+  * New options --miditap-note and --miditap-velo have been added to
+    aubioonset and aubiotrack to adjust the note and velocity of the
+    midi note emitted by onsets and beats.
+  * Add a bunch of fixes, including improved documentation, build
+    system fixes, and platform compatibility.
+
+-------------------------------------------------------------------
+Mon Feb  6 14:30:40 UTC 2017 - alarrosa@suse.com
+
+- Initial release 
+

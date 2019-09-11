@@ -1,0 +1,36 @@
+diff --git a/Makefile.am b/Makefile.am
+index 592bcc2..51c4b22 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -9,7 +9,7 @@ endif
+ 
+ ACLOCAL_AMFLAGS=-I m4
+ 
+-#SUBDIRS+=ifd libcyberjack checksuite tools debian doc
++#SUBDIRS+=ifd libcyberjack tools debian doc
+ SUBDIRS+=ifd libcyberjack tools doc
+ 
+ 
+diff --git a/configure.ac b/configure.ac
+index 5312853..0fd1b9b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -736,7 +736,6 @@ AC_CONFIG_FILES([Makefile
+                  libcyberjack/Makefile
+                  libcyberjack/libdialog/Makefile
+                  libcyberjack/libdialog/base/Makefile
+-                 libcyberjack/checksuite/Makefile
+                  tools/Makefile
+                  tools/cjflash/Makefile
+                  tools/cjgeldkarte/Makefile
+diff --git a/libcyberjack/Makefile.am b/libcyberjack/Makefile.am
+index d045edb..3d59000 100644
+--- a/libcyberjack/Makefile.am
++++ b/libcyberjack/Makefile.am
+@@ -1,4 +1,4 @@
+-SUBDIRS=checksuite libdialog
++SUBDIRS=libdialog
+ 
+ INCLUDES= $(pcsc_includes) $(libxml2_includes) \
+           -I../include -I../include/driver -I../ifd -I../libcyberjack -I../cjeca32 -I../include/firmware -Iausb
+-

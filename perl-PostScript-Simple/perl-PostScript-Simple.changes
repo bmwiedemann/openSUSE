@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Fri Apr 17 09:10:42 UTC 2015 - coolo@suse.com
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-PostScript-Simple/Changes
+
+  0.09 - 23 September 2014
+    Matthew Newton:
+      - add setcmykcolour method
+      - add err method to find last error
+      - internal data structure updates
+  
+  0.08 - 20 June 2014
+    Satoshi Azuma:
+      - remove Test::More module and make it a build dependency
+  
+    Matthew Newton:
+      - fix test result failures on -Duselongdouble
+      - allow units to be specified for any distance
+      - add X-Windows colours, supplied by Steve Baldwin
+      - change all space-separated lists to arrays
+      - fix Begin/EndDocument handling in EPS file insertion
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:39 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:55 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:39:01 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:55 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 10:12:04 CET 2006 - cwh@suse.de
+
+version 0.07:
+ - fix lack of newpath in arc
+
+-------------------------------------------------------------------
+Wed Sep 28 22:16:09 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Sun Jul 31 16:13:55 CEST 2005 - cthiel@suse.de
+
+- update to version 0.06
+
+-------------------------------------------------------------------
+Fri Aug 22 15:36:01 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 28 12:08:00 CEST 2003 - ro@suse.de
+
+- install to vendor location
+
+-------------------------------------------------------------------
+Wed Jun 18 09:29:28 CEST 2003 - coolo@suse.de
+
+- package directories
+
+-------------------------------------------------------------------
+Mon May 26 00:20:55 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Wed Jun 26 13:28:03 CEST 2002 - ray@suse.de
+
+- init version 0.04
+

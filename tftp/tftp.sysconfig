@@ -1,0 +1,26 @@
+## Description: TFTP Configuration
+## Type:    string
+## Default: "tftp"
+#
+#  daemon user (tftp)
+#
+TFTP_USER="tftp"
+
+## Type:    string
+## Default: ""
+##
+## INFO:
+#
+# tftp options
+#
+TFTP_OPTIONS=""
+
+## Type:    string
+## Default: "/srv/tftpboot"
+## was "/tftpboot" but
+## "/tftpboot" is not allowed anymore in FHS 2.2.
+#
+#  TFTP directory must be a world readable/writable directory.
+#  By default /srv/tftpboot is assumed.
+#
+TFTP_DIRECTORY="/srv/tftpboot"

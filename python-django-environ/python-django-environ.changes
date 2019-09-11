@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Mon Mar 11 03:56:29 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add LANG to %check to fix Leap
+
+-------------------------------------------------------------------
+Mon Feb 18 17:12:40 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid name repetition in summary; use noun phrasing.
+
+-------------------------------------------------------------------
+Sat Feb 16 03:42:42 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.4.5

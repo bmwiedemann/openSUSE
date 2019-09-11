@@ -1,0 +1,860 @@
+-------------------------------------------------------------------
+Thu Jul 11 18:02:30 CEST 2019 - asemen@suse.de
+- removing froxlor-suse-config.diff not needed
+
+-------------------------------------------------------------------
+Thu Jul 11 16:13:46 CEST 2019 - asemen@suse.de
+
+patch froxlor-suse-config.diff and 
+patch froxlor-pdns.diff
+added for update the froxlor configuration documentation in UI
+
+-------------------------------------------------------------------
+Tue Jul  9 16:05:58 CEST 2019 - asemen@suse.de
+
+- Upstream upgrade to version 0.9.40.1 (bsc#846355)
+  new features besides API that found their way in:
+    - 2FA / TwoFactor Authentication for accounts
+    - MySQL8 compatibility
+    - new implementation of Let's Encrypt (acme.sh)
+    - customizable error/access log handling for webserver (format, level,
+      pipe-to-script, etc.)
+    - lots and lots of bugfixes and small enhancements
+
+-------------------------------------------------------------------
+Thu Jun  7 13:05:40 CEST 2018 - asemen@suse.de
+
+- Upstream upgrade to version 0.9.39.5 (bnc#846355)
+- Dropping froxlor from future distributions and (bnc#958100)
+  Factory/Tumbleweed
+- PHP rand function for random number generation fixed in previous
+  version (bnc#1025193) CVE-2016-5100
+
+-------------------------------------------------------------------
+Thu Feb  8 16:28:23 CET 2018 - asemen@suse.de
+
+- upstream upgrade to version 0.9.39 (bnc#846355)
+
+-------------------------------------------------------------------
+Wed Aug 30 13:51:38 CEST 2017 - asemen@suse.de
+
+- Add and change of froxlor config files and manual
+
+-------------------------------------------------------------------
+Wed Jan 25 10:50:50 CET 2017 - asemen@suse.de
+
+- Change Requires to enable use with php7
+
+-------------------------------------------------------------------
+Wed Jan 25 08:45:29 CET 2017 - asemen@suse.de
+
+- upstream upgrade to version 0.9.38.7 (bnc#846355)
+
+-------------------------------------------------------------------
+Tue Jan 17 14:29:14 CET 2017 - asemen@suse.de
+
+- upstream upgrade to version 0.9.38.6 (bnc#846355)
+
+-------------------------------------------------------------------
+Mon Nov 28 12:04:53 CET 2016 - asemen@suse.de
+
+- upstream upgrade to version 0.9.38.4 (bnc#846355)
+
+-------------------------------------------------------------------
+Thu Aug 18 13:59:08 CEST 2016 - asemen@suse.de
+
+- upstream upgrade to version 0.9.37 (bnc#846355)
+Bug #1642: Froxlor(php) Freezes when trying to configuring dovecot-smtp 
+Bug #1606: systemd bootsettings
+Bug #1618: Cron lock file handling error
+Bug #1634: wrong intervals in SOAs served by pdns
+Bug #1635: Installatio
+Bug #1637: gentoo Repository down_
+Feature #53: Manage DNS Zones
+Feature #731: Rework DNS with power dns like table schema
+Feature #1196: [bind] Custom DNS settings field
+Feature #1624: [Feature Request] OPcache Einstellungen in den
+PHP-Konfigurationen
+Feature #1638: Possibility of changing the dirfix_nofcgid.conf for mod_php
+Feature #1639: Separeted deactivation of warn-level for webspace and traffic 
+
+-------------------------------------------------------------------
+Thu Jun 23 13:43:04 CEST 2016 - asemen@suse.de
+
+- upstream upgrade to version 0.9.36 (bnc#846355)
+Bug #1570: Customer DOCROOT not accesable / forbidden in fresh Debian 8 w/ Apache 2.4
+Bug #1605: add insserv overrides for nscd and apache
+Bug #1613: Password reset link wrong behind nginx proxy
+Bug #1614: php5-curl requirement missing for debian
+Bug #1615: bind configuration broken since 0.9.35 if zonefiles are used
+Bug #1616: SSl Redirect
+Bug #1617: Domains with Custom Zone Files Not Being Built
+Bug #1619: Error setting termination_date
+Bug #1620: Error: Table ftp_users after new installation of froxlor is missing
+Bug #1621: Include nginx's default_server parameter within the default vhost config file
+Bug #1622: Missing /etc/nginx/conf.d/default.conf - could cause potential issues with future package upgrades
+Bug #1623: not empty zonefiles missing in froxlor_bind.conf
+Feature #786: [Backup] Mailbackup
+Feature #975: "Backup now" Option
+Feature #1544: Backup möglichkeit
+Feature #1574: customer selectable php version
+Feature #1576: Backup system
+Feature #1597: LE: support SNI and certs with multiple SANs
+Feature #1607: make webserver ssl protocols configurable like ssl ciphers
+Feature #1612: OPCache mit mod_itk
+
+-------------------------------------------------------------------
+Tue Apr 26 10:42:41 CEST 2016 - asemen@suse.de
+
+- upstream upgrade to version 0.9.35 (bnc#846355)
+Bug #1519: Deleting and recreating a mail account ends up with no mail account
+Bug #1543: Customer cant create subdomain
+Bug #1564: Redirect-Code unveränderbar
+Bug #1569: Selection of custom PHP config has no effect once FCGID is enabled
+Bug #1599: vHost Template not work
+Bug #1600: ssl_cert_chainfile should only contain the intermediate certificate #334
+Bug #1601: FTP-SubUser kann Ordner "lib" nicht erstellen/löschen
+Bug #1603: Apache Configuration for Wheezy contains an error in acme.conf
+Bug #1604: Wrong acme configuration for Apache 2
+Bug #1609: Sometimes PHP Warning in letsencrypt cronjob Feature #1484: add missing directives in apache-config for php-fpm on freebsd 10.1
+Feature #1611: Show if a domain uses LetsEncrypt in domainlist (admin-account)
+
+- upstream upgrade to version 0.9.35-rc1 (bnc#846355)
+Bug #1522: ProFTPd - relax TLS Options to prevent clients from failing at upload
+Bug #1585: Cannot login after timeout
+Bug #1586: Directory protection (apache basic auth) broken
+Bug #1588: FreeBSD: /scripts/jobs/cron_tasks.php - pw user mod -> pw usermod und loop
+Bug #1589: mail clients
+Bug #1590: Letsencrypt + Custom SSL
+Bug #1591: Entering an IPv6-Adress in the list of allowed AXFR servers leads to an error
+Bug #1595: insufficient error handling in admin_configfiles.php
+Bug #1598: specialsettingsforsubdomains doesn't get passed along if security question is asked while editing a domain
+Feature #1470: Please support letsencrypt.org for fully automatic DV TLS certificate issuance / revocation
+Feature #1509: Mehrere Standard-IPs
+Feature #1594: Make keysize for LE CSRs configurable
+
+-------------------------------------------------------------------
+Wed Feb 10 12:44:49 CET 2016 - asemen@suse.de
+
+- upstream upgrade to version 0.9.34.2 (bnc#846355)
+Bug #611: fixed function.findDirs stops after first unreadable directory
+Bug #1517: fixed SUSE config files not accessible
+Bug #1550: fixed Read config file in panels
+Bug #1553: fixed frische Installation auf openSuSE 13.2
+Bug #1554: fixed Password Reset defect / MD5 hashed password recalculated to faulty hash
+Bug #1555: fixed PHP Notice: Undefined variable: domain in /var/www/froxlor/scripts/jobs/cron_tasks.inc.http.10.apache.php on line 321
+Bug #1556: fixed libnss-mysql might return wrong username
+Bug #1559: fixed incorrect Mail Path
+Bug #1565: fixed vhosts f?r deaktivierte user werden erstellt
+Bug #1568: fixed ssl settings werden bei rewrite nicht angewendet
+Bug #1575: fixed Debian Wheezy postfix wrong sql statements or wrong main.cf
+Bug #1578: fixed Warnung bei Standard FTP-User
+Bug #1582: fixed Install prompt in Froxlor incorrect - Bind9 Start Error rndc: connect failed: 127.0.0.1 #953: connection refused
+Bug #1583: fixed SSL aktiv obwohl kein Zertifikat hinterlegt wurde
+Feature #1562: added always_populate_raw_post_data when create php-fpm config file
+Feature #1566: added Apache 2.4 als Auswahl im Setup
+Feature #1567: added orange/warning color in web- and traffic-progress bars (admin/customer overview)
+
+-------------------------------------------------------------------
+Wed Sep 16 09:32:05 CEST 2015 - asemen@suse.de
+
+- upstream upgrade to version 0.9.34 (bnc#846355)
+Bug #545: add access to older statistics when using awstats
+Bug #957: added managesieve/sieve to configuration-templates of dovecot
+Bug #1400: added support for apache mpm-itk
+Bug #1485: check for existence of ssl-files and if not, do not create ssl-related vhost-settings
+Bug #1486: added possibility to specify umask when using FCGID
+Bug #1488: fixed css issues
+Bug #1491: fixed changing of webserver-user/group in the users-table when they were changed in the settings
+Bug #1492: fixed missing LSB tags for php-fcgi on debian based distros
+Bug #1503: fixed database-connection when using sockets, do not replace 'host' value but use 'socket'
+Bug #1507: fixed open_basedir-path when using mod_php
+Bug #1512: enhanced domain-import, see http://redmine.froxlor.org/projects/froxlor/wiki/DomainBulkActionDoc
+Bug #1535: fixed problem when using sub-subdomain (or deeper) with apache due to file-naming
+Bug #1541: enhanced default ssl-cipher-list to be more secure
+-      removed webftp-script a possible security issue and not necessary.
+-      removed configfiles_index.inc.php.patch, upstream removed deprecated configuration templates
+       including SUSE Linux Enterprise. Removed OpenSUSE templates incldung configfiles_index.inc.php.patch.
+
+-------------------------------------------------------------------
+Fri Jul 31 11:39:26 CEST 2015 - asemen@suse.de
+
+- upstream upgrade to version 0.9.33.2 (bnc#846355)
+  security issue in the database logging system 
+
+-------------------------------------------------------------------
+Tue Apr 14 12:09:08 CEST 2015 - asemen@suse.de
+
+- update and typo fix in documentation template suse_linux_1x_x
+- update Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+
+-------------------------------------------------------------------
+Mon Apr 13 10:34:59 CEST 2015 - asemen@suse.de
+
+- upstream upgrade to version 0.9.33.1 (bnc#846355)
+Bug #1489: MySQL externe Datenbank
+Bug #1498: Problem with nginx vhost block merging
+Bug #1499: 0.9.33 wants to connect to host as socket
+Bug #1500: "Global PEAR directories" settings value in php-fpm settings ignored in php.ini settings variable "{PEAR_DIR}"
+Support #1494: new customer | webaccess Forbidden
+
+- upstream upgrade to version 0.9.33 (bnc#846355)
+Bug #1479: Update of password hash leads to security hole
+Bug #1483: Lockfile from crashed cronjob does not get deleted
+
+- upstream upgrade to version 0.9.33-rc2 (bnc#846355)
+Bug #1427: [nginx] OwnCloud Requires PHP alterations
+Bug #1459: [configs] Debian postfix templates are in deprecated format
+Bug #1462: [configs] Ubuntu 14.04 does not use SystemV
+Bug #1465: [configs] Dovecot/Postfix Config says to use dovecot as transport but does not
+Bug #1469: Misleading "PHP compiled without pcntl" error message
+Feature #1289: Passwords in panel_customers always MD5 encrypted
+Feature #1335: [database] Froxlor should also use MySQL-Socket to connect to db
+Feature #1414: [configs] Ubuntu 14.04 LTS support
+Feature #1471: Zusätzliches Feld für Notizen in den Kundenstammdaten
+Feature #1477: Ability to set the path of a (sub)domain to a file
+
+- upstream upgrade to version 0.9.33-rc1 (bnc#846355)
+Bug #1216: suggested password should match to password restriction in settings
+Bug #1280: DKIM: define custom user and group in the settings
+Bug #1399: [proftpd] quota support OFF but working qoutas at FTP upload
+Bug #1418: [php-fpm] Fix for CVE-2014-0185 needed (php5-fpm vulnerability)
+Bug #1426: Umlaute problem
+Bug #1428: Creating SSL enabled Alias Domain -> SQL Integrity constraint violation
+Bug #1430: [nginx] If in location ~ \.php$
+Bug #1435: Nach entfernen aller Daten im root-Verzeichnis erscheint folgender Fehler (Froxlor WebFTP)
+Bug #1437: 0.9.32 - FreeBSD - crontab
+Bug #1440: Validation check for AXFR server failing
+Bug #1445: Froxlor cron du's /proc
+Bug #1446: nginx auto index is not working
+Bug #1447: Dateirechte beim Anlegen neuer Kunden falsch
+Bug #1450: [nginx] Directory protection duplicate directives
+Bug #1455: [apache] Directory protection not working (froxlor 0.9.31, Apache 2.4.6)
+Bug #1456: dns entry for "system_hostname" breaks dns if the domain is manually configured
+Bug #1458: Security check too strict on mailboxsize cronscript
+Bug #1464: class.Settings.php
+Bug #1466: CSS: Overview pages without add-button missing float-clear
+Bug #1467: Progressbars on admin_customers.php?page=customer
+Bug #1468: MYSQL: BLOB and TEXT columns cannot have DEFAULT values.
+Feature #496: [panel] Import default subject/body for e-mails templates
+Feature #1036: Improve the montly traffic report
+Feature #1166: [panel] Allow customer transfer between admins
+Feature #1332: mehrzeiliger SPF support
+Feature #1408: Eigener Newsbereich im Kunden-Dashboard
+Feature #1410: Verschieben von Kunden unter Admins
+Feature #1425: Php-fpm custom listen
+Feature #1452: Massenupdate beim Hinzufügen von Domains
+
+-------------------------------------------------------------------
+Wed Mar 19 09:13:01 CET 2014 - asemen@suse.de
+
+- upstream upgrade to version 0.9.32-rc2 (bnc#846355)
+#1090: bind doesn't create entry for system setting "system_hostname"
+#1342: add option to automatically run database-updates instead of dying with "version mismatch" in cronjob
+#1389: fixed minor sql-query variable-issues
+#1392: fixed setting default-theme if != Sparkle when adding new customers
+#1377: fixed FS-quota on FreeBSD
+
+-------------------------------------------------------------------
+Tue Feb 25 11:44:42 CET 2014 - asemen@suse.de
+
+- upstream upgrade to version 0.9.32-rc1 (bnc#846355)
+#69: calculate/show mail-traffic
+#433: redirect to last URL after session-timeout
+#1321: log faulty login-attempts
+#1340: add 'description' to ftp-users
+#1378: added database validation in the admin menu to check for its integrity
+#858: runtime of cronjobs
+- APS (complete)
+- Autoresponder (complete)
+- Backup (complete)
+
+-------------------------------------------------------------------
+Fri Jan 31 11:26:32 CET 2014 - asemen@suse.de
+
+- upstream upgrade to version 0.9.31.2 (bnc#846355)
+ bugfix-release (0.9.31.1) Due to a tiny bug in the installer, which did not add a new php-configuration correctly.
+  #1331	High ERROR 1064 (42000) at line 718: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '2, 'Froxlor Vhost Config'
+ bugfix release (0.9.31.2) Due to wrong usage of a recently changed function which resulted in wrong default path-values in textfields. 
+  #1329 Parse error bei aufruf Cronjob-Einstellungen
+
+-------------------------------------------------------------------
+Thu Dec 19 12:21:26 CET 2013 - asemen@suse.de
+
+- upstream upgrade to version 0.9.31 (bnc#846355)
+Completely redesigned dashboard in Sparkle-theme
+#432: added new template-variables for the 'customer welcome email' template: SERVER_HOSTNAME, SERVER_IP, SERVER_PORT and DOMAINNAME
+#722: added logical operators (<, > and =) which can be used when searching for numeric values, e.g. Webspace: ">100", "<2048" or "=1234"
+#729: Usage of an activation code instead of password reset
+#1051: Enable usage of php-slowlog for FPM users
+#1287: Switch database implementation to PDO
+#701: split tickets in pages on overview and correct sorting
+#1295: make vhost-query of webserver-crons mariadb-compatible
+#1314: when using DKIM and no MX server is given, also add a dkim-TXT entry for the 'mail' a-record
+#1323: fix hardcoded sendmail_path config option in PHP-FPM pool config
+-------------------------------------------------------------------
+Mon Dec  2 13:44:13 CET 2013 - asemen@suse.de
+
+- upstream upgrade to version 0.9.30 (bnc#846355)
+#365 SSL certificates should be settable per domain
+#581 Allow multiple IPs (IPv4/IPv6) to be used on one domain
+#1007 Userpanel: Show size of mail accounts
+#1270 Show phpinfo() in the admin-panel
+#201 fix SSL-redirect on non-standard SSL-ip/ports
+#1147, #1194 Improve wildcard/www-alias domain-settings for admins and customers
+#1271 remove build-in logrotate feature - provide logrotate-config-template instead
+- fix wrong alias in default-froxlor-server.conf to froxlor
+
+-------------------------------------------------------------------
+Fri Oct 11 13:24:33 CEST 2013 - asemen@suse.de
+
+- added configuration files openSUSE 12.x (at Server Configuration)
+  configfiles_index.inc.php.patch
+
+-------------------------------------------------------------------
+Tue Oct  8 14:51:43 CEST 2013 - asemen@suse.de
+
+- upstream upgrade to version 0.9.29 (bnc#846355)
+Bug #1139: Froxlor package for armhf doesn't show up in aptitude
+Bug #1258: unable to register 'memcache' SSL session cache: Memcache support not enabled
+Bug #1260: Cron Domain-SSL Zertifikat
+Bug #1261: Fehler Apache mod_write
+Feature #587: Provide php.ini Konfiguration for php-fpm
+
+-------------------------------------------------------------------
+Mon Apr 15 12:20:54 CEST 2013 - asemen@suse.de
+
+- upstream upragde to version 0.9.28.1
+Due to a syntax-error in the updater we had to re-release as version 0.9.28.1
+- upstream upragde to version 0.9.28
+#536 Use complete domain name as default path for DocumentRoot
+#1150 added possibility to add random prefixes to a customers database-name
+#668 fixed FreeBSD 8.2: Bind 9 is missing from list of Daemons
+#758 fixed bug in "Amount of APS installations" counter
+#916 fixed webserver-specific default vHost settings don't work in ligHTTPd
+#1023 fixed Redirect with SSL Enabled Domain
+#1058 fixed bug in "Amount of autoresponders" counter
+#1085 fixed incorrect configuration command for awstats under Gentoo
+#1127 fixed falsely used e-mail sender name
+#1134 updated default parameter list of sendmail-program in php.ini-template
+#1136 fixed falsely added specialsettings to a ssl-redirect
+#1160 fixed usage of empty value for CertificateChainFile (it's allowed)
+#1172 cleaned up language files
+#1173 fixed redirect to "ip:port"
+#1180 fixed clean-up if fcgid/php-fpm configurations
+
+-------------------------------------------------------------------
+Thu Mar 14 12:46:28 CET 2013 - asemen@suse.de
+
+- upstream upragde to version 0.9.28-rc1
+#1064 customers are now able to search their email-addresses in the overview (like domains, etc.)
+#1103 new directory-structure for e-mail accounts.  New added accounts will be stored in a new maildir-structure (e.g.   
+  /var/customers/mail/<customeracc>/<domain>/<mailacc>/Maildir/).   
+  An explanation why this makes sense can be found in the ticket-description. Note: no configuration changes are necessary 
+  and existing accounts do not need to be updated, as the homedir/maildir is read from the database.
+#1107 the default language for users without a language-setting is now determined via HTTP_ACCEPT_LANGUAGE
+#1138 added support for apache-2.4 (note: mod_log_sql is not compatible to apache-2.4)
+#1153 path to nginx's fastcgi_params-file is now customizable (as other distributions/systems do not have it in /etc/nginx/)
+#1067 fixed alias generation when the docroot of a (sub)domain was below the customerdocroot
+#1068 Apply settings for all subdomains in now deactivateable (but will be checked when you re-open the domain-edit view, this is intended!)
+#1075 the default php-cgi listener for nginx is now editable as intended 
+#1079 php-fpm files are generated correctly - due to a double "cleaning" of the php-cgi-configdir, they were created and later removed in the cronjobs
+#1089 + #1118 fixed php-fpm usage on apache-webserver
+#1095 fixed incorrect display of used traffic in admin-overview
+#1097 fixed falsey used private class property in database-class
+#1104 fixed endless-loop in readdir() when bind is not installed but php-fpm is activated
+#1108 fixed problems when disabling a customer / the customer removes one of his database with mysql version >4.1
+#1117 froxlor is now completely using UTF-8 encoding.
+#1119 The classic theme has been removed.  Maintaining two very different themes and the goal to gain usability and simplicity lead to that decision.
+
+Important information: 
+    support for mod_log_sql will drop in the final 0.9.28 release. If you still use it, please switch to webalizer or awstats
+    support for dovecot-1 on Gentoo will be dropped in 0.9.29 as Gentoo's tree does not include it anymore.
+    support for Debian Lenny has been removed as it is EOL since 6.2.2012.
+    support for Ubuntu Hardy will be deprecated in 0.9.28 and removed in 0.9.29 as it will be unsupported in april 2013.
+    php's safe_mode setting will be removed in the final 0.9.28 release as it is deprecated.
+
+-------------------------------------------------------------------
+Tue May  8 11:36:19 CEST 2012 - asemen@suse.de
+
+- upstream upragde to version 0.9.27
+Bug #700: APS template errors
+Bug #992: Can't enable FTP Backup
+Bug #1022: Remove php-fpm-specific configuration (files) correctly
+Bug #1025: cron_traffic.php causes mysql error
+Bug #1027: Unavailable repository 'gentoo_prefix' referenced by masters entry in layman
+Bug #1028: Traffic-Cron - missing php-extension?
+Bug #1032: Error while creating a new customer in 0.9.26 (posix_getpwuid())
+Bug #1033: Natural sorting function for customers doesn't work
+Bug #1034: Froxlor Install / Upgraded SysCP: Unknown tables
+Bug #1037: [Security Bug] Customers can access all tickets
+Feature #1010: Provide setting for special logfiles after creating domains
+Feature #1017: Fast CGI Idle Timeout
+Feature #1030: Use the name "Administrator" in the mail body instead of Froxlor-Team
+Feature #1031: Improve customer default index.html file
+Bug #1019: Debian GPG keyserver unreachable
+Bug #1061: Current froxlor ebuilds needs non-existant php use flag "pcre" to build
+
+-------------------------------------------------------------------
+Thu Jan 19 13:04:05 CET 2012 - asemen@suse.de
+
+- upstream upragde to version 0.9.26
+Bug #430: Updating debian packages resets owner (Froxlor FCGID)
+Bug #705: traffic reports are malformed
+Bug #723: Debian package depends on apache2-mpm-prefork
+Bug #788: Gentoo ebuild requires inexistent useflag
+Bug #962: Froxlor customer change the owner of the linux home dir
+Bug #977: Traffic takes a long time to calculate
+Bug #979: Debian Squeeze: Dovecot quota SQL config
+Bug #982: alias.url directive invalid for awstats using lighttpd
+Bug #983: Official Debian packages is missing /js folder
+Bug #987: typo within german lng file - webserver settings
+Bug #990: nginx: Missing configuration data within virtual host files
+Bug #993: [eBuild] Wrong directory permissions on gentoo
+Bug #999: awstats config file error, incl. bugfix
+Bug #1001: Classic theme, wrong icon path in backup.tpl. incl bug fix
+Bug #1002: classic theme, customer backup can not be enabled and disabled in gui, incl bug fix
+Bug #1004: Cron scripts won't be executed successfully if nameserver is disabled
+Bug #1012: Apache: ServerAlias length limit not obeyed
+Bug #1013: Wrong rc-update command in Gentoo configfiles in DKIM section
+Feature #964: Disable Nameserver
+Feature #976: Allow 100% or more as value for the limit warning message
+Feature #980: nginx configuration: security improvement
+Feature #985: Improve PHP default config of Froxlor
+
+-------------------------------------------------------------------
+Tue Nov 15 11:10:42 CET 2011 - asemen@suse.de
+
+- upstream upragde to version 0.9.25 bnc#730415
+Bug #696: Traffic overview: display error and problems with the value
+Bug #779: froxlor-0.9.19 ebuild sandbox ACCESS VIOLATION
+Bug #781: Bind forgets to add www. for Subdomains
+Bug #869: Customer search does not work if there is a underscore in the searchtext
+Bug #924: FreeBSD: Postfix missing mydestination
+Bug #926: Small qouta fix
+Bug #928: "Access Froxlor directly via the hostname" activation fails
+Bug #929: User unknown in virtual mailbox table (in reply to RCPT TO command) after mysql-virtual_alias_maps.cf changed
+Bug #930: Froxlor/location/auth basic duplicates
+Bug #932: Ubuntu (lucid) missing config files for nginx
+Bug #940: Missing field content on some configuration instructions
+Bug #946: Changing the hostname fails
+Bug #954: Froxlor package for armel doesn't show up in aptitude 
+Bug #967: "backup_dir" is not in the expected format
+Bug #970: Cron PHP notice
+Bug #974: Customer can change password to something not matching minlength and/or Password Regex
+Feature #111: APS instances overview should display domain, DB and folder
+Feature #948: Disable backup feature by default
+
+-------------------------------------------------------------------
+Tue Sep 20 11:05:27 CEST 2011 - asemen@suse.de
+
+- upstream upragde to version 0.9.24
+(bnc#718819) adapt in spec file License: to GPL-2.0+ as Smarty-3.0.8 is under GPL-3.0 
+Bug #714: Malformed "priority" in ticket archive search
+Bug #727: Support tickets eats html codes
+Bug #743: Very confusing overview in admin panel
+Bug #749: wrong location declaration in nginx 1.0 - freebsd 8.2, php-fpm, php 5.3.5
+Bug #761: [Backup] Unnecessary text
+Bug #762: [Backup] FTP password is in plain text
+Bug #787: Display error on traffic bar
+Bug #791: 'Unknown User' at traffic calculation if user is locked
+Bug #799: Bind9 zone files on ipv6
+Bug #859: Froxlor saves backups in customer directory
+Bug #870: Empty "ServerName" possible
+Bug #872: Deleting a customer fails if a MySQL-User is already deleted
+Bug #879: Completely suspend/disable a email client
+Bug #880: Webserver user-name label missing in Settings (English)
+Bug #889: Modernize bash init-script (/etc/init.d/php-fcgi for nginx)
+Feature #16: Rotate customer logs
+Feature #834: Database size in Froxlor
+Feature #848: create a domain, which will only relay mail is not possible
+Feature #875: favicon for froxlor
+
+-------------------------------------------------------------------
+Fri Sep 16 13:32:47 CEST 2011 - asemen@suse.de
+
+- fixed some rpmlint warnings 
+
+-------------------------------------------------------------------
+Wed Aug 10 12:57:26 CEST 2011 - asemen@suse.de
+
+- upstream upragde to version 0.9.23 
+Bug #469: Prevent autocompletion for new customer dialog
+Bug #728: temp folder is not deleted
+Bug #780: Checkbox doesn't "check" if domain is a wildcard
+Bug #793: catchall checkbox bei "E-Mail-Adresse anlegen" funktionslos
+Bug #842: webftp.php file upload fails, Typo
+Bug #846: PHP-FPM tmpdir permission bug
+Bug #851: Add "--force" option to mysql backups, to prevent empty sql backups
+Feature #814: Use filesystem quota to enforce limit of diskspace - usage by customer
+
+-------------------------------------------------------------------
+Tue Jul 12 13:47:11 CEST 2011 - asemen@suse.de
+
+- upstream release to version 0.9.22 nearly same as 0.9.22-rc1
+Added security relevant HTTP - headers (X-Content-Security-Policy, X-Frame-Options, Strict-Transport-Security and X-Content-Type-Options: nosniff)
+Generate all links with a new linker - object for easier link - management
+Updated the included jQuery to version 1.6.1
+Moved all inline - JavaScript to external file
+Added WebFTP
+Bug #756: Natural sorting function for customers doesn't work
+Bug #768: small improvement in proftp config
+Bug #800: Broken apache permissions in directories
+Bug #802: Wrong copyright in default page
+Bug #813: Language fixes (typo/hyperlinks/HTML)
+Bug #815: Panel session timout = 0: No timeout expected but login impossible.
+Bug #817: French translation encoding removed all accents
+Bug #819: webFTP missing images/css
+Feature #214: Do not display SQL Errors, write them to error log instead.
+Feature #556: Safe Mode deprecated in PHP >= 5.3
+Feature #737: FTP- and Mailquotas
+Feature #812: Bitte Warnmeldung bei der Abschaltung von safe_mode abschalten
+
+-------------------------------------------------------------------
+Tue Jun 28 13:26:56 CEST 2011 - asemen@suse.de
+
+- upstream release to version 0.9.22-rc1
+Added security relevant HTTP - headers (X-Content-Security-Policy, X-Frame-Options, Strict-Transport-Security and X-Content-Type-Options: nosniff)
+Generate all links with a new linker - object for easier link - management
+Updated the included jQuery to version 1.6.1
+Moved all inline - JavaScript to external file
+Added WebFTP
+Bug #756: Natural sorting function for customers doesn't work
+Bug #768: small improvement in proftp config
+Bug #800: Broken apache permissions in directories
+Bug #802: Wrong copyright in default page
+Bug #813: Language fixes (typo/hyperlinks/HTML)
+Bug #815: Panel session timout = 0: No timeout expected but login impossible.
+Bug #817: French translation encoding removed all accents
+Bug #819: webFTP missing images/css
+Feature #214: Do not display SQL Errors, write them to error log instead.
+Feature #556: Safe Mode deprecated in PHP >= 5.3
+Feature #737: FTP- and Mailquotas
+Feature #812: Bitte Warnmeldung bei der Abschaltung von safe_mode abschalten
+
+-------------------------------------------------------------------
+Tue May 31 10:23:53 CEST 2011 - asemen@suse.de
+
+- upstream emergency-release to version 0.9.21
+Bug #741: Error when there is a white space in field "registration date"
+Bug #760: [german] incorrect translations
+Bug #775: [Backup] Reloading webserver for each users causes SIGTERM and shutting down (apache2)
+Bug #778: Cannot set domain to use SSL without SSL redirect
+Bug #784: Allow continuing of uploads in ProFTPd by setting a conf value in proftpd.conf
+Bug #790: Fix char-errors in Italian language file
+Feature #280: Kunden Anrede
+Feature #785: Allow active FTP uploads in backup
+
+-------------------------------------------------------------------
+Fri Apr 29 15:28:35 CEST 2011 - asemen@suse.de
+
+- upstream emergency-release to version 0.9.20.1
+Bug #730: Debian 6.0
+Bug #738: 0.9.20 (fresh install): could not create customer
+Bug #740: Git (/lib/configfiles/squeeze.inc.php): change "lenny" to "squeeze" (2x)
+Bug #742: SQL error while creating a new client
+
+-------------------------------------------------------------------
+Wed Apr 27 11:30:10 CEST 2011 - asemen@suse.de
+
+- upstream upragde to version 0.9.20
+Bug #167: Domains should be able to listen on every interface
+Bug #467: Mail quota should be in the client's limits
+Bug #655: exim4 should be configured to issue a permanant error on non-existing user
+Bug #678: Falsche Formatierung bei Passwort-Zurücksetzung
+Bug #687: PHP and fcgid: Files containing ".php" anywhere in the filename are executed as PHP scripts
+Bug #690: ungünstige Fehlermeldung bei Hostname als Domain
+Bug #698: Froxlor doesn't create none-existing directory when changing FTP-homedirectory
+Bug #699: Recalculate resource usage
+Bug #704: "Resend password" language variable partly wrong
+Bug #711: Warning: Division by zero in /var/www/froxlor/scripts/jobs/cron_usage_report.php on line 211
+Bug #712: Typo "SysLinks" in cron_tasks.inc.http.10.apache.php
+Bug #718: Domain with TLD-Suffixes of more than 6 characters not possible
+Bug #722: FreeBSD 8.2 , nginx 0.9.6, php 5.3.5, php-fpm, mysql 5.5.9 - htpasswd generation
+Bug #725: Froxlor ohne FCGID (mod_php5) setzt User/group falsch
+Feature #186: Backup-function for Admin and Customer
+Feature #346: Kennwort Generator oder vorgeschlagene Kennwörter
+Feature #492: Admin Traffic summary
+Feature #600: Replace "Webspace (MB): 11.10938 (3000)" with "Webspace (used/max) [MB]: 11.10938 / 3000"
+Feature #645: General form usability improvements
+Feature #677: Passwortanforderung für gesperrte Benutzer deaktivieren
+
+-------------------------------------------------------------------
+Tue Mar 29 10:24:02 CEST 2011 - asemen@suse.de
+
+- upstream upragde to version 0.9.19
+Bug #592: missing build-dependancy on cdbs
+Bug #618: Sortierung der Kunden
+Bug #647: froxlor relies on being installed in docroot/froxlor
+Bug #649: undefined variable $entry in cron_autoresponder.php
+Bug #653: Froxlor-Passwort zurücksetzen: Fehlermeldung trotz erfolgreicher Durchführung
+Bug #654: Install script error
+Bug #656: Vorlage "Hinweis zum Speicherverbrauch" wird nicht beachtet
+Bug #657: [Design] Falscher Pfad bei Domains mit URLs
+Bug #658: Doppel-Slash bei Domain-Redirects
+Bug #659: Inhalt von CGI-BIN wird beim SuExec Workaround gelöscht
+Bug #660: Skripte werde beim SuExec Workaround nicht ausgeführt (403-Fehler)
+Bug #662: Es wurde eine falsche Id übergeben
+Bug #663: FreeBSD aps installer
+Bug #669: Redirect Code wird via mod_rewrite nicht gesetzt
+Bug #670: FreeBSD 8.2 , php 5.3.5, php-fpm, mysql 5.5.9 - aps installer
+Bug #671: Leeres Feld "Eigene vHost-Einstellungen" in "IPs und Ports"
+Bug #674: Suchfunktion von Ticket-Archiv funktioniert nicht
+Bug #675: Rechtschreibfehler: Einstellungen->Log Einstellungen
+Feature #550: Please adjust the package recommendations for Exim4 as MTA
+Feature #627: Fehlender Eintrag in der Postfix Vorlage für TLS
+Feature #651: Variabeln für E-Mail-Vorlage "Hinweis zum Speicherverbrauch"
+Feature #661: "Kunden anlegen" Schaltfläche über die Tabelle
+Feature #666: Gesperrt lassen was gesperrt gehört
+Feature #667: AWStats Ordner der Standarddomain löschen wenn diese entfernt wird
+Feature #672: Werte für Formular beim Auftreten von Fehlern beibehalten
+Feature #676: Add checkbox support to formfield generator
+
+-------------------------------------------------------------------
+Tue Mar  8 09:42:29 CET 2011 - asemen@suse.de
+
+- upstream upragde to version 0.9.18.1
+~ Creating a mail forwarder: Only white site after creation and no success
+~ no traffic bars in customer view
+~ PHP Configurations in new thems is damaged
+~ Can not create absence-messages
+~ image loading problem
+~ Unable to view configuration page
+~ domain path is not displayed
+~ Confusing row design in customers/admins/domains list
+~ FTP-user can't be changed
+~ Customer Frontend -> Creating email account
+~ HTTP Config on SUSE
+~ [nginx|php-fpm] Wrong ip and port setting for default vhost
+
+-------------------------------------------------------------------
+Tue Mar  1 10:48:26 CET 2011 - asemen@suse.de
+
+- Requires postfix-mysql added
+
+-------------------------------------------------------------------
+Mon Feb 28 22:20:54 CET 2011 - asemen@suse.de
+
+- fixing configuration files of postfix
+
+-------------------------------------------------------------------
+Mon Feb 28 14:02:19 CET 2011 - asemen@suse.de
+
+- upstream upragde to version 0.9.18
++ Complete new design
++ Theme - switcher
++ Feature #579: Ability to add idna domains that contains the German "ß"
+~ Bug #543: Customer details get cut when entering special characters
+~ Bug #553: Heimatverzeichnis des FTP-Benutzers löschen
+~ Bug #562: open_basedir settings are ignored when using php-fpm
+~ Bug #563: Round values for {DISKAVAILABLE}, {DISKUSED}... in mails
+~ Bug #564: resolve php warnings when using php-5.3 and greater
+~ Bug #566: Placeholder on sendmail fail
+~ Bug #568: dovecot-sql.conf incorrect in gentoo ebuild
+~ Bug #569: /etc/postfix/mysql-virtual_sender_permissions.cf doesn't get copied to config dir
+~ Bug #592: missing build-dependancy on cdbs
+~ Bug #571: Domain deletion fails
+~ Bug #572: Unable to start Dovecot with configuration from froxlor panel
+~ Bug #573: Wrong pathes at Postfix MX-Access (anti spam) configuration
+~ Bug #574: Wrong path at PowerDNS configuration
+~ Bug #575: Wrong path at Crond (cronscript) configuration
+~ Bug #578: du -s shows wrong size
+~ Bug #599: php-fcgi Docroot anpassung bei gesperrten Usern
+~ Bug #610: phpMyAdmin doesnt work with nginx php-fpm https vhost
+~ Bug #611: function.findDirs stops after first unreadable directory
+~ Bug #612: function.findDirs gives a warning about not executable directories
+~ Feature #544: cron_traffic.php: mysql error number: 2006 - MySQL server has gone away
+
+-------------------------------------------------------------------
+Fri Jan 28 15:28:50 CET 2011 - asemen@suse.de
+
+- adding awstats and roundcubemail howto in file README.INSTALL.SUSE
+
+-------------------------------------------------------------------
+Thu Jan 27 15:04:43 CET 2011 - asemen@suse.de
+
+- awstats fix in configuration file for openSUSE 11.X
+
+-------------------------------------------------------------------
+Wed Jan 26 16:59:29 CET 2011 - asemen@suse.de
+
+- adaption in pure-ftp Configuration template setting froxlor as 
+  user and MySQL db name
+
+-------------------------------------------------------------------
+Wed Jan 26 10:50:44 CET 2011 - asemen@suse.de
+
+- upstream upragde to version 0.9.17
++ Rebuilding configurations after a setting is changed (bug #535)
++ Added notification by email about client/reseller limits (bug #153)
++ Added notification mail for customers when 90% percent of disk space is exhausted (bug #466)
+~ FTP: fixed wrong sorting method in "Create Account" (bug #534)
+~ Configuration: various freebsd-config enhancements (bugs #537, #538)
+~ Webserer: fixed SSL Redirect vhost container (bugs #541, #542)
+~ UI: fixed undefined index when editing a MySQL-database (bug #554)
+~ UI: fixed editing admin mail quota is limited to 3 character (bug #559)
+
+-------------------------------------------------------------------
+Mon Jan 24 16:00:30 CET 2011 - asemen@suse.de
+
+- optimizing build spec file and patching froxlor.sql file 
+  changing apache DocumentRoot to srv  
+
+-------------------------------------------------------------------
+Thu Jan  6 00:46:10 CET 2011 - asemen@suse.de
+
+- fix visibility of configuration files in admin back end
+
+-------------------------------------------------------------------
+Wed Jan  5 21:50:05 CET 2011 - asemen@suse.de
+
+- fix froxlor.sql database file for opensuse (bug #539)
+
+-------------------------------------------------------------------
+Tue Dec 28 21:20:11 CET 2010 - asemen@suse.de
+
+- upstream upragde to version 0.9.16 
++ Froxlor now supports php-fpm (bug #482)
+~ Update for the dutch language file (bug #506)
+~ Fixed newlines in "reset-password"-mail (bug #507)
+~ Fixed some issues with gentoo and emerge (bug #510 #511 #512)
+~ Fixed install.sql to work with mysql 5.5 (bug #529)
+~ Added check for php-xml extension (bug #530)
+-------------------------------------------------------------------
+Fri Dec  3 15:31:14 CET 2010 - asemen@suse.de
+
+- upstream upragde to version 0.9.15.1
++ Quickfix dovecot-sql.conf 
+
+-------------------------------------------------------------------
+Mon Nov 29 17:06:43 CET 2010 - asemen@suse.de
+
+- upstream upragde to version 0.9.15 
++ Webserver: Froxlor now supports the NGINX webserver (bug #103)
++ Unlocking of locked accounts via the panel (bug #473)
++ Added --force parameter for the master-cronjob
++ Tickets: pre-set the next available number for logical order when adding a new category (bug #464)
+~ AWstats: fix undefined variable in webserver-cronjob (bug #454)
+~ Configuration: determine own path for cronjob-configuration-template (bug #455)
+~ Fixed issue if 'store default-index' is 'no' (bug #459)
+~ Ebuild: fixed typo when setting permissions (bug #463)
+~ Fixed possible wrong vhost-order for standard-subdomains (bug #465)
+~ Corrected mailserver configs so they check for imap-allowed and pop3-allowed (bug #475)
+~ Autoresponder: fixed sender if the receiver of the original mail is not the owner of the autoresponder (bug #476)
+x Configuration-templates and support for Debian Etch
+
+-------------------------------------------------------------------
+Mon Oct 25 17:12:45 CEST 2010 - asemen@suse.de
+
+- upstream upragde to version 0.9.14 
++ Allow login to panel using domains (bug #374)
++ Added configuration templates for DKIM for Debian/Ubuntu systems (bug #384)
++ Allow custom documentroot for IP/Port vHosts (bug #417)
++ Added SSLCertificateChainFile-directive to Apache-SSL configuration (bug #418)
++ Allow domains with port-statement as documentroot/redirect (bug #431)
+~ AWstats: fix multiple calculation of traffic (bug #246)
+~ AWstats: add images to created stats-pages (bug #257)
+~ AWstats: chown stats directories after creation (bug #258)
+~ Fixed resource calculation for APS-packages (bug #425)
+~ Various improvements of language files (bugs #434 and #439)
+~ Fixed order of domains in single-vhost-file (bug #437)
+~ Corrected descriptions for edit-database view (bug #444)
+x Realtime update-feature has been removed due to problems and possible skipped/unfinished tasks
+
+-------------------------------------------------------------------
+Fri Oct  1 11:09:41 CEST 2010 - asemen@suse.de
+
+- upstream upragde to version 0.9.13.1
+  * Allow selection of php-configuration for Froxlor vhost [FCGID-Mode] (bug #414)
+  * Added missing $smtpd_sender_login_maps in postfix-main.cf [FreeBSD] (bug #420)
+  * Fixed Autoresponder if Reply-To header is present (bug #423)
+-------------------------------------------------------------------
+Wed Sep 29 16:21:22 CEST 2010 - asemen@suse.de
+
+- adding apache alias for froxlor roundcubemail squirrelmail to config file
+
+-------------------------------------------------------------------
+Wed Sep 29 14:00:34 CEST 2010 - asemen@suse.de
+
+- upstream upragde to version 0.9.13
+  * Fix monthly Awstats generation (bug #240)
+  * Improve behavior of security-questions (bug #332)
+  * Added checkbox to prevent creation of index.html in home directory (bug #369)
+  * Added checkbox to prevent creation of unneeded statistics directories (bug #370)
+  * Control amount of autoresponders per customer (bug #377)
+  * Restrict sender address to logged-in SMTP user in postfix (bug #379)
+  * Removed display of RegEx within the password-complexity error-message (bug #392)
+  * Correction of domain-list view (bug #394)
+  * Fixed SQL-query in customer management (bug #397)
+  * Fixed autoresponder when automatically answered mails being received (bug #399)
+  * Fixed postfix-dovecot configuration-templates for Ubuntu Lucid (bug #401)
+  * Added support for CGI APS-packages (bug #404)
+  * Fixed usage of usernames instead of uid/gid when fcgid is not enabled (bug #407)
+  * Fixed up irritating texts on the panel (bug #408)
+  * [Gentoo Ebuild] Added php.ini creation for own vhost (bug #411)
+  * Fixed deletion of files when a domain gets deleted (bug #415)
+
+-------------------------------------------------------------------
+Wed Aug 25 01:20:43 CEST 2010 - asemen@suse.de
+
+- upstream upragde to version 0.9.12
+  * Allow files to be set as 40x & 500 error-handler (bug #267)
+  * Added possibility to use FCGID also for the Froxlor-panel itself (bug #305)
+  * Improved/Reviewed autoresponder-source (bug #308)
+  * Fixed various file-permission-commands in the configuration-area (bug #309, #310)
+  * Added pure-ftpd to Gentoo, fixed configuration for debian-based systems (bug #311)
+  * Added possibility to use Perl/CGI for Apache+SuExec users (bug #319)
+  * Fixed editing of mysql-databases in customer-panel (bug #325)
+  * Added possibility to add a subdomain of another domain as "full"-domain in admin-interface (bug #329)
+  * Fixed issues when saving settings with attribute "dir" (bug #331)
+  * Set default path for FTP-accounts to customerroot (bug #338)
+  * Fixed usage of chattr under FreeBSD, it is named chflgs there (bug #339)
+  * Added possibility to customize the description of a directory-protection via htpasswd (bug #345)
+  * Added e-mail notification template for 'forgot password' (bug #354)
+  * Remove fcgi-starter if domain has been deleted (bug #367)
+  * Added '{COMPANY}' template variable for all e-mail templates (bug #376)
+
+-------------------------------------------------------------------
+Mon Jul 26 12:57:29 CEST 2010 - asemen@suse.de
+
+- upstream upragde to version 0.9.11
+  New features / Bugfixes and more:
+  * Adminpanel: [feature-request] Renice error message for froxlor mail notification
+  * Configfiles: Set umask in php-fcgi-starter script 
+  * Adminpanel: Password strengt for new customer accounts 
+  * Userpanel: Optional: Bei löschen von FTP-User abfragen ob Home-DIR löschen 
+  * Configfiles: Rename the xinetd.d template file
+  * Adminpanel: redirect code always "---" if you edit domain 
+
+-------------------------------------------------------------------
+Mon Jun 28 12:33:36 CEST 2010 - asemen@suse.de
+
+- upstream upragde to version 0.9.10
+  New features / Bugfixes and more:
+  * Uninstalling  an APS package does not delete the installed files (bug #273)
+  * Database does not show in  client database (bug #272)
+  * When APS contingent for  customer is reached, no hint is shown (bug #278)
+  * Lighttpd   auth.backend: If more than one directory is protected, the users of them  are not saved in the htpasswd file (bug #281)
+  * spelling error in german  language file (bug #279)
+  * Create  customer task not deleted if customer is deleted (bug #276)
+  * language selector does not work on login - page (bug #277)
+  * Default path for AWStats (bug #275)[
+  * ipandport_xxx.conf DocumentRoot now manageable in settings (bug #270)
+  * A variable name leading to invalid paths was corrected
+
+-------------------------------------------------------------------
+Fri Jun 18 16:04:04 CEST 2010 - asemen@suse.de
+
+- upstream upragde to version 0.9.9
+  New features / Bugfixes and more:
+  * implemented APS-1.2 standard (bug #232)
+  * fixed DNS mail A record is not created when using external MX servers (bug #242) 
+  * added possiblility for customer to get its e-mail account data deleted from the filesystem when removing an account from the panel (bug #245)
+  * fixed duplicate config variable in lighttpd.conf (bug #254)
+  * fixed incorrect form field in autoresponder form (bug #256)
+  * corrected chown'ing of awstats-directory (bug #258)
+  * fixed incorrect (additional) directory-creation in webserver-cron (bug #259)
+  * fixed sed expressions in the configuration manual (bug #263)
+
+  *Thu Jul 09 09:00:00 CEST 2010 Andrej Semen <asemen@suse.de> 
+  * initial build of froxlor version 0.9.8

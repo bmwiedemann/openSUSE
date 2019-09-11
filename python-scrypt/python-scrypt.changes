@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Thu Mar 28 12:15:20 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.8.13
+  * improve build for conda forge
+  * Add SCRYPT_WINDOWS_LINK_LEGACY_OPENSSL environment variable,
+    when set, openssl 1.0.2 is linked
+  * fix build for conda feedstock
+  * use the static libcrypto_static for windows and openssl 1.1.1
+- enable testsuite
+- package LICENSE
+
+-------------------------------------------------------------------
+Mon Dec 10 12:06:44 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 0.8.6:
+  No changelog provided
+
+-------------------------------------------------------------------
+Sat Apr 22 17:06:52 UTC 2017 - aloisio@gmx.com
+
+- Initial package (0.8.0)
+

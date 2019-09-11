@@ -1,0 +1,268 @@
+-------------------------------------------------------------------
+Fri Mar  2 18:59:15 UTC 2018 - crrodriguez@opensuse.org
+
+- Replace xorg-x11-devel buildrequires by pkgconfig(x11),
+  pkgconfig(xaw7), pkgconfig(xmu), pkgconfig(xt)
+
+-------------------------------------------------------------------
+Mon Oct 27 10:12:20 UTC 2014 - i@marguerite.su
+
+- fix build for factory
+  * add patch: kinput2-v3.1-getline.patch
+  * getline() is a standard function from stdio.h, 
+    rename to getLine
+- remove unnessarily self-defined macros
+
+-------------------------------------------------------------------
+Sun Jul 21 07:11:11 UTC 2013 - bkbin005@rinku.zaq.ne.jp
+
+- on Factory, "%doc -P client/REDAME" in kinput2.spec is made to stop
+  build .  Then fixed .
+
+-------------------------------------------------------------------
+Sat Jul 20 22:38:18 UTC 2013 - bkbin005@rinku.zaq.ne.jp
+
+- remove "Provides: locale(xorg-x11:ja)" from kinput2.spec
+  and not installed by default because most users do not use
+  this package anymore .
+
+-------------------------------------------------------------------
+Wed Mar 28 09:40:41 UTC 2012 - cfarrell@suse.com
+
+- license update: HPND
+
+
+-------------------------------------------------------------------
+Tue Feb 28 12:54:11 CET 2012 - tiwai@suse.de
+
+- fix filelist to build properly on FACTORY
+
+-------------------------------------------------------------------
+Tue Dec 20 20:56:41 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Mon Nov  8 13:32:44 UTC 2010 - coolo@novell.com
+
+- remove support for old distros
+
+-------------------------------------------------------------------
+Wed Dec  2 18:24:40 UTC 2009 - coolo@novell.com
+
+- update patch to fix build
+
+-------------------------------------------------------------------
+Fri Nov 14 22:30:06 CET 2008 - mrueckert@suse.de
+
+- use suse_version instead of sles_version in the conditional.
+
+-------------------------------------------------------------------
+Tue Mar 11 18:33:09 CET 2008 - lrupp@suse.de
+
+- fix typo in BuildRequires macro for sles9
+
+-------------------------------------------------------------------
+Mon Mar 10 12:23:47 CET 2008 - mfabian@suse.de
+
+- bnc#368441: fix “local variable used before set” compiler
+  warning. 
+
+-------------------------------------------------------------------
+Tue Mar 06 15:41:06 CET 2007 - mfabian@suse.de
+
+- make the package build for sles9.
+
+-------------------------------------------------------------------
+Mon Mar 05 17:44:25 CET 2007 - mfabian@suse.de
+
+- Bugzilla #137396: "LTC20105-kinput2 cannot work after specific
+  function calls ": fixed by patch received from Shoji SUGIYAMA
+  from IBM.
+- use macros to make it build with the old X.org as well.
+
+-------------------------------------------------------------------
+Sun Aug  6 15:20:40 CEST 2006 - cthiel@suse.de
+
+- fix build with X.org 7.1
+
+-------------------------------------------------------------------
+Tue Feb 28 19:24:37 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(xorg-x11:ja)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:12 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov  8 14:35:32 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Fri Nov  4 12:10:03 CET 2005 - aj@suse.de
+
+- Fix some compiler warnings in Canna.c.
+
+-------------------------------------------------------------------
+Wed Jun 15 14:37:36 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+- fixed implicit declarations by adding more includes.
+
+-------------------------------------------------------------------
+Thu May 19 19:47:55 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #62553: "LTC11323-kinput2 may not handle spot location
+  properly on Motif": add patch by Jiro SEKIBA <sekiba@jp.ibm.com>.
+
+-------------------------------------------------------------------
+Tue Apr 26 12:11:43 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #63978: "LTC12852-kinput2 doesn't update its status
+  description after XmbResetIC": add patch by <ksampei@jp.ibm.com>.
+
+-------------------------------------------------------------------
+Wed Mar 16 14:35:50 CET 2005 - uli@suse.de
+
+- likewise for /etc/X11/xim.d/kinput2-canna
+
+-------------------------------------------------------------------
+Mon Mar 14 17:41:13 CET 2005 - uli@suse.de
+
+- fix thinko in /etc/X11/xim.d/kinput2-wnn
+
+-------------------------------------------------------------------
+Tue Feb 22 16:24:19 CET 2005 - mfabian@suse.de
+
+- fix typo in /etc/X11/xim.d/kinput2-{canna,wnn}.
+
+-------------------------------------------------------------------
+Mon Feb 21 19:25:26 CET 2005 - mfabian@suse.de
+
+- create start scripts /etc/X11/xim.d/kinput2-{canna,wnn}
+  and symlinks in ja subdirectory.
+
+-------------------------------------------------------------------
+Sat Oct 16 03:15:50 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #47203: "LTC11198-Unexpected window overlap order on
+  KDE". Fixed with patch created by IBM.
+
+-------------------------------------------------------------------
+Wed Jul 28 16:43:36 CEST 2004 - mfabian@suse.de
+
+- add 64bit.patch received from Mitsuru Chinen <chinen@jp.ibm.com>,
+  see Bugzilla #42973 (patch slightly improved to make it build
+  on STABLE).
+
+-------------------------------------------------------------------
+Mon May 24 16:41:22 CEST 2004 - ro@suse.de
+
+- added return values to non-void functions
+
+-------------------------------------------------------------------
+Fri Apr  2 10:09:37 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #35697:
+  "LTC6518-kinput2 doesn't work properly for XmbResetIC() with
+  XIMInitialState"
+  apply patch received from IBM.
+
+-------------------------------------------------------------------
+Fri Feb 20 16:08:59 CET 2004 - mfabian@suse.de
+
+- Bugzilla #34752: don't allow to close the candidate window
+  with the close button of the window manager.
+  Thanks to Mitsuru Chinen <mchinen@yamato.ibm.com>
+
+-------------------------------------------------------------------
+Fri Jun 13 23:24:35 CEST 2003 - mfabian@suse.de
+
+- fix "directory not owned by any package".
+
+-------------------------------------------------------------------
+Thu Nov 14 15:14:51 CET 2002 - mfabian@suse.de
+
+- remove Epoch tag. I added this because the version changed
+  from v3.1beta4 to v3.1, but it looks like using Epoch because
+  of that is not a good idea. 
+
+-------------------------------------------------------------------
+Wed Oct 23 03:13:14 CEST 2002 - mfabian@suse.de
+
+- update to v3.1
+
+-------------------------------------------------------------------
+Sun Aug 11 22:22:05 CEST 2002 - mfabian@suse.de
+
+- change # neededforbuild:
+  cannadev -> canna canna-devel canna-libs
+  xf86 -> x-devel-packages
+
+-------------------------------------------------------------------
+Fri Aug  2 11:18:05 CEST 2002 - mfabian@suse.de
+
+- update to v3.1-beta4:
+  * A bug in destroying IC, which is introduced by the previous
+    beta and causes some clients core dump is fixed.
+
+-------------------------------------------------------------------
+Mon Mar 11 14:04:37 CET 2002 - mfabian@suse.de
+
+- change app-defaults to avoid input focus for the 
+  "SeparateConversion", "selectionShell", and "auxShell" widgets.
+  These windows should never get focus, it just causes problems
+  when they do. 
+
+-------------------------------------------------------------------
+Sat Jan 19 19:37:34 CET 2002 - mfabian@suse.de
+
+- updated to v3.1-beta3
+
+-------------------------------------------------------------------
+Mon Sep 24 13:52:11 CEST 2001 - mfabian@suse.de
+
+- change the default keybindings for kinput2/Wnn to use
+  ccdef.kinput2.egg. User feedback seems to indicate that nobody
+  likes the "default default" keybindings from ccdef.kinput2
+  (I don't like them either). The keybindings defined in
+  ccdef.kinput2.egg are much more similar to the behaviour
+  of other input methods like kinput2/Canna etc., therefore they
+  seem to more natural for most people.
+- fix the man-page to mention the new default. 
+
+-------------------------------------------------------------------
+Thu Sep  6 17:28:50 CEST 2001 - mfabian@suse.de
+
+- fix "too few arguments to function `jl_kanji_len'"
+  (was always wrong, but went unnoticed until <schwab@suse.de>
+  fixed some stuff in FreeWnn.
+- remove warnings (passing incompatible pointer type etc.)
+
+-------------------------------------------------------------------
+Fri Aug 10 14:21:01 CEST 2001 - mfabian@suse.de
+
+- updated to v3.1-beta2
+
+-------------------------------------------------------------------
+Sat May 12 15:55:59 CEST 2001 - schwab@suse.de
+
+- Fix missing declarations.
+
+-------------------------------------------------------------------
+Mon May  7 11:13:44 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Wed Nov  1 02:16:15 CET 2000 - mfabian@suse.de
+
+- added support for wnn.
+
+-------------------------------------------------------------------
+Fri Jul 14 17:54:45 CEST 2000 - mfabian@suse.de
+
+- new package: kinput2, Version v3.1 alpha1

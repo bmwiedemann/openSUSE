@@ -1,0 +1,23 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/LINBIT/drbd-utils.git</param>
+    <param name="scm">git</param>
+    <param name="filename">drbd-utils</param>
+<!--
+    build service using release drbd-utils atm.
+    <param name="version">9.9.0</param>
+    Using release tarball instead of git since need buildtag.c/h
+-->
+    <param name="versionformat">9.9.0+git.%h</param>
+    <param name="revision">master</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">*drbd-utils*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="set_version" mode="disabled">
+    <param name="basename">drbd-utils</param>
+  </service>
+</services>

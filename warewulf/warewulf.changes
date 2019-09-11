@@ -1,0 +1,200 @@
+-------------------------------------------------------------------
+Thu Jan  3 22:13:59 UTC 2019 - eich@suse.com
+
+- Work around OBS:
+  OBS doesn't allow to share noarch packages between architectures:
+  build the 'common' noarch package for all platforms.
+
+-------------------------------------------------------------------
+Fri Dec 14 13:26:08 UTC 2018 - eich@suse.com
+
+- Add missing Require(pre/post)
+- For sle_version < 150000 use 'leagcy' location of bash completions.
+- Remove some leftover 'BuildRequires: warewulf-common'
+
+-------------------------------------------------------------------
+Mon Dec 10 13:46:06 UTC 2018 - eich@suse.com
+
+- On non-x84_64 only build arch dependent package
+  warewulf-provision-%%{arch}-initramfs:
+  * all other packages are redundant.
+  * on %ix86 ipxe cannot cross-build, thus the required ARM boot
+    image does not exist.
+  NOTE: the package is still noarch: %%{arch} refers to the
+  architecture of the target system to be brought up - this may
+  differ from the host system running warewulf.
+
+-------------------------------------------------------------------
+Mon Dec 10 13:30:23 UTC 2018 - eich@suse.com
+
+- Consolidate all BuildRequires: for non-'common' packages on top
+  and remove %if %{?flavor} == common .. %else .. %endif around
+  package description.
+
+-------------------------------------------------------------------
+Sat Dec  8 20:31:35 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove redundant %clean section. Replace old $RPM_* shell vars.
+  Do not ignore errors from groupadd.
+
+-------------------------------------------------------------------
+Thu Nov 29 18:04:52 UTC 2018 - eich@suse.com
+
+- Provide for PackageHub (FATE#326457).
+
+-------------------------------------------------------------------
+Thu Nov 29 15:00:14 UTC 2018 - eich@suse.com
+
+- Exchange all patches:
+  Upstream:
+  * wwinit-Check-if-service-is-enabled-before-enabling-it.patch
+  * Add-Leap-42.3-15.0-Tumbleweed-remove-support-for-openSUSE-13.1-133.patch
+  * Check-for-SUSE-system-and-set-Apache2-config-path-accordingly.patch
+  * Perl-Escape-left-curly-brace-properly-in-regexps-for-perl-5.26.patch
+  * Provisioning-httpd-Make-plugin-directory-configurable-at-build-time-138.patch
+  * Remove-shebang-from-scripts-only-intended-to-be-sourced.patch
+  * Suse-prov-config-local-binary-copy-140.patch
+  * busybox-Newer-versions-of-glibc-do-not-ship-rpc-functions-any-more-130.patch
+  * common-Allow-bash-completion-directory-to-be-configurable-139.patch
+  * common-Consolidate-system-service-module-for-SUSE.patch
+  * common-Correctly-detect-SUSE-system-for-system-services.patch
+  * common-Really-install-network-check-script.patch
+  * common-functions-When-checking-for-RPM-package-check-whatprovides-134.patch
+  * ipmi-allow-build-to-use-locally-installed-ipmitools.patch
+  * provision-Add-build-configuration-to-allow-for-use-of-local-arm-ipxe-images.patch
+  * provision-Check-for-presence-of-busybox_links_path-replacement.patch
+  * provision-Update-ipxe-to-Github-commitid-133f4c4.patch
+  * vnfs-Add-auto-agree-with-licenses-to-include-suse-PKGR_CMD-142.patch
+  * wwinit-Add-check-for-properly-configured-network-136.patch
+  * wwinit-Check-for-tftp-server-capability-as-well-135.patch
+  * wwinit-Check-if-service-is-enabled-before-enabling-it.patch
+  * wwinit-If-no-ntp-key-file-is-present-comment-it-out-in-new-config-143.patch
+  * wwinit-If-original-ntpd.conf-file-has-this-has-keys-set-up-copy-them-128.patch
+  * wwmkchroot-Fix-SUSE-specific-installation-functions-to-work-with-openSUSE-and-SLES-132.patch
+  To be upstreamed:
+  * vnfs-SUSE-Make-sure-no-repos-are-left-over-when-adding-a-list-of-repositories.patch
+  * vnfs-SUSE-copy-repo-files-to-correct-location.patch
+  * vnfs-SUSE-make-sure-zypper-auto-accepts-licenses.patch
+  SUSE Specific:
+  * common-LSB-Move-common-functions-script-library-to-libexec.patch
+    Make sure there are no scripts in /etc
+  * provision-If-available-us-haveged-in-warewulf-initrd.patch
+    Add haved to create entropy in initramfs of nodes
+  * cluster-remove-firstboot-stuff.patch
+    Remove some unused stuff.
+
+-------------------------------------------------------------------
+Tue Nov 27 11:17:54 UTC 2018 - eich@suse.com
+
+- Build only for x86 - the resulting binary packages are all
+  'noarch' so they should be available on the other arches
+  as well.
+  This avoids issues with the ipxe-bootimgs package - which is
+  noarch as well - not being available for aarch64 in OBS.
+  This package is built for x86_64 only as well.
+
+-------------------------------------------------------------------
+Mon Nov 26 20:23:11 UTC 2018 - eich@suse.com
+
+- OBS doesn't check for missing files sections for packages to
+  determine which BuildRequires should be picked, thus back the
+  %%if "%%{?flavor} == "common" ..%%else .. %%endif in the preamble.
+  Alternatively, all BuildRequires could be gathered at the top
+  and selected with the %%if statements, it seems to be better to
+  have the BuildRequires close to the sub-packages, however.
+
+-------------------------------------------------------------------
+Fri Oct 19 05:50:40 UTC 2018 - jjolly@suse.com
+
+- Added warewulf-ipmi and perl-warewulf-ipmi packages
+  * Build requires ipmitool to eliminate rpmlint error
+- Added 500-ipmi-use-local-ipmitool.patch
+  * Causes the build process to look for a local install of ipmitool
+  * Copies into setup-ipmi cpio, and adds a link in /usr/lib/warewulf
+
+-------------------------------------------------------------------
+Thu Oct 18 13:38:02 UTC 2018 - jjolly@suse.com
+
+- Added warewulf-doc package and moved documentation into it
+- Several changes to the recipe file
+
+-------------------------------------------------------------------
+Thu Oct 18 05:42:44 UTC 2018 - jjolly@suse.com
+
+- Added ipxe aarch64 snp.efi to build
+- Rework install recipe to be more system agnostic
+- Added VM configuration recipe
+
+-------------------------------------------------------------------
+Fri Oct  5 17:19:22 UTC 2018 - jjolly@suse.com
+
+- Remove warewulf-node package, as all it seems to provide is the
+  broken wwfirstboot command.
+
+-------------------------------------------------------------------
+Fri Oct  5 13:35:45 UTC 2018 - jjolly@suse.com
+
+- 302-vnfs-libexec-functions-remove-shebang.patch
+  * Remove shebang from sourceable script wwmkchroot/functions
+- 402-cluster-etc-cluster-env-remove-shebang.patch
+  * Remove shebang from sourceable scripts in /etc/profile.d
+- README.SUSE - Added install_recipe.md as README.SUSE in docs
+
+-------------------------------------------------------------------
+Wed Oct  3 03:48:36 UTC 2018 - jjolly@suse.com
+
+- Added perl-warewulf-cluster package for the perl file in the package
+- Generalized the architecture of the initramfs with an asterisk
+- Added x86_64 architecture back
+
+-------------------------------------------------------------------
+Fri Sep 28 23:14:26 UTC 2018 - jjolly@suse.com
+
+- Added arch specifiers for initramfs and ipxe image packages
+
+-------------------------------------------------------------------
+Fri Sep 28 12:19:55 UTC 2018 - jjolly@suse.com
+
+- Fixed descriptions for packages to correctly reflect upstream
+  descriptions
+- Replaced opensuse-leap15 template, updated tumbleweed template,
+  and added opensuse-42.3 template for wwmkchroot
+- Cleaned up specfile
+
+-------------------------------------------------------------------
+Tue Sep 11 12:46:48 UTC 2018 - jjolly@suse.com
+
+- Bugfixes in Warewulf common package
+  * functions: When checking for RPM package check '--whatprovides'
+  * perl: User sharedstatedir for STATEDIR
+- Building Warewulf provision module
+  * Separated into four packages: warewulf-provision,
+    warewulf-provision-server, perl-warewulf-provision, and
+    perl-warewulf-provision-server
+  * Added feature to configure to allow inclusion of locally-built
+    binaries of busybox, parted, bsdtar, ipxe, and e2fsprogs
+  * busybox: Uses libtiprc instead of glibc
+  * ipxe: Patch to handle build error with strncpy
+  * ipxe: Patch to handle PLT32 elf header format in elf2efi
+    * This is due to an update in binutils
+  * apache2: Fix path problems in config files
+- Building Warewulf vnfs module
+  * Fix various bugs in the suse-specific wwmkcroot handler
+    * Use correct paths to zypper confdir and /etc/os-release
+    * Fix link to /dev/zero
+    * Add --auto-agree-with-licenses to install command
+  * Correct package list in openSUSE template
+- Building Warewulf cluster module
+  * Fix ntp trusted key configuration
+  * Add correct tftp package identifier to installer check
+
+-------------------------------------------------------------------
+Sat Jul 28 16:51:11 UTC 2018 - jjolly@suse.com
+
+- Building Warewulf common package
+  * Two separate packages: warewulf-common and perl-warewulf-common
+  * Removed _multibuild. All packages defined in one build process.
+  * common-fix-bash-completion-path.patch
+    * Install warewulf bash completion into SUSE-appropriate directory
+  * common-move-functions-helper.patch
+    * Install wwinit helper script in SUSE-appropriate directory

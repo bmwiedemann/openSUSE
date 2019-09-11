@@ -1,0 +1,26 @@
+Index: src/native/Makefile
+===================================================================
+--- src/native/Makefile.orig
++++ src/native/Makefile
+@@ -43,10 +43,8 @@ NATIVE_CFLAGS := -fpic -DPOSIX $(CFLAGS)
+ LD_FLAGS = -shared
+ 
+ INCLUDES          = -I $(JAVAINCLUDE) -I $(JAVANATINC)
+-LIBPATH           = -L/usr/lib/termcap
+-
+-JavaReadline_LIBS = -lreadline -ltermcap -lhistory
+-JavaEditline_LIBS = -ledit -ltermcap
++JavaReadline_LIBS = -lreadline -ltinfo -lhistory
++JavaEditline_LIBS = -ledit -lncurses
+ JavaGetline_LIBS  =
+ endif
+ 
+@@ -125,7 +123,7 @@ ifeq (MSWIN,$(OS_FLAVOR))
+ 	$(CC) $(LD_FLAGS) $(OBJECTS) $(LIBPATH) $($(TG)_LIBS) -Fe$@
+ endif
+ ifeq (LINUX,$(OS_FLAVOR))
+-	$(CC) $(LD_FLAGS) $(OBJECTS) $(LIBPATH) $($(TG)_LIBS) -o $@
++	$(CC) $(LD_FLAGS) $(OBJECTS) $($(TG)_LIBS) -o $@
+ endif
+ ifeq (MAC,$(OS_FLAVOR))
+ 	$(CC) $(LD_FLAGS) $(OBJECTS) $(LIBPATH) $($(TG)_LIBS) -o $@

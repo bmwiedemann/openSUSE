@@ -1,0 +1,4 @@
+<services>
+  <service name="download_files" mode="localonly" />
+  <service name="update_source" mode="disabled" />
+</services>

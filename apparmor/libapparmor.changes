@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Tue Jun 18 20:50:19 UTC 2019 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 2.13.1
+  - some fixes in cache handling
+  - see https://gitlab.com/apparmor/apparmor/wikis/Release_Notes_2.13.3
+    for the detailed upstream changelog
+
+-------------------------------------------------------------------
+Tue Apr 23 11:34:08 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133091).
+
+-------------------------------------------------------------------
+Fri Dec 21 12:58:02 UTC 2018 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 2.13.2
+  - no changes in libapparmor
+  - see https://gitlab.com/apparmor/apparmor/wikis/Release_Notes_2.13.2
+    for the detailed upstream changelog
+
+-------------------------------------------------------------------
+Sun Oct 14 11:32:31 UTC 2018 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 2.13.1
+  - several bug fixes
+  - see https://gitlab.com/apparmor/apparmor/wikis/Release_Notes_2.13.1
+    for the detailed upstream changelog
+
+-------------------------------------------------------------------
+Sun Apr 15 19:02:35 UTC 2018 - suse-beta@cboltz.de
+
+- update to AppArmor 2.13
+  - add support for multiple cache directories and cache overlays
+    (boo#1069906, boo#1074429)
+  - see https://gitlab.com/apparmor/apparmor/wikis/Release_Notes_2.13
+    for the detailed upstream changelog
+
+-------------------------------------------------------------------
+Mon Dec 25 15:32:35 UTC 2017 - suse-beta@cboltz.de
+
+- update to AppArmor 2.12
+  - preserve errno across aa_*_unref() functions
+  - see https://gitlab.com/apparmor/apparmor/wikis/Release_Notes_2.12
+    for the detailed upstream changelog
+- no longer package static libapparmor.a
+
+-------------------------------------------------------------------
+Tue Oct 31 10:41:55 UTC 2017 - suse-beta@cboltz.de
+
+- update to AppArmor 2.11.95 aka 2.12 beta1
+  - no changes in libapparmor
+  - see http://wiki.apparmor.net/index.php/ReleaseNotes_2_11_95
+    for the detailed upstream changelog
+
+-------------------------------------------------------------------
+Wed Oct 25 19:36:55 UTC 2017 - suse-beta@cboltz.de
+
+- update to AppArmor 2.11.1
+  - mostly test-related changes in libapparmor
+  - see http://wiki.apparmor.net/index.php/ReleaseNotes_2_11_1 for
+    upstream changelog
+
+-------------------------------------------------------------------
+Sat Feb 11 11:33:16 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups
+
+-------------------------------------------------------------------
+Sat Jan 28 21:40:11 UTC 2017 - suse-beta@cboltz.de
+
+- split libapparmor into separate spec to get rid of build loop
+  involving mariadb, systemd, apparmor, libapr and mariadb again
+  (see the discussion in SR 448871 for details)
+- libapparmor.spec is based on the AppArmor 2.11 apparmor.spec, but
+  with minimum BuildRequires
+
+
+

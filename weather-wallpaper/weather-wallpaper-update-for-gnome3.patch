@@ -1,0 +1,102 @@
+diff -Naur a/weather-wallpaper b/weather-wallpaper
+--- a/weather-wallpaper	2007-10-24 05:15:28.000000000 -0500
++++ b/weather-wallpaper	2012-01-25 11:03:01.509494039 -0600
+@@ -16,22 +16,26 @@
+ #
+ # You should have received a copy of the GNU General Public License
+ # along with this program; if not, write to the Free Software
+-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ #
+ ###
+ 
+-
+-import ConfigParser
+-import gettext
+-import gtk
+-import os
+-import pygtk
+-import pymetar
+-import sys
+-import threading
+-import time
+-import urllib2
+-
++try:
++    import gi
++    from gi.repository import Gio
++except ImportError:
++    pass
++finally:
++    import ConfigParser
++    import gettext
++    import gtk
++    import os
++    import pygtk
++    import pymetar
++    import sys
++    import threading
++    import time
++    import urllib2
+ 
+ __version__ = "0.2.0"
+ 
+@@ -246,6 +250,19 @@
+         self.stop_event = threading.Event()
+         self.stop = False
+         threading.Thread.__init__(self)
++        # Desktop wallpaper schema name.
++        self.SCHEMA = 'org.gnome.desktop.background'
++        # URI to use for the background image. Note that the backend only supports local (file://) URIs.
++        self.KEY_URI = 'picture-uri'
++        # Determines how the image set by wallpaper_filename is rendered. Possible values are "none",
++        # "wallpaper", "centered", "scaled", "stretched", "zoom", "spanned".
++        self.KEY_OPTS = 'picture-options'
++        # How to shade the background color. Possible values are "horizontal", "vertical", and "solid".
++        self.KEY_SHADING = 'color-shading-type'
++        # Left or Top color when drawing gradients, or the solid color.
++        self.KEY_PRIMARY = 'primary-color'
++        # Right or Bottom color when drawing gradients, not used for solid color.
++        self.KEY_SECOND = 'secondary-color'
+ 
+     def run(self):
+         """Execution loop for the thread. Creates and sets a new wallpaper with the info downloaded from NOAA"""
+@@ -431,17 +448,28 @@
+             os.popen(cmd)
+ 
+             # If the user is running Gnome
+-            if os.popen( "ps --user " + os.environ.get( "USER" ) + "| grep gnome-panel").readline():
+-                import gconf
+-                client = gconf.client_get_default()
+-                client.set_string("/desktop/gnome/background/picture_filename", output_img)
+-                client.set_string("/desktop/gnome/background/picture_options", "centered")
+-
+-                client.set_string("/desktop/gnome/background/color_shading_type", "vertical-gradient")
+-                client.set_string("/desktop/gnome/background/primary_color", foreground)
+-                client.set_string("/desktop/gnome/background/secondary_color", background)
++            if os.environ.has_key('GNOME_DESKTOP_SESSION_ID'):
++                try:
++                    # If running Gnome 3.x
++                    gsettings = Gio.Settings.new(self.SCHEMA)
++                    gsettings.set_string(self.KEY_URI, "file://" + output_img)
++                    gsettings.set_string(self.KEY_OPTS, "spanned")
++                    gsettings.set_string(self.KEY_SHADING, "vertical")
++                    gsettings.set_string(self.KEY_PRIMARY, foreground)
++                    gsettings.set_string(self.KEY_SECOND, background)
++                except NameError:
++                    pass
++                finally:
++                    # If running Gnome 2.x
++                    import gconf
++                    client = gconf.client_get_default()
++                    client.set_string("/desktop/gnome/background/picture_filename", output_img)
++                    client.set_string("/desktop/gnome/background/picture_options", "centered")
++                    client.set_string("/desktop/gnome/background/color_shading_type", "vertical-gradient")
++                    client.set_string("/desktop/gnome/background/primary_color", foreground)
++                    client.set_string("/desktop/gnome/background/secondary_color", background)
+             # If the user is running KDE
+-            elif os.popen( "ps --user " + os.environ.get( "USER" ) + "| grep kdesktop" ).readline():
++            elif os.environ.has_key('KDE_FULL_SESSION'):
+                 cmd = "dcop kdesktop KBackgroundIface setWallpaper \"%s\" 1 " % (output_img)
+                 os.popen(cmd)
+                 cmd = "dcop kdesktop KBackgroundIface setColor \"%s\" false" % (background)

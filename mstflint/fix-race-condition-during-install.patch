@@ -1,0 +1,21 @@
+commit 58b86ea0cba77004b59a87b6e1de253d93fde3c9
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Mon Oct 15 09:33:09 2018 +0200
+
+    fix race condition during install
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git dev_mgt/Makefile.am dev_mgt/Makefile.am
+index 907e5ce38a0b..28d506d095fb 100644
+--- dev_mgt/Makefile.am
++++ dev_mgt/Makefile.am
+@@ -46,7 +46,7 @@ libdev_mgt_a_SOURCES = \
+ 
+ dev_mgt_pylibdir = $(libdir)/mstflint/python_tools/
+ 
+-dev_mgt_pylib_DATA = c_dev_mgt.so dev_mgt.py
++dev_mgt_pylib_DATA = c_dev_mgt.so
+ dist_dev_mgt_pylib_DATA = dev_mgt.py
+ 
+ c_dev_mgt.so: libdev_mgt.a

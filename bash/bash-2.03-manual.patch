@@ -1,0 +1,65 @@
+---
+ doc/bash.1     |   16 ++++++++++++++++
+ doc/builtins.1 |    2 +-
+ doc/rbash.1    |    2 +-
+ 3 files changed, 18 insertions(+), 2 deletions(-)
+
+--- doc/bash.1
++++ doc/bash.1	2018-11-29 08:09:41.735675837 +0000
+@@ -122,6 +122,12 @@ This option allows the positional parame
+ when invoking an interactive shell or when reading input
+ through a pipe.
+ .TP
++.B \-v
++Print shell input lines as they are read.
++.TP
++.B \-x
++Print commands and their arguments as they are executed.
++.TP
+ .B \-D
+ A list of all double-quoted strings preceded by \fB$\fP
+ is printed on the standard output.
+@@ -7294,6 +7300,11 @@ Apply the following `\fBs\fP' modifier o
+ .SH "SHELL BUILTIN COMMANDS"
+ .\" start of bash_builtins
+ .zZ
++.if !dFN \{\
++.de FN
++\fI\|\\$1\|\fP
++..
++.\}
+ .PP
+ Unless otherwise noted, each builtin command documented in this
+ section as accepting options preceded by
+@@ -10768,6 +10779,11 @@ process or job waited for.
+ .SH "RESTRICTED SHELL"
+ .\" rbash.1
+ .zY
++.if !dFN \{\
++.de FN
++\fI\|\\$1\|\fP
++..
++.\}
+ .PP
+ If
+ .B bash
+--- doc/builtins.1
++++ doc/builtins.1	2018-11-29 08:09:41.735675837 +0000
+@@ -19,6 +19,6 @@ shift, shopt, source, suspend, test, tim
+ ulimit, umask, unalias, unset, wait \- bash built-in commands, see \fBbash\fR(1)
+ .SH BASH BUILTIN COMMANDS
+ .nr zZ 1
+-.so bash.1
++.so /usr/share/man/man1/bash.1
+ .SH SEE ALSO
+ bash(1), sh(1)
+--- doc/rbash.1
++++ doc/rbash.1	2018-11-29 08:09:41.735675837 +0000
+@@ -3,6 +3,6 @@
+ rbash \- restricted bash, see \fBbash\fR(1)
+ .SH RESTRICTED SHELL
+ .nr zY 1
+-.so bash.1
++.so /usr/share/man/man1/bash.1
+ .SH SEE ALSO
+ bash(1)

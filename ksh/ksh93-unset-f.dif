@@ -1,0 +1,12 @@
+--- src/cmd/ksh93/sh/xec.c
++++ src/cmd/ksh93/sh/xec.c	2011-07-04 15:42:21.000000000 +0000
+@@ -3387,7 +3387,8 @@ int sh_funscope(int argn, char *argv[],i
+ 	shp->st.var_local = shp->var_tree;
+ 	if(!fun)
+ 	{
+-		shp->st.filename = fp->node->nvalue.rp->fname;
++		if (fp->node->nvalue.rp)
++			shp->st.filename = fp->node->nvalue.rp->fname;
+ 		shp->st.funname = nv_name(fp->node);
+ 		shp->last_root = nv_dict(DOTSHNOD);
+ 		nv_putval(SH_PATHNAMENOD,shp->st.filename,NV_NOFREE);

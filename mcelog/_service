@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/andikleen/mcelog</param>
+    <param name="subdir"></param>
+    <param name="filename">mcelog</param>
+    <param name="versionformat">1.62</param>
+    <param name="changesgenerate">enable</param>
+    <param name="revision">refs/tags/v162</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">mcelog*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

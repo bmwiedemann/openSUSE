@@ -1,0 +1,14 @@
+--- swingx-0.9.4-src/swinglabs-build-impl.xml	2008-09-07 06:10:24.000000000 +0200
++++ swingx-0.9.4-src.mef/swinglabs-build-impl.xml	2008-11-04 17:19:01.000000000 +0100
+@@ -232,11 +232,7 @@
+             </classpath>
+             <packageset dir="${src.beaninfo.dir}" includes="*/**"/>
+             <packageset dir="${java.dir}" includes="*/**"/>
+-            <taglet name="org.jdesktop.swinglabs.javadoc.DemoTaglet">
+-                <path path="${demo.taglet.jar}" />
+-            </taglet>
+         </javadoc>
+-        <copy todir="${dist.javadoc.dir}" file="${demo.taglet.jar}" />
+         <copy todir="${dist.javadoc.dir}" file="dist/swingx.jar" />
+         <rename src="${dist.javadoc.dir}/swingx.jar" dest="${dist.javadoc.dir}/demos.jar" />
+     </target>

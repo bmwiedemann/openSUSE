@@ -1,0 +1,13 @@
+Index: rocksndiamonds-3.3.1.2/src/Makefile
+===================================================================
+--- rocksndiamonds-3.3.1.2.orig/src/Makefile
++++ rocksndiamonds-3.3.1.2/src/Makefile
+@@ -291,7 +291,7 @@ conf_mus.h: conf_mus.c
+ 	@$(MAKE) auto-conf
+ 
+ $(TIMESTAMP_FILE): $(SRCS) $(LIBGAME) $(GAME_EM) $(GAME_SP)
+-	@date '+"%Y-%m-%d %H:%M"' \
++	@date -r ../ChangeLog '+"%Y-%m-%d %H:%M"' \
+ 	| sed -e 's/^/#define COMPILE_DATE_STRING /' \
+ 	> $(TIMESTAMP_FILE)
+ 

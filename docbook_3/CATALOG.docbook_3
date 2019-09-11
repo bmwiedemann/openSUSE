@@ -1,0 +1,96 @@
+-- ...................................................................... --
+-- Catalog data for DocBook V3.1 ........................................ --
+-- File CATALOG.docbook_3 ............................................... --
+
+-- Please direct all questions, bug reports, or suggestions for
+   changes to the feedback@suse.de
+--
+
+-- This is the catalog data file for Version 3.1 and Version 3.0 of the
+   DocBook DTD.
+   It is provided as a convenience in building your own catalog files.
+   You need not use the filenames listed here, and need not use the
+   filename method of identifying storage objects at all.  See the
+   documentation for detailed information on the files associated with
+   the DocBook DTD.  See SGML Open Technical Resolution 9401 for
+   detailed information on supplying and using catalog data.
+--
+
+OVERRIDE YES
+
+-- ...................................................................... --
+-- SGML declaration associated with DocBook ............................. --
+
+-- SGMLDECL /usr/share/sgml/docbook/dtd/3.1/docbook.dcl --
+DTDDECL "-//OASIS//DTD DocBook V3.1//EN" 
+    /usr/share/sgml/docbook/dtd/3.1/docbook.dcl
+DTDDECL "-//Davenport//DTD DocBook V3.0//EN"
+    /usr/share/sgml/docbook/dtd/3.0/docbook.dcl
+
+-- ...................................................................... --
+-- DocBook driver file .................................................. --
+
+PUBLIC "-//OASIS//DTD DocBook V3.1//EN" 
+       /usr/share/sgml/docbook/dtd/3.1/docbook.dtd
+
+-- ...................................................................... --
+-- DocBook modules ...................................................... --
+
+PUBLIC "-//USA-DOD//DTD Table Model 951010//EN" 
+       /usr/share/sgml/docbook/dtd/3.1/cals-tbl.dtd
+PUBLIC "-//OASIS//ELEMENTS DocBook Information Pool V3.1//EN"
+       /usr/share/sgml/docbook/dtd/3.1/dbpool.mod
+PUBLIC "-//OASIS//ELEMENTS DocBook Document Hierarchy V3.1//EN" 
+       /usr/share/sgml/docbook/dtd/3.1/dbhier.mod
+PUBLIC "-//OASIS//ENTITIES DocBook Additional General Entities V3.1//EN"
+       /usr/share/sgml/docbook/dtd/3.1/dbgenent.mod
+PUBLIC "-//OASIS//ENTITIES DocBook Notations V3.1//EN"
+       /usr/share/sgml/docbook/dtd/3.1/dbnotn.mod
+PUBLIC "-//OASIS//ENTITIES DocBook Character Entities V3.1//EN"
+       /usr/share/sgml/docbook/dtd/3.1/dbcent.mod
+
+-- ...................................................................... --
+PUBLIC "-//Davenport//DTD DocBook V3.0//EN"
+    /usr/share/sgml/docbook/dtd/3.0/docbook.dtd
+
+--									--
+-- DocBook modules							--
+--									--
+PUBLIC "-//Davenport//ELEMENTS DocBook Information Pool V3.0//EN"
+    /usr/share/sgml/docbook/dtd/3.0/dbpool.mod
+PUBLIC "-//Davenport//ELEMENTS DocBook Document Hierarchy V3.0//EN"
+    /usr/share/sgml/docbook/dtd/3.0/dbhier.mod
+PUBLIC "-//Davenport//ENTITIES DocBook Additional General Entities V3.0//EN"
+    /usr/share/sgml/docbook/dtd/3.0/dbgenent.mod
+
+-- ENTITY "%extensions.ent" /usr/share/sgml/docbook/dtd/3.1//my_docbook/aw.ent           --
+-- DOCTYPE "article" Davenport/docbook-2.4/docbook.dtd                  --
+-- DOCTYPE "article" dtd/docbook.dtd --
+
+
+-- ...................................................................... --
+-- ISO entity sets ...................................................... --
+CATALOG  "/usr/share/sgml/CATALOG.iso_ent"
+
+-- PUBLIC "ISO 8879:1986//ENTITIES Diacritical Marks//EN" "iso-dia.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Numeric and Special Graphic//EN" "iso-num.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Publishing//EN" "iso-pub.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES General Technical//EN" "iso-tech.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Added Latin 1//EN" "iso-lat1.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Added Latin 2//EN" "iso-lat2.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Greek Letters//EN" "iso-grk1.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Monotoniko Greek//EN" "iso-grk2.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Greek Symbols//EN" "iso-grk3.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Alternative Greek Symbols//EN" "iso-grk4.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Added Math Symbols: Arrow Relations//EN" "iso-amsa.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Added Math Symbols: Binary Operators//EN" "iso-amsb.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Added Math Symbols: Delimiters//EN" "iso-amsc.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Added Math Symbols: Negated Relations//EN" "iso-amsn.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Added Math Symbols: Ordinary//EN" "iso-amso.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Added Math Symbols: Relations//EN" "iso-amsr.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Box and Line Drawing//EN" "iso-box.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Russian Cyrillic//EN" "iso-cyr1.gml" --
+-- PUBLIC "ISO 8879:1986//ENTITIES Non-Russian Cyrillic//EN" "iso-cyr2.gml" --
+
+-- End of catalog data for DocBook V3.1 ................................. --
+-- ...................................................................... --

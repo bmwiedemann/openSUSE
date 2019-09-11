@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Fri Jul 21 12:20:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.0.2:
+  * Version bump.
+
+-------------------------------------------------------------------
+Tue Jun 13 14:08:36 UTC 2017 - jengelh@inai.de
+
+- Rewrite incorrect %description of main RPM.
+
+-------------------------------------------------------------------
+Wed May 17 15:00:49 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.0+git20170404:
+  * No changelog available.
+- Rename the package to bcunit for the fork.
+- Rename and rebase cunit-link-ncurses.dif to
+  bcunit-link-ncurses.patch,
+  cunit-ncurses6.patch to bcunit-ncurses6.patch.
+- Switch to cmake.
+- Add bcunit-sover.patch: Correctly set the sover.
+- Disable test: doesn't compile correctly.
+- Correct the licence to LGPL-2.0+ (nothing limits to LGPL-2.0).
+- Add baselibs.conf.
+- Minor spec clean up.
+
+-------------------------------------------------------------------
+Thu Oct 22 10:37:14 UTC 2015 - idonmez@suse.com
+
+- Add cunit-ncurses6.patch to compile with ncurses6 
+
+-------------------------------------------------------------------
+Tue May 26 16:00:55 UTC 2015 - ddiss@suse.com
+
+- Don't tag Recommends on RHEL, it yields an "Unknown tag" error.
+
+-------------------------------------------------------------------
+Tue Aug 12 07:39:23 UTC 2014 - tchvatal@suse.com
+
+- Use proper group for the library.
+
+-------------------------------------------------------------------
+Mon Aug  4 08:13:01 UTC 2014 - tchvatal@suse.com
+
+- The license is actually LGPL
+
+-------------------------------------------------------------------
+Mon Aug  4 08:03:42 UTC 2014 - tchvatal@suse.com
+
+- Update to release 2.1.3:
+  * prune the static-devel subpackage as it is pointless.
+  * Various upstream fixes with no changelog.
+- Cleanup with spec-cleaner to have the spec pretty
+
+-------------------------------------------------------------------
+Thu Feb  9 02:39:58 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 2.1.2
+* modified dtd and xsl files to support inactive suites/tests
+* Added ability to deactivate suite/tests dynamically
+* Removed constraint that suite/test names be unique
+- Remove redundant tags/sections
+- Parallel build with %_smp_mflags
+- Add autotools BuildRequires for factory/12.2
+- Fix use of implicitly defined function in source
+  (do not declare that post-build-checks's output was wrong)
+- Add missing DT_NEEDED entry on ncurses
+
+-------------------------------------------------------------------
+Tue Jun  8 18:12:46 UTC 2010 - andrea@opensuse.org
+
+- fixed 'no-pkg-config-provides'
+
+-------------------------------------------------------------------
+Wed Apr 21 08:30:40 UTC 2010 - prusnak@suse.cz
+
+- cleaned up spec, split devel-static subpackage
+
+-------------------------------------------------------------------
+Sat Mar 13 13:19:28 UTC 2010 - andrea@opensuse.org
+
+- added CUnit-2.1-pkgconfig.patch to provide cunit.pc
+
+-------------------------------------------------------------------
+Wed Mar  3 20:56:11 UTC 2010 - andrea@opensuse.org
+
+- split into 3 subpackages
+
+-------------------------------------------------------------------
+Tue Mar  2 15:45:52 UTC 2010 - andrea@opensuse.org
+
+- New package

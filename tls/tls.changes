@@ -1,0 +1,120 @@
+-------------------------------------------------------------------
+Thu Feb  1 17:56:43 UTC 2018 - max@suse.com
+
+- Fix the logic to fail on unexpected testsuite failures.
+
+-------------------------------------------------------------------
+Fri Dec 29 10:15:09 UTC 2017 - max@suse.com
+
+- Update to version 1.7.14 for compatibility with OpenSSL 1.1.
+- Add tls-fix-channel-state.patch to prevent implicit changes of
+  encoding, translation and blocking mode when importing a socket.
+  https://core.tcl.tk/tcltls/info/f798e2ea12
+
+-------------------------------------------------------------------
+Thu Oct  8 15:27:17 UTC 2015 - max@suse.com
+
+- Update to version 1.6.7 to incorporate the latest upstream fixes.
+  This obsoletes tls-ciphers.patch and tls-enable-tls1.patch.
+
+-------------------------------------------------------------------
+Wed Nov 26 15:27:21 UTC 2014 - gber@opensuse.org
+
+- update to version 1.6.3 (from CVS):
+  * tls.c (MiscObjCmd): Fixed non-static string array used in call
+    of Tcl_GetIndexFromObj(). Memory smash waiting to happen.
+    Thanks to Brian Griffin for alerting us all to the problem.
+  * tls.c: Applied Jeff's patch from
+    http://www.mail-archive.com/aolserver@listserv.aol.com/msg12356.html
+  * tls.c (StatusObjCmd): memleak: free peer if loaded.
+    [Bug 3041925]
+  * tls.tcl (tls::socket): some socket implementations have a -type
+    support (e.g. for inet6).
+- rebased tls-fix-ciphers.patch
+- modified tls-enable-tls1.patch to only enable tls1 by default
+  and to update the documentation
+
+-------------------------------------------------------------------
+Wed Nov 19 12:56:09 UTC 2014 - gber@opensuse.org
+
+- disable test tlsIO-2.10, reading from a closed socket raises an
+  exception with tcl >= 8.6.2 resulting in a timeout and failed
+  test
+
+-------------------------------------------------------------------
+Wed Jun 25 18:51:04 UTC 2014 - max@suse.com
+
+- Enable TLS1 by default to avoid problems with servers that
+  reject anything else (tls-enable-tls1.patch).
+
+-------------------------------------------------------------------
+Tue Aug  4 11:19:50 CEST 2009 - max@suse.de
+
+- Query openssl for the ciphers it supports instead of comparing
+  against a hardcoded list to make the test independent of the
+  openssl version.
+- Remove tls.h from the package.
+
+-------------------------------------------------------------------
+Tue Apr 22 17:56:16 CEST 2008 - max@suse.de
+
+- Ignore test tlsIO-12.3, because it fails on loaded machines.
+
+-------------------------------------------------------------------
+Thu Apr  3 17:41:31 CEST 2008 - max@suse.de
+
+- New version: 1.6
+  * Fix a memleak in tls.c
+  * Use better Eval APIs, cleaner Tcl_Obj-handling
+  * fix handshake on non-blocking sockets
+- Adjust to the new Tcl file system layout.
+
+-------------------------------------------------------------------
+Fri Oct 20 17:56:50 CEST 2006 - max@suse.de
+
+- Patched cipher tests to match cipher list of openssl-0.98d.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:14 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan  9 12:06:11 CET 2006 - max@suse.de
+
+- Update to CVS snapshot of version 1.5.1.
+
+-------------------------------------------------------------------
+Wed Jun 29 15:24:57 CEST 2005 - max@suse.de
+
+- Moved the sctipt library to /usr/share/tcl .
+
+-------------------------------------------------------------------
+Wed Jun  1 16:39:30 CEST 2005 - max@suse.de
+
+- Temporarily disabled test tlsIO-12.3, because it sometimes fails
+  in a way that is hard to track down.
+  This needs further inspection.
+
+-------------------------------------------------------------------
+Thu Nov 11 14:11:26 CET 2004 - ro@suse.de
+
+- fixed file list 
+
+-------------------------------------------------------------------
+Fri Feb 27 16:28:47 CET 2004 - max@suse.de
+
+- New version: 1.5.0
+
+-------------------------------------------------------------------
+
+Wed Feb 25 16:58:57 CET 2004 - hmacht@suse.de
+ 
+- building as non-root (# norootforbuild)
+
+-------------------------------------------------------------------
+Wed Jun  4 13:56:46 CEST 2003 - max@suse.de
+
+- New package: tls-1.4.1
+
+- Tcl bindings to SSL

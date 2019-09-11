@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Mon Apr 15 13:38:32 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build classpath using directly geronimo-jta-1.1-api instead of
+  the jta symlink
+
+-------------------------------------------------------------------
+Mon Mar 25 17:37:52 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove pom parent, since we don't use it when not building with
+  maven
+
+-------------------------------------------------------------------
+Sat Dec 15 14:06:03 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Initial package for apache-commons-dbcp1, providing the
+  commons-dbcp API 1.x
+- Added patches:
+  * apache-commons-dbcp-sourcetarget.patch
+    + build with java source and target level 1.7
+  * apache-commons-dbcp-javadoc.patch
+    + do not load external javadoc links over internet
+  * apache-commons-dbcp-jdbc41.patch
+    + port to JDBC 4.1 (Java SE 1.7)

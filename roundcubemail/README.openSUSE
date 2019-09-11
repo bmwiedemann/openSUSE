@@ -1,0 +1,52 @@
+
+This README contains additional information specific to the
+openSUSE package of roundcube.
+
+
+INSTALLATION
+============
+
+This application is packaged to integrate with Apache and MySQL but
+it can basically run with every webserver being able to run PHP and
+also use other SQL based database engines.
+
+After installation of the package the application will immediately
+be reachable from everywhere once Apache is enabled under the URL
+
+  http://IP-ADDRESS/roundcubemail
+
+The configuration is copied from the example config files from the
+package and therefore not really working.
+
+First step is to prepare the MySQL database for Roundcube:
+
+Setting up the mysql database can be done by creating an empty database,
+importing the table layout and granting the proper permissions to the
+roundcube user. Here is an example of that procedure:
+
+# mysql
+> CREATE DATABASE roundcubemail /*!40101 CHARACTER SET utf8 COLLATE utf8_general_ci */;
+> GRANT ALL PRIVILEGES ON roundcubemail.* TO 'roundcube'@'localhost' IDENTIFIED BY 'password';
+> FLUSH PRIVILEGES;
+> quit
+
+# mysql roundcubemail < /usr/share/doc/packages/roundcubemail/SQL/mysql.initial.sql
+
+Note 1: 'password' is the master password for the roundcube user. It is strongly
+recommended you replace this with a more secure password. Please keep in
+mind: You need to specify this password later in '/etc/roundcubemail/config.inc.php'.
+
+To use the integrated web based installer you need to enable it first
+in /etc/roundcubemail/config.inc.php:
+
+$rcmail_config['enable_installer'] = true;
+
+IMPORTANT: This MUST be disabled again after installation is finished
+           for SECURITY reasons
+
+and then access
+
+  http://IP-ADDRESS/roundcubemail/installer
+
+to finish the installation.
+

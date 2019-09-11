@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu Jan 10 15:42:38 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add %OS_VERSION_ID(_SP)% and %PRETTY_NAME% (boo#1119378)
+
+-------------------------------------------------------------------
+Thu Jan 10 08:06:05 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Remove spurious parameter to %setup -T
+- Mention that it's a service in the summary
+
+-------------------------------------------------------------------
+Wed Oct 17 14:56:38 UTC 2018 - Fabian Vogt <fvogt@suse.com>
+
+- Initial commit (fate#326856, bsc#1118103)
+

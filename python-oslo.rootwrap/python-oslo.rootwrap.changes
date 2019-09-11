@@ -1,0 +1,306 @@
+-------------------------------------------------------------------
+Mon Apr  8 11:54:38 UTC 2019 - cloud-devel@suse.de
+
+- update to version 5.15.2
+  - Update mailinglist from dev to discuss
+  - Add release note for file descriptor limit change
+  - fix tox python3 overrides
+  - Fix portability issue
+  - Switch to stestr
+  - Run rootwrap with lower fd ulimit by default
+  - Update reno for stable/rocky
+  - Clean up .gitignore references to personal tools
+  - Add release notes link to README
+  - Don't quote {posargs} in tox.ini
+  - Use template for lower-constraints
+  - add lib-forward-testing-python3 test job
+  - add python 3.6 unit test job
+  - add python 3.7 unit test job
+  - import zuul job settings from project-config
+
+-------------------------------------------------------------------
+Mon Sep  3 09:25:20 UTC 2018 - cloud-devel@suse.de
+
+- update to version 5.14.1
+  - Treat doc warnings as errors
+  - Remove stale pip-missing-reqs tox test
+  - set default python to python3
+  - Update to support running benchmark on python3
+  - Update reno for stable/queens
+  - Update links in README
+  - Trivial: Update pypi url to new url
+  - fix lower constraints and uncap eventlet
+  - Updated from global requirements
+  - add lower-constraints job
+  - Make IpNetnsExecFilter more strict to detect aliases
+
+-------------------------------------------------------------------
+Fri Feb 23 13:27:07 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Mon Jan 15 11:59:18 UTC 2018 - cloud-devel@suse.de
+
+- update to version 5.13.0
+  - Follow the new PTI for document build
+  - Remove -U from pip install
+  - Add bandit to pep8 job
+  - Update reno for stable/pike
+  - Remove setting of version/release from releasenotes
+  - Avoid tox_install.sh for constraints support
+  - Fix test_daemon_no_cleanup_for_uninitialized_server
+  - Protect rootwrap daemon socket against multiple threads
+  - Cleanup test-requirements
+  - Updated from global requirements
+  - Ignore syslog settings if /dev/log is not present
+
+-------------------------------------------------------------------
+Mon Aug  7 13:49:53 UTC 2017 - cloud-devel@suse.de
+
+- update to version 5.9.0
+  - Always check cmd which does not exist
+  - rearrange existing documentation to fit the new standard layout
+  - Don't open subdirectories rootwrap filter directories
+  - [Fix gate]Update test requirement
+  - Allow rootwrap-daemon to timeout and exit
+  - Avoid importing Linux specific modules on Windows
+  - Update URLs in documents according to document migration
+  - Remove support for py34
+  - pbr.version.VersionInfo needs package name (oslo.xyz and not oslo_xyz)
+  - Update reno for stable/ocata
+  - [daemon] Close inherited filedescriptors after forking
+  - Remove pbr warnerrors in favor of sphinx check
+  - Updated from global requirements
+  - Switch from oslosphinx to openstackdocstheme
+  - Trivial: Remove testscenarios from test-requirements.txt
+
+-------------------------------------------------------------------
+Wed Jun  7 09:51:00 UTC 2017 - cloud-devel@suse.de
+
+- update to version 5.4.1
+  - Avoid importing Linux specific modules on Windows
+  - Update UPPER_CONSTRAINTS_FILE for stable/ocata
+  - Allow rootwrap-daemon to timeout and exit
+  - [daemon] Close inherited filedescriptors after forking
+  - Update .gitreview for stable/ocata
+
+-------------------------------------------------------------------
+Mon Feb 13 09:42:08 UTC 2017 - cloud-devel@suse.de
+
+- update to version 5.4.0:
+  - Remove discover from test-requirements
+  - Add Constraints support
+  - Updated from global requirements
+  - Show team and repo badges on README
+  - Update homepage with developer documentation page
+  - [TrivialFix] Replace 'assertFalse(a in b)' with 'assertNotIn(a, b)'
+  - Enable release notes translation
+  - Relax default strict option under python3.x for configparser
+  - Fix running unknown commands in daemon mode
+  - Enhance _program() and _program_path()
+  - Add reno for release notes management
+
+-------------------------------------------------------------------
+Mon Nov 14 18:09:45 UTC 2016 - tbechtold@suse.com
+update to version 5.1.1
+  * Update .gitreview for stable/newton
+  * Fix running unknown commands in daemon mode
+
+-------------------------------------------------------------------
+Fri Oct 14 14:03:08 UTC 2016 - tbechtold@suse.com
+
+- switch to stable/newton tarball in _service
+
+-------------------------------------------------------------------
+Fri Sep  2 19:09:05 UTC 2016 - tbechtold@suse.com
+
+- update to version 5.1.0
+  * Fix parameters of assertEqual are misplaced
+
+-------------------------------------------------------------------
+Wed Aug 10 12:20:29 UTC 2016 - tbechtold@suse.com
+
+- update to 5.0.0:
+  * always allow privsep-helper as a command
+  * Add Python 3.5 classifier and venv
+  * Updated from global requirements
+- Update _service and switch to upstream spec template
+
+-------------------------------------------------------------------
+Thu Mar  3 14:51:07 UTC 2016 - tbechtold@suse.com
+
+- update to 4.1.0:
+  * Updated from global requirements
+  * Updated from global requirements
+  * Remove unused use-syslog-rfc-format option
+  * Updated from global requirements
+  * Updated from global requirements
+  * Removes MANIFEST.in as it is not needed explicitely by PBR
+  * Drop python 2.6 support
+  * Updated from global requirements
+  * Remove python 2.6 classifier
+  * Remove python 2.6 and cleanup tox.ini
+  * Python 3: encode or decode i/o data of Popen.communicate()
+  * Fix Python 3 support for eventlet monkey-patching
+  * Fix Python 3 issues in tests
+  * No need for Oslo Incubator Sync
+  * move usage instructions into main docs
+  * docs - Set pbr 'warnerrors' option for doc build
+  * Add shields.io version/downloads links/badges into README.rst
+  * add pbr-generated release history to the documentation
+  * Fix some spelling typo in manual
+  * Updated from global requirements
+  * Python 3: Don't use BaseException.message attribute
+  * Handle renamed executables with KillFilter
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Remove test-requirements-py3.txt
+  * Add tox target to find missing requirements
+  * daemon: avoid raising UnboundLocalError to callers
+  * Updated from global requirements
+  * Updated from global requirements
+  * Log that rootwrap was spawned after check
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Fri Jun 12 08:04:28 UTC 2015 - dmueller@suse.com
+
+- update to 2.0.0:
+  * Remove oslo namespace package
+
+-------------------------------------------------------------------
+Mon Jun  8 14:05:29 UTC 2015 - tbechtold@suse.com
+
+- update to 1.8.0:
+  * Remove run_cross_tests.sh
+  * Updated from global requirements
+  * Remove mentions of root "tests" package from test_funcional_*
+  * Uncap library requirements for liberty
+  * Speed up non-daemon rootwrap command line invocation
+  * Correct RST syntax errors in README.rst
+  * Update to latest hacking
+  * Avoid calling sudo just to change users
+  * Updated from global requirements
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Tue Mar 10 15:12:16 UTC 2015 - tbechtold@suse.com
+
+- update to 1.6.0:
+  * Remove env changing support in daemon mode
+  * Updated from global requirements
+  * Updated from global requirements
+  * Add bug link to README
+- update Requires
+
+-------------------------------------------------------------------
+Thu Jan 29 14:46:05 UTC 2015 - tbechtold@suse.com
+
+- update to version 1.5.0:
+  * Add cross-testing script
+  * Updated from global requirements
+  * Move files out of the namespace package
+  * Activate pep8 check that _ is imported
+  * Workflow documentation is now in infra-manual
+
+-------------------------------------------------------------------
+Thu Jan 15 09:13:06 UTC 2015 - tbechtold@suse.com
+
+- update to version 1.4.0:
+  * Updated from global requirements
+  * Updated from global requirements
+  * Correct filters examples in README.rst
+  * Updated from global requirements
+  * Fix exit of subprocess in case it was terminated by signal
+  * Updated from global requirements
+  * Support building wheels (PEP-427)
+  * Updated from global requirements
+- Add python_requires to _service
+
+-------------------------------------------------------------------
+Mon Sep 22 17:02:16 UTC 2014 - dmueller@suse.com
+
+- add temporary workaround for non-release version 
+
+-------------------------------------------------------------------
+Sun Sep 21 10:17:34 UTC 2014 - tbechtold@suse.com
+
+- update to version 1.3.0:
+  * Clean up title on main doc page
+  * Initial cut of documentation for oslo.rootwrap
+  * Add a short doc to README on how to use daemon mode
+  * Fix the bug tracker URL in CONTRIBUTING.rst
+  * warn against sorting requirements
+  * Updated from global requirements
+  * Add daemon mode to benchmark
+  * Add an option to run rootwrap as a daemon
+  * Refactor common parts from cmd to wrapper
+  * Add basic benchmark
+  * Remove sys.path modification
+  * Move test requirement coverage into tox.ini
+  * Enabled hacking check H305
+  * Continue on failure of leaf filters of chaining filters
+- Adjust python-six Requires version according to requirements.txt
+
+-------------------------------------------------------------------
+Tue Jul 29 20:47:00 UTC 2014 - dmueller@suse.com
+
+- update to 1.3.0a1:
+  * Let tests pass on distros where "ip" is in /bin
+  * Bump hacking to 0.9.x series
+  * Avoid usage of mutables as default args
+  * Simplify the flow in RegExpFilter
+  * Add ChainingRegExpFilter for prefix utilities
+  * Fix Python 3 support, add functional test
+  * Fix import grouping
+  * Remove unused variable 'command'
+  * Run py33 test env before others
+
+-------------------------------------------------------------------
+Wed Apr  9 11:04:12 UTC 2014 - dmueller@suse.com
+
+- update to 1.2.0:
+  * Avoid matching ip -s netns exec in IpFilter
+  * Don't use system pip things in tox
+  * Add Python 3 trove classifiers
+  * To honor RFC5424 add use_syslog_rfc_format config option
+  * Trivial changes from oslo-incubator
+
+-------------------------------------------------------------------
+Mon Mar 24 16:56:23 UTC 2014 - dmueller@suse.com
+
+- reduce test requires 
+
+-------------------------------------------------------------------
+Thu Feb 13 13:25:49 UTC 2014 - dmueller@suse.com
+
+- remove dependency on oslo.sphinx 
+
+-------------------------------------------------------------------
+Tue Feb 11 16:14:44 UTC 2014 - speilicke@suse.com
+
+- Replace git_tarballs source service with download_files and set_version
+  + Use upstream URL as source (enables verification)
+
+-------------------------------------------------------------------
+Fri Feb  7 10:27:56 UTC 2014 - dmueller@suse.com
+
+- update to 1.1.0:
+  * remove entry points, in the packages now
+
+-------------------------------------------------------------------
+Thu Jan 16 12:07:36 UTC 2014 - dmueller@suse.com
+
+- clean up requires 
+
+-------------------------------------------------------------------
+Thu Dec 12 15:49:27 UTC 2013 - dmueller@suse.com
+
+- Initial package (1.0.0) 
+

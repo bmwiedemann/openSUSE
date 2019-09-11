@@ -1,0 +1,12 @@
+diff -Naur HDF4.2r3.orig//hdf/util/he_file.c HDF4.2r3/hdf/util/he_file.c
+--- HDF4.2r3.orig//hdf/util/he_file.c	2007-09-10 18:36:16.000000000 +0200
++++ HDF4.2r3/hdf/util/he_file.c	2008-10-05 23:00:19.671789572 +0200
+@@ -129,7 +129,7 @@
+     if (fork() == 0)
+       {
+           /* this is the child */
+-          if (execl(editor, editor, file, 0) == -1)
++          if (execl(editor, editor, file, (char *)0) == -1)
+               fprintf(stderr, "Error while editing label.\n");
+ 
+           /* return control to the parent if exec fails

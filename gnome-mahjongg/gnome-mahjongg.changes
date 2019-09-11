@@ -1,0 +1,349 @@
+-------------------------------------------------------------------
+Mon Mar 11 09:03:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  6 13:15:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Localize date column of score list.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 15 22:18:31 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Validate the AppStream metadata and .desktop file as build
+    tests.
+  + Miscellaneous cleanup.
+
+-------------------------------------------------------------------
+Tue Jan  8 17:03:25 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  + Consistently use org.gnome.Mahjongg as app ID.
+  + Fix pause button when clicking on game to unpause.
+  + Miscellaneous improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan  5 01:00:43 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.3:
+  + Switch from autotools to meson.
+  + Follow GNOME 3.32 app menu recommendations.
+  + Add Keyboard Shortcuts overlay.
+  + Hide Keyboard Shortcuts section in app help.
+  + Add Flatpak manifest.
+  + Stop using intltool.
+  + Miscellaneous improvements.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+- Drop intltool BuildRequires, no longer needed.
+- Drop post(un) handling of glib2_gsettings_schema_post(un),
+  desktop_database_post(un) and icon_theme_cache_post(un) and drop
+  glib2_gsettings_schema_requires, no longer needed.
+- Drop update-desktop-files BuildRequires and
+  suse_update_desktop_file macro, no longer needed.
+- Add fdupes BuildRequires and macro, remove duplicate files.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:28:35 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Sep 21 20:25:20 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 15 17:56:48 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Add Language headers to po files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 28 21:45:55 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.2:
+  + Added educational tileset.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 20:26:23 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:36:33 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 10:18:58 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 06:29:48 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 08:18:29 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Fixed event propagation for gestures.
+
+-------------------------------------------------------------------
+Wed Sep  2 09:20:34 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 13 10:26:56 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.1:
+  + Add symbolic icon.
+- Remove HighContrast %icon_theme_cache_post(un) calls, as Symbolic
+  icons have replaced them.
+
+-------------------------------------------------------------------
+Mon Mar 23 21:28:53 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:20:57 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 17 13:34:30 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Nov 30 06:28:51 UTC 2014 - badshah400@gmail.com
+
+- Update to version 3.15.2:
+  + Increased non gnome-shell-support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 13 20:36:02 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Increased Unity and non-Gnome-environment support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 10:21:58 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 15 19:06:39 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  1 23:14:27 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + Fixed shuffling.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 18 22:39:15 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Removed empty page in help.
+  + various bugfixes and little improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 21 20:54:32 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + Added version command line option.
+  + Don't show HeaderBar/app menu on systems that don't support it.
+  + Appdata Changes, general fixup.
+  + Updated Smooth Tileset.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 13:03:12 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.1:
+  + Updated documentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 12:46:13 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 15 09:12:05 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Fix critical warning in Game.timeout_cb.
+  + Ensure game is unpaused after Restart Game.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 23 15:32:40 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 13:36:21 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Changed default window size.
+  + Updated help to reflect ui changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  3 21:50:49 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+  + Fixed several issues with resetting and restarting the game.
+  + Updated help to include bonus tiles.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 17 17:19:08 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Added shuffle when no more moves are left.
+  + Removed toolbar in favor of GtkHeaderBar.
+- Rename .desktop file to gnome-mahjongg following upstream
+  changes.
+
+-------------------------------------------------------------------
+Mon Feb  3 17:35:29 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.5:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 13 17:56:59 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Flash any two matching tiles if the selected tile has no match.
+  + Fix blue flower tiles in smooth tile set.
+  + Remove some older tilesets.
+  + update website in about dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Dec 16 22:02:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Scores dialog: scroll to new high score.
+  + Split ScoreDialog into its own file.
+  + About dialog: remove period from fragment.
+  + About dialog: use GtkLicense.
+  + appdata: update homepage.
+  + app menu: standardize Help/About/Quit.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 19 20:30:35 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + build: use pkg-config to find glib-compile-resources,
+    add gio-2.0 to PKG_CHECK_MODULES.
+  + Sort scores by duration of the game.
+  + Check for *-validate before using them, run autoupdate.
+  + help: Add Overpass map.
+  + Updated translations.
+- Add pkgconfig(gio-2.0) BuildRequies: new verified dependency.
+
+-------------------------------------------------------------------
+Sun Nov 17 19:18:19 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.1:
+  + Add Overpass map by Wa.
+  + Remove deprecated function usage.
+  + Help: restore note on using the Pause key.
+  + Appdata is now translatable.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov 11 21:17:01 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.2 (bnc#849913):
+  + Sort scores by duration of the game.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 14 21:08:28 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 16:55:18 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 16 20:47:23 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.92:
+  + Fix Redo sometimes removing too many pieces.
+  + Fix map label on scores dialog.
+  + Add an appdata file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 20 19:13:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Fix bug where the pause button could incorrectly display a
+    "play" icon.
+  + Fix name of application menu when not launched by GNOME Shell.
+  + Fix two broken links in user help.
+  + App menu now uses a UI file and is installed into a gresource.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 27 07:39:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 19 22:02:35 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Renamed desktop file back to mahjongg.desktop.
+  + Themes from gnome-games-extra-data added.
+  + High contrast icons added.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 20:16:14 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 3.7.90: split-off from gnome-games.
+

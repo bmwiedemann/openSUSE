@@ -1,0 +1,32 @@
+--- compat.gperf
++++ compat.gperf
+@@ -46,7 +46,11 @@
+ 
+ static id3_compat_func_t translate_TCON;
+ %}
+-struct id3_compat;
++struct id3_compat {
++  char const *id;
++  char const *equiv;
++  id3_compat_func_t *translate;
++};
+ %%
+ #
+ # ID3v2.2 and ID3v2.3 frames
+--- frametype.gperf
++++ frametype.gperf
+@@ -269,7 +269,13 @@
+ FRAMETYPE(unknown,      unknown, PRESERVE, "Unknown frame");
+ FRAMETYPE(obsolete,     unknown, OBSOLETE, "Obsolete frame");
+ %}
+-struct id3_frametype;
++struct id3_frametype {
++  char const *id;
++  unsigned int nfields;
++  enum id3_field_type const *fields;
++  int defaultflags;
++  char const *description;
++};
+ %%
+ #
+ # ID3v2.4 frames

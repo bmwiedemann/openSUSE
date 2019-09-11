@@ -1,0 +1,20 @@
+.TH DTDINST "1" "September 2009" "DTDinst" "User Commands"
+.SH NAME
+dtdinst \- XML DTD to XML instance format converter
+.SH SYNOPSIS
+\fBdtdinst\fR \fB[ \-i ]\fR \fB[ \-r \fIdir\fB ]\fR \fIDTD\fR
+.SH DESCRIPTION
+.B dtdinst
+writes an XML representation of the DTD in DTDinst format to the standard
+output.
+.SH OPTIONS
+.TP
+\fB\-r \fIdir\fR
+make DTDinst write one or more files containing a RELAX NG schema to the
+directory \fIdir\fR.
+.TP
+\fI\-i\fR
+inline ATTLIST declarations. Without this option, DTDinst will generate a define
+in the RELAX NG schema for each ATTLIST declaration in the DTD. With this
+option, DTDinst will move the patterns generated from ATTLIST declarations into
+the corresponding element pattern.

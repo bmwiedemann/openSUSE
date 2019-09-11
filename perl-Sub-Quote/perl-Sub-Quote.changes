@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Wed Mar 13 16:39:22 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.006003
+   see /usr/share/doc/packages/perl-Sub-Quote/Changes
+
+  2.006003 - 2019-03-10
+    - releasing as stable
+  
+  2.006_002 - 2019-01-29
+    - Fix quotifying of backslashes in utf8-flagged strings on perl 5.10.0.
+  
+  2.006_001 - 2019-01-07
+    - avoid warnings or failures on new perls when testing quoting UTF-8 strings
+    - test quotify output under utf8 pragma
+    - fix quoting of negative NaN
+  
+  2.006_000 - 2018-12-29
+    - don't test threads behavior on perl < 5.8.5, since they are too unstable
+    - more tests
+    - preserve inf, nan, and false in quotify
+    - improve accuracy of quotified floating point numbers
+    - SUB_QUOTE_DEBUG can now be set to sub names, package names, or a regex to
+      match against the code to filter which generated subs are printed to STDERR.
+
+-------------------------------------------------------------------
+Sat Apr 21 05:55:56 UTC 2018 - coolo@suse.com
+
+- updated to 2.005001
+   see /usr/share/doc/packages/perl-Sub-Quote/Changes
+
+  2.005001 - 2018-04-20
+    - add a workaround for test failures on early 5.8 releases with threads
+
+-------------------------------------------------------------------
+Wed Feb  7 17:20:10 UTC 2018 - coolo@suse.com
+
+- updated to 2.005000
+   see /usr/share/doc/packages/perl-Sub-Quote/Changes
+
+  2.005000 - 2018-02-06
+    - fixed defer_info and undefer_sub from returning data for a deferred sub
+      after it expires, even if the ref address matches
+    - fixed defer_info not returning info for undeferred unnamed subs after the
+      deferred sub expires
+    - include options in defer_info return data
+    - exclude internals from defer_info return data
+    - document defer_info function
+    - encode all utf8 flagged scalars as strings, since they generally will
+      always have originated as strings.  Avoids future warning on bitwise ops
+      on strings with wide characters.
+    - more thorough check for threads availability to avoid needless test
+      failures.
+    - added file and line options to quote_sub to allow specifying apparent
+      source location.
+    - documented additional options to Sub::Defer::defer_sub and
+      Sub::Quote::quote_sub.
+
+-------------------------------------------------------------------
+Fri Jun  9 06:25:54 UTC 2017 - coolo@suse.com
+
+- updated to 2.004000
+   see /usr/share/doc/packages/perl-Sub-Quote/Changes
+
+  2.004000 - 2017-06-07
+    - more extensive quotify tests
+    - split tests into separate files
+    - propagate package to deferred subs, even if unnamed
+    - reject invalid attributes
+    - include line numbers compile errors (PR#1, djerius)
+
+-------------------------------------------------------------------
+Wed Jan 11 06:41:34 UTC 2017 - coolo@suse.com
+
+- initial package 2.003001
+ * created by cpanspec 1.78.08
+

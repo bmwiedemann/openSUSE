@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:52:20 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Mar  4 20:13:58 UTC 2018 - alarrosa@suse.com
+
+- Fix LICENSE url 
+
+-------------------------------------------------------------------
+Tue Sep  5 16:10:00 UTC 2017 - alarrosa@suse.com
+
+- Initial release of python-pyjokes 0.5.0 

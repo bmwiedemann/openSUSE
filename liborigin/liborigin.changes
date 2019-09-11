@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Tue Apr 23 09:30:45 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.0:
+  * No news file or changelog from upstream.
+- Drop liborigin2-nostatic.patch: instead specify build targets
+  for make individually, omitting the static lib.
+- Add liborigin-link-opj2dat-against-sharedlib.patch: compile
+  opj2dat against the shared lib instead of the static lib; patch
+  taken from upstream bug report
+  (https://sourceforge.net/p/liborigin/bugs/24/).
+- Add liborigin-remove-exit-calls.patch: Remove exit calls from
+  library; patch taken from upstream git (commit #a8b25b48).
+- Update shared lib package name in keeping with upstream so
+  versioning bump.
+- Use %%cmake_build for building and pass individual targets for
+  make: origin, opj2dat, and doc.
+- Building doc now requires doxygen.
+- Drop boost-devel BuildRequires: no longer needed.
+- Update sed command to fix location of documentation in keeping
+  with changes to upstream CMakelists.txt file.
+- Use %%autosetup to setup build dir.
+- Package pkgconfig file; introduce BuildRequires: pkgconfig to
+  auto-generate appropriate pkgconfig-based Provides.
+- Drop sed script for libdir, no longer needed.
+- Minor cleanups using spec-cleaner.
+
+-------------------------------------------------------------------
+Thu Feb 22 11:07:14 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group.
+
+-------------------------------------------------------------------
+Tue Feb  6 09:57:31 UTC 2018 - mailaender@opensuse.org
+
+- Update to version 2.0.0
+  * No changelog was provided
+  Drop liborigin-200080225-gcc.patch
+  Add liborigin2-nostatic.patch
+
+-------------------------------------------------------------------
+Fri Jun 17 11:37:33 UTC 2016 - dmitry_r@opensuse.org
+
+- Fix build with GCC6 [boo#985159]
+
+-------------------------------------------------------------------
+Sat Feb 16 20:33:40 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 20080225
+  * improvements from qtiplot
+  * clean up, Excel worksheets
+  * fixed crash in 7.0 projects
+
+-------------------------------------------------------------------
+Sun Jul  8 00:00:00 UTC 2007 - leon@links2linux.de
+
+- Initial release.

@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Sun Dec 14 14:29:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in check_bind.sh script
+- add patches:
+  * check_bind-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Wed Jul 30 14:45:18 UTC 2014 - lars@linux-schulserver.de
+
+- rename to monitoring-plugins-bind
+
+-------------------------------------------------------------------
+Wed Apr  9 23:15:25 UTC 2014 - lars@linux-schulserver.de
+
+- use the correct pnp4nagios template directory
+
+-------------------------------------------------------------------
+Mon Jan  7 13:38:54 UTC 2013 - lars@linux-schulserver.de
+
+- initial version 1.3
+

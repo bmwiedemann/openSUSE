@@ -1,0 +1,57 @@
+From: Egbert Eich <eich@suse.com>
+Date: Sun Feb 16 09:31:05 2014 +0100
+Subject: [PATCH 3/4]Log PRESSURE low level events
+Patch-Mainline: never
+Git-commit: 9e575b396f7cbbe5cecd455d1f54a8a0d6c658d1
+Git-repo: git://linuxwacom.git.sourceforge.net/gitroot/linuxwacom/xf86-input-wacom
+References: FATE#
+Signed-off-by: Egbert Eich <eich@suse.com>
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ src/wcmCommon.c | 8 ++++++--
+ src/wcmUSB.c    | 4 ++++
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+Index: xf86-input-wacom-0.28.0/src/wcmCommon.c
+===================================================================
+--- xf86-input-wacom-0.28.0.orig/src/wcmCommon.c
++++ xf86-input-wacom-0.28.0/src/wcmCommon.c
+@@ -1181,9 +1181,13 @@ static void detectPressureIssue(WacomDev
+ 				"\tThis indicates a worn out pen, it is time to change your tool. Also see:\n"
+ 				"\thttp://sourceforge.net/apps/mediawiki/linuxwacom/index.php?title=Pen_Wear.\n",
+ 				priv->pInfo->name, priv->serial, priv->minPressure, LIMIT_LOW_PRESSURE, common->wcmMaxZ);
+-	} else if (!priv->oldState.proximity)
++	} else if (!priv->oldState.proximity) {
++		if (priv->minPressure)
++			LOG(common, LOG_PRESSURE_LOW,
++			    "WARN: %s(%u) initial pressure %d > 0\n",
++			    priv->pInfo->name, priv->serial, ds->pressure);
+ 		priv->eventCnt = 0;
+-
++	}
+ 	priv->oldMinPressure = priv->minPressure;
+ 	priv->eventCnt++;
+ }
+Index: xf86-input-wacom-0.28.0/src/wcmUSB.c
+===================================================================
+--- xf86-input-wacom-0.28.0.orig/src/wcmUSB.c
++++ xf86-input-wacom-0.28.0/src/wcmUSB.c
+@@ -1209,6 +1209,8 @@ static void usbParseAbsEvent(WacomCommon
+ 			break;
+ 		case ABS_PRESSURE:
+ 			ds->pressure = event->value;
++			LOG(common, LOG_PRESSURE_LOW, "Device %d got pressure %d\n",
++			    ((wcmUSBData *)(common->private))->wcmLastToolSerial, ds->pressure);
+ 			break;
+ 		case ABS_DISTANCE:
+ 			ds->distance = event->value;
+@@ -1309,6 +1311,8 @@ static void usbParseAbsMTEvent(WacomComm
+ 
+ 		case ABS_MT_PRESSURE:
+ 			ds->pressure = event->value;
++			LOG(common, LOG_PRESSURE_LOW, "Device %d got pressure %d\n",
++			    ((wcmUSBData *)(common->private))->wcmLastToolSerial, ds->pressure);
+ 			break;
+ 
+ 		default:

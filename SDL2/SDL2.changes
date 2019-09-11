@@ -1,0 +1,397 @@
+-------------------------------------------------------------------
+Sun Nov  4 14:10:15 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.9
+  * Added a new sensor API, initialized by passing
+    SDL_INIT_SENSOR to SDL_Init(), and defined in SDL_sensor.h
+  * Added an event SDL_SENSORUPDATE which is sent when a sensor
+    is updated
+  * Added SDL_GetDisplayOrientation() to return the current
+    display orientation
+  * Added an event SDL_DISPLAYEVENT which is sent when the
+    display orientation changes
+  * Added HIDAPI joystick drivers for more consistent support
+    for Xbox, PS4 and Nintendo Switch Pro controller support
+    across platforms. (Thanks to Valve for contributing the PS4
+    and Nintendo Switch Pro controller support)
+  * Added support for many other popular game controllers
+  * Added SDL_JoystickGetDevicePlayerIndex(),
+    SDL_JoystickGetPlayerIndex(), and
+    SDL_GameControllerGetPlayerIndex() to get the player index for
+    a controller. For XInput controllers this returns the XInput
+    index for the controller.
+  * Added SDL_GameControllerRumble() and SDL_JoystickRumble()
+    which allow simple rumble without using the haptics API
+  * Added SDL_GameControllerMappingForDeviceIndex() to get the
+    mapping for a controller before it's opened
+  * Added the hint SDL_HINT_MOUSE_DOUBLE_CLICK_TIME to control
+    the mouse double-click time
+  * Added the hint SDL_HINT_MOUSE_DOUBLE_CLICK_RADIUS to control
+    the mouse double-click radius, in pixels
+  * Added SDL_HasColorKey() to return whether a surface has a
+    colorkey active
+  * Added SDL_HasAVX512F() to return whether the CPU has
+    AVX-512F features
+  * Added SDL_IsTablet() to return whether the application is
+    running on a tablet
+  * Added SDL_THREAD_PRIORITY_TIME_CRITICAL for threads that
+    must run at the highest priority
+  * Added SDL_LinuxSetThreadPriority() to allow adjusting the
+    thread priority of native threads using RealtimeKit if
+    available.
+
+- Dropped 7babfecee045.patch (merged upstream)
+
+-------------------------------------------------------------------
+Sun Jun 24 22:40:23 UTC 2018 - robert.munteanu@gmail.com
+
+- Add 7babfecee045.patch, fixes launching Firewatch 
+
+-------------------------------------------------------------------
+Fri May 11 11:08:39 UTC 2018 - crrodriguez@opensuse.org
+
+- SDL2-endian.patch: bring up patch from SDL1, use optimized 
+  byteswap routines from the C library.
+- build with --disable-3dnow, do not pass -m3dnow to the compiler
+  modern cpus do not support this instructions at all.
+
+-------------------------------------------------------------------
+Sat Mar 17 10:14:15 UTC 2018 - ytz1995@hotmail.com
+
+- Build with Wayland support
+
+-------------------------------------------------------------------
+Thu Mar  8 00:58:43 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.0.8
+  * Added SDL_fmod() and SDL_log10().
+  * Each of the SDL math functions now has the corresponding
+    float version.
+  * Added SDL_SetYUVConversionMode() and
+    SDL_GetYUVConversionMode() to control the formula used when
+    converting to and from YUV colorspace. The options are JPEG,
+    BT.601, and BT.709.
+  * Added the hint SDL_HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR to
+    control whether the X server should skip the compositor for
+    the SDL application. This defaults to "1".
+  * Added the hint SDL_HINT_VIDEO_DOUBLE_BUFFER to control
+    whether the Raspberry Pi and KMSDRM video drivers should use
+    double or triple buffering (the default).
+
+-------------------------------------------------------------------
+Wed Jan 10 22:48:16 UTC 2018 - jengelh@inai.de
+
+- Add sdl2-symvers.patch.
+
+-------------------------------------------------------------------
+Sat Oct 28 21:01:17 UTC 2017 - adam@mizerski.pl
+
+- update to 2.0.7
+  * Added audio stream conversion functions.
+  * Added functions to query and set the SDL memory allocation
+    functions.
+  * Added locking functions for multi-threaded access to
+    the joystick and game controller APIs.
+  * Some functions are now thread-safe.
+- removed patches, merged upstream
+  * dbus.diff
+  * SDL2-ppc64-declaration-after-statement.patch
+  * SDL-bnc1062784-check-overflow-xcf-props.patch
+
+-------------------------------------------------------------------
+Thu Oct 19 04:00:09 UTC 2017 - sreeves@suse.com
+
+- Add SDL-bnc1062784-check-overflow-xcf-props.patch. CVE-2017-2888
+
+-------------------------------------------------------------------
+Mon Oct 16 16:31:47 UTC 2017 - wbauer@tmo.at
+
+- Disable SSE3 (and also SSE2 on ix86) to prevent crashes on older
+  CPUs that don't support these instructions
+
+-------------------------------------------------------------------
+Mon Oct  2 19:11:12 UTC 2017 - jengelh@inai.de
+
+- Add dbus.diff
+
+-------------------------------------------------------------------
+Mon Oct  2 10:06:41 UTC 2017 - guillaume@opensuse.org
+
+- Enable KMS/DRM video driver
+
+-------------------------------------------------------------------
+Sat Sep 30 16:54:04 UTC 2017 - spartanj@gmail.com
+
+- Update to new upstream release 2.0.6
+  * Added Vulkan graphics support in SDL_vulkan.h.
+  * Added SDL_ComposeCustomBlendMode() to create custom blend
+    modes for 2D rendering.
+  * Added support for many game controllers, including the
+    Nintendo Switch Pro Controller.
+  * Added support for inverted axes and separate axis directions
+    in game controller mappings.
+  * Added functions to return information about joysticks and
+    open game controllers.
+  * Added SDL_GameControllerNumMappings() and
+    SDL_GameControllerMappingForIndex() to be able to enumerate
+    the built-in game controller mappings.
+  * Added SDL_LoadFile() and SDL_LoadFile_RW() to load a file
+    into memory.
+  * Added SDL_DuplicateSurface() to make a copy of a surface.
+  * Added an experimental JACK audio driver.
+  * Implemented non-power-of-two audio resampling.
+  * Added the hint SDL_HINT_AUDIO_RESAMPLING_MODE to control the
+    quality of resampling.
+  * Added the hint SDL_HINT_RENDER_LOGICAL_SIZE_MODE to control
+    the scaling policy for SDL_RenderSetLogicalSize().
+  * Added the hints SDL_HINT_MOUSE_NORMAL_SPEED_SCALE and
+    SDL_HINT_MOUSE_RELATIVE_SPEED_SCALE to scale the mouse speed
+    when being read from raw mouse input.
+  * Added the hint SDL_HINT_TOUCH_MOUSE_EVENTS to control whether
+    SDL will synthesize mouse events from touch events.
+  * Added an experimental KMS/DRM video driver for embedded
+    development.
+- Remove dbus-ime.diff (no longer needed)
+
+-------------------------------------------------------------------
+Tue Aug  1 13:14:45 UTC 2017 - fcrozat@suse.com
+
+- Do not BuildRequires pkgconfig(fcitx) on SLE (not shipped anymore
+  since SLE12 SP2).
+
+-------------------------------------------------------------------
+Thu Jun 29 10:50:38 UTC 2017 - schwab@suse.de
+
+- libspe2 doesn't exist any more
+
+-------------------------------------------------------------------
+Wed Feb 15 11:51:52 UTC 2017 - jengelh@inai.de
+
+- Add dbus-ime.diff and build with fcitx [boo#1025413]
+
+-------------------------------------------------------------------
+Sun Oct 23 08:00:21 UTC 2016 - aloisio@gmx.com
+
+- Backported commit 5184186d4366 and fbf9b0e3589a as
+  SDL2-ppc64-declaration-after-statement.patch to fix build
+  on ppc64/ppc64le
+
+-------------------------------------------------------------------
+Thu Oct 20 13:47:14 UTC 2016 - aloisio@gmx.com
+
+- Update to 2.0.5
+  General:
+  * Implemented audio capture support for some platforms
+  * Added SDL_DequeueAudio() to retrieve audio when buffer
+    queuing is turned on for audio capture
+  * Added events for dragging and dropping text
+  * Added events for dragging and dropping multiple items
+  * By default the click raising a window will not be
+    delivered to the SDL application. You can set the hint
+    SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH to "1" to allow that click
+    through to the window.
+  * Saving a surface with an alpha channel as a BMP will use a
+    newer BMP format that supports alpha information. You can
+    set the hint SDL_HINT_BMP_SAVE_LEGACY_FORMAT to "1" to use
+    the old format.
+  * Added SDL_GetHintBoolean() to get the boolean value of a
+    hint
+  * Added SDL_RenderSetIntegerScale() to set whether to
+    smoothly scale or use integral multiples of the viewport
+    size when scaling the rendering output
+  * Added SDL_CreateRGBSurfaceWithFormat() and
+    SDL_CreateRGBSurfaceWithFormatFrom() to create an SDL
+    surface with a specific pixel format
+  * Added SDL_GetDisplayUsableBounds() which returns the area
+    usable for windows. For example, on Mac OS X, this subtracts
+    the area occupied by the menu bar and dock.
+  * Added SDL_GetWindowBordersSize() which returns the size of
+    the window's borders around the client area
+  * Added a window event SDL_WINDOWEVENT_HIT_TEST when a
+    window had a hit test that wasn't SDL_HITTEST_NORMAL (e.g.
+    in the title bar or window frame)
+  * Added SDL_SetWindowResizable() to change whether a window
+    is resizable
+  * Added SDL_SetWindowOpacity() and SDL_GetWindowOpacity() to
+    affect the window transparency
+  * Added SDL_SetWindowModalFor() to set a window as modal for
+    another window
+  * Added support for AUDIO_U16LSB and AUDIO_U16MSB to
+    SDL_MixAudioFormat()
+  * Fixed flipped images when reading back from target
+    textures when using the OpenGL renderer
+  * Fixed texture color modulation with SDL_BLENDMODE_NONE
+    when using the OpenGL renderer
+  * Fixed bug where the alpha value of colorkeys was ignored
+    when blitting in some cases
+  Linux:
+  * Added support for the Fcitx IME
+  * Added a window event SDL_WINDOWEVENT_TAKE_FOCUS when a
+    window manager asks the SDL window whether it wants to take
+    focus.
+  * Refresh rates are now rounded instead of truncated, e.g.
+    59.94 Hz is rounded up to 60 Hz instead of 59.
+  * Added initial support for touchscreens on Raspberry Pi
+
+-------------------------------------------------------------------
+Thu Mar 17 15:53:13 UTC 2016 - mpluskal@suse.com
+
+- Make building more verbose
+
+-------------------------------------------------------------------
+Thu Mar 10 13:39:57 UTC 2016 - jengelh@inai.de
+
+- Enable udev support
+
+-------------------------------------------------------------------
+Sun Jan 10 15:27:58 UTC 2016 - mailaender@opensuse.org
+
+- update to version 2.0.4
+General:
+  * Added support for web applications using Emscripten, see
+    docs/README-emscripten.md for more information
+  * Added support for web applications using Native Client (NaCl), see
+    docs/README-nacl.md for more information
+  * Added an API to queue audio instead of using the audio callback:
+    SDL_QueueAudio(), SDL_GetQueuedAudioSize(), SDL_ClearQueuedAudio()
+  * Added events for audio device hot plug support:
+    SDL_AUDIODEVICEADDED, SDL_AUDIODEVICEREMOVED
+  * Added SDL_PointInRect()
+  * Added SDL_HasAVX2() to detect CPUs with AVX2 support
+  * Added SDL_SetWindowHitTest() to let apps treat parts of their SDL window
+    like traditional window decorations (drag areas, resize areas)
+  * Added SDL_GetGrabbedWindow() to get the window that currently has input
+    grab, if any
+  * Added SDL_RenderIsClipEnabled() to tell whether clipping is currently
+    enabled in a renderer
+  * Added SDL_CaptureMouse() to capture the mouse to get events while the
+    mouse is not in your window
+  * Added SDL_WarpMouseGlobal() to warp the mouse cursor in global screen
+    space
+  * Added SDL_GetGlobalMouseState() to get the current mouse state outside of
+    an SDL window* Added a direction field to mouse wheel events to tell
+    whether they are flipped (natural) or not
+  * Added GL_CONTEXT_RELEASE_BEHAVIOR GL attribute (maps to
+    [WGL|GLX]_ARB_context_flush_control extension)
+  * Added EGL_KHR_create_context support to allow OpenGL ES version selection
+    on some platforms* Added NV12 and NV21 YUV texture support for OpenGL and
+    OpenGL ES 2.0 renderers
+  * Added a Vivante video driver that is used on various SoC platforms
+  * Added an event SDL_RENDER_DEVICE_RESET that is sent from the D3D
+    renderers when the D3D device is lost, and from Android's event loop when
+    the GLES context had to be recreated
+  * Added a hint SDL_HINT_NO_SIGNAL_HANDLERS to disable SDL's built in signal
+    handling* Added a hint SDL_HINT_THREAD_STACK_SIZE to set the stack size of
+    SDL's threads
+  * Added SDL_sqrtf(), SDL_tan(), and SDL_tanf() to the stdlib routines
+  * Improved support for WAV and BMP files with unusual chunks in them
+  * Renamed SDL_assert_data to SDL_AssertData and SDL_assert_state to
+    SDL_AssertState
+  * Added a hint SDL_HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN to prevent
+    window interaction while cursor is hidden
+  * Added SDL_GetDisplayDPI() to get the DPI information for a display* Added
+    SDL_JoystickCurrentPowerLevel() to get the battery level of a joystick
+  * Added SDL_JoystickFromInstanceID(), as a helper function, to get the
+    SDL_Joystick* that an event is referring to.
+  * Added SDL_GameControllerFromInstanceID(), as a helper function, to get
+    the SDL_GameController* that an event is referring to.
+
+-------------------------------------------------------------------
+Mon Jan 12 16:20:53 UTC 2015 - schwab@suse.de
+
+- libspe2 only exists for ppc and ppc64
+
+-------------------------------------------------------------------
+Fri Dec 19 10:44:54 UTC 2014 - jengelh@inai.de
+
+- Drop old arts/esound soundserver support.
+
+-------------------------------------------------------------------
+Thu Dec 18 09:46:46 UTC 2014 - jengelh@inai.de
+
+- Remove SDL2 obsoletes (we never had packages of that name).
+  Copy current Provides to baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Jul 21 20:13:17 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.0.3
+* This is a minor bugfix release to take care of creating an OpenGL
+  context on Mac OS X.
+
+-------------------------------------------------------------------
+Mon May 26 07:48:54 UTC 2014 - mailaender@opensuse.org
+
+- Added missing build dependencies
+  * arts
+  * dbus
+  * udev
+  * tslib
+- Removed unrecognized options: --disable-video-svga, --disable-video-ps3
+
+-------------------------------------------------------------------
+Mon May 26 07:00:15 UTC 2014 - mailaender@opensuse.org
+
+- Use pkgconfig everywhere
+- Fix the build on SLE using prjconf
+
+-------------------------------------------------------------------
+Thu Mar 13 18:50:31 UTC 2014 - mailaender@opensuse.org
+
+- Update to 2.0.2
+  * Added SDL_GL_ResetAttributes() to reset OpenGL attributes to default values
+  * Added an API to load a database of game controller mappings from a file:
+    SDL_GameControllerAddMappingsFromFile(), SDL_GameControllerAddMappingsFromRW()
+  * Added game controller mappings for the PS4 and OUYA controllers
+  * Added SDL_GetDefaultAssertionHandler() and SDL_GetAssertionHandler()
+  * Added SDL_DetachThread()
+  * Added SDL_HasAVX() to determine if the CPU has AVX features
+  * Added SDL_vsscanf(), SDL_acos(), and SDL_asin() to the stdlib routines
+  * EGL can now create/manage OpenGL and OpenGL ES 1.x/2.x contexts, and share
+    them using SDL_GL_SHARE_WITH_CURRENT_CONTEXT
+  * Added a field "clicks" to the mouse button event which records whether the event is a single click, double click, etc.
+  * The screensaver is now disabled by default, and there is a hint SDL_HINT_VIDEO_ALLOW_SCREENSAVER that can change that behavior.
+  * Added a hint SDL_HINT_MOUSE_RELATIVE_MODE_WARP to specify whether mouse relative mode should be emulated using mouse warping.
+  * testgl2 does not need to link with libGL anymore
+  * Added testgles2 test program to demonstrate working with OpenGL ES 2.0
+  * Added controllermap test program to visually map a game controller
+  * Fixed fullscreen and focused behavior when receiving NotifyGrab events
+  * Added experimental Wayland and Mir support, disabled by default
+- Added SDL2-devel provides
+
+-------------------------------------------------------------------
+Thu Nov  7 10:56:36 UTC 2013 - mailaender@opensuse.org
+
+- Update to version 2.0.1:
+  * Added an API to get common filesystem paths in SDL_filesystem.h:
+    SDL_GetBasePath(), SDL_GetPrefPath()
+  * Added an API to do optimized YV12 and IYUV texture updates:
+    SDL_UpdateYUVTexture()
+  * Added an API to get the amount of RAM on the system:
+    SDL_GetSystemRAM()
+  * Added a macro to perform timestamp comparisons with SDL_GetTicks():
+    SDL_TICKS_PASSED()
+  * Dramatically improved OpenGL ES 2.0 rendering performance
+  * Added OpenGL attribute SDL_GL_FRAMEBUFFER_SRGB_CAPABLE
+  * Fixed float audio support with the PulseAudio driver
+  * Fixed missing line endpoints in the OpenGL renderer on some drivers
+  * X11 symbols are no longer defined to avoid collisions when linking statically
+
+-------------------------------------------------------------------
+Mon Oct 28 17:59:05 UTC 2013 - prusnak@opensuse.org
+
+- add SDL2 provides
+
+-------------------------------------------------------------------
+Tue Aug 13 12:04:26 UTC 2013 - jengelh@inai.de
+
+- Some metadata spruce-up: add current URLs, softer wildcarding
+  in the files list, more robust make install call
+- Reduce build dependencies
+- Optional signature verification in local builds
+
+-------------------------------------------------------------------
+Tue Aug 13 11:27:54 UTC 2013 - prusnak@opensuse.org
+
+- created package (version 2.0.0) - based on SDL package
+

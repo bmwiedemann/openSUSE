@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="extract">dist/rpm/os-autoinst.spec</param>
+    <param name="extract">dist/rpm/os-autoinst-test.spec</param>
+    <param name="versionprefix">4.5</param>
+    <param name="versionformat">%ct.%h</param>
+    <param name="url">git://github.com/os-autoinst/os-autoinst.git</param>
+    <param name="scm">git</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">okurz@suse.com</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

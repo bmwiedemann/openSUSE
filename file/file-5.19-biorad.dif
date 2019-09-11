@@ -1,0 +1,15 @@
+---
+ magic/Magdir/images |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- magic/Magdir/images
++++ magic/Magdir/images	2019-05-27 08:52:51.674238380 +0000
+@@ -1028,6 +1028,8 @@
+ # https://web.archive.org/web/20050317223257/www.cs.ubc.ca/spider/ladic/text/biorad.txt
+ # Samples: https://www.loci.wisc.edu/software/sample-data
+ 14	leshort <2
++>4	leshort >0
++>49	byte 0
+ >62	leshort <2
+ >>54	leshort 12345		Bio-Rad .PIC Image File
+ >>>0	leshort >0		%d x

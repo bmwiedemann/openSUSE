@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Tue Jun  3 11:24:34 CEST 2014 - pth@suse.de
+
+- Update to OFED 3.12 final.
+
+-------------------------------------------------------------------
+Fri Jan 24 19:04:47 CET 2014 - pth@suse.de
+
+- Update to OFED 3.12 daily
+
+-------------------------------------------------------------------
+Wed Apr 24 13:55:24 CEST 2013 - pth@suse.de
+
+- Don't use a macro for calling 'make install' as it changes
+  between distributions.
+
+-------------------------------------------------------------------
+Tue Apr 16 10:22:37 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Tue May  8 18:32:35 CEST 2012 - pth@suse.de
+
+- BuildRequire automake, autoconf and libtool.
+
+-------------------------------------------------------------------
+Thu Feb 16 09:21:17 UTC 2012 - saschpe@suse.de
+
+- No need to own %{_libdir}/mpi/gcc/, so package can be noarch
+- Mark stuff under /etc/profile.d as config and remove rpmlintrc
+
+-------------------------------------------------------------------
+Mon Feb 13 10:50:42 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Fri Dec 10 16:48:40 CET 2010 - pth@suse.de
+
+- Fix use of perl_requires.
+- Remove hash bang lines from files to be sourced.
+- Add a rpmlintrc.
+
+-------------------------------------------------------------------
+Wed Jun  2 15:42:12 CEST 2010 - pth@suse.de
+
+- Explicitely use /usr/bin/perl not 'env perl', mainly so that
+  rpm automatically detects the dependency.
+
+-------------------------------------------------------------------
+Thu Dec  3 08:35:07 CET 2009 - jjolly@suse.de
+
+- Update to v1.0.3 from OFED 1.4.2
+
+-------------------------------------------------------------------
+Fri Oct 24 18:39:27 CEST 2008 - jjolly@suse.de
+
+- Updated to version from the OFED 1.4 RC3
+
+-------------------------------------------------------------------
+Thu Sep 11 17:14:20 CEST 2008 - jjolly@suse.de
+
+- Updated to version 1.0.2 from the OFED 1.4 RC1 release
+
+-------------------------------------------------------------------
+Tue Aug 21 13:48:41 CEST 2007 - kejohnson@suse.de
+
+- Updated source tarball to OFED-1.2.5 release.
+- In the spec file, removed autogen.sh from %build and also
+  removed ofed-mpi-selector-proposal.txt from %doc.
+
+-------------------------------------------------------------------
+Fri Jul  6 11:31:26 CEST 2007 - hvogel@suse.de
+
+- Initial Package, Version 1.0.0
+

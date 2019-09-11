@@ -1,0 +1,2636 @@
+-------------------------------------------------------------------
+Mon Aug  5 09:03:37 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.44.7:
+  + Various improvements and bug fixes:
+    - vala:
+      . Fix mixup of target_glib_major/minor in
+        set_target_glib_version().
+      . Implicit GValue cast requires GOBJECT profile.
+      . NoAccessorMethod checks require GOBJECT profile.
+      . 'construct' is not supported in POSIX profile.
+    - codegen:
+      . Use G_TYPE_CHECK_INSTANCE_CAST for comparisons with
+        interfaces.
+      . Append line-break after G_DEFINE_AUTOPTR_CLEANUP_FUNC.
+      . Include required type-definition when casting from generic
+        pointer.
+    - girparser: Handle "function-macro" by skipping them.
+  + Bindings:
+    - glib-2.0: Add MappedFile.from_fd constructor.
+    - posix: Fix return-value of mknod() and c-include for
+      tcgetsid().
+    - webkit2gtk-4.0: Fix
+      WebContext.initialize_notification_permissions().
+    - x11: Fix return type of XInternAtoms and XGetAtomNames
+      bindings.
+
+-------------------------------------------------------------------
+Tue Jul 16 17:38:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.44.6:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Real structs are allowed by simple generics and passed as
+        reference.
+      . Assign GValue result of function calls to temp-var on
+        copy_value.
+    - build: Pass -no-undefined when linking libvalaccodegen.
+    - tests: Null-terminate arrays for compatibility test of uint8
+      / uchar.
+  + Bindings:
+    - glib-2.0: Add binding for g_strv_equal() (since 2.60).
+    - glib-2.0: Bind strcmp0 as GLib.CompareFunc<string?>.
+    - glib-2.0: Fix RecMutexLocker binding.
+    - gtk4: Update to 3.96.0+b05d1676.
+    - xtst: Fix signature of XTest.fake_relative_motion_event().
+- Bump vala_priority from 42 to 44, something we should have done
+  many micro versions ago.
+
+-------------------------------------------------------------------
+Mon Jun 17 15:12:52 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.44.5:
+  + Various improvements and bug fixes:
+    - Only warn about imcompatible type of external construct
+      property.
+    - codegen: Use array_length of collection variable instead of
+      expression.
+    - girparser: Skip 'attribute' elements.
+    - girwriter: Report error on secondary top-level namespace.
+  + Bindings:
+    - gtk+-3.0: Update to 3.24.9~18177388.
+    - gtk4: Update to 3.96.0+8cfdd6c5.
+
+-------------------------------------------------------------------
+Wed Jun  5 21:47:37 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.44.4:
+  + Various improvements and bug fixes:
+    - vala: No-accessor struct properties in GLib.Object class must
+      be owned.
+    - codegen:
+      . Always use G_TYPE_CHECK_INSTANCE_TYPE for external symbols.
+      . Move GObject property validity checks to SemanticAnalyzer.
+    - parser: Multiple corrections for source-location of
+      code-nodes.
+    - build: Pass some useful G_LOG_DOMAIN definitions.
+    - girwriter:
+      . Mention that this file is generated and not meant to be
+        modified.
+      . Properly resolve GLib.TypeInterface instead of hardcoding
+        it.
+      . Multiple improvements and fixes for e.g. GType classes.
+    - girparser: Add support for string "ctype" metadata.
+    - When freeing local variables don't stop at "switch" on
+      "continue".
+    - compiler: Add OptionFlags.NO_ARG to deprecated "--thread"
+      option.
+  + Bindings:
+    - glib-2.0: Don't annotate dedicated GLib.assert_*() functions
+      with [Assert].
+    - clutter-1.0: Bind Margin, PaintVolume, Point, Rect and Size
+      as struct.
+    - cogl-1.0: Fix out-params in
+      Cogl.get_modelview_matrix/projection_matrix/bitmasks.
+    - gstreamer: Cherry-pick some fixes from 0.46.
+    - gtk4: Update to 3.96.0+69016825.
+
+-------------------------------------------------------------------
+Wed Apr 10 10:26:56 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.44.3:
+  + Regression and bug fixes:
+    - codegen: Always assign original variable when consuming
+      instance to destroy.
+    - build: Require --with-cgraph configure flag when
+      cross-compiling.
+  + Bindings:
+    - gdk-3.0,gtk+-3.0: Update from 3.24.7+.
+    - gtk4: Update to 3.94.0+2594593d.
+    - gstreamer: Update from 1.15.2+ git master.
+    - pango: Fix StringBuilder parameter of scan_word().
+
+-------------------------------------------------------------------
+Sun Mar 31 16:29:39 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.44.2:
+  + Various improvements and bug fixes:
+    - ccodegen:
+      . Resolve generics in sizeof-expression of parameter
+        initializer.
+      . Move implicit GValue cast for comparison to
+        BinaryExpression.
+      . Use available *_unref functions in
+        G_DEFINE_AUTOPTR_CLEANUP_FUNC.
+      . Move get_type_signature() to DataType.
+      . Move try_cast_variant_to_type() to
+        GVariantModule.visit_cast_expression().
+      . Don't create special GArray clear-func for non-null
+        structs.
+      . Implement silent-cast for GLib.Variant.
+    - vala:
+      . Variadic parameters are not supported for async methods.
+      . Report error for unsupported operator instead of assertion.
+    - girparser: Create correct output in
+      get_default_lower_case_suffix().
+    - libvaladoc:
+      . Handle missing Content.List.Bullet.ORDERED in switch.
+      . Handle missing Run.Style.NONE in switch.
+    - Add explicit "default: break;" statements for coverage of
+      enum-typed switch.
+  + Bindings:
+    - glib-2.0: Don't annotate dedicated GLib.assert_*() with
+      [Assert].
+    - gio-2.0: Revert enum-typed flags parameters in Socket API.
+    - gobject-introspection-1.0: Fix TypeInfo and TypeTag method
+      references.
+    - gstreamer: Update from 1.15.2+ git master.
+    - gstreamer-1.0: Fix TypeFind and TypeFindFactory method
+      references.
+    - gtk4: Update to 3.94.0+f273eca7.
+    - vapi: Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Sun Mar 17 16:38:22 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.44.1:
+  + Various improvements and bug fixes:
+    - Codegen:
+      . Use unsigned default value for flags-enum.
+      . Use guint to represent flags-enum in custom GMarshalFunc.
+    - Move disconnect error from signal-module to
+      semantic-analyzer pass.
+    - Mark defined constructors of abstract classes as protected.
+    - parser: Implicit creation method of abstract classes must be
+      protected.
+    - vala: Allow assignment of 0U to enum types.
+    - libvaladoc: Don't try to create a Content.ListItem when there
+      is none.
+  + Bindings:
+    - gio-2.0: SocketAddress.from_native() is a factory method not
+      a constructor.
+    - glib-2.0: Add string.validate_len() since 2.60.
+    - gstreamer: Update from 1.15.2+ git master.
+    - gtk4: Update to 3.94.0+f14d998c.
+    - libgvc: Some additions and ownership/return-type fixes.
+    - vte-2.90: Mark as deprecated, it was replaced by vte-2.91.
+    - vapi: Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Sat Mar  9 09:14:10 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.44.0:
+  + Various improvements and bug fixes:
+    - parser: Adjust various source references.
+    - vala: More regular invocations of check() on inferred
+      Expression.value_type.
+  + Bindings:
+    - gstreamer: Update from 1.15.2+ git master.
+    - gtk4: Update to 3.94.0+eacbeb9e.
+    - vapi: Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:44:02 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.43.92:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Allow to associate CCodeFile to actual SourceFile.
+      . Only emit declaration of *_register_type if needed.
+      . Add get_variable_array_length_cname() and use as possible.
+      . Respect array_length_cname attribute for global fields.
+      . Replace gvaluecollector_h_needed with dedidated
+        add_include() calls.
+      . Respect finish[_vfunc]_name attributes defined in vala
+        sources.
+      . Include "glib-object.h" for typeof expression.
+    - vala:
+      . Correctly perform compatibility check of array length-type.
+      . Don't ignore qualified parent when inferring type of enum
+        member.
+    - girwriter:
+      . Support transfer-ownership="container" for arrays.
+      . Always use get_gir_name() for TypeSymbols.
+    - testrunner: Add support for Genie source files (.gs).
+    - tests: Add some Genie tests to increase coverage.
+    - genie: Allow main function "init" to return integer as exit
+      status.
+  + Bindings:
+    - gobject-2.0: Add SignalHandler.disconnect_by_data().
+    - poppler-glib: Update to 0.74.
+    - gtk4: Update to 3.94.0+b4ae491b.
+    - vapi: Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:44:01 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.43.91:
+  + Various improvements and bug fixes:
+    - Revert "valadoc: Drop duplicated code to add source files and
+      use CodeContext API" and "valadoc: Update API tests".
+    - valadoc: Report warning if resources for doclet could not be
+      copied.
+    - libvaladoc: Properly support the output of async
+      constructors.
+    - girparser: Correctly set array_length_type for delegates
+      returning an array.
+    - Revert "vala: Don't replace assignments for local variables
+      with non-null simple-types".
+  + Bindings:
+    - Follow GTK upstream rename to gtk4 and gtk4-unix-print.
+    - gtk4,gtk4-unix-printer: Update to 3.94.0+02e856f6.
+    - gtk+-unix-print-*.0: Fix PrintJob.get_page_ranges(),
+      Printer.get_hard_margins().
+    - atk-1.0: Adjust for upstream revert of Implementor using
+      G_DEFINE_INTERFACE.
+    - clutter-1.0: Drop deprecated from Actor.pick().
+    - glib-2.0: Add "delegate_target = false" to
+      Log.writer_journald/_standard_streams/_default.
+    - gio-unix-2.0: Add DesktopAppInfo.get_string_list() since
+      2.60.
+    - gstreamer: Update from 1.15.1+ git master.
+    - webkit2gtk-4.0: Update to 2.23.91.
+    - vapi: Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:43:59 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.43.90:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Replace some unfortunate asserts with internal error
+        reports.
+      . Properly handle and catch inner-error of finally-block.
+      . Pass lambda expression of variable initializer to signal
+        connect.
+    - vala:
+      . Check inferred variable_type of LocalVariables.
+      . Parser doesn't ensure "protected" to be applied on
+        TypeSymbol members.
+    - libvaladoc: Don't change the size of an array in-parameter.
+    - g-i: Fix return value on error in start_discriminator().
+  + Bindings:
+    - Add goocanvas-2.0 bindings.
+    - gdk-3.0: Update to 3.24.4+a0129f55.
+    - glib-2.0: Bind
+      g_log_writer_journald/_standard_streams/_default as
+      LogWriterFunc.
+    - goocanvas: Update from 1.0.0+af07af5d.
+    - gstreamer: Update from 1.15.1+.
+    - gtk+-4.0: Update to 3.94.0+a7fa1cf6.
+    - vapi: Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:43:56 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.43.6:
+  + Various improvements and bug fixes:
+    - codegen: Don't apply address-of operator on literals when
+      casting to array.
+    - vala: Don't tweak closure on static lambdas.
+    - Revert "codegen: Use copies of error_variable of
+      catch-clauses for nested usage" and add asynchronous
+      "catch-error-scope" regression test.
+    - libvaladoc: Build backing Vala.SourceFile for GIRs processed
+      by importer.
+    - libvaladoc/girimporter: Skip "source-position" elements.
+    - genie: Support "protected" accessibility and allow explicit
+      "public".
+  + Bindings:
+    - gst-editing-services-1.0: Fix some construtors and (un)hide
+      symbols.
+    - javascriptcoregtk-4.0: Fix GLib.Callback parameters which
+      can't hold target.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:43:50 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.43.5:
+  + Various improvements and bug fixes:
+    - vala:
+      . Use dedicated error message for assignments to literals
+      . Async methods don't allow out-parameters before
+        in-parameters
+      . Allow direct access to the integer constants of an
+        error-domain
+      . Multiple lamdba arguments in method call should all use
+        same scope
+    - codegen:
+      . Use a parameter-map for creation of delegate declaration
+      . Add "error_pos" CCode attribute and use it as needed
+      . Emit struct declaration typedef before resolving its fields
+      . Add "destroy_notify_cname" CCode attribute
+      . Use get_ccode_*name/get_parameter_cexpression() for
+        Parameters
+      . Set owner for ValaDestroyNotify (POSIX) [#730]
+      . Include "stddef.h" in CCodeBaseModule.destroy_value()
+        (POSIX)
+    - girparser: Recognize error parameter before delegate target
+      parameter
+    - compiler: Report deprecated command-line option "--thread"
+    - valadoc: Specify that the "--driver" option is deprecated
+  + Bindings:
+    - atk: Don't use a custom SignalEmissionHook while it is part
+      of gobject-2.0
+    - gdk-pixbuf-2.0: Make PixbufSaveFunc usable
+    - gio-2.0: Make DBusInterface[GS]etPropertyFunc usable
+    - gio-2.0: Add CancellableSource ctor and update PollableSource
+      ctors
+    - glib-2.0: Add Queue.clear_full() since 2.60 
+    - gstreamer: Update from 1.15+ git master
+    - gdk-3.0,gtk+-3.0: Update to 3.24.3+9c8f1478
+    - gtk+-4.0: Update to 3.94.0+9b15c690
+    - libsoup-2.4: Fix Message.add_*_handler()
+    - vapi: Update GIR-based bindings
+
+-------------------------------------------------------------------
+Mon Mar  4 08:43:40 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.43.4:
+  + Various improvements and bug fixes:
+    - vala:
+      . Array with fixed length don't require explicit
+        instantiation.
+      . Add GenericType.get_actual_type().
+      . Allow get_actual_type() to be used for expected failures.
+      . Add Method.compatible_no_error().
+      . Don't just guess and check for a matching
+        base_interface_method.
+      . Search in all interfaces for an implementation match.
+      . Allow explicit interface methods to be virtual.
+      . Report invalid instance member access to property.
+    - codegen:
+      . Use properly checked implicit interface implementations.
+      . Use temp-var for MethodCall with out/ref arguments.
+      . Use temp-vars for ellipsis out-arguments to fix memory
+        management.
+      . Add default_value for CType to initialize variables if
+        needed.
+      . Cast instance parameter for property access in
+        object-initializer
+      . Don't check boolean values for (in)equality in GTask API.
+      . Add missing data parameter to GTypeInfo callbacks.
+      . Properly set annotations field of GDBus*Info struct to
+        NULL.
+      . Cast instance and result of g_async_initable_new_finish()
+        call.
+    - valadoc: Drop duplicated code to add source files and use
+      CodeContext API.
+    - libvaladoc: Skip empty Version.replacement attribute to avoid
+      critical.
+    - build: Don't leak libvalaccode symbols to libvaladoc.
+    - Add a basic CONTRIBUTING.md file that links to the relevant
+      Wiki page.
+    - tests:
+      . Fix try_parse() tests to not compare to already free'd
+        memory.
+      . Warnings and criticals should be fatal on compile time too.
+  + Bindings:
+    - glib-2.0: Use correct array-length-type for returned arrays.
+    - glib-2.0: Add RecMutexLocker since 2.60.
+    - gio-2.0: Fix File.replace_contents_bytes_async().
+    - gobject-2.0: Use correct array-length-type for returned
+      arrays.
+    - poppler-glib: Update to 0.71.
+    - gstreamer: Update from 1.15+ git master.
+    - gtk+-3.0: Update to 3.24.2+a8e07254.
+    - gtk+-4.0: Update to 3.94.0+4404afc9.
+    - sqlite3: Correct return C type of Statement.column_text &
+      Value.to_text.
+    - webkitgtk-4.0: Update to 2.23.1.
+    - vapi: Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:43:20 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.43.2:
+  + Various improvements and bug fixes:
+    - codegen:
+      . GType classes and interfaces require including
+        "glib-object.h".
+     . Handle non-default AsyncResult parameter position and
+       regenerate GIR-based bindings to fix non-standard async
+       methods.
+     . Always emit constants with initializer-list.
+     . Emit delegate/enum typedefs to type-declaration section.
+     . Break possible endless loop in
+       SymbolResolver.get_type_for_struct().
+  + Bindings: gobject-introspection-1.0: Pick up version attribute
+    fixes.
+- Changes from version 0.43.1:
+  + Highlights:
+    - Emit G_DEFINE_AUTOPTR_CLEANUP_FUNC() for classes
+      (requires glib 2.44).
+    - Enforce "return yield ..." syntax to be expected.
+    - Drop deprecated syntax support of += and -= for signals.
+    - Drop deprecated syntax support of # modifier and operator.
+    - Allow disabling the build of valadoc.
+    - Add support for SingleInstance attribute for GObject classes.
+    - Don't allow to declare array parameters with "type array[]".
+    - Collect error_types on demand to allow transformations.
+    - Check for matching ownership of type-arguments.
+    - Add profile specific delegate target/destroy types.
+    - Don't explicitly add glib headers, the use of symbols will do
+      that.
+    - Add --enable-debug configure option.
+    - Move setting of default defines for VALA_0_XX and GLIB_2_XX
+      to CodeContext.
+    - Add support for delegate parameters in signals.
+    - Admit that structs are emtpy even with a static property.
+  + Various improvements and bug fixes:
+    - codegen:
+      . Fix method pointer cast if instance isn't at first
+        position.
+      . Transfer ownership of compact class to DestroysInstance
+        method.
+      . Add destroy function for GLib.Array.
+      . Fix canonical string for quark of error domains.
+      . Make sure to include declarations for delegate typed
+        parameters.
+      . Don't emit type_id for enum in non GOBJECT profile.
+      . Don't emit unused temp variable for element access
+        assignments.
+      . Actually create method cast for base interface method as
+        needed.
+      . Mark needle parameter of internal array-contains methods as
+        const.
+      . Emit initializer for enum-value into wanted declaration
+        space.
+      . Add void to delegate typedef declarations without
+        parameters.
+      . Deprecate "finish_function" and "ctype" ccode-attribute.
+      . Fix get_ccode_name() for properties.
+      . Add ccode getters for GType functions of Classes and
+        Interfaces.
+      . Don't allow more than one consecutive empty lines in
+        generated code.
+    - vala:
+      . Copy instance_pos argument from virtual/abstract base
+        methods.
+      . Compact classes don't allow private/class fields and to
+        lock fields.
+      . Use comment which was already retrieved in
+        parse_declaration().
+      . Add missing re-check guards for Do/For/WhileStatement and
+        SwitchLabel.
+      . Type check for errors require an error expression.
+      . Make check_arguments() more verbose and don't bail on first
+        error.
+      . Don't emit member access of assignments on static
+        properties.
+      . Use clearer error message for automatic properties in
+        interfaces.
+      . Admit that structs are emtpy even with a static property.
+      . Let UsingDirective hold reference to UnresolvedSymbol
+        instances only.
+      . Add ArrayType.length_type and
+        ArrayCreationExpression.length_type.
+      . Remove hardcoded "int" length type and use
+        ArrayType.length_type.
+      . Use is_weak() for type-arguments in
+        DataType.to_qualified_string().
+    - girwriter: Write glib-type attributes for Enums/Structs with
+      type_id.
+    - girparser: Skip "source-position" elements and docs in
+      transparent union.
+    - valadoc:
+      . Match property signature with vala's codewriter.
+      . Sort symbols and members where possible.
+      . Actually assign type_id of Api.Structs.
+      . Add type_id to Api.Enum/Interface.
+      . Skip package dependency if target directory already exists.
+      . Fix a few errors and warnings in stylesheet.
+      . Adjust stylesheet to unbreak Epiphany.
+      . Several API clean ups.
+      . Add --fatal-warnings command line option.
+    - docs: Use Markdown for README and include build instructions.
+    - testrunner: Compile and run tests separately and pass
+      buildsystem's CC through to valac, add various -Werror=*
+      build cflags.
+  + Bindings:
+    - gio-2.0: Add missing File.new_build_filename().
+    - glib-2.0: Add missing Array.set_clear_func() binding.
+    - glib-2.0: Avoid double-free in GLib.Array if clear_func is
+      set.
+    - glib-2.0: Drop g_object_unref which is part of gobject-2.0.
+    - gobject-2.0: Attribute all symbols with cheader_filename =
+      "glib-object.h".
+    - gdk-x11-3.0,gtk+-3.0: Update to 3.24.1+356f1f59.
+    - gtk+-3.0: Treat Gtk.IconInfo as GLib.Object which it is since
+      3.8.
+    - gtk+-4.0: Update to 3.94.0+8de1ba2c.
+    - gstreamer: Update from 1.15+ git master.
+    - posix: Add CommandPipe as a sub-type of FILE.
+- Bump defines vala_version to 0.44 and vala_libversion to 0_44
+  following upstreams soversion bumps.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:40:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.42.6:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Replace some unfortunate asserts with internal error
+        reports.
+      . Properly handle and catch inner-error of finally-block.
+      . Pass lambda expression of variable initializer to signal
+        connect.
+      . Respect array_length_cname attribute for global fields.
+    - vala:
+      . Check inferred variable_type of LocalVariables.
+      . Parser doesn't ensure "protected" to be applied on
+        TypeSymbol members.
+    - girparser: Correctly set array_length_type for delegates
+      returning an array.
+    - girwriter:
+      . Support transfer-ownership="container" for arrays.
+      . Always use get_gir_name() for TypeSymbols.
+    - libvaladoc:
+      . Don't change the size of an array in-parameter.
+      . Properly support the output of async constructors.
+    - valadoc: Report warning if resources for doclet could not be
+      copied.
+    - g-i: Fix return value on error in start_discriminator().
+  + Bindings:
+    - atk-1.0: Adjust for upstream revert of Implementor using
+      G_DEFINE_INTERFACE
+    - clutter-1.0: Drop deprecated from Actor.pick().
+    - gdk-3.0: Update to 3.24.4+a0129f55.
+    - gtk+-unix-print-*.0: Fix PrintJob.get_page_ranges(),
+      Printer.get_hard_margins().
+    - gobject-2.0: Add SignalHandler.disconnect_by_data().
+    - poppler-glib: Update to 0.74.
+
+-------------------------------------------------------------------
+Tue Jan 22 11:34:20 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.42.5:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Use temp-var for MethodCall with out/ref arguments
+      . Use temp-vars for ellipsis out-arguments to fix memory
+        management
+      . Add default_value for CType to initialize variables if
+        needed
+      . Cast instance parameter for property access in
+        object-initializer
+      . Don't check boolean values for (in)equality in GTask API
+      . Properly set annotations field of GDBus*Info struct to NULL
+      . Cast instance and result of g_async_initable_new_finish()
+        call
+      . Use a parameter-map for creation of delegate declaration
+      . Emit struct declaration typedef before resolving its fields
+      . Don't apply address-of operator on literals when casting to
+        array
+    - vala: Report invalid instance member access to property
+    - girparser: Async methods don't allow out-parameters before
+      in-parameters
+    - libvaladoc: Build backing Vala.SourceFile for GIRs processed
+      by importer
+    - libvaladoc/girimporter: Skip "source-position" elements
+    - valadoc: Specify that the "--driver" option is deprecated
+    - compiler: Report deprecated command-line option "--thread"
+    - build: Don't leak libvalaccode symbols to libvaladoc
+    - Add a basic CONTRIBUTING.md file that links to the relevant
+      Wiki page
+    - tests: Fix try_parse() tests to not compare to already free'd
+      memory
+  + Bindings:
+    - clutter-1.0: Fix BindingPool.override_action()
+    - gdk-3.0,gtk+-3.0: Update to 3.24.3+9c8f1478
+    - glib-2.0: Use correct array-length-type for returned arrays
+    - gio-2.0: Fix File.replace_contents_bytes_async()
+    - gobject-2.0: Minor syncing from GIR
+    - gobject-2.0: Use correct array-length-type for returned
+      arrays
+    - gstreamer: Update from 1.15+ git master
+    - gtk+-4.0: Update to 3.94.0+9b15c690
+    - javascriptcoregtk-4.0: Fix GLib.Callback parameters which
+      can't hold target
+    - libsoup-2.4: Fix Message.add_*_handler()
+    - sqlite3: Correct return C type of Statement.column_text &
+      Value.to_text
+
+-------------------------------------------------------------------
+Thu Dec 20 18:35:52 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.42.4:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Fix method pointer cast if instance isn't at first position
+      . Transfer ownership of compact class to DestroysInstance
+        method
+      . Add destroy function for GLib.Array
+      . Fix canonical string for quark of error domains
+      . Make sure to include declarations for delegate typed
+        parameters
+      . Don't emit type_id for enum in non GOBJECT profile
+      . Don't emit unused temp variable for element access
+        assignments
+      . Actually create method cast for base interface method as
+        needed
+      . Mark needle parameter of internal array-contains methods as
+        const
+      . Emit initializer for enum-value into wanted declaration
+        space
+      . Add void to delegate typedef declarations without
+        parameters
+      . Emit delegate/enum typedefs to type-declaration section
+      . Always emit constants with initializer-list
+      . Handle non-default AsyncResult parameter position
+    - vala:
+      . Copy instance_pos argument from virtual/abstract base
+        methods
+      . Compact classes don't allow private/class fields and to
+        lock fields
+      . Use comment which was already retrieved in
+        parse_declaration()
+      . Add missing re-check guards for Do/For/WhileStatement and
+        SwitchLabel
+      . Type check for errors require an error expression
+      . Make check_arguments() more verbose and don't bail on first
+        error
+      . Don't emit member access of assignments on static
+        properties
+      . Use clearer error message for automatic properties in
+        interfaces
+      . Break possible endless loop in
+        SymbolResolver.get_type_for_struct()
+    - girwriter: Write glib-type attributes for Enums/Structs with
+      type_id
+    - girparser: Skip "source-position" elements and docs in
+      transparent union
+    - valadoc:
+      . Match property signature with vala's codewriter
+      . Sort symbols and members where possible
+      . Actually assign type_id of Api.Structs
+      . Add type_id to Api.Enum/Interface
+      . Skip package dependency if target directory already exists
+      . Fix a few errors and warnings in stylesheet
+      . Adjust stylesheet to unbreak Epiphany
+    - docs: Use Markdown for README and include build instructions
+    - testrunner: Pass buildsystem's CC through to valac
+  + Bindings:
+    - gio-2.0: Add missing File.new_build_filename()
+    - glib-2.0: Add missing Array.set_clear_func() binding
+    - glib-2.0: Avoid double-free in GLib.Array if clear_func is
+      set
+    - glib-2.0: Add GLib.pointer aka gpointer binding
+    - gobject-2.0: Attribute all symbols with cheader_filename =
+      "glib-object.h"
+    - gobject-introspection-1.0: Pick up version attribute fixes
+    - gdk-x11-3.0,gtk+-3.0: Update to 3.24.2+eb821cb8
+    - gtk+-4.0: Update to 3.94.0+a99bd2a4
+    - gstreamer: Update from 1.15+ git master
+    - poppler-glib: Update to 0.71
+
+-------------------------------------------------------------------
+Wed Nov  7 18:30:09 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.42.3:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Initialize internal temp-variables used as reference
+        parameter.
+      . Improve ccode for fixed-length array parameters.
+      . Fix regex literal compile flags.
+      . Add prototype for *_register_type() function.
+      . Don't emit *_free() of derived compact classes.
+      . Add prototype for *_new() of abstact compact classes.
+    - girwriter: Fix ctype of out/ref and array parameters.
+    - ccode: Fix typo and actually check "end_decls".
+    - abstract syntax tree:
+      . Always analyze nodes after they are inserted into the AST.
+      . Add source_reference to local variable of catch-clause.
+      . Add missing replace_expression() implementations.
+      . Fix several construction/parenting issues.
+      . DataType for GLib.Error should be should resolved as
+        ErrorType.
+    - libvaladoc: Add "unlock" to keywords in Highligher.
+    - posix:
+      . Add replacement for G_(BEGIN|END)_DECLS.
+      . Don't check for GLib.Variant casting.
+    - testrunner: Reset $run_prefix before generating next test
+      script.
+    - build: Unconditionally add conditional VALAFLAGS to make
+      bootstrap.
+    - doc: Fix build of internal-api-docs.
+    - manual: Update from wiki.gnome.org.
+  + Bindings:
+    - glib-2.0: Computing length once is enough in
+      string.to_utf8()/splice().
+    - glib-2.0: Add binding for g_test_add().
+    - glib-2.0: Add array length to string.skip.
+    - gio-2.0: Result of DBusMessage.get_header() is unowned.
+    - gobject-2.0,gtk+-*.0: Fix some GLib.Value out/ref parameters.
+    - gstreamer: Update from 1.15+ git master.
+    - gtk+-4.0: Update to 3.94.0+b4b30b49.
+
+-------------------------------------------------------------------
+Wed Sep 26 14:47:41 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.42.2:
+  + Various improvements and bug fixes:
+    - codewriter: Prepend "yield" if is_yield_expression is set on
+      MethodCall and ObjectCreationExpression.
+    - codegen: Fix typo in is_pure_ccode_expression().
+    - gobject-introspection: Fix use after free in scanner.
+    - vala: Check if ArrayType supports its given element-type in
+      analyzer pass.
+    - valadoc: Fix some string escaping which gettext complains
+      about.
+  + Bindings:
+    - Update GIDL-based bindings to fix unsupported type-arguments.
+    - glib-2.0: Add feature_test_macro details for Time struct's
+      methods.
+    - glib-2.0: Set DateTime.now () to use local time zone as the
+      default.
+    - gstreamer: Update from 1.15+ git master.
+    - gtk+-4.0: Update to 3.94.0+d90e2733.
+    - libxml-2.0: Add missing context parameter in
+      OutputWriteCallback.
+    - x11: Add binding for XCreateSimpleWindow.
+- Changes from version 0.42.1:
+  + Various improvements and bug fixes: vapigen: Warn if the
+    library argument doesn't match any package attribute.
+  + Bindings:
+    - glib-2.0: Add some 2.58 symbols.
+    - gtk+-4.0: Update to 3.94.0+f3e6d00d.
+    - Add gnome-desktop-3.0 bindings.
+    - Remove libgda-4.0, libgda-report-4.0 bindings.
+    - Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Sat Sep  1 19:40:40 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.42.0:
+  + Bindings:
+    - gstreamer: Update from 1.15+ git master.
+    - webkit2gtk-4.0: Update to 2.21.92.
+    - Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Mon Aug 20 19:43:54 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.41.92:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Fix floating reference regression with Variants.
+      . Call ref_sink on Object.new_valist/new_with_properties if
+        needed.
+    - build: Correctly quote square brackets in regular expression
+    - vala: Don't bail early on property with not supported default
+      value.
+    - manual: Update from wiki.gnome.org.
+  + Bindings:
+    - glib-2.0:
+      . Add return-type of Queue.remove*(), add
+        HashTable.foreach_steal().
+      . Add float.parse/try_parse().
+    - gstreamer: Update from 1.15+ git master.
+    - webkit2gtk-4.0: Update to 2.21.91.
+
+-------------------------------------------------------------------
+Mon Aug 20 18:43:54 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.41.91:
+  + Various bug fixes:
+    - codegen:
+      . Call ref_sink on objects passed to generic type.
+      . Free errors after returning them on GDBusMethodInvocation.
+    - girparser: Actually resolve type-arguments to be able to box
+      them if needed.
+    - vala: Add consts/methods to retrieve and check library
+      version.
+  + Bindings:
+    - glib-2.0: Add Array.remove*() wrapper to avoid leaking
+      generic elements.
+    - glib-2.0: Add (u)long.parse/try_parse().
+    - gstreamer: Update from 1.15+ git master.
+    - gtk+-3.0: Update to 3.23.2+6b6e53fd.
+    - gtk+-4.0: Update to 3.94.0+4e868584.
+
+-------------------------------------------------------------------
+Mon Aug 20 17:43:54 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.41.90:
+  + Highlights:
+    - Reintroduce POSIX profile
+    - parser: Add support for explicit "unlock" syntax.
+    - vala: Support anonymous definitions of delegates in bindings.
+    - codegen:
+      . Support automatic properties as GtkChild.
+      . Apply G_PARAM_EXPLICIT_NOTIFY on properties with "notify =
+        false".
+      . Drop support for non-auto property initializer in gobjects.
+      . Avoid using deprecated "g_type_class_add_private".
+  + Various bug fixes:
+    - analyzer: Break cyclic references of BasicBlock.
+    - codegen:
+      . Don't apply ref_sink_function if target_type is
+        floating_reference.
+      . Fix invocation of abstract/virtual methods with NoWrapper
+        in compact classes.
+      . Don't include the full absolute path in line directives.
+      . Add source_reference to unsupported floating reference
+        error.
+    - libvaladoc: Replace void* with corresponding Vala API
+    - vala:
+      . Constants and signals are not lockable.
+      . Treat floating method-return-type as nullable if error may
+        be thrown.
+      . Transfer floating-reference attribute while casting
+      . Break reference chain between DataType and Symbol if
+        possible.
+      . Report error for invalid base access in method/property of
+        compact class.
+  + Bindings:
+    - gobject-2.0: Make GLib.Signal a struct of uint and bind
+      g_signal_new*.
+    - clutter-1.0: Change type of Clutter.Key.* constants to uint.
+    - gdk-3.0: Change type of Gdk.Key.* constants to uint.
+    - gtk+-4.0: Change type of Gdk.Key.* constants to uint.
+    - gstreamer: Update from 1.15+ git master.
+    - webkit2gtk-4.0: Add JSC namespace to javascriptcoregtk-4.0
+      and fix depends.
+    - Remove clutter-gst-1.0, GStreamer 0.10, rest-0.6,
+      tracker-indexer-module-1.0, libsoup-2.2, gdu and gdu-gtk,
+      twitter-glib-1.0, mx-1.0.
+    - Remove vala-specific deprecations <= vala-0.22.
+- Bump define vala_version to 0.42 and define vala_libversion to
+  0_42 as well as vala_priority to 42, following upstreams changes.
+
+-------------------------------------------------------------------
+Mon Aug 20 09:43:54 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.40.9:
+  + Various improvements and bug fixes:
+    - girparser:
+      . Actually resolve type-arguments to be able to box them if
+        needed.
+      . Handle unsupported aliases which could not be fully
+        processed.
+    - codegen:
+      . Free errors after returning them on GDBusMethodInvocation.
+      . Fix invocation of abstract/virtual methods with NoWrapper
+        in compact classes.
+    - vala: Allow read-only properties.
+    - manual: Update from wiki.gnome.org.
+  + Bindings:
+    - glib-2.0:
+      . Add Array.remove*() wrapper to avoid leaking generic
+        elements.
+      . Add (u)long.parse/try_parse() and float.parse/try_parse().
+      . Add return-type of Queue.remove*(), add
+        HashTable.foreach_steal().
+    - gtk+-3.0: Update to 3.23.2+6b6e53fd.
+    - gtk+-4.0: Update to 3.94.0+4e868584.
+    - webkit2gtk-4.0: Update to 2.20.5.
+
+-------------------------------------------------------------------
+Mon Jul 16 18:17:34 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.40.8:
+  + Various improvements and bug fixes:
+    - Fix links in the Manual.
+    - libvaladoc: Change link to Valadoc wiki page for HTML doclet.
+    - valadoc: Use HTML5 doctype in HTML doclet.
+    - codegen: Let methods return -1 on error by default if
+      possible.
+    - Allow TypeModule subclasses as parameter-type in
+      module-init-method.
+    - girparser: Allow changing the type of constants using
+      metadata.
+    - girwriter: Add boolean GIR visible attribute to allow
+      skipping symbols.
+    - vala: Report error for error-domains without any code.
+    - parser: Accept "empty" enums/error-domains.
+    - codewriter: Output bodies of code-blocks if in VAPIGEN mode.
+  + Bindings:
+    - gobject-2.0: Add lower_case_csuffix attributes to Type*
+      symbols.
+    - gdk-3.0,gtk+-3.0: Update to 3.23.0+df045423.
+    - gio-2.0: Add custom IOError.from_errno() to make it work as
+      expected.
+    - gtk+-4.0: Update to 3.94.0+bf5f27c6.
+    - gstreamer-rtsp-server-1.0: Update from 1.14+ git master.
+
+-------------------------------------------------------------------
+Thu Jun 21 22:11:57 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.40.7:
+  + Various improvements and bug fixes:
+    - Update bugtracker links to
+      https://gitlab.gnome.org/GNOME/vala/issues.
+    - codegen:
+      . Handle delegate_target attribute of fields.
+      . Free generic elements of glib collections.
+      . Fix warning for source_funcs parameter of g_source_new().
+      . Actually treat GLib.Source as compact class.
+      . Custom abstract methods of GLib.Source are handled
+        differently.
+      . Consistently use gpointer for delegate targets.
+      . Unify some delegate-type check patterns.
+      . Use default_init instead of base_init when registering
+        interfaces.
+    - girparser: Add support for bool delegate_target.
+    - girwriter:
+      . Output deprecated="1".
+      . Construct-only properties don't have a setter method.
+      . Don't write any custom attributes.
+    - valadoc: Fix TreeBuilder.create_array() for stacked Arrays.
+  + Bindings:
+    - glib-2.0:
+      . Do not mark simple-type out-parameters as nullable.
+      . Make Source.attach() use the default MainContext by
+        default.
+      . Make Bytes.slice() use the memory-efficient
+        Bytes.from_bytes().
+      . Fix Bytes.with_free_func().
+    - gio-2.0:
+      . Mark ActionEntry.parameter_type/state fields as nullable.
+      . Delegate fields of DBus*VTable do not have implicit target
+        fields.
+      . Apply delegate_target = false on ActionEntry callbacks and
+        make them weak.
+    - Add default to all io_priority parameters.
+    - gstreamer: Cherry-pick some fixes from 0.42, add
+      gst-editing-services-1.0.
+    - gtk+-3.0: Update to 3.22.30+9ac7f906.
+    - gtk+-4.0: Update to 3.93.0+29fee2e8.
+    - webkit2gtk-4.0: Update to 2.21.4.
+    - Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Mon May 21 22:19:39 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.40.6:
+  + Regression fix:
+    - codegen: Avoid critical for array in-parameters with custom
+      length-type.
+    - tests: Drop assert which is failing on big-endian archs.
+- Changes from version 0.40.5:
+  + Various improvements and bug fixes:
+    - Warn if --gir is used without --library (bgo#708693).
+    - Report an error if rank attribute is required but was not
+      found (bgo#660991).
+    - scanner:
+      . Accept \R and \N escape sequences in regex literals
+        (bgo#749576).
+      . Accept backreferences \1 through \99 in regex literals
+        (bgo#728574).
+    - codegen:
+      . Avoid critical in get_basic_type_info() when there is no
+        signature (bgo#729517).
+      . Fix serializing multidimensional arrays (bgo#735437).
+      . Guard get_default_ref_sink_function() against null
+        base-class.
+      . Respect cname ccode-attribute of lockable fields.
+      . Fix casting of length for "ref" array parameters.
+    - codewriter: Add 'new' to symbols if needed to match the
+      original source (bgo#614686).
+    - girparser: Deal with missing "name" attribute by falling back
+      on "c:type".
+    - girwriter:
+      . Drop errornous indent.
+      . Properly output variadic methods and use
+        introspectable="0".
+    - genie:
+      . Add support for the \v escape character (bgo#664689).
+      . Add support for the \uXXXX escape sequence.
+  + Bindings:
+    - glib-2.0: Fix IConv.iconv() (bgo#634753).
+    - gobject-2.0: Make constructor of ParamSpecBoxed public.
+    - gstreamer: Cherry-pick some fixes from 0.42.
+    - gtk+-3.0: Update to 3.22.30+21fddc39.
+    - gtk+-4.0: Update to 3.93.0+3a860719.
+    - javascriptcoregtk-4.0: buffer of String.get_utf8_cstring() is
+      not "ref" (bgo#788113).
+    - posix: Add missing cname = "int" to Posix.Signal enum.
+    - sqlite3: Add additional constants for flags of
+      Database.open_v2() (bgo#795627).
+    - webkit2gtk-4.0: Cherry-pick some fixes from 0.42.
+
+-------------------------------------------------------------------
+Mon Apr 16 08:25:40 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.40.4:
+  + Various improvements and bug fixes: girparser: Add support for
+    NoAccessorMethod metadata.
+  + Bindings:
+    - glib-2.0: Mark str parameter of Variant.take_string() as
+      owned.
+    - gstreamer: Update from 1.15+ git master.
+    - gtk+-*.0: Set NoAccessorMethod on Gtk.Radio*.group properties
+      (Regression in gtk+-3.0).
+    - gtk+-4.0: Update to 3.93.0+fc6018f1.
+    - json-glib-1.0: Mark return-type of gvariant_deserialize*() as
+      nullable.
+    - webkit2gtk-4.0: Update to 2.20.1.
+
+-------------------------------------------------------------------
+Mon Apr  9 09:59:38 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.40.3:
+  + Various bug fixes: vala: Fix return-type of
+    BasicBlock.get_successors().
+  + Bindings:
+    - gstreamer: Update from 1.15+ git master.
+    - gtk+-3.0: Fix regression of StatusIcon.position_menu()
+      (bgo#891629).
+    - gtk+-4.0: Update to 3.93.0+ff738269
+    - libgsf-1: Update to 1.14.42+ (bgo#794777).
+
+-------------------------------------------------------------------
+Fri Mar 30 11:31:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.40.2:
+  + Various bug fixes: gdbus: Fix missing declaration of _fd_list
+    for async methods (bgo#794566).
+  + Bindings:
+    - glib-2.0: Use g_value_*et_schar instead of deprecated
+      g_value_*et_char
+    - gobject-2.0: Add ParamSpecGType.
+    - gtk+-*.0: Hide dedicated constructors of compact classes
+      bound as structs (bgo#794733).
+
+-------------------------------------------------------------------
+Mon Mar 26 22:26:36 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.40.1:
+  + Various bug fixes:
+    - codegen:
+      . Don't add target fields for captured delegates without
+        target.
+      . Don't add length fields for captured fixed-length array
+        variables.
+    - valadoc: Bump VALA_0_xx defines and glib_minor to match 0.40
+      series.
+  + Bindings:
+    - Add libgeoclue-2.0 bindings (bgo#794376).
+    - gobject-2.0: Cherry-pick some changes from 0.42.
+    - gdk-3.0,gtk+-3.0: Update to 3.22.29.
+    - gtk+-4.0: Update to 3.93.0+433517fd.
+    - gtk+-*.0: Fix iter parameter of
+      TextView.backward*/forward*/move_visually() (bgo#794345).
+    - gstreamer-1.0: Update to 1.13.91 and add gstreamer-webrtc-1.0
+      bindings.
+    - libgsf-1: Switch to GIR and update to 1.14.42.
+    - linux: Add various symbols.
+    - posix:
+      . Add various symbols.
+      . Include sys/sysmacros.h for major(), minor() and makedev()
+        (bgo#794651).
+    - webkit-1.0: Update to 2.4.11.
+    - webkit2gtk-4.0: Update to 2.20.0.
+    - Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Sun Mar 11 23:45:49 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 0.40.0:
+  + Bug fix: compiler: Fix critical when vala is called without run
+    args (bgo#793657).
+  + Bindings:
+    - alsa: Add the major part of the ALSA Sequencer API
+      (bgo#763127);
+    - gstreamer-1.0: Update to 1.13.90;
+    - gtk+-4.0: Update to 3.93.0+527d265b;
+    - linux: Add various symbols;
+    - posix: Add various symbols (bgo#663633);
+    - Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:40:43 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 27 14:35:35 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 0.39.92:
+  + Highlights: Add support for feature test macros (bgol#793444).
+  + Various bug fixes:
+    - codegen:
+      . Use pointers when accessing constant multi-dimensional
+        arrays (bgo#604371).
+      . Add valid support for const multi-dimensional arrays
+        (bgo#604371).
+      . Don't append fixed-length of array fields in initializers.
+      . Add source_reference to some store_local/_field() calls.
+    - Properly handle array-initializers inside struct-initializers
+      (bgo#622178).
+    - The rank of an array-initializer should match the target's
+      rank (bgo#744923).
+    - Make SemanticAnalyzer.check_arguments() independent of
+      context.
+    - Check with same rules for dbus compatibility as in GBusModule
+      (bgo#793859).
+    - Fix recursive declaration in generic base type (bgo#688732).
+    - Prevent WITH_CGRAPH conditional having an impact on generated
+      sources.
+    - Update manual from wiki.gnome.org.
+  + Bindings:
+    - glib-2.0, posix: Add feature test macro _GNU_SOURCE for
+      pow10(3), pow10f(3), exp10(3) and exp10f(3) (bgo#614788).
+    - gstreamer-1.0: Update from 1.13.1+ git master.
+    - linux: Add dup3 (bgo#729803)..
+    - linux: Add feature_test_macros to non-POSIX file control
+      constants and dup3.
+    - posix: Fix sig*set and sigprocmask parameters to be out/ref
+      (bgo#727425).
+    - posix: Add feature_test_macro _GNU_SOURCE to sighandler_t
+      (bgo#761975).
+    - libgnome-menu-3.0: Add deps file.
+    - Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Fri Feb 16 11:38:19 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 0.39.91:
+  + Various bug fixes:
+    - Fix GDestroyNotify of delegate parameters in delegate
+      declaration (bgo#639059).
+    - Avoid critical when connecting dynamic signals.
+    - valac: Always use the given "pkg-config" and respect
+      PKG_CONFIG envar.
+    - compiler: Prefix headers for set_cheader_override() if
+      includedir is given (bgo#793299).
+    - vala: Issue a warning on DBus methods which are not throwing
+      an Error.
+    - Don't warn about unused internal methods which are meant to
+      be visible on DBus (bgo#593902).
+    - Don't install vapicheck (bgo#793370).
+  + Bindings:
+    - glib-2.0: Add KeyFile.get_locale_for_key().
+    - gstreamer-1.0: Update from 1.13+ git master.
+    - gtk+-4.0: Update to 3.93.0+d07b14f4.
+    - purple: Update to 2.12.0.
+    - Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Fri Feb 16 03:39:07 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 0.39.7:
+  + Regression fix: codegen: Don't try to infer error argument on
+    async begin methods (bgo#793158). This was a regression
+    introduced by bgo#614294.
+- Changes from version 0.39.6:
+  + Add --abi-stability option for ABI stability of libraries
+    (bgo#789069).
+  + Various bug fixes:
+    - girparser:
+      . Set NoAccessorMethod for non-readable and construct-only
+        properties.
+      . Ignore conflicting closure/destroy indexes.
+      . Don't accept methods as property-accessor which throw
+        errors (bgo#792998).
+    - codegen:
+      . Infer error parameter from abstract/virtual base methods
+        (bgo#614294).
+      . Internally generated delegates don't require a typedef
+        (bgo#787521).
+      . Fix return-type for cancelled async creation methods of
+        classes (bgo#792942).
+      . Use G_PARAM_STATIC_STRINGS.
+    - vala: Variadic constructors without a real first parameter
+      are not allowed.
+    - libvaladoc: Keep bootstrap-support with valac >= 0.16.1.
+  + Bindings:
+    - gtk+-3.0: Fix cheader_filename of Plug and Socket.
+    - gtk+-4.0: Update to 3.93.0+4d36a0bf.
+    - gtk+-4.0: Only override type of "event" parameters.
+    - posix: Add ctime(3) and fix binding of struct hostent and
+      gethostbyname(3).
+
+-------------------------------------------------------------------
+Fri Feb 16 00:39:05 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 0.39.5:
+  + Various bug fixes:
+    - libvaladoc:
+      . Allow @link tags to be split over multiple lines
+        (bgo#646982);
+      . Add support for single line documentation comments
+        (bgo#736483).
+    - Girparser: Improve instance method detection (bgo#732460).
+    - Codegen: Add support for abstract/virtual methods and
+      properties in compact classes (bgo#741465).
+    - Vala: Fix parameter type inference of overridden async
+      methods (bgo#792660).
+    - Codewriter: Don't use string.replace() to apply
+      header_to_override (bgo#731322).
+  + Bindings:
+    - gio-unix-2.0: Update to 2.55.1;
+    - gtk+-4.0: Update to 3.93.0+60d3378d;
+    - libwnck-3.0: Update to 3.24.1;
+    - webkit2gtk-4.0: Update to 2.19.5;
+    - webkit2gtk-web-extension-4.0: Fix DOM.EventTarget interface.
+- Drop enable-vapigen configure option since it is no longer
+  available.
+- Replace LPGL-2.0 License tag with LPGL-2.1+ as pointed by the
+  source code and COPYING file.
+
+-------------------------------------------------------------------
+Fri Feb 16 00:39:04 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 0.39.4:
+  + Various improvements and bug fixes:
+    - codegen
+      . Only add property-enum and GParamSpec-array for GObject
+        classes.
+      . Use g_enum/flags_to_string while targeting glib >= 2.54.
+      . Add destroy param when invoking delegate returned by
+        delegate (bgo#792077).
+    - Don't write trailing space in function declarations/
+      definitions (bgo#688447).
+    - vala: Add pkgdatadir and pkglibdir to pkg-config file.
+    - gidlparser: Update type qualifiers.
+  + Bindings:
+    - gtk+-2.0/3.0: Don't hide user_data in
+      Clipboard.set_with_data() (bgo#792237).
+    - gtk+-3.0: Update to 3.22.26+6f26d0dc.
+    - gtk+-4.0: Update to 3.93.0+6aeae2c8.
+
+-------------------------------------------------------------------
+Fri Feb 16 00:39:03 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 0.39.3:
+  + Various bug fixes:
+    - Fix chain-up regression with real non-null struct parameters
+      (bgo#791785);
+    - Release taken references to CodeContext after using it
+      (bgo#712694) and keep custom invocations of parse_file()
+      possible bgo#791936;
+    - Parser: Accept comma-separated list in case-statements of
+      switchs (bgo#614015).
+  + Bindings:
+    - Remove bindings which are shipped upstream for some years:
+      gedit 3 (bgo#776021), libgnome-keyring (bgo#776022),
+      gtksourceview-3.0 (bgo#776023), libgdata (bgo#776024),
+      librsvg-2.0 (bgo#776025);
+    - glib-2.0: Add GLib.OPTION_REMAINING and
+      GLib.OptionFlags.NONE;
+    - gstreamer-1.0: Update from 1.13+ git master;
+    - gtk+-2.0: Mark MessageDialog constructor parameter,
+      message_format, as nullable (bgo#791570);
+    - gtk+-4.0: Update to 3.93.0+6aeae2c8;
+    - webkit2gtk-4.0: Update to 2.19.3.
+- Adopt the use of %make_build macro rather than raw make command,
+  following the best practices.
+
+-------------------------------------------------------------------
+Fri Feb 16 00:39:02 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 0.39.2:
+  + Various bug fixes:
+    - vala: Don't transform an explicit "null" into valid
+      format-string (bgo#791215).
+    - codegen: Don't create null-safe destroy-wrapper for
+      GenericType (bgo#791283).
+    - Improve error message for missing type-parameter on enclosing
+      type (bgo#587905).
+  + GIR parser:
+    - Allow change of parameter names.
+    - Handle metadata for fields inside a transparent union.
+    - Accept setters with boolean return-type as valid
+      property-accessor.
+    - Don't mark simple-type out-parameters with '?' as nullable.
+  + Valadoc: libvaladoc: Actually resolve "percnt;" to '%'.
+  + Bindings:
+    - glib-2.0: Fix potential null pointer dereference in
+      string.joinv() (bgo#791257).
+    - gobject-2.0: Add missing GType constants for fundamentals
+      (bgo#791023).
+    - gstreamer-1.0: Update from 1.13+ git master.
+    - gtk+-3.0: Switch to GIR (bgo#730746).
+    - gtk+-4.0: Update to 3.93.0+6af4947e.
+    - posix: Move signal constants to an enum and add few missing
+      ones (bgo#790958).
+- Drop vala-fix-MessageDialog-constructor-parameter.patch: Fixed
+  upstream.
+- Following the above, drop libtool BuildRequires and no longer
+  pass autoreconf.
+
+-------------------------------------------------------------------
+Fri Feb 16 00:39:01 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 0.39.1:
+  + Report warning if property-type is not compatible with
+    GLib.Object (bgo#693932).
+  + Allow to pass compatible delegates to signal.connect()
+    (bgo#787521).
+  + Allow unscoped enum values where possible.
+  + Avoid use of temp-var for some callables returning ValueType
+    and to access in/ref parameters (bgo#789071).
+  + Reformat generated source declarations and definitions for
+    better readability (bgo#688447).
+  + Fixes:
+    - Improve handling of unowned/owned keyword occurrences.
+    - Methods need to throw compatible error if target delegate
+      throws one.
+    - Improve error output of mismatching overriding methods.
+  + Bug fixes: bgo#784691, bgo#663070, bgo#764041, bgo#587905,
+    bgo#750840, bgo#790903, bgo#784705, bgo#790266, bgo#693932,
+    bgo#774124, bgo#750840, bgo#785215.
+
+-------------------------------------------------------------------
+Thu Feb 15 12:52:27 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.38.8:
+  + Various bug fixes:
+    - Fix GDestroyNotify of delegate parameters in delegate
+      declaration (bgo#639059).
+    - Avoid critical when connecting dynamic signals.
+    - compiler: Prefix headers for set_cheader_override() if
+      includedir is given (bgo#793299).
+    - Don't warn about unused internal methods which are meant to
+      be visible on DBus (bgo#593902).
+    - libvaladoc: Prevent WITH_CGRAPH conditional having an impact
+      on generated sources.
+  + Bindings:
+    - gio-2.0: Cherry-pick some DBusProxy fixes from 0.40.
+    - gstreamer-1.0: Update from 1.13+ git master.
+    - gdk-3.0,gtk+-3.0: Update to 3.22.27.
+- Update vala_priority define to 38, something we should have done
+  when stable 0.38.0 was released.
+
+-------------------------------------------------------------------
+Sun Feb  4 14:11:55 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.38.7:
+  + Regression fix: codegen: Don't try to infer error argument on
+    async begin methods (bgo#793158). This was a regression
+    introduced by (bgo#614294).
+
+-------------------------------------------------------------------
+Wed Jan 31 10:54:35 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.38.6:
+  + Various bug fixes:
+    - girparser:
+      . Set NoAccessorMethod for non-readable and construct-only
+        properties.
+      . Ignore conflicting closure/destroy indexes.
+      . Don't accept methods as property-accessor which throw
+        errors (bgo#792998).
+    - codegen:
+      . Infer error parameter from abstract/virtual base methods
+        (bgo#614294).
+      . Fix return-type for cancelled async creation methods of
+        classes (bgo#792942).
+    - vala: Variadic constructors without a real first parameter
+      are not allowed.
+    - libvaladoc: Keep bootstrap-support with valac >= 0.16.1.
+  + Bindings:
+    - gstreamer-1.0: Update from 1.13+ git master.
+    - gtk+-4.0: Only override type of "event" parameters.
+
+-------------------------------------------------------------------
+Mon Jan 22 11:19:22 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.38.5:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Only add property-enum and GParamSpec-array for GObject
+        classes
+      . Add destroy param when invoking delegate returned by
+        delegate (bgo#792077).
+    - vala:
+      . Add pkgdatadir and pkglibdir to pkg-config file.
+      . Fix parameter type inference of overridden async methods
+        (bgo#792660).
+    - gidlparser: Update type qualifiers.
+    - libvaladoc:
+      . Allow @link tags to be split over multiple lines
+        (bgo#646982).
+      . Add support for single line documentation comments
+        (bgo#736483).
+    - codewriter: Don't use string.replace() to apply
+      header_to_override (bgo#731322).
+  + Bindings:
+    - glib-2.0: Add GLib.OPTION_REMAINING and
+      GLib.OptionFlags.NONE.
+    - gstreamer-1.0: Update from 1.13+ git master.
+    - gtk+-2.0: Mark MessageDialog constructor parameter,
+      message_format, as nullable (bgo#791570).
+    - gtk+-2.0/3.0: Don't hide user_data in
+      Clipboard.set_with_data() (bgo#792237).
+    - gtk+-3.0: Update to 3.22.26+6f26d0dc.
+    - gtk+-4.0: Update to 3.93.0 and split Gsk.RenderNode into
+      several classes.
+    - libwnck-3.0: Update to 3.24.1.
+    - posix: Add ctime(3) and fix binding of struct hostent and
+      gethostbyname(3).
+    - webkit2gtk-4.0: Update to 2.19.5.
+    - webkit2gtk-web-extension-4.0: Fix DOM.EventTarget interface.
+- Drop vala-fix-MessageDialog-constructor-parameter.patch: Fixed
+  upstream.
+- Following the above, drop libtool BuildRequires and autoreconf
+  call, no longer needed as we do not carry any patches anymore.
+
+-------------------------------------------------------------------
+Mon Dec 18 17:51:22 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.38.4:
+  + Various bug fixes:
+    - Enforce name-length >= 3 for structs using GType
+      (bgo#764041).
+    - Report error for missing type-parameter on enclosing type
+      (bgo#587905).
+    - Discover invalid member access to instance field
+      (bgo#790903).
+    - Improve error output of mismatching overriding methods.
+    - vala: Don't transform an explicit "null" into valid
+      format-string (bgo#791215).
+    - codegen: Don't create null-safe destroy-wrapper for
+      GenericType (bgo#791283).
+    - Improve error message for missing type-parameter on enclosing
+      type (bgo#587905).
+  + GIR parser:
+    - Allow change of parameter names.
+    - Handle metadata for fields inside a transparent union.
+    - Accept setters with boolean return-type as valid
+      property-accessor.
+    - Don't mark simple-type out-parameters with '?' as nullable.
+  + Valadoc:
+    - Acknowledge possible properties in structs (bgo#784705).
+    - Fix fatal typo in GtkdocRenderer.visit_symbol_link()
+      (bgo#790266).
+    - libvaladoc: Actually resolve "percnt;" to '%'.
+  + Bindings:
+    - gobject-2.0: Add some missing symbols.
+    - gstreamer-1.0: Bind GST_DEBUG_BIN_TO_DOT_FILE/*_WITH_TS
+      (bgo#785215).
+    - gstreamer-1.0: Update from 1.13+ git master.
+    - gtk+-3.0: Update to 3.22.26+9ce824d3.
+    - webkit2gtk-4.0: Update to 2.19.2.
+    - glib-2.0: Fix potential null pointer dereference in
+      string.joinv() (bgo#791257).
+    - gobject-2.0: Add missing GType constants for fundamentals
+      (bgo#791023).
+- Add vala-fix-MessageDialog-constructor-parameter.patch: Mark
+  MessageDialog constructor parameter, message_format, as nullable
+  (bgo#791570).
+- Following the above, add libtool BuildRequires and pass
+  autoreconf, make sure vapi deps get regenerated after patch is
+  applied.
+
+-------------------------------------------------------------------
+Thu Nov  9 10:37:45 UTC 2017 - fezhang@suse.com
+
+- Update to version 0.38.3:
+  + Various bug fixes:
+    - codegen: Prioritize "array_length=true" over
+      "array_null_terminated=true" (bgo#788775).
+    - codegen: Avoid possible conflicts with internal
+      property/signal defines (bgo#788964).
+  + Bindings:
+    - gio-2.0: Expose g_task_get_source_object as
+      Task.get_unowned_source_object.
+    - gstreamer-1.0: Update from 1.13+ git master.
+    - gtk+-4.0: Update to 3.92.1.
+    - libxml-2.0: Add DTD methods (bgo#789442).
+
+-------------------------------------------------------------------
+Mon Oct  9 04:43:51 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 0.38.2:
+  + Various bindings updates:
+    - gstreamer-1.0, gtk+-3.0, gtk+-4.0: Update from git master.
+    - gnutls: Fix free_function ccode-attribute of Certificate
+      (bgo#788181).
+- Update Url to https://wiki.gnome.org/Projects/Vala: current Vala
+  project's web page.
+
+-------------------------------------------------------------------
+Mon Sep 11 11:34:46 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.38.1:
+  + Various bug fixes:
+    - valadoc: Don't use 'stderr' as variable name (bgo#787305).
+    - codegen: Try to use a more unique internal define for
+      properties (bgo#787436).
+    - vala: Update list of used attributes.
+    - method: Use prototype-string for error-reports of return-type
+      mismatches.
+  + Bindings: glib-2.0: Fix MainContext.check(),  OptionEntry[]
+    params are null-terminated, Bind g_convert_with_fallback() and
+    g_convert_with_iconv()
+
+-------------------------------------------------------------------
+Tue Sep  5 22:15:58 UTC 2017 - jengelh@inai.de
+
+- Correct RPM groups and package descriptions.
+- Remove --with-pic which is for static libs only.
+
+-------------------------------------------------------------------
+Mon Sep  4 15:28:09 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.38.0:
+  + Various bug fixes:
+    - Improve error output for incompatible method signatures (Add
+      CallableType as base for DelegateType, MethodType,
+      SignalType).
+    - codegen:
+      . Initialize temp-variable for fixed-size arrays to zero
+        first (bgo#787152).
+      . Add support for "type-func" in ui-files (bgo#787033).
+  + Bindings:
+    - gtk+-3.0,gtk+-4.0: Update.
+    - libxml-2.0: Bind xmlLastElementChild and
+      xmlPreviousElementSibling
+    - pangocairo: CairoFontMap.set_default() is not an instance
+      method.
+    - gio-2.0: Application.set_default() is not an instance method.
+
+-------------------------------------------------------------------
+Mon Aug 28 07:13:59 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.37.91:
+  + Various bug fixes:
+    - codegen:
+      . Actually write declaration for GNodeTraverseFunc wrapper
+        (bgo#786845).
+      . Don't transfer ownership of variable if target-type is
+        unknown (bgo#736774).
+      . Adjust format-index for printf/scanf-methods which throw
+        errors (bgo#781061).
+      . Use given dup_function for structs.
+    - libvaladoc: Fix some -Wincompatible-pointer-types warnings.
+    - tests: Fix some syntax issues [#786652]
+    - Add .editorconfig file [#786620]
+  + GIR parser:
+    - Better support of "cprefix" argument in metadata.
+    - Support "cname" argument in metadata.
+  + Bindings:
+    - Add javascriptcoregtk-4.0 and avoid skips in webkit2gtk*-4.0.
+    - Update GIR-based bindings.
+    - gtk+-3.0: Update to 3.22.19.
+
+-------------------------------------------------------------------
+Mon Aug 21 20:13:41 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.37.90:
+  + Various bug fixes:
+    - Fix some build-system problem:
+      . valadoc/tests: Add the source vapi directory to driver-test
+        (bgo#786505).
+      . Add ./vala/.libs rather than ./gee/.libs to
+        LD_LIBRARY_PATH.
+      . Explicitly link doclets against libvala-*.la (bgo#786534).
+      . Add missing include of Makefile.common.
+    - vapigen: Mark given source-files as such and force girparser
+      to handle them.
+    - codegen: Include glib-object.h for Enums/Structs with
+      type_id.
+ + Bindings: gtk+-4.0: Make Gsk.Texturer.for_*() static factory
+   methods.
+
+-------------------------------------------------------------------
+Tue Aug 15 15:02:45 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.37.2:
+  + Various bug fixes:
+    - libvaladoc: Keep bootstrap-support with valac >= 0.16.1.
+    - valadoc: Fix tests while bootstapping with valac < 0.31/32.
+  + Bindings:
+    - glib-2.0: Update Unicode symbols.
+    - gobject-2.0: Add required type_id attributes to all ParamSpec
+      subclasses.
+    - libgdata: Make Authorizer.reauth_* methods virtual
+      (bgo#779229).
+    - libxml-2.0: Update Xml.ParserOption (bgo#785585).
+    - gtk+-4.0: Update to 3.91.2.
+    - webkit2gtk-4.0: Update to 2.17.90.
+- Drop vala-no-nullable-enum.patch: Fixed upstream, following this
+  drop vala BuildRequires, no longer needed.
+
+-------------------------------------------------------------------
+Thu Jul 20 10:09:42 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.37.1:
+  + Highlights:
+    - Don't warn about deprecated symbols if installed_version is
+      older.
+    - Add --gresourcesdir option (bgo#783133).
+    - Install libvala-0.xx.vapi to "global" vapi directory.
+    - Require and target GLib >= 2.40.
+    - build: Make ccode and codegen private API.
+    - build: Use --use-header for vala's libraries.
+    - compiler: Add --color=WHEN option.
+    - codegen: Use g_object_notify_by_pspec() to notify
+      property-changes.
+    - codegen: Use *_free_full to free GLib.List, GLib.SList and
+      GLib.Queue.
+    - codegen: Support renamed signals (bgo#731547).
+    - Optimize (de)serialization of arrays with type-signature "ay"
+      (bgo#772426).
+    - Merge valadoc - Consider valadoc a part of vala's toolchain
+      and therefore let it live in the main repository (adds
+      graphviz to the build-requirements)
+  + Various bug fixes:
+    - Fix finally blocks with async yields (bgo#741929).
+    - Handle non-null in coalescing expression (bgo#611223).
+    - Make the task_complete flag for < 2.44 more similar to >=
+      2.44 (bgo#783543).
+    - Nullable ValueType requires POINTER as marshaller signature
+      (bgo#783897).
+    - NoAccessorMethod attribute is allowed for gobject-properties
+      only.
+    - girparser: Fix parsing of delegate-alias without target.
+    - compiler: Use API_VERSION instead of stripping
+      PACKAGE_SUFFIX.
+    - girwriter: Write length-parameters of arrays with rank > 1
+      (bgo#758019).
+    - gdbus: Don't leak nested HashTable on deserialization
+      (bgo#782719).
+    - codewriter: Update timestamps of generated c-files if needed
+      (bgo#683286).
+    - tests: Use dbus-run-session instead of dbus-launch
+      (bgo#771455).
+    - codegenerator: Add source_reference parameter to
+      CodeGenerator.store_*().
+    - Don't allow assigning delegate if no target/closure is
+      available (bgo#598869).
+    - gee: Add some useful symbols from gee-0.8.
+  + Bindings:
+    - gio-2.0:
+      . Add DBusConnection 'closed' signal as 'on_closed'
+        (bgo#684358).
+      . Use default 'length = null' for
+        DataInputStream.read_line_utf8* (bgo#783351).
+    - glib-2.0,gobject-2.0: Updates from 2.53.x.
+    - poppler-glib: Update to 0.54.0.
+    - webkit2gtk-4.0: Update to 2.17.4.
+    - gstreamer-1.0: Update to 1.13.0+.
+    - libgvc: Add WITH_CGRAPH conditionals.
+- Add pkgconfig(libgvc) BuildRequires: new dependency.
+- split out new packages: valadoc,
+  valadoc-docklet-{devhelp,gtkdoc,html}, libvaladoc-0_38-0 and
+  libvaladoc-0_38-devel.
+- Add vala-no-nullable-enum.patch: Fix 64bit portability issues
+  (bgo#784927).
+- Add vala BuildRequires: as above patch touches the source .vala
+  files, we need to bootstrap.
+
+-------------------------------------------------------------------
+Mon Jun 26 16:45:38 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.36.4:
+  + Highlights:
+    - Don't warn about deprecated symbols if installed_version is
+      older.
+    - Add --gresourcesdir option (bgo#783133).
+  + Various bug fixes:
+    - gdbus: Don't leak nested HashTable on deserialization
+      (bgo#782719).
+    - Fix finally blocks with async yields (bgo#741929).
+    - Handle non-null in coalescing expression (bgo#611223).
+    - Make the task_complete flag for < 2.44 more similar to >=
+      2.44 (bgo#783543).
+    - Nullable ValueType requires POINTER as marshaller signature
+      (bgo#783897).
+    - NoAccessorMethod attribute is allowed for gobject-properties
+      only.
+    - girparser: Fix parsing of delegate-alias without target.
+    - compiler: Use API_VERSION instead of stripping
+      PACKAGE_SUFFIX.
+    - girwriter: Write length-parameters of arrays with rank > 1
+      (bgo#758019).
+  + Bindings:
+    - gio-2.0: Use default 'length = null' for
+      DataInputStream.read_line_utf8* (bgo#783351).
+    - gobject-2.0: Add GLib.ParamSpecPointer.
+    - poppler-glib: Update to 0.54.0.
+    - gstreamer-1.0: Various binding fixes.
+
+-------------------------------------------------------------------
+Wed May 10 20:42:27 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.36.3:
+  + Various bug fixes:
+    - scanner: Fix calculation of column value for tokens after
+      multiline comment (bgo#652899).
+    - codegen: Unref GLib.AsyncResult on uncaught errors in
+      coroutines (bgo#641171).
+    - Keep initializing result-variable for struct constructors
+      (bgo[#782056).
+
+-------------------------------------------------------------------
+Wed Apr 26 11:36:34 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.36.2:
+  + Enums require at least one value otherwise report an error.
+  + Bindings:
+     - gstreamer-1.0: Update to 1.11.90+.
+     - gio-2.0: Fix GLib.Task constructor and
+       report_error/report_new_error()
+     - glib-2.0:
+       . Add quark() functions to errordomains.
+       . Add missing version macro and constants.
+
+-------------------------------------------------------------------
+Tue Apr  4 00:05:48 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.36.1:
+  + Various bug fixes:
+    - Always consider a method compatible with itself (bgo#773135).
+    - Perform arguments-check against actual .end()
+      method-signature (bgo#684208).
+    - Slightly improve lamdba-expression error on target-type
+      mismatch.
+    - Fix delegate initializer for instance fields (bgo#683925).
+    - Don't leak target-reference when casting/assigning owned
+      delegates (bgo#780426).
+  + GIR parser and writer:
+    - girparser: Add destroy argument for metadata (bgo#750838).
+    - vapigen: Add --nostdpkg option like in valac.
+  + Bindings:
+    - gstreamer-1.0: Fix Pad.set_*_function() bindings
+      (bgo#750838).
+    - glib-2.0: Add missing version macro and constants, unichar
+     .to_string doesn't return null.
+    - gtk+-2.0,gtk+-3.0: Mark "intersection" param of
+      Widget.intersect() as out.
+    - gtk+-4.0: Update to 3.90.0.
+
+-------------------------------------------------------------------
+Sun Mar 19 15:01:38 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.36.0:
+  + Bugs fixed: bgo#740303, bgo#758816, bgo#779968, bgo#780050.
+
+-------------------------------------------------------------------
+Mon Mar 13 10:46:20 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.35.90:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Tue Mar  7 10:40:02 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.35.7:
+  + Bug fixes and binding updates.
+  + Add libgrss binding.
+  + Introduce [CCode (finish_instance = ...)] attribute.
+  + Update manpages.
+
+-------------------------------------------------------------------
+Mon Feb 27 11:38:20 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.35.6:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Tue Feb 14 20:45:46 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.35.5:
+  + Fix regression.
+- Changes from version 0.35.4:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Tue Jan 10 13:09:28 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.35.3:
+  + Bug fixes and binding updates.
+  + Add gtk+-unix-print-{2,3,4}.0 bindings.
+
+-------------------------------------------------------------------
+Wed Dec 14 11:46:08 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.35.2:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Wed Dec 14 00:35:01 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.35.1:
+  + Ignore --thread command-line option which is obsolete.
+  + Fix type checking when using generics.
+  + Use g_signal_emit where possible.
+  + Introduce [FormatArg] attribute for parameters.
+  + Use GTask API for async implementations with
+    target-gLib >= 2.36.
+- Bump vala_version to 0.36, vala_libversion to 0_36 (following
+  upstream) and vala_priority to 36 (following the vala packaging
+  convention).
+
+-------------------------------------------------------------------
+Tue Dec 13 12:40:25 UTC 2016 - adam.majer@suse.de
+
+- Fix descriptions so they actually describe subpackages.
+- Have the -devel package provide libvala-devel: this allows
+  consumers to require libvala without version constraints. They
+  will still have to follow the API changes though.
+
+-------------------------------------------------------------------
+Mon Dec  5 16:37:46 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.34.4:
+  + Bug fixes.
+
+-------------------------------------------------------------------
+Wed Nov 23 21:24:50 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.34.3:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Sun Oct 23 19:12:56 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.34.2:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Mon Oct 10 07:53:04 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.34.1:
+  + Add support for the \v escape character.
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Mon Sep 19 18:19:52 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.34.0:
+  + Bug fixes and binding updates.
+- Update update alternatives due to moved location of vapigen.pc
+
+-------------------------------------------------------------------
+Wed Sep 14 15:00:21 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.33.1:
+  + Bug fixes and binding updates.
+- Bump vala_version to 0.34, vala_libversion to 0_34 (following
+  upstream) and vala_priority to 34 (following the vala packaging
+  convention).
+
+-------------------------------------------------------------------
+Mon Jun 20 18:20:25 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.32.1:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Mon Mar 21 20:12:56 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.32.0:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Mon Feb  8 10:16:25 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.31.1:
+  + Introduce [Version] attribute.
+  + Require and target GLib >= 2.32.
+  + Bug fixes and binding updates.
+- Bump vala_version to 0.32, vala_libversion to 0_32 (following
+  upstream) and vala_priority to 32 (following the vala packaging
+  convention).
+
+-------------------------------------------------------------------
+Mon Feb  1 07:49:53 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.30.1:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Fri Sep 18 08:44:08 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.30.0:
+  + Binding updates.
+  + Bugs fixed: bgo#752031.
+- Bump vala_priority to 30.
+
+-------------------------------------------------------------------
+Tue Aug 11 23:10:40 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.29.3:
+  + Add --shared-library option for GIR files.
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Tue Aug 11 22:09:17 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.29.2:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Tue Aug 11 22:09:16 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.29.1:
+  + Binding updates.
+
+-------------------------------------------------------------------
+Tue Aug 11 22:09:15 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.28.1:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Mon Mar 23 08:13:22 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.28.0:
+  + Binding updates.
+
+-------------------------------------------------------------------
+Thu Mar 19 08:55:46 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.27.2:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Wed Jan 28 23:09:42 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.27.1:
+  + Print compiler messages in color.
+  + Add clutter-gdk-1.0 bindings.
+  + Add clutter-gst-3.0 bindings.
+  + Add clutter-x11-1.0 bindings.
+  + Add rest-extras-0.7 bindings.
+  + Bug fix and binding updates.
+- Bump vala_version to 0.28, vala_libversion to 0_28 and
+  vala_priority to 28, following upstreams changes.
+
+-------------------------------------------------------------------
+Fri Jan 16 22:28:22 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.26.2:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Thu Nov 13 09:33:34 UTC 2014 - olaf@aepfle.de
+
+- Add attr to ghost entries in file list to fix build in SLE_11
+
+-------------------------------------------------------------------
+Mon Oct 13 10:28:54 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.26.1:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Tue Sep 23 09:22:09 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.26.0:
+  + Bug fix and binding updates.
+
+-------------------------------------------------------------------
+Mon Sep 15 17:20:35 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.25.4:
+  + Add option --vapi-comments.
+  + Bug fixes and binding updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  1 15:10:57 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.25.3:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Sun Aug 24 16:39:20 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.25.2:
+  + Report warning for private struct fields.
+  + Replace webkit2gtk-3.0 bindings with webkit2gtk-4.0 bindings.
+  + Always build vapigen.
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Wed Jul 23 16:47:52 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.25.1:
+  + Support explicit interface method implementation.
+  + Support (unowned type)[] syntax.
+  + Support non-literal length in fixed-size arrays.
+  + Mark regular expression literals as stable.
+  + GIR parser updates.
+  + Add webkit2gtk-3.0 bindings.
+  + Add gstreamer-allocators-1.0 and gstreamer-riff-1.0 bindings.
+  + Bug fixes and binding updates.
+- Bump vala_version to 0.26, vala_libversion to 0_26 and
+  vala_priority to 26, following upstreams changes.
+- Correct update-alternatives usage.
+- Add pkgconfig(vapigen) Provides: due to the correct usage of
+  update-alternatives, %{_datadir}/pkgconfig/vapigen.pc is now only
+  as %ghost in the package; this results in the file not being
+  processed for Requires and Provides.
+
+-------------------------------------------------------------------
+Mon Mar 24 19:51:47 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.24.0:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Tue Feb 18 21:46:46 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.23.3:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Wed Feb  5 10:29:15 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.23.2:
+  + Bind GDK event structures as compact classes.
+  + Switch gdk-x11-3.0 bindings to .gir.
+  + Switch librsvg-2.0 bindings to .gir.
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Sun Dec 22 21:04:14 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.23.1:
+  + Switch libnotify bindings to .gir.
+  + Add libpeas-gtk-1.0 bindings.
+  + Add xcb-icccm bindings.
+- Change vala_version to 0.24 and vala_priority to 24, following
+  upstreams versioning.
+
+-------------------------------------------------------------------
+Wed Nov 13 16:26:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.22.1 (bnc#849913):
+  + Support chain up to constructv functions.
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Mon Sep 23 18:57:43 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.22.0:
+  + Support chain up to constructv functions.
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Fri Sep 13 08:01:39 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.21.2:
+  + Recognize ref/unref functions in .gir files.
+  + Add geocode-glib bindings.
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Fri Aug  2 12:30:38 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.21.1:
+  + Support \uXXXX escape sequences.
+  + Support specifying vfunc order in interfaces to define ABI.
+  + Support GTK+ widget templates.
+  + Bug fixes and binding updates.
+- Change vala_version to 0.22 and vala_priority to 22, following
+  upstreams versioning.
+
+-------------------------------------------------------------------
+Mon Apr  8 18:48:59 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.20.1:
+  + Bug fixes.
+
+-------------------------------------------------------------------
+Tue Mar 26 21:12:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.20.0:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Wed Feb 20 22:18:50 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.19.0:
+  + Support scope = "async" attribute for parameters.
+  + Add --api-version option.
+  + Add atspi-2 bindings.
+  + Add gstreamer-rtsp-server-1.0 bindings.
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Wed Nov 14 07:51:29 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.18.1:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Wed Oct 17 11:17:03 UTC 2012 - dimstar@opensuse.org
+
+- Add xsltproc BuildRequires: Needed to to build the devhelp books.
+- Drop xz BuildRequires, as it now comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Mon Sep 24 20:17:27 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.18.0:
+  + Bug fixed: bgo#683922.
+
+-------------------------------------------------------------------
+Sun Sep 16 20:56:46 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.17.7:
+  + Add libgnome-menu-3.0 bindings.
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Mon Sep  3 18:48:07 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.17.6:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Mon Aug 20 10:52:59 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.17.5:
+  + Support subclassing of GLib.Source.
+  + Switch pango bindings to .gir.
+  + Add gstreamer-1.0 core bindings.
+  + Add gst-plugins-base-1.0 bindings.
+  + Add gobject-introspection-1.0 bindings.
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Mon Aug  6 18:26:01 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.17.4:
+  + Warn when accessing static members with an instance reference.
+  + Recompute length when casting between array types.
+  + Support [GenericAccessors] attribute for interfaces.
+  + Deprecate implicit .begin for async methods.
+  + Drop Dova profile.
+  + Drop POSIX profile.
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Tue Jul 17 08:10:40 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.17.3:
+  + Require and target GLib >= 2.18.
+  + Support async creation methods.
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Mon Jun 25 06:58:38 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.17.2:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Sun Jun 24 21:48:00 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.17.1:
+  + Improve assertion messages.
+  + Add --enable-gobject-tracing commandline option.
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Sun Jun 24 20:07:23 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.17.0:
+  + Support simple method-level profiling.
+  + Add VALA_CHECK_MODULES and VALA_PROG_VAPIGEN to vala.m4.
+  + Bug fixes and binding updates
+
+-------------------------------------------------------------------
+Sun Jun 24 06:53:22 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.16.1:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Mon Mar 26 17:35:43 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.16.0:
+  + Add udisks2 bindings.
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Sat Feb 25 20:17:06 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.15.2:
+  + Switch poppler-glib bindings to .gir.
+  + Many bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Fri Jan 27 07:47:12 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.15.1:
+  + Support arrays with nullable elements.
+  + Add <doc> support to .gir reader and writer.
+  + Switch clutter-gtk-1.0 bindings to .gir.
+  + Switch gio-2.0 bindings to .gir.
+  + Add cogl-pango-1.0 bindings.
+  + Add gdl-3.0 bindings.
+  + Add libnl-3.0 bindings.
+  + Add packagekit-glib2 bindings.
+  + Add xtst bindings.
+  + Many bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Tue Dec  6 08:18:43 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.15.0:
+  + Manage memory of GQueue elements.
+  + Switch atk bindings to .gir.
+  + Switch gdk-pixbuf-2.0 bindings to .gir.
+  + Switch gdk-3.0 bindings to .gir.
+  + Add libwnck-3.0 bindings.
+  + Many bug fixes and binding updates.
+- Change the various %define in spec file to use 0.16 version.
+
+-------------------------------------------------------------------
+Wed Nov 30 15:33:56 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.14.1:
+  + Add libwnck-3.0 bindings.
+  + Many bug fixes and binding updates.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that...
+  See bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Sun Sep 18 08:16:04 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.14.0:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Wed Sep  7 22:05:24 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.13.4:
+   + Switch gudev-1.0 bindings to .gir.
+   + Switch mx-1.0 bindings to .gir.
+   + Many bug fixes and binding updates.
+- Drop vala-markupparser-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Sep  5 18:35:08 UTC 2011 - vuntz@opensuse.org
+
+- Add vala-markupparser-fix.patch: this fixes GMarkupParser
+  bindings, which enables a new fillmode-lombard to build.
+
+-------------------------------------------------------------------
+Mon Aug 22 17:25:01 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.13.3:
+  + Switch pangocairo bindings to .gir.
+  + Bug fixes.
+
+-------------------------------------------------------------------
+Wed Aug 17 08:13:02 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.13.2:
+  + Enable flow analysis for out parameters.
+  + Refactor attribute handling.
+  + Add gedit-3.0 bindings.
+  + Add gtksourceview-3.0 bindings.
+  + Add rest-0.7 bindings.
+  + Add vte-2.90 bindings.
+  + Switch clutter-1.0 bindings to .gir.
+  + Switch libgdata bindings to .gir.
+  + Switch libsoup bindings to .gir.
+  + Many bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Wed Jul  6 18:22:54 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.13.1:
+  + Many bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Fri Jun 24 12:12:11 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.13.0:
+  + More refactoring in the code generator.
+  + Improvements to the .gir reader.
+  + Switch JSON-GLib bindings to .gir.
+  + Drop deprecated support for D-Bus GLib in favor of GDBus.
+  + Many bug fixes and binding updates.
+- Adjust vala_version, vala_libversion and priority for 0.13.
+
+-------------------------------------------------------------------
+Thu Jun  2 22:32:58 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.12.1:
+  + Many bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Mon Apr  4 11:18:50 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.12.0:
+  + Add get_next_char to string class.
+  + Many bug fixes and binding updates.
+- Changes from version 0.11.7:
+  + Add support for async signal handlers.
+  + More refactoring in the code generator.
+  + Improvements to the .gir writer.
+  + Many bug fixes and binding updates.
+- Changes from version 0.11.6:
+  + Add parse and try_parse methods to boolean and numeric types.
+  + Add clutter-gtk-1.0 bindings.
+  + Add pixmap-1 bindings.
+  + Many bug fixes and binding updates.
+- Changes from version 0.11.5:
+  + Add last_index_of and last_index_of_char to string class.
+  + More refactoring in the code generator.
+  + Improvements to the .gir writer.
+  + Many bug fixes and binding updates.
+- Changes from version 0.11.4:
+  + Add index_of, index_of_char, and char_count to string class.
+  + Many bug fixes and binding updates.
+- Changes from version 0.11.3:
+  + Support BusName sender parameter in GDBus servers.
+  + More refactoring in the code generator.
+  + Many bug fixes and binding updates.
+- Changes from version 0.11.2:
+  + Update libnotify bindings to 0.7.0.
+  + Improvements to the .gir reader.
+  + Bug fixes and binding updates.
+- Changes from version 0.11.1:
+  + Require and target GLib >= 2.16.
+  + Guard access to out parameters to allow null arguments.
+  + Add support for local constants.
+  + Support file descriptor passing with GDBus.
+  + Support cached property values in GDBus clients.
+  + Support Cancellable parameter in GDBus clients.
+  + Support no-reply methods in GDBus clients and servers.
+  + More refactoring in the code generator.
+  + Many bug fixes and binding updates.
+- Changes from version 0.11.0:
+  + Use byte indices for strings.
+  + Use uint8[] for binary data in bindings.
+  + Add support for parallel compilation.
+  + Improve compiler performance.
+  + More refactoring in the code generator.
+  + Many bug fixes and binding updates.
+- Drop vala-bgo638902-shotwell-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Jan  9 16:19:17 CET 2011 - vuntz@opensuse.org
+
+- Change the test for update-alternatives in %postun to not check
+  if the package is still installed, but to check if the binary is
+  still there, to handle package renamings.
+
+-------------------------------------------------------------------
+Sun Jan  9 09:39:55 CET 2011 - vuntz@opensuse.org
+
+- Add vala-bgo638902-shotwell-fix.patch to fix a build issue with
+  shotwell 0.8.0. Based on patch from git.
+
+-------------------------------------------------------------------
+Tue Dec 28 22:14:28 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.10.2:
+  + Bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Thu Nov 18 10:40:24 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.10.1:
+  + Remove outdated GTK+ 3 bindings.
+  + Many bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Sat Sep 18 10:18:54 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.10.0:
+  + Port GIR parser and writer to GIR version 1.2.
+  + Update GLib bindings to 2.26 branch.
+  + Bug fixes.
+
+-------------------------------------------------------------------
+Sat Sep  4 19:20:20 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.8:
+  + Add --fatal-warnings commandline option.
+  + Deprecate string.len () in favor of string.length.
+  + Deprecate use of D-Bus GLib in favor of GDBus.
+  + Many bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Tue Aug 24 17:21:32 CEST 2010 - vuntz@opensuse.org
+
+- Update summaries.
+- Merge devel package in main package since vala is really a build
+  tool. Add appropriate Provides/Obsoletes tags. Note that we'd
+  want the vala-devel Provides in all cases since it's a build
+  tool.
+- Split the library in a libvala-0_10-0 subpackage, and split its
+  development files in libvala-0_10-devel.
+- Remove weird sed lines that were changing libtool.
+- Add update-alternatives Requires(post/postun).
+- Fix update-alternatives setup to use slaves, and only get a main
+  alternative on which everything else depends.
+
+-------------------------------------------------------------------
+Fri Aug 20 15:01:30 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.7:
+  + Fix regression introduced by codegen refactoring.
+
+-------------------------------------------------------------------
+Wed Aug 18 18:38:48 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.6:
+  + Drop deprecated support for assigning to construct properties.
+  + Some refactoring in the code generator.
+  + Bug fixes in bindings and vapigen.
+
+-------------------------------------------------------------------
+Mon Aug  9 12:36:40 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.5:
+  + Add version suffix to support parallel installation.
+  + Define VALA_X_Y according to compiler version.
+  + Enable version header by default.
+  + Add vala.m4 with VALA_CHECK_PACKAGES macro.
+  + Add gedit-2.20 bindings
+  + Add tokyocabinet bindings
+  + Various improvements to the Dova profile.
+  + Many bug fixes and binding updates.
+- The non-versioned binaries are handled with update-alternatives,
+  so that we have an easy play with upcoming versions, allowing to
+  install them in parallel.
+- Add fdupes BuildRequires and link duplicate files in /usr/share.
+
+-------------------------------------------------------------------
+Fri Aug  6 03:56:29 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.9.4:
+  + Append documentation comments to generated C files.
+  + Skip <doc> tags in .gir files.
+  + Various improvements to the Dova profile.
+  + Many bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Mon Jul 26 13:59:58 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.3:
+  + Support newlines in double quoted string literals.
+  + Add experimental support for main blocks.
+  + Add experimental vala tool to compile and run code.
+  + Initial support for generic delegates.
+  + Support using GClosure for delegate parameters.
+  + Support GBoxed-based memory management.
+  + Improvements to the .gir reader and writer.
+  + Various improvements to the Dova profile.
+  + Many bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Mon Jun 21 12:47:53 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.9.2:
+  + Initial support for GDBus-based clients and servers.
+  + Support implicit and explicit GVariant casts.
+  + Add support for [Deprecated] attribute.
+  + Add GenericArray as alternative binding to GPtrArray.
+  + Add gdk-pixbuf-3.0, gdk-3.0, gdk-x11-3.0, and gtk+-3.0
+    bindings.
+  + Updates to the GLib bindings.
+  + Many bug fixes.
+- Changes from version 0.9.1:
+  + Support constants in enums.
+  + Deprecate +=/-= syntax to connect/disconnect signal handlers.
+  + Add experimental support for Dova profile.
+  + Update Genie parser.
+  + Add clutter-gst-1.0 bindings.
+  + Add gdu and gdu-gtk bindings.
+  + Add libesmtp bindings.
+  + Add mx-1.0 bindings.
+  + Add orc-0.4 bindings.
+  + Add rest-extras-0.6 bindings.
+  + Updates to the GLib, GStreamer, Linux, SQLite, and other
+    bindings
+  + Many bug fixes.
+
+-------------------------------------------------------------------
+Thu Apr 29 20:16:14 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.8.1:
+  + Support constants in enums.
+  + Add clutter-gst-1.0 bindings
+  + Add gdu and gdu-gtk bindings.
+  + Many bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Wed Mar 31 23:46:34 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.8.0:
+  + Infer type arguments when calling generic methods.
+  + Support `in' operator for arrays.
+  + Add experimental support for regular expression literals.
+  + Add experimental support for chained relational expressions.
+  + Add va_list support.
+  + Add clutter-gtk-0.10 bindings.
+  + Add gdl-1.0 bindings.
+  + Add gstreamer-app-0.10 bindings.
+  + Add gstreamer-cdda-0.10 bindings.
+  + Add gudev-1.0 bindings.
+  + Add libgda-report-4.0 bindings.
+  + Add libgvc (graphviz) bindings.
+  + Add purple bindings.
+  + Many bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Fri Feb  5 02:20:19 CET 2010 - lmedinas@opensuse.org
+
+- Update to version 0.7.10:
+  + Support coalescing operator ??.
+  + Support to_string and bitwise complement with enums.
+  + Return handler id when connecting signal handlers.
+  + Support struct comparison.
+  + Support constructor chaining in structs.
+  + Enforce protected member restrictions.
+  + Improve performance of flow analysis.
+  + Support automatic line continuations in Genie.
+  + Improvements to the .gir reader and writer.
+  + Add --enable-mem-profiler commandline option.
+  + Many bug fixes and binding updates.
+- Drop return-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Dec 20 11:57:01 CET 2009 - vuntz@opensuse.org
+
+- Update to version 0.7.9:
+  + Support array and string slicing.
+  + Add --symbols commandline option.
+  + Add avahi-gobject bindings.
+  + Add ccss-1 bindings.
+  + Add libarchive bindings.
+  + Add libmagic bindings.
+  + Add readline bindings.
+  + Add twitter-glib-1.0 bindings.
+  + Many bug fixes and binding updates.
+- Remove check for old version of openSUSE.
+
+-------------------------------------------------------------------
+Fri Nov 27 11:43:50 CET 2009 - dimstar@opensuse.org
+
+- Update to version 0.7.8:
+  + Support constructor chain up to GObject using Object (...).
+  + Add syntax for string templates.
+  + Support (!) non-null casts.
+  + Many bug fixes and binding updates.
+- Fixes from version 0.7.6:
+  + Support `using' directives inside namespaces.
+  + Use const only for immutable structs.
+  + Support string marshalling for enums in D-Bus
+- Fixes from version 0.7.5:
+  + Update Genie parser
+  + Add libgda-4.0 bindings
+  + Many bug fixes for closures and async methods.
+  + Add support for closures.
+  + Improve support for asynchronous methods.
+  + Support async methods in D-Bus servers.
+  + Add clutter-1.0 bindings
+  + Add GVariant, GSettings, and dconf bindings
+  + Add linux, libnl-1, and libasound bindings
+  + Add gnutls bindings
+  + Add librest bindings
+  + Many bug fixes and binding updates.
+- Rebase return-fix.patch
+- Drop vala-0.3.3-implicit-fortify-decl.patch, upstream fixed.
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:50 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Aug  3 09:43:26 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 0.7.5:
+  + Add support for static properties.
+  + Add support for delegate properties.
+  + Support virtual default handler for signals.
+  + Add limited support for derived compact classes.
+  + Add libgdata bindings
+  + Add libusb-1.0 bindings
+  + Many bug fixes and binding updates.
+
+-------------------------------------------------------------------
+Mon Jul 27 23:09:45 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 0.7.4:
+  + Way too many changes since 0.3.3. See NEWS for details.
+- Refactored retry-fix.patch. Patch rejected upstream, as the .c
+  files are generated ones.
+- Remove INSTALL from %%doc to fix a rpmlint warning.
+
+-------------------------------------------------------------------
+Tue Oct 14 17:42:52 CEST 2008 - crrodriguez@suse.de
+
+- fix implicit-fortify-decl errors
+- correct -devel package requires
+
+-------------------------------------------------------------------
+Fri Sep 12 08:07:29 CEST 2008 - mauro@suse.de
+
+- Added return-fix.patch to fix the error " Program returns random
+  data in a function".
+
+-------------------------------------------------------------------
+Tue Jul 25 21:35:33 CEST 2008 - mauro@suse.de
+
+- initial SUSE package

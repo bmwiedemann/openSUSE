@@ -1,0 +1,96 @@
+2019-03-20  Jakub Jelinek  <jakub@redhat.com>
+
+	PR target/89752
+	* lra-constraints.c (process_alt_operands) <reg>: For BLKmode, don't
+	update this_alternative nor this_alternative_set.
+
+	* g++.target/aarch64/aarch64.exp: New file.
+	* g++.target/aarch64/pr89752.C: New test.
+
+Index: gcc/testsuite/g++.target/aarch64/pr89752.C
+===================================================================
+--- gcc/testsuite/g++.target/aarch64/pr89752.C	(nonexistent)
++++ gcc/testsuite/g++.target/aarch64/pr89752.C	(revision 269819)
+@@ -0,0 +1,11 @@
++// PR target/89752
++// { dg-do compile }
++
++struct A { A (); ~A (); short c; };
++
++void
++foo ()
++{
++  A a0, a1;
++  __asm volatile ("" : "=rm" (a0), "=rm" (a1) : "0" (a0), "1" (a1));	// { dg-error "inconsistent operand constraints in an 'asm'" }
++}
+Index: gcc/testsuite/g++.target/aarch64/aarch64.exp
+===================================================================
+--- gcc/testsuite/g++.target/aarch64/aarch64.exp	(nonexistent)
++++ gcc/testsuite/g++.target/aarch64/aarch64.exp	(revision 269819)
+@@ -0,0 +1,44 @@
++#  Specific regression driver for AArch64.
++#  Copyright (C) 2009-2019 Free Software Foundation, Inc.
++#
++#  This file is part of GCC.
++#
++#  GCC is free software; you can redistribute it and/or modify it
++#  under the terms of the GNU General Public License as published by
++#  the Free Software Foundation; either version 3, or (at your option)
++#  any later version.
++#
++#  GCC is distributed in the hope that it will be useful, but
++#  WITHOUT ANY WARRANTY; without even the implied warranty of
++#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++#  General Public License for more details.
++#
++#  You should have received a copy of the GNU General Public License
++#  along with GCC; see the file COPYING3.  If not see
++#  <http://www.gnu.org/licenses/>.  */
++
++# GCC testsuite that uses the `dg.exp' driver.
++
++# Exit immediately if this isn't an AArch64 target.
++if {![istarget aarch64*-*-*] } then {
++  return
++}
++
++# Load support procs.
++load_lib g++-dg.exp
++
++global DEFAULT_CXXFLAGS
++if ![info exists DEFAULT_CXXFLAGS] then {
++    set DEFAULT_CXXFLAGS " -pedantic-errors"
++}
++
++# Initialize `dg'.
++dg-init
++
++# Main loop.
++dg-runtest [lsort [glob -nocomplain $srcdir/$subdir/*.C]] \
++        "" $DEFAULT_CXXFLAGS
++
++# All done.
++dg-finish
++
+Index: gcc/lra-constraints.c
+===================================================================
+--- gcc/lra-constraints.c	(revision 269818)
++++ gcc/lra-constraints.c	(revision 269819)
+@@ -2350,6 +2350,8 @@ process_alt_operands (int only_alternati
+ 		  break;
+ 
+ 		reg:
++		  if (mode == BLKmode)
++		    break;
+ 		  this_alternative = reg_class_subunion[this_alternative][cl];
+ 		  IOR_HARD_REG_SET (this_alternative_set,
+ 				    reg_class_contents[cl]);
+@@ -2360,8 +2362,6 @@ process_alt_operands (int only_alternati
+ 		      IOR_HARD_REG_SET (this_costly_alternative_set,
+ 					reg_class_contents[cl]);
+ 		    }
+-		  if (mode == BLKmode)
+-		    break;
+ 		  winreg = true;
+ 		  if (REG_P (op))
+ 		    {

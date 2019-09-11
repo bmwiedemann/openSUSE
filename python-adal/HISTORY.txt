@@ -1,0 +1,66 @@
+ADAL Python 0.5.0
+
+    Enhancement: Add a new parameter in the AuthenticationContext to pass requests (connect,read) timeout parameters. (#112)
+    Adjustment: By default, no Personally Identifiable Information (PII) will be logged by ADAL Python. (#111)
+    Adjustment: Surfaces the requests.HTTPError so that app developer can deal with the Retry-After info from HTTP 429 error, if desired. (#117)
+
+ADAL Python 0.4.7
+
+Bugfix: Handle refresh token in Azure Stack (ADFS 2016) properly (#105)
+Pre-release
+
+ADAL Python 0.4.6
+
+Enhancement: Add one more trusted authority host login.microsoftonline.us (#77, #78)
+    Enhancement: Bubble up the server response. (#85, #88)
+    Bugfix: Should not attempt to refresh a token when RT is unavailable (#82, #87)
+    Bugfix: Now we force utf-8 decoding so that package builders would be able to pack ADAL Python regardless of their locale. The ADAL Python library users will 
+NOT be affected by this change. (#89, #91)
+    Other sample code and readme file adjustments (#76, #73, #84, #92, #95, #97, #98)
+
+ADAL for Python 0.4.5
+
+    Fixes platform resolution issue found in Gunicorn/Gevent context (#74)
+
+ADAL for Python 0.4.4
+
+    Revert a workaround introduced in 0.4.3, we now have better understanding and recommend a different way to solve it. (#61)
+
+ADAL for Python 0.4.3
+
+    Fixes logger bug to ensure proper logging (#55)
+    Updates dependency to exclude the requests package 2.12.* (#58)
+    Introduces a new switch to override the default behavior (#57)
+
+ADAL for Python 0.4.2
+
+    Fix decoding exception when decoding id_token with non-ASCII characters on Python 2.x (#52)
+    Minor adjustment on version string handling (#48)
+
+ADAL for Python 0.4.1
+
+    Fix encoding exceptions on formatting error text #44
+    Minor typo fixes in sample code #45
+
+ADAL for Python 0.4.0
+
+    Support login using federated credentials through protocols of wstrust 1.3 or 2005
+    Support http tracing through proxies by exposing the environment variable of ADAL_PYTHON_SSL_NO_VERIFY
+
+ADAL for Python 0.3.0
+
+    Support device code flow, required for accounts with 2FA enforced, or MSA accounts such as live id
+    Support service principal with certificate.
+    Support token cache.
+    Remove all JS style of callbacks for better code readability and maintainability.
+    Improve 'AuthenticationContext' class to be consistent with ADAL node and C# versions.
+    Add samples showing how to use the ADAL in correct ways. Convenient methods in init.py were removed as it has no integrations with cache and used client id 
+belonging to other client app.
+    Update readme with common authentication flows and smooth package installations.
+    Update for US Government and German Government Authority.
+
+Initial release of ADAL for Python
+
+0.1.0
+
+Add the author_email attribute back in to setup.py

@@ -1,0 +1,46 @@
+Description: Remove some debug printed on stdout.
+
+Index: src/HexEditor.cpp
+===================================================================
+--- src/HexEditor.cpp.orig	2017-03-16 05:50:42.000000000 +0200
++++ src/HexEditor.cpp	2017-03-24 12:16:25.446978302 +0200
+@@ -42,9 +42,11 @@ HexEditor::HexEditor(	wxWindow* parent,
+ 	tagpanel(tagpanel_),
+ 	dasmpanel(dasmpanel_) {
+ 	ComparatorHexEditor=NULL;
++    #if 0
+ 	// Here, code praying to the GOD for protecting our open file from wxHexEditor's bugs and other things.
+ 	// This is really crucial step! Be adviced to not remove it, even if you don't believer.
+ 	printf("Rahman ve Rahim olan Allah'ın adıyla.\n");
++    #endif
+ 	myfile = NULL;
+ #ifndef DO_NOT_USE_THREAD_FOR_SCROLL
+ 	myscrollthread = NULL;
+Index: src/HexEditorCtrl/HexEditorCtrl.h
+===================================================================
+--- src/HexEditorCtrl/HexEditorCtrl.h.orig	2017-03-16 05:50:42.000000000 +0200
++++ src/HexEditorCtrl/HexEditorCtrl.h	2017-03-24 12:16:25.446978302 +0200
+@@ -66,7 +66,9 @@ class Select{	//for using EventHandler
+ 		void SetState( bool new_state ){
+ 			state = new_state;
+ 
++			#if 0
+ 			std::cout << "Send UpdateUI Event" << std::endl;
++			#endif
+ 			wxUpdateUIEvent event;
+ 			if( new_state )
+ 				event.SetString( wxT("Selected") );
+Index: src/HexEditorFrame.cpp
+===================================================================
+--- src/HexEditorFrame.cpp.orig	2017-03-16 05:50:42.000000000 +0200
++++ src/HexEditorFrame.cpp	2017-03-24 12:16:25.446978302 +0200
+@@ -510,7 +510,9 @@ HexEditor* HexEditorFrame::GetActiveHexE
+ 	}
+ 
+ void HexEditorFrame::OnMenuEvent( wxCommandEvent& event ){
++    #if 0
+ 	std::cout << "OnMenuEvent: "  << event.GetId() << std::endl;
++    #endif
+ 	if( event.GetId() == wxID_NEW ){	//GetFile Lenght, Save file as, Create file, Open file as RW
+ 		wxString lngt;
+ 		long unsigned int size=0;

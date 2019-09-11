@@ -1,0 +1,46 @@
+--- lib/readline/input.c
++++ lib/readline/input.c	2003-03-17 19:03:51.000000000 +0000
+@@ -468,6 +468,8 @@ rl_read_key ()
+   return (c);
+ }
+ 
++extern int _rl_read_zero_char_from_tty;
++
+ int
+ rl_getc (stream)
+      FILE *stream;
+@@ -493,7 +495,10 @@ rl_getc (stream)
+       /* If zero characters are returned, then the file that we are
+ 	 reading from is empty!  Return EOF in that case. */
+       if (result == 0)
+-	return (EOF);
++	{
++	  _rl_read_zero_char_from_tty = 1;
++	  return (EOF);
++	}
+ 
+ #if defined (__BEOS__)
+       if (errno == EINTR)
+--- lib/readline/readline.c
++++ lib/readline/readline.c	2014-04-17 10:24:16.302236347 +0000
+@@ -515,6 +515,9 @@ _rl_internal_char_cleanup ()
+     _rl_erase_entire_line ();
+ }
+ 
++/* Catch EOF from tty, do not return command line */
++int _rl_read_zero_char_from_tty = 0;
++
+ STATIC_CALLBACK int
+ #if defined (READLINE_CALLBACKS)
+ readline_internal_char ()
+@@ -564,6 +567,10 @@ readline_internal_charloop ()
+       c = rl_read_key ();
+       RL_UNSETSTATE(RL_STATE_READCMD);
+ 
++      /* Return here if terminal is closed */
++      if (c == EOF && _rl_read_zero_char_from_tty)
++	  return (rl_done = 1);
++
+       /* look at input.c:rl_getc() for the circumstances under which this will
+ 	 be returned; punt immediately on read error without converting it to
+ 	 a newline; assume that rl_read_key has already called the signal

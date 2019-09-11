@@ -1,0 +1,39 @@
+Index: nautilus-terminal_1.0_src/src/nautilus_terminal.py
+===================================================================
+--- nautilus-terminal_1.0_src.orig/src/nautilus_terminal.py
++++ nautilus-terminal_1.0_src/src/nautilus_terminal.py
+@@ -46,6 +46,8 @@ else:
+     from urllib.request import url2pathname
+     from configparser import RawConfigParser
+ 
++import gi
++gi.require_version('Vte', '2.91')
+ from gi.repository import GObject, Nautilus, Gtk, Gdk, Vte, GLib
+ 
+ 
+@@ -121,7 +123,7 @@ class NautilusTerminal(object):
+         #Term
+         self.shell_pid = -1
+         self.term = Vte.Terminal()
+-        self.shell_pid = self.term.fork_command_full(Vte.PtyFlags.DEFAULT,
++        self.shell_pid = self.term.spawn_sync(Vte.PtyFlags.DEFAULT,
+                 self._path, [CONF.get("terminal/shell")], None,
+                 GLib.SpawnFlags.SEARCH_PATH, None, None)[1]
+         self.term.connect_after("child-exited", self._on_term_child_exited)
+@@ -301,14 +303,14 @@ class NautilusTerminal(object):
+                 return
+         self.menu.popup(None, None, None, None, 3, 0)
+ 
+-    def _on_term_child_exited(self, term):
++    def _on_term_child_exited(self, term, status):
+         """Called when the shell is terminated.
+ 
+         Args:
+             term -- The VTE terminal (self.term).
+         """
+         if not self._respawn_lock:
+-            self.shell_pid = self.term.fork_command_full(Vte.PtyFlags.DEFAULT,
++            self.shell_pid = self.term.spawn_sync(Vte.PtyFlags.DEFAULT,
+                 self._path, [CONF.get("terminal/shell")], None,
+                 GLib.SpawnFlags.SEARCH_PATH, None, None)[1]
+ 

@@ -1,0 +1,29 @@
+diff -Naur foma-0fa48dbacfe39509577ae6741054be7c05a19aac.orig/foma/Makefile foma-0fa48dbacfe39509577ae6741054be7c05a19aac/foma/Makefile
+--- foma-0fa48dbacfe39509577ae6741054be7c05a19aac.orig/foma/Makefile	2015-06-13 19:50:43.000000000 +0300
++++ foma-0fa48dbacfe39509577ae6741054be7c05a19aac/foma/Makefile	2018-08-05 13:48:07.836080649 +0300
+@@ -23,13 +23,13 @@
+ all: libfoma foma flookup cgflookup
+ 
+ foma: $(FOMAOBJS) $(LIBOBJS)
+-	$(CC) $(CFLAGS) $(FOMAOBJS) $(LIBOBJS) $(LDFLAGS) -o $@
++	$(CC) $(CFLAGS) -pie -Wl,-z,now $(FOMAOBJS) $(LIBOBJS) $(LDFLAGS) -o $@
+ 
+ flookup: flookup.o libfoma
+-	$(CC) $(CFLAGS) flookup.o $(FLOOKUPLDFLAGS) -o $@
++	$(CC) $(CFLAGS) -pie -Wl,-z,now flookup.o $(FLOOKUPLDFLAGS) -o $@
+ 
+ cgflookup: cgflookup.o libfoma
+-	$(CC) $(CFLAGS) cgflookup.o $(FLOOKUPLDFLAGS) -o $@
++	$(CC) $(CFLAGS) -pie -Wl,-z,now cgflookup.o $(FLOOKUPLDFLAGS) -o $@
+ 
+ STATICLIB = libfoma.a
+ 
+@@ -68,7 +68,7 @@
+ $(SHAREDLIBV): $(LIBOBJS)
+ 	$(AR) $(ARFLAGS) $(STATICLIB) $(LIBOBJS)
+ 	$(RANLIB) $(STATICLIB)
+-	$(CC) $(CFLAGS) -shared -Wl,$(DFLAG),$(SHAREDLIBM) -o $(SHAREDLIBV) $(LIBOBJS) $(LDFLAGS)
++	$(CC) $(CFLAGS) -shared -Wl,-z,now,$(DFLAG),$(SHAREDLIBM) -o $(SHAREDLIBV) $(LIBOBJS) $(LDFLAGS)
+ 
+ install: foma libfoma
+ 	-@if [ ! -d $(exec_prefix) ]; then mkdir -p $(exec_prefix); fi

@@ -1,0 +1,6 @@
+--- pm_java/pmdefaults/pmdefaults.orig	2011-02-27 02:06:37.000000000 +0100
++++ pm_java/pmdefaults/pmdefaults	2011-02-27 02:07:09.000000000 +0100
+@@ -1 +1,2 @@
+-java -jar /usr/share/java/pmdefaults.jar > /dev/null
++#!/bin/bash
++exec java -jar "@@JAVADIR@@/pmdefaults.jar" "$@" >/dev/null

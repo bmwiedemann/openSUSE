@@ -1,0 +1,26 @@
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -124,7 +124,7 @@ html_static_path = ['_shared_assets/stat
+ 
+ # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
+ # using the given strftime format.
+-html_last_updated_fmt = '%b %d, %Y'
++#html_last_updated_fmt = '%b %d, %Y'
+ 
+ # If true, SmartyPants will be used to convert quotes and dashes to
+ # typographically correct entities.
+--- a/src/libsync/theme.cpp
++++ b/src/libsync/theme.cpp
+@@ -319,11 +319,9 @@ QString Theme::gitSHA1() const
+     const QString gitSha1(QLatin1String(GIT_SHA1));
+     devString = QCoreApplication::translate("nextcloudTheme::about()",
+         "<p><small>Built from Git revision <a href=\"%1\">%2</a>"
+-        " on %3, %4 using Qt %5, %6</small></p>")
++        " using Qt %3, %4</small></p>")
+                     .arg(githubPrefix + gitSha1)
+                     .arg(gitSha1.left(6))
+-                    .arg(__DATE__)
+-                    .arg(__TIME__)
+                     .arg(qVersion())
+                     .arg(QSslSocket::sslLibraryVersionString());
+ #endif

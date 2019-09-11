@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Mon Aug 25 10:30:06 UTC 2014 - cornelis@solcon.nl
+
+- Correct license to MIT
+- Include license file in %doc
+- Weeaken timidity requires to recommends
+
+-------------------------------------------------------------------
+Fri Dec 14 22:15:28 UTC 2012 - joop.boonen@opensuse.org
+
+- Add Requirement for timidity as most sound cards don't
+  have a dedicated midi device anymore 
+- Build with libporttime.so fix needed for lenmus
+
+-------------------------------------------------------------------
+Wed Jun  6 14:43:33 UTC 2012 - prusnak@opensuse.org
+
+- imported from Packman to OBS
+- don't ship static library
+
+-------------------------------------------------------------------
+Tue Dec 27 00:00:00 UTC 2011 - pascal.bleser@opensuse.org
+
+- fix build on >= 12.1
+
+-------------------------------------------------------------------
+Sun Feb 27 00:00:00 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to version 217
+- complete spec file rewrite, moved to cmake
+
+-------------------------------------------------------------------
+Mon Nov 17 00:00:00 UTC 2008 - joop.boonen@opensuse.org
+
+- creating package in OBS
+
+-------------------------------------------------------------------
+Tue Apr  3 00:00:00 UTC 2007 - nando@ccrma.stanford.edu
+
+- add -fPIC flag for x86_64 build
+
+-------------------------------------------------------------------
+Sun Apr  1 00:00:00 UTC 2007 - nando@ccrma.stanford.edu
+
+- build on fc6
+
+-------------------------------------------------------------------
+Sat Nov 19 00:00:00 UTC 2005 - nando@ccrma.stanford.edu
+
+- added patch to link libporttime to the pthreads library, otherwise
+  it can't be loaded independently of libportmidi
+
+-------------------------------------------------------------------
+Thu Nov 10 00:00:00 UTC 2005 - nando@ccrma.stanford.edu
+
+- added Debian patches to build shared libraries neede by Common Music
+
+-------------------------------------------------------------------
+Mon Nov  7 00:00:00 UTC 2005 - nando@ccrma.stanford.edu
+
+- first build for Planet CCRMA, from Thac's spec file
+- just create "portmidi" (follow naming in Fedora for "portaudio")
+- probably should add test programs
+- todo: use Debian patches to make shared libraries...
+
+-------------------------------------------------------------------
+Wed Sep 28 00:00:00 UTC 2005 - tobbe@nyvalls.se
+
+- Fix spec
+
+-------------------------------------------------------------------
+Wed Sep  7 00:00:00 UTC 2005 - tobbe@nyvalls.se
+
+- Rebuilt for le2005
+
+-------------------------------------------------------------------
+Tue Aug 23 00:00:00 UTC 2005 - oc2pus@arcor.de
+
+- included patch from freecycle to avoid memory leak
+
+-------------------------------------------------------------------
+Wed Apr 20 00:00:00 UTC 2005 - oc2pus@arcor.de
+
+- initial build for SuSE
+

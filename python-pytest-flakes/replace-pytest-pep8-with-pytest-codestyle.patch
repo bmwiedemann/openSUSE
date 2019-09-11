@@ -1,0 +1,35 @@
+Index: pytest-flakes-4.0.0/tox.ini
+===================================================================
+--- pytest-flakes-4.0.0.orig/tox.ini
++++ pytest-flakes-4.0.0/tox.ini
+@@ -5,7 +5,7 @@ envlist = py27,py34,py35,py36
+ usedevelop = true
+ deps =
+     pytest
+-    pytest-pep8
++    pytest-codestyle
+     coverage
+ commands =
+     coverage erase
+@@ -14,6 +14,6 @@ commands =
+     coverage html -d htmlcov-{envname}
+ 
+ [pytest]
+-addopts = --flakes --pep8
+-pep8ignore = E501
++addopts = --flakes --codestyle
++codestyle_ignore = E501 E305 E741
+ norecursedirs = bin lib include Scripts .*
+Index: pytest-flakes-4.0.0/pytest_flakes.py
+===================================================================
+--- pytest-flakes-4.0.0.orig/pytest_flakes.py
++++ pytest-flakes-4.0.0/pytest_flakes.py
+@@ -97,7 +97,7 @@ class FlakesItem(pytest.Item, pytest.Fil
+ 
+ 
+ class Ignorer:
+-    def __init__(self, ignorelines, coderex=re.compile("[EW]\d\d\d")):
++    def __init__(self, ignorelines, coderex=re.compile(r"[EW]\d\d\d")):
+         self.ignores = ignores = []
+         for line in ignorelines:
+             i = line.find("#")

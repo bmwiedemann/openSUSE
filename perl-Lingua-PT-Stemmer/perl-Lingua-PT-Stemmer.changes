@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Sat Feb 13 10:11:48 UTC 2016 - coolo@suse.com
+
+- updated to 0.02
+   see /usr/share/doc/packages/perl-Lingua-PT-Stemmer/Changes
+
+-------------------------------------------------------------------
+Wed Dec  3 09:33:11 UTC 2014 - coolo@suse.com
+
+- redo packaging
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:25 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:23 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Nov 28 11:37:51 UTC 2010 - coolo@novell.com
+
+- remove .packlist file
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:43 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Fri Aug 15 20:50:02 CEST 2008 - lrupp@suse.de
+
+- initial version 0.0.1
+

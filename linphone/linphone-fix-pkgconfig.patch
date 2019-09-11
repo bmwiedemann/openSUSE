@@ -1,0 +1,31 @@
+--- a/share/CMakeLists.txt
++++ b/share/CMakeLists.txt
+@@ -42,6 +42,17 @@ if(ENABLE_ROOTCA_DOWNLOAD)
+ 	)
+ endif()
+ 
++
++set(LINPHONE_CFLAGS ${LINPHONE_CPPFLAGS})
++set(LINPHONE_LIBS ${LINPHONE_LDFLAGS})
++set(prefix ${CMAKE_INSTALL_PREFIX})
++set(exec_prefix ${prefix}/bin)
++set(libdir ${CMAKE_INSTALL_LIBDIR})
++set(includedir ${prefix}/include)
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/linphone.pc.in ${CMAKE_CURRENT_BINARY_DIR}/linphone.pc)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/linphone.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
++
++
+ set(SOUND_FILES
+ 	hello16000.wav
+ 	hello8000.wav
+--- a/share/linphone.pc.in
++++ b/share/linphone.pc.in
+@@ -3,7 +3,7 @@ exec_prefix=@exec_prefix@
+ libdir=@libdir@
+ includedir=@includedir@
+ 
+-Requires: mediastreamer ortp bctoolbox
++Requires: mediastreamer belle-sip belcard
+ Name: liblinphone
+ Description: All in one linphone libs.
+ Version: @VERSION@

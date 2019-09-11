@@ -1,0 +1,10 @@
+[Unit]
+Description=Hard drive temperature monitor daemon
+After=syslog.target network.target
+
+[Service]
+EnvironmentFile=/etc/sysconfig/hddtemp
+ExecStart=/usr/sbin/hddtemp -d -F -f $HDDTEMP_DB -l $HDDTEMP_IP -p $HDDTEMP_PORT $DEVICE
+
+[Install]
+WantedBy=multi-user.target

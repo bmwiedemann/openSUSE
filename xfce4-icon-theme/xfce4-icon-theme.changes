@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Fri Mar 30 09:55:56 UTC 2012 - gber@opensuse.org
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+Fri Feb 18 00:32:13 UTC 2011 - gber@opensuse.org
+
+- create dummy cache file only on >= 11.4
+
+-------------------------------------------------------------------
+Thu Feb 17 23:12:46 UTC 2011 - gber@opensuse.org
+
+- call %icon_theme_cache_post and create dummy cache file
+
+-------------------------------------------------------------------
+Mon Dec 27 09:38:39 UTC 2010 - gber@opensuse.org
+
+- use fdupes
+
+-------------------------------------------------------------------
+Wed Oct 29 22:03:01 CET 2008 - bwalle@suse.de
+
+- update to 4.4.3
+
+-------------------------------------------------------------------
+Mon Dec  3 22:50:15 CET 2007 - bwalle@suse.de
+
+- update to 4.4.2
+
+-------------------------------------------------------------------
+Sat Jun 23 17:18:03 CEST 2007 - bwalle@suse.de
+
+- replaced group 'System/GUI/Other' by 'System/GUI/XFCE'
+
+-------------------------------------------------------------------
+Wed Apr 11 00:04:01 CEST 2007 - bwalle@suse.de
+
+- update to 4.4.1 (no upstream changelog for this subpackage)
+
+-------------------------------------------------------------------
+Thu Jan 25 23:03:40 CET 2007 - bwalle@suse.de
+
+- upgraded to 4.4.0
+
+-------------------------------------------------------------------
+Wed Jan 25 21:49:13 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 23:56:00 CET 2006 - pnemec@suse.cz
+
+- update to 4.2.3
+
+-------------------------------------------------------------------
+Wed Sep 14 22:56:50 CEST 2005 - cthiel@suse.de
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+Wed May 18 11:57:29 CEST 2005 - cthiel@suse.de
+
+- update to 4.2.2
+
+-------------------------------------------------------------------
+Tue Apr 12 17:16:51 CEST 2005 - cthiel@suse.de
+
+- initial version
+

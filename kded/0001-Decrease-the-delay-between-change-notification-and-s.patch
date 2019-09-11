@@ -1,0 +1,30 @@
+From 7ad5c6200a0a154895b4cbf8be21d721e2b83ae2 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sun, 18 Nov 2018 14:55:30 +0100
+Subject: [PATCH] Decrease the delay between change notification and sycoca
+ rebuild to 1s
+References: boo#1111420
+
+Currently it waits 10s before doing anything, which is too much.
+If another modification happens during the delay, it's delayed further, so this
+shouldn't be an issue.
+---
+ src/kded.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/kded.cpp b/src/kded.cpp
+index ed03dcd..a2f4abc 100644
+--- a/src/kded.cpp
++++ b/src/kded.cpp
+@@ -556,7 +556,7 @@ void Kded::dirDeleted(const QString &path)
+ 
+ void Kded::update(const QString &)
+ {
+-    m_pTimer->start(10000);
++    m_pTimer->start(1000);
+ }
+ 
+ void Kded::readDirectory(const QString &_path)
+-- 
+2.19.0
+

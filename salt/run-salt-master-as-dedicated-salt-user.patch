@@ -1,0 +1,47 @@
+From 3d4be53c265dffdbfaf1d7d4764c361a640fd5ff Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 20 Jan 2016 11:01:06 +0100
+Subject: [PATCH] Run salt master as dedicated salt user
+
+* Minion runs always as a root
+---
+ conf/master               | 3 ++-
+ pkg/salt-common.logrotate | 2 ++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/conf/master b/conf/master
+index 149fe8812f..d492aef6df 100644
+--- a/conf/master
++++ b/conf/master
+@@ -25,7 +25,8 @@
+ # permissions to allow the specified user to run the master. The exception is
+ # the job cache, which must be deleted if this user is changed. If the
+ # modified files cause conflicts, set verify_env to False.
+-#user: root
++user: salt
++syndic_user: salt
+ 
+ # The port used by the communication interface. The ret (return) port is the
+ # interface used for the file server, authentication, job returns, etc.
+diff --git a/pkg/salt-common.logrotate b/pkg/salt-common.logrotate
+index 3cd002308e..0d99d1b801 100644
+--- a/pkg/salt-common.logrotate
++++ b/pkg/salt-common.logrotate
+@@ -1,4 +1,5 @@
+ /var/log/salt/master {
++	su salt salt
+ 	weekly
+ 	missingok
+ 	rotate 7
+@@ -15,6 +16,7 @@
+ }
+ 
+ /var/log/salt/key {
++	su salt salt
+ 	weekly
+ 	missingok
+ 	rotate 7
+-- 
+2.13.7
+
+

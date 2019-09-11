@@ -1,0 +1,11 @@
+Index: polkit-0.116/src/polkitbackend/50-default.rules
+===================================================================
+--- polkit-0.116.orig/src/polkitbackend/50-default.rules	2018-03-27 13:46:06.000000000 +0200
++++ polkit-0.116/src/polkitbackend/50-default.rules	2019-05-31 22:55:57.990503876 +0200
+@@ -8,5 +8,5 @@
+ // about configuring polkit.
+ 
+ polkit.addAdminRule(function(action, subject) {
+-    return ["unix-group:wheel"];
++    return ["unix-user:0"];
+ });

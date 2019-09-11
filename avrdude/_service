@@ -1,0 +1,13 @@
+<services>
+  <service name="tar_scm" mode='disabled'>
+    <param name="scm">svn</param>
+    <param name="url">svn://svn.savannah.nongnu.org/avrdude/trunk/avrdude</param>
+    <param name="filename">avrdude</param>
+    <param name="versionprefix">6.1svn</param>
+  </service>
+  <service name="recompress" mode='disabled'>
+    <param name="file">*tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode='disabled'/>
+</services>

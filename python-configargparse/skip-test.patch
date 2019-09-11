@@ -1,0 +1,41 @@
+Index: ConfigArgParse-0.14.0/tests/test_configargparse.py
+===================================================================
+--- ConfigArgParse-0.14.0.orig/tests/test_configargparse.py
++++ ConfigArgParse-0.14.0/tests/test_configargparse.py
+@@ -725,36 +725,6 @@ class TestMisc(TestCase):
+ 
+         self.assertListEqual(unknown, ['--a2a', '0.5', '--a3a', '0.5'])
+ 
+-    def test_FormatHelp(self):
+-        self.initParser(args_for_setting_config_path=["-c", "--config"],
+-                        config_arg_is_required = True,
+-                        config_arg_help_message = "my config file",
+-                        default_config_files=["~/.myconfig"],
+-                        args_for_writing_out_config_file=["-w", "--write-config"],
+-                        )
+-        self.add_arg('--arg1', help='Arg1 help text', required=True)
+-        self.add_arg('--flag', help='Flag help text', action="store_true")
+-
+-        self.assertRegex(self.format_help(),
+-            'usage: .* \[-h\] -c CONFIG_FILE\s+'
+-            '\[-w CONFIG_OUTPUT_PATH\]\s* --arg1 ARG1\s*\[--flag\]\s*'
+-            'Args that start with \'--\' \(eg. --arg1\) can also be set in a '
+-            'config file\s*\(~/.myconfig or specified via -c\).\s*'
+-            'Config file syntax allows: key=value,\s*flag=true, stuff=\[a,b,c\] '
+-            '\(for details, see syntax at https://goo.gl/R74nmi\).\s*'
+-            'If an arg is specified in more than\s*one place, then '
+-            'commandline values\s*override config file values which override\s*'
+-            'defaults.\s*'
+-            'optional arguments:\s*'
+-            '-h, --help \s* show this help message and exit\n\s*'
+-            '-c CONFIG_FILE, --config CONFIG_FILE\s+my config file\s*'
+-            '-w CONFIG_OUTPUT_PATH, --write-config CONFIG_OUTPUT_PATH\s*takes\s*'
+-            'the current command line args and writes them\s*'
+-            'out to a config file at the given path, then exits\s*'
+-            '--arg1 ARG1\s*Arg1 help text\s*'
+-            '--flag \s*Flag help text'
+-        )
+-
+     class CustomClass(object):
+         def __init__(self, name):
+             self.name = name

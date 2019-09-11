@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Sun Dec 30 14:06:13 UTC 2018 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.6.8:
+  * Makefile adaptations should help building and running this for
+    some.
+  * Fix some bugs regarding carbons and sending messages to
+    yourself, also added NULL checks so that it plays nicer with
+    other plugins which might set the message to NULL.
+  * Update submodules and their dependencies, most importantly
+    libsignal-protocol-c to 2.3.2.
+  * Add plugin preferences prototype: Single option is logging
+    verbosity on the debug log.
+
+-------------------------------------------------------------------
+Tue May  8 16:15:12 UTC 2018 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.6.7:
+  * Fix not freeing account list after plugin load.
+  * Ignore OMEMO messsage in MUCs if sender is not present.
+  * Revert to EME instead of additional body.
+  * Remove the magic number for proper enum.
+  * Set the correct conversation type when decrypting incoming own
+    message to others.
+  * Decrypt messages from own account in MUCs.
+  * Fix but also disable axc log output.
+  * The MUC handling has been rewritten.
+  * Destroy the message after exporting.
+  * Add some debug output.
+
+-------------------------------------------------------------------
+Thu Mar 15 16:19:49 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.6.6:
+  * Skip adding recipient's devices if addressed to oneself.
+  * Fix not initialising a pointer to NULL.
+  * Allow to override all *FLAGS.
+  * Allow to build a static library.
+  * Report AXC errors through purple_debug.
+  * Update submodules to current versions.
+  * Fix warnings.
+  * Some clean up.
+- Remove the libjabber.so discoverability workaround: not needed
+  anymore.
+- Remove the rpmlintrc file: not really needed.
+- Add CPPFLAGS
+
+-------------------------------------------------------------------
+Thu Apr  6 19:42:48 UTC 2017 - 9@cirno.systems
+
+- 0.6.5
+  * strips <html> tags to prevent message leakage
+  * authentication tag is now appended to the key, i.e. is part
+    of the data which is encrypted with the double ratchet session
+  * changes message handler priorities so that this plugin is one
+    of the last to process them, and thus fixes the incompatibility
+    with the XMPP Receipts plugin
+  * fixes display of (OMEMO) when switching from non-OMEMO
+    conversations
+
+-------------------------------------------------------------------
+Fri Mar 31 00:29:24 UTC 2017 - 9@cirno.systems
+
+- Initial commit, 0.6.4

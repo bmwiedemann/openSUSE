@@ -1,0 +1,45 @@
+Index: nginx-1.11.3/auto/unix
+===================================================================
+--- nginx-1.11.3.orig/auto/unix
++++ nginx-1.11.3/auto/unix
+@@ -531,7 +531,12 @@ if [ $NGX_FILE_AIO = YES ]; then
+         ngx_feature="Linux AIO support (SYS_eventfd)"
+         ngx_feature_incs="#include <linux/aio_abi.h>
+                           #include <sys/syscall.h>"
+-        ngx_feature_test="struct iocb  iocb;
++        ngx_feature_test="#ifdef SYS_eventfd
++                          int  n = SYS_eventfd;
++                          #else
++                          int  n = SYS_eventfd2;
++                          #endif
++                          struct iocb  iocb;
+                           iocb.aio_lio_opcode = IOCB_CMD_PREAD;
+                           iocb.aio_flags = IOCB_FLAG_RESFD;
+                           iocb.aio_resfd = -1;
+Index: nginx-1.11.3/src/event/modules/ngx_epoll_module.c
+===================================================================
+--- nginx-1.11.3.orig/src/event/modules/ngx_epoll_module.c
++++ nginx-1.11.3/src/event/modules/ngx_epoll_module.c
+@@ -77,9 +77,7 @@ int epoll_wait(int epfd, struct epoll_ev
+ 
+ #if (NGX_HAVE_FILE_AIO)
+ 
+-#define SYS_io_setup      245
+-#define SYS_io_destroy    246
+-#define SYS_io_getevents  247
++#include <sys/syscall.h>
+ 
+ typedef u_int  aio_context_t;
+ 
+@@ -254,7 +252,11 @@ ngx_epoll_aio_init(ngx_cycle_t *cycle, n
+ #if (NGX_HAVE_SYS_EVENTFD_H)
+     ngx_eventfd = eventfd(0, 0);
+ #else
++#ifdef SYS_eventfd
+     ngx_eventfd = syscall(SYS_eventfd, 0);
++#else
++    ngx_eventfd = syscall(SYS_eventfd2, 0, 0);
++#endif
+ #endif
+ 
+     if (ngx_eventfd == -1) {

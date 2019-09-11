@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Sat Nov 10 20:40:37 UTC 2018 - schwab@suse.de
+
+- Define USE_64 for riscv64
+
+-------------------------------------------------------------------
+Thu Sep 20 11:03:48 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Update to jss 4.5.0
+- Added patches:
+  * jss-4.5.0-slf4j.patch
+    + Use the right name of slf4j's api.jar
+  * jss-4.5.0-deprecation-warnings.patch
+    + Address most deprecation warnings
+  * jss-4.5.0-pkcs11-constants.patch
+    + Address problem with PKCS11 constants no longer being
+      visible in latest JDKs
+  * jss-4.5.0-nojavah.patch
+    + Changes to generate JNI header files the new way.
+    + Fixes build on jdk10 and further
+  * jss-4.5.0-sourcetarget.patch
+    + Build with source and target 8 to avoid compatibility issues
+
+-------------------------------------------------------------------
+Thu Apr 19 11:30:12 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to jss 4.4.3
+- Remove upstreamed patches:
+  * jss-4.3.2-support-TLS1_1-TLS1_2.patch
+  * jss-ipv6.patch
+
+-------------------------------------------------------------------
+Fri Apr 10 08:13:08 UTC 2015 - aj@ajaissle.de
+
+- Switch sources to new SCM, see:
+  * https://hg.mozilla.org/projects/jss/
+
+- Added jss-4.3.2-support-TLS1_1-TLS1_2.patch:
+  + Adds support for SSLVersionRange
+  + Adds TLS 1.1 + TLS 1.2 ciphersuites
+  * Requires mozilla-nss >= 3.15.1
+
+- Rename license files, update whitespaces
+  * gpl.txt -> GPL-2.0.txt
+  * lgpl.txt -> LGPL-2.1.txt
+
+- Spec cleanup, license cleanup, reserving Patch0001-Patch0026 
+  for Debian and Fedora patches (see 
+  https://anonscm.debian.org/cgit/pkg-fedora-ds/jss.git/tree/debian/patches/series)
+
+-------------------------------------------------------------------
+Sun May 11 19:33:59 UTC 2014 - aj@ajaissle.de
+
+- Fixed build on SLES with kernels > 2.x
+- Replaced '$RPM_BUILD_ROOT' with '%{buildroot}
+- Removed %cleanup section
+
+-------------------------------------------------------------------
+Sun Sep  8 20:03:41 UTC 2013 - wr@rosenauer.org
+
+- fixed build in Factory by making /usr/lib/java and
+  /usr/share/javadoc part of the package
+
+-------------------------------------------------------------------
+Thu Jul 11 15:15:35 UTC 2013 - aj@ajaissle.de
+
+- Add copyright header
+
+-------------------------------------------------------------------
+Mon Dec  09 13:03:30 UTC 2012 - aj@ajaissle.de
+
+- Fixed spec to work with openSUSE >= 12.2 (autoget kernel version)
+
+-------------------------------------------------------------------
+Mon Mar  5 20:01:24 UTC 2012 - wr@rosenauer.org
+
+- fixed build for Linux >= 3
+
+-------------------------------------------------------------------
+Mon Apr 11 12:40:06 UTC 2011 - wr@rosenauer.org
+
+- initial openSUSE package
+

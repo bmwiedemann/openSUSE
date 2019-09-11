@@ -1,0 +1,25 @@
+From e4218f055881f8c3454c0b3a6507dbcb84d7771a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 28 Aug 2013 15:20:53 +0200
+Subject: [PATCH 07/25] Increase max trace msg len to 4096
+
+---
+ trace.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/trace.h b/trace.h
+index 2c6d8beb92ab..970043b977e4 100644
+--- a/trace.h
++++ b/trace.h
+@@ -132,7 +132,7 @@ typedef struct traceId {
+ void            changeTextColor(int reset);
+ int             colorTrace;
+ 
+-#define MAX_MSG_SIZE 1024       /* max length of trace message */
++#define MAX_MSG_SIZE 4096       /* max length of trace message */
+ 
+ #define TRACE_PROVIDERMGR       1
+ #define TRACE_PROVIDERDRV       2
+-- 
+2.15.0
+

@@ -1,0 +1,261 @@
+-------------------------------------------------------------------
+Thu May  4 12:42:19 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to make build fully reproducible
+
+-------------------------------------------------------------------
+Sun Mar 15 14:24:51 UTC 2015 - freitag@opensuse.org
+
+- update to version 5.1.25, changes
+  * [ES] killing set data from GUI and scripts now clears set comments
+  * [ES] undid "always overwrite set comments when reading data in" from 5.1.24
+  * [ES] fixed Fourier transform DC-term amplitude (rep. #630)
+  * [ES] newer versions of "make" tried to regenerate documentation (rep. #2240)
+  * [ES] fixed detection of dynamic loading libraries (rep. #2238)
+  * [ES] install PDF docs instead of the DVI ones
+  * [ES] added cephes/COPYING (from Debian)
+  * [ES] a workaround for broken input of non-ASCII text under UTF8 locales
+  * [ES] always overwrite set comments when reading data in
+
+-------------------------------------------------------------------
+Mon Mar  9 12:18:33 UTC 2015 - dimstar@opensuse.org
+
+- Change categories to 'Education;Science;Math;', as 'Edutainmnent'
+  is no longer valid.
+
+-------------------------------------------------------------------
+Fri Sep 13 10:46:01 UTC 2013 - mvyskocil@suse.com
+
+- Drop t1lib from buildrequires, no longer in Factory 
+
+-------------------------------------------------------------------
+Tue Jul 23 15:33:34 UTC 2013 - tchvatal@suse.com
+
+- Use openmotif-devel so we work on other releases.
+
+-------------------------------------------------------------------
+Tue Jul 23 15:31:51 UTC 2013 - tchvatal@suse.com
+
+- Fix the configure phase by adding missing BuildRequires.
+
+-------------------------------------------------------------------
+Thu Jul 18 07:31:34 UTC 2013 - coolo@suse.com
+
+- fix download url
+
+-------------------------------------------------------------------
+Thu Feb 28 18:03:07 UTC 2013 - matwey.kornilov@gmail.com
+
+- update to version 5.1.23, changes
+  * removed *86 specific optimizations (rep. #2154)
+  * renamed RMS per cent error -> relative error (rep. #2192)
+  * a workaround for a bug in recent Xorg not releasing grab of popup menus
+  * accept -graphtype chart instead of bar. List possible values in the help output
+  * a grace_np fix
+  * IsoLatin5.enc was not included in the distribution
+- Drop xmgrace-libpng15.patch: This patch is in upstream now.
+
+-------------------------------------------------------------------
+Tue Sep  4 15:49:43 UTC 2012 - pgajdos@suse.com
+
+- builds also with libpng15
+  * libpng15.patch
+
+-------------------------------------------------------------------
+Wed Mar 28 13:20:52 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  SPDX format
+
+-------------------------------------------------------------------
+Tue Nov 10 13:15:57 UTC 2009 - freitag@novell.com
+
+- update to version 5.1.22 as a maintenance update to 5.1.21
+  splitted devel package with the grace lib
+
+-------------------------------------------------------------------
+Thu Jul 19 20:34:26 CEST 2007 - stbinner@suse.de
+
+- fix suse_update_desktop_file call
+
+-------------------------------------------------------------------
+Sat May 12 07:56:30 CEST 2007 - aj@suse.de
+
+- Use lib64 if appropriate.
+
+-------------------------------------------------------------------
+Thu Apr 26 11:47:37 CEST 2007 - freitag@suse.de
+
+- update to version 5.1.21 - minor improvements
+- Bugzilla #117995: Fixed help path
+- Bugzilla #106119: Fixed desktop file 
+
+-------------------------------------------------------------------
+Wed Jan 24 07:11:59 CET 2007 - sndirsch@suse.de
+
+- /usr/X11R6 --> /usr
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:15 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 10:42:39 CET 2006 - freitag@suse.de
+
+- update to version 5.1.19
+  It is a maintenance release of the 5.1 series; an upgrade is 
+  recommended. 
+
+-------------------------------------------------------------------
+Mon Jan 16 23:52:31 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+- Fix libdir.
+
+-------------------------------------------------------------------
+Fri Jan  6 06:24:38 CET 2006 - stbinner@suse.de
+
+- fix file list
+
+-------------------------------------------------------------------
+Sun Oct  2 15:05:35 CEST 2005 - stbinner@suse.de
+
+- fix typo in GenericName entry of .desktop file
+
+-------------------------------------------------------------------
+Mon Apr 25 07:09:28 CEST 2005 - meissner@suse.de
+
+- fixed 2 character overflow due to small stack buffer.
+
+-------------------------------------------------------------------
+Wed Feb 23 09:47:15 CET 2005 - meissner@suse.de
+
+- one 0 -> NULL in a XtVa call.
+
+-------------------------------------------------------------------
+Wed Jan 19 16:42:31 CET 2005 - freitag@suse.de
+
+- update to version 5.1.18, maintenance release 
+
+-------------------------------------------------------------------
+Thu Feb  5 09:27:42 CET 2004 - freitag@suse.de
+
+- update to version 5.1.14, minor feature enhancements and bugfixes. 
+
+-------------------------------------------------------------------
+Sat Jan 10 16:25:39 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 15 15:38:10 CEST 2003 - adrian@suse.de
+
+- add desktop file
+
+-------------------------------------------------------------------
+Thu Jun 12 01:03:35 CEST 2003 - ro@suse.de
+
+- install man-pages to X11R6/man/man1
+
+-------------------------------------------------------------------
+Wed May  7 17:43:55 CEST 2003 - freitag@suse.de
+
+- update to version 5.1.12, new features, bugfixes etc. 
+
+-------------------------------------------------------------------
+Mon Nov  4 15:38:47 CET 2002 - freitag@suse.de
+
+- update to version 5.1.10, which brought a lot of new features,
+  bugfixes etc. See CHANGES-file for details. 
+
+-------------------------------------------------------------------
+Fri Jul 26 15:34:48 CEST 2002 - freitag@suse.de
+
+- update to version 5.1.8:
+ [ES] implemented (and enabled by default) "safe" mode, in which statements
+         of the command language which may result in file modifications are
+         disabled. This is to prevent execution of such commands contained in
+         potentially malicious project files acquired from untrusted sources
+ [ES] use leading zeros in axis year formats so to make up to 2 or 4
+         digits in total (depending on whether the two-digit year span is
+         enabled in the project preferences) 
+ [ES] simplified X initialization - the resolution detection introduced
+         in 5.1.5 prevented Grace from starting up with some buggy X servers
+         (notably, StarNet's X-win32) (rep. #1138)
+ [ES] -safe/-nosafe command line options for switching the safe mode
+ [ES] "Run in safe mode" checkbox in "Edit/Preferences" for the same
+         purpose
+ [ES] removed broken "Command" function of the hotlink popup
+
+-------------------------------------------------------------------
+Tue May 21 14:56:08 CEST 2002 - freitag@suse.de
+
+- update to version 5.1.7:
+   [ES] allow XYZ sets in polar graphs
+   [ES] allow defining string columns when creating sets from block data
+         via the command line or parser, e.g. -bxy "1:2:{3}" (rep. #978)
+   [ES] honour symskip for all set types (it wasn't for BAR, BARDY,
+        BARDYDY, XYHILO, XYR, XYVMAP, and BOXPLOT)
+   [ES] extended x-correlation routines to calculate x-covariance if desired
+   [ES] implemented optional snake-like matrix fill in graph arranging
+        (rep. #1119)
+   and other bugfixes, enhancements. 
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:06 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Wed Nov 28 09:45:38 CET 2001 - freitag@suse.de
+
+- update to version 5.1.5, maintenance release with bugfixes 
+
+-------------------------------------------------------------------
+Wed Aug 22 13:11:14 CEST 2001 - ro@suse.de
+
+- removed pdflib from neededforbuild (for license problems) 
+
+-------------------------------------------------------------------
+Mon Jul 23 14:08:19 CEST 2001 - freitag@suse.de
+
+- update to version 5.1.4 
+
+-------------------------------------------------------------------
+Tue Apr 10 15:45:49 CEST 2001 - freitag@suse.de
+
+- update to version 5.1.3 
+
+-------------------------------------------------------------------
+Thu Nov 23 16:07:06 CET 2000 - freitag@suse.de
+
+- new version 5.1.2 
+
+-------------------------------------------------------------------
+Sat Nov 18 18:08:51 CET 2000 - kukuk@suse.de
+
+- Link against OpenMotif
+
+-------------------------------------------------------------------
+Wed Sep  6 11:38:39 CEST 2000 - freitag@suse.de
+
+- updated to version 5.1.1 
+
+-------------------------------------------------------------------
+Wed May 10 09:52:06 CEST 2000 - freitag@suse.de
+
+- updated to version 5.1.0 with pdf-support, netcdf etc.
+- documentation patch updated 
+
+-------------------------------------------------------------------
+Tue Feb  8 11:42:26 MET 2000 - freitag@suse.de
+
+- updated specfile with %{version}, group etc. 
+
+-------------------------------------------------------------------
+Tue Oct 26 15:17:07 MEST 1999 - freitag@suse.de
+
+- new version 5.0.5
+ 
+

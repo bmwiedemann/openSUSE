@@ -1,0 +1,111 @@
+Fix global (DB_PRIVATE) lock code: fix recursion counter, retry
+failed lock operations for up to 3 minutes.
+
+--- ./lib/backend/db3.c.orig	2017-01-19 14:59:01.432807649 +0000
++++ ./lib/backend/db3.c	2017-01-19 15:13:18.034716068 +0000
+@@ -33,6 +33,8 @@ struct dbiCursor_s {
+ static struct dbiConfig_s staticdbicfg;
+ static struct dbConfig_s staticcfg;
+ 
++static int _lockdbfd = 0;
++
+ /** \ingroup dbi
+  */
+ static const struct poptOption rdbOptions[] = {
+@@ -744,6 +746,8 @@ static int db3_dbiClose(dbiIndex dbi, un
+ 
+ 	rpmlog(RPMLOG_DEBUG, "closed   db index       %s/%s\n",
+ 		dbhome, dbi->dbi_file);
++	if (dbi->cfg.dbi_lockdbfd && !(dbi->dbi_flags & DBI_VERIFYONLY) && _lockdbfd)
++	    _lockdbfd--;
+     }
+ 
+     db_fini(rdb, dbhome ? dbhome : "");
+@@ -783,6 +787,7 @@ static int dbiFlock(dbiIndex dbi, int mo
+ 	rc = 1;
+     } else {
+ 	const char *dbhome = rpmdbHome(dbi->dbi_rpmdb);
++	int tries;
+ 	struct flock l;
+ 	memset(&l, 0, sizeof(l));
+ 	l.l_whence = 0;
+@@ -792,20 +797,38 @@ static int dbiFlock(dbiIndex dbi, int mo
+ 		    ? F_RDLCK : F_WRLCK;
+ 	l.l_pid = 0;
+ 
+-	rc = fcntl(fdno, F_SETLK, (void *) &l);
+-	if (rc) {
+-	    uint32_t eflags = db_envflags(db);
+-	    /* Warning iff using non-private CDB locking. */
+-	    rc = (((eflags & DB_INIT_CDB) && !(eflags & DB_PRIVATE)) ? 0 : 1);
+-	    rpmlog( (rc ? RPMLOG_ERR : RPMLOG_WARNING),
+-		    _("cannot get %s lock on %s/%s\n"),
+-		    ((mode & O_ACCMODE) == O_RDONLY)
+-			    ? _("shared") : _("exclusive"),
+-		    dbhome, dbi->dbi_file);
+-	} else {
+-	    rpmlog(RPMLOG_DEBUG,
+-		    "locked   db index       %s/%s\n",
+-		    dbhome, dbi->dbi_file);
++	for (tries = 0; ; tries++) {
++	    rc = fcntl(fdno, F_SETLK, (void *) &l);
++	    if (rc) {
++		uint32_t eflags = db_envflags(db);
++		/* Warning iff using non-private CDB locking. */
++		rc = (((eflags & DB_INIT_CDB) && !(eflags & DB_PRIVATE)) ? 0 : 1);
++		if (errno == EAGAIN && rc) {
++		    struct timespec ts;
++		    if (tries == 0)
++			rpmlog(RPMLOG_WARNING,
++				_("waiting for %s lock on %s/%s\n"),
++				((mode & O_ACCMODE) == O_RDONLY)
++					? _("shared") : _("exclusive"),
++				dbhome, dbi->dbi_file);
++		    ts.tv_sec = (time_t)0;
++		    ts.tv_nsec = 100000000;	/* .1 seconds */
++		    if (tries < 10*60*3) {	/* 3 minutes */
++			nanosleep(&ts, (struct timespec *)0);
++			continue;
++		    }
++		}
++		rpmlog( (rc ? RPMLOG_ERR : RPMLOG_WARNING),
++			_("cannot get %s lock on %s/%s\n"),
++			((mode & O_ACCMODE) == O_RDONLY)
++				? _("shared") : _("exclusive"),
++			dbhome, dbi->dbi_file);
++	    } else {
++		rpmlog(RPMLOG_DEBUG,
++			"locked   db index       %s/%s\n",
++			dbhome, dbi->dbi_file);
++	    }
++	    break;
+ 	}
+     }
+     return rc;
+@@ -822,7 +845,6 @@ static int db3_dbiOpen(rpmdb rdb, rpmDbi
+     DB * db = NULL;
+     DBTYPE dbtype = DB_UNKNOWN;
+     uint32_t oflags;
+-    static int _lockdbfd = 0;
+ 
+     if (dbip)
+ 	*dbip = NULL;
+@@ -902,6 +924,8 @@ static int db3_dbiOpen(rpmdb rdb, rpmDbi
+ 	dbi->dbi_flags |= DBI_CREATED;
+     if (oflags & DB_RDONLY)
+ 	dbi->dbi_flags |= DBI_RDONLY;
++    if (verifyonly)
++	dbi->dbi_flags |= DBI_VERIFYONLY;
+ 
+     if (!verifyonly && rc == 0 && dbi->cfg.dbi_lockdbfd && _lockdbfd++ == 0) {
+ 	rc = dbiFlock(dbi, rdb->db_mode);
+--- ./lib/backend/dbi.h.orig	2017-01-19 15:12:26.833899257 +0000
++++ ./lib/backend/dbi.h	2017-01-19 15:05:43.958347554 +0000
+@@ -83,6 +83,7 @@ enum dbiFlags_e {
+     DBI_NONE		= 0,
+     DBI_CREATED		= (1 << 0),
+     DBI_RDONLY		= (1 << 1),
++    DBI_VERIFYONLY	= (1 << 2),
+ };
+ 
+ enum dbcFlags_e {

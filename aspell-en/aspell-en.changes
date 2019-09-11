@@ -1,0 +1,168 @@
+-------------------------------------------------------------------
+Sat Aug 11 17:39:23 UTC 2018 - amajer@suse.com
+
+- run fdupes only on dictionary data
+- update keyring to include all upstream signatures
+- update URL
+
+-------------------------------------------------------------------
+Sat Aug 11 13:18:02 UTC 2018 - rpm@fthiessen.de
+
+- Use SourceURL
+- Use GPG signed source
+- updated to 2018.04.16
+  * various new words (see SCOWL-README for other changes)
+
+-------------------------------------------------------------------
+Mon Dec 18 11:26:52 UTC 2017 - pgajdos@suse.com
+
+- updated to 2017.08.24
+  * various new words (see SCOWL-README for other changes)
+
+-------------------------------------------------------------------
+Mon Nov 21 15:52:08 UTC 2016 - pgajdos@suse.com
+
+- updated to 2016.11.20:
+  * various new words (see SCOWL-README for other changes)
+
+-------------------------------------------------------------------
+Mon May 11 13:32:14 UTC 2015 - pgajdos@suse.com
+
+- updated to 2015.03.24:
+  * Updated to SCOWL 2015.02.15 which added a large number of new words
+    such as "inbox", "smartphone", and "selfie" and removed some
+    problematic words.
+
+-------------------------------------------------------------------
+Wed Feb 29 13:51:11 UTC 2012 - cfarrell@suse.com
+
+- license update: MIT and BSD-3-Clause
+  Use SPDX format (using same license form as Fedora for this package)
+
+-------------------------------------------------------------------
+Sat Jan 28 21:05:07 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+
+-------------------------------------------------------------------
+Sun Apr 10 15:41:04 UTC 2011 - asterios.dramis@gmail.com
+
+- Updated to version 7.1-0:
+  * Updated to SCOWL 7.1 which corrected several errors and also added
+    several now common proper names and some other words now in
+    common use.
+  From 7.0:
+  * Updated to SCOWL 7 which was created with a new version of Varcon
+    which corrected many errors, especially in the British and Canadian
+    dictionaries. Numerous other corrections are also included.
+  * Added en_CA-variant_* and en_GB-variant_* auxiliary dictionaries.
+- Spec file updates:
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Added description for the patch based on openSUSE Patches Guidelines.
+  * Updates in %description.
+  * Run %fdupes to fix rpmlint warning "files-duplicate".
+  * Minor other updates.
+- Rebased Novellwords_extra_dict.patch to apply cleanly.
+
+-------------------------------------------------------------------
+Mon Jul 12 09:56:53 CEST 2010 - pgajdos@suse.cz
+
+- fixed url [bnc#620786]
+
+-------------------------------------------------------------------
+Mon Jan 19 13:53:57 CET 2009 - pgajdos@suse.cz
+
+- Novell words for en_{CA,GB,US} [bnc#462871]
+  + updated Novellwords_extra_dict.patch
+
+-------------------------------------------------------------------
+Mon Sep  3 18:06:58 CEST 2007 - lmichnovic@suse.cz
+
+- updated Nwordlist (words: Firefox,Thunderbird, NLD, ...) [#371]
+
+-------------------------------------------------------------------
+Fri Jul 27 14:31:56 CEST 2007 - lmichnovic@suse.cz
+
+- added "Bugzilla" to Novell words
+
+-------------------------------------------------------------------
+Tue Jun  5 17:20:21 CEST 2007 - lmichnovic@suse.cz
+
+- creating extra dictionary with Novell words during building[#371]
+
+-------------------------------------------------------------------
+Wed May  2 16:16:36 CEST 2007 - lmichnovic@suse.cz
+
+- added extra dictionary with Novell words [#371]
+
+-------------------------------------------------------------------
+Mon Oct 23 11:31:22 CEST 2006 - lmichnovic@suse.cz
+
+- fixed version of aspell in Requires
+
+-------------------------------------------------------------------
+Mon Mar 20 13:59:14 CET 2006 - pnemec@suse.cz
+
+- removed aspell_dictionary from Provides
+
+-------------------------------------------------------------------
+Fri Mar  3 15:37:08 CET 2006 - ro@suse.de
+
+- fixed lang provides format 
+
+-------------------------------------------------------------------
+Fri Mar  3 14:25:32 CET 2006 - pnemec@suse.cz
+
+- converted to the new lang provides format
+
+-------------------------------------------------------------------
+Tue Feb  7 13:08:26 CET 2006 - pnemec@suse.cz
+
+- fixed virtual package name
+
+-------------------------------------------------------------------
+Fri Jan 27 16:07:46 CET 2006 - pnemec@suse.cz
+
+- providing aspell_dictionary as virtual package [#144972]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:28 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 28 22:52:07 CEST 2005 - dmueller@suse.de
+
+- add norootforbuild 
+
+-------------------------------------------------------------------
+Fri Mar 18 20:21:35 CET 2005 - gekker@suse.de
+
+- Update to version 6.0 (72354, 72377). 
+
+-------------------------------------------------------------------
+Fri Dec  3 01:40:13 CET 2004 - ro@suse.de
+
+- added some magic for the filelist 
+
+-------------------------------------------------------------------
+Wed Apr 21 14:13:16 CEST 2004 - ltinkl@suse.cz
+
+- updated to version 0.51-1
+
+-------------------------------------------------------------------
+Fri Jan 31 20:58:00 CET 2003 - pmladek@suse.cz
+
+- updated to version 0.51-0:
+    * added variants that were not really spelling variants
+    * removed some spelling variants and other strange words
+    * removed rarely used inflections of a word
+    * removed the DEC Word List due to the questionable license
+- installed ChangeLog and SCOWL-README as the documentation too
+
+-------------------------------------------------------------------
+Fri Nov 01 19:32:02 CET 2002 - pmladek@suse.cz
+
+- package created, version 0.50.2
+

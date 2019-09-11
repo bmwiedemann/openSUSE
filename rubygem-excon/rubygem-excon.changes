@@ -1,0 +1,684 @@
+-------------------------------------------------------------------
+Thu Aug 15 18:19:31 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 0.66.0
+
+  * Add remote_ip to datum, enabling usage in middleware
+  * redirect follower now raises after following too many redirects (default 10)
+  * fixed stub clearing in tests to avoid race conditions
+
+-------------------------------------------------------------------
+Sun May  5 09:24:40 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.64.0
+ see installed changelog.txt
+
+  0.64.0 2019-04-15
+  =================
+  
+  warn, not error on undefined middlewares#valid_parameter keys
+  
+  0.63.0 2019-04-12
+  =================
+  
+  allow setting min/max ssl versions
+  add additional nonblocking ruby error classes
+  set logger via datum, instead of class variables
+  misc test/travis fixes
+  consolidate binary encoding, avoid double encoding
+  error or CR/LF instead of substitute
+  guard against invalid header keys
+  also retry blocked connect with newer ruby errors
+  clarify that username and password should be escaped
+  better handling of warnings in tests
+  add stalebot
+  document NO_PROXY
+  validate parameter keys based on middleware stack
+  update default retry on error counts in readme
+  Sweet32, DES deprioritization fixes to cipher suite
+  allow overriding retry_errors count
+  fix for URI escaping in Ruby 2.6
+  update copyright notice
+  add metadata to gemspec
+  update certs
+
+-------------------------------------------------------------------
+Wed Mar 28 04:28:56 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.62.0
+ see installed changelog.txt
+
+  0.62.0 2018-03-27
+  =================
+  
+  remove binmode call for StringIO objects
+
+-------------------------------------------------------------------
+Tue Mar 20 10:08:08 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.61.0
+ see installed changelog.txt
+
+  0.61.0 2018-03-16
+  =================
+  
+  use default ports for sockets if none specified
+  add ruby 2.4 and 2.5 to ci testing
+  follow relative location redirects
+
+-------------------------------------------------------------------
+Tue Jan  9 07:27:41 UTC 2018 - coolo@suse.com
+
+- updated to version 0.60.0
+ see installed changelog.txt
+
+  0.60.0 2017-12-15
+  =================
+  
+  add requests_in_batches
+  cleanup rakefile, gemfile, etc
+  add logger/logger= and logging instrumentor
+  rewind response_block in idempotent instrumentor
+
+-------------------------------------------------------------------
+Mon Sep 11 12:38:15 UTC 2017 - coolo@suse.com
+
+- updated to version 0.59.0
+ see installed changelog.txt
+
+  0.59.0 2017-09-05
+  =================
+  
+  fix backtick vs quote in error message
+  fix socket pooling to be per-connection instead of per thread
+  fix tests to ignore proxy env settings
+  
+  0.58.0 08/01/2017
+  =================
+  
+  remove unused error
+  add retry_interval and related settings for backoff
+
+-------------------------------------------------------------------
+Thu Aug  3 19:11:57 UTC 2017 - coolo@suse.com
+
+- updated to version 0.58.0
+ see installed changelog.txt
+
+  0.57.1 06/30/2017
+  =================
+  
+  fix remote-ip setting to prevent off-by-one issue
+
+-------------------------------------------------------------------
+Tue Jun 20 06:49:13 UTC 2017 - coolo@suse.com
+
+- updated to version 0.57.0
+ see installed changelog.txt
+
+  0.57.0 06/14/2017
+  =================
+  
+  add client_key_data and client_cert_data to valid keys
+  allow passing explicit host to unix sockets
+
+-------------------------------------------------------------------
+Tue Jun  6 05:33:49 UTC 2017 - coolo@suse.com
+
+- updated to version 0.56.0
+ see installed changelog.txt
+
+  0.56.0 05/31/2017
+  =================
+  
+  fix proxy parse errors
+  fix url-escaped proxy creds for ssl
+
+-------------------------------------------------------------------
+Wed Feb  8 05:37:50 UTC 2017 - coolo@suse.com
+
+- updated to version 0.55.0
+ see installed changelog.txt
+
+  0.55.0 02/07/2017
+  =================
+  
+  fix minor readme error
+  update bundled certs
+  update self-signed certs
+  update to test with ruby 2.3.3
+  fix unitialized ResponseParseError error
+  add missing 'spec_helper' require in tests
+  add missing 'time' require in tests
+  use unescape_uri for user/pass in Authorization header
+  use secure rubygems source uri
+  update gemnasium badge
+  update fury badge
+  update travis badge
+  update gittip badge
+
+-------------------------------------------------------------------
+Tue Oct 18 04:32:13 UTC 2016 - coolo@suse.com
+
+- updated to version 0.54.0
+ see installed changelog.txt
+
+-------------------------------------------------------------------
+Wed Sep 28 04:37:36 UTC 2016 - coolo@suse.com
+
+- updated to version 0.53.0
+ see installed changelog.txt
+
+  0.32.0 09/27/2016
+  =================
+  
+  add ability to pass ssl options as strings
+  progress towards rspec
+  update bundled certs
+
+-------------------------------------------------------------------
+Tue Aug 23 04:32:01 UTC 2016 - coolo@suse.com
+
+- updated to version 0.52.0
+ see installed changelog.txt
+
+  0.52.0 08/22/2016
+  =================
+  
+  freeze string literals
+  move toward interpolation, over concatenation (frozen string related)
+  start conversion toward rspec
+  move user/pass authorization header setting to request level
+
+-------------------------------------------------------------------
+Sat Jul  9 04:29:42 UTC 2016 - coolo@suse.com
+
+- updated to version 0.51.0
+ see installed changelog.txt
+
+  0.51.0 07/08/2016
+  
+  tweak new errors to be an alias rather than inherit
+
+-------------------------------------------------------------------
+Wed Jun 29 04:29:31 UTC 2016 - coolo@suse.com
+
+- updated to version 0.50.1
+ see installed changelog.txt
+
+  0.50.1 06/28/2016
+  =================
+  
+  re-add some missing errors from refactoring
+  
+  0.50.0 06/28/2016
+  =================
+  
+  expand readme
+  refactor errors for consistancy
+  optionally allow unstubbed requests
+  parse/verify path as well as host for connection
+
+-------------------------------------------------------------------
+Wed Apr  6 06:18:07 UTC 2016 - coolo@suse.com
+
+- updated to version 0.49.0
+ see installed changelog.txt
+
+  0.49.0 03/28/2016
+  =================
+  
+  fix nonblock ssl socket connect timeout handling
+  fix README debug example
+  make unique class for certificate errors
+  connection logic cleanup
+  change stubs back to global (with local option via defaults)
+  specific handling for set-cookie header exceptions
+
+-------------------------------------------------------------------
+Tue Mar  8 05:33:52 UTC 2016 - coolo@suse.com
+
+- updated to version 0.48.0
+ see installed changelog.txt
+
+  0.48.0 03/07/2016
+  =================
+  
+  optimize by writing part of body with headers when it fits in a chunk
+
+-------------------------------------------------------------------
+Wed Mar  2 05:31:23 UTC 2016 - coolo@suse.com
+
+- updated to version 0.47.0
+ see installed changelog.txt
+
+  0.47.0 02/29/2016
+  =================
+  
+  fix bundled certs
+  fix instrumentors to allow recording timings
+
+-------------------------------------------------------------------
+Sat Feb 27 05:36:03 UTC 2016 - coolo@suse.com
+
+- updated to version 0.46.0
+ see installed changelog.txt
+
+  0.46.0 02/26/2016
+  
+  empty host header for unix sockets
+  raise EOFError on unexpectedly read nil
+  add host/path/port to response
+  keep cookies through redirects
+  fix to skip decompressing empty bodies
+  fix escaping for query string
+  README improvements
+  fix SocketError initializer
+  fix incorrect error class usage
+
+-------------------------------------------------------------------
+Tue Jul 14 04:31:04 UTC 2015 - coolo@suse.com
+
+- updated to version 0.45.4
+ see installed changelog.txt
+
+  0.45.4 07/13/2015
+  =================
+  
+  fix undefined errors in error handling
+  ignore empty proxy values
+
+-------------------------------------------------------------------
+Thu Apr 23 07:59:44 UTC 2015 - coolo@suse.com
+
+- updated to version 0.45.3
+ see installed changelog.txt
+
+  0.45.3 04/21/2015
+  =================
+  
+  guard warning about openssl versions in case constant undefined
+  ensure rackup listens properly, fixes local tests
+
+-------------------------------------------------------------------
+Fri Apr 17 04:28:48 UTC 2015 - coolo@suse.com
+
+- updated to version 0.45.2
+
+-------------------------------------------------------------------
+Tue Apr  7 08:50:08 UTC 2015 - coolo@suse.com
+
+- updated to version 0.45.1
+ - fix scope for readline buffer, fixes dropped initial characters
+
+-------------------------------------------------------------------
+Fri Mar 27 05:30:26 UTC 2015 - coolo@suse.com
+
+- updated to version 0.45.0
+ prefer default SSL config to ENV, when available
+ document instrumentor deviation from rails format
+ better error/warning around openssl 1.0.2 bug
+ fix nonblocking ssl connect to not have tight loop
+ also remove user/pass when following redirects
+
+-------------------------------------------------------------------
+Thu Mar  5 05:29:39 UTC 2015 - coolo@suse.com
+
+- updated to version 0.44.4
+
+-------------------------------------------------------------------
+Thu Feb 26 05:29:52 UTC 2015 - coolo@suse.com
+
+- updated to version 0.44.3
+ don't pass body when following GET redirects
+ fix error rescue case to properly reference error object
+
+-------------------------------------------------------------------
+Thu Feb 12 07:29:22 UTC 2015 - coolo@suse.com
+
+- updated to version 0.44.2
+
+-------------------------------------------------------------------
+Tue Feb 10 17:41:44 UTC 2015 - coolo@suse.com
+
+- updated to version 0.44.1
+
+-------------------------------------------------------------------
+Mon Oct 13 12:05:24 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Tue Sep 23 08:05:52 UTC 2014 - jreidinger@suse.com
+
+- update to version 0.39.6
+  pretty print stub not found errors
+  fix double delegation error
+  make client_key_pass valid connection key
+  cast headers to_s to fix historical symbol usage
+  ensure Response#new uses case-insensitive headers
+  add client cert pass phrase support
+  fix for nil and/or unknown proxy values
+  respect both ca_file/ca_path when both present
+  fix for ssl proxies + remote_ip stuff
+  revert to a blocking readline, for performance
+  simplify status lookup
+  consolidate proxy code
+  store defaults as a constant
+  avoid setting nil user/pass vs just no setting keys
+  move idempotent warnings in to middleware
+  simplify validations
+  use constants in utils
+  group non-chunk response paring
+  optimize/simplify socket local lookup
+  simplify to pro-actively build downcased headers instead of lazily do so
+  add version to options (so it will appear in debug)
+  add OS/Ruby version info to options/version for debugging
+  more consistent output styling for errors
+  remove TE stuff to simplify
+  shorten timeout/sleep in streaming tests
+  remove transfer-encoding altogether if it only includes chunked
+  only rescue http status errors in relevant tests
+  use case-insensitive headers in stubs also
+  avoid reading non-file bodies (mock related fix)
+  fixes to readme links
+  fix excon_debug to set debug_response
+  ensure both \r and \n are read when parsing headers
+  fix chunked reading to avoid chop! on non-chunk endings
+  fixes for proxy usage
+  fix to reconcile streaming changes for chunked encoding
+  fix for responses with content_length
+  add support for setting ssl_verify_callback
+  stream partial results imediately, when available
+  update rack/unicorn in tests to support streaming tests
+  skip streaming tests on jruby (as they depend on unicorn)
+  update travis tests to use newest rubinius
+  improve formatting/readibility of standard instrumentor output
+
+-------------------------------------------------------------------
+Sun May 18 09:04:37 UTC 2014 - coolo@suse.com
+
+- updated to version 0.33.0
+ Fix for SNI (should occur prior to connect)
+ README improvements
+ fixes around LICENSE/CONTRIBUTING/CONTRIBUTORS
+ update bundled cert
+ nonblock connect/timeout fixes for ssl sockets
+ skip reverse lookups where feasible
+ more secure ssl settings, when available
+ add escape stuff as middleware
+ fix to raise exceptions properly
+ fix for keep alive check
+ add tests around keep alive
+ escape/unescape uri added to utils
+ add support for reusable local ports
+
+-------------------------------------------------------------------
+Sat Mar 15 18:46:01 UTC 2014 - coolo@suse.com
+
+- updated to version 0.32.1
+ Fix for SNI (should occur prior to connect)
+ 
+ 0.32.0 02/27/2014
+ =================
+ 
+ README improvements
+ fixes around LICENSE/CONTRIBUTING/CONTRIBUTORS
+ update bundled cert
+ nonblock connect/timeout fixes for ssl sockets
+ skip reverse lookups where feasible
+ more secure ssl settings, when available
+ add escape stuff as middleware
+ fix to raise exceptions properly
+ fix for keep alive check
+ add tests around keep alive
+ escape/unescape uri added to utils
+ add support for reusable local ports
+
+-------------------------------------------------------------------
+Sun Dec 22 09:19:52 UTC 2013 - matwey.kornilov@gmail.com
+
+- updated to version 0.31.0
+ test fixes for Bundler.require usage and Rack::Lint
+ use production mode + dump errors for tests
+ use Utils in Excon.stub
+ add implementation of stuff from WEBrick directly to utils
+ update test server to send connection close and process buffer after response
+ add :persistent option, defaults true
+ group HTTP errors by type
+ patch to webrick to workaround intermitent test failures
+ only use Open4 for 1.8.7
+ update/expand getting help/getting involved in readme
+
+-------------------------------------------------------------------
+Tue Nov 26 07:28:28 UTC 2013 - coolo@suse.com
+
+- updated to version 0.30.0
+ ensure schema/host/port are passed to redirect follower with relative location
+ add .ruby-version and .ruby-gemset to .gitignore
+ pass nil to :response_block for unknown values
+ use :response_block if expects middleware is not used
+ refactor Response.parse, add tests
+ support header continuations
+ support chunked trailers
+ improve decompress middleware/tests
+ add accept-encoding in decompress middleware requests, if missing
+ fixes for connection close detection
+ support transfer encoding
+ fix deprecated URI.decode usage
+ do not try to use tcp_nodelay for unix sockets
+ nonblocking connect, connect timeouts for unix sockets
+ ignore IO#close exceptions
+ move conditional nonblock to only SSLSocket
+ skip reverse lookups
+ avoid mutating canned response from middleware
+ test against latest rubinius, no longer allow failures
+ add unicorn as rubinius dev dependency
+ use webbrick form decode
+
+-------------------------------------------------------------------
+Fri Nov 22 08:40:41 UTC 2013 - coolo@suse.com
+
+- updated to version 0.29.0
+ make nonblock invalid as request key
+ add backtrace to all warnings
+ do not allow idempotent + pipeline
+ close socket after pipeline if needed
+ fix Socket#read to match IO.read EOF behavior
+ use Socket#read for non-blocking readline
+ respect read_timeout for status read
+ read response until status line, discard chunked trailer
+ fix redirect follower to properly change host
+
+-------------------------------------------------------------------
+Thu Oct 31 05:54:39 UTC 2013 - coolo@suse.com
+
+- updated to version 0.28.0
+ tag warning messages with [excon]
+ allow specific ssl_versions
+ fixes around param validation
+ create a new connection for redirect_follower middleware
+ add connection_uri/request_uri to utils
+ avoid mutating connection data
+ remove connection key in redirect_follower
+
+-------------------------------------------------------------------
+Sun Oct 20 12:05:39 UTC 2013 - coolo@suse.com
+
+- updated to version 0.27.6
+ warn, but no longer mutate params during validation
+ extract validations/port_string to utils module
+ fix for https/port string values
+
+-------------------------------------------------------------------
+Sun Oct 13 18:10:06 UTC 2013 - coolo@suse.com
+
+- updated to version 0.27.3
+ better invalid key handling
+ avoid mutating port value
+ avoid mutating datum in idempotent middleware
+
+-------------------------------------------------------------------
+Thu Oct 10 14:20:49 UTC 2013 - coolo@suse.com
+
+- updated to version 0.27.1
+  improve warning messages for valid keys
+  display warnings based on ruby and/or debug settings
+  add missing valid connection keys
+  remove 1.8.7 related nonblock warning
+  add support for unix sockets
+  cleanup constants
+  improve test setup to minimize server spawning
+  separate connection/request key validation
+
+-------------------------------------------------------------------
+Fri Oct  4 07:18:01 UTC 2013 - coolo@suse.com
+
+- updated to version 0.26.0
+  add basic decompress middleware
+  update readme mocking+stubbing info
+  add unstub functionality
+  avoid modifying original options in request
+  jruby fixes
+  misc cleanup/fixes
+  encoding/compatibility fixes
+  close sockets on error
+  warn when both request_block and idempotent are set
+
+-------------------------------------------------------------------
+Sun Jul 21 07:30:01 UTC 2013 - coolo@suse.com
+
+- updated to version 0.25.3
+ respect SSL_CERT_DIR/SSL_CERT_FILE
+ more aggressively include bundled cert as fallback
+ 
+ 0.25.2 07/18/2013
+ =================
+ 
+ add license to gemspec
+ add "excon/#{version}" default user agent
+ create/use response parser middleware
+ fix proxy request info to use datum rather than @data
+ 
+ 
+ 0.25.1 07/01/2013
+ =================
+ 
+ fix for jruby ssl
+ more explicit description in docs
+ 
+ 0.25.0 06/20/2013
+ =================
+ 
+ attempt to use OS certs first, only use bundled as fallback
+ normalize method in stubs
+
+-------------------------------------------------------------------
+Sat Jun 15 06:56:39 UTC 2013 - coolo@suse.com
+
+- updated to version 0.24.0
+ allow passing ssl creds as strings or file paths
+ 
+ defer writing request/headers to allow all-in-one
+ allow opt-in for request/response error info
+ add configurable TCP_NODELAY
+ consolidate warning display
+ respect ruby verbosity conventions
+ fix copyright years in notice
+
+-------------------------------------------------------------------
+Mon May 27 09:35:41 UTC 2013 - coolo@suse.com
+
+- updated to version 0.22.1
+
+-------------------------------------------------------------------
+Sat Apr 13 14:48:26 UTC 2013 - coolo@suse.com
+
+- updated to version 0.20.1
+ dup middlewares to avoid overwriting original set
+ delete datum[:response] in idempotent to ensure new response is parsed
+
+-------------------------------------------------------------------
+Wed Nov 21 06:33:07 UTC 2012 - coolo@suse.com
+
+- updated to version 0.16.10
+ set default request_params for stub
+ do not attempt to read body for CONNECT requests
+ 
+ readme cleanup/clarification around stubs
+ fix for reading response from ssl proxy
+
+-------------------------------------------------------------------
+Thu Nov 15 09:25:49 UTC 2012 - coolo@suse.com
+
+- updated to version 0.16.8
+   set file body pos to 0 at beginning of request
+   add eventmachine to dev dependencies for bad server tests
+   comment out benchmark deps for now
+   fix typo in readme
+
+-------------------------------------------------------------------
+Fri Oct 26 15:54:42 UTC 2012 - coolo@suse.com
+
+- updated to version 0.16.7
+  fix typo in host_port per-request patch
+  
+  fix for host_port to recalculate on a per-request basis
+  
+  Also retry Timeouts on idempotent requests
+  Excon.stub now breaks out user/pass from url if supplied
+  loosen ssl version requirement to allow negotiation
+  eof on read should return '' instead of nil
+  build host_port up front to avoid recalculating
+  set Proxy-Connection: Keep-Alive for https proxies
+  postpone https upgrade until after proxy connect
+
+-------------------------------------------------------------------
+Thu Sep 27 15:27:20 UTC 2012 - coolo@suse.com
+
+- updated to version 0.16.4
+ better behavior nonblock and use DEFAULT_NONBLOCK constant
+ update deprecation/warnings to use $stderr
+ consistency fixes for REDACT
+ add REDACT behavior to standard_instrumentor
+ 
+ remove overly paranoid const checking
+ change chunk_size to be a param for consistency
+ 
+-------------------------------------------------------------------
+Fri Sep 21 11:45:42 UTC 2012 - coolo@suse.com
+
+- updated to version 0.16.3
+
+-------------------------------------------------------------------
+Mon Aug 27 19:56:11 UTC 2012 - coolo@suse.com
+
+- updated to version 0.16.2
+
+-------------------------------------------------------------------
+Sun Aug 26 05:47:21 UTC 2012 - coolo@suse.com
+
+- updated to version 0.16.1
+ default to SSLv3 usage
+
+-------------------------------------------------------------------
+Fri Aug  3 14:06:24 UTC 2012 - coolo@suse.com
+
+- updated to version 0.15.5
+  consolidate proxy handling
+  proxy settings should pull from connection instead of params (allows
+  Excon.defaults[:proxy])
+  properly raise connect timeout errors
+  change recommended standard instrumentor ENV to EXCON_DEBUG
+  remove readline nonblock protections (they didn't fix the windows issue)
+  don't swallow non-nonblock SSL exceptions
+  consistency fixes for ssl nonblock error handling
+  do SNI in ssl_socket setup
+  use Excon::Response#parse to read https proxy response
+
+
+-------------------------------------------------------------------
+Mon Jul 30 20:24:04 UTC 2012 - coolo@suse.com
+
+- initial package
+

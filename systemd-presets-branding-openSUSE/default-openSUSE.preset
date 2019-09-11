@@ -1,0 +1,10 @@
+enable appstream-sync-cache.service
+enable cups.path
+enable cups.service
+enable cups.socket
+enable epmd.socket
+enable restorecond.service
+enable hostinfo.timer
+enable hostinfo.service
+enable hylafax-faxqclean.timer
+enable hylafax-usage.timer

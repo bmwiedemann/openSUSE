@@ -1,0 +1,185 @@
+-------------------------------------------------------------------
+Fri May 18 21:12:54 UTC 2018 - jengelh@inai.de
+
+- Add limitations of CX_Freeze to the descriptions.
+
+-------------------------------------------------------------------
+Wed May  9 03:01:39 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 5.1.1
+  * See changelog at https://github.com/anthony-tuininga/cx_Freeze/blob/5.1.1/doc/releasenotes.rst
+- Add license file
+
+-------------------------------------------------------------------
+Wed Oct 18 16:42:45 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to 5.1
+  * See changelog at https://github.com/anthony-tuininga/cx_Freeze/blob/5.1/doc/releasenotes.rst
+
+-------------------------------------------------------------------
+Tue Jan 14 18:55:40 UTC 2014 - termim@gmail.com
+
+- Update to 4.3.2:
+  * note: This version supports Python 2.4 and above. If you need Python
+    2.3 support, please use cx_Freeze 4.2.3.
+  * Added support for Python 3.4.
+  * Added hooks for PyQt4, PyQt5 and PySide to handle their plugins.
+  * Added support for creating a shortcut/alias to the Applications
+    directory within distributed DMG files for OS X.
+  * Improve missing modules output.
+  * Avoid polluting the extension module namespace when using the bootstrap
+    module to load the extension.
+  * Added support for using setuptools and pip if such tools are available.
+  * Added first tests; nose and mock are required to run them.
+  * Remove --bundle-iconfile in favor of --iconfile as a more generic
+    method of including the icon for bdist_mac.
+  * Documentation improved and FAQ added.
+  * Converted samples to follow PEP 8.
+- Bugs fixed:
+  * cxfreeze-quickstart failed if the default base was not used
+  * scripts frozen with Python 3 fail with an ImportError trying to import
+    the re module
+  * fix bug where after a first attempt to find a module failed, the second
+    attempt would erroneously succeed
+  * stop attempting to load a module by a name that is not a valid Python
+    identifier
+- Update to 4.3.1:
+  * note: This version supports Python 2.4 and above. If you need Python
+    2.3 support, please use cx_Freeze 4.2.3.
+  * Added support for the final release of Python 3.3.
+  * Added support for copying the MSVC runtime DLLs and manifest if desired
+    by using the --include-msvcr switch. Thanks to Almar Klein for the
+    initial patch.
+  * Clarified the documentation on the --replace-paths option. Thanks to
+    Thomas Kluyver for the patch.
+- Bugs fixed:
+  * Producing a Mac distribution failed with a variable reference.
+  * Freezing a script using PyQt on a Mac failed with a type error.
+  * Version number reported was incorrect.
+  * Correct paths during installation on Windows.
+- Update to 4.3:
+  * note: This version supports Python 2.4 and above. If you need Python
+    2.3 support, please use cx_Freeze 4.2.3.
+  * Added options to build Mac OS X application bundles and DMG packages
+    using ``bdist_mac`` and ``bdist_dmg`` distutils commands. Written by
+    Rob Reilink.
+  * The documentation is now using Sphinx, and is `available on
+    ReadTheDocs.org
+    <http://cx_freeze.readthedocs.org/en/latest/index.html>`_.
+  * Added support for Python 3.3 which uses a different compiled file
+    format than earlier versions of Python.
+  * Added support for Windows services which start automatically and which
+    are capable of monitoring changes in sessions such as lock and unlock.
+  * New ``cxfreeze-quickstart`` wizard to create a basic ``setup.py`` file.
+   Initially written by Thomas Kluyver.
+  * Included files under their original name can now be passed to
+   ``include_files`` as a tuple with an empty second element. Written by
+   r_haritonov.
+  * File inclusions/exclusions can now be specified using a full path, or a
+   shared library name with a version number suffix.
+- Bugs fixed:
+  * Messagebox display of certain errors in Windows GUI applications with
+    Python 3.
+  * Running Windows GUI applications in a path containing non-ASCII
+    characters.
+  * Calculate the correct filename for the Python shared library in Python
+    3.2.
+  * Including a package would not include the packages within that package,
+    only the modules within that package.
+
+-------------------------------------------------------------------
+Fri May  4 08:57:17 UTC 2012 - toddrme2178@gmail.com
+
+- Fix for rpmlint warnings
+- Update license
+
+-------------------------------------------------------------------
+Mon Apr 30 14:13:38 UTC 2012 - toddrme2178@gmail.com
+
+- Split python 3 version into a seperate spec file
+
+-------------------------------------------------------------------
+Wed Dec  7 14:43:04 UTC 2011 - saschpe@suse.de
+
+- Define python3_sitearch for openSUSE-11.3 and 11.4
+
+-------------------------------------------------------------------
+Wed Dec  7 10:28:46 UTC 2011 - saschpe@suse.de
+
+- Provides/obsoletes for python3-cx_freeze
+
+-------------------------------------------------------------------
+Mon Dec  5 12:28:35 UTC 2011 - toddrme2178@gmail.com
+
+- Renamed the package to match the upstream naming
+- Cleaned up spec file formatting
+- Added a python 3 version of the package
+
+-------------------------------------------------------------------
+Sun Mar 20 02:36:44 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 4.2.3:
+  - Added support for Python 3.2.
+  - Added hook for datetime module which implicitly imports the time module.
+  - Fixed hook for tkinter in Python 3.x.
+  - Always include the zlib module since the zipimport module requires
+    it, even when compression is not taking place.
+  - Added sample for a tkinter application.
+- Regenerated spec file.
+
+-------------------------------------------------------------------
+Mon Dec 27 01:11:08 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 4.2.2:
+  - Added support for namespace packages which are loaded implicitly upon
+    startup by injection into sys.modules.
+  - Added support for a Zope sample which makes use of namespace packages.
+  - Use the Microsoft compiler on Windows for Python 2.6 and up as some
+    strange behaviors were identified with Python 2.7 when compiled using
+    mingw32.
+  - Eliminate warning about -mwindows when using the Microsoft compiler for
+    building the Win32GUI base executable.
+  - Added support for creating version resources on Windows.
+  - Ensure that modules that are not truly required for bootstrapping are not
+    included in the frozen modules compiled in to the executable; otherwise,
+  * cannot be found at
+    runtime. This problem only seems to be present in Python 2.7.1 but it is a
+    good improvement for earlier releases of Python as well.
+  - Added support for setting the description for Windows services.
+  - Added hook for using the widget plugins which are part of the PyQt4.uic
+    package.
+  - Added additional hooks to remove spurious errors about missing modules
+    and to force inclusion of implicitly imported modules (twitter module
+  *.
+  - Fixed support for installing frozen executables under Python 3.x on
+    Windows.
+  - Removed optional import of setuptools which is not a complete drop-in
+    replacement for distutils and if found, replaces distutils with itself,
+    resulting in some distutils features not being available; for those who
+    require or prefer the use of setuptools, import it in your setup.py.
+
+-------------------------------------------------------------------
+Sun Oct 17 11:21:14 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 4.2.1.
+
+-------------------------------------------------------------------
+Wed Jul 21 01:56:37 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 4.2.
+
+-------------------------------------------------------------------
+Wed Jan  6 11:27:45 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 4.1.2.
+
+-------------------------------------------------------------------
+Mon Dec 21 10:57:44 UTC 2009 - alexandre@exatati.com.br
+
+- Updated to 4.1.1.
+
+-------------------------------------------------------------------
+Wed Jul 29 17:45:29 UTC 2009 - alexandre@exatati.com.br
+
+- Updated to 4.1.

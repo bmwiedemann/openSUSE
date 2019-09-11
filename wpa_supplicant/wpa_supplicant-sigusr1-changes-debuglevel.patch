@@ -1,0 +1,38 @@
+---
+ wpa_supplicant/wpa_supplicant.c |   18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+--- a/wpa_supplicant/wpa_supplicant.c
++++ b/wpa_supplicant/wpa_supplicant.c
+@@ -123,6 +123,22 @@ int wpa_set_wep_keys(struct wpa_supplica
+ 	return set;
+ }
+ 
++static void wpa_supplicant_handle_sigusr1(int sig,
++				     void *signal_ctx)
++{
++	/* Increase verbosity (by decreasing the debug level) and wrap back
++	 * to MSG_INFO when needed.
++	 */
++	if (wpa_debug_level)
++		wpa_debug_level--;
++	else
++		wpa_debug_level = MSG_INFO;
++	
++	wpa_printf(MSG_INFO, "Signal %d received - changing debug level to %s", sig,
++	           (wpa_debug_level == MSG_INFO) ? "INFO" :
++	               ((wpa_debug_level == MSG_DEBUG) ? "DEBUG" :
++	                   ((wpa_debug_level == MSG_MSGDUMP) ? "MSGDUMP" : "UNKNOWN")));
++}
+ 
+ int wpa_supplicant_set_wpa_none_key(struct wpa_supplicant *wpa_s,
+ 				    struct wpa_ssid *ssid)
+@@ -4124,6 +4140,8 @@ int wpa_supplicant_run(struct wpa_global
+ 	eloop_register_signal_terminate(wpa_supplicant_terminate, global);
+ 	eloop_register_signal_reconfig(wpa_supplicant_reconfig, global);
+ 
++	eloop_register_signal(SIGUSR1, wpa_supplicant_handle_sigusr1, NULL);
++
+ 	eloop_run();
+ 
+ 	return 0;

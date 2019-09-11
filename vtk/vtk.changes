@@ -1,0 +1,724 @@
+-------------------------------------------------------------------
+Sun Apr 14 10:14:39 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add more explicit dependencies to vtk-devel.
+
+-------------------------------------------------------------------
+Tue Apr  9 11:28:00 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add an explicit 'Requires: double-conversion-devel' for vtk-devel.
+  The double-conversion library is mentioned in vtkdoubleconversion.cmake
+  but isn't automatically installed.
+
+-------------------------------------------------------------------
+Fri Mar 15 18:42:02 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 8.2.0
+  * Removed support for TCL and Qt4
+  * Removed all VTK_OVERRIDE, VTK_FINAL, VTK_DELETE_FUNCTION macros as
+    C++11 is now required.
+  * vtkAbstractArray gained support for runtime user defined free functions,
+    allowing for custom allocator memory to be used with VTK.
+  * The vtkGeovis classes are now deprecated.
+  See https://blog.kitware.com/vtk-8-2-0/ for a more exhaustive list.
+- Packaging changes:
+  * Python bindings for MPI flavors are now installed below the MPI prefix
+    and thus no longer conflict with each other. To use these, the
+    PYTHONPATH currently has to be amended manually.
+  * Removed several devel Requires: from the devel package. This reduces the
+    dependency chain (e.g. java-devel) for all packages building against VTK,
+    but may require to specify some dependencies explicitly, depending on
+    the used VTK modules and bindings.
+- Patch updates/additions:
+  * Rebase vtk-fix-file-contains-date-time.patch
+  * Rebase 0001-Allow-compilation-on-GLES-platforms.patch
+  * Drop obsolete fix_qt5_example_cmake.patch
+  * Add bundled_libharu_add_missing_libm.patch
+  * Add bundled_exodusii_add_missing_libpthread.patch
+  * Add 0001-Add-libogg-to-IOMovie-target-link-libraries.patch
+  * Add 0001-Make-code-calling-proj4-compatible-with-proj4-5.0-an.patch
+
+-------------------------------------------------------------------
+Sun Jan  6 18:32:58 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Correct names of built packages, the mpi flavors were lacking the
+  flavor specific name infix, i.e. all flavors were named identically.
+
+-------------------------------------------------------------------
+Wed Jan  2 23:19:48 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add openmpi2 flavor
+- BuildRequire netcdf-{mpi_flavor}-devel for MPI flavors
+- Add Conflicts between flavors of python3 subpackage (all flavors
+  install into python_sitearch).
+
+-------------------------------------------------------------------
+Fri Dec 14 23:15:27 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Convert openmpi package to multibuild flavor
+- Use correct mpi version - openmpi currently means openmpi, and not openmpi2/3
+  Otherwise, VTK depends on openmpi1 (HDF5, netcdf) and openmpi2/3 (direct)
+- Remove several mpi BuildRequires in serial flavor
+
+-------------------------------------------------------------------
+Wed Dec 12 19:32:47 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add python3-vtk to vtk-devel Requires, same as for vtk-java/tcl
+- Remove empty testing subpackage
+- Fix path to VTK_DATA_ROOT default directory
+
+-------------------------------------------------------------------
+Thu Nov 22 15:41:50 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 8.1.2
+  * Issue error if vtkAlgorithm::GetInputConnection called on wrong port
+  * Added explicit cast to pacify UBSan’s “implicit-integer-truncation”
+  * Make some orientation marker widget methods virtual 
+  * vtkImageBlend bug fix for compound mode
+  * vtkFlyingEdges2D: Properly color multiple isocontour values
+  * Invoke DeletePointEvent before deleting vtkSeedWidget seed
+  * Fix compilation issue due to Python3.7 API change 
+  * Fix bug where re-enabling seed widget wouldn't move existing seeds
+- Fix python dependencies
+- Test to make sure python package is importable
+- Split out MPI version since the MPI version cannot be used
+  outside an MPI environment.
+- Build vtkData as part of the main package.  This makes sure the
+  data is extracted into the correct format.
+
+-------------------------------------------------------------------
+Fri Jun 29 07:17:51 UTC 2018 - badshah400@gmail.com
+
+- Drop post[un] scripts for devel and java subpackages; they are
+  only needed for the versioned shlib.
+
+-------------------------------------------------------------------
+Mon Jun 11 20:06:48 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 8.1.1:
+  * Fixed thin border around vtkImageResliceMapper
+    rendering
+  * Fixed vtkImageResliceMapper showing a black
+    polygon when slice is out of bounds.
+  * Fixed conflict between Process.h and process.h
+  * Fixed building VTK 8.1 against 10.13 SDK
+    resulting in linker errors when trying to use
+    resulting libraries on older SDK
+  * Fixed vtkCellPicker::IntersectActorWithLine maybe
+    using invalid cell id when picking composite data
+- Add fix_qt5_example_cmake.patch
+  Fixes use of removed cmake macro in some examples
+  See: https://gitlab.kitware.com/vtk/vtk/issues/17336
+- Use modern cmake spec file macros
+- Run spec cleaner
+- Other spec file cleanups
+- Support parallel HDF5.
+- Drop support for qt4.  Any version of openSUSE with a recent
+  enough version of cmake to build the package supports Qt5.
+- Drop checks for old versions of openSUSE that have too old
+  of a cmake to build.
+
+-------------------------------------------------------------------
+Sun Feb  4 00:41:17 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Use split libboost*-devel BuildRequires for TW and Leap/SLE 15
+
+-------------------------------------------------------------------
+Wed Jan 24 11:28:47 UTC 2018 - fstrba@suse.com
+
+- Fix build with jdk10
+  * give a bogus javah path "%{_bindir}/true", since the cmake
+    checks the javah binary although the build does not use it.
+
+-------------------------------------------------------------------
+Fri Jan 12 13:43:49 UTC 2018 - badshah400@gmail.com
+
+- Drop vtk-Rinterface-uintptr_t.patch as the related plugin has
+  been retired.
+
+-------------------------------------------------------------------
+Wed Jan 10 12:34:03 UTC 2018 - badshah400@gmail.com
+
+- Drop vtk-compat_gl: Building against OpenGL1 has now been
+  deprecated with version 8.1.0, and the examples don't build
+  against it already; so, drop all specfile and related
+  modifications catering to OpenGL1 bindings.
+
+-------------------------------------------------------------------
+Thu Dec 28 11:22:29 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.1.0:
+  * Full release notes at https://blog.kitware.com/vtk-8-1-0/.
+- Turn OFF building against system libharu, since libharu
+  upstream seems dead, while vtk's included libharu has new
+  features essential for building vtk 8.1. Drop BuildRequires on
+  libharu.
+- Does not build against java 10, so ensure at most java 9 is
+  used by using appropriate versioning for java-devel
+  BuildRequires.
+- Drop cmake options no longer used for build.
+- Drop VERBOSE=1 for make: it makes the compilation too verbose
+  making brp checks for code warnings too slow to execute; this
+  reduces build time by nearly half.
+- Enforce Qt4 for openSUSE <= 1320 explicitly because Qt5 is now
+  the default option.
+
+-------------------------------------------------------------------
+Mon Dec  4 18:25:57 UTC 2017 - bruno@ioda-net.ch
+
+- Move BuildRequires:  libQtWebKit-devel (Qt4) inside the else
+  version < 13.2 
+
+-------------------------------------------------------------------
+Thu Oct 26 08:48:16 UTC 2017 - dimstar@opensuse.org
+
+- Add conflict between the -devel-doc variants.
+
+-------------------------------------------------------------------
+Tue Oct 24 11:55:17 UTC 2017 - dimstar@opensuse.org
+
+- Setup MPI environment before building.
+
+-------------------------------------------------------------------
+Thu Oct 12 20:47:27 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM groups again.
+
+-------------------------------------------------------------------
+Sun Oct  1 20:36:49 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Move the vtk binary to the tcl subpackage, it is an interactive
+  TCL shell, and depends on the TCL bindings. It can be used
+  standalone from the devel package. Dito for its MPI variant, i.e.
+  the pvtk binary.
+- Move all libvtk*Java.so to the java subpackage. These are part of
+  the Java bindings, i.e. runtime dependencies. Otherwise, the java
+  subpacakge depends on the devel subpackage.
+- Add the tcl and java subpackage to the devel requires again.
+  Although not stricly necessary until building java or tcl packages,
+  the cmake files have a hard dependency on several build artifacts
+  provided by the tcl and java subpackages. Split devel packages
+  for the bindings would be preferred, but this is not supported by
+  the upstream build system.
+- Remove the openmpi-devel requires in the python subpackage, the
+  mpi runtime libraries are provided by openmpi-libs, which is
+  picked up automatically.
+
+-------------------------------------------------------------------
+Sun Oct 01 17:04:57 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Split the API documentation from the development subpackage. The
+  documentation amounts to almost 1 GByte of data, not necessary
+  when just building packages.
+
+-------------------------------------------------------------------
+Thu Sep 28 10:43:27 UTC 2017 - badshah400@gmail.com
+
+- Drop vtk-compat_gl-rpmlintrc: openSUSE:Factory bots don't accept
+  conditional sources and one rpmlintrc file is sufficient for
+  both main and linked packages anyway.
+
+-------------------------------------------------------------------
+Tue Sep 19 10:46:40 UTC 2017 - kkhere.geo@gmail.com
+
+- do not exclude libViewsGeovisJava.so from devel package 
+  This library is required for development.
+- package vtk binary in devel package.
+- VTKTargets-debug.cmake tests for the existance of the library (line 3394)
+  and the binary (line 3404) and causes an error if the files do
+  not exist
+
+-------------------------------------------------------------------
+Thu Sep 14 20:54:34 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Remove the various subpackage Requires from the devel package
+  again. The qt subpackage contains a Qt Designer plugin and no
+  dependency at all. Package the vtkWrap{Tcl,Java,Python} wrapper
+  generators in the devel package, as these are useless without
+  the vtk headers files.
+- Fix description/summary of vtk-qt subpackage
+
+-------------------------------------------------------------------
+Tue Sep 12 12:33:38 UTC 2017 - kkhere.geo@gmail.com
+
+- devel subpackage should require -tcl, -java and -qt subpackages
+  since the *.cmake files refer to files in those subpackages
+
+-------------------------------------------------------------------
+Mon Sep 11 13:46:28 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Add 0001-Allow-compilation-on-GLES-platforms.patch
+  The QOpenGLFunctions_3_2_Core class providing the framebuffer
+  blit functions is not available on GLES 2 builds of Qt5. Let Qt
+  handle the framebuffer blit, and just use the GLES/GL subset
+  provided by QOpenGLFunctions for the remainder.
+  Fix for https://gitlab.kitware.com/vtk/vtk/issues/17113
+
+-------------------------------------------------------------------
+Fri Sep  1 00:13:18 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.0.1:  
+  * Fix QVTKOpenGLWidget rendering issues on Windows machines with
+    certain Intel graphics chips. This was a significant issue
+    that broke all rendering and resulted in a black screen.
+  * Fix data array range caching per finite component which would
+    otherwise cause considerable slow-downs when using data
+    arrays.
+  * Fix button and slider widgets to work in multi-viewport render
+    windows. Without this change the widgets would either be
+    placed in the wrong viewport or be non-interactive completely.
+  * Fix image XY sampling in the volume mapper when depth peeling
+    is enabled.
+  * Fix z-fighting issues with dual depth peeling between two
+    layers of geometry that are too close.
+  * Fix crash when reparenting the QVTKWidget to a different
+    window. The application would crash due to lack of OpenGL
+    resources for the reparented widget.
+
+-------------------------------------------------------------------
+Mon Aug 21 18:41:37 UTC 2017 - badshah400@gmail.com
+
+- Suppress romlint error about shlib-policy-name-error for
+  %{name}-java -- libvtkViewsGeovisJava.so packaged therein
+  is not a versioned shared lib, and only used by vtk's java
+  bindings, so there is no point in enforcing the shared lib
+  packaging policy for this subpackage.
+
+-------------------------------------------------------------------
+Wed Aug  9 10:40:59 UTC 2017 - badshah400@gmail.com
+
+- Move libvtkViewsGeovisJava.so to the %{name}-java subpackage,
+  this is not really a devel file.
+
+-------------------------------------------------------------------
+Wed Aug  9 08:54:55 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups. Use POSIX-compliant find call.
+
+-------------------------------------------------------------------
+Mon Aug  7 09:13:03 UTC 2017 - badshah400@gmail.com
+
+- Implement shared library packaging policy for vtk:
+  + Rename %{name} to %{shlib}.
+  + Move all shared library objects to %{shlib} package.
+  + Remove no longer needed Requires from %{name}-devel package;
+    e.g.: %{name}-java contains the java binaries and jar object
+    now, and no longer the lib*Java.so file which has been moved
+    into %{shlib}.
+  + Adapt conflicts for vtk-compat_gl accordingly.
+  + Install libraries to /usr/lib(64) instead of
+    /usr/lib(64)/vtk.
+  + Do away with python3-%{name}-qt subpackage and
+    Obsolete/Provide it from %{shlib} as it only contained a
+    shared lib object.
+- Use system mpi4py; add BuildRequires on python3-mpi4py.
+- liblz4 >= 1.7.3 now required (since version 8.0); adapt
+  BuildRequires accordingly.
+
+-------------------------------------------------------------------
+Tue Jul 25 00:04:11 UTC 2017 - jengelh@inai.de
+
+- Trim descriptions and rectify RPM groups.
+
+-------------------------------------------------------------------
+Mon Jul 17 23:37:37 UTC 2017 - adrian@suse.de
+
+- add liblz4-devel and libharu-devel also to Requires of devel package
+  (fixes linking errors in other packages)
+
+-------------------------------------------------------------------
+Mon Jul  3 13:47:05 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.0.0: 
+  * Read about changes here: https://blog.kitware.com/vtk-8-0-0/
+  * API changes:
+    http://www.vtk.org/Wiki/VTK/API_Changes_7_1_0_to_8_0_0
+- Add BuildRequires on liblz4-devel, libharu-devel, mandatory
+  requirements for version 8.0.0.
+- Run make DoxygenDoc to generate documentation.
+
+-------------------------------------------------------------------
+Fri Apr 14 18:18:36 UTC 2017 - kkhere.geo@gmail.com
+
+- add a separate package vtk-compat_gl compile using rendering backend
+  OpenGL for systems without brand new graphic cards
+- default package vtk still uses new rendering backend default OpenGL2
+
+-------------------------------------------------------------------
+Wed Nov 23 10:28:02 UTC 2016 - badshah400@gmail.com
+
+- Update to version 7.1.0: See news item at
+  https://blog.kitware.com/kitware-plans-to-spotlight-new-vtk-and-paraview-releases-at-sc16/
+- Drop patch vtk-gcc6.patch, upstreamed.
+- Turn off usage of system DIY2, this library is not yet packaged
+  for openSUSE.
+- Disable mkg3states binary also for openSUSE:Leap versions.
+- Update file list for upstream installation changes.
+- Use bundled gl2ps, as it no longer builds against the system
+  one (requires svn trunk version of gl2ps).
+- CMake >= 3.4 is now required (earlier versions don't support
+  NAMES_PER_DIR in find_program).
+- Enable use of SYSTEM_LIBRARIES for openSUSE:Leap versions too
+  (only 13.2 requires this turned off as of now).
+
+-------------------------------------------------------------------
+Wed Aug 10 00:56:56 UTC 2016 - badshah400@gmail.com
+
+- Refresh vtk-Rinterface-uintptr_t.patch to fix further issues
+  with uintptr_t redefinition by defining the HAVE_UINTPTR_T
+  macro using cmake functions; removing the #include of stdint.h
+  is not needed any more since we will not be using the defs from
+  Rinterface.h anyway (boo#985386). Although this really causes a
+  build failure for the i586 arch, where the redefinition of
+  unitptr_t in Rinterface.h conflicts with the stdint.h defintion,
+  the patch is applied generally because the redefinition is not
+  needed in any case. Patch sent upstream.
+
+-------------------------------------------------------------------
+Wed Apr 13 11:32:12 UTC 2016 - badshah400@gmail.com
+
+- Add freetype2-devel as a Requires for vtk-devel.
+
+-------------------------------------------------------------------
+Wed Mar 30 14:31:03 UTC 2016 - badshah400@gmail.com
+
+- Apply vtk-gcc6.patch also to python-vtk.
+
+-------------------------------------------------------------------
+Wed Mar 30 13:08:09 UTC 2016 - stecue@gmail.com
+
+- Fixed RPATH error for Factory by passing the option
+  CMAKE_NO_BUILTIN_CHRPATH:BOOL=ON to cmake. 
+
+-------------------------------------------------------------------
+Tue Mar 29 20:27:32 UTC 2016 - dmueller@suse.com
+
+- add vtk-gcc6.patch: Fix build with gcc 6
+- skip RPATH setting
+
+-------------------------------------------------------------------
+Fri Mar 18 19:27:34 UTC 2016 - stecue@gmail.com
+
+- openmpi-libs will be installed with openmpi-devel if necessary.
+  No such package on openSUSE 13.1.
+
+-------------------------------------------------------------------
+Tue Mar 15 13:33:58 UTC 2016 - dvaleev@suse.com
+
+- Add disk constraints 
+
+-------------------------------------------------------------------
+Wed Feb 17 01:13:12 UTC 2016 - badshah400@gmail.com
+
+- Update to version 7.0.0:
+  + See https://blog.kitware.com/vtk-7-0-0/ for a detailed
+    article describing all the changes in this version.
+- Add vtk-Rinterface-uintptr_t.patch to fix building: uintptr_t
+  is already defined in the R headers, uintptr_t definition in
+  <stdint.h> conflicts with the R definition and causes builds to
+  fail. This patch fixes the problem by commenting out the call
+  to include stdint.h (it was only being used for this solitary
+  symbol).
+- Use python 3 for building, rename python- subpackages
+  accordingly to python3-.
+- Update file lists in accordance with added/dropped binaries
+  upstream; affects vtk-examples, vtk-devel.
+- Drop conditionals referencing outdated openSUSE version 12.3.
+- Update rpmlintrc file to suppress rpmlint warnings for
+  "no-manual-page-for-binary": upstream does not supply manuals
+  for its binaries and does not plan to.
+
+-------------------------------------------------------------------
+Fri Sep 18 09:11:38 UTC 2015 - badshah400@gmail.com
+
+- vtkdata should be a Recommends for vtk-examples, not Requires.
+
+-------------------------------------------------------------------
+Mon Aug 31 07:39:10 UTC 2015 - badshah400@gmail.com
+
+- Update to version 6.3.0:
+  - See list of changes at
+    http://www.vtk.org/Bug/changelog_page.php?version_id=118
+    or blog post at
+    http://www.kitware.com/blog/home/post/963.
+
+-------------------------------------------------------------------
+Sat Aug 15 04:16:39 UTC 2015 - badshah400@gmail.com
+
+- python-vtk also needs openmpi-devel at runtime.
+
+-------------------------------------------------------------------
+Fri Aug 14 10:51:11 UTC 2015 - badshah400@gmail.com
+
+- python-vtk should have Requires on openmpi-libs to enable its
+  parallelized modules to work.
+
+-------------------------------------------------------------------
+Thu Jun 25 08:17:04 UTC 2015 - alinm.elena@gmail.com
+
+- use qt5 for factory 
+
+-------------------------------------------------------------------
+Mon Jun 22 18:00:32 UTC 2015 - olaf@aepfle.de
+
+- Add libxml2-devel/netcdf-devel/libnetcdf_c++-devel Requires to vtk-devel
+
+-------------------------------------------------------------------
+Wed Apr  8 19:57:31 UTC 2015 - dimstar@opensuse.org
+
+- Add jsoncpp-devel Requires to vtk-devel (for openSUSE > 13.2):
+  vtkjsoncpp.cmake has
+  set(vtkjsoncpp_LIBRARIES "/usr/lib64/libjsoncpp.so").
+
+-------------------------------------------------------------------
+Fri Mar 13 19:50:12 UTC 2015 - badshah400@gmail.com
+
+- Update to version 6.2.0:
+  + See http://www.kitware.com/blog/home/post/858 for a list of
+    changes.
+- Drop patches incorporated upstream:
+  + vtk-install-missing-modules.patch
+  + vtk-Mesa10.3-build-failures.patch
+  + vtk-system.patch.
+- Update filelist to incorporate new files installed by upstream.
+- Use system hdf5 and netcdf on all openSUSE versions.
+- Build on openSUSE > 13.2 with system libraries ON (except
+  for libproj4); all required depndencies for this purpose are
+  now in Factory.
+- Add rpmlintrc file to suppress
+  "devel-files-in-non-devel-package" warning; python-vtk needs
+  these devel files for its own functioning.
+
+-------------------------------------------------------------------
+Thu Feb 26 12:30:11 UTC 2015 - dkxls23@gmail.com
+
+- Add MPI support
+
+-------------------------------------------------------------------
+Thu Sep 11 01:52:56 UTC 2014 - badshah400@gmail.com
+
+- Add vtk-Mesa10.3-build-failures.patch to workaround build
+  failures when compiling against Mesa >= 10.3; patch taken from
+  upstream git and rebased; applied only for openSUSE >= 13.2.
+
+-------------------------------------------------------------------
+Fri Jan 24 20:44:24 UTC 2014 - badshah400@gmail.com
+
+- Update to version 6.1.0:
+  + See http://www.kitware.com/news/home/browse/502 for a list of
+    changes
+- Rebase patches:
+  + vtk-system.patch
+  + vtk-install-missing-modules.patch
+- Packaging changes:
+  + Re-enable R bindings for 13.1 and above
+  + Turn off building test modules for now as it leads to build
+    issues (DBUILD_TESTING:BOOL=OFF)
+  + Turn off usage of system libraries for now
+    (DVTK_USE_SYSTEM_LIBRARIES:BOOL=OFF), as usage of system
+    libraries now introduces dependency on json-cpp which is not
+    available for openSUSE (yet)
+  + Python modules are now installed by vtk's cmake script;
+    hence, pass system python dirs to cmake by using cmake
+    variable DVTK_INSTALL_PYTHON_MODULE_DIR instead of
+    DVTK_PYTHON_SETUP_ARGS used previously
+  + vtkpython is now installed by cmake script automatically;
+    hence remove the manual copying to /usr/bin used earlier
+  + Python libraries are now stripped automatically on install;
+    chrpath no longer needed on these
+  + Python object files are now installed in
+    %python_sitearch
+  + Skip examples no longer installed as a result of test modules
+    being turned off
+  + Install new binaries (mkg3states) and bundled data files
+    (/usr/share/vtk-6.1)
+  + Cleanup spec file:
+    - Remove support for EOL openSUSE versions (12.1 and earlier)
+      by dropping appropriate conditionals
+    - Fix minor formatting issues.
+
+-------------------------------------------------------------------
+Fri Jul 19 02:52:28 UTC 2013 - badshah400@gmail.com
+
+- Disable R bindings for Factory, since it causes weird build
+  failures in openSUSE:Factory, (strangely no failures in devel
+  project) until the reason behind the failure is found and fixed. 
+
+-------------------------------------------------------------------
+Fri Jun 28 13:41:09 UTC 2013 - badshah400@gmail.com
+
+- Update to version 6.0.0:
+  + Lengthy list of changes, see 
+    http://www.kitware.com/blog/home/post/515 for a summary
+- Also build R language bindings, introduces dependency on R-base
+- Drop patches for already being incorporated upstream:
+  + vtk-pythondestdir.patch
+  + vtk-sqldatabaseschema.patch
+  + vtk-soversion2.patch
+- Rebase patches for updated version:
+  + vtk-fix-file-contains-date-time.patch
+  + vtk-system.patch
+- Add vtk-install-missing-modules.patch to install cmake modules
+  missed by the upstream packaging, will be required esp. when
+  we will be able to use the system installed vtk to build
+  paraview in the future; patch taken from Fedora
+- Remove unused cmake variables during configuration
+- Install all examples (several more added in current version)
+- Install vtk.conf file in /etc/ld.so.conf.d to enable vtk find
+  its libraries
+- Testing binaries are no longer installed separately.
+
+-------------------------------------------------------------------
+Fri Oct 26 14:04:41 UTC 2012 - badshah400@gmail.com
+
+- Update to version 5.10.1:
+  + Fix netCDF symbol mangling, which allows applications to use
+    an external netCDF library and VTK's internal copy
+    simultaneously
+  + Fixes for STL and SLC readers that prevent crashes and file
+    handle resource exhaustion
+  + Fix compilation on FreeBSD operating system
+  + A handful of fixes in VTK's Qt interface kit
+  + Fixes for interpreted language wrapping including a bug which
+    prevented java wrapping of VTK on power PC macs, and
+    compatibility with Tcl 8.6
+- Add vtk-fix-file-contains-date-time.patch to fix rpmlint
+  warning about a packaged file containing DATE and TIME.
+
+-------------------------------------------------------------------
+Mon Jun 25 20:46:30 UTC 2012 - scorot@free.fr
+
+- build python-qt and java binding for openSUSE version higher than
+  11.2 which fixes build on SLE 11
+
+-------------------------------------------------------------------
+Fri May 18 21:20:14 UTC 2012 - badshah400@gmail.com
+
+- Update to version 5.10.0: See
+  http://www.kitware.com/news/home/browse/408
+  for a detailed list of changes
+- Dropped patches:
+  + vtk-boost149.patch: implemented upstream
+- Patch vtk-sqldatabaseschema.patch now only required for
+  openSUSE 11.4
+- Minor rebasing of existing patches so they apply cleanly
+- No longer use verbose make.
+
+-------------------------------------------------------------------
+Thu May 10 11:32:21 UTC 2012 - idonmez@suse.com
+
+- Remove openmotif dependency 
+
+-------------------------------------------------------------------
+Sun Apr 22 15:11:53 UTC 2012 - asterios.dramis@gmail.com
+
+- Use the gl2ps and hdf5 system libraries for building in openSUSE > 12.1.
+- Updated Mesa and XOrg dependencies for openSUSE > 12.1.
+- Removed the following dependencies which are not needed:
+  MesaGLw-devel, freeglut-devel, gcc-java, libgcj-devel and sqlite3-devel.
+- Removed postgresql-devel dependency (wasn't enabled and fails to compile
+  anyway - added a note about it).
+- Removed build time references so build-compare can do its work.
+- Compile the package out-of-source.
+- Use the generic "VTK_USE_SYSTEM_LIBRARIES" cmake variable for enabling the
+  use of system libraries instead of doing it with a per package variable.
+
+-------------------------------------------------------------------
+Sun Apr  8 11:22:34 UTC 2012 - idonmez@suse.com
+
+- Fix compilation with boost 1.49 and enable boost again 
+
+-------------------------------------------------------------------
+Tue Mar 27 14:15:13 UTC 2012 - toddrme2178@gmail.com
+
+- Cleaned up spec file formatting
+- Build and package python-qt (python-sip) bindings
+- Link libraries to library directory instead of moving them to
+  avoid breaking the find vtk cmake macro
+- Force enable of various additional optional components
+- Removed redundant packages (readme and logo) from backends
+- Make the devel package depend on the backends, since it does not
+  work properly without them
+- Disable boost building on factory due to an icompatibility with
+  boosswt 1.4.9+.  See http://vtk.org/Bug/view.php?id=12988
+
+-------------------------------------------------------------------
+Thu Feb  2 12:39:13 UTC 2012 - toddrme2178@gmail.com
+
+- Reverted the source file change since it didn't work
+- Changed the license text a little
+
+-------------------------------------------------------------------
+Wed Feb  1 12:05:32 UTC 2012 - toddrme2178@gmail.com
+
+- Switched to approved license text (fix for RPMLINT warning)
+- Escaped some macros in comments (fix for RPMLINT warnings)
+- Made the source file a tiny bit easier to use
+
+-------------------------------------------------------------------
+Wed Oct 12 22:12:40 UTC 2011 - prusnak@opensuse.org
+
+- updated to 5.8.0
+- removed patches:
+* vtk-Balloon-Representation.patch (applied in upstream)
+* vtk-gcc43.patch (applied in upstream)
+* vtk-gcc46.patch (applied in upstream)
+* vtk-libpng14.patch (applied in upstream)
+* vtk-python27-compat.patch (applied in upstream)
+* vtk-soversion.patch (applied in upstream)
+* vtk-string-length.patch (not needed anymore)
+* vtk-testcxxjavaremove.patch (applied in upstream)
+
+-------------------------------------------------------------------
+Sat May 28 17:35:51 UTC 2011 - badshah400@gmail.com
+
+- Add explicit libQtWebKit-devel BuildRequires to fix build
+failures on openSUSE 11.3
+- Make description of sub-package vtk-qt more detailed
+- Spec file clean up
+
+-------------------------------------------------------------------
+Sat May 28 07:49:50 UTC 2011 - alinm.elena@gmail.com
+
+- fix the missing soname for libVTKnetcdf_cxx
+
+-------------------------------------------------------------------
+Sun May 22 17:02:27 UTC 2011 - stecue@gmail.com
+
+- Fix the broken vtk-qt package
+
+-------------------------------------------------------------------
+Thu Apr 14 19:59:13 UTC 2011 - badshah400@gmail.com
+
+- Fix dependencies for openSUSE 11.2 and SLE 11
+- Fix build problems with openSUSE 11.4
+
+-------------------------------------------------------------------
+Thu Apr 14 16:54:15 UTC 2011 - badshah400@gmail.com
+
+- Restored vtk-string-length.patch to solve buffer overflow errors
+during string copy operations
+
+-------------------------------------------------------------------
+Wed Mar 30 03:42:15 UTC 2011 - badshah400@gmail.com
+
+- Added vtk-sqldatabaseschema.patch (from upstream) to fix
+compilation errors with python enabled
+
+-------------------------------------------------------------------
+Wed Mar 23 18:21:30 UTC 2011 - badshah400@gmail.com
+
+- Update to version 5.6.1, rebase existing patches and remove
+unnecessary ones
+
+-------------------------------------------------------------------
+Wed Mar 23 11:01:06 UTC 2011 - badshah400@gmail.com
+
+- Add vtk-python2.7-compat.patch to fix build problems with
+python 2.7
+- Add vtk-gcc4.3.patch to fix building issues with gcc 4.3
+
+------------------------------------------------------------------
+Thu Mar 25 11:50:35 CET 2010 - boris@steki.net
+
+- Extended buffer size in VTK/Utilities/kwsys/SystemInformation.cxx

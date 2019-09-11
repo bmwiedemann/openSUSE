@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Sun May  5 09:45:57 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.1.1
+ see installed Changelog
+
+  2019-04-22 version 2.1.1:
+  
+  * Fix bug to ignore SIGDUMP_SIGNAL
+
+-------------------------------------------------------------------
+Thu Nov 22 05:36:46 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.1.0
+ see installed Changelog
+
+  2018-11-14 version 2.1.0:
+  
+  * Improve socket manager security
+
+-------------------------------------------------------------------
+Tue Jul 10 15:21:13 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.0.7
+ see installed Changelog
+
+  2018-07-09 version 2.0.7:
+  
+  * Add disable_sigdump option
+
+-------------------------------------------------------------------
+Tue Feb 27 05:33:28 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.0.6
+ see installed Changelog
+
+  2018-02-09 version 2.0.6:
+  
+  * Avoid thread error log in ruby 2.5
+
+-------------------------------------------------------------------
+Thu Mar  2 05:59:55 UTC 2017 - coolo@suse.com
+
+- updated to version 2.0.5
+ see installed Changelog
+
+  2017-03-01 version 2.0.5:
+  
+  * Support SERVERENGINE_SOCKETMANAGER_SOCK_DIR environment variable to change
+    base directory of SocketManager's socket path
+
+-------------------------------------------------------------------
+Fri Nov 25 05:41:54 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.4
+ see installed Changelog
+
+  2016-11-24 version 2.0.4:
+  
+  * Fix bug to crash Ruby VM when SocketManager fails to bind IPv6 addresses on Windows
+  
+  2016-11-22 version 2.0.3:
+  
+  * Fix bug about IPv6 handling on Windows
+
+-------------------------------------------------------------------
+Fri Nov 18 05:38:07 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.2
+ see installed Changelog
+
+  2016-11-17 version 2.0.2:
+  
+  * Fix bug to make busy loop on Windows
+  * Fix bug to execute unexpected "find" command on Windows
+
+-------------------------------------------------------------------
+Wed Oct 19 04:42:51 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.1
+ see installed Changelog
+
+  2016-10-18 version 2.0.1:
+  
+  * Fix to set GID before UID, to make it sure to set GID with superuser privilege
+
+-------------------------------------------------------------------
+Sat Oct  8 04:37:31 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.0
+ see installed Changelog
+
+  2016-08-23 version 2.0.0:
+  
+  * Add windows-pr gem dependency to get ruby_bin_path correctly
+  * Add command sender feature to use pipe to control workers for Windows
+  * Delete MultiprocessLogDevice implementation to use Ruby's one always. This
+    means removal of backward workaround code for Ruby < 2.1.
+  * Refactor modules and methods to clean internal file dependency Internal
+    symbol `ServerEngine::Daemon::Signals` is moved to `ServerEngine::Signals`
+  * Add example script to run servers
+  * Fix required Ruby version to 2.1 or later
+
+-------------------------------------------------------------------
+Thu Sep 22 10:56:37 UTC 2016 - wolfgang.engel@suse.com
+
+- Initial package 
+

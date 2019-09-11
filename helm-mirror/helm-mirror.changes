@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Fri Jul 12 20:34:12 UTC 2019 - Daniel Orf <dorf@suse.com>
+
+## v0.2.4
+
+- updated release steps
+- updated install script
+
+## v0.2.3
+
+- fixes issue while getting the latest release
+
+## v0.2.2
+
+- fixes issue with go module when installing with `helm plugin install`
+
+-------------------------------------------------------------------
+Fri Jan  4 10:47:01 UTC 2019 - Vicente Zepeda <vzepedamas@suse.com>
+
+## v0.2.1
+
+- fixes empty archive files
+- usage of ignore-errors flag
+
+fix bsc#1120762
+
+-------------------------------------------------------------------
+Tue Dec 18 13:28:35 UTC 2018 - Vicente Zepeda <vzepedamas@suse.com>
+
+- Update go requirements to >= go1.11.3 to fix
+ * bsc#1118897 CVE-2018-16873
+    go#29230 cmd/go: remote command execution during "go get -u"
+  * bsc#1118898 CVE-2018-16874
+    go#29231 cmd/go: directory traversal in "go get" via curly braces in import paths
+  * bsc#1118899 CVE-2018-16875
+    go#29233 crypto/x509: CPU denial of service
+
+-------------------------------------------------------------------
+Wed Dec 12 15:23:49 UTC 2018 - Vicente Zepeda <vzepedamas@suse.com>
+
+upgrade to the latest go version so we build with a supported go
+
+-------------------------------------------------------------------
+Tue Dec 4 11:24:37 UTC 2018 - Vicente Zepeda <vzepedamas@suse.com>
+
+## v0.2.0
+
+### Added
+
+- `mirror inspect-images` flag `--output` usage updated, flag `--file-name` no longer needed.
+  - `-o file=filename`
+  - `-o json=filename.json`
+  - `-o yaml=filename.yaml`
+  - `-o skopeo=filename.yaml`
+
+- `helm-mirror` has a new flag `--new-root-url` new root url of the chart repository.
+  (eg: `https://mirror.local.lan/charts`). This will allow users to set the name of
+  their mirror server when getting all the charts.
+
+- `downloaded-index.yaml` file changes it's name to `index.yaml` to allow users to host quickly
+  a mirror chart server.
+
+fix bsc#1117783
+
+-------------------------------------------------------------------
+Sun Nov 11 17:01:07 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in descriptions.
+
+-------------------------------------------------------------------
+Fri Oct 12 08:41:08 UTC 2018 - vzepedamas@suse.com
+
+## v0.1.0
+
+### Added
+
+- `mirror [chart-repo] [target-folder]` this command takes a chart repository and downloads all
+  chart found in there and downloads them to a local target folder.
+
+- `mirror inspect-images [target]` this command takes the target and extracts all container
+  images being used in it. It can be a single chart or a folder with multiple charts. If
+  some values are not present to process the chart you can use `--ignore-errors` flag to
+  render the charts and get the container image anyway. (this can output inconsistent data)
+
+- Use Helm configuration settings for Chart Repository.
+  - --ca-file
+  - --cert-file
+  - --key-file
+  - --password
+  - --username
+
+- CI steps with [Travis CI](https://travis-ci.org) and Code Coverage with [CodeCov](https://codecov.io)
+
+(fate#326810)
+fix bsc#1116182

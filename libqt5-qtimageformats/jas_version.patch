@@ -1,0 +1,13 @@
+Index: qtimageformats-everywhere-src-5.13.0-beta2/src/imageformats/configure.json
+===================================================================
+--- qtimageformats-everywhere-src-5.13.0-beta2.orig/src/imageformats/configure.json
++++ qtimageformats-everywhere-src-5.13.0-beta2/src/imageformats/configure.json
+@@ -22,7 +22,7 @@
+                 "test": {
+                     "include": [
+                         "string.h",
+-                        "jasper/jasper.h"
++                        "jasper/jas_config.h"
+                     ],
+                     "qmake": [
+                         "msvc: LIBS += libjasper.lib",

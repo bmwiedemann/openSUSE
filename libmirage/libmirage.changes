@@ -1,0 +1,165 @@
+-------------------------------------------------------------------
+Mon Jul  1 13:34:01 UTC 2019 - Aaron Stern <ukbeast89@ptotonmail.com>
+
+- Update to new upstream release 3.2.2
+  * ISO parser: fixed ISO9660/UDF pattern search for sector
+    sizes 2332 and 2336.
+  * ISO parser: added support for Nintendo GameCube and Wii
+    ISO images.
+  * Extended medium type guess to distinguish between DVD and
+    BluRay images based on length.
+  * Removed fabrication of disc structures from the library
+    (moved to CDEmu daemon).
+  * MDS parser: cleanup of disc structure parsing, fixed the
+    incorrectly set structure sizes.
+
+-------------------------------------------------------------------
+Mon Aug  7 13:30:23 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.1.0
+  * Avoid using g_assert_nonnull() to keep compatibility with
+    glib <= 2.40.
+  * Adjusted bundled MIME types to prevent false positives.
+  * Added infrastructure for localization support.
+  * Slovenian and Russian translations.
+  * Improved compile-time checks of arguments passed to debug
+    message functions.
+  * Explicitly specify minimum required zlib version (1.2.4).
+  * Fixed acquisition of underlying streams in DMG ans ISZ filters.
+- Drop 01_g_assert_nonnull.diff,
+  libmirage-3.0.5-glib-2.28-workaround.patch
+  (integrated upstream)
+
+-------------------------------------------------------------------
+Sat Apr 06 08:39:43 UTC 2017 - zenitur@ya.ru
+
+- Fix SLES 11 build. We're also need Glib 2.28 instead of 2.22.5.
+  Most desktop and workstation users are turn on Packman
+  repository, so they're have Glib 2.28 installed from there.
+- Added 01_g_assert_nonnull.diff patch taken from Cdemu PPA.
+- Add libmirage-3.0.5-glib-2.28-workaround.patch
+- Add glib2-devel as a required for the -devel package. That fixes
+  some rpmbuild warning.
+
+-------------------------------------------------------------------
+Mon Feb  6 18:08:02 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.0.5
+  * Removed a spurious stream reference increment when creating
+    text streams.
+  * CUE parser: fixed the flags regex
+  * Text-based parsers: added an assert to verify that all regexes
+    have compiled properly.
+
+-------------------------------------------------------------------
+Mon Nov 23 20:34:07 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.0.4:
+  * CUE, CCD, TOC, XCDRoast parsers: Fix a crash due to invalid
+    read attempts on uninitialised regex match info structure.
+  * MDS, MDX parser: Fix a memory leak.
+  * CIF parser: Fix signature matching.
+  * CIF parser: Improve pretty-print of some values.
+  * CIF parser: Fix track length calculation.
+  * CMake: Replace whitespaces in custom target names with "-"
+    signs (silence CMP0037 warnings on CMake 3.2.2 and newer).
+- Add missing MIME compilation.
+- Use %cmake macro.
+
+-------------------------------------------------------------------
+Tue Nov 25 05:46:30 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.0.3
+* fixed an out-of-bounds array access when initializing CRC-32
+  table data in mirage_helper_init_crc32_lut()
+
+-------------------------------------------------------------------
+Thu Oct  2 13:29:26 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.0.2
+* TOC writer: fixed object (session, track, fragment) leak.
+  Fixes problems with no data being written to files in cases when
+  a virtual image is written, its target files removed and then
+  burned again.
+
+-------------------------------------------------------------------
+Sat Sep  6 13:26:49 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.0.1
+* added missing installation rules for GBI and XMD MIME types
+
+-------------------------------------------------------------------
+Sun Jul 13 08:48:46 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to new upstream release 3.0.0
+* The file access and filter stream layer in libMirage were
+  revised to allow implementation of filters for both reading and
+  writing, and an infrastructure for implementing image writers
+  was added, along with reference implementations for ISO and TOC
+  writers.
+
+-------------------------------------------------------------------
+Sun Nov 24 11:18:45 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.1.1
+* sector's EDC is now computed using fast slice-by-8 CRC32 algorithm
+* added function for ISRC validation to be used by image parsers
+- Remove 0001-libMirage-proper-versioning-of-the-introspection-typ.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
+Sun Jun  9 13:54:54 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.1.0
+* This release adds a MacBinary/NDIF file filter, a new resource
+  fork parser for DMG, samplerate conversion for the SndFile filter,
+  non-blocking I/O, and dynamic device addition/removal.
+- Remove patches (merged upstream):
+  0001-libMirage-CMake-fix-SOVERSION-which-should-be-set-to.patch,
+  0001-libMirage-READCD-Parser-readcd-from-cdrtools-appears.patch,
+  0001-libMirage-READCD-Parser-when-verifying-the-file-don-.patch,
+  0001-libMirage-SNDFILE-filter-instead-of-a-single-frame-c.patch
+- Add (cherry-picked fixes):
+  0001-libMirage-proper-versioning-of-the-introspection-typ.patch
+
+-------------------------------------------------------------------
+Tue Mar 12 09:30:09 UTC 2013 - jengelh@inai.de
+
+- Add 0001-libMirage-SNDFILE-filter-instead-of-a-single-frame-c.patch
+  to resolve excess CPU usage during CDDA readout
+  (bnc#809181, bnc#809862)
+
+-------------------------------------------------------------------
+Sun Feb 24 20:08:18 UTC 2013 - jengelh@inai.de
+
+- Add 0001-libMirage-READCD-Parser-when-verifying-the-file-don-.patch
+  0001-libMirage-READCD-Parser-readcd-from-cdrtools-appears.patch
+  to make images created by readcd(1) usable again
+  (bugurl: http://sf.net/p/cdemu/feature-requests/21/)
+
+-------------------------------------------------------------------
+Sat Jan  5 21:47:42 UTC 2013 - jengelh@inai.de
+
+- Add 0001-libMirage-CMake-fix-SOVERSION-which-should-be-set-to.patch
+
+-------------------------------------------------------------------
+Sat Dec 22 08:23:15 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.0.0 (up from 1.5.0)
+* Added ISZ, CSO and DMG file filters
+* Converted DAA parser to a file filter and added support for the
+  related GBI format
+* Converted audio fragment to a file filter
+* Added file filter machinery and converted existing code to use it
+* Image analyzer displays disc structures
+* Added support for gobject introspection
+* Added support for GZIP and XZ compressed images
+* Added support for ECM'ed files
+* Improved CIF parser
+* Partial support for (one track) MDX images
+* Improved GVFS support
+
+-------------------------------------------------------------------
+Mon May 21 17:33:17 UTC 2012 - jengelh@inai.de
+
+- Initial package for build.opensuse.org

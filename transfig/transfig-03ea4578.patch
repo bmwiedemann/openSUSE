@@ -1,0 +1,169 @@
+commit 03ea4578258d2d9ca1ceb080e469ad261db39ef0
+Author: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date:   Fri Jul 26 23:25:50 2019 +0200
+
+    Allow circle arrowheads when mag >= 42, ticket #52
+    
+    Circle and half-circle arrowheads would be drawn with 40 + mag/4 points by
+    calc_arrow() in bound.c. However, the point arrays passed to calc_arrow()
+    would only contain 50 points. With a magnification >= 42, a buffer overrun
+    would occur. Simply use 40 points, independent of magnification.
+
+---
+ fig2dev/bound.c       |    6 +++---
+ fig2dev/read1_3.c     |   16 +++++++++-------
+ fig2dev/tests/read.at |   27 +++++++++++++++++++++++++--
+ 3 files changed, 37 insertions(+), 12 deletions(-)
+
+--- fig2dev/bound.c
++++ fig2dev/bound.c	2019-08-15 07:06:42.609509358 +0000
+@@ -905,7 +905,7 @@ calc_arrow(int x1, int y1, int x2, int y
+ 	    /*
+ 	     * CIRCLE and HALF-CIRCLE arrowheads
+ 	     *
+-	     * We approximate circles with (40+zoom)/4 points
++	     * We approximate circles with 40 points
+ 	     */
+ 	    double	maxx;
+ 	    double	fix_x, fix_y, xs, ys;
+@@ -936,8 +936,8 @@ calc_arrow(int x1, int y1, int x2, int y
+ 	    dy = my - ys;
+ 	    fix_x = xs + (dx / 2.0);
+ 	    fix_y = ys + (dy / 2.0);
+-	    /* choose number of points for circle - 40+mag/4 points */
+-	    *npoints = np = round(mag/4.0) + 40;
++	    /* choose number of points for circle */
++	    *npoints = np = 40;
+ 
+ 	    if (type == 5) {
+ 		/* full circle */
+--- fig2dev/read1_3.c
++++ fig2dev/read1_3.c	2019-08-15 07:06:42.609509358 +0000
+@@ -3,7 +3,7 @@
+  * Copyright (c) 1991 by Micah Beck
+  * Parts Copyright (c) 1985-1988 by Supoj Sutanthavibul
+  * Parts Copyright (c) 1989-2012 by Brian V. Smith
+- * Parts Copyright (c) 2015-2018 by Thomas Loimer
++ * Parts Copyright (c) 2015-2019 by Thomas Loimer
+  *
+  * Any party obtaining a copy of these files is granted, free of charge, a
+  * full and unrestricted irrevocable, world-wide, paid up, royalty-free,
+@@ -228,13 +228,14 @@ read_compoundobject(FILE *fp)
+ 		&com->secorner.x, &com->secorner.y);
+ 	if (n != 4) {
+ 	    put_msg("Incorrect compound object format");
++	    free(com);
+ 	    return(NULL);
+ 	    }
+ 	while (fscanf(fp, "%d", &object) == 1) {
+ 	    switch (object) {
+ 		case OBJ_POLYLINE :
+ 		    if ((l = read_lineobject(fp)) == NULL) {
+-			free_line(&l);
++			free_compound(&com);
+ 			return(NULL);
+ 			}
+ 		    if (ll)
+@@ -244,7 +245,7 @@ read_compoundobject(FILE *fp)
+ 		    break;
+ 		case OBJ_SPLINE :
+ 		    if ((s = read_splineobject(fp)) == NULL) {
+-			free_spline(&s);
++			free_compound(&com);
+ 			return(NULL);
+ 			}
+ 		    if (ls)
+@@ -254,7 +255,7 @@ read_compoundobject(FILE *fp)
+ 		    break;
+ 		case OBJ_ELLIPSE :
+ 		    if ((e = read_ellipseobject(fp)) == NULL) {
+-			free_ellipse(&e);
++			free_compound(&com);
+ 			return(NULL);
+ 			}
+ 		    if (le)
+@@ -264,7 +265,7 @@ read_compoundobject(FILE *fp)
+ 		    break;
+ 		case OBJ_ARC :
+ 		    if ((a = read_arcobject(fp)) == NULL) {
+-			free_arc(&a);
++			free_compound(&com);
+ 			return(NULL);
+ 			}
+ 		    if (la)
+@@ -274,7 +275,7 @@ read_compoundobject(FILE *fp)
+ 		    break;
+ 		case OBJ_TEXT :
+ 		    if ((t = read_textobject(fp)) == NULL) {
+-			free_text(&t);
++			free_compound(&com);
+ 			return(NULL);
+ 			}
+ 		    if (lt)
+@@ -284,7 +285,7 @@ read_compoundobject(FILE *fp)
+ 		    break;
+ 		case OBJ_COMPOUND :
+ 		    if ((c = read_compoundobject(fp)) == NULL) {
+-			free_compound(&c);
++			free_compound(&com);
+ 			return(NULL);
+ 			}
+ 		    if (lc)
+@@ -304,6 +305,7 @@ read_compoundobject(FILE *fp)
+ #else
+ 	    put_msg("Format error.");
+ #endif
++	    free_compound(&com);
+ 	    return(NULL);
+ 	    }
+ 	}
+--- fig2dev/tests/read.at
++++ fig2dev/tests/read.at	2019-08-15 07:08:11.443867403 +0000
+@@ -2,7 +2,7 @@ dnl Fig2dev: Translate Fig code to vario
+ dnl Copyright (c) 1991 by Micah Beck
+ dnl Parts Copyright (c) 1985-1988 by Supoj Sutanthavibul
+ dnl Parts Copyright (c) 1989-2015 by Brian V. Smith
+-dnl Parts Copyright (c) 2015-2018 by Thomas Loimer
++dnl Parts Copyright (c) 2015-2019 by Thomas Loimer
+ dnl 
+ dnl Any party obtaining a copy of these files is granted, free of charge, a
+ dnl full and unrestricted irrevocable, world-wide, paid up, royalty-free,
+@@ -14,7 +14,7 @@ dnl party to do so, with the only requir
+ dnl and this permission notice remain intact.
+ 
+ dnl read.at
+-dnl Author: Thomas Loimer, 2017, 2018
++dnl Author: Thomas Loimer, 2017-2019
+ 
+ 
+ AT_BANNER([Sanitize input files in read.c.])
+@@ -208,6 +208,29 @@ EOF
+ ],1,ignore,ignore)
+ AT_CLEANUP
+ 
++AT_SETUP([process circle arrow at mag > 42, ticket #52])
++AT_KEYWORDS([bound.c])
++# With the -fsanitize=address option, a magnification >= 42 triggers an error.
++# Without the -fsanitize=address option, a segfault only results
++# if the array is accessed far enough from its valid range;
++# Use a magnification of 420.
++AT_CHECK([fig2dev -L box <<EOF
++#FIG 3.2
++Landscape
++Center
++Inches
++Letter
++42000.0
++Single
++-2
++1200 2
++2 1 0 1 0 7 50 -1 -1 0.0 0 0 -1 1 0 2
++	5 0 1.0 60.0 120.0
++	 0 0 600 0
++EOF
++], 0, ignore)
++AT_CLEANUP
++
+ AT_BANNER([Dynamically allocate picture file name.])
+ 
+ AT_SETUP([prepend fig file path to picture file name])

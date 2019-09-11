@@ -1,0 +1,48 @@
+--- ./slpd/slpd_predicate.c.orig	2014-12-15 13:07:38.636640141 +0000
++++ ./slpd/slpd_predicate.c	2014-12-15 13:10:09.507004676 +0000
+@@ -1643,7 +1643,7 @@ SLPDPredicateParseResult createPredicate
+       rhs = val_start;
+ 
+       /***** Create leaf node. *****/
+-      *ppNode = (SLPDPredicateTreeNode *)xmalloc(sizeof (SLPDPredicateTreeNode) + lhs_len + rhs_len);
++      *ppNode = (SLPDPredicateTreeNode *)xmalloc(sizeof (SLPDPredicateTreeNode) + lhs_len + 1 + rhs_len + 1);
+       if (!(*ppNode))
+          return PREDICATE_PARSE_INTERNAL_ERROR;
+ 
+@@ -1653,7 +1653,7 @@ SLPDPredicateParseResult createPredicate
+       /* Finished with "operator" now - just use as temporary pointer to assist with copying the
+        * attribute name (lhs) and required value (rhs) into the node
+        */
+-      operator = (*ppNode)->nodeBody.comparison.storage;
++      operator = (char *)((*ppNode) + 1);
+       strncpy(operator, lhs, lhs_len);
+       operator[lhs_len] = '\0';
+       (*ppNode)->nodeBody.comparison.tag_len = lhs_len;
+@@ -1853,7 +1853,7 @@ SLPDPredicateParseResult createPredicate
+       rhs = val_start;
+ 
+       /***** Create leaf node. *****/
+-      *ppNode = (SLPDPredicateTreeNode *)xmalloc(sizeof (SLPDPredicateTreeNode) + lhs_len + rhs_len);
++      *ppNode = (SLPDPredicateTreeNode *)xmalloc(sizeof (SLPDPredicateTreeNode) + lhs_len + 1 + rhs_len + 1);
+       if (!(*ppNode))
+          return PREDICATE_PARSE_INTERNAL_ERROR;
+ 
+@@ -1863,7 +1863,7 @@ SLPDPredicateParseResult createPredicate
+       /* Finished with "operator" now - just use as temporary pointer to assist with copying the
+        * attribute name (lhs) and required value (rhs) into the node
+        */
+-      operator = (*ppNode)->nodeBody.comparison.storage;
++      operator = (char *)((*ppNode) + 1);
+       strncpy(operator, lhs, lhs_len);
+       operator[lhs_len] = '\0';
+       (*ppNode)->nodeBody.comparison.tag_len = lhs_len;
+--- ./slpd/slpd_predicate.h.orig	2014-12-15 13:07:43.084621416 +0000
++++ ./slpd/slpd_predicate.h	2014-12-15 13:08:00.738547083 +0000
+@@ -98,7 +98,6 @@ typedef struct __SLPDPredicateTreeNode
+          char *tag_str;
+          size_t value_len;
+          char *value_str;
+-         char storage[2];
+       } comparison;
+    } nodeBody;
+ } SLPDPredicateTreeNode;

@@ -1,0 +1,23 @@
+openSUSE specific packaging
+===========================
+
+OpenBLAS provides optimized implementations of BLAS and LAPACK.
+openSUSE provides two variants:
+ * With OpenMP support
+ * With threading support
+The serial variant has been dropped. To run a program
+which requires the serial version (ie. because it is
+multi-threaded itself), either specify the environment
+variable OMP_NUM_THREADS=1 or place a call to
+  void openblas_set_num_threads(int num_threads);
+in your program to limit the number of threads this library
+uses to 1.
+
+On x86 systems OpenBLAS uses dynamic architectures support, 
+so it contains all CPU-related optimizations.
+
+How to switch between the various BLAS/LAPACK implementations
+=============================================================
+
+The openmp and threaded variants may be installed in parallel.
+To select which one to use please use the 'modules' command.

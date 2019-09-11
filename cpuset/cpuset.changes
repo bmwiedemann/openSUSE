@@ -1,0 +1,317 @@
+-------------------------------------------------------------------
+Tue Dec 11 10:59:55 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Dec 11 07:49:13 UTC 2018 - lpechacek@suse.com
+
+- Update to 6c46d71a1c6e, release v1.6
+
+-------------------------------------------------------------------
+Tue Mar 27 19:15:20 UTC 2018 - tchvatal@suse.com
+
+- Do not require -devel but use only setuptools module
+- Use ~ in version as without it the package is newer than
+  release 1.6
+- Reduce the compat py2/py3 choicer, SLE12 can be python3
+
+-------------------------------------------------------------------
+Thu Feb  8 07:50:25 UTC 2018 - lpechacek@suse.com
+
+- Update to 02ef9e09e1da, release v1.6pre1 (bsc#1079868)
+
+-------------------------------------------------------------------
+Fri Mar 24 08:11:36 UTC 2017 - lpechacek@suse.com
+
+- Fix SLE 11 build in Devel project
+
+-------------------------------------------------------------------
+Thu Mar  9 04:07:50 UTC 2017 - sfalken@opensuse.org
+
+- Edited %files to clear unpackaged files builderror in
+  openSUSE:Factory
+
+-------------------------------------------------------------------
+Wed Jan 13 18:39:38 UTC 2016 - idonmez@suse.com
+
+- Cleanup spec file
+- Use source url
+
+-------------------------------------------------------------------
+Wed Jan 13 08:32:13 UTC 2016 - lpechacek@suse.com
+
+- Update to ae629aa1dc95, release 1.5.7
+- Deleted patches:
+  Docu-fix-asciidoc-build-error.patch
+  Docu-fixed-a-typo.patch
+  Docu-remove-mention-about-nonexistent-option.patch
+  Fix-crash-with-SCHED_IDLE-policy.patch
+  Fix-typo-in-setup-py.patch
+  Handle-unknown-scheduler-policy-codes-gracefully.patch
+  Parse-proc-pid-stat-properly.patch
+  Update-URLs-after-project-migration.patch
+  cset-make-it-handle-cgroup-mounts.patch
+
+-------------------------------------------------------------------
+Wed Dec 30 12:00:50 UTC 2015 - mgalbraith@suse.com
+
+- Remove obsolete 'Authors' section from cpuset.spec.
+
+-------------------------------------------------------------------
+Tue Dec 29 07:41:24 UTC 2015 - mgalbraith@suse.com
+
+- Merge new cpuset upstream.  Update URL, and add post v1.5.6 fixes.
+
+- New patches:
+  Fix-crash-with-SCHED_IDLE-policy.patch (bnc#959992)
+  Handle-unknown-scheduler-policy-codes-gracefully.patch (bnc#959992)
+  Parse-proc-pid-stat-properly.patch
+  Docu-remove-mention-about-nonexistent-option.patch (bnc#957323)
+  Docu-fix-asciidoc-build-error.patch
+  Update-URLs-after-project-migration.patch
+  Docu-fixed-a-typo.patch
+  Fix-typo-in-setup-py.patch
+
+-------------------------------------------------------------------
+Wed May 28 02:40:03 UTC 2014 - mgalbraith@suse.com
+
+- Explicitly state that the previous commit..
+
+  "Make cset handle cgroup/cpuset mount types"
+
+..added patch cset-make-it-handle-cgroup-mounts.patch
+-------------------------------------------------------------------
+Tue May 27 07:38:24 UTC 2014 - mgalbraith@suse.com
+
+- Make cset handle cgroup/cpuset mount types (SUSE bnc#625079, SUSE bnc#834223) 
+
+-------------------------------------------------------------------
+Sat Sep 17 23:56:58 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Thu Jun  9 15:44:57 EDT 2011 - Alex Tsariounov <alext@novell.com>
+
+- Update to hg 33:74eb810ae9d9, release 1.5.6
+- Fix Issue#5: LOGNAME not set wnen exec with --user arg
+
+-------------------------------------------------------------------
+Tue Aug  3 16:10:19 MDT 2010 - Alex Tsariounov <alext@novell.com>
+
+- Update to hg 28:a73efd0e8871, release 1.5.5
+- Fix Issue#3: cset fails to create cpu sets if some cpus are offline
+
+-------------------------------------------------------------------
+Fri May  7 16:42:49 MDT 2010 - Alex Tsariounov <alext@novell.com>
+
+- Update to hg 23:c6e5393187b2, release 1.5.4
+- Fix exception when running tasks with non-existent uids
+
+-------------------------------------------------------------------
+Thu Feb 11 14:14:03 MST 2010 - Alex Tsariounov <alext@novell.com>
+
+- Update to hg 18:e50c7714a80d, release 1.5.3
+- Fix failure of finding cpusets in a case-sensitive manner
+- Code repository and hosting moved to http://code.google.com/p/cpuset
+- Updated dates and details
+
+-------------------------------------------------------------------
+Mon Nov 30 14:28:23 MST 2009 - Alex Tsariounov <alext@novell.com>
+
+- Update to svn 251, release 1.5.2
+- Fix bug bnc#558395: cset couldn't delete cpu set
+- Fix bug bnc#558399 - cset unable to move thread
+- Fixed failure to delete cpuset if removed tasks stil
+  preset since they can be tardy to leave
+- Quiet down not found and unmovable task output
+- Add example init.d cset file in documentation directory
+
+-------------------------------------------------------------------
+Wed Jun 17 12:52:05 MDT 2009 - Alex Tsariounov <alext@novell.com>
+
+- Update to svn 226, release 1.5.1
+- Fix bug #26: Cpuset does not function on machines with greater than 16 CPUs
+
+-------------------------------------------------------------------
+Sat Feb  7 18:39:46 MST 2009 - alext@suse.de
+
+- Update to svn 221, release 1.5.0
+- Fix bug #1: Origination cpuset not accepted for process move...
+- Fix bug #2: Proc move from set to set does not recognize...
+- Fix bug #3: Interspersed arguments do not work
+- Fix bug #4: Add policy and priority to proc output list
+- Fix bug #5: Add ability to move all threads in a process container wi.
+- Fix bug #6: The -a option for set listing should be the default
+- Fix bug #7: Add destination cpuset for the proc move command
+- Fix bug #8: Let leading slash for nested cpuset spec be optional
+- Fix bug #9: Rearrange info output some, include machine readable output
+- Fix bug #10: Add a recursive cpuset delete with option
+- Fix bug #11: Add a configuration file
+- Fix bug #12: Add hex mask output for cpuset definition spec (cpuspec)
+- Fix bug #13: Add cpuset rename option to set command
+- Fix bug #21: Create shield shortcuts
+- Changed behavior of shield command, now it behaves more like the proc move
+  command: -s or -u needs a -p to shield or unshield, however, the shortcut of
+  shield pidspec still works.
+- Fixed exception when using cset with pipes
+- Fixed set list behavior if --set was specified but not --list
+- Added error message if proc list command does not specify a set
+- Fixed exception if proc is used with -l and -s
+- Location for cpuset filesystem mount can be specified in config file
+- Changed proc option -a/--all to --force only
+- Updated copyrights, URLs and documentation
+- Added spec file to svn which is used in build service
+- Cleaned up status output for clarity and consistency
+- Additional minor corner case bug fixes included
+
+-------------------------------------------------------------------
+Thu Dec  4 11:49:30 MST 2008 - alext@suse.de
+
+- Updated spec file to build on many distros
+
+-------------------------------------------------------------------
+Wed Sep  3 00:55:34 CEST 2008 - alext@suse.de
+
+- Update to svn version 135, release 1.04
+- Fixes bnc#422324 - Cset tool fails when cpu offlined
+
+-------------------------------------------------------------------
+Fri Jul 18 22:16:21 CEST 2008 - alext@suse.de
+
+- Update to svn version 133, release 1.03
+- Remove class variable CpuSet.sets dictionary when CpuSet object
+  (re)initialized.  If you use cset as a library, then since the
+  class var did not get zeroed out, old sets were found on
+  cset.rescan() which broke the data structure.
+- Fixes bnc#410636
+
+-------------------------------------------------------------------
+Tue Jun 10 23:51:47 CEST 2008 - alext@suse.de
+
+- Update to svn version 126, release 1.02
+- Fix bug in new cpuset mount detection code
+
+-------------------------------------------------------------------
+Tue Jun 10 21:05:57 CEST 2008 - alext@suse.de
+
+- Update to svn version 122, release 1.01
+- Fix community reported bug of not seeing cpuset filesystem 
+  mounted if running control groups (cgroups)
+- Remove need to mount cpuset filesystem if only executing help
+- Fix traceback if giving list of sets to list procs command
+
+-------------------------------------------------------------------
+Sat May 31 01:44:10 CEST 2008 - alext@suse.de
+
+- Update to svn version 117, release 1.0
+- Addition of man pages and html docs
+
+-------------------------------------------------------------------
+Fri May  9 21:00:14 CEST 2008 - alext@suse.de
+
+- Update to svn revision 104, release 0.9.1
+- Fix bug #388958
+- Add files README and COPYING to rpm
+
+-------------------------------------------------------------------
+Fri May  2 03:01:09 CEST 2008 - alext@suse.de
+
+- Update to svn version 102, release 0.9
+- Added -k/--kthread to proc move command to move kernel threads
+- Kernel threads are not moved automatically for generic move
+  unless -k is also used
+- If kernel threads are not unbound, then both -k and -a is 
+  necessary
+- Improved information output for why tasks are moved or not
+- FYI: previous release 0.8 was svn revision 96
+
+-------------------------------------------------------------------
+Wed Apr 23 19:12:06 CEST 2008 - alext@suse.de
+
+- Fixed bug #380819
+- Fixed incorrect test for unbound task for shield; affects 
+  kernel thread shielding 
+- Change proc -l to always output long listing of tasks in
+  specified cpuset since set -l will output summary
+- Removed text re recommending 2.6.22
+- Added correct source url
+- Added check for existing subsets for set --delete command
+- Switched to Novell Outerforge for svn:
+  http://developer.novell.com/wiki/index.php/Cpuset
+
+-------------------------------------------------------------------
+Thu Apr  3 20:02:08 CEST 2008 - alext@suse.de
+
+- Update to svn version 143, release 0.7
+- First fully functional release: commands shield, set and proc
+  work.
+- Updated online docs.
+- Known issues: 
+-  irq threads not moved for -kon for shield command
+-  odd messages output from OS when incorrect cpusets commands 
+   issued
+-  missing documentation: man pages and tutorial
+
+-------------------------------------------------------------------
+Fri Mar 21 00:36:38 CET 2008 - alext@suse.de
+
+- Update to svn version 127, release 0.6
+- Added --user/--group for exec options for the shield and proc
+  commands.  Cset still needs to be root in order to manipulate
+  cpusets, but you can exec other processes as different users.
+- Removed explicit check for root uid.  Now all permissions checks
+  are implicit.
+- Changed proc/--run to proc/--exec to match shield.
+- Shield/unshield commands now only move tasks from unshield to shield
+  or shield to unshield, and leave tasks in the root cpuset alone,
+  unless the --force option is specified.
+- Added clearer output feedback.
+
+-------------------------------------------------------------------
+Tue Mar 18 21:09:23 CET 2008 - alext@suse.de
+
+- Update to svn version 116, release 0.5
+- Fixes to cset/proc command for moving tasks.
+- More cset/set code, but set still not 100%.
+
+-------------------------------------------------------------------
+Sat Mar 15 00:00:41 CET 2008 - alext@suse.de
+
+- Update to svn version 109, release 0.4
+- The proc command is fully functional. The set command has
+  documentation and revised options. The mem command has been
+  removed.
+
+-------------------------------------------------------------------
+Wed Mar 12 18:31:36 CET 2008 - alext@suse.de
+
+- Update to svn version 89, release 0.3
+- Incorporate feedback for shield supercommand from initial 0.2 
+  release.
+
+-------------------------------------------------------------------
+Sat Feb 16 02:19:24 CET 2008 - alext@suse.de
+
+- Update to version 0.2, svn version 77.
+- The shield supercommand is fully functional.  Other commands are
+  not yet implemented.
+
+-------------------------------------------------------------------
+Thu Jan 24 20:12:50 CET 2008 - alext@suse.de
+
+- Remove error in abuild for including generic doc directory in
+  list of files
+
+-------------------------------------------------------------------
+Thu Jan 24 02:09:59 CET 2008 - alext@suse.de
+
+- Changed --record to --record-rpm to fix build. 
+
+-------------------------------------------------------------------
+Wed Jan 16 01:29:54 CET 2008 - alext@suse.de
+
+- Initial submission to autobuild, pdb entry exists.
+- Currently not functional, version set to 0.1.
+

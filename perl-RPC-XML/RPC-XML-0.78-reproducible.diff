@@ -1,0 +1,13 @@
+Index: RPC-XML-0.78/etc/make_method
+===================================================================
+--- RPC-XML-0.78.orig/etc/make_method
++++ RPC-XML-0.78/etc/make_method
+@@ -399,7 +399,7 @@ sub write_file
+ <?xml version="1.0" encoding="iso-8859-1"?>
+ <!DOCTYPE $tag SYSTEM "rpc-method.dtd">
+ <!--
+-    Generated automatically by $cmd $VERSION on $date
++    Generated automatically by $cmd $VERSION
+ 
+     Any changes made here will be lost.
+ -->

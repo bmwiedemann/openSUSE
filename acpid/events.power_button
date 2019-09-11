@@ -1,0 +1,4 @@
+# care about the power button
+
+event=button/power.*
+action=/usr/lib/acpid/power_button

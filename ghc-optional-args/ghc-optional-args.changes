@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Jun 11 14:29:13 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Update Cabal file for more accurate build dependencies.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:31:48 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Fri Jul 20 13:38:38 UTC 2018 - psimons@suse.com
+
+- Add optional-args at version 1.0.2.

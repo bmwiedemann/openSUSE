@@ -1,0 +1,1038 @@
+-------------------------------------------------------------------
+Thu Jun 13 14:22:06 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- openscap 1.3.1
+  - New features
+    - Support for SCAP 1.3 Source Datastreams (evaluating, XML schemas, validation)
+    - Introduced `oscap-podman` -- a tool for SCAP evaluation of Podman images and containers
+    - Tailoring files are included in ARF result files
+    - OVAL details are always shown in HTML report, users do not have to provide `--oval-results` on command line
+    - HTML report displays OVAL test details also for OVAL tests included from other OVAL definitions using `extend_definition`
+    - OVAL test IDs are shown in HTML report - Rule IDs are shown in HTML guide
+    - Added `block_size` in Linux `partition_state` defined in OVAL 5.11.2
+    - Added `oscap_wrapper` that can be used to comfortably execute custom compiled oscap tool
+  - Maintenance and bug fixes
+    for a complete list please see https://github.com/OpenSCAP/openscap/releases/tag/1.3.1
+- removed patches accepted upstream:
+  rpmverifyfile_unittest.patch  rpmverify_unittest.patch sysctl_unittest.patch
+  test_probes_rpmverifypackage-disable-epoch-test.patch xinetd_probe.patch
+
+-------------------------------------------------------------------
+Tue Mar 26 13:55:18 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- obsolete removed packages: openscap-engine-sce and openscap-extra-probes
+
+-------------------------------------------------------------------
+Mon Mar 25 18:54:37 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gconf2-devel BuildRequires: It is not mandatory, so lets
+  build without this obsolete package.
+- Add pkgconfig(glib-2.0) and pkgconfig(gobject-2.0) BuildRequires:
+  They are also optional, but not obsolete, and previously pulled
+  in via gconf2-devel dependency, so lets build support for them.
+
+-------------------------------------------------------------------
+Fri Oct 19 15:46:44 UTC 2018 - Robert Frohl <rfrohl@suse.com>
+
+- openscap-1.3.0 
+  - New features
+	- Introduced a virtual '(all)' profile selecting all rules
+	- Verbose mode is a global option in all modules
+	- Added Microsoft Windows CPEs
+	- oscap-ssh can supply SSH options into an environment variable
+  - Maintenance
+	- Removed SEXP parser
+	- Added Fedora 30 CPE
+	- Fixed many Coverity defects (memory leaks etc.)
+	- SCE builds are enabled by default
+	- Moved many low-level functions out of public API
+	- Removed unused and dead code
+	- Updated manual pages
+	- Numerous small fixes
+- xinetd_probe.patch: fix trailing whitespace in config
+- test_probes_rpmverifypackage-disable-epoch-test.patch: fix rpmverifypackage unit test
+- sysctl_unittest.patch: fix sysctl unit test
+- rpmverifyfile_unittest.patch: fix rpmverifyfile unit test
+- rpmverify_unittest.patch: fix rpmverify unit test
+- openscap-xattr.patch: removed, included by upstream
+
+-------------------------------------------------------------------
+Wed Sep 12 05:56:03 UTC 2018 - meissner@suse.com
+
+- openscap-xattr.patch: build against new libattr 
+
+-------------------------------------------------------------------
+Thu Jun  7 08:46:23 UTC 2018 - meissner@suse.com
+
+- scap-yast2sec-xccdf.xml: remove platform cpe match, as it is impossible
+  to match both opensuse and sles or official suse_linux_enterprise_server
+  names at once. (bsc#1091040)
+
+-------------------------------------------------------------------
+Tue May 29 09:47:16 UTC 2018 - meissner@suse.com
+
+- openscap-1.2.17
+  - New features
+    - HTML Guide user experience improvements
+    - New options in HTML report "Group By" menu
+    - oscap-ssh supports --oval-results (issue #863)
+  - Maintenance
+    - Support comparing state record elements with item
+    - Updated Bash completion
+    - Make Bash role headers consistent with --help output
+    - Fixed problems reported by Coverity (issue #909)
+    - Fixed CVE schema to support 4 to 7 digits CVEs
+    - Fix output of generated bash role missing fix message
+    - Fix oscap-docker to clean up temporary image (RHBZ #1454637)
+    - Fix Ansible remediations generation
+    - Add a newline between ids in xccdf info (issue #968)
+    - Fix unknown subtype handling in oval_subtype_parse (issue #986)
+    - Outsourced the pthreads feature check and setup
+    - Speed up in debug mode
+    - Refactored the Python handling in build scripts
+    - Prevent reading from host in offline mode (issue #1001)
+    - Many probes use OWN offline mode
+    - Improve offline mode logic in OVAL probes
+    - Do not use chroot in system_info probe
+    - Prevent a segfault in oscap_seterr on Solaris
+    - Out of tree build is possible
+    - Use chroot for RPM probes in offline mode
+    - PEP8 accepts lines up to 99 characters
+    - New configure parameter --with-oscap-temp-dir (issue #1016)
+    - Fixed OVAL record elements namespace and SEXP conversion
+    - Removed '\r' characters from help output (issue #1023)
+    - Full Python 3 compatibility
+    - Removed basic Python implementation of oval_probes.c
+    - Added support for Travis CI and Sonar Cloud
+    - Minor fixes inspired by Sonar Cloud
+    - Added Fedora 29 CPE
+    - New tests in upstream test suite (offline mode, Ansible, etc.)
+
+-------------------------------------------------------------------
+Thu Apr 26 12:56:42 UTC 2018 - meissner@suse.com
+
+- openscap-new-suse.patch: handle SLE15 and openSUSE Leap 42.3 and 15.0
+  (bsc#1091040)
+
+-------------------------------------------------------------------
+Mon Mar  5 15:11:19 UTC 2018 - jengelh@inai.de
+
+- Replace old $RPM_* shell vars.
+
+-------------------------------------------------------------------
+Mon Mar  5 12:39:51 UTC 2018 - meissner@suse.com
+
+- replace oscap-scan.init by oscap-scan.service, add a /usr/bin/oscap-scan
+  helper tool for this. (bsc#1083115)
+
+-------------------------------------------------------------------
+Thu Feb 22 13:41:36 UTC 2018 - meissner@suse.com
+
+- disable scap-as-rpm binary to avoid python2 dependency. (bsc#1082135)
+
+-------------------------------------------------------------------
+Thu Nov 23 13:44:24 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Tue Nov 14 14:17:28 UTC 2017 - meissner@suse.com
+
+- openscap-productid-cvrf.patch: add a --productid selector
+  for "oscap cvrf" as upstream does not detect the system yet.
+  (might go away)
+
+-------------------------------------------------------------------
+Tue Nov 14 12:14:41 UTC 2017 - meissner@suse.com
+
+- openscap-1.2.16
+  - New features
+    - oscap can generate output that is compatible with STIG Viewer.
+    - CVRF parsing and export has been implemented.
+    - oscap info command has been expanded.
+    - The AIX platform is supported.
+    - Many documentation improvements.
+    - Numerous other improvements of existing features.
+  - Maintenance
+    - Huge cross-platform improvements.
+    - Memory leaks fixed (RHBZ#1485876).
+    - SELinux fixes.
+    - Many coverity fixes.
+    - Numerous other bugfixes.
+- buildrequire procps-devel
+
+-------------------------------------------------------------------
+Fri Aug 25 13:41:48 UTC 2017 - meissner@suse.com
+
+- openscap-1.2.15 / 25-08-2017
+  - New features
+    - short profile names can be used instead of long IDs
+    - new option --rule allows to evaluate only a single rule
+    - new option --fix-type in "oscap xccdf generate fix" allows choosing
+      remediation script type without typing long URL
+    - "oscap info" shows profile titles
+    - OVAL details in HTML report are easier to read
+    - HTML report is smaller because unselected rules are removed
+    - HTML report supports NIST 800-171 and CJIS
+    - remediation scripts contain headers with useful information
+    - remediation scripts report progress when they run
+    - basic support for Oracle Linux (CPEs, runlevels)
+    - remediation scripts can be generated from datastreams that contain
+      multiple XCCDF benchmarks (issue #772)
+    - basic support for OVAL 5.11.2 (only schemas, no features)
+    - enabled offline RPM database in rpminfo probe (issue #778)
+    - added Fedora 28 CPE
+  - Maintenance
+    - fixed oscap-docker with Docker >= 2.0 (issue #794)
+    - fixed behavior of sysctl probe to be consistent with sysctl tool
+    - fixed generating remediation scripts (issue #723, #773)
+    - severity of tailored rules is not discarded (issue #739)
+    - fixed errors in RPM probes initialization
+    - oscap-docker shows all warnings reported by oscap (issue #713)
+    - small improvements in verbose mode
+    - standard C operations are used instead of custom OpenSCAP operations
+    - fixed compiler warnings
+    - fixed missing header files
+    - fixed resource leaks (issue #715)
+    - fixed pkgconfig file (RHBZ #1414777)
+    - refactoring
+    - documentation fixes and improvements
+
+-------------------------------------------------------------------
+Fri Apr  7 09:35:00 UTC 2017 - jengelh@inai.de
+
+- Remove line-trailing whitespace from last changelog entry.
+- Rename %soname to %sover to better reflect its use.
+- Replace unnecessary %__-type macro indirections.
+
+-------------------------------------------------------------------
+Tue Mar 21 12:20:23 UTC 2017 - meissner@suse.com
+
+- openscap-1.2.14 / 21-03-2017
+  - New features
+    - Detailed information about ARF files in 'oscap info' (issue #664)
+    - XSLT template creating XCCDF files from OVAL files
+    - Generating remediation scripts from ARF
+    - Significant improvements of User Manual (issue #249, #513)
+    - HTML report UX improvements (issue #601, #620, #622, #655)
+    - Warnings are shown by default
+    - Verbose mode is available in 'xccdf remediate' module (issue #520)
+    - Added Fedora 26, Fedora 27 and OpenSUSE 42.2 CPEs (issue #698)
+    - Support for Anaconda remediation in HTML report
+  - Maintenance
+    - Fixed CPE dictionary to identify RHEVH as RHEL7 (RHBZ #1420038)
+    - Fixed systemd probes crashes inside containers (RHBZ #1431186, issue #700)
+    - Added a warning on non-existing XCCDF Benchmarks (issue #614)
+    - Fixed output on terminals with white background (RHBZ #1365911, issue #512)
+    - Error handling in oscap-vm (RHBZ #1391754)
+    - Fixed SCE stderr stalling (RHBZ #1420811)
+    - Fixed Android OVAL schema (issue #279)
+    - Fixed absolute filepath parsing in OVAL (RHBZ #1312831, #1312824)
+    - Fixes based on Coverity scan report (issue #581, #634, #681)
+    - Fixed duplicated error messages (issue #707)
+    - Fixed XCCDF score calculation (issue #617)
+    - Fixed segmentation faults in RPM probes (RHBZ #1414303, #1414312)
+    - Fixed failing DataStream build if "@" is in filepath
+    - Fixed missing header in result-oriented Ansible remediations
+    - Memory leak and resource leak fixes (issue #635, #636)
+    - New upstream tests
+    - Many minor fixes and improvements
+
+-------------------------------------------------------------------
+Fri Jan  6 14:37:37 UTC 2017 - meissner@suse.com
+
+- openscap-1.2.13 / 05-01-2017
+  - Maintenance
+    - we always build system_info OVAL probe, fixed configure output accordingly
+    - warn when the user requests to generate an ARF from XCCDF 1.1
+    - fixed a segfault when loading an OVAL file with invalid family attribute
+    - added --thin-results CLI override to oscap xccdf eval
+    - added --without-syschar CLI override to oscap xccdf eval
+    - fixed a segfault when freeing xccdf_policy of the default profile
+    - removed ARF schematron workaround when there are no applicable checks
+    - fixed verbose output in oscap xccdf generate fix
+    - do not filter fix by applicability when generating remediations from results
+    - fixed memory leaks, resource leaks and other minor issues
+
+-------------------------------------------------------------------
+Mon Nov 21 09:40:15 UTC 2016 - meissner@suse.com
+
+- openscap-1.2.12 / 21-11-2016
+  - New features
+    - separated stdout and stderr in SCE results and HTML report
+    - HTML reports contain [ref] links for rules and groups
+  - Maintenance
+    - fixed ARF errors reported by the SCAPval tool
+    - fixed CVE parsing (issue #550)
+    - fixed namespace of ARF vocabulary according to NIST SP800-126 errata
+    - fixed exporting OVAL Windows namespaces
+    - fixed injecting xccdf:check-content-ref references in ARF results
+    - fixed oscap-docker incompliance reporting (issue #475, RHBZ #1387248)
+    - fixed oscap-docker man page (RHBZ #1387166)
+    - fixed memory leaks and resource leaks
+    - small fixes and refactoring, test suite fixes
+
+-------------------------------------------------------------------
+Tue Oct 18 07:09:13 UTC 2016 - meissner@suse.com
+
+- openscap-1.2.11 / 14-10-2016
+  - New features
+    - huge speed-up of generating HTML reports and guides
+    - support remote datastream components (issue #526)
+    - support tailoring of external datastreams
+    - various attributes of remediation scripts are now shown in HTML report (issue #541)
+    - new option generating OVAL results without system characteristics
+    - remediation scripts in HTML report are now collapsed
+    - support for extracting Ansible playbooks
+    - enabled fetching remote resources in OVAL module
+    - added Wind River Linux CPE
+  - Maintenance
+    - updated jQuery and bootstrap libraries in HTML reports
+    - extended, improved and updated user manual
+    - fixed issues with proxy in oscap-docker (RHBZ #1351952)
+    - fixed a bug in OVAL arithmetic function
+    - fixed a segmentation fault (issue #529)
+    - fixed results of XCCDF rules with @role="unscored" (issue #525)
+    - fixed invalid characters in OVAL results (issue #468)
+    - fixed a segmentation fault in tailoring (RHBZ #1367896)
+    - updated SUSE 11 CPE
+    - fixed many memory issues
+    - large refactoring of datastream module
+    - new tests in upstream test suite
+    - various small fixes and improvements
+
+- openscap-1.2.10 / 29-06-2016
+  - New features
+    - support --benchmark-id when running `oscap xccdf generate guide`
+    - added CPE support for OpenSUSE 42.1
+  - Maintenance
+    - oscap-docker fixed to be source compatible with both Python 2 and 3
+    - fixed offline mode in rpmverifypackage probe
+    - fixed scanning of non-RHEL containers in oscap-docker (issue #427)
+    - fixed regression in loading a datastream session (RHBZ #1250072)
+    - fixed missing SCE results in XCCDF reports (issue #394)
+    - fixed a segmentation fault (issue #370)
+    - fix error message when OVAL generator element is missing (issue #345)
+    - fixed failing rpminfo probe
+    - fixed compilation on RHEL5 (issue #393)
+    - new tests in upstream test suite
+    - test suite is able to run on Fedora 24
+    - fixed remediation scripts appearance in HTML guides (issue #460)
+    - fixed autoconf build
+    - small fixes, refactoring, small documentation improvements
+
+-------------------------------------------------------------------
+Fri Apr 22 13:50:51 UTC 2016 - meissner@suse.com
+
+- openscap 1.2.9 release
+  - New features
+    - oscap-chroot - a tool for offline scanning of filesystems mounted at arbitrary paths
+    - enabled offline scanning in many probes
+    - support for SCE in data streams
+    - many improvements of verbose mode
+    - verbose messages can be written on stderr
+    - runlevel probe supports SUSE systems
+    - new upstream tests
+  - Maintenance
+    - a lot of refactoring
+    - fixes in various tests
+    - OCILs are correctly placed in datastreams (issue #364)
+    - oscap-vm can work with fusermount when guestunmount is not available
+    - fixed oscap-docker HTTP communication issues (issue #304)
+    - fixed oscap-docker tracebacks (issue #303, #317)
+    - fixed container mounting in oscap-docker (issue #329)
+    - added Fedora 25 CPE
+    - only non-empty profiles are built (rhbz#1256879, rhbz#1302230)
+    - fixed compiler errors on RHEL5 and SLES11
+    - fixed sorting of groups in HTML report (issue #342)
+    - fixed version/@time and version/@update in XCCDF Benchmark
+    - fixed CPE definitions to work also in offline mode
+    - fixed sysctl probe (issue #258)
+    - fixed manual page for oscap-ssh (rhbz#1299969)
+    - updated user manuals and manual pages
+    - updated .gitignore
+- dropped fix-missing-include.dif, not needed anymore
+
+-------------------------------------------------------------------
+Wed Mar 23 10:21:27 UTC 2016 - meissner@suse.com
+
+- enable the SCE (script checking engine)
+  packaged in "openscap-engine-sce" subpackage.
+- enable the CCE (Common Configuration Enumeration)
+
+
+-------------------------------------------------------------------
+Tue Jan 19 10:22:08 UTC 2016 - meissner@suse.com
+
+- openscap 1.2.8 release
+  - Maintenance
+    - textfilecontent54_probe does not produce false positives on non-UTF files (rhbz #1285757)
+    - fixed oscap-docker
+    - small improvements in verbose mode
+    - oscap info module shows information about tailoring files
+    - fixed build with CCE (issue #264)
+    - fixed XCCDF score computation (issue #272)
+    - fixed segmentation fault in variable probe (issue #277)
+    - fixed broken support for OVAL directives
+    - fixed bash completion
+    - plugged memory leaks
+    - fixed fresh static analysis (coverity) findings
+    - fixed shellcheck warnings
+    - new tests
+    - refactoring in datastream module
+    - many small bugfixes and typo fixes
+
+-------------------------------------------------------------------
+Thu Dec  3 13:06:14 UTC 2015 - meissner@suse.com
+
+- openscap 1.2.7 release
+  - New features
+    - OVAL 5.11.1 fully supported
+    - oscap-vm - tool for offline scanning of virtual machines
+    - verbose mode
+    - added SLED, SLES and OpenSUSE CPE names
+    - show profile description in HTML report and guide
+    - group rules by PCI DSS identifier in HTML report
+    - preliminary support for Ansible Playbooks within xccdf:fix
+    - added "How to contribute" and "Versioning" documents
+  - Maintenance
+    - using bziped RHSA documents in oscap-docker
+    - fixed errors of sysctl probe
+    - fixed skip-valid option (issue #203)
+    - fixed segmentation faults in SCE content reporting (issue #231)
+    - fixed tracebacks of scap-as-rpm
+    - fixed invalid memory reads in rpmverifyfile probe (issue #212)
+    - updated README and user manual
+    - many small bugfixes and new tests
+- openscap-new-inventory.patch: upstreamed
+- fix-missing-include.dif: refreshed, 1 hunk upstream
+
+-------------------------------------------------------------------
+Fri Oct  9 09:35:46 UTC 2015 - meissner@suse.com
+
+- openscap-new-inventory.patch: find out the CPE ids of
+  SUSE Linux Enterprise and openSUSE versions.
+
+-------------------------------------------------------------------
+Mon Oct  5 11:45:28 UTC 2015 - meissner@suse.com
+
+- openscap 1.2.6 release
+  - New features
+    - introduced OpenSCAP user manual
+    - improved OVAL 5.11.1 support
+      - added OVAL 5.11.1 XSD schemas and schematrons
+      - support for core/platform schema versions
+      - support for check_existence attribute in state entities
+      - support for CIM datetime format
+      - amended behavior of mask attribute
+    - added support for remote .xml.bz2 files (use with --fetch-remote-resources)
+    - rewrote oscap-docker to python, deeper integration with Atomic Host
+    - introduced CPE name for Fedora 24 to the internal dictionary
+  - HTML report & guide
+    - results can be grouped by according to various aspects
+    - printing supported (interactive elements are now hidden when printing)
+    - table of content now shows only selected items (rule & groups)
+    - references to RHSA are presented as links to website (rhbz#1243808)
+  - Maintenance
+    - scap-as-rpm can now build source rpm packages (srpms) (trac#469)
+    - scap-as-rpm now supports python3
+    - refactored oval processing into oval_session structure
+    - many smaller bugfixes and new tests
+- new openscap-docker subpackage
+
+-------------------------------------------------------------------
+Mon Jul  6 11:40:29 UTC 2015 - meissner@suse.com
+
+- openscap-1.2.5 update
+ - maintenance
+   - smaller bugfixes
+   - plugged memory leaks
+   - fixed fresh static analysis (coverity) findings
+   - fixed shellcheck warnings
+   - fixes for Solaris platform
+
+-------------------------------------------------------------------
+Mon Jun 22 09:39:44 UTC 2015 - meissner@suse.com
+
+- openscap-1.2.4 update
+  - new features
+    - OVAL 5.11 support 99.8% completed!
+      - new symlink probe introduced
+      - new process58 test capabilities
+      - added possible_value support for external variables
+      - added possible_restriction support for external variables
+      - improved IP address comparisons
+    - Added Scientific Linux CPEs
+    - Added oscap-docker tool
+    - Created man-page for oscap-ssh
+  - HTML changes
+    - improved visibility of selected XCCDF profile in guides and reports
+    - render rule-result/message contents in reports
+  - maintenance
+    - Tests now pass on ppc64 little endian arch (rhbz#1215220)
+    - partition probe now supports remount, bind and move mount options
+    - Patched NIST OVAL-5.11 schemas to be backward compatible with
+      OVAL-5.10 (rhbz#1220262)
+    - fixed scap-as-rpm to work with vintage python (2.6)
+    - better error reporting when a probe dies (i.e. due to OOM killer)
+    - dropped selinux policy from upstream (rhbz#1209969)
+    - fix segfault on invalid selectors (rhbz#1220944)
+    - solaris support patches: file-system zones, systeminfo improvements
+    - many smaller fixes and new tests
+
+
+-------------------------------------------------------------------
+Sun May  3 07:55:55 UTC 2015 - meissner@suse.com
+
+- openscap-1.2.3 update
+ - new features
+   - oscap-ssh -- handy utility to run remote scan over ssh
+   - glob_to_regexp OVAL function added
+ - HTML changes
+   - show rationale elements
+   - show fixtext elements
+   - show Benchmark's front-matter, description and notices
+   - show warnings for Groups and Rules
+   - improved handling of multiple fixes within a single Rule
+   - scroll evaluation characteristic if they overflow
+ - maintenance
+   - OVAL 5.11 schema fixes
+   - Coverity and memory leak fixes
+   - skip transient files when traversing /proc (trac#457)
+
+-------------------------------------------------------------------
+Tue Apr  7 09:35:55 UTC 2015 - meissner@suse.com
+
+- openscap-1.2.2 update
+ - new features
+   - OVAL 5.11 support turned on by default
+   - included OVAL 5.11 schematron rules
+   - DataStream can now contain OVAL 5.11
+   - `oscap ds sds-compose` now supports --skip-valid parameter
+ - HTML report changes
+   - Notably increased level of OVAL details
+   - Table of contents is now generated for HTML guides
+ - maitenance
+   - rhbz#1182242, rhbz#1159289 - @var_check & @var_ref exporting
+   - solaris build fixes
+   - xccdf:fix/instance processing fixes
+   - improved (none) epoch processing in rpm probe
+   - environmentvariable58 now emits warning messages when appropriate
+   - offline mode improvements
+   - other bugfixes
+
+-------------------------------------------------------------------
+Mon Jan 12 09:40:11 UTC 2015 - meissner@suse.com
+
+- openscap-1.2.1 update
+ - API changes
+   - 5.11 schemas updated (from RC1 to gold)
+   - oscap_source_new_from_memory can take bzip2ed content
+ - HTML report changes
+   - severity bar is now reversed (left-to-right)
+ - maintenance
+   - rhbz#1165139 - fix probe cancelation
+   - dozen of bugfixes
+
+-------------------------------------------------------------------
+Tue Dec  2 12:44:35 UTC 2014 - meissner@suse.com
+
+- openscap-1.2.0 update
+ - new features
+   - native support of bzip2ed SCAP files (file extension needs to be '.xml.bz2')
+   - improved performance on huge XML documents, especially DataStreams
+   - minimized use of temp files to absolute minimum
+   - added OVAL-5.11 release candidate schemas
+ - API changes
+   - overall 50 new symbols added to public API
+   - introduced oscap_source abstraction for input files
+     - further info: http://isimluk.livejournal.com/4859.html
+     - all the parsers converted to use oscap_source abstraction
+   - introduced ds_sds_session, high level API for playing with Source DataStreams
+   - introduced cpe_session, abstraction to approach multiple CPE resources
+   - introduced ds_rds_session, high level API for playing with Result DataStreams
+     (ARF files)
+   - deprecated dozens of API calls dependent on filepath
+   - introduced API for waivers (xccdf:override) and modification of ARF
+     - initial support for waivers in HTML Report
+   - dozens of small improvements
+ - maintenance
+   - dozens of small fixes
+   - dozens of memory leaks (whole test suite is now leak free)
+   - updated gnulib
+- openscap-1.1.0-fix-bashisms.patch: upstreamed
+
+-------------------------------------------------------------------
+Mon Dec  1 12:38:45 UTC 2014 - meissner@suse.com
+
+- openscap-1.1.1 update
+  - Hint towards `oscap info` when profile is not found in oscap tool
+  - HTML report changes:
+    - Source OVAL results from ARF if available
+    - Highlight notchecked rules, treat them as rules that need attention
+  - HTML guide changes:
+    - Variable Substitution improvements
+    - Show benchmark title
+    - Show info about selected profile
+    - Avoid cdf12:notice, show only its contents
+  - bugfixes:
+    - improved handling of fqdn in XCCDF
+    - memory leaks
+    - static analysis fixes
+
+-------------------------------------------------------------------
+Sat Nov 29 01:11:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in oscap-scan.cron script
+- add patches:
+  * openscap-1.1.0-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Wed Sep  3 12:09:10 UTC 2014 - meissner@suse.com
+
+- openscap-1.1.0 update
+ - HTML report and guide redesign
+ - dropped support for docbook
+ - Introduced new probes (that are to be part of OVAL 5.11)
+   - probe_systemdunitproperty
+   - probe_systemdunitdependency
+ - introduced raw bindings for python3
+ - dozens of small bug fixes
+
+-------------------------------------------------------------------
+Wed Jul  2 12:41:39 UTC 2014 - meissner@suse.com
+
+- openscap-1.0.9 update
+ - xccdf_session_export_arf must not return 0 if the export failed
+ - expose xccdf_policy_get_value_of_item as public API
+ - skip "Signature" when parsing sds_index without spewing out an error
+ - return non-zero when cannot resolve XCCDF
+ - consider the last set-value as the effective set-value and export only one
+ - test suite fixes
+ - do not destroy SVG data in XCCDFs when generating guide or report
+
+-------------------------------------------------------------------
+Thu Jun 19 14:19:09 UTC 2014 - crrodriguez@opensuse.org
+
+- Remove unused build require on libnl-1_1 according to the
+  changelog, it stopped beign used in 2010
+- libattr is also unused.
+
+-------------------------------------------------------------------
+Fri Mar 28 13:19:22 UTC 2014 - meissner@suse.com
+
+- openscap-1.0.8 update:
+  - fixes related to Asset Reporting Format
+    - Inject arf:report/@id into nested
+      rule-result/check/check-content-ref/@href
+    - Add hostname for each fqdn when generating ARF asset identification
+      data
+    - Add all MAC addresses from target-facts to ARF as asset
+      identification data
+
+-------------------------------------------------------------------
+Fri Mar 21 12:46:34 UTC 2014 - meissner@suse.com
+
+- openscap-1.0.7 update:
+ - fix namespaces for attributes in ARF relationship element
+ - Avoid ".00" as the score in HTML report when score is 0.
+
+-------------------------------------------------------------------
+Wed Mar 19 09:09:20 UTC 2014 - meissner@suse.com
+
+- openscap-1.0.6 update:
+ - fix process58 loginuid integer handling on 32bit
+
+-------------------------------------------------------------------
+Mon Mar 17 07:06:35 UTC 2014 - meissner@suse.com
+
+- openscap-1.0.5 update:
+ - XCCDF titles and description support xccdf:sub resolution
+ - HTML Report lists only applicable cpe platforms
+ - TestResult element contains applicable cpe platforms
+ - Introduced XCCDF 1.2 schematron validation
+ - XCCDF bug fixes
+    - tailoring profiles shall regards inherited refine-values (trac#373)
+    - rule-result now always includes at least one check
+ - Other bug fixes:
+    - Dpkginfo probe collects epoch in evr
+    - Updated examplary openscap-content based on the latest facts from
+      Red Hat Enterprise Linux 6
+    - Minor changes
+
+-------------------------------------------------------------------
+Fri Feb 14 10:21:47 UTC 2014 - meissner@suse.com
+
+- openscap-1.0.4 update:
+ - Introduced xccdf_tailoring_remove_profile to API
+ - OVAL bug fixes
+
+-------------------------------------------------------------------
+Tue Jan 14 16:42:51 UTC 2014 - meissner@suse.com
+
+- openscap-1.0.3 update:
+  - bug fixes
+    - a few coverity issues
+    - a few memory leak plugs
+    - broken comparison of huge integet in OVAL
+- fix-return.patch: removed, has upstream fix
+
+-------------------------------------------------------------------
+Fri Jan 10 10:25:19 UTC 2014 - meissner@suse.com
+
+- openscap-1.0.2 update:
+  - XCCDF generate fix now supports tailoring file
+  - XCCDF bug fixes
+    - Generate guide points to RHSA pages (rhbz#1018291)
+    - Generate report ommits remediation when assesment passed
+      (rhbz#1029879)
+    - $PATH variable is available for SCE checks (rhbz#1026833)
+    - Tailoring of top-level Group elements via API fixed
+    - Fix-filtering should not drop fixes (affected SSG)
+    - Generated fix file is created with sane permissions (trac#362)
+    - Inherit parent's namespace when exporting oscap_text with HTML
+      trait
+  - OVAL bug fixes:
+    - Handful of xinetd probe fixes
+    - Handful of process and process58 fixes
+    - Obsoleted textfilecontent now supports text ent comparisons
+    - rpm*_item/epoch is reported as '(none)' when needed
+    - Fixed dozen of flaws in ipv4 and ipv6_address comparison
+      (CIDR handling)
+    - Made integer and floating type number parsing much stricter
+    - Fixed floating point numbers comparisons (trac#366)
+    - Fixed case-insensitive comparisons
+    - Item filtering fixes in probes
+    - Consolidated some of comparisons in results model and probes
+     (trac#367)
+  - Other bug fixes:
+    - Workaround libxml2 bug handling x509 xmldsig (gnomebz#350248)
+    - Fixed static build (--disable-shared)
+    - Format assertions (-Werror=format-security) turned on by default
+    - SCE scripts are notified when parent (oscap) is killed
+    - oscap info now recognizes all the document types
+      (adeded: tailoring & CVE)
+    - Documentation improvements
+    - Handful of other minor fixes
+- fix-return.patch: Fixed a void return
+
+-------------------------------------------------------------------
+Mon Dec  2 16:53:56 UTC 2013 - meissner@suse.com
+
+- move the gconf probe to openscap-extra-probes to reduce
+  dependencies of the core probe set.
+
+-------------------------------------------------------------------
+Thu Nov 28 12:57:03 UTC 2013 - meissner@suse.com
+
+- openscap-1.0.1 update:
+ - versioned interface is used to handle internal SCE plug-in
+ - build-in gnulib package was updated to current version
+ - bug fixes:
+    - selinux_domain_label and posix_capability properties
+      were reintroduced to OVAL system characteristics model
+    - selinux_domain_label now collects the domain/type
+      (not the context)
+    - oscap oval collect reports progress on stdout (not on the stderr)
+    - typo in the manual page (rhbz#1032537), and another small
+      clarification
+
+-------------------------------------------------------------------
+Tue Nov 19 12:50:35 UTC 2013 - meissner@suse.com
+
+- openscap-1.0.0 / 19-11-2013
+  - Improved heuristic to distinguish 'local' and 'remote' file systems
+  - Improved comparison of EntityStateEVRStringType (trac#355)
+  - Link against librpm (if available) to include rpmvercmp
+    (on other platforms we fall back to the build-in rpmvercmp)
+  - Bug fixes
+
+- openscap-0.9.13 / 08-11-2013
+  - Moved SCE to separate shared library (libopenscap_sce.so)
+  - Introduction of scap-as-rpm tool
+  - Improvements of sql and sql57 probes
+  - Improvements of SELinux policy
+  - Amendments based on SCAP 1.2 Errata (sp800-126r2-errata-20120409.pdf)
+  - Minor improvements in state_entity processing
+  - Introduction of CPE name for Fedora 21 to the internal dictionary
+  - Added support for ind-def:pid/@xsi:nil (rhbz#1013011)
+  - Improved error reporting
+  - Bug fixes
+    - Changed CPE name regex to be more permissive
+    - avoided reports from the library to the stdout and stderr
+    - plugged several memory leaks
+    - improved xccdf:check-content-refs processing
+    - misspelling in syslog message (rhbz#1021695)
+    - fixed OVAL's <field> element processing
+    - fixes based on static analysers
+    - test suite is locale independent
+- new library major version 8
+
+-------------------------------------------------------------------
+Fri Oct 11 13:10:42 UTC 2013 - meissner@suse.com
+
+- Updated to 0.9.12
+  - tailoring improvements (@id, version, and benchmark ref attributes)
+  - XCCDF 1.1 tailoring extension
+  - improved robustness of CPE dictionary parser and exporter
+    - and added misc CPE 2.3 elements
+  - added Fedora 20 to internal CPE dictionary
+  - updated OVAL's results_to_html stylesheet from Mitre Corporation.
+  - profiles with duplicate selects (same @idref) now export correctly
+  - test improvements
+  - bug fixes
+    - fixed IPv6 export in TestResult/target-address
+    - consistently inject target-id-ref into TestResult in ARFs
+    - improved rpmdb manipulation (rhbz#999903)
+    - solaris build fixes
+    - spelling of name of default language fixed (oscap_text related)
+    - fixed CPE names matching (generalization vs. specialization)
+
+-------------------------------------------------------------------
+Wed Jul 17 15:25:53 UTC 2013 - meissner@suse.com
+
+- Updated to 0.9.11
+  - bugfixes
+- Updated to 0.9.10
+  - bugfixes
+- Updated to 0.9.9
+  - --oval-results also exports CPE OVAL results
+  - added --benchmark-id to select a component-ref by ID of Benchmark it's pointing to
+  - OVAL variable_instance processing (or so called value multiset) and the processing
+    of @variable_instance attribute to OVAL Result Definition, OVAL Result Test and
+    Collected Objects.
+  - improved test coverage of OVAL variable processing
+  - introduced new internal data type: oval_smc
+  - added support for evaluating OVAL definitions against an RPM database, a.k.a. rpm
+    database offline mode
+  - bug fixes and dead code removal
+
+-------------------------------------------------------------------
+Mon Jun 17 11:44:21 UTC 2013 - meissner@suse.com
+
+- updated to 0.9.8
+  - added experimental support for offline mode scanning to the OVAL
+    check engine (i.e. scanning of virtual host disk images)
+  - improved OVAL variables processing
+  - bug fixes and dead code removal
+
+-------------------------------------------------------------------
+Sat May  4 15:37:25 UTC 2013 - mc@suse.com
+
+- fix build on SLE11 - possible 64Bit issue
+  - fix-missing-include.dif
+
+-------------------------------------------------------------------
+Mon Apr 29 09:21:35 UTC 2013 - meissner@suse.com
+
+- updated to 0.9.7
+  - bugfixes
+
+-------------------------------------------------------------------
+Thu Apr 25 11:28:31 UTC 2013 - meissner@suse.com
+
+- updated to 0.9.6
+  - new command-line module added as preview: "oscap ds sds-add"
+  - improved xccdf:fix processing (support of DataStreams and CPE)
+  - internal selinux policy preview
+  - added Fedora 19 to default CPE dictionary
+  - bug fixes
+
+-------------------------------------------------------------------
+Wed Mar 20 10:04:57 UTC 2013 - meissner@suse.com
+
+- updated to 0.9.5
+  - oscap xccdf remediate (new oscap module which introduces offline
+    remediation; the remediation based on existing xccdf:testresult file)
+  - added support for sce into datastream (sce scripts can now be
+    embedded into the datastream file similarly as oval can)
+  - improved bash completion and documentation
+  - bug fixes
+- bumped SOVERSION from 2 to 3.
+
+-------------------------------------------------------------------
+Wed Feb 27 08:53:37 UTC 2013 - meissner@suse.com
+
+- updated to 0.9.4
+  - high Level API
+  - improved Text Substitution Processing
+  - technical Preview of Online Remediation Execution
+     (the oscap xccdf eval --remediate)
+  - improved Library Internal Error Reporting.
+  - the oscap xccd export-oval-variables now support DataStreams.
+  - improved documentation
+  - improved schema files.
+  - tailoring file support
+  - profile shadowing support
+  - bug Fixes
+- DOWNGRADED SOVERSION from 3 to 2.
+
+-------------------------------------------------------------------
+Tue Jan  8 10:47:53 UTC 2013 - meissner@suse.com
+
+- updated to 0.9.3
+  - Embedded CPE dictionary (allows users to ommit --cpe argument)
+  - improvements of DataStream and CPE processing on RHEL5
+  - changed API of various functions in cpe_dict, benchmark and
+    xccdf_policy to use string timestamp instead of time_t [1]
+  - fixed several issues found by Coverity and cppcheck static code
+    analysis
+  - bug fixes
+- bumped SOVERSION from 2 to 3.
+
+-------------------------------------------------------------------
+Mon Nov 19 15:47:21 UTC 2012 - meissner@suse.com
+
+- updated to 0.9.2:
+- rewritten the heuristic for pattern matching on path and filepath
+- CPE 2.3 language applicability testing
+- new ds_sds_index API providing a datastream overview
+- CPEs in source datastreams are automatically registered and used
+   for XCCDF evaluation
+- --cpe option autodetects CPE dictionary and language
+- CVE support (validate feed, print CVEs)
+- introduced info module
+- made "$oscap xccdf generate custom" work again -> man page update
+- bug fixes
+
+
+-------------------------------------------------------------------
+Thu Oct 25 14:26:53 UTC 2012 - meissner@suse.com
+
+- updated to 0.9.1:
+  - the http in the check-content-ref/@hrefhref support
+  - the cpedict support
+  - obsoleted the oscap_reporter
+  - send start and finish messages to the syslog
+  - the XCCDF multi-check evaluation support
+  - "oscap oval validate-xml" autodetect a document type
+  - bug fixes
+
+-------------------------------------------------------------------
+Fri Sep 28 07:54:36 UTC 2012 - meissner@suse.com
+
+- updated to 0.9.0:
+  * few public headers were renamed to follow common schema
+  * cve and cce modules are not build by default -> these modules are not
+    utilized by oscap tool and thus untested.
+  * --enable-bindings configure option was split into --enable-python and
+    support of SCAP datastream support was improved
+  * plus fixes in OVAL and XCCDF modules. oscap tool reports support of
+    XCCDF 1.2 and OVAL 5.10.1
+- libopenscap.so major version changed from 1 to 2.
+
+-------------------------------------------------------------------
+Wed Aug 29 07:56:05 UTC 2012 - meissner@suse.com
+
+- updated to 0.8.5:
+  - added rpmverifypackage probe
+  - added initial support for source and result datastreams
+  - added xccdf 1.2 dc-status support
+  - several probes were updated to conform to OVAL 5.10.1
+  - bug fixes
+
+  This release is able to evaluate the DISA STIG content.
+
+-------------------------------------------------------------------
+Tue Aug  7 12:57:51 UTC 2012 - meissner@suse.com
+
+- updated to 0.8.4
+  - added OVAL schemas 5.9, 5.10.1
+  - alloc.h is no more public api
+  - bug fixes
+
+-------------------------------------------------------------------
+Fri Aug  3 09:00:36 UTC 2012 - dmacvicar@suse.de
+
+- Fix schema_version of scap-rhel6-oval.xml (to 5.8)
+
+-------------------------------------------------------------------
+Wed Aug  1 09:43:28 UTC 2012 - meissner@suse.com
+
+- Updated to 0.8.3
+  - added XCCDF 1.2 schemas
+  - changed XCCDF report format
+  - updated schemas for OVAL 5.10
+  - added additional OVAL schemas - 5.3, 5.4, 5.5, 5.6, 5.7
+  - multi version support for XCCDF and OVAL
+  - a schema version of an imported and exported content is same
+  - added rpmverifyfile probe
+  - results are validated only if an OSCAP_FULL_VALIDATION variable is set
+  - bug fixes
+
+-------------------------------------------------------------------
+Wed Aug  1 09:18:06 UTC 2012 - dmacvicar@suse.de
+
+- add OVAL/XCCDF content based on yast2-security checks
+  and set them as the default content (using symlinks)
+
+-------------------------------------------------------------------
+Sat Jul 28 14:24:46 UTC 2012 - aj@suse.de
+
+- Fix build with missing gets declaration (glibc 2.16)
+
+-------------------------------------------------------------------
+Fri Mar 30 16:21:21 CEST 2012 - meissner@suse.de
+
+- Updated to 0.8.2
+  - XCCDF check-import support
+  - XSLT transformation for XCCDF 1.1 to 1.2 migration
+  - SCE reports now optionally use the new check-import functionality
+    and don't need separate SCE result files
+  - bug fixes
+
+-------------------------------------------------------------------
+Sat Mar 24 10:54:22 UTC 2012 - mc@suse.com
+
+- require libnl-devel on older SUSE version
+
+-------------------------------------------------------------------
+Mon Mar 19 15:52:17 UTC 2012 - cfarrell@suse.com
+
+- license update: LGPL-2.1+
+  There is no GPL-3.0+ in this package. Also, the Fedora spec file states
+  LGPL-2.1+. This appears to be the correct license
+
+-------------------------------------------------------------------
+Wed Feb 29 22:47:20 CET 2012 - meissner@suse.de
+
+- some cleanups to make it factory acceptable
+
+-------------------------------------------------------------------
+Tue Feb 28 17:52:44 CET 2012 - mc@suse.de
+
+- Update to 0.8.1
+- introduce Script Check Engine
+- Added an OVAL Directives schema to allow for a tool
+  to supply a set of directives to more easily specify
+  desired results content.
+- Enhanced OVAL Results directives to allow for more flexibility
+  in allowed results content
+- added new OVAL objects(all OVAL 5.8 objects are covered now)
+- update dpkgprobe
+- all issues reported by coverity are fixed
+- add capability to export OVAL Variables from XCCDF
+- added cvss score calculator from vector
+
+-------------------------------------------------------------------
+Fri Apr 29 15:56:23 CEST 2011 - meissner@suse.de
+
+- Updated to 0.7.2
+  - OVAL 5.7 is supported
+  - content for Red Hat Enterprise Linux 6.1 - draft
+  - oscap tool enable user to skip content validation before evaluation
+  - bugfixes
+
+-------------------------------------------------------------------
+Mon Jul  5 00:16:27 UTC 2010 - bitshuffler #suse@irc.freenode.org
+
+- Update to 0.5.12
+- Proper subpackages added
+
+-------------------------------------------------------------------
+Thu Nov 19 13:50:12 CET 2009 - meissner@suse.de
+
+- initial 0.5.5 import
+	- open SCAP protocol implementation
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2016 Sorokin Alexei <sor.alexei@meowr.ru> -->
+<component type="desktop">
+ <id type="desktop">when-command.desktop</id>
+ <metadata_license>CC0-1.0</metadata_license>
+ <project_license>BSD-3-Clause</project_license>
+ <description>
+  <p>
+   When is a configurable user task scheduler. It interacts with the
+   user through a GUI, where the user can define tasks and conditions,
+   as well as relationships of causality that bind conditions to
+   tasks. When a condition is bound to a task, it is said to trigger a
+   task.
+  </p>
+ </description>
+ <url type="homepage">http://almostearthling.github.io/when-command</url>
+</component>

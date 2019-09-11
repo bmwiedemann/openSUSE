@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:54:02 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Aug 24 13:54:21 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Thu Mar  6 14:42:11 UTC 2014 - speilicke@suse.com
+
+- Add provides/obsoletes for python-ScriptTest, this one is newer
+
+-------------------------------------------------------------------
+Tue Jan  7 14:10:36 UTC 2014 - speilicke@suse.com
+
+- Initial version
+
+

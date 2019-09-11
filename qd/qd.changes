@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Mon Feb 25 07:19:04 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to version 2.3.22
+  Changes for 2.3.22
+    Made changes suggested by Vasiliy Sotnikov
+    
+  Changes for 2.3.21
+    Changed renorm in include/qd/qd_inline.h
+        
+  Changes for 2.3.20
+    added #include <string.h> to quadt_test.cpp
+    changed references to 2.3.20 from 2.3.18
+                
+  Changes for 2.3.19
+    - Updated qd_real.cpp and dd_real.cpp to fix a
+      buffer overflow problem.
+
+  Changes for 2.3.18
+    - Updated qd_real.cpp and dd_real.cpp to fix a problem in output.
+  
+  Changes for 2.3.17
+    - updated qd_real.cpp, to fix a problem with improper treatment of
+      negative arguments in nroot.
+      
+  Changes for 2.3.16
+    - Updated dd_real.cpp, to fix a problem with inaccurate values
+      of tanh for small arguments.
+
+- License changed to BSD-3-Clause-LBNL  
+  
+-------------------------------------------------------------------
+Wed Nov  5 10:34:00 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 2.3.15
+  * bugfix release, see included ChangeLog for details
+
+-------------------------------------------------------------------
+Mon Aug 20 17:16:43 UTC 2012 - scorot@free.fr
+
+- spec file enhancement
+
+-------------------------------------------------------------------
+Mon Aug 20 06:20:00 UTC 2012 - scorot@free.fr
+
+- fix devel package dependency
+
+-------------------------------------------------------------------
+Sun Aug 19 22:28:09 UTC 2012 - scorot@free.fr
+
+- fix Source0 file extension
+
+-------------------------------------------------------------------
+Sun Aug 19 22:06:11 UTC 2012 - scorot@free.fr
+
+- first package
+

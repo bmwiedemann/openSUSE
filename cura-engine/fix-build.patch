@@ -1,0 +1,23 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2717e987..edd2a93c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -54,7 +54,6 @@ endif()
+ if(NOT DEFINED LIB_SUFFIX)
+     set(LIB_SUFFIX "")
+ endif()
+-set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}")
+ 
+ set(CURA_ENGINE_VERSION "master" CACHE STRING "Version name of Cura")
+ 
+@@ -101,10 +100,6 @@ if (ENABLE_MORE_COMPILER_OPTIMIZATION_FLAGS AND NOT (CMAKE_BUILD_TYPE_UPPER MATC
+     endif()
+ endif ()
+ 
+-if(NOT APPLE AND NOT WIN32)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libstdc++")
+-endif()
+-
+ if (WIN32)
+     add_definitions(-DNOMINMAX)
+ endif()

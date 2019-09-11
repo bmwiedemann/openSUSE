@@ -1,0 +1,85 @@
+# HG changeset patch
+# Parent  5e19a205fa03584bb0d829ecbba7495ce1899b65
+# -- uset do be called '-xauthlocalhostname'
+handle hostname changes when forwarding X
+
+bnc#98627
+
+Index: openssh-7.8p1/session.c
+===================================================================
+--- openssh-7.8p1.orig/session.c
++++ openssh-7.8p1/session.c
+@@ -1009,7 +1009,7 @@ copy_environment(char **source, char ***
+ }
+ 
+ static char **
+-do_setup_env(struct ssh *ssh, Session *s, const char *shell)
++do_setup_env(struct ssh *ssh, Session *s, const char *shell, int *env_size)
+ {
+ 	char buf[256];
+ 	size_t n;
+@@ -1213,6 +1213,8 @@ do_setup_env(struct ssh *ssh, Session *s
+ 		for (i = 0; env[i]; i++)
+ 			fprintf(stderr, "  %.200s\n", env[i]);
+ 	}
++
++	*env_size = envsize;
+ 	return env;
+ }
+ 
+@@ -1221,7 +1223,7 @@ do_setup_env(struct ssh *ssh, Session *s
+  * first in this order).
+  */
+ static void
+-do_rc_files(struct ssh *ssh, Session *s, const char *shell)
++do_rc_files(struct ssh *ssh, Session *s, const char *shell, char **env, int *env_size)
+ {
+ 	FILE *f = NULL;
+ 	char cmd[1024];
+@@ -1276,12 +1278,20 @@ do_rc_files(struct ssh *ssh, Session *s,
+ 		    options.xauth_location);
+ 		f = popen(cmd, "w");
+ 		if (f) {
++			char hostname[MAXHOSTNAMELEN];
++
+ 			fprintf(f, "remove %s\n",
+ 			    s->auth_display);
+ 			fprintf(f, "add %s %s %s\n",
+ 			    s->auth_display, s->auth_proto,
+ 			    s->auth_data);
+ 			pclose(f);
++			if (gethostname(hostname,sizeof(hostname)) >= 0)
++			    child_set_env(&env,env_size,"XAUTHLOCALHOSTNAME",
++					  hostname);
++			else
++			    debug("Cannot set up XAUTHLOCALHOSTNAME %s\n",
++				  strerror(errno));
+ 		} else {
+ 			fprintf(stderr, "Could not run %s\n",
+ 			    cmd);
+@@ -1534,6 +1544,7 @@ do_child(struct ssh *ssh, Session *s, co
+ {
+ 	extern char **environ;
+ 	char **env;
++	int env_size;
+ 	char *argv[ARGV_MAX];
+ 	const char *shell, *shell0;
+ 	struct passwd *pw = s->pw;
+@@ -1591,7 +1602,7 @@ do_child(struct ssh *ssh, Session *s, co
+ 	 * Make sure $SHELL points to the shell from the password file,
+ 	 * even if shell is overridden from login.conf
+ 	 */
+-	env = do_setup_env(ssh, s, shell);
++	env = do_setup_env(ssh, s, shell, &env_size);
+ 
+ #ifdef HAVE_LOGIN_CAP
+ 	shell = login_getcapstr(lc, "shell", (char *)shell, (char *)shell);
+@@ -1655,7 +1666,7 @@ do_child(struct ssh *ssh, Session *s, co
+ 
+ 	closefrom(STDERR_FILENO + 1);
+ 
+-	do_rc_files(ssh, s, shell);
++	do_rc_files(ssh, s, shell, env, &env_size);
+ 
+ 	/* restore SIGPIPE for child */
+ 	signal(SIGPIPE, SIG_DFL);

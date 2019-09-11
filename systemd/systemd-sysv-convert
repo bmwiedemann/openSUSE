@@ -1,0 +1,146 @@
+#!/bin/bash
+
+if [ "$UID" != "0" ]; then
+	echo Need to be root.
+	exit 1
+fi
+
+declare -A results_target
+
+usage() {
+	cat << EOF
+usage: systemd-sysv-convert [-h] [--save] [--show] [--apply]
+                            SERVICE [SERVICE ...]
+EOF
+}
+
+help() {
+	usage
+	cat << EOF
+Save and Restore SysV Service Runlevel Information
+
+positional arguments:
+  SERVICE	Service names
+
+optional arguments:
+  -h, --help	show this help message and exit
+  --save	Save SysV runlevel information for one or more services
+  --show	Show saved SysV runlevel information for one or more services
+  --apply 	Apply saved SysV runlevel information for one or more services
+  		to systemd counterparts
+EOF
+}
+
+find_service() {
+	local service=$1
+	local rcnd=$2
+
+	case $rcnd in
+	boot.d)		[ -L /etc/rc.d/$rcnd/S??boot.$service ] ;;
+	*)		[ -L /etc/rc.d/$rcnd/S??$service ]
+	esac
+}
+
+lookup_database() {
+	local services=$@
+	local service
+	local runlevel
+	local priority
+
+	# 'priority' field is not used but is kept for backward compat
+	# reason.
+	while read service runlevel priority; do
+		for s in $services ; do
+			if [ $s == $service ]; then
+				results_target[$service]+=" runlevel$runlevel.target"
+				break
+			fi
+		done
+	done < /var/lib/systemd/sysv-convert/database
+}
+
+declare -i fail=0
+case "$1" in
+	-h|--help)
+		help
+		exit 0
+		;;
+	--save)
+		shift
+		for service in $@ ; do
+			if [ ! -r /etc/init.d/$service ] && [ ! -r /etc/init.d/boot.$service ]; then
+				echo "SysV service $service does not exist, skipping"
+				continue
+			fi
+			for rcnd in rc2.d rc3.d rc4.d rc5.d boot.d; do
+				case $rcnd in
+				rc*.d)	runlevel=${rcnd:2:1} ;;
+				boot.d)	runlevel=3 ;;
+				esac
+
+				# Write a dumb priority as it is not used.
+				find_service $service $rcnd &&
+				echo "$service	$runlevel 50" >>/var/lib/systemd/sysv-convert/database
+			done
+		done
+		;;
+	--show)
+		shift
+		services=$@
+		lookup_database $services
+		for service in $services; do
+  			if [ -z "${results_target[$service]}" ]; then
+				echo "No information about service $service found." >/dev/stderr
+				let fail++
+				continue
+			fi
+			for target in ${results_target[$service]}; do
+				echo "SysV service '$service' is pulled by $target"
+			done
+		done
+		;;
+	--apply)
+		shift
+		services=$@
+		for service in $services; do
+			if [ ! -f "/lib/systemd/system/$service.service" -a ! -f "/usr/lib/systemd/system/$service.service" ]; then
+				echo systemd service $service.service does not exist. >/dev/stderr
+				exit 1
+			fi
+		done
+
+		#
+		# The database might no have been created by a previous --save
+		# call. This can happen when:
+		#
+		#  - we're upgrading a package which initially didn't
+		#    have any unit file nor sysv init script and now
+		#    start shipping one or more unit files (bsc#982303).
+		#
+		#  - the sysv init service wasn't enabled at all before
+		#    being migrated to a native unit file (bsc#982211).
+		#
+		if [ -e /var/lib/systemd/sysv-convert/database ]; then
+			lookup_database $services
+			for service in $services; do
+				[ -f "/lib/systemd/system/$service.service" ] && unit="/lib/systemd/system/$service.service"
+				[ -f "/usr/lib/systemd/system/$service.service" ] && unit="/usr/lib/systemd/system/$service.service"
+
+				# If $service is not present in the database,
+				# then it simply means that the sysv init
+				# service was not enabled at all.
+				for target in ${results_target[$service]}; do
+					echo ln -sf $unit /etc/systemd/system/$target.wants/$service.service >/dev/stderr
+					mkdir -p "/etc/systemd/system/$target.wants"
+					/bin/ln -sf $unit /etc/systemd/system/$target.wants/$service.service
+				done
+			done
+		fi
+		;;
+	*)
+ 		usage
+		let fail=2
+		;;
+esac
+
+exit $fail

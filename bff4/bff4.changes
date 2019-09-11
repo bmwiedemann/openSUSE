@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Jun 19 12:31:02 UTC 2012 - adam@mizerski.pl
+
+- added license-clarification.txt (bnc#761551) and updated
+  license tag
+- updated bff4.c
+- renamed arg.patch -> bff4-arg.patch and added patch info
+- improved and cleaned-up spec file
+
+-------------------------------------------------------------------
+Sat Sep 17 19:28:53 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Sun Apr 11 09:32:03 UTC 2010 - adam@mizerski.pl
+
+- new package
+

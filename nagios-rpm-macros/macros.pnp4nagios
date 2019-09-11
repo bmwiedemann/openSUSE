@@ -1,0 +1,14 @@
+#
+# directories and files for pnp4nagios
+#
+# directory containing template files for pnp
+%pnp4nagios_baseurl					/pnp
+%pnp4nagios_datarootdir             %{_datadir}/pnp4nagios
+%pnp4nagios_datadir 	            %{_datadir}/pnp4nagios
+%pnp4nagios_logdir                  %{_var}/log/pnp4nagios
+%pnp4nagios_libdir                  %{_var}/lib/pnp4nagios
+%pnp4nagios_perfdata_dir 			%{_var}/lib/pnp4nagios/perfdata
+%pnp4nagios_perfdata_logfile 		%{_var}/log/pnp4nagios/perfdata.log
+%pnp4nagios_perfdata_spooldir 		%{_var}/spool/pnp4nagios
+%pnp4nagios_sysconfdir              %{_sysconfdir}/pnp4nagios
+%pnp4nagios_templatedir				%{_datadir}/pnp4nagios/templates

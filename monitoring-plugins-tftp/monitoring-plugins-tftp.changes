@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Wed Jul 30 19:22:46 UTC 2014 - lars@linux-schulserver.de
+
+- Renamed package to monitoring-plugins-tftp
+
+-------------------------------------------------------------------
+Thu Dec 13 12:26:41 UTC 2012 - lars@linux-schulserver.de
+
+- update to 0.11:
+  + use Net::TFTP and FileHandle perl modules now
+
+-------------------------------------------------------------------
+Thu Jul 12 21:09:39 UTC 2012 - lars@linux-schulserver.de
+
+- use nagios-rpm-macros
+- specfile cleanup
+
+-------------------------------------------------------------------
+Fri Oct 23 18:16:36 CEST 2009 - lars@linux-schulserver.de
+
+- initial version v0.1.2
+

@@ -1,0 +1,53 @@
+Index: gdm-3.31.91/data/Init.in
+===================================================================
+--- gdm-3.31.91.orig/data/Init.in	2019-02-21 20:44:14.000000000 +0100
++++ gdm-3.31.91/data/Init.in	2019-02-27 07:46:21.401932235 +0100
+@@ -1,4 +1,9 @@
+ #!/bin/sh
++
++if test -x /etc/X11/xdm/Xsetup; then
++	exec /etc/X11/xdm/Xsetup
++fi
++
+ # Stolen from the debian kdm setup, aren't I sneaky
+ # Plus a lot of fun stuff added
+ #  -George
+Index: gdm-3.31.91/data/PostSession.in
+===================================================================
+--- gdm-3.31.91.orig/data/PostSession.in	2018-10-12 23:05:26.000000000 +0200
++++ gdm-3.31.91/data/PostSession.in	2019-02-27 07:46:21.401932235 +0100
+@@ -1,3 +1,7 @@
+ #!/bin/sh
+ 
++if test -x /etc/X11/xdm/Xreset; then
++       exec /etc/X11/xdm/Xreset
++fi
++
+ exit 0
+Index: gdm-3.31.91/data/Xsession.in
+===================================================================
+--- gdm-3.31.91.orig/data/Xsession.in	2019-02-21 20:44:14.000000000 +0100
++++ gdm-3.31.91/data/Xsession.in	2019-02-27 07:46:21.401932235 +0100
+@@ -1,4 +1,9 @@
+ #!@XSESSION_SHELL@
++
++if test -x /etc/X11/xdm/Xsession; then
++       exec /etc/X11/xdm/Xsession $1 $GDM_LANG
++fi
++
+ #
+ # This is SORT OF LIKE an X session, but not quite.  You get a command as the
+ # first argument (it could be multiple words, so run it with "eval").  As a
+Index: gdm-3.31.91/data/PreSession.in
+===================================================================
+--- gdm-3.31.91.orig/data/PreSession.in	2018-10-12 23:05:26.000000000 +0200
++++ gdm-3.31.91/data/PreSession.in	2019-02-27 07:46:21.401932235 +0100
+@@ -6,4 +6,8 @@
+ #
+ # Note that output goes into the .xsession-errors file for easy debugging
+ #
++if test -x /etc/X11/xdm/Xstartup; then
++       exec /etc/X11/xdm/Xstartup
++fi
++
+ PATH="@X_PATH@:$PATH"

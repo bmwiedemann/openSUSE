@@ -1,0 +1,58 @@
+#! /bin/sh
+
+: ${TMPDIR:=/tmp}
+export TMPDIR
+
+# basic /bin/sh syntax
+SUFFIX=`${THIS_SH} -c 'echo $(( $RANDOM + $BASHPID ))'`
+
+BASH_TSTOUT=${TMPDIR}/bashtst-$SUFFIX   # for now
+export BASH_TSTOUT
+
+trap 'rm -f $BASH_TSTOUT' 0
+
+PATH=.:$PATH	# just to get recho/zecho/printenv if not run via `make tests'
+export PATH
+
+# unset BASH_ENV only if it is set
+[ "${BASH_ENV+set}" = "set" ] && unset BASH_ENV
+# ditto for SHELLOPTS
+#[ "${SHELLOPTS+set}" = "set" ] && unset SHELLOPTS
+
+: ${THIS_SH:=../bash}
+export THIS_SH
+
+${THIS_SH} ./version
+
+rm -f "$BASH_TSTOUT"
+
+echo Any output from any test, unless otherwise noted, indicates a possible anomaly
+
+for x in run-*
+do
+	case $x in
+	$0|run-all|run-minimal|run-gprof|run-jobs) ;;
+	*.orig|*~) ;;
+	*)	echo $x ; sh $x ;;
+	esac
+done
+
+trap 'rm -f $tmp' EXIT TERM INT QUIT
+tmp=$(mktemp /tmp/hello.XXXXXXXX) || exit 1
+echo '#!/bin/sh' > $tmp
+echo exit >> $tmp
+chmod 755 $tmp
+${THIS_SH} -c $tmp
+
+typeset -i count=500
+echo '#########################'
+echo 'fork + /bin/sh -c runtime'
+time while ((count-- > 0)) ; do
+	${THIS_SH} -c $tmp
+done
+echo '#########################'
+set -x
+read -t1 < /dev/tty
+set +x
+echo '#########################'
+exit 0

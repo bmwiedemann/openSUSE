@@ -1,0 +1,26 @@
+diff -urN openarena-engine-source-0.8.8/code/qcommon/vm.c openarena-engine-source-0.8.8-patched/code/qcommon/vm.c
+--- openarena-engine-source-0.8.8/code/qcommon/vm.c	2011-12-24 23:29:32.000000000 +1100
++++ openarena-engine-source-0.8.8-patched/code/qcommon/vm.c	2012-02-21 19:40:54.610205274 +1100
+@@ -765,14 +765,6 @@
+                             args[4],  args[5],  args[6], args[7],
+                             args[8],  args[9]);
+ 	} else {
+-#if id386 || idsparc // i386/sparc calling convention doesn't need conversion
+-#ifndef NO_VM_COMPILED
+-		if ( vm->compiled )
+-			r = VM_CallCompiled( vm, (int*)&callnum );
+-		else
+-#endif
+-			r = VM_CallInterpreted( vm, (int*)&callnum );
+-#else
+ 		struct {
+ 			int callnum;
+ 			int args[10];
+@@ -791,7 +783,6 @@
+ 		else
+ #endif
+ 			r = VM_CallInterpreted( vm, &a.callnum );
+-#endif
+ 	}
+ 	--vm->callLevel;
+ 

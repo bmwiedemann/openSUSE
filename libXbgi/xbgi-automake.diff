@@ -1,0 +1,125 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2013-04-30 16:20:06.862768841 +0200
+
+build: use automake as build system
+
+Less Makefile code, pkgconfig is used, libXbgi can be built as a
+shared library.
+
+---
+ Makefile.am          |    4 ++++
+ Using.txt            |    2 +-
+ configure.ac         |    9 +++++++++
+ m4/.gitignore        |    2 ++
+ src/Makefile.am      |   44 ++++++++++++++++++++++++++++++++++++++++++++
+ src/test/Makefile.am |   11 +++++++++++
+ 6 files changed, 71 insertions(+), 1 deletion(-)
+
+Index: xbgi-364/Makefile.am
+===================================================================
+--- /dev/null
++++ xbgi-364/Makefile.am
+@@ -0,0 +1,4 @@
++# -*- Makefile -*-
++
++ACLOCAL_AMFLAGS = -I m4
++SUBDIRS = src
+Index: xbgi-364/Using.txt
+===================================================================
+--- xbgi-364.orig/Using.txt
++++ xbgi-364/Using.txt
+@@ -11,7 +11,7 @@ Nearly all programs can be compiled with
+ 
+ To compile a program against libXbgi:
+ 
+-  gcc -o program program.c /usr/lib/libXbgi.a -lX11 -lm
++  gcc -o program program.c -lXbgi
+ 
+ Most old programs that use the original BGI library should compile
+ with no modification. For instance,
+Index: xbgi-364/configure.ac
+===================================================================
+--- /dev/null
++++ xbgi-364/configure.ac
+@@ -0,0 +1,9 @@
++AC_INIT([xbgi], [364])
++AC_CONFIG_AUX_DIR([build-aux])
++AC_CONFIG_MACRO_DIR([m4])
++AC_PROG_CC
++AM_INIT_AUTOMAKE([foreign subdir-objects tar-pax dist-xz no-dist-gzip])
++LT_INIT
++PKG_CHECK_MODULES([x11], [x11])
++AC_CONFIG_FILES([Makefile src/Makefile src/test/Makefile])
++AC_OUTPUT
+Index: xbgi-364/m4/.gitignore
+===================================================================
+--- /dev/null
++++ xbgi-364/m4/.gitignore
+@@ -0,0 +1,2 @@
++/libtool.m4
++/lt*.m4
+Index: xbgi-364/src/Makefile.am
+===================================================================
+--- /dev/null
++++ xbgi-364/src/Makefile.am
+@@ -0,0 +1,44 @@
++# -*- Makefile -*-
++
++SUBDIRS     = . test
++AM_CPPFLAGS = ${x11_CFLAGS}
++AM_CFLAGS   = -Wall
++
++lib_LTLIBRARIES = libXbgi.la
++
++libXbgi_la_SOURCES = \
++	_graphfreemem.c _graphgetmem.c arc.c bar.c bar3d.c circle.c\
++	cleardevice.c clearviewport.c closegraph.c detectgraph.c drawpoly.c\
++	ellipse.c fillellipse.c fillpoly.c floodfill.c\
++	getarccoords.c getaspectratio.c getbkcolor.c getch.c getcolor.c\
++	getdate.c getdefaultpalette.c getdrivername.c getfillpattern.c\
++	getfillsettings.c getgraphmode.c getimage.c getlinesettings.c\
++	getmaxcolor.c getmaxmode.c getmaxx.c getmaxy.c getmodename.c\
++	getmoderange.c getpalette.c getpalettesize.c getpixel.c\
++	gettextsettings.c getviewsettings.c getx.c gety.c graphdefaults.c\
++	grapherrormsg.c graphresult.c imagesize.c initgraph.c\
++	installuserdriver.c installuserfont.c ismouseclick.c \
++	kbhit.c line.c linerel.c lineto.c \
++	moverel.c moveto.c outtext.c outtextxy.c pieslice.c putimage.c\
++	putpixel.c rectangle.c registerbgidriver.c registerbgifont.c\
++	restorecrtmode.c rotated.c sector.c setactivepage.c setallpalette.c\
++	setaspectratio.c setbkcolor.c setcolor.c setfillpattern.c\
++	setfillstyle.c setgraphbufsize.c setgraphmode.c setlinestyle.c\
++	setpalette.c setrgbpalette.c settextjustify.c settextstyle.c\
++	setusercharsize.c setviewport.c setvisualpage.c setwritemode.c\
++	textheight.c textwidth.c delay.c\
++	COLOR.c getmaxheight.c getmaxwidth.c getmouseclick.c\
++	initwindow.c mouseclick.c mousex.c mousey.c _putpixel.c\
++	IS_BGI_COLOR.c IS_RGB_COLOR.c setrgbcolor.c setbkrgbcolor.c\
++	getevent.c converttorgb.c refresh.c
++libXbgi_la_LDFLAGS = -Wl,-z,defs -version-info 1:0:0
++libXbgi_la_LIBADD  = -lm ${x11_LIBS}
++
++EXTRA_DIST = xkbhit.c
++
++include_HEADERS = graphics.h
++
++noinst_PROGRAMS = demo
++
++demo_SOURCES = demo.c
++demo_LDADD   = libXbgi.la
+Index: xbgi-364/src/test/Makefile.am
+===================================================================
+--- /dev/null
++++ xbgi-364/src/test/Makefile.am
+@@ -0,0 +1,11 @@
++# -*- Makefile -*-
++
++AM_CPPFLAGS = ${x11_CFLAGS}
++AM_CFLAGS   = -Wall
++
++LDADD = -lm ${x11_LIBS} ../libXbgi.la
++
++noinst_PROGRAMS = bgidemo cellular fern floodfilltest hopalong mandelbrot \
++	mousetest moveit simple turtledemo userpalette
++turtledemo_SOURCES = turtle.c turtledemo.c
++userpalette_SOURCES = turtle.c userpalette.c

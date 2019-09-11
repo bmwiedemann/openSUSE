@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Wed Jul  6 08:44:43 UTC 2016 - coolo@suse.com
+
+- updated to 0.008
+   see /usr/share/doc/packages/perl-String-Errf/Changes
+
+  0.008     2016-07-04 11:37:17-04:00 America/New_York
+            - switch from JSON to JSON::MaybeXS
+
+-------------------------------------------------------------------
+Mon Nov 25 07:39:42 UTC 2013 - coolo@suse.com
+
+- updated to 0.007
+     catch more bad input and die [rt.cpan.org #83552]
+     update repository and bugtracker metadata
+
+-------------------------------------------------------------------
+Tue Apr  5 11:44:18 UTC 2011 - coolo@novell.com
+
+- initial package 0.006
+    * created by cpanspec 1.78.03
+

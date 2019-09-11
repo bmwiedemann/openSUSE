@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Wed Jul 18 11:51:32 UTC 2018 - tchvatal@suse.com
+
+- Add missing python-rpm-macros dependency
+
+-------------------------------------------------------------------
+Tue Jun 12 09:39:27 UTC 2018 - hpj@urpla.net
+
+- supply python_module definition, if missing
+
+-------------------------------------------------------------------
+Sun Jun 10 23:06:58 UTC 2018 - jengelh@inai.de
+
+- Adjust grammar in description.
+
+-------------------------------------------------------------------
+Fri Jun  8 14:15:48 UTC 2018 - mcepl@suse.com
+
+- Clean up SPEC to the proper singlespec form (py2k only)
+- Unfortunately, most of the tests do not have a redistribution
+  license, so the test suite is not available.
+
+-------------------------------------------------------------------
+Fri Jul  1 09:46:37 UTC 2016 - axel.braun@gmx.de
+
+- license corrected
+
+-------------------------------------------------------------------
+Fri Jan 31 11:12:54 UTC 2014 - hpj@urpla.net
+
+- update to version 2.3
+- rebuild spec from scratch
+- remove doc package: no docs provided anymore
+- remove check: test files have license issues
+
+-------------------------------------------------------------------
+Tue Jan 11 00:51:29 CET 2011 - hpj@urpla.net
+
+- separate doc into its own package
+
+-------------------------------------------------------------------
+Mon Jan 10 03:01:50 CET 2011 - hpj@urpla.net
+
+- update to version 2.2
+
+-------------------------------------------------------------------
+Mon Dec 20 22:21:09 CET 2010 - hpj@urpla.net
+
+- include build tests
+
+-------------------------------------------------------------------
+Mon Dec 20 15:24:10 CET 2010 - hpj@urpla.net
+
+- initial build 1.97-rc2
+
+

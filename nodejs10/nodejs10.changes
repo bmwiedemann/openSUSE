@@ -1,0 +1,728 @@
+-------------------------------------------------------------------
+Thu Aug  1 15:01:02 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 10.16.1
+  * deps: upgrade openssl sources to 1.1.1c (for SLE-12 based systems)
+  * stream: do not unconditionally call _read() on resume()
+  * worker: fix nullptr deref after MessagePort deser failure
+
+-------------------------------------------------------------------
+Mon Jul 29 09:01:18 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- CVE-2019-13173.patch: fix potential file overwrite via hardlink
+  in fstream.DirWriter() function (bsc#1140290, CVE-2019-13173)
+
+-------------------------------------------------------------------
+Wed May 29 15:39:40 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 10.16.0
+  * deps:
+    + upgrade npm to 6.9.0
+    + upgrade openssl sources to 1.1.1b (for SLE-12 based systems)
+    + upgrade libuv to 1.28.0 (for SLE-12 based systems)
+    + upgrade to libuv 1.28.0
+  * events: add once method to use promises with EventEmitter
+  * n-api: mark thread-safe function as stable
+  * repl: support top-level for-await-of
+  * zlib: add brotli support
+
+- openssl_1_1_1.patch: dropped, no longer needed
+- fix_ci_tests.patch: drop onion handling in DNS, since this depends
+  on 3rd party library
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
+Mon May  6 13:54:47 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- openssl_1_1_1.patch: backport fixes for OpenSSL 1.1.1 (bsc#1134208)
+- Require user/group nobody for npm
+
+-------------------------------------------------------------------
+Sun Apr  7 18:16:21 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints file to avoid OOM errors
+
+-------------------------------------------------------------------
+Fri Apr  5 12:49:15 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- flaky_test_rerun.patch: rework patch to account for tests that
+  end with an exception and are not actually re-run...
+
+-------------------------------------------------------------------
+Wed Mar  6 13:34:43 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 10.15.3
+  * http: fix error check in Execute()
+  * stream: fix end-of-stream for HTTP/2
+- fix_ci_tests.patch: refreshed
+
+-------------------------------------------------------------------
+Thu Feb 28 13:24:53 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 10.15.2
+  * http: Further prevention of "Slowloris" attacks on HTTP and HTTPS
+  connections by consistently applying the receive timeout set by
+  server.headersTimeout to connections in keep-alive mode.
+  (CVE-2019-5737, bsc#1127532)
+
+-------------------------------------------------------------------
+Fri Feb  1 12:40:17 UTC 2019 - adam.majer@suse.de
+
+- nodejs.keyring: update keyring to today's list as per
+  https://github.com/nodejs/node
+
+-------------------------------------------------------------------
+Fri Feb  1 11:56:36 UTC 2019 - adam.majer@suse.de
+
+- New upstream LTS version 10.15.1
+  * tls: throw if protocol too long
+
+- fix_ci_tests.patch: refreshed
+
+-------------------------------------------------------------------
+Mon Jan  7 15:01:53 UTC 2019 - adam.majer@suse.de
+
+- New upstream LTS version 10.15.0
+  (still bsc#1112438, FATE#326776, FATE#326919):
+  * cli: add --max-http-header-size flag
+  * http: add maxHeaderSize property
+
+- Changes in version 10.14.2
+  * deps: upgrade to c-ares v1.15.0
+  * child_process: handle undefined/null for fork() args
+  * http2: make Http2Settings constructors delegate
+  * os: fix memory leak in userInfo()
+
+- fix_ci_tests.patch: refreshed
+
+-------------------------------------------------------------------
+Thu Dec  6 16:17:15 UTC 2018 - adam.majer@suse.de
+
+- New upstream LTS version 10.14.1 (still bsc#1112438, FATE#326776):
+  * deps: Upgrade to OpenSSL 1.1.0j, fixing
+    + Timing vulnerability in DSA signature generation
+      (bsc#1113652, CVE-2018-0734)
+    + Timing vulnerability in ECDSA signature generation
+      (bsc#1113651, CVE-2018-0735)
+  * http:
+    + Headers received by HTTP servers must not exceed 8192 bytes
+      in total to prevent possible Denial of Service attacks.
+      (bsc#1117626, CVE-2018-12121)
+    + A timeout of 40 seconds now applies to servers receiving
+      HTTP headers. This value can be adjusted with
+      server.headersTimeout. Where headers are not completely
+      received within this period, the socket is destroyed on
+      the next received chunk. In conjunction
+      with server.setTimeout(), this aids in protecting against
+      excessive resource retention and possible Denial of Service.
+      (bsc#1117627, CVE-2018-12122)
+  * url: Fix a bug that would allow a hostname being spoofed when
+    parsing URLs with url.parse() with the 'javascript:' protocol.
+    (bsc#1117629, CVE-2018-12123)
+
+-------------------------------------------------------------------
+Mon Nov 26 14:06:57 UTC 2018 - adam.majer@suse.de
+
+- flaky_test_rerun.patch: Rerun failing tests in case of flakiness
+
+-------------------------------------------------------------------
+Tue Oct 30 11:36:20 UTC 2018 - adam.majer@suse.de
+
+- New upstream LTS 10.13.0: (bsc#1112438, FATE#326776)
+  * buffer: fix crash for invalid index types
+  * deps: fix wrong default for v8 handle zapping
+- env_shebang.patch: dropped
+- skip_test_on_lowmem.patch: skip some build tests on low-memory
+  build machines
+
+-------------------------------------------------------------------
+Tue Oct 16 09:34:09 UTC 2018 - adam.majer@suse.de
+
+- node-gyp-addon-gypi.patch: patch fixes (bsc#1094617)
+
+-------------------------------------------------------------------
+Sun Oct 14 14:54:04 UTC 2018 - adam.majer@suse.de
+
+- add support for runnign valgrind tests during check, disabled
+  by default
+- valgrind_fixes.patch: valgrind fixes
+
+-------------------------------------------------------------------
+Thu Oct 11 11:50:27 UTC 2018 - adam.majer@suse.de
+
+- New upstream version 10.12.0:
+  * cli:
+    + The options parser now normalizes _ to - in all multi-word
+      command-line flags, e.g. --no_warnings == --no-warnings
+    + Added bash completion for the node binary.
+    To generate a bash completion script, run node --completion-bash.
+  * crypto:
+    + Added support for PEM-level encryption.
+    + Added an API asymmetric key pair generation.
+  * fs: Added a recursive option to fs.mkdir and fs.mkdirSync.
+  * http2:
+    + Added support for the ORIGIN frame.
+    + Added a 'ping' event to Http2Session that is emitted whenever
+    a non-ack PING is received.
+    + Updated nghttp2 to 1.34.0. This adds RFC 8441 extended
+    connect protocol support to allow use of WebSockets over HTTP/2.
+  * module: Added module.createRequireFromPath(filename). This
+    new method can be used to create a custom require function that
+    will resolve modules relative to the filename path.
+  * process: Added a 'multipleResolves' process event that
+    is emitted whenever a Promise is attempted to be resolved
+    multiple times, e.g. if the resolve and reject functions are
+    both called in a Promise executor.
+  * url: Added url.fileURLToPath(url) and url.pathToFileURL(path)
+  * util:
+    + Added the sorted option to util.inspect()
+    + Added support for BigInt numbers in util.format()
+  * V8 API: A number of V8 C++ APIs have been marked as deprecated
+  * Workers:
+    + Added debugging support for Workers via DevTools protocol
+    + The public inspector module is now enabled in Workers.
+- fix_ci_tests.patch: updated
+
+-------------------------------------------------------------------
+Fri Oct  5 10:54:46 UTC 2018 - adam.majer@suse.de
+
+- fix_ci_tests.patch: fix unit tests
+
+-------------------------------------------------------------------
+Tue Sep 25 16:00:11 UTC 2018 - adam.majer@suse.de
+
+- New upstream version 10.11.0:
+  * fs: Fixed fsPromises.readdir withFileTypes.
+  * http2: Added http2stream.endAfterHeaders property.
+  * util: Added util.types.isBoxedPrimitive(value).
+- 21257.diff: drop the patch in favour of running node compilation
+  by redirecting stdio through a FIFO
+- versioned.patch: refreshed
+- fix_ci_tests.patch: explicity disable doc target in unit tests
+
+-------------------------------------------------------------------
+Wed Sep 12 10:02:47 UTC 2018 - adam.majer@suse.de
+
+- New upstream version 10.10.0:
+  * child_process: TypedArray and DataView values are now accepted as
+    input by execFileSync and spawnSync.
+  * coverage: Native V8 code coverage information can now be output to
+    disk by setting the environment variable NODE_V8_COVERAGE
+    to a directory.
+  * deps: The bundled npm was upgraded to version 6.4.1.
+  * fs:
+    + The methods fs.read, fs.readSync, fs.write, fs.writeSync,
+    fs.writeFile and fs.writeFileSync now all accept TypedArray and
+    DataView objects.
+    + A new boolean option, withFileTypes, can be passed to
+    fs.readdir and fs.readdirSync. If set to true, the methods
+    return an array of directory entries. These are objects that
+    can be used to determine the type of each entry and filter them
+    based on that without calling fs.stat.
+  * http2: The http2 module is no longer experimental.
+  * os: Added two new methods: os.getPriority and os.setPriority,
+    allowing to manipulate the scheduling priority of processes.
+  * process: Added process.allowedNodeEnvironmentFlags. This object
+    can be used to programmatically validate and list flags that
+    are allowed in the NODE_OPTIONS environment variable.
+  * src: Deprecated option variables in public C++ API.
+  * vm: Added vm.compileFunction, a method to create new JavaScript
+    functions from a source body, with options similar to those of
+    the other vm methods.
+- 21257.diff: refresh patch (and make it forward apply)
+- versioned.patch, env_shebang.path: refreshed
+
+-------------------------------------------------------------------
+Mon Sep 10 14:11:54 UTC 2018 - adam.majer@suse.de
+
+- 21257.diff: Revert an upstream revert that resulted that stdout
+  remaining O_NONBLOCK during build process. This resulted in
+  build failures.
+
+-------------------------------------------------------------------
+Mon Aug 20 09:01:38 UTC 2018 - adam.majer@suse.de
+
+- New upstream release 10.9.0:
+  * buffer:
+    + Fix out-of-bounds (OOB) write in Buffer.write() for
+      UCS-2 encoding (CVE-2018-12115, bsc#1105019)
+    + Fix unintentional exposure of uninitialized memory in
+      Buffer.alloc() (bsc#1105018, CVE-2018-7166)
+  * deps: Upgrade to OpenSSL 1.0.2p, fixing:
+    + Client DoS due to large DH parameter
+      (CVE-2018-0732, bsc#1097158)
+    + ECDSA key extraction via local side-channel
+  * http: http.get() and http.request() (and https variants)
+    now accept three arguments to allow for a URL and options object
+
+-------------------------------------------------------------------
+Mon Aug 13 10:53:42 UTC 2018 - adam.majer@suse.de
+
+- New upstream release 10.8.0:
+  * deps: upgrade npm to 6.2.0
+
+- Changes in version 10.7.0:
+  * console: The console.timeLog() method has been implemented.
+  * http: Added support for passing both timeout and agent options
+    to http.request.
+  * inspector: Expose the original console API in
+    require('inspector').console.
+  * napi: Added experimental support for functions dealing with
+    bigint numbers.
+  * process:
+    + The process.hrtime.bigint() method has been implemented.
+    + Added the --title command line argument to set the process
+      title on startup.
+  * trace_events: Added process_name metadata.
+- icu_small_grouping.patch: upstreamed
+- versioned.patch, env_shebang.patch: refreshed
+- update Jan's description changes for grammar and merge into git
+
+-------------------------------------------------------------------
+Sun Jul 29 10:47:39 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+- Use %make_install.
+
+-------------------------------------------------------------------
+Thu Jul  5 21:21:20 UTC 2018 - adam.majer@suse.de
+
+- New upstream release 10.6.0:
+  * dns: An experimental promisified version of the dns module is
+    now available. Give it a try with require('dns').promises.
+  * fs: fs.lchown has been undeprecated now that libuv supports it.
+  * lib: Atomics.wake is being renamed to Atomics.notify in the
+    ECMAScript specification (reference). Since Node.js now has
+    experimental support for worker threads, we are being proactive
+    and added a notify alias, while emitting a warning if wake is used.
+  * n-api: Add API for asynchronous functions.
+  * util: util.inspect is now able to return a result instead of
+    throwing when the maximum call stack size is exceeded during
+    inspection.
+  * vm: Add script.createCachedData(). This API replaces the
+    produceCachedData option of the Script constructor that is
+    now deprecated
+  * worker: Support for relative paths has been added to the Worker
+    constructor. Paths are interpreted relative to the current
+    working directory.
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
+Fri Jun 22 11:28:39 UTC 2018 - adam.majer@suse.de
+
+- New upstream release 10.5.0:
+  * crypto: Support for crypto.scrypt() has been added
+  * fs:
+    + APIs that take mode as arguments no longer throw on values
+      larger than 0o777
+    + BigInt support has been added to fs.stat and fs.watchFile
+    + Fix crashes in closed event watchers.
+  * worker_threads: multi-threading has been added behind the
+    --experimental-worker flag in the worker_threads module.
+    This feature is *experimental* and may receive breaking changes
+    at any time.
+- npm_search_paths.patch: Fix typo causing npm to not work
+
+-------------------------------------------------------------------
+Wed Jun 13 16:24:04 UTC 2018 - adam.majer@suse.de
+
+- New upstream release 10.4.1:
+  * Fixes memory exhaustion DoS: Fixes a bug that increases the
+    memory consumed when reading from the network into JavaScript
+    using the net.Socket object directly as a stream
+    (CVE-2018-7164, bsc#1097537)
+  * http2:
+    + Fixes Denial of Service vulnerability by updating the
+    http2 implementation to not crash under certain circumstances
+    during cleanup (CVE-2018-7161, bsc#1097404)
+    + Unbundled nghttp2 to fix Denial of Service vulnerability
+    (CVE-2018-1000168, bsc#1097401)
+  * tls: Fixes Denial of Service vulnerability by updating the TLS
+    implementation to not crash upon receiving
+    (CVE-2018-7162, bsc#1097538)
+
+-------------------------------------------------------------------
+Mon Jun 11 12:58:06 UTC 2018 - adam.majer@suse.de
+
+- New upstream release 10.4.0:
+  * deps: update V8 to 6.7.288.43
+  * stream: ensure Stream.pipeline re-throws errors without callback
+
+- Changes in version 10.3.0:
+  * deps: upgrade npm to 6.1.0
+  * fs: fix reads with pos > 4GB
+  * net: new option to allow IPC servers to be readable and writable
+    by all users
+  * stream: fix removeAllListeners() for Stream.Readable to work as
+    expected when no arguments are passed
+
+npm_search_paths.patch: no longer override explicitly prefixed etc/
+versioned.patch, env_shebang.patch: refreshed
+
+-------------------------------------------------------------------
+Thu May 24 14:48:00 UTC 2018 - adam.majer@suse.de
+
+- New upstream release 10.2.0:
+  * addons: Fixed a memory leak for users of AsyncResource and N-API.
+  * assert: The error parameter of assert.throws() can now be
+    an object containing regular expressions.
+  * crypto: The authTagLength option has been made more flexible.
+  * esm: Builtin modules now provide named exports in ES6 modules.
+  * http: Handling of close and aborted events has been made more
+    consistent.
+  * module: add --preserve-symlinks-main
+  * timers: timeout.refresh() has been added to the public API.
+
+- fix_ci_tests.patch: refreshed
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
+Wed May 23 11:30:11 UTC 2018 - adam.majer@suse.de
+
+- use gcc7 for SLE12
+- versioned.patch: set node version in environment to 10
+- manual_configure.patch: configure nghttp2 correctly
+- icu_small_grouping.patch: prevents undefined behaviour possibility
+
+-------------------------------------------------------------------
+Fri May 11 13:43:43 UTC 2018 - adam.majer@suse.de
+
+- New upstream release 10.1.0:
+  * console: make console.table() use colored inspect
+  * fs: move fs/promises to fs.promises
+  * http: added aborted property to request
+  * n-api: initialize a module via a special symbol
+  * src: add public API to expose the main V8 Platform
+
+- Changes in version 10.0.0:
+  * Assert:
+    + Calling assert.fail() with more than one argument is deprecated.
+    + Calling assert.ok() with no arguments will now throw.
+    + Calling assert.ifError() will now throw with any argument
+      other than undefined or null. Previously the method would throw
+      with any truthy value.
+  * Async_hooks:
+    + Older experimental async_hooks APIs have been removed.
+  * Buffer:
+    + Uses of new Buffer() and Buffer() outside of the node_modules
+      directory will now emit a runtime deprecation warning.
+    + Buffer.isEncoding() now returns undefined for falsy values,
+      including an empty string.
+    + Buffer.fill() will throw if an attempt is made to fill with
+      an empty Buffer.
+  * Child Process: Undefined properties of env are ignored.
+  * console: console.table() method has been added.
+  * crypto:
+    + The crypto.createCipher() and crypto.createDecipher() methods
+      have been deprecated. Please use crypto.createCipheriv() and
+      crypto.createDecipheriv() instead.
+    + The decipher.finaltol() method has been deprecated.
+    + The crypto.DEFAULT_ENCODING property has been deprecated.
+    + The ECDH.convertKey() method has been added.
+    + The crypto.fips property has been deprecated.
+  * deps:
+    + V8 has been updated to 6.6
+    + npm upgraded to 5.8.0
+  * EventEmitter:
+    + The EventEmitter.prototype.off() method has been added as
+      an alias for EventEmitter.prototype.removeListener().
+  * File System:
+    + The fs/promises API provides experimental promisified
+      versions of the fs functions.
+    + Invalid path errors are now thrown synchronously.
+    + fs.readFile() method now partitions reads to avoid thread
+      pool exhaustion.
+  * http:
+    + Processing of HTTP Status codes 100, 102-199 has been improved.
+    + Multi-byte characters in URL paths are now forbidden.
+  * N-API: The n-api is no longer experimental.
+  * net: The 'close' event will be emitted after 'end'.
+  * perf_hooks:
+    + The PerformanceObserver class is now an AsyncResource and can
+      be monitored using async_hooks.
+    + Trace events are now emitted for performance events.
+    + The performance API has been simplified.
+    + Performance milestone marks will be emitted as trace events.
+  * process:
+    + Using non-string values for process.env is deprecated.
+    + The process.assert() method is deprecated.
+  * repl:
+    + REPL now experimentally supports top-level await when using
+      the --experimental-repl-await flag.
+    + The previously deprecated "magic mode" has been removed.
+    + The previously deprecated NODE_REPL_HISTORY_FILE environment
+      variable has been removed.
+    + Proxy objects are shown as Proxy objects when inspected.
+  * streams:
+    + The 'readable' event is now always deferred with nextTick.
+    + A new pipeline() method has been provided for building
+      end-to-data stream pipelines.
+    + support for async for-await has been added to stream.Readable
+  * timers: The enroll() and unenroll() methods have been deprecated
+  * tls:
+    + The tls.convertNPNProtocols() method has been deprecated.
+    + Support for NPN (next protocol negotiation) has been dropped.
+    + The ecdhCurve default is now 'auto'.
+  * Trace Events:
+    + A new trace_events top-level module allows trace event
+      categories to be enabled/disabled at runtime.
+  * URL: The WHATWG URL API is now a global.
+  * Util:
+    + util.types.is[…] type checks have been added.
+    + Support for bigint formatting has been added to util.inspect().
+
+- OpenSSL 1.1.0+ is required.
+- versioned.patch: rebased
+
+-------------------------------------------------------------------
+Wed Apr 18 12:45:26 UTC 2018 - adam.majer@suse.de
+
+- New upstream release 9.11.1:
+  * deps: Updated ICU to 61.1
+  * fs: Emit 'ready' event for ReadStream and WriteStream
+  * n-api: Bump version of n-api supported to 3
+  * net: Emit 'ready' event for Socket
+- versioned.patch, nodejs-libpath.patch: refreshed
+
+-------------------------------------------------------------------
+Thu Apr  5 07:18:42 UTC 2018 - adam.majer@suse.de
+
+- Install license with %license, not %doc (bsc#1082318)
+
+-------------------------------------------------------------------
+Wed Apr  4 13:29:24 UTC 2018 - adam.majer@suse.de
+
+- Fix some node-gyp permissions
+
+-------------------------------------------------------------------
+Tue Apr  3 10:45:48 UTC 2018 - adam.majer@suse.de
+
+- New upstream release 9.10.1:
+  * Security fixes:
+    + Fix for inspector DNS rebinding vulnerability
+      (bsc#1087463, CVE-2018-7160)
+    + Fix for 'path' module regular expression denial of service
+      (bsc#1087459, CVE-2018-7158)
+    + Reject spaces in HTTP Content-Length header values
+      (bsc#1087453, CVE-2018-7159)
+  * cluster: Add support for NODE_OPTIONS="--inspect"
+  * crypto: Expose the public key of a certificate
+  * n-api: Add napi_fatal_exception to trigger an uncaughtException
+    in JavaScript
+  * path: Fix regression in posix.normalize
+  * stream: Improve stream creation performance
+  * update bundled OpenSSL for codestreams older than SLE12:SP2
+
+-------------------------------------------------------------------
+Thu Mar 22 10:28:38 UTC 2018 - adam.majer@suse.de
+
+- New upstream release 9.9.0:
+  * assert: From now on all error messages produced by assert in
+    strict mode will produce a error diff.
+  * crypto: allow passing null as IV unless required
+  * fs: support as and as+ flags in stringToFlags()
+  * tls: expose Finished messages in TLSSocket
+  * tty: Add getColorDepth function to determine if terminal
+    supports colors.
+  * util: add util.inspect compact option
+
+- Changes in version 9.8.0:
+  * crypto: add cert.fingerprint256 as SHA256 fingerprint
+  * http2: Fixed issues with aborted connections
+  * loader: --inspect-brk now works properly for esmodules
+  * src: make process.dlopen() load well-known symbol
+  * trace_events: add file pattern cli option
+
+- remove any old manpage files in %pre from before update-alternatives
+  were used to manage symlinks to these manpages.
+
+-------------------------------------------------------------------
+Fri Mar  2 12:39:31 UTC 2018 - adam.majer@suse.de
+
+- New upstream release 9.7.1/9.7.0:
+  * deps: libuv updated to 1.19.2
+  * src: Add initial support for Node.js-specific post-mortem metadata
+  * timers: return value of setImmediate() now has ref() and unref()
+  * util: platform-specific error codes now have string representation
+
+- Changes in version 9.6.0:
+  * async_hooks:
+    + deprecate unsafe emit{Before,After}
+    + rename PromiseWrap.parentId to PromiseWrap.isChainedPromise
+  * deps:
+    + update node-inspect to 1.11.3
+    + ICU 60.2 bump
+    + Introduce ScriptOrModule and HostDefinedOptions to V8
+  * http: add options to http.createServer() for IncomingMessage and
+          ServerReponse
+  * http2: add http fallback options to .createServer
+  * https: Adds the remaining options from tls.createSecureContext()
+    to the string generated by Agent#getName(). This allows
+    https.request() to accept the options and generate unique
+    sockets appropriately.
+  * inspector: --inspect-brk for es modules
+  * lib: allow process kill by signal number
+  * module: enable dynamic import
+  * n-api: add methods to open/close callback scope
+  * src: allow --perf-(basic-)?prof in NODE_OPTIONS
+  * vm: add support for es modules
+- gyp_to_python3.patch: attempt to add support for python3.
+- fix_ci_tests.patch, versioned.patch: refreshed
+
+-------------------------------------------------------------------
+Tue Feb 13 08:40:52 UTC 2018 - adam.majer@suse.de
+
+- Add Recommends and BuildRequire on python2 for npm. node-gyp
+  requires this old version of python for now. This is only needed
+  for binary modules.
+
+-------------------------------------------------------------------
+Wed Feb  7 11:11:51 UTC 2018 - adam.majer@suse.de
+
+- Fix spec file typo
+- Use gcc7 on Leap 42.3
+
+-------------------------------------------------------------------
+Thu Feb  1 09:54:28 UTC 2018 - adam.majer@suse.de
+
+- New upstream release 9.5.0:
+  * cluster: add cwd to cluster.settings
+  * deps: libuv upgraded to 1.19.1
+  * n-api: expose n-api version in proces.versions
+  * perf_hooks: add performance.clear()
+  * stream: avoid writeAfterEnd()
+
+- Changes in release 9.4.0:
+  * async_hooks: deprecate AsyncHooks Sensitive API and
+    runInAsyncIdScope. Neither was documented.
+  * deps:
+    + upgrade nghttp2 to 1.29.0
+    + upgrade npm to 5.6.0
+  * http2:
+    + implement maxSessionMemory
+    + add initial support for originSet
+    + add altsvc support
+    + perf_hooks integration
+  * net: remove Socket.prototype.listen
+  * repl: show lexically scoped vars in tab completion
+  * stream:
+    + remove writeableState.length and readableState.length
+    + add flow and buffer properties to streams
+  * util: allow windcards in NODE_DEBUG variable
+  * zlib: add ArrayBuffer support
+
+-------------------------------------------------------------------
+Tue Jan 30 18:10:06 CET 2018 - ro@suse.de
+
+- even on recent codestreams there is no binutils gold on s390
+  only on s390x
+
+-------------------------------------------------------------------
+Wed Jan 10 09:57:07 UTC 2018 - adam.majer@suse.de
+
+- nodejs-sle11-python26-check_output.patch: refreshed
+
+-------------------------------------------------------------------
+Fri Dec 22 14:05:23 UTC 2017 - adam.majer@suse.de
+
+- Enable CI tests in %check target
+  + fix_ci_tests.patch:
+    - DNS queries in buildroots are failing with EAI_AGAIN
+    - disable test-module-loading-globalpaths.js - we have
+      hardcoded global paths
+  + versioned.patch: call versioned node binary for tests
+- node-gyp-addon-gypi.patch: fix typo allowing unit tests to compile
+
+-------------------------------------------------------------------
+Fri Dec 15 11:03:51 UTC 2017 - adam.majer@suse.de
+
+- New upstream release 9.3.0:
+  * async_hooks:
+    + add trace events to async_hooks
+    + add provider types for net server
+  * console: console.debug can now be used outside of the inspector
+  * deps:
+    + upgrade libuv to 1.18.0
+    + patch V8 to 6.2.414.46
+  * module.builtinModules will return a list of built in modules
+  * n-api: add helper for addons to get the event loop
+  * process:
+    + process.setUncaughtExceptionCaptureCallback can now be used
+      to customize behavior for --abort-on-uncaught-exception
+    + A signal handler is now able to receive the signal code that
+      triggered the handler.
+  * stream: writable.writableHighWaterMark and
+    readable.readableHighWaterMark will return the values the
+    stream object with which it was instantiated.
+- Dropped 8334.diff - no longer needed
+
+-------------------------------------------------------------------
+Sat Dec  9 03:22:01 UTC 2017 - qantas94heavy@gmail.com
+
+- New upstream release 9.2.1:
+  * buffer: buffers allocated with an invalid content will now be
+    zero filled
+    [ CVE-2017-15897 ]
+  * deps/openssl: updated to 1.0.2n (only applies to SLE 12 SP1
+    and lower) (bsc#1072322)
+    [ CVE-2017-3738 CVE-2017-15896 ]
+
+- Remove unnecessary curl BuildRequires
+- Enable gold linker on s390x (TW and SLE/Leap 15)
+- Build with bundled ICU if system ICU not available (only applies
+  to SLE 11/12 and Leap 42.x)
+
+-------------------------------------------------------------------
+Wed Nov 29 01:41:56 UTC 2017 - qantas94heavy@gmail.com
+
+- Change BuildRequires from openssl-devel to libopenssl-1_0_0-devel
+  due to Tumbleweed/Leap 15 change to OpenSSL 1.1.0 as default
+
+-------------------------------------------------------------------
+Thu Nov 16 13:16:25 UTC 2017 - adam.majer@suse.de
+
+- Update nodejs.keyring based on current Release Team as found on
+  https://github.com/nodejs/node#release-team
+- New upstream version 9.2.0
+  * crypto: Support building with both OpenSSL 1.1.0
+  * fs: fs.realpathSync.native and fs.realpath.native are now exposed
+  * process: expose process.ppid
+
+-------------------------------------------------------------------
+Mon Nov 13 14:29:47 UTC 2017 - adam.majer@suse.de
+
+- Fix permissions of node-gyp. This should be executable to allow
+  building of binary node modules.
+
+-------------------------------------------------------------------
+Fri Nov 10 13:10:42 UTC 2017 - adam.majer@suse.de
+
+- New upstream version 9.1.0
+  * cli: NODE_OPTIONS now supports the --stack-trace-limit option.
+  * http:
+    + A 'connect' event handler leak has been fixed.
+    + The 103 Early Hints status code is now supported.
+
+- Changes in upstream version 9.0.0
+  * async: Older experimental APIs have been removed.
+  * errors: The assignment of static error codes to Node.js errors
+  * child_processes: Errors are emitted on process nextTick.
+  * domains: The long-deprecated .dispose() method has been removed
+  * fs:
+    + fs.ReadStream and fs.WriteStream classes now use destroy().
+    + module callbacks are now invoked with an undefined context.
+  * HTTP/1:
+    + 400 Bad Request response will now be sent when parsing fails.
+    + Socket timeout will be set when the socket connects.
+    + A bug causing the request 'error' event to fire twice is fixed.
+    + HTTP clients may now use generic Duplex streams in addition
+      to net.Socket.
+  * intl: The deprecated Intl.v8BreakIterator has been removed.
+  * os: The os.EOL property is now read-only
+  * timers: setTimeout() will emit a warning if the timeout is
+    larger that the maximum 32-bit unsigned integer.
+
+- .changes file trimmed to only include changes relative to 9.x
+  line. If you would like to see older changes, please see
+  nodejs8 package.
+- icu59.patch 0f3e69db.patch: removed empty patches

@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Thu Aug 16 16:00:17 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.1.1+git20160312.ffef7d0:
+  * Remove async ref when exit signaled
+  * Add optional setup callback to be invoked at the start of each test
+  * Allow command line test timeout configuration
+  * Add timestamp to log output
+  * Add create_dir directive
+  * Stop application:get_env/3 for better retro-compatibility
+  * Activate travis regression testing
+  * Add regression testing
+  * Fix escriptize missing build step
+  * Put error on newline for readability.
+
+-------------------------------------------------------------------
+Thu Aug 16 15:56:28 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.1.0+git20160124.6b33038:
+  * 
+
+-------------------------------------------------------------------
+Sat Dec 31 02:56:00 UTC 2017 - bwiedemann@suse.com
+
+- kill leftover epmd process in build
+
+-------------------------------------------------------------------
+Fri Mar 18 09:07:52 UTC 2016 - matwey.kornilov@gmail.com
+
+- Update to version 1.1.0+git20160124.6b33038:
+  + Put error on newline for readability.
+  + Add timestamp to log output
+  + Allow command line test timeout configuration
+  + Add optional setup callback to be invoked at the start of each test
+  + Add project deprecation message to README
+
+-------------------------------------------------------------------
+Sun Feb  2 18:12:21 UTC 2014 - matwey.kornilov@gmail.com
+
+- Update version
+
+-------------------------------------------------------------------
+Wed Jun 26 07:26:43 UTC 2013 - kruber@zib.de
+
+- initial package
+

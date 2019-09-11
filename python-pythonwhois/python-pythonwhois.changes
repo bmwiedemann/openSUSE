@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Sat Mar 16 11:38:52 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- fix boo#1129473
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:13 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Feb 19 09:59:24 UTC 2018 - sebix+novell.com@sebix.at
+
+- add conflict for perl-Net-Whois-Raw because of /usr/bin/pwhois
+
+-------------------------------------------------------------------
+Sun Feb 18 14:13:21 UTC 2018 - sebix+novell.com@sebix.at
+
+- initial package for version 2.4.3
+- add remove_argparse_req.patch to fix package installation

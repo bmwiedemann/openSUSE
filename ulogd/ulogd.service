@@ -1,0 +1,8 @@
+[Unit]
+Description=Userspace logging daemon for NFLOG
+
+[Service]
+ExecStart=/usr/sbin/ulogd -u ulogd
+
+[Install]
+WantedBy=multi-user.target

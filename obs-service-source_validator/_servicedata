@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">git://github.com/openSUSE/obs-service-source_validator.git</param>
+          <param name="changesrevision">e9ce13b96ed8141466e39eb28271db52ef59219a</param></service></servicedata>

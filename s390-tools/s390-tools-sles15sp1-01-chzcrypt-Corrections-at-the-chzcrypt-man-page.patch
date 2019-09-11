@@ -1,0 +1,54 @@
+Subject: zcrypt: Corrections at the chzcrypt man page.
+From: Harald Freudenberger <freude@linux.ibm.com>
+
+Summary:     lszcrypt: support for alternate zcrypt device drivers
+Description: With kernel 4.19 there comes an extension to the
+             existing AP bus which supports alternate zcrypt
+             drivers. For details about this see kernel patch
+             "s390/zcrypt: AP bus support for alternate
+             driver(s)". So now lszcrypt displays the driver name
+             in verbose mode. As some of the information
+             displayed by lszcrypt was based on sysfs attributes,
+             which are only available when the default zcrypt
+             driver is bound to the device, this also needed some
+             rework. If a sysfs attribute is not available
+             because of an alternate driver binding (or no
+             driver) a question mark is printed into the field.
+Upstream-ID: 13648dd6f424bdbf855cd756e3039c8d4e9fd944
+Problem-ID:  SEC1806
+
+Upstream-Description:
+
+             zcrypt: Corrections at the chzcrypt man page.
+
+             Fixed typo and added one sentence to explain more details
+             about online switching of queue devices.
+
+             Signed-off-by: Harald Freudenberger <freude@linux.vnet.ibm.com>
+             Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Harald Freudenberger <freude@linux.ibm.com>
+---
+ zconf/zcrypt/chzcrypt.8 |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/zconf/zcrypt/chzcrypt.8
++++ b/zconf/zcrypt/chzcrypt.8
+@@ -57,6 +57,7 @@ Set all available cryptographic device(s
+ .B <device id>
+ Specifies a cryptographic device which will be set either online or offline.
+ The device can either be a card device or a queue device.
++A queue device can only get switched online when the providing card is online.
+ 
+ Please note that the card device and queue device representation are both
+ in hexadecimal notation.
+@@ -95,7 +96,7 @@ Print version information and exit.
+ .B chzcrypt -e 0 1 12
+ Will set the cryptographic card devices 0, 1 and 12 online.
+ .TP
+-.B chzcrypt -e 01.0038
++.B chzcrypt -e 10.0038
+ Will set the cryptographic device '10.0038' respectively card id 16
+ (0x10) with domain 56 (0x38) online.
+ .TP

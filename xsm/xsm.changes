@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Thu Apr  5 10:27:49 UTC 2018 - sndirsch@suse.com
+
+- Update to version 1.0.4
+  * autogen.sh changes
+  * configure: Drop AM_MAINTAINER_MODE
+  * Print which option was in error along with usage message
+  * Remove obsolete Imake SIGNALRETURNSINT
+  * Drop CRAY support
+  * Improve help messages & man page
+  * Close file descriptors on exec.
+
+-------------------------------------------------------------------
+Tue Feb 26 18:48:26 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.3:
+  + Use mode_t, not int, for umask return/argument value.
+  + Use standard autoconf defines for mkstemp & putenv instead of
+    imake leftovers.
+  + install: Use sysconfdir instead of libdir for config files.
+  + Add size limit to scanf string specifier.
+  + Fix some gcc -Wwrite-strings warnings.
+  + Terminate execl() arguments with NULL instead of 0.
+  + Convert a couple last sprintf calls to snprintf.
+  + Convert XtMalloc + sprintf to XtAsprintf. Depends on libXt >
+    1.0.99 to ensure XtAsprintf is available.
+  + config:
+    - Add missing AC_CONFIG_SRCDIR
+    - Replace deprecated AM_CONFIG_HEADER with AC_CONFIG_HEADERS.
+    - Replace deprecated AC_HELP_STRING with AS_HELP_STRING.
+    - Move man pages into their own directory.
+  + man:
+    - Replace hard coded man page section with substitution
+      strings.
+    - Remove trailing spaces and tabs.
+  +  Make System() prototype for Solaris in xsm.h actually a
+     prototype.
+- Drop xsm.diff patch, fixed upstream.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xsm from xorg-x11. Initial version: 1.0.2.
+

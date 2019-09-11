@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sat May 25 13:09:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.7.1:
+  * no upstream changelog
+- Rebase fix_version.patch
+
+-------------------------------------------------------------------
+Thu Mar 14 16:38:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description.
+
+-------------------------------------------------------------------
+Wed Mar 13 15:47:24 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Initial commit
+- add fix_version.patch

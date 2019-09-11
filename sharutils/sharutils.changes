@@ -1,0 +1,408 @@
+-------------------------------------------------------------------
+Mon Aug  6 08:54:30 UTC 2018 - schwab@suse.de
+
+- gnulib-libio.patch: Update gnulib for libio.h removal
+- Use %license for COPYING
+
+-------------------------------------------------------------------
+Tue Mar 13 09:41:21 CET 2018 - pth@suse.de
+
+- Add sharutils-CVE-2018-1000097-fix_buffer_overflow.patch to fix
+  a possibility to overflow the stack (bsc#1085004, CVE-2018-1000097).
+
+-------------------------------------------------------------------
+Fri Jun 19 19:31:52 UTC 2015 - astieger@suse.com
+
+- update to 4.15.2:
+  * updates to fix cross platform build issues
+  * fixed problem where contrived uuencoded file caused seg fault 
+
+-------------------------------------------------------------------
+Sun May  3 09:15:05 UTC 2015 - astieger@suse.com
+
+- update to sharutils 4.15.1
+  * gnulib updates to fix rare platform build issues
+
+-------------------------------------------------------------------
+Thu Feb 26 20:03:07 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Add gpg key
+- Remove obsolete patches
+  * sharutils-set_file_mode.diff 
+  * sharutils-mandir.patch
+  * sharutils-stdio.in.patch
+- Enable openssl support
+- Remove bcond and allways build with mailx
+- Update lang package macros
+- Update to Version 4.15
+  * shar will no longer choke on 64 bit windows
+  * unshar has a compiler warning fix
+  * Happy 2015 copyright
+  * PO file updates
+
+- Version 4.14.2
+  * translation updates
+  * use ftello, fseeko and fflush
+  * augment copyright marks in shar.c and shar-std.def
+  * Happy 2014 copyright dates
+  * fix up man pages (use newer doc generation code)
+
+- Version 4.14 
+  * documentation, obscure usage, FSF address
+
+- Version 4.13.5
+  * primarily, configuration cleanups.  Mostly for MinGW,
+  but some others, too.
+
+- Version 4.13.4
+  * output file names may be encoded in the uuencoded file.
+    By specifying '--encode' on the command line, the output
+    file name will be base64 encoded in the uuencode file.
+
+-------------------------------------------------------------------
+Fri Apr  5 11:27:25 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Thu May 31 20:44:33 UTC 2012 - sweet_f_a@gmx.de
+
+- remove useless automake dependency
+
+-------------------------------------------------------------------
+Thu Dec  1 15:58:51 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Jul 29 10:54:31 UTC 2011 - aj@suse.de
+
+- Recommends instead of require lang package.
+
+-------------------------------------------------------------------
+Thu Jul 28 23:26:45 UTC 2011 - giecrilj@stegny.2a.pl
+
+- create sharutils-lang
+
+-------------------------------------------------------------------
+Tue Jul 26 11:44:58 CEST 2011 - pth@suse.de
+
+- Update to 4.11.1. Changes since 2.6.3:
+
+  4.11.1:
+  * mail-files was completely broken and cannot be in use.  Removed.
+    mailshar (its wrapper script) also remvoed.
+
+  4.10:
+  * test and handle clobber option correctly in generated scripts.
+
+  4.9:
+  * Fix up quoting some more in the shar script messages.
+    Translators will not have to worry over shell quoting any more.
+
+  4.7.1:
+  * uudecode will not create output file names with trailing white space
+
+  4.7:
+  * fix a grammatical typo in doc/uuencode.1
+  * relicense the product under GPL version 3.
+
+- Remove unneeded dummy.diff.
+- Prefix all patches with pacckage name.
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:45 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Nov 19 11:03:44 CET 2007 - schwab@suse.de
+
+- Fix packaging bug.
+
+-------------------------------------------------------------------
+Thu Nov 15 17:30:02 CET 2007 - schwab@suse.de
+
+- Update to sharutils 4.6.3.
+  * Recognize "end\r\n" as "end" as well as "end\n".
+  * Avoid duplicate declarations of "readdir".
+  * generate compress-dummy.1 from the dummy script at bootstrap time
+
+-------------------------------------------------------------------
+Mon May 15 15:39:09 CEST 2006 - schwab@suse.de
+
+- Update to sharutils 4.6.2.
+  * uudecode.c(decode): make clear the name of the file causing problems
+  * uudecode.c (O_BINARY): Define for all platforms.
+  (decode): Always open with binary, where it matters.
+  * uuencode.c [__CYGWIN__]: Include io.h for setmode.
+  (O_BINARY): Define for all platforms.
+  (main): Always open with binary, where it matters.
+  (main) [__CYGWIN__]: Use setmode to make stdin binary.
+  * src/shar.c(echo_status): new - report status in consistent fashion.
+  (throughout): remove many strings to scripts.def file.
+  * src/scripts.def: add many new entries and alphabetize
+  * tests/shar-1.ok: adjust to changes
+  * tests/Makefile.am: add 'shar-3' test and a clean rule
+  * tests/shar-3: new - test large multi part archive
+  * tests/shar-1: delete varying text, not arbitrary lines from sample
+  * tests/shar-2: remove unnecessary line removal
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct  5 10:12:31 CEST 2005 - schwab@suse.de
+
+- Update to sharutils 4.6.
+
+-------------------------------------------------------------------
+Thu Aug  4 13:20:03 CEST 2005 - schwab@suse.de
+
+- Update to sharutils 4.5.
+
+-------------------------------------------------------------------
+Mon Jul 25 10:19:48 CEST 2005 - schwab@suse.de
+
+- Update to sharutils 4.4.
+
+-------------------------------------------------------------------
+Mon Jun 27 10:00:44 CEST 2005 - schwab@suse.de
+
+- Update to sharutils 4.3.81.
+
+-------------------------------------------------------------------
+Sun May  1 12:51:45 CEST 2005 - schwab@suse.de
+
+- Update to sharutils 4.3.80.
+
+-------------------------------------------------------------------
+Wed Apr 27 15:47:39 CEST 2005 - schwab@suse.de
+
+- Update to sharutils 4.3.79.
+
+-------------------------------------------------------------------
+Tue Apr 19 15:11:44 CEST 2005 - kukuk@suse.de
+
+- Remove compress symlink [#78331]
+
+-------------------------------------------------------------------
+Mon Jan 24 14:26:28 CET 2005 - schwab@suse.de
+
+- Update to sharutils 4.3.78.
+
+-------------------------------------------------------------------
+Wed Nov  3 15:57:25 CET 2004 - schwab@suse.de
+
+- Fix buffer underrun [#46557].
+
+-------------------------------------------------------------------
+Mon Oct 25 17:04:25 CEST 2004 - schwab@suse.de
+
+- Fix another quoting bug.
+
+-------------------------------------------------------------------
+Fri Oct  8 14:53:29 CEST 2004 - schwab@suse.de
+
+- Update to sharutils 4.3.77.
+
+-------------------------------------------------------------------
+Thu Sep 30 15:56:08 CEST 2004 - schwab@suse.de
+
+- Properly quote filenames in generated shar output.
+- Fix buffer overruns [#46557].
+
+-------------------------------------------------------------------
+Fri Aug 13 15:41:06 CEST 2004 - schwab@suse.de
+
+- Rename ja_JP.EUC.po to ja.po and fix encoding header [#43607].
+
+-------------------------------------------------------------------
+Mon May  3 17:08:29 CEST 2004 - schwab@suse.de
+
+- Better fix for last change.
+
+-------------------------------------------------------------------
+Tue Apr 20 14:44:08 CEST 2004 - schwab@suse.de
+
+- Fix arbitrary file name limit [#39122].
+
+-------------------------------------------------------------------
+Fri Mar  5 17:55:23 CET 2004 - schwab@suse.de
+
+- Add /usr/bin/compress as %ghost.
+
+-------------------------------------------------------------------
+Fri Dec 12 21:16:38 CET 2003 - schwab@suse.de
+
+- Remove extra AC_LINK_FILES.
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Apr  7 13:12:06 CEST 2003 - schwab@suse.de
+
+- Only delete info entries when removing last version.
+
+-------------------------------------------------------------------
+Thu Feb  6 17:49:27 CET 2003 - schwab@suse.de
+
+- Use %install_info.
+
+-------------------------------------------------------------------
+Mon Nov 18 16:16:54 CET 2002 - schwab@suse.de
+
+- Add AM_GNU_GETTEXT_VERSION.
+
+-------------------------------------------------------------------
+Tue Aug 20 11:05:04 CEST 2002 - mmj@suse.de
+
+- Correct PreReq
+
+-------------------------------------------------------------------
+Wed Jul 10 12:54:11 CEST 2002 - schwab@suse.de
+
+- Remove last change, breaks POSIX conformance.
+
+-------------------------------------------------------------------
+Mon Jul  8 09:23:50 CEST 2002 - ke@suse.de
+
+- Fix uudecode file handling (FIFO, symlink, and  pipe output):
+  CAN-2002-0178; make use of RHSA-2002:065-13.
+
+-------------------------------------------------------------------
+Tue Jul  2 18:01:00 MEST 2002 - mls@suse.de
+
+- removed mininews from neededforbuild, was only needed for uudeview
+
+-------------------------------------------------------------------
+Tue Jul  2 13:49:48 CEST 2002 - max@suse.de
+
+- Split off uudeview into a separate package.
+
+-------------------------------------------------------------------
+Mon Jun 24 13:16:46 CEST 2002 - schwab@suse.de
+
+- Fix last change.
+
+-------------------------------------------------------------------
+Mon Jun 24 08:23:20 CEST 2002 - ke@suse.de
+
+- compress-dummy.sh.in: Add this script and install a link 'compress'
+  pointing to it; thus legacy shar files calling 'compress -d < ...'
+  can succeed; cf. [# 16299].
+- sharutils-compress.diff: Patch to install compress-dummy.sh.
+- sharutils-printf.diff: Avoid embedded newlines in strings (xgettext
+  warns about those strings).
+
+-------------------------------------------------------------------
+Fri Dec  7 12:11:21 CET 2001 - schwab@suse.de
+
+- Run autoconf in uudeview.
+- Fix provides.
+
+-------------------------------------------------------------------
+Mon Dec  4 10:46:58 CET 2000 - schwab@suse.de
+
+- Use BuildRoot.
+- Avoid `install -s' on non-binaries.
+
+-------------------------------------------------------------------
+Wed Nov 29 17:26:54 CET 2000 - ro@suse.de
+
+- changed neededforbuild <tcld> to <tcl-devel>
+
+-------------------------------------------------------------------
+Tue Oct 24 14:09:10 CEST 2000 - schwab@suse.de
+
+- Renamed from sharutil.
+
+-------------------------------------------------------------------
+Tue May 30 16:47:33 CEST 2000 - schwab@suse.de
+
+- mailshar: recognize `*.tgz' as compressed file
+
+-------------------------------------------------------------------
+Mon May 29 13:21:10 CEST 2000 - max@suse.de
+
+- changed use of Tk_Main to Tk_MainEx for compatibility with
+  Tcl/Tk 8.3.
+
+-------------------------------------------------------------------
+Tue Jan 18 13:54:59 CET 2000 - schwab@suse.de
+
+- /usr/{info,man} -> /usr/share/{info,man}
+
+-------------------------------------------------------------------
+Tue Jan  4 12:00:42 CET 2000 - schwab@suse.de
+
+- Enable NLS
+
+-------------------------------------------------------------------
+Tue Jan  4 11:13:57 CET 2000 - schwab@suse.de
+
+- Y2K fixes from sharutils 4.2.1
+- Fix mktemp usage and quoting in mailshar
+
+-------------------------------------------------------------------
+Tue Oct 12 12:34:40 CEST 1999 - ro@suse.de
+
+- added tcld to neededforbuild
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Sep  8 12:50:47 CEST 1999 - schwab@suse.de
+
+- run "make check"
+
+-------------------------------------------------------------------
+Fri Aug 27 18:26:47 CEST 1999 - schwab@suse.de
+
+- specfile cleanup
+- add mininews as neededforbuild
+- fix shell expansion bug in uudeview configure script
+
+-------------------------------------------------------------------
+Fri Jul 17 14:31:45 MEST 1998 - werner@suse.de
+
+- Use mktemp
+
+-------------------------------------------------------------------
+Thu Jul 16 23:03:09 MEST 1998 - werner@suse.de
+
+- mailshar fix to remove already existing temp files
+
+-------------------------------------------------------------------
+Thu Feb  5 10:24:18 MET 1998 - florian@suse.de
+
+- fix setting of mail program for mailshar
+
+-------------------------------------------------------------------
+Fri Oct 17 12:47:51 MEST 1997 - ro@suse.de
+
+- ready for autobuild
+
+----------------------------------------------------------------------------
+Sun Jun 22 18:57:49 MEST 1997 - florian@suse.de
+
+
+- update to sharutil 4.2c
+
+- update to uudeview 0.5.13
+
+
+----------------------------------------------------------------------
+Sun Aug 25 19:28:50 MET DST 1996 - florian@suse.de
+
+
+added additional source package uudeview

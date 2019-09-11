@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Sat Jul  7 06:08:29 UTC 2018 - coolo@suse.com
+
+- updated to 1.20180705
+   see /usr/share/doc/packages/perl-Test-MockObject/Changes
+
+  1.20180705 2018-07-05 16:47:18-07:00 America/Los_Angeles
+      - added destructor to clear counters (choroboa PR #15, RT #71831)
+
+-------------------------------------------------------------------
+Sat Dec  3 07:16:03 UTC 2016 - coolo@suse.com
+
+- updated to 1.20161202
+   see /usr/share/doc/packages/perl-Test-MockObject/Changes
+
+  1.20161202 2016-12-02 15:12:41-08:00 America/Los_Angeles
+      - renamed README.pod to README (RT #118831)
+
+-------------------------------------------------------------------
+Sun Jun  7 09:07:06 UTC 2015 - coolo@suse.com
+
+- updated to 1.20150527
+   see /usr/share/doc/packages/perl-Test-MockObject/Changes
+
+  1.20150527 2015-05-27 08:33:52-07:00 America/Los_Angeles
+      - improved dependencies (build/run/requires), (Olivier Mengué, GH PR #10)
+      - improved runtime loading (Olivier Mengué, GH PR #11)
+  
+  1.20150521 2015-05-21 09:09:19-07:00 America/Los_Angeles
+      - updated CGI dependency
+      - improved README for GitHub (Rob Van Dam, GH PR #9)
+
+-------------------------------------------------------------------
+Tue Apr 14 20:27:58 UTC 2015 - coolo@suse.com
+
+- updated to 1.20140408
+   see /usr/share/doc/packages/perl-Test-MockObject/Changes
+
+  1.20140408 2014-04-07 17:38:44-07:00 America/Los_Angeles
+      - enabled Travis CI (no user-visible changes)
+      - improved fields-based object support (Olivier Mengué, Maxime Soulé)
+  
+  1.20140328 2014-03-28 16:17:59-07:00 America/Los_Angeles
+      - support added for fields-based objects (Gavin Mogan, RT #84535)
+
+-------------------------------------------------------------------
+Tue Mar 18 12:42:44 UTC 2014 - coolo@suse.com
+
+- regenerate spec file for 1.20120301 
+
+-------------------------------------------------------------------
+Tue Mar 11 18:38:11 UTC 2014 - rschweikert@suse.com
+
+- fix license string
+
+-------------------------------------------------------------------
+Wed Dec  1 09:44:39 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:13 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Jul 15 16:15:02 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.09)
+

@@ -1,0 +1,104 @@
+From b6fcf014ddfc2f02a9310f8e4d2fd28890566ba5 Mon Sep 17 00:00:00 2001
+From: Bruce Rogers <brogers@suse.com>
+Date: Wed, 21 Nov 2018 12:10:44 -0700
+Subject: [PATCH] tools/kvm_stat: apply python 2to3 fixes to kvm_stat3
+
+[LD: BSC#1116822]
+Signed-off-by: Larry Dewey <ldewey@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 28 +++++++++++++++-------------
+ 1 file changed, 15 insertions(+), 13 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 789fa3ad5508..ed6518bf2ab5 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -19,7 +19,7 @@ Three different ways of output formatting are available:
+ 
+ The data is sampled from the KVM's debugfs entries and its perf events.
+ """
+-from __future__ import print_function
++
+ 
+ import curses
+ import sys
+@@ -384,9 +384,9 @@ class Group(object):
+         """
+         length = 8 * (1 + len(self.events))
+         read_format = 'xxxxxxxx' + 'Q' * len(self.events)
+-        return dict(zip([event.name for event in self.events],
++        return dict(list(zip([event.name for event in self.events],
+                         struct.unpack(read_format,
+-                                      os.read(self.events[0].fd, length))))
++                                      os.read(self.events[0].fd, length)))))
+ 
+ 
+ class Event(object):
+@@ -592,8 +592,8 @@ class TracepointProvider(Provider):
+                     integers.append(int(member))
+                 else:
+                     int_range = member.split('-')
+-                    integers.extend(range(int(int_range[0]),
+-                                          int(int_range[1]) + 1))
++                    integers.extend(list(range(int(int_range[0]),
++                                          int(int_range[1]) + 1)))
+ 
+             return integers
+ 
+@@ -696,7 +696,7 @@ class TracepointProvider(Provider):
+         """Returns 'event name: current value' for all enabled events."""
+         ret = defaultdict(int)
+         for group in self.group_leaders:
+-            for name, val in group.read().items():
++            for name, val in list(group.read().items()):
+                 if name not in self._fields:
+                     continue
+                 parent = ARCH.tracepoint_is_child(name)
+@@ -759,7 +759,7 @@ class DebugfsProvider(Provider):
+             if len(vms) == 0:
+                 self.do_read = False
+ 
+-            self.paths = list(filter(lambda x: "{}-".format(pid) in x, vms))
++            self.paths = list([x for x in vms if "{}-".format(pid) in x])
+ 
+         else:
+             self.paths = []
+@@ -947,7 +947,7 @@ class Stats(object):
+             for provider in self.providers:
+                 if isinstance(provider, DebugfsProvider):
+                     for key in provider.fields:
+-                        if key in self.values.keys():
++                        if key in list(self.values.keys()):
+                             del self.values[key]
+         else:
+             oldvals = self.values.copy()
+@@ -1153,7 +1153,7 @@ class Tui(object):
+             sorted_items = []
+             # we can't rule out child events to appear prior to parents even
+             # when sorted - separate out all children first, and add in later
+-            for key, values in sorted(stats.items(), key=sortkey,
++            for key, values in sorted(list(stats.items()), key=sortkey,
+                                       reverse=True):
+                 if values == (0, 0):
+                     continue
+@@ -1189,7 +1189,7 @@ class Tui(object):
+         stats = self.stats.get(self._display_guests)
+         total = 0.
+         ctotal = 0.
+-        for key, values in stats.items():
++        for key, values in list(stats.items()):
+             if self._display_guests:
+                 if self.get_gname_from_pid(key):
+                     total += values.value
+@@ -1687,7 +1687,7 @@ def main():
+     if options.fields == 'help':
+         stats.fields_filter = None
+         event_list = []
+-        for key in stats.get().keys():
++        for key in list(stats.get().keys()):
+             event_list.append(key.split('(', 1)[0])
+         sys.stdout.write('  ' + '\n  '.join(sorted(set(event_list))) + '\n')
+         sys.exit(0)
+-- 
+2.19.1
+

@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Wed Nov  2 10:39:47 UTC 2016 - sndirsch@suse.com
+
+- tagged baselibs.conf as source in specfile
+
+-------------------------------------------------------------------
+Fri Oct 28 23:55:56 UTC 2016 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.0.11:
+  + Fix typo in dependencies for lint library
+  + Protocol handling issues in libXv - CVE-2016-5407
+
+-------------------------------------------------------------------
+Thu Sep 12 17:58:09 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.10:
+  + Remove fallback for _XEatDataWords, require libX11 1.6 for it.
+  + Refactor error handling.
+  + Add missing calls to _XEatDataWords when we are skipping
+    _XRead.
+  + Replace custom copy of GetReq macro with call to Xlib 1.5's
+    _XGetRequest.
+  + Require ANSI C89 pre-processor, drop pre-C89 token pasting
+    support.
+  + Use pad_to_int32 macro instead of repeated (x + 3) & ~3
+    pattern.
+  + Fix sign conversion & comparison warnings from clang.
+  + Remove unnecessary casts from Xmalloc calls.
+  + Adopt X.Org standard code style, with consistent indentation.
+
+-------------------------------------------------------------------
+Sun Jun 23 14:47:39 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.0.9:
+  This quick fix release corrects an issue with the security fix from 1.0.8,
+  in which, if the size checks did determine the response from the X server
+  was too large to fit in the buffer it had allocated, XvQueryPortAttributes
+  could return a pointer to the caller that pointed to uninitialized memory
+  where the caller expected a nil-terminated string.
+
+-------------------------------------------------------------------
+Sat Jun  1 20:25:05 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.0.8:
+  This release delivers the fixes for the recently announced security issues
+  CVE-2013-1989 & CVE-2013-2066, plus a couple build configuration changes
+  and man page fixes.
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+
+-------------------------------------------------------------------
+Wed Apr 11 15:26:37 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.0.7:
+  + Janitorial cleanups
+  + Man page fix
+  + Build configuration improvements
+
+-------------------------------------------------------------------
+Sun Feb 12 01:53:35 UTC 2012 - jengelh@medozas.de
+
+- Rename xorg-x11-libXv to libXv and utilize shlib policy
+
+-------------------------------------------------------------------
+Tue Dec 21 02:48:40 UTC 2010 - sndirsch@novell.com
+
+- bumped version number to 7.6 
+
+-------------------------------------------------------------------
+Sat Oct 30 15:47:53 UTC 2010 - sndirsch@novell.com
+
+- libXv 1.0.6
+  * This minor maintenance release provides the usual recent
+    collection of build configuration improvements and janitorial
+    cleanups.
+
+-------------------------------------------------------------------
+Sun Apr  4 15:59:29 CEST 2010 - sndirsch@suse.de
+
+- libXv 1.0.5
+- bumped version number to 7.5 
+
+-------------------------------------------------------------------
+Mon Dec 14 20:00:15 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Sat May  2 14:42:17 CEST 2009 - eich@suse.de
+
+- revert static library and .la file removal
+  for SUSE versions <= 11.1.
+
+-------------------------------------------------------------------
+Tue Apr 21 19:14:41 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Thu Sep 11 14:22:15 CEST 2008 - sndirsch@suse.de
+
+- bumped release number to 7.4 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Mar 18 10:25:10 CET 2008 - sndirsch@suse.de
+
+- libXv 1.0.4 
+  * nuke RCS Ids
+  * get rid of ancient XFree86 CVS Id tags
+  * convert manpages prototypes to C ANSI format
+
+-------------------------------------------------------------------
+Sat Jan 12 04:18:22 CET 2008 - crrodriguez@suse.de
+
+- fix library-without-ldconfig* errors
+- PreReq coreutils in -devel package 
+
+-------------------------------------------------------------------
+Sat Sep 29 12:24:03 CEST 2007 - sndirsch@suse.de
+
+- bumped version to 7.3 
+
+-------------------------------------------------------------------
+Mon Dec 18 11:01:39 CET 2006 - sndirsch@suse.de
+
+- updated to release 1.0.3
+  * Makefile.am: make ChangeLog hook safer 
+
+-------------------------------------------------------------------
+Thu Oct 26 07:29:10 CEST 2006 - sndirsch@suse.de
+
+- set version to 7.2 in specfile 
+
+-------------------------------------------------------------------
+Mon Oct  9 15:48:29 CEST 2006 - sndirsch@suse.de
+
+- updated to release 1.0.2:
+  * Minor cleanup release - fixes to documentation, lint/sparse
+    warning cleanups, and closed a small memory leak Coverity
+    found in the out-of-memory error handling path.
+
+-------------------------------------------------------------------
+Wed Aug  2 16:12:37 CEST 2006 - sndirsch@suse.de
+
+- fix setup line 
+
+-------------------------------------------------------------------
+Fri Jul 28 14:44:56 CEST 2006 - sndirsch@suse.de
+
+- use "-fno-strict-aliasing" 
+
+-------------------------------------------------------------------
+Thu Jul 27 11:48:13 CEST 2006 - sndirsch@suse.de
+
+- use $RPM_OPT_FLAGS
+- remove existing /usr/include/X11 symlink in %pre 
+
+-------------------------------------------------------------------
+Sat Jun 24 07:15:45 CEST 2006 - sndirsch@suse.de
+
+- created package 
+

@@ -1,0 +1,34 @@
+Index: cfe-7.0.0rc1.src/lib/Driver/Distro.cpp
+===================================================================
+--- cfe-7.0.0rc1.src.orig/lib/Driver/Distro.cpp
++++ cfe-7.0.0rc1.src/lib/Driver/Distro.cpp
+@@ -18,6 +18,8 @@ using namespace clang::driver;
+ using namespace clang;
+ 
+ static Distro::DistroType DetectDistro(vfs::FileSystem &VFS) {
++    return Distro::OpenSUSE;
++/*
+   llvm::ErrorOr<std::unique_ptr<llvm::MemoryBuffer>> File =
+       VFS.getBufferForFile("/etc/lsb-release");
+   if (File) {
+@@ -136,7 +138,7 @@ static Distro::DistroType DetectDistro(v
+   if (VFS.exists("/etc/arch-release"))
+     return Distro::ArchLinux;
+ 
+-  return Distro::UnknownDistro;
++  return Distro::UnknownDistro;*/
+ }
+ 
+ Distro::Distro(vfs::FileSystem &VFS) : DistroVal(DetectDistro(VFS)) {}
+Index: cfe-7.0.0rc1.src/unittests/Driver/CMakeLists.txt
+===================================================================
+--- cfe-7.0.0rc1.src.orig/unittests/Driver/CMakeLists.txt
++++ cfe-7.0.0rc1.src/unittests/Driver/CMakeLists.txt
+@@ -5,7 +5,6 @@ set(LLVM_LINK_COMPONENTS
+   )
+ 
+ add_clang_unittest(ClangDriverTests
+-  DistroTest.cpp
+   ToolChainTest.cpp
+   ModuleCacheTest.cpp
+   MultilibTest.cpp

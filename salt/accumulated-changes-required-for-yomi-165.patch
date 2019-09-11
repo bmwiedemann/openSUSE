@@ -1,0 +1,580 @@
+From 8cd87eba73df54a9ede47eda9425e6ffceff7ac0 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@gmail.com>
+Date: Tue, 30 Jul 2019 11:23:12 +0200
+Subject: [PATCH] Accumulated changes required for Yomi (#165)
+
+* cmdmod: fix runas and group in run_chroot
+
+The parameters runas and group for cmdmod.run() will change the efective
+user and group before executing the command. But in a chroot environment is
+expected that the change happends inside the chroot, not outside, as the
+user and groups are refering to objects that can only exist inside the
+environment.
+
+This patch add the userspec parameter to the chroot command, to change
+the user in the correct place.
+
+(cherry picked from commit f0434aaeeee3ace4e3fc65c04e69984f08b2541e)
+
+* chroot: add missing sys directory
+
+(cherry picked from commit cdf74426bcad4e8bf329bf604c77ea83bfca8b2c)
+
+* chroot: change variable name to root
+
+(cherry picked from commit 7f68b65b1b0f9eec2a6b07b02714ead0121f0e4b)
+
+* chroot: fix bug in safe_kwargs iteration
+
+(cherry picked from commit 39da1c69ea2781bed6e9d8e6879b70d65fa5a5b0)
+
+* test_cmdmod: fix test_run_cwd_in_combination_with_runas
+
+(cherry picked from commit 42640ecf161caf64c61e9b02927882f92c850092)
+
+* test_cmdmod: add test_run_chroot_runas test
+
+(cherry picked from commit d900035089a22f6741d2095fd1f6694597041a88)
+
+* freezer: do not fail in cache dir is present
+
+(cherry picked from commit 25137c51e6d6e53e3099b6cddbf51d4cb2c53d8d)
+
+* freezer: clean freeze YAML profile on restore
+
+(cherry picked from commit 56b97c997257f12038399549dc987b7723ab225f)
+
+* zypperpkg: fix pkg.list_pkgs cache
+
+The cache from pkg.list_pkgs for the zypper installer is too aggresive.
+Some parameters will deliver different package lists, like root and
+includes. The current cache do not take those parameters into
+consideration, so the next time that this function is called, the last
+list of packages will be returned, without checking if the current
+parameters match the old one.
+
+This patch create a different cache key for each parameter combination,
+so the cached data will be separated too.
+
+(cherry picked from commit 9c54bb3e8c93ba21fc583bdefbcadbe53cbcd7b5)
+---
+ salt/modules/chroot.py               | 36 +++++++++-------
+ salt/modules/cmdmod.py               | 12 ++++--
+ salt/modules/freezer.py              | 20 ++++++---
+ salt/modules/zypperpkg.py            | 13 ++++--
+ tests/unit/modules/test_chroot.py    | 36 +++++++++++++++-
+ tests/unit/modules/test_cmdmod.py    | 50 ++++++++++++++++++++++
+ tests/unit/modules/test_freezer.py   | 62 +++++++++++++++++++++++++---
+ tests/unit/modules/test_zypperpkg.py | 21 ++++++++++
+ 8 files changed, 214 insertions(+), 36 deletions(-)
+
+diff --git a/salt/modules/chroot.py b/salt/modules/chroot.py
+index 6e4705b67e..17b5890d8c 100644
+--- a/salt/modules/chroot.py
++++ b/salt/modules/chroot.py
+@@ -50,16 +50,17 @@ def __virtual__():
+         return (False, 'Module chroot requires the command chroot')
+ 
+ 
+-def exist(name):
++def exist(root):
+     '''
+     Return True if the chroot environment is present.
+     '''
+-    dev = os.path.join(name, 'dev')
+-    proc = os.path.join(name, 'proc')
+-    return all(os.path.isdir(i) for i in (name, dev, proc))
++    dev = os.path.join(root, 'dev')
++    proc = os.path.join(root, 'proc')
++    sys = os.path.join(root, 'sys')
++    return all(os.path.isdir(i) for i in (root, dev, proc, sys))
+ 
+ 
+-def create(name):
++def create(root):
+     '''
+     Create a basic chroot environment.
+ 
+@@ -67,7 +68,7 @@ def create(name):
+     install the minimal required binaries, including Python if
+     chroot.call is called.
+ 
+-    name
++    root
+         Path to the chroot environment
+ 
+     CLI Example:
+@@ -77,26 +78,28 @@ def create(name):
+         salt myminion chroot.create /chroot
+ 
+     '''
+-    if not exist(name):
+-        dev = os.path.join(name, 'dev')
+-        proc = os.path.join(name, 'proc')
++    if not exist(root):
++        dev = os.path.join(root, 'dev')
++        proc = os.path.join(root, 'proc')
++        sys = os.path.join(root, 'sys')
+         try:
+             os.makedirs(dev, mode=0o755)
+             os.makedirs(proc, mode=0o555)
++            os.makedirs(sys, mode=0o555)
+         except OSError as e:
+             log.error('Error when trying to create chroot directories: %s', e)
+             return False
+     return True
+ 
+ 
+-def call(name, function, *args, **kwargs):
++def call(root, function, *args, **kwargs):
+     '''
+     Executes a Salt function inside a chroot environment.
+ 
+     The chroot does not need to have Salt installed, but Python is
+     required.
+ 
+-    name
++    root
+         Path to the chroot environment
+ 
+     function
+@@ -107,18 +110,19 @@ def call(name, function, *args, **kwargs):
+     .. code-block:: bash
+ 
+         salt myminion chroot.call /chroot test.ping
++        salt myminion chroot.call /chroot ssh.set_auth_key user key=mykey
+ 
+     '''
+ 
+     if not function:
+         raise CommandExecutionError('Missing function parameter')
+ 
+-    if not exist(name):
++    if not exist(root):
+         raise CommandExecutionError('Chroot environment not found')
+ 
+     # Create a temporary directory inside the chroot where we can
+     # untar salt-thin
+-    thin_dest_path = tempfile.mkdtemp(dir=name)
++    thin_dest_path = tempfile.mkdtemp(dir=root)
+     thin_path = __utils__['thin.gen_thin'](
+         __opts__['cachedir'],
+         extra_mods=__salt__['config.option']('thin_extra_mods', ''),
+@@ -130,7 +134,7 @@ def call(name, function, *args, **kwargs):
+         return {'result': False, 'comment': stdout}
+ 
+     chroot_path = os.path.join(os.path.sep,
+-                               os.path.relpath(thin_dest_path, name))
++                               os.path.relpath(thin_dest_path, root))
+     try:
+         safe_kwargs = clean_kwargs(**kwargs)
+         salt_argv = [
+@@ -144,8 +148,8 @@ def call(name, function, *args, **kwargs):
+             '-l', 'quiet',
+             '--',
+             function
+-        ] + list(args) + ['{}={}'.format(k, v) for (k, v) in safe_kwargs]
+-        ret = __salt__['cmd.run_chroot'](name, [str(x) for x in salt_argv])
++        ] + list(args) + ['{}={}'.format(k, v) for (k, v) in safe_kwargs.items()]
++        ret = __salt__['cmd.run_chroot'](root, [str(x) for x in salt_argv])
+         if ret['retcode'] != EX_OK:
+             raise CommandExecutionError(ret['stderr'])
+ 
+diff --git a/salt/modules/cmdmod.py b/salt/modules/cmdmod.py
+index d0819f2f79..b279d00a11 100644
+--- a/salt/modules/cmdmod.py
++++ b/salt/modules/cmdmod.py
+@@ -3064,13 +3064,19 @@ def run_chroot(root,
+ 
+     if isinstance(cmd, (list, tuple)):
+         cmd = ' '.join([six.text_type(i) for i in cmd])
+-    cmd = 'chroot {0} {1} -c {2}'.format(root, sh_, _cmd_quote(cmd))
++
++    # If runas and group are provided, we expect that the user lives
++    # inside the chroot, not outside.
++    if runas:
++        userspec = '--userspec {}:{}'.format(runas, group if group else '')
++    else:
++        userspec = ''
++
++    cmd = 'chroot {} {} {} -c {}'.format(userspec, root, sh_, _cmd_quote(cmd))
+ 
+     run_func = __context__.pop('cmd.run_chroot.func', run_all)
+ 
+     ret = run_func(cmd,
+-                   runas=runas,
+-                   group=group,
+                    cwd=cwd,
+                    stdin=stdin,
+                    shell=shell,
+diff --git a/salt/modules/freezer.py b/salt/modules/freezer.py
+index 786dfe4515..85adbfeb82 100644
+--- a/salt/modules/freezer.py
++++ b/salt/modules/freezer.py
+@@ -151,7 +151,7 @@ def freeze(name=None, force=False, **kwargs):
+     states_path = _states_path()
+ 
+     try:
+-        os.makedirs(states_path)
++        os.makedirs(states_path, exist_ok=True)
+     except OSError as e:
+         msg = 'Error when trying to create the freezer storage %s: %s'
+         log.error(msg, states_path, e)
+@@ -163,13 +163,13 @@ def freeze(name=None, force=False, **kwargs):
+     safe_kwargs = clean_kwargs(**kwargs)
+     pkgs = __salt__['pkg.list_pkgs'](**safe_kwargs)
+     repos = __salt__['pkg.list_repos'](**safe_kwargs)
+-    for name, content in zip(_paths(name), (pkgs, repos)):
+-        with fopen(name, 'w') as fp:
++    for fname, content in zip(_paths(name), (pkgs, repos)):
++        with fopen(fname, 'w') as fp:
+             json.dump(content, fp)
+     return True
+ 
+ 
+-def restore(name=None, **kwargs):
++def restore(name=None, clean=False, **kwargs):
+     '''
+     Make sure that the system contains the packages and repos from a
+     frozen state.
+@@ -190,6 +190,9 @@ def restore(name=None, **kwargs):
+     name
+         Name of the frozen state. Optional.
+ 
++    clean
++        In True remove the frozen information YAML from the cache
++
+     CLI Example:
+ 
+     .. code-block:: bash
+@@ -203,8 +206,8 @@ def restore(name=None, **kwargs):
+ 
+     frozen_pkgs = {}
+     frozen_repos = {}
+-    for name, content in zip(_paths(name), (frozen_pkgs, frozen_repos)):
+-        with fopen(name) as fp:
++    for fname, content in zip(_paths(name), (frozen_pkgs, frozen_repos)):
++        with fopen(fname) as fp:
+             content.update(json.load(fp))
+ 
+     # The ordering of removing or adding packages and repos can be
+@@ -291,4 +294,9 @@ def restore(name=None, **kwargs):
+             log.error(msg, repo, e)
+             res['comment'].append(msg % (repo, e))
+ 
++    # Clean the cached YAML files
++    if clean and not res['comment']:
++        for fname in _paths(name):
++            os.remove(fname)
++
+     return res
+diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
+index 6bc7211f59..f71d6aac9e 100644
+--- a/salt/modules/zypperpkg.py
++++ b/salt/modules/zypperpkg.py
+@@ -449,8 +449,14 @@ def _clean_cache():
+     '''
+     Clean cached results
+     '''
++    keys = []
+     for cache_name in ['pkg.list_pkgs', 'pkg.list_provides']:
+-        __context__.pop(cache_name, None)
++        for contextkey in __context__:
++            if contextkey.startswith(cache_name):
++                keys.append(contextkey)
++
++    for key in keys:
++        __context__.pop(key, None)
+ 
+ 
+ def list_upgrades(refresh=True, root=None, **kwargs):
+@@ -809,9 +815,10 @@ def list_pkgs(versions_as_list=False, root=None, includes=None, **kwargs):
+ 
+     includes = includes if includes else []
+ 
+-    contextkey = 'pkg.list_pkgs'
++    # Results can be different if a different root or a different
++    # inclusion types are passed
++    contextkey = 'pkg.list_pkgs_{}_{}'.format(root, includes)
+ 
+-    # TODO(aplanas): this cached value depends on the parameters
+     if contextkey not in __context__:
+         ret = {}
+         cmd = ['rpm']
+diff --git a/tests/unit/modules/test_chroot.py b/tests/unit/modules/test_chroot.py
+index 7181dd7e50..0e65a26606 100644
+--- a/tests/unit/modules/test_chroot.py
++++ b/tests/unit/modules/test_chroot.py
+@@ -63,10 +63,10 @@ class ChrootTestCase(TestCase, LoaderModuleMockMixin):
+         '''
+         Test if the chroot environment exist.
+         '''
+-        isdir.side_effect = (True, True, True)
++        isdir.side_effect = (True, True, True, True)
+         self.assertTrue(chroot.exist('/chroot'))
+ 
+-        isdir.side_effect = (True, True, False)
++        isdir.side_effect = (True, True, True, False)
+         self.assertFalse(chroot.exist('/chroot'))
+ 
+     @patch('os.makedirs')
+@@ -182,3 +182,35 @@ class ChrootTestCase(TestCase, LoaderModuleMockMixin):
+             salt_mock['archive.tar'].assert_called_once()
+             salt_mock['cmd.run_chroot'].assert_called_once()
+             utils_mock['files.rm_rf'].assert_called_once()
++
++    @patch('salt.modules.chroot.exist')
++    @patch('tempfile.mkdtemp')
++    def test_call_success_parameters(self, mkdtemp, exist):
++        '''
++        Test execution of Salt functions in chroot with parameters.
++        '''
++        # Success test
++        exist.return_value = True
++        mkdtemp.return_value = '/chroot/tmp01'
++        utils_mock = {
++            'thin.gen_thin': MagicMock(return_value='/salt-thin.tgz'),
++            'files.rm_rf': MagicMock(),
++            'json.find_json': MagicMock(return_value={'return': 'result'})
++        }
++        salt_mock = {
++            'archive.tar': MagicMock(return_value=''),
++            'config.option': MagicMock(),
++            'cmd.run_chroot': MagicMock(return_value={
++                'retcode': 0,
++                'stdout': '',
++            }),
++        }
++        with patch.dict(chroot.__utils__, utils_mock), \
++                patch.dict(chroot.__salt__, salt_mock):
++            self.assertEqual(chroot.call('/chroot', 'ssh.set_auth_key',
++                                         user='user', key='key'), 'result')
++            utils_mock['thin.gen_thin'].assert_called_once()
++            salt_mock['config.option'].assert_called()
++            salt_mock['archive.tar'].assert_called_once()
++            salt_mock['cmd.run_chroot'].assert_called_once()
++            utils_mock['files.rm_rf'].assert_called_once()
+diff --git a/tests/unit/modules/test_cmdmod.py b/tests/unit/modules/test_cmdmod.py
+index a20afaca0f..6f3964f7aa 100644
+--- a/tests/unit/modules/test_cmdmod.py
++++ b/tests/unit/modules/test_cmdmod.py
+@@ -312,6 +312,22 @@ class CMDMODTestCase(TestCase, LoaderModuleMockMixin):
+         else:
+             raise RuntimeError
+ 
++    @skipIf(salt.utils.platform.is_windows(), 'Do not run on Windows')
++    @skipIf(salt.utils.platform.is_darwin(), 'Do not run on MacOS')
++    def test_run_cwd_in_combination_with_runas(self):
++        '''
++        cmd.run executes command in the cwd directory
++        when the runas parameter is specified
++        '''
++        cmd = 'pwd'
++        cwd = '/tmp'
++        runas = os.getlogin()
++
++        with patch.dict(cmdmod.__grains__, {'os': 'Darwin',
++                                            'os_family': 'Solaris'}):
++            stdout = cmdmod._run(cmd, cwd=cwd, runas=runas).get('stdout')
++        self.assertEqual(stdout, cwd)
++
+     def test_run_all_binary_replace(self):
+         '''
+         Test for failed decoding of binary data, for instance when doing
+@@ -401,3 +417,37 @@ class CMDMODTestCase(TestCase, LoaderModuleMockMixin):
+             ret = cmdmod.run_all('some command', output_encoding='latin1')
+ 
+         self.assertEqual(ret['stdout'], stdout)
++
++    def test_run_chroot_runas(self):
++        '''
++        Test run_chroot when a runas parameter is provided
++        '''
++        with patch.dict(cmdmod.__salt__, {'mount.mount': MagicMock(),
++                                          'mount.umount': MagicMock()}):
++            with patch('salt.modules.cmdmod.run_all') as run_all_mock:
++                cmdmod.run_chroot('/mnt', 'ls', runas='foobar')
++        run_all_mock.assert_called_with(
++            'chroot --userspec foobar: /mnt /bin/sh -c ls',
++            bg=False,
++            clean_env=False,
++            cwd=None,
++            env=None,
++            ignore_retcode=False,
++            log_callback=None,
++            output_encoding=None,
++            output_loglevel='quiet',
++            pillar=None,
++            pillarenv=None,
++            python_shell=True,
++            reset_system_locale=True,
++            rstrip=True,
++            saltenv='base',
++            shell='/bin/bash',
++            stdin=None,
++            success_retcodes=None,
++            success_stderr=None,
++            success_stdout=None,
++            template=None,
++            timeout=None,
++            umask=None,
++            use_vt=False)
+diff --git a/tests/unit/modules/test_freezer.py b/tests/unit/modules/test_freezer.py
+index f6cf2f374f..70d315c17a 100644
+--- a/tests/unit/modules/test_freezer.py
++++ b/tests/unit/modules/test_freezer.py
+@@ -112,6 +112,30 @@ class FreezerTestCase(TestCase, LoaderModuleMockMixin):
+         self.assertRaises(CommandExecutionError, freezer.freeze)
+         makedirs.assert_called_once()
+ 
++    @patch('salt.utils.json.dump')
++    @patch('salt.modules.freezer.fopen')
++    @patch('salt.modules.freezer.status')
++    @patch('os.makedirs')
++    def test_freeze_success_two_freeze(self, makedirs, status, fopen, dump):
++        '''
++        Test to freeze a current installation
++        '''
++        # Freeze the current new state
++        status.return_value = False
++        salt_mock = {
++            'pkg.list_pkgs': MagicMock(return_value={}),
++            'pkg.list_repos': MagicMock(return_value={}),
++        }
++        with patch.dict(freezer.__salt__, salt_mock):
++            self.assertTrue(freezer.freeze('one'))
++            self.assertTrue(freezer.freeze('two'))
++
++            self.assertEqual(makedirs.call_count, 2)
++            self.assertEqual(salt_mock['pkg.list_pkgs'].call_count, 2)
++            self.assertEqual(salt_mock['pkg.list_repos'].call_count, 2)
++            fopen.assert_called()
++            dump.assert_called()
++
+     @patch('salt.utils.json.dump')
+     @patch('salt.modules.freezer.fopen')
+     @patch('salt.modules.freezer.status')
+@@ -132,7 +156,7 @@ class FreezerTestCase(TestCase, LoaderModuleMockMixin):
+             salt_mock['pkg.list_pkgs'].assert_called_once()
+             salt_mock['pkg.list_repos'].assert_called_once()
+             fopen.assert_called()
+-            dump.asster_called()
++            dump.assert_called()
+ 
+     @patch('salt.utils.json.dump')
+     @patch('salt.modules.freezer.fopen')
+@@ -154,7 +178,7 @@ class FreezerTestCase(TestCase, LoaderModuleMockMixin):
+             salt_mock['pkg.list_pkgs'].assert_called_once()
+             salt_mock['pkg.list_repos'].assert_called_once()
+             fopen.assert_called()
+-            dump.asster_called()
++            dump.assert_called()
+ 
+     @patch('salt.modules.freezer.status')
+     def test_restore_fails_missing_state(self, status):
+@@ -190,7 +214,7 @@ class FreezerTestCase(TestCase, LoaderModuleMockMixin):
+             salt_mock['pkg.list_repos'].assert_called()
+             salt_mock['pkg.mod_repo'].assert_called_once()
+             fopen.assert_called()
+-            load.asster_called()
++            load.assert_called()
+ 
+     @patch('salt.utils.json.load')
+     @patch('salt.modules.freezer.fopen')
+@@ -217,7 +241,7 @@ class FreezerTestCase(TestCase, LoaderModuleMockMixin):
+             salt_mock['pkg.list_repos'].assert_called()
+             salt_mock['pkg.install'].assert_called_once()
+             fopen.assert_called()
+-            load.asster_called()
++            load.assert_called()
+ 
+     @patch('salt.utils.json.load')
+     @patch('salt.modules.freezer.fopen')
+@@ -244,7 +268,7 @@ class FreezerTestCase(TestCase, LoaderModuleMockMixin):
+             salt_mock['pkg.list_repos'].assert_called()
+             salt_mock['pkg.remove'].assert_called_once()
+             fopen.assert_called()
+-            load.asster_called()
++            load.assert_called()
+ 
+     @patch('salt.utils.json.load')
+     @patch('salt.modules.freezer.fopen')
+@@ -271,4 +295,30 @@ class FreezerTestCase(TestCase, LoaderModuleMockMixin):
+             salt_mock['pkg.list_repos'].assert_called()
+             salt_mock['pkg.del_repo'].assert_called_once()
+             fopen.assert_called()
+-            load.asster_called()
++            load.assert_called()
++
++    @patch('os.remove')
++    @patch('salt.utils.json.load')
++    @patch('salt.modules.freezer.fopen')
++    @patch('salt.modules.freezer.status')
++    def test_restore_clean_yml(self, status, fopen, load, remove):
++        '''
++        Test to restore an old state
++        '''
++        status.return_value = True
++        salt_mock = {
++            'pkg.list_pkgs': MagicMock(return_value={}),
++            'pkg.list_repos': MagicMock(return_value={}),
++            'pkg.install': MagicMock(),
++        }
++        with patch.dict(freezer.__salt__, salt_mock):
++            self.assertEqual(freezer.restore(clean=True), {
++                'pkgs': {'add': [], 'remove': []},
++                'repos': {'add': [], 'remove': []},
++                'comment': [],
++            })
++            salt_mock['pkg.list_pkgs'].assert_called()
++            salt_mock['pkg.list_repos'].assert_called()
++            fopen.assert_called()
++            load.assert_called()
++            self.assertEqual(remove.call_count, 2)
+diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
+index 0a3053680f..695d982ca6 100644
+--- a/tests/unit/modules/test_zypperpkg.py
++++ b/tests/unit/modules/test_zypperpkg.py
+@@ -570,6 +570,7 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+              patch.dict(zypper.__salt__, {'pkg_resource.stringify': MagicMock()}):
+             pkgs = zypper.list_pkgs(versions_as_list=True)
+             self.assertFalse(pkgs.get('gpg-pubkey', False))
++            self.assertTrue('pkg.list_pkgs_None_[]' in zypper.__context__)
+             for pkg_name, pkg_version in {
+                 'jakarta-commons-discovery': ['0.4-129.686'],
+                 'yast2-ftp-server': ['3.1.8-8.1'],
+@@ -612,6 +613,7 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+              patch.dict(pkg_resource.__salt__, {'pkg.parse_arch_from_name': zypper.parse_arch_from_name}):
+             pkgs = zypper.list_pkgs(attr=['epoch', 'release', 'arch', 'install_date_time_t'])
+             self.assertFalse(pkgs.get('gpg-pubkey', False))
++            self.assertTrue('pkg.list_pkgs_None_[]' in zypper.__context__)
+             for pkg_name, pkg_attr in {
+                 'jakarta-commons-discovery': [{
+                     'version': '0.4',
+@@ -1455,3 +1457,22 @@ pattern() = package-c'''),
+                 'summary': 'description b',
+             },
+         }
++
++    def test__clean_cache_empty(self):
++        '''Test that an empty cached can be cleaned'''
++        context = {}
++        with patch.dict(zypper.__context__, context):
++            zypper._clean_cache()
++            assert context == {}
++
++    def test__clean_cache_filled(self):
++        '''Test that a filled cached can be cleaned'''
++        context = {
++            'pkg.list_pkgs_/mnt_[]': None,
++            'pkg.list_pkgs_/mnt_[patterns]': None,
++            'pkg.list_provides': None,
++            'pkg.other_data': None,
++        }
++        with patch.dict(zypper.__context__, context):
++            zypper._clean_cache()
++            self.assertEqual(zypper.__context__, {'pkg.other_data': None})
+-- 
+2.21.0
+
+

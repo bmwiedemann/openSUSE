@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Wed Mar  7 11:42:11 UTC 2018 - ecsos@opensuse.org
+
+- fix rm -rf line in spec to remove .channels etc. in Factory also
+
+-------------------------------------------------------------------
+Mon Sep 11 13:02:18 UTC 2017 - jweberhofer@weberhofer.at
+
+- Cleaned up spec file
+- Added license file
+
+-------------------------------------------------------------------
+Sat Aug 19 10:22:00 UTC 2017 - ecsos@opensuse.org
+
+- renamed package to php7-pear-xml_parser
+
+-------------------------------------------------------------------
+Tue Jun 27 07:56:09 UTC 2017 - ecsos@opensuse.org
+
+- update to 1.3.7
+  - Fix E_STRICT message on PHP7
+- update to 1.3.6  
+  - Fix broken package.xml
+- update to 1.3.5  
+  - Add composer compatibility
+
+-------------------------------------------------------------------
+Fri Mar 21 00:42:14 UTC 2014 - lars@linux-schulserver.de
+
+- require php >= 5.3 for building
+
+-------------------------------------------------------------------
+Thu Dec 13 14:28:10 UTC 2012 - lars@linux-schulserver.de
+
+- update to 1.3.4:
+  + Remove package.php from release
+  + fix bug #16467 Unit tests are broken
+  + fix Bug #17725 Patch Avoid deprecated eregi functions
+- provide php-pear-xml_parser
+- just require php-pear
+
+-------------------------------------------------------------------
+Thu May  6 23:44:46 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.3.2:
+  + Fix Bug #9328: assigned by reference error in XML_RSS parse
+  + add an AllTests.php for PHPUnit usage
+
+-------------------------------------------------------------------
+Fri Mar 13 14:01:12 CET 2009 - lars@linux-schulserver.de
+
+- fix source file
+
+-------------------------------------------------------------------
+Wed Jan 07 00:00:00 CET 2009 Richard Bos <rbos@opensuse.org> - 1.3.1
+
+- update to version 1.3.1
+- switch to BSD License
+- switch to package.xml v2
+- PEAR CS cleanup
+- Fix Doc #13120: Mistake in example code
+
+-------------------------------------------------------------------
+Wed Jan 07 00:00:00 CET 2009 Richard Bos <rbos@opensuse.org> - 1.2.8
+
+- Make it build again
+
+-------------------------------------------------------------------
+Mon Dec 10 15:50:59 CET 2007 - lars@linux-schulserver.de
+
+- initial version 1.2.8
+

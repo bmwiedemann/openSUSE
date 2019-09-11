@@ -1,0 +1,24 @@
+To select the style of XIM Input the following command line arguments,
+which are handled by GTK internally, are available:
+
+    --xim-preedit [none|nothing|area|position|callbacks]
+    --xim-status  [none|nothing|area|callbacks]
+
+To use OnTheSpot input style, start gvim like
+
+    ~$ gvim [--xim-preedit callbacks] [--xim-status callbacks]
+
+This is also the default, which you will get without any command line arguments.
+
+
+To use OverTheSpot input style, start gvim like
+
+    ~$ gvim --xim-preedit position [--xim-status callbacks]
+
+OnTheSpot input is still buggy and does not yet work right for Japanese,
+therefore it is recommended to use OverTheSpot input style for Japanese.
+
+(For Korean, OnTheSpot input style works well).
+
+
+Fri Jan 26 17:57:39 2001  Mike Fabian  <mfabian@suse.de>

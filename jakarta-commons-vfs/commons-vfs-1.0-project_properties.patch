@@ -1,0 +1,11 @@
+--- project.properties.sav	2007-06-27 18:07:29.000000000 +0200
++++ project.properties	2007-06-27 18:08:19.000000000 +0200
+@@ -53,7 +53,7 @@
+ maven.test.failure.ignore=true
+ maven.ant.excludeTests=**/*.java
+ 
+-test.hostname=172.16.110.129
++test.hostname=localhost
+ test.user=vfsusr
+ test.password=vfs%2f%25\\te:st
+ test.path=/vfstest

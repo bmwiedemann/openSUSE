@@ -1,0 +1,13 @@
+diff --git a/include/builddefs.in b/include/builddefs.in
+index fd274ddc66d8..659fb04691ca 100644
+--- a/include/builddefs.in
++++ b/include/builddefs.in
+@@ -60,7 +60,7 @@ PKG_LIB_DIR	= @libdir@@libdirsuffix@
+ PKG_INC_DIR	= @includedir@/xfs
+ DK_INC_DIR	= @includedir@/disk
+ PKG_MAN_DIR	= @mandir@
+-PKG_DOC_DIR	= @datadir@/doc/@pkg_name@
++PKG_DOC_DIR	= @datadir@/doc/packages/@pkg_name@
+ PKG_LOCALE_DIR	= @datadir@/locale
+ 
+ CC		= @cc@

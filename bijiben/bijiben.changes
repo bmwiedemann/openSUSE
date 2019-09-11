@@ -1,0 +1,995 @@
+-------------------------------------------------------------------
+Fri Jul 19 07:15:16 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.2:
+  + Fixed appdata screenshots' URLs.
+  + Fixed flatpak using stable EDS and libical releases.
+
+-------------------------------------------------------------------
+Wed Apr 10 09:57:07 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 13 20:50:30 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Added new GNOME Notes icon.
+  + Added option to choose between Tracker service or private
+    store.
+  + Changed editor toolbar to be always visible.
+  + Changed flatpak to use desktop portal for email sharing.
+  + Changed menus to popover menus.
+  + Fixed all text in bold.
+  + Updated javascript API to JSC.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 05:57:20 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Fixed all text in bold.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 18 22:02:06 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 15 19:16:30 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan  8 04:47:04 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan  3 12:14:52 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.3:
+  + Improved GNOME Notes icon.
+  + Updated translations.
+- Changes from version 3.31.2:
+  + Added compiler option to choose between Tracker service or
+    private store.
+  + Changed editor toolbar to be always visible.
+  + Changed menus to popover menus.
+  + Fixed shell search provider crash.
+  + Fixed some compilation warnings.
+  + Updated translations.
+- Changes from version 3.31.1.1:
+  + Fix typo in appdata release section.
+- Changes from version 3.31.1:
+  + Added flatpak CI in Gitlab.
+  + Added new GNOME Notes icon.
+
+-------------------------------------------------------------------
+Sat Nov 17 09:37:45 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.3:
+  + Fixed shell search provider crash.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 23 18:37:32 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.2:
+  + Increased notes view width and removed alignment.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 26 12:23:08 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  9 08:28:28 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + See installed NEWS file for a summary of changes between this
+    release and previous stable release.
+  + Updated translations.
+- Remove lang package from recommended packages as it already
+  supplements main package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Tue Aug 28 20:34:16 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.92.1:
+  + Fix submodule project link which was still pointing to
+    git.gnome.org.
+- Changes from version 3.29.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 16 16:02:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  3 18:46:39 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.90:
+  + Added back application menu and removed the primary menu from
+    the main view
+  + Show online account user and domain information in settings
+    dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 23 20:27:42 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.4:
+  + Removed application menu and added a new primary menu to the
+    main view.
+  + Added a "Text Size" option in primary menu to let users scale
+    note view.
+  + Add OARS metadata.
+  + Updated translations.
+- Changes from version 3.29.3:
+  + Flatpak fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 21 03:29:02 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.2:
+  + Improve overall note styling.
+  + Move "Last updated" info to window menu.
+  + Fix UI freeze in text search.
+  + Fix memory leak and circular references in notes and providers.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 21 03:29:01 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.1.1:
+  + Fix memory leak in Settings.
+  + Make own/nextCloud notes saving async.
+  + Updated translations.
+- Drop fixed upstream patches: bijiben-memory-leak-fixes.patch,
+  bijiben-settings-dialog-Fix-settings.patch and
+  bijiben-webkit-editor_Use-g_auto.patch
+
+-------------------------------------------------------------------
+Wed Jun 20 15:20:49 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jun 16 10:01:58 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.28.2:
+  + Fix memory leaks and circular references in many objects.
+  + Updated translations.
+- Drop upstreamed patches:
+  + bijiben-memory-leak-fixes.patch.
+  + bijiben-webkit-editor_Use-g_auto.patch.
+  + bijiben-settings-dialog-Fix-settings.patch.
+
+-------------------------------------------------------------------
+Sun Apr 22 21:22:57 UTC 2018 - bjorn.lie@gmail.com
+
+- Add upstream bug fix patches:
+  + bijiben-memory-leak-fixes.patch.
+  + bijiben-webkit-editor_Use-g_auto.patch (bgo#792221).
+  + bijiben-settings-dialog-Fix-settings.patch.
+
+-------------------------------------------------------------------
+Tue Apr 10 00:02:55 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1:
+  + Fix appdata and screenshots improving flatpak support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 19:29:06 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Meson port.
+  + Gettext port.
+  + Add shortcuts window.
+  + Remember last application view style.
+  + Add flatpak support.
+  + Fix back button in trash view.
+  + Fix crash when running X11 instead of Wayland.
+  + Improve window geometry state.
+  + Improve notes import on startup.
+  + Improve import dialog.
+  + Set default application icon.
+  + Use g_auto*.
+  + Widgets migration to GtkBuilder.
+  + Code clean up.
+  + Disable Zeitgeist support by default.
+  + Adopt #pragma once.
+  + Add support for Tracker2.
+  + Fix owncloud saving issue.
+  + Improve list view.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:23:29 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb 26 03:27:50 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.90:
+  + Fixes:
+    - Saving title.
+    - Back button in trash view.
+    - Owncloud saving issue.
+  + Improve list view.
+  + Add flatpak support.
+  + Updated translations.
+- Update Url tag to https://wiki.gnome.org/Notes: current Notes'
+  (formely Bijiben) web page.
+
+-------------------------------------------------------------------
+Mon Feb 26 03:27:04 UTC 2018 - zaitor@opensuse.org
+
+- Update to version 3.27.4:
+  + Improve window geometry state.
+  + Set default application icon.
+  + Fix crash when running X11 instead of Wayland.
+  + Improve notes import on startup.
+  + Add shortcuts window.
+  + More code clean up.
+  + More widgets migrated to GtkBuilder.
+  + Disable Zeitgeist support by default.
+  + Adopt #pragma once.
+  + Updated translations.
+- Minor spec modernizing.
+
+-------------------------------------------------------------------
+Mon Feb 26 03:27:03 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.3:
+  + More widgets migrated to GtkBuilder.
+  + Remember last application view style.
+  + Updated translations.
+- Remove sed command as version bumping is fixed upstream now.
+
+-------------------------------------------------------------------
+Mon Feb 26 03:27:02 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.2:
+  + Fixed missing Unicode strings.
+  + Improve:
+    - Adherence to GNOME code standards.
+    - Import dialog.
+  + Widgets migration to GtkBuilder.
+  + Updated translations.
+- Update sed command to bump the version from 3.27.1 to 3.27.2 in
+  meson.build file.
+- Rename meson parameters: enable-update-mimed to update-mimed and
+  enable-zeitgeist to zeitgeist : following upstream renaming.
+
+-------------------------------------------------------------------
+Mon Feb 26 03:27:01 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.1:
+  + Meson and Gettext port.
+  + Add translator comments to .desktop file and support for
+    Tracker2.
+  + Updated translations.
+- Add meson BuildRequires and drop autoreconf and switch configure,
+  make and make_install macros to meson, meson_build and
+  meson_install following upstream switch to Meson build system.
+- Switch intltool BuildRequires to gettext following upstream port.
+- Add missing conditional macro of zeitgeist to %build section.
+- Drop sed command that replace tracker-sparql version once the
+  problem has been fixed with the meson port, and add temporary
+  command to replace version 3.26.1 to 3.27.1 in meson.build file.
+- Add fdupes to remove some duplicates under /usr/share.
+- Drop libtool since it's not needed/used.
+- Update Url to https://wiki.gnome.org/Apps/Bijiben.
+
+-------------------------------------------------------------------
+Sat Feb 24 13:21:18 UTC 2018 - dimstar@opensuse.org
+
+- Pass --disable-Werror to configure: this is released code and we
+  don't have to fail when any dependency deprecates, but still
+  supports, some functions.
+
+-------------------------------------------------------------------
+Wed Nov  1 12:41:43 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.2:
+  + Added support for Tracker2.
+  + Updated translations.
+- Drop sed hack to inject tracker 2 support into configure.
+- Drop libtool BuildRequires and call to autoreconf, as we no
+  longer modify the build system.
+
+-------------------------------------------------------------------
+Mon Oct  2 00:19:06 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.1:
+  + Fixed gettext domain.
+  + Updated a couple of help screenshots.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 12 01:53:41 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + Re-enable translations broken in 3.24 cycle.
+  + Fixed crash when closing application in an empty note.
+  + Fixed title for new Memo notes.
+  + Fixed crash when removing Memo notes.
+  + Fixed crash when removing Notebooks from trash.
+  + Fixed memory leak when releasing Notebooks.
+  + Reduced I/O usage when saving window state.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 11 18:15:54 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.2:
+  + Re-enable translations broken in 3.24 cycle.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 11 08:09:45 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.1:
+  + Added support for glib 2.53.4.
+  + Fixed transparent window issue when no notes are displayed.
+  + Added support for glib 2.53.2.
+  + Fixed memory leak when saving a note.
+  + Fixed memory leak when deleting note in local provider.
+  + Fixed application state stuck in trash view.
+  + Fixed 64 bits format for text output.
+  + Fixed application cash when some dates are null.
+  + Added missing break in a case statement.
+  + Removed warning about .Trash folder missing.
+  + Updated translations.
+- Drop upstream fixed patches:
+  + bijiben-fix-redundant-decls-error.patch.
+  + bijiben-fix-missing-break-in-case-statement.patch.
+  + bijiben-fix-i586-longint.patch.
+  + bijiben-remove-warning-about-Trash-folder.patch.
+  + bijiben-memo-provider-crash-opening-memo.patch.
+- Stop passing --disable-Werror to configure, no longer needed.
+
+-------------------------------------------------------------------
+Sat Jul 29 12:24:07 UTC 2017 - zaitor@opensuse.org
+
+- Add yet a upstream commit to
+  bijiben-fix-redundant-decls-error.patch: Add a missing include.
+- Use sed to replace tracker-sparql-1.0 with tracker-sparql-2.0
+  BuildRequires.
+- Pass --disable-Werror to configure, needed to fix build with new
+  glib2, add fixme to remove it on next version update.
+- Drop post(un) handling: Remove obsolete
+  glib2_gsettings_schema_post(un), icon_theme_cache_post(un),
+  desktop_database_post(un) and mime_database_post(un) calls, we
+  have filetriggers to take care of this now.
+
+-------------------------------------------------------------------
+Wed Jul 12 10:22:37 UTC 2017 - zaitor@opensuse.org
+
+- Add bijiben-fix-redundant-decls-error.patch: Fix build with new
+  version of glib (bgo#783878).
+- Following the above, add libtool BuildRequires and pass
+  autoreconf as the patch touches the buildsystem.
+
+-------------------------------------------------------------------
+Fri Jun 16 08:27:09 UTC 2017 - zaitor@opensuse.org
+
+- Add bijiben-fix-i586-longint.patch: Fix wrong int type
+  (bgo#783714).
+
+-------------------------------------------------------------------
+Mon Jun 12 21:56:49 UTC 2017 - zaitor@opensuse.org
+
+- Add bijiben-memo-provider-crash-opening-memo.patch: Application
+  is crashing when trying to open a memo from the memo list
+  (bgo#782998).
+
+-------------------------------------------------------------------
+Sun Jun 11 19:39:56 UTC 2017 - zaitor@opensuse.org
+
+- Add bijiben-fix-missing-break-in-case-statement.patch:
+  main-toolbar: Missing break in case statement. Stop passing
+  --disable-Werror to configure (bgo#783465).
+- Add bijiben-remove-warning-about-Trash-folder.patch:
+  local-provider: Remove warning about .Trash folder (bgo#783471).
+
+-------------------------------------------------------------------
+Tue Jun  6 07:59:10 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.0:
+  + Update settings dialog.
+  + Convert WebKitGTK+ v.1 notes to v.2.
+  + Fix wrong references to bijiben desktop file.
+  + Update build files.
+  + Port to WebKitGTK+ v.2.
+  + Improve how to handle open files.
+  + Remove dependancy on libedataserverui.
+  + Allow build in non-srcdir.
+  + Transform editor toolbar to an action bar.
+  + Memory leaks fixes and code clean-up.
+  + Updated translations.
+- Replace pkgconfig(webkitgtk-3.0) with pkgconfig(webkit2gtk-4.0)
+  BuildRequires following upstreams port.
+- Drop pkgconfig(libedataserverui-1.2) BuildRequires, no longer
+  needed nor required.
+- Pass --disable-Werror to configure, fix build (bgo#783465).
+
+-------------------------------------------------------------------
+Sat May 28 17:01:33 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.2:
+  + Settings: Fix primary book list (bgo#763626).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 10 13:12:23 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 22 09:41:08 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 13 04:50:26 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 08:45:11 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.90:
+  + Various xdg app fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  1 08:26:22 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.4.1:
+  + Update the AppData to spec version 0.7.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 25 08:43:03 UTC 2016 - egeorget@openmailbox.org
+
+- Recommend bijiben-lang by the main package.
+
+-------------------------------------------------------------------
+Tue Jan 19 12:30:14 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.4:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Dec 21 21:45:39 UTC 2015 - damjanovic.ivo@gmail.com
+
+- Update to version 3.19.3:
+  + CSS updates.
+  + Search entry on no result.
+  + Color button update.
+  + Build: arg to make zeitgeist.
+  + appdata: kudos.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Nov 22 14:21:28 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Nov  8 21:34:19 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 12 20:17:57 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 20 09:05:28 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0:
+  + manager::get_item_at_path : handle null.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 14 07:06:21 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  1 11:25:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 17 21:58:52 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Fix missing return.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 18 09:43:41 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + Hidpi:
+    - Notes & notebooks icons.
+    - Fix thumbnails inside shell.
+    - Empty result box.
+  + Bugs fixed: 
+    - Fix crash when note color changes (rh#1204815).
+    - Fix build error.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jun 24 09:42:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 26 16:02:08 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 12 11:47:06 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.1:
+  + Symbolic variant of the app icon.
+  + Fix tracker callback.
+  + Typos in help.
+  + Updated translations.
+- Remove HighContrast %icon_theme_cache_post(un) calls, as Symbolic
+  icons have replaced them.
+
+-------------------------------------------------------------------
+Tue May 12 11:31:49 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Provide a symbolic icon.
+  + Updated translations.
+- Remove HighContrast %icon_theme_cache_post(un) calls, as Symbolic
+  icons have replaced them.
+
+-------------------------------------------------------------------
+Wed Apr 15 09:39:36 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 20 15:29:14 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:12:09 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  2 12:51:33 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Settings Dialog: pack providers.
+  + Build: Translate GSettings directly.
+  + Drop Dependency on Evolution.
+  + Updated translations.
+- Update BuildRequires to follow upstream changes:
+  + Remove pkgconfig(evolution-calendar-3.0) and
+    pkgconfig(evolution-data-server-1.2).
+  + Add pkgconfig(libecal-1.2), pkgconfig(libedataserver-1.2) and
+    pkgconfig(libedataserverui-1.2).
+
+-------------------------------------------------------------------
+Fri Feb 20 11:05:04 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Help: Add trail image.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 17 19:58:21 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.3:
+  + Improve preferences dialog.
+  + Misc: Fix use-system-font.
+  + Documentation:
+    - Trash, Share.
+    - Cut Copy Paste.
+    - Notebooks, Search.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 28 20:04:11 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.2:
+  + Drop background lines.
+  + Validate AppData.
+  + Ensure ownCloud folder exists.
+  + Documentation:
+    - Updates on colors page.
+    - Refer to <New> button.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 18 16:40:38 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.1:
+  + No changes, version bump only.
+
+-------------------------------------------------------------------
+Thu Nov 13 19:30:02 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + ownCloud: Ensure Notes folder exists.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 13 20:37:15 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Update to latest libgd.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 10:10:35 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Misc: Some tips to translations about toolbar.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 15 19:45:51 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Documentation: Add tip to delete.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  1 22:27:36 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + UI:
+    - Bold title.
+    - Move Last Updated on the right side. Adapt on color.
+    - Do not align selection bar on keyboard input.
+  + Documentation: Add tips.
+  + Misc:
+    - Add Shortcuts.
+    - Remove GdkColor.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 19 07:40:34 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Misc:
+    - OwnCloud: offlinemode.
+    - mtbar131: Adapt thumbnails to color (bgo#726067).
+    - Shoba Tyagi: Trash page documentation.
+  + Bugs fixed: bgo#734817, bgo#733855.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 21 20:59:56 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + Adapt text color (bgo#726067).
+  + Use the new gear menu (bgo#726067).
+  + Fix Size Request (bgo#721195).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 12 21:39:19 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.3:
+  + UI changes:
+    - Indent List (bgo#728868).
+    - Update link & note icons (bgo#731441).
+    - Change empty view wording (bgo#731199).
+  + Misc:
+    - Fix Undo/Redo shortcuts (bgo#731089).
+    - --new-note commandline arg.
+    - Force empty view when deleting last (bgo#731398).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 19:21:46 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.1:
+  + Remove Clutter. Use a popover for editor selection.
+  + Partial support for vjournal.
+  + Focus notes when opened. Partly fixes bgo#699249.
+  + Fix Header bar duplicate pixels.
+  + Use subdir-objects, git.mk.
+  + Updated translations.
+- Drop pkgconfig(clutter-gtk-1.0) BuildRequires: No longer needed.
+- Add pkgconfig(evolution-calendar-3.0),
+  pkgconfig(evolution-data-server-1.2) and pkgconfig(libecal-1.2)
+  BuildRequires: New dependencies.
+
+-------------------------------------------------------------------
+Sat May 17 09:57:56 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 11 18:01:17 UTC 2014 - dimstar@opensuse.org
+
+- Introduce with_zeitgeist defines (currently set to 0) to easily
+  switch Zeitgeist integration on and off. At this moment, it is
+  crashing bijiben when accessing notes if switched on.
+- Conditionally enable pkgconfig(zeitgeist-2.0) BuildRequires based
+  on with_zeitgeist defines.
+
+-------------------------------------------------------------------
+Mon Mar 24 21:11:13 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 09:54:20 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Detach opened notes at startup.
+  + Bugs fixed:
+    - Fix new notebooks not appearing.
+    - Fix notes search inside trash bin.
+    - Do not mix grid and list (again...).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  3 22:27:38 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+  + Fix going back and forth to trash bin.
+  + Assign a title even with a single row.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 09:32:33 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Add commandline.
+  + Fix build for tracker 1.0.
+  + Do not show 'load more' at startup.
+  + Simpler feedback when search has no result.
+  + Improve trash bin.
+- Replace pkgconfig(tracker-sparql-0.18) for
+  pkgconfig(tracker-sparql-1.0) BuildRequires.
+
+-------------------------------------------------------------------
+Tue Feb  4 13:09:46 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.5:
+  + Unique window. But notes can be detached.
+  + Memorize window's size and position.
+  + Bugs fixed: 
+    - Main toolbar: fix positions.
+    - Fix default width.
+    - Do not toggle search on arrows, tab, return.
+    - Do not follow url. Use external application.
+  + Update documentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 13 22:42:05 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Fix keyboard navigation with ctrl tab.
+  + mainToolbar: Fix item positions.
+  + Fix default window width.
+  + Update documentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 17 19:37:10 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Initial trash bin.
+  + Bump tracker to 0.18.
+  + Update documentation.
+  + Updated translations.
+- No longer hack up configure's tracker detection: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Nov 23 23:13:48 UTC 2013 - dimstar@opensuse.org
+
+- Replace pkgconfig(tracker-sparql-0.16) BuildRequires with
+  pkgconfig(tracker-sparql-0.18): move to Tracker 0.18.
+- Replace tracker-spaqrl-0.16 in configure with
+  tracker-sparql-0.18, using sed.
+
+-------------------------------------------------------------------
+Mon Nov 18 19:59:48 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + Use "Notebook" labels instead of "Collections".
+  + Update documentation.
+  + Fix Zeitgeist build.
+  + Bugs fixed: rh#1026979.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Nov 17 19:08:53 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.1:
+  + List view :
+    - Add three columns.
+    - Remove search completion.
+    - Make Zeitgeist optional.
+    - Use system font setting.
+    - Revamp Tomboy/Gnote import a bit.
+    - Validate .desktop on make check.
+    - Rework opening notes at startup.
+  + Bug Fixes:
+    - Editor: handle tab key (bgo#710591).
+    - MainView: fix header bar double stroke (bgo#706909).
+    - Import dialog : add border (bgo#709348).
+    - Fix compilation warnings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov 11 22:47:11 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.2 (bnc#849913):
+  + Fix segfault (rh#1026979).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 14 07:29:22 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Bugs fixed: bgo#708458, bgo#709820, bgo#708812.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 20:12:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Add instructions to rename help page.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  2 22:54:41 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.91:
+  + Ship appData.
+  + Use native close button.
+  + Update the documentation.
+  + Update About Dialog.
+  + Bug Fixes:
+    - Fix selection toolbar buttons valign.
+    - Fix the back button.
+    - shell-provider: do not abort when tracker connection fails.
+    - Delete bjb-icons-colors.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 19 06:48:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Settings: revamp the window to add primary book choice.
+  + Selection toolbar: update to newer design.
+  + Bug Fixes:
+    - <name> must match the exact repository's name.
+    - Fix the import dialog icon for folders.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 30 07:04:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.5:
+  + Bugs fixed: bgo#703703, bgo#704521, bgo#703706.
+  + Updated translations.
+- Pass --disable-update-mimedb to configure: we update the mime
+  database on target system using post scriptlets.
+- Add %mime_database_* scripts to post/postun.
+
+-------------------------------------------------------------------
+Wed Jul 10 16:03:18 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.4:
+  + Rename Notes (bgo#702298).
+  + Bugs fixed: bgo#703404, bgo#703017, bgo#702877, bgo#703474,
+    bgo#702504, bgo#703497, bgo#703459, bgo#703401, bgo#703401,
+    bgo#702865, bgo#703501.
+  + Updated translations.
+- Replace pkgconfig(zeitgeist-1.0) BuildRequires with
+  pkgconfig(zeitgeist-2.0), following upstreams changes.
+- Fix post scriptlet to run icon_theme_cache_post instead of
+  icon_theme_cache_postun.
+- Add %icon_theme_cache_post(un) for HighContrast icon theme to
+  post/postun.
+
+-------------------------------------------------------------------
+Fri Jun 21 17:44:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.3:
+  + Initial ownCloud support and revisit architecture.
+  + Bug fixed: bgo#701054.
+  + Updated translations.
+- Add pkgconfig(goa-1.0) BuildRequires: new dependency for ownCloud
+  support.
+
+-------------------------------------------------------------------
+Tue May 28 06:43:00 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.2:
+  + Start fixing import dialog, preparing for organize dialog.
+  + A first round of code cleanup.
+  + Search was really awful (bgo#699656).
+  + Updated translations.
+- Add pkgconfig(gobject-introspection-1.0) BuildRequires:
+  dependency of the imported egg-list-box module.
+
+-------------------------------------------------------------------
+Wed May  1 08:15:32 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.1:
+  + Add basis for collections.
+  + Initial empty state (empty results box).
+  + Initial spinner.
+  + Bugs fixed: bgo#697922, bgo#698028.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 18 09:44:54 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Switch manual to CC license.
+  + Updated translations.
+- Change license of main package to GPL-3.0+ and CC-BY-SA-3.0,
+  accomodating the new CC licensed manual. The search-provider
+  sub-package is licenses GPL-3.0+ only (no documentation in this
+  package).
+
+-------------------------------------------------------------------
+Sat Mar 30 15:22:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+- Changes from version 3.7.92:
+  + Fixes on email sharing.
+  + Fix various regressions.
+  + Use consistently GPLv3+.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  6 18:30:04 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 3.7.91.
+

@@ -1,0 +1,26 @@
+From 4a60450d2d57f732f70123b493e018d521feffc5 Mon Sep 17 00:00:00 2001
+From: Igor Gnatenko <ignatenkobrain@fedoraproject.org>
+Date: Tue, 23 Apr 2019 21:51:07 +0200
+Subject: [PATCH] macros: Remove Cargo.toml.orig
+
+Signed-off-by: Igor Gnatenko <ignatenkobrain@fedoraproject.org>
+---
+ data/macros.cargo | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/macros.cargo b/data/macros.cargo
+index 4bbc36e..c28c108 100644
+--- a/data/macros.cargo
++++ b/data/macros.cargo
+@@ -37,7 +37,7 @@ directory = "%{cargo_registry}"\
+ registry = "https://crates.io"\
+ replace-with = "local-registry"\
+ EOF\
+-%{__rm} -f Cargo.lock \
++%{__rm} -f Cargo.lock Cargo.toml.orig \
+ )
+ 
+ %__cargo_parse_opts(naf:) %{shrink:\
+-- 
+2.21.0
+

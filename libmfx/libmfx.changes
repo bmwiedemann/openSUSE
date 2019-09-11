@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Tue Jun 11 14:26:00 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- added more features to build
+  * X11_DRI3
+  * WAYLAND
+  * TEXTLOG
+  * STAT
+  * TESTS
+  * TOOLS
+- ITT and KERNELS features remain disabled for now since libITT
+  and cm compiler is not available on (open)SUSE right now
+- gcc7 needed for building tests on sle12-sp5
+- moved documentation and binaries to main package; let require
+  the library subpackage the main package
+
+-------------------------------------------------------------------
+Fri Jun  7 14:26:01 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- cmake-sle12.patch
+  * needed for cmake 3.5.2 on sle12-sp5 
+
+-------------------------------------------------------------------
+Thu Jun  6 12:22:00 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- created package for Intel Media SDK (jira #SLE-4968, bsc#1137651)
+

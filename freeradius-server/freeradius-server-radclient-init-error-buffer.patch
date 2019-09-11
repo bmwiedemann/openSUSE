@@ -1,0 +1,12 @@
+Index: freeradius-server-3.0.3/src/main/radclient.c
+===================================================================
+--- freeradius-server-3.0.3.orig/src/main/radclient.c
++++ freeradius-server-3.0.3/src/main/radclient.c
+@@ -1180,6 +1180,7 @@ int main(int argc, char **argv)
+ 		fr_perror("radclient");
+ 		return 1;
+ 	}
++	fr_strerror_printf(""); /* Initialize the error buffer */
+ 	fr_strerror();	/* Clear the error buffer */
+ 
+ 	/*

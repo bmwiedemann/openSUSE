@@ -1,0 +1,31 @@
+Index: NetworkManager-1.10.2/Makefile.am
+===================================================================
+--- NetworkManager-1.10.2.orig/Makefile.am
++++ NetworkManager-1.10.2/Makefile.am
+@@ -2859,15 +2859,10 @@ check_programs_norun += \
+ 
+ check_programs += \
+ 	src/platform/tests/test-link-fake \
+-	src/platform/tests/test-link-linux \
+ 	src/platform/tests/test-address-fake \
+-	src/platform/tests/test-address-linux \
+ 	src/platform/tests/test-general \
+-	src/platform/tests/test-nmp-object \
+ 	src/platform/tests/test-route-fake \
+-	src/platform/tests/test-route-linux \
+-	src/platform/tests/test-cleanup-fake \
+-	src/platform/tests/test-cleanup-linux
++	src/platform/tests/test-cleanup-fake
+ 
+ src_platform_tests_monitor_CPPFLAGS = $(src_tests_cppflags)
+ src_platform_tests_monitor_LDFLAGS = $(src_platform_tests_ldflags)
+@@ -2941,8 +2936,7 @@ src_devices_tests_ldflags = \
+ 	$(CODE_COVERAGE_LDFLAGS)
+ 
+ check_programs += \
+-	src/devices/tests/test-lldp \
+-	src/devices/tests/test-arping
++	src/devices/tests/test-lldp
+ 
+ src_devices_tests_test_lldp_CPPFLAGS = $(src_tests_cppflags)
+ src_devices_tests_test_lldp_LDFLAGS = $(src_devices_tests_ldflags)

@@ -1,0 +1,609 @@
+-------------------------------------------------------------------
+Tue Apr  3 15:00:27 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Thu Dec 21 14:23:56 CET 2017 - mls@suse.de
+
+- install pam file to make screen locking work again [bnc#1056192]
+  new file: screen.pam
+
+-------------------------------------------------------------------
+Mon Oct 23 15:22:10 UTC 2017 - alexander_naumov@opensuse.org
+
+- GNU Screen 4.6.2:
+  * revert changes to cursor position restore behavour
+  * set freed pointer to NULL
+  * documentation fixes
+  * fix windowlist crashes
+
+-------------------------------------------------------------------
+Thu Jul 11 15:03:24 UTC 2017 - alexander_naumov@opensuse.org
+
+- adding %set_permissions and %verify_permissions macros
+  for /run/uscreens/
+- adding %tmpfiles_create macro for /usr/lib/tmpfiles.d/screen.conf
+
+-------------------------------------------------------------------
+Thu Jul 11 14:30:37 UTC 2017 - alexander_naumov@opensuse.org
+
+- spec file: adding PreReq for permissions
+
+-------------------------------------------------------------------
+Thu Jul 11 13:59:01 UTC 2017 - alexander_naumov@opensuse.org
+
+- GNU Screen 4.6.1: bugfix release
+  * problems with starting session in some cases
+  * parallel make install
+  * segfault when querying info on nonUTF locale
+
+-------------------------------------------------------------------
+Thu Jun 29 12:24:55 UTC 2017 - alexander_naumov@opensuse.org
+
+- GNU Screen 4.6.0:
+  * Update Unicode wide tables to 9.0
+  * Support more serial speeds
+  * Improved namespaces support
+  * Migrate from fifos to sockets
+  * Start viewing scrollback at first line of output
+
+- drop upstreamed 0001-Follow-up-to-bc5ea98-fix-texinfo-syntax-errors.patch 
+
+-------------------------------------------------------------------
+Thu May 11 15:46:12 UTC 2017 - jengelh@inai.de
+
+- Ensure /usr/share/terminfo/s/screen is present when screen is
+  [boo#812067].
+
+-------------------------------------------------------------------
+Sat Feb 25 20:34:40 UTC 2017 - astieger@suse.com
+
+- GNU Screen 4.5.1:
+  * logfile permissions problem (CVE-2017-5618) bsc#1021743
+    This issues does not affect the SUSE package as setuid/setid
+    is not used.
+- drop upstreamed fix_enable_logfile.patch
+- add 0001-Follow-up-to-bc5ea98-fix-texinfo-syntax-errors.patch
+
+-------------------------------------------------------------------
+Fri Jan 27 22:32:17 UTC 2017 - alexander_naumov@opensuse.org
+
+- Add fix_enable_logfile.patch
+  * fix loging screen API (bnc#1020870) 
+  * fix privilege escalation
+
+-------------------------------------------------------------------
+Thu Jan 17 23:11:38 UTC 2017 - alexander_naumov@opensuse.org
+
+- GNU Screen 4.5.0:
+ * It's possible to specify logfile's name via command line
+   parameter '-L'. 
+
+ Fixes:
+ * broken handling of "bind u digraph U+"
+ * crash with long $TERM
+ * crash when bumping blank window
+ * build for AIX
+ * %x improperly separating arguments
+ * install with custom DESTDIR
+
+-------------------------------------------------------------------
+Wed Aug 17 14:02:33 UTC 2016 - alexander_naumov@opensuse.org
+
+- Remove %postun - it tried to delete "screen.info.gz" file
+  second time.
+
+-------------------------------------------------------------------
+Thu Aug 11 17:32:44 UTC 2016 - alexander_naumov@opensuse.org
+
+- GNU screen 4.4.0:
+ * Support up to 24 function keys
+ * 'logfile' command, starts logging into new file upon changing
+ * Fix runtime issues
+
+-------------------------------------------------------------------
+Wed Aug 19 08:35:03 UTC 2015 - meissner@suse.com
+
+- enable pam support, so screenlocking uses the password of the
+  current user.
+
+-------------------------------------------------------------------
+Wed Jul  1 10:13:31 UTC 2015 - trenn@suse.de
+
+- Add license file as documentation
+
+-------------------------------------------------------------------
+Wed Jul 01 09:48:45 UTC 2015 - alexander_naumov@opensuse.org
+
+- GNU screen 4.3.1
+ * This is a bug fix release. 
+ * Visible content get messed up after window resize 
+
+-------------------------------------------------------------------
+Mon Jun 15 09:28:15 UTC 2015 - alexander_naumov@opensuse.org
+
+- GNU screen 4.3.0:
+ * Introduce Xx string escape showing the executed command of a window
+ * Implement dead/zombie window polling, allowing for auto reconnecting
+ * Allow setting hardstatus on first line
+ * 'sort' command sorting windows by title
+ * 'bumpleft', 'bumpright' - manually move windows on window list
+ * 'collapse' removing numbering 'gaps' between windows, by renumbering
+ * 'windows' command now accepts arguments for use with querying
+
+- packaging changes:
+ * move screen-poll-zombies.patch to savannah git
+ * move screen-4.0.3-ipv6.patch to savannah git
+ * move sort_command.patch to savannah git
+ * move xX_string_escape.patch to savannah git
+ * move screen_enhance_windows_list.patch to savannah git
+
+-------------------------------------------------------------------
+Fri May  2 19:42:12 UTC 2014 - andreas.stieger@gmx.de
+
+- GNU screen 4.2.1:
+  * allow for terminal with long $TERM (up to 32 characters)
+    (already patched in this package previously)
+  * allow to use long logins
+  * documentation fixes
+  * runtime fixes
+- packaging changes:
+  * use source URLs
+  * verify source signatures
+  * drop screen-man-loginshell.diff, equivalent change upstream
+  * drop term_too_long.diff, equivalent change upstream
+  * drop use_locale.diff, applied upstream
+  * drop msg_version_3.patch, obsolete after upstream changes
+
+-------------------------------------------------------------------
+Thu Apr 17 10:23:40 UTC 2014 - jw@suse.com
+
+- Update to 4.2.0 as released on screen-devel@gnu.org yesterday.
+  Thank you Amadeusz!
+  * keep libtinfo.diff (from coolo 2011, why exactly?)
+  * keep global_screenrc.patch (renamed from screen-4.0.2.dif)
+  * keep screen-man-loginshell.diff (to be upstreamed)
+  * dropped screen-__P.diff (not needed)
+  * keep term_too_long.diff (savannah#30880, to be upstreamed)
+  * keep use_locale.diff (from lnt-sysadmin@lists.lrz.de 2012, check?)
+  * keep screen-4.0.3-ipv6.patch (builtin telnet, to be upstreamed)
+  * keep screen_enhance_windows_list.patch (to be upstreamed)
+  * keep screen-poll-zombies.patch (to be upstreamed)
+  * keep xX_string_escape.patch (renamed from show_all_active.patch, to be upstreamed)
+  * keep sort_command.patch (from trenn 2011, to be upstreamed)
+  * added msg_version_3.patch (ouch, incompatible protocol, to be upstreamed)
+
+- added %rundir with /var/run for 1310 and before; but /run afterwards.
+  aj advocates /run for Factory; for 1310 it was banned by
+  suse-filelist-forbidden-fhs23
+
+-------------------------------------------------------------------
+Tue Apr 15 14:27:09 UTC 2014 - aj@suse.com
+
+- Fix comment.
+
+-------------------------------------------------------------------
+Tue Apr 15 10:04:14 UTC 2014 - aj@suse.com
+
+- Use /run instead of /var/run.
+
+-------------------------------------------------------------------
+Fri Sep 13 15:17:12 CEST 2013 - mls@suse.de
+
+- update to current 4.0.4 git to get support for non-bmp unicode
+  * remove no longer needed mappedcmd.diff
+  * remove no longer needed styroptcrash.diff
+- fix potential buffer overrun in show_all_active.patch
+- redo combine screen_enhance_windows_list_1_3.patch,
+  screen_enhance_windows_list_2_3.patch,
+  screen_fix_wW_string_escapes_to_nearly_old_behavior.patch
+  into screen_enhance_windows_list.patch.
+  Do not mess with the old %w behaviour, just add support for the
+  windows command argument. Fixes bnc#808565.
+
+-------------------------------------------------------------------
+Sun Mar 24 10:57:09 UTC 2013 - trenn@suse.de
+
+- Patch screen_enhance_windows_list_1_3.patch changed wW string escapes
+  in an unintended way.
+  Fix this by ignoring longflg and behave the way wW string esacpes
+  behaved with adding addtional L escape. (So %w is now what %Lw was before
+  all these changes. This should be a minor, acceptable change as it was
+  undocumented and it buys quite some code cleanup with it.). Patch is:
+    screen_fix_wW_string_escapes_to_nearly_old_behavior.patch
+
+-------------------------------------------------------------------
+Mon Feb 18 09:04:34 UTC 2013 - trenn@suse.de
+
+- Introduce Xx string escape showing the executed command of a window
+    patch: show_all_active.patch
+
+-------------------------------------------------------------------
+Tue Feb  5 19:06:46 UTC 2013 - trenn@suse.de
+
+- Add zombie and enhance windows commands
+   screen-poll-zombies.patch: Dead windows will be restarted after
+                              a specified timeout (if enabled)
+   screen_enhance_windows_list_1_3.patch:
+       Cleanup window flags processing. This leads to a slight
+       output change in "Ww" string escapes (window list), but these
+       should be rather seldom used and flags are still shown.
+   screen_enhance_windows_list_2_3.patch:
+       Enhance windows command with an optional string escape based
+       parameter which also removes the output size (1024 bytes)
+       restriction (only if param is passed) of the windows command.
+  If you used captions with "%w" before, you can simulate the old
+  behaviour with "%-w%n* %t%+w".
+- Only Require makeinfo for openSUSE versions 11.4 and above.
+  This requirement did not exist in earlier versions, now the package
+  builds again for example against SLES 11 (11.4 based).
+
+-------------------------------------------------------------------
+Thu Oct 25 13:11:20 UTC 2012 - trenn@suse.de
+
+- Fix sort command to not stop at window gaps.
+  That can happen if windows got deleted and the window numbers do not
+  increment sequentially anymore.
+
+-------------------------------------------------------------------
+Tue Oct  9 07:47:52 UTC 2012 - lnt-sysadmin@lists.lrz.de
+
+- add use_locale.diff to fix --enable-use-locale configure option
+
+-------------------------------------------------------------------
+Thu Sep 13 13:52:04 CEST 2012 - mls@suse.de
+
+- add prereq coreutils so that mkdir works [bnc#780033]
+
+-------------------------------------------------------------------
+Sat Sep  8 11:07:44 UTC 2012 - idonmez@suse.com
+
+- Add build dependency on makeinfo 
+
+-------------------------------------------------------------------
+Wed Aug  8 19:56:19 CEST 2012 - mls@suse.de
+
+- fix crash when doing 'screen -d -r' inside of screen
+
+-------------------------------------------------------------------
+Tue Aug  7 17:08:55 CEST 2012 - mls@suse.de
+
+- add mappedcmd.diff to make ^A DEL work again
+
+-------------------------------------------------------------------
+Fri Jun  8 18:03:57 CEST 2012 - mls@suse.de
+
+- update to screen-4.0.4devel
+  * support for multiple layouts
+  * no more stuck screen sessions
+
+-------------------------------------------------------------------
+Mon Nov 21 14:55:17 UTC 2011 - coolo@suse.com
+
+- fix build with latest ncurses (split tinfo)
+
+-------------------------------------------------------------------
+Fri Nov 18 13:09:57 UTC 2011 - jw@suse.com
+
+- mkdir /var/run/*screen both immediatly and via systemd.
+
+-------------------------------------------------------------------
+Mon Sep 19 14:00:10 UTC 2011 - trenn@suse.de
+
+- Add sort command
+- convert maxwin99bug.patch into a patch format quilt understands
+
+-------------------------------------------------------------------
+Wed Jul  6 08:13:07 UTC 2011 - aj@suse.de
+
+- Use /usr/lib/tmpfiles.d instead of /etc/tmpfiles.d.
+
+-------------------------------------------------------------------
+Mon Jan 31 15:14:38 UTC 2011 - jw@novell.com
+
+- bugfix bnc#668306, a buffer overflow with '%d'.
+  Added maxwin99bug.patch
+  This is already upstream, but was never released.
+
+-------------------------------------------------------------------
+Fri Dec 10 19:40:12 UTC 2010 - jw@novell.com
+
+- term_too_long.patch added.
+  corresponds to savannah#30880
+
+-------------------------------------------------------------------
+Wed Nov  3 14:54:47 UTC 2010 - aj@suse.de
+
+- Add /etc/tmpfiles.d/screen.conf for /var/run on tmpfs.
+
+-------------------------------------------------------------------
+Thu Sep  9 18:43:01 UTC 2010 - aj@suse.de
+
+- BuildRequire utempter-devel
+
+-------------------------------------------------------------------
+Sun May  2 13:06:35 UTC 2010 - aj@suse.de
+
+- /var/run directories are created by /etc/tmpdirs.d/01_aaa_base.
+
+-------------------------------------------------------------------
+Mon Feb 15 09:43:22 CET 2010 - dimstar@opensuse.org
+
+- Update to version 4.0.3
+- Dropped screen-4.0.2-comb.diff, upstream merged.
+
+-------------------------------------------------------------------
+Wed Dec 16 00:26:00 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Fri Jul 31 02:17:31 CEST 2009 - crrodriguez@suse.de
+
+- add fedora patch for IPv6 support, this removes usage
+  of gethostbyname(3) 
+
+-------------------------------------------------------------------
+Tue May 26 14:22:07 CEST 2009 - mls@suse.de
+
+- re-add lost maxwin definition [fate#301190]
+
+-------------------------------------------------------------------
+Wed May 14 15:31:04 CEST 2008 - jw@suse.de
+
+- A few lines added to docu explaining login-shells and 
+  starting with '-'  trick.
+
+-------------------------------------------------------------------
+Thu Mar 29 13:18:47 CEST 2007 - dmueller@suse.de
+
+- add ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct 23 16:11:47 CEST 2006 - mls@suse.de
+
+- fix two bugs in handling of combining characters [#214412]
+
+-------------------------------------------------------------------
+Fri Feb 10 17:45:47 CET 2006 - mls@suse.de
+
+- enable support for 256 colors [#136684]
+
+-------------------------------------------------------------------
+Thu Jan 26 15:51:26 CET 2006 - sbrabec@suse.cz
+
+- Added %install_info_prereq.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:29 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Oct 29 00:03:15 CEST 2005 - mls@suse.de
+
+- fix ut_time aliasing problem
+
+-------------------------------------------------------------------
+Fri Apr  8 14:41:08 CEST 2005 - meissner@suse.de
+
+- execl 0 -> (char*)0.
+
+-------------------------------------------------------------------
+Tue Sep 28 12:23:06 CEST 2004 - mls@suse.de
+
+- clear ti/te for xterms so that users can use xterm's scrollbar
+
+-------------------------------------------------------------------
+Sun Sep 12 09:26:52 CEST 2004 - kukuk@suse.de
+
+- Don't use __P from glibc
+
+-------------------------------------------------------------------
+Mon Feb 16 15:49:57 CET 2004 - mls@suse.de
+
+- fix socketdir quoting
+
+-------------------------------------------------------------------
+Thu Feb 12 18:08:47 CET 2004 - mls@suse.de
+
+- update to 4.0.2
+- move sockdirs to /var/run and include them in package
+
+-------------------------------------------------------------------
+Sat Jan 10 18:29:42 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Thu Sep 18 15:00:12 CEST 2003 - mls@suse.de
+
+- update to 4.0.1 (fixes another bug of the parser)
+
+-------------------------------------------------------------------
+Fri Sep 12 15:55:41 CEST 2003 - mls@suse.de
+
+- fix off by one error in variable expansion
+
+-------------------------------------------------------------------
+Fri Sep 12 14:15:04 CEST 2003 - mls@suse.de
+
+- don't resize xterms on startup
+
+-------------------------------------------------------------------
+Mon Sep  8 16:53:47 CEST 2003 - mls@suse.de
+
+- update to 4.0.0final
+
+-------------------------------------------------------------------
+Wed Aug 27 17:14:21 CEST 2003 - mls@suse.de
+
+- update to 4.0.0beta2
+
+-------------------------------------------------------------------
+Fri Aug  1 15:04:22 CEST 2003 - mls@suse.de
+
+- update to 4.0.0beta1
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Thu Mar 13 12:21:34 CET 2003 - mls@suse.de
+
+- update to 3.9.15: changing the window title could append
+  junk to the title
+
+-------------------------------------------------------------------
+Wed Mar 12 16:25:58 CET 2003 - mls@suse.de
+
+- update to 3.9.14: one small docu change and a small improvement
+  in the windowlist command
+
+-------------------------------------------------------------------
+Mon Feb 24 21:06:54 CET 2003 - mls@suse.de
+
+- update to 3.9.14beta1
+- build screen with buildroot
+- remove xf86 dependency, use configure option instead
+- use install-info macro to install info page
+
+-------------------------------------------------------------------
+Tue Oct  1 14:30:55 MEST 2002 - mls@suse.de
+
+- fix WrapChar() scrolling region reset code to always use a
+  valid scrolling region (#20367)
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Thu Sep  5 14:11:31 MEST 2002 - mls@suse.de
+
+- update to official screen-3.9.13, contains one small bug
+  fix
+
+-------------------------------------------------------------------
+Thu Aug 29 14:47:42 MEST 2002 - mls@suse.de
+
+- update to official screen-3.9.12
+
+-------------------------------------------------------------------
+Mon Aug 19 15:47:22 MEST 2002 - mls@suse.de
+
+- update to screen-3.9.12beta2
+
+-------------------------------------------------------------------
+Fri Mar  8 13:44:15 CET 2002 - kukuk@suse.de
+
+- Add /usr/share/screen to filelist
+
+-------------------------------------------------------------------
+Wed Mar  6 12:58:25 MET 2002 - mls@suse.de
+
+- disable pam support again
+- fix segmentation fault in screen's reattach password check
+
+-------------------------------------------------------------------
+Fri Feb 22 16:11:32 MET 2002 - mls@suse.de
+
+- fix passing of NUL bytes when recoding is active
+- moved uid/gid retrieval in front of FindEncoding
+
+-------------------------------------------------------------------
+Mon Feb 18 11:36:36 MET 2002 - mls@suse.de
+
+- added missing /usr/share/screen/utf8encodings files
+- small patch to fix hardstatus width
+
+-------------------------------------------------------------------
+Thu Feb 14 14:52:59 MET 2002 - mls@suse.de
+
+- update to official screen-3.9.11
+- enabled pam & localized dates
+
+-------------------------------------------------------------------
+Mon Feb 11 14:06:22 MET 2002 - mls@suse.de
+
+- update to screen-3.9.11beta7
+
+-------------------------------------------------------------------
+Tue Jan 29 15:21:32 CET 2002 - okir@suse.de
+
+- require utempter to build; zapped s bit
+
+-------------------------------------------------------------------
+Fri Jan 25 14:08:18 CET 2002 - okir@suse.de
+
+- require utempter to build
+
+-------------------------------------------------------------------
+Wed Sep  5 18:37:09 MEST 2001 - mls@suse.de
+
+- nominal upgrade to screen-3.9.10
+
+-------------------------------------------------------------------
+Mon Sep  3 17:17:19 MEST 2001 - mls@suse.de
+
+- Security fix for the Multiattach-bug in /usr/bin/screen
+
+-------------------------------------------------------------------
+Mon Jul 23 19:20:21 MEST 2001 - bk@suse.de
+
+- added select-fix for fifo-testcase to build on s390x
+
+-------------------------------------------------------------------
+Fri May 25 17:22:48 MEST 2001 - mls@suse.de
+
+- update -> 3.9.9
+
+-------------------------------------------------------------------
+Tue May  8 19:37:19 MEST 2001 - mls@suse.de
+
+- added workaround for broken xterm to global screenrc
+
+-------------------------------------------------------------------
+Fri Apr 27 19:46:46 MEST 2001 - mls@suse.de
+
+- fix screen -wipe (bugzilla bug #2990)
+- fix f10 function key (bugzilla bug #4326)
+- fix 0620 pty mode autodetection (bugzilla bug #6304)
+
+-------------------------------------------------------------------
+Mon Sep  4 18:13:20 CEST 2000 - uli@suse.de
+
+- fix for root compromise using configurable visual bell string 
+
+-------------------------------------------------------------------
+Fri Feb 25 15:16:50 CET 2000 - kukuk@suse.de
+
+- Move /usr/{info,man} -> /usr/share/{info,man}
+
+-------------------------------------------------------------------
+Fri Oct 22 15:24:29 MEST 1999 - uli@suse.de
+
+- update -> 3.9.5
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Nov 27 15:11:31 MET 1998 - uli@suse.de
+
+- Update 3.7.3 -> 3.7.6
+
+----------------------------------------------------------------------------
+Wed Apr 30 15:57:14 CEST 1997 - florian@suse.de
+
+
+- update to version 3.7.3
+
+- mv /usr/etc/screenrc /etc/
+

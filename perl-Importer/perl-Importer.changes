@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Mon Feb 19 06:32:30 UTC 2018 - coolo@suse.com
+
+- updated to 0.025
+   see /usr/share/doc/packages/perl-Importer/Changes
+
+  0.025     2018-02-18 12:42:37-08:00 America/Los_Angeles
+  
+      - Minor cperl fix
+
+-------------------------------------------------------------------
+Fri Oct 21 05:38:10 UTC 2016 - coolo@suse.com
+
+- updated to 0.024
+   see /usr/share/doc/packages/perl-Importer/Changes
+
+  0.024     2016-10-20 06:11:07-07:00 America/Los_Angeles
+  
+      - No changes from dev release
+  
+  0.023     2016-09-15 12:08:40-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Remove experimental pin feature
+  
+  0.022     2016-09-14 13:38:19-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Fix infinite recursion on empty pins
+      - Pass caller into on_use
+  
+  0.021     2016-08-28 16:44:26-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - 'pins' allow multiple inheritence
+      - 'pins' allow +pin => [...]
+      - Allow nesting tags
+      - Allow specs in tags
+      - Saner arg parsing all around
+  
+  0.020     2016-08-27 15:32:16-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Make 'pins' feature more sane
+        - remove '*' in favor of real inheritance
+        - use 'undef' for on_use argument when no pin is provided
+      - Fix bug where menu attribute was reset multiple times using pins
+  
+  0.019     2016-08-25 22:00:28-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Rename the 'version-sets' feature to 'pins' to avoid confusions and
+        conflicts
+  
+  0.018     2016-08-21 16:09:24-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Allow renaming of the 'v0' version set
+  
+  0.017     2016-08-20 22:57:17-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add on_use/sub EXPORT_ON_USE { ... } feature
+  
+  0.016     2016-08-20 21:41:34-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add polish to version-sets
+      - Add '*' version for common things
+      - Do not allow tags or versions inside a version specification
+      - More documentation for version-sets
+  
+  0.015     2016-08-20 15:26:23-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+      - Add support for version-sets
+      - Spelling fixes
+
+-------------------------------------------------------------------
+Fri Jul 22 15:19:36 UTC 2016 - coolo@suse.com
+
+- initial package 0.014
+ * created by cpanspec 1.78.08
+

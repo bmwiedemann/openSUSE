@@ -1,0 +1,11 @@
+--- HSAIL-Tools-master/CMakeLists.txt	2016-07-12 11:48:16.000000000 +0200
++++ HSAIL-Tools-master/CMakeLists.txt	2016-08-17 10:27:52.815201999 +0200
+@@ -10,7 +10,7 @@
+ endif()
+ 
+ if(UNIX)
+-  add_compile_options(-fpic -Wall -Werror -std=c++11 -pthread -fno-rtti -fvisibility-inlines-hidden)
++  add_compile_options(-fpic -Wall -std=c++11 -pthread -fno-rtti -fvisibility-inlines-hidden)
+   add_definitions(-D__STDC_LIMIT_MACROS)
+   add_definitions(-D__STDC_CONSTANT_MACROS)
+   add_definitions(-D__STDC_FORMAT_MACROS)

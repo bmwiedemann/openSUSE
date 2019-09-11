@@ -1,0 +1,440 @@
+-------------------------------------------------------------------
+Sun Jun 21 01:38:29 UTC 2015 - anixx@opensuse.org
+
+- add missing include to fix build with gcc5
+
+-------------------------------------------------------------------
+Sun Apr 12 18:14:43 UTC 2015 - crrodriguez@opensuse.org
+
+- Move udev rules to udevrulesdir, /etc/udev is reserved 
+  for sysadmin use.
+
+-------------------------------------------------------------------
+Thu Apr 18 09:27:29 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-2.0 and GPL-2.0+ and LGPL-2.1+
+  There are GPL-2.0 (only) licenses in the packages. Assuming aggregation
+  as Fedora also use an aggregation license. Please double check.
+
+-------------------------------------------------------------------
+Tue Apr 16 13:56:58 UTC 2013 - mhrusecky@suse.com
+
+- patch to fix udev rules by Jean Delvare
+  pilot-link-0.12.5-udev-rules.patch
+
+-------------------------------------------------------------------
+Fri Mar  1 10:31:10 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Sun Nov 20 06:28:10 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon May 23 11:23:49 UTC 2011 - idonmez@novell.com
+
+- Add pilot-link-0.12.5-perl514.patch: replace SvPV(SV*, na) with
+  SvPV_nolen(SV*) and sv_{yes,no} with PL_sv_{yes_no} to fix 
+  compilation with Perl 5.14 
+
+-------------------------------------------------------------------
+Sat Jan 15 19:21:14 UTC 2011 - coolo@novell.com
+
+- fix build for 11.4
+
+-------------------------------------------------------------------
+Tue May 18 18:07:13 CEST 2010 - mhrusecky@suse.cz
+
+- getting rid of hard HAL dependency
+
+-------------------------------------------------------------------
+Fri Apr  9 09:29:51 CEST 2010 - mhrusecky@suse.cz
+
+- updated to 0.12.5
+  * new Calendar code for jPilot
+- updated to 0.12.4
+  * official changes description - too many to mention
+
+-------------------------------------------------------------------
+Thu Apr  8 19:01:23 CEST 2010 - pgajdos@suse.cz
+
+- fixed build with libpng14
+
+-------------------------------------------------------------------
+Sat Oct 17 01:05:23 CEST 2009 - rschweikert@novell.com
+
+- close file after reading or on error
+  (bnc#544582 - pilot-link-0.12.3-fclose_after_read.patch)
+
+-------------------------------------------------------------------
+Tue Sep  1 14:27:04 CEST 2009 - mhrusecky@suse.cz
+
+- fixed crash when opening of USB fails
+
+-------------------------------------------------------------------
+Thu Aug 27 15:43:57 CEST 2009 - mhrusecky@suse.cz
+
+- installing udev rules again
+
+-------------------------------------------------------------------
+Wed Aug 12 14:11:43 CEST 2009 - mhrusecky@suse.cz
+
+- adding missing fclose [bnc#529518]
+- better description
+
+-------------------------------------------------------------------
+Fri Jun 26 14:43:06 CEST 2009 - mhrusecky@suse.cz
+
+- merged together with perl bindings
+
+-------------------------------------------------------------------
+Wed Mar 11 16:39:29 CET 2009 - nadvornik@suse.cz
+
+- fixed an attempt to free a non-heap object [bnc#471446]
+
+-------------------------------------------------------------------
+Mon Sep 15 17:09:38 CEST 2008 - dmueller@suse.de
+
+- adjust buildrequires
+
+-------------------------------------------------------------------
+Wed Sep 10 18:06:45 CEST 2008 - nadvornik@suse.cz
+
+- updated to 0.12.3:
+  * bugfix release
+  * libpisync0 renamed to libpisync0
+- added python-pisock subpackage
+
+-------------------------------------------------------------------
+Tue Dec  4 16:19:37 CET 2007 - nadvornik@suse.cz
+
+- added argument mode to 'open' call
+
+-------------------------------------------------------------------
+Tue Sep  4 14:26:36 CEST 2007 - dgollub@suse.de
+
+- Readded HAL FDI files to identify palm devices and set
+  pda.platform to "palm". This is needed for hal-resmgr to give
+  the destkop user access to the USB Raw device. Applications
+  which use the libusb transport of libpisock need this.
+
+-------------------------------------------------------------------
+Mon Aug  6 07:22:24 CEST 2007 - coolo@suse.de
+
+- Adding versions to obsoletes
+
+-------------------------------------------------------------------
+Thu Aug  2 14:08:00 CEST 2007 - sbrabec@suse.cz
+
+- Remove broken IT_PROG_INTLTOOL m4 definition.
+
+-------------------------------------------------------------------
+Fri Jul 27 19:19:59 CEST 2007 - coolo@suse.de
+
+- fix m4 file
+
+-------------------------------------------------------------------
+Mon Jul 23 17:03:04 CEST 2007 - dgollub@suse.de
+
+- splitted pilot-link packages into:
+  o pilot-link
+  o libpisock9
+  o libpisock-devel
+  o libpisync0
+  o libpisync-devel
+- added bluez-libs to BuildRequires for HotSync via Bluetooth
+- removed libtool helper files  
+- removed hal fdi file for platform.pda (upstream)
+- updated to version 0.12.2
+  o libpisock/dlp.c: Integrated Scott Gruby's big record fix: reading
+    records that have the maximum allowed size could lock up some
+    devices. We now read maxRecordSize-100 and perform a second read
+    if the record is large. Also some casts to make compilers happy,
+    and a safeguard when reading username / password to properly
+    terminate the strings.
+  o libpisock/usb.c: More sanity to catch both Sony models, including
+    the NRxx series handhelds
+  o libpisock/usb.c: Minor fix for Sony Clie detection
+  o src/pilot-650foto.c: Extract treo 650 photos
+  o libpisock/usb.c: Fix a bug where we were looking at
+    override_device instead of known_device[i]. Removed 
+    override_device, given that nothing sets it, anywhere.
+
+-------------------------------------------------------------------
+Wed May 23 09:58:04 CEST 2007 - wstephenson@suse.de
+
+- Add libusb-devel to pilot-link-devel's Requires:
+
+-------------------------------------------------------------------
+Wed May 16 21:32:29 CEST 2007 - olh@suse.de
+
+- Buildrequires libusb -> libusb-devel
+  Remove duplicate --enable-libusb
+  Remove unneded Requires libusb
+
+-------------------------------------------------------------------
+Wed Jan 10 17:45:40 CET 2007 - prusnak@suse.cz
+
+- fixed uninitialized variable (appointment_buf.diff) [#230786]
+- fixed strncat overflow (strncat.diff)
+
+-------------------------------------------------------------------
+Mon Nov 13 12:08:33 CET 2006 - dgollub@suse.de
+
+- removed resmgr patch [#218662]
+
+-------------------------------------------------------------------
+Mon Nov  6 15:54:01 CET 2006 - postadal@suse.cz
+
+- fixed gcc issues (gcc.patch) [#213270, #141152]
+
+-------------------------------------------------------------------
+Thu Sep 21 14:49:44 CEST 2006 - dgollub@suse.de
+
+- fixed problem with missing flags of known_devices 
+  in USB_check_device() 
+
+-------------------------------------------------------------------
+Tue Sep  5 20:48:37 CEST 2006 - dgollub@suse.de
+
+- update to version 0.12.1
+  o code cleanup in libpisock libpisync src ...
+- removed udev rule (hal-resmgr is used instead)
+
+-------------------------------------------------------------------
+Fri Sep  1 14:29:48 CEST 2006 - dgollub@suse.de
+
+- update to version 0.12.0
+  o libusb support
+  o added extendend support of contact for newer palm devices
+  o added support for:
+  	- extended contact data format
+  	- veo traveler data format
+	- VersaMail data format
+  o most userland binaries got renamend
+- added fdi file to mark palm devices as pda.platform
+- added patch for LiveDrive devices (Palm T|X and others..)
+
+-------------------------------------------------------------------
+Mon May 29 14:01:26 CEST 2006 - lmichnovic@suse.cz
+
+- fixed write beyond array range (array_overflow.diff) [#177546] 
+- appended uninitialized.diff
+- added Requires: libstdc++-devel for devel package
+
+-------------------------------------------------------------------
+Sun May  7 19:59:32 CEST 2006 - jpr@suse.de
+
+- Fix pilot-link-0.11.8-serial.diff to not think it lost the packet
+when the poll was successful, result < 0 vs result <= 0) 
+(part of #165455)
+
+-------------------------------------------------------------------
+Tue Apr 25 12:39:29 CEST 2006 - dgollub@suse.de
+
+- reenabled patch for pilot-link.m4.in
+- fixed systemwide warning about underquoted definition 
+  of AC_PILOT_LINK_HOOK 
+
+-------------------------------------------------------------------
+Wed Mar 29 16:54:03 CEST 2006 - dgollub@suse.de
+
+- fixed buffer overflow in realpath calling for version 0.11.8 [#153944] 
+  
+-------------------------------------------------------------------
+Wed Mar 29 10:30:49 CEST 2006 - dgollub@suse.de
+
+- downgrade to pilot-link version 0.11.8
+  0.12.0-prev4 is not supposed to be packaged [#161722]
+- added pkgconfig files: pilot-link.pc pilot-link-pp.pc  
+
+-------------------------------------------------------------------
+Mon Mar 27 16:15:17 CEST 2006 - postadal@suse.cz
+
+- fixed uninitialized variable (uninitialized2.patch) [#160933]
+  * fixed serial support on 64 bit archs
+
+-------------------------------------------------------------------
+Tue Feb 28 15:01:58 CET 2006 - postadal@suse.cz
+
+- fixed buffer overflow in realpath calling (realpath.patch) [#153944]
+
+-------------------------------------------------------------------
+Mon Feb 20 14:24:55 CET 2006 - postadal@suse.cz
+
+- fixed uninitialized variable (uninitialized.diff) [#152042] 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:14 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan  9 15:13:44 CET 2006 - postadal@suse.cz
+
+- added libpng to neededforbuild
+- fixed uninitialized variable (uninitialized.diff) [#141152]
+
+-------------------------------------------------------------------
+Wed Oct  5 12:39:36 CEST 2005 - mmj@suse.de
+
+- fix printf call
+- don't paper over aliasing bugs by just making the warning, go
+  away wrongly.  Especially not, when it's already compiled with
+  -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Wed Sep 28 13:01:47 CEST 2005 - wstephenson@suse.de
+
+- backport extern "C" fixes from CVS so C++ use of the library works
+
+-------------------------------------------------------------------
+Tue Sep 20 11:46:24 CEST 2005 - postadal@suse.cz
+
+- fixed uninitialized variables (uninitialized.diff)
+
+-------------------------------------------------------------------
+Mon Aug 29 14:22:32 CEST 2005 - postadal@suse.cz
+
+- fixed resmgr.diff patch
+- added patch from upstream to fix serial support (serial.diff)  
+
+-------------------------------------------------------------------
+Sat Aug  6 16:14:37 CEST 2005 - ro@suse.de
+
+- fix pkgconfig dir 
+
+-------------------------------------------------------------------
+Fri Aug  5 11:50:16 CEST 2005 - lmichnovic@suse.cz
+
+- update to version 0.12.0-pre4
+- fixed gcc warnings 
+
+-------------------------------------------------------------------
+Tue Mar 30 13:21:29 CEST 2004 - postadal@suse.cz
+
+- fixed underquoted definition of AC_PILOT_LINK_HOOK [#37487]
+
+-------------------------------------------------------------------
+Tue Mar 23 13:42:57 CET 2004 - postadal@suse.cz
+
+- fixed warnings in compilation
+- added requires for devel package
+
+-------------------------------------------------------------------
+Fri Mar 19 13:43:18 CET 2004 - adrian@suse.de
+
+- add resmgr support
+
+-------------------------------------------------------------------
+Sat Jan 10 16:54:37 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Jul 29 15:00:42 CEST 2003 - postadal@suse.cz
+
+- updated to version 0.11.8
+  * you no longer have to hit HotSync on the Palm first, before launching your
+    desktop conduits. You can hit HotSync first, or launch your desktop
+    conduit/tools first, and it will still make an attempt to connect.
+    This also works with gnome-pilot and J-Pilot as well.
+  * pilot-foto conduit to fetch/convert photos taken with a Palm Zire71
+    camera device
+
+-------------------------------------------------------------------
+Wed May 14 14:49:48 CEST 2003 - mmj@suse.de
+
+- Package pilot-link.m4 to -devel
+
+-------------------------------------------------------------------
+Fri Jan 17 13:15:56 CET 2003 - postadal@suse.cz
+
+- updated to version 0.11.7
+  * new manpages
+  * deprecated pilot-mail, in favor of pilot-mailsync.
+
+-------------------------------------------------------------------
+Fri Oct 25 18:05:06 CEST 2002 - uli@suse.de
+
+- update -> 0.11.5
+
+-------------------------------------------------------------------
+Tue Jun 18 15:17:51 CEST 2002 - meissner@suse.de
+
+- run auto* tools, fixed configure.in (now uses C++ unconditionally)
+
+-------------------------------------------------------------------
+Wed May 15 16:09:17 CEST 2002 - hhetter@suse.de
+
+- updated to version 0.9.5 
+- adapted timesync feature
+
+-------------------------------------------------------------------
+Tue Apr 23 16:03:25 CEST 2002 - rommel@suse.de
+
+- consistent use of _libdir
+
+-------------------------------------------------------------------
+Mon Jun 18 14:25:09 CEST 2001 - schwab@suse.de
+
+- Fix friend declarations.
+
+-------------------------------------------------------------------
+Wed Apr 11 12:57:53 CEST 2001 - pblaha@suse.cz
+
+- add timesync feature from http://www.klawitter.de/palm/ 
+
+-------------------------------------------------------------------
+Tue Mar 13 17:31:40 CET 2001 - ro@suse.de
+
+- fixed buildrooting 
+
+-------------------------------------------------------------------
+Mon Nov 27 14:09:24 CET 2000 - grimmer@suse.de
+
+- renamed from "plink" to "pilot-link"
+- moved perl modules (and required patches) into separate
+  package perl-PDA-Pilot
+- split into "pilot-link" and "pilot-link-devel"
+- moved files from /usr/lib/pix to /usr/lib/pilot-link
+- added BuildRoot and Group Tag
+
+-------------------------------------------------------------------
+Thu Sep 21 13:35:21 CEST 2000 - ro@suse.de
+
+- fixed for perl-5.6
+- bzipped source 
+
+-------------------------------------------------------------------
+Sun Apr  9 00:52:17 CEST 2000 - bk@suse.de
+
+- added suse update config macro
+
+-------------------------------------------------------------------
+Thu Mar  2 15:22:18 CET 2000 - uli@suse.de
+
+- moved man pages to %{_mandir}
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu May 27 18:46:23 MEST 1999 - uli@suse.de
+
+- update 0.9.1 -> 0.9.3
+
+-------------------------------------------------------------------
+Thu May 27 18:25:38 MEST 1999 - uli@suse.de
+
+- added libpicc.a
+
+-------------------------------------------------------------------
+Wed Feb 17 16:27:09 MET 1999 - stefan@suse.de
+
+- New package 
+

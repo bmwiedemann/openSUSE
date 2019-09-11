@@ -1,0 +1,289 @@
+-------------------------------------------------------------------
+Mon May 27 06:10:16 UTC 2019 - mvetter@suse.com
+
+- Cleanup with spec-cleaner
+- Update to 11.01.0000:
+  * Correct the rgbInfoValue returned by
+    SQLGetInfo(SQL_TIMEDATE_FUNCTIONS, ..).
+  * Because the field 'relhasoids' was dropped in PG12, psqlodbc
+    drivers would have some troubles with PG12 servers.
+  * Register drivers {PostgreSQL ANSI} and {PostgreSQL Unicode}
+    during installation on 64bit Windows so that users could use
+	the same connection strings in both x86 and x64 environments.
+  * Correct the rgbInfoValue returned b
+    SQLGetInfo(SQL_LIKE_ESCAPE_CLAUSE, ..).
+  * Fix a typo in SQLForeignKeys-ResultSet-Column. 'deferrablity'
+    should be 'DEFERRABILITY'.
+  * Correct the rgbInfoValue returned by
+    SQLGetInfo(.., SQL_NUMERIC_FUNCTIONS(SQL_SYSTEM_FUNCTIONS
+	or SQL_STRING_FUNCTIONS, ..).
+  * Bug fix: don't forget to set parameter numbers while handling
+    escaped ODBC functions.
+  * ix test_connection() in setup.c so that settings of
+    conn_settings and pqopt option are reflected properly.
+
+-------------------------------------------------------------------
+Wed Mar 13 14:46:32 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Update to version 11.00.0000:
+  * Remove obsolete maps pointed out.
+  * Remove connSettings option and/or pqopt option from the
+    OutConnectionString parameter of SQLDriverConnect() when each
+    option doesn't exist in InConnectionString parameter.
+  * The parameters should be cast because parameters of concat()
+    function are variadic "any".
+  * Add an alias DX of *Database* keyword for connection strings
+    to aviod the use of "database" keyword which has a special
+    meaning in some apps or middlewares.
+  * numeric items without precision are unlimited and there's no
+    natural map between SQL Data types.
+    Add an option *Numeric(without precision) as*
+  * Fix a bug that SQLSpecialColumns() returns oid/xmin
+    incorrectly when a table does not exist.
+- Fix build with PostgreSQL 11 that does not have pg_config in the
+  regular devel package anymore (psqlODBC-internal.patch).
+- Avoid self-obsoletion.
+
+-------------------------------------------------------------------
+Wed May 23 10:15:15 UTC 2018 - mvetter@suse.com
+
+- Update to version 10.03.0000:
+  * Put back the handling of lock_CC_for_rb variable. The variable lock_CC_for_rb should be held per connection.
+  * Fix SQLGetTypeInfo() so that it filters SQL_TYPE_DATE, SQL_TYPE_TIME or SQL_TYPE_TIMESTAMP for ODBC 2.x applications.
+  * Revise ConfigDSN() so that it handles the 4th parameter(lpszAttribues) correctly.
+  * Fix a crash bug when handling error messages. Also modified some error messages.
+  * Let SQLTables() or SQLTablePrivileges() show partition tables.
+  * Fix build on Solaris defined(__SUNPRO_C) using Solaris Studio
+  * Reduce DB access to pg_class or pg_index by caching relhasoids, relhassubclass etc. It would improve the performance of SQLSetPos() or SQLBulkOperations() very much in some cases.
+
+-------------------------------------------------------------------
+Thu Apr  5 13:03:05 UTC 2018 - mvetter@suse.com
+
+- Update to version 10.02.0000:
+  * It's safer to call setlocale(LC_CTYPE, "") than calling setlocale(LC_ALL, "")
+  * Avoid replacing effective notice messages.
+  * Handle MALLOC/REALLOC errors while fetching tuples more effectively.
+  * Make SQLSetPos(SQL_DELETE/SQL_REFRESH) more effective. Because queries calling currtid(2) like
+    select .. from .. where ctid=currtid2(.., ..) cause Seq Scan, their execution may be very slow.
+    It is better to execute queries using subqueries like
+	select .. from .. where ctid=(select currtid2(.., ..)) because they cause Tid Scan.
+  * Fix a crash bug in AddDeleted().
+
+-------------------------------------------------------------------
+Wed Feb 21 15:02:12 UTC 2018 - mvetter@suse.com
+
+- bsc#1062860 / fate#324501: For adding packaging to SLE15
+- Update to version 10.01.0000:
+  * Review the handling of @@IDENTITY when a column's default is nextval(a_sequence) but the column isn't a serial. Unfortunately the function pg_get_serial_sequence() doesn't work for sequences which aren't serial type.
+  * Add add an option -NoPDB to buildInstallers.ps1. The switch option can be specified so as to exclude PDB files from the installers.
+  * Fix a bug in pgdebug_realloc().
+  * Free any data at exec params before the statement is executed again or the next set of parameters is processed. If not, then there will be a memory leak when the next SQLParamData/SQLPutData is called.
+  * Review the level of MYLOG, QLOG. Divide *level 1(detail)* log into *level 1(tuple level)* log and *level 2(detail)* log. 
+
+-------------------------------------------------------------------
+Wed Dec  6 11:23:50 UTC 2017 - mvetter@suse.com
+
+- Update to version 10.00.0000:
+  * Fix multibyte handling of ansi driver.
+  * Handle PG 10 identity columns.
+  * For PG10 servers, we will never see "unknown" output columns.
+  * Improve @@identty handling.
+    Use multibyte-aware eatTableIdentifiers() instead of next_name_token().
+    Use identifierEscape() to escape single quotes or double quotes.
+  * PG_PRINTF_ATTRIBUTE instead of printf in __attribute__((format(printf, .., ..))) function attribute.
+  * Review the use of encoded_nextchar().
+    Remove variables which work in conjunction with encstr(encoded_str) so as to avoid misleadingness.
+  * Use pg_get_serial_sequence() to get serial sequence of identity columns or serial columns.
+    pg_get_serial_sequence() for identity columns became available in PG 10.
+  * Preparation for development with VC15(VS 2017).
+  * Fix the bug that 'create table T_$001 (\81c)' fails when useServerSidePrepare is turned on.
+
+  Changes from 09.06.0500:
+   * Fix a segfault on ResolveOneParam() function while executing a query after
+     calling SQLSetStmtAttr(.., SQL_ATTR_APP_PARAM_DESC, an_ARD_for_another_statement, ..).
+   * Fix a linkage error when doing installcheck for test/win.mak.
+   * Fix a bug when fetching bytea field to SQL_C_BINALY data. It's bad to double count of bytes.
+   * Handle '$'s in identifiers correctly. Also take multibyte characters into account in identifiers.
+   * Reduce the use of snprintfcat(or SPRINTFCAT_FIXED macro) as much as possible.
+     Instead use PQExpBuffer library without having to worry about buffer length.
+   * Use macro MYLOG instead of function mylog in preparation for later changes and unify mylog().
+   * Implement myprintf() which prints logs according to printf format and make logs a little easier
+     to read using the macro MYPRINTF() which calls myprintf().
+  * Introduce token control while parsing. Detect *select .. into* or *select ... for update*
+    and suppress *declare .. cursor for* clause in declare/fetch mode using the mechanism.
+  * Add __FILE__, __FUNCTION__, __LINE__ to MYLOG.
+  * Fix an parameter unmatch error which would cause a crash.
+  * Removed some qlogs, changed some qlogs to MYLOG and added some qlogs.
+  * Move the implemetation of GetExeName() from psqlodbc.c(psqlsetup.c) to mylog.c.
+  * Remove the GssAuthUseGssapi option completely.
+  * Fix bug that calls strdup() for NULL pointers.
+  * Detect fast shutdown while connecting.
+  * Put back the behavior when conversion errors from the current locale to SQLWCHAR occur.
+  Simply returns zero length string instead of erroring out.
+  * Add level parameter to Commlog/Mylog option of setup program.
+  * Add __attribute__((format(printf,3,4))) to the declaration of snprintfcat().
+  * Allow PROCCALL in ReadOnly mode.
+
+  Changes from 09.06.0410:
+  * Fix buffer truncations. The truncations occured when concatenating 'RELEASE xxxx...;' and 'SAVEPOINT xxxx....'.
+  * Correct the behavior of snprintfcat() on Windows using posix_vsnprintf() instead of _vsnprintf().
+  * Handle StrLen_or_IndPtr argument of SQLBindParameter() properly when
+    StrLen_or_IndPtr doesn't point to SQL_NTS and conversions between SQLWCHAR and SQLCHAR occur.
+  * Make quote_table() and ti_quote() thread safe.This change fixes "relation does not exist".
+
+- Remove psqlodbc-build.patch: don't see why this is needed.
+  No mention of why it was added anywhere.
+
+-------------------------------------------------------------------
+Fri Jan 27 15:50:45 UTC 2017 - adam.majer@suse.de
+
+- Update to version 09.05.0400
+  * Ignore the difference between CR LF, LF and CR line break when
+    comparing expected and result output.
+  * Fix the bug SQLGetDescFieldW or SQLColAttributeW mistakenly
+    returns SQL_ERROR.
+  * for complete list of changes, see 
+    /usr/share/doc/packages/psqlODBC/release.html
+
+-------------------------------------------------------------------
+Thu Mar 12 16:11:41 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 09.03.0400
+  * No short ChangeLog available; please read 
+    /usr/share/doc/packages/psqlODBC/release.html
+- Remove depreciated AUTHORS section
+- Remove psqlODBC-literal.patch; fixed on upstream release
+- Update psqlodbc-08.03.0200-build.patch > psqlodbc-build.patch
+- Update project Url
+- Use download Url as source
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Tue Apr 23 13:09:31 UTC 2013 - mhrusecky@suse.com
+
+- fix build on openSUSE > 12.3 with new unixODBC
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:39 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Nov 12 12:07:56 CET 2008 - max@suse.de
+
+- Automate registering and unregistering the driver with unixODBC
+  on installation and uninstallation (bnc#420850).
+
+-------------------------------------------------------------------
+Thu Sep 11 13:38:30 CEST 2008 - max@suse.de
+
+- New version: 08.03.0200. For details on the countless
+  improvements and bug fixes, see:
+  http://psqlodbc.projects.postgresql.org/release.html or
+  /usr/share/doc/packages/psqlODBC/release.html
+
+-------------------------------------------------------------------
+Mon Jul 30 16:08:23 CEST 2007 - max@suse.de
+
+- New version: 08.02.0400. Changes include:
+  * Ditinguish the indicaitor and the octet_length field of APD
+    clearly.
+  * Handle @@IDENTITY more generally.
+  * Take outer join into account so as to evaluate nullability.
+  * Fix a bug about Keyset-driven cursors.
+  * Change to use NULL indicator instead of the length buffer in
+    SQLFetch.
+  * Fix a bug which forgets unnamed plans too early especially when
+    handling large objects.
+  * Don't treat charcters whose value >= 128 as alphanumeric in case
+    of conversion of binary data to bytea.
+  * Change ConfigDSN() so that it takes the options in Setup Dialog
+    page 1 into account.
+  * Simplify the memory management of statements'columns info so as to
+    prevent memory leaks or a crash in parse_statement etc.
+  * SQLTables("", SQL_ALL_SCHEMAS. "", ..) now returns a list of valid
+    schemas.
+  * SQLTables("", "", "", SQL_ALL_TABLE_TYPES) now returns a list of
+    valid table types.
+  * SQLGetInfo SQL_DATABASE_NAME now returns the database name.
+  * Treat the tables in information_schema as system tables.
+  * Correct the precision of SQL_NUMERIC_STRUCT.
+  * Change the default max varchar size from 254 to 255.
+  * Reset the fields information properly in case of SQLMoreResults.
+  * Implement SQLDescribeParam() also in case of multi-command queries.
+  * Handle dollar-quotes more properly.
+  * Append DETAIL messages to GetDiag...() messages.
+  * Remove WSAStartup() and WSACleanup() from DllMain.
+  * Load libpq from the driver's folder.
+  * Improve the implemetation of SQLSetPos(.., SQL_ADD/SQL_UPDATE)
+    using the 8.2 new feature INSERT/UPDATE .. returning. 
+
+-------------------------------------------------------------------
+Wed Dec 13 15:34:15 CET 2006 - max@suse.de
+
+- Avoid literal string comparison (#228225)
+- New version: 08.02.0200
+  - Added support for SSL and Kerberos
+  - Reduce compiler warnings on x86_64
+  - Many more improvements
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:40 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 16:56:27 CET 2006 - max@suse.de
+
+- New version: 08.01.0102
+
+-------------------------------------------------------------------
+Mon Jul  4 13:56:38 CEST 2005 - max@suse.de
+
+- Re-added -fno-strict-aliasing .
+
+-------------------------------------------------------------------
+Fri Jul  1 14:23:04 CEST 2005 - max@suse.de
+
+- New version: 08.00.0101
+- Building with support for unixODBC.
+
+-------------------------------------------------------------------
+Thu Nov 11 12:56:41 CET 2004 - ro@suse.de
+
+- fixed file list 
+
+-------------------------------------------------------------------
+Tue May 25 16:24:11 CEST 2004 - max@suse.de
+
+- Adapted a patch from Debian to fix a buffer overflow in ODBC driver
+  (src/interfaces/odbc/): added parameter for target buffer size to
+  make_string() to prevent buffer overflows and corrected all calls to
+  it (http://bugs.debian.org/247306, SuSE Bugzilla #40714).
+  With previous versions it was possible to crash (and possibly
+  exploit) e. g. apache if a PHP script connected to a ODBC database
+  with very long credential strings (DSN, username, password, etc.).
+
+-------------------------------------------------------------------
+Fri Feb  6 12:31:33 CET 2004 - max@suse.de
+
+- Added -fno-strict-aliasing to CFLAGS.
+
+-------------------------------------------------------------------
+Thu Jan 15 10:55:51 CET 2004 - max@suse.de
+
+- New version: 07.03.0200
+
+-------------------------------------------------------------------
+Sun Jan 11 10:16:41 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Thu Jan  9 11:48:19 CET 2003 - max@suse.de
+
+- psqlODBC (formerly postgresql-odbc) becomes a package of it's
+  own, because it has been removed from the PostgreSQL
+  core distribution and is now a separate project.
+
+- New version: 7.2.5.

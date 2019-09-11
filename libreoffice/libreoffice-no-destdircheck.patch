@@ -1,0 +1,27 @@
+diff --git a/bin/distro-install-clean-up b/bin/distro-install-clean-up
+index 701c9ffa0972..0d0fc27246ff 100755
+--- a/bin/distro-install-clean-up
++++ b/bin/distro-install-clean-up
+@@ -71,22 +71,3 @@ for dir in $DESTDIR$DOCDIR $DESTDIR$INSTALLDIR/sdk/examples ; do
+ 			       -name "manifest.mf" \) -exec chmod 644 {} \;
+     fi
+ done
+-
+-if test "z$DESTDIR" != "z" ; then
+-    echo "Checking for DESTDIR inside installed files..."
+-    found_destdir=
+-    for file in `find $DESTDIR -type f` ; do
+-	grep -q "$DESTDIR" $file && echo "$file: includes the string \"$DESTDIR\"" && found_destdir=1
+-    done
+-    if test "z$found_destdir" != "z" ; then
+-	echo "!!!!!!!!!!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!!!!!!!!!!"
+-	echo "The path DESTDIR:$DESTDIR was found inside some"
+-	echo "installed files. It is probably a bug."
+-	echo
+-	echo "Especially, if the DESTDIR is set to \$RPM_BUILD_ROOT"
+-	echo "when creating RPM packages. Even it could be a security hole"
+-	echo "if the application searches /var/tmp for binaries or"
+-	echo "config files because the directory is world-writable."
+-	echo "!!!!!!!!!!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!!!!!!!!!!"
+-    fi
+-fi

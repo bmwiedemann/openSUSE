@@ -1,0 +1,275 @@
+-------------------------------------------------------------------
+Mon Mar 25 21:10:07 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- LMDB 0.9.23 Release (2018/12/19)
+  * ITS#8756 Fix loose pages in dirty list
+  * ITS#8831 Fix mdb_load flag init
+  * ITS#8844 Fix mdb_env_close in forked process
+  * Documentation
+    + ITS#8857 mdb_cursor_del doesn't invalidate cursor
+    + ITS#8908 GET_MULTIPLE etc don't change passed in key
+- Drop upstream 0001-ITS-8756-remove-loose-pg-from-dirty-list-in-freelist.patch
+- Cleanup:
+  * Use %license, drop %defattr
+  * Use https for Url tag
+
+-------------------------------------------------------------------
+Sat Oct  6 14:18:37 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix occasional crash when freed pages landed on the dirty list twice
+  * Add 0001-ITS-8756-remove-loose-pg-from-dirty-list-in-freelist.patch
+
+-------------------------------------------------------------------
+Sun Jun  3 19:23:50 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- LMDB 0.9.22 Release (2018-03-22)
+  * Fix MDB_DUPSORT alignment bug (ITS#8819)
+  * Fix regression with new db from 0.9.19 (ITS#8760)
+  * Fix liblmdb to build on Solaris (ITS#8612)
+  * Fix delete behavior with DUPSORT DB (ITS#8622)
+  * Fix mdb_cursor_get/mdb_cursor_del behavior (ITS#8722)
+- LMDB 0.9.21 Release (2017/06/01)
+  * Fix xcursor after cursor_del (ITS#8622)
+- LMDB 0.9.20 (Withdrawn)
+  * Fix mdb_load with escaped plaintext (ITS#8558)
+  * Fix mdb_cursor_last / mdb_put interaction (ITS#8557)
+- LMDB 0.9.19 Release (2016/12/28)
+  * Fix mdb_env_cwalk cursor init (ITS#8424)
+  * Fix robust mutexes on Solaris 10/11 (ITS#8339)
+  * Tweak Win32 error message buffer
+  * Fix MDB_GET_BOTH on non-dup record (ITS#8393)
+  * Optimize mdb_drop
+  * Fix xcursors after mdb_cursor_del (ITS#8406)
+  * Fix MDB_NEXT_DUP after mdb_cursor_del (ITS#8412)
+  * Fix mdb_cursor_put resetting C_EOF (ITS#8489)
+  * Fix mdb_env_copyfd2 to return EPIPE on SIGPIPE (ITS#8504)
+  * Fix mdb_env_copy with empty DB (ITS#8209)
+  * Fix behaviors with fork (ITS#8505)
+  * Fix mdb_dbi_open with mainDB cursors (ITS#8542)
+  * Fix robust mutexes on kFreeBSD (ITS#8554)
+  * Fix utf8_to_utf16 error checks (ITS#7992)
+  * Fix F_NOCACHE on MacOS, error is non-fatal (ITS#7682)
+  * Build
+    Make shared lib suffix overridable (ITS#8481)
+  * Documentation
+    + Cleanup doxygen nits
+    + Note reserved vs actual mem/disk usage
+- LMDB 0.9.18 Release (2016/02/05)
+  * Fix robust mutex detection on glibc 2.10-11 (ITS#8330)
+  * Fix page_search_root assert on FreeDB (ITS#8336)
+  * Fix MDB_APPENDDUP vs. rewrite(single item) (ITS#8334)
+  * Fix mdb_copy of large files on Windows
+  * Fix subcursor move after delete (ITS#8355)
+  * Fix mdb_midl_shirnk off-by-one (ITS#8363)
+  * Check for utf8_to_utf16 failures (ITS#7992)
+  * Catch strdup failure in mdb_dbi_open
+  * Build
+    + Additional makefile var tweaks (ITS#8169)
+  * Documentation
+    + Add Getting Started page
+    + Update WRITEMAP description
+- Drop 0002-Autoconf-files.patch, soname-configurable.patch and
+  add Makefile-build-use-shared-lib.patch instead. Instead of
+  replacing the Makefile with a libtool/automake based one, just
+  patch the relevant parts of the upstream Makefile.
+
+-------------------------------------------------------------------
+Fri Oct 13 13:45:42 UTC 2017 - dmueller@suse.com
+
+- add soname-configurable.patch: Actually set the soname in the
+  shared library rather than just renaming the files on disk post
+  install (which does not actually do anything)
+
+-------------------------------------------------------------------
+Sun Jun 19 01:07:37 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Update 0001-Add-extra-tools-and-CFEngine-modifications-for-LMDB.patch
+  * do not force enable NOSUBDIR option in mdb_copy
+- Update 0002-Autoconf-files.patch
+  * build mdb_dump, mdb_load
+  * distribute manpages
+
+-------------------------------------------------------------------
+Mon Feb  1 13:01:34 UTC 2016 - kkaempf@suse.com
+
+- Renamed patches
+  0002-Add-extra-tools-and-CFEngine-modifications-for-LMDB.patch
+  -> 0001-Add-extra-tools-and-CFEngine-modifications-for-LMDB.patch
+  automake.diff
+  -> 0002-Autoconf-files.patch
+
+0003-Optimization-Define-correct-cacheline-size-on-HPUX.patch
+
+- Dropped patch (upstream)
+  0001-Patch-for-LMDB-to-use-robust-mutexes.patch
+
+- Update to 0.9.17
+  Fix ITS#7377 catch calloc failure
+  Fix ITS#8237 regression from ITS#7589
+  Fix ITS#8238 page_split for DUPFIXED pages
+  Fix ITS#8221 MDB_PAGE_FULL on delete/rebalance
+  Fix ITS#8258 rebalance/split assert
+  Fix ITS#8263 cursor_put cursor tracking
+  Fix ITS#8264 cursor_del cursor tracking
+  Fix ITS#8310 cursor_del cursor tracking
+  Fix ITS#8299 mdb_del cursor tracking
+  Fix ITS#8300 mdb_del cursor tracking
+  Fix ITS#8304 mdb_del cursor tracking
+  Fix ITS#7771 fakepage cursor tracking
+  Fix ITS#7789 ensure mapsize >= pages in use
+  Fix ITS#7971 mdb_txn_renew0() new reader slots
+  Fix ITS#7969 use __sync_synchronize on non-x86
+  Fix ITS#8311 page_split from update_key
+  Fix ITS#8312 loose pages in nested txn
+  Fix ITS#8313 mdb_rebalance dummy cursor
+  Fix ITS#8315 dirty_room in nested txn
+  Fix ITS#8323 dirty_list in nested txn
+  Fix ITS#8316 page_merge cursor tracking
+  Fix ITS#8321 cursor tracking
+  Fix ITS#8319 mdb_load error messages
+  Fix ITS#8320 mdb_load plaintext input
+  Added mdb_txn_id() (ITS#7994)
+  Added robust mutex support
+  Miscellaneous cleanup/simplification
+  Build
+    Create install dirs if needed (ITS#8256)
+    Fix ThreadProc decl on Win32/MSVC (ITS#8270)
+    Added ssize_t typedef for MSVC (ITS#8067)
+    Use ANSI apis on Windows (ITS#8069)
+    Use O_SYNC if O_DSYNC,MDB_DSYNC are not defined (ITS#7209)
+    Allow passing AR to make (ITS#8168)
+    Allow passing mandir to make install (ITS#8169)
+
+-------------------------------------------------------------------
+Sun Nov 15 10:04:11 UTC 2015 - jengelh@inai.de
+
+- Use a source URL
+
+-------------------------------------------------------------------
+Sat Oct 24 18:20:27 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 0.9.16:
+* Fix cursor EOF bug (ITS#8190)
+* Fix handling of subDB records (ITS#8181)
+* Fix mdb_midl_shrink() usage (ITS#8200)
+ - Changes since 0.9.15:
+* Fix txn init (ITS#7961,#7987)
+* Fix MDB_PREV_DUP (ITS#7955,#7671)
+* Fix compact of empty env (ITS#7956)
+* Fix mdb_copy file mode
+* Fix mdb_env_close() after failed mdb_env_open()
+* Fix mdb_rebalance collapsing root (ITS#8062)
+* Fix mdb_load with large values (ITS#8066)
+* Fix to retry writes on EINTR (ITS#8106)
+* Fix mdb_cursor_del on empty DB (ITS#8109)
+* Fix MDB_INTEGERDUP key compare (ITS#8117)
+* Fix error handling (ITS#7959,#8157,etc.)
+* Fix race conditions (ITS#7969,7970)
+* Added workaround for fdatasync bug in ext3fs
+ * Build:
+  * Don't use -fPIC for static lib
+  * Update .gitignore (ITS#7952,#7953)
+  * Cleanup for "make test" (ITS#7841), "make clean", mtest*.c
+  * Misc. Android/Windows cleanup
+ * Documentation
+  * Fix MDB_APPEND doc
+  * Fix MDB_MAXKEYSIZE doc (ITS#8156)
+  * Fix mdb_cursor_put,mdb_cursor_del EACCES description
+  * Fix mdb_env_sync(MDB_RDONLY env) doc (ITS#8021)
+  * Clarify MDB_WRITEMAP doc (ITS#8021)
+  * Clarify mdb_env_open doc
+  * Clarify mdb_dbi_open doc
+
+-------------------------------------------------------------------
+Fri Sep 18 07:45:59 UTC 2015 - dimstar@opensuse.org
+
+- Add baselibs.conf: liblmdb*-32bit is required by
+  libKF5Baloo5-32bit.
+
+-------------------------------------------------------------------
+Tue Mar 31 15:42:55 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 0.9.14:
+* Fix to support 64K page size (ITS#7713)
+* Fix to persist decreased as well as increased mapsizes (ITS#7789)
+* Fix cursor bug when deleting last node of a DUPSORT key
+* Fix mdb_env_info to return FIXEDMAP address
+* Fix ambiguous error code from writing to closed DBI (ITS#7825)
+* Fix mdb_copy copying past end of file (ITS#7886)
+* Fix cursor bugs from page_merge/rebalance
+* Fix to dirty fewer pages in deletes (mdb_page_loose())
+* Fix mdb_dbi_open creating subDBs (ITS#7917)
+* Fix mdb_cursor_get(_DUP) with single value (ITS#7913)
+* Fix Windows compat issues in mtests (ITS#7879)
+* Add compacting variant of mdb_copy
+* Add BigEndian integer key compare code
+* Add mdb_dump/mdb_load utilities
+ - Changes since 0.9.13:
+* Fix mdb_page_alloc unlimited overflow page search
+* Documentation:
+  Re-fix MDB_CURRENT doc (ITS#7793)
+  Fix MDB_GET_MULTIPLE/MDB_NEXT_MULTIPLE doc
+ - Changes since 0.9.12:
+* Fix MDB_GET_BOTH regression (ITS#7875,#7681)
+* Fix MDB_MULTIPLE writing multiple keys (ITS#7834)
+* Fix mdb_rebalance (ITS#7829)
+* Fix mdb_page_split (ITS#7815)
+* Fix md_entries count (ITS#7861,#7828,#7793)
+* Fix MDB_CURRENT (ITS#7793)
+* Fix possible crash on Windows DLL detach
+* Misc code cleanup
+* Documentation:
+  mdb_cursor_put: cursor moves on error (ITS#7771)
+- Rebase automake.diff and 0001-Patch-for-LMDB-to-use-robust-mutexes.patch
+
+-------------------------------------------------------------------
+Wed Sep 10 20:34:09 UTC 2014 - crrodriguez@opensuse.org
+
+- automake.diff changes: 
+* for autoconf tests to have effect, (like those in 
+  0001-Patch-for-LMDB-to-use-robust-mutexes.patch) config.h must be 
+  included as first file in all C code.
+* in 32 bit systems, ensure we support large databases.
+* Switch the compiler to the current C standard, currently -std=gnu99
+  in upcoming autoconf versions it is C11 though.
+- liblmdb-implicit-decl.patch atol() requires stdlib.h
+- Enable verbose build, rpmlint depends on that to work.
+
+-------------------------------------------------------------------
+Mon Jul 28 15:55:31 UTC 2014 - kkaempf@suse.com
+
+- Prevent deadlock when process holding the db lock dies
+  0001-Patch-for-LMDB-to-use-robust-mutexes.patch
+
+- command line tools for debugging
+  0002-Add-extra-tools-and-CFEngine-modifications-for-LMDB.patch
+
+-------------------------------------------------------------------
+Fri May 16 20:00:29 UTC 2014 - jengelh@inai.de
+
+- Replace verbose cmake script (remove CMakeLists.txt).
+- Instead, use a simpler automake patch (add automake.diff).
+- There is a change in shared library versioning scheme to line up
+  with our packaging guidelines. This is embodied within
+  automake.diff.
+- Shorten the description by 2/3, focus on the important points.
+- Do not unnecessarily pull in a C++ compiler for the build.
+- Invoke ldconfig directly as %post rather than sh+ldconfig.
+
+-------------------------------------------------------------------
+Wed Feb 12 13:53:21 UTC 2014 - kkaempf@suse.com
+
+- Switch to cmake, fix dynamic lib build and versioning.
+  Drop liblmdb.patch
+  Add VERSION.cmake and CMakeLists.txt
+
+-------------------------------------------------------------------
+Thu Feb  6 15:27:13 CET 2014 - ro@suse.de
+
+- at least set an soname, a version would be even better 
+
+-------------------------------------------------------------------
+Mon Feb  3 17:58:23 UTC 2014 - kkaempf@suse.com
+
+- Initial version 0.9.11
+

@@ -1,0 +1,40 @@
+From be4698150c3a5feafb8e75984114e5758ad0e5d1 Mon Sep 17 00:00:00 2001
+From: Thorsten Behrens <tbehrens@suse.com>
+Date: Sat, 21 Feb 2015 22:08:21 +0100
+Subject: [PATCH 2/2] Tweak config defaults to prevent rate-limits at API.
+
+Having a fairly standard twitter life, out-of-the-box setups had
+me rate-limited frequently. This here seems to work.
+---
+ src/prpltwtr/prpltwtr_prefs.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/prpltwtr/prpltwtr_prefs.h b/src/prpltwtr/prpltwtr_prefs.h
+index d236938..86e1921 100644
+--- a/src/prpltwtr/prpltwtr_prefs.h
++++ b/src/prpltwtr/prpltwtr_prefs.h
+@@ -54,10 +54,10 @@
+ #define TWITTER_PREF_ADD_URL_TO_TWEET_DEFAULT TRUE
+ 
+ #define TWITTER_PREF_HOME_TIMELINE_MAX_TWEETS "home_timeline_max_tweets"
+-#define TWITTER_PREF_HOME_TIMELINE_MAX_TWEETS_DEFAULT 200
++#define TWITTER_PREF_HOME_TIMELINE_MAX_TWEETS_DEFAULT 50
+ 
+ #define TWITTER_PREF_TIMELINE_TIMEOUT "refresh_timeline_minutes"
+-#define TWITTER_PREF_TIMELINE_TIMEOUT_DEFAULT 1
++#define TWITTER_PREF_TIMELINE_TIMEOUT_DEFAULT 5
+ #define TWITTER_PREF_LIST_TIMEOUT "refresh_list_minutes"
+ #define TWITTER_PREF_LIST_TIMEOUT_DEFAULT 10
+ 
+@@ -74,7 +74,7 @@
+ #define TWITTER_PREF_SEARCH_TIMEOUT_DEFAULT 5
+ 
+ #define TWITTER_PREF_GET_FRIENDS "get_friends"
+-#define TWITTER_PREF_GET_FRIENDS_DEFAULT TRUE
++#define TWITTER_PREF_GET_FRIENDS_DEFAULT FALSE
+ 
+ #define TWITTER_PREF_DEFAULT_DM "default_message_is_dm"
+ #define TWITTER_PREF_DEFAULT_DM_DEFAULT FALSE
+-- 
+1.8.4.5
+

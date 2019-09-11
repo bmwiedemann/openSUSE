@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Tue May 14 14:40:16 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.5
+  * Python 3.7 support
+
+-------------------------------------------------------------------
+Sun Aug  6 04:42:26 UTC 2017 - toddrme2178@gmail.com
+
+- Fix shebangs
+
+-------------------------------------------------------------------
+Wed May 17 21:43:00 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Fix source URL
+- Update to version 1.4rc1
+  * No upstream changelog
+
+-------------------------------------------------------------------
+Wed Jun 15 17:11:49 UTC 2016 - toddrme2178@gmail.com
+
+- Update to 1.3.1
+  - Update manifest to include missing files
+- Update to 1.3
+  - Python 3 support
+  - Encoding bugfixes
+- Rebase docdir.patch
+
+-------------------------------------------------------------------
+Fri Mar 28 14:42:59 UTC 2014 - speilicke@suse.com
+
+- Set license to BSD-3-Clause according to legal 
+
+-------------------------------------------------------------------
+Fri Dec  6 13:44:13 UTC 2013 - toddrme2178@gmail.com
+
+- Update to 1.2
+ * Quote Graphviz program names to work with space (Windows fix)
+ * Keep name in reverse()
+- Require graphviz-python
+
+-------------------------------------------------------------------
+Wed May 23 11:06:26 UTC 2012 - toddrme2178@gmail.com
+
+- Clean up spec file
+- Update to version 1.1
+  * Added unicode support for handling non-ASCII characters
+  * Better handling of user data on initialization of AGraph() object to guess input type (AGraph object, file, dict-of-dicts, file)
+  * Add sfdp to layout options
+- Update to version 1..0.0
+  * Added to_string() and from_string methods
+  * Interface to graphviz “acyclic” and “tred”
+  * Better handling of user data on initialization of AGraph() object to guess input type (AGraph object, file, dict-of-dicts, file)
+  * Add handling of default attributes for subgraphs
+  * Improved error handling when using non-string data
+  * Fix bug in default attribute handling
+  * Make sure file handles are closed correctly
+
+-------------------------------------------------------------------
+Sat Mar 26 03:45:26 UTC 2011 - alexandre@exatati.com.br
+
+- Regenerate spec file with py2pack;
+- Bzip2 source code;
+- Add docdir.patch to fix documentation path.
+
+-------------------------------------------------------------------
+Fri Oct  9 01:03:40 UTC 2009 - alexandre@exatati.com.br
+
+- Initial package (0.99.1) for openSUSE.

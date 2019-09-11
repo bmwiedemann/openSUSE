@@ -1,0 +1,344 @@
+-------------------------------------------------------------------
+Tue Jan  8 19:37:55 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.11.0:
+  + Remove autotools.
+  + Align Meson options with the rest of GNOME.
+  + Prevent additional newlines from Exiv2 logging.
+  + Remove VAPI overrides.
+  + Adapt to Exiv2 changes in 0.27 and master.
+  + Fix several issues with Gtk-Doc.
+  + Add support to read Exiv2 meta-data from a GInputStream.
+- Add explicit pkgconfig(gio-2.0) BuildRequires: meson checks for
+  it.
+- Pass -Dintrospection=true to meson, ensure we build introspection
+  support.
+
+-------------------------------------------------------------------
+Tue Jan  1 15:01:12 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.10.10:
+  + Fix building against exiv2 0.27.
+  + Various meson build fixes back-ported from master.
+- Drop upstream fixed patches:
+  + 0001-Handle-rename-of-exiv2-xmp.hpp-to-xmp_exiv2.hpp-in-e.patch
+  + libgexiv2-build-Add-manifest-test-build-against-exiv2.patch
+
+-------------------------------------------------------------------
+Fri Dec 28 02:57:54 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix building with exiv2 0.27.0
+  Add 0001-Handle-rename-of-exiv2-xmp.hpp-to-xmp_exiv2.hpp-in-e.patch
+
+-------------------------------------------------------------------
+Wed Dec 19 00:11:38 UTC 2018 - bjorn.lie@gmail.com
+
+- Add libgexiv2-build-Add-manifest-test-build-against-exiv2.patch:
+  Apply upstream fixes for new exiv2.
+
+-------------------------------------------------------------------
+Sun Nov 18 13:03:11 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.10.9:
+  + Fix check for building on OS X.
+  + Fix generating non-reproducible builds.
+  + Make it possible to disable the python modules.
+  + Fix deprecated g_type_class_add_private.
+  + Fix various issues with getting width and height from EXIF.
+  + Fix building with 0.27.
+- Drop libgexiv2-reproducible.patch: Fixed upstream.
+- Switch to meson buildsystem following upstreams port, add meson
+  BuildRequires and macros.
+
+-------------------------------------------------------------------
+Tue May  8 18:48:49 UTC 2018 - bjorn.lie@gmail.com
+
+- Add baselibs.conf, build 32-bit support.
+
+-------------------------------------------------------------------
+Tue Apr 10 12:14:25 UTC 2018 - bjorn.lie@gmail.com
+
+- Add libgexiv2-reproducible.patch: Avoid non-reproducible absolute
+  build path in .h (bgo#793984).
+
+-------------------------------------------------------------------
+Tue Feb  6 20:48:05 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.10.8:
+  + Do not use linker scripts on Drawin/OS X.
+  + Fallback to AperturValue if FNumber is absent.
+  + Fix GIR header and vapi when using meson.
+  + Bugs fixed: bgo#791941, bgo#792239, bgo#792431.
+
+-------------------------------------------------------------------
+Sat Feb  3 02:01:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.10.7:
+  + Add meson build support.
+  + Use glib-mkenums for enum types.
+  + Fix make check when running out of tree.
+  + Use version script to clean up exported functions.
+  + Fix --disable-vala.
+  + Bugs fixed: bgo#784045, bgo#787455.
+
+-------------------------------------------------------------------
+Tue Jan 23 12:36:13 UTC 2018 - tchvatal@suse.com
+
+- Allow to enable/disable building of python2/python3 bindings via
+  build conditions to accomodate potential python2-less products:
+  + BuildRequire python-rpm-macros: helper macros from the
+    python-singlespec initiative. Even though the package can't be
+    built completley with singlespec due to the additional
+    libraries, we can still make good use of the helpers.
+  + Replace python-devel and python3-devel BuildRequires with
+    python_module devel.
+  + Replace python-gobject and python3-gobject BuildRequires with
+    python_module gobjecta.
+- Run test suite in %check section.
+- Correct URL to point to https://wiki.gnome.org/Projects/gexiv2.
+
+-------------------------------------------------------------------
+Thu Jul  6 14:57:37 UTC 2017 - wbauer@tmo.at
+
+- Update to version 0.10.6:
+  + Fix missing include file.
+  + Add a function to save meta-data in XMP sidecar file.
+  + Add a more complete Python test-suite.
+  + Fix a potential NULL dereference in _get_comment().
+  + Fix compatibility with Exiv2 0.26.
+  + Bugs fixed: Coverity issue CID 167853 (gentoo#613778,
+    bgo#712455, bgo#780709, bgo#782449).
+- Changes from version 0.10.5:
+  + Fix autogen.sh to also run configure.
+  + Generate gtk-doc and various documentation updates.
+  + Fix an abort on unhandled Minolta meta-data.
+  + Fix compilation issues with shadowing variables in StreamIO.
+  + Fix GPS rational calculations if fraction has 0 numerator and
+    denominator.
+  + Several build cleanups.
+  + Add make check to build and run the python tests.
+  + Add C tests.
+  + Bugs fixed: bgo#723790, bgo#774105, bgo#775249, bgo#776233,
+    bgo#779089, bgo#779551, rh#1401706.
+- Drop libgexiv2-fix-typelib-vapi-install.patch and
+  get_orientation-Fix-abort-on-Minolta-meta-data.patch, fixed
+  upstream.
+- Add devel documentation to the file list.
+
+-------------------------------------------------------------------
+Thu Jan 19 16:14:43 UTC 2017 - kkaempf@suse.com
+
+- Add get_orientation-Fix-abort-on-Minolta-meta-data.patch: Fix
+  abort on Minolta meta-data (bgo#776233).
+
+-------------------------------------------------------------------
+Sun Aug 21 13:57:55 UTC 2016 - jengelh@inai.de
+
+- Use %_smp_mflags for parallel building; re-set RPM groups.
+
+-------------------------------------------------------------------
+Thu Aug 18 07:53:19 UTC 2016 - zaitor@opensuse.org
+
+- Add libgexiv2-fix-typelib-vapi-install.patch: Fix install
+  location dir of typelib and always install vapi file. Taken from
+  upstream git.
+- Following the the above patch, pass autoreconf as it touches the
+  buildsystem.
+- Update Url to new home.
+
+-------------------------------------------------------------------
+Tue Aug 16 21:23:49 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.10.4:
+  + Additions to get_comment based on MWG guidelines (bgo#746424).
+  + Fix builddir != srcdir.
+  + Fix leaks in GPS coordinate handling (bgo#754241).
+  + Update build instructions (bgo#749800).
+  + Copyright transfer to SFC.
+  + Use M4 macros for GObject introspection (bgo#765827).
+  + Clean-up some introspection warnings.
+  + Catch exception by reference (CID:112500).
+  + Generate the VAPI file from GIR.
+  + Mark _free() functions as deprecated.
+  + Fix several g-i-scanner warnings.
+  + Fix build issue introduced by VAPI changes (bgo#768896).
+  + Use AX_COMPILER_FLAGS and fix issues risen by that.
+  + Remove linker flags from CXXFLAGS.
+  + Enable maintainer mode and silent rules.
+  + Fix lookup of XMP tags (bgo#768906).
+  + Enable compiling without GObject Introspection.
+  + Bugs fixed: bgo#746424, bgo#749800, bgo#754241, bgo#765827,
+    bgo#768896, bgo#768906.
+- Add pkgconfig(vapigen) BuildRequires: New depenency.
+
+-------------------------------------------------------------------
+Mon Apr 18 13:23:50 UTC 2016 - dimstar@opensuse.org
+
+- Add gobject-introspection BuildRequires: needed in order to scan
+  the python bindings for gi dependencies.
+
+-------------------------------------------------------------------
+Mon Jan  4 20:42:09 UTC 2016 - rolf@rotkraut.de
+
+- Build Python bindings:
+  + Add python-devel, python3-devel, python-gobject and
+    python3-gobject BuildRequires.
+  + Split new packages python-gexiv2 and python3-gexiv2.
+
+-------------------------------------------------------------------
+Tue Mar 24 13:47:01 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.10.3:
+  + Retrieve XMP tag's structure type (bgo#736799).
+  + Generate XMP packet as NUL-terminated string (bgo#736587).
+  + Retrieve tag's raw value as GBytes (bgo#730136).
+  + Fix gexiv2_metadata_get_fnumber() (bgo#745347).
+
+-------------------------------------------------------------------
+Sat Feb  7 18:11:04 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.10.2:
+  + Use all EXIF tags for interpreted strings (bgo#734861).
+  + Automake fixes.
+- Update download Url and use tarball provided by Gnome
+- Rename typelib-1_0-GExiv2-0_4 to typelib-1_0-GExiv2-0_10; follow
+  upstream changes.
+- Use %configure instead of manually defined options.
+- Remove redundant %clean section.
+
+-------------------------------------------------------------------
+Sun Oct 20 12:54:13 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.7.0:
+  + Fixed Python date/time getter/setter bindings.
+  + Fixed latitude translation code.
+  + New calls for getting underlying Exiv2 tag types.
+
+-------------------------------------------------------------------
+Sun Mar 24 14:21:11 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.6.1:
+  + Increases the libtool so version to 2.0.0 to reflect ABI
+    changes introduced in 0.6.0.
+- Rename libgexiv2-1 subpackage to libgexiv2-2, following upstreams
+  soname bump.
+
+-------------------------------------------------------------------
+Tue Mar 19 22:27:50 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.6.0:
+  + API has been cleaned up: several unnecessary or questionable
+    calls removed.
+  + Improved support for developing GExiv2-based applications in
+    Python.
+  + Now includes calls to register and unregister custom XMP
+    namespaces.
+
+-------------------------------------------------------------------
+Sun Oct 14 16:03:34 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.5.0:
+  + Corrects a major issue where some required directories wouldn't
+    be created when running 'make install'.
+  + Corrects an issue where gexiv2.py wouldn't get copied to the
+    tarball when running 'make dist'.
+  + Adds support for GObject introspection.
+- Changes from version 0.4.90:
+  + Corrected an issue with the makefile that would cause the GIR
+    scanner to generate a lot of
+    inconsequential-but-seemingly-ominous warnings.
+  + Corrected handling of altitude in
+    gexiv2_metadata_set_gps_info().
+- Add pkgconfig(gobject-introspection-1.0), due to new upstream
+  introspection support.
+- Pass --enable-introspection to configure, to build introspection
+  support.
+- New subpackage typelib-1_0-GExiv2-0_4, containing introspection
+  typelib.
+- Switch to xz tarball, upstream does not provide tar.bz2 anymore.
+- Drop conditional for obsolete openSUSE versions, we don't build
+  for them anymore anyway.
+
+-------------------------------------------------------------------
+Thu Mar 29 11:27:41 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.4.1:
+  + Always build with -fPIC.
+
+-------------------------------------------------------------------
+Wed Mar 28 11:39:41 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.4.0:
+  + It's now possible (and advisable for multithreaded client
+    applications) to initialize the XMP-handling subsystem in a
+    thread-safe manner prior to encoding or decoding.
+- Rename libgexiv2-0 subpackage to libgexiv2-1, following upstream
+  soversion bump.
+
+-------------------------------------------------------------------
+Wed Mar 21 07:04:01 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.3.92:
+  + Exposes functionality to initialize the non-threadsafe parts
+    of the XMP parser manually.
+
+-------------------------------------------------------------------
+Tue Feb 14 08:41:21 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.3.91:
+  + Add missing gexiv2-log-private.h.
+- Remove gexiv2-log-private.h source file, and %prep hackery now
+  that the header is in the tarball.
+
+-------------------------------------------------------------------
+Sat Feb 11 12:35:45 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.3.90:
+  + Vala 0.15.1 support.
+- Inject gexiv2-log-private.h as source file, as it's gone missing
+  from the tarball
+- Add check in %prep section to not inject the source header once
+  it is part of the tarball again.
+
+-------------------------------------------------------------------
+Sun Nov 13 09:16:42 UTC 2011 - coolo@suse.com
+
+- Add libtool as explicit BuildRequires to avoid implicit 
+  dependency from prjconf.
+
+-------------------------------------------------------------------
+Thu Apr 28 15:58:50 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.3.1:
+  + All debug and log messages from Exiv2 are now routed through
+    GLib's logging functions.
+- Changes from version 0.3.0:
+  + Updated to work with Exiv2 0.21, which has an ABI/API change
+    from 0.20.
+
+-------------------------------------------------------------------
+Fri Jan  7 18:06:50 CET 2011 - vuntz@opensuse.org
+
+- Update to version 0.2.2:
+  + A more general case fix from 0.2.1, where guards against empty
+    nodes are now in place throughout the library.
+
+-------------------------------------------------------------------
+Sat Sep 11 18:35:42 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.2.1:
+  + Fixes a crash when an opened file has more than one
+    Exif.Image.Orientation and the first one is empty.
+
+-------------------------------------------------------------------
+Thu Aug 26 10:03:22 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.2.0:
+  + Fixed a memory leak.
+  + Other general bug fixes.
+
+-------------------------------------------------------------------
+Wed Aug 11 16:19:44 CEST 2010 - vuntz@opensuse.org
+
+- Initial package (version 0.1).
+

@@ -1,0 +1,12 @@
+diff -Nru azure-mgmt-hanaonazure-0.4.0.orig/setup.py azure-mgmt-hanaonazure-0.4.0/setup.py
+--- azure-mgmt-hanaonazure-0.4.0.orig/setup.py	2019-02-26 00:00:38.000000000 +0100
++++ azure-mgmt-hanaonazure-0.4.0/setup.py	2019-03-27 12:32:43.949204923 +0100
+@@ -79,7 +79,7 @@
+     install_requires=[
+         'msrest>=0.5.0',
+         'msrestazure>=0.4.32,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     extras_require={
+         ":python_version<'3.0'": ['azure-mgmt-nspkg'],

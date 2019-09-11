@@ -1,0 +1,12 @@
+diff --git a/Makefile b/Makefile
+index 761612c..4e9c5b4 100755
+--- a/Makefile
++++ b/Makefile
+@@ -74,7 +74,6 @@ all: $(EXE)
+ $(EXE): $(TARGETS)
+ 	$(MAKE) bmptst
+ 	$(CC) $(CFLAGS) -o $@ $+
+-	-$(STRIP) $(SFLAGS) $@ $@$(EXT)
+ 
+ %.o: %.c $(HEADERS) bmptst
+ 	$(CC) $(CFLAGS) $(MACROS) -c $<

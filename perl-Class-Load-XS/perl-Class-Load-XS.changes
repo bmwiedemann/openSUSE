@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Wed Apr 12 05:15:18 UTC 2017 - coolo@suse.com
+
+- updated to 0.10
+   see /usr/share/doc/packages/perl-Class-Load-XS/Changes
+
+  0.10     2017-04-11
+     - fix test to handle altered Test::Without::Module exception message
+
+-------------------------------------------------------------------
+Sat Feb  7 07:21:43 UTC 2015 - coolo@suse.com
+
+- updated to 0.09
+  - optimized some perl API calls (thanks, Alexandr Evstigneev!)
+
+-------------------------------------------------------------------
+Fri Mar  7 08:47:34 UTC 2014 - coolo@suse.com
+
+- updated to 0.08
+    - switched packaging to just EUMM, as MBT wants the .xs file in a
+      different place
+    - switched packaging from MB to EUMM+MBT
+    - repository moved to the github moose organization
+- remove unmaintainable sle11 patch perl-old_module_build.patch
+
+-------------------------------------------------------------------
+Mon Jun  3 15:34:24 UTC 2013 - coolo@suse.com
+
+- updated to 0.06
+  - Fixed some broken logic that lead to a segfault from the
+    014-weird-constants.t test on some Perls (but unfortunately not the one I
+    test with by default). Reported by Chisel Wright (and several other
+    people). RT #80059.
+  
+  - Require Class::Load 0.20 in the code (not just the distro metadata). This
+    keeps the tests in sync, and this module needed at least 0.11
+    anyway. Reported by Father Chrysostomos. RT #80002.
+  
+  - Weird classes with either an ISA or VERSION constant (who does that?) would
+    cause the XS to blow up badly. Reported by Father Chrysostomos. RT #79998.
+
+-------------------------------------------------------------------
+Wed May 30 06:02:22 UTC 2012 - coolo@suse.com
+
+- all Module::Build will do
+
+-------------------------------------------------------------------
+Tue Mar  6 17:44:41 CET 2012 - ro@suse.de
+
+- fix build on code11 
+
+-------------------------------------------------------------------
+Mon Feb 13 08:52:19 UTC 2012 - coolo@suse.com
+
+- updated to 0.04
+  - Some small test changes for the latest Module::Implementation and
+    Class::Load. There is no need to upgade if you have 0.03 installed.
+
+-------------------------------------------------------------------
+Wed Nov 30 14:47:01 UTC 2011 - cfarrell@suse.com
+
+- license update: Artistic-2.0
+  SPDX
+
+-------------------------------------------------------------------
+Tue Nov 29 10:10:15 UTC 2011 - lars@linux-schulserver.de
+
+- initial package 0.03
+

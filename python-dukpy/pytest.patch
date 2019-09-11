@@ -1,0 +1,226 @@
+From 98ca8e72e55b576331c55531a6e09d61b2435540 Mon Sep 17 00:00:00 2001
+From: Alessandro Molina <amol@turbogears.org>
+Date: Wed, 28 Nov 2018 23:21:30 +0100
+Subject: [PATCH] Move to pytest
+
+---
+ .travis.yml                                   |  4 +--
+ appveyor.yml                                  | 10 +-----
+ dukpy/evaljs.py                               |  2 +-
+ dukpy/install.py                              |  2 +-
+ setup.py                                      |  5 ++-
+ tests/{tests_evaljs.py => test_evaljs.py}     |  3 +-
+ tests/test_installer.py                       | 35 ++++++++-----------
+ ...jsinterpreter.py => test_jsinterpreter.py} | 11 +++---
+ tests/test_reactjs.py                         |  4 ++-
+ tests/test_transpilers.py                     | 11 +++---
+ 10 files changed, 34 insertions(+), 53 deletions(-)
+ rename tests/{tests_evaljs.py => test_evaljs.py} (95%)
+ rename tests/{tests_jsinterpreter.py => test_jsinterpreter.py} (85%)
+
+diff --git a/dukpy/evaljs.py b/dukpy/evaljs.py
+index 851347e..4235b5d 100644
+--- a/dukpy/evaljs.py
++++ b/dukpy/evaljs.py
+@@ -8,7 +8,7 @@
+ 
+ try:
+     from collections.abc import Iterable
+-except ImportError:
++except ImportError:   # pragma: no cover
+     from collections import Iterable
+ 
+ try:  # pragma: no cover
+diff --git a/dukpy/install.py b/dukpy/install.py
+index f8545e8..2c7c019 100644
+--- a/dukpy/install.py
++++ b/dukpy/install.py
+@@ -14,7 +14,7 @@
+ try:
+     from urllib.request import urlopen
+     from urllib.parse import quote_plus
+-except ImportError:
++except ImportError:  # pragma: no cover
+     from urllib2 import urlopen
+     from urllib import quote_plus
+ 
+--- a/tests/tests_evaljs.py
++++ b/tests/tests_evaljs.py
+@@ -1,13 +1,14 @@
+ # -*- coding: utf-8 -*-
+ from __future__ import unicode_literals
+ 
++import unittest
+ import logging
+ import os
+ import dukpy
+ import mock
+ 
+ 
+-class TestEvalJS(object):
++class TestEvalJS(unittest.TestCase):
+     def test_object_return(self):
+         ans = dukpy.evaljs(["var o = {'value': 5}",
+                             "o['value'] += 3",
+diff --git a/tests/test_installer.py b/tests/test_installer.py
+index 855ed0f..3a1b48c 100644
+--- a/tests/test_installer.py
++++ b/tests/test_installer.py
+@@ -2,18 +2,17 @@
+ import os
+ import shutil
+ import tempfile
++import unittest
+ 
+ import sys
+ import mock
+-from nose import SkipTest
+-from nose.tools import raises
+ 
+ import dukpy
+ from dukpy import install as dukpy_install
+ 
+ 
+-class TestPackageInstaller(object):
+-    def setup(self):
++class TestPackageInstaller(unittest.TestCase):
++    def setUp(self):
+         self.tmpdir = tempfile.mkdtemp()
+ 
+     def tearDown(self):
+@@ -41,14 +40,14 @@ def test_install_command_latest_ver(self):
+             dukpy_install.main()
+         assert os.path.exists(os.path.join(self.tmpdir, 'react'))
+ 
+-    @raises(SystemExit)
+     def test_install_command_missing_args(self):
+-        with mock.patch.object(sys, 'argv', ['dukpy-install']):
+-            dukpy_install.main()
++        with self.assertRaises(SystemExit):
++            with mock.patch.object(sys, 'argv', ['dukpy-install']):
++                dukpy_install.main()
+ 
+     def test_install_command_without_dest(self):
+         if os.path.exists('./js_modules'):
+-            raise SkipTest('local destination directory already exists...')
++            self.skipTest('local destination directory already exists...')
+ 
+         with mock.patch.object(sys, 'argv', ['dukpy-install', 'react', '0.14.8']):
+             dukpy_install.main()
+@@ -65,29 +64,23 @@ def test_install_command_substrate_error(self):
+             assert dukpy_install.main() == 2
+ 
+     def test_install_unexisting_package(self):
+-        try:
++        with self.assertRaises(Exception) as err:
+             dukpy.install_jspackage('non_existing_suerly_missing_dunno', '1', self.tmpdir)
+-        except:
+-            pass
+-        else:
+-            assert False, 'Should have not found exception'
++        assert 'Not Found' in str(err.exception)
+ 
+-    @raises(dukpy_install.JSPackageInstallError)
+     def test_install_unexisting_version(self):
+-        dukpy.install_jspackage('react', '9999', self.tmpdir)
++        with self.assertRaises(dukpy_install.JSPackageInstallError):
++            dukpy.install_jspackage('react', '9999', self.tmpdir)
+ 
+-    @raises(dukpy_install.JSPackageInstallError)
+     def test_install_missing_download_url(self):
+         with mock.patch('dukpy.install._fetch_package_info',
+                         new=lambda *args: {'versions': {'99.9.9': {}}}):
+-            try:
++            with self.assertRaises(dukpy_install.JSPackageInstallError) as err:
+                 dukpy.install_jspackage('react', '99.9.9', self.tmpdir)
+-            except Exception as e:
+-                assert 'Unable to detect a supported download url' in str(e), str(e)
+-                raise
++                assert 'Unable to detect a supported download url' in str(err.exception)
+ 
+ 
+-class TestVersionResolver(object):
++class TestVersionResolver(unittest.TestCase):
+     VERSIONS = {"0.14.5": {}, "0.13.0-rc2": {}, "0.13.0-rc1": {}, "0.14.0-beta3": {}, "0.2.6": {},
+                 "0.2.5": {}, "0.2.4": {}, "0.2.3": {}, "0.2.2": {}, "0.2.1": {}, "0.2.0": {},
+                 "0.1.2": {}, "0.3.5": {}, "0.10.0-rc1": {}, "0.14.0": {}, "0.10.0": {},
+diff --git a/tests/tests_jsinterpreter.py b/tests/test_jsinterpreter.py
+index 0e341b2..75cda70 100644
+--- a/tests/tests_jsinterpreter.py
++++ b/tests/tests_jsinterpreter.py
+@@ -1,10 +1,12 @@
++import unittest
++
+ from dukpy._dukpy import JSRuntimeError
+ 
+ import dukpy
+ from diffreport import report_diff
+ 
+ 
+-class TestJSInterpreter(object):
++class TestJSInterpreter(unittest.TestCase):
+     def test_interpreter_keeps_context(self):
+         interpreter = dukpy.JSInterpreter()
+         ans = interpreter.evaljs("var o = {'value': 5}; o")
+@@ -36,9 +38,6 @@ def test_module_loader(self):
+     def test_module_loader_unexisting(self):
+         interpreter = dukpy.JSInterpreter()
+ 
+-        try:
++        with self.assertRaises(JSRuntimeError) as err:
+             interpreter.evaljs("require('missing_module');")
+-        except JSRuntimeError as e:
+-            assert 'cannot find module: missing_module' in str(e)
+-        else:
+-            assert False, 'should have raised'
+\ No newline at end of file
++        assert 'cannot find module: missing_module' in str(err.exception)
+diff --git a/tests/test_reactjs.py b/tests/test_reactjs.py
+index 3b904dc..76759fe 100644
+--- a/tests/test_reactjs.py
++++ b/tests/test_reactjs.py
+@@ -1,8 +1,10 @@
+ # -*- coding: utf-8 -*-
++import unittest
++
+ import dukpy
+ 
+ 
+-class TestReactJS(object):
++class TestReactJS(unittest.TestCase):
+     def test_hello_world(self):
+         jsx = dukpy.jsx_compile('var react_hello = <h1>Hello, world!</h1>;')
+         jsi = dukpy.JSInterpreter()
+diff --git a/tests/test_transpilers.py b/tests/test_transpilers.py
+index f538c59..b9e383c 100644
+--- a/tests/test_transpilers.py
++++ b/tests/test_transpilers.py
+@@ -1,13 +1,13 @@
+ # -*- coding: utf-8 -*-
+ import os
+-from unittest import TestCase
++import unittest
+ 
+ import dukpy
+ from diffreport import report_diff
+ from dukpy.lessc import LessCompilerError
+ 
+ 
+-class TestTranspilers(TestCase):
++class TestTranspilers(unittest.TestCase):
+     def test_coffee(self):
+         ans = dukpy.coffee_compile('''
+     fill = (container, liquid = "coffee") ->
+@@ -131,9 +131,6 @@ def test_less(self):
+         assert expected in ans, report_diff(expected, ans)
+ 
+     def test_less_errors(self):
+-        try:
++        with self.assertRaises(LessCompilerError) as err:
+             dukpy.less_compile('@import "files/missing.less";')
+-        except LessCompilerError as e:
+-            assert "files/missing.less' wasn't found." in str(e)
+-        else:
+-            assert False, 'Exception not raised'
+\ No newline at end of file
++        assert "files/missing.less' wasn't found." in str(err.exception)

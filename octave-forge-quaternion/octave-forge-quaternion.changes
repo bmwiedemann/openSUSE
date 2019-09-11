@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Tue Apr  7 19:20:07 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.4.0
+  * q2rot
+    - Vectorized code to support the input of multiple quaternions.
+    - Return axis as a column vector.
+    - Add test.
+  * rot2q
+    - Support for multiple rotation angles (vectorized code).
+    - Improved error messages.
+    - Add test.
+  * The following functions are new:
+    - rotm2q
+  * The following functions are now overloaded for quaternions:
+    - mean
+    - numel
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 2.2.2
+

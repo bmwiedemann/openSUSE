@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Sun Jul 12 16:50:35 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.6f
+  * support for latest linux kernels
+- Use new project and download url
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Aug 26 12:06:25 CEST 2010 - pgajdos@suse.cz
+
+- updated to version 1.6d:
+  * Support for loading very big bzImages: up to ~200MB have been tested.
+  * Fix recent linux setup (>= 2.6.23) which use BSS.
+
+-------------------------------------------------------------------
+Fri Jan  9 08:41:58 CET 2009 - olh@suse.de
+
+- use ExclusiveArch as in /SRC/arch/
+
+-------------------------------------------------------------------
+Thu Nov  6 15:41:56 CET 2008 - ro@suse.de
+
+- drop nosource
+
+-------------------------------------------------------------------
+Wed Jan 25 21:44:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Apr 26 14:50:01 CEST 2005 - ro@suse.de
+
+- add NoSource 
+
+-------------------------------------------------------------------
+Sat Jan 10 22:08:47 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Wed Jul 03 15:29:05 CEST 2002 - tcrhak@suse.cz
+
+- updated to 1.6c (and removed 1.6a and 1.6b)
+- changed Copyright to License
+
+-------------------------------------------------------------------
+Tue Feb 12 19:34:06 CET 2002 - tcrhak@suse.cz
+
+- added %defattr to filelist
+
+-------------------------------------------------------------------
+Thu Jan 10 18:27:21 CET 2002 - ro@suse.de
+
+- moved to /usr/lib/loadlin (where to put this ...) 
+
+-------------------------------------------------------------------
+Thu Sep 13 11:40:10 CEST 2001 - dan@suse.cz
+
+- update 1.6b added
+- fix to boot kernels with GDT layouts other than the standard ones
+- use bzip instead of gzip
+
+-------------------------------------------------------------------
+Tue Apr 10 18:13:05 CEST 2001 - ro@suse.de
+
+- added group tag 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Sun Dec  6 12:32:33 MET 1998 - bs@suse.de
+
+- ready for autobuild
+

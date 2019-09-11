@@ -1,0 +1,22 @@
+From 8d707b8ebbe1742b0f626032cd6227eeb62393ac Mon Sep 17 00:00:00 2001
+From: Noel O'Boyle <baoilleach@gmail.com>
+Date: Thu, 4 Jan 2018 07:16:48 +0000
+Subject: [PATCH] Fix yasara compile
+
+---
+ src/formats/yasaraformat.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/formats/yasaraformat.cpp b/src/formats/yasaraformat.cpp
+index e666d0176..884f13226 100644
+--- a/src/formats/yasaraformat.cpp
++++ b/src/formats/yasaraformat.cpp
+@@ -500,7 +500,7 @@ bool YOBFormat::WriteMolecule(OBBase* pOb, OBConversion* pConv)
+   mem_set(buffer,0,8);
+   for (i=0;i<4;i++)
+   { for (j=0;j<4;j++)
+-    { if (i==j) ofs.write(double1,8);
++    { if (i==j) ofs.write((char*)double1,8);
+       else ofs.write(buffer,8); } }
+   storeint32le(buffer,MOB_INFOEND);
+   storeint32le(&buffer[4],MOB_INFOENDSIZE);

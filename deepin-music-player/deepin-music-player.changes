@@ -1,0 +1,258 @@
+-------------------------------------------------------------------
+Sat Jun 15 08:30:20 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.1.18
+  * should showNormal() when onRaise triggered 
+
+-------------------------------------------------------------------
+Wed Apr 24 02:42:08 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.1.17.1
+  * Fix shuffle is not random
+  * do init MPRIS first
+  * Update missing i18n text in settings dialog
+  * chore: auto pull translation files from transifex
+  * chore: correct a typo
+
+-------------------------------------------------------------------
+Wed Apr  3 13:28:11 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix lyrics don't work (boo#1131464). 
+  * Add libnetease-meta-search.so in filelist, it is not a developement file
+  * Add deepin-music-player-rpmlintrc
+
+-------------------------------------------------------------------
+Tue Mar  5 01:41:52 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.1.15
+  * Fix wrong path when last import path is empty
+  * Fix avoid using dpkg-parsechangelog
+  * Fix last opened path check
+  * Fix avoid set a empty path to QFileDialog
+  * support X-Deepin-Vendor
+  * support the recent file spec
+  * support sliber animation
+  * auto resize progress
+  * hide custom sort from menu
+  * keep sound hint when clicked
+  * sync progress on close
+  * use DThemeManger
+  * add manual id
+  * add VERSION configure option to define app version
+- Remove useless BuildRequires tags.
+
+-------------------------------------------------------------------
+Fri Dec 21 03:19:07 UTC 2018 - hillwood@opensuse.org
+
+- Update version to  3.1.7.2
+  * Fix avoid set a empty path to QFileDialog
+  * support X-Deepin-Vendor
+  * support the recent file spec
+  * Fix pull tx failed
+  * Fix write datebase error
+  * Fix extrend close button area
+  * disable keyboardSearch
+  * Fix refactor
+  * Fix update mpris status
+  * Fix dock not support group
+  * fav status disappear
+  * trash file with dde-file-manager dbus in flatpak
+  * add missing depends gstreamer1.0-fluendo-mp3
+  * Fix shortcut not work
+
+-------------------------------------------------------------------
+Fri Mar 23 08:05:00 UTC 2018 - kasimir_@outlook.de
+
+- Fix build in armv6l
+
+-------------------------------------------------------------------
+Fri Feb  9 07:16:54 UTC 2018 - hillwood@opensuse.org
+
+- Fix build for Leap 15.0
+  * Set BuildRequires tag for python.
+
+-------------------------------------------------------------------
+Fri Nov 24 08:41:32 UTC 2017 - hillwood@opensuse.org
+
+- Update 3.1.7.2
+  * Fix showNormal not work (bb22dc99)
+  * Fix crash when selectNext on qt 5.9 (bed9d856)
+  * Fix hidpi playing state (84783418)
+  * Fix lyric text cut (1dbf4dc2)
+  * Fix move qmediaplayer to main thread (3ce0ca3c)
+  * Fix dialog style (cfc0db93)
+  * Use deviceRatio in musicitemdelegate (f3a65085)
+  * Enable drag progress bar (22f8916e)
+  * Fix border pos (6fa9cc9e)
+  * Set dialog flag error (ef200472)
+  * Change footer bar cover mouse cursor (a4837dce)
+  * Fix libdmusic install path (2d86199a)
+  * Make dropdown show full text on ru locale (fcc58c97)
+  * Stop next after continue error count >= 5 (e6127596)
+  * Call dbus trash (b5d6fcb4)
+  * Extern footer progress (3459625e)
+  * All use svg (a942c308)
+  * Use dbus call filemanager (e276e636)
+  * Remove dtk2 workaround (0eb1ee32)
+  * Use dtk DWaterProgress (6109ffee)
+  * Add hidpi support (107e5987)
+- Drop deepin-tool-kit
+- Drop libdui
+
+-------------------------------------------------------------------
+Thu Sep 28 03:35:49 UTC 2017 - hillwood@opensuse.org
+
+- Fix build in armv7l. 
+
+-------------------------------------------------------------------
+Wed Sep 27 09:00:49 UTC 2017 - hillwood@opensuse.org
+
+- Update to 3.1.6
+  * Update deepin-tool-kit
+  * Use QtAV
+  * Use dtkwidget
+  * Use libcue
+- Drop deepin-music-dui.patch, merged by upstream.
+
+-------------------------------------------------------------------
+Wed Mar 15 14:56:51 UTC 2017 - i@marguerite.su
+
+- Fix capitalized Summary
+- Use 'rsvg-view' to produce multi-sized png icons from svg
+  resource
+- Fix the Unity play indicator groups in deepin-music.desktop
+
+-------------------------------------------------------------------
+Sun Feb 19 22:38:34 UTC 2017 - jengelh@inai.de
+
+- Replace totally useless description.
+- Rename deepin-music-libnetease-meta-search1 again:
+  it is a plugin, not a standard library!
+- Fix RPM group selection. Do not call fdupes on root.
+- Qt5 mkspecs belong into -devel subpackage.
+
+-------------------------------------------------------------------
+Sat Feb 18 12:37:05 UTC 2017 - hillwood@opensuse.org
+
+- Rename libnetease-meta-search as deepin-music-libnetease-meta-search1.
+- Drop two devel packages. 
+
+-------------------------------------------------------------------
+Thu Feb 16 04:31:22 UTC 2017 - hillwood@opensuse.org
+
+- Update to 3.0.1, fix boo#1023777.
+  * Port python to C++ and QT5.
+  * Port GStreamer to QT5Multimedia.
+- add deepin-music-dui.patch.
+  * Add lost pkgconfig item.
+
+-------------------------------------------------------------------
+Thu Nov 12 13:38:41 UTC 2015 - hillwood@linuxfans.org
+
+- Fix boo#954761
+  * add python-Pillow as Requires.
+- Add %icon_theme_cache_post / %icon_theme_cache_postun macro.
+
+-------------------------------------------------------------------
+Thu Jul 16 14:04:00 UTC 2015 - i@marguerite.su
+
+- update verison 2.90.0+git20150617.bb7889c
+  * no upstream changelog
+- clean specfile
+  * upstream url: github.com/linuxdeepin/deepin-music
+  * use upstream source instead of deepin distro's
+  * avoid holding /usr/share/icons/hicolor
+  * other minor fixes
+
+-------------------------------------------------------------------
+Tue Feb 17 07:36:12 UTC 2015 - hillwood@linuxfans.org
+
+- Update to 2.0git20150204.
+  * add installation script
+- remove deepin-music-player.desktop and deepin-music-player.png,
+  upstream have included it.
+
+-------------------------------------------------------------------
+Sat Jul  5 22:28:17 CST 2014 - hillwood@linuxfans.org
+
+- Add python-gstreamer-0_10 as Requires.
+
+-------------------------------------------------------------------
+Mon May 25 21:02:48 CST 2014 - hillwood@linuxfans.org
+
+- Update to 2.0git20140505.
+  Feature update.
+
+-------------------------------------------------------------------
+Wed Aug 14 21:57:33 CST 2013 - hillwood@linuxfans.org
+
+- add deepin-gsettings as Requires
+
+-------------------------------------------------------------------
+Wed Aug 14 17:01:14 CST 2013 - hillwood@linuxfans.org
+
+- update to 2.0git20130802
+  * upsteam did not provide changlog
+
+-------------------------------------------------------------------
+Sun Apr 28 21:40:47 CST 2013 - hillwood@linuxfans.org
+
+- update to 1.0.1git20130330(2.0 Alpha)
+  * fix bugs
+
+-------------------------------------------------------------------
+Tue Mar 19 07:54:29 UTC 2013 - douglarek@outlook.com
+ 
+- Bug fix
+ 
+ * fix bnc#808258
+
+-------------------------------------------------------------------
+Sun Feb 24 11:52:00 CST 2013 - kaji331@hotmail.com
+
+- fix require python-cddb to python-CDDB
+
+-------------------------------------------------------------------
+Tue Feb  5 20:05:13 CST 2013 - hillwood@linuxfans.org
+
+- update to 1.0.1git20130125(2.0 Alpha)
+  * add plugins support
+  * add mini mode
+  * more media formats support
+  
+
+-------------------------------------------------------------------
+Tue Jan  8 02:13:04 UTC 2013 - douglarek@outlook.com
+
+- Add runtime dependence: python-gtk
+
+-------------------------------------------------------------------
+Wed Sep 26 17:27:14 CST 2012 - hillwood@linuxfans.org
+
+- update to 1.0.1git20120911
+- fix bnc#778659
+- more changlog please see http://goo.gl/WCVGo
+
+-------------------------------------------------------------------
+Tue Sep  3 22:53:24 CST 2012 - hillwood@linuxfans.org
+
+- license update: GPL-3.0+
+
+-------------------------------------------------------------------
+Mon Sep  3 20:08:24 CST 2012 - hillwood@linuxfans.org
+
+- add python-chardet , python-imaging and python-xlib as require
+  packages.
+  
+-------------------------------------------------------------------
+Sun Sep  2 14:19:59 CST 2012 - hillwood@linuxfans.org
+
+- Initial package 1.0git20120716
+  Init.
+  Implement logging to tracking events that happen.
+  Implement a basic configuration.
+  Use listen-music-player play kernel, and thank him for his.
+  Determine the Audio file type is supported.
+  Add Universal encoding detector of the chardet.
+
+

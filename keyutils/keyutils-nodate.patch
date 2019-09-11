@@ -1,0 +1,13 @@
+Index: keyutils-1.5.10/Makefile
+===================================================================
+--- keyutils-1.5.10.orig/Makefile
++++ keyutils-1.5.10/Makefile
+@@ -104,7 +104,7 @@ all: keyctl request-key key.dns_resolver
+ ###############################################################################
+ #RPATH = -Wl,-rpath,$(LIBDIR)
+ 
+-VCPPFLAGS	:= -DPKGBUILD="\"$(shell date -u +%F)\""
++VCPPFLAGS	:= -DPKGBUILD="\"no timestamp to avoid rebuilds\""
+ VCPPFLAGS	+= -DPKGVERSION="\"keyutils-$(VERSION)\""
+ VCPPFLAGS	+= -DAPIVERSION="\"libkeyutils-$(APIVERSION)\""
+ 

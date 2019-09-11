@@ -1,0 +1,35 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2017-11-07
+
+initialize array to avoid undefined memory being used
+to decide what gets written to the database output file
+
+https://bugzilla.opensuse.org/show_bug.cgi?id=1066797
+
+Index: isdn4k-utils/isdnlog/tools/zone/mkzonedb.c
+===================================================================
+--- isdn4k-utils.orig/isdnlog/tools/zone/mkzonedb.c
++++ isdn4k-utils/isdnlog/tools/zone/mkzonedb.c
+@@ -100,6 +100,7 @@ static void read_rzfile(char *rf) {
+ 		fprintf(stderr, "Out of mem\n");
+ 		exit(EXIT_FAILURE);
+ 	}
++	memset(numbers, 0, (maxnum+1)*sizeof(int));
+ 	n=i=keylen=keydigs=0;
+ 	if (verbose)
+ 		printf("Reading %s\n", rf);
+@@ -139,11 +140,12 @@ static void read_rzfile(char *rf) {
+ 		if (to > keylen)
+ 			keylen=to;
+ 		if(to>maxnum) {
+-			maxnum=to;
+-			if ((numbers = realloc(numbers,(maxnum+1)*sizeof(int))) == 0) {
++			if ((numbers = realloc(numbers,(to+1)*sizeof(int))) == 0) {
+ 				fprintf(stderr, "Out of mem\n");
+ 				exit(EXIT_FAILURE);
+ 			}
++			memset(numbers+maxnum+1, 0, (to-maxnum)*sizeof(int));
++			maxnum=to;
+ 		}
+ 		numbers[to]++;
+ 		n++;

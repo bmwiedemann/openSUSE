@@ -1,0 +1,32 @@
+From 70722be5a76d28df8ebbf8a706c6346c57cebb62 Mon Sep 17 00:00:00 2001
+From: Matthias Gerstner <matthias.gerstner@suse.de>
+Date: Thu, 5 Jul 2018 18:39:48 +0200
+Subject: [PATCH] pam_oath: assign safe default to alwaysok config member
+
+The way this was before allowed for the PAM authentication to
+potentially succeed when the first `goto done` line is hit. If the
+undefined data behind alwaysok is non-zero (which is quite probable)
+this would happen.
+
+In theory a local attacker could try to exhaust memory just enough to
+hit this spot and get e.g. root access.
+---
+ pam_oath/pam_oath.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/pam_oath/pam_oath.c b/pam_oath/pam_oath.c
+index 57fd33c..cfc3331 100644
+--- a/pam_oath/pam_oath.c
++++ b/pam_oath/pam_oath.c
+@@ -146,6 +146,8 @@ pam_sm_authenticate (pam_handle_t * pamh,
+   char *query_prompt = NULL;
+   char *onlypasswd = strdup ("");	/* empty passwords never match */
+ 
++  cfg.alwaysok = false; /* make sure this gets a safe default */
++
+   if (!onlypasswd)
+     {
+       retval = PAM_BUF_ERR;
+-- 
+2.16.4
+

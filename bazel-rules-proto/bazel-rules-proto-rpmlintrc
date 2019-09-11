@@ -1,0 +1,4 @@
+# This is a source package and /usr/src is a correct path to install files.
+addFilter("bazel-rules-proto-source.* suse-filelist-forbidden-fhs23")
+# This is a source package, it's fine to have empty files.
+addFilter("bazel-rules-proto-source.* zero-length")

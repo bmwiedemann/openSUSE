@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Mon Mar 18 20:27:16 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.9.1
+  * Build fixes only
+
+-------------------------------------------------------------------
+Sun Oct 12 10:11:15 UTC 2014 - jengelh@inai.de
+
+- Use source URLs
+- License change to BSD-2-Clause (+GPL)
+
+-------------------------------------------------------------------
+Sun Dec  2 23:35:15 UTC 2012 - jengelh@inai.de
+
+- Notice from the zn_poly homepage: zn_poly is no longer maintained.
+  It is however still used by SAGE, so let's see where it goes.
+
+-------------------------------------------------------------------
+Mon Aug 27 17:09:20 UTC 2012 - scorot@free.fr
+
+- BuildRequires libtool on 12.2 and higher 
+
+-------------------------------------------------------------------
+Sun Mar 18 14:10:33 UTC 2012 - scorot@free.fr
+
+- recompress source file to bzip2 format to allow build on SLE-11 
+
+-------------------------------------------------------------------
+Tue Sep 27 13:18:20 UTC 2011 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

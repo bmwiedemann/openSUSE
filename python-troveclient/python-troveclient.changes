@@ -1,0 +1,926 @@
+-------------------------------------------------------------------
+Mon Apr  8 11:57:06 UTC 2019 - cloud-devel@suse.de
+
+- update to version 2.17.0
+  - Add detailed list for instances
+  - Support configuration groups for clusters
+  - switch documentation job to new PTI
+  - Cleanup zuul.yaml
+  - Add release note link in README
+  - Switch to stestr
+  - Fix wrong keyword arguments
+  - Add extended properties support for mongo cluster.
+  - Fix python3 compatibility issues
+  - Replace assertRaisesRegexp with assertRaisesRegex
+  - Update reno for stable/rocky
+  - Don't quote {posargs} in tox.ini
+  - Remove PyPI downloads
+  - Sync two parameters of cluster-create to OSC
+  - add python 3.6 unit test job
+  - import zuul job settings from project-config
+
+-------------------------------------------------------------------
+Mon Sep  3 17:25:15 UTC 2018 - cloud-devel@suse.de
+
+- update to version 2.16.0
+  - Add 'update' command to OSC
+  - Update reno for stable/queens
+  - Add configuration-default to OSC
+  - Remove now obsolete Zuul job name
+  - Add detach-replica to OSC
+  - Add cluster-modules to OSC
+  - Update the troveclient's README.
+  - Replace 'raise StopIteration' with 'return'
+  - Fix invalid mock in OSC cluster creating unittest
+  - Handle error response for webob>=1.6.0
+  - Clean imports in code
+  - Migrate to Zuul v3 native job definitions
+  - Add promote-to-replica-source to OSC
+  - Add cluster-grow and cluster-shrink to OSC
+  - Trivial: Update pypi url to new url
+  - Add eject-replica-source to OSC
+  - Follow the new PTI for document build
+  - Add log-list to OSC
+  - Add execution-delete to OSC
+  - fix tox python3 overrides
+  - Updated from global requirements
+  - Correctly mocking builtin open in test_v1_shell
+  - Change testenv from py34 to py35
+  - Add configuration-instances to OSC
+  - add lower-constraints job
+
+-------------------------------------------------------------------
+Fri Feb 23 13:55:59 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Mon Feb 12 10:12:09 UTC 2018 - cloud-devel@suse.de
+
+- update to version 2.14.0 (bsc#1078607)
+  - Fix trove schedule-list error
+  - Add show to OSC
+  - Add force-delete to OSC
+  - Use openstackclient-plugin-jobs
+  - Fix abnormal display with openstack database instance list
+  - Add restart to OSC
+  - Add backup-show to OSC
+  - Fix print_list label name in troveclient/utils.py
+  - Add datastore-show to OSC
+  - Avoid tox_install.sh for constraints support
+  - Use ID instead of Name in secgroup_delete_rule
+  - Add root-disable to OSC
+  - Add create to OSC
+  - Add user-delete to OSC
+  - Add upgrade to OSC
+  - Fix log-enable high priority error
+  - Support delete and cluster_delete with many resources
+  - Add configuration-parameter-show to OSC
+  - Add datastore-version-show to OSC
+  - Add flavor-show to OSC
+  - Add resize-instance to OSC
+  - Add instance-delete to OSC
+  - Update the doc link
+  - Add quota commands to OSC
+  - Add user-update-attributes to OSC
+  - Add backup-delete to OSC
+  - Fix datastore abnormal display with trove list
+  - Remove extra parameter 'backup' in backup-create
+  - Add configuration-parameter-list to OSC
+  - Add datastore-version-list to OSC
+  - Add configuration-show to OSC
+  - Add database-delete to OSC
+  - Add configuration-create to OSC
+  - Fix "trove module-instances" command which don't work.
+  - Add cluster-delete to OSC
+  - Add proper message when delete instance or cluster
+  - Add cluster-instances to OSC
+  - Make OSC user list and show support instance name
+  - Add reset-status to OSC
+  - Modify database-list in OSC
+  - Add configuration-delete to OSC
+  - Zuul: add file extension to playbook path
+  - Add user-create to OSC
+  - Add user-show to OSC
+  - Add cluster-show to OSC
+  - Add root-enable to OSC
+  - Consume new trove tempest plugin
+  - Add database-create to OSC
+  - ESFIX:Fix troveclient error with Chinese character
+  - Add configuration-attach/detach to OSC
+  - Add user access related to OSC
+  - Remove log translations
+  - Fix show instance with integer name NotFound
+  - Add backup-create to OSC
+  - Add backup-list-instance to OSC
+  - Remove setting of version/release from releasenotes
+  - Add cluster-create to OSC
+  - Add resize-volume to OSC
+  - Fix error with  configuration-parameter-show
+  - Fix networks abnormal display with trove show
+  - Rename zuul v3 job
+  - Add log-enable to OSC
+  - Add root-show to OSC
+  - Updated from global requirements
+  - Fix datastore abnormal display with trove backup-show
+
+-------------------------------------------------------------------
+Mon Jan 15 12:06:13 UTC 2018 - cloud-devel@suse.de
+
+- update to version 2.13.0 (bsc#1078607)
+  - Update reno for stable/pike
+  - Fix gate / add tempest job
+  - Updated from global requirements
+  - Enable Keystone v3 support for compat client
+
+-------------------------------------------------------------------
+Mon Aug  7 14:31:48 UTC 2017 - cloud-devel@suse.de
+
+- update to version 2.12.0
+  - Add datastore-list to OSC
+  - Update the trove docs to follow the docs theme
+  - Update reno for stable/ocata
+  - [Fix gate]Update test requirement
+  - Add limit-list to OSC
+  - Handle log message interpolation by the logger
+  - Add list to OSC
+  - Add user-list to OSC
+  - Fix token response mock
+  - Correct help in --profile argument
+  - turn on warning-is-error for documentation builds
+  - Add related_to help message for instance help
+  - Drop pycrypto from tests dependencies
+  - Update reset-status docstring
+  - Add database-list to OSC
+  - rearrange docs into new standard layout
+  - update setup.cfg for classifier python 3.5
+  - Add backup-list to OSC
+  - Remove log translations
+  - Client changes for datastore-version volume-types
+  - Add configuration-list to OSC
+  - Add cli to docs
+  - Enable user/db operations on clusters
+  - Updated from global requirements
+  - Add cluster-list to OSC
+
+-------------------------------------------------------------------
+Mon Feb 13 13:02:31 UTC 2017 - cloud-devel@suse.de
+
+- update to version 2.8.0:
+  - Replace assertTrue(a in b) with assertIn(a, b)
+  - Use lowercase project name for doc
+  - move old apiclient code out of openstack/common
+  - Enable release notes translation
+  - Get python-troveclient to use upper-constraints.txt
+  - Cluster Upgrade
+  - Update reno for stable/newton
+  - Add module-instance-count command
+  - Throw correct error on creation of size 0
+  - Show team and repo badges on README
+  - Add tests to fake
+  - Display flavor-ephemeral in trove flavor-list command
+  - Fix module-list
+  - Using assertIsNotNone() instead of assertNotEqual(None)
+  - Multi-Region Support
+  - Add a new command in the readme
+  - Allow type to be specified on cluster-create
+  - Add i18n to v1/shell.py
+  - Add fixtures to test-requirements
+  - Use i18n for shell.py
+  - Add OpenStackClient plugin and flavor list
+  - Avoid use xx=[]  for parameter in function
+  - Added limit/marker support for config group lists
+  - Use strutils.to_slug() instead of utils.slugify()
+  - Fix Swift Authentication for log commands
+  - Time to get rid of slave_of
+  - Add support for module-reapply command
+  - Updated from global requirements
+  - Delete unnessary as e
+  - Avoid use xx=[]  for parameter initial value
+
+-------------------------------------------------------------------
+Fri Sep  9 07:48:13 UTC 2016 - tbechtold@suse.com
+
+update to version 2.5.0
+  * Add support for module ordering on apply
+  * module-update with --all_datastores doesn't work
+  * Add command to delete BUILD instances and clusters
+  * Implement scheduled backups
+  * Expose Quota.update API
+  * Add --incremental flag to backup-create
+
+-------------------------------------------------------------------
+Wed Aug 31 13:18:01 UTC 2016 - tbechtold@suse.com
+
+update to version 2.4.0
+  * Implement Instance Upgrade
+  * Update README.rst with lastest usage
+  * Remove Rackspace auth references from troveclient
+  * Support flavor ids with leading '0'
+  * Allow use of backup name in trove create
+  * Fix module-list failing with AccessInfoV2 error
+  * Remove discover from test-requirements
+  * Replace assertDictEqual
+  * Make username and password non-required params
+  * Remove times.dbm file for each tox run
+  * Locality support for clusters
+  * Add support for modules in cluster-grow
+  * Display more flavor information in trove flavor-list command
+  * Fixed output of cluster-create in CLI
+  * Persist error messages and display on 'show'
+  * Replace OpenStack LLC with OpenStack Foundation
+  * configuration-* cli allow name of configuration group entered
+  * Fix CLI output of datastore-show
+  * Fix inadvertent generation of file during tox test
+  * Fix troveclient to support Mistral
+  * Make dict.keys() PY3 compatible
+  * Keep py3.X compatibility for urllib
+  * Add reno for release notes management
+  * Update example usage
+  * switch to keystoneauth
+  * Display min/max correctly from config-param-list
+  * Graduate to oslo.i18n, cleanup incubator usage
+  * Use "# noqa" instead of "#flake8: noqa"
+  * Update the home-page with developer documentation
+  * Add vCPUs to flavor-list
+  * Added check to prevent adding argument without help string
+  * Updated from global requirements
+  * Locality support for replication
+- update _service and switch to upstream spec template
+
+-------------------------------------------------------------------
+Tue Apr 12 07:03:06 UTC 2016 - tbechtold@suse.com
+
+- update to 2.2.0:
+  * Client support for instance module feature
+  * Revert "Time to get rid of any last vestiges of slave_of"
+  * Add suport for module maintenance commands
+  * Fix for guest_log authentication failure
+  * Updated from global requirements
+  * Update readme file to be valid rst and update content
+  * support OS_ENDPOINT_TYPE environment variable
+  * Updated from global requirements
+  * Client Changes for Guest Log File Retrieval
+  * Fix the "OpenStack CLI guide" link
+  * Updated from global requirements
+  * use oslotest to break into the debugger when running test cases
+  * Remove argparse from requirements
+  * Trival: Remove 'MANIFEST.in'
+  * Use the oslo.utils.reflection to extract the class name
+  * Change assertTrue(isinstance()) by optimal assert
+  * Remove openstack-common.conf
+  * Put py34 first in the env order of tox
+  * Updated from global requirements
+  * Drop py33 support
+  * Replace assertEqual(None, *) with assertIsNone
+  * Remove py26 support
+  * Added '.' and remove extra parentheses(')') from README.rst
+  * Trivial: Remove vim header from source files
+  * Replace assertEqual(None, *) with assertIsNone in tests
+  * Add root-disable api
+  * Add 'volume_type' parameter to instance create
+  * Updated from global requirements
+  * cluster create passing availability zone incorrectly
+  * Delete python bytecode before every test run
+  * Time to get rid of any last vestiges of slave_of
+  * Last sync from oslo-incubator
+  * Updated from global requirements
+  * remove unnecessary message when running unit test
+  * Fixes the backup-delete
+  * Updated from global requirements
+  * improve readme contents
+  * Fix the function name with correct word
+  * Accepting network and availability zone for instances in cluster
+  * Updated from global requirements
+- Adjust Requires
+
+-------------------------------------------------------------------
+Tue Sep 15 08:08:56 UTC 2015 - tbechtold@suse.com
+
+- update to 1.3.0:
+  * Updated from global requirements
+  * Root enablement for Vertica clusters/instances
+  * Use more appropriate exceptions for validation
+  * Redis Clustering Initial Implementation
+  * Revert "Root enablement for Vertica clusters/instances"
+  * Implements Datastore Registration API
+  * Root enablement for Vertica clusters/instances
+  * Updated from global requirements
+  * Updated from global requirements
+  * Add a --marker argument to the backup commands
+  * Fixed missing periods in positional arguments
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Error message on cluster-create is misleading
+  * Make subcommands accept flavor name and cluster name
+  * Fix flavor-show problems with UUID
+  * Updated from global requirements
+  * Allow a user to pass an insecure environment variable
+  * Updated from global requirements
+  * Added more unit-tests to improve code coverage
+  * Updated from global requirements
+  * Fixes the non-existent exception NoTokenLookupException
+  * Fixes new hacking rules
+  * Updated coverage related options to project
+  * Updated from global requirements
+  * Drop use of 'oslo' namespace package
+  * Updated from global requirements
+  * Corrects order of parameters to assertEqual
+  * Update README to work with release tools
+  * Uncap library requirements for liberty
+  * Fixes unit-test in troveclient
+  * Add test to DatastoreVersionMembers
+  * Updated from global requirements
+  * Replication V2
+  * Add coverage library
+  * Fixed issues while using --bypass-url
+  * Clean up remaining references to TROVE_URL
+  * Correct order of parameters to assertEqual
+  * Updated from global requirements
+  * Changed documentation for datastore parameter for configuration-create
+  * Fix grammatical errors in profiler messages
+  * TroveClient API Documentation cleanup
+  * Updated from global requirements
+  * Show '-' for size when volume support disabled
+  * Handle obsolete and unused oslo modules
+  * Fixed typo in exception message
+  * Pass all kwargs through to adapter
+  * default endpoint_type to 'publicURL'
+  * Fallback to flavor's str_id when id is None
+  * Add profiling support to Trove client
+  * Remove RAX-specific auth in troveclient
+  * Add instance name as parameter to CLI
+  * Associate flavor types with datastore versions
+  * Workflow documentation is now in infra-manual
+  * Updated from global requirements
+  * Fixes client to send 0 for min/max size
+  * Adds support for Keystone V3 API
+  * Updated from global requirements
+  * Reverse fix for 1323866 as it regressed trove CLI
+  * Adds support for Keystone V3 API
+  * Updated from global requirements
+  * Fixed typo in doc/source
+  * Fixes trove show output
+  * Updated from global requirements
+  * Fix universal wheel support
+  * Use OpenStack branding for trove client
+  * Fix Cluster-Create and Cluster-Show Response
+- Add python-requires to _service file
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Tue Oct 21 11:29:57 UTC 2014 - dmueller@suse.com
+
+- add rpmlintrc as a source 
+
+-------------------------------------------------------------------
+Sat Sep 27 18:03:08 UTC 2014 - dmueller@suse.com
+
+- update to 1.0.7:
+ * Update the README.rst with latest help
+ * Use 'replica' instead of 'slave'
+ * adding configuration parameters mgmt api
+ * Clusters troveclient Implementation
+
+-------------------------------------------------------------------
+Fri Sep  5 15:38:16 UTC 2014 - dmueller@suse.com
+
+- go back to released version (1.0.6) 
+
+-------------------------------------------------------------------
+Thu Aug 28 00:49:34 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.74.g9756e2d:
+  * Add visibility filter to datastore versions
+
+-------------------------------------------------------------------
+Mon Aug 18 16:31:00 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.72.g722aeff:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Thu Jul 31 17:01:12 UTC 2014 - dimstar@opensuse.org
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+-------------------------------------------------------------------
+Tue Jul 29 00:17:36 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.71.g872abf2:
+  * Improve help text for --size option
+
+-------------------------------------------------------------------
+Sat Jul 19 00:31:58 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.70.g0330b94:
+  * Fix trove help for show and flavor-show
+
+-------------------------------------------------------------------
+Fri Jul 18 00:32:01 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.68.g5036106:
+  * Use JSON instead of json in the parameter descriptions
+
+-------------------------------------------------------------------
+Wed Jul  9 00:06:06 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.67.g043b987:
+  * Add CONTRIBUTING.rst
+
+-------------------------------------------------------------------
+Sat Jun 28 00:01:30 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.66.g75c5456:
+  * Add datatore/version name into configuration view
+  * Fix shell view for secgroup-* commands
+  * Adding command for copying backups
+
+-------------------------------------------------------------------
+Fri Jun 27 11:58:50 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.60.ga829023:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Jun 25 00:05:12 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.59.gcba9568:
+  * Add 'slave_of' option for enabling replication
+  * Updates root-enable & root-show help messages
+
+-------------------------------------------------------------------
+Thu Jun 12 07:17:42 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.55.g344a38a:
+  * Overwrite HelpFormatter constructur to extend argument column
+  * Added optional marker/limit to list command
+
+-------------------------------------------------------------------
+Wed Jun 11 00:25:52 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.51.ga48272c:
+  * Add datastore filter to backup-list
+  * Add instance_metadata functionality to the trove python library
+
+-------------------------------------------------------------------
+Tue Jun 10 00:24:04 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.47.g0462bad:
+  * Rename resize-flavor subcommand to resize-instance
+  * Updated from global requirements
+  * Updates README with current trove help output
+  * Fixed positional order of arguments
+
+-------------------------------------------------------------------
+Wed May 28 23:36:24 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.40.g9844f4d:
+  * fixed several pep8 issues
+
+-------------------------------------------------------------------
+Tue May 27 23:36:25 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.38.g21646a4:
+  * Changes configuration_ref to configuration
+  * Allow users the ability to update the instance name
+
+-------------------------------------------------------------------
+Fri May 23 23:36:23 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.34.gd02764e:
+  * Corrects trove-client output
+  * replaced e.message
+  * Enabled F821, H306, H402, and H404 flake8 rule
+
+-------------------------------------------------------------------
+Wed May 21 23:58:20 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.28.g2eedb57:
+  * Mark troveclient as being a universal wheel
+  * Fixed trove CLI help inconsistencies
+  * Added check for empty attributes in trove CLI
+  * Changed Trove CLI list headers to match Nova CLI
+
+-------------------------------------------------------------------
+Tue May 20 23:57:24 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.20.g886ab0f:
+  * Fix trove CLI help UUID references
+
+-------------------------------------------------------------------
+Tue May 13 00:28:14 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.18.g8585772:
+  * Fix trove help for datastore-version-list and -show
+
+-------------------------------------------------------------------
+Thu May  8 00:28:41 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.16.g4643f78:
+  * Correct grammar in trove CLI help
+  * Fix building of documentation
+  * Remove Duplicate ClientExceptions and Merge
+
+-------------------------------------------------------------------
+Thu May  1 23:39:40 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.11.ga0ec47b:
+  * Make port-id and net-id keys mutually exclusive
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Sat Apr 26 00:33:58 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.5.8.gd590169:
+  * Updated from global requirements
+  1.0.5
+  * Fixing the compat client create call
+  * Fixes trove create output
+  * Remove dependent module py3kcompat
+
+-------------------------------------------------------------------
+Tue Apr 15 23:55:43 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.4.7.g4d2b11a:
+  * Correct mis-spelling in trove CLI help
+
+-------------------------------------------------------------------
+Thu Apr 10 14:35:50 UTC 2014 - dmueller@suse.com
+
+- Update to version python-troveclient-1.0.4.6.gf616660:
+  * Fix build_sphinx setup target
+
+-------------------------------------------------------------------
+Wed Apr  2 23:53:03 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.4.4.g8ff28fc:
+  * Fix create call for security group rules
+
+-------------------------------------------------------------------
+Mon Mar 31 23:55:13 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.4.2.g46464a0:
+  1.0.4
+  * Fix database-list via CLI for large # of dbs
+
+-------------------------------------------------------------------
+Fri Mar 28 01:37:02 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.3.75.g5b713c0:
+  * Get rid of XML related trove client bindings
+
+-------------------------------------------------------------------
+Sat Mar 22 01:36:18 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.3.73.g3fbb007:
+  * Fix JSON In Output for Configuration Groups
+
+-------------------------------------------------------------------
+Tue Mar 18 10:33:50 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.3.71.g914da1a:
+  * Improve help strings
+
+-------------------------------------------------------------------
+Sun Mar 16 01:12:04 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.3.69.g0909082:
+  * Add Python 3 classifiers
+  * Remove arguments deprecated after Diablo
+
+-------------------------------------------------------------------
+Wed Mar 12 00:38:25 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.3.66.gd140ff2:
+  * Adding datastore_version column to instances list table
+
+-------------------------------------------------------------------
+Mon Mar  3 10:53:52 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.3.65.g24281a1:
+  * Replace assertEqual(None, *) with assertIsNone in tests
+
+-------------------------------------------------------------------
+Sat Mar  1 00:48:39 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-troveclient-1.0.3.63.g59ec2bb:
+  * Remove vim header
+
+-------------------------------------------------------------------
+Thu Feb 13 12:07:08 UTC 2014 - speilicke@suse.com
+
+- Run testr directly (not through setuptools) to see failures
+
+-------------------------------------------------------------------
+Thu Feb 13 11:50:40 UTC 2014 - speilicke@suse.com
+
+- Fix requires
+
+-------------------------------------------------------------------
+Tue Feb 11 16:04:47 UTC 2014 - speilicke@suse.com
+
+- Update to version python-troveclient-1.0.3.62.g5fd715d:
+  * adds support for configurations management
+  * Remove copyright from empty files
+  * Fixes troveclient raising undefined exception ConnectionError
+- Replace git_tarballs source service with download_files and set_version
+  + Use upstream URL as source (enables verification)
+
+-------------------------------------------------------------------
+Sat Feb  1 01:31:20 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.51:
+  + Add Neutron support
+
+-------------------------------------------------------------------
+Fri Jan 31 01:23:21 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.49:
+  + Fixes troveclient raising undefined exception ConnectionError
+
+-------------------------------------------------------------------
+Wed Jan 29 00:38:19 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.48:
+  + Update to the latest code from Oslo
+
+-------------------------------------------------------------------
+Fri Jan 24 13:53:59 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.47:
+  + Datastores improvements
+  + Adds volume_used to trove show <instance>
+  + Updates common.check_for_exceptions and its calls
+
+-------------------------------------------------------------------
+Sat Jan 18 00:57:33 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.42:
+  + Fixed misspellings of common words
+
+-------------------------------------------------------------------
+Wed Jan 15 00:47:57 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.40:
+  + Datastore on Show Instance Should Not Be a Dict
+
+-------------------------------------------------------------------
+Tue Jan 14 00:45:10 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.38:
+  + Tighten flake8 checks in Gating
+
+-------------------------------------------------------------------
+Fri Jan 10 12:42:44 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.36:
+  + Adding pagination support for backups
+
+-------------------------------------------------------------------
+Tue Jan  7 01:20:14 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.34:
+  + Add type to volume.total for Mgmt Instance Get
+
+-------------------------------------------------------------------
+Thu Jan  2 18:32:44 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.32:
+  + Correct database-create Name Help Text
+
+-------------------------------------------------------------------
+Sat Dec 14 01:00:20 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.31:
+  + Updates README with new trove help options
+
+-------------------------------------------------------------------
+Fri Dec 13 01:17:25 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.30:
+  + Add -U to pip install command in tox.ini
+  + Updated from global requirements
+  + Fixed misspellings of common words
+  + Fixes trove help command
+
+-------------------------------------------------------------------
+Thu Dec 12 01:12:48 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.22:
+  + Changes trove_client.client.HTTPClient to
+
+-------------------------------------------------------------------
+Wed Dec 11 01:28:42 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.21:
+  + Ignore fewer PEP8/flake8 rules
+
+-------------------------------------------------------------------
+Tue Dec 10 00:56:04 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.20:
+  + Updates tox.ini to use new features
+  + Updates .gitignore to ignore *.egg*
+
+-------------------------------------------------------------------
+Sat Dec  7 01:20:28 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.17:
+  + Removes unused import statements
+  + Added a missing import statement
+
+-------------------------------------------------------------------
+Wed Dec  4 13:17:07 UTC 2013 - speilicke@suse.com
+
+- Run testsuite during build (%check section) and obsolete the test
+  package. An overall simplification of the test process
+- Dependency cleanup
+
+-------------------------------------------------------------------
+Mon Nov 25 14:13:47 UTC 2013 - dmueller@suse.com
+
+- switch to python-setuptools 
+
+-------------------------------------------------------------------
+Sat Nov 23 01:16:09 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.15:
+  + Allow --json output override printing dict/list
+
+-------------------------------------------------------------------
+Fri Nov 22 01:40:37 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.13:
+  + Allow for compatable auths between new and old CLI
+
+-------------------------------------------------------------------
+Thu Nov 21 01:12:39 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.12:
+  + Updated from global requirements
+
+-------------------------------------------------------------------
+Thu Nov 14 01:17:19 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.11:
+  + Usage String has Positionals after Optionals
+
+-------------------------------------------------------------------
+Wed Nov 13 01:24:12 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.9:
+  + IP Address Showing as JSON in Show Command
+  + Fix Pep8 indentation issues only found with Pep8 1.4.6+
+
+-------------------------------------------------------------------
+Sat Nov  2 01:30:23 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.5:
+  + Support datastore types
+
+-------------------------------------------------------------------
+Sun Oct 27 00:29:38 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.4:
+  + Updated the README file with bypass-url
+
+-------------------------------------------------------------------
+Fri Oct 25 23:44:59 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.3.2:
+  + Add --bypass-url option to trove client
+  + user-list Databases Value is JSON vs a String
+
+-------------------------------------------------------------------
+Wed Oct 23 23:52:46 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.1.33:
+  + Fix unicode issue
+  + Import exceptions module from openstack-common
+  + Import urlutils module from openstack-common
+  + Replace urllib.quote with urlutils.quote
+  + Import exceptions module from openstack-common
+  + Replace g.next() with next(g)
+  + Transform print statement to print function
+  + Replace basestring with six.string_types
+  + Make use of strutils.to_slug in slugify()
+  + Include troveclient/compat/tests in testr
+  + Resolve compatability for troveclient/compat
+  + Use six.iteritems() in for loop
+  + Adding py33 gating to the client
+  + Removing unused files with new client
+  + Fixing typos that were in the readme
+
+-------------------------------------------------------------------
+Wed Oct 23 00:00:36 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.1.5:
+  + Fixing copyright and license headers
+
+-------------------------------------------------------------------
+Tue Oct 22 00:17:16 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.1.4:
+  + Sync up exceptions.py from oslo
+
+-------------------------------------------------------------------
+Wed Oct 16 23:57:52 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.1.3:
+  + change mode to octal for os.makedirs()
+
+-------------------------------------------------------------------
+Tue Oct 15 07:28:28 UTC 2013 - dmueller@suse.com
+
+- Update to version 1.0.1.2:
+  + Massive refactoring to the troveclient
+  + Tweak pbr conf
+  + Add support for a service type env var
+  + Enable shell to resize and restart
+  + Correct handling args.backup in do_create
+  + Fixed bug with showing backups
+  + Removing lxml/httplib2 depends
+  + Fixing the backwards verb/noun cli names
+  + Fixes README and shell
+  + Fixed minor typos with trove-client help info
+  + Removed underscores from the end of some variables
+
+-------------------------------------------------------------------
+Tue Oct  8 12:44:10 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.1.4.14:
+  + Remove trove as default value for Service Name
+
+-------------------------------------------------------------------
+Tue Sep 24 00:05:51 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.1.4.13:
+  + Replace OpenStack LLC with OpenStack Foundation
+
+-------------------------------------------------------------------
+Mon Sep 23 00:20:44 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.1.4.11:
+  + Removing reddwarf doc references
+
+-------------------------------------------------------------------
+Tue Sep 17 00:17:28 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.1.4.10:
+  + Added optional availability_zone flag for instance
+
+-------------------------------------------------------------------
+Fri Sep 13 23:41:59 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.1.4.8:
+  + Fixed cli for root enabled
+
+-------------------------------------------------------------------
+Fri Sep 13 00:06:09 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.1.4.6:
+  + Adds support for admin to create flavors through mgmt API
+
+-------------------------------------------------------------------
+Wed Sep 11 00:12:47 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.1.4.4:
+  + Added support for running the tests under PyPy with tox
+
+-------------------------------------------------------------------
+Tue Sep  3 23:59:28 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.1.4.3:
+  + PEP8 with tox -epep8 check fails
+
+-------------------------------------------------------------------
+Sat Aug 31 00:06:38 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.1.4.1:
+  + Removed instance reset_password from python-troveclient
+
+-------------------------------------------------------------------
+Wed Aug  7 00:18:53 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.1.3.9:
+  + Sync with global requirements
+
+-------------------------------------------------------------------
+Fri Jul 19 23:41:52 UTC 2013 - dmueller@suse.com
+
+- add doc subpackage 
+
+-------------------------------------------------------------------
+Mon Jul 15 23:54:24 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 0.1.3.6:
+  + Wildcards in User Host
+
+-------------------------------------------------------------------
+Wed Jun 26 11:29:24 UTC 2013 - dmueller@suse.com
+
+- Initial package 
+

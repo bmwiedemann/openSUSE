@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Tue Mar  7 16:28:07 UTC 2017 - zaitor@opensuse.org
+
+- Add explicit m4 BuildRequires: m4 is no longer default present in
+  buildroot.
+
+-------------------------------------------------------------------
+Sun Dec 18 18:16:19 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.2
+- fixes Parse entries with empty value correctly
+
+-------------------------------------------------------------------
+Wed Aug 24 17:35:55 UTC 2016 - jengelh@inai.de
+
+- Trim description. Disable static libraries, remove .la files.
+
+-------------------------------------------------------------------
+Wed Aug 24 17:16:10 UTC 2016 - mvetter@suse.com
+
+- Fix Requires %{clib}
+
+-------------------------------------------------------------------
+Wed Aug 24 15:16:50 UTC 2016 - mvetter@suse.com
+
+- Mention xrm in description 
+
+-------------------------------------------------------------------
+Wed Aug 24 12:24:39 UTC 2016 - mvetter@suse.com
+
+- Initial package for version 1.0
+

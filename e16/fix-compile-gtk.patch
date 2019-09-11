@@ -1,0 +1,36 @@
+Index: e16-1.0.19/configure.ac
+===================================================================
+--- e16-1.0.19.orig/configure.ac
++++ e16-1.0.19/configure.ac
+@@ -179,6 +179,7 @@ AC_ARG_ENABLE(pango,
+   enable_pango=yes)
+ if test "x$enable_pango" = "xyes"; then
+   PKG_CHECK_MODULES(PANGO, pangoxft, AC_DEFINE(USE_PANGO, 1, [pango-xft support]), enable_pango=no)
++  PKG_CHECK_MODULES(GOBJECT2, gobject-2.0, AC_DEFINE(USE_PANGO, 1, [pango-xft support]), enable_pango=no)
+ fi
+ AM_CONDITIONAL(USE_LIBPANGO, test "x$enable_pango" = "xyes")
+
+Index: e16-1.0.19/src/Makefile.am
+===================================================================
+--- e16-1.0.19.orig/src/Makefile.am
++++ e16-1.0.19/src/Makefile.am
+@@ -201,16 +201,16 @@ endif
+ if USE_LIBPANGO
+ LIBFNT_PANGO = libfont_pango.la
+ libfont_pango_la_SOURCES  = text_pango.c
+-libfont_pango_la_CFLAGS   = $(PANGO_CFLAGS)
+-libfont_pango_la_LIBADD   = $(PANGO_LIBS) libfont_xft.la
++libfont_pango_la_CFLAGS   = $(PANGO_CFLAGS) $(GOBJECT2_CFLAGS)
++libfont_pango_la_LIBADD   = $(PANGO_LIBS) $(GOBJECT2_LIBS) libfont_xft.la
+ libfont_pango_la_LDFLAGS  = -module -avoid-version
+ endif
+
+ else
+
+ MODULE_SRCS = sound_esd.c sound_pa.c sound_load.c ttfont.c text_xft.c text_pango.c
+-MODULE_LIBS = $(ESD_LIBS) $(PA_LIBS) $(SNDLDR_LIBS) $(PANGO_LIBS) $(XFT_LIBS)
+-MODULE_CFLAGS = $(ESD_CFLAGS) $(PA_CFLAGS) $(SNDLDR_CFLAGS) $(PANGO_CFLAGS) $(XFT_CFLAGS)
++MODULE_LIBS = $(ESD_LIBS) $(PA_LIBS) $(SNDLDR_LIBS) $(PANGO_LIBS) $(GOBJECT2_LIBS) $(XFT_LIBS)
++MODULE_CFLAGS = $(ESD_CFLAGS) $(PA_CFLAGS) $(SNDLDR_CFLAGS) $(PANGO_CFLAGS) $(GOBJECT2_CFLAGS) $(XFT_CFLAGS)
+
+ endif

@@ -1,0 +1,247 @@
+-------------------------------------------------------------------
+Fri Feb  2 12:34:34 UTC 2018 - jweberhofer@weberhofer.at
+
+- Simplified requirements
+
+-------------------------------------------------------------------
+Thu Feb  1 16:46:03 UTC 2018 - jweberhofer@weberhofer.at
+
+- Use openssl<1.1 for suse_version >= 1500
+
+-------------------------------------------------------------------
+Mon Dec 25 06:30:34 UTC 2017 - jweberhofer@weberhofer.at
+
+- Fix building on factory (use openssl 1.0.0)
+
+- Upgrade to version 1.11.10
+  * Support for ChaCha ciphers
+  * Add support for STARTTLS on mysql (--starttls-mysql)
+  * Display SNI information in XML output
+  * Mark SHA-1 certificates as weak
+
+-------------------------------------------------------------------
+Mon Dec 18 06:03:17 UTC 2017 - jweberhofer@weberhofer.at
+
+- Fixed building on SLES systems
+
+-------------------------------------------------------------------
+Mon Nov 28 23:49:30 UTC 2016 - jweberhofer@weberhofer.at
+
+- Upgrade to version 1.11.8
+  * Support alternate SNI hostnames (--sni=)
+  * Allow building with no support for TLS SCSV Fallback
+
+- Removed SSL_MODE_SEND_FALLBACK_SCSV (integrated upstream)
+
+-------------------------------------------------------------------
+Mon Oct 31 13:51:36 UTC 2016 - manfred.h@gmx.net
+
+- SSL_MODE_SEND_FALLBACK_SCSV.patch: Add patch to treat SSL_MODE_SEND_FALLBACK_SCSV conditionally.
+
+-------------------------------------------------------------------
+Thu Oct 27 09:12:12 UTC 2016 - jweberhofer@weberhofer.at
+
+- Highlighted features:
+  * Support for
+    - STARTTLS: POP3, IMAP, FTP, XMPP
+    - PostgreSQL
+    - IPv6 addresses
+    - TLSv1.1 and TLSv1.2
+    - XMPP server-to-server connections
+  * Added check for 
+    - OpenSSL Heartbleed
+    - POODLE
+  * Highlight the following issues
+    - weak RSA and DHE keys in output
+    - SSLv2, SSLv3, RC4 ciphers
+    - anonymous ADH and AECDH ciphers
+    - weak (n <= 40 bit) and medium (40 < n <= 56 bit)
+  * Certificates
+    - Display certificate signing algorithm highlighting weak algorithms.
+    - Display certificate key strength highlighting weak keys.
+    - Flag expired certificates
+  * Most secure protocols are scanned first
+  * Display cipher details by default
+
+- rebased fedora-sslscan-patents.patch
+- removed obsolete patches
+
+- Upgraded to version 1.11.7
+   * Check for TLS Fallback SCSV
+   * Allow xml to be output on stdout (--xml=-)
+
+- Version 1.11.6
+   * Re-eanble support for weak (<1024) DH keys in OpenSSL
+
+- Version 1.11.5
+   * Fix bug in heartbleed check (credit nuxi)
+   * Makefile improvements and fixes for OSX and FreeBSD
+   * Optimize OpenSSL clone
+   * Implement --show-times to display handshake times in milliseconds
+
+- Version 1.11.4
+   * Fix compression detection (credit nuxi)
+   * Added support for PostgreSQL (credit nuxi)
+
+- Version 1.11.3
+   * Properly fix missing SSLv2 EXPORT ciphers by patching OpenSSL
+
+- Version 1.11.2
+   * Makefile improvements
+   * Update OpenSSL from Git when statically building
+   * Use enable-ssl2 and enable-weak-ciphers when building statically
+
+- Version 1.11.1
+   * Show cipher IDs with --show-cipher-ids (credit maurice2k)
+   * Warn when building agsinst system OpenSSL rather than statically
+   * Allow building statically on OSX (experimental)
+
+- Version 1.11.0
+   * Rewrote ciphersuite scanning engine to be much faster
+   * Ciphers are now output in order of server preference
+   * Most secure protocols are scanned first (TLSv1.2 -> SSLv2)
+   * All protocols are tried when trying to obtain the certificate
+   * Obselete --failed and --no-preferred-ciphers options removed
+   * Flag TLSv1.0 ciphers in output
+   * Flag 56 bit ciphers as red, not yellow
+   * Fix building on OpenBSD (credit Stuart Henderson)
+   * Fix incorrect output when server prefers NULL ciphers
+
+- Version 1.10.6
+   * Fix --sleep only working for whole seconds (credit dmke)
+   * Fix compiling against OpenSSL 0.9.8 (credit aclemons)
+   * Flag expired certificates (credit jacktrice)
+
+- Version 1.10.5
+   * Added IRC STARTTLS support (--starttls-irc, credit jkent)
+   * Highlight weak RSA keys in output
+   * Added option to show OCSP status (--ocsp, credit kelbyludwig)
+   * Fix a segfault with certificate parsing
+
+- Version 1.10.4
+   * Display cipher details by default (hide with --no-cipher-details)
+   * Fix scanning multiple targets if one fails (credit shellster)
+   * Fix bug with --no-color and --failed (credit yasulib)
+   * Minor bugfixes to output
+
+- Version 1.10.3
+   * Flag weak DHE keys in --cipher-details
+   * Report DHE key bits in XML
+   * Change ECDHE key bits to "ecdhebits" rather than "dhebits" in XML
+
+- Version 1.10.2
+   * Wrap TLS extensions in CDATA blocks in XML output.
+   * Fix incorrect TLS versions in heartbleed checks
+
+- Version 1.10.1
+   * Fix XML output to use "TLSv1.0" in preferred ciphers, not "TLSv1"
+   * Added --cipher-details option to display EC curves and EDH keys
+ Note that this feature requires OpenSSL >= 1.0.2
+   * Update static build options to compile against OpenSSL 1.0.2
+
+- Version 1.10.0
+   * Experimental build support (credit jtesta).
+   * Support XMPP server-to-server connections (--xmpp-server).
+
+- Version 1.9.11
+   * Makefile updates to assist packaging in Kali.
+   * Fix missing static build number when compiling from tarball.
+
+- Version 1.9.10
+   * Display certificate CN, Altnames and Issuer in default output.
+   * Flag certificates where CN == issuer, or CN = *
+   * Highlight GCM ciphersuites as good
+
+- Version 1.9.9
+   * Added --show-client-cas option to determine trusted CAs
+ for client authentication
+   * Added --no-preferred option to disable any output except specified
+
+- Version 1.9.8
+   * Added --sleep option to pause between request
+   * Only check for heartbleed against specified TLS version
+   * Added --sleep option to pause between request
+   * Fix issues compiling against OpenSSL 0.9.8
+   * Highlight CBC ciphersuites on SSLv3 (POODLE)
+   * Experimental build support on OSX (credit MikeSchroll)
+
+- Version 1.9.7
+   * Added option for static compilation with OpenSSL (credit dmke)
+   * Added "sslmethod" attribute to Heartbleed XML output (credit dmke)
+   * Split headers into sslscan.h (credit dmke)
+
+- Version 1.9.6
+   * Highlight NULL ciphers in output.
+   * Highlight SSLv3 ciphers.
+   * Added --rdp option to support RDP servers (credit skettler).
+   * Added --timeout option to set socket timeout (default 3s).
+
+- Version 1.9.5
+   * Renamed --get-certificate option to --show-certficate.
+   * Display certificate signing algorithm highlighting weak algorithms.
+   * Display certificate key strength highlighting weak keys.
+   * Bumped XML version to 1.9.5 due to minor changes.
+
+- Version 1.9.4
+   * Check for SSLv2 and SSLv3 ciphers over STARTTLS.
+
+- Version 1.9.3
+   * Fixed broken STARTTLS SMTP check.
+
+- Version 1.9.2
+   * Added check for OpenSSL Heartbleed (CVE-2014-0160).
+
+- Version 1.9.1
+   * Added --tlsall option to only scan TLS ciphersuites.
+   * Scan all TLS versions by default for STARTTLS services.
+   * Added support for IPv6 addresses using square bracket notation [:1].
+   * Highlight anonymous (ADH and AECDH) ciphers in output.
+   * Added option to disable colour in output (--no-colour).
+   * Removed undocumented -p output option.
+   * Removed old references to titania.co.uk domain.
+
+- Version 1.9
+   * Highlight SSLv2 ciphers
+   * Highlight weak (n <= 40 bit) and medium (40 < n <= 56 bit) ciphers
+   * Highlight RC4 ciphers
+   * Highlight anonymous (ADH) ciphers
+   * Hide certificate information by default
+   * Hide rejected ciphers by default (display with --failed).
+   * Added TLSv1.1 and TLSv1.2 support (merged from twwbond/sslscan).
+   * Compiles if OpenSSL does not support SSLv2 ciphers (merged from digineo/sslscan).
+   * Supports IPv6 hostnames (can be forced with --ipv6).
+   * Check for TLS compression (CRIME, disable with --no-compression)
+
+- Version 1.8.4
+   * Add demo targets in Makefile
+   * Refactoring of code by Adam Langley
+   * Add SNI patch from Tim Brown
+   * Bug fixes from craSH and Cygwin build improvements
+
+- Version 1.8.3
+
+   * Improve new protocol setup support for STARTTLS: POP3, IMAP, FTP, and 
+     XMPP This modeled after the support found in OpenSSL's s_client
+   * Add verbose option to print more info
+   * Add default ports when a STARTTLS setup flag is called without any port at all
+-------------------------------------------------------------------
+Sun Apr 27 17:35:29 UTC 2014 - lars@linux-schulserver.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Tue Sep 11 14:16:02 UTC 2012 - frank.lichtenheld@sophos.com
+
+- add TLSv1.1 and TLSv1.2 support for OpenSSL >= 1.0.1
+
+-------------------------------------------------------------------
+Fri Aug 10 21:09:50 UTC 2012 - frank.lichtenheld@sophos.com
+
+- import patch from fedora to allow building on fedora
+
+-------------------------------------------------------------------
+Thu Aug  9 20:01:09 UTC 2012 - frank.lichtenheld@sophos.com
+
+- initial packaging
+* patches taken from Debian packaging
+

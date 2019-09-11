@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Thu Aug  8 06:35:10 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require virtualbox-kmp-default instead of
+  virtualbox-guest-kmp-default: virtualbox merged the KMPs.
+
+-------------------------------------------------------------------
+Tue Jul 23 13:06:12 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Add an additional profile for the aarch64 build with an embedded Vagrantfile
+  fix wicked networking configuration
+  remove obsolete baseCleanMount from config.sh
+
+-------------------------------------------------------------------
+Thu Jul  4 09:20:48 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid 'no space left' error
+
+-------------------------------------------------------------------
+Wed Jun 26 12:53:08 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build of libvirt flavor for aarch64
+
+-------------------------------------------------------------------
+Fri Jun 21 08:52:35 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Add python-xml so that Ansible's zypper module works
+
+-------------------------------------------------------------------
+Mon May  6 14:17:56 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Add haveged to the Vagrant box (see bsc#1131369)
+
+-------------------------------------------------------------------
+Fri Apr 12 12:07:24 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Remove dracut-plymouth
+
+-------------------------------------------------------------------
+Fri Mar 29 12:19:06 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Rebuild repositories via add-yast-repos
+  Remove custom /etc/motd
+
+
+-------------------------------------------------------------------
+Thu Mar 28 14:08:49 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Initial vagrant box version

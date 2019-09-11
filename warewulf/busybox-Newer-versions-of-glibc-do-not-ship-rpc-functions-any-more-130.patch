@@ -1,0 +1,93 @@
+From: John Jolly <john.jolly@gmail.com>
+Date: Fri Sep 14 10:42:38 2018 -0600
+Subject: busybox: Newer versions of glibc do not ship rpc functions any more (#130)
+Patch-mainline: Upstream
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: cbc8498eeaf30e5f884277b3f941b956b105b9c6
+References: 
+
+Use tirpc even on older versions of glibc - it is capable of handling IPv6.
+Use pkg-config to find out the correct include path and library to add.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: John L. Jolly <jjolly@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ .circleci/config.yml                                      |  2 +-
+ provision/configure.ac                                    | 11 +++++++++++
+ provision/initramfs/{busybox.config => busybox.config.in} |  4 ++--
+ provision/warewulf-provision.spec.in                      |  1 +
+ 4 files changed, 15 insertions(+), 3 deletions(-)
+diff --git a/.circleci/config.yml b/.circleci/config.yml
+index 6dd5b9e..5ed4a27 100644
+--- a/.circleci/config.yml
++++ b/.circleci/config.yml
+@@ -13,7 +13,7 @@ jobs:
+             set -o xtrace
+             yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+             rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-*
+-            yum -y --exclude=systemtap --exclude=subversion install @development binutils-aarch64-linux-gnu device-mapper-devel gcc-aarch64-linux-gnu libacl-devel libattr-devel libuuid-devel openssl-devel perl-CGI perl-Compress-Raw-Bzip2 perl-Compress-Raw-Zlib perl-DBD-MySQL perl-DBI perl-Digest perl-Digest-MD5 perl-IO-Compress perl-Net-Daemon perl-PlRPC perl-Sys-Syslog perl-Test-Simple xz-devel
++            yum -y --exclude=systemtap --exclude=subversion install @development binutils-aarch64-linux-gnu device-mapper-devel gcc-aarch64-linux-gnu libacl-devel libattr-devel libuuid-devel openssl-devel perl-CGI perl-Compress-Raw-Bzip2 perl-Compress-Raw-Zlib perl-DBD-MySQL perl-DBI perl-Digest perl-Digest-MD5 perl-IO-Compress perl-Net-Daemon perl-PlRPC perl-Sys-Syslog perl-Test-Simple xz-devel libtirpc-devel
+       - run:
+           name: Build Common
+           command: |
+diff --git a/provision/configure.ac b/provision/configure.ac
+index 59d961f..4e950c4 100644
+--- a/provision/configure.ac
++++ b/provision/configure.ac
+@@ -163,6 +163,16 @@ AC_SUBST(fulldatadir)
+ initramfsdir="$localstatedir/warewulf/initramfs/";
+ AC_SUBST(initramfsdir)
+ 
++BUSYBOX_CONFIG_EXTRA_LDLIBS=
++PKG_CHECK_MODULES([TIRPC], [libtirpc], [
++    AS_IF([test -n "$TIRPC_LIBS"], [
++        m4_foreach_w([libopt], [$TIRPC_LIBS], [
++            opt="libopt"
++            BUSYBOX_CONFIG_EXTRA_LDLIBS="$BUSYBOX_CONFIG_EXTRA_LDLIBS ${opt#-l}"
++        ])
++    ])
++])
++AC_SUBST(BUSYBOX_CONFIG_EXTRA_LDLIBS)
+ 
+ AC_SUBST(PERLBIN)
+ 
+@@ -215,6 +225,7 @@ AC_OUTPUT(
+    etc/filesystem/examples/Makefile
+    etc/warewulf-httpd.conf
+    initramfs/Makefile
++   initramfs/busybox.config
+    initramfs/capabilities/Makefile
+    initramfs/capabilities/provision-adhoc/Makefile
+    initramfs/capabilities/provision-files/Makefile
+diff --git a/provision/initramfs/busybox.config b/provision/initramfs/busybox.config.in
+similarity index 99%
+rename from provision/initramfs/busybox.config
+rename to provision/initramfs/busybox.config.in
+index 74d67bb..f8cc778 100644
+--- a/provision/initramfs/busybox.config
++++ b/provision/initramfs/busybox.config.in
+@@ -48,9 +48,9 @@ CONFIG_FEATURE_HAVE_RPC=y
+ CONFIG_LFS=y
+ CONFIG_CROSS_COMPILER_PREFIX=""
+ CONFIG_SYSROOT=""
+-CONFIG_EXTRA_CFLAGS=""
++CONFIG_EXTRA_CFLAGS="@TIRPC_CFLAGS@"
+ CONFIG_EXTRA_LDFLAGS=""
+-CONFIG_EXTRA_LDLIBS=""
++CONFIG_EXTRA_LDLIBS="@BUSYBOX_CONFIG_EXTRA_LDLIBS@"
+ 
+ #
+ # Installation Options ("make install" behavior)
+diff --git a/provision/warewulf-provision.spec.in b/provision/warewulf-provision.spec.in
+index 3e1bc73..51b364a 100644
+--- a/provision/warewulf-provision.spec.in
++++ b/provision/warewulf-provision.spec.in
+@@ -13,6 +13,7 @@ Source: %{name}-%{version}.tar.gz
+ ExclusiveOS: linux
+ Requires: warewulf-common
+ BuildRequires: warewulf-common libselinux-devel libacl-devel libattr-devel libuuid-devel device-mapper-devel xz-devel
++BuildRequires: libtirpc-devel
+ 
+ %if 0%{?_cross_compile}
+ 

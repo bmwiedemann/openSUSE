@@ -1,0 +1,28 @@
+Index: src/mt.c
+===================================================================
+--- src/mt.c.orig
++++ src/mt.c
+@@ -413,11 +413,18 @@ parse_opt (int key, char *arg, struct ar
+ 	{
+ 	  tapedev = getenv ("TAPE");
+ 	  if (tapedev == NULL)
+-#ifdef DEFTAPE			/* From sys/mtio.h.  */
+-	    tapedev = DEFTAPE;
+-#else
+-	  error (MT_EXIT_INVOP, 0, _("no tape device specified"));
+-#endif
++
++/* Suse doesn't have /dev/tape as link to /dev/nst0 any more.
++Instead it uses udev and creates different names in /dev/tape/by-id/ directory.
++If it is SCSI tape storage then it creates /dev/tape/by-id/scsi--nst
++If it is USB device then it creates something not predictibable:
++/dev/tape/by-id/scsi-*HP_blabla*{VENDOR_SPECIFIC}*-nst
++So let's use old behave which was /dev/nst0.
++bnc#355241
++*/
++/* #ifdef DEFTAPE			* From sys/mtio.h.  * */
++# define DEFSUSETAPE        "/dev/nst0"
++        tapedev = DEFSUSETAPE;
+ 	}
+       break;
+       

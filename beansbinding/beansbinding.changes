@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Tue May 15 17:30:06 UTC 2018 - fstrba@suse.com
+
+- Modified patch:
+  * beansbinding-1.2.1-sourcetarget.patch
+    + Build with source and target 8 to prepare for a possible
+      removal of 1.6 compatibility
+
+-------------------------------------------------------------------
+Fri Sep 15 09:55:01 UTC 2017 - fstrba@suse.com
+
+- Removed patch:
+  * disable-doclint.patch
+    + Not needed since doclint is disabled by default in our
+	  OpenJDK packages
+- Added patch:
+  * beansbinding-1.2.1-sourcetarget.patch
+    + Build with java source and target 1.6 in order to allow
+	  building with jdk9
+- Clean spec file and fix some rpmlint warnings
+
+-------------------------------------------------------------------
+Sun May 21 08:12:27 UTC 2017 - tchvatal@suse.com
+
+- Fix build with new java by disabling doclint:
+  * disable-doclint.patch
+
+-------------------------------------------------------------------
+Tue Jul  8 10:58:02 UTC 2014 - tchvatal@suse.com
+
+- Do not depend on ant-nodeps.
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:32 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Sat Sep 17 19:26:28 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Tue May 19 11:13:32 CEST 2009 - mvyskocil@suse.cz
+
+- 'Initial SUSE packaging of beansbindings (from Fedora 11)'
+

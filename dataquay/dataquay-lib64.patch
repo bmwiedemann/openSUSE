@@ -1,0 +1,13 @@
+Index: dataquay-0.9.1/lib.pro
+===================================================================
+--- dataquay-0.9.1.orig/lib.pro
++++ dataquay-0.9.1/lib.pro
+@@ -74,7 +74,7 @@ linux* {
+         target.path = $${LIBDIR}
+         includes.path = $${PREFIX}/include
+         includes.files = dataquay
+-        pkgconfig.path = $${PREFIX}/lib/pkgconfig
++        pkgconfig.path = $${LIBDIR}/pkgconfig
+         pkgconfig.files = deploy/dataquay.pc
+         pkgconfig.extra = sed -e "'"s.%PREFIX%.$${PREFIX}."'" -e "'"s.%LIBDIR%.$${LIBDIR}."'" -e "'"s.%EXTRALIBS%.$${EXTRALIBS}."'" deploy/dataquay.pc.in > deploy/dataquay.pc
+         INSTALLS += target includes pkgconfig

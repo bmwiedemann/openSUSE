@@ -1,0 +1,39 @@
+From: William Preston <wpreston@suse.com>
+Subject: ausearch is looking for the "tclass" field in the entries, which doesn't make sense for apparmor.
+References: bnc#878687
+References: https://www.redhat.com/archives/linux-audit/2014-May/msg00094.html https://www.redhat.com/archives/linux-audit/2014-June/msg00001.html
+Upstream: never
+Signed-off-by: Tony Jones <tonyj@suse.de>
+
+---
+ src/ausearch-parse.c |   18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
+
+--- a/src/ausearch-parse.c
++++ b/src/ausearch-parse.c
+@@ -1735,17 +1735,15 @@ static int parse_avc(const lnode *n, sea
+ 
+ 	// Now get the class...its at the end, so we do things different
+ 	str = strstr(term, "tclass=");
+-	if (str == NULL) {
+-		rc = 9;
+-		goto err;
++	if (str) {
++		str += 7;
++		term = strchr(str, ' ');
++		if (term)
++			*term = 0;
++		an.avc_class = strdup(str);
++		if (term)
++			*term = ' ';
+ 	}
+-	str += 7;
+-	term = strchr(str, ' ');
+-	if (term)
+-		*term = 0;
+-	an.avc_class = strdup(str);
+-	if (term)
+-		*term = ' ';
+ 
+ 	if (audit_avc_init(s) == 0) {
+ 		alist_append(s->avc, &an);

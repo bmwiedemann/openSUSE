@@ -1,0 +1,1094 @@
+-------------------------------------------------------------------
+Mon Feb 25 09:59:16 UTC 2019 - jslaby@suse.com
+
+- Update to version 4.8.4+git.20190224:
+  * integrate some self-contained fixes from #2147
+  * fix #2149
+  * fix -Wsign-compare (len can never become negative anyway)
+  * remove debug code
+  * Fix translation of FPA numerals in ast_smt_pp. Fixes #2145.
+  * fix gc to not remove ternary clauses that are on assignment trail. This addresses issue with drat proofs that don't pass drat-trim due to deletion during gc, but use in conflicts
+  * stopwatch: fix debug build crash in sat solver
+  * fix VS build, take 2
+  * stopwatches: fix a few places that would call start/stop multiple times
+  * and more...
+- crop long changelogs
+- use ExclusiveArch to avoid broken builds on other archs
+
+-------------------------------------------------------------------
+Thu Nov 22 12:03:51 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.8.3+git.20181121:
+  * fix is-unit test in seq rewriter
+  * fixing #1948
+  * Improve intra-doc linking.
+  * fix #1959
+  * fix #1958
+  * add rc2 sample
+  * fix #1956
+  * add macz3 status
+  * and more...
+
+-------------------------------------------------------------------
+Fri Jun 15 08:24:41 UTC 2018 - mimi.vx@gmail.com
+
+- Update to version 4.7.1+git.20180614:
+  * fix memory leak in relation_manager, use for loops
+  * fix #1665
+  * remove trial with mfsr flag
+  * enable non-expression bodies of quantifiers to fix #1667
+  * fix bugs exposed by Nuno's PB example
+  * z3.py: add overflow checks to PB API
+  * gcc mode
+  * int64_t
+  * deal with shift exponent error
+  * deal with shift exponent error
+  * try flags to fix gcc build
+  * int64_t
+  * try new gcd
+  * and more...
+
+-------------------------------------------------------------------
+Fri May 18 14:04:41 UTC 2018 - mpluskal@suse.com
+
+- Use python3 exclusively
+- Do not call contrib/cmake/bootstrap.py - it is obsolete
+
+-------------------------------------------------------------------
+Thu Mar 22 19:11:04 UTC 2018 - dimstar@opensuse.org
+
+- Fix python packaging: create python3-z3 on SLE/Leap 15.0 and
+  Tumbleweed, and python-z3 on older distros.
+
+-------------------------------------------------------------------
+Tue Jan 16 08:35:11 UTC 2018 - jslaby@suse.com
+
+- Update to version 4.6.0+git.20180112:
+  * add missing interpreted tail during bottom-up simplification #1452
+  * Added apply_result::as_expr to the C++ API. Requested here: https://stackoverflow.com/questions/48071840/get-result-of-tactics-application-as-an-expression-in-z3
+  * to ascii or not to ascii #1447
+  * fix build
+  * avoid reset_error in dec_ref in bv_val #1443. Add BSD required template instance #1444
+  * make linear search the default for theory_str
+  * [CMake] Fix #1437.
+  * Use noreturn attribute and __declspec version.
+  * revert use of [[noreturn]]. It's not fully supported on compilers #1435
+  * add noreturn attribute #1435
+  * raise_exception: Annotate that this doesn't return.
+  * and more...
+
+-------------------------------------------------------------------
+Mon Jan 15 15:09:28 UTC 2018 - jslaby@suse.com
+
+- Look for python3_sitelib in tumbleweed
+
+-------------------------------------------------------------------
+Thu Dec 14 12:20:44 UTC 2017 - jslaby@suse.com
+
+- Update to version 4.5.0+git.20171213:
+  * generalize model finder code to be independent of conjunction elimination
+  * Turned assertion failure into proper error message.
+  * fix incorrect clause in argumentsValid subterm of substr reduction
+  * add shortcuts for concatenation and equality propagation
+  * fix build of obj_ref_hashtable
+  * fix setup for non-linear real arithmetic per QF_UFNRA regresssions
+  * add obj_ref_map to make it easier to maintain reference counts with a map of objects
+  * remove deprecated functions from ML API. #1393
+  * [Release Notes] Note that C++11 is required to build Z3 and is also required by the C++ API bindings.
+  * [CMake] Use C++11 when building C++ API example.
+  * fix #1390
+  * and more...
+
+-------------------------------------------------------------------
+Tue Oct 10 12:14:38 UTC 2017 - jslaby@suse.com
+
+- Update to version 4.5.0+git.20171009:
+  * allowing non-literal assumptions
+  * adding escape characters to reason-unknown #1043
+  * add colon to assertion stack levels #1046
+  * remove throw in reason-unknown #1043
+  * add pb built in ops for logic ALL #1045
+  * enable get-unsat-assumptions command per request in #1048
+  * Fix Expr.update in java API returning superclass
+  * Remove tab
+  * put temporaries on trail
+  * Tabs
+  * Fixed signed/unsigned comparison warnings
+  * add string accessors to managed APIs #1051
+  * expose operator kinds for internal functions using their sequence variants. Issue #1051
+  * fix regression in str
+  * fix reference count issue with pinning to expr_ref
+  * add shorthand for enumerating constants in a model
+  * print success after reset assertions #1057
+  * add documentation per #1058
+  * add documentation per #1058
+  * Added __deepcopy__ operators to ref-counted objects in the Python API
+  * [Doxygen] Fix bug where some header files were not being scanned.
+  * [Doxygen] Fix some Doxygen warnings for `z3_optimization.h`
+  * [Doxygen] Fixed mismatched `@{` and `@}` declaration which prevented the `capi` group from being declared properly. For example this prevented from `Z3_mk_solver()` from appearing in the `capi` group.
+  * print success #1068
+  * filter assumptions by membership in initial list #1065
+  * revert change to 1065
+  * print_core as a function
+  * [Doxygen] Rewrite documentation of `Z3_mk_solver()` and `Z3_mk_simple_solver()` to try to make it clearer what the differences are between these APIs.
+  * apply correction by ddcc #1069
+  * escaping names in get-assignment #1061
+  * [CMake] Move CMake files into their intended location so the `contrib/cmake/bootstrap.py` script no longer needs to be executed.
+  * [CMake] Remove bootstrap check. Now that the CMake files are in their correct location we don't need it anymore.
+  * [CMake] Modify `contrib/cmake/bootstrap.py` to do nothing except print a warning.
+  * [CMake] Remove documentation on "Bootstrapping". It is no longer relevant.
+  * properly quote symbols #1061
+  * Add translate method for FuncDecl in java api
+  * Fix docstrings for FuncDecl.translate
+  * fix unsoundness bug in axiomatization of str.at. #1067
+  * port FuncDecl copy to dotnet, continuation of #1073
+  * fix build warning
+  * add sequence recognizers
+  * add concat recognizer
+  * Fix Z3_PRINT_SMTLIB_FULL not working as expected
+  * Fixed AST translation functions in .NET and Java APIs. Fixes #1073.
+  * use less memory #1078
+  * fix build
+  * address issues raised in #998
+  * address issues raised in #998
+  * revert internalize logic for re until debugged
+  * typo
+  * fix bug in qe-lite reported in #1086: bookkeeping of unconstrained variables only works for quantifier-free formulas
+  * disable tweak to seq until there are cycles to test further
+  * Whitespace, typo.
+  * Whitespace
+  * Reverted fix for quoted echo strings when smtlib2_compliant=false. Kindly reported by Armael Gueneau. Fixes #1062.
+  * Fix for the fix for #1062.
+  * Fix bug #1079, integrality testing seems to have been wrong
+  * fix build break
+  * fix assertion, start addressing #1087 by using size_t
+  * add is_hypothesis() method
+  * ensure that variable names are properly quoted
+  * expose iterators in expr_map
+  * api to accumulate stopwatches
+  * expose iterator api of obj_hashtable
+  * remove debug code
+  * factored out is_variable_proc to a header file
+  * improve comments
+  * make qe_lite prefer simpler definitions
+  * typo in a comment
+  * api for accessing dl_rule name
+  * preserve dl rule names during xforms
+  * disable dt2bv for quantified variables as enum2bv does not handle them. #1092
+  * refine test for non-fd to be more inclusive while addressing #1092
+  * [CMake] Fix dependencies for generating `install_tactic.cpp`.
+  * [CMake] Fix dependencies for generating `gparams_register_modules.cpp`.
+  * [CMake] Fix dependencies for generating `mem_initializer.cpp`.
+  * (mev) renamed variable to clarify that it is unused
+  * (mev) bug fix in expanding array equalities
+  * (mev) call expand_value only at the end
+  * add note to Context documentation about scoped uses of contexts #1077
+  * (mev) only reduce function interpretation
+  * [CMake] Fix CMake warning about CMP0042 on macOS
+  * add a template instantination
+  * #1101
+  * [CMake] typos in cmake
+  * fix missing initialization
+  * propagate rule names during xform
+  * another fix for #1101
+  * add separate get-objectives command #1107
+  * adding change notes to release notes for a future release
+  * make the option soup dependencies more user-friendly, #1109
+  * [CMake] Fix missing sanitization in `z3_add_cxx_flag flag()` function which caused CMake 2.8.12 to hit an error when handling the `-std=c++11` flag.
+  * [CMake] Unbreak detection of pthreads for CMake versions < 3.4
+  * [CMake] Remove use of `INSTALL_PREFIX` argument to `configure_package_config_file()`. This argument wasn't available until CMake 3.1 and we don't appear to be really using it anyway.
+  * [CMake] Unbreak the configure step for CMake 2.8.12
+  * [CMake] Fix detection of git description and hash for CMake 2.8.12
+  * Added rlimit increments in theory_arith to avoid non-termination issues via F*.
+  * Adjusted rlimit increments in theory_arith to avoid non-termination issues
+  * Unbreak Z3 C++ API exception support for GCC < 5.0. This was broken by 0b1d5645097d41eec4c43946407e08d57b41ad64 .
+  * [CMake] Add missing python example files.
+  * Fix Python API examples so they work with Python 3 as well as Python 2.
+  * [CMake] Teach CMake to build the `maxsat` example as an external project. The project can be built by building the new `c_maxsat_example` target.
+  * fix bitrot in maxsat example reference management #1116
+  * ensure that auxiliary PB booleans are recognized during rewriting. Fixes segementation fault #1113, but does not address performance issues with quantifiers and optimization combinations
+  * fix maybe non initialized warning
+  * fix run of lp_solver for mps files
+  * Fixed x86/x64 issues in theory_str
+  * Fixed backwards compatibility problem in maxsat example
+  * use worklist algorithm to avoid stack overflow #1125
+  * fix unsoundness bug instroduced when fixing #1125
+  * [TravisCI] Implement TravisCI build and testing infrastructure for Linux
+  * cleanup for warning message
+  * use iterators, update build icon for osx
+  * revert icon update
+  * icon update, take 2
+  * icon update, take 3
+  * icon update, take 4
+  * clean up warnings in theory_str
+  * fix compiler warnings
+  * fix compiler warnings
+  * fix compiler warnings
+  * fix compiler warnings
+  * deal with warning messages
+  * fix trace/debug build for unreferenced variables
+  * fix theory_str warnings: rename get_value() to get_arith_value()
+  * adding doc #1132
+  * Add --guardcf flag to mk_make.py to optionally enable Control Flow Guard.
+  * update documentation according to #1058
+  * detect overlapping signatures #1134
+  * revert update to #1134
+  * fix check for finite sorts #1122
+  * avoid complaining about division by 0 as unhandled in theory-lra
+  * doc fixes
+  * [CMake] Change the `WARNINGS_AS_ERRORS` option from BOOL to STRING to allow a new mode `SERIOUS_ONLY`.
+  * [TravisCI] Add `Z3_WARNINGS_AS_ERRORS` environment variable to control the `WARNINGS_AS_ERRORS` CMake option.
+  * proper theory_arith integration in theory_str::get_arith_value()
+  * add get_num_scopes to python solver api
+  * Fix typo that prevented uses of `bvsmod_i` being parsed.
+  * Fix minor typo in C API documentation
+  * Fixed bug in sat model converter. Fixes #1148.
+  * improved get_arith_value() in theory_str
+  * remove disabled code block in get_arith_value()
+  * add e_internalized() check in theory_str::get_arith_value()
+  * Improved collect-statistics tactic
+  * Fixed inconsistent state upon solver interruption. Partially fixes #951.
+  * Bugfix for fp.fma. One piece of puzzle #872.
+  * pretty printer: fix typo with ReSort sort name
+  * fixes to #1155 and partial introduction of SMTLIB 2.6 datatype format
+  * fixes to #1155 and partial introduction of SMTLIB 2.6 datatype format
+  * fix compiler warnings
+  * fix uninitialized warning
+  * fix regression reported in #1159
+  * Fix for fp.fma encoding. Relates to #872.
+  * Fixed normalization shift in MPF rounder. Relates to #872.
+  * fix bug exposed when running test-z3.exe /a in debug mode, #1159. Add assertions to heap interaction
+  * [TravisCI] Fix running unit tests.
+  * Adding ENABLE_CFI flag to CMake.
+  * fix for #1161
+  * ensure that assertions within the unit tests are exercised in all build modes, remove special handling of SASSERT for release mode #1163
+  * address ASAN bug report #1160
+  * address #1167
+  * fixes #1168
+  * fixes #1171
+  * fixes #1172
+  * fixes #1169
+  * attempt at addressing #989 by referencing _lib directly instead of over lib() in function calls
+  * unexpressing interpolants #1172
+  * add suspenders for #989
+  * updated suspenders for #989
+  * another round of fix for #989 to avoid problems with doxygen generation (TravisCI build failure)
+  * Cleaned up mpf rounder. Rewrote mpf fma. Relates to #872.
+  * fix #1173
+  * revert first fix for #1173, replace by handling single arity chainables
+  * remove arity check
+  * fixing a build error
+  * add dummy initialization to unused variables to avoid compiler warnings
+  * Bugfix for fp.fma. Fixes #872.
+  * Fixed sign bug in mpf fp.fma. Relates to #872.
+  * Fixed renormalization in fp.fma. Relates to #872.
+  * fix #1177
+  * fixes #1176
+  * fixes #1180
+  * fixes #1179
+  * Fixed renormalization in fp.mul. Relates to #872.
+  * make proof_checker less verbose
+  * extra flags to control quant_hoist
+  * mark mk_true() and mk_false() const
+  * option to control array_der in qe_lite
+  * move semantics for ref
+  * Injected 3 missing bits of precision into fp.rem. Relates to #872.
+  * Simplified bit-vector bounds in fp.rem. Relates to #872.
+  * fix build break based on new assertion in smt-eq-justification
+  * Fixed bug in fpa2bv converter. Fixes #1178.
+  * make include paths uniformly use path relative to src. #534
+  * fix build break based on ambiguous path resolution
+  * comments on proof_utils
+  * extra smt params used by spacer
+  * increased verbosity level of smt_context
+  * Spacer engine for HORN logic
+  * preserve rule names when changing rules
+  * do not use array_der when simplifying rules
+  * stubs for spacer-specific API
+  * implemented spacer-specic muz API
+  * public API for spacer
+  * python spacer-specific API
+  * optionally disable propagate variable equivalences in interp_tail_simplifier
+  * optionally disable subsumption checker
+  * Optionally blast arrays
+  * eager quantifier instantiation for quantified array properties
+  * small improvements to bmc engine
+  * add initialization to unused parameters
+  * Added missing float conversion in fpa2bv converter. Relates to #1178.
+  * fixing include paths
+  * updating includes
+  * Debug fix in fpa2bv converter. Relates to #872.
+  * remove relative include from API
+  * remove local change
+  * fix build errors
+  * removing pragmas to make travis happy
+  * more includes
+  * updated include directives
+  * a few more spacer related warning messages
+  * z3-qe-lite?
+  * adding cdecl directive to Z3_qe_lite to address build failure for Java bindings
+  * Fixed build problems with .vcxproj
+  * renamed LP bound propagator to avoid linker name clashes
+  * Fixed cmake build
+  * fixed typo in optimized unsat core plugin code
+  * refactored variable names and added comments to min_cut-related methods for unsat-core-computation
+  * Fixed MPF fp.rem(0,0,0). Relates to #872.
+  * Fixed ML API build.
+  * Fixed ML API build again
+  * Fixed LP tests
+  * updated include directives
+  * trying to fix build break on use of iterator
+  * instrument unit test to use reproducible random number generator
+  * use ifdef instead of if for _TRACE
+  * moved obj_equiv_class to ast
+  * use common idioms for factor-equivalence code
+  * [TravisCI] Try to make the LTO build more reliable.
+  * update API functions
+  * update header include generation to use relative paths #534
+  * fix a but in adjusting term indices for implied_bounds
+  * use rfind instead of index to avoid prefix clashes #534
+  * more efficient lar_solver::get_model
+  * fix #1195
+  * fix regex bug in theory_str for empty string match. need to fix indents
+  * fix indentation and add support for re.allchar
+  * enable overloading resolution on define-fun declarations, fix #1199
+  * Revert "fix indentation and add support for re.allchar"
+  * fix indentation
+  * add re.all to theory_str
+  * update Ackerman reduction for division to make Andre and Nathan happy
+  * [CMake] Change how the default value of `USE_OPENMP` is set.
+  * [TravisCI] Unbreak showing interactive log output for non-LTO builds.
+  * [TravisCI] Add scripts to build and test Z3 on macOS (OSX) and add a single configuration to TravisCI to test.
+  * rewrite to address some cases like #1203, updates to division handling in NRA
+  * address bug reported in #1196 and include additional ad-hoc rewrites to handle some string cases
+  * inc version
+  * update handling of contains constraints taking string literals into account
+  * fix for #1202
+  * recognize theory_i_arith to fix #1200
+  * address inconsistent states encountered when cancelling, #1197
+  * deal with absence of integer congruence root by querying arithmetic theory directly, #1202
+  * revert unsound change in integer extraction from expressions
+  * handle undefined constant cases for int.to.str
+  * fix string rewriting according to definition. Relates to examples in #1202
+  * another fix to str.to.int/int.to.str semantics
+  * add documentation to string rewriting
+  * [TravisCI] Temporarily disable the macOS build configuration.
+  * Drop no-strict-aliasing and fix 2 places where it was violated
+  * use static_assert in COMPILE_TIME_ASSERT
+  * micro-optimization in tactics' cleanup(): avoid dealloc+alloc traffic
+  * another stab at #989
+  * fix crash introduced in my previous commit
+  * revert the patch to remove no-strict-aliasing VS 2012 doesnt support C++11 unions..
+  * enable QF_UF mode use same parameters whether with or without static featues, #1141
+  * enable QF_UF mode use same parameters whether with or without static featues, #1141, revert some breaking changes that should not have been part of commit
+  * add logic 'SAT' as an alternative name to QF_FD some solverFor(SAT) works too. #1152
+  * patch
+  * add missing functions to serialize optimize benchmarks for Java #1215
+  * add missing functions to serialize optimize benchmarks for Java #1215
+  * Whitespace
+  * Bugfix for MAM. Fixes #1213. Partially addresses  #1212.
+  * mam
+  * Whitespace
+  * Added diagnostic output for pattern inference.
+  * Update header includes to be relative to `src/` directory.
+  * [CMake] Clean up setting include paths.
+  * Whitespace
+  * Fixed ref-counting bug in smt_model_checker. Fixes #1212.
+  * remove reinterpret cast occurrences that require disabling strict alias analysis #987 #1210
+  * remove reinterpret cast occurrences that require disabling strict alias analysis #987 #1210
+  * change typename to class in optional to deal with compilation
+  * fix compilation of tests
+  * fix #1217
+  * :q
+  * add sequences to ML API #1214
+  * improve error message in theory_str when an invalid term in str.to.re is encountered
+  * ensure that timeouts are distinguished from other cancel events #848
+  * missing parameters for OSX/Linus
+  * add re.all to NFA in theory_str
+  * register auxiliary constants from projection operation
+  * revert local changes to theory_str
+  * purge iterators
+  * compiler warnings
+  * Fixed typo in ML API. Relates to #1214.
+  * fix regression exposed by segfault2.smt2 crash
+  * fix crash
+  * another crash fix
+  * obj_hashtable: Constify
+  * First version of the inj. tactic
+  * add ability to create and manipulate model objects
+  * Update debug output
+  * Remove unnecessary parameter
+  * add comments addressing some questions #1223
+  * injectivity: Fixup rewriter
+  * reducing dependencies on simplifier
+  * fix regressions introduced when modifying macro_util
+  * trying to get rid of last simplifier dependency in macros
+  * injectivity: Cleanup whitespace
+  * injectivity: Add tactic to CMake-based builds
+  * (Re-)added option to disable lemma deletion in the smt_context.
+  * added missing addition to smt_params_helper.pyg
+  * fix build
+  * [CMake] Teach CMake to support git worktrees. This fixes the bug reported by @nbraud reported in #1227.
+  * removing dependency on simplifier in pattern_inference
+  * remove simplifier dependencies from ufbv tactics
+  * [Doxygen] Fix function name in docstring
+  * remove simplifier dependencies from cmakelist.txt files
+  * pruning simplifier dependencies
+  * using rewrite in push_app_ite
+  * Bugfix: get_objectives in ML API
+  * fix build issues
+  * Whitespace
+  * Whitespace
+  * move pull/push files
+  * remove dead code
+  * Whitespace
+  * Eliminated the dependency of the macro-finder on the simplifier.
+  * Revert "Eliminated the dependency of the macro-finder on the simplifier."
+  * Re-enabled macro-related options for the smt_context
+  * Whitespace
+  * Whitespace
+  * Added unsat core support to the macro-finder.
+  * update new assertions
+  * moved files
+  * remove simplify dependencies
+  * remove simplify dependencies
+  * remove simplify dependencies
+  * remove simplify dependencies
+  * remove simplify dependencies
+  * remove simplify dependencies
+  * mising files
+  * mising files
+  * mising files
+  * mising files
+  * removing more dependencies
+  * separate out, add copy constructor
+  * enforce arithmetic normalization
+  * removing dependencies on simplifier
+  * removing dependencies on simplifier
+  * fixes based on regression tests
+  * fixes
+  * purify
+  * add API methods for creating and modifying models, #1223
+  * n/a
+  * fix naming for functions #1223
+  * update names
+  * raise an exception if trying proof generation for the SAT solver. Stackoverflow question  https://stackoverflow.com/questions/45885321/check-function-while-qf-fd-logic-is-set-throws-accessviolationexception
+  * add pre-processing simplificaiton of power to the legacy simplifier Fixes #1237
+  * complement regular expressions when used in negated membership constraints #1224
+  * complement regular expressions when used in negated membership constraints #1224
+  * port simplifications on bv2int
+  * remove old_simplify dependencies
+  * include epsilon closure in initial state set, streamline final configuration computation #1224
+  * initial sketch for dominator based simplifiation
+  * fix some basic mistakes in dominator code
+  * remove simplifier files
+  * elaborate on dom simplifier
+  * Added global model completion for the SMT2 frontend.
+  * Model completion bug fix
+  * update to theory_seq following examples from PJLJ
+  * update to theory_seq following examples from PJLJ
+  * fix ordering for value propagation to ensure values are preferred
+  * prune dead states from automata
+  * fix perf regression with negative polynomial normalization, adding new datatype plugin
+  * working on parametric datatype redo
+  * update rewriting of equalities and monomials for regressions
+  * remove dom-simplifier from build
+  * build fixes
+  * build fixes
+  * build fixes
+  * build fixes
+  * doctest fix
+  * hide new datatype plugin
+  * aligning simplifier and rewriter for regression tests
+  * aligning simplifier and rewriter for regression tests
+  * re-introduce eq2ineq name for rewriting parameter
+  * support for smtlib2.6 datatype parsing
+  * support for smtlib2.6 datatype parsing
+  * fix seg-fault from #1244
+  * fix missin clause generation for ad-hoc handling of conjunction #1245
+  * support for legacy datatype test
+  * fix bug in generation of non-recursive constructor, modular starting point shifts during recursive calls
+  * remove extra token
+  * merge
+  * rename del to remove to avoid compiler error
+  * fix front-end for datatype
+  * fix instantiations
+  * fix parse/print of ADTs
+  * fix for #1247
+  * fixes
+  * adding declarations for regression tests
+  * remove unstable sequence interpolant from doc test
+  * fix #1248, fix #1249
+  * expand select/store in pre-processor
+  * copy declarations
+  * iterator -> for
+  * na
+  * fix plugin translation
+  * remove V2 reference
+  * fix OSX build
+  * fix exposed memory leak
+  * Exposed internal FPA func_decl kinds. Added missing FPA simplifications. Fixes #1242.
+  * Renamed FPA-internal functions now that they are exposed.
+  * remove verbose
+  * add alias bv2nat for bv2int to make it easier to interoperate #1252
+  * Eliminated unspecified operators for fp.to_*bv, fp.to_real. Also fixes #1191.
+  * Fixed BV encoding of fp.to_{s,u}bv.
+  * Improved FPA models of partial theory functions
+  * Revert "[TravisCI] Temporarily disable the macOS build configuration."
+  * Style, formatting
+  * Fixed bug in ackermannization model converter
+  * Refactored treatment of unspecified FPA functions.
+  * Taught the model_evaluator to look for definitions of partial theory functions in the model upon evaluation failure.
+  * Whitespace
+  * Debug traces
+  * Removed unused function
+  * Fix for model completion (via cmd_context)
+  * Bugfixes for fp.to_* operators
+  * Portability fixes
+  * add QF_DT
+  * Fixed bug in fp.to_{s,u}bv
+  * Tabs, formatting.
+  * Partial cleanup of util/lp/*
+  * Cleaned up LP test code.
+  * Copyright messages
+  * Tabs, formatting.
+  * removed temp file
+  * Removed unused variable
+  * Tabs, whitespace
+  * typo
+  * check for datatype selectors when model validation fails
+  * fix generation of symbolic automata with no moves but accepting initial state
+  * fix #1258
+  * have quantified tactics work with bound Boolean variables. Adding stubs for match
+  * add match expression construct to SMT-LIB2.6 frontend
+  * fix #1261
+  * remove type annotation from var printing
+  * Fix warnings in C++ API
+  * add pattern match validation
+  * Eliminated the remaining operator kinds for partially unspecified FP operators.
+  * Eliminated the remaining operator kinds for partially unspecified FP operators from the AST API.
+  * removing iterators
+  * add feature to display benchmark in format seen by SAT solver
+  * add newline
+  * remove utf fixes #1265
+  * n/a
+  * fix #1266 by bypassing topological ordering on theory symbols
+  * remove display
+  * check for eof, based on testing garbled repro from #1267
+  * fixing issue [1269]
+  * disregard model validation when source expression contains uninterpreted theory functions
+  * model validation update take 2
+  * fix pydoc part of `make api_docs`
+  * fix Python API doxygen (`make api_docs`)
+  * Removed -std=c++11 from OCaml stubs build command. Fixes #1263.
+  * fix #1277 fix #1278
+  * add diagnostics to DDNF and fix #1268
+  * fix #1276 related crashes for re-sumption after cancellation
+  * missing setup datatypes for QF_DT
+  * update to _get_args to convert arguments from AstVector to a python list
+  * add cancellation checks
+  * add this->
+  * dom_simplify_tactic: micro opt
+  * [TravisCI] Refactor as many CI default options as possible so that the Docker and "TravisCI macOS" builds share most of the same defaults by sourcing the `ci_defaults.sh` file.
+  * [TravisCI] Fix bug where `Z3_BUILD_TYPE` was not being passed as a Docker build argument.
+  * [TravisCI] Fix bug. `PYTHON_EXECUTABLE` should not be in common defaults. The location is dependent on the implementation.
+  * dom_simplify improvements with Nikolaj
+  * #1284 build problems
+  * deal with empty set of post-orders
+  * pin elements in expr2depth
+  * bail out dominators after log number of steps
+  * adding bv_bounds tactic dominator style
+  * Removed Ubuntu x86 VSTS/CI build (not supported by VSTS anymore).
+  * [TravisCI] Workaround slow unit test execution for Debug builds.
+  * Fix typo
+  * [TravisCI] Update out of date `README.md` file.
+  * removed unused variables
+  * adding backwards pass
+  * fix debug build
+  * [TravisCI] Modify Debug configuration that I forgot to change with `RUN_UNIT_TESTS=BUILD_ONLY`.
+  * reverse arguments
+  * fix leak
+  * dom_simplifier: fix dominator computation
+  * have quantifier equality take names into account
+  * disable caching of simplifier when applied to direct arguments of terms. Caching is only valid when applied to dominator children
+  * fix build by including mk_pp
+  * distinguish simplify_rec from simplify immediate argument
+  * use idom for checking dominator relationships
+  * fix #1288
+  * likely fix for #1287
+  * fix #1286
+  * fix #1290
+  * fix #1287, again
+  * fix #1288, again
+  * fix #1288, again
+  * fix build break
+  * another fix for #1288
+  * fixes for #1296, removing COMPILE_TIME_ASSERT
+
+-------------------------------------------------------------------
+Fri Jun 16 20:03:49 UTC 2017 - mpluskal@suse.com
+
+- Update cmake parameters
+
+-------------------------------------------------------------------
+Thu May 25 11:47:32 UTC 2017 - jslaby@suse.com
+
+- Update to version 4.5.0+git.20170523:
+  * update readme
+  * ignore Z3-str source
+  * failing test case: SMT2 parse string constants
+  * create and register string theory plugin the parser gets a little bit further now! rejects input with "unexpected character"
+  * fix string constant representation in parser spec1 loopback OK
+  * pretty-printing of string constants in AST spec2 looks good now
+  * load str decl plugin; recognize String sorted constants
+  * register Concat function now reaches str_decl_plugin::mk_func_decl()
+  * at least for now, Concat is no longer associative this means that we'll always have (Concat a b) instead of variadic forms
+  * add Length function to theory of strings
+  * AND MUCH MORE...
+
+-------------------------------------------------------------------
+Mon Mar 13 15:30:57 UTC 2017 - jslaby@suse.com
+
+- Z3Config.cmake is not needed anymore
+- Update to version 4.5.0+git.20170313:
+  * Fixed utf-8 version string handling for python2. Resolved #787
+  * Set soname version correctly in cmake build
+  * cmake build: set SOVERSION to include the minor version number
+  * fix overflow exposed in #880
+  * Thread labels through tactic system
+  * Add basic Sine Qua Non filtering
+  * adding parallel threads
+  * Fix off-by-one bug in array indexing in the OCaml bindings
+  * refine parsat
+  * add const &
+  * Introduce and use labels_vec
+  * ensure that parallel threads are only invoked when thread count > 1
+  * add name
+  * delete comment
+  * delete unused args
+  * reindent
+  * use insert_if_not_there
+  * fix issues with running parallel solver: random strategy should not be a default on all solvers. Also reuse base solver
+  * fix bug in propagation of parameters to combined solvers
+  * bypass combined solver when logic is set to QF_BV or QF_FD
+  * bypass combined solver when logic is set to QF_FD
+  * move exchange par
+  * enable pb theory always as pb terms can be introduced during transformations. Issue #884
+  * use is_uninterp
+  * correctly pretty-print
+  * add and use new is_pattern recognizer
+  * add par_or tactic to C++ API. #873
+  * fix bug in lexicographic handling in maxres: previous assumptions were not committed in corner cases
+  * Fixed signed/unsigned warnings
+  * Fixed model-converter segfault in ::check_sat. Relates to #881
+  * Fixed model-converter segfault in ::check_sat. Relates to #881
+  * add itos/stoi conversion to API. Issue #895
+  * fix model generation for non-linear expressions, reported by Martin Suda and Giles Reger
+  * expose numerator/denominators for Martin and Giles
+  * add missing mod/rem/is_int functionality to C++ API
+  * make parameters accessible from expressions. Issue #896
+  * add par_and_then
+  * use non _ method from z3printer module so to be resilient against how _ is handled as indicator of private functions
+  * add recursive function graphs to model, adapt rewriter to bypass branches whose evaluation is redundant
+  * add octal escape to seq_decl_plugin
+  * C-style octal escapes, including 1- and 2-digit escapes
+  * add _re.unroll internal operator to seq_decl_plugin
+  * expose bounds as vector expressions instead of containing ad-hoc expressions. Issue #911
+  * expose bounds as vector expressions instead of containing ad-hoc expressions. Issue #911
+  * remove unreferenced label
+  * fix type on exception message
+  * fix unhandled finite domain sort rewrite case. Issue #918
+  * Java API for getting the objective value as a triple
+  * Sane indentation + removing extra spaces for Optimize.java
+  * Class Optimize#Handle should be static,
+  * fixed bug where `mk_make.py --build=...` would fail to handle absolute paths correctly.
+  * Free allocated char arrays in JNI API
+  * [CMake] For single configuration generators only allow `CMAKE_BUILD_TYPE` to be one of the pre-defined build configurations that we support.
+  * add boolean operators to zstring and fix ostream
+  * Tabs, whitespace
+  * fix bug for bit-vector optimization. Issue #919
+  * fix bug for bit-vector optimization. Issue #928
+  * ensure evaluation of array equalities is enabled for external facing evaluator. Issue #917
+  * check that formulas are in lira before invoking qsat. Issue #919
+  * add notes to README based on feedback in #916
+  * remove scratch notes from readme
+  * include recursive functions to models. Issue #898
+  * remove print breaking build
+  * fixing build break, adding fixedpoint object to C++ API
+  * adding fixedpoint object to C++ API
+  * fixing build break, addressing #935
+  * z3py: With tactical should not try to use context as a parameter
+  * move restore relevancy until after literals have been replayed
+  * [CMake] Support including Git hash and description into the build. CMake will automatically pick up changes in git's HEAD so that the necessary code is rebuilt when the build system is invoked.
+  * [CMake] Implement generation of `Z3Config.cmake` and `Z3Target.cmake` file for the build and install tree.
+  * [CMake] Python examples should only be copied over if python bindings are being built.
+  * [CMake] Build `c_example`, `cpp_example` and `z3_tptp5` as external projects.
+  * [CMake] Fix typo handling OpenMP flags.
+  * [CMake] Fix examples linking against libz3 when it is built as a static library on Linux.
+  * [CMake] On Windows when building the examples copy the Z3 library into the directory of the example executable so that it works "out of the box".
+
+-------------------------------------------------------------------
+Sat Feb 25 13:36:24 UTC 2017 - jslaby@suse.com
+
+- add Z3Config for cmake
+
+-------------------------------------------------------------------
+Fri Jan 27 13:44:56 UTC 2017 - mpluskal@suse.com
+
+- Update to version 4.5.0+git.20170126:
+  * streamline logging in arithmetic
+  * adding preferred sat, currently disabled, to wmax. Fixing issue #815
+  * make a few functions static
+  * remove 2 outdated comments
+  * add a few more statics to avoid symbol clashes
+  * Re-added context creation locks in the Java API. Relates to #819.
+  * Bugfix for model construction. Fixes #828.
+  * adding range to C API. Issue #831
+  * add range constructor to .NET API
+  * add regular expression operations to C and C++ API
+  * add regular expression features to C# API
+  * add missing complement
+  * add python API for newly exposed regex constructors
+  * exposing regular expression features to address issue #831
+  * produce error message for cores with optimization. Issue #825
+  * Whitespace
+  * Bugfix for special-case handling in fp.fma.
+  * fix bug in encoding of axioms for indexof. Issue #806
+  * Bugfix for special-case handling in fp.fma.
+  * Build fix for C++ example
+  * add virtual destructors, fix operator code for API methods complement and intersection per note by Loris d'Antoni
+  * address #835
+  * address #835
+  * address warnings from #836
+  * add virtual destructor to intermediary class in case this helps for #835
+  * address other warnings per input from delcypher
+  * bail out on failure to properly project
+  * bail out on failure to properly project. issue #837
+  * remove nested booleans during pre-processing. issue #837
+  * add suggestions from #835
+  * fix bug in handling of repeated soft constraints. #815
+  * Add rewrite rule for property encoded in #812
+  * Fix implementation of `scoped_timer` under Linux where it was incorrectly assumed that `pthread_cond_timedwait()` would exit due to a condition variable being signaled or a timeout occuring.
+  * handle model generation from issue #748. Deal with warnings from #836
+  * Build fix for C/C++ example programs.
+  * Style, whitespace.
+  * ensure that FD logic understands pb from command context
+  * Making z3 python look in its installation directory for the z3 lib
+  * fix generation of wcnf
+  * Build fix for static binaries + shared examples
+  * Fix for parallel builds of the OCaml API. Relates to #797.
+  * Fix inconsistent emission of OCaml enumeration files. The ordering of emitted enum values is not consistent between python 2 or 3. The root cause of the problem was a dictionary's keys being iterated over which has no defined order.
+  * Refactor `mk_z3consts_ml()` code into `mk_z3consts_ml_internal()` and move that into `mk_genfile_common.py`. Then adapt `mk_util.py` and `mk_consts_files.py` to call into the code at its new location.
+  * Refactor `update_api.mk_ml()` so that the source and output directories can be different. This feature will be needed by the CMake build system to build the OCaml bindings.
+  * Fix issue with bd1f07f864a7f1790cec08a306ccc17507f7e5a8 pointed out by @nunolopes .
+  * remove sources for unused variable warnings
+  * fix debug build, unused variable warnings
+  * fix build again
+  * Add -fpic to armv7/armv8 build
+  * updated encodings
+  * remove redundant disjunction in compilation of at-most-1 constraints, log mutexes
+  * fix missing else reported in #855
+  * improve parser error message over API, streamline names of statistics for arithmetic solver
+  * add restart.max parameter to control cancellation based on restart count
+  * initialize watch in assign_eh
+  * make get_consequence call skip check-sat if a model is already there
+  * enable incremental consequence finding with restart timeout
+  * Fixed initialization order warning.
+  * add operator for issue #860
+  * allow disabling exceptions from C++. Issue #861
+  * moderate exception behavior for issue #861
+  * fix bug in antecedent collection for consequence finding: once an antecedent is set, it should not be cleared
+  * add at-least and pbge to API, fix for issue #864
+  * remove polynomial factorization as suggested by issue #852
+  * Removed polynomial factorization test cases. Relates to #852 and fixes #865.
+  * GCC compilation/keyword fix. Relates to #864
+  * update CMakeList to remove polynomial-factorization
+  * Formatting, whitespace
+  * Added option to extend unsat cores with literals that (potentially) provide quantifier instances.
+  * Cleaned up #include<iostream> in api* objects.
+  * Formatting, whitespace, and Z3_API annotations.
+  * Bugfix for smt.core.extend_patterns
+  * Omit '.dll' from library name for DllImport.
+  * Mark void DummyContracts as Conditional to avoid compiling their arguments.
+  * Corner-case fix for smt::solver::pop_core
+  * Update README.md
+  * remove unused features related to weighted check-sat
+  * Added win64 build badge
+  * Separated win32/64 builds
+  * Added MAKEJOBS env var to mk_unix_dist.py
+  * Fix unsound handling of upper bounds in wmax, thanks to Patrick Trentin for report and careful repros #847
+  * use stirngs for env variables
+  * fix crash with unary xor #870
+  * fix memory leaks from cancellations
+  * update macro_util logging to uniform format
+  * build fix
+  * Added (include ...) SMT2 command.
+  * Added filenames to error messages for when we have more than one file.
+  * Enabled filenames in error messages during inclusion of files.
+  * Updated cmake build
+  * Windows build fix.
+  * Bugfix for macro finder. Fixes #832.
+  * fix bug in consequence extraction: the order of bcp is not fixed between restarts, so the order of unit literals may not be preserved. This is relatively rare, so we optimize for the case where we assume bcp preserves order (and maybe miss some consequences)
+  * Another fix for  #847. Reset wmax theory solver state between lex calls, otherwise it uses stale constraints
+  * Added .NET 3.5 solution/project files
+  * x64 build fix for .NET 3.5 API
+  * Windows build fix.
+  * access parameters from Python API
+  * Added option to limit the distance of unsat core extension through patterns.
+  * fix test for int-value
+  * fix regression for z3num
+  * fix bug in sat-simplifier decreasing heap values of variables that are not in the heap
+  * fix part 1 of #875
+  * add warning for scearios of #876
+  * add format #879
+  * rework sat.mus to use restart count for bounded minimization
+
+-------------------------------------------------------------------
+Wed Nov 30 09:22:36 UTC 2016 - jslaby@suse.com
+
+- Update to version 4.5.0+git.20161129:
+  * remove legacy interface to dt2bv tactic
+  * Fixed potential problems with invalidated iterators.
+  * Fix for previous commit.
+  * whitespace
+  * Silenced GCC warning about empty loop body.
+  * local
+  * fix mutex finding for smt-core: it was returning mutexes for negations of literals
+  * Bugfixes for the FPA  API
+  * fix at-most-1 constraint compiler bug
+  * fix at-most-1 constraint compiler bug
+  * add bounded-int and pb2bv solvers to fd_solver, use sorting networks for pb2bv rewriter when applicable, hoist to pb2bv_rewriter module and remove it from the pb2bv_tactic
+  * add example to exercise at-most-1 constraints
+  * add documentation
+  * add missing file
+  * disable local optimization in presence of non-linear constraints, addresses issue #758
+  * whitespace
+  * Added accessors to extract sign/exponent/significand BV numerals from FP numerals.
+  * Added functions to test FP numerals for special values.
+  * Fixed FP numeral special value sig/exp extraction functions.
+  * Resolved rebase conflicts
+  * Refactored FPA numeral accessors.
+  * Replaced antiquated header with modern equivalent.
+  * removed unused variables
+  * fixed GCC build issue in tests
+  * a more efficient encoding for pseudo-Boolean inequality constraints into bit-vectors
+  * merge
+  * fix incorrect assertion when checking signs of literals, exposed by mitls regressions
+  * fix incorrection assertion when checking signs of literals, exposed by miTLS regressions
+  * remove dead (and incorrect) code
+  * add handling of pseudo-boolean inequalities that use if-expressions over Booleans and arihmetic instead of built-in PB predicates
+  * fix sign of constant in pb constraint
+  * removed debug output
+  * fix for biased flag on get_numeral_exponent_string
+  * fix for Python API installation
+  * fixed initialization order warning in pb2bv_rewriter
+  * fixed unhandled case warning in test/qe_arith.cpp
+  * additional robustness check for incremental sat solver core when it recieves interpreted constants, added PB equality to interface and special handling of equalities to adddress performance gap documented in #755
+  * fix unit tests for pb
+  * disabled unnecessary assertion
+  * Bugfix for Python API.
+  * Marked .NET Z3Exception as serializable
+  * Fixed FPA unbiased exponent accessors
+  * Bugfix for bv2fpa_converter. Fixes #767.
+  * Added FPA numeral predicates to .NET API
+  * Added FPA numeral predicates to Java API
+  * Added FPA numeral predicates to ML API
+  * remove conflict on false disequality, introduced regression
+  * Added Z3_fpa_is_numeral_negative to FPA API
+  * Added is_numeral_negative to .NET and Java APIs
+  * Added FPA numeral accessors/predicates to Python API
+  * speed up consequence finding by avoiding local search whenver assumption level is reached during the initial phase
+  * fix enum2bv to handle singleton enumeration types, differentiate disequality conflicts for theories that handle disequalities vs. theories that don't
+  * rewind qhead to ensure re-propagation after cancellation
+  * catch cancellation exceptions, return undef
+  * fixing cancellation code paths for inc_sat_solver
+  * removed debug output
+  * Build fix for libz3.vcxproj.
+  * whitespace
+  * Bugfix for bouned_int2bv_solver
+  * ensure that variables passed to consequence finding have bound constraints, if applicable. Even if those variables do not occur in the constraints
+  * merge
+  * fix performance bottlnecks: gc of literals walk through potentially huge watch-lists, avoid user-push/pop around calls to solver2tactic
+  * fix memory abuse in internalization in inc-sat-solver
+  * remove buggy and unused equivalence relation plugin. Github issue #770
+  * disable sat solver when proofs are turned on. Fixes issue #768
+  * fix bug in mutex extraction, reported by Patrick Trentin
+  * build fix
+  * bugfix for disequality propagation in smt_context
+  * enable unsat core extraction in nlsat_tactic
+  * Fixes for .NET Core build
+  * fixing unsat core extraction for tactics
+  * fix evaluator for array store expressions
+  * remove recursive expansion of else-case
+  * fixed log output typo
+  * Added signed .NET assemblies in unix builds
+  * Whitespace
+  * Disabled some ITE rewrite rules that were applied by default, but too expensive. Added re-computation of subterm occurrences in ctx_simplify_tactic. (Performance fixes for QF_LIA benchmarks).
+  * check for logic in solver
+  * fix generation of fresh constants for uninterpreted sort in EPR, Issue #649
+  * Added release notes for the upcoming 4.5.0 release
+  * fix crash in poly normalizer exposed by qe. Issue #775
+  * Updated optimization ML API. Addresses #776.
+  * Whitespace, typo
+  * eliminated unnecessary variable
+  * fix breaking change to theory-seq
+  * Whitespace
+  * Whitespace
+  * updated release notes
+  * added is_numeral_negative to ML API.
+  * FPA API clarification
+  * Bugfix for denormal numeral exponents
+  * build fix
+  * bugfix for macro finder
+  * detect quantifiers in model expressions to quiet down failing model validation
+  * Include Python API files in distributions.
+  * Bumped version to 4.5.0
+  * Standardize on __uint64 instead of unsigned __int64
+  * Bumped version number.
+  * [CMake] Bump the version number in the CMake build.
+  * fixed hard-coded version number in setup.py
+  * Whitespace
+  * Typo
+  * Bugfix for Z3_fpa_get_numeral_*_uint64. Relates to #570.
+  * Bugfix for Z3_fpa_get_numeral_sign. Relates to #570.
+  * typo
+  * fix crash reported in #784
+  * Fixed problems with aborted rewriters in theory_fpa. Relates to #570.
+  * Fix cleanup/initialization of sat::simplifier. Relates to #570.
+  * Fixed compiler warning
+  * Fixed interruption cleanup bug in sat_solver. Relates to #570.
+  * Fixed potential SAT solver cleanup problem. Renamed functions for consistency. Relates to #570.
+  * fix lexicographic combinations for wmax: pb constrsaints were not interpreted in Boolean benchmarks. #782
+  * make semantics of extract/substr deterministic. Issue #781
+  * Fixed Windows distribution script.
+  * Bugfix for rewriter exceptions in theory_fpa. Relates to #570.
+  * Assertion fix for theory_fpa. Relates to #570.
+  * improving perf of mutex finding, revert semantics of 0 timeout to no-timeout. Issue #791
+  * fix perf bug reported in #790
+  * Fixed interruption/cancelation issue in rewriter.
+  * Cleaned up hacky rewriter cancelation fix in theory_fpa.
+  * fix and coallesce clique functionality
+  * tune initialization for wmax and sortmax
+  * fix bug incorrect clearing of goals during node creation. Issue #777
+  * fix unsoundness reported in issue #777, disable ematching on recursive function definition axioms exposed in #793
+  * Fix GCC/Clang compilation.
+  * fix crash in new clique code
+  * re-enable ematching on recursive function definitions, disabling ematching breaks regressions
+  * Fix for the documentation scripts. Fixes #799.
+  * Added optional synchronization for multi-thread API logs. Relates to #798.
+  * Fixed OpenMP problems in log synchronization. Relates to #798.
+  * fix handling of AC operator ++ on regular expressions. Issue #804
+  * fix warnings in configure script
+  * Do not request time stamp if not needed
+  * Fixed iterator invalidation bug in SAT probing. Relates to #798.
+  * optimize pattern matching code generator for DAG patterns generated code now uses COMPARE instructions to compare subtrees instead of diving into both subtrees. Code is thus smaller and fails faster.
+  * small optimization in compilation of multi-patterns also make the path faster for single patterns
+  * mam compiler: move reset of matched_exprs cache next to code reset
+  * blast distinct in incremental BV solver
+
+-------------------------------------------------------------------
+Wed Oct 19 07:06:50 UTC 2016 - jslaby@suse.com
+
+- Update to version 4.4.1+git.20161018:
+  * adding enumeration tests
+  * spacing, unit test
+  * Bugfix for bv2fpa (model) conversion.
+  * Removed unnecessary variables.
+  * [CMake] Fix building the Java bindings.
+  * adding unit test for enumeration types
+  * Tabs
+  * undo breaking commit
+  * Whitespace
+  * Fixed iterator invalidation bug in theory_arith_nl.
+  * add fd solver for finite domain queries
+- remove link-against_libs.patch
+
+-------------------------------------------------------------------
+Mon Oct 17 12:41:56 UTC 2016 - jslaby@suse.com
+
+- make -devel require libz3, not z3
+- add link-against_libs.patch
+
+-------------------------------------------------------------------
+Mon Oct 10 19:24:46 UTC 2016 - mpluskal@suse.com
+
+- Update to version 4.4.1+git.20161007:
+  * Z3_query_constructor documentation clarification
+  * add mutex pass
+  * Build/test fix for python3
+  * Test fix for python3
+  * Added dummy code contracts for .NET Core/CoreCLR builds.
+  * Remove unnecessary "unsafe" qualifier on internal .NET API class.
+  * add mutex preprocessing to maxsat, add parsing functions to C++ API
+  * add example of parsing with external declarations
+- Speedup build by using ninja
+
+-------------------------------------------------------------------
+Fri Sep 16 10:21:56 UTC 2016 - mpluskal@suse.com
+
+- Update to version 4.4.1+git.20160914:
+  * addressing max-segment issue for AMD64 + Debug
+  * safe sat clause_offset in debug mode
+  * safe sat clause_offset in debug mode
+  * fixes to consequence generation and cancellation
+  * move from uint_set to hashtable over unsigned to save memory overhead in consequence generation
+  * ensure stoi axiom even when no value is present for argument. Issue #731
+  * add missing rewrite rule. Issue #731
+  * fix heisenbug, unintialized variable, issue #720
+  * add patch to deal with bug exposed in issue #721
+  * fix regression in seq-replace rewriting
+  * ensure that status is displayed in SMT-LIB2 compliant way. Issue #734
+  * Create socrates.py
+  * remove special characters
+  * Update socrates.py
+- Rename python bindnigs to follow openSUSE guidelines
+- Change _service to disabled to avoid unnecessary executions
+- Small packaging changes
+
+-------------------------------------------------------------------
+Wed Jul 20 04:21:40 UTC 2016 - jengelh@inai.de
+
+- Update descriptions
+
+-------------------------------------------------------------------
+Mon Jul 18 09:54:52 UTC 2016 - mpluskal@suse.com
+
+- Update to version 4.4.1+git.20160717:
+  * fix bugs exposed in #677. to_int(x) has the semantics that to_int(x) <= x, and to_int(x) is the largest integer satisfying this inequality. The encoding in purify_arith had it the other way x <= to_int(x) contrary to how to_int(x) is handled elsewhere. Another bug in theory_arith for mixed-integer linear case was also exposed. Fractional bounds on expressions of the form to_int(x), and more generally on integer rows were not rounded prior to internalization
+  * garbage collect all api::object references when calling del_context. Request issue #679
+  * add proper garbage collection to ast_manager. Issue #679
+  * remove unfinished ite-macro finder, tune ast GC to ensure nodes are roots only once
+  * fix rounding mode for pseudo-boolean constraint creation, Issue #683
+  * add object z3 objects to target context during translation, to fix build regression failure on z3test.py
+  * add tptp5 example to cmake, adding output SZS directives for Geoff
+  * fix ubuntu build failure
+  * mark also ast in parameters as GC roots. Issue #676
+- Use cmake macros
+- Some spec file polishing with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jul 18 08:39:50 UTC 2016 - jslaby@suse.com
+
+- update to 20160717
+  * a lot of changes, see the repo
+- remove CMake-Provide-a-way-to-customise-the-install-directo.patch
+- add remove-timestamp.patch
+
+-------------------------------------------------------------------
+Thu Mar 10 10:12:17 UTC 2016 - jslaby@suse.com
+
+- disable build of examples (unused)
+
+-------------------------------------------------------------------
+Wed Mar  9 13:46:58 UTC 2016 - jslaby@suse.com
+
+- update to 20160309
+- remove: 0001-cmake-add-base-files.patch (not needed anymore)
+- add CMake-Provide-a-way-to-customise-the-install-directo.patch
+- correct packaging
+
+-------------------------------------------------------------------
+Mon Oct 12 13:45:04 UTC 2015 - jslaby@suse.com
+
+- initial package
+

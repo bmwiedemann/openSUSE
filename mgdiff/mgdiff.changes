@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Mon Oct 20 07:55:41 UTC 2014 - werner@suse.de
+
+- Add sed paser for resulting Makefile to let it build with latest
+  glibc as _BSD_SOURCE and _SVID_SOURCE are deprecated with
+- Add patch mgdiff-1.0-getline.diff to avoid name space conflict
+  with getline(3) from stdio.h
+
+-------------------------------------------------------------------
+Sat Jul 20 13:59:02 UTC 2013 - werner@suse.de
+
+- Add some BuildRequires 
+
+-------------------------------------------------------------------
+Thu Jun 28 11:39:05 UTC 2012 - lnussel@suse.de
+
+- make rmgdiff work by setting LC_MESSAGES=POSIX (bnc#768892)
+
+-------------------------------------------------------------------
+Tue Jun 26 15:28:06 UTC 2012 - lnussel@suse.de
+
+- remove rmgdiff (bnc#768892)
+- fix some rpmlint warnings
+
+-------------------------------------------------------------------
+Sat Mar 17 10:26:06 UTC 2012 - toganm@opensuse.org
+
+- add %dir /usr/share/X11/app-defaults to fix factory build.
+
+-------------------------------------------------------------------
+Tue Dec 11 17:31:47 CET 2007 - werner@suse.de
+
+- Correct permissions of the manual pages
+
+-------------------------------------------------------------------
+Wed Aug  2 16:24:56 CEST 2006 - werner@suse.de
+
+- Make it build with X11R7
+
+-------------------------------------------------------------------
+Tue Mar  7 11:30:25 CET 2006 - werner@ssue.de
+
+- Change order of setlocale() and XtSetLanguageProc() (bug #155300)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:16 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov  9 18:34:43 CET 2005 - werner@ssue.de
+
+- Update to patchlevel 1.0.1 found at debian.org
+- Fix unitialized variable (bug #132847)
+- Add debian scripts and manual pages to file list
+
+-------------------------------------------------------------------
+Wed Jun 15 13:19:46 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Tue Apr 27 11:52:08 CEST 2004 - werner@ssue.de
+
+- Avoid compiler warnings
+- Use mkstemp() instead of tempnam()
+
+-------------------------------------------------------------------
+Sun Jan 11 11:15:02 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Sat Aug 16 11:40:25 CEST 2003 - adrian@suse.de
+
+- add desktop file
+
+-------------------------------------------------------------------
+Thu Jun 12 13:44:10 CEST 2003 - kukuk@suse.de
+
+- Use BuildRoot, fix filelist
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Sat May 12 18:06:34 CEST 2001 - schwab@suse.de
+
+- Fix missing declarations.
+
+-------------------------------------------------------------------
+Tue Nov 21 01:02:25 CEST 2000 - ro@suse.de
+
+- use openmotif
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Jul 12 14:10:24 MEST 1999 - uli@suse.de
+
+- now builds with lesstif
+
+-------------------------------------------------------------------
+Mon Nov  9 17:03:24 MET 1998 - ro@suse.de
+
+- use basename from libc for glibc
+
+-------------------------------------------------------------------
+Thu May  7 20:26:58 MEST 1998 - fehr@suse.de
+
+- add library -lXp for Motif 2.1
+
+-------------------------------------------------------------------
+Tue Dec  9 16:14:40 MET 1997 - ro@suse.de
+
+- build static and dynamic version
+
+----------------------------------------------------------------------------
+Tue Jun 24 14:54:03 MEST 1997 - werner@suse.de
+
+	- Regognise all latin1 umlauts as characters in system with
+	  and without correct working locale.
+
+----------------------------------------------------------------------------
+Tue Nov 26 23:00:05 MET 1996 - kfr@suse.de
+
+- recognise german umlauts as text: dirty hack, but also call "setlocale"
+  for correctly installed systems...
+

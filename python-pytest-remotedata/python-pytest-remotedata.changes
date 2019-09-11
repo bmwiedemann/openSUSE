@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Jul 22 08:52:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.2:
+  * Fixed compatibility with pytest 4.2 and later. [#38, #40]
+- Remove pytest42.patch merged upstream
+
+-------------------------------------------------------------------
+Fri Feb 15 09:20:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.1:
+  * Fix warnings that occur with pytest-3.7 and later. [#34]
+- Enable tests
+- Add patch from upstream to build with pytest-4.2+:
+  * pytest42.patch
+
+-------------------------------------------------------------------
+Tue Aug 14 20:03:36 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

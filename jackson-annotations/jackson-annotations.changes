@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Sun Jun  2 21:27:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing Group: line for javadoc subpackage.
+
+-------------------------------------------------------------------
+Wed May  8 11:46:07 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of jackson-annotations 2.9.4

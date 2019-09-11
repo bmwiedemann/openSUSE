@@ -1,0 +1,13 @@
+Index: chromium-76.0.3800.0/third_party/blink/renderer/platform/text/character_property_data.h
+===================================================================
+--- chromium-76.0.3800.0.orig/third_party/blink/renderer/platform/text/character_property_data.h
++++ chromium-76.0.3800.0/third_party/blink/renderer/platform/text/character_property_data.h
+@@ -258,7 +258,7 @@ static const UChar32 kIsHangulRanges[] =
+     0xFFA0, 0xFFDC,
+ };
+ 
+-static const UChar32 kIsHangulArray[] = {};
++static const UChar32 kIsHangulArray[] = {0xFFDC,};
+ 
+ // Freezed trie tree, see character_property_data_generator.cc.
+ extern const int32_t kSerializedCharacterDataSize;

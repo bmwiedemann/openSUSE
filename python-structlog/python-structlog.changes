@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Tue Apr  2 11:12:35 UTC 2019 - mvetter@suse.com
+
+- Update to 19.1.0:
+  * structlog.ReturnLogger and structlog.PrintLogger now have
+    a fatal() log method. #181
+  * Under certain (rather unclear) circumstances, the frame
+    extraction could throw an SystemError: error return without
+    exception set. A workaround has been added. #174
+  * structlog now tolerates passing through dicts to stdlib
+    logging. #187 #188 #189
+- Use pytest macro
+
+-------------------------------------------------------------------
+Thu Nov 29 08:06:43 UTC 2018 - ecsos@opensuse.org
+
+- Fix source address and add missing source.
+
+-------------------------------------------------------------------
+Thu Nov 22 13:28:52 UTC 2018 - Karol Babioch <kbabioch@suse.de>
+
+- Version update to 18.2.0
+  * Added structlog.stdlib.add_log_level_number() processor that adds the level
+    number to the event dictionary. Can be used to simplify log filtering.
+  * structlog.processors.JSONRenderer now allows for overwriting the default
+    argument of its serializer.
+  * Added try_unbind() that works like unbind() but doesn't raise a KeyError if
+    one of the keys is missing. #171
+
+-------------------------------------------------------------------
+Tue Jul 31 12:37:20 UTC 2018 - kbabioch@suse.com
+
+- Initial packaging of version 18.1.0 

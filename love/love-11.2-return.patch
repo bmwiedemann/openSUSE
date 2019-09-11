@@ -1,0 +1,45 @@
+diff -urEbwB love-11.2/src/modules/data/HashFunction.cpp love-11.2.new/src/modules/data/HashFunction.cpp
+--- love-11.2/src/modules/data/HashFunction.cpp	2018-01-03 19:40:59.000000000 +0100
++++ love-11.2.new/src/modules/data/HashFunction.cpp	2018-11-28 10:56:33.379258212 +0100
+@@ -608,6 +608,7 @@
+ 		return nullptr;
+ 	// No default for compiler warnings
+ 	}
++	return nullptr;
+ }
+ 
+ bool HashFunction::getConstant(const char *in, Function &out)
+diff -urEbwB love-11.2/src/modules/graphics/vertex.cpp love-11.2.new/src/modules/graphics/vertex.cpp
+--- love-11.2/src/modules/graphics/vertex.cpp	2018-01-03 19:41:00.000000000 +0100
++++ love-11.2.new/src/modules/graphics/vertex.cpp	2018-11-28 11:02:07.852541057 +0100
+@@ -64,12 +64,14 @@
+ 	case CommonFormat::XYf_STPf_RGBAub:
+ 		return sizeof(XYf_STPf_RGBAub);
+ 	}
++	return 0;
+ }
+ 
+ uint32 getFormatFlags(CommonFormat format)
+ {
+ 	switch (format)
+ 	{
++	default:
+ 	case CommonFormat::NONE:
+ 		return 0;
+ 	case CommonFormat::XYf:
+@@ -109,6 +111,7 @@
+ 	case CommonFormat::XYZf:
+ 		return 3;
+ 	}
++	return 0;
+ }
+ 
+ size_t getIndexDataSize(IndexDataType type)
+@@ -149,6 +152,7 @@
+ {
+ 	switch (mode)
+ 	{
++	default:
+ 	case TriangleIndexMode::NONE:
+ 		return 0;
+ 	case TriangleIndexMode::STRIP:

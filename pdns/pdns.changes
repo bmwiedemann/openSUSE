@@ -1,0 +1,1286 @@
+-------------------------------------------------------------------
+Thu Aug  8 20:09:15 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.1.13:
+  * #8157: gpgsqlbackend: add missing schema file to Makefile
+  * #8162: stop using select() in places where FDs can be >1023
+
+-------------------------------------------------------------------
+Thu Aug  1 08:18:46 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to 4.1.11:
+  * update postgresql schema to address a possible denial of service
+    by an authorized user by inserting a crafted record in a MASTER
+    type zone under their control. (bsc#1142810, CVE-2019-10203)
+
+  To fix the issue, run the following command against your PostgreSQL
+  pdns database:
+
+    ALTER TABLE domains ALTER notified_serial TYPE bigint
+      USING CASE WHEN notified_serial >= 0
+      THEN notified_serial::bigint END;
+
+- spec file simplifications and cleanup
+
+-------------------------------------------------------------------
+Fri Jun 21 10:57:01 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.1.10 with security fixes:
+  * fixes a denial of service but when authorized user to cause
+    the server to exit by inserting a crafted record in a MASTER
+    type zone under their control. (bsc#1138582, CVE-2019-10162)
+  * fixes a denial of service of slave server when an authorized
+    master server sends large number of NOTIFY messages
+    (bsc#1138582, CVE-2019-10163)
+
+-------------------------------------------------------------------
+Tue Jun 18 16:20:11 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.1.9
+  * #7922: by popular demand, the option to disable superslave support
+    has been backported from 4.2.0 to 4.1.9
+  * #7921: `pdnsutil b2b-migrate` would lose NSEC3 settings.
+    This has been corrected now.
+
+-------------------------------------------------------------------
+Fri Mar 22 14:48:38 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.1.8
+  * #7604: Correctly interpret an empty AXFR response to an IXFR query,
+  * #7610: Fix replying from ANY address for non-standard port,
+  * #7609: Fix rectify for ENT records in narrow zones,
+  * #7607: Do not compress the root,
+  * #7608: Fix dot stripping in `setcontent()`,
+  * #7605: Fix invalid SOA record in MySQL which prevented the authoritative server from starting,
+  * #7603: Prevent leak of file descriptor if running out of ports for incoming AXFR,
+  * #7602: Fix API search failed with “Commands out of sync; you can’t run this command now”,
+  * #7509: Plug `mysql_thread_init` memory leak,
+  * #7567: EL6: fix `CXXFLAGS` to build with compiler optimizations.
+
+-------------------------------------------------------------------
+Mon Mar 18 20:17:10 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.1.7 with a security fix:
+  * Insufficient validation in the HTTP remote backend
+    (bsc#1129734, CVE-2019-3871)
+
+-------------------------------------------------------------------
+Mon Mar 18 12:13:42 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.1.6
+  * Prevent more than one CNAME/SOA record in the same RRset
+
+-------------------------------------------------------------------
+Wed Mar 13 17:48:19 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- adjust buildrequires for mariadb 10.2.x on SLES
+
+-------------------------------------------------------------------
+Wed Nov  7 07:21:21 UTC 2018 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.1.5
+  * Improvements
+    - Apply alias scopemask after chasing
+    - Release memory in case of error in the openssl ecdsa constructor
+    - Switch to devtoolset 7 for el6
+  * Bug Fixes
+    - Crafted zone record can cause a denial of service
+      (bsc#1114157, CVE-2018-10851)
+    - Packet cache pollution via crafted query
+      (bsc#1114169, CVE-2018-14626)
+    - Fix compilation with libressl 2.7.0+
+    - Actually truncate truncated responses
+
+-------------------------------------------------------------------
+Wed Aug 29 16:06:03 UTC 2018 - amajer@suse.com
+
+- Update to 4.1.4
+  - Improvements
+    * #6590: Fix warnings reported by gcc 8.1.0.
+    * #6632, #6844, #6842, #6848: Make the gmysql backend future-proof
+    * #6685, #6686: Initialize some missed qtypes.
+
+  - Bug Fixes
+    * #6780: Avoid concurrent records/comments iteration from
+      running out of sync.
+    * #6816: Fix a crash in the API when adding records.
+    * #4457, #6691: pdns_control notify: handle slave without
+      renotify properly.
+    * #6736, #6738: Reset the TSIG state between queries.
+    * #6857: Remove SOA-check backoff on incoming notify and fix
+      lock handling.
+    * #6858: Fix an issue where updating a record via DNS-UPDATE in
+      a child zone that also exists in the parent zone, we would
+      incorrectly apply the update to the parent zone.
+    * #6676, #6677: Geoipbackend: check geoip_id_by_addr_gl and
+       geoip_id_by_addr_v6_gl return value. (Aki Tuomi)
+
+-------------------------------------------------------------------
+Thu May 24 14:53:16 UTC 2018 - michael@stroeder.com
+
+- Use HTTPS links in .spec file like mentioned in PowerDNS announcements
+- removed obsolete 6370.patch
+- Update to 4.1.3
+  - Improvements
+    * #6239, #6559: pdnsutil: use new domain in b2bmigrate (Aki Tuomi)
+    * #6130: Update copyright years to 2018 (Matt Nordhoff)
+    * #6312, #6545: Lower ‘packet too short’ loglevel
+  - Bug Fixes
+    * #6441, #6614: Restrict creation of OPT and TSIG RRsets
+    * #6228, #6370: Fix handling of user-defined axfr filters return values
+    * #6584, #6585, #6608: Prevent the GeoIP backend from copying 
+      NetMaskTrees around, fixes slow-downs in certain configurations
+      (Aki Tuomi)
+    * #6654, #6659: Ensure alias answers over TCP have correct name
+
+-------------------------------------------------------------------
+Fri May 11 13:34:23 UTC 2018 - kbabioch@suse.com
+
+- Update to 4.1.2
+  - Improvements
+    * API: increase serial after dnssec related updates
+    * Auth: lower ‘packet too short’ loglevel
+    * Make check-zone error on rows that have content but shouldn’t
+    * Auth: avoid an isane amount of new backend connections during an axfr
+    * Report unparseable data in stoul invalid_argument exception
+    * Backport: recheck serial when axfr is done
+    * Backport: add tcp support for alias
+  - Bug Fixes
+    * Auth: allocate new statements after reconnecting to postgresql
+    * Auth-bindbackend: only compare ips in ismaster() (Kees Monshouwer)
+    * Rather than crash, sheepishly report no file/linenum
+    * Document undocumented config vars
+    * Backport #6276 (auth 4.1.x): prevent cname + other data with dnsupdate
+  - misc
+    * Move includes around to avoid boost L conflict
+    * Backport: update edns option code list
+    * Auth: link dnspcap2protobuf against librt when needed
+    * Fix a warning on botan >= 2.5.0
+    * Auth 4.1.x: unbreak build
+    * Dnsreplay: bail out on a too small outgoing buffer (CVE-2018-1046 bsc#1092540)
+
+-------------------------------------------------------------------
+Mon Apr 23 18:22:25 UTC 2018 - mrueckert@suse.de
+
+- add patch for upstream issue #6228
+  https://patch-diff.githubusercontent.com/raw/PowerDNS/pdns/pull/6370.patch
+
+-------------------------------------------------------------------
+Fri Apr 13 12:02:14 UTC 2018 - adam.majer@suse.de
+
+- geoip not available on SLE15 but protobuf support is available.
+
+-------------------------------------------------------------------
+Fri Feb 16 17:55:03 UTC 2018 - michael@stroeder.com
+
+- Update to version 4.1.1:
+  bug-fix only release, with fixes to the LDAP and MySQL backends,
+  the pdnsutil tool, and PDNS internals
+
+-------------------------------------------------------------------
+Thu Nov 30 13:25:19 UTC 2017 - adam.majer@suse.de
+
+- Update to version 4.1.0:
+  + Recursor passthrough removal. Migration plans for users of
+    recursor passthrough are in documentation and available at,
+    https://doc.powerdns.com/authoritative/guides/recursion.html
+  + Improved performance: 4x speedup in some scenarios
+  + Crypto API: DNSSEC fully configurable via RESTful API
+  + Database: enhanced reconnection logic solving problems
+    associated with idle disonnection from database servers.
+  + Documentation improvements
+  + Support for TCP Fast Open
+  + Removed deprecated SOA-EDIT values: INCEPTION and INCEPTION-WEEK
+- pkgconfig(krb5) is now always required for building LDAP backend
+- pdns-4.0.4_mysql-schema-mariadb.patch: removed, upstreamed
+
+-------------------------------------------------------------------
+Mon Nov 27 17:03:10 UTC 2017 - mrueckert@suse.de
+
+- package schema files in ldap subpackage
+
+-------------------------------------------------------------------
+Mon Nov 27 16:21:43 UTC 2017 - adam.majer@suse.de
+
+- Update to version 4.0.5:
+  + fixes CVE-2017-15091: Missing check on API operations
+  + Bindbackend: do not corrupt data supplied by other backends in
+    getAllDomains
+  + For create-slave-zone, actually add all slaves, and not only
+    first n times
+  + Check return value for all getTSIGKey calls.
+  + Publish inactive KSK/CSK as CDNSKEY/CDS
+  + Treat requestor’s payload size lower than 512 as equal to 512
+  + Correctly purge entries from the caches after a transfer
+  + LuaWrapper: Allow embedded NULs in strings received from Lua
+  + Stubresolver: Use only recursor setting if given
+  + mydnsbackend: Add getAllDomains
+  + LuaJIT 2.1: Lua fallback functionality no longer uses Lua namespace
+  + gpgsql: make statement names actually unique
+  + API: prevent sending nameservers list and zone-level NS in rrsets
+
+-------------------------------------------------------------------
+Tue Oct 31 17:30:07 UTC 2017 - jengelh@inai.de
+
+- Ensure descriptions are neutral. Remove ineffective --with-pic.
+- Do not ignore errors from useradd.
+- Trim idempotent %if..%endif around %package.
+
+-------------------------------------------------------------------
+Thu Oct 19 14:43:35 UTC 2017 - adam.majer@suse.de
+
+- Added pdns.keyring linked from https://dnsdist.org/install.html
+
+-------------------------------------------------------------------
+Fri Sep 29 13:01:37 UTC 2017 - vcizek@suse.com
+
+- Don't BuildRequire Botan 1.x which will be dropped (bsc#1055322)
+  * upstream support for Botan was dropped in favor of OpenSSL, see
+  https://blog.powerdns.com/2016/07/11/powerdns-authoritative-server-4-0-0-released
+
+-------------------------------------------------------------------
+Sun Jul 30 18:15:21 UTC 2017 - wr@rosenauer.org
+
+- This makes the schema fit storage requirements of various
+  mysql/mariadb versions. pdns-4.0.4_mysql-schema-mariadb.patch
+- preset uid and gid in configuration
+
+-------------------------------------------------------------------
+Fri Jun 23 14:33:13 UTC 2017 - michael@stroeder.com
+
+- fixed use of pdns_protobuf
+
+-------------------------------------------------------------------
+Fri Jun 23 11:31:23 UTC 2017 - michael@stroeder.com
+
+- update to 4.0.4
+  - fixes ed25519 signer. This signer hashed the message before
+    signing, resulting in unverifiable signatures.
+  - send a notification to all slave servers after every dnsupdate
+  for complete list of changes, see 
+https://blog.powerdns.com/2017/06/23/powerdns-authoritative-server-4-0-4-released/
+
+-------------------------------------------------------------------
+Fri Mar 31 09:25:59 UTC 2017 - mrueckert@suse.de
+
+- added pdns-4.0.3_allow_dacoverride_in_capset.patch:
+  Adding CAP_DAC_OVERRIDE to fix startup problems with sqlite3
+  backend
+
+-------------------------------------------------------------------
+Thu Feb  2 10:31:51 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Tue Jan 17 22:10:19 UTC 2017 - michael@stroeder.com
+
+- update to 4.0.3 which obsoletes b854d9f.diff
+
+-------------------------------------------------------------------
+Fri Jan 13 16:42:26 UTC 2017 - adam.majer@suse.de
+
+- b854d9f.diff: revert upstream change that caused a regression
+  with multiple-backends
+
+-------------------------------------------------------------------
+Fri Jan 13 12:16:03 UTC 2017 - adam.majer@suse.de
+
+- update to 4.0.2:
+   The following security issues were fixed:
+ - 2016-02: Crafted queries can cause abnormal CPU usage
+   (CVE-2016-7068, boo#1018326)
+ - 2016-03: Denial of service via the web server
+   (CVE-2016-7072, boo#1018327)
+ - 2016-04: Insufficient validation of TSIG signatures
+   (CVE-2016-7073, CVE-2016-7074, boo#1018328)
+ - 2016-05: Crafted zone record can cause a denial of service
+   (CVE-2016-2120, boo#1018329)
+ For complete changelog, see
+ https://doc.powerdns.com/md/changelog/#powerdns-authoritative-server-402
+
+-------------------------------------------------------------------
+Mon Dec 12 15:58:13 UTC 2016 - dimstar@opensuse.org
+
+- BuildRequire pkgconfig(libsystemd) instead of
+  pkgconfig(libsystemd-daemon): these libs were merged in systemd
+  209 times. The build system is capable of finding either one.
+
+-------------------------------------------------------------------
+Sat Jul 30 12:38:43 UTC 2016 - michael@stroeder.com
+
+- update to 4.0.1
+
+Bug fixes
+ - #4126 Wait for the connection to the carbon server to be established
+ - #4206 Don't try to deallocate empty PG statements
+ - #4245 Send the correct response when queried for an NSEC directly (Kees Monshouwer)
+ - #4252 Don't include bind files if length <= 2 or > sizeof(filename)
+ - #4255 Catch runtime_error when parsing a broken MNAME
+
+Improvements
+ - #4044 Make DNSPacket return a ComboAddress for local and remote (Aki Tuomi)
+ - #4056 OpenSSL 1.1.0 support (Christian Hofstaedtler)
+ - #4169 Fix typos in a logmessage and exception (Christian Hofsteadtler)
+ - #4183 pdnsutil: Remove checking of ctime and always diff the changes (Hannu Ylitalo)
+ - #4192 dnsreplay: Only add Client Subnet stamp when asked
+ - #4250 Use toLogString() for ringAccount (Kees Monshouwer)
+
+Additions
+ - #4133 Add limits to the size of received {A,I}XFR (CVE-2016-6172)
+ - #4142 Add used filedescriptor statistic (Kees Monshouwer)
+
+-------------------------------------------------------------------
+Mon Jul 11 15:17:37 UTC 2016 - mrueckert@suse.de
+
+- update to 4.0.0
+  https://blog.powerdns.com/2016/07/11/powerdns-authoritative-server-4-0-0-released/
+  https://blog.powerdns.com/2016/07/11/welcome-to-powerdns-4-0-0/
+- packaging changes:
+  - remotebackend split out now
+  - enabled experimental_gss_tsig support
+  - enabled protobuf based stats support
+  - no more xdb and lmdb backend
+  - added odbc backend where supported
+- drop pdns-3.4.0-no_date_time.patch: replaced with
+  --enable-reproducible
+
+-------------------------------------------------------------------
+Sun May 29 14:17:49 UTC 2016 - michael@stroeder.com
+
+- update to 3.4.9
+  * use OpenSSL for ECDSA signing where available
+  * allow common signing key
+  * Add a disable-syslog setting
+  * fix SOA caching with multiple backends
+  * whitespace-related zone parsing fixes [ticket #3568]
+  * bindbackend: fix, set domain in list()
+
+-------------------------------------------------------------------
+Wed Feb  3 11:05:43 UTC 2016 - michael@stroeder.com
+
+- update to 3.4.8
+  * Use AC_SEARCH_LIBS (Ruben Kerkhof)
+  * Check for inet_aton in libresolv (Ruben Kerkhof)
+  * Remove hardcoded -lresolv, -lnsl and -lsocket (Ruben Kerkhof)
+  * pdnssec: don't check disabled records (Pieter Lexis)
+  * pdnssec: check all records (including disabled ones)
+    only in verbose mode (Kees Monshouwer)
+  * traling dot in DNAME content (Kees Monshouwer)
+  * Fix luabackend compilation on FreeBSD i386 (RvdE)
+  * silence g++ 6.0 warnings and error (Kees Monshouwer)
+  * add gcc 5.3 and 6.0 support to boost.m4 (Kees Monshouwer)
+
+-------------------------------------------------------------------
+Tue Nov  3 16:02:55 UTC 2015 - michael@stroeder.com
+
+- update to 3.4.7
+
+Bug fixes:
+* Ignore invalid/empty TKEY and TSIG records (Christian Hofstaedtler)
+* Don't reply to truncated queries (Christian Hofstaedtler)
+* don't log out-of-zone ents during AXFR in (Kees Monshouwer)
+* Prevent XSS by escaping user input. Thanks to Pierre Jaury and Damien
+  Cauquil at Sysdream for pointing this out.
+* Handle NULL and boolean properly in gPGSql (Aki Tuomi)
+* Improve negative caching (Kees Monshouwer)
+* Do not divide timeout twice (Aki Tuomi)
+* Correctly sort records with a priority.
+
+Improvements:
+* Direct query answers and correct zone-rectification in the GeoIP
+backend (Aki Tuomi)
+* Use token names to identify PKCS#11 keys (Aki Tuomi)
+* Fix typo in an error message (Arjen Zonneveld)
+* limit NSEC3 iterations in bindbackend (Kees Monshouwer)
+* Initialize minbody (Aki Tuomi)
+
+New features:
+* OPENPGPKEY record-type (James Cloos and Kees Monshouwer)
+* add global soa-edit settings (Kees Monshouwer)
+
+-------------------------------------------------------------------
+Wed Sep  2 12:13:31 UTC 2015 - michael@stroeder.com
+
+- update to 3.4.6 [boo#943078] CVE-2015-5230
+
+Bug fixes:
+* Avoid superfluous backend recycling
+* Removal of dnsdist from the authoritative server distribution
+* Add EDNS unknown version handling and tests EDNS unknown version
+handling
+
+Improvements:
+* Update YaHTTP to v0.1.7
+* Make trailing/leading spaces stand out in pdnssec check_zone
+* GCC 5.2 support and sync boost.m4 macro with upstream
+* Log answer packets only if log-dns-details is enabled
+
+-------------------------------------------------------------------
+Tue Jun  9 18:51:37 UTC 2015 - michael@stroeder.com
+
+- update to 3.4.5
+
+Bug fixes:
+* be careful reading empty lines in our config parser and prevent
+integer overflow.
+* prevent crash after --list-modules (Ruben Kerkhof)
+* Limit the maximum length of a qname
+
+Improvements:
+* Support /etc/default for our debian/ubuntu packages (Aki Tuomi)
+* Our Boost check doesn't recognize gcc 5.1 yet (Ruben Kerkhof)
+* Various PKCS#11 fixes and improvements (Aki Tuomi)
+* Several fixes for building on OpenBSD (Florian Obser)
+* Fix several issues found by Coverity (Aki Tuomi)
+* Look for mbedtls before polarssl (Ruben Kerkhof)
+* Detect Lua on OpenBSD (Ruben Kerkhof)
+* Let pkg-config determine botan dependency libs (Ruben Kerkhof)
+* kill some further mallocs and add note to remind us not to add them back
+* Move remotebackend-unix test socket to testsdir (Aki Tuomi)
+* Defer launch of coprocess until first question (Aki Tuomi)
+* pdnssec: check for glue and delegations in parent zones (Kees
+Monshouwer)
+
+-------------------------------------------------------------------
+Mon Apr 27 19:05:43 UTC 2015 - mrueckert@suse.de
+
+- no longer ship dnsdist here, we will ship a new package based on
+  the snapshots from http://dnsdist.org/
+
+-------------------------------------------------------------------
+Thu Apr 23 12:18:57 UTC 2015 - michael@stroeder.com
+
+- update to 3.4.4 with a fix for CVE-2015-1868 (boo# 927569)
+  Bug fixes:
+  - commit ac3ae09: fix rectify-(all)-zones for mixed case domain
+    names
+  - commit 2dea55e, commit 032d565, commit 55f2dbf: fix
+    CVE-2015-1868
+  - commit 21cdbe5: Blocking IO in busy-wait for remote backend
+    (Wieger Opmeer)
+  - commit cc7b2ac: fix double dot for root MX/SRV in bind slave
+    zone files (Kees Monshouwer)
+  - commit c40307b: Properly lock lmdb database, fixes ticket #1954
+    (Aki Tuomi)
+  - commit 662e76d: Fix segfault in zone2lmdb (Ruben Kerkhof)
+  New Features:
+  - commit 5ae212e: pdnssec: warn for insecure wildcards in opt-out
+    zones
+  - commits cd3f21c, 8b582f6, 0b7e766, f743af9, dcde3c8 and
+    f12fcf7: TKEY record type (Aki Tuomi)
+  - commits 0fda1d9, 3dd139d, ba146ce, 25109e2, c011a01, 0600350,
+    fc96b5e, 4414468, c163d41, f52c7f6, 8d56a31, 7821417, ea62bd9,
+    c5ababd, 91c8351 and 073ac49: Many PKCS#11 improvements (Aki
+    Tuomi)
+  - commits 6f0d4f1 and 5eb33cb: Introduce xfrBlobNoSpaces and use
+    them for TSIG (Aki Tuomi)
+  Improvements:
+  - commit e4f48ab: allow "pdnssec set-nsec3 ZONE" for insecure
+    zones; this saves on one rectify when securing a NSEC3 zone
+  - commits cce95b9, e2e9243 and e82da97: Improvements to the
+    config-file parsing (Aki Tuomi)
+  - commit 2180e21: postgresql check should not touch LDFLAGS
+    (Ruben Kerkhof)
+  - commit 0481021: Log error when remote cannot do AXFR (Aki
+    Tuomi)
+  - commit 1ecc3a5: Speed improvements when AXFR is disabled
+    (Christian Hofstaedtler)
+  - commits 1f7334e and b17799a: NSEC3 and related RRSIGS are not
+    part of the dnstree (Kees Monshouwer)
+  - commits dd943dd and 58c4834: Change ifdef to check for
+    __GLIBC__ instead of __linux__ to prevent errors with other
+    libc's (James Taylor)
+  - commit c929d50: Try to raise open files before dropping
+    privileges (Aki Tuomi)
+  - commit 69fd3dc: Add newline to carbon error message on auth
+    (Aki Tuomi)
+  - commit 3064f80: Make sure we send servfail on error (Aki Tuomi)
+  - commit b004529: Ship lmdb-example.pl in tarball (Ruben Kerkhof)
+  - commit 9e6b24f: Allocate TCP buffer dynamically, decreasing
+    stack usage
+  - commit 267fdde: throw if getSOA gets non-SOA record
+
+-------------------------------------------------------------------
+Mon Mar  2 16:30:26 UTC 2015 - mrueckert@suse.de
+
+- update to 3.4.3
+  Bug fixes:
+  - [commit ceb49ce] pdns_control: exit 1 on unknown command (Ruben
+    Kerkhof)
+  - [commit 1406891]: evaluate KSK ZSK pairs per algorithm (Kees
+    Monshouwer)
+  - [commit 3ca050f]: always set di.notified_serial in
+    getAllDomains (Kees Monshouwer)
+  - [commit d9d09e1]: pdns_control: don't open socket in /tmp
+    (Ruben Kerkhof)
+  New features:
+  - [commit 2f67952]: Limit who can send us AXFR notify queries
+    (Ruben Kerkhof)
+  Improvements:
+  - [commit d7bec64]: respond REFUSED instead of NOERROR for
+    "unknown zone" situations
+  - [commit ebeb9d7]: Check for Lua 5.3 (Ruben Kerkhof)
+  - [commit d09931d]: Check compiler for relro support instead of
+    linker (Ruben Kerkhof)
+  - [commit c4b0d0c]: Replace PacketHandler with UeberBackend where
+    possible (Christian Hofstaedtler)
+  - [commit 5a85152]: PacketHandler: Share UeberBackend with
+    DNSSECKeeper (Christian Hofstaedtler)
+  - [commit 97bd444]: fix building with GCC 5
+  Experimental API changes (Christian Hofstaedtler):
+  - [commit ca44706]: API: move shared DomainInfo reader into it's
+    own function
+  - [commit 102602f]: API: allow writing to domains.account field
+  - [commit d82f632]: API: read and expose domain account field
+  - [commit 2b06977]: API: be more strict when parsing record
+    contents
+  - [commit 2f72b7c]: API: Reject unknown types (TYPE0)
+  - [commit d82f632]: API: read and expose domain account field
+
+-------------------------------------------------------------------
+Tue Feb  3 12:06:22 UTC 2015 - mrueckert@suse.de
+
+- set $LD for now. this fixes the configure check for relro,now.
+
+-------------------------------------------------------------------
+Tue Feb  3 11:33:25 UTC 2015 - mrueckert@suse.de
+
+- remove custom PIE handling. upstream does it for us now.
+
+-------------------------------------------------------------------
+Tue Feb  3 10:31:34 UTC 2015 - mrueckert@suse.de
+
+- update to 3.4.2
+  This is a performance and bugfix update to 3.4.1 and any earlier
+  version. For high traffic setups, including those using DNSSEC,
+  upgrading to 3.4.2 may show tremendous performance increases.
+
+  A list of changes since 3.4.1 follows. Please see the full
+  clickable changelog at 
+  https://doc.powerdns.com/md/changelog/#powerdns-authoritative-server-342
+- move man pages to section 1 to follow upstream change
+
+-------------------------------------------------------------------
+Tue Nov 25 11:11:45 UTC 2014 - mrueckert@suse.de
+
+- disable botan and geoip on SLE_12 because of missing
+  dependencies.
+
+-------------------------------------------------------------------
+Tue Nov 11 19:11:01 UTC 2014 - michael@stroeder.com
+
+- Fixed broken _localstatedir
+
+-------------------------------------------------------------------
+Sun Nov 09 21:12:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in pre script
+
+-------------------------------------------------------------------
+Thu Oct 30 15:36:02 UTC 2014 - michael@stroeder.com
+
+- update to version 3.4.1
+
+Changes since 3.4.0:
+
+ * commit dcd6524, commit a8750a5, commit 7dc86bf, commit 2fda71f: PowerDNS now
+   polls the security status of a release at startup and periodically. More
+   detail on this feature, and how to turn it off, can be found in Section 2,
+   “Security polling”.
+
+ * commit 5fe6dc0: API: Replace HTTP Basic auth with static key in custom header
+   (X-API-Key)
+
+ * commit 4a95ab4: Use transaction for pdnssec increase-serial
+
+ * commit 6e82a23: Don't empty ordername during pdnssec increase-serial
+
+ * commit 535f4e3: honor SOA-EDIT while considering "empty IXFR" fallback, fixes
+   ticket 1835. This fixes slaving of signed zones to IXFR-aware slaves like NSD
+   or BIND.
+
+-------------------------------------------------------------------
+Tue Oct 28 12:40:24 UTC 2014 - mrueckert@suse.de
+
+- only enable geoip backend on distros newer than 12.3
+  before the package lacks the pkg-config file and there is no
+  fallback to finding geoip without it.
+
+-------------------------------------------------------------------
+Tue Oct 28 11:27:41 UTC 2014 - mrueckert@suse.de
+
+- fix permissions of the home directory
+
+-------------------------------------------------------------------
+Tue Oct 28 10:16:37 UTC 2014 - mrueckert@suse.de
+
+- enable some backends that we had forgotten:
+  - pipe   (main package)
+  - random (main package)
+  - geoip  (new subpackage)
+    - new BR: yaml-cpp-devel and GeoIP-devel
+
+-------------------------------------------------------------------
+Wed Oct  1 01:25:28 UTC 2014 - mrueckert@suse.de
+
+- enable sqlite3 support also on sle11
+
+-------------------------------------------------------------------
+Wed Oct  1 01:09:48 UTC 2014 - mrueckert@suse.de
+
+- also drop asciidoc and ragel buildrequires:
+  - asciidoc seems unused
+  - ragel is only needed when we patch pdns/dnslabeltext.rl
+
+-------------------------------------------------------------------
+Wed Oct  1 01:05:27 UTC 2014 - mrueckert@suse.de
+
+- drop xmlto buildrequires
+
+-------------------------------------------------------------------
+Wed Oct  1 01:02:30 UTC 2014 - mrueckert@suse.de
+
+- only enable pkcs11 and zeromq support on distros newer than
+  11.1/SLE11
+
+-------------------------------------------------------------------
+Wed Oct  1 00:43:14 UTC 2014 - mrueckert@suse.de
+
+- convert all conditionals in the spec file to bcond_with(out)
+
+-------------------------------------------------------------------
+Tue Sep 30 23:57:19 UTC 2014 - mrueckert@suse.de
+
+- update to version 3.4.0
+  upgrade notes: http://doc.powerdns.com/html/from3.3.1to3.4.0.html
+
+  This is a performance, feature, bugfix and conformity update to
+  3.3.1 and any earlier version. It contains a huge amount of work
+  by various contributors, to whom we are very grateful.
+
+  For all the details see
+  http://doc.powerdns.com/html/changelog.html#changelog-auth-3.4.0
+- use system polarssl on 13.2 and newer
+  new buildrequires polarssl-devel >= 1.1
+- enable lmdb backend on 13.2 and newer (new subpackage)
+  new buildrequires: lmdb-devel
+- enable zeromq backend (new subpackage)
+  new buildrequires: zeromq-devel
+- enable pkcs11 support
+  new buildrequires: pkgconfig(p11-kit-1)
+- drop docbook tools from buildrequires
+- no longer extend the libdir with the pkg_name, configure does
+  that automatically now.
+- drop remotebackend-http again. it got removed.
+- refreshed the date/time patch:
+  new name: pdns-3.4.0-no_date_time.patch
+- drop pdns-3.2_polarssl.patch: no longer needed. the intree copy
+  is integrated into the normal build system.
+- package newly provided sql files in each subpackage.
+
+-------------------------------------------------------------------
+Mon Sep 29 19:57:53 UTC 2014 - crrodriguez@opensuse.org
+
+- fix build in distros that do not have %_tmpfilesdir macro.
+
+-------------------------------------------------------------------
+Mon Sep 29 01:08:43 UTC 2014 - crrodriguez@opensuse.org
+
+- Use lua-devel, current versions now support lua 5.2 
+- Use /run/pdns as _localstatedir in distros with systemd
+  this also requires using --with-socketdir even when
+  no systemd otherwise the path is overriden by the build
+  system.
+- pdns-no-date-time.patch : Do not use __DATE__ or __TIME__
+  in source code and/or build system to make build-compare happy.
+
+-------------------------------------------------------------------
+Sun Jul 20 20:46:57 UTC 2014 - p.drouand@gmail.com
+
+- Use systemd instead of sysvinit for openSUSE > 12.2
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Tue Jun 10 17:04:23 UTC 2014 - mrueckert@suse.de
+
+- forgot to remove the --enable-tools at the top.
+
+-------------------------------------------------------------------
+Tue Jun 10 11:59:12 UTC 2014 - mrueckert@suse.de
+
+- only enable the tools on distros newer than sle 11:
+  the boost version seems to be too old.
+
+-------------------------------------------------------------------
+Sun Jun  8 22:28:06 UTC 2014 - mrueckert@suse.de
+
+- update to version 3.3.1
+  Update notes http://doc.powerdns.com/html/from3.3to3.3.1.html
+
+  - direct-dnskey is no longer experimental, thanks Kees Monshouwer
+    & co for extensive testing (commit e4b36a4).
+  - Handle signals during poll (commit 5dde2c6).
+  - commit 7538e56: Fix zone2{sql,json} exit codes
+  - commit 7593c40: geobackend: fix possible nullptr deref
+  - commit 3506cc6: gpsqlbackend: don't append empty dbname=/user=
+    values to connect string
+  - gpgsql queries were simplified through the use of casting
+    (commit 9a6e39c).
+  - commit a7aa9be: Replace hardcoded make with variable
+  - commit e4fe901: make sure to run PKG_PROG_PKG_CONFIG before the
+    first PKG_* usage
+  - commit 29bf169: fix hmac-md5 TSIG key lookup
+  - commit c4e348b: fix 64+ character TSIG keys
+  - commit 00a7b25: Fix comparison between signed and unsigned by
+    using uint32_t for inception on INCEPTION-EPOCH
+  - commit d3f6432: fix building on os x 10.9, thanks Martijn
+    Bakker.
+  - We now allow building against Lua 5.2 (commit bef3000, commit
+    2bdd03b, commit 88d9e99).
+  - commit fa1f845: autodetect MySQL 5.5+ connection charset
+  - When misconfigured using 'right' timezones, a bug in (g)libc
+    gmtime breaks our signatures. Fixed in commit e4faf74 by Kees
+    Monshouwer by implementing our own gmtime_r.
+  - When sending SERVFAIL due to a CNAME loop, don't uselessly
+    include the CNAMEs (commit dfd1b82).
+  - Build fixes for platforms with 'weird' types (like s390/s390x):
+    commit c669f7c (details), commit 07b904e and commit 2400764.
+  - Support for += syntax for options, commit 98dd325 and others.
+  - commit f8f29f4: nproxy: Add missing chdir("/") after chroot()
+  - commit 2e6e9ad: fix for "missing" libmysqlclient on RHEL/CentOS
+    based systems
+  - pdnssec check-zone improvements in commit 5205892, commit
+    edb255f, commit 0dde9d0, commit 07ee700, commit 79a3091, commit
+    08f3452, commit bcf9daf, commit c9a3dd7, commit 6ebfd08, commit
+    fd53bd0, commit 7eaa83a, commit e319467, ,
+  - NSEC/NSEC3 fixes in commit 3191709, commit f75293f, commit
+    cd30e94, commit 74baf86, commit 1fa8b2b
+  - The webserver could crash when the ring buffers were resized,
+    fixed in commit 3dfb45f.
+  - commit 213ec4a: add constraints for name to pg schema
+  - commit f104427: make domainmetadata queries case insensitive
+  - commit 78fc378: no label compression for name in TSIG records
+  - commit 15d6ffb: pdnssec now outputs ZSK DNSKEY records if
+    experimental-direct-dnskey support is enabled (renamed to
+    direct-dnskey before release!)
+  - commit ad67d0e: drop cryptopp from static build as
+    libcryptopp.a is broken on Debian 7, which is what we build on
+  - commit 7632dd8: support polarssl 1.3 externally.
+  - Remotebackend was fully updated in various commits.
+  - commit 82def39: SOA-EDIT: fix INCEPTION-INCREMENT handling
+  - commit a3a546c: add innodb-read-committed option to gmysql
+    settings.
+  - commit 9c56e16: actually notice timeout during AXFR retrieve,
+    thanks hkraal
+- pass V=1 to make calls so we actually see the compiler cmdlines
+- enable http support for remotebackend. new buildrequires:
+  curl-devel
+- prepare lmdb backend for 13.2 and newer
+- remove pdns-3.1_lib_lua.patch, solved differently upstream.
+- enabled tools building
+- removed custom hack to build pdns tools
+
+-------------------------------------------------------------------
+Thu Nov  7 03:08:18 UTC 2013 - jamesp@vicidial.com
+
+- update to version 3.3
+  This a stability, bugfix and conformity update to 3.2. It 
+  improves interoperability with various validators, either through
+  bugfixes or by catering to their needs beyond the specifications.
+  
+  Please follow the upgrate notes on
+  http://doc.powerdns.com/html/from3.2to3.3.html
+- Removed dnsreplay and ChangeLog as it was removed in the source
+- Added pdnssec and zone2ldap man pages
+
+-------------------------------------------------------------------
+Mon Jan 21 15:40:43 UTC 2013 - mrueckert@suse.de
+
+- update to version 3.2
+  This is a stability and conformity update to 3.1. It mostly makes
+  our DNSSEC implementation more robust, and improves
+  interoperability with various validators. 3.2 has received very
+  extensive testing on a lot of edge cases, verifying output both
+  against common validators and compared against other
+  authoritative servers.
+
+  Please follow the upgrate notes on
+  http://doc.powerdns.com/from3.1to3.2.html
+
+  For the details see:
+  http://rtfm.powerdns.com/changelog.html#changelog-auth-3-2
+- dropped qsqlite backend. dropped upstream dropped the sqlite2
+  support.
+- fixed building of the sqlite3 backend.
+- use system botan if possible.
+- refreshed polarssl patch
+  old name: pdns-3.0.rc1_polarssl.patch
+  new name: pdns-3.2_polarssl.patch
+
+-------------------------------------------------------------------
+Mon Nov 19 22:10:03 UTC 2012 - dimstar@opensuse.org
+
+- Fix useradd invocation: -o is useless without -u and newer
+  versions of pwdutils/shadowutils fail on this now.
+
+-------------------------------------------------------------------
+Thu Sep 27 12:18:16 UTC 2012 - idonmez@suse.com
+
+- Fix the SLES check so we correctly use sqlite3 for newer distros 
+
+-------------------------------------------------------------------
+Mon May 21 13:35:36 UTC 2012 - mrueckert@suse.de
+
+- set license to GPLv2 Only (bnc#762986)
+
+-------------------------------------------------------------------
+Fri May  4 13:56:17 UTC 2012 - mrueckert@suse.de
+
+- update to 3.1
+
+  Warning:
+  Version 3.1 of the PowerDNS Authoritative Server is a
+  major upgrade if you are coming from 2.9.x. There are also some
+  important changes if you are coming from 3.0. Please refer to
+  Section 1, “From PowerDNS Authoritative Server 2.9.x to 3.0” and
+  Section 2, “From PowerDNS Authoritative Server 3.0 to 3.1” for
+  important information on correct and stable operation, as well as
+  notes on performance and memory use.
+
+  For the details see:
+  http://rtfm.powerdns.com/changelog.html#changelog-auth-3-1
+- added pdns-3.1_lib_lua.patch:
+  instead of using an hardcoded -llua5.1 use the LUA_LIBS variable.
+- refreshed pdns-3.0.rc1_polarssl.patch
+- added 2 new subpackages:
+  pdns-backend-mydns
+  pdns-backend-lua (new dependency 5.2 > lua >= 5.1)
+
+-------------------------------------------------------------------
+Wed Apr 18 15:53:30 UTC 2012 - mrueckert@suse.de
+
+- use %{_sysconfdir}/init.d/ instead of %{_initddir} to fix build
+  on older distros
+
+-------------------------------------------------------------------
+Wed Apr 18 14:49:26 UTC 2012 - mrueckert@suse.de
+
+- update to 3.0.1
+  This is 3.0 + the fix for CVE-2012-0206
+  Warning:
+  Version 3.0 of the PowerDNS Authoritative Server is a major
+  upgrade. Please refer to Section 1, “From PowerDNS Authoritative
+  Server 2.9.x to 3.0” for important information on correct and
+  stable operation, as well as notes on performance and memory use.
+  For the details see:
+  http://rtfm.powerdns.com/changelog.html#changelog-auth-3-0-1
+- build all binaries with as PIE (bnc#743152)
+
+-------------------------------------------------------------------
+Tue Mar  6 09:58:47 UTC 2012 - mhrusecky@suse.cz
+
+- fixed lua dependency (fixed build on Factory)
+
+-------------------------------------------------------------------
+Mon Feb 13 10:51:51 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sun Nov 20 06:28:03 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Oct  3 11:32:14 CEST 2011 - mhrusecky@suse.cz
+
+- fixed build on factory
+
+-------------------------------------------------------------------
+Thu Aug 18 07:23:22 CEST 2011 - mhrusecky@suse.cz
+
+- update to 3.0
+  * main feature is DNSSEC support
+  * for full changelog see
+    http://doc.powerdns.com/changelog.html#changelog-auth-3-0
+
+-------------------------------------------------------------------
+Wed Apr 28 10:28:51 UTC 2010 - mrueckert@suse.de
+
+- create /var/run/pdns directory in the init script and package it
+  as ghost.
+
+-------------------------------------------------------------------
+Wed Apr 28 00:46:52 UTC 2010 - mrueckert@suse.de
+
+- fix feature guards
+
+-------------------------------------------------------------------
+Tue Apr 27 19:47:13 UTC 2010 - mrueckert@suse.de
+
+- add pdns-2.9.22_missing_includes.patch:
+  add missing includes
+
+-------------------------------------------------------------------
+Tue Jun  9 15:28:41 CEST 2009 - coolo@novell.com
+
+- fix build with gcc 4.4
+
+-------------------------------------------------------------------
+Wed Jan 28 17:50:02 CET 2009 - mrueckert@suse.de
+
+- updated to version 2.9.22
+  "This is a huge release, spanning almost 20 months of
+  development.  Besides fixing a lot of bugs, of note is the
+  addition of the so called 'Notification Proxy', which allows
+  PowerDNS to function as a master server behind a firewall, plus
+  the huge performance improvement of the internal caches."
+  http://doc.powerdns.com/changelog.html#CHANGELOG-AUTH-2-9-22
+- updated pdns-2.9.21.1-wrong-pgsql.patch
+  new name: pdns-2.9.22_wrong_pgsql.patch
+- updated pdns-2.9.21.1_new_boost_exceptions.patch:
+  most fixes went into 2.9.22. Just the LDAP chunk got lost
+  somehow. Additional the new patch also fixes the odbc backend
+  (we do not build this one, but the patch got also send upstream)
+  new name pdns-2.9.22_new_boost_exceptions.patch
+- dropped patches after upstream included them:
+  pdns-2.9.21.1_gcc43.patch
+  pdns-2.9.21.1_unversioned_modules.patch
+- added pdns-2.9.22_warnings.patch:
+  fix 2 small compiler warnings
+
+-------------------------------------------------------------------
+Tue Nov 18 20:29:21 CET 2008 - mrueckert@suse.de
+
+- update to version 2.9.21.2: (bnc#445568)
+  do not crash with HINFO CHAOS requests when configured with
+  'distributor-threads=1'
+- make default config more sane
+- remove guardian commandline parameter. it was hiding the startup
+  errors. If you want to use the guardian reenable it in the
+  configuration file.
+- mark init script as config
+
+-------------------------------------------------------------------
+Fri Nov 14 21:05:09 CET 2008 - mrueckert@suse.de
+
+- make conditionals use suse_version instead of sles_version
+
+-------------------------------------------------------------------
+Thu Nov  6 15:56:56 CET 2008 - mrueckert@suse.de
+
+- added pdns-2.9.21.1_new_boost_exceptions.patch:
+  clearify the referenced exception class
+
+-------------------------------------------------------------------
+Fri Oct 17 15:28:48 CEST 2008 - ro@suse.de
+
+- last change does not work yet, disable forcefully 
+
+-------------------------------------------------------------------
+Thu Aug 21 16:41:22 CEST 2008 - mrueckert@suse.de
+
+- replaced conditional on #{opensuse_bs} with:
+  #if #(echo "%distribution" | grep -Ec '^server:dns')
+
+-------------------------------------------------------------------
+Mon Aug 11 11:26:29 CEST 2008 - anosek@suse.cz
+
+- updated to version 2.9.21.1
+  - fixes security issue CVE-2008-3337 (bnc#415369) 
+
+-------------------------------------------------------------------
+Wed Apr 23 23:31:30 CEST 2008 - crrodriguez@suse.de
+
+- fix build, wrong pq library detection.
+
+-------------------------------------------------------------------
+Sun Oct 28 19:52:07 CET 2007 - mrueckert@suse.de
+
+- added pdns-2.9.21_gcc43.patch:
+  fix nearly all warnings (patch is upstream)
+- removed pdns-2.9.20-warnings.patch:
+  better version included in pdns-2.9.21_gcc43.patch
+- added README.opendbx:
+  include documentation for the opendbx backend (buildservice only)
+
+-------------------------------------------------------------------
+Tue Sep 25 19:00:43 CEST 2007 - mrueckert@suse.de
+
+- added pdns-2.9.21_unversioned_modules.patch:
+  the plugins dont need versioning
+
+-------------------------------------------------------------------
+Tue Sep 25 18:19:28 CEST 2007 - mrueckert@suse.de
+
+- reorder %package list to work around a bug in prepare_spec
+  which breaks debuginfo packages
+
+-------------------------------------------------------------------
+Wed Apr 25 21:59:20 CEST 2007 - mrueckert@suse.de
+
+- disable the patch again. i think it breaks for me on 64bit.
+
+-------------------------------------------------------------------
+Tue Apr 24 20:40:51 CEST 2007 - mrueckert@suse.de
+
+- readd pdns-2.9.20-warnings.patch [#232489]
+
+-------------------------------------------------------------------
+Tue Apr 24 19:20:02 CEST 2007 - mrueckert@suse.de
+
+- more tight permissions for the config dir as the config file can
+  contain passwords
+
+-------------------------------------------------------------------
+Sat Apr 21 22:08:28 CEST 2007 - mrueckert@suse.de
+
+- fix build on 64bit hosts
+- sync with pdns-snapshot (pkg_name)
+
+-------------------------------------------------------------------
+Sat Apr 21 18:44:53 CEST 2007 - mrueckert@suse.de
+
+- update to 2.9.21:
+  - Bugs:
+    - Multi-part TXT records weren't supported. This has been
+      fixed, and regression tests have been added. Code in commits
+      1016, 996, 994.
+    - Email addresses with embedded dots in SOA records were not
+      parsed correctly, nor were other embedded dots. Noted by
+      'Bastiaan', fixed in commit 1026.
+    - BIND backend treated the 'm' TTL modifier as 'months' and not
+      'minutes'. Closes Debian bug 406462. Addressed in commit
+      1026.
+    - Our snapshots were built against a static version of
+      PosgreSQL that was incompatible with many Linux
+      distributions, leading to instant crashes on startup. Fixed
+      in 1022 and 1023.
+    - CNAME referrals to child zones gave improper responses. Noted
+      by Augie Schwer in ticket 123, fixed in commit 992.
+    - When passing a port number with the recursor setting, this
+      would sometimes generate errors during additional processing.
+      Switched off overly helpful additional processing for
+      recursive queries to remove this problem. Implemented in
+      commit 1031, spotted by Ralf van der Enden.
+    - NS to a nameserver with the name of the zone itself generated
+      problems. Spotted by Augie Schwer, fixed in commit 947.
+    - Multi-line records in the BIND backend were not always parsed
+      correctly. Fixed in commit 1014.
+    - The LOC-record had problems operating outside of the eastern
+      hemisphere of the northern part of the world! Fixed in commit
+      1011.
+    - Backends were compiled without multithreading preprocessor
+      flags. As far as we can determine, this would only cause
+      problems for the BIND backend, but we cannot rule out this
+      caused instability in other backends. Fixed in commit 1001.
+    - The BIND backend was highly unstable under reloads, and
+      leaked memory and file descriptors. Thanks to Mark Bergsma
+      and Massimo Bandinelli for respectively pointing this out to
+      us and testing large amounts of patches to fix the problem.
+      The fixes have resulted in better performance, less code, and
+      a remarkable simplification of this backend. Commits 1039,
+      1034, 1035, 1006, 999, 905 and previous.
+    - BIND backend gave convincing NXDOMAINS on unloaded zones in
+      some cases. Spotted and fixed by Daniel Bilik in commit 984.
+    - SOA records in zone transfers sometimes contained the wrong
+      SOA TTL. Spotted by Christian Kuehn, fixed in commit 902.
+    - PowerDNS could get confused by very high SOA serial numbers.
+      Spotted and fixed by Dan Billik, fixed in commit 626.
+    - Some versions of FreeBSD perform very strict checks on socket
+      address sizes passed to 'connect', which could lead to
+      problems retrieving zones over AXFR. Fixed in commit 891.
+    - Some versions of FreeBSD perform very strict checks on IPv6
+      socket addresses, leading to problems. Discovered by Sten
+      Spans, fixed in commit 885 and commit 886.
+    - IXFR requests were not logged properly. Noted by Ralf van der
+      Enden, fixed in commit 990.
+    - Some NAPTR records needed an additional space character to
+      encode correctly. Spotted by Heinrich Ruthensteiner, fixed in
+      commit 1029.
+    - Many bugs in the TCP nameserver, leading to a PowerDNS
+      process that did not respond to TCP queries over time. Many
+      fixes provided by Dan Bilik, other problems were fixed by
+      rewriting our TCP handling code. Commits 982 and 980, 950,
+      924, 889, 874, 869, 685, 684.
+    - Fix crashes on the ARM processor due to alignment errors.
+      Thanks to Sjoerd Simons. Closes Debian bug 397031.
+    - Missing data in generic SQL backends would sometimes lead to
+      faked SOA serial data. Spotted by Leander Lakkas from True.
+      Fix in commit 866.
+    - When receiving two quick notifications in succession, the
+      packet cache would sometimes "process" the second one,
+      leading PowerDNS to ignore it. Spotted by Dan Bilik, fixed in
+      commit 686.
+    - Geobackend (by Mark Bergsma) did not properly override the
+      getSOA method, breaking non-overlay operation of this fine
+      backend. The geobackend now also skips '.hidden'
+      configuration files, and now properly disregards empty
+      configuration files. Additionally, the overlapping abilities
+      were improved. Details available in commit 876, by Mark.
+  - Features:
+    - Thanks to EasyDNS, PowerDNS now supports multiple masters per
+      domain. For configuration details, see Section 13.2.
+      Implemented in commit 1018, commit 1017.
+    - Thanks to EasyDNS, PowerDNS now supports the KEY record type,
+      as well the SPF record. In commit 976.
+    - Added support for CERT, SSHFP, DNSKEY, DS, NSEC, RRSIG record
+      types, as part of the move to the new DNS parsing/generating
+      code.
+    - Support for the AFSDB record type, as requested by 'Bastian'.
+      Implemented in commit 978, closing ticket 129.
+    - Support for the MR record type. Implemented in commit 941 and
+      commit 1019.
+    - Gsqlite3 backend was added by Antony Lesuisse in commit 942;
+    - Added the ability to send out light-weight root-referrals
+      that save bandwidth yet still placate mediocre resolver
+      implementations. Implemented in commit 912, enable with
+      'root-referral=lean'.
+  - Improvements:
+    - Miscellaneous OpenDBX and LDAP backend improvements by
+      Norbert Sendetzky. Applied in commit 977 and commit 1040.
+    - SGML source of the documentation was cleaned up by Ruben
+      Kerkhof in commit 936.
+    - Speedups in core DNS label processing code. Implemented in
+      commit 928, commit 654, commit 1020.
+    - When communicating with master servers and encountering
+      errors, more useful details are logged. Reported by Stefan
+      Arentz in ticket 137, closed by commit 1015.
+    - Database errors are now logged with more details. Addressed
+      in commit 1004.
+    - pdns_control problems are now logged more verbosely. Change
+      in commit 910.
+    - Erroneous address configuration was logged unclearly. Spotted
+      by River Tarnell, fixed in commit 888.
+    - Example configuration shipped with PowerDNS was very old.
+      Noted by Leen Besselink, fixed in commit 946.
+    - PowerDNS neglected to chdir to the root when chrooted. This
+      closes ticket 110, fixed in commit 944.
+    - Microsoft resolver had problems with responses we generated
+      for CNAMEs pointing out of our bailiwick. Fixed in commit 983
+          and expedited by Locaweb.com.br.
+    - Built-in webserver logs errors more verbosely. Closes ticket
+      82, gixed in commit 991.
+    - Queries containing '@' no longer flood the logs. Addressed in
+      commit 1014.
+    - The build process now looks for PostgreSQL in more places.
+      Implemented in commit 998, closes ticket 90.
+    - Speedups in the BIND backend now mean large installations
+      enjoy startup times up to 30 times faster than with the
+      original BIND nameserver. Many thanks to Massimo Bandinelli.
+    - BIND backend now offers full support for query logging,
+      implemented in commit 1026, commit 1029.
+    - BIND backend named.conf parsing is now fully case-insensitive
+      for domain names. This closes Debian bug 406461, fixed in
+          commit 1027.
+    - IPv6 and IPv4 address parsing routines have been replaced,
+      which should result in prettier output in some cases. commit
+      962, commit 1012 and others.
+    - 5 new regression tests have been added to insure old bugs do
+      not return.
+    - Fix small issues with very modern compilers and BOOST
+      snapshots. Noted by Marcus Rueckert, addressed in commit 954,
+      commit 964 commit 965, commit 1003.
+- removed patches as they are included upstream:
+  opendbxbackend_2.9.20-5.diff
+  pdns-2.9.17_cve-2006-4251.patch
+  pdns-2.9.19-CVE-2006-2069.patch
+  pdns-2.9.20_2006-02.patch
+- added sqlite3 backend
+- the spec file should now build on sles9 aswell.
+
+-------------------------------------------------------------------
+Thu Mar 29 18:40:56 CEST 2007 - mrueckert@suse.de
+
+- update opendbxbackend_2.9.20-3.diff to
+  opendbxbackend_2.9.20-5.diff
+- added pwdutil and gdbm-devel
+
+-------------------------------------------------------------------
+Tue Jan  9 14:06:22 CET 2007 - anosek@suse.cz
+
+- fixed compiler warning: integer operation result is out of range
+  [#232489] (warnings.patch)
+
+-------------------------------------------------------------------
+Mon Nov 13 16:11:47 CET 2006 - mrueckert@suse.de
+
+- added pdns-2.9.20_2006-02.patch:
+  fix an endless recursion in CNAME handling [#219355]
+
+-------------------------------------------------------------------
+Sat Nov 11 22:52:52 CET 2006 - mrueckert@suse.de
+
+- added pdns-2.9.17_cve-2006-4251.patch:
+  fix a stack corruption with malformed packages [#219355]
+
+-------------------------------------------------------------------
+Thu Oct 19 18:48:38 CEST 2006 - mrueckert@suse.de
+
+- this is a sync to the buildservice package in server:dns:
+- remove .la files
+
+-------------------------------------------------------------------
+Fri Oct 13 12:00:00 CEST 2006 - mrueckert@suse.de
+
+- added opendbxbackend_2.9.20-3.diff:
+  updates the opendbx backend to the latest version
+
+-------------------------------------------------------------------
+Fri May 19 12:00:00 CEST 2006 - mrueckert@suse.de
+
+- disable the recursor as we use the newer external package.
+
+-------------------------------------------------------------------
+Thu May  4 15:57:55 CEST 2006 - nadvornik@suse.cz
+
+- fixed crash on malformed packets CVE-2006-2069 [#170542]
+
+-------------------------------------------------------------------
+Sun Mar 26 12:00:00 CEST 2006 - mrueckert@suse.de
+
+- fixed Requires for the subpackages
+
+-------------------------------------------------------------------
+Sat Mar 25 12:00:00 CEST 2006 - mrueckert@suse.de
+
+- update to 2.9.20:
+  Besides adding OpenDBX, this release is mostly about fixing
+  problems and speeding up the recursor.
+- disabled static support
+- removed rm for the .a files
+- splitted of the backends that pull in new dependencies
+- removed patch. applied upstream.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:24 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov  1 14:17:15 CET 2005 - nadvornik@suse.cz
+
+- updated to 2.9.19
+
+-------------------------------------------------------------------
+Tue Jun  7 14:33:49 CEST 2005 - nadvornik@suse.cz
+
+- fixed init scripts
+- used patches from http://www.linuxnetworks.de/pdnsldap/index.html
+
+-------------------------------------------------------------------
+Wed Apr 20 12:49:37 CEST 2005 - nadvornik@suse.cz
+
+- fixed to compile on x86_64 with gcc4
+
+-------------------------------------------------------------------
+Fri Mar 11 15:53:10 CET 2005 - nadvornik@suse.cz
+
+- installed html documentation [#71738]
+
+-------------------------------------------------------------------
+Wed Feb 16 15:36:18 CET 2005 - nadvornik@suse.cz
+
+- new package
+

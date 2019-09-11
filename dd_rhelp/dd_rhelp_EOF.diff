@@ -1,0 +1,26 @@
+Index: dd_rhelp-0.3.0/dd_rhelp
+===================================================================
+--- dd_rhelp-0.3.0.orig/dd_rhelp
++++ dd_rhelp-0.3.0/dd_rhelp
+@@ -986,9 +986,9 @@ infoline="^dd_rescue: (info):"
+ summary_first_line="$infoline \+ipos:.*, opos:.*, xferd:.*$"
+ 
+ ## infoline has been added to Summary line in dd_rescue output recently (> 1.14, <= 1.25)
+ string="\($infoline\)\? *Summary for [^:]\+ -> [^:]\+:\$"
+-eofstring="$infoline [^(]\+ ([0-9]\+\.[0-9]k): EOF\$"
++eofstring="$infoline [^(]\+ ([0-9]\+\.[0-9]k[^)]*): EOF.*\$"
+ nb_stars=$[ $bar_lines * $COLUMNS ] # nb of char to display progress bar...
+ badblockline_regexp="^Bad block: [0-9]\+\$"
+ 
+ 
+@@ -1082,9 +1082,9 @@ function get_eof() {
+     else
+ 	eoflines="$1"
+     fi
+ 
+-    eoflines=$(echo "$eoflines" | "${grep}" "$eofstring" | sed_compat 's/^dd_rescue: \(info\): .* \(([0-9\.]+)k\): EOF.*$/\1/g')
++    eoflines=$(echo "$eoflines" | "${grep}" "$eofstring" | sed_compat 's/^dd_rescue: \(info\): .* \(([0-9\.]+)k[^\)]*\): EOF.*$/\1/g')
+ 
+     for i in $eoflines; do
+ 
+         ## XXXvlab: what the f*ck ?

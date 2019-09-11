@@ -1,0 +1,52 @@
+From eb0660ae76fdbc2288c58739c42aa3152d61a0c6 Mon Sep 17 00:00:00 2001
+From: Alex Konradi <akonradi@google.com>
+Date: Mon, 17 Dec 2018 13:54:44 -0500
+Subject: [PATCH] Remove deprecated Blaze PACKAGE_NAME macro (#5330)
+
+This has been replaced by [native.]package_name() and the former version
+is deprecated according to recent Bazel docs.
+
+Signed-off-by: Alex Konradi <akonradi@google.com>
+---
+ bazel/envoy_build_system.bzl | 4 ++--
+ source/common/common/BUILD   | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/bazel/envoy_build_system.bzl b/bazel/envoy_build_system.bzl
+index 7f6c6bba5..73427c438 100644
+--- a/bazel/envoy_build_system.bzl
++++ b/bazel/envoy_build_system.bzl
+@@ -194,7 +194,7 @@ def envoy_cc_library(
+             envoy_external_dep_path("spdlog"),
+             envoy_external_dep_path("fmtlib"),
+         ],
+-        include_prefix = envoy_include_prefix(PACKAGE_NAME),
++        include_prefix = envoy_include_prefix(native.package_name()),
+         alwayslink = 1,
+         linkstatic = 1,
+         linkstamp = select({
+@@ -439,7 +439,7 @@ def envoy_proto_library(name, external_deps = [], **kwargs):
+ # This is used for testing only.
+ def envoy_proto_descriptor(name, out, srcs = [], external_deps = []):
+     input_files = ["$(location " + src + ")" for src in srcs]
+-    include_paths = [".", PACKAGE_NAME]
++    include_paths = [".", native.package_name()]
+ 
+     if "api_httpbody_protos" in external_deps:
+         srcs.append("@googleapis//:api_httpbody_protos_src")
+diff --git a/source/common/common/BUILD b/source/common/common/BUILD
+index 59b4eae1b..734c810c5 100644
+--- a/source/common/common/BUILD
++++ b/source/common/common/BUILD
+@@ -72,7 +72,7 @@ envoy_cc_library(
+ envoy_basic_cc_library(
+     name = "fmt_lib",
+     hdrs = ["fmt.h"],
+-    include_prefix = envoy_include_prefix(PACKAGE_NAME),
++    include_prefix = envoy_include_prefix(package_name()),
+ )
+ 
+ envoy_cc_library(
+-- 
+2.20.1
+

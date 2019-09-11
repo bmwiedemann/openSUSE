@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Fri Jan  5 18:27:45 UTC 2018 - aloisio@gmx.com
+
+- Update Aegean fonts to 9.78
+- Added Cretan_Hieroglyphs-9.17.zip and
+  Cypro-Minoan_Inscriptions-9.17.zip as separate archives
+- Dropped Aegean.pdf, Cretan_Hieroglyphs.pdf and
+  Cypro-Minoan_Inscriptions.pdf because they're supplied by each
+  font archive now.
+- Updated Linear_A_Inscriptions.pdf
+
+-------------------------------------------------------------------
+Mon Apr 10 17:36:10 UTC 2017 - aloisio@gmx.com
+
+- Updated fonts to 9.17
+- Updated/replaced attendant pdf documents
+
+-------------------------------------------------------------------
+Wed Dec  7 17:26:44 CET 2016 - tiwai@suse.de
+
+- Fix the way specifying URL in source list; OBS got confused, so
+  list explicitly in the comments instead
+- Fix the missing LinearAInscriptions.pdf
+
+-------------------------------------------------------------------
+Sun Dec  4 19:13:49 UTC 2016 - aloisio@gmx.com
+
+- Update to version 9.00
+- Updated Aegean-20160402.pdf and
+  CyproMinoanInscriptions-20160401.pdf with
+  Aegean-20160930.pdf and
+  CyproMinoanInscriptions-20160930.pdf
+- Added LinearAInscriptions-20161016.pdf and
+  Bibliography-20161016.pdf
+- Dropped CyproMinoanSigns-20160401.pdf,
+  LinearABsigns-20160401.pdf and
+  LinearAwords-20160401.pdf
+
+-------------------------------------------------------------------
+Fri May  6 17:03:03 UTC 2016 - aloisio@gmx.com
+
+- Update to version 8.91 
+- Replaced tarball with original archives and pdf docs
+  renamed to include the version or last modified date
+  (AegeanFonts-8.91.zip Aegean-20160402.pdf
+   Alphabetics-20160401.pdf CretanHieroglyphs-20160401.pdf
+   CyproMinoanInscriptions-20160401.pdf
+   CyproMinoanSigns-20160401.pdf LinearABsigns-20160401.pdf
+   LinearAwords-20160401.pdf Phaistos-20160305.pdf)
+- Re-added README-SUSE as separate license file
+
+-------------------------------------------------------------------
+Sat Jan 16 20:54:29 UTC 2016 - aloisio@gmx.com
+
+- Update to version 8.01
+  * Aegean font 8.01
+  * CyproMinoan font 7.82 
+  * Updated pdf documentation
+  * Refreshed README-SUSE from the website
+
+-------------------------------------------------------------------
+Mon Jun 22 11:30:43 UTC 2015 - aloisio@gmx.com
+
+- update to version 8.00
+  * added hinted variant
+  * added Cypro-Minoan font (ver. 7.81)
+  * added Cretan font (ver. 7.42)
+- replaced licence file with a note from the website and
+  added official pdf description 
+
+-------------------------------------------------------------------
+Tue Jan 21 13:27:03 UTC 2014 - pgajdos@suse.com
+
+- updated to 7.12
+  * no upstream changelog
+  * leaving README of version 6.00 as upstream doesn't provide it
+    anymore
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:09:59 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed Apr 18 10:18:46 UTC 2012 - pgajdos@suse.com
+
+- SUSE-Permissive license
+
+-------------------------------------------------------------------
+Wed Dec 14 12:49:17 UTC 2011 - toms@suse.de
+
+- Renamed aegean-fonts -> gdouros-aegean-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+
+-------------------------------------------------------------------
+Fri Jul  1 16:59:18 COT 2011 - bachinchi@gmail.com
+
+- Initial package for Aegean Font

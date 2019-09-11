@@ -1,0 +1,987 @@
+-------------------------------------------------------------------
+Mon Mar 18 18:02:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 21 16:21:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.91:
+  + application, main-toolbar: Rename "app.gear-menu" as
+    "app.preview-menu".
+  + test-gegl: Simplify code.
+  + main-toolbar: Enable the gear menu only when the item is
+    loaded.
+  + test-gegl: Assert the bounding box when zooming GeglBuffers.
+  + Use g_auto*.
+  + Remove app menu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan  3 11:00:31 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.3:
+  + Bugs fixed:
+    - flatpak: Update the build flags for gexiv2.
+    - tests: Test the GEGL utilities.
+    - tracker-controller: Be direct when Tracker can't be found.
+  + Updated translations.
+- Changes from version 3.31.2:
+  + Bugs fixed:
+    - Propagate any GError while loading a BaseItem.
+    - build: Avoid requiring Git for release tarballs.
+    - application, thumbnailer: Remove redundant GResource
+      registration.
+    - build: Update glib-tap.mk from GLib.
+    - Start adding some unit tests.
+    - Use g_auto*
+  + Updated translations.
+- Changes from version 3.31.1:
+  + Bugs fixed:
+    - Add Flatpak CI, and deliver bundles with each commit.
+    - Update the application icon for the GNOME 3.32 redesign.
+    - build: Remove redundant if branch.
+    - build: Ensure that the Git submodules are kept updated.
+    - facebook-item: Don't leak the GFBGraphGoaAuthorizer.
+    - Remove unused GTypes for enums, and declarations from the
+      thumbnailer.
+    - flatpak: Tell Tracker not to use a media extractor and switch
+      geocode-glib to Meson.
+    - Split some code into a private shared library and return a
+      GFile after downloading it.
+    - Use g_auto*.
+- Drop facebook-item-Dont-leak-the-GFBGraphGoaAuthorizer.patch:
+  Fixed upstream.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+
+-------------------------------------------------------------------
+Fri Dec  7 16:23:18 UTC 2018 - bjorn.lie@gmail.com
+
+- Add facebook-item-Dont-leak-the-GFBGraphGoaAuthorizer.patch:
+  facebook-item: Don't leak the GFBGraphGoaAuthorizer.
+
+-------------------------------------------------------------------
+Wed Oct 17 06:20:35 UTC 2018 - sckang@suse.com
+
+- Add gnome-photos-on-demand-activate-dleyna.patch: Don't activate
+  dleyna-renderer-service when Photos starts up (bsc#992420,
+  glgo#GNOME/gnome-photos#75).
+
+-------------------------------------------------------------------
+Thu Sep 27 12:35:34 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + device-item, local-item: Convert to UTF-8 before displaying the
+    path.
+  + base-item: Don't attempt to load non-UTF-8 paths.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  7 15:44:06 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  7 03:29:06 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  7 03:29:05 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.91:
+  + build: Update the Git submodule URL after GitLab migration.
+  + flatpak:
+    - Switch Grilo to Meson.
+    - Fix the exiv2 build.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  7 03:29:04 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.4:
+  + source: Add an error handler for GIcon instance.
+  + Use g_auto*.
+  + flatpak: Disable -Werror for gexiv2.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  7 03:29:03 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.3:
+  + Unbreak the "Empty Trash" button on GNOME >= 3.24
+  + Bugs fixed:
+    - main-window: Update copyright years in the about dialog;
+    - Add OARS and update description to be more confident;
+    - Use g_auto* (glgo#GNOME/gnome-photos#77);
+    - Drop copy-pasted src/egg-*.[ch] code
+      (glgo#GNOME/gnome-photos#86);
+    - Delete *.gnome-photos files with XML depicting an empty GEGL
+      graph (glgo#GNOME/gnome-photos#105).
+  + Updated translations.
+- Drop
+  + libtool BuildRequires and autoreconf call: the patch which made
+    them necessary has been merged upstream.
+  + fixed upstream patch:
+    gnome-photos-Bump-minimum-GEGL-version.patch
+
+-------------------------------------------------------------------
+Wed Sep  5 23:00:56 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1:
+  + Bugs fixed: tests: Update for renamed application ID
+    (glgo#GNOME/gnome-photos#100).
+  + Updated translations.
+- Drop gnome-photos-export-unbreak-empty-trash-button.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Fri Apr 27 18:33:02 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gnome-photos-Bump-minimum-GEGL-version.patch: build: Bump
+  minimum GEGL version to 0.4.0.
+- Following the above, replace pkgconfig(gegl-0.3) with
+  pkgconfig(gegl-0.4) and add libtool BuildRequires aswell as
+  passing autoreconf since the patch touches the buildsystem.
+
+-------------------------------------------------------------------
+Thu Apr 26 19:21:52 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gnome-photos-export-unbreak-empty-trash-button.patch:
+  export-notification: Unbreak the "Empty Trash" button.
+
+-------------------------------------------------------------------
+Thu Mar 15 20:49:22 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.0:
+  + Don't use an intermediate Imports sub-directory for imported
+    content (glgo#GNOME/gnome-photos#89).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  6 19:33:48 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Install appstream metadata to non-deprecated location
+  + Store edits in side-car files
+  + properties-dialog: Use ngettext for plural forms
+  + Various improvements to user-visible strings and controls used
+    for importing from devices.
+  + flatpak: Fix detection of attached devices.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:29:16 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Feb 15 22:28:43 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.90:
+  + Import from device (glgo#GNOME/gnome-photos#29).
+  + Bugs fixed: glgo#GNOME/gnome-photos#6,
+    glgo#GNOME/gnome-photos#7, glgo#GNOME/gnome-photos#43,
+    glgo#GNOME/gnome-photos#44, glgo#GNOME/gnome-photos#65,
+    glgo#GNOME/gnome-photos#77, glgo#GNOME/gnome-photos#85,
+    bgo#759413, bgo#782479 and bgo#786936.
+  + Updated translations.
+- Add pkgconfig(libdazzle-1.0) BuildRequires: new dependency.
+- Drop fixed upstream patches: gnome-photos-application-fixes.patch
+  and gnome-photos-Check-RDF-type-before-using-it.patch.
+
+-------------------------------------------------------------------
+Mon Feb  5 03:27:04 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.4:
+  + Bugs fixed: bgo#788174, bgo#790191 and bgo#791274.
+  + Updated translations.
+- Drop gnome-photos-Dont-leak-thumbnailer-path-string.patch: fixed
+  upstream.
+- Rebase gnome-photos-application-fixes.patch.
+
+-------------------------------------------------------------------
+Mon Feb  5 03:27:03 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.3:
+  + Support shadows and highlights adjustment (bgo#788201).
+  + Bugs fixed: bgo#781736, bgo#785376, bgo#788174, bgo#789196,
+    bgo#789977, bgo#791082.
+  + Updated translations.
+- Drop libtool BuildRequires since there is no patches at all being
+  applied anymore.
+
+-------------------------------------------------------------------
+Mon Feb  5 03:27:01 UTC 2018 - malcolmlewis@opensuse.org
+
+- Update to version 3.27.1:
+  + Clarify that the final binaries are under GPL-3.0+
+  + Bugs fixed: bgo#763712, bgo#777505 and bgo#783922.
+
+-------------------------------------------------------------------
+Sat Feb  3 00:07:17 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gnome-photos-Dont-leak-thumbnailer-path-string.patch:
+  thumbnail-factory: Don't leak the thumbnailer path string.
+- Add gnome-photos-application-fixes.patch: application: Avoid
+  CRITICALs.
+- Add gnome-photos-Check-RDF-type-before-using-it.patch: utils:
+  Check the RDF type before using it, not the MIME type.
+
+-------------------------------------------------------------------
+Thu Dec 14 19:59:35 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.3:
+  + Bugs fixed: bgo#785376.
+  + Updated translations.
+- Drop upstream fixed patches:
+  + gnome-photos-main-toolbar-dont-leak.patch.
+  + gnome-photos-nb-translations.patch.
+  + gnome-photos-properties-dialog-dont-leak.patch.
+
+-------------------------------------------------------------------
+Thu Nov 23 22:06:01 UTC 2017 - zaitor@opensuse.org
+
+- Add upstream stable commits:
+  + Add gnome-photos-properties-dialog-dont-leak.patch:
+    properties-dialog: Don't leak the error.
+  + Add gnome-photos-main-toolbar-dont-leak.patch: main-toolbar:
+    Don't leak the preview's GMenu.
+  + Add gnome-photos-nb-translations.patch: Add updated Norwegian
+    bokmål translation.
+- Run spec-cleaner, modernize spec, use autosetup and make_build
+  macros.
+- Drop hicolor-icon-theme BuildRequires: No longer needed.
+- Replace update-desktop-files with desktop-file-utils
+  BuildRequires and no longer pass suse_update_desktop_file macro:
+  Align more closely with what upstream expects.
+
+-------------------------------------------------------------------
+Sat Nov  4 02:50:01 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.2:
+  + Bugs fixed: Can't discard all edits directly from the overview
+    without previewing the BaseItem (bgo#788715).
+  + Updated translations.
+- Update Url to https://wiki.gnome.org/Design/Apps/Photos: current
+  Photos' web page.
+- Drop %glib2_gsettings_schema_requires macro: the functionality is
+  covered by file triggers now.
+- Add fdupes BuildRequires and its macro for removal of duplicates
+  under the data directory.
+
+-------------------------------------------------------------------
+Wed Oct  4 10:00:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.1:
+  + Bugs fixed: bgo#785115, bgo#788042.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 12 09:19:52 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  6 23:02:57 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.92:
+  + Use G_DECLARE_FINAL_TYPE (bgo#763712).
+  + Various clean-ups and fixes to the searchbar handling code
+    (bgo#786936).
+  + Migrate from Intltool to Gettext (bgo#87105).
+  + Updated translations.
+- Drop intltool BuildRequires: no longer needed after the migration
+  to gettext.
+
+-------------------------------------------------------------------
+Sat Aug 26 15:10:59 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + Bugs fixed: bgo#780692.
+  + Updated translations.
+- Drop pkgconfig(gnome-desktop-3.0) BuildRequires: No longer
+  needed, nor used.
+- Add pkgconfig(gsettings-desktop-schemas) BuildRequires: New
+  dependency.
+
+-------------------------------------------------------------------
+Sat Aug 26 15:10:58 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.4:
+  + Support GEGL >= 0.3.16.
+  + Bugs fixed: bgo#763329, bgo#763712, bgo#781134.
+  + Updated translations.
+- Replace pkgconfig(tracker-control-1.0) and
+  pkgconfig(tracker-sparql-1.0) with pkgconfig(tracker-control-2.0)
+  and pkgconfig(tracker-sparql-2.0) BuildRequires following
+  upstreams changes.
+- Stop handling glib2_gsettings_schema_post(un),
+  icon_theme_cache_post(un) and desktop_database_post(un) in
+  post(un), no longer needed as we have file-triggers taking care
+  of for us now.
+
+-------------------------------------------------------------------
+Sat Aug 26 15:10:57 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.3:
+  + Support zooming (bgo#742662).
+  + Bugs fixed: bgo#763712, bgo#764423, bgo#776082, bgo#778354,
+    bgo#780424, bgo#782012.
+  + Updated translations.
+- Drop gnome-photos-revert-autocleanups.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Aug 26 15:10:56 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.1:
+  + Bugs fixed: bgo#763712, bgo#765136, bgo#780424.
+  + Updated translations.
+- Add gnome-photos-revert-autocleanups.patch: Fix build with new
+  gegl-unstable. Also add libtool BuildRequires since patch touches
+  buildsystem.
+
+-------------------------------------------------------------------
+Sat Aug 26 15:10:55 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.3:
+  + Support GEGL >= 0.3.16.
+  + Bugs fixed: bgo#763329, bgo#780692.
+  + Updated translations.
+- Replace pkgconfig(gnome-desktop-3.0) with
+  pkgconfig(gsettings-desktop-schemas) BuildRequires following
+  upstream changes.
+
+-------------------------------------------------------------------
+Wed May 10 16:42:09 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.2:
+  + Bugs fixed: bgo#778354.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 24 11:21:18 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.1:
+  + Changing the aspect ratio of the crop can make the selection
+    larger than the image (bgo#765136).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 21 14:30:48 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:46:29 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.92:
+  + Bugs fixed: bgo#763712, bgo#777869, bgo#779380, bgo#779589.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 28 15:40:50 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.91:
+  + Fix distorted and wrongly scaled thumbnails (bgo#690255).
+  + Thumbnails don't reflect edited state (bgo#763329).
+  + Use G_DECLARE_FINAL_TYPE (bgo#763712).
+  + Closing the properties before determining the edited state of
+    an item shouldn't affect subsequent attempts to load the same
+    item (bgo#777867).
+  + appdata: Add screenshot of sharing feature (bgo#778620).
+  + Exported and shared items have their orientation applied twice
+    (bgo#778925).
+  + po, source-notification: Fix typo (bgo#778967).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 17 03:23:57 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.90:
+  + Try to avoid low resolution thumbnails (bgo#690255).
+  + Use G_DECLARE_FINAL_TYPE (bgo#763712).
+  + tests: Wait for the UI to be drawn completely (bgo#777053).
+  + Notify when an online account needs attention (bgo#777492).
+  + Appdata uses screenshots of older version (bgo#778620).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 17 03:23:04 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.4:
+  + Bugs fixed: bgo#690623, bgo#747123, bgo#763712, bgo#775700,
+    bgo#776133, bgo#776565, bgo#776670.
+  + Updated translations.
+- Add pkgconfig(geocode-glib-1.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Fri Feb 17 03:23:03 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.3:
+  + Bugs fixed: bgo#763712, bgo#774191, bgo#775153, bgo#775562,
+    bgo#775754, bgo#763908.
+
+-------------------------------------------------------------------
+Fri Feb 17 03:23:02 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.2:
+  + Bugs fixed: bgo#763712, bgo#764423, bgo#774191, bgo#774253.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 16 08:56:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.22.4:
+  + Bugs fixed: bgo#776565, bgo#776670, bgo#777053.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan  3 11:29:30 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.22.3:
+  + Bugs fixed: bgo#774253, bgo#775153, bgo#776133.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Nov  5 12:29:09 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.2:
+  + Bugs fixed: bgo#770342, bgo#772813.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  7 10:37:51 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Bugs fixed: bgo#771995, bgo#772443.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 17 09:35:09 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 11 22:42:49 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Don't use an undefined ?item variable.
+  + Bugs fixed: bgo#764801, bgo#770267, bgo#770342, bgo#770782,
+    bgo#770823.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  1 09:48:21 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.21.91:
+  + bgo#763712: Use G_DECLARE_FINAL_TYPE.
+  + bgo#764423: Use G_DECLARE_DERIVABLE_TYPE.
+  + bgo#770342: Remove the mode-specific filtering from
+    PhotosViewModel.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 22 08:50:13 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Experimental sharing support (bgo#751181).
+  + Bugs fixed: bgo#760839, bgo#763156, bgo#770157.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  9 19:26:59 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.4:
+  + bgo#760839: base-item: Improvements to the size-guessing API.
+  + bgo#763712: Use G_DECLARE_FINAL_TYPE.
+  + bgo#763908: done-notification: Remove unnecessary references.
+  + bgo#764086: Convert jobs API to async calls.
+  + bgo#765105: Implicitly process the pipeline during add, remove
+    and revert.
+  + bgo#765340: Use GtkMenuButton in the overview searchbar.
+  + bgo#766162: Can't export photos from online accounts.
+  + bgo#767892: item-manager: Fix the lifetime of the
+    changes-pending handler.
+  + bgo#768130: Keyboard activation leads to a CRITICAL and opens
+    the wrong item.
+  + bgo#768291: source: Add photos_source_get_icon.
+  + bgo#768500: The sources of remote collections are not shown in
+    OrganizeCollectionView.
+  + bgo#768548: base-item: Don't leak the cursor data while
+    refreshing.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  9 19:26:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.3:
+  + bgo#760796: Doesn't have a --version flag.
+  + bgo#763908: preview-view: Hold the UI while saving the
+    pipeline.
+  + bgo#764076: application: Add API to prevent the main window
+    from getting destroyed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  9 19:26:57 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.1:
+  + bgo#762725: Avoid GIFs.
+  + bgo#763292: Improve the alignment of notifications.
+  + bgo#763908: Cancel or remove pending internal asynchronous
+    operations or sources during destruction.
+  + bgo#763881: edit-palette-row: Don't leak the PhotosTool.
+  + bgo#764076: application: Make app.quit use the same path as the
+    close button.
+  + bgo#764083: Add guards to methods in BaseItem which do not
+    operate on collections.
+  + bgo#764086: Convert jobs API to async calls.
+  + bgo#764680: Disable favouriting albums.
+  + bgo#764681: Prevent nested collections.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  9 19:26:56 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.3:
+  + Can't export photos from online accounts (bgo#766162).
+  + item-manager: Fix the lifetime of the changes-pending handler
+    (bgo#767892).
+  + Keyboard activation leads to a CRITICAL and opens the wrong
+    item (bgo#768130).
+  + The sources of remote collections are not shown in
+    OrganizeCollectionView (bgo#768500).
+  + utils: Don't leak the query string (bgo#768548).
+
+-------------------------------------------------------------------
+Tue Jun 21 11:03:53 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + edit-palette-row: Don't leak the PhotosTool (bgo#763881).
+  + Invalid memory access when reading
+    G_FILE_ATTRIBUTE_THUMBNAIL_PATH (bgo#765295).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 14 11:30:39 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + base-item: Don't leak the GFileInfos (bgo#763908).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 14:30:50 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 16 15:23:40 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + bgo#762027: Fix possible integer overflow (CVE-2013-7447).
+  + bgo#762318: Don't overwrite exported photos.
+  + bgo#762942: Update the crop presets.
+  + bgo#763096: Add notification when user clicks Done.
+  + bgo#763131: Add translation context for string "None".
+  + bgo#763133: Ambiguous string needing translator comment.
+  + bgo#763500: Fix PrintOperation object leak.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  3 02:13:42 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + Bugs fixed: bgo#761587, bgo#761683, bgo#762046, bgo#762371.
+  + Updated translations.
+- Add pkgconfig(gio-unix-2.0) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Wed Feb 17 17:19:44 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.90:
+  + Bugs fixed: bgo#758227, bgo#759155, bgo#759460, bgo#760838,
+    bgo#760931, bgo#761076, bgo#761158, bgo#761559, bgo#761587,
+    bgo#761626, bgo#761674.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 20 11:07:54 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.4:
+  + Support saturation adjustment.
+  + Bugs fixed: bgo#746940, bgo#759155, bgo#759156, bgo#759331,
+    bgo#759363, bgo#759521, bgo#760865.
+  + Updated translations.
+- Add libjpeg-devel, pkgconfig(libpng16) and pkgconfig(gexiv2)
+  BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
+Sun Dec 13 11:37:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.3:
+  + Bugs fixed: bgo#740434, bgo#757363, bgo#758227, bgo#758352,
+    bgo#758554, bgo#758809.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 25 23:11:19 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.2:
+  + Experimental editing support.
+  + Bugs fixed: bgo#733660, bgo#734766, bgo#747446, bgo#757015,
+    bgo#757199, bgo#757363.
+  + Updated translations
+
+-------------------------------------------------------------------
+Tue Nov 24 00:31:45 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.1:
+  + Bugs fixed: bgo#729072, bgo#732799, bgo#733660, bgo#737071,
+    bgo#744627, bgo#751106.
+  + Updated translations.
+- Replace pkgconfig(grilo-0.2) for pkgconfig(grilo-0.3)
+  BuildRequires following upstream changes.
+
+-------------------------------------------------------------------
+Sun Nov  8 19:11:52 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Bugs fixed: bgo#734766, bgo#747446, bgo#751106, bgo#756133,
+    bgo#757015, bgo#757199.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 12 13:09:24 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Bugs fixed: bgo#688566, bgo#725508, bgo#741593, bgo#755600,
+    bgo#756131, bgo#756221.
+
+-------------------------------------------------------------------
+Tue Sep 22 18:07:28 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0:
+  + gegl-gtk-view-helper, preview-view: Merge AUTOSCALE_CONTENT
+    logic (bgo#747446).
+  + Fix GdTaggedEntry theming (bgo#754233).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 26 19:20:39 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.2:
+  + Bugs fixed: bgo#726462, bgo#745756.
+
+-------------------------------------------------------------------
+Wed May 13 13:01:21 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Bugs fixed: bgo#746252, bgo#745972, bgo#747696.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 13:31:43 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Bugs fixed: bgo#745756, bgo#746104, bgo#746152.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  6 21:01:18 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Bugs fixed: bgo#738527, bgo#740425, bgo#744841, bgo#745070,
+    bgo#745071, bgo#745072.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 20 09:09:57 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Bugs fixed: bgo#711505, bgo#731391, bgo#731437, bgo#733213,
+    bgo#737990, bgo#743853, bgo#744305, bgo#744309, bgo#744590.
+  + Updated translations.
+- Replace pkgconfig(gegl-0.2) BuildRequires with
+  pkgconfig(gegl-0.3), following upstreams port.
+
+-------------------------------------------------------------------
+Fri Jan 23 22:28:11 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.15.4:
+  + Replace "Load More" button with edge hit detection
+    (bgo#688566).
+  + empty-results-box: Change text and icon for favorites
+    (bgo#736551).
+  + Allow setting the lock screen background from the preview
+    (bgo#741590).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 17 21:33:13 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.3:
+  + Use a fallback name in the header bar during preview
+    (bgo#733214).
+  + Don't scale up thumbnails (bgo#740417).
+  + Albums with only one photo look odd (bgo#740624).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 12 16:46:42 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Ensure that icon-only buttons get the 'image-button' style
+    class (bgo#737310).
+  + Fix crash when reading scale factor after window has been
+    destroyed (bgo#738527).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 24 13:29:10 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Preview-view: Disable the sliding transition (bgo#726505).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 17 18:58:29 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Make it easier to support new sources (bgo#731865).
+  + Drop some deprecated baggage (bgo#734762).
+  + Guard against failure to resolve IDs (bgo#735746).
+  + help: favorites are now marked using a star icon, not a heart
+    icon (bgo#736186).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  7 12:58:25 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + Support accessing photos from PicasaWeb (bgo#711563).
+  + Undo-able deletion of photos and albums (bgo#720222).
+  + Support accessing photos from DLNA media servers (bgo#728913).
+  + Bugs fixed: bgo#733011, bgo#733216, bgo#733850, bgo#734398.
+  + Updated translations.
+- Add pkgconfig(libgdata) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Wed Jul 23 13:57:59 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + New user help (bgo#711505).
+  + Bugs fixed: bgo#708039, bgo#725156, bgo#726505, bgo#726685,
+    bgo#726791, bgo#727392, bgo#729396, bgo#730822, bgo#731856,
+    bgo#731865, bgo#732011, bgo#732676, bgo#733011, bgo#733355.
+  + Updated translations.
+- Add gdk-pixbuf-loader-rsvg BuildRequires: In general, gresource
+  depends on it to build resource files with embedded .svg files.
+  Adding the dependency in glib2-tools introduces a build cycle,
+  so we avoid this.
+- Split gnome-shell search provider to a separate package
+  gnome-shell-search-provider-gnome-photos.
+
+-------------------------------------------------------------------
+Tue Apr 15 15:50:26 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Scale the thumbnails on HiDpi displays (bgo#726903).
+  + Use o.fd.Tracker1.Extract.Priority interface to prioritize
+    relevant types (bgo#726919).
+  + Crash if Facebook credentials expired (bgo#727205).
+  + Updated translations.
+- Add itstool and yelp-tools BuildRequires: New dependencies.
+
+-------------------------------------------------------------------
+Mon Mar 24 11:43:03 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 17 15:27:55 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Bugs fixed: bgo#696802, bgo#698941, bgo#725587, bgo#725813,
+    bgo#725934, bgo#726162, bgo#726165, bgo#726519.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  5 19:00:24 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+  + Bugs fixed: bgo#723664, bgo#725016, bgo#725095, bgo#725327,
+    bgo#725328, bgo#725329, bgo#725589.
+  + Updated translations.
+- Drop gnome-photos-fix-build-with-tracker-1.0.patch: fixed
+  upstream.
+- Drop gnome-common BuildRequires and call to autoreconf, as we no
+  longer carry patches.
+
+-------------------------------------------------------------------
+Sat Feb 22 07:54:49 UTC 2014 - zaitor@opensuse.org
+
+- Add gnome-photos-fix-build-with-tracker-1.0.patch: Replace
+  tracker-miner with tracker-control because TrackerMinerManager
+  now lives in tracker-control. Replace
+  pkgconfig(tracker-miner-1.0) for pkgconfig(tracker-control-1.0)
+  BuildRequires following this.
+- Add gnome-common BuildRequires and pass autoreconf due to above
+  patch.
+
+-------------------------------------------------------------------
+Thu Feb 20 10:32:13 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Implement search provider.
+  + Turn into a DBus activated service.
+  + Bugs fixed: bgo#723729.
+  + Updated translations.
+- Replace pkgconfig(tracker-miner-0.18) and
+  pkgconfig(tracker-sparql-0.18) for pkgconfig(tracker-miner-1.0)
+  and pkgconfig(tracker-sparql-1.0) BuildRequires.
+- Desktopfile was renamed to org.gnome.Photos.
+
+-------------------------------------------------------------------
+Thu Feb  6 18:18:52 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5:
+  + Implement search.
+  + Bugs fixed: bgo#715043, bgo#720404, bgo#720570, bgo#721402.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 14 19:34:01 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Bugs fixed: bgo#704947, bgo#709367, bgo#721402, bgo#721696.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec 12 08:25:17 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Support accessing photos from Facebook (bgo#700451).
+  + Bugs fixed: bgo#715081, bgo#720165.
+  + Updated translations.
+- Add pkgconfig(libgfbgraph-0.2) BuildRequires: new dependency for
+  Facebook support.
+- Drop sed hack to support tracker 0.18.
+
+-------------------------------------------------------------------
+Sat Nov 23 23:07:56 UTC 2013 - dimstar@opensuse.org
+
+- Replace pkgconfig(tracker-{sparql,miner}-0.16) BuildRequires with
+  pkgconfig(tracker-{sparql,miner}-0.18): move to Tracker 0.18.
+- Replace tracker-{spaqrl,miner}-0.16 in configure with
+  tracker-{sparql,miner}-0.18, using sed.
+
+-------------------------------------------------------------------
+Wed Nov 20 21:09:10 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + Bugs fixed: bgo#708018, bgo#708054, bgo#709367, bgo#709368,
+    bgo#709693, bgo#709695.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 13 16:24:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.2 (bnc#849913):
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 14 13:55:59 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 08:15:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 17 16:04:30 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.92:
+  + Bugs fixed: bgo#708018, bgo#708054.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  2 15:37:39 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.91:
+  + Bugs fixed: bgo#703280, bgo#706502, bgo#706513, bgo#706810,
+    bgo#706824.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 21 06:34:02 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.90:
+  + Get rid of the WM's titlebar.
+  + Selection pattern design updates (bgo#699914).
+  + Bugs fixed: bgo#691316, bgo#696794, bgo#705433, bgo#705435,
+    bgo#705436, bgo#705439, bgo#705551, bgo#705607.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 12 19:14:58 UTC 2013 - dimstar@opensuse.org
+
+- Add dbus(dleyna-renderer-service) Recommends: gnome-photos allows
+  to send the output to a DLNA renderer.
+
+-------------------------------------------------------------------
+Thu Aug  1 19:30:12 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.5.1:
+  + Implement thumbnailing for Flickr (bgo#697675).
+  + Bugs fixed: bgo#705294.
+- Drop gnome-photos-gtk-3.9.10.patch, fixed upstream.
+- Add pkgconfig(grilo-0.2) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Tue Jul 30 16:26:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.5:
+  + Replace GdHeaderBar with GtkHeaderBar.
+  + Replace GdStack with GtkStack.
+  + Bugs fixed: bgo#703649, bgo#704273.
+  + Updated translations.
+- Add gnome-photos-gtk-3.9.10.patch: Fix build with GTK+ 3.9.10.
+
+-------------------------------------------------------------------
+Tue Jul  9 16:50:54 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.4:
+  + Support accessing photos from Flickr (bgo#697675).
+  + Support pushing pictures to DLNA renderers (bgo#701775).
+  + Support rubber band selection.
+  + Bugs fixed: bgo#698086, bgo#699899, bgo#699900, bgo#700061,
+    bgo#702909, bgo#702910, bgo#703054, bgo#703269.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 15 08:17:58 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2:
+  + Update libgd.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 15 19:34:17 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 3.8.0.
+- Do not install %{_datadir}/doc/gnome-photos: we carry those files
+  as %doc files in the packages.
+

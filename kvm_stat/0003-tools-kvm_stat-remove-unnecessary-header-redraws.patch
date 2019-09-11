@@ -1,0 +1,40 @@
+From fa036ccee3f478345cdddb27967f801fb375b5dc Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Date: Wed, 7 Jun 2017 21:08:28 +0200
+Subject: [PATCH 03/43] tools/kvm_stat: remove unnecessary header redraws
+
+Certain interactive commands will not modify any information displayed in
+the header, hence we can skip them.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 2da9d4aaa7348fc13374d7398c9c7027b0a9e2cb)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 0e0541dc184b..d600d2c304e3 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1140,7 +1140,6 @@ class Tui(object):
+             try:
+                 char = self.screen.getkey()
+                 if char == 'x':
+-                    self.refresh_header()
+                     self.update_drilldown()
+                 if char == 'q':
+                     break
+@@ -1158,7 +1157,6 @@ class Tui(object):
+                     self.show_vm_selection_by_pid()
+                     sleeptime = DELAY_INITIAL
+                 if char == 'r':
+-                    self.refresh_header()
+                     self.stats.reset()
+             except KeyboardInterrupt:
+                 break
+-- 
+2.12.3
+

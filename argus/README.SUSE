@@ -1,0 +1,32 @@
+README.SUSE
+
+choeger, 4.5.98
+
+Argus is a network-monitoring-tool.
+Take a look at /usr/doc/packages/README* for details.
+
+Please change the variables in /etc/sysconfig/argus if you need.
+
+A daily restart-script may look like this:
+
+----------------------------------[snip]---------------------------------
+#!/bin/sh
+
+rcargus stop
+mv /var/log/argus.log /var/log/argus.`date +"%y%m%d"`.log
+gzip -9 /var/log/argus.`date +"%y%m%d"`.log
+rcargus start
+----------------------------------[snip]---------------------------------
+
+you may copy it to /root/bin/argus_restart and add the following to your
+/etc/crontab:
+
+----------------------------------[snip]---------------------------------
+50 17 * * * root /root/bin/argus_restart
+----------------------------------[snip]---------------------------------
+
+if you want to restart argus at 17:50 (5:50pm).
+
+Use the tools 'ra' and 'services' to take a look in your captured
+argus-data.
+

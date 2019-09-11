@@ -1,0 +1,17 @@
+## Path:	Network/Remote X11
+## Description:	xrdp sesman setting
+## Type:	string
+## Default:	""
+#
+# Options for xrdp
+#
+#SESMAN_OPTIONS=""
+
+## Path:	Network/Remote X11
+## Description:	xrdp setting
+## Type:	string
+## Default:	""
+#
+# Options for xrdp
+#
+#XRDP_OPTIONS=""

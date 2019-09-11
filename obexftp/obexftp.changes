@@ -1,0 +1,181 @@
+-------------------------------------------------------------------
+Tue Nov 19 18:25:31 CET 2013 - ro@suse.de
+
+- obexftp-pkgconfig_requires.patch:
+  in pkgconfig file, require bluez instead of bluetooth 
+
+-------------------------------------------------------------------
+Wed Oct 16 16:08:16 UTC 2013 - jmatejek@suse.com
+
+- update to 0.24
+  * new upstream maintainer
+  * integrates obexfs 0.12 (build disabled for now)
+  * includes Ruby binding
+  * builds with OpenOBEX 1.7
+  * build system is now based on CMake
+- patch obexftp-0.24-fix-absurd-install-path - install Python binding
+  into the correct location
+- dropped gcc43.diff - no longer necessary
+
+-------------------------------------------------------------------
+Thu May 24 10:56:17 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Sun Nov 20 06:47:21 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Jan 14 13:31:26 UTC 2011 - coolo@novell.com
+
+- fix build on 11.4
+
+-------------------------------------------------------------------
+Mon Apr 26 02:00:45 CEST 2010 - ro@suse.de
+
+- update to 0.23
+  * allow win32 to use hci src names
+  * adding a simpler connect wrapper
+  * show OBEX_HandleInput errors
+  * catch errors and let the user know
+  * print timeout stats if available
+  * sdp unregister more verbose
+  * upgrading btkit
+  * fix for win32 without bt
+  * replacing deprecated automake vars
+  * sizeof() fixes
+  * removing bdaddr_t reference from obexftpd.c
+  * adding bootstrap helper
+  * concurrency bug in extconf.rb generated Makefile (fix by Alin Năstac)
+  * switching from POD to asciidoc
+  * clearing gnu-style implicit rules
+
+-------------------------------------------------------------------
+Fri Jan  9 03:29:29 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Tue Sep 16 18:03:00 CEST 2008 - ro@suse.de
+
+- fix requires for devel package 
+
+-------------------------------------------------------------------
+Mon Sep 15 21:47:20 CEST 2008 - dmueller@suse.de
+
+- adjust buildrequires
+
+-------------------------------------------------------------------
+Wed Jun 25 00:42:53 CEST 2008 - dmueller@suse.de
+
+- update to 0.22:
+  * for changelog, see included ChangeLog
+
+-------------------------------------------------------------------
+Thu Jun 21 23:28:48 CEST 2007 - dmueller@suse.de
+
+- split off perl- and python- bindings to remove
+  python depenceny from main package
+
+-------------------------------------------------------------------
+Fri May 18 08:58:21 CEST 2007 - olh@suse.de
+
+- remove unneeded libusb from -devel Requires
+
+-------------------------------------------------------------------
+Mon May  7 18:12:55 CEST 2007 - sbrabec@suse.cz
+
+- Fixed LDFLAGS to include needed libraries explicitly.
+
+-------------------------------------------------------------------
+Sun Apr 22 11:40:54 CEST 2007 - dgollub@suse.de
+
+- Make use of LIBADD instead of LDADD.
+
+-------------------------------------------------------------------
+Mon Oct 16 00:16:17 CEST 2006 - schwab@suse.de
+
+- Make sure config.rpath is present.
+
+-------------------------------------------------------------------
+Wed Jun 28 15:17:04 CEST 2006 - cthiel@suse.de
+
+- update to version 0.21
+  * Fixes to obexftpd
+  * Added ruby binding
+  * Added preliminary discovery function
+
+-------------------------------------------------------------------
+Tue Jun 27 16:58:44 CEST 2006 - cthiel@suse.de
+
+- update to version 0.20
+  * Change __S_IFDIR to S_IFDIR with fallback sug.
+  * Added old CLI switches and documentation sug.
+  * Fixed the -g CLI switch
+  * Added obexfsd
+  * Fixed iconv
+  * device/channel code cleanup
+
+-------------------------------------------------------------------
+Mon Apr 24 00:18:20 CEST 2006 - cthiel@suse.de
+
+- update to version 0.19
+  * Updated for OpenOBEX 1.1 (pkg-config)
+  * Added --output switch
+  * Simplified the swig/perl/Makefile.am.
+  * Fixed a pointer typo and a free() typo.
+  * Added perl, python and tcl binding with swig.
+  * Rewrote folder-listing parser to enhance compatibility
+  * Connection headers
+  * Nokia hack (suppressing FBS)
+  * Capabilty retrieving
+  * USB support
+  * Added implicit setpath support in every function.
+  * Added simple caching
+  * Removed recursive put. Apps should implement it themselves.
+  * New configure flag to enable building docs
+  * Documentation updated
+- dropped obexftp-irda.patch
+- dropped obexftp-noxml.patch
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:54 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Aug 23 14:49:39 CEST 2005 - hvogel@suse.de
+
+- update to version 0.10.7
+
+-------------------------------------------------------------------
+Mon Sep  6 17:38:41 CEST 2004 - hvogel@suse.de
+
+- make irda work again [Bug #43363] 
+
+-------------------------------------------------------------------
+Thu Feb 12 17:10:43 CET 2004 - hvogel@suse.de
+
+- update to version 0.10.4rc3
+- split into main package and -devel
+- spec file clean up
+- include more documentation
+
+-------------------------------------------------------------------
+Thu Jan 29 12:58:36 CET 2004 - hvogel@suse.de
+
+- mark man pages as documentation 
+
+-------------------------------------------------------------------
+Tue Jan 27 11:03:07 CET 2004 - ro@suse.de
+
+- added openobex-devel to neededforbuild 
+
+-------------------------------------------------------------------
+Fri Jan 16 12:48:45 CET 2004 - meissner@suse.de
+
+- Initial version 0.10.3.
+

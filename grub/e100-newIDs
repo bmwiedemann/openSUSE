@@ -1,0 +1,43 @@
+diff -pruN grub-0.97/netboot/config.c grub-0.97.new/netboot/config.c
+--- grub-0.97/netboot/config.c	2003-07-09 13:45:37.000000000 +0200
++++ grub-0.97.new/netboot/config.c	2007-02-05 14:50:57.000000000 +0100
+@@ -122,6 +122,14 @@ static struct pci_device pci_nic_list[] 
+     "Intel EtherExpressPro100 ID1029", 0, 0, 0, 0},
+   { PCI_VENDOR_ID_INTEL,	PCI_DEVICE_ID_INTEL_ID1030,
+     "Intel Corporation 82559 InBusiness 10/100", 0, 0, 0, 0},
++  { PCI_VENDOR_ID_INTEL,	PCI_DEVICE_ID_INTEL_ID1031,
++    "Intel EtherExpressPro100 ID1031", 0, 0, 0, 0},
++  { PCI_VENDOR_ID_INTEL,	PCI_DEVICE_ID_INTEL_ID1039,
++    "Intel EtherExpressPro100 ID1039", 0, 0, 0, 0},
++  { PCI_VENDOR_ID_INTEL,	PCI_DEVICE_ID_INTEL_ID103B,
++    "Intel 82801BD PRO/100 VM", 0, 0, 0, 0},
++  { PCI_VENDOR_ID_INTEL,	PCI_DEVICE_ID_INTEL_ID1050,
++    "Intel EtherExpressPro100 82555 10/100", 0, 0, 0, 0},
+   { PCI_VENDOR_ID_INTEL,	PCI_DEVICE_ID_INTEL_82562,
+     "Intel EtherExpressPro100 82562EM", 0, 0, 0, 0},
+ #endif
+@@ -281,6 +309,10 @@ static struct pci_dispatch_table PCI_NIC
+   { PCI_VENDOR_ID_INTEL,    PCI_DEVICE_ID_INTEL_82559ER,   eepro100_probe },
+   { PCI_VENDOR_ID_INTEL,    PCI_DEVICE_ID_INTEL_ID1029,    eepro100_probe },
+   { PCI_VENDOR_ID_INTEL,    PCI_DEVICE_ID_INTEL_ID1030,    eepro100_probe },
++  { PCI_VENDOR_ID_INTEL,    PCI_DEVICE_ID_INTEL_ID1031,    eepro100_probe },
++  { PCI_VENDOR_ID_INTEL,    PCI_DEVICE_ID_INTEL_ID1039,    eepro100_probe },
++  { PCI_VENDOR_ID_INTEL,    PCI_DEVICE_ID_INTEL_ID103B,    eepro100_probe },
++  { PCI_VENDOR_ID_INTEL,    PCI_DEVICE_ID_INTEL_ID1050,    eepro100_probe },
+   { PCI_VENDOR_ID_INTEL,    PCI_DEVICE_ID_INTEL_82562,     eepro100_probe },
+ # endif /* INCLUDE_EEPRO100 */
+ # ifdef	INCLUDE_EPIC100
+diff -pruN grub-0.97/netboot/pci.h grub-0.97.new/netboot/pci.h
+--- grub-0.97/netboot/pci.h	2003-07-09 13:45:38.000000000 +0200
++++ grub-0.97.new/netboot/pci.h	2007-02-05 14:50:57.000000000 +0100
+@@ -129,6 +129,10 @@ __asm__ __volatile__("pushl %0 ; popfl":
+ #define PCI_DEVICE_ID_INTEL_82559ER	0x1209
+ #define PCI_DEVICE_ID_INTEL_ID1029	0x1029
+ #define PCI_DEVICE_ID_INTEL_ID1030	0x1030
++#define PCI_DEVICE_ID_INTEL_ID1031	0x1031
++#define PCI_DEVICE_ID_INTEL_ID1039	0x1039
++#define PCI_DEVICE_ID_INTEL_ID103B	0x103B
++#define PCI_DEVICE_ID_INTEL_ID1050	0x1050
+ #define PCI_DEVICE_ID_INTEL_82562	0x2449
+ #define PCI_VENDOR_ID_AMD		0x1022
+ #define PCI_DEVICE_ID_AMD_LANCE		0x2000

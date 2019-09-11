@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Sat Jul 27 20:32:18 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * 0001-Workaround-compilation-warnings-with-gccs-8.0.patch
+- Run spec-cleaner
+- Use pkg-config style BuildRequires
+
+-------------------------------------------------------------------
+Fri Apr  7 19:16:22 UTC 2017 - meissner@suse.com
+
+- own /var/games as filesystem no longer owns it
+
+-------------------------------------------------------------------
+Tue Oct  7 12:47:08 UTC 2014 - nemysis@gmx.ch
+
+- Change tecnoballz.desktop, forgotten in previous commit
+
+-------------------------------------------------------------------
+Tue Oct  7 12:33:08 UTC 2014 - nemysis@gmx.ch
+
+- Update to 0.93.1, announce message:
+
+ TecnoballZ 0.93.1
+ add patch from Musuruan
+ - make will fail because there is no rule to make supervisor.c
+ - make install will fail because it cannot find tecnoballz.hi since it's
+   in the parent directory
+
+ TecnoballZ 0.93
+ Fix warnings with GCC 4.3 and 4.7.2
+ Fix Makefile
+ Fix bugs (Debian #510492) sprites (balls and and gems) are drawn on the right panel 
+ Fix a segfault caused by a calculation of coordinates of sprites unsigned.
+ Fix paddle movment restriction when, or after, control reverse penality 
+   (bug fixed by Celelibi Debian bug #510603)
+ Updates the code that loads the configuration file.
+ Migrating Berlios CVS source repository to Google Code Project hosting Subversion
+ Added support for XDG_CONFIG_HOME
+ Fix bug Collision check not accruate enough for fast balls.
+   (bug fixed by Celelibi Debian bug #510770)
+ Use tinyxml system library (Ansgar Burchardt from Debian)
+
+- Change Source0 to use Web URL
+- Remove obsolete patches, changed by upstream
+- Add BuildRequires for fdupes and tinyxml-devel
+- Change description
+- Add %{name}.fr.6
+
+-------------------------------------------------------------------
+Sun May 27 22:14:21 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Mon Jan  4 15:52:37 UTC 2010 - PVince81@yahoo.fr
+
+- Changed SDL dependencies to SDL instead of libSDL
+
+-------------------------------------------------------------------
+Wed Oct  7 14:48:52 UTC 2009 - PVince81@yahoo.fr
+
+- Initial package
+

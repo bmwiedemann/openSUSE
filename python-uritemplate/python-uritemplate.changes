@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:55:40 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon May  8 03:26:35 UTC 2017 - toddrme2178@gmail.com
+
+- Re-download source tarball.
+
+-------------------------------------------------------------------
+Sun May  7 22:41:52 UTC 2017 - toddrme2178@gmail.com
+
+- Source URL must be https.
+
+-------------------------------------------------------------------
+Mon May  1 16:24:14 UTC 2017 - toddrme2178@gmail.com
+
+- Fix source URL.
+- Implement single-spec version.
+- Add tests.
+- Add licenses and other documentation files.
+
+-------------------------------------------------------------------
+Thu Oct 27 15:50:21 UTC 2016 - rjschwei@suse.com
+
+- Update to version 3.0.0 (bsc#1002895)
+  + No upstream change entry for 2.0 -> 3.0
+- From 2.0.0
+  + Merge uritemplate.py into uritemplate
+  + Relicense uritemplate.py as Apache 2 and BSD
+- From 1.0.1
+  + Fix some minor packaging problems
+- From 1.0.0
+  + Fix handling of Unicode values on Python 2.6 and 2.7 for urllib.quote.
+  + Confirm public stable API via version number.
+
+-------------------------------------------------------------------
+Thu Feb 20 23:44:28 UTC 2014 - rschweikert@suse.com
+
+- Include in SLE 12 (FATE #316168)
+
+-------------------------------------------------------------------
+Wed Feb  5 01:52:25 UTC 2014 - rschweikert@suse.com
+
+- Initial build
+

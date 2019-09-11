@@ -1,0 +1,23 @@
+--- src/aax.c
++++ src/aax.c
+@@ -437,6 +437,12 @@
+     int l, same;
+     int s = 0;
+     int pos;
++    static int called;
++    if (called++)
++      {
++	--called;
++	return;
++      }
+     attr = AA_NORMAL;
+     alloctables(d);
+     drawed = 0;
+@@ -537,6 +543,7 @@
+ 	XSync(d->dp, 0);
+     }
+     freetables();
++    called--;
+ }
+ void __aa_X_redraw(aa_context *c)
+ {

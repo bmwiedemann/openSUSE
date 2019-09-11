@@ -1,0 +1,815 @@
+-------------------------------------------------------------------
+Mon Apr 22 05:06:26 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.51
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.51   2019-04-21
+  
+  - Fix CLDR formatting of 'S' pattern with more than 9 digits of
+    precision. While we only store nanoseconds in the DateTime object we should
+    still be able to handle an arbitrary number of digits properly. Fixed by
+    Slaven Rezić. GH #89.
+
+-------------------------------------------------------------------
+Thu Aug  2 05:15:34 UTC 2018 - coolo@suse.com
+
+- updated to 1.50
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.50   2018-08-01
+  
+  - The %F strftime pattern incorrectly zero-padded numbers less than four
+    digits. According to POSIX::strftime, this should output the year as-is
+    without padding. Reported by Andy Lester. GH #83.
+
+-------------------------------------------------------------------
+Mon May 21 05:13:37 UTC 2018 - coolo@suse.com
+
+- updated to 1.49
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.49   2018-05-20
+  
+  - Updated the ppport.h with the latest version of Devel::PPPort. This fixes a
+    compilation warning when compiling with 5.27.11. Reported by Jim
+    Keenan. Fixed GH #81.
+
+-------------------------------------------------------------------
+Tue Mar 27 05:14:12 UTC 2018 - coolo@suse.com
+
+- updated to 1.48
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.48   2018-03-26
+
+  - The last release would die if Sub::Util was not available, but this should
+    just be an optional requirement. Fixed by Paul Howarth. Fixes GH #77. PR
+    #78.
+
+-------------------------------------------------------------------
+Mon Mar 26 05:15:19 UTC 2018 - coolo@suse.com
+
+- updated to 1.47
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.47   2018-03-25
+  
+  1.47   2018-02-18
+  
+  - DateTime::Duration->multiply now only allows integer
+    multipliers. Implemented by Dan Stewart. PR #73.
+  
+  - Added is_last_day_of_quarter() and is_last_day_of_year()
+    methods. Implemented by Dan Stewart. PR #72.
+  
+  - When an exception was thrown while adding a duration the object could be
+    left in a broken state, with the duration partially applied. Subsequent
+    addition or subtraction would produce the wrong results. Reported by Pawel
+    Pabian. GH #74.
+
+-------------------------------------------------------------------
+Mon Feb 12 11:37:20 UTC 2018 - coolo@suse.com
+
+- updated to 1.46
+
+  1.46   2018-02-11
+
+  - Fixed the formatting for the CLDR "S" symbol. It could in some cases round
+    _up_ to 1 instead of truncating a value. For example, the "SSS" symbol would
+    format 999,999,999 nanoseconds as "1.000". Fixed by Gianni Ceccarelli. PR
+    #71.
+
+-------------------------------------------------------------------
+Sat Dec 30 06:17:33 UTC 2017 - coolo@suse.com
+
+- updated to 1.45
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.45   2017-12-29
+  
+  1.45    2017-12-26
+  
+  - Added month_length(), quarter_length() and year_length()
+    methods. Implemented by Dan Stewart. PR #70.
+
+-------------------------------------------------------------------
+Tue Aug 22 05:23:11 UTC 2017 - coolo@suse.com
+
+- updated to 1.44
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.44   2017-08-20
+  
+  - Added a stringify() method. This does exactly the same thing as
+    stringification overloading does. GH #58.
+  
+  - Added an is_last_day_of_month() method to indicate whether or not an object
+    falls on the last day of its month. GH #60.
+
+-------------------------------------------------------------------
+Tue May 30 05:27:51 UTC 2017 - coolo@suse.com
+
+- updated to 1.43
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.43   2017-05-29
+  
+  - Added a small optimization for boolification overloading. Rather than
+    relying on a fallback to stringification, we now return true directly, which
+    is a little faster in cases like "if ($might_be_dt) { ... }".
+  
+  - The datetime() method now accepts a single argument to use as the separate
+    between the date and time portion. This defaults to "T".
+
+-------------------------------------------------------------------
+Thu May 25 07:50:27 UTC 2017 - coolo@suse.com
+
+- updated to 1.42
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.42   2016-12-25
+  
+  - The DateTime::Duration->add and ->subtract methods now accept
+    DateTime::Duration objects. This used to work by accident, but this is now
+    done intentionally (with docs and tests). Reported by Petr Pisar. GitHub
+    #50.
+  
+  
+  1.41   2016-11-16
+  
+  - The DateTime->add and ->subtract methods now accept DateTime::Duration
+    objects. This used to work by accident, but this is now done intentionally
+    (with docs and tests). Based on PR #45 from Sam Kington.
+  
+  
+  1.40   2016-11-12
+  
+  - Switched from RT to the GitHub issue tracker.
+  
+  
+  1.39   2016-09-17
+  
+  - Bump minimum required Perl to 5.8.4 from 5.8.1. Looking at CPAN Testers,
+    this distro hasn't actually passed with earlier Perl versions since
+    1.35. I'm not explicitly testing with anything earlier than 5.8.8
+  
+  
+  1.38   2016-09-16
+  
+  - This release includes changes from past trial releases to switch from
+    Params::Validate and Params::ValidationCompiler. Relevant release notes from
+    those trial releases are repeated here for clarity.
+  
+  - Replaced Params::Validate with Params::ValidationCompiler and Specio. In my
+    benchmarks this makes constructing a new DateTime object about 14%
+    faster. However, it slows down module load time by about 100 milliseconds
+    (1/10 of a second) on my desktop system with a primed cache (so really
+    measuring compile time, not disk load time).
+  
+  - When you pass a locale to $dt->set you will now get a warning suggesting you
+    should use $dt->set_locale instead. The previous trial releases didn't allow
+    locale to be passed at all, which broke a lot of modules. I've sent PRs, but
+    for now the parameter should be allowed (but discouraged). Reported by
+    Slaven Rezić. RT #115420.
+  
+  - Removed the long-deprecated DateTime->DefaultLanguage method. Use
+    DefaultLocale instead.
+  
+  - Removed the long-deprecated "language" constructor parameter. Use "locale"
+    instead.
+  
+  
+  1.37   2016-08-14 (TRIAL RELEASE)
+  
+  - Require the latest Params::ValidationCompiler (0.11).
+
+-------------------------------------------------------------------
+Sun Aug  7 05:23:00 UTC 2016 - coolo@suse.com
+
+- updated to 1.36
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.36   2016-08-06
+  
+  - Require namespace::autoclean 0.19.
+  
+  
+  1.35   2016-08-05
+  
+  - Use namespace::autoclean in all packages which import anything. Without
+    cleaning the namespace, DateTime ends up with "methods" like try and catch
+    (from Try::Tiny), which can lead to very confusing bugs. Reported by Mischa
+    Schwieger. RT #115983.
+
+-------------------------------------------------------------------
+Thu Jul  7 05:13:03 UTC 2016 - coolo@suse.com
+
+- updated to 1.34
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.34   2016-07-06
+  
+  - Added the leap second coming on December 31, 2016.
+
+-------------------------------------------------------------------
+Mon Jul  4 12:28:49 UTC 2016 - coolo@suse.com
+
+- updated to 1.33
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.33   2016-06-29
+  
+  - Fixed the $dt->set docs to say that you cannot pass a locale (even though
+    you can but you'll get a warning) and added more docs for $dt->set_locale.
+  
+  - Require DateTime::Locale 1.05.
+  
+  - Require DateTime::TimeZone 2.00.
+  
+  
+  1.32   2016-06-28
+  
+  - This release *does not* include any of the changes in the 1.29-1.30 TRIAL
+    releases.
+  
+  - When you pass a locale to $dt->set you will now get a warning suggesting you
+    should use $dt->set_locale instead. If you have DateTime::Format::Mail
+    installed you should upgrade to 0.0403 or later, since that module will
+    trigger this warning.
+  
+  - Added support for $dt->truncate( to => 'quarter' ). Implemented by Michael
+    Conrad. GitHub #17.
+  
+  
+  1.31   2016-06-18 (TRIAL RELEASE)
+  
+  - When you pass a locale to $dt->set you will now get a warning suggesting you
+    should use $dt->set_locale instead. The previous trial releases didn't allow
+    locale to be passed at all, which broke a lot of modules. I've sent PRs, but
+    for now the parameter should be allowed (but discouraged). Reported by
+    Slaven Resic. RT #115420.
+  
+  
+  1.30   2016-06-18 (TRIAL RELEASE)
+  
+  - Require the latest version of Params::CheckCompiler (0.06). Tests failed
+    with 0.01.
+  
+  
+  1.29   2016-06-17 (TRIAL RELEASE)
+  
+  - Replaced Params::Validate with Params::CheckCompiler and Specio. In my
+    benchmarks this makes constructing a new DateTime object about 14%
+    faster. However, it slows down module load time by about 100 milliseconds
+    (1/10 of a second) on my desktop system with a primed cache (so really
+    measuring compile time, not disk load time).
+
+-------------------------------------------------------------------
+Mon May 23 11:40:31 UTC 2016 - coolo@suse.com
+
+- updated to 1.28
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.28   2016-05-21
+  
+  - Fixed handling of some floating point epochs. Because DateTime treated the
+    epoch like a string instead of a number, certain epochs with a non-integer
+    value ended up treated like integers (Perl is weird). Patch by Christian
+    Hansen. GitHub #15. This also addresses the problem that GitHub #6 brought
+    up.
+  
+  
+  1.27   2016-05-13
+  
+  - Added an environment variable PERL_DATETIME_DEFAULT_TZ to globally set the
+    default time zone. Using this is very dangerous! Be careful!. Patch by
+    Ovid. GitHub #14.
+
+-------------------------------------------------------------------
+Tue Mar 22 10:06:11 UTC 2016 - coolo@suse.com
+
+- updated to 1.26
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.26   2016-03-21
+  
+  - Switched from Module::Build to ExtUtils::MakeMaker. Implementation by Karen
+    Etheridge. GitHub #13.
+
+-------------------------------------------------------------------
+Tue Mar  8 10:07:34 UTC 2016 - coolo@suse.com
+
+- updated to 1.25
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.25   2016-03-06
+  
+  - DateTime->from_object would die if given a DateTime::Infinite object. Now it
+    returns another DateTime::Infinite object. Reported by Greg Oschwald. RT
+    #112712.
+  
+  
+  1.24   2016-02-29
+  
+  - The last release partially broke $dt->time. If you passed a value to use as
+    unit separator, this was ignored. Reported by Sergiy Zuban. RT #112585.
+  
+  
+  1.23   2016-02-28
+  
+  - Make all DateTime::Infinite objects return the system's representation of
+    positive or negative infinity for any method which returns a number of
+    string representation (year(), month(), ymd(), iso8601(), etc.). Previously
+    some of these methods could return "Nan", "-Inf--Inf--Inf", and other
+    confusing outputs. Reported by Greg Oschwald. RT #110341.
+  
+  
+  1.22   2016-02-21 (TRIAL RELEASE)
+  
+  - Fixed several issues with the handling of non-integer values passed to
+    from_epoch().
+  
+    This method was simply broken for negative values, which would end up being
+    incremented by a full second, so for example -0.5 became 0.5.
+  
+    The method did not accept all valid float values. Specifically, it did not
+    accept values in scientific notation.
+  
+    Finally, this method now rounds all non-integer values to the nearest
+    millisecond. This matches the precision we can expect from Perl itself (53
+    bits) in most cases.
+  
+    Patch by Christian Hansen. GitHub #11.
+
+-------------------------------------------------------------------
+Fri Oct  2 08:58:58 UTC 2015 - coolo@suse.com
+
+- updated to 1.21
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.21   2015-09-30
+  
+  - Make all tests pass with both the current DateTime::Locale and the upcoming
+    new version (currently still in trial releases).
+  
+  
+  1.20   2015-07-01
+  
+  - The 1.18 release added the June 30, 2015 leap second to the XS code, but I
+    forgot to update the corresponding pure Perl implementation in
+    DateTime::LeapSecond.
+
+-------------------------------------------------------------------
+Sun Jun  7 08:26:20 UTC 2015 - coolo@suse.com
+
+- updated to 1.19
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.19   2015-05-31
+  
+  - If you compared a DateTime object to an undef value, you might have received
+    a warning pointing to code inside DateTime.pm, instead of in your own
+    code. Fixed by Jason McIntosh. GH #7.
+  
+  - The 30future-tz.t could fail if run at certain very specific times. This
+    should now be much less likely, unless a time zone being tested implements a
+    DST change at noon (which would even more insane than DST already is by a
+    huge factor). Reported by Karen Etheridge and diagnosed by Slaven Rezic. RT
+    #102925.
+
+-------------------------------------------------------------------
+Sat Feb  7 16:23:08 UTC 2015 - coolo@suse.com
+
+- updated to 1.18
+ - There will be a new leap second on June 30, 2015.
+ 
+ 
+ 1.17   2015-01-04
+ 
+ - No code changes from the 1.16 release.
+ 
+ 
+ 1.16   2015-01-04 (TRIAL RELEASE)
+ 
+ - Test fix for systems where IVs are 4 bytes long.
+ 
+ 
+ 1.15   2015-01-03 (TRIAL RELEASE)
+ 
+ - Trying this again ... Experimental fix for adding very large numbers of
+   days. Previously, trying to add more than around 2^28 days could cause
+   errors if the result ended up in a leap year. This is being released as a
+   trial release because I'm not sure how this change will behave on a 32-bit
+   Perl. Reported by KMX. RT #97046.
+ 
+ 
+ 1.14   2015-01-03
+ 
+ - Accidentally released 1.13 as a non-TRIAL release. Releasing 1.13 minus the
+   integer change so there's a known-safe stable release on CPAN for people to
+   install.
+ 
+-------------------------------------------------------------------
+Mon Sep 15 15:15:18 UTC 2014 - coolo@suse.com
+
+- updated to 1.12
+ - The last release had the wrong repo info in the metadata.
+ 
+ - The latest historical changes in DateTime::TimeZone 1.74 caused some tests
+   to fail. Reported by Slaven Rezic. RT #98483.
+ 
+ - This release of DateTime.pm now requires the DateTime::TimeZone 1.74.
+
+
+-------------------------------------------------------------------
+Fri Jul 25 09:32:09 UTC 2014 - coolo@suse.com
+
+- updated to 1.10
+ 
+ - Some tests added in 1.09 would fail on a Perl without a 64-bit
+   gmtime(). Reported by Jerome Eteve. RT #95345.
+ 
+ 
+ 1.09   2014-05-03
+ 
+ - A call to ->truncate( to => 'week' ) could fail but leave the object
+   changed. RT #93347.
+ 
+ - The value of ->jd() is now calculated based on ->mjd() instead of the other
+   way around. This reduces floating point errors a bit when calculating MJD,
+   and should have a neglible impact on the accuracy of JD. Reported by Anye
+   Li. RT #92972. See the ticket for a more detailed description of what this
+   fixes.
+ 
+ - Attempting to construct a DateTime object with a year >= 5000 and a time
+   zone other than floating or DST now issues a warning. This warning may go
+   away once DateTime::TimeZone is made much faster. Inspired by a bug report
+   from Lloyd Fournier. RT #92655.
+ 
+ 
+ 1.08   2014-03-11
+ 
+ - DateTime now calls DateTime->_core_time() instead of calling Perl's time()
+   built-in directly. This makes it much easier to override the value of time()
+   that DateTime sees. This may make it easier to write tests for code that
+   uses DateTime .
+
+-------------------------------------------------------------------
+Fri Mar  7 09:10:06 UTC 2014 - coolo@suse.com
+
+- updated to 1.07
+ - Added a hack to get this module working on Android. RT #92671.
+ - DateTime's attempt to generate infinity by calculating 9**9**9 actually got
+   a number on some platforms, like powerpcspe. Reported by Gregor Hermann. RT
+   #91696.
+ - Added a new CLDR ZZZZZ specifier, which is like ZZZ but inserts a
+   colon. Patch by Ricardo Signes.
+ - Added a new option for the truncate() method to truncate to the
+   "local_week". This truncates to the locale's notion of the first day of the
+   week, rather than always truncating to Monday. Patch by Christian Hansen.
+
+-------------------------------------------------------------------
+Tue Feb 11 00:52:07 UTC 2014 - lchiquitto@suse.com
+
+- removed obsolete patches:
+  * DateTime-0.72-Build.patch
+
+-------------------------------------------------------------------
+Mon Dec  9 11:18:09 UTC 2013 - coolo@suse.com
+
+- updated to 1.04
+ - Calling set_locale() or set_formatter() on an object with an ambiguous local
+   time could change the underlying UTC time for that object. Reported by Marta
+   Cuaresma Saturio. RT #90583.
+
+-------------------------------------------------------------------
+Tue Jun  4 08:12:54 UTC 2013 - coolo@suse.com
+
+- updated to 1.03
+ - The set_time_zone() method was not returning the object when caalled with a
+   name that matched the current zone. Reported by Noel Maddy. RT #84699.
+ 
+ - When a constructor method like new() or today() was called on an object,
+   you'd get an error message like 'Can't locate object method
+   "_normalize_nanoseconds" via package "2013-04-15T00:00:00"'. This has been
+   fixed to provide a sane error message. Patch by Doug Bell.
+ 
+ - When set_time_zone() is called with a name that matches the current time
+   zone, DateTime now short circuits and avoids a lot of work. Patch by Mark
+   Stosberg.
+ 
+ - Fixed test failures on older Perls.
+ 
+ - Bumped the version to 1.00. This is mostly because my prior use of both X.YY
+   and X.YYYY versions causes trouble for some packaging systems. Plus after 10
+   years it's probably ready to be called 1.00. Requested by Adam. RT #82800. 
+ 
+ - The %j specifier for strftime was not zero-padding 1 and 2 digit
+   numbers. Fixed by Christian Hansen. RT #84310.
+ 
+ - The truncate method was sloppy about validating its "to" parameter, so you
+   could pass things like "years" or "month whatever anything goes". The method
+   would accept the parameter but then not actually truncate the object. RT
+   #84229.
+ 
+ - Previously, if a call to $dt->set_time_zone() failed it would still change
+   the time zone of the object, leaving it in a broken state. Reported by Bill
+   Moseley. RT #83940.
+ 
+ - DateTime::Infinite objects should no longer die when methods that require a
+   locale are called. Instead, these methods return undef for names and
+   Inf/-Inf for numbers. This affects methods such as day_name() as well as
+   CLDR and strftime formats. When a locale-specific format is used (like the
+   "full" datetime format) it uses the en_US format. Reported by Paul
+   Boldra. RT #67550.
+ 
+ - Reverted the change to round nanoseconds up or down in various
+   situtations. Now we always round down. This avoids the case where rounding
+   up would require us to then increment the second value (which could then
+   require us to increment the minute, which could then require us to increment
+
+-------------------------------------------------------------------
+Wed Feb 29 17:38:40 CET 2012 - ro@suse.de
+
+- update DateTime-0.70-Build.patch 
+
+-------------------------------------------------------------------
+Mon Feb 13 19:39:00 UTC 2012 - coolo@suse.com
+
+- updated to 0.72
+ - Remove Test::DependentModules from the dep list. This is used by some
+   author-only tests. Reported by Zefram.
+ - There will be a new leap second on June 30, 2012.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:28 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Mon May 09 21:56:19 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.70:
+  * really fix %N, finally
+
+-------------------------------------------------------------------
+Wed May 04 20:13:05 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.69:
+  * when a DateTime object had nanoseconds == 0, the %N strftime specifier
+    always returned "0" regardless of the precision requested
+
+-------------------------------------------------------------------
+Mon Apr 25 20:25:12 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.68:
+  * the tests for %N in the last release relied on the vagaries of floating
+    point math on a 64-bit system; now the from_epoch() method just uses string
+    operations to separate the epoch into an integer value and a mantissa; this
+    avoids floating point insanity (RT#67736)
+
+- changes from 0.67:
+  * the %N strftime specifier simply truncated nanoseconds, rather than
+    rounding them (RT#66744)
+  * the %U strftime specifier was off by one in years where January 1st was a
+    Sunday (RT#67631)
+  * the %W strftime specifier was off by one in years where January 1st was a
+    Sunday or Monday (RT#67631)
+  * some small optimizations; the biggest impact is for calculating
+    week_of_month, week_number, and week_year
+  * now requires Perl 5.8.1+ (it implicitly did this anyway now that
+    Params::Validate is 5.8.1+)
+
+-------------------------------------------------------------------
+Thu Mar 31 09:17:28 UTC 2011 - pascal.bleser@opensuse.org
+
+- disable tests on < 11.3, perl too old
+
+-------------------------------------------------------------------
+Sat Feb 19 23:46:48 UTC 2011 - chris@computersalat.de
+
+- update to 0.66
+  - A bunch of documentation cleanup. No code changes.
+- recreated by cpanspec 1.78.03
+- add Build patch (<= 1120)
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:48 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 22 12:53:57 CET 2010 - anicka@suse.cz
+
+- update to 0.65
+ * All the constructors besides new() ended up calling new(), which meant that
+   these constructors went through the parameter validation code
+   twice. Avoiding this should make everything that constructs a new object
+   (besides new() itself) a little faster.
+ * The t/39no-so.t test failed for some people. I can't reproduce it, but this
+   release will hopefully fix the problem. Patch by Tokuhiro Matsuno. RT
+   #62061.
+ * Added a section on the DateTime Project ecosystem to the docs. Addresses RT
+   #60930.
+ * Fixed wiki links in the docs now that the wiki has moved to a new wiki
+   platform.
+ * Restored some of the dzil-ification. The repo now has a very minimal
+   Build.PL file which is just enough to build the XS code and run the
+   tests. This fixes the total lack of prereqs in the META.* files. Reported by
+   Bjørn-Olav. RT #62427.
+
+-------------------------------------------------------------------
+Thu Sep 30 16:08:26 CEST 2010 - anicka@suse.cz
+
+- update to 0.63
+ * Don't try to test with DateTime::Format::Strptime unless we
+   have a relatively recent version. Should fix some test failures.
+
+-------------------------------------------------------------------
+Fri Sep 17 15:06:57 UTC 2010 - chris@computersalat.de
+
+- update to 0.61
+  - Switching to dzil in 0.56 broke the --pp flag for the Build.PL. Reported by
+    Jonathan Noack. RT #59421.
+- changed bcond_with test -> pod
+
+-------------------------------------------------------------------
+Thu Jul  8 16:25:10 UTC 2010 - chris@computersalat.de
+
+- update to 0.60
+  - By default, Dist::Zilla generates a Build.PL that requires Module::Build
+    0.3601+, but this distro really doesn't need any particular version.
+- hence removed MB patch
+
+-------------------------------------------------------------------
+Fri Jul  2 12:15:13 UTC 2010 - chris@computersalat.de
+
+- update to 0.59
+  - More packaging fixes. This release makes sure that POD only shows up in the
+    right files. In 0.56 through 0.58, some POD in the wrong place confused the
+    search.cpan.org POD display code, and the main module's documentation wasn't
+    viewable.
+- 0.58   2010-06-28
+  - Versions 0.56 and 0.57 did not build XS properly when installing.
+- 0.57   2010-06-26
+  - Make DateTime::LeapSecond have the same $VERSION as every other .pm file.
+- 0.56   2010-06-26
+  - The set_formatter() method did not return the DateTime object, and did not
+    actually validate the value provided for the formatter. Based on a patch by
+    Andrew Whatson. RT #58506.
+  - Improved docs on floating time zone. Based on suggestions by Michael
+    Svoboda. RT #56389.
+  - Added mention of end-of-month algorithms to docs on DateTime math. Based on
+    a patch by Michael R. Davis. RT #58533.
+  - License is now Artistic 2.0.
+- added MB patch
+  o Author Requires Module::Build >= 0.3601
+    but 1120 does not provide it, and builds just fine with Module::Build 0.280801
+
+-------------------------------------------------------------------
+Sun Apr 11 21:55:08 UTC 2010 - chris@computersalat.de
+
+- update to 0.55
+  - Get all tests passing on 5.6.2. Thanks to Zefram for help spotting the
+    problems.
+  - Moved code to my hg repo at http://hg.urth.org/hg/DateTime.pm.
+- 0.54   2010-03-14
+  - Bumped the DateTime::TimeZone prereq to 1.09 to force people to use a modern
+    version. Previously the minimum version was 0.59, and there have been a lot
+    of bug fixes since then.
+  - String overloading now extends to string comparison, so a DateTime object
+    can be compared to any string. In other words
+      if ( $dt eq $string ) { ... }
+
+      will simply stringify $dt and then do a normal string-is-equals
+      check. Previously, this would blow up unless both operands were a DateTime
+      object.
+
+      Note that future versions of Test::More (0.95_01+) will no longer stringify
+      arguments to is(), which means that older versions of DateTime may cause new
+      test failures when you upgrade Test::More. It is highly recommended that you
+      upgrade DateTime before upgrading to Test::More 0.95_01+.
+
+      Patch by Michael Schwern. RT #55453.
+  - Allow passing end_of_month setting to $duration->inverse(). Requested by
+    John Siracusa. RT #53985.
+- fixed deps
+  - perl-macros < 1120
+  - perl(Test::Exception)
+  - perl(Test::More) >= 0.88
+  - perl(DateTime::TimeZone) >= 1.09
+- split package to DateTime_0_53 for suse_version < 1120
+
+-------------------------------------------------------------------
+Sun Apr 11 21:50:08 UTC 2010 - chris@computersalat.de
+
+- update to 0.53
+  - Added Test::Exception to build_requires.
+- 0.52   2009-12-05
+  - Numeric to ->new() are now all validated to make sure they are
+    integers. Previously, things like "month => 11.2" would have been
+    allowed. Based on a bug report from Max Kanat-Alexandar. RT #45767.
+  - Added a warning to the docs suggesting that you cache the locale time zone
+    if you need to make many DateTime objects in the local zone. Looking up the
+    local zone can be fairly expensive. RT #46753.
+- 0.51   2009-11-01
+  - Switched to Module::Build. To force a non-XS build, start the build
+    process with "perl Build.PL --pp".
+  - POD-related tests are only run for the maintainer now.
+  - Fixed handling of negative years in CLDR formatting for "y" and "u"
+    patterns. Note that the LDML spec says nothing about how this should work,
+    so I took my best guess.
+- cleanup spec
+  o removed useless comments
+  o fixed Header
+  o update License, Url, description
+  o moved changelog to changes file
+  o macro usage
+  o Makefile.PL > Build.PL
+  o changelog to changes file
+
+-------------------------------------------------------------------
+Sat Jul 25 19:36:32 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sun Jun 21 16:40:20 CEST 2009 - chris@computersalat.de
+
+- update to 0.50
+  - 0.50   2009-05-11
+    - Tests were failing on Win32 because they attempted to use a negative
+      epoch. Fixed so that these tests are skipped. Fixes RT #45966.
+  - 0.49   2009-05-04
+    - A bug in the test code for handling overloaded objects in from_epoch
+      resulted in a test failure on Perl 5.8.x. This release contains no
+      changes besides a test code fix.
+  - 0.48   2009-05-04
+    - Some of the accessors (the "main" ones like year(), month(), day(),
+      etc) now warn if they are passed a value. Patch from Shawn
+      Moore. Fixes RT #6979.
+    - DateTime::Duration expected DateTime to be loaded and used some
+      constants from it, but did not explicitly "use DateTime". Reported
+      by Jeff Kubina. RT #44740.
+    - The CLDR formatting for "c" and "cc" was incorrectly using the local
+      day of the week. This meant that it gave the wrong result for
+      locales where Monday is not considered the first day of the
+      week. Reported by Maros Kollar. RT #45007.
+    - DateTime->from_epoch did not allow an object which overloaded
+      numification as the epoch value. Patch by Michael Schwern. RT
+      #45653.
+    - Fixed how datetime subtraction is handled for some cases around DST
+      changes. This had been improved back in 0.30, but there were still
+      bugs. RT #45235.
+  - 0.47   2009-03-01
+    - The handling of CLDR format 'j' and 'jj' was backwards, using 24
+      hour time for locales that wanted 12 hour, and vice versa. Reported
+      by Maros Kollar.
+    - The CLDR formatting was missing support for lower-case "q"
+      patterns. Reported by Maros Kollar.
+  - 0.46   2009-02-28
+    - Added a duration_class method for the benefit of DateTime.pm
+      subclasses. Patch by Shawn Moore.
+  - 0.4501 2008-11-25
+    - The epoch() method got broken in the recent shuffling between
+      Time::Local and Time::y2038. Unfortunately, the tests to catch this
+      also got lost in the shuffle. Reported by Avianna Chao.
+  - 0.45   2008-11-11
+    - Reverted the changes to use Time::y2038, on the recommendation of
+      Michael Schwern (the author of said module), because it is not yet
+      stable. This may come back in a future release.
+  - 0.4401 2008-11-03
+    - In order to handle epochs > 2**32 properly on a 32-bit machine, we
+      also need to import gmtime from Time::y2038. This changes fixes a
+      whole bunch of test failures seen with 0.44.
+  - 0.44   2008-11-01
+    - XS-capable DateTime.pm now uses Time::y2038 instead of
+      Time::Local. This lets it handle epochs up to 142 million years
+      before and after the Unix epoch.
+    - Fixed a compiler warning with Perl 5.10.0.
+    - Fixed docs for year_with_era, which had AD and BC
+      backwards. Reported by Vynce Montgomery. RT #39923.
+    - The format_cldr() method did not format the "yy" format properly
+      when the year ended in "0X". Reported by Wilson Santos. RT #40555.
+  - 0.4305 2008-10-03
+    - The pure Perl version of this module did not know about the end of
+      2008 leap second. Reported by James T Monty.
+  - 0.4304 2008-07-13
+    - Fix test failures when tests are run with DateTime::Locale
+      0.41. Reported by David Cantrell via CPAN Testers.
+  - 0.4303 2008-07-12
+    - There is a new leap second coming at the end of 2008. 
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o added header
+  o fixed deps
+
+-------------------------------------------------------------------
+Tue Jun  3 15:26:37 UTC 2008 - pascal.bleser@opensuse.org
+
+- new package
+

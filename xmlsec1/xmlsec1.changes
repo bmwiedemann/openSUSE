@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Thu Apr 25 09:13:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.2.28:
+  * Added BoringSSL support (chenbd).
+  * Added gnutls-3.6.x support (alonbl).
+  * Added DSA and ECDSA key size getter for MSCNG (vmiklos).
+  * Added --enable-mans configuration option (alonbl).
+  * Added coninuous build integration for MacOSX (vmiklos).
+  * Several other small fixes (more details).
+
+-------------------------------------------------------------------
+Fri Dec  7 11:01:44 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Make sure to recommend at least one backend when you install
+  just xmlsec1
+
+-------------------------------------------------------------------
+Wed Oct 31 13:21:31 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop the gnutls backend as based on the tests it is quite borked:
+  * We still have nss and openssl backend for people to use
+
+-------------------------------------------------------------------
+Wed Oct 31 12:00:28 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Version update to 1.2.27:
+  * Added AES-GCM support for OpenSSL and MSCNG (snargit).
+  * Added DSA-SHA256 and ECDSA-SHA384 support for NSS (vmiklos).
+  * Added RSA-OAEP support for MSCNG (vmiklos).
+  * Continuous build integration in Travis and Appveyor.
+  * Several other small fixes (more details).
+
+-------------------------------------------------------------------
+Thu Aug 16 10:22:09 UTC 2018 - tchvatal@suse.com
+
+- Add rplintrc to avoid bogus errors:
+  * xmlsec1-rpmlintrc
+
+-------------------------------------------------------------------
+Tue Aug 14 18:51:27 UTC 2018 - kallan@suse.com
+
+- Fixed (bsc#1104876).  Added: Requires: %{libname} = %{version} to each module
+  in the spec file. This will ensure that when one of the modules is installed
+  the corresponding version of libxmlsec1-1 will also be installed/upgraded.
+
+-------------------------------------------------------------------
+Tue Jun  5 20:10:17 UTC 2018 - vmiklos@collabora.co.uk
+
+- Version update to 1.2.26:
+  * Added xmlsec-mscng module based on Microsoft Cryptography API: Next
+    Generation
+  * Added support for GOST 2012 and fixed CryptoPro CSP provider for GOST R
+    34.10-2001 in xmlsec-mscrypto
+  * Added LibreSSL 2.7 support
+  * Upgraded documentation build process to support the latest gtk-doc
+
+-------------------------------------------------------------------
+Thu Nov 30 09:53:35 UTC 2017 - tchvatal@suse.com
+
+- Version update to 1.2.25:
+  * Various small fixes
+  * Coverity cleanups
+  * Removed support for old openssl
+
+-------------------------------------------------------------------
+Thu Apr 20 14:48:11 UTC 2017 - vmiklos@collabora.co.uk
+
+- Version update to 1.2.24:
+  * Added ECDSA-SHA1, ECDSA-SHA256, ECDSA-SHA512 support
+  for xmlsec-nss.
+
+  * Fixed XMLSEC_KEYINFO_FLAGS_X509DATA_DONT_VERIFY_CERTS
+  handling.
+
+  * Disabled external entities loading by xmlsec utility app by
+  default to prevent XXE attacks.
+
+  * Improved OpenSSL version and features detection.
+
+  * Cleaned up, simplified, and standardized internal error
+  reporting.
+
+  * Fixed a few Coverity-discovered bugs.
+
+  * Marked as deprecated all the functions in xmlsec/soap.h file
+  and a couple other functions no longer required by xmlsec.
+  These functions will be removed in the future releases.
+
+  * Several other small fixes (see commit log for more details).
+
+-------------------------------------------------------------------
+Thu Mar 23 12:19:26 UTC 2017 - pmonrealgonzalez@suse.com
+
+- Fixed dependencies with libraries (bsc#1012246):
+  * libxmlsec1-openssl.so
+  * libxmlsec1-gcrypt.so
+  * libxmlsec1-gnutls.so
+  * libxmlsec1-nss.so
+
+-------------------------------------------------------------------
+Mon Nov 28 09:29:03 UTC 2016 - tchvatal@suse.com
+
+- Version update to 1.2.23:
+  * Full support for OpenSSL 1.1.0
+  * Several other small fixes
+
+-------------------------------------------------------------------
+Wed May 25 10:49:08 UTC 2016 - tchvatal@suse.com
+
+- Version update to 1.2.22 (fate#320861):
+  * see the ChangeLog for most detailed output
+  * openssl 1.1 support
+  * Few features from libreoffice for integrated
+  * Run the testsuite
+
+-------------------------------------------------------------------
+Thu Sep  3 12:39:49 UTC 2015 - astieger@suse.com
+
+- update to 1.2.20:
+  * fix a number of miscellaneous bugs 
+  * update expired or soon-to-be-expired certificates in test suite
+
+-------------------------------------------------------------------
+Tue Jan  7 13:10:28 UTC 2014 - mvyskocil@suse.com
+
+- Initial packaging of xmlsec1 for SUSE 
+

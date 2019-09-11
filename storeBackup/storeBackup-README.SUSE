@@ -1,0 +1,11 @@
+
+Before you can start using storeBackup, please carefully read
+	/usr/share/doc/packages/storeBackup/README.1ST
+and create an appropriate configuration file
+	/etc/storebackup.d/storebackup.config
+using 
+	/usr/share/doc/packages/storeBackup/storebackup.config.default
+as a template.
+
+Have fun!
+

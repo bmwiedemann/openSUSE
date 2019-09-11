@@ -1,0 +1,11 @@
+diff -Nru azure-mgmt-kusto-0.3.0.orig/setup.py azure-mgmt-kusto-0.3.0/setup.py
+--- azure-mgmt-kusto-0.3.0.orig/setup.py	2019-03-27 16:16:52.249498672 +0100
++++ azure-mgmt-kusto-0.3.0/setup.py	2019-03-27 16:17:01.021593627 +0100
+@@ -81,7 +81,4 @@
+         'msrestazure>=0.4.32,<2.0.0',
+         'azure-common>=1.1',
+     ],
+-    extras_require={
+-        ":python_version<'3.0'": ['azure-mgmt-nspkg'],
+-    }
+ )

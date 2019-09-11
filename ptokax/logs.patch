@@ -1,0 +1,33 @@
+diff -Pdpru PtokaX.orig/core/ServerManager.cpp PtokaX/core/ServerManager.cpp
+--- PtokaX.orig/core/ServerManager.cpp	2017-04-08 13:06:30.000000000 +0300
++++ PtokaX/core/ServerManager.cpp	2017-04-14 03:21:33.950860135 +0300
+@@ -251,8 +251,8 @@ void ServerManager::Initialize() {
+ #else
+     srandom(acctime);
+ 
+-	if(DirExist((m_sPath+"/logs").c_str()) == false) {
+-		if(mkdir((m_sPath+"/logs").c_str(), 0755) == -1) {
++	if(DirExist("/var/log/ptokax") == false) {
++		if(mkdir("/var/log/ptokax", 0755) == -1) {
+             if(m_bDaemon == true) {
+                 syslog(LOG_USER | LOG_ERR, "Creating  of logs directory failed!\n");
+             } else {
+diff -Pdpru PtokaX.orig/core/utility.cpp PtokaX/core/utility.cpp
+--- PtokaX.orig/core/utility.cpp	2017-04-09 12:22:59.000000000 +0300
++++ PtokaX/core/utility.cpp	2017-04-14 03:26:45.246257342 +0300
+@@ -877,13 +877,13 @@ void AppendLog(const char * sData, const
+ #ifdef _WIN32
+         fw = fopen((ServerManager::m_sPath + "\\logs\\system.log").c_str(), "a");
+ #else
+-		fw = fopen((ServerManager::m_sPath + "/logs/system.log").c_str(), "a");
++		fw = fopen("/var/log/ptokax/system.log", "a");
+ #endif
+     } else {
+ #ifdef _WIN32
+         fw = fopen((ServerManager::m_sPath + "\\logs\\script.log").c_str(), "a");
+ #else
+-		fw = fopen((ServerManager::m_sPath + "/logs/script.log").c_str(), "a");
++		fw = fopen("/var/log/ptokax/system.log", "a");
+ #endif
+     }
+ 

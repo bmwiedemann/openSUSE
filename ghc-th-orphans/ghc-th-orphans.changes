@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Tue Jun 11 14:29:20 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Update Cabal file for more accurate build dependencies.
+
+-------------------------------------------------------------------
+Mon Mar 25 11:50:15 UTC 2019 - psimons@suse.com
+
+- Update th-orphans to version 0.13.7.
+  ### 0.13.7 [2019.03.24]
+  * Backport the `MonadFail Q` instance.
+  * Allow building with `template-haskell-2.16` by manually implementing
+    `Lift` for `Bytes`. See [#27]
+
+  [#27]: https://github.com/mgsloan/th-orphans/issues/27
+
+-------------------------------------------------------------------
+Sat Oct 20 11:32:07 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:44 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:31:57 UTC 2018 - psimons@suse.com
+
+- Update th-orphans to version 0.13.6.
+  ### 0.13.6 [2018.07.01]
+  * Allow building with `template-haskell-2.14`.
+  * Implement `qAddForeignFilePath` and `qAddTempFile` for `Quasi` instances
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update th-orphans to version 0.13.5 revision 1.
+  * Implement `qAddCorePlugin` for `Quasi` instances
+  * Implement `qAddForeignFile` for `Quasi` instances
+
+-------------------------------------------------------------------
+Mon Nov 14 09:34:49 UTC 2016 - psimons@suse.com
+
+- Update to version 0.13.3 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Sep 15 06:32:59 UTC 2016 - psimons@suse.com
+
+- Update to version 0.13.2 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:06:35 UTC 2016 - psimons@suse.com
+
+- Update to version 0.13.0 revision 0 with cabal2obs.

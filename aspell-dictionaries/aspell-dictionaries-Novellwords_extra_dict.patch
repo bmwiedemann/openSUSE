@@ -1,0 +1,120 @@
+Index: aspell-cs-20040614-1/cs.multi
+===================================================================
+--- aspell-cs-20040614-1/cs.multi.orig
++++ aspell-cs-20040614-1/cs.multi
+@@ -1,2 +1,3 @@
+ # Generated with Aspell Dicts "proc" script version 0.60.3
+ add cs.rws
++add csNovellwords
+Index: aspell-da-1.6.20/da.multi
+===================================================================
+--- aspell-da-1.6.20/da.multi.orig
++++ aspell-da-1.6.20/da.multi
+@@ -1,2 +1,3 @@
+ # Generated with Aspell Dicts "proc" script version 0.60.3
+ add da.rws
++add daNovellwords
+Index: aspell-de-20030222-1/de.multi
+===================================================================
+--- aspell-de-20030222-1/de.multi.orig
++++ aspell-de-20030222-1/de.multi
+@@ -1,2 +1,3 @@
+ # Generated with Aspell Dicts "proc" script version 0.60.3
+ add de_DE.multi
++add deNovellwords
+Index: aspell-es-1.11-2/es.multi
+===================================================================
+--- aspell-es-1.11-2/es.multi.orig
++++ aspell-es-1.11-2/es.multi
+@@ -1,2 +1,3 @@
+ # Generated with Aspell Dicts "proc" script version 0.60.4
+ add es.rws
++add esNovellwords
+Index: aspell-fi-0.7-0/fi.multi
+===================================================================
+--- aspell-fi-0.7-0/fi.multi.orig
++++ aspell-fi-0.7-0/fi.multi
+@@ -1,2 +1,3 @@
+ # Generated with Aspell Dicts "proc" script version 0.60.3
+ add fi.rws
++add fiNovellwords
+Index: aspell-fr-0.50-3/fr.multi
+===================================================================
+--- aspell-fr-0.50-3/fr.multi.orig
++++ aspell-fr-0.50-3/fr.multi
+@@ -1,2 +1,3 @@
+ # Generated with Aspell Dicts "proc" script version 0.50.2
+ add fr-60.multi
++add frNovellwords
+Index: aspell-hu-0.99.4.2-0/hu.multi
+===================================================================
+--- aspell-hu-0.99.4.2-0/hu.multi.orig
++++ aspell-hu-0.99.4.2-0/hu.multi
+@@ -1,2 +1,3 @@
+ # Generated with Aspell Dicts "proc" script version 0.60.3
+ add hu.rws
++add huNovellwords
+Index: aspell-it-2.2_20050523-0/it.multi
+===================================================================
+--- aspell-it-2.2_20050523-0/it.multi.orig
++++ aspell-it-2.2_20050523-0/it.multi
+@@ -1,2 +1,3 @@
+ # Generated with Aspell Dicts "proc" script version 0.60.3
+ add it.rws
++add itNovellwords
+Index: aspell-nb-0.50.1-0/nb.multi
+===================================================================
+--- aspell-nb-0.50.1-0/nb.multi.orig
++++ aspell-nb-0.50.1-0/nb.multi
+@@ -1,2 +1,3 @@
+ # Generated with Aspell Dicts "proc" script version 0.50.4
+ add nb.rws
++add nbNovellwords
+Index: aspell-nl-1.00-G/nl.multi
+===================================================================
+--- aspell-nl-1.00-G/nl.multi.orig
++++ aspell-nl-1.00-G/nl.multi
+@@ -1,2 +1,3 @@
+ # Generated with Aspell Dicts "proc" script version 0.50.1
+ add nl.rws
++add nlNovellwords
+Index: aspell-pl-6.0_20150428-0/pl.multi
+===================================================================
+--- aspell-pl-6.0_20150428-0/pl.multi.orig
++++ aspell-pl-6.0_20150428-0/pl.multi
+@@ -1,2 +1,3 @@
+ # Generated with Aspell Dicts "proc" script version 0.60.3
+ add pl.rws
++add plNovellwords
+Index: aspell-pt_BR-20090702-0/pt_BR.multi
+===================================================================
+--- aspell-pt_BR-20090702-0/pt_BR.multi.orig
++++ aspell-pt_BR-20090702-0/pt_BR.multi
+@@ -1,2 +1,3 @@
+ # Generated with Aspell Dicts "proc" script version 0.60.4
+ add pt_BR.rws
++add pt_BRNovellwords
+Index: aspell-ru-0.99f7-1/ru.multi
+===================================================================
+--- aspell-ru-0.99f7-1/ru.multi.orig
++++ aspell-ru-0.99f7-1/ru.multi
+@@ -1,2 +1,3 @@
+ # Generated with Aspell Dicts "proc" script version 0.60.3
+ add ru-ye.multi
++add ruNovellwords
+Index: aspell-sk-2.01-2/sk.multi
+===================================================================
+--- aspell-sk-2.01-2/sk.multi.orig
++++ aspell-sk-2.01-2/sk.multi
+@@ -1,2 +1,3 @@
+ # Generated with Aspell Dicts "proc" script version 0.60.4
+ add sk.rws
++add skNovellwords
+Index: aspell-sv-0.51-0/sv.multi
+===================================================================
+--- aspell-sv-0.51-0/sv.multi.orig
++++ aspell-sv-0.51-0/sv.multi
+@@ -1,2 +1,3 @@
+ # Generated with Aspell Dicts "proc" script version 0.50.3
+ add sv.rws
++add svNovellwords

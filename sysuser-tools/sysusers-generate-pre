@@ -1,0 +1,26 @@
+#!/bin/bash
+# pass systemd sysusers config files a as argument to this script.
+# It will output a shell script that creates those users by
+# appending the data to itself.
+
+tmpfile=`mktemp -q -t sysusers.XXXXXX`
+cleanup()
+{
+	rm -f "$tmpfile"
+}
+
+trap cleanup EXIT
+
+for i in "$@"; do
+	grep -e '^[ugmr]' "$i" >> "$tmpfile"
+done
+
+lines=`wc -l < "$tmpfile"`
+
+echo '#!/bin/bash'
+echo "tail -n $lines \$0 | /usr/sbin/sysusers2shadow"
+echo 'RET=$?'
+echo 'test -f /.buildenv && exit 0'
+echo 'exit $RET'
+echo '######## data below ########'
+cat "$tmpfile"

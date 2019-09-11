@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:53:10 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Jul 29 11:23:17 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality/relevance of description.
+
+-------------------------------------------------------------------
+Thu May 24 17:40:45 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 2.3.0
+  * Added several time methods and terminal size detection
+- Fix tests
+- spec file cleanups
+
+-------------------------------------------------------------------
+Tue Nov  7 18:25:29 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

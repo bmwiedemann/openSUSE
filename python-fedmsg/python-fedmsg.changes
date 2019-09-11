@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Mon Mar 25 11:04:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Mon Feb 11 09:42:31 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Split package into -doc, -base and py2 & py3 version
+  * correct the source tarball (pypi tarball does not contain test fixtures)
+  * use py.test to run the tests as upstream does
+  * install the common "config" files to /etc/fedmsg.d/ where fedmsg expects them
+  * build and install the documentation
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:55 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Mar 21 20:38:20 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 1.1.1
+ * Fix a bug in the configuration validation for crl_cache_expiry and ca_cert_cache_expiry (#500).
+
+-------------------------------------------------------------------
+Tue Feb  6 22:13:48 UTC 2018 - sebix+novell.com@sebix.at
+
+- initial package for version 1.1.0

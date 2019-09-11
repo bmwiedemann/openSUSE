@@ -1,0 +1,10 @@
+#!/bin/bash
+VERSION=4.8.30
+
+if [ ! $DELETE = false ]
+then
+  DELETE=true
+fi
+
+wget http://www.oracle.com/technology/products/berkeley-db/db/update/$VERSION/patch.$VERSION.html -r -l1
+for file in `find www.oracle.com/ -name "patch\.*" | grep -v html`; do cp $file .; done

@@ -1,0 +1,1372 @@
+-------------------------------------------------------------------
+Thu Jul 25 13:05:45 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Mon Dec 31 16:37:28 UTC 2018 - sean@suspend.net
+
+- Update to version 3.0.28:
+  * Bug fixes:
+  - Fix misplaced parentheses
+  - Changed two regression tests to depend on config directive
+
+-------------------------------------------------------------------
+Wed Sep 28 17:55:49 UTC 2016 - kieltux@gmail.com
+
+- Update to version 3.0.26
+  * Bug fixes:
+    - Fixed crashes with "listen-addr :8118" (SF Bug #902).
+      The regression was introduced in 3.0.25 beta and reported
+      by Marvin Renich in Debian bug #834941.
+  * General improvements:
+    - Log when privoxy is toggled on or off via cgi interface.
+    - Highlight the "Info: Now toggled " on/off log message
+      in the Windows log viewer.
+    - Highlight the loading actions/filter file log message
+      in the Windows log viewer.
+    - Mention client-specific tags on the toggle page as a
+      potentionally more appropriate alternative.
+  * Infrastructure improvements:
+    - Add perl script to generate an RSS feed for the packages
+      Submitted by "Unknown".
+  * Build system improvements:
+    - strptime.h: fix a compiler warning about ambiguous else.
+    - configure.in: Check for Docbook goo on the BSDs as well.
+    - GNUMakefile.in: Let the dok-user target remove 
+      temporary files.
+- BuildArch for docs: noarch
+
+-------------------------------------------------------------------
+Sat Jan 23 19:46:10 UTC 2016 - astieger@suse.com
+
+- Privoxy 3.0.24
+  Includes fixes for two security issues that may be used to
+  remotely trigger crashes on platforms that carefully check memory
+  accesses.
+  * Security fixes (denial of service):
+    + Prevent invalid reads in case of corrupt chunk-encoded
+      content. CVE-2016-1982 [boo#963151]
+    + Remove empty Host headers in client requests. Previously
+      they would result in invalid reads. CVE-2016-1983 [boo#963152]
+  * General bug fixes and improvements
+  * White and blacklist updates
+
+-------------------------------------------------------------------
+Wed Jan 28 20:45:52 UTC 2015 - andreas.stieger@gmx.de
+
+- add CVE IDs for [boo#914934]
+
+-------------------------------------------------------------------
+Tue Jan 27 14:16:49 UTC 2015 - andreas.stieger@gmx.de
+
+- add CVE and bug IDs to last two changelog entries
+
+-------------------------------------------------------------------
+Mon Jan 26 10:32:37 UTC 2015 - joerg.lorenzen@ki.tng.de
+
+- update to version 3.0.23 [boo#914934]
+  - Bug fixes:
+    - Fixed a DoS issue in case of client requests with incorrect
+      chunk-encoded body. When compiled with assertions enabled
+      (the default) they could previously cause Privoxy to abort().
+      [CVE-2015-1380]
+    - Fixed multiple segmentation faults and memory leaks in the
+      pcrs code. This fix also increases the chances that an invalid
+      pcrs command is rejected as such. Previously some invalid commands
+      would be loaded without error. Note that Privoxy's pcrs sources
+      (action and filter files) are considered trustworthy input and
+      should not be writable by untrusted third-parties.
+      [CVE-2015-1381]
+    - Fixed an 'invalid read' bug which could at least theoretically
+      cause Privoxy to crash. So far, no crashes have been observed.
+    - Compiles with --disable-force again. Reported by Kay Raven.
+    - Client requests with body that can't be delivered no longer
+      cause pipelined requests behind them to be rejected as invalid.
+      [CVE-2015-1382]
+  - General improvements:
+    - If a pcrs command is rejected as invalid, Privoxy now logs
+      the cause of the problem as text. Previously the pcrs error
+      code was logged.
+    - The tests are less likely to cause false positives.
+  - Action file improvements:
+    - '.sify.com/' is no longer blocked. Apparently it is not actually
+      a pure tracking site (anymore?). Reported by Andrew on ijbswa-users@.
+    - Unblock banners on .amnesty.de/ which aren't ads.
+  - Documentation improvements:
+    - The 'Would you like to donate?' section now also contains
+      a "Paypal" address.
+    - The list of supported operating systems has been updated.
+    - The existence of the SF support and feature trackers has been
+      deemphasized because they have been broken for months.
+      Most of the time the mailing lists still work.
+    - The claim that default.action updates are sometimes released
+      on their own has been removed. It hasn't happened in years.
+    - Explicitly mention that Tor's port may deviate from the default
+      when using a bundle. Requested by Andrew on ijbswa-users@.
+
+-------------------------------------------------------------------
+Fri Nov 28 23:16:40 UTC 2014 - andreas.stieger@gmx.de
+
+- Privoxy 3.0.22 [boo#907675]
+- Bug fixes:
+  - Fixed a memory leak when rejecting client connections
+    [CVE-2015-1030 [CVE-2015-1031] [boo#913094]
+  - Fixed an immediate-use-after-free bug and two additional
+    unconfirmed use-after-free complaints
+    [CVE-2015-1201] [boo#914450]
+  - Actually show the FORCE_PREFIX value on the show-status page.
+  - Properly deal with Keep-Alive headers with timeout= parameters
+  - Not using any filter files no longer results in warning messages
+    unless an action file is referencing header taggers or filters.
+  - Fixed a bug that prevented Privoxy from reusing some reusable
+    connections.
+- General improvements:
+  - Introduced NO-REQUEST-TAG and NO-RESPONSE-TAG.
+  - Add support for the 'PATCH' method as defined in RFC5789.
+  - Reject requests with unsupported Expect header values.
+  - Normalize the HTTP-version in forwarded requests and responses.
+  - Server 'Keep-Alive' headers are no longer forwarded.
+  - Change declared template file encoding to UTF-8.
+  - Do not pass rejected keep-alive timeouts to the server.
+  - CGI templates no longer enforce new windows for some links.
+  - Documentation improvements
+  - Build system improvements
+- Action file improvements:
+  - The pattern 'promotions.' is no longer being blocked.
+  - Various updated filter rules and exceptions.
+- Filter file improvements & bug fixes:
+  - Decrease the chances that js-annoyances creates invalid JavaScript.
+  - Let the msn filter hide 'related' ads again.
+  - Prevent img-reorder from messing up img tags with empty src
+    attributes.
+- add source URL
+- fix self-obsoletion
+- clean up spec file
+
+-------------------------------------------------------------------
+Sun Nov 09 22:53:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in pre script
+
+-------------------------------------------------------------------
+Tue Aug 19 14:17:32 UTC 2014 - wagner-thomas@gmx.at
+
+- added config file for SuSEfirewall2
+
+-------------------------------------------------------------------
+Mon Jul  7 12:53:54 UTC 2014 - wagner-thomas@gmx.at
+
+- update logrotate config file after switch to systemd (bnc#878788)
+- added "reload" capability which was lost during switch from 
+  sysvinit to systemd
+- privoxy-3.0.16-networkmanager.systemd.patch:
+  update Networkmanager dispatcher to reload config of privoxy with 
+  systemd (bnc#862339)
+
+-------------------------------------------------------------------
+Fri Jan 24 14:08:59 UTC 2014 - schwab@linux-m68k.org
+
+- Add proper sysv to service migration
+- Readd rc link
+- Remove reference to nonexisting dns6 nss module (bnc#849923)
+
+-------------------------------------------------------------------
+Sun Dec 15 18:57:00 UTC 2013 - joerg.lorenzen@ki.tng.de
+
+- Fixed unsuccessful start of privoxy with systemd:
+   - Privoxy isn't chrooted properly, added option --chroot
+     to privoxy.service (see bnc#849923)
+   - After fixing bnc#849923 there is no DNS resolution due to
+     missing population of chroot env, added ExecStartPre commands
+     to privoxy.service (see bnc#852941)
+
+-------------------------------------------------------------------
+Sat Jun 22 11:55:46 UTC 2013 - p.drouand@gmail.com
+
+- update to version 3.0.21
+  - Bug fixes:
+    - On POSIX-like platforms, network sockets with file descriptor
+      values above FD_SETSIZE are properly rejected. Previously they
+      could cause memory corruption in configurations that allowed
+      the limit to be reached.
+    - Proxy authentication headers are removed unless the new directive
+      enable-proxy-authentication-forwarding is used. Forwarding the
+      headers potentionally allows malicious sites to trick the user
+      into providing them with login information.
+      Reported by Chris John Riley.
+    - Compiles on OS/2 again now that unistd.h is only included
+      on platforms that have it.
+
+  - General improvements:
+    - The show-status page shows the FEATURE_STRPTIME_SANITY_CHECKS status.
+    - A couple of assert()s that could theoretically dereference
+      NULL pointers in debug builds have been relocated.
+    - Added an LSB info block to the generic start script.
+      Based on a patch from Natxo Asenjo.
+    - The max-client-connections default has been changed to 128
+      which should be more than enough for most setups.
+
+  - Action file improvements:
+    - Block rover.ebay./ar.*\&adtype= instead of "/.*\&adtype=" which
+      caused too man false positives.
+      Reported by u302320 in #360284, additional feedback from Adam Piggott.
+    - Unblock '.advrider.com/' and '/.*ADVrider'.
+      Anonymously reported in #3603636.
+    - Stop blocking '/js/slider\.js'.
+      Reported by Adam Piggott in #3606635 and _lvm in #2791160.
+
+  - Filter file improvements:
+    - Added an iframes filter.
+
+  - Documentation improvements:
+    - The whole GPLv2 text is included in the user manual now,
+      so Privoxy can serve it itself and the user can read it
+      without having to wade through GPLv3 ads first.
+    - Properly numbered and underlined a couple of section titles
+      in the config that where previously overlooked due to a flaw
+      in the conversion script. Reported by Ralf Jungblut.
+    - Improved the support instruction to hopefully make it harder to
+      unintentionally provide insufficient information when requesting
+      support. Previously it wasn't obvious that the information we need
+      in bug reports is usually also required in support requests.
+    - Removed documentation about packages that haven't been provided
+      in years.
+
+  - Privoxy-Regression-Test:
+    - Only log the test number when not running in verbose mode
+      The position of the test is rarely relevant and it previously
+      wasn't exactly obvious which one of the numbers was useful to
+      repeat the test with --test-number.
+
+  - GNUmakefile improvements:
+    - Factor generate-config-file out of config-file to make testing
+      more convenient.
+    - The clean target now also takes care of patch leftovers.
+- Use original source tarball; can't use sourceurl due to OpenSuse < 12.1
+  support
+- Update patch to upstream changes
+  privoxy-3.0.17-config.patch > privoxy-3.0.21-config.patch 
+- Use systemd instead of sysvinit for OpenSuse > 12.1
+
+-------------------------------------------------------------------
+Mon Dec  3 20:52:00 UTC 2012 - schwab@linux-m68k.org
+
+- update to version 3.0.19
+  - Bug fixes:
+    - Prevent a segmentation fault when de-chunking buffered content.
+      It could be triggered by malicious web servers if Privoxy was
+      configured to filter the content and running on a platform
+      where SIZE_T_MAX isn't larger than UINT_MAX, which probably
+      includes most 32-bit systems. On those platforms, all Privoxy
+      versions before 3.0.19 appear to be affected.
+      To be on the safe side, this bug should be presumed to allow
+      code execution as proving that it doesn't seems unrealistic.
+    - Do not expect a response from the SOCKS4/4A server until it
+      got something to respond to. This regression was introduced
+      in 3.0.18 and prevented the SOCKS4/4A negotiation from working.
+      Reported by qqqqqw in #3459781.
+
+  - General improvements:
+    - Fix an off-by-one in an error message about connect failures.
+    - Use a GNUMakefile variable for the webserver root directory and
+      update the path. Sourceforge changed it which broke various
+      web-related targets.
+    - Update the CODE_STATUS description.
+
+-------------------------------------------------------------------
+Fri Oct  5 21:05:44 UTC 2012 - schwab@linux-m68k.org
+
+- Use privoxy:privoxy for rotating the logfile
+
+-------------------------------------------------------------------
+Mon Dec 26 08:16:16 UTC 2011 - andreas.stieger@gmx.de
+
+- add rpm group to privoxy-doc package, fixing all builds
+- remove name and version macros from patch references
+- update to upstream 3.0.18:
+
+- Bug fixes:
+  - If a generated redirect URL contains characters RFC 3986 doesn't
+    permit, they are (re)encoded. Not doing this makes Privoxy versions
+    from 3.0.5 to 3.0.17 susceptible to HTTP response splitting (CWE-113)
+    attacks if the +fast-redirects{check-decoded-url} action is used.
+  - Fix a logic bug that could cause Privoxy to reuse a server
+    socket after it got tainted by a server-header-tagger-induced
+    block that was triggered before the whole server response had
+    been read. If keep-alive was enabled and the request following
+    the blocked one was to the same host and using the same forwarding
+    settings, Privoxy would send it on the tainted server socket.
+    While the server would simply treat it as a pipelined request,
+    Privoxy would later on fail to properly parse the server's
+    response as it would try to parse the unread data from the
+    first response as server headers for the second one.
+    Regression introduced in 3.0.17.
+  - When implying keep-alive in client_connection(), remember that
+    the client didn't. Fixes a regression introduced in 3.0.13 that
+    would cause Privoxy to wait for additional client requests after
+    receiving a HTTP/1.1 request with "Connection: close" set
+    and connection sharing enabled.
+    With clients which terminates the client connection after detecting
+    that the whole body has been received it doesn't really matter,
+    but with clients that don't the connection would be kept open until
+    it timed out.
+  - Fix a subtle race condition between prepare_csp_for_next_request()
+    and sweep(). A thread preparing itself for the next client request
+    could briefly appear to be inactive.
+    If all other threads were already using more recent files,
+    the thread could get its files swept away under its feet.
+    So far this has only been reproduced while stress testing in
+    valgrind while touching action files in a loop. It's unlikely
+    to have caused any actual problems in the real world.
+  - Disable filters if SDCH compression is used unless filtering is forced.
+    If SDCH was combined with a supported compression algorithm, Privoxy
+    previously could try to decompress it and ditch the Content-Encoding
+    header even though the SDCH compression wasn't dealt with.
+    Reported by zebul666 in #3225863.
+  - Make a copy of the --user value and only mess with that when splitting
+    user and group. On some operating systems modifying the value directly
+    is reflected in the output of ps and friends and can be misleading.
+    Reported by zepard in #3292710.
+  - If forwarded-connect-retries is set, only retry if Privoxy is actually
+    forwarding the request. Previously direct connections would be retried
+    as well.
+  - Fixed a small memory leak when retrying connections with IPv6
+    support enabled.
+  - Remove an incorrect assertion in compile_dynamic_pcrs_job_list()
+    It could be triggered by a pcrs job with an invalid pcre
+    pattern (for example one that contains a lone quantifier).
+  - If the --user argument user[.group] contains a dot, always bail out
+    if no group has been specified. Previously the intended, but undocumented
+    (and apparently untested), behaviour was to try interpreting the whole
+    argument as user name, but the detection was flawed and checked for '0'
+    instead of '\0', thus merely preventing group names beginning with a zero.
+  - In html_code_map[], use a numeric character reference instead of &apos;
+    which wasn't standardized before XHTML 1.0.
+  - Fix an invalid free when compiled with FEATURE_GRACEFUL_TERMINATION
+    and shut down through http://config.privoxy.org/die
+  - In get_actions(), fix the "temporary" backwards compatibility hack
+    to accept block actions without reason.
+    It also covered other actions that should be rejected as invalid.
+    Reported by Billy Crook.
+
+- General improvements:
+  - Privoxy can (re)compress buffered content before delivering
+    it to the client. Disabled by default as most users wouldn't
+    benefit from it.
+  - The +fast-redirects{check-decoded-url} action checks URL
+    segments separately. If there are other parameters behind
+    the redirect URL, this makes it unnecessary to cut them off
+    by additionally using a +redirect{} pcrs command.
+    Initial patch submitted by Jamie Zawinski in #3429848.
+  - When loading action sections, verify that the referenced filters
+    exist. Currently missing filters only result in an error message,
+    but eventually the severity will be upgraded to fatal.
+  - Allow to bind to multiple separate addresses.
+    Patch set submitted by Petr Pisar in #3354485.
+  - Set socket_error to errno if connecting fails in rfc2553_connect_to().
+    Previously rejected direct connections could be incorrectly reported
+    as DNS issues if Privoxy was compiled with IPv6 support.
+  - Adjust url_code_map[] so spaces are replaced with %20 instead of '+'
+    While '+' can be used by client's submitting form data, this is not
+    actually what Privoxy is using the lookups for. This is more of a
+    cosmetic issue and doesn't fix any known problems.
+  - When compiled without FEATURE_FAST_REDIRECTS, do not silently
+    ignore +fast-redirect{} directives
+  - Added a workaround for GNU libc's strptime() reporting negative
+    year values when the parsed year is only specified with two digits.
+    On affected systems cookies with such a date would not be turned
+    into session cookies by the +session-cookies-only action.
+    Reported by Vaeinoe in #3403560
+  - Fixed bind failures with certain GNU libc versions if no non-loopback
+    IP address has been configured on the system. This is mainly an issue
+    if the system is using DHCP and Privoxy is started before the network
+    is completely configured.
+    Reported by Raphael Marichez in #3349356.
+    Additional insight from Petr Pisar.
+  - Privoxy log messages now use the ISO 8601 date format %Y-%m-%d.
+    It's only slightly longer than the old format, but contains
+    the full date including the year and allows sorting by date
+    (when grepping in multiple log files) without hassle.
+  - In get_last_url(), do not bother trying to decode URLs that do
+    not contain at least one '%' sign. It reduces the log noise and
+    a number of unnecessary memory allocations.
+  - In case of SOCKS5 failures, dump the socks response in the log message.
+  - Simplify the signal setup in main().
+  - Streamline socks5_connect() slightly.
+  - In socks5_connect(), require a complete socks response from the server.
+    Previously Privoxy didn't care how much data the server response
+    contained as long as the first two bytes contained the expected
+    values. While at it, shrink the buffer size so Privoxy can't read
+    more than a whole socks response.
+  - In chat(), do not bother to generate a client request in case of
+    direct CONNECT requests. It will not be used anyway.
+  - Reduce server_last_modified()'s stack size.
+  - Shorten get_http_time() by using strftime().
+  - Constify the known_http_methods pointers in unknown_method().
+  - Constify the time_formats pointers in parse_header_time().
+  - Constify the formerly_valid_actions pointers in action_used_to_be_valid().
+  - Introduce a GNUMakefile MAN_PAGE variable that defaults to privoxy.1.
+    The Debian package uses section 8 for the man page and this
+    should simplify the patch.
+  - Deduplicate the INADDR_NONE definition for Solaris by moving it to jbsockets.h
+  - In block_url(), ditch the obsolete workaround for ancient Netscape versions
+    that supposedly couldn't properly deal with status code 403.
+  - Remove a useless NULL pointer check in load_trustfile().
+  - Remove two useless NULL pointer checks in load_one_re_filterfile().
+  - Change url_code_map[] from an array of pointers to an array of arrays
+    It removes an unnecessary layer of indirection and on 64bit system reduces
+    the size of the binary a bit.
+  - Fix various typos. Fixes taken from Debian's 29_typos.dpatch by Roland Rosenfeld.
+  - Add a dok-tidy GNUMakefile target to clean up the messy HTML
+    generated by the other dok targets.
+  - GNUisms in the GNUMakefile have been removed.
+  - Change the HTTP version in static responses to 1.1
+  - Synced config.sub and config.guess with upstream
+    2011-11-11/386c7218162c145f5f9e1ff7f558a3fbb66c37c5.
+  - Add a dedicated function to parse the values of toggles. Reduces duplicated
+    code in load_config() and provides better error handling. Invalid or missing
+    toggle values are now a fatal error instead of being silently ignored.
+  - Terminate HTML lines in static error messages with \n instead of \r\n.
+  - Simplify cgi_error_unknown() a bit.
+  - In LogPutString(), don't bother looking at pszText when not
+    actually logging anything.
+  - Change ssplit()'s fourth parameter from int to size_t.
+    Fixes a clang complaint.
+  - Add a warning that the statistics currently can't be trusted.
+    Mention Privoxy-Log-Parser's --statistics option as
+    an alternative for the time being.
+  - In rfc2553_connect_to(), start setting cgi->error_message on error.
+  - Change the expected status code returned for http://p.p/die depending
+    on whether or not FEATURE_GRACEFUL_TERMINATION is available.
+  - In cgi_die(), mark the client connection for closing.
+    If the client will fetch the style sheet through another connection
+    it gets the main thread out of the accept() state and should thus
+    trigger the actual shutdown.
+  - Add a proper CGI message for cgi_die().
+  - Don't enforce a logical line length limit in read_config_line().
+  - Slightly refactor server_last_modified() to remove useless gmtime*() calls.
+  - In get_content_type(), also recognize '.jpeg' as JPEG extension.
+  - Add '.png' to the list of recognized file extensions in get_content_type().
+  - In block_url(), consistently use the block reason "Request blocked by Privoxy"
+    In two places the reason was "Request for blocked URL" which hides the
+    fact that the request got blocked by Privoxy and isn't necessarily
+    correct as the block may be due to tags.
+  - In listen_loop(), reload the configuration files after accepting
+    a new connection instead of before.
+    Previously the first connection that arrived after a configuration
+    change would still be handled with the old configuration.
+  - In chat()'s receive-data loop, skip a client socket check if
+    the socket will be written to right away anyway. This can
+    increase the transfer speed for unfiltered content on fast
+    network connections.
+  - The socket timeout is used for SOCKS negotiations as well which
+    previously couldn't timeout.
+  - Don't keep the client connection alive if any configuration file
+    changed since the time the connection came in. This is closer to
+    Privoxy's behaviour before keep-alive support for client connection
+    has been added and also less confusing in general.
+  - Treat all Content-Type header values containing the pattern
+    'script' as a sign of text. Reported by pribog in #3134970.
+
+- Action file improvements:
+  - Moved the site-specific block pattern section below the one for the
+    generic patterns so for requests that are matched in both, the block
+    reason for the domain is shown which is usually more useful than showing
+    the one for the generic pattern.
+  - Remove -prevent-compression from the fragile alias. It's no longer
+    used anywhere by default and isn't known to break stuff anyway.
+  - Add a (disabled) section to block various Facebook tracking URLs.
+    Reported by Dan Stahlke in #3421764.
+  - Add a (disabled) section to rewrite and redirect click-tracking
+    URLs used on news.google.com.
+    Reported by Dan Stahlke in #3421755.
+  - Unblock linuxcounter.net/.
+    Reported by Dan Stahlke in #3422612.
+  - Block 'www91.intel.com/' which is used by Omniture.
+    Reported by Adam Piggott in #3167370.
+  - Disable the handle-as-empty-doc-returns-ok option and mark it as deprecated.
+    Reminded by tceverling in #2790091.
+  - Add ".ivwbox.de/" to the "Cross-site user tracking" section.
+    Reported by Nettozahler in #3172525.
+  - Unblock and fast-redirect ".awin1.com/.*=http://".
+    Reported by Adam Piggott in #3170921.
+  - Block "b.collective-media.net/".
+  - Widen the Debian popcon exception to "qa.debian.org/popcon".
+    Seen in Debian's 05_default_action.dpatch by Roland Rosenfeld.
+  - Block ".gemius.pl/" which only seems to be used for user tracking.
+    Reported by johnd16 in #3002731. Additional input from Lee and movax.
+  - Disable banners-by-size filters for '.thinkgeek.com/'.
+    The filter only seems to catch pictures of the inventory.
+  - Block requests for 'go.idmnet.bbelements.com/please/showit/'.
+    Reported by kacperdominik in #3372959.
+  - Unblock adainitiative.org/.
+  - Add a fast-redirects exception for '.googleusercontent.com/.*=cache'.
+  - Add a fast-redirects exception for webcache.googleusercontent.com/.
+  - Unblock http://adassier.wordpress.com/ and http://adassier.files.wordpress.com/.
+
+- Filter file improvements:
+  - Let the yahoo filter hide '.ads'.
+  - Let the msn filter hide overlay ads for Facebook 'likes' in search
+    results and elements with the id 's_notf_div'. They only seem to be
+    used to advertise site 'enhancements'.
+  - Let the js-events filter additionally disarm setInterval().
+    Suggested by dg1727 in #3423775.
+
+- Documentation improvements:
+  - Clarify the effect of compiling Privoxy with zlib support.
+    Suggested by dg1727 in #3423782.
+  - Point out that the SourceForge messaging system works like a black
+    hole and should thus not be used to contact individual developers.
+  - Mention some of the problems one can experience when not explicitly
+    configuring an IP addresses as listen address.
+  - Explicitly mention that hostnames can be used instead of IP addresses
+    for the listen-address, that only the first address returned will be
+    used and what happens if the address is invalid.
+    Requested by Calestyo in #3302213.
+
+- Log message improvements:
+  - If only the server connection is kept alive, do not pretend to
+    wait for a new client request.
+  - Remove a superfluous log message in forget_connection().
+  - In chat(), properly report missing server responses as such
+    instead of calling them empty.
+  - In forwarded_connect(), fix a log message nobody should ever see.
+  - Fix a log message in socks5_connect(), a failed write operation
+    was logged as failed read operation.
+  - Let load_one_actions_file() properly complain about a missing
+    '{' at the beginning of the file.
+    Simply stating that a line is invalid isn't particularly helpful.
+  - Do not claim to listen on a socket until Privoxy actually does.
+    Patch submitted by Petr Pisar #3354485
+  - Prevent a duplicated LOG_LEVEL_CLF message when sending out
+    the "no-server-data" response.
+  - Also log the client socket when dropping a connection.
+  - Include the destination host in the 'Request ... marked for
+    blocking. limit-connect{...} doesn't allow CONNECT ...' message
+    Patch submitted by Saperski in #3296250.
+  - Prevent a duplicated log message if none of the resolved IP
+    addresses were reachable.
+  - In connect_to(), do not pretend to retry if forwarded-connect-retries
+    is zero or unset.
+  - When a specified user or group can't be found, put the name in
+    single-quotes when logging it.
+  - In rfc2553_connect_to(), explain getnameinfo() errors better.
+  - Remove a useless log message in chat().
+  - When retrying to connect, also log the maximum number of connection
+    attempts.
+  - Rephrase a log message in compile_dynamic_pcrs_job_list().
+    Divide the error code and its meaning with a colon. Call the pcrs
+    job dynamic and not the filter. Filters may contain dynamic and
+    non-dynamic pcrs jobs at the same time. Only mention the name of
+    the filter or tagger, but don't claim it's a filter when it could
+    be a tagger.
+  - In a fatal error message in load_one_actions_file(), cover both
+    URL and TAG patterns.
+  - In pcrs_strerror(), properly report unknown positive error code
+    values as such. Previously they were handled like 0 (no error).
+  - In compile_dynamic_pcrs_job_list(), also log the actual error code as
+    pcrs_strerror() doesn't handle all errors reported by pcre.
+  - Don't bother trying to continue chatting if the client didn't ask for it.
+    Reduces log noise a bit.
+  - Make two fatal error message in load_one_actions_file() more descriptive.
+  - In cgi_send_user_manual(), log when rejecting a file name due to '/' or '..'.
+  - In load_file(), log a message if opening a file failed.
+    The CGI error message alone isn't too helpful.
+  - In connection_destination_matches(), improve two log messages
+    to help understand why the destinations don't match.
+  - Rephrase a log message in serve(). Client request arrival
+    should be differentiated from closed client connections now.
+  - In serve(), log if a client connection isn't reused due to a
+    configuration file change.
+  - Let mark_server_socket_tainted() always mark the server socket tainted,
+    just don't talk about it in cases where it has no effect. It doesn't change
+    Privoxy's behaviour, but makes understanding the log file easier.
+
+- configure:
+  - Added a --disable-ipv6-support switch for platforms where support
+    is detected but doesn't actually work.
+  - Do not check for the existence of strerror() and memmove() twice
+  - Remove a useless test for setpgrp(2). Privoxy doesn't need it and
+    it can cause problems when cross-compiling.
+  - Rename the --disable-acl-files switch to --disable-acl-support.
+    Since about 2001, ACL directives are specified in the standard
+    config file.
+  - Update the URL of the 'Removing outdated PCRE version after the
+    next stable release' posting. The old URL stopped working after
+    one of SF's recent site "optimizations". Reported by Han Liu.
+
+- Privoxy-Regression-Test:
+  - Added --shuffle-tests option to increase the chances of detection race conditions.
+  - Added a --local-test-file option that allows to use Privoxy-Regression-Test without Privoxy.
+  - Added tests for missing socks4 and socks4a forwarders.
+  - The --privoxy-address option now works with IPv6 addresses containing brackets, too.
+  - Perform limited sanity checks for parameters that are supposed to have numerical values.
+  - Added a --sleep-time option to specify a number of seconds to
+    sleep between tests, defaults to 0.
+  - Disable the range-requests tagger for tests that break if it's enabled.
+  - Log messages use the ISO 8601 date format %Y-%m-%d.
+  - Fix spelling in two error messages.
+  - In the --help output, include a list of supported tests and their default levels.
+  - Adjust the tests to properly deal with FEATURE_TOGGLE being disabled.
+
+- Privoxy-Log-Parser:
+  - Perform limited sanity checks for command line parameters that
+    are supposed to have numerical values.
+  - Implement a --unbreak-lines-only option to try to revert MUA breakage.
+  - Accept and highlight: Added header: Content-Encoding: deflate
+  - Accept and highlight: Compressed content from 29258 to 8630 bytes.
+  - Accept and highlight: Client request arrived in time on socket 21.
+  - Highlight: Didn't receive data in time: a.fsdn.com:443
+  - Accept log messages with ISO 8601 time stamps, too.
+
+- uagen:
+  - Bump generated Firefox version to 8.0.
+  - Only randomize the release date if the new --randomize-release-date
+    option is enabled. Firefox versions after 4 use a fixed date string
+    without meaning.
+
+-------------------------------------------------------------------
+Fri Dec  2 16:32:09 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Apr 28 19:44:40 UTC 2011 - andreas.stieger@gmx.de
+
+- updated to upstream 3.0.17 stable
+- privoxy-3.0.17-config.patch:
+  adjust chunk positions
+  filterfile user.filter is uncommented in upstream source, removed chunk
+- privoxy-3.0.17-utf8.patch:
+  adjust chunk positions
+
+- Fixed last-chunk-detection for responses where the content was small
+  enough to be read with the body, causing Privoxy to wait for the
+  end of the content until the server closed the connection or the
+  request timed out. Reported by "Karsten" in #3028326.
+- Responses with status code 204 weren't properly detected as body-less
+  like RFC2616 mandates. Like the previous bug, this caused Privoxy to
+  wait for the end of the content until the server closed the connection
+  or the request timed out. Fixes #3022042 and #3025553, reported by a
+  user with no visible name. Most likely also fixes a bunch of other
+  AJAX-related problem reports that got closed in the past due to
+  insufficient information and lack of feedback.
+- Fixed an ACL bug that made it impossible to build a blacklist.
+  Usually the ACL directives are used in a whitelist, which worked
+  as expected, but blacklisting is still useful for public proxies
+  where one only needs to deny known abusers access.
+- Added LOG_LEVEL_RECEIVED to log the not-yet-parsed data read from the
+  network. This should make debugging various parsing issues a lot easier.
+- The IPv6 code is enabled by default on Windows versions that support it.
+  Patch submitted by oCameLo in #2942729.
+- In mingw32 versions, the user.filter file is reachable through the
+  GUI, just like default.filter is. Feature request 3040263.
+- Added the configure option --enable-large-file-support to set a few
+  defines that are required by platforms like GNU/Linux to support files
+  larger then 2GB. Mainly interesting for users without proper logfile
+  management.
+- Logging with "debug 16" no longer stops at the first nul byte which is
+  pretty useless. Non-printable characters are replaced with their hex value
+  so the result can't span multiple lines making parsing them harder then
+  necessary.
+- Privoxy logs when reading an action, filter or trust file.
+- Fixed incorrect regression test markup which caused a test in
+  3.0.16 to fail while Privoxy itself was working correctly.
+  While Privoxy accepts hide-referer, too, the action name is actually
+  hide-referrer which is also the name used one the final results page,
+  where the test expected the alias.
+
+- CGI interface improvements:
+  - In finish_http_response(), continue to add the 'Connection: close'
+    header if the client connection will not be kept alive.
+    Anonymously pointed out in #2987454.
+  - Apostrophes in block messages no longer cause parse errors
+    when the blocked page is viewed with JavaScript enabled.
+    Reported by dg1727 in #3062296.
+  - Fix a bunch of anchors that used underscores instead of dashes.
+  - Allow to keep the client connection alive after crunching the previous request.
+    Already opened server connections can be kept alive, too.
+  - In cgi_show_url_info(), don't forget to prefix URLs that only contain
+    http:// or https:// in the path. Fixes #2975765 reported by Adam Piggott.
+  - Show the 404 CGI page if cgi_send_user_manual() is called while
+    local user manual delivery is disabled.
+
+- Action file improvements:
+  - Enable user.filter by default. Suggested by David White in #3001830.
+  - Block .sitestat.com/. Reported by johnd16 in #3002725.
+  - Block .atemda.com/. Reported by johnd16 in #3002723.
+  - Block js.adlink.net/. Reported by johnd16 in #3002720.
+  - Block .analytics.yahoo.com/. Reported by johnd16 in #3002713.
+  - Block sb.scorecardresearch.com, too. Reported by dg1727 in #2992652.
+  - Fix problems noticed on Yahoo mail and news pages.
+  - Remove the too broad yahoo section, only keeping the
+    fast-redirects exception as discussed on ijbswa-devel@.
+  - Don't block adesklets.sourceforge.net. Reported in #2974204.
+  - Block chartbeat ping tracking. Reported in #2975895.
+  - Tag CSS and image requests with cautious and medium settings, too.
+  - Don't handle view.atdmt.com as image. It's used for click-throughs
+    so users should be able to "go there anyway".
+    Reported by Adam Piggott in #2975927.
+  - Also let the refresh-tags filter remove invalid refresh tags where
+    the 'url=' part is missing. Anonymously reported in #2986382.
+    While at it, update the description to mention the fact that only
+    refresh tags with refresh times above 9 seconds are covered.
+  - javascript needs to be blocked with +handle-as-empty-document to
+    work around Firefox bug 492459.  So move .js blockers from
+    +block{Might be a web-bug.} -handle-as-empty-document to
+    +block{Might be a web-bug.} +handle-as-empty-document.
+  - ijbswa-Feature Requests-3006719 - Block 160x578 Banners.
+  - Block another omniture tracking domain.
+  - Added a range-requests tagger.
+  - Added two sections to get Flickr's Ajax interface working with
+    default pre-settings. If you change the configuration to block
+    cookies by default, you'll need additional exceptions.
+    Reported by Mathias Homann in #3101419 and by Patrick on ijbswa-users@.
+
+- Documentation improvements:
+  - Explicitly mention how to match all URLs.
+  - Consistently recommend socks5 in the Tor FAQ entry and mention
+    its advantage compared to socks4a. Reported by David in #2960129.
+  - Slightly improve the explanation of why filtering may appear
+    slower than it is.
+  - Grammar fixes for the ACL section.
+  - Fixed a link to the 'intercepting' entry and add another one.
+  - Rename the 'Other' section to 'Mailing Lists' and reword it
+    to make it clear that nobody is forced to use the trackers
+  - Note that 'anonymously' posting on the trackers may not always
+    be possible.
+  - Suggest to enable debug 32768 when suspecting parsing problems.
+
+- Privoxy-Log-Parser improvements:
+  - Gather statistics for ressources, methods, and HTTP versions
+    used by the client.
+  - Also gather statistics for blocked and redirected requests.
+  - Provide the percentage of keep-alive offers the client accepted.
+  - Add a --url-statistics-threshold option.
+  - Add a --host-statistics-threshold option to also gather
+    statistics about how many request where made per host.
+  - Fix a bug in handle_loglevel_header() where a 'scan: ' got lost.
+  - Add a --shorten-thread-ids option to replace the thread id with
+    a decimal number.
+  - Accept and ignore: Looks like we got the last chunk together
+    with the server headers. We better stop reading.
+  - Accept and ignore: Continue hack in da house.
+  - Accept and higlight: Rejecting connection from 10.0.0.2.
+    Maximum number of connections reached.
+  - Accept and highlight: Loading actions file: /usr/local/etc/privoxy/default.action
+  - Accept and highlight: Loading filter file: /usr/local/etc/privoxy/default.filter
+  - Accept and highlight: Killed all-caps Host header line: HOST: bestproxydb.com
+  - Accept and highlight: Reducing expected bytes to 0. Marking
+    the server socket tainted after throwing 4 bytes away.
+  - Accept: Merged multiple header lines to: 'X-FORWARDED-PROTO: http X-HOST: 127.0.0.1'
+
+- Code cleanups:
+  - Remove the next member from the client_state struct. Only the main
+    thread needs access to all client states so give it its own struct.
+  - Garbage-collect request_contains_null_bytes().
+  - Ditch redundant code in unload_configfile().
+  - Ditch LogGetURLUnderCursor() which doesn't seem to be used anywhere.
+  - In write_socket(), remove the write-only variable write_len in
+    an ifdef __OS2__ block. Spotted by cppcheck.
+  - In connect_to(), don't declare the variable 'flags' on OS/2 where
+    it isn't used. Spotted by cppcheck.
+  - Limit the scope of various variables. Spotted by cppcheck.
+  - In add_to_iob(), turn an interestingly looking for loop into a
+    boring while loop.
+  - Code cleanup in preparation for external filters.
+  - In listen_loop(), mention the socket on which we accepted the
+    connection, not just the source IP address.
+  - In write_socket(), also log the socket we're writing to.
+  - In log_error(), assert that escaped characters get logged
+    completely or not at all.
+  - In log_error(), assert that ival and sval have reasonable values.
+    There's no reason not to abort() if they don't.
+  - Remove an incorrect cgi_error_unknown() call in a
+    cannnot-happen-situation in send_crunch_response().
+  - Clean up white-space in http_response definition and
+    move the crunch_reason to the beginning.
+  - Turn http_response.reason into an enum and rename it
+    to http_response.crunch_reason.
+  - Silence a 'gcc (Debian 4.3.2-1.1) 4.3.2' warning on i686 GNU/Linux.
+  - Fix white-space in a log message in remove_chunked_transfer_coding().
+    While at it, add a note that the message doesn't seem to
+    be entirely correct and should be improved later on.
+
+- GNUmakefile improvements:
+  - Use $(SSH) instead of ssh, so one only needs to specify a username once.
+  - Removed references to the action feedback thingy that hasn't been
+    working for years.
+  - Consistently use shell.sourceforge.net instead of shell.sf.net so
+    one doesn't need to check server fingerprints twice.
+  - Removed GNUisms in the webserver and webactions targets so they
+    work with standard tar.
+
+-------------------------------------------------------------------
+Mon Mar 15 18:25:24 UTC 2010 - per@osbeck.com
+
+- updated to 3.0.16 stable
+- Added the config file option handle-as-empty-doc-returns-ok to
+  work around Firefox bug #492459, which causes Firefox to hang
+  if JavaScripts are blocked in certain situations. The option is
+  enabled in the default config file.
+- Added the config file option default-server-timeout to control the
+  assumed default server timeout. Since Privoxy no longer returns
+  an error message for connection resets on reused client connections,
+  assuming larger server timeout values appears to actually work
+  pretty well as long as connections aren't shared.
+- Added optional support for FreeBSD's accf_http(9). Use the
+  configure option --enable-accept-filter to enable it.
+- Added fancier Privoxy icons for win32. Contributed by Jeff H.
+- In daemon mode, fd 0, 1 and 2 are bound to /dev/null.
+- Resolve localhost using whatever address family the operating
+  system feels like. Previous betas would try to use IPv4 as this
+  is what most users expect, but this didn't work reliably on
+  GNU/Linux systems.
+- In the action lists on CGI pages, actions and their parameters are
+  no longer separated with a space. The action file parser doesn't
+  actually allow this and will throw an invalid syntax error if actions
+  and parameters in the action files are separated. Not adding the
+  spaces means copy and pasting CGI output into the action files works.
+- The default keep-alive timeout has been reduced to 5 seconds to work
+  around hangs in clients that treat the proxy like any other host and
+  stop allowing any new connections if the "maximum number of
+  connections per host" is reached.
+- Several webbug URLs that look like they are leading to images are now
+  blocked as image instead of empty documents. Doing the latter causes
+  WebKit-based clients to show a "missing image" icon which may mess up
+  the layout.
+- The no-such-domain template is used for DNS resolution
+  problems with FEATURE_IPV6_SUPPORT enabled. Previously the
+  connect-failed template was used. Reported by 'zebul666'.
+- Accepts quoted expiration dates even though RFC 2109 10.1.2
+  doesn't seem to allow them. Reported anonymously.
+- Don't try to forget connections if connection sharing is disabled.
+  This wasn't a real problem but caused an unnecessary log message.
+- The still undocumented --enable-extended-host-patterns configure
+  option has a better description.
+- Fixed an error message that would claim a write to the server
+  failed when actually writing to the client failed.
+- Log the crunch reason before trying to write to the client.
+  The log is easier to read that way.
+- Several log messages about client connections also mention
+  the socket number.
+- handle-as-empty-document no longer depends on the image blocking
+  code being enabled.
+- Privoxy-Log-Parser is roughly 40% faster in highlighting mode.
+- uagen, a Firefox User-Agent generator for Privoxy and Mozilla
+  browsers has been imported and is available in the tarball's
+  tools directory.
+- The scripts in the tools directory treat unknown parameters
+  as fatal errors.
+
+
+-------------------------------------------------------------------
+Wed Jan 27 15:11:45 UTC 2010 - mseben@novell.com
+
+- updated to 3.0.15 BETA
+  - In case of missing server data, no error message is send to the
+    client if the request arrived on a reused connection. The client
+    is then supposed to silently retry the request without bothering
+    the user. This should significantly reduce the frequency of the
+    "No server or forwarder data received" error message many users
+    reported.
+  - More reliable detection of prematurely closed client sockets
+    with keep-alive enabled.
+  - FEATURE_CONNECTION_KEEP_ALIVE is decoupled from
+    FEATURE_CONNECTION_SHARING and now available on
+    all platforms.
+  - Improved handling of POST requests on reused connections.
+    Should fix problems with stalled connections after submitting
+    form data with some browser configurations.
+  - Fixed various latency calculation issues.
+  - Allows the client to pass NTLM authentication requests to a
+    forwarding proxy. This was already assumed and hinted to work
+    in 3.0.13 beta but actually didn't. Now it's confirmed to work
+    with IE, Firefox and Chrome.
+    Thanks to Francois Botha and Wan-Teh Chang
+  - Fixed a calculation problem if receiving the server headers
+    takes more than two reads, that could cause Privoxy to terminate
+    the connection prematurely. Reported by Oliver.
+  - Compiles again on platforms such as OpenBSD and systems
+    using earlier glibc version that don't support AI_ADDRCONFIG.
+    Anonymously submitted in #2872591.
+  - A bunch of MS VC project files and Suse and Redhat RPM spec
+    files have been removed as they were no longer maintained for
+    quite some time.
+  - Overly long action lines are properly rejected with a proper
+    error message. Previously they would be either rejected as
+    invalid or cause a core dump through abort().
+  - Already timed-out connections are no longer temporarily remembered.
+    They weren't reused anyway, but wasted a socket slot.
+  - len refers to the number of bytes actually read which might
+    differ from the ones received. Adjust log messages accordingly.
+  - The optional JavaScript on the CGI page uses encodeURIComponent()
+    instead of escape() which doesn't encode all characters that matter.
+    Anonymously reported in #2832722.
+  - Fix gcc45 warnings in decompress_iob().
+  - Various log message improvements.
+  - Privoxy-Regression-Test supports redirect tests.
+  - Privoxy-Log-Parser can gather some connection statistics.
+- moved init script to init.suse file and dropped diff against 
+  tarball: init.patch 
+ 
+-------------------------------------------------------------------
+Tue Sep 29 12:53:59 UTC 2009 - aj@suse.de
+
+- Fix requires of doc package.
+
+-------------------------------------------------------------------
+Tue Aug 11 15:37:05 CEST 2009 - mseben@suse.cz
+
+- add parameter "-T 1" for startproc in init script, wait 1 sec until
+  privoxy check config (bnc#506708)
+- use rc_active in NM dispatcher init script to check if privoxy
+  service is active
+
+-------------------------------------------------------------------
+Wed Aug  5 12:46:53 CEST 2009 - mseben@suse.cz
+
+- updated to 3.0.14 BETA
+ * The latency is taken into account when evaluating whether or not to
+   reuse a connection. This should significantly reduce the number of
+   connections problems several users reported.
+ * If the server doesn't specify how long the connection stays alive,
+   Privoxy errs on the safe side of caution and assumes it's only a second.
+ * The error pages for connection timeouts or missing server data use a
+   Last-Modified date in the past.
+ * Setting keep-alive-timeout to 0 disables keep-alive support.
+ * Pipelined requests are less likely to be mistaken for the request
+   body of the previous request.
+ * Privoxy's keep-alive timeout for the current connection is reduced
+   to the one specified in the client's Keep-Alive header.
+ * For HTTP/1.1 requests, Privoxy implies keep-alive support by not
+   setting any Connection header instead of using 'Connection: keep-alive'.
+ * If the socket isn't reusable, Privoxy doesn't temporarily waste
+   a socket slot to remember the connection.
+ * If keep-alive support is disabled but compiled in, the client's
+   Keep-Alive header is removed.
+ * Fixed a bug that (at least theoretically) could cause log
+   timestamps to be occasionally off by about a second.
+ * No Proxy-Connection header if added if there already is one.
+ * The configure script respects the $PATH variable when searching
+   for groups and id.
+
+- version 3.0.13 BETA
+ * Added IPv6 support. Thanks to Petr Pisar
+ * The connection sharing code is only used if the connection-sharing
+   option is enabled.
+ * The max-client-connections option has been added to restrict
+   the number of client connections below a value enforced by
+   the operating system.
+ * Compressed content with extra fields couldn't be decompressed
+   and would get passed to the client unfiltered.
+ * If the server resets the Connection after sending only the headers
+   Privoxy forwards what it got to the client.
+ * Error messages in case of connection timeouts use the right
+   HTTP status code.
+ * If spawning a child to handle a request fails, the client
+   gets an error message and Privoxy continues to listen for
+   new requests right away.
+ * The error messages in case of server-connection timeouts or
+   prematurely closed server connections are now template-based.
+ * If zlib support isn't compiled in, Privoxy no longer tries to
+   filter compressed content unless explicitly asked to do so.
+ * In case of connections that are denied based on ACL directives,
+   the memory used for the client IP is no longer leaked.
+ * Fixed another small memory leak if the client request times out
+   while waiting for client headers other than the request line.
+ * The client socket is kept open until the server socket has
+   been marked as unused. This should increase the chances that
+   the still-open connection will be reused for the client's next
+   request to the same destination. Note that this only matters
+   if connection-sharing is enabled.
+
+-------------------------------------------------------------------
+Fri May 15 15:45:50 CEST 2009 - mseben@suse.cz
+
+- modified config.patch : enabled filterfile user.filter in
+  config by default (bnc#504563)
+
+- updated to 3.0.12
+  * The socket-timeout option now also works on platforms whose
+    select() implementation modifies the timeout structure.
+  * The Connection: keep-alive code properly deals with files
+    larger than 2GB.
+  * The content length for files above 2GB is logged correctly.
+  * The user-manual directive on the show-status page links to
+    the documentation location specified with the directive,
+    not to the Privoxy website.
+  * When running in daemon mode, Privoxy doesn't log anything
+    to the console unless there are errors before the logfile
+    has been opened.
+  * The show-status page prints warnings about invalid directives
+    on the same line as the directives themselves.
+  * Fixed several justified (but harmless) compiler warnings
+  * In verbose mode, or if the new option --show-skipped-tests
+    is used, Privoxy-Regression-Test logs skipped tests and the
+    skip reason.
+
+- changes in version 3.0.11
+  * On most platforms, outgoing connections can be kept alive and
+    reused if the server supports it.
+  * When dropping privileges, membership in supplementary groups
+    is given up as well. Not doing that can lead to Privoxy running
+    with more rights than necessary and violates the principle of
+    least privilege. Users of the --user option are advised to update.
+    Thanks to Matthias Drochner for reporting the problem,
+    providing the initial patch and testing the final version.
+  * Passing invalid users or groups with the --user option
+    didn't lead to program exit. Regression introduced in 3.0.7.
+  * The match all section has been moved from default.action
+    to a new file called match-all.action. As a result the
+    default.action no longer needs to be touched by the user
+    and can be safely overwritten by updates.
+  * The standard.action file has been removed. Its content
+    is now part of the default.action file.
+  * In some situations the logged content length was slightly too low.
+  * Crunched requests are logged with their own log level.
+    If you used "debug 1" in the past, you'll probably want
+    to additionally enable "debug 1024", otherwise only passed
+    requests will be logged. If you only care about crunched
+    requests, simply replace "debug 1" with "debug 1024".
+  * The crunch reason has been moved to the beginning of the
+    crunch message. For HTTP URLs, the protocol is logged as well.
+  * Log messages are shortened by printing the thread id on its own.
+  * The config option socket-timeout has been added to control
+    the time Privoxy waits for data to arrive on a socket.
+  * Support for remote toggling is controlled by the configure
+    option --disable-toggle only.
+  * Requests with invalid HTTP versions are rejected.
+  * The template symbol @date@ can be used to include a date(1)-like
+    time string. Initial patch submitted by Endre Szabo.
+  * Responses from shoutcast servers are accepted again.
+    Problem reported and fix suggested by Stefan.
+  * The hide-forwarded-for-headers action has been replaced with
+    the change-x-forwarded-for{} action which can also be used to
+    add X-Forwarded-For headers.
+
+-------------------------------------------------------------------
+Fri Mar 13 09:31:22 CET 2009 - mseben@suse.cz
+
+- changed init.patch - privoxy daemon is now started using startproc
+- fixed networkmanager.patch - use try-restart to restart (bnc#475012)
+
+-------------------------------------------------------------------
+Sun Oct 12 20:14:48 CEST 2008 - schwab@suse.de
+
+- Fix preun and postun scripts.
+
+-------------------------------------------------------------------
+Fri Aug 22 16:32:41 CEST 2008 - lmichnovic@suse.cz
+
+- update to version 3.0.10 stable
+ * Ordinary configuration file changes no longer cause program
+   termination on OS/2 if the name of the logfile hasn't been
+   changed as well. This regression probably crept in with the
+   logging improvements in 3.0.7. Reported by Maynard.
+ * The img-reorder filter is less likely to mess up JavaScript
+   code in img tags. Problem and solution reported in #2014552.
+ * The source tar ball now includes Privoxy-Log-Parser,
+   a syntax-highlighter for Privoxy logs. For fancy screenshots 
+   see: http://www.fabiankeil.de/sourcecode/privoxy-log-parser/
+   Documentation is available through perldoc(1).
+
+-------------------------------------------------------------------
+Fri Aug 22 10:51:51 CEST 2008 - lmichnovic@suse.cz
+
+- removed deprecated -s option in fillup_and_insserv macro call
+
+-------------------------------------------------------------------
+Tue Aug 19 11:20:36 CEST 2008 - lmichnovic@suse.cz
+
+- changed name of init script to privoxyd to be LSB compliant
+- added $remote_fs $local_fs for stop service in privoxyd init
+  script (*init.patch)
+
+-------------------------------------------------------------------
+Mon Jul 14 14:34:23 CEST 2008 - lmichnovic@suse.cz
+
+- update to 3.0.9 beta
+ * 3.0.9 is a beta release which includes many enhancements but no
+   major new features. The most prominent improvements are SOCKS5
+   support and zlib support for the default Privoxy builds.
+   See http://www.privoxy.org/3.0.9/user-manual/whatsnew.html
+- split off documentation to subpackage
+
+-------------------------------------------------------------------
+Thu Apr 10 02:46:57 CEST 2008 - crrodriguez@suse.de
+
+- missing zlib-devel in buildrequires
+- require both logrotate and cron that are no longer mandatory
+  in the base system in order to rotate the logs properly 
+
+-------------------------------------------------------------------
+Tue Jan 29 16:28:05 CET 2008 - lmichnovic@suse.cz
+
+- update to version 3.0.8 stable
+ * some bugfixes
+ * Updated the msn, yahoo and google filters to work as advertised
+   again.
+ * some changes in log messages
+ See Changelog for more information
+
+-------------------------------------------------------------------
+Wed Jan  9 18:42:11 CET 2008 - lmichnovic@suse.cz
+
+- update to version 3.0.7 beta
+ * many bugfixes
+ * many new features, see Changelog for details
+
+-------------------------------------------------------------------
+Wed Nov 28 15:11:56 CET 2007 - lmichnovic@suse.cz
+
+- added Short-Description tag in /etc/init.d/privoxy
+  ( -> *init.patch)
+
+-------------------------------------------------------------------
+Tue Mar  6 17:02:24 CET 2007 - lmichnovic@suse.cz
+
+- added symlink into /etc to real configdir /var/lib/privoxy/etc
+  [#251261]
+
+-------------------------------------------------------------------
+Wed Dec  6 21:41:02 CET 2006 - lmichnovic@suse.cz
+
+- update to version 3.0.6 stable
+  * New and improoved filters
+  * Changed webinterface default values for hide-user-agent etc.
+  * Removed outdated URL patterns in default.action; added new ones
+- fix: when Network Manager switches the LAN, privoxy stops working
+  (networkmanager.patch)
+
+-------------------------------------------------------------------
+Wed Sep 27 14:20:24 CEST 2006 - lmichnovic@suse.cz
+
+- update to verson 3.0.5 beta
+  * Windows version can be installed/started as a service.
+  * Windows icon stays blue when Privoxy is idle, green when busy.
+  * Integrated Fabian Keil's extensive patch.  See:
+    http://www.fabiankeil.de/sourcecode/privoxy/
+  * many other improvements and bugfixes (see Changelog)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:38 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan  5 02:09:10 CET 2006 - ro@suse.de
+
+- do not create unpackaged symlink 
+
+-------------------------------------------------------------------
+Thu Dec  8 14:37:37 CET 2005 - lmichnovic@suse.cz
+
+- fixed bad permissions for program's log directory (#137544)
+
+-------------------------------------------------------------------
+Mon Aug 22 11:32:37 CEST 2005 - ltinkl@suse.cz
+
+- limit the debug
+  (privoxy shouldn't log all URLs by default - #99710)
+-------------------------------------------------------------------
+Wed Mar 09 13:19:05 CET 2005 - ltinkl@suse.cz
+
+- convert config file to utf-8 (#71276)
+
+-------------------------------------------------------------------
+Wed Mar 03 13:31:03 CET 2004 - ltinkl@suse.cz
+
+- update to 3.0.3
+- added pcre to neededforbuild
+
+-------------------------------------------------------------------
+Sat Jan 10 22:31:35 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Wed Jul 30 16:47:17 CEST 2003 - poeml@suse.de
+
+- new macros for stop/restart of services on rpm update/removal
+
+-------------------------------------------------------------------
+Mon Jul 28 10:52:20 CEST 2003 - poeml@suse.de
+
+- update to 3.0.2 (maintenance release). 
+  - Fixed two memory leaks, one serious
+  - Fixed a bug in pcrs which could cause crashes with user-defined filters
+  - Fixed a bug in domain name matching
+  - Assorted small fixes (Win32 menu, CGI URL editor, ..)
+  - Added basic support for the OPTIONS and TRACE http methods
+  - Added workaround for Bug in Mac OSX that made Privoxy crash occasionally
+  - Refined the default action file through >400 items of user feedback
+  - Filter changes:
+    - Assorted refinements, optimizations and fixes in the js-annoyances,
+      img-reorder, banners-by-size, banners-by-link, webbugs, refresh-tags,
+      html-annoyances, content-cookies and fun filters
+    - Replaced filter "popups" by choice between two modes:
+      - "unsolicited-popups" tries to catch only the unsolicited ones
+      - "all-popups" tries to kill them all (as before)
+    - New filter "tiny-textforms" to help those tiny or hard-wrap textareas.
+    - New filter "jumping-windows" that prevents windows from resizing
+      and moving themselves
+    - New filter "demoronizer" which fixes MS's abuse of std charsets
+      (common cases anyway).
+    - Replaced "nimda" with more general "ie-exploits" filter in which
+      all filters for IE exploits shall be collected
+  - Improved cookie logging
+  - Rewrote make install target. Added uninstall and install-strip
+    targets.
+  - Fixed a potential (application-level, NOT OS-level!) security
+    problem involving remote toggling or action file manipulation
+    by mailicious websites.
+  - Added ability to chroot (thanks to Sviatoslav Sviridov)
+  - Added more action aliases for prehistoric action names
+- no longer run as wwwrun. Create user privoxy instead
+- run in chroot jail
+
+-------------------------------------------------------------------
+Wed May 21 18:27:30 CEST 2003 - mmj@suse.de
+
+- Implement try-restart correctly in init-script
+
+-------------------------------------------------------------------
+Fri May 16 17:47:43 CEST 2003 - poeml@suse.de
+
+- fix creation of log files [#25990]
+- add logrotate snippet [#26892]
+- fix permissions of the files that are edited via the web frontend
+  (default.action, user.action)
+- buildrooted
+
+-------------------------------------------------------------------
+Fri Nov 15 20:34:50 CET 2002 - poeml@suse.de
+
+- init script: run under group nogroup instead of nobody 
+- add license file and documentation (pdf, text)
+- use %setup -q and %defattr
+
+-------------------------------------------------------------------
+Thu Sep 19 12:45:14 CEST 2002 - uli@suse.de
+
+- update -> 3.0.0 (stable release)
+- source rc.status in init script
+
+-------------------------------------------------------------------
+Thu Aug  8 14:46:04 CEST 2002 - uli@suse.de
+
+- update -> 2.9.18-beta (many fixes)
+
+-------------------------------------------------------------------
+Thu Aug  1 16:12:26 CEST 2002 - uli@suse.de
+
+- added Prereqs
+
+-------------------------------------------------------------------
+Thu Jul 18 21:01:43 CEST 2002 - uli@suse.de
+
+- only source /etc/rc.config if it's actually there
+
+-------------------------------------------------------------------
+Wed May 15 11:37:12 CEST 2002 - uli@suse.de
+
+- update -> privoxy 2.9.14-beta (superset of junkbuster)
+
+-------------------------------------------------------------------
+Thu Jan 31 16:31:38 CET 2002 - uli@suse.de
+
+- run as nobody
+- removed weird backslashes from init script (dunno how that got
+  in there)
+
+-------------------------------------------------------------------
+Thu Jan 10 12:28:04 CET 2002 - ro@suse.de
+
+- removed START_IJB from init-script 
+
+-------------------------------------------------------------------
+Thu Jan 10 12:03:29 CET 2002 - egmont@suselinux.hu
+
+- changed /sbin/init.d to /etc/init.d in init script comment
+
+-------------------------------------------------------------------
+Thu Dec  6 16:58:18 CET 2001 - uli@suse.de
+
+- eliminated START_IJB
+
+-------------------------------------------------------------------
+Wed Aug  1 16:39:58 CEST 2001 - uli@suse.de
+
+- made init script more LSB compliant (proper return values, bug
+  #9045)
+
+-------------------------------------------------------------------
+Wed Jun 27 17:19:05 CEST 2001 - uli@suse.de
+
+- marked init script %config
+
+-------------------------------------------------------------------
+Thu May 10 17:46:16 CEST 2001 - uli@suse.de
+
+- enabled START_IJB check in init script (bug #8061)
+- added rc.config template
+- bzipped tarball
+
+-------------------------------------------------------------------
+Wed Feb 14 18:58:52 CET 2001 - uli@suse.de
+
+- fixed init script
+
+-------------------------------------------------------------------
+Wed Dec  6 17:36:42 CET 2000 - bjacke@suse.de
+
+- renamed package to junkbuster
+- fixed copyright tag
+
+-------------------------------------------------------------------
+Thu Nov 30 14:51:01 CET 2000 - uli@suse.de
+
+- moved init script to /etc/init.d
+
+-------------------------------------------------------------------
+Wed Feb 16 21:09:45 CET 2000 - kukuk@suse.de
+
+- Move /usr/man -> /usr/share/man
+- Mark /etc/ijb as "config(noreplace)"
+
+-------------------------------------------------------------------
+Mon Sep 20 12:12:54 MEST 1999 - uli@suse.de
+
+- fixed init script
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Apr  1 11:21:03 MEST 1999 - daniel@suse.de
+
+- do not start ijb as root (security)
+
+-------------------------------------------------------------------
+Tue Mar 30 23:21:30 MEST 1999 - daniel@suse.de
+
+- don't use saclfile.ini
+
+-------------------------------------------------------------------
+Tue Mar 30 15:03:41 MEST 1999 - daniel@suse.de
+
+- small fix to whitelist-configuration,
+  version is and was 2.0.2 WITHOUT Stefan Waldherr's patches
+  (http://www.waldherr.org/junkbuster/)
+
+-------------------------------------------------------------------
+Mon Mar  1 21:39:51 MET 1999 - daniel@suse.de
+
+- new package: version 2.0

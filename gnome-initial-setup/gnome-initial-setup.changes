@@ -1,0 +1,561 @@
+-------------------------------------------------------------------
+Fri Apr  5 11:54:14 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 11 13:19:04 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 06:03:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Connect to GDM as soon as gnome-initial-setup starts and fix
+    memory leaks.
+  + Improve account page behaviour when offline.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 20 12:12:27 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Generate default user account pictures.
+  + Fix Meson build with (buggy) Meson 0.48.0 and 0.48.1.
+  + Remove Autotools build.
+  + Fix various compiler warnings.
+  + Add welcome distro logo for openSUSE.
+  + Updated translations.
+- Switch to meson build system, add meson BuildRequires and macros.
+- Drop obsolete intltool BuildRequires: No longer needed.
+- Add pkgconfig(packagekit-glib2) BuildRequires: New dependency.
+- Refresh patch with refresh_patches service.
+
+-------------------------------------------------------------------
+Wed Sep 26 16:14:52 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  2 18:47:30 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.92:
+  + Improved network page.
+  + Fix timezone selection in new-user mode.
+  + Properly use libsecret unstable api.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  3 19:48:49 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.1:
+  + Support more general page skipping.
+  + Show the welcome page if the language page is skipped.
+  + Look for vendor.conf in /usr/share instead of /var.
+  + Go back to allowing weak passwords.
+  + Set keyring password for enterprise accounts.
+  + Use Debian, Ubuntu logos when appropriate.
+  + Fix a crash.
+  + Add meson support.
+  + Use a new avatar chooser.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 27 01:45:40 UTC 2018 - yfjiang@suse.com
+
+- Rebase gnome-initial-setup-disable-dep-on-started-docs.patch: The
+  run-welcome-tour stamp file is moved to a global function as
+  stated in bgo#777707.
+- Enable the following patches on Leap 42.3, Leap 15 and
+  later, being consistent with SLE (boo#1086056):
+  + gnome-initial-setup-only-launch-CJK.patch
+  + gnome-initial-setup-only-setup-keyboard.patch
+  + gnome-initial-setup-disable-dep-on-started-docs.patch
+- Remove the dependency of gnome-getting-started-docs on Leap, being
+  consistent with SLE (boo#1086056).
+- Url link fix in spec.
+
+-------------------------------------------------------------------
+Tue Mar 13 12:05:53 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Sync string changes with gnome-software.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:28:24 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 27 15:41:14 CET 2018 - sbrabec@suse.com
+
+- Add missing lang package Recommends (bsc#1038022).
+
+-------------------------------------------------------------------
+Sat Feb 10 22:30:46 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.27.90:
+  + Adjust session components to recent changes.
+  + Improve sorting in the language list.
+  + Memory leak fixes.
+  + Update titlebar when title changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov  9 13:29:30 UTC 2017 - qzhao@suse.com
+
+- Add gnome-initial-setup-mozc-engine-prioritized.patch: Make the 
+  Mozc input engine as the 1st choice for Japanese environment
+  (boo#1067288,bnc#1029083). 
+
+-------------------------------------------------------------------
+Fri Sep 15 06:07:09 UTC 2017 - qzhao@suse.com
+
+- Update gnome-initial-setup-disable-dep-on-started-docs.patch:
+  Porting to gnome-initial-setup version 3.26.0.
+
+-------------------------------------------------------------------
+Mon Sep 11 17:05:28 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  4 17:46:40 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 19 18:55:14 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.4:
+  + Use Unicode in translatable strings.
+  + Adjust to g-s-d's plugin removals.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 22 19:56:28 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.3:
+  + Support a vendor configuration file.
+  + Update text direction when the locale changes.
+  + Allow configuring network connections.
+  + Copy monitor configuration to user session.
+  + Sync user account page with control-center.
+  + Show strength indicator for passwords.
+
+-------------------------------------------------------------------
+Thu Jun  1 10:25:31 UTC 2017 - qzhao@suse.com
+
+- Update gnome-initial-setup-only-setup-keyboard.patch
+  gnome-initial-setup-disable-dep-on-started-docs.patch: Porting
+  these patches to gnome-initial-setup version 3.24.2.
+
+-------------------------------------------------------------------
+Wed May 10 21:04:08 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 21 18:27:01 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Fix g-i-s session startup deadlock.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 18:04:57 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.92:
+  + Use correct capitalization and unicode characters.
+  + Exit gracefully when disabled systemwide.
+  + Adjust to gnome-settings-daemon changes.
+  + Port network page to use libnm instead of libnm-glib.
+  + Updated translations.
+- Update BuildRequires relating to upstreams port to libnm:
+  + Remove pkgconfig(libnm-glib), pkgconfig(libnm-gtk) and
+    pkgconfig(libnm-util).
+  + Add pkgconfig(libnm) and pkgconfig(libnma).
+
+-------------------------------------------------------------------
+Wed Nov  9 14:19:25 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.23.1:
+  + Clarify presentation of privacy policies.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 10 18:17:37 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Clarify privacy policy links.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 15:01:28 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 13 16:27:43 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Port timezone page to use new Geoclue convencience library.
+  + Minor UI fixes on privacy page.
+  + Correct license of um-realm-manager.
+  + Updated translations.
+- Replace pkgconfig(geoclue-2.0) for pkgconfig(libgeoclue-2.0), and
+  add pkgconfig(geocode-glib-1.0) BuildRequires following upstreams
+  port.
+
+-------------------------------------------------------------------
+Thu Sep  1 18:57:12 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Better handling of small screens.
+  + Add a page to configure software sources.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 23 07:11:48 UTC 2016 - yfjiang@suse.com
+
+- Add gnome-initial-setup-disable-dep-on-started-docs.patch:
+  Dismiss the yelp help page after the initial setup
+  (FATE#321126).
+
+-------------------------------------------------------------------
+Thu May 16 06:49:02 UTC 2016 - yfjiang@suse.com
+
+- Add gnome-initial-setup-only-setup-keyboard.patch: Only setup the
+  keyboard and IM as required (FATE#321126).
+
+-------------------------------------------------------------------
+Fri May 10 11:14:47 UTC 2016 - qzhao@suse.com
+
+- Add gnome-initial-setup-only-launch-CJK.patch: In SLED, it will
+  active if user's language is Chinese/Japanese/Korean, and
+  deactive in other language (FATE#321126).
+
+-------------------------------------------------------------------
+Wed May  8 09:37:13 UTC 2016 - qzhao@suse.com
+
+- Import gnome-initial-setup to SLE12:SP3(FATE#321126, bsc#988350).
+
+-------------------------------------------------------------------
+Tue Apr 12 11:48:33 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr  7 22:45:11 UTC 2016 - zaitor@opensuse.org
+
+- Drop pkgconfig(clutter-gst-2.0) and pkgconfig(clutter-x11-1.0)
+  BuildRequires: Not hard dependencies anymore.
+- Add pkgconfig(json-glib-1.0) BuildRequires: Configure looks for
+  it, so add it to make sure it's pulled in.
+
+-------------------------------------------------------------------
+Mon Mar 21 20:36:31 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:37:05 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + Add a translator comment for 'Welcome!'.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  1 10:57:33 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + Visual refinements on online accounts page.
+  + Minor tweaks on the privacy and accounts pages.
+  + Ensure keyring gets created for new users.
+  + Updated translations.
+- Changes from version 3.19.90:
+  + Visual refresh for the 'ready to go' page.
+
+-------------------------------------------------------------------
+Mon Feb 22 15:51:04 UTC 2016 - dimstar@opensuse.org
+
+- Add gnome-getting-started-docs Requires: once the g-i-s assistant
+  is completed, it auto-launches the getting started documentation.
+
+-------------------------------------------------------------------
+Tue Feb 16 10:22:53 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.2:
+  + Fix timezone lookup after locale change.
+  + Handle screen resolution changes.
+  + Design updates to the timezone page.
+  + Don't create a keyring for existing users.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 15 11:21:26 UTC 2016 - dimstar@opensuse.org
+
+- Create user 'gnome-initial-setup', which is mandatory to make
+  this work.
+
+-------------------------------------------------------------------
+Mon Nov 23 23:29:14 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.1:
+  + Ensure locale region matches the selected language.
+  + Sort languages case-insensitively.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 21 14:40:24 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 10:41:28 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.91:
+  + Go back to enforcing password policy (bgo#754213).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 17 18:55:15 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Detect enterprise accounts without heuristic (bgo#752980).
+  + Don't change keyring password explicitly (bgo#752980).
+  + Fix problem with restarting geoclue client.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 23 07:23:08 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + Create keyring initially unencrypted.
+  + Password page refinements (bgo#735578).
+  + Make policy dialog resize properly (bgo#749426).
+  + Use correct key for privacy policy (bgo#749545).
+  + Handle disabled network better.
+  + Avoid a crash on language change (bgo#752134).
+  + Make gnome-shell launch first.
+  + AVoid a race in launching welcome tour.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May 22 08:43:21 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.3:
+  + Avoid keyring problems with preexisting passwordless accounts.
+  + Improve password page.
+  + Look for the right key in os-release for privacy policy.
+  + Make policy dialog resize properly.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 12 11:08:30 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 15 09:38:10 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 13:30:01 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 18 13:07:39 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Stop using deprecated API.
+  + Improved keyboard navigation.
+  + Adapt to gnome-desktop locale codeset changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  5 09:06:30 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91.1:
+  + Port to Webkit2.
+  + Updated translations.
+- Replace pkgconfig(webkitgtk-3.0) BuildRequires with
+  pkgconfig(webkit2gtk-4.0), following upstreams port to WebKit2.
+
+-------------------------------------------------------------------
+Tue Mar  3 08:35:50 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Fix a possible crash in the network page.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 25 15:48:05 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90.1:
+  + Append ibus input sources.
+  + Allow resizing on small screens.
+  + Improve account creation dialogs.
+  + Move privacy page before timezone.
+  + Use the permanent bus name for abrtd.
+- Update to version 3.15.90:
+  + Add a privacy page.
+  + Don't wait for GDM to kill us.
+  + Updated translations.
+- Add pkgconfig(webkitgtk-3.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Wed Feb 25 14:19:36 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.14.3:
+  + Fix a crash in the network page.
+  + Append ibus sources to input sources list.
+  + Allow resizing on small screens.
+  + Use header bars on goa dialogs.
+  + Fix a crash in the language page.
+  + Hide the window instead of letting gdm kill it.
+  + Fix a crash in the keyboard page.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 13 19:52:24 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2.1:
+  + Disable SSLv3 because of POODLE.
+- Changes from version 3.14.2:
+  + Fix changing the login keyring password.
+  + Ensure that we show the selected input source.
+  + Preserve system keyboard layouts.
+  + Don't choose irrelevant layouts as first level choices.
+  + Add a function to detect small screens.
+  + Hide images when we have no space for them.
+  + Drop the minimum size when we are on a small screen.
+  + Updated translations.
+- Changes from version 3.14.1:
+  + Don't allow to move window.
+  + Avoid a crash in input chooser.
+  + Require selecting an input source.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 22 18:25:42 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + Fix skip button showing up on the last page.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 17 16:09:51 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.7:
+  + Refine spacing and alignment on all pages.
+  + keyboard: Show suggestions for the current locale.
+  + keyboard: Add all IBus engines.
+  + keyboard: Ellipsize long labels.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 15 18:24:43 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.6:
+  + language: Drop British English to make page smaller.
+  + region: Drop, instead show all locales in the language page.
+  + keyboard: Show all layouts (in the expanded list).
+  + account: Whitelist realmd actions to enable enterprise setup.
+  + timezone: Remove icon to make page smaller.
+  + Improve keyboard navigation.
+  + Bring back existing-user mode.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  7 12:35:40 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.5:
+  + language: Don't dim distro logo.
+  + timezone: Make page smaller.
+  + input: Fix build without ibus.
+  + password: Don't hard-enforce strong passwords.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 16 20:52:23 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + Account:
+    - Improve wording.
+    - Update to match control-center.
+  + Timezone:
+    - Add geoclue integration.
+    - Add an icon.
+  + Password:
+    - Update to match control-center.
+    - Properly clean up signal handler.
+  + Keyring: Open session.
+  + Copy-worker: Run in early initialization phase.
+  + Updated translations.
+- Add pkgconfig(geoclue-2.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Sat Aug 16 20:20:55 UTC 2014 - wr@rosenauer.org
+
+- Set RPM group to System/GUI/GNOME to match other GNOME packages.
+
+-------------------------------------------------------------------
+Wed Jul 23 21:18:31 UTC 2014 - dimstar@opensuse.org
+
+- Update license to be GPL-2.0: matches COPYING and most files.
+  + Two files in the tarball are marked to be GPL-3.0. Upstream has
+    been contacted to verify if this is indeed correct (which would
+    result the entire binary to become GPL-3.0+, bgo#733593).
+
+-------------------------------------------------------------------
+Tue Jul  1 17:55:24 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.1:
+  + Fix an untranslatable string.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 25 12:47:35 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 21 13:11:50 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Build fixes:
+    - Initialize automake earlier.
+    - Enable maintainer mode.
+  + Update titlebar on locale change.
+  + Use distro logo instead of GNOME foot.
+  + Timezone Dialog:
+    - Ensure map is properly allocated.
+    - Draw location marker pixel-aligned.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  5 19:01:22 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+- Initial package, version 3.11.91.
+
+

@@ -1,0 +1,13 @@
+Index: apr-1.6.5/test/sendfile.c
+===================================================================
+--- apr-1.6.5.orig/test/sendfile.c	2013-10-14 15:45:05.000000000 +0200
++++ apr-1.6.5/test/sendfile.c	2019-02-08 10:58:50.731588817 +0100
+@@ -463,7 +463,7 @@ static int client(apr_pool_t *p, client_
+     /* in case this is the non-blocking test, set socket timeout;
+      * we're just waiting for EOF */
+ 
+-    rv = apr_socket_timeout_set(sock, apr_time_from_sec(3));
++    rv = apr_socket_timeout_set(sock, apr_time_from_sec(10));
+     if (rv != APR_SUCCESS) {
+         aprerr("apr_socket_timeout_set()", rv);
+     }

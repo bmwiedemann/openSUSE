@@ -1,0 +1,203 @@
+-------------------------------------------------------------------
+Thu Dec  6 13:22:02 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:37 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon May 14 10:11:40 UTC 2018 - tchvatal@suse.com
+
+- Use license macro
+
+-------------------------------------------------------------------
+Thu Apr 20 04:22:33 UTC 2017 - sflees@suse.de
+
+- Convert to single spec
+- Update to version 1.26.0
+  * NOTE: Active maintenance on PyPDF2 is resuming after a hiatus
+  * Fixed a bug where image resources where incorrectly overwritten
+    when merging pages
+  * Added dictionary for JavaScript actions to the root (louib)
+  * Added unit tests for the JS functionality (louib)
+  * Add more Python 3 compatibility when reading inline images (im2703
+    and (VyacheslavHashov)
+  * Return NullObject instead of raising error when failing to resolve
+    object (ctate)
+  * Don't output warning for non-zeroed xref table when strict=False
+    (BenRussert)
+  * Remove extraneous zeroes from output formatting (speedplane)
+  * Fix bug where reading an inline image would cut off prematurely in
+    certain cases (speedplane)
+- Changes for 1.25
+BUGFIXES:
+    * Added Python 3 algorithm for ASCII85Decode. Fixes issue when
+      reading reportlab-generated files with Py 3 (jerickbixly)
+    * Recognize more escape sequence which would otherwise throw an
+      exception (manuelzs, robertsoakes)
+    * Fixed overflow error in generic.py. Occurred
+      when reading a too-large int in Python 2 (by Raja Jamwal)
+    * Allow access to files which were encrypted with an empty
+      password. Previously threw a "File has not been decrypted"
+      exception (Elena Williams)
+    * Do not attempt to decode an empty data stream. Previously
+      would cause an error in decode algorithms (vladir)
+    * Fixed some type issues specific to Py 2 or Py 3
+    * Fix issue when stream data begins with whitespace (soloma83)
+    * Recognize abbreviated filter names (AlmightyOatmeal and
+      Matthew Weiss)
+    * Copy decryption key from PdfFileReader to PdfFileMerger.
+      Allows usage of PdfFileMerger with encrypted files (twolfson)
+    * Fixed bug which occurred when a NameObject is present at end
+      of a file stream. Threw a "Stream has ended unexpectedly"
+      exception (speedplane)
+FEATURES:
+    * Initial work on a test suite; to be expanded in future.
+      Tests and Resources directory added, README updated (robertsoakes)
+    * Added document cloning methods to PdfFileWriter:
+      appendPagesFromReader, cloneReaderDocumentRoot, and
+      cloneDocumentFromReader. See official documentation (robertsoakes)
+    * Added method for writing to form fields: updatePageFormFieldValues.
+      This will be enhanced in the future. See official documentation
+      (robertsoakes)
+    * New addAttachment method. See documentation. Support for adding
+      and extracting embedded files to be enhanced in the future
+      (moshekaplan)
+    * Added methods to get page number of given PageObject or
+      Destination: getPageNumber and getDestinationPageNumber.
+      See documentation (mozbugbox)
+    
+-------------------------------------------------------------------
+Mon May 11 18:00:56 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.24:
+  * Bugfixes for reading files in Python 3 (by Anthony Tuininga and
+    pqqp)
+  * Appropriate errors are now raised instead of infinite loops (by
+    naure and Cyrus Vafadari)
+  * Bugfix for parsing number tokens with leading spaces (by Maxim
+    Kamenkov)
+  * Don't crash on bad /Outlines reference (by eshellman)
+  * Conform tabs/spaces and blank lines to PEP 8 standards
+  * Utilize the readUntilRegex method when reading Number Objects
+    (by Brendan Jurd)
+  * More bugfixes for Python 3 and clearer exception handling
+  * Fixed encoding issue in merger (with eshellman)
+  * Created separate folder for scripts
+- additional changes from version 1.23:
+  * Documentation now available at http://pythonhosted.org//PyPDF2
+  * Bugfix in pagerange.py for when __init__.__doc__ has no value
+    (by Vladir Cruz)
+  * Fix typos in OutlinesObject().add() (by shilluc)
+  * Re-added a missing return statement in a utils.py method
+  * Corrected viewing mode names (by Jason Scheirer)
+  * New PdfFileWriter method: addJS() (by vfigueiro)
+  * New bookmark features: color, boldness, italics, and page fit
+    (by Joshua Arnott)
+  * New PdfFileReader method: getFields(). Used to extract field
+    information from PDFs with interactive forms. See documentation
+    for details
+  * Converted README file to markdown format (by Stephen Bussard)
+  * Several improvements to overall performance and efficiency (by
+    mozbugbox)
+  * Fixed a bug where geospatial information was not scaling along
+    with its page
+  * Fixed a type issue and a Python 3 issue in the decryption
+    algorithms (with Francisco Vieira and koba-ninkigumi)
+  * Fixed a bug causing an infinite loop in the ASCII 85 decoding
+    algorithm (by madmaardigan)
+  * Annotations (links, comment windows, etc.) are now preserved
+    when pages are merged together
+  * Used the Destination class in addLink() and addBookmark() so
+    that the page fit option could be properly customized
+- additional changes from version 1.22:
+  * Added .DS_Store to .gitignore (for Mac users) (by Steve Witham)
+  * Removed __init__() implementation in NameObject (by Steve
+    Witham)
+  * Fixed bug (inf. loop) when merging pages in Python 3 (by commx)
+  * Corrected error when calculating height in scaleTo()
+  * Removed unnecessary code from DictionaryObject (by Georges
+    Dubus)
+  * Fixed bug where an exception was thrown upon reading a NULL
+    string (by speedplane)
+  * Allow string literals (non-unicode strings in Python 2) to be
+    passed to PdfFileReader
+  * Allow ConvertFunctionsToVirtualList to be indexed with slices
+    and longs (in Python 2) (by Matt Gilson)
+  * Major improvements and bugfixes to addLink() method (see
+    documentation in source code) (by Henry Keiter)
+  * General code clean-up and improvements (with Steve Witham and
+    Henry Keiter)
+  * Fixed bug that caused crash when comments are present at end of
+    dictionary
+- additional changes from version 1.21:
+  * Fix for when /Type isn't present in the Pages dictionary (by
+    Rob1080)
+  * More tolerance for extra whitespace in Indirect Objects
+  * Improved Exception handling
+  * Fixed error in getHeight() method (by Simon Kaempflein)
+  * implement use of utils.string_type to resolve Py2-3
+    compatibility issues
+  * Prevent exception for multiple definitions in a dictionary
+    (with carlosfunk) (only when strict = False)
+  * Fixed errors when parsing a slice using pdfcat on command line
+    (by Steve Witham)
+  * Tolerance for EOF markers within 1024 bytes of the actual end
+    of the file (with David Wolever)
+  * Added overwriteWarnings parameter to PdfFileReader constructor,
+    if False PyPDF2 will NOT overwrite methods from Python's
+    warnings.py module with a custom implementation.
+  * Fix NumberObject and NameObject constructors for compatibility
+    with PyPy (Rüdiger Jungbeck, Xavier Dupré, shezadkhan137,
+    Steven Witham)
+  * Utilize  utils.Str in pdf.py and pagerange.py to resolve type
+    issues (by egbutter)
+  * Improvements in implementing StringIO for Python 2 and BytesIO
+    for Python 3 (by Xavier Dupré)
+  * Added /x00 to Whitespaces, defined utils.WHITESPACES to clarify
+    code (by Maxim Kamenkov)
+  * Bugfix for merging 3 or more resources with the same name (by
+    lucky-user)
+  * Improvements to Xref parsing algorithm (by speedplane)
+- additional changes from version 1.20:
+  * Official Python 3+ support (with contributions from TWAC and
+    cgammans) Support for Python versions 2.6 and 2.7 will be
+    maintained
+  * Command line concatenation (see pdfcat in sample code) (by
+    Steve Witham)
+  * New FAQ; link included in README
+  * Allow more (although unnecessary) escape sequences
+  * Prevent exception when reading a null object in decoding
+    parameters
+  * Corrected error in reading destination types (added a slash
+    since they are name objects)
+  * Corrected TypeError in scaleTo() method
+  * addBookmark() method in PdfFileMerger now returns bookmark (so
+    nested bookmarks can be created)
+  * Additions to Sample Code and Sample PDFs
+  * changes to allow 2up script to work (see sample code) (by Dylan
+    McNamee)
+  * changes to metadata encoding (by Chris Hiestand)
+  * New methods for links: addLink() (by Enrico Lambertini) and
+    removeLinks()
+  * Bugfix to handle nested bookmarks correctly (by Jamie Lentin)
+  * New methods removeImages() and removeText() available for
+    PdfFileWriter (by Tien Haï)
+  * Exception handling for illegal characters in Name Objects
+- remove unwanted shebang in pagerange.py
+- rename README to README.md: changed upstream
+
+-------------------------------------------------------------------
+Tue Dec  3 10:52:18 UTC 2013 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  See LICENSE
+
+-------------------------------------------------------------------
+Sun Nov 24 21:44:43 UTC 2013 - p.drouand@gmail.com
+
+- Initial release ( version 1.19 )
+

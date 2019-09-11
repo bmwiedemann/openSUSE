@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Thu Jul 18 08:17:38 UTC 2019 - psimons@suse.com
+
+- Update persistent-template to version 2.7.2.
+  ## 2.7.2
+
+  * Expose the knot tying logic of `parseReferences` so that users can build
+    migrations from independently define entities at runtime [#932](https://github.com/yesodweb/persistent/pull/932)
+
+-------------------------------------------------------------------
+Tue May  7 02:03:24 UTC 2019 - psimons@suse.com
+
+- Update persistent-template to version 2.7.1.
+  ## 2.7.1
+
+  * Add the `mkEntityDefList` function to work around [#902](https://github.com/yesodweb/persistent/issues/902). [#904](https://github.com/yesodweb/persistent/pull/904)
+
+-------------------------------------------------------------------
+Thu Apr 18 02:03:26 UTC 2019 - psimons@suse.com
+
+- Update persistent-template to version 2.7.0.
+  ## 2.7.0
+
+  * Depends on `persistent-2.10.0` which provides the `OnlyOneUniqueKey` and `AtLeastOneUniqueKey` classes. Automatically generates instances for these classes based on how many unique keys the entity definition gets. This changes requires `UndecidableInstances` to be enabled on each module that generates entity definitions. [#885](https://github.com/yesodweb/persistent/pull/885)
+  * Removed deprecated `sqlOnlySettings`. Please use `sqlSettings` instead. [#894](https://github.com/yesodweb/persistent/pull/894)
+
+-------------------------------------------------------------------
+Mon Jan 28 03:02:08 UTC 2019 - psimons@suse.com
+
+- Update persistent-template to version 2.6.0.
+  ## 2.6.0
+  * [persistent#846](https://github.com/yesodweb/persistent/pull/846): Improve error message when marshalling fails
+  * [persistent#826](https://github.com/yesodweb/persistent/pull/826): Change `Unique` derive `Show`
+
+------------------------------------------------------------------
+Sun Dec  2 16:06:13 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Update Cabal build instructions to support http-api-data 0.4.x.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:31:52 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:36 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:13:26 UTC 2018 - psimons@suse.com
+
+- Revise cabal build file to specify more accurate dependencies.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update persistent-template to version 2.5.4 revision 1.
+  * [persistent#778](https://github.com/yesodweb/persistent/issues/778): Add `persistManyFileWith`.
+  * Slight improvement to the error message when a Persistent field can't be parsed from database results
+  * Exposed `parseReferences` to allow custom QuasiQuoters
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Mon Jun 12 09:41:40 UTC 2017 - psimons@suse.com
+
+- Update to version 2.5.2 revision 1.
+
+-------------------------------------------------------------------
+Tue Mar 14 09:26:16 UTC 2017 - psimons@suse.com
+
+- Update to version 2.5.2 with cabal2obs.
+
+-------------------------------------------------------------------
+Wed Jan  4 21:22:17 UTC 2017 - psimons@suse.com
+
+- Update to version 2.5.1.6 revision 2 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Sep 15 06:49:07 UTC 2016 - psimons@suse.com
+
+- Update to version 2.5.1.6 revision 1 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:31:46 UTC 2016 - psimons@suse.com
+
+- Update to version 2.1.8.1 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sat May 14 20:21:10 UTC 2016 - mimi.vx@gmail.com
+
+- update to 2.1.8.1
+* fix a bad Eq instance /= definition for Key when mpsGenetric=True
+
+-------------------------------------------------------------------
+Tue Apr 26 08:36:30 UTC 2016 - mimi.vx@gmail.com
+
+-update to 2.1.8
+* Support for GHC 8
+* aeson 0.11
+* transformers 0.5
+
+-------------------------------------------------------------------
+Thu Mar 10 08:58:56 UTC 2016 - mimi.vx@gmail.com
+
+- update to 2.1.6
+
+-------------------------------------------------------------------
+Sun Dec 27 11:55:12 UTC 2015 - mimi.vx@gmail.com
+
+- update to 2.1.5
+
+-------------------------------------------------------------------
+Thu Nov 19 14:43:20 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit

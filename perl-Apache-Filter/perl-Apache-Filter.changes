@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Tue Jul 28 13:56:18 UTC 2015 - dimstar@opensuse.org
+
+- Fix build with latest apache2 package, where /usr/sbin/httpd2 is,
+  in accordance to upstream, named /usr/sbin/httpd.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:07:21 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:30:38 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:18 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 10 14:38:38 CET 2006 - anicka@suse.cz
+
+- update to 1.024 
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Wed Sep 28 22:07:19 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Jul 29 19:48:07 CEST 2005 - mjancar@suse.cz
+
+- update to 1.023
+
+-------------------------------------------------------------------
+Tue Aug 17 17:16:07 CEST 2004 - ro@suse.de
+
+- updated requires 
+
+-------------------------------------------------------------------
+Mon Jun 21 01:37:57 CEST 2004 - ro@suse.de
+
+- build using apache2
+
+-------------------------------------------------------------------
+Fri Aug 22 11:54:17 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 21 14:13:06 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Tue Jun 17 16:48:31 CEST 2003 - mjancar@suse.cz
+
+- update to 1.022
+- fix filelist
+
+-------------------------------------------------------------------
+Tue May 20 12:38:47 CEST 2003 - mjancar@suse.cz
+
+- remove unpackaged files
+
+-------------------------------------------------------------------
+Mon Jul 22 16:16:34 CEST 2002 - prehak@suse.cz
+
+- doesn't require any specific apache version,
+  simply require apache [#16775]
+  
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Mon Dec 17 13:23:02 CET 2001 - cihlar@suse.cz
+
+- update to 1.019:
+  * bugfix release
+- added %clean
+
+-------------------------------------------------------------------
+Mon Nov  5 14:54:38 CET 2001 - poeml@suse.de
+
+- use apache-devel-packages macro in #neededforbuild
+  (expat.rpm is needed by apxs)
+
+-------------------------------------------------------------------
+Wed Mar 28 14:30:32 MEST 2001 - rolf@suse.de
+
+- update to 1.016
+
+-------------------------------------------------------------------
+Fri Feb 23 16:24:25 CET 2001 - ro@suse.de
+
+- changed neededforbuild <apache> to <apache apache-devel>
+
+-------------------------------------------------------------------
+Fri Nov 17 13:42:43 MET 2000 - rolf@suse.de
+
+- extracted from perlmod package
+

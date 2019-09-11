@@ -1,0 +1,42 @@
+Index: pl-6.6.6/packages/jpl/ac/ac_jni_include_dirs.m4
+===================================================================
+--- pl-6.6.6.orig/packages/jpl/ac/ac_jni_include_dirs.m4
++++ pl-6.6.6/packages/jpl/ac/ac_jni_include_dirs.m4
+@@ -93,6 +93,16 @@ mingw32*)       JNI_CLIENT_DIRS="$_JTOPD
+ 			_JNI_LIBDIRS=""
+ 		esac
+ 		;;
++	powerpc64*)
++		case "$host_os" in
++		linux*)
++			_JNI_LIBDIRS="lib/ppc64 bin"
++			_JNI_LIBSUBDIRS="server classic"
++		;;
++		*)
++			_JNI_LIBDIRS=""
++		esac
++		;;
+ 	*)
+ 		# Fallback option should work on all architectures except
+ 		# amd64 and powerpc which are special cased above.
+Index: pl-6.6.6/packages/jpl/configure
+===================================================================
+--- pl-6.6.6.orig/packages/jpl/configure
++++ pl-6.6.6/packages/jpl/configure
+@@ -5635,6 +5635,16 @@ mingw32*)       JNI_CLIENT_DIRS="$_JTOPD
+ 			_JNI_LIBDIRS=""
+ 		esac
+ 		;;
++	powerpc64*)
++		case "$host_os" in
++		linux*)
++			_JNI_LIBDIRS="lib/ppc64 bin"
++			_JNI_LIBSUBDIRS="server classic"
++			;;
++		*)
++			_JNI_LIBDIRS=""
++		esac
++		;;
+ 	*)
+ 		# Fallback option should work on all architectures except
+ 		# amd64 and powerpc which are special cased above.

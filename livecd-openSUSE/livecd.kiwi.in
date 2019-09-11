@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+
+<!-- OBS-ExclusiveArch: aarch64 i586 x86_64 -->
+
+<image schemaversion="6.5" name="@NAME@" displayname="@DISPLAYNAME@">
+  <description type="system">
+    <author>openSUSE Project</author>
+    <contact>opensuse@opensuse.org</contact>
+    <specification>openSUSE Live system</specification>
+  </description>
+  <profiles>
+    <profile name="noEFI" description="no EFI for x86" import="true" arch="i686"/>
+    <profile name="EFI" description="EFI" import="true" arch="x86_64,aarch64"/>
+  </profiles>
+  <preferences profiles="EFI">
+    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="uefi" volid="@VOLID@" mediacheck="true"/>
+    <version>2.8.0</version>
+    <bootloader-theme>openSUSE</bootloader-theme>
+    <bootsplash-theme>bgrt</bootsplash-theme>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <locale>en_US</locale>
+    <rpm-excludedocs>true</rpm-excludedocs>
+  </preferences>
+  <preferences profiles="noEFI">
+    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="bios" volid="@VOLID@" mediacheck="true"/>
+    <version>2.8.0</version>
+    <bootloader-theme>openSUSE</bootloader-theme>
+    <bootsplash-theme>bgrt</bootsplash-theme>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <locale>en_US</locale>
+    <rpm-excludedocs>true</rpm-excludedocs>
+  </preferences>
+  <users>
+    <user groups="root" name="root" password="" home="/root"/>
+  </users>
+  <packages type="image" patternType="plusRecommended">
+    <package name="kernel-default"/>
+    <package name="gfxboot-branding-openSUSE" bootinclude="true" bootdelete="true" arch="i686,x86_64"/>
+    <package name="grub2-branding-openSUSE" bootinclude="true"/>
+    <package name="dracut-kiwi-live"/>
+    <!-- workaround for bnc#892087 -->
+    <package name="e2fsprogs" bootinclude="true"/>
+    <package name="pam"/>
+    <package name="pam-config"/>
+    <package name="udev"/>
+    <package name="aaa_base"/>
+    <package name="tar"/>
+    <package name="patch"/>
+    <package name="zypper"/>
+    <package name="grub2-x86_64-efi" arch="x86_64"/>
+    <package name="grub2-arm64-efi" arch="aarch64"/>
+    <package name="memtest86+" arch="i686,x86_64"/>
+    <package name="live-langset-data"/>
+    <package name="live-add-yast-repos"/>
+    <archive name="livecd-udev.tar.xz"/>
+    @PACKAGES@
+  </packages>
+  <packages type="bootstrap">
+    <package name="filesystem"/>
+    <package name="openSUSE-release"/>
+    <package name="openSUSE-release-livecd-@FLAVOR@"/>
+    <package name="branding-openSUSE"/>
+  </packages>
+  <repository type="rpm-md">
+    <source path="obsrepositories:/"/>
+  </repository>
+</image>

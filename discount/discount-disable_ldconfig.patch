@@ -1,0 +1,20 @@
+Index: discount-2.2.4/configure.inc
+===================================================================
+--- discount-2.2.4.orig/configure.inc
++++ discount-2.2.4/configure.inc
+@@ -1393,7 +1393,6 @@ __AC_ELF_LIBRARIAN() {
+     if $AC_CC $_VFLAGS -o ngc$$.so ngc$$.c; then
+ 	USE_SONAME=T
+     fi
+-    LDCONFIG=`AC_PATH=/sbin:/usr/sbin:/usr/local/sbin acLookFor ldconfig`
+ 
+     if [ "$LDCONFIG" ]; then
+ 	case `uname -s 2>/dev/null | $AC_UPPERCASE` in
+@@ -1439,7 +1438,6 @@ install)$PROG_INSTALL -c \$FULLNAME "\$1
+ 	$PROG_LN_S -f \$FULLNAME \$1/\$LIBNAME.\$MAJOR
+ 	$PROG_LN_S -f \$FULLNAME \$1/\$LIBNAME
+ EOF
+-    test "$LDCONFIG" && echo '	'$LDCONFIG '"$1"' >> librarian.sh
+     cat >> librarian.sh << EOF
+ 	;;
+ esac

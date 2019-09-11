@@ -1,0 +1,1056 @@
+-------------------------------------------------------------------
+Sat Jul  6 09:33:00 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 2.2.6
+  Changes compared to 2.2.5:
+  * Fix regression introduced in 2.2.5 that would break HTTP servers
+  * 'strftime' and 'strptime' honor the current locale encoding
+  * Re-export 'current-load-port'
+  * Minor documentation mistakes were fixed
+- remove patches:
+  * revert-http-reader-change.patch: fix included in release 
+
+-------------------------------------------------------------------
+Tue Jun 25 08:02:58 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 2.2.5 
+  Notable changes compared to 2.2.5:
+  * Notable improvements
+  ** Greatly improved performance of bidirectional pipes.
+  ** New 'get-bytevector-some!' I/O primitive.
+  ** get-bytevector-{n!,some,some!} now support suspendable I/O.
+  * Compiler improvements
+  ** guild compile: Add -Wshadowed-toplevel.
+  ** guild compile: Add '-x' flag.
+  * Miscellaneous improvements
+  ** Bootstrap optimization
+  ** put-u8 now always writes a single byte, regardless of the port encoding.
+  ** Optimize fixnum exact integer square roots.
+  ** scm_mkstrport: Optimize the POS -> BYTE_POS conversion.
+  ** SRFI-19: Support ~N in string->date.
+  ** SRFI-19: Update the leap second table.
+  ** stexi->shtml: Add support for @i, @math, @tie and @dots.
+  ** Define AT_SYMLINK_NOFOLLOW, AT_NO_AUTOMOUNT, and AT_EMPTY_PATH.
+  ** Improvements to the 'time' macro from (ice-9 time).
+  * Bug fixes
+  ** Avoid regexp ranges in HTTP inter-protocol exploitation check.
+  ** Fixes to the SRFI-19 time/date library.
+  ** Improve overflow checks in bytevector, string, and I/O operations.
+  ** Fix type inferencing for 'nil?' and 'null?' predicates.
+  ** Fix 'atomic-box-compare-and-swap!'.
+  ** Make URI handling locale independent.
+  ** Strings, i18n: Limit the use of alloca to approximately 8 kilobytes.
+  ** Fix documentation of R6RS 'binary-port?' to reflect reality.
+  ** Avoid passing NULL to 'memcpy' and 'memcmp'.
+  ** Save and restore errno in the signal handler.
+  ** Various smaller bug fixes
+  More details: /usr/share/doc/packages/guile/NEWS
+- add patches:
+  * revert-http-reader-change.patch: Fixes https://bugs.gnu.org/36350.
+- remove patches:
+  * guile-add-test-ja_JP.sjis.patch: proper fix included in 2.2.5
+  * guile-use-utf8.patch: included in 2.2.5
+  * disable-posix-crypt-test.patch: test succeeds now 
+- reorder patches
+
+-------------------------------------------------------------------
+Tue Jan 15 20:43:27 UTC 2019 - schwab@suse.de
+
+- remove broken prebuilt 32-bit big-endian objects
+
+-------------------------------------------------------------------
+Tue Nov 27 16:01:27 UTC 2018 - jbrielmaier@suse.de
+
+- Update to version 2.2.4. [boo#1117121]
+  Notable changes compared to 2.0.14:
+  * speed
+  * better thread and space-safety
+  * improved locale support
+  * dynamically expandable stacks
+  * many small improvements and bug fixes
+  This release brings incompatible changes to 2.0.x versions.
+  More details: /usr/share/doc/packages/guile/NEWS
+- add patches:
+  * disable-posix-crypt-test.patch: test glibc EINVAL fails
+  * disable-test-out-of-memory.patch: heap error during test
+- refresh patches:
+  * guile-2.0.14-gc_pkgconfig_private.patch: rebase on guile 2.2
+    and rename to guile-2.2-gc_pkgconfig_private.patch
+- remove patches:
+  * guile-64bit.patch
+  * guile-1.6.10-mktemp.patch
+  * guile-threads-test.patch
+  * guile-net-db-test.patch: guile doesn't fail to build anymore
+  * guile-disable-int-tests.patch: guile builds fine with glibc2.27
+- reorder patches
+- remove libguilereadline packages, as it became an extension
+
+-------------------------------------------------------------------
+Sun Oct 21 17:56:40 UTC 2018 - psimons@suse.com
+
+- Apply guile-use-utf8.patch to fix use of the "ja_JP.sjis" locale.
+  [bsc#1110085]
+   
+- Apply guile-add-test-ja_JP.sjis.patch to add standalone test that
+  verifies the "ja_JP.sjis" locale works properly. Further details
+  at https://debbugs.gnu.org/cgi/bugreport.cgi?bug=33044#43.
+  [bsc#1110085]
+
+-------------------------------------------------------------------
+Wed Feb 28 14:51:38 UTC 2018 - tchvatal@suse.com
+
+- Add back the require on gc-devel as it is still needed for the
+  non .pc using packages (eg autotools)
+
+-------------------------------------------------------------------
+Wed Feb 28 12:37:54 UTC 2018 - tchvatal@suse.com
+
+- Add patch from Fedora not to link to libgc in all consumer libs:
+  * guile-2.0.14-gc_pkgconfig_private.patch
+- Add _constraints file to ensure we can build properly
+
+-------------------------------------------------------------------
+Wed Feb 28 12:35:01 UTC 2018 - tchvatal@suse.com
+
+- Format with spec-cleaner
+- Fix build with new glibc 2.27 bsc#1079837:
+  * guile-disable-int-tests.patch
+- Use %license macro to install license
+
+-------------------------------------------------------------------
+Fri Feb 17 12:45:52 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.0.14:
+  * Bug fixes
+    + Builds of .go files and of Guile itself are now
+      bit-reproducible
+    + 'number->locale-string' and 'monetary-amount->locale-string'
+      fixes
+    + (system base target) now recognizes "sh3" as a
+      cross-compilation target
+    + Fix race condition in '00-repl-server.test'
+    + 'scandir' from (ice-9 ftw) no longer calls 'stat' for each
+      entry
+  * Several documentation improvements
+- Drop no longer needed patches:
+  * guile-fake-buildstamp.patch
+  * repl-server-test.patch
+- Small packaging cleanup with help of spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov  8 11:14:02 UTC 2016 - schwab@suse.de
+
+- repl-server-test.patch: fix race in 00-repl-server.test
+
+-------------------------------------------------------------------
+Sat Oct 15 14:55:17 UTC 2016 - mpluskal@suse.com
+
+- Update to version 2.0.13
+  * Security fixes
+    + CVE-2016-8606: REPL server now protects against HTTP
+      inter-protocol attacks
+    + CVE-2016-8605: 'mkdir' procedure no longer calls umask(2)
+  * Several bugfixes and improvements (for details see NEWS file)
+- Fetch keyring from savannah
+- Use https for all urls
+
+-------------------------------------------------------------------
+Thu Jul 21 12:25:52 UTC 2016 - sleep_walker@opensuse.org
+
+- updated to 2.0.12:
+   ** FFI: Add support for functions that set 'errno'
+   ** The #!r6rs directive now influences read syntax
+   ** 'read' now accepts "\(" as equivalent to "("
+   ** SRFI-14 character data set upgraded to Unicode 8.0.0
+   ** SRFI-19 table of leap seconds updated
+   ** 'string-hash', 'read-string', and 'write' have been optimized
+   ** GOOPS bug fix for inherited accessor methods
+
+   for complete list of changes see NEWS
+
+- refreshed patches
+- add key of Andy Wingo to guile.keyring
+
+-------------------------------------------------------------------
+Wed Oct  7 14:23:10 UTC 2015 - pgajdos@suse.com
+
+- libguile require glibc-locale [bnc#948804]
+
+-------------------------------------------------------------------
+Mon Mar  9 20:07:48 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Add gpg signature
+
+-------------------------------------------------------------------
+Thu Feb  5 10:11:21 UTC 2015 - pgajdos@suse.com
+
+- use fake buildstamp [bnc#916347]
+  + guile-fake-buildstamp.patch
+
+-------------------------------------------------------------------
+Tue Apr 22 12:17:08 UTC 2014 - pgajdos@suse.com
+
+- install libguile*-gdb.scm into
+  %{_datadir}/gdb/auto-load%{_libdir}/  [bnc#874028]
+
+-------------------------------------------------------------------
+Mon Mar 31 11:33:15 UTC 2014 - pgajdos@suse.com
+
+- updated to 2.0.11:
+   ** New GDB extension to support Guile
+   ** Improved integration between R6RS and native Guile exceptions
+   ** Support for HTTP proxies
+   ** Lexical syntax improvements
+   *** Support |...| symbol notation
+   *** Support '#true' and '#false' notation for booleans.
+   *** Recognize '#\escape' character name.
+   *** Accept "\|" in string literals.
+   ** Custom binary input ports now support 'setvbuf'.
+   ** SRFI-4 predicates and length accessors no longer accept arrays.
+   ** GUILE_PROGS now supports specifying a minimum required version.
+   etc, see NEWS. 
+
+-------------------------------------------------------------------
+Mon Apr 15 06:51:08 UTC 2013 - pgajdos@suse.com
+
+- updated to 2.0.9:
+  ** New keyword arguments for procedures that open files
+  ** Numerics improvements
+  ** New optimizations
+  ** `peek-char' no longer consumes EOF
+  ** SLIB compatibility restored
+  ** Better ,trace REPL command
+  ** Better docstring syntax supported for `case-lambda'
+  ** Improved handling of Unicode byte order marks
+  etc. see NEWS for more/details
+- removed unneeded gc-test.patch
+
+-------------------------------------------------------------------
+Tue Feb  5 18:36:49 UTC 2013 - dmitry_r@opensuse.org
+
+- move .so file to libguilereadline package [bnc#765436]
+
+-------------------------------------------------------------------
+Mon Dec 17 08:15:45 UTC 2012 - pgajdos@suse.com
+
+- fixed build: net-db.test takes EAI_SYSTEM error by
+  * net-db-test.patch [bnc#794696]
+- turn off one test in gc.test
+  * gc-test.patch
+    http://lists.gnu.org/archive/html/bug-guile/2012-07/msg00069.html
+
+-------------------------------------------------------------------
+Mon Dec  3 09:20:21 UTC 2012 - pgajdos@suse.com
+
+- update to 2.0.7:
+  * Notable changes
+  ** SRFI-105 curly infix expressions are supported
+  ** Reader options may now be per-port
+  ** Futures may now be nested
+  ** `GUILE_LOAD_PATH' et al can now add directories to the end of 
+     the path
+  ** `load-in-vicinity' search for `.go' files in `%load-compiled-path'
+  ** Extension search order fixed, and LD_LIBRARY_PATH preserved
+  ** Optimize calls to `equal?' or `eqv?' with a constant argument
+  * Manual updates
+  ** SRFI-9 records now documented under "Compound Data Types"
+  ** (ice-9 and-let-star) and (ice-9 curried-definitions) now documented
+  * New interfaces
+  ** New "functional record setters" as a GNU extension of SRFI-9
+  ** web: New `http-get*', `response-body-port', and `text-content-type?'
+     procedures
+  ** `string-split' accepts character sets and predicates
+  ** R6RS SRFI support
+  ** `define-public' is no a longer curried definition by default
+
+  etc. see NEWS
+  
+-------------------------------------------------------------------
+Wed Jul 11 07:39:47 UTC 2012 - pgajdos@suse.com
+
+- update to 2.0.6:
+
+  * Notable changes
+  ** New optimization pass: common subexpression elimination (CSE)
+  ** Improvements to the partial evaluator
+  ** Run finalizers asynchronously in asyncs
+  ** Update SRFI-14 character sets to Unicode 6.1
+  ** Better source information for datums
+  ** Improved error and warning messages
+  ** A few important bug fixes in the HTTP modules.
+  ** Pretty-print improvements
+  ** Fix memory leak involving applicable SMOBs
+  ** Support for HTTP/1.1 chunked transfer coding
+  ** Micro-optimizations
+  ** Incompatible change to `scandir'
+
+  * New interfaces
+  ** New C function: `scm_to_pointer'
+  ** New C inline functions: `scm_new_smob', `scm_new_double_smob'
+  ** (ice-9 format): Add ~h specifier for localized number output.
+  ** (web response): New procedure: `response-must-not-include-body?'
+  ** New predicate: 'supports-source-properties?'
+  ** New C helpers: `scm_c_values', `scm_c_nvalues'
+  ** Newly public inline C function: `scm_unget_byte'
+  ** (language tree-il): New functions: `tree-il=?', `tree-il-hash'
+  ** New fluid: `%default-port-conversion-strategy'
+  ** New syntax: `=>' within `case'
+  ** (web http): `make-chunked-input-port', `make-chunked-output-port'
+  ** (web http): `declare-opaque-header!'
+
+  * New deprecations
+  ** `close-io-port' deprecated
+  ** `scm_sym2var' deprecated
+  ** Lookup closures deprecated
+
+  * Bug fixes
+  ** Fix use of unitialized stat buffer in search-path of absolute paths.
+  ** Avoid calling `freelocale' with a NULL argument.
+  ** Work around erroneous tr_TR locale in Darwin 8 in tests.
+  ** Fix `getaddrinfo' test for Darwin 8.
+  ** Use Gnulib's `regex' module for better regex portability.
+  ** `source-properties' and friends work on any object
+  ** Rewrite open-process in C, for robustness related to threads and fork
+  ** Fix <TAG>vector-length when applied to other uniform vector types
+  ** Fix escape-only prompt optimization (was disabled previously)
+  ** Fix a segfault when /dev/urandom is not accessible
+  ** Fix flush on soft ports, so that it actually runs.
+  ** Better compatibility of SRFI-9 records with core records
+  ** Fix and clarify documentation of `sorted?'.
+  ** Fix IEEE-754 endianness conversion in bytevectors.
+  ** Correct thunk check in the `wind' instruction.
+  ** Add @acronym support to texinfo modules
+  ** Fix docbook->texi for <ulink> without URL
+  ** Fix `setvbuf' to leave the line/column number unchanged.
+  ** Add missing public declaration for `scm_take_from_input_buffers'.
+  ** Fix relative file name canonicalization with empty %LOAD-PATH entries.
+  ** Import newer (ice-9 match) from Chibi-Scheme.
+  ** Fix unbound variables and unbound values in ECMAScript runtime.
+  ** Make SRFI-6 string ports Unicode-capable.
+- removed patches:
+   guile-turn-off-gc-test.patch
+   guile-fix_fsf_add.patch
+
+-------------------------------------------------------------------
+Fri Jun 29 09:26:41 UTC 2012 - coolo@suse.com
+
+- libffi-devel is more generic than specific gcc versions (that no longer
+  exist in factory)
+
+-------------------------------------------------------------------
+Mon Apr 23 17:16:38 UTC 2012 - dvaleev@suse.com
+
+- mark this threads test as unresolved since it may produce false 
+  negatives, depending on the behavior/timing of the garbage 
+  collector. 
+
+-------------------------------------------------------------------
+Tue Jan 31 15:10:31 UTC 2012 - pgajdos@suse.com
+
+- update to 2.0.5:
+  ** Better debuggability for interpreted procedures.
+  ** Support for cross-compilation.
+  ** The return of `local-eval'.
+  ** Fluids can now have default values.
+  ** Garbage collector tuning.
+  *** Unmanaged allocation
+  * etc. see NEWS
+
+-------------------------------------------------------------------
+Wed Jan 18 16:21:57 UTC 2012 - pgajdos@suse.com
+
+- don't conflict with guile1 [bnc#724917]
+
+-------------------------------------------------------------------
+Fri Dec  9 10:38:37 UTC 2011 - dimstar@opensuse.org
+
+- Drop libtool archives.
+
+-------------------------------------------------------------------
+Sat Dec  3 14:24:16 UTC 2011 - coolo@suse.com
+
+- buildrequire ltdl-devel
+
+-------------------------------------------------------------------
+Mon Nov 28 15:51:34 UTC 2011 - pgajdos@suse.com
+
+- splitted out guile-modules-2_0 package [bnc#722306]
+
+-------------------------------------------------------------------
+Mon Nov 28 08:34:06 UTC 2011 - pgajdos@suse.com
+
+- ignore result of gc test
+  * turn-off-gc-test.patch
+
+-------------------------------------------------------------------
+Tue Nov 15 14:41:20 UTC 2011 - pgajdos@suse.com
+
+- updated to 2.0.3:
+  ** Guile has a new optimizer, `peval'.
+  ** New module: `(web client)', a simple synchronous web client.
+  ** Users can now install compiled `.go' files.
+  ** Remove Front-Cover and Back-Cover text from the manual.
+  ** More helpful `guild help'.
+  ** New macro: `define-syntax-rule'
+  ** The `,time' REPL meta-command now has more precision.
+  ** `(ice-9 match)' can now match records.
+  ** New module: `(language tree-il debug)'.
+  ** New functions: `scm_is_exact', `scm_is_inexact'.
+  ** Fix order of importing modules and resolving duplicates handlers.
+  ** Fix a number of bugs involving extended (merged) generics.
+  ** Fix invocation of merge-generics duplicate handler.
+  ** Fix write beyond array end in arrays.c.
+  ** Fix read beyond end of hashtable size array in hashtab.c.
+  ** (web http): Locale-independent parsing and serialization of dates.
+  ** Ensure presence of Host header in HTTP/1.1 requests.
+  ** Fix take-right and drop-right for improper lists.
+  ** Fix leak in get_current_locale().
+  ** Fix recursive define-inlinable expansions.
+  ** Check that srfi-1 procedure arguments are procedures.
+  ** Fix r6rs `map' for multiple returns.
+  ** Fix scm_tmpfile leak on POSIX platforms.
+  ** Fix a couple of leaks (objcode->bytecode, make-boot-program).
+  ** Fix guile-lib back-compatibility for module-stexi-documentation.
+  ** Fix --listen option to allow other ports.
+  ** Fix scm_to_latin1_stringn for substrings.
+  ** Fix compilation of untyped arrays of rank not 1.
+  ** Fix unparse-tree-il of <dynset>.
+  ** Fix reading of #||||#.
+  ** Fix segfault in GOOPS when class fields are redefined.
+  ** Prefer poll(2) over select(2) to allow file descriptors above FD_SETSIZE.
+
+-------------------------------------------------------------------
+Fri Oct 14 11:05:37 UTC 2011 - dimstar@opensuse.org
+
+- Own %{_datadir}/guile/site in order for slib not having issues
+  registering itself.
+
+-------------------------------------------------------------------
+Thu Oct  6 06:50:50 UTC 2011 - pgajdos@suse.com
+
+- guile-devel requires guile [bnc#722306]
+
+-------------------------------------------------------------------
+Fri Sep 30 16:12:52 UTC 2011 - davejplater@gmail.com
+
+- Split off libguile-2_0-22 and libguilereadline-v-18-18 packages in
+  preparation for bthe submission of legacy package guile.
+- Cleaned spec file.
+
+-------------------------------------------------------------------
+Mon Aug 15 14:08:41 UTC 2011 - pgajdos@novell.com
+
+- updated to 2.0.2:
+  ** `guile-tools' renamed to `guild'
+  ** New control operators: `shift' and `reset'
+  ** `while' as an expression
+  ** Disallow access to handles of weak hash tables
+  ** More precision for `get-internal-run-time', `get-internal-real-time'
+  ** Guile now measures time spent in GC
+  ** Add `gcprof'
+  ** `map', `for-each' and some others now implemented in Scheme
+  ** Add `scm_peek_byte_or_eof'.
+  ** Implement #:stop-at-first-non-option option for getopt-long
+  ** Improve R6RS conformance for conditions in the I/O libraries
+  ** All deprecated routines emit warnings
+  ** Constants in compiled code now share state better
+  ** VLists: optimize `vlist-fold-right', and add `vhash-fold-right'
+  ** UTF-8 ports to bypass `iconv' entirely
+  ** Compiler speedups
+  ** VM speed tuning
+  ** SRFI-1 list-set optimizations
+  ** `memq', `memv' optimizations
+  ** Deprecate scm_whash API
+  ** Deprecate scm_struct_table
+  ** Deprecate scm_internal_dynamic_wind
+  ** Deprecate scm_immutable_cell, scm_immutable_double_cell
+  ** Fix double-loading of script in -ds case
+  ** -x error message fix
+  ** iconveh-related cross-compilation fixes
+  ** Fix small integer return value packing on big endian machines.
+  ** Fix hash-set! in weak-value table from non-immediate to immediate
+  ** Fix call-with-input-file & relatives for multiple values
+  ** Fix `hash' for inf and nan
+  ** Fix libguile internal type errors caught by typing-strictness==2
+  ** Fix compile error in MinGW fstat socket detection
+  ** Fix generation of auto-compiled file names on MinGW
+  ** Fix multithreaded access to internal hash tables
+  ** Emit a 1-based line number in error messages
+  ** Fix define-module ordering
+  ** Fix several POSIX functions to use the locale encoding
+  ** Add type and range checks to the complex generalized vector accessors
+  ** Fix unaligned accesses for bytevectors of complex numbers
+  ** Fix '(a #{.} b)
+  ** Fix erroneous VM stack overflow for canceled threads
+
+-------------------------------------------------------------------
+Thu Jul 14 12:13:33 UTC 2011 - pgajdos@novell.com
+
+- updated to 2.0.1:
+  ** REPL reader usability enhancements
+  ** REPL output has configurable width
+  ** Better C access to the module system
+  ** Added `scm_call_5', `scm_call_6'
+  ** Added `scm_from_latin1_keyword', `scm_from_utf8_keyword'
+  ** R6RS unicode and string I/O work
+  ** Added `pointer->scm', `scm->pointer' to `(system foreign)'
+  ** Added `heap-allocated-since-gc' to `(gc-stats)'
+  ** Add `on-error' REPL option
+  ** Enforce immutability of string literals
+  ** Fix pthread redirection
+  ** `with-continuation-barrier' now unwinds on `quit'
+  ** `string->pointer' and `pointer->string' have optional encoding arg
+  ** R6RS fixnum arithmetic optimizations
+  ** New procedure: `define-inlinable'
+  ** New procedure: `exact-integer-sqrt'
+  ** "Extended read syntax" for symbols parses better
+  ** Added `--fresh-auto-compile' option
+  ** etc., see ChangeLog and NEWS
+
+-------------------------------------------------------------------
+Mon Mar 22 12:39:55 CET 2010 - pgajdos@suse.cz
+
+- fixed build with new gcc
+
+-------------------------------------------------------------------
+Tue Jan 26 19:26:58 CET 2010 - pgajdos@suse.cz
+
+- fixed build:
+
+ "Earlier versions of ltdl would look for extensions under $PWD; this
+  behavior changed in 2.2.6b."
+
+  * testsuite-build.patch taken from guile git (1.8 branch)
+
+-------------------------------------------------------------------
+Mon Nov 30 17:49:57 CET 2009 - pgajdos@suse.cz
+
+- updated to 1.8.7 (see NEWS)
+- fixed testsuite with patch taken from Fedora
+  * popen-test.patch
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:20 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Tue Jun 16 19:47:46 CEST 2009 - pgajdos@suse.cz
+
+- Updated to 1.8.6 (see NEWS)
+  - removed ac.patch
+
+-------------------------------------------------------------------
+Sat Feb  7 19:26:11 CET 2009 - schwab@suse.de
+
+- Rebuild broken info files.
+- Fix %post scripts.
+
+-------------------------------------------------------------------
+Fri Jan 16 20:26:37 CET 2009 - crrodriguez@suse.de
+
+-  remove static libraries
+- run make check
+
+-------------------------------------------------------------------
+Sun Sep  7 11:34:14 CEST 2008 - schwab@suse.de
+
+- Fix conflicting options.
+
+-------------------------------------------------------------------
+Mon Jul  7 16:48:39 CEST 2008 - pgajdos@suse.cz
+
+- updated to 1.8.5:
+  * new modules `(srfi srfi-88)'
+  * New `postfix' read option, for SRFI-88 keyword syntax 
+  * Some I/O primitives have been inlined, which improves I/O performance 
+  * New object-based traps infrastructure
+  * New support for working on Guile code from within Emacs
+  * bug fixes
+
+-------------------------------------------------------------------
+Thu Mar 13 14:27:07 CET 2008 - schwab@suse.de
+
+- Use autoreconf.
+
+-------------------------------------------------------------------
+Thu Feb 28 13:48:12 CET 2008 - ro@suse.de
+
+- update to 1.8.4:
+  * New modules (srfi srfi-69)
+  * Bug fixes
+- fix code for recent gcc by checking for __GNUC_GNU_INLINE__
+  instead of __GNUC__ for inline specifics (thanks, richi)
+
+-------------------------------------------------------------------
+Mon Feb  4 11:34:00 CET 2008 - pgajdos@suse.cz
+
+- guile conflicts with slib < 3a5 [#354936]
+
+-------------------------------------------------------------------
+Wed Dec 12 14:52:27 CET 2007 - pgajdos@suse.cz
+
+- upgraded to 1.8.3:
+  * New modules (srfi srfi-35), (srfi srfi-37)
+  * Bug fixes
+  * The reader is now faster, which reduces startup time
+  * Procedures returned by `record-accessor' and `record-modifier' 
+    are faster
+  * New procedures set-program-arguments, make-vtable
+  * Incompatible change:
+    ~~~~~~~~~~~~~~~~~~~~
+    The body of a top-level `define' no longer sees the binding 
+    being created. In a top-level `define', the binding being 
+    created is no longer visible from the `define' body. This 
+    breaks code like "(define foo (begin (set! foo 1) (+ foo 1)))", 
+    where `foo' is now unbound in the body. However, such code 
+    was not R5RS-compliant anyway, per Section 5.2.1. 
+- removed getcontext.patch -- no longer needed because 
+  of code change
+
+-------------------------------------------------------------------
+Mon Mar  5 18:17:05 CET 2007 - sbrabec@suse.cz
+
+- Slib guile library installation moved from guile to slib.
+
+-------------------------------------------------------------------
+Thu Jan 11 17:03:26 CET 2007 - sbrabec@suse.cz
+
+- More spec file cleanups.
+
+-------------------------------------------------------------------
+Fri Dec  8 12:42:05 CST 2006 - maw@suse.de
+
+- Clean up the spec, removing some hardcoded paths.
+
+-------------------------------------------------------------------
+Tue Nov 28 15:36:24 CET 2006 - sbrabec@suse.cz
+
+- Build as user and do not alter root filesystem.
+
+-------------------------------------------------------------------
+Mon Nov 27 12:34:43 CET 2006 - sbrabec@suse.cz
+
+- Created empty directory for site packages (#223837).
+
+-------------------------------------------------------------------
+Thu Nov 23 19:17:42 CET 2006 - sbrabec@suse.cz
+
+- Fixed slib installation scriptlets (#214940).
+
+-------------------------------------------------------------------
+Wed Nov  8 17:11:40 CET 2006 - anicka@suse.cz
+
+- moved .la files to the base package (#218032). 
+
+-------------------------------------------------------------------
+Wed Oct 25 15:14:48 CEST 2006 - sbrabec@suse.cz
+
+- Moved .so files to the base package (#214940).
+
+-------------------------------------------------------------------
+Mon Oct 16 16:19:36 CEST 2006 - anicka@suse.cz
+
+- move /usr/share/guile from devel to main package
+  (fixes ##212545) 
+
+-------------------------------------------------------------------
+Sun Oct 15 23:48:21 CEST 2006 - schwab@suse.de
+
+- Make sure config.rpath is present.
+
+-------------------------------------------------------------------
+Fri Oct 13 16:14:40 CEST 2006 - schwab@suse.de
+
+- Add split provide.
+
+-------------------------------------------------------------------
+Fri Oct 13 13:44:55 CEST 2006 - aj@suse.de
+
+- Split up devel subpackage.
+
+-------------------------------------------------------------------
+Tue Oct 10 12:50:59 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 1.8.1:
+  * LFS functions are now used to access 64-bit files on 32-bit
+    systems.
+  * New procedures and functions.
+  * New modules and module merges.
+  * API changes.
+  * Bugs fixed.
+  * Guile is now licensed with the GNU Lesser General
+    Public License.
+  * The manual is now licensed with the GNU Free Documentation
+    License.
+  * Guile now requires GNU MP.
+  * Guile now has separate private and public configuration
+    headers.
+  * Thread implementation has changed.
+  * Command line syntax changes.
+
+-------------------------------------------------------------------
+Fri Oct  6 18:55:18 CEST 2006 - anicka@suse.cz
+
+- update to 1.6.8
+  * gcc 4.0 fixes
+  * Guile now allows multiple line comments to end without 
+    a trailing newline. 
+  * better support for new versions of SLIB
+  * changes in C interface
+
+-------------------------------------------------------------------
+Fri Sep  8 11:54:50 CEST 2006 - anicka@suse.cz
+
+- rewrite SuSEconfig.guile to RPM triggers 
+
+-------------------------------------------------------------------
+Sun Jul 16 09:40:47 CEST 2006 - schwab@suse.de
+
+- Mark ia64_getcontext as returning twice.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:23 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 01:57:00 CET 2006 - ro@suse.de
+
+- add aclocal in libltdl 
+
+-------------------------------------------------------------------
+Wed May 18 10:37:12 CEST 2005 - sbrabec@suse.cz
+
+- Disabled randomly failing make -j.
+
+-------------------------------------------------------------------
+Tue Apr  5 15:57:22 CEST 2005 - sbrabec@suse.cz
+
+- Fixed incomplete array element type.
+
+-------------------------------------------------------------------
+Thu Mar 24 16:11:11 CET 2005 - uli@suse.de
+
+- fixed to build on ARM
+
+-------------------------------------------------------------------
+Fri Jan 21 13:01:11 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 1.6.7.
+
+-------------------------------------------------------------------
+Fri Dec 10 15:57:41 CET 2004 - meissner@suse.de
+
+- make -j , added make check.
+
+-------------------------------------------------------------------
+Tue Mar 30 13:33:26 CEST 2004 - sbrabec@suse.cz
+
+- Fixed tempfile creation in guile-snarf (#36367).
+- Build with -fno-strict-aliasing.
+
+-------------------------------------------------------------------
+Thu Nov  6 17:34:13 CET 2003 - schwab@suse.de
+
+- Fix syntax in configure script.
+
+-------------------------------------------------------------------
+Tue Jul 08 17:46:08 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.6.4.
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Wed Mar 12 18:14:56 CET 2003 - sbrabec@suse.cz
+
+- Workaround guile-config info version bug (symlink, fixes bug 25190).
+
+-------------------------------------------------------------------
+Tue Feb 11 15:24:22 CET 2003 - sbrabec@suse.cz
+
+- Fixed GUILEVERSION datadir path.
+
+-------------------------------------------------------------------
+Mon Feb 10 15:50:54 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 1.6.2.
+- Use %install_info (bug #23423).
+
+-------------------------------------------------------------------
+Wed Dec 11 22:35:14 CET 2002 - garloff@suse.de
+
+- Make slib integration work independent of guile version number.
+
+-------------------------------------------------------------------
+Wed Dec 04 11:43:34 CET 2002 - sbrabec@suse.cz
+
+- Change error message for unknown platform to warning. It allows to
+  compile guile on all platforms, but there is no guarantee to
+  functionallity. (guile-platforms.diff)
+
+-------------------------------------------------------------------
+Tue Dec 03 13:57:09 CET 2002 - sbrabec@suse.cz
+
+- Fixed typo, which breaks TeXmacs
+  (guile-1.6.0-top_srcdir_absolute.diff).
+
+-------------------------------------------------------------------
+Wed Oct 30 18:29:55 CET 2002 - sbrabec@suse.cz
+
+- Update to version 1.6.0.
+
+-------------------------------------------------------------------
+Tue Aug 20 13:45:10 CEST 2002 - mmj@suse.de
+
+- Correct PreReq
+
+-------------------------------------------------------------------
+Tue Jul 30 12:12:14 CEST 2002 - mcihar@suse.cz
+
+- fixed SuSEconfig.guile for new version
+
+-------------------------------------------------------------------
+Wed Jul 17 17:58:07 CEST 2002 - tiwai@suse.de
+
+- updated to version 1.4.1.
+
+-------------------------------------------------------------------
+Tue Jun 11 11:24:08 MEST 2002 - mcihar@suse.cz
+
+- disabled qthreads for ppc64
+
+-------------------------------------------------------------------
+Mon Apr 29 17:48:45 CEST 2002 - sf@suse.de
+
+- disabled qthreads for x86_64
+
+-------------------------------------------------------------------
+Thu Apr  4 12:31:07 CEST 2002 - pmladek@suse.cz
+
+- moved AC_LIBOBJ after AC_PROG_CC because AC_LIBOBJ uses $ac_objext
+
+-------------------------------------------------------------------
+Wed Apr  3 18:35:20 CEST 2002 - pmladek@suse.cz
+
+- fixed to compile with autoconf-2.53 (AC_LIBOBJ vs. LIBOBJS)
+
+-------------------------------------------------------------------
+Fri Feb  8 12:13:07 CET 2002 - pmladek@suse.cz
+
+- used -a option with automake to fix for PLUS distribution
+- added back guile-doc-snarf: work around problem with cpp on ia64
+  bebause of 7.2-ia64+kde distribution
+
+-------------------------------------------------------------------
+Wed Feb  6 22:39:58 CET 2002 - schwab@suse.de
+
+- Don't add /usr/include and /usr/local/include to include search path.
+- Avoid trigraph.
+- Add support for ia64 register backing store (from cvs).
+- Don't build with -O0 on ia64.
+
+-------------------------------------------------------------------
+Mon Dec 17 11:13:06 CET 2001 - froh@suse.de
+
+- added %{_libdir} to the specfile where appropriate to make it lib64
+  clean.
+
+-------------------------------------------------------------------
+Fri Dec  7 11:10:48 CET 2001 - pmladek@suse.cz
+
+- fixed for new position of slib library
+- SuSEconfig.guile uses check_md5_and_move now
+- removed unused package scheme from neededforbuild
+
+-------------------------------------------------------------------
+Tue Nov  6 16:59:46 CET 2001 - pmladek@suse.cz
+
+- fixed to compile with automake 1.5:
+	* OMIT_DEPENDENCIES are not supported now
+
+-------------------------------------------------------------------
+Sat Sep 15 20:22:56 CEST 2001 - schwab@suse.de
+
+- Fix libtool configuration.
+- Remove ia64 cpp workaround.
+- Fix hash functions for 64-bit architectures.
+
+-------------------------------------------------------------------
+Fri Aug 31 11:10:43 CEST 2001 - pmladek@suse.cz
+
+- fixed creating of SLIB catalog (#8997):
+	- moved from triggerin to SuSEconfig because
+	  there were problems with update when rpm was
+	  updated after guile
+
+-------------------------------------------------------------------
+Mon Aug 27 13:07:39 CEST 2001 - pmladek@suse.cz
+
+- fixed to compile on axp:
+	* fixed file numbering in qt/md/axp.s
+	* fixed end of block qt_vstart in qt/md/axp.s
+
+-------------------------------------------------------------------
+Fri Aug 10 15:21:06 CEST 2001 - ro@suse.de
+
+- fixed to build with current autoconf and libtool 
+
+-------------------------------------------------------------------
+Thu Jun 14 14:51:56 CEST 2001 - pmladek@suse.cz
+
+- fixed to more correctly compile with new autoconf
+
+-------------------------------------------------------------------
+Mon Jun 11 11:43:03 CEST 2001 - pmladek@suse.cz
+
+- fixed to compile with new autoconf
+
+-------------------------------------------------------------------
+Sat May 12 15:10:36 CEST 2001 - schwab@suse.de
+
+- Fix readline interface.
+
+-------------------------------------------------------------------
+Fri Feb 23 00:10:25 CET 2001 - ro@suse.de
+
+- added readline/readline-devel to neededforbuild (split from bash)
+
+-------------------------------------------------------------------
+Wed Dec  6 13:56:38 CET 2000 - schwab@suse.de
+
+- guile-doc-snarf: work around problem with cpp on ia64.
+- Build with -O0 on ia64.
+
+-------------------------------------------------------------------
+Thu Nov 23 12:57:03 CET 2000 - cihlar@suse.cz
+
+- fixed to compile on older distros
+
+-------------------------------------------------------------------
+Sun Nov 12 23:12:06 CET 2000 - ro@suse.de
+
+- don't redeclare inet_aton 
+
+-------------------------------------------------------------------
+Wed Nov  8 10:13:10 CET 2000 - ro@suse.de
+
+- changed %post to %triggerin -- scheme 
+
+-------------------------------------------------------------------
+Tue Nov  7 15:06:12 CET 2000 - cihlar@suse.cz
+
+- added postinstall and link to /usr/lib/scheme/slib
+
+-------------------------------------------------------------------
+Fri Nov  3 07:33:15 CET 2000 - cihlar@suse.cz
+
+- bzipped sources
+- clean up spec file
+
+-------------------------------------------------------------------
+Mon Oct 23 12:14:36 CEST 2000 - ro@suse.de
+
+- use macro for infodir 
+
+-------------------------------------------------------------------
+Wed Aug  2 07:26:15 CEST 2000 - cihlar@suse.cz
+
+- update to version 1.4
+
+-------------------------------------------------------------------
+Fri Apr  7 23:09:29 CEST 2000 - bk@suse.de
+
+- And no QuickThreads yet on s390 too ;-)
+
+-------------------------------------------------------------------
+Thu Apr  6 18:27:36 CEST 2000 - schwab@suse.de
+
+- No QuickThreads yet on ia64.
+
+-------------------------------------------------------------------
+Mon Mar  6 20:43:40 CET 2000 - schwab@suse.de
+
+- Update config.{guess,sub} from automake.
+
+-------------------------------------------------------------------
+Sun Feb  6 16:12:51 CET 2000 - ke@suse.de
+
+- Add group tag.
+- /configure -> %build.
+- use /usr/share/info.
+
+-------------------------------------------------------------------
+Sun Oct  3 12:49:46 CEST 1999 - ke@suse.de
+
+- update: 1.3.4.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Sep  7 16:55:04 CEST 1999 - uli@suse.de
+
+- no QuickThreads on PPC, disabled them
+
+-------------------------------------------------------------------
+Wed Aug 25 17:26:13 CEST 1999 - ro@suse.de
+
+- fixed configuration for alpha-Quickthreads again
+
+-------------------------------------------------------------------
+Wed Aug 25 14:35:11 MEST 1999 - ke@suse.de
+
+- update: 1.3.2.
+
+-------------------------------------------------------------------
+Wed Mar 17 18:30:44 MET 1999 - ro@suse.de
+
+- fixed patch-call
+
+-------------------------------------------------------------------
+Wed Feb 10 11:57:17 MET 1999 - ke@suse.de
+
+- apply guile-slow-read-fix.patch (by Harvey J. Stein
+  <hjstein@bfr.co.il>).
+- fix lib perms.
+	
+-------------------------------------------------------------------
+Fri Feb  5 16:09:48 MET 1999 - ro@suse.de
+
+- changed config to detect alpha(ev56)  as alpha
+
+-------------------------------------------------------------------
+Wed Oct 21 14:03:40 MEST 1998 - ke@suse.de
+
+- update: version 1.3.
+- build libqthreads.
+
+-------------------------------------------------------------------
+Wed Sep 23 14:21:20 MEST 1998 - ke@suse.de
+
+- update: snapshot 1998-09-23 (1.3a).
+
+-------------------------------------------------------------------
+Sun Aug 23 17:36:58 MEST 1998 - ke@suse.de
+
+- update: snapshot 1998-08-23 (1.3a).
+
+-------------------------------------------------------------------
+Fri Nov 21 12:59:53 MET 1997 - bs@suse.de
+
+- don't call ldconfig in spec file
+
+-------------------------------------------------------------------
+Tue Jul 15 09:31:32 1997 - Karl Eichwalder  <ke@suse.de>
+
+	* initial package: version 1.2.
+
+

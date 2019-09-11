@@ -1,0 +1,367 @@
+-------------------------------------------------------------------
+Thu Apr 17 11:42:03 CEST 2008 - cthiel@suse.de
+
+- include default /etc/yum/pluginconf.d/versionlock.list (empty)
+
+
+-------------------------------------------------------------------
+Thu Apr 17 10:41:10 CEST 2008 - cthiel@suse.de
+
+- require python-dateutil in yum-changelog
+
+-------------------------------------------------------------------
+Tue Mar 25 10:13:33 CET 2008 - cthiel@suse.de
+
+- update to version 1.1.13
+  * various bug fixes
+  * documentation improvements
+- created more subpackages: yum-aliases, yum-filter-data, yum-list-data,
+  yum-refresh-updatesd, yum-tmprepo, yum-upgrade-helper, yum-verify,
+  yum-updateonboot
+
+-------------------------------------------------------------------
+Tue Feb 19 16:43:00 CET 2008 - cthiel@suse.de
+
+- drop yum-skip-broken
+
+-------------------------------------------------------------------
+Thu Jan 31 14:23:04 CET 2008 - cthiel@suse.de
+
+- update to version 1.1.11
+  * plugins/tmprepo/tmprepo.conf, plugins/tmprepo/tmprepo.py, yum-utils.spec:
+    Add --tmprepo as a plugin
+  * plugins/aliases/aliases.py: New help info. for aliases
+  * plugins/security/security.py: Add support for the new help
+  * plugins/list-data/list-data.py: Add support for the new help
+  * plugins/list-data/list-data.py: Fix bad import
+  * plugins/priorities/priorities.py: Make yum-priorities not eat CPU just by
+    installing it
+  * plugins/list-data/list-data.py: Use .committer property in HEAD
+  * debuginfo-install.py, repoclosure.py, repodiff.py, repomanage.py,
+    repotrack.py, yum-complete-transaction.py: add better usage explanations
+    to a lot of yum-utils. helps to give people an idea what the tool is
+    used for.
+  * plugins/list-data/list-data.conf, plugins/list-data/list-data.py,
+    yum-utils.spec: List vendors, groups, packagers, buildhosts, licenses,
+    arches, buildhosts, baseurls, package-sizes, archive-sizes,
+    installed-sizes, committers
+  * docs/package-cleanup.1: Reorder option docs to be sorted
+  * docs/package-cleanup.1: Remove duplicate doc
+  * repodiff.py: make sure this only operates on src rpms b/c otherwise bad
+    things happen
+  * repodiff.py: add -q, --new and --old options to repodiff. Correct some
+    logic issues in the diffing, fix up the output to a pipe
+  * yumdownloader.py: Remove hack for *-source repos.
+  * yumdownloader.py:  Real fix for the __len__ problem. Don't disableRepo()
+    and then enable it, this even do the disable last ... oops.
+  * Makefile, repodiff.py, yum-utils.spec: add repodiff
+  * plugins/aliases/aliases.py: Workaround for bad yum module users
+  * plugins/security/security.py: Remove extra newlines, __str__ already
+    leads with one
+  * plugins/aliases/aliases: Remove empty lss alias and minor cleanup
+
+-------------------------------------------------------------------
+Tue Jan 22 20:38:06 CET 2008 - cthiel@suse.de
+
+- fix yum.conf location to /etc/yum in various places (#350914)
+
+-------------------------------------------------------------------
+Mon Jan  7 17:31:20 CET 2008 - cthiel@suse.de
+- update to version 1.1.10
+  * plugins/aliases/aliases.py: Quick work around for yumex
+  * debuginfo-install.py: make sure we're root to run debuginfo-install
+    closes rh bug #426470
+  * plugins/aliases/aliases, plugins/aliases/aliases.conf,
+    plugins/aliases/aliases.py: Add aliases module
+  * plugins/fastestmirror/fastestmirror.py: Strip any username:passwords
+    from our mirrors hostname before we display it
+  * plugins/fastestmirror/fastestmirror.py: Only display our mirrors if we
+    have some
+  * plugins/priorities/priorities.py: apply patch to fix rh bug: 421961 -
+    make sure we're passing in opts before we get the value of the opts.
+  * reposync.py: make sure that our repo url has a trailing /, otherwise
+    urljoin does the wrong thing. We should probably append this higher up
+    in the stack, too.  closes rh bug: 421801
+  * plugins/basearchonly/basearchonly.py: Move conduit.getPackages until
+    needed, as it takes significant time
+  * yum-complete-transaction.py: make yum-complete-transaction backward
+    compat to yum 3.2.7/3.2.8
+  * docs/Makefile: add complete-transaction to doc makefile, too
+  * yum-complete-transaction.py: implement yum-util to clean up
+    unfinished/aborted transactions using transaction-done/transaction-all
+    files.
+  * repoclosure.py: Fix unreferenced variable in repoclosure.py
+
+-------------------------------------------------------------------
+Wed Dec 12 17:10:29 CET 2007 - cthiel@suse.de
+
+- update to version 1.1.9
+  * package-cleanup.py: get rid of the confirmation to clean up old
+    dupes when there are no dupes to clean up. rh bug: 328711
+  * plugins/fastestmirror/fastestmirror.py: Support multiple mirror excludes
+    in fastestmirror
+  * plugins/fastestmirror/fastestmirror.py: Add an 'exclude' configuration
+    option to fastestmirror (Bug #407471)
+  * plugins/fastestmirror/fastestmirror.py: Add a maxthreads configuration
+    option to fastestmirror (Bug #227772)
+  * plugins/fastestmirror/fastestmirror.py: Actually display the fastest
+    mirrors
+  * plugins/fastestmirror/fastestmirror.py: Remove unused PluginYumExit
+    import
+  * package-cleanup.py: Added patch by Ville Skytta to make 'package-cleanup
+    --leaves' catch *lib and *libs
+  * yum-builddep.py: port yum-builddep to YumUtilBase format. Make it
+    actually, work :) closes rh bug #381291
+  * package-cleanup.py: clean up a deprecation
+  * plugins/basearchonly/basearchonly.conf,
+    plugins/basearchonly/basearchonly.py: 
+    - basearchobly patch by Adel Gadllah 
+    - Fix system-install-packages crash on F8 
+    - Add wildcard support to whitelist 
+    - Add all wine packages to the default
+    - whitelist on x86 (wine*)
+  * Makefile, plugins/priorities/ChangeLog,
+    plugins/priorities/priorities.py: Added optparser check in
+    priorities plugin (bz #847)
+  * plugins/priorities/ChangeLog, plugins/priorities/README,
+    plugins/priorities/priorities.py: Make the name.arch checking optional
+    in the priorities plugin. This adds the 'only_samearch' plugin option
+    and the '--samearch-priorities'
+  * plugins/basearchonly/basearchonly.conf: apply patch from Adel Gadllah to
+    add libflashsupport to basearchonly-plugin whitelist
+  * repoquery.py: apply patch from Bill Nottingham to make repoquery more
+    silent when --quiet is specified.
+  * plugins/upgrade-helper/cleanup.xml,
+    plugins/upgrade-helper/remove-stuff.xml: rename remove-stuff.xml to
+    cleanup.xml
+  * plugins/upgrade-helper/upgrade-helper.py: make it work with more recent
+    matchPackageNames
+  * yum-utils.spec: left out upgrade-helper from the list of plugins
+  * plugins/upgrade-helper/remove-stuff.xml,
+    plugins/upgrade-helper/upgrade-helper.conf,
+    plugins/upgrade-helper/upgrade-helper.py, yum-utils.spec: add
+    upgrade-helper - this _should_ work - but I'll be testing it some more
+    before tagging
+  * yumdownloader.py: catch error on download if destdir is not writable.
+    closed rh bug 352911
+
+-------------------------------------------------------------------
+Thu Oct 18 13:31:08 CEST 2007 - cthiel@suse.de
+
+- update to version 1.1.8
+  * reposync.py: add option to enable plugins for reposync
+  * repoquery.py: add --plugins support to repoquery, too
+  * package-cleanup.py: Added patch to make package-cleanup return exit code
+  * Fixed yumdownloader --url output to show the right url (rhbz #301981)
+  * various other fixes
+
+-------------------------------------------------------------------
+Fri Oct  5 23:06:12 CEST 2007 - cthiel@suse.de
+
+- New basearchonly plugin
+- New --repofrompath=repotag,<path/URL> option to specify local repos to
+  repoquery
+- Lot of bug fixes (Check ChangeLog for details)
+
+-------------------------------------------------------------------
+Thu Sep 13 22:37:14 CEST 2007 - cthiel@suse.de
+
+- added yum-utils-1.1.6-changelog.patch to fix a TypeError (#307208)
+
+-------------------------------------------------------------------
+Wed Aug 29 22:43:15 CEST 2007 - cthiel@suse.de
+
+- package yum plugins:
+  * yum-merge-conf
+  * yum-versionlock
+  * yum-allowdowngrade
+  * yum-priorities
+  * yum-fastestmirror
+  * yum-tsflags
+  * yum-protect-packages
+  * yum-downloadonly
+  * yum-protectbase
+  * yum-changelog
+  * yum-skip-broken
+
+-------------------------------------------------------------------
+Tue Aug  7 09:23:41 CEST 2007 - cthiel@suse.de
+
+- update to version 1.1.6
+ * Added protect-packages plugin
+ * Lot of bug fixes
+
+-------------------------------------------------------------------
+Mon May 21 13:29:30 CEST 2007 - cthiel@suse.de
+
+- update to version 1.1.4
+  * plugins/security/security.py: Added patch by James Antill: It seems that
+    on RHEL5 there are update metadata entries with references == None (in
+    my FC6 testing they were always == []).  This gives a traceback with the
+    current code.
+  * yumdownloader.py: removed crap from comment
+  * yumdownloader.py: make the '--source' work and make it a little smarter
+    so the 'reponame-source' are enabled automaticly for all enabled repos,
+    when '--source' is used.  (rhbz #239528)
+  * plugins/security/security.py: Added patch to security plugin by Luke
+    Macken
+
+-------------------------------------------------------------------
+Thu May  3 13:41:42 CEST 2007 - cthiel@suse.de
+
+- update to version 1.1.3
+  * New yum-security plugin by James Antill.
+  * New debuginfo-install util to install debuginfo packages
+
+-------------------------------------------------------------------
+Wed Feb 21 00:42:01 CET 2007 - cthiel@suse.de
+
+- actually upgrade to version 1.1.1
+  * fixed UnicodeEncodeError: 'ascii' codec can't encode character errors in
+    repo-rss
+
+-------------------------------------------------------------------
+Mon Feb 19 13:40:26 CET 2007 - cthiel@suse.de
+
+- update to version 1.1.1
+  * repo-rss.py, repoclosure.py, repoquery.py,
+    plugins/changelog/changelog.py: changed 'with=' to 'mdtype=' in
+    repos.populateSack calls, because of changes in the yum API in
+    YumPackageSack.populate method to avoid warnings about 'with' is a
+    reserved word in Python 2.6.
+  * yumdownloader.py: redesigned yumdownloader to use the new yum-utils base
+    class introduced in yum-3.1.1.  This version inherit all command line
+    options from the yum-cli and also command line option added by yum
+    plugins.
+
+-------------------------------------------------------------------
+Mon Feb 19 12:11:45 CET 2007 - cthiel@suse.de
+
+- update to version 1.1.0 (requires yum >= 3.1.0)
+  * repo-rss.py: Add a better formating for description, get rid of the body
+    tag for the xml generated by repo-rss.
+  * plugins/priorities/priorities.py: Make priorities plugin work with
+    multiarch repositories with different repositories.  (foo.i386 <>
+    foo.x86_64)
+  * repo-rss.py: Added patch to make repo-rss create one feed per group
+    found in comps.xml.
+  * plugins/downloadonly/downloadonly.py: Added '--downloaddir' option to
+    downloadonly plugin. the option make it posible to change the directory
+    where packages are downloaded.
+  * repoclosure.py: Added patch to sort repoclosure output
+  * yumdownloader.py: Fix traceback in yumdownloader using --resolve because
+    rpmdb was not initialized.
+  * yum-builddep.py: 
+    o resurrect builddep by package name 
+    o enable core type plugins (eg to allow for fastestmirror)
+  * repoquery.py: - fix a stupid typo breaking prco operations
+
+-------------------------------------------------------------------
+Mon Jan  8 22:20:17 CET 2007 - cthiel@suse.de
+
+- update to version 1.0.2
+  * plugins/skip-broken/skip-broken.py: Changed the CLI option to active the
+    skip-broken from '--ignore-broken' to '--skip-broken', because it make
+    more sense.
+  * repoquery.py: - fix deprecation warning
+  * docs/yumdownloader.1: close rh bug # 218100 - typo in yumdownloader man
+    page.
+  * plugins/versionlock/versionlock.py: fixed AttributeError:
+    YumAvailablePackageSqlite instance has no attribute 'returnNevra in
+    versionlock plugin yum bugzilla #667
+  * repoquery.py: - fix --cache and --show-dupes options
+  * package-cleanup.py: add in a 'clean old dupes' option to get rid of
+     version-wise-older dupes in the rpmdb
+  * yumdownloader.py: Fix problem with yumdownloader prints everything twice
+    because doConfigSetup was called twice.
+- removed old patch
+
+-------------------------------------------------------------------
+Sat Nov  4 01:43:45 CET 2006 - cthiel@suse.de
+
+- import patch from uptream to fix problem with yumdownloader prints
+  everything twice because doConfigSetup was called twice (#218088)
+
+-------------------------------------------------------------------
+Tue Oct 31 15:39:01 CET 2006 - cthiel@suse.de
+
+- update to version 1.0.1
+ * priorities plugin added.
+ * added a -c option to yumdownloader
+ * fix for handling of local repos in reposync, repotrack and yumdownloader
+
+-------------------------------------------------------------------
+Thu Oct  5 11:33:25 CEST 2006 - cthiel@suse.de
+
+- update to version 1.0
+  * no changes to latests cvs HEAD
+
+-------------------------------------------------------------------
+Sun Oct  1 11:43:58 CEST 2006 - cthiel@suse.de
+
+- updated yum-utils-HEAD.patch
+
+-------------------------------------------------------------------
+Tue Sep 26 14:38:58 CEST 2006 - cthiel@suse.de
+
+- updated yum-utils-HEAD.patch to latests cvs HEAD
+- removed versioned requires to python
+
+-------------------------------------------------------------------
+Mon Sep 25 10:02:21 CEST 2006 - cthiel@suse.de
+
+- consolidated yum-utils-*.patch into yum-utils-HEAD.patch and upgraded to
+  cvs HEAD again, to make yum-utils work with the latests yum API
+
+-------------------------------------------------------------------
+Sun Sep 17 15:49:39 CEST 2006 - cthiel@suse.de
+
+- added patches by Tim Lauridsen <tim@rasmil.dk> to make yum-utils work with
+  the latests yum API
+  * yum-utils-packagecleanup.patch 
+  * yum-utils-repoquery.patch
+  * yum-utils-repotrack.patch
+  * yum-utils-yumdownloader.patch (fixes #200511)
+
+-------------------------------------------------------------------
+Sat Aug  5 17:55:17 CEST 2006 - cthiel@suse.de
+
+- added patches from Fedora to make yum-utils work with new yum api
+  * yum-utils-0.6-fastestmirror-newapi.patch
+  * yum-utils-0.6-repoquery-newapi.patch
+
+-------------------------------------------------------------------
+Thu May 25 17:59:09 CEST 2006 - cthiel@suse.de
+
+- update to version 0.6
+  * yum 2.6.x-compatible release
+
+-------------------------------------------------------------------
+Wed Jan 25 21:50:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 29 00:16:36 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Sat Sep 17 11:26:23 CEST 2005 - cthiel@suse.de
+
+- update to version 0.3.1
+
+-------------------------------------------------------------------
+Wed Sep 14 20:52:30 CEST 2005 - cthiel@suse.de
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+Fri Aug 26 13:10:36 CEST 2005 - cthiel@suse.de
+
+- update to version 0.3 (requires yum 2.4.0)
+
+-------------------------------------------------------------------
+Sun Aug 14 02:45:14 CEST 2005 - cthiel@suse.de
+
+- initial package (version 0.2)

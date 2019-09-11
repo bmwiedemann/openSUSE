@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://code.alephobjects.com/diffusion/CTE/cura-engine.git</param>
+    <param name="scm">git</param>
+    <param name="revision">v3.6.18</param>
+    <param name="version">3.6.18</param>
+    <param name="submodules">disable</param>
+    <param name="filename">CuraEngine</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

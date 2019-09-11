@@ -1,0 +1,193 @@
+-------------------------------------------------------------------
+Mon Apr  8 12:36:24 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.2.0
+  - fix tox python3 overrides
+  - switch documentation job to new PTI
+  - Add metavar for alarm_id in alarm-history show
+  - Add gating on py37
+  - Update reno for stable/rocky
+  - Consider interface and region options with OSC
+  - fix warnings in documentation build
+  - add python 3.6 unit test job
+  - import zuul job settings from project-config
+  - Add Python 3.6 classifier to setup.cfg
+
+-------------------------------------------------------------------
+Fri Aug 31 16:23:21 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.1.0
+  - tests: stop using Ceilometer legacy resource types
+  - Cleanup setup.cfg
+  - Fixup README
+  - Remove log translations
+  - Fix Gnocchi tarball URL
+  - Update reno for stable/pike
+  - Fix doc builds
+  - remove threshold alarms
+  - Remove setting of version/release from releasenotes
+  - cleanup coveragerc
+  - cli: replace metrics by metric
+  - Update reno for stable/queens
+  - doc: remove mention of combination alarms
+  - Update documentation URLs
+  - Follow the new PTI for document build
+  - Set the Cliff namespace
+  - Fix gnocchi/pifpaf requirements
+  - Not able to set threshold value to ‘0’ in aodh alarm creation
+  - block sphinx 1.6.1
+  - Docs: switch to openstackdocstheme
+  - delete --debug in a shell command
+
+-------------------------------------------------------------------
+Fri Feb 23 11:58:21 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Tue Aug  1 04:46:35 UTC 2017 - cloud-devel@suse.de
+
+- update to version 0.9.0
+  - Remove unused test dependency
+  - Remove upper cap on pbr
+  - Clean deprecated "query" paremeter in alarm.list()
+  - Trivial-fix: make the capabilities help message more specific in OSC
+  - Correct the port number of gnocchi endpoint
+  - Trivial: remove support for py34
+  - Update reno for stable/ocata
+  - Remove the duplicated __version__ definition
+
+-------------------------------------------------------------------
+Wed Jun  7 09:44:58 UTC 2017 - dmueller@suse.com
+
+- fix requirements
+
+-------------------------------------------------------------------
+Tue Feb 21 10:05:48 UTC 2017 - cloud-devel@suse.de
+
+- update to version 0.8.0:
+  - Add plug-in summary for osc doc
+  - Update reno for stable/newton
+  - Modified the help info.
+  - [doc] Note lack of constraints is a choice
+  - Bump hacking to 0.12
+  - Add missing pyparsing to requirements.txt
+  - Enable coverage report in console output
+  - Enable release notes translation
+  - Replaces uuid.uuid4 with uuidutils.generate_uuid()
+  - Clean imports in code
+  - Remove 'MANIFEST.in'
+  - Extras usage for test requirements + basic auth against Gnocch
+
+-------------------------------------------------------------------
+Wed Sep 28 19:06:55 UTC 2016 - tbechtold@suse.com
+
+update to version 0.7.0
+  * Use osc-lib instead of openstackclient
+  * Add --query to alarm list
+  * add valid choice for alarm type help text
+  * add alarm history unit test
+  * fix help text for option --composite-rule
+  * fix KeyError when credential is invalid
+  * Fix incorrect string format mapping
+  * Add explanation for how to get meter name
+  * Add --filter to "alarm list"
+  * [Trivial] Remove executable privilege of doc/source/conf.py
+  * Remove Babel dependency
+  * Use overtest to run Gnocchi in tests
+  * Correct and add examples in docs of CLI
+  * Use assert_called_once_with() in test_alarm_cli.py
+  * Switch from deprecated tempest-lib to tempest
+  * Remove discover from test-requirements
+  * Split alarm query and alarm list in SDK layer.
+  * Add pagination support in Aodhclient
+  * Add name support for show, update and delete
+  * remove tempest test for alarm name unique constraint
+  * Prepare compatibility with OSC
+  * Fix a minor doc error
+  * Add releasenotes for Newton updates
+  * add default value for http_status in ClientException
+  * Remove keystonemiddleware dependency
+  * add mock to test requirement list
+  * Fix the wrong error info of parameter resource-type
+  * Add Python 3.5 classifier and venv
+  * Remove unused package requirement of "futurist"
+  * Support easier query usage for alarm history search
+  * Only install hacking in pep8
+  * Trival: Remove unused logging import
+  * Don't support "alarm search" and mandatory --type in "alarm list"
+  * improve threshold & event alarm query formatting
+  * shell: fix meter help string
+  * Add unit test to validate composite alarm args
+  * Enable releasenotes documentation
+  * Allow to start Aodh command with OSC
+  * Fix aodh client fails when command with the arg --time-constraint
+  * exceptions: make error code be implicit
+  * refactor code of adding alarm id and name arguments
+  * Add event_id for alarm-history display
+  * Bump hacking to 0.11
+  * format the output of time_constraints
+  * tox: remove useless install_command
+  * shell: treat alarm id as name if it is not uuid like
+  * Remove unused mailmap file
+  * Fix the -q/--query in threshold alarm creation
+  * Update the home-page with developer documentation
+  * Trival fix a typo
+  * Support get/set alarm state interfaces
+  * Clean flake8 paths and unused config options
+  * remove unnecessary slashes
+  * Use pifpaf to setup tests
+- update _service and switch to upstream spec
+
+-------------------------------------------------------------------
+Mon Mar 14 13:56:48 UTC 2016 -  cloud-devel@suse.de
+
+- Update to version aodhclient-0.3.1.dev13:
+  * Trival fix a typo
+  * Fix aodh client fails when command with the arg --time-constraint
+  * Fix the -q/--query in threshold alarm creation
+
+-------------------------------------------------------------------
+Wed Mar  9 02:27:52 UTC 2016 -  cloud-devel@suse.de
+
+- Update to version aodhclient-0.3.1.dev8:
+  * Use assert_called_once_with() in test_alarm_cli.py
+  * Fix the wrong error info of parameter resource-type
+
+-------------------------------------------------------------------
+Tue Mar  8 02:36:45 UTC 2016 -  cloud-devel@suse.de
+
+- Update to version aodhclient-0.3.1.dev4:
+  * Fix a minor doc error
+  * Remove unused package requirement of "futurist"
+
+-------------------------------------------------------------------
+Thu Mar  3 10:13:34 UTC 2016 -  cloud-devel@suse.de
+
+- Update to version aodhclient-0.3.1.dev1:
+  0.3.0
+  * Use cli.base.execute of tempest-lib
+  * Add composite rule alarm support in aodhclient
+  * Make the alarm list output more concise
+  0.2.0
+  * add alarm history unit test
+
+-------------------------------------------------------------------
+Fri Feb 26 00:49:57 UTC 2016 -  cloud-devel@suse.de
+
+- Update to version aodhclient-0.1.1.dev12:
+  * Skip the version 1.16.0 of cliff
+  * Remove unused method
+  * Add abbreviation of --meter-name hint in threshold alarm creation
+  * Return the error message of API request failure
+  * Add some unit test cases
+  * Add gnocchi alarm rules
+  * cleanup existing tests
+  * check the alarm type when list alarm
+  0.1.0
+
+-------------------------------------------------------------------
+Thu Jan 25 14:18:00 UTC 2016 - aplanas@suse.com
+
+- Initial package 
+

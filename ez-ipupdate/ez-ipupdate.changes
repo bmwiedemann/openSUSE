@@ -1,0 +1,139 @@
+-------------------------------------------------------------------
+Sat Dec 26 09:01:29 UTC 2015 - obs@botter.cc
+
+- fix location of configuration file in systemd service file
+  (boo#954439)
+- cosmetic change to rundir name (remove leading slash)
+
+-------------------------------------------------------------------
+Tue Nov 10 15:14:33 UTC 2015 - obs@botter.cc
+
+- Fix ez-ipupdate.service: the binary is being installed in
+  /usr/bin, not /usr/sbin (boo#954439).
+- Fix tmpfile handling for pid file location in _rundir.
+
+-------------------------------------------------------------------
+Wed Apr 22 12:52:17 UTC 2015 - mpluskal@suse.com
+
+- Update rcsymlink
+- Add missing %pre section
+- Correct unit file permissions
+- Cleanup spec-file using spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct 30 16:11:00 CET 2013 - pth@suse.de
+
+- Modify the creation of the service symlink.
+- Use %builroot instead of $RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Tue Oct 29 13:55:29 CET 2013 - pth@suse.de
+
+- Remove dist-xz from the options to AM_INIT_AUTOMAKE to make
+  it build on SLE.
+
+-------------------------------------------------------------------
+Sun Oct 27 17:57:26 UTC 2013 - p.drouand@gmail.com
+
+- Add systemd support for openSUSE >= 12.3
+
+-------------------------------------------------------------------
+Wed Apr 10 17:51:53 CEST 2013 - pth@suse.de
+
+- Add ez-ipupdate-joker_com.patch to add support for joker.com.
+  Don't install the file INSTALL as these are generic compile
+  instructions.
+- Get rid of acconfig.h and use the third argument of AC_DEFINE
+  and AC_DEFINE_UNQUTED plus AH_TEMPLATE to describe entries
+  in config.h (add to ez-ipupdate-auto_foo.patch).
+- Use AS_HELP_STRING to format help strings in configure.in.
+- Modernize the initialization in configure.ac.
+- Rename configure.in to configure.ac.
+- Added ez-ipupdate-code_cleanup.patch to reduce the number of
+  compiler warnings.
+
+-------------------------------------------------------------------
+Fri Dec  2 12:57:18 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Sep 30 06:05:03 CEST 2008 - crrodriguez@suse.de
+
+- fix init script handling
+- regenerate autofoo stuff,too old for current tools
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:47 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep 19 15:00:59 CEST 2005 - hvogel@suse.de
+
+- add dnsexit support [#116381]
+
+-------------------------------------------------------------------
+Wed Jul  6 11:00:14 CEST 2005 - hvogel@suse.de
+
+- fix implicit functions
+
+-------------------------------------------------------------------
+Tue Nov  2 18:21:27 CET 2004 - hvogel@suse.de
+
+- fix format string vulnerability (Bug #47857)
+
+-------------------------------------------------------------------
+Sat Feb 28 00:58:08 CET 2004 - ro@suse.de
+
+- fix requires for /usr/local/bin
+
+-------------------------------------------------------------------
+Sat Feb 28 00:49:57 CET 2004 - ro@suse.de
+
+- fix typo in specfile
+
+-------------------------------------------------------------------
+Tue Feb  3 17:34:05 CET 2004 - mmj@suse.de
+
+- #include <time.h> for localtime() prototype
+
+-------------------------------------------------------------------
+Thu Jan 29 13:00:16 CET 2004 - hvogel@suse.de
+
+- use bzip2 for the source package
+- use correct macros for bin/sbin/var
+
+-------------------------------------------------------------------
+Mon Nov 17 14:24:52 CET 2003 - hvogel@suse.de
+
+- patch /tmp out of the example config files. (#33161) 
+
+-------------------------------------------------------------------
+Thu Nov 13 15:12:49 CET 2003 - hvogel@suse.de
+
+- dont build as root
+
+-------------------------------------------------------------------
+Sun Aug 31 23:12:00 CEST 2003 - hvogel@suse.de
+
+- move the link to sbin.
+- mark the config file as config(noreplace) 
+
+-------------------------------------------------------------------
+Sun Aug 31 16:28:06 CEST 2003 - hvogel@suse.de
+
+- forgot to package rcez-ipupdate link 
+
+-------------------------------------------------------------------
+Mon Jun 16 16:13:21 CEST 2003 - hvogel@suse.de
+
+- Initial Package, Version 3.0.11b8
+

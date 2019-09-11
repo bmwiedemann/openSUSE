@@ -1,0 +1,28 @@
+diff --git a/exports/Makefile b/exports/Makefile
+index b1348bd4..642618ce 100644
+--- a/exports/Makefile
++++ b/exports/Makefile
+@@ -151,6 +151,7 @@ else
+ 
+ ifneq ($(C_COMPILER), LSB)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o ../$(LIBSONAME) \
++	-Wl,-z,noexecstack \
+ 	-Wl,--whole-archive $< -Wl,--no-whole-archive \
+ 	-Wl,-soname,$(INTERNALNAME) $(EXTRALIB)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -w -o linktest linktest.c ../$(LIBSONAME) $(FEXTRALIB) && echo OK.
+@@ -179,6 +180,7 @@ else
+ ../$(LIBSONAME) : ../$(LIBNAME).renamed linktest.c
+ endif
+ 	$(CC) $(CFLAGS) $(LDFLAGS)  -shared -o ../$(LIBSONAME) \
++	-Wl,-z,noexecstack \
+ 	-Wl,--whole-archive $< -Wl,--no-whole-archive \
+ 	$(FEXTRALIB) $(EXTRALIB)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -w -o linktest linktest.c ../$(LIBSONAME) $(FEXTRALIB) && echo OK.
+@@ -198,6 +200,7 @@ ifeq ($(OSNAME), SunOS)
+ 
+ so : ../$(LIBSONAME)
+ 	$(CC) $(CFLAGS) $(LDFLAGS)  -shared -o ../$(LIBSONAME) \
++	-Wl,-z,noexecstack \
+ 	-Wl,--whole-archive ../$(LIBNAME) -Wl,--no-whole-archive $(EXTRALIB)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -w -o linktest linktest.c ../$(LIBSONAME) $(FEXTRALIB) && echo OK.
+ 	rm -f linktest

@@ -1,0 +1,835 @@
+-------------------------------------------------------------------
+Sun May 26 08:55:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.2:
+  + Improve connectivity handling.
+  + Misc. bug fixes and cleanups.
+
+-------------------------------------------------------------------
+Wed Apr 17 15:34:37 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Handle notifications for private chats if GNOME's chat
+    integration is not available.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 20 13:32:45 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add typelib(Gspell) Requires: the dep scanner does not detect
+  this dependency due to the way the code is written/formatted
+  (boo#1122687).
+
+-------------------------------------------------------------------
+Tue Mar 12 06:34:30 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 05:34:35 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Misc. bug fixes and cleanup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 22 06:44:33 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Fix logs when running telepathy-logger sandboxed.
+  + Misc. bug fixes and cleanups.
+
+-------------------------------------------------------------------
+Tue Feb 19 22:38:51 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Update app icon.
+  + Turn "Run in Background" into a regular setting.
+  + Remove app menu.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 29 11:02:23 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.2:
+  + Fix regression with predefined networks.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Oct  6 18:28:35 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Improve network connectivity handling when running sandboxed.
+  + Support non-UTF8 charsets in predefined networks.
+  + Misc. bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 27 03:31:48 UTC 2018 - bjorn.lie@gmail.com
+
+- Add optional mozjs60 BuildRequires: Ensure we build full mozjs
+  support.
+
+-------------------------------------------------------------------
+Fri Sep  7 18:06:14 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Updated translations.
+- Remove lang package from recommended packages as it already
+  supplements main package.
+
+-------------------------------------------------------------------
+Sat Sep  1 04:02:38 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.92:
+  + Improve highlighting for nicks with dashes/underscores
+    (glgo#GNOME/polari#69).
+  + Misc. bug fixes: glgo#GNOME/polari!64, glgo#GNOME/polari!65,
+    glgo#GNOME/polari#38.
+  + Updated translations.
+- Changes from version 3.29.91:
+  + Misc. bug fixes and cleanups: glgo#GNOME/polari#64.
+  + Hook up gjs' new debugger console via command line.
+  + Fix debug information logged to journal.
+  + Switch to GTK+'s built-in emoji picker.
+- Drop intltool BuildRequires to follow upstream migration to
+  Gettext.
+
+-------------------------------------------------------------------
+Tue Jul 24 12:26:59 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.4:
+  + Add Rizon to list of predefined networks.
+  + Remove app menu.
+  + Misc. bug fixes: glgo#GNOME/polari!48, glgo#GNOME/polari#53.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 19 16:05:10 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1:
+  + Add Rizon to list of predefined networks.
+  + Misc. bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 13 03:33:26 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.28.0:
+  + Include Ozinger in list of predefined networks.
+  + Updated translations.
+- Drop gspell-1, libsecret-1 and libsoup-2.4 pkgconfig modules
+  BuildRequires: they are no longer requirements.
+
+-------------------------------------------------------------------
+Mon Mar  5 19:09:24 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Misc. bugs fixes.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:38:31 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Feb 22 16:25:30 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.91:
+  + Fix interactive elements in chat log on touch screens
+    (bgo#784547).
+  + Defer loading room lists when connection is metered.
+  + Ensure feedback for the "reconnect" action.
+  + Add "Disconnect" item to the network context popover.
+  + Allow running a test instance alongside the regular one.
+  + Misc. bug fixes: glgo#GNOME/polari#32.
+- Changes from version 3.27.2:
+  + Clarify title of message notifications (bgo#786709).
+  + Fix overlapping scrollbar in user list (bgo#728756)/
+  + Improve performance of server room list in join dialog.
+  + Add empty placeholder to networks list (bgo#762892).
+  + Add explanatory tooltips to buttons (bgo#787154).
+  + Show indicator when joining a room takes some time
+    (bgo#775239).
+  + Misc. bug fixes and cleanups: glgo#GNOME/polari#11,
+    glgo#GNOME/polari#14, glgo#GNOME/polari#27.
+  + Updated translations.
+- Drop _service handling, since upstream is back in release mode.
+
+-------------------------------------------------------------------
+Sun Feb 11 21:02:21 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.2+20171214.26fe43c:
+  + pasteManager: Remove excess arguments.
+  + flatpak: Remove left-over file.
+  + appNotification: Fix account removal on quit.
+  + Updated translations.
+- Switch to git checkout via source service.
+- Drop update-desktop-files BuildRequires and stop passing the
+  suse_update_desktop_file macro.
+- Minor spec clean, use autosetup macro.
+
+-------------------------------------------------------------------
+Tue Oct 31 23:56:44 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.2:
+  + Improve room list performance in join dialog.
+  + Updated translations.
+- Drop %glib2_gsettings_schema_*, %desktop_database_* and
+  %icon_theme_cache_* post/postun/requires macros: functionality
+  now covered by file triggers.
+
+-------------------------------------------------------------------
+Wed Oct  4 21:44:23 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  2 22:05:47 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Mon Sep 25 15:13:05 UTC 2017 - bear454@opensuse.org
+
+- Add telepathy-idle and telepathy-logger Requires: missing
+  mandatory run-time dependencies.
+
+-------------------------------------------------------------------
+Tue Sep 12 20:07:56 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  6 23:10:46 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 14 12:32:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.90:
+  + Change to nominal nick when it becomes available (bgo#710731).
+  + Revamp initial setup (bgo#772458).
+  + Add an Emoji picker to the chat entry (bgo#755579).
+  + Misc. bug fixes: bgo#774212.
+  + Updated translations.
+- Tiny bit of spec-cleanup.
+
+-------------------------------------------------------------------
+Sat Jul 22 09:39:02 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.4:
+  + Support NickServ bots that don't handle nick in identify
+    command (bgo#772915).
+  + Improve handling of temporarily unavailble networks
+    (bgo#784047).
+  + Fix double-toggling of room checkboxes (bgo#782969).
+  + Misc. bug fixes (bgo#783747).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 21 03:25:01 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.1:
+  + Share a spell checker to only load dictionaries once
+    (bgo#780762).
+  + Override paste.gnome.org's default expiry (bgo#780888).
+  + Indicate in private conversation when contact disconnects 
+    (bgo#712635).
+  + Trim trailing underscores from nick on startup (bgo#781161).
+  + Add --version CLI option (bgo#780272).
+  + Drop autotools support (bgo#781687).
+  + Misc. bug fixes: bgo#780113, bgo#781072, bgo#781159,
+    bgo#780273, bgo#781686.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+
+-------------------------------------------------------------------
+Wed Jul 19 06:55:14 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.2:
+  + Support NickServ bots that don't handle nick in identify
+    command (bgo#772915).
+  + Improve handling of temporarily unavailble networks
+    (bgo#784047).
+  + Fix double-toggling of room checkboxes (bgo#782969).
+  + Misc. bug fixes (bgo#781686).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 24 16:58:32 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.1:
+  + Share a spell checker to only load dictionaries once
+    (bgo#780762).
+  + Override paste.gnome.org's default expiry (bgo#780888).
+  + Indicate in private conversation when contact disconnects
+    (bgo#712635).
+  + Trim trailing underscores from nick on startup (bgo#781161).
+  + Misc. bug fixes: bgo#780113, bgo#781072, bgo#781159.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 12 19:23:40 UTC 2017 - antoine.belvire@opensuse.org
+
+- Add telepathy-mission-control as runtime requirement (Polari
+  fails to connect to channels without it).
+
+-------------------------------------------------------------------
+Mon Mar 20 20:25:06 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Add user documentation (bgo#722498).
+  + Misc. bug fixes: bgo#780166, bgo#779946, bgo#780298.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 17:52:28 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.92:
+  + Support the meson build system (bgo#779599).
+  + Implement room list filtering (bgo#779960).
+  + Misc. bug fixes and cleanups: bgo#779906, bgo#779921,
+    bgo#779940.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  6 10:17:08 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.91:
+  + Bundle required Telepathy services in flatpak (bgo#777705).
+  + Support auth bots that use "login" instead of "identify"
+    (bgo#778841).
+  + Misc. bug fixes: bgo#778793, bgo#778797, bgo#778850,
+    bgo#779449, bgo#771888.
+  + Updated translations.
+- Drop polari-fast-forward-to-9d0fcf3.patch: No longer needed.
+
+-------------------------------------------------------------------
+Mon Feb 20 12:54:45 UTC 2017 - dimstar@opensuse.org
+
+- Add polari-fast-forward-to-9d0fcf3.patch: Move to git HEAD of
+  today, which fixes a lot of issues in combination with gjs
+  1.47.90 (issues that rendered polari unusable).
+
+-------------------------------------------------------------------
+Thu Feb 16 08:24:46 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to version 3.23.90:
+  + Add spell check support to entry (bgo#709956).
+  + Add room list to join dialog (bgo#763200).
+- Add pkgconfig(gspell-1) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Wed Nov 23 20:23:58 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.23.2:
+  + Allow to run polari in the background (bgo#770750).
+  + Misc. bug fixes: bgo#774283.
+  + Updated translations.
+- Drop polari-allow-run-in-background.patch, libtool BuildRequires
+  and stop passing autoreconf, fixed upstream.
+
+-------------------------------------------------------------------
+Wed Nov 23 20:22:58 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.23.1:
+  + Mask identify passwords in private chats (bgo#771888).
+  + Add a contextual popover to nicks in chat log (bgo#760853).
+  + Misc. bug fixes: bgo#771557, bgo#770749, bgo#773293.
+- Add pkgconfig(gjs-1.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Wed Nov 23 20:21:58 UTC 2016 - zaitor@opensuse.org
+
+- Add polari-allow-run-in-background.patch: Allow app to run in
+  background (bgo#770750).
+- Following the above add libtool BuildRequires and pass autoreconf
+  as patch touches buildsystem.
+
+-------------------------------------------------------------------
+Fri Nov 11 02:25:36 UTC 2016 - firebird209@gmail.com
+
+- Update to version 3.22.2:
+  + Fix glitch when opening user list.
+  + Fix launching through mission control.
+  + Updated translations.
+- Drop polari-run-as-background-service.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Oct 19 17:13:19 UTC 2016 - dimstar@opensuse.org
+
+- Add polari-run-as-background-service.patch: Fix launching through
+  mission-control (bgo#770749, boo#1001553). When other Telepathy
+  clients (e.g. Empathy) query dbus for potential channel handlers
+  polari failed to startup and reply. This resulted in Empathy
+  waiting for the timeout before opening any chat window.
+
+-------------------------------------------------------------------
+Mon Oct 10 15:56:22 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Line-wrap app notifications (bgo#721763).
+  + Use structured logging (bgo#771218).
+  + Fix URL linkification under flatpak (bgo#772655).
+  + Misc. bug fixes: bgo#771217, bgo#772068, bgo#771888,
+    bgo#771728.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 23:34:01 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 13 18:53:02 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Improve connectivity handling (bgo#770751).
+  + Misc. bug fixes: bgo#768611.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 30 08:44:48 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Add "Connect" item to room list header menu (bgo#769192).
+  + Fix connection issues with predefined networks (bgo#766935).
+  + Only switch channels immediately after a user action
+    (bgo#769584).
+  + Fix launching through persistent notifications (bgo#769592).
+  + Support externally configured channels (aka autojoin)
+    (bgo#751575).
+  + Support NickServ passwords (bgo#709982).
+  + Misc. bug fixes and cleanups: bgo#769280, bgo#769339,
+    bgo#769355, bgo#769582, bgo#769583, bgo#769655, bgo#769656.
+  + Updated translations.
+- Add pkgconfig(libsecret-1), pkgconfig(pango),
+  pkgconfig(pangocairo), pkgconfig(libsoup-2.4) and
+  pkgconfig(telepathy-logger-0.2) BuildRequires: New explicit
+  dependencies.
+
+-------------------------------------------------------------------
+Fri Aug 19 21:56:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.4:
+  + Improve text styling in chat log (bgo#768381).
+  + Fix auto-scrolling to bottom (bgo#765129).
+  + Restore highlights in messages loaded from logs (bgo#768613).
+  + Fix rooms in sidebar not updating their read/unread style
+    (bgo#768909).
+  + Improve handling of initial pending messages (bgo#768907).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 19 21:56:57 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.3:
+  + Add shortcuts to jump to top/bottom of the chat log
+    (bgo##755549).
+  + Track users to fix wrong online status in chat log
+    (bgo#763868).
+  + Updated translations.
+- Add polari-rpmlintrc: Filter out rpmlintwarning about gir devel
+  file. The only consumer of this gir file is polari itself, and
+  does not warrent spliting out a devel pacakage. Also filter out
+  desktopfile-without-binary warning, polari is a dbus activated 
+  application, no binary is expected.
+
+-------------------------------------------------------------------
+Fri Aug 19 21:56:56 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.2:
+  + Support /close command (bgo#763385).
+  + Support pasting text/image content from files (bgo#766066).
+  + Enable text/image uploads via drag and drop (bgo#766068).
+  + Add help entry to app menu (bgo#723024).
+  + Misc. bug fixes: bgo#765445, bgo#765841.
+  + Updated translations.
+- Add yelp-tools BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Fri Aug 19 21:56:55 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.1:
+  + Update roomList header popover on name changes (bgo#763178).
+  + Prioritize popular networks (bgo#762733).
+
+-------------------------------------------------------------------
+Fri Aug 19 21:56:54 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.3:
+  + Fix auto-scrolling to bottom (bgo#765129).
+  + Fix rooms in sidebar not updating their read/unread style
+    (bgo#768909).
+  + Fix connection issues with predefined networks (bgo#766935).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 12 13:33:51 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Support pasting text/image content from files (bgo#766066).
+  + Enable text/image uploads via drag and drop (bgo#766068).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 29 17:43:59 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Update roomList header popover on name changes (bgo#763178).
+  + Prioritize popular networks (bgo#762733).
+  + Fall back to alternative servers on connection failures
+    (bgo#762335).
+  + Misc. bug fixes (bgo#765124).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 23 08:32:17 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Misc. bug fixes: bgo#763872, bgo#763873.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 17 08:53:15 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + Misc. bug fixes and cleanups: bgo#763385, bgo#763623.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  3 01:57:12 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + With no networks, open join-dialog on networks page
+    (bgo#762488).
+  + Handle irc:// URIs (bgo#728593).
+  + Linkify channel names (bgo#762673).
+  + Remember the last selected room (bgo#759812).
+  + Misc. bug fixes: bgo#762374, bgo#762390, bgo#762424,
+    bgo#762590, bgo#762481, bgo#762490.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 19 18:31:09 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.90:
+  + Replace ellipsis with expander arrows in status summaries
+    (bgo#759120).
+  + Strip color codes from topics (bgo#747415).
+  + Offer users to enter server password on authentication failures
+    (bgo#709824).
+  + Add support for pasting images to public image service
+    (bgo#760346).
+  + Connection Properties: Only make "Apply" sensitive when there
+    are changes (bgo#762015).
+  + Provide tab-completion for implemented IRC commands
+    (bgo#761304).
+  + Make "Reconnect" action work when already connected
+    (bgo#761276).
+  + Add shortcuts to switch to rooms with unread messages
+    (bgo#761290).
+  + Allow to set up new connections from predefined networks
+    (bgo#761859).
+  + Add TLS setting where we cannot turn it on automatically
+    (bgo#730892).
+  + Overhaul paste confirmation to allow entering text around links
+    (bgo#760315).
+  + Misc. bug fixes: bgo#760497, bgo#760842, bgo#762015,
+    bgo#761723, bgo#761859).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 29 23:14:12 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.4:
+  + Use popover to change nickname (bgo#760872).
+  + Implement /msg command (bgo#724592).
+  + Implement connection management in room list (bgo#761057).
+  + Allow to undo connection removal (bgo#761281).
+  + Remove Connections dialog (bgo#709984).
+  + Misc. bug fixes: bgo#760653, bgo#761269, bgo#761288.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 23 20:47:36 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.19.3:
+  + Compress status messages on idle channels (bgo#711542).
+  + Also load history when scrolling via keyboard (bgo#755547).
+  + Misc. bug fixes: bgo#759772, bgo#759677, bgo#759032.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 27 13:24:44 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.2:
+  + Linkify all supported URI schemes (bgo#755563).
+  + Misc. bug fixes: bgo#756323, bgo#757493, bgo#758476.
+
+-------------------------------------------------------------------
+Sun Nov 22 14:35:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.1:
+  + Allow users to edit message after /command errors (bgo#756363).
+  + Add help overlay for keyboard shortcuts (bgo#756981).
+  + Indicate no matches when filtering userList (bgo#756831).
+  + Highlight room rows while showing the context popover
+    (bgo#756325).
+  + Misc. bug fixes (bgo#755970, bgo#755158, bgo#756761,
+    bgo#756848, bgo#756702).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 14 07:53:54 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Don't highlight nickname matches inside words (bgo#755166).
+  + Base nick highlighting and online status on "basenick"
+    (bgo#755133).
+  + Suggest default values for new connections (bgo#709980).
+  + Improve handling of channel names with capital letters
+    (bgo#755722).
+  + Fix ellipsization in user list (bgo#755477).
+  + Use paste.gnome.org as paste service (bgo#726053).
+  + Default to account of the currently active room in dialogs
+    (bgo#755771).
+  + Fix room list ordering on account name changes (bgo#756319).
+  + Highlight room list header on hover if sensitive (bgo#755158).
+  + Misc. bug fixes (bgo#753420, bgo#756359).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 06:28:21 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 17:55:19 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Misc fixes: bgo#754916.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 08:21:32 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.91:
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 20 15:12:49 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Clear pending messages indication while offline (bgo#753050).
+  + Indicate account errors in room list.
+  + Re-enable updated paste service integration (bgo#725088).
+  + Misc. bug fixes and cleanups (bgo#753335).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug  6 10:52:30 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + Add empty state to assist with initial setup (bgo#711832).
+  + Fix observing channels from other handlers (bgo#752422).
+  + Update new-message indicator to clarify its purpose
+    (bgo#751542).
+  + Misc. bug fixes: bgo#733327, bgo#752968, bgo#750689.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 17 16:36:44 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.3:
+  + Color contact availability in private chats (bgo#748703).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May  2 20:10:03 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.1:
+  + Improve readability of room list in backdrop state
+    (bgo#711854).
+  + Distinguish offline nick names in chat log (bgo#710792).
+  + Misc. bug fixes and cleanups (bgo#747942).
+- Drop polari-chatView-switch-away-from-deprecated-API.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sat May  2 11:52:52 UTC 2015 - zaitor@opensuse.org
+
+- Add polari-chatView-switch-away-from-deprecated-API.patch: No
+  longer use deprecated API, patch from upstream git, stable
+  branch (bgo#747942).
+
+-------------------------------------------------------------------
+Wed Apr 15 22:07:16 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Fixes messages not getting acknowledged due to confused
+    toplevel state (bgo#746508).
+  + Highlight matches in user list search (bgo#745743).
+  + Make line indicator dependent on line spacing (bgo#738671).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 20:33:54 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 18 08:50:43 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Follow best practices for window state saving (bgo#745717).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  5 11:39:02 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Register telepathy service to enable use as default channel
+    handler (bgo#745418, bgo#745499).
+  + Misc. bug fixes: bgo#745203, bgo#743988.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 24 10:30:01 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Add high-contrast application icon (bgo#735670).
+  + Fix picking up hyperlink color from theme (bgo#743944).
+  + Drop selection mode (bgo#736481).
+  + Improve a11y support (bgo#743384).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Dec 19 15:33:38 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.3:
+  + Suppress overshoot indicator when loading backlog (bgo#740132).
+  + Fix some corner-cases in type-ahead (bgo#741756).
+
+-------------------------------------------------------------------
+Wed Dec 17 22:47:13 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.2:
+  + Limit height of userlist popover (bgo#738518).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Dec  7 13:32:56 UTC 2014 - p.drouand@gmail.com
+
+- Add gjs Requires: polari requires gjs-console binary at
+  runtime.
+
+-------------------------------------------------------------------
+Wed Oct 15 06:25:06 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Improve performance (bgo#732290).
+  + Reset join time to prevent status message flood (bgo#736349).
+  + Keep previously fetched user details around (bgo#737136).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 10:33:18 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 17 10:01:18 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.92:
+  + Provide some xchat-gnome compatibility shortcuts (bgo#710053).
+  + Adjust to GTK+/Adwaita changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 20 10:54:55 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Fix in-app notifications (bgo#730964).
+  + Fix timestamp formatting (bgo#732611).
+  + Add context menu to URLs (bgo#712163).
+  + Restore saved channels when an account is reconnected
+    (bgo#732905).
+  + Remember last selected account in join/message dialogs
+    (bgo#711833).
+  + Adjust to GTK+/Adwaita changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 12 19:51:47 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.2:
+  + Subclass TpBaseClient instead of using two simple clients
+    (bgo#723440).
+  + Move dialog controls into the header (bgo#730776.
+  + Always show notifications for highlights in other channels.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 15:05:59 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Increase default size of connections dialog (bgo#728643).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 16 06:43:09 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Misc. fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 26 19:25:18 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Stop ellipsizing nick.
+  + Do not open multiple dialogs if already opened (bgo#715076).
+  + Standardize Help/About/Quit app menu items (bgo#720151).
+  + Keep chat log around when offline or disconnected (bgo#710271).
+  + Fix headerbar item positions after GTK+ changes (bgo#721736).
+  + Allow to set up new connections from join dialog (bgo#711833).
+  + Don't highlight messages in private chats (bgo#725065).
+  + Add 256x256 application icon (bgo#723429).
+  + Show number of channel members in headerbar (bgo#710705).
+  + Add keyboard shortcuts for directly switching to a room
+    (bgo#709983).
+  + Show real name as subtitle for private chats (bgo#710819).
+  + Respect time format settings for timestamps (bgo#712626).
+  + Move user list into a popover (bgo#727039).
+  + Bugs fixed: bgo#723432, bgo#722532, bgo#712217, bgo#721703,
+    bgo#724902, bgo#722728, bgo#725064, bgo#715025, bgo#719526,
+    bgo#720706, bgo#725403, bgo#725688, bgo#721889.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 27 15:06:03 UTC 2013 - cfarrell@suse.com
+
+- License update: GPL-2.0+ and LGPL-2.1+
+  No indication of GPL-2.0 only license. Also, appears that
+  LGPL-2.1+ component is built.
+
+-------------------------------------------------------------------
+Thu Nov 14 11:23:20 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 3.11.2.
+

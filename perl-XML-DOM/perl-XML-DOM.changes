@@ -1,0 +1,177 @@
+-------------------------------------------------------------------
+Fri Aug 21 07:36:37 UTC 2015 - cfarrell@suse.com
+
+- license update: Artistic-1.0 or GPL-1.0+
+  CHECK(...) not valid
+
+-------------------------------------------------------------------
+Wed Aug 19 09:51:00 UTC 2015 - coolo@suse.com
+
+- updated to 1.45
+   see /usr/share/doc/packages/perl-XML-DOM/Changes
+
+  1.45 (tjmather) 08/16/2015
+  - Fix pod errors and a typo ( Florian Schlichting )
+  - properly encode output for printToFile ( Martin Ferrari, Gregor Herrmann )
+
+-------------------------------------------------------------------
+Fri Nov 18 11:10:44 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:36:09 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Jul 27 09:08:05 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fix deps
+- noarch
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Thu Jan 15 13:30:38 CET 2009 - anicka@suse.cz
+
+- do not ignore test results (bnc#465994) 
+
+-------------------------------------------------------------------
+Thu Feb  9 16:20:55 CET 2006 - anicka@suse.cz
+
+- require perl-libwww-perl (#149416) 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:02 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug  1 13:32:10 CEST 2005 - mjancar@suse.cz
+
+- update to 1.44
+
+-------------------------------------------------------------------
+Tue Mar  1 12:34:53 CET 2005 - mjancar@suse.cz
+
+- require perl-XML-RegExp
+
+-------------------------------------------------------------------
+Mon Aug 16 12:03:40 CEST 2004 - ro@suse.de
+
+- ignore testsuite output for the moment
+  to build dependant packages
+
+-------------------------------------------------------------------
+Thu Feb 26 17:35:56 CET 2004 - mjancar@suse.cz
+
+- update to 1.43
+
+-------------------------------------------------------------------
+Sat Jan 10 22:32:47 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Jul 18 12:26:36 CEST 2003 - poeml@suse.de
+
+- use install_vendor and new %perl_process_packlist macro
+
+-------------------------------------------------------------------
+Mon Jun 16 18:04:31 CEST 2003 - mjancar@suse.cz
+
+- fix filelist
+
+-------------------------------------------------------------------
+Mon May 19 11:35:51 CEST 2003 - ro@suse.de
+
+- remove perllocal.pod 
+
+-------------------------------------------------------------------
+Fri Dec 27 20:28:30 CET 2002 - prehak@suse.cz
+
+- updated to version 1.42
+- reenabled make test except fot one test
+
+-------------------------------------------------------------------
+Wed Jul 31 16:21:48 MEST 2002 - mls@suse.de
+
+- disable 'make test' for now as unicode stuff seems to be
+  incompatible with perl-5.8.0. Waiting for new release...
+
+-------------------------------------------------------------------
+Tue Jul 23 14:17:34 CEST 2002 - prehak@suse.cz
+
+- update to version 1.39
+- enabled make test
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Tue Jan 15 12:52:18 CET 2002 - rvasice@suse.cz
+
+- update to version 1.36
+
+-------------------------------------------------------------------
+Thu Aug 16 14:27:10 CEST 2001 - rvasice@suse.cz
+
+- update to 1.31
+
+-------------------------------------------------------------------
+Fri Nov 10 13:14:58 CET 2000 - cihlar@suse.cz
+
+- renamed p_xmldom -> perl-XML-DOM
+- bzipped sources
+- fixed file list
+
+-------------------------------------------------------------------
+Mon Aug 21 16:43:14 CEST 2000 - ro@suse.de
+
+- adapted for perl-5.6 
+
+-------------------------------------------------------------------
+Thu Apr 20 16:02:00 CEST 2000 - cihlar@suse.cz
+
+- added BuildRoot 
+
+-------------------------------------------------------------------
+Fri Jan 21 14:57:06 CET 2000 - ro@suse.de
+
+- fixed filelist: use macro for mandir 
+
+-------------------------------------------------------------------
+Tue Jan 18 16:56:13 CET 2000 - ke@suse.de
+
+- Fix %files list.
+
+-------------------------------------------------------------------
+Mon Jan 10 16:51:35 CET 2000 - ke@suse.de
+
+- Update: version 1.25.
+- Use %{version} instead %{ver} (predefined).
+
+-------------------------------------------------------------------
+Mon Jan 10 12:19:03 CET 2000 - ke@suse.de
+
+- Add missing DOM.pm to the %files list (#1630).
+- Use version macro.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Aug  4 18:12:55 MEST 1999 - ke@suse.de
+
+- New package: version 1.23.
+
+

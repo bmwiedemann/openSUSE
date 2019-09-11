@@ -1,0 +1,18 @@
+Index: gambas3-2.99.3/app/mime/application-x-gambasscript.xml
+===================================================================
+--- gambas3-2.99.3.orig/app/mime/application-x-gambasscript.xml
++++ gambas3-2.99.3/app/mime/application-x-gambasscript.xml
+@@ -5,10 +5,11 @@
+ 		<sub-class-of type="text/plain"/>
+ 		<comment>Gambas script</comment>
+ 		<comment xml:lang="fr">Script Gambas</comment>
++		<comment xml:lang="de">Gambas Script</comment>
+ 
+ 		<magic priority="50">
+ 			<match value="#!/usr/bin/env gbs3" type="string" offset="0"/>
+ 		</magic>
+ 		<glob pattern="*.g"/>
+ 	</mime-type>
+-</mime-info>
+\ No newline at end of file
++</mime-info>

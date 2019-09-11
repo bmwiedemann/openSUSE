@@ -1,0 +1,183 @@
+-------------------------------------------------------------------
+Mon Jun 17 15:04:25 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- update to 0.88
+   see /usr/share/doc/packages/perl-Text-BibTeX/Changes
+
+  0.88 2019-04-29
+   * Make namebug.c compile with non std99 compiler.
+  0.87 2019-04-06
+   * Fix 0.86 release
+  0.86 2019-03-31
+   * Install btparse.h header file (Alberto Simões)
+   * Fix compilation issues with some compilers (Tobias Schlemmer)
+   * Fix some crashes and malfunctinos in bt_format_name and bt_split_name (Tobias Schlemmer)
+   * Issue warnings for unmatched braces (Tobias Schlemmer)
+- Updated URL to MetaCPAN
+- Added missing btparse.h to the devel package
+- Updated spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Apr 13 05:20:31 UTC 2018 - werner@suse.de
+
+- updated to 0.85
+   see /usr/share/doc/packages/perl-Text-BibTeX/Changes
+
+  0.85 2017-08-31
+   * FreeBSD includes a definition of strlcat, so no need to redefine it.
+
+  0.84 2017-08-31
+   * Further buffer overflow fixes.
+   * Spellchecking fixes by Julián Moreno Patiño, Lucas Kanashiro, and 
+     Gregor Herrmann (debian community)
+
+  0.83 2017-08-28
+   * Remove unecessary depedency to YAML.
+   * Fix further buffer overflow situations.
+
+  0.82 2017-08-27
+   * Fix buffer overflow (thanks to Hamid Ebadi).
+   * Hide error messages on tests, and use them for testing purposes.
+
+  0.81 2017-07-19
+   * Fix issue with NameFormat and unitialized join-tokens.
+     (thanks to Karl Wette for the bug report).
+
+-------------------------------------------------------------------
+Wed May 31 07:32:43 UTC 2017 - werner@suse.de
+
+- Remove patches now upstream
+  * Text-BibTeX-rpmlint.patch
+  * perl-Text-BibTeX-uninit.patch
+- Add file cpanspec.yml
+- Make if build
+- Add patch manual-pages-for-libbtparse.patch to get API manual
+  pages for libbtparse into third section as well
+- Split package for libbtparse.so off from main package
+
+-------------------------------------------------------------------
+Thu May 25 09:15:08 UTC 2017 - coolo@suse.com
+
+- updated to 0.80
+   see /usr/share/doc/packages/perl-Text-BibTeX/Changes
+
+  0.80 2017-03-25
+   * Fix tests in order to work without dot in @INC (thanks Kent Fredric for the bug report)
+  
+  0.79 2017-03-13
+   * Further fixes to allow the parse of multiple files (Karl Wette).
+  
+  0.78 2017-01-10
+   * Fixed some issues with uninitialized arrays and s390
+   * Fixed test with fileno (thanks to Karl Wette).
+   * Allow state of btparse parser to be reset, for parsing multiple files (Karl Wette):
+     - bt_parse_entry(): reset parser state if infile == NULL
+     - BibTeX.xs: add _reset_parse(), _reset_parse_s() methods to Text::BibTeX::Entry
+     - Text::BibTeX::Entry: allow new() or parse() with undefined filehandle; calls _reset_parse()
+     - Text::BibTeX::Entry: allow new() or parse_s() with undefined text; calls _reset_parse_s()
+     - Text::BibTeX::File: close() calls Text::BibTeX::Entry->new($filename, undef) to reset parser
+  
+  0.77 2016-09-20
+   * Fixes for testing and installing on Darwin (install_name issues).
+     Thanks to Nuno "smash" Carvalho for the report and debug help.
+  
+  0.76 2016-07-06
+   * Added 'reset_macros' option to Text::BibTeX::File, in order
+     to remove all defined macros (except months)
+  
+  0.76_02 2016-07-05
+   * Fix issue with binmode not being copied in Clone method.
+   * Make month abbreviations available always, and not only when
+     using Text::BibTeX::Bib.
+   * Added docs to supported options for Text::BibTeX::Entry.
+  
+  0.76_01 2016-07-04
+   * Solved nasty bug when using lvalues as parameters (substr).
+   * Added tests.
+  
+  0.75 2016-07-03
+   * Stable version with bytes/utf-8 support.
+  
+  0.75_05 2016-07-02
+   * Get 5.8.x back aboard;
+  
+  0.75_04 2016-07-01
+   * Fixed reference to empty function name;
+  
+  0.75_03 2016-06-30
+   * Rename split_list to isplit_list, and creaed split_list wrapper;
+   * Added normalization option;
+  
+  0.75_02 2016-06-25
+   * Minor fix for some perl version parsing problems.
+  
+  0.75_01 2016-06-24
+   * Added binmode option. Should allow unicode handling directly.
+  
+  0.74 2016-06-15
+   * Get perl 5.8.x back.
+  
+  0.73 2016-06-14
+   * Change some documentation in order to use ->new method, instead
+     of older 'new Class()' approach;
+   * Add sensible default values to Text::BibTeX::NameFormat to reduce
+     the amount of segmentation faults for users forgetting arguments.
+
+-------------------------------------------------------------------
+Tue May 31 11:15:03 UTC 2016 - pjanouch@suse.de
+
+- updated to 0.72
+   see /usr/share/doc/packages/perl-Text-BibTeX/Changes
+
+  0.72 2016-04-19
+    * Added clone() method to Text::BibTeX::Entry
+  
+  0.71 2015-05-28
+   * Fix segmentation fault when btparse fails parsing a long
+     entry. Thanks to Dale Evans.
+   * Stop using UNIVERSAL (5.21.3 requirement).
+     Thanks to Jitka Plesnikova
+
+- removed perl-Text-BibTeX-libdir.patch since it's been upstreamed
+
+-------------------------------------------------------------------
+Fri Sep 19 12:15:49 UTC 2014 - coolo@suse.com
+
+- updated to 0.70
+  * Added metadata for metacpan
+
+-------------------------------------------------------------------
+Fri Jun 20 14:55:33 UTC 2014 - schwab@linux-m68k.org
+
+- perl-Text-BibTeX-uninit.patch: Fix use of unitialized memory
+- update to 0.69
+  * Replacement for islower() which understands all Unicode 6.2.0
+    chars with "LOWERCASE" property
+  * Fixes for UTF-8 handling of combining marks 
+
+-------------------------------------------------------------------
+Sun Mar  3 10:07:12 UTC 2013 - schwab@suse.de
+
+- Add aarch64 to the list of lib64 platforms
+
+-------------------------------------------------------------------
+Mon Dec 10 01:22:40 CET 2012 - ro@suse.de
+
+- fix libdir for s390x as well 
+- update to 0.66
+  * Fix a segmentation fault with strcat and no string limit
+  * Patch to support @ and ~ in names
+  * Patch to expand macro size limit
+
+-------------------------------------------------------------------
+Fri May 25 14:52:59 UTC 2012 - dvaleev@suse.com
+
+- fix ppc64 libdir 
+
+-------------------------------------------------------------------
+Mon May 21 10:57:49 UTC 2012 - werner@suse.de
+
+- Make perl-Text-BibTeX from devel:languages:perl:CPAN-T build for
+  Factory that is make it build and survive rpmlint
+- Do not forget the libbtparse.so as this is required
+

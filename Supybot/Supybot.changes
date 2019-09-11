@@ -1,0 +1,208 @@
+-------------------------------------------------------------------
+Sun Jun  9 12:40:41 UTC 2019 - Christian Boltz <suse-beta@cboltz.de>
+
+- require python-twisted instead of only recommending it (needed for
+  starting Supybot)
+
+-------------------------------------------------------------------
+Wed Mar 20 08:35:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- %service_* asks for adding systemd-rpm-macros and then
+  %systemd_ordering.
+- Update URL.
+
+-------------------------------------------------------------------
+Tue Mar 19 15:58:38 UTC 2019 - josef.moellers@suse.com
+
+- Added systemd support
+  [bsc#11116039, Supybot.service]
+
+-------------------------------------------------------------------
+Thu Nov 23 13:38:00 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Mon Mar 18 12:37:38 UTC 2013 - coolo@suse.com
+
+- add changes entry for the license change
+
+-------------------------------------------------------------------
+Sat Sep 17 10:26:02 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Wed Jun 16 12:28:55 UTC 2010 - mrueckert@suse.de
+
+- make it build on sle11:
+  - define the new python path variables when they are not defined
+  - only build noarch on distros that support it
+
+-------------------------------------------------------------------
+Wed Jan 20 10:30:50 UTC 2010 - lars@linux-schulserver.de
+
+- added Supybot-0.83.4.1-popen_deprecated.patch to avoid 
+  deprecation warnings (Thanks to Martin Lillepuu)
+- small specfile cleanup
+- build as noarch
+
+-------------------------------------------------------------------
+Sun Dec 20 16:31:15 UTC 2009 - coolo@novell.com
+
+- remove support for outdated distros
+
+-------------------------------------------------------------------
+Sun Aug  9 12:03:34 CEST 2009 - coolo@novell.com
+
+- use new python macros
+
+-------------------------------------------------------------------
+Tue May 26 10:21:54 CEST 2009 - lrupp@suse.de
+
+- update to 0.83.4.1:
+  + Simple bug-fix release for a couple changes that were introduced 
+    last minute before the previous release.
+- add Recommends: python-twisted python-sqlite2
+
+-------------------------------------------------------------------
+Tue May 19 12:54:10 CEST 2009 - lrupp@suse.de
+
+- update to 0.83.4:
+  + This release contains fixes for Python2.6 compability as well 
+    as a re-written Google plugin which uses the AJAX API.  
+    The re-written plugin gained a translate command and no longer 
+    needs an API key.
+  + ChannelLogger has a new config variable, supybot.plugins.ChannelLogger.enable,
+    which can be used on a per-channel basis to determine whether 
+    that channel is logged.
+  + The RSS announce command has been restructured into the commands 
+    "announce list", "announce remove", and "announce add" in order 
+    to simplify the command's use.
+  + The supybot.directories.plugins config variable now determines 
+    its global directory dynamically instead of adding the directory 
+    to the value.  
+    This means values like '/usr/lib/python2.5/site-packages/supybot/plugins' 
+    can be removed from the variable.  This should help ease 
+    transitioning a Supybot config from one Python release to another.
+  + Incompatibilities:
+  ++ supybot.plugins.Google.safeSearch has been renamed to
+     supybot.plugins.Google.searchFilter
+  ++ supybot.plugins.Channel.banmask has been removed in favor of 
+     a new supybot.protocols.irc.banmask config variable. This 
+     general config variable is used by the various commands which 
+     would need to know what style of banmask to use.
+- removed Supybot-0.83.3.diff
+
+-------------------------------------------------------------------
+Mon Nov  3 15:18:12 CET 2008 - schwab@suse.de
+
+- Remove use of deprecated modules.
+
+-------------------------------------------------------------------
+Thu Jul 24 16:05:24 CEST 2008 - lrupp@suse.de
+
+- fix typo in init script
+
+-------------------------------------------------------------------
+Fri May  9 16:18:47 CEST 2008 - lrupp@suse.de
+
+- added Supybot.init and Supybot.sysconfig script to
+  start and stop Supybot automatically during runlevel changes
+
+-------------------------------------------------------------------
+Wed Oct 24 13:12:09 CEST 2007 - schwab@suse.de
+
+- Update to Supybot 0.83.3.
+  * Added the BadWords plugin from supybot-plugins and updated the
+  plugin to allow kicking of people who use defined BadWords.
+  * Added support for different log levels on stdout vs the log file.
+  * Fixed a bug where the bot always reacted to invalid command floods
+  even if supybot.abuse.flood.command.invalid indicated not to.
+  (Closes: #1716878)
+  * Fixed a bug where the RSS plugin would lower-case URLs, thus making
+  them impossible to retrieve.  (Closes: #1666786)
+  * Fixed ircmsgs.prettyPrint to handle unrecognized commands.
+  (Closes: #1630963)
+  * Fixed a bug in the Services plugin where the bot would continuously
+  send Ghost commands.
+  * Fixed Google.calc to handle a change in Google's HTML.
+  * Fixed a bug where Plugin.list was listing functions which weren't
+  valid commands.
+  * Fixed RSS's handling of encodings to eliminate some ascii conversion
+  errors.
+  * Updated the rssparser using plugins with the renamed and newer
+  feedparser 4.1 in order to properly handle Bugzilla RSS feeds.
+  * Updated PLUGIN_TUTORIAL to specify that the user needs to import
+  Python's random module.
+  * Updated the Web plugin so it uses HTMLParser over sgmllib's parser
+  since sgmllib's enters an infinite loop on invalid input.
+  * Updated getHelp() so callers can pass in the help string.  This is
+  used in the Factoids plugin to dynamically generate a help string
+  based on a config value.
+  * Updated questions.py so bolding is handled better.  User input,
+  default values, and defined choices are no longer bolded.
+  * Updated String.len to use wrap().  This greatly simplifies the
+  command and introduces better argument handling.
+  * Updated a few uses of sre to use re if the bot is running under
+  Python 2.5.
+  * Fixed test cases for mircColor and sorted (thanks dcraven).
+  * Updated assertAction's error message to give useful information
+  about what went wrong.
+
+-------------------------------------------------------------------
+Mon Jul 24 11:00:13 CEST 2006 - schwab@suse.de
+
+- Update to Supybot 0.83.2 (bug fixes).
+
+-------------------------------------------------------------------
+Fri Jul  7 23:56:01 CEST 2006 - schwab@suse.de
+
+- Allow floating point values in Weather plugin.
+
+-------------------------------------------------------------------
+Tue Feb 28 16:46:04 CET 2006 - jmatejek@suse.cz
+
+- updated to reflect python changes due to #149809
+
+-------------------------------------------------------------------
+Mon Feb  6 12:38:48 CET 2006 - schwab@suse.de
+
+- Fix parsing in Weather plugin.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:59 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Dec 10 01:46:39 CET 2005 - schwab@suse.de
+
+- Update to Supybot 0.83.1.
+
+-------------------------------------------------------------------
+Fri Aug 12 11:11:50 CEST 2005 - schwab@suse.de
+
+- Remove noarch.
+
+-------------------------------------------------------------------
+Tue Jun 21 17:14:49 CEST 2005 - schwab@suse.de
+
+- More fixes for weather parsing.
+
+-------------------------------------------------------------------
+Fri May 27 23:19:32 CEST 2005 - schwab@suse.de
+
+- Fix parsing in Weather plugin.
+
+-------------------------------------------------------------------
+Tue May 24 15:59:50 CEST 2005 - schwab@suse.de
+
+- Fix "config help" message.
+
+-------------------------------------------------------------------
+Mon May 23 17:50:27 CEST 2005 - schwab@suse.de
+
+- Initial version 0.80.1
+

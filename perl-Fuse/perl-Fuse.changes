@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Sun Aug 28 21:22:35 UTC 2011 - vova@cpan.org
+
+- update to 0.14 and 0.13:
+  * restored non-threaded perl support
+  * Compatibility fixes for Perl 5.8 and Perl 5.13/5.14 with threads
+  * Cleanups to build system, to use pkg-config
+
+-------------------------------------------------------------------
+Sun May 22 22:42:27 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.12:
+  * really fix 2+ Gb file bug, RT#32639, RT#33903
+  * addition of file handles on open files, RT#57517
+  * 64 bit perl support
+  * make static callbacks thread-safe
+  * readdir implementation RT#55953
+  * mount option -o big_writes, and added:
+    opendir, releasedir, fsyncdir, init, destroy, access, create, ftruncate,
+    fgetattr, lock, utimens, bmap
+
+-------------------------------------------------------------------
+Mon Nov 29 18:00:21 UTC 2010 - coolo@novell.com
+
+- called spec2changelog
+
+-------------------------------------------------------------------
+Fri Apr 23 00:00:00 UTC 2010 - vova@cpan.org
+
+- initial package created by cpanspec -m
+

@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Fri May 10 13:28:40 UTC 2019 - psimons@suse.com
+
+- Update th-lift to version 0.8.0.1.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Tue Apr 30 09:23:03 UTC 2019 - psimons@suse.com
+
+- Update th-lift to version 0.8.
+  Upstream has renamed and modified the change log file(s) in this
+  release. Unfortunately, the automatic updater cannot reliable
+  determine relevant entries for this release.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:32:06 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Thu Aug 30 15:29:22 UTC 2018 - psimons@suse.com
+
+- Update th-lift to version 0.7.11.
+  Upstream has not updated the file "Changelog" since the last
+  release.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:44 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:31:25 UTC 2018 - psimons@suse.com
+
+- Update th-lift to version 0.7.10.
+  Upstream has not updated the file "Changelog" since the last
+  release.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update th-lift to version 0.7.8.
+  Upstream does not provide a changelog.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Mon Apr 24 12:26:43 UTC 2017 - psimons@suse.com
+
+- Update to version 0.7.7 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:20:49 UTC 2016 - psimons@suse.com
+
+- Update to version 0.7.6 revision 0 with cabal2obs.

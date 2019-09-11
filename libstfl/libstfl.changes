@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Tue Feb 20 13:31:43 UTC 2018 - jengelh@inai.de
+
+- Rename %soname to %sover to better reflect its use.
+- Fix RPM groups. Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Sun Feb 18 06:53:38 UTC 2018 - avindra@opensuse.org
+
+- update to 0.24
+  * increased table MAX_ROWS and MAX_COLS
+  * Added "process" variable
+  * Added stfl_redraw API
+  * Added example2
+  * Fixed updating of "pos_name" in list widget
+  * Added stfl_text() function
+  * removed unimplemented stfl_lookup() function
+  * Fixed compiler warning in wt_list.c
+  * cosmetic changes in parser.c
+- cleanup spec file with spec-cleaner
+- rebase stfl-optflags.patch
+  * version number removed from context for better reusability
+
+-------------------------------------------------------------------
+Wed May 13 15:01:26 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.23
+  * no upstream changelog provided
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Mar  2 13:27:51 UTC 2012 - cfarrell@suse.com
+
+- license update: LGPL-3.0+
+  No indication of LGPL-3.0 (only) files. See README also
+
+-------------------------------------------------------------------
+Tue Jan 31 10:33:30 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+
+-------------------------------------------------------------------
+Thu Jun 24 22:47:49 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.21
+
+- changed spec file as libstfl now also ships a shared library
+
+-------------------------------------------------------------------
+Thu Dec 10 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.20
+
+
+-------------------------------------------------------------------
+Thu Aug 21 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new package
+
+

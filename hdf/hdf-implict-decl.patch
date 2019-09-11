@@ -1,0 +1,86 @@
+Index: hdf-4.2.9/hdf/test/buffer.c
+===================================================================
+--- hdf-4.2.9.orig/hdf/test/buffer.c
++++ hdf-4.2.9/hdf/test/buffer.c
+@@ -51,6 +51,7 @@ static char RcsId[] = "@(#)$Revision: 58
+ #define TESTMASTER
+ 
+ #include <sys/time.h>
++#include <time.h>
+ #include "hdf.h"
+ #include "tutils.h"
+ #include "hfile.h"
+Index: hdf-4.2.9/hdf/util/he_file.c
+===================================================================
+--- hdf-4.2.9.orig/hdf/util/he_file.c
++++ hdf-4.2.9/hdf/util/he_file.c
+@@ -21,7 +21,7 @@ static char RcsId[] = "@(#)$Revision: 49
+ #include "he.h"
+ 
+ /* get the prototype for the wait() func. */
+-#if defined SUN | defined HP9000 | defined IRIX | defined UNIX386
++#if defined SUN | defined HP9000 | defined IRIX | defined UNIX386 | defined _POSIX_SOURCE
+ #include <sys/wait.h>
+ #endif /* SUN | HP9000 */
+ #if defined _POSIX_SOURCE | defined IRIX
+Index: hdf-4.2.9/mfhdf/hdiff/hdiff_main.c
+===================================================================
+--- hdf-4.2.9.orig/mfhdf/hdiff/hdiff_main.c
++++ hdf-4.2.9/mfhdf/hdiff/hdiff_main.c
+@@ -17,6 +17,7 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ #include "hdf.h"
+ #include "hfile.h"
+ #include "mfhdf.h"
+Index: hdf-4.2.9/mfhdf/libsrc/file.c
+===================================================================
+--- hdf-4.2.9.orig/mfhdf/libsrc/file.c
++++ hdf-4.2.9/mfhdf/libsrc/file.c
+@@ -22,6 +22,7 @@
+ 
+ #include	<string.h>
+ #include	<errno.h>
++#include	<unistd.h>
+ #include	"local_nc.h"
+ #include	"alloc.h"
+ #include	"herr.h"
+Index: hdf-4.2.9/mfhdf/ncdump/ncdump.c
+===================================================================
+--- hdf-4.2.9.orig/mfhdf/ncdump/ncdump.c
++++ hdf-4.2.9/mfhdf/ncdump/ncdump.c
+@@ -9,6 +9,7 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ #include "local_nc.h"
+ 
+ #include "ncdump.h"
+Index: hdf-4.2.9/mfhdf/ncgen/main.c
+===================================================================
+--- hdf-4.2.9.orig/mfhdf/ncgen/main.c
++++ hdf-4.2.9/mfhdf/ncgen/main.c
+@@ -7,6 +7,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ 
+ #ifdef __hpux
+ #include <locale.h>
+Index: hdf-4.2.9/mfhdf/test/tsd.c
+===================================================================
+--- hdf-4.2.9.orig/mfhdf/test/tsd.c
++++ hdf-4.2.9/mfhdf/test/tsd.c
+@@ -19,6 +19,8 @@
+ 
+ #ifdef HDF
+ 
++#include <unistd.h>
++
+ #include "hdftest.h"
+ #include "hfile.h"
+ 

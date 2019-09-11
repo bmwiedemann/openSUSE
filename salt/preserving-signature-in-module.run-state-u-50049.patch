@@ -1,0 +1,89 @@
+From 318b4e0cd2efb02f26392bfe2d354a3ff5d21cbc Mon Sep 17 00:00:00 2001
+From: Bo Maryniuk <bo@suse.de>
+Date: Mon, 15 Oct 2018 17:26:16 +0200
+Subject: [PATCH] Preserving signature in "module.run" state (U#50049)
+
+Add unit test for _call_function on signature aligning named arguments
+
+Add unit test for _call_function routine for unnamed positional arguments
+
+Remove redundant docstrings
+
+Add different test function signature with the same outcome
+
+Replace standalone function with lambda-proxy for signatures only
+---
+ salt/states/module.py            |  7 +++++--
+ tests/unit/states/test_module.py | 27 +++++++++++++++++++++++++++
+ 2 files changed, 32 insertions(+), 2 deletions(-)
+
+diff --git a/salt/states/module.py b/salt/states/module.py
+index 2190ffa3d2..90b1d0a5f5 100644
+--- a/salt/states/module.py
++++ b/salt/states/module.py
+@@ -323,7 +323,7 @@ def _call_function(name, returner=None, **kwargs):
+ 
+     # func_args is initialized to a list of positional arguments that the function to be run accepts
+     func_args = argspec.args[:len(argspec.args or []) - len(argspec.defaults or [])]
+-    arg_type, na_type, kw_type = [], {}, False
++    arg_type, kw_to_arg_type, na_type, kw_type = [], {}, {}, False
+     for funcset in reversed(kwargs.get('func_args') or []):
+         if not isinstance(funcset, dict):
+             # We are just receiving a list of args to the function to be run, so just append
+@@ -334,13 +334,16 @@ def _call_function(name, returner=None, **kwargs):
+                 # We are going to pass in a keyword argument. The trick here is to make certain
+                 # that if we find that in the *args* list that we pass it there and not as a kwarg
+                 if kwarg_key in func_args:
+-                    arg_type.append(funcset[kwarg_key])
++                    kw_to_arg_type[kwarg_key] = funcset[kwarg_key]
+                     continue
+                 else:
+                     # Otherwise, we're good and just go ahead and pass the keyword/value pair into
+                     # the kwargs list to be run.
+                     func_kw.update(funcset)
+     arg_type.reverse()
++    for arg in func_args:
++        if arg in kw_to_arg_type:
++            arg_type.append(kw_to_arg_type[arg])
+     _exp_prm = len(argspec.args or []) - len(argspec.defaults or [])
+     _passed_prm = len(arg_type)
+     missing = []
+diff --git a/tests/unit/states/test_module.py b/tests/unit/states/test_module.py
+index bf4ddcc5b4..25082d4bb4 100644
+--- a/tests/unit/states/test_module.py
++++ b/tests/unit/states/test_module.py
+@@ -324,3 +324,30 @@ class ModuleStateTest(TestCase, LoaderModuleMockMixin):
+             self.assertIn(comment, ret['comment'])
+             self.assertIn('world', ret['comment'])
+             self.assertIn('hello', ret['comment'])
++
++    def test_call_function_named_args(self):
++        '''
++        Test _call_function routine when params are named. Their position ordering should not matter.
++
++        :return:
++        '''
++        with patch.dict(module.__salt__,
++                        {'testfunc': lambda a, b, c, *args, **kwargs: (a, b, c, args, kwargs)}, clear=True):
++            assert module._call_function('testfunc', func_args=[{'a': 1}, {'b': 2}, {'c': 3}]) == (1, 2, 3, (), {})
++            assert module._call_function('testfunc', func_args=[{'c': 3}, {'a': 1}, {'b': 2}]) == (1, 2, 3, (), {})
++
++        with patch.dict(module.__salt__,
++                        {'testfunc': lambda c, a, b, *args, **kwargs: (a, b, c, args, kwargs)}, clear=True):
++            assert module._call_function('testfunc', func_args=[{'a': 1}, {'b': 2}, {'c': 3}]) == (1, 2, 3, (), {})
++            assert module._call_function('testfunc', func_args=[{'c': 3}, {'a': 1}, {'b': 2}]) == (1, 2, 3, (), {})
++
++    def test_call_function_ordered_args(self):
++        '''
++        Test _call_function routine when params are not named. Their position should matter.
++
++        :return:
++        '''
++        with patch.dict(module.__salt__,
++                        {'testfunc': lambda a, b, c, *args, **kwargs: (a, b, c, args, kwargs)}, clear=True):
++            assert module._call_function('testfunc', func_args=[1, 2, 3]) == (1, 2, 3, (), {})
++            assert module._call_function('testfunc', func_args=[3, 1, 2]) == (3, 1, 2, (), {})
+-- 
+2.19.0
+
+

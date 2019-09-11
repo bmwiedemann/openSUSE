@@ -1,0 +1,13 @@
+--- src/Imakefile
++++ src/Imakefile
+@@ -196,9 +196,7 @@
+ 		gunzip  <../doc/rasmol.1.gz > ../doc/rasmol.1
+ 		
+ $(CBFLIBDIR):
+-		(cd $(CBFLIB_TARBALLDIR);\
+-		  wget $(CBFLIB_TARBALL_URL);\
+-		  gunzip < $(CBFLIB_TARBALL) | tar xvf -)
++		(cd $(CBFLIB_TARBALLDIR);)
+ 		  
+ $(CBFLIBDIR)/lib/libcbf.a: $(CBFLIBDIR)
+ 		(cd $(CBFLIBDIR); make lib/libcbf.a)

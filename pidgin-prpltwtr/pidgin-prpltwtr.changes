@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Wed Dec  7 16:36:52 UTC 2016 - sor.alexei@meowr.ru
+
+- Replace the pidgin-prpltwtr package with
+  libpurple-plugin-prpltwtr and pidgin-plugin-prpltwtr.
+- Separate locales to libpurple-plugin-prpltwtr-lang.
+- Add pidgin-prpltwtr-avoid-sover.patch: avoid sover for
+  libprpltwtr.so.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Tue Mar  3 19:21:09 UTC 2015 - tbehrens@suse.com
+
+- Add patch comments, remove unversioned .so from package. 
+
+-------------------------------------------------------------------
+Sat Feb 21 21:21:49 UTC 2015 - tbehrens@suse.com
+
+- Add 0001-Fix-html-entities-showing-up-in-tweets.patch:
+  Fix problem with html entities showing up literally in tweets
+- Add 0002-Tweak-config-defaults-to-prevent-rate-limits-at-API.patch:
+  Set sane config defaults that prevent rate-limiting the twitter
+  API
+
+-------------------------------------------------------------------
+Sat Feb 21 11:13:13 UTC 2015 - tbehrens@suse.com
+
+- Initial packaging.

@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Thu Apr 27 11:17:44 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from description.
+
+-------------------------------------------------------------------
+Mon Apr 24 19:54:58 UTC 2017 - mpluskal@suse.com
+
+- Use qmake macro and desktop file scriplets
+
+-------------------------------------------------------------------
+Thu Apr 13 19:30:22 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.0.4.6 (tagged release)
+  - specfile cleanup
+
+-------------------------------------------------------------------
+Sat Dec 31 08:26:42 UTC 2016 - mardnh@gmx.de
+
+- Update to version 1.0.4.6.git1483158097.9a11e3c:
+  * use https for default csv database file
+  * VRS server/client init bug fix
+  * Again fix the SBS1 server bug
+
+-------------------------------------------------------------------
+Sat Jul 16 07:50:40 UTC 2016 - mardnh@gmx.de
+
+- Update to version 1.0.4.4.git1468626324.ac704a5:
+  * Added changing settings name for multiple program instances
+  * Added TCP client
+  * TCP ADS output button exclusion
+
+-------------------------------------------------------------------
+Tue Mar 22 18:50:54 UTC 2016 - mardnh@gmx.de
+
+- Update to version 1.0.4.3.git1458616178.1adb29c:
+  + SBS1 TCP server for outputting ADS positional information to third-party applications
+  + added dual channel 10.5k C-band burst demodulator, time check for sbs1 packets, concatinated sbs1 packets, and added timestamp to sbs1 packets.
+
+-------------------------------------------------------------------
+Sat Feb 27 11:37:53 UTC 2016 - mardnh@gmx.de
+
+- Update to version 1.0.4.1.git1456558015.f89229f:
+  + ADS parsing.UDP output for the bottom textedit. Removed unused code.
+
+-------------------------------------------------------------------
+Sat Feb 20 12:23:12 UTC 2016 - mardnh@gmx.de
+
+- Update to version 1.0.4.git1455959486.986efb2:
+  + Aero Burst OQPSK Demodulator added. A few Bug fixes.
+
+-------------------------------------------------------------------
+Thu Feb 04 11:53:28 UTC 2016 - mardnh@gmx.de
+
+- Update to version 1.0.3.git1453880854.9cad991:
+  + Version number correction
+  + tidy
+  + Fixed 0x0C packet sat id error and added sat constellation longitude info (tells you where are the sats are out there)
+  + Repitition of data in top window and UDP output bug fixed
+  + Crash on AES lookup no match bug
+  + Spot beam frequency bug
+
+-------------------------------------------------------------------
+Sun Jan 10 16:02:25 UTC 2016 - mardnh@gmx.de
+
+- Update to version 1.0.3.git1452399214.effd5f4:
+  + Support for 10.5k signals
+  + readme update
+
+-------------------------------------------------------------------
+Sat Dec 19 10:51:25 UTC 2015 - mardnh@gmx.de
+
+- Update to version 1.0.2.git1450429126.4a40fa8:
+  + forgotten include for APPDATALOCATIONS define
+  + SQLite database for plane database
+  + sql minor fix
+  + UDP demo app freeze bug workaround
+  + import export of log plane log window and reg entry JAEROL to JAERO for settings
+  + version number changed in about message box
+  + Misc
+
+-------------------------------------------------------------------
+Sun Dec 13 13:32:33 UTC 2015 - mardnh@gmx.de
+
+- Update to version 1.0.1.git1449990951.a55ee17:
+  + Linux compatibility and beep sound as a resource
+  + Missing first char bug for log and format 3
+  + logwindow left right section linking better
+  + Linux desktop icon
+
+-------------------------------------------------------------------
+Sat Dec 12 14:10:05 UTC 2015 - mardnh@gmx.de
+
+- Update to version 1.0.1.git1449893963.4a91108:
+  + addd database pane, database download button, reg and aes for url subs.
+  + log update, beep on text, downloader, misc
+  + beep sound
+
+-------------------------------------------------------------------
+Thu Dec 10 21:06:31 UTC 2015 - mardnh@gmx.de
+
+- add --no-as-needed to LDFLAGS to avoid linker issues with libQtSvg
+
+-------------------------------------------------------------------
+Tue Dec 08 18:53:55 UTC 2015 - mardnh@gmx.de
+
+- Update to version 1.0.1.git1449561237.3f3d26e:
+  + async queued plane image lookup
+  + message scrollbar update
+  + Basic database plane lookup using csv file in format like http:// junzisun.com/aif/download does it
+  + wrong tab
+  + log window screenshot update
+  + screenshot update
+
+-------------------------------------------------------------------
+Sun Dec  6 10:51:22 UTC 2015 - mardnh@gmx.de
+
+- initial package, version 0.0.0.git1449390850.7cdfbf9
+

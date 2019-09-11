@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Fri Jun 28 07:10:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 5.8.0
+  * This new release adds the new functions zbc_preadv() and
+    zbc_pwritev() to support vectored read and write. The
+    zbc_read_zone and zbc_write_zone tools are also updated to
+    allow using these new functions with the new -vio option.
+    Various bug fixes are also included.
+
+-------------------------------------------------------------------
+Sat Oct 20 07:41:24 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 5.7.1
+  * Improved handling of non-SCSI zoned block devices.
+  * Change the behavior of zbc_open() to return an error when
+    trying to open a regular block device that was not
+    initialized for the emulation mode using the zbc_set_zones.
+
+-------------------------------------------------------------------
+Sun Mar 18 21:47:12 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 5.5.0
+  * Fixed various problems with the fake backend driver
+    (emulation mode), in particular when using a 4K sector disk
+    as backend storage.
+  * Properly set up direct I/O operation with the SG_IO interface
+    (SCSI and ATA backend drivers).
+  * Properly handle the maximum and optimal number of open zones
+    for drives with no limit and drives not reporting any limit.
+  * Skip open zone resource tests for drives with no limit or an
+    unreported limit on the maximum/optimal number of open zones.
+  * Add a new test to verify that a drive returns the correct
+    ASC/ASCQ sense error codes when writing to a full zone (HM
+    drives only).
+
+-------------------------------------------------------------------
+Tue Aug  8 11:18:07 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 5.3.1
+  * A rewrite of libzbc introducing significant changes to the
+    API. Support for draft standards 4.x is dropped. Compliance
+    to the final ZBC/ZAC standards is improved.
+  * All functions now operate using 512B sector units, regardless
+    of the device actual logical block size. This is in line with
+    Linux block device management and can simplify application
+    implementation by unifying the addressing unit used when
+    devices with different logical block sizes (512B or 4096B)
+    are being used. Applications must however still comply with
+    write request alignment to the device physical block size,
+    which may be different from the 512B sector size unit used.
+  * Improved read and write functions (zbc_pread and zbc_pwrite)
+    to not limit the request size to the device maximum request
+    data transfer size (calls are internally split into multiple
+    requests).
+
+-------------------------------------------------------------------
+Tue Nov 29 10:31:02 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 4.3.3
+  * block backend driver: support latest "official" kernel
+    interface queued up for kernel 4.10 release.
+
+-------------------------------------------------------------------
+Thu Sep 29 12:59:55 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 4.3.0
+* Properly handle detection of zoned block devices using sysfs
+* Fixed handling of list view so that an operation on a zone does
+  not reset the current selection and view whenever possible.
+* Improved handling of the list view using a filter model.
+* Added support for direct I/Os (O_DIRECT). Note: this does not
+  work with SG node device files.
+* Added maximum read/write command size in the device info
+  structure.
+* Initialize maximum device read/write I/O size for each backend
+  driver.
+* Check read/write command size against the maximum allowed for
+  the device.
+* Fixed get capacity: the code is now common for ATA and SCSI.
+  This fixes problems in SCSI backend when RC_BASIS is 0 (report
+  zones was being executed without the max logical sectors being
+  set), and also adds RC_BASIS handling for ATA drives (this was
+  missing entirely).
+
+-------------------------------------------------------------------
+Fri Jul  1 08:22:20 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 4.1.1
+* This release implements support for ZBC and ZAC revision 4 and
+  above draft standards.
+* Fixed the fake backend driver to pass all tests even if the
+  device specified is very small (i.e. it has only a few sequential
+  zones).
+* Display SG_IO ioctl error message only when the log level is set
+  to debug/verbose.
+
+-------------------------------------------------------------------
+Sat Feb 13 17:47:24 UTC 2016 - jengelh@inai.de
+
+- Update to new git snapshot 2.0.0.g32
+* Support for ZBC and ZAC r04
+* Added block device backend driver for use with kernels providing
+  SMR support and exposing host-managed disks as block devices.
+
+-------------------------------------------------------------------
+Thu Nov 12 19:13:31 UTC 2015 - jengelh@inai.de
+
+- Update to new git snapshot 2.0.0~git113
+* Added sense key and sense code string, DATA PROTECT and ZONE IS READ ONLY.
+* Added filling sense key/sense code when reads spanning other types of zone.
+* Supported storing ASC/ASCQ data on ata.
+* Supported URSWRZ flag on SCSi.
+* Added flags in zbc_device_info structure and stored URSWRZ flag in it.
+* Added forced ata read/write flag to read/write using pass through command.
+* Supported ZBC sense key, ASC/ASCQ handling.
+
+-------------------------------------------------------------------
+Mon Jun  8 23:11:56 UTC 2015 - jengelh@inai.de
+
+- Update to new git snapshot 2.0.0~git65
+* supports the ZBC standard draft Rev 02
+  and Rev 01 of the ZAC standard draft
+
+-------------------------------------------------------------------
+Mon Mar 16 21:44:08 UTC 2015 - jengelh@inai.de
+
+- Initial package (version 1.1.0~git68) for build.opensuse.org

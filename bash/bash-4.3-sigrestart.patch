@@ -1,0 +1,26 @@
+---
+ sig.c |    6 ++++++
+ 1 file changed, 6 insertions(+)
+
+--- sig.c
++++ sig.c	2018-11-29 08:13:00.103944580 +0000
+@@ -761,6 +761,8 @@ set_signal_handler (sig, handler)
+   if (sig == SIGCHLD)
+     act.sa_flags |= SA_RESTART;		/* XXX */
+ #endif
++  if (handler == (trap_handler))
++    act.sa_flags |= SA_NODEFER;		/* XXX */
+   /* Let's see if we can keep SIGWINCH from interrupting interruptible system
+      calls, like open(2)/read(2)/write(2) */
+ #if defined (SIGWINCH)
+@@ -771,6 +773,10 @@ set_signal_handler (sig, handler)
+      it to be as close to SIG_IGN as possible. */
+   if (sig == SIGTERM && handler == sigterm_sighandler)
+     act.sa_flags |= SA_RESTART;		/* XXX */
++  else if (handler == (termsig_sighandler))
++    act.sa_flags |= SA_NODEFER;		/* XXX */
++  if (sig == SIGTSTP || sig == SIGTTOU || sig == SIGTTIN || sig == SIGCONT)
++    act.sa_flags |= SA_NODEFER;		/* XXX */
+ 
+   sigemptyset (&act.sa_mask);
+   sigemptyset (&oact.sa_mask);

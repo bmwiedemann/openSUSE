@@ -1,0 +1,199 @@
+-------------------------------------------------------------------
+Mon Feb 25 09:00:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use _multibuild to run tests
+
+-------------------------------------------------------------------
+Mon Feb 25 03:24:33 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add %license
+- Run test suite on both Python 2 & 3
+- Remove outdated build dependencies
+- Add minimum versions
+- Add python-coverage as build dependency as nose segfaults when missing
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:42 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Aug 13 13:18:38 UTC 2018 - mcepl@suse.com
+
+- Remove dependency on unittest2
+
+-------------------------------------------------------------------
+Wed Mar 29 07:12:38 UTC 2017 - alarrosa@suse.com
+
+- Converted to singlespec 
+
+-------------------------------------------------------------------
+Tue Oct 25 17:14:25 UTC 2016 - arun@gmx.de
+
+- update to version 1.2.17:
+  * PyQuery('<input value="">').val() is ''
+  * PyQuery('<input>').val() is ''
+
+- changes from version 1.2.16:
+  * .attr('value', '') no longer removes the value attribute
+  * <input type="checkbox"> without value="..." have a .val() of 'on'
+  * <input type="radio"> without value="..." have a .val() of 'on'
+  * <select> without <option selected> have the value of their first
+    <option> (or None if there are no options)
+
+- changes from version 1.2.15:
+  * .val() should never raise
+  * drop py26 support
+  * improve .extend() by returning self
+
+- changes from version 1.2.14:
+  * fix val() for <textarea> and <select>, to match jQuery behavior
+
+-------------------------------------------------------------------
+Sun May  8 07:05:11 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * changed to https for source url
+  * updated source url to files.pythonhosted.org
+
+-------------------------------------------------------------------
+Sat Apr 23 16:23:21 UTC 2016 - arun@gmx.de
+
+- update to version 1.2.13:
+  * Note explicit support for Python 3.5
+
+- changes from version 1.2.12:
+  * make_links_absolute now take care of whitespaces
+  * added pseudo selector :has()
+  * add cookies arguments as allowed arguments for requests
+
+-------------------------------------------------------------------
+Wed Feb  3 01:36:49 UTC 2016 - arun@gmx.de
+
+- update to version 1.2.11:
+  * Preserve namespaces attribute on PyQuery copies.
+  * Do not raise an error when the http response code is 2XX
+
+-------------------------------------------------------------------
+Sat Jan 30 23:57:29 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * changed from zip to tar.gz
+
+- update to version 1.2.10:
+  * Fixed #118: implemented usage lxml.etree.tostring within
+    outer_html method
+  * Fixed #117: Raise HTTP Error if HTTP status code is not equal to
+    200
+  * Fixed #112: make_links_absolute does not apply to form actions
+  * Fixed #98: contains act like jQuery
+
+-------------------------------------------------------------------
+Thu Jul  2 18:11:08 UTC 2015 - benoit.monin@gmx.fr
+
+- add a build conditional for the test: work around a circular
+  dependency between python-pyquery and python-WebTest
+
+-------------------------------------------------------------------
+Mon May 11 18:28:15 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.2.9:
+  * Support for keyword arguments in PyQuery custom functions
+  * Fixed #78: items must take care or the parent
+  * Fixed #65 PyQuery.make_links_absolute() no longer creates
+    'href' attribute
+  * when it isn't there
+  * Fixed #19. is_() was broken.
+  * Fixed #9. .replaceWith(PyQuery element) raises error
+  * Remove official python3.2 support (mostly because of 3rd party
+    semi-deps)
+- update project URL
+- add new dependency python-cssselect
+- set a minimum version for python-lxml
+- add test dependencies python-WebOb, python-WebTest,
+  python-beautifulsoup, python-nose, python-restkit,
+  python-unittest2
+- add test dependency python-ordereddict for SLE11
+- run the tests during build
+
+-------------------------------------------------------------------
+Mon Jan 13 13:58:37 UTC 2014 - dmueller@suse.com
+
+- update to 1.2.8:
+  * Fixed #22: Open by filename fails when file contains invalid xml
+- changes from 1.2.7:
+  * Use pep8 name for methods but keep an alias for camel case method.
+  * text() now return an empty string instead of None if there is no text node
+
+-------------------------------------------------------------------
+Sun Nov 24 21:12:20 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.2.6
+  + README_fixt.py was not include in the release. Fix #54.
+- Changes from version 1.2.5
+  + cssselect compat. See https://github.com/SimonSapin/cssselect/pull/22
+  + tests improvments. no longer require a eth connection.
+    fix #55
+- Add unzip BuildRequires to support format of tarball
+
+-------------------------------------------------------------------
+Thu Oct 24 11:12:17 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Apr 30 12:34:43 UTC 2013 - dmueller@suse.com
+
+- add buildroot  
+
+-------------------------------------------------------------------
+Tue Mar 26 00:51:38 UTC 2013 - arun@gmx.de
+
+- updated copyright year in spec file 
+
+-------------------------------------------------------------------
+Tue Mar 26 00:49:40 UTC 2013 - arun@gmx.de
+
+- updated to 1.2.4
+  changes as listed on https://pypi.python.org/pypi/pyquery:
+
+  1.2.4
+    Moved to github. So a few files are renamed from .txt to .rst
+    Added .xhtml_to_html() and .remove_namespaces()
+    Use requests to fetch urls (if available)
+    Use restkit's proxy instead of Paste (which will die with py3)
+    Allow to open https urls
+    python2.5 is no longer supported (may work, but tests are broken)
+  1.2.3
+    Allow to pass this in .filter() callback
+    Add .contents() .items()
+    Add tox.ini
+    Bug fixes: fix #35 #55 #64 #66
+  1.2.2
+    Fix cssselectpatch to match the newer implementation of cssselect. Fixes issue #62, #52 and #59 (Haoyu Bai)
+    Fix issue #37 (Caleb Burns)
+  1.2.1
+    Allow to use a custom css translator.
+    Fix issue 44: case problem with xml documents
+  1.2
+    PyQuery now use cssselect. See issue 43.
+    Fix issue 40: forward .html() extra arguments to lxml.etree.tostring
+
+-------------------------------------------------------------------
+Tue Jan 31 10:54:06 UTC 2012 - saschpe@suse.de
+
+- Simplified macro usage
+- Buildrequire python-distribute instead of (outdated) setuptools
+- Set license to SDPX style (BSD-3-Clause)
+
+-------------------------------------------------------------------
+Sun Oct  9 09:57:45 UTC 2011 - prusnak@opensuse.org
+
+- updated to version 1.0
+
+-------------------------------------------------------------------
+Sat Mar 05 07:02:11 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.7)
+

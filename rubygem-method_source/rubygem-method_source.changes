@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Mon Nov 12 17:46:29 UTC 2018 - mschnitzer@suse.com
+
+- updated to version 0.9.2
+
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Nov  6 10:25:44 UTC 2018 - mschnitzer@suse.com
+
+- updated to version 0.9.1
+
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Sep 26 13:22:44 UTC 2017 - mdeniz@suse.com
+
+- update to version 0.9.0
+  Manually added the License (MIT), wasn't read by gem2rpm from
+  meta data of the gem
+
+  No changelog provided by the gem authors
+
+-------------------------------------------------------------------
+Fri Apr  3 13:14:00 UTC 2015 - mrueckert@suse.de
+
+- properly update
+
+-------------------------------------------------------------------
+Sun Oct 12 11:35:48 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Tue Jul 30 18:46:56 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.2
+
+-------------------------------------------------------------------
+Sun Oct 28 06:03:47 UTC 2012 - coolo@suse.com
+
+- updated to version 0.8.1
+
+-------------------------------------------------------------------
+Sun Jul 15 07:45:13 UTC 2012 - coolo@suse.com
+
+- update to 0.8, quite some commits, e.g.
+  Allow embedded documents in incomplete expressions [Fixes pry#622]
+
+-------------------------------------------------------------------
+Thu Apr 12 09:12:20 UTC 2012 - saschpe@suse.de
+
+- Also provide rubygem-method_source-0_7
+
+-------------------------------------------------------------------
+Thu Apr 12 07:48:42 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.7.1
+
+-------------------------------------------------------------------
+Fri Jan 27 00:18:55 UTC 2012 - mrueckert@suse.de
+
+- update to 0.7.0
+
+-------------------------------------------------------------------
+Thu Sep 15 17:04:58 UTC 2011 - mrueckert@suse.de
+
+- update to 0.6.5
+  - added JRuby source_location hack, also added a LICENSE file
+  - fixed tests, now running green on jruby, mri, rbx
+
+-------------------------------------------------------------------
+Tue Jul  5 13:10:28 UTC 2011 - mrueckert@suse.de
+
+- update to 0.6.0
+  - small fixes
+
+-------------------------------------------------------------------
+Tue Apr 26 16:20:19 UTC 2011 - mrueckert@suse.de
+
+- initial package (v0.4.1)
+

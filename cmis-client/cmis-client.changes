@@ -1,0 +1,212 @@
+-------------------------------------------------------------------
+Mon Jul  8 10:40:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.2:
+  * Fixed Google Drive login, broken by Google's new 2-page login sequence
+  * Added support for Google Drive two-factor authentication
+  * Fixed access to SharePoint root folder (tdf#101385)
+  * Limited the maximal number of redirections to 20 (rhbz#1410197)
+  * Switched library implementation to C++11 (the API remains C++98-compatible)
+  * Fixed build with boost >= 1.68.0 (#19)
+  * Fixed encoding of OAuth2 credentials
+  * Dropped cppcheck run from "make check". A new "make cppcheck" target was created for it
+  * Added proper API symbol exporting
+  * Speeded up building of tests a bit
+  * Fixed a few issues found by coverity and cppcheck
+- Remove merged patches:
+  * boost_168.patch
+  * declare-automake-foreign.patch
+
+-------------------------------------------------------------------
+Fri Aug 17 07:17:25 UTC 2018 - adam.majer@suse.de
+
+- use %license to install licenses
+- spec file cleanup
+- boost_168.patch: fix build with Boost 1.68 where the compatibility
+  header for Uuid's sha1 header was removed. (boo#1105173)
+
+-------------------------------------------------------------------
+Wed Feb  8 10:09:12 UTC 2017 - jengelh@inai.de
+
+- Description updates
+- Rename %soname to %sover to better reflect its use
+
+-------------------------------------------------------------------
+Wed Feb  1 10:30:26 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sun May  8 10:18:47 UTC 2016 - tchvatal@suse.com
+
+- Simplify autoreconf call and add patch to mark Makefile as foreign:
+  * declare-automake-foreign.patch
+
+-------------------------------------------------------------------
+Fri Mar  4 13:36:58 UTC 2016 - tchvatal@suse.com
+
+- Version update to 0.5.1:
+  * Few small bugfixes, see NEWS file for details
+- Remove upstreamed patches
+  * 0001-fix-boost-configuration-with-gcc-5.patch
+  * 0002-avoid-use-after-delete.patch
+  * 0005-Remove-invalid-comments-from-test-JSON-file.patch
+
+-------------------------------------------------------------------
+Fri Nov 20 13:33:48 UTC 2015 - normand@linux.vnet.ibm.com
+
+- for ppc64le bypass boo#955832: disable stop on make check error
+
+-------------------------------------------------------------------
+Tue Nov 17 08:24:04 UTC 2015 - idonmez@suse.com
+
+- Add 0005-Remove-invalid-comments-from-test-JSON-file.patch to fix
+  test-onedrive failure with boost 1.59
+  (http://sourceforge.net/p/libcmis/tickets/13/)
+
+-------------------------------------------------------------------
+Wed May  6 17:10:00 UTC 2015 - fstrba@suse.com
+
+- Added patches:
+  * 0001-fix-boost-configuration-with-gcc-5.patch
+    - Upstream fix for boost detection with gcc5
+  * 0002-avoid-use-after-delete.patch
+    - Upstream fix for test-ws failure
+- Removed patch:
+  * fix-boost-with-gcc5.patch
+    - Superseded by the two previous patches
+
+-------------------------------------------------------------------
+Wed May  6 15:05:04 UTC 2015 - coolo@suse.com
+
+- fix-boost-with-gcc5.patch: upsream patch to support gcc5
+
+-------------------------------------------------------------------
+Wed May  6 14:56:37 UTC 2015 - coolo@suse.com
+
+- use upstream source url
+
+-------------------------------------------------------------------
+Sat Dec 27 16:31:25 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 0.5.0
+  + Completely removed the dependency on InMemory server for unit tests
+  + Minimized the number of HTTP requests sent by 
+    SessionFactory::createSession
+  + Added Session::getBaseTypes()
+- Remove merged patches;
+  + 433fad3-Fix-int-bool-confusion-on-big-endian-architectures.patch
+  + 0001-Remove-C-11-only-std-to_string.patch
+- Bump soname to 0_5-5
+- Bump incname to 0.5
+
+-------------------------------------------------------------------
+Wed Jul  2 12:31:44 UTC 2014 - fstrba@suse.com
+
+- 0001-Remove-C-11-only-std-to_string.patch
+  Fix some C++11-isms.
+
+-------------------------------------------------------------------
+Tue Mar  4 13:46:50 UTC 2014 - cbosdonnat@suse.com
+
+- 433fad3-Fix-int-bool-confusion-on-big-endian-architectures.patch
+  Fix problem with big endian architectures. bnc#866716
+
+-------------------------------------------------------------------
+Mon Dec 30 10:58:01 UTC 2013 - tchvatal@suse.com
+
+- Whitespace cleanup here&there.
+
+-------------------------------------------------------------------
+Tue Nov 12 04:58:21 UTC 2013 - jengelh@inai.de
+
+- Set RPM groups of shlib packages to what we normally use
+- Make a note in the description about what "CMIS" is
+- Require boost-1.42 (first one to have the mandatory uuid.hpp)
+
+-------------------------------------------------------------------
+Wed Aug  7 15:25:18 UTC 2013 - cbosdonnat@suse.com
+
+- Update to version 0.4.1
+  + 0.4.0
+      + Support for Google Drive protocol as a binding
+      + Support for Alfresco in the cloud
+      + Added OAuth2 authentication support
+      + Added API to configure HTTP proxy
+      + Handle invalid SSL certificate problems
+      + Added API for renditions
+      + Moved the CMIS Atom binding unit tests to use libcurl mockup
+      + Added repository capabilities support (still missing
+        capabilityCreatablePropertyTypes and capabilityNewTypeSettableAttributes)
+  + 0.4.1
+      + Don't install the libcmis-mockup library: only for testing purpose
+  
+
+-------------------------------------------------------------------
+Mon Jun 10 23:09:00 UTC 2013 - crrodriguez@opensuse.org
+
+- Build with large file support in 32 bit archs, no good 
+ will come mixing LFS-aware executables and non-LFS libraries.
+
+-------------------------------------------------------------------
+Thu Jan 31 15:35:40 UTC 2013 - tchvatal@suse.com
+
+- Version bup to 0.3.1
+  * 0.3.1
+      * Added support for proxy configuration
+      * Fixed man page generation
+      * Misc code cleanup / fixes
+
+-------------------------------------------------------------------
+Fri Jan 25 12:36:49 UTC 2013 - tchvatal@suse.com
+
+- Fix libcmis-c-devel dependency over itself.
+
+-------------------------------------------------------------------
+Thu Sep 13 12:38:54 UTC 2012 - cbosdonnat@suse.com
+
+- Update to version 0.3.0
+  + 0.2.2
+      + Fixed soname for the library
+      + Allow building against libcurl 7.13.1
+  + 0.2.3
+      + Fixed SharePoint support
+      + Conditional build of man page
+  + 0.3.0
+      + Added Document::checkOut(), Document::cancelCheckout() and Document::checkIn()
+      + Added Object::move( ) -- Grau Data
+      + Fixes for xcmis and cloudoku.com -- Grau Data
+      + Added Document::getAllVersions( )
+      + WebService binding implementation
+      + Session factory automatically detects which binding to use
+      + C wrapper API
+      + Unit tests are now split between quick ones and the ones needing a CMIS server
+
+-------------------------------------------------------------------
+Mon Jun  4 11:37:10 UTC 2012 - cbosdonnat@suse.com
+
+- Update to version 0.2.1
+  + 0.2.0
+    + Handle all the authentication methods that can be handled by
+      libcurl like Basic, NTLM...
+    + Decode base64 encoded content sent by SharePoint
+    + Set the content of a document
+    + Query nodes by path
+    + Get the allowable actions for a node
+    + Object properties can be updated
+    + Query object types
+    + Creation of folders and documents
+    + Deletion of folders and documents
+  + 0.2.1
+    + Fixed documentation distribution
+
+-------------------------------------------------------------------
+Tue May 29 14:46:46 UTC 2012 - cbosdonnat@suse.com
+
+- Fixed licenses
+
+-------------------------------------------------------------------
+Tue Oct  4 10:39:03 UTC 2011 - cbosdonnat@suse.com
+
+- Created initial package with libcmis 0.1.0
+

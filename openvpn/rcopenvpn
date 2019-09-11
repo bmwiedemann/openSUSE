@@ -1,0 +1,37 @@
+#! /bin/bash
+
+SYSTEMD_NO_WRAP=1 . /etc/rc.status
+rc_reset
+
+action=$1 ; shift
+config=$1 ; shift
+
+if test -n "$config" ; then
+	systemctl "${action}" "openvpn@${config}.service"
+else
+	case $action in
+	status)
+		n=0
+		l=`systemctl show -p ConsistsOf openvpn.target 2>/dev/null`
+		for s in ${l#ConsistsOf=} ; do
+			case $s in
+			openvpn@*.service)
+				systemctl status "$s"
+				rc_check
+				((++n))
+			;;
+			esac
+		done
+		if test $n -gt 0 ; then
+			rc_status
+		else
+			rc_status -u
+		fi
+	;;
+	*)
+		systemctl "${action}" "openvpn.target"
+	;;
+	esac
+fi
+rc_exit
+

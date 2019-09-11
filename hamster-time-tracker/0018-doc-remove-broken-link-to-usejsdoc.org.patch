@@ -1,0 +1,27 @@
+From 0fc670a1bfe83e2e2b4e96c3e172557227a71b6f Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 10 May 2019 00:35:27 +0200
+Subject: [PATCH 18/18] doc: remove broken link to usejsdoc.org
+
+The site seems to be down, and no obvious replacement exists.
+This breaks the CI.
+---
+ docs/styleguide.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/docs/styleguide.rst b/docs/styleguide.rst
+index f96cdf4..bc5f0e3 100644
+--- a/docs/styleguide.rst
++++ b/docs/styleguide.rst
+@@ -31,7 +31,7 @@ Code-style
+ 
+ Documentation
+ ---------------
+-- We use `JSDoc syntax and blog tags <http://usejsdoc.org>`_ to document all
++- We use JSDoc syntax and blog tags to document all
+   our code.
+ - Headings should capitalise each word.
+ - Please use ``-`` for unordered lists and ``#.`` for ordered lists unless you
+-- 
+2.21.0
+

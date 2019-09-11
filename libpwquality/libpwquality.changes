@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:36:04 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jan  8 18:54:44 UTC 2018 - jengelh@inai.de
+
+- Update RPM groups and summaries.
+
+-------------------------------------------------------------------
+Mon Jan  8 10:20:54 UTC 2018 - tchvatal@suse.com
+
+- Switch url to https://github.com/libpwquality/libpwquality/
+- Update to release 1.4.0:
+  * Fix possible buffer overflow with data from /dev/urandom
+    in pwquality_generate().
+  * Do not try to check presence of too short username in password.
+    (thanks to Nikos Mavrogiannopoulos)
+  * Make the user name check optional (via usercheck option).
+  * Add an 'enforcing' option to make the checks to be warning-only
+    in PAM.
+  * The difok = 0 setting will disable all old password similarity
+    checks except new and old passwords being identical.
+  * Updated translations from Zanata.
+- Add patch libpwquality-pythons.patch to avoid duping pythondir
+- Make python3 default and enable py2 only when needed
+
+-------------------------------------------------------------------
+Thu Nov  9 09:34:50 UTC 2017 - mpluskal@suse.com
+
+- Build python3 version of bindings as well
+
+-------------------------------------------------------------------
+Fri Apr 15 21:51:14 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Sat Jul 25 13:48:55 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.3.0:
+  + Change the defaults for credits, difok, and minlen.
+  + Make the cracklib check optional but on by default.
+  + Add implicit support for parsing  <cfgfile>.d/*.conf files.
+  + Add libpwquality API manual page.
+
+-------------------------------------------------------------------
+Sat Aug 23 13:01:30 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.2.4:
+  + Add Python3 module subpackage.
+
+-------------------------------------------------------------------
+Fri Aug 15 11:26:45 UTC 2014 - mlin@suse.com
+
+- Avoid conflict in installation-images-openSUSE with cryptsetup:
+  + Only recommend, insted of Require cracklib-dict-full.
+  + Require cracklib-dict.
+
+-------------------------------------------------------------------
+Thu Sep 12 18:42:45 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.2.3:
+  + Fix problem with parsing the pam_pwquality options.
+  + Treat empty user or password as NULL.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 21 18:10:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.2.2:
+  + Manual page fixes.
+  + Make it possible to set the maxsequence configuration value.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Dec 23 09:38:10 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.2.1:
+  + Properly free pwquality settings.
+  + Add extern "C" to public header.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  7 21:31:36 UTC 2012 - vuntz@opensuse.org
+
+- Cleanup for inclusion in Factory.
+- Update to version 1.2.0:
+  + Add maxsequence check for too long monotonic character
+    sequence.
+  + Clarified alternative licensing to GPLv2+.
+  + Add local_users_only option to skip the pwquality checks for
+    non-locals.
+
+-------------------------------------------------------------------
+Thu Jun  7 17:02:52 UTC 2012 - badshah400@gmail.com
+
+- Initial build (version 1.1.0).
+

@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Sat Oct 29 00:08:19 UTC 2016 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 5.0.3:
+  + fix Integer overflow on illegal server response
+
+-------------------------------------------------------------------
+Mon May 30 13:15:29 UTC 2016 - sndirsch@suse.com
+
+- Update to version 5.0.2
+  * Remove fallback for _XEatDataWords, require libX11 1.6 for it 
+- tagged baselibs.conf as source in specfile
+
+-------------------------------------------------------------------
+Wed May 29 22:45:00 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 5.0.1:
+  This bug fix release includes the fix for the recently announced 
+  CVE-2013-1983, along with some other cleanups & warning fixes.
+
+-------------------------------------------------------------------
+Thu Apr 11 11:37:32 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+
+-------------------------------------------------------------------
+Tue Sep 25 06:33:15 UTC 2012 - sndirsch@suse.com
+
+- specfile cleanup 
+
+-------------------------------------------------------------------
+Sat Feb 11 18:50:49 UTC 2012 - jengelh@medozas.de
+
+- Rename xorg-x11-libXfixes to libXfixes and utilize shlib policy
+
+-------------------------------------------------------------------
+Fri Mar 18 12:47:27 UTC 2011 - fcrozat@novell.com
+
+- update to release 5.0
+  * Pointer barrier support, along with the usual buildsystem updates.
+
+-------------------------------------------------------------------
+Tue Dec 21 02:45:09 UTC 2010 - sndirsch@novell.com
+
+- bumped version number to 7.6_4.0.5 
+
+-------------------------------------------------------------------
+Sat Sep  4 18:28:15 UTC 2010 - sndirsch@novell.com
+
+- update to release 4.0.5
+- bumped version number to 7.5_4.0.5
+- fixed Summary/Group entries in -devel package
+
+-------------------------------------------------------------------
+Sun Apr  4 15:40:46 CEST 2010 - sndirsch@suse.de
+
+- libXfixes 4.0.4
+- bumped version number to 7.5 
+
+-------------------------------------------------------------------
+Mon Dec 14 18:25:48 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Sat May  2 14:42:17 CEST 2009 - eich@suse.de
+
+- revert static library and .la file removal
+  for SUSE versions <= 11.1.
+
+-------------------------------------------------------------------
+Tue Apr 21 20:18:44 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Thu Sep 11 14:21:36 CEST 2008 - sndirsch@suse.de
+
+- bumped release number to 7.4 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Dec 26 21:29:22 CET 2007 - crrodriguez@suse.de
+
+- PreReq coreutils
+- fix library-without-ldconfig-postun warning
+- fix no-version-dependency-on xorg-x11-libXfixes 7.3
+
+-------------------------------------------------------------------
+Sat Sep 29 12:22:56 CEST 2007 - sndirsch@suse.de
+
+- bumped version to 7.3 
+
+-------------------------------------------------------------------
+Wed Nov  8 16:58:09 CET 2006 - sndirsch@suse.de
+
+- update to release 4.0.3 (X.Org 7.2 RC2)
+  * Don't unlock the Display when you have not locked it.
+
+-------------------------------------------------------------------
+Sat Oct 14 06:13:20 CEST 2006 - sndirsch@suse.de
+
+- update to X.Org 7.2R1 
+
+-------------------------------------------------------------------
+Wed Aug  2 16:12:14 CEST 2006 - sndirsch@suse.de
+
+- fix setup line 
+
+-------------------------------------------------------------------
+Fri Jul 28 14:44:32 CEST 2006 - sndirsch@suse.de
+
+- use "-fno-strict-aliasing" 
+
+-------------------------------------------------------------------
+Thu Jul 27 11:43:09 CEST 2006 - sndirsch@suse.de
+
+- use $RPM_OPT_FLAGS
+- remove existing /usr/include/X11 symlink in %pre 
+
+-------------------------------------------------------------------
+Fri Jun 23 16:08:17 CEST 2006 - sndirsch@suse.de
+
+- created package 
+

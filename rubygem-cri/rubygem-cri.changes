@@ -1,0 +1,247 @@
+-------------------------------------------------------------------
+Fri Jul 19 09:02:00 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.15.9
+ see installed NEWS.md
+
+  ## 2.15.9
+  
+  Fixes:
+  
+  * Fixed bug which could cause options from one command appear in other commands (#101, #102)
+  
+  ## 2.15.8
+  
+  Fixes:
+  
+  * Don’t explicitly set default values for options (#99)
+  
+  This release reverts a backwards-incompatible change introduced in 2.15.7.
+  
+  To illustrate this, compare the behavior of the following command in recent versions of Cri:
+  
+  ```ruby
+  option :f, :force, 'use force', argument: :forbidden
+  
+  run do |opts, args, cmd|
+    puts "Options = #{opts.inspect}"
+    puts "Force? #{opts[:force]}"
+    puts "Option given? #{opts.key?(:force)}"
+  end
+  ```
+  
+  In Cri 2.15.6, the default is not set in the options hash, so the value is `nil` and `#key?` returns false:
+  
+  ```sh
+  % ./run
+  Options = {}
+  Force? nil
+  Option given? false
+  ```
+  
+  This behavior was inconsistent with what was documented: flag options were (and still are) documented to default to `false` rather than `nil`.
+  
+  In Cri 2.15.7, the default value is `false`, and explicitly set in the options hash (`#key?` returns `true`):
+  
+  ```sh
+  % ./run
+  Options = {:force=>false}
+  Force? false
+  Option given? true
+  ```
+  
+  This change made it impossible to detect options that were not explicitly specified, because the behavior of `#key?` also changed.
+  
+  In Cri 2.15.8, the default value is also `false` (as in 2.15.7), but not explicitly set in the options hash (`#key?` returns `false`, as in 2.15.6):
+  
+  ```sh
+  % ./run
+  Options = {}
+  Force? false
+  Option given? false
+  ```
+  
+  This backwards-incompatible change was not intentional. To fix issue #94, a change in behavior was needed, but this change also affected other, previously-undefined behavior. The new behavior in 2.15.8 should fix the bug fixed in 2.15.7 (#94, #96), without causing the problems introduced in that version.
+  
+  ## 2.15.7
+  
+  Fixes:
+  
+  * Options with a forbidden argument now default to false, rather than nil (#94, #96)
+  
+  ## 2.15.6
+  
+  Fixes:
+  
+  * Fixed problem with help header not being shown if the summary is missing (#93)
+
+-------------------------------------------------------------------
+Sun May  5 09:22:48 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.15.5
+ see installed NEWS.md
+
+  ## 2.15.5
+  
+  Fixes:
+  
+  * Restored compatibility with Ruby 2.3. (#91)
+  
+  ## 2.15.4
+  
+  Fixes:
+  
+  * Removed dependency on `colored`, which restores functionality to gems that `colored` breaks (e.g. `awesome_print`) (#89, #90)
+
+-------------------------------------------------------------------
+Sat Mar  2 15:10:08 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.15.3
+ see installed NEWS.md
+
+  ## 2.15.3
+  
+  Fixes:
+  
+  * Made `ArgumentList#each` callable without a block, in which case it returns an `Enumerator` (mimicking `Array`) (#87, #88)
+
+-------------------------------------------------------------------
+Thu Nov 22 05:04:39 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.15.2
+ see installed NEWS.md
+
+  ## 2.15.2
+  
+  Fixes:
+  
+  * Fixed option propagation for two levels or more (#85, #86)
+
+-------------------------------------------------------------------
+Wed Sep  5 10:07:48 UTC 2018 - coolo@suse.com
+
+- updated to version 2.15.1
+ see installed NEWS.md
+
+-------------------------------------------------------------------
+Sun Dec  3 19:13:50 UTC 2017 - coolo@suse.com
+
+- updated to version 2.10.1
+ see installed NEWS.md
+
+  ## 2.10.1
+  
+  Fixes:
+  
+  * Restored Ruby 2.1 compatibility (for now)
+  
+  ## 2.10.0
+  
+  Features:
+  
+  * Added support for skipping option parsing (#62) [Tim Sharpe]
+  
+  This release drops support for Ruby 2.1, which is no longer supported.
+
+-------------------------------------------------------------------
+Tue Jun  6 05:32:55 UTC 2017 - coolo@suse.com
+
+- updated to version 2.9.1
+ see installed NEWS.md
+
+-------------------------------------------------------------------
+Sun Apr  2 04:31:14 UTC 2017 - coolo@suse.com
+
+- updated to version 2.8.0
+ see installed NEWS.md
+
+  2.8.0
+  -----
+  
+  Features:
+  
+  * Allow passing `hard_exit: false` to `Command#run` to prevent `SystemExit` (#51)
+  * Allow specifying the default subcommand (#54)
+
+-------------------------------------------------------------------
+Sun Dec  4 05:32:21 UTC 2016 - coolo@suse.com
+
+- updated to version 2.7.1
+ see installed NEWS.md
+
+  2.7.1
+  -----
+  
+  Fixes:
+  
+  * Fixed some grammatical mistakes
+
+-------------------------------------------------------------------
+Thu Apr 30 04:28:54 UTC 2015 - coolo@suse.com
+
+- updated to version 2.7.0
+ see installed NEWS.md
+
+  2.7.0
+  -----
+  
+  Features:
+  
+  * Added support for hidden options (#43, #44) [Bart Mesuere]
+  
+  Enhancements:
+  
+  * Added option values to help output (#37, #40, #41)
+  * Made option descriptions wrap (#36, #45) [Bart Mesuere]
+
+-------------------------------------------------------------------
+Mon Oct 13 09:48:23 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Mon Jul 28 05:28:16 UTC 2014 - coolo@suse.com
+
+- updated to version 2.6.1
+ * Disable ANSI color codes when not supported (#31, #32)
+
+-------------------------------------------------------------------
+Sun Apr  6 05:38:53 UTC 2014 - coolo@suse.com
+
+- updated to version 2.6.0
+ * Added support for multi-valued options [Toon Willems]
+
+-------------------------------------------------------------------
+Tue Mar 18 14:57:24 UTC 2014 - coolo@suse.com
+
+- updated to version 2.5.0
+ * Made the default help command handle subcommands
+ * Added `#raw` method to argument arrays, returning all arguments including `--`
+
+-------------------------------------------------------------------
+Sun Dec  1 16:11:11 UTC 2013 - coolo@suse.com
+
+- updated to version 2.4.1
+ * Fixed ordering of option groups on Ruby 1.8.x (#14, #15)
+ * Fixed ordering of commands when --verbose is passed (#16, #18)
+
+-------------------------------------------------------------------
+Tue Sep  3 08:10:07 UTC 2013 - coolo@suse.com
+
+- updated to version 2.4.0
+
+-------------------------------------------------------------------
+Tue Feb 14 16:28:48 UTC 2012 - mrueckert@suse.de
+
+- update to 2.1.0
+
+-------------------------------------------------------------------
+Wed Dec  7 13:27:52 UTC 2011 - mrueckert@suse.de
+
+- update to 2.0.2
+
+-------------------------------------------------------------------
+Thu Oct  7 11:03:57 UTC 2010 - prusnak@opensuse.org
+
+- created package
+

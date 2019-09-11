@@ -1,0 +1,25 @@
+openSUSE specific packaging
+===========================
+
+OpenBLAS provides optimized implementations of BLAS and LAPACK.
+openSUSE provides three variants:
+ * Serial library (libopenblas_serial0)
+ * With OpenMP support (libopenblas_openmp0)
+ * With threading support (libopenblas_pthreads0)
+
+By defult openSUSE uses pthreads version on x86 systems and OpenMP
+for other architectures. On x86 systems OpenBLAS uses dynamic
+architectures support, so it contains all CPU-related optimizations.
+
+How to switch between the various BLAS/LAPACK implementations
+=============================================================
+
+BLAS:
+ sudo /usr/sbin/update-alternatives --config libblas.so.3
+
+LAPACK:
+ sudo /usr/sbin/update-alternatives --config liblapack.so.3
+
+More information is available at:
+
+ https://en.opensuse.org/openSUSE:Science_Linear_algebra_libraries

@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Fri Dec 28 23:01:27 UTC 2018 - ikruis@gmail.com
+
+- update to 2.1
+  * gcc 8 update, fix assertions. libtool and toolchain updates.
+  * unicode.c: Implement unicode_x_smap_modutf8 pseudo-encoding.
+  * unicode.c: Fix error and validation of valid modified-utf7
+    encoding.
+-------------------------------------------------------------------
+Mon Dec  4 09:27:27 UTC 2017 - suse+build@de-korte.org
+
+- update to 2.0
+  * configure.ac: Better test for available of nl_langinfo_l().
+  * Migrate to C++11: remove unicode_char, use char32_t. Replace
+    std::vector<unicode_char> with std::u32string.
+
+-------------------------------------------------------------------
+Mon May 16 01:31:03 UTC 2016 - chris@computersalat.de
+
+- update to 1.4
+  * no info about changes available
+
+-------------------------------------------------------------------
+Wed Aug  5 00:25:50 UTC 2015 - chris@computersalat.de
+
+- update to 1.3
+  * all: rebased against Unicode 8
+  * courier-unicode: Rename unicode.h, library name, to avoid name
+    clashing with some old, forgotten, Gnome library.
+  * all: rebased against Unicode 7. Added unicode_script(), tr24
+    Scripts lookup.
+- fix spec for submit to Factory
+
+-------------------------------------------------------------------
+Wed Oct 29 21:52:17 UTC 2014 - chris@computersalat.de
+
+- initial pkg 1.1
+

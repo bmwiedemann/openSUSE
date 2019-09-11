@@ -1,0 +1,49 @@
+.TH relbench "8" "October 2013" "Lars Vogdt" "John"
+.SH NAME
+relbench \- John the Ripper benchmark output comparison tool
+
+.SH SYNOPSIS
+.B relbench <BENCHMARK-FILE-1> <BENCHMARK-FILE-2>
+.br
+
+.SH DESCRIPTION
+.B relbench
+is a Perl script to compare two "john --test" benchmark runs, such as for
+different machines, "make" targets, C compilers, optimization options, or/and
+versions of John the Ripper.
+
+To use it, redirect the output of each "john --test" run to a file, then run the
+script on the two files.  
+
+Most values output by the script indicate relative performance seen on the
+second benchmark run as compared to the first one, with the value of 1.0
+indicating no change, values higher than 1.0 indicating speedup, and values
+lower than 1.0 indicating slowdown.  Specifically, the script outputs the
+minimum, maximum, median, and geometric mean for the speedup (or slowdown) seen
+across the many individual benchmarks that "john --test" performs.  
+
+It also outputs the median absolute deviation (relative to the median) and
+geometric standard deviation (relative to the geometric mean).  Of these two, a
+median absolute deviation of 0.0 would indicate that no deviation from the
+median is prevalent, whereas a geometric standard deviation of 1.0 would
+indicate that all benchmarks were sped up or slowed down by the exact same
+ratio or their speed remained unchanged.  
+
+In practice, these values will tend to deviate from 0.0 and 1.0, respectively.
+.SH OPTIONS
+.TP
+\fBBENCHMARK-FILE-1\fR
+File containing benchmark results from the first test run via \fBjohn \-\-test\fR.
+.TP
+\fBBENCHMARK-FILE-2\fR
+File containing benchmark results from the second test run via \fBjohn \-\-test\fR.
+
+.SH FILES
+.TP
+.IP /usr/sbin/relbench
+.SH AUTHOR
+John the Ripper password cracker is free and Open Source software. 
+Copyright (c) 2011 by Solar Designer.
+
+This manual page was written by Lars Vogdt for the openSUSE operating system 
+(but it may be freely used, modified, and redistributed by others).

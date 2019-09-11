@@ -1,0 +1,401 @@
+-------------------------------------------------------------------
+Fri Jul 12 13:21:22 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop lto-workaround.patch in favor of just disabling LTO
+
+-------------------------------------------------------------------
+Fri Jul 12 11:42:02 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix build with LTO enabled:
+  * lto-workaround.patch
+
+-------------------------------------------------------------------
+Wed Jun 19 11:18:55 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0:
+  * New bugfix release
+  * No changelog available
+  * For more details about Qt 5.13 please see:
+  * http://code.qt.io/cgit/qt/qt3d.git/plain/dist/changes-5.13.0/?h=5.13
+
+-------------------------------------------------------------------
+Tue Jun  4 07:24:12 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-rc:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon Apr 29 09:16:01 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Apr 18 07:26:22 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.3:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qt3d.git/plain/dist/changes-5.12.3/?h=v5.12.3
+
+-------------------------------------------------------------------
+Thu Mar 21 10:24:18 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-beta1:
+  * New feature release
+  * For more details about Qt 5.13 please see:
+  * http://code.qt.io/cgit/qt/qt3d.git/plain/dist/changes-5.13.0/?h=5.13
+
+-------------------------------------------------------------------
+Sun Mar 17 14:26:40 UTC 2019 - wbauer@tmo.at
+
+- Drop use-Assimp-namespace-to-fix-build-for-big-endian.patch,
+  merged upstream (since 5.11.0-beta1 already)
+- Adjust filelist for Leap 42.3 to fix the build, assimp is only
+  compiled with gcc5 or higher now
+
+-------------------------------------------------------------------
+Thu Mar 14 08:46:55 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.2:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qt3d.git/plain/dist/changes-5.12.2/?h=5.12.2
+
+-------------------------------------------------------------------
+Fri Feb  1 08:39:15 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.1:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qt3d.git/plain/dist/changes-5.12.1/?h=v5.12.1
+
+-------------------------------------------------------------------
+Thu Dec  6 13:34:59 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0:
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qt3d.git/plain/dist/changes-5.12.0/?h=v5.12.0
+
+-------------------------------------------------------------------
+Mon Dec  3 08:16:15 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-rc2:
+  * New bugfix release
+  * Only important bugfixes
+- Changelog for Qt 5.12.0:
+  * http://code.qt.io/cgit/qt/qt3d.git/plain/dist/changes-5.12.0/?h=5.12.0
+
+-------------------------------------------------------------------
+Thu Nov 22 13:38:43 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-rc:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Nov  8 15:24:18 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta4:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Oct 26 07:20:10 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta3:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Oct 17 08:22:18 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Oct  5 18:52:07 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta1:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Oct  2 07:33:07 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-alpha:
+  * New feature release
+  * For more details please see:
+  * http://wiki.qt.io/New_Features_in_Qt_5.12
+
+-------------------------------------------------------------------
+Fri Sep 21 07:58:38 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qt3d.git/plain/dist/changes-5.11.2/?h=v5.11.2
+
+-------------------------------------------------------------------
+Tue Jun 19 10:49:42 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qt3d.git/plain/dist/changes-5.11.1/?h=v5.11.1
+
+-------------------------------------------------------------------
+Tue May 22 15:05:53 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qt3d.git/plain/dist/changes-5.11.0/?h=v5.11.0
+
+-------------------------------------------------------------------
+Tue May  8 10:58:48 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-rc
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon Apr 23 08:55:10 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta4
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Apr 11 09:13:24 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta3
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Mar 28 09:17:03 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta2
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Mar 13 13:40:37 UTC 2018 - christophe@krop.fr
+
+- Fix the license tag.
+
+-------------------------------------------------------------------
+Thu Mar  1 09:54:38 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta1
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qt3d.git/plain/dist/changes-5.11.0-beta1/?h=v5.11.0-beta1
+- Remove patches, now upstream:
+  * add-typecasts-in-glTFAssetWriter.inl.patch
+- Refresh patches:
+  * use-Assimp-namespace-to-fix-build-for-big-endian.patch
+
+-------------------------------------------------------------------
+Fri Feb 23 07:12:27 UTC 2018 - mlin@suse.com
+
+- Add add-typecasts-in-glTFAssetWriter.inl.patch (bsc#1082475)
+  * Add typecasts in glTFAssetWriter.inl to fix compile errors on s390
+    about ambiguous constructors https://github.com/assimp/assimp/issues/980
+
+-------------------------------------------------------------------
+Thu Feb 22 08:06:32 UTC 2018 - mlin@suse.com
+
+- Drop fix-assimp-bigendian-lvalue.diff (bsc#1082225)
+  * The fix was part of assimp lib 3.3.1 already and Qt 5.10 has been updated
+    to assimp lib 3.3.1, thus we don't need that patch anymore. 
+- Add use-Assimp-namespace-to-fix-build-for-big-endian.patch
+  * Use Assimp namespace to fix build for big-endian architectures
+    https://github.com/assimp/assimp/pull/986
+
+-------------------------------------------------------------------
+Tue Feb 20 14:27:44 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-alpha
+  * New feature release
+  * For more details please see:
+  * https://wiki.qt.io/New_Features_in_Qt_5.11
+
+-------------------------------------------------------------------
+Wed Feb 14 15:44:00 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qt3d.git/plain/dist/changes-5.10.1/?h=v5.10.1
+
+-------------------------------------------------------------------
+Fri Dec  8 23:10:53 UTC 2017 - christophe@krop.fr
+
+- Update the license tag (boo#967696)
+
+-------------------------------------------------------------------
+Thu Dec  7 12:18:04 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 final
+  * New bugfix release
+
+-------------------------------------------------------------------
+Sun Dec  3 14:12:45 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 RC 2
+  * New bugfix release
+
+-------------------------------------------------------------------
+Thu Nov 30 09:47:09 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 RC 1
+  * New bugfix release
+
+-------------------------------------------------------------------
+Sat Nov 25 12:46:31 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details, see:
+    http://code.qt.io/cgit/qt/qt3d.git/tree/dist/changes-5.9.3/?h=v5.9.3
+
+-------------------------------------------------------------------
+Wed Nov 15 11:41:27 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 4
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Thu Nov  2 07:22:06 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 3
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Mon Oct 30 16:19:17 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 2
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Mon Oct  9 16:17:17 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 1
+- For more information visit:
+    https://blog.qt.io/blog/2017/10/09/qt-5-10-beta-released/
+
+-------------------------------------------------------------------
+Sun Oct  8 13:59:46 UTC 2017 - lbeltrame@kde.org
+
+- Update to 5.9.2
+  * For more details please see:
+    https://blog.qt.io/blog/2017/10/06/qt-5-9-2-released/
+
+-------------------------------------------------------------------
+Mon Sep 25 14:42:37 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Alpha 1:
+  * Tech Preview of Skeletal Animation system
+  * Animation clocks: Control playback speed of one or more animato
+  * Framebuffer blit frame graph node
+  * Proximity filter frame graph node
+  * Improved layer filtering frame graph node
+  * Shader graphs: dynamically generate fragment shaders from graph
+  * Sprite sheet support
+  * Point and line picking support
+  * Camera viewAll command
+  * Optional SIMD support
+  * Scene2D: Embed Qt Quick content into Qt 3D and interact with it
+- For more information visit:
+    https://blog.qt.io/blog/2017/09/13/qt-5-10-alpha-released/
+
+-------------------------------------------------------------------
+Tue Aug 22 07:39:56 UTC 2017 - fabian@ritter-vogt.de
+
+- Update baselibs.conf to include all libs
+
+-------------------------------------------------------------------
+Sat Jul  1 08:08:16 UTC 2017 - lbeltrame@kde.org
+
+- Update to 5.9.1
+  * For more details please see:
+    http://blog.qt.io/blog/2017/06/30/qt-5-9-1-released/
+
+-------------------------------------------------------------------
+Thu Jun  1 07:42:50 UTC 2017 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Wed May 31 07:05:05 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 final
+
+-------------------------------------------------------------------
+Wed May 24 19:16:41 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 RC:
+  * For more details please see: 
+    http://lists.qt-project.org/pipermail/announce/2017-May/000115.html
+    and https://wiki.qt.io/New_Features_in_Qt_5.9
+- Fixup descriptions
+
+-------------------------------------------------------------------
+Wed Dec 14 16:05:43 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * For more details please see:
+    https://blog.qt.io/blog/2016/12/14/qt-5-7-1-released/
+    and https://www.qt.io/qt5-7/
+
+-------------------------------------------------------------------
+Sun Sep 25 09:29:13 UTC 2016 - jengelh@inai.de
+
+- Set RPM groups for SLPP packages. Update descriptions.
+
+-------------------------------------------------------------------
+Sat Sep 24 18:39:00 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * For more details please see:
+    https://www.qt.io/qt5-7/
+
+-------------------------------------------------------------------
+Wed Jun  8 14:15:14 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * For more details please see:
+    http://blog.qt.io/blog/2016/06/08/qt-5-6-1-released/
+
+-------------------------------------------------------------------
+Wed Mar 30 08:38:15 UTC 2016 - alarrosa@suse.com
+
+- Add fix-assimp-bigendian-lvalue.diff to fix a non-lvalue being
+  referenced by an unary & in assimp on s390/s390x
+
+-------------------------------------------------------------------
+Fri Mar 18 19:02:58 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    http://blog.qt.io/blog/2016/03/16/qt-5-6-released/
+    and https://wiki.qt.io/New_Features_in_Qt_5.6
+
+-------------------------------------------------------------------
+Fri Oct 16 20:22:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1
+  * For more details please see:
+    http://blog.qt.io/blog/2015/10/15/qt-5-5-1-released/
+
+-------------------------------------------------------------------
+Sat Aug 22 19:10:16 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Activate package
+

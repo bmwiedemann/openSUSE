@@ -1,0 +1,24 @@
+From: Lee Duncan <lduncan@suse.com>
+Date: Wed Aug  9 14:46:08 PDT 2017
+Subject: [tcmu-runner] remove handler path install prefix
+Patch-mainline: never (suse-specific)
+Reference: bsc#1052795
+
+The SUSE %cmake macro sets CMAKE_INSTALL_LIBDIR to /usr/lib64 but
+then sets CMAKE_INSTALL_PREFIX to /usr, so that the plugin path
+gets set to /usr/usr/lib64/tcmu-runner, which is not good.
+
+This fixes it for SUSE.
+
+diff -aurp tcmu-runner-1.2.0.orig/CMakeLists.txt tcmu-runner-1.2.0/CMakeLists.txt
+--- tcmu-runner-1.2.0.orig/CMakeLists.txt	2017-08-09 14:43:09.852647786 -0700
++++ tcmu-runner-1.2.0/CMakeLists.txt	2017-08-09 14:44:07.134410581 -0700
+@@ -6,7 +6,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wal
+ include(GNUInstallDirs)
+ include(CheckIncludeFile)
+ 
+-set(tcmu-runner_HANDLER_PATH "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/tcmu-runner")
++set(tcmu-runner_HANDLER_PATH "${CMAKE_INSTALL_LIBDIR}/tcmu-runner")
+ 
+ option(with-glfs "build Gluster glfs handler" true)
+ option(with-qcow "build qcow handler" true)

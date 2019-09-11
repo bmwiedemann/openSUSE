@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Fri Jul 19 10:44:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not depend on pytest-sugar, it is just pretty-formatter
+
+-------------------------------------------------------------------
+Sun Jun  2 21:18:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid name repetition in summary.
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Tue May 14 18:01:06 UTC 2019 - John Jolly <jjolly@suse.com>
+
+- Update to 6.10.0:
+  + [Core] Fixed stackframes in some situations being in inverse order.
+  + [Flask] Fix wrong exception handling logic (accidentally relied on Flask internals).
+  + [Core] No longer send NaN local vars as non-standard JSON.
+- Refresh patch remove-unittest2.patch
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:33 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Aug 10 14:42:53 UTC 2018 - mcepl@suse.com
+
+- Remove unnecessary dependency on unittest2 and contextlib2 modules.
+  Add remove-unittest2.patch fixing the code.
+
+-------------------------------------------------------------------
+Thu Jul 19 16:24:55 UTC 2018 - mcepl@suse.com
+
+- Upgrade to 6.9.0:
+    too many changes to enlist here, complete list is at
+    https://github.com/getsentry/raven-python/blob/master/CHANGELOG.md
+- Remove component.xml and kill_bad_test.patch (unnecessary for the
+  current version)
+
+-------------------------------------------------------------------
+Thu Jan 11 11:40:43 UTC 2018 - mimi.vx@gmail.com
+
+- update to 6.4.0
+- added kill_bad_test.patch
+- dropped zconfig_tests.patch
+* [Core] Support for defining sanitized_keys on the client
+* [Django] Support for Django 2.0 Urlresolver
+* [Docs] Several fixes and improvements
+
+
+-------------------------------------------------------------------
+Wed Nov 15 13:47:01 UTC 2017 - mimi.vx@gmail.com
+
+- update to 6.3.0
+- add zconfig_tests.patch and component.xml fixing zconfig support
+* [Core] Changed default timeout on http calls to 5 seconds
+* [Core] Fixed relative paths for traces generated on Windows
+* [Django] Fixed import issues for Django projects < 1.7
+* [Django] Fixed django management command data option
+* [Django/DRF] Added application/octet-stream to non-cacheable types in middleware
+* [Django] Added parsing X-Forwarded-For for user.ip_address
+* [Flask] Added request.remote_addr as fallback for ip addresses
+* [Lambda] Added initial AWS Lambda support with contrib.awslambda.LambdaClient
+* [Core] get_frame_locals properly using max_var_size
+* [Core] Fixed raven initialization when logging._srcfile is None
+* [Core] Fixed import locking to avoid recursion
+* [Django] Fixed several issues for Django 1.11 and Django 2.0
+* [Django/DRF] Fixed issue with unavailable request data
+* [Flask] Added app.logger instrumentation
+* [Flask] Added signal on setup_logging
+* [ZConfig] Added standalone ZConfig support
+* [Celery] Fixed several issues related to Celery* 
+
+-------------------------------------------------------------------
+Thu Sep  7 22:42:16 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

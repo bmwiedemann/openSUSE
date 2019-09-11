@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Wed Jan 30 09:24:01 UTC 2019 - aloisio@gmx.com
+
+- Update to version 0.7.3
+  * [FolderView] Zoom support
+  * [FolderView] Ability to toggle filenames display
+  * [FolderView] Icon grid is now centered
+  * Re-done some of the icons, added HiDPI versions
+  * Startup speed optimizations
+  * Multiple UI related tweaks & bug fixes
+  * Fixed build with Qt 5.9 (regression)
+
+-------------------------------------------------------------------
+Sat Jan 12 19:44:11 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.7.2
+  * Improved HiDPI support
+  * APNG support (via QtApng plugin - included in windows
+    installer)
+  * Optional RAW support via QtRaw plugin
+  * Separate settings for fullscreen / windowed background
+  * UI performance improvements
+  * Updated some icons
+  * Minor startup speed optimizations
+  * Crop UI improvements
+  * Smooth scroll checkbox now works again
+  * Fixed some other bugs
+  * Added --help text
+
+-------------------------------------------------------------------
+Tue Sep 18 07:06:53 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.7.1
+  * Fix build with Qt 5.9
+  * Fix build with musl libc
+
+-------------------------------------------------------------------
+Wed Aug  8 20:40:52 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.7.0
+  New stuff:
+  * Folder View mode. Toggle with Enter or Backspace. This mode
+    will be further improved in future
+  * Ability to run commands / shell scripts on a current image
+    + Go to Settings/Scripts
+    + Create a command
+    + Add a shortcut just like for any regular action
+  * Context menu
+  * Video controls
+  * Background transparency & blur support (KDE)
+  * Directory sorting (name, date, file size)
+  * Trash support
+  Improvements:
+  * A new icon
+  * Redesigned settings window
+  * Several ui improvements: auto-hiding top buttons,
+    toggle-able info overlay etc
+  * Updated theme
+  * Exif rotation should now be auto-applied on image load
+  * More responsive image switching (fixed a job management bug
+    in Loader)
+  * Configurable thread count for thumbnailer
+  * Fixed some possible crashes
+  Other:
+  * Added build flags for some features (kde blur and video
+    support)
+
+- Dropped qimgv-0.6-qt511.patch (merged upstream)
+
+-------------------------------------------------------------------
+Mon Jun 11 18:29:58 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.6.3
+  * You can now mirror images by pressing H / V keys.
+  version 0.6.2
+  * WebM/MP4 playback issues #49
+  version 0.6.1
+  * Initial HiDPI support. May be buggy.
+  * Add scroll animation.
+  * Add a checkbox for .mp4 playback.
+  * Rewrite crop overlay logic.
+  * Workaround for https://bugreports.qt.io/browse/QTBUG-66387
+
+- Dropped qimgv-0.6-qt56.patch and
+  qimgv-0.6-no_return_in_nonvoid.patch (merged upstream)
+
+- Added qimgv-0.6-qt511.patch to fix build with Qt 5.11
+
+-------------------------------------------------------------------
+Fri Jan 12 09:29:51 UTC 2018 - aloisio@gmx.com
+
+- Initial package (v0.6)

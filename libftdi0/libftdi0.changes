@@ -1,0 +1,14 @@
+
+-------------------------------------------------------------------
+Thu Jul  6 17:33:54 UTC 2017 - mardnh@gmx.de
+
+- Rename package
+  - libftdi -> libftdi0
+
+-------------------------------------------------------------------
+Fri Jun 23 20:35:52 UTC 2017 - mardnh@gmx.de
+
+- Initial package, version 0.20
+  - based on the libftdi1 package
+  - do not package development man-pages since there's a
+    naming conflict with the ones from libftdi1-devel

@@ -1,0 +1,320 @@
+-------------------------------------------------------------------
+Sat Jul 13 07:32:46 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.2.0-1
+  New Features:
+  * When using libmpv, it is possible to show transparent
+    widgets (ie playlist, titlelist, control frame etc..)
+    directly on video. This property is available in
+    Preferences->Appearance->Widgets on video.
+  * In dark theme, users can manually change color of background
+    and control frame. Few combinations are available by default
+    Preferences->Appearance->Try. Users can choose any color,
+    but most likely only dark shade of any color may look good
+    on this theme (along with bold fonts).
+  * Added Playlist Continue option in Preferences->Player
+  Bug fixes and modifications:
+  * fixed: cache pause seconds option when using libmpv
+  * fixed: irregular global font size by fixing stylesheet
+  * It is possible to pass http headers as dictionary to ccurl
+    function
+  * No need to restart the application whenever changing mpv
+    config options from Preferences, when using libmpv.
+    (However, changing some options like vo/ao may need
+    restart)
+  Feature removal:
+  * Setting external player from Preferences has been removed.
+    Option is still available, but user will need to manually
+    edit the config files.
+  * Music mode deprecated. As one can use detached video mode as
+    music mode, the music mode somewhat became irrelevant.
+    Moreover it became buggy and difficult to maintain over the
+    time.
+
+-------------------------------------------------------------------
+Mon Jun 17 18:53:42 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.1.0-1
+  New Features:
+  * Thumbnail wall mode now applicable for both titlelist and
+    playlist. (Thumbnail wall mode is lighter and faster
+    compared to regular thumbnail grid mode, press F1 to switch
+    to this mode).
+  * Change number of thumbnails in each row using keys - and =
+  * automatic resizing of thumbnails in thumbnail wall mode on
+    widget resize
+  Bug fixes:
+  * Fixed: constant reappearance of cursor after fixed duration
+    (in full-screen mode) on linux
+  * Fixed: UI lock when libmpv could not generate
+    thumbnails/preview due to corrupted file
+  * Fixed: Automatic subtitle loading in pc-to-pc casting mode
+    when using libmpv
+  * Fixed: Maximum recursion depth limit error when window title
+    is not available
+  * Fixed: UnicodeEncodeError when sending playlist in pc-to-pc
+    casting mode from master to slave
+  * Multiple bug-fixes when using libmpv backend
+  Modifications and improvements:
+  * Allow setting timeout in wait_for_property
+  * Generate new tokens for every playlist, when sending items
+    from master to slave in pc-to-pc casting mode
+  * Allow adding external audio by using command
+    add-external-audio. Add keyboard shortcut to this command in
+    the Shortcuts settings.
+
+-------------------------------------------------------------------
+Sat May 25 07:58:41 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.0.0-1
+  New Features:
+  * Experimental support for directly using libmpv as backend,
+    instead of binary.
+  * For generating preview and thumbnails, libmpv will be used
+    by default.
+  * Automatically prevent screen turn off or screensaver when
+    playing video.
+  * Removed variable_width_list property, since it is not
+    required now. Application will automatically resize widgets
+    when screen changes, on dual monitor/screen setup, even if
+    application is placed on non-primary screen.
+  * Added Device Pixel Ratio property in preferences. By default
+    it is set to 1.0. For high resolution displays, it will be
+    greater that 1.0. For retina displays it is 2.0. If video is
+    appearing smaller then increase this value, when using libmpv
+    as backend. If not sure, set it to 0.0, and application will
+    try to adjust this value automatically.
+  * Support added for both opengl-cb and opengl-render api of
+    libmpv.
+  * Accurate live preview and improved gapless playback of
+    network streams when using libmpv
+  New Dependencies (names are given as per PyPI packages):
+  * PyOpenGL
+  * PyQtWebEngine (This is separate package now and won't be
+    included in default PyQt5 installation)
+  Optional dependency:
+  * pympv (If user wants to use latest opengl-render api of
+    libmpv)
+  Use of libmpv with kawaii-player:
+  * python-mpv package, written by github user jaseg, with minor
+    modifications. No need to install it separately. The main
+    file with minor modifications is included in the
+    kawaii-player.
+  * pympv. This package is optional and needs to be installed
+    from PyPI, if user wants to use latest rendering api of mpv.
+  Notes:
+  * Those who want to use mpv/mplayer binaries, they can still
+    use it. Support for binary mpv/mplayer won't be deprecated in
+    the application. Advantage of using libmpv (apart from making
+    cleaner code) is that, it will make application work better
+    and uniform across all platforms (gnu/linux, windows and mac).
+  * Playing video within thumbnails, won't work with libmpv as
+    of now. So this feature has been disabled for libmpv, but it
+    works as usual when using mpv binary.
+
+-------------------------------------------------------------------
+Fri Apr 19 08:06:22 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.9.0-1
+  * Far too many changes to list, see
+    https://github.com/kanishka-linux/kawaii-player/releases
+
+-------------------------------------------------------------------
+Thu Nov  9 17:04:53 UTC 2017 - aloisio@gmx.com
+
+- Update to version 2.8.0-0
+  * better handling of fetching episode summary from tvdb
+  * allow editing episode summary in summary box
+  * summary tooltip added to thumbnail grid
+  * keyboard shortcuts added for renaming to default
+  * keyboard shortcuts added for fetching episode summary
+  * more options added to context menu of playlist
+  * separate meta_engine
+  * tmdb bug fixed
+  * a new command ytq: added, for quick casting of ytdl and
+    torrent links from web interface
+  * Support added for opening links to ytdl supported sites
+  * Internal browser can be used for ytdl supported sites
+  * default background image changed
+  2.7.0-0
+  Web Interface:
+  * Code has been adjusted as per server side changes
+  * Show/Hide Top Menu Bar bug fixed for mobile browsers.
+  * In remote control mode, support for queued items improved,
+    achieving better synchronization between web interface and
+    desktop interface.
+  * Playlist shuffle mode fixed, in remote control mode.
+  * Show message on using torrent commands from wrong section
+  * New text command clear:cache added for clearing server side
+    cache
+  Media Server:
+  * Implemented server side cache for video, music and playlist
+    section for faster fetching.
+  * Bug fixed in identifying same titles but different content.
+  * Handles queue item remove request in remote control mode
+  * Handles clear cache request
+  * Allow better synchronization between desktop client and web
+    interface in remote control mode
+  Desktop client:
+  * Thumbnail grid mode made faster, responsive with better zoom
+    in/out support.
+  * Various bugs fixed in thumbnail grid mode
+  * Thumbnail generation in list mode improved without blocking ui.
+  * some changes in player stop method to restore state before
+    playback
+  * Better handling of peer-to-peer mode in thumbnails
+  * context menu added to playlist column for renaming file names
+    to default.
+  * context menu added to playlist for removing thumbnails.
+  * bugs fixed in ordering of playlist column in video section
+    using page up/down button keys
+  * bugs fixed in resizing images
+  Other Design Issues:
+  * Separate single thumbnail directory for both desktop and web
+    interface
+  * use of hashing to get thumbnails quickly without querying to
+    database, for both desktop client and web interface.
+  * In custom playlist, artist can be added manually. Use '::' to
+    delimit title from artist when renaming using key F2.
+  2.6.1-0
+  Web Interface:
+  * show torrent status immediately as soon as it is started
+  * allow absolute seek from status bar for both remote control
+    and client mode
+  * allow synchronization as much as possible between web
+    interface and remote controlled desktop application
+  * changes in get m3u method
+  * hide top menu bar properly in mobile interface while scrolling
+  * allow m3u generation of playlist history
+  * change bottom progress bar properly according to remote
+    control on/off state
+  Media Server:
+  * total_ui_navigation function added for remote controlled mode
+  * handle request for force play and pause
+  * handle request for absolute seek
+  Desktop Interface:
+  * crashing of player fixed when server ip address changes
+  * thumbnail generation method made responsive
+  * allow deleting music library entries
+  * reduce time delay between thumbnail generation
+  2.6.0-0
+  Major changes made in the web interface:
+  * Proper context menu support added for both queue and playlists
+    for performing multiple operations
+  * Legacy menu removed and replaced with Top menu bar
+  * Small status bar added to the bottom that will be displayed
+    while scrolling long playlist
+  * Status bar and Menu bar can both be hidden
+  * Thumbnail support added which can be activated using playlist
+    context menu
+  * Grid layout used for control buttons
+  * Bug fixed in torrent streaming within web interface
+  * Added buttons for navigating playlist history
+  * clear:playlist_history command added, which can be sent using
+    search box
+  Remote Control mode:
+  * Feature added to queue items from web interface for playing on
+    kawaii-player server
+  Peer to Peer mode:
+  * Faster login to peers
+  * Better Support for thumbnail display
+  * Fetch thumbnails from peers without blocking UI
+  Server
+  * Server can handle multiple thumbnail image requests
+    concurrently
+  * Server can remember playlist navigation history for the session
+  * Server can remember thumbnail activation mode on web interface
+    for the session
+  2.5.1-0-beta.1
+  * Improved Web Interface
+  * Thumbnail support added in both web interface and peer to peer
+    mode
+  * Context menu added in web interface
+  2.5.0-0-beta.3
+  * notify broken libtorrent with code 0
+  * send_notification function modified
+  * qtwebengine related bugs fixed
+  * do not update playlist widget for empty list
+  * do not allow update values to site_option in serverlib
+  * curl globoff by default
+  * fullscreen on double click added
+  * catch errors in PlayerGetEpn
+  * allow mode a+v in get_yt_url
+  * 480p quality fixed for yt videos
+  * support external audio files properly
+  * initialize idw when none
+  * some unnecessary variables removed
+  * stop arrow timer when active on focussed playlist
+  * replace n_art with blank space when none in media_server
+  * many bugs related to nt platform fixed
+  * signature of ccurl changed
+  * fetching of images from last.fm fixed
+  * binary for gnu/linux fixed for torrent streaming
+  2.4.0-0
+  * Allow using mpv input.conf for keyboard shortcuts by setting
+    MPV_INPUT_CONF=True in other_options.txt.
+  * option to disable aspect ratio
+  * log output changed
+  * faster login in peer-to-peer mode
+  * bugs fixed in getting next file in the playlist when mpv
+    doesn't emit EOF code:1
+  * Bug fixed in looping file when mpv doesn't emit EOF code:1
+  * get external links in addons in asynchronous manner, causing
+    major changes in codebase.
+  * notify properly when authentication fails in p2p mode
+  * allow hierarchy in titlelist
+  * allow viewing history in myserver addon
+
+-------------------------------------------------------------------
+
+Sat Sep  2 17:27:35 UTC 2017 - aloisio@gmx.com
+
+- Fixed version number
+
+-------------------------------------------------------------------
+Thu Aug 31 14:44:15 UTC 2017 - aloisio@gmx.com
+
+- Update to version 2.2.0-1
+  * Improved video management functionalities.
+  * Allows creating new video categories
+  * Allows renaming of title and playlist entries
+  * Group rename of playlist entries
+  * Improved contextmenu with grouping of various categories
+  * Allows getting information for entire collection
+  * TMDB support added
+  * Supports both duckduckgo and google as search engine backend
+    for getting information from either TVDB or TMDB.
+  * Keyboard shortcuts have been changed
+  * Allows direct jump on title starting with letter when keyboard
+    button pertaining to that letter is pressed
+  * Firefox related bug fixed when loading subtitles
+  * New background image modes with shortcuts (ctrl+0 and ctrl+9)
+    added
+  * Some image resizing issues fixed with python-pillow
+  * Allows using the application as both server as well as client
+  * Added new MyServer addon for managing peer-to-peer mode.
+  * Servers can broadcast themselves in the local network so that
+    clients can discover it without having to remember local IP
+    address of each media server.
+  * Allows modifying broadcast message of server
+  * Users can manually set server's upload speed
+  * mpv now remembers last aspect ratio
+  * Better OSD display on changing aspect ratio
+  * Critical bug fixed in deleting bookmarked playlist
+  version 2.0.0-0:
+  * Various modules separated and major overhaul of large codebase
+  * Headless browser included
+  * Proper support added for qtwebkit along with qtwebengine as
+    backend for headless browser
+  * Multiple bug fixes
+
+-------------------------------------------------------------------
+Tue May 23 21:33:45 UTC 2017 - aloisio@gmx.com
+
+- Fixed source URL
+
+-------------------------------------------------------------------
+Sat May 20 16:37:35 UTC 2017 - aloisio@gmx.com
+
+- Initial package (1.4.0-0)
+

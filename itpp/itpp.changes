@@ -1,0 +1,161 @@
+-------------------------------------------------------------------
+Thu Apr 11 14:19:56 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix licensing information
+
+-------------------------------------------------------------------
+Thu Mar 21 13:19:25 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix  building - boo#1129920
+
+-------------------------------------------------------------------
+Thu Sep 14 19:14:11 UTC 2017 - bwiedemann@suse.com
+
+- Add itpp-reproducible.patch to make build reproducible (boo#1047218) 
+- Drop latex .log file from doc dir for the same reason
+
+-------------------------------------------------------------------
+Thu Aug 24 11:44:07 UTC 2017 - mpluskal@suse.com
+
+- Update dependencies and drop rpmlintrc
+
+-------------------------------------------------------------------
+Sat Aug 12 16:50:39 UTC 2017 - jengelh@inai.de
+
+- RPM group fix. Remove stray Provides.
+
+-------------------------------------------------------------------
+Wed Aug  2 09:03:16 UTC 2017 - mpluskal@suse.com
+
+- Rename and cleanup package
+
+-------------------------------------------------------------------
+Sun Sep 20 15:48:04 UTC 2015 - mardnh@gmx.de
+
+- switched to %cmake macro
+- ran spec-cleaner
+- add patch: itpp-respect_dlib_suffix.diff
+
+-------------------------------------------------------------------
+Sat Nov  1 02:03:31 UTC 2014 - avvissu@yandex.ru
+
+- Patch to fix build for 64bit:
+  * use memmove instead of memcpy (itpp-4.3.1_memmove.patch)
+
+-------------------------------------------------------------------
+Thu Oct 17 21:05:25 UTC 2013 - joschibrauchle@gmx.de
+
+- update to version 4.3.1
+
+-------------------------------------------------------------------
+Thu May 10 21:56:51 UTC 2012 - scorot@free.fr
+
+- remove conditional BuildRequires for blas and lapack since
+  recent lapack now build correctly for all suse version 
+
+-------------------------------------------------------------------
+Sat Apr 14 04:30:34 UTC 2012 - badshah400@gmail.com
+
+- Update BuildRequires in keeping with lapack package naming
+  changes.
+
+-------------------------------------------------------------------
+Mon Mar 26 08:25:21 UTC 2012 - toddrme2178@gmail.com
+
+- Clean up spec file formatting
+- Fix 32bit package installation
+
+-------------------------------------------------------------------
+Sun Aug 21 16:20:00 UTC 2011 - werner.ho@gmx.de
+
+- new version 4.2
+
+-------------------------------------------------------------------
+Tue Sep 14 16:55:20 UTC 2010 - prusnak@opensuse.org
+
+- updated to 4.0.7
+- fixed build (namespace.patch)
+- spec cleanup
+
+-------------------------------------------------------------------
+Fri Dec 29 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- directory build fix for openSUSE 11.1
+
+-------------------------------------------------------------------
+Mon Oct 13 00:00:00 UTC 2008 - dannoritzer@web.de
+
+- new version 4.0.6
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2008 - dannoritzer@web.de
+
+- cleaned up %defines that affect older distro versions not build
+  anymore
+- adjusted description
+
+-------------------------------------------------------------------
+Mon Aug 18 00:00:00 UTC 2008 - dannoritzer@web.de
+
+- renamed package and split up to libitpp6, libitpp-devel, and libitpp-doc
+
+-------------------------------------------------------------------
+Thu Jul 31 00:00:00 UTC 2008 - dannoritzer@web.de
+
+- new version 4.0.5
+
+-------------------------------------------------------------------
+Mon Feb 25 00:00:00 UTC 2008 - dannoritzer@web.de
+
+- new version 4.0.3, no functional changes, just packaging issues with
+  other distributions than openSUSE. Just bumping up this package to
+  keep up with the revisions.
+
+-------------------------------------------------------------------
+Mon Feb 18 00:00:00 UTC 2008 - dannoritzer@web.de
+
+- new version 4.0.2
+
+-------------------------------------------------------------------
+Fri Dec 21 00:00:00 UTC 2007 - dannoritzer@web.de
+
+- added patch to build on 10.0 x86_64
+
+-------------------------------------------------------------------
+Mon Dec 17 00:00:00 UTC 2007 - dannoritzer@web.de
+
+- new version 4.0.1
+
+-------------------------------------------------------------------
+Sat Oct 20 00:00:00 UTC 2007 - werner.ho@gmx.de
+
+- removed blas/lapack-devel packages for newer distributions
+
+-------------------------------------------------------------------
+Mon Oct 15 00:00:00 UTC 2007 - dannoritzer@web.de
+
+- new version 4.0.0 stable release
+- moved html folder under /usr/share/doc/packages/itpp
+- took out mtune=i686 flag for i586 compilation with g77
+- SUSE < 10.1 uses g77 again, as lapack does so, 
+- took out SUSE 9.3 requirements
+
+-------------------------------------------------------------------
+Tue Oct 09 00:00:00 UTC 2007 - dannoritzer@web.de
+
+- new version 4.0.0-rc2
+- added debuginfo package
+
+-------------------------------------------------------------------
+Wed Aug 29 00:00:00 UTC 2007 - dannoritzer@web.de
+
+- new version 3.99.3.1
+- added -DNDEBUG flag to take out debug macros
+- added older NEWS and ChangeLog files
+- changed Fortran compiler from g77 to gfortran
+
+-------------------------------------------------------------------
+Sun Jul 15 00:00:00 UTC 2007 - dannoritzer@web.de
+
+- initial package for development snapshot gearing towards 4.0
+

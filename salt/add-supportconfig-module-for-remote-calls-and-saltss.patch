@@ -1,0 +1,1405 @@
+From 2bb024d871acaf5726eeb6e89fb83785605b4c83 Mon Sep 17 00:00:00 2001
+From: Bo Maryniuk <bo@suse.de>
+Date: Fri, 19 Oct 2018 15:44:47 +0200
+Subject: [PATCH] Add supportconfig module for remote calls and SaltSSH
+
+Add log collector for remote purposes
+
+Implement default archive name
+
+Fix imports
+
+Implement runner function
+
+Remove targets data collector function as it is now called by a module instead
+
+Add external method decorator marker
+
+Add utility class for detecting exportable methods
+
+Mark run method as an external function
+
+Implement function setter
+
+Fix imports
+
+Setup config from __opts__
+
+Use utility class
+
+Remove utils class
+
+Allow specify profile from the API parameter directly
+
+Rename module by virtual name
+
+Bypass parent subclass
+
+Implement profiles listing (local only for now)
+
+Specify profile from the state/call
+
+Set default or personalised archive name
+
+Add archives lister
+
+Add personalised name element to the archive name
+
+Use proper args/kwargs to the exported function
+
+Add archives deletion function
+
+Change log level when debugging rendered profiles
+
+Add ability to directly pass profile source when taking local data
+
+Add pillar profile support
+
+Remove extra-line
+
+Fix header
+
+Change output format for deleting archives
+
+Refactor logger output format
+
+Add time/milliseconds to each log notification
+
+Fix imports
+
+Switch output destination by context
+
+Add last archive function
+
+Lintfix
+
+Return consistent type
+
+Change output format for deleted archives report
+
+Implement report archive syncing to the reporting node
+
+Send multiple files at once via rsync, instead of send one after another
+
+Add sync stats formatter
+
+Change signature: cleanup -> move. Update docstring.
+
+Flush empty data from the output format
+
+Report archfiles activity
+
+Refactor imports
+
+Do not remove retcode if it is EX_OK
+
+Do not raise rsync error for undefined archives.
+
+Update header
+
+Add salt-support state module
+
+Move all functions into a callable class object
+
+Support __call__ function in state and command modules as default entrance that does not need to be specified in SLS state syntax
+
+Access from the outside only allowed class methods
+
+Pre-create destination of the archive, preventing single archive copied as a group name
+
+Handle functions exceptions
+
+Add unit test scaffold
+
+Add LogCollector UT for testing regular message
+
+Add LogCollector UT for testing INFO message
+
+Add LogCollector UT for testing WARNING message
+
+Replace hardcoded variables with defined constants
+
+Add LogCollector UT for testing ERROR message
+
+Test title attribute in msg method of LogCollector
+
+Add UT for LogCollector on highlighter method
+
+Add UT for LogCollector on put method
+
+Fix docstrings
+
+Add UT for archive name generator
+
+Add UT for custom archive name
+
+Fix docstring for the UT
+
+Add UT for checking profiles list format
+
+Add Unit Test for existing archives listing
+
+Add UT for the last archive function
+
+Create instance of the support class
+
+Add UT for successfully deleting all archives
+
+Add UT for deleting archives with failures
+
+Add UI for formatting sync stats and order preservation
+
+Add UT for testing sync failure when no archives has been specified
+
+Add UT for last picked archive has not found
+
+Add UT for last specified archive was not found
+
+Bugfix: do not create an array with None element in it
+
+Fix UT for found bugfix
+
+Add UT for syncing no archives failure
+
+Add UT for sync function
+
+Add UT for run support function
+
+Fix docstring for function "run"
+
+lintfix: use 'salt.support.mock' and 'patch()'
+
+Rewrite subdirectory creation and do not rely on Python3-only code
+
+Lintfix: remove unused imports
+
+Lintfix: regexp strings
+
+Break-down oneliner if/else clause
+
+Use ordered dictionary to preserve order of the state.
+
+This has transparent effect to the current process: OrderedDict is the
+same as just Python dict, except it is preserving order of the state
+chunks.
+
+Refactor state processing class.
+
+Add __call__ function to process single-id syntax
+
+Add backward-compatibility with default SLS syntax (id-per-call)
+
+Lintfix: E1120 no value in argument 'name' for class constructor
+
+Remove unused import
+
+Check last function by full name
+---
+ salt/cli/support/__init__.py           |   2 +-
+ salt/cli/support/collector.py          |  12 +-
+ salt/loader.py                         |   6 +-
+ salt/modules/saltsupport.py            | 381 ++++++++++++++++++++++++
+ salt/state.py                          |  34 ++-
+ salt/states/saltsupport.py             | 206 +++++++++++++
+ salt/utils/args.py                     |   4 +-
+ salt/utils/decorators/__init__.py      |  24 ++
+ tests/unit/modules/test_saltsupport.py | 394 +++++++++++++++++++++++++
+ 9 files changed, 1044 insertions(+), 19 deletions(-)
+ create mode 100644 salt/modules/saltsupport.py
+ create mode 100644 salt/states/saltsupport.py
+ create mode 100644 tests/unit/modules/test_saltsupport.py
+
+diff --git a/salt/cli/support/__init__.py b/salt/cli/support/__init__.py
+index 6a98a2d656..0a48b0a081 100644
+--- a/salt/cli/support/__init__.py
++++ b/salt/cli/support/__init__.py
+@@ -40,7 +40,7 @@ def get_profile(profile, caller, runner):
+         if os.path.exists(profile_path):
+             try:
+                 rendered_template = _render_profile(profile_path, caller, runner)
+-                log.trace('\n{d}\n{t}\n{d}\n'.format(d='-' * 80, t=rendered_template))
++                log.debug('\n{d}\n{t}\n{d}\n'.format(d='-' * 80, t=rendered_template))
+                 data.update(yaml.load(rendered_template))
+             except Exception as ex:
+                 log.debug(ex, exc_info=True)
+diff --git a/salt/cli/support/collector.py b/salt/cli/support/collector.py
+index a4343297b6..cbae189aea 100644
+--- a/salt/cli/support/collector.py
++++ b/salt/cli/support/collector.py
+@@ -354,7 +354,7 @@ class SaltSupport(salt.utils.parsers.SaltSupportOptionParser):
+ 
+         return data
+ 
+-    def collect_local_data(self):
++    def collect_local_data(self, profile=None, profile_source=None):
+         '''
+         Collects master system data.
+         :return:
+@@ -375,7 +375,7 @@ class SaltSupport(salt.utils.parsers.SaltSupportOptionParser):
+             '''
+             return self._extract_return(self._local_run({'fun': func, 'arg': args, 'kwarg': kwargs}))
+ 
+-        scenario = salt.cli.support.get_profile(self.config['support_profile'], call, run)
++        scenario = profile_source or salt.cli.support.get_profile(profile or self.config['support_profile'], call, run)
+         for category_name in scenario:
+             self.out.put(category_name)
+             self.collector.add(category_name)
+@@ -415,13 +415,6 @@ class SaltSupport(salt.utils.parsers.SaltSupportOptionParser):
+ 
+         return action_name.split(':')[0] or None
+ 
+-    def collect_targets_data(self):
+-        '''
+-        Collects minion targets data
+-        :return:
+-        '''
+-        # TODO: remote collector?
+-
+     def _cleanup(self):
+         '''
+         Cleanup if crash/exception
+@@ -511,7 +504,6 @@ class SaltSupport(salt.utils.parsers.SaltSupportOptionParser):
+                             self.collector.open()
+                             self.collect_local_data()
+                             self.collect_internal_data()
+-                            self.collect_targets_data()
+                             self.collector.close()
+ 
+                             archive_path = self.collector.archive_path
+diff --git a/salt/loader.py b/salt/loader.py
+index ae024ccac9..094a816d11 100644
+--- a/salt/loader.py
++++ b/salt/loader.py
+@@ -1570,8 +1570,10 @@ class LazyLoader(salt.utils.lazy.LazyDict):
+         ))
+ 
+         for attr in getattr(mod, '__load__', dir(mod)):
+-            if attr.startswith('_'):
+-                # private functions are skipped
++            if attr.startswith('_') and attr != '__call__':
++                # private functions are skipped,
++                # except __call__ which is default entrance
++                # for multi-function batch-like state syntax
+                 continue
+             func = getattr(mod, attr)
+             if not inspect.isfunction(func) and not isinstance(func, functools.partial):
+diff --git a/salt/modules/saltsupport.py b/salt/modules/saltsupport.py
+new file mode 100644
+index 0000000000..750b2655d6
+--- /dev/null
++++ b/salt/modules/saltsupport.py
+@@ -0,0 +1,381 @@
++# -*- coding: utf-8 -*-
++#
++# Author: Bo Maryniuk <bo@suse.de>
++#
++# Copyright 2018 SUSE LLC
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++# http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++'''
++:codeauthor: :email:`Bo Maryniuk <bo@suse.de>`
++
++Module to run salt-support within Salt.
++'''
++# pylint: disable=W0231,W0221
++
++from __future__ import unicode_literals, print_function, absolute_import
++
++import tempfile
++import re
++import os
++import sys
++import time
++import datetime
++import logging
++
++import salt.cli.support.intfunc
++import salt.utils.decorators
++import salt.utils.path
++import salt.cli.support
++import salt.exceptions
++import salt.utils.stringutils
++import salt.defaults.exitcodes
++import salt.utils.odict
++import salt.utils.dictupdate
++
++from salt.cli.support.collector import SaltSupport, SupportDataCollector
++
++__virtualname__ = 'support'
++log = logging.getLogger(__name__)
++
++
++class LogCollector(object):
++    '''
++    Output collector.
++    '''
++    INFO = 'info'
++    WARNING = 'warning'
++    ERROR = 'error'
++
++    class MessagesList(list):
++        def append(self, obj):
++            list.append(self, '{} - {}'.format(datetime.datetime.utcnow().strftime('%T.%f')[:-3], obj))
++        __call__ = append
++
++    def __init__(self):
++        self.messages = {
++            self.INFO: self.MessagesList(),
++            self.WARNING: self.MessagesList(),
++            self.ERROR: self.MessagesList(),
++        }
++
++    def msg(self, message, *args, **kwargs):
++        title = kwargs.get('title')
++        if title:
++            message = '{}: {}'.format(title, message)
++        self.messages[self.INFO](message)
++
++    def info(self, message, *args, **kwargs):
++        self.msg(message)
++
++    def warning(self, message, *args, **kwargs):
++        self.messages[self.WARNING](message)
++
++    def error(self, message, *args, **kwargs):
++        self.messages[self.ERROR](message)
++
++    def put(self, message, *args, **kwargs):
++        self.messages[self.INFO](message)
++
++    def highlight(self, message, *values, **kwargs):
++        self.msg(message.format(*values))
++
++
++class SaltSupportModule(SaltSupport):
++    '''
++    Salt Support module class.
++    '''
++    def __init__(self):
++        '''
++        Constructor
++        '''
++        self.config = self.setup_config()
++
++    def setup_config(self):
++        '''
++        Return current configuration
++        :return:
++        '''
++        return __opts__
++
++    def _get_archive_name(self, archname=None):
++        '''
++        Create default archive name.
++
++        :return:
++        '''
++        archname = re.sub('[^a-z0-9]', '', (archname or '').lower()) or 'support'
++        for grain in ['fqdn', 'host', 'localhost', 'nodename']:
++            host = __grains__.get(grain)
++            if host:
++                break
++        if not host:
++            host = 'localhost'
++
++        return os.path.join(tempfile.gettempdir(),
++                            '{hostname}-{archname}-{date}-{time}.bz2'.format(archname=archname,
++                                                                             hostname=host,
++                                                                             date=time.strftime('%Y%m%d'),
++                                                                             time=time.strftime('%H%M%S')))
++
++    @salt.utils.decorators.external
++    def profiles(self):
++        '''
++        Get list of profiles.
++
++        :return:
++        '''
++        return {
++            'standard': salt.cli.support.get_profiles(self.config),
++            'custom': [],
++        }
++
++    @salt.utils.decorators.external
++    def archives(self):
++        '''
++        Get list of existing archives.
++        :return:
++        '''
++        arc_files = []
++        tmpdir = tempfile.gettempdir()
++        for filename in os.listdir(tmpdir):
++            mtc = re.match(r'\w+-\w+-\d+-\d+\.bz2', filename)
++            if mtc and len(filename) == mtc.span()[-1]:
++                arc_files.append(os.path.join(tmpdir, filename))
++
++        return arc_files
++
++    @salt.utils.decorators.external
++    def last_archive(self):
++        '''
++        Get the last available archive
++        :return:
++        '''
++        archives = {}
++        for archive in self.archives():
++            archives[int(archive.split('.')[0].split('-')[-1])] = archive
++
++        return archives and archives[max(archives)] or None
++
++    @salt.utils.decorators.external
++    def delete_archives(self, *archives):
++        '''
++        Delete archives
++        :return:
++        '''
++        # Remove paths
++        _archives = []
++        for archive in archives:
++            _archives.append(os.path.basename(archive))
++        archives = _archives[:]
++
++        ret = {'files': {}, 'errors': {}}
++        for archive in self.archives():
++            arc_dir = os.path.dirname(archive)
++            archive = os.path.basename(archive)
++            if archives and archive in archives or not archives:
++                archive = os.path.join(arc_dir, archive)
++                try:
++                    os.unlink(archive)
++                    ret['files'][archive] = 'removed'
++                except Exception as err:
++                    ret['errors'][archive] = str(err)
++                    ret['files'][archive] = 'left'
++
++        return ret
++
++    def format_sync_stats(self, cnt):
++        '''
++        Format stats of the sync output.
++
++        :param cnt:
++        :return:
++        '''
++        stats = salt.utils.odict.OrderedDict()
++        if cnt.get('retcode') == salt.defaults.exitcodes.EX_OK:
++            for line in cnt.get('stdout', '').split(os.linesep):
++                line = line.split(': ')
++                if len(line) == 2:
++                    stats[line[0].lower().replace(' ', '_')] = line[1]
++            cnt['transfer'] = stats
++            del cnt['stdout']
++
++        # Remove empty
++        empty_sections = []
++        for section in cnt:
++            if not cnt[section] and section != 'retcode':
++                empty_sections.append(section)
++        for section in empty_sections:
++            del cnt[section]
++
++        return cnt
++
++    @salt.utils.decorators.depends('rsync')
++    @salt.utils.decorators.external
++    def sync(self, group, name=None, host=None, location=None, move=False, all=False):
++        '''
++        Sync the latest archive to the host on given location.
++
++        CLI Example:
++
++        .. code-block:: bash
++
++            salt '*' support.sync group=test
++            salt '*' support.sync group=test name=/tmp/myspecial-12345-67890.bz2
++            salt '*' support.sync group=test name=/tmp/myspecial-12345-67890.bz2 host=allmystuff.lan
++            salt '*' support.sync group=test name=/tmp/myspecial-12345-67890.bz2 host=allmystuff.lan location=/opt/
++
++        :param group: name of the local directory to which sync is going to put the result files
++        :param name: name of the archive. Latest, if not specified.
++        :param host: name of the destination host for rsync. Default is master, if not specified.
++        :param location: local destination directory, default temporary if not specified
++        :param move: move archive file[s]. Default is False.
++        :param all: work with all available archives. Default is False (i.e. latest available)
++
++        :return:
++        '''
++        tfh, tfn = tempfile.mkstemp()
++        processed_archives = []
++        src_uri = uri = None
++
++        last_arc = self.last_archive()
++        if name:
++            archives = [name]
++        elif all:
++            archives = self.archives()
++        elif last_arc:
++            archives = [last_arc]
++        else:
++            archives = []
++
++        for name in archives:
++            err = None
++            if not name:
++                err = 'No support archive has been defined.'
++            elif not os.path.exists(name):
++                err = 'Support archive "{}" was not found'.format(name)
++            if err is not None:
++                log.error(err)
++                raise salt.exceptions.SaltInvocationError(err)
++
++            if not uri:
++                src_uri = os.path.dirname(name)
++                uri = '{host}:{loc}'.format(host=host or __opts__['master'],
++                                            loc=os.path.join(location or tempfile.gettempdir(), group))
++
++            os.write(tfh, salt.utils.stringutils.to_bytes(os.path.basename(name)))
++            os.write(tfh, salt.utils.stringutils.to_bytes(os.linesep))
++            processed_archives.append(name)
++            log.debug('Syncing {filename} to {uri}'.format(filename=name, uri=uri))
++        os.close(tfh)
++
++        if not processed_archives:
++            raise salt.exceptions.SaltInvocationError('No archives found to transfer.')
++
++        ret = __salt__['rsync.rsync'](src=src_uri, dst=uri, additional_opts=['--stats', '--files-from={}'.format(tfn)])
++        ret['files'] = {}
++        for name in processed_archives:
++            if move:
++                salt.utils.dictupdate.update(ret, self.delete_archives(name))
++                log.debug('Deleting {filename}'.format(filename=name))
++                ret['files'][name] = 'moved'
++            else:
++                ret['files'][name] = 'copied'
++
++        try:
++            os.unlink(tfn)
++        except (OSError, IOError) as err:
++            log.error('Cannot remove temporary rsync file {fn}: {err}'.format(fn=tfn, err=err))
++
++        return self.format_sync_stats(ret)
++
++    @salt.utils.decorators.external
++    def run(self, profile='default', pillar=None, archive=None, output='nested'):
++        '''
++        Run Salt Support on the minion.
++
++        profile
++            Set available profile name. Default is "default".
++
++        pillar
++            Set available profile from the pillars.
++
++        archive
++            Override archive name. Default is "support". This results to "hostname-support-YYYYMMDD-hhmmss.bz2".
++
++        output
++            Change the default outputter. Default is "nested".
++
++        CLI Example:
++
++        .. code-block:: bash
++
++            salt '*' support.run
++            salt '*' support.run profile=network
++            salt '*' support.run pillar=something_special
++        '''
++        class outputswitch(object):
++            '''
++            Output switcher on context
++            '''
++            def __init__(self, output_device):
++                self._tmp_out = output_device
++                self._orig_out = None
++
++            def __enter__(self):
++                self._orig_out = salt.cli.support.intfunc.out
++                salt.cli.support.intfunc.out = self._tmp_out
++
++            def __exit__(self, *args):
++                salt.cli.support.intfunc.out = self._orig_out
++
++        self.out = LogCollector()
++        with outputswitch(self.out):
++            self.collector = SupportDataCollector(archive or self._get_archive_name(archname=archive), output)
++            self.collector.out = self.out
++            self.collector.open()
++            self.collect_local_data(profile=profile, profile_source=__pillar__.get(pillar))
++            self.collect_internal_data()
++            self.collector.close()
++
++        return {'archive': self.collector.archive_path,
++                'messages': self.out.messages}
++
++
++def __virtual__():
++    '''
++    Set method references as module functions aliases
++    :return:
++    '''
++    support = SaltSupportModule()
++
++    def _set_function(obj):
++        '''
++        Create a Salt function for the SaltSupport class.
++        '''
++        def _cmd(*args, **kwargs):
++            '''
++            Call support method as a function from the Salt.
++            '''
++            _kwargs = {}
++            for kw in kwargs:
++                if not kw.startswith('__'):
++                    _kwargs[kw] = kwargs[kw]
++            return obj(*args, **_kwargs)
++        _cmd.__doc__ = obj.__doc__
++        return _cmd
++
++    for m_name in dir(support):
++        obj = getattr(support, m_name)
++        if getattr(obj, 'external', False):
++            setattr(sys.modules[__name__], m_name, _set_function(obj))
++
++    return __virtualname__
+diff --git a/salt/state.py b/salt/state.py
+index e7288bce2e..b4b2a00601 100644
+--- a/salt/state.py
++++ b/salt/state.py
+@@ -1315,8 +1315,9 @@ class State(object):
+                 names = []
+                 if state.startswith('__'):
+                     continue
+-                chunk = {'state': state,
+-                         'name': name}
++                chunk = OrderedDict()
++                chunk['state'] = state
++                chunk['name'] = name
+                 if orchestration_jid is not None:
+                     chunk['__orchestration_jid__'] = orchestration_jid
+                 if '__sls__' in body:
+@@ -1901,8 +1902,12 @@ class State(object):
+                         ret = self.call_parallel(cdata, low)
+                     else:
+                         self.format_slots(cdata)
+-                        ret = self.states[cdata['full']](*cdata['args'],
+-                                                         **cdata['kwargs'])
++                        if cdata['full'].split('.')[-1] == '__call__':
++                            # __call__ requires OrderedDict to preserve state order
++                            # kwargs are also invalid overall
++                            ret = self.states[cdata['full']](cdata['args'], module=None, state=cdata['kwargs'])
++                        else:
++                            ret = self.states[cdata['full']](*cdata['args'], **cdata['kwargs'])
+                 self.states.inject_globals = {}
+             if 'check_cmd' in low and '{0[state]}.mod_run_check_cmd'.format(low) not in self.states:
+                 ret.update(self._run_check_cmd(low))
+@@ -2729,10 +2734,31 @@ class State(object):
+         running.update(errors)
+         return running
+ 
++    def inject_default_call(self, high):
++        '''
++        Sets .call function to a state, if not there.
++
++        :param high:
++        :return:
++        '''
++        for chunk in high:
++            state = high[chunk]
++            for state_ref in state:
++                needs_default = True
++                for argset in state[state_ref]:
++                    if isinstance(argset, six.string_types):
++                        needs_default = False
++                        break
++                if needs_default:
++                    order = state[state_ref].pop(-1)
++                    state[state_ref].append('__call__')
++                    state[state_ref].append(order)
++
+     def call_high(self, high, orchestration_jid=None):
+         '''
+         Process a high data call and ensure the defined states.
+         '''
++        self.inject_default_call(high)
+         errors = []
+         # If there is extension data reconcile it
+         high, ext_errors = self.reconcile_extend(high)
+diff --git a/salt/states/saltsupport.py b/salt/states/saltsupport.py
+new file mode 100644
+index 0000000000..f245f7f137
+--- /dev/null
++++ b/salt/states/saltsupport.py
+@@ -0,0 +1,206 @@
++# -*- coding: utf-8 -*-
++#
++# Author: Bo Maryniuk <bo@suse.de>
++#
++# Copyright 2018 SUSE LLC
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++# http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++
++r'''
++:codeauthor: :email:`Bo Maryniuk <bo@suse.de>`
++
++Execution of Salt Support from within states
++============================================
++
++State to collect support data from the systems:
++
++.. code-block:: yaml
++
++    examine_my_systems:
++      support.taken:
++        - profile: default
++
++      support.collected:
++        - group: somewhere
++        - move: true
++
++'''
++from __future__ import absolute_import, print_function, unicode_literals
++import logging
++import os
++import tempfile
++
++# Import salt modules
++import salt.fileclient
++import salt.utils.decorators.path
++import salt.exceptions
++import salt.utils.odict
++
++log = logging.getLogger(__name__)
++__virtualname__ = 'support'
++
++
++class SaltSupportState(object):
++    '''
++    Salt-support.
++    '''
++    EXPORTED = ['collected', 'taken']
++
++    def get_kwargs(self, data):
++        kwargs = {}
++        for keyset in data:
++            kwargs.update(keyset)
++
++        return kwargs
++
++    def __call__(self, state):
++        '''
++        Call support.
++
++        :param args:
++        :param kwargs:
++        :return:
++        '''
++        ret = {
++            'name': state.pop('name'),
++            'changes': {},
++            'result': True,
++            'comment': '',
++        }
++
++        out = {}
++        functions = ['Functions:']
++        try:
++            for ref_func, ref_kwargs in state.items():
++                if ref_func not in self.EXPORTED:
++                    raise salt.exceptions.SaltInvocationError('Function {} is not found'.format(ref_func))
++                out[ref_func] = getattr(self, ref_func)(**self.get_kwargs(ref_kwargs))
++                functions.append('  - {}'.format(ref_func))
++            ret['comment'] = '\n'.join(functions)
++        except Exception as ex:
++            ret['comment'] = str(ex)
++            ret['result'] = False
++        ret['changes'] = out
++
++        return ret
++
++    def check_destination(self, location, group):
++        '''
++        Check destination for the archives.
++        :return:
++        '''
++        # Pre-create destination, since rsync will
++        # put one file named as group
++        try:
++            destination = os.path.join(location, group)
++            if os.path.exists(destination) and not os.path.isdir(destination):
++                raise salt.exceptions.SaltException('Destination "{}" should be directory!'.format(destination))
++            if not os.path.exists(destination):
++                os.makedirs(destination)
++                log.debug('Created destination directory for archives: %s', destination)
++            else:
++                log.debug('Archives destination directory %s already exists', destination)
++        except OSError as err:
++            log.error(err)
++
++    def collected(self, group, filename=None, host=None, location=None, move=True, all=True):
++        '''
++        Sync archives to a central place.
++
++        :param name:
++        :param group:
++        :param filename:
++        :param host:
++        :param location:
++        :param move:
++        :param all:
++        :return:
++        '''
++        ret = {
++            'name': 'support.collected',
++            'changes': {},
++            'result': True,
++            'comment': '',
++        }
++        location = location or tempfile.gettempdir()
++        self.check_destination(location, group)
++        ret['changes'] = __salt__['support.sync'](group, name=filename, host=host,
++                                                  location=location, move=move, all=all)
++
++        return ret
++
++    def taken(self, profile='default', pillar=None, archive=None, output='nested'):
++        '''
++        Takes minion support config data.
++
++        :param profile:
++        :param pillar:
++        :param archive:
++        :param output:
++        :return:
++        '''
++        ret = {
++            'name': 'support.taken',
++            'changes': {},
++            'result': True,
++        }
++
++        result = __salt__['support.run'](profile=profile, pillar=pillar, archive=archive, output=output)
++        if result.get('archive'):
++            ret['comment'] = 'Information about this system has been saved to {} file.'.format(result['archive'])
++            ret['changes']['archive'] = result['archive']
++            ret['changes']['messages'] = {}
++            for key in ['info', 'error', 'warning']:
++                if result.get('messages', {}).get(key):
++                    ret['changes']['messages'][key] = result['messages'][key]
++        else:
++            ret['comment'] = ''
++
++        return ret
++
++
++_support_state = SaltSupportState()
++
++
++def __call__(*args, **kwargs):
++    '''
++    SLS single-ID syntax processing.
++
++    module:
++        This module reference, equals to sys.modules[__name__]
++
++    state:
++        Compiled state in preserved order. The function supposed to look
++        at first level array of functions.
++
++    :param cdata:
++    :param kwargs:
++    :return:
++    '''
++    return _support_state(kwargs.get('state', {}))
++
++
++def taken(name, profile='default', pillar=None, archive=None, output='nested'):
++    return _support_state.taken(profile=profile, pillar=pillar,
++                                archive=archive, output=output)
++
++
++def collected(name, group, filename=None, host=None, location=None, move=True, all=True):
++    return _support_state.collected(group=group, filename=filename,
++                                    host=host, location=location, move=move, all=all)
++
++
++def __virtual__():
++    '''
++    Salt Support state
++    '''
++    return __virtualname__
+diff --git a/salt/utils/args.py b/salt/utils/args.py
+index a3d8099c7f..19de7d5d39 100644
+--- a/salt/utils/args.py
++++ b/salt/utils/args.py
+@@ -19,7 +19,7 @@ import salt.utils.data
+ import salt.utils.jid
+ import salt.utils.versions
+ import salt.utils.yaml
+-
++from salt.utils.odict import OrderedDict
+ 
+ if six.PY3:
+     KWARG_REGEX = re.compile(r'^([^\d\W][\w.-]*)=(?!=)(.*)$', re.UNICODE)
+@@ -409,7 +409,7 @@ def format_call(fun,
+     ret = initial_ret is not None and initial_ret or {}
+ 
+     ret['args'] = []
+-    ret['kwargs'] = {}
++    ret['kwargs'] = OrderedDict()
+ 
+     aspec = get_function_argspec(fun, is_class_method=is_class_method)
+ 
+diff --git a/salt/utils/decorators/__init__.py b/salt/utils/decorators/__init__.py
+index 81d1812833..c5da5b6d4b 100644
+--- a/salt/utils/decorators/__init__.py
++++ b/salt/utils/decorators/__init__.py
+@@ -596,3 +596,27 @@ def ensure_unicode_args(function):
+         else:
+             return function(*args, **kwargs)
+     return wrapped
++
++
++def external(func):
++    '''
++    Mark function as external.
++
++    :param func:
++    :return:
++    '''
++
++    def f(*args, **kwargs):
++        '''
++        Stub.
++
++        :param args:
++        :param kwargs:
++        :return:
++        '''
++        return func(*args, **kwargs)
++
++    f.external = True
++    f.__doc__ = func.__doc__
++
++    return f
+diff --git a/tests/unit/modules/test_saltsupport.py b/tests/unit/modules/test_saltsupport.py
+new file mode 100644
+index 0000000000..7bd652a90e
+--- /dev/null
++++ b/tests/unit/modules/test_saltsupport.py
+@@ -0,0 +1,394 @@
++# -*- coding: utf-8 -*-
++'''
++    :codeauthor: Bo Maryniuk <bo@suse.de>
++'''
++
++# Import Python libs
++from __future__ import absolute_import, print_function, unicode_literals
++
++# Import Salt Testing Libs
++from tests.support.mixins import LoaderModuleMockMixin
++from tests.support.unit import TestCase, skipIf
++from tests.support.mock import patch, MagicMock, NO_MOCK, NO_MOCK_REASON
++from salt.modules import saltsupport
++import salt.exceptions
++import datetime
++
++try:
++    import pytest
++except ImportError:
++    pytest = None
++
++
++@skipIf(not bool(pytest), 'Pytest required')
++@skipIf(NO_MOCK, NO_MOCK_REASON)
++class SaltSupportModuleTestCase(TestCase, LoaderModuleMockMixin):
++    '''
++    Test cases for salt.modules.support::SaltSupportModule
++    '''
++    def setup_loader_modules(self):
++        return {saltsupport: {}}
++
++    @patch('tempfile.gettempdir', MagicMock(return_value='/mnt/storage'))
++    @patch('salt.modules.saltsupport.__grains__', {'fqdn': 'c-3po'})
++    @patch('time.strftime', MagicMock(return_value='000'))
++    def test_get_archive_name(self):
++        '''
++        Test archive name construction.
++
++        :return:
++        '''
++        support = saltsupport.SaltSupportModule()
++        assert support._get_archive_name() == '/mnt/storage/c-3po-support-000-000.bz2'
++
++    @patch('tempfile.gettempdir', MagicMock(return_value='/mnt/storage'))
++    @patch('salt.modules.saltsupport.__grains__', {'fqdn': 'c-3po'})
++    @patch('time.strftime', MagicMock(return_value='000'))
++    def test_get_custom_archive_name(self):
++        '''
++        Test get custom archive name.
++
++        :return:
++        '''
++        support = saltsupport.SaltSupportModule()
++        temp_name = support._get_archive_name(archname='Darth Wader')
++        assert temp_name == '/mnt/storage/c-3po-darthwader-000-000.bz2'
++        temp_name = support._get_archive_name(archname='Яйця з сіллю')
++        assert temp_name == '/mnt/storage/c-3po-support-000-000.bz2'
++        temp_name = support._get_archive_name(archname='!@#$%^&*()Fillip J. Fry')
++        assert temp_name == '/mnt/storage/c-3po-fillipjfry-000-000.bz2'
++
++    @patch('salt.cli.support.get_profiles', MagicMock(return_value={'message': 'Feature was not beta tested'}))
++    def test_profiles_format(self):
++        '''
++        Test profiles format.
++
++        :return:
++        '''
++        support = saltsupport.SaltSupportModule()
++        profiles = support.profiles()
++        assert 'custom' in profiles
++        assert 'standard' in profiles
++        assert 'message' in profiles['standard']
++        assert profiles['custom'] == []
++        assert profiles['standard']['message'] == 'Feature was not beta tested'
++
++    @patch('tempfile.gettempdir', MagicMock(return_value='/mnt/storage'))
++    @patch('os.listdir', MagicMock(return_value=['one-support-000-000.bz2', 'two-support-111-111.bz2', 'trash.bz2',
++                                                 'hostname-000-000.bz2', 'three-support-wrong222-222.bz2',
++                                                 '000-support-000-000.bz2']))
++    def test_get_existing_archives(self):
++        '''
++        Get list of existing archives.
++
++        :return:
++        '''
++        support = saltsupport.SaltSupportModule()
++        out = support.archives()
++        assert len(out) == 3
++        for name in ['/mnt/storage/one-support-000-000.bz2', '/mnt/storage/two-support-111-111.bz2',
++                     '/mnt/storage/000-support-000-000.bz2']:
++            assert name in out
++
++    def test_last_archive(self):
++        '''
++        Get last archive name
++        :return:
++        '''
++        support = saltsupport.SaltSupportModule()
++        support.archives = MagicMock(return_value=['/mnt/storage/one-support-000-000.bz2',
++                                                   '/mnt/storage/two-support-111-111.bz2',
++                                                   '/mnt/storage/three-support-222-222.bz2'])
++        assert support.last_archive() == '/mnt/storage/three-support-222-222.bz2'
++
++    @patch('os.unlink', MagicMock(return_value=True))
++    def test_delete_all_archives_success(self):
++        '''
++        Test delete archives
++        :return:
++        '''
++        support = saltsupport.SaltSupportModule()
++        support.archives = MagicMock(return_value=['/mnt/storage/one-support-000-000.bz2',
++                                                   '/mnt/storage/two-support-111-111.bz2',
++                                                   '/mnt/storage/three-support-222-222.bz2'])
++        ret = support.delete_archives()
++        assert 'files' in ret
++        assert 'errors' in ret
++        assert not bool(ret['errors'])
++        assert bool(ret['files'])
++        assert isinstance(ret['errors'], dict)
++        assert isinstance(ret['files'], dict)
++
++        for arc in support.archives():
++            assert ret['files'][arc] == 'removed'
++
++    @patch('os.unlink', MagicMock(return_value=False, side_effect=[OSError('Decreasing electron flux'),
++                                                                   OSError('Solar flares interference'),
++                                                                   None]))
++    def test_delete_all_archives_failure(self):
++        '''
++        Test delete archives failure
++        :return:
++        '''
++        support = saltsupport.SaltSupportModule()
++        support.archives = MagicMock(return_value=['/mnt/storage/one-support-000-000.bz2',
++                                                   '/mnt/storage/two-support-111-111.bz2',
++                                                   '/mnt/storage/three-support-222-222.bz2'])
++        ret = support.delete_archives()
++        assert 'files' in ret
++        assert 'errors' in ret
++        assert bool(ret['errors'])
++        assert bool(ret['files'])
++        assert isinstance(ret['errors'], dict)
++        assert isinstance(ret['files'], dict)
++
++        assert ret['files']['/mnt/storage/three-support-222-222.bz2'] == 'removed'
++        assert ret['files']['/mnt/storage/one-support-000-000.bz2'] == 'left'
++        assert ret['files']['/mnt/storage/two-support-111-111.bz2'] == 'left'
++
++        assert len(ret['errors']) == 2
++        assert ret['errors']['/mnt/storage/one-support-000-000.bz2'] == 'Decreasing electron flux'
++        assert ret['errors']['/mnt/storage/two-support-111-111.bz2'] == 'Solar flares interference'
++
++    def test_format_sync_stats(self):
++        '''
++        Test format rsync stats for preserving ordering of the keys
++
++        :return:
++        '''
++        support = saltsupport.SaltSupportModule()
++        stats = '''
++robot: Bender
++cute: Leela
++weird: Zoidberg
++professor: Farnsworth
++        '''
++        f_stats = support.format_sync_stats({'retcode': 0, 'stdout': stats})
++        assert list(f_stats['transfer'].keys()) == ['robot', 'cute', 'weird', 'professor']
++        assert list(f_stats['transfer'].values()) == ['Bender', 'Leela', 'Zoidberg', 'Farnsworth']
++
++    @patch('tempfile.mkstemp', MagicMock(return_value=(0, 'dummy')))
++    @patch('os.close', MagicMock())
++    def test_sync_no_archives_failure(self):
++        '''
++        Test sync failed when no archives specified.
++
++        :return:
++        '''
++        support = saltsupport.SaltSupportModule()
++        support.archives = MagicMock(return_value=[])
++
++        with pytest.raises(salt.exceptions.SaltInvocationError) as err:
++            support.sync('group-name')
++        assert 'No archives found to transfer' in str(err)
++
++    @patch('tempfile.mkstemp', MagicMock(return_value=(0, 'dummy')))
++    @patch('os.path.exists', MagicMock(return_value=False))
++    def test_sync_last_picked_archive_not_found_failure(self):
++        '''
++        Test sync failed when archive was not found (last picked)
++
++        :return:
++        '''
++        support = saltsupport.SaltSupportModule()
++        support.archives = MagicMock(return_value=['/mnt/storage/one-support-000-000.bz2',
++                                                   '/mnt/storage/two-support-111-111.bz2',
++                                                   '/mnt/storage/three-support-222-222.bz2'])
++
++        with pytest.raises(salt.exceptions.SaltInvocationError) as err:
++            support.sync('group-name')
++        assert ' Support archive "/mnt/storage/three-support-222-222.bz2" was not found' in str(err)
++
++    @patch('tempfile.mkstemp', MagicMock(return_value=(0, 'dummy')))
++    @patch('os.path.exists', MagicMock(return_value=False))
++    def test_sync_specified_archive_not_found_failure(self):
++        '''
++        Test sync failed when archive was not found (last picked)
++
++        :return:
++        '''
++        support = saltsupport.SaltSupportModule()
++        support.archives = MagicMock(return_value=['/mnt/storage/one-support-000-000.bz2',
++                                                   '/mnt/storage/two-support-111-111.bz2',
++                                                   '/mnt/storage/three-support-222-222.bz2'])
++
++        with pytest.raises(salt.exceptions.SaltInvocationError) as err:
++            support.sync('group-name', name='lost.bz2')
++        assert ' Support archive "lost.bz2" was not found' in str(err)
++
++    @patch('tempfile.mkstemp', MagicMock(return_value=(0, 'dummy')))
++    @patch('os.path.exists', MagicMock(return_value=False))
++    @patch('os.close', MagicMock())
++    def test_sync_no_archive_to_transfer_failure(self):
++        '''
++        Test sync failed when no archive was found to transfer
++
++        :return:
++        '''
++        support = saltsupport.SaltSupportModule()
++        support.archives = MagicMock(return_value=[])
++        with pytest.raises(salt.exceptions.SaltInvocationError) as err:
++            support.sync('group-name', all=True)
++        assert 'No archives found to transfer' in str(err)
++
++    @patch('tempfile.mkstemp', MagicMock(return_value=(0, 'dummy')))
++    @patch('os.path.exists', MagicMock(return_value=True))
++    @patch('os.close', MagicMock())
++    @patch('os.write', MagicMock())
++    @patch('os.unlink', MagicMock())
++    @patch('salt.modules.saltsupport.__salt__', {'rsync.rsync': MagicMock(return_value={})})
++    def test_sync_archives(self):
++        '''
++        Test sync archives
++        :return:
++        '''
++        support = saltsupport.SaltSupportModule()
++        support.archives = MagicMock(return_value=['/mnt/storage/one-support-000-000.bz2',
++                                                   '/mnt/storage/two-support-111-111.bz2',
++                                                   '/mnt/storage/three-support-222-222.bz2'])
++        out = support.sync('group-name', host='buzz', all=True, move=False)
++        assert 'files' in out
++        for arc_name in out['files']:
++            assert out['files'][arc_name] == 'copied'
++        assert saltsupport.os.unlink.call_count == 1
++        assert saltsupport.os.unlink.call_args_list[0][0][0] == 'dummy'
++        calls = []
++        for call in saltsupport.os.write.call_args_list:
++            assert len(call) == 2
++            calls.append(call[0])
++        assert calls == [(0, b'one-support-000-000.bz2'),
++                         (0, b'\n'), (0, b'two-support-111-111.bz2'), (0, b'\n'),
++                         (0, b'three-support-222-222.bz2'), (0, b'\n')]
++
++    @patch('salt.modules.saltsupport.__pillar__', {})
++    @patch('salt.modules.saltsupport.SupportDataCollector', MagicMock())
++    def test_run_support(self):
++        '''
++        Test run support
++        :return:
++        '''
++        saltsupport.SupportDataCollector(None, None).archive_path = 'dummy'
++        support = saltsupport.SaltSupportModule()
++        support.collect_internal_data = MagicMock()
++        support.collect_local_data = MagicMock()
++        out = support.run()
++
++        for section in ['messages', 'archive']:
++            assert section in out
++        assert out['archive'] == 'dummy'
++        for section in ['warning', 'error', 'info']:
++            assert section in out['messages']
++        ld_call = support.collect_local_data.call_args_list[0][1]
++        assert 'profile' in ld_call
++        assert ld_call['profile'] == 'default'
++        assert 'profile_source' in ld_call
++        assert ld_call['profile_source'] is None
++        assert support.collector.open.call_count == 1
++        assert support.collector.close.call_count == 1
++        assert support.collect_internal_data.call_count == 1
++
++
++@skipIf(not bool(pytest), 'Pytest required')
++@skipIf(NO_MOCK, NO_MOCK_REASON)
++class LogCollectorTestCase(TestCase, LoaderModuleMockMixin):
++    '''
++    Test cases for salt.modules.support::LogCollector
++    '''
++    def setup_loader_modules(self):
++        return {saltsupport: {}}
++
++    def test_msg(self):
++        '''
++        Test message to the log collector.
++
++        :return:
++        '''
++        utcmock = MagicMock()
++        utcmock.utcnow = MagicMock(return_value=datetime.datetime.utcfromtimestamp(0))
++        with patch('datetime.datetime', utcmock):
++            msg = 'Upgrading /dev/null device'
++            out = saltsupport.LogCollector()
++            out.msg(msg, title='Here')
++            assert saltsupport.LogCollector.INFO in out.messages
++            assert type(out.messages[saltsupport.LogCollector.INFO]) == saltsupport.LogCollector.MessagesList
++            assert out.messages[saltsupport.LogCollector.INFO] == ['00:00:00.000 - {0}: {1}'.format('Here', msg)]
++
++    def test_info_message(self):
++        '''
++        Test info message to the log collector.
++
++        :return:
++        '''
++        utcmock = MagicMock()
++        utcmock.utcnow = MagicMock(return_value=datetime.datetime.utcfromtimestamp(0))
++        with patch('datetime.datetime', utcmock):
++            msg = 'SIMM crosstalk during tectonic stress'
++            out = saltsupport.LogCollector()
++            out.info(msg)
++            assert saltsupport.LogCollector.INFO in out.messages
++            assert type(out.messages[saltsupport.LogCollector.INFO]) == saltsupport.LogCollector.MessagesList
++            assert out.messages[saltsupport.LogCollector.INFO] == ['00:00:00.000 - {}'.format(msg)]
++
++    def test_put_message(self):
++        '''
++        Test put message to the log collector.
++
++        :return:
++        '''
++        utcmock = MagicMock()
++        utcmock.utcnow = MagicMock(return_value=datetime.datetime.utcfromtimestamp(0))
++        with patch('datetime.datetime', utcmock):
++            msg = 'Webmaster kidnapped by evil cult'
++            out = saltsupport.LogCollector()
++            out.put(msg)
++            assert saltsupport.LogCollector.INFO in out.messages
++            assert type(out.messages[saltsupport.LogCollector.INFO]) == saltsupport.LogCollector.MessagesList
++            assert out.messages[saltsupport.LogCollector.INFO] == ['00:00:00.000 - {}'.format(msg)]
++
++    def test_warning_message(self):
++        '''
++        Test warning message to the log collector.
++
++        :return:
++        '''
++        utcmock = MagicMock()
++        utcmock.utcnow = MagicMock(return_value=datetime.datetime.utcfromtimestamp(0))
++        with patch('datetime.datetime', utcmock):
++            msg = 'Your e-mail is now being delivered by USPS'
++            out = saltsupport.LogCollector()
++            out.warning(msg)
++            assert saltsupport.LogCollector.WARNING in out.messages
++            assert type(out.messages[saltsupport.LogCollector.WARNING]) == saltsupport.LogCollector.MessagesList
++            assert out.messages[saltsupport.LogCollector.WARNING] == ['00:00:00.000 - {}'.format(msg)]
++
++    def test_error_message(self):
++        '''
++        Test error message to the log collector.
++
++        :return:
++        '''
++        utcmock = MagicMock()
++        utcmock.utcnow = MagicMock(return_value=datetime.datetime.utcfromtimestamp(0))
++        with patch('datetime.datetime', utcmock):
++            msg = 'Learning curve appears to be fractal'
++            out = saltsupport.LogCollector()
++            out.error(msg)
++            assert saltsupport.LogCollector.ERROR in out.messages
++            assert type(out.messages[saltsupport.LogCollector.ERROR]) == saltsupport.LogCollector.MessagesList
++            assert out.messages[saltsupport.LogCollector.ERROR] == ['00:00:00.000 - {}'.format(msg)]
++
++    def test_hl_message(self):
++        '''
++        Test highlighter message to the log collector.
++
++        :return:
++        '''
++        utcmock = MagicMock()
++        utcmock.utcnow = MagicMock(return_value=datetime.datetime.utcfromtimestamp(0))
++        with patch('datetime.datetime', utcmock):
++            out = saltsupport.LogCollector()
++            out.highlight('The {} TTYs became {} TTYs and vice versa', 'real', 'pseudo')
++            assert saltsupport.LogCollector.INFO in out.messages
++            assert type(out.messages[saltsupport.LogCollector.INFO]) == saltsupport.LogCollector.MessagesList
++            assert out.messages[saltsupport.LogCollector.INFO] == ['00:00:00.000 - The real TTYs became '
++                                                                   'pseudo TTYs and vice versa']
+-- 
+2.20.1
+
+

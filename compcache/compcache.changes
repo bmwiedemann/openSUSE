@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Thu Nov 23 13:44:53 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Mar 15 12:50:48 UTC 2017 - dimstar@opensuse.org
+
+- PreRequire %insserv_prereq: since openSUSE is a systemd based
+  distro, the insserv tools cannot be assumed to be present.
+
+-------------------------------------------------------------------
+Tue May 31 09:08:24 CEST 2016 - tiwai@suse.de
+
+- Fix init script for 4.x and later kernels (boo#982279)
+
+-------------------------------------------------------------------
+Tue Jul 16 14:38:08 CEST 2013 - tiwai@suse.de
+
+- module parameter again changed back to "num_devices" (bnc#825238)
+- fix package description, remove about compcache-kmp (bnc#825238)
+
+-------------------------------------------------------------------
+Sun Feb 26 14:46:36 CET 2012 - ro@suse.de
+
+- module parameter name changed from "num_devices" to
+  "zram_num_devices", adapt init-script accordingly 
+
+-------------------------------------------------------------------
+Mon Jan  9 16:22:15 CET 2012 - tiwai@suse.de
+
+- fix init script for 3.x kernel (bnc#739584)
+
+-------------------------------------------------------------------
+Sat Sep 17 23:45:04 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Mon Mar 21 14:55:11 CET 2011 - tiwai@suse.de
+
+- Fix init script for 11.4 to work with empty $COMPCACHE_SIZE_KB
+  (bnc#681048)
+
+-------------------------------------------------------------------
+Thu Jan 13 20:43:28 CET 2011 - tiwai@suse.de
+
+- fix some typos in init script
+
+-------------------------------------------------------------------
+Tue Jan 11 15:17:39 CET 2011 - tiwai@suse.de
+
+- updated to compcache-0.6.2: see ChangeLog for details;
+  this fixes the incompatible statics ioctl for oS 11.3
+  (bnc#647345)
+- improved / fixed init and sysconfig files (bnc#661993)
+- adapted init script for 11.4 ramz driver; rzscontrol is no
+  longer used for zram driver; package contains only scripts
+
+-------------------------------------------------------------------
+Wed May 12 16:21:14 CEST 2010 - tiwai@suse.de
+
+- don't build KMPs for openSUSE 11.3 or later as the kernel
+  already supports ramzswap (bnc#604610)
+
+-------------------------------------------------------------------
+Wed Apr 21 19:07:31 UTC 2010 - coolo@novell.com
+
+- include header for kzalloc
+
+-------------------------------------------------------------------
+Mon Mar  8 23:09:41 UTC 2010 - death_knight@gamebox.net
+
+- additional ramzswap devices for SMP CPU machines.
+
+-------------------------------------------------------------------
+Tue Dec 29 20:46:19 UTC 2009 - coolo@novell.com
+
+- actually compile the binaries to be portable 
+
+-------------------------------------------------------------------
+Tue Nov 24 16:49:30 CET 2009 - tiwai@suse.de
+
+- yet another fixes for older kernels
+
+-------------------------------------------------------------------
+Mon Nov 23 17:48:15 CET 2009 - tiwai@suse.de
+
+- fix builds with various kernel versions
+
+-------------------------------------------------------------------
+Mon Nov 23 16:58:26 CET 2009 - tiwai@suse.de
+
+- updated to version 0.6; see ChangeLog for details
+  
+-------------------------------------------------------------------
+Mon Aug  3 18:31:28 CEST 2009 - tiwai@suse.de
+
+- fix build with 2.6.31 kernel
+
+-------------------------------------------------------------------
+Fri May  8 11:04:05 CEST 2009 - tiwai@suse.de
+
+- disable build on 10.3 and older, removed the test patch
+- fix boot script to match with ramzswap
+
+-------------------------------------------------------------------
+Thu May  7 15:34:40 CEST 2009 - tiwai@suse.de
+
+- fix build with 10.3 kernel
+
+-------------------------------------------------------------------
+Thu May  7 14:38:12 CEST 2009 - tiwai@suse.de
+
+- clean up obsolete patch
+
+-------------------------------------------------------------------
+Thu May  7 17:59:18 IST 2009 - cyberorg@opensuse.org
+
+- Update to 0.5.2 
+
+-------------------------------------------------------------------
+Mon Nov  3 09:31:12 CET 2008 - tiwai@suse.de
+
+- fixed init script
+
+-------------------------------------------------------------------
+Thu Oct 23 14:53:54 CEST 2008 - tiwai@suse.de
+
+- initial version: 0.4
+

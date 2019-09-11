@@ -1,0 +1,467 @@
+-------------------------------------------------------------------
+Tue Mar 26 15:43:09 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix fdupes
+- Install only Python 3 Sphinx for docs
+
+-------------------------------------------------------------------
+Thu Dec  6 21:03:16 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Dec  6 19:58:15 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 0.8.4:
+  * Ignore some more pep8 warnings
+  * Support %license macro
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:25 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Apr 23 10:20:20 UTC 2018 - tbechtold@suse.com
+
+- update to 0.8.3:
+  * Remove Sphinx cap
+  * Fix copyright year in tests
+  * Use release\_urls() XMLRPC method for the time being
+  * Test python 3.6 and remove 3.5
+- drop fix-api-package-urls.patch (merged upstream)
+
+-------------------------------------------------------------------
+Tue Apr 17 09:45:04 UTC 2018 - kbabioch@suse.com
+
+- Added fix-api-package-urls.patch: Fix an issue with a deprecated
+  XMLRPC method (bnc#1089613)
+
+-------------------------------------------------------------------
+Tue Mar  6 17:11:17 UTC 2018 - dmueller@suse.com
+
+- update url to point to the new location (bsc#1079905)
+
+-------------------------------------------------------------------
+Fri Dec 22 09:48:29 UTC 2017 - tbechtold@suse.com
+
+- update to 0.8.2:
+  * pep8 fixes
+  * opensuse template updates
+  * Add source\_url to Args in tests and use None as default value
+  * Removed unneeded nargs parameter to add\_argument
+  * Add a --source-url parameter to 'fetch' and 'generate' commands
+  * tests: templates: fix version
+
+-------------------------------------------------------------------
+Fri Aug 11 08:22:57 UTC 2017 - tbechtold@suse.com
+
+- update to 0.8.1:
+  * Enable tests with python setup.py test
+  * Also support for python 3.6
+  * Fix opensuse's multipython template
+  * unify trailing whitespaces in templates
+  * Handle no upstream source download URL gracefully
+  * Allow packaging custom pypi names via obs-from-pypi.py
+
+-------------------------------------------------------------------
+Thu Jun 22 08:37:19 UTC 2017 - tbechtold@suse.com
+
+- Use update-alternatives for the py2pack executable
+
+-------------------------------------------------------------------
+Thu Apr 27 15:53:20 UTC 2017 - toddrme2178@gmail.com
+
+- Fix source URL.
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Tue Mar  7 11:38:35 UTC 2017 - p.seiler@linuxmail.org
+
+- Add missing "Requires: python-setuptools" to get py2pack working
+
+-------------------------------------------------------------------
+Thu Mar  2 09:25:21 UTC 2017 - tbechtold@suse.com
+
+- update to 0.8.0:
+  * Ignore the required python version for now
+  * Add build condition for tests in opensuse template
+  * Install setup_requires as BuildRequires during build
+  * Update opensuse template for singlespec approach
+  * Remove useless '(' and ')' replacements from opensuse template
+  * travis: Update credential to deploy on pypi
+- Remove manpage for now. Build is broken.
+
+-------------------------------------------------------------------
+Tue Feb 14 11:49:36 UTC 2017 - tbechtold@suse.com
+
+- update to 0.7.0:
+  * Switch to pbr
+  * Include doc/* in sdist tarball
+  * Add Shinx config to setup.cfg
+  * Post release version bump to 0.6.7
+  * Bump version to 0.6.6
+  * Set files.pythonhosted.org as Source url
+  * Also search for tarballs with underscores
+  * Set pypi.io url for Source
+  * Remove deprecated metadata subcommand
+  * doc: Move CLI help to extra document
+  * Support multiple template directories
+  * Fix pep8 error
+  * Use Sphinx for documentation
+  * Remove hardcoded markers
+  * Add license wit FIXME if available
+  * Fix extensions for openSUSE template
+  * Add script to create packages for OBS
+  * Switch to metaextract
+  * Improve openSUSE template checks
+  * Update repository name after move to openSUSE
+- Adjust Requires
+
+-------------------------------------------------------------------
+Mon Aug 15 06:47:32 UTC 2016 - tbechtold@suse.com
+
+- update to version 0.6.4
+  * Fix urlretrieve for py3
+  * Remove obsolete workaround for old suse in template
+  * Update travis.yml
+  * Bump version to 0.6.4
+  * Add "metadata" subcommand
+
+-------------------------------------------------------------------
+Fri Jul 22 06:52:54 UTC 2016 - tbechtold@suse.com
+
+- Add missing python-six BuildRequires
+
+-------------------------------------------------------------------
+Mon Jul  4 07:22:14 UTC 2016 - tbechtold@suse.com
+
+- Use https for Source url
+
+-------------------------------------------------------------------
+Thu Jun 30 18:58:23 UTC 2016 - tbechtold@suse.com
+
+- update to 0.6.3:
+  * Bump version to 0.6.3
+  * Set setup.py encoding and retry parsing in error case
+  * Move Jinja2 env creation to own function
+  * Don't call nosetests when a testsuite was found
+  * Fix get_metadata for distutils setup()
+  * Also try to get license from classifiers
+  * Fix --run deprecation
+  * Move requirements related code to requires.py
+  * Remove setup.py parsing code
+  * Always run setup.py to get metadata
+  * Fix README.rst style
+
+-------------------------------------------------------------------
+Thu Jun 30 06:29:18 UTC 2016 - tbechtold@suse.com
+
+- update to 0.6.2:
+  * Bump version to 0.6.2
+  * Also list tests_require as BuildRequires for openSUSE
+  * Reorder Requires/BuildRequires for openSUSE
+  * Requirement markers are only available in newer setuptools versions
+
+-------------------------------------------------------------------
+Wed Jun 29 20:12:05 UTC 2016 - tbechtold@suse.com
+
+- update to 0.6.1:
+ * Bump version to 0.6.1
+ * Improve _canonicalize_setup_data() tests
+ * Rerun _canonicalize_setup_data()
+ * Remove py33 and py34 from travis and tox
+ * travis: Fix python 3 test env variables
+ * Don't list "./" in names for extracted zip/tar file
+ * Fix minimal version detection for requirements
+ * Support requirement markers
+ * Fix tests_require handling
+ * Adjust some comments
+ * Use xmlrpc_client from six
+ * Adjust docs for testing
+ * Remove whitespaces from README
+
+-------------------------------------------------------------------
+Wed Jun 29 13:17:30 UTC 2016 - tbechtold@suse.com
+
+- update to 0.6.0:
+  * Bump version to 0.6.0
+  * Add myself as co-maintainer
+  * Mention the "--run" as note in README
+  * protect against failed eval of setup.py code fragments
+  * Also collect tests_require metadata
+  * Remove distutils cleanup command
+  * Remove pypip.in images from README
+  * Use distutils command when running setup.py
+  * Add contextmanager to extract a zip/tar into a tempdir
+  * Remove bitdeli image from README
+  * Relicense under Apache-2.0
+  * Move setup.py sandbox run to extra file
+  * Also parse entry_points when given as dict
+  * Use a "fake" unicode literal from six for decoding
+  * Move setup.py parsing to extra file
+  * tox: Add possibility to run single test cases
+  * Ignore .eggs/ dir in git
+  * Update the SPDX mapping file
+  * travis: Use matrix to execute tox envs
+  * tox: Ignore E402
+  * Don't require argparse
+  * Remove python 2.6 support
+  * travis: remove --use-mirrors pip flag usage
+  * tests: ignore console_scripts order during tests
+  * Add python 3.4 and 3.5 support
+  * Fix company name in spec template
+- Update license. It's now Apache-2.0
+- Adjust Requires
+- USe pypi.io as Source url
+
+-------------------------------------------------------------------
+Wed Aug 12 15:55:29 UTC 2015 - toddrme2178@gmail.com
+
+- Update to version 0.5.0
+  + Fix flake8 issues
+  + Fix console_script handling
+  + Sanitize collected requirements
+  + Remove unused 'requires' from opensuse template
+  + Quote %doc filenames if they contain shell metacharacters
+  + Add support for "entry_points" and "console_scripts" parameters
+  + Support syntactic variations as per the setuptools spec 
+  + Make "parse" and "run" two separate modes
+  + Support same set of setup() parameters in parse and run modes
+  + Use setuptools instead of distutils in _run_setup_py() …
+  + Run setup.py (instead of just parsing it) to gather more data
+  + Adjust Travis CI build
+  + Remove commented code and make pep8 happy 
+  + Remove package create function
+  + Fix license detection when license is None 
+  + Don't include comma in _parse_setup_py regexp
+  + fix indentation in README 
+  + Fix KeyError for license and summary
+- Add update-alternatives support for compatibility with 
+  python 3 version of the package.
+
+-------------------------------------------------------------------
+Thu Mar  6 09:02:57 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.4.10
+  + Fix PyPI URL to avoid 301 moved permanently
+  + Minor bugfixes
+
+------------------------------------------------------------------
+Mon Feb 10 10:03:53 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.4.9:
+  + Fix coverage report source
+  + Add cssselect setup_requires
+  + Update SPDX license map
+  + Change 'flake8' to 'pep8' target
+  + Fix recursive-include for doc
+  ...
+
+-------------------------------------------------------------------
+Mon Jun 24 12:13:21 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.4.4:
+  + Package scripts (setup.py) as binaries
+
+-------------------------------------------------------------------
+Mon Jun 17 12:15:02 UTC 2013 - speilicke@suse.com
+
+- Only require python-argparse on SLE, it's part of Python-2.7
+
+-------------------------------------------------------------------
+Fri May  3 10:25:01 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.4.3.4:
+  + catch more doc files
+
+-------------------------------------------------------------------
+Thu May  2 12:38:35 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.4.3.3:
+  + Various bugfixes
+
+-------------------------------------------------------------------
+Mon Apr 29 13:09:04 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.4.3:
+  + Generate SPDX-style licenses
+  + Find documentation files from local tarball
+  + Detect C extensions from local tarball
+
+-------------------------------------------------------------------
+Fri Apr 13 12:13:49 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.4.1.1
+  * spec file template conforms to spec-cleaner
+
+-------------------------------------------------------------------
+Thu Sep 22 11:15:40 UTC 2011 - saschpe@suse.de
+
+- Set license to GPL-2.0+ (SPDX style)
+- Update to version 0.3.21:
+  * Improvements to the Fedora and SUSE spec templates
+
+-------------------------------------------------------------------
+Tue Sep 20 14:57:05 UTC 2011 - saschpe@suse.de
+
+- Buildrequire python-Jinja2 instead of python-jinja2
+- Removed %clean section, use sane default
+- Fix non-executable script rpmlint warning
+
+-------------------------------------------------------------------
+Thu Jul  7 13:17:54 UTC 2011 - saschpe@suse.de
+
+- Remove unused %python_sitearch macro definition
+
+-------------------------------------------------------------------
+Wed Jun 22 10:21:55 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.3.20
+  * Use URL for RPM tag 'Source' instead of filename
+
+-------------------------------------------------------------------
+Tue May 31 08:01:06 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.3.18
+  * Also list dependencies from 'install_requires'
+  * Allow to depend on specific Python versions
+
+-------------------------------------------------------------------
+Wed May 18 11:36:27 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.3.17
+  * Fix unicode encoding issues
+  * New spec file template for Mageia (formerly Mandriva)
+- Changes from version 0.3.16
+  * More testing
+  * Updated spec file templates according to distro policies
+
+-------------------------------------------------------------------
+Wed Apr 27 09:47:18 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.3.15
+  * Minor SUSE template fixes
+
+-------------------------------------------------------------------
+Thu Mar 31 14:19:15 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.3.14
+  * Remove #norootforbuild and *.egg-info from %%files section
+
+-------------------------------------------------------------------
+Wed Mar  9 09:18:43 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.3.13:
+  * Generate manpage and HTML documentation
+- Added manpage and HTML documentation
+
+-------------------------------------------------------------------
+Wed Feb 16 08:42:27 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.3.11
+  * Remove newer Python features (allow running on older Distros,
+    namely RHEL5 and SLES9)
+
+-------------------------------------------------------------------
+Wed Jan 26 17:31:40 UTC 2011 - saschpe@gmx.de
+
+- Update to version 0.3.10
+  * Removed SUSE-specific %files section
+  * Added README.rst
+
+-------------------------------------------------------------------
+Tue Jan 25 14:13:51 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.3.9
+  * Automatically install egg-info on non-SUSE distros
+- Recompressed with bzip2
+
+-------------------------------------------------------------------
+Tue Jan 18 12:44:40 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.3.7
+  * Remove authors from description in openSUSE spec template
+
+-------------------------------------------------------------------
+Fri Jan 14 12:34:58 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.3.6
+  * Removed double check in openSUSE spec template
+  * Added some packager hints
+
+-------------------------------------------------------------------
+Thu Jan 13 10:58:22 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.3.5
+  * Better compatibility with older Python releases
+  * Version requirement generation for openSUSE spec template
+
+-------------------------------------------------------------------
+Wed Jan 12 10:46:44 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.3.4
+  * Use '-q' flag for %setup in openSUSE spec template
+
+-------------------------------------------------------------------
+Mon Dec 20 11:48:08 UTC 2010 - saschpe@suse.de
+
+- Update to version 0.3.3
+  * Moved 'export CFLAGS...' from %prep to %build section in 
+    templates
+
+-------------------------------------------------------------------
+Thu Dec 16 10:26:53 UTC 2010 - saschpe@gmx.de
+
+- Update to version 0.3.2
+  * Templates use simple commands instead of macros
+
+-------------------------------------------------------------------
+Sun Dec 12 12:52:58 UTC 2010 - saschpe@gmx.de
+
+- Update to version 0.3.1
+  * openSUSE template adds definitions for %python_sitelib and
+    %python_sitearch for older distros
+
+-------------------------------------------------------------------
+Sat Dec 11 22:11:39 UTC 2010 - saschpe@gmx.de
+
+- Update to version 0.3.0
+  * Better error handling
+  * Templates generate correct source tarball filenames
+
+-------------------------------------------------------------------
+Sat Dec 11 20:55:11 UTC 2010 - saschpe@gmx.de
+
+- Update to version 0.2.12
+  * openSUSE template has SUSE Linux GmbH default copyright
+
+-------------------------------------------------------------------
+Sat Dec 11 20:46:16 UTC 2010 - saschpe@gmx.de
+
+- Update to version 0.2.11
+  * Fixed openSUSE spec file template check for non-suse distros
+    in %install section
+
+-------------------------------------------------------------------
+Sat Dec 11 19:58:18 UTC 2010 - saschpe@gmx.de
+
+- Update to version 0.2.10
+  * Templates packaged correctly
+
+-------------------------------------------------------------------
+Sat Dec 11 17:49:03 UTC 2010 - saschpe@gmx.de
+
+- Update to version 0.2.8
+
+-------------------------------------------------------------------
+Sat Dec 11 17:31:29 UTC 2010 - saschpe@gmx.de
+
+- Update to version 0.2.7
+  * spec file fixes
+
+-------------------------------------------------------------------
+Sat Dec 11 17:12:10 UTC 2010 - saschpe@gmx.de
+
+- Initial version
+

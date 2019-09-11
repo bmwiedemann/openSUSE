@@ -1,0 +1,566 @@
+-------------------------------------------------------------------
+Tue Aug 13 08:09:03 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.4.1
+  * Fix crash: add missing Q_INTERFACES to OktetaDocument for
+    IDocument. (kde#410820)
+  * Shell: do not show bogus error about repo urls on DnD of normal files.
+  * [Grepview] Use the correct icons.
+  * Fix calculation of commit age in annotation side bar for < 1 year.
+  * Appdata: add <launchable/> entry.
+
+-------------------------------------------------------------------
+Wed Aug  7 19:42:21 UTC 2019 - wbauer@tmo.at
+
+- Also Provide/Obsolete kdevelop5-plugin-clang-tidy-lang to avoid
+  update problems due to file conflicts
+
+-------------------------------------------------------------------
+Tue Aug  6 11:46:10 UTC 2019 - wbauer@tmo.at
+
+- New upstream release 5.4.0
+  * For a list of changes, see:
+    https://www.kdevelop.org/news/kdevelop-540-released
+  * New build system support for Meson, current features are:
+    + Native support for Meson projects (configuring, compiling,
+      installing)
+    + Support for KDevelop code autocompletion (plugin reads Meson
+      introspection information)
+    + Initial support for the Meson rewriter: modifying basic
+      aspects of the project (version, license, etc.)
+  * New scratchpad plugin to keep "scratches" of code or text to
+    experiment or quickly run something without the need to create
+    a full project
+  * The plugin for Clang-Tidy is now part of KDevelop's default
+    plugins
+  * Fixes and improvements to the C++ support:
+    + Add working directory to clang parser
+    + Clang Plugin: Report some problems from included files
+    + Make it possible to select -std=c++2a for our language
+      support
+    + Rename c++1z to C++17
+    + Clang CodeCompletion: No auto-completion for numbers
+    + Add assistant to generate header guards
+  * [Documentation] Set size policy of providers combobox to
+    AdjustToContents
+  * Contextbrowser: Remove 'separated by only whitespace'
+    possibility for showing the problem tooltip
+  * Contextbrowser: Minor improvement to tooltip showing behavior
+  * CMake plugin: Also show an error message if the CMake
+    configuration becomes invalid due to a change, and add an
+    instruction to reload the project manually
+  * CMake plugin: Show a message box if configuration fails
+  * Projectfilter: Include .clang-format by default
+  * Add a predefined clang-format custom script formater
+  * Fix code completion for nameless structs/unions with the same
+    member (kde#409041)
+  * Support newer kdebugsettings .categories file format
+  * Show session name in the Delete Session confirmation dialog
+  * Remove invalid check from test_projectload test
+  * Document tree view close on middle button
+  * Follow KTextEditor changes for hidpi rendering of icon border
+  * Note visibility tag also with signature of friend-declared
+    method
+  * Guard against crashes when IStatus object gets destroyed at
+    bad times
+  * Astyle: support the system astyle library
+  * Renovate kdevelop bash completion file
+  * Fix deadlock exception in FileManagerListJob
+  * DVCS Branch Manager with filtering and sorting proposal
+  * Also find clang include path based on runtime libclang library
+    path
+  * TestFile: On destruction, close associated document if open
+    and stop the background parser
+  * CMake: discover more unit tests (kde#405225)
+  * Be less restrictive with failures while searching for LLVM
+  * Allow the maximum file size of parse jobs to be configurable
+  * Optimize CMakeBuildDirChooser::buildDirSettings()
+  * [Sessions Runner] Use icon name
+  * Don't eat the backspace event when no alt modifier is set
+  * "Reparse Entire Project" action for the ProjectController
+  * Introduce QuickOpenEmbeddedWidgetCombiner
+  * Add 'back' to QuickOpenEmbeddedWidgetInterface
+  * Update documentation: the keyboard shortcuts use ALT not SHIFT
+  * Fix up/down keyboard navigation for 'Show documentation' links
+  * Lock duchain in AbstractIncludeNavigationContext::html
+  * Don't crash when background listing outlasts file manager list
+    job
+  * Don't crash when project is closed before it was fully opened
+  * Make sure we use the same compiler settings as the project is
+    by default
+  * Debugger plugin fixes
+  * CMakeBuildDirChooser: avoid calling deprecated
+    KUrlRequester::setPath()
+  * Flatpak+cmake: put the cmake build directories into
+    .flatpak-builder
+  * Allow KDEV_DEFAULT_INSTALL_PREFIX specify a default install
+    prefix
+  * Flatpak: Improve runtime title
+  * Adapt indentation mode after a new project was opened
+  * Flatpak: Fix listing runtimes
+  * Properly cleanup FileManagerListJob when folder items are
+    deleted (kde#260741)
+  * Provide debugger name and pid when registering a debugger to
+    DrKonqi
+  * Support for indent-after-parens astyle option
+  * Fix bug 389060 (Heaptrack analysis keeps firing
+    /usr/bin/plasmoidviewer) (kde#389060)
+  * Contextbrowser: Ability to show combined problems and decl
+    tooltip
+  * Properly display argument names of template functions
+  * Show size and alignment information in tooltips for typedef or
+    alias
+  * GrepView: Extend default file extensions to search (kde#402207)
+  * [clang-tidy] Fix context-menu crash for files not in a project
+    (kde#401917)
+  * Polish Flatpak integration
+  * [clang-tidy] Disable/Block Run actions in projects without
+    buildsystem manager
+  * Add VcsAnnotationItemDelegate, for control of rendering and
+    tooltip
+  * Qmljs: Update qmljs from QtCreator v4.7.2
+  * LoadedPluginsDialog: Fix initial size
+  * Place cursor after opening brace for function implementation
+  * Replace leading typed text when completing function
+    implementation (kde#384710)
+  * Fix crashes when document gets destroyed directly after load
+  * Prevent QWebEngine from overriding signal handlers
+  * Add missing break in QmlJs code completion
+  * Create action to jump to the current execution line in debug
+    mode (kde#361411)
+  * Fix segfaults in OutputWidget (kde#398615)
+  * Fix double delete bug in OutputWidget
+  * Cleanup Perforce test case, and thereby its output a little
+- Provide/Obsolete kdevelop5-plugin-clang-tidy, it is included now
+- Cleanup spec file: remove conditionals for no longer supported
+  distribution versions
+  
+-------------------------------------------------------------------
+Thu Jul 18 08:01:59 UTC 2019 - wbauer@tmo.at
+
+- New upstream release 5.3.3
+  * Use KDE_INSTALL_LOGGINGCATEGORIESDIR for kdebugsettings
+    .categories files
+  * TextDocument: remove actions from contextmenu on hide already
+  * Sublime: fix crash on undocking toolviews with Qt 5.13
+    (kde#409790)
+  * Kdevplatform/interfaces: fix missing explicit QVector include
+  * Fix kdevelopui.rc: bump version as required by string context
+    changes
+  * Shell: overwrite katectagsplugin to be disabled by default
+  * Translate relative paths of input files to absolute ones
+  * Welcome page: do not add currently unused qml pages to qrc data
+  * Fix browse mode not disabled after Ctrl is released
+  * Attempt to fix a crash on shutdown
+  * ProblemHighlighter: Fix mark type handling
+  * Cmakebuilddirchooser: Set a minimum size
+  * Fix memory leaks reported by ASAN
+  * Qmake: Move builder plugin to correct category (kde#407396)
+  * Add DesktopEntry to notifyrc
+  * Output config subpages alphabetically, instead of order in
+    which corresponding plugins were loaded
+  * Flatpak plugin - fix typo ("flies" -> "files")
+- Drop fix-crash-on-undocking-toolviews.patch, merged upstream
+
+-------------------------------------------------------------------
+Tue Jul 16 12:26:16 UTC 2019 - wbauer@tmo.at
+
+- Add fix-crash-on-undocking-toolviews.patch to fix crash when
+  undocking toolviews with Qt 5.13 (kde#409790)
+
+-------------------------------------------------------------------
+Thu Mar  7 11:41:31 UTC 2019 - wbauer@tmo.at
+
+- New upstream release 5.3.2
+  * Don't call clear() on a shared pointer we don't own
+    (kde#403644)
+  * Workaround the bug found by ASan, which can be seen on FreeBSD
+    CI
+  * Kdev-clazy: use canonical paths
+  * Prevent the Extra Arguments ComboBox to Stretch Too Much
+  * CMake plugin: don't hardcode a default install prefix
+  * Appimage: skip unneeded cp of cmake, removed later again
+  * Clang plugin: Handle CUDA files better
+  * Clang: detect Clang builtin dirs at runtime on Unix
+  * Actually cleanup the duchain from the background thread
+    (kde#388743)
+  * Appimage: add okteta libs, as used by the debugger memory view
+  * Grepview: Fix potential crash in "Find in Files" (kde#402617)
+  * Add All Top-Level Targets to the Menu
+  * Show "Move into Source" action in code menu
+  * QuickOpen: Trim whitespace from input
+  * Update kdevelop app icon to latest breeze-icons version
+  * Appimage: have only kdevelop appdata in the appimage
+  * Fix first run of appimage creation: get install_colorschemes.py
+    via $SRC
+  * Fix crash in documentation view (kde#402026)
+  * CMake: skip server entries without empty build system
+    information
+  * 2 missing KTextEditorPluginIntegration::MainWindow slots
+  * Polish Purpose integration in the PatchReview plugin
+  * Hex editor plugin: prepare for incompatible API change of
+    libraries from upcoming Okteta 0.26.0
+- Require clangX instead of clang on Leap 15 and TW, the exact
+  version should not matter anymore
+
+-------------------------------------------------------------------
+Sat Dec 22 19:17:49 UTC 2018 - wbauer@tmo.at
+
+- New upstream release 5.3.1
+  * Remove the CVS plugin. This was unusable and would crash if
+    used in most cases, but accidentally remained in 5.3.0
+  * Don't add 'override' specifier for non-modern project settings
+    (kde#372280)
+  * Use qCWarning in path.cpp
+  * Fix qmakeproject unittest to work on Windows
+  * Fix defines and includes test to run on Windows
+  * Fix projectmodel unittest to work on Windows
+  * Make the filteringstrategy test work on Windows as well
+  * Fix problem model test on Windows. Make sure that when we
+    create a path the root of that path is created according to
+    what is expected on the current platform. E.g. C: on Windows.
+  * Appimage: use original app desktop file as base for appimage
+    one
+  * Make test outputmodel pass on windows.
+  * Increase timeout for duchain gcc compatibility test
+  * Auto-find Clazy documentation also with clazy >= 1.4
+    (kde#401075)
+  * Disable plugin project config if project without a
+    IBuildSystemManager dep (kde#400769)
+  * Appimage: Do not bundle libfontconfig
+  * Cmake: fix missing addition of policies to documentation index
+  * FunctionDefinition: only look for (new/other) function
+    definition if we don't have one
+  * Fix memleaks in duchain unittests
+- Drop Auto-find-Clazy-documentation-also-with-clazy-1.4.patch,
+  merged upstream
+- Use cmake() notation for the Qt BuildRequires instead of
+  pkgconfig()
+
+-------------------------------------------------------------------
+Sun Dec 16 13:36:23 UTC 2018 - wbauer@tmo.at
+
+- Require clang, without it the C++ parser won't work (boo#1119186)
+
+-------------------------------------------------------------------
+Sat Dec  1 12:11:58 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add kdevelop provides
+
+-------------------------------------------------------------------
+Fri Nov 16 14:49:42 UTC 2018 - wbauer@tmo.at
+
+- Add Auto-find-Clazy-documentation-also-with-clazy-1.4.patch to
+  make the clazy plugin find the necessary documentation also with
+  clazy 1.4+, which installs it to a different place than previous
+  versions (kde#401075)
+
+-------------------------------------------------------------------
+Wed Nov 14 10:27:26 UTC 2018 - wbauer@tmo.at
+
+- New upstream release 5.3.0
+  * New clazy analyzer plugin
+  * Clang: include tooltips: fix range check
+  * Allow overriding the path to the builtin clang compiler headers
+    (kde#393779)
+  * Always use the clang builtin headers for the libclang version
+    we use (kde#387005)
+  * Group completion requests and only handle the last one
+  * Fix Template (Class/Function) Signatures in Clang Code
+    Completion (kde#368544, kde#377397)
+  * Workaround: find declarations for constructor argument hints
+  * Clang: Improve argument hint code completion
+- Drop kdevplatform-reduce-dependencies.diff, merged upstream
+- Recommend clazy which is needed by the new clazy plugin
+- Remove explicitly versioned kdevplatform requirement,
+  libkdevplatformXY is implicitly required anyway, that should be
+  sufficient
+- Use QtWebKit on platforms where QtWebEngine is not available
+- Use gcc7 for building on Leap 42.3, compilation fails with the
+  default 4.8
+
+-------------------------------------------------------------------
+Tue Oct 16 18:44:00 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use WebEngine instead of WebKit
+
+-------------------------------------------------------------------
+Fri Aug 31 12:37:01 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add requirements for kdevplatform-devel which are not detected
+  automatically.
+
+-------------------------------------------------------------------
+Fri Aug 31 11:24:13 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add kdevplatform-reduce-dependencies.diff to prevent adding
+  unneeded requirements to the kdevplatform-devel package.
+
+-------------------------------------------------------------------
+Wed Aug 29 07:48:48 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Aug 21 10:54:56 UTC 2018 - wbauer@tmo.at
+
+- New upstream release 5.2.4
+  * Fix resizing of variable tooltip
+  * Fix various problems with filters in the output view
+    (kde#343124)
+  * Fix a crash which could happen when using the class browser in
+    debug builds with Qt >= 5.11
+  * Only show cppcheck menu for cpp files
+- Move all plugins from kdevplatform to the main package following
+  upstream more closely, the kdevplatform package now only contains
+  files coming from the "kdevplatform" directory in the source
+  (kdevelop5 is the only application using kdevplatform anyway)
+
+-------------------------------------------------------------------
+Fri May 25 13:23:54 UTC 2018 - wbauer@tmo.at
+
+- New upstream release 5.2.3 (5.2.2 has been skipped)
+  * KDevelop : support whitespace between the '#' and 'include' (or
+    'import') (kde#394200)
+  * Shell: Display generic project managers again
+  * Github: Fix Github repositories not fetched (kde#392553)
+  * Avoid emptry entries in project files filter list
+  * Note org.kdevelop.IBasicVersionControl@kdevgit as dep for
+    kdevghprovider
+  * Never assert when the assert can fire sporadically (kde#357585)
+  * Sublime: Release space in tab bar when no status (kde#314167)
+  * Shell: Save entries of recent projects action (kde#385915)
+  * Lldb: don't issue command when there's no env variables to set
+    (kde#391897)
+  * Fix crash when activating code completion item (kde#391742)
+  * Do not add return type to constructors declaration when editing
+    definition in signature assistant (kde#365420)
+  * Make lambda introduce a context in DU chain (kde#387994)
+  * Fix bug 384082 - cppcheck is checking CMake generated files
+    (kde#384082)
+  * Never run qmlplugindump on plugins that already offer
+    plugins.qmltypes
+  * Fix CodeCompletion of Strongly Typed Enum
+  * Make sure qmlplugindump works on my system
+  * Make sure we don't crash when stopping all jobs
+  * Help automoc to find metadata JSON files referenced in the
+    code
+  * Link against KF5::Purpose if it's available
+  * Properly quote expected string value in lldb formatter
+    unittests
+  * Unbreak the GDB QUrl pretty printer test
+  * Unbreak QtPrintersTest::testQString
+  * Also unbreak QtPrintersTest::testQByteArray
+  * Work around bug in kLineEdit (kde#373004)
+  * Fix crash when stopping process
+  * Performance: Reuse the global icon loader
+  * Cache ProblemPointers per translation unit (kde#386720)
+  * Only set CMAKE_AUTOMOC_MACRO_NAMES with KF5 < 5.42
+  * Format comments before setting them on the DUChain
+  * Set toolbar/toolbutton font on quickopen line edit
+- New upstream release 5.2.1
+  * Fix a crash which often happened when switching git branches in
+    the background in C++ projects. This temporarily disables
+    documentation warnings, as well as parsed documentation display
+    in the tooltips, until the underlying issue is fixed upstream.
+    (kde#358205)
+  * Fix a crash happening on some systems when opening a session
+    (kde#384162)
+  * Fix include path completion not showing project-defined system
+    includes (i.e. includes added as system includes but by your
+    project) (kde#386421)
+  * Fix crash when batch-editing defines in the define editor
+    (kde#386709)
+  * Fix an assert (only happened in debug mode) and potential crash
+    when showing problem tooltip (kde#386901)
+  * Fix targets being duplicated when using CMake subprojects
+    (kde#387095)
+  * Fix console toolview asking to delete a temporary file
+    interactively (kde#379652)
+  * Fix a lot of AUTOMOC warnings while compiling with CMake 3.10
+  * Fix some tool view context menus having empty entries
+    (kde#386911)
+  * Fix the progress widget in the statusbar not showing in some
+    sessions
+  * Adapt cache clear logic to ensure that the code model cache
+    (~/.cache/kdevduchain) is always cleared when changing to a
+    different KDevelop version (including patch versions).
+    Unsuitable data in the cache has caused a range of issues in
+    the past, including crashes. If you really need to keep the
+    cache, you can create an (empty) file with the version suffix
+    of the target version in the cache folder.
+  * Fix KDevelop not starting up with the welcome page enabled
+    (which it is by default) on systems without OpenGL support
+    (kde#386527)
+  * Fix build with Qt version 5.5
+- New upstream release 5.2.0
+  * For a list of changes, see:
+    https://www.kdevelop.org/news/kdevelop-520-released
+  * New analyzers: heaptrack, cppcheck
+  * Improved C++ support, notable fixes include:
+    + Properly pass on some categories of compiler flags from the
+      build system to the analyzer, fixing e. g. parse errors in
+      some Qt header files which cannot be parsed if a certain
+      compiler configuration is not respected
+    + Improve performance of C++ code completion in some situations
+    + Restore some completion features from 4.x, such as automatic
+      insertion of semicolons in some cases
+- Add (lib)kdevplatform subpackages that were provided by
+  kdevplatform previously which is merged into kdevelop itself now
+- Recommend cppcheck and heaptrack-gui to make the new analyzer
+  plugins work out of the box
+- Adjust build requirements and filelists
+- Mark license files with %license instead of %doc
+- Make libkdevplatform52 obsolete libkdevplatform10 to prevent
+  update problems, and don't require the exact same version of
+  kdevplatform to avoid such problems in the future when the so
+  version is bumped again
+
+-------------------------------------------------------------------
+Tue Aug 29 06:50:48 UTC 2017 - wbauer@tmo.at
+
+- New upstream release 5.1.2
+  * Fixed a crash in the cmake lexer (kde#363269)
+  * Various small improvements in cmake and C++ code completion
+  * Fix placement of C++ #include completions
+  * Fix a crash with JS projects on remote directories (kde#369573)
+  * Source formatting preview is back
+  
+-------------------------------------------------------------------
+Wed Jun  7 11:15:22 UTC 2017 - jengelh@inai.de
+
+- Remove empty phrasing from description.
+
+-------------------------------------------------------------------
+Sat May 27 14:02:40 UTC 2017 - wbauer@tmo.at
+
+- New upstream release 5.1.1
+  * Install xdg mimetype definition for OpenCL C
+  * Move print from int to unsigned int
+  * Fix build for MinGW (kde#379454)
+  * Look for Cppcheck as RUNTIME dependencies
+  * The OpenCL language is actually called OpenCL C
+  * Remove unneeded mimetype for *.kdevinternal files
+  * Create KAboutData object only after QApp instance, for working
+    translations
+  * CMake - fix bug with dropping changed settings for existing
+    build directory
+  * Drop explicit %{PROJECTDIR}/ from templates'
+    ShowFilesAfterGeneration
+  * Remove unused "VersionControl" entries from kdev4
+    samples/templates
+  * Fix ShowFilesAfterGeneration to match generated files
+    (kde#378499)
+  * Update Qt logo image
+- Changed package summary/description as requested in boo#1034320
+
+-------------------------------------------------------------------
+Thu Mar 23 14:35:29 UTC 2017 - wbauer@tmo.at
+
+- New upstream release 5.1.0
+  * For a list of changes, see:
+    https://www.kdevelop.org/news/kdevelop-510-released
+- Add okteta-devel BuildRequires to re-enable the okteta plugin
+
+-------------------------------------------------------------------
+Sun Mar  5 13:42:26 UTC 2017 - wbauer@tmo.at
+
+- New upstream release 5.0.4
+  * QObject template: fix typo screwing redefinition of block
+    extra_definitions
+  * Update version number to 5.0.4
+  * Clang: Fix missing DUChain lock
+  * Custom-buildsystem: Fix crash while configuring (kde#335470)
+  * Try to fix testGccCompatibility test for me
+  * Clang: Also rename destructors when renaming class (kde#373452)
+  * Fix bug with wrong CMake arguments during adding new build
+    directory
+  * Clang: Don't propose to refactor function defs
+  * Fix comments in file template for Python unit test for
+    setUp/tearDown (kde#321005)
+  * Fix TestCustomBuildSystemPlugin by readding .kdev4 folders of
+    test data
+  * Providers: Fix some Qt runtime warnings
+  * Update TestProblems::testMissingInclude() to current
+    ClangFixitAssistant
+  * QtHelp CSS images fix
+  * QtHelp page loading fix
+  * Update INSTALL
+  * Streamline README
+  * File_templates: Remove '#include "foo.moc"' footer
+  * Prefer qmake over qmake-qt5 over qmake-qt4
+  * Appimage: do not fail on git stash pop
+  * Fix default icon for some plugin
+  * I18n fixes
+
+-------------------------------------------------------------------
+Fri Dec  2 14:50:04 UTC 2016 - wbauer@tmo.at
+
+- New upstream release 5.0.3
+  * Make the "Forward declare" problem solution assistant only pop
+    up when it makes sense
+  * Fix GitHub handling authentication (kde#372144)
+  * Fix Qt help jumping to the wrong function sometimes
+
+-------------------------------------------------------------------
+Wed Nov 16 10:38:50 UTC 2016 - wbauer@tmo.at
+
+- New upstream release 5.0.2
+  * Fix a possible crash when activating a clang FixIt (kde#369176)
+  * Fix a crash when performing various actions with the Make
+    plugin disabled (kde#369326)
+  * Fix "Install as root" action not working
+  * Fix CMake build plugin sometimes rebuilding everything when it
+    should not
+    
+-------------------------------------------------------------------
+Tue Oct  4 18:20:55 UTC 2016 - lbeltrame@kde.org
+
+- Add missing find_lang macros for additional translations
+
+-------------------------------------------------------------------
+Tue Oct  4 12:49:32 UTC 2016 - lbeltrame@kde.org
+
+- Add KArchive to BuildRequires and bump Frameworks versions
+  (they were lower than in kdevplatform, and that did not make
+   any sense)
+
+-------------------------------------------------------------------
+Mon Oct  3 22:22:10 UTC 2016 - lbeltrame@kde.org
+
+- New upstream release 5.0.1
+  * Do not display the "project is already open in a different
+    session" dialog on starting up a session under some 
+    circumstances. 
+  * Mouseover highlight now uses the "Search highlight" color from
+    the configuration dialog, instead of a hard-coded bright 
+    yellow.
+  * Fix working directory of Custom Makefile plugin
+  * Fix a possible crash on triggering an assistant popup action
+  * Fix a freeze under some circumstances when the welcome page is
+    displayed. 
+
+-------------------------------------------------------------------
+Thu Sep 22 13:38:36 UTC 2016 - lbeltrame@kde.org
+
+- Drop %lang_package and use an explicit Conflicts on 
+  kdevelop4-lang to workaround issues in the Factory submission
+  bot
+
+-------------------------------------------------------------------
+Wed Aug 24 13:48:48 UTC 2016 - cgiboudeaux@gmx.com
+
+- Update to 5.0.0
+
+-------------------------------------------------------------------
+Thu Jul 21 19:21:09 UTC 2016 - wbauer@tmo.at
+
+- Remove libQt5Declarative/QtQuick1 build requirement to fix build
+  with Qt 5.7, it's not needed/used anyway
+
+-------------------------------------------------------------------
+Thu Jan 28 10:41:32 UTC 2016 - tittiatcoke@gmail.com
+
+- Initial package for kdevelop 5 based on Frameworks
+  * Kdevelop 5 Beta 3
+

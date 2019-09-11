@@ -1,0 +1,63 @@
+--- icu4j-60.2/build.xml	2017-12-22 13:42:19.176489521 +0100
++++ icu4j-60.2/build.xml	2017-12-22 14:05:58.358749213 +0100
+@@ -102,10 +102,20 @@
+         <matches string="${java.version}" pattern="9((-.|\.\d).*)?"/>
+     </condition>
+ 
++    <condition property="is.java10">
++        <matches string="${java.version}" pattern="10((-.|\.\d).*)?"/>
++    </condition>
++
++    <condition property="is.java11">
++        <matches string="${java.version}" pattern="11((-.|\.\d).*)?"/>
++    </condition>
++
+     <condition property="is.java8.plus">
+         <or>
+             <isset property="is.java8"/>
+             <isset property="is.java9"/>
++            <isset property="is.java10"/>
++            <isset property="is.java11"/>
+         </or>
+     </condition>
+ 
+@@ -1317,9 +1327,7 @@
+                 docencoding="UTF-8"
+                 charset="UTF-8"
+                 bottom="${icu4j.api.doc.copyright.footer}"
+-                additionalparam="${doclint.option} -breakiterator -use -tagletpath ${icu4j.build-tools.jar}${path.separator}${jcite.libs} -taglet com.ibm.icu.dev.tool.docs.ICUTaglet -taglet ch.arrenbrecht.jcite.JCiteTaglet -J-Djcitesourcepath=${jcite.addl.src} -J-Dfile.encoding=UTF-8"
+-                link="${icu4j.api.doc.jdk.link}"
+-                source="1.5"
++                source="1.6"
+                 stylesheetfile="${docs.style.sheet}"
+                 failonerror="true">
+             <packageset dir="${icu4j.core.dir}/src">
+@@ -1353,9 +1361,7 @@
+                 docencoding="UTF-8"
+                 charset="UTF-8"
+                 bottom="${icu4j.api.doc.copyright.footer}"
+-                additionalparam="${doclint.option} -breakiterator -use -tagletpath ${icu4j.build-tools.jar} -taglet com.ibm.icu.dev.tool.docs.ICUTaglet"
+-                link="${icu4j.api.doc.jdk.link}"
+-                source="1.5"
++                source="1.6"
+                 failonerror="true">
+             <packageset dir="${icu4j.core.dir}/src">
+                 <include name="com/ibm/icu/lang/**"/>
+@@ -1398,7 +1404,7 @@
+                 docencoding="UTF-8"
+                 charset="UTF-8"
+                 bottom="${icu4j.api.doc.copyright.footer}"
+-                additionalparam="${doclint.option} -breakiterator -use -tagletpath ${icu4j.build-tools.jar}${path.separator}${jcite.libs} -taglet com.ibm.icu.dev.tool.docs.ICUTaglet -taglet ch.arrenbrecht.jcite.JCiteTaglet -J-Djcitesourcepath=${jcite.addl.src} -J-Dfile.encoding=UTF-8"
++                additionalparam="${doclint.option} -breakiterator -use -J-Djcitesourcepath=${jcite.addl.src} -J-Dfile.encoding=UTF-8"
+                 link="${icu4j.api.doc.jdk.link}"
+                 source="1.5"
+                 stylesheetfile="${docs.style.sheet}"
+@@ -1437,7 +1443,7 @@
+                 docencoding="UTF-8"
+                 charset="UTF-8"
+                 bottom="${icu4j.api.doc.copyright.footer}"
+-                additionalparam="${doclint.option} -breakiterator -use -tagletpath ${icu4j.build-tools.jar}${path.separator}${jcite.libs} -taglet com.ibm.icu.dev.tool.docs.ICUTaglet -taglet ch.arrenbrecht.jcite.JCiteTaglet -J-Djcitesourcepath=${jcite.addl.src} -J-Dfile.encoding=UTF-8"
++                additionalparam="${doclint.option} -breakiterator -use -tagletpath ${icu4j.build-tools.jar}${path.separator}${jcite.libs} -taglet ch.arrenbrecht.jcite.JCiteTaglet -J-Djcitesourcepath=${jcite.addl.src} -J-Dfile.encoding=UTF-8"
+                 link="${icu4j.api.doc.jdk.link}"
+                 source="1.5"
+                 stylesheetfile="${docs.style.sheet}"

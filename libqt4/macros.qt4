@@ -1,0 +1,19 @@
+%_libqt4_pluginsdir %{_libdir}/qt4/plugins
+
+%_libqt4_accessibledir      %{_libqt4_pluginsdir}/accessible
+%_libqt4_bearerdir          %{_libqt4_pluginsdir}/bearer
+%_libqt4_codecsdir          %{_libqt4_pluginsdir}/codecs
+%_libqt4_designerdir        %{_libqt4_pluginsdir}/designer
+%_libqt4_iconenginesdir     %{_libqt4_pluginsdir}/iconengines
+%_libqt4_imageformatsdir    %{_libqt4_pluginsdir}/imageformats
+%_libqt4_importsdir         %{_libqt4_pluginsdir}/imports
+%_libqt4_inputmethodsdir    %{_libqt4_pluginsdir}/inputmethods
+%_libqt4_graphicssystemsdir %{_libqt4_pluginsdir}/graphicssystems
+%_libqt4_phonon_backenddir  %{_libqt4_pluginsdir}/phonon_backend
+%_libqt4_qmltoolingdir      %{_libqt4_pluginsdir}/qmltooling
+%_libqt4_scriptdir          %{_libqt4_pluginsdir}/script
+%_libqt4_sqldriversdir      %{_libqt4_pluginsdir}/sqldrivers
+
+%_libqt4_version QTVER
+
+%libqt4_requires(d) Requires: libqt4 >= %_libqt4_version %{-d:, libqt4-devel >= %_libqt4_version}

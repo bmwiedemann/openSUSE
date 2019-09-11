@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Fri Feb 15 14:17:03 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.99:
+  * new wxi manifests for harfbuzz, icu, dlfcn, speex, wavpack, openexr,
+    ilmbase, gcc-c++, gsm & libtheora
+  * update libidn2 to 2.0.4
+  * update libvirt to 5.0
+  * update openssl to 1.1.0h
+  * update spice-gtk to 0.36
+  * make spice-gtk ship with GStreamer WASAPI plugin instead DirectSound
+  * various dependencies wxi fixes
+  * wixl: fix crash when Feature.Level isn't specified
+  * fix rhbz#1629516 "string table load failed!" on some MSI
+  * add check-wxi: validation of wxi files on Fedora
+  * translation updates, build-sys improvements
+
+-------------------------------------------------------------------
+Fri Aug  3 12:16:17 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.98:
+  + Update gcc.wxi to 7.3.0.
+  + Update glib2.wxi to 2.54.1.
+  + Update expat.wxi to 2.2.4.
+  + Update fontconfig.wxi to 2.12.6.
+  + Update spice-glib.wxi to 0.35 and include gstvideo.
+  + Update wxi form gstreamer1 commponents to 1.14.1 stable
+    release.
+  + Fix error on msiextract while opening empty cab files.
+  + build-sys improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 18 12:36:50 UTC 2018 - jengelh@inai.de
+
+- Update summaries, and let description say what it does now,
+  not in the future.
+
+-------------------------------------------------------------------
+Fri Feb 16 12:14:31 UTC 2018 - aloisio@gmx.com
+
+- Update to version v0.97
+  * fix potential crash in read_properties
+  * fix double-frees in libmsi_summary_info_finalize
+  * wixl-heat: escape $ in filename, bgo#756904
+  * correctly parse dates, bgo#752860
+  * msiextract: fix extracting to SourceDir, bgo#773935
+  * wix updates: glib2, jasper, adwaita
+  * translation updates, build-sys fixes
+  version 0.96
+  * Add libvirt-glib.wxi
+  * Update nettle to 3.2.1
+  * Fix implicit declaration of mkdir in the testdatabase
+  * Disable -Wbad-function-cast (build-sys)
+  * Removed unneeded workaround (build-sys)
+  * Remove non-existent libvirt-glib translations
+  * Fix translations's path for libvirt-glib
+  * Add adwaita-icon-theme.wxi
+  * Add pcre.wxi
+  * Add pcre as glib2 dependency
+  * Remove virt-host-validade (libvirt.wxi)
+  * Update libspice-client-gtk dll version
+  * Add support to external cab handling (msiextract)
+  * Update adwaita and glib for f25
+  * Update git.mk
+  * Fix "make -j"
+  * Update gstreamer1 to 1.10.0
+  * Update gstreamer1-plugins-bad-free to 1.10.0
+  * Drop spice-gtk.wxi (spice-gtk2)
+  * Updade nettle to 3.3
+  * Remove libidn's locale data
+  * Translations
+  version 0.95
+  * Add libepoxy.wxi
+  * Update gtk3.wxi
+  * Update libcacad.wxi
+  * Update nss.wxi
+  * Update nspr.wxi
+  * Update pango.wxi
+  * Update gnutls.wxi
+  * Update nettle.wxi
+  * Update libvirt.wxi
+  * Update fontconfig.wxi
+  * Add bzip2.wxi
+  * Update freetype.wxi
+  * Update gstreamer1.wxi
+  * Update gstreamer1-plugins-base.wxi
+  * Update gstreamer1-plugins-bad-free.wxi
+  * Translations
+  version 0.94
+  * Add support for Signature table
+  * Add support for scheduling AppSearch
+  * Add support for MsiFileHash table
+  * Update libpng wxi
+  * Add winpthreads wxi
+  * Update libvirt wxi
+  * Add opus wxi
+  * Add spice-glib wxi
+  * Update libffi wxi
+  * Update glib2 wxi
+  * Update libsoup wxi
+  * Add sqlite
+  * Update nettle wxi
+  * Update gtk2 wxi
+  * Update libgcrypt wxi
+  * Add option to make packages win64-aware
+  * Treat EDITTIME property as filetime in parse_prop
+  * Add gtk3 wxi
+  * Add spice-gtk3 wxi
+  * Add gtk-vnc2 wxi
+  * Add rest wxi
+  * Add libgovirt wxi
+  * Add gstreamer1 exi
+  * Add gstreamer1-plugins-base wxi
+  * Add gstreamer1-plugins-good wxi
+  * Add gstreamer1-plugins-bad-free wxi
+  * Update spice-glib wxi
+  * Update gcc wxi
+  * Fix wix close tag when no component groups are specified
+    (wixl-heat)
+  * Build clean-ups
+  * Misc bug fixes
+  * Translations
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Wed Feb 22 14:06:45 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Wed Dec 10 16:53:25 UTC 2014 - vuntz@opensuse.org
+
+- Initial package (0.93)
+
+

@@ -1,0 +1,62 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## help-option.dpatch by Jörg Sommer <joerg@alea.gnuu.de>
+##
+## DP: The commandline option --help of xindy and texindy prints the help
+## DP: message to stderr.
+
+@DPATCH@
+---
+ user-commands/texindy.in |    9 ++++-----
+ user-commands/xindy.in   |    9 ++++-----
+ 2 files changed, 8 insertions(+), 10 deletions(-)
+
+--- xindy.git.orig/user-commands/texindy.in
++++ xindy.git/user-commands/texindy.in
+@@ -456,10 +456,9 @@
+ 
+ sub usage ( ;$ )
+ {
+-    my $exit_code = shift;
+-    $exit_code += 0;			# turn undef into 0
+-    my $out = ( $exit_code ? *STDERR : *STDOUT );
+-    print $out <<_EOT_
++    my $signal_error = int shift;
++    my $output_handle = $signal_error ? *STDERR{IO} : *STDOUT{IO};
++    print $output_handle <<_EOT_
+ 
+ usage: $cmd [-V?h] [-qv] [-iglr] [-d magic] [-o outfile.ind] [-t log] \\
+             [-L lang] [-C codepage] [-M module] [-I input] [idx0 idx1 ...]
+@@ -485,7 +484,7 @@
+ 
+ _EOT_
+   ;
+-    exit ($exit_code);
++    exit ($signal_error ? 1 : 0);
+ }
+ 
+ our ($output_version, $quiet, $verbose, $stdin, @debug,
+--- xindy.git.orig/user-commands/xindy.in
++++ xindy.git/user-commands/xindy.in
+@@ -473,10 +473,9 @@
+ 
+ sub usage ( ;$ )
+ {
+-    my $exit_code = shift;
+-    $exit_code += 0;			# turn undef into 0
+-    my $out = ( $exit_code ? *STDERR : *STDOUT );
+-    print $out <<_EOT_
++    my $signal_error = int shift;
++    my $output_handle = $signal_error ? *STDERR{IO} : *STDOUT{IO};
++    print $output_handle <<_EOT_
+ 
+ usage: $cmd [-V?h] [-qv] [-d magic] [-o outfile.ind] [-t log] \\
+             [-L lang] [-C codepage] [-M module] [-I input] \\
+@@ -500,7 +499,7 @@
+ 
+ _EOT_
+   ;
+-    exit ($exit_code);
++    exit ($signal_error ? 1 : 0);
+ }
+ 
+ our ($quiet, $verbose, %debug,

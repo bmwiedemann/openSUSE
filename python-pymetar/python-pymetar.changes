@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon May 11 16:39:38 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.20:
+  * no changelog available
+- remove notice about FSF address: fixed upstream
+
+-------------------------------------------------------------------
+Fri Mar 30 13:14:36 UTC 2012 - malcolmlewis@opensuse.org
+
+- Update to version 0.19:
+  + Fix COPYING, make man page installable.
+  + More GPL fixes and single-char-obj cleanup.
+  + Typo-fix & regenerate man page and HTML.
+  + Fix RE bug in condition extraction code.
+  + Add test for sky conditions.
+- Drop python-pymetar-add-manpage.patch as fix upstreamed.
+
+-------------------------------------------------------------------
+Mon Feb  6 10:24:41 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  See COPYING and setup.py. This package is GPL-2.0+ not GPL-3.0
+
+-------------------------------------------------------------------
+Wed Jan 25 04:11:42 UTC 2012 - malcolmlewis@opensuse.org
+
+- Initial build. 
+- Add python-pymetar-add-manpage.patch: Add man page install in
+  setup.py.

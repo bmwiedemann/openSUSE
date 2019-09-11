@@ -1,0 +1,6 @@
+[Unit]
+Description=Update dynamic DNS address of '%i'
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/curl -s --config /etc/dns24/%i.curl

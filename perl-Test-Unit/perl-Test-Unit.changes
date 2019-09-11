@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Mon Jul  1 08:57:11 UTC 2013 - coolo@suse.com
+
+- fix test with perl 5.18 (this module should really be dropped,
+  but kiwi relies on that old stuff)
+
+-------------------------------------------------------------------
+Tue Jun 12 06:46:39 UTC 2012 - rschweikert@suse.com
+
+- fix test with perl 5.14.2
+
+-------------------------------------------------------------------
+Mon May 23 09:04:14 UTC 2011 - coolo@novell.com
+
+- fix build with perl 5.14
+
+-------------------------------------------------------------------
+Tue May  3 11:45:58 UTC 2011 - coolo@opensuse.org
+
+- regenerated with cpanspec
+
+-------------------------------------------------------------------
+Mon Nov 29 18:00:56 UTC 2010 - coolo@novell.com
+
+- called spec2changelog
+
+-------------------------------------------------------------------
+Wed May 21 00:00:00 UTC 2008 - gerrit@gmx.de
+
+- first release 0.25
+
+

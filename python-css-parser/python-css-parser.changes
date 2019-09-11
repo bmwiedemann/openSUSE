@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Jun  4 14:06:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Mon Jan  7 10:31:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Enable tests
+- Add patch to disable online tests:
+  * disable-online-tests.patch
+
+-------------------------------------------------------------------
+Sat Jan  5 11:55:32 UTC 2019 - ecsos@opensuse.org
+
+- Initial version 1.0.4

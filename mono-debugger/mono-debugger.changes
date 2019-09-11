@@ -1,0 +1,235 @@
+-------------------------------------------------------------------
+Fri Mar 23 21:00:00 UTC 2018 - fwdsbs.to.11df@xoxy.net
+
+- Add mono-510-build-fix.patch:
+  * fix build error with mono 5.10 and up
+
+-------------------------------------------------------------------
+Tue Jun  7 00:00:00 UTC 2016 - fwdsbs.to.11df@xoxy.net
+
+- Added mono-v4-install.patch in order to fix install location and nunit-console.exe path:
+ * Fix mdb startup crash when compiled with mono v4.0 and up (mcs -sdk:4.5)
+- Alter files section in spec file depending of mcs version:
+ * Fix build issue with mono v4.4 and up
+
+-------------------------------------------------------------------
+Thu Jun 11 13:53:28 UTC 2015 - dimstar@opensuse.org
+
+- Add mono-debugger-rpmlintrc to source list, so the package can
+  be submitted to Factory again.
+
+-------------------------------------------------------------------
+Tue May  5 15:00:00 UTC 2015 - fwdsbs.to.11df@xoxy.net
+
+- fix build with Mono 4
+
+-------------------------------------------------------------------
+Sat Nov 17 12:04:34 CET 2012 - ro@suse.de
+
+- fix check-build.sh for kernel > 3.0
+
+-------------------------------------------------------------------
+Thu Mar  1 20:24:07 UTC 2012 - aj@suse.de
+
+- Fix build with current glib.
+
+-------------------------------------------------------------------
+Tue Feb 22 17:16:52 UTC 2011 - ajorgensen@novell.com
+
+- Update to 2.10
+  * http://www.go-mono.com/archive/2.10
+
+-------------------------------------------------------------------
+Fri Jan  7 16:31:52 UTC 2011 - ajorgensen@novell.com
+
+- Update to 2.8.1
+  * http://www.go-mono.com/archive/2.8.1
+
+-------------------------------------------------------------------
+Wed Nov  3 15:36:19 UTC 2010 - ajorgensen@novell.com
+
+- Update to 2.8
+  * http://www.go-mono.com/archive/2.8
+
+-------------------------------------------------------------------
+Sun May  9 06:18:02 UTC 2010 - aj@suse.de
+
+- Fix build with requiring glib2-devel.
+
+-------------------------------------------------------------------
+Tue Mar 16 16:34:02 UTC 2010 - ajorgensen@novell.com
+
+- Update to 2.6.3
+  * http://www.mono-project.com/Release_Notes_Mono_2.6.3
+
+-------------------------------------------------------------------
+Tue Jan 26 20:56:13 UTC 2010 - ajorgensen@novell.com
+
+- Update to 2.6
+  * http://www.mono-project.com/Release_Notes_Mono_2.6
+
+-------------------------------------------------------------------
+Tue Aug 11 16:19:43 UTC 2009 - ajorgensen@novell.com
+
+- Update to 2.4.2.1
+  * http://www.mono-project.com/Release_Notes_Mono_2.4.2.1
+
+-------------------------------------------------------------------
+Tue Mar 31 13:37:45 MDT 2009 - ajorgensen@novell.com
+
+- Update to 2.4
+  * http://www.mono-project.com/Release_Notes_Mono_2.4
+
+-------------------------------------------------------------------
+Fri Nov 21 16:38:36 CET 2008 - ro@suse.de
+
+- update check-build.sh
+
+-------------------------------------------------------------------
+Thu Oct 23 01:20:37 MDT 2008 - ajorgensen@novell.com
+
+- Require >= 2.0 of mono (mono got updated to 2.0.1)
+
+-------------------------------------------------------------------
+Wed Sep 10 11:39:55 MDT 2008 - ajorgensen@novell.com
+
+- Update to 2.0 RC2
+  * Revert some breakpoint handler changes
+
+-------------------------------------------------------------------
+Tue Sep  2 10:26:11 MDT 2008 - ajorgensen@novell.com
+
+- Update to 2.0-RC1
+
+-------------------------------------------------------------------
+Mon Sep  1 11:51:18 CEST 2008 - ro@suse.de
+
+- respect CFLAGS setting (for RPM_OPT_FLAGS)
+  (patch present but disabled, too many errors)
+- make term.c include ncurses/termcap.h to fix build
+
+-------------------------------------------------------------------
+Tue Aug 26 10:03:10 MDT 2008 - ajorgensen@novell.com
+
+- Update to 2.0
+  * Will be released with Mono going forward to ensure compatibility
+  * Many bugfixes
+
+-------------------------------------------------------------------
+Tue May  6 10:14:58 CEST 2008 - aj@suse.de
+
+- Use <sys/users.h> to fix build.
+
+-------------------------------------------------------------------
+Mon Jan 14 16:54:53 MST 2008 - wberrier@novell.com
+
+- Update to 0.60
+ -Updated to run with mono 1.2.6 runtime
+ -Various bux fixes
+
+-------------------------------------------------------------------
+Sat Jun  9 03:54:53 MST 2007 - wberrier@novell.com
+
+- Add post/un ldconfig scripts
+- Update to 0.50
+ -Lots of bug-fixes, usability improvements and increased stability.
+ -New object formatter:
+  When printing a class object, we now include fields from its parents.
+ -Added support for Displays (thanks to Massimiliano Mantione).
+ -New threading model:
+  By default, all threads are now stopped when the debugger is in
+  control.
+ -Ctrl-C now stops all threads.
+ -We now support stripped `mono' binaries.
+
+-------------------------------------------------------------------
+Fri Apr 13 19:18:53 CET 2007 - wberrier@novell.com
+
+- add %debug_package so debug packages get created
+
+-------------------------------------------------------------------
+Wed Apr 11 16:16:25 CET 2007 - wberrier@novell.com
+
+- Add mono dep/req for older distros
+
+-------------------------------------------------------------------
+Wed Apr  5 00:03:51 CET 2007 - wberrier@novell.com
+
+- Adapt for buildservice
+
+-------------------------------------------------------------------
+Wed Dec  6 14:40:51 CET 2006 - dmueller@suse.de
+
+- don't build as root
+
+-------------------------------------------------------------------
+Tue Nov 14 22:57:09 CET 2006 - wberrier@suse.de
+
+- Update to 0.31
+ - (contains a gpl friendly libedit)
+- Remove old patches
+- mono-debugger_libedit_cast.patch: castings for new libedit
+
+-------------------------------------------------------------------
+Wed Aug 30 21:23:14 CEST 2006 - wberrier@suse.de
+
+- Update to 0.30.  Add requires mono-core >= 1.1.16
+
+- 0.30 Changes:
+ - Redesigned and improved the session code.
+ - Stability improvements and bug fixes.
+ - Fixed i386 support.
+
+- 0.20 Changes:
+ - We now preserve breakpoints across different invocations of
+   the same target.
+ - Big API cleanups.
+ - Cleaned up method lookups; there's a very complex test for them
+   in test/testsuite/TestMethodLookup.cs.
+ - Lots of stability improvements.
+ - Fixed a very old GC bug which was preventing us from running
+   xsp inside the debugger.
+ - Fixed a very old race condition which was causing crashes at exit.
+ - Fixed line numbers in stack traces.
+ - Added experimental support for hardware watchpoints - I needed
+   them to track down a race condition.
+
+- 0.13 Changes:
+ - The test suite has been migrated to NUnit.
+ - Multi-Process support: The debugger can now follow fork()s
+   and exec()s and thus debug multiple processes at the same time.
+
+- 0.12 Changes:
+ - The debugger no longer uses a `mono-debugger-mini-wrapper',
+   it's now using the normal `mono' instead.
+ - We can now attach to processes and examine core files -
+   this still needs some testing; bug reports are very welcome ...
+ - We no longer run the backend in another process/appdomain;
+   most of the remoting stuff is gone to make the debugger faster
+   and more reliable.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:44:28 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Dec 22 01:21:03 CET 2005 - wberrier@suse.de
+
+- Clean up spec, update to 0.11, add NULL patch for libedit, only
+  build on x86 and x86_64
+
+-------------------------------------------------------------------
+Mon Aug 29 06:51:52 CEST 2005 - aj@suse.de
+
+- Add check-build.sh.
+
+-------------------------------------------------------------------
+Tue Aug  2 02:55:19 CEST 2005 - ro@suse.de
+
+- make it build ...
+
+-------------------------------------------------------------------
+Tue Jul 19 22:44:09 CEST 2005 - wberrier@suse.de
+
+- Initial submission

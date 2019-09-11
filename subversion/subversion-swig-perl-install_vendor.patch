@@ -1,0 +1,16 @@
+ Makefile.in |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: subversion-1.8.0-rc2/Makefile.in
+===================================================================
+--- subversion-1.8.0-rc2.orig/Makefile.in	2013-05-14 20:24:53.000000000 +0100
++++ subversion-1.8.0-rc2/Makefile.in	2013-05-14 20:24:54.000000000 +0100
+@@ -780,7 +780,7 @@ check-swig-pl: swig-pl swig-pl-lib
+ 	cd $(SWIG_PL_DIR)/native; $(MAKE) test
+ 
+ install-swig-pl: swig-pl install-swig-pl-lib
+-	cd $(SWIG_PL_DIR)/native; $(MAKE) install
++	cd $(SWIG_PL_DIR)/native; $(MAKE) install_vendor
+ 
+ EXTRACLEAN_SWIG_PL=rm -f $(SWIG_PL_SRC_DIR)/native/svn_*.c \
+                          $(SWIG_PL_SRC_DIR)/native/core.c

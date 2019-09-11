@@ -1,0 +1,22 @@
+commit e7d0414f37970dc7bf0770459760fc7a55a5aa95
+Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+Date:   Wed Aug 9 17:31:57 2017 +0200
+
+    Fix gcc7 and gcc8
+    
+    Fix compilation errors for GCC7 and GCC8
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+
+diff --git configure.ac configure.ac
+index 78a3b48c5331..4e31ac8794e4 100644
+--- configure.ac
++++ configure.ac
+@@ -166,6 +166,7 @@ AS_IF([test "x$enable_dynamic_ld" = "xyes"], [
+ ])
+ 
+ CFLAGS="$CFLAGS -DMST_UL"
++CPPFLAGS="$CPPFLAGS -DMST_UL"
+ CXXFLAGS="$CXXFLAGS -DMST_UL"
+ 
+ AM_CFLAGS="-Wall -Werror"

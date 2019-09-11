@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon Nov 27 15:19:46 UTC 2017 - mpluskal@suse.com
+
+- Fix dependency issues (boo#730327)
+- Do not use env for interpreter
+- Small spec file cleanup
+
+-------------------------------------------------------------------
+Sun Jun  7 18:03:52 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jul 14 11:26:51 CEST 2010 - pth@suse.de
+
+- Noarch python packages are possible from openSUSE 11.2 onwards so
+  adaptr the spec accordingly.
+
+-------------------------------------------------------------------
+Tue Jul 13 10:45:54 CEST 2010 - pth@suse.de
+
+- Install to %python_sitelib not %py_sitelib
+- Use .changes file
+
+-------------------------------------------------------------------
+Thu Jul 8 10:44:52 PST 2010 - gregkh@suse.de
+
+- Initial package
+

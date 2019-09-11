@@ -1,0 +1,2254 @@
+-------------------------------------------------------------------
+Thu Jul 11 04:29:46 UTC 2019 - Al Cho <acho@suse.com>
+
+- Fix 43xx firmware path for RPi3 bluetooth support (bsc#1140688)
+ - Add RPi-Move-the-43xx-firmware-into-lib-firmware.patch
+
+-------------------------------------------------------------------
+Wed Jul 10 06:02:54 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- Add 0001-tools-Fix-build-after-y2038-changes-in-glibc.patch: Fix
+  build after y2038 changes in glibc
+
+-------------------------------------------------------------------
+Tue Jun 25 13:19:30 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Add avinfo to bluez-test, useful for debugging.
+- Only BuildRequires pkgconfig(ell) on Tumbleweed.
+- Add bluez-5.50-a2dp-backports.patch: A2DP fixes for newer codecs
+  (upstream backport).
+
+-------------------------------------------------------------------
+Wed Apr 24 17:43:18 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Connect Sink profile which HSP profile connects (boo#1131772).
+  - Add 0001-policy-Add-logic-to-connect-a-Sink.patch
+
+-------------------------------------------------------------------
+Mon Apr  8 14:14:21 UTC 2019 - Ludwig Nussel <lnussel@suse.com>
+
+- install bluetoothd sample config file as %doc for reference
+
+-------------------------------------------------------------------
+Wed Feb 20 20:22:38 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- use gcc8 for now to work around boo#1121404
+
+-------------------------------------------------------------------
+Sat Feb  2 13:35:50 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add btmgmt to bluez-test
+
+-------------------------------------------------------------------
+Tue Jan 15 09:05:19 UTC 2019 - seife+obs@b1-systems.com
+
+- add btgatt-client to bluez-test
+
+-------------------------------------------------------------------
+Mon Jun  4 19:15:59 UTC 2018 - seife+obs@b1-systems.com
+
+- update to version 5.50:
+  - Fix issue with GATT and reading long values.
+  - Fix issue with GATT and reading multiple includes.
+  - Fix issue with GATT and service changes when offline.
+  - Fix issue with handling secondary service discovery.
+  - Fix issue with handling persistency of CCC values.
+  - Fix issue with handling Mesh session on disconnection.
+  - Fix issue with handling Mesh proxy PDU SAR message length.
+  - Fix issue with handling Mesh default heartbeat TTL value.
+  - Add support for Mesh node-reset operation handling.
+  - Add support for GATT authorization request handling.
+  - Add support for GATT minimum key size requirements.
+  - Add support for GATT server and included services.
+  - Add support for handling additional advertising data.
+  - Add support for handling separate discoverable state.
+  - Add support for enabling HFP version 1.7 features.
+  - Add support for dedicated Bluetooth logging daemon.
+- remove 0001-Don-t-refresh-adv_manager-for-non-LE-devices.patch,
+  fixed upstream
+
+-------------------------------------------------------------------
+Fri May 11 07:14:16 UTC 2018 - acho@suse.com
+
+- Add
+  CVE-2016-9800-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
+  * Fix hcidump memory leak in pin_code_reply_dump().
+  (bsc#1013721)(CVE-2016-9800)
+  CVE-2016-9804-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
+  * Fix hcidump buffer overflow in commands_dump().
+  (bsc#1013877)(CVE-2016-9804) 
+
+-------------------------------------------------------------------
+Mon Mar 26 06:04:01 UTC 2018 - seife+obs@b1-systems.com
+
+- add 0001-Don-t-refresh-adv_manager-for-non-LE-devices.patch
+  (boo#1086731)
+
+-------------------------------------------------------------------
+Mon Mar 12 17:44:33 UTC 2018 - seife+obs@b1-systems.com
+
+- update to version 5.49:
+  This is mostly a bug fix release, with fixes to features such as
+  AVCTP, OBEX, GATT and Mesh. There are however some notable new
+  features also, such as improved heartbeat management support in
+  meshctl as well as a new experimental ConnectDevice D-Bus method
+  on the Adapter interface, which can be used for quick device
+  object creation for testing purpose or when information about the
+  device has been received over some Out-of-Band channel.
+- remove 0001-core-Fixes-order-InterfaceAdded.patch (upstream)
+
+-------------------------------------------------------------------
+Sun Feb 11 21:12:36 UTC 2018 - seife+obs@b1-systems.com
+
+- add 0001-core-Fixes-order-InterfaceAdded.patch (boo#1076898)
+- fix python shebang rpmlint warning for bluez-test
+
+-------------------------------------------------------------------
+Tue Jan 30 16:05:52 UTC 2018 - normand@linux.vnet.ibm.com
+
+- Add disable_some_obex_tests.patch bypass boo#1078285 for PowerPC
+
+-------------------------------------------------------------------
+Fri Dec 29 17:21:34 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 5.48:
+  This release brings many fixes and feature enhancements.
+  Some notable enhancements include support for devices with the
+  BLE battery service, as well as improved Mesh support in the
+  meshctl tool. Several previously experimental D-Bus APIs have now
+  been marked as stable, notably the Advertising Manager API as
+  well as the AquireWrite & AquireNotify GATT APIs.
+  As far as fixes go, these can be found in many areas of the stack,
+  including A2DP, AVCTP, device discovery, Mesh, and GATT.
+
+-------------------------------------------------------------------
+Tue Dec 12 08:23:07 UTC 2017 - seife+obs@b1-systems.com
+
+- add 0001-obexd-use-AM_LDFLAGS-for-linking.patch
+- document systemd dependency during %post
+
+-------------------------------------------------------------------
+Sun Sep 17 22:34:07 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 5.47:
+  This release contains various fixes to GATT, A2DP and BR/EDR vs
+  LE bearer handling. There’s also a notable SDP fix for CVE-2017-
+  1000250 (part of the recently announced BlueBorne vulnerabilities).
+  Feature-wise, there’s now support for adding the appearance and
+  local name to advertising data through the Advertising D-Bus
+  interface. The btmon tool is now also able to better decode most
+  Bluetooth 5.0 HCI commands and events.
+  The Bluetooth Mesh Profile specification was released recently,
+  and this BlueZ release comes with initial support for it in the
+  form of a new meshctl tool. Using this tool it’s possible to
+  provision mesh devices through the GATT Provisioning Bearer
+  (PB-GATT), as well as communicate with them (e.g. configure them)
+  using the GATT Proxy protocol.
+
+-------------------------------------------------------------------
+Sat Jul 15 07:14:55 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 5.46:
+  * Fix issue with handling ATT over BR/EDR connections.
+  * Fix issue with SDP browsing cleanup after connection.
+  * Fix issue with pointer dereference and OPP Put request.
+  * Fix issue with identity address updates during pairing.
+  * Fix issue with not removing services that had disappeared.
+  * Add support for improved discovery of included services.
+  * Add support for simplified characteristics discovery.
+  * Add support for GATT caching configuration option.
+  * Add experimental support for AcquireWrite and AcquireNotify.
+
+-------------------------------------------------------------------
+Fri Jul  7 19:17:20 UTC 2017 - seife+obs@b1-systems.com
+
+- enable sixaxis plugin
+
+-------------------------------------------------------------------
+Sun Jun 25 11:53:02 UTC 2017 - msuchanek@suse.com
+
+- Add %post/%postun to bluez-auto-enable-devices so the settings
+  change takes effect (boo#1039476)
+
+-------------------------------------------------------------------
+Thu Jun  8 06:54:26 UTC 2017 - seife+obs@b1-systems.com
+
+- add bluez-auto-enable-devices subpackage with main.conf which
+  auto-enables all devices (boo#1039476)
+
+-------------------------------------------------------------------
+Fri May 26 13:16:07 UTC 2017 - seife+obs@b1-systems.com
+
+- add bluez-5.45-disable-broken-tests.diff to disable two broken
+  tests (reported upstream but not yet fixed)
+
+-------------------------------------------------------------------
+Sat May  6 18:59:55 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 5.45:
+  This is mostly a bugfix release with fixes in ATT, GATT, OBEX
+  and AVDTP.
+  Feature-wise there are some new things as well, such as btmon
+  support decoding Bluetooth 5.0 HCI commands and events.
+
+-------------------------------------------------------------------
+Fri Mar  3 09:16:29 UTC 2017 - seife+obs@b1-systems.com
+
+- make testsuite run non-parallel (it has problems with running
+  parallel checks) and quiet
+
+-------------------------------------------------------------------
+Wed Mar  1 21:22:42 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 5.44:
+  Most fixes are LE (specifically GATT) related, however some other
+  areas are affected as well.
+  Feature-wise, there’s a new MIDI plugin and support for using
+  single-mode (LE-only) controllers that lack a public address.
+  E.g. any nRF5x controller running a MyNewt or Zephyr based
+  firmware falls into this category.
+- packaging: add "--enable-midi", "--enable-deprecated"
+  TODO: package deprecated tools into separate package to prepare
+  removal some time in the future
+- rebase bluez-cups-libexec.patch
+
+-------------------------------------------------------------------
+Wed Mar  1 11:39:56 UTC 2017 - tchvatal@suse.com
+
+- Set the cupsdir directly with patch instead of mv and seds:
+  * bluez-cups-libexec.patch
+- Replace requirements by the pkgconfig counterparts
+  * this should solve out the problem with builcycle on Factory
+- Ran over with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Oct 29 09:23:59 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 5.43:
+  This is almost purely a bug-fix release with fixes to HoG, ATT
+  and PAN. There’s also a fix for a regression in 5.42 that caused
+  connection failures for external profiles like OBEX.
+  Feature-wise there’s one notable addition: LE privacy. By
+  enabling this in main.conf it’s now possible to make BlueZ
+  generate a local Identity Resolving Key (IRK) and use Resolvable
+  Private Addresses (RPAs) for itself.
+
+-------------------------------------------------------------------
+Mon Sep 26 17:41:20 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 5.42:
+  The major API change with this release is that the GATT D-Bus API
+  is no longer marked as experimental.This should hopefully
+  encourage the creation of more applications using it. Feature-
+  wise, btmon received support for decoding full mgmt message
+  traces - a feature that is available in the bluetooth-next kernel
+  tree, i.e. on its way to the 4.9 kernel release. In addition to
+  these changes, this release contains also fixes in areas such as
+  PBAP, transport selection (BR/EDR vs LE), ATT and A2DP.
+
+-------------------------------------------------------------------
+Sun Jul 31 21:42:27 UTC 2016 - jengelh@inai.de
+
+- Update descriptions a bit. Adjust RPM groups for what is used
+  in openSUSE normally. Drop archaic %clean section.
+  Drop --with-pic which is only for (unbuilt) static libs.
+
+-------------------------------------------------------------------
+Wed Jul 20 22:32:18 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 5.41:
+  BlueZ 5.41 is purely a bug-fix release targeting areas such as
+  GATT, AVRCP, OBEX and device discovery filters. The GATT D-Bus
+  API is now starting to be stable enough that this will likely be
+  the last release where it is flagged as experimental.
+- fix build with older distributions that don't have %_userunitdir
+  ins systemd-rpm-macros
+
+-------------------------------------------------------------------
+Tue Jun  7 13:17:48 UTC 2016 - fbui@suse.com
+
+- Don't require systemd-devel but systemd-rpm-macros (bsc#983167)
+  Bluez simply needs to know where the systemd default paths are, at
+  build time. For that there's no need to build-require systemd or
+  systemd-devel (and pull all theirs dependencies). Instead
+  build-require systemd-rpm-macros, which has much less dependencies.
+
+-------------------------------------------------------------------
+Sat May 28 07:33:16 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 5.40:
+  This is mostly a bug fix release fixing issues with GATT, paired
+  devices and connection handling (particularly for accepting
+  connections through the Profile D-Bus interface).
+  One new feature is the ability to use btmon for reading HCI logs
+  from a TTY device. Right now the creation of this kind of logs is
+  available with Zephyr <https://www.zephyrproject.org/> in the
+  form of a special console logging mode (more information
+  available here
+  https://www.zephyrproject.org/doc/board/arduino_101_ble.html#getting-hci-traces>).
+  The format of the protocol is a slight modification of what btmon
+  normally receives from the kernel monitor sockets, and is
+  documented in doc/btsnoop.txt).
+
+-------------------------------------------------------------------
+Sun Apr 10 09:37:14 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 5.39:
+  This is almost entirely a bug fix release with important fixes to
+  GATT, HoG, AVRCP & A2DP.
+- install gatttool, needed for bluetooth 4.0 devices (boo#970628)
+
+-------------------------------------------------------------------
+Fri Mar 18 14:22:39 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 5.38:
+  This release has lots of updates and fixes to the GATT D-Bus API.
+  It should be working considerably better now. A key change to the
+  GATT D-Bus API is that it is now fully conforming to the word of
+  the D-Bus Object Manager specification. Instead of registering
+  each service individually with an Object Manager interface per
+  service path, all application services are now grouped together
+  through a single RegisterApplication call. The details can be
+  found in gatt-api.txt. Besides the D-Bus API change there are
+  also numerous fixes to GATT functionality in general.
+  Other areas that received fixes in this release are OBEX, AVRCP
+  and 128-bit UUID handling. Feature-wise there isn’t anything
+  groundbreaking, but a notable update is support for the Start
+  Limited Discovery command in the btmgmt tool (this feature
+  debuted with the 4.5 kernel release).
+  * Fix issue with stack overflow and UUID handling.
+  * Fix issue with ObjectManager interface and GATT.
+  * Fix issue with GATT database and error handling.
+  * Fix issue with GATT client notifications.
+  * Fix issue with GATT object ordering.
+  * Fix issue with GATT default MTU exchange.
+  * Fix issue with device attribute clearing.
+  * Fix issue with AVRCP capabilities request.
+
+-------------------------------------------------------------------
+Mon Dec 28 08:27:37 UTC 2015 - seife+obs@b1-systems.com
+
+- update to version 5.37:
+  * Fix issue with registering external profiles.
+  * Fix issue with connecting external profiles.
+  * Fix issue with GATT service changed handling.
+  * Fix issue with not emitting GattServices update.
+  * Convert to unified HID over GATT profile support.
+  * Convert to KeyboardDisplay as default IO capability.
+  * Install btattach utility by default.
+
+-------------------------------------------------------------------
+Fri Oct 30 08:11:30 UTC 2015 - seife+obs@b1-systems.com
+
+- update to version 5.36:
+  This release consists for the most part of bug fixes that target
+  areas such as PBAP, AVRCP and GATT.
+  Feature-wise a notable change is btmon support for vendor
+  diagnostic messages which will be debuting with the 4.4 Linux
+  kernel release. This feature will allow e.g. LMP tracing with
+  specific controllers. For now there is preliminary support for
+  Intel and Broadcom based controllers.
+- update dbus-devel buildrequires from configure.ac
+- remove obsolete bluez-no-duplicate-test-names.patch
+
+-------------------------------------------------------------------
+Mon Sep 28 19:02:15 UTC 2015 - seife+obs@b1-systems.com
+
+- update to version 5.35:
+  This release contains bugfixes to areas such as GATT, OBEX, HoG
+  and AVRCP. From now on bluetoothd will cache more information of
+  remote GATT databases and thereby avoid unnecessary rediscovery
+  of remote services.
+  A noteworthy new feature is the ability to configure bluetoothd
+  to automatically enable (power on) all new adapters. One use of
+  this is to replace unreliable "hciconfig hci0 up" commands that
+  some distributions use in their init/udev scripts. The feature
+  can be enabled by having "AutoEnable=true" under the "[Policy]"
+  section of /etc/bluetooth/main.conf
+
+-------------------------------------------------------------------
+Thu Sep 10 13:24:58 UTC 2015 - dimstar@opensuse.org
+
+- Add bluez-no-duplicate-test-names.patch: Fix test suite when
+  running against GLIB 2.45.x (test names are not to be used
+  duplicated).
+
+-------------------------------------------------------------------
+Fri Sep  4 10:39:32 UTC 2015 - seife+obs@b1-systems.com
+
+- update to version 5.34:
+  This release fixes a fairly important bug for the GATT D-Bus
+  interface where automatic reconnections would not always occur
+  for the client role. There’s also a fix for a missing attribute
+  in PBAP & MAP SDP records as well as a couple of audio related
+  fixes. A new feature in this release is Media Player Selection
+  support for the Target role of AVRCP (the Controller role already
+  had this).
+
+-------------------------------------------------------------------
+Fri Jul 31 12:24:09 UTC 2015 - seife+obs@b1-systems.com
+
+- update to version 5.33:
+  This release contains mostly bugfixes, particularly in areas such
+  as the audio plugin, GATT and OBEX. The main feature additions
+  are in the the emulator code which received improvelents to LE
+  features. There’s also a new tool for testing the recently
+  released Eddystone protocol from Google.
+
+-------------------------------------------------------------------
+Tue Jul  7 21:22:05 UTC 2015 - seife+obs@b1-systems.com
+
+- update to version 5.32:
+  This is mostly a bug fix release rather than including many new
+  features. The fixes fall in several different areas, including
+  OPP, ATT and advertising (instance number handling in
+  particular). There’s also a fix for handling a sudden disconnect
+  when a connection setup process hasn’t yet completed. The one
+  notable feature this release has is the ability to select between
+  letting the stack handle ATT security elevation or doing the
+  respective error handling in higher layers.
+
+-------------------------------------------------------------------
+Tue Jun 16 05:39:22 UTC 2015 - seife+obs@b1-systems.com
+
+- update to version 5.31
+  Fixes to many different areas, including networking, GATT, HID,
+  A2DP and AVRCP. Feature-wise we’ve got support for security flags
+  for the GATT database, allowing fine-grained security level
+  control for D-Bus clients using the GATT D-Bus API. We’ve also
+  got a new experimental device discovery filter interface which
+  allows filtering for a specific remote service, RSSI threshold
+  or transport (LE vs. BR/EDR). Another new experimental interface
+  is for LE advertising, which also brings the LE peripheral role
+  closer to feature completion on a D-Bus level
+- remove obsolete bluez-5.30-disable-broken-tests.diff
+
+-------------------------------------------------------------------
+Wed Apr  1 10:35:59 UTC 2015 - seife+obs@b1-systems.com
+
+- update to version 5.30
+  The highlight of this release is the completion of the GATT D-Bus
+  APIs. We’ve now got both the client and server functionality in
+  place, however it’s still behind the -E (--experimental) command
+  line switch. The API is documented in doc/gatt-api.txt and there
+  are several test tools for it in the tree (even bluetoothctl has
+  support for it). Another new (and still experimental) D-Bus API
+  that debuts with this release is one for managing LE Advertising,
+  i.e. acting in peripheral role. The API is documented in
+  doc/advertising-api.txt.
+  Besides the new features, there are several fixes to AVCTP, AVDTP
+  & AVRCP.  There’s also a fix for C++ compiler compatibility with
+  the library headers as well as a fix for device information not
+  being stored in certain corner cases.
+- add bluez-5.30-disable-broken-tests.diff to fix test suite
+- remove -fstack-reuse=none workaround
+- remove 20150312-PATCH_BlueZ_shared_gatt-client_Fix_invalid_read-56974.patch
+
+-------------------------------------------------------------------
+Mon Mar 23 14:41:38 UTC 2015 - rguenther@suse.com
+
+- Build the testsuite with -fstack-reuse=none to workaround broken
+  test setup.  [bnc#923768]
+
+-------------------------------------------------------------------
+Thu Mar 12 12:03:30 UTC 2015 - seife+obs@b1-systems.com
+
+- update to version 5.29
+  This is a comparatively large release with over a month and 475
+  commits since 5.28. There have been lots of fixes to the Android
+  side. Our internal GATT library (used both by ‘normal’ BlueZ as
+  well as the Android version) received lots of updates for this
+  release. Other notable changes are a fix for AVCTP key repeat
+  timeout as well as added support for the Multi Profile
+  Specification (MPS).
+- add 20150312-PATCH_BlueZ_shared_gatt-client_Fix_invalid_read-56974.patch
+  from bluez-devel for fixing test case failure (will be included in
+  next bluez release)
+
+-------------------------------------------------------------------
+Tue Feb  3 10:45:20 UTC 2015 - seife+obs@b1-systems.com
+
+- update to version 5.28
+  Here’s the first BlueZ release in 2015. Most of the changes since
+  the last one are bug fixes, but there’s actually quite many of
+  them this time, including:
+  * Fixes to GATT service discovery & probing
+  * Fix for bearer selection with dual-mode devices
+  * Fix potential crash when removing devices
+  * Fix issue with incomplete names in EIR data
+  * Fix parsing GATT name characteristics
+  * Fix AVCTP long press & key repetition handling
+  * Fixes for GATT notification handling
+  Besides bug fixes we’ve now also got more extensive unit tests
+  for new GATT code as well as better HCI decoders in btmon for
+  some less used 4.1 and 4.2 features. The hid2hci tool gained
+  support for CSR 8510 A10 devices and the hex2hcd tool received a
+  complete rewrite with better command handling.
+
+-------------------------------------------------------------------
+Sat Dec 27 02:14:49 UTC 2014 - seife+obs@b1-systems.com
+
+- update to version 5.27
+  Here comes the traditional x-mas release!
+  BlueZ 5.27 consists mostly of bug fixes to areas such as GATT
+  and mgmt (the interface through which bluetoothd talks to the
+  kernel). The emulation framework has also received many new
+  features, paving the way for more extensive test automation.
+
+-------------------------------------------------------------------
+Sun Dec 14 21:56:58 UTC 2014 - seife+obs@b1-systems.com
+
+- update to version 5.26
+  This release is for the most part a bug-fix release with fixes in
+  A2DP and OBEX related functionality, but there’s also an added
+  features for get/set reports for HID over GATT as well as
+  Phonebook Access Profile 1.2 support
+  The Bluetooth 4.2 specification went public in early December and
+  BlueZ 5.26 is the first release with support for its features.
+  Perhaps the most notable one of these is Low Energy Secure
+  Connections which will require a 3.19 or newer kernel. This
+  feature brings LE pairing to the same level of security as it has
+  been for BR/EDR. LE SC also brings along with it so-called
+  cross-transport pairing, which means that you only need to pair
+  once over LE or BR/EDR to get the necessary keys for both
+  transports between two dual-mode devices.
+
+-------------------------------------------------------------------
+Mon Nov 10 08:22:31 UTC 2014 - seife+obs@b1-systems.com
+
+- update to version 5.25
+  This release contains various improvements to MAP and PBAP
+  support. There are also various GATT related fixes. We’ve also
+  got a fix for a race condition which could occasionally cause LE
+  connection/pairing failures. The fix will work for kernels from
+  3.13 onward (for older kernels a proper fix isn’t really feasible).
+- packaging: remove obsolete README.SUSE and README.packagers
+
+-------------------------------------------------------------------
+Mon Oct  6 10:02:59 UTC 2014 - seife+obs@b1-systems.com
+
+- update to version 5.24
+  This release consists for the most part of cleanups and minor
+  fixes, however there are some new additions too in the form of
+  Phonebook Access Profile 1.2 and Message Access Profile 1.2
+  features.
+- packaging: mcaptest tool added to bluez-test package
+
+-------------------------------------------------------------------
+Tue Sep  9 06:28:53 UTC 2014 - seife+obs@b1-systems.com
+
+- update to version 5.23
+  This is mostly a bug-fix release with fixes for concurrent
+  authorization attempts (for untrusted devices), HID, uHID, OBEX,
+  MAP and AVRCP. We now also have better support for AVCTP/AVRCP
+  decoding with btmon.
+  (no other packaging changes besides version bump)
+
+-------------------------------------------------------------------
+Fri Aug  8 06:43:18 UTC 2014 - seife+obs@b1-systems.com
+
+- update to version 5.22
+  This release contains several fixes to HID over GATT (HoG) as
+  well as for AVRCP. Feature-wise there are a couple of notable
+  additions debuting with the Linux kernel 3.17 release:
+  * BR/EDR whitelist support. Starting with Linux kernel 3.17
+    bluetoothd will no-longer set adapters to connectable by
+    default. Instead, all configured remote devices are added to
+    the kernel whitelist after which the kernel will enable page
+    scanning but only accept connect requests from the whitelist.
+    This effectively reduces the attack surface for unknown
+    devices. When whitelist support is available the general
+    connectable state now follows the discoverable state, meaning
+    discoverable must be enabled for previously unknown devices to
+    be able to connect to us.
+  * Proper LE passive scanning support. For kernels before 3.17
+    bluetoothd will use the Start/Stop Discovery commands to
+    perform LE background scanning. This however uses LE active
+    scanning which is both wasteful (causing unneeded Scan
+    Requests) and can cause reconnection issues with devices using
+    direct advertising (e.g. most LE mice). From kernel version
+    3.17 onward bluetoothd will use proper kernel-side passive
+    scanning, making the background scanning both efficient and
+    more interoperable. The kernel will even use the
+    controller-side whitelist during scanning (if no Resolvable
+    Private Addresses are present), saving even more power.
+
+-------------------------------------------------------------------
+Sun Jul  6 11:47:10 UTC 2014 - seife+obs@b1-systems.com
+
+- update to version 5.21
+  Bugfixes and improvements throughout the tree. Fixes to
+  bluetoothctl to allow using it for scripting.
+  An important detail of this release is that it supports several
+  new features that are on their way to the 3.17 kernel. Perhaps
+  the most important one of these is LE passive scanning. When
+  run on a kernel that supports it, instead of doing a kind of
+  "fake" background scanning using the Start Discovery command,
+  bluetoothd will now tell the kernel the relevant information and
+  the kernel will then commence passive scanning for devices.
+- remove bluez-5.20-fix-queue.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Fri Jun 27 10:56:22 UTC 2014 - seife+obs@b1-systems.com
+
+- add bluez-5.20-fix-queue.patch to fix test case failure
+
+-------------------------------------------------------------------
+Sat Jun 21 21:30:12 UTC 2014 - seife+obs@b1-systems.com
+
+- update to version 5.20
+  For non-Android related parts this is mostly a bug-fix release
+  with minor fixes here and there as well as improved handling of
+  PS3 controllers.
+
+-------------------------------------------------------------------
+Tue May 20 06:24:05 UTC 2014 - seife+obs@b1-systems.com
+
+- update to version 5.19
+  The release contains fixes to OBEX, AVRCP browsing, HID over GATT
+  and handling of device unpaired events for dual-mode devices.
+  There is also a fix to cleanly handle tools like bluetoothctl
+  taking over the default agent role. Since there is no indication
+  to the "normal" system default agent this would previously simply
+  rob this property away without any way to know that this
+  happened. From 5.19 onward bluetoothd maintains a stack of agents
+  that have requested to be the default and will hand back the
+  property to the next item in the stack when bluetoothctl (or some
+  other tool) exits.
+  Besides these fixes we’ve got some new additions too:
+  * User space based HID host implementation (for BR/EDR), to
+    complement the kernel-side implementation
+  * A reconnect-upon-linkloss policy for those profiles that need,
+    such as HFP HF or an A2DP Sink. The list of remote UUIDs to try
+    to reconnect to is also configurable through main.conf.
+- removed bluez-glib2.40.patch, included upstream
+
+-------------------------------------------------------------------
+Tue Apr 29 18:16:11 UTC 2014 - dimstar@opensuse.org
+
+- Add bluez-glib2.40.patch: Fix build with GLib 2.40: Since GLib
+  2.39 calling g_source_remove on already removed source is causing
+  critical warning.
+
+-------------------------------------------------------------------
+Sun Apr 13 10:46:02 UTC 2014 - seife+obs@b1-systems.com
+
+- update to version 5.18
+  "This is mostly a bug fix release with issues fixed regarding LE
+   single mode device detection and incorrect getpeername() calls
+   which could have caused incorrect SDP records for profiles
+   (mainly those using the Profile D-Bus interface with RFCOMM
+   channel auto-allocation).
+   On the OBEX side we now have full OBEX authentication support,
+   which is a fairly useless feature in practice but a mandatory
+   one for qualification of some OBEX profiles."
+
+-------------------------------------------------------------------
+Wed Mar 26 12:51:17 UTC 2014 - seife+obs@b1-systems.com
+
+- update to version 5.17
+  "This is mostly a bug fix release with issues fixed in OBEX,
+   dual-mode device pairing, and LE related areas."
+  * Fix issue with not resetting OBEX SRM setup.
+  * Fix issue with BR/EDR devices and auto-connect list.
+  * Fix issue with bonding complete detection as peripheral.
+  * Fix issue with not updating bearer timestamp of connections.
+  * Fix issue with paired property for multiple bearers.
+
+-------------------------------------------------------------------
+Tue Mar 11 22:24:22 UTC 2014 - seife+obs@b1-systems.com
+
+- update to version 5.16:
+  * Fix issue with missing paired property notification.
+  * Fix issue with endianess of long term key storage.
+  "People using 5.15 are strongly recommended to upgrade because
+   of these fixes."
+  * Fix issue with HID over GATT physical location.
+  * Fix issue with HID over GATT unique identifier.
+  * Add support for storing signature resolving keys.
+
+-------------------------------------------------------------------
+Sat Feb 22 10:31:52 UTC 2014 - seife+obs@b1-systems.com
+
+- update to version 5.15:
+  * Fix issue with LE enabling and background scanning.
+  * Fix issue with HID over GATT input device name.
+  * Fix issue with storage of slave long term keys.
+  * Add support for handling identity resolving keys.
+  * various android features (not relevant for us)
+- minor specfile tweaks to avoid some rpmlint warnings
+- permissions of some bluez-test files changes to please rpmlint
+
+-------------------------------------------------------------------
+Thu Jan 23 10:43:53 UTC 2014 - seife+obs@b1-systems.com
+
+- Update to version 5.14:
+  * Fix issue with marking PS3 controllers as trusted.
+  * Fix issue with authorization of PS3 controllers.
+  * Add support for DualShock 4 controller detection.
+  * Add support for legacy pairing emulation.
+  * Add support for secure simple pairing emulation.
+  * Add support for automated pairing testing.
+  * Add support for RFCOMM protocol testing.
+  * Add support for HCI controller testing.
+- Add "bluemoon" configuration tool
+
+-------------------------------------------------------------------
+Mon Dec 30 15:46:01 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 5.13:
+  * Fix issue with PS3 controller detection.
+  * Add support for data transfers to L2CAP testing tool.
+  * Add support for delay reporting to AVDTP testing tool.
+  * Add support for Android Bluetooth Core interface.
+  * Add support for Android Bluetooth Socket interface.
+  * Add support for Android Bluetooth HID Host interface.
+  * Add support for Android Bluetooth PAN interface.
+Changes since 5.12:
+  * Fix issue with missing reply to DisconnectProfile.
+  * Fix issue with icon property and class of device changes.
+  * Fix issue with HID devices when SDP record is not available.
+  * Fix issue with handling auto-pairing of printers.
+  * Fix issue with agent authorization handling.
+  * Add support for PS3 controller setup and pairing.
+  * Add support for LE L2CAP CoC test capabilities.
+  * Add support for AVDTP qualification test cases.
+  * Add support for SMP cryptographic test cases.
+
+-------------------------------------------------------------------
+Wed Dec  4 13:44:23 UTC 2013 - seife+obs@b1-systems.com
+
+- add bluez-5.11-logitech-hid2hci.patch, (bnc#681049; bnc#850478)
+
+-------------------------------------------------------------------
+Sun Nov 24 16:43:28 UTC 2013 - crrodriguez@opensuse.org
+
+- run %uev_rules_update in %post if such macro is defined
+
+-------------------------------------------------------------------
+Mon Nov 18 08:11:54 UTC 2013 - seife+obs@b1-systems.com
+
+- update to bluez-5.11:
+  * Fix issue with connection attempt when not powered.
+  * Fix issue with assigning player to AVRCP target role.
+  * Fix issue with OBEX default cache directory.
+  * Fix issue with SDP search error handling.
+  * Fix issue with processing of SDP records.
+  * Fix issue with HID to HCI switching utility.
+  * Fix issue with mgmt end-to-end testing tool.
+  * Fix issue with L2CAP end-to-end testing tool.
+  * Add support for SMP end-to-end testing tool.
+  * Add support for more Wii controllers.
+
+-------------------------------------------------------------------
+Sat Oct 19 08:36:07 UTC 2013 - seife+obs@b1-systems.com
+
+- remove libnl BuildRequires, it is not needed
+
+-------------------------------------------------------------------
+Wed Oct 16 14:31:38 UTC 2013 - seife+obs@b1-systems.com
+
+- update to bluez-5.10, changelog from source:
+  ver 5.10:
+  * Fix issue with discoverable timeout handling.
+  * Fix issue with MAP messages and record version.
+  * Fix issue with MAP messages and status events.
+  * Fix issue with MAP messages and relative folders.
+  * Fix issue with MAP messages and type property signals.
+  * Fix issue with transfer size for OBEX GET operations.
+  * Fix issue with AVRCP service class identifier.
+  * Fix issue with AVRCP tracking seeked signal.
+  * Add support for OBEX command line client.
+  ver 5.9:
+  * Fix issue with network service and adapter removal.
+  * Fix issue with misleading OBEX error messages.
+  * Fix issue with OBEX transport reference handling.
+  * Fix issue with memory leak with MAP event handler.
+  * Fix issue with missing MAP property changed signal.
+  * Fix issue with message type property values.
+  * Fix issue with empty UUID list for devices.
+  * Fix issue with profile agent cancel method.
+  * Remove dependency on USB library.
+- removed bluez-5.4-compilerwarning.diff, is obsolete
+
+-------------------------------------------------------------------
+Tue Oct  8 08:24:15 UTC 2013 - dimstar@opensuse.org
+
+- Do not package systemd user session service file.
+- Change DBus user service to be self-contained, and not rely on
+  Systemd activation (bnc#842688).
+
+-------------------------------------------------------------------
+Sat Sep 14 08:01:17 UTC 2013 - crrodriguez@opensuse.org
+
+- place socket in /run , not /var/run (bluez-sdp-unix-path.patch)
+
+-------------------------------------------------------------------
+Fri Aug 16 18:43:49 UTC 2013 - seife+obs@b1-systems.com
+
+- update to bluez-5.8
+  * changelog is in the package
+
+-------------------------------------------------------------------
+Thu Aug 15 06:36:45 UTC 2013 - seife+obs@b1-systems.com
+
+- update to bluez-5.4
+  Huge, incompatible update. Some points:
+  * hcidump merged
+  * obexd merged
+  * no unix socket anymore (only d-bus)
+  * libbluetooth and bluez-devel is *deprecated* and will be
+    removed. Only included for now to keep the breakage smaller.
+- dropped patches (no longer needed):
+  * 0001-network-fix-network-Connect-method-parameters.patch
+  * bluez-4.101-new-automake.diff
+- new patch to suppress a stupid compiler warning:
+  * bluez-5.4-compilerwarning.diff
+
+-------------------------------------------------------------------
+Wed Aug 14 14:00:39 UTC 2013 - guillaume@opensuse.org
+
+- Disable check when building with qemu (fix armv6)
+
+-------------------------------------------------------------------
+Thu Mar 21 08:07:45 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Thu Feb 28 14:45:10 UTC 2013 - seife+obs@b1-systems.com
+
+- add bluez-4.101-new-automake.diff, fix build with automake-1.13.1
+
+-------------------------------------------------------------------
+Fri Jan 25 08:05:27 UTC 2013 - seife+obs@b1-systems.com
+
+- also run spec-cleaner on bluez-gstreamer.spec, add README for
+  packagers, fix bluez-gstreamer changelog
+
+-------------------------------------------------------------------
+Mon Jan 21 11:16:34 UTC 2013 - dimstar@opensuse.org
+
+- Unconditionally enable the systemd bluetooth service (actual
+  activation of bluez is triggered by udev) (bnc#796671).
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jan 11 14:38:03 UTC 2013 - crrodriguez@opensuse.org
+
+- Add changelog entry for older change so factory-auto wont reject this.
+- This requests removes sbc building and packaging from bluez.
+SBC recently gets its own package and sources are even stripped out ot
+Bluez in current git master (future 5.0).
+On top of that current bluez-devel package conflicts with sbc-devel.
+Note: This change may broke packages which use sbc from bluez-devel
+as new sbc-devel package use different include path.
+This change is required to properly build PulseAudio 3.0
+
+-------------------------------------------------------------------
+Wed Oct 31 14:50:01 UTC 2012 - crrodriguez@opensuse.org
+
+- bluez-coldplug init script is forced but it s not needed
+  when using systemd with dbus activation.
+
+-------------------------------------------------------------------
+Wed Oct 17 11:44:49 UTC 2012 - seife+obs@b1-systems.com
+
+- remove unused 001-remove-rule-dell-mouse.patch
+
+-------------------------------------------------------------------
+Wed Oct 17 09:18:47 UTC 2012 - fcrozat@suse.com
+
+- Fix build with new systemd / udev location.
+
+-------------------------------------------------------------------
+Wed Oct 17 08:52:03 UTC 2012 - fcrozat@suse.com
+
+- Change udev rules location with udev > 190
+
+-------------------------------------------------------------------
+Tue Aug 28 09:37:12 UTC 2012 - seife+obs@b1-systems.com
+
+- enable bluetooth.service on install (bnc#772455)
+
+-------------------------------------------------------------------
+Sat Jul 28 13:00:59 UTC 2012 - seife+obs@b1-systems.com
+
+- remove unused service file (now in upstream tarball)
+
+-------------------------------------------------------------------
+Fri Jul 20 14:58:35 UTC 2012 - seife+obs@b1-systems.com
+
+- add patch from upstream git to fix bluez networking
+
+-------------------------------------------------------------------
+Wed Jul 11 14:04:54 UTC 2012 - seife+obs@b1-systems.com
+
+- remove unused bluetooth.sh, bluez-4.75-udev-use-helperscript.diff
+
+-------------------------------------------------------------------
+Wed Jun 27 20:39:52 UTC 2012 - seife+obs@b1-systems.com
+
+- ver 4.101:
+  - Fix issue with missing BlueZ service file.
+  - Fix issue with aborting A2DP setup during AVDTP start.
+  - Fix issue with handling of multiple A2DP indication.
+  - Fix issue with handling AVDTP abort with invalid SEID.
+  - Fix issue with rejecting AVDTP abort commands.
+  - Add support for handling AVDTP command collision.
+- our bluez-4.100 patches are applied upstream
+- apitest was removed and is thus no longer in bluez-test
+
+-------------------------------------------------------------------
+Thu Jun 21 08:57:47 UTC 2012 - seife+obs@b1-systems.com
+
+- remove obsolete configure options
+- fix LDFLAGS / "-pie" acinclude.m4 bug
+
+-------------------------------------------------------------------
+Wed Jun 20 11:17:53 UTC 2012 - seife+obs@b1-systems.com
+
+- update to bluez-4.100:
+  * Fix issue with crashing when SCO connection fails.
+  * Fix issue with HFP gateway failing on first GSM connection.
+  * Fix issue with AVRCP and handling of vendor commands.
+  * Fix issue with handling AVRCP subunit info command.
+  * Fix issue with missing capability for AVRCP track reached end.
+  * Fix issue with AVDTP signaling and GStreamer SBC NULL check.
+  * Fix issue with AVDTP Reconfigure Reject message.
+  * Fix issue with incorrect EIR length parsing.
+  * Fix issue with SDP disconnect for HIDSDPDisable.
+  * Fix issue with SDP interoperability with Mac OS X Lion.
+  * Fix issue with reverse SDP discovery with some devices.
+  * Fix issue with discovering state during power off operation.
+  * Add support for AVRCP Volume Changed notifications.
+  * Add support for AVRCP Set Absolute Volume handling.
+  * Add support for display legacy PIN code agent method.
+  * Add support for multiple media transports per endpoint.
+  * Add support for discovering device information characteristics.
+  * Add support for vendor source for Device ID setting.
+  * Add support for immediate alert server.
+  * Add support for link loss server.
+- Notes:
+  * This version requires D-Bus 1.4 or later.
+  * This version requires GLib 2.28 or later.
+
+-------------------------------------------------------------------
+Thu Apr 26 15:04:58 UTC 2012 - seife+obs@b1-systems.com
+
+- fix mysterious build failure by creating /var/lib/bluetooth
+
+-------------------------------------------------------------------
+Wed Apr 18 22:09:48 UTC 2012 - jeffm@suse.com
+
+- Make libsbc installable; Required by update to Opal.
+
+-------------------------------------------------------------------
+Thu Mar  8 21:06:29 UTC 2012 - seife+obs@b1-systems.com
+
+- update to bluez-4.99:
+  - Fix issue with missing retries for BNEP connection setup.
+  - Fix issue with not showing name if first EIR has no details.
+  - Fix issue with running SDP discovery for LE devices.
+  - Add support for GATT using 128-bit Bluetooth UUIDs.
+  - Add support for retrieving key size information.
+  - Add support for storing Long Term Keys.
+  - Add support for Proximity Reporter API.
+  - Add support for KeyboardDisplay IO capability.
+  - Add support for version 1.0 of management API.
+  - Add support for monitoring interface.
+
+-------------------------------------------------------------------
+Mon Jan 23 15:23:43 UTC 2012 - seife+obs@b1-systems.com
+
+- update to bluez-4.98:
+  - Fix issue with adapter list upon initialization failure.
+  - Fix issue with missing legacy property for Low Energy.
+  - Fix issue with missing EIR information handling.
+  - Fix issue with device address type tracking.
+  - Fix issue with alert level characteristic.
+  - Fix issue with headset shutdown handling.
+  - Fix issue with Wiimote address handling.
+  - Add support for advanced l2test options.
+  - Add support for attribute protocol and multiple adapters.
+
+-------------------------------------------------------------------
+Tue Dec 27 11:01:18 UTC 2011 - seife+obs@b1-systems.com
+
+- update to bluez-4.97:
+  - Update support for proximity profile.
+  - Fix issue with SBC audio decoding quality.
+  - Fix multiple issues with HFP support.
+  - Fix multiple issues with A2DP support.
+  - Fix multiple issues with AVDTP support.
+  - Fix multiple issues with AVRCP support.
+  - Add support for AVRCP meta-data transfer.
+  - Add support for Bluetooth based thermometers.
+- add %check section to .spec - there is now a unittest
+
+-------------------------------------------------------------------
+Tue Dec 20 19:46:07 UTC 2011 - crrodriguez@opensuse.org
+
+- kernel.org currently lacks of bluez tarballs
+- Fix build failures due to lack of autotools
+
+-------------------------------------------------------------------
+Fri Dec 16 03:22:40 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix systemd units installation.
+
+-------------------------------------------------------------------
+Wed Nov 16 11:29:07 UTC 2011 - seife+obs@b1-systems.com
+
+- require pkgconfig(libnl-1) instead of libnl-1_1-devel
+
+-------------------------------------------------------------------
+Fri Sep 16 12:02:37 UTC 2011 - jengelh@medozas.de
+
+- Select libnl-1_1-devel
+- Fix baselibs.conf to produce right package
+
+-------------------------------------------------------------------
+Thu Aug  4 18:51:02 UTC 2011 - seife+obs@b1-systems.com
+
+- update to bluez-4.96:
+  - Fix issue with race condition in AVDTP stream start.
+  - Fix issue with global adapter offline switching.
+  - Fix issue with pairing and No Bonding devices.
+  - Add support for Nintendo Wii Remote pairing.
+- enable proximity, wiimote, thermometer plugins
+
+-------------------------------------------------------------------
+Tue Jul  5 07:29:57 UTC 2011 - seife+obs@b1-systems.com
+
+- update to bluez-4.95:
+  - Fix issue with AVCTP replies with invalid PID.
+  - Fix issue with AVRCP and unknown packet types.
+  - Fix issue with AVRCP not using NOT_IMPLEMENTED correctly.
+  - Fix issue with AVDTP discovery if all endpoints are in use.
+  - Fix issue with invalid memory writes and media support.
+  - Fix issue with not removing device alias and unbonding.
+  - Fix issue with device disconnects and offline mode handling.
+  - Add support for setting adapter name based on machine-info.
+  - Add support for systemd service configuration.
+- add systemd .service file (systemd support needs more work still)
+
+-------------------------------------------------------------------
+Wed Jun 22 16:02:15 CEST 2011 - meissner@suse.de
+
+- added baselibs.conf bnc#700840
+
+-------------------------------------------------------------------
+Tue Jun 14 06:49:35 UTC 2011 - seife+obs@b1-systems.com
+
+- remove workaround for rpmlint stupidity now that libusb is in /
+
+-------------------------------------------------------------------
+Wed Jun  1 09:46:16 UTC 2011 - seife+obs@b1-systems.com
+
+- update to bluez-4.94:
+  - Fix issue with invalid read of memory in various modules.
+  - Fix issue with buffer overflow when sending AVDTP commands.
+  - Fix issue with response to vendor dependent AVRCP commands.
+  - Fix issue with headset when not able to reply with ERROR.
+  - Fix issue with crash when creating a device from storage.
+  - Fix issue with handling non UTF-8 devices names.
+  - Add support for improved discovery procedure.
+
+-------------------------------------------------------------------
+Wed May  4 20:39:21 UTC 2011 - seife+obs@b1-systems.com
+
+- update to bluez-4.93:
+  - Fix issue with property type and Health Main channel.
+  - Fix issue with crash when removing devices.
+  - Add support for hid2hci and udev integration.
+- disable 001-remove-rule-dell-mouse.patch for now
+
+-------------------------------------------------------------------
+Tue Apr 26 07:48:45 UTC 2011 - seife+obs@b1-systems.com
+
+- update to bluez-4.92:
+  - Fix issue with handling of A2DP suspend response.
+  - Fix issue with crashing when acquiring A2DP stream.
+  - Fix issue with missing check for valid SCO before shutdown.
+  - Fix issue with waiting for POLLERR when disconnecting SCO.
+  - Fix issue with disconnect after primary service discovery.
+  - Fix issue with attribute interface registration.
+  - Add support for primary services over BR/EDR.
+  - Add support for flushable packets of A2DP media.
+
+-------------------------------------------------------------------
+Wed Mar 30 07:12:13 UTC 2011 - seife+obs@b1-systems.com
+
+- update to bluez-4.91:
+  - Fix issue with LMP version string and hciconfig.
+  - Fix issue with missing discovery signal when scanning.
+  - Fix issue with wrong state and canceling name resolving.
+  - Fix issue with missing check during adapter initialization.
+  - Fix issue with missing protocol not supported error and A2DP.
+  - Fix issue with crash during driver unregistering and A2DP.
+  - Fix issue with crash when receiving AVDTP close command.
+  - Fix issue with remote SEP handling when A2DP codec changes.
+  - Fix issue with SCO hangup handling and state changes.
+  - Fix issue with security level and MCAP instances.
+  - Fix issue with memory leak and HDP data channels.
+  - Add support for discover characteristics by UUID to gatttool.
+  - Add initial support for Out-of-Band association model.
+  - Add initial support for SIM Access Profile.
+
+-------------------------------------------------------------------
+Fri Mar 18 10:23:18 UTC 2011 - seife+obs@b1-systems.com
+
+- update to bluez-4.90:
+  - Fix issue with setting of global mode property.
+  - Fix issue with handling of RequestSession responses.
+  - Fix issue with TP_BNEP_CTRL_BV_01_C qualification test.
+  - Fix issue with too short AVDTP request timeout.
+  - Add support for SIM Access Profile manager.
+  - Add support for new UUID utility functions.
+  - Add support for attribute server notifications.
+  - Add support for client characteristic configuration.
+  - Update support for interactive GATT utility.
+
+-------------------------------------------------------------------
+Mon Feb 21 07:56:00 UTC 2011 - seife+obs@b1-systems.com
+
+- update to bluez-4.89:
+  - Fix issue with name resolving when discovery is suspended.
+  - Fix issue with parsing flags of advertising report.
+  - Fix issue with SEP handling if interface is disabled.
+  - Fix issue with device object creation on disconnect event.
+  - Fix issue with indicators whenever the driver is initialized.
+  - Fix issue with call indicator when parsing call info reply.
+  - Fix issue with crash and allowed GATT MTU was too large.
+  - Add support for SDP record of Primary GATT services.
+  - Add support for interactive mode for GATT utility.
+- gattool requires libreadline for its interactive mode now, so
+  add readline-devel to BuildRequires
+
+-------------------------------------------------------------------
+Mon Feb 14 09:48:26 UTC 2011 - seife+obs@b1-systems.com
+
+- update to bluez-4.88:
+  - Fix issue with HID channel reference count handling.
+  - Fix issue with daemon exit on badly formatted AT+VTS.
+  - Fix issue with crash while parsing of endpoint properties.
+  - Fix issue with possible crash on AVDTP Suspend request timeout.
+  - Fix issue with stopping inquiry before adapter is initialized.
+  - Fix issue with creating device object when connection fails.
+  - Fix issue with sending HCIDEVUP when adapter is already up.
+  - Fix issue with handling bonding IO channel closing.
+  - Fix agent cancellation in security mode 3 situations.
+  - Update pairing code to support management interface.
+- requires glib2 2.16 or newer
+
+-------------------------------------------------------------------
+Wed Jan 26 12:43:23 UTC 2011 - seife@opensuse.org
+
+- update to bluez-4.87
+  - Fix issue with initialization when adapter is already up.
+  - Fix issue with attribute server MTU and incoming connections.
+  - Fix issue with duplicate characteristics after discovery.
+
+-------------------------------------------------------------------
+Thu Jan 20 13:41:53 UTC 2011 - seife@opensuse.org
+
+- update to bluez-4.86:
+  -  Revert wrong fix for SDP PDU size error response.
+  -  Fix various memory leaks in A2DP and AVDTP support.
+  -  Add Routing property to MediaTransport interface
+  -  Add proper tracking mechanism to NREC status.
+  -  Add READ_BLOB_REQUEST support to attribute server.
+
+-------------------------------------------------------------------
+Tue Jan 11 19:47:49 UTC 2011 - seife@opensuse.org
+
+- update to bluez-4.85:
+  - Fix issue with event mask setting for older adapters.
+  - Fix issue with device creation and pairing failures.
+  - Add support for telephony support via oFono.
+  - Add support for characteristic security level.
+  - Update support for service registration.
+
+-------------------------------------------------------------------
+Tue Dec 28 22:11:32 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.84:
+  - Fix issue with wrong parameters and device found signals.
+  - Fix issue with leaking EIR data if RSSI does not change.
+  - Fix issue with adapter initialization state.
+  - Fix issue with closing of SDP server sockets.
+
+-------------------------------------------------------------------
+Mon Dec 27 00:09:46 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.83:
+  - Fix issue with already connected HFP/HSP endpoints.
+  - Fix missing reply when create device is canceled.
+  - Fix memory leak within the attribute server.
+  - Fix memory leak with unused extended inquiry name.
+  - Fix setting paired state when device->authr is false.
+  - Fix clearing authentication request for renewed keys.
+  - Add support for storing link keys in runtime memory.
+  - Update support for primary service discovery.
+
+-------------------------------------------------------------------
+Sat Dec 18 21:57:40 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.82:
+  - Fix crash with mmap of files with multiples of page size.
+  - Fix HFP response and hold (AT+BTRH) command response.
+  - Fix device creation error response when powered off.
+  - Fix device removal when connecting/browsing fails.
+  - Add initial attribute permission implementation.
+  - Add AVDTP SRC stream send buffer size verification.
+  - Add support for setting link policy based on features.
+
+-------------------------------------------------------------------
+Tue Nov 30 21:52:31 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.81:
+  - Fix issue with telephony driver initialization.
+  - Fix issue with adapter services list initialization.
+  - Fix crash after simultaneous authentication requests.
+  - Add support for primary service search on device creation.
+
+-------------------------------------------------------------------
+Sun Nov 21 22:28:54 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.80:
+  - Fix legacy link key storing for some buggy adapters.
+  - Fix invalid memory access when EIR field length is zero.
+  - Fix adapter initialization to wait for kernel HCI commands.
+  - Fix initialization of adapters which are already up.
+  - Fix possible race condition when initializing adapters.
+  - Fix possible crashes when attempting to connect AVDTP.
+  - Fix not aborting sink stream configuration on disconnect.
+  - Fix not indicating disconnected state when connecting to AVDTP.
+  - Fix not dropping AVDTP session when canceling stream setup.
+  - Fix AVDTP abort not being send when the state is idle.
+  - Fix regression with Low Energy and interleave discovery.
+  - Add a new configuration option to disable Low Energy support.
+  - Update support for GATT Primary Service Discovery.
+  - Update MCAP and HDP support.
+- disable silent buildrules
+
+-------------------------------------------------------------------
+Tue Nov  9 21:36:56 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.79:
+  - Fix issue with adapter initialization race condition.
+  - Update new Bluetooth Management interface support.
+
+-------------------------------------------------------------------
+Mon Nov  8 09:32:16 UTC 2010 - seife@opensuse.org
+
+- patch to current git to fix race condition in hciops causing
+  adapter detection to fail
+
+-------------------------------------------------------------------
+Sun Nov  7 09:32:52 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.78:
+  - Fix various issues with AVDTP timer handling.
+  - Fix various issues with handling of mode changes.
+  - Fix issue with audio disconnect watch in connecting state.
+  - Fix issue with handling call waiting indicators in telephony.
+  - Fix issue with handling UUID parameter and RegisterEndpoint.
+  - Add initial support for Bluetooth Management interface.
+  - Add support for Application property to HealthChannel.
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Oct 27 07:31:04 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.77:
+  - Fix issue with device name and accessing already freed memory.
+  - Fix issue with handling CHLD=0 command for handsfree.
+  - Fix issue with manager properties and no adapters.
+  - Fix issue with properties and broken service records.
+  - Fix issue with A2DP playback and sample rate changes.
+  - Update MCAP and HDP support.
+
+-------------------------------------------------------------------
+Fri Oct 15 18:21:57 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.76:
+  - Fix issue in telephony driver with hanging up held call.
+  - Fix issue in telephony driver with notifications when on hold.
+  - Fix issue with blocking on setconf confirmation callback.
+  - Fix issue with not always signaling new streams as sinks.
+  - Fix issue with errors in case of endpoint request timeout.
+  - Fix issue with HFP/HSP microphone and speaker gain values.
+  - Add source if the device attempt to configure local sink stream.
+  - Add PSM option for GATT/ATT over BR/EDR on gatttool.
+  - Add support for GATT/ATT Attribute Write Request.
+  - Update MCAP and HDP support.
+
+-------------------------------------------------------------------
+Tue Oct  5 16:38:28 UTC 2010 - seife@opensuse.org
+
+- de-fuzz udev rule patch
+
+-------------------------------------------------------------------
+Tue Oct  5 16:23:33 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.75:
+  - Fix use of uninitialized variable on legacy pairing.
+  - Fix mismatch of attribute protocol opcode.
+- bluez-4.74:
+  - Fix regression for Legacy Pairing.
+  - Fix wrong PSM value for attribute protocol.
+  - Fix issue with RSSI field in advertising reports.
+  - Add support for Add BR/EDR and LE interleaved discovery.
+  - Add support for GATT write characteristic value option.
+  - Add support for specifying download address for AR300x.
+- bluez-4.73:
+  - Fix problem with EIR data when setting the name.
+  - Fix reading local name from command complete event.
+  - Fix registering local endpoints with disabled socket interface.
+  - Add support for more HCI operations using ops infrastructure.
+  - Add support for GATT characteristic hierarchy.
+  - Add support for GATT indications.
+
+-------------------------------------------------------------------
+Sat Sep 25 18:15:38 UTC 2010 - seife@opensuse.org
+
+- disable libcap-ng for < 11.3, it is not available there
+- fix up bluez-gstreamer.spec to build with the same options as
+  bluez.spec
+
+-------------------------------------------------------------------
+Thu Sep 23 18:00:27 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- enable libcap-ng support so the deamon can drop root
+  privileges
+
+-------------------------------------------------------------------
+Wed Sep 22 13:18:14 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.72:
+  - Fix memory leak while connecting BTIO channels.
+  - Fix crash with GStreamer plugin if SBC is not supported.
+  - Fix issue with GATT server stop sending notifications.
+  - Fix issue with GATT and dealing with the minimum MTU size.
+  - Fix issue with file descriptor leak in GATT client.
+  - Add support for UUID 128-bit handling in attribute client.
+  - Add support for encoders/decoders for MTU Exchange.
+  - Add support for the MTU Exchange procedure to the server.
+  - Add support for a per channel MTU to the ATT server.
+  - Add support for Characteristic interface.
+  - Add support for new Media API and framework.
+  - Add initial support for HDP plugin.
+
+-------------------------------------------------------------------
+Thu Sep  9 20:17:38 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.71:
+  - Fix crash with RequestSession and application disconnects.
+  - Fix memory leak and possible crash when removing audio device.
+  - Fix issue with closing stream of locked sep when reconfiguring.
+  - Fix issue where discovery could interfere with bonding.
+  - Fix issue with Connected status when PS3 BD remote connects.
+  - Fix issue with lifetime of fake input devices.
+  - Add support for compile time option of oui.txt path.
+  - Add support for printing IEEE1284 device ID for CUPS.
+  - Add plugin for setting adapter class via DMI.
+  - Add more features for attribute protocol and profile.
+  - Add initial support for MCAP.
+
+-------------------------------------------------------------------
+Thu Aug 26 07:31:32 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.70:
+  - Fix incoming call indication handling when in WAITING state.
+  - Fix various SDP related qualification test case issues.
+  - Fix logic to write EIR when SDP records are changed.
+  - Fix UTF-8 validity check for remote names in EIR.
+  - Add support for UUID-128 extended inquiry response.
+  - Add service UUIDs from EIR to the DeviceFound signal.
+  - Add fast connectable feature for Handsfree profile.
+  - Add HCI command and event definitions for AMP support.
+  - Add firmware download support for Qualcommh devices.
+  - Add host level support for Atheros AR300x device.
+  - Add initial support of ATT and GATT for basic rate.
+- ALSA config file moved from /etc/alsa/ to /usr/share/alsa/
+
+-------------------------------------------------------------------
+Wed Jul 14 06:14:38 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.69:
+  - Fix issue with calling g_option_context_free() twice.
+  - Fix inconsistencies with initial LE commands and events.
+  - Add support for telephony ClearLastNumber method.
+  - Add support for network server interface.
+
+-------------------------------------------------------------------
+Tue Jul 13 08:12:57 UTC 2010 - seife@opensuse.org
+
+- fix instant segfault of bluetoothd (upstream commit
+  86b16d8a63d8d6191533418dd1c38ce35c3fbf0a)
+
+-------------------------------------------------------------------
+Tue Jul 13 06:19:00 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.68:
+  - Fix initialization of adapters in RAW mode.
+  - Add initial set of LE commands and events definitions.
+  - Add mode option for L2CAP sockets to the BtIO API.
+
+-------------------------------------------------------------------
+Sat Jul  3 14:59:44 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.67:
+  - Fix issue with authentication reply when bonding already completed.
+  - Fix issue with not canceling authentication when bonding fails.
+  - Fix issue with changed combination keys and temporary storage.
+  - Fix issue with sdp_get_supp_feat library function.
+  - Fix issue with missing unblock on device removal.
+  - Fix issue with not waiting for mode change completion.
+  - Add ARMv6 optimized version of analysis filter for SBC encoder.
+
+-------------------------------------------------------------------
+Sun Jun 13 09:27:22 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.66:
+  - Fix regression with full debug enabling via SIGUSR2.
+  - Fix redundant speaker/microphone gains being sent.
+  - Fix not emitting PropertyChanged for SpeakerGain/MicrophoneGain.
+  - Fix issue with storage usage when a record is not found in memory.
+  - Fix issue with DiscoverServices not retrieving any records.
+  - Fix audio profile disconnection order to match whitepaper.
+  - Fix auto-accept confirmation when local agent has NoInputNoOutput.
+  - Fix remote just-works SSP when MITM protection is required.
+  - Fix performing dedicated bonding without MITM requirement.
+  - Add support for storing debug link keys in runtime memory.
+
+-------------------------------------------------------------------
+Mon May 24 20:22:03 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.65:
+  - Fix issues with general bonding being default setting now.
+  - Fix driver removal upon device removal.
+  - Add new "Blocked" property to device objects.
+  - Add hciconfig support for blacklisting.
+  - Add support for dynamic debug feature.
+
+-------------------------------------------------------------------
+Wed May  5 10:55:39 UTC 2010 - seife@opensuse.org
+
+- fix coldplug script for udev > 151 (bnc#602773)
+
+-------------------------------------------------------------------
+Thu Apr 29 09:58:04 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.64:
+  - Fix invalid memory access in headset_get_nrec function.
+  - Fix issue with disconnect event on higher protocol layers.
+  - Fix issue with list parsing in sdp_set_supp_features function.
+  - Fix device object reference counting for SDP browse requests.
+  - Add missing memory checks whenever memory is allocated for SDP.
+  - Add support for exporting local services via D-Bus.
+  - Add more L2CAP Enhanced Retransmission test options.
+- remove unused "--enable-manpages" configure option
+
+-------------------------------------------------------------------
+Wed Apr 14 15:32:51 CEST 2010 - jsmeix@suse.de
+
+- In openSUSE 11.3 there is upstream compliant CUPS 1.4
+  which means to have a fixed "/usr/lib/cups/" directory
+  on all platforms (see Novell/Suse Bugzilla bnc#575544).
+
+-------------------------------------------------------------------
+Fri Mar 26 07:20:13 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.63:
+  - Fix avdtp_abort not canceling pending requests.
+  - Fix stale connection when abort gets rejected.
+
+-------------------------------------------------------------------
+Sun Mar  7 22:32:11 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.62:
+  - Fix accidental symbol breakage with inquiry transmit power.
+  - Fix using invalid data from previous headset connection.
+  - Fix double free on AVDTP Abort response.
+  - Fix possible crash while verifying AVDTP version.
+  - Fix missing inuse flag when AVDTP stream is configured.
+  - Add support for Bluetooth controller types.
+
+-------------------------------------------------------------------
+Sat Feb 13 22:38:31 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.61:
+  - Fix issues with Read Inquiry Response Transmit Power Level.
+  - Fix possible invalid read when removing a temporary device.
+  - Fix mode restoration when remember_powered is false.
+  - Fix conference call releasing in telephony-maemo.
+  - Fix segmentation fault with authorization during headset disconnects.
+  - Add support for handling unanswered AVDTP request on disconnect.
+  - Add support for handling Inquiry Response Transmit Power Level.
+  - Add support for caching of remote host features.
+  - Add preliminary voice dialing support for HSP.
+
+-------------------------------------------------------------------
+Mon Jan 11 09:47:47 UTC 2010 - seife@opensuse.org
+
+- update to bluez-4.60:
+  * Fix voice mailbox number reading from SIM.
+  * Fix some races with D-Bus mainloop integration.
+  * Add helpers for D-Bus signal watches.
+
+-------------------------------------------------------------------
+Tue Dec 29 10:14:59 UTC 2009 - seife@opensuse.org
+
+- update to bluez-4.59:
+  - Add values for Bluetooth 4.0 specification.
+  - Add SDP functions for HDP support.
+  - Add test scripts for input and audio.
+  - Fix missing close on BtIO create_io function.
+  - Fix sending incorrect AVDTP commands after timeout occurs.
+  - Fix timer removal when device disconnects unexpectedly.
+  - Fix Extended Inquiry Response record for Device ID.
+- silence rpmlint warning on bluez-coldplug init script
+
+-------------------------------------------------------------------
+Mon Nov 16 09:02:00 CET 2009 - seife@opensuse.org
+
+- update to bluez-4.58:
+  - Fix crash when adapter agent exists during authentication.
+  - Fix CK-20W quirks for play and pause events.
+
+-------------------------------------------------------------------
+Mon Nov  2 21:51:12 CET 2009 - seife@opensuse.org
+
+- update to bluez-4.57:
+  - Fix unloading of drivers for uninitialized adapters.
+  - Fix debug message to use requested and not opened SEID.
+  - Fix codec selection for GStreamer plugin.
+  - Fix deleting of SDP records during service updates.
+  - Fix deleting of SDP records when a device is removed.
+  - Fix handling when the SDP record is modified on remote device.
+  - Fix potential buffer overflow by using snprintf instead of sprintf.
+  - Fix const declarations for some storage function parameters.
+
+-------------------------------------------------------------------
+Mon Oct 19 10:39:02 CEST 2009 - vlado@suse.cz
+
+- 001-remove-rule-dell-mouse.patch added to disable udev action
+  for dell mouse; bnc#522287
+
+-------------------------------------------------------------------
+Sat Oct 10 23:26:37 CEST 2009 - seife@opensuse.org
+
+- update to bluez-4.56:
+  - Add missing values from Bluetooth 3.0 specification.
+  - Add proper tracking of device paired status.
+  - Fix tracking of devices without permanently stored link key.
+  - Fix issue with link key removal after connection failures.
+  - Fix legacy pairing information based on remote host features.
+  - Fix off-by-one issue with AVDTP capability parsing.
+  - Fix AVRCP, AVCTP, AVDTP, A2DP and HFP version numbers.
+  - Fix agent canceling before calling agent_destroy.
+  - Fix service record parsing with an empty UUID list.
+  - Fix various SDP related memory leaks.
+
+-------------------------------------------------------------------
+Sun Oct  4 22:06:46 CEST 2009 - seife@opensuse.org
+
+- fix reading of config file in udev helper script
+- update to bluez-4.55:
+  - Add support for POSIX capabilities dropping.
+  - Add special quirk for the Nokia CK-20W car kit.
+  - Fix error code handling for AVDTP SetConfiguration response.
+  - Fix updating out of range list when RSSI hasn't changed.
+  - Fix various memory leaks and unnecessary error checks.
+  ver 4.54:
+  - Add introspection interface to output of introspection calls.
+  - Fix stream handling when media transport disconnects prematurely.
+  - Fix command timeout handling when there's no stream.
+  - Fix headset_suspend_stream behavior for invalid states
+  - Fix issue with AVDTP ABORTING state transition.
+  - Fix issue with AVDTP suspend while closing.
+  ver 4.53:
+  - Fix issue with telephony connection state notifications.
+  - Fix AVDTP stream leak for invalid media transport config.
+  - Fix audio connection authorization handling with timeouts.
+  - Fix race condition in authorizing audio connections.
+  - Fix device authorized setting for AVRCP-only connections.
+  - Fix duplicate attempts from device to connect signal channel.
+  ver 4.52:
+  - Add AVCTP support to test utility.
+  - Fix AVDTP Abort when transport closes before response.
+  - Fix authorization when the audio profiles are slow to connect.
+  - Fix potential AVDTP reference leaks.
+
+-------------------------------------------------------------------
+Thu Sep  3 14:38:59 CEST 2009 - seife@suse.de
+
+- update to bluez-4.51:
+  - Add utility for basic AVDTP testing.
+  - Add support for configuring L2CAP FCS option.
+  - Fix discovery mode for CUPS 1.4.x and later.
+  - Fix global state tracking of audio service.
+  - Fix last issues with the new build system.
+
+-------------------------------------------------------------------
+Tue Aug 25 07:35:04 CEST 2009 - seife@suse.de
+
+- update to bluez-4.50:
+  - Fix various build issues
+
+-------------------------------------------------------------------
+Mon Aug 24 14:57:50 CEST 2009 - seife@suse.de
+
+- update to bluez-4.49:
+  - Add simple test program for basic GAP testing.
+  - Add support for confirmation requests to agent example.
+  - Add support for full non-recursive build.
+  - Add five millisecond delay for Simple Pairing auto-accept.
+  - Fix Class of Device setting when InitiallyPowered=false.
+
+-------------------------------------------------------------------
+Sun Aug 23 00:46:19 CEST 2009 - seife@suse.de
+
+- fix init script LSB tags
+
+-------------------------------------------------------------------
+Thu Aug 20 18:07:48 CEST 2009 - seife@suse.de
+
+- try to fix enablement of the coldplug init script
+
+-------------------------------------------------------------------
+Wed Aug 19 15:32:37 CEST 2009 - seife@suse.de
+
+- add init script so that coldplugging works again (bnc#527856)
+
+-------------------------------------------------------------------
+Mon Aug 17 09:00:05 CEST 2009 - seife@suse.de
+
+- update to bluez-4.48:
+  - Add library function for comparing UUID values.
+  - Add support for creating all plugins as builtins.
+  - Add support for async handling of service class changes.
+  - Add support for source interface to audio IPC.
+  - Fix device name settings when device is off or down.
+  - Fix issue with enabled SCO server when not necessary.
+  - Fix missing D-Bus access policy for CUPS backend.
+  - Fix discovery results of CUPS backend.
+  - Fix initialization handling of Maemo telephony.
+
+-------------------------------------------------------------------
+Mon Aug  3 09:32:48 CEST 2009 - seife@suse.de
+
+- update to bluez-4.47:
+  - Add support for RFKILL unblock handling.
+  - Add support for serial proxy configurations.
+  - Add support for caching service class updates.
+  - Fix issues with updating SDP service records.
+  - Fix usage of limited discoverable mode.
+  - Remove deprecated methods and signals for AudioSource.
+- bluez-4.46:
+  - Add support for A2DP sink role.
+  - Fix clearing svc_cache before the adapter is up.
+  - Fix various pointer after free usages.
+  - Fix various memory leaks.
+
+-------------------------------------------------------------------
+Thu Jul  9 11:08:28 CEST 2009 - seife@suse.de
+
+- packaging: remove unused bluetooth.rules file (thanks darix!)
+
+-------------------------------------------------------------------
+Wed Jul  8 00:00:30 CEST 2009 - seife@suse.de
+
+- update to bluez-4.45:
+  - Fix UDEV_DATADIR fallback if pkg-config fails.
+  - Fix adapter cleanup and setup prototypes.
+  - Fix double-free with out-of-range devices.
+  - Fix inband ring setting to be per-headset.
+  - Fix handling of Maemo CSD startup.
+
+-------------------------------------------------------------------
+Tue Jul  7 10:24:05 CEST 2009 - seife@suse.de
+
+- update to bluez-4.44:
+  - Add some missing manual pages.
+  - Fix three-way calling indicator order.
+  - Fix downgrade/upgrade of callheld indicator.
+  - Fix +CIEV sending when indicator value changes.
+  - Fix signal handling for Maemo telephony driver.
+  - Fix parsing issues with messages from Maemo CSD.
+  - Fix issue with duplicate active calls.
+- udev rules moved to /lib/udev/rules.d
+
+-------------------------------------------------------------------
+Fri Jul  3 23:27:46 CEST 2009 - seife@suse.de
+
+- update to bluez-4.43:
+  - Add support for udev based on-demand startup.
+  - Fix verbose error reporting of CUPS backend.
+  - Fix various string length issues.
+  - Fix issues with Maemo telephony driver.
+  - Fix another device setup and temporary flag issue.
+  - Fix and update example agent implementation.
+- remove init scripts and D-Bus activation, instead bluetoothd is
+  now started by udev. Update README.SUSE accordingly.
+
+-------------------------------------------------------------------
+Mon Jun 22 12:49:35 CEST 2009 - cmorve69@yahoo.es
+
+- fixed build with --as-needed
+
+-------------------------------------------------------------------
+Sun Jun 21 19:11:20 CEST 2009 - seife@suse.de
+
+- update to bluez-4.42:
+  This is the release that should contain fixes found during
+  interoperability testing:
+  - Add TI WL1271 to Texas Instruments chip list.
+  - Add special udev mode to bluetoothd.
+  - Fix regression when there is no agent registered.
+  - Fix error return when bonding socket hang up.
+  - Fix SCO server socket for HFP handsfree role.
+  - Fix shutdown on SCO socket before closing.
+  - Fix shutdown on A2DP audio stream channel before closing.
+  - Fix issue with asserting on AVDTP reference count bugs.
+  - Fix authorization denied issue with certain headsets.
+  - Fix AVRCP UNITINFO and SUBUNIT INFO responses.
+  - Fix discovery cancel issues in case SDP discovery fails.
+
+-------------------------------------------------------------------
+Sun Jun  7 19:32:51 CEST 2009 - seife@suse.de
+
+- update to bluez-4.41:
+  - Fix pairing even if the ACL gets dropped before successful SDP.
+  - Fix regression which caused device to be removed after pairing.
+  - Fix HSP record fetching when remote device doesn't support it.
+  - Fix SDP discovery canceling when clearing hs->pending.
+  - Fix headset never connecting on the first attempt.
+  - Fix headset state tracking if bt_search_service() fails.
+  - Fix maximum headset connection count check.
+  - Fix AVDTP Discover timeout handling.
+  - Fix also UI_SET_KEYBIT for the new pause and play key codes.
+- packaging:
+  - add simple-agent, simple-service and test-network to bluez-test
+
+-------------------------------------------------------------------
+Wed May 20 19:42:27 CEST 2009 - seife@suse.de
+
+- update to bluez-4.40:
+  - Add telephony driver for oFono telephony stack.
+  - Add support for Dell specific HID proxy switching.
+  - Add support for running hid2hci from udev.
+  - Add mapping for AVRCP Play and Pause to dedicated key codes.
+  - Fix AVRCP keycodes to better match existing X keymap support.
+  - Fix various quoting issues within telephony support.
+  - Fix memory allocation issue when generating PDUs for SDP.
+  - Fix race condition on device removal.
+  - Fix non-cancelable issue with CreateDevice method.
+  - Fix non-working CancelDiscovery method call.
+
+-------------------------------------------------------------------
+Mon May 11 19:26:39 CEST 2009 - seife@suse.de
+
+- update to bluez-4.39:
+  - Add workaround for dealing with unknown inquiry complete.
+  - Fix discovering when using software scheduler.
+  - Fix wrong NoInputNoOutput IO capability string.
+  - Fix race condition with agent during pairing.
+  - Fix agent cancellation for security mode 3 acceptor failure.
+  - Fix temporary flag removal when device creation fails.
+  - Fix hciattach to use ppoll instead of poll.
+  - Fix service class update when adapter is down.
+  - Fix service classes race condition during startup.
+  - Fix release of audio client before freeing the device.
+
+-------------------------------------------------------------------
+Mon May  4 20:57:33 CEST 2009 - seife@suse.de
+
+- update to bluez-4.38:
+  - Add support for builtin plugins.
+  - Add framework for adapter operations.
+  - Add constants for Enhanced Retransmission modes.
+  - Fix HCI socket leak in device_remove_bonding.
+  - Fix various format string issues.
+  - Fix crashes with various free functions.
+  - Fix issues with Headset and A2DP drivers to load again.
+  - Fix sending AVRCP button released passthrough messages
+  - Fix bug which prevent input devices to work after restart.
+  - Fix issue with interpretation of UUID-128 as channel.
+
+-------------------------------------------------------------------
+Thu Apr 23 17:26:37 CEST 2009 - seife@suse.de
+
+- update to bluez-4.37:
+  - Add version value for Bluetooth 3.0 devices.
+  - Add additional L2CAP extended feature mask bits.
+  - Add support for loading plugins in priority order.
+  - Add support for more detailed usage of disconnect watches.
+  - Add support for AVRCP volume control.
+  - Add saturated clipping of SBC decoder output to 16-bit.
+  - Fix potentially infinite recursion of adapter_up.
+  - Fix SCO handling in the case of an incoming call.
+  - Fix input service to use confirm callback.
+  - Fix cleanup of temporary device entries from storage.
+
+-------------------------------------------------------------------
+Sun Apr 19 12:21:12 CEST 2009 - seife@suse.de
+
+- update to bluez-4.36:
+  - Add proper tracking of AVCTP connect attempts.
+  - Add support to channel pattern in Serial interface.
+  - Fix A2DP sink crash if removing device while connecting.
+  - Fix error handling if HFP indicators aren't initialized.
+  - Fix segfault while handling an incoming SCO connection.
+  - Fix Serial.Disconnect to abort connection attempt.
+
+-------------------------------------------------------------------
+Sun Apr 12 05:40:31 CEST 2009 - seife@suse.de
+
+- update to bluez-4.35:
+  - Add support for Handsfree profile headset role.
+  - Add additional checks for open SEIDs from clients.
+  - Fix device removal while audio IPC client is connected.
+  - Fix device removal when an authorization request is pending.
+  - Fix incoming AVDTP connect while authorization in progress.
+  - Fix disconnection timers for audio support.
+  - Fix various potential NULL pointer deferences.
+  - Fix callheld indicator value for multiple calls.
+  - Fix voice number type usage.
+  - Fix GDBus watch handling.
+- add an explicit requires: for the exact libbluetooth3 version
+  to the bluez package. Fixes the problem that it was possible to
+  install a newer bluez package without updating the libraries
+
+-------------------------------------------------------------------
+Tue Mar 31 13:43:03 CEST 2009 - seife@suse.de
+
+- update to bluez-4.34:
+  - Add support for version checks of plugins.
+  - Add support for class property on adapter interface.
+  - Add support for second SDP attempt after connection reset.
+  - Add support for more detailed audio states.
+  - Add support for HFP+A2DP auto connection feature.
+  - Add support for new and improved audio IPC.
+  - Add program for testing audio IPC interface.
+  - Fix various AVDTP qualification related issues.
+  - Fix broken SDP AttributeIdList parsing.
+  - Fix invalid memory access of SDP URL handling.
+  - Fix local class of device race conditions.
+  - Fix issue with periodic inquiry on startup.
+  - Fix missing temporary devices in some situations.
+  - Fix SBC alignment issue for encoding with four subbands.
+
+-------------------------------------------------------------------
+Tue Mar 17 06:47:16 CET 2009 - seife@suse.de
+
+- update to bluez-4.33:
+  - Add Paired property to the DeviceFound signals.
+  - Add support for Headset profile 1.2 version.
+  - Fix broken network configuration when IPv6 is disabled.
+  - Fix network regression that caused disconnection.
+  - Fix SDP truncation of strings with NULL values.
+  - Fix service discovery handling of CUPS helper.
+
+-------------------------------------------------------------------
+Mon Mar  9 20:51:28 CET 2009 - mmarek@suse.cz
+
+- renamed modprobe config to /etc/modprobe.d/50-bluetooth.conf
+  (required by new module-init-tools).
+
+-------------------------------------------------------------------
+Mon Mar  2 18:10:00 CET 2009 - seife@suse.de
+
+- update to bluez-4.32:
+  - Fix broken SDP record handling.
+  - Fix SDP data buffer parsing.
+  - Fix more SDP memory leaks.
+  - Fix read scan enable calls.
+  - Fix A2DP stream handling.
+
+-------------------------------------------------------------------
+Thu Feb 26 13:04:25 CET 2009 - seife@suse.de
+
+- update to bluez-4.31:
+  - Add support for new BtIO helper library.
+  - Fix AVDTP session close issue.
+  - Fix SDP memory leaks.
+  - Fix various uninitialized memory issues.
+  - Fix duplicate signal emissions.
+  - Fix property changes request handling.
+  - Fix class of device storage handling.
+
+-------------------------------------------------------------------
+Fri Feb 13 09:30:36 CET 2009 - seife@suse.de
+
+- update to bluez-4.30:
+  - Add CID field to L2CAP socket address structure.
+  - Fix reset of authentication requirements after bonding.
+  - Fix storing of link keys when using dedicated bonding.
+  - Fix storing of pre-Bluetooth 2.1 link keys.
+  - Fix resetting trust settings on every reboot.
+  - Fix handling of local name changes.
+  - Fix memory leaks in hciconfig and hcitool
+
+-------------------------------------------------------------------
+Sun Feb  8 15:59:45 CET 2009 - seife@suse.de
+
+- update to bluez-4.29:
+  - Use AVRCP version 1.0 for now.
+  - Decrease AVDTP idle timeout to one second.
+  - Delay AVRCP connection when remote device connects A2DP.
+  - Add workaround for AVDTP stream setup with broken headsets.
+  - Add missing three-way calling feature bit for Handsfree.
+  - Fix handsfree callheld indicator updating.
+  - Fix parsing of all AT commands within the buffer.
+  - Fix authentication replies when disconnected.
+  - Fix handling of debug combination keys.
+  - Fix handling of changed combination keys.
+  - Fix handling of link keys when using no bonding.
+  - Fix handling of invalid/unknown authentication requirements.
+  - Fix closing of L2CAP raw socket used for dedicated bonding.
+
+-------------------------------------------------------------------
+Thu Feb  5 18:52:46 CET 2009 - seife@suse.de
+
+- update to bluez-4.28:
+  - Add AVDTP signal fragmentation support.
+  - Add more SBC performance optimizations.
+  - Add more SBC audio quality improvements.
+  - Use native byte order for audio plugins.
+  - Set the adapter alias only after checking the EIR data.
+  - Fix auto-disconnect issue with explicit A2DP connections.
+  - Fix invalid memory access of ALSA plugin.
+  - Fix compilation with -Wsign-compare.
+- The ALSA plugin now contains a fix to avoid invalid memory
+  access. This might break some audio players that make
+  assumptions on some ALSA API calls that are ambigue. Please
+  report any problems you might encounter.
+
+-------------------------------------------------------------------
+Fri Jan 23 14:48:38 CET 2009 - coolo@suse.de
+
+- init script should work with strict /bin/sh too
+
+-------------------------------------------------------------------
+Sun Jan 18 13:10:33 CET 2009 - seife@suse.de
+
+- update to bluez-4.27:
+  "This release contains multiple fixes for the Simple Pairing support and
+   newer kernel versions. It highly improves the interoperability and the
+   security handling with Bluetooth 2.1 based devices."
+  - Add more SBC optimization (MMX and ARM NEON).
+  - Add BT_SECURITY and BT_DEFER_SETUP definitions.
+  - Add support for deferred connection setup.
+  - Add support for fragmentation of data packets.
+  - Add option to trigger dedicated bonding.
+  - Follow MITM requirements from remote device.
+  - Require MITM for dedicated bonding if capabilities allow it.
+  - Fix IO capabilities for non-pairing and pairing cases.
+  - Fix no-bonding connections in non-bondable mode.
+  - Fix new pairing detection with SSP.
+  - Fix bonding with pre-2.1 devices and newer kernels.
+  - Fix LIAC setting while toggling Pairable property.
+  - Fix device creation for incoming security mode 3 connects.
+  - Fix crash within A2DP with bogus pointer.
+  - Fix issue with sdp_copy_record() function.
+  - Fix crash with extract_des() if sdp_uuid_extract() fails.
+
+-------------------------------------------------------------------
+Thu Jan 15 17:11:19 CET 2009 - seife@suse.de
+
+- update to bluez-4.26:
+  - Use of constant shift in SBC quantization code.
+  - Add possibility to analyze 4 blocks at once in encoder.
+  - Fix correct handling of frame sizes in the encoder.
+  - Fix for big endian problems in SBC codec.
+  - Fix audio client socket to always be non-blocking.
+  - Update telephony support for Maemo.
+- version 4.25:
+  - Fix receiving data over the audio control socket.
+  - Fix subbands selection for joint-stereo in SBC encoder.
+  - Add new SBC analysis filter function.
+- version 4.24:
+  - Fix signal emissions when removing adapters.
+  - Fix missing adapter signals on exit.
+  - Add support for bringing adapters down on exit.
+  - Add support for RememberPowered option.
+  - Add support for verbose compiler warnings.
+  - Add more options to SBC encoder.
+- version 4.23:
+  - Update audio IPC for better codec handling.
+  - Fix bitstream optimization for SBC encoder.
+  - Fix length header values of IPC messages.
+  - Fix multiple coding style violations.
+  - Fix FindDevice to handle temporary devices.
+  - Add configuration option for DeviceID.
+  - Add support for InitiallyPowered option.
+  - Add missing signals for manager properties.
+  - Add telephony support for Maemo.
+
+-------------------------------------------------------------------
+Tue Jan 13 12:54:33 CET 2009 - seife@suse.de
+
+- fix the modprobe.d config syntax (bnc#465643)
+
+-------------------------------------------------------------------
+Thu Jan  8 17:09:02 CET 2009 - seife@suse.de
+
+- add a modprobe.d config, setting reset=1 for btusb (bnc#461369)
+
+-------------------------------------------------------------------
+Sun Dec  7 22:39:05 CET 2008 - seife@suse.de
+
+- update to bluez-4.22:
+  - Add deny statements to D-Bus access policy.
+  - Add support for LegacyPairing property.
+  - Add support for global properties.
+  - Add more commands to telephony testing script.
+  - Add sender checks for serial and network interfaces.
+  - Remove deprecated methods and signals from input interface.
+  - Remove deprecated methods and signals from network interface.
+  - Remove OffMode option and always use device down.
+
+-------------------------------------------------------------------
+Mon Dec  1 18:16:55 CET 2008 - seife@suse.de
+
+- update to bluez-4.21:
+  - Fix adapter initialization logic.
+  - Fix adapter setup and start security manager early.
+  - Fix usage issue with first_init variable.
+
+-------------------------------------------------------------------
+Mon Dec  1 00:44:09 CET 2008 - seife@suse.de
+
+- update to bluez-4.20:
+  - Cleanup session handling.
+  - Cleanup mode setting handling, removed deprecated RequestMode,
+    ReleaseMode and Mode methods.
+  - Fix issue with concurrent audio clients.
+  - Fix issue with HFP/HSP suspending.
+  - Fix AT result code syntax handling.
+  - Add Handsfree support for AT+NREC.
+  - Add PairableTimeout adapter property.
+- refresh pcmciarules patch
+
+-------------------------------------------------------------------
+Sun Nov 23 01:10:59 CET 2008 - seife@suse.de
+
+- update to bluez-4.19:
+  - Fix D-Bus signal emmissions for CreateDevice.
+  - Fix issues with UUID probing.
+  - Fix +BSRF syntax issue.
+  - Add Pairable adapter property.
+  - Add sdp_copy_record() library function.
+
+-------------------------------------------------------------------
+Tue Nov 11 09:26:41 CET 2008 - seife@suse.de
+
+- add bluez-compat package, containing pand and dund (bnc#435591)
+
+-------------------------------------------------------------------
+Mon Nov 10 09:14:35 CET 2008 - seife@suse.de
+
+- add DBus API documentation files to the bluez package
+
+-------------------------------------------------------------------
+Sun Nov  9 20:10:15 CET 2008 - seife@suse.de
+
+- update to bluez-4.18:
+  - Fix release before close issue with RFCOMM TTYs.
+  - Fix Connected property on input interface.
+  - Fix DeviceFound signals during initial name resolving.
+  - Fix service discovery handling.
+  - Fix duplicate UUID detection.
+  - Fix SBC gain mismatch and decoding handling.
+  - Add more options to SBC encoder and decoder.
+  - Add special any adapter object for service interface.
+  - Add variable prefix to adapter and device object paths.
+
+-------------------------------------------------------------------
+Mon Nov  3 13:03:23 CET 2008 - seife@suse.de
+
+- fix START_SERVICES=no and wrong "Default:"-comment (bnc#435489)
+
+-------------------------------------------------------------------
+Mon Oct 27 20:48:38 CET 2008 - seife@suse.de
+
+- update to bluez-4.17:
+  - Fix SBC encoder not writing last frame.
+  - Fix missing timer for A2DP suspend.
+  - Add more supported devices to hid2hci utility.
+  - Add additional functionality to Handsfree support.
+
+-------------------------------------------------------------------
+Wed Oct 22 10:13:44 CEST 2008 - seife@suse.de
+
+- update to bluez-4.16:
+  "This release fixes two potential crashes within bluetoothd.
+   It is strongly advised to upgrade to this version."
+  - Fix wrong parameter usage of watch callbacks.
+  - Fix parameters for callback upon path removal.
+  - Fix unloading of adapter drivers.
+  ver 4.15:
+  - Fix various A2DP state machine issues.
+  - Fix some issues with the Handsfree error reporting.
+  - Fix format string warnings with recent GCC versions.
+  - Remove dependency on GModule.
+
+-------------------------------------------------------------------
+Sat Oct 18 13:20:41 CEST 2008 - seife@suse.de
+
+- update to bluez-4.14:
+  - Fix types of property arrays.
+  - Fix potential crash with input devices.
+  - Fix PS3 BD remote input event generation.
+  - Allow dynamic adapter driver registration.
+  - Update udev rules.
+
+-------------------------------------------------------------------
+Tue Oct 14 15:30:49 CEST 2008 - seife@suse.de
+
+- split up bluez and bluez-gstreamer to avoid circular dependencies
+
+-------------------------------------------------------------------
+Mon Oct 13 07:35:11 CEST 2008 - seife@suse.de
+
+- update to bluez-4.13:
+  - Fix service discovery and UUID handling.
+  - Fix bonding issues with Simple Pairing.
+  - Fix file descriptor misuse of SCO connections.
+  - Fix various memory leaks in the device handling.
+  - Fix AVCTP disconnect handling.
+  - Fix GStreamer modes for MP3 encoding.
+  - Add operator selection to Handsfree support.
+
+-------------------------------------------------------------------
+Mon Oct  6 20:34:13 CEST 2008 - seife@suse.de
+
+- update to bluez-4.12:
+  - Fix crash with missing icon value.
+  - Fix error checks of HAL plugin.
+  - Fix SCO server socket cleanup on exit.
+  - Fix memory leaks from DBusPendingCall.
+  - Fix handling of pending authorization requests.
+  - Fix missing protocol UUIDs in record pattern.
+
+-------------------------------------------------------------------
+Sun Oct  5 16:24:41 CEST 2008 - seife@suse.de
+
+- update to bluez-4.11:
+  - Change SCO server socket into a generic one. Should fix
+    connection issues with headsets.
+  - Fix uninitialized reply of multiple GetProperties methods.
+
+-------------------------------------------------------------------
+Sat Oct  4 09:59:32 CEST 2008 - seife@suse.de
+
+- update to bluez-4.10:
+  - Fix memory leaks with HAL messages.
+  - Add more advanced handsfree features.
+  - Add properties to audio, input and network interfaces.
+  - Stop device discovery timer on device removal.
+
+-------------------------------------------------------------------
+Mon Sep 29 18:56:15 CEST 2008 - seife@suse.de
+
+- update to bluez-4.9:
+  - Fix signals for Powered and Discoverable properties.
+  - Fix handling of Alias and Icon properties.
+  - Fix duplicate entries for service UUIDs.
+
+-------------------------------------------------------------------
+Mon Sep2y 09:36:31 CEST 2008 - seife@suse.de
+
+- update to bluez-4.8:
+  - fix two bluetoothd crashes during device pairing
+  - reenable HAL plugin, no need for libhal anymore
+  - hciconfig and hcitool now show all extended features pages
+    (important because page 1 indicates simple pairing support)
+
+-------------------------------------------------------------------
+Sat Sep 27 07:04:45 CEST 2008 - seife@suse.de
+
+- fix a crash when e.g. connecting a new input device
+
+-------------------------------------------------------------------
+Fri Sep 26 12:07:21 CEST 2008 - seife@suse.de
+
+- update to bluez-4.7:
+  - Fix pairing and service discovery logic.
+  - Fix crashes during suspend and resume.
+  - Fix race condition within devdown mode.
+  - Add RequestSession and ReleaseSession methods.
+  - Add Powered and Discoverable properties.
+  - Add Devices property and deprecate ListDevices.
+  - Add workaround for a broken carkit from Nokia.
+- removed bluez-4.6-fix-bluetoothd-crash-after-suspend.diff
+
+-------------------------------------------------------------------
+Thu Sep 25 09:53:08 CEST 2008 - seife@suse.de
+
+- fix a bluetoothd crash after resume
+
+-------------------------------------------------------------------
+Wed Sep 24 00:12:45 CEST 2008 - seife@suse.de
+
+- use /dev/shm instead of /var/run for the coldplug-marker, since
+  /var/run is cleaned up later in the boot process
+
+-------------------------------------------------------------------
+Tue Sep 23 17:31:19 CEST 2008 - seife@suse.de
+
+- add more useful stuff to bluez-test
+- add dbus-activation of bluetoothd
+- use dbus-activation to start on adapter hotplug event
+- add bluetooth-coldplug init script to make sure that bluetoothd
+  is started when adapter is plugged in before DBus is started
+- add "Provides: bluez-utils" to bluez, to help the solver
+
+-------------------------------------------------------------------
+Wed Sep 17 17:16:54 CEST 2008 - dmueller@suse.de
+
+- add missing splitprovides
+- fix bluez-utils rename
+- remove bogus bluez provide
+
+-------------------------------------------------------------------
+Mon Sep 15 23:41:33 CEST 2008 - seife@suse.de
+
+- update to bluez-4.6:
+  * add a smooth upgrade path of configured input devices from
+    BlueZ 3.x to the 4.x series
+  * fix a couple of regressions with the adapter initialization and
+    the input service
+  Detailed changelog:
+  version 4.6:
+  * Fix Device ID record handling.
+  * Fix service browsing and storage.
+  * Fix authentication and encryption for input devices.
+  * Fix adapter name initialization.
+  version 4.5:
+  * Fix initialization issue with new adapters.
+  * Send HID authentication request without blocking.
+  * Hide the verbose SDP debug behind SDP_DEBUG.
+  * Add extra UUIDs for service discovery.
+  * Add SCO server socket listener.
+  * Add authorization support to service plugin.
+
+-------------------------------------------------------------------
+Mon Sep 15 17:06:46 CEST 2008 - dmueller@suse.de
+
+- fix devel package requires
+
+-------------------------------------------------------------------
+Tue Sep  9 15:08:23 CEST 2008 - seife@suse.de
+
+- initial checkin of BlueZ 4
+

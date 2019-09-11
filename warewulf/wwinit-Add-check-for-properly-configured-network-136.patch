@@ -1,0 +1,49 @@
+From: John Jolly <john.jolly@gmail.com>
+Date: Thu Sep 13 14:26:12 2018 -0600
+Subject: wwinit: Add check for properly configured network (#136)
+Patch-mainline: Upstream
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: dfb00c93fd4d32954258a8daa056baecab643600
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: John L. Jolly <jjolly@suse.com>---
+ cluster/libexec/wwinit/50-network.init | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+diff --git a/cluster/libexec/wwinit/50-network.init b/cluster/libexec/wwinit/50-network.init
+new file mode 100644
+index 0000000..3cbc4a8
+--- /dev/null
++++ b/cluster/libexec/wwinit/50-network.init
+@@ -0,0 +1,31 @@
++#!/bin/sh
++##
++## Copyright (c) 2001-2003 Gregory M. Kurtzer
++##
++## Copyright (c) 2003-2012, The Regents of the University of California,
++## through Lawrence Berkeley National Laboratory (subject to receipt of any
++## required approvals from the U.S. Dept. of Energy).  All rights reserved.
++##
++
++#INIT: ALL
++#INIT: MASTER
++#INIT: PROVISION
++#INIT: NFS
++
++if [ -f "$WWFUNCTIONS" ]; then
++    . $WWFUNCTIONS
++else
++    echo "ERROR: could not load warewulf functions!"
++    exit 255
++fi
++
++wwreqroot
++
++NETWORK=`perl -MWarewulf::Network -MWarewulf::Config -e 'print Warewulf::Network->new()->network(Warewulf::Config->new("provision.conf")->get("network device"));'`
++NETMASK=`perl -MWarewulf::Network -MWarewulf::Config -e 'print Warewulf::Network->new()->netmask(Warewulf::Config->new("provision.conf")->get("network device"));'`
++
++# Make certain that the appropriate network settings are set
++if [ -z "$NETWORK" -o -z "$NETMASK" ]; then
++    wwprint "Unable to determine network details.\nHave you configured 'network devices' in the /etc/warewulf/provision.conf file?\n" error
++    exit 255
++fi

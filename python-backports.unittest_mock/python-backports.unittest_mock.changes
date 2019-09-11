@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Fri Mar  1 11:14:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.4:
+  * Add pytest trove classifier
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:02 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Mar 23 14:35:36 UTC 2018 - toddrme2178@gmail.com
+
+- Switch to singlespec package
+- Build for python3 < 3.3
+- Make structure consistent with other backports packages
+
+-------------------------------------------------------------------
+Mon Jul 10 12:21:50 UTC 2017 - aloisio@gmx.com
+
+- Update to version 1.3
+  * Merge with skeleton.
+  * Use pkgutil for backports namespace package.
+  1.2.1:
+  * Bump setuptools_scm and other skeleton updates, including:
+    Drop support for setup.py build_sphinx because that usage
+    conflicts with the usage required by readthedocs, which always
+    runs the docs build from ./docs/ instead of ./. Also drop
+    support for build_sphinx because the dependency resolution of
+    that command relies on easy_install, which is also deprecated.
+    The proper way to build docs now is to install the requirements
+    in docs/requirements.txt and then invoke sphinx natively.
+
+-------------------------------------------------------------------
+Wed May 24 13:16:13 UTC 2017 - jmatejek@suse.com
+
+- do not build docs, they are available in official Python
+  documentation
+
+-------------------------------------------------------------------
+Fri Mar 31 19:27:35 UTC 2017 - toddrme2178@gmail.com
+
+-  %{python_sitelib}/backports is a namespace package, and so under
+   python 2.x it must have a proper 
+   %{python_sitelib}/backports/__init__.py file.
+   python-backports provides this __init__.py to prevent backports
+   packages from conflicting.
+   Please see the following links for more details:
+     https://pypi.python.org/pypi/backports/
+     https://www.python.org/dev/peps/pep-0420/%23namespace-packages-today
+
+-------------------------------------------------------------------
+Thu Mar 30 22:14:12 UTC 2017 - toddrme2178@gmail.com
+
+- Add python2 provides.
+- Use the common __init__.py used by the python-backports package
+  to avoid conflicts.
+
+-------------------------------------------------------------------
+Tue Aug  2 13:24:18 UTC 2016 - sor.alexei@meowr.ru
+
+- Switch to Python2.
+- Add build_sphinx.
+- Minor spec cleanups.
+
+-------------------------------------------------------------------
+Sat Jul 16 19:11:32 UTC 2016 - arun@gmx.de
+
+- initial version

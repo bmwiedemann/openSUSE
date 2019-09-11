@@ -1,0 +1,281 @@
+-------------------------------------------------------------------
+Mon Sep 10 12:14:05 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase for summary. Expand description.
+
+-------------------------------------------------------------------
+Tue Sep  4 18:02:00 UTC 2018 - tabraham@suse.com
+
+- Update to 4.3.0
+  + disable -sL, should have been done at same time -sl was
+ 
+- Changes from 4.2.0
+  + Updated Plotfile docs to explain why you shouldn't leave off the -f
+    when using -P [thanks Bayard]
+  + added support for InfiniBand OPA V4 to read start from /sys instead of
+    having to rely on perfquery for 64 bit counters. [thanks frederic]
+  + removed previos bug introduced in V4.1.2 that was not properly calculating
+    disk summaries. If you do have any raw files collected with this version
+    you WILL be able to play them back properly or create and plot files with
+    this version
+  + although I'm stil leaving the lustre code in place because there is so much
+    of it, I did remove cciss disk types from non-lustre code
+  + finally removed col2tlviz from kit [thanks tom]
+
+-------------------------------------------------------------------
+Wed Aug 29 09:03:54 UTC 2018 - glin@suse.com
+
+- Specify the type of service as "forking" (boo#1106366)
+- Remove the execution bit from collectl.service
+- Create the collectl directory in /var/log
+
+-------------------------------------------------------------------
+Wed Apr 11 15:06:23 UTC 2018 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use correct systemd build dependency
+- Reduce duplicities in package via fdupes
+
+-------------------------------------------------------------------
+Thu Nov 23 13:39:43 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Tue Apr 11 15:10:05 UTC 2017 - tabraham@suse.com
+
+- include colmux
+- Update to 4.1.3
+  + correct use of uninitialized variable on output of distro info
+    on openSUSE 
+
+-------------------------------------------------------------------
+Fri Mar  3 13:53:59 UTC 2017 - tabraham@suse.com
+
+- Update to 4.1.2
+  + incorrectly requiring a + with --rawdskfilt to be at beginning
+  + when added support for 64bit IB counters it looks like I was only
+    saving 3 of the 4 values (loop only went to 3 instead of 4)
+    around line 4403. [thanks seb]
+
+- Changes from 4.1.1
+  + added packet loss and fast restransmissions to TCP Extended versbose
+    output and renamed AkNoPy and PreAck to PurAck and HPAcks to be
+    consistent with earlier versions [thanks Sophie]
+  + add support for nvme disks [thanks fred]
+  + it turns out some people re-enable lustre support for the sake of
+    monitoring clients and to support that I had to add a check for
+    the lustre-client module which is now in a differetn location than
+    others [thanks fred] 
+
+-------------------------------------------------------------------
+Tue Oct 11 22:30:47 UTC 2016 - tabraham@suse.com
+
+- Update to 4.1.0
+  + allow lexpr to pass formatting information for strings and numbers          
+    [thanks Guy]                                                                
+  + modify the way misc.ph reports uptime to thousandths of a day [thanks, seb] 
+  + added OPA interface support for -sx reporting and cleaned up some very      
+    old code, like quadrics support! [thanks fred] 
+
+-------------------------------------------------------------------
+Thu Jul 14 15:49:11 UTC 2016 - tabraham@suse.com
+
+- Update to 4.0.5
+  + rawdskfilt has been enhanced to allow a preceding + which will              
+    cause the following string to be appended to the default filter             
+  + needed to initialized anonH for numa stats [thanks andy]                    
+  + added 'hed' to known ethernet devices, used by HP Helion        
+
+-------------------------------------------------------------------
+Wed May  4 11:51:38 UTC 2016 - tabraham@suse.com
+
+- Update to 4.0.4
+  + if you try to playback a file with --stats and it has recorded              
+    processes or slabs, ignore them be removing from $subsys 
+  + playback of process data with -P was not skipping first interval and so     
+    stats for first entry we not rates but rather raw numbers
+  + change 'yikes' message to something more meaningful
+  + fixed problem with -sZ -P printing all 0s for thread count
+  + added /usr/lib/systemd/system/collectl.service, per sourceforge help        
+    discussion on 2015-12-28                                   
+  + added disk read/write wait timing for disk detail in terminal, plot         
+    and lexpr format                                               
+  + new switch dskremap allows one to change disk names on the fly because      
+    in some cases such as etherd disks, the names are messy for use with        
+    other tools like ganlia                                     
+  + removed access to disk name remapping file                                  
+  + the rawdskfilt has been enhanced to allow a preceding + which will          
+    cause the following string to be appended to the default filter             
+                                                                                
+- Changes from 4.0.3
+  + add AnonHuge memory to memory stats, both verbose and detailed as           
+    well as lexpr                                                 
+  + if lexpr called with --import, throw an error                               
+  + tighten divide-by-zero test for -sM because it looks like in some cases 
+    when misses >0 we're getting occasional errors.  could hits be somehow 
+    negative?
+
+-------------------------------------------------------------------
+Thu May 28 18:34:49 UTC 2015 - tabraham@suse.com
+
+- Update to 4.0.2
+  * add /bin/bash to list of 'known shells' excluded from output with
+    --procopt k
+  * generalize ethernet network device name to include ALL names
+    matching type 'p\dp' so we pick up p2p, p3p, p4p... [thanks Matt]
+  * collect nr_shmem so we can track shared memory, apparently something
+    I thought of but never acted on [thanks Christian]
+  * do not include guest cpu metrics in totals since already accounted
+    for in user time
+
+-------------------------------------------------------------------
+Mon Apr 20 13:42:38 UTC 2015 - mpluskal@suse.com
+
+- Update to 4.0.0
+  * for a complete list of changes see RELEASE-collectl
+- Cleanup spec-file with spec-cleaner
+- Use url for source
+- Fix broken rcservice symlink
+- Add ommited systemd service pre macro
+
+-------------------------------------------------------------------
+Wed Sep 24 19:41:02 UTC 2014 - tabraham@suse.com
+
+- Update to version 3.7.4
+  See RELEASE-collectl for changes
+
+-------------------------------------------------------------------
+Thu Dec 12 23:17:15 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 3.6.9
+  + Typo in network plot header loop resulted in infinite loop
+  + remove $int/secs from numa hit rate calc AND add more precision
+    to its output
+- Changes from 3.6.8
+  + new flag $exportComm must be set in gexpr/ganglia so that they won't
+    generate an error if run without -f or -A
+  + new switch: --intfilt allows filtering of interrupts
+  + always log messages of type F/E to syslog in daemon mode even if
+    -m is not set
+  + wasn't dealing correctly with missing whitespace after network name in
+    /proc/dev/net in initRecord()
+  + updated init.d script for suse per the maintainer's instructions
+  + extra spaces were being printed in plot mode for tpc stats
+  + added entry to envrules.std to deal with intel Phi Co-Processor
+  + debian init.d script now does 'exit 1' if status reports 'not running'
+  + rawnetignore switch wasn't working correctly
+  + found/fixed some subtle problems with --procanalyze as well as some cleanup
+    - need to ignore first sample after initializing summary arrays
+    - need to init summary hashes for thrutime and accumT because get uninit var
+      in print routine is only a single process entry
+    - found a typo in procAnalyze() to a $usecs which wasn't being used!
+    - added error check to make sure --procanalyze with -P requires -s
+  + added a little more debugging output for -d128
+  + discovered dynamic disk/network detail names for interactive mode were not
+    being reported correctly.  sounds a lot worse than it is because this is
+    typically not done very often nor are disks/networks very dynamic except in
+    large, virtualized environments such as clouds
+  + add to list of devices to exlude from network summary data: tap, dp and nl,
+    which are associated with openstack cinder.  remember you can always add
+    more to that list with --netfilt
+  + $lastHour was never referenced and dayInit() called every time a log was
+    created so fix logic to update $lastHour correctly AND call initDay() one
+    time and do it before newLog() called.
+  + closed a couple of file handles that were left open and reportedly
+    causing some defunct processes with -sx.
+  + fixed bug in lustre stats recording
+  + clarified --showsubopts text about disk and network filters in that they
+    apply to both summary and detail data output
+  + fixed problem with --import and --stats
+  + --statsopt a didn't work because when changed some internal logic missed
+    changing a test of $timestampFlag to $timestampCounter[$rawPFlag] and so
+    now $timestampCount can be removed entirely
+  + clear $firstpass after 1st pass during playback
+  + make sure filename initialized before calling loadConfig so if there is
+    an error logsys() doesn't get an undefined var warning
+  + to be safe, remove any quotes on net/dsk filters in case included by
+    mistake in DaemonCommands string
+  + tightened up tests to see if daemonized collectl already running
+  + if no hiRes::Time, fudge the value of $microInterval based on -i
+  + new --procOpt k, removes known shells from process listing with -sZ,
+    currently set to /bin.sh, /usr/bin/perl, /usr/bin/python and python
+  + fixed varname in lexpr: $debug should have been $lexDebug
+- Remove init-cleanup.patch; merged on upstream release
+  
+-------------------------------------------------------------------
+Sat Oct 26 17:59:37 UTC 2013 - p.drouand@gmail.com
+
+- Drop sysvinit support; none of target distributions use sysvinit
+  anymore
+- Add systemd support
+- Install collectl in /usr/bin to get it launchable with systemd and 
+  link it in /usr/sbin
+- Add a sysconfig file
+
+-------------------------------------------------------------------
+Thu Jun  6 01:23:39 UTC 2013 - tabraham@suse.com
+
+- deleted bug-793027.patch : deprecated
+- init-cleanup.patch : init script cleanup
+- see RELEASE-collectl for list of changes between 3.4.3 and 3.6.7
+
+-------------------------------------------------------------------
+Tue Mar  5 05:55:17 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Wed Dec  5 21:46:00 UTC 2012 - tabraham@suse.com
+
+- bug-793027.patch: fix for collectl init script (bnc #793027)
+
+-------------------------------------------------------------------
+Sun Sep 18 16:05:27 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Fri Nov  5 15:40:18 UTC 2010 - hvogel@novell.com
+
+- Update to version 3.4.3
+  * when errors detected during initialization not skipping subsequent checks
+  * added --dskfilt
+  * added check for client-side OST uuid status 'DEACTIVATED'
+  * support for CPUs dynamically changing stats and going off/on-line
+  * new feature: select process by UID range
+  * do not issue 'stty' if !PC, running on terminal and !background.
+  * added --netfilt
+  * changed disk details to use 'cvt()' for reporting number of I/Os since DM
+    numbers
+  * 2 new process sort fields: pid and cpu
+  * only look at $cpuDisabledFlag when processing CPU data
+
+-------------------------------------------------------------------
+Tue Apr  6 13:55:50 UTC 2010 - hvogel@novell.com
+
+- Update to version 3.4.1
+  * new switch --umask for setting mode to files collectl creates 
+  * support for Fusion-IO disks 
+  * Support for OFED 1.5
+  * Improved performance of playback
+  * Added LSB headers to all start scripts
+  * New data collection/reporting API
+  * New export: gexpr, for exporting data to ganglia
+  * Added NFS V4 support and collection
+  * Expanded contents of verbose memory output
+  * Added Power to environmental monitoring
+  * Allow multiple clients to connect when is server mode
+  * Added fields to --top for monitoring slabs
+  * Expanded --top functionality.
+  * Enhanced MDS stats to support lustre 1.6.5
+  * Added --grep switch to allow searching/reporting data in raw files
+  * A couple of switch names changed to be more consistent
+  * Improved help
+ 
+-------------------------------------------------------------------
+Thu Jul  3 15:29:05 CEST 2008 - hvogel@suse.de
+
+- Initial package, Version 2.6.4
+

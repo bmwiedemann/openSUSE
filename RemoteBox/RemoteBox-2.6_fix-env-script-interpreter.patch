@@ -1,0 +1,10 @@
+Index: remotebox
+===================================================================
+--- remotebox.orig
++++ remotebox
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ # ^^^ You may need to change this to the location of your perl interpreter
+ # RemoteBox v2.6 (c) 2010-2019 Ian Chapman. Licenced under the terms of the GPL
+ use strict;

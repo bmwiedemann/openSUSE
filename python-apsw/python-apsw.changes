@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Thu Jul  4 13:10:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.28.0-r1:
+  * No changelog
+- Add patch to build with python 3.8:
+  * python38.patch
+
+-------------------------------------------------------------------
+Thu Aug 31 16:45:50 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 3.9.2-r1
+  * No changelog
+
+-------------------------------------------------------------------
+Thu Aug 24 13:32:48 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Tue Oct 15 13:04:33 UTC 2013 - tchvatal@suse.com
+
+- Downgrade to 3.7.17 so we build on 13.1 too.
+
+-------------------------------------------------------------------
+Tue Oct 15 12:56:58 UTC 2013 - tomas.chvatal@gmail.com
+
+- Fix file collision between doc and normal
+
+-------------------------------------------------------------------
+Mon Oct 14 11:46:39 UTC 2013 - tchvatal@suse.com
+
+- Version bump to 3.8.0.2-r1 to use latest sqlite queries.
+- Drop the macroed commands in favor of normal ones
+- Drop clean section
+- Write fully what documents go where.
+
+-------------------------------------------------------------------
+Wed Oct  9 17:32:14 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Drop unused tarballs, defines and checks for obsolete openSUSE versions
+
+-------------------------------------------------------------------
+Tue Sep  3 10:31:58 UTC 2013 - jw@suse.com
+
+- osc service localrun format_spec_file
+  to add comments and such.
+
+-------------------------------------------------------------------
+Mon Dec 12 19:35:39 UTC 2011 - pascal.bleser@opensuse.org
+
+- build for all supported versions from a single spec
+- link dynamically against the sqlite3 version that ships with each distro
+  version, rather than using amalgamation: this is required by s3ql
+
+-------------------------------------------------------------------
+Mon Aug  9 15:40:35 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (3.7.0.1-r1)
+
+

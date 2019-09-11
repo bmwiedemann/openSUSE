@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Fri Aug 09 07:35:10 UTC 2019 - mardnh@gmx.de
+
+- Update to version 3.4.2+git.20190808:
+  * Avoid compiler warning 'dynamic exception specifications are
+    deprecated in C++11 [-Wdeprecated]'.
+  * usrp2: firmware: ignore .lk build artifacts
+  * edit-gpif: Fix build for distros with python3 as default
+  * build_eeprom.py: Fix build for distros with python3 as default
+- Disable parallel build
+
+-------------------------------------------------------------------
+Sat Feb  2 09:34:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix SRPM group.
+
+-------------------------------------------------------------------
+Sun Jan 13 23:54:49 UTC 2019 - mardnh@gmx.de
+
+- Update to version 3.4.2+git.20190113:
+  * Re-enable build of usrp FX2 firmware
+  * firmware: Port to more modern SDCC syntax.
+  * firmware: Fix include directory path names
+
+-------------------------------------------------------------------
+Fri Jun 15 20:06:10 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.4.2+git.20180429:
+  * build: use correct python version in generate_regs.py
+  * Add debian directory
+  * Makefile.par.gen: Fix .deps directory not present during build
+  * build: Fix make distcheck
+  * usrp.pc.in: Drop unset LIBUSB_PKG_CONFIG_NAME
+
+-------------------------------------------------------------------
+Wed Apr 25 19:47:37 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.4.2+git.20180424:
+  * build: Link libusrp_la also to boost_system
+  * Makefile.common: Fix typo preventing build
+  * gitignore: Remove and ignore libtool related m4 files
+  * usrp.pc.in: Fix version in output pc file
+
+-------------------------------------------------------------------
+Mon Jan 22 20:11:13 UTC 2018 - mardnh@gmx.de
+
+- Initial package, version 3.4.2+git.20180121

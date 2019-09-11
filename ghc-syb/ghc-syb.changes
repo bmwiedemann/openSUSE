@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Mon Jun 17 15:02:05 UTC 2019 - psimons@suse.com
+
+- Update syb to version 0.7.1.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:32:04 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:42 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Wed May 16 14:36:28 UTC 2018 - psimons@suse.com
+
+- Prefer the new %license attribute over %doc.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Thu Jul 27 14:06:37 UTC 2017 - psimons@suse.com
+
+- Update to version 0.7.
+
+-------------------------------------------------------------------
+Sat May 27 12:27:54 UTC 2017 - psimons@suse.com
+
+- Update to version 0.6 revision 1.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:27:39 UTC 2016 - psimons@suse.com
+
+- Update to version 0.6 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Wed Dec 23 16:45:38 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.6
+
+-------------------------------------------------------------------
+Fri Aug  7 08:14:56 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.5.1
+
+-------------------------------------------------------------------
+Fri Apr 10 15:05:54 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.4.4
+* no changelog available from hackage
+
+-------------------------------------------------------------------
+Fri Sep 12 06:43:40 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- update to 0.4.1
+* Haskell Platform 2014.2.0.0
+* no changelog available from hackage
+
+-------------------------------------------------------------------
+Tue Sep  2 10:16:39 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- regenerate spec file
+
+-------------------------------------------------------------------
+Sat Aug 23 00:22:40 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- enable PowerPC builds
+
+-------------------------------------------------------------------
+Mon May  6 10:06:40 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 0.4.0 from upstream
+* fix for ghc 7.7 and up
+- part of Haskell Platform 2013.2 update
+- more transparent packaging (fewer macros)
+
+-------------------------------------------------------------------
+Sun Dec 30 18:43:19 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- expand macro in name tag to help source validator
+
+-------------------------------------------------------------------
+Sat Nov 17 14:47:07 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- make service localonly for Factory submission
+
+-------------------------------------------------------------------
+Tue Oct  2 10:21:36 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 0.3.7 from upstream (no changelog)
+- required by Haskell Platform 2012.4.0.0
+
+-------------------------------------------------------------------
+Sun Jun  3 17:46:03 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 0.3.6.1 from upstream (no changelog)
+- required by Haskell Platform 2012.2.0.0
+
+-------------------------------------------------------------------
+Thu Feb 23 13:46:48 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- Added BuildRoot for sle11-sp1
+
+-------------------------------------------------------------------
+Wed Dec 28 22:46:05 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Adjusted version for platform 2011.4
+
+-------------------------------------------------------------------
+Wed Dec 28 22:40:51 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Initial packaging.

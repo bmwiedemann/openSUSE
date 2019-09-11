@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Thu Mar  8 14:06:22 UTC 2018 - mpluskal@suse.com
+
+- Clean up spec file using spec-cleaner
+- Update project url
+
+-------------------------------------------------------------------
+Fri Feb 23 13:24:12 UTC 2018 - mvetter@suse.com
+
+- Update to version 1.5:
+  * Persistent fuzzing now works with MacOS-X
+  * Fixed some examples/ to make it work with MacOS-X
+  * Should compile cleanly with newer MacOS-X versions
+- Changes from version 1.4:
+  * Socketfuzzer by @dobin
+  * TCP fuzzer (HonggFuzzer NetDriver) in libhfnetdriver
+  * Display: changed layout a bit
+  * Better examples/ dir: Apache HTTP, ISC Bind
+  * Added persistent and netdriver signatures
+  * Added missing symbols for newer -fsanitize-coverage (const)
+  * Changed internal structures (global vs run)
+- Remove honggfuzz-binutils_2.29.patch: contained in release
+
+-------------------------------------------------------------------
+Mon Oct  2 09:20:48 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.1:
+  * Simplified and improved hfuzz_cc compiler
+  * More string instrumentation in libhfuzz
+  * Android: works with Android-NDK 15 and newer only
+  * Dockerfile
+  * Refreshed docs
+  * Linux: Faster BTS/PT due to less PMU state resets
+  * Linux: tests and by-pass for the Linux' fork-when-multithreaded
+    problem
+  * libFuzzer/AFL style dictionaries
+  * Runnable under docker/oss-fuzz
+- Changes for version 1.0:
+  * Multiple stability improvements for most of the supported
+    architectures
+  * More examples in examples/ (e.g. Linux kernel IP for BTS/PT)
+  * Documentation updates
+  * Added honggfuzz compiler wrapper in hfuzz_cc/
+  * Reworked buffer mangling logic
+- Drope reproducible.patch and gcc7.patch
+- Add honggfuzz-binutils_2.29.patch to fix building with latest
+  binutils
+
+-------------------------------------------------------------------
+Mon May 29 12:12:59 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort input files to make build reproducible
+  (boo#1041090)
+- Add gcc7.patch to make it build on GCC7 in Factory
+
+-------------------------------------------------------------------
+Sat Apr 29 17:13:02 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.9:
+  * Smaller and bigger reworks:
+    + Android Makefile
+    + New sanitizers.c
+    + Display console with scrolling logs
+    + Improved libhfuzz - esp. the trace_cmp handling
+    + Improved mangle.c
+  * Multiple examples of persistent fuzzing: libpng, jpeg, libxml,
+    apache, openssl
+
+-------------------------------------------------------------------
+Sun Feb  5 01:09:52 UTC 2017 - jengelh@inai.de
+
+- Update description
+
+-------------------------------------------------------------------
+Sat Jan 28 14:32:18 UTC 2017 - mpluskal@suse.com
+
+- Initial package for version 0.8
+

@@ -1,0 +1,259 @@
+-------------------------------------------------------------------
+Fri Mar  8 03:16:22 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add efivar-bsc1127544-fix-ucs2len.patch to fix logic that checks
+  for UCS-2 string termination (boo#1127544)
+- Add efivar-fix-efidp_ipv4_addr-fields-assignment.patch to fix the
+  casting of IPv4 address.
+
+-------------------------------------------------------------------
+Fri Feb 22 08:24:56 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 37
+  + Improve ACPI device path formatting
+  + Add support for SOC devices that use FDT as their PCI root node
+  + Make devices we can't parse the "device" sysfs link for use
+    DEV_ABBREV_ONLY
+  + Handle SCSI port numbers better
+  + Don't require an EUI for NVMe (boo#1100077)
+  + Fix the accidental requirement on ACPI UID nodes existing
+  + Add support for EMMC devices
+  + Add support for PCI root nodes without a device link in sysfs
+  + Add support for partitioned MD devices
+  + Fix partition number detection when the number isn't provided
+  + Add support for ACPI Generic Container and Embedded Controller
+    root nodes (boo#1101023)
+  + Add limited support for SAS/SATA port expanders
+- Add upstream patches to fix boo#1120862
+  + efivar-make-format_guid-handle-misaligned-guid-pointer.patch
+  + efivar-Fix-all-the-places-Werror-address-of-packed-member-c.patch
+- Drop upstreamed reproducible.patch
+- Refresh libefiboot-export-disk_get_partition_info.patch
+- Use %license for COPYING
+
+-------------------------------------------------------------------
+Tue Jul 24 07:45:35 UTC 2018 - bwiedemann@suse.com
+
+- Add reproducible.patch to initialize memory (boo#1061219)
+
+-------------------------------------------------------------------
+Mon Jul 16 07:45:14 UTC 2018 - glin@suse.com
+
+- Downgrade to 35 (fate#326702)
+  + 36 rewrote the linux interface parsers and caused several
+    problems in efibootmgr. Downgrade the version before the change
+    to avoid the failure of boot variable creation
+    (boo#1100077, boo#1101023)
+- Refresh libefiboot-export-disk_get_partition_info.patch
+
+-------------------------------------------------------------------
+Wed Jun 20 15:03:30 UTC 2018 - oliver@getspam.de
+
+- Update to version 36
+- adjust libefiboot-export-disk_get_partition_info.patch to fit
+  new version
+
+-------------------------------------------------------------------
+Thu Mar 23 15:32:57 UTC 2017 - jengelh@inai.de
+
+- RPM group fix
+
+-------------------------------------------------------------------
+Fri Mar  3 18:09:42 UTC 2017 - rw@suse.com
+
+- libefiboot-export-disk_get_partition_info.patch:
+  (bsc#870211, bsc#945705)
+
+-------------------------------------------------------------------
+Tue Feb 10 10:40:18 UTC 2017 - rw@suse.com
+
+- Update to 31  (fate#322108)
+- Drop upstreamed patches
+  + efivar-no-static.patch
+  + deprecated-readdir_r.patch
+  + efivar-use-sysmacros.patch
+
+-------------------------------------------------------------------
+Thu Feb  9 06:32:10 UTC 2017 - glin@suse.com
+
+- Add efivar-use-sysmacros.patch to fix the Factory/Tumbleweed
+  build correctly.
+- Amend the spec file to specify the gcc version for SLE11SP4
+
+-------------------------------------------------------------------
+Mon Feb  6 14:40:25 UTC 2017 - rw@suse.com
+
+- Fix building for SLE11SP4, SLE12SP2, and Tumbleweed
+  (fate#322108, bnc#1012765)
+- Drop obsolete patch
+  efivar-bsc988000-remove-versioning-efi_set_variable.patch
+
+-------------------------------------------------------------------
+Wed Jul 13 03:54:20 UTC 2016 - glin@suse.com
+
+- Update to 0.24
+- Drop upstreamed patches
+  + efivar-0.21-gcc6.diff
+  + efivar-nvme-rename.patch
+  + efivar-nvme-no-kernel-header.patch
+  + efivar-relicensing.patch
+  + efivar-bsc988000-fix-mode-efi_set_variable.patch
+
+-------------------------------------------------------------------
+Tue Jul 12 09:00:02 UTC 2016 - schwab@suse.de
+
+- deprecated-readdir_r.patch: Remove use of deprecated readdir_r
+
+-------------------------------------------------------------------
+Mon Jul 11 06:44:37 UTC 2016 - glin@suse.com
+
+- Add efivar-bsc988000-fix-mode-efi_set_variable.patch and
+  efivar-bsc988000-remove-versioning-efi_set_variable.patch to set
+  the default file mode rather than fetching a value randomly
+  (bsc#988000)
+
+-------------------------------------------------------------------
+Wed Apr 13 02:08:09 UTC 2016 - glin@suse.com
+
+- Add efivar-relicensing.patch to update the license in some files
+
+-------------------------------------------------------------------
+Tue Apr 12 02:05:47 UTC 2016 - glin@suse.com
+
+- Add the missing COPYING
+
+-------------------------------------------------------------------
+Wed Mar  9 04:23:29 UTC 2016 - glin@suse.com
+
+- Update to 0.23 for fwupdate (FATE#319345)
+- Add efivar-nvme-rename.patch and efivar-nvme-no-kernel-header.patch
+  to work around the missing kernel header.
+- Add efivar-no-static.patch to remove efivar-static since it
+  causes build failure and we don't really need it.
+- Remove efivar-fix-initializer.patch since it's already in 0.23.
+- Remove _smp_mflags since the Makefile doesn't work well with
+  the flag.
+
+-------------------------------------------------------------------
+Wed Feb 10 15:31:35 UTC 2016 - rguenther@suse.com
+
+- Add efivar-0.21-gcc6.diff to fix strict-aliasing issue.
+- Build with -Wno-nonnull as efivar tests nonnull args for zero
+  and that breaks with its use of -Werror.
+
+-------------------------------------------------------------------
+Tue Dec  1 09:08:28 UTC 2015 - glin@suse.com
+
+- Update the source link
+
+-------------------------------------------------------------------
+Fri Nov 27 10:23:58 UTC 2015 - glin@suse.com
+
+- Update to 0.21
+- Add efivar-fix-initializer.patch to initialize ifreq properly
+- Drop patches
+  + efivar-fix-vars_del_variable.patch: upstreamed
+  + efivar-revert-linker-order.patch: not necessary
+
+-------------------------------------------------------------------
+Wed Jun 24 09:58:16 UTC 2015 - glin@suse.com
+
+- Add efivar-fix-vars_del_variable.patch to fix the deletion of
+  the variable with the old efivar kernel modules
+
+-------------------------------------------------------------------
+Tue Jun 16 07:30:20 UTC 2015 - glin@suse.com
+
+- Add efivar-revert-linker-order.patch to adjust the linker order
+  which caused the compilation error in pesign
+
+-------------------------------------------------------------------
+Thu Jun 11 06:59:41 UTC 2015 - mpluskal@suse.com
+
+- Use default CFLAGS
+
+-------------------------------------------------------------------
+Wed Jun  3 07:46:58 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.20
+  * Make sure tester is build with the right link order for
+    libraries.
+  * Adjust linker order for pkg-config
+  * Work around LocateDevicePath() not grokking PcieRoot() devices
+    properly.
+  * Rectify some missing changelog entries
+- Changes for 0.19
+  * Lots of debugging in this release, as well as some of the
+    documentation that's planned. There's more of that to come.
+- Changes for 0.18
+  * This release is mostly about adding the efidp and libefiboot
+    APIs available.Next release will feature documentation for
+    them, verification that various different device path types
+    work, etc. Right now efi device path generation is basically
+    limited to:
+    + full file paths on sata devices
+    + full file paths on sas devices
+    + HD() paths for SATA and SAS devices
+    + ipv4 dhcp device paths that don't specify their own
+      filenames
+- Drop upstreamed patche
+  * efivar-correct-license-header.patch
+- Drop as Makefiles have been restructured, CFLAGS no longer
+  defined in them
+  * efivar-suse-build.patch
+- Use fdupes to reduce amount of duplicate files
+
+-------------------------------------------------------------------
+Fri Nov  7 02:20:06 UTC 2014 - glin@suse.com
+
+- Add efivar-correct-license-header.patch to correct the license of
+  util.h
+- Amend the spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct 29 04:00:49 UTC 2014 - glin@suse.com
+
+- Update to 0.15
+  + Make FSF addresses in COPYING be URLS
+  + Fix variables' DataSize field on 32-bit machines.
+  + Add some vendor specific guids to our guid list
+  + Add efi_id_guid_to_name() and efi_name_to_id_guid(), which
+    support {ID GUID} as a concept a la
+    http://technet.microsoft.com/en-us/library/cc766223%28v=ws.10%29.aspx
+  + Call "empty" "zero" now, as many other places do. (empty
+    references still exist for ABI compatibility)
+  + add "efivar -L" to the man page
+  + efi_symbol_to_guid()
+  + efi_name_to_guid() will fall back on efi_symbol_to_guid()
+  + "efivar -L" to list all the guids we know about
+  + better namespacing on libefivar.so
+    (rename well_known_* -> efi_well_known_*)
+- Refresh efivar-suse-build.patch
+
+-------------------------------------------------------------------
+Fri Sep 26 04:06:57 UTC 2014 - glin@suse.com
+
+- Update to 0.12
+  + Make efi_guid_to_str() only optionally allocate.
+  + Add ", mode" optionally to efi_set_variable()
+  + Fix some return values that don't properly set errno.
+  + Make "wrong size" test more verbose
+  + Excise read_fd() since we've got read_file(), plus cleanups.
+  + Remove variables we've failed to create.
+  + Only open with O_CREAT if we're not using
+    EFI_VARIABLE_APPEND_WRITE
+  + Fix poptReadDefaultConfig() error checking
+  + Get rid of ftruncate() call in efivarfs writes.
+  + If the real file size of an efivarfs file is smaller than stat,
+    get it right.
+  + Fix uninitialized variables
+  + Remove effectively dead code from text_to_guid()
+  + Remove unnecessary explicit definitions or overrides of make
+    variables
+- refresh efivar-suse-build.patch
+
+-------------------------------------------------------------------
+Mon Nov  4 08:05:05 UTC 2013 - glin@suse.com
+
+- Initial import 0.7
+

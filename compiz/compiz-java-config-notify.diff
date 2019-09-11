@@ -1,0 +1,15 @@
+Index: compiz-0.8.4/src/window.c
+===================================================================
+--- compiz-0.8.4.orig/src/window.c
++++ compiz-0.8.4/src/window.c
+@@ -3577,6 +3577,10 @@ reconfigureXWindow (CompWindow	   *w,
+     if (w->frame && (valueMask & (CWSibling | CWStackMode)))
+ 	XConfigureWindow (w->screen->display->display, w->frame,
+ 			  valueMask & (CWSibling | CWStackMode), xwc);
++
++    if (valueMask & (CWX | CWY))
++       if (w->resName && strncmp (w->resName, "sun-awt-X11", 11) == 0)
++           sendConfigureNotify (w);
+ }
+ 
+ static Bool

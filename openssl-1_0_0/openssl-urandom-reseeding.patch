@@ -1,0 +1,100 @@
+Index: openssl-1.0.2g/crypto/rand/rand_unix.c
+===================================================================
+--- openssl-1.0.2g.orig/crypto/rand/rand_unix.c	2016-04-15 14:27:32.058784436 +0200
++++ openssl-1.0.2g/crypto/rand/rand_unix.c	2016-04-15 14:27:32.711794567 +0200
+@@ -245,7 +245,8 @@ int RAND_poll(void)
+     unsigned long l;
+     pid_t curr_pid = getpid();
+ #  if defined(DEVRANDOM) || defined(DEVRANDOM_EGD)
+-    unsigned char tmpbuf[ENTROPY_NEEDED];
++    /* STATE_SIZE is 1023 ... but it was suggested to seed with 1024 bytes */
++    unsigned char tmpbuf[1024];
+     int n = 0;
+ #  endif
+ #  ifdef DEVRANDOM
+@@ -268,7 +269,7 @@ int RAND_poll(void)
+      */
+ 
+     for (i = 0; (i < sizeof(randomfiles) / sizeof(randomfiles[0])) &&
+-         (n < ENTROPY_NEEDED); i++) {
++         (n < sizeof(tmpbuf)); i++) {
+         if ((fd = open(randomfiles[i], O_RDONLY
+ #   ifdef O_NONBLOCK
+                        | O_NONBLOCK
+@@ -355,7 +356,7 @@ int RAND_poll(void)
+ 
+                 if (try_read) {
+                     r = read(fd, (unsigned char *)tmpbuf + n,
+-                             ENTROPY_NEEDED - n);
++                             sizeof(tmpbuf) - n);
+                     if (r > 0)
+                         n += r;
+ #   if defined(OPENSSL_SYS_BEOS_R5)
+@@ -376,7 +377,7 @@ int RAND_poll(void)
+             }
+             while ((r > 0 ||
+                     (errno == EINTR || errno == EAGAIN)) && usec != 0
+-                   && n < ENTROPY_NEEDED);
++                   && n < sizeof(tmpbuf));
+ 
+             close(fd);
+         }
+@@ -389,12 +390,12 @@ int RAND_poll(void)
+      * collecting daemon.
+      */
+ 
+-    for (egdsocket = egdsockets; *egdsocket && n < ENTROPY_NEEDED;
++    for (egdsocket = egdsockets; *egdsocket && n < sizeof(tmpbuf);
+          egdsocket++) {
+         int r;
+ 
+         r = RAND_query_egd_bytes(*egdsocket, (unsigned char *)tmpbuf + n,
+-                                 ENTROPY_NEEDED - n);
++                                 sizeof(tmpbuf) - n);
+         if (r > 0)
+             n += r;
+     }
+Index: openssl-1.0.2g/crypto/rand/md_rand.c
+===================================================================
+--- openssl-1.0.2g.orig/crypto/rand/md_rand.c	2016-04-15 14:27:32.711794567 +0200
++++ openssl-1.0.2g/crypto/rand/md_rand.c	2016-04-15 14:28:18.865510438 +0200
+@@ -360,6 +360,10 @@ int ssleay_rand_bytes(unsigned char *buf
+     if (num <= 0)
+         return 1;
+ 
++    /* special rule for /dev/urandom seeding ... seed with as much bytes
++     * from /dev/urandom as you get out */
++    RAND_load_file("/dev/urandom", num);
++
+     EVP_MD_CTX_init(&m);
+     /* round upwards to multiple of MD_DIGEST_LENGTH/2 */
+     num_ceil =
+Index: openssl-1.0.2g/crypto/fips/fips_drbg_rand.c
+===================================================================
+--- openssl-1.0.2g.orig/crypto/fips/fips_drbg_rand.c	2016-04-15 14:27:32.712794583 +0200
++++ openssl-1.0.2g/crypto/fips/fips_drbg_rand.c	2016-04-15 14:29:30.192616518 +0200
+@@ -77,6 +77,11 @@ static int fips_drbg_bytes(unsigned char
+     int rv = 0;
+     unsigned char *adin = NULL;
+     size_t adinlen = 0;
++
++    /* add entropy in 1:1 relation (number pulled bytes / number pushed from /dev/urandom) */
++    if (count > dctx->min_entropy)
++        RAND_load_file("/dev/urandom", count - dctx->min_entropy);
++
+     CRYPTO_w_lock(CRYPTO_LOCK_RAND);
+     do {
+         size_t rcnt;
+Index: openssl-1.0.2g/crypto/rand/rand_lib.c
+===================================================================
+--- openssl-1.0.2g.orig/crypto/rand/rand_lib.c	2016-04-15 14:27:32.712794583 +0200
++++ openssl-1.0.2g/crypto/rand/rand_lib.c	2016-04-15 14:30:45.074777402 +0200
+@@ -238,7 +238,7 @@ static int drbg_rand_add(DRBG_CTX *ctx,
+     RAND_SSLeay()->add(in, inlen, entropy);
+     if (FIPS_rand_status()) {
+         CRYPTO_w_lock(CRYPTO_LOCK_RAND);
+-        FIPS_drbg_reseed(ctx, NULL, 0);
++        FIPS_drbg_reseed(ctx, in, inlen);
+         CRYPTO_w_unlock(CRYPTO_LOCK_RAND);
+     }
+     return 1;

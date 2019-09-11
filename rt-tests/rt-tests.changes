@@ -1,0 +1,248 @@
+-------------------------------------------------------------------
+Thu Sep 13 11:10:30 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix grammar in description.
+- Have some more %make_install.
+
+-------------------------------------------------------------------
+Thu Sep 13 08:44:03 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.3
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Thu Sep 13 05:27:06 UTC 2018 - Jeffrey Cheung <jcheung@suse.com>
+
+- This is initial to SLERT15 SP1 [fate#326547]
+
+-------------------------------------------------------------------
+Mon Jul 30 05:40:13 UTC 2018 - jcheung@suse.com
+
+- Update to 1.0
+
+  Fate#323312 - Upgrade rt-tests to v1.0
+
+  cyclictest: stop any tracing after hitting a breaktrace threshold
+  rt-tests: Makefile: Assume numa_parse_cpustring_all available
+  rt-tests: Add man page for rt-migrate-test
+  rt-tests: Update the cyclictest man page
+  rt-tests: Add missing option to hwlatdetect man page
+  rt-tests: Housekeeping fix some spelling errors.
+  rt-tests: hwlat.txt: smidetect renamed to hwlatdetect
+  rt-tests: Remove doc/release-checklist.txt
+  rt-tests: Makefile - bump version to 1.0
+
+-------------------------------------------------------------------
+Fri Jul 27 06:09:09 UTC 2018 - jcheung@suse.com
+
+- Submit to SLERT12 SP4
+
+-------------------------------------------------------------------
+Tue Apr 25 07:00:37 UTC 2017 - jcheung@suse.com
+
+- Submit to SLERT12-SP3
+
+-------------------------------------------------------------------
+Thu Dec  8 04:29:29 UTC 2016 - jcheung@suse.com
+
+- Apply this version to SLE-12-SP2
+
+-------------------------------------------------------------------
+Thu Jan 14 07:22:31 UTC 2016 - jcheung@suse.com
+
+- Apply this version to SLE-12-SP1
+
+--------------------------------------------------------------------
+Fri Jul 10 05:49:15 UTC 2015 - jcheung@suse.com
+-
+- Add the "COPYING" file in the %doc section
+-
+--------------------------------------------------------------------
+Thu Jul  9 06:57:06 UTC 2015 - jcheung@suse.com
+-
+- license update: GPL-2.0
+- We now use SPDX license sytnax.
+-
+--------------------------------------------------------------------
+Wed Jul  8 17:37:35 UTC 2015 - cdenicolo@suse.com
+-
+- license update: GPL-2.0
+- please use SPDX  license sytnax.
+
+-------------------------------------------------------------------
+Tue Jun 30 07:05:56 UTC 2015 - Mike Galbraith <mgalbraith@suse.de>
+
+- Update to 0.89
+  This is the last release suitable for SLE11
+
+- Drop legacy/unbuildable backfire/sendme
+- Drop legacy SLERT10 scripts
+- We now ship virgin source with only hwlatency detect and broken
+  legacy code removed.
+
+-------------------------------------------------------------------
+Thu Nov 24 15:08:37 UTC 2011 - Mike Galbraith <mgalbraith@suse.de>
+
+- Fix up spec file BuildRequires/Requires for libnuma
+
+-------------------------------------------------------------------
+Thu Nov 24 14:47:44 UTC 2011 - Mike Galbraith <mgalbraith@suse.de>
+
+- Update to 0.83
+
+-------------------------------------------------------------------
+Fri Aug  6 03:52:10 UTC 2010 - Mike Galbraith <mgalbraith@suse.de>
+
+- Update to 0.72
+
+- Update signaltest display and trace capability to match cyclictest,
+  and provide a man page for same.
+
+-------------------------------------------------------------------
+Fri Feb 26 12:00:48 CET 2010 - jblunck@suse.de
+
+- Update to 0.64.
+
+-------------------------------------------------------------------
+Mon Oct 12 23:14:08 CEST 2009 - sdietrich@suse.de
+
+- Update to 0.53. 
+
+-------------------------------------------------------------------
+Tue Jul  7 21:43:41 CEST 2009 - sdietrich@suse.de
+
+- Update to 0.47. 
+
+-------------------------------------------------------------------
+Mon Jul  6 06:52:30 CEST 2009 - sdietrich@suse.de
+
+- Update to 0.46. Drop: histogram_exceed_limit.patch
+
+-------------------------------------------------------------------
+Thu Jul  2 21:11:58 CEST 2009 - sdietrich@suse.de
+
+- Update to 0.45. Drop:
+	change-output-format-to-allow-6-digits.patch
+	clock_nanosleep_interrupt.patch 
+
+-------------------------------------------------------------------
+Thu Jul  2 04:18:48 CEST 2009 - sdietrich@suse.de
+
+- Rework Suse-added patches after sending upstream.
+  - Fold re-introduce-HIST_MAX-and-silently-cap-the-histogram.patch
+  into histogram_exceed_limit.patch.
+  - Add proper explanation to change-output-format-to-allow-6-digits.patch 
+
+-------------------------------------------------------------------
+Tue Jun 30 01:13:58 CEST 2009 - sdietrich@suse.de
+
+- Update to 0.43 
+
+-------------------------------------------------------------------
+Thu Jun 25 07:41:38 CEST 2009 - sdietrich@suse.de
+
+- Update to 0.42
+
+-------------------------------------------------------------------
+Wed Apr  8 01:13:44 CEST 2009 - sdietrich@suse.de
+
+- Update to v. 0.34. 
+
+-------------------------------------------------------------------
+Thu Aug 21 13:39:40 CEST 2008 - dgollub@suse.de
+
+- cyclictest_make_all_thread_intervals_equal_for_histogram.patch:
+  Change thread interal for histogram mode
+
+-------------------------------------------------------------------
+Thu Aug 21 02:21:01 CEST 2008 - dgollub@suse.de
+
+- updated histogram_exceed_limit.patch: 
+  Sample doomsday spikes which exceed histogram limit in last bucket 
+
+-------------------------------------------------------------------
+Tue Aug 19 10:56:20 CEST 2008 - dgollub@suse.de
+
+- histogram_exceed_limit.patch: handled histogram limit exceed 
+
+-------------------------------------------------------------------
+Wed Jul 16 19:41:09 CEST 2008 - dgollub@suse.de
+
+- updated to rt-tests 0.24
+  * mlockall option got added (removed mlockall patches)
+- cyclictest: fixed staggering of priorities for multiple threads
+  bnc#408421
+
+-------------------------------------------------------------------
+Tue Jul  8 10:33:10 CEST 2008 - dgollub@suse.de
+
+- updated to rt-tests 0.23 
+  * fixed processing of cyclictest command line arguments
+  * fixed oscilloscope mode which didn't work correctly with more
+    then one thread
+
+-------------------------------------------------------------------
+Wed May 14 13:56:36 CEST 2008 - dgollub@suse.de
+
+- updated to rt-tests 0.21 
+  * support for CPU affinity
+- dropped memlock patch in favor of memlock patch by Clark Williams
+- updated command arguments for cyclictest_run.sh for CPU affinity
+
+-------------------------------------------------------------------
+Thu May  8 10:24:38 CEST 2008 - dgollub@suse.de
+
+- added memlock option to lock the memory to avoid major pagefaults 
+
+-------------------------------------------------------------------
+Tue Apr 22 16:26:21 CEST 2008 - dgollub@suse.de
+
+- removed ctcs2 glue subpackage 
+
+-------------------------------------------------------------------
+Tue Apr 22 10:29:22 CEST 2008 - dgollub@suse.de
+
+- decreased the number of histogram samples from 20000 to 10000
+  in cyclictest_run.sh
+- fixed wrong escaping from in gnuplot script for ploting graph
+  title in cyclictest_plot.sh
+
+-------------------------------------------------------------------
+Tue Apr 22 10:18:17 CEST 2008 - dgollub@suse.de
+
+- Avoid segfault of cyclictest if it gets immediately interrupted
+  clock_nanosleep_interrupt.patch
+
+-------------------------------------------------------------------
+Fri Feb 29 23:36:57 CET 2008 - dgollub@suse.de
+
+- Added ctcs glue subpackages
+
+-------------------------------------------------------------------
+Wed Feb 27 14:48:15 CET 2008 - dgollub@suse.de
+
+- Added test helper scripts:
+  * cyclictest_run.sh:
+	calls cyclictests with adjusted number of CPUs and enables
+	output of histogram
+  * cyclictest_plot.sh
+  	generate a latency graph with the histogram output of cyclictests
+- Fixed shebang of helper script and require for both script the first argument	
+  Otherwise print usage.
+
+-------------------------------------------------------------------
+Wed Feb 27 14:39:52 CET 2008 - dgollub@suse.de
+
+- Added histogramm patch for cyclictest
+
+-------------------------------------------------------------------
+Tue Feb 26 19:31:10 CET 2008 - dgollub@suse.de
+
+- disabled ia64, s390 and s390x for now to avoid build issues
+  with struct sigevent and unionen member  _sigev_un._tid
+
+-------------------------------------------------------------------
+Fri Feb 22 00:07:10 CET 2008 - dgollub@suse.de
+
+- initial checkin of rt-tests (Version 0.19) 
+

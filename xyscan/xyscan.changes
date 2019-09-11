@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Tue Dec  4 21:12:09 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 4.3.0 (4.30)
+  * introduces a Measure Tool. It allows one to measure distances
+    in pixel, plot, and user defined units.
+  * Added a warning dialog to save (or discard) data when a new
+    plot is loaded and the current data is not saved. 
+
+-------------------------------------------------------------------
+Sun Oct 16 20:38:30 UTC 2016 - toddrme2178@gmail.com
+
+- Update to version 4.1.0 (4.10)
+  * The Windows version gets reintroduced in form a convenient
+    binary installer.
+  * For now the support of pdf files had to be dropped in the
+    Window version.
+  * On the Mac (and to some extent on Windows) it is now possible
+    to open an image file with xyscan directly from the Finder
+    (right-click then Open With). Works with the major file types
+    such as png, gif, tif, jpg, and pdf.
+- Update to version 4.0.0 (4.00)
+  * This is a major rewrite of many parts of xyscan.
+  * Changes were made to the GUI and support for PDF was added.
+  * Some features that had stopped working, such as drag and drop,
+    were restored.
+  * The documentation was updated and simplified.
+  * For certain platform-screen combinations (e.g. Retina) it is
+    now possible to use even finer cursor adjustment steps than
+    before (alt/option+arrow).
+  * For this version, non-English language support was dropped.
+- Update to version 3.3.3 (3.33)
+  * This is only a maintenance release mostly for Mac OS 10.9.
+  * xyscan now uses Qt 5.3. Few internal changes that were
+    necessary due to the new Qtversion but nothing that affects
+    the functionality.
+  * For the Mac some adjustments were made to deal with Retina
+    displays.
+  * This version was not tested on Windows or Linux.
+- Update to version 3.3.2 (3.32)
+  * No upstream changelog.
+- Many modifications to the .spec file to support Qt5.
+- Rebase no-build-date.patch
+- Change docs.patch to a sed script to support variable
+  documentation installation directories.
+- Use %suse_update_desktop_file to dynamically generate .desktop
+  file instead of using a separate source file.
+
+-------------------------------------------------------------------
+Sun Dec 23 17:54:24 UTC 2012 - dmitry_r@opensuse.org
+
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sun Sep 30 21:25:59 UTC 2012 - dmitry_r@opensuse.org
+
+- Fix desktop file
+- Fix SLE build
+
+-------------------------------------------------------------------
+Sun Aug 12 11:15:41 UTC 2012 - dmitry_r@opensuse.org
+
+- fix "file contains current date" for xyscan binary
+- fix documentation place
+
+-------------------------------------------------------------------
+Thu Aug  9 09:34:00 UTC 2012 - dmitry_r@opensuse.org
+
+- Initial package
+- Version 3.3.1

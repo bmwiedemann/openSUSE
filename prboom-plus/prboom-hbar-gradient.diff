@@ -1,0 +1,120 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2013-05-01 14:27:39.000000000 +0200
+Category: improvement
+Status: sent Wed, 1 May 2013 14:28:44 +0200
+
+This makes the health bar above shootables use gradiented color.
+
+---
+ src/gl_drawinfo.c |    4 ++--
+ src/gl_intern.h   |    2 +-
+ src/gl_main.c     |   44 +++++++++++++++++---------------------------
+ 3 files changed, 20 insertions(+), 30 deletions(-)
+
+Index: prboom-plus-2.5.1.4/src/gl_drawinfo.c
+===================================================================
+--- prboom-plus-2.5.1.4.orig/src/gl_drawinfo.c
++++ prboom-plus-2.5.1.4/src/gl_drawinfo.c
+@@ -112,10 +112,10 @@ static void gld_AddDrawRange(int size)
+ #define SIZEOF8(type) ((sizeof(type)+7)&~7)
+ void gld_AddDrawItem(GLDrawItemType itemtype, void *itemdata)
+ {
+-  int itemsize = 0;
++  unsigned int itemsize = 0;
+   byte *item_p = NULL;
+ 
+-  static int itemsizes[GLDIT_TYPES] = {
++  static const unsigned int itemsizes[GLDIT_TYPES] = {
+     0,
+     SIZEOF8(GLWall), SIZEOF8(GLWall), SIZEOF8(GLWall), SIZEOF8(GLWall), SIZEOF8(GLWall),
+     SIZEOF8(GLWall), SIZEOF8(GLWall),
+Index: prboom-plus-2.5.1.4/src/gl_intern.h
+===================================================================
+--- prboom-plus-2.5.1.4.orig/src/gl_intern.h
++++ prboom-plus-2.5.1.4/src/gl_intern.h
+@@ -218,7 +218,7 @@ typedef struct
+ 
+ typedef struct
+ {
+-  int cm;
++  float r,g;
+ 
+   float x1, x2, x3;
+   float z1, z2, z3;
+Index: prboom-plus-2.5.1.4/src/gl_main.c
+===================================================================
+--- prboom-plus-2.5.1.4.orig/src/gl_main.c
++++ prboom-plus-2.5.1.4/src/gl_main.c
+@@ -2339,15 +2339,20 @@ static void gld_AddHealthBar(mobj_t* thi
+     GLHealthBar hbar;
+     int health_percent = thing->health * 100 / thing->info->spawnhealth;
+ 
+-    hbar.cm = -1;
+-    if (health_percent <= health_bar_red)
+-      hbar.cm = CR_RED;
+-    else if (health_percent <= health_bar_yellow)
+-      hbar.cm = CR_YELLOW;
+-    else if (health_percent <= health_bar_green)
+-      hbar.cm = CR_GREEN;
++    if (health_percent <= health_bar_red) {
++      hbar.r = 1;
++      hbar.g = 0;
++    } else if (health_percent <= health_bar_yellow) {
++      hbar.r = 1;
++      hbar.g = (double)(health_percent - health_bar_red) /
++               (health_bar_yellow - health_bar_red);
++    } else if (health_percent <= health_bar_green) {
++      /* FullSimplify[1-((percent-yellow)/(green-yellow))] */
++      hbar.r = (double)(health_bar_green - health_percent) /
++               (health_bar_green - health_bar_yellow);
++      hbar.g = 1;
++    }
+ 
+-    if (hbar.cm >= 0)
+     {
+       float sx2 = (float)thing->radius / 2.0f / MAP_SCALE;
+       float sx1 = sx2 - (float)health_percent * (float)thing->radius / 100.0f / MAP_SCALE;
+@@ -2371,7 +2376,6 @@ static void gld_AddHealthBar(mobj_t* thi
+ static void gld_DrawHealthBars(void)
+ {
+   int i, count;
+-  int cm = -1;
+ 
+   count = gld_drawinfo.num_items[GLDIT_HBAR];
+   if (count > 0)
+@@ -2382,31 +2386,17 @@ static void gld_DrawHealthBars(void)
+     for (i = count - 1; i >= 0; i--)
+     {
+       GLHealthBar *hbar = gld_drawinfo.items[GLDIT_HBAR][i].item.hbar;
+-      if (hbar->cm != cm)
+-      {
+-        cm = hbar->cm;
+-        glColor4f(cm2RGB[cm][0], cm2RGB[cm][1], cm2RGB[cm][2], 1.0f);
+-      }
++      glColor4f(hbar->r, hbar->g, 0, 1);
+ 
+       glVertex3f(hbar->x1, hbar->y, hbar->z1);
+       glVertex3f(hbar->x2, hbar->y, hbar->z2);
+-    }
+-    glEnd();
+-
+-    if (health_bar_full_length)
+-    {
+-      glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
+-      glBegin(GL_LINES);
+-      for (i = count - 1; i >= 0; i--)
+-      {
+-        GLHealthBar *hbar = gld_drawinfo.items[GLDIT_HBAR][i].item.hbar;
+-
++      if (health_bar_full_length) {
++        glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
+         glVertex3f(hbar->x1, hbar->y, hbar->z1);
+         glVertex3f(hbar->x3, hbar->y, hbar->z3);
+       }
+-      glEnd();
+     }
+-
++    glEnd();
+     gld_EnableTexture2D(GL_TEXTURE0_ARB, true);
+   }
+ }

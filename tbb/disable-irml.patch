@@ -1,0 +1,13 @@
+Index: tbb-2019_U8/python/setup.py
+===================================================================
+--- tbb-2019_U8.orig/python/setup.py
++++ tbb-2019_U8/python/setup.py
+@@ -67,7 +67,7 @@ _tbb = Extension("tbb._api", ["tbb/api.i
+         extra_compile_args=compile_flags + tbb_flag,
+         extra_link_args=tbb_flag,
+         libraries   =(['tbb'] if not use_compiler_tbb else []) +
+-                     (['irml'] if platform.system() == "Linux" else []),   # TODO: why do we need this?
++                     (['irml'] if platform.system() == "xLinux" else []),   # TODO: why do we need this?
+         library_dirs=[ rundir,                                              # for custom-builds
+                        os.path.join(tbb_root, 'lib', 'intel64', 'gcc4.4'),  # for Linux
+                        os.path.join(tbb_root, 'lib'),                       # for MacOS

@@ -1,0 +1,146 @@
+-------------------------------------------------------------------
+Mon Aug 12 12:24:17 UTC 2019 - Xaver Hellauer <xaver@hellauer.bayern>
+
+- ver 0.19:
+  * Add support for Hotspot 2.0 functionality.
+  * Add support for FILS Fast Transition feature.
+  * Add support for network configuration handling.
+  * Add support for resolution services framework.
+
+-------------------------------------------------------------------
+Mon May 27 11:16:54 UTC 2019 - Xaver Hellauer <xaver@hellauer.bayern>
+
+- ver 0.18:
+  * Fix issue with handling stale scan results.
+  * Fix issue with handling OWE group renegotiation.
+  * Fix issue with handshake failures on FT-PSK.
+  * Add support for FILS (Fast Initial Link Setup).
+
+- ver 0.17:
+  * Fix issue with handling association failure path.
+  * Fix issue with handling checks for valid ECC point/scalar.
+  * Fix issue with handling potential infinite loop and SAE.
+  * Fix issue with handling randomization for passive scans.
+  * Add support for randomization of SN for probe requests.
+  * Add support for handling the FILS cipher suites.
+  * Add support for ERP key caching feature.
+
+-------------------------------------------------------------------
+Fri Apr  5 19:26:53 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.16 (changes since 0.13):
+  * Add support for tunneled MSCHAPv2 authentication.
+  * Fix an issue with handling RSSI thresholds.
+  * Fix an issue with handling abort for a connection.
+  * Fix an issue with stopping Access Point operation.
+  * Add support for individual BSS blacklisting.
+  * Add support for utilising MAC randomisation.
+  * Add support for utilising different key lengths.
+  * Add support for 16, 24 and 32 byte MIC lengths.
+  * Add support for handling driver rekying feature.
+  * Add missing pkcs8.conf for module loading.
+
+-------------------------------------------------------------------
+Thu Dec 13 20:28:33 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid using bundled copy of ell
+
+-------------------------------------------------------------------
+Thu Dec 13 07:39:11 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.13:
+  * Fix issue with WSC interface runtime handling.
+  * Add support for Opportunistic Wireless Encryption.
+  * Add support for common EAP-TLS framework.
+
+-------------------------------------------------------------------
+Sat Nov 17 07:25:13 UTC 2018 - sean@suspend.net
+
+- Update to version 0.12:
+  * build: require at least version 0.15 when building ext ELL
+  * network: simplify is_rsn logic
+  * network: Check autoconnectable as the first condition
+  * network: Introduce __bss_is_sae
+  * scan: make scan_bss_get_rsn_info const correct
+  * network: fix 8021x autoconnect
+  * station: only set 8021x networks
+  * client: fix mem leak
+
+-------------------------------------------------------------------
+Tue Oct 23 11:53:55 UTC 2018 - sean@suspend.net
+
+- Update to version 0.10:
+  * Fix issue with Ethernet authentication packet handling
+  * Fix issue with ad-hoc network scan results in station mode
+  * Fix issue with cancellation of ongoing rekey offload
+  * Add support for setting per-mac GTK credentials
+  * Add support for using external Embedded Linux library
+
+-------------------------------------------------------------------
+Tue Oct  9 21:01:45 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.9:
+  * Fix an issue with handling EAP-WSC passwords.
+  * Add support for TTLS-CHAP and TTLS-PAP.
+  * Add support for handling FT over SAE.
+
+-------------------------------------------------------------------
+Mon Sep 24 14:44:27 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.8:
+  * Fix issue with handling EAP_CACHE_NEVER secret types.
+  * Fix issue with redundant usage of the L flag and PEAP.
+  * Fix issue with EAP type 33 as termination mechanism for PEAPv1.
+  * Add initial version of Ethernet authentication daemon.
+  * Add support for Station mode interface.
+
+-------------------------------------------------------------------
+Tue Sep 11 15:16:43 UTC 2018 - astieger@suse.com
+
+- add upstream signing key and validate source signature
+
+-------------------------------------------------------------------
+Tue Sep 11 14:10:18 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.7 (changes since 0.4):
+  * Fix an issue with EAPoL handling and Ad-Hoc networks.
+  * Add support for using agent with EAP-GTC methods.
+  * Add support for improved Known Networks management.
+  * Add support for Simultaneous Authentication of Equals.
+  * Add support for exposing supported modes of operation.
+  * Add support for D-Bus auto-activation via systemd.
+  * Fix an issue with synching the PSK on first connection.
+  * Fix an issue with unnecessary known object removal events.
+  * Fix an issue with hard coded peer address and SAE networks.
+  * Fix an issue with raw passphrase requirement and SAE networks.
+  * Fix an issue with differentiating authenticator and supplicant.
+  * Fix an issue with timestamps comparison of known networks.
+  * Fix an issue with handling cancellation of power callbacks.
+  * Fix an issue with honouring auto-connect setting on power up.
+  * Fix an issue with a crash during operstate callbacks.
+
+-------------------------------------------------------------------
+Fri Jul 27 13:55:24 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.4:
+  * Fix an issue with handling all zero PMKID.
+  * Fix an issue with handling PEAP servers and M bit requirement.
+  * Fix an issue with handling MS-CHAP v2 and uninitialised memory.
+  * Fix an issue with handling a memory leak and aborting
+    connections.
+  * Fix an issue with handling a memory leak and PSK configuration.
+  * Fix an issue with handling a not yet running D-Bus daemon.
+  * Add support for advanced scanning of hidden networks.
+  * Add support for MAC address randomisation.
+  * Add support for the Ad-Hoc network interface.
+  * Add support for the Access Point interface.
+
+-------------------------------------------------------------------
+Fri Jul 27 11:02:39 UTC 2018 - jengelh@inai.de
+
+- Trim marketing wording and false statements from description.
+
+-------------------------------------------------------------------
+Sun Jun 30 13:02:51 UTC 2018 - sor.alexei@meowr.ru
+
+- Initial package.

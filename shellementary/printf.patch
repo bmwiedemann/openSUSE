@@ -1,0 +1,13 @@
+diff --git a/PROTO/shellementary/src/bin/shelm_callbacks.c b/PROTO/shellementary/src/bin/shelm_callbacks.c
+index 88efac1..2005b3b 100644
+--- a/PROTO/shellementary/src/bin/shelm_callbacks.c
++++ b/PROTO/shellementary/src/bin/shelm_callbacks.c
+@@ -47,7 +47,7 @@ entry_callback(void *data, Evas_Object *obj, void *event_info)
+     {
+       char *s;
+       s = elm_entry_markup_to_utf8(elm_entry_entry_get(entry));
+-      printf(s);
++      printf("%s", s);
+       E_FREE(s);
+     }
+   elm_exit();

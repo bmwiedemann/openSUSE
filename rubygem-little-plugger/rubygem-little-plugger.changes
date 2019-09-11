@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Fri Jul 21 19:48:23 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- changed license to MIT in spec according to github page
+
+-------------------------------------------------------------------
+Tue Nov 24 08:37:26 UTC 2015 - coolo@suse.com
+
+- updated to version 1.1.4
+ see installed History.txt
+
+  == 1.1.4 / 2015-08-27
+  
+  * 1 bug fix
+    * Fixing specs for Ruby 2.0
+
+-------------------------------------------------------------------
+Thu Oct  7 11:09:05 UTC 2010 - prusnak@opensuse.org
+
+- created package
+

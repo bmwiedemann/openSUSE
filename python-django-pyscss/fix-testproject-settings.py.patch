@@ -1,0 +1,37 @@
+Description: Fix testproject/testproject/settings.py
+Author: Thomas Goirand <zigo@debian.org>
+Forwarded: no
+Last-Update: 2017-10-29
+
+--- python-django-pyscss-2.0.2.orig/testproject/testproject/settings.py
++++ python-django-pyscss-2.0.2/testproject/testproject/settings.py
+@@ -60,7 +60,7 @@ MIDDLEWARE_CLASSES = (
+     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+ )
+ 
+-ROOT_URLCONF = 'testproject.urls'
++ROOT_URLCONF = 'testproject.testproject.urls'
+ 
+ WSGI_APPLICATION = 'testproject.wsgi.application'
+ 
+@@ -135,6 +135,19 @@ LOGGING = {
+ TEMPLATES = [
+     {
+         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+-        'APP_DIRS': True,
++        'OPTIONS': {
++            'debug': True,
++            'context_processors': [
++                'django.template.context_processors.debug',
++                'django.template.context_processors.request',
++                'django.contrib.auth.context_processors.auth',
++                'django.contrib.messages.context_processors.messages',
++            ],
++            'loaders': [
++                'django.template.loaders.filesystem.Loader',
++                'django.template.loaders.app_directories.Loader',
++            ],
++
++        }
+     },
+ ]

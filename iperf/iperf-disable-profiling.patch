@@ -1,0 +1,13 @@
+diff -urw iperf-3.0.5.orig/src/Makefile.in iperf-3.0.5/src/Makefile.in
+--- iperf-3.0.5.orig/src/Makefile.in	2014-06-16 19:18:49.000000000 +0200
++++ iperf-3.0.5/src/Makefile.in	2014-07-17 22:23:07.366702888 +0200
+@@ -91,8 +91,7 @@
+ build_triplet = @build@
+ host_triplet = @host@
+ bin_PROGRAMS = iperf3$(EXEEXT)
+-noinst_PROGRAMS = t_timer$(EXEEXT) t_units$(EXEEXT) t_uuid$(EXEEXT) \
+-	iperf3_profile$(EXEEXT)
++noinst_PROGRAMS = t_timer$(EXEEXT) t_units$(EXEEXT) t_uuid$(EXEEXT)
+ TESTS = t_timer$(EXEEXT) t_units$(EXEEXT) t_uuid$(EXEEXT)
+ subdir = src
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4

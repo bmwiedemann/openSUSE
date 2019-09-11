@@ -1,0 +1,61 @@
+#include <tunables/global>
+
+# this profile is mainly intended to prevent easy exploitation of
+# issues in ghostscript. This is mainly intended as a hardening
+# measure and doesn't alleviate the need for regular updates.
+# Currently this profile is in complain mode since it caused regressions
+# for tumbleweed users
+profile ghostscript /usr/bin/{dvipdf,eps2eps,gs,gsbj,gsdj,gsdj500,gslj,gslp,gsnd,ps2ascii,ps2epsi,ps2pdf,ps2pdf12,ps2pdf13,ps2pdf14,ps2pdfwr,ps2ps,ps2ps2} flags=(complain) {
+  #include <abstractions/base>
+  #include <abstractions/consoles>
+  #include <abstractions/nameservice>
+  #include <abstractions/X>
+
+  # needed to read gc/write pdfs/eps/.. everywhere
+  /** wr,
+  /usr/bin/{dvipdf,eps2eps,gs,gsbj,gsdj,gsdj500,gslj,gslp,gsnd,ps2ascii,ps2epsi,ps2pdf,ps2pdf12,ps2pdf13,ps2pdf14,ps2pdfwr,ps2ps,ps2ps2} mrix,
+  /usr/bin/dvips mrix,
+  /usr/lib64/ghostscript/** m,
+  /usr/lib64/libgs.so.* m,
+  /usr/lib64/libijs-* m,
+
+  /usr/bin/hpijs Cx,
+  profile /usr/bin/hpijs flags=(complain) {
+    #include <abstractions/base>
+
+    network inet dgram,
+
+    /etc/cups/cupsd.conf r,
+    /etc/hp/hplip.conf r,
+    /usr/bin/hpijs mr,
+    /usr/share/ghostscript/** r,
+    /usr/share/hplip/** r,
+    /usr/share/snmp/mibs/ r,
+    /usr/share/snmp/mibs/*.txt r,
+    owner /var/spool/cups/tmp/gs_?????? rw,
+  }
+
+  /usr/bin/basename Cx,
+  profile /usr/bin/basename {
+    #include <abstractions/base>
+
+    /usr/bin/basename mr,
+  }
+
+  /usr/bin/dirname Cx,
+  profile /usr/bin/dirname {
+    #include <abstractions/base>
+    /usr/bin/dirname mr,
+  }
+
+  # for gsbj
+  /usr/bin/date mrix,
+  # for ps2epsi
+  /usr/bin/{gawk,cat,ls,sed,which} mrix,
+  /usr/bin/{mktemp,rm} Cx -> tempdir,
+  profile tempdir {
+    #include <abstractions/base>
+    /usr/bin/{mktemp,rm} mr,
+    owner /tmp/ps2epsi.* rw,
+  }
+}

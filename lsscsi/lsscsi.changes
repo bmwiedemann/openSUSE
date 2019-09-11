@@ -1,0 +1,152 @@
+-------------------------------------------------------------------
+Thu Aug  2 12:42:31 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0.30:
+  * add support for NVMe devices and controllers
+    - to build without: ./configure --disable-nvme-supp
+    - deselect at runtime: lsscsi --no-nvme
+    - deselect SCSI devices at runtime: lsscsi N
+  * add --brief for tuple + device_name(s) only
+  * add --pdt (-D) for device type in hex
+  * extend --size (-s) so when given three times
+    the size as a logical block count is output
+  * add --sz-lbs (-S) that is equivalent to '-sss'
+    when used twice adds comma then logical block size
+  * '-w' now decodes 128 bit WWN without truncation
+  * /dev/disk/by-id/wwn- is not guaranteed to be
+    persistent (or stable); instead use
+    /dev/disk/by-id/scsi-
+  * '-t' on a FC host was not printing the comma
+    separator resulting in garbled output, fix
+- Small spec file modernisation with spec-cleaner
+- Restore removed parts of changelog
+
+-------------------------------------------------------------------
+Mon Jul 10 09:47:21 CEST 2017 - hare@suse.de
+
+- Lookup WWN using /dev/disk/by-id/scsi-* (bsc#1008935)
+- fixup display of 'lsscsi -t' (bsc#1047884)
+
+-------------------------------------------------------------------
+Wed May 25 11:39:32 CEST 2016 - ro@suse.de
+
+- Update to new upstream release 0.29 (bsc#977572)
+  - '-u' now decodes locally assigned UUIDs (spc5r08)
+  - as last try use T10 Vendor ID for lu name
+  - if no lu name found, print 'none'
+  - change '-uuu' to output the full lu name followed
+    by the normal fields (which were skipped before)
+  - add 'U' option, same action as '-uuu'
+  - '-UU' prefixes lu names with 'eui.', 'naa.', etc
+  - if '-s' given twice, lu size is base 2 related
+  - if very long [h:c:t:l] then append space
+  - print_enclosure_device() for FCP may be useless,
+    comment out while checking ...
+  - with '-t' print 0x0000000000000000 for non-SAS
+    device in SAS domain
+  - autogen.sh: upgrade to 20091223 version
+  - automake: upgrade to 1.15 (ubuntu 16.04)
+  * Delete lsscsi-0.27.tar.xz
+  * Add lsscsi-0.29.tar.xz
+- Update to new upstream release 0.28
+  - fix handling of scsi_level 0 (no compliance)
+  - add SRP transport identifier
+  - add --unit option for LU identifier (>= lk 3.15)
+  - add (S)ATA transport identifier (>= lk 3.15)
+  - make USB transport ids more consistent
+  - fix FC transport id missing comma
+  - add pdt strings for security manager and zbc
+  - upgrade automake to version 1.14.1
+- Remove patches merged with upstream
+  * Delete lsscsi-fixup-fc-transport-id.patch
+  * Delete lsscsi-usb.diff
+  * Delete lsscsi-fix-classic-output
+
+--------------------------------------------------------------------
+Tue Feb 24 21:24:01 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.28
+  * fix handling of scsi_level 0 (no compliance)
+  * add SRP transport identifier
+  * add --unit option for LU identifier (>= lk 3.15)
+  * add (S)ATA transport identifier (>= lk 3.15)
+  * make USB transport ids more consistent
+  * fix FC transport id missing comma
+  * add pdt strings for security manager and zbc
+  * upgrade automake to version 1.14.1
+- Do not install empty NEWS
+
+-------------------------------------------------------------------
+Wed Jan 22 15:37:49 CET 2014 - hare@suse.de
+
+- Port patches from SP3 (bnc#831301)
+- Fixup printing of FC transport IDs
+
+-------------------------------------------------------------------
+Thu Jun 13 14:06:53 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 0.24
+* FC transport syntax changes (colon to slash)
+- Update to new upstream release 0.25
+* add sas_port and fc_remote_ports transport information
+* print enclosure_device entry
+* add a "--size" option to show size of disks
+* add a "--protmode" option to show protection information mode
+- Update to new upstream release 0.26
+* add a "fcoe" transport indicator
+* add a "--wwn" option and datamine /dev/disk/by-id/wwn*
+- Update to new upstream release 0.27
+* Accept large (64-bit) LUNs
+* add a "--lunhex" option and recognition of LSSCSI_LUNHEX_OPT
+  environment variable for displaying LUNs in hex
+- Normalized build/install procedure;
+  remove redundant %clean section
+
+-------------------------------------------------------------------
+Tue Apr 16 11:34:56 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Mon Feb 22 16:13:35 CET 2010 - hare@suse.de
+
+- Fix classic output (bnc#576138)
+
+-------------------------------------------------------------------
+Mon Dec  7 15:57:51 CET 2009 - jdelvare@suse.de
+
+- Update to lsscsi-0.23:
+  * Show protection information with '--protection' option, ATA,
+    SATA and USB transport information.
+  * Stop scanning /proc/mounts; assume /sys unless overridden by
+    '--sysfsroot=PATH' option.
+- This update fixes bnc#556180.
+
+-------------------------------------------------------------------
+Thu Nov 19 13:28:53 CET 2009 - garloff@suse.de
+
+- lsscsi-usb.diff: Make print format with -t for usb: compatible
+  with other transport values.
+
+-------------------------------------------------------------------
+Fri Oct 31 10:25:27 CET 2008 - hare@suse.de
+
+- Update sysfs patch to match latest sysfs changes (bnc#434823)
+
+-------------------------------------------------------------------
+Tue Aug 12 17:43:18 CEST 2008 - garloff@suse.de
+
+- Update to lsscsi-0.21:
+  SysFS scanning changes imposed by kernel 2.6.25/26.
+
+-------------------------------------------------------------------
+Fri May 23 10:05:31 CEST 2008 - hare@suse.de
+
+- using 'Provides' to clean update dependency.
+
+-------------------------------------------------------------------
+Thu Apr 24 13:40:00 CEST 2008 - hare@suse.de
+
+- Split off from original scsi package.
+

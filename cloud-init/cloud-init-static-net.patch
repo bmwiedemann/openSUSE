@@ -1,0 +1,12 @@
+--- cloudinit/net/sysconfig.py.orig
++++ cloudinit/net/sysconfig.py
+@@ -314,7 +314,8 @@ class Renderer(renderer.Renderer):
+                 # ==> the following should not be set to 'static'
+                 # but should remain 'none'
+                 # if iface_cfg['BOOTPROTO'] == 'none':
+-                #    iface_cfg['BOOTPROTO'] = 'static'
++                # For SUSE this is different set to "static"
++                iface_cfg['BOOTPROTO'] = 'static'
+                 if subnet_is_ipv6(subnet):
+                     mtu_key = 'IPV6_MTU'
+                     iface_cfg['IPV6INIT'] = True

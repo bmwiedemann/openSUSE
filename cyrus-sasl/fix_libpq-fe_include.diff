@@ -1,0 +1,11 @@
+--- cyrus-sasl-2.1.27.orig/plugins/sql.c	2016-12-10 16:45:55.000000000 +0100
++++ cyrus-sasl-2.1.27/plugins/sql.c	2018-11-17 14:04:33.821540573 +0100
+@@ -188,7 +188,7 @@
+ #endif /* HAVE_MYSQL */
+ 
+ #ifdef HAVE_PGSQL
+-#include <libpq-fe.h>
++#include <pgsql/libpq-fe.h>
+ 
+ static void *_pgsql_open(char *host, char *port, int usessl,
+ 			 const char *user, const char *password,

@@ -1,0 +1,44 @@
+--- wpa_supplicant-2.4.orig/src/utils/os_unix.c
++++ wpa_supplicant-2.4/src/utils/os_unix.c
+@@ -6,11 +6,15 @@
+  * See README for more details.
+  */
+ 
++#ifndef _GNU_SOURCE
++#define _GNU_SOURCE
++#endif
+ #include "includes.h"
+ 
+ #include <time.h>
+ #include <sys/wait.h>
+-
++#include <sys/syscall.h>
++#include <unistd.h>
+ #ifdef ANDROID
+ #include <sys/capability.h>
+ #include <sys/prctl.h>
+@@ -223,6 +227,10 @@ void os_daemonize_terminate(const char *
+ 
+ int os_get_random(unsigned char *buf, size_t len)
+ {
++#ifdef SYS_getrandom
++    int gr = TEMP_FAILURE_RETRY(syscall(SYS_getrandom, buf, len, 0));
++    return (gr != -1 && gr == len) ? 0 : -1;
++#else
+ 	FILE *f;
+ 	size_t rc;
+ 
+@@ -232,10 +240,13 @@ int os_get_random(unsigned char *buf, si
+ 		return -1;
+ 	}
+ 
++    setbuf(f, NULL);
++
+ 	rc = fread(buf, 1, len, f);
+ 	fclose(f);
+ 
+ 	return rc != len ? -1 : 0;
++#endif
+ }
+ 
+ 

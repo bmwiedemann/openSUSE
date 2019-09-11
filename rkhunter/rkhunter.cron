@@ -1,0 +1,77 @@
+#!/bin/sh
+#
+# cronscript for rkhunter
+# Author: Lars Vogdt
+# This script is GPL v.2 and free to use. 
+# See LICENSE file for use of this software.
+#
+# $Id$
+#
+PATH=/bin:/usr/bin:/usr/lib/rkhunter/scripts
+RKHUNTER=/usr/bin/rkhunter
+DISTCONFIG="/etc/sysconfig/rkhunter"
+##################################################
+# Default/Fallback values
+# Don't change them here! Use $DISKCONFIG instead
+##################################################
+START_RKHUNTER="yes"
+CRON_DB_UPDATE="no"
+NICE="0"
+LOGFILE="/var/log/rkhunter.log"
+REPORT_EMAIL="root"
+OPTIONS="--no-mail-on-warning --cronjob --report-warnings-only --append-log --pkgmgr RPM"
+##################################################
+
+if [ ! -x $RKHUNTER ]; then
+    echo "$RKHUNTER not found or not executable" >&2
+    exit 1
+fi
+
+# source our config
+if [ -f $DISTCONFIG ]; then
+    . $DISTCONFIG
+else
+    echo "$DISTCONFIG not found - using defaults" >&2
+fi
+
+# use fqdn in summary, to make it easier
+# to distinguish between different hosts 
+if [ -f /etc/HOSTNAME ]; then
+    NAME=$(cat /etc/HOSTNAME)
+    SUMMARY="Subject: [rkhunter] Warnings for $NAME"
+else
+    SUMMARY="Subject: [rkhunter] Warnings"
+fi
+
+
+case "$START_RKHUNTER" in
+  [Yy]*)
+    OUTFILE=`mktemp /var/tmp/rkhunter-cron.XXXXXX` || exit 1
+    # first update the database
+    if [ x"$CRON_DB_UPDATE" = x"yes" ]; then
+        # wget is recommended - so we can't be shure that it exists
+        if [ ! -x /usr/bin/wget ]; then
+            echo "/usr/bin/wget not found or not executable" >&2
+            echo "Database update disabled"
+            break;
+        fi
+        $RKHUNTER --versioncheck 1>/dev/null 2>>$OUTFILE 
+        $RKHUNTER --update 1>/dev/null 2>>$OUTFILE 
+    fi
+
+    nice -n $NICE $RKHUNTER $OPTIONS --createlogfile $LOGFILE >> $OUTFILE
+
+    if [ $(stat -c %s $OUTFILE) -ne 0 ]; then
+        (
+          echo "To: $REPORT_EMAIL"
+	  echo "$SUMMARY"
+          echo ""
+          cat $OUTFILE
+        ) | /usr/sbin/sendmail $REPORT_EMAIL
+    fi
+    rm -f $OUTFILE
+  ;;
+  *)
+    exit 0
+  ;;
+esac

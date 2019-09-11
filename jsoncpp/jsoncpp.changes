@@ -1,0 +1,280 @@
+-------------------------------------------------------------------
+Tue Aug 13 10:37:46 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9.1:
+  * This release contains some minor build fixes.
+- Changes for version 1.9.0:
+  * Build optimizations and updates. Now needs at least Meson
+    0.50.0, bot support for VS 2013 dropped in favor of VS 2017
+  * Lots of bug fixes
+  * Lots of enhancements
+  * Lots of cleanup
+
+-------------------------------------------------------------------
+Sat Dec 23 00:09:57 UTC 2017 - avindra@opensuse.org
+
+- Update to version 1.8.4:
+  * Functional changes
+    - Serialize UTF-8 string with Unicode escapes
+      + Breaks code that relies on not Unicode-escaping encoding
+        strings. A future release may allow skipping all Unicode
+	escape.
+    - Un-deprecate removeMember overloads, return void
+    - Allow Json::Value to be used in a boolean context
+    - Use move ctor in append()
+    - Add value_type to improve integration with boost
+  * Meta-changes
+    - Fix meson.build to allow using jsoncpp as a subproject
+    - Fix some compiler warnings
+    - Update docs
+
+-------------------------------------------------------------------
+Mon Oct  2 10:43:15 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.8.3:
+  * Also, fix writeCommentBeforeValue() iter deref
+
+-------------------------------------------------------------------
+Mon Aug 28 10:32:13 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.8.2:
+  * Some C++ "move" operators.
+  * Fix uninitialized value detected by valgrind.
+  * Other minor improvements.
+  * Moved most READ docs to Wiki.
+
+-------------------------------------------------------------------
+Tue Jul 11 13:09:41 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.8.1:
+  * meson.build
+  * Minor bug fixes and optimizations
+  * Improved docs
+
+-------------------------------------------------------------------
+Mon Jan  2 15:42:49 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.8.0:
+  * Build related changes, minimal required cmake is 3.1
+- Execute tests in check section
+
+-------------------------------------------------------------------
+Fri Oct 14 06:59:15 UTC 2016 - olaf@aepfle.de
+
+- Require cmake 3.0.2 for make_jobs
+
+-------------------------------------------------------------------
+Fri Oct  7 09:12:22 UTC 2016 - nmoudra@suse.com
+
+- Update to vesrion 1.7.7:
+  * At the suggestion of Peter Spiess-Knafl, we will bump the
+    SOVERSION independent of the MAJOR.MINOR.MICRO version,
+    in case we break binary compatibility.
+- Changes for version 1.7.6:
+  * Prevent possible SEGV. (Thanks to @ngg.)
+  * Add RPATH for OSX libs. (Please let us know if this causes
+    a problem.)
+- Changes for version 1.7.5:
+  * Fix locale for decimal points
+    + Plus a fix for Android
+  * int64_t for 64-bit integers
+  * Optionally suppress space after comma
+  * Avoid null for empty stringValue
+  * Fix null ctor/dtor, using a "Meyers Singleton"
+    + Thanks to @marklakata and @BillyDonahue in #488 in #490.
+
+-------------------------------------------------------------------
+Sat Jul 23 07:33:16 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.7.4:
+  * Fix pkg-config
+
+-------------------------------------------------------------------
+Thu Jun 30 08:46:23 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.7.3:
+  * Fix static initialization of null with Myers Singleton.
+  * Fix other minor compiler and installation problems and
+    warnings.
+  * Fix amalgamated header.
+- Drop -doc subpackage
+
+-------------------------------------------------------------------
+Sat Apr  2 09:40:09 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.7.2
+  * Fix a clang warning
+
+-------------------------------------------------------------------
+Wed Mar 23 19:31:20 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.7.1
+  * New precision setting in StreamBuilder
+  * Move-semantics for some ctors
+  * Added details to exception messages
+  * Clarified when exceptions are thrown
+  * Support isinfinite()
+  * Secure memory-wiping allocator (via compilation flag, settable 
+    via cmake) For this, we changed all STL datatypes to macros, 
+    but all unchanged by default.
+  * Lots of minor build-related improvements
+    + Notably, cmake support for ccache
+    + More supported systems
+  * Note: 1.7.0 was recalled b/c it accidentally included 
+    SecureAlloc by default
+
+-------------------------------------------------------------------
+Tue Jul 28 07:34:49 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.6.5
+  * Other changes are just comments.
+
+-------------------------------------------------------------------
+Mon Apr 20 08:34:04 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.6.2
+  * Do not truncate output at embedded zeroes.
+
+-------------------------------------------------------------------
+Sat Apr  4 10:33:42 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.6.1
+  * Fix compilation error for snprintf() for some compilers.
+- Update category for documentation
+
+-------------------------------------------------------------------
+Sun Mar 15 19:40:03 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.6.0
+  * Added Json::Exception, plus derived types:
+    Json::RuntimeError
+    Json::LogicError
+  * Clarified when exceptions are thrown.
+  * If you are trapping std::exception, nothing will change for you.
+  * Fixed deprecation macro. (Thx to @Dani-Hub.)
+  * Fixed compilation error for gcc-4.8. (Thx to @connormanning.)
+  * Fixed CharReader::Factory base. (Thx to Tengiz Sharafiev.)
+
+-------------------------------------------------------------------
+Mon Mar  9 09:05:55 UTC 2015 - mpluskal@suse.com
+
+- Create and install cmake files
+- Define libname to make maintenance easier
+- Use graphviz-gd so that we can generate png files in 
+  documentation
+- Update to 1.5.4
+  * Support embedded 0s in strings (since UTF-8 allows them).
+    + If you use c-string methods, or std::string::c_str(), you 
+      can still have problems.
+    + Note that this support has a price: keys are now limited to 
+      1 billion characters (2^30).
+  * Add feature to allow single-quotes in input JSON (since 
+    JavaScript allows them).
+  * Propagate rarely-used StaticString thru copy-ctor.
+  * Let JSON_ASSERT throw std::logic_error instead of 
+    std::runtime_error.
+  * Skip Python tests by default, and run C++ unit-tests only for 
+    changes.
+  * Ignore cmake-generated files for in-source builds.
+  * Add tests. Fix other tests.
+  * Remove unused code (JSON_VALUE_USE_INTERNAL_MAP).
+  * Add rejectDupKeys feature.
+    + Now part of strictMode.
+  * Fix minor build issues for VisualStudio.
+  * Fix compile error for VS2013, plus warnings.
+  * Add operator[] to Builders.
+  * In Builders, fix ::validate() (which was always returning 
+    true).
+  * Fix UTF-8 zeroes bugs in previous patch-versions.
+
+-------------------------------------------------------------------
+Fri Mar  6 18:24:11 UTC 2015 - mpluskal@suse.com
+
+- Add missing dependency on graphviz
+
+-------------------------------------------------------------------
+Fri Mar  6 18:16:35 UTC 2015 - mpluskal@suse.com
+
+- Correct rpm group
+- Update to 1.5.2
+  * Fixed compile error for VS2013. 
+  * Added operator[] to Builders. (Builders are not yet widely 
+    used, and 0.9.z is very new, so we have not bumped the minor 
+    version number.)
+- Changes for 1.5.1
+  * Plus a minor bug-fix. (For the Builders, ::validate() was 
+    always returning true.)
+
+-------------------------------------------------------------------
+Tue Mar  3 21:44:38 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.5.0
+  * Support embedded 0s in strings (since UTF-8 allows them).
+  * If you use c-string methods, or std::string::c_str(), you can 
+    still have problems.
+  * Note that this support has a price: keys are now limited to 
+    1 billion characters (2^30).
+  * Add feature to allow single-quotes in input JSON (since 
+    JavaScript allows them).
+  * Propagate rarely-used StaticString thru copy-ctor.
+  * Let JSON_ASSERT throw std::logic_error instead of 
+    std::runtime_error.
+  * Fix VisualStudio warning.
+  * Skip Python tests by default, and run C++ unit-tests only 
+    for changes.
+  * Ignore cmake-generated files for in-source builds.
+  * Add tests.
+  * Remove unused code (JSON_VALUE_USE_INTERNAL_MAP).
+
+
+-------------------------------------------------------------------
+Tue Feb 24 14:10:36 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.4.4
+  * The odd allowDroppedNullPlaceholders feature of Readers 
+    (corresponding to dropNullPlaceholders in Writers) can be 
+    helpful when parsing javascript as JSON, when null elements 
+    have been discarded.
+- Build doc package as noarch
+
+-------------------------------------------------------------------
+Tue Feb 17 21:15:01 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.4.2:
+  * minor cleanups
+
+-------------------------------------------------------------------
+Thu Feb  5 20:07:09 UTC 2015 - mpluskal@suse.com
+
+- Patch jsoncpp-1.0.0-lib_suffix.patch is longer necessary
+- Update to version 1.4:
+  * Updated the type system's behavior, in order to better support 
+    backwards compatibility with code that was written before 
+    64-bit integer support was introduced.
+-------------------------------------------------------------------
+Sat Dec 20 17:31:29 UTC 2014 - mpluskal@suse.com
+
+-  Update packace categories
+
+-------------------------------------------------------------------
+Fri Dec 12 13:16:18 UTC 2014 - mpluskal@suse.com
+
+- Enable cmake build
+ + add fix for wrong lib_suffix - jsoncpp-1.0.0-lib_suffix.patch
+- Disable building for i586 - jsonccp fails its unit tests
+- Update to new release - 1.0.0:
+ +  Updated the type system's behavior, in order to better support backwards
+    compatibility with code that was written before 64-bit integer support was
+    introduced.
+ + Compilation
+  -- New CMake based build system. Based in part on contribution from
+    Igor Okulist and Damien Buhl (Patch #14).
+  -- New header json/version.h now contains version number macros
+    (JSONCPP_VERSION_MAJOR, JSONCPP_VERSION_MINOR, JSONCPP_VERSION_PATCH
+    and JSONCPP_VERSION_HEXA).
+
+-------------------------------------------------------------------
+Fri Jul 25 07:43:07 UTC 2014 - mvyskocil@opensuse.org
+
+- Initial packaging of jsoncpp for openSUSE 
+

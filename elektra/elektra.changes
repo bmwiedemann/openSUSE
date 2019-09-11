@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Tue Jun  5 13:16:59 UTC 2018 - wbauer@tmo.at
+
+- Add Qt-GUI-Do-not-use-deprecated-qt_use_modules.patch to fix
+  build with Qt 5.11
+
+-------------------------------------------------------------------
+Mon Jan 15 12:00:00 UTC 2018 - ku.b@gmx.de
+
+- Augeas: Fix internal inconsistency (git#c93b4175 patch-fix-augeas-config.patch)
+
+-------------------------------------------------------------------
+Sat Nov 11 12:00:00 UTC 2017 - ku.b@gmx.de
+
+- update to 0.8.20
+- add fish dependency
+- fix %config file warning
+- add explicite QT5DBus package
+
+-------------------------------------------------------------------
+Thu Jan 12 12:00:00 UTC 2017 - ku.b@gmx.de
+
+- fix module loading
+
+-------------------------------------------------------------------
+Tue Jan 10 02:44:59 UTC 2017 - sflees@suse.de
+
+- Replace 0001-desktop-category.patch with %suse_update_desktop_file
+- Correct desktop file group to be in line with openSUSE
+
+-------------------------------------------------------------------
+Sun Jan  1 11:12:02 UTC 2017 - jengelh@inai.de
+
+- Correct RPM groups to be in line with openSUSE.
+- Remove %if..%endif guards where they are unnecessary.
+
+-------------------------------------------------------------------
+Tue Dec 21 12:00:00 UTC 2016 - ku.b@gmx.de
+
+- improve spec file
+
+-------------------------------------------------------------------
+Tue Oct 25 12:00:00 UTC 2016 - ku.b@gmx.de
+
+- update to 0.8.19
+- enable augeas
+- enable d-bus
+- enable Qt5
+
+-------------------------------------------------------------------
+Thu Sep 07 12:00:00 UTC 2006 - Avi Alkalay <avi@unix.sh> 0.6.4-1
+
+- Version update
+
+-------------------------------------------------------------------
+Fri Jun 02 12:00:00 UTC 2006 - Avi Alkalay <avi@unix.sh> 0.6.2-1
+
+- Initial packaging
+

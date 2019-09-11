@@ -1,0 +1,13 @@
+diff -Nru uamqp-1.1.0.orig/setup.py uamqp-1.1.0/setup.py
+--- uamqp-1.1.0.orig/setup.py	2019-04-01 15:33:53.234699785 +0200
++++ uamqp-1.1.0/setup.py	2019-04-01 15:34:07.338829346 +0200
+@@ -319,9 +319,6 @@
+         "certifi>=2017.4.17",
+         "six>=1.0"
+     ],
+-    extras_require={
+-        ":python_version<'3.4'": ['enum34>=1.0.4']
+-    },
+     cmdclass={
+         'build_ext': build_ext,
+     },

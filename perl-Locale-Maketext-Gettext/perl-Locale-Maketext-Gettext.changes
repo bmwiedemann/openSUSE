@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Fri Nov 18 11:09:22 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:16 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Nov 12 22:23:17 UTC 2010 - jw@novell.com
+
+- needed by publican
+- initial package 1.28
+  * created by cpanspec 1.78.02
+

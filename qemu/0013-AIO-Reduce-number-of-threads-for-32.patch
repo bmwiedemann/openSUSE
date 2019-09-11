@@ -1,0 +1,39 @@
+From: Alexander Graf <agraf@suse.de>
+Date: Wed, 14 Jan 2015 01:32:11 +0100
+Subject: AIO: Reduce number of threads for 32bit hosts
+
+On hosts with limited virtual address space (32bit pointers), we can very
+easily run out of virtual memory with big thread pools.
+
+Instead, we should limit ourselves to small pools to keep memory footprint
+low on those systems.
+
+This patch fixes random VM stalls like
+
+  (process:25114): GLib-ERROR **: gmem.c:103: failed to allocate 1048576 bytes
+
+on 32bit ARM systems for me.
+
+Signed-off-by: Alexander Graf <agraf@suse.de>
+---
+ util/thread-pool.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/util/thread-pool.c b/util/thread-pool.c
+index 610646d131..2e34e9846d 100644
+--- a/util/thread-pool.c
++++ b/util/thread-pool.c
+@@ -308,7 +308,12 @@ static void thread_pool_init_one(ThreadPool *pool, AioContext *ctx)
+     qemu_mutex_init(&pool->lock);
+     qemu_cond_init(&pool->worker_stopped);
+     qemu_sem_init(&pool->sem, 0);
+-    pool->max_threads = 64;
++    if (sizeof(pool) == 4) {
++        /* 32bit systems run out of virtual memory quickly */
++        pool->max_threads = 4;
++    } else {
++        pool->max_threads = 64;
++    }
+     pool->new_thread_bh = aio_bh_new(ctx, spawn_thread_bh_fn, pool);
+ 
+     QLIST_INIT(&pool->head);

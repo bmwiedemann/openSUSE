@@ -1,0 +1,25 @@
+From 211d8416d25524a5011d62fd059fae16245a0dab Mon Sep 17 00:00:00 2001
+From: Michal Srb <msrb@suse.com>
+Date: Fri, 19 Oct 2018 13:57:24 +0200
+Subject: [PATCH] unittests: Don't install TestPlugin.so
+
+---
+ unittests/Passes/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/unittests/Passes/CMakeLists.txt b/unittests/Passes/CMakeLists.txt
+index d90df209d4e..415329e616c 100644
+--- a/unittests/Passes/CMakeLists.txt
++++ b/unittests/Passes/CMakeLists.txt
+@@ -14,7 +14,7 @@ add_llvm_unittest(PluginsTests
+ export_executable_symbols(PluginsTests)
+ 
+ set(LLVM_LINK_COMPONENTS)
+-add_llvm_loadable_module(TestPlugin
++add_llvm_library(TestPlugin MODULE BUILDTREE_ONLY
+   TestPlugin.cpp
+   )
+ 
+-- 
+2.16.4
+

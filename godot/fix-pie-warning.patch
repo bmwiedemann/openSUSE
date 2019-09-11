@@ -1,0 +1,11 @@
+diff -Naur a/platform/x11/detect.py b/platform/x11/detect.py
+--- a/platform/x11/detect.py	2019-03-13 21:52:52.846705514 -0400
++++ b/platform/x11/detect.py	2019-03-13 21:53:14.666706301 -0400
+@@ -164,7 +164,6 @@
+         version = get_compiler_version(env)
+         if version != None and version[0] >= '6':
+             env.Append(CCFLAGS=['-fpie'])
+-            env.Append(LINKFLAGS=['-no-pie'])
+ 
+     ## Dependencies
+ 

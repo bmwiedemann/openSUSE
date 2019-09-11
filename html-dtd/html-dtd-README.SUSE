@@ -1,0 +1,21 @@
+README.SUSE:
+============
+
+Within this package you'll find:
+
+HTML-2.0:
+http://www.w3.org/MarkUp/html-spec/html-spec-19950922.tar.gz
+
+HTML-3.2:
+http://www.w3.org/TR/REC-html32.html
+http://www.w3.org/MarkUp/Wilbur/
+
+HTML-4.0:
+http://www.w3.org/TR/WD-html40/html40.tgz
+
+HTML-4.01:
+http://www.w3.org/TR/html40/html401.tgz
+
+XHTML is shipped as a separate package called xhtml-dtd.
+ISO-HTML was dropped (cf. ftp://ftp.cs.tcd.ie/isohtml).
+

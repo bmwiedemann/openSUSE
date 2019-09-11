@@ -1,0 +1,27 @@
+Upstream: Never
+
+Old Suse spec files have a pseudo release string which uses characters
+newer versions of rpmbuild don't like. Filter them out to make rpmbuild
+happy again. Packages in openSUSE 11.4 and later no longer need this.
+
+---
+ quilt/setup.in |    8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+--- a/quilt/setup.in
++++ b/quilt/setup.in
+@@ -228,6 +228,14 @@ inspect()
+ 	ln -s $QUILT_DIR/scripts/inspect-wrapper $tmpdir/bin/unzip
+ 	ln -s $QUILT_DIR/scripts/inspect-wrapper $tmpdir/bin/7z
+ 
++	# Older versions of Suse packages have a symbolic release number, and
++	# rpmbuild won't like that, so change it to something compliant.
++	if grep -q '^Release:.*[<>]' "$specdir/$specfile"
++	then
++		sed -e '/^Release:/s/[<>]//g' < "$specdir/$specfile" > $tmpdir/"$specfile"
++		specdir=$tmpdir
++	fi
++
+ 	# Redirect file descriptors
+ 	# 5 is used in verbose mode, 4 in non-verbose mode, and 2 for both (real errors)
+ 	if [ -n "$verbose" ]

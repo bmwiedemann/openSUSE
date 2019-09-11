@@ -1,0 +1,21 @@
+diff -up sdcc-3.6.0/device/lib/incl.mk.orig sdcc-3.6.0/device/lib/incl.mk
+--- sdcc-3.6.0/device/lib/incl.mk.orig	2016-04-12 21:54:04.000000000 +0200
++++ sdcc-3.6.0/device/lib/incl.mk	2016-06-18 08:58:31.000000000 +0200
+@@ -112,4 +112,4 @@ COMMON_SDCC = \
+   assert.c \
+   time.c
+ 
+-MODELS = small medium large
++MODELS = small medium large huge
+diff -up sdcc-3.6.0/device/lib/Makefile.in.orig sdcc-3.6.0/device/lib/Makefile.in
+--- sdcc-3.6.0/device/lib/Makefile.in.orig	2016-06-18 08:58:31.000000000 +0200
++++ sdcc-3.6.0/device/lib/Makefile.in	2016-06-18 09:20:52.000000000 +0200
+@@ -186,7 +186,7 @@ TARGETS        += model-s08
+ endif
+ 
+ ifeq ($(OPT_DISABLE_MCS51), 0)
+-TARGETS        += models small-mcs51-stack-auto large-mcs51-stack-auto
++TARGETS        += models model-mcs51-stack-auto
+ endif
+ 
+ ifeq ($(OPT_DISABLE_PIC14), 0)

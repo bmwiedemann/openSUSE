@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Mon Dec 15 14:06:26 UTC 2014 - nemysis@gmx.ch
+
+- Add BuildRequires for hicolor-icon-theme
+
+-------------------------------------------------------------------
+Sun Dec 14 21:40:28 UTC 2014 - nemysis@gmx.ch
+
+- Use %{_datadir}/appdata/ instead of %{_datadir}/appdata/%{name}.xml
+
+-------------------------------------------------------------------
+Sun Dec 14 21:01:41 UTC 2014 - nemysis@gmx.ch
+
+- Revert Use BuildRequires pkgconfig() instead of devel packages
+
+-------------------------------------------------------------------
+Sun Dec 14 20:47:24 UTC 2014 - nemysis@gmx.ch
+
+- Update to 2.10, announce message:
+  Added desktop file.
+
+- Change Summary
+- Change license GPL-2.0+ to BSD-3-Clause
+- Change Source0 Web URL
+- Remove obsolete patch bs-fixes.patch, changed by me and upstream
+- Use check for openSUSE %if 0%{?suse_version}
+- Remove BuildRequires for gcc, glibc-devel, make, pkgconfig
+- Use BuildRequires pkgconfig() instead of devel packages
+- Use default %make_install
+
+-------------------------------------------------------------------
+Sat Jul  2 16:55:08 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+
+-------------------------------------------------------------------
+Tue Oct 12 10:02:29 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (2.7)
+

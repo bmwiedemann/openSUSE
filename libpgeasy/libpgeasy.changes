@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Fri Nov 20 09:53:40 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Split devel package and library
+- Remove old provides
+- Do not ship .la file
+
+-------------------------------------------------------------------
+Thu Dec 27 04:50:54 CET 2007 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-post* errors 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:40 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov  2 21:38:04 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Thu Nov 18 15:47:46 CET 2004 - ro@suse.de
+
+- use kerberos-devel-packages 
+
+-------------------------------------------------------------------
+Thu Nov 11 12:53:06 CET 2004 - ro@suse.de
+
+- fixed file list 
+
+-------------------------------------------------------------------
+Thu Aug 19 15:32:14 CEST 2004 - max@suse.de
+
+- New version: 3.0.4.
+- Renamed from pgeasy to libpgeasy.
+
+-------------------------------------------------------------------
+Mon Jan 27 15:52:25 CET 2003 - max@suse.de
+
+- Quote $RPM_OPT_FLAGS.
+
+- Added split-provides.
+
+-------------------------------------------------------------------
+Mon Jan 27 13:34:45 CET 2003 - max@suse.de
+
+- Split off from the postgresql-libs package, because they are now
+  separate projects.

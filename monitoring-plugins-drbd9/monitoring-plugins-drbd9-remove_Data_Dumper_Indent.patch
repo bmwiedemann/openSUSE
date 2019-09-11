@@ -1,0 +1,13 @@
+Index: nagios_check_drbd9-0.1/check_drbd9.pl
+===================================================================
+--- nagios_check_drbd9-0.1.orig/check_drbd9.pl
++++ nagios_check_drbd9-0.1/check_drbd9.pl
+@@ -42,8 +42,6 @@ use warnings;
+ use strict;
+ use Getopt::Std;
+ 
+-$Data::Dumper::Indent = 1;
+-
+ $|++;
+ 
+ our $PROGRAM_NAME    = 'check_drbd9.pl';

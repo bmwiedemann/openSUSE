@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sun Jan 18 18:33:15 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.9.14
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed May  7 12:21:21 UTC 2014 - coolo@suse.com
+
+- remove prelink buildrequire - completely unneeded and unnecessarily
+  increases core ring 
+
+-------------------------------------------------------------------
+Mon Apr 14 09:16:33 UTC 2014 - meissner@suse.com
+
+- new package, generate certifiable HMACs for FIPS usage.
+  uses the Mozilla NSS library for cryptography.

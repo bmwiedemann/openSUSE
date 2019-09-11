@@ -1,0 +1,572 @@
+Fix handling of collating elements in fnmatch (bug 17396, bug 16976)
+
+This fixes the same bug in fnmatch that was fixed by commit 7e2f0d2d77 for
+regexp matching.  As a side effect it also removes the use of an unbound
+VLA.
+
+	[BZ #16976]
+	[BZ #17396]
+	* posix/fnmatch_loop.c (internal_fnmatch, internal_fnwmatch): When
+	looking up collating elements match against (wide) character
+	sequence instead of name.  Correct alignment adjustment.
+	* posix/fnmatch.c: Don't include "../locale/elem-hash.h".
+	(WMEMCMP) [HANDLE_MULTIBYTE]: Define.
+	* posix/Makefile (tests): Add tst-fnmatch4 and tst-fnmatch5.
+	(LOCALES): Add cs_CZ.ISO-8859-2.
+	* posix/tst-fnmatch4.c: New file.
+	* posix/tst-fnmatch5.c: New file.
+	* include/wchar.h (__wmemcmp): Declare.
+	* wcsmbs/wmemcmp.c: Define __wmemcmp and add wmemcmp as weak alias.
+	* sysdeps/i386/i686/multiarch/wmemcmp.c: Likewise.
+	* sysdeps/x86_64/multiarch/wmemcmp.c: Likewise.
+	* sysdeps/s390/wmemcmp.c: Likewise.
+
+Index: glibc-2.28/include/wchar.h
+===================================================================
+--- glibc-2.28.orig/include/wchar.h
++++ glibc-2.28/include/wchar.h
+@@ -143,6 +143,8 @@ libc_hidden_proto (wmemchr)
+ libc_hidden_proto (__wmemchr)
+ libc_hidden_proto (wmemset)
+ libc_hidden_proto (__wmemset)
++extern int __wmemcmp (const wchar_t *__s1, const wchar_t *__s2, size_t __n)
++     __THROW __attribute_pure__;
+ 
+ /* Now define the internal interfaces.  */
+ extern int __wcscasecmp (const wchar_t *__s1, const wchar_t *__s2)
+Index: glibc-2.28/posix/Makefile
+===================================================================
+--- glibc-2.28.orig/posix/Makefile
++++ glibc-2.28/posix/Makefile
+@@ -92,6 +92,7 @@ tests		:= test-errno tstgetopt testfnm r
+ 		   bug-getopt5 tst-getopt_long1 bug-regex34 bug-regex35 \
+ 		   tst-pathconf tst-rxspencer-no-utf8 \
+ 		   tst-fnmatch3 bug-regex36 \
++		   tst-fnmatch4 tst-fnmatch5 \
+ 		   tst-posix_spawn-fd tst-posix_spawn-setsid \
+ 		   tst-posix_fadvise tst-posix_fadvise64 \
+ 		   tst-sysconf-empty-chroot tst-glob_symlinks tst-fexecve \
+@@ -166,7 +167,8 @@ $(objpfx)wordexp-tst.out: wordexp-tst.sh
+ endif
+ 
+ LOCALES := cs_CZ.UTF-8 da_DK.ISO-8859-1 de_DE.ISO-8859-1 de_DE.UTF-8 \
+-	   en_US.UTF-8 es_US.ISO-8859-1 es_US.UTF-8 ja_JP.EUC-JP tr_TR.UTF-8
++	   en_US.UTF-8 es_US.ISO-8859-1 es_US.UTF-8 ja_JP.EUC-JP tr_TR.UTF-8 \
++	   cs_CZ.ISO-8859-2
+ include ../gen-locales.mk
+ 
+ $(objpfx)bug-regex1.out: $(gen-locales)
+Index: glibc-2.28/posix/fnmatch.c
+===================================================================
+--- glibc-2.28.orig/posix/fnmatch.c
++++ glibc-2.28/posix/fnmatch.c
+@@ -53,7 +53,6 @@
+    we support a correct implementation only in glibc.  */
+ #ifdef _LIBC
+ # include "../locale/localeinfo.h"
+-# include "../locale/elem-hash.h"
+ # include "../locale/coll-lookup.h"
+ # include <shlib-compat.h>
+ 
+@@ -237,6 +236,11 @@ __wcschrnul (const wchar_t *s, wint_t c)
+ #  define MEMPCPY(D, S, N) __wmempcpy (D, S, N)
+ #  define MEMCHR(S, C, N) __wmemchr (S, C, N)
+ #  define STRCOLL(S1, S2) wcscoll (S1, S2)
++#  ifdef _LIBC
++#   define WMEMCMP(S1, S2, N) __wmemcmp (S1, S2, N)
++#  else
++#   define WMEMCMP(S1, S2, N) wmemcmp (S1, S2, N)
++#  endif
+ #  define WIDE_CHAR_VERSION 1
+ /* Change the name the header defines so it doesn't conflict with
+    the <locale/weight.h> version included above.  */
+Index: glibc-2.28/posix/fnmatch_loop.c
+===================================================================
+--- glibc-2.28.orig/posix/fnmatch_loop.c
++++ glibc-2.28/posix/fnmatch_loop.c
+@@ -494,26 +494,12 @@ FCT (const CHAR *pattern, const CHAR *st
+ 			  {
+ 			    int32_t table_size;
+ 			    const int32_t *symb_table;
+-# if WIDE_CHAR_VERSION
+-			    char str[c1];
+-			    unsigned int strcnt;
+-# else
+-#  define str (startp + 1)
+-# endif
+ 			    const unsigned char *extra;
+ 			    int32_t idx;
+ 			    int32_t elem;
+-			    int32_t second;
+-			    int32_t hash;
+-
+ # if WIDE_CHAR_VERSION
+-			    /* We have to convert the name to a single-byte
+-			       string.  This is possible since the names
+-			       consist of ASCII characters and the internal
+-			       representation is UCS4.  */
+-			    for (strcnt = 0; strcnt < c1; ++strcnt)
+-			      str[strcnt] = startp[1 + strcnt];
+-#endif
++			    CHAR *wextra;
++# endif
+ 
+ 			    table_size =
+ 			      _NL_CURRENT_WORD (LC_COLLATE,
+@@ -525,71 +511,54 @@ FCT (const CHAR *pattern, const CHAR *st
+ 			      _NL_CURRENT (LC_COLLATE,
+ 					   _NL_COLLATE_SYMB_EXTRAMB);
+ 
+-			    /* Locate the character in the hashing table.  */
+-			    hash = elem_hash (str, c1);
+-
+-			    idx = 0;
+-			    elem = hash % table_size;
+-			    if (symb_table[2 * elem] != 0)
+-			      {
+-				second = hash % (table_size - 2) + 1;
+-
+-				do
+-				  {
+-				    /* First compare the hashing value.  */
+-				    if (symb_table[2 * elem] == hash
+-					&& (c1
+-					    == extra[symb_table[2 * elem + 1]])
+-					&& memcmp (str,
+-						   &extra[symb_table[2 * elem
+-								     + 1]
+-							  + 1], c1) == 0)
+-				      {
+-					/* Yep, this is the entry.  */
+-					idx = symb_table[2 * elem + 1];
+-					idx += 1 + extra[idx];
+-					break;
+-				      }
+-
+-				    /* Next entry.  */
+-				    elem += second;
+-				  }
+-				while (symb_table[2 * elem] != 0);
+-			      }
++			    for (elem = 0; elem < table_size; elem++)
++			      if (symb_table[2 * elem] != 0)
++				{
++				  idx = symb_table[2 * elem + 1];
++				  /* Skip the name of collating element.  */
++				  idx += 1 + extra[idx];
++# if WIDE_CHAR_VERSION
++				  /* Skip the byte sequence of the
++				     collating element.  */
++				  idx += 1 + extra[idx];
++				  /* Adjust for the alignment.  */
++				  idx = (idx + 3) & ~3;
++
++				  wextra = (CHAR *) &extra[idx + 4];
++
++				  if (/* Compare the length of the sequence.  */
++				      c1 == wextra[0]
++				      /* Compare the wide char sequence.  */
++				      && WMEMCMP (startp + 1, &wextra[1],
++						  c1) == 0)
++				    /* Yep, this is the entry.  */
++				    break;
++# else
++				  if (/* Compare the length of the sequence.  */
++				      c1 == extra[idx]
++				      /* Compare the byte sequence.  */
++				      && memcmp (startp + 1,
++						 &extra[idx + 1], c1) == 0)
++				    /* Yep, this is the entry.  */
++				    break;
++# endif
++				}
+ 
+-			    if (symb_table[2 * elem] != 0)
++			    if (elem < table_size)
+ 			      {
+ 				/* Compare the byte sequence but only if
+ 				   this is not part of a range.  */
+-# if WIDE_CHAR_VERSION
+-				int32_t *wextra;
+-
+-				idx += 1 + extra[idx];
+-				/* Adjust for the alignment.  */
+-				idx = (idx + 3) & ~3;
++				if (! is_range
+ 
+-				wextra = (int32_t *) &extra[idx + 4];
+-# endif
+-
+-				if (! is_range)
+-				  {
+ # if WIDE_CHAR_VERSION
+-				    for (c1 = 0;
+-					 (int32_t) c1 < wextra[idx];
+-					 ++c1)
+-				      if (n[c1] != wextra[1 + c1])
+-					break;
+-
+-				    if ((int32_t) c1 == wextra[idx])
+-				      goto matched;
++				    && WMEMCMP (n, &wextra[1], c1) == 0
+ # else
+-				    for (c1 = 0; c1 < extra[idx]; ++c1)
+-				      if (n[c1] != extra[1 + c1])
+-					break;
+-
+-				    if (c1 == extra[idx])
+-				      goto matched;
++				    && memcmp (n, &extra[idx + 1], c1) == 0
+ # endif
++				    )
++				  {
++				    n += c1 - 1;
++				    goto matched;
+ 				  }
+ 
+ 				/* Get the collation sequence value.  */
+@@ -597,9 +566,9 @@ FCT (const CHAR *pattern, const CHAR *st
+ # if WIDE_CHAR_VERSION
+ 				cold = wextra[1 + wextra[idx]];
+ # else
+-				/* Adjust for the alignment.  */
+ 				idx += 1 + extra[idx];
+-				idx = (idx + 3) & ~4;
++				/* Adjust for the alignment.  */
++				idx = (idx + 3) & ~3;
+ 				cold = *((int32_t *) &extra[idx]);
+ # endif
+ 
+@@ -609,10 +578,10 @@ FCT (const CHAR *pattern, const CHAR *st
+ 			      {
+ 				/* No valid character.  Match it as a
+ 				   single byte.  */
+-				if (!is_range && *n == str[0])
++				if (!is_range && *n == startp[1])
+ 				  goto matched;
+ 
+-				cold = str[0];
++				cold = startp[1];
+ 				c = *p++;
+ 			      }
+ 			    else
+@@ -620,7 +589,6 @@ FCT (const CHAR *pattern, const CHAR *st
+ 			  }
+ 		      }
+ 		    else
+-# undef str
+ #endif
+ 		      {
+ 			c = FOLD (c);
+@@ -712,25 +680,11 @@ FCT (const CHAR *pattern, const CHAR *st
+ 			      {
+ 				int32_t table_size;
+ 				const int32_t *symb_table;
+-# if WIDE_CHAR_VERSION
+-				char str[c1];
+-				unsigned int strcnt;
+-# else
+-#  define str (startp + 1)
+-# endif
+ 				const unsigned char *extra;
+ 				int32_t idx;
+ 				int32_t elem;
+-				int32_t second;
+-				int32_t hash;
+-
+ # if WIDE_CHAR_VERSION
+-				/* We have to convert the name to a single-byte
+-				   string.  This is possible since the names
+-				   consist of ASCII characters and the internal
+-				   representation is UCS4.  */
+-				for (strcnt = 0; strcnt < c1; ++strcnt)
+-				  str[strcnt] = startp[1 + strcnt];
++				CHAR *wextra;
+ # endif
+ 
+ 				table_size =
+@@ -743,71 +697,63 @@ FCT (const CHAR *pattern, const CHAR *st
+ 				  _NL_CURRENT (LC_COLLATE,
+ 					       _NL_COLLATE_SYMB_EXTRAMB);
+ 
+-				/* Locate the character in the hashing
+-				   table.  */
+-				hash = elem_hash (str, c1);
+-
+-				idx = 0;
+-				elem = hash % table_size;
+-				if (symb_table[2 * elem] != 0)
+-				  {
+-				    second = hash % (table_size - 2) + 1;
+-
+-				    do
+-				      {
+-					/* First compare the hashing value.  */
+-					if (symb_table[2 * elem] == hash
+-					    && (c1
+-						== extra[symb_table[2 * elem + 1]])
+-					    && memcmp (str,
+-						       &extra[symb_table[2 * elem + 1]
+-							      + 1], c1) == 0)
+-					  {
+-					    /* Yep, this is the entry.  */
+-					    idx = symb_table[2 * elem + 1];
+-					    idx += 1 + extra[idx];
+-					    break;
+-					  }
+-
+-					/* Next entry.  */
+-					elem += second;
+-				      }
+-				    while (symb_table[2 * elem] != 0);
+-				  }
+-
+-				if (symb_table[2 * elem] != 0)
+-				  {
+-				    /* Compare the byte sequence but only if
+-				       this is not part of a range.  */
++				for (elem = 0; elem < table_size; elem++)
++				  if (symb_table[2 * elem] != 0)
++				    {
++				      idx = symb_table[2 * elem + 1];
++				      /* Skip the name of collating
++					 element.  */
++				      idx += 1 + extra[idx];
+ # if WIDE_CHAR_VERSION
+-				    int32_t *wextra;
+-
+-				    idx += 1 + extra[idx];
+-				    /* Adjust for the alignment.  */
+-				    idx = (idx + 3) & ~4;
+-
+-				    wextra = (int32_t *) &extra[idx + 4];
++				      /* Skip the byte sequence of the
++					 collating element.  */
++				      idx += 1 + extra[idx];
++				      /* Adjust for the alignment.  */
++				      idx = (idx + 3) & ~3;
++
++				      wextra = (CHAR *) &extra[idx + 4];
++
++				      if (/* Compare the length of the
++					     sequence.  */
++					  c1 == wextra[0]
++					  /* Compare the wide char sequence.  */
++					  && WMEMCMP (startp + 1, &wextra[1],
++						      c1) == 0)
++					/* Yep, this is the entry.  */
++					break;
++# else
++				      if (/* Compare the length of the
++					     sequence.  */
++					  c1 == extra[idx]
++					  /* Compare the byte sequence.  */
++					  && memcmp (startp + 1,
++						     &extra[idx + 1], c1) == 0)
++					/* Yep, this is the entry.  */
++					break;
+ # endif
++				    }
++
++				if (elem < table_size)
++				  {
+ 				    /* Get the collation sequence value.  */
+ 				    is_seqval = 1;
+ # if WIDE_CHAR_VERSION
+ 				    cend = wextra[1 + wextra[idx]];
+ # else
+-				    /* Adjust for the alignment.  */
+ 				    idx += 1 + extra[idx];
+-				    idx = (idx + 3) & ~4;
++				    /* Adjust for the alignment.  */
++				    idx = (idx + 3) & ~3;
+ 				    cend = *((int32_t *) &extra[idx]);
+ # endif
+ 				  }
+-				else if (symb_table[2 * elem] != 0 && c1 == 1)
++				else if (c1 == 1)
+ 				  {
+-				    cend = str[0];
++				    cend = startp[1];
+ 				    c = *p++;
+ 				  }
+ 				else
+ 				  return FNM_NOMATCH;
+ 			      }
+-# undef str
+ 			  }
+ 			else
+ 			  {
+Index: glibc-2.28/posix/tst-fnmatch4.c
+===================================================================
+--- /dev/null
++++ glibc-2.28/posix/tst-fnmatch4.c
+@@ -0,0 +1,41 @@
++/* Test for fnmatch handling of collating elements
++   Copyright (C) 2019 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <http://www.gnu.org/licenses/>.  */
++
++#include <stdio.h>
++#include <locale.h>
++#include <fnmatch.h>
++#include <support/check.h>
++
++static void
++do_test_locale (const char *locale)
++{
++  TEST_VERIFY_EXIT (setlocale (LC_ALL, locale) != NULL);
++
++  TEST_VERIFY (fnmatch ("[[.ch.]]", "ch", 0) == 0);
++}
++
++static int
++do_test (void)
++{
++  do_test_locale ("cs_CZ.ISO-8859-2");
++  do_test_locale ("cs_CZ.UTF-8");
++
++  return 0;
++}
++
++#include <support/test-driver.c>
+Index: glibc-2.28/posix/tst-fnmatch5.c
+===================================================================
+--- /dev/null
++++ glibc-2.28/posix/tst-fnmatch5.c
+@@ -0,0 +1,46 @@
++/* Test for fnmatch handling of collating elements
++   Copyright (C) 2019 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <http://www.gnu.org/licenses/>.  */
++
++#include <fnmatch.h>
++#include <locale.h>
++#include <stdio.h>
++#include <string.h>
++#include <support/check.h>
++
++#define LENGTH 20000000
++
++static char pattern[LENGTH + 7];
++
++static int
++do_test (void)
++{
++  TEST_VERIFY_EXIT (setlocale (LC_ALL, "en_US.UTF-8") != NULL);
++
++  pattern[0] = '[';
++  pattern[1] = '[';
++  pattern[2] = '.';
++  memset (pattern + 3, 'a', LENGTH);
++  pattern[LENGTH + 3] = '.';
++  pattern[LENGTH + 4] = ']';
++  pattern[LENGTH + 5] = ']';
++  TEST_VERIFY (fnmatch (pattern, "a", 0) != 0);
++
++  return 0;
++}
++
++#include <support/test-driver.c>
+Index: glibc-2.28/sysdeps/i386/i686/multiarch/wmemcmp.c
+===================================================================
+--- glibc-2.28.orig/sysdeps/i386/i686/multiarch/wmemcmp.c
++++ glibc-2.28/sysdeps/i386/i686/multiarch/wmemcmp.c
+@@ -26,5 +26,6 @@
+ # define SYMBOL_NAME wmemcmp
+ # include "ifunc-ssse3-sse4_2.h"
+ 
+-libc_ifunc_redirected (__redirect_wmemcmp, wmemcmp, IFUNC_SELECTOR ());
++libc_ifunc_redirected (__redirect_wmemcmp, __wmemcmp, IFUNC_SELECTOR ());
++weak_alias (__wmemcmp, wmemcmp)
+ #endif
+Index: glibc-2.28/sysdeps/s390/wmemcmp.c
+===================================================================
+--- glibc-2.28.orig/sysdeps/s390/wmemcmp.c
++++ glibc-2.28/sysdeps/s390/wmemcmp.c
+@@ -23,16 +23,17 @@
+ # include <ifunc-resolve.h>
+ 
+ # if HAVE_WMEMCMP_C
+-extern __typeof (wmemcmp) WMEMCMP_C attribute_hidden;
++extern __typeof (__wmemcmp) WMEMCMP_C attribute_hidden;
+ # endif
+ 
+ # if HAVE_WMEMCMP_Z13
+-extern __typeof (wmemcmp) WMEMCMP_Z13 attribute_hidden;
++extern __typeof (__wmemcmp) WMEMCMP_Z13 attribute_hidden;
+ # endif
+ 
+-s390_libc_ifunc_expr (wmemcmp, wmemcmp,
++s390_libc_ifunc_expr (__wmemcmp, __wmemcmp,
+ 		      (HAVE_WMEMCMP_Z13 && (hwcap & HWCAP_S390_VX))
+ 		      ? WMEMCMP_Z13
+ 		      : WMEMCMP_DEFAULT
+ 		      )
++weak_alias (__wmemcmp, wmemcmp)
+ #endif
+Index: glibc-2.28/sysdeps/x86_64/multiarch/wmemcmp.c
+===================================================================
+--- glibc-2.28.orig/sysdeps/x86_64/multiarch/wmemcmp.c
++++ glibc-2.28/sysdeps/x86_64/multiarch/wmemcmp.c
+@@ -26,5 +26,6 @@
+ # define SYMBOL_NAME wmemcmp
+ # include "ifunc-memcmp.h"
+ 
+-libc_ifunc_redirected (__redirect_wmemcmp, wmemcmp, IFUNC_SELECTOR ());
++libc_ifunc_redirected (__redirect_wmemcmp, __wmemcmp, IFUNC_SELECTOR ());
++weak_alias (__wmemcmp, wmemcmp)
+ #endif
+Index: glibc-2.28/wcsmbs/wmemcmp.c
+===================================================================
+--- glibc-2.28.orig/wcsmbs/wmemcmp.c
++++ glibc-2.28/wcsmbs/wmemcmp.c
+@@ -18,12 +18,12 @@
+ 
+ #include <wchar.h>
+ 
+-#ifndef WMEMCMP
+-# define WMEMCMP wmemcmp
++#ifdef WMEMCMP
++# define __wmemcmp WMEMCMP
+ #endif
+ 
+ int
+-WMEMCMP (const wchar_t *s1, const wchar_t *s2, size_t n)
++__wmemcmp (const wchar_t *s1, const wchar_t *s2, size_t n)
+ {
+   wchar_t c1;
+   wchar_t c2;
+@@ -81,3 +81,6 @@ WMEMCMP (const wchar_t *s1, const wchar_
+ 
+   return 0;
+ }
++#ifndef WMEMCMP
++weak_alias (__wmemcmp, wmemcmp)
++#endif

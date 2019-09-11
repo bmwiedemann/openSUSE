@@ -1,0 +1,55 @@
+#
+# Service Location Protocol on SUSE
+#
+
+The Service Location Protcol (SLP) is part of the zerconf concept to provide
+service informations inside a local network.
+
+#
+# The client side
+# 
+
+Your client can search for avaible services using the slp library or via 
+using the slptool binary (for scripting).
+
+WARNING: Have in mind that you can usually NOT trust the results.
+         It is up to the service client to validate the server.
+         Do NOT authentificate to an untrusted server or it might be 
+         possible it gets your password.
+
+#
+# The server side
+#
+
+Every system which provides a service which should get announced with SLP
+in the network needs also to run the slpd. There are several possible ways
+to announce the service:
+
+ 1) The authors of any service daemon should directly use libslp to
+    register the service on the server. Documentation for this can be 
+    found in /usr/share/doc/packages/openslp/html/ProgrammersGuide/
+     
+ 2) Packages without direct SLP support should provide a registration
+    file in the /etc/slp.reg.d/ directory. See below for a template.
+    You can use the pseudo attributes watch-port-tcp and watch-port-udp
+    to make slpd check if the service is listening on the specified port.
+    This way a not-running service won't get announced by slpd.
+
+ 3) Administrators can add service lines in the /etc/slp.reg file. 
+    
+ 4) The slptool can be used to register a service in any script.
+
+
+Example of a registration file.
+This could be used to announce the sane daemon running on port 6566
+------------------------------------------------------------------------
+## Register a saned service on this system
+## en means english language
+## 65535 disables the timeout, so the service registration does
+## not need refreshs
+service:scanner.sane://$HOSTNAME:6566,en,65535
+# only announce the service if a daemon is listening on tcp port 6566
+watch-port-tcp=6566
+description=SANE scanner daemon
+------------------------------------------------------------------------
+

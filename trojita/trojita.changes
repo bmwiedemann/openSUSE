@@ -1,0 +1,125 @@
+-------------------------------------------------------------------
+Tue Jul  2 08:49:49 UTC 2019 - wbauer@tmo.at
+
+- Add tests-Fix-build-with-Qt-5.13.patch to fix build with Qt 5.13
+
+-------------------------------------------------------------------
+Tue Mar 27 09:28:15 UTC 2018 - wbauer@tmo.at
+
+- Add Skip-QtWebKit-tests.patch to fix build on Tumbleweed and Leap
+  15, the tests fail currently with the latest QtWebKit 5.212
+  alpha2 but trojita works fine
+
+-------------------------------------------------------------------
+Fri Jul 15 18:12:41 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Disable ragel to fix Tumbleweed compilation
+- Enable qtkeychain-qt5-devel and gpgmepp5-devel BuildRequires
+
+-------------------------------------------------------------------
+Tue Jun 21 07:21:14 UTC 2016 - tchvatal@suse.com
+
+- Version update to 0.7:
+  * various bugfixes
+  * Support for encryption
+
+-------------------------------------------------------------------
+Wed Jun  1 15:14:35 UTC 2016 - tchvatal@suse.com
+
+- Version update to latest release 0.6, merged all patches:
+  * fix-missing-includes.patch
+  * fix-qt5_5-test-regression.patch
+  * libqt5_6.patch
+
+-------------------------------------------------------------------
+Wed Jun  1 15:11:36 UTC 2016 - tchvatal@suse.com
+
+- Add patch to build on qt 5.6:
+  * libqt5_6.patch
+
+-------------------------------------------------------------------
+Thu Dec  3 23:42:43 UTC 2015 - rpm@fthiessen.de
+
+- Added fix-missing-includes.patch for fixing missing includes
+  when using qt5.
+- Added fix-qt5_5-test-regression.patch to circumvent a regression
+  in qt5 5.5
+
+-------------------------------------------------------------------
+Mon Feb 23 18:11:24 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 0.5
+  * Trojitá can now be invoked with a mailto: URL (RFC 6068) on the
+    command line for composing a new email.
+  * Messages can be forwarded as attachments (support for inline
+    forwarding is planned).
+  * Passwords can be remembered in a secure, encrypted storage
+    via QtKeychain.
+  * E-mails with attachments are decorated with a paperclip
+    icon in the overview.
+  * Better rendering of e-mails with extraordinary MIME structure.
+  * By default, only one instance is kept running, and can be
+    controlled via D-Bus.
+  * Trojitá now provides better error reporting, and can reconnect
+    on network failures automatically.
+  * The network state (Offline, Expensive Connection or Free Access)
+    will be remembered across sessions.
+  * When replying, it is now possible to retroactively change the
+    reply type (Private Reply, Reply to All but Me, Reply to All,
+    Reply to Mailing List, Handpicked).
+  * When searching in a message, Trojitá will scroll to
+    the current match.
+  * Attachment preview for quick access to the enclosed files.
+  * The mark-message-read-after-X-seconds setting is
+    now configurable.
+  * The IMAP refresh interval is now configurable.
+  * Speed and memory consumption improvements.
+  * Miscellaneous IMAP improvements.
+  * Various fixes and improvements.
+- Drop 0001-Explicitly-mark-libs-as-STATIC-to-not-allow-cmake-ru.patch,
+  merged upstream
+- Bump Qt BuildRequires to 5.2
+
+-------------------------------------------------------------------
+Fri Nov 28 11:10:00 UTC 2014 - tchvatal@suse.com
+
+- Add libqt5-sql-sqlite to BuildRequires too
+
+-------------------------------------------------------------------
+Mon Apr 28 18:29:35 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Swap libQt5Sql5-sqlite to libqt5-sql-sqlite, as the latter is
+  available also in 13.1 release
+
+-------------------------------------------------------------------
+Thu Mar 20 21:39:18 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.4.1
+  * Fix for CVE-2014-2567
+
+-------------------------------------------------------------------
+Fri Mar 14 14:56:49 UTC 2014 - tchvatal@suse.com
+
+- Require sqlite backend for qtsql as we use just that one.
+
+-------------------------------------------------------------------
+Wed Mar  5 16:11:48 UTC 2014 - tchvatal@suse.com
+
+- Sort out the shared libs with patch rather than overriding rules.
+  * 0001-Explicitly-mark-libs-as-STATIC-to-not-allow-cmake-ru.patch 
+
+-------------------------------------------------------------------
+Wed Mar  5 16:03:05 UTC 2014 - tchvatal@suse.com
+
+- Enforce static libs as the switch in macro is wrong for us.
+  Build system states them to be possible shared but in reality
+  they are not.
+- Fix license to BSD-3-Clause afaik it is the correct one here.
+
+-------------------------------------------------------------------
+Wed Mar  5 14:53:01 UTC 2014 - tchvatal@suse.com
+
+- Initial tweaked commit from home:jkt-gentoo:trojita so we only
+  have the opensuse version here for better readability.
+- Version 0.4
+

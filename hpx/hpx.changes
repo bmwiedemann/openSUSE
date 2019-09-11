@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Wed Mar 20 02:53:06 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- Version bump to 1.2.1
+  * Compilation on various platforms
+  * A critical bug in the future implementation
+  * Various CMake bugs
+- Drop 3551.patch, 3557.patch, reproducible.patch and 3591.patch - merged upstream
+
+-------------------------------------------------------------------
+Tue Mar 19 23:28:05 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- Fix build with boost-1.69
+
+-------------------------------------------------------------------
+Mon Dec 31 17:43:33 UTC 2018 - Manu Maier <mmanu84@outlook.de>
+
+- fix build on armv6
+
+-------------------------------------------------------------------
+Wed Dec 19 14:28:03 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update reproducible.patch to match what was merged upstream
+
+-------------------------------------------------------------------
+Sun Dec 16 14:27:44 UTC 2018 - Christoph Junghans <junghans@votca.org>
+
+- Added 3591.patch to fix build on %arm
+
+-------------------------------------------------------------------
+Fri Dec  7 10:17:19 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints with latest requirements
+
+-------------------------------------------------------------------
+Tue Dec  4 13:49:26 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to not consider the build machine CPU
+  capabilities for the build result (boo#1100677)
+
+-------------------------------------------------------------------
+Sun Nov 25 13:46:10 UTC 2018 - Christoph Junghans <junghans@votca.org>
+
+- Put static libraries into hpx-static package
+
+-------------------------------------------------------------------
+Mon Nov 19 18:40:41 UTC 2018 - Christoph Junghans <junghans@votca.org>
+
+- Added 3557.patch to fix build on ppc64
+
+-------------------------------------------------------------------
+Sun Nov 18 22:01:08 UTC 2018 - Christoph Junghans <junghans@votca.org>
+
+- Re-enable build on ppc64le
+
+-------------------------------------------------------------------
+Wed Nov 14 16:27:52 UTC 2018 - Christoph Junghans <junghans@votca.org>
+
+- Version bump to 1.2.0
+  Full log here: https://stellar-group.github.io/hpx/docs/sphinx/tags/1.2.0/html/releases/whats_new_1_2_0.html
+- added upstream 3551.patch to fix build on i586
+
+-------------------------------------------------------------------
+Mon Nov 12 08:01:42 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove future goals from description.
+
+-------------------------------------------------------------------
+Tue Oct 30 01:34:25 UTC 2018 - Christoph Junghans <junghans@votca.org>
+
+- Version bump to 1.1.0
+- Dropped hpx_0.9.8-pr1137.patch, merged upstream
+
+-------------------------------------------------------------------
+Tue May 27 16:31:54 UTC 2014 - junghans@votca.org
+
+- initial commit
+

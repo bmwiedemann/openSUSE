@@ -1,0 +1,13 @@
+Index: libgcrypt-1.8.2/cipher/rsa.c
+===================================================================
+--- libgcrypt-1.8.2.orig/cipher/rsa.c	2017-11-23 19:16:58.000000000 +0100
++++ libgcrypt-1.8.2/cipher/rsa.c	2019-03-26 11:14:33.737388126 +0100
+@@ -389,7 +389,7 @@ generate_fips (RSA_secret_key *sk, unsig
+ 
+   if (nbits < 1024 || (nbits & 0x1FF))
+     return GPG_ERR_INV_VALUE;
+-  if (_gcry_enforced_fips_mode() && nbits != 2048 && nbits != 3072)
++  if (fips_mode() && nbits != 2048 && nbits != 3072)
+       return GPG_ERR_INV_VALUE;
+ 
+   /* The random quality depends on the transient_key flag.  */

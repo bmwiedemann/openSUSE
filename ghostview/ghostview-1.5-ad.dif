@@ -1,0 +1,78 @@
+--- Ghostview.ad
++++ Ghostview.ad	2011-11-08 12:01:45.894067000 +0000
+@@ -60,25 +60,41 @@
+ *MenuButton.baseTranslations:	#replace \n\
+     <EnterWindow>:	highlight() \n\
+     <LeaveWindow>:	reset() \n\
+-    !               <BtnDown>:		reset() PopupMenu() \n\
+-    !          Shift<BtnDown>:		reset() PopupMenu() \n\
+-    !     Lock      <BtnDown>:		reset() PopupMenu() \n\
+-    !     Lock Shift<BtnDown>:		reset() PopupMenu() \n\
+-    !Ctrl           <BtnDown>:		reset() PopupMenu() \n\
+-    !Ctrl      Shift<BtnDown>:		reset() PopupMenu() \n\
+-    !Ctrl Lock      <BtnDown>:		reset() PopupMenu() \n\
+-    !Ctrl Lock Shift<BtnDown>:		reset() PopupMenu()
++    !                         <BtnDown>:	reset() PopupMenu() \n\
++    !			 Shift<BtnDown>:	reset() PopupMenu() \n\
++    !               Lock      <BtnDown>:	reset() PopupMenu() \n\
++    !               Lock Shift<BtnDown>:	reset() PopupMenu() \n\
++    !     @Num_Lock           <BtnDown>:	reset() PopupMenu() \n\
++    !     @Num_Lock      Shift<BtnDown>:	reset() PopupMenu() \n\
++    !     @Num_Lock Lock      <BtnDown>:	reset() PopupMenu() \n\
++    !     @Num_Lock Lock Shift<BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl                     <BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl                Shift<BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl           Lock      <BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl           Lock Shift<BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl @Num_Lock           <BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl @Num_Lock      Shift<BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl @Num_Lock Lock      <BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl @Num_Lock Lock Shift<BtnDown>:	reset() PopupMenu()
+ *MenuButton.translations:	#replace \n\
+     <EnterWindow>:	highlight() \n\
+     <LeaveWindow>:	reset() \n\
+-    !               <BtnDown>:		reset() PopupMenu() \n\
+-    !          Shift<BtnDown>:		reset() PopupMenu() \n\
+-    !     Lock      <BtnDown>:		reset() PopupMenu() \n\
+-    !     Lock Shift<BtnDown>:		reset() PopupMenu() \n\
+-    !Ctrl           <BtnDown>:		reset() PopupMenu() \n\
+-    !Ctrl      Shift<BtnDown>:		reset() PopupMenu() \n\
+-    !Ctrl Lock      <BtnDown>:		reset() PopupMenu() \n\
+-    !Ctrl Lock Shift<BtnDown>:		reset() PopupMenu()
++    !                         <BtnDown>:	reset() PopupMenu() \n\
++    !                    Shift<BtnDown>:	reset() PopupMenu() \n\
++    !               Lock      <BtnDown>:	reset() PopupMenu() \n\
++    !               Lock Shift<BtnDown>:	reset() PopupMenu() \n\
++    !     @Num_Lock           <BtnDown>:	reset() PopupMenu() \n\
++    !     @Num_Lock      Shift<BtnDown>:	reset() PopupMenu() \n\
++    !     @Num_Lock Lock      <BtnDown>:	reset() PopupMenu() \n\
++    !     @Num_Lock Lock Shift<BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl                     <BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl                Shift<BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl           Lock      <BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl           Lock Shift<BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl @Num_Lock           <BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl @Num_Lock      Shift<BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl @Num_Lock Lock      <BtnDown>:	reset() PopupMenu() \n\
++    !Ctrl @Num_Lock Lock Shift<BtnDown>:	reset() PopupMenu()
+ *SimpleMenu.baseTranslations:	#replace \n\
+     <EnterWindow>:	highlight() \n\
+     <LeaveWindow>:	unhighlight() \n\
+@@ -194,7 +210,7 @@ Ghostview.translations:		#replace \n\
+     <Key>L:	GhostviewScrollRight() \n\
+     Shift<Key>Up:	GhostviewForce() GhostviewSetOrientation(portrait) \n\
+     Shift<Key>Right:	GhostviewForce() GhostviewSetOrientation(landscape) \n\
+-    Shift<Key>Down: GhostviewForce() GhostviewSetOrientation(upside-down) \n\
++    Shift<Key>Down:	GhostviewForce() GhostviewSetOrientation(upside-down) \n\
+     Shift<Key>Left:	GhostviewForce() GhostviewSetOrientation(seascape) \n\
+     <Key>Up:	GhostviewDefault() GhostviewSetOrientation(portrait) \n\
+     <Key>Right:	GhostviewDefault() GhostviewSetOrientation(landscape) \n\
+@@ -237,7 +253,7 @@ Ghostview.translations:		#replace \n\
+     <Key>L:	GhostviewScrollRight() \n\
+     Shift<Key>Up:	GhostviewForce() GhostviewSetOrientation(portrait) \n\
+     Shift<Key>Right:	GhostviewForce() GhostviewSetOrientation(landscape) \n\
+-    Shift<Key>Down: GhostviewForce() GhostviewSetOrientation(upside-down) \n\
++    Shift<Key>Down:	GhostviewForce() GhostviewSetOrientation(upside-down) \n\
+     Shift<Key>Left:	GhostviewForce() GhostviewSetOrientation(seascape) \n\
+     <Key>Up:	GhostviewDefault() GhostviewSetOrientation(portrait) \n\
+     <Key>Right:	GhostviewDefault() GhostviewSetOrientation(landscape) \n\

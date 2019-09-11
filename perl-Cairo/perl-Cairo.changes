@@ -1,0 +1,294 @@
+-------------------------------------------------------------------
+Thu Jun  2 08:37:41 UTC 2016 - dimstar@opensuse.org
+
+- Ignore make check failures for now (equal to other distros).
+  Make tests fails since the upgrade to cairo 1.15.2, but now
+  blocks a proper rebuild with perl 5.24. The failure is reported
+  at fdo#96311.
+
+-------------------------------------------------------------------
+Fri Oct  2 08:51:54 UTC 2015 - coolo@suse.com
+
+- updated to 1.106
+   see /usr/share/doc/packages/perl-Cairo/ChangeLog.pre-git
+
+-------------------------------------------------------------------
+Fri Aug 28 11:53:07 UTC 2015 - bwiedemann@suse.com
+
+- BuildRequire pkgconfig(cairo)
+
+-------------------------------------------------------------------
+Fri Aug 28 09:35:21 UTC 2015 - coolo@suse.com
+
+- updated to 1.105
+   see /usr/share/doc/packages/perl-Cairo/ChangeLog.pre-git
+
+-------------------------------------------------------------------
+Fri Oct  4 09:13:37 UTC 2013 - coolo@suse.com
+
+- updated to 1.104
+ * Avoid misusing the macro PL_na, thus preventing potential issues when Cairo
+   is used in conjunction with certain XS modules, among them XML::Parser and
+   String::Approx.
+
+-------------------------------------------------------------------
+Mon Jun  3 11:51:36 UTC 2013 - coolo@suse.com
+
+- updated to 1.103
+  * Hush a few compiler warnings
+  * Updated copyright date
+  
+  Overview of changes in Cairo 1.102
+  ==================================
+  
+  * Fix building with perl <= 5.14
+  * Prevent crashes on exit with Cairo::Path on perl 5.6.
+  
+  Overview of changes in Cairo 1.101
+  ==================================
+  
+  * Properly specify our dependencies.
+  * Fix some erroneous POD links.
+  * Distribute a missing test file.
+  
+  Overview of changes in Cairo 1.100
+  ==================================
+  
+  Since 1.08x (the previous stable series)
+  ----------------------------------------
+  * Make "use Cairo x.yyy" work.  This required renaming the old
+    Cairo::VERSION, a wrapper for CAIRO_VERSION, to Cairo::LIB_VERSION --
+    but we kept the old way of calling it working.  Cairo::version,
+    Cairo::version_string and Cairo::VERSION_ENCODE got the same treatment
+    for consistency.
+  * Auto-upgrade strings to utf8.  Note that this means that calling
+    utf8::encode() on strings before passing them into Cairo will now
+    yield doubly-encoded and thus broken strings.  Also, having
+    utf8-encoded literals in your code without an accompanying "use utf8"
+    line will also lead to double encoding.
+  * Expand and improve the README and META.yml files.
+  * Many compilation and test suite fixes.
+  
+  Since 1.091
+  -----------
+  * Do not assume that sizeof(void*) == sizeof(long)
+  * Calculate a string length more efficiently
+  * added updated README text for RT#74870
+  * Created %meta_merge which follows v2 of meta-spec
+  
+  Overview of changes in Cairo 1.091
+  ==================================
+  
+  * Auto-upgrade strings to utf8.  Note that this means that calling
+    utf8::encode() on strings before passing them into Cairo will now
+    yield doubly-encoded and thus broken strings.  Also, having
+    utf8-encoded literals in your code without an accompanying "use utf8"
+    line will also lead to double encoding.
+  * Fix compiling and testing against older versions of cairo.
+  * Make the test suite more robust.
+  * Removing perl-Cairo.diff
+
+-------------------------------------------------------------------
+Wed Jun  6 18:31:31 CEST 2012 - mls@suse.de
+
+- cairo-1.12 lazily addes the move-to element when closing a path
+
+-------------------------------------------------------------------
+Mon Jan 23 02:47:56 UTC 2012 - vcizek@suse.com
+
+- update to 1.090
+  * Make "use Cairo x.yyy" work; fixes RT#72783.  This required renaming the old
+    Cairo::VERSION, a wrapper for CAIRO_VERSION, to Cairo::LIB_VERSION -- but we
+    kept the old way of calling it working.  Cairo::version,
+    Cairo::version_string and Cairo::VERSION_ENCODE got the same treatment for
+      consistency.
+  * Updated FSF LGPL notice address (RT#72664)
+
+-------------------------------------------------------------------
+Mon Jan  2 13:03:57 UTC 2012 - vcizek@suse.cz
+
+- update to 1.082
+  - Update the symbol export list for linking on win32
+    (https://bugzilla.gnome.org/show_bug.cgi?id=665265)
+
+-------------------------------------------------------------------
+Mon Oct 17 01:37:41 UTC 2011 - vcizek@suse.com
+
+- update to 1.081
+  * Wrap new 1.8 and 1.10 API.
+  * Make Cairo::Pattern->set_extend, get_extend, set_filter and get_filter
+    available to all pattern types, not just surface patterns.
+  * Make it possible to modify and create paths.
+
+-------------------------------------------------------------------
+Tue May  3 08:45:09 UTC 2011 - vcizek@novell.com
+
+- update to 1.062
+  * Cairo::FtFontFace: Keep the FT_Face alive long enough to avoid
+    segfaults
+  * Add two new example programs
+  * Fix test failures (patch no longer necessary -> dropped)
+
+-------------------------------------------------------------------
+Wed Dec  1 13:30:50 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Nov 24 16:24:31 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fix deps
+
+-------------------------------------------------------------------
+Wed Oct 13 10:18:28 UTC 2010 - coolo@novell.com
+
+- take patch from launchpad to disable failing tests with current
+  cairo (no upstream fix available yet)
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Mar 30 12:39:16 CEST 2009 - anicka@suse.cz
+
+- update to 1.061
+ * Cairo.xs (cairo_object_from_sv, cairo_struct_from_sv): Hush two
+   compiler warnings.
+ * test and documentation fixes
+
+-------------------------------------------------------------------
+Thu Jun 19 16:41:25 CEST 2008 - anicka@suse.cz
+
+- update to 1.060
+ * Cairo.pm: Add documentation for new API.
+ * Makefile.PL: Trap exceptions thrown by EU::PkgConfig->find.
+   When one occurs, exit with status 0 to indicate to CPAN testers
+   that their system isn't supported.
+ * t/Cairo.t: Wrap cairo_has_current_point.
+ * t/Cairo.t: Wrap cairo_path_extents.
+ * t/CairoSurface.t: Wrap cairo_format_stride_for_width.  Adapt to
+   API changes: cairo_surface_copy_page and cairo_surface_show_page
+   don't return cairo_status_t anymore.
+ * CairoPath.xs: Fix the tied interface for paths on perl 5.6,
+   whose magic support was slightly broken.  Also cleanup the tie
+   code a bit.
+ * t/CairoSurface.t: Wrap cairo_surface_copy_page and
+   cairo_surface_show_page.
+ * t/CairoSurface.t: Wrap cairo_ps_surface_restrict_to_level,
+   cairo_ps_get_levels, and cairo_ps_level_to_string.
+ * t/CairoSurface.t: Wrap cairo_ps_surface_set_eps and
+   cairo_ps_surface_get_eps.
+
+-------------------------------------------------------------------
+Mon Jan 14 10:51:13 CET 2008 - anicka@suse.cz
+
+- update to 1.045
+ * CairoSurface.xs: Use perl's New*/Safefree facilities instead of
+   calloc/malloc/free as the latter aren't safe on some platforms,
+   notably Win32.
+ * t/CairoSurface.t: Mark the isa_ok test for PDF surfaces returned
+   by create_similar() as TODO, since the returned surface's type 
+   is not reliable at this point.
+
+-------------------------------------------------------------------
+Wed Nov 21 11:00:19 CET 2007 - anicka@suse.cz
+
+- update to 1.044
+  * Cairo.pm: Add entries for the various surfaces to the API
+    listing.
+  * Makefile.PL: Update the list of exported symbols.
+  * t/CairoPattern.t: When Test::Number::Delta is not available,
+    skip the relevant tests instead of faking passes.
+  * t/CairoSurface.t: Don't use the hash-ref variant of 
+    the constant pragma. It's not supported by the version 
+    that ships with perl 5.6.
+- enable fixed tests again
+
+-------------------------------------------------------------------
+Thu Nov  1 15:46:06 CET 2007 - anicka@suse.cz
+
+- update to 1.043
+  * Makefile.PL: Use BEGIN { require 5.006; } instead of require
+    v5.6.0.  Make missing Test::Number::Delta non-fatal; add it 
+    to the build_requires META.yml field.
+  * t/CairoPattern.t: Cope with Test::Number::Delta being
+    unavailable.
+  * Makefile.PL: Make EU::MM output configure_requires and 
+    no_index information when generating META.yml.
+  * t/CairoSurface.t (PNG surface tests): Since exceptions are
+    actually propagated now, throw the same kind of exception 
+    we test for.
+  * Makefile.PL: Require perl >= 5.6.0 for some features we use,
+    like `our´.
+  * cairo-perl.h: Add and use the portability header ppport.h from
+    Devel::PPPort to hopefully fix compilation on older perls.
+  * Makefile.PL: Make missing prerequisites fatal.
+  * cairo-perl.typemap: Add const char * for backwards
+    compatibility.
+  * doctypes: Add missing type names.
+
+-------------------------------------------------------------------
+Mon Jun 11 16:23:34 CEST 2007 - anicka@suse.cz
+
+- update to 1.041
+  * test fixes
+
+-------------------------------------------------------------------
+Tue May 15 16:12:57 CEST 2007 - anicka@suse.cz
+
+- update to 1.040
+  * t/CairoSurface.t: For now, skip tests that make cairo crash.
+  * Cairo.pm: Document new API.  Mark functions that were added
+    after cairo 1.0.
+  * Cairo.xs: If CAIRO_PERL_DEBUG is true, call
+    cairo_debug_reset_static_data at exit.
+  * t/CairoSurface.t: Re-add the binding for cairo_surface_finish.
+	
+-------------------------------------------------------------------
+Wed Mar 28 18:59:56 CEST 2007 - anicka@suse.cz
+
+- temporarily disable t/CairoSurface.t because cairo segfaults
+  when the test is run (reported as #258451) 
+
+-------------------------------------------------------------------
+Mon Feb 26 12:41:20 CET 2007 - anicka@suse.cz
+
+- update to 1.023
+- remove last patch (fixed in upstream) 
+
+-------------------------------------------------------------------
+Fri Jan  5 11:35:18 CET 2007 - anicka@suse.cz
+
+- fix endianness problem in t/CairoSurface.t (patch from upstream) 
+
+-------------------------------------------------------------------
+Tue Jan  2 13:10:47 CET 2007 - anicka@suse.cz
+
+- update to 1.022
+  * CairoSurface.xs, t/CairoSurface.t: Make
+    Cairo::ImageSurface::get_data usable by specifying the buffer
+    length.
+
+-------------------------------------------------------------------
+Tue Dec 12 13:35:03 CET 2006 - anicka@suse.cz
+
+- update to 1.021
+* MakeHelper.pm, CairoSurface.t: When comparing enum values, look
+  at length+1, not just length, bytes to discern string pairs like
+  'color' and 'color-alpha'. 
+
+-------------------------------------------------------------------
+Mon Sep 25 15:02:07 CEST 2006 - anicka@suse.cz
+
+- update to 1.01
+  * test fixes 
+  * xs/CairoSurface.xs: Cosmetical changes.
+
+-------------------------------------------------------------------
+Tue Sep 12 17:59:37 CEST 2006 - anicka@suse.cz
+
+- package created 
+

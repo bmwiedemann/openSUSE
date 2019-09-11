@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Sun Nov 25 11:13:50 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- remove duplicated 1.2.7 entry
+
+-------------------------------------------------------------------
+Sun Jun  3 23:25:38 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.2.8
+ see installed CHANGELOG.md
+
+  ## 1.2.8
+  
+  - restore support for Ruby 2.0+
+
+-------------------------------------------------------------------
+Tue May 22 14:18:31 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.2.7
+ see installed CHANGELOG.md
+
+  ## 1.2.7
+  
+  - fix bug in previous version for Ruby 2.3
+  
+  ## 1.2.6
+  
+  - duplicate variables passed in initializers to avoid changing them
+
+-------------------------------------------------------------------
+Tue Feb 27 05:40:41 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.2.5
+ see installed CHANGELOG.md
+
+  ## 1.2.5
+  
+  - make handshake server resilient to non-string Rack env keys
+
+-------------------------------------------------------------------
+Wed Feb  1 05:50:47 UTC 2017 - coolo@suse.com
+
+- updated to version 1.2.4
+ see installed CHANGELOG.md
+
+  ## 1.2.4
+  
+  - add subprotocol handling for both server and client
+
+-------------------------------------------------------------------
+Wed Apr  6 06:36:15 UTC 2016 - coolo@suse.com
+
+- updated to version 1.2.3
+ see installed CHANGELOG.md
+
+  ## 1.2.3
+  
+  - fix for draft 76 when challenge might sometimes fail
+  - multiple small optimizations
+
+-------------------------------------------------------------------
+Thu Apr 23 08:09:36 UTC 2015 - coolo@suse.com
+
+- updated to version 1.2.2
+ see installed CHANGELOG.md
+
+  ## 1.2.2
+  
+  - fix handshake for draft 11+ sending Sec-WebSocket-Origin instead of Origin
+
+-------------------------------------------------------------------
+Tue Feb 10 18:42:07 UTC 2015 - coolo@suse.com
+
+- updated to version 1.2.1
+
+-------------------------------------------------------------------
+Mon Oct 13 18:53:04 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Sun May 18 09:04:45 UTC 2014 - coolo@suse.com
+
+- updated to version 1.1.4
+  - verify valid close codes according to spec
+  - return error on invalid UTF-8 payload
+  - expose error message
+  - fix close code support
+
+-------------------------------------------------------------------
+Fri Nov 22 08:40:31 UTC 2013 - coolo@suse.com
+
+- updated to version 1.1.2
+ - fix support for rack input that is blocking (i.e. Passenger)
+
+-------------------------------------------------------------------
+Sat Jul 20 06:59:50 UTC 2013 - coolo@suse.com
+
+- updated to version 1.1.1
+ - fix handling close code for frames version 5+
+
+-------------------------------------------------------------------
+Tue Jun 18 05:31:16 UTC 2013 - coolo@suse.com
+
+- updated to version 1.1.0
+ - allow raising ruby errors instead of setting `error` flag
+ - allow access to handshake headers
+ - add from_rack method
+ - add from_hash method
+ - stop extending handlers - it should improve performance for opening connection
+
+-------------------------------------------------------------------
+Tue Jan 29 06:48:17 UTC 2013 - coolo@suse.com
+
+- updated to version 1.0.7
+ - fix requiring url under Ruby 1.9.1
+ - support for Ruby 2.0.0
+
+-------------------------------------------------------------------
+Fri Dec 21 17:19:10 UTC 2012 - coolo@suse.com
+
+- updated to version 1.0.6
+ - support text frame types instead of only symbol ones
+ - support for sending masked frames
+ 
+-------------------------------------------------------------------
+Thu Dec 20 06:16:28 UTC 2012 - coolo@suse.com
+
+- updated to version 1.0.5
+ - add support for close codes
+
+-------------------------------------------------------------------
+Mon Nov 26 11:01:13 UTC 2012 - coolo@suse.com
+
+- initial package (version 1.0.4)
+

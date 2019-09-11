@@ -1,0 +1,624 @@
+-------------------------------------------------------------------
+Fri Apr 11 04:43:23 UTC 2019 - cesar@caih.org
+
+- Update to release 1.8.17
+
+-------------------------------------------------------------------
+Fri Mar 15 00:00:07 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add explicit BuildRequires: libboost_system-devel, required since boost 1.69
+
+-------------------------------------------------------------------
+Mon Jun 18 11:11:18 UTC 2018 - davejplater@gmail.com
+
+- Fix gcc8 build with -Wno-error=class-memaccess,
+  -Wno-error=sizeof-pointer-memaccess and -Wno-error=uninitialized
+  flags.
+- Disable python bindings sub package until it builds with python3
+  and remove its build  requirements.
+
+-------------------------------------------------------------------
+Fri Apr 13 07:42:24 UTC 2018 - davejplater@gmail.com
+
+- Update to release 1.8.10 and
+  rebase oiio-add-libdl-for-plugin.patch.
+- Upstream changes since 1.8.6 :
+  *oiiotool frame sequence wildcard improvements: fix handling of
+   negative frame numbers and ranges, also the `--frames` command
+   line option is not enough to trigger a loop over those frame
+   numbers, even if no other arguments appear to have wildcard
+   structure. #1894
+  *TIFF bug fix: read_tile() and read_tiles() input of
+   un-premultiplied tiles botched the "shape" of the tile data
+   array. #1907
+  *fmath.h avx-512 improvements. #1893
+  *testsuite is not Python 2/3 agnostic.
+  *Properly find newer openjpeg 2.3. #1871
+  *Bug fix in IBA::copy where uninitialized dst image botched its
+   ROI. #1876
+  *RAW: Important bug fix when dealing with rotated (and vertical)
+   images, which were not being re-oriented properly and could get
+   strangely scrambled. #1854
+  *OpenEXR: gracefully detect and reject files with subsampled
+   channels, which is a rarely-to-never-used OpenEXR feature that
+   we don't support properly. #1849
+  *Field3d: Prevent crashes when open fails. #1848
+  *RAW: Add "raw:HighlightMode" configuration hint to control
+   libraw's handling of highlight mode processing. #1851
+  *simd.h: Minor fixes especially for avx512. #1846
+  *iv: Drop GLEW and obsolete GL stuff from iv in favor of
+   QOpenGLFunctions, and fix broken pixelview text rendering. #1834
+  *Add explicit DL library dependency to libOpenImageIO.so itself
+   instead of only to the binaries and test utilities. #1860
+  *Build fixes for Hurd OS. #1850
+  *All string->numeric parsing and numeric->string formatting is
+   now locale-independent and uses '.' as decimal marker. #1796
+  *oiiotool outputs are now written to temporary files, then
+   atomically moved to the specified filename at the end. This
+   makes it safe for oiiotool to "overwrite" a file
+   (i.e. `oiiotool in.tif ... -o out.tif`) without problematic
+   situations where the file is truncated or overwritten before the
+   reading is complete. #1797
+  *Python bindings for ImageBuf.get_pixels and set_pixels fixed
+   some bugs when passed an ROI without a channel range specified.
+   #1802
+  *More robust parsing of XMP metadata for unknown metadata names.
+   #1816
+  *strutil.h now includes a to_string<> utility template. #1814
+-------------------------------------------------------------------
+Thu Apr 12 21:40:50 UTC 2018 - kasimir_@outlook.de
+
+- Updated oiio-detectplatform-others.patch to handle armv6l
+
+-------------------------------------------------------------------
+Sun Dec 24 22:08:01 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Updated oiio-detectplatform-others.patch to handle armv7l
+- Disable imageviewer (iv) on ARM, it does not build with GLES
+
+-------------------------------------------------------------------
+Tue Dec 12 15:13:07 UTC 2017 - davejplater@gmail.com
+
+- Change to pkgconfig() type build requirements.
+
+-------------------------------------------------------------------
+Tue Dec  5 13:45:38 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Drop bundled fonts, recommend google-droid-fonts instead
+- Add oiio-add-libdl-for-plugin.patch
+- Update to release 1.8.6, upstream changes since 1.8.5 -
+  for more details see included CHANGES.md:
+  * oiiotool: Improved logic for propagating the pixel data format
+    through multiple operations, especially for files with multiple
+    subimages. #1769
+  * ImageCache/TextureSystem: improved stats on how long we wait for
+    ImageInput mutexes. #1779
+  * Build: Fix build bug where if the makefile wrapper got CODECOV=0,
+    it would force a "Debug" build (required for code coverage tests)
+    even though code coverage is instructed to be off. (It would be
+    fine if you didn't specify CODECOV at all.) #1792
+  * Build: minor fixes for Windows build. #1793, #1794
+  * Developers: The ParamValue class has added get_int_indexed() and
+    get_float_indexed() methods. #1773
+  * Developers: array_view added begin(), end(), cbegin(), cend()
+    methods, and new constructors from pointer pairs and from std::array.
+  * Developers: Fixed build break in simd.h when AVX512VL is enabled. #1781
+  * Developers: fmath.h now defined OIIO_FMATH_H so other files can
+    easily detect if it has been included.
+  * Build: Fix broken build when Freetype was not found or disabled. #1800
+  * Python: fixed missing exposure of RATIONAL enum value. #1799
+- Update to release 1.8.5 (beta), upstream changes since 1.7.x:
+  * New oiiotool features:
+    --info:format=xml, --info:verbose=1, --colormap, -i:type=..., -i:ch=a,...,
+    --echo STRING, --eraseattrib, --text takes new optional modifiers, --deepholdout
+  * New ImageBufAlgo functionality:
+    + color_map() applies a color map based on the input values; #1552 (1.8.1)
+    + Added implementation of ImageBufAlgo::to_IplImage(). #1461 (1.7.9/1.8.1)
+    + render_text() has added parameters controlling text alignment and drop
+      shadows. #1646 (1.8.3)
+    + deep_holdout() culls all samples that are farther away than the opaque
+      depth of a second holdout image. #1691 (1.8.4)
+  * DICOM file format support (currently read-only). DICOM is the standard
+    for medical imaging data. Will only build if dependency "dcmtk" is
+    found at build time. #1534 (1.8.1)
+  * Experimental: The TextureSystem API has been extended to support batches
+    of texture lookups in a SIMD fashion. At present, only the new API was
+    added, a full implementation is in progress and may not be forthcoming
+    or reliable until 1.9. Even the API is experimental, and may change for
+    future releases. #1733 (1.8.5)
+  * Public API changes in TypeDesc; ImageSpec; ColorConig::createLookTransform()
+    and createDisplayTransform(); ImageBuf::read(); new OIIO::getattribute()
+    queries; ImageBufAlgo::render_text(); DeepData; ImageBufAlgo::colorconvert(),
+    ociolook(), and ociodisplay(); ParamValueList::get_float
+  * Fixes, minor enhancements, and performance improvements in:
+    + oiiotool
+    + ImageBufAlgo; ImageBuf; TextureSystem / ImageCache / maketx
+    + BMP; FFMpeg/movies; GIF; IFF; JPEG; OpenEXR; PNG; PSD; RAW; RLA; TIFF; webp; Nuke
+    + Fixed several (so far unnoticed) buffer overruns and memory leaks. #1591 (1.8.2)
+  * Build/test system improvements
+
+-------------------------------------------------------------------
+Sun Oct  8 00:35:23 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Update to release 1.7.17, upstream changes since 1.7.16:
+  * Repair build breaks against Boost 1.65. #1753
+  * Fix a subtle static initialization order problem. #1757
+  * Build: Improved finding LibRaw. #1749
+- Update to release 1.7.16, upstream changes since 1.7.15:
+  * OpenEXR: fix problem with 2-channel images putting the channels
+    in the wrong order. #1717
+  * TIFF: images with fewer than 4 channels, but one of those
+    channels was alpha, were not correctly marking their
+    spec.alpha_channel. #1718
+  * Several minor updates to simd.h backported from mater.
+
+-------------------------------------------------------------------
+Sun Jun 11 09:02:39 UTC 2017 - davejplater@gmail.com
+
+- Update to release 1.7.15 sync with blender.
+- Upstream changes:
+    *Add "raw:user_sat" configuration attribute to the reader. #1666
+  *Better exception safety for `Filesystem::searchpath_find()`.
+   #1680
+  *Improved I/O of color separation images, particularly those
+   with custom InkSet attributes. #1658
+  *Fix rare case TextureSystem crash. #1685
+  *oiiotool expression substitution now recognizes FRAME_NUMBER and
+   FRAME_NUMBER_PAD. #1648
+  *oiiotool -resize and -resample now have more intuitive behavior
+   for images where the display and pixel data windows are not the
+   same, especially if the data window had a nonzero origin (such
+   as with crop or overscan). #1667
+  *oiiotool --resample and ImageBufAlgo::resample() have been
+   extended to work for "deep" images. #1668
+  *ImageCache::get_image_info() will now return a proper error
+   (and not hit an assertion) if asked for information about a
+   subimage or MIP level that does not exist in the file. #1672
+  *ImageBuf copy constructor from another ImageBuf was previously
+   broken for IB's that wrap application buffers. #1665
+  *TextureSystem::get_texels fixes crashing behavior. #1669
+  *Fixes to OSX rpath behavior of linked binaries. #1671
+  *OpenEXR file input: fixed problem with sorting order of spectral
+   alpha channels (RA, GA, BA, or AR, AG, AB). #1674
+  *ImageBufAlgo::deep_merge() (and oiiotool --deepmerge) now will
+   give a useful error message if you try to merge two deep images
+   that do not have the same number of channels. #1675
+  *ImageCache/TextureSystem statistics no longer list as "BROKEN"
+   files which were invalidated, or files that were initialized
+   with an ImageCacheFile but never opened. #1655
+
+-------------------------------------------------------------------
+Sun Apr  2 08:21:20 UTC 2017 - davejplater@gmail.com
+
+- Update to release 1.7.13
+- Fix gcc7 build with the following build flags:
+   -Wno-error=maybe-uninitialized -Wno-error=noexcept-type
+   -Wno-error=format-truncation= and -Wno-error=aligned-new=
+-  Rebased oiio_gcc6_missleading_indentation.patch
+- Upstream changes since 1.7.11:
+ * TIFF, JPEG, others: Improved reading Exif meatdata from XMP
+  blocks, now it does a better job of discerning the proper data
+  types. #1627
+ * RAW: The default value for missing "raw:use_camera_matrix" has
+  been changed to 1 (not 0) to better match default behavior of
+  libraw/dcraw. #1629
+ * RAW: Add support for selecting new demosaicing algorithms:
+  "DMT" (mode 11) and "AAHD" (mode 12). Renamed the "Modified AHD"
+  to "AHD-Mod" to simplify and match libraw terminology. Made
+  matching of demosaicing algorithms case-insensitive. #1629
+ * RAW: Support "ACES" color space for direct conversion while
+  reading RAW images (supported in libraw 0.18 or newer). #1626
+ * oiiotool: Improved error reporting of file open errors when
+  -iconfig is used. #1626
+ * oiiotool `--echo STRING` prints the string to the console. This
+  can contain expressions! So you can do something like oiiotool
+  file.exr -echo "Size is {TOP.width}x{TOP.height}" #1633
+ * JPEG: Be more reslient to malformed Exif data blocks with bogus
+  offsets. #1585, #1639
+ * TIFF output omitted setting the "Make" and "Model" metadata tags.
+  #1642
+ * webp: Several new sanity checks prevent the webp reader from
+  spending too much I/O time and memory reading bogus files
+  (malformed, corrupted, or not a webp after all). #1640
+ * PSD: Support has been added for "cmyk", "multichannel", and
+  "grayscale" color modes. And support was fixed for rgb and
+  grayscale 32 bit per sample bit depth. #1641
+ * BMP: add support for version 5 headers. #1616
+ * TIFF: Fix typo that prevented correct reading of some Exif
+  fields. #1625
+ * ImageBuf: Fix broken threads(n) method, which didn't correctly
+  pass the right number of threads along. #1622.
+ * Fix build warnings about undefined OIIO_MSVS_AT_LEAST_2013 symbol.
+
+-------------------------------------------------------------------
+Thu Feb  2 10:22:53 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Fri Jun 17 15:11:15 UTC 2016 - normand@linux.vnet.ibm.com
+
+- Added oiio_gcc6_missleading_indentation.patch tracked upstream
+  https://github.com/OpenImageIO/oiio/pull/1436
+  and remove just added flag. See boo#985370
+- Removed previous work around for the bug.
+
+-------------------------------------------------------------------
+Fri Jun 17 14:57:11 UTC 2016 - davejplater@gmail.com
+
+- Fix gcc6 build with -Wno-error=misleading-indentation flag, see
+  boo#985370
+
+-------------------------------------------------------------------
+Tue Mar 22 15:52:13 UTC 2016 - normand@linux.vnet.ibm.com
+
+- do not set -DNOTHREADS=ON for ppc64 to avoid build error
+
+-------------------------------------------------------------------
+Sun Mar 13 16:58:31 UTC 2016 - davejplater@gmail.com
+
+- Disable opencv until the build problem is resolved
+
+-------------------------------------------------------------------
+Thu Jan 14 13:28:59 UTC 2016 - davejplater@gmail.com
+
+- Update to release 1.7.0dev
+- Explicitly enabled build with openssl because the build fails on
+  i586 due to internally defined types.
+- Upstream changes:
+  Major new features and improvements:
+
+   Public API changes:
+ * DeepData internals and API overhaul: struct internals hidden, now you
+   must use the API; DeepData declaration is now in deepdata.h, not in
+   imageio.h; DD methods now allow insertion and erasure of individual
+   samples. #1289 (1.7.0)
+ * imageio.h: Removed items deprecated since 1.4: a version of
+   convert_types() that took alpha and z channel indices
+   (but never used them). #1291
+ * fmath.h: Removed safe_sqrtf, safe_acosf, fast_expf, which have been
+   deprecated since 1.5. (1.7.0) #1291
+ * Removed ImageBufAlgo::flipflop(), which was deprecated since 1.5 and
+   is now called rotate180. #1291 (1.7.0)
+ * Several varieties of ImageCache and TextureSystem getattribute methods
+   were noticed to not be properly declared 'const'. This was fixed.
+   #1300 (1.7.0/1.6.9)
+
+   Fixes, minor enhancements, and performance improvements:
+   * oiiotool:
+    * oiiotool --subimage now takes as an argument either the subimage
+      numeric index, or a subimage name. #1287 (1.7.0)
+    * oiiotool's image cache was smaller than intended because of typo.
+      (1.7.0/1.6.9)
+  * ImageBufAlgo:
+    * The varieties of add(), sub(), mul(), and div() that take an
+      image operand and a per-channel constant operand have all been
+      modified to work properly for "deep" images. #1297 (1.7.0)
+  * maketx:
+    * maketx -u now remakes the file if command line arguments or OIIO
+      version changes, even if the files' dates appear to match.
+      #1281 (1.7.0)
+  * TIFF:
+    * When outputting a TIFF file, a special attribute "tiff:half", if
+      set to nonzero, will enable writing of 16-bit float pixel data
+      (obviously, only if the spec.format is HALF). #1283 (1.7.0)
+    * TIFF input: erase redundant IPTC:Caption and IPTC:OriginatingProgram
+      if they are identical to existing ImageDescription and Software
+      metadata, respectively. (1.7.0/1.6.9)
+  * Video formats:
+    * The ffmpeg-based reader had a variety of fixes. #1288 (1.7.0)
+
+  Build/test system improvements:
+ * Fix build break against Boost 1.60. #1299,#1300 (1.7.0/1.6.9/1.5.23)
+ * filesystem_test now much more comprehensively tests the contents of
+   Filesystem. #1302 (1.7.0)
+ * fmath_test adds benchmarks for various data conversions. #1305 (1.7.0)
+
+  Developer goodies / internals:
+ * parallel_image has been improved in several ways: can choose split
+   direction; raised minimum chunk size to prevent thread fan-out for
+   images too small to benefit; uses the calling thread as part of the
+   pool. #1303 (1.7.0)
+ * timer.h: DoNotOptimize() and clobber() help to disable certain
+   optimizations that would interfere with micro-benchmarks. #1305 (1.7.0)
+ * simd.h improvements: select(); round(); float4::store(half*),
+   int4::store(unsigned short*), int4::store(unsigned char*). #1305 (1.7.0)
+ * fmath.h: convert_types has new special cases that vastly speed up
+   float <-> uint16, uint8, and half buffer conversions. #1305 (1.7.0)
+
+-------------------------------------------------------------------
+Mon Jan 11 13:21:08 UTC 2016 - davejplater@gmail.com
+
+- Update to release 1.6.9
+- Upstream changes:
+  Release 1.6.9 (released 5 Jan 2016 -- compared to 1.6.8)
+  * Several varieties of ImageCache and TextureSystem getattribute
+    methods were noticed to not be properly declared 'const'.
+    This was fixed. #1300 (1.6.9)
+  * Fix build break against Boost 1.60. #1299,#1300 (1.6.9/1.5.23)
+  * The Python bindings for ImageCache was overhauled after several
+    of the methods were found to be horribly broken. #1300 (1.6.9)
+  * oiiotool --subimage now allows a subimage name as argument, as
+    well as the numeric index. #1271,#1287 (1.6.9)
+  * TIFF input: erase redundant IPTC:Caption and IPTC:OriginatingProgram
+    if they are identical to existing ImageDescription and Software
+    metadata, respectively. (1.6.9)
+  * Fix oiiotool image cache smaller than intended because of typo.
+- See /usr/share/doc/packages/OpenImageIO/Changes for changes since
+  1.5.20
+
+-------------------------------------------------------------------
+Thu Nov 19 06:05:23 UTC 2015 - davejplater@gmail.com
+
+- Recommented Field3D build requirement.
+
+-------------------------------------------------------------------
+Sat Nov 14 09:21:22 UTC 2015 - hpj@urpla.net
+
+- download, verify and recompress _service added
+- Release 1.5.20
+  * Nuke plugin: don't crash with NULL Knob* in TxReaderFormat::setMipLabels.
+    #1212
+  * Fix build warnings for new Apple tools release that upgrades the standard
+    clang release. #1218
+  * Make TIFF reader robust to strange TIFF files that have unexpected MIP
+    level-to-MIP level changes in planarconfig, photometric, palette,
+    extrasamples, etc. We previously assumed these things would never vary
+    between MIP levels of the same file, and Murphy called our bluff. #1220,1221
+
+- Release 1.5.19
+  * Fix compile warnings on some platforms/compilers.
+  * Fix build break with certain new versions of libraw. #1204
+  * Internals: Timer and ScopedTimer have changed slightly. This isn't used
+    in any public OIIO APIs, but may affect 3rd party programs that like
+    to use OIIO's timer.h for convenience. #1201
+  * Internals: dassert.h has added OIIO_STATIC_ASSERT macros for static
+    assertion. Doesn't affect existing OIIO apps since they are new
+    additions, but feel free to use them! #1202
+
+- Release 1.5.18
+  * PSD input improvements: better error handling for files lacking "global
+    layer mask info" or "additional layer info"; additional PSD signatures
+    for global additional layer info; better error handling when dealing
+    with an empty layer mask. #1147
+  * TIFF output: recognize special "tiff:write_exif" metadata, which when
+    present and set to 0, will skip writing the Exif directory into the TIFF
+    file. This can be helpful when you expect the resulting TIFF file to be
+    read with very old versions of libtiff. #1185
+  * Top-level Makefile option USE_OPENCV=0 to turn off even searching for
+    OpenCV components. #1194
+
+- Release 1.5.17
+  * Fix support for older ffmpeg version on Ubuntu 14.04. #1168
+  * Fix bug in fft -- was not always zeroing out the imaginary channel. #1171
+  * Build-time fixes for Nocona CPUs that have SSE3 without SSSE3. #1175
+  * ustring fixes for new gcc (5.1+) and new std::string ABI. #1176
+  * Fixes for unit test timer_test for new OSX versions with timer
+    coalescing. #1181
+  * Fix bugs with rangecompress and rangeexpand when using luma. #1180
+  * Fixes for clean build when using clang 3.6. #1182
+
+- Release 1.5.16
+  * PNG writes now honor PixelAspectRatio attribute. #1142
+  * Build fixes for Visual Studio 2010 #1140
+  * PSD & JPEG plugins fixes for Win32 compilation.
+  * Also search for OIIO plugins in [DY]LD_LIBRARY_PATH. #1153
+  * Give Strutil::parse_string an option to not strip surrounding quotes.
+  * Fix Nuke plugin build files to not do anything if USE_NUKE=0  #1156
+  * New ImageInput query: "procedural" -- returns 1 if the ImageInput may
+    not correspond to an actual file. #1154
+  * TypeDesc has a new constructor and fromstring of a string_view, in
+    addition to the old versions that took char*. #1159
+  * Eliminate spurious ImageCache invalidation just because the shared
+    cache is requested again. #1157
+  * Fixed trilinear MIPmap texture lookups that gave invalid alpha fill. #1163
+  * Filesystem: sequence matching should clear results arrays upon start.
+
+- Release 1.5.15
+  * Bug fix with IBA::channels() with deep data with UINT channels.
+  * Fix TypeDesc compatibility with OSL.
+  * Misc WIN32 / VS2010 fixes.
+  * Fix incorrect logic in convert_image with certain channel types and
+    strides. #1144
+
+- Release 1.5.14
+  * fmath: save_fast_pow improves the precision of its results for
+    special cases of pow(x,1) and pow(x,2). #1094 (1.5.13)
+  * Fix warnings when compiling with C++11. (1.5.13)
+  * Dont link Python framework on OSX. #1099 (1.5.13)
+  * Improve IBA::compare() (and therefore oiiotool -diff and idiff) when
+    the images being compared have NaN or Inf values. #1109 (1.5.13)
+  * TextureSystem bug fix that occasionally resulted in NaN in the alpha
+    channel result when looking up from 3-channel images. #1108 (1.5.13)
+  * Added TypeDesc::TypeHalf(). #1113 (1.5.13)
+  * Fix IBA::channels() bugs when dealing with "deep" images. #1113 (1.5.13)
+  * Python ImageSpec.set_channel_formats() now works when the channel
+    type lists are either TypeDesc, in addition to the existing support
+    for BASETYPE. #1113 (1.5.13)
+  * Added Python bindings for DeepData and deep reads (ImageInput) and
+    writes (ImageOutput). #1113 (1.5.13)
+  * Fix bugs in reading deep OpenEXR images with mixed channel types.
+    #1113 (1.5.13)
+  * Fix bug in IBA::convolve() for the case when the kernel image passed
+    is not a float image. #1116 (1.5.13)
+
+- Release 1.5.13
+  * oiiotool: Bug fix for frame sequences -- could crash in Windows. #1060
+  * New ImageOutput::supports() tags: supports("alpha") should be true for
+    image formats that support an alpha channel, supports("nchannels") should
+    be true for output formats that support an arbitrary number of output
+    channels. #1058
+  * oiiotool: Gracefully handle requests to save an image with more channels
+    than the output file format can handle. Instead of being a fatal error,
+    now it's just a warning, and extra channels are dropped. It tries to
+    to find R, G, B, and A channels, saving them. If those names are
+    not found, it just saves the first 3 (or 4) channels. #1058
+  * Improved handling of "PixelAspectRatio" for JPEG, TIFF, and OpenEXR.
+    #1042 #1066
+  * oiiotool: Improve error messages when files can't be read. It is now
+    easier to to distinguish files that don't exist from those that
+    are an unknown format from those that are corrupted or have read
+    errors. #1065
+  * maketx now writes to a temporary file, then moving it to the final
+    requested output filename only when the write completed without error.
+    This prevents situations where maketx crashes or is killed and leaves
+    behind a file that looks correct but is actually corrupted or
+    truncated. #1072
+  * Python: added previously-M.I.A. ImageSpec.erase_attribute(). #1063
+  * Add Filesystem::rename() utility. #1070
+  * Made TypeDesc::equivalent accept comparisons of arrays of unspecified
+    length with ones of definite length. #1072
+  * oiiotool & maketx have improved error message when unknown data format
+    names are requested with "-d". #1077
+  * oiiotool numeric wildcard improvement: allow more digits to match. #1082
+  * Remove dependency of OpenSSL by default. #1086
+
+-------------------------------------------------------------------
+Thu May 28 17:11:30 CEST 2015 - ro@suse.de
+
+- added patch oiio-detectplatform-others.patch
+  to fix build on other architectures
+- added patch oiio-clusterfit-boundscheck.patch
+  to fix build failure on aarch64, looks like compiler is smarter
+
+-------------------------------------------------------------------
+Sat Feb 28 09:44:44 UTC 2015 - davejplater@gmail.com
+
+- Update to version 1.5.12 and prepare for factory to enable blender
+  to build with cycles, see bnc#905649
+- Many new features - See /usr/src/doc/packages/OpenImageIO/CHANGES
+
+-------------------------------------------------------------------
+Sun Oct 27 18:00:27 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to version 1.2.2:
+  * New features:
+    + New oiiotool --siappend : append subimages of top two images on stack.
+    + Utilities: added Strutil::contains() and icontains().
+  * Fixes:
+    + Fixes in handling XMP & IPTC metadata.
+    + oiiotool --origin and --fullpixels did not correctly propagate their
+      changes to the output images.
+    + oiiotool --colorconvert (and the underlying ImageBufAlgo::colorconvert)
+      could crash if given a color conversion recognized as a no-op.
+    + DPX output could crash when writing crop images.
+    + DPX input was not recognizing the proper image offset or originalsize.
+    + oiiotool --fit wasn't padding correctly or modifying offsets properly.
+  * Build fixes:
+    + Fix compiler error on MIPS platform.
+    + Add FIELD3D_HOME description to 'make help'
+    + Always use the HDF5 release libraries (for Field3D), not the debug ones.
+  From version 1.2.1:
+  * oiiotool: Fix memory leak when processing frame range.
+  * Docs improvement: full documentation of ImageBufAlgo.
+  * oiiotool --help now returns a success error code, not a failure.
+  * oiiotool: fix incorrect help message about --ociolook.
+  * oiiotool: Fix typo in "oiio:Colorspace" attribute name that interfered
+    with correct color space conversion in --colorconvert.
+  * Many fixes for compiler warnings on various platforms: fmath_test.cpp,
+    field3dinput.cpp, sysutil.cpp, argparse.cpp, oiiotool.cpp.
+  * Fixes problems on little-endian architecture with texture3d.cpp.
+  * Fix compilation problems on architectures with gcc, but no 'pause'
+    instruction.
+  * Fix build search path for correctly finding libopenjpeg 1.5.
+  * Work around bug in older MSVC versions wherein Filesystem::open needed
+    to explicitly seek to the beginning of a file.
+  * Build fixes for FreeBSD.
+  * Fix testsuite/oiiotool on Windows -- windows shell doesn't expand
+    wildcards.
+- Removed oiio-typedef.patch (fixed upstream).
+- Rebased oiio-ppc.patch and oiio-arm.patch to apply cleanly.
+- Added an upstream patch (hdf5_libs.patch) to fix linking with HDF5 libs.
+
+-------------------------------------------------------------------
+Tue Aug  6 16:43:27 UTC 2013 - asterios.dramis@gmail.com
+
+- BuildRequire OpenColorIO-devel only for openSUSE > 12.3.
+
+-------------------------------------------------------------------
+Tue Aug  6 15:02:04 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to version 1.2.0:
+  * Major new release.
+  * Lots of changes (See CHANGES files).
+- Replaced OpenImageIO-ppc.patch with oiio-ppc.patch (taken from Fedora).
+- Added a patch (oiio-arm.patch) to fix compilation with arm (taken from
+  Fedora).
+- Added a patch (oiio-typedef.patch) to fix compiler warning about unused local
+  typedef (fix for gcc-4.8) (taken from Fedora).
+- Added freetype2-devel and libopenssl-devel build requirements.
+- Removed tbb-devel build requirement (deprecated).
+- Use -DCMAKE_SKIP_RPATH=ON to fix compilation.
+
+-------------------------------------------------------------------
+Sun Jun  9 13:44:29 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to version 1.1.11:
+  * IFF input: bug in endian swap of 16 bit IFF files.
+  * oiiotool: fix a minor bug where tiled files were output inappropriately.
+    (Had been patched in master some time ago.)
+  * fmath.h additions: safe_inversesqrt, safe_log, safe_log2, safe_log10,
+    safe_logb.  These are versions that clamp their inputs so that they
+    can't throw exceptions or return Inf or NaN.
+  * Fix to not incorrectly print ImageCache stats for certain broken files.
+  From version 1.1.10:
+  * IBA::fillholes() and oiiotool --fillholes can smoothly fill in alpha
+    holes with nearby colors. Great for extrapolating the empty areas of
+    texture atlas images so that filtered texture lookups pull in a plausible
+    color at part edges.
+  * IBA::clamp and oiiotool --clamp clamp pixel values to a scalar or
+    per-channel min and/or max, or clamp alpha to [0,1].
+  * IBA::rangecompress()/rangeexpand(), and oiiotool --rangecompress /
+    --rangeexpand compress the excess >1 values of HDR images to a log
+    scale (leaving the <= 1 part linear), and re-expand to the usual
+    linear scale.  This is very helpful to reduce ringing artifacts that
+    can happen when an HDR image is resized with a good filter with negative
+    lobes (such as lanczos3), by doing a range compression, then the resize,
+    then range expansion. It's not mathematically correct and loses energy,
+    but it often makes a much more pleasing result.
+  * maketx --hicomp does highlight compression -- automatically doing a
+    range compress before each high-quality resize step, and then a
+    range expansion and clamp-to-zero (squash negative pixels) after
+    each resize.
+  * DPX - when writing DPX files, properly set the pixel aspect ratio.
+  From version 1.1.9:
+  * IBA::resize and oiiotool --resize/--fit: Bug fixes to resize filter
+    size selection fix artifacts wherein extreme zooms could end up with
+    black stripes in places where the filters fell entirely between samples.
+  * oiiotool --fit: fix subtle bugs with aspect ratio preservation for
+    images with differing data and display windows; and allow "filter=..."
+    to override the default filter used for fit.
+  * Resize improvement: fix potential artifacts at the image edges resulting
+    from odd clamping behavior.
+  * Even more frame range wildcard flexibility with oiiotool --frames and
+    --framepadding options.
+  * oiiotool --resize and --fit (and the underlying IBA::resize()) have been
+    sped up significantly and are now also multithreaded.
+  From version 1.1.8:
+  * oiiotool --chappend (and ImageBufAlgo::channel_append() underneath) allow
+    you to take two files and concatenate their color channels.
+  * oiiotool --chnames allows you to rename some or all of a file's color
+    channels.
+  * oiiotool can loop over entire frame ranges by specifying wildcard
+    filenames such as "foo.#.tif" or "bar.1-10#.exr".
+  * Cmake: OVERRIDE_SHARED_LIBRARY_SUFFIX allows the shared library suffix
+    to be overridden (e.g., if you need to force .so names on OSX rather
+    than the usual default of .dylib).
+  From version 1.1.7:
+  * Back out dangerous change to thread.h that was in 1.1.6, which could
+    cause performance problems.
+  * Compile fix for WIN32 in strutil.cpp
+  * Compile fix for Windows XP - add implementation of InterlockedExchangeAdd64
+- Added txt2man as build requirement.
+
+-------------------------------------------------------------------
+Thu Feb 21 20:03:58 UTC 2013 - asterios.dramis@gmail.com
+
+- Added OpenColorIO-devel as build requirement.
+
+-------------------------------------------------------------------
+Wed Feb 20 22:12:39 UTC 2013 - asterios.dramis@gmail.com
+
+- Initial rpm release (version 1.1.6).
+- Added a patch "OpenImageIO-ppc.patch" to fix compilation with ppc (patch
+  taken from Fedora).

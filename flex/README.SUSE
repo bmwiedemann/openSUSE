@@ -1,0 +1,8 @@
+README.SUSE file for package flex
+---------------------------------
+
+This version of the flex program (developed at http://lex.sourceforge.net/) is
+a major upgrade of the original flex maintained at
+http://www.gnu.org/software/flex/ and has some incompatible changes in the
+generated scanners. For that reason, we temporarily ship the package flex-old,
+which contains the original version.

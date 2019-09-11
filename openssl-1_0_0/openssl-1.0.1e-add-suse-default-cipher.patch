@@ -1,0 +1,38 @@
+Index: openssl-1.0.2j/ssl/ssl_ciph.c
+===================================================================
+--- openssl-1.0.2j.orig/ssl/ssl_ciph.c	2017-08-31 17:11:44.269628067 +0200
++++ openssl-1.0.2j/ssl/ssl_ciph.c	2017-08-31 17:11:44.401630229 +0200
+@@ -1608,7 +1608,14 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
+      */
+     ok = 1;
+     rule_p = rule_str;
+-    if (strncmp(rule_str, "DEFAULT", 7) == 0) {
++    if (strncmp(rule_str,"DEFAULT_SUSE", 12) == 0) {
++        ok = ssl_cipher_process_rulestr(SSL_DEFAULT_SUSE_CIPHER_LIST,
++        &head, &tail, ca_list);
++        rule_p += 12;
++        if (*rule_p == ':')
++            rule_p++;
++    }
++    else if (strncmp(rule_str, "DEFAULT", 7) == 0) {
+         ok = ssl_cipher_process_rulestr(SSL_DEFAULT_CIPHER_LIST,
+                                         &head, &tail, ca_list);
+         rule_p += 7;
+Index: openssl-1.0.2j/ssl/ssl.h
+===================================================================
+--- openssl-1.0.2j.orig/ssl/ssl.h	2016-09-26 11:49:07.000000000 +0200
++++ openssl-1.0.2j/ssl/ssl.h	2017-08-31 17:26:12.887874711 +0200
+@@ -338,7 +338,12 @@ extern "C" {
+  * The following cipher list is used by default. It also is substituted when
+  * an application-defined cipher list string starts with 'DEFAULT'.
+  */
+-# define SSL_DEFAULT_CIPHER_LIST "ALL:!EXPORT:!LOW:!aNULL:!eNULL:!SSLv2"
++# define SSL_DEFAULT_CIPHER_LIST "ALL:!EXPORT:!LOW:!aNULL:!eNULL:!SSLv2:!RC2:!DES"
++
++# define SSL_DEFAULT_SUSE_CIPHER_LIST "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:"\
++    "ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:"\
++    "DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-CAMELLIA256-SHA:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-CAMELLIA128-SHA:"\
++    "AES256-GCM-SHA384:AES256-SHA256:AES256-SHA:CAMELLIA256-SHA:AES128-GCM-SHA256:AES128-SHA256:AES128-SHA:CAMELLIA128-SHA"
+ /*
+  * As of OpenSSL 1.0.0, ssl_create_cipher_list() in ssl/ssl_ciph.c always
+  * starts with a reasonable order, and all we have to do for DEFAULT is

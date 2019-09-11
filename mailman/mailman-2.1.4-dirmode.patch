@@ -1,0 +1,73 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -103,7 +103,7 @@ doinstall: $(SUBDIRS)
+ 	    if test ! -d $$dir; then \
+ 		echo "Creating directory hierarchy $$dir"; \
+ 		$(srcdir)/mkinstalldirs $$dir; \
+-		chmod $(DIRMODE) $$dir; \
++		chmod $(EXEMODE) $$dir; \
+ 		$(DIRSETGID) $$dir; \
+ 	    else true; \
+ 	    fi; \
+@@ -115,7 +115,7 @@ doinstall: $(SUBDIRS)
+ 	    if test ! -d $$dir; then \
+ 		echo "Creating directory hierarchy $$dir"; \
+ 		$(srcdir)/mkinstalldirs $$dir; \
+-		chmod $(DIRMODE) $$dir; \
++		chmod $(EXEMODE) $$dir; \
+ 		$(DIRSETGID) $$dir; \
+ 	    else true; \
+ 	    fi; \
+--- a/bin/check_perms
++++ b/bin/check_perms
+@@ -71,6 +71,7 @@ class State:
+ STATE = State()
+ 
+ DIRPERMS = S_ISGID | S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH
++DIRPERMS_VAR = S_ISGID | S_IRWXU | S_IROTH | S_IXOTH
+ QFILEPERMS = S_ISGID | S_IRWXU | S_IRWXG
+ PYFILEPERMS = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH
+ ARTICLEFILEPERMS = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP
+@@ -182,8 +183,7 @@ def checkall():
+         prefix = mm_cfg.PREFIX
+         print C_('checking mode for %(prefix)s')
+     dirs = {}
+-    for d in (mm_cfg.PREFIX, mm_cfg.EXEC_PREFIX, mm_cfg.VAR_PREFIX,
+-              mm_cfg.LOG_DIR):
++    for d in (mm_cfg.VAR_PREFIX, mm_cfg.LOG_DIR):
+         dirs[d] = True
+     for d in dirs.keys():
+         try:
+@@ -192,14 +192,24 @@ def checkall():
+             if e.errno <> errno.ENOENT: raise
+             print C_('WARNING: directory does not exist: %(d)s')
+             continue
+-        if (mode & DIRPERMS) <> DIRPERMS:
+-            STATE.ERRORS += 1
+-            print C_('directory must be at least 02775: %(d)s'),
+-            if STATE.FIX:
+-                print C_('(fixing)')
+-                os.chmod(d, mode | DIRPERMS)
+-            else:
+-                print
++        if (d == mm_cfg.VAR_PREFIX):
++            if (mode & DIRPERMS_VAR) <> DIRPERMS_VAR:
++                STATE.ERRORS += 1
++                print C_('directory must be 02755: %(d)s'),
++                if STATE.FIX:
++                    print C_('(fixing)')
++                    os.chmod(d, mode | DIRPERMS_VAR)
++                else:
++                    print
++        else:
++            if (mode & DIRPERMS) <> DIRPERMS:
++                STATE.ERRORS += 1
++                print C_('directory must be at least 02775: %(d)s'),
++                if STATE.FIX:
++                    print C_('(fixing)')
++                    os.chmod(d, mode | DIRPERMS)
++                else:
++                    print
+         # check all subdirs
+         os.path.walk(d, checkwalk, STATE)
+ 

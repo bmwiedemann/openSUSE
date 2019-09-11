@@ -1,0 +1,55 @@
+From 612ac4a17fb8ae971830402494c4f6a894e69c97 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 12 Oct 2018 02:50:41 +0200
+Subject: [PATCH 3/5] Avoid format warnings on 64 bit
+
+---
+ include/2.3.6/med_utils.h.in | 6 +++++-
+ include/med_utils.h.in       | 7 ++++++-
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/include/2.3.6/med_utils.h.in b/include/2.3.6/med_utils.h.in
+index 7f9bfde..e3a773f 100644
+--- a/include/2.3.6/med_utils.h.in
++++ b/include/2.3.6/med_utils.h.in
+@@ -234,7 +234,11 @@
+ 					fprintf(stderr,"%s = %llu\n",#entier,entier) ;\
+ 					fflush(stderr) ;\
+ 				}
+-# define ISCRUTE_id(entier) ISCRUTE_int(entier)
++# define ISCRUTE_id(entier)	{\
++					ICI ;\
++					fprintf(stderr,"%s = %"PRId64"\n",#entier,entier) ;\
++					fflush(stderr) ;\
++				}
+ # define RSCRUTE(reel)		{\
+ 					ICI ;\
+ 					fprintf(stderr,"%s = %f\n",#reel,reel) ;\
+diff --git a/include/med_utils.h.in b/include/med_utils.h.in
+index 8203f90..e9fb653 100644
+--- a/include/med_utils.h.in
++++ b/include/med_utils.h.in
+@@ -21,6 +21,7 @@
+ # define __UTILITES_H__
+ 
+ #include <stdlib.h>
++#include <inttypes.h>
+ #include <med_exit_if.h>
+ #include <med_err.h>
+ 
+@@ -251,7 +252,11 @@
+ 					fprintf(stderr,"%s = %llu\n",#entier,entier) ;\
+ 					fflush(stderr) ;\
+ 				}
+-# define ISCRUTE_id(entier) ISCRUTE_int(entier)
++# define ISCRUTE_id(entier)	{\
++					ICI ;\
++					fprintf(stderr,"%s = %"PRId64"\n",#entier,entier) ;\
++					fflush(stderr) ;\
++				}
+ # define RSCRUTE(reel)		{\
+ 					ICI ;\
+ 					fprintf(stderr,"%s = %f\n",#reel,reel) ;\
+-- 
+2.20.1
+

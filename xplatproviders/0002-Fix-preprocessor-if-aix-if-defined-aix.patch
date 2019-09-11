@@ -1,0 +1,25 @@
+From 0a2d69fbcf80d07b68b5d7c3160b6222e34ee00e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Mon, 19 Sep 2011 09:00:50 +0200
+Subject: [PATCH 2/4] Fix preprocessor 'if(aix)' -> 'if defined(aix)'
+
+---
+ .../pal/system/disk/staticphysicaldiskinstance.cpp |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/source/code/common_lib/pal/system/disk/staticphysicaldiskinstance.cpp b/source/code/common_lib/pal/system/disk/staticphysicaldiskinstance.cpp
+index e43b26a..63f7c62 100644
+--- a/source/code/common_lib/pal/system/disk/staticphysicaldiskinstance.cpp
++++ b/source/code/common_lib/pal/system/disk/staticphysicaldiskinstance.cpp
+@@ -631,7 +631,7 @@ namespace SCXSystemLib
+             throw SCXErrnoException(L"close", errno, SCXSRCLOCATION);
+         }
+ 
+-#elif(aix)
++#elif defined(aix)
+ 
+         int res;
+ 
+-- 
+1.7.6.1
+

@@ -1,0 +1,31 @@
+--- src/cmd/ksh93/include/ulimit.h
++++ src/cmd/ksh93/include/ulimit.h	2012-02-02 11:30:00.242435132 +0000
+@@ -157,7 +157,7 @@
+ 
+ typedef struct Limit_s
+ {
+-	const char	name[16];
++	const char*	name;
+ 	const char*	description;
+ 	int		index;
+ 	const char*	conf;
+--- src/cmd/ksh93/sh/init.c
++++ src/cmd/ksh93/sh/init.c	2013-02-01 15:53:58.733952540 +0000
+@@ -170,7 +170,7 @@ struct match
+ 	char		*val;
+ 	char		*rval[2];
+ 	regoff_t	*match;
+-	char		node[NV_MINSZ+sizeof(char*)];
++	char		node[NV_MINSZ+sizeof(char*)+sizeof(Dtlink_t)];
+ 	regoff_t	first;
+ 	int		vsize;
+ 	int		nmatch;
+@@ -766,7 +766,7 @@ static int hasgetdisc(register Namfun_t
+ void sh_setmatch(Shell_t *shp,const char *v, int vsize, int nmatch, regoff_t match[],int index)
+ {
+ 	struct match	*mp = &ip->SH_MATCH_init;
+-	Namval_t	*np = nv_namptr(mp->node,0); 
++	Namval_t	*np = (Namval_t*)(&(mp->node[0]));
+ 	register int	i,n,x, savesub=shp->subshell;
+ 	Namarr_t	*ap = nv_arrayptr(SH_MATCHNOD);
+ 	shp->subshell = 0;

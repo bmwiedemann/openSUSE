@@ -1,0 +1,691 @@
+-------------------------------------------------------------------
+Sun May  5 12:39:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 47.1.0:
+  * Bug fixes.
+- Install the AppStream file to metainfo/ unconditionally.
+
+-------------------------------------------------------------------
+Fri Nov 30 17:46:42 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 47.0.1 (changes since 45.0.0):
+  * Meson support.
+  * Tune::Common:: Syntax highlighting enabled - turn on/off syntax
+    hl globally (useful for large documents on slow machines).
+  * Tune :: Logmemo font settings.
+  * Profile saves logmemo and GUI font settings.
+  * QuaZip fixes.
+  * --m TEA command line option to enable multiply instance mode.
+  * Prg menu:: Run programme, Build programme, Clean programme.
+  * "Nav - Toggle header/source" moved to IDE menu.
+  * logmemo is scriptable again.
+  * Objective C support (hl, header/source switch).
+  * "search in files" results window close automatically with TEA.
+  * main windows destructor FIX //using deleteLater().
+  * Build fixes on Qt4 and for BSDs and macOS.
+- Switch to building with CMake.
+
+-------------------------------------------------------------------
+Tue Jul  3 13:01:18 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 45.0.0:
+  * Recent list and bookmarks now save the word wrap settings.
+  * "Sum by last column" can now evaluate expressions and knows
+    comments.
+  * It is now possible to use a joystick to move cursor keys
+    (this feature can be enabled via Tune - Common).
+
+-------------------------------------------------------------------
+Fri Mar 23 07:45:29 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 44.1.1:
+  * Fix the desktop file and icon stuff.
+  * Add an ability to build tea without QML using the new option: 
+    qmake "CONFIG+=noqml"
+    That slightly reduces the memory footprint and is useful for
+    some purposes.
+- AppStream file standard updates.
+- Rename the .desktop file to org.semiletov.tea.desktop to comply
+  with freedesktop.org standards.
+
+-------------------------------------------------------------------
+Sat Nov 18 00:00:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 44.1.0:
+  * User loaded external fonts, causes a segfault on Qt 5.6.
+- Restore usage of /usr/share/metainfo/, zypper checks there now.
+
+-------------------------------------------------------------------
+Tue Sep 26 09:16:35 UTC 2017 - tchvatal@suse.com
+
+- Drop aspell-devel dependency as the package can decide between
+  hunspell and aspell and we try to reduce aspell exposage wrt
+  fate#323578
+
+-------------------------------------------------------------------
+Fri May 26 13:47:06 UTC 2017 - jengelh@inai.de
+
+- Update description.
+
+-------------------------------------------------------------------
+Mon May 22 09:19:20 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 44.0.0:
+  * Remove the trailing "bin" from the installation PREFIX format.
+    I.e., the default PREFIX was: "/usr/local/bin", now it is
+    "/usr/local", and the qmake-project file adds "bin" internally.
+  * Install a tea.desktop file to $$PREFIX/share/applications.
+    tea.desktop allows file managers to show TEA on the "Open with"
+    context menu.
+  * Add a block selection mode (see the Edit section at the Manual).
+    Due to TEA architecture vertical selections are almost obsolete
+    and can be used just for Cut/Copy/Paste, you cannot use the
+    text processing functions with them.
+  * cliptpl.txt file can be used to format clipboard pieces
+    captured at the storage file (See the Manual about the storage
+    files).
+  * Add a "Fm - Multi-rename" menu with several functions for
+    flexibly renaming the selected files.
+    There are: "Zero pad file names", "Delete N first chars at file
+    names", "Replace in file names", "Apply template".
+  * The "Functions - Math" menu has two new items,
+    "deg min sec > dec degrees" and "dec degrees > deg min sec" to
+    convert geographical coordinates between formats.
+  * Big changes to the single-application mode, i.e. when TEA is
+    being ran from the command line, it opens all files at tabs,
+    not in the multiple instances (TEA windows).
+    Previously this mode worked well with KDE only.
+- A tiny improvement for tea.desktop.
+- Install the metainfo file to /usr/share/appdata/ unconditionally
+  as de-facto that's the only place openSUSE tools check.
+- Build with Qt5 unconditionally.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 43.1.0:
+  * Fixes for the manuals.
+  * Fix a segfault (43.0.0 affected) on exit.
+  * Add some new options.
+  * Update a Russian translation.
+
+-------------------------------------------------------------------
+Sat Sep 10 11:21:52 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 43.0.0:
+  * Files format support.
+    + With the optional use of libpoppler-qt5 and libdjvulibre, TEA
+      now can open PDF and DJVU, as the text (if file contains it).
+      By default such functionality is disabled. To enable it, use
+      qmake parameters: qmake "CONFIG+=usepoppler CONFIG+=usedjvu".
+    + The build-in image viewer now supports GIF animation.
+  * GUI changes. 
+    + The "Tune" preferences pages have been placed into the
+      scrollable area, so TEA becomes more usable with a smaller
+      display resolution or window size.
+    + The text cursor is now bold and static, without blinking.
+      Tune it at "Tune - Interface".
+    + Some options are moved from one page to the other.
+    + "Instr" menu - renamed to "Tools" and moved to "Functions".
+    + Some new built-in GUI themes and palettes have been added.
+      The GUI themes engine now can load icon sets, but there are
+      no new icons currently.
+    + Hardcoded hotkeys Alt-S, Alt-E have been removed.
+    + "Tune - Common - Use Left Alt + WASD as additional cursor keys"
+      enables the additional cursor keys. E, C - PageUp/Down. The
+      same keys with Left Super - to select the text.
+  * New functions and options.
+    + "Functions - Repeat last" - calls the last used menu item.
+    + "Functions - Tools - Scale image" - scales the image (which
+      filename is under cursor or selected at the text) with
+      parameters. You can quickly resize the image and save it with
+      the different name without all those many windows and
+      confirmations, just by one command.
+    + "Tune - Images" now has the EXIF-orientation related options.
+      In a few words - TEA can handle EXIF-orientation and apply
+      the orientation when converting.
+    + "Functions - Text - Compress" - removes all whitespaces from
+       the selection.
+    + "Functions - Sort - Flip a list with separator",
+      "Sort case sensitively, with separator" - sorts the separated
+      words within the string, i.e. you can sort something like
+      that: "carrot|apple|grass" with "|" as the word delimeter.
+    + "Search - Mark all found/unmark" - search and mark all found
+      substring.
+    + "File - Do not add to recent" - temporary do not update the
+      recent list.
+  * Inner changes.
+    + The syntax highlighting engine has been partially rewritten,
+      so TEA use the new syntax hl file format. The compatibility
+      with the old format is preserved.
+    + %fext, %ffilename, %fdir, %fbasename macros are %ext,
+      %filename, %dir, %basename now.
+- Install the appstream file to /usr/share/metainfo/ instead of
+  /usr/share/appdata/ on openSUSE Leap 42.2 and newer.
+
+-------------------------------------------------------------------
+Mon Aug  8 18:20:12 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 42.0.0:
+  * Command lines at Run menu now can use the separated file path
+    parts (macros %fbasename, %ffilename, %fext, %fdir).
+  * The markup mode has the basic Markdown support.
+  * English manual fixes.
+  * Many code fixes.
+
+-------------------------------------------------------------------
+Mon Apr 25 05:00:35 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 41.1.1:
+  * Add: Math > Sum by last column - sum values of each last column
+    at the selection.
+- Add a basic tea.appdata.xml file.
+
+-------------------------------------------------------------------
+Mon Sep 21 11:24:21 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 41.1.0 (changes since 31.0.0):
+  * Qt 5 support.
+  * Clang support.
+  * FB2 charset support.
+  * Built-in calculator: unner resolution has been changed from
+    float to double.
+  * Editor widget redraw optimisations.
+  * Replacement tables now works also with select files //from the
+    file manager.
+  * Replace all: works with selected files in file manager mode.
+  * Fix ODT reader.
+  * Calendar: go to current date.
+  * Almost all menus are tearable now.
+  * Tune - Common - Documents tabs align.
+  * Tune - Common - UI tabs align.
+  * Edit - Set as storage file.
+  * Edit - Copy to storage file.
+  * Edit - Start/stop capture clipboard to storage file.
+  * Python hl //very ugly.
+  * Moon calendar.
+  * Fix UI styles switching.
+  * Undo fix after "replace all".
+  * Built-in calculator now supports braces.
+  * --p command lin option for portable mode ON.
+  * Fix image converter/scaler.
+  * File - Save timestamped version now has a different file name
+    format: "filename + date + time + ext" instead of the old one:
+    "date + time + filename + ext".
+  * New FB2 and ABW parsers.
+  * All spellchecker stuff is fixed.
+  * @@snippetname as parameter to Functions - Text - Apply to each
+    line.
+  * "Wikitext" markup mode is changed to MediaWiki and DokuWiki
+    modes. For the automatical mode switch use files with
+    extensions "mediawiki" and "dokuwiki".
+  * More natural line ending handling.
+  * File manager multiple selection via INS.
+  * New syntax hl engine.
+  * "Open at cursor" is now compatible with local id-labels.
+  * Grey background of the tab widget to indicate that there is no
+    any new files by default.
+  * Functions - Text - Double quotes to TeX quotes //work with "".
+  * LaTeX support fixes.
+  * Hardcoded keyboard shortcuts can be redefined.
+  * ZIP unpacker can work with multiply selected files.
+  * Functions - Statistics - Words lengths.
+  * Programs from Run menu can be opened with "file at cursor".
+    Use %i macro, e.g. gimp %i. Set cursor to filename at the text,
+    then use Run - gimp.
+  * File - Notes.
+  * QML plugins support.
+  * items from Programs menu can be used with TEA's file manager
+    (for the current file at the File manager).
+  * Code and docs cleanup.
+  * Tune - Common - Charset for file open from command line.
+  * Single instance application mode.
+  * New TEA icons.
+  * Search - From cursor (option, ON by default).
+  * Tune - Common - Use Alt key to access main menu (option,
+    default is OFF).
+  * Sorting modes at File Manager.
+  * Functions - Cells - Sort table by column ABC.
+  * Functions - Cells Swap cells.
+  * Functions - Cells - Delete by column.
+  * Functions - Cells - Copy by column[s].
+  * Partial Eclipse themes support from
+    http://eclipsecolorthemes.org/ (put them into tea Palettes
+    directory).
+  * Source configuration options via qmake has been changed.
+  * Themes engine.
+  * Fix qmake prefix option.
+  * Built-in calc fixes.
+  * Fix goto line function.
+  * Documentation fixes.
+  * Multiple fixes and cleanups.
+- Switch to Qt5.
+- Enable Hunspell support.
+- Change icon in tea.desktop.
+- Put icon in freedesktop.org recommended location.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Sat Oct 08 00:00:00 UTC 2011 - detlef@die-mafia.de
+
+- new upstream version <31.0.0>
+
+-------------------------------------------------------------------
+Sat Aug 20 00:00:00 UTC 2011 - detlef@die-mafia.de
+
+- new upstream version <30.1.0>
+
+-------------------------------------------------------------------
+Sat Jul 02 00:00:00 UTC 2011 - detlef@die-mafia.de
+
+- new upstream version <30.0.0>
+
+-------------------------------------------------------------------
+Sun May 22 00:00:00 UTC 2011 - detlef@die-mafia.de
+
+- new upstream version <29.0.3>
+
+-------------------------------------------------------------------
+Mon Apr 11 00:00:00 UTC 2011 - detlef@die-mafia.de
+
+- new upstream version <29.0.2>
+
+-------------------------------------------------------------------
+Fri Apr 08 00:00:00 UTC 2011 - detlef@die-mafia.de
+
+- new upstream version <29.0.1>
+
+-------------------------------------------------------------------
+Sat Apr 02 00:00:00 UTC 2011 - detlef@die-mafia.de
+
+- new upstream version <29.0.0>
+
+-------------------------------------------------------------------
+Sun Dec 15 00:00:00 UTC 2010 - detlef@die-mafia.de
+
+- new upstream version <28.1.4>
+
+-------------------------------------------------------------------
+Sat Oct 16 00:00:00 UTC 2010 - detlef@die-mafia.de
+
+- new upstream version <28.1.3>
+
+-------------------------------------------------------------------
+Wed Sep 22 00:00:00 UTC 2010 - detlef@die-mafia.de
+
+- new upstream version <28.1.2>
+
+-------------------------------------------------------------------
+Tue Aug  3 00:00:00 UTC 2010 - detlef@die-mafia.de
+
+- new upstream version <28.1.1>
+
+-------------------------------------------------------------------
+Sun Jul 11 00:00:00 UTC 2010 - detlef@die-mafia.de
+
+- new upstream version <28.1.0>
+
+-------------------------------------------------------------------
+Wed Jun 16 00:00:00 UTC 2010 - detlef@die-mafia.de
+
+- new upstream version <28.0.0>
+
+-------------------------------------------------------------------
+Thu Apr 15 00:00:00 UTC 2010 - detlef@die-mafia.de
+
+- new upstream version <27.1.0>
+
+-------------------------------------------------------------------
+Sat Mar 27 00:00:00 UTC 2010 - detlef@die-mafia.de
+
+- new upstream version <27.0.1>
+  * Web-gallery tool fixed
+  * Morse encoder can handle the lower case text
+  * A few Russian manual fixes
+
+-------------------------------------------------------------------
+Sat Feb 27 00:00:00 UTC 2010 - detlef@die-mafia.de
+
+- new upstream version <27.0.0>
+
+-------------------------------------------------------------------
+Mon Jan 25 00:00:00 UTC 2010 - detlef@die-mafia.de
+
+- new upstream version <26.2.2>
+
+-------------------------------------------------------------------
+Fri Jan  8 00:00:00 UTC 2010 - detlef@die-mafia.de
+
+- new upstream version <26.2.1>
+
+-------------------------------------------------------------------
+Wed Jan  6 00:00:00 UTC 2010 - detlef@die-mafia.de
+
+- new upstream version <26.2.0>
+
+-------------------------------------------------------------------
+Mon Dec  7 00:00:00 UTC 2009 - detlef@die-mafia.de
+
+- new upstream version <26.1.0>
+
+-------------------------------------------------------------------
+Sat Oct  3 00:00:00 UTC 2009 - detlef@die-mafia.de
+
+- new upstream version <26.0.1>
+
+-------------------------------------------------------------------
+Sat Jul 18 00:00:00 UTC 2009 - detlef@die-mafia.de
+
+- new upstream version <24.0.0>
+  * all dynamic menus can be teared off
+  * Lout IncludeGraphic support on Insert image..
+  * Add: Functions - Math - Binary to decimal //works with unsigned int binary numbers only
+  * Add: Search - Regexp mode //affect the searching, tables
+  * Add: more UI tweaks for smalls-screen devices
+  * all options from UI::Tune::Rare moved to UI::Tune::Common
+  * "Tab width in spaces" option moved to UI::Tune::Interface
+  * fixes at the tables engine
+  * main window can be resized to any size //useful for EEE PC 701 users
+  * Add: Functions - Tables
+  * win32: Templates and snippets were been fixed
+  * Add: Functions - Math - Decimal to binary //use with decimal representation
+  * Add: Functions - Math - Flip bits (bitwise complement) //use with binary representation
+  * Add: Markup - HTML tools - Strip HTML tags
+  * Add: "+" and "-" keys scales image at the image viewer
+  * Add: drag from the TEA's file manager to outside......
+  * some file manager improvenents
+  * Add: "+" and "-" keys scales image at the image viewer
+  * Add: drag from the TEA's file manager to outside......
+  * some file manager improvenents
+  * Add: View - Highlighting mode menu to set the hl-mode manually
+  * Add: File manager::places - configs item //to speed-up access to TEA config files
+  * Add: Markup - Mode - Lout..
+  * Add: FIF works to search at the Tune/Keyboard/Shortcuts list.
+  * Add: Lout syntax HL (if the file has the extension "lout" - foobar.lout)
+  * Tune window fixes
+  * Add: PHP syntax hl - made by Boo-boo
+  * Add: D syntax hl
+  * Add: "Fm - File information - Full info" can read WAV file properties and calculate
+    the RMS. RMS is calculated for 16 bit PCM files only.
+  * Add: Enter key work at the file name entry at the file manager. If user
+    used Open file, Enter key acts to open file, if the "Save as" is used,
+    Enter acts like fileman's "Save as" button.
+
+-------------------------------------------------------------------
+Mon Mar  9 00:00:00 UTC 2009 - detlef@die-mafia.de
+
+- new upstream version <23.2.0>
+  * Add FB2 format read-only support (via the inner ABW tio module)
+  * Add file manager fixes
+  * string list functions fixes
+  * OOP design fixes, tea binary site has been reduced by ~10 kbytes.
+  * resourses cleanup
+  * Add Functions - Sort - Sort case insensitively
+
+-------------------------------------------------------------------
+Sat Mar  7 00:00:00 UTC 2009 - detlef@die-mafia.de
+
+- new upstream version <23.1.1>
+
+-------------------------------------------------------------------
+Sat Feb 28 00:00:00 UTC 2009 - detlef@die-mafia.de
+
+- new upstream version <23.1.0>
+
+-------------------------------------------------------------------
+Tue Feb 10 00:00:00 UTC 2009 - detlef@die-mafia.de
+
+- new upstream version <23.0.0>
+  * Add BASIC syntax hl
+  * Add new logo at the About window
+  * Add LaTeX syntax hl
+  * Add Fm - ZIP - Create new ZIP
+  * Add Fm - ZIP - Add to ZIP
+  * Add Fm - ZIP - Save ZIP
+  * Add SLA (Scribus) format //read only
+  * Add Functions - Text - Escape regexp
+  * Add weak RTF support //read only
+  * Add input box for Save session //instead of file name in FIF
+  * Add ODT, SXW (old OOo format), KWD (old KWord format), ABW (AbiWord), DOCX documen
+    read only
+  * Add Fman - Image conversion - Scale by side
+  * Add Fman - Image conversion - Scale by percentages
+    1. put the val into the FIF
+    2. select images
+    3. apply the function
+  * Fortran hl fixes
+  * Add Tune - Functions - Image conversion output format
+  * Add Tune - Functions - Scale images with bilinear filtering
+  * Add Tune - Functions - Output images quality
+    mainly for JPEG. Use -1 for default settings, otherwise 0..100
+  * Add Tune - Functions - Zip directory with processed images
+
+-------------------------------------------------------------------
+Thu Jan 22 00:00:00 UTC 2009 - detlef@die-mafia.de
+
+- new upstream version <22.3.0>
+  * Add initial Fortran syntax hl. The fortran.xml is based on Fortran 90 spec
+  * Add C# syntax hl
+  * Add Functions - Text - Remove trailing spaces //on the each line
+
+-------------------------------------------------------------------
+Mon Jan 19 00:00:00 UTC 2009 - detlef@die-mafia.de
+
+- new upstream version <22.2.1>
+  * Aplly to each line - fixed
+  + Snippets, Scripts, Sessions and Templates now can hold submenus
+  - Qt version checking in src.pro is removed (it never worked fine on some distros)
+  * Search options are saving now
+  * Image viewer hides itself when the file manager lost a focus
+  + Autocompletion for the FIF
+
+-------------------------------------------------------------------
+Mon Jan 12 00:00:00 UTC 2009 - detlef@die-mafia.de
+
+- new upstream version <22.1.0>
+  * MD5 checksum evaluation - fixed
+  * paired braces hl - fixed
+  * Toggle header/source - fixed
+  * Add Functions - Analyze - Count the substring (regexp)
+  * Add Functions - Analyze - Count the substring
+    the "Search - Case sensitive" is used as an option
+    Use the FIF to define a substring.
+  * text to html - fixed
+  * several memory leaks - fixed
+  * markup engine inner changes
+
+-------------------------------------------------------------------
+Sat Jan  3 00:00:00 UTC 2009 - detlef@die-mafia.de
+
+- new upstream version <22.0.1>
+  * shortcuts bug - fixed
+  * "keys" file is renamed to "shortcuts", so all your previous hotkeys were lost
+    assign them again!
+  * "famous input field" is used instead of FEF :)
+  * shortcuts engine - fixed
+  * the "fte" script object is renamed to "fef" according to the FTE > FEF renaming
+  * Add File manager :: backspace navigates the fman to the directory at the upper level
+  * Delete old image viewer
+  * syntax hl engine can be case insensetive
+  * Add Seed7 syntax hl
+  * Add much better C/C++ hl
+  * Add Search - Whole words option
+  * Add Search - Case sensitive
+  * the "setup" tab has been renamed to "tune"
+  * "replace all" - fixed
+  * the "setup" tab has been renamed to "tune"
+  * "replace all" - fixed
+  * Add Functions - Analyze - UNITAZ quantity sorting
+  * Add Functions - Analyze - UNITAZ sorting alphabet
+  * Delete Functions - Analyze - UNITAZ
+  * Ctrl-F can be assigned twise - for Search and for the Focus the Famous entry field.
+    Please remove the first assignment manually to make the second one working properly
+
+-------------------------------------------------------------------
+Sun Dec 21 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <21.1.3>
+  * some UNITAZ fixes and improvements
+
+-------------------------------------------------------------------
+Sat Dec 20 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <21.1.2>
+  * Functions - Analyze - UNITAZ
+  * c/c++ hl fixed
+
+-------------------------------------------------------------------
+Fri Dec 19 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <21.1.1>
+  * hl fixes
+  * Pascal hl file fixed
+
+-------------------------------------------------------------------
+Tue Dec 16 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <21.0.5>
+  * "Functions - Statistics" is renamed to Analyze
+  * Extraction - Exract words is moved to Analyze
+  * - Extraction submenu
+  * - Single application mode
+
+-------------------------------------------------------------------
+Thu Dec 11 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <21.0.5>
+  * + File - File actions - Reload //i.e. revert to saved
+  * + File - File actions - Reload with encoding //use double click to reload current document with the selected charset
+
+-------------------------------------------------------------------
+Tue Dec  9 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <21.0.4>
+  * Pascal hl fixed
+  * some other bug fixes
+
+-------------------------------------------------------------------
+Sun Nov 30 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <21.0.3>
+  * spellchecker is fixed!!!
+  * add progressbar for the spellchecker
+
+-------------------------------------------------------------------
+Thu Nov 27 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <21.0.2>
+  * src.pro: QT version checking is disabled due to some reasons
+  * the inner changes to improve the loading speed
+  * IDE switched to QDevelop ;)
+  * Ctrl-F is now assigned for Focus the Famous text entry
+  * some bugs were fixed
+
+-------------------------------------------------------------------
+Wed Nov 19 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <21.0.0>
+
+-------------------------------------------------------------------
+Sat Oct 11 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <20.0.0>
+
+-------------------------------------------------------------------
+Thu Sep  4 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <19.1.1>
+  * Fix: Apply to each line
+
+-------------------------------------------------------------------
+Wed Sep  3 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <19.1.0>
+  * Add Statistics: author's sheets
+  * Add File - Sessions
+  * Add File - Save different - Save session
+  * Add Prefs: Restore the last session on start-up
+  * Add View - Stay on top
+  * Add Qt version detection on the qmake stage
+  * Add Functions - Math - Enumerate
+  * Add Syntax: step~zero_padding~prefix
+
+-------------------------------------------------------------------
+Mon Aug 18 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <19.0.5>
+  * 2008/08/04 //19.0.4: spellchecker words parser is fixed
+  * 2008/08/04 //19.0.3: more fixes
+  * 2008/08/04 //19.0.2: some file manager fixes
+
+-------------------------------------------------------------------
+Tue Aug  5 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <19.0.1>
+  * Add: Preferences - Override locale option
+  * Add: Single instance mode for Windows
+
+-------------------------------------------------------------------
+Sat Aug  2 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <19.0.0>
+  * Add: File manager
+  * Add: single-instance mode
+  * Del: TEAVisor
+  * Fix: Restore the positions of toolbars
+  * Fix: Dialogs remembers their sizes
+  * "Insert image" calls the file manager page
+  * Preferences - Use traditional File save/open dialogs
+
+-------------------------------------------------------------------
+Sat Jul 19 00:00:00 UTC 2008 - detlef@die-mafia.de
+
+- new upstream version <18.1.1>
+- remove tea-remove-gdk_color_to_string.patch
+
+-------------------------------------------------------------------
+Tue May  1 00:00:00 UTC 2007 - pascal.bleser@opensuse.org
+
+- new upstream version <16.1.1>
+- use enchant instead of aspell
+
+-------------------------------------------------------------------
+Wed Feb  1 00:00:00 UTC 2006 - pascal.bleser@opensuse.org
+
+- new upstream version <12.0>
+- rewrote spec file
+
+-------------------------------------------------------------------
+Wed Jul 27 00:00:00 UTC 2005 - pascal.bleser@opensuse.org
+
+- version 10.2
+
+-------------------------------------------------------------------
+Fri May  6 00:00:00 UTC 2005 - pascal.bleser@opensuse.org
+
+- version 9.0
+
+-------------------------------------------------------------------
+Thu Mar 24 00:00:00 UTC 2005 - pascal.bleser@opensuse.org
+
+- version 8.2
+
+-------------------------------------------------------------------
+Thu Mar 10 00:00:00 UTC 2005 - pascal.bleser@opensuse.org
+
+- version 8.1
+
+-------------------------------------------------------------------
+Sun Mar  6 00:00:00 UTC 2005 - pascal.bleser@opensuse.org
+
+- version 8.0
+
+-------------------------------------------------------------------
+Fri Jan 28 00:00:00 UTC 2005 - pascal.bleser@opensuse.org
+
+- version 7.0
+
+-------------------------------------------------------------------
+Sat Dec  4 00:00:00 UTC 2004 - pascal.bleser@opensuse.org
+
+- new package

@@ -1,0 +1,51 @@
+From: Egbert Eich <eich@suse.com>
+Date: Tue Nov 27 08:18:08 2018 +0100
+Subject: vnfs: SUSE - Make sure no repos are left over when adding a list of repositories
+Patch-mainline: Not yet
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: 6828449cae00ef402fbdebf32f4c71158e8401fb
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ vnfs/libexec/wwmkchroot/include-suse | 23 +++++++++++++++--------
+ 1 file changed, 15 insertions(+), 8 deletions(-)
+diff --git a/vnfs/libexec/wwmkchroot/include-suse b/vnfs/libexec/wwmkchroot/include-suse
+index 1b556f5..9bba06d 100644
+--- a/vnfs/libexec/wwmkchroot/include-suse
++++ b/vnfs/libexec/wwmkchroot/include-suse
+@@ -67,18 +67,25 @@ prechroot() {
+                 INSTALLDIRS="$INSTALLDIRS,file://$i"
+             fi
+         done
+-
+         ZYP_MIRROR=$INSTALLDIRS
+     fi
+ 
+-    declare -i cnt=0
+-    $ZYP_CMD rr --all
+-    for i in `echo $ZYP_MIRROR | sed -e 's/,/ /'`; do
+-        $ZYP_CMD ar $i repo-$((cnt++))
+-    done
+-    
++    if [ -n "${ZYP_MIRROR}" ]; then
++        declare -i i=0 cnt
++        cnt=$($ZYP_CMD lr | grep '|' | wc -l)
++        while [ $i -lt $cnt ]; do
++            $ZYP_CMD rr $i
++            let i++
++        done
++
++        cnt=0
++        for i in `echo $ZYP_MIRROR | sed -e 's/,/ /'`; do
++            $ZYP_CMD ar $i repo-$((cnt++))
++        done
++    fi
++
+     PKGR_CMD="$ZYP_CMD install --auto-agree-with-licenses $PKGLIST"
+-    
++
+     return 0
+ }
+ 

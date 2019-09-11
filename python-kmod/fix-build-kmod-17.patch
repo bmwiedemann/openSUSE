@@ -1,0 +1,15 @@
+---
+ kmod/_libkmod_h.pxd |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/kmod/_libkmod_h.pxd
++++ b/kmod/_libkmod_h.pxd
+@@ -28,7 +28,7 @@ cdef extern from 'stdbool.h':
+         pass
+ 
+ 
+-cdef extern from 'libkmod.h':
++cdef extern from 'kmod-17/libkmod.h':
+     # library user context - reads the config and system
+     # environment, user variables, allows custom logging
+     cdef struct kmod_ctx:

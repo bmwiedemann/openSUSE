@@ -1,0 +1,142 @@
+-------------------------------------------------------------------
+Thu Dec  7 20:24:24 UTC 2017 - crrodriguez@opensuse.org
+
+- Override TKLIBS so xhfsutil does not end buildrequiring  
+  the X system libraries at all.
+- Buildrequire tcl-devel too, which is a direct dependency.
+
+-------------------------------------------------------------------
+Sun Mar  1 14:06:37 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use url for source
+- Use %configure macro
+
+-------------------------------------------------------------------
+Thu Aug  1 14:35:11 UTC 2013 - max@suse.com
+
+- Add -DUSE_INTERP_RESULT to fix build with Tcl 8.6.
+
+-------------------------------------------------------------------
+Sat Jan 12 19:07:42 UTC 2013 - coolo@suse.com
+
+- remove suse_update_config
+
+-------------------------------------------------------------------
+Fri Dec  2 16:25:35 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Nov  5 14:47:32 CET 2007 - olh@suse.de
+
+- open block devices with O_EXCL (238687)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:28 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 10 21:53:18 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Wed Jul 23 13:51:19 CEST 2003 - max@suse.de
+
+- added tk-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Mon Dec  2 00:14:45 CET 2002 - ro@suse.de
+
+- include errno.h where needed 
+
+-------------------------------------------------------------------
+Mon Nov 18 09:52:42 CET 2002 - schwab@suse.de
+
+- Enable LFS.
+- Fix use of off_t.
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Wed Jan 23 16:12:08 CET 2002 - tcrhak@suse.cz
+
+- used macros %{_lib} and %{_libdir}
+
+-------------------------------------------------------------------
+Wed May 16 14:30:56 CEST 2001 - cihlar@suse.cz
+
+- fixed cast warnings on ia64
+
+-------------------------------------------------------------------
+Wed Mar  7 08:37:52 CET 2001 - cihlar@suse.cz
+
+- fixed neededforbuild
+
+-------------------------------------------------------------------
+Wed Nov 29 17:26:54 CET 2000 - ro@suse.de
+
+- changed neededforbuild <tcld> to <tcl-devel>
+
+-------------------------------------------------------------------
+Fri Nov  3 10:11:07 CET 2000 - cihlar@suse.cz
+
+- bzipped sources
+- improved BuildRoot
+
+-------------------------------------------------------------------
+Tue Jul 11 07:12:04 CEST 2000 - cihlar@suse.cz
+
+- fixed bug in error messages in hcopy
+
+-------------------------------------------------------------------
+Fri Jun 16 11:45:38 CEST 2000 - cihlar@suse.cz
+
+- Copyright tag fixed 
+
+-------------------------------------------------------------------
+Tue May 16 08:24:26 CEST 2000 - cihlar@suse.cz
+
+- xhfs, hfssh and hfs moved to xhfsutils 
+
+-------------------------------------------------------------------
+Mon May 15 15:06:27 CEST 2000 - cihlar@suse.cz
+
+- Group sorted 
+
+-------------------------------------------------------------------
+Wed Apr  5 13:47:10 CEST 2000 - cihlar@suse.cz
+
+- added BuildRoot
+- clean up spec file 
+
+-------------------------------------------------------------------
+Thu Jan 20 18:24:34 CET 2000 - ro@suse.de
+
+- man to /usr/share/man 
+
+-------------------------------------------------------------------
+Wed Oct 13 00:04:26 CEST 1999 - ro@suse.de
+
+- update to 3.2.6
+
+-------------------------------------------------------------------
+Tue Oct 12 12:32:55 CEST 1999 - ro@suse.de
+
+- added tcld to neededforbuild
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed May 13 16:25:12 MEST 1998 - ro@suse.de
+
+- new package version 3.2
+

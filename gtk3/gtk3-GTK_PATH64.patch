@@ -1,0 +1,13 @@
+Index: gtk+-3.5.2/gtk/gtkmodules.c
+===================================================================
+--- gtk+-3.5.2.orig/gtk/gtkmodules.c
++++ gtk+-3.5.2/gtk/gtkmodules.c
+@@ -60,7 +60,7 @@ get_module_path (void)
+   if (result)
+     return result;
+ 
+-  module_path_env = g_getenv ("GTK_PATH");
++  module_path_env = g_getenv ("GTK_PATH64");
+   exe_prefix = g_getenv ("GTK_EXE_PREFIX");
+ 
+   if (exe_prefix)

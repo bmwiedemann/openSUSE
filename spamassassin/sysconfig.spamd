@@ -1,0 +1,48 @@
+## Path:           Network/Mail/Spamassassin
+## Description:    Arguments for the spam daemon
+## Type:           string
+## Default:        "-d -c -L"
+## ServiceRestart: spamd
+#
+# The arguments passed to spamd.
+# See spamd(1) man page.
+# Default is "-d -c -L"
+SPAMD_ARGS="-d -c -L"
+
+## Path:           Network/Mail/Spamassassin
+## Description:    Call sa-update periodicaly
+## Type:           yesno
+## Default:        "no"
+#
+# Set this varible to yes if you want the daily cron job
+# to call sa-update. 
+SPAM_SA_UPDATE="no"
+
+## Path:           Network/Mail/Spamassassin
+## Description:    Compile SpamAssassin ruleset into native code
+## Type:           yesno
+## Default:        "no"
+#
+# Set this varible to yes if you want the daily cron job
+# compile SpamAssassin ruleset into native code after
+# calling sa-update.
+SPAM_SA_COMPILE="no"
+
+## Path:           Network/Mail/Spamassassin
+## Description:    Restart spamd after recompiling spamassassin ruleset
+## Type:           yesno
+## Default:        "yes"
+#
+# Set this varible to yes if you want the daily cron job
+# restart spamd after recompiling spamassassin ruleset.
+SPAM_SPAMD_RESTART="yes"
+
+## Path:           Network/Mail/Spamassassin
+## Description:    Restart amavisd after recompiling spamassassin ruleset
+## Type:           yesno
+## Default:        "yes"
+#
+# Set this varible to yes if you want the daily cron job
+# restart amavisd after recompiling spamassassin ruleset.
+SPAM_AMAVISD_RESTART="yes"
+

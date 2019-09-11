@@ -1,0 +1,15 @@
+--- ./src/cmd/ksh93/sh/name.c.orig	2016-06-01 13:09:29.754690694 +0000
++++ ./src/cmd/ksh93/sh/name.c	2016-06-01 13:09:53.348690652 +0000
+@@ -2726,6 +2726,12 @@ void nv_optimize(Namval_t *np)
+ 		}
+ 		if((xp= (struct optimize*)fp) && xp->ptr==shp->argaddr)
+ 			return;
++		if (xp && xp->next) {
++			register struct optimize *xpn;
++			for (xpn = xp->next; xpn; xpn = xpn->next)
++				if (xpn->ptr == shp->argaddr && xpn->np == np)
++					return;
++		}
+ 		if(op = opt_free)
+ 			opt_free = op->next;
+ 		else

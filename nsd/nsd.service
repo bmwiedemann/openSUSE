@@ -1,0 +1,15 @@
+[Unit]
+Description=NSD DNS Server
+After=syslog.target network.target
+
+[Service]
+Type=simple
+PIDFile=/run/nsd/nsd.pid
+#EnvironmentFile=-/etc/sysconfig/nsd
+#ExecStart=/usr/sbin/nsd -D -c /etc/nsd/nsd.conf $OTHER_NSD_OPTS
+ExecStart=/usr/sbin/nsd -d -c /etc/nsd/nsd.conf
+ExecStopPost=/bin/rm -f /var/lib/nsd/xfrd.state
+
+[Install]
+WantedBy=multi-user.target
+

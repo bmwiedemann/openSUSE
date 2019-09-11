@@ -1,0 +1,101 @@
+This file focuses on topics specific to openSUSE / SLE packages. For
+generic Firebird introduction, read Firebird 3 Quickstart and Release
+Notes documents (both provided in firebird-doc package).
+
+
+1. Upgrade from version 2.5
+---------------------------
+
+Firebird 3 brings some incompatible changes which make fully automated
+upgrade of existing 2.5 setups impossible.
+
+First, new database file format (On-disk structure, ODS) is used. To
+migrate existing databases, backup them with gbak before the upgrade and
+restore after the upgrade.
+
+Second, new authentication scheme is used by default so that old
+security databases (with users and passwords) cannot be migrated. You
+can either create a new security database from scratch as described in
+
+  http://www.firebirdsql.org/file/documentation/release_notes/html/en/3_0/rnfb30-compat-initsec.html
+
+or migrate the old one (without passwords) as described in
+
+  http://www.firebirdsql.org/file/documentation/release_notes/html/en/3_0/rnfb30-compat-upgrade-secdb.html
+
+Both sections are also available in firebird-doc package in file
+
+  /usr/share/doc/packages/firebird/ReleaseNotes.pdf
+
+Chapter 12 "Compatibility Issues" of release notes also lists other
+possible incompatibilities and is worth reading for anyone upgrading
+from Firebird 2.5 to 3.0 for the first time.
+
+
+2. Packaging
+------------
+
+Package firebird contains only common files needed both for client and
+server installations. The rest is divided into subpackages:
+
+  firebird-server     - server functionality
+  libfbclient2        - client library (both remote and embedded)
+  libib_util          - utility functions for UDF
+  firebird-utils      - management utilities
+  firebird-doc        - documentation
+  libfbclient-devel   - devel files for libfbclient2
+  libib_util-devel    - devel files for libib_util
+  firebird-examples   - example database and API examples
+
+Two of Firebird utilities - isql and gstat - have names colliding with
+tools from other packages. They have been renamed to isql-fb and
+gstat-fb respectively.
+
+Unlike in pre-3.0 versions, Firebird 3 provides one executable which can
+handle all three threading modes (Classic, SuperClassic and SuperServer)
+depending on ServerMode directive in firebird.conf. The client library
+libfbclient2 can now be used both to connect to remote servers and to
+access local database files in embedded mode. 
+
+By default, the server listens on TCP port 3050 to both IPv4 and IPv6
+connections. This can be configured using RemoteBindAddress,
+RemoteServicePort and IPv6V6Only directives.
+
+
+3. Configuration
+----------------
+
+Unlike in Firebird 2.5, no default sysdba password is set by default.
+Before using Firebird 3.0, one needs to initialize the security database
+as described in
+
+  http://www.firebirdsql.org/file/documentation/release_notes/html/en/3_0/rnfb30-compat-initsec.html
+
+(or section "Initializing the Security Database" of release notes
+provided in /usr/share/doc/packages/firebird/ReleaseNotes.pdf (package
+firebird-doc).
+
+Config files are in /etc/firebird. Default config files are mostly the
+same as upstream defaults, the only difference is default value of
+DatabaseAccess directive. As upstream default "Full" can be considered
+a security flaw, SUSE packages use "Restrict /srv/firebird". To use
+a database in different location, either modify the DatabaseAccess
+directive or define an alias for it in aliases.conf.
+
+
+4. Starting the server
+----------------------
+
+Set the ServerMode directive in firebird.conf to your preferred
+operating mode. Then start the server:
+
+- SuperServer or SuperClassic:
+
+  * once: /etc/init.d/firebird start
+  * always: insserv firebird
+
+- Classic:
+
+  * in /etc/xinetd.d/firebird, change value of "disable" to "yes"
+  * check if xinetd is running and reload its configuration or start it
+

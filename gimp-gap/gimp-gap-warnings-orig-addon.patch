@@ -1,0 +1,52 @@
+--- extern_libs/Makefile.am
++++ extern_libs/Makefile.am
+@@ -68,9 +68,9 @@
+ endif
+ 
+ install-data-hook:
+-	rm -f $(GAPLIBDIR)/libavformat.a \
+-	rm -f $(GAPLIBDIR)/libavcodec.a \
+-	rm -f $(GAPLIBDIR)/libmpeg3.a
++	rm -f $(DESTDIR)$(GAPLIBDIR)/libavformat.a \
++	rm -f $(DESTDIR)$(GAPLIBDIR)/libavcodec.a \
++	rm -f $(DESTDIR)$(GAPLIBDIR)/libmpeg3.a
+ 
+ EXTRA_DIST = \
+ 	README_extern_libs		\
+--- libgapvidapi/gap_vid_api_ffmpeg.c
++++ libgapvidapi/gap_vid_api_ffmpeg.c
+@@ -29,8 +29,9 @@
+ #include "avformat.h"
+ #include "stdlib.h"
+ #include "gap_val_file.h"
++#include "gap_base.h"
+ #include "audioconvert.h"
+-
++#include "imgconvert.h"
+ 
+ #define READSTEPS_PROBE_TIMECODE 32
+ 
+--- vid_enc_avi/gap_enc_avi_main.c
++++ vid_enc_avi/gap_enc_avi_main.c
+@@ -58,6 +58,7 @@
+ #include "gap_gve_story.h"     /* for STORYBOARD support */
+ 
+ #include "gap_gve_jpeg.h"      /* for the builtin JPEG support */
++#include "gap_gve_png.h"       /* for the builtin PNG support */
+ #include "gap_gve_raw.h"       /* for raw CODEC support */
+ #include "gap_gve_xvid.h"      /* for XVID CODEC support */
+ #include "gap_enc_avi_main.h"
+--- vid_enc_ffmpeg/gap_enc_ffmpeg_main.c
++++ vid_enc_ffmpeg/gap_enc_ffmpeg_main.c
+@@ -76,9 +76,11 @@
+ #include <libgimp/gimp.h>
+ #include <libgimp/gimpui.h>
+ 
++#include "imgconvert.h"
+ 
+ #include "gap-intl.h"
+ 
++#include "gap_file_util.h"
+ #include "gap_libgapvidutil.h"
+ #include "gap_libgimpgap.h"
+ #include "gap_enc_ffmpeg_main.h"

@@ -1,0 +1,57 @@
+From 8c4066c668147b1180c56f39722d2ade78ffd41c Mon Sep 17 00:00:00 2001
+From: Mihai Dinca <mdinca@suse.de>
+Date: Thu, 13 Jun 2019 17:48:55 +0200
+Subject: [PATCH] Fix zypper pkg.list_pkgs expectation and dpkg mocking
+
+---
+ tests/unit/modules/test_dpkg_lowpkg.py | 12 ++++++------
+ tests/unit/modules/test_zypperpkg.py   |  2 +-
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/tests/unit/modules/test_dpkg_lowpkg.py b/tests/unit/modules/test_dpkg_lowpkg.py
+index d16ce3cc1a..98557a1d10 100644
+--- a/tests/unit/modules/test_dpkg_lowpkg.py
++++ b/tests/unit/modules/test_dpkg_lowpkg.py
+@@ -127,9 +127,9 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
+         with patch.dict(dpkg.__salt__, {'cmd.run_all': mock}):
+             self.assertEqual(dpkg.file_dict('httpd'), 'Error:  error')
+ 
+-    @patch('salt.modules.dpkg._get_pkg_ds_avail', MagicMock(return_value=dselect_pkg))
+-    @patch('salt.modules.dpkg._get_pkg_info', MagicMock(return_value=pkgs_info))
+-    @patch('salt.modules.dpkg._get_pkg_license', MagicMock(return_value='BSD v3'))
++    @patch('salt.modules.dpkg_lowpkg._get_pkg_ds_avail', MagicMock(return_value=dselect_pkg))
++    @patch('salt.modules.dpkg_lowpkg._get_pkg_info', MagicMock(return_value=pkgs_info))
++    @patch('salt.modules.dpkg_lowpkg._get_pkg_license', MagicMock(return_value='BSD v3'))
+     def test_info(self):
+         '''
+         Test info
+@@ -154,9 +154,9 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
+         assert pkg_data['maintainer'] == 'Simpsons Developers <simpsons-devel-discuss@lists.springfield.org>'
+         assert pkg_data['license'] == 'BSD v3'
+ 
+-    @patch('salt.modules.dpkg._get_pkg_ds_avail', MagicMock(return_value=dselect_pkg))
+-    @patch('salt.modules.dpkg._get_pkg_info', MagicMock(return_value=pkgs_info))
+-    @patch('salt.modules.dpkg._get_pkg_license', MagicMock(return_value='BSD v3'))
++    @patch('salt.modules.dpkg_lowpkg._get_pkg_ds_avail', MagicMock(return_value=dselect_pkg))
++    @patch('salt.modules.dpkg_lowpkg._get_pkg_info', MagicMock(return_value=pkgs_info))
++    @patch('salt.modules.dpkg_lowpkg._get_pkg_license', MagicMock(return_value='BSD v3'))
+     def test_info_attr(self):
+         '''
+         Test info with 'attr' parameter
+diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
+index 5c5091a570..a7063e47c6 100644
+--- a/tests/unit/modules/test_zypperpkg.py
++++ b/tests/unit/modules/test_zypperpkg.py
+@@ -659,7 +659,7 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+                     'install_date_time_t': 1503572639,
+                     'epoch': None,
+                 }],
+-                'perseus-dummy.i586': [{
++                'perseus-dummy': [{
+                     'version': '1.1',
+                     'release': '1.1',
+                     'arch': 'i586',
+-- 
+2.21.0
+
+

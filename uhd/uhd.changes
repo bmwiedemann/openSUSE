@@ -1,0 +1,215 @@
+-------------------------------------------------------------------
+Sat Mar 23 13:27:49 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Fixed build for Boost 1.69
+
+-------------------------------------------------------------------
+Fri Dec 28 12:21:29 UTC 2018 - mardnh@gmx.de
+
+- Disable support for GPSD in uhd for now.
+  gps support is not yet adapted to the latest gpsd API.
+
+-------------------------------------------------------------------
+Tue May 29 11:03:42 UTC 2018 - adam.majer@suse.de
+
+- fixed build with Boost 1.67 (bsc#1089820)
+  uhd-fix-for-boost-1_67.patch
+- drop _constraints and use memory-constraints package instead.
+- re-enabled package tests
+
+-------------------------------------------------------------------
+Sat Jan 13 15:32:26 UTC 2018 - mardnh@gmx.de
+
+- Force usage of python2 during build
+
+-------------------------------------------------------------------
+Wed Jan  3 13:16:23 UTC 2018 - mardnh@gmx.de
+
+- Adjust _constraints to set required memory to 6Gb
+
+-------------------------------------------------------------------
+Thu Dec 28 21:15:46 UTC 2017 - wk@ire.pw.edu.pl
+
+- fixed build with boost-1.66
+  patch uhd-fix-for-boost-1_66.patch backported from git
+
+-------------------------------------------------------------------
+Fri Jul 21 22:07:10 UTC 2017 - wk@ire.pw.edu.pl
+
+- Updated sources to version 3.9.7
+- enabled GPSD support
+
+-------------------------------------------------------------------
+Thu May  4 13:52:50 UTC 2017 - wk@ire.pw.edu.pl
+
+- Force docutils to use python2 on Tumbleweed
+
+-------------------------------------------------------------------
+Fri Feb  3 16:14:09 UTC 2017 - jengelh@inai.de
+
+- Directly invoke ldconfig and don't suppress output from groupadd.
+
+-------------------------------------------------------------------
+Thu Feb  2 15:13:46 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Tue Dec 13 13:06:09 UTC 2016 - victhor.foster@gmail.com
+
+- Add fix-for-armv6l-armv7l-build-failure.patch, adds -mfpu=neon compiler flag to package
+  Fixes build failure on armv6l and armv7l architectures
+
+-------------------------------------------------------------------
+Sat Sep  3 19:32:09 UTC 2016 - wk@ire.pw.edu.pl
+
+- Update sources to version 3.9.5
+
+-------------------------------------------------------------------
+Sun Jul  3 12:54:44 UTC 2016 - opensuse.lietuviu.kalba@gmail.com
+
+- %pre script requires /usr/sbin/groupadd from "shadow" package
+
+-------------------------------------------------------------------
+Sat May  7 22:38:01 UTC 2016 - wk@ire.pw.edu.pl
+
+- Update sources to version 3.9.4
+
+-------------------------------------------------------------------
+Wed Mar 23 23:01:19 UTC 2016 - wk@ire.pw.edu.pl
+
+- Update sources to version 3.9.3
+
+-------------------------------------------------------------------
+Thu Dec 31 10:22:49 UTC 2015 - wk@ire.pw.edu.pl
+
+- Update sources to version 3.9.2
+- Drop 0003-uhd-C-API-wrapper-fix-commit-30f87afcba71a07.patch:
+  included upstream
+
+-------------------------------------------------------------------
+Sun Dec 27 22:45:13 UTC 2015 - mardnh@gmx.de
+
+- Add patch for correctly installing the C-API header files
+  * 0003-uhd-C-API-wrapper-fix-commit-30f87afcba71a07.patch
+
+-------------------------------------------------------------------
+Sat Sep 26 08:00:37 UTC 2015 - wk@ire.pw.edu.pl
+
+- Update sources to version 3.9.1
+- arm-neon.patch patch removed
+
+-------------------------------------------------------------------
+Thu Sep 10 21:30:21 UTC 2015 - wk@ire.pw.edu.pl
+
+- Update sources to version 3.9.0
+
+-------------------------------------------------------------------
+Tue Aug 18 23:08:51 UTC 2015 - wk@ire.pw.edu.pl
+
+- Update sources to version 3.8.5
+
+-------------------------------------------------------------------
+Wed Aug 12 12:34:58 UTC 2015 - schwab@suse.de
+
+- arm-neon.patch: don't use 32-bit arm code on 64-bit arm
+
+-------------------------------------------------------------------
+Sat Jun 20 09:53:26 UTC 2015 - dmitry_r@opensuse.org
+
+- Add _constraints to set required memory to 3Gb
+
+-------------------------------------------------------------------
+Sat May 16 07:07:10 UTC 2015 - wk@ire.pw.edu.pl
+
+- Update sources to version 3.8.4
+
+-------------------------------------------------------------------
+Wed Feb 18 23:53:30 UTC 2015 - wk@ire.pw.edu.pl
+
+- Update sources to version 3.8.2
+
+-------------------------------------------------------------------
+Thu Jan 29 21:28:34 UTC 2015 - wk@ire.pw.edu.pl
+
+- Update to version 3.8.1
+  * firmware images are from 3.8.2
+
+-------------------------------------------------------------------
+Thu Oct 23 19:51:56 UTC 2014 - wk@ire.pw.edu.pl
+
+- Update to version 3.7.3
+  * firmware images are from 3.7.2
+
+-------------------------------------------------------------------
+Mon Sep  1 22:22:58 UTC 2014 - wk@ire.pw.edu.pl
+
+- Update to version 3.7.2
+  * bugfix release
+
+-------------------------------------------------------------------
+Wed Aug 20 08:37:28 UTC 2014 - dmitry_r@opensuse.org
+
+- Cleanup spec file
+- Remove OBS source service
+- Use %cmake macros
+- Move udev rules to uhd-udev package according to shared library
+  packaging policy
+- Remove buildtime from documentation
+
+-------------------------------------------------------------------
+Wed Apr  2 21:17:08 UTC 2014 - wk@ire.pw.edu.pl
+
+- Update to version 3.7.0
+
+-------------------------------------------------------------------
+Thu Jan 30 12:30:52 UTC 2014 - lnt-sysadmin@lists.lrz.de
+
+- Changes to spec file: 
+  * Use full path when calling groupadd
+
+-------------------------------------------------------------------
+Wed Jan 29 13:25:24 UTC 2014 - opensuse@dstoecker.de
+
+- uhd-devel needs boost
+
+-------------------------------------------------------------------
+Sun Nov  3 04:58:02 UTC 2013 - lnt-sysadmin@lists.lrz.de
+
+- Update to version 3.5.4
+- Changes to spec file:
+  * Update udev paths for openSUSE 13.1 and ensure udev rules are
+    updated when package is installed / updated / uninstalled.
+  * Add %check section (currently disabled due to failures in 13.1)
+  * Find file dupes also in %_bindir
+
+-------------------------------------------------------------------
+Fri Apr 12 07:54:53 UTC 2013 - lnt-sysadmin@lists.lrz.de
+
+- Update to version 3.5.2
+- Added Ettus firmware images (version 3.5.2)
+- Changes to spec file:
+  * pass %optflags to cmake according to
+    http://en.opensuse.org/openSUSE:Build_system_recipes
+  * fixed search for duplicate files
+
+-------------------------------------------------------------------
+Tue Nov 7 2012 - wk@ire.pw.edu.pl
+ 
+- updated to 3.5.0
+- fixed some rpmlint warnings
+
+-------------------------------------------------------------------
+Mon Oct 23 2012 - wk@ire.pw.edu.pl
+
+- install udev rule (from Fedora)
+
+-------------------------------------------------------------------
+Sat Oct 21 2012 - wk@ire.pw.edu.pl
+
+- updated to 3.4.3
+
+-------------------------------------------------------------------
+Fri Jun 15 2012 - surligas@csd.uoc.gr
+
+- packaged libuhd version 3.4.2

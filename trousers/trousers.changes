@@ -1,0 +1,327 @@
+-------------------------------------------------------------------
+Fri Apr 26 10:33:38 UTC 2019 - mvetter@suse.com
+
+- bsc#1130588: Require shadow instead of old pwdutils
+
+-------------------------------------------------------------------
+Fri Oct 26 11:13:37 UTC 2018 - matthias.gerstner@suse.com
+
+- fix mode of /var/lib/tpm, was missing the execute bit in the previous
+  version.
+- implement a backup and restore logic for /var/lib/tpm/system.data.* to
+  prevent removal of validly stored trousers state during update. See previous
+  comment for the packaging error that leads to this requirement.
+
+-------------------------------------------------------------------
+Wed Oct 24 12:42:13 UTC 2018 - matthias.gerstner@suse.com
+
+- fix wrong installation of system.data.{auth,noauth} into /var/lib/tpm. These
+  files are only sample files that *can* be used to fake that ownership was
+  already taken by trousers, when other TPM stacks did that already. These
+  files should not be there by default. Therefore install them into
+  /usr/share/trousers instead, to allow the user to use them at his own
+  discretion (fixes bsc#1111381).
+
+-------------------------------------------------------------------
+Sun Jan  1 05:15:50 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 0.3.14 (see ChangeLog) (FATE#321450)
+
+-------------------------------------------------------------------
+Fri May  6 20:15:13 UTC 2016 - jengelh@inai.de
+
+- Check for user/group existence before attempting to add them,
+  and remove error suppression from these calls.
+- Avoid runtime dependency on systemd, the macros can all deal with
+  its absence.
+
+-------------------------------------------------------------------
+Fri Jun 19 15:51:08 UTC 2015 - crrodriguez@opensuse.org
+
+- Force GNU inline semantics, fixes build with GCC5 
+
+-------------------------------------------------------------------
+Thu Apr  2 13:18:08 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec-file with spec-cleaner
+- Update prerequires
+- Use systemd unit file
+  * replace tcsd.init with tcsd.service
+
+-------------------------------------------------------------------
+Tue Jun  3 13:04:45 UTC 2014 - meissner@suse.com
+
+- updated to trousers 0.3.13 (bnc#881095 LTC#111124)
+  - Changed exported functions which had a name too common, to avoid
+    collision
+  - Assessed daemon security using manual techniques and coverity
+  - Fixed major security bugs and memory leaks
+  - Added debug support to run tcsd with a different user/group
+  - Daemon now properly closes sockets before shutting down
+
+* TROUSERS_0_3_12
+  - Added new network code for RPC, which supports IPv6
+  - Users of client applications can configure the hostname of the tcsd
+    server they want to connect through the TSS_TCSD_HOSTNAME env var
+    (only works if application didn't set a hostname in the context)
+  - Added disable_ipv4 and disable_ipv6 config options for server
+
+- removed trousers-wrap_large_key_overflow.patch: upstream
+- removed trousers-0.3.11.2.diff: solved upstream now
+
+-------------------------------------------------------------------
+Wed Mar 19 12:54:21 UTC 2014 - meissner@suse.com
+
+- trousers-wrap_large_key_overflow.patch: Do not wrap keys larger than
+  2048 bit, as the space on the TPM is limited to that amount. (bnc#868933)
+
+-------------------------------------------------------------------
+Tue Jan 14 10:42:23 UTC 2014 - meissner@suse.com
+
+- Updated to trousers 0.3.11.2
+  - license changed to BSD-3-Clause
+  - various bug and manpage fixes
+- trousers-0.3.10.diff renamed and rebased to trousers-0.3.11.2.diff
+
+-------------------------------------------------------------------
+Fri Sep 28 14:45:51 UTC 2012 - meissner@suse.com
+
+- updated to trousers 0.3.10
+  - bugfixes
+  - context checking
+
+-------------------------------------------------------------------
+Fri May 18 11:04:43 CEST 2012 - meissner@suse.de
+
+- Updated to trousers 0.3.9
+  - lots of bugfixes
+
+-------------------------------------------------------------------
+Wed Mar 28 17:01:59 CEST 2012 - meissner@suse.de
+
+- Updated to TROUSERS_0_3_8
+  - Fix ssl_ui.c overflow
+  - Handling of TPM_CERTIFY_INFO2 structure special case
+  - Fix possible obfuscation of obj_migdata.c errors.
+  - Make 1.2 keys respect the TPM_PCRIGNOREDONREAD flag.
+  - PCRInfo member allocation in Trspi_Unload_CERTIFY_INFO.
+  - Add functions for deserializing NVRAM related data structures
+  - Add NVRAM specific error messages
+  - Fix spec file so one can build an rpm
+  - Initialize the tcsd_config_file with NULL.
+  - support for -c <configfile> command line option
+  - Establish a .gitignore file
+  - ENDIAN_H and htole definition fix
+
+-------------------------------------------------------------------
+Tue Mar 13 08:30:18 UTC 2012 - cfarrell@suse.com
+
+- license update: CPL-1.0
+  SPDX format
+
+-------------------------------------------------------------------
+Sat Nov 19 20:46:59 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Jun 20 11:57:28 CEST 2011 - meissner@suse.de
+
+- Updated to TROUSERS_0_3_7
+  - bugfixes
+  - obj_policy_is_secret_set added
+
+-------------------------------------------------------------------
+Mon Sep 27 01:38:35 CEST 2010 - ro@suse.de
+
+- fix patch to apply 
+
+-------------------------------------------------------------------
+Wed Aug 11 10:57:44 CEST 2010 - meissner@suse.de
+
+- Updated to TROUNSERS_0_3_6
+  - Fixed a number of warnings during a build with --debug regarding THREAD ID
+    definition
+  - Removed htole() dependency, which was included only in glibc 2.9
+
+- Updated to TROUSERS_0_3_5
+  - Allowed TCD Daemon to run with reduced privileges In Solaris.
+  - Fixing previous kfreebsd build patch conflict with the current tree.
+  - TCSD error handling improvements.
+  - mutex init inclusion.
+  - pthread_t portability fix
+  - Owner Evict keys load fix.
+  - Big- endian issues.
+  - Memory leak fix.
+  - Adding missing #include <limits.h>.
+  - kfreebsd build fixes.
+  - Fixed usage of syslog().
+  - 64bits clean
+  - Fixes the TCP UN and IN socket connection attempt handling
+  - Fixes logic on opening a hardware TPM.
+  - Added communication through TCP to software TPMs in TrouSerS.
+  - Fixed conflicting defines
+  - Adds missing free()
+  - Fixed fread() return value check.
+  - Made the previous fix cleaner and more robust.
+  - Added missing check in order to avoid freeing buffer that's out of Tspi_Data_Seal() scope.
+  - Fixed Tspi_TPM_GetRandom 4kb output limit.
+
+-------------------------------------------------------------------
+Mon Jun 21 18:36:48 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- move library to %/{_lib} fix build of rng-tools 
+
+-------------------------------------------------------------------
+Thu Mar 18 11:28:51 CET 2010 - meissner@suse.de
+
+- Updated to TROUSERS_0_3_4
+  - Fixed TrouSerS mishandling of TPM auth sessions
+  - Enabled hosttable.c "_init" and "_fini" functions to work on Solaris
+  - Included Solaris in BSD_CONST definition conditional
+  - Made the init script LSB compliant
+  - make distcheck improved
+- TROUSERS_0_3_3_2
+  - Fixed logic when filling up RSA keys objects.
+- TROUSERS_0_3_3_1
+  - TCSD now runs as tss and has a better signal handling
+  - Fixed many memory handling issues
+- TROUSERS_0_3_3
+  - Tspi_ChangeAuth fixed for popup secret use case.   
+  - Prefixed exported functions with common names.
+  - Fixed issues  with accessing the utmp database.
+  - Migrated the bios parser file handler from open to fopen.
+
+-------------------------------------------------------------------
+Mon Feb  1 12:35:28 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Thu Aug 27 15:36:08 CEST 2009 - meissner@suse.de
+
+- updated to 0.3.2.
+ - Added IMA log parser in conformance with format introduced in linux kernel 2.6.30
+ - Fixed memory handling issues in src/tspi/tspi_quote2.c and tspi_tick.c
+ - Fixed memory handling issues in tcs/rpc/tcstp/rpc_tick.c
+ - Fixed logic when releasing auth handles, now the TPM won't become out of
+   resources due too many unreleased auth handles there.
+ - Fixed compilation problems when building trousers in Fedora with
+   -fstack-protector & gcc 4.4
+ - Fixed the legacy usage of a deprecated 1.1 TPM command, now auth sessions
+   can be closed fine.
+ - Fixed key memory cache when evicting keys, invalid key handles were evicted
+   when shouldn't.
+ - Fixed authsess_xsap_init call with wrong handle
+ - Fixed authsess_callback_hmac return code
+ - Fixed validateReturnAuth return value
+ - Added consistency to avoid multiple double free() and bound checks to avoid SEGV
+ - Moved from flock to fcntl since the first isn't supported in multi-thread applications
+ - Added necessary free() and consistency necessary in tspi/tsp_delegate.c to avoid SEGV 
+ - Typecast added in trousers.c in the UNICODE conversion functions
+ - Fixed wrong return code in Tspi_NV_ReleaseSpace
+ - Fixed digest computation in Tspi_NV_ReleaseSpace
+ - Fixed tpm_rsp_parse, it previously checked for an additional TPM_AUTH blob, resulting in a incorrect data blog unload.
+ - Added #include <limits.h> to remove INT_MAX undeclared error
+   during build. Files updated: trspi/crypto/openssl/symmetric.c,
+   tspi/tspi_aik.c and tspi/tsp_ps.c
+ - Added bounds checking in the data parsing routines of the TCSD's tcstp RPC code, preventing attacks from malicious clients.
+ - Removed commented out code in src/tcs/rpc/tcstp/rpc.c
+ - Commented out old OSAP code, its now unused
+ - Fixed bug in tcsi_bind.c, one too few params were passed to the function parsing the TPM blob.
+ - Fixed lots of erroneous TSPERR and TCSERR calls
+ - Added support for logging all error return codes when debug is on
+ - Check that parent auth is loaded in the load key path outside the mem_cache_lock, if a thread sleeps holding it, we deadlock
+ - Added support for dynamically growing the table that holds sleeping threads inside the auth manager
+ - In tcs_auth_mgr.c, fixed the release handle path, which didn't check if the handle was swapped out before calling to the TPM.
+ - Updates throughout the code supporting the modular build.
+
+-------------------------------------------------------------------
+Sun Jun 14 18:33:36 CEST 2009 - meissner@suse.de
+
+- included <limits.h> to fix glibc 2.10 build issues
+
+-------------------------------------------------------------------
+Sat Apr 18 22:19:55 CEST 2009 - crrodriguez@suse.de
+
+- remove static libtspi 
+
+-------------------------------------------------------------------
+Tue Sep  2 13:51:20 CEST 2008 - meissner@suse.de
+
+- fixed 64bit build issue
+
+-------------------------------------------------------------------
+Fri Aug 22 13:28:38 CEST 2008 - meissner@suse.de
+
+- upgraded to 0.3.1
+  - TPM 1.2 support throughout the code, see ChangeLog
+  - lots of new features
+  - lots of bugfixes
+- dropped secondary TPM support patches. is either already
+  upstream (differently), or will be.
+
+-------------------------------------------------------------------
+Tue Apr 15 15:08:29 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file for multilib support 
+
+-------------------------------------------------------------------
+Tue Apr 15 11:20:37 CEST 2008 - meissner@suse.de
+
+- fixed glibc 2.8 build issues
+
+-------------------------------------------------------------------
+Fri Mar 28 08:56:30 CET 2008 - meissner@suse.de
+
+- merged from buildservice
+- lots of build cleanups for rpmlint warnings
+
+-------------------------------------------------------------------
+Mon Nov 29 13:17:00 CET 2007 - ramunno@polito.it
+
+- configured to remove dependencies from GTK
+
+-------------------------------------------------------------------
+Mon Nov 26 18:57:45 CET 2007 - draht@suse.de
+
+- manual mutual dependencies added: libtspi1 <-> trousers
+
+-------------------------------------------------------------------
+Mon Nov 26 18:41:12 CET 2007 - draht@suse.de
+
+- system.data.*auth files added to /var/lib/tpm/. Note: tcsd expects
+  /var/lib/tpm/system.data . RTFM...
+
+-------------------------------------------------------------------
+Mon Nov 26 18:27:32 CET 2007 - draht@suse.de
+
+- init file mode'd 755 in %install.
+
+-------------------------------------------------------------------
+Thu Oct 25 13:57:17 CEST 2007 - skh@suse.de
+
+- added trousers_0.2.9-tpm_1.2_dual_v20070206 and its documentation
+
+-------------------------------------------------------------------
+Mon Aug 13 17:50:26 CEST 2007 - skh@suse.de
+
+- initial build service import with version 0.2.9.1
+- split off package libtspi1 to conform to shared library packaging
+  policy
+
+-------------------------------------------------------------------
+Wed Jan 11 14:07:25 CET 2006 - draht@suse.de
+
+- #137913: Fix config file permissions and ownership to 0600 tss.tss
+
+-------------------------------------------------------------------
+Wed Nov  9 00:39:23 CET 2005 - draht@suse.de
+
+- file list changes, split into trousers and -devel.
+
+-------------------------------------------------------------------
+Wed Nov  2 00:11:04 CET 2005 - draht@suse.de
+
+- initial build of the package.
+

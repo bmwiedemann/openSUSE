@@ -1,0 +1,74 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2018-08-25 15:28:25.894943233 +0200
+
+Unversioned libraries suck!
+
+I loosely remember someone or something suggested that something like semver is in place.
+Diffing 7.10.2984 to 7.11.3113 however shows `nm -CD` differences on libSPIRV.so.
+There is no ABI stability to expect here.
+
+-T spv::Builder::createLoad(unsigned int, spv::MemoryAccessMask, spv::Scope)
++T spv::Builder::createLoad(unsigned int, spv::MemoryAccessMask, spv::Scope, unsigned int)
+
+
+---
+ SPIRV/CMakeLists.txt      |    2 ++
+ StandAlone/CMakeLists.txt |    1 +
+ glslang/CMakeLists.txt    |    1 +
+ hlsl/CMakeLists.txt       |    1 +
+ 4 files changed, 5 insertions(+)
+
+Index: glslang-7.9.2933.g33/SPIRV/CMakeLists.txt
+===================================================================
+--- glslang-7.9.2933.g33.orig/SPIRV/CMakeLists.txt
++++ glslang-7.9.2933.g33/SPIRV/CMakeLists.txt
+@@ -44,12 +44,14 @@ if(ENABLE_NV_EXTENSIONS)
+ endif(ENABLE_NV_EXTENSIONS)
+ 
+ add_library(SPIRV ${LIB_TYPE} ${SOURCES} ${HEADERS})
++set_target_properties(SPIRV PROPERTIES SOVERSION suse6)
+ set_property(TARGET SPIRV PROPERTY FOLDER glslang)
+ set_property(TARGET SPIRV PROPERTY POSITION_INDEPENDENT_CODE ON)
+ target_include_directories(SPIRV PUBLIC ..)
+ 
+ if (ENABLE_SPVREMAPPER)
+     add_library(SPVRemapper ${LIB_TYPE} ${SPVREMAP_SOURCES} ${SPVREMAP_HEADERS})
++    set_target_properties(SPVRemapper PROPERTIES SOVERSION suse6)
+     set_property(TARGET SPVRemapper PROPERTY FOLDER glslang)
+     set_property(TARGET SPVRemapper PROPERTY POSITION_INDEPENDENT_CODE ON)
+ endif()
+Index: glslang-7.9.2933.g33/StandAlone/CMakeLists.txt
+===================================================================
+--- glslang-7.9.2933.g33.orig/StandAlone/CMakeLists.txt
++++ glslang-7.9.2933.g33/StandAlone/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ add_library(glslang-default-resource-limits
+             ${CMAKE_CURRENT_SOURCE_DIR}/ResourceLimits.cpp)
++set_target_properties(glslang-default-resource-limits PROPERTIES SOVERSION suse6)
+ set_property(TARGET glslang-default-resource-limits PROPERTY FOLDER glslang)
+ set_property(TARGET glslang-default-resource-limits PROPERTY POSITION_INDEPENDENT_CODE ON)
+ 
+Index: glslang-7.9.2933.g33/glslang/CMakeLists.txt
+===================================================================
+--- glslang-7.9.2933.g33.orig/glslang/CMakeLists.txt
++++ glslang-7.9.2933.g33/glslang/CMakeLists.txt
+@@ -83,6 +83,7 @@ set(HEADERS
+ glslang_pch(SOURCES MachineIndependent/pch.cpp)
+ 
+ add_library(glslang ${LIB_TYPE} ${BISON_GLSLParser_OUTPUT_SOURCE} ${SOURCES} ${HEADERS})
++set_target_properties(glslang PROPERTIES SOVERSION suse6)
+ set_property(TARGET glslang PROPERTY FOLDER glslang)
+ set_property(TARGET glslang PROPERTY POSITION_INDEPENDENT_CODE ON)
+ target_link_libraries(glslang OGLCompiler OSDependent)
+Index: glslang-7.9.2933.g33/hlsl/CMakeLists.txt
+===================================================================
+--- glslang-7.9.2933.g33.orig/hlsl/CMakeLists.txt
++++ glslang-7.9.2933.g33/hlsl/CMakeLists.txt
+@@ -20,6 +20,7 @@ set(HEADERS
+ glslang_pch(SOURCES pch.cpp)
+ 
+ add_library(HLSL ${LIB_TYPE} ${SOURCES} ${HEADERS})
++set_target_properties(HLSL PROPERTIES SOVERSION suse6)
+ set_property(TARGET HLSL PROPERTY FOLDER hlsl)
+ set_property(TARGET HLSL PROPERTY POSITION_INDEPENDENT_CODE ON)
+ 

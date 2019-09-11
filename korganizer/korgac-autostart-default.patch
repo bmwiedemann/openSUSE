@@ -1,0 +1,13 @@
+diff --git a/korganizer/korgac/org.kde.korgac.desktop b/korganizer/korgac/org.kde.korgac.desktop
+index 92e404e..c7159c3 100644
+--- a/korgac/org.kde.korgac.desktop
++++ b/korgac/org.kde.korgac.desktop
+@@ -122,7 +122,7 @@ GenericName[zh_TW]=KOrganizr 提醒守護程式客戶端
+ Terminal=false
+ 
+ X-KDE-autostart-phase=2
+-X-KDE-autostart-condition=korgacrc:General:Autostart:true
++X-KDE-autostart-condition=korgacrc:General:Autostart:false
+ X-DBUS-StartupType=Unique
+ X-DBUS-ServiceName=org.kde.korgac
+ 

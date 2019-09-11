@@ -1,0 +1,46 @@
+Enable caching of profiles.
+
+This speeds up loading the (unchanged) profiles about 20 times.
+
+Upstream doesn't enable caching because the cache directory is not
+writeable at the time profiles are loaded in Ubuntu.
+
+See also bnc#689458
+
+
+Also set the cache location to /var/cache/apparmor/ (writeable) and
+/usr/share/apparmor/cache/ (packaged precompiled cache), and adjust
+the mount requirements in apparmor.service accordingly.
+
+See boo#1069906 and boo#1074429
+
+
+Signed-off by: Christian Boltz <apparmor@cboltz.de>
+
+Index: parser/parser.conf
+===================================================================
+--- parser/parser.conf_ORIG	2018-04-19 22:47:18.485179998 +0200
++++ parser/parser.conf	2018-04-19 22:51:12.084588654 +0200
+@@ -31,7 +31,10 @@
+ # match-string "pattern=aadfa audit perms=crwxamlk/ user::other"
+ 
+ ## Turn creating/updating of the cache on by default
+-#write-cache
++write-cache
++
++# cache location (cache writes go to the first directory in the list)
++cache-loc /var/cache/apparmor,/usr/share/apparmor/cache
+ 
+ ## Show cache hits
+ #show-cache
+--- parser/apparmor.service_ORIG	2018-04-19 22:58:12.631443321 +0200
++++ parser/apparmor.service	2018-04-19 22:58:47.903343044 +0200
+@@ -4,7 +4,7 @@ DefaultDependencies=no
+ Before=sysinit.target
+ After=systemd-journald-audit.socket
+ # profile cache
+-After=var.mount var-lib.mount
++After=var.mount var-cache.mount usr.mount usr-share.mount
+ ConditionSecurity=apparmor
+ 
+ [Service]

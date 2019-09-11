@@ -1,0 +1,152 @@
+-------------------------------------------------------------------
+Sat Jan 19 11:30:45 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.3.2
+* Various fixes and improvements
+* Update transations
+
+-------------------------------------------------------------------
+Wed May 23 08:18:06 UTC 2018 - mimi.vx@gmail.com
+
+- update to 0.3.0
+* Make colors changeable during runtime
+* various fixes
+* Replace deprecated GTK+ 3 functions
+* Replace build system with meson
+* Adopt CSS to newer GTK+ 3 releases
+* remove obsoleted features
+
+-------------------------------------------------------------------
+Fri Jan 26 13:45:23 UTC 2018 - mimi.vx@gmail.com
+
+- update to 0.2.7
+- respect optflags
+- spec-cleaned
+* Adopt CSS to newer GTK+ 3 releases
+* Remove obsolete features
+* Update translations
+* Various fixes and improvments
+
+-------------------------------------------------------------------
+Sun Feb  5 17:46:42 UTC 2017 - mimi.vx@gmail.com
+
+- update to 0.2.7
+- drop girara-font-handling.patch
+* Various fixes and improvments
+* Updated font handling
+
+-------------------------------------------------------------------
+Mon Oct 17 11:00:08 UTC 2016 - jengelh@inai.de
+
+- Update rpm group; trim description
+
+-------------------------------------------------------------------
+Thu Oct 13 06:56:24 UTC 2016 - mimi.vx@gmail.com
+
+- add girara-font-handling.patch -- fix for gtk-3.21+ compaktibility 
+
+-------------------------------------------------------------------
+Thu Jun  2 11:51:57 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.2.6
+* GTK+ 3.20 compatibility
+* Update translations
+
+-------------------------------------------------------------------
+Tue Feb 23 16:59:06 UTC 2016 - mimi.vx@gmail.com
+
+-  update to 0.2.5
+* Make scrollbar styleable
+* Build with C11 standard
+* Enable LFS everywhere
+* Home key mapping
+* Bind ctrl-[,j,]
+* Update translations
+
+-------------------------------------------------------------------
+Mon May 11 08:20:29 UTC 2015 - mimi.vx@gmail.com
+
+- edhance spec to better work with so_version
+
+-------------------------------------------------------------------
+Sun May 10 19:40:38 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.2.4
+* Make xembed support optional
+* Use GDK_WINDOWING_X11
+* Command to dump settings to JSON file
+* Make undershoot transparent
+* Update build system
+* Update documentation
+* Update translations
+
+-------------------------------------------------------------------
+Tue Oct 28 16:23:09 UTC 2014 - mimi.vx@gmail.com
+
+- change licence to Zlib 
+
+-------------------------------------------------------------------
+Mon Oct 27 12:59:41 UTC 2014 - mimi.vx@gmail.com
+
+- move to group System/Libraries 
+
+-------------------------------------------------------------------
+Fri Oct 24 09:14:01 UTC 2014 - mimi.vx@gmail.com
+
+- merge old changelog 
+
+-------------------------------------------------------------------
+Thu Oct 23 12:19:46 UTC 2014 - mimi.vx@gmail.com
+
+- remove unneed deps 
+
+-------------------------------------------------------------------
+Thu Oct 23 12:02:47 UTC 2014 - mimi.vx@gmail.com
+
+- rename giara-devel 
+
+-------------------------------------------------------------------
+Thu Oct 23 11:53:40 UTC 2014 - mimi.vx@gmail.com
+
+- remove check
+- add SONAME
+
+-------------------------------------------------------------------
+Thu Oct 23 10:40:56 UTC 2014 - mimi.vx@gmail.com
+
+- add ncurses-utils to deps 
+
+-------------------------------------------------------------------
+Thu Oct 23 09:47:36 UTC 2014 - mimi.vx@gmail.com
+
+- move to pkg-config
+- add check
+
+-------------------------------------------------------------------
+Thu Oct 23 09:07:20 UTC 2014 - mimi.vx@gmail.com
+
+- update to 0.23 upstream version
+
+-------------------------------------------------------------------
+Sat May 12 18:55:02 UTC 2012 - seiler@b1-systems.de
+
+- removed outcommented lines
+- changed lang package name to follow SUSE guidelines
+- added rpm optflags...RPM guidelines
+
+-------------------------------------------------------------------
+Thu Apr 26 10:42:35 UTC 2012 - seiler@b1-systems.de
+
+- enhanced Summary of libgirara to increase the chance to get this thing upstream
+
+-------------------------------------------------------------------
+Wed Apr 25 14:33:28 UTC 2012 - seiler@b1-systems.de
+
+- changed wrong dependency because of this error
+unresolvable: nothing provides girara = 0.1.2 needed by girara-devel
+
+-------------------------------------------------------------------
+Wed Apr 25 14:13:13 UTC 2012 - seiler@b1-systems.de
+
+- initial commit
+

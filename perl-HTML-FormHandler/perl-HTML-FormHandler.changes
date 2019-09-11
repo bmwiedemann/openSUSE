@@ -1,0 +1,330 @@
+-------------------------------------------------------------------
+Fri Jul 21 05:33:54 UTC 2017 - coolo@suse.com
+
+- updated to 0.40068
+   see /usr/share/doc/packages/perl-HTML-FormHandler/Changes
+
+  0.40068 Thu Jul 20, 2017
+     Add RequestToken field
+     Add build_render_list_method
+     Zccept coderefs for date_start, date_end in Date field
+
+-------------------------------------------------------------------
+Fri Oct 21 05:32:47 UTC 2016 - coolo@suse.com
+
+- updated to 0.40067
+   see /usr/share/doc/packages/perl-HTML-FormHandler/Changes
+
+  0.40067 Wed Oct 19, 2016
+     Fixed Text validation checking, to allow deflations and transformations
+     to be applied first.
+     change order of processing 'input_without_param' and 'use_fields_for_input_without_param'
+      fixes problem with not using default for select field
+     fix for deflation of undef value, from ether's pull request 122
+     switch from JSON.pm to JSON::MaybeXS
+     use coercion on 'options' instead of duplicate code in _load_options
+     use [PkgVersion]
+     fix bug in TextCSV field caused by setting error for multiple values in Text field
+
+-------------------------------------------------------------------
+Tue Jul 19 05:20:50 UTC 2016 - coolo@suse.com
+
+- updated to 0.40066
+   see /usr/share/doc/packages/perl-HTML-FormHandler/Changes
+
+  0.40066 Mon Jul 18, 2016
+     Improve Select field option list support
+     Support arrayref-of-arrayref options in a subroutine
+     Allow input_append_button to take input_append_button_element_class
+     Allow attributes to be specified for input_append_button
+     Add comma digit grouping and custom currency symbol
+     Allow input_append_button to take input_append_button_element_class
+     Various minor doc updates
+
+-------------------------------------------------------------------
+Wed Mar 23 10:35:10 UTC 2016 - coolo@suse.com
+
+- updated to 0.40065
+   see /usr/share/doc/packages/perl-HTML-FormHandler/Changes
+
+  0.40065 Sat Mar 19, 2016
+     Ensure Text fields only contain a single value
+     Make it easier to specify a Select field having identical labels and values.
+
+-------------------------------------------------------------------
+Sun Sep 20 15:57:48 UTC 2015 - coolo@suse.com
+
+- updated to 0.40064
+   see /usr/share/doc/packages/perl-HTML-FormHandler/Changes
+
+  0.40064 Thu Sep 17, 2015
+     Don't warn about date format unless set to `date`
+     Wrap checkbox in CheckboxGroup, if requested
+     Create es_es.pm
+     Create ca_es.pm
+     select field invalid value message: encode the select value
+     typo in link to the example app
+     remove css_class from Captcha field
+  
+  0.40063 Mon Jun 29, 2015
+     Raised Moose prereq to 2.1403 because 2.0604 causes failing tests
+  
+  0.40062 Fri Jun 25, 2015
+     Separate out test using Type::Tiny::Enum to skip_all
+  
+  0.40061 Thu Jun 25, 2015
+     Add skip for Type::Tiny::Enum
+  
+  0.40060 Wed Jun 24, 2015
+     Field validation can use Type::Tiny subclasses
+     Replace NoTabTests and EOLTests
+     switch from List::AllUtils+List::MoreUtils to List::Util (in core)
+     add render_elementx and renderx methods to allow setting attributes at render time
+     Warning if Date field is html5 and not ISO
+
+-------------------------------------------------------------------
+Tue Apr 14 17:42:35 UTC 2015 - coolo@suse.com
+
+- updated to 0.40059
+   see /usr/share/doc/packages/perl-HTML-FormHandler/Changes
+
+  0.40059 Thu Feb 25, 2015
+     Remove clear->item_id that snaked in via merge error
+     Pass subfield name to repeatable element wrapper
+  
+  0.40058 Thu Feb 25, 2015
+     add HorizCheckboxGroup for alternative CheckboxGroup rendering
+     minor doc typos
+     do $class->meta->make_immutable after new_with_traits
+     Czech translation
+     'get_errors' synonym for 'errors' on form
+     add repeatable_element_wrapper ability
+  
+  0.40057 Fri Aug 1, 2014
+     added support for tag 'inline' in bootstrap3 wrapper
+     add test for inline-checkboxes
+     add test for prefilled with init_object form reuse
+     clear item and init_object which are required for form reuse
+     add failing test for element_class override through build_update_subfields
+     add a bit of doc about handling DBIC new results & 'use_default_over_obj'
+     =encoding utf-8 in Manual/Rendering.pod
+     remove deprecated css_class and input_class attributes
+     add param_to_values method to convert parameters to init_object-like hashref
+     Add code to respect the label_no_filter tag on checkboxes for Bootstrap
+         and the Base widgets.
+     fix bootstrap3 input_append_button
+     Respect label_no_filter on checkbox labels.
+     add Arabic translations
+     use time_zone and locale options in Date field
+
+-------------------------------------------------------------------
+Mon Feb 24 06:12:17 UTC 2014 - coolo@suse.com
+
+- updated to 0.40056
+    use sorted_fields in 'dump_validated'
+    added Type::Tiny support
+    Use alert-danger rather than alert-error with in Bootstrap3
+    Fixes RT#91966 (deprecated way to call enum warning)
+    bug in reloading repeatable fields; skip inactive fields
+
+-------------------------------------------------------------------
+Sun Feb  2 20:54:02 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.40055:
+  + handle SelectCSV field in as_label method of Select field.
+    2014 bug in t/compound/basic.t test (rt91793).
+
+-------------------------------------------------------------------
+Fri Nov 29 11:06:49 UTC 2013 - coolo@suse.com
+
+- updated to 0.40054
+   Check for old unimplemented parameter to wrap_checkbox, and check
+       for existence of option_wrapper
+   add language handle to bootstrap3 tests
+   pass event to repeatable js click handler
+   stop forcing undefined Checkbox fields to 0; didn't allow undef for value
+   different inline class for Bootstrap3 for checkboxes and radios
+   select options: add coercion of arrayref of hashrefs from arrayref of strings
+   allow Date field to use DateTime subclasses
+
+-------------------------------------------------------------------
+Mon Nov 25 07:39:49 UTC 2013 - coolo@suse.com
+
+- updated to 0.40053
+   Bad version number on prereq
+   allow overriding layout_classes in Bootstrap3 wrapper
+   allow passing in value to 'as_label' method in Select field
+   Update Italian message file
+   Minor doc updates
+   add errors_by_name and errors_by_id to result
+   add Bootstrap3 theme for those using the Bootstrap theme
+   better form-horizontal Bootstrap 3.0 support
+   provide method in result (form_and_field_errors) to return form and field errors
+
+-------------------------------------------------------------------
+Fri Oct  4 09:11:50 UTC 2013 - coolo@suse.com
+
+- updated to 0.40050
+    *** 'widget_tags' in a field have been deprecated for a long time; removing.
+       There are still widget_tags in the form and compound fields.
+       Use 'tags' in a field instead.
+    *** Initial support of Bootstrap3 - still EXPERIMENTAL. Do not use in
+       production yet. Changes in interface may occur over the next few weeks.
+    Supporting Bootstrap 3.0 required a surprising amount of minor refactoring:
+       Bootstrap3 checkboxes and radio elements now have an additional div wrapping them.
+       This required setting flags in the wrapper that could be seen by the
+       field widgets. Used 'wrapper_tags' attribute, which is not the most satisfying
+       solution but does work. The former 'controls' div now doesn't have the
+       'controls' class, but is used for sizing. Added new attribute
+       'element_wrapper_class' to provide these classes. Split out addition of
+       classes to the wrapper and element into 'add_standard_wrapper_classes' and
+       'add_standard_element_classes', because B3.0 now wants 'has-error' and
+       'has-warning' instead of the former 'error' class. 'control-group' was
+       changed to 'form-group'. The 'form-control' class has been added to
+       text, password, textarea, and select fields.
+    Add 'preserve_case' attribute to Email field
+ 
+    Fixed bug when rendering blocks with 'run' (results)
+    Sort the deflated values of SelectCSV field
+    Allow passing Email::Valid params to Email field
+    Typos fixed
+    Add 'use_init_obj_when_no_accessor_in_item' flag for dual-purpose init_obj
+ 
+    Add 'options_ref' method for using options in TT templates
+    Add unique messages to field messages hash
+
+-------------------------------------------------------------------
+Wed Jul 24 07:28:36 UTC 2013 - coolo@suse.com
+
+- updated to 0.40026
+   Add Italian message file                                                                                                                                                                                                                 
+   Doc tweaks                                                                                                                                                                                                                               
+   Add errors_by_id and errors_by_name convenience methods   
+
+-------------------------------------------------------------------
+Wed Jun  5 07:14:12 UTC 2013 - coolo@suse.com
+
+- updated to 0.40025
+    Add skip in t/setup_form_config.t unless YAML::Syck (Config::Any)
+ 
+ 0.40024 Tue May 7, 2013
+    Add 'no_option_validation' flag to select field.
+    Remove HtmlArea field. (Has always been broken, and there were complaints about
+       not prereqing HTML::Tidy, which I won't do due to difficulty of installing)
+    Change 'use' of GD::SecurityImage to a 'require'. (Will not prereq this one either.)
+ 
+ 0.40023 Tue Apr 30, 2013
+    Add Brazilian Portuguese translation file
+    Fix bug in process of re-loading repeatables without primary keys after db update
+    Add TextCSV field for multiple values in a text field (useful with js libraries)
+ 
+ 0.40022 Mon Mar 18, 2013
+    Remove 'writeonly' flag from Display field, because fix to not pull
+       values from an item/init_object with that flag  meant that values were not
+       being applied to Display fields, when people were relying on that.
+    Switch to using github issues instead of RT
+ 
+ 0.40021 Mon Mar 4, 2013
+    Don't validate disabled fields
+    check for existence of field in match_when before getting $field->fif,
+        improve error message
+    add type_attr to Select field; update t/render/ff.t to use it
+    cleanup select field options_method building
+ 
+ 0.40020 Sun Feb 20, 2013
+    More support for repeatable javascript:
+      Tweak Bootsrap wrapper to check do_wrapper instead of do_label when rendering
+          'controls' div
+      Reminder: It's always a good idea to make your own set of of widgets so that
+          updates don't throw off your rendering. This change was hardly noticeable
+          in the FH testcases, but it's possible you were relying on the old behavior
+          for CSS.
+      Add 'controls_div' to Simple wrapper.
+      Add RmElement example field.
+
+-------------------------------------------------------------------
+Wed Feb 15 12:05:40 UTC 2012 - coolo@suse.com
+
+- updated to 0.36003
+   Bug rendering fields with hidden widget where label is rendered.
+      Switch back to no wrapping of hidden fields.
+
+   Fixed bug introduced in last release where rendering roles are overwritten
+      by HTML::FormHandler::Render::Simple being applied on top.
+   Add skip to t/config.t test for Config::Any
+   Set language handle in t/render_errors.t test.
+
+   Add two more widget tags: 'no_auto_fieldset' and 'no_compound_wrapper'
+   Remove automatic addition of 'class="label"' to labels; if you want that
+      behavior, add it in with form sub field_html_attributes.
+   Add 'SKIP' to t/config.t test for Template.
+   Update Captcha so it might actually work.
+
+   Switch to using 'process_attrs' function to process attributes in rendering;
+   *** There were lots of updates to rendering. You should verify your custom
+       rendering, to make sure that nothing has broken. The '_add_html_attributes'
+       method is no longer used.
+   Add shorthand method for setting defaults in fields
+   Add widget_tags 'label_no_colon' & 'wrapper_tag'
+   Update and reorganize TT templates
+   Add flags 'use_defaults_over_obj' & 'use_init_obj_over_item'
+   Add 'num_extra' to Repeatable
+   Update Turkish message file; add Float field
+   Add lazy to 'html' attribute in Display field
+   Add 'label_attr' and 'wrapper_attr' to Field
+   Add 'Array' trait to field_name_space and widget_name_space
+   Bug with selected/checked hash key in Multiple; switch to creating default
+   Bug with repeatable contains; not using full name for accessor.
+   Die if using HTML::FormHandler::Moose without HTML::FormHandler
+   Field::TextArea extends Field::Text to reuse its validations (min/max length)
+   Add is_html5 attribute to forms which causes forms to have the additional
+   HTML 5 attributes which can be used by HTML 5 capable clients for validation
+
+-------------------------------------------------------------------
+Fri Nov 18 18:32:44 UTC 2011 - coolo@suse.com
+
+- update to 0.35005
+  * many fixes, see Changes
+
+-------------------------------------------------------------------
+Fri Apr 22 07:26:04 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.33002
+      Accidentally left off compatibility for 'required_message' attribute
+          messages => { required => '...' } is new style and worked
+  
+      Remove unnecessary with of HFH::Validate::Actions
+  
+      bug - empty_select check defined
+      Add button field, widget, template
+      Check html attributes for definedness not truth
+      Add ability to set field inactive on new & process
+         in addition to setting active
+      Move 'no_render_label' into Field
+      Use form's language_handle in fields
+      Improve PrimaryKey doc
+      Return empty hashref from $form->value instead of undef
+      Merge experimental Wizard into master
+      Render disabled select options
+      Repeatable contains rendering incorrectly, skipping empty elements
+      Add rendering of form_errors to widgets and Render::Simple
+         *** If you were using form_errors (there are none by default)
+         and were using HFH rendering, check for compatibility
+      Allow specifying full class for widget with '+'
+      Document removing wrapper div from Simple wrapper
+      Re-do how field messages are stored and accessed. Use messages => {...}
+          instead of various _message attributes
+      Add utilities in util to pull out class messages and check I18N
+      Update I18N messages files (those that were provided by translators)
+      Change render_filter Coderef setting because of leak;
+         *** Possible incompatibility: if you have a form render_filter,
+         change to function instead of method
+      Change _localize to a Coderef to allow easier changing.
+         *** If you have a custom _localize method, check for compatibility
+
+-------------------------------------------------------------------
+Wed Jan 19 13:38:50 UTC 2011 - coolo@novell.com
+
+- initial package 0.32005
+  * created by cpanspec 1.78.03
+

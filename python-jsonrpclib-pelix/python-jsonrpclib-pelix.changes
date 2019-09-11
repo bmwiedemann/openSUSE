@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Mar 28 14:42:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.0:
+  * Added back support of Unix sockets on both server and client side.
+  * Note: HTTPS is not supported on server-side Unix sockets
+  * Fixed the CGI request handler
+  * Fixed the request handler wrapping on server side
+- Switch to github tarball for tests
+- Run tests
+
+-------------------------------------------------------------------
+Fri Nov 17 16:29:04 UTC 2017 - mimi.vx@gmail.com
+
+- remove uselees _service
+- fix rpmlint warnings
+
+-------------------------------------------------------------------
+Thu Nov  2 11:00:57 UTC 2017 - marec@detebe.org
+
+- initial package build

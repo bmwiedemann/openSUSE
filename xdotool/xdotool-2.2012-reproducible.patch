@@ -1,0 +1,29 @@
+From e4010e3b9d259004b56ef08ee8517d2db988f6a2 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <githubbmw@lsmod.de>
+Date: Tue, 17 Jan 2017 15:10:59 +0000
+Subject: [PATCH] make build reproducible
+
+see https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable
+
+this invocation should work on GNU date and BSD date
+---
+ version.sh | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/version.sh b/version.sh
+index 6c7d57a..1c3d3dc 100755
+--- a/version.sh
++++ b/version.sh
+@@ -6,7 +6,9 @@ fi
+ 
+ if [ -z "$MAJOR" -o -z "$RELEASE" -o -z "$REVISION" ] ; then
+   MAJOR="3"
+-  RELEASE="$(date +%Y%m%d)"
++  SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-$(date +%s)}"
++  DATE_FMT="+%Y%m%d"
++  RELEASE="$(date -u -d "@$SOURCE_DATE_EPOCH" "+$DATE_FMT" 2>/dev/null || date -u -r "$SOURCE_DATE_EPOCH" "+$DATE_FMT" 2>/dev/null || date -u "+$DATE_FMT")"
+   REVISION=1
+   #$([ -d .svn ] && svn info . | awk '/Revision:/ {print $2}')
+   : ${REVISION=:0}

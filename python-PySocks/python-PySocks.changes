@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Sat Jun 15 15:53:16 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * be more specific in %files section
+
+- update to version 1.7.0:
+  * (no changelog available)
+
+- changes from 1.6.8:
+  * Python 2.7 and 3.4+ only
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:54 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Dec 21 18:26:53 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 1.6.8:
+  * Remove support for EOL Python 3.3
+  * Make create_connection() signature match socket module
+  * Add python version classifiers
+  * Include win_inet_pton when installing on Python 2.x under Windows
+  * fix #937 getpeername() errror while using gevent
+  * Update README.md
+  * PEP8 fixes for line length, indentation, line breaks and other
+    minor issues.
+  * Normalize quoting.
+  * Update socks.py
+
+-------------------------------------------------------------------
+Sat Nov  4 02:04:50 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 1.6.7:
+  * Make SocksiPy legacy functions kwarg-compatible. See issue #71.
+  * Use setuptools in setup.py to support wheel. See issue #73.
+  * Test and logging enhancements
+
+-------------------------------------------------------------------
+Tue Mar 21 14:00:08 UTC 2017 - jmatejek@suse.com
+
+- update for singlespec
+- update to 1.6.6
+  * python 3.6 support
+  * bug fixes
+
+-------------------------------------------------------------------
+Fri Mar 11 21:15:41 UTC 2016 - toddrme2178@gmail.com
+
+- Fix license
+- Provides/Obsoletes python-SocksiPy, which this is an updated fork
+  of and conflicts with.
+
+-------------------------------------------------------------------
+Tue Jan  5 15:10:23 UTC 2016 - hpj@urpla.net
+
+- Version 1.5.6: initial build
+

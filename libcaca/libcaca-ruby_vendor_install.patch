@@ -1,0 +1,47 @@
+Index: configure.ac
+===================================================================
+--- configure.ac.orig
++++ configure.ac
+@@ -475,14 +475,17 @@ ac_cv_my_have_ruby_minitest="no"
+ if test "${enable_ruby}" != "no"; then
+   AC_PATH_PROG(RUBY, ruby, no)
+   if test "${RUBY}" != "no"; then
+-    RUBY_CFLAGS="$("${RUBY}" -r mkmf -e 'conf = RbConfig::CONFIG.merge("hdrdir" => $hdrdir, "arch_hdrdir" => $arch_hdrdir); print RbConfig::expand("#$INCFLAGS", conf)')"
++    RUBY_CFLAGS=$(pkg-config --cflags ruby-1.9)
++    if test -z "$RUBY_CFLAGS"; then
++      RUBY_CFLAGS="-I$(ruby -r rbconfig -e 'print RbConfig::CONFIG@<:@"archdir"@:>@')"
++    fi
+     RUBY_LIBS="-L$("${RUBY}" -r rbconfig -e 'print RbConfig::CONFIG@<:@"libdir"@:>@') -l$("${RUBY}" -r rbconfig -e 'print RbConfig::CONFIG@<:@"RUBY_SO_NAME"@:>@')"
+-    RUBY_SITEARCHDIR=`"${RUBY}" -r rbconfig -e 'print RbConfig::CONFIG@<:@"sitearchdir"@:>@'`
+-    RUBY_SITELIBDIR=`"${RUBY}" -r rbconfig -e 'print RbConfig::CONFIG@<:@"sitelibdir"@:>@'`
++    RUBY_VENDORARCHDIR=`ruby -r rbconfig -e 'print RbConfig::CONFIG@<:@"vendorarchdir"@:>@'`
++    RUBY_VENDORLIBDIR=`ruby -r rbconfig -e 'print RbConfig::CONFIG@<:@"vendorlibdir"@:>@'`
+     AC_SUBST(RUBY_CFLAGS)
+     AC_SUBST(RUBY_LIBS)
+-    AC_SUBST(RUBY_SITEARCHDIR)
+-    AC_SUBST(RUBY_SITELIBDIR)
++    AC_SUBST(RUBY_VENDORARCHDIR)
++    AC_SUBST(RUBY_VENDORLIBDIR)
+     CPPFLAGS="${CPPFLAGS} ${RUBY_CFLAGS}"
+     AC_CHECK_HEADERS([ruby.h],
+      [ac_cv_my_have_ruby="yes"
+Index: ruby/Makefile.am
+===================================================================
+--- ruby/Makefile.am.orig
++++ ruby/Makefile.am
+@@ -1,12 +1,12 @@
+ 
+ include $(top_srcdir)/build/autotools/common.am
+ 
+-rubylibdir = $(RUBY_SITEARCHDIR)
+-rubysitedir = $(RUBY_SITELIBDIR)
++rubylibdir = $(RUBY_VENDORARCHDIR)
++rubyvendordir = $(RUBY_VENDORLIBDIR)
+ 
+ if USE_RUBY
+ rubylib_LTLIBRARIES = caca.la
+-rubysite_DATA = lib/caca.rb
++rubyvendor_DATA = lib/caca.rb
+ if USE_RUBY_MINITEST
+ TESTS = test
+ endif

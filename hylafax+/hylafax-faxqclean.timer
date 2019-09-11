@@ -1,0 +1,17 @@
+#
+# Hylafax cleaner timer for systemd-timers
+# Copyright (c) 2019 Dr. Axel Braun <axel.braun@gmx.de>
+#
+
+[Unit]
+Description=Faxqueue cleaner process
+Documentation=man:faxqclean(8) 
+Requires=hylafax-hfaxd.service
+
+[Timer]
+OnCalendar=hourly
+AccuracySec=30m
+Persistent=true
+
+[Install]
+WantedBy=timers.target

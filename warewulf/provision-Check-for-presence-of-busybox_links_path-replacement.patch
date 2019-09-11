@@ -1,0 +1,39 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Nov 28 09:47:51 2018 +0100
+Subject: provision: Check for presence of @busybox_links_path@ replacement
+Patch-mainline: Not yet
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: 3d0cd0c780fbefc2d76980cd28cb5249f987faca
+References: 
+
+This fixes an issue introduced with
+  91a37ce1b202ce72a5276aaebc7387bfd1c6459f
+  Suse prov config local binary copy (#140)
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ provision/initramfs/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+diff --git a/provision/initramfs/Makefile.am b/provision/initramfs/Makefile.am
+index 7e0a372..5988b9e 100644
+--- a/provision/initramfs/Makefile.am
++++ b/provision/initramfs/Makefile.am
+@@ -9,7 +9,7 @@ MACHINE:=$(shell uname -m)
+ BUSYBOX_VERSION = 1.26.2
+ BUSYBOX_SOURCE = $(top_srcdir)/3rd_party/GPL/busybox-$(BUSYBOX_VERSION).tar.bz2
+ BUSYBOX_DIR = busybox-$(BUSYBOX_VERSION)
+-BUSYBOX_PATCHES = 
++BUSYBOX_PATCHES =
+ 
+ E2FSPROGS_VERSION = 1.42.12
+ E2FSPROGS_SOURCE = $(top_srcdir)/3rd_party/GPL/e2fsprogs-$(E2FSPROGS_VERSION).tar.gz
+@@ -51,7 +51,7 @@ e2fsprogs:
+ 
+ busybox:
+ 	@ if [ -n "@local_busybox_path@" -a -f "@local_busybox_path@" -a \
+-	    -n "@local_busybox_path@" -a -f "@busybox_links_path@" ]; then \
++	    -n "@busybox_links_path@" -a -f "@busybox_links_path@" ]; then \
+ 		echo "Detected local install of busybox. Bypassing busybox build process." ;\
+ 	else \
+ 		if [ ! -d "_work/$(BUSYBOX_DIR)" ]; then \

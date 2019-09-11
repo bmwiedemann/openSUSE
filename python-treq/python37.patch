@@ -1,0 +1,44 @@
+From d7e141113d00541c9183b243d0a2f66ded2f0536 Mon Sep 17 00:00:00 2001
+From: Chih-Hsuan Yen <yan12125@gmail.com>
+Date: Wed, 25 Jul 2018 20:53:50 +0800
+Subject: [PATCH] Add Python 3.7 support and enable testing
+
+---
+ src/treq/test/test_multipart.py | 17 ++++++++++++++---
+ 4 files changed, 36 insertions(+), 5 deletions(-)
+
+diff --git a/src/treq/test/test_multipart.py b/src/treq/test/test_multipart.py
+index 4aece22..e0d81a2 100644
+--- a/src/treq/test/test_multipart.py
++++ b/src/treq/test/test_multipart.py
+@@ -3,6 +3,7 @@
+ # See LICENSE for details.
+ 
+ import cgi
++import sys
+ 
+ from io import BytesIO
+ 
+@@ -594,9 +595,19 @@ def test_worksWithCgi(self):
+             )
+         )
+ 
+-        form = cgi.parse_multipart(BytesIO(output), {"boundary": b"heyDavid"})
+-        self.assertEqual(set([b'just a string\r\n', b'another string']),
+-                         set(form['cfield']))
++        form = cgi.parse_multipart(BytesIO(output), {
++            "boundary": b"heyDavid",
++            "CONTENT-LENGTH": str(len(output)),
++        })
++
++        # Since Python 3.7, the value for a non-file field is now a list
++        # of strings, not bytes.
++        if sys.version_info >= (3, 7):
++            self.assertEqual(set(['just a string\r\n', 'another string']),
++                             set(form['cfield']))
++        else:
++            self.assertEqual(set([b'just a string\r\n', b'another string']),
++                             set(form['cfield']))
+ 
+         self.assertEqual(set([b'my lovely bytes2']), set(form['efield']))
+         self.assertEqual(set([b'my lovely bytes219']), set(form['xfield']))

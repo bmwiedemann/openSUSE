@@ -1,0 +1,9 @@
+#
+# NetworkManager into separate file and stop their further processing
+#
+if      ($programname == 'NetworkManager') or \
+        ($programname startswith 'nm-') \
+then {
+        -/var/log/NetworkManager
+        stop
+}

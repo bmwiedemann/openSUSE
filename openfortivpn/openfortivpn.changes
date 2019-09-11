@@ -1,0 +1,224 @@
+-------------------------------------------------------------------
+Sun Mar 17 11:52:47 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.9.0
+  * Update of the man page, especially about the dns settings
+  * improved configure output: show detected paths for use at runtime
+  * Make search string for the otp-prompt configurable
+  * Add an option to specify a configurable delay during otp
+    authentication
+  * Make the options that control usepeerdns more consistent
+
+-------------------------------------------------------------------
+Mon Jan  7 08:05:03 UTC 2019 - mardnh@gmx.de
+
+- Update to version 1.8.1
+  Bug fix
+  * With version 1.8.0 /etc/resolv.conf was not updated anymore in
+    some situations. To avoid this regression the change
+    "Rationalize DNS options" has been reverted again to restore the
+    behavior of versions up to 1.7.1.
+  * Correctly use realm together with two factor authentication
+  * If no port is specified use standard https port similar as vendor
+    client
+  * Fix value of Accept-Encoding request header
+  * Bugfix in url_encode for non alphanumerical characters
+  * HTML URL Encoding with uppercase characters
+  * Honor Cipher-list option
+  Change in behavior
+  * Support longer passowrds by allocation of a larger buffer
+  * Improved detection of pppd/ppp client during configure stage
+- Update to version 1.8.0
+  Bug fix
+  * Prioritize command line arguments over config file parameters
+  Change in behavior
+  * When logging traffic also show http traffic (not only tunneled
+    traffic)
+  * Improve error message in case of login failure
+  * Require root privileges for running. They are needed at various
+    places. Previously, just a warning was issued, but in later stage
+    things have failed.
+  * Dynamically allocate routing buffer and therefore allow larger
+    routing table.
+  * Support systemd notification upon tunnel up
+  * Change the way to read passwords such that backspace etc. should
+    work as usual
+  * Rationalize DNS options: pppd and openfortivpn were updating
+    /etc/resolv.conf. Check man page and help output for the
+    documentation of the current behavior.
+
+-------------------------------------------------------------------
+Mon Jun 18 06:24:41 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.7.1
+  * openfortivpn version 1.7.1
+  * remove iswhitespace_like in favorite of isspace
+  * treat carriage returns as white space (might solve #129) (#334)
+  * update README.md for MacOS X (#333)
+  * Ooops... Fix --help output.
+  * Revert 6772c53
+  * Let pppd handle DNS servers
+  * Manual page fixes
+  * Documentation: we -> openfortivpn
+  * Ooops... Partial revert of 30a4e0b
+  * Temporarily change recipient of Coverity reports
+  * Simplify ofv_append_varr()
+  * Use the ARRAY_SIZE macro
+  * Automated Coverity analysis with Travis CI
+  * Fix pylint warnings
+  * Restore configure options removed in ac5c083
+  * Shell indentation: avoid mixing tabs and spaces
+  * Use PKG_CHECK_MODULES compiler/linker flags
+  * Quote shell variables
+  * bash -> sh
+  * Balance directory tree
+  * Build openfortivpn against OpenSSL 1.0.2
+  * Refactor Travis CI integration
+  * Revert 79f52ef
+  * Rework OpenSSL library detection
+  * Reworked array of pppd args (#295)
+  * Build with missing pthread_mutexattr_setrobust() (#298)
+
+-------------------------------------------------------------------
+Mon Apr 23 08:15:04 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.7.0
+  * correctly set up route to vpn gateway (#285)
+  * Properly check vsnprintf() return value
+  * const correctness for strings
+  * socket() requires <sys/socket.h> (#290)
+  * HTTP end-of-line marker is CR LF
+  * malloc(), realloc() and free() require <stdlib.h>
+  * vsnprintf() is defined in <stdio.h>
+  * va_start() and va_end() require <stdarg.h> (#287)
+  * Improve script to find line length errors
+  * If the OTP is specified in the configuration, use it for 2FA
+  * fix formatting of man page
+  * replace hard-coded virtual ip address in pppd call parameters
+    by a rfc3330 test-net address
+  * Print proper pppd status messages
+  * Linux kernel coding style
+  * Ignore strings when calculating line lengths
+  * Make sure the Coverity defect is a false positive (#264)
+  * Linux kernel coding style
+  * Rephrase --half-internet-routes documentation
+  * Limit string length to C99 standard
+  * Add info about Debian (testing) package to readme
+  * Add --pppd-call option. (#270)
+  * Explain why Coverity defect is a false positive
+  * Linux kernel coding style
+  * Use X509_check_host instead of explicit CN match. (#242)
+  * Fix usage string for half-internet-routes
+  * UINT_MAX is defined in <limits.h>
+  * avoid confusion of code branches for different platforms
+  * added --persistent option for automatic reconnects (#190)
+  * update README.md
+  * Bourne shell
+  * call aclocal from autogen.sh only if it exists
+  * improve autoconf
+  * Standard error message for malloc()/realloc()
+  * Avoid Valgrind warning
+  * C99 initialization instead of memset()
+  * Documentation
+
+-------------------------------------------------------------------
+Fri Nov 17 21:30:57 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.6.0
+  * Linux kernel coding style
+  * Does /usr/sbin/pppd exist?
+  * Update README.md (#196)
+  * Print message associated to pppd exit status code (#189)
+  * preserve existing config during install, this solves #130 (#193)
+  * Fix Codacy code style issues
+  * Increase max cookie size to 4096
+  * Fix Coverity defect
+  * Avoid multiple occurrences of a magic number
+  * Fix warning from static analysis tool scan-build
+  * Update Linux installation instructions
+  * dynamic allocation of memory for split route array (#163)
+
+-------------------------------------------------------------------
+Wed Oct 18 19:28:19 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.5.0
+  * Add error reporting after execvp in pppd_run
+  * Move error reporting from ppd_run to ppd_terminate
+  * Fix bug in pppd_run forking code
+  * clean up config initialization and error messages during
+    parsing options (#167)
+  * Merge pull request #162 from mrbaseman/readme
+  * update README.md and mention PKG_CONFIG_PATH
+  * Merge pull request #158 from mrbaseman/routes
+  * Merge branch 'master' into routes
+  * Merge pull request #161 from bartlx/realm-in-configfile
+  * Added the option of setting authentication realm in the configfile
+  * add --half-internet-routes option, update man page
+  * ipv4 routes: set default route as 0.0.0.0/1 and 128.0.0.0/1
+  * Merge pull request #149 from martinetd/routes
+  * Merge branch 'master' into routes
+  * build: drop -Werror by default
+  * config: allow passing the otp via the config file
+  * http: fix possibly returning uninitialized memory to the server
+  * build: avoid evaluating $sysconfidir on configure time
+  * io: port to OpenSSL 1.1.0
+  * build: use pkg-config for detecting and configuring OpenSSL
+  * main: use strdup on pppd command line args
+  * option parsing: add --set-routes and --set-dns options
+  * help message: split define into multiple strings
+
+- Changes from 1.3.1
+  * Emit an error if configured against OpenSSL 1.1.0
+  * Support multiarch libraries
+  * Update install documentation to describe the `--with-openssl` option
+  * Instruct travis CI to use autogen.sh
+  * Add openssl locations to configure options
+  * Fix a few minor typos
+  * Fix buffer overrun
+  * Merge pull request #136 from Mabin-J/fix-#87
+  * ipv4.h: increase 'MAX_SPLIT_ROUTES' 64 to 128 (Issue #87)
+  * Merge pull request #135 from Mabin-J/fix-lock-status-in-macos
+  * io.c: fix core cause of openfortivpn is locked when spawning pppd has failed.
+  * Merge pull request #134 from DimitriPapadopoulos/master
+  * Ignore SIGHUP
+  * Handle SIGTERM as SIGINT
+  * io.c: fix lock status when fail to spawn pppd in macOS.
+
+- Changes from 1.3.0
+  * implement ipparam to be passed to pppd
+  * Merge pull request #125 from mrbaseman/command-line-arguments
+  * minor fixes to documentation, command line argument handling
+    (-o was not recognized before), and free all pointers in
+    destroy_vpn_config
+  * Merge pull request #122 from mrbaseman/get_route_fallback
+  * MacOSX version of ipv4_get_route
+  * Merge pull request #121 from Mabin-J/fix-readme-macosx-install
+  * README.md: modify 'macOS' part in 'Installing' Section
+  * fix segment error when adding route for vpn has failed show
+    warning message when adding route table is incomplete keep
+    routing entries strictly separate and do not reuse rt_dev
+  * Fix buffer overrun
+  * ipv4.h: increase 'MAX_SPLIT_ROUTES' (32 -> 64)
+  * Merge pull request #97 from Mabin-J/fix-to-remain-exist-route
+  * ipv4: Refactor ipv4_add_*_vpn_route()
+  * Load OS trusted certificate stores
+  * Merge pull request #95 from mrbaseman/ppp-routes
+  * This is a larger rework of the routing code
+
+-------------------------------------------------------------------
+Wed Mar 15 20:01:56 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.3.0
+- Fix RPM group
+- Remove _service file
+
+-------------------------------------------------------------------
+Thu Nov 10 00:00:00 UTC 2016 - singer@nefkom.net
+
+- Initial packaging, branched from Fedora Package
+
+-------------------------------------------------------------------
+Mon May 30 00:00:00 UTC 2016 - singer@nefkom.net
+
+- Initial packaging, branched from Fedora Package
+

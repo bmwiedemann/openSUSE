@@ -1,0 +1,5 @@
+Requires: kernel-%1
+Requires: drbd-utils >= 9.2.0
+Supplements: drbd-utils >= 9.2.0
+Supplements: packageand(kernel-%1:%name)
+Recommends: drbd

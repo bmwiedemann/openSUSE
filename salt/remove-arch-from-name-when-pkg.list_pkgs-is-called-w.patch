@@ -1,0 +1,744 @@
+From 51ccc41dd16564dea5b465d122218ca8047f9f3e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Mon, 19 Nov 2018 11:46:26 +0000
+Subject: [PATCH] Remove arch from name when pkg.list_pkgs is called with
+ 'attr' (bsc#1114029)
+
+Add unit tests for pkg_resource.format_pkg_list
+
+Fix pylint issues
+
+Refactor: Return requested attr even if empty
+
+Add corner cases on package names to unit tests
+
+Fix Zypper/Yum unit test after returning empty requested attrs
+
+Add Yum/Zypper list_pkgs unit tests for multiple versions reported
+
+Compare testing items properly to avoid unwanted failures
+
+Use assertCountEqual when running on Python3
+
+Add missing import for the six module
+
+Strip architecture from package name in aptpkg module
+
+Use parse_arch_from_name if available on the virtual pkg module
+
+Adapt unit tests after introducing parse_arch_from_name
+
+Use PKG_ARCH_SEPARATOR in pkg.normalize_name method
+
+Add pkg_resource to setup loader modules. Fix pylint
+
+Remove unnecessary lambda
+
+Return None instead empty string for arch and release in pkg.list_pkgs
+---
+ salt/modules/aptpkg.py                  |  38 ++++++++
+ salt/modules/pkg_resource.py            |  20 +++-
+ salt/modules/yumpkg.py                  |  32 ++++++-
+ salt/modules/zypperpkg.py               |  29 +++++-
+ tests/unit/modules/test_pkg_resource.py | 116 ++++++++++++++++++++++++
+ tests/unit/modules/test_yumpkg.py       |  85 ++++++++++++++++-
+ tests/unit/modules/test_zypperpkg.py    |  79 +++++++++++++++-
+ 7 files changed, 383 insertions(+), 16 deletions(-)
+
+diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
+index 4a331444c9..f51b6958e5 100644
+--- a/salt/modules/aptpkg.py
++++ b/salt/modules/aptpkg.py
+@@ -73,6 +73,7 @@ except ImportError:
+ # pylint: enable=import-error
+ 
+ APT_LISTS_PATH = "/var/lib/apt/lists"
++PKG_ARCH_SEPARATOR = ':'
+ 
+ # Source format for urllib fallback on PPA handling
+ LP_SRC_FORMAT = 'deb http://ppa.launchpad.net/{0}/{1}/ubuntu {2} main'
+@@ -185,6 +186,43 @@ def _warn_software_properties(repo):
+     log.warning('Best guess at ppa format: %s', repo)
+ 
+ 
++def normalize_name(name):
++    '''
++    Strips the architecture from the specified package name, if necessary.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt '*' pkg.normalize_name zsh:amd64
++    '''
++    try:
++        name, arch = name.rsplit(PKG_ARCH_SEPARATOR, 1)
++    except ValueError:
++        return name
++    return name
++
++
++def parse_arch_from_name(name):
++    '''
++    Parse name and architecture from the specified package name.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt '*' pkg.parse_arch_from_name zsh:amd64
++    '''
++    try:
++        _name, _arch = name.rsplit(PKG_ARCH_SEPARATOR, 1)
++    except ValueError:
++        _name, _arch = name, None
++    return {
++        'name': _name,
++        'arch': _arch
++    }
++
++
+ def latest_version(*names, **kwargs):
+     '''
+     Return the latest version of the named package available for upgrade or
+diff --git a/salt/modules/pkg_resource.py b/salt/modules/pkg_resource.py
+index 8b83f1cda5..0c872f1805 100644
+--- a/salt/modules/pkg_resource.py
++++ b/salt/modules/pkg_resource.py
+@@ -311,21 +311,31 @@ def format_pkg_list(packages, versions_as_list, attr):
+     '''
+     ret = copy.deepcopy(packages)
+     if attr:
+-        requested_attr = {'epoch', 'version', 'release', 'arch', 'install_date', 'install_date_time_t'}
++        ret_attr = {}
++        requested_attr = set(['epoch', 'version', 'release', 'arch',
++                              'install_date', 'install_date_time_t'])
+ 
+         if attr != 'all':
+-            requested_attr &= set(attr + ['version'])
++            requested_attr &= set(attr + ['version'] + ['arch'])
+ 
+         for name in ret:
++            _parse_arch_from_name = __salt__.get('pkg.parse_arch_from_name', lambda pkgname: {'name': pkgname, 'arch': None})
++            name_arch_d = _parse_arch_from_name(name)
++            _name = name_arch_d['name']
++            _arch = name_arch_d['arch']
++
+             versions = []
++            pkgname = None
+             for all_attr in ret[name]:
+                 filtered_attr = {}
+                 for key in requested_attr:
+-                    if all_attr[key]:
++                    if key in all_attr:
+                         filtered_attr[key] = all_attr[key]
+                 versions.append(filtered_attr)
+-            ret[name] = versions
+-        return ret
++                if _name and filtered_attr.get('arch', None) == _arch:
++                    pkgname = _name
++            ret_attr.setdefault(pkgname or name, []).extend(versions)
++        return ret_attr
+ 
+     for name in ret:
+         ret[name] = [format_version(d['epoch'], d['version'], d['release'])
+diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
+index a56a2e8366..4f26a41670 100644
+--- a/salt/modules/yumpkg.py
++++ b/salt/modules/yumpkg.py
+@@ -66,6 +66,8 @@ log = logging.getLogger(__name__)
+ 
+ __HOLD_PATTERN = r'[\w+]+(?:[.-][^-]+)*'
+ 
++PKG_ARCH_SEPARATOR = '.'
++
+ # Define the module's virtual name
+ __virtualname__ = 'pkg'
+ 
+@@ -429,7 +431,7 @@ def normalize_name(name):
+         salt '*' pkg.normalize_name zsh.x86_64
+     '''
+     try:
+-        arch = name.rsplit('.', 1)[-1]
++        arch = name.rsplit(PKG_ARCH_SEPARATOR, 1)[-1]
+         if arch not in salt.utils.pkg.rpm.ARCHES + ('noarch',):
+             return name
+     except ValueError:
+@@ -440,6 +442,30 @@ def normalize_name(name):
+     return name
+ 
+ 
++def parse_arch_from_name(name):
++    '''
++    Parse name and architecture from the specified package name.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt '*' pkg.parse_arch_from_name zsh.x86_64
++    '''
++    _name, _arch = None, None
++    try:
++        _name, _arch = name.rsplit(PKG_ARCH_SEPARATOR, 1)
++    except ValueError:
++        pass
++    if _arch not in salt.utils.pkg.rpm.ARCHES + ('noarch',):
++        _name = name
++        _arch = None
++    return {
++        'name': _name,
++        'arch': _arch
++    }
++
++
+ def latest_version(*names, **kwargs):
+     '''
+     Return the latest version of the named package available for upgrade or
+@@ -676,8 +702,8 @@ def list_pkgs(versions_as_list=False, **kwargs):
+             if pkginfo is not None:
+                 # see rpm version string rules available at https://goo.gl/UGKPNd
+                 pkgver = pkginfo.version
+-                epoch = ''
+-                release = ''
++                epoch = None
++                release = None
+                 if ':' in pkgver:
+                     epoch, pkgver = pkgver.split(":", 1)
+                 if '-' in pkgver:
+diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
+index 0c26e2214c..92e7052020 100644
+--- a/salt/modules/zypperpkg.py
++++ b/salt/modules/zypperpkg.py
+@@ -53,6 +53,7 @@ ZYPP_HOME = '/etc/zypp'
+ LOCKS = '{0}/locks'.format(ZYPP_HOME)
+ REPOS = '{0}/repos.d'.format(ZYPP_HOME)
+ DEFAULT_PRIORITY = 99
++PKG_ARCH_SEPARATOR = '.'
+ 
+ # Define the module's virtual name
+ __virtualname__ = 'pkg'
+@@ -590,6 +591,30 @@ def info_available(*names, **kwargs):
+     return ret
+ 
+ 
++def parse_arch_from_name(name):
++    '''
++    Parse name and architecture from the specified package name.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt '*' pkg.parse_arch_from_name zsh.x86_64
++    '''
++    _name, _arch = None, None
++    try:
++        _name, _arch = name.rsplit(PKG_ARCH_SEPARATOR, 1)
++    except ValueError:
++        pass
++    if _arch not in salt.utils.pkg.rpm.ARCHES + ('noarch',):
++        _name = name
++        _arch = None
++    return {
++        'name': _name,
++        'arch': _arch
++    }
++
++
+ def latest_version(*names, **kwargs):
+     '''
+     Return the latest version of the named package available for upgrade or
+@@ -760,8 +785,8 @@ def list_pkgs(versions_as_list=False, **kwargs):
+             if pkginfo:
+                 # see rpm version string rules available at https://goo.gl/UGKPNd
+                 pkgver = pkginfo.version
+-                epoch = ''
+-                release = ''
++                epoch = None
++                release = None
+                 if ':' in pkgver:
+                     epoch, pkgver = pkgver.split(":", 1)
+                 if '-' in pkgver:
+diff --git a/tests/unit/modules/test_pkg_resource.py b/tests/unit/modules/test_pkg_resource.py
+index b6d90cc92c..a9ffe43cdd 100644
+--- a/tests/unit/modules/test_pkg_resource.py
++++ b/tests/unit/modules/test_pkg_resource.py
+@@ -129,6 +129,122 @@ class PkgresTestCase(TestCase, LoaderModuleMockMixin):
+         '''
+         self.assertIsNone(pkg_resource.sort_pkglist({}))
+ 
++    def test_format_pkg_list_no_attr(self):
++        '''
++            Test to output format of the package list with no attr parameter.
++        '''
++        packages = {
++            'glibc': [{'version': '2.12', 'epoch': None, 'release': '1.212.el6', 'arch': 'x86_64'}],
++            'glibc.i686': [{'version': '2.12', 'epoch': None, 'release': '1.212.el6', 'arch': 'i686'}],
++            'foobar': [
++                {'version': '1.2.0', 'epoch': '2', 'release': '7', 'arch': 'x86_64'},
++                {'version': '1.2.3', 'epoch': '2', 'release': '27', 'arch': 'x86_64'},
++            ],
++            'foobar.something': [{'version': '1.1', 'epoch': '3', 'release': '23.1', 'arch': 'i686'}],
++            'foobar.': [{'version': '1.1', 'epoch': '3', 'release': '23.1', 'arch': 'i686'}]
++        }
++        expected_pkg_list = {
++            'glibc': '2.12-1.212.el6',
++            'glibc.i686': '2.12-1.212.el6',
++            'foobar': '2:1.2.0-7,2:1.2.3-27',
++            'foobar.something': '3:1.1-23.1',
++            'foobar.': '3:1.1-23.1',
++        }
++        if six.PY3:
++            self.assertCountEqual(pkg_resource.format_pkg_list(packages, False, None), expected_pkg_list)
++        else:
++            self.assertItemsEqual(pkg_resource.format_pkg_list(packages, False, None), expected_pkg_list)
++
++    def test_format_pkg_list_with_attr(self):
++        '''
++            Test to output format of the package list with attr parameter.
++            In this case, any redundant "arch" reference will be removed from the package name since it's
++            include as part of the requested attr.
++        '''
++        NAME_ARCH_MAPPING = {
++            'glibc': {
++                'name': 'glibc',
++                'arch': None
++            },
++            'glibc.i686': {
++                'name': 'glibc',
++                'arch': 'i686'
++            },
++            'foobar': {
++                'name': 'foobar',
++                'arch': None
++            },
++            'foobar.something': {
++                'name': 'foobar.something',
++                'arch': None
++            },
++            'foobar.': {
++                'name': 'foobar.',
++                'arch': None
++            }
++        }
++        packages = {
++            'glibc': [{'version': '2.12', 'epoch': None, 'release': '1.212.el6', 'arch': 'x86_64'}],
++            'glibc.i686': [{'version': '2.12', 'epoch': None, 'release': '1.212.el6', 'arch': 'i686'}],
++            'foobar': [
++                {'version': '1.2.0', 'epoch': '2', 'release': '7', 'arch': 'x86_64'},
++                {'version': '1.2.3', 'epoch': '2', 'release': '27', 'arch': 'x86_64'},
++            ],
++            'foobar.something': [{'version': '1.1', 'epoch': '3', 'release': '23.1', 'arch': 'i686'}],
++            'foobar.': [{'version': '1.1', 'epoch': '3', 'release': '23.1', 'arch': 'i686'}]
++        }
++        expected_pkg_list = {
++            'glibc': [
++                {
++                    'arch': 'x86_64',
++                    'release': '1.212.el6',
++                    'epoch': None,
++                    'version': '2.12'
++                },
++                {
++                    'arch': 'i686',
++                    'release': '1.212.el6',
++                    'epoch': None,
++                    'version': '2.12'
++                }
++             ],
++            'foobar': [
++                {
++                    'arch': 'x86_64',
++                    'release': '7',
++                    'epoch': '2',
++                    'version': '1.2.0'
++                },
++                {
++                    'arch': 'x86_64',
++                    'release': '27',
++                    'epoch': '2',
++                    'version': '1.2.3'
++                }
++            ],
++            'foobar.': [
++                {
++                    'arch': 'i686',
++                    'release': '23.1',
++                    'epoch': '3',
++                    'version': '1.1'
++                }
++            ],
++            'foobar.something': [
++                {
++                    'arch': 'i686',
++                    'release': '23.1',
++                    'epoch': '3',
++                    'version': '1.1'
++                }
++            ]
++        }
++        with patch.dict(pkg_resource.__salt__, {'pkg.parse_arch_from_name': NAME_ARCH_MAPPING.get}):
++            if six.PY3:
++                self.assertCountEqual(pkg_resource.format_pkg_list(packages, False, attr=['epoch', 'release']), expected_pkg_list)
++            else:
++                self.assertItemsEqual(pkg_resource.format_pkg_list(packages, False, attr=['epoch', 'release']), expected_pkg_list)
++
+     def test_stringify(self):
+         '''
+             Test to takes a dict of package name/version information
+diff --git a/tests/unit/modules/test_yumpkg.py b/tests/unit/modules/test_yumpkg.py
+index 6113d3a4b1..6019a8179e 100644
+--- a/tests/unit/modules/test_yumpkg.py
++++ b/tests/unit/modules/test_yumpkg.py
+@@ -18,6 +18,7 @@ from tests.support.mock import (
+ # Import Salt libs
+ from salt.exceptions import CommandExecutionError
+ import salt.modules.rpm_lowpkg as rpm
++from salt.ext import six
+ import salt.modules.yumpkg as yumpkg
+ import salt.modules.pkg_resource as pkg_resource
+ 
+@@ -76,7 +77,8 @@ class YumTestCase(TestCase, LoaderModuleMockMixin):
+                     'os_family': 'RedHat',
+                     'osmajorrelease': 7,
+                 },
+-            }
++            },
++            pkg_resource: {}
+         }
+ 
+     def test_list_pkgs(self):
+@@ -107,7 +109,8 @@ class YumTestCase(TestCase, LoaderModuleMockMixin):
+              patch.dict(yumpkg.__salt__, {'cmd.run': MagicMock(return_value=os.linesep.join(rpm_out))}), \
+              patch.dict(yumpkg.__salt__, {'pkg_resource.add_pkg': _add_data}), \
+              patch.dict(yumpkg.__salt__, {'pkg_resource.format_pkg_list': pkg_resource.format_pkg_list}), \
+-             patch.dict(yumpkg.__salt__, {'pkg_resource.stringify': MagicMock()}):
++             patch.dict(yumpkg.__salt__, {'pkg_resource.stringify': MagicMock()}), \
++             patch.dict(pkg_resource.__salt__, {'pkg.parse_arch_from_name': yumpkg.parse_arch_from_name}):
+             pkgs = yumpkg.list_pkgs(versions_as_list=True)
+             for pkg_name, pkg_version in {
+                 'python-urlgrabber': '3.10-8.el7',
+@@ -154,7 +157,8 @@ class YumTestCase(TestCase, LoaderModuleMockMixin):
+              patch.dict(yumpkg.__salt__, {'cmd.run': MagicMock(return_value=os.linesep.join(rpm_out))}), \
+              patch.dict(yumpkg.__salt__, {'pkg_resource.add_pkg': _add_data}), \
+              patch.dict(yumpkg.__salt__, {'pkg_resource.format_pkg_list': pkg_resource.format_pkg_list}), \
+-             patch.dict(yumpkg.__salt__, {'pkg_resource.stringify': MagicMock()}):
++             patch.dict(yumpkg.__salt__, {'pkg_resource.stringify': MagicMock()}), \
++             patch.dict(pkg_resource.__salt__, {'pkg.parse_arch_from_name': yumpkg.parse_arch_from_name}):
+             pkgs = yumpkg.list_pkgs(attr=['epoch', 'release', 'arch', 'install_date_time_t'])
+             for pkg_name, pkg_attr in {
+                 'python-urlgrabber': {
+@@ -162,54 +166,63 @@ class YumTestCase(TestCase, LoaderModuleMockMixin):
+                     'release': '8.el7',
+                     'arch': 'noarch',
+                     'install_date_time_t': 1487838471,
++                    'epoch': None
+                 },
+                 'alsa-lib': {
+                     'version': '1.1.1',
+                     'release': '1.el7',
+                     'arch': 'x86_64',
+                     'install_date_time_t': 1487838475,
++                    'epoch': None
+                 },
+                 'gnupg2': {
+                     'version': '2.0.22',
+                     'release': '4.el7',
+                     'arch': 'x86_64',
+                     'install_date_time_t': 1487838477,
++                    'epoch': None
+                 },
+                 'rpm-python': {
+                     'version': '4.11.3',
+                     'release': '21.el7',
+                     'arch': 'x86_64',
+                     'install_date_time_t': 1487838477,
++                    'epoch': None
+                 },
+                 'pygpgme': {
+                     'version': '0.3',
+                     'release': '9.el7',
+                     'arch': 'x86_64',
+                     'install_date_time_t': 1487838478,
++                    'epoch': None
+                 },
+                 'yum': {
+                     'version': '3.4.3',
+                     'release': '150.el7.centos',
+                     'arch': 'noarch',
+                     'install_date_time_t': 1487838479,
++                    'epoch': None
+                 },
+                 'lzo': {
+                     'version': '2.06',
+                     'release': '8.el7',
+                     'arch': 'x86_64',
+                     'install_date_time_t': 1487838479,
++                    'epoch': None
+                 },
+                 'qrencode-libs': {
+                     'version': '3.4.1',
+                     'release': '3.el7',
+                     'arch': 'x86_64',
+                     'install_date_time_t': 1487838480,
++                    'epoch': None
+                 },
+                 'ustr': {
+                     'version': '1.0.4',
+                     'release': '16.el7',
+                     'arch': 'x86_64',
+                     'install_date_time_t': 1487838480,
++                    'epoch': None
+                 },
+                 'shadow-utils': {
+                     'epoch': '2',
+@@ -223,22 +236,88 @@ class YumTestCase(TestCase, LoaderModuleMockMixin):
+                     'release': '33.el7',
+                     'arch': 'x86_64',
+                     'install_date_time_t': 1487838484,
++                    'epoch': None
+                 },
+                 'openssh': {
+                     'version': '6.6.1p1',
+                     'release': '33.el7_3',
+                     'arch': 'x86_64',
+                     'install_date_time_t': 1487838485,
++                    'epoch': None
+                 },
+                 'virt-what': {
+                     'version': '1.13',
+                     'release': '8.el7',
+                     'install_date_time_t': 1487838486,
+                     'arch': 'x86_64',
++                    'epoch': None
+                 }}.items():
++
+                 self.assertTrue(pkgs.get(pkg_name))
+                 self.assertEqual(pkgs[pkg_name], [pkg_attr])
+ 
++    def test_list_pkgs_with_attr_multiple_versions(self):
++        '''
++        Test packages listing with the attr parameter reporting multiple version installed
++
++        :return:
++        '''
++        def _add_data(data, key, value):
++            data.setdefault(key, []).append(value)
++
++        rpm_out = [
++            'glibc_|-(none)_|-2.12_|-1.212.el6_|-i686_|-(none)_|-1542394210'
++            'glibc_|-(none)_|-2.12_|-1.212.el6_|-x86_64_|-(none)_|-1542394204',
++            'virt-what_|-(none)_|-1.13_|-8.el7_|-x86_64_|-(none)_|-1487838486',
++            'virt-what_|-(none)_|-1.10_|-2.el7_|-x86_64_|-(none)_|-1387838486',
++        ]
++        with patch.dict(yumpkg.__grains__, {'osarch': 'x86_64'}), \
++             patch.dict(yumpkg.__salt__, {'cmd.run': MagicMock(return_value=os.linesep.join(rpm_out))}), \
++             patch.dict(yumpkg.__salt__, {'pkg_resource.add_pkg': _add_data}), \
++             patch.dict(yumpkg.__salt__, {'pkg_resource.format_pkg_list': pkg_resource.format_pkg_list}), \
++             patch.dict(yumpkg.__salt__, {'pkg_resource.stringify': MagicMock()}), \
++             patch.dict(pkg_resource.__salt__, {'pkg.parse_arch_from_name': yumpkg.parse_arch_from_name}):
++            pkgs = yumpkg.list_pkgs(attr=['epoch', 'release', 'arch', 'install_date_time_t'])
++            expected_pkg_list = {
++                'glibc': [
++                    {
++                        'version': '2.12',
++                        'release': '1.212.el6',
++                        'install_date_time_t': 1542394210,
++                        'arch': 'i686',
++                        'epoch': None
++                    },
++                    {
++                        'version': '2.12',
++                        'release': '1.212.el6',
++                        'install_date_time_t': 1542394204,
++                        'arch': 'x86_64',
++                        'epoch': None
++                    }
++                ],
++                'virt-what': [
++                    {
++                        'version': '1.10',
++                        'release': '2.el7',
++                        'install_date_time_t': 1387838486,
++                        'arch': 'x86_64',
++                        'epoch': None
++                    },
++                    {
++                        'version': '1.13',
++                        'release': '8.el7',
++                        'install_date_time_t': 1487838486,
++                        'arch': 'x86_64',
++                        'epoch': None
++                    }
++                ]
++            }
++            for pkgname, pkginfo in pkgs.items():
++                if six.PY3:
++                    self.assertCountEqual(pkginfo, expected_pkg_list[pkgname])
++                else:
++                    self.assertItemsEqual(pkginfo, expected_pkg_list[pkgname])
++
+     def test_latest_version_with_options(self):
+         with patch.object(yumpkg, 'list_pkgs', MagicMock(return_value={})):
+ 
+diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
+index 3259e1810d..f586c23fd0 100644
+--- a/tests/unit/modules/test_zypperpkg.py
++++ b/tests/unit/modules/test_zypperpkg.py
+@@ -61,7 +61,7 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+     '''
+ 
+     def setup_loader_modules(self):
+-        return {zypper: {'rpm': None}}
++        return {zypper: {'rpm': None}, pkg_resource: {}}
+ 
+     def setUp(self):
+         self.new_repo_config = dict(
+@@ -605,7 +605,8 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+              patch.dict(zypper.__grains__, {'osarch': 'x86_64'}), \
+              patch.dict(zypper.__salt__, {'pkg_resource.add_pkg': _add_data}), \
+              patch.dict(zypper.__salt__, {'pkg_resource.format_pkg_list': pkg_resource.format_pkg_list}), \
+-             patch.dict(zypper.__salt__, {'pkg_resource.stringify': MagicMock()}):
++             patch.dict(zypper.__salt__, {'pkg_resource.stringify': MagicMock()}), \
++             patch.dict(pkg_resource.__salt__, {'pkg.parse_arch_from_name': zypper.parse_arch_from_name}):
+             pkgs = zypper.list_pkgs(attr=['epoch', 'release', 'arch', 'install_date_time_t'])
+             self.assertFalse(pkgs.get('gpg-pubkey', False))
+             for pkg_name, pkg_attr in {
+@@ -614,58 +615,130 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+                     'release': '129.686',
+                     'arch': 'noarch',
+                     'install_date_time_t': 1498636511,
++                    'epoch': None,
+                 }],
+                 'yast2-ftp-server': [{
+                     'version': '3.1.8',
+                     'release': '8.1',
+                     'arch': 'x86_64',
+                     'install_date_time_t': 1499257798,
++                    'epoch': None,
+                 }],
+                 'protobuf-java': [{
+                     'version': '2.6.1',
+                     'release': '3.1.develHead',
+                     'install_date_time_t': 1499257756,
+                     'arch': 'noarch',
++                    'epoch': None,
+                 }],
+                 'susemanager-build-keys-web': [{
+                     'version': '12.0',
+                     'release': '5.1.develHead',
+                     'arch': 'noarch',
+                     'install_date_time_t': 1498636510,
++                    'epoch': None,
+                 }],
+                 'apache-commons-cli': [{
+                     'version': '1.2',
+                     'release': '1.233',
+                     'arch': 'noarch',
+                     'install_date_time_t': 1498636510,
++                    'epoch': None,
+                 }],
+                 'kernel-default': [{
+                     'version': '4.4.138',
+                     'release': '94.39.1',
+                     'arch': 'x86_64',
+-                    'install_date_time_t': 1529936067
++                    'install_date_time_t': 1529936067,
++                    'epoch': None,
+                 },
+                 {
+                     'version': '4.4.73',
+                     'release': '5.1',
+                     'arch': 'x86_64',
+                     'install_date_time_t': 1503572639,
++                    'epoch': None,
+                 }],
+                 'perseus-dummy.i586': [{
+                     'version': '1.1',
+                     'release': '1.1',
+                     'arch': 'i586',
+                     'install_date_time_t': 1529936062,
++                    'epoch': None,
+                 }],
+                 'jose4j': [{
+                     'arch': 'noarch',
+                     'version': '0.4.4',
+                     'release': '2.1.develHead',
+                     'install_date_time_t': 1499257756,
++                    'epoch': None,
+                 }]}.items():
+                 self.assertTrue(pkgs.get(pkg_name))
+                 self.assertEqual(pkgs[pkg_name], pkg_attr)
+ 
++    def test_list_pkgs_with_attr_multiple_versions(self):
++        '''
++        Test packages listing with the attr parameter reporting multiple version installed
++
++        :return:
++        '''
++        def _add_data(data, key, value):
++            data.setdefault(key, []).append(value)
++
++        rpm_out = [
++            'glibc_|-2.12_|-1.212.el6_|-i686_|-_|-1542394210',
++            'glibc_|-2.12_|-1.212.el6_|-x86_64_|-_|-1542394204',
++            'virt-what_|-1.13_|-8.el7_|-x86_64_|-_|-1487838486',
++            'virt-what_|-1.10_|-2.el7_|-x86_64_|-_|-1387838486',
++        ]
++
++        with patch.dict(zypper.__grains__, {'osarch': 'x86_64'}), \
++             patch.dict(zypper.__salt__, {'cmd.run': MagicMock(return_value=os.linesep.join(rpm_out))}), \
++             patch.dict(zypper.__salt__, {'pkg_resource.add_pkg': _add_data}), \
++             patch.dict(zypper.__salt__, {'pkg_resource.format_pkg_list': pkg_resource.format_pkg_list}), \
++             patch.dict(zypper.__salt__, {'pkg_resource.stringify': MagicMock()}), \
++             patch.dict(pkg_resource.__salt__, {'pkg.parse_arch_from_name': zypper.parse_arch_from_name}):
++            pkgs = zypper.list_pkgs(attr=['epoch', 'release', 'arch', 'install_date_time_t'])
++            expected_pkg_list = {
++                'glibc': [
++                    {
++                        'version': '2.12',
++                        'release': '1.212.el6',
++                        'install_date_time_t': 1542394210,
++                        'arch': 'i686',
++                        'epoch': None
++                    },
++                    {
++                        'version': '2.12',
++                        'release': '1.212.el6',
++                        'install_date_time_t': 1542394204,
++                        'arch': 'x86_64',
++                        'epoch': None
++                    }
++                ],
++                'virt-what': [
++                    {
++                        'version': '1.10',
++                        'release': '2.el7',
++                        'install_date_time_t': 1387838486,
++                        'arch': 'x86_64',
++                        'epoch': None
++                    },
++                    {
++                        'version': '1.13',
++                        'release': '8.el7',
++                        'install_date_time_t': 1487838486,
++                        'arch': 'x86_64',
++                        'epoch': None
++                    }
++                ]
++            }
++            for pkgname, pkginfo in pkgs.items():
++                if six.PY3:
++                    self.assertCountEqual(pkginfo, expected_pkg_list[pkgname])
++                else:
++                    self.assertItemsEqual(pkginfo, expected_pkg_list[pkgname])
++
+     def test_list_patches(self):
+         '''
+         Test advisory patches listing.
+-- 
+2.20.1
+
+

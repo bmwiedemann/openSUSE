@@ -1,0 +1,230 @@
+-------------------------------------------------------------------
+Wed May 22 13:15:11 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.32.1:
+  + This fixes a memory corruption issue causing the UI to crash
+    and also fixes some build issues.
+
+-------------------------------------------------------------------
+Thu Apr 18 14:21:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Fri Mar  8 12:55:21 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Use newer meson features to avoid a build warning.
+  + Various C99 cleanups.
+  + Use G_DECLARE_FINAL_TYPE for GmwDevice.
+  + Remove the AppMenu.
+  + Updated translations.
+- Drop patches fixed upstream:
+  + gnome-multi-writer-Various-C99-cleanups.patch.
+  + gnome-multi-writer-Use-G_DECLARE_FINAL_TYPE.patch.
+
+-------------------------------------------------------------------
+Fri Dec 28 00:40:30 UTC 2018 - bjorn.lie@gmail.com
+
+- Add upstream bug fix patches from stable branch:
+  + gnome-multi-writer-Various-C99-cleanups.patch: Various C99
+    cleanups.
+  + gnome-multi-writer-Use-G_DECLARE_FINAL_TYPE.patch: Use
+    G_DECLARE_FINAL_TYPE for GmwDevice.
+
+-------------------------------------------------------------------
+Fri Sep  7 20:19:37 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 12 15:28:34 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+- Drop gnome-multi-writer-meson.patch,
+  gmw-norwegian-bokmaal-translation.patch and
+  gmw-gschema-fix-gettext-domain.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:28:48 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Dec 22 19:15:42 UTC 2017 - zaitor@opensuse.org
+
+- Add gmw-gschema-fix-gettext-domain.patch: gschema: Fix
+  gettext-domain.
+- Add gmw-norwegian-bokmaal-translation.patch: Add Norwegian Bokmål
+  translations.
+
+-------------------------------------------------------------------
+Mon Sep 11 11:54:22 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 15 11:51:38 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.90:
+  + Switch to meson build system.
+  + Updated translations.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+- Add gnome-multi-writer-meson.patch: respect --libexecdir meson
+  parameter.
+
+-------------------------------------------------------------------
+Mon Mar 20 20:32:03 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Sat Mar 11 21:16:46 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.92:
+  + Check some return codes when talking to the device.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 12 10:30:09 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Allow writing to large USB drives.
+
+-------------------------------------------------------------------
+Mon Sep 19 15:21:45 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 14 07:26:49 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Fixes several build issues.
+  + Updated translations.
+- Drop gmw-add-missing-include.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Aug 29 09:03:23 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Fix a couple of Werror=format problems.
+  + Check for authentication before copying.
+  + Updated translations.
+- Drop gnome-multi-writer-fix-build.patch: Fixed upstream.
+- Add pkgconfig(polkit-gobject-1) BuildRequires: New dependency.
+- Add gmw-add-missing-include.patch: Fix build, patch from upstream
+  git.
+
+-------------------------------------------------------------------
+Mon Aug 15 12:10:31 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.21.90:
+  + Updated translations.
+- Add gnome-multi-writer-fix-build.patch: Fix build on 32bit archs.
+
+-------------------------------------------------------------------
+Mon Mar 21 11:31:46 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 10:13:53 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.90:
+  + Add proper text to the button during a copy operation.
+
+-------------------------------------------------------------------
+Wed Sep 30 09:24:28 UTC 2015 - zaitor@opensuse.org
+
+- Own %{_datadir}/polkit-1 and subfolder for openSUSE Tumbleweed.
+
+-------------------------------------------------------------------
+Mon Sep 21 11:40:05 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 08:38:10 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Use g_autoptr() types from GLib and GUsb.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 19 18:41:16 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jun 24 09:00:36 UTC 2015 - dimstar@opensuse.org
+
+- Own %{_datadir}/appdata for openSUSE 42.
+
+-------------------------------------------------------------------
+Mon Mar 23 10:34:36 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Mon Mar 16 09:49:28 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 08:33:44 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 13 11:16:11 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Bugfixes:
+    - Add hub quirks for all Plugable USB devices.
+  + New features:
+    - Optionally check that USB drives are indeed their advertised
+      size.
+    - Allow renaming hub labels from the UI.
+- Add pkgconfig(gudev-1.0) BuildRequires: new dependency for the
+  gnome-multi-writer-probe tool.
+
+-------------------------------------------------------------------
+Tue Jan 20 07:30:16 UTC 2015 - badshah400@gmail.com
+
+- Update to version 3.15.4:
+  + Show the size next to the device name when the device is idle.
+  + Bugs fixed:
+    - Add a translatable version of a generic flash drive.
+    - Add quirks for the 36 port MegaHub.
+    - Don't proceed to the copy phase if unmounting failed.
+    - Fix crash when libusb context creation fails.
+    - Never use the USB platform ID for the hub label.
+    - Support root hubs with bus numbers >= 8.
+    - Try to get the icon name hint from UDisks.
+    - Unmount all partitions when a device is inserted.
+
+-------------------------------------------------------------------
+Sat Jan 10 09:06:05 UTC 2015 - dimstar@opensuse.org
+
+- Add docbook-utils-minimal BuildRequires: enable building of the
+  man pages.
+
+-------------------------------------------------------------------
+Fri Jan  9 13:56:03 UTC 2015 - dimstar@opensuse.org
+
+- Initial package, version 3.15.2.
+

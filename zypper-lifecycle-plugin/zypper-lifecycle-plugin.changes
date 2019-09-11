@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Thu Nov 23 13:54:37 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Fri Mar 24 12:45:29 UTC 2017 - nadvornik@suse.com
+
+- do not show version number by default (fate#322212)
+
+-------------------------------------------------------------------
+Wed Mar  8 13:32:47 UTC 2017 - nadvornik@suse.com
+
+- fixed unhandled exception on empty package list (bsc#1028247#c1)
+
+-------------------------------------------------------------------
+Thu Mar  2 13:34:03 UTC 2017 - nadvornik@suse.com
+
+- version 0.6
+- save state and report changes since saved state (fate#322059)
+- added systemd timer for periodical reports (fate#322059)
+- look for lifecycle data also in /usr (bsc#1014622)
+- support also openSUSE vendor (bsc#1014620)
+
+-------------------------------------------------------------------
+Mon Sep 26 09:01:46 UTC 2016 - nadvornik@suse.com
+
+- version 0.5
+- consider also codestream in date/days argument (bsc#999537)
+- handle missing codestream name (bsc#1000595)
+
+-------------------------------------------------------------------
+Tue Sep 13 12:05:26 UTC 2016 - nadvornik@suse.com
+
+- version 0.4
+- handle codestream info (fate#320835)
+- clarify help text (bnc#981106)
+
+-------------------------------------------------------------------
+Tue Jul 26 10:43:22 UTC 2016 - nadvornik@suse.com
+
+- version 0.3
+- use product eol according to FATE#320699
+- adjust output
+
+-------------------------------------------------------------------
+Fri May 13 08:32:03 UTC 2016 - nadvornik@suse.com
+
+- version 0.2
+- fixed return value (bsc#979322)
+- do not ignore errors on parsing of lifecycle data (bsc#979431)
+
+-------------------------------------------------------------------
+Fri May  6 09:30:32 UTC 2016 - nadvornik@suse.com
+
+- initial version 0.1 (fate#320597)
+

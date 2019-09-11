@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Feb 25 11:09:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use pypi archive instead of github one, no difference for us
+
+-------------------------------------------------------------------
+Tue Feb 12 15:00:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable the tests as they do not work without direct network
+  access
+
+-------------------------------------------------------------------
+Mon Feb 11 11:25:03 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- clean up spec file
+
+-------------------------------------------------------------------
+Wed Feb  6 12:59:49 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- initial package

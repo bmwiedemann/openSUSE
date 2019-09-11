@@ -1,0 +1,253 @@
+-------------------------------------------------------------------
+Wed Mar 13 16:13:57 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.42
+   see /usr/share/doc/packages/perl-Mail-IMAPClient/Changes
+
+  version 3.42: Sun Feb 24 00:43:29 UTC 2019
+  	- rt.cpan.org#12859: has_capability() changes in 3.41 broke imap4rev1()
+  	  [Gilles Lamiral and Gábor Leszlauer]
+  	- updated http:// to https:// URLs for referenced resources
+  	- updated copyright for 2019
+
+-------------------------------------------------------------------
+Thu Feb 21 06:17:21 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.41
+   see /usr/share/doc/packages/perl-Mail-IMAPClient/Changes
+
+  version 3.41: Thu Feb 21 01:47:42 UTC 2019
+  	- rt.cpan.org#128220: unseen(), messages() and related POD cleanup
+  	  [Dan Jacobson]
+  	- rt.cpan.org#128264: parse_message() minor code/POD cleanup
+  	  [Dan Jacobson]
+  	- rt.cpan.org#128215: verb missing in messages() POD
+  	  [Gilles Lamiral and Dan Jacobson]
+  	- rt.cpan.org#127271: simplify capability handling via has_capability enhancements
+  	  +* has_capability() success returns(true) with server response data, not always '1'
+  	  + enhanced t/capability.t test cases
+  	  + updated POD for capability() and has_capability()
+  	  [Gilles Lamiral and Mark Overmeer]
+  	- rt.cpan.org#122373: use of IO::Socket::IP led to connect(empty args) regression
+  	  [Gilles Lamiral]
+  	- rt.cpan.org#128127: fix minor POD typo for search()
+  	  [Gregor Herrmann]
+  	- folders()/subscribed() remove mailboxes with \Noselect attribute
+  	  [Ashley Willis]
+  	- fetch_hash() remove quotes around header names (seen w/outlook.com)
+  	  [Ashley Willis]
+  	- use first over grep for minor efficiency gains
+  	- other minor POD cleanup
+
+-------------------------------------------------------------------
+Sat Jan 19 13:12:46 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Fixed shebangs in example scripts
+
+-------------------------------------------------------------------
+Thu Dec  6 15:51:38 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.40
+   see /usr/share/doc/packages/perl-Mail-IMAPClient/Changes
+
+  version 3.40: Thu Dec  6 01:44:16 UTC 2018
+  	- rt.cpan.org#122373 support IPv6 by using IO::Socket::IP over IO::Socket::INET
+  	  [Gilles Lamiral and Mark Overmeer]
+  	- rt.cpan.org#127103 flags() undef value as an ARRAY reference on a bogus message
+  	  [Gilles Lamiral]
+  	- rt.cpan.org#124523 update examples/populate_mailbox.pl timegm usage
+  	  [Bernhard M. W.]
+  	- t/capability.t: added first set of tests
+  	- t/quota.t: minor fix when tests skipped
+  
+  version 3.39: Fri Feb  3 00:43:00 UTC 2017
+  	- rt.cpan.org#115726: uninitialized value via fetch_hash
+  	  [Malte Stretz]
+  	- rt.cpan.org#119523: better error reporting on failed TLS connections
+  	  [Matthew Horsfall]
+  	- rt.cpan.org#114904: document noop()
+  	  [Glenn Golden]
+  	- rt.cpan.org#97718: (redux) never retry DONE
+  	  [Laurence Darby]
+  	- _imap_command() new doretry => 0|1 option to suppress/allow retry
+  	- updated copyright for 2017
+  
+  version 3.38: Tue Feb  9 02:48:21 UTC 2016
+  	- rt.cpan.org#107592: redact credentials via debug if !Showcredentials
+  	  [Gilles Lamiral]
+  	- rt.cpan.org#110273: failure to quote password values
+  	  (regression introduced in 3.36 via fix for rt.cpan.org#100601)
+  	  [Gilles Lamiral]
+  	- rt.cpan.org#107593: allow getquota("")
+  	- *Quote() now returns qq("") for defined but empty values
+  	- rt.cpan.org#107011: fix folders_hash() docs and usage in is_parent()
+  	  [Gilles Lamiral]
+  	- rt.cpan.org#106500: split UID EXPUNGE with a large sequence set
+  	- added t/quota.t and t/lib/MyTest.pm for testing
+  	- updated copyright for 2016
+
+-------------------------------------------------------------------
+Sun Mar 13 02:00:05 UTC 2016 - chris@computersalat.de
+
+- fix deps
+  * perl(version) >= 0.77
+  * perl(IO::Socket::INET) >= 1.26
+
+-------------------------------------------------------------------
+Sun Aug 23 08:59:22 UTC 2015 - coolo@suse.com
+
+- updated to 3.37
+   see /usr/share/doc/packages/perl-Mail-IMAPClient/Changes
+
+  version 3.37: Fri Aug 14 11:04:53 EDT 2015
+  	- regex fix in rt.cpan.org#96575 required Perl 5.10
+  	    updated regex to be backwards compatible with Perl 5.8
+  	  [Paul Howarth]
+  
+  version 3.36: Fri Aug 14 01:40:50 UTC 2015
+  	- rt.cpan.org#96575: parsing fixes for fetch_hash and bodystructure
+  	  + better handling of data containing escaped characters
+  	  [Ken Neighbors]
+  	- rt.cpan.org#97718: hang waiting for tag if DONE sent outside of IDLE
+  	  [Laurence Darby]
+  	- rt.cpan.org#100683: failed literal commands hang waiting for '+'
+  	  [Matthias Pitzl]
+  	- rt.cpan.org#100601: login() fails if username requires use of literals
+  	  [Andy Lyttle]
+  	- *rt.cpan.org#103823: is_parent() should return undef on \NoInferiors
+  	  [Gilles Lamiral]
+  	- rt.cpan.org#105456: fetch_hash fails if sequence number contains '*'
+  	  + *no longer removing unrequested data (except UID) in returned hashes
+  	  [Gilles Lamiral]
+  	- rt.cpan.org#91912: selectable broke in 3.29 due to  around \NoSelect
+  	  [Justin Vallon, Gilles Lamiral]
+  	- some documentation, test cleanup and new tests
+
+-------------------------------------------------------------------
+Tue Apr 14 17:48:35 UTC 2015 - coolo@suse.com
+
+- updated to 3.35
+   see /usr/share/doc/packages/perl-Mail-IMAPClient/Changes
+
+  version 3.35: Fri, Nov 22, 2013  2:18:41 PM
+  	- *use Quote() over Massage() to avoid stripping double quotes from arg
+  	  + removed constant NonFolderArg
+  	  + may deprecate Massage() in a future release
+  	- _list_or_lsub failed to handle folder names with double quotes
+  	  + cleanup Escaped_results()
+  	  + new methods: Escaped_history() _escaped_trans_data()
+  	  + removed method: _list_response_preprocess()
+  	  [Gilles Lamiral, Victor Lé]
+  	- rt.cpan.org#90315: getacl on a folder returned as literal failed
+  	  + _read_line could remove extra space when literal data was received
+  	  [Carl Karcher]
+  	- rt.cpan.org#89040: typo fixes
+  	  [David Steinbrunner]
+  
+  version 3.34: Fri, Sep 27, 2013 12:50:17 AM
+  	- make Makefile.PL use non-interactive and document test.txt usage
+  	- new attribute: Socketargs => [ (IO::Socket::.. args) ]
+  	  + cleanup connect() to more flexible with IO::Socket::* args
+  	- untagged server data during send literal may cause client to hang
+  	  [Arthur Wolfe, Josh Hillman]
+  	  + _send_line() needs '+' only to know it is OK to send LITERAL data
+  	  + created _response_code_sub() to simplify _get_response()
+  	- remove internal "Folders" cache
+  	- Allow for RFC 6154 "IMAP LIST Extension for Special-Use Mailboxes"
+  	  [Mathias Reitinger]
+  	  + new method: folders_hash()
+  	  + deprecate: xlist_folders(), xlist()
+  
+  version 3.33: Tue, May 14, 2013 10:12:43 AM
+  	- more cleanup on use of $@ and $!
+  	- cleanup get_bodystructure / get_envelope
+  	- allow Ssl arg as an arrayref to pass args to IO::Socket::SSL
+  	  [Ramana V Mokkapati]
+  	- no need to Massage() the folder name in uidnext()
+  	- rt.cpan.org#84028: get_envelope() fails when subject ends w/backslash
+  	  [Andy Lyttle]
+  	- rt.cpan.org#79476: move()/copy() with sequence causes numeric warning
+  	  [Oleg G]
+  	- *move()/copy() no longer sort message(s) provided by caller
+
+-------------------------------------------------------------------
+Fri Jan 25 19:12:51 UTC 2013 - chris@computersalat.de
+
+- update to 3.32
+  * document RFC2087 quota related calls
+    [Mathias Reitinger] documentation request
+  * rt.cpan.org#78474: idle/idle_data documentation error
+    [Dima Kogan]
+  * Quote()/Massage() now uses literals for non ascii data
+    [Mathias Reitinger] reported issues with utf8 data in password
+  * use Quote()/Massage() consistently now in:
+    login() proxyauth() deleteacl() setacl() listrights() rename()
+  * documented deleteacl() and other minor pod cleanup
+  * ran Mail::IMAPClient::BodyStructure through perltidy
+  * update year in README/pod to 2012
+  * rt.cpan.org#74733: Fails with Parse::RecDescent >= 1.966_002
+    rt.cpan.org#74593: Recent changes break Module::ExtractUse and ...
+    [ANDK, TEAM, SREZIC, NBEBOUT at CPAN and nine from detonation]
+    - Makefile.PL avoid buggy Parse::RecDescent 1.966_002 until 1.967_009
+  * rt.cpan.org#76989: Mail::IMAPClient::BodyStructure usage/docs
+    [Pierluigi Frullani]
+    - fix incorrect documentation on new()
+    - lots of doc verbiage updates
+- fix deps
+  * Parse-RecDescent HACK needs perl(persion) > 0.74
+  * add missing Recommends
+
+-------------------------------------------------------------------
+Mon Nov 28 11:04:44 UTC 2011 - aj@suse.de
+
+- update to 3.29
+  * bugfixes, see Changes.
+- Fix examples to use proper perl path.
+
+-------------------------------------------------------------------
+Tue Apr 26 18:24:20 UTC 2011 - coolo@opensuse.org
+
+- updated to 3.28
+   * tons of bug fixes, see Changes
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:25 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Apr  3 00:12:46 UTC 2010 - chris@computersalat.de
+
+- update to 3.23
+  - new beta idle_data() method to retrieve untagged messages during idle
+    similar to method suggested by Daniel Richard G
+  - added/updated documentation for idle, idle_data, and done
+  - rt.cpan.org#53998: fix NTLM auth: call ntlm with challenge string
+    [Dragoslav Mlakar]
+  - report the return value from select/_read_more on errors
+  - logout() again returns the success/failure of the LOGOUT command
+  - set/return error when $response->() returns undef in authenticate()
+  - new internal method _load_module() centralizing some 'require' calls
+  - localize use $@ in several places to avoid stomping on global val
+  - refactor code calling _read_more() to centralize error handling
+- version 3.22: Thu Jan 21 15:25:54 EST 2010
+  - rt.cpan.org#52313: Getting read errors if Fast_io is set to 1
+    [Jukka Huhta]
+  - updated Maxttemperrors docs related to EAGAIN handling
+  - new starttls() method and Starttls attribute to support STARTTLS
+  - update parse_headers to try harder to find UID in fetch response
+- for older changes please see Changes file
+- spec mods
+  o added HEADER
+  o sort TAGS
+  o fixed deps
+  o updated description
+  o macros
+- added perl-macros
+- moved changelog to changes file
+
+-------------------------------------------------------------------
+Fri Oct 31 21:21:03 UTC 2008 - rbos@opensuse.org
+
+- Fixed rpmlint errors
+

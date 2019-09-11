@@ -1,0 +1,336 @@
+-------------------------------------------------------------------
+Mon Apr 15 13:59:26 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against glassfish-servlet-api
+
+-------------------------------------------------------------------
+Mon Jan 21 16:37:54 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with new avalon-framework and batik
+- Install maven pom file
+
+-------------------------------------------------------------------
+Fri Jan  4 16:20:13 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * fop-2.1-QDox-2.0.patch
+    + Build against QDox >= 2
+
+-------------------------------------------------------------------
+Thu Dec  6 21:54:53 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Bring back the java-devel/java requirements to >= 1.8; we will
+  fix the ByteBuffer/CharBuffer compatibilities as they arise.
+- Modified patch:
+  * java8-compatibility.patch
+    + Fix fix ByteBuffer/CharBuffer incompatibilities with java8
+	  Cast all the java.nio.ByteBuffer and java.nio.CharBuffer
+      instances to java.nio.Buffer before calling the clear(),
+      flip(), limit(int), mark(), reset() and rewind() methods.
+
+-------------------------------------------------------------------
+Thu Nov 15 11:45:21 UTC 2018 - thomas.schraitle@suse.com
+
+- version 2.1
+  Change requirement from java-devel-openjdk >= 1.8.0 to
+  java-devel-openjdk >= 9 to avoid tracebacks because of compatibility
+  issues with java.nio.Buffer, for example:
+  java.lang.NoSuchMethodError:
+  java.nio.CharBuffer.rewind()Ljava/nio/CharBuffer; 
+
+-------------------------------------------------------------------
+Wed Nov  7 20:48:57 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend on a particular xml-commons-apis provider.
+
+-------------------------------------------------------------------
+Mon Oct 29 06:31:21 UTC 2018 - antoine.belvire@opensuse.org
+
+- Add reproducible-build-manifest.patch: Remove custom "Build-Id"
+  from manifests. It contains date and other information making the
+  build unreproducible (boo#1110024).
+
+-------------------------------------------------------------------
+Tue Aug 28 13:51:49 UTC 2018 - tchvatal@suse.com
+
+- Fix building with ant >= 1.9.12
+
+-------------------------------------------------------------------
+Thu Apr  5 10:13:02 UTC 2018 - fstrba@suse.com
+
+- Added patch:
+  * java8-compatibility.patch
+    + Fix compatibility with java8 and lower when built with java9
+      or higher
+
+-------------------------------------------------------------------
+Fri Sep 29 06:57:25 UTC 2017 - fstrba@suse.com
+
+- Don't condition the maven defines on release version, but on 
+  _maven_repository being defined
+
+-------------------------------------------------------------------
+Tue Sep 19 07:23:59 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify java source and target 1.6 and fix
+  javadoc build
+
+-------------------------------------------------------------------
+Fri May 19 09:16:13 UTC 2017 - vsistek@suse.com
+
+- Add BuildRequires: javapackages-local (for maven conversions)
+
+-------------------------------------------------------------------
+Mon Mar  6 11:47:06 UTC 2017 - sknorr@suse.com
+
+- Make sure to apply new file list for Tumbleweed only
+  (FATE#322405)
+
+-------------------------------------------------------------------
+Thu Mar  2 08:45:45 UTC 2017 - fvogt@suse.com
+
+- Add patch to fix build with stricter javadoc in version 8:
+  * fix-javadoc-java8.patch (boo#1027467)
+- Fix file list on SLE
+
+-------------------------------------------------------------------
+Tue Mar  8 08:52:41 UTC 2016 - fvogt@suse.com
+
+- Fix manpage for xmlgraphics-fop-fontmetrics
+
+-------------------------------------------------------------------
+Thu Mar  3 12:05:58 UTC 2016 - fvogt@suse.com
+
+- Update to fop 2.1
+    - https://xmlgraphics.apache.org/fop/changes.html#version_2.1
+- Remove upstreamed fop-commons-2.0.patch
+    and xmlgraphics-fop-xconf.patch
+- Add hyphenation-more-stack.patch to fix build with offo 2.2
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:25 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Mon Dec  8 12:57:49 UTC 2014 - tchvatal@suse.com
+
+- Spec-cleanify
+- Do not ever run tests, we lack quite packages to do so anyway
+- Drop fop-1.1-src.tar.gz.asc xmlgraphics-fop.keyring as upstream
+  does not provide those anymore
+- Apply patch to build with new xmlgraphics-commons:
+  * fop-commons-2.0.patch
+
+-------------------------------------------------------------------
+Tue Jul  8 10:30:59 UTC 2014 - tchvatal@suse.com
+
+- Do not depend on ant-trax
+
+-------------------------------------------------------------------
+Thu Sep 12 21:16:29 UTC 2013 - tchvatal@suse.com
+
+- Drop javadoc package so we build this package
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:30 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Fri Sep  6 08:09:43 UTC 2013 - mvyskocil@suse.com
+
+- use new add_maven_depmap
+- add missing commons packages to BuildRequires
+- add gpg verification
+
+-------------------------------------------------------------------
+Thu Apr 25 12:10:30 UTC 2013 - mvyskocil@suse.com
+
+- fix a typo in a xmlgraphics-fop.script (bnc#817145)
+
+-------------------------------------------------------------------
+Mon Jan 28 14:45:12 UTC 2013 - mvyskocil@suse.com
+
+- (build) require xml-commons-apis, the org.w3c.svg are used inside fop
+  part of a fix for bnc#800694
+
+-------------------------------------------------------------------
+Thu Jan 10 11:26:27 UTC 2013 - mvyskocil@suse.com
+
+- drop excalibur usage from all classpaths, use avalon-framework instead 
+
+-------------------------------------------------------------------
+Mon Dec 17 10:21:55 UTC 2012 - mvyskocil@suse.com
+
+- drop excalibur-avalon from dependencies, fop now uses avalon-framework 
+
+-------------------------------------------------------------------
+Sun Dec  9 08:29:33 UTC 2012 - slavb18@gmail.com
+
+- patched fop.xconf
+  * added <auto-detect/> to pdf renderer section, so now possible to use system fonts like font-family="DejaVuSansMono"
+- fix the spec file to install a (default) fop.xconf file in /etc
+- patched scripts to use /etc/fop.xconf
+
+-------------------------------------------------------------------
+Tue Nov 20 12:53:08 UTC 2012 - mvyskocil@suse.com
+
+- add fo-formatter to provides upon a request of doc team 
+
+-------------------------------------------------------------------
+Wed Nov 14 13:23:34 UTC 2012 - slavb18@gmail.com
+
+- fixed "Class not found" errors in fop scripts
+
+-------------------------------------------------------------------
+Thu Oct 25 07:44:09 UTC 2012 - mvyskocil@suse.com
+
+- add commons-logging and commons-io to Requires and fop script 
+- removed uneeded xalan-j2, xmlcommons and xerces from dependencies
+
+-------------------------------------------------------------------
+Wed Oct 24 14:04:38 UTC 2012 - mvyskocil@suse.com
+
+- update to 1.1
+  * many bug fixes and a number of improvements
+  * support for Complex Scripts (e.g., Arabic, Hebrew, Indic, and Southeast
+  * Asian scripts)
+  * http://xmlgraphics.apache.org/fop/1.1/releaseNotes_1.1.html
+  * This release implements a substantial subset of the W3C
+  * XSL-FO 1.1 Recommendation. For a detailed overview of FOP's compliance with
+  * this recommendation, see Compliance.
+  * http://xmlgraphics.apache.org/fop/compliance.html
+- obsoleted xmlgraphics-fop-asf51789.patch
+- obsoleted xmlgraphics-fop-build.patch
+
+-------------------------------------------------------------------
+Fri Sep  9 16:20:40 UTC 2011 - giecrilj@stegny.2a.pl
+
+- restored gzipped archive to avoid HTTP 404
+- disabled tests (they take ages to build and they fail anyway, so do we really need them)?
+- added standard hyphenation from OFFO
+- told ant to use UTF-8
+- fix for asf#51789
+
+-------------------------------------------------------------------
+Fri May 13 08:25:38 UTC 2011 - toms@suse.de
+
+- Recompressed gzip archive to bz2 to avoid warning
+- Fixed non-conffile-in-etc warning for %{_mavendepmapfragdir}
+- Added new xmlgraphics-fontmetrics and xmlgraphics-fontlist scripts
+  to help for better FOP configuration
+- Added manpage and HTML for all scripts (xmlgraphics-fop, 
+  xmlgraphics-fop-fontmetrics, and xmlgraphics-fop-fontlist)
+- Created links without prefix xmlgraphics-fop for 
+  xmlgraphics-fop-fontmetrics and xmlgraphics-fop-fontlist
+- Created links for all manpages without prefix xmlgraphics-fop
+
+-------------------------------------------------------------------
+Wed May 11 14:43:06 UTC 2011 - toms@suse.de
+
+- Added two new scripts for creating font metrics and font lists
+
+-------------------------------------------------------------------
+Mon May  2 06:37:50 UTC 2011 - toms@suse.de
+
+- Fixed xmlgraphic-fop script:
+  * Added excalibur/avalon-framework-impl in BASE_JAR variable to
+    avoid exception in thread "main" java.lang.NoClassDefFoundError: 
+    org/apache/avalon/framework/configuration/DefaultConfigurationBuilder
+    Caused by: java.lang.ClassNotFoundException: 
+    org.apache.avalon.framework.configuration.DefaultConfigurationBuilder 
+  * Replaced xmlgraphics-batik/util in BASE_JAR variable to
+    avoid ClassNotFoundException: org.apache.batik.bridge.UserAgent 
+
+-------------------------------------------------------------------
+Tue Nov 16 15:11:29 UTC 2010 - mvyskocil@suse.cz
+
+- correct fop Provides: Obsolete: 
+
+-------------------------------------------------------------------
+Wed Nov  3 13:11:50 UTC 2010 - mvyskocil@suse.cz
+
+- fix bnc#650138 - fop update wanted
+  * fix memory leak in property cache
+  * change FONode.addCharacters() parameter to closer match the signature of the standard SAX characters() event
+  * new event handling framework
+  * support for font substitution
+  * support for addressing all glyphs available in a Type 1 font,
+    not just the ones in the font's primary encoding.
+  * limited support for pages of different inline-progression-dimensions within a page-sequence.
+  * minimal support for integer keep values on the various keep properties on block-level FOs.
+  * new AFPGraphics2D implementation which provides the ability to use Batik to
+    drive the production of AFP Graphics (GOCA) output from SVG.
+  * new Resource group leveling, external streaming, and de-duplication of images and
+   graphics using IncludeObject and ResourceGroup.
+  * new Native image embedding support (e.g. JPEG, GIF, TIFF) using ObjectContainer
+    and a MOD:CA Registry implementation.
+- merge with xmlgraphics-fop-0.95-6.jpp5.src.rpm 
+
+-------------------------------------------------------------------
+Thu Feb 26 13:52:34 CET 2009 - mvyskocil@suse.cz
+
+- fixed bnc#467866 - fop fails if JAVACMD_OPTS is set
+
+-------------------------------------------------------------------
+Wed Aug  6 15:23:11 CEST 2008 - skh@suse.de
+
+- update to version 0.95, list of changes at:
+  http://xmlgraphics.apache.org/fop/0.95/changes_0.95.html 
+- fop requires java 1.4 now
+- use unversioned Requires: jre
+
+-------------------------------------------------------------------
+Fri Jun 27 10:48:43 CEST 2008 - coolo@suse.de
+
+- avoid build cycle between fop and saxon
+
+-------------------------------------------------------------------
+Wed Jan 30 17:42:06 CET 2008 - skh@suse.de
+
+- update to version 0.94, major changes:
+
+  * Add support for font auto-detection (JM) Thanks to Adrian Cumiskey
+  * Add support for the border-collapsing model in tables (VH, JM)
+  * Add support for named destinations in PDF (JB)
+  * Add support for UAX#14 type line breaking (MM)
+
+  full list of changes at:
+
+  http://xmlgraphics.apache.org/fop/0.94/changes_0.94.html
+
+-------------------------------------------------------------------
+Tue Jul 10 12:23:48 CEST 2007 - skh@suse.de
+
+- update to version 0.93
+- build with gcj
+
+-------------------------------------------------------------------
+Sun May  6 22:50:12 CEST 2007 - ro@suse.de
+
+- added unzip to buildrequires 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep 17 19:53:40 CEST 2004 - skh@suse.de
+
+- do no longer use setJava
+
+-------------------------------------------------------------------
+Wed Apr 28 13:59:08 CEST 2004 - ke@suse.de
+
+- Provide wrapper scripts for fop.sh and xalan.sh to make it find the
+  java environment; reported by Thomas Schraitle; fix provided by Petr
+  Mladek [#39581].
+
+-------------------------------------------------------------------
+Mon Oct 27 13:56:38 CET 2003 - ke@suse.de
+
+- New package: version 0.20.5.
+
+

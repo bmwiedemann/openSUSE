@@ -1,0 +1,267 @@
+-------------------------------------------------------------------
+Mon Aug  5 14:00:20 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop scim-bridge-<targettype> requires from baselibs.conf:
+  scim-bridge does not produce a -32bit package and has no valid
+  content for such a package.
+
+-------------------------------------------------------------------
+Mon Aug  7 05:51:27 UTC 2017 - i@marguerite.su
+
+- update version 0.4.17
+  * collected fixes from openSUSE/Fedora/Gentoo
+- upstreamed patches:
+  * bug-351920-should-return-retval.patch
+  * scim-bridge-0.4.15-gcc44.patch
+  * scim-bridge-fix-vnc-display-check.diff
+  * scim-bridge-gcc47.patch
+  * scim-bridge-reregister-type-module-if-reload.patch
+- upstreamed source: scim-bridge.1
+
+-------------------------------------------------------------------
+Sun Sep 13 06:28:21 UTC 2015 - i@marguerite.su
+
+- remove SLE_10 check
+- remove gtk_prefix macro
+- use scim_gtk2_immodule_* macros
+- drop etc-x11-xim.d-scim-bridge-114
+- refactored xim.d-scim-bridge
+  * no more skim, no bother to check WINDOWMANAGER
+- rename subpackages: scim-bridge-gtk2/qt4
+- add provides/obsoletes for the old subpackages
+- baselibs.conf: scim-bridge-qt4 should supplement
+  scim-bridge and libqt4
+- add scim-bridge.1 manpage from debian.
+- use Summary/Description from debian, which properly
+  describle the packages.
+- provide alt names which are the same w/ debian
+- install immodules to the correct places.
+
+-------------------------------------------------------------------
+Thu Apr 24 15:38:46 UTC 2014 - dmueller@suse.com
+
+- remove dependency on qt3 
+
+-------------------------------------------------------------------
+Wed Sep 12 21:51:57 CST 2012 - hillwood@linuxfans.org
+
+- fix filelist in specfile.
+
+-------------------------------------------------------------------
+Tue Jun 12 16:32:33 CEST 2012 - tiwai@suse.de
+
+- Remove locale provides for avoiding automatic installation
+
+-------------------------------------------------------------------
+Thu Jun  7 03:02:15 UTC 2012 - swyear@gmail.com
+
+- remove "Provides: locale(scim:zh)" from spec 
+
+-------------------------------------------------------------------
+Sat Mar 24 14:11:34 UTC 2012 - dimstar@opensuse.org
+
+- Add scim-bridge-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Wed Feb  1 12:25:17 CET 2012 - tiwai@suse.de
+
+- Fix the parsing of $DISPLAY variable with VNC HOST::PORT syntax
+  (bnc#738627)
+
+-------------------------------------------------------------------
+Sun Nov 27 06:50:23 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Nov 16 12:11:50 UTC 2011 - swyear@gmail.com
+
+- Add etc-x11-xim.d-scim-bridge-114 to use GTK_IM_MODULE="scim"
+  cause 11.4 don't support fallback mode
+- For 11.2 and newer version, set GTK_IM_MODULE="scim-bridge:scim:xim" 
+  so gtk3-base application can use scim's gtk3 immodule
+
+-------------------------------------------------------------------
+Tue Nov 15 15:43:54 UTC 2011 - swyear@gmail.com
+
+- scim-bridge don't support gtk3 immodule
+  use GTK_IM_MODULE="scim" 
+
+-------------------------------------------------------------------
+Fri Oct 28 22:27:40 CEST 2011 - tiwai@suse.de
+
+- Add the fallback to xim for GTK3 (bnc#723382)
+
+-------------------------------------------------------------------
+Tue Oct 11 16:31:43 UTC 2011 - ftake@geeko.jp
+
+- update to 0.4.16
+- remove patches merged to upstream 
+
+-------------------------------------------------------------------
+Fri May  6 07:45:50 UTC 2011 - mchang@novell.com
+
+- scim-bridge-reregister-type-module-if-reload.patch 
+  Fix bnc#680430 - SCIM is not usable in firefox. This patch 
+  will re-register the type once type module get reloaded.
+
+-------------------------------------------------------------------
+Wed Mar  9 12:29:34 CET 2011 - tiwai@suse.de
+
+- Fix post scripts to use new gtk2_immodule_* macros (bnc#678080)
+- Fix wrong post scripts for gtk2 immodule
+
+-------------------------------------------------------------------
+Thu Feb  4 06:57:22 UTC 2010 - mxwu@novell.com
+
+- Add scim-bridge-0.4.15-bz461373.patch.
+  Fix bnc#463177. Focus problem with Qt Application.
+
+-------------------------------------------------------------------
+Mon Feb  1 12:29:49 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Thu Jun  4 15:51:10 CEST 2009 - tiwai@suse.de
+
+- fix build on older distros
+
+-------------------------------------------------------------------
+Mon Mar  2 14:57:53 CET 2009 - crrodriguez@suse.de
+
+- fix build with GCC 4.4 
+
+-------------------------------------------------------------------
+Thu Jan 15 09:07:30 CET 2009 - pwu@suse.de
+
+- bnc#465111: Fixes the launch order of scim socket server and
+  scim x11 frontend.
+  Add a patch: scim-bridge-fixes-x11-frontend-launch-order.patch.
+
+-------------------------------------------------------------------
+Tue Jan 13 08:47:50 CET 2009 - pwu@suse.de
+
+- bnc#465620: Fixes mis-order focus in/out event to scim-bridge,
+  refer to scim implementation as scim already does it.
+  Add a patch: scim-bridge-remember-focus-state.patch.
+
+-------------------------------------------------------------------
+Mon Jan  5 08:50:49 CET 2009 - pwu@suse.de
+
+- bnc#463495: Add ValidKeyMask functionality to scim-bridge, borrow
+  some code from scim.
+
+-------------------------------------------------------------------
+Wed Dec 03 12:44:33 CET 2008 - mfabian@suse.de
+
+- bnc#455976: rely on the autostart mechanism for skim only
+  in case of KDE3, not KDE4. Otherwise input in applications
+  using XIM will not work. 
+
+-------------------------------------------------------------------
+Tue Nov 25 17:44:54 CET 2008 - sbrabec@suse.cz
+
+- Supplement gtk2-32bit/gtk2-64bit and qt3-32bit/qt3-64bit in
+  baselibs.conf (bnc#354164).
+
+-------------------------------------------------------------------
+Tue Oct 14 19:59:50 CEST 2008 - mfabian@suse.de
+
+- add "intltoolize --force -c --automake" to fix build in Factory.
+
+-------------------------------------------------------------------
+Mon Oct  6 08:19:15 CEST 2008 - pwu@suse.de
+
+- add patch scim-bridge-avoid-load-all-imengine.patch, to avoid
+  load all imengine into memory again, use the scim daemon, 
+  just load the socket imengine.
+
+-------------------------------------------------------------------
+Fri Sep 19 13:30:07 CEST 2008 - mfabian@suse.de
+
+- update to 0.4.15. From the Changelog:
+  • Make scim-bridge to launch scim-frontend-x11 automatically
+   (bnc#331614) (→ remove bug-331614-kde-launch-x11-frontend.patch)
+  • Add "--no-stay" option to launch scim-frontend-x11.
+
+-------------------------------------------------------------------
+Tue Jun 03 18:25:28 CEST 2008 - mfabian@suse.de
+
+- bnc#391889: enable qt4 support.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Jan  8 11:20:49 CST 2008 - pwu@suse.de
+
+- Bugzilla #351920: should return retval in 
+  scim-bridge-agent-client-listener.cpp
+
+-------------------------------------------------------------------
+Mon Dec 24 11:08:42 CST 2007 - pwu@suse.de
+
+- Update to scim-bridge-0.4.14
+• Fix building problem on gcc-4.3.
+• Fix undefined symbol problem for Qt clients.
+
+-------------------------------------------------------------------
+Thu Oct 18 12:14:38 CEST 2007 - mfabian@suse.de
+
+- Bugzilla #331614, comment #13: don’t forget to start x11
+  frontend of scim.
+
+-------------------------------------------------------------------
+Mon Oct 15 15:04:29 CEST 2007 - mfabian@suse.de
+
+- Bugzilla #331614: fix conflict between scim-bridge-qt and
+  scim-bridge-qt-32bit packages.
+
+-------------------------------------------------------------------
+Thu Oct 11 04:12:33 CEST 2007 - pwu@suse.de
+
+- fix missing header for dist beta build
+
+-------------------------------------------------------------------
+Fri Aug 10 13:12:44 CEST 2007 - pwu@suse.de
+
+- fix missing function scim_bridge_client_imcontext_imengine_status_changed
+
+-------------------------------------------------------------------
+Fri Aug 03 12:27:43 CEST 2007 - mfabian@suse.de
+
+- update to 0.4.13:
+• enable key snooper by default to prevent that key events
+  are stolen by wicked applications.
+• Add basic support for Qt4 (disabled for the moment)
+• Disable the fallback imengine while those of SCIM are enabled. 
+
+-------------------------------------------------------------------
+Mon Apr 23 21:07:02 CEST 2007 - mfabian@suse.de
+
+- update to 0.4.12.
+  • Fix a bug concerning keyboard layouts.
+    (Redhat bugzilla: #211266)
+
+-------------------------------------------------------------------
+Mon Apr 23 16:25:22 CEST 2007 - mfabian@suse.de
+
+- use "Recommends: scim-bridge-gtk,scim-bridge-qt" only for
+  SUSE Linux > 10.0 (doesn't build for 10.0 otherwise in the
+  openSUSE build service).
+
+-------------------------------------------------------------------
+Wed Apr 18 15:56:13 CEST 2007 - mfabian@suse.de
+
+- fix typo in start script.
+
+-------------------------------------------------------------------
+Mon Apr 16 22:31:42 CEST 2007 - mfabian@suse.de
+
+- new package: scim-bridge version 0.4.10.
+
+

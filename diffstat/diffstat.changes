@@ -1,0 +1,242 @@
+-------------------------------------------------------------------
+Mon Dec 31 09:20:21 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to 1.62
+  + improve checks for unmodified files when -S and -D options are
+    given.
+  + improve test-packages, to check warning-options.
+  + minor fixes for manpage (Debian #895963)
+  + minor fixes for prefix-stripping with -S option.
+
+-------------------------------------------------------------------
+Sun Feb  7 07:51:45 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.61
+  * add -T option to show amount of changes next to histogram.
+  * if -S option is given, check for unmodified files and add those
+    to the report.
+  * update configure macros
+  * update config.guess, config.sub
+
+-------------------------------------------------------------------
+Wed Aug  5 14:34:45 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.60
+  * add configure option --with-man2html
+  * update configure macros
+  * update config.guess, config.sub
+
+-------------------------------------------------------------------
+Sun Apr 19 12:24:08 UTC 2015 - mpluskal@suse.com
+
+- Update source url
+- Add gpg signature
+
+-------------------------------------------------------------------
+Mon Jun  9 07:54:14 UTC 2014 - pgajdos@suse.com
+
+- updated to 1.59:
+  + add -E option to filter escape-sequences, e.g., from colordiff
+    (Ubuntu #1304262).
+  + merge/adapt improvments to makefile and configure script from
+    openembedded.org (forwarded by Ross Burton).
+    + remove unused $(libdir) from makefile "installdirs" target
+    + amend definition in CF_POPEN_TEST to permit use of autoheader.
+    + workaround for gratuitous renaming of AC_ACVERSION in 2.69
+  + added "docs" rule to makefile
+  + improvements to configure macros:
+    + added check for -Wlogical-op to gcc warnings
+    + suppress check for defining _XOPEN_SOURCE on Solaris
+    + trim an unwanted -no-gcc option for Intel compiler
+  + update config.guess, config.sub
+
+-------------------------------------------------------------------
+Wed Oct 30 06:35:31 UTC 2013 - pgajdos@suse.com
+
+- updated to 1.58:
+    + add COPYING file (request by Dagobert Michelsen).
+    + improved portability for cross-compiling, by supplying missing
+      getopt function as well as improving checks for popen/pclose
+      prototypes.
+
+-------------------------------------------------------------------
+Tue Apr 16 05:36:24 UTC 2013 - pascal.bleser@opensuse.org
+
+- updated to 1.57:
+  * improve treatment of binary files in ambiguous message introduced in
+    diffutils 2.8.4, and finally corrected in 3.0
+  * use mkdtemp instead of the insecure mktemp
+
+-------------------------------------------------------------------
+Wed Feb 13 07:36:01 UTC 2013 - pgajdos@suse.com
+
+- updated to 1.56:
+  + add -K option which attempts to improve the annotation of "only"
+    files by looking for a match in the resulting set of files and
+    inferring whether the file was added or removed (request by Marc
+    Haber).
+  + add check of command-line options for valid numbers.
+  + improve merging of patches for the same filename (report/testcase by
+    Paul E McKenney).
+  + document -d option in manpage.
+  + document -b, -C, -s option in usage (patch by Tim Waugh, Red Hat
+    #852770)
+  + modify configure script as done for byacc in 2012/10/03, making the
+    2.52-patches the prerequisite and adding support for --datarootdir
+    option.
+  + update config.guess, config.sub
+  + add logic to handle SVN diffs when the pathnames contain spaces
+    (patch by Stuart Prescott, Debian #675475).
+  + fix typo in package/debian/control
+
+-------------------------------------------------------------------
+Wed Jan  4 09:04:33 UTC 2012 - pgajdos@suse.com
+
+- updated to 1.55:
+  * fixed [bnc#739210] -- on commercial license found in diffstat 
+    1.54 (test files)
+  * add -R option, like patch's, to reverse the order of the 
+    comparison.
+- switch on make check
+
+-------------------------------------------------------------------
+Tue Dec 20 20:15:42 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Oct 12 07:10:26 UTC 2010 - pgajdos@novell.com
+
+- updated to 1.54
+  + correct counts used for new files when -S/-D options are used.
+  + minor typography improvement to manpage (patch by Solaris Designer)
+  + remove the temporary directory on error, introduced in 1.48+ (patch
+    by Solaris Designer).
+
+-------------------------------------------------------------------
+Tue Aug 24 12:24:10 CEST 2010 - pgajdos@suse.cz
+
+- updated to 1.53 (see CHANGES)
+
+-------------------------------------------------------------------
+Wed Dec  9 00:22:05 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Tue Nov 24 18:07:09 CET 2009 - pgajdos@suse.cz
+
+- updated to 1.51 (see CHANGES)
+
+-------------------------------------------------------------------
+Thu Aug 13 16:42:39 CEST 2009 - pgajdos@suse.cz
+
+-  updated to 1.48:
+   * add decompression tests for lzma and pack file types.
+   * check for zcat and uncompress in preference to "compress -dc".
+   * modify to check the first few bytes of standard input, and use a
+     corresponding decompression utility if the stream appears to be
+     compressed.  This requires making a temporary copy of the data
+   * add -N option, to truncate filenames.
+   * use getc_unlocked() rather than fgetc_unlocked()
+   * modify to recognize Perforce-style diffs (patch by Ed Schouten). 
+
+-------------------------------------------------------------------
+Mon Mar 30 11:29:12 CEST 2009 - pgajdos@suse.cz
+
+- updated to 1.47 version:
+  * Modified to work with patch ".rej" files.
+
+-------------------------------------------------------------------
+Thu Sep 11 13:44:33 CEST 2008 - pgajdos@suse.cz
+
+- update to 1.46 version:
+  * add "-S", "-D" and "-m" options to provide a way to show the amount
+    of difference relative to the total sizes of the files.
+  * add "-q" option (patch by Greg Norris).
+
+-------------------------------------------------------------------
+Tue Dec 11 20:16:15 CET 2007 - pgajdos@suse.cz
+
+- update to 1.45
+    * add "-b" option (Debian #379380, patch by 
+      Greg Norris).
+    * add a check for default-diff output, e.g., "diff foo 
+      bar|diffstat", which has no "diff" command in the 
+      output for diffstat to guess that a diff is beginning.
+    * add a check after completing a chunk for unified diff 
+      to ensure that the next line either begins another chunk 
+      for the diff, or starts another diff, e.g., a context 
+      diff (report by Adrian Bunk).
+    * add configure options for leak-checking valgrind, etc.
+    * use install-sh rather than install.sh
+    * updated config.guess and config.sub
+    * updated configure macros CF_GCC_ATTRIBUTES CF_GCC_WARNINGS 
+      CF_MSG_LOG CF_PATH_SYNTAX CF_VERBOSE CF_XOPEN_SOURCE
+
+
+-------------------------------------------------------------------
+Thu Jul 27 15:33:59 CEST 2006 - mjancar@suse.cz
+
+- update to 1.43
+  * fix to avoid modifying data which is being used by tsearch() for
+    ordering the binary tree (report by Adrian Bunk).
+  * do not ignore pathnames in /tmp/, since some tools create usable
+    pathnames for both old/new files there (Debian #376086).
+  * correct ifdef for fgetc_unlocked().
+  * updated configure macros CF_GCC_VERSION, CF_PATH_SYNTAX and
+    CF_XOPEN_SOURCE
+  * add configure check for compress, gzip and bzip2 programs that may be
+    used to decompress files.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:30 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 17:29:49 CET 2006 - mjancar@suse.cz
+
+- update to 1.41
+
+-------------------------------------------------------------------
+Mon Aug  1 17:28:22 CEST 2005 - mjancar@suse.cz
+
+- update to 1.39
+
+-------------------------------------------------------------------
+Thu Feb 24 16:35:51 CET 2005 - mjancar@suse.cz
+
+- update to 1.38
+
+-------------------------------------------------------------------
+Fri Feb 27 09:12:27 CET 2004 - mjancar@suse.cz
+
+- update to 1.34
+
+-------------------------------------------------------------------
+Thu Jul 24 16:25:14 CEST 2003 - mjancar@suse.cz
+
+- update to 1.33
+
+-------------------------------------------------------------------
+Fri Nov 23 15:29:09 CET 2001 - cihlar@suse.cz
+
+- update to version 1.29
+  * add bzip2 (.bz2) suffix
+  * add check for diff from RCS archive where the
+    "diff" lines do not reference a filename
+- added Url:
+
+-------------------------------------------------------------------
+Thu Oct 19 10:32:40 CEST 2000 - cihlar@suse.cz
+
+- package created
+

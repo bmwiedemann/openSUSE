@@ -1,0 +1,51 @@
+--- Makefile.am
++++ Makefile.am	2000/11/16 14:04:29
+@@ -11,6 +11,6 @@
+ CLEANFILES = *~ *.orig *.rej
+ 
+ install-data-local:
+-	$(INSTALL_DATA) urlview.man $(mandir)/man1/urlview.1
++	$(INSTALL_DATA) urlview.man $(DESTDIR)$(mandir)/man1/urlview.1
+ 
+ # how to create a target for uninstall-data-local???
+--- quote.c
++++ quote.c	2000/11/16 14:04:12
+@@ -48,7 +48,7 @@
+   
+   for(i = 0; j < l && f[i]; i++)
+   {
+-    if(f[i] == '\'' || f[i] == '`')
++    if(f[i] == '\'' || f[i] == '`' || f[i] == '$')
+     {
+       d[j++] = '\'';
+       d[j++] = '\\';
+--- urlview.c
++++ urlview.c	2000/11/16 14:04:12
+@@ -39,6 +39,7 @@
+ #include <stdlib.h>
+ #include <fcntl.h>
+ #include <sys/stat.h>
++#include "quote.h"
+ 
+ #ifdef HAVE_REGEX_H
+ #include <regex.h>
+--- urlview.conf.suse
++++ urlview.conf.suse	2000/11/16 14:04:12
+@@ -5,5 +5,5 @@
+ # The defaults are shown here:
+ #
+ # REGEXP  (((https?|ftp|gopher)://|(mailto|file|news):)[^' \t<>"]+|(www|web|w3)\.[-a-z0-9.]+)[^' \t.,;<>"\):]
+-# COMMAND url_handler.sh '%s'
++# COMMAND url_handler.sh %s
+ #
+--- urlview.man
++++ urlview.man	2000/11/16 14:04:12
+@@ -48,7 +48,7 @@
+ .sp 
+ .ft RR
+ .nf
+-(((https?|ftp|gopher)://|(mailto|file|news):)[^' \t<>"]+|(www|web|w3)\.[-a-z0-9.]+)[^' \t.,;<>"\):]
++(((https?|ftp|gopher)://|(mailto|file|news):)[^' \\t<>"]+|(www|web|w3)\\.[-a-z0-9.]+)[^' \\t.,;<>"\):]
+ .fi
+ .ec
+ .ft P

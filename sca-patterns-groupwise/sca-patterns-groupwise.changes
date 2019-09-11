@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Tue Jan  2 19:31:09 UTC 2018 - jason.record@suse.com
+
+- Removed unnecessary %clean from spec
+
+-------------------------------------------------------------------
+Mon Dec 18 19:20:35 UTC 2017 - jason.record@suse.com
+
+- Updated spec file with spec-cleaner suggestions
+- Removed COPYING.GPLv2
+
+-------------------------------------------------------------------
+Wed Apr 16 16:06:33 UTC 2014 - jrecord@suse.com
+
+- Changed to lower case directory for consistency
+
+-------------------------------------------------------------------
+Thu Mar 13 17:28:22 UTC 2014 - jrecord@suse.com
+
+- Fixed FSF address in all patterns
+- Change to System/Monitoring spec Group
+
+-------------------------------------------------------------------
+Sat Feb  8 22:20:29 UTC 2014 - jrecord@suse.com
+
+- Packaged COPYING.GPLv2
+
+-------------------------------------------------------------------
+Thu Jan 16 09:07:18 MST 2014 jrecord@suse.com
+
+- relocated files according to FHS
+
+-------------------------------------------------------------------
+Wed Dec 18 09:07:18 MST 2013 jrecord@suse.com
+
+- separated as individual RPM package
+

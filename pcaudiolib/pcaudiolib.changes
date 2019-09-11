@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Mon Apr 22 13:47:38 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.1
+  *  Fix handling EBADFD, EPIPE and short write when writing to
+     the ALSA device.
+  *  Fix audio echos when using `snd_pcm_drop` in ALSA devices.
+
+-------------------------------------------------------------------
+Mon Mar  5 08:52:58 UTC 2018 - jengelh@inai.de
+
+- Set RPM groups. Trim other-OS mentions.
+
+-------------------------------------------------------------------
+Mon Feb 19 17:32:19 UTC 2018 - aloisio@gmx.com
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Sun Oct  1 02:16:52 UTC 2017 - aavindraa@gmail.com
+
+- package for the first time

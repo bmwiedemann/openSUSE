@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Feb 11 22:22:52 UTC 2019 - Dany Marcoux <dmarcoux@posteo.de>
+
+- Version 1.1.0
+    - Fix a bogus free by storing a copy of the pattern argument.
+
+-------------------------------------------------------------------
+Fri Sep 28 13:13:43 UTC 2018 - dmarcoux@posteo.de
+
+- Version 1.0.0
+
+-------------------------------------------------------------------
+Mon Jun 25 11:55:22 UTC 2018 - dmarcoux@posteo.de
+
+- Version 0.8.3

@@ -1,0 +1,3 @@
+#non-executable-script: #! comes from upstream
+addFilter (".* W: non-executable-script /usr/share/bash-completion/completions/kata-runtime")
+addFilter ("^katacontainers.*: W: no-version-in-last-changelog")

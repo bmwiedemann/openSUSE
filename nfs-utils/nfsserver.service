@@ -1,0 +1,26 @@
+[Unit]
+Description=Alias for NFS server
+# The systemd alias mechanism (using symlinks) isn't rich enough.
+# If you "systemctl enable" an alias, it doesn't enable the
+# target.
+# This service file creates a sufficiently rich alias for nfs-server
+# (which is the canonical upstream name)
+# "start", "stop", "restart", "reload" on this will do the same to nfs-server.
+# "enable" on this will only enable this service, but when it starts, that
+# starts nfs-server, so it is effectively enabled.
+# nfs-server.d/nfsserver.conf is part of this service.
+
+Requires= nfs-server.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/true
+RemainAfterExit=yes
+# Can't just PropagatesReloadTo to nfs-server.service
+# as reload fails if we don't have our own ExecReload
+# So copy that from nfs-server.service
+ExecReload=/usr/sbin/exportfs -r
+
+[Install]
+WantedBy=multi-user.target
+

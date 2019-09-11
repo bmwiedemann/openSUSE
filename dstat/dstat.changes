@@ -1,0 +1,195 @@
+-------------------------------------------------------------------
+Tue Jul  2 14:28:44 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix CSV output, boo#1138417
+  Add 0001-Use-python3-compatible-way-of-checking-instance-type.patch
+
+-------------------------------------------------------------------
+Wed Jun 12 15:38:34 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix python deprecation warning (boo#1136279):
+  * fix_boo_1136279.patch 
+
+-------------------------------------------------------------------
+Thu May 23 06:22:26 UTC 2019 - mvetter@suse.com
+
+- Update to 0.7.4:
+  * Add plugin to show interface statistics for infiniband and RoCE adapters
+  * Make lustre plugin actually work 
+  * Add generic thermal zone support 
+  * Add MongoDB plugin 
+  * Fix header updates when using --noupdate
+  * Change order of scripted commands to group version-specific output
+  * Replace dict keys() method with in-operator 
+  * Add jvm heap monitor
+  * Avoid escape characters when --nocolor 
+  * Add Python 3 support
+- Move sources from python3 fork (https://github.com/eshizhan/dstat)
+  back to official sources which now also have python3 support
+
+-------------------------------------------------------------------
+Wed Dec 13 12:41:56 UTC 2017 - mvetter@suse.com
+
+- bsc#1071428: Port to python3
+- Use docs-install instead of copying manpage manually
+- Only run desktop_database_post if needed
+- Drop Recommends on python-utmp (not in Factory anymore)
+
+-------------------------------------------------------------------
+Mon Jun 12 13:57:30 UTC 2017 - adam.majer@suse.de
+
+- Sync SLE .changes file with OBS (bnc#1041627)
+- Don't run %fdupes on entire %buildroot, but only on specific
+  directory
+- Replace dangling symlink in examples directory
+- Don't ship documentation directory with executable examples
+
+-------------------------------------------------------------------
+Tue Mar 29 11:10:58 UTC 2016 - mpluskal@suse.com
+
+- Update url
+
+-------------------------------------------------------------------
+Mon Mar 21 00:00:00 CET 2016 - dsterba@suse.cz
+
+- update to 0.7.3
+  - Provide kernel configuration options to error mesages where possible
+  - Added external dstat_md_dstat plugin to show the resync progress of SWRAID
+  - Changed color of 100% to white to make it stand out
+  - Added new --bits option to force bit-values on screen
+  - Fix to allow internal plugins to use underscores/dashes too
+  - Improve internal dstat_vm plugin to use globs for matching/adding counters
+  - Added internal dstat_vm_adv plugin to show advanced VM counters
+  - Added internal dstat_zones plugin to show zoneinfo counters
+  - Fix warning message when colors are disabled because TERM is not found
+  - Fix typo in dstat_nfs3_ops and dstat_nfsd3_ops (Chris Larsson)
+  - Added external dstat_mem_adv plugin so show advanced memory counters (Damon
+    Snyder)
+  - Allow more variables (self.vars) than nicknames (self.nick) to simplify
+    plugins
+  - Using -f/--full does not impact -c/--cpu anymore, most systems ship with 2
+    or more CPUs
+  - Added counter 'parent' when printing CSV subtitles of list-counters
+  - Print decimal values as decimals where possible (so 0 instead of 0.0)
+  - Added external dstat_ddwrt_* plugins using DD-WRT counters using SNMP
+    infrastructure
+  - Fixed improper process names using spaces instead of \0
+  - Added --cpu-use plugin with onlu CPU usage per CPU
+
+-------------------------------------------------------------------
+Thu Feb 11 08:29:39 UTC 2016 - mvetter@suse.com
+
+- Adding as required by fate#319795
+
+-------------------------------------------------------------------
+Thu Jul 16 15:45:11 UTC 2015 - seife+obs@b1-systems.com
+
+- fix build on non-SUSE distros whose rpm does not know Recommends:
+
+-------------------------------------------------------------------
+Fri May  1 15:36:31 UTC 2015 - mpluskal@suse.com
+
+- Use post/postun scriplets for desktop file
+- Cleanup spec file with spec-cleaner 
+
+-------------------------------------------------------------------
+Wed Sep  3 14:33:13 CEST 2014 - dsterba@suse.cz
+
+- fix license string
+- change python-utmp from Requires to Recommends, not necessary
+  and documented
+
+-------------------------------------------------------------------
+Sat Aug 23 01:23:49 CEST 2014 - dsterba@suse.cz
+
+- clean spec
+
+-------------------------------------------------------------------
+Tue Jun 15 06:51:25 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.7.2:
+  * adds new plugins for:
+    + I/O transactions per device
+    + Squid counters
+    + Dstat performance counters
+    + most expensive interrupt
+    + additional advanced process plugins
+  * better protection against counter rollovers was provided
+  * support for CCISS and virtio block devices was added
+  * memory usage was reduced for top process plugins
+  * various improvements and documentation updates
+
+-------------------------------------------------------------------
+Mon Feb 22 00:00:00 UTC 2010 - pascal.bleser@opensuse.org
+
+  * new plugins were added:
+    * qmail stats (--qmail)
+    * dstat baselining (--dstat)
+    * disk transactions per second (--disk-tps)
+  * per plugin line caching was added for improved performance
+  * usability and documentation improvements were made
+  * a --profile option was added to assist in profiling Dstat
+
+
+-------------------------------------------------------------------
+Wed Nov 25 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.7.0:
+  * fixes CVE-2009-3894
+  * new plugins were added for showing
+    + NTP time
+    + power usage
+    + fan speed
+    + remaining battery time
+    + memcache hits and misses
+    + process count
+    + top process total and average latency
+    + top process total and average CPU timeslice
+    + per disk utilization rates
+  * lots of changes were made to the plugin interface to simplify writing external plugins
+  * all external plugins can now be addressed with a long option
+  * improvements were made to performance and theming
+  * the --bw/--blackonwhite option was added for users with a light terminal background
+  * the --float option was added to force showing floating point numbers on screen
+
+
+-------------------------------------------------------------------
+Wed Dec  3 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 0.6.9:
+  * adds new plugins for counters with respect to open files, inodes, sockets,
+    asynchronous I/O, pagefaults, and completed I/O requests
+  * adds a --list option to list all available plugins
+  * adds a VMware guest memctl plugin
+
+
+-------------------------------------------------------------------
+Fri Sep 12 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 0.6.8:
+  * a more accurate scheduler
+  * new snooze and net_packets plugins
+  * a --pidfile option
+  * improved --debug output for certain plugins
+  * warnings when time is non-linear (like on VMware)
+  * various small bugfixes and improvements
+
+
+-------------------------------------------------------------------
+Tue Feb 26 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Tue Dec 18 00:00:00 UTC 2007 - guru@unixtech.be
+
+- fixed .desktop file and build on openSUSE 10.3
+
+
+-------------------------------------------------------------------
+Sat Apr 28 00:00:00 UTC 2007 - guru@unixtech.be
+
+- initial build service package
+
+

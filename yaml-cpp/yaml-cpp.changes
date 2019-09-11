@@ -1,0 +1,98 @@
+-------------------------------------------------------------------
+Thu Aug  9 21:53:21 UTC 2018 - rpm@fthiessen.de
+
+- Update to 0.6.2:
+  * Fix incorrect version numbering
+
+-------------------------------------------------------------------
+Wed Feb 14 16:01:53 UTC 2018 - pmonrealgonzalez@suse.com
+
+- Security fix: [bsc#1032144, CVE-2017-5950]
+  * Stack overflow in SingleDocParser::HandleNode() function
+  * Added patch yaml-cpp-CVE-2017-5950.patch
+
+-------------------------------------------------------------------
+Fri Feb  2 16:56:09 UTC 2018 - tchvatal@suse.com
+
+- Update to 0.6.1:
+  * Just brownpaperbag over previous release
+
+-------------------------------------------------------------------
+Wed Jan 31 11:19:44 UTC 2018 - pmonrealgonzalez@suse.com
+
+- Update to version 0.6.0
+  * yaml-cpp no longer depends on Boost
+  * Requires C++11
+  * Some bug fixes and performance improvements
+- Dropped patch yaml-cpp-disable-bundled-gmock.patch since it can
+  be configured with the option YAML_CPP_BUILD_TESTS
+
+-------------------------------------------------------------------
+Thu Feb  2 15:48:20 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Mon Jul 11 07:51:14 UTC 2016 - tchvatal@suse.com
+
+- Fix building with updated cmake and wrong -fPIE parsing:
+  * yaml-cpp-disable-bundled-gmock.patch
+  * yaml-cpp-fix-pie.patch
+
+-------------------------------------------------------------------
+Fri Feb 12 21:14:16 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.5.3
+  * Bugfix release.
+  * This will be the last release that does not require C++11.
+- Drop upstreamed fix-node-regression.patch
+- Small spec file cleanups
+
+-------------------------------------------------------------------
+Fri Nov 13 09:51:23 UTC 2015 - tchvatal@suse.com
+
+- Add patch to fix wrong node behaviour in 0.5.2 bnc#954749:
+  * fix-node-regression.patch
+
+-------------------------------------------------------------------
+Sat Aug  1 18:08:00 UTC 2015 - rpm@fthiessen.de
+
+- Update version 0.5.2
+  * Some bugfixes
+- Updated spec file
+  * Using cmake macro
+  * Updated copyright.
+
+-------------------------------------------------------------------
+Tue Jul  2 17:43:52 UTC 2013 - asterios.dramis@gmail.com
+
+- Added boost-devel in yaml-cpp-devel Requires: (some yaml-cpp headers require
+  boost headers).
+
+-------------------------------------------------------------------
+Sat Jun 29 13:22:28 UTC 2013 - i@marguerite.su
+
+- update version 0.5.1
+  * a bug fix release for the new API
+
+-------------------------------------------------------------------
+Sun Jul 22 18:11:43 UTC 2012 - i@marguerite.su
+
+- fix sle builds.
+
+-------------------------------------------------------------------
+Sun Jul 22 08:15:52 UTC 2012 - i@marguerite.su
+
+- update version 0.3.0
+  * minor bug fixing release
+
+-------------------------------------------------------------------
+Sat Jan 28 22:12:35 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+
+-------------------------------------------------------------------
+Mon Nov 14 15:58:30 UTC 2011 - tchvatal@suse.com
+
+- Initial commit of yaml-cpp.

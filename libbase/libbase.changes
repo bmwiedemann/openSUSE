@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Fri Sep  8 11:28:47 UTC 2017 - fstrba@suse.com
+
+- Added patche:
+  * libbase-1.1.3-sourcetarget.patch
+    + Specify java source and target 1.6 in order to allow building
+      with jdk9
+
+-------------------------------------------------------------------
+Fri Jul  4 13:18:51 UTC 2014 - tchvatal@suse.com
+
+- Mention libbase-rpmlintrc in spec.
+
+-------------------------------------------------------------------
+Fri Jun 27 12:29:08 UTC 2014 - tchvatal@suse.com
+
+- Specify buildroot
+
+-------------------------------------------------------------------
+Wed Jan  8 14:30:08 UTC 2014 - mvyskocil@suse.com
+
+- require ant-contrib >= 1.0b3 for build
+
+-------------------------------------------------------------------
+Tue Jan  7 13:23:43 UTC 2014 - mvyskocil@suse.com
+
+- Initial packaging of libbase 1.1.3 for SUSE (based on Fedora spec) 
+  * add libbase-1.1.2.build.patch
+

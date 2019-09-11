@@ -1,0 +1,39 @@
+---
+#description_paragraphs: 3
+description: |-
+ This is an implementation of Term::ReadLine using the GNU Readline/History
+ Library.
+
+ For basic functions object oriented interface is provided. These are
+ described in the section "Standard Methods" and "Term::ReadLine::Gnu
+ Functions".
+
+ This package also has the interface with the almost all functions and
+ variables which are documented in the GNU Readline/History Library Manual. 
+#summary: override summary from CPAN
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+preamble: |-
+ BuildRequires:  ncurses-devel
+ BuildRequires:  readline-devel
+ Obsoletes:      perl-TermReadLine-Gnu < 1.36
+ Provides:       perl-TermReadLine-Gnu = %{version}
+#post_prep: |-
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+#post_build: |-
+# rm unused.files
+#post_install: |-
+# sed on %{name}.files
+#license: SUSE-NonFree
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module

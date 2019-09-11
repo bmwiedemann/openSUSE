@@ -1,0 +1,301 @@
+-------------------------------------------------------------------
+Sat Oct 13 02:38:37 UTC 2018 - Marguerite Su <i@marguerite.su>
+
+- use `udpmap -sys` to fix %post scriptlet for Tumbleweed
+
+-------------------------------------------------------------------
+Mon Nov 13 15:43:37 UTC 2017 - dimstar@opensuse.org
+
+- Rename README.SuSE to README.SUSE, adhering to the correct
+  spelling.
+
+-------------------------------------------------------------------
+Mon Aug  5 17:46:14 CEST 2013 - ro@suse.de
+
+- BuildRequire texlive-bin only for <= 12.3 
+
+-------------------------------------------------------------------
+Tue Jun 19 13:17:39 UTC 2012 - aj@suse.de
+
+- Remove SuSEconfig.cjk-latex and run commadns from postinstall.
+
+-------------------------------------------------------------------
+Tue May 15 18:35:19 CEST 2007 - mfabian@suse.de
+
+- package renamed to texlive-cjk-latex-extras:
+  The "texlive-cjk" package already contains most of the former
+  "cjk-latex" package now. This new package contains the font
+  setup files and automatic setup scripts from the former
+  "cjk-latex" package which are not in the "texlive-cjk" package.
+- remove symlinks from /usr/share/texmf/fonts/truetype to the
+  .ttf font before recreating them in order to get the right
+  symlinks after the move from  /usr/X11R6/lib/X11/fonts/truetype
+  to /usr/share/fonts/truetype.
+
+-------------------------------------------------------------------
+Mon Nov 27 13:08:27 CET 2006 - mfabian@suse.de
+
+- /usr/X11R6/lib/X11/fonts/truetype -> /usr/share/fonts/truetype
+
+-------------------------------------------------------------------
+Tue Feb 28 19:15:19 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(te_latex:ja;ko;zh)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 19:44:36 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Mar 02 17:17:46 CET 2005 - mfabian@suse.de
+
+- add latest patch from upstream.
+
+-------------------------------------------------------------------
+Mon Feb 28 14:31:52 CET 2005 - mfabian@suse.de
+
+- add missing '-print0' to find in cjk-latex-t1mapgen.
+
+-------------------------------------------------------------------
+Fri Feb 25 13:07:53 CET 2005 - mfabian@suse.de
+
+- add new .fd files to support the IPA fonts. Add examples.
+
+-------------------------------------------------------------------
+Thu Feb 24 17:03:49 CET 2005 - mfabian@suse.de
+
+- improve /usr/sbin/cjk-latex-t1mapgen (do recursive remove
+  securely, add call to texhash, exit when creating temporary file
+  fails). Thanks to Werner Fink <werner@suse.de>
+- remove cjk-latex.map in %postun.
+
+-------------------------------------------------------------------
+Wed Feb 23 15:38:34 CET 2005 - mfabian@suse.de
+
+- adapt directories in SuSEconfig.cjk-latex and cjk-latex-t1mapgen
+  for tetex-3.0.
+
+-------------------------------------------------------------------
+Wed Feb 23 00:29:10 CET 2005 - ro@suse.de
+
+- moved dvips config files for tetex-3.0 
+
+-------------------------------------------------------------------
+Thu Oct 14 15:47:08 CEST 2004 - mfabian@suse.de
+
+- add new .fd files to support the Novell-ricoh-fonts. Add
+  examples.
+
+-------------------------------------------------------------------
+Fri Oct 01 22:49:02 CEST 2004 - mfabian@suse.de
+
+- Add new .fd files to support the Sazanami fonts (which replaced
+  the dropped Kochi fonts). Add some examples and update
+  README.SuSE.
+
+-------------------------------------------------------------------
+Mon Apr 26 18:49:52 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #39459: add new .fd files to support the Chinese
+  "Founder" fonts. Add some examples and update README.SuSE
+
+-------------------------------------------------------------------
+Thu Aug 28 14:19:54 CEST 2003 - mfabian@suse.de
+
+- remove ttf fonts from neededforbuild.
+
+-------------------------------------------------------------------
+Tue Aug 26 18:15:51 CEST 2003 - mfabian@suse.de
+
+- add new option to explicitly enable smoothing of outlines to
+  cjk-latex-config when generating Type1 fonts. Apparently too
+  many fonts are broken and cause problems when smoothing is
+  enabled. Therefore disable it by default and enable it only
+  on specific request.
+
+-------------------------------------------------------------------
+Sun Aug 24 22:38:43 CEST 2003 - mfabian@suse.de
+
+- add new .fd files and examples for the Mika-Chan fonts.
+
+-------------------------------------------------------------------
+Thu Aug 21 16:54:45 CEST 2003 - mfabian@suse.de
+
+- make cjk-latex-t1mapgen 5 times faster by using one call to awk
+  where a combination of grep and perl was used before. 
+
+-------------------------------------------------------------------
+Mon Jun 16 13:09:55 CEST 2003 - mfabian@suse.de
+
+- update to 4.5.2.
+- fix "directory now owned by any package".
+
+-------------------------------------------------------------------
+Fri May 16 19:44:34 CEST 2003 - mfabian@suse.de
+
+- fix file list.
+
+-------------------------------------------------------------------
+Tue Feb 18 14:19:34 CET 2003 - mfabian@suse.de
+
+- update to 4.5.2rc
+- remove hunk patching c42goth.fd (included upstream)
+- delete only files, not the whole directory structure below
+  /var/cache/fonts/pk/ at the end of cjk-latex-t1mapgen
+- add a few more .fd files for the Arphic fonts in Bg5 and GB
+  using the same font names as the already existing one in
+  UTF8 do. 
+
+-------------------------------------------------------------------
+Fri Sep 27 22:43:59 CEST 2002 - mfabian@suse.de
+
+- add new fd files for
+   \begin{CJK}{JIS}{koti},
+   \begin{CJK}{JIS}{kotir}
+   \begin{CJK}{UTF8}{koti}
+   \begin{CJK}{UTF8}{kotir}
+  which use Kochi Mincho for medium and Kochi Gothic for bold.
+- add "freetype-tools" to "Requires:". It is not absolutely
+  necessary, there are some fonts which can be used with
+  cjk-latex without freetype-tools, but almost all users will
+  want to use TrueType fonts and I received a few bug reports
+  from people who didn't read README.SuSE and didn't install
+  "freetype-tools". It is probably better to require
+  "freetype-tools".
+
+-------------------------------------------------------------------
+Thu Aug  1 12:58:26 CEST 2002 - mfabian@suse.de
+
+- add /bin/mkdir /bin/rm /usr/bin/touch to Prereq:
+- fix directory where the autogenerated .tfm files are in
+  postun
+
+-------------------------------------------------------------------
+Mon May 27 11:46:31 CEST 2002 - meissner@suse.de
+
+- make the helper programs live in a ANSI world where sizeof(int) !=
+  sizeof(pointer), where prototypes matter and varargs are true monsters.
+
+-------------------------------------------------------------------
+Wed Apr 24 13:16:11 CEST 2002 - mfabian@suse.de
+
+- delete $map_file when create_or_update_type1 fails
+
+-------------------------------------------------------------------
+Tue Feb 26 21:47:53 CET 2002 - mfabian@suse.de
+
+- disable smoothing of outlines in cjk-latex-config for broken
+  fonts (like kochi-gothic.ttf) to prevent segfault in ttf2pt1
+  when processing such fonts.
+
+-------------------------------------------------------------------
+Tue Feb 26 13:09:19 CET 2002 - mfabian@suse.de
+
+- skip watanabe-mincho.ttf and wadalab-gothic.ttf when generating
+  Type1 fonts, these fonts don't seem to work with ttf2pt1
+- make /var/lib/texmf/dvips/config/cjk-latex.map an empty file if 
+  /usr/share/texmf/fonts/type1/cjk-latex doesn't exist.
+
+-------------------------------------------------------------------
+Mon Feb 25 21:39:37 CET 2002 - mfabian@suse.de
+
+- fix sfd2map to make Type1 fonts work for UTF-8 as well.
+
+-------------------------------------------------------------------
+Mon Feb 25 02:51:29 CET 2002 - mfabian@suse.de
+
+- add support for generation of Type1 fonts via ttf2pt1
+  to cjk-latex-config
+- add 'sfd2map' and 'cjk-latex-t1mapgen'
+- call 'texhash' at the end of cjk-latex-config only when
+  real work was done
+- improve check method for out of date .tfm and .pfb files
+
+-------------------------------------------------------------------
+Mon Feb  4 18:44:05 CET 2002 - mfabian@suse.de
+
+- add a call to 'texhash' to the start of cjk-latex-config to make
+  sure ttf2tfm finds the .sfd files
+- rename /usr/share/texmf/fonts/tfm/SuSEconfig.cjk-latex
+  -> /usr/share/texmf/fonts/tfm/cjk-latex
+- correct typo's in cjk-latex-config
+
+-------------------------------------------------------------------
+Mon Jan 14 21:37:14 CET 2002 - mfabian@suse.de
+
+- add SuSEconfig.cjk-latex and /usr/sbin/cjk-latex-config
+  to create the .tfm files automatically according to the
+  entries in /etc/ttf2pk/ttfonts.map.
+  All subpackages containing .tfm files generated from TT-fonts
+  are therefore obsoleted.
+
+-------------------------------------------------------------------
+Sat Oct  6 14:01:04 CEST 2001 - mfabian@suse.de
+
+- update to the current snapshot (version 4.4.0, 20010731)
+- add .fd files and .tfm files to support the use of several
+  Japanese, Chinese, and Korean TrueType fonts in UTF-8 encoding
+  as well.
+- add examples for UTF-8, add UTF8-ja.{cap,cpx} for Japanese
+  captions in UTF-8
+- update README.SuSE
+- include new binaries extconv, bg5+latex, and gbklatex
+- include thai-word.el
+
+-------------------------------------------------------------------
+Tue Aug  7 20:41:10 CEST 2001 - mfabian@suse.de
+
+- added *.tfm and *.fd files for the free Japanese TrueType
+  fonts kochi-mincho.ttf and kochi-gothic.ttf
+  (ttf-kochi-mincho.rpm and ttf-kochi-gothic.rpm).
+- added example file JIS-kochi.tex
+- updated README.SuSE
+
+-------------------------------------------------------------------
+Sun Mar 11 20:49:31 CET 2001 - mfabian@suse.de
+
+- add Requires:     tetex, te_latex
+
+-------------------------------------------------------------------
+Sat Mar  3 21:26:53 CET 2001 - schwab@suse.de
+
+- Fix missing includes.
+- Fix use of %suse_update_config macro.
+
+-------------------------------------------------------------------
+Thu Feb 15 14:39:18 CET 2001 - mfabian@suse.de
+
+- added *.tfm and *.fd files for the free Japanese TrueType
+  fonts watanabe-mincho.ttf and wadalab-gothic.ttf (xtt-fonts.rpm)
+- added example file JIS-xtt-fonts.tex 
+- updated README.SuSE
+- added missing Wadalab.map and config.Wadalab to file list
+
+-------------------------------------------------------------------
+Sun Jan 21 15:26:57 CET 2001 - mfabian@suse.de
+
+- added *.tfm and *.fd files for Baekmuk TrueType fonts
+- added example file Baekmuk-test.tex
+- updated README.SuSE
+
+-------------------------------------------------------------------
+Wed Dec  6 18:03:08 CET 2000 - mfabian@suse.de
+
+- fixed typos in Example files
+
+-------------------------------------------------------------------
+Tue Dec  5 03:35:13 CET 2000 - mfabian@suse.de
+
+- added Wadalab postscript fonts
+
+-------------------------------------------------------------------
+Thu Nov 23 00:23:14 CET 2000 - mfabian@suse.de
+
+- new package: cjk-latex 4.2.0
+

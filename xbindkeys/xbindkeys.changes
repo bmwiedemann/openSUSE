@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Wed Nov 12 21:26:27 UTC 2014 - nemysis@gmx.ch
+
+- Use %{name} instead of xbindkeys
+- Remove %doc from Man Pages
+
+-------------------------------------------------------------------
+Mon Oct 13 20:43:29 UTC 2014 - seanpwatson@live.com
+
+- Fixed error with +%if %{?with_guile:1}0
+
+-------------------------------------------------------------------
+Sun Feb 16 22:11:17 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to 1.8.6:
+  * Bugfix: Do not grab keysym not mapped on keyboard. Prevent a AnyKey grab.
+- Removed gcc, make, glibc-devel, autoconf, automake, and libtool build
+  requirements (not needed).
+- Replaced xorg-x11-devel build requirement with pkgconfig(x11) for
+  openSUSE > 11.1.
+- Compile the package with support for tk (added tk as runtime requirement).
+
+-------------------------------------------------------------------
+Mon Mar 14 00:55:31 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.8.5:
+  * adds Guile 2.0 support
+  * replaces some deprecated functions
+
+-------------------------------------------------------------------
+Tue Dec  7 22:19:10 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.8.4:
+  * fixes a memory fault when using it with libX11-1.4.0
+
+-------------------------------------------------------------------
+Sun Jan 25 00:00:00 UTC 2009 - guru@unixtech.be
+
+- update to 1.8.3:
+  * a listen loop was added in the main loop. This fixes a bug where, in the
+    previous version, a keypress was needed to reload the configuration file
+    after a keybinding change. Now one can edit the configuration file and
+    keybindings are automatically updated after each save.
+
+
+-------------------------------------------------------------------
+Fri Oct  5 00:00:00 UTC 2007 - guru@unixtech.be
+
+- moved to openSUSE Build Service
+
+

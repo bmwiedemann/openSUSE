@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Thu Aug 24 13:22:03 UTC 2017 - tbechtold@suse.com
+
+- update to 0.9:
+  * Write errors to stdout are diagnosed correctly and consistently.
+  * Replacing symlinks now replaces the target rather than the symlink itself.
+  * The case of parameters is maintained with --get.
+  * Single token parameters (without equals) are now supported,
+    which are used in mysql config for example.
+- Drop 3c52bd938975f7c5b32d7009f109ccbd2328c16d.patch . Applied upstream.
+
+-------------------------------------------------------------------
+Thu Dec  8 22:03:01 UTC 2016 - tbechtold@suse.com
+
+- update to 0.8:
+  * maint: improve documentation for fsync() calls
+  * use sha256 rather than md5 to checksum file contents
+  * maint: remove stale comment
+  * document --help and --version
+  * fix spelling in --help and man page
+  * fix processing of lines starting with "rem"
+  * bump version for release
+- add 3c52bd938975f7c5b32d7009f109ccbd2328c16d.patch .
+  Fixes symlink handling when writing linked files.
+
+-------------------------------------------------------------------
+Thu Feb 18 16:44:06 UTC 2016 - aplanas@suse.com
+
+- update to 0.7 (bsc#966695):
+  Bug fixes
+  * Separate locking files are no longer used which avoids deadlock in
+    cases where the system is stopped in the small window where these
+    files exist.
+  * Files are now synced after writing for better Durability.
+  * crudini no longer removes a blank line from the start of a file
+    which has no sections, or options outside a section. [bug
+    introduced in version 0.5]
+  Bug fixes
+  * Lock files are cleaned up robustly. Previously there was a race
+    condition resulting in blocked subsequent edits, due to a
+    lingering lock file.  
+  * --del will ignore requests to delete a parameter in a non-existing
+      section (unless --existing is used). Previously it failed citing
+      the missing section.
+  New features
+  * The --existing option takes parameters to give more control over
+    what needs to pre-exist. So you can specify for example that a
+    file needs to exist, but any items within it are created as
+    needed.
+  * A new --verbose option was added to indicate on stderr wether the
+    request resulted in a config change or not. This can be used to
+    determine whether to restart programs etc.
+  Changes in behavior
+  * Files are created by default if missing, unless --existing is
+    specified.
+  Improvements
+  * Protections against creating unparseable ini files were added.
+  * stdin can be parsed just as with normal files.
+  * File writes are avoided if there are no changes to the config.
+
+-------------------------------------------------------------------
+Fri Oct 10 19:21:16 UTC 2014 - dmueller@suse.com
+
+- update to 0.4:
+  * add --format=lines to support line by line processing
+  * doc: tweak readme to mention --format=lines
+  * Declare encoding to avoid fatal error
+  * fix duplicate DEFAULT section header being output
+  * ensure edited ini file contents are always complete
+  * split out --options from synopsis
+  * send --help to stdout
+  * provide alternative --rewrite file editing option
+  * provide --output option to allow redirecting output
+  * use only the base 'crudini' name in --help
+  * ensure writes to the edited ini are never lost
+  * add a new --list option to update a list of values
+  * honor case when merging new parameters
+
+-------------------------------------------------------------------
+Fri Sep 27 16:11:52 UTC 2013 - dmueller@suse.com
+
+- Initial package (0.3) 
+

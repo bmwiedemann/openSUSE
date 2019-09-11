@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Thu Mar  7 09:09:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add mulitbuild to make sure we do not cycle
+
+-------------------------------------------------------------------
+Tue Mar  5 12:01:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to version 0.7.0:
+  * test updates
+  * pep fixes
+- Run tests
+
+-------------------------------------------------------------------
+Tue Jul  4 04:45:19 UTC 2017 - tbechtold@suse.com
+
+- update to version v0.6.0
+  * use version-specific travis environments
+  * tox/travis: enable tests on py3.5
+  * add a comment: this check doesn't catch non-None returns
+  * improve function-is-empty test to work on py3.6 too
+  * add more metadata to setup
+  * graphviz() -> asDigraph()
+  * Use inspect.getfullargspec on Py3 to avoid deprecation warnings with inspect.getargspec
+  * add tracing API, with docs
+  * Conform author metadata to `distutils.core` API
+  * tracer can return a callable to see Output invocations
+  * Make hashable classes frozen for attrs 17.1.0 (fixes #62).
+  * Assert that 'input' function bodies are empty, to avoid surprises.
+  * reject duplicate transitions (same starting state and input)
+  * tox/travis: enable tests on py3.6
+  * improve tests: more cases, make pyflakes-clean
+  * sigh, add more code to attain full test coverage
+  * make setTrace a private API, document cautions about its use
+  * cover the specimen functions in tests, remove ordify()
+  * cleanup: s/assert_no_code/assertNoCode/
+- convert to singlespec
+- fix Source url
+
+-------------------------------------------------------------------
+Tue Jan 24 23:48:39 UTC 2017 - termim@gmail.com
+
+- Initial check in version 0.4.0
+

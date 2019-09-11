@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Mon Mar 19 09:21:53 UTC 2018 - dimstar@opensuse.org
+
+- Make version in the injected .pc file a variable, which is
+  dynamically updated to %{version} (boo#880273).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:37:03 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Mar  1 12:45:58 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Thu Apr  3 06:29:24 CEST 2008 - hpj@suse.de
+
+- Upgraded to version 1.2.10.
+
+  * [LOG4NET-11] - Add Flush command to API
+  * [LOG4NET-24] - Programmatic flush of BufferingAppenderSkeleton buffer
+  * [LOG4NET-37] - Allow the RepositorySelector type to be specified using
+    the AppSettings config
+  * [LOG4NET-46] - Support appenders that can output multiple events
+    efficiently
+  * [LOG4NET-51] - WmiAppender
+  * [LOG4NET-3] - Support per event patterns in FileAppender File name
+  * [LOG4NET-13] - Allow SMTPAppender to have replaceable parameters in
+    Subject
+  * [LOG4NET-15] - Email high "importance" priority setting with
+    SmtpAppender
+  * [LOG4NET-17] - Line-wrapping Appender Layouts
+  * [LOG4NET-33] - Ability to use global property to point to log4net
+    configuration file
+  * [LOG4NET-34] - Allow xml config values to be set via XmlNodeType.CDATA
+    or XmlNodeType.Text rather than just value="foo"
+  * [LOG4NET-45] - PluginAttribute does not allow plugin type to be
+    specified as a Type, only as a string
+  * [LOG4NET-52] - Allow XML configurator to set properties of type Object
+  * [LOG4NET-53] - Allow repository properties to be set in the config file
+  * [LOG4NET-56] - Support rendering IEnumerator objects as well as
+    ICollections
+  * [LOG4NET-58] - Support clean build on .NET 2.0
+  * [LOG4NET-72] - Performance of ILog.xxxFormat methods
+  * [LOG4NET-74] - Change MemoryAppender member variables to protected
+  * [LOG4NET-21] - RemotingAppender fails once NDC becomes empty
+  * [LOG4NET-22] - XmlLayout allows output of invalid control characters
+  * [LOG4NET-23] - example-apps.html links are off by one folder level
+  * [LOG4NET-25] - RollingFileAppender can fail if
+    RollOverIfDateBoundaryCrossing required
+  * [LOG4NET-28] - AdoNetAppender does not support inserting NULL into
+    columns
+  * [LOG4NET-29] - LevelMatchFilter should return Neutral when no match is
+    found
+  * [LOG4NET-32] - AdoNetAppender losing first entry
+  * [LOG4NET-35] - Exception rendering ThreadContextStack if null value
+    pushed into stack
+  * [LOG4NET-36] - System.Diagnostics.Trace may throw exception if AppDomain
+    does not have config file
+  * [LOG4NET-40] - RollingFileAppender does not limit files to
+    MaxSizeRollBackups when CountDirection is 1
+  * [LOG4NET-41] - RollingFileAppender roll over date fail
+  * [LOG4NET-42] - Serialised LoggingEvent does not preserve the Fix flags
+  * [LOG4NET-43] - Specifying an empty string as a property in the config
+    file results in an error
+  * [LOG4NET-44] - XmlLayout emits all properties under a node named
+    global-properties, rather than just properties.
+  * [LOG4NET-49] - CountingQuietTextWriter does not count strings written
+    with WriteLine
+  * [LOG4NET-50] - Process.StartTime hangs on some systems
+  * [LOG4NET-60] - Bug in RollingFileAppender.cs causing failure to timely
+    roll files on monthly interval
+  * [LOG4NET-63] - 1.2.9.0 Documentation typos
+  * [LOG4NET-65] - Unhandled SecurityException exception for
+    FileIOPermission while loading configuration file
+  * [LOG4NET-67] - CVE-2006-0743 Security vulnerability in
+    LocalSyslogAppender
+  * [LOG4NET-69] - Exception thrown when *Format methods are given a
+    malformed format string
+  * [LOG4NET-70] - CoreDll.dll referenced with different capitalisation
+  * [LOG4NET-73] - ADONetAppender.ActivateOptions() leaks database
+    connection when called multiple times
+
+-------------------------------------------------------------------
+Thu Mar 29 14:17:14 CEST 2007 - rguenther@suse.de
+
+- add unzip BuildRequires 
+
+-------------------------------------------------------------------
+Mon May 22 17:17:11 CEST 2006 - jhargadon@novell.com
+
+- fix for bug 148685 This was a remotely triggerable vulnerability
+  issue where the syslog() function from glibc was used incorrectly.
+
+-------------------------------------------------------------------
+Wed Apr 26 00:03:35 CEST 2006 - wberrier@suse.de
+
+- Change to noarch package, remove unnecessary deps
+
+-------------------------------------------------------------------
+Sat Feb 25 12:55:43 CET 2006 - aj@suse.de
+
+- Do not build as root
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Tue Feb  7 18:54:43 CET 2006 - ro@suse.de
+
+- drop self obsoletes 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 12:29:55 CET 2006 - ro@suse.de
+
+- modified neededforbuild (use mono-devel-packages) 
+
+-------------------------------------------------------------------
+Mon Nov 28 13:59:07 MST 2005 - cgaisford@novell.com
+
+- Initial package creation
+

@@ -1,0 +1,32 @@
+--- src/libgame/sdl.c.orig	2002-03-19 04:10:37.000000000 +0100
++++ src/libgame/sdl.c	2014-10-22 15:51:06.709520506 +0200
+@@ -14,7 +14,7 @@
+ #include "system.h"
+ #include "sound.h"
+ #include "misc.h"
+-
++#include "../main.h"
+ 
+ #if defined(TARGET_SDL)
+ 
+@@ -930,6 +930,20 @@
+       ((ButtonEvent *)event)->y = 0;
+   }
+ #endif
++  if (event->type == EVENT_KEYPRESS)
++  {
++    /* make alt + enter toggle fullscreen */
++    if ( (((KeyEvent *)event)->keysym.sym == KSYM_Return) &&
++         (((KeyEvent *)event)->keysym.mod == KMOD_LALT) )
++    {
++      if(SDL_WM_ToggleFullScreen(SDL_GetVideoSurface()))
++      {
++        video.fullscreen_enabled = !video.fullscreen_enabled;
++        setup.fullscreen = video.fullscreen_enabled;
++      }
++      event->type = EVENT_FULLSCREENTOGGLE;
++    }
++  }
+ }
+ 
+ #endif /* TARGET_SDL */

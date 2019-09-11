@@ -1,0 +1,62 @@
+From d101695e468bb07cf07ff2c15ef39fa9361fd810 Mon Sep 17 00:00:00 2001
+From: Acer Yang <acer.yang@prophetstor.com>
+Date: Thu, 26 Jun 2014 06:43:28 +0800
+Subject: [PATCH 4/5] Fix missing rpath.
+
+---
+ cmake/modules/rpath.cmake  | 18 ++++++++++++++++++
+ src/konkret/CMakeLists.txt |  2 +-
+ src/program/CMakeLists.txt |  2 +-
+ 3 files changed, 20 insertions(+), 2 deletions(-)
+ create mode 100644 cmake/modules/rpath.cmake
+
+diff --git a/cmake/modules/rpath.cmake b/cmake/modules/rpath.cmake
+new file mode 100644
+index 000000000000..ffee84fb6974
+--- /dev/null
++++ b/cmake/modules/rpath.cmake
+@@ -0,0 +1,18 @@
++# use, i.e. don't skip the full RPATH for the build tree
++SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
++
++# when building, don't use the install RPATH already
++# (but later on when installing)
++SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE) 
++
++SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}")
++
++# add the automatically determined parts of the RPATH
++# which point to directories outside the build tree to the install RPATH
++SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
++
++# the RPATH to be used when installing, but only if it's not a system directory
++LIST(FIND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES "${CMAKE_INSTALL_PREFIX}/lib" isSystemDir)
++IF("${isSystemDir}" STREQUAL "-1")
++    SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}")
++ENDIF("${isSystemDir}" STREQUAL "-1")
+diff --git a/src/konkret/CMakeLists.txt b/src/konkret/CMakeLists.txt
+index 25daa9753ab3..c2faa4020528 100644
+--- a/src/konkret/CMakeLists.txt
++++ b/src/konkret/CMakeLists.txt
+@@ -8,7 +8,7 @@ set(konkret_SRCS
+     kstr.c
+     print.c
+ )
+-
++include(rpath)
+ include_directories(${CMPI_INCLUDE_DIR})
+ 
+ add_library(libkonkret SHARED ${konkret_SRCS})
+diff --git a/src/program/CMakeLists.txt b/src/program/CMakeLists.txt
+index eb155d0428b5..afcefe596f1d 100644
+--- a/src/program/CMakeLists.txt
++++ b/src/program/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-
++include (rpath)
+ include_directories(${CMPI_INCLUDE_DIR} ${CMAKE_SOURCE_DIR}/src)
+ 
+ add_executable(konkret main.cpp)
+-- 
+2.7.2
+

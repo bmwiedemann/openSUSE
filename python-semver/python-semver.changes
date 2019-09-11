@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Thu Jun  6 12:15:36 UTC 2019 - pgajdos@suse.com
+
+- run the testsuite
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:07 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jul 12 03:30:06 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * be more specific for python_sitelib in %files section
+
+- update to version 2.8.1:
+  * Issue #77 (PR #47). Convert multiple tests into
+    pytest.mark.parametrize
+  * Issue #89 (PR #90). Add doctests.
+  * Issue #40 (PR #88). Add a static parse method to VersionInfo
+  * Issue #87 #94 (PR #93). Remove named tuple inheritance. Fix bad
+    rendering in Pandas DataFrame
+  * Issue #96 (PR #97). Make VersionInfo immutable
+  * Issue #98 (PR #99). prerelease and build set to None by default
+
+-------------------------------------------------------------------
+Mon May 21 06:42:33 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 2.8.0 (excerpt):
+ * Issue #79 (PR #81 #84). Define and improve a release procedure file
+ * Issue #72 #73 (PR #75). Implements __str__ and __hash__
+
+-------------------------------------------------------------------
+Tue Nov 14 16:43:50 UTC 2017 - arun@gmx.de
+
+- update to version 2.7.9:
+  * Issue #65 (PR #66). Add finalize_version function
+
+-------------------------------------------------------------------
+Fri Aug 25 07:56:06 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to 2.7.8
+ * PR #62. Support custom default names for pre and build 
+
+-------------------------------------------------------------------
+Fri Jun  2 19:50:40 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package

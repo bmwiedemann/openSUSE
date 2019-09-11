@@ -1,0 +1,3 @@
+addFilter(".*obsolete-not-provided.*empathy-devel")
+addFilter(".*obsolete-not-provided.*gnome-applets-empathy")
+addFilter(".*obsolete-not-provided.*python-empathy")

@@ -1,0 +1,36 @@
+--- sat4j-2.3.5/build.xml	2013-05-29 08:15:51.000000000 +0200
++++ sat4j-2.3.5/build.xml	2018-11-23 16:24:57.618120002 +0100
+@@ -295,10 +295,11 @@
+ 	</path>
+ 
+ 	<target name="javadoc">
+-		<echo>Generating Javodoc</echo>
++		<echo>Generating Javadoc</echo>
+ 		<javadoc destdir="${doc}/${module}" 
+ 				 access="public" 
+-				 source="1.6" 
++				 encoding="UTF-8" 
++				 source="${source}" 
+ 				 use="true" 
+ 				 notree="false" 
+ 				 nonavbar="false" 
+@@ -324,8 +325,9 @@
+ 		<javac
+ 		srcdir="${src}"
+ 		destdir="${build}"
+-		source="1.5"
++	        source="${source}"
+ 		target="${target}"
++	        encoding="UTF-8"
+ 		debug="true"
+ 	        includeantruntime="false">
+ 			<classpath refid="somePath"/>
+@@ -430,7 +432,7 @@
+         <target name="tests" 
+           description="Launch JUnit tests and generate a report">
+ 		<echo>Compiling test files</echo>
+-		<javac srcdir="${test}" destdir="${build}" source="1.5" target="1.5" debug="true">
++		<javac srcdir="${test}" destdir="${build}" source="${source}" target="${target}" encoding="UTF-8" debug="true">
+ 			<classpath refid="somePath"/>
+ 		</javac>
+ 		<echo>Running JUNIT tests</echo>

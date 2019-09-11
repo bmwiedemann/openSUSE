@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Tue May 14 16:35:14 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.10.2
+  * Add WidgetControl
+  * Fix Popup attribute changing
+  * Use JLab background color for widget controls
+  * add MapStyle to change Map's css style, aiming to change the cursor
+  * make MapStyle work and change default cursor to "hand"
+  * Put the map in a subcontainer
+  * return normal behavior of the cursor when map is dragging
+  * change "hand" cursor to "grab"
+  * check for allowed cursor
+  * Change name of OpenTopoMap from 'OpenTopMap' to 'OpenTopoMap'
+  * change name 'Esri.WoldStreetMap' to 'Esri.WorldStreetMap'
+  * Use latest version of leaflet-draw plugin 
+  * Fix styling problems for GeoJSON
+  * Expose fullscreen control/state
+  * Fix map size issue
+  * Use more robust check before using noConflict() mode
+- Fix dependencies
+
+-------------------------------------------------------------------
+Mon Apr 29 21:22:55 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- initial version (0.10.1)

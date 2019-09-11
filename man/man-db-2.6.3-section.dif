@@ -1,0 +1,42 @@
+---
+ src/man.c |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+--- src/man.c
++++ src/man.c	2018-11-23 12:42:32.280720195 +0000
+@@ -978,7 +978,7 @@ static const char *is_section (const cha
+ {
+ 	const char **vs;
+ 
+-	for (vs = section_list; *vs; vs++) {
++	for (vs = section_list; vs && *vs; vs++) {
+ 		if (STREQ (*vs, name))
+ 			return name;
+ 		/* allow e.g. 3perl but disallow 8139too and libfoo */
+@@ -2776,7 +2776,7 @@ static int compare_candidates (const str
+ 		/* Find out whether lsource->ext is ahead of rsource->ext in
+ 		 * section_list.
+ 		 */
+-		for (sp = section_list; *sp; ++sp) {
++		for (sp = section_list; sp && *sp; ++sp) {
+ 			if (!*(*sp + 1)) {
+ 				/* No extension */
+ 				if (!sec_left  && **sp == *(lsource->ext))
+@@ -3738,7 +3738,7 @@ static int do_global_apropos (const char
+ 	} else
+ 		my_section_list = section_list;
+ 
+-	for (sp = my_section_list; *sp; sp++)
++	for (sp = my_section_list; sp && *sp; sp++)
+ 		for (mp = manpathlist; *mp; mp++)
+ 			*found += do_global_apropos_section (*mp, *sp, name);
+ 
+@@ -3927,7 +3927,7 @@ static int man (const char *name, int *f
+ 	else {
+ 		const char **sp;
+ 
+-		for (sp = section_list; *sp; sp++) {
++		for (sp = section_list; sp && *sp; sp++) {
+ 			locate_page_in_manpath (*sp, name, &candidates, found);
+ 		}
+ 	}

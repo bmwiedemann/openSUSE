@@ -1,0 +1,207 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:43:08 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Thu Aug 15 13:34:17 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Renamed Panel Plugin subpackage to follow upstream naming
+  xfce4-foo-plugin
+- Added bcond for git master builds
+
+-------------------------------------------------------------------
+Sat Mar 30 21:32:47 UTC 2019 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- Update to version 1.9.5
+  * Bug fixed: 
+    - Panel plugin: allow it to save files (bxo#15187)
+
+-------------------------------------------------------------------
+Tue Mar 19 05:34:05 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Switched URL and Source to https:// in the spec file.
+
+-------------------------------------------------------------------
+Mon Mar 18 11:43:57 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.9.4
+  * Enhancements:
+    - Extended save function to also take files (bxo#14156)
+    - Show width and height of selection area (bxo#12664)
+    - Improved imgur dialog (bxo#14973)
+    - Don't save region/delay/show_mouse if region was specified from CLI
+
+  * Bugs fixed:
+    - React to core X input events when XInput is not available (bxo#15166)
+    - Fix crash and properly handle cursors on HiDPI
+    - Delay in panel plugin does not work (bxo#14604)
+
+- Dropped obsolete macros
+
+-------------------------------------------------------------------
+Sun Aug 12 17:03:38 UTC 2018 - seife+obs@b1-systems.com
+
+- update to version 1.9.3
+  - Allow user to move selection rectangle (bxo#14365)
+  - Allow and remember 0sec delay for all regions (bxo#13763)
+  - Fix clipboard action handling (bxo#14513)
+
+-------------------------------------------------------------------
+Tue May 15 14:21:06 UTC 2018 - seife+obs@b1-systems.com
+
+- update to version 1.9.2
+  - Remove zimagez support (bxo#14283)
+  - Use g_app_info_launch() for command launching (bxo#13886)
+  - Dismiss the progress dialog after upload (bxo#12519)
+  - Improve thumbnail size clamping
+  - Allow --clipboard option to be used with the others (bxo#14120)
+  - Handle device grab failure (bxo#10259)
+
+-------------------------------------------------------------------
+Wed Jul 19 07:46:21 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 1.9.1
+  - Fix crash on program exit after image upload (bxo#13415)
+- version 1.9.0
+  - Use HTTPS for imgur (bxo#13415)
+- version 1.8.99
+  - Port to GTK+3
+  - Fix appdata description
+  - Fix crash in GValueArray handling (bxo#11879)
+  - Use while instead of when in strings (bxo#12157)
+  - Fix gray overlay in region mode screenshots (bxo#11922)
+  - Fix crash when uploading to zimagez (bxo#11879)
+- Updated translations
+
+-------------------------------------------------------------------
+Tue Jan 27 08:46:53 UTC 2015 - gber@opensuse.org
+
+- update to version 1.8.2
+  - Enhancements:
+    - Add imgur.com as possible upload option (bxo#6899)
+    - Add appdate file (bxo#11202)
+    - Make region selection with compositing on more usable on
+      darker backgrounds (bxo#9592)
+    - Updated translations
+  - Bugs fixed:
+    - Fix keyboard navigation between choices (bxo#11325)
+    - Fix build with automake 1.13 (bxo#10030)
+    - Use filename-friendly date format for saved files (bxo#8445)
+  - drop obsolete xfce4-screenshooter-fix-plugin-linking.patch
+    xfce4-screenshooter-use-docdir.patch,
+    xfce4-screenshooter-automake-1.13.patch,
+    xfce4-screenshooter-automake-1.14.patch
+  - drop -doc subpackage, documentation has been removed
+
+-------------------------------------------------------------------
+Thu Oct 16 11:03:15 UTC 2014 - dimstar@opensuse.org
+
+- Add xfce4-screenshooter-automake-1.14.patch: Fully intialize
+  before doing furher actions. Works around an issue with AM 1.14.
+
+-------------------------------------------------------------------
+Wed Mar 13 11:35:46 CET 2013 - pgajdos@suse.cz
+
+- builds with automake 1.13
+  * automake-1.13.patch
+
+-------------------------------------------------------------------
+Mon May  7 12:47:08 UTC 2012 - gber@opensuse.org
+
+- fix xfce4-screenshooter-fix-plugin-linking.patch so the panel
+  plugin is linked against libscreenshooter
+- fix help function by depending on libxfce4ui-tools which provides
+  xfhelp4 again
+
+-------------------------------------------------------------------
+Thu May  3 07:27:12 UTC 2012 - gber@opensuse.org
+
+- update to version 1.8.1
+  - adapting the panel plugin to xfce4-panel 4.9+
+  - add a clipboard CLI option
+  - panel plugin is now built as a library
+  - fix crash with some window managers
+  - fix crash with NULL save path
+  - install documentation to new location
+  - add explicit -lm link to LIBADD
+  - plugin installation location compatible with xfce4-panel 4.9+
+  - update outdated man page
+- rebased xfce4-screenshooter-1.8.0-use-docdir.patch as
+  xfce4-screenshooter-use-docdir.patch
+- added xfce4-screenshooter-fix-plugin-linking.patch in order to
+  link the plugin module correctly
+
+-------------------------------------------------------------------
+Tue Apr  3 11:32:33 UTC 2012 - gber@opensuse.org
+
+- specfile cleanup
+- added xfce4-screenshooter-fix-crash-with-some-wms.patch which
+  fixes a crash when taking a screenshot of a window with some
+  window managers (bxo#8080)
+- correct dependencies
+
+-------------------------------------------------------------------
+Wed Mar 14 19:29:55 UTC 2012 - gber@opensuse.org
+
+- recommend -lang subpackage
+
+-------------------------------------------------------------------
+Fri Oct 21 14:28:25 UTC 2011 - gber@opensuse.org
+
+- added xfce4-screenshooter-1.8.0-use-docdir.patch in order to
+  allow installation of documentation under docdir
+- install HTML documentation under
+  /usr/share/xfce4/xfce4-screenshooter/html
+
+-------------------------------------------------------------------
+Fri Oct 14 15:51:50 UTC 2011 - gber@opensuse.org
+
+- recommend -doc subpackage
+
+-------------------------------------------------------------------
+Mon Sep 19 15:24:38 UTC 2011 - gber@opensuse.org
+
+- added xfce4-screenshooter-fix-libm-underlinking.patch in order to
+  explicitly link against libm 
+
+-------------------------------------------------------------------
+Mon Aug  1 11:53:31 UTC 2011 - gber@opensuse.org
+
+- update to version 1.8.0
+  - capture the cursor using XFIXES
+  - generate valid BBCode
+  - further bugfixes and translation updates
+
+-------------------------------------------------------------------
+Fri Feb 18 00:13:37 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+- call %icon_theme_cache_post/un
+
+-------------------------------------------------------------------
+Thu Feb  3 20:05:51 UTC 2011 - gber@opensuse.org
+
+- build documentation
+
+-------------------------------------------------------------------
+Thu Feb  3 19:49:53 UTC 2011 - gber@opensuse.org
+
+- update to current git snapshot (1.7.9.99_git20110203)
+  - port to current exo
+  - port from libxfcegui4 to libxfce4ui
+  - many bugfixes
+  - translation updates
+- dropped obsolete xfce4-screenshooter-1.7.9-fix-crash.patch and
+  xfce4-screenshooter-1.7.9-use-system-exo.patch
+
+-------------------------------------------------------------------
+Mon Dec 27 14:54:27 UTC 2010 - gber@opensuse.org
+
+- correct group and URL
+
+-------------------------------------------------------------------
+Sun Dec  5 14:34:06 UTC 2010 - gber@opensuse.org
+
+- Initial packaging
+

@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Mon Sep  8 13:48:17 UTC 2014 - jengelh@inai.de
+
+- Stop producing lomt-raleway-fonts subrpm, since we have a better,
+  separate package: raleway-fonts.
+
+-------------------------------------------------------------------
+Fri Mar 28 08:41:37 UTC 2014 - pgajdos@suse.com
+
+- lomt-raleway-fonts conflicts with raleway-fonts
+
+-------------------------------------------------------------------
+Tue Feb  5 10:22:29 UTC 2013 - toms@opensuse.org
+
+- Added package "xz" as BuildRequire(ment) to fix build problems
+
+-------------------------------------------------------------------
+Thu Dec 20 07:50:31 UTC 2012 - jengelh@inai.de
+
+- Avoid spaces in OTF/TTF filenames
+
+-------------------------------------------------------------------
+Tue Dec 18 09:58:43 UTC 2012 - jengelh@inai.de
+
+- Initial package (version from 2012-Dec-18) for build.opensuse.org

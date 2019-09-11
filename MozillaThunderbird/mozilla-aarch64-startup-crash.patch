@@ -1,0 +1,33 @@
+# HG changeset patch
+# Parent a5cfa3aa11a9d3391df49de6fc5a0e5232c12c10
+# Parent  85c2e07d2a9ec3e45f55d0e482c7b663626bfc8a
+Bug 991344 - Rpi3: Firefox crashes after a few seconds of usage
+
+diff --git a/netwerk/base/nsIOService.cpp b/netwerk/base/nsIOService.cpp
+--- a/netwerk/base/nsIOService.cpp
++++ b/netwerk/base/nsIOService.cpp
+@@ -874,18 +874,23 @@ nsresult nsIOService::NewChannelFromURIW
+             u"Http channel implementation "
+             "doesn't support nsIUploadChannel2. An extension has "
+             "supplied a non-functional http protocol handler. This will "
+             "break behavior and in future releases not work at all.");
+       }
+       gHasWarnedUploadChannel2 = true;
+     }
+   }
+-
++#if defined(__aarch64__)
++  if (result) {
++      channel.forget(result);
++  }
++#else
+   channel.forget(result);
++#endif
+   return NS_OK;
+ }
+ 
+ NS_IMETHODIMP
+ nsIOService::NewChannelFromURIWithProxyFlags2(
+     nsIURI *aURI, nsIURI *aProxyURI, uint32_t aProxyFlags,
+     nsIDOMNode *aLoadingNode, nsIPrincipal *aLoadingPrincipal,
+     nsIPrincipal *aTriggeringPrincipal, uint32_t aSecurityFlags,

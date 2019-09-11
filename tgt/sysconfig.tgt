@@ -1,0 +1,11 @@
+## Path:        Network/File systems/iSCSI
+## Description: tgt iSCSI server options
+## Type:        string
+## Default:     ""
+## ServiceRestart: tgtd
+#
+# Options for tgtd
+# set listen addr with --iscsi portal=192.0.2.1:3260
+#
+TGTD_OPTS=""
+

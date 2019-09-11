@@ -1,0 +1,1109 @@
+-------------------------------------------------------------------
+Tue Dec 11 11:49:21 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update perl-5.28-fixes.patch: Update locale handling for Perl 5.28.
+  Perl 5.28 introduced thread-safe locales, where setlocale()
+  only affects the locale of the current thread. External code
+  like mbrtowc(3) isn't aware of this thread specific locale,
+  so we need to explicitly modify the global one instead.
+
+-------------------------------------------------------------------
+Thu Nov 22 17:59:13 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase for summaries.
+
+-------------------------------------------------------------------
+Tue Oct 30 13:15:15 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch perl-5.28-fixes.patch to get build cehck working again
+  due broken perl API with perl 5.28 and up (boo#1113945)
+
+-------------------------------------------------------------------
+Fri Apr  6 09:02:47 UTC 2018 - adam.majer@suse.de
+
+- install-info_exitcode.patch: install-info needs to return success
+  when it does nothing. We need 0 return value even on failure as
+  old packages in SLE-11 and SLE-12 can become uninstallable.
+  (bsc#1084997)
+
+-------------------------------------------------------------------
+Fri Feb 23 08:34:56 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Fri Jan 26 17:10:31 UTC 2018 - werner@suse.de
+
+- Do not require bash for package info (boo#1077744) 
+
+-------------------------------------------------------------------
+Thu Jan  4 14:18:03 UTC 2018 - mpluskal@suse.com
+
+- Update to version 6.5:
+  * info:
+    + some bugs fixed:
+      a bug where a segfault could happen in the regex search, for
+      example when the user entered a single \ as the search string
+    + another bug which could make nodes inaccessible in long
+      "split" info files
+    + a bug where it was not possible to follow a cross-reference
+      that was split across more than one line has been fixed
+    + do not fall back to a man page if following a cross-reference
+      in an info file failed
+    + if looking for a file failed, do not convert the name of a
+      file to lower-case and look for it again
+  * texinfo.tex
+    + some faulty definitions for Unicode characters have been
+      changed or removed
+    + fix indentation in table of contents for entries that are
+      split across multiple lines
+  * texi2dvi
+    + a bug that broke the processing of LaTeX files that did not
+      use BibTeX has been fixed
+  * texi2any
+    + output the encoding declaration of a HTML file earlier so it
+      will always occur within first 1024 bytes of file
+    + `INLINE_INSERTCOPYING' removed as a customization variable
+
+-------------------------------------------------------------------
+Mon Oct  9 07:20:30 UTC 2017 - werner@suse.de
+
+- Avoid also provide libtool() on texinfo specific perl linkage
+
+-------------------------------------------------------------------
+Sat Oct  7 12:35:18 UTC 2017 - coolo@suse.com
+
+- Drop require on perl(Locale::Messages) as long as we bundle
+  perl-libintl-perl (the system one leaves tests failing)
+
+-------------------------------------------------------------------
+Sat Oct  7 08:31:43 UTC 2017 - coolo@suse.com
+
+- Do not provide perl() - the modules are not globally available
+  (bsc#1062028)
+
+-------------------------------------------------------------------
+Wed Oct  4 08:41:08 UTC 2017 - dimstar@opensuse.org
+
+- Change perl requires to be exactly the perl version makeinfo was
+  built against. We ship a perl loadable module which is hard
+  linked to the right version.
+
+-------------------------------------------------------------------
+Wed Jul 12 12:48:12 UTC 2017 - mpluskal@suse.com
+
+- Update to version 6.4:
+  * texi2any:
+    + for HTML output, place section names before the manual in page
+      titles, instead of after them, so it is easier to distinguish pages
+      if titles are truncated
+    + starting points for ordered lists beginning with 0 or a letter of
+      the alphabet are output as attributes on the <ol> tag, as was
+      case for Texinfo 4.13 and earlier
+    + a bit faster
+    + some discrepancies in paragraph formatting between Perl extension
+      modules and interpreted Perl modules have been fixed
+    + `MACRO_BODY_IGNORES_LEADING_SPACE' customization variable removed,
+      and `indent_menu_descriptions' is no longer a possible value for
+      `TREE_TRANSFORMATIONS' (as these features did not work as
+      documented)
+  * info:
+    + the `up-line' and `down-line' commands now are like the other
+      scrolling commands and are no longer confined to a single node
+      (depending on the value of `scroll-behaviour')
+    + supplying the --all option with --index-search displays a list
+      of matching index entries
+    + the style variables like `link-style' can now be set while info
+      is running
+    + display bug fixed where color could be turned off prematurely
+    + several other bugs fixed
+    + better portability in test suite
+    + do not fall back to showing the dir node if a manual isn't found
+    + Do not attempt any kind of conversion of CR LF line endings,
+      except on MS-DOS/Windows, when it is done unconditionally.  (This 
+      replaces a more complicated approach, where this conversion would 
+      take place if there was a problem finding a node in a file.)  The 
+      main effect of this change is that Info files with CR LF line 
+      endings, which would have been produced on MS-DOS/Windows with old 
+      versions of makeinfo, are only supported on such operating systems.
+    + a few of the key bindings under --vi-keys have been changed for
+      consistency or to match the documentation
+  * texinfo.tex
+    + a DVI file with a single empty page can be output again, which
+      restores the behavior from Texinfo 6.0 and earlier
+- Small packaging clenup:
+  * Drop conditions for old releases
+  * Run spec-cleaner
+  * Run testsuite
+
+-------------------------------------------------------------------
+Fri Jan 20 10:02:38 UTC 2017 - rmaliska@suse.com
+
+- Update to version 6.3:
+  * Language:
+    + The commands `@setcontentsaftertitlepage' and
+      `@setshortcontentsaftertitlepage' have been removed.
+    + @-commands are no longer supported within `@errormsg'.
+  * texinfo.tex:
+    + For a couple of characters (opening and closing braces), use glyphs
+      from the standard TeX math fonts instead of using EC fonts which are 
+      less likely to be installed.
+    + Use of user-defined macros in the text of an index entry is more
+      reliable when the text contains Texinfo @-commands.
+    + @synindex and @syncodeindex have been fixed (broken in the last
+      release).
+    + Support added for native UTF-8 support with XeTeX and LuaTeX.
+    + Support of PDF output with XeTeX improved.
+    + You can use a new file doc/texinfo-ja.tex for Texinfo documents in
+      Japanese.  doc/short-sample-ja.tex is a sample document.  New 
+      support file doc/txi-ja.tex for Japanese.
+    + texi2any:
+    + Fix handling of compiler options when building Perl extension modules.
+  * texi2dvi:
+    + Can now process files whose absolute paths contain space characters,
+      as long a relative path to the file is given.  Better support of 
+      files with unusual characters in their names.
+    + No longer exits prematurely in some circumstances (due to the script
+      running under "set -e").
+    + Bug fixed which made the `--command' and `--tidy' options
+      incompatible.
+  * info:
+    + Handling of "invalid" value in infokey file fixed.
+
+-------------------------------------------------------------------
+Sun Jul 24 16:11:18 UTC 2016 - p.drouand@gmail.com
+
+- Remove libpth-devel; texinfo doesn't depend on it
+
+-------------------------------------------------------------------
+Fri Jul 15 18:05:00 UTC 2016 - schwab@linux-m68k.org
+
+- Update to 6.1
+  * Language:
+    . You can now omit the @menu from nodes with other nodes below them in
+      the document structure.  If you use "@validatemenus off" near the 
+      start of a Texinfo file, makeinfo will, where needed, create a menu 
+      for nodes lacking one given explicitly.
+    . An @setfilename line is no longer required at the start of a
+      Texinfo file.  (Be aware, though, that some other tools may require 
+      it, for example Automake.)
+    . For processing with TeX, a comma is automatically provided following
+      a cross-reference command (such as @xref) when needed to separate
+      the page number from following text, so you don't need to add one
+      yourself.  See the `Parts of a Cross Reference' node in the manual
+      for details.  Behavior when followed by punctuation, as always
+      recommended previously, is unchanged.
+  * texi2any:
+    . Some Perl modules have been rewritten in C to increase speed.
+      If Perl extensions can be created, they are used by default; 
+      otherwise the pure Perl implementations are still used.
+      Disable at build time with "configure --disable-perl-xs".  The 
+      environment variable TEXINFO_XS controls how they are used by 
+      texi2any.
+    . Quotation marks are left out for node names and index entries in
+      Info output where they would have been produced by commands such
+      as @file or @option.
+    . New customization variable INFO_SPECIAL_CHARS_QUOTE to allow use of
+      a quoting mechanism for problematic constructs in Info output, for
+      example node names containing colons or commas.
+    . Commands like @heading are affected by @lowersections and @raisesections
+      again, as was the case before Texinfo 5.0.
+  * texinfo.tex:
+    . You may explicitly specify a sort key for an index entry by preceding
+      the text of the entry with the @sortas commmand with the sort key 
+      desired as a braced argument.   Additionally, you may choose to
+      ignore all occurences of the characters \, @, <, and - using new 
+      flags you can specify with @set: `txiindexbackslashignore',
+      `txiindexatsignignore', `txiindexlessthanignore', and
+      `txiindexhyphenignore' respectively.
+    . Changes to macro handling to more closely match makeinfo.  Ends of
+      lines are preserved in an argument to a macro taking a single 
+      argument.
+    . By default, suppress heading line on a page with a chapter on it, to
+      avoid having the chapter title repeated.
+    . Use a larger font for arguments in a @deffn line and similar.
+    . The default indices (cp, ky and so on) now don't get a file opened
+      for them unless they are actually used.  This reduces the number of
+      files that a run of TeX produces, and also allows for a greater
+      number of user-defined indices, because you will not bump into TeX's
+      limit of 16 open files at once so soon.
+    . For initials in indices that are non-alphanumeric characters (for
+      example, backslash, or braces), avoid use of a typewriter font.  
+      This gives a more consistent appearance.
+    . Have a stronger preference for breaking a column in an index before
+      a letter heading.
+    . Formatting improvements in tables of contents and indices.  Entries
+      can extend slightly into the margin instead of being broken across 
+      two lines, and text is split more evenly across lines.  Reduce 
+      chance of an orphaned index entry appearing at the top of a column.
+    . Support character encodings beyond ASCII for XeTeX and LuaTeX by
+      reading file input byte-by-byte.
+  * texi2dvi:
+    . Support for determining the output files using the `-recorder'
+      option to TeX, to help to support more TeX engines.
+  * info:
+    . New user variables `link-style', `active-link-style', and
+      `match-style' enable customization of how cross-references and search 
+      matches are highlighted.
+    . By default only the node pointers are displayed at the top of a node.
+      Customize this with the `nodeline' variable.
+    . New command M-x tree-search to search all subnodes of a node.
+    . Now tries to find referenced manuals in the same directory as the
+      current file first, before looking in search path.  Customize this
+      with new variable `follow-strategy'.
+    . The `mouse' variable is now off by default, in order not to
+      interfere with the selection of text in a terminal emulator window.
+    . `q' closes a window instead of quitting altogether if there's more
+      than one, for example if a help window is open.
+    . Several bug fixes, including:
+	. one causing the wrong position in a node to be shown when
+	  following an "anchor" cross-reference
+	. one causing a test failure in the t/c-u-m-x-scroll-forward.sh
+	  test on some platforms
+    . Internal changes to reduce memory use and increase speed of
+      searches, relative to last release
+    . The meaning of the `key-time' variable has changed when its value
+      is 0.  This value meant to wait forever in the last release, but now
+      it means that the next byte must be available immediately.
+  * Documentation:
+    . The `info.info' file (and `info.texi' source) is no longer
+      distributed with Texinfo.  Now this manual is only in Emacs.
+
+-------------------------------------------------------------------
+Thu Oct 15 19:44:20 UTC 2015 - werner@suse.de
+
+- Package info.info that is revert the previous drop from
+  Mon May  6 16:05:29 UTC 2013
+
+-------------------------------------------------------------------
+Wed Jul 15 11:13:20 UTC 2015 - werner@suse.de
+
+- The package texinfo now requires makeinfo of the same version
+  to make sure that the correct Texinfo.pm is installed 
+- libzio is able to handle lz(ma) and xz files as well
+
+-------------------------------------------------------------------
+Sat Jul 11 10:14:57 UTC 2015 - mpluskal@suse.com
+
+- Update to 6.0
+  * Language:
+    + new commands @sub and @sup, for textual subscripts and 
+      superscripts.
+    + new command @U to insert a Unicode character by code point.
+  * texinfo.tex:
+    + @url/@uref output in PDF now the same as in DVI, showing the 
+      url even if the second argument is given, not just as a link 
+      target. TeX option \urefurlonlylinktrue gives previous 
+      behavior, of invisible urls.
+    + PDF-only \linkcolor and \urlcolor specify colors (default 
+      black).
+  * texi2any:
+    + customization variable TOP_NODE_UP_URL now replaces all (dir) 
+      references; recommended setting for GNU packages is /manual/.
+    + new customization variable INDEX_SPECIAL_CHARS_WARNING to 
+      complain when index entries contain a colon.
+    + Docbook output no longer uses <lineannotation> for @r.
+    + -D'var val' on the command line works as intended again.
+    + --plaintext output can be split.
+    + a bit faster.
+  * info:
+    + invoking as `info foo bar' looks for bar as an index entry 
+      in manual foo, if not found as a top-level menu item.
+    + invoking info with an absolute or explicitly relative file 
+      name (./foo.info, /tmp/foo.info, etc.) just visits that file.
+    + separate `infokey' program has been removed - the .infokey 
+      file is now read directly by Info.
+    + new option --init-file allows overriding ~/.infokey.
+    + new variable `highlight-searches' allows highlighting 
+      results from a search
+    + support for mouse scrollwheel, controlled by `mouse' 
+      variable.
+    + new variable `key_time' to control how long to wait for 
+      byte sequences sent by special keys.
+    + new variable `hide-note-references' alters appearance of 
+      displayed nodes
+    + new variable `infopath-no-defaults' allows omitting the 
+      compile-time Info directory from the Info search path.
+    + support input of multibyte characters for searches in 
+      a UTF-8 locale.
+    + if reading an Info file that is known to be in a different 
+      character encoding to that of the user's environment, 
+      convert its contents when displayed and substitute 
+      missing characters
+    + new command M-x info-version.
+    + the M-x kill-node command has been removed.
+    + test suite at build time.
+  * texindex:
+    + completely new implementation as a literate program using 
+      Texinfo and (portable) awk (called TexiWeb Jr.).
+    + the -o (--output) is not supported, unless we hear of 
+      someone using it.
+    + duplicated sort keys with different display texts result 
+      in one merged index entry, using the first display text.
+    + better sorting and parsing in unusual cases; most 
+      notably, { and } characters can appear as initials.
+  * install-info:
+    + handle compressed input file names containing spaces.
+    + exit successfully if --remove is given and the dir file 
+      does not exist.
+    + new option --defsection, to be used instead of 
+      "Miscellaneous" when a section is not present in the Info 
+      file.
+  * texi2dvi:
+    + look for the environment variable THUMBPDF_CMD instead of 
+      THUMBPDF, since thumbpdf itself has used THUMBPDF for options 
+      since 2000.
+    + remove --recode and --recode-from options, since they haven't 
+      worked as intended for years, so evidently no one needs them.
+- refresh texinfo-zlib.patch
+
+-------------------------------------------------------------------
+Sat May 16 06:20:05 UTC 2015 - schwab@linux-m68k.org
+
+- Remove wrong uses of %install_info
+
+-------------------------------------------------------------------
+Fri Apr 24 10:05:14 UTC 2015 - werner@suse.de
+
+- Add pre requires for install_info for scriptlets 
+
+-------------------------------------------------------------------
+Sat Mar 28 11:31:48 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+
+-------------------------------------------------------------------
+Fri Feb  6 17:51:37 UTC 2015 - dimstar@opensuse.org
+
+- Add perl(Locale::Messages) and perl(Text::Unidecode) Requires to
+  makeinfo: since the switch to using the external ones, we also
+  must ensure to have them present for the user to execute
+  makeinfo. And makeinfo can be installed without texinfo (which
+  already does require those modules too).
+
+-------------------------------------------------------------------
+Fri Feb  6 15:58:27 UTC 2015 - werner@suse.de
+
+- Avoid including builtin perl-libintl-perl but require the package
+- The same for perl-Text-Unidecode
+- Move %install_info_delete from %postun to %preun
+
+-------------------------------------------------------------------
+Fri Feb  6 11:12:09 UTC 2015 - dimstar@opensuse.org
+
+- Recommend instead of Require texi2html and texi2roff: they are
+  not stricly required to operate texinfo, but can be valuable to
+  the users installing it.
+
+-------------------------------------------------------------------
+Thu Feb  5 20:23:34 UTC 2015 - dimstar@opensuse.org
+
+- Completely splitt off texi2html and texi2roff into their own
+  package containers. As a consequence, we no longer carry those
+  files / patches here (they live in their respective other
+  packages): texi2html-1.78.dif, texi2html-5.0.tar.bz2,
+  texi2html-5584.patch, texi2html.changes, texi2html.spec,
+  texi2roff-2.0-gcc4.patch, texi2roff-2.0.dif, texi2roff-2.0.tar.gz,
+  texi2roff.changes, texi2roff.patch.gz and texi2roff.spec.
+
+-------------------------------------------------------------------
+Fri Sep 12 13:45:49 UTC 2014 - werner@suse.de
+
+- Be aware that texinfo is GPL-3.0+ 
+- Require texi2html as well as readded texi2roff to make the build
+  system happy
+
+-------------------------------------------------------------------
+Wed Aug  6 18:32:36 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 5.2
+  * New texinfo commands
+  * texi2any is the new generic converter for Texinfo that can
+    produce all supported output formats, both those from texi2dvi
+    (PDF/DVI) and from makeinfo (Info/HTML/etc.).  texi2any and
+    makeinfo are now different names for the same program; there
+    are no differences in behavior based on the program name.
+  * See more detail at included NEWS file
+  * Remove obsolete texinfo-4.12.dif
+  * Remove obsolete texi2html-1.78.dif
+  * Remove obsolete texi2roff-2.0.dif
+  * Remove obsolete texi2roff.patch.bz2
+  * Remove obsolete texinfo-4.8-echo.patch
+  * Remove obsolete texi2roff-2.0-gcc4.patch
+  * Remove obsolete texinfo-4.13a-bug640417.diff
+  * Remove obsolete texinfo-4.13a-bug713517.diff
+  * Remove obsolete automake-1.12.patch
+  * Remove obsolete texinfo-4.13a-bug788574.diff
+  * Remove obsolete config-guess-sub-update.patch
+  * Rebase texinfo-4.12-zlib.patch to texinfo-zlib.patch
+- Merge makeinfo into main package
+- Drop not maintained texi2roff
+- Drop not maintained texi2html
+
+-------------------------------------------------------------------
+Mon May  6 16:05:29 UTC 2013 - schwab@linux-m68k.org
+
+- Don't package info.info, already part of emacs-info
+
+-------------------------------------------------------------------
+Tue Feb 12 09:35:09 UTC 2013 - schwab@suse.de
+
+- config-guess-sub-update.patch:
+  Update config.guess/sub for aarch64
+
+-------------------------------------------------------------------
+Tue Nov 20 10:02:54 UTC 2012 - werner@suse.de
+
+- Use latest CVS version for the last patch
+
+-------------------------------------------------------------------
+Mon Nov 19 14:24:06 UTC 2012 - werner@suse.de
+
+- Be aware that characters of appendix numbering requires a ASCII
+  null if used as string (bnc#788574)
+
+-------------------------------------------------------------------
+Sat Oct  6 06:18:21 UTC 2012 - coolo@suse.com
+
+- remove prereq on library names
+
+-------------------------------------------------------------------
+Tue Jul 17 16:11:16 UTC 2012 - werner@suse.de
+
+- Split off makeinfo as separate package to independed from
+  TeXLive 
+
+-------------------------------------------------------------------
+Tue Jul 10 10:09:15 UTC 2012 - werner@suse.de
+
+- Make it build with latest TeXLive 2012 with new package layout 
+  + Add missed TeX
+  + Also bibtex and makeindex are used by texi2dvi
+  + Add some requires to make the texi2* scripts work
+
+-------------------------------------------------------------------
+Tue May 29 13:37:27 UTC 2012 - puzel@suse.com
+
+- fix build with automake-1.12
+  - add: automake-1.12.patch
+
+-------------------------------------------------------------------
+Wed Feb  8 12:35:24 UTC 2012 - werner@suse.de
+
+- Work around dully check script of obs 
+
+-------------------------------------------------------------------
+Thu Dec  1 16:06:36 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Sep  2 10:28:21 UTC 2011 - werner@suse.de
+
+- Fix UTF-8 range problem of a grep call (bnc#713517)
+
+-------------------------------------------------------------------
+Mon May  2 12:58:41 CEST 2011 - ke@suse.de
+
+- Enhance package description and provide meta info about makeinfo; thus
+  you can find this tool more easily with the yast package search..
+
+-------------------------------------------------------------------
+Wed Nov 10 14:28:49 CET 2010 - meissner@suse.de
+
+- SUSE_ASNEEDED=0 to fix PowerPC build (optimizes
+  away the -lz -lbz2 otherwise)
+
+-------------------------------------------------------------------
+Wed Sep 22 09:04:35 UTC 2010 - giecrilj@stegny.2a.pl
+
+- Fix variable types (bnc#640417)
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Sun Dec  6 14:58:06 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Fri Jul  3 12:10:18 CEST 2009 - werner@suse.de
+
+- Add provides for texi2html and texi2roff (bnc#469300)
+- Update to texi2html 1.82 (2009-01-05)
+  * Add new hooks for user functions, for simple @-commands, and at the start and
+    end of special regions.
+  * Don't use unidecode on unicode characters that are known not to have a good
+    transliteration.  This corresponds with characters with an @-command that
+    don't have a transliteration, like @exclamdown...
+  * handle @alias, @quote*, @guillem*, @textdegree, @allowcodebreaks,
+    @fonttextsize, @hyphenation, @click, @clickstyle, @click, @arrow, 
+    @clicksequence, @geq, @leq, @*headingmarks, @*footingmarks, @smallquotation,
+    @ogonek.
+    Handle @columnfractions and row prototypes in @multitable better.
+  * @documentlanguage is used to set the language each time it is seen (except
+    if the language was set on the command line).
+  * new option --css-ref, generate reference to a CSS URL.
+  * new option --transliterate-file-names, produce file names in ASCII 
+    transliteration (set in the default case).
+  * --no-monolithic is reenabled.
+  * @, followed by an argument without brace is now handled. Report from 
+    Jorge Barros de Abreu.
+  * @, is kept with --macro-expand.
+  * @math is more compatible with makeinfo/texi2dvi when no external program
+    is used. Using tex4ht for html generation should also lead to a correct
+    result.
+  * Handle right @end block commands followed by something else than a 
+    spacing character.
+  * Remove trailing end of line in @html block.
+  * @itemize should produce bullets by default. Report from Reinhold Kainhofer.
+  * handle frame files like other files. Report from Reinhold Kainhofer.
+- Update to texinfo 4.13a (18 September 2008)
+  * A reference card for Texinfo is now available, in doc/refcard.  For
+    convenience, preformatted PDF's for letter-size and A4 paper are included.
+  * makeinfo:
+    . new option --internal-links for HTML output, to write a tsv file
+      mapping indexed/toc terms to links, for easy reference from external
+      documents.
+    . - as an input file name reads standard input. 
+  * info:
+    . support for multibyte encodings such as UTF-8.
+    . new option --show-malformed-multibytes, to display malformed multibyte
+    sequences.
+    . new environment variable INFO_MAN_COMMAND sets the name of man binary
+    (use it if you a need to override PATH settings).
+  * install-info:
+    . bug fix: support names with embedded periods (e.g., config.status) again.
+  * Distribution:
+    . autoconf 2.63.
+
+-------------------------------------------------------------------
+Sun Jun 15 13:50:57 CEST 2008 - schwab@suse.de
+
+- Update to texinfo 4.12.
+  * Language:
+    . new commands @clicksequence, @click, and @clickstyle for documenting
+      GUI sequences, and @arrow for the default glyph used.
+    . new commands @geq{} and @leq{} for the normal >= and <= relations.
+  * install-info:
+    . lzma compression supported.
+    . Much work towards compatibility with Debian's independent
+      implementation.  Changes in behavior:
+      - new entries are formatted to start at column 34 by default.
+      - existing entries are replaced by default.
+      - new sections are alphabetized among existing sections.
+      - if an entry being removed is the last one in a section, the
+	section is also removed.
+    . Also many new options:
+      --section REGEX TITLE.
+      --no-indent: disable formatting of new entries.
+      --menuentry, --name: specify left-hand side of an entry.
+      --dry-run: alias for --test.
+      --regex REGEX: renamed from --section regex, adds to all sections
+	matching REGEX by default.
+      --add-once: add only to first specified or matching section.
+      --align COL: start description at column COL.
+      --calign COL: start continuation lines in description at COL.
+      --max-width COL: wrap the description at COL.
+    . New section in the Texinfo manual describing all this.
+  * Info:
+    Our goal with these changes to the default interface is to make Info
+    documents more easily and quickly readable, especially by non-experts.
+    . the PageUp and PageDown keys move through the whole document by
+      default, instead of just the current node.
+    . the h command shows the basic help, and H starts the Info tutorial.
+    . the newly-bound x command deletes the current window, e.g., within help.
+    . the scroll-step variable is set to 1 by default, for smooth scrolling.
+    . the cursor-movement-scrolls-p variable is set to 1 by default, so
+      link searches look through the whole document.
+    . regular expression searches are supported, and are the default for
+      both regular and incremental searches.
+    . the new R command toggles between regexp and literal-string searches.
+    . the new variable scroll-last-node controls scrolling at the end of
+      the last node; by default, it now simply reports there are no more
+      nodes.  To restore the old behavior, set scroll-last-node=Scroll.
+    . the precise line number specified in index entries is used if available.
+    . --usage=info shows usage for standalone Info.
+    . lzma compression supported.
+  * Distribution:
+    . language support for no removed/renamed to nb, per Norwegian translators.
+    . new translation: es.
+    . bug fixes in make check (and elsewhere).
+    . gettext 0.17, automake 1.10.1, autoconf 2.62.
+
+-------------------------------------------------------------------
+Mon Mar 10 13:33:18 CET 2008 - werner@suse.de
+
+- Update to texinfo version 4.11 (4.10 was omitted)
+ * Language:
+   . @documentlanguage now supports an optional country code
+     specification after the language code, a la gettext.
+   . new command @allowcodebreaks controls breaks at _ and - within @code.
+   . new command @frenchspacing controls spacing after sentences.
+   . new command @fonttextsize allows changing body text font size to 10pt.
+   . new command @textdegree{} produces the normal degrees symbol.
+   . new command @thischapternum can be used in TeX headers/footers.
+   . new commands for quotes: @quotedblleft @quotedblright
+      @quoteleft @quoteright  @quotedblbase @quotesinglbase
+      @guillemetleft @guillemetright @guilsinglleft @guilsinglright.
+   . new option @set txicodequoteundirected produces an undirected quote
+     in code and example output, instead of the regular right quote.
+   . new option @set txicodequotebacktick produces a grave accent in
+     code and example output, instead of the regular left quote.
+ * makeinfo:
+   . The @documentlanguage locale is used to translate various document strings.
+   . --enable-encoding is now the default, meaning Info and plain text
+     output use 8-bit characters given a supported @documentencoding.
+   . new option --css-ref=URL for creating a stylesheet <link> in HTML output.
+   . new option --transliterate-file-names to use a reduction-to-ASCII
+     algorithm for split HTML file names, useful for non-Latin-based languages.
+   . @enddots{} outputs three dots instead of four, for consistency with
+     texinfo.tex.
+   . the Local Variables coding: setting written by --enable-encoding now
+     comes at the very end, after the tags table, so that Emacs can find
+     it in more cases.
+   . @allow-recursion (never documented) is deprecated and produces a warning.
+   . @quote-args (never documented) is now the default behavior.
+   . centering and such take account of character widths.
+   . the --reference-limit option is now a no-op.
+   . improvements to XML and Docbook output and the DTD.
+ * texinfo.tex:
+   . @thissection can now be used in custom headings, and @thischapter
+     works reliably even without @set chapternewpage.  Custom headings
+     have additional flexibility as well.
+ * texi2dvi:
+   . pdftexi2dvi is a new wrapper to `texi2dvi --pdf', equal to texi2pdf,
+     for the sake of AUC-TeX which prepends `pdf' to the compilation
+     command when requested to produce PDF.
+ * info:
+   . look for info files in the current directory first, by default.
+   . when calling man, use -a if no explicit section is found.
+   . avoid showing the top(1) man page for nonexistent info files.
+ * install-info:
+   . new options --section-regex, --remove-exactly, --debug, --test.
+ * Distribution:
+   . autoconf 2.60, automake 1.10, gettext 0.16.1.
+   . gettext support now [external].
+   . new translations: hu (Hungarian), rw (Kinyarwandan), vi (Vietnamese).
+   . most common sources imported from gnulib.
+
+-------------------------------------------------------------------
+Wed Jul 11 13:13:29 CEST 2007 - werner@suse.de
+
+- Update to texinfo version 4.9
+  * GPLv3.
+  * texi2dvi:
+    . new mode --build=tidy which supports compilation in a separate
+      directory, where intermediate files are preserved.
+    . new option --build-dir, to specify where the tidy build will take
+      place, either locally or globally.  This allows avoiding the clutter
+      while preserving auxiliary files.
+    . new support for AUC-TeX: texi2dvi (weakly) supports arguments a la
+      TeX such as `\nonstopmode\input{file.tex}'.
+      . new options --ps and --dvipdf, useful especially for pstricks documents.
+    . new option --src-specials, passed to TeX.
+    . pdftexi2dvi is a new wrapper to `texi2dvi --pdf', equal to texi2pdf,
+      for the sake of AUC-TeX which prepends `pdf' to the compilation
+      command when requested to produce PDF.
+  * texinfo.tex:
+    . Latin1, Latin2, Latin9, and UTF-8 are supported as well as Computer
+      Modern can manage.
+    . png and jpg images supported in pdf output.
+    . new Russian, Serbian, and Ukrainian translations for texinfo.tex:
+      txi-ru.tex, txi-sr.tex, txi-uk.tex.
+    . section names with \ characters work properly in pdf outlines.
+    . have .toc files use @ as the escape character, instead of \.
+- Update to texi2html version 1.78
+  * Transliterate accented characters in file names. Use Text::Unidecode
+    if detected.
+  * Handle @frenchspacing, @tie, @indent, @setcontentsaftertitlepage,
+    @setshortcontentsaftertitlepage and the obsolete @allow-recursion 
+    and @quote-arg.
+  * With book style the Table of Contents is put where it is set.
+  * Use more numeric entities, especially for accented letters.
+  * The `examples' directory now contains an init file for Mediawiki output.
+    Mediawiki is the GPL'd wiki used by Wikipedia.
+  * new init file tex4ht.init. With this init file, httex or htlatex from 
+    tex4ht is used to format @tex and @math.
+  * Init files now have a chance to override all file names, rather than just
+    page names.
+  * Put the images under a double licence by adding back their original GPL
+    licence.
+  * If SIMPLE_MENU is true the menu is simply enclosed in a preformatted 
+    environment.
+  * The user can bypass the texi2html functions and provide his own function
+    to do things similar that what is done for interfacing with LaTeX2HTML
+    or tex4ht.
+  * LaTeX2HTML stuff is moved out of texi2html.pl, to T2h_l2h.pm.
+  * Add $USER and $DATE variables to override the defaults detected for the
+    footer.
+  * $TOP_FILE and $TOC_FILE are only set if set by the user. The elements
+    file names are in the hash reference $Texi2HTML::THISDOC{'filename'}
+    for use in init files.
+  * The API for image, normal_text, paragraph and node_file_name has changed.
+  * The $ENCODING variable is deprecated, replaced by $ENCODING_NAME
+    and $OUT_ENCODING.
+  * utf8 is used as default out file encoding. This should allow for utf8
+    translations for languages which cannot use @-commands for non ascii
+    characters.
+  * Use entities for ``, '', ---, -- and quotes used for some formatting
+    @-commands if $USE_ISO is set. 
+  * don't set unset MENU-ENTRY-NAME if it is similar with the NODE-NAME,
+    it is useless as it is a construct that shouldn't happen.
+  * avoid menu entry and description redundancy in the formatting function
+    and not in the main program.
+  * accept - in @-command names (compatibility with makeinfo)
+  * in user-defined macro arguments a comma in brace is escaped (compatibility
+    with makeinfo from texinfo 4.8.90)
+  * don't add the section title to the html title when the document isn't split
+  * When the file extension is set to the empty string, a trailing `.' will not
+    be automatically added to file names.
+  * The texi2html script is now created by make and not configure. 
+  * It is possible to build the translation files from outside of the 
+    build directory.
+  * When configure detects that no Data::Dumper is present, the build scripts
+    will simply copy the files instead of breaking.
+  * remove handling of quotation second arg, quotation has only one arg.
+  * handle nested ifset/ifclear.
+  * Improved handling of @sc and @centerchap.
+  * More flexible normal_text.
+  * style_stack really contains the formatting @-commands. 
+  * caching of html generated by latex2html reenabled.
+  * when not split and no section navigation is output, the about page and
+    navigation direction are not output for all the elements.
+
+-------------------------------------------------------------------
+Mon Mar 26 11:43:30 CEST 2007 - rguenther@suse.de
+
+- Add libbz2-devel, ncurses-devel and zlib-devel BuildRequires
+- Exchange libzio for libzio-devel BuildRequires
+
+-------------------------------------------------------------------
+Mon Feb 19 15:01:24 CET 2007 - werner@suse.de
+
+- Avoid array subscript below array bounds (bug #246740)
+
+-------------------------------------------------------------------
+Fri Nov 10 14:07:28 CET 2006 - werner@suse.de
+
+- Fix buffer overflow in texi2dvi (bug #214920)
+
+-------------------------------------------------------------------
+Mon Jul 24 17:39:22 CEST 2006 - adrian@suse.de
+
+- add libzio as PreReq for info
+
+-------------------------------------------------------------------
+Fri Jun 16 12:55:22 CEST 2006 - werner@suse.de
+
+- Re-enable texi2pdf because now tetex does not install this
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 19 13:17:13 CET 2005 - werner@suse.de
+
+- Add missing sym link to file list
+
+-------------------------------------------------------------------
+Thu Oct  6 16:48:27 CEST 2005 - werner@suse.de
+
+- Use directory for the base of temporary index files (bug #120577)
+
+-------------------------------------------------------------------
+Thu Mar 24 16:19:16 CET 2005 - uli@suse.de
+
+- fixed to build with GCC4 
+
+-------------------------------------------------------------------
+Thu Feb 10 15:25:59 CET 2005 - werner@suse.de
+
+- Update to next bug fix release 1.76 of texi2html
+
+-------------------------------------------------------------------
+Tue Feb  1 11:51:02 CET 2005 - werner@suse.de
+
+- Update to bug fix release 1.74 of texi2html
+
+-------------------------------------------------------------------
+Thu Jan 27 18:29:08 CET 2005 - werner@suse.de
+
+- Fix texi2html to not loop around on broken texi files
+- Remove texi2pdf from texinfo file list due already part of
+  tetex
+
+-------------------------------------------------------------------
+Wed Jan 26 16:29:38 CET 2005 - schwab@suse.de
+
+- Reenable strict aliasing.
+
+-------------------------------------------------------------------
+Tue Jan 25 18:17:36 CET 2005 - werner@suse.de
+
+- Move texi2html version to 1.72
+- Update texinfo version to 4.8
+
+-------------------------------------------------------------------
+Tue Oct 19 00:37:10 CEST 2004 - ro@suse.de
+
+- drop no locale support, nb is already there
+
+-------------------------------------------------------------------
+Mon Aug  9 18:14:05 CEST 2004 - werner@suse.de
+
+- Info: check remaining buffer size before printing into echo area
+
+-------------------------------------------------------------------
+Fri Jul  2 18:50:42 CEST 2004 - mfabian@suse.de
+
+- apply makeinfo.patch received from Karl Berry
+  <karl@freefriends.org> fixing the problem that makeinfo 4.7
+  could not process groff.texinfo anymore. See 
+  http://lists.gnu.org/archive/html/bug-texinfo/2004-04/msg00026.html
+  http://article.gmane.org/gmane.comp.tex.texinfo.bugs/2019/
+
+-------------------------------------------------------------------
+Wed Apr 21 13:02:06 CEST 2004 - werner@suse.de
+
+- Use libzio together with zlib and libbz2 to support bz2 info
+  files to avoids pipe()/fork()/execve() calls in install-info.
+
+-------------------------------------------------------------------
+Mon Apr 19 13:26:26 CEST 2004 - werner@suse.de
+
+- Be sure that texi2html find all required tools
+
+-------------------------------------------------------------------
+Fri Apr 16 16:30:44 CEST 2004 - werner@suse.de
+
+- Update to texinfo 4.7
+- Use -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Sun Mar 14 15:02:52 CET 2004 - schwab@suse.de
+
+- Fix uses of snprintf and gzFile.
+
+-------------------------------------------------------------------
+Sat Jan 10 21:27:05 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Wed Dec 10 13:27:29 CET 2003 - werner@suse.de
+
+- Update to texinfo 4.6
+
+-------------------------------------------------------------------
+Wed May 21 01:40:10 CEST 2003 - ro@suse.de
+
+- fix filelist: package files in /usr/share/texinfo 
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Sun Mar  9 23:03:00 CET 2003 - kukuk@suse.de
+
+- Add zlib to info PreRequires [Bug #24954]
+
+-------------------------------------------------------------------
+Tue Feb 11 11:21:41 CET 2003 - kukuk@suse.de
+
+- Branch off info sub package
+- Add /usr/share/info/dir
+
+-------------------------------------------------------------------
+Sat Feb  8 10:55:18 CET 2003 - kukuk@suse.de
+
+- Remove PreRequire for gzip, link against zlib instead (patched
+  based on version from RH)
+
+-------------------------------------------------------------------
+Sat Feb  8 01:38:58 CET 2003 - ro@suse.de
+
+- fixed pre/post install scripts 
+
+-------------------------------------------------------------------
+Fri Feb  7 12:11:37 CET 2003 - ro@suse.de
+
+- removed self-prereq again 
+
+-------------------------------------------------------------------
+Thu Feb  6 18:09:27 CET 2003 - aj@suse.de
+
+- Use install_info.
+- Update to texinfo 4.5.
+
+-------------------------------------------------------------------
+Wed Jan 22 17:15:34 CET 2003 - werner@suse.de
+
+- Request gzip before installing (bug #22992)
+
+-------------------------------------------------------------------
+Fri Aug 30 13:48:24 CEST 2002 - werner@suse.de
+
+- Add a warning on missed programs and say what todo (bug #18642)
+
+-------------------------------------------------------------------
+Mon Jun 17 10:42:45 CEST 2002 - schwab@suse.de
+
+- Update to texinfo 4.2.
+
+-------------------------------------------------------------------
+Thu Mar  7 14:35:27 CET 2002 - schwab@suse.de
+
+- Update to texinfo 4.1.
+
+-------------------------------------------------------------------
+Wed Feb 13 22:34:05 CET 2002 - schwab@suse.de
+
+- Fix verbose message of texi2dvi.
+
+-------------------------------------------------------------------
+Thu Jan 24 13:43:25 CET 2002 - okir@suse.de
+
+- fixed tempfile races in texindex (moved all tempfiles
+  into a subdirectory of /tmp).
+
+-------------------------------------------------------------------
+Wed Jan 16 15:33:00 CET 2002 - schwab@suse.de
+
+- Fix bad free in "makeinfo --html".
+
+-------------------------------------------------------------------
+Tue Jun 12 11:21:19 CEST 2001 - schwab@suse.de
+
+- Fix directive inside macro call.
+
+-------------------------------------------------------------------
+Thu Apr 12 18:48:02 CEST 2001 - werner@suse.de
+
+- Use CVS snapshot of texi2html which works on glibc texinfo code
+
+-------------------------------------------------------------------
+Thu Apr 12 02:30:10 CEST 2001 - ro@suse.de
+
+- fixed glossary for texi2html 
+
+-------------------------------------------------------------------
+Wed Apr 11 17:52:18 CEST 2001 - werner@suse.de
+
+- Update of texi2html and texi2roff
+
+-------------------------------------------------------------------
+Thu Sep 28 18:05:30 CEST 2000 - werner@suse.de
+
+- Move /usr/bin/install-info to /sbin/install-info and
+  set backward compatibility symlink.
+
+-------------------------------------------------------------------
+Wed May 31 16:11:53 CEST 2000 - werner@suse.de
+
+- use rpm macros for common paths
+
+-------------------------------------------------------------------
+Mon Feb 28 21:27:24 CET 2000 - werner@suse.de
+
+- Fix segmentation fault (close bug #1911)
+
+-------------------------------------------------------------------
+Thu Feb  3 21:15:55 CET 2000 - werner@suse.de
+
+- Fixed de.po
+
+-------------------------------------------------------------------
+Wed Feb  2 21:53:18 CET 2000 - werner@suse.de
+
+- Remove Makefile.Linux
+- /usr/man -> /usr/share/man
+- /usr/info -> /usr/share/info (man pages and main for info program)
+- Install info pages of texinfo
+
+-------------------------------------------------------------------
+Wed Dec  1 15:58:09 CET 1999 - werner@suse.de
+
+- small changes
+
+-------------------------------------------------------------------
+Mon Nov 29 19:59:29 CET 1999 - ke@suse.de
+
+- update: version 4.0 (#600).
+- use BuildRoot.
+- install COPYRIGHT, etc.
+- don't disable NLS.
+	
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Jan 11 14:20:29 MET 1999 - ro@suse.de
+
+- info/terminal.c : TIOCGETC and TIOCGLTC are defined on alpha,
+                    but we can't access tchars and ltchars strutures,
+                    so undef both
+                    use tcgetattr and cfgetospeed to determine output
+                    speed
+
+-------------------------------------------------------------------
+Fri Jul 17 15:36:35 MEST 1998 - werner@suse.de
+
+- check exit satus of mkdir for temp directories
+
+-------------------------------------------------------------------
+Tue Oct 14 12:55:47 MEST 1997 - ro@suse.de
+
+- update to 3.12
+
+-------------------------------------------------------------------
+Tue Oct 14 12:55:47 MEST 1997 - ro@suse.de
+
+- ready for autobuild
+
+-------------------------------------------------------------------
+Fri Oct 10 15:08:57 MEST 1997 - florian@suse.de
+
+
+- update to texinfo 3.11
+
+
+-------------------------------------------------------------------
+Sun Jun 22 18:57:49 MEST 1997 - florian@suse.de
+
+
+- add debian-changes to support ANSI-cursor movements
+
+- add texi2html 1.51
+
+- add texi2roff 2.0
+
+
+-------------------------------------------------------------------
+Sun Apr 13 23:04:29 MEST 1997 - florian@suse.de
+
+
+- cosmetic changes, just done in preparation for glibc
+
+
+-------------------------------------------------------------------
+Thu Oct 17 16:05:09 CEST 1996 - florian@suse.de
+
+
+- Update auf neue Version 3.9.
+
+

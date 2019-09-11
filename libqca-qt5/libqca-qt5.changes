@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Fri Apr 26 12:49:36 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix source URL
+
+-------------------------------------------------------------------
+Fri Apr 26 07:43:43 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 2.2.1
+  * support for openssl 1.1
+  * support for AES GCM and AES CCM modes
+  * new base64 convenience functions
+  * new botan2 support
+  * new hkdf support
+  * various build improvements and (deprecation) cleanups
+- Drop patches merged upstream:
+  * 0001-Revert-tlsunittest-disable-some-ciphers.patch
+  * 0002-Disable-missed-openssl-cipher-suites.patch
+  * 0003-Add-support-for-OpenSSL-1.1.0.patch
+  * ansi.diff
+- Rename qca-2.1.3-fixDSA.patch to qca-2.2.1-fixDSA.patch and
+  rebase it
+- Re-enable pkcs11, there is no openssl conflict anymore
+- Don't hardcode the certstore path anymore, ca-certificates is
+  BuldRequired so this can be detected automatically
+
+-------------------------------------------------------------------
+Thu Oct 25 09:30:30 UTC 2018 - Jason Sikes <jsikes@suse.de>
+
+- Fix segfault when creating DSA keys
+  * [qca-2.1.3-fixDSA.patch]
+  * bsc#1108634
+
+-------------------------------------------------------------------
+Wed Dec 27 10:57:18 UTC 2017 - jengelh@inai.de
+
+- Diversify subpackage descriptions.
+
+-------------------------------------------------------------------
+Wed Dec 20 18:12:13 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patches to support OpenSSL 1.1.0:
+  * 0001-Revert-tlsunittest-disable-some-ciphers.patch
+  * 0002-Disable-missed-openssl-cipher-suites.patch
+  * 0003-Add-support-for-OpenSSL-1.1.0.patch
+- Fix provides in main package
+
+-------------------------------------------------------------------
+Thu Oct 19 08:53:59 UTC 2017 - meissner@suse.com
+
+- buildignore openssl-1_0_0 to avoid conflicts during the
+  openssl 1.1 effort.
+
+-------------------------------------------------------------------
+Mon Oct  9 11:32:54 UTC 2017 - vcizek@suse.com
+
+- Hardcode certstore path on Tumbleweed, in order to avoid
+  BuildRequires: ca-certificates, which will create a conflict,
+  because it requires openssl-1_1_0 (bsc#1055310)
+
+-------------------------------------------------------------------
+Sun Oct  1 16:25:59 UTC 2017 - wbauer@tmo.at
+
+- Update to 2.1.3
+  * No changelog provided
+- Drop libqca-qt5-2.1.1-explicit-signed-char.patch, merged upstream
+- Update Url
+
+-------------------------------------------------------------------
+Fri Sep 29 14:54:39 UTC 2017 - wbauer@tmo.at
+
+- Remove libbotan-devel build requirement, we explicitly disable
+  building the botan plugin anyway (boo#1055322)
+
+-------------------------------------------------------------------
+Fri Aug 25 08:52:31 UTC 2017 - fvogt@suse.com
+
+- Force building against openSSL 1.0 (boo#1055310)
+- Disable PKCS11 on TW to avoid openssl conflicts
+
+-------------------------------------------------------------------
+Wed May 25 18:17:55 UTC 2016 - antoine.belvire@laposte.net
+
+- Fix build on PowerPC with GCC 6:
+  * Add libqca-qt5-2.1.1-explicit-signed-char.patch
+
+-------------------------------------------------------------------
+Sat Oct  3 09:21:25 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 2.1.1
+  * No changelog provided
+- Drop Use-Q_SLOTS-Q_SIGNALS.patch and 0001-Add-missing-QIODevice-include.patch
+
+-------------------------------------------------------------------
+Sat Sep 26 14:13:08 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added Use-Q_SLOTS-Q_SIGNALS.patch from upstream: allow building
+  without QT_NO_KEYWORDS define
+
+-------------------------------------------------------------------
+Sat Jan 10 06:58:34 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 2.1.0.3
+  * Allow co-installability with Qt4 build
+- Remove conflict with libqca2-devel
+- Bump required cmake version to 2.8.12
+- Added ansi.diff, rh#1182200
+- Added 0001-Add-missing-QIODevice-include.patch, fixes build with
+  Qt 5.5
+
+-------------------------------------------------------------------
+Sat Nov  8 16:01:07 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 2.1.0
+  * Ported to Qt5 (Qt4 alsa supported)
+  * New building system. CMake instead of qmake
+  * Added CTR symetric cipher support to qca core
+  * Added no padding encryption algorithm to qca core
+  * qcatool2 renamed to qcatool
+  * fixed crash in qcatool when only options provided on command
+    line without any commands
+  * Use plugins installation path as hard-coded runtime plugins
+    search path
+  * Added new functiion pluginPaths
+  * Added functions to get runtime QCA version
+  * Fixed 'no watch file' warnings in FileWatch
+  * Added EME_PKCS1v15_SSL Encryption Algorithm
+  * New implementation of SafeTimer to prevent crashes
+  * Updated certificates for unittests
+  * RSA Keys are permutable, can encrypt with private
+    and decrypt with public
+  * Add unloadProvider() function for symmetry
+    with insertProvider()
+  * Overloaded "makeKey" to derive a password depending
+    on a time factor
+  * Remove pointer to deinit() routine from QCoreApplication
+    at deinitialization
+  * Fix a couple of crashes where all plugins
+    might not be available
+  * Fix operating on keys with unrelated expired subkeys
+  * Fixed timers in Synchronizer class
+  * Dropped randomunittest
+  * Fixed many unittests
+  * qca-gnupg: internal refactoring
+  * qca-gnupg: try both gpg and gpg2 to find gnupg executable
+  * qca-gnupg: fixed some encodings problem
+  * qca-ossl: no DSA_* dl groups in FIPS specification
+  * qca-ossl: added missed signatures to CRLContext
+  * qca-ossl: fixed certs time zone
+  * qca-nss: fixed KeyLenght for Cipher
+  * qca-botan: fixed getting result size for ciphers
+
+-------------------------------------------------------------------
+Thu Aug 14 23:19:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Activate libqca-qt5 package
+

@@ -1,0 +1,1689 @@
+diff -ruN checkbot-1.80-orig/checkbot checkbot-1.80/checkbot
+--- checkbot-1.80-orig/checkbot	2008-10-15 14:55:01.000000000 +0200
++++ checkbot-1.80/checkbot	2010-10-28 18:15:44.000000000 +0200
+@@ -33,7 +33,7 @@
+ 
+ =head1 NAME
+ 
+-Checkbot - WWW Link Verifier
++Checkbot - WWW Link Verifier. Modified for the Novell Webconsole
+ 
+ =head1 SYNOPSIS
+ 
+@@ -51,6 +51,8 @@
+          [B<--enable-virtual>]
+          [B<--language> language code]
+          [B<--suppress> suppression file]
++         [B<--username> Username for Novell Webconsole]
++         [B<--password> Password for Novell Webconsole]
+          [start URLs]
+ 
+ =head1 DESCRIPTION
+@@ -307,6 +309,28 @@
+ 
+   403   /http:\/\/wikipedia.org\/.*/
+ 
++=item --username <username>
++
++Username for the Novell Webconsole.
++
++Before starting the link check the must exist already an account 
++to the Webconsole in order getting all available links.
++So first of all there will be generated a login cookie by calling
++the <hostname>/accounts/login with the given username and password.
++
++Do NOT forget activating cookies by the --cookies option.
++
++=item --password <password>
++
++Password for the Novell Webconsole.
++
++Before starting the link check the must exist already an account 
++to the Webconsole in order getting all available links.
++So first of all there will be generated a login cookie by calling
++the <hostname>/accounts/login with the given username and password.
++
++Do NOT forget activating cookies by the --cookies option.
++
+ =back
+ 
+ Deprecated options which will disappear in a future release:
+@@ -482,7 +506,7 @@
+ 
+   # Get command-line arguments
+   use Getopt::Long;
+-  my $result = GetOptions(qw(cookies debug help noproxy=s verbose url=s match=s exclude|x=s file=s filter=s style=s ignore|z=s mailto|M=s note|N=s proxy=s internal-only sleep=f timeout=i interval=i dontwarn=s enable-virtual language=s allow-simple-hosts suppress=s));
++  my $result = GetOptions(qw(cookies debug help noproxy=s verbose url=s match=s exclude|x=s file=s filter=s style=s ignore|z=s mailto|M=s note|N=s proxy=s internal-only sleep=f timeout=i interval=i dontwarn=s enable-virtual language=s allow-simple-hosts suppress=s password=s username=s));
+ 
+   # Handle arguments, some are mandatory, some have defaults
+   &print_help if (($main::opt_help && $main::opt_help)
+@@ -661,9 +685,42 @@
+   open(CURRENT, $main::cur_queue)
+     || die "$0: Unable to open CURRENT $main::cur_queue for reading: $!\n";
+ 
++  ## initialize to webconsole specific
++  if (defined($main::opt_url))
++  {
++      my $urlstring = $main::opt_url . "/accounts/login";
++
++      my %argument = ();
++      if (defined($main::opt_username))
++      {
++	  $argument{"user_login"} = $main::opt_username;
++      }
++      if (defined($main::opt_password))
++      {
++	  $argument{"user_password"} = $main::opt_password;
++      }
++
++      # receiving session cookie
++      handle_url($main::opt_url);
++      
++      # login
++      my $root_url = URI->new($urlstring);
++
++      my $response = $main::ua->post($root_url, \%argument);
++      if ($response->is_success || $response->is_redirect) {
++	  print "Login succeeded\n";
++	  print $response->content;
++      }
++      else {
++	  print "Login NOT succeeded\n";
++	  print STDERR $response->status_line, "\n";
++      }
++  }
++
+   do {
+     # Read a line from the queue, and process it
+     while (defined ($line = <CURRENT>) ) {
++      print "checking $line";
+       chomp($line);
+       &handle_url($line);
+       &check_point();
+@@ -727,6 +784,8 @@
+   my $response;
+   my $type;
+ 
++#  print "Checking URL: $urlstr \n";
++
+   $stats{'todo'}--;
+ 
+   # Add this URL to the ones we've seen already, return if it is a
+@@ -800,16 +859,16 @@
+ 
+     if ($response->is_redirect and is_internal($url->as_string)) {
+       if ($response->code == 300) {  # multiple choices, but no redirection available
+-	output 'Multiple choices', 2;
++	print 'Multiple choices\n';
+       } else {
+ 	my $baseURI = URI->new($url);
+ 	if (defined $response->header('Location')) {
+ 	  my $redir_url = URI->new_abs($response->header('Location'), $baseURI);
+-	  output "Redirected to $redir_url", 2;
++	  print "Redirected to $redir_url\n";
+ 	  add_to_queue($redir_url, $urlparent);
+ 	  $stats{'todo'}++;
+ 	} else {
+-	  output 'Location header missing from redirect response', 2;
++	  print 'Location header missing from redirect response\n';
+ 	}
+       }
+     }
+@@ -984,6 +1043,8 @@
+     print OUT "<tr><th align=\"left\">--match</th><td class='text'>Match regular expression</td><td class='value' id='match'>$main::opt_match</td></tr>\n";
+     print OUT "<tr><th align=\"left\">--exclude</th><td class='text'>Exclude regular expression</td><td class='value' id='exclude'>$main::opt_exclude</td></tr>\n" if defined $main::opt_exclude;
+     print OUT "<tr><th align=\"left\">--filter</th><td class='text'>Filter regular expression</td><td class='value' id='filter'>$main::opt_filter</td></tr>\n" if defined $main::opt_filter;
++    print OUT "<tr><th align=\"left\">--username</th><td class='text'>Username</td><td class='value' id='username'>$main::opt_username</td></tr>\n" if defined $main::opt_username;
++    print OUT "<tr><th align=\"left\">--password</th><td class='text'>Password</td><td class='value' id='password'>set</td></tr>\n" if defined $main::opt_password;
+     print OUT "<tr><th align=\"left\">--noproxy</th><td class='text'>No Proxy for the following domains</td><td class='value' id='noproxy'>$main::opt_noproxy</td></tr>\n" if defined $main::opt_noproxy;
+     print OUT "<tr><th align=\"left\">--ignore</th><td class='text'>Ignore regular expression</td><td class='value' id='ignore'>$main::opt_ignore</td></tr>\n" if defined $main::opt_ignore;
+     print OUT "<tr><th align=\"left\">--suppress</th><td class='text'>Suppress error code and URL specified by</td><td class='value' id='suppress'>$main::opt_suppress</td></tr>\n" if defined $main::opt_suppress;
+@@ -1183,12 +1244,14 @@
+   my $content = $response->decoded_content || $response->content;
+   $p->parse($content);
+   $p->eof;
+-
++  my $string = $response->base->as_string;
++  print ( "URL $string \n");
+   # Deal with the links we found in this document
+   my @links = $p->links();
+   foreach (@links) {
+     my ($tag, %l) = @{$_};
+     foreach (keys %l) {
++	print ("   $l{$_} $_ $tag\n");
+       # Get the canonical URL, so we don't need to worry about base, case, etc.
+       my $url = $l{$_}->canonical;
+ 
+@@ -1473,6 +1536,12 @@
+   --dontwarn codes   Do not write warnings for these HTTP response codes
+   --enable-virtual   Use only virtual names, not IP numbers for servers
+   --language         Specify 2-letter language code for language negotiation
++  --username         Username for Novell Webconsole
++  --password         Password for Novell Webconsole
++
++Example for checking a Novell Webconsole:
++
++checkbot --cookies --url=http://webconsole.suse.de --username=schubi --password=system --ignore=http://webconsole.suse.de/accounts/logout
+ 
+ Options --match, --exclude, and --ignore can take a perl regular expression
+ as their argument\n
+diff -ruN checkbot-1.80-orig/checkbot.orig checkbot-1.80/checkbot.orig
+--- checkbot-1.80-orig/checkbot.orig	1970-01-01 01:00:00.000000000 +0100
++++ checkbot-1.80/checkbot.orig	2008-10-15 14:55:01.000000000 +0200
+@@ -0,0 +1,1516 @@
++#!/usr/bin/perl -w
++#
++# checkbot - A perl5 script to check validity of links in www document trees
++#
++# Hans de Graaff <hans@degraaff.org>, 1994-2005.
++# Based on Dimitri Tischenko, Delft University of Technology, 1994
++# Based on the testlinks script by Roy Fielding
++# With contributions from Bruce Speyer <bruce.speyer@elecomm.com>
++#
++# This application is free software; you can redistribute it and/or
++# modify it under the same terms as Perl itself.
++#
++# Info-URL: http://degraaff.org/checkbot/
++#
++# $Id: checkbot 238 2008-10-15 12:55:00Z graaff $
++# (Log information can be found at the end of the script)
++
++require 5.004;
++use strict;
++
++require LWP;
++use File::Basename;
++
++BEGIN {
++  eval "use Time::Duration qw(duration)";
++  $main::useduration = ($@ ? 0 : 1);
++}
++
++# Version information
++my
++$VERSION = '1.80';
++
++
++=head1 NAME
++
++Checkbot - WWW Link Verifier
++
++=head1 SYNOPSIS
++
++checkbot [B<--cookies>] [B<--debug>] [B<--file> file name] [B<--help>]
++         [B<--mailto> email addresses] [B<--noproxy> list of domains]
++         [B<--verbose>]
++         [B<--url> start URL]
++         [B<--match> match string] [B<--exclude> exclude string]
++         [B<--proxy> proxy URL] [B<--internal-only>]
++         [B<--ignore> ignore string]
++         [B<--filter> substitution regular expression]
++         [B<--style> style file URL]
++         [B<--note> note] [B<--sleep> seconds] [B<--timeout> timeout]
++         [B<--interval> seconds] [B<--dontwarn> HTTP responde codes]
++         [B<--enable-virtual>]
++         [B<--language> language code]
++         [B<--suppress> suppression file]
++         [start URLs]
++
++=head1 DESCRIPTION
++
++Checkbot verifies the links in a specific portion of the World Wide
++Web. It creates HTML pages with diagnostics.
++
++Checkbot uses LWP to find URLs on pages and to check them. It supports
++the same schemes as LWP does, and finds the same links that
++HTML::LinkExtor will find.
++
++Checkbot considers links to be either 'internal' or
++'external'. Internal links are links within the web space that needs
++to be checked. If an internal link points to a web document this
++document is retrieved, and its links are extracted and
++processed. External links are only checked to be working.  Checkbot
++checks links as it finds them, so internal and external links are
++checked at the same time, even though they are treated differently.
++
++Options for Checkbot are:
++
++=over 4
++
++=item --cookies
++
++Accept cookies from the server and offer them again at later
++requests. This may be useful for servers that use cookies to handle
++sessions. By default Checkbot does not accept any cookies.
++
++=item --debug
++
++Enable debugging mode. Not really supported anymore, but it will keep
++some files around that otherwise would be deleted.
++
++=item --file <file name>
++
++Use the file I<file name> as the basis for the summary file names. The
++summary page will get the I<file name> given, and the server pages are
++based on the I<file name> without the .html extension. For example,
++setting this option to C<index.html> will create a summary page called
++index.html and server pages called index-server1.html and
++index-server2.html.
++
++The default value for this option is C<checkbot.html>.
++
++=item --help
++
++Shows brief help message on the standard output.
++
++=item --mailto <email address>[,<email address>]
++
++Send mail to the I<email address> when Checkbot is done checking. You
++can give more than one address separated by commas. The notification
++email includes a small summary of the results. As of Checkbot 1.76
++email is only sent if problems have been found during the Checkbot
++run.
++
++=item --noproxy <list of domains>
++
++Do not proxy requests to the given domains. The list of domains must
++be a comma-separated list. For example, so avoid using the proxy for
++the localhost and someserver.xyz, you can use C<--noproxy
++localhost,someserver.xyz>.
++
++=item --verbose
++
++Show verbose output while running. Includes all links checked, results
++from the checks, etc.
++
++
++
++
++
++=item --url <start URL>
++
++Set the start URL. Checkbot starts checking at this URL, and then
++recursively checks all links found on this page. The start URL takes
++precedence over additional URLs specified on the command line.
++
++If no scheme is specified for the URL, the file protocol is assumed.
++
++=item --match <match string>
++
++This option selects which pages Checkbot considers local. If the
++I<match string> is contained within the URL, then Checkbot considers
++the page local, retrieves it, and will check all the links contained
++on it. Otherwise the page is considered external and it is only
++checked with a HEAD request.
++
++If no explicit I<match string> is given, the start URLs (See option
++C<--url>) will be used as a match string instead. In this case the
++last page name, if any, will be trimmed. For example, a start URL like
++C<http://some.site/index.html> will result in a default I<match
++string> of C<http://some.site/>.
++
++The I<match string> can be a perl regular expression.  For example, to
++check the main server page and all HTML pages directly underneath it,
++but not the HTML pages in the subdirectories of the server, the
++I<match string> would be C<www.someserver.xyz/($|[^/]+.html)>.
++
++=item --exclude <exclude string>
++
++URLs matching the I<exclude string> are considered to be external,
++even if they happen to match the I<match string> (See option
++C<--match>). URLs matching the --exclude string are still being
++checked and will be reported if problems are found, but they will not
++be checked for further links into the site.
++
++The I<exclude string> can be a perl regular expression. For example,
++to consider all URLs with a query string external, use C<[=\?]>. This
++can be useful when a URL with a query string unlocks the path to a
++huge database which will be checked.
++
++=item --filter <filter string>
++
++This option defines a I<filter string>, which is a perl regular
++expression. This filter is run on each URL found, thus rewriting the
++URL before it enters the queue to be checked. It can be used to remove
++elements from a URL. This option can be useful when symbolic links
++point to the same directory, or when a content management system adds
++session IDs to URLs.
++
++For example C</old/new/> would replace occurrences of 'old' with 'new'
++in each URL.
++
++=item --ignore <ignore string>
++
++URLs matching the I<ignore string> are not checked at all, they are
++completely ignored by Checkbot. This can be useful to ignore known
++problem links, or to ignore links leading into databases. The I<ignore
++string> is matched after the I<filter string> has been applied.
++
++The I<ignore string> can be a perl regular expression.
++
++For example C<www.server.com\/(one|two)> would match all URLs starting
++with either www.server.com/one or www.server.com/two.
++
++
++=item --proxy <proxy URL>
++
++This attribute specifies the URL of a proxy server. Only the HTTP and
++FTP requests will be sent to that proxy server.
++
++=item --internal-only
++
++Skip the checking of external links at the end of the Checkbot
++run. Only matching links are checked. Note that some redirections may
++still cause external links to be checked.
++
++=item --note <note>
++
++The I<note> is included verbatim in the mail message (See option
++C<--mailto>). This can be useful to include the URL of the summary HTML page
++for easy reference, for instance.
++
++Only meaningful in combination with the C<--mailto> option.
++
++=item --sleep <seconds>
++
++Number of I<seconds> to sleep in between requests. Default is 0
++seconds, i.e. do not sleep at all between requests. Setting this
++option can be useful to keep the load on the web server down while
++running Checkbot. This option can also be set to a fractional number,
++i.e. a value of 0.1 will sleep one tenth of a second between requests.
++
++=item --timeout <timeout>
++
++Default timeout for the requests, specified in seconds. The default is
++2 minutes.
++
++=item --interval <seconds>
++
++The maximum interval between updates of the results web pages in
++seconds. Default is 3 hours (10800 seconds). Checkbot will start the
++interval at one minute, and gradually extend it towards the maximum
++interval.
++
++=item --style <URL of style file>
++
++When this option is used, Checkbot embeds this URL as a link to a
++style file on each page it writes. This makes it easy to customize the
++layout of pages generated by Checkbot.
++
++=item --dontwarn <HTTP response codes regular expression>
++
++Do not include warnings on the result pages for those HTTP response
++codes which match the regular expression. For instance, --dontwarn
++"(301|404)" would not include 301 and 404 response codes.
++
++Checkbot uses the response codes generated by the server, even if this
++response code is not defined in RFC 2616 (HTTP/1.1). In addition to
++the normal HTTP response code, Checkbot defines a few response codes
++for situations which are not technically a problem, but which causes
++problems in many cases anyway. These codes are:
++
++  901 Host name expected but not found
++      In this case the URL supports a host name, but non was found
++      in the URL. This usually indicates a mistake in the URL. An
++      exception is that this check is not applied to news: URLs.
++
++  902 Unqualified host name found
++      In this case the host name does not contain the domain part.
++      This usually means that the pages work fine when viewed within
++      the original domain, but not when viewed from outside it.
++
++  903 Double slash in URL path
++      The URL has a double slash in it. This is legal, but some web
++      servers cannot handle it very well and may cause Checkbot to
++      run away. See also the comments below.
++
++  904 Unknown scheme in URL
++      The URL starts with a scheme that Checkbot does not know
++      about. This is often caused by mistyping the scheme of the URL,
++      but the scheme can also be a legal one. In that case please let
++      me know so that it can be added to Checkbot.
++
++=item --enable-virtual
++
++This option enables dealing with virtual servers. Checkbot then
++assumes that all hostnames for internal servers are unique, even
++though their IP addresses may be the same. Normally Checkbot uses the
++IP address to distinguish servers. This has the advantage that if a
++server has two names (e.g. www and bamboozle) its pages only get
++checked once. When you want to check multiple virtual servers this
++causes problems, which this feature works around by using the hostname
++to distinguish the server.
++
++=item --language
++
++The argument for this option is a two-letter language code. Checkbot
++will use language negotiation to request files in that language. The
++default is to request English language (language code 'en').
++
++=item --suppress
++
++The argument for this option is a file which contains combinations of
++error codes and URLs for which to suppress warnings. This can be used
++to avoid reporting of known and unfixable URL errors or warnings.
++
++The format of the suppression file is a simple whitespace delimited
++format, first listing the error code followed by the URL. Each error
++code and URL combination is listed on a new line. Comments can be
++added to the file by starting the line with a C<#> character.
++
++  # 301 Moved Permanently
++  301   http://www.w3.org/P3P
++  
++  # 403 Forbidden
++  403   http://www.herring.com/
++
++For further flexibility a regular expression can be used instead of a
++normal URL. The regular expression must be enclosed with forward
++slashes. For example, to suppress all 403 errors on wikipedia:
++
++  403   /http:\/\/wikipedia.org\/.*/
++
++=back
++
++Deprecated options which will disappear in a future release:
++
++=over
++
++=item --allow-simple-hosts (deprecated)
++
++This option turns off warnings about URLs which contain unqualified
++host names. This is useful for intranet sites which often use just a
++simple host name or even C<localhost> in their links.
++
++Use of this option is deprecated. Please use the --dontwarn mechanism
++for error 902 instead.
++
++=back
++
++
++=head1 HINTS AND TIPS
++
++=over
++
++=item Problems with checking FTP links
++
++Some users may experience consistent problems with checking FTP
++links. In these cases it may be useful to instruct Net::FTP to use
++passive FTP mode to check files. This can be done by setting the
++environment variable FTP_PASSIVE to 1. For example, using the bash
++shell: C<FTP_PASSIVE=1 checkbot ...>. See the Net::FTP documentation
++for more details.
++
++=item Run-away Checkbot
++
++In some cases Checkbot literally takes forever to finish. There are two
++common causes for this problem.
++
++First, there might be a database application as part of the web site
++which generates a new page based on links on another page. Since
++Checkbot tries to travel through all links this will create an
++infinite number of pages. This kind of run-away effect is usually predictable. It can be avoided by using the --exclude option.
++
++Second, a server configuration problem can cause a loop in generating
++URLs for pages that really do not exist. This will result in URLs of
++the form http://some.server/images/images/images/logo.png, with ever
++more 'images' included. Checkbot cannot check for this because the
++server should have indicated that the requested pages do not
++exist. There is no easy way to solve this other than fixing the
++offending web server or the broken links.
++
++=item Problems with https:// links
++
++The error message
++
++  Can't locate object method "new" via package "LWP::Protocol::https::Socket"
++
++usually means that the current installation of LWP does not support
++checking of SSL links (i.e. links starting with https://). This
++problem can be solved by installing the Crypt::SSLeay module.
++
++=back
++
++=head1 EXAMPLES
++
++The most simple use of Checkbot is to check a set of pages on a
++server. To check my checkbot pages I would use:
++
++    checkbot http://degraaff.org/checkbot/
++
++Checkbot runs can take some time so Checkbot can send a notification
++mail when the run is done:
++
++    checkbot --mailto hans@degraaff.org http://degraaff.org/checkbot/
++
++It is possible to check a set of local file without using a web
++server. This only works for static files but may be useful in some
++cases.
++
++    checkbot file:///var/www/documents/
++
++=head1 PREREQUISITES
++
++This script uses the C<LWP> modules.
++
++=head1 COREQUISITES
++
++This script can send mail when C<Mail::Send> is present.
++
++=head1 AUTHOR
++
++Hans de Graaff <hans@degraaff.org>
++
++=pod OSNAMES
++
++any
++
++=cut
++
++# Declare some global variables, avoids ugly use of main:: all around
++my %checkbot_errors = ('901' => 'Host name expected but not found',
++		       '902' => 'Unqualified host name in URL',
++		       '903' => 'URL contains double slash in URL',
++		       '904' => 'Unknown scheme in URL',
++		      );
++
++my @starturls = ();
++
++# Two hashes to store the response to a URL, and all the parents of the URL
++my %url_error = ();
++my %url_parent = ();
++
++# Hash for storing the title of a URL for use in reports. TODO: remove
++# this and store title as part of queue.
++my %url_title = ();
++
++# Hash for suppressions, which are defined as a combination of code and URL
++my %suppression = ();
++
++# Hash to store statistics on link checking
++my %stats = ('todo' => 0,
++	     'link' => 0,
++	     'problem' => 0 );
++
++# Options hash (to be filled by GetOptions)
++my %options = ();
++
++# Keep track of start time so that we can use it in reports
++my $start_time = time();
++
++# If on a Mac we should ask for the arguments through some MacPerl stuff
++if ($^O eq 'MacOS') {
++  $main::mac_answer = eval "MacPerl::Ask('Enter Command-Line Options')";
++  push(@ARGV, split(' ', $main::mac_answer));
++}
++
++# Prepare
++check_options();
++init_modules();
++init_globals();
++init_suppression();
++
++# Start actual application
++check_links();
++
++# Finish up
++create_page(1);
++send_mail() if defined $main::opt_mailto and $stats{problem} > 0;
++
++exit 0;
++
++# output prints stuff on stderr if --verbose, and takes care of proper
++# indentation
++sub output {
++  my ($line, $level) = @_;
++
++  return unless $main::opt_verbose;
++
++  chomp $line;
++
++  my $indent = '';
++
++  if (defined $level) {
++    while ($level-- > 0) {
++    $indent .= '    ';
++    }
++  }
++
++  print STDERR $indent, $line, "\n";
++}
++
++### Initialization and setup routines
++
++sub check_options {
++
++  # Get command-line arguments
++  use Getopt::Long;
++  my $result = GetOptions(qw(cookies debug help noproxy=s verbose url=s match=s exclude|x=s file=s filter=s style=s ignore|z=s mailto|M=s note|N=s proxy=s internal-only sleep=f timeout=i interval=i dontwarn=s enable-virtual language=s allow-simple-hosts suppress=s));
++
++  # Handle arguments, some are mandatory, some have defaults
++  &print_help if (($main::opt_help && $main::opt_help)
++                  || (!$main::opt_url && $#ARGV == -1));
++  $main::opt_timeout = 120 unless defined($main::opt_timeout) && length($main::opt_timeout);
++  $main::opt_verbose = 0 unless $main::opt_verbose;
++  $main::opt_sleep = 0 unless defined($main::opt_sleep) && length($main::opt_sleep);
++  $main::opt_interval = 10800 unless defined $main::opt_interval and length $main::opt_interval;
++  $main::opt_dontwarn = "xxx" unless defined $main::opt_dontwarn and length $main::opt_dontwarn;
++  $main::opt_enable_virtual = 0 unless defined $main::opt_enable_virtual;
++  # Set the default language and make sure it is a two letter, lowercase code
++  $main::opt_language = 'en' unless defined $main::opt_language;
++  $main::opt_language = lc(substr($main::opt_language, 0, 2));
++  $main::opt_language =~ tr/a-z//cd;
++  if ($main::opt_language !~ /[a-z][a-z]/) {
++    warn "Argument --language $main::opt_language is not a valid language code\nUsing English as a default.\n";
++    $main::opt_language = 'en';
++  }
++  $main::opt_allow_simple_hosts = 0
++	  unless $main::opt_allow_simple_hosts;
++  output "--allow-simple-hosts is deprecated, please use the --dontwarn mechanism", 0 if $main::opt_allow_simple_hosts;
++
++  # The default for opt_match will be set later, because we might want
++  # to muck with opt_url first.
++
++  # Display messages about the options
++  output "*** Starting Checkbot $VERSION in verbose mode";
++  output 'Will skip checking of external links', 1
++    if $main::opt_internal_only;
++  output "Allowing unqualified host names", 1
++    if $main::opt_allow_simple_hosts;
++  output "Not using optional Time::Duration module: not found", 1
++	unless $main::useduration;
++}
++
++sub init_modules {
++
++  use URI;
++  # Prepare the user agent to be used:
++  use LWP::UserAgent;
++  use LWP::MediaTypes;
++  #use LWP::Debug qw(- +debug);
++  use HTML::LinkExtor;
++  $main::ua = new LWP::UserAgent;
++  $main::ua->agent("Checkbot/$VERSION LWP/" . LWP::Version);
++  $main::ua->timeout($main::opt_timeout);
++  # Add a proxy to the user agent, if defined
++  $main::ua->proxy(['http', 'ftp'], $main::opt_proxy)
++    if defined($main::opt_proxy);
++  $main::ua->no_proxy(split(',', $main::opt_noproxy))
++    if defined $main::opt_noproxy;
++  # Add a cookie jar to the UA if requested by the user
++  $main::ua->cookie_jar( {} )
++    if defined $main::opt_cookies or $main::opt_cookies;
++
++  require Mail::Send if defined $main::opt_mailto;
++
++  use HTTP::Status;
++}
++
++sub init_globals {
++  my $url;
++
++  # Directory and files for output
++  if ($main::opt_file) {
++    $main::file = $main::opt_file;
++    $main::file =~ /(.*)\./;
++    $main::server_prefix = $1;
++  } else {
++    $main::file = "checkbot.html";
++    $main::server_prefix = "checkbot";
++  }
++  $main::tmpdir = ($ENV{'TMPDIR'} or $ENV{'TMP'} or $ENV{'TEMP'} or "/tmp") . "/Checkbot.$$";
++
++  $main::cur_queue  = $main::tmpdir . "/queue";
++  $main::new_queue  = $main::tmpdir . "/queue-new";
++
++  # Make sure we catch signals so that we can clean up temporary files
++  $SIG{'INT'} = $SIG{'TERM'} = $SIG{'HUP'} = $SIG{'QUIT'} = \&got_signal;
++
++  # Set up hashes to be used
++  %main::checked = ();
++  %main::servers = ();
++  %main::servers_get_only = ();
++
++  # Initialize the start URLs. --url takes precedence. Otherwise
++  # just process URLs in order as they appear on the command line.
++  unshift(@ARGV, $main::opt_url) if $main::opt_url;
++  foreach (@ARGV) {
++    $url = URI->new($_);
++    # If no scheme is defined we will assume file is used, so that
++    # it becomes easy to check a single file.
++    $url->scheme('file') unless defined $url->scheme;
++    $url->host('localhost') if $url->scheme eq 'file';
++    if (!defined $url->host) {
++      warn "No host specified in URL $url, ignoring it.\n";
++      next;
++    }
++    push(@starturls, $url);
++  }
++  die "There are no valid starting URLs to begin checking with!\n"
++    if scalar(@starturls) == -1;
++
++  # Set the automatic matching expression to a concatenation of the starturls
++  if (!defined $main::opt_match) {
++    my @matchurls;
++    foreach my $url (@starturls) {
++      # Remove trailing files from the match, e.g. remove index.html
++      # stuff so that we match on the host and/or directory instead,
++      # but only if there is a path component in the first place.
++      my $matchurl = $url->as_string;
++      $matchurl =~ s!/[^/]+$!/! unless $url->path eq '';
++      push(@matchurls, quotemeta $matchurl);
++    }
++    $main::opt_match = '^(' . join('|', @matchurls) . ')';
++    output "--match defaults to $main::opt_match";
++  }
++
++  # Initialize statistics hash with number of start URLs
++  $stats{'todo'} = scalar(@starturls);
++
++  # We write out our status every now and then.
++  $main::cp_int = 1;
++  $main::cp_last = 0;
++}
++
++sub init_suppression {
++  return if not defined $main::opt_suppress;
++
++  die "Suppression file \"$main::opt_suppress\" is in fact a directory"
++	if -d $main::opt_suppress;
++
++  open(SUPPRESSIONS, $main::opt_suppress)
++    or die "Unable to open $main::opt_suppress for reading: $!\n";
++  while (my $line = <SUPPRESSIONS>) {
++    chomp $line;
++    next if $line =~ /^#/ or $line =~ /^\s*$/;
++
++    if ($line !~ /^\s*(\d+)\s+(\S+)/) {
++      output "WARNING: Unable to parse line in suppression file $main::opt_suppress:\n    $line\n";
++    } else {
++      output "Suppressed: $1 $2\n" if $main::opt_verbose;
++      $suppression{$1}{$2} = $2;
++    }
++  }
++  close SUPPRESSIONS;
++}
++
++
++
++
++### Main application code
++
++sub check_links {
++  my $line;
++
++  mkdir $main::tmpdir, 0755
++    || die "$0: unable to create directory $main::tmpdir: $!\n";
++
++  # Explicitly set the record separator. I had the problem that this
++  # was not defined under my perl 5.00502. This should fix that, and
++  # not cause problems for older versions of perl.
++  $/ = "\n";
++
++  open(CURRENT, ">$main::cur_queue")
++    || die "$0: Unable to open CURRENT $main::cur_queue for writing: $!\n";
++  open(QUEUE, ">$main::new_queue")
++    || die "$0: Unable to open QUEUE $main::new_queue for writing: $!\n";
++
++  # Prepare CURRENT queue with starting URLs
++  foreach (@starturls) {
++    print CURRENT $_->as_string . "|\n";
++  }
++  close CURRENT;
++
++  open(CURRENT, $main::cur_queue)
++    || die "$0: Unable to open CURRENT $main::cur_queue for reading: $!\n";
++
++  do {
++    # Read a line from the queue, and process it
++    while (defined ($line = <CURRENT>) ) {
++      chomp($line);
++      &handle_url($line);
++      &check_point();
++    }
++
++    # Move queues around, and try again, but only if there are still
++    # things to do
++    output "*** Moving queues around, " . $stats{'todo'} . " links to do.";
++    close CURRENT
++      or warn "Error while closing CURRENT filehandle: $!\n";
++    close QUEUE;
++
++    # TODO: should check whether these succeed
++    unlink($main::cur_queue);
++    rename($main::new_queue, $main::cur_queue);
++
++    open(CURRENT, "$main::cur_queue") 
++      || die "$0: Unable to open $main::cur_queue for reading: $!\n";
++    open(QUEUE, ">$main::new_queue") 
++      || die "$0: Unable to open $main::new_queue for writing: $!\n";
++
++  } while (not -z $main::cur_queue);
++
++  close CURRENT;
++  close QUEUE;
++
++  unless (defined($main::opt_debug)) {
++    clean_up();
++  }
++}
++
++sub clean_up {
++  unlink $main::cur_queue, $main::new_queue;
++  rmdir $main::tmpdir;
++  output "Removed temporary directory $main::tmpdir and its contents.\n", 1;
++}
++
++sub got_signal {
++  my ($signalname) = @_;
++
++  clean_up() unless defined $main::opt_debug;
++
++  print STDERR "Caught SIG$signalname.\n";
++  exit 1;
++}
++
++# Whether URL is 'internal' or 'external'
++sub is_internal ($) {
++  my ($url) = @_;
++
++  return ( $url =~ /$main::opt_match/o
++	   and not (defined $main::opt_exclude and $url =~ /$main::opt_exclude/o));
++}
++
++
++sub handle_url {
++  my ($line) = @_;
++  my ($urlstr, $urlparent) = split(/\|/, $line);
++
++  my $reqtype;
++  my $response;
++  my $type;
++
++  $stats{'todo'}--;
++
++  # Add this URL to the ones we've seen already, return if it is a
++  # duplicate.
++  return if add_checked($urlstr);
++
++  $stats{'link'}++;
++
++  # Is this an external URL and we only check internal stuff?
++  return if defined $main::opt_internal_only
++    and not is_internal($urlstr);
++
++  my $url = URI->new($urlstr);
++
++  # Perhaps this is a URL we are not interested in checking...
++  if (not defined($url->scheme) 
++      or $url->scheme !~ /^(https?|file|ftp|gopher|nntp)$/o ) {
++    # Ignore URLs which we know we can ignore, create error for others
++    if ($url->scheme =~ /^(news|mailto|javascript|mms)$/o) {
++      output "Ignore $url", 1;
++    } else {
++      add_error($urlstr, $urlparent, 904, "Unknown scheme in URL: "
++				. $url->scheme);
++    }
++    return;
++  }
++
++  # Guess/determine the type of document we might retrieve from this
++  # URL. We do this because we only want to use a full GET for HTML
++  # document. No need to retrieve images, etc.
++  if ($url->path =~ /\/$/o || $url->path eq "") {
++    $type = 'text/html';
++  } else {
++    $type = guess_media_type($url->path);
++  }
++  # application/octet-stream is the fallback of LWP's guess stuff, so
++  # if we get this then we ask the server what we got just to be sure.
++  if ($type eq 'application/octet-stream') {
++    $response = performRequest('HEAD', $url, $urlparent, $type, $main::opt_language);
++    $type = $response->content_type;
++  }
++
++  # Determine if this is a URL we should GET fully or partially (using HEAD)
++  if ($type =~ /html/o
++      && $url->scheme =~ /^(https?|file|ftp|gopher)$/o
++      and is_internal($url->as_string)
++      && (!defined $main::opt_exclude || $url !~ /$main::opt_exclude/o)) {
++    $reqtype = 'GET';
++  } else {
++    $reqtype = 'HEAD';
++  }
++
++  # Get the document, unless we already did while determining the type
++  $response = performRequest($reqtype, $url, $urlparent, $type, $main::opt_language)
++    unless defined($response) and $reqtype eq 'HEAD';
++
++  # Ok, we got something back from checking, let's see what it is
++  if ($response->is_success) {
++    select(undef, undef, undef, $main::opt_sleep)
++      unless $main::opt_debug || $url->scheme eq 'file';
++
++    # Internal HTML documents need to be given to handle_doc for processing
++	if ($reqtype eq 'GET' and is_internal($url->as_string)) {
++	  handle_doc($response, $urlstr);
++	}
++  } else {
++
++    # Right, so it wasn't the smashing succes we hoped for, so bring
++    # the bad news and store the pertinent information for later
++    add_error($url, $urlparent, $response->code, $response->message);
++
++    if ($response->is_redirect and is_internal($url->as_string)) {
++      if ($response->code == 300) {  # multiple choices, but no redirection available
++	output 'Multiple choices', 2;
++      } else {
++	my $baseURI = URI->new($url);
++	if (defined $response->header('Location')) {
++	  my $redir_url = URI->new_abs($response->header('Location'), $baseURI);
++	  output "Redirected to $redir_url", 2;
++	  add_to_queue($redir_url, $urlparent);
++	  $stats{'todo'}++;
++	} else {
++	  output 'Location header missing from redirect response', 2;
++	}
++      }
++    }
++  }
++  # Done with this URL
++}
++
++sub performRequest {
++  my ($reqtype, $url, $urlparent, $type, $language) = @_;
++
++  my ($response);
++
++  # A better solution here would be to use GET exclusively. Here is how
++  # to do that. We would have to set this max_size thing in
++  # check_external, I guess...
++  # Set $ua->max_size(1) and then try a normal GET request. However,
++  # that doesn't always work as evidenced by an FTP server that just
++  # hangs in this case... Needs more testing to see if the timeout
++  # catches this.
++
++  # Normally, we would only need to do a HEAD, but given the way LWP
++  # handles gopher requests, we need to do a GET on those to get at
++  # least a 500 and 501 error. We would need to parse the document
++  # returned by LWP to find out if we had problems finding the
++  # file. -- Patch by Bruce Speyer <bspeyer@texas-one.org>
++
++  # We also need to do GET instead of HEAD if we know the remote
++  # server won't accept it.  The standard way for an HTTP server to
++  # indicate this is by returning a 405 ("Method Not Allowed") or 501
++  # ("Not Implemented").  Other circumstances may also require sending
++  # GETs instead of HEADs to a server.  Details are documented below.
++  # -- Larry Gilbert <larry@n2h2.com>
++
++  # Normally we try a HEAD request first, then a GET request if
++  # needed. There may be circumstances in which we skip doing a HEAD
++  # (e.g. when we should be getting the whole document).
++  foreach my $try ('HEAD', 'GET') {
++
++    # Skip trying HEAD when we know we need to do a GET or when we
++    # know only a GET will work anyway.
++    next if $try eq 'HEAD' and
++      ($reqtype eq 'GET'
++       or $url->scheme eq 'gopher'
++       or (defined $url->authority and $main::servers_get_only{$url->authority}));
++
++    # Output what we are going to do with this link
++    output(sprintf("%4s %s (%s)\n", $try, $url, $type), 1);
++
++    # Create the request with all appropriate headers
++    my %header_hash = ( 'Referer' => $urlparent );
++    if (defined($language) && ($language ne '')) {
++      $header_hash{'Accept-Language'} = $language;
++    }
++    my $ref_header = new HTTP::Headers(%header_hash);
++    my $request = new HTTP::Request($try, $url, $ref_header);
++    $response = $main::ua->simple_request($request);
++
++    # If we are doing a HEAD request we need to make sure nothing
++    # fishy happened. we use some heuristics to see if we are ok, or
++    # if we should try again with a GET request.
++    if ($try eq 'HEAD') {
++
++      # 400, 405, 406 and 501 are standard indications that HEAD
++      # shouldn't be used
++	  # We used to check for 403 here also, but according to the HTTP spec
++      # a 403 indicates that the server understood us fine but really does
++	  # not want us to see the page, so we SHOULD NOT retry.
++      if ($response->code =~ /^(400|405|406|501)$/o) {
++		output "Server does not seem to like HEAD requests; retrying", 2;
++		$main::servers_get_only{$url->authority}++;
++		next;
++      };
++
++	  # There are many servers out there that have real trouble with
++	  # HEAD, so if we get a 500 Internal Server error just retry with
++	  # a GET request to get an authoritive answer. We used to do this
++	  # only for special cases, but the list got big and some
++	  # combinations (e.g. Zope server behind Apache proxy) can't
++	  # easily be detected from the headers.
++	  if ($response->code =~ /^500$/o) {
++		output "Internal server error on HEAD request; retrying with GET", 2;
++		$main::servers_get_only{$url->authority}++ if defined $url->authority;
++		next;
++	  }
++
++      # If we know the server we can try some specific heuristics
++      if (defined $response->server) {
++
++		# Netscape Enterprise has been seen returning 500 and even 404
++		# (yes, 404!!) in response to HEAD requests
++		if ($response->server =~ /^Netscape-Enterprise/o
++			and $response->code =~ /^404$/o) {
++		  output "Unreliable Netscape-Enterprise response to HEAD request; retrying", 2;
++		  $main::servers_get_only{$url->authority}++;
++		  next;
++		};
++	  }
++
++      # If a HEAD request resulted in nothing noteworthy, no need for
++      # any further attempts using GET, we are done.
++      last;
++    }
++  }
++
++  return $response;
++}
++
++
++# This routine creates a (temporary) WWW page based on the current
++# findings This allows somebody to monitor the process, but is also
++# convenient when this program crashes or waits because of diskspace
++# or memory problems
++
++sub create_page {
++    my($final_page) = @_;
++
++    my $path = "";
++    my $prevpath = "";
++    my $prevcode = 0;
++    my $prevmessage = "";
++
++    output "*** Start writing results page";
++
++    open(OUT, ">$main::file.new") 
++	|| die "$0: Unable to open $main::file.new for writing:\n";
++    print OUT "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n";
++    print OUT "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n";
++    print OUT "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\n";
++    print OUT "<head>\n";
++    if (!$final_page) {
++      printf OUT "<meta http-equiv=\"Refresh\" content=\"%d\" />\n",
++      int($main::cp_int * 60 / 2 - 5);
++    }
++
++    print OUT "<title>Checkbot report</title>\n";
++    print OUT "<link rel=\"stylesheet\" type=\"text/css\" href=\"$main::opt_style\" />\n" if defined $main::opt_style;
++    print OUT "</head>\n";
++    print OUT "<body>\n";
++    print OUT "<h1><em>Checkbot</em>: main report</h1>\n";
++
++    # Show the status of this checkbot session
++    print OUT "<table summary=\"Status of this Checkbot session\" class='status'><tr><th>Status:</th><td>";
++    if ($final_page) {
++      print OUT "Done.<br />\n";
++      print OUT 'Run started on ' . localtime($start_time) . ".<br />\n";
++      print OUT 'Run duration ', duration(time() - $start_time), ".\n"
++	if $main::useduration;
++    } else {
++      print OUT "Running since " . localtime($start_time) . ".<br />\n";
++      print OUT "Last update at ". localtime() . ".<br />\n";
++      print OUT "Next update in <strong>", int($main::cp_int), "</strong> minutes.\n";
++    }
++    print OUT "</td></tr></table>\n\n";
++
++    # Summary (very brief overview of key statistics)
++    print OUT "<hr /><h2 class='summary'>Report summary</h2>\n";
++
++    print OUT "<table summary=\"Report summary\" class='summary'>\n";
++    print OUT "<tr id='checked'><th>Links checked</th><td class='value'>", $stats{'link'}, "</td></tr>\n";
++    print OUT "<tr id='problems'><th>Problems so far</th><td class='value'>", $stats{'problem'}, "</td></tr>\n";
++    print OUT "<tr id='todo'><th>Links to do</th><td class='value'>", $stats{'todo'}, "</td></tr>\n";
++    print OUT "</table>\n";
++
++    # Server information
++    printAllServers($final_page);
++
++    # Checkbot session parameters
++    print OUT "<hr /><h2 class='params'>Checkbot session parameters</h2>\n";
++    print OUT "<table summary=\"Checkbot session parameters\" class='params'>\n";
++    print OUT "<tr><th align=\"left\">--url &amp;<br/> &lt;command line urls&gt;</th><td class='text'>Start URL(s)</td><td class='value' id='url'>",
++              join(',', @starturls), "</td></tr>\n";
++    print OUT "<tr><th align=\"left\">--match</th><td class='text'>Match regular expression</td><td class='value' id='match'>$main::opt_match</td></tr>\n";
++    print OUT "<tr><th align=\"left\">--exclude</th><td class='text'>Exclude regular expression</td><td class='value' id='exclude'>$main::opt_exclude</td></tr>\n" if defined $main::opt_exclude;
++    print OUT "<tr><th align=\"left\">--filter</th><td class='text'>Filter regular expression</td><td class='value' id='filter'>$main::opt_filter</td></tr>\n" if defined $main::opt_filter;
++    print OUT "<tr><th align=\"left\">--noproxy</th><td class='text'>No Proxy for the following domains</td><td class='value' id='noproxy'>$main::opt_noproxy</td></tr>\n" if defined $main::opt_noproxy;
++    print OUT "<tr><th align=\"left\">--ignore</th><td class='text'>Ignore regular expression</td><td class='value' id='ignore'>$main::opt_ignore</td></tr>\n" if defined $main::opt_ignore;
++    print OUT "<tr><th align=\"left\">--suppress</th><td class='text'>Suppress error code and URL specified by</td><td class='value' id='suppress'>$main::opt_suppress</td></tr>\n" if defined $main::opt_suppress;
++    print OUT "<tr><th align=\"left\">--dontwarn</th><td class='text'>Don't warn for these codes</td><td class='value' id='dontwarn'>$main::opt_dontwarn</td></tr>\n" if $main::opt_dontwarn ne 'xxx';
++    print OUT "<tr><th align=\"left\">--enable-virtual</th><td class='text'>Use virtual names only</td><td class='value' id='enable_virtual'>yes</td></tr>\n" if $main::opt_enable_virtual;
++    print OUT "<tr><th align=\"left\">--internal-only</th><td class='text'>Check only internal links</td><td class='value' id='internal_only'>yes</td></tr>\n" if defined $main::opt_internal_only;
++    print OUT "<tr><th align=\"left\">--cookies</th><td class='text'>Accept cookies</td><td class='value' id='cookies'>yes</td></tr>\n" if defined $main::opt_cookies;
++    print OUT "<tr><th align=\"left\">--sleep</th><td class='text'>Sleep seconds between requests</td><td class='value' id='sleep'>$main::opt_sleep</td></tr>\n" if ($main::opt_sleep != 0);
++    print OUT "<tr><th align=\"left\">--timeout</th><td class='text'>Request timeout seconds</td><td class='value' id='timeout'>$main::opt_timeout</td></tr>\n";
++    print OUT "</table>\n";
++
++    # Statistics for types of links
++
++    print OUT signature();
++
++    close(OUT);
++
++    rename($main::file, $main::file . ".bak");
++    rename($main::file . ".new", $main::file);
++
++    unlink $main::file . ".bak" unless $main::opt_debug;
++
++    output "*** Done writing result page";
++}
++
++# Create a list of all the servers, and create the corresponding table
++# and subpages. We use the servers overview for this. This can result
++# in strange effects when the same server (e.g. IP address) has
++# several names, because several entries will appear. However, when
++# using the IP address there are also a number of tricky situations,
++# e.g. with virtual hosting. Given that likely the servers have
++# different names for a reasons, I think it is better to have
++# duplicate entries in some cases, instead of working off of the IP
++# addresses.
++
++sub printAllServers {
++  my ($finalPage) = @_;
++
++  my $server;
++  print OUT "<hr /><h2 class='overview'>Overview per server</h2>\n";
++  print OUT "<table summary=\"Overview per server\" class='overview'><tr><th>Server</th><th>Server<br />Type</th><th>Documents<br />scanned</th><th>Problem<br />links</th><th>Ratio</th></tr>\n";
++
++  foreach $server (sort keys %main::servers) {
++    print_server($server, $finalPage);
++  }
++  print OUT "</table>\n\n";
++}
++
++sub get_server_type {
++  my($server) = @_;
++
++  my $result;
++
++  if ( ! defined($main::server_type{$server})) {
++    if ($server eq 'localhost') {
++      $result = 'Direct access through filesystem';
++    } else {
++      my $request = new HTTP::Request('HEAD', "http://$server/");
++      my $response = $main::ua->simple_request($request);
++      $result = $response->header('Server');
++    }
++    $result = "Unknown server type" if ! defined $result or $result eq "";
++    output "=== Server $server is a $result";
++    $main::server_type{$server} = $result;
++  }
++  $main::server_type{$server};
++}
++
++sub add_checked {
++  my($urlstr) = @_;
++  my $item;
++  my $result = 0;
++
++  if (is_internal($urlstr) and not $main::opt_enable_virtual) {
++    # Substitute hostname with IP-address. This keeps us from checking
++    # the same pages for each name of the server, wasting time & resources.
++    # Only do this if we are not dealing with virtual servers. Also, we
++    # only do this for internal servers, because it makes no sense for
++    # external links.
++    my $url = URI->new($urlstr);
++    $url->host(ip_address($url->host)) if $url->can('host');
++    $urlstr = $url->as_string;
++  }
++
++  if (defined $main::checked{$urlstr}) {
++    $result = 1;
++    $main::checked{$urlstr}++;
++  } else {
++    $main::checked{$urlstr} = 1;
++  }
++
++  return $result;
++}
++
++# Has this URL already been checked?
++sub is_checked {
++  my ($urlstr) = @_;
++
++  if (is_internal($urlstr) and not $main::opt_enable_virtual) {
++    # Substitute hostname with IP-address. This keeps us from checking
++    # the same pages for each name of the server, wasting time & resources.
++    # Only do this if we are not dealing with virtual servers. Also, we
++    # only do this for internal servers, because it makes no sense for
++    # external links.
++    my $url = URI->new($urlstr);
++    $url->host(ip_address($url->host)) if $url->can('host');
++    $urlstr = $url->as_string;
++  }
++
++  return defined $main::checked{$urlstr};
++}
++
++sub add_error ($$$$) {
++  my ($url, $urlparent, $code, $status) = @_;
++
++  # Check for the quick eliminations first
++  return if $code =~ /$main::opt_dontwarn/o
++    or defined $suppression{$code}{$url};
++
++  # Check for matches on the regular expressions in the supression file
++  if (defined $suppression{$code}) {
++	foreach my $item ( %{$suppression{$code}} ) {
++	  if ($item =~ /^\/(.*)\/$/) {
++		my $regexp = $1;
++		if ($url =~ $regexp) {
++		  output "Supressing error $code for $url due to regular expression match on $regexp", 2;
++		  return;
++		}
++	  }
++	}
++  }
++
++  $status = checkbot_status_message($code) if not defined $status;
++
++  output "$code $status", 2;
++
++  $url_error{$url}{'code'} = $code;
++  $url_error{$url}{'status'} = $status;
++  push @{$url_parent{$url}}, $urlparent;
++  $stats{'problem'}++;
++}
++
++# Parse document, and get the links
++sub handle_doc {
++  my ($response, $urlstr) = @_;
++
++  my $num_links = 0;
++  my $new_links = 0;
++
++  # TODO: we are making an assumption here that the $reponse->base is
++  # valid, which might not always be true! This needs to be fixed, but
++  # first let's try to find out why this stuff is sometimes not
++  # valid... Aha. a simple <base href="news:"> will do the trick. It is
++  # not clear what the right fix for this is.
++
++  # We use the URL we used to retrieve this document as the URL to
++  # attach the problem reports to, even though this may not be the
++  # proper base url.
++  my $baseurl = URI->new($urlstr);
++
++  # When we received the document we can add a notch to its server
++  $main::servers{$baseurl->authority}++;
++
++  # Retrieve useful information from this document.
++  # TODO: using a regexp is NOT how this should be done, but it is
++  # easy. The right way would be to write a HTML::Parser or to use
++  # XPath on the document DOM provided that the document is easily
++  # parsed as XML. Either method is a lot of overhead.
++  if ($response->content =~ /title\>(.*?)\<\/title/si) {
++
++	# TODO: using a general hash that stores titles for all pages may
++	# consume too much memory. It would be better to only store the
++	# titles for requests that had problems. That requires passing them
++	# down to the queue. Take the easy way out for now.
++	$url_title{$baseurl} = $1;
++  }
++
++  # Check if this document has a Robots META tag. If so, check if
++  # Checkbot is allowed to FOLLOW the links on this page. Note that we
++  # ignore the INDEX directive because Checkbot is not an indexing
++  # robot. See http://www.robotstxt.org/wc/meta-user.html
++  # TODO: one more reason (see title) to properly parse this document...
++  if ($response->content =~ /\<meta[^\>]*?robots[^\>]*?nofollow[^\>]*?\>/si) {
++	output "Obeying robots meta tag $&, skipping document", 2;
++	return;
++  }
++
++
++  # Parse the document just downloaded, using the base url as defined
++  # in the response, otherwise we won't get the same behavior as
++  # browsers and miss things like a BASE url in pages.
++  my $p = HTML::LinkExtor->new(undef, $response->base);
++
++  # If charset information is missing then decoded_content doesn't
++  # work. Fall back to content in this case, even though that may lead
++  # to charset warnings. See bug 1665075 for reference.
++  my $content = $response->decoded_content || $response->content;
++  $p->parse($content);
++  $p->eof;
++
++  # Deal with the links we found in this document
++  my @links = $p->links();
++  foreach (@links) {
++    my ($tag, %l) = @{$_};
++    foreach (keys %l) {
++      # Get the canonical URL, so we don't need to worry about base, case, etc.
++      my $url = $l{$_}->canonical;
++
++      # Remove fragments, if any
++      $url->fragment(undef);
++
++      # Determine in which tag this URL was found
++      # Ignore <base> tags because they need not point to a valid URL
++      # in order to work (e.g. when directory indexing is turned off).
++      next if $tag eq 'base';
++
++	  # Skip some 'links' that are not required to link to an actual
++	  # live link but which LinkExtor returns as links anyway.
++	  next if $tag eq 'applet' and $_ eq 'code';
++	  next if $tag eq 'object' and $_ eq 'classid';
++
++      # Run filter on the URL if defined
++      if (defined $main::opt_filter) {
++	die "Filter supplied with --filter option contains errors!\n$@\n"
++	  unless defined eval '$url =~ s' . $main::opt_filter
++      }
++
++      # Should we ignore this URL?
++      if (defined $main::opt_ignore and $url =~ /$main::opt_ignore/o) {
++	output "--ignore: $url", 1;
++	next;
++      }
++
++      # Check whether URL has fully-qualified hostname
++      if ($url->can('host') and $url->scheme ne 'news') {
++        if (! defined $url->host) {
++		  add_error($url, $baseurl->as_string, '901',
++					$checkbot_errors{'901'});
++        } elsif (!$main::opt_allow_simple_hosts && $url->host !~ /\./) {
++		  add_error($url, $baseurl->as_string, '902',
++					$checkbot_errors{'902'});
++        }
++      }
++
++      # Some servers do not process // correctly in requests for relative
++      # URLs. We should flag them here. Note that // in a URL path is
++      # actually valid per RFC 2396, and that they should not be removed
++      # when processing relative URLs as per RFC 1808. See
++      # e.g. <http://deesse.univ-lemans.fr:8003/Connected/RFC/1808/18.html>.
++      # Thanks to Randal Schwartz and Reinier Post for their explanations.
++      if ($url =~ /^http:\/\/.*\/\//) {
++		add_error($url, $baseurl->as_string, '903',
++				  $checkbot_errors{'903'});
++      }
++
++      # We add all URLs found to the queue, unless we already checked
++      # it earlier
++      if (is_checked($url)) {
++
++		# If an error has already been logged for this URL we add the
++		# current parent to the list of parents on which this URL
++		# appears.
++		if (defined $url_error{$url}) {
++		  push @{$url_parent{$url}}, $baseurl->as_string;
++		  $stats{'problem'}++;
++		}
++	
++		$stats{'link'}++;
++      } else {
++		add_to_queue($url, $baseurl);
++		$stats{'todo'}++;
++		$new_links++;
++      }
++      $num_links++;
++    }
++  }
++  output "Got $num_links links ($new_links new) from document", 2;
++}
++
++
++sub add_to_queue {
++  my ($url, $parent) = @_;
++
++  print QUEUE $url . '|' . $parent . "\n";
++}
++
++sub checkbot_status_message ($) {
++  my ($code) = @_;
++
++  my $result = status_message($code) || $checkbot_errors{$code}
++    || '(Undefined status)';
++}
++
++sub print_server ($$) {
++  my($server, $final_page) = @_;
++
++  my $host = $server;
++  $host =~ s/(.*):\d+/$1/;
++
++  output "Writing server $server (really " . ip_address($host) . ")", 1;
++
++  my $server_problem = count_problems($server);
++  my $filename = "$main::server_prefix-$server.html";
++  $filename =~ s/:/-/o;
++
++  print OUT "<tr><td class='server'>";
++  print OUT "<a href=\"@{[ (fileparse($filename))[0] ]}\">" if $server_problem > 0;
++  print OUT "$server";
++  print OUT "</a>" if $server_problem > 0;
++  print OUT "</td>";
++  print OUT "<td class='servertype'>" . get_server_type($server) . "</td>";
++  printf OUT "<td class='unique' align=\"right\">%d</td>",
++  $main::servers{$server} + $server_problem;
++  if ($server_problem) {
++    printf OUT "<td class='problems' id='oops' align=\"right\">%d</td>",
++    $server_problem;
++  } else {
++    printf OUT "<td class='problems' id='zero_defects' align=\"right\">%d</td>",
++    $server_problem;
++  }
++
++  my $ratio = $server_problem / ($main::servers{$server} + $server_problem) * 100;
++  print OUT "<td class='ratio' align=\"right\">";
++  print OUT "<strong>" unless $ratio < 0.5;
++  printf OUT "%4d%%", $ratio;
++  print OUT "</strong>" unless $ratio < 0.5;
++  print OUT "</td>";
++  print OUT "</tr>\n";
++
++  # Create this server file
++  open(SERVER, ">$filename")
++    || die "Unable to open server file $filename for writing: $!";
++  print SERVER "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n";
++  print SERVER "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n";
++  print SERVER "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\n";
++  print SERVER "<head>\n";
++  if (!$final_page) {
++    printf SERVER "<meta http-equiv=\"Refresh\" content=\"%d\" />\n",
++    int($main::cp_int * 60 / 2 - 5);
++  }
++  print SERVER "<link rel=\"stylesheet\" type=\"text/css\" href=\"$main::opt_style\" />\n" if defined $main::opt_style;
++  print SERVER "<title>Checkbot: output for server $server</title></head>\n";
++  print SERVER "<body><h2><em>Checkbot</em>: report for server <tt>$server</tt></h2>\n";
++  print SERVER "<p>Go To: <a href=\"@{[ (fileparse($main::file))[0] ]}\">Main report page</a>";
++
++  printServerProblems($server, $final_page);
++
++  print SERVER "\n";
++  print SERVER signature();
++
++  close SERVER;
++}
++
++# Return a string containing Checkbot's signature for HTML pages
++sub signature {
++  return "<hr />\n<p class='signature'>Page created by <a href=\"http://degraaff.org/checkbot/\">Checkbot $VERSION</a> on <em>" . localtime() . "</em>.</p>\n".
++    "<p><a href=\"http://validator.w3.org/check/?uri=referer\"><img src=\"http://www.w3.org/Icons/valid-xhtml11\" alt=\"Valid XHTML 1.1\" height=\"31\" width=\"88\" /></a></p>".
++    "</body></html>";
++}
++
++# Loop through all possible problems, select relevant ones for this server
++# and display them in a meaningful way.
++sub printServerProblems ($$) {
++  my ($server, $final_page) = @_;
++  $server = quotemeta $server;
++
++  my $separator = "<hr />\n";
++
++  my %thisServerList = ();
++
++  # First we find all the problems for this particular server
++  foreach my $url (keys %url_parent) {
++    foreach my $parent (@{$url_parent{$url}}) {
++      next if $parent !~ $server;
++      chomp $parent;
++      $thisServerList{$url_error{$url}{'code'}}{$parent}{$url}
++		= $url_error{$url}{'status'};
++    }
++  }
++
++  # Do a run to find all error codes on this page, and include a table
++  # of contents to the actual report
++  foreach my $code (sort keys %thisServerList) {
++    print SERVER ", <a href=\"#rc$code\">$code ";
++    print SERVER checkbot_status_message($code);
++    print SERVER "</a>";
++  }
++  print SERVER ".</p>\n";
++
++
++  # Now run through this list and print the errors
++  foreach my $code (sort keys %thisServerList) {
++    my $codeOut = '';
++
++    foreach my $parent (sort keys %{ $thisServerList{$code} }) {
++      my $urlOut = '';
++      foreach my $url (sort keys %{ $thisServerList{$code}{$parent} }) {
++	my $status = $thisServerList{$code}{$parent}{$url};
++	$urlOut .= "<li><a href=\"$url\">$url</a><br/>\n";
++	$urlOut .= "$status"
++	  if defined $status and $status ne checkbot_status_message($code);
++	$urlOut .= "</li>\n";
++      }
++      if ($urlOut ne '') {
++	$codeOut .= "<dt><a href=\"$parent\">$parent</a>";
++	$codeOut .= "<br />$url_title{$parent}\n" if defined $url_title{$parent};
++	$codeOut .= "<dd><ul>\n$urlOut\n</ul>\n\n";
++      }
++    }
++
++    if ($codeOut ne '') {
++      print SERVER $separator if $separator;
++      $separator = '';
++      print SERVER "<h4 id=\"rc$code\">$code ";
++      print SERVER checkbot_status_message($code);
++      print SERVER "</h4>\n<dl>\n$codeOut\n</dl>\n";
++    }
++  }
++}
++
++sub check_point {
++  if ( ($main::cp_last + 60 * $main::cp_int < time()) 
++	   || ($main::opt_debug && $main::opt_verbose)) {
++	&create_page(0);
++	$main::cp_last = time();
++	# Increase the intervall from one snapshot to the next by 25%
++	# until we have reached the maximum.
++	$main::cp_int *= 1.25 unless $main::opt_debug;
++	$main::cp_int = $main::opt_interval if $main::cp_int > $main::opt_interval;
++  }
++}
++
++sub send_mail {
++  my $msg = new Mail::Send;
++  my $sub = 'Checkbot results for ';
++  $sub .= join(', ', @starturls);
++  $sub .= ': ' . $stats{'problem'} . ' errors';
++
++  $msg->to($main::opt_mailto);
++  $msg->subject($sub);
++
++  my $fh = $msg->open;
++
++  print $fh "Checkbot results for:\n  " . join("\n  ", @starturls) . "\n\n";
++  print $fh "User-supplied note: $main::opt_note\n\n"
++    if defined $main::opt_note;
++
++  print $fh $stats{'link'}, " links were checked, and ";
++  print $fh $stats{'problem'}, " problems were detected.\n";
++
++  print $fh 'Run started on ' . localtime($start_time) . "\n";
++  print $fh 'Run duration ', duration(time() - $start_time), "\n"
++    if $main::useduration;
++
++
++  print $fh "\n-- \nCheckbot $VERSION\n";
++  print $fh "<URL:http://degraaff.org/checkbot/>\n";
++
++  $fh->close;
++}
++
++sub print_help {
++  print <<"__EOT__";
++Checkbot $VERSION command line options:
++
++  --cookies          Accept cookies from the server
++  --debug            Debugging mode: No pauses, stop after 25 links.
++  --file file        Use file as basis for output file names.
++  --help             Provide this message.
++  --mailto address   Mail brief synopsis to address when done.
++  --noproxy domains  Do not proxy requests to given domains.
++  --verbose          Verbose mode: display many messages about progress.
++  --url url          Start URL
++  --match match      Check pages only if URL matches `match'
++                     If no match is given, the start URL is used as a match
++  --exclude exclude  Exclude pages if the URL matches 'exclude'
++  --filter regexp    Run regexp on each URL found
++  --ignore ignore    Ignore URLs matching 'ignore'
++  --suppress file    Use contents of 'file' to suppress errors in output
++  --note note        Include Note (e.g. URL to report) along with Mail message.
++  --proxy URL        URL of proxy server for HTTP and FTP requests.
++  --internal-only    Only check internal links, skip checking external links.
++  --sleep seconds    Sleep this many seconds between requests (default 0)
++  --style url        Reference the style sheet at this URL.
++  --timeout seconds  Timeout for http requests in seconds (default 120)
++  --interval seconds Maximum time interval between updates (default 10800)
++  --dontwarn codes   Do not write warnings for these HTTP response codes
++  --enable-virtual   Use only virtual names, not IP numbers for servers
++  --language         Specify 2-letter language code for language negotiation
++
++Options --match, --exclude, and --ignore can take a perl regular expression
++as their argument\n
++Use 'perldoc checkbot' for more verbose documentation.
++Checkbot WWW page     : http://degraaff.org/checkbot/
++Mail bugs and problems: checkbot\@degraaff.org
++__EOT__
++
++  exit 0;
++}
++
++sub ip_address {
++  my($host) = @_;
++
++  return $main::ip_cache{$host} if defined $main::ip_cache{$host};
++
++  my($name,$aliases,$adrtype,$length,@addrs) = gethostbyname($host);
++  if (defined $addrs[0]) {
++    my($n1,$n2,$n3,$n4) = unpack ('C4',$addrs[0]);
++    $main::ip_cache{$host} = "$n1.$n2.$n3.$n4";
++  } else {
++    # Whee! No IP-address found for this host. Just keep whatever we
++    # got for the host. If this really is some kind of error it will
++    # be found later on.
++    $main::ip_cache{$host} = $host;
++   }
++}
++
++sub count_problems {
++  my ($server) = @_;
++  $server = quotemeta $server;
++  my $count = 0;
++
++  foreach my $url (sort keys %url_parent) {
++    foreach my $parent (@{ $url_parent{$url} }) {
++	$count++ if $parent =~ m/$server/;
++    }
++  }
++  return $count;
++}
++

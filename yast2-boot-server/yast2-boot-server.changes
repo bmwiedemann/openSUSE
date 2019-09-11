@@ -1,0 +1,149 @@
+-------------------------------------------------------------------
+Fri May 31 12:26:55 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Tue Dec 18 16:05:40 UTC 2018 - jreidinger@suse.com
+
+- properly escape shell arguments (bsc#1118291)
+- 4.1.1
+
+-------------------------------------------------------------------
+Sat Nov 24 12:14:22 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Provide icon with module (boo#1109310)
+- 4.1.0
+
+-------------------------------------------------------------------
+Mon Aug 20 14:08:19 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+- Changed dir of COPYING file.
+
+-------------------------------------------------------------------
+Thu Jun 28 14:12:05 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.1
+
+-------------------------------------------------------------------
+Fri Apr  6 18:50:28 UTC 2018 - mfilka@suse.com
+
+- bnc#1087957 - version bump
+- 4.0.0
+
+-------------------------------------------------------------------
+Tue May 31 08:09:04 UTC 2016 - igonzalezsosa@suse.com
+
+- Remove yast2-boot-server-devel-doc package (fate#320356).
+- 3.1.2
+
+-------------------------------------------------------------------
+Thu Dec  4 09:49:32 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+- 3.1.1
+
+-------------------------------------------------------------------
+Fri Jan 24 09:59:37 UTC 2014 - jreidinger@suse.com
+
+- fix building
+
+-------------------------------------------------------------------
+Wed Sep 18 11:52:24 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Wed Jul 31 08:27:25 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Tue Nov 13 14:41:51 CET 2012 - tgoettlicher@suse.de
+
+- confirmed license GPL v2
+- 2.21.1
+
+-------------------------------------------------------------------
+Mon Sep 26 14:14:55 CEST 2011 - visnov@suse.cz
+
+- set dialog title
+- make .desktop file name reasonable
+- 2.21.0 
+
+-------------------------------------------------------------------
+Fri Aug  5 12:30:57 CEST 2011 - tgoettlicher@suse.de
+
+- fixed .desktop file (bnc #681249)
+
+------------------------------------------------------------------
+Wed Jan 13 18:56:03 CET 2010 - kmachalkova@suse.cz
+
+- Adjusted .desktop file(s) to wrap /sbin/yast2/ calls in xdg-su
+  where root privileges are needed, removed X-KDE-SubstituteUID key 
+  (bnc#540627)
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Mon Mar 17 12:43:32 CET 2008 - jsrain@suse.cz
+
+- added 'StartupNotify=true' to the desktop file (bnc #304964)
+
+-------------------------------------------------------------------
+Mon Jul 10 13:36:43 CEST 2006 - mzugec@suse.cz
+
+- #188544 - replace buttons strings with Labels 
+
+-------------------------------------------------------------------
+Sat Jun 17 16:11:51 CEST 2006 - mzugec@suse.cz
+
+- fixed #184884 - rewrite UI to response for `cancel 
+
+-------------------------------------------------------------------
+Thu Jun  1 14:21:19 CEST 2006 - mzugec@suse.cz
+
+- fixed #180375 - add functionality for edit button
+
+-------------------------------------------------------------------
+Mon Mar  6 15:24:18 CET 2006 - mzugec@suse.cz
+
+- fixed #142228 - buttons (enabled/disabled) 
+
+-------------------------------------------------------------------
+Fri Jan  6 15:56:21 CET 2006 - mzugec@suse.cz
+
+-version update 
+
+-------------------------------------------------------------------
+Sat Aug 14 16:02:19 CEST 2004 - nashif@suse.de
+
+- Changed desktop icon to wol
+
+-------------------------------------------------------------------
+Wed Aug 11 05:16:06 CEST 2004 - nashif@suse.de
+
+- removed Abort button
+
+-------------------------------------------------------------------
+Sun Aug  8 07:05:20 CEST 2004 - nashif@suse.de
+
+- Use only 'wol' for waking up clients
+
+-------------------------------------------------------------------
+Wed Apr  7 13:47:11 2004 - nashif@suse.de
+
+- initial version

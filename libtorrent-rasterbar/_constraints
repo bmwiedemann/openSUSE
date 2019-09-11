@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<constraints>
+  <hardware>
+    <memory>
+      <size unit="M">3500</size>
+    </memory>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">2</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>

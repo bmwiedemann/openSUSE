@@ -1,0 +1,173 @@
+-------------------------------------------------------------------
+Fri Mar  1 11:15:15 UTC 2019 - jason.record@suse.com
+
+- Updated to version 3.1.1
+  + Fixed X missing /prob/fb error (bsc#1127069)
+  + Fixed dasdview -f (bsc#1109664)
+  + Clarified -t help description (bsc#1121043)
+  + Fixed grep error in NTP when /etc/cron.d is empty (bsc#1127063)
+  + Collects systemd journal with minimum install (bsc#1094225)
+  + Supportconfig fails on bzip archives (bsc#1120049)
+  + Get few drbd output & configuration #42
+
+-------------------------------------------------------------------
+Mon Feb 18 10:30:00 UTC 2019 - jason.record@suse.com
+
+- Corrected missed SUSE separation lines
+- Fixed invalid exit code commands (bsc#1125666)
+- CVE-2018-19640: supportutils: Users can kill arbitrary processes
+  (CVE-2018-19640 bsc#1118463)
+- User can overwrite arbitrary log files in support tar
+  (CVE-2018-19638 bsc#1118460)
+- Code execution if run with -v
+  (CVE-2018-19639 bsc#1118462)
+- Static temporary filename allows overwriting of files
+  (CVE-2018-19637 bsc#1117776)
+
+-------------------------------------------------------------------
+Fri Feb 15 14:58:41 UTC 2019 - jason.record@suse.com
+
+- Included additional SUSE separation (bsc#1125609)
+- Merged added listing of locked packes by zypper #41
+
+-------------------------------------------------------------------
+Wed Jan 30 15:46:59 UTC 2019 - jason.record@suse.com
+
+- Corrected spec file errors
+
+-------------------------------------------------------------------
+Mon Jan 28 17:50:42 UTC 2019 - jason.record@suse.com
+
+- Added firewall-cmd info
+- btrfs filesystem usage
+- Add ls -lA --time-style=long-iso /etc/products.d/
+- Dump lsof errors
+- Added corosync status to ha_info
+
+-------------------------------------------------------------------
+Fri Dec 28 12:50:09 UTC 2018 - jason.record@suse.com
+
+- Clarified -x functionality in supportconfig(8) (bsc#1115245)
+- Dump find errors in ib_info
+
+-------------------------------------------------------------------
+Fri Oct 26 15:03:18 UTC 2018 - jason.record@suse.com
+
+- Exclude pam.txt per GDPR by default (bsc#1112461)
+
+-------------------------------------------------------------------
+Thu Oct 11 15:07:50 UTC 2018 - jason.record@suse.com
+
+- udev service and journal content (bsc#1051797)
+- supportconfig collects tuned profile settings (bsc#1071545)
+- sfdisk -d no disk device specified (bsc#1043311)
+
+-------------------------------------------------------------------
+Thu Aug 23 22:30:41 UTC 2018 - jason.record@suse.com
+
+- Added vulnerabilites check in basic-health.txt (bsc#1105849)
+
+-------------------------------------------------------------------
+Thu Jul 12 14:43:36 UTC 2018 - jason.record@suse.com
+
+- Added backup rpm database directory
+- Updated URLs in documentation
+
+-------------------------------------------------------------------
+Tue Jul 10 22:09:06 UTC 2018 - jason.record@suse.com
+
+- Added only sched_domain from cpu0
+
+-------------------------------------------------------------------
+Fri Jun 15 15:02:01 UTC 2018 - jason.record@suse.com
+
+- Blacklist sched_domain from proc.txt (bsc#1046681)
+
+-------------------------------------------------------------------
+Mon Mar 26 17:03:43 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Fri Feb  2 20:40:39 UTC 2018 - jason.record@suse.com
+
+- Accounts for firewalld now (bsc#1079137)
+- Added dmesg taint seach
+- Removed mii-tool from networking
+- Updated HA to use chrony
+- Added kdumptool calibrate to crash.txt
+- Removed SLES_VER case for sles8,9 and 10
+
+-------------------------------------------------------------------
+Thu Feb  1 22:29:11 UTC 2018 - jason.record@suse.com
+
+- Added tuned feature OPTION_TUNED tuned.txt (bsc#1071545)
+- Fixed udev service
+- Fixed no disk device with sfdisk (bsc#1078638)
+
+-------------------------------------------------------------------
+Tue Jan 30 16:56:36 UTC 2018 - jason.record@suse.com
+
+- Removed OPTION_SAM from man pages and resource file
+- Validated missing commands
+- Updated apparmor with systemctl service
+- Replaced deprecated networking commands (bsc#1078318)
+
+-------------------------------------------------------------------
+Mon Jan 29 23:06:21 UTC 2018 - jason.record@suse.com
+
+- Removed sam_info since suse_sam is no longer available
+- Assigned SLE15 to SLES_VER selections (bsc#1078168)
+
+-------------------------------------------------------------------
+Mon Jan 29 22:44:52 UTC 2018 - jason.record@suse.com
+
+- Includes X without display issue (bsc#1077813)
+- Fixes for Infiniband (bsc#1071294)
+- Using chrony for NTP (bsc#1077818)
+
+-------------------------------------------------------------------
+Fri Jan 26 17:25:50 UTC 2018 - jason.record@suse.com
+
+- Added os-release processing (bsc#1077758)
+- Removed invalid string tty string (bsc#1077681)
+- Added SLE15 taint values (bsc#1077683)
+
+-------------------------------------------------------------------
+Tue Jan 23 16:33:53 UTC 2018 - jason.record@suse.com
+
+- Added transactional update with OPTION_TRANSACTIONAL=1
+- Updated supportconfig.conf.5 with OPTION_TRANSACTIONAL
+
+-------------------------------------------------------------------
+Fri Jan 19 18:46:58 UTC 2018 - jason.record@suse.com
+
+- Fixed docker package detection (bsc#1069457)
+
+-------------------------------------------------------------------
+Fri Jan  5 20:15:49 UTC 2018 - jason.record@suse.com
+
+- Replaced route with ip route (bsc#1070379)
+- Added systemd-delta to systemd.txt (bsc#1071924)
+- Changed repos -u to repos -d (bsc#1071926)
+- Added rdma-core for infiniband (bsc#1071294)
+
+-------------------------------------------------------------------
+Tue Dec 19 18:19:56 UTC 2017 - jason.record@suse.com
+
+- Branding updates fate#324067
+- Fixed piped spelling error
+
+-------------------------------------------------------------------
+Fri Oct 27 20:23:34 UTC 2017 - jason.record@suse.com
+
+- Separated core supportconfig function into resources/supportconfig.rc
+- Removed virtualization functions
+- Removed OES functions
+- Removed eDirectory functions
+
+-------------------------------------------------------------------
+Fri Oct 26 11:03:26 UTC 2017 - jason.record@suse.com
+
+- Initial commit
+

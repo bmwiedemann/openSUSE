@@ -1,0 +1,52 @@
+diff -Nura gdm-3.26.2.1/daemon/gdm-display.c gdm-3.26.2.1_new/daemon/gdm-display.c
+--- gdm-3.26.2.1/daemon/gdm-display.c	2017-12-05 18:56:25.988123494 +0800
++++ gdm-3.26.2.1_new/daemon/gdm-display.c	2017-12-05 18:57:00.248398445 +0800
+@@ -591,7 +591,7 @@
+          */
+         look_for_existing_users_sync (self);
+ 
+-        self->priv->doing_initial_setup = wants_initial_setup (self);
++        self->priv->doing_initial_setup = FALSE;
+ 
+         g_object_ref (self);
+         ret = GDM_DISPLAY_GET_CLASS (self)->prepare (self);
+@@ -1441,6 +1441,7 @@
+         self_destruct (self);
+ }
+ 
++#if 0
+ static gboolean
+ can_create_environment (const char *session_id)
+ {
+@@ -1454,9 +1455,11 @@
+ 
+         return session_exists;
+ }
++#endif
+ 
+ #define ALREADY_RAN_INITIAL_SETUP_ON_THIS_BOOT GDM_RUN_DIR "/gdm.ran-initial-setup"
+ 
++#if 0
+ static gboolean
+ already_done_initial_setup_on_this_boot (void)
+ {
+@@ -1591,6 +1594,7 @@
+ 
+         return enabled;
+ }
++#endif
+ 
+ void
+ gdm_display_start_greeter_session (GdmDisplay *self)
+diff -Nura gdm-3.26.2.1/data/gdm.schemas.in.in gdm-3.26.2.1_new/data/gdm.schemas.in.in
+--- gdm-3.26.2.1/data/gdm.schemas.in.in	2017-12-05 18:56:25.982123446 +0800
++++ gdm-3.26.2.1_new/data/gdm.schemas.in.in	2017-12-05 18:57:44.712755287 +0800
+@@ -50,7 +50,7 @@
+     <schema>
+       <key>daemon/InitialSetupEnable</key>
+       <signature>b</signature>
+-      <default>true</default>
++      <default>false</default>
+     </schema>
+     <schema>
+       <key>daemon/WaylandEnable</key>

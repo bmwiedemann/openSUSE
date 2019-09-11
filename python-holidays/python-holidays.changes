@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Fri Mar 15 20:40:06 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove conjecture from description and ensure neutrality.
+
+-------------------------------------------------------------------
+Fri Mar 15 13:19:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.10:
+  - Added Lithuanian holidays support (GiedriusMauza)
+  - Added Luxembourgish holidays (theFeverDog)
+  - Added Russian holidays (mshinkareva)
+  - Added Bulgarian holidays (pavelsof)
+  - Holidays in date range (elln2)
+  - German holidays updates (MrtnBckr, alexanderschulze)
+  - South African holidays updates (nickyspag)
+  - Australian holidays updates (itssimon)
+- Run tests
+- Run fdupes
+- Fix URL
+
+-------------------------------------------------------------------
+Tue Mar 12 07:16:43 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- initial package of version 0.9.9
+

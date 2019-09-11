@@ -1,0 +1,73 @@
+#!/bin/bash
+
+#SafeC=libsafec
+SafeC=safeclib
+SafeCpatches="$1"; shift
+
+[ -r CMakeLists.txt ]
+
+perl -pi.00 -e '
+  s<(\$\{CMAKE_THREAD_LIBS_INIT\})><PUBLIC $1>;
+  if (!$f) {
+     $f=1 if (s<(\$\{LIBSAFEC)(_LIBRARIES)><PRIVATE ${1}_LDFLAGS\} ${1}_STATIC${2}>);
+  }
+  s[(CMAKE_INSTALL_)DATAROOT(DIR\})/ipmctl][${1}SYSCONF${2}];
+  $_ .= "		RENAME ipmctl\n" if (m{/logrotate\.d});
+' CMakeLists.txt
+#diff -u CMakeLists.txt{.00,} || sleep 2
+perl -pi.00 -e 's{/usr/share/ipmctl}{/etc}' src/os/ini/ini.c
+#diff -u src/os/ini/ini.c{.00,} || sleep 4
+
+CONTRIB=$PWD/contrib
+if [ -d $CONTRIB/include ]; then
+   cd $CONTRIB/src/${SafeC}*
+   LSC=${PWD##*/} 
+   cp -p COPYING $CONTRIB/COPYING.$LSC
+   sleep 2
+   exit 0 
+fi
+
+mkdir -p contrib/{src,patches/${SafeC}}
+
+mv ${SafeC}* contrib/src
+
+cd contrib/src/${SafeC}*
+LSC=${PWD##*/} 
+API="$(perl -n -e 'print "$1\n"
+	 if (m{AC_SUBST\(\[SAFEC_API_VERSION\], \[([0-9]+\.[0-9+])\]\)})
+	' configure.ac)"
+SafeCver="${LSC##*-$API.v}"
+[ "$SafeCtar" != "$SafeCver" ] || {
+  echo "unsupported $SafeC version!" >&2
+  exit 1
+}
+SafeCver="${SafeCver%.tar.*}"
+SafeCver="${SafeCver/+git/-}"
+
+if [ -n "$SafeCpatches" -a  -s "$SafeCpatches" ]; then
+  tar xvfC "$SafeCpatches" ../../patches/${SafeC}
+  for p in ../../patches/${SafeC}/*.patch; do
+    patch -p1 < $p
+  done
+else
+  echo "$SafeCver" > .tarball-version
+  perl -pi.00 -e '
+    s{\[libsafec\]}{[safec-'"$API"']}
+  ' configure.ac
+  diff -u configure.ac{.00,} || sleep 4
+fi
+
+autoreconf -Wall --install || exit
+./configure --disable-shared --disable-doc \
+	--enable-static --enable-strmax=0x8000 \
+	--prefix=$CONTRIB \
+	CFLAGS="$RPM_OPT_FLAGS -DHAVE_C99 -DNO_MSABI_VA_FUNCS -fPIC"
+make "$@"
+make install
+
+cp -p COPYING $CONTRIB/COPYING.$LSC
+
+[ -r $CONTRIB/include/*/safe_mem_lib.h ] || exit 1
+
+cd $CONTRIB/..
+tar cf /tmp/${SafeC}-prebuild.tar contrib

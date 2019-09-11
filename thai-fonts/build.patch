@@ -1,0 +1,28 @@
+Index: thaifonts-scalable-0.4.16/Makefile.in
+===================================================================
+--- thaifonts-scalable-0.4.16.orig/Makefile.in
++++ thaifonts-scalable-0.4.16/Makefile.in
+@@ -664,23 +664,6 @@ uninstall-am:
+ 
+ 
+ @INCLUDE_XFONTSDIR_TRUE@install-data-hook:
+-@INCLUDE_XFONTSDIR_TRUE@	@if test -n "$(DESTDIR)" ; then                                \
+-@INCLUDE_XFONTSDIR_TRUE@	  echo "***" ;                                                 \
+-@INCLUDE_XFONTSDIR_TRUE@	  echo "*** Warning: Seems to be binary package building." ;   \
+-@INCLUDE_XFONTSDIR_TRUE@	  echo "***          So, font list/cache is not generated" ;   \
+-@INCLUDE_XFONTSDIR_TRUE@	  echo "***" ;                                                 \
+-@INCLUDE_XFONTSDIR_TRUE@	  exit 0;                                                      \
+-@INCLUDE_XFONTSDIR_TRUE@	fi
+-@INCLUDE_TTF_TRUE@@INCLUDE_XFONTSDIR_TRUE@	mkdir -p $(DESTDIR)$(ttfdir)
+-@INCLUDE_TTF_TRUE@@INCLUDE_XFONTSDIR_TRUE@	cd $(DESTDIR)$(ttfdir);                                        \
+-@INCLUDE_TTF_TRUE@@INCLUDE_XFONTSDIR_TRUE@	  $(TTMKFDIR);                                                 \
+-@INCLUDE_TTF_TRUE@@INCLUDE_XFONTSDIR_TRUE@	  $(MKFONTDIR)
+-@INCLUDE_TTF_TRUE@@INCLUDE_XFONTSDIR_TRUE@	$(FCCACHE) -f $(DESTDIR)$(ttfdir)
+-@INCLUDE_PFB_TRUE@@INCLUDE_XFONTSDIR_TRUE@	mkdir -p $(DESTDIR)$(type1dir)
+-@INCLUDE_PFB_TRUE@@INCLUDE_XFONTSDIR_TRUE@	cd $(DESTDIR)$(type1dir);                                      \
+-@INCLUDE_PFB_TRUE@@INCLUDE_XFONTSDIR_TRUE@	  $(TYPE1INST);                                                \
+-@INCLUDE_PFB_TRUE@@INCLUDE_XFONTSDIR_TRUE@	  $(MKFONTDIR)
+-@INCLUDE_PFB_TRUE@@INCLUDE_XFONTSDIR_TRUE@	$(FCCACHE) -f $(DESTDIR)$(type1dir)
+ 
+ @INCLUDE_XFONTSDIR_TRUE@uninstall-hook:
+ @INCLUDE_TTF_TRUE@@INCLUDE_XFONTSDIR_TRUE@	$(RM) $(DESTDIR)$(ttfdir)/fonts.cache-1

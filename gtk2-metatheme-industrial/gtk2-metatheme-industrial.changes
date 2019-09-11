@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:32:17 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jan 13 13:01:59 UTC 2012 - vuntz@opensuse.org
+
+- Change gtk2-engines Requires to gtk2-engine-industrial and
+  gtk2-theme-industrial Requires, now that gtk2-engines has split
+  packages (see bnc#706929).
+- Add Supplements for gtk2-engine-industrial and
+  gtk2-theme-industrial since it makes sense to have the metatheme
+  installed in that case.
+
+-------------------------------------------------------------------
+Fri Dec  2 07:28:30 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon May 25 02:03:21 CEST 2009 - vuntz@novell.com
+
+- Replace gtk2-theme-openSUSE with gtk2-metatheme-gilouche.
+
+-------------------------------------------------------------------
+Tue May 20 18:20:05 CEST 2009 - sbrabec@suse.cz
+
+- Industrial icon theme renamed to Gilouche and moved to
+  gtk2-theme-openSUSE (bnc#369276#c9).
+
+-------------------------------------------------------------------
+Mon May 19 15:40:57 CEST 2008 - sbrabec@suse.cz
+
+- Added latest Industrial icon theme (bnc#369276).
+
+-------------------------------------------------------------------
+Wed May 14 19:04:56 CEST 2008 - sbrabec@suse.cz
+
+- Split the Industrial metatheme out of gnome-themes and
+  ximian-artwork (bnc#380955).
+

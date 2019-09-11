@@ -1,0 +1,112 @@
+From: Egbert Eich <eich@freedesktop.org>
+Date: Fri Jan 29 11:05:46 2016 +0100
+Subject: [PATCH]os/connections: Check for stale FDs
+Patch-mainline: to be upstreamed
+Git-repo: git://anongit.freedesktop.org/git/xorg/xserver
+References: bsc#954433
+Signed-off-by: Egbert Eich <eich@suse.com>
+
+So far we've only checked for stale client connections.
+However, our main select loop checks file descriptors
+of devices and sockets of services like dbus.
+
+These file descriptors may become stale as well, for instance,
+when the underlying service has died. In this case, select
+will return immediately with EBADF. Without removing these
+stale FDs, the Xserver will loop rapidly in WaitFor().
+
+Thus, simply remove the respective bit from AllSockets.
+
+Signed-off-by: Egbert Eich <eich@freedesktop.org>
+---
+ include/os.h    |  3 +++
+ os/WaitFor.c    |  5 +++++
+ os/connection.c | 37 +++++++++++++++++++++++++++++++++++++
+ 3 files changed, 45 insertions(+)
+
+diff --git a/include/os.h b/include/os.h
+index 461d5d6..a3e433c 100644
+--- a/include/os.h
++++ b/include/os.h
+@@ -51,6 +51,7 @@ SOFTWARE.
+ #include <stdarg.h>
+ #include <stdint.h>
+ #include <string.h>
++#include <sys/select.h>
+ 
+ #define SCREEN_SAVER_ON   0
+ #define SCREEN_SAVER_OFF  1
+@@ -141,6 +142,8 @@ extern _X_EXPORT const char *ClientAuthorized(ClientPtr /*client */ ,
+ 
+ extern _X_EXPORT void CheckConnections(void);
+ 
++extern _X_EXPORT void CheckFDs(fd_set *);
++
+ extern _X_EXPORT void CloseDownConnection(ClientPtr /*client */ );
+ 
+ extern _X_EXPORT void AddGeneralSocket(int /*fd */ );
+diff --git a/os/WaitFor.c b/os/WaitFor.c
+index e839d61..6cc967e 100644
+--- a/os/WaitFor.c
++++ b/os/WaitFor.c
+@@ -229,7 +229,12 @@ WaitForSomething(int *pClientsReady)
+                 return 0;
+             if (i < 0) {
+                 if (selecterr == EBADF) {       /* Some client disconnected */
++                    fd_set mask;
++                    XFD_COPYSET(&LastSelectMask, &mask);
++                    XFD_UNSET(&mask, &AllClients);
+                     CheckConnections();
++                    if (XFD_ANYSET(&mask))
++                        CheckFDs(&mask);
+                     if (!XFD_ANYSET(&AllClients))
+                         return 0;
+                 }
+diff --git a/os/connection.c b/os/connection.c
+index 4c1ba4b..d6943f2 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -1022,6 +1022,43 @@ CheckConnections(void)
+ }
+ 
+ /*****************
++ * CheckFDs
++ *****************/
++void
++CheckFDs(fd_set *fdbits)
++{
++    fd_mask mask;
++    fd_set tmask;
++    int curbit, curoff;
++    int i;
++    struct timeval notime;
++    int r;
++    notime.tv_sec = 0;
++    notime.tv_usec = 0;
++
++    for (i = 0; i < howmany(XFD_SETSIZE, NFDBITS); i++) {
++        mask = fdbits->fds_bits[i];
++        while (mask) {
++            curoff = mffs(mask) - 1;
++            curbit = curoff + (i * (sizeof(fd_mask) * 8));
++            FD_ZERO(&tmask);
++            FD_SET(curbit, &tmask);
++            do {
++                r = Select(curbit + 1, &tmask, NULL, NULL, &notime);
++            } while (r < 0 && (errno == EINTR || errno == EAGAIN));
++            if (r < 0 && errno == EBADF) {
++                //RemoveNotifyFd(curbit);
++                FD_CLR(curbit, &EnabledDevices);
++                FD_CLR(curbit, &AllSockets);
++                if (GrabInProgress)
++                    FD_CLR(curbit, &SavedAllSockets);
++            }
++            mask &= ~((fd_mask) 1 << curoff);
++        }
++    }
++}
++
++/*****************
+  * CloseDownConnection
+  *    Delete client from AllClients and free resources
+  *****************/

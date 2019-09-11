@@ -1,0 +1,248 @@
+-------------------------------------------------------------------
+Thu Mar  7 19:51:40 UTC 2019 - Joop Boonen <joop.boonen@opensuse.org>
+
+- Fixed time and file failure via time_and_file_failure.patch 
+
+-------------------------------------------------------------------
+Sat Mar 28 13:52:15 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Cleanup spec-file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Aug 18 15:04:44 UTC 2014 - meissner@suse.com
+
+- does not seem to require openssl development.
+
+-------------------------------------------------------------------
+Wed Feb 12 10:37:57 UTC 2014 - schwab@suse.de
+
+- decl-definition-conflict.patch: Fix conflicting declarations
+
+-------------------------------------------------------------------
+Wed Oct 10 09:26:05 UTC 2012 - joop.boonen@opensuse.org
+
+- Don't build noarch doc for sles as otherwise all
+  packages will be build as noarch for sles
+
+-------------------------------------------------------------------
+Sat Jan  7 15:57:18 UTC 2012 - joop.boonen@opensuse.org
+
+- Corrected the Url as the project is now hosted on
+  http://www.kermitproject.org/ 
+
+-------------------------------------------------------------------
+Sat Jan  7 14:41:16 UTC 2012 - joop.boonen@opensuse.org
+
+- Created a separate doc package 
+
+-------------------------------------------------------------------
+Sat Jan  7 14:24:32 UTC 2012 - joop.boonen@opensuse.org
+
+- Reformated the ckermit spec file
+  to meet the openSUSE standards 
+
+-------------------------------------------------------------------
+Mon Sep 12 09:13:38 UTC 2011 - joop.boonen@opensuse.org
+
+- Build version 9.0.302
+
+-------------------------------------------------------------------
+Mon Aug  8 07:11:06 UTC 2011 - joop.boonen@opensuse.org
+
+- Build version 9.0.301
+
+-------------------------------------------------------------------
+Wed May  4 14:43:55 UTC 2011 - joop.boonen@opensuse.org
+
+- put pre 9.0 version in contrib
+
+-------------------------------------------------------------------
+Sun Oct 17 08:36:13 UTC 2010 - joop.boonen@opensuse.org
+
+- build version 9.0.299 Alpha.09
+
+-------------------------------------------------------------------
+Tue Aug 24 21:01:17 UTC 2010 - joop.boonen@opensuse.org
+
+- build version 9.0.299 Alpha.08
+
+-------------------------------------------------------------------
+Sun Jul 25 09:00:02 UTC 2010 - joop.boonen@opensuse.org
+
+- added a lockdev patch
+
+-------------------------------------------------------------------
+Sun Apr 25 21:16:52 CEST 2010 - joop.boonen@opensuse.org
+
+- Build version 9.0.299 Alpha.06
+
+-------------------------------------------------------------------
+Sat Feb 13 20:51:21 CET 2010 - joop.boonen@opensuse.org
+
+- Build version 9.0.299 Alpha.02
+
+-------------------------------------------------------------------
+Tue Jan 26 23:53:17 CET 2010 - joop.boonen@opensuse.org
+
+- Build version 9.0.299 Alpha.01
+
+-------------------------------------------------------------------
+Mon Oct 19 22:20:27 CEST 2009 - joop.boonen@opensuse.org
+
+- build version 8.0.212 pre version
+
+-------------------------------------------------------------------
+Wed Dec  5 18:12:09 CET 2007 - ro@suse.de
+
+- move /etc/skel/.kermrc to this package 
+
+-------------------------------------------------------------------
+Fri Mar 30 15:33:03 CEST 2007 - rguenther@suse.de
+
+- add ncurses-devel BuildRequires 
+
+-------------------------------------------------------------------
+Thu Dec 14 10:58:36 CET 2006 - prusnak@suse.cz
+
+- fixed 3rd argument in strncat functions
+
+-------------------------------------------------------------------
+Thu Nov 30 12:10:29 CET 2006 - prusnak@suse.cz
+
+- fixed comparison with string literal (string_comparison.diff) [#224842]
+
+-------------------------------------------------------------------
+Mon Feb 27 17:11:44 CET 2006 - anicka@suse.cz
+
+- fix uninitialized variable (#152938) 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 17:18:58 CET 2006 - mjancar@suse.cz
+
+- add format attribute to custom ckermit printf prototype (#138978)
+
+-------------------------------------------------------------------
+Fri Jan 20 16:54:04 CET 2006 - mjancar@suse.cz
+
+- fix short argument list for format (#138978)
+
+-------------------------------------------------------------------
+Fri Oct 14 01:56:08 CEST 2005 - ro@suse.de
+
+- rename EM to _EM (seems unused anyway) 
+
+-------------------------------------------------------------------
+Fri Aug 06 18:21:55 CEST 2004 - mjancar@suse.cz
+
+- update to 8.0.211
+
+-------------------------------------------------------------------
+Tue Apr 20 11:14:20 CEST 2004 - mjancar@suse.cz
+
+- add return to nonvoid functions
+
+-------------------------------------------------------------------
+Sat Jan 10 18:06:40 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Wed Apr 23 10:36:17 CEST 2003 - vbobek@suse.cz
+
+- updated to new version 8.0.209
+    * built-in ftp client
+    * built-in http 1.1 client
+    * includes interface for external SSH program
+    * many new modem types added
+    * automatic text/binary mode switching
+    * proxy support
+    * scripting improvements
+    * bug fixes
+- compiled with openssl+shadow passwords support
+- fixed paths for termcap
+- removed obsolete fix for 64bit-architectures (use %_libdir in specfile
+  instead)
+- fixed problematic cast warning on x86_64 (missing_includes.patch)
+
+-------------------------------------------------------------------
+Fri Feb 14 11:32:02 CET 2003 - vbobek@suse.cz
+
+- used $RPM_OPT_FLAGS
+- removed obsolete -mminimal-toc which is already included in $RPM_OPT_FLAGS
+  for ppc64 now [#23266]
+
+-------------------------------------------------------------------
+Tue Dec 03 16:53:45 CET 2002 - jderfina@suse.cz
+
+- upgrade to version 8.0.206
+- single patch splited to two more readable patches.
+
+-------------------------------------------------------------------
+Sun Dec  1 23:48:23 CET 2002 - ro@suse.de
+
+- include errno.h where needed 
+
+-------------------------------------------------------------------
+Mon Jul  1 16:41:12 CEST 2002 - olh@suse.de
+
+- hack to build with -mminimal-toc on ppc64
+
+-------------------------------------------------------------------
+Wed May 29 00:21:05 CEST 2002 - ro@suse.de
+
+- fixed for lib64 platforms 
+
+-------------------------------------------------------------------
+Wed Feb  6 15:24:33 CET 2002 - pmladek@suse.cz
+
+- updated to version 8.0.200:
+	* a new built-in FTP client
+	* a new HTTP 1.1 client
+	* telnet Com Port Option for dialing from Telnet modem servers
+	* file scanning for automatic text/binary determination
+	* learned scripts
+	* LISP-like S-Expressions and natural floating-point arithmetic
+	* lots of script programming improvements
+	* performance improvements and bug fixes
+- fixed warnings on ia64
+- disabled HAVE_PTMX test because makefile don't detect this correctly
+
+-------------------------------------------------------------------
+Wed May 16 12:55:50 CEST 2001 - pmladek@suse.cz
+
+- fixed cast warnings on ia64
+
+-------------------------------------------------------------------
+Mon Apr 23 08:42:49 CEST 2001 - pmladek@suse.cz
+
+- fixed conversions int <-> pointer on ia64
+
+-------------------------------------------------------------------
+Thu Feb  8 11:16:45 CET 2001 - cihlar@suse.cz
+
+- fixed to compile
+
+-------------------------------------------------------------------
+Mon Oct 30 14:26:16 CET 2000 - cihlar@suse.cz
+
+- bzipped sources
+- fixed file list
+
+-------------------------------------------------------------------
+Mon Mar 13 13:26:01 MET 2000 - grimmer@suse.de
+
+- now uses BUILD_ROOT for package building
+
+-------------------------------------------------------------------
+Fri Mar 10 19:37:35 MET 2000 - grimmer@suse.de
+
+- initial version (7.0.197)
+- added patch to correct location of docs (/usr/doc -> /usr/doc/packages)
+
+-------------------------------------------------------------------

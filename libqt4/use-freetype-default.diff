@@ -1,0 +1,13 @@
+Index: src/gui/text/qfontengine_ft.cpp
+===================================================================
+--- src/gui/text/qfontengine_ft.cpp.orig
++++ src/gui/text/qfontengine_ft.cpp
+@@ -70,7 +70,7 @@
+ #include FT_CONFIG_OPTIONS_H
+ #endif
+ 
+-#if defined(FT_LCD_FILTER_H) && defined(FT_CONFIG_OPTION_SUBPIXEL_RENDERING)
++#if defined(FT_LCD_FILTER_H)
+ #define QT_USE_FREETYPE_LCDFILTER
+ #endif
+ 

@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:49:21 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Nov 14 17:04:30 UTC 2017 - jmatejek@suse.com
+
+- require %{python_module devel} instead of listing the devels one by one
+
+-------------------------------------------------------------------
+Thu Sep 14 12:51:40 UTC 2017 - ngompa13@gmail.com
+
+- Add missing python-six runtime dependency
+
+-------------------------------------------------------------------
+Tue Jun  6 13:38:02 UTC 2017 - ngompa13@gmail.com
+
+- Add patches from Fedora to enable Python 3 support
+  * iniparse-fix-issue-28.patch
+  * python-iniparse-python3-compat.patch
+  * python-iniparse-setup-fixes.patch
+- Convert to singlespec to offer Python 3 variant
+
+-------------------------------------------------------------------
+Thu Oct 24 11:06:51 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Mon May 27 14:36:53 UTC 2013 - speilicke@suse.com
+
+- Add iniparse-insert-after-commented-option.patch: See 
+  https://code.google.com/p/iniparse/issues/detail?id=31 for details
+- Run testsuite
+
+-------------------------------------------------------------------
+Thu Feb 23 19:40:56 CET 2012 - berendt@b1-systems.de
+
+- added missing build requirement python-devel for SLE
+
+-------------------------------------------------------------------
+Tue Jan 31 14:31:54 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Simplified macro usage
+  * Removed outdated %clean section
+  * Buildrequire python-distribute instead of setuptools
+
+-------------------------------------------------------------------
+Thu Sep 16 08:42:13 UTC 2010 - coolo@novell.com
+
+- update to 0.4
+    * Fixed pickling and multiprocessing bugs
+    * Enabled auto-addition of config attributes via square bracket 
+      syntax 
+    * Utility function to tidy INI files
+    * Ability to change comment syntax for parsing Mercurial config
+      files
+    * Added ConfigParser exceptions and constants to the top-level
+      iniparse module 
+
+-------------------------------------------------------------------
+Wed Aug  5 18:13:14 CEST 2009 - matejcik@suse.cz
+
+- update to 0.3.1
+  * minor bugfixes
+  * better multi-line handling
+
+-------------------------------------------------------------------
+Wed Jan  7 15:18:59 CET 2009 - cthiel@suse.de
+
+- initial package (version 0.2.4)
+

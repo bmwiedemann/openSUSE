@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Wed Dec  6 12:38:18 UTC 2017 - mpluskal@suse.com
+
+- Cleanup with spec-clener
+- Use url for source
+
+-------------------------------------------------------------------
+Fri Oct 26 14:59:46 UTC 2012 - coolo@suse.com
+
+- buildrequire groff, called from spec file
+
+-------------------------------------------------------------------
+Thu Apr  8 18:42:21 UTC 2010 - davejplater@gmail.com
+
+- Update to version 0.1.12 See README for more details
+- Update id3v2-0.1.12-bogus-linkage.patch
+- License now LGPLV2.1+
+
+-------------------------------------------------------------------
+Mon Jun 15 16:41:22 CEST 2009 - coolo@novell.com
+
+- fix link line
+
+-------------------------------------------------------------------
+Mon Jan 19 03:21:14 CET 2009 - crrodriguez@suse.de
+
+- fix broken makefile revealed after id3lib dependecies cleanup 
+
+-------------------------------------------------------------------
+Mon Oct  1 22:22:01 CEST 2007 - coolo@suse.de
+
+- fix compilation with gcc 4.3
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:34 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct  5 13:56:42 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Jan 21 10:39:36 CET 2005 - coolo@suse.de
+
+- update to newer version
+
+-------------------------------------------------------------------
+Tue Aug 12 11:19:10 CEST 2003 - coolo@suse.de
+
+- initial package
+

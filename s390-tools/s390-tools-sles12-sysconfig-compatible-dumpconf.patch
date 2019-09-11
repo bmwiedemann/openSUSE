@@ -1,0 +1,175 @@
+From c261ec990a8259f2540089827309b918e1c31590 Mon Sep 17 00:00:00 2001
+From: Hannes Reinecke <hare@suse.de>
+Date: Fri, 22 Nov 2013 15:34:22 +0100
+Subject: [PATCH] dumpconf: Use compatible sysconfig layout
+
+SUSE is quite restrictive on how the sysconfig
+should look like.
+
+Signed-off-by: Hannes Reinecke <hare@suse.de>
+---
+ etc/sysconfig/dumpconf | 134 ++++++++++++++++++++++++++++++++++---------------
+ 1 file changed, 93 insertions(+), 41 deletions(-)
+
+diff --git a/etc/sysconfig/dumpconf b/etc/sysconfig/dumpconf
+index a3639cf..76f9040 100644
+--- a/etc/sysconfig/dumpconf
++++ b/etc/sysconfig/dumpconf
+@@ -1,61 +1,113 @@
++## Path:		System/Dumpconf
++## Description:		Configures the actions which should be performed after a kernel panic
++## Type:		list(stop,dump,vmcmd,reipl,dump_reipl)
++## Default:		"stop"
++## ServiceRestart:	dumpconf
+ #
+-# s390 dump config
+-#
+-# Configures the actions which should be performed after a kernel panic
+-# and on PSW restart.
++# Define the action that should be taken if a panic happens.
+ #
+ # The following actions are supported:
+ #
+-# * stop:       Stop Linux (default)
+-# * dump:       Dump Linux with stand-alone dump tool
+-# * vmcmd:      Issue z/VM CP commands
+-# * reipl:      Re-IPL Linux using setting under /sys/firmware/reipl
+-# * dump_reipl: First dump Linux with stand-alone dump tool, then re-IPL Linux
+-#               using setting under /sys/firmware/reipl
++# * stop:	Stop Linux (default)
++# * dump:	Dump Linux
++# * vmcmd:	Issue z/VM CP commands
++# * reipl:	Re-IPL Linux using setting under /sys/firmware/reipl
++# * dump_reipl:	First dump Linux, then re-IPL Linux using setting under
++#		/sys/firmware/reipl
+ #
++ON_PANIC="stop"
+ 
+-# For the actions "reipl" and "dump_reipl" the DELAY_MINUTES keyword may
+-# be used to delay the activation of dumpconf.
+-# Thus potential reipl loops caused by kernel panics
+-# which persistently occur early in the boot process can be prevented.
++## Type:		integer(0:300)
++## Default:		5
++## ServiceRestart:	dumpconf
++#
++# Using reipl or dump_reipl actions with ON_PANIC can lead to the system
++# looping with alternating IPLs and crashes. Use DELAY_MINUTES to prevent
++# such a loop. DELAY_MINUTES delays activating the specified panic action
++# for a newly started system. When the specified time has elapsed, dumpconf
++# activates the specified panic action. This action is taken should the
++# system subsequently crash. If the system crashes before the time has
++# elapsed the previously defined action is taken. If no previous action has
++# been defined the default action (STOP) is performed.
++#
++DELAY_MINUTES="5"
+ 
+-# Dump on CCW device (DASD) and re-IPL after dump is complete.
+-# The re-IPL device, as specified under "/sys/firmware/reipl", is used.
+-# The activation of dumpconf is delayed by 5 minutes.
++## Type:		list(ccw,fcp)
++## Default:		""
++## ServiceRestart:	dumpconf
++#
++# Define the type, ccw for DASD and fcp for zFCP.
+ #
+-# ON_PANIC=dump_reipl
+-# DUMP_TYPE=ccw
+-# DEVICE=0.0.4e13
+-# DELAY_MINUTES=5
++DUMP_TYPE=""
+ 
++## Type:		string
++## Default:		""
++## ServiceRestart:	dumpconf
+ #
+-# Dump on fcp device (SCSI Disk)
++# Define the device id for a DASD or SCSI over zFCP dump device.
+ #
+-# ON_PANIC=dump
+-# DUMP_TYPE=fcp
+-# DEVICE=0.0.4711
+-# WWPN=0x5005076303004711
+-# LUN=0x4711000000000000
+-# BOOTPROG=0
+-# BR_LBA=0
++# For example (DASD and SCSI over zFCP have the same structure): DEVICE=0.0.4711
++#
++DEVICE=""
+ 
++## Type:		string
++## Default:		""
++## ServiceRestart:	dumpconf
++#
++# Define the WWPN for a zFCP dump device.
+ #
+-# Use VMDUMP
++# For example: WWPN=0x5005076303004711
+ #
+-# ON_PANIC=vmcmd
+-# VMCMD_1="MESSAGE * Starting VMDUMP"
+-# VMCMD_2="VMDUMP"
+-# VMCMD_3="IPL 4711"
++WWPN=""
+ 
++## Type:		string
++## Default:		""
++## ServiceRestart:	dumpconf
++#
++# Define the LUN for a zFCP dump device.
++#
++# For example: LUN=0x4711000000000000
++#
++LUN=""
++
++## Type:		integer(0:30)
++## Default:		"0"
++## ServiceRestart:	dumpconf
++#
++# Define the Boot program selector for a zFCP dump device.
++#
++# A decimal value between 0 and 30 specifying the program to be loaded from
++# the FCP-I/O device.
++#
++BOOTPROG="0"
++
++## Type:		string
++## Default:		"0"
++## ServiceRestart:	dumpconf
++#
++# Define the Boot record logical block address for a zFCP dump device.
+ #
+-# Stop Linux (default)
++# The hexadecimal digits designating the logical-block address of the boot record of the FCP-I/O device.
++# It must be a value from 0-FFFFFFFF FFFFFFFF. For values longer than 8 hex characters at least one separator
++# blank is required after the 8th character.
+ #
+-# ON_PANIC=stop
++BR_LBA="0"
+ 
++## Type:		string
++## Default:		""
++## ServiceRestart:	dumpconf
+ #
+-# Re-IPL Linux
+-# The re-IPL device, as specified under "/sys/firmware/reipl", is used.
+-# Since the DELAY_MINUTES keyword is omitted, there is no delay and
+-# dumpconf becomes active immediately during system startup.
++# VMCMD_<X>
++# Specifies a CP command, <X> is a number from one to eight. You can
++# specify up to eight CP commands that are executed in case of a kernel
++# panic. Note that VM commands, device adresses, and VM guest names
++# must be uppercase.
+ #
+-# ON_PANIC=reipl
++VMCMD_1=""
++VMCMD_2=""
++VMCMD_3=""
++VMCMD_4=""
++VMCMD_5=""
++VMCMD_6=""
++VMCMD_7=""
++VMCMD_8=""
+-- 
+1.8.1.4
+

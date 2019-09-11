@@ -1,0 +1,13 @@
+Index: Makefile.in
+===================================================================
+--- Makefile.in.orig
++++ Makefile.in
+@@ -255,7 +255,7 @@
+ 	@$(LIBTOOL) --mode=install $(SHTOOL) install -c -s -m 755 uuid $(DESTDIR)$(bindir)/
+ 	$(SHTOOL) install -c -m 644 $(S)/uuid.1 $(DESTDIR)$(mandir)/man1/
+ 	-@if [ ".$(WITH_PERL)" = .yes ]; then \
+-	    (cd $(S)/perl && $(MAKE) $(MFLAGS) install DESTDIR=$(DESTDIR)); \
++	    (cd $(S)/perl && $(MAKE) $(MFLAGS) install_vendor DESTDIR=$(DESTDIR)); \
+ 	fi
+ 	-@if [ ".$(WITH_PHP)" = .yes ]; then \
+ 	    (cd $(S)/php && $(MAKE) $(MFLAGS) -f Makefile.local install EXTDIR=$(prefix)/lib/php PHP=$(PHP) DESTDIR=$(DESTDIR)); \

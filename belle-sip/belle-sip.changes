@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Fri Jul 21 13:30:37 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.6.3 (changes since 1.6.1):
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Wed May 17 15:00:49 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.6.1:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Sat Sep 17 12:50:36 UTC 2016 - idonmez@suse.com
+
+- Remove reference to unneeded wakelock.h file (fix-build.patch) 
+
+-------------------------------------------------------------------
+Tue Sep 13 12:54:30 UTC 2016 - sor.alexei@meowr.ru
+
+- Switch to building with CMake.
+- Add belle-sip-fix-pkgconfig.patch: Fix up pkgconfig.
+
+-------------------------------------------------------------------
+Sun Sep 11 16:43:13 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.5.0:
+  * Move general purpose and encryption related functions to
+    bctoolbox, which becomes a mandatory dependency.
+  * mbedTLS support through bctoolbox.
+  * SUBSCRIBE/NOTIFY dialog improvements: can be created upon
+    reception of NOTIFY (as requested by RFC), automatic deletion
+    when dialog expires.
+  * Fix: Retransmit 200Ok of a reINVITE (was formely only done for
+    initial INVITE).
+  * Add support for zlib in body handling.
+
+-------------------------------------------------------------------
+Fri Nov  6 19:00:45 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.4.2:
+  * Support of Accept, Content-Disposition and Supported headers.
+  * Bug fixes.
+- Add baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Jul 20 19:09:15 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.4.1
+  * Bug fixes
+
+-------------------------------------------------------------------
+Mon Mar 23 10:16:05 UTC 2015 - sor.alexei@meowr.ru
+
+- Switch from obsolete polarssl to mbedtls.
+
+-------------------------------------------------------------------
+Sun Mar 15 16:35:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.4.0 (changes since 1.3.0):
+  * DNS SRV weight selection.
+  * Support of multipart messages.
+  * Support of backslash escaped display name.
+  * Support of display names of type (token LWS)* instead of just
+    token.
+  * Support for absolute URIs.
+- Remove 0001-fix-license-headers.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Nov  6 16:09:07 UTC 2014 - tchvatal@suse.com
+
+- Use gpl2+ as is in the files not just gpl2
+- Fix build on factory
+- Run autoreconf to avoid double configure run
+- Disable silent rules
+- Disable Werror
+
+-------------------------------------------------------------------
+Thu Oct  9 22:56:44 UTC 2014 - fisiu@opensuse.org
+
+- Add 0001-fix-license-headers.patch: fix license header in files, to be GPLv2.
+
+-------------------------------------------------------------------
+Fri Aug 15 17:45:23 UTC 2014 - fisiu@opensuse.org
+
+- Enable tls with polarssl library.
+
+-------------------------------------------------------------------
+Wed Aug 13 20:06:58 UTC 2014 - fisiu@opensuse.org
+
+- Initial package at version 1.3.0.
+

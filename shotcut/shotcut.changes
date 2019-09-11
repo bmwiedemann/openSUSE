@@ -1,0 +1,742 @@
+-------------------------------------------------------------------
+Thu Aug  8 08:59:27 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Update to release version 19.08.05
+- Added shotcut-with-mlt-6.16.0.patch to fix build with mlt < 6.17.0
+- Upstream changes:
+  *Use x264 default crf 23 = 55%
+  *Fix showing vidstab.trf as missing file.
+  *Fix conflicting FindFilterParser classes.
+  *Enqueue pending analysis jobs on export.
+  *Convert Lens Correction to show percentage.
+  *Cleanup previous commit to qmlfilter.cpp
+  *Change shortcut Shift+C to be Playlist Copy.
+  *Change Playlist Open and add Copy.
+  *Add trim support to an opened playlist item.
+  *Add text for conversion of quality % in Export.
+  *Add support for interlace to convert and reverse.
+  *Add keyframes to Mosaic filter.
+  *Add description to external screens (#757).
+
+-------------------------------------------------------------------
+Mon Jul  8 12:04:59 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Update to release version 19.07.07
+- Upstream changes:
+  *Use DNxHR instead of ProRes in Convert/Reverse.
+  *Fix filters added after transitions.
+  *Fix incorrect audio waveform after undo timeline insert.
+  *Fix timecode of job failure if fps != 25 and not changed.
+  *Use the producer width/height as limits for Crop: Source.
+  *Fix vbr=constrained for libopus avergage bitrate.
+  *Fix #753 multiple stabilize jobs write to same file.
+  *Do not convert decimal in text of Text:Simple preset.
+  *Fix #751 1080p50 missing from video modes.
+  *Fix loading export preset with frame_rate_num/_den.
+  *Fix #750 keyframes removed when trimming.
+  *Fix seeking filter end not seeking timeline.
+  *Fix save XML backup fails if removing temp file fails.
+  *Show a message when project is loading.
+  *Fix crash changing speed to very low by increasing minimum.
+
+-------------------------------------------------------------------
+Thu Jul  4 09:07:36 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Update to release version 19.06.15
+- Upstream changes:
+  *Changed the Timeline and Keyframes rulers interval to 5 seconds
+   and show only HH:MM:SS and no frame units.
+  *Renamed video filter Circular Frame to Crop: Circle.
+  *Renamed video filter Crop to Crop: Source.
+  *Renamed video filter Text to Text: Simple.
+  *Renamed video filter 3D Text to Text: 3D.
+  *Renamed video filter Overlay HTML to Text: HTML.
+  *Renamed video filter Blur to Blur: Box.
+  *Renamed Reduce Noise video filter to Reduce Noise: Smart Blur.
+  *Changed Export > From to show Source instead of base file name.
+  *Changed maximum duration of Color, Text, and Color Bars clips to
+   4 hours.
+  *Increased maximum value of the Timer filter’s Start Delay,
+   Duration, and Offset parameters to 24 hours.
+  *Improved Export Job progress and estimated time remaining.
+  *Blur: Exponential (fast)
+  *Blur: Low Pass (fast)
+  *Blur: Gaussian (slow)
+  *Show Text Under Icons (default on)
+  *Show Small Icons (default off)
+  *Added Jobs to the main toolbar. Jobs toolbar icon
+  *Reordered panel buttons on main toolbar to match View menu.
+  *Added Ripple All button to Timeline toolbar. Ripple all tracks
+   icon
+  *Added a vertical Flip video filter.
+  *Added Reduce Noise: HQDN3D video filter.
+  *Added Noise: Fast video filter.
+  *Added Noise: Keyframes video filter.
+  *Added Add Keyframe button in Keyframes (only on parameters that
+   show a curve UI). Add keyframe icon
+  *Added keyboard shortcuts Ctrl+0-9 to toggle the panels.
+  *Added Alt 0/+/- shortcuts to adjust the zoom in Keyframes.
+  *Added Swedish translation.
+  *Fixed deleting the project file if there was a save error.
+  *Fixed Crop: Source filter not working with Color clip.
+  *Fixed using filters on Color Bars and other generator clips.
+  *Fixed audio filters (Compressor, Expander, Limiter, Notch,
+   Reverb) broken\ on comma for decimal.
+  *Fixed alpha video opaque on gaps in Timeline.
+  *Fixed Convert to Edit-friendly and Reverse if there is no audio
+   track.
+  *Fixed Measure Video Quality broken.
+  *Fixed Alpha: Adjust > Invert checkbox on reload.
+  *Fixed color eye-dropper (picker) error.
+  *Fixed audio Pan filter channel resets on reload.
+  *Fixed a crash using Mirror filter before Rotate and Scale or
+   Size and Position.
+  *Fixed poor Reverse audio quality for mp4 and mkv options.
+  *Fixed the Simple Scroll HTML template may not scroll up or left
+   completely.
+
+-------------------------------------------------------------------
+Thu May  9 07:13:19 UTC 2019 - plater <davejplater@gmail.com>
+
+- Set minimum qt version to 5.9.0
+
+-------------------------------------------------------------------
+Wed May  8 08:09:35 UTC 2019 - plater <davejplater@gmail.com>
+
+- Update to release 19.04.30.
+  Upstream changes:
+    Added:
+  *(creation) Date column to Playlist Details view.
+  *Set File Date… to the Playlist menu and item context menu.
+  *Sort By Name and Sort By Date to the Playlist menu.
+  *These are single-shot sorting commands. The playlist is still
+   fixed-ordering. The new options do not automatically sort new
+   playlist entries.
+  *new video filters:
+    Grid
+    Audio Dance Visualization
+    Audio Light Visualization
+    RGB Shift
+    Glitch
+    Distort
+  *Zoom 300%, 400%, 500%, 750%, and 1000% to the zoom menu.
+  *Display Method > OpenGL or Software (Mesa) on Linux.
+  *Norwegian Nynorsk translation.
+   Fixed:
+  *reading some AVCHD files after a camcorder splits.
+  *Video Waveform scope graticule not showing on non-dark theme.
+  *incorrect compositing z-order after Insert Track.
+  *current track changes after inserting or overwriting a clip in 
+   Timeline.
+  *first clip does not start at beginning when drop to Timeline
+   after File > New or File > Close.
+  *Properties > Convert and Reverse on files with album art or
+   embedded thumbnail.
+  *a possible crash on File > New or File > Close.
+  *filters on clips not extended into transition when adding a
+   transition by trimming or resizing a transition.
+  *Open Other > ALSA Audio on toolbar on Linux.
+  *changing Properties > Speed or Color Range on a timeline clip
+   may crash.
+  *timeline correction when drag clip to another track and then
+   back to original.
+  *reloading the Mask: From File filter resets Threshold keyframes.
+  *the Mask: Simple Shape filter does not work when Width or Height
+   is 0%
+
+-------------------------------------------------------------------
+Tue Mar  5 11:41:54 UTC 2019 - mvetter@suse.com
+
+- Update to version 19.02.28:
+- Upstream changes:
+  * Added Offset to the Timer video filter.
+  * Added Vertical HD 30 fps and Vertical HD 60 fps video modes.
+  * Added support for HTTPS.
+  * Added --QT_SCALE_FACTOR and --QT_SCREEN_SCALE_FACTORS[4]
+    command line options.
+  * Added English (Great Britain) translatio
+  * Fixed opening image sequence on Windows with extended/special
+    characters in file path/name.
+  * Fixed crash on some video clips, particularly those with
+    Google Pixel 3 and likely others.
+  * Fixed field order with interlaced export.
+  * Fixed an image artifact when using keyframes with the Mask:
+    Simple Shape filter.
+  * Fixed image and alpha channel integrity with transitions on
+    clips with a non-opaque alpha channel.
+  * Fixed a crash when changing clip Properties > Audio > Track.
+  * Fixed Properties > Video > Color Range inaccurate after
+    changing it.
+  * Fixed Shake One Second presets in regions that use comma for
+    decimal point.
+  * Fixed moving a Playlist item to the end.
+  * Fixed more dialogs to be modal to prevent them from going
+    behind the main window.
+  * Fixed Overlay HTML webvfx templates when using a project folder.
+  * Fixed volume slider appears before main window at launch on macOS.
+  * Fixed more dialogs to use sheet style on macOS.
+  * Fixed a few small memory leaks in MLT.
+  * Changed Width and Height minimum to 0 for Blur filter.
+  * Set the Save as type list on all file save dialogs.
+  * Improved the quality of Export Frame > WebP.
+  * Show “Not Seekable” instead of “Live” when opening a
+    non-seeable clip (or device or stream).
+  * Show a status message when trying to drag from Project player.
+  * Prefer loading DLLs in Shotcut’s install folder over
+    those in System32.
+  * Default the out point of the Color, Count, and Text generator
+    clips to the same as image duration (default 4 seconds).
+
+-------------------------------------------------------------------
+Mon Feb  4 11:32:46 UTC 2019 - davejplater@gmail.com
+
+- Update to version 19.01.27
+- Upstream changes:
+  *Fix reloading the Levels on locale with comma as radix.
+  *Fix reload the Swirl filter UI.
+
+-------------------------------------------------------------------
+Fri Jan 25 12:04:40 UTC 2019 - davejplater@gmail.com
+
+- Update to version 19.01.24
+- Upstream changes:
+  *Fix Mirror filter before an offine filter.
+  *Fix right click keyframe changes its position.
+  *Fix distortion changing Scale param keyframe type.
+  *Add HTML templates for Creative Commons Music.
+  *Add margin: 0 to other HTML templates.
+  *Remove HTML resources no longer used.
+  *Add Swirl filter based on GL Transitions.
+  *Fix Simple Scroll template does not scroll completely.
+  *Fix #689 new project broken on KDE Linux.
+  *Add Chroma Hold video filter.
+  *Fix extended chars using Alt key on Windows.
+  *Fix escape color picker leaves filter disabled.
+  *Let Chroma Key Simple picker disable filter.
+  *Fix disable QmlFilter checkbox state.
+  *Fix dropping file with special characters.
+
+-------------------------------------------------------------------
+Sun Jan 20 12:07:47 UTC 2019 - davejplater@gmail.com
+
+- Update to version 19.01.19 and remove shotcut-QAction.patch which
+  is no longer relevant.
+- Upstream changes:
+  *Fix Overlay HTML filter height.
+  *Use generic sans-serif font face instead of Arial.
+  *Add templates for Overlay HTML.
+  *Fix using relative path to asset in HTML editor.
+  *Add SVG to the HTML editor's open image dialog.
+  *Add Slow Zoom, Hold presets.
+  *Remove the old presets with "Pan" in them.
+  *Change animation presets Pan -> Move.
+  *Fix calling the correct parent onFinished().
+  *Auto retry export job without parallel processing.
+  *Add Center Playhead to the Keyframes menu.
+  *Add Center Playhead option to Timeline menu.
+  *Fix aspect ratio for Export Frame.
+  *Fix trim to remove transition adds frames.
+  *Fix ripple trim when clip has a transition.
+  *Fix filter not adjusted when trim transition.
+  *Change maximum for Speed to 50.
+  *Default to first DirectShow devices.
+  *Improve Color Grading filter UI.
+  *Fix speed when the region and language radix differ.
+  *Fix changing speed can move clip.
+  *Refactor m_updateCommand to QScopedPointer.
+  *Fix no hardware encoders found with space in path.
+  *Fix Video Mode in New Project.
+  *Prioritize display over other frameDisplayed slots.
+  *Fix external monitoring on Linux screen.
+  *Fix missing file for Stabilize without Analyze.
+  *Fix audio changed by Mask From File video filter.
+
+-------------------------------------------------------------------
+Mon Dec 24 12:11:29 UTC 2018 - davejplater@gmail.com
+
+- Update to 18.12.23
+- Upstream changes:
+  *Fix #683 Linux start crash with csladspa.
+  *Fix simple keyframes for new Mask filters.
+  *Remove 90ms delta between refreshes.
+  *Add video histogram scope.
+  *Make the Export buttons always visible.
+  *Add a checkbox for Threshold on Mask: From File.
+  *Fix File label in Mask: From File.
+
+-------------------------------------------------------------------
+Mon Dec 17 07:43:07 UTC 2018 - davejplater@gmail.com
+
+- Update to version 18.12.15.
+- Package newly installed man page.
+- Upstream changes:
+  *Fix using luma mask to always use brightness.
+  *Add filter Mask: From File.
+  *Replace Mask with Simple Shape and Apply.
+  *Play from start if try to start play at the end.
+  *Automatically add reverse clip to playlist and open it.
+  *Let Reverse use project folder.
+  *Fix Save not removing autosave file.
+  *Fix #677 number of digits export each playlist item.
+  *Do not recreate clip if speed was not changed.
+  *Update man page and install it. (#676)
+  *Add Color Range with override to Properties.
+  *Move Reverse out of the Properties menu.
+  *Minor improvement for command line usage (#676).
+  *Add Levels video filter.
+  *Fix New Project > Start does not actually save .mlt file.
+  *Fix numeric locale issue in audio visualization filters.
+  *Fix backward compat. of audio balance and pan.
+  *Add preset and keyframes to audio balance and pan filters.
+  *Fix off-by-one error in quality scale conversions.
+  *Fix #674 color generator inaccurate.
+  *Fix some filters with keyframes and preset.
+  *Add more thread locks around autosave file.
+  *Fix #671 crash when undo Playlist > Remove All.
+  *Include libselinux for Linux.
+  *Use mkpath() to create project folder.
+
+-------------------------------------------------------------------
+Mon Nov 19 11:29:09 UTC 2018 - davejplater@gmail.com
+
+- Update to 18.11.18
+- Upstream changes:
+  Improve reliability of HW encoder auto-config.
+  Add MM:SS.SS to Timer Filter.
+  Retain metadata when convert or extract sub-clip.
+  Add IRE measurement to video waveform scope.
+  Alow scroll wheel control of colorwheel.
+  Fix HW encoder detection if ffmpeg times out.
+  Add setting player/warnGPU (default true).
+  Increase video defaults for ABR and CBR.
+
+-------------------------------------------------------------------
+Thu Nov 15 06:58:56 UTC 2018 - davejplater@gmail.com
+
+- Update to 18.11.13 and rebase shotcut-noupdatecheck.patch.
+- Upstream changes:
+  Improve VideoToolbox and VAAPI rate control.
+  Fix A/V device capture.
+  Swap 10 and 20 pixel grid options in menu.
+  Fix #663 broken filters on export each playlist item.
+  Fix #540 crash on undo of split on Timeline.
+  Add checkbox to save state of Export > Advanced.
+  Fix uncheck hardware encoder does not reset.
+
+-------------------------------------------------------------------
+Sun Nov 11 10:35:31 UTC 2018 - davejplater@gmail.com
+
+- Update to 18.11.04
+- Upstream changes:
+  Increase Scale max to 500%.
+  Add Square 1080p video modes.
+  Enable video waveform scope.
+  Fix reopening Timeline changes zoom level.
+  Fix some filters' presets do not save any values.
+  Make GPU Effects hidden and discouraged.
+  Add VA-API encoding for Linux.
+  Make hardware encoder checkbox sticky.
+
+-------------------------------------------------------------------
+Wed Oct 17 08:36:02 UTC 2018 - davejplater@gmail.com
+
+- Update to 18.10.08
+- Droid fonts are no longer present.
+- Rebased shotcut-QAction.patch and shotcut-noupdatecheck.patch.
+- Upstream changes:
+  Fix ffmpeg build on macOS and Linux.
+  Fix VUI rectangle control's fixed aspect ratio handling.
+  Fix timeline rulers inaccurate after video mode fps change.
+  Always supply force argument for waveform function calls.
+  Fix Text filter preset not saving the text.
+  Replace Droid font with Liberation due to incompatible license.
+
+-------------------------------------------------------------------
+Fri Aug 17 11:23:32 UTC 2018 - davejplater@gmail.com
+
+- Update to bugfix release 18.08.14
+- Upstream changes:
+  Fix loading existing Text filter with animation.
+  Fix changing Speed, Duration, or track deletes Comments.
+  Fix selecting clip with speed change corrupts XML.
+
+-------------------------------------------------------------------
+Tue Aug 14 10:39:22 UTC 2018 - davejplater@gmail.com
+
+- Update to 18.08.11
+- Removed shotcut-desktopfile.patch.
+- Rebased shotcut-noupdatecheck.patch.
+- Upstream changes:
+  Use a queued signal to add transition by drag-n-drop clip.
+  Fix crash changing Video Mode with nothing loaded.
+  Use multi consumer if export resolution/aspect differs from
+  project.
+  Fix right-click timeline clip breaks timeline scrolling.
+  Fix track name becomes uneditable after click track head.
+  Fix #616 util.h included twice.
+  Fix making project modified when adding comments or changing sync.
+
+-------------------------------------------------------------------
+Thu Jul  5 08:46:10 UTC 2018 - davejplater@gmail.com
+
+- Removed all trace of droid fonts
+
+-------------------------------------------------------------------
+Tue Jul  3 10:48:06 UTC 2018 - davejplater@gmail.com
+
+- Update to release 18.07.
+- For upstream changes see:
+  https://www.shotcut.org/blog/new-release-1807/
+
+-------------------------------------------------------------------
+Mon Jun 11 15:07:48 UTC 2018 - davejplater@gmail.com
+
+- Update to release 18.06.02 and rebased patches.
+- Fixes build against latest qt5 with shotcut-QAction.patch.
+- Upstream changes:
+  *Remove the old variant with MLT logo, and add 2x variants.
+  *Change app launch splash image.
+  *Add Detach Audio to timeline clip context menu.
+  *Only use YAML for presets with MLT v6.9.0+
+  *Use YAML for filter presets.  *
+  *The legacy preset format does not support multiline text. The YAML
+  *format does support multiline text. Maintain backwards compatiblity
+  *Add double-click action to timeline faders.
+  *Double-click toggles between one second and removing the filters.
+  *Fix audio filters get incorrect channel count state.
+  *Add support for mono and surround to Swap Channels filter.
+  *Add mono and surround support the the Copy Channel filter.
+  *Set bounds on dragging keyframes.
+  *Fix #576 squashed commit of the following:
+        Fix nullptr c++11, which we are not using yet.
+        Copy file date when converting files.
+  *Add support for AMD AMF to Export panel.
+  *Add simple and advanced keyframes to Mask filter.
+  *Add AMD AMF support to FFmpeg build on Windows.
+  *Fix building FFmpeg with NVENC.
+  *Add --enable-libjack for FFmpeg 4.0
+  *Upgrade to FFmpeg 4.0
+  *Add keyframes to Saturation filter.
+  *Add a keyboard shortcuts link to the Help menu.
+  *Fix #572 restart with command line arguments.
+  *Refresh after changing interpolation or deinterlacer.
+  *Fix many frames dropped on start of playback from pause.
+  *Fix small memory leak in Open Other dialog.
+  *Add keyframes to Blur filter.
+  *Fix KeyframesButton's tooltip getting stuck showing.
+  *Add undo buttons to Size and Position filter UI.
+  *Fix #568 libopus breaks audio rate control options.
+  *Add Reverse to clip Properties menu.
+  *Add many animated presets to Size and Position.
+  *Fix filter duration and simple keyframes after split and merge.
+  *Fix animate/fade out when trimming in on timeline.
+  *Add double-click for simple keyframes.
+  *Increase size of avformat producer cache per MLT change.
+  *Fix #557 by limiting threads and thus memory usage on 32-bit.
+  *Only adjust filter when trimming clip if filter is not trimmed.
+  *Use UTF-8 for FFmpeg device strings.
+  *Change Mask default rotation to 50%.
+  *Adjust simple keyframes on non-current filters when trimming.
+  *Reduce opacity when VUI rectangle control is disabled.
+  *Fix #555 track & master filter durations not adjusted.
+  *Fix name of master & track filters in Keyframes dock.
+  *Additional GPU checking and clarifications.
+  *Make MLT XML file dropped onto Playlist into a virtual clip.
+  *Fix #554 repeated File > Close crashes.
+
+-------------------------------------------------------------------
+Wed May  9 11:15:37 UTC 2018 - davejplater@gmail.com
+
+- Update to bug fix release 18.05.08
+- Upstream changes:
+  *Fix QML producer object not updated before loading filter UI.
+  *Fix fade out filters incorrect after changing out point.
+  *Fix broken fade out control on Timeline.
+  *Fix Fade Out Audio raises volume.
+  *Fix endOfStream signal off by one frame.
+
+-------------------------------------------------------------------
+Sun May  6 12:34:44 UTC 2018 - davejplater@gmail.com
+
+- Update to release 18.05 and rebased shotcut-noupdatecheck.patch.
+- Upstream changes:
+  *Added Keyframe support with a new Keyframes panel.
+  *Added 5.1 Surround Sound.
+  *Added Finnish translation.
+  *Restored GIF Animation for Export.
+  *Reduced memory footprint (especially for the Rotate and Size and
+   Position filters).
+  *Changed default Export settings to reduce output size by
+   increasing GOP and number of B frames.
+  *See https://shotcut.org/blog/new-release-1805/
+
+-------------------------------------------------------------------
+Tue Apr 24 10:58:20 UTC 2018 - davejplater@gmail.com
+
+- Update to bug fix release 18.03.06
+- Upstream changes:
+  *Fix multiply handled KeyEvent regression in Fix #344 shortcut
+   not working with undocked Timeline.Fix multiply handled KeyEvent
+   regression in Fix #344 shortcut not working with undocked
+   Timeline.
+  *Fix added Fade Out Volume shows incorrect on Timeline.
+  *Fix track name not editable regression in Fix #344 shortcut not
+   working with undocked Timeline.
+  *Add Mosaic filter.
+
+-------------------------------------------------------------------
+Mon Mar  5 11:54:45 UTC 2018 - davejplater@gmail.com
+
+- Update to release 18.03
+- Upstream changes:
+  *Add Estonian translation.
+  *Fix existing mask filter loading incorrect values.
+  *Fix #500 add transition by trimming may shift a clip.
+  *Fix #362 Size filter not using correct decimal symbol.
+  *Fix #503 crash setting Video Mode after New.
+  *Swap role of Alt+Wheel for timeline scroll.
+  *Improve timeline track pad behavior.
+  *Fix #497 mouse wheel/trackpad scrolling.
+  *Fix #344 shortcut not working with undocked Timeline.
+  *Fix #486 JACK transport glitches.
+  *Fix #361 JACK client connects itself.
+  *Fix #487 split validation off by one frame.
+  *Avformat properties improvements.
+
+-------------------------------------------------------------------
+Wed Jan  3 13:37:10 UTC 2018 - davejplater@gmail.com
+
+- Update to 18.01
+- Upstream changes:
+  *Add a Mask video filter.
+  *Add support for size and italics of font.
+  *Add Audio Spectrum Visualization filter.
+  *Fix duration on image clips with in point > 0.
+  *Fix memory leak calling Mlt::Playlist::replace_with_blanks().
+  *Fix regression in Fix #474 changing properties of color clip
+   changes duration. broke trimmed avformat clips.
+  *Fix checkbox on low free space dialog not working.
+  *Fix #474 changing properties of color clip changes duration.
+  *Fix states for showing convert clip dialog.
+  *Fix #431 multi-line text may cause export to hang.
+
+-------------------------------------------------------------------
+Sat Dec  9 14:43:26 UTC 2017 - davejplater@gmail.com
+
+- Update to 17.12 and rebase shotcut-noupdatecheck.patch.
+- Upstream changes:
+  *Adjust timeline faders with filters in panel.
+  *Fix #472 adjust timeline faders when add/rm filters in panel.
+  *Fix filter on wrong half after a split shows in transition.
+  *Show job percentage as text again.
+  *Fix #473 JS error in export EDL on orphan transition.
+  *Fix #471 GPU processing not switched when needed by project.
+  *Make new strings conform to "anymore."
+
+-------------------------------------------------------------------
+Thu Dec  7 11:20:18 UTC 2017 - dimstar@opensuse.org
+
+- Escape the usage of %{VERSION} when calling out to rpm.
+  RPM 4.14 has %{VERSION} defined as 'the main packages version'.
+
+-------------------------------------------------------------------
+Sat Nov  4 11:18:02 UTC 2017 - davejplater@gmail.com
+
+- Update to 17.11 and rebase shotcut-noupdatecheck.patch.
+- Upstream changes:
+  *Allow toggle GPU processing in any Display Method.
+  *Remove the frameDisplayed throttle.
+  *Reduce free space theshold to 50 GiB.
+  *Add Nepali translation.
+  *Add warning if the drive for export is low on space.
+  *Display warning if file to export is in project.
+  *Pause upon changing timeline zoom.
+  *Hide the gif format and codec.
+  *Fix adding transition changes selection.
+  *Fix #411 Ripple All Tracks not fully splitting clips.
+  *Fix Add All to Timeline not including filters.
+  *Do not adjust Timeline zoom until slider is released.
+
+-------------------------------------------------------------------
+Tue Oct  3 11:17:19 UTC 2017 - davejplater@gmail.com
+
+- Update to 17.10 and rebase shotcut-noupdatecheck.patch.
+- Upstream changes:
+  *Fixed multi-threaded decoding with FFmpeg v3.2.
+  *Added 1080p 59.94 and 60 fps video modes.
+  *Added support for NVENC to Export panel.
+  *Updated SDL to v2.0
+  *Updated FFmpeg to v3.2
+
+-------------------------------------------------------------------
+Mon Aug 21 13:08:28 UTC 2017 - olaf@aepfle.de
+
+- Recommend lame unconditionally
+
+-------------------------------------------------------------------
+Sat Aug  5 04:24:04 UTC 2017 - davejplater@gmail.com
+
+- Update to 17.08 and rebase shotcut-noupdatecheck.patch.
+- Upstream changes:
+  Add Norwegian Bokmål translation.
+  Increase maximum of speed field.
+  Fix unlinked files dialog not using folder for next open.
+  Add another decimal digit of precision to speed.
+  Fix fade in/out on clip-only project.
+  Fix #442 all image sequences reported missing.
+  Increase maximum Timeline zoom level.
+  Prevent O key (set out) from pausing playback.
+
+-------------------------------------------------------------------
+Fri Jun  9 13:41:32 UTC 2017 - davejplater@gmail.com
+
+- Update to 17.06
+- Require qmelt created in new package webvfx see boo#1043070.
+- Upstream changes:
+  Add Hungarian translation.
+  Fix #428 unable to make image longer than 10 minutes.
+  Pin x264 to version before requiring nasm.
+  Update Chinese translation file.
+
+-------------------------------------------------------------------
+Mon May  8 18:40:53 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from description
+
+-------------------------------------------------------------------
+Thu May  4 09:59:21 UTC 2017 - davejplater@gmail.com
+
+- Update to 17.05
+- Remove auto update with shotcut-noupdatecheck.patch. This also
+  enables reproducible builds.
+- Rebase shotcut-desktopfile.patch
+- Enable libvpx build.
+- Upstream changes:
+  Fix #412 disable waveform generation when hidden.
+  Fix #406 extension included in EDL reel name.
+  Fix #405 JavaScript error in Export EDL.
+  Use MLT to determine decimal point. (#416)
+
+-------------------------------------------------------------------
+Wed May  3 11:11:42 UTC 2017 - davejplater@gmail.com
+
+- Update to 17.04
+- Fix desktop file with shotcut-desktopfile.patch
+- Upstream changes:
+  Added Japanese translation.
+  Added Turkish translation.
+  Fix #399 crash after trying to save empty file.
+  Do not include <profile> with internal MLT XML.
+  Fix missing period before suggested extension.
+
+-------------------------------------------------------------------
+Sun Mar  5 05:59:12 UTC 2017 - davejplater@gmail.com
+
+- Update to 17.03
+- Upstream changes:
+  Converted the track toggle buttons to icons.
+  Now, you can press Del or Backspace to delete a selected item in
+  the Recent panel.
+  Playback now pauses at the out point in the Source player. (After
+  pause, you can press play again to continue beyond the out point.)
+  Some stability improvements.
+  Performance boost for Size & Position and Rotate filters on
+  multi-CPU systems.
+
+-------------------------------------------------------------------
+Mon Feb 20 11:42:47 UTC 2017 - jengelh@inai.de
+
+- Trim description
+- Proper shell quoting and replacement of Useless Use Of Cat
+  (ls -1).
+
+-------------------------------------------------------------------
+Sun Feb  5 06:59:05 UTC 2017 - mailaender@opensuse.org
+
+- version update to 17.02
+- drop fix-building.patch (included upstream)
+  * https://github.com/mltframework/shotcut/pull/331
+
+-------------------------------------------------------------------
+Fri Oct 28 08:02:59 UTC 2016 - adrian@suse.com
+
+- version update to 16.10
+- fixing build for qt 5.5: fix-building.patch
+
+-------------------------------------------------------------------
+Tue Oct 25 09:36:27 UTC 2016 - davejplater@gmail.com
+
+- Update version 16.08, the highest version to work with qt-5.5
+- Required specific version of frei0r-plugins to prevent segfault
+- Upstream changes:
+    Added count-down (or up) generator: File > Open Other > Count
+    Major performance boost for opaque clips on video tracks higher
+    than V1 with track Composite enabled and Blend mode: Over.
+  Release 16.07
+    Added File > Export Frame…
+    Added Remove transition to History by trimming a neighboring
+    clip to remove it.
+    Fixed version checker.
+
+-------------------------------------------------------------------
+Sun Oct 23 20:51:40 UTC 2016 - wbauer@tmo.at
+
+- Required libqt5-qtgraphicaleffects, this is needed for the
+  timeline to work. See :
+  https://forums.opensuse.org/showthread.php/520592-shotcut-video-editor-timeline-blank/page3
+
+-------------------------------------------------------------------
+Wed Jun 15 18:12:43 UTC 2016 - avvissu@yandex.by
+
+- Update to 16.06:
+  * see: http://www.shotcut.org/bin/view/Shotcut/ReleaseNotes
+- Add Requires: libvpx
+
+-------------------------------------------------------------------
+Wed May  4 19:34:11 UTC 2016 - avvissu@yandex.by
+
+- Update to 16.05:
+  * see: http://www.shotcut.org/bin/view/Shotcut/ReleaseNotes
+- Use %%make_jobs and %%qmake5_install (see: /etc/rpm/macros.qt5)
+
+-------------------------------------------------------------------
+Fri Apr  8 15:43:30 UTC 2016 - avvissu@yandex.by
+
+- Update to 16.04:
+  * see: http://www.shotcut.org/bin/view/Shotcut/ReleaseNotes
+
+-------------------------------------------------------------------
+Tue Jan 12 21:01:32 UTC 2016 - avvissu@yandex.ru
+
+- Update to 16.01:
+  * see: http://www.shotcut.org/bin/view/Shotcut/ReleaseNotes
+
+-------------------------------------------------------------------
+Fri Dec  4 21:52:05 UTC 2015 - avvissu@yandex.ru
+
+- Update to 15.12:
+  * see: http://www.shotcut.org/bin/view/Shotcut/ReleaseNotes
+
+-------------------------------------------------------------------
+Tue Nov 10 21:58:58 UTC 2015 - avvissu@yandex.ru
+
+- Update to 15.11:
+  * see: http://www.shotcut.org/bin/view/Shotcut/ReleaseNotes
+- Use Qt5 >= 5.5.0
+- Add BuildRequires: libqt5-qtdeclarative-private-headers-devel
+- Use %%qmake5 instead of qmake-qt5
+- Search for executable files
+- Add language packs
+
+-------------------------------------------------------------------
+Fri Aug 14 02:35:00 UTC 2015 - avvissu@yandex.ru
+
+- Update to 15.08:
+  * see: http://www.shotcut.org/bin/view/Shotcut/ReleaseNotes
+- Add %BUILD_ORIG macro to build in Packman 
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Nov 30 11:12:55 UTC 2013 - dap.darkness@gmail.com
+
+- Initial package.

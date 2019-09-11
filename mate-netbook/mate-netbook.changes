@@ -1,0 +1,197 @@
+-------------------------------------------------------------------
+Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.22.1:
+  * maximus: Fix a segmentation fault.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * Avoid deprecated gdk_error_trap_push/pop and gdk_flush.
+  * Disable deprecation warnings for distcheck.
+  * tomboykeybinder: Avoid deprecated gdk_keymap_get_default.
+  * Update translations.
+
+-------------------------------------------------------------------
+Mon Jun 18 21:00:15 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Require GTK+ 3.22 and GLib 2.50.
+  * An implementation of WidthOfScreen and HeightOfScreen.
+  * window picker: Add an icon to the Preferences dialogue.
+  * window picker: Disable vertical expand of a button in the
+    Preferences dialogue.
+  * window picker: Add an icon for taskbar to the About dialogue.
+- Add mate-netbook-gtk-3.20.patch: Restore GLib 2.48 and GTK+ 3.20
+  support.
+
+-------------------------------------------------------------------
+Wed Oct 25 14:20:21 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.2:
+  * Window Picker Applet: Disconnect signal handlers to prevent
+    possible crash.
+  * Window Picker Applet: Various UI fixes in dialogues.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun May 14 16:04:41 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.1:
+  * Maximus: Do not crash on invalid window ID.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Build: Require mate-panel >= 1.17.
+  * Move to GTK+3 (require GTK+ >= 3.14), drop the GTK+2 code and
+    --with-gtk build option.
+  * Update translations.
+
+-------------------------------------------------------------------
+Mon Oct 10 20:32:20 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.1:
+  * Window Picker Applet: Fix invisible icons in the GTK+3 build.
+  * Window Picker Applet: Fix an occasional runtime warning about
+    workspace being NULL.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Window Picker Applet: Use GtkAboutDialog instead of
+    MateAboutDialog.
+  * Window Picker Applet: Prevent possible crash
+  * mate-maximus: Port from libunique to GApplication.
+  * Drop dependencies on libmate-desktop and libunique.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * Update translations.
+  * Fix Changelog generation.
+
+-------------------------------------------------------------------
+Wed Jan 27 06:26:36 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0:
+  * GTK+3: Fix some deprecations.
+  * Drop MateConf migration script.
+  * Several fixes and cleanups.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0.
+
+-------------------------------------------------------------------
+Wed Oct 14 20:55:49 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0:
+  * Window Picker Applet: have background automatically painted.
+  * Retrieve strings directly from gschema (requires intltool
+    0.50.1).
+  * Several small fixes and cleanups.
+- Own /usr/share/mate-panel/.
+
+-------------------------------------------------------------------
+Fri May  8 09:34:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.0:
+  * Do not memory leak.
+  * Require GLib >= 2.36.
+  * [mate-maximus] Respect "undecorate" setting.
+  * [window picker applet] Use
+    mate_gdk_spawn_command_line_on_screen always.
+  * [mate-maximus] First connect to settings, then read them.
+  * [window picker applet] Fix indentation.
+  * [window picker applet] Do not mess with mate-maximus settings.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Oct 26 18:59:47 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.0
+  + Use MateAboutDialog
+- Fix version requirements
+
+-------------------------------------------------------------------
+Fri Oct  3 10:05:17 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.1
+  + Fix segfault on applet load
+  + Add manpage
+
+-------------------------------------------------------------------
+Wed Mar  5 12:53:55 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Thu Feb 20 14:06:59 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.90
+  + add GTK3 support
+  + use libwnck instead of libmatewnck
+  + fix long delay with different window managers than marco
+- Replace libmatewnck requirement with libwnck; dependency has been 
+  modified by upstream
+- Remove useless mate-doc-utils dependency; package doesn't contain 
+  any documentation
+
+-------------------------------------------------------------------
+Wed Jan  1 21:16:38 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.6.1
+  + Applet, add gsettings_SCHEMAS_in_in var for EXTRA_DIST
+  + Add applet ui file to EXTRA_DIST
+  + Fix EXTRADIST for maximus schemas
+  + Correct typo EXTRA_DIST for window picker applet
+  + Silence libtool warnings
+  + Remove trailing whitespace
+  + Fix long delay with different window managers
+    Closes #6 (https://github.com/mate-desktop/mate-netbook/issues/6)
+  + Add -lm to the linker
+    Fixes /usr/bin/ld: note: 'cos@@GLIBC_2.0' is defined in DSO
+    /lib/i386-linux-gnu/libm.so.6 so try adding it to the linker
+    command line
+  + Remove ALL_LINGUAS from configure script
+- Remove export LDFLAGS="$LDFLAGS -lm"; fixed by upstream
+
+-------------------------------------------------------------------
+Wed Apr  3 23:24:25 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.0
+  + update translations
+
+-------------------------------------------------------------------
+Wed Mar 27 21:23:17 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5.1.
+  + fix some warnings, and one deprecation on g_thread_init()
+  + enable maximus only if window picker applet is active
+  + fix context menu in window picker applet
+  + update about window
+
+-------------------------------------------------------------------
+Sat Dec  1 15:57:28 UTC 2012 - nmo.marques@gmail.com
+
+- Initial package
+

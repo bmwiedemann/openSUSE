@@ -1,0 +1,701 @@
+-------------------------------------------------------------------
+Tue May  8 16:03:08 UTC 2018 - schwab@suse.de
+
+- Define MathGL_INSTALL_CMAKE_DIR to correct location
+
+-------------------------------------------------------------------
+Thu Mar 29 10:41:12 UTC 2018 - guillaume@opensuse.org
+
+- Update to 2.4.2:
+  * Add custom dialog for FLTK widgets. This can be constructed from 
+    C/C++ code, or from MGL script using Special commentaries.
+  * Add progress for displaying the progress of execution (by ’#’ 
+    symbols in console, or by progress-bar widget).
+  * Add contp for contour lines on parametrically specified surface.
+  * Add flow3 for flow threads of 3D vector field, which start from 
+    the plain.
+  * Add variant of flow for drawing a flow thread, starting from 
+    specified point.
+  * Add scaletext for disabling text size scaling in relative 
+    inplot-s (like columnplot, ...).
+  * Add setup for setting all low-level flags.
+  * Add coil for projecting periodical data.
+  * Add modulo operation ‘%’ (x%y=fmod(x,y)) to the list of known 
+    operations in real-valued formulas.
+  * Add style ‘.’ for cont to draw contour lines from saddle points.
+  * Add style ‘.’ for flow to draw flow thread from saddle points.
+  * Add option value in tube for setting number of edges manually.
+  * Crop output of ode if NAN or INFINITY value occurs.
+  * Remove style ‘~’ for plot and tens. Now, all curves try to omit 
+    points.
+  * Add setup flag MGL_FULL_CURV which disable omitting points of curve.
+  * Shift axis labels closer to axis.
+  * Change size of LaTeX-like commands \sup, \sub to be the same as
+    \overset, \underset.
+  * Change ticks drawing in colorbar.
+  * Add new section All samples of documentation with large set of 
+    samples for most of MathGL features.
+  * Samples in documentation are generated automatically now 
+    (from sample.cpp).
+  * INCOMPATIBLE: Make obsolete MGL command setsizescl. At this, the 
+    similar C/C++/Fortran/... functions still working.
+  * Bugfixes.
+- Rebase patch:
+  * mathgl-examples-install.patch 
+
+-------------------------------------------------------------------
+Tue Mar  6 17:05:26 UTC 2018 - toddrme2178@gmail.com
+
+- Have the -tex-doc subpackage conflict with texlive-mgltex-doc
+  since they share several files
+
+-------------------------------------------------------------------
+Sat Dec  9 19:13:26 UTC 2017 - fabian@ritter-vogt.de
+
+- Do not build with Qt4 on TW/15 as Qt WebKit 4 is not available
+  (boo#1072033)
+- Explicitly disable marking either Qt version as "qt" plugin:
+  * mathgl-no-default-qt.patch
+
+-------------------------------------------------------------------
+Fri Oct 27 12:50:09 UTC 2017 - badshah400@gmail.com
+
+- Add Provides: mathgl for the libmathgl package, to make the
+  mathgl-lang package installable.
+
+-------------------------------------------------------------------
+Thu Oct 26 08:35:54 UTC 2017 - dimstar@opensuse.org
+
+- Adapt to latest openmpi packaging changes: setup the openmpi
+  environment before calling cmake.
+
+-------------------------------------------------------------------
+Sat Aug 26 15:05:58 UTC 2017 - jengelh@inai.de
+
+- Trim some irrelevant words from descriptions.
+
+-------------------------------------------------------------------
+Wed Aug 16 15:41:29 UTC 2017 - badshah400@gmail.com
+
+- Update to version 2.4.1:
+  * Add beltc plot, which is belt with manual coloring.
+  * Add style '~' for plot and tens to omit some points at output.
+  * Add style ':' for axis to draw lines through point (0,0,0).
+  * Miscellaneous bugfixes.
+- Changes from version 2.4.0:
+  * Add mgllab executable, which is FLTK based version of UDAV.
+  * Add string manipulation in MGL language:
+    - 'str'[n] - get string of only n-th symbol;
+    - 'str'+v - add value v to the last character of the string;
+    - 'str',val or 'str',!val - append numeric value to the string
+  * Add time value to MGL language in format:
+    'hh-mm-ss_DD.MM.YYYY' or 'hh-mm-ss' or 'DD.MM.YYYY'.
+  * Add iris plot to show cross-dependencies of several data
+    arrays.
+  * Add flame2d to draw flame fractals.
+  * Add bbox to set bounding box for 2D output.
+  * Add section to get part of data between specified values.
+  * Add detect to found curves along data maximums.
+  * Add dilate to extend the region of 1-th value.
+  * Add erode to narrow the region of 1-th value.
+  * Add apde to solve PDE equation in inhomogeneous nonlinear
+    media with spatial dispersion.
+  * Add symbol to draw the glyphs defined by addsymbol.
+  * Add addsymbol to declare user-defined symbol (or glyph), which
+    can be used as markers for plot (with style '&') or drawn
+    itself by symbol command.
+  * Add openhdf to open all data arrays from HDF file.
+  * Extend crop to cut to optimal size for FFT (i.e. to closest of
+    2^n*3^m*5^l).
+  * Add function mgl_data_max_first() and data suffixes
+    .m[xyz][fl] to find first/last maximum along direction (see
+    Data information).
+  * Add function mgl_datac_diff_par() to parametric derivative of
+    complex data (see diff).
+  * Add style 'F' for bars and barh to set fixed bar widths.
+  * Add style 'a' for plot, tens, area and region to accurate
+    drawing of data, which partially lie out of axis range.
+  * Add style '#' for region to draw wired plot.
+  * Add possibility of manual shift in multiplot.
+  * Add parsing arguments of options for MGL commands.
+  * MGL command correl now can perform 2d and 3d correlations.
+  * Option meshnum now change the number of drawn markers for
+    plot, tens, step, mark and textmark.
+  * Function step handle data with x.nx>y.nx similarly to bars.
+  * Extend tile and tiles by adding manual coloring and face
+    orientation.
+  * Add variant of MGL command copy to copy data with "incorrect"
+    names.
+  * Improve tick labels drawing.
+  * Improve time-ticks (add weeks) and add subticks to its.
+  * Improve fplot to handle several singularities.
+  * Add LaTeX command \dfrac{}{}. This is full-sized version of
+    \frac{}{}. Unfortunately, there is no support of nesting.
+    Contrary, \frac allow nesting.
+  * Add mglODEc() - ODE solver for complex variables (see ode).
+  * Add cmplx(a,b)=a+i*b to the list of known functions in formula
+    parsing
+  * Update CMake find_package to find MathGL.
+  * Increase line width for wired text.
+  * Update documentation: add description of new commands, add
+    hint Mixing bitmap and vector output.
+  * Add translation to Russian for most of labels and messages.
+  * Name all are reserved in MGL scripts now as synonym of -1.
+  * INCOMPATIBLE: Replace libmgl-qt by libmgl-qt4 and libmgl-qt5
+    for resolving conflicts of simultaneously installed both Qt4
+    and Qt5.
+  * Minor bugfixes. 
+- Drop mathgl-oldtexinfo.patch: fixed upstream. 
+- Add mathgl-fltk-includedir.patch to fix include directives for
+  fltk headers.
+- Split out a -lang package.
+- Package the binary and desktop file for  mgllab as part of the
+  -udav package; their desktop files share the same icon
+  unfortunately.
+- Disable doc for openSUSE <= 1320; no longer builds with old
+  texi2html there.
+- Move AUTHORS, ChangeLog.txt, README, COPYING to -devel package
+  for all openSUSE versions; package it using %%doc.
+- Add _constraints file to require at least 2 GB of physical
+  memory on obs; otherwise builds on 64-bit openSUSE > 1320 fail.
+
+-------------------------------------------------------------------
+Sat Oct 15 13:33:50 UTC 2016 - badshah400@gmail.com
+
+- Update to version 2.3.5.1:
+  + Library libmgl-qt is removed. You need to use libmgl-qt4 or
+    libmgl-qt5 explicitly now.
+  + Compatibility changes for latest MS VisualStudio.
+  + Bugfixes.
+- Changes from version 2.3.5:
+  + See Changelog.txt for list of changes.
+- Rebase mathgl-examples-install.patch for updated version.
+- Define a macro for deciding whether to enable octave bindings,
+  but disable octave bindings for all openSUSE versions for now
+  as mathgl fails to build with updated octave. This is a
+  temporary workaround, and once the build issue is fixed, we
+  should revert back to enabling octave for recent openSUSE
+  versions. The "enable_octave" macro is defined with this in
+  mind.
+- Add rpmlintrc file to suppress warning of missing man pages for
+  the example binaries. These just clutter up the rpmlint log and
+  have no practical use.
+
+-------------------------------------------------------------------
+Fri Aug  5 13:03:34 UTC 2016 - tchvatal@suse.com
+
+- Drop dependency on swig3 as swig in leap got updated to 3.x series
+
+-------------------------------------------------------------------
+Wed Feb 24 09:30:14 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 2.3.4
+  * Minor fixes and improvements, see included ChangeLog.txt for details
+  * Update mathgl-examples-install.patch
+  * Update mathgl-texmf-dir.patch
+  * Drop obsolete getopt.patch
+  * Drop obsolete mathgl-cmake-3.2.patch
+
+-------------------------------------------------------------------
+Tue Nov 17 12:45:18 UTC 2015 - dmitry_r@opensuse.org
+
+- Fix octave-mathgl package dependencies
+
+-------------------------------------------------------------------
+Wed Sep 30 15:39:05 UTC 2015 - dmitry_r@opensuse.org
+
+- Disable json examples
+- Enable Octave module and Qt5 support for openSUSE Leap 42.1
+- Use wxWidgets 3 for openSUSE Leap 42.1
+
+-------------------------------------------------------------------
+Thu Aug 13 11:39:35 UTC 2015 - dmitry_r@opensuse.org
+
+- Enable Octave module for openSUSE > 13.2
+
+-------------------------------------------------------------------
+Tue Jun  9 09:27:57 UTC 2015 - schwab@suse.de
+
+- getopt.patch: Fix use of getopt
+- Compile with %{optflags}
+- Fix %postun -n %{libname}-wx%{libversion}
+
+-------------------------------------------------------------------
+Sat Jun  6 07:44:14 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.3.3
+  * Minor fixes and improvements, see included ChangeLog.txt for details
+  * Update mathgl-examples-install.patch
+  * Update mathgl-texmf-dir.patch
+- Fix build with old texinfo
+  * mathgl-oldtexinfo.patch
+
+-------------------------------------------------------------------
+Sun May 31 09:56:08 UTC 2015 - dmitry_r@opensuse.org
+
+- Disable Octave module due to swig incompatibility with Octave 4.0
+
+-------------------------------------------------------------------
+Thu Mar 26 11:46:23 UTC 2015 - dimstar@opensuse.org
+
+- Add mathgl-cmake-3.2.patch: Fix build with cmake 3.2; X11 is no
+  longer implicit linked.
+
+-------------------------------------------------------------------
+Sat Feb 28 22:25:44 UTC 2015 - dmitry_r@opensuse.org
+
+- Build with MPI support
+
+-------------------------------------------------------------------
+Tue Feb 17 15:16:29 UTC 2015 - dmitry_r@opensuse.org
+
+- Use texinfo for documentation generation on openSUSE > 13.2
+
+-------------------------------------------------------------------
+Mon Feb  2 19:15:03 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.3.2
+  * Update mgltex.
+  * Add reading files with complex numbers by 'read' command.
+  * Parallelize reading textual data files.
+  * Add 'i','j','k' variables for data filling.
+  * Add saving images in QMathGL even if corresponding format
+    support is disabled.
+  * Add cmake option MGL_DEF_FONT to change default font name
+    or use built-in one (if MGL_DEF_FONT is empty).
+  * Compatibility changes and bugfixes.
+  * Update mathgl-fix-python-module-path.patch
+- Add mathgl-tex subpackage
+- Set correct path to texmf directory
+  * mathgl-texmf-dir.patch
+- Fix package descriptions
+
+-------------------------------------------------------------------
+Sat Jan 31 16:41:17 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.3.1
+  * Add MGL command 'load' for loading MGL commands from external
+    .so module.
+  * Add Logo() function to draw bitmap (logo), which is stretched
+    along whole axis range
+  * Add MGL command 'reset' which restore default settings and
+    clear image (i.e. call DefaultPlotParam()).
+  * Change y coordinate at x-z projection.
+  * Improve projection of 'unrotatable' objects (like legend, title, ...).
+  * Add projection (Ternary&8) which is the same as usual (Ternary&4)
+    but don't print text on projections
+  * Improve orientation of axis ticks and labels.
+  * Add mglWnd::SetDrawFunc().
+  * Add mgl_set_global_warn() and mgl_get_global_warn() for set/get
+    messages of global scope.
+  * Make copying private of mglGraph and derived.
+  * Add virtual destructors.
+  * Add some static functions for mglGraph.
+  * Add option "-n" to mglconv to disable automatic saving of the image.
+  * Add option "-s" to mglview and mglconv to run setup script before
+    the main one.
+  * Add light scaling at MGLD import.
+  * Add scaling of frames at Adjust().
+  * Update docs.
+  * Update mathgl-examples-install.patch
+
+-------------------------------------------------------------------
+Thu Nov 13 15:22:22 UTC 2014 - dmitry_r@opensuse.org
+
+- Fix build on SLE12
+
+-------------------------------------------------------------------
+Wed Sep 24 17:40:32 UTC 2014 - sfalken@opensuse.org
+
+- Specfile Cleanup to clear some rpmlint warnings 
+
+-------------------------------------------------------------------
+Thu Aug  7 14:54:49 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 2.3
+  * Add background image, which allow in particular semi-transparent
+    background color.
+  * Add primitives to draw polygon and angle arc.
+  * Allow arbitrary factor for axis ticks.
+  * Add function AddTick() for adding manual tick to existed ones.
+  * Add new styles and symbols.
+  * Add ODE solving functions for textual formulas.
+  * Add function for global cubic spline interpolation, and function
+    to refill using global spline.
+  * Add functions "random(dat)" and "gamma_inc(a,x)" to the list
+    of known functions for formula parsing
+  * Add 'inf' variable to the MGL and formula parsing
+  * Allow reading JPEG files for mglData::Import().
+  * Warning messages and information are printed to stderr until
+    call of mgl_suppress_warn(true) will disable it.
+  * Add move constructor(s) if compiler support C++11 rvalues.
+  * Changes in algorithms:
+    - Greatly increase speed of formula parsing, and speeding up
+      many other places;
+    - Improve algorithm for contours drawing and filling, taking
+      special attention to quasi-random data.
+    - Spline() now use 5-th order polynomials to keep continuity
+      of 2nd derivative too.
+    - Add function attributes 'pure' or 'const', which potentially
+      can speed up drawing.
+    - Use spline instead of linear interpolation in functions
+      Flow() and Pipe().
+    - Adjust columnplot and gridplot positions for non-zero
+      distance between the inplots.
+    - Improve colorbar labels drawing at SetRotatedText(false)
+    - Choose new scales for perspective.
+    - Allow 'negative' angles for text rotation
+    - Use new s-hull version for triangulation.
+  * UDAV improvements.
+  * Remove obsolete mathgl-fltk.patch
+- Enable OpenMP support
+- Move PDF documentation to separate package.
+- Disable info files build due to outdated texinfo
+
+-------------------------------------------------------------------
+Wed Mar 19 13:26:21 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 2.2.2.1
+  * Function SetRange(v1,v2) ignore NAN values now.
+  * Add enable-json-sample for building json-samples on demand only.
+  * Update docs.
+
+-------------------------------------------------------------------
+Mon Mar 17 11:41:21 UTC 2014 - dmitry_r@opensuse.org
+
+- Fix -devel package dependences, Qt5 available only for openSUSE >= 13.2
+
+-------------------------------------------------------------------
+Mon Mar 10 07:34:42 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 2.2.2
+  * Add mgl_region_3d() to draw region (or ribbon) between 2 curves.
+    Correspondingly extend mglGraph::Region() function and MGL
+    command 'region'.
+  * Allow LGPL for MathGL widgets.
+  * Improve export to TeX.
+  * Add missing functions to Fortran interface.
+  * Bugfix for legend with enabled lighting.
+  * Minor bugfixes and memory leaks.
+
+-------------------------------------------------------------------
+Fri Jan 31 01:07:29 UTC 2014 - badshah400@gmail.com
+
+- Re-enable octave bindings; patched swig with support for
+  octave >= 3.8.0 is already in science and should fix building
+  mathgl with octave enabled.
+
+-------------------------------------------------------------------
+Sun Jan 26 19:52:23 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 2.2.1
+  * Add Qt5 support.
+  * Add Pascal interface.
+  * Improve JavaScript interface.
+  * Add function AddRange(char dir, mreal v1, mreal v2) and extend
+    corresponding MGL commands '[xyzc]range'.
+  * Add 'hypot' function for known functions in formula parsing.
+  * Add style '~' to disable colorbar or axis labels. NOTE, axis
+    style '_' is obsolete and should be replaced by '~'.
+  * Change Aspect() if Ax=NAN. Now, Ay and Az set the ratio to
+    optimal aspect (not exact value as previously).
+  * Disable changes by View(),Zoom(),Perspective() for position
+    of Title(), Legend(), Colorbar().
+  * Partial support of perspective in CalcXYZ().
+  * Speed up PDE solving.
+  * Add complex versions of PDE, QO2d, QO3d.
+  * Correct filled background for Box() in curved coordinates.
+  * Allow nx=1 for Stem and Error.
+  * Bugfix for drawing single axis.
+  * Bugfix for missing options parsing for some of MGL commands.
+  * Bugfix for .pmin suffix in MGL. Add mglData::MaximalNeg() and
+    mglData::MinimalPos() functions. Add .nmin and .nmax suffixes.
+  * Bugfix for colorbar labels.
+  * Force using python 2.7 by default.
+  * Minor bugfixes and memory leaks.
+- Disable Octave interface due to Octave 3.8.0 changes
+- Disable openmp support due to instability
+
+-------------------------------------------------------------------
+Mon Nov 11 13:53:44 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 2.2
+  * Add OpenMP calls mostly everywhere (can work as replacement
+    of pthreads - a bit faster since more loops is parallelized).
+  * Greatly speed up consequent FFT and Hankel transforms. Add
+    mgl_clear_fft() function for manual clearing of saved FFT/Hankel data.
+  * Add OHLC() plot for drawing Open-High-Low-Close diagram
+  * Add wxMathGL widget.
+  * Add interface for Lua v.5.1.
+  * Add mask for face drawing if one of symbols "-+=;oOsS~<>jdD*^"
+    is specified in color scheme. This work only for export in
+    bitmap images.
+  * Add Quality=8 for dots drawing (extremely fast).
+  * Add styles '4','6','8' for Cone() and Cones() to produce square,
+    hex-, octo-prism.
+  * Add style 't' for Cones() to produce tubes (cylinders).
+  * Add style '^' for Legend() to left/right align legend if its
+    coordinates are right/left from the center
+  * Add style '<', '^', '>' for aligning/centering boxes in Bars(),
+    Barh(), BoxPlot(), Cones(). Also this plots become centered by
+    default if nx sizes are the same for all data.
+  * Add Dots() function which set independently both color and alpha
+    of dots
+  * Improve automatic axis position. Add style '^' for inverse
+    automatic axis position.
+  * Improve tick labeling. Add style TuneTicks&4 for zero filling
+    of tick labels.
+  * Add mglData::Refill() for filling by interpolation of
+    parametrically dependent data
+  * Add transparency for Area() and Region() plots.
+  * Add mgl_clf_chr() function and extend 'clf' command.
+  * Fourier now perform true inverse Fourier transform (instead of
+    backward one).
+  * Improve/change lighting from local sources. Add SetDiffuse() function.
+  * C functions now return NULL if HMDT data cannot be created for
+    given input argument(s).
+  * Enable line width for Mesh() and Fall() plots.
+  * Replace +INF and -INF by NAN in textual formula output.
+  * Add manual compression of JSON.
+  * Define WORDS_BIGENDIAN and HAVE_MEMRCHR (thanks to Dinar Valeev).
+  * Bugfix for cleaning unused points.
+  * Fix 'setsize' command at UDAV starting.
+  * Rewrite MGL parsing by using std::wstring for avoiding possible
+    bugs of wcs*() functions.
+  * Minor bugfixes.
+  * Update docs.
+- Removed obsolete mathgl-bigendian.patch
+- Removed obsolete mathgl-gsl-deprecated-code-usage.patch
+
+-------------------------------------------------------------------
+Tue Sep 17 20:53:06 UTC 2013 - badshah400@gmail.com
+
+- Add mathgl-gsl-deprecated-code-usage.patch to fix build failures
+  with gsl version 1.16, notably in openSUSE:Factory.
+
+-------------------------------------------------------------------
+Sat Jun  1 15:30:36 UTC 2013 - dmitry_r@opensuse.org
+
+- Add package with static libraries
+
+-------------------------------------------------------------------
+Thu May 30 15:32:54 UTC 2013 - dvaleev@suse.com
+
+- Detect WORDS_BIGENDIAN and HAVE_MEMRCHR to build on bigendian
+  platforms correctly (mathgl-bigendian.patch)
+
+-------------------------------------------------------------------
+Wed May  8 18:07:21 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 2.1.3.1
+  * bugfix release, see included ChangeLog.txt for details
+
+-------------------------------------------------------------------
+Thu May  2 15:19:52 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 2.1.3
+  * bugfix release, see included ChangeLog.txt for details
+- Split libraries into separate packages
+- Split mathgl CGI into separate package
+- Spec file reformatting
+- Removed obsolete mathgl-libpath.patch 
+
+-------------------------------------------------------------------
+Thu Feb  7 17:02:48 UTC 2013 - dmitry_r@opensuse.org
+
+- Disable reading octave initialization files during build
+
+-------------------------------------------------------------------
+Mon Jan 28 12:52:18 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 2.1.2
+  * bugfix release, see included ChangeLog.txt for details
+
+-------------------------------------------------------------------
+Mon Dec 24 12:32:37 UTC 2012 - dmitry_r@opensuse.org
+
+- Update to version 2.1.1
+  * bugfix release, see included ChangeLog.txt for details
+  * removed obsolete mathgl-rpath.patch
+  * updated mathgl-libpath.patch
+
+-------------------------------------------------------------------
+Wed Dec 19 11:15:44 UTC 2012 - dmitry_r@opensuse.org
+
+- Update rpath patch
+  * mathgl-rpath.patch
+
+-------------------------------------------------------------------
+Wed Dec 19 07:54:15 UTC 2012 - Rene.vanPaassen@gmail.com
+
+- Add fltk-fluid for fedora 
+- Recommends tag conditional on suse versions 
+
+-------------------------------------------------------------------
+Fri Dec 14 06:11:29 UTC 2012 - dmitry_r@opensuse.org
+
+- Update to version 2.1
+  * see ChangeLog.txt for details
+- Set correct path to documentation directory
+  * udav-help-path.patch
+- Disable rpath
+  * mathgl-rpath.patch
+- Update other patches
+- Delete SLE-specific things from spec file
+
+-------------------------------------------------------------------
+Thu Nov 15 15:13:01 UTC 2012 - Rene.vanPaassen@gmail.com
+
+- Fix spec file for build on Fedora:
+  * add dependencies (xmu, texi2html, texinfo-tex)
+  * re-define _defaultdocdir, to reflect correct doc path
+  * correct test for suse_version
+
+-------------------------------------------------------------------
+Wed Oct 17 19:45:11 UTC 2012 - dmitry_r@opensuse.org
+
+- Locate documentation to right place
+  * mathgl-doc-path.patch
+- Update post and postup for octave-mathgl
+
+-------------------------------------------------------------------
+Fri Aug 24 15:34:59 UTC 2012 - dmitry_r@opensuse.org
+
+- Fix octave-mathgl package installation
+
+-------------------------------------------------------------------
+Tue Aug 21 14:58:30 UTC 2012 - dmitry_r@opensuse.org
+
+- Add octave-mathgl package
+- Add mathgl-examples package
+
+-------------------------------------------------------------------
+Sun Jul 29 12:18:55 UTC 2012 - badshah400@gmail.com
+
+- Update to version 2.0.3:
+  + Make code compilable by compilers GNU/MinGW GCC, Clang, MS
+    VisualStudio
+  + Add mglTriangulation() using s_hull_pro algorithm
+  + Add mglData::Grid() and mglGraph::DataGrid() for filling
+    regular data by values of triangulated surface
+  + Add cmake options ’enable-png’ and ’enable-zlib’
+  + Add SetTimeUTC() for using UTC time instead of local one
+  + Add SetTickShift() for additional shift of tick labels
+  + Add mglGraph::MPI_Send() and mglGraph::MPI_Recv()
+  + Vector plots now draw vector at edges, which are directed out
+    of bounding box
+  + Add gap between 1d plots for avoiding possible undetermined
+    overlapping
+  + Add parallel build for documentation
+  + Bugfixes for memory leaks and uninitialized variables, for
+    setting text size, for handling NAN color value, for missing
+    lines in export to EPS/SVG 
+- Drop mathgl-cmake-enable-doc-option-fix.patch; implemented 
+  upstream
+- Split udav into its own package
+- Add %suse_update_desktop_file for SLE to fix brp complaints
+  about missing generic name for udav.desktop
+- Add install-info post scriplets for the installed info files.
+
+-------------------------------------------------------------------
+Thu May 24 13:15:32 UTC 2012 - badshah400@gmail.com
+
+- Update to version 2.0.2:
+  + Add 'U' style for Axis() which disable ticks rotation
+  + Bugfix for enable-opengl option
+  + Bugfix for lighting
+- Changes from version 2.0.1:
+  + Improve speed of drawing
+  + Add reading 3d data files using mglData::ReadMat()
+  + Exclude unnecessary dependencies/inclusions
+  + Improve build system:
+    - Add multithreading
+    - Add install for Octave
+    - Separate enable-doc option from enable-all
+  + Minor bugfixes
+- Add mathgl-cmake-enable-doc-option-fix.patch to fix the usage
+  of the cmake option: enable-doc (sf#3529593)
+- Modify existing patch mathgl-fix-python-module-path.patch
+  to use DESTDIR environment variable instead of RPM_BUILD_ROOT
+  directly; set DESTDIR during make install stage
+- Enable building with hdf5 support: introduces build dependency
+  on hdf5-devel
+- Disable octave bindings for now as they do not build
+- Enable building on SLE 11 by turnning off doc building for it.
+
+-------------------------------------------------------------------
+Wed May  9 13:10:48 UTC 2012 - badshah400@gmail.com
+
+- Add mathgl-fix-python-module-path.patch to fix the path where
+  python modules are installed. 
+
+-------------------------------------------------------------------
+Sat May  5 03:50:07 UTC 2012 - badshah400@gmail.com
+
+- Update to version 2.0:
+  + mglGraph class is single plotter class instead of mglGraphZB,
+    mglGraphPS and so on
+  + Text style and text color positions are swapped. I.e. text
+    style ‘r:C’ give red centered text, but not roman dark cyan
+    text as for v.1.*
+  + ColumnPlot() indexing is reverted
+  + Move most of arguments of plotting functions into the string
+    parameter and/or options
+  + "Bright" colors (like {b8}) can be used in color schemes and
+    line styles
+  + Intensively use pthread internally for parallelization of
+    drawing and data processing
+  + Add tick labels rotation and skipping. Add ticks in
+    time/date format
+  + New kinds of plots (Tape(), Label(), Cones(), ContV())
+  + Extend existing plots
+  + New primitives (Circle(), Ellipse(), Rhomb(), ...)
+  + New plot positioning (MultiPlot(), GridPlot())
+  + Improve MGL scripts. Add ’ask’ command and allow string
+    concatenation from different lines
+  + Export to LaTeX and to 3D formats (OBJ, OFF, STL)
+  + Add pipes support in utilities (mglconv, mglview)
+- Turn off fltk bindings for openSUSE 12.1 and lower as they
+  cause build errors
+- Disable python-mathgl package as it does not build
+- Rebase mathgl-fltk.patch
+- Add mathgl-libpath.patch to allow setting the location of
+  installed libraries using a cmake variable
+- Add texlive-latex as build dependency; required for
+  generation of pdf documentation.
+
+ ------------------------------------------------------------------
+Sat Feb 25 23:54:09 UTC 2012 - scorot@free.fr
+
+- fix build for SLE-11 
+
+-------------------------------------------------------------------
+Sat Feb 25 23:34:26 UTC 2012 - scorot@free.fr
+
+- fix build for SLE-11 
+
+-------------------------------------------------------------------
+Mon Feb 13 10:50:13 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Mon Oct  3 11:59:27 UTC 2011 - dimstar@opensuse.org
+
+- Fix typo in patch tagline.
+
+-------------------------------------------------------------------
+Sat Aug 20 00:20:16 UTC 2011 - badshah400@gmail.com
+
+- Miscellaneous spec file corrections
+
+-------------------------------------------------------------------
+Tue Aug 16 17:44:12 UTC 2011 - badshah400@gmail.com
+
+- Fix build issues with openSUSE < 11.4
+
+-------------------------------------------------------------------
+Tue Aug 16 15:01:22 UTC 2011 - badshah400@gmail.com
+
+- Initial package (version 1.11.2)
+

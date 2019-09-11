@@ -1,0 +1,18 @@
+diff -Naur MyGUI_3.2.2.orig/MyGUIEngine/include/MyGUI_Singleton.h MyGUI_3.2.2/MyGUIEngine/include/MyGUI_Singleton.h
+--- MyGUI_3.2.2.orig/MyGUIEngine/include/MyGUI_Singleton.h
++++ MyGUI_3.2.2/MyGUIEngine/include/MyGUI_Singleton.h
+@@ -52,8 +52,14 @@
+ 		}
+ 
+ 	private:
++#if MYGUI_COMPILER == MYGUI_COMPILER_MSVC || MYGUI_PLATFORM == MYGUI_PLATFORM_APPLE
+ 		static T* msInstance;
+ 		static const char* mClassTypeName;
++#else
++		static MYGUI_EXPORT T* msInstance;
++
++		static MYGUI_EXPORT const char* mClassTypeName;
++#endif
+ 	};
+ 
+ } // namespace MyGUI

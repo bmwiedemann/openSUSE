@@ -1,0 +1,252 @@
+-------------------------------------------------------------------
+Tue Mar 26 14:09:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.7.5:
+  * Some refactoring The ioflo project will have two version branches.
+    The version 1.X.X branch will maintain compatibility with Python 2.7.X and Python 3.5.
+    But this will be mainly maintenance and backport of some new features.
+
+-------------------------------------------------------------------
+Thu Aug 16 10:12:48 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description. Update summary: avoid repeating
+  name (rpmlint).
+
+-------------------------------------------------------------------
+Fri Aug 10 13:36:13 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.7.4:
+  * Too many radical changes to list, see ChangeLog.md
+- Switch to singlespec to build
+
+-------------------------------------------------------------------
+Fri May 13 20:45:39 UTC 2016 - aboe76@gmail.com
+
+- Updated to v1.4.6
+  - Fixed bugs in http server handling of empty request bodies
+  - Added exports of Patron and Valet classes to aio.http package
+  - Updated storing module classes properties to use decorator syntax 
+    Refactored aid package into smaller sub modules for better future 
+    proofing Refactored async io modules to be in new aio package with 
+    finer granularity for future proofing Minor bug fixes and improvements 
+    More unittests
+  - Refactored consoling package location still supports old location 
+    As ioflo helper libraries are growing in size, refactoring now to 
+    make it less likely to need change in future as other projects become dependant.
+  - Refactored the httping.py module into a package http with submodules as the the 
+    size of the module was getting unwieldy
+  - Refactored naming of Deed. Now alised with Doer. Preferred it Doer. 
+    Deedify now aliased with preferred Doify Actorify not alised with preferred Actify
+  - Added Valet a WSGI server class that works within Ioflo
+  - Changed interface to packify unpackify
+  - Some refactoring of nonblocking tcp classes to remove unneeded extra deque stage on input
+  - Refactor header parsing of http responses
+  - Requestant and respondant are now subclass of Parsent Added .error and .errored attributes 
+    of Parsent so can report errors in processing or waiting
+  - Parsent close method now being called if connection closed prematurely
+- fix date copyright.
+
+-------------------------------------------------------------------
+Sun Oct 11 08:36:09 UTC 2015 - aboe76@gmail.com
+
+- Updated to v1.3.9:
+  - Added support for serial driver stack for higher level serial protocol 
+    nonblocking on top of raw nonblocking serial port
+  - Added some utility functions
+
+-------------------------------------------------------------------
+Wed Jul 29 18:24:19 UTC 2015 - aboe76@gmail.com
+
+- Updated to v1.3.8
+  - Refactored base.aiding to aid.aiding and then split out groups of utility
+    functions into metaing, navigating, timing, blending
+  - use sixing for 2to3 in more places
+    Some other refactoring
+  - Use of ioflo.base.aiding is deprecated. Use ioflo.aid.aiding. In the future
+    base.aiding will be removed.
+  - Move odicting and osetting to aid.  base.odicting base.osetting references still
+    exist by are deprecated use aid.odicting aid.osetting
+  - added modict (multiple valued odict) class to odicting
+  - Fixed bug in httping processing chunked encoded responses
+  - Changed default encoding for x-www-form-urlencoded to utf-8
+  - Support for multipart/form-data for POST request forms with utf-8
+  - changed parameter to fargs for form args from form to be consistent with qargs
+  - added support for http url encoded form data in Requester and Patron
+  - fixed bug in http copy
+  - Added redirects field to response returned when request is redirected in Patron
+  - Some bug fixes and minor changes to httping
+  - Fixed bug in value parsing due to new None as valid value
+  - Added framer inode relative 'me' to path resolution so put set etc can use framer inode relative addressing as per ionints
+  - Added 'of me' relation clause so can perform inode relative addessing
+  - Refactoring of httping classes to normalize interfaces
+    Requester now accepts data dictionary that it automatically jsonifies on build
+  - Patron now passes through copy of request odict to reponses copy so that requester
+    can add tracking and return information to request that shows up in response
+  - Fixed bug with Nact   go .. if not ... in Need expression
+  - do verb via connective now supports paths that end with dot or not
+  - do verb by/from, for, qua, now all use all the fields in the source if a field
+    list is not provided
+  - values of field value expressions can now be unquoted path strings
+  - Support for optional via inode clause in framer verb to provide framer wide
+    prefix for ioinit inodes
+  - Support for optional via inode clause in aux verb for cloned aux framers to
+    provide override of aux framer via clause on invocation of aux verb
+  - Semantics of aux via inode is to prepend main framer via inode unless
+    the aux via inode is absolute or main or mine. if main then use main framer's
+    via inode if mine then ignore main framer's via inode
+  - FloScript now supports single quoted values in addition to doubled quoted
+  - Exchanged 'qua' and 'via' connective semantics in 'do' verb because via is more commmon
+  - Added aid.httping with classes for nonblocking http client
+    See class aid.httping.Patron
+  - Added 'qua' connective to 'do' verb to allow easier setting of inode
+  - renamed python 2 to 3 compat module
+  - Some refactoring of repository directory structure. Added ioflo.aid as
+    sub-package for utility modules. Started moving some stuff out of .base
+    into .aid. Left reference in .base for now but deprecated in future.
+  - ioflo.base.nonblocking is deprecated use ioflo.aid.nonblocking instead
+  - Added support for nonblocking tcp/ip and tcp/ip + tls client and server classes
+    in aid.nonblocking
+  - Added support for nonblocking http client in aid.httping
+  - Updated docs
+
+-------------------------------------------------------------------
+Wed Mar 25 19:59:53 UTC 2015 - aboe76@gmail.com
+
+- Updated to v1.2.1
+  - Moved nonblocking io classes to ioflo.base.nonblocking from ioflo.base.aiding
+  - Added script aliases ioflo3 for ioflo on python3 and ioflo2 for ioflo on python2
+  - Changed syntax of "bid" verb: Now supports optional "at period" clause that allows
+    changing the iteration period of framer
+  - Added retrograde and parsemode options to ioflo script
+  - Changed syntax of "do" verb: Made with and from connectives aliases for to and by 
+    repectively to be consistent with other verbs. Replaced with and from in do verb with cum and via respectively
+  - Changed interface for Actor Class (Deed subclass) .postinitio is no longer supported. 
+    It was deprecated in version 1.1.5. The correct one to use is ._prepare
+
+-------------------------------------------------------------------
+Thu Feb 26 21:28:47 UTC 2015 - aboe76@gmail.com
+
+- Updated to v1.1.9
+  - More Skeddar timer fixes
+  - Added MonoTimer to Skeddar that detects if system clock is retrograded.
+  - Added binary create mode for OCFN utility function. Needed for P3 support if using msgpack.
+  - Renamed Registry class to Registrar class to avoid confusion with .Registry in RegisterType metaclass
+  - Added Ordered Set class called oset or OSet in base.osetting.py
+
+-------------------------------------------------------------------
+Wed Jan 28 19:43:04 UTC 2015 - aboe76@gmail.com
+
+- Updated to v1.1.5
+  - Added preliminary support for insular clones Added if done (any, all) [in frame [framename] [of framer [framername]]]
+  - Added support for aux framer as mine aux framer as mine if ...
+    Where mine specifies an insular aux clone framer whose name is auto generated at resolve time and is 
+    not available to floscript verbs
+  - Added support for rear and raze verbs. the rear verb enables runtime as opposed to resolve time creation of insular 
+    auxiliary clones These reared auxes can be destroyed at runtime using the raze verb This enables the creation of 
+    temporary insular auxiliary clones. When razed the memory for the clone is released.
+  - rear original [as mine] [be aux] in frame framename
+  - raze (all, last, first) [in frame [(me, framename)]]
+  - More consistent usage of resolveFrameOfFramer
+  - Added Deck class to storing.py
+  - Add scaffolding for unit tests of Deeds (behaviors) inside House, Framer, Frame contexts in file ioflo.test.testing
+  - Changed interface for Actor Class (Deed subclass) .postinitio is not ._prepare for backwards compatibility .postinitio 
+    is still supported but is deprecated and will no longer be supported in a future version.
+  - Changed Actor .act to ._act
+
+-------------------------------------------------------------------
+Sun Dec 28 20:32:30 UTC 2014 - aboe76@gmail.com
+
+- Updated to v1.1.0
+  - Added improvements to done verb and bid verb
+  - Fixed related bugs:
+  + Added support for cloning auxiliary framers. This is provided via the aux framer as clonename 
+    form of the aux verb Only framers whose schedule kind is moot may be cloned.
+  + Added support for inline relative addressing syntax and removed goal and state varients 
+    of relative addressing as these are imcompatible special cases of recurred and elapsed still supported
+  + Support for ioflo has test run using reporting via house metas
+  + Added framer schedule type of moot, when moot, house builder does not call resolveLinks on the framer. 
+    When moot the framer is meant to be cloned. ResolveLinks will be called on the clones
+  + Added actor, main, and me relative addressing in "of" clauses Refactored so all share resolution 
+    happens at resolve time not parse time Refactored so all frame and framer resolution happens at resolve time 
+    not parse time Deprecated current server command as will be changing syntax significantly 
+    Got rid of tasker command as only use subclasses Framer, Logger, Server Refactor and clean up code Change 
+    default inode path in resolvePath to "framer.me.frame.me.actor.me" Raises error if duplicate unders 
+    Refactor so resolving Tasker links uses utility function more DRY Refactor so resolving Framer and Frame links 
+    uses utility function to be more DRY Replaced Restarter Actor with SideAct restart
+
+-------------------------------------------------------------------
+Wed Oct 22 20:52:37 UTC 2014 - aboe76@gmail.com
+
+- Major update to v1.0.1
+  - Changed license to Apache 2.0 1.0 release
+  - Added WinMailslotNb Class for non blocking comms on windows to replace SocketUxdNb
+  - Added better support for Python3
+
+-------------------------------------------------------------------
+Wed Jul 30 19:10:17 UTC 2014 - aboe76@gmail.com
+
+- Updated to v0.9.39
+- Cleanup some non python3 compatible print statement in tests Lint cleanup
+
+-------------------------------------------------------------------
+Tue Jul  1 19:12:17 UTC 2014 - aboe76@gmail.com
+
+- Updated to v0.9.38
+- change console log file cli parameter to not be required
+- change console log file to append mode so multiple can write to it without overwiting
+- Added console log file path capability app.run.run now has parameter consolepath that 
+specifies files path to log console messages instead of stdout
+- ioflo script now has command line parameter -c --console for same
+
+-------------------------------------------------------------------
+Sat Jun 14 11:39:23 UTC 2014 - aboe76@gmail.com
+
+- Updated to v0.9.35
+- fixed command line version ioflo -V to work properly
+- Added exitAll() to framer microthread abort
+- More verbose socket error messages for servers
+- Some lint like cleanup of parameters
+
+-------------------------------------------------------------------
+Mon Jun  9 10:22:00 UTC 2014 - aboe76@gmail.com
+
+- Updated to version v0.9.31
+  - Changed Class naming convention for Actors/Deed Registery to get rid of reverse camel convention. This was causing confusion to new users and it was the result of a now obsolete historical convention in the way IoFlo managed behavior registration for FloScript.
+    Unfortunately this change breaks any FloScripts/behaviors (sub classes of Actor or Deed) that were created using the old convention. The FloScripts do not need to be changed but the ClassNames need to be changed so they will be found.
+    The new Convention is to use Cap Camel Case for the Class Name but the order of the camel case segments is not reversed to generate the FloScript do verb name as previously. Also when using .register the name parameter argument value should be captital camel case not lower camel case.
+    So everything is consistent now
+
+-------------------------------------------------------------------
+Sat Apr 12 06:07:43 UTC 2014 - aboe76@gmail.com
+
+- Updated to version v0.9.20
+  + Upstream fixed rpmlint issues
+
+-------------------------------------------------------------------
+Thu Apr 10 19:15:37 UTC 2014 - aboe76@gmail.com
+
+- Updated to version v0.9.19
+  - Now running in Python3 basic test missions. Probably some corner conditions
+  - Addes preliminary support for Python3 compatibility
+
+-------------------------------------------------------------------
+Mon Mar 31 18:49:49 UTC 2014 - aboe76@gmail.com
+
+- Updated to version v0.9.17
+  - Increases Udp and Uxd socket buffer sizes if they are too small for the server setting.
+
+-------------------------------------------------------------------
+Mon Mar 31 18:41:45 UTC 2014 - aboe76@gmail.com
+
+- Updated spec file suse/sles needs python-importlib
+
+-------------------------------------------------------------------
+Sat Mar 29 20:01:37 UTC 2014 - aboe76@gmail.com
+
+- Improved spec file after review
+
+-------------------------------------------------------------------
+Fri Mar 21 23:17:00 UTC 2014 - aboe76@gmail.com
+
+- initial version v0.9.16
+

@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Sun Mar 24 04:29:55 UTC 2019 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Upstream update to 20170722
+  * Update IPA P Gothic to 00303
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:20 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Mon Apr  2 11:25:05 UTC 2012 - pgajdos@suse.com
+
+- IPA license
+
+-------------------------------------------------------------------
+Wed Dec 21 18:06:41 CET 2011 - tiwai@suse.de
+
+- Renamed monapo-font -> monapo-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+
+-------------------------------------------------------------------
+Tue Oct  6 17:10:38 CEST 2009 - tiwai@suse.de
+
+- renamed package to monapo-font
+
+-------------------------------------------------------------------
+Tue Jul 21 15:49:33 CEST 2009 - tiwai@suse.de
+
+- initial version: 20090423
+

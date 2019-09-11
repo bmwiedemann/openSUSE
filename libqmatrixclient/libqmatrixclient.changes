@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Thu Apr 18 14:10:46 UTC 2019 - ecsos@opensuse.org
+
+- Update to 0.5.1.2
+  - (#316) Expired tokens no more bring IncorrectRequestError 
+    instead of ContentAccessError; consequently, 
+    Connection::logout() ignores ContentAccessErrors so expired 
+    tokens don't leave the library in a "can't go-in, can't go out" 
+    state.
+  - Jobs abandoned due to Connection being deleted no more cause 
+    crashes.
+
+-------------------------------------------------------------------
+Sat Apr  6 12:25:50 UTC 2019 - ecsos@opensuse.org
+
+- Update to 0.5.1.1
+  This release fixes a bug that makes 0.5.1 not being "new enough" 
+  for Quaternion 0.0.9.4, and another bug that made user showing up 
+  multiple times in the user list of Quaternion after renaming. 
+  Otherwise it's the same as version 0.5.1.
+
+-------------------------------------------------------------------
+Fri Apr  5 07:46:12 UTC 2019 - ecsos@opensuse.org
+
+- Update to 0.5.1
+  - Fix (#303): linkification doesn't break on peculiar links.
+  - Fix (#310 and 27c2989): quirks in rendering room display names 
+    have been ironed out.
+  - Fix: Tighter validations of URLs coming with file events 
+    (too relaxed validations were causing the library to 
+    assert-crash on, e.g., encrypted attachments).
+  - Enhancement (#305): rooms created as direct chats are now 
+    automatically marked as m.direct for invited as well as 
+    inviting users.
+  - Enhancement (#306): Room::canSwitchVersions() returns false on 
+    rooms already upgraded (you still can disregard and call 
+    Room::switchVersion() but you better think twice 
+    - see matrix-org/matrix-doc#1937).
+  - Enhancement: Room::postFile() now first starts file upload and 
+    then places a pending event (neatly packed with file transfer 
+    information), rather than the other way around. Unless you do 
+    weird things with the library's API, you shouldn't notice.
+  - Enhancement: LRO/RLO Unicode markers are now stripped from 
+    display names, to curtail abuse of those.
+  - Feature: Connection::domain() to save client authors from 
+    taking the domain from user MXID.
+
+-------------------------------------------------------------------
+Wed Apr  3 09:01:26 UTC 2019 - ecsos@opensuse.org
+
+- Update to 0.5.0.2
+  * Another bugfix release in 0.5.x branch, fixing issues with 
+    sending read receipts and redactions in v3 rooms (#300).
+
+- Changes from 0.5.0.1
+  * This version fixes too stringent checks in debug builds that 
+    led to assertion crashes upon encounter with upgraded rooms.
+
+- Changes from 0.5
+  As usual for 0.x versions, 0.5 breaks API compatibility with 
+  previous versions; 0.4-compatible clients may or may not need 
+  changes in order to compile with version 0.5. As usual, see diffs
+  in header files to track the changes and update the client code 
+  accordingly; these release notes highlight most prominent API 
+  changes.
+
+  Micro-versions in 0.5.y will maintain the API and ABI. 
+  Version 0.6 will break either API or ABI or both.
+
+  Over 200 commits. So see for changelog
+
+  https://github.com/QMatrixClient/libqmatrixclient/commits/0.5.0
+
+-------------------------------------------------------------------
+Sun Jan 13 12:42:05 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+
+- Update to 0.4.2.1:
+  * No more treat fake state events (that don't have
+    state_key, even if they have state-related type, e.g., m.room.topic)
+    as state events, turning them into unknown events instead.
+
+-------------------------------------------------------------------
+Sun Dec 16 03:06:40 UTC 2018 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.1
+  * Fix pending events (aka local echo) not being cleaned up 
+    properly
+  * Fix rooms not being correctly sorted according to their
+    position under tag if using Connection::roomsByTags()
+  * Fix incorrect SOVERSION
+
+-------------------------------------------------------------------
+Fri Nov  9 13:00:47 UTC 2018 - ecsos@opensuse.org
+
+- Remove soname from devel.
+
+-------------------------------------------------------------------
+Wed Nov  7 10:08:05 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Edit RPM groups.
+
+-------------------------------------------------------------------
+Tue Oct 16 11:45:04 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.4.0
+  So many changes and no propoer changelog from upstream.
+  See changes here:
+  https://github.com/QMatrixClient/libqmatrixclient/compare/v0.3.0.2...v0.4.0
+
+-------------------------------------------------------------------
+Mon Aug 20 15:55:28 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.3.0.2
+  So many changes and no proper changelog from upstream.
+  See changes here:
+  https://github.com/QMatrixClient/libqmatrixclient/compare/v0.2.1...v0.3.0.2
+  
+-------------------------------------------------------------------
+Wed May  2 18:49:35 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.2.1
+  - Fixed an occasional crash due to dangling callbacks in avatar 
+    fetching code
+  - Fixed unreliable network error handling leading to sync loop 
+    getting "unlooped" when server is temporarily unavailable
+  - Fixed a regression leading to bridge postfixes not being 
+    removed from user display names
+  - Fixed a regression manifesting in dysfunctional user name 
+    disambiguation
+  - Added User::rawName() to get a user name together with its 
+    bridge postfix
+  - Bridge names are now used as the first line of disambiguation, 
+    with user ids being the next (and ultimate) fallback.
+- remove service file
+
+-------------------------------------------------------------------
+Thu Apr 12 08:52:06 UTC 2018 - agraul@suse.com
+
+- remove remove_unwanted_cmake_installations.patch
+    * upstream remove EXPORT_ANDROID_MK from install targets
+- use service to download sources from github
+
+-------------------------------------------------------------------
+Tue Apr  3 16:42:17 UTC 2018 - agraul@suse.com
+
+- add remove_unwanted_cmake_installations.patch 
+    * this patch removes cmake install targets that are not
+    targeted at linux
+- cleanup spec file
+
+-------------------------------------------------------------------
+Mon Apr  2 00:43:36 UTC 2018 - agraul@suse.com
+
+- update to 0.2rc
+- fix build
+
+-------------------------------------------------------------------
+Mon Jan  1 22:24:49 UTC 2018 - agraul@suse.com
+
+- add cmake_install_target.patch
+
+-------------------------------------------------------------------
+Mon Jan  1 22:02:26 UTC 2018 - agraul@suse.com
+
+- update to 0.2-q0.0.5 
+
+-------------------------------------------------------------------
+Fri Nov 10 13:40:20 UTC 2017 - agraul@suse.com
+
+- inital package

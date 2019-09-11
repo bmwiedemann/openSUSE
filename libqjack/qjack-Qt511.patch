@@ -1,0 +1,60 @@
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: 2018-06-11 20:12:55 +0200
+Subject: Fix for Qt 5.11
+Upstream: submitted
+
+The qt5_use_modules macro has been deprecated in Qt 5.11
+
+---
+Index: qjack-20170112/qjack/CMakeLists.txt
+===================================================================
+--- qjack-20170112.orig/qjack/CMakeLists.txt
++++ qjack-20170112/qjack/CMakeLists.txt
+@@ -45,8 +45,8 @@ add_library(qjack_static STATIC ${qjack_
+ target_link_libraries(qjack_static ${LIBJACK_LIBRARIES})
+ 
+ if(Qt5Core_FOUND)
+-    qt5_use_modules(qjack Core)
+-    qt5_use_modules(qjack_static Core)
++    target_link_libraries(qjack Qt5::Core)
++    target_link_libraries(qjack_static Qt5::Core)
+ endif()
+ 
+ #install
+Index: qjack-20170112/examples/CMakeLists.txt
+===================================================================
+--- qjack-20170112.orig/examples/CMakeLists.txt
++++ qjack-20170112/examples/CMakeLists.txt
+@@ -16,21 +16,21 @@ find_package(Jack REQUIRED)
+ add_executable(example example.cpp)
+ target_link_libraries(example ${QT_LIBRARIES} qjack)
+ if(Qt5Core_FOUND)
+-    qt5_use_modules(example Core)
++    target_link_libraries(example Qt5::Core)
+ endif()
+ 
+ # Executable "qoutportexample"
+ add_executable(qoutportexample qoutportexample.cpp noiseqoutport.cpp complexoscillator.cpp toneqoutport.cpp)
+ target_link_libraries(qoutportexample ${QT_LIBRARIES} qjack)
+ if(Qt5Core_FOUND)
+-    qt5_use_modules(qoutportexample Core)
++    target_link_libraries(qoutportexample Qt5::Core)
+ endif()
+ 
+ # Executable "qinportexample"
+ add_executable(qinportexample qinportexample.cpp rmsqinport.cpp exponentialfilter.cpp )
+ target_link_libraries(qinportexample ${QT_LIBRARIES} qjack)
+ if(Qt5Core_FOUND)
+-    qt5_use_modules(qinportexample Core)
++    target_link_libraries(qinportexample Qt5::Core)
+ endif()
+ 
+ # Executable "qfillbufferexample" - peakaveragemeter is a QObject so generate MOC
+@@ -54,6 +54,6 @@ add_executable(qfillbufferexample qfillb
+ target_link_libraries(qfillbufferexample ${QT_LIBRARIES} qjack)
+ 
+ if(Qt5Core_FOUND)
+-    qt5_use_modules(qfillbufferexample Core)
++    target_link_libraries(qfillbufferexample Qt5::Core)
+ endif()
+ 

@@ -1,0 +1,221 @@
+-------------------------------------------------------------------
+Thu Jun 20 11:45:35 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Fix typo in spec file.
+
+-------------------------------------------------------------------
+Tue Jun 18 08:30:24 UTC 2019 - mliska@suse.cz
+
+- Update to version 2.10.0+git.20190513.fb91843:
+  * Remove mention of FreeBSD 10.4.
+  * Update copyright years.
+  * Use LLVM 8 toolchain in the Travis-CI build.
+  * Update copyright years.
+  * Require LLVM 8.0.
+  * Increment version number to 2.10.0.
+  * Set `BUILD_WITH_INSTALL_RPATH` property on target `clang_delta`.
+  * On the CMake-based build path, set rpath for `clang_delta`.
+  * Largely revert commit be741fc.
+  * update to LLVM 8.0
+
+-------------------------------------------------------------------
+Mon May 06 09:15:15 UTC 2019 - mliska@suse.cz
+
+- Update to version 2.9.0:
+  * Supports and requires LLVM 7
+  * New pass to remove constant `#if` blocks
+  * New pass to remove `#if` blocks
+  * New pass to remove `#line` directives
+  * New binary-search pass for removing C++-style comments
+  * Automatically run parallel "interestingness" tests on FreeBSD
+  * New `--version` command-line option reports version and exits
+  * Numerous bug fixes
+
+-------------------------------------------------------------------
+Tue Apr 23 08:40:39 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use %license COPYING.
+
+-------------------------------------------------------------------
+Tue Apr 23 07:07:33 UTC 2019 - mliska@suse.cz
+
+- Update to version 2.9.0+git.20190422.763bd26:
+  * Regenerate Autoconf stuff.
+  * Add `INSTALL.md` and `README.md` to `EXTRA_DIST`.
+  * Use `automake --foreign` instead of `automake --gnu`.
+  * Require LLVM 7.0 or later.
+  * Do less I/O in the Darwin version of `ncpus()`.
+  * Implement `ncpus()` for FreeBSD.
+  * Update INSTALL instructions for FreeBSD.
+  * Update copyright years.
+
+-------------------------------------------------------------------
+Thu Apr 18 15:19:24 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Remove README from installed files.
+- Depend on llvm7 and clang7 packages.
+
+-------------------------------------------------------------------
+Thu Apr 18 15:11:11 UTC 2019 - mliska@suse.cz
+
+- Update to version 2.9.0+git.20190414.095c551:
+  * Fixed a crash in UnionToStruct pass
+  * add pass to remove if directives
+  * skip inlining calls in default arguments
+  * patch from Mingwandroid to update to LLVM 7
+  * convert to markdown
+  * add binary search removal of c++ style comments
+  * add pass for line markers
+  * add pass to remove constant ifs
+  * change ordering so pass_includes is called after pass_unifdef
+  * built with LLVM 7.0
+
+-------------------------------------------------------------------
+Tue Jul 10 13:04:09 UTC 2018 - mliska@suse.cz
+
+- Remove Requires to perl-Sys-CPU.
+
+-------------------------------------------------------------------
+Mon Jul  9 08:37:34 UTC 2018 - idonmez@suse.com
+
+- Update to version 2.8.0
+  * Include newer `clang_delta` tests in distributions.
+  * Mention CMake-based build system near the top of the file.
+  * Update copyright years.
+  * Do not list `LLVM_LIBS` in the `target_link_libraries`.
+  * Mention that `pkg install` example works for FreeBSD 11.1, too.
+  * Remove remaining references to `Sys::CPU` Perl module.
+  * Update copyright years.
+  * stop using dead sys::cpu perl module
+  * Require LLVM 6.0.
+
+-------------------------------------------------------------------
+Thu May 10 11:02:15 UTC 2018 - mliska@suse.cz
+
+- Update to version 2.8.0+git.20180410.48e622b:
+  * Fixed an issue for checking function declarations
+  * Fixed crashes due to groupdecls
+  * update copyright year
+  * Handle anonymous unions are declared with other decls
+  * Handle designated init expressions
+  * Regenerate Autoconf/Automake stuff.
+  * Add copyright notices to some `clang_delta/tests/` files.
+  * Add more `clang_delta/tests/` files to distributions.
+  * add todo about try-catch
+  * Update copyright years.
+
+-------------------------------------------------------------------
+Tue Feb 20 14:20:07 UTC 2018 - mliska@suse.cz
+
+- Change compiler to GCC.
+
+-------------------------------------------------------------------
+Fri Feb 16 10:17:09 UTC 2018 - mliska@suse.cz
+
+- Remove not needed dependency (boo#1081147).
+
+-------------------------------------------------------------------
+Wed Jan  3 16:21:17 UTC 2018 - mpluskal@suse.com
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jan  3 15:14:32 UTC 2018 - dimstar@opensuse.org
+
+- BuildRequire clang4-devel-static instead of clang-devel-static:
+  all the other llvm/clang deps are hard on version 4.x.
+
+-------------------------------------------------------------------
+Thu Oct 26 11:44:23 UTC 2017 - dimstar@opensuse.org
+
+- Add clang-devel-static BuildRequires: adapt to llvm4 packaging
+  changes.
+
+-------------------------------------------------------------------
+Fri May 19 08:11:00 UTC 2017 - idonmez@suse.com
+
+- Update to version 2.7.0
+  * Minor bugfixes
+  * LLVM 4.0 support
+- Depend on llvm4/clang4
+
+-------------------------------------------------------------------
+Wed Apr 26 09:03:18 UTC 2017 - mliska@suse.cz
+
+- Depend on clang and LLVM 3.9.
+
+-------------------------------------------------------------------
+Fri Mar  3 14:22:05 UTC 2017 - mliska@suse.cz
+
+- Add llvm-clang and llvm as requirements for the package.
+- Clean up spec file via spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Mar  3 10:18:17 UTC 2017 - idonmez@suse.com
+
+- Fix build for PowerPC 
+
+-------------------------------------------------------------------
+Thu Jan 19 09:19:07 UTC 2017 - mliska@suse.cz
+
+- Update to version 2.6.0.
+
+-------------------------------------------------------------------
+Tue May 17 09:26:36 UTC 2016 - martin.liska@suse.com
+
+- Require unifdef package.
+
+-------------------------------------------------------------------
+Mon May 16 12:28:58 UTC 2016 - martin.liska@suse.com
+
+- Update to version 2.5.0
+- Drop creduce-llvm-3.8.patch
+
+-------------------------------------------------------------------
+Thu Mar 24 08:04:57 UTC 2016 - idonmez@suse.com
+
+- Add creduce-llvm-3.8.patch to fix build with llvm 3.8.0
+
+-------------------------------------------------------------------
+Thu Oct 22 11:55:28 UTC 2015 - normand@linux.vnet.ibm.com
+
+- bypass boo#927268 for ppc64/ppc64le removing -fstack_protector
+
+-------------------------------------------------------------------
+Mon Oct 19 13:09:42 UTC 2015 - idonmez@suse.com
+
+- Update to version 2.4.0
+- Drop llvm-3.7.patch, fixed upstream
+
+-------------------------------------------------------------------
+Tue Sep 15 08:23:05 UTC 2015 - idonmez@suse.com
+
+- Add llvm-3.7.patch to fix compilation with llvm 3.7
+- Require llvm >= 3.7
+- Add missing astyle/indent Requires
+- Move perl BuildRequires into Requires, they are needed at runtime
+
+-------------------------------------------------------------------
+Wed Jul  1 12:35:28 UTC 2015 - m.liska@suse.cz
+
+-  Fix file inclusion in the package.
+
+-------------------------------------------------------------------
+Wed Jul  1 10:46:07 UTC 2015 - m.liska@suse.cz
+
+-  Fix duplication on *.pm files in RPM package.
+
+-------------------------------------------------------------------
+Wed Jul  1 08:57:07 UTC 2015 - m.liska@suse.cz
+
+- Simplify redirection of binaries from libexecdir to bindir.
+
+-------------------------------------------------------------------
+Tue Jun 23 07:54:53 UTC 2015 - mpluskal@suse.com
+
+- Update license
+
+-------------------------------------------------------------------
+Thu Jun 15 14:00:00 UTC 2015 - mliska@suse.cz 
+
+- initial package 2.3.0.

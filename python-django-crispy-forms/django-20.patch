@@ -1,0 +1,46 @@
+From 7fbfe44836aa48e65e2450823c3471c06e87e84f Mon Sep 17 00:00:00 2001
+From: Eugene Morozov <eugene.morozov@gmail.com>
+Date: Fri, 3 Aug 2018 17:00:34 +0700
+Subject: [PATCH] Fixed {% crispy_field %} incompatiblity with Django 2.0.
+ (#799)
+
+---
+ crispy_forms/templatetags/crispy_forms_field.py |  2 +-
+ crispy_forms/tests/test_tags.py                 | 11 +++++++++++
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/crispy_forms/templatetags/crispy_forms_field.py b/crispy_forms/templatetags/crispy_forms_field.py
+index 739367cb..f4b9aa54 100644
+--- a/crispy_forms/templatetags/crispy_forms_field.py
++++ b/crispy_forms/templatetags/crispy_forms_field.py
+@@ -153,7 +153,7 @@ def render(self, context):
+                 else:
+                     widget.attrs[attribute_name] = template.Variable(attribute).resolve(context)
+ 
+-        return field
++        return str(field)
+ 
+ 
+ @register.tag(name="crispy_field")
+diff --git a/crispy_forms/tests/test_tags.py b/crispy_forms/tests/test_tags.py
+index 1d1d52f8..4d46e54a 100644
+--- a/crispy_forms/tests/test_tags.py
++++ b/crispy_forms/tests/test_tags.py
+@@ -14,6 +14,17 @@
+ from .forms import SampleForm
+ 
+ 
++def test_crispy_field():
++    template = Template("""
++        {% load crispy_forms_field %}
++        {% for field in form %}
++            {% crispy_field field %}
++        {% endfor %}
++    """)
++    html = template.render(Context({'form': SampleForm()}))
++    assert html.count('<input') == 8
++
++
+ def test_as_crispy_errors_form_without_non_field_errors():
+     template = Template("""
+         {% load crispy_forms_tags %}

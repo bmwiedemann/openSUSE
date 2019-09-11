@@ -1,0 +1,387 @@
+--- commons-compress-1.18-src/src/main/java/org/apache/commons/compress/archivers/sevenz/BoundedSeekableByteChannelInputStream.java	2018-05-02 22:17:13.000000000 +0200
++++ commons-compress-1.18-src/src/main/java/org/apache/commons/compress/archivers/sevenz/BoundedSeekableByteChannelInputStream.java	2018-10-26 16:05:32.068171466 +0200
+@@ -19,6 +19,7 @@
+ 
+ import java.io.IOException;
+ import java.io.InputStream;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.channels.SeekableByteChannel;
+ 
+@@ -69,7 +70,7 @@
+         } else {
+             buf = ByteBuffer.allocate(bytesToRead);
+             bytesRead = channel.read(buf);
+-            buf.flip();
++            ((Buffer)buf).flip();
+         }
+         if (bytesRead >= 0) {
+             buf.get(b, off, bytesRead);
+@@ -79,9 +80,9 @@
+     }
+ 
+     private int read(int len) throws IOException {
+-        buffer.rewind().limit(len);
++        ((Buffer)buffer).rewind().limit(len);
+         int read = channel.read(buffer);
+-        buffer.flip();
++        ((Buffer)buffer).flip();
+         return read;
+     }
+ 
+--- commons-compress-1.18-src/src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java	2018-06-07 21:11:34.000000000 +0200
++++ commons-compress-1.18-src/src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZFile.java	2018-10-26 16:05:32.068171466 +0200
+@@ -25,6 +25,7 @@
+ import java.io.FilterInputStream;
+ import java.io.IOException;
+ import java.io.InputStream;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.ByteOrder;
+ import java.nio.CharBuffer;
+@@ -1184,9 +1185,9 @@
+     }
+ 
+     private void readFully(ByteBuffer buf) throws IOException {
+-        buf.rewind();
++        ((Buffer)buf).rewind();
+         IOUtils.readFully(channel, buf);
+-        buf.flip();
++        ((Buffer)buf).flip();
+     }
+ 
+     @Override
+--- commons-compress-1.18-src/src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZOutputFile.java	2018-07-01 11:53:29.000000000 +0200
++++ commons-compress-1.18-src/src/main/java/org/apache/commons/compress/archivers/sevenz/SevenZOutputFile.java	2018-10-26 16:05:32.068171466 +0200
+@@ -24,6 +24,7 @@
+ import java.io.File;
+ import java.io.IOException;
+ import java.io.OutputStream;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.ByteOrder;
+ import java.nio.channels.SeekableByteChannel;
+@@ -288,7 +289,7 @@
+         crc32.reset();
+         crc32.update(bb.array(), SevenZFile.sevenZSignature.length + 6, 20);
+         bb.putInt(SevenZFile.sevenZSignature.length + 2, (int) crc32.getValue());
+-        bb.flip();
++        ((Buffer)bb).flip();
+         channel.write(bb);
+     }
+ 
+@@ -772,7 +773,7 @@
+         private final ByteBuffer buffer = ByteBuffer.allocate(BUF_SIZE);
+         @Override
+         public void write(final int b) throws IOException {
+-            buffer.clear();
++            ((Buffer)buffer).clear();
+             buffer.put((byte) b).flip();
+             channel.write(buffer);
+             compressedCrc32.update(b);
+@@ -790,7 +791,7 @@
+             if (len > BUF_SIZE) {
+                 channel.write(ByteBuffer.wrap(b, off, len));
+             } else {
+-                buffer.clear();
++                ((Buffer)buffer).clear();
+                 buffer.put(b, off, len).flip();
+                 channel.write(buffer);
+             }
+--- commons-compress-1.18-src/src/main/java/org/apache/commons/compress/archivers/zip/NioZipEncoding.java	2018-05-02 22:17:13.000000000 +0200
++++ commons-compress-1.18-src/src/main/java/org/apache/commons/compress/archivers/zip/NioZipEncoding.java	2018-10-26 16:05:32.068171466 +0200
+@@ -20,6 +20,7 @@
+ package org.apache.commons.compress.archivers.zip;
+ 
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.charset.Charset;
+@@ -118,8 +119,8 @@
+         enc.encode(cb, out, true);
+         // may have caused underflow, but that's been ignored traditionally
+ 
+-        out.limit(out.position());
+-        out.rewind();
++        ((Buffer)out).limit(out.position());
++        ((Buffer)out).rewind();
+         return out;
+     }
+ 
+--- commons-compress-1.18-src/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java	2018-08-09 20:37:01.000000000 +0200
++++ commons-compress-1.18-src/src/main/java/org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.java	2018-10-26 16:21:33.869007928 +0200
+@@ -25,6 +25,7 @@
+ import java.io.InputStream;
+ import java.io.PushbackInputStream;
+ import java.math.BigInteger;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.util.Arrays;
+ import java.util.zip.CRC32;
+@@ -220,7 +221,7 @@
+         this.allowStoredEntriesWithDataDescriptor =
+             allowStoredEntriesWithDataDescriptor;
+         // haven't read anything so far
+-        buf.limit(0);
++        ((Buffer)buf).limit(0);
+     }
+ 
+     public ZipArchiveEntry getNextZipEntry() throws IOException {
+@@ -522,13 +523,13 @@
+         }
+ 
+         if (buf.position() >= buf.limit()) {
+-            buf.position(0);
++            ((Buffer)buf).position(0);
+             final int l = in.read(buf.array());
+             if (l == -1) {
+-                buf.limit(0);
++                ((Buffer)buf).limit(0);
+                 throw new IOException("Truncated ZIP file");
+             }
+-            buf.limit(l);
++            ((Buffer)buf).limit(l);
+ 
+             count(l);
+             current.bytesReadFromStream += l;
+@@ -719,7 +720,7 @@
+         }
+ 
+         inf.reset();
+-        buf.clear().flip();
++        ((Buffer)buf).clear().flip();
+         current = null;
+         lastStoredEntry = null;
+     }
+@@ -784,7 +785,7 @@
+         }
+         final int length = in.read(buf.array());
+         if (length > 0) {
+-            buf.limit(length);
++            ((Buffer)buf).limit(length);
+             count(buf.limit());
+             inf.setInput(buf.array(), 0, buf.limit());
+         }
+--- commons-compress-1.18-src/src/main/java/org/apache/commons/compress/archivers/zip/ZipEncodingHelper.java	2018-05-23 14:50:54.000000000 +0200
++++ commons-compress-1.18-src/src/main/java/org/apache/commons/compress/archivers/zip/ZipEncodingHelper.java	2018-10-26 16:13:51.818646873 +0200
+@@ -18,6 +18,7 @@
+ 
+ package org.apache.commons.compress.archivers.zip;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.charset.Charset;
+ import java.nio.charset.StandardCharsets;
+@@ -85,8 +86,8 @@
+     }
+ 
+     static ByteBuffer growBufferBy(ByteBuffer buffer, int increment) {
+-        buffer.limit(buffer.position());
+-        buffer.rewind();
++        ((Buffer)buffer).limit(buffer.position());
++        ((Buffer)buffer).rewind();
+ 
+         final ByteBuffer on = ByteBuffer.allocate(buffer.capacity() + increment);
+ 
+--- commons-compress-1.18-src/src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java	2018-05-23 14:50:54.000000000 +0200
++++ commons-compress-1.18-src/src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java	2018-10-26 16:05:32.068171466 +0200
+@@ -25,6 +25,7 @@
+ import java.io.IOException;
+ import java.io.InputStream;
+ import java.io.SequenceInputStream;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.channels.FileChannel;
+ import java.nio.channels.SeekableByteChannel;
+@@ -620,7 +621,7 @@
+ 
+         positionAtCentralDirectory();
+ 
+-        wordBbuf.rewind();
++        ((Buffer)wordBbuf).rewind();
+         IOUtils.readFully(archive, wordBbuf);
+         long sig = ZipLong.getValue(wordBuf);
+ 
+@@ -631,7 +632,7 @@
+ 
+         while (sig == CFH_SIG) {
+             readCentralDirectoryEntry(noUTF8Flag);
+-            wordBbuf.rewind();
++            ((Buffer)wordBbuf).rewind();
+             IOUtils.readFully(archive, wordBbuf);
+             sig = ZipLong.getValue(wordBuf);
+         }
+@@ -650,7 +651,7 @@
+     private void
+         readCentralDirectoryEntry(final Map<ZipArchiveEntry, NameAndComment> noUTF8Flag)
+         throws IOException {
+-        cfhBbuf.rewind();
++        ((Buffer)cfhBbuf).rewind();
+         IOUtils.readFully(archive, cfhBbuf);
+         int off = 0;
+         final Entry ze = new Entry();
+@@ -886,7 +887,7 @@
+             archive.position() > ZIP64_EOCDL_LENGTH;
+         if (searchedForZip64EOCD) {
+             archive.position(archive.position() - ZIP64_EOCDL_LENGTH);
+-            wordBbuf.rewind();
++            ((Buffer)wordBbuf).rewind();
+             IOUtils.readFully(archive, wordBbuf);
+             found = Arrays.equals(ZipArchiveOutputStream.ZIP64_EOCD_LOC_SIG,
+                                   wordBuf);
+@@ -915,10 +916,10 @@
+         throws IOException {
+         skipBytes(ZIP64_EOCDL_LOCATOR_OFFSET
+                   - WORD /* signature has already been read */);
+-        dwordBbuf.rewind();
++        ((Buffer)dwordBbuf).rewind();
+         IOUtils.readFully(archive, dwordBbuf);
+         archive.position(ZipEightByteInteger.getLongValue(dwordBuf));
+-        wordBbuf.rewind();
++        ((Buffer)wordBbuf).rewind();
+         IOUtils.readFully(archive, wordBbuf);
+         if (!Arrays.equals(wordBuf, ZipArchiveOutputStream.ZIP64_EOCD_SIG)) {
+             throw new ZipException("archive's ZIP64 end of central "
+@@ -926,7 +927,7 @@
+         }
+         skipBytes(ZIP64_EOCD_CFD_LOCATOR_OFFSET
+                   - WORD /* signature has already been read */);
+-        dwordBbuf.rewind();
++        ((Buffer)dwordBbuf).rewind();
+         IOUtils.readFully(archive, dwordBbuf);
+         archive.position(ZipEightByteInteger.getLongValue(dwordBuf));
+     }
+@@ -941,7 +942,7 @@
+     private void positionAtCentralDirectory32()
+         throws IOException {
+         skipBytes(CFD_LOCATOR_OFFSET);
+-        wordBbuf.rewind();
++        ((Buffer)wordBbuf).rewind();
+         IOUtils.readFully(archive, wordBbuf);
+         archive.position(ZipLong.getValue(wordBuf));
+     }
+@@ -975,9 +976,9 @@
+             for (; off >= stopSearching; off--) {
+                 archive.position(off);
+                 try {
+-                    wordBbuf.rewind();
++                    ((Buffer)wordBbuf).rewind();
+                     IOUtils.readFully(archive, wordBbuf);
+-                    wordBbuf.flip();
++                    ((Buffer)wordBbuf).flip();
+                 } catch (EOFException ex) {
+                     break;
+                 }
+@@ -1047,9 +1048,9 @@
+             final Entry ze = (Entry) zipArchiveEntry;
+             final long offset = ze.getLocalHeaderOffset();
+             archive.position(offset + LFH_OFFSET_FOR_FILENAME_LENGTH);
+-            wordBbuf.rewind();
++            ((Buffer)wordBbuf).rewind();
+             IOUtils.readFully(archive, wordBbuf);
+-            wordBbuf.flip();
++            ((Buffer)wordBbuf).flip();
+             wordBbuf.get(shortBuf);
+             final int fileNameLen = ZipShort.getValue(shortBuf);
+             wordBbuf.get(shortBuf);
+@@ -1084,7 +1085,7 @@
+      */
+     private boolean startsWithLocalFileHeader() throws IOException {
+         archive.position(0);
+-        wordBbuf.rewind();
++        ((Buffer)wordBbuf).rewind();
+         IOUtils.readFully(archive, wordBbuf);
+         return Arrays.equals(wordBuf, ZipArchiveOutputStream.LFH_SIG);
+     }
+@@ -1127,7 +1128,7 @@
+                 singleByteBuffer = ByteBuffer.allocate(1);
+             }
+             else {
+-                singleByteBuffer.rewind();
++                ((Buffer)singleByteBuffer).rewind();
+             }
+             int read = read(loc, singleByteBuffer);
+             if (read < 0) {
+@@ -1166,7 +1167,7 @@
+                 archive.position(pos);
+                 read = archive.read(buf);
+             }
+-            buf.flip();
++            ((Buffer)buf).flip();
+             return read;
+         }
+     }
+@@ -1188,7 +1189,7 @@
+         @Override
+         protected int read(long pos, ByteBuffer buf) throws IOException {
+             int read = archive.read(buf, pos);
+-            buf.flip();
++            ((Buffer)buf).flip();
+             return read;
+         }
+     }
+--- commons-compress-1.18-src/src/main/java/org/apache/commons/compress/utils/FixedLengthBlockOutputStream.java	2018-07-01 11:53:29.000000000 +0200
++++ commons-compress-1.18-src/src/main/java/org/apache/commons/compress/utils/FixedLengthBlockOutputStream.java	2018-10-26 16:05:32.072171484 +0200
+@@ -21,6 +21,7 @@
+ import java.io.FileOutputStream;
+ import java.io.IOException;
+ import java.io.OutputStream;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.ByteOrder;
+ import java.nio.channels.ClosedChannelException;
+@@ -88,7 +89,7 @@
+     }
+ 
+     private void writeBlock() throws IOException {
+-        buffer.flip();
++        ((Buffer)buffer).flip();
+         int i = out.write(buffer);
+         boolean hasRemaining = buffer.hasRemaining();
+         if (i != blockSize || hasRemaining) {
+@@ -97,7 +98,7 @@
+                     blockSize, i);
+             throw new IOException(msg);
+         }
+-        buffer.clear();
++        ((Buffer)buffer).clear();
+     }
+ 
+     @Override
+@@ -142,7 +143,7 @@
+             // fill up the reset of buffer and write the block.
+             if (buffer.position() != 0) {
+                 int n = buffer.remaining();
+-                src.limit(src.position() + n);
++                ((Buffer)src).limit(src.position() + n);
+                 buffer.put(src);
+                 writeBlock();
+                 srcLeft -= n;
+@@ -150,12 +151,12 @@
+             // whilst we have enough bytes in src for complete blocks,
+             // write them directly from src without copying them to buffer
+             while (srcLeft >= blockSize) {
+-                src.limit(src.position() + blockSize);
++                ((Buffer)src).limit(src.position() + blockSize);
+                 out.write(src);
+                 srcLeft -= blockSize;
+             }
+             // copy any remaining bytes into buffer
+-            src.limit(savedLimit);
++            ((Buffer)src).limit(savedLimit);
+             buffer.put(src);
+         }
+         return srcRemaining;
+@@ -240,9 +241,9 @@
+ 
+             try {
+                 int pos = buffer.position();
+-                int len = buffer.limit() - pos;
++                int len = ((Buffer)buffer).limit() - pos;
+                 out.write(buffer.array(), buffer.arrayOffset() + pos, len);
+-                buffer.position(buffer.limit());
++                ((Buffer)buffer).position(buffer.limit());
+                 return len;
+             } catch (IOException e) {
+                 try {

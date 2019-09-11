@@ -1,0 +1,46 @@
+From 2f06e09673e48f6a91486a8ad38f45c160d537fe Mon Sep 17 00:00:00 2001
+From: "mike.travis@hpe.com" <mike.travis@hpe.com>
+Date: Wed, 28 Mar 2018 11:42:18 -0500
+Subject: Fix PCIe LER when GRUB2 accesses non-enabled MMIO data from VGA
+
+A GPU inserted into a PCIe I/O slot disappears during system startup.
+The problem centers around GRUB and a specific VGA init function in
+efi_uga.c.  This causes an LER (link error recorvery) because the MMIO
+memory has not been enabled before attempting access.
+
+The fix is to add the same coding used in other VGA drivers, specifically
+to add a check to insure that it is indeed a VGA controller.  And then
+enable the MMIO address space with the specific bits.
+
+Signed-off-by: Mike Travis <mike.travis@hpe.com>
+---
+ grub-core/video/efi_uga.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/video/efi_uga.c b/grub-core/video/efi_uga.c
+index 464ede874..32ef7efbc 100644
+--- a/grub-core/video/efi_uga.c
++++ b/grub-core/video/efi_uga.c
+@@ -95,9 +95,18 @@ find_card (grub_pci_device_t dev, grub_pci_id_t pciid, void *data)
+ {
+   struct find_framebuf_ctx *ctx = data;
+   grub_pci_address_t addr;
++  grub_pci_address_t rcaddr;
++  grub_uint32_t subclass;
+ 
+   addr = grub_pci_make_address (dev, GRUB_PCI_REG_CLASS);
+-  if (grub_pci_read (addr) >> 24 == 0x3)
++  subclass = (grub_pci_read (addr) >> 16) & 0xffff;
++  if (subclass != GRUB_PCI_CLASS_SUBCLASS_VGA)
++    return 0;
++
++  /* Enable MEM address spaces */
++  rcaddr = grub_pci_make_address (dev, GRUB_PCI_REG_COMMAND);
++  grub_pci_write_word (rcaddr, grub_pci_read_word (rcaddr) | GRUB_PCI_COMMAND_MEM_ENABLED);
++
+     {
+       int i;
+ 
+-- 
+2.13.6
+

@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Fri May 31 12:32:54 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.1
+
+-------------------------------------------------------------------
+Tue May  7 13:11:33 UTC 2019 - Steffen Winterfeldt <snwint@suse.com>
+
+- show more verbose message when journal can't be read (bsc#1132658)
+- 4.2.0
+
+-------------------------------------------------------------------
+Fri Dec  7 08:57:35 UTC 2018 - jreidinger@suse.com
+
+- always use absolute path to binaries (bsc#1118291)
+- properly escape shell arguments (bsc#1118291)
+- 4.1.5
+
+-------------------------------------------------------------------
+Sun Nov 25 16:06:43 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Provide icon with module (boo#1109310)
+- 4.1.4
+
+-------------------------------------------------------------------
+Thu Oct 25 13:30:09 UTC 2018 - mvidner@suse.com
+
+- Adjust for libyui-ncurses-tools split (bsc#1113291)
+- 4.1.3
+
+-------------------------------------------------------------------
+Tue Aug 28 11:17:02 UTC 2018 - lslezak@suse.cz
+
+- Do not crash when changing the filter as a non-root user
+  (bsc#1089626)
+- 4.1.2
+
+-------------------------------------------------------------------
+Tue Jun 26 13:23:35 UTC 2018 - jlopez@suse.com
+
+- Change namespace according to YaST naming conventions. Now this
+  package uses Y2Journal (needed for fate#319428).
+- 4.1.1
+
+-------------------------------------------------------------------
+Mon Jun 18 14:21:20 UTC 2018 - jreidinger@suse.com
+
+- Allow to reuse journal viewer from other yast modules
+  (needed for bsc#1008493)
+- 4.1.0
+
+-------------------------------------------------------------------
+Fri Apr  6 18:51:45 UTC 2018 - mfilka@suse.com
+
+- bnc#1087957 - version bump
+- 4.0.0
+
+-------------------------------------------------------------------
+Tue Aug 29 10:04:29 UTC 2017 - knut.anderssen@suse.com
+
+- Escape special search query characters (bsc#1055500)
+- 3.2.1
+
+-------------------------------------------------------------------
+Mon Mar 13 09:42:03 UTC 2017 - ancor@suse.com
+
+- Fixed RPM packaging error (bsc#1029088)
+- 3.2.0
+
+-------------------------------------------------------------------
+Tue Aug 18 13:47:54 UTC 2015 - ancor@suse.com
+
+- Handle strange journal entries with non-textual messages
+  (bnc#941655)
+- 3.1.2
+
+-------------------------------------------------------------------
+Fri Jul 31 13:18:29 UTC 2015 - ancor@suse.com
+
+- Synced version numbering with the rest of YaST modules (last
+  step for fate#318486).
+- Enhancements in automated tests and code quality.
+- 3.1.1
+
+-------------------------------------------------------------------
+Mon Jun 29 14:16:12 UTC 2015 - ancor@suse.com
+
+- Honor internationalization settings when displaying dates
+  (improvements for fate#318486).
+- 0.2.3
+
+-------------------------------------------------------------------
+Mon Jun  8 10:55:13 UTC 2015 - ancor@suse.com
+
+- Include the package in SLE12-SP1 fate#318486
+
+-------------------------------------------------------------------
+Fri Feb  6 15:18:18 UTC 2015 - ancor@suse.com
+
+- UI improvement: filters are activated on value changes
+- Some cleanup in the strings for better internationalization
+- Updated to use the latest version of the YaST libraries
+- 0.2.2
+
+-------------------------------------------------------------------
+Tue Jan 27 08:34:17 UTC 2015 - ancor@suse.com
+
+- Only offer 'previous boot' as a time interval if there are really
+  entries for such boot.
+- Version 0.2.1
+
+-------------------------------------------------------------------
+Thu Dec  4 16:11:29 UTC 2014 - ancor@suse.com
+
+- New default interval in the filter: last 24 hours.
+- Better handling of journalctl errors.
+- Fixes in desktop file: moved to the proper YaST section (misc)
+  and remove incorrect X-KDE-Library directive.
+- Initial unit tests added.
+- Version 0.2.0
+
+-------------------------------------------------------------------
+Tue Dec  2 15:48:17 UTC 2014 - ancor@suse.com
+
+- Initial prototype
+

@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Mon Aug 28 17:06:46 UTC 2017 - aloisio@gmx.com
+
+- Update to version 2.7.1
+  * Fix inclusion mechanism for FFTs which could cause a host
+    application to crash in certain circumstances due to
+    conflicting versions of C-linkage symbols
+  version 2.7:
+  * Add ability to PluginLoader to list plugins only in (or not in)
+    certain library files
+  * Fix fixed-sample-rate output timestamps in printout from the
+    simple host, and add regression test script using test plugin
+  * Switch the convenience FFT interface for plugin usage from the
+    very slow reference implementation previously provided, to the
+    somewhat faster KissFFT
+  * Add a top-secret compiler flag to switch internal FFTs to
+    single-precision only
+  * Fix some small but long-standing memory leaks and minor bugs
+  version 2.6:
+  * Add a simple C-linkage API for plugin library discovery and
+    loading -- the missing part when trying to use Vamp plugins
+    from C or a language with only C-linkage foreign-function
+    interface
+  * Fix bug in PluginBufferingAdapter reset() function, which
+    failed to reset timestamp rewrites (symptom: timestamps
+    appeared to continue to ascend from end point on next run after
+    a reset)
+  * Fix sometime 1-sample rounding error in
+    PluginInputDomainAdapter
+  * Update build files for more recent OS versions
+  * Add -L option to simple host, as synonym for --list-full
+  * Add a combined Visual C++ solution that includes the plugin
+    SDK, host SDK, example plugins, and simple host projects
+
+-------------------------------------------------------------------
+Mon Jul 13 07:51:31 UTC 2015 - olaf@aepfle.de
+
+- Build with -fPIC
+
+-------------------------------------------------------------------
+Wed Apr  8 03:16:33 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.5
+  * Fix incorrect handling of FixedSampleRate outputs in the
+    PluginBufferingAdapter. Un-timestamped features on these outputs
+    were incorrectly being timestamped from the process timestamp,
+    where they should have been timed relative to the previous
+    feature on the output according to the output's sample rate.
+  * Fix return of uninitialised memory through getCurrentProgram
+    when plugin specifies no programs
+  * Ensure output sample rate is initialised (to 0) for variable-rate
+    outputs where the plugin forgets to set a rate
+- Use download Url provided by upstream
+- Remove vamp-plugin-sdk-2.0-libdir.patch; use a hack instead
+- Remove redundant documentation related files with fdupes
+- Perform spec-cleaner on spec file
+
+-------------------------------------------------------------------
+Mon May 23 00:07:02 UTC 2011 - davejplater@gmail.com
+
+- Update to version 2.2.1, split libs into libvamp-hostsdk3 and
+  libvamp-sdk2 sub packages and moved binaries into main package.
+- Enabled api doc build and generate man pages with help2man.
+- Upstream changes :
+  *Add ProcessTimestampMethod to PluginInputDomainAdapter,
+   offering the ability to decide how data buffering and
+   timestamping works for frequency-domain plugins (whose process
+   timestamps have to be at the centre of each processing block
+   rather than the start)
+  *Make PluginBufferingAdapter take into account any timestamp
+   shift introduced by a PluginInputDomainAdapter that it wraps.
+  *Fix crash in PluginAdapter when plugin library getDescriptor
+   fails on plugin construction.
+  *Add plugin skeleton files as starting point for new developers.
+
+-------------------------------------------------------------------
+Tue Jul  7 22:21:50 CEST 2009 - mseben@suse.cz
+
+- initial package created from fedora spec
+
+-------------------------------------------------------------------

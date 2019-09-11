@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="revision">next</param>
+    <param name="versionformat">16.09</param>
+    <param name="url">https://github.com/librepilot/LibrePilot</param>
+    <param name="filename">librepilot</param>
+    <param name="scm">git</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

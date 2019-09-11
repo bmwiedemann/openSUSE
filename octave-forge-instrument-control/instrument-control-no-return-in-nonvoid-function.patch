@@ -1,0 +1,22 @@
+Index: octave-forge-instrument-control-0.3.1/instrument-control-0.3.1/src/serial/__srl_properties__.cc
+===================================================================
+--- octave-forge-instrument-control-0.3.1.orig/instrument-control-0.3.1/src/serial/__srl_properties__.cc
++++ octave-forge-instrument-control-0.3.1/instrument-control-0.3.1/src/serial/__srl_properties__.cc
+@@ -284,4 +284,5 @@ Undocumented internal function.\n\
+ #endif
+     /* never reached in normal operation */
+   (*current_liboctave_error_handler) ("Your system doesn't support the SERIAL interface");
++  return octave_value_list();
+ }
+Index: octave-forge-instrument-control-0.3.1/instrument-control-0.3.1/src/udp/__udp_properties__.cc
+===================================================================
+--- octave-forge-instrument-control-0.3.1.orig/instrument-control-0.3.1/src/udp/__udp_properties__.cc
++++ octave-forge-instrument-control-0.3.1/instrument-control-0.3.1/src/udp/__udp_properties__.cc
+@@ -87,6 +87,7 @@ Undocumented internal function.\n\
+ #endif
+     /* never reached in normal operation */
+   (*current_liboctave_error_handler) ("Your system doesn't support the UDP interface");
++  return octave_value_list();
+ }
+ #if 0
+ %!test

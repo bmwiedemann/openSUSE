@@ -1,0 +1,1411 @@
+-------------------------------------------------------------------
+Wed Jul 24 08:40:09 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Thu Jun 13 09:48:45 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix aarch64 start
+
+-------------------------------------------------------------------
+Wed Jun  5 13:08:46 UTC 2019 -  <jsegitz@suse.com>
+
+- Added README.security and wording in the configuration file to
+  ensure users are aware that they need to configure etcd to require
+  authentication
+
+-------------------------------------------------------------------
+Wed Jan 30 11:58:15 UTC 2019 - Panagiotis Georgiadis pgeorgiadis@suse.com
+
+- Update to version 3.3.11:
+  * version: 3.3.11
+  * auth: fix cherry-pick
+  * auth: disable CommonName auth for gRPC-gateway
+  * grpcproxy: fix memory leak
+  * bsc#1121850 CVE-2018-16886
+
+-------------------------------------------------------------------
+Wed Dec 19 01:28:24 UTC 2018 - clee@suse.com
+
+- Updated to a supported version of Go (due to security reasons)
+  * bsc#1118897 CVE-2018-16873
+    go#29230 cmd/go: remote command execution during "go get -u"
+  * bsc#1118898 CVE-2018-16874
+    go#29231 cmd/go: directory traversal in "go get" via curly braces in import paths
+  * bsc#1118899 CVE-2018-16875
+    go#29233 crypto/x509: CPU denial of service
+-------------------------------------------------------------------
+Wed Dec 12 12:43:23 UTC 2018 - alvaro.saurin@suse.com
+
+- Updated to a supported version of Go (due to security reasons)
+
+-------------------------------------------------------------------
+Mon Nov 12 09:33:41 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 3.3.10:
+  * version: 3.3.10
+  * travis.yml: use Go 1.10.4
+  * etcdserver: add "etcd_server_read_indexes_failed_total"
+  * rafthttp: probe all raft transports
+  * etcdserver: add "etcd_server_health_success/failures"
+  * clientv3: concurrency.Mutex.Lock() - preserve invariant
+  * etcdserver/api/rafthttp: add v3 snapshot send/receive metrics
+  * etcdserver/api/snap: add v3 snapshot fsync metrics
+  * tests/Dockerfile: update, fix GOPATH
+  * etcdctl: cherry pick of #10109 to release-3.3
+  * etcdserver: remove duplicated imports
+  * etcdserver: add "etcd_server_id"
+  * etcdserver: clarify read index wait timeout warnings
+  * rafthttp: clarify "became inactive" warning
+  * Merge pull request #9861 from gyuho/race
+  * etcdserver: code clean up
+  * vendor: add go-grpc-middleware
+  * etcdserver: add grpc interceptor to log info on incoming requests to etcd server
+  * version: bump up to 3.3.9+git
+  * version: 3.3.9
+  * etcdserver: add "etcd_server_go_version" metric
+  * clientv3: fix keepalive send interval when response queue is full
+  * added "now := time.Now()"
+  * remove "github.com/gogo/protobuf/plugin/stringer"
+  * etcdserver: rename to "heartbeat_send_failures_total"
+  * mvcc: add "etcd_mvcc_hash_(rev)_duration_seconds"
+  * mvcc/backend: fix defrag duration scale
+  * mvcc/backend: add "etcd_disk_backend_defrag_duration_seconds"
+  * mvcc/backend: document metrics ExponentialBuckets
+  * mvcc/backend: clean up mutex, logging
+  * etcdserver: add "etcd_server_slow_apply_total"
+  * etcdserver: add "etcd_server_heartbeat_failures_total"
+  * e2e: log errors TestV3CurlCipherSuitesMismatch for now
+  * Makefile: use Go 1.10.3 by default
+  * *: use Go 1.10.3 for testing
+  * mvcc: avoid unnecessary metrics update
+  * mvcc: add "etcd_mvcc_db_total_size_in_use_in_bytes"
+  * mvcc: add "etcd_mvcc_db_total_size_in_bytes"
+  * etcdserver: add "etcd_server_quota_backend_bytes"
+  * etcdserver: add "etcd_server_slow_read_indexes_total"
+  * etcdserver: clarify read index warnings
+  * tests: update test scripts
+  * version: 3.3.8+git
+  * version: 3.3.8
+  * travis: use Go 1.9.7
+  * gitignore: ignore "docs" and "vendor"
+  * clientv3: backoff on reestablishing watches when Unavailable errors are encountered
+  * tests/semaphore.test.bash: update
+  * Makefile: update
+  * etcdserver: Fix txn request 'took too long' warnings to use loggable request stringer
+  * etcdserver: Add response byte size and range response count to took too long warning
+  * etcdserver: Replace value contents with value_size in request took too long warning
+  * version: bump up to 3.3.7+git
+  * version: 3.3.7
+  * e2e: test client-side cipher suites with curl
+  * etcdmain: add "--cipher-suites" flag
+  * embed: support custom cipher suites
+  * integration: test client-side TLS cipher suites
+  * pkg/transport: add "TLSInfo.CipherSuites" field
+  * pkg/tlsutil: add "GetCipherSuite"
+  * tests/e2e: test move-leader command with TLS
+  * ctlv3: support TLS endpoints for move-leader command
+  * scripts/release: Fix docker push for 3.1 releases, remove inaccurate warning at the end of release script
+  * version: bump up to 3.3.6+git
+  * version: 3.3.6
+  * mvcc: fix panic by allowing future revision watcher from restore operation
+  * auth: fix panic using WithRoot and improve JWT coverage
+  * auth: a new auth token provider nop
+  * scripts: Fix remote tag check, gcloud login and umask in release script
+  * version: 3.3.5+git
+  * version: 3.3.5
+  * tests/e2e: separate coverage tests for exec commands
+  * etcdctl/ctlv3: fix watch with exec commands
+  * tests: use Go 1.9.6
+  * functional/tester: handle retries in "caseUntilSnapshot"
+  * functional.yaml: use lower ports
+  * scripts: Fix a few etcd release script bugs and make it reenterant.
+  * etcdmain: document peer-cert-allowed-cn flag
+  * version: 3.3.4+git
+  * version: 3.3.4
+  * scripts: Add scripts/release that performs 'etcd-release-runbook' (https://goo.gl/Gxwysq) style release workflow
+  * etcdserver: log skipping initial election tick
+  * etcdmain: add "--initial-election-tick-advance"
+  * embed: add "InitialElectionTickAdvance"
+  * integration: set InitialElectionTickAdvance to true by default
+  * etcdserver: add "InitialElectionTickAdvance"
+  * etcdserver: add is_leader prometheus metric that is 1 on the leader.
+  * integration: re-overwrite "httptest.Server" TLS.Certificates
+  * pkg/transport: don't set certificates on tls config
+  * functional: create symlinks for build
+  * travis: run build tests for "functional"
+  * snapshot: remove tests
+  * functional: initial commit (copied from master)
+  * snapshot: initial commit (for functional tests)
+  * test: simplify
+  * etcdserver/stats: make all fields guarded by mutex.
+  * etcdserver/stats: fix stats data race.
+  * test: remove build flag "-a"
+  * cmd/vendor: add "go.uber.org/zap"
+  * pkg/proxy: move from "pkg/transport"
+  * tools: remove
+  * travis: update
+  * test/*: clean up semaphore scripts
+  * etcdserver: fix "lease_expired_total" metrics
+  * tests: move test scripts
+  * semaphore.sh: update Go version
+  * travis: use Go 1.9.5
+  * version: 3.3.3+git
+  * version: 3.3.3
+  * Documentation/upgrades: backport all upgrade guides
+  * compactor: simplify interval logic on periodic compactor
+  * compactor: adjust interval for period <1-hour
+  * compactor: clean up
+  * rafthttp: add missing "peer_sent_failures_total" metrics call
+  * etcdserver: adjust election ticks on restart
+  * etcdserver: make "advanceTicks" method
+  * rafthttp: add "ActivePeers" to "Transport"
+  * version: 3.3.2+git
+  * version: 3.3.2
+  * clientv3/integration: test "rpctypes.ErrLeaseTTLTooLarge"
+  * *: enforce max lease TTL with 9,000,000,000 seconds
+  * *: remove unused env vars
+  * hack/scripts-dev: fix indentation in run.sh
+  * hack/scripts-dev: sync with master branch
+  * travis: update Go version string
+  * e2e: fix missing "apiPrefix"
+  * embed: fix wrong compactor imports
+  * Documentation/op-guide: highlight defrag operation "--endpoints" flag
+  * etcdctl: highlight "defrag" command caveats
+  * e2e: add "Election" grpc-gateway test cases
+  * e2e: add "spawnWithExpectLines"
+  * api/v3election: error on missing "leader" field
+  * Documentation: make "Consul" section more objective
+  * etcdserver: enable "CheckQuorum" when starting with "ForceNewCluster"
+  * httpproxy: cancel requests when client closes a connection
+  * semaphore: release test version
+  * embed: fix revision-based compaction with default value
+  * embed: document/validate compaction mode
+  * version: 3.3.1+git
+
+-------------------------------------------------------------------
+Tue Jun  5 09:24:54 UTC 2018 - dcassany@suse.com
+
+- Make use of %license macro 
+
+-------------------------------------------------------------------
+Wed May 30 11:10:04 UTC 2018 - jmassaguerpla@suse.com
+
+- Fix go 1.9.4 requirements. We had also "BuildRequires: go >= 1.9.4"
+  and this was pulling go 1.10, too.
+
+  (bsc#1095184)
+
+-------------------------------------------------------------------
+Wed Feb 28 10:27:43 UTC 2018 - jmassaguerpla@suse.com
+
+- Build require go 1.9.4 or newer, since etcd has been tested and
+  built on that. See previous changelog.
+  fix#go_requirement (bsc#1095184). 
+
+-------------------------------------------------------------------
+Thu Feb 22 06:54:05 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 3.3.1 (bsc#1095184):
+  * gitignore: add ".Dockerfile-functional-tester"
+  * Dockerfile-functional-tester: initial commit
+  * tools/functional-tester: update README for local docker testing
+  * hack: sync with etcd master
+  * mvcc: restore unsynced watchers
+  * etcdserver: improve request took too long warning
+  * semaphore: use Go 1.9.4, update release upgrade test version
+  * travis: use Go 1.9.4 with TARGET_GO_VERSION
+  * hack/scripts-dev: Makefile with Go 1.9.4, 1.8.7
+  * version: 3.3.1
+  Needed by feature#node_removal
+
+-------------------------------------------------------------------
+Thu Feb  1 16:58:18 CET 2018 - ro@suse.de
+
+- do not build on s390, only on s390x (no go on s390)
+
+-------------------------------------------------------------------
+Thu Nov 23 13:48:13 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Aug 30 10:49:23 UTC 2017 - vrothberg@suse.com
+
+- transform etcd.service file from dos to unix
+
+-------------------------------------------------------------------
+Fri Aug 11 11:25:29 UTC 2017 - kiall@macinnes.ie
+
+- Require golang 1.8, as using earlier versions will fail to build
+
+-------------------------------------------------------------------
+Thu Aug  3 14:04:09 UTC 2017 - vrothberg@suse.com
+
+- Fix bsc#1046717: set (io)nice value in service file
+
+-------------------------------------------------------------------
+Thu Jul 27 14:55:44 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 3.2.4:
+  * improve example run commands in docker_guide
+  * improve documentation regarding docker cluster
+  * version: bump to v3.2.0+git
+  * etcdserver/api: add 3.2 in capability
+  * rafthttp: add 3.2.0 stream type
+  * *: 'ignore_value' to detach lease with PutRequest
+  * *: regenerate proto files with 'ignore_value'
+  * v3rpc: error for non-empty value with ignore_value
+  * etcdserver: use prev-value for ignore_value writes
+  * integration: test Put,Txn with ignore_value flag
+  * clientv3: add 'WithIgnoreValue' option
+  * ctlv3: add '--ignore-value' flag to 'put' command
+  * e2e: test put command with '--ignore-value' flag
+  * grpcproxy: handle 'IgnoreValue' field in PutRequest
+  * etcdserver: increase snapshot to 100,000
+  * auth, etcdserver: let maintenance services require root role
+  * e2e: add cases for defrag and snapshot with authentication
+  * etcd-tester: use 10K for '--snapshot-count'
+  * kv.go: Fixed []byte to string conversion syntax in comment
+  * pkg/transport: Obey the usual laws of ssl when using a private PKI
+  * ctlv3: print cluster info after adding new member
+  * clientv3: balancer uses one connection at a time
+  * pkg/report: add nil checking for getTimeSeries
+  * Documentation: document upgrading to v3.1
+  * etcdserver: use ReqTimeout for linearized read
+  * clientv3/txn.go : removed the TODO: add a Do for shortcut the txn without any condition
+  * test: passed the test script arguments as the test function parameters
+  * glide: update 'golang.org/x/net'
+  * vendor: update 'golang.org/x/net'
+  * grpcproxy, etcdmain, integration: add close channel to kv proxy
+  * Polish note about varying parameters for each member
+  * store: set Dir attribute, when node expired
+  * Documentation: update experimental_apis for v3.1 release
+  * Documentation: fix typo s/endpoint-health/endpoint health/
+  * NEWS: fix date for v3.1 release
+  * clientv3/concurrency: fix rev comparison on concurrent key deletion
+  * embed/etcd.go: make v2 endpoint optional. fixes #7100
+  * integration: test STM apply on concurrent deletion
+  * pkg/flags: fixed prefix checking of the env variables
+  * pkg/cpuutil: add cpuutil
+  * etcdctlv3: snapshot restore works with lease key
+  * pkg/netutil: use native byte ordering for route information
+  * documentation: update build documentation
+  * op-guide: change grpc-proxy from 'pre' to alpha'
+  * README: remove ACI, update Go version
+  * roadmap: update roadmap
+  * etcdmain: add gateway and grpc-proxy commands to etcd help
+  * etcdserverpb: rework documentation for range request
+  * concurrency: variadic stm options
+  * concurrency: extend STM interface to Get from any of a list of keys
+  * concurrency: STM WithPrefetch option
+  * concurrency: STM snapshot isolation level
+  * benchmark: update for new stm interface
+  * integration: fix STM tests to compile against new interface
+  * Documentation: Add upgrade gotchas/further info for better search visibility
+  * embed: support user defined grpc services.
+  * doc: mention HTTP JSON in doc link
+  * embed: add example for ServiceRegister.
+  * contrib/recipes/key.go : fixed method comment
+  * client: add GetVersion method
+  * tools: add rust-etcd to the list of libraries.
+  * vendor: update tablewritier
+  * ctlv3: right-align the table output
+  * *: 'ignore_lease' to detach value with PutRequest
+  * *: regenrate proto files with 'ignore_lease'
+  * v3rpc: error for non empty lease with 'ignore_lease'
+  * etcdserver: use prev-lease for 'ignore_lease' writes
+  * integration: put,txn with 'ignore_lease' flag
+  * clientv3: add WithIgnoreLease option
+  * ctlv3: add '--ignore-lease' flag to put command
+  * e2e: test put command with '--ignore-lease' flag
+  * grpcproxy: handle 'IgnoreLease' field in PutRequest
+  * .gitignore: Adding .idea to .gitignore
+  * Documentation: C library added
+  * Documentation: Deleted non-existing project from libraries-and-tools.md
+  * clientv3: test closing client cancels blocking dials
+  * clientv3: use DialContext
+  * auth: refactor test to use common setup
+  * test: bump e2e timeout to 15 minutes
+  * auth: Adding unit tests
+  * integration: test domain name URLs are rejected before binding
+  * embed: reject binding listeners to domain names
+  * clientv3: fix balancer update address bug
+  * test: fix failure message in TestEmbedEtcd
+  * integration: add test case in dial_test to ensure balancer.updateAddrs works properly
+  * e2e: do not remove the member we connect to
+  * contrib: add etcd cluster deploy on systemd docs
+  * etcdmain: ppc64le platform support
+  * clientv3: start a session with existing lease
+  * auth, etcdserver: authenticate clients based on certificate CommonName
+  * e2e: add a case for CommonName auth of v3 API
+  * netutil: add dualstack to linux_route
+  * auth: unit-test for authStore.AuthDisable()
+  * auth: test for AuthStore.IsAdminPermitted
+  * scripts: Add support to build ppc64le binary for release
+  * rafthttp: use http.Request.WithContext instead of Cancel
+  * clientv3: remove strict yaml dependency
+  * test: clientv3 integration tests with proxy
+  * *: Use http.Request.WithContext instead of Cancel
+  * grpcproxy: don't use WithRequireLeader for watch event stream
+  * pkg/netutil: name GetDefaultInterfaces consistent
+  * clientv3: add DialOptions to config
+  * clientv3: sends keepalive reqs immediately after lease keep alive stream reset
+  * pkg/report: add min/max latency per second
+  * auth: add a test case for recoverying from snapshot
+  * auth: correct initialization in NewAuthStore()
+  * clientv3: only start lease stream after first keepalive call
+  * clientv3: remove cancelWhenStop from lease implementation
+  * clientv3/integration: stop member before keepalive in TestLeaseKeepAliveInitTimeout
+  * clientv3: uses direct client calls in integration tests
+  * test: Fix gosimple errors
+  * travis: Update fmt check gotools
+  * Documentation: replace px typo with ps
+  * Revert "Merge pull request #7139 from heyitsanthony/proxy-rlock"
+  * grpcproxy: support CountOnly
+  * v3rpc: LeaseTimeToLive returns TTL=-1 resp on lease not found
+  * clientv3/integration: test lease not found on TimeToLive()
+  * integration: don't expect lease not found error for TestV3GetNonExistLease
+  * raft: add Ready.MustSync
+  * etcdserverpb, clientv3: clarify WithLimit documentation
+  * grpcproxy: respect CompactRevision in watcher
+  * auth: simplify merging range perm
+  * travis: disable email notifications
+  * op-guide: fix remove instructions in runtime-configuration and conform to style
+  * clientv3: KeepAliveOnce returns ErrLeaseNotFound if TTL <= 0
+  * grpcproxy: split out leadership detection code
+  * grpcproxy: don't wait for ctx.Done() to close kv donec
+  * integration: wait five elections before creating watch for require leader test
+  * e2e: modify e2e to run code coverage
+  * etcdmain: whitelist etcd binary flags
+  * grpcproxy: support forcing leader as available
+  * Documentation/libraries-and-tools: add vitess
+  * clientv3: fix lease keepalive duration
+  * grpcproxy: refactor chan stream out of watch_client_adapter
+  * grpcproxy: add lease coalescing support
+  * grpcproxy: incorporate lease proxy into existing proxy framework
+  * clientv3: fix lease keepalive duration
+  * raft: fix read index request for #7331
+  * clientv3: let user provide a client context through Config
+  * clientv3: add cluster version checking
+  * integration: test RejectOldCluster
+  * test: add e2e to coverage test
+  * *: add and expose StopSignal field in ExpectProcess
+  * e2e: unshadow err and remove bogus err checking in spawnWithExpects()
+  * pkg/transport: remove dependency on pkg/fileutils
+  * raft: revise test case and fix typo
+  * op-guide: use host volume in Docker command
+  * clientv3: fix typo in README
+  * grpcproxy: only return ctx error in chan stream if recvc is empty
+  * tcpproxy: don't use range variable in reactivate goroutine
+  * clientv3: do not set next keepalive time <= now+TTL
+  * integration: test keepalives for short TTLs
+  * auth: keep old revision in 'NewAuthStore'
+  * integration: add 'TestV3HashRestart'
+  * netutil: use ipv4 host by default
+  * integration: permit background watch streams in TestWatchCancelOnServer
+  * grpcproxy: add 'register' address
+  * MAINTAINERS: add Fanmin
+  * travis: use Go 1.8 in master branch
+  * NEWS: add v3.1.2 release notes
+  * *: remove trailing space, upgrade test on v3.1
+  * e2e: fix -tags cov builds
+  * clientv3: use any port for metrics example
+  * etcdmain: enable grpc tracing with --debug
+  * embed: enable debug endpoint if Debug is set and add net.trace events
+  * Documentation: add documentation for grpc lease stream coalescing
+  * script: Build docker image for ppc64le
+  * integration: ensure leader is up in waitLeader() and clusterMustProgress()
+  * etcdctl: modify etcdctl v2 and v3 for code coverage
+  * e2e: add etcdctl to e2e test
+  * test: build test binary for etcdctl
+  * etcdctl: show warning if ETCDCTL_API is not set in v2 --help
+  * clientv3: bump example requestTimeout for slow CI
+  * op-guide: add notes on mounting certs directory
+  * grpcproxy: return closing error when stream is canceled from conn close
+  * raft: make TestNodeTick reliable
+  * test: run unused and gosimple over all packages at once
+  * Documentation/op-guide: use exact certs dir for Container Linux
+  * Documentation: suggest ionice for disk tuning
+  * api: default to V3 capability
+  * integration: don't set v3 capability since now default
+  * etcdctl: correctly batch revisions in make-mirror
+  * libraries-and-tools: rename to integrations
+  * production-users: add Kubernetes
+  * etcd-tester: check expired lease with -1 TTL
+  * embed: use machine default host only for default value, 0.0.0.0
+  * etcdmain: log machine default host after update check
+  * clientv3: Add KeyExists and KeyNotExists Cmp helpers
+  * etcdctl: Fix migrate example in README.md
+  * contrib: suppress gosimple errors of raftexample
+  * test: eschew you
+  * clientv3: pass back dial error on dial timeout
+  * *: eschew you from documentation
+  * vendor: lock down some soft dependencies
+  * test: run 'staticcheck'
+  * *: remove never-unused vars, minor lint fix
+  * Documentation: add PD to production users
+  * vendor: import jwt-go for auth v3
+  * *: support jwt token in v3 auth API
+  * Documentation: add qingcloud to production user
+  * doc: add usecase of qiniu
+  * Documentation: add production user
+  * doc: update use case of qiniu
+  * Documentation: Add Tencent Games to production users
+  * Documentation: warn membership change while migration
+  * doc: Add hyper.sh to production users
+  * doc: Add use case in Meitu Inc.
+  * gateway: fix the dns discovery method
+  * lease: guard 'Lease.itemSet' from concurrent writes
+  * Documentation: sign source zip files
+  * clientv3: close balancer to avoid goroutine leak in balancer_test.go
+  * e2e: don't remove member used to connect to etcd cluster
+  * Documentation: add Grab etcd use case
+  * *: fix minor typos
+  * backend: readtx
+  * mvcc: txns and r/w views
+  * lease: support mvcc txn
+  * etcdserver: support mvcc txn
+  * benchmark: support mvcc txn
+  * etcdctl: support mvcc txn
+  * doc: Add daocloud.io to production users
+  * test: install packages when building coverage tests
+  * clientv3util: Add KeyExists and KeyMissing examples
+  * clientv3: define error type for closed watcher
+  * grpcproxy: configure register to Cluster API
+  * etcdmain: add register,resolver flags
+  * Documentation/op-guide: document grpcproxy sync
+  * etcdmain: SdNotify when gateway, grpc-proxy are ready
+  * clientv3: serialize updating notifych in balancer
+  * clientv3: send frst down() func after recieving first notified addr
+  * Documentation: add huawei product user
+  * doc: add Baidu Waimai
+  * doc: fix title size
+  * NEWS: update v3.1.3
+  * doc: add branch.io use case into production users
+  * auth: nil check AuthInfo when checking admin permissions
+  * testutil: add CheckAfterTest for calling AfterTest without a testing.T
+  * clientv3: use CheckAfterTest after terminating cluster
+  * op-guide: update gateway routing policy
+  * discovery: fix print format
+  * Documentation: add txaio-etcd to integrations
+  * doc/learning: complete the api guide
+  * adapter, integration: split out grpc adapters from grpcproxy package
+  * clientv3: permit creating client without grpc connection
+  * concurrency: support returning response header for mutex
+  * v3client: a bridge between an etcdserver and a clientv3
+  * v3lock: server-side api for locking
+  * scripts: generate lock service rpc stubs
+  * embed: serve lock api
+  * integration: test grpc lock service
+  * Update example_key_test.go
+  * auth: get rid of deadlocking channel passing scheme in simpleTokenTTL
+  * auth: test concurrent authentication
+  * test: add coverage for more packages
+  * v3client: add example and godoc New
+  * integration: add TestMutexWaitsOnCurrentHolder test
+  * test: mask go1.8 gosimple warnings
+  * etcdserver: candidate should wait for applying all configuration changes
+  * clientv3: close open watch channel if substream is closing on reconnect
+  * clientv3: synchronize on goroutines in TestBalancerDoNotBlockOnClose
+  * ctlv3: ensure synced member list before printing env vars on member add
+  * v3client: fix doc to use e.Server
+  * clientv3: update eps if pinAddr is not included in updateAddrs
+  * etcdserver: remove possibly compacted entry look-up
+  * wal: use path/filepath instead of path
+  * embed: Clear default initial cluster
+  * *: use filepath.Join for files
+  * embed: don't return error when closing on embed etcd
+  * *: base initial mmap size on quota size
+  * etcdserver, backend: only warn if exceeding max quota
+  * e2e: force endpoint for member removal
+  * ctlv3: have "protobuf" in output help string instead of "proto"
+  * *: fix gosimple warning for fmt.Sprintf("%s")
+  * *: use 'io.Seek*' for go1.7+
+  * etcdserver: remove legacy range/txn
+  * Dockerfile-release: add nsswitch.conf into image
+  * e2e, etcdserver: fix wrong usages of ordinal
+  * backend: add FillPercent option
+  * etcdmain: handle StopNotify when ErrStopped aborted publish
+  * integration: ensure 'StopNotify' on publish error
+  * travis: always 'go get -u' in 'before_install'
+  * clientv3: wait for Get goroutine in TestDialCancel
+  * client/integration: use only digits in unix port
+  * Documentation: add a doc of v3 auth
+  * clientv3: remove redundant error handling code
+  * integration: wait on leader before progress check in TestRestartMember
+  * clientv3: make ops and compares non-opaque and mutable
+  * namespace: a wrapper for clientv3 to namespace requests
+  * etcd-2-1-0-bench: Fix an absolute bare link to resource outside of Documentation dir
+  * clientv3/integration: simple namespace wrapper tests
+  * integration: test namespacing on proxy layer
+  * etcdmain: add prefixing support to grpc proxy
+  * Documentation, op-guide, clientv3: add documentation for namespacing
+  * clientv3: use waitgroup to wait for substream goroutine teardown
+  * adt: Visit() interval trees in sorted order and terminate early
+  * *: revoke a deleted role
+  * e2e: add a test case role delete and revoke
+  * auth, etcdserver: forbid invalid auth management
+  * e2e: add a test case for invalid management of root user and role
+  * Documentation: add Prometheus alerting rules
+  * mvcc/backend: hold 'readTx.Lock' until completing bolt.Tx reset
+  * integration: test inflight range requests while defragmenting
+  * tools/etcd-tester: add timeout for 'defrag'
+  * Documentation: add salesforce to prod users
+  * integration: retry TestNetworkPartition5MembersLeaderInMajority
+  * auth: store cached permission information in a form of interval tree
+  * test: add proxy to coverage tests
+  * etcdserver: fix a typo in bucket name var
+  * raft: use rs.req.Entries[0].Data as the key for deletion in advance()
+  * op-guide: Remove guest role from v3 auth doc
+  * integration: add serialized range to TestV3CompactCurrentRev
+  * grpcproxy/cache: only check compaction revision for historical revisions
+  * testutil: check for grpc resources in AfterTest
+  * auth: import design doc
+  * NEWS: add v3.1.4, v3.1.5
+  * proxy/grpcproxy: add chanStream helper
+  * doc: link auth design in doc
+  * etcdctl: add initial check perf command
+  * grpcproxy/adapter: add maintenance API support
+  * compactor: make TestPeriodic die early
+  * clientv3,v3client: maintenance to embedded client
+  * integration: use maintenance API adapter in tests
+  * Documentation: add disk latency leader loss question to FAQ
+  * Documentation: fix typos
+  * *: use protoc 3.2.0
+  * compactor: fix TestPeriodic
+  * embed: Delay setting initial cluster for YAML
+  * etcdmain: test config file clustering flags
+  * integration: test require leader for a lease stream
+  * v3rpc: return leader loss error if lease stream is canceled
+  * clientv3/integration: test lease WithRequireLeader
+  * clientv3: support WithRequireLeader in lease client
+  * Documentation: add encryption wrapper to integrations
+  * clientv3: respect dial timeout when authenticating
+  * clientv3: test dial timeout is respected when using auth
+  * etcdserver: use cancelable context for server initiated requests
+  * integration: test cluster terminates quickly
+  * idgen: correct comments for id generator
+  * Documentation: Adding new Ruby v3 client entry to integrations.md
+  * Documentation: add dims v3 gateway API for python
+  * clientv3: fix go1.8 go fmt warning in test
+  * *: support checking that an interval tree's keys cover an entire interval
+  * *: add pprof flag to grpc proxy
+  * etcdctl: add a new option --from-key for unlimited range permission
+  * e2e: add a test case for the --open-ended option
+  * grpcproxy/adapter: add Cluster API support
+  * clientv3,v3client: add cluster embedded client
+  * clientv3: remove unused fields from 'auth'
+  * pkg/transport: remove port in Certificate.IPAddresses
+  * integration: use cluster adapter in tests
+  * test: generate coverage report even if some tests fail
+  * auth: use atomic access to 'authStore.revision'
+  * Docs: replace absolute links with relative ones.
+  * lease: acquire BatchTx lock in fakeDeleter
+  * auth, adt: introduce a new type BytesAffineComparable
+  * *: fix a bug in handling unix socket urls
+  * clientv3/yaml: use TLS 1.2 in min version
+  * clientv3: register waitCancelSubstreams closingc goroutine with waitgroup
+  * ctlv3: add '--debug' flag (to enable grpclog)
+  * etcdmain: support SRV discovery for gRPC proxy
+  * clientv3/integration: fix minor typo in Fatalf
+  * test: fix fmt pass and shorten suppression warnings
+  * *: remove os.Kill from signal.Notify
+  * netutil: fix unused err staticcheck failure
+  * vendor: upgrade grpc to 1.2.1
+  * vendor: upgrade grpc-gateway to v1.2.0
+  * concurrency: expose leader revision and proclaim headers for election
+  * concurrency: return v3.GetResponse for Election.Leader()
+  * concurrency: only delete on election resignation if create revision matches
+  * concurrency: support resuming elections if leadership already held
+  * concurrency: don't skip leader updates in Observe()
+  * v3rpc: force RangeEnd=nil if length is 0
+  * scripts: update genproto.sh to include v3election
+  * v3election: Election RPC service
+  * integration: v3 election rpc tests
+  * embed: add Election service
+  * etcd-runner: update election command to use new Leader() interface
+  * Documentation: Adds AWS platform guide
+  * test: remove generated files from coverage statistics
+  * *: add swagger and grpc-gateway assets for v3lock and v3election
+  * embed: register grpc-gateway endpoints for v3lock and v3election
+  * test: ignore v3electionpb and v3lockpb for static checks
+  * rafthttp: move test-only functions to '_test.go'
+  * benchmark: add txn-put benchmark
+  * vendor: update 'golang.org/x/net'
+  * *: coreos/rkt -> rkt/rkt
+  * Documentation/learning: finish why.md
+  * Documentation: Add Hosted Graphite to prod users
+  * *: rename Snapshot STM isolation to SerializableSnapshot
+  * Documentation: add missing link
+  * integration: test requests with valid auth token but disabled auth
+  * auth: protect simpleToken with single mutex and check if enabled
+  * *: deny incoming peer certs with wrong IP SAN
+  * transport: use actual certs for listener tests
+  * tools/benchmark: fix misc gofmt warnings
+  * test: do not ignore 'tools/benchmark/cmd'
+  * Documentation: reshuffle op-guide to include platforms and upgrading
+  * *: return updated member list in v3 rpcs
+  * report: add test for Report interface
+  * discovery: remove dead token argument from SRVGetCluster
+  * clientv3: let client.Dial() dial endpoints not in the balancer
+  * integration: test client can dial endpoints not in balancer
+  * etcdserver: let Status() not require authentication
+  * Documentation: Adding a separate v2 and a v3 API binding for C++
+  * embed: remove ReadTimeout TODO
+  * pkg/transport: add 'IsClosedConnError'
+  * rafthttp: use 'transport.IsClosedConnError'
+  * clientv3/integration: use 'transport.IsClosedConnError'
+  * etcdserver: wait apply on conf change Raft entry
+  * etcdctl: show responses of auth RPCs if --write-output=fields is passed
+  * auth: fix race on stopping simple token keeper
+  * clientv3/namespace: fix incorrect watching prefix-end
+  * clientv3/integration: test fetching entire keyspace
+  * clientv3: translate WithPrefix() into WithFromKey() for empty key
+  * benchmark: a new flag --target-leader for targetting a leader endpoint
+  * op-guide: add command for checking if there's any v3 data
+  * etcdmain: trigger embed.Etcd.Close for OS interrupt
+  * embed: gracefully shut down gRPC server
+  * integration: test 'inflight' range requests
+  * Revert "mvcc: test inflight Hash to trigger Size on nil db"
+  * mvcc/backend: remove t.tx.DB()==nil checks with GracefulStop
+  * mvcc: remove stopc select case in Hash
+  * etcdserver: fill-in Auth API Header in apply layer
+  * integration: test auth API response header revision
+  * vendor: update gopkg.in/yaml.v2 to reflect current license
+  * *: add bill of materials
+  * clientv3/integration: add 'TestUserErrorAuth'
+  * travis: bump up to Go 1.8.1
+  * integration: use 'time.Until' in Go 1.8
+  * *: use '*tls.Config.Clone' in Go 1.8
+  * raft: Avoid holding unneeded memory in unstable log's entries array
+  * etcdserver: initialize raftNode with constructor
+  * NEWS: update v3.1.6
+  * pkg/debugutil: add 'mutex' profiler (Go 1.8+)
+  * embed: use '*url.URL.Hostname(),Port()' for Go 1.8
+  * transport: resolve DNSNames when SAN checking
+  * embed: signal 'grpcServerC' before cmux serve
+  * *: simply ignore ErrAuthNotEnabled in clientv3 if auth is not enabled
+  * clientv3/integration: sleep less in TestLeaseRenewLostQuorum
+  * etcdserver: remove 2.0 StatusNotFound version check
+  * ctlv3: keep lease as integer in fields printer
+  * scripts: move gateway stubs into gw/ packages
+  * *: put gateway stubs into their own packages
+  * test: ensure clientv3 has no grpc-gateway dependency
+  * ctlv3: use printer for lease command results
+  * vendor: update 'golang.org/x/time/rate' with context
+  * vendor: use 'x/net/trace' with std 'context'
+  * netutil: use "context" and ctx-ize TCP addr resolution
+  * build-binary: Add arm64
+  * build-aci: Add multi arch support
+  * build-docker: Updates for multi-arch release
+  * release: Add multi arch support
+  * release.md: Update for multi arch release
+  * *: clear redundant return statement warnings (S1027)
+  * integration: add pause/unpause to client bridge
+  * clientv3/integration: test watch resume with disconnect before first event
+  * clientv3: only update initReq.rev == 0 with creation watch revision
+  * v2http: remove deprecated /v2/machines path
+  * integration: permit dropping intermediate leader values on observe
+  * concurrency: clarify Observe semantics; only fetches subsequence
+  * clientv3: set current revision to create rev regardless of CreateNotify
+  * testutil: add assert functions
+  * store: replace testify asserts with testutil asserts
+  * scripts: remove testify hack in updatedep
+  * vendor: remove testify
+  * clientv3: don't halt lease client if there is a lease error
+  * concurrency: use new lease interface in session
+  * clientv3/integration: use new interfaces in lease tests
+  * etcdcdtl: use new lease interface
+  * grpcproxy: use new lease interface
+  * etcd-runner: update to use new lease interface
+  * benchmark: use new lease interface
+  * integration: close proxy's lease client
+  * etcd-runner: move root cmd into command package
+  * etcdserver: ensure waitForApply sync with applyAll
+  * etcdserver: do not block on raft stopping
+  * etcd-runner: add rate limiting in doRounds()
+  * etcd-runner: add barrier, observe !ok handling, and election name arg to election-runner.
+  * etcd-runner: add lease ttl as a flag and fatal when err in lease-runner.
+  * etcd-runner: pass in lock name as a command arg for lock_racer.
+  * etcd-runner: add --prefix flag, allows inf round, and minor vars refactoring in watch runner.
+  * etcd-runner: integrate etcd runner in to etcd tester
+  * v3client: wrap watch ctxs with blank ctx
+  * Documentation: require Go 1.8+ for build
+  * integration: test Observe can read leaders set prior to compaction
+  * concurrency: use current revisions for election
+  * integration/fixtures: add expired certs
+  * clientv3/integration: test client dial with expired certs
+  * test: bill of materials check pass
+  * vendor: revendor speakeasy to include unix license file
+  * travis: add bill-of-materials checking
+  * raft: Set the RecentActive flag for newly added nodes
+  * pkg/transport: reload TLS certificates for every client requests
+  * pkg/wait: add comment and make List private
+  * integration: test TLS reload
+  * Documentation: add upgrade to 3.2 doc
+  * integration: match more TLS errors for wrong certs
+  * version: bump up to 3.2.0-rc.0
+  * version: bump up to 3.2.0-rc.0+git
+  * Documentation/v2: pin docker guide to use latest 2.3.x
+  * Documentation: add documentation for single node docker etcd
+  * scripts: annotate with acbuild with supports-systemd-notify
+  * embed: fix blocking Close before gRPC server start
+  * Revert "Merge pull request #7732 from heyitsanthony/lease-err-ka"
+  * Documentation/upgrades: revert KeepAlive interface change
+  * add chain core to raft users list
+  * integration: ensure revoke completes before TimeToLive
+  * etcdserver: apply() sets consistIndex for any entry type
+  * clientv3: don't race on upc/downc/switch endpoints in balancer
+  * integration: close accepted connection on stopc path
+  * etcdserver: add a test to ensure config change also update ConsistIndex
+  * concurrency: provide old STM functions as deprecated
+  * integration: clean up TLS reload tests, fix no-file while renaming
+  * integration: close proxy's lease client
+  * clientv3/integration: drain keepalives before waiting for leader loss
+  * Documentation/v2: fix broken links
+  * Documentation/v3: fix broken links
+  * *: fix other broken links in markdown
+  * integration/fixtures-expired: do not force 'rm'
+  * scripts,travis: install 'marker' for CI tests
+  * test: run 'marker' to find broken links
+  * Documentation: remove '[]' from '[DEPRECATED]'
+  * compactor: Make periodic compactor runs every hour
+  * raft: Add unit test TestAddNodeCheckQuorum
+  * backend: print snapshotting duration warning every 30s
+  * pkg/srv: package for SRV utilities
+  * clientv3: check IsModify
+  * backend: add prometheus metric for large snapshot duration.
+  * README: use the same tagline from github
+  * embed: gracefully close peer handlers on shutdown
+  * etcdmain, tcpproxy: srv-priority policy
+  * clientv3: Do no stop keep alive loop by server side errors
+  * scripts: add 'BOM' update script
+  * v3rpc: remove duplicated error case for lease.ErrLeaseNotFound
+  * etcdserver: renaming db happens after snapshot persists to wal and snap files
+  * etcdserver: add a test to ensure renaming db happens before persisting wal and snap files
+  * etcd-runner: remove mutex on validate() and release() in global.go
+  * etcd-runner: fix race on nextc
+  * grpcproxy, etcdmain: add lock and election services to proxy
+  * adpater: adapters for lock and election services
+  * integration: add lock and election services to proxy tests
+  * pkg/srv: fix error checks from resolveTCPAddr
+  * clientv3: remove duplicate documentation for Do()
+  * snap, etcdserver: tighten up snapshot path handling
+  * backend: dynamically set snapshotWarningTimeout based on db size
+  * faq: explains "snapshotting is taking more..." warning
+  * expect: reload DEBUG_EXPECT for each process
+  * etcd-agent: store failure_archive in log dir
+  * functional-tester: use log-dir as data-dir in etcd-agent
+  * e2e: more debugging output for lock and elect etcdctl tests
+  * integration: reset default logging level in TestRestartRemoved
+  * osutil: force SIG_DFL before resending terminating signal
+  * backend: force initial mmap size to 0 for windows
+  * *: remove unnecessary fmt.Sprint
+  * pkg/osutil: fix missing 'syscall' import
+  * benchmark: add rpc locks to stm benchmark
+  * benchmark: add rate limiting to stm
+  * travis: test builds in other OSes
+  * bridge: add tx-delay and rx-delay
+  * e2e: Stop() lock/elect etcdctl process if Close times out
+  * tcpproxy: display endpoints, not pointers, in ready to proxy string
+  * etcdserver: more logging on snapshot close path
+  * report: add NewWeightedReport
+  * op-guide: remove alpha from grpc proxy
+  * *: fill out blank package godocs
+  * etcd-tester: use 'debugutil.PProfHandlers'
+  * etcd-tester: add '-failpoints' to configure gofail
+  * *: remove unused, fix typos
+  * integration: bump up 'TestV3LeaseRequireLeader' timeout to 5-sec
+  * version: bump up to 3.2.0-rc.1
+  * version: bump up to 3.2.0-rc.1+git
+  * ctlv3: add --prefix support to role revoke-permission, cleanup role flag handling
+  * etcdctl: sync README with etcdctl role command, add prefix example, fix typo
+  * Documentation, scripts: regenerate protobuf docs with updated protodoc
+  * clientv3, etcdserver: support auth in Watch()
+  * e2e: add a new test case for protecting watch with auth
+  * Documentation/learning: fixed typo
+  * etcdserver: close mvcc.KV on init error path
+  * Documentation: add systemd, Container Linux guide
+  * doc: modify usecase
+  * benchmark: support multiple clients/conns in watch-latency benchmark
+  * travis: run tests with Go 1.8.3
+  * test: release tests with v3.2+
+  * ROADMAP: make 'release-3.2' stable branch
+  * e2e: use version.Cluster for release test
+  * etcdctl: support exec on lock
+  * Documentation: add FAQ entry for "database space exceeded" errors
+  * Documentation: add 'yaml.NewConfig' change in 3.2
+  * vendor: use v0.2.0 of go-semver
+  * op-guide: update performance.md
+  * vendor: kr/pty v1.0.0
+  * vendor: ghodss/yaml v1.0.0
+  * clientv3: use Endpoints[0] to initialize grpc creds
+  * clientv3/integration: test dialing to TLS without a TLS config times out
+  * clientv3: support unixs:// scheme
+  * integration: use unixs:// if client port configured for tls
+  * mvcc: chunk reads for restoring
+  * mvcc: time restore in restore benchmark
+  * op-guide: document configuration flags for gateway
+  * Documentation, scripts: regen RPC docs
+  * scripts, Documentation: fix swagger generation
+  * op-guide: document CN certs in security.md
+  * test: speedup and strengthen go vet checking
+  * *: fix go tool vet -all -shadow errors
+  * Documentation/op-guide: fix typo in grafana.json
+  * test, osutil: disable setting SIG_DFL on linux if built with cov tag
+  * test: shellcheck
+  * travis: add shellcheck
+  * *: clear rarer shellcheck errors on scripts
+  * fileutil: return immediately if preallocating 0 bytes
+  * Documentation/op-guide: fix 'grpc_code' field in metrics
+  * etcdserver: add leaseExpired debugging metrics
+  * v2http: put back /v2/machines and mark as non-deprecated
+  * Documentation/op-guide: do not use host network, fix indentation
+  * integration: test txn comparison and concurrent put ordering
+  * mvcc: create TxnWrites from TxnRead with NewReadOnlyTxnWrite
+  * etcdserver: use same ReadView for read-only txns
+  * rafthttp: permit very large v2 snapshots
+  * version: bump up to 3.2.0
+  * version: bump up to 3.2.0+git
+  * Documentation/upgrades: link to previous guides
+  * build-aci: Fix ACI image name
+  * bill-of-materials: regenerate with multi licenses
+  * Documentation/op-guide: fix failed RPC rate, leader election metrics
+  * test: 'FAIL' on release binary download failure
+  * e2e: test txn over grpc json
+  * dev-guide: add txn json example
+  * v3rpc: treat nil txn request op as error
+  * integration: test mvcc db size metric is set on restore
+  * mvcc: set db size metric on restore
+  * mvcc: test restore and deletes with small chunk sizes
+  * mvcc: restore into tree index with one key index
+  * etcd-tester: add 'exit-on-failure'
+  * test: run basic functional tests
+  * integration: test mvcc db size metric is updated following defrag
+  * mvcc: use GaugeFunc metric to load db size when requested
+  * version: bump up to 3.2.1
+  * version: bump up to v3.2.1+git
+  * lease: rate limit revoke runLoop
+  * lessor: extend leases on promote if expires will be rate limited
+  * benchmark: refactor watch benchmark
+  * Documentation/v2: 'etcd v2' to the title
+  * Documentation/faq: fix typo in flag names
+  * lease: stop lessors after tests
+  * fixtures: add gencerts.sh, generate CRL
+  * embed: share grpc connection for grpc json services
+  * embed: connect json gateway with user-provided listen address
+  * transport: accept connection if matched IP SAN but no DNS match
+  * dev-guide: update experimental APIs
+  * version: bump up to 3.2.2
+  * version: bump up to 3.2.2+git
+  * Documentation: refer to LeaseKeepAliveRequest for lease refresh
+  * dev-guide: document using range_end for prefixes with json
+  * v3rpc: Let clients establish unlimited streams
+  * test: sync with etcd-agent start in functional_pass
+  * testutil: whitelist WaitGroup.Done
+  * version: bump up to 3.2.3
+  * version: bump up to 3.2.3+git
+  * embed: wait up to request timeout for pending RPCs when closing
+  * integration: test embed.Etcd.Close with watch
+  * grpcproxy: return nil on receiving snapshot EOF
+  * version: bump up to 3.2.4
+
+-------------------------------------------------------------------
+Wed May 24 11:24:14 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 3.1.8:
+  * version: bump up to 3.1.7+git
+  * Docs: replace absolute links with relative ones.
+  * etcd-2-1-0-bench: Fix an absolute bare link to resource outside of Documentation dir
+  * etcdserver: apply() sets consistIndex for any entry type
+  * integration: close accepted connection on stopc path
+  * Documentation/v2: fix broken links
+  * Documentation/v3: fix broken links
+  * *: fix other broken links in markdown
+  * version: bump up to 3.1.8
+
+-------------------------------------------------------------------
+Fri May 19 16:18:42 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 3.1.7:
+  * integration: test auth API response header revision
+  * ctlv3: keep lease as integer in fields printer
+  * version: bump up to 3.1.6
+  * version: bump up to 3.1.6+git
+  * ctlv3: use printer for lease command results
+  * clientv3: only update initReq.rev == 0 with creation watch revision
+  * clientv3/integration: test watch resume with disconnect before first event
+  * integration: add pause/unpause to client bridge
+  * clientv3: set current revision to create rev regardless of CreateNotify
+  * version: bump up to 3.1.7
+
+-------------------------------------------------------------------
+Thu Apr 13 10:01:12 UTC 2017 - jmassaguerpla@suse.com
+
+- Fix etcd build. We are generating 2 binaries, etcd and etcdctl.
+  They need to be built separately 
+
+-------------------------------------------------------------------
+Thu Feb 23 10:03:29 UTC 2017 - fcastelli@suse.com
+
+- Ensure /var/lib/etcd is controlled by etcd:etcd
+
+-------------------------------------------------------------------
+Tue Jan 24 12:23:46 UTC 2017 - jmassaguerpla@suse.com
+
+- exclude i586. We don't expect this package to be built on i586. 
+
+-------------------------------------------------------------------
+Mon Jan 23 14:24:08 UTC 2017 - jmassaguerpla@suse.com
+
+- remove sysconfig.etcd: this file is not being used 
+
+-------------------------------------------------------------------
+Mon Jan 23 12:40:16 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 3.1.0:
+  * raft: add node should reset the pendingConf state
+  * v3rpc: don't close watcher if client closes send
+  * e2e: add test for v3 watch over grpc gateway
+  * mvcc: remove unused restore method
+  * integration: don't expect recv to stop on CloseSend in waitResponse
+  * Documentation: add grpc gateway watch example
+  * version: bump up v3.1.0-rc.1+git
+  * discovery: warn on scheme mismatch
+  * grpcproxy: fix deadlock on watch broadcasts stop
+  * etcdmain: add '/metrics' HTTP/1 path to grpc-proxy
+  * etcd-tester: do not resolve localhost
+  * raftexample: confState should be saved after apply
+  * raft: test case to check the duplicate add node propose
+  * raft: fix test case, should wait config propose applied
+  * raft: fix test case for data race
+  * raft: use the channel instead of sleep to make test case reliable
+  * raft: fix TestNodeProposeAddDuplicateNode
+  * etcdmain: handle TLS in grpc-proxy listener
+  * etcd-tester:limit max retry backoff delay
+  * functional-tester: add withBlock() to grpc dial
+  * op-guide: add notes about Prometheus data source in Grafana
+  * clientv3: return copy of endpoints, not pointer
+  * auth: add a timeout mechanism to simple token
+  * client: update README about health monitoring
+  * grpcproxy: fix race between watch ranges delete() and broadcasts empty()
+  * lease: Use monotonic time in lease
+  * integration: use Range to wait for reboot in quota tests
+  * grpcproxy: fix race between coalesce and bcast on nextrev
+  * etcd-tester: refactor lease checker
+  * store: check sorted order in TestStoreGetSorted
+  * vendor: bump go-systemd to v14 to avoid build error
+  * integration: cancel Watch when TestV3WatchWithPrevKV exits
+  * grpcproxy: add richer metrics for watch
+  * grpcproxy: add cache related metrics
+  * raft: Fix election "logs converge" test
+  * raft: Export Progress.IsPaused
+  * benchmark: add rate limit
+  * etcdctl: remove GetUser check before mutable commands
+  * grpcproxy: lock store when getting size
+  * Documentation: link added to libraries-and-tools.md with a new v2 Scala Client
+  * grpcproxy: fix deadlock in watchbroadcast
+  * etcdserver: time out when readStateC is blocking
+  * store: fix store_test.go comments
+  * vendor: update ugorji/go
+  * client: update generated ugorji codec
+  * doc: initial faq
+  * clientv3/integration: test lease keepalive works following quorum loss
+  * integration: use RequireLeader for TestV3LeaseFailover
+  * v3rpc, etcdserver, leasehttp: ctxize Renew with request timeout
+  * Documentation: add blox and chain as users
+  * etcdserver: do not send v2 sync if ttl keys do not exist
+  * ROADMAP: update for 3.2
+  * Documentation: add more FAQ questions
+  * grpcproxy: fix minor typo
+  * vendor: use versions when possible in glide.yaml
+  * scripts: use glide update if repo exists in glide.lock
+  * github: make bug reporting link non-relative
+  * github: make contribution link non-relative
+  * Documentation: update get examples to be clearer about ranges
+  * etcdserver, embed, v2http: move pprof setup to embed
+  * doc: add faq about apply warning logging
+  * test: exclude '_home' for gosimple, unused
+  * auth: fix gosimple errors
+  * integration: simplify boolean comparison in resp.Created
+  * raft: simplify boolean comparison, remove unused
+  * tools: simplify boolean comparison, remove unused
+  * e2e: remove unused 'ctlV3GetFailPerm'
+  * v3rpc: remove unused 'splitMethodName' function
+  * grpcproxy: remove unused field 'wbs *watchBroadcasts'
+  * doc: add faq about missing heartbeat
+  * etcdctl: "fields" output formats
+  * build: remove dir use -r flag
+  * etcd-tester: add 'enable-pprof' option
+  * etcd-tester: cancel lease stream; fix OOM panic
+  * doc: add hardware section
+  * auth: improve 'removeSubsetRangePerms' to O(n)
+  * Documentation: use port 2379 in local cluster guide The port in endpoints should be 2379, instead of 12379.
+  * op-guide/clustering: fix typo
+  * embed: deep copy user handlers
+  * Documentation: add more FAQs (follower, leader, sys-require)
+  * clientv3: close Lease on client Close
+  * netutil: ctx-ize URLStringsEqual
+  * etcdserver: retry for 30s on advertise url check
+  * membership: retry for 30s on advertise url check
+  * clientv3: return error from KeepAlive if corresponding loop exits
+  * clientv3: add test for keep alive loop exit case
+  * auth, etcdserver: protect membership change operations with auth
+  * e2e: test cases of protecting membership change with auth
+  * clientv3: better error message for keep alive loop halt
+  * Documentation: FAQ entry for cluster ID mismatches
+  * dev-guide: add limit.md
+  * Documentation: minor fix nodes -> node
+  * etcdctl: warn when backend takes too long to open on migrate
+  * docs: explicitly set ETCDCTL_API=3 in recovery.md
+  * v3api, rpctypes: add ErrTimeoutDueToConnectionLost
+  * clientv3/integration: test lease grant/keepalive with/without failures
+  * clientv3: don't reset keepalive stream on grant failure
+  * etcdctl: tighten up output, reorganize README.md
+  * Documentation: add FAQs on membership operation
+  * Documentation: add 'why.md'
+  * embed: only override default advertised client URL if the client listen URL is 0.0.0.0
+  * raft: make memory storage set method thread safe
+  * raft: resume paused followers on receipt of MsgHeartbeatResp
+  * etcd-tester: fix typo, add endpoint in logs
+  * lease: force leader to apply its pending committed index for lease operations
+  * leasehttp: buffer error channel to prevent goroutine leak
+  * raft: fix pre-vote tests
+  * etcdserver: rework update committed index logic
+  * etcd-tester: remove unused err var from maxRev
+  * e2e: check etcdctl endpoint health is healthy if denied permission to key
+  * benchmark: a new option for configuring dial timeout
+  * ctlv3: consider permission denied error to be healthy for endpoints
+  * etcdmain: add --metrics flag for exposing histogram metrics
+  * e2e: test cluster-health
+  * v2http: submit QGET in health endpoint if no progress
+  * test: bump grpcproxy pass timeout to 15m
+  * lease: use atomics for accessing lease expiry
+  * e2e: poll '/version' in release upgrade tests
+  * e2e: unset ETCDCTL_API env var before running u2e tests
+  * etcdserver: consistent naming in raftReadyHandler
+  * coverage: rework code coverage for unit and integration tests
+  * testutil: whitelist thread created by go cover
+  * rafthttp: bump up timeout in pipeline test
+  * grpcproxy, etcdmain, integration: return done channel with WatchServer
+  * integration: defer clus.Terminate in watch tests
+  * raftexample: load snapshot when opening WAL
+  * etcd-runner: make command compliant
+  * raft: use status to test node stop
+  * etcdserver: expose ErrNotEnoughStartedMembers
+  * etcdserver: resume compactor only if leader
+  * benchmark: enable grpc error logging on stderr
+  * etcd-runner:add flags in watcher for hardcoded values
+  * docs: fix recovery example in recovery.md
+  * auth: use quorum get for GetUser/GetRole for mutable operations
+  * grpcproxy: tear down watch when client context is done
+  * integration: use only digits in unix ports
+  * e2e: dump stack on ctlTest timeout
+  * expect: EXPECT_DEBUG environment variable
+  * why: add origin of the term etcd
+  * testutil: increase size of buffer for stack dump
+  * raft: fix test case for #7042
+  * vendor: update ugorji/go
+  * integration: add grpc auth testing
+  * auth: reject empty user name when checking op permissions
+  * etcdctl: create root role on auth enable if it does not yet exist
+  * raft: add RawNode test case for #6866
+  * pkg/report: support 99.9-percentile, change column name
+  * documentation: display docs.md in github browser
+  * benchmark: option to rate limit range benchmark
+  * etcdserver, clientv3: handle a case of expired auth token
+  * tools: Add etcd 3.0 load test tool refernece
+  * transport: warn on user-provided CA
+  * NEWS: add v3.1.0, v3.0.16 + minor fixes
+  * clienv3: fix balancer test logic
+  * clientv3: don't reset stream on keepaliveonce or revoke failure
+  * grpcproxy: use ccache for key cache
+  * vendor: remove groupcache, add ccache
+  * pkg/report: add 'Stats' to expose report raw data
+  * travis: use Go 1.7.4, drop old env var
+  * ctlv3: print cluster info after adding new member
+  * Documentation: document upgrading to v3.1
+  * pkg/report: add nil checking for getTimeSeries
+  * etcdserver: use ReqTimeout for linearized read
+  * grpcproxy, etcdmain, integration: add close channel to kv proxy
+  * glide: update 'golang.org/x/net'
+  * vendor: update 'golang.org/x/net'
+  * Documentation: update experimental_apis for v3.1 release
+  * NEWS: fix date for v3.1 release
+  * Documentation: fix typo s/endpoint-health/endpoint health/
+  * clientv3/concurrency: fix rev comparison on concurrent key deletion
+  * integration: test STM apply on concurrent deletion
+  * pkg/flags: fixed prefix checking of the env variables
+  * etcdctlv3: snapshot restore works with lease key
+  * test: passed the test script arguments as the test function parameters
+  * documentation: update build documentation
+  * version: bump to v3.1.0
+
+-------------------------------------------------------------------
+Thu Jan 12 11:06:41 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 3.1.0rc.1:
+  * grpcproxy: watch next revision should be start revision when not 0
+  * grpcproxy: copy range request before storing in cache
+  * raft: return empty status if node is stopped
+  * mvcc: store.restore taking too long triggering snapshot cycle fix
+  * mvcc: TestStoreRestore fix
+  * mvcc : Added benchmark for store.resotre
+  * pkg/netutil: get default interface for tc commands
+  * version: bump up v3.1.0-rc.1
+
+-------------------------------------------------------------------
+Wed Sep 14 09:55:08 UTC 2016 - opensuse-packaging@opensuse.org
+
+Updated to version 3.0.8
+
+- Bug fixes
+    - GH6325: etcdctl: fix quotes in txn and watch
+    - GH6344: etcdctl/ctlv3: don't crash when we should prompt for pw
+    - GH6365: embed: reject domain names before binding
+    - GH6370: etcdctl: restore should create a snapshot
+    - GH6381: wal: fsync directory after wal file rename
+    - GH6253: discovery: reject IP address records in SRVGetCluster
+    - GH6267: wal: fix CRC corruption on writes following write tears
+    - GH6269: wal: On non-Windows OS, hold file lock while renaming WAL directory
+    - GH6284: clientv3/concurrency: fix unintended deadlock on key prefixes
+    - GH6309: etcdserver: allow zero kv index for cluster upgrade
+    - GH6310: wal: use page buffered writer for writing records
+    - GH6098: recover lessor before recovering mvcc store and transactionally revoke leases
+    - GH6175: rafthttp: fix race between streamReader.stop() and connection closer
+    - GH6226: vendor: update grpc/grpc-go for clientconn patch (grpc/grpc-go#842)
+    - GH5845: clientv3: respect up/down notifications from grpc
+    - GH6077: v2http: use guest access in non-TLS mode
+    - GH6136: clientv3: close watcher stream once all watchers detach
+    - GH6142: clientv3: handle watchGrpcStream shutdown if prior to goroutine start
+    - GH6152: mvcc: fix count
+    - GH6166: clientv3: support non-blocking New()
+    - GH6222: integration: NewClusterV3() should launch cluster before creating clients
+
+- Security changes
+    - GH6084: etcdctl: set TLS servername on discovery
+
+- Other changes
+    - GH6218: vendor: boltdb/bolt v1.3.0 for Go 1.7
+
+-------------------------------------------------------------------
+Mon Aug 08 14:57:34 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 3.0.4:
+  + etcdmain: correctly check return values from SdNotify()
+  + etcdserverpb: add missing deleterange annotation
+  + scripts:genproto.sh: update grpc-gateway
+  + *: regenerate proto
+  + Documentation: fix links in upgrades
+  + etcdserver, api, membership: don't race on setting version
+  + Dockerfile-release: add '/var/lib/etcd/'
+  + scripts/genproto: use latest grpc-gateway c8ec92d0
+  + *: regenerate proto files for grpc-gateway
+  + version: bump to v3.0.4
+
+-------------------------------------------------------------------
+Tue Jul 26 11:03:39 UTC 2016 - msabate@suse.com
+
+- Fixed the path on systemd's environment file
+
+-------------------------------------------------------------------
+Wed Jul 13 15:27:10 UTC 2016 - pjanouch@suse.de
+
+- spec-cleaner clean ups
+- change PreReq: %fillup_prereq to Requires(post)
+- Require systemd-rpm-macros instead of the entire systemd
+- call %service_add_pre after instead of before creating
+  the user and group
+
+-------------------------------------------------------------------
+Thu Jul  7 12:48:21 UTC 2016 - tboerger@suse.com
+
+- Dropped rpmlintrc
+- Refactoring of the spec based on golang-packaging
+
+-------------------------------------------------------------------
+Tue Jul 05 09:19:27 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 3.0.1:
+  * version: bump to v3.0.0+git
+  * release: fix Dockerfile etcd binary paths
+  * etcdserver: exit on missing backend only if semver is >= 3.0.0
+  * Documentation: fix typo in api_grpc_gateway.md
+  * *: test, docs with go1.6+
+  * version: bump to v3.0.1
+
+-------------------------------------------------------------------
+Tue Jul 05 09:13:32 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 3.0.0:
+  * mvcc: do not hash consistent index
+  * benchmark: fix Compact request
+  * clientv3: only use closeErr on watch when donec is closed
+  * ctlv3: make flags, commands formats consistent
+  * Doc: fix typo in dev-guide.md
+  * hack: add tls-setup example generated certs to gitignore
+  * hack: install goreman in tls-setup example
+  * *: remove beta from docs
+  * version: bump to v3.0.0
+
+-------------------------------------------------------------------
+Wed Jun 22 07:49:26 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 2.3.7:
+  + etcdsever: fix the leaky snashot routine issue
+  + etcdserver: stop raft after stopping apply scheduler
+  + etcdserver: wait for snapshots before closing raft
+  + version: bump to v2.3.5
+  + version: bump to v2.3.5+git
+  + etcd: fix refresh feature
+  + version: bump to v2.3.6
+  + version: bump to v2.3.6+git
+  + store: copy old value when refresh + cas
+  + version: bump to v2.3.7
+
+-------------------------------------------------------------------
+Mon May 30 14:21:25 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 2.3.6:
+  + raft: do not panic when removing all the nodes from cluster
+  + Documentation/v2: fix auth_api.md bug
+  + Documentation/v2: fix typo for updating a member
+  + etcdsever: fix the leaky snashot routine issue
+  + etcdserver: stop raft after stopping apply scheduler
+  + etcdserver: wait for snapshots before closing raft
+  + version: bump to v2.3.5
+  + version: bump to v2.3.5+git
+  + etcd: fix refresh feature
+  + version: bump to v2.3.6
+
+-------------------------------------------------------------------
+Wed May 18 08:50:26 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 2.3.4:
+  + *: bump to v2.3.2
+  + *: bump to v2.3.2+git
+  + etcdserver/auth: check empty password in merge
+  + *: bump to v2.3.3
+  + *: bump to v2.3.3+git
+  + httpproxy: fix race on getting close notifier channel
+  + etcdctl/ctlv2: total-timeout for Sync
+  + etcdctl: Add --wal-dir and --backup-wal-dir options to backup command.
+  + README: add known bugs
+  + version: bump to v2.3.4
+
+-------------------------------------------------------------------
+Tue Apr 26 19:08:05 UTC 2016 - fcastelli@suse.com
+
+- Update to version 2.3.2:
+  + client: return original ctx error
+  + etcdmain: start on unsupported arch when ETCD_UNSUPPORTED_ARCH is set
+  + etcdctl: print grant/revoke error instead of scanning roles for changes
+  + e2e: test etcdctl v2 double user grant
+  + client: accept roles in response for ListUser
+  + e2e: test etcdtl user list on root user
+  + etcdserver: close response body when getting cluster information
+
+-------------------------------------------------------------------
+Fri Apr 15 10:21:49 UTC 2016 - normand@linux.vnet.ibm.com
+
+- to complete previous update
+  * remove etcd_add_bolt_ppc64.patch
+  * add shadow as BuildRequires
+
+-------------------------------------------------------------------
+Fri Mar 18 22:40:43 UTC 2016 - fcastelli@suse.com
+
+- Update to version 2.3.0:
+  * Strict runtime reconfiguration check
+  * Runtime profiling
+  * Refreshing TTL keys
+  * Experimental v3 support
+- Cleanup configuration handling
+
+-------------------------------------------------------------------
+Wed Feb 17 14:45:13 UTC 2016 - normand@linux.vnet.ibm.com
+
+- new etcd_add_bolt_ppc64.patch
+
+-------------------------------------------------------------------
+Tue Dec 22 16:05:44 UTC 2015 - fcastelli@suse.com
+
+- Remove obsolete ports from firewall configuration
+
+-------------------------------------------------------------------
+Tue Dec 22 14:47:03 UTC 2015 - fcastelli@suse.com
+
+- Remove useless build warnings and errors
+- Fix building
+
+-------------------------------------------------------------------
+Tue Dec 22 12:52:41 UTC 2015 - fcastelli@suse.com
+
+- Remove obsolete files
+- Fix systemd's unit to take into consideration the sysconfig
+  environment file
+
+-------------------------------------------------------------------
+Tue Dec 22 10:32:57 UTC 2015 - fcastelli@suse.com
+
+- Fix typo inside of spec file, remove reference to docker
+
+-------------------------------------------------------------------
+Tue Dec 22 09:11:27 UTC 2015 - fcastelli@suse.com
+
+- Update to version 2.2.2:
+  * fix health check result in etcdctl cluster-health
+  * generate v5 ugorji/go/codec unmarshal code in client package
+  * fix unset SYSLOG_IDENTIFIER when etcd is logging to the journal
+  * improve logging when discovery procedure fails
+  * fix various data races detected by race detector
+  * fix rejecting to modify pre-defined guest role
+
+- Changes introduced by version 2.2.1:
+  * support Nodes type in client package for sorting
+  * improve panic logging output when starting etcd with corrupted data dir
+  * fix non-customizable request timeout in etcdctl
+  * improve output when missing initial flags
+  * improve output when retrying unavailable endpoint in proxy
+  * etcd no longer hangs forever when fails to finish discovery
+  * fix Content-Type header for version API
+  * improve logging output when systemd notify fails
+  * support literal IPv6 address with zone in URL flags
+  * update dependency for bug fix and restorable dependency list
+  * fix mk command in etcdctl
+
+-------------------------------------------------------------------
+Fri Feb  6 15:44:34 UTC 2015 - fcastelli@suse.com
+
+- Update to version 2.0.0:
+
+ * Internal etcd protocol improvements to guard against accidental misconfiguration
+ * etcdctl backup was added to make recovering from cluster failure easier
+ * etcdctl member list/add/remove commands for easily managing a cluster
+ * On-disk datastore safety improvements with CRC checksums and append-only behavior
+ * An improved Raft consensus implementation already used in other projects like CockroachDB
+ * More rigorous and faster running tests of the underlying Raft implementation, covering all state machine and cases explained in the original Raft white paper in 1.5 seconds
+ * Additional administrator focused documentation explaining common scenarios
+ * Official IANA assigned ports for etcd TCP 2379/2380
+
+-------------------------------------------------------------------
+Mon Oct 20 10:43:21 UTC 2014 - fcastelli@suse.com
+
+- Updated default configuration file
+
+-------------------------------------------------------------------
+Mon Oct 20 10:18:30 UTC 2014 - fcastelli@suse.com
+
+- Fixed permissions of etcd binary
+
+-------------------------------------------------------------------
+Mon Oct 20 08:26:34 UTC 2014 - fcastelli@suse.com
+
+- Created initial version 0.4.6
+

@@ -1,0 +1,255 @@
+-------------------------------------------------------------------
+Mon Apr  8 14:01:46 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.29.2
+  - Add options for sphinx-build -W in docstheme-build-translated.sh
+  - Catch OSError when trying to get the last_update from git
+  - Change openstack-dev to openstack-discuss
+  - Add starlingxdocs theme support
+  - Translations: Handle directories
+  - ensure repository_name is always set
+  - Do not show badge for master only repos
+  - import zuul job settings from project-config
+  - Fix the incorrect storyboard url
+  - Fix use_storyboard
+  - Silence! A sequel
+  - Readd get_openstack_logo_path
+  - Fix regressions introduced in 1.25.0
+  - Fix project-navigator link
+  - Import tools for building translated documents
+  - Exit trap cleanup in docstheme-build-translated.sh
+  - Make root title customizable
+  - Use sphinx-build everywhere
+  - Move bootstrap modifications to 'combined.css'
+  - Import build-openstack-api-ref
+  - log details of html context
+  - pass useStoryboard to logABug
+  - Add an option to disable global TOC section
+  - Make a bare-bones starlingxdocs theme
+  - use git modification timestamps as last-updated time for each page
+  - Fix typo
+  - switch documentation job to new PTI
+  - Remove example of deprecated app.info
+  - The theme is openstackdocs
+  - Fix wrong variable in build-translated
+  - css: Don't use bold text in titles
+  - Silence!
+  - Handle StoryBoard project groups
+  - Add scripts to the head section
+  - Set default paths for OpenStack
+  - Do not display "latest" badge if repo is not versioned
+  - css: Use ellipsis for long titles in sidebar
+  - StarlingX nav fix to remove "Software Update" links
+  - Update hacking version
+  - Remove setup.py check from pep8 job
+  - Fix build jobs
+
+-------------------------------------------------------------------
+Mon Sep  3 18:06:39 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.22.0
+  - ignore files created during packaging
+  - Move code out of '__init__'
+  - Avoid text overflow in toc
+  - Update the description of "giturl"
+  - Updated Search widget
+  - add the series name to the template context
+  - Make bg color for highlighted text less bright
+  - Configure additional properties
+  - trivial: Generate '{project}-doc' roles, not '{project}-doc-link'
+  - Mark some functions as private
+  - Fix typo in logger.warning() call
+  - Strip tags from titles in bugTitle and meta
+  - Use metadata summary instead name for doc title
+  - automatically create project doc-link roles
+  - trivial: Use the 'get_html_theme_path' function
+  - Relocate bug_tag in logABug generated URL
+  - Make emphasize-lines more highlighted
+  - Configure project name, version, release
+  - Remove name from project stanza
+  - fix tox python3 overrides
+  - Check RST as part of linting
+  - trivial: Remove cruft from 'conf.py'
+  - always look for the .gitreview file in root of repo
+  - Updated from global requirements
+  - Handle possible exceptions when fetching version numbers
+  - Added deprecation badge
+- remove 0001-Fix-typo-in-logger.warning-call.patch (upstream)
+
+-------------------------------------------------------------------
+Fri Feb 23 13:15:15 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.18.1
+  - Attempt to guess valid Git URLs
+  - trivial: Remove use of 'Application.{warn,info}'
+  - Remove -U from pip install
+  - Adds -p option in mkdir for buildpdf tox env
+  - Fix giturl parsing
+  - No red with double backticks markup
+  - Remove setting of version/release from releasenotes
+  - Revert "Fix the incorrect git source url"
+  - Add zuulv3 native job
+  - Adds Turkish landing page to sidebartoc_menu
+  - bindep: Add dependencies for PDFs on Fedora
+  - gitignore: Ignore more files
+  - Avoid tox_install.sh for constraints support
+  - Do not print the release if empty
+  - Fix the incorrect git source url
+  - Updated from global requirements
+  - Replace the http links with the right ones in docs
+- Switch to stable/queens spec template
+- Add 0001-Fix-typo-in-logger.warning-call.patch
+
+-------------------------------------------------------------------
+Tue Nov 21 09:46:54 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.17.0
+  - Documents how to set conf.py for PDF generation
+  - Remove navigation.html
+  - Fix link to openstackdays
+  - Update links in README
+  - Update the configuration of generating a PDF document
+  - Break cycle dependency with reno
+  - Cleanup setup.cfg
+  - Sync language list with openstack-manuals repo
+  - Add support for sphinx sidebar role
+  - [www] Fix link to COA
+  - Bring back local search
+  - Break cycle dependency with os-api-ref
+  - Remove stray characters from demo
+  - Link to latest version
+  - Updated from global requirements
+  - show release series names not version tags
+- drop 0001-Break-cycle-dependency-with-reno.patch,
+  0001-Break-cycle-dependency-with-os-api-ref.patch: upstream
+
+-------------------------------------------------------------------
+Wed Aug  9 14:08:22 UTC 2017 - tbechtold@suse.com
+
+- add 0001-Break-cycle-dependency-with-reno.patch
+
+-------------------------------------------------------------------
+Mon Aug  7 06:26:02 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.16.1
+  - Fix sorting of git versions
+  - Standardise header styling
+  - PDF support for sample document with font
+  - Enable some off-by-default checks
+  - Cleanup conf.py
+  - automate some of the extension setup
+  - Update 2 documentation URLs according to doc migration
+  - CSS: Add margin-left to <dd>
+  - Fix Added / Changed / Deprecated notices
+  - README: Update configuration of openstackdocstheme
+  - Add note in README about Python 3 changes
+  - Require bug_project setting
+  - Update hacking to current version
+  - Add alignment styling for figures and images
+  - Change name of checkbuild testenv to buildpdf for clarity
+  - Fix search.html page script errors
+  - Fix missing role_id
+  - Allow using openstackdocstheme without git installed
+  - Updates "Contents" to "Project home page" to better match existing
+  - Update css markups for newer Sphinx
+  - Do not display title string of page local TOC
+  - Fix links in drop-down menu under Join; add https
+  - move the localtoc for the page into the sidebar
+  - remove smooth scrolling
+  - Add spaces in demo for deprecation notices
+  - Declare parallel reading safe
+  - add a comment to all output HTML pages showing the input file
+  - show the current project name and version in navigation link
+  - Update bootstrap and jquery files
+  - Strip tags from navigation prev, next titles
+  - Serve minified CSS
+  - Add tox env for PDF building
+  - move documentation from readme to sphinx tree
+  - Adding octavia api-ref
+  - Increase admonition.important contrast
+  - Add warning-is-error
+  - Clarify search title
+  - Working on integrating options from oslosphinx theme
+  - Update Site Search
+  - Use new OpenStack logo and header
+  - Adjust 'docs-toc a' display value
+  - Use https instead of http for git.openstack.org
+  - Remove duplicate search field from the left sidebar
+  - Update Launchpad info
+  - Adds list of versions in the "Updated" bar
+  - Adds docs for release versions dropdown menu
+  - Update docs
+  - Remove rules linked to a "Status" ID
+  - Remove getJSON function and doc-characters file
+  - Minimal support for storyboard
+  - switch release notes build to use openstackdocs instead of oslosphinx
+  - Add note for show_other_versions
+  - PDF build support >= Sphinx 1.6.1
+  - fix alignment of toc tree items in sidebar
+  - Adds LaTeX style file for building PDF documents
+  - Fix a logic issue in the JS
+  - Move from 3rd party fonts to native font stack
+  - Updated from global requirements
+  - Add support for versionadded and deprecated
+- Add 0001-Break-cycle-dependency-with-os-api-ref.patch
+
+-------------------------------------------------------------------
+Fri Feb 10 16:26:33 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.6.1:
+  - Add trove classifiers for Python
+  - Allow to build docs without git command
+  - Update test API Ref
+  - Add Constraints support
+  - Fix tox setup
+  - Includes checklist when filing a bug for osmanuals
+  - Show team and repo badges on README
+  - Enable release notes translation
+  - Install required packages
+  - Fix typo: remove redundant 'the'
+  - Updated from global requirements
+  - Removed minimized files
+  - Update requirements
+  - [www] update page header links
+
+-------------------------------------------------------------------
+Thu Oct  6 06:21:31 UTC 2016 - tbechtold@suse.com
+
+- Update _service
+
+-------------------------------------------------------------------
+Wed Sep  7 11:58:01 UTC 2016 - tbechtold@suse.com
+
+- update to version 1.5.0
+  * API References dropdown menu
+  * Allow automatic toc to be disabled
+
+-------------------------------------------------------------------
+Wed Aug 10 14:41:34 UTC 2016 - tbechtold@suse.com
+
+- update to version 1.4.0
+  * Use HTTPS for external deps
+  * Increase indent level of doc top contents
+  * Create empty folder for custom font files
+  * Change summit video URL
+  * Actually include custom JS files
+  * Broken Link
+  * Allow the bug title to be customisable
+  * Fix text font-family of admonitions.
+  * Update the Administrator Guide link
+  * Add appropriate order list styles
+  * Make ``something`` more highlighted
+  * Allow for inclusion of custom JS files
+  * Release note for new sidebar feature
+  * Clarify uses for this theme
+  * Update Release Notes
+  * Updated from global requirements
+  * Set side bar content to be configurable
+  * Adds release notes items for next release
+  * Allow cssfiles added by sphinx extensions
+
+-------------------------------------------------------------------
+Fri Jul 22 15:08:31 UTC 2016 - tbechtold@suse.com
+
+- Initial packaging (version 1.3.0)
+

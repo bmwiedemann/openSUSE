@@ -1,0 +1,574 @@
+-------------------------------------------------------------------
+Wed Sep 26 19:51:04 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use gettextize --no-changelog to drop build date
+  to make package build reproducible (boo#1047218)
+
+-------------------------------------------------------------------
+Fri Sep 14 08:33:28 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Use URL to fetch keyring
+- Do not force building with PIE, it is default now anyways
+- Use https for URLs
+- Install license
+
+-------------------------------------------------------------------
+Tue Apr 11 10:06:17 UTC 2017 - kstreitova@suse.com
+
+- modify cpio-2.12-out_of_bounds_write.patch to fix a regression 
+  causing cpio to crash for tar and ustar archive types 
+  [bsc#1028410]
+
+-------------------------------------------------------------------
+Mon Mar 27 11:13:08 UTC 2017 - mpluskal@suse.com
+
+- Use macro for configure and make install
+- Use update-alternatives according to current documentation
+- Enable testsuite
+
+-------------------------------------------------------------------
+Fri Mar 24 13:28:00 UTC 2017 - svalx@svalx.net
+
+- Enable mt building
+- Separated cpio-mt subpackge
+- Change recommend to own mt subpackge
+- Remove cpio-mt.patch - those features available in original mt-st package
+- Switch to use alternatives system for mt
+- Disable rmt building: this binary fully identical to rmt from tar
+- Change default rmt dir to /usr/bin
+
+-------------------------------------------------------------------
+Thu Mar 23 15:14:25 UTC 2017 - kstreitova@suse.com
+
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Mar  5 12:31:47 UTC 2016 - mpluskal@suse.com
+
+- Recommend mt_st as it is not hard dependency
+
+-------------------------------------------------------------------
+Thu Mar  3 09:44:23 UTC 2016 - kstreitova@suse.com
+
+- fix typos in the description
+- add 'Require: mt_st' in order not to surprise users by the missing
+  'mt' binary
+
+-------------------------------------------------------------------
+Thu Mar  3 07:19:03 UTC 2016 - svalx@svalx.net
+
+- Disable mt building: this binary from mt_st package offers
+  advanced capabilities with the same functionality.
+- Enable rmt building: 'dump' package no longer include it, besides 
+  cpio code base for rmt is more fresh.
+- Reflect those changes in the package description.
+
+-------------------------------------------------------------------
+Fri Feb 19 15:47:00 UTC 2016 - kstreitova@suse.com
+
+- add cpio-2.12-out_of_bounds_write.patch to fix an out of bounds
+  write in a way cpio parses certain cpio files [bsc#963448],
+  [CVE-2016-2037]
+
+-------------------------------------------------------------------
+Thu Oct  8 11:57:19 UTC 2015 - kstreitova@suse.com
+
+- update to 2.12
+  * Improved documentation
+  * Manpages are installed by make install
+  * New options for copy-out mode: --ignore-devno,
+    --renumber-inodes, --device-independent, --reproducible
+  * update
+    * cpio-use_new_ascii_format.patch
+    * cpio-mt.patch
+    * cpio-eof_tape_handling.patch
+    * cpio-pattern-file-sigsegv.patch
+    * cpio-check_for_symlinks.patch
+  * remove (no longer needed)
+    * cpio-stdio.in.patch
+    * 0001-Fix-memory-overrun-on-reading-improperly-created-lin.patch
+  * add
+    * cpio-2.12-util.c_no_return_in_nonvoid_fnc.patch to add missing
+      return to the nonvoid get_inode_and_dev() function
+- use spec-cleaner
+
+-------------------------------------------------------------------
+Mon Mar 16 18:54:59 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+- Correct info scriplet dependencies
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jan  1 22:54:20 UTC 2015 - meissner@suse.com
+
+- build with PIE
+
+-------------------------------------------------------------------
+Mon Dec  1 15:47:49 UTC 2014 - vcizek@suse.com
+
+- fix an OOB write with cpio -i (bnc#907456) (CVE-2014-9112)
+  * added 0001-Fix-memory-overrun-on-reading-improperly-created-lin.patch
+
+-------------------------------------------------------------------
+Fri Aug 29 19:39:35 UTC 2014 - jengelh@inai.de
+
+- Improve on RPM group classification (cpio does not compress
+  on its own per se)
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Thu Aug 21 11:35:36 UTC 2014 - vcizek@suse.com
+
+- drop cpio-dir_perm.patch
+  * no longer needed since 2.11
+  * it was dropped from Fedora too and only caused problems (bnc#889138)
+
+-------------------------------------------------------------------
+Tue Jul 29 10:23:21 UTC 2014 - vcizek@suse.com
+
+- fix a truncation check in mt
+  * added cpio-fix_truncation_check.patch
+
+-------------------------------------------------------------------
+Thu Jul 17 18:40:27 UTC 2014 - vcizek@suse.com
+
+- prevent cpio from extracting over a symlink (bnc#658010)
+  * added cpio-check_for_symlinks.patch
+
+-------------------------------------------------------------------
+Tue Jul 23 11:43:47 UTC 2013 - vcizek@suse.com
+
+- add a missing fix from SLE for bnc#830779 (original bug bnc#658031)
+  added paxutils-rtapelib_mtget.patch
+
+-------------------------------------------------------------------
+Thu Mar 21 12:03:37 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Jul 18 08:31:24 UTC 2012 - aj@suse.de
+
+- Fix build with missing gets declaration (glibc 2.16)
+
+-------------------------------------------------------------------
+Thu Feb  2 13:31:13 UTC 2012 - rschweikert@suse.com
+
+- leave binary in /usr (UsrMerge project), link to binary from /bin
+
+-------------------------------------------------------------------
+Mon Jan  2 17:27:13 UTC 2012 - vcizek@suse.cz
+
+- added autoconf to BuildRequires 
+
+-------------------------------------------------------------------
+Thu Dec  1 11:21:00 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Sep 18 14:50:06 UTC 2011 - andrea.turrini@gmail.com
+
+- fix typos in spec file
+
+-------------------------------------------------------------------
+Tue Nov  9 11:07:45 UTC 2010 - puzel@novell.com
+
+- disable-silent-rules
+
+-------------------------------------------------------------------
+Tue Aug 31 09:37:05 UTC 2010 - aj@suse.de
+
+- Recommend instead of require lang package since it's not mandatory.
+
+-------------------------------------------------------------------
+Tue Aug 10 14:48:32 UTC 2010 - puzel@novell.com
+
+- add cpio-pattern-file-sigsegv.patch (bnc#629860) 
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Fri Mar 12 16:34:39 UTC 2010 - mseben@novell.com
+
+- updated to 2.11
+  * Fix mt build.
+  * In copy-in mode, if directory attributes do not permit writing to it,
+    setting them is delayed until the end of run. This allows to 
+	correctly extract files in such directories.
+  * In copy-in mode, permissions of a directory are restored if it 
+    appears in the file list after files in it (e.g. in listings 
+	produced by find . -depth). This fixes debian bug #458079.
+  * Fix possible memory overflow in the rmt client code (CVE-2010-0624).
+- deprecated heap_overflow_in_rtapelib.patch,chmodRaceC.patch and
+  include_fatal_c.patch
+
+-------------------------------------------------------------------
+Wed Mar  3 09:29:23 UTC 2010 - mseben@novell.com
+
+- added heap_overflow_in_rtapelib.patch fix possible heap overflow in 
+  rtapelib.c (bnc#579475)
+
+-------------------------------------------------------------------
+Sat Dec 26 11:51:46 CET 2009 - jengelh@medozas.de
+
+- enable parallel build 
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:11 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Fri Oct 16 22:41:38 CEST 2009 - rschweikert@novell.com
+
+- close files after copy (bnc#543132)
+  (cpio-2.10-close_files_after_copy.patch)
+
+-------------------------------------------------------------------
+Mon Aug 10 16:53:33 CEST 2009 - mseben@novell.com
+
+- merged DAT160.patch with mt.patch
+- added other tape density definitions from mt_st package (bnc#523357)
+
+-------------------------------------------------------------------
+Fri Jul 17 16:00:52 CEST 2009 - rguenther@suse.de
+
+- Drop rmt BuildRequires again
+
+-------------------------------------------------------------------
+Fri Jul 17 15:14:23 CEST 2009 - mseben@suse.cz
+
+- fix identification of the density code for DAT160 bnc#415166
+
+-------------------------------------------------------------------
+Mon Jun 22 16:48:28 CEST 2009 - mseben@suse.cz
+
+- updated to version 2.10
+ * Ensure record headers are properly packed (fix builds on ARM).
+ * Fix exit codes to reliably indicate success or failure of the operation.
+ * Fix large file support.
+ * Support MinGW builds.
+ * Minor bugfixes.
+- deprecated : lfs_correction.patch,paxlib-owl-alloca.patch,
+  gcc4_3.patch,segfault_in_copyin.patch,doc_typo.patch,
+  m4_macro.patch,gnulib.patch, no_rmt.patch
+- added include_fatal_c.patch : fix undefined ref in mt build
+- configure stage : removed useless DEFAULT_RMT_DIR=/sbin, added
+  --with-rmt="%{_sysconfdir}/rmt" and --enable-mt
+
+-------------------------------------------------------------------
+Mon Aug  4 12:02:01 CEST 2008 - lmichnovic@suse.cz
+
+- changed default tape device for 'mt' command to /dev/nst0
+  /dev/tape is not symlink any more but directory handled by udev
+  (*default_tape_dev.patch) [bnc#355241]
+
+-------------------------------------------------------------------
+Fri Aug  1 18:16:00 CEST 2008 - cthiel@suse.de
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+Fri Jul 18 13:52:50 CEST 2008 - lmichnovic@suse.cz
+
+- make possible device nodes with major number > 127 [rhb#450109]
+  (*dev_number.patch)
+
+-------------------------------------------------------------------
+Fri Jun 27 16:28:34 CEST 2008 - schwab@suse.de
+
+- Fix gnulib macro.
+
+-------------------------------------------------------------------
+Fri Apr 11 12:55:08 CEST 2008 - lmichnovic@suse.cz
+
+- adjusted eof-handling.patch to check for 'end-of-file' and 
+  'end-of-data' marker when detecting reel change. [bnc#371077]
+
+-------------------------------------------------------------------
+Fri Apr  4 15:35:41 CEST 2008 - lmichnovic@suse.cz
+
+- adjusted cpio-2.9-dir_perm.patch acording Red Hat patch to fix
+  correct dir permissions after extraction in pass-through mode.
+- fix for two tapes handling (eof_tape_handling.patch) [bnc#371077]
+
+-------------------------------------------------------------------
+Thu Mar 13 19:03:41 CET 2008 - lmichnovic@suse.cz
+
+- lang subpackage split off
+
+-------------------------------------------------------------------
+Thu Mar 13 18:55:59 CET 2008 - lmichnovic@suse.cz
+
+- applying upstream patch cpio-2.9-dir_perm.patch which fixes 
+  incorrect directory permissions after archive extraction
+
+-------------------------------------------------------------------
+Thu Nov 29 15:49:49 CET 2007 - lmichnovic@suse.cz
+
+- removed unused m4 macro gl_LONG_LONG (*m4_macro.patch) 
+
+-------------------------------------------------------------------
+Wed Nov  7 15:30:30 CET 2007 - lmichnovic@suse.cz
+
+- upstream fix of typo in documantation (*doc_typo.patch)
+
+-------------------------------------------------------------------
+Tue Oct 23 16:13:15 CEST 2007 - lmichnovic@suse.cz
+
+- rewrote code which uses overflow to copy string in structure and
+  gcc was complaining about it (*avoid_overflow_warning.patch)
+
+-------------------------------------------------------------------
+Mon Oct  1 11:31:02 CEST 2007 - lmichnovic@suse.cz
+
+- Fixed typo in copin.c causing segfault [#329744]
+  (*segfault_in_copyin.patch)
+
+-------------------------------------------------------------------
+Tue Sep 25 11:51:52 CEST 2007 - lmichnovic@suse.cz
+
+- fix for compiling with new gcc 4.3 (*gcc4_3.patch)
+
+-------------------------------------------------------------------
+Mon Aug 20 18:11:29 CEST 2007 - lmichnovic@suse.cz
+
+- fixed typo in paxlib-owl-alloca.patch [#301416]
+
+-------------------------------------------------------------------
+Fri Aug 17 10:31:21 CEST 2007 - lmichnovic@suse.cz
+
+- upstream fix: use of alloca can cause stack overflow 
+  (paxlib-owl-alloca.patch)
+
+-------------------------------------------------------------------
+Tue Aug 14 10:39:41 CEST 2007 - lmichnovic@suse.cz
+
+- CAN-2005-1111 is not fixed completely in 2.9 (chmodRaceC.patch) 
+  based on fedora patch
+
+-------------------------------------------------------------------
+Wed Jul 25 13:14:53 CEST 2007 - lmichnovic@suse.cz
+
+- fixed types of variables for LFS support (*lfs_correction.patch)
+
+-------------------------------------------------------------------
+Tue Jul 24 15:50:44 CEST 2007 - lmichnovic@suse.cz
+
+- adjusted *mt.patch to fix compression handling [#223494]
+
+-------------------------------------------------------------------
+Fri Jul 20 11:01:31 CEST 2007 - lmichnovic@suse.cz
+
+- update to version 2.9
+- obsoletes *lstat.patch
+  * Licensed under the GPLv3.
+  * Bugfixes: Honor umask when creating intermediate directories,
+    not specified in the archive (debian bug #430053). (This bug
+    is only in version 2.8)
+  * 2.8:
+    * Option --owner can be used in copy-out mode, allowing 
+    to uniformly override the ownership of the files being added 
+    to the archive.
+    * Bugfixes: 
+    - Symlinks were handled incorrectly in copy-out mode. (This 
+      bug was only in version 2.7)
+    - Fix handling of large files. {obsoletes lfs.patch}
+          o Fix setting the file permissions in copy-out mode.
+          o Fix CAN-2005-1111 {obsoletes chmodRaceC.patch}
+  * 2.7: 
+    * Improved error checking and diagnostics
+    * Fixed CAN-1999-1572 {obsoletes writeOutHeaderBufferOverflow.patch}
+    * Allow to use --sparse in both copy-in and copy-pass.
+    * Fix bug that eventually caused copying out the same 
+      hard-linked file several times to archive.
+    * Fix several LFS-related issues. {obsoletes lfs.patch}
+    * Fix Debian bug #335580.
+  - obsoletes *dirTraversal.patch implemented with option 
+    --no-absolute-pathnames; option --absolute-pathnames is still possible
+  - obsoletes *checksum.patch, fix_umask.patch, sparse.patch
+- using lang macro
+
+-------------------------------------------------------------------
+Thu Sep 21 18:14:59 CEST 2006 - lmichnovic@suse.cz
+
+- fixed typo in cpio-2.6.dif; renamed to *-mt.patch
+- united suffix of patches
+
+-------------------------------------------------------------------
+Tue Sep 19 14:42:39 CEST 2006 - schwab@suse.de
+
+- Fix missing newline after mt status.
+
+-------------------------------------------------------------------
+Mon Jul 24 15:56:13 CEST 2006 - rguenther@suse.de
+
+- remove useless build-dependency on rsh.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:02 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Dec  6 15:24:09 CET 2005  - fehr@suse.de
+
+- add cpio-2.6-chmodRaceC.patch and cpio-2.6-dirTraversal.patch to 
+  fix bug #80226
+- add cpio-2.6-writeOutHeaderBufferOverflow.patch to fix #133454
+- add cpio-2.6-checksum.patch fix wrong checksum on 64bit archs
+- add cpio-2.6-lfs.patch to support large files on 32bit archs
+
+-------------------------------------------------------------------
+Wed Aug 10 17:58:40 CEST 2005 - fehr@suse.de
+
+- fix call to setlocale to make multibyte characters work (#98902)
+
+-------------------------------------------------------------------
+Thu Jun 30 18:59:02 CEST 2005 - fehr@suse.de
+
+- open with O_NONBLOCK option (#94449)
+
+-------------------------------------------------------------------
+Wed May  4 15:04:04 CEST 2005 - ro@suse.de
+
+- properly detect lstat in configure 
+
+-------------------------------------------------------------------
+Wed Apr 27 12:17:58 CEST 2005 - snwint@suse.de
+
+- fix '--sparse' option check
+
+-------------------------------------------------------------------
+Mon Apr 25 15:28:26 CEST 2005 - fehr@suse.de
+
+- update to cpio 2.6
+
+-------------------------------------------------------------------
+Mon Jan 24 12:19:31 CET 2005 - fehr@suse.de
+
+- fix problem with cpio not respecting umask (#50054)
+
+-------------------------------------------------------------------
+Mon Jan 19 12:44:15 CET 2004 - ro@suse.de
+
+- fix build as user 
+
+-------------------------------------------------------------------
+Sun Jan 11 11:04:05 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Tue Apr 15 16:47:28 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Fri Feb  7 15:19:46 CET 2003  - fehr@suse.de
+
+- Use %install_info macro 
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Aug 13 21:29:02 CEST 2002 - mfabian@suse.de
+
+- add cpio-2.5-i18n-0.1.patch received from
+  "Mitsuru Chinen" <CHINEN@jp.ibm.com>
+  The patch just adds a setlocale (LC_ALL, "").
+
+-------------------------------------------------------------------
+Sun Jul 28 09:10:20 CEST 2002 - kukuk@suse.de
+
+- remove unused tetex from neededforbuild
+
+-------------------------------------------------------------------
+Fri Jul  5 10:26:35 CEST 2002 - fehr@suse.de
+
+- update to new version 2.5
+
+-------------------------------------------------------------------
+Mon Dec  3 14:48:33 CET 2001  - fehr@suse.de
+
+- make the -c switch comatible to SVR4 (and compatible to RedHat)
+- fix the man page accordingly
+- add rsh to #needfobuild to allow remote file access again (#12543)
+
+-------------------------------------------------------------------
+Sun Dec  3 16:07:35 CET 2000 - schwab@suse.de
+
+- Fix a few bugs and typos.
+
+-------------------------------------------------------------------
+Tue Nov 28 11:32:08 MET 2000  - fehr@suse.de
+
+- add compile options for LFS
+
+-------------------------------------------------------------------
+Mon Apr 17 12:01:34 MEST 2000 - fehr@suse.de
+
+- move cpio binary to /bin for compatibility with RedHat
+
+-------------------------------------------------------------------
+Fri Feb 25 12:02:26 CET 2000 - kukuk@suse.de
+
+- remove Makefile.Linux
+- use _infodir/_mandir
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Sep  2 18:29:04 MEST 1999 - fehr@suse.de
+
+- Fix patch for broken header (cast to short instead of int)
+
+-------------------------------------------------------------------
+Wed Aug  4 13:19:24 MEST 1999 - kukuk@suse.de
+
+- Add patch for broken header in oldascii format
+
+-------------------------------------------------------------------
+Tue Sep 22 12:13:34 MEST 1998 - ro@suse.de
+
+- define _GNU_SOURCE for glibc where including getopt
+
+-------------------------------------------------------------------
+Tue Sep  1 11:52:58 MEST 1998 - ro@suse.de
+
+- fixed strdup-macro problem
+
+-------------------------------------------------------------------
+Thu Jun  5 11:08:05 MEST 1997 - florian@suse.de
+
+
+- go through the list of regex in a more suitable way (from ma@suse.de)
+
+
+-------------------------------------------------------------------
+Sun Apr 13 23:04:29 MEST 1997 - florian@suse.de
+
+
+- update to new version 2.4.2
+
+- add Linux patches from RedHat
+
+- add patches from gnu.utils.bugs
+

@@ -1,0 +1,706 @@
+-------------------------------------------------------------------
+Fri Jul 19 09:02:49 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Fix build on SLE-12
+  + Add python to BuildRequires for suse_version < 1500
+
+-------------------------------------------------------------------
+Thu Jul 18 08:34:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.15.5:
+  * Fix a TypeError due to changes to ast.Module in Python 3.8. #1551
+  * Fix a C assertion failure in debug builds of some Python 2.7 releases. #1553
+
+-------------------------------------------------------------------
+Mon May 27 08:43:55 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.15.4 (bsc#1145383, CVE-2019-14806)
+- refreshed 0001_create_a_thread_to_reap_death_process.patch
+- drop python-Werkzeug-doc package
+- last stable update with long Changelog -> please see CHANGELOG.rst
+
+-------------------------------------------------------------------
+Thu May 10 15:44:58 UTC 2018 - toddrme2178@gmail.com
+
+- Make sure ssl is available
+- Avoid problem with bytecode being overwritten in tests
+
+-------------------------------------------------------------------
+Thu Mar  8 10:15:27 UTC 2018 - aplanas@suse.com
+
+- Allows Recommends and Suggest in Fedora
+
+-------------------------------------------------------------------
+Tue Feb 27 18:52:40 UTC 2018 - aplanas@suse.com
+
+- Recommends only for SUSE
+
+-------------------------------------------------------------------
+Wed Jan  3 23:07:03 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 0.14.1:
+  * Resolved a regression with status code handling in the integrated
+    development server.
+
+- changes from version 0.14:
+  * HTTP exceptions are now automatically caught by
+    Request.application.
+  * Added support for edge as browser.
+  * Added support for platforms that lack SpooledTemporaryFile.
+  * Add support for etag handling through if-match
+  * Added support for the SameSite cookie attribute.
+  * Added werkzeug.wsgi.ProxyMiddleware
+  * Implemented has for NullCache
+  * get_multi on cache clients now returns lists all the time.
+  * Improved the watchdog observer shutdown for the reloader to not
+    crash on exit on older Python versions.
+  * Added support for filename* filename attributes according to RFC
+    2231
+  * Resolved an issue where machine ID for the reloader PIN was not
+    read accurately on windows.
+  * Added a workaround for syntax errors in init files in the
+    reloader.
+  * Added support for using the reloader with console scripts on
+    windows.
+  * The built-in HTTP server will no longer close a connection in
+    cases where no HTTP body is expected (204, 204, HEAD requests
+    etc.)
+  * The EnvironHeaders object now skips over empty content type and
+    lengths if they are set to falsy values.
+  * Werkzeug will no longer send the content-length header on 1xx or
+    204/304 responses.
+  * Cookie values are now also permitted to include slashes and equal
+    signs without quoting.
+  * Relaxed the regex for the routing converter arguments.
+  * If cookies are sent without values they are now assumed to have an
+    empty value and the parser accepts this. Previously this could
+    have corrupted cookies that followed the value.
+  * The test Client and EnvironBuilder now support mimetypes like the
+    request object does.
+  * Added support for static weights in URL rules.
+  * Better handle some more complex reloader scenarios where sys.path
+    contained non directory paths.
+  * EnvironHeaders no longer raises weird errors if non string keys
+    are passed to it.
+
+-------------------------------------------------------------------
+Fri Dec  8 18:07:40 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * added CHANGES.rst and README.rst to %doc section
+
+- update to version 0.13:
+  * Deprecate support for Python 2.6 and 3.3. CI tests will not run
+    for these versions, and support will be dropped completely in the
+    next version. (pallets/meta#24)
+  * Raise TypeError when port is not an integer. (#1088)
+  * Fully deprecate werkzeug.script. Use Click instead. (#1090)
+  * response.age is parsed as a timedelta. Previously, it was
+    incorrectly treated as a datetime. The header value is an integer
+    number of seconds, not a date string. (#414)
+  * Fix a bug in TypeConversionDict where errors are not propagated
+    when using the converter. (#1102)
+  * Authorization.qop is a string instead of a set, to comply with RFC
+    2617. (#984)
+  * An exception is raised when an encoded cookie is larger than, by
+    default, 4093 bytes. Browsers may silently ignore cookies larger
+    than this. BaseResponse has a new attribute max_cookie_size and
+    dump_cookie has a new argument max_size to configure this. (#780,
+    #1109)
+  * Fix a TypeError in
+    werkzeug.contrib.lint.GuardedIterator.close. (#1116)
+  * BaseResponse.calculate_content_length now correctly works for
+    Unicode responses on Python 3. It first encodes using
+    iter_encoded. (#705)
+  * Secure cookie contrib works with string secret key on Python
+    3. (#1205)
+  * Shared data middleware accepts a list instead of a dict of static
+    locations to preserve lookup order. (#1197)
+  * HTTP header values without encoding can contain single
+    quotes. (#1208)
+  * The built-in dev server supports receiving requests with chunked
+    transfer encoding. (#1198)
+
+-------------------------------------------------------------------
+Tue Aug  8 19:29:05 UTC 2017 - tbechtold@suse.com
+
+- update to 0.12.2:
+  - Fix regression: Pull request ``#892`` prevented Werkzeug from correctly
+    logging the IP of a remote client behind a reverse proxy, even when using
+    `ProxyFix`.
+  - Fix a bug in `safe_join` on Windows.
+
+-------------------------------------------------------------------
+Tue Apr  4 15:26:59 UTC 2017 - jmatejek@suse.com
+
+- update for singlespec
+- update to 0.12.1
+  * deprecate werkzeug.script
+  * Use `inspect.getfullargspec` internally when available as
+    `inspect.getargspec` is gone in 3.6
+  * Added support for status code 451 and 423
+  * Improved the build error suggestions.  In particular only if
+    someone stringifies the error will the suggestions be calculated.
+  * Added support for uWSGI's caching backend.
+  * Fix a bug where iterating over a `FileStorage` would result in an infinite
+    loop.
+  * Datastructures now inherit from the relevant baseclasses from the
+    `collections` module in the stdlib. See #794.
+  * Add support for recognizing NetBSD, OpenBSD, FreeBSD, DragonFlyBSD platforms
+    in the user agent string.
+  * Recognize SeaMonkey browser name and version correctly
+  * Recognize Baiduspider, and bingbot user agents
+  * If `LocalProxy`'s wrapped object is a function, refer to it with __wrapped__
+    attribute.
+  * The defaults of ``generate_password_hash`` have been changed to more secure
+    ones, see pull request ``#753``.
+  * Add support for encoding in options header parsing, see pull request
+    ``#933``.
+  * ``test.Client`` now properly handles Location headers with relative URLs, see
+    pull request ``#879``.
+  * When `HTTPException` is raised, it now prints the description, for easier
+    debugging.
+  * Werkzeug's dict-like datastructures now have ``view``-methods under Python 2,
+    see pull request ``#968``.
+  * Fix a bug in ``MultiPartParser`` when no ``stream_factory`` was provided
+    during initialization, see pull request ``#973``.
+  * Disable autocorrect and spellchecker in the debugger middleware's Python
+    prompt, see pull request ``#994``.
+  * Don't redirect to slash route when method doesn't match, see pull request
+    ``#907``.
+  * Fix a bug when using ``SharedDataMiddleware`` with frozen packages, see pull
+    request ``#959``.
+  * `Range` header parsing function fixed for invalid values ``#974``.
+  * Add support for byte Range Requests, see pull request ``#978``.
+  * Use modern cryptographic defaults in the dev servers ``#1004``.
+  * the post() method of the test client now accept file object through the data
+    parameter.
+  * Color run_simple's terminal output based on HTTP codes ``#1013``.
+  * Fix self-XSS in debugger console, see ``#1031``.
+  * Fix IPython 5.x shell support, see ``#1033``.
+
+-------------------------------------------------------------------
+Thu Nov 17 13:02:10 UTC 2016 - rjschwei@suse.com
+
+- Include in SLE 12 (FATE#320818, bsc#979331)
+
+-------------------------------------------------------------------
+Fri Sep 16 14:25:04 UTC 2016 - toddrme2178@gmail.com
+
+- Fix download url.
+
+-------------------------------------------------------------------
+Thu Sep 15 23:08:05 UTC 2016 - toddrme2178@gmail.com
+
+- update to version 0.11.11:
+  * Fix JSONRequestMixin for Python3. See #731
+  * Fix broken string handling in test client when passing
+    integers. See #852
+  * Fix a bug in "parse_options_header" where an invalid content type
+    starting with comma or semi-colon would result in an invalid
+    return value, see issue "#995".
+  * Fix a bug in multidicts when passing empty lists as values, see
+    issue "#979".
+  * Fix a security issue that allows XSS on the Werkzeug debugger. See
+    "#1001".
+- update to version 0.11.10:
+  * Fixed a bug that occurs when running on Python 2.6 and using a
+    broken locale.  See pull request #912.
+  * Fixed a crash when running the debugger on Google App Engine. See
+    issue #925.
+  * Fixed an issue with multipart parsing that could cause memory
+    exhaustion.
+- Update to 0.11.9
+  - Corrected an issue that caused the debugger not to use the
+    machine GUID on POSIX systems.
+  - Corrected an Unicode error on Python 3 for the debugger's
+    PIN usage.
+  - Corrected the timestamp verification in the pin debug code.
+    Without this fix the pin was remebered until too long.
+- update to version 0.11.8:
+  * fixed a problem with the machine GUID detection code on OS X on
+    Python 3.
+- changes from version 0.11.7:
+  * fixed a regression on Python 3 for the debugger.
+- changes from version 0.11.6:
+  * werkzeug.serving: Still show the client address on bad requests.
+  * improved the PIN based protection for the debugger to make it
+    harder to brute force via trying cookies.  Please keep in mind
+    that the debugger *is not intended for running on production
+    environments*
+  * increased the pin timeout to a week to make it less annoying for
+    people which should decrease the change that users disable the pin
+    check entirely.
+  * werkzeug.serving: Fix broken HTTP_HOST when path starts with
+    double slash.
+- update to version 0.11.5:
+  * werkzeug.serving: Fix crash when attempting SSL connection to HTTP
+    server.
+- update to version 0.11.4:
+  * Fixed werkzeug.serving not working from -m flag.
+  * Fixed incorrect weak etag handling.
+- Rebase 0001_create_a_thread_to_reap_death_process.patch
+- Split documentation into own subpackage to speed up build.
+
+-------------------------------------------------------------------
+Mon Feb  8 13:01:58 UTC 2016 - aplanas@suse.com
+
+- Add 0001_create_a_thread_to_reap_death_process.patch
+  Fixes bsc#954591
+
+-------------------------------------------------------------------
+Mon Feb  8 12:35:28 UTC 2016 - aplanas@suse.com
+
+- update to 0.11.3:
+  - Added reloader_paths option to run_simple and other functions in
+    werkzeug.serving. This allows the user to completely override the
+    Python module watching of Werkzeug with custom paths.
+  - Many custom cached properties of Werkzeug’s classes are now
+    subclasses of Python’s property type (issue #616).
+  - bind_to_environ now doesn’t differentiate between implicit and
+    explicit default port numbers in HTTP_HOST (pull request #204).
+  - BuildErrors are now more informative. They come with a complete
+    sentence as error message, and also provide suggestions (pull
+    request #691).
+  - Fix a bug in the user agent parser where Safari’s build number
+    instead of version would be extracted (pull request #703).
+  - Fixed issue where RedisCache set_many was broken for twemproxy,
+    which doesn’t support the default MULTI command (pull request
+    #702).
+  - mimetype parameters on request and response classes are now always
+    converted to lowercase.
+  - Changed cache so that cache never expires if timeout is 0. This
+    also fixes an issue with redis setex (issue #550)
+  - Werkzeug now assumes UTF-8 as filesystem encoding on Unix if
+    Python detected it as ASCII.
+  - New optional has method on caches.
+  - Fixed various bugs in parse_options_header (pull request #643).
+  - If the reloader is enabled the server will now open the socket in
+    the parent process if this is possible. This means that when the
+    reloader kicks in the connection from client will wait instead of
+    tearing down. This does not work on all Python versions.
+  - Implemented PIN based authentication for the debugger. This can
+    optionally be disabled but is discouraged. This change was
+    necessary as it has been discovered that too many people run the
+    debugger in production.
+  - Devserver no longer requires SSL module to be installed.
+  - Reloader: Correctly detect file changes made by moving temporary
+    files over the original, which is e.g. the case with PyCharm (pull
+    request #722).
+  - Fix bool behavior of werkzeug.datastructures.ETags under Python 3
+    (issue #744).
+
+-------------------------------------------------------------------
+Mon Jun 22 14:22:45 UTC 2015 - tbechtold@suse.com
+
+- update to 0.10.4:
+  - Re-release of 0.10.3 with packaging artifacts manually removed.
+  - Re-release of 0.10.2 without packaging artifacts.
+  - Fixed issue where ``empty`` could break third-party libraries that relied on
+    keyword arguments (pull request ``#675``)
+  - Improved ``Rule.empty`` by providing a ```get_empty_kwargs`` to allow setting
+    custom kwargs without having to override entire ``empty`` method. (pull
+    request ``#675``)
+   - Fixed ```extra_files``` parameter for reloader to not cause startup
+     to crash when included in server params
+   - Using `MultiDict` when building URLs is now not supported again. The behavior
+     introduced several regressions.
+   - Fix performance problems with stat-reloader (pull request ``#715``).
+   - Fixed regression with multiple query values for URLs (pull request ``#667``).
+   - Fix issues with eventlet's monkeypatching and the builtin server (pull
+     request ``#663``).
+   - Changed the error handling of and improved testsuite for the caches in
+     ``contrib.cache``.
+   - Fixed a bug on Python 3 when creating adhoc ssl contexts, due to `sys.maxint`
+     not being defined.
+   - Fixed a bug on Python 3, that caused
+     :func:`~werkzeug.serving.make_ssl_devcert` to fail with an exception.
+   - Added exceptions for 504 and 505.
+   - Added support for ChromeOS detection.
+   - Added UUID converter to the routing system.
+   - Added message that explains how to quit the server.
+   - Fixed a bug on Python 2, that caused ``len`` for
+     :class:`werkzeug.datastructures.CombinedMultiDict` to crash.
+   - Added support for stdlib pbkdf2 hmac if a compatible digest
+     is found.
+   - Ported testsuite to use ``py.test``.
+   - Minor optimizations to various middlewares (pull requests ``#496`` and
+     ``#571``).
+   - Use stdlib ``ssl`` module instead of ``OpenSSL`` for the builtin server
+     (issue ``#434``). This means that OpenSSL contexts are not supported anymore,
+     but instead ``ssl.SSLContext`` from the stdlib.
+   - Allow protocol-relative URLs when building external URLs.
+   - Fixed Atom syndication to print time zone offset for tz-aware datetime
+     objects (pull request ``#254``).
+   - Improved reloader to track added files and to recover from broken
+     sys.modules setups with syntax errors in packages.
+   - ``cache.RedisCache`` now supports arbitrary ``**kwargs`` for the redis
+     object.
+   - ``werkzeug.test.Client`` now uses the original request method when resolving
+     307 redirects (pull request ``#556``).
+   - ``werkzeug.datastructures.MIMEAccept`` now properly deals with mimetype
+     parameters (pull request ``#205``).
+   - ``werkzeug.datastructures.Accept`` now handles a quality of ``0`` as
+     intolerable, as per RFC 2616 (pull request ``#536``).
+   - ``werkzeug.urls.url_fix`` now properly encodes hostnames with ``idna``
+     encoding (issue ``#559``). It also doesn't crash on malformed URLs anymore
+     (issue ``#582``).
+   - ``werkzeug.routing.MapAdapter.match`` now recognizes the difference between
+     the path ``/`` and an empty one (issue ``#360``).
+   - The interactive debugger now tries to decode non-ascii filenames (issue
+     ``#469``).
+   - Increased default key size of generated SSL certificates to 1024 bits (issue
+     ``#611``).
+   - Added support for specifying a ``Response`` subclass to use when calling
+     :func:`~werkzeug.utils.redirect`\ .
+   - ``werkzeug.test.EnvironBuilder`` now doesn't use the request method anymore
+     to guess the content type, and purely relies on the ``form``, ``files`` and
+   ``input_stream`` properties (issue ``#620``).
+   - Added Symbian to the user agent platform list.
+   - Fixed make_conditional to respect automatically_set_content_length
+   - Unset ``Content-Length`` when writing to response.stream (issue ``#451``)
+   - ``wrappers.Request.method`` is now always uppercase, eliminating
+     inconsistencies of the WSGI environment (issue ``647``).
+   - ``routing.Rule.empty`` now works correctly with subclasses of ``Rule`` (pull
+     request ``#645``).
+   - Made map updating safe in light of concurrent updates.
+   - Allow multiple values for the same field for url building (issue ``#658``).
+   - Fix unicode problems in ``werkzeug.debug.tbtools``.
+   - Fix Python 3-compatibility problems in ``werkzeug.posixemulation``.
+   - Backport fix of fatal typo for ``ImmutableList`` (issue ``#492``).
+   - Make creation of the cache dir for ``FileSystemCache`` atomic (issue
+     ``#468``).
+   - Use native strings for memcached keys to work with Python 3 client (issue
+     ``#539``).
+   - Fix charset detection for ``werkzeug.debug.tbtools.Frame`` objects (issues
+     ``#547`` and ``#532``).
+   - Fix ``AttributeError`` masking in ``werkzeug.utils.import_string`` (issue
+     ``#182``).
+   - Explicitly shut down server (issue ``#519``).
+   - Fix timeouts greater than 2592000 being misinterpreted as UNIX timestamps in
+     ``werkzeug.contrib.cache.MemcachedCache`` (issue ``#533``).
+   - Fix bug where ``werkzeug.exceptions.abort`` would raise an arbitrary subclass
+     of the expected class (issue ``#422``).
+   - Fix broken ``jsrouting`` (due to removal of ``werkzeug.templates``)
+   - ``werkzeug.urls.url_fix`` now doesn't crash on malformed URLs anymore, but
+     returns them unmodified. This is a cheap workaround for ``#582``, the proper
+     fix is included in version 0.10.
+   - The repr of ``werkzeug.wrappers.Request`` doesn't crash on non-ASCII-values
+     anymore (pull request ``#466``).
+   - Fix bug in ``cache.RedisCache`` when combined with ``redis.StrictRedis``
+     object (pull request ``#583``).
+   - The ``qop`` parameter for ``WWW-Authenticate`` headers is now always quoted,
+     as required by RFC 2617 (issue ``#633``).
+   - Fix bug in ``werkzeug.contrib.cache.SimpleCache`` with Python 3 where add/set 
+     may throw an exception when pruning old entries from the cache (pull request
+     ``#651``).
+
+-------------------------------------------------------------------
+Fri Jul 18 15:06:30 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 0.9.6
+  - Added a safe conversion for IRI to URI conversion and use that
+    internally to work around issues with spec violations for
+    protocols such as ``itms-service``.
+- Update to 0.9.5
+  - Forward charset argument from request objects to the environ
+    builder.
+  - Fixed error handling for missing boundaries in multipart data.
+  - Fixed session creation on systems without ``os.urandom()``.
+  - Fixed pluses in dictionary keys not being properly URL encoded.
+  - Fixed a problem with deepcopy not working for multi dicts.
+  - Fixed a double quoting issue on redirects.
+  - Fixed a problem with unicode keys appearing in headers on 2.x.
+  - Fixed a bug with unicode strings in the test builder.
+  - Fixed a unicode bug on Python 3 in the WSGI profiler.
+  - Fixed an issue with the safe string compare function on
+    Python 2.7.7 and Python 3.4.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:17:13 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Sep  3 08:12:07 UTC 2013 - dmueller@suse.com
+
+- update to 0.9.4:
+  - Fixed an issue with Python 3.3 and an edge case in cookie parsing.
+  - Fixed decoding errors not handled properly through the WSGI
+    decoding dance.
+  - Fixed URI to IRI conversion incorrectly decoding percent signs.
+  - Restored beahvior of the ``data`` descriptor of the request class to pre 0.9
+    behavior.  This now also means that ``.data`` and ``.get_data()`` have
+    different behavior.  New code should use ``.get_data()`` always.
+
+    In addition to that there is now a flag for the ``.get_data()`` method that
+    controls what should happen with form data parsing and the form parser will
+    honor cached data.  This makes dealing with custom form data more consistent.
+  - Added `unsafe` parameter to :func:`~werkzeug.urls.url_quote`.
+  - Fixed an issue with :func:`~werkzeug.urls.url_quote_plus` not quoting
+    `'+'` correctly.
+  - Ported remaining parts of :class:`~werkzeug.contrib.RedisCache` to
+    Python 3.3.
+  - Ported remaining parts of :class:`~werkzeug.contrib.MemcachedCache` to
+    Python 3.3
+  - Fixed a deprecation warning in the contrib atom module.
+  - Fixed a regression with setting of content types through the
+    headers dictionary instead with the content type parameter.
+  - Use correct name for stdlib secure string comparision function.
+  - Fixed a wrong reference in the docstring of
+    :func:`~werkzeug.local.release_local`.
+  - Fixed an `AttributeError` that sometimes occurred when accessing the
+    :attr:`werkzeug.wrappers.BaseResponse.is_streamed` attribute.
+  - Fixed an issue with integers no longer being accepted in certain
+    parts of the routing system or URL quoting functions.
+  - Fixed an issue with `url_quote` not producing the right escape
+    codes for single digit codepoints.
+  - Fixed an issue with :class:`~werkzeug.wsgi.SharedDataMiddleware` not
+    reading the path correctly and breaking on etag generation in some
+    cases.
+  - Properly handle `Expect: 100-continue` in the development server
+    to resolve issues with curl.
+  - Automatically exhaust the input stream on request close.  This should
+    fix issues where not touching request files results in a timeout.
+  - Fixed exhausting of streams not doing anything if a non-limited
+    stream was passed into the multipart parser.
+  - Raised the buffer sizes for the multipart parser.
+  - Added support for :meth:`~werkzeug.wsgi.LimitedStream.tell`
+    on the limited stream.
+  - :class:`~werkzeug.datastructures.ETags` now is nonzero if it
+    contains at least one etag of any kind, including weak ones.
+  - Added a workaround for a bug in the stdlib for SSL servers.
+  - Improved SSL interface of the devserver so that it can generate
+    certificates easily and load them from files.
+  - Refactored test client to invoke the open method on the class
+    for redirects.  This makes subclassing more powerful.
+  - :func:`werkzeug.wsgi.make_chunk_iter` and
+    :func:`werkzeug.wsgi.make_line_iter` now support processing of
+    iterators and streams.
+  - URL generation by the routing system now no longer quotes
+    ``+``.
+  - URL fixing now no longer quotes certain reserved characters.
+  - The :func:`werkzeug.security.generate_password_hash` and
+    check functions now support any of the hashlib algorithms.
+  - `wsgi.get_current_url` is now ascii safe for browsers sending
+    non-ascii data in query strings.
+  - improved parsing behavior for :func:`werkzeug.http.parse_options_header`
+  - added more operators to local proxies.
+  - added a hook to override the default converter in the routing
+    system.
+  - The description field of HTTP exceptions is now always escaped.
+    Use markup objects to disable that.
+  - Added number of proxy argument to the proxy fix to make it more
+    secure out of the box on common proxy setups.  It will by default
+    no longer trust the x-forwarded-for header as much as it did
+    before.
+  - Added support for fragment handling in URI/IRI functions.
+  - Added custom class support for :func:`werkzeug.http.parse_dict_header`.
+  - Renamed `LighttpdCGIRootFix` to `CGIRootFix`.
+  - Always treat `+` as safe when fixing URLs as people love misusing them.
+  - Added support to profiling into directories in the contrib profiler.
+  - The escape function now by default escapes quotes.
+  - Changed repr of exceptions to be less magical.
+  - Simplified exception interface to no longer require environmnts
+    to be passed to recieve the response object.
+  - Added sentinel argument to IterIO objects.
+  - Added pbkdf2 support for the security module.
+  - Added a plain request type that disables all form parsing to only
+    leave the stream behind.
+  - Removed support for deprecated `fix_headers`.
+  - Removed support for deprecated `header_list`.
+  - Removed support for deprecated parameter for `iter_encoded`.
+  - Removed support for deprecated non-silent usage of the limited
+    stream object.
+  - Removed support for previous dummy `writable` parameter on
+    the cached property.
+  - Added support for explicitly closing request objects to close
+    associated resources.
+  - Conditional request handling or access to the data property on responses no
+    longer ignores direct passthrough mode.
+  - Removed werkzeug.templates and werkzeug.contrib.kickstart.
+  - Changed host lookup logic for forwarded hosts to allow lists of
+    hosts in which case only the first one is picked up.
+  - Added `wsgi.get_query_string`, `wsgi.get_path_info` and
+    `wsgi.get_script_name` and made the `wsgi.pop_path_info` and
+    `wsgi.peek_path_info` functions perform unicode decoding.  This
+    was necessary to avoid having to expose the WSGI encoding dance
+    on Python 3.
+  - Added `content_encoding` and `content_md5` to the request object's
+    common request descriptor mixin.
+  - added `options` and `trace` to the test client.
+  - Overhauled the utilization of the input stream to be easier to use
+    and better to extend.  The detection of content payload on the input
+    side is now more compliant with HTTP by detecting off the content
+    type header instead of the request method.  This also now means that
+    the stream property on the request class is always available instead
+    of just when the parsing fails.
+  - Added support for using :class:`werkzeug.wrappers.BaseResponse` in a with
+    statement.
+  - Changed `get_app_iter` to fetch the response early so that it does not
+    fail when wrapping a response iterable.  This makes filtering easier.
+  - Introduced `get_data` and `set_data` methods for responses.
+  - Introduced `get_data` for requests.
+  - Soft deprecated the `data` descriptors for request and response objects.
+  - Added `as_bytes` operations to some of the headers to simplify working
+    with things like cookies.
+  - Made the debugger paste tracebacks into github's gist service as
+    private pastes.
+
+-------------------------------------------------------------------
+Mon Mar 12 21:35:29 UTC 2012 - saschpe@gmx.de
+
+- Update to version 0.8.3:
+  - Fixed another issue with :func:`werkzeug.wsgi.make_line_iter`
+    where lines longer than the buffer size were not handled
+    properly.
+  - Restore stdout after debug console finished executing so
+    that the debugger can be used on GAE better.
+  - Fixed a bug with the redis cache for int subclasses
+    (affects bool caching).
+  - Fixed an XSS problem with redirect targets coming from
+    untrusted sources.
+- Changes from version 0.8.2:
+  - Fixed a problem with request handling of the builtin server
+    not repsonding to socket errors properly.
+  - The routing request redirect exception's code attribute is now
+    used properly.
+  - Fixed a bug with shutdowns on Windows.
+  - Fixed a few unicode issues with non-ascii characters being
+    hardcoded in URL rules.
+  - Fixed two property docstrings being assigned to fdel instead
+    of ``__doc__``.
+  - Fixed an issue where CRLF line endings could be split into two
+    by the line iter function, causing problems with multipart file
+    uploads.
+
+-------------------------------------------------------------------
+Thu Nov 10 11:07:11 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.8.1:
+  * Fixed an issue with the memcache not working properly.
+  * Fixed an issue for Python 2.7.1 and higher that broke
+    copying of multidicts with :func:`copy.copy`.
+  * Changed hashing methodology of immutable ordered multi dicts
+    for a potential problem with alternative Python implementations.
+- Changes from version 0.8:
+  * Removed data structure specific KeyErrors for a general
+    purpose :exc:`~werkzeug.exceptions.BadRequestKeyError`.
+  * Documented :meth:`werkzeug.wrappers.BaseRequest._load_form_data`.
+  * The routing system now also accepts strings instead of
+    dictionaries for the `query_args` parameter since we're only
+    passing them through for redirects.
+  * Werkzeug now automatically sets the content length immediately when
+    the :attr:`~werkzeug.wrappers.BaseResponse.data` attribute is set
+    for efficiency and simplicity reasons.
+  * The routing system will now normalize server names to lowercase.
+  * The routing system will no longer raise ValueErrors in case the
+    configuration for the server name was incorrect.  This should make
+    deployment much easier because you can ignore that factor now.
+  * Fixed a bug with parsing HTTP digest headers.  It rejected headers
+    with missing nc and nonce params.
+  * Proxy fix now also updates wsgi.url_scheme based on X-Forwarded-Proto.
+  * Added support for key prefixes to the redis cache.
+  * Added the ability to supress some auto corrections in the wrappers
+    that are now controlled via `autocorrect_location_header` and
+    `automatically_set_content_length` on the response objects.
+  * Werkzeug now uses a new method to check that the length of incoming
+    data is complete and will raise IO errors by itself if the server
+    fails to do so.
+  * :func:`~werkzeug.wsgi.make_line_iter` now requires a limit that is
+    not higher than the length the stream can provide.
+  * Refactored form parsing into a form parser class that makes it possible
+    to hook into individual parts of the parsing process for debugging and
+    extending.
+  * For conditional responses the content length is no longer set when it
+    is already there and added if missing.
+  * Immutable datastructures are hashable now.
+  * Headers datastructure no longer allows newlines in values to avoid
+    header injection attacks.
+  * Made it possible through subclassing to select a different remote
+    addr in the proxy fix.
+  * Added stream based URL decoding.  This reduces memory usage on large
+    transmitted form data that is URL decoded since Werkzeug will no longer
+    load all the unparsed data into memory.
+  * Memcache client now no longer uses the buggy cmemcache module and
+    supports pylibmc.  GAE is not tried automatically and the dedicated
+    class is no longer necessary.
+  * Redis cache now properly serializes data.
+  * Removed support for Python 2.4
+- Changes from version 0.7.2:
+  * Fixed a CSRF problem with the debugger.
+  * The debugger is now generating private pastes on lodgeit.
+  * If URL maps are now bound to environments the query arguments
+    are properly decoded from it for redirects.
+
+-------------------------------------------------------------------
+Tue Sep 27 09:31:46 UTC 2011 - saschpe@suse.de
+
+- Package renamed to python-Werkzeug
+- Update to version 0.7.1:
+  * Fixed a problem with newer versions of IPython
+  * Disabled pyinotify based reloader which does not work reliably.
+- Changes from version 0.7.0:
+  * Add support for python-libmemcached to the Werkzeug cache abstraction
+    layer.
+  * improved url_decode and url_encode performance.
+  * fixed an issue where the SharedDataMiddleware could cause an
+    internal server error on weird paths when loading via pkg_resources.
+  * fixed an URL generation bug that caused URLs to be invalid if a
+    generated component contains a colon.
+  * werkzeug.import_string now works with partially set up
+    packages properly.
+  * disabled automatic socket swiching for IPv6 on the development
+    server due to problems it caused.
+  * Werkzeug no longer overrides the Date header when creating a
+    conditional HTTP response.
+  * The routing system provides a method to retrieve the matching
+    methods for a given path.
+  * The routing system now accepts a parameter to change the encoding
+    error behaviour.
+  * The local manager can now accept custom ident functions in the
+    constructor that are forwarded to the wrapped local objects.
+  * url_unquote_plus now accepts unicode strings again.
+  * fixed an issues with the filesystem session support's prune
+    function and concurrent usage.
+  * fixed a problem with external URL generation discarding the port.
+  * added support for pylibmc to the Werkzeug cache abstraction layer.
+  * fixed an issue with the new multipart parser that happened when
+    a linkebreak happend to be on the chunk limit.
+  * cookies are now set properly if ports are in use.  A runtime error
+    is raised if one tries to set a cookie for a domain without a dot.
+  * fixed an issue with Template.from_file not working for file
+    descriptors.
+  * reloader can now use inotify to track reloads.  This requires the
+    pyinotify library to be installed.
+  * See more in file CHANGES...
+- Generate HTML documentation with Sphinx
+- Don't package PKG-INFO
+- BuildRequire python-distribute instead of python-setuptools
+
+-------------------------------------------------------------------
+Thu Apr 14 09:03:37 UTC 2011 - saschpe@suse.de
+
+- Add spec file license header
+- Use py_requires
+- Moved changelog from spec to changes file
+- Corrected RPM groups
+
+-------------------------------------------------------------------
+Wed Apr 13 00:00:00 UTC 2011 - hpj@urpla.net
+
+- Update to 0.6.2
+
+-------------------------------------------------------------------
+Fri Mar  5 00:00:00 UTC 2010 - phalliday@excelsiorsystems.net
+
+- Updating because upstream release of Werkzeug 0.6
+
+-------------------------------------------------------------------
+Tue Aug 25 00:00:00 UTC 2009 - phalliday@excelsiorsystems.net
+
+- Initial package
+

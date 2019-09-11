@@ -1,0 +1,18 @@
+Index: vim-8.1.1467/runtime/syntax/sh.vim
+===================================================================
+--- vim-8.1.1467.orig/runtime/syntax/sh.vim
++++ vim-8.1.1467/runtime/syntax/sh.vim
+@@ -64,6 +64,13 @@ if !exists("b:is_kornshell") && !exists(
+   endif
+ endif
+ 
++" Neither is_kornshell nor is_bash was explicitly set, and
++" /bin/sh is a bash on SUSE LINUX.
++if exists("b:is_sh")
++  let b:is_bash= 1
++  unlet b:is_sh
++endif
++
+ " set up default g:sh_fold_enabled {{{1
+ " ================================
+ if !exists("g:sh_fold_enabled")

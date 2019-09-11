@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Thu May 24 17:34:04 UTC 2018 - toddrme2178@gmail.com
+
+- Spec file cleanup
+- Fix rpmlint issues
+
+-------------------------------------------------------------------
+Sat Feb 17 18:26:17 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * add README.md CHANGELOG.md and use LICENSE from tar-ball
+
+- update to version 1.6.1:
+  * Include Changelog and LICENSE files in source distribution
+  * Wrapped main script in proper main test
+
+-------------------------------------------------------------------
+Tue Feb  6 22:38:43 UTC 2018 - arun@gmx.de
+
+- initial package

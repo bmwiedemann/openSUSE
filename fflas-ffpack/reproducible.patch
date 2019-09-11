@@ -1,0 +1,14 @@
+Index: fflas-ffpack-2.3.2/configure.ac
+===================================================================
+--- fflas-ffpack-2.3.2.orig/configure.ac
++++ fflas-ffpack-2.3.2/configure.ac
+@@ -172,9 +172,6 @@ echo "----------------------------------
+ FF_CHECK_OMP
+ 
+ 
+-# Checks which SIMD optimization flags to use and set SIMD_CFLAGS accordingly
+-INSTR_SET
+-AC_SUBST(SIMD_FLAGS)
+ 
+ dnl gcc-4.9.2 bug See https://trac.sagemath.org/ticket/17635#comment:178
+ AS_IF([ test  "x$CCNAM" = "xgcc492" ],[REQUIRED_FLAGS="${REQUIRED_FLAGS} -fpermissive"],[])

@@ -1,0 +1,15 @@
+--- setup.py.orig
++++ setup.py
+@@ -46,9 +46,9 @@ setup(name=PKG,
+         "License :: OSI Approved :: MIT License"
+       ],
+       packages = find_packages(),
+-      install_requires = ['httplib2'],
++#      install_requires = ['httplib2'],
+       license = "MIT License",
+       keywords="oauth",
+       zip_safe = True,
+-      test_suite="tests",
+-      tests_require=['coverage', 'mock'])
++      test_suite="tests")
++#      tests_require=['coverage', 'mock'])

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+SESSION=
+
+if [ -n "$KDE_FULL_SESSION" ] ; then
+  SESSION=kde
+fi
+
+if [ "$DESKTOP_SESSION" = "lxqt" ]; then
+  SESSION=kde
+fi
+
+GNOME_SSH_ASKPASS="@LIBEXECDIR@/ssh/gnome-ssh-askpass"
+KDE_SSH_ASKPASS="@LIBEXECDIR@/ssh/ksshaskpass"
+
+case "$SESSION" in
+  kde)
+	[ -e $KDE_SSH_ASKPASS ] && exec $KDE_SSH_ASKPASS ${1+"$@"}
+	exec $GNOME_SSH_ASKPASS ${1+"$@"}
+  ;;
+  *)
+	[ -e $GNOME_SSH_ASKPASS ] && exec $GNOME_SSH_ASKPASS ${1+"$@"}
+	exec $KDE_SSH_ASKPASS ${1+"$@"}
+  ;;
+esac
+

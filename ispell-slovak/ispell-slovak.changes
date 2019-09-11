@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Sat Mar  4 21:21:33 UTC 2017 - rpm@fthiessen.de
+
+- Fixed license
+- Use SourceURL
+
+-------------------------------------------------------------------
+Sat Feb  4 14:14:26 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections (see specfile guidelines)
+
+-------------------------------------------------------------------
+Fri Aug  4 20:43:32 CEST 2006 - lmichnovic@suse.cz
+
+- update to version 0.3.2 
+  - removed install.sh, improved make clean 
+  - integration of 3 letters Slovak words
+- renamed *.patch to *-installdir.patch
+- recoded README.sk to make it readable in unicode envirovement 
+  (encoding_readme.patch.bz2)
+
+-------------------------------------------------------------------
+Fri Feb 24 21:10:21 CET 2006 - lmichnovic@suse.cz
+
+- added Provides:  locale (ispell:sk) 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:44 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep 16 19:36:42 CEST 2005 - lmichnovic@suse.cz
+
+- updated to version 0.3.0  
+
+-------------------------------------------------------------------
+Thu Jan  6 15:53:56 CET 2005 - pmladek@suse.cz
+
+- build an architecture dependent package; the hash table ondisk format
+  depends on architecture (little/big endiannes, pointer size) [#49407]
+
+-------------------------------------------------------------------
+Wed Sep 01 21:10:37 CEST 2004 - pmladek@suse.cz
+
+- updated to version 0.2.2
+
+-------------------------------------------------------------------
+Thu Mar 04 21:37:28 CET 2004 - pmladek@suse.cz
+
+- updated to version 0.2.1
+    * license is GPL
+
+-------------------------------------------------------------------
+Mon Feb 23 11:30:03 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Tue Mar  5 17:32:06 CET 2002 - egmont@suselinux.hu
+
+- Removed 'requires: ispell' (bug #13609)
+
+-------------------------------------------------------------------
+Thu Jan 24 11:14:30 CET 2002 - egmont@suselinux.hu
+
+- Renamed to ispell-slovak
+
+-------------------------------------------------------------------
+Wed Mar 14 19:29:01 CET 2001 - werner@suse.de
+
+- Use dynamic emacs menu feature of ispell package
+  used by both emacs
+- No spaces within file names
+
+-------------------------------------------------------------------
+Mon Feb 12 10:31:14 CET 2001 - cihlar@suse.cz
+
+- package created
+

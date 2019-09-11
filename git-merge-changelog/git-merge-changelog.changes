@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Oct 14 10:53:39 UTC 2014 - jengelh@inai.de
+
+- Use %_smp_mflags for parallel build, and remove ancient
+  specfile tags and sections
+
+-------------------------------------------------------------------
+Fri Apr  5 13:01:26 CEST 2013 - pth@suse.de
+
+- Change license to GPL-3.0+ (bnc#757268)
+
+-------------------------------------------------------------------
+Fri Apr 13 16:28:18 CEST 2012 - pth@suse.de
+
+- Initial package
+- Use current gnulib git snapshot.
+- Add COPYING.
+- Add gnulib url to .spec file
+- Add manpage generated via help2man

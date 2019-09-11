@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Tue Apr  9 14:37:36 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.7.1
+  * Correct support for UTF encoded responses.
+- single spec
+- run testsuite
+- run spec-cleaner
+- Add patch to skip one failing test:
+  * python-slumber-disable-test_yaml_get_serializer-subtest.patch
+
+-------------------------------------------------------------------
+Wed May 13 10:51:10 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.7.0:
+  * no changelog available
+- additional changes from version 0.6.2:
+  * Further Python 3 compatibility fixes, many thanks to
+    Alexander Shchepetilnikov (irqed)
+- additional changes from version 0.6.1:
+  * Remove simplejson dependency.
+  * Support range now Python 2.6 - Python 3.4
+- suggests python-PyYAML and python-simplejson
+  instead of requiring them
+
+-------------------------------------------------------------------
+Sat Sep 14 17:56:36 UTC 2013 - os-dev@jacraig.com
+
+- Update to 0.6.0:
+  * All HTTP methods support multipart/form-data. The new files parameter is
+    directly passed to requests.
+- Changes from 0.5.2:
+  * Now compatible with requests 1.0
+  * Fix bug when using default serializer
+- Changed BuildRequires from distribute to setuptools
+
+
+-------------------------------------------------------------------
+Mon Nov  5 21:48:52 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.5.1:
+  + Fix serializers to work with multiple content_types
+- Changes from version 0.5.0:
+  + Refactoring release
+- Disabled testsuite, upstream seems to have dropped it
+
+-------------------------------------------------------------------
+Wed Jun  6 11:08:50 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.4.2:
+  + Support decoded unicode url fragments
+
+-------------------------------------------------------------------
+Fri Apr 13 11:48:42 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.4.1:
+  + Added a session kwarg to slumber.API allowing passing a requests
+    session that will be used instead of the slumber created one
+
+-------------------------------------------------------------------
+Wed Apr 11 18:33:23 UTC 2012 - saschpe@gmx.de
+
+- Disable testsuite on SLE_11_SP2 to fix build
+
+-------------------------------------------------------------------
+Thu Mar 22 19:10:28 UTC 2012 - saschpe@gmx.de
+
+- Initial version
+

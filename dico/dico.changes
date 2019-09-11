@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Wed Nov 21 16:03:45 UTC 2018 - jbrielmaier@suse.de
+
+ BuildRequire guile-devel to make transition to Guile 2.2 easier
+
+-------------------------------------------------------------------
+Mon Oct  1 11:43:26 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch to python3
+
+-------------------------------------------------------------------
+Sat Sep 29 14:34:26 UTC 2018 - astieger@suse.com
+
+- update to 2.7:
+  * Support for virtual databases
+  * Dicoweb: graceful handling of unsupported content types.
+  * The dictorg module improved
+- includes changes from 2.6:
+  * Support for Guile 2.2.0
+  * Support for Python 3
+- includes changes from 2.5:
+  * Support for four-column index files in dictorg databases
+
+-------------------------------------------------------------------
+Tue May  9 11:50:24 UTC 2017 - mpluskal@suse.com
+
+- Initial changelog entry for version 2.4

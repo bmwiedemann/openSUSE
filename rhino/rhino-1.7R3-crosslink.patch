@@ -1,0 +1,11 @@
+diff -up rhino1_7R3/build.xml~ rhino1_7R3/build.xml
+--- rhino1_7R3/build.xml~	2011-05-09 20:04:38.000000000 +0300
++++ rhino1_7R3/build.xml	2011-10-16 00:11:22.625045037 +0300
+@@ -220,6 +220,7 @@
+              destdir="${dist.dir}/javadoc"
+              version="true"
+              author="true"
++             link="/usr/share/javadoc/java"
+              windowtitle="${Name}" />
+   </target>
+ 

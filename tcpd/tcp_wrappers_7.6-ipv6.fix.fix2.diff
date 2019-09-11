@@ -1,0 +1,47 @@
+--- hosts_access.c.orig
++++ hosts_access.c
+@@ -328,8 +328,6 @@ char   *string;
+ 	return (YES);
+     } else if (STR_EQ(tok, "KNOWN")) {		/* not unknown */
+ 	return (STR_NE(string, unknown));
+-    } else if (tok[(n = strlen(tok)) - 1] == '.') {	/* prefix */
+-	return (STRN_EQ(tok, string, n));
+     } else if (STR_EQ(tok, string))		/* exact match */
+ 	return (YES);
+ #ifdef INET6
+@@ -337,11 +335,31 @@ char   *string;
+     {
+ 	/* For simplicity we convert everything to IPv6 (or v4 mapped) */
+ 	struct in6_addr pat, addr;
+-	int len, ret, prefixlen=128;
+-	char ch, token[INET6_ADDRSTRLEN+1], *mask;
+-	
++	int len, ret, prefixlen=128, nof_periods = 0;
++	char ch, token[INET6_ADDRSTRLEN+1], *mask, *ptok = tok, *addition;
+ 	len = strlen(tok);
+-	if (*tok == '[' && tok[len - 1] == ']') 
++	if (tok[(n = strlen(tok)) - 1] == '.') {	/* prefix */
++	  while ((ptok = strchr(ptok, '.')) != NULL){
++	    nof_periods++;
++	    ptok++;
++	  }
++	  switch(nof_periods){
++	  case 1:
++	    addition = "0.0.0/8";
++	    break;
++	  case 2:
++	    addition = "0.0/16";
++	    break;
++	  case 3:
++	    addition = "0/24";
++	    break;
++	  default: 
++	    tcpd_warn ("Wrong prefix %s", tok);
++	    return (NO);
++	  }
++	  snprintf(token, sizeof(token), "%s%s", tok, addition);
++	}	
++	else if (*tok == '[' && tok[len - 1] == ']') 
+ 	{
+ 		ch = tok[len - 1];
+ 			tok[len - 1] = '\0';

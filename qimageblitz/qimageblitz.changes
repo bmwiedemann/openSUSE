@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Wed Jul 31 15:17:29 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix build with newer CMake:
+  * remove-ansi-option.patch
+
+-------------------------------------------------------------------
+Fri May 18 09:12:01 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.0.6+svn1515099 (changes since
+  0.0.6+svn1368047):
+  * Allow building with Qt 5.11.
+    qt5_use_modules is no longer present in Qt 5.11. Fix build by
+    moving to target_link_libraries
+    This also adds a dependency on Qt5 Widgets (used by the test).
+- Rebase qimageblitz-qt5-fix-soname.patch.
+
+-------------------------------------------------------------------
+Mon Jan  8 13:32:58 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.0.6+svn1368047:
+  * Apply some more GCC flags also on GNU/Hurd.
+  * Use the autodetected CMAKE_C_COMPILER instead of hardwired GCC.
+    Fixes build with compilers other than GCC.
+  * Merge Fedora's patch for non-executable stack (makes SELinux
+    happier).
+  * Add a minimum cmake version.
+  * Remove this outdated FindQt4. cmake 2.6.4 has a way better one.
+  * "comparison is always true due to limited range of data type",
+    which means some compiler could have made that loop run
+    endless.
+  * Port away from Qt3Support
+  * Enable compilation with Qt5, but skip cpptoxml.
+- Remove qimageblitz-0.0.4-noexecstack.patch: fixed upstream.
+- Add qimageblitz-qt5-fix-soname.patch: Change the soname for Qt5
+  to fix a conflict with Qt4.
+- Build for Qt5 too.
+- Rename the source package to qimageblitz from libqimageblitz4.
+- Move the docfiles from the devel package to the library package.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Mon Jun 10 13:06:21 UTC 2013 - cfarrell@suse.com
+
+- license update: BSD-2-Clause
+  See COPYING
+
+-------------------------------------------------------------------
+Mon May 16 21:06:40 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 0.0.6
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Changes in Group, Url, Summary and %description entries.
+  * Removed Provides/Obsoletes entries for libblitz4.
+  * Removed %changelog entries.
+  * Minor other updates.
+- Added a patch (taken from Fedora) to fix "executable-stack" rpmlint warning.
+
+-------------------------------------------------------------------
+Sun Apr 13 14:45:47 CEST 2008 - dmueller@suse.de
+
+- fix build against cmake 2.6
+
+-------------------------------------------------------------------
+Thu Jan 10 15:56:38 CET 2008 - dmueller@suse.de
+
+- update to 0.0.4 (official release):
+  * small bugfixes
+
+-------------------------------------------------------------------
+Sat Sep  1 18:55:42 CEST 2007 - stbinner@suse.de
+
+- rename to libqimageblitz4 and update to SVN version
+
+-------------------------------------------------------------------
+Wed Aug 15 17:18:34 CEST 2007 - dmueller@suse.de
+
+- Initial package 

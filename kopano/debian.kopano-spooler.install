@@ -1,0 +1,7 @@
+usr/sbin/kopano-spooler
+usr/share/doc/kopano/example-config/spooler.cfg
+usr/share/kopano-spooler/python/
+usr/share/kopano-spooler/python/plugins/
+usr/share/man/man5/kopano-spooler.cfg.5
+usr/share/man/man8/kopano-spooler.8
+var/lib/kopano/spooler/plugins/

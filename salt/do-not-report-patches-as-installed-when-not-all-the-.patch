@@ -1,0 +1,45 @@
+From 769c9e85499bc9912b050fff7d3105690f1d7c7b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 13 Mar 2019 16:14:07 +0000
+Subject: [PATCH] Do not report patches as installed when not all the
+ related packages are installed (bsc#1128061)
+
+Co-authored-by: Mihai Dinca <mdinca@suse.de>
+---
+ salt/modules/yumpkg.py | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
+index 4f26a41670..5ec3835574 100644
+--- a/salt/modules/yumpkg.py
++++ b/salt/modules/yumpkg.py
+@@ -3212,12 +3212,18 @@ def _get_patches(installed_only=False):
+     for line in salt.utils.itertools.split(ret, os.linesep):
+         inst, advisory_id, sev, pkg = re.match(r'([i|\s]) ([^\s]+) +([^\s]+) +([^\s]+)',
+                                                line).groups()
+-        if inst != 'i' and installed_only:
+-            continue
+-        patches[advisory_id] = {
+-            'installed': True if inst == 'i' else False,
+-            'summary': pkg
+-        }
++        if not advisory_id in patches:
++            patches[advisory_id] = {
++                'installed': True if inst == 'i' else False,
++                'summary': [pkg]
++            }
++        else:
++            patches[advisory_id]['summary'].append(pkg)
++            if inst != 'i':
++                patches[advisory_id]['installed'] = False
++
++    if installed_only:
++        patches = {k: v for k, v in patches.items() if v['installed']}
+     return patches
+ 
+ 
+-- 
+2.20.1
+
+

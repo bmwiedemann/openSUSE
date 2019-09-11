@@ -1,0 +1,203 @@
+-------------------------------------------------------------------
+Thu Jul  9 18:26:32 CEST 2015 - sbrabec@suse.com
+
+- Fix libusb-compat-hide-libusb-1_0.patch: Ensure that inline
+  functions inside libusb-1.0/libusb.h use wrapped calls.
+  It should fix all triggered build failures.
+
+-------------------------------------------------------------------
+Sat Jun 20 12:10:01 UTC 2015 - dimstar@opensuse.org
+
+- Currently disable libusb-compat-hide-libusb-1_0.patch: it causes
+  many more problems when linking to libusb-compat.
+
+-------------------------------------------------------------------
+Wed Jun 10 19:21:28 CEST 2015 - sbrabec@suse.com
+
+- Fix libusb-compat-hide-libusb-1_0.patch autoconf checks,
+  especially with -Wl,--as-needed.
+- Use architecture-independent way to get libusb-1.0.so.0 rpm
+  symbol.
+
+-------------------------------------------------------------------
+Fri May 29 13:21:55 UTC 2015 - schwab@suse.de
+
+- Fix dependencies
+
+-------------------------------------------------------------------
+Tue May 26 10:35:59 UTC 2015 - dgutu@suse.com
+
+- Added PowerPC architectures to spec file
+
+-------------------------------------------------------------------
+Wed Apr 22 13:09:26 UTC 2015 - jengelh@inai.de
+
+- remove --with-pic, it is implicit for shared libraries anyway
+  (and we do not build static libraries). Use %_smp_mflags for
+  parallel build.
+
+-------------------------------------------------------------------
+Mon Apr 20 19:14:56 CEST 2015 - sbrabec@suse.cz
+
+- Add upstream fixes:
+  * Update NEWS (libusb-compat-update-news.patch).
+  * Replace atexit() by library destructor
+    (libusb-compat-revert-atexit.patch,
+    libusb-compat-add-destructor.patch).
+- Hide libusb-1.0 symbols to prevent symbol clash
+  (libusb-compat-hide-libusb-1_0.patch, boo#596411).
+
+-------------------------------------------------------------------
+Tue Jan 28 20:26:04 CET 2014 - sbrabec@suse.cz
+
+- New upstream, new home page.
+- Update to version 0.1.5:
+  * devel package fixes
+  * memory leak at exit fix
+  * for more see ChangeLog
+- Add libusb-compat.rpmlintrc.
+
+-------------------------------------------------------------------
+Mon Apr 15 14:37:55 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Sat Feb  2 18:52:15 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Thu Apr 26 20:30:02 CEST 2012 - sbrabec@suse.cz
+
+- Update to version 0.1.4:
+  * Fix usb_*_write() prototypes.
+  * Fix usb_detach_kernel_driver_np() error mapping
+    (libusb#42, bnc#683307).
+
+-------------------------------------------------------------------
+Wed Apr  4 17:33:15 CEST 2012 - sbrabec@suse.cz
+
+- Properly emulate error codes of usb_detach_kernel_driver_np()
+  (bnc#683307).
+
+-------------------------------------------------------------------
+Sun Feb 12 15:15:17 UTC 2012 - crrodriguez@opensuse.org
+
+- Libraries back to %{_libdir}, /usr merge project 
+
+-------------------------------------------------------------------
+Sun Nov 20 06:25:24 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Jun  1 10:54:34 UTC 2011 - seife+obs@b1-systems.com
+
+- move libusb-compat from /usr to / to make it usable for other
+  packages and work around rpmlint stupidity
+
+-------------------------------------------------------------------
+Tue Dec 15 01:55:35 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Thu Aug  6 18:58:58 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 0.1.3:
+  * improve libusb-config for cross-compiling
+- Removed support for parallel installation with libusb-0.1.
+
+-------------------------------------------------------------------
+Wed Jul  8 17:35:28 CEST 2009 - sbrabec@suse.cz
+
+- Set shared library package version to 0.1.13 to be higher than
+  the last libusb0 (bnc#519311#c8).
+
+-------------------------------------------------------------------
+Mon Jun 29 15:45:25 CEST 2009 - sbrabec@suse.cz
+
+- Fixed build with the latest autotools.
+
+-------------------------------------------------------------------
+Mon Jun 22 12:08:05 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 0.1.2:
+  * handle libusb initialization failure
+
+-------------------------------------------------------------------
+Wed Jun 17 15:54:32 CEST 2009 - meissner@suse.de
+
+- Fixed crashes of libgphoto2 (and other usb_find_busses() and
+  usb_find_devices() users) when no USB device is in the system
+  (like in a chroot without /sys, or on s390 or similar).
+  bnc#432129 (again)
+
+-------------------------------------------------------------------
+Fri Jun  5 12:16:57 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 0.1.1:
+  * improvements to match libusb-0.1 endpoint addressing behaviour
+
+-------------------------------------------------------------------
+Fri Apr 17 11:17:22 CEST 2009 - sbrabec@suse.cz
+
+- Ensure use of read EP in usb_interrupt_read() (bnc#443861).
+
+-------------------------------------------------------------------
+Wed Apr 15 18:19:35 CEST 2009 - sbrabec@suse.cz
+
+- Fixed devel dependencies.
+
+-------------------------------------------------------------------
+Wed Apr 15 13:31:55 CEST 2009 - sbrabec@suse.cz
+
+- Worked around 'Duplicate License entries' breakage in Autobuild.
+
+-------------------------------------------------------------------
+Tue Apr 14 17:42:31 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 0.1.0:
+  * Bug fixes.
+  * Documentation of incompatibilities with libusb-0.1.
+- Implemented rpm build option FULLY_REPLACE_LIBUSB_0_1.
+- Another attempt to replace libusb-0.1 completely.
+
+-------------------------------------------------------------------
+Wed Nov 12 15:40:48 CET 2008 - sbrabec@suse.cz
+
+- Changed library soname to libusb-0.1 incompatible libusb-0.1.so.5
+  allowing to install both in paralel. (bnc#443861, works around
+  also bnc#432129 and bnc#439574)
+- Confllict with libusb-devel instead of obsoleting it.
+
+-------------------------------------------------------------------
+Wed Oct 22 17:05:31 CEST 2008 - sbrabec@suse.cz
+
+- Properly obsolete old implementation of the library (bnc#437768).
+
+-------------------------------------------------------------------
+Wed Oct  8 15:16:57 CEST 2008 - meissner@suse.de
+
+- handle case where usb_init() failed (ctx NULL), so
+  we do not crash. bnc#432129
+- added more NULL ptr checks, where older libusb were
+  more graceful and did not crash. bnc#432129
+
+-------------------------------------------------------------------
+Mon Oct  6 12:06:49 CEST 2008 - sbrabec@suse.cz
+
+- Added baselibs.conf (bnc#432304).
+
+-------------------------------------------------------------------
+Thu Sep 25 13:00:57 CEST 2008 - ro@suse.de
+
+- fix debug package requires 
+
+-------------------------------------------------------------------
+Wed Sep 10 14:32:59 CEST 2008 - sbrabec@suse.cz
+
+- New package providing compatibility layer for libusb.
+

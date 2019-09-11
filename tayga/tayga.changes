@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sat Sep 24 11:30:54 UTC 2016 - mardnh@gmx.de
+
+- specfile cleanup
+- add patch: tayga-obey-cflags.diff (build with proper CFLAGS)
+
+-------------------------------------------------------------------
+Mon Apr  1 17:05:13 UTC 2013 - mhrusecky@suse.com
+
+- systemd integration
+
+-------------------------------------------------------------------
+Sat Mar 30 13:43:02 UTC 2013 - mhrusecky@suse.com
+
+- Initial version of tayga package 
+

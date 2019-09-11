@@ -1,0 +1,10 @@
+--- bluemoon.c.orig	2014-05-21 14:25:41.000000000 +0200
++++ bluemoon.c	2014-12-14 08:53:36.687883630 +0100
+@@ -416,6 +416,7 @@
+     game_finished(deal_number);
+ 
+     die(0);
++    return 0;
+ }
+ 
+ /* blue.c ends here */

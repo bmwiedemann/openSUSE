@@ -1,0 +1,70 @@
+From 5f82066299cb3b9e41af3556337da30a8717de56 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <stefan.raspl@de.ibm.com>
+Date: Mon, 11 Dec 2017 12:25:19 +0100
+Subject: [PATCH 21/43] tools/kvm_stat: fix command line option '-g'
+
+Specifying a guest via '-g foo' always results in an error:
+  $ kvm_stat -g foo
+  Usage: kvm_stat [options]
+
+  kvm_stat: error: Error while searching for guest "foo", use "-p" to
+  specify a pid instead
+
+Reason is that Tui.get_pid_from_gname() is not static, as it is supposed
+to be.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Tested-by: Christian Borntraeger <borntraeger@de.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 19e8e54f4309eaa438237aa1973fe40c331903d4)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 179fe5c44701..9241f949af63 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -953,7 +953,8 @@ class Tui(object):
+             curses.nocbreak()
+             curses.endwin()
+ 
+-    def get_all_gnames(self):
++    @staticmethod
++    def get_all_gnames():
+         """Returns a list of (pid, gname) tuples of all running guests"""
+         res = []
+         try:
+@@ -966,7 +967,7 @@ class Tui(object):
+             # perform a sanity check before calling the more expensive
+             # function to possibly extract the guest name
+             if ' -name ' in line[1]:
+-                res.append((line[0], self.get_gname_from_pid(line[0])))
++                res.append((line[0], Tui.get_gname_from_pid(line[0])))
+         child.stdout.close()
+ 
+         return res
+@@ -987,7 +988,8 @@ class Tui(object):
+         except Exception:
+             self.screen.addstr(row + 1, 2, 'Not available')
+ 
+-    def get_pid_from_gname(self, gname):
++    @staticmethod
++    def get_pid_from_gname(gname):
+         """Fuzzy function to convert guest name to QEMU process pid.
+ 
+         Returns a list of potential pids, can be empty if no match found.
+@@ -995,7 +997,7 @@ class Tui(object):
+ 
+         """
+         pids = []
+-        for line in self.get_all_gnames():
++        for line in Tui.get_all_gnames():
+             if gname == line[1]:
+                 pids.append(int(line[0]))
+ 
+-- 
+2.12.3
+

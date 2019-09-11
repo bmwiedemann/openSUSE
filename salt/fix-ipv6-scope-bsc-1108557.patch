@@ -1,0 +1,164 @@
+From b6d47a2ca7f1bed902dfc6574e6fe91d3034aa29 Mon Sep 17 00:00:00 2001
+From: Bo Maryniuk <bo@suse.de>
+Date: Fri, 28 Sep 2018 15:22:33 +0200
+Subject: [PATCH] Fix IPv6 scope (bsc#1108557)
+
+Fix ipaddress imports
+
+Remove unused import
+
+Fix ipaddress import
+
+Fix unicode imports in compat
+
+Override standard IPv6Address class
+
+Check version via object
+
+Isolate Py2 and Py3 mode
+
+Add logging
+
+Add debugging to the ip_address method (py2 and py3)
+
+Remove multiple returns and add check for address syntax
+
+Remove unnecessary variable for import detection
+
+Remove duplicated code
+
+Remove unnecessary operator
+
+Remove multiple returns
+
+Use ternary operator instead
+
+Remove duplicated code
+
+Move docstrings to their native places
+
+Add real exception message
+
+Add logging to the ip_interface
+
+Add scope on str
+
+Lintfix: mute not called constructors
+
+Add extra detection for hexadecimal packed bytes on Python2. This cannot be detected with type comparison, because bytes == str and at the same time bytes != str if compatibility is not around
+
+Fix py2 case where the same class cannot initialise itself on Python2 via super.
+
+Simplify checking clause
+
+Do not use introspection for method swap
+
+Fix wrong type swap
+
+Add Py3.4 old implementation's fix
+
+Lintfix
+
+Lintfix refactor: remove duplicate returns as not needed
+
+Revert method remapping with pylint updates
+
+Remove unnecessary manipulation with IPv6 scope outside of the IPv6Address object instance
+
+Lintfix: W0611
+
+Reverse skipping tests: if no ipaddress
+---
+ salt/_compat.py | 74 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 74 insertions(+)
+
+diff --git a/salt/_compat.py b/salt/_compat.py
+index c10b82c0c2..8628833dcf 100644
+--- a/salt/_compat.py
++++ b/salt/_compat.py
+@@ -229,7 +229,81 @@ class IPv6InterfaceScoped(ipaddress.IPv6Interface, IPv6AddressScoped):
+         self.hostmask = self.network.hostmask
+ 
+ 
++def ip_address(address):
++    """Take an IP string/int and return an object of the correct type.
++
++    Args:
++        address: A string or integer, the IP address.  Either IPv4 or
++          IPv6 addresses may be supplied; integers less than 2**32 will
++          be considered to be IPv4 by default.
++
++    Returns:
++        An IPv4Address or IPv6Address object.
++
++    Raises:
++        ValueError: if the *address* passed isn't either a v4 or a v6
++          address
++
++    """
++    try:
++        return ipaddress.IPv4Address(address)
++    except (ipaddress.AddressValueError, ipaddress.NetmaskValueError) as err:
++        log.debug('Error while parsing IPv4 address: %s', address)
++        log.debug(err)
++
++    try:
++        return IPv6AddressScoped(address)
++    except (ipaddress.AddressValueError, ipaddress.NetmaskValueError) as err:
++        log.debug('Error while parsing IPv6 address: %s', address)
++        log.debug(err)
++
++    if isinstance(address, bytes):
++        raise ipaddress.AddressValueError('{} does not appear to be an IPv4 or IPv6 address. '
++                                          'Did you pass in a bytes (str in Python 2) instead '
++                                          'of a unicode object?'.format(repr(address)))
++
++    raise ValueError('{} does not appear to be an IPv4 or IPv6 address'.format(repr(address)))
++
++
++def ip_interface(address):
++    """Take an IP string/int and return an object of the correct type.
++
++    Args:
++        address: A string or integer, the IP address.  Either IPv4 or
++          IPv6 addresses may be supplied; integers less than 2**32 will
++          be considered to be IPv4 by default.
++
++    Returns:
++        An IPv4Interface or IPv6Interface object.
++
++    Raises:
++        ValueError: if the string passed isn't either a v4 or a v6
++          address.
++
++    Notes:
++        The IPv?Interface classes describe an Address on a particular
++        Network, so they're basically a combination of both the Address
++        and Network classes.
++
++    """
++    try:
++        return ipaddress.IPv4Interface(address)
++    except (ipaddress.AddressValueError, ipaddress.NetmaskValueError) as err:
++        log.debug('Error while getting IPv4 interface for address %s', address)
++        log.debug(err)
++
++    try:
++        return ipaddress.IPv6Interface(address)
++    except (ipaddress.AddressValueError, ipaddress.NetmaskValueError) as err:
++        log.debug('Error while getting IPv6 interface for address %s', address)
++        log.debug(err)
++
++    raise ValueError('{} does not appear to be an IPv4 or IPv6 interface'.format(address))
++
++
+ if ipaddress:
+     ipaddress.IPv6Address = IPv6AddressScoped
+     if sys.version_info.major == 2:
+         ipaddress.IPv6Interface = IPv6InterfaceScoped
++    ipaddress.ip_address = ip_address
++    ipaddress.ip_interface = ip_interface
+-- 
+2.20.1
+
+

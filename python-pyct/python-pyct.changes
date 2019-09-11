@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Sat Dec 22 03:45:56 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.4.6
+  * Tests were added to make sure the the commands in pyct.cmd are well documented
+  * The --use-test-data flag was added to fetch-data and examples to allow the use of smaller datasets in regular examples. To use this feature place a smaller dataset with the same name in your project's examples/data/.data_stubs/. See pyviz/pyviz#128 for first use of this feature.
+  * clean-data was added to delete small test data files masquerading as real ones.
+
+-------------------------------------------------------------------
+Fri Oct 26 19:58:23 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

@@ -1,0 +1,48 @@
+--- src/gedlib/translat.c
++++ src/gedlib/translat.c	2007-08-01 14:23:38.854791947 +0200
+@@ -265,7 +265,7 @@ translate_write(XLAT ttm, STRING in, INT
+ 		/* translate & write out current line */
+ 		/* TODO (2002-11-28): modify to use dynamic string */
+ 		translate_string(ttm, intmp, out, MAXLINELEN+2);
+-		if (out && strlen(out)) {
++		if ((out[0] != '\0') && strlen(out)) {
+ 			outbytes = fwrite(out, 1, strlen(out), ofp);
+ 			if (!outbytes || ferror(ofp)) {
+ 				crashlog("outbytes=%d, errno=%d, outstr=%s"
+--- src/liflines/ask.c
++++ src/liflines/ask.c	2007-08-01 14:24:54.170811027 +0200
+@@ -178,10 +178,11 @@ ask_for_file_worker (STRING mode,
+ 		rtn = ask_for_output_filename(ttl, path, prompt, fname, sizeof(fname));
+ 	
+ 	if (pfname) {
+-		if (fname && fname[0])
++		free(*pfname);
++		if (fname[0] != '\0')
+ 			*pfname = strdup(fname);
+ 		else
+-			*pfname = 0;
++			*pfname = (char*)0;
+ 	}
+ 	if (pfullpath) *pfullpath = 0; /* 0 indicates we didn't try to open */
+ 
+@@ -297,7 +298,7 @@ ask_for_indiseq (CNSTRING ttl, char ctyp
+ 		*prc = RC_DONE;
+ 		if (!ask_for_string(ttl, _(qSidbrws), name, sizeof(name)))
+ 			return NULL;
+-		if (!name || *name == 0) return NULL;
++		if (name[0] == '\0') return NULL;
+ 		*prc = RC_NOSELECT;
+ 		if (eqstr(name, "@")) {
+ 			seq = invoke_search_menu();
+@@ -504,9 +505,9 @@ ask_for_record (STRING idstr, INT letr)
+ STRING
+ ask_for_record_key (STRING title, STRING prompt)
+ {
+-	char answer[MAXPATHLEN];
++	char answer[MAXPATHLEN] = {'\0'};
+ 	if (!ask_for_string(title, prompt, answer, sizeof(answer)))
+ 		return NULL;
+-	if (!answer) return NULL;
++	if (answer[0] == '\0') return NULL;
+ 	return strsave(answer);
+ }

@@ -1,0 +1,13 @@
+[Unit]
+Description=Daemon to start Shadowsocks-libev-client
+Wants=network-online.target
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/shadowsocks-libev-client.pid
+ExecStart=/usr/bin/ss-local -c /etc/shadowsocks/shadowsocks-libev-config.json -f /var/run/shadowsocks-libev-client.pid -u --fast-open
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

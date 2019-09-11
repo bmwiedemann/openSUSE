@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=calibre
+GenericName=Ebook reader
+Comment=Ebook reader
+TryExec=calibre
+Exec=calibre %F
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=calibre
+Categories=Office;Viewer

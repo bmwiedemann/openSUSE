@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<param>
+  <image>obsrepositories:/suse/sle15#15.1</image>
+  <name>ses/6/ceph/ceph</name>
+  <prefix>com.suse.ses</prefix>
+  <title>SUSE Enterprise Storage 6.0</title>
+  <url>https://registry.suse.com/ses/6/ceph/ceph:%PKG_VERSION%</url>
+  <reference>ses/6/ceph/ceph:%PKG_VERSION%</reference>
+  <labels>
+  	<label>
+  		<name>com.suse.ses.version</name>
+  		<value>6.0</value>
+  	</label>
+  	<label>
+  		<name>com.suse.ses.url</name>
+  		<value>https://www.suse.com/solutions/software-defined-storage/</value>
+  	</label>
+  	<label>
+  		<name>com.suse.ceph.version</name>
+  		<value>%PKG_VERSION%</value>
+  	</label>
+  	<label>
+  		<name>com.suse.ceph.url</name>
+  		<value>https://ceph.com/</value>
+  	</label>
+  	<label>
+  		<name>com.suse.rook.created</name>
+  		<value>%BUILDTIME%</value>
+  	</label>
+  </labels>
+</param>

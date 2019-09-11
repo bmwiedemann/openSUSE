@@ -1,0 +1,59 @@
+--- a/lib/plugins/signon-plugins-common/signon-plugins-common.pc.in	2016-06-07 16:49:40.000000000 +0200
++++ b/lib/plugins/signon-plugins-common/signon-plugins-common.pc.in	2017-11-03 01:39:51.521974716 +0100
+@@ -6,5 +6,5 @@
+ Name: signon-plugins-common
+ Description: SignonPluginsCommon
+ Version: $$PROJECT_VERSION
+-Libs.private: -L/usr/lib -lQt5Core
++Libs.private: -L/usr/@LIB@ -lQt5Core
+ Cflags:  -I${includedir}/signon-plugins -I${includedir}/signon-plugins/SignOn
+--- a/lib/plugins/signon-plugins.pc.in	2016-06-07 16:49:40.000000000 +0200
++++ b/lib/plugins/signon-plugins.pc.in	2017-11-03 01:40:40.977893613 +0100
+@@ -8,6 +8,6 @@
+ Description: SignonPlugins
+ Version: $$PROJECT_VERSION
+ Requires: $${LIBSIGNON}
+-Libs.private: -L/usr/lib -lQt5Core
++Libs.private: -L/usr/@LIB@ -lQt5Core
+ Cflags:  -I${includedir}/signon-plugins -I${includedir}/signon-plugins/SignOn
+ Libs: -lsignon-plugins
+--- a/src/plugins/example/exampleplugin.pro	2016-06-07 16:49:40.000000000 +0200
++++ b/src/plugins/example/exampleplugin.pro	2017-11-03 01:42:49.289682597 +0100
+@@ -1,7 +1,7 @@
+ 
+ TEMPLATE = lib
+ TARGET = exampleplugin
+-DESTDIR = lib/signon
++DESTDIR = @LIB@/signon
+ QT += core
+ 
+ CONFIG += plugin \
+@@ -21,5 +21,5 @@
+ QMAKE_CLEAN += libexample.so
+ headers.files = $$HEADERS
+ 
+-target.path  = $${INSTALL_PREFIX}/lib/signon
++target.path  = $${INSTALL_PREFIX}/@LIB@/signon
+ INSTALLS = target
+--- a/src/remotepluginprocess/remotepluginprocess.h	2016-06-07 16:49:40.000000000 +0200
++++ b/src/remotepluginprocess/remotepluginprocess.h	2017-11-03 01:46:11.549348292 +0100
+@@ -48,7 +48,7 @@
+ }
+ 
+ #ifndef SIGNOND_PLUGINS_DIR
+-      #define SIGNOND_PLUGINS_DIR "/usr/lib/signon"
++      #define SIGNOND_PLUGINS_DIR "/usr/@LIB@/signon"
+ #endif
+ 
+ #ifndef SIGNON_PLUGIN_PREFIX
+--- a/src/signond/signondaemon.h	2016-06-07 16:49:40.000000000 +0200
++++ b/src/signond/signondaemon.h	2017-11-03 01:46:37.009306068 +0100
+@@ -38,7 +38,7 @@
+ #include "credentialsaccessmanager.h"
+ 
+ #ifndef SIGNOND_PLUGINS_DIR
+-    #define SIGNOND_PLUGINS_DIR "/usr/lib/signon"
++    #define SIGNOND_PLUGINS_DIR "/usr/@LIB@/signon"
+ #endif
+ 
+ #ifndef SIGNOND_PLUGIN_PREFIX

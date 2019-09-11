@@ -1,0 +1,27 @@
+---
+ config.mk |    5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+Index: genwqe-user-4.0.18/config.mk
+===================================================================
+--- genwqe-user-4.0.18.orig/config.mk
++++ genwqe-user-4.0.18/config.mk
+@@ -19,7 +19,7 @@
+ #   V=1 means brief output
+ #   V=2 means full output
+ #
+-V		?= 1
++V		?= 2
+ CC		= $(CROSS)gcc
+ AS		= $(CROSS)as
+ LD		= $(CROSS)ld
+@@ -69,8 +69,7 @@ MAJOR_VERS=$(shell echo $(VERSION) | cut
+ 
+ PLATFORM ?= $(shell uname -i)
+ 
+-CFLAGS ?= -W -Wall -Werror -Wwrite-strings -Wextra -O2 -g \
+-	-Wmissing-prototypes # -Wstrict-prototypes -Warray-bounds
++CFLAGS ?= $(RPM_OPT_FLAGS)
+ CFLAGS += -DGIT_VERSION=\"$(VERSION)\" \
+ 	-I. -I../include -I../include/linux/uapi -D_GNU_SOURCE=1
+ 

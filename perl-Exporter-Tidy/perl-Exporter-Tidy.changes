@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Sat Feb  7 07:21:43 UTC 2015 - coolo@suse.com
+
+- updated to 0.08
+  - README updated to reflect license change.
+
+-------------------------------------------------------------------
+Wed Dec  7 13:19:06 UTC 2011 - coolo@suse.com
+
+- rewrite license field for public domain
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:13 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:54 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:35 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun May 23 16:57:18 UTC 2010 - coolo@novell.com
+
+- do not build noarch
+
+-------------------------------------------------------------------
+Fri Jan 29 23:39:21 UTC 2010 - larry+opensuse@l2g.to
+
+- Some rewriting of the spec file to follow SUSE packaging
+  conventions better
+
+-------------------------------------------------------------------
+Mon Jan 25 15:10:10 CET 2010 - anicka@suse.cz
+
+- cleaned Requires 
+

@@ -1,0 +1,62 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: Fix a python exception in crypto functions
+
+Fix an exception being raised because C code in crypto functions can't be passed a <class 'str'> object
+as key (see https://github.com/pybind/pybind11/issues/1335 for a similar error)
+
+2018-10-03 16:44:20,411: ERROR        flask.app:        Object type <class 'str'> cannot be passed to C code
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site-packages/pgadmin4-web/pgadmin/utils/driver/psycopg2/connection.py", line 258, in connect
+    password = decrypt(encpass, user.password)
+  File "/usr/lib/python3.6/site-packages/pgadmin4-web/pgadmin/utils/crypto.py", line 66, in decrypt
+    cipher = AES.new(pad(key), AES.MODE_CFB, iv)
+  File "/usr/lib64/python3.6/site-packages/Crypto/Cipher/AES.py", line 206, in new
+    return _create_cipher(sys.modules[__name__], key, mode, *args, **kwargs)
+  File "/usr/lib64/python3.6/site-packages/Crypto/Cipher/__init__.py", line 79, in _create_cipher
+    return modes[mode](factory, **kwargs)
+  File "/usr/lib64/python3.6/site-packages/Crypto/Cipher/_mode_cfb.py", line 230, in _create_cfb_cipher
+    cipher_state = factory._create_base_cipher(kwargs)
+  File "/usr/lib64/python3.6/site-packages/Crypto/Cipher/AES.py", line 102, in _create_base_cipher
+    result = start_operation(c_uint8_ptr(key),
+  File "/usr/lib64/python3.6/site-packages/Crypto/Util/_raw_api.py", line 109, in c_uint8_ptr
+    raise TypeError("Object type %s cannot be passed to C code" % type(data))
+TypeError: Object type <class 'str'> cannot be passed to C code
+
+
+Index: pgadmin4-4.2/web/pgadmin/utils/crypto.py
+===================================================================
+--- pgadmin4-4.2.orig/web/pgadmin/utils/crypto.py
++++ pgadmin4-4.2/web/pgadmin/utils/crypto.py
+@@ -26,6 +26,12 @@ padding_string = b'}'
+ iv_size = AES.block_size // 8
+ 
+ 
++def to_CStringCompatible(string):
++    if isinstance(string, str):
++        return string.encode('utf-8')
++    return string
++
++
+ def encrypt(plaintext, key):
+     """
+     Encrypt the plaintext with AES method.
+@@ -35,6 +41,9 @@ def encrypt(plaintext, key):
+         key       -- Key for encryption.
+     """
+ 
++    plaintext = to_CStringCompatible(plaintext)
++    key = to_CStringCompatible(key)
++
+     iv = os.urandom(iv_size)
+     cipher = Cipher(AES(pad(key)), CFB8(iv), default_backend())
+     encryptor = cipher.encryptor()
+@@ -57,6 +66,9 @@ def decrypt(ciphertext, key):
+         key        -- key to decrypt the encrypted string.
+     """
+ 
++    ciphertext = to_CStringCompatible(ciphertext)
++    key = to_CStringCompatible(key)
++
+     ciphertext = base64.b64decode(ciphertext)
+     iv = ciphertext[:iv_size]
+ 

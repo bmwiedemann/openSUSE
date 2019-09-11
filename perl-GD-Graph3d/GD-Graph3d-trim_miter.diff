@@ -1,0 +1,125 @@
+--- GD-Graph3d-0.63/lib/GD/Graph/lines3d.pm.orig	2002-12-06 21:14:55.000000000 +0100
++++ GD-Graph3d-0.63/lib/GD/Graph/lines3d.pm	2005-03-03 16:08:02.570748909 +0100
+@@ -47,6 +47,7 @@
+ 	# The depth of the line in their extrusion
+ 
+ 	line_depth		=> 10,
++	trim_miter		=> 0,
+ );
+ 
+ sub initialise()
+@@ -83,6 +84,12 @@
+ 			delete $args{$_};
+ 			next;
+ 		};
++		/^trim_miter$/ and do 
++		{
++			$s->{trim_miter} = $args{$_};
++			delete $args{$_};
++			next;
++		};
+ 	}
+ 
+ 	return $s->SUPER::set(%args);
+@@ -238,7 +245,7 @@
+ 			} # end if
+ 			
+ 			# Draw the line segment
+-			$self->draw_line( $points_cache[$i - 1][$j], 
++			my $poly_style = $self->draw_line( $points_cache[$i - 1][$j], 
+ 			                  $points_cache[$i][$j], 
+ 			                  $points_cache[$i + 1][$j], 
+ 			                  $type, 
+@@ -256,6 +263,12 @@
+ 				} else {
+ 					$g->filledPolygon( $poly, $dsci );
+ 				} # end if
++
++				# Hmm, the if's in draw_line are much more elaborated
++				# than the one above. A direct copy does not look too bad.
++				# FIXME, 2005-03-003, jw@suse.de
++				$g->filledPolygon( $poly, $poly_style );	
++
+ 				$g->polygon( $poly, $self->{fgci} );
+ 			} # end if
+ 
+@@ -426,6 +439,23 @@
+ 			$this->{face}[2] = ($bn - $bt) / ($mt - $mn);
+ 		} # end if
+ 		$this->{face}[3] = $mt * $this->{face}[2] + $bt;
++		if ($self->{trim_miter})
++		  {
++		    if (($mt > 1) && ($mn < -1))
++		      {
++		        $this->{trim23}[2] = $xe + $lwxoff + $lwyoff;
++			$this->{trim23}[3] = $ye + $lwyoff - $lwxoff;
++			$this->{face}[2]    = $xe + $lwxo2  - $lwyo2;
++			$this->{face}[3]    = $ye + $lwyo2  + $lwxo2;
++		      }
++		    elsif (($mt < -1) && ($mn > 1))
++		      {
++		        $this->{trim01}[0] = $xe - $lwxoff + $lwyoff;
++			$this->{trim01}[1] = $ye - $lwyoff - $lwxoff;
++			$this->{face}[0]   = $xe - $lwxo2  - $lwyo2;
++			$this->{face}[1]   = $ye - $lwyo2  + $lwxo2;
++		      }
++		  }
+ 	} # end if
+ 
+ 
+@@ -462,6 +492,19 @@
+ 	} # end if
+ 	$self->{graph}->polygon( $poly, $self->{fgci} );
+ 
++	if ($this->{trim01})
++	  {
++	    ## upper trim caps are always visible. lower trim caps never.
++	    $poly = new GD::Polygon;
++	    my $ld = $self->{line_depth};
++	    $poly->addPt($this->{trim01}[0]      , $this->{trim01}[1]      );
++	    $poly->addPt($this->{trim01}[0] + $ld, $this->{trim01}[1] - $ld);
++	    $poly->addPt($this->{face}[0]   + $ld, $this->{face}[1]   - $ld);
++	    $poly->addPt($this->{face}[0]        , $this->{face}[1]      );
++	    $self->{graph}->filledPolygon( $poly, $style );
++	    $self->{graph}->polygon( $poly, $self->{fgci} );
++	  }
++
+ 	# *** This paints dashed and dotted patterns on the faces of
+ 	#     the polygons. They don't look very good though. Would it
+ 	#     be better to extrude the style as well as the lines?
+@@ -472,13 +515,18 @@
+ 	# Make the face polygon
+ 	$poly = new GD::Polygon;
+ 	$poly->addPt( $prev->{face}[0], $prev->{face}[1] );
++	$poly->addPt( $this->{trim01}[0], $this->{trim01}[1] ) if $this->{trim01};
+ 	$poly->addPt( $this->{face}[0], $this->{face}[1] );
+ 	$poly->addPt( $this->{face}[2], $this->{face}[3] );
++	$poly->addPt( $this->{trim23}[2], $this->{trim23}[3] ) if $this->{trim23};
+ 	$poly->addPt( $prev->{face}[2], $prev->{face}[3] );
+ 
+ 	$self->{graph}->filledPolygon( $poly, $style );
+ 	$self->{graph}->polygon( $poly, $self->{fgci} );
+ 
++# $self->{graph}->arc($xe,$ye, 10,10, 0, 360, 1);		# show centers for debugging.
++	return $style;
++
+ } # end draw line
+ 
+ # ----------------------------------------------------------
+--- GD-Graph3d-0.63/lib/GD/Graph3d.pm.orig	2002-12-06 21:14:16.000000000 +0100
++++ GD-Graph3d-0.63/lib/GD/Graph3d.pm	2005-03-03 16:18:17.138907917 +0100
+@@ -106,6 +106,14 @@
+ users. You can disable the shading of lines and axes by specifiying a false 
+ value for this option.
+ 
++=item trim_miter
++
++By default this is set to '0'. If line_width is large, typical zig-zag data 
++lines may appear to exaggerated, due to the width of the lines.
++When trim_miter is set to '1', then acute-angled segments are cut back 
++(with an additional small rectangle on top) to extend only half a line_width 
++beyond the data points.
++
+ =back
+ 
+ =back

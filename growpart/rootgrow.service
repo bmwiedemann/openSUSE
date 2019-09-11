@@ -1,0 +1,11 @@
+[Unit]
+Description=Grow the root partition
+After=local-fs.target
+Wants=local-fs.target
+
+[Service]
+ExecStart=/usr/sbin/rootgrow
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target

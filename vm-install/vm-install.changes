@@ -1,0 +1,2199 @@
+-------------------------------------------------------------------
+Tue Jun 25 10:27:13 MDT 2019 - carnold@suse.com
+
+- bsc#1139355 - vm-install: The use of the 'builder' option in the
+  config file produces an error because it is deprecated 
+- Version 0.10.07
+
+-------------------------------------------------------------------
+Fri Feb  1 09:59:17 MST 2019 - carnold@suse.com
+
+- bsc#1123942 - [XEN][Build157.1] failed to open file
+  '/usr/lib/grub2/x86_64-xen/grub.xen during bootup PV guest
+- Version 0.10.06
+
+-------------------------------------------------------------------
+Tue Nov 27 10:38:28 MST 2018 - carnold@suse.com
+
+- Testing a virt-install bug revealed a problem in vm-install when
+  outputing an error message (bsc#1116990)
+- Version 0.10.05
+
+-------------------------------------------------------------------
+Mon Oct  8 13:53:44 MDT 2018 - carnold@suse.com
+
+- bsc#1111021 - yast2 virtualization: Failed to start virt-install
+  Fixed string encoding issue.
+- Version 0.10.04
+
+-------------------------------------------------------------------
+Tue Feb 20 14:23:01 MST 2018 - carnold@suse.com
+
+- fate#324167: vm-install: remove deps on udhcp
+- Version 0.10.03
+
+-------------------------------------------------------------------
+Mon Jan 29 15:02:25 MST 2018 - carnold@suse.com
+
+- A few miscellaneous python3 and Gtk3 fixes to GUI components.
+  bsc#1047602
+- Mount does not work for reiserfs on SLE15. Default to kernel-xen
+  and initrd-xen if the guest is sles10.
+- Version 0.10.02
+
+-------------------------------------------------------------------
+Fri Jan 26 15:42:26 MST 2018 - carnold@suse.com
+
+- Full conversion of source to python3 from python2. (bsc#1047602)
+- Graphical components now require Gtk3
+- Version 0.10.01
+
+-------------------------------------------------------------------
+Wed Oct 11 10:58:01 UTC 2017 - aginies@suse.com
+
+- remove udchp on SLE15 only
+
+-------------------------------------------------------------------
+Mon Oct  9 17:07:15 MDT 2017 - carnold@suse.com
+
+- PV PXE booting is broken under python 3 (bsc#1047602)
+- Version 0.9.04
+
+-------------------------------------------------------------------
+Thu Aug 31 16:01:36 MDT 2017 - carnold@suse.com
+
+- bsc#1056738 - vm-install: Can't install SLE15 PV guest on SLE11
+  SP4 host
+- Version 0.9.03
+
+-------------------------------------------------------------------
+Wed Aug  9 16:20:52 MDT 2017 - carnold@suse.com
+
+- fate#323639 Move bridge-utils to legacy
+- Version 0.9.02
+
+-------------------------------------------------------------------
+Thu Jul  6 16:49:18 MDT 2017 - carnold@suse.com
+
+- bsc#1047602 - vm-install: Fix sources to run on python 3
+- Version 0.9.01
+
+-------------------------------------------------------------------
+Mon Jun 19 10:39:48 MDT 2017 - carnold@suse.com
+
+- bsc#1024437 - vm-install interprets disk size incorrectly when
+  used as an option to the command
+- Version 0.8.67
+
+-------------------------------------------------------------------
+Tue May 16 08:30:35 MDT 2017 - carnold@suse.com
+
+- bsc#1039333 - vm-install: Invalid syntax error
+- Version 0.8.66
+
+-------------------------------------------------------------------
+Mon Apr 24 11:00:22 MDT 2017 - carnold@suse.com
+
+- bsc#1035779 - - vm-install: Add support for openSUSE15 and SLE15
+- Version 0.8.65
+
+-------------------------------------------------------------------
+Wed Apr 12 10:51:37 MDT 2017 - carnold@suse.com
+
+- bsc#1033845 - fix parsing the os-release file
+- Version 0.8.64
+
+-------------------------------------------------------------------
+Wed Mar 29 12:34:10 MDT 2017 - carnold@suse.com
+
+- bsc#1027106 - ISO based installations of Xen PV guests do not
+  automatically find the installation sources
+- Version 0.8.63
+
+-------------------------------------------------------------------
+Wed Mar 15 15:39:50 MDT 2017 - carnold@suse.com
+
+- Fix initializing the host installation source location
+- Version 0.8.62
+
+-------------------------------------------------------------------
+Tue Jan 31 16:37:43 MST 2017 - carnold@suse.com
+
+- bsc#978526 - text mode installation doesn't allow specifying
+  install source (revisited)
+- Version 0.8.61
+
+-------------------------------------------------------------------
+Thu Jan 19 11:36:58 MST 2017 - carnold@suse.com
+
+- bsc#1020616 - Insert the correct kernel flag for changing the
+  screen resolution of PV guests (it changed with the pvops kernel)
+- Update de.po language file
+- Version 0.8.60
+
+-------------------------------------------------------------------
+Wed Jan 18 15:42:36 MST 2017 - carnold@suse.com
+
+- bsc#1020751 - vm-install: exception thrown without explanation
+  when doing VM upgrade
+- Version 0.8.59
+
+-------------------------------------------------------------------
+Fri Nov 11 16:57:48 MST 2016 - carnold@suse.com
+
+- bsc#1004324 - sles12 install from sles11 hypervisor
+- Version 0.8.58
+
+-------------------------------------------------------------------
+Tue Aug 30 13:04:49 MDT 2016 - carnold@suse.com
+
+- bsc#989468 - vm-install does not support aarch64
+- Version 0.8.57
+
+-------------------------------------------------------------------
+Tue Aug 16 15:44:58 MDT 2016 - carnold@suse.com
+
+- bsc#984189 - vm-install: add updated language files
+- Version 0.8.56
+
+-------------------------------------------------------------------
+Wed Aug 10 10:59:48 MDT 2016 - carnold@suse.com
+
+- bsc#992780 - Upgrade of SLES11SP4 PV guest => SLES12SP1 does not
+  work with qcow2 disk device 
+- Version 0.8.55
+
+-------------------------------------------------------------------
+Thu Jun  9 15:35:43 MDT 2016 - carnold@suse.com
+
+- bsc#984189 - vm-install: add updated language files
+- Version 0.8.54
+
+-------------------------------------------------------------------
+Fri May 13 16:22:50 MDT 2016 - carnold@suse.com
+
+- fate#319328 - Add virsh console conf to KVM Guests
+- Version 0.8.53
+
+-------------------------------------------------------------------
+Wed May  4 11:11:26 MDT 2016 - carnold@suse.com
+
+- bsc#978526 - text mode installation doesn't allow specifying
+  install source
+- Version 0.8.52
+
+-------------------------------------------------------------------
+Wed Apr 20 13:12:36 MDT 2016 - carnold@suse.com
+
+- bsc#976500 - vm-install: failure due to incorrectly parsing the
+  output of sfdisk
+- Version 0.8.51
+
+-------------------------------------------------------------------
+Tue Apr 12 14:30:12 MDT 2016 - carnold@suse.com
+
+- bsc#974470 - The PV SLES-12-SP2 guest installation on xen(host
+  SLES-11-SP4) can not boot
+- Version 0.8.50
+
+-------------------------------------------------------------------
+Wed Mar 16 14:14:49 MDT 2016 - carnold@suse.com
+
+- Add support for Windows Server 2016
+- Version 0.8.49
+
+-------------------------------------------------------------------
+Thu Feb  4 16:37:55 MST 2016 - carnold@suse.com
+
+- Fix call to brctl on Tumbleweed
+- Version 0.8.48
+
+-------------------------------------------------------------------
+Wed Oct 28 14:53:20 MDT 2015 - carnold@suse.com
+
+- bsc#952235 - Error after closing vm window during installation.
+- Version 0.8.47
+
+-------------------------------------------------------------------
+Thu Oct  1 11:26:59 MDT 2015 - carnold@suse.com
+
+- Fix use of zypper when getting installation repos (bsc#947129)
+  This is a virt-manager bug that also effects vm-install
+- Fix host detection of openSUSE Leap
+- Updated language files
+- Version 0.8.46
+
+-------------------------------------------------------------------
+Wed Sep  9 09:53:47 MDT 2015 - carnold@suse.com
+
+- bsc#945066 - vm-install: Add support for openSUSE 42
+- Add support for openSUSE Tumbleweed
+- Version 0.8.45
+
+-------------------------------------------------------------------
+Thu Sep  3 15:56:21 UTC 2015 - dmueller@suse.com
+
+- enable build on aarch64, as virt-manager requires it (fate#318444)
+
+-------------------------------------------------------------------
+Fri Aug 21 12:54:34 MDT 2015 - carnold@suse.com
+
+- bnc#942763 - vm-install: Error occurs deploying VM "list indices
+  must be integers, not strings"
+- Version 0.8.44
+
+-------------------------------------------------------------------
+Wed Aug 19 13:13:17 MDT 2015 - carnold@suse.com
+
+- bsc#942409 - vm-install fails to load on s390 system, returns
+  "Error: A parameter is invalid or missing. (memoryMB)"
+- Fix getDom0InstallSource repo_url check
+- Version 0.8.43
+
+-------------------------------------------------------------------
+Mon Jun  8 14:08:14 MDT 2015 - carnold@suse.com
+
+- bsc#826425 - removed tap:cdrom as a supported protocol.
+- Version 0.8.42
+
+-------------------------------------------------------------------
+Fri May  1 13:42:42 MDT 2015 - carnold@suse.com
+
+- Add Windows 10 as a supported VM type. Split out windows 7 from
+  vista. 
+- Version 0.8.41
+
+-------------------------------------------------------------------
+Thu Apr 23 14:10:00 MDT 2015 - carnold@suse.com
+
+- bsc#928448 - Vm-install in text mode fails to use correct driver
+  for booting existing disk
+- Version 0.8.40
+
+-------------------------------------------------------------------
+Wed Feb  4 16:26:01 CET 2015 - carnold@suse.de
+
+- Updated language files 
+- Version 0.8.39
+
+-------------------------------------------------------------------
+Thu Jan 29 06:50:12 MST 2015 - cyliu@suse.com
+
+- bnc#915102 - vm-install is broken
+- Version 0.8.38
+
+-------------------------------------------------------------------
+Thu Jan 22 14:28:35 MST 2015 - carnold@suse.com
+
+- bnc#857916 - keymap option not passed to xen vm
+- Version 0.8.37
+
+-------------------------------------------------------------------
+Thu Jan 21 09:31:12 MST 2015 - carnold@suse.com
+
+- bnc#913744 - DomU upgrade from SLES 11 SP3 to SLES 12 using
+  installation source doesn't give you the option to upgrade
+- Version 0.8.36
+
+-------------------------------------------------------------------
+Mon Jan 19 17:25:32 MST 2015 - carnold@suse.com
+
+- Fix get_running_vms parsing for libvirt managed VMs.
+
+-------------------------------------------------------------------
+Thu Dec 11 12:26:18 MST 2014 - carnold@suse.com
+
+- Use grub.xen to boot os13.2 PV guests
+- Version 0.8.35
+
+-------------------------------------------------------------------
+Tue Nov  4 16:20:03 MST 2014 - carnold@suse.com
+
+- bnc#906248 - opensuse 13.2 i586 bit not installable as xen pv-guest
+- Add i686 arch for kernel/initrd lookup
+- Remove unused ia64 code
+- Version 0.8.34
+
+-------------------------------------------------------------------
+Tue Nov  4 16:20:03 MST 2014 - carnold@suse.com
+
+- bnc#886623 - vm-install: GtkWarning: IA__gtk_widget_event:
+  assertion 'WIDGET_REALIZED_FOR_EVENT (widget, event)' failed gtk.main() 
+- Version 0.8.33
+
+-------------------------------------------------------------------
+Wed Sep  3 15:32:11 MDT 2014 - carnold@suse.com
+
+- bnc#894948 - vm-install fails when kernel-default is installed
+  on paravirtual guests 
+- Updated language files
+- Version 0.8.32
+
+-------------------------------------------------------------------
+Mon Aug  4 16:46:58 MDT 2014 - carnold@suse.com
+
+- bnc#890302 - Vm-install gets a "'module' object has no attribute
+  'connection'" error
+- Version 0.8.31
+
+-------------------------------------------------------------------
+Wed Jul 23 10:33:58 MDT 2014 - carnold@suse.com
+
+- Updated language files
+- Version 0.8.30
+
+-------------------------------------------------------------------
+Thu Jul 21 18:22:45 MDT 2014 - carnold@suse.com
+
+- bnc#872034 - connection to fresh HVM guest lost after install
+- Version 0.8.29
+
+-------------------------------------------------------------------
+Thu Jul 18 12:17:15 MDT 2014 - carnold@suse.com
+
+- bnc#887993 - vm-install calculating available memory incorrectly
+- Updated language files
+- Version 0.8.28
+
+-------------------------------------------------------------------
+Thu Jul 07 14:57:11 MDT 2014 - carnold@suse.com
+
+- bnc#885967 - vm-install: missing separating '/' in default
+  virtual disk path
+- bnc#869026 - Build0198: Unable to complete install: 'XML error:
+  No PCI buses available'
+- Version 0.8.27
+
+-------------------------------------------------------------------
+Thu Jul 03 10:34:28 MDT 2014 - carnold@suse.com
+
+- Updated language file ru.po
+
+-------------------------------------------------------------------
+Mon Jun 30 10:33:44 MDT 2014 - carnold@suse.com
+
+- bnc#870174 - vm-install: Exception AttributeError: "'NoneType'
+  object has no attribute 'virDomainFree'"...
+- Version 0.8.26
+
+-------------------------------------------------------------------
+Fri Jun 27 10:07:25 MDT 2014 - carnold@suse.com
+
+- Add try/except blocks around xenstore-read to catch failures due
+  to a corrupt xenstore database
+- Updated language files
+
+-------------------------------------------------------------------
+Thu Jun 26 15:22:16 MDT 2014 - carnold@suse.com
+
+- Fix PV VMs starting correctly with no graphics specified
+- Fix rhel7 to install correctly. Default to text mode install
+  for Xen PV rhel7 because the kernel has no framebuffer driver
+
+-------------------------------------------------------------------
+Mon Jun 23 12:10:34 MDT 2014 - carnold@suse.com
+
+- bnc#883901 - sles 12 Xen beta 9 vm-install fails to pxe install
+  guest with error
+- KVM: Fix initializing the use_libvirt flag
+
+-------------------------------------------------------------------
+Mon Jun 11 21:44:34 MDT 2014 - carnold@suse.com
+
+- bnc#876337 - virt-v2v: Failed to retrieve volume information for...
+- Updated language files
+- Version 0.8.24
+
+-------------------------------------------------------------------
+Mon Jun  5 16:00:15 MDT 2014 - carnold@suse.com
+
+- bnc#881573 - kvm vm install does not report full system memory
+- Version 0.8.23
+
+-------------------------------------------------------------------
+Mon Jun  2 17:24:15 MDT 2014 - carnold@suse.com
+
+- Fix loading disk protocols for Xen when reading the
+  /etc/default/vm-install defaults file
+- Updated language files
+- Version 0.8.22
+
+-------------------------------------------------------------------
+Tue May 27 13:44:15 MDT 2014 - carnold@suse.com
+
+- Add temporary 'suse-diskcache-disable-flush' flag for Xen
+  installation performance
+- Version 0.8.21
+
+-------------------------------------------------------------------
+Mon May 19 17:18:02 MDT 2014 - carnold@suse.com
+
+- Allow the backend type of 'tap' to be specified thereby allowing
+  a different backend to be used besides qdisk
+- Version 0.8.20
+
+-------------------------------------------------------------------
+Thu May 15 11:09:02 MDT 2014 - carnold@suse.com
+
+- Fix running vm-install in the background
+- Version 0.8.19
+
+-------------------------------------------------------------------
+Wed May  7 17:29:02 MDT 2014 - carnold@suse.com
+
+- bnc#876340 - vm-install: unsupported configuration: unknown disk
+  type 'tap2' 
+- Version 0.8.18
+
+-------------------------------------------------------------------
+Fri May  2 12:07:02 MDT 2014 - carnold@suse.com
+
+- Allow logging when vm-install is run in the background 
+- Version 0.8.17
+
+-------------------------------------------------------------------
+Fri May  2 08:18:31 MDT 2014 - carnold@suse.com
+
+- Fix invalid use of parameter in loopclean  
+- Version 0.8.16
+
+-------------------------------------------------------------------
+Wed Apr 30 21:12:14 MDT 2014 - carnold@suse.com
+
+- bnc#875416 - vm-install --use-xl: libxl: error: libxl.c:319:
+  libxl__domain_rename: domain with name "SLE-12-Server-Beta5"
+  already exists.
+- Updated language files
+
+-------------------------------------------------------------------
+Wed Apr 16 16:43:14 MDT 2014 - carnold@suse.com
+
+- s390x: Fix index error in parsing bridges 
+- Version 0.8.15
+
+-------------------------------------------------------------------
+Fri Apr  4 15:37:25 MDT 2014 - carnold@suse.com
+
+- Fix XML output format for Direct Kernel Boot of Xen HVM guests
+
+-------------------------------------------------------------------
+Tue Apr  3 07:55:32 MDT 2014 - carnold@suse.com
+
+- s390x: kernel name has changed for SLE12. Lookup correct name.
+- Version 0.8.14
+
+-------------------------------------------------------------------
+Tue Apr  1 14:15:32 MDT 2014 - carnold@suse.com
+
+- Fix unsupported protocol error 
+- Version 0.8.13
+
+-------------------------------------------------------------------
+Fri Mar 28 08:47:12 MDT 2014 - carnold@suse.com
+
+- Enable support for ppc64le 
+- Remove 'Requires: grub2-x86_64-xen'. Put Requires in xen-tools
+- Additional fix for bnc#870266
+- Version 0.8.12
+
+-------------------------------------------------------------------
+Fri Mar 28 08:00:48 MDT 2014 - carnold@suse.com
+
+- Requires for grub2-x86_64-xen is only valid for x86_64
+  vm-install.spec
+
+-------------------------------------------------------------------
+Wed Mar 27 12:24:37 MDT 2014 - carnold@suse.com
+
+- bnc#870266 - SLES 12 - Beta 3 - vm-install missing Operating
+  System Installation options after choosing LVM disk
+- Version 0.8.11
+
+-------------------------------------------------------------------
+Wed Mar 24 13:38:37 MDT 2014 - carnold@suse.com
+
+- Updated language files
+- Make Requires of grub2-x86_64-xen conditional
+- Version 0.8.10
+
+-------------------------------------------------------------------
+Wed Mar 20 10:26:37 MDT 2014 - carnold@suse.com
+
+- bnc#863821 - Xen unable to boot paravirtualized VMs installed
+  with btrfs
+  Boot sle12 VMs with pvgrub2 after initial installation
+- Version 0.8.9
+
+-------------------------------------------------------------------
+Wed Mar  5 13:28:37 MST 2014 - carnold@suse.com
+
+- Output to stdout instead of stderr when 'vm-install -O' is used 
+- Version 0.8.8
+
+-------------------------------------------------------------------
+Mon Mar  3 08:00:35 MST 2014 - carnold@suse.com
+
+- Add Requires for tftp(client) for PV PXE booting
+- Version 0.8.7
+
+-------------------------------------------------------------------
+Wed Feb 14 13:10:05 MST 2014 - carnold@suse.com
+
+- qemu-kvm is deprecated. Use qemu-system-x86_64 instead
+- Version 0.8.6
+
+-------------------------------------------------------------------
+Wed Feb 12 13:26:05 MST 2014 - carnold@suse.com
+
+- Increase default memory for SLE12 to 1024 Meg 
+- Version 0.8.5
+
+-------------------------------------------------------------------
+Wed Feb  5 15:31:32 MST 2014 - carnold@suse.com
+
+- Add support for RedHat Enterprise Linux 7
+- Version 0.8.4
+
+-------------------------------------------------------------------
+Wed Feb  5 15:31:32 MST 2014 - carnold@suse.com
+
+- The vm-install.desktop file will only be applied on older systems
+  that do not support virt-install as the default installer 
+  vm-install.spec
+
+-------------------------------------------------------------------
+Wed Jan 27 14:58:58 MST 2014 - carnold@suse.com
+
+- Various fixes when the --use-xl flag is used for creating VMs
+- Make Requires for qemu-tools vs virt-utils conditional based on
+  build target
+- Version 0.8.3
+
+-------------------------------------------------------------------
+Wed Jan 22 14:18:58 MST 2014 - carnold@suse.com
+
+- Add support for launching VMs using the 'xl' command with --use-xl
+  command line flag. Update the man page.
+- Fix broken libvirt_hypervisor.py wait_domain() method 
+- Raise error if connecting to libvirt fails
+- Version 0.8.2
+
+-------------------------------------------------------------------
+Thu Jan 07 14:25:13 MDT 2014 - carnold@suse.com
+
+- Translate vm-install.ycp to vm-install.rb
+  Added vm-install.rb
+  Dropped vm-install.ycp
+- Version 0.8.1
+
+-------------------------------------------------------------------
+Thu Jan 02 16:55:13 MDT 2014 - carnold@suse.com
+
+- Add support for sles12 and sled12
+- Add support in the upgrade feature to use the virsh XML format in
+  addition to the legacy xend sxp format
+- Version 0.8.0
+
+-------------------------------------------------------------------
+Thu Jan 02 16:55:13 MDT 2014 - carnold@suse.com
+
+- Add debug switch to allow starting VM's with 'xl'
+- Version 0.7.9
+
+-------------------------------------------------------------------
+Fri Nov  1 09:12:25 UTC 2013 - pastakhov@yandex.ru
+
+- Add requirement for dbus-1-python in spec file
+
+-------------------------------------------------------------------
+Thu Oct 24 17:19:13 MDT 2013 - carnold@suse.com
+
+- Updated language files
+
+-------------------------------------------------------------------
+Tue Oct 22 08:49:40 MDT 2013 - carnold@suse.com
+
+- Xen: Do not use domUloader to boot VMs.  It is deprecated.
+
+-------------------------------------------------------------------
+Thu Oct 17 15:18:40 MDT 2013 - carnold@suse.com
+
+- Default NetWare disks to non-sparse for performance reasons
+
+-------------------------------------------------------------------
+Wed Oct  2 15:52:12 MDT 2013 - carnold@suse.com
+
+- Updated language files
+
+-------------------------------------------------------------------
+Thu Sep 19 10:58:10 MDT 2013 - carnold@suse.com
+
+- bnc#825292 - Hamsta install virtual host does not create a disk
+  Works around libvirt internal client socket error
+- Version 0.7.8
+
+-------------------------------------------------------------------
+Fri Sep 13 12:48:49 MDT 2013 - carnold@suse.com
+
+- bnc#825292 - Hamsta install virtual host does not create a disk
+  Fixes PXE boot max memory less that initial memory
+- Version 0.7.7
+
+-------------------------------------------------------------------
+Thu Sep 12 14:11:23 MDT 2013 - carnold@suse.com
+
+- Updated language files
+
+-------------------------------------------------------------------
+Fri Sep  6 08:23:11 MDT 2013 - carnold@suse.com
+
+- bnc#838791 - [HP BCS SLES11 Bug]: NIC MAC OUI Changes for Xen
+  Guests
+- Updated language files 
+- Version 0.7.6
+
+-------------------------------------------------------------------
+Wed Aug 22 12:21:08 MDT 2013 - carnold@suse.com
+
+- fate#316268: Deprecate /etc/SuSE-release and use /etc/os-release
+- Version 0.7.5
+
+-------------------------------------------------------------------
+Wed Aug 14 10:47:08 MDT 2013 - carnold@suse.com
+
+- KVM: Fix incorrect location for keymaps 
+
+-------------------------------------------------------------------
+Tue Aug 13 09:22:59 MDT 2013 - carnold@suse.com
+
+- Updated language files 
+
+-------------------------------------------------------------------
+Tue Jul 30 15:02:20 MDT 2013 - carnold@suse.com
+
+- Minor syntax change to the desktop file
+  vm-install.desktop 
+- Version 0.7.4
+
+-------------------------------------------------------------------
+Wed Jul 24 16:09:42 MDT 2013 - carnold@suse.com
+
+- Add a 'conn' field in VMMCreate to help with propagating errors
+  from virt-manager correctly 
+
+-------------------------------------------------------------------
+Wed Jul 16 17:49:24 MDT 2013 - carnold@suse.com
+
+- Xen: Use qemu-system-i386 instead of legacy qemu-dm
+- Xen: Use 'qemu' driver when starting a VM throught libvirt
+
+-------------------------------------------------------------------
+Wed Jul 10 09:49:24 MDT 2013 - carnold@suse.com
+
+- Libxl: Xen 4.3 does not want a path on the bootloader field
+  in the configuration file (pygrub) 
+- Libxl: Xen 4.3 for HVM guests does not need a device_model or
+  kernel line pointing to hvmloader in the config file. 
+- Version 0.7.3
+
+-------------------------------------------------------------------
+Wed Jun 12 10:48:05 MDT 2013 - carnold@suse.com
+
+- Add openSUSE 13 as a supported platform
+- Version 0.7.2
+
+-------------------------------------------------------------------
+Thu Jun 07 14:41:18 MDT 2013 - carnold@suse.com
+
+- Fix get_keymap using a xend method that may no longer be present
+- Version 0.7.1
+
+-------------------------------------------------------------------
+Thu Jun  6 15:38:44 MDT 2013 - carnold@suse.com
+
+- Replace virt-utils dependency with qemu-tools
+- Remove libvirt dependency and only keep libvirt-python 
+- Check for the existence of qemu-kvm else fallback to just qemu
+
+-------------------------------------------------------------------
+Thu May 30 13:41:18 MDT 2013 - carnold@suse.com
+
+- bnc#820885 - virt-manager Xen VM install fails due to "No kernel
+  was found." message 
+- Fix instances where xm is used when xl should be.
+- Version 0.7.0
+
+-------------------------------------------------------------------
+Tue May 28 11:16:11 MDT 2013 - carnold@suse.com
+
+- bnc#818222 - CPU & RAM limitations of KVM and associated tools
+
+-------------------------------------------------------------------
+Thu May 16 17:44:18 MDT 2013 - carnold@suse.com
+
+- bnc#820083 - Trying to call vm-install from VNC on s390x results
+  in "/usr/bin/xterm: Can't execvp xm: No such file or directory"
+- bnc#820085 - ncurses vm-install on s390x fails with "Error: XML
+  error: No PCI buses available"
+- An additional fix for bnc#818077
+- Version 0.6.23
+
+-------------------------------------------------------------------
+Mon May  6 16:35:39 MDT 2013 - carnold@suse.com
+
+- bnc#818079 - Initial reboot after phase 1 of installation fails
+
+-------------------------------------------------------------------
+Fri May  3 14:05:40 MDT 2013 - carnold@suse.com
+
+- bnc#818075 - virt-manager unable to set up macvtap interface on
+  s390x
+- bnc#818077 - macvtap device must be set up outside of
+  virt-manager before it can be chosen during install
+- Updated language files
+- Version 0.6.18
+
+-------------------------------------------------------------------
+Mon Apr 22 11:26:38 MDT 2013 - carnold@suse.com
+
+- bnc#812626 - Virt-Install prepends string causing error when
+  pointing to ISO 
+- Version 0.6.17
+
+-------------------------------------------------------------------
+Mon Mar 18 14:17:53 MDT 2013 - carnold@suse.com
+
+- bnc#809464 - vm-install fails when selecting PXE as the boot
+  method with PV guest - SLES11SP3 Beta2
+
+-------------------------------------------------------------------
+Thu Feb 21 17:15:22 MST 2013 - carnold@suse.com
+
+- Updated language files 
+- Version 0.6.16
+
+-------------------------------------------------------------------
+Thu Feb 14 13:33:17 MST 2013 - carnold@suse.com
+
+- Add requirement for usbutils in spec file so lsusb may be used.
+
+-------------------------------------------------------------------
+Thu Feb 14 09:18:39 MST 2013 - carnold@suse.com
+
+- bnc#801481 - vm-install requires tftp and so conflicts with atftp 
+  vm-install.spec
+
+-------------------------------------------------------------------
+Fri Feb  1 14:33:55 MST 2013 - carnold@suse.com
+
+- Fate#313570: Support PCI passthrough bind and unbind in libvirt
+  Xen driver
+  This change allows the 'Managed' toggle to be set for Xen PCI
+  passthrough devices
+- Version 0.6.14
+
+-------------------------------------------------------------------
+Tue Jan 29 16:51:28 MST 2013 - carnold@suse.com
+
+- Xen: In VMNetWare.py, xnloader should be a conditional import.
+  Also fix a syntax error calling patch_netware_loader.
+- Updated language files
+
+-------------------------------------------------------------------
+Thu Jan 17 14:13:52 MST 2013 - carnold@novell.com
+
+- bnc#793717 - NetWare will not boot on Xen 4.2
+
+-------------------------------------------------------------------
+Wed Jan  2 14:12:13 MST 2013 - carnold@novell.com
+
+- Enable vm-install to be built for s390x
+- Updated language files
+
+-------------------------------------------------------------------
+Wed Dec 12 10:59:41 MST 2012 - carnold@novell.com
+
+- Xen: Fix incorrect XML for network device model 
+
+-------------------------------------------------------------------
+Tue Dec 11 15:16:02 MST 2012 - carnold@novell.com
+
+- Xen: Fix incorrect XML for boot device when PXE is selected
+- Version 0.6.12
+
+-------------------------------------------------------------------
+Thu Nov  8 15:57:59 MST 2012 - carnold@novell.com
+
+- Xen: Fixed XML data when there is no initrd (NetWare)
+
+-------------------------------------------------------------------
+Wed Nov  7 15:46:52 MST 2012 - carnold@novell.com
+
+- Xen: Fix bootloader and bootloader_args generated xml output for
+  libvirt compatibility
+
+-------------------------------------------------------------------
+Tue Oct 04 13:24:07 MDT 2012 - carnold@novell.com
+
+- KVM: Modify the defaults for installing NetWare on KVM
+- KVM: Fix bug not allowing vesa graphics selection for guest
+- Version 0.6.11
+
+-------------------------------------------------------------------
+Tue Sep 11 15:24:07 MDT 2012 - carnold@novell.com
+
+- bnc#779494 - SM wont install on KVM/Virt-Manager
+
+-------------------------------------------------------------------
+Mon Sep 10 10:58:05 MDT 2012 - carnold@novell.com
+
+- bnc#779280 - vm-install doesn't honour / correctly document disk
+  options via --disk 
+- Version 0.6.10
+
+-------------------------------------------------------------------
+Tue Sep  4 15:02:41 MDT 2012 - carnold@novell.com
+
+- Change documentation link to suse.com
+
+-------------------------------------------------------------------
+Wed Aug 22 09:30:08 MDT 2012 - carnold@novell.com
+
+- Add for support Open Enterprise Server 11
+- Add support for Windows 8 and Windows Server 2012
+- Add support for Ubuntu 12 (Precise Pangolin)
+- Version 0.6.9
+
+-------------------------------------------------------------------
+Fri Aug 17 15:54:43 MDT 2012 - carnold@novell.com
+
+- bnc#776300 - vm-install does not pass --extra-args in --upgrade
+  mode
+- Version 0.6.8
+
+-------------------------------------------------------------------
+Wed Aug  8 15:34:19 MDT 2012 - carnold@novell.com
+
+- Add a screen resolution option for newer Suse PV VMs
+- Updated language files
+- Version 0.6.7
+
+-------------------------------------------------------------------
+Tue Aug  7 16:08:40 MDT 2012 - carnold@novell.com
+
+- Add support for selecting a host device for PCI/USB passthrough 
+  at VM install time (see reference bnc#768340).
+- Version 0.6.6
+
+-------------------------------------------------------------------
+Thu Jun 28 14:04:03 MDT 2012 - carnold@novell.com
+
+- Add support for defaults file for setting customization
+  variables 
+- Version 0.6.5
+
+-------------------------------------------------------------------
+Fri Jun  8 15:06:54 MDT 2012 - carnold@novell.com
+
+- vmdisks: xm block_attach can return before the hotplugging is 
+  actually complete causing later failure in bootsector check.
+
+-------------------------------------------------------------------
+Thu Jun  7 10:49:17 MDT 2012 - carnold@novell.com
+
+- bnc#762963 - ReaR: Unable to recover a paravirtualized XEN guest
+  vminstall-rear-support.patch
+- Version 0.6.4
+
+-------------------------------------------------------------------
+Wed May  9 10:28:17 MDT 2012 - carnold@novell.com
+
+- bnc#754906 - virt-manager is not allowing to upgrade oes11 to 
+  oes11sp1 machine 
+
+-------------------------------------------------------------------
+Tue May  8 15:32:34 MDT 2012 - carnold@novell.com
+
+- bnc#761142 - vm-install fails to create its new VM: bogus "Not
+  enough space on device" message 
+
+-------------------------------------------------------------------
+Thu May  3 13:44:36 MDT 2012 - carnold@novell.com
+
+- bnc#760557 - Error: Two of the virtual disks have conflicting
+  virtual names or physical devices
+
+-------------------------------------------------------------------
+Wed May  2 10:39:47 MDT 2012 - carnold@novell.com
+
+- bnc#760023 - Can't upgrade an OES 2 (64-bit) XEN Guest Server to
+  OES 11
+
+-------------------------------------------------------------------
+Mon Apr 23 10:53:41 MDT 2012 - carnold@novell.com
+
+- Updated numerous language files 
+
+-------------------------------------------------------------------
+Thu Apr 19 15:07:57 MDT 2012 - carnold@novell.com
+
+- bnc#757346 - XEN guest OS installation (SLES 11 SP2 guest) fails
+  on SLED 11 SP2
+
+-------------------------------------------------------------------
+Tue Apr  3 14:13:04 MDT 2012 - carnold@novell.com
+
+- Add Windows 8 as an operating system to install 
+- Add Ubuntu 12 as an operating system to install 
+
+-------------------------------------------------------------------
+Wed Mar 28 09:26:36 MDT 2012 - carnold@novell.com
+
+- Add 'Random' as a translatable string. 
+
+-------------------------------------------------------------------
+Wed Feb 29 10:15:34 MST 2012 - carnold@novell.com
+
+- KVM: Add 'unsafe' and 'directsync' as options to cache_mode 
+  During installation set the target disk to 'unsafe' for
+  better performance.
+
+-------------------------------------------------------------------
+Tue Feb 28 14:19:33 MST 2012 - carnold@novell.com
+
+- bnc#725378 - vm-install requires tftp and so conflicts with atftp
+  Add support for using atftp in place of tftp
+- Catch unconfigured bridge error in VMPXE getServAddr. 
+- PV PXE booting requires kdumptool (kdump package) so add
+  dependency to spec file.
+- Update version to 0.6.0
+
+-------------------------------------------------------------------
+Wed Feb 15 17:06:41 MST 2012 - carnold@novell.com
+
+- bnc#742773 - vm-install shows bogus error msg without defined 
+  installation source 
+
+-------------------------------------------------------------------
+Mon Jan 30 13:09:57 MST 2012 - carnold@novell.com
+
+- bnc#743951 - vm-install windows too big
+
+-------------------------------------------------------------------
+Fri Dec  9 09:30:12 MST 2011 - carnold@novell.com
+
+- bnc#735670 - virt-manager client doesn't show disks, network 
+  adapters and OS details 
+
+-------------------------------------------------------------------
+Thu Dec  8 18:20:42 MST 2011 - carnold@novell.com
+
+- KVM: passing 'vd[a-t]' as the disk was broken because the internal
+  virtio flag was not being set.
+
+-------------------------------------------------------------------
+Wed Dec  7 10:00:11 MST 2011 - carnold@novell.com
+
+- Allow upgrading SLES11/SLED11 (ga/sp1 to sp2)
+
+-------------------------------------------------------------------
+Mon Dec  5 14:45:06 MST 2011 - carnold@novell.com
+
+- bnc#732986 - RHEL 6 on xen-pv fails to write to HD
+  Rhel6 has no Xen kernel.  It uses the pvops kernel.
+
+-------------------------------------------------------------------
+Tue Nov 29 15:32:44 MST 2011 - carnold@novell.com
+
+- Updated man page to include specifics on KVM 
+
+-------------------------------------------------------------------
+Fri Nov 11 10:35:29 MST 2011 - carnold@novell.com
+
+- bnc#729899 - Operating system chooser missing in command line 
+  version of vm-install 
+
+-------------------------------------------------------------------
+Wed Oct 26 14:41:12 MDT 2011 - carnold@novell.com
+
+- KVM: Fix for selecting autoyast file for installation 
+
+-------------------------------------------------------------------
+Mon Oct 24 09:38:07 MDT 2011 - carnold@novell.com
+
+- Updated many language files 
+
+-------------------------------------------------------------------
+Thu Oct 13 10:33:36 MDT 2011 - carnold@novell.com
+
+- KVM: Default to virtio drivers for sles10sp4
+
+-------------------------------------------------------------------
+Mon Oct 10 11:42:54 MDT 2011 - carnold@novell.com
+
+- Only make a configuration copy on a successful install 
+
+-------------------------------------------------------------------
+Wed Oct  5 15:57:27 MDT 2011 - carnold@novell.com
+
+- Update version string for compatibility with virt-manager 0.9.0 
+
+-------------------------------------------------------------------
+Thu Sep 27 16:01:43 MDT 2011 - carnold@novell.com
+
+- Fixes for supporting virt-manager 0.9.0
+  interface.py, gjob.py
+
+-------------------------------------------------------------------
+Thu Sep 15 15:04:43 MDT 2011 - carnold@novell.com
+
+- Updated language files
+  pt_BR.po hu.po ru.po pl.po it.po da.po fi.po 
+
+-------------------------------------------------------------------
+Tue Sep 13 15:25:48 MDT 2011 - carnold@novell.com
+
+- bnc#707994 - vm-install cannot install guest automatically 
+
+-------------------------------------------------------------------
+Mon Aug 29 09:17:43 MDT 2011 - carnold@novell.com
+
+- bnc#714599 - vm-install declared GPL-2.0+ but contains GPL-2.0 
+  files 
+  vm-install.spec
+
+-------------------------------------------------------------------
+Thu Aug 25 15:35:26 MDT 2011 - carnold@novell.com
+
+- Updated many language files
+
+-------------------------------------------------------------------
+Fri Aug 12 14:02:35 MDT 2011 - carnold@novell.com
+
+- Updated language files 
+  ca.po hu.po pt_BR.po ro.po
+
+-------------------------------------------------------------------
+Mon Jul 25 16:34:36 MDT 2011 - carnold@novell.com
+
+- bnc#707814 - Can not pxe boot SLE11 guest for installation under 
+  KVM 
+
+-------------------------------------------------------------------
+Fri Jul 22 11:10:21 MDT 2011 - carnold@novell.com
+
+- Add opensuse 12 as a valid OS type. 
+
+-------------------------------------------------------------------
+Mon Jul 18 14:54:40 MDT 2011 - carnold@novell.com
+
+- KVM: Add support for the qed disk format 
+
+-------------------------------------------------------------------
+Mon Jul 18 14:09:39 MDT 2011 - carnold@novell.com
+
+- KVM: Default to the e1000 nic for windows vista/7/2008 guests 
+
+-------------------------------------------------------------------
+Thu Jul 15 15:57:55 MDT 2011 - carnold@novell.com
+
+- KVM now supports the eepro100.  Add support in vm-install for 
+  this NIC.
+- KVM allows up to 64 vcpus.  Allow this maximum value in vm-install
+
+-------------------------------------------------------------------
+Thu Jul  7 13:37:55 MDT 2011 - carnold@novell.com
+
+- Update language file it.po 
+
+-------------------------------------------------------------------
+Fri Jul  1 14:08:34 MDT 2011 - carnold@novell.com
+
+- Fix bad syntax in call to append in disks.py
+
+-------------------------------------------------------------------
+Fri Jun 24 15:56:53 MDT 2011 - carnold@novell.com
+
+- Fix boot flag in configuration file for direct kernel boot in Xen 
+
+-------------------------------------------------------------------
+Mon Jun 13 14:23:19 MDT 2011 - carnold@novell.com
+
+- Updated language files. 
+  pt_BR.po es.po hu.po ru.po gl.po hr.po nl.po pl.po nn.po ja.po
+
+-------------------------------------------------------------------
+Mon Jun 13 11:28:12 MDT 2011 - carnold@novell.com
+
+- Fixes to the way the direct kernel boot option is handled
+
+-------------------------------------------------------------------
+Mon Jun  6 09:44:22 MDT 2011 - carnold@novell.com
+
+- Fix internal API containing incorrect number of arguments
+
+-------------------------------------------------------------------
+Mon May 23 10:48:46 MDT 2011 - carnold@novell.com
+
+- bnc#695318 - Xen/vm-install:failed to install new machine 
+
+-------------------------------------------------------------------
+Wed May 18 10:57:23 MDT 2011 - carnold@novell.com
+
+- Allow an optional PXE server IP to be passed with the command
+  line pxe flag. 
+
+-------------------------------------------------------------------
+Tue May 17 06:47:10 MDT 2011 - carnold@novell.com
+
+- Updated language files for hr.po, it.po and fi.po
+
+-------------------------------------------------------------------
+Wed May 11 11:23:06 MDT 2011 - carnold@novell.com
+
+- If Xend is not running but we are running on the Xen hypervisor, 
+  connect to libvirt for supporting libxl.
+
+-------------------------------------------------------------------
+Tue May 10 06:47:41 MDT 2011 - carnold@novell.com
+
+- bnc#692625 - virt-manager has problems to install guest from
+  multiple CD
+
+-------------------------------------------------------------------
+Fri Apr 29 12:08:01 MDT 2011 - carnold@novell.com
+
+- Added Ubuntu as an OS Installation choice 
+
+-------------------------------------------------------------------
+Thu Apr 28 11:03:50 MDT 2011 - carnold@novell.com
+
+- When PXE boot is selected as the installation source, make sure
+  an emulated nic is defined during the install of HVM guests.
+
+-------------------------------------------------------------------
+Tue Apr 26 14:34:15 MDT 2011 - carnold@novell.com
+
+- bnc#391188 - vm-install: Create virtual machine- link for VM 
+  information not working 
+
+-------------------------------------------------------------------
+Mon Apr 25 08:46:02 MDT 2011 - carnold@novell.com
+
+- bnc#688757 - SLED10SP4 fully virtualized in SLES10SP4 XEN -
+  kernel panic (also fails as a guest on sles11sp1)
+
+-------------------------------------------------------------------
+Wed Apr 20 14:57:43 MDT 2011 - carnold@novell.com
+
+- Modified summary screen to be more descriptive of current vm 
+  settings 
+
+-------------------------------------------------------------------
+Tue Apr 12 15:17:41 MDT 2011 - carnold@novell.com
+
+- Add KVM only 'Cache Mode' to the GUI.
+
+-------------------------------------------------------------------
+Wed Apr  6 10:54:22 MDT 2011 - carnold@novell.com
+
+- Upgrade the version strings to 0.5.1 
+
+-------------------------------------------------------------------
+Thu Mar 31 14:05:10 MDT 2011 - carnold@novell.com
+
+- fate##311393 - Enable audio device selection during HVM guest 
+  installation
+
+-------------------------------------------------------------------
+Mon Mar 17 17:19:52 MDT 2011 - carnold@novell.com
+
+- fate#311004: Support Direct Kernel Booting in KVM
+  This allows autoyast files and other boot options to be passed
+  at install time.  Network installs over ftp, http, or nfs can 
+  also be done similar to Xen paravirtualized guests.
+
+-------------------------------------------------------------------
+Thu Mar 17 13:48:13 MDT 2011 - carnold@novell.com
+
+- bnc#678152 - Xen: virt-manager: harmless block device admin 
+  actions on FV guests mess up network (VIF) device 
+  type ==> network lost.
+
+-------------------------------------------------------------------
+Thu Mar 17 11:37:05 MDT 2011 - carnold@novell.com
+
+- Show RHEL6 on the 'Type of Operating System' screen. 
+
+-------------------------------------------------------------------
+Tue Mar  8 11:55:12 MST 2011 - carnold@novell.com
+
+- bnc#677856 - maintenance release candidate: vm-install with
+  --background fails due to missing /var/run/vm-install directory
+
+-------------------------------------------------------------------
+Mon Mar  7 15:14:52 MST 2011 - carnold@novell.com
+
+- bnc#677557 - Can't install openSUSE 11.4 as a guest on XEN 
+
+-------------------------------------------------------------------
+Fri Mar  4 08:40:51 MST 2011 - carnold@novell.com
+
+- bnc#631680 - OpenSUSE 11.3 KVM install of windows xp fails on
+  first reboot during installation.
+
+-------------------------------------------------------------------
+Fri Feb 11 13:37:39 MST 2011 - carnold@novell.com
+
+- bnc#668621 - creating a new VM in virt-manager is impossible 
+
+-------------------------------------------------------------------
+Fri Feb  4 14:29:16 MST 2011 - carnold@novell.com
+
+- Updated language files. 
+
+-------------------------------------------------------------------
+Wed Jan 19 06:18:30 MST 2011 - carnold@novell.com
+
+- The following three bugs are the same problem.
+- bnc#665767 - L3:kvm vminstall generates bad xml
+- bnc#665446 - Attempt to start installation of new KVM virt
+  machine ended with error message in vm-install tool
+- bnc#665541 - vm-install fails tu create a virtual machine (kvm)
+  after update to vm-install-0.4.27-2.1.2 (error in created xml)
+
+-------------------------------------------------------------------
+Tue Jan 11 11:41:27 MST 2011 - carnold@novell.com
+
+- bnc#657349 - Info file for linuxrc is not picked up by Xen 
+- Removed the extid flag.  The viridian flag is used instead.
+
+-------------------------------------------------------------------
+Wed Dec 29 17:24:50 MST 2010 - carnold@novell.com
+
+- bnc#661829 - vm-install ignores inst source, description and
+  other in vm-settings xml file
+
+-------------------------------------------------------------------
+Fri Dec 10 16:25:15 MST 2010 - carnold@novell.com
+
+- Fixed malformed xml output for kvm clock
+- Updated language file
+  lt.po 
+
+-------------------------------------------------------------------
+Tue Nov 18 16:00:00 MST 2010 - carnold@novell.com
+
+- Add support for blktap2 devices as a Technical Preview feature.
+
+-------------------------------------------------------------------
+Tue Nov 16 09:15:33 MST 2010 - carnold@novell.com
+
+- Updated language file
+  lt.po
+
+-------------------------------------------------------------------
+Tue Nov  9 16:19:50 MST 2010 - carnold@novell.com
+
+- bnc#603371 - In KVM SVVP HAL timer tests (HCT) are failing 
+  Disable hpet for windows guests on KVM.
+
+-------------------------------------------------------------------
+Thu Nov  4 09:35:03 MDT 2010 - carnold@novell.com
+
+- Updated language files
+  nds.po km.po hu.po lt.po fi.po 
+
+-------------------------------------------------------------------
+Wed Nov  3 08:11:14 MDT 2010 - carnold@novell.com
+
+- Return virtio=True only for KVM 
+
+-------------------------------------------------------------------
+Tue Oct 26 14:24:33 MDT 2010 - carnold@novell.com
+
+- Setting virtio in the Advanced dialog is not reflected in the XML
+  file for KVM guests.
+
+-------------------------------------------------------------------
+Thu Oct 21 13:54:08 MDT 2010 - carnold@novell.com
+
+- bnc#647261 - Get lot's of error in .xsession-errors when lauching
+  yast 
+
+-------------------------------------------------------------------
+Wed Sep 22 14:08:35 MDT 2010 - carnold@novell.com
+
+- bnc#640874 - vm-install not creating guest with proper qcow2 disk
+  image format
+
+-------------------------------------------------------------------
+Wed Aug 25 16:26:27 MDT 2010 - carnold@novell.com
+
+- bnc#629022 - [vm-install]max nics when create VM 
+  Allow up to 8 nics instead of 3.
+
+-------------------------------------------------------------------
+Tue Aug 10 01:35:02 MDT 2010 - carnold@novell.com
+
+- bnc#629226 - vm-install --vm-settings does not work with kvm
+  config
+
+-------------------------------------------------------------------
+Mon Aug  9 16:18:02 MDT 2010 - carnold@novell.com
+
+- bnc#629261 - vm-install for KVM fails if more than one ISO image
+  is configured
+
+-------------------------------------------------------------------
+Fri Aug  6 15:44:10 MDT 2010 - carnold@novell.com
+
+- bnc#613957 - Fedora 13 PV DomU can't be installed with 
+  virt-manager 
+
+-------------------------------------------------------------------
+Mon Aug  2 10:35:11 MDT 2010 - carnold@novell.com
+
+- bnc#627449 - Wrong MAC assigned to NIC card when using KVM when
+  installing machine using vm-install
+
+-------------------------------------------------------------------
+Wed Jul 28 14:33:25 MDT 2010 - carnold@novell.com
+
+- bnc#626299 - vmdk wont work with virt-manager 
+
+-------------------------------------------------------------------
+Fri Jun  4 15:29:43 MDT 2010 - carnold@novell.com
+
+- Eliminate all the unnecessary calls to open a libvirt connection. 
+  (one is sufficient)
+
+-------------------------------------------------------------------
+Wed May 12 08:25:45 MDT 2010 - carnold@novell.com
+
+- Updated language files. 
+
+-------------------------------------------------------------------
+Thu May  6 14:59:51 MDT 2010 - carnold@novell.com
+
+- bnc#603427 - kvm guests should get kvm prefixed mac addresses 
+  from vm-install 
+
+-------------------------------------------------------------------
+Wed Apr 14 14:27:46 MDT 2010 - carnold@novell.com
+
+- Fix invalid use of virtio on platforms that don't have the driver 
+
+-------------------------------------------------------------------
+Tue Apr 13 16:06:40 MDT 2010 - carnold@novell.com
+
+- Fix usage of local Kickstart files for RHEL PV guests. 
+
+-------------------------------------------------------------------
+Mon Apr 12 15:52:30 MDT 2010 - carnold@novell.com
+
+- bnc#593794 – Using vm-install with -e defaults to install an 
+  operating system 
+
+-------------------------------------------------------------------
+Mon Apr 12 15:39:56 MDT 2010 - carnold@novell.com
+
+- bnc#593948 – vm-install --background doesn't work for KVM guest 
+  installation 
+
+-------------------------------------------------------------------
+Mon Apr 12 13:46:03 MDT 2010 - carnold@novell.com
+
+- bnc#594410 - Disabling usb in vm-install does not work 
+
+-------------------------------------------------------------------
+Mon Apr 12 11:02:21 MDT 2010 - carnold@novell.com
+
+- bnc#593392 - cannot install full virtualized SLES 9 in XEN 
+
+-------------------------------------------------------------------
+Fri Apr  9 19:57:06 MDT 2010 - carnold@novell.com
+
+- Updated language files. 
+
+-------------------------------------------------------------------
+Fri Mar 26 12:42:39 MDT 2010 - carnold@novell.com
+
+- bnc#438078 - python-gtk missing for vm-install in fvwm 
+
+-------------------------------------------------------------------
+Fri Mar 19 09:28:37 MDT 2010 - carnold@novell.com
+
+- bnc#572167 - "Create Virtual Machines" can not be used by default 
+
+-------------------------------------------------------------------
+Thu Mar 18 06:40:39 MDT 2010 - carnold@novell.com
+
+- bnc#589332 - vm-install reports the wrong amount of free memory 
+  available for KVM guests 
+
+-------------------------------------------------------------------
+Mon Mar 15 11:23:50 MDT 2010 - carnold@novell.com
+
+- bnc#588215 - virt-manager/vminstall can't install new KVM Guests 
+
+-------------------------------------------------------------------
+Fri Mar 12 08:40:43 MST 2010 - carnold@novell.com
+
+- Updated language files. 
+
+-------------------------------------------------------------------
+Wed Mar 10 15:32:17 MST 2010 - carnold@novell.com
+
+- bnc#574603 - vm-install failed with the normal user 
+
+-------------------------------------------------------------------
+Thu Mar 04 08:58:26 MST 2010 - carnold@novell.com
+
+- bnc#585446 - Vm-install outputs incorrect XML for current and 
+  maximum memory
+
+-------------------------------------------------------------------
+Wed Feb 24 13:58:26 MST 2010 - carnold@novell.com
+
+- bnc#582608 - virt-manager/vm-install doesn't allow to setup
+  virtio devices for kvm
+
+-------------------------------------------------------------------
+Mon Feb 22 15:29:54 MST 2010 - carnold@novell.com
+
+- bnc#574657 - libvirt always output error message when installing
+  a KVM guest OS using virt-manager or vm-install although the
+  installation is successful 
+
+-------------------------------------------------------------------
+Mon Feb 22 14:33:04 MST 2010 - carnold@novell.com
+
+- Include a default file extension for disk images. 
+
+-------------------------------------------------------------------
+Tue Feb 16 14:07:50 MST 2010 - carnold@novell.com
+
+- bnc#580183 - vm-install: some semantic errors found by pylint 
+
+-------------------------------------------------------------------
+Mon Feb  8 09:40:54 MST 2010 - carnold@novell.com
+
+- bnc#577862 - list index out of range, if no disks are specified. 
+
+-------------------------------------------------------------------
+Fri Feb  5 09:51:33 MST 2010 - carnold@novell.com
+
+- bnc#577299 - Windows Mouse Pointer does not track.
+
+-------------------------------------------------------------------
+Fri Feb  5 09:06:26 MST 2010 - carnold@novell.com
+
+- bnc#577362 - list index out of range while calling vm-install 
+
+-------------------------------------------------------------------
+Thu Feb  4 12:56:56 MST 2010 - carnold@novell.com
+
+- Add a warning dialog when the user sets the maximum memory 
+  greater than the initial memory that indicates the guest must
+  have a balloon driver. 
+
+-------------------------------------------------------------------
+Thu Feb  4 10:43:08 MST 2010 - carnold@novell.com
+
+- Updated language (.po) files.
+
+-------------------------------------------------------------------
+Fri Jan 22 13:01:23 MST 2010 - carnold@novell.com
+
+- bnc#572904 - [SLES11 SP1]Beta2: Xen, unable to change vm-install
+  memory parameters. 
+
+-------------------------------------------------------------------
+Wed Jan 20 16:48:50 MST 2010 - carnold@novell.com
+
+- bnc#572039 - multiple virtual nics in kvm guest are assigned to 
+  same bridge 
+
+-------------------------------------------------------------------
+Tue Jan 19 16:18:55 MST 2010 - carnold@novell.com
+
+- bnc#572037 - vm-install wont start without hostname in /etc/hosts 
+
+-------------------------------------------------------------------
+Tue Jan  5 13:34:56 MST 2010 - carnold@novell.com
+
+- bnc#565709 - SVVP test will not pass because HPET is missing in 
+  ACPI table.
+  Added an Advanced Settings dialog and command line option for 
+  changing hpet and other similar options.
+
+-------------------------------------------------------------------
+Thu Dec 17 16:41:45 MST 2009 - carnold@novell.com
+
+- bnc#565705 - "--background" flag does not work in vm-install 
+
+-------------------------------------------------------------------
+Wed Dec 16 11:42:13 MST 2009 - carnold@novell.com
+
+- bnc#565037 - mac address not being written to xen vm config file 
+
+-------------------------------------------------------------------
+Thu Dec  3 14:42:39 MST 2009 - carnold@novell.com
+
+- Change default viewer to virt-viewer from tightvnc. 
+
+-------------------------------------------------------------------
+Mon Nov 30 11:19:39 MST 2009 - carnold@novell.com
+
+- fate#305545: XEN extra descriptive fields within xenstore.
+  (wkong@novell.com)
+
+-------------------------------------------------------------------
+Tue Nov 24 16:26:41 MST 2009 - carnold@novell.com
+
+- Allow overcommit of device if the image is marked as sparse.
+
+-------------------------------------------------------------------
+Tue Nov 24 13:13:41 MST 2009 - carnold@novell.com
+
+- fate#305473: Allow setting the keymap for a guest from the GUI
+
+-------------------------------------------------------------------
+Mon Nov 23 11:23:41 MST 2009 - carnold@novell.com
+
+- Add capability for creating unsupported qemu guests.
+
+-------------------------------------------------------------------
+Fri Nov 20 11:50:22 MST 2009 - carnold@novell.com
+
+- Improved error checking in VMPXE.py
+- Fixes to VHD support (wkong@novell.com)
+
+-------------------------------------------------------------------
+Thu Nov 19 16:46:18 MST 2009 - carnold@novell.com
+
+- Add support for VHD format (tap:tapdisk:vhd).
+
+-------------------------------------------------------------------
+Thu Nov 19 11:09:50 MST 2009 - carnold@novell.com
+
+- Added an error handling function to suppress the constant error
+  messages (like 'Domain not found:') from libvirt. 
+
+-------------------------------------------------------------------
+Thu Nov 19 10:11:58 MST 2009 - carnold@novell.com
+
+- Load and create kvm specific paths in the VMCreate class when
+  kvm is the virtualization host.
+
+-------------------------------------------------------------------
+Thu Nov 18 20:51:12 MST 2009 - wkong@novell.com
+
+- fate#302864 domUloader support lvm in disk
+  ParaVirtGuest.py
+  Note: for test in Beta1, if not good, revert it
+
+-------------------------------------------------------------------
+Wed Nov 18 15:27:10 MST 2009 - carnold@novell.com
+
+- Fix the parsing of the 'disk' command line option to be correct 
+  according to the man page specification for vm-install. 
+
+-------------------------------------------------------------------
+Wed Nov 18 14:49:00 MST 2009 - carnold@novell.com
+
+- Allow KVM to install with 'user' mode networking when no bridge 
+  is defined on the host. 
+
+-------------------------------------------------------------------
+Wed Nov 18 11:10:55 MST 2009 - carnold@novell.com
+
+- bnc#552774 - vm-install cannot finish openSUSE installation
+  Use pygrub as the bootloader when opensuse11 is selected. 
+
+-------------------------------------------------------------------
+Tue Oct 27 08:54:29 MDT 2009 - carnold@novell.com
+
+- Added updated language files. 
+
+-------------------------------------------------------------------
+Mon Oct 12 08:18:47 MDT 2009 - carnold@novell.com
+
+- Added updated language files. 
+
+-------------------------------------------------------------------
+Wed Sep 16 15:36:16 MDT 2009 - carnold@novell.com
+
+- Don't show upgrade option if running KVM.  It is only for Xen PV
+  guests.
+
+-------------------------------------------------------------------
+Fri Sep  4 10:41:36 MDT 2009 - carnold@novell.com
+
+- Added updated language files. 
+
+-------------------------------------------------------------------
+Fri Aug 28 16:39:12 MDT 2009 - carnold@novell.com
+
+- Added the '-e' option to specify an existing disk with an already
+  installed operating system. 
+
+-------------------------------------------------------------------
+Wed Aug 12 15:02:43 MDT 2009 - carnold@novell.com
+
+- bnc#530246 - vm-install cannot add operating system which is
+  installed on disk 
+
+-------------------------------------------------------------------
+Mon Aug  3 16:32:37 MDT 2009 - carnold@novell.com
+
+- Add support for KVM disk protocols. 
+
+-------------------------------------------------------------------
+Thu Jul 30 17:16:47 MDT 2009 - carnold@novell.com
+
+- bnc#526885 - Cannot set MAC address for PV guest in vm-install
+
+-------------------------------------------------------------------
+Thu Jul 30 08:35:47 MDT 2009 - carnold@novell.com
+
+- bnc#525891 - virt-manager fails on windows NT
+
+-------------------------------------------------------------------
+Fri Jul 17 09:50:01 MDT 2009 - carnold@novell.com
+
+- bnc#501072 - networking stops working during the 2nd stage of the
+  install 
+
+-------------------------------------------------------------------
+Wed Jun 17 12:50:18 MDT 2009 - carnold@novell.com
+
+- bnc#513997 - vm-install does not support type=netfront 
+
+-------------------------------------------------------------------
+Tue Jun  2 10:16:45 MDT 2009 - carnold@novell.com
+
+- bnc#507599 - Unable to cancel a build on SLES 11 
+
+-------------------------------------------------------------------
+Tue May 12 15:09:17 MDT 2009 - carnold@novell.com
+
+- bnc#499290 - L3: YaST virtualization module doesn't work in 
+  ncurses version 
+
+-------------------------------------------------------------------
+Mon May  4 15:31:16 MDT 2009 - carnold@novell.com
+
+- bnc#499052 - installing an HVM SLES 10 SP2 VM with one nic gives
+  you two identical network cards. 
+
+-------------------------------------------------------------------
+Mon Mar 27 14:57:18 MDT 2009 - carnold@novell.com
+
+- bnc#483316 - Invalid parameter for Paravirtualization settings in
+  vm-install
+
+-------------------------------------------------------------------
+Mon Mar 23 11:39:48 MDT 2009 - carnold@novell.com
+
+- bnc#487667 - SLES 11 Xen, RHEL 4 HVM guest has no mouse or 
+  keyboard in GUI 
+
+-------------------------------------------------------------------
+Fri Mar 13 11:29:13 MDT 2009 - carnold@novell.com
+
+- bnc#412642 - vm-install: XEN full virtualization of NetWare 6.5 
+  SP6 not possible 
+
+-------------------------------------------------------------------
+Tue Mar 10 11:44:04 MDT 2009 - carnold@novell.com
+
+- bnc#483323 - Problems to configure section Installation of 
+  operating system in vm-install (GUI version) for paravirtualized 
+  system 
+
+-------------------------------------------------------------------
+Tue Mar 10 11:25:07 MDT 2009 - carnold@novell.com
+
+- bnc#473478 - mouse is disabled in sles 9 sp4 HVM guests 
+
+-------------------------------------------------------------------
+Tue Mar 10 09:56:09 MDT 2009 - carnold@novell.com
+
+- bnc#475826 - selecting virtual disk for install still defaults 
+  back to PXE boot 
+
+-------------------------------------------------------------------
+Tue Mar 10 09:35:17 MDT 2009 - carnold@novell.com
+
+- bnc#468567 - pv installs using network source duplicates the entry
+
+-------------------------------------------------------------------
+Mon Mar  9 16:28:37 MDT 2009 - carnold@novell.com
+
+- bnc#468860 - XEN PXE boot of paravirtualized (pv) domU does not 
+  work.  Revised to support special sles installation media.
+
+-------------------------------------------------------------------
+Fri Feb 27 16:56:04 MST 2009 - carnold@novell.com
+
+- bnc#480164 - Default network proposal in fully virtualized 
+  SLES 11 VM is invalid.
+
+-------------------------------------------------------------------
+Tue Feb 17 15:27:26 MST 2009 - carnold@novell.com
+
+- bnc#472322 - vm-install endless loop 
+
+-------------------------------------------------------------------
+Wed Feb  4 16:41:55 MST 2009 - carnold@novell.com
+
+- bnc#469736 - kvm guest does not recognize "phy" disk for 
+  installation in SLES11. 
+
+-------------------------------------------------------------------
+Tue Feb  3 13:41:30 MST 2009 - carnold@novell.com
+
+- bnc#362388 - unable to install rhel 5 multi-proc HVM on intel. 
+
+-------------------------------------------------------------------
+Fri Jan 30 12:48:51 MST 2009 - carnold@novell.com
+
+- bnc#468860 - XEN PXE boot of paravirtualized (pv) domU does not work
+
+-------------------------------------------------------------------
+Fri Jan 30 08:41:52 MST 2009 - carnold@novell.com
+
+- bnc#470928 - vm-install is trying to mount smbfs instead of cifs 
+- bnc#470934 - vm-install is mounting wrong samba share
+
+-------------------------------------------------------------------
+Mon Jan 26 15:54:00 MST 2009 - carnold@novell.com
+
+- bnc#469270 - unable to delete vm-install-jobs 
+
+-------------------------------------------------------------------
+Wed Jan 21 15:15:24 MST 2009 - carnold@novell.com
+
+- Updated language files with the latest translations.
+
+-------------------------------------------------------------------
+Tue Jan 13 15:52:03 MST 2009 - carnold@novell.com
+
+- bnc#458853 - vm-install incorrectly attempts to use /dev/fd0 for
+  media installs. 
+
+-------------------------------------------------------------------
+Thu Jan  8 14:46:53 MST 2009 - carnold@novell.com
+
+- bnc#464425 - vm-install doesn't throw away redundant data. 
+
+-------------------------------------------------------------------
+Tue Dec 16 14:29:55 MST 2008 - carnold@novell.com
+
+- bnc#459562 - switching to fully-virtual in vm-install keeps the 
+  old network installation source visible. 
+
+-------------------------------------------------------------------
+Mon Dec 15 17:00:12 MST 2008 - carnold@novell.com
+
+- bnc#458124 - vm-install pre-configuration for SLE 11 needs to 
+  have larger default disk size 
+
+-------------------------------------------------------------------
+Mon Dec 15 13:28:11 MST 2008 - carnold@novell.com
+
+- bnc#458848 - vm-install disk free check crashes an installing vm
+
+-------------------------------------------------------------------
+Fri Dec 12 08:24:04 MST 2008 - carnold@novell.com
+
+- bnc#457083 - Added no-latin1 to the decode keymap table. 
+
+-------------------------------------------------------------------
+Wed Dec 10 10:06:14 MST 2008 - carnold@novell.com
+
+- bnc#447546 - SLES11 : ALL_LANGS : Beta5 : Untranslated 'Browse' 
+  button on 'Virtual Disk' dialog in Create Virtual Machine wizard 
+
+-------------------------------------------------------------------
+Thu Dec  4 10:19:09 MST 2008 - carnold@novell.com
+
+- Update to all official SLE11 language files. 
+
+-------------------------------------------------------------------
+Tue Dec  2 16:27:58 MST 2008 - carnold@novell.com
+
+- bnc#450391 – VMM installation source error 
+- bnc#451042 - Unable to create a Xen guest in SLES11-Beta6 in a 
+  full-virt machine.
+
+-------------------------------------------------------------------
+Mon Dec  1 16:13:29 MST 2008 - carnold@novell.com
+
+- bnc#449046 - - [ XEN-install ] - Target install operating system
+  name was changed into 'pxe' incorrectly in paravirtualization 
+  mode - Kong Wei patches.
+- Updated several language files to recent versions.
+
+-------------------------------------------------------------------
+Wed Nov 26 13:41:33 MST 2008 - carnold@novell.com
+
+- bnc#449376 - switching to fully-virtual in vm-install keeps 
+  old network installation setting visible. 
+
+-------------------------------------------------------------------
+Tue Nov 25 13:18:29 MST 2008 - carnold@novell.com
+
+- bnc#447348 - Error diplaying console when launching NW 6.5 SP8 
+  guest install 
+
+-------------------------------------------------------------------
+Mon Nov 24 16:08:10 MST 2008 - carnold@novell.com
+
+- bnc#448399 - Windows Vista VMs are routinely running out of disk 
+  space 
+
+-------------------------------------------------------------------
+Thu Nov 20 15:35:58 MST 2008 - carnold@novell.com
+
+- bnc#446773 - write bridge out to config file so libvirt doesn't
+  fail for virt-manager. 
+
+-------------------------------------------------------------------
+Thu Nov 20 11:11:31 MST 2008 - carnold@novell.com
+
+- bnc#444632 - Added keymap conversion for de-latin1 and 
+  de-latin1-nodeadkeys.  Made match test case insensitive.
+
+-------------------------------------------------------------------
+Fri Nov 14 12:29:07 MST 2008 - carnold@novell.com
+
+- Xen 3.3 allows more than 16 block devices for PV guests.
+
+-------------------------------------------------------------------
+Mon Nov 13 11:07:44 MST 2008 - carnold@novell.com
+
+- bnc#444726 - vm-install defaults redhat installs to PV.
+- bnc#444754 - rhel5 memory default in vm-install needs to be
+  increased.
+- Allow the selection of the supported e100 and e1000 in GUI.
+
+-------------------------------------------------------------------
+Mon Nov 10 10:37:44 MST 2008 - carnold@novell.com
+
+- bnc#442749 - vm-install PV PXE boot - does not support tftp 
+  hierarchy (needs to have initrd and kernel in tftp root) 
+
+-------------------------------------------------------------------
+Fri Nov  7 13:42:33 MST 2008 - carnold@novell.com
+
+- fate#303679 - KVM (technology preview). 
+
+-------------------------------------------------------------------
+Thu Nov  6 09:45:55 MST 2008 - carnold@novell.com
+
+- bnc#441482 - XEN PXE boot of paravirtualized (pv) domU does not
+  work.
+- bnc#442308 - vm-install PV PXE boot only supports lowercase.
+- Updated language files with current translations.
+
+-------------------------------------------------------------------
+Wed Nov  5 11:15:56 MST 2008 - carnold@novell.com
+
+- bnc#441473 - vm-install - missing dependency 
+
+-------------------------------------------------------------------
+Thu Oct 30 10:29:00 MDT 2008 - carnold@novell.com
+
+- bnc#440235 - Create Virtual Machine reports error. 
+
+-------------------------------------------------------------------
+Wed Oct 22 15:38:02 MDT 2008 - carnold@novell.com
+
+- bnc#437647 - vm-install: cannot change harddisk values, invalid
+  value of harddisk size
+
+-------------------------------------------------------------------
+Wed Oct 22 11:55:22 MDT 2008 - carnold@novell.com
+
+- bnc#436899 - Build0075: Cannot create a virtual machine.
+
+-------------------------------------------------------------------
+Wed Oct 22 09:51:40 CEST 2008 - kukuk@suse.de
+
+- Only build on x86-64 and ix86
+
+-------------------------------------------------------------------
+Mon Oct 13 16:05:20 MDT 2008 - carnold@novell.com
+
+- Added fix to look in kernel-base for vmlinuz.
+
+-------------------------------------------------------------------
+Wed Oct  8 11:53:44 MDT 2008 - carnold@novell.com
+
+- bnc#432743 - vm-install command line parameters not working
+  correctly.
+
+-------------------------------------------------------------------
+Mon Oct  7 16:44:53 MDT 2008 - carnold@novell.com
+
+- bnc#432923 - vm-install: Can't change size of a hard disk after
+  creation.
+
+-------------------------------------------------------------------
+Mon Oct  6 10:10:53 MDT 2008 - carnold@novell.com
+
+- fate#300964 - Added support for tap:cdrom protocol.
+
+-------------------------------------------------------------------
+Wed Oct  1 15:30:50 MDT 2008 - carnold@novell.com
+
+- Additional maxmem checks for bnc#259207.
+
+-------------------------------------------------------------------
+Thu Sep 16 16:34:43 MDT 2008 - carnold@novell.com
+
+- fate#302936 - Allow administrators to configure cpuid data via 
+  vm-install's command line interface.
+
+-------------------------------------------------------------------
+Thu Sep 16 16:34:43 MDT 2008 - carnold@novell.com
+
+- bnc#259207 - vm-install does not write maxmem parameter into the
+  configuration file.
+
+-------------------------------------------------------------------
+Thu Sep 12 10:27:43 MDT 2008 - carnold@novell.com
+
+- bnc#425653 - vm-install resets the os type.
+
+-------------------------------------------------------------------
+Thu Sep 11 15:23:43 MDT 2008 - carnold@novell.com
+
+- Add virt-viewer as an option to the --graphics-viewer flag. 
+- Added check to get os type so we can default to the correct one.
+- Version 0.3.8
+
+-------------------------------------------------------------------
+Fri Sep  5 08:08:29 MDT 2008 - carnold@novell.com
+
+- Use pygrub for some OS installs.  Fixed problem with xstransact 
+  in console.py.
+
+-------------------------------------------------------------------
+Tue Aug 26 11:45:31 MDT 2008 - carnold@novell.com
+
+- Added option to set on_poweroff, on_reboot and on_crash.
+
+-------------------------------------------------------------------
+Wed Aug 20 13:45:31 MDT 2008 - carnold@novell.com
+
+- Use to qcow2 images and use qemu-img-xen to create them.
+
+-------------------------------------------------------------------
+Mon Aug 19 08:24:28 MDT 2008 - carnold@novell.com
+
+- bnc#418207 - vm-install missing dependency, libvirt-python
+- bnc#414899 - vm-install erroneously reports installation error 
+  when using qcow
+- bnc#417494 - python's file chooser dialog changes with
+  every release, hence this fix.
+- Allow virt-viewer to be used as the vm viewer.
+
+-------------------------------------------------------------------
+Mon Aug  4 15:24:28 MDT 2008 - carnold@novell.com
+
+- Added Wei Kong's PXE boot feature for PV guests.
+
+-------------------------------------------------------------------
+Wed Jul 31 18:02:02 MDT 2008 - carnold@novell.com
+
+- bnc#245587 - Add drop down to network install source
+
+-------------------------------------------------------------------
+Wed Jul 30 11:37:02 MDT 2008 - carnold@novell.com
+
+- bnc#268153 - warn about being out of disk space.
+- bnc#259994 - Disk size keeps changing back to 4.0
+- bnc#347427 - text mode install does not allow control over the 
+  sparse file option.
+- Removed 'type=ioemu' for FV guests.
+
+-------------------------------------------------------------------
+Fri Jul 18 15:45:29 MDT 2008 - carnold@novell.com
+
+- Allow vm-install to use libvirt calls to acquire guest 
+  information.
+- Update protocol menu based on file type selected while browsing.
+- Version 0.3.3
+
+-------------------------------------------------------------------
+Tue Jul 01 11:21:53 MDT 2008 - carnold@novell.com
+
+- Added --preserve-on-error to keep temporary files, config and
+  image file around for debugging.
+
+-------------------------------------------------------------------
+Fri May 30 03:36:53 MDT 2008 - carnold@novell.com
+
+- Added --no-install to allow just a config file to be written.
+- Added pull down menu to select various disk protocols.
+
+-------------------------------------------------------------------
+Wed May 21 14:24:27 MDT 2008 - carnold@novell.com
+
+- Fix broken NetWare install.
+
+-------------------------------------------------------------------
+Thu May  8 17:04:59 MDT 2008 - carnold@novell.com
+
+- bnc#363671 - XEN: problems with i386 hvm
+- bnc#380514 - can't install SLED10-SP1.  Reverted back to file 
+  until problem with tap:aio is resolved.
+- Fixed problem looking up xenpae kernel on SLE11.  xenpae was
+  renamed to just xen.
+
+-------------------------------------------------------------------
+Wed Apr 30 11:05:58 MDT 2008 - carnold@novell.com
+
+- Add keymap support during vm creation - Pat Campbell addition.
+
+-------------------------------------------------------------------
+Fri Apr 25 08:42:19 MDT 2008 - carnold@novell.com
+
+- Updated language files with current translations.
+
+-------------------------------------------------------------------
+Fri Apr 11 21:03:22 CEST 2008 - carnold@suse.de
+
+- Change default image from file to tap:aio.
+
+-------------------------------------------------------------------
+Wed Mar 26 16:14:53 MDT 2008 - carnold@novell.com
+
+- bnc#373180 - 2 Xen options in Xen don't work from Yast2.
+
+-------------------------------------------------------------------
+Fri Feb 29 23:48:21 CET 2008 - carnold@suse.de
+
+- Support for pxe booting fully virtualized guests in vm-install is
+  complete.
+
+-------------------------------------------------------------------
+Fri Feb  1 21:08:31 CET 2008 - carnold@suse.de
+
+- Update version to 0.2.3
+- Add support for selecting PXE boot as installation source.
+- 346602 - vm-install: apic settings for FV RHEL3 are incorrect
+- 336779 - vm-install: Can't create domU - client aborts with 
+  "Error: unsupported operand type(s) for *: 'NoneType' and 'int'"
+- 349280 - vm-install doesn' t allow --nic option with empty string
+- 353739 - vm-install: starting vm-install with -d option but
+  without size always selects 4.0 GB
+
+-------------------------------------------------------------------
+Sat Jan 12 01:05:59 CET 2008 - carnold@suse.de
+
+- Enable SMP support by default.
+
+-------------------------------------------------------------------
+Thu Oct 11 15:25:07 MDT 2007 - ccoffing@novell.com
+
+- Update version to 0.2.2
+- Many fixes to written XML
+- Store bootloader settings in XML
+- #330240: Network bridges bridges are not showing up if gnomesu
+  is used to launch virt-manager
+- #329547: Default disk proposal for openSUSE is too small
+
+-------------------------------------------------------------------
+Thu Sep  6 16:47:17 MDT 2007 - ccoffing@novell.com
+
+- #306964: Work around pygtk threading bug
+- #306383: Fix unreadable linuxrc screen in paravirtual SLES 9 SP4
+- rpmlint: don't need BuildRequires: python
+- rpmlint: don't remove buildroot in install section
+
+-------------------------------------------------------------------
+Fri Aug 31 11:23:33 MDT 2007 - ccoffing@novell.com
+
+- #305747: Fix bootstrapping of paravirtual SLES 9 SP4
+- #306764: Better error message if NIC model is mistyped
+- #296928: MAC was not set when creating VM from existing disk
+
+-------------------------------------------------------------------
+Thu Aug 30 12:31:01 MDT 2007 - ccoffing@novell.com
+
+- #306469: Fix error paths to ensure disks are always unmounted
+- #306383: Set TERM=linux, which works well for both xencons and pvfb
+- Do not attempt to connect to VNC port if graphics=none
+- Write out stdvga setting based on cirrus vs vesa
+
+-------------------------------------------------------------------
+Wed Aug 29 16:50:52 MDT 2007 - ccoffing@novell.com
+
+- Update translations
+
+-------------------------------------------------------------------
+Tue Aug 21 14:21:50 MDT 2007 - ccoffing@novell.com
+
+- #278190: adjust max memory to always be >= initial memory
+- #296758: call update() before getting spinbox value
+- Fix some errors in libvirt-style XML file written out
+
+-------------------------------------------------------------------
+Fri Aug 17 09:13:51 MDT 2007 - ccoffing@novell.com
+
+- Update translations
+
+-------------------------------------------------------------------
+Thu Aug 16 12:37:04 MDT 2007 - ccoffing@novell.com
+
+- #300757: Option for Windows XP/2003 (x64) was not displayed
+- #296083: If vncviewer is not found, prompt user but don't fail
+- Remove ExclusiveArch
+
+-------------------------------------------------------------------
+Fri Aug  3 17:26:58 MDT 2007 - vm@novell.com
+
+- #297472: AttributeError when trying to install FV OS on non-VT
+
+-------------------------------------------------------------------
+Tue Jul 31 13:38:03 MDT 2007 - ccoffing@novell.com
+
+- #271697: Accept period in VM's name
+- Pressing Enter now accepts VM name
+- Add notes to translators
+
+-------------------------------------------------------------------
+Tue Jul 24 14:37:46 MDT 2007 - ccoffing@novell.com
+
+- #289581: Support info files for --os-settings for SUSE
+- Fix defaulting of full vs. para
+- Fix ability to edit disk
+- Fix exception when starting PV RHEL from URL
+- #291706: Previous fix had caused sparse to sometimes default off
+
+-------------------------------------------------------------------
+Mon Jul 16 13:37:47 MDT 2007 - ccoffing@novell.com
+
+- #291706: Allow disk-format-specific options.
+
+-------------------------------------------------------------------
+Mon Jul  2 15:35:36 MDT 2007 - ccoffing@novell.com
+
+- Start of VM disk management tool.
+- Bug fixes and refactoring.
+
+-------------------------------------------------------------------
+Fri Jun 22 16:53:37 MDT 2007 - ccoffing@novell.com
+
+- Not noarch; only build on architectures supported by Xen.
+
+-------------------------------------------------------------------
+Wed Jun 20 14:31:34 MDT 2007 - ccoffing@novell.com
+
+- Moved out of xen-tools
+

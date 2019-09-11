@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Fri Mar 22 12:41:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+- Add systemd-rpm-macros BuildRequirement for %service_*.
+- Add systemd as a runtime dependency, as the package's main
+  purpose is the timer unit.
+
+-------------------------------------------------------------------
+Fri Oct  5 13:25:05 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- specfile now respects SUSE installation process
+
+-------------------------------------------------------------------
+Wed Sep  5 14:57:32 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- optional systemd timer to handle certbot certificate renewals 
+  borrowed from Fedora

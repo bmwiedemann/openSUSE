@@ -1,0 +1,143 @@
+-------------------------------------------------------------------
+Thu Jul 20 11:20:31 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.2:
+  * Bug fixes.
+- Enable documentation installation.
+
+-------------------------------------------------------------------
+Wed Jul  5 22:13:40 UTC 2017 - jengelh@inai.de
+
+- Add deps.diff to fix the build of ortp users such as libosmo-abis.
+
+-------------------------------------------------------------------
+Sun Jun  4 22:03:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Disable -Werror.
+
+-------------------------------------------------------------------
+Wed May 17 15:00:49 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.1 (changes since 0.27.0):
+  * oRTP licence is changed to be GPLv2+.
+  * Add a new adaptive jitter buffer algorithm.
+  * Minor enhancements and bugfixes.
+
+-------------------------------------------------------------------
+Tue Aug 16 06:57:29 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.27.0:
+  * bctoolbox added as dependency
+- Update download url (use github)
+- Enable tests
+- Switch to cmake build
+
+-------------------------------------------------------------------
+Sun Jan 24 10:57:29 UTC 2016 - jengelh@inai.de
+
+- Add tarball signature
+
+-------------------------------------------------------------------
+Fri Nov  6 19:00:45 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.25.0:
+  * Support AVPF generic NACK.
+  * Add payload types for RTT (Real-Time Text) and Codec2.
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Sat Aug 22 07:28:46 UTC 2015 - tbechtold@suse.com
+
+- update to 0.24.2:
+  * Minor release v0.24.2
+  * fix typo in rtcp_common_header_get padbit() macro definition
+  * Add option to enable/disable documentation generation when building with CMake.
+  * set correct dependency
+  * configure.ac: add --disable-documentation option to speed up dev builds
+  * re-add Requires field for devel rpm
+  * AVPF TMMBR/TMMBN: set correct ssrc to handle TMMBR in one-way video calls
+  * Release 0.24.1
+  * devel package does not require explicit dependency
+  * also add epoch to devel rpm
+  * set rpm epoc to 1 to be alined with redhat rpm
+  * logging.c: split line into 3
+  * Fix redefinition of WINAPI_FAMILY_PARTITION when using MinGW64 (thanks to Henrik Pauli for pointing this).
+  * increased the size of OrtpEventData.zrtp_sas.sas from 5 to 32 bytes to accomodate the B256 format SAS string
+  * add rtp_session_get_symmetric_rtp
+  * Define the "Additional #using Directories" when building winrttimer.cpp for Windows Phone.
+  * improve logging
+  * Fix last commit + allow use of C++.
+  * Begin handling of build for Windows Phone with CMake.
+  * Do not use absolute path in install instruction of CMake.
+  * Fix crash with RTPFB and PSFB packets scheduling.
+  * avoid uninstall to fail if nothing was installed before
+  * Add support for TMMBR and TMMBN feedback messages (part of RFC 5104).
+  * Fix possible receive bandwidth computation imprecision.
+
+-------------------------------------------------------------------
+Wed Jul 29 09:46:03 UTC 2015 - dimstar@opensuse.org
+
+- Add baselibs.conf: build libortp9-32bit, as needed by
+  libmediastreamer_base4.
+
+-------------------------------------------------------------------
+Sun Mar 15 16:35:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.24.0:
+  * RTCP send algorithm as describe in RFC3550.
+  * RTCP XR (RFC3611).
+  * RTCP send algorithm as describe in RFC4585: AVPF streams.
+
+-------------------------------------------------------------------
+Sun May 25 19:56:14 UTC 2014 - fisiu@opensuse.org
+
+- Update to 0.23.0:
+  * network simulator improvements
+  * updated to use ZRTPCPP>=4.0
+  * security bugfixes
+
+-------------------------------------------------------------------
+Wed Jun 26 08:51:13 UTC 2013 - fisiu@opensuse.org
+
+- ortp-devel obsoletes libortp-devel now.
+
+-------------------------------------------------------------------
+Fri Jun 21 10:06:08 UTC 2013 - fisiu@opensuse.org
+
+- Update to 0.22.0:
+  * network simulator improvements for simulating random lost packets
+  * srtp initialization bugfix
+- Source package renamed to ortp.
+
+-------------------------------------------------------------------
+Wed Oct 10 19:44:44 UTC 2012 - mailaender@opensuse.org
+
+- update to 0.20.0
+	- fix an issue on video call with ZRTP
+	- ZRTP media encryption
+	- SRTP media encryption
+	- RTCP support fixes
+	- add rtp_session_get_round_trip_propagation()
+	- optimisations in session-set intersection computation
+	- workaround fix for some versions of uclibc
+
+-------------------------------------------------------------------
+Tue Jan 31 11:23:07 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:35:41 UTC 2010 - pascal.bleser@opensuse.org
+
+- fix Group tags
+
+-------------------------------------------------------------------
+Sun Jul 18 09:51:36 UTC 2010 - dmacvicar@suse.de
+
+- create ortp8 package (0.16.3) from ortp5 (0.13.1)
+
+-------------------------------------------------------------------
+Fri Dec 21 03:14:04 CET 2007 - crrodriguez@suse.de
+
+- initial package version, required for linphone 
+

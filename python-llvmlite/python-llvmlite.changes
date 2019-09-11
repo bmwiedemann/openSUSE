@@ -1,0 +1,211 @@
+-------------------------------------------------------------------
+Wed Jun 19 01:25:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Package examples
+- Make sure tests use installed version
+
+-------------------------------------------------------------------
+Tue Jun 18 19:45:06 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- update to version 0.29.0
+  * This release upgrades to LLVM 8.0 for all supported platforms except PPC64LE.
+    Due to numerous problems with LLVM 8.0 running on PPC64LE,
+    we have decided to use LLVM 7.1, which is more stable on PPC64LE.
+    In addition, non-host LLVM targets, AMDGPU, NVPTX, and WebAssembly, are enabled
+    and they are available in our `llvmlite` builds.
+  * Revert "LLVM 7 changed memset intrinsic signature, adjust it"
+  * Depend on enum34 using PEP 508 environment markers
+  * Upgrade to llvm8
+  * Support loading from current directory and egg files
+  * Add missing fastmath flags from LLVM 7
+  * LLVM 7 changed memset intrinsic signature, adjust it
+
+-------------------------------------------------------------------
+Sat Mar 16 22:33:01 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.28.0:
+  * PR #322: Adding Vector Type
+  * PR #389: Add symbols from static object files
+  * PR #417: Add support for atomic loads/stores
+  * PR #422: Normalize replace_* behaviour and add docs
+  * PR #426: Fix pickling of IR functions and add tests
+  * PR #444: Setup manylinux1 buildscripts and CI
+  * PR #446: Document need for -p1 argument to patch command
+  * PR #448: Fix “SyntaxWarning: invalid escape sequence d”
+  * PR #449: Consolidate the two vector type PRs
+  * PR #452: Some adjustments to pr426
+  * PR #454: Truncate long label names when adding label suffix.
+  * PR #458: Add changelog info about v0.27.1
+
+-------------------------------------------------------------------
+Wed Feb 20 16:18:26 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- update to version 0.27.1:
+  * Just a bugfix release.
+
+-------------------------------------------------------------------
+Wed Feb 13 18:56:34 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- update to version 0.27.0
+  * PR #434: Add another thread for RPi builds.
+  * PR #430: llvm lld integration, merge #428
+  * PR #428: Build LLD as part of the llvmdev package
+  * PR #413: Set up CI with Azure Pipelines
+  * PR #412: LLVM 7 support
+
+-------------------------------------------------------------------
+Sat Dec  1 18:33:44 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.26.0:
+  * The primary new features in this release is support for generation
+    of Intel JIT events, which makes profiling of JIT compiled code in
+    Intel VTune possible. This release also contains some minor build
+    improvements for ARMv7, and some small fixes.
+  * LLVM 7 support was originally slated for this release, but had to
+    be delayed after some issues arose in testing. LLVM 6 is still
+    required for llvmlite.
+  * PR #409: Use native cmake on armv7l
+  * PR #407: Throttle thread count for llvm build on armv7l.
+  * PR #403: Add shutdown detection to ObjectRef __del__ method.
+  * PR #400: conda recipe: add make as build dep
+  * PR #399: Add get_element_offset to TargetData
+  * PR #398: Fix gep method call on Constant objects
+  * PR #395: Fix typo in irbuilder documentation
+  * PR #394: Enable IntelJIT events for LLVM for VTune support
+
+-------------------------------------------------------------------
+Wed Oct 10 01:50:47 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.25.0:
+  * PR #391: Fix broken win32 py2.7 build.
+  * PR #387: protect against empty features in list
+  * PR #384: Read CMAKE_GENERATOR which conda-build sets
+  * PR #382: rewrite of install instructions, calling out LLVM build
+    challenges
+  * PR #380: Add FMA intrinsic support
+  * PR #379: ARM aarch64 test on jetson tx2
+  * PR #378: add slack, drop flowdock
+
+-------------------------------------------------------------------
+Fri Jul 13 09:29:54 UTC 2018 - tchvatal@suse.com
+
+- Version update to 0.24.0:
+  * Various small fixes
+  * ppc64le issues
+
+-------------------------------------------------------------------
+Sun Jun 24 01:18:22 UTC 2018 - arun@gmx.de
+
+- update to version 0.23.2:
+  * PR #361: Add SVML detection and a function to declare support.
+
+- changes from version 0.23.1:
+  * PR #353: PR Fix llvmdev build recipe.
+  * PR #348: llvmdev: enhancements to conda recipe
+
+-------------------------------------------------------------------
+Thu May 17 10:56:57 UTC 2018 - tchvatal@suse.com
+
+- Update to 0.23.0:
+  * PR #343: Fix undefined behavior bug due to Twine usage in LLVM
+  * PR #340: This moves llvmlite to use LLVM 6.0.0 as its backend.
+  * PR #339: Add cttz & ctlz
+  * PR #338: Add 3 Bit Manipulation Intrinsics
+  * PR #330: Add support for LLVM fence instruction
+  * PR #326: Enable Intel SVML-enabled auto-vectorization for all the
+             transcendentals
+
+-------------------------------------------------------------------
+Fri Mar 23 15:28:15 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.22.0
+  * In this release, we have changed the locking strategy that
+    protects LLVM from race conditions.  Before, the llvmlite user
+    (like Numba) was responsible for this locking.  Now, llvmlite
+    imposes a global thread lock on all calls into the LLVM API.
+    This should be significantly less error prone.  Future llvmlite
+    releases may manually exempt some functions from locking once
+    they are determined to be thread-safe.
+
+-------------------------------------------------------------------
+Thu Jan 11 19:18:11 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.21.0
+  * In this release, we upgrade to LLVM 5.
+  * Our build scripts now use conda-build 3.
+  * For our prebuilt binaries, GCC 7 toolchain is used on
+    unix-like systems
+  * The OSX minimum deployment target is 10.9.
+
+-------------------------------------------------------------------
+Mon Nov  6 15:44:28 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.20.0
+  * Beginning with this minor release, we support wheels for Linux, OSX and Windows.
+    Pull requests related to enabling wheels are #294, #295, #296 and #297.
+  * There are also fixes to the documentation (#283 and #289).
+- Update to 0.19.0
+  * PR #281, Issue #280: Fix GEP addrspace issue
+  * PR #279: Fix #274 addrspace in gep
+  * PR #278: add Readthedocs badge
+  * PR #275: Add variables to pass through when doing conda-build
+  * PR #273: Fix the behavior of module.get_global
+  * PR #272: cmpop contains comparison type, not lhs
+  * PR #268, Fix #267: Support packed struct
+  * PR #277: Add pass through gcc flags for llvmdev
+  * PR #276: Remove jenkins build scripts
+- Update to 0.18.0
+  * This is a minor release that fixes several issues (#263, #262, #258, #237) with
+    the wheel build.  In addition, we have minor fixes for running on PPC64LE
+    platforms (#261). And, we added CI testing against PyPy (#253).
+
+-------------------------------------------------------------------
+Wed Apr 19 22:06:59 UTC 2017 - toddrme2178@gmail.com
+
+- Remove unneeded disable_unittest_library_detection.patch
+
+-------------------------------------------------------------------
+Tue Apr 18 14:39:51 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.17.1
+  * Support LLVM 4
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Tue Jan 10 17:15:23 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * update line numbers and reg-exp in patch
+
+- update to version 0.15.0:
+  * Enhancements:
+    + PR #213: Add partial LLVM bindings for ObjectFile.
+    + PR #215: Add inline assembly helpers in the builder.
+    + PR #216: Allow specifying alignment in alloca instructions.
+    + PR #219: Remove unnecessary verify in module linkage.
+  * Fixes:
+    + PR #209, Issue #208: Fix overly restrictive test for library
+      filenames.
+
+-------------------------------------------------------------------
+Sat Nov  5 22:00:25 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * removed hardcoded version in %files section
+
+- update to version 0.14.0:
+  * PR #104: Add binding to get and view function control-flow graph.
+  * PR #210: Improve llvmdev recipe.
+  * PR #212: Add initializer for the native assembly parser.
+
+-------------------------------------------------------------------
+Wed Oct 12 16:36:12 UTC 2016 - toddrme2178@gmail.com
+
+- Use new versioned llvm package names.
+
+-------------------------------------------------------------------
+Wed Aug 24 17:20:08 UTC 2016 - toddrme2178@gmail.com
+
+- Initial version
+

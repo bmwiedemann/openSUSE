@@ -1,0 +1,38 @@
+From d3b2f157643845d2659a226ba72ce24ce1d2a73d Mon Sep 17 00:00:00 2001
+From: Maximilian Meister <mmeister@suse.de>
+Date: Thu, 5 Apr 2018 13:23:23 +0200
+Subject: [PATCH] fall back to PyMySQL
+
+same is already done in modules (see #26803)
+
+Signed-off-by: Maximilian Meister <mmeister@suse.de>
+---
+ salt/modules/mysql.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/salt/modules/mysql.py b/salt/modules/mysql.py
+index de8916f4f2..64c773f40a 100644
+--- a/salt/modules/mysql.py
++++ b/salt/modules/mysql.py
+@@ -58,7 +58,7 @@ try:
+     import MySQLdb.cursors
+     import MySQLdb.converters
+     from MySQLdb.constants import FIELD_TYPE, FLAG
+-    from MySQLdb import OperationalError
++    from MySQLdb.connections import OperationalError
+ except ImportError:
+     try:
+         # MySQLdb import failed, try to import PyMySQL
+@@ -68,7 +68,7 @@ except ImportError:
+         import MySQLdb.cursors
+         import MySQLdb.converters
+         from MySQLdb.constants import FIELD_TYPE, FLAG
+-        from MySQLdb import OperationalError
++        from MySQLdb.err import OperationalError
+     except ImportError:
+         MySQLdb = None
+ 
+-- 
+2.17.1
+
+

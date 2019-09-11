@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Sat Feb  2 22:58:16 UTC 2019 - alarrosa@suse.com
+
+- Update to git version from 20190117T001945~41ba381
+  * Fix i18n
+  * Fix translated skill names which shouldn't be translated
+
+-------------------------------------------------------------------
+Fri Nov 30 08:29:56 UTC 2018 - alarrosa@suse.com
+
+- Update to git version from 20181117T095122~e05b960
+  * Fix i18n
+
+-------------------------------------------------------------------
+Fri Nov  2 19:11:40 UTC 2018 - alarrosa@suse.com
+
+- Update to git version from 20181010T172858~f55c1a2
+
+-------------------------------------------------------------------
+Sun Aug 26 17:48:42 UTC 2018 - alarrosa@suse.com
+
+- Fix license tag in spec file
+- Require python3 packages, not python2
+
+-------------------------------------------------------------------
+Sun Aug 12 14:10:36 UTC 2018 - alarrosa@suse.com
+
+- Install license files
+- Drop fix-install-skill.patch which is not needed anymore
+
+-------------------------------------------------------------------
+Tue Jul 31 15:07:50 UTC 2018 - alarrosa@suse.com
+
+- Update to git version from 20180729T172858~f55c1a2
+
+-------------------------------------------------------------------
+Sun May  6 17:57:14 UTC 2018 - alarrosa@suse.com
+
+- Update to git version from 20180424T221648~0207a12
+
+-------------------------------------------------------------------
+Sun Mar  4 13:54:29 UTC 2018 - alarrosa@suse.com
+
+- Add fix-install-skill.patch to fix installing skills from the plasmoid
+
+-------------------------------------------------------------------
+Tue Feb 27 14:40:01 UTC 2018 - alarrosa@suse.com
+
+- Update to git version 20180227T231707~2e8a1ec
+
+- Most of the patches were already applied upstream, so rebase most of
+  fix-scripts.patch
+
+-------------------------------------------------------------------
+Thu Feb 22 18:34:30 UTC 2018 - alarrosa@suse.com
+
+- Update to git version from 20180219
+
+- Install some scripts with +x permissions and use msm from mycroft-core
+  instead of local one
+
+- Update patches and renamed them to .patch:
+  * fix-scripts.patch
+  * fix-config-install-dir.patch
+
+-------------------------------------------------------------------
+Fri Jan  5 13:35:31 UTC 2018 - alarrosa@suse.com
+
+- Update to git version from 20171224
+
+-------------------------------------------------------------------
+Tue Nov 14 12:33:11 UTC 2017 - alarrosa@suse.com
+
+- Initial release of plasma-mycroft plasmoid 

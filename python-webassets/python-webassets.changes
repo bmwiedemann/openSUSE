@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Fri Mar  8 15:15:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to make tests pass:
+  * tests.patch
+- Enable tests
+
+-------------------------------------------------------------------
+Mon Dec  4 17:38:02 UTC 2017 - 9@cirno.systems
+
+- convert to singlespec
+- drop python-argparse dependency (only needed for python < 2.7)
+
+-------------------------------------------------------------------
+Sat Jun 24 14:37:18 UTC 2017 - adrian@suse.de
+
+- update to version 0.12.1
+
+-------------------------------------------------------------------
+Sat Jul 12 21:22:06 UTC 2014 - boris@steki.net
+
+- initial packaging  
+

@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Wed Dec 13 00:54:09 UTC 2017 - plinnell@opensuse.org
+
+- Update to 2.106
+- Minor updates, mostly involving licensing of Adobe code and data.
+-------------------------------------------------------------------
+Sun Nov 22 01:58:01 UTC 2015 - plinnell@opensuse.org
+
+- Update to 2.105
+- Several crash fixes.
+- otfinfo -g: Print all Unicode mappings for a glyph.
+- t1lint: Support counter control hints.
+
+-------------------------------------------------------------------
+Thu Jan 29 23:36:50 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.104
+  * Fix a nit with format-1 chaining context substitutions.
+- Cleanup specfile
+  * Remove conditional dependencies for distributions package doesn't build
+  * Remove obsolete conditional dependencies
+  * Remove redudant %clean section
+  * Use %configure
+
+-------------------------------------------------------------------
+Sun Mar 16 02:00:11 UTC 2014 - mrdocs@opensuse.org
+
+-  update to 2.100
++ otftotfm: On some fonts, ligature handling could enter an infinite
+  loop. Fix this. Reported by Marc Penninga and Bob Tennent.
++ Fix updmap runs.
++ Build updates for C++11 and other compilers.
+
+-------------------------------------------------------------------
+Wed Aug 24 12:30:34 UTC 2013 - schubert.seb@gmail.com
+
+- update to 2.99
++ Fix a cfftot1 bug that could corrupt some output fonts.
+
+-------------------------------------------------------------------
+Wed May 29 05:47:59 UTC 2013 - mrdocs@opensuse.org
+
+- update to 2.98
++ Fixes since 2.91
+ -Fix alignment bug that corrupted output fonts on some platforms
+  (MIPS especially).
+ -Fix cfftot1: Don't crash on problematic fonts.
+ -More compilation updates
+ -Update OpenType feature, script, and language lists, and some other nits.
+
+-------------------------------------------------------------------
+Sun Apr 22 18:53:49 UTC 2012 - mrdocs@opensuse.org
+
+- revert to 2.91, until a fix is made for broken build in 2.92
+- Correct licensing version to SPDX bnc:#741820 
+
+-------------------------------------------------------------------
+Sun Oct 16 04:49:54 UTC 2011 - mrdocs@opensuse.org
+
+-version bump to 2.92
+- Correct horrible x86-64 byte-order issue.
+  Bug reported by Michael Ummels.
+
+-------------------------------------------------------------------
+Wed Jul  6 09:36:05 UTC 2011 - mrdocs@opensuse.org
+
+-version bump to 2.91 
+-fixes Correct some compilation problems on unusual systems 
+ reported by Vladimir Volovich.
+
+-------------------------------------------------------------------
+Tue Jun  7 07:55:39 UTC 2011 - mrdocs@opensuse.org
+
+-version bump to 2.90
+-run spec-cleaner on spec file
+ +Changes since 2.88
+ -Better handle combinations of fonts and options that 
+  would create so many   substitutions that otftotfm would run 
+  out of memory.  Marc van Dongen report.
+ -Correct crash on glyph names that start with a dot.  Marc van 
+   Dongen report. 
+
+-------------------------------------------------------------------
+Tue May 10 20:54:51 UTC 2011 - mrdocs@opensuse.org
+
+-version bump to 2.88
+ +Changes since 2.86
+  -Avoid double-free error in t1testpage.  Reported by Kurt Pfeifle.
+  -Support version 4 of the OpenType OS/2 table.  Reported by 
+   Thomas Zumbrunn. 
+
+Mon Sep 27 09:06:59 UTC 2010 - mrdocs@opensuse.org
+
+-version bump to 2.85 to hopefully fix build fix on 11.2+
+- 2.84 release was skipped owing to build issues
+
+-------------------------------------------------------------------
+Sun Sep 26 10:12:59 UTC 2010 - mrdocs@opensuse.org
+
+-spec file cleanup
+-version bumped to 2.83
+- add .changes file
+-------------------------------------------------------------------
+Thu Apr 15 00:00:00 CET 2010 - mrdocs@opensuse.org
+
+- version bump to 2,82 - minor fixes
+
+-------------------------------------------------------------------
+Wed Dec 09 00:00:00 CET 2009 - mrdocs@opensuse.org
+
+- version bump to 2.80 - minor bug fixes anf new features
+
+-------------------------------------------------------------------
+Fri Aug 21 00:00:00 CET 2009 - mrdocs@opensuse.org
+
+- version bump to 2.79 - minor bug fixes anf new features
+
+-------------------------------------------------------------------
+Sat Mar 14 00:00:00 CET 2009 - mrdocs@opensuse.org
+
+- version bump to 2.75 - minor bug fixes
+
+-------------------------------------------------------------------
+Fri Jan 09 00:00:00 CET 2009 - mrdocs@opensuse.org
+
+- version bump to 2.72
+
+-------------------------------------------------------------------
+Fri Oct 26 00:00:00 CET 2007 - <mrdocs at scribus.info>
+
+- spec file cleanups
+
+-------------------------------------------------------------------
+Tue Sep 04 00:00:00 CET 2007 - <mrdocs at scribus.info>
+
+- Initial packaging.

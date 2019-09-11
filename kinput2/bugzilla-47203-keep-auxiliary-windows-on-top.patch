@@ -1,0 +1,12 @@
+diff -ur kinput2-v3.1.orig/lib/OffConv.c kinput2-v3.1/lib/OffConv.c
+--- kinput2-v3.1.orig/lib/OffConv.c	2004-10-13 13:11:18.519860528 +0900
++++ kinput2-v3.1/lib/OffConv.c	2004-10-13 17:48:12.999075768 +0900
+@@ -617,6 +617,8 @@
+     toplevel = getToplevelWindow(XtDisplay(widget),
+ 				 scw->ccontrol.clientwindow);
+     setTransientFor((Widget)scw, toplevel);
++    setTransientFor(scw->offthespot.selectionshell, toplevel);
++    setTransientFor(scw->offthespot.auxshell, toplevel);
+ 
+     /*
+      * This is a kind of a magic word... I don't know why, but without this

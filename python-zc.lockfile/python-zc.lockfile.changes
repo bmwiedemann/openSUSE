@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Mon Aug 12 10:35:36 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 2.0
+  * Extracted new SimpleLockFile that removes implicit behavior 
+    writing to the lock file, and instead allows a subclass to 
+    define that behavior. 
+  * SimpleLockFile and thus LockFile are now new-style classes. Any 
+    clients relying on LockFile being an old-style class will need 
+    to be adapted.
+  * Drop support for Python 3.4.
+  * Add support for Python 3.8b3.
+
+-------------------------------------------------------------------
+Tue Apr  9 11:06:01 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.4
+  * Claim support for Python 3.4, 3.5, 3.6 and 3.7.
+  * Drop Python 2.6, 3.2 and 3.3.
+  * Stop logging failure to acquire locks. Clients can do that if 
+    they wish.
+
+-------------------------------------------------------------------
+Sat Jun 24 10:53:56 UTC 2017 - aloisio@gmx.com
+
+- Update to 1.2.1
+  * Fixed: unlocking and locking didn’t work when a
+    multiprocessing process was running (and presumably other
+    conditions).
+  1.2.0:
+  * Added the ability to include the hostname in the lock file
+    content.
+  * Code and ReST markup cosmetics. [alecghica]
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Sat Aug  3 17:36:14 UTC 2013 - hpj@urpla.net
+
+- Update to 1.1.0 version:
+  * Added Trove classifiers and made setup.py zest.releaser friendly.
+  * Added Python 3.2, 3.3 and PyPy 1.9 support.
+  * Removed Python 2.4 and Python 2.5 support.
+
+- renamed to python-zc.lockfile
+- enable testing
+- improve doc and packaging
+
+-------------------------------------------------------------------
+Mon Jan 14 14:45:30 UTC 2013 - p.drouand@gmail.com
+
+- Update to 1.0.2 version:
+  * Fixed: the fix included in 1.0.1 caused multiple pids to be written
+    to the lock file
+- Clean the specfile by removing redundant and useless tags
+
+-------------------------------------------------------------------
+Wed Nov 10 12:49:38 UTC 2010 - coolo@novell.com
+
+- fix file list
+
+-------------------------------------------------------------------
+Wed Jun  2 14:14:44 UTC 2010 - hvogel@novell.com
+
+- Initial Package, Version 1.0.0 
+

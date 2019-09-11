@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="org.swtchart">
+    <target name="init">
+        <mkdir dir="org.swtchart/bin"/>
+        <copy file="org.swtchart/META-INF/MANIFEST.MF"
+            tofile="org.swtchart/META-INF/MANIFEST.MF.OUT"/>
+        <replace file="org.swtchart/META-INF/MANIFEST.MF.OUT"
+            token="qualifier" value="dist" />
+        <replace file="org.swtchart/META-INF/MANIFEST.MF.OUT"
+            token=";singleton:=true" value="" />
+    </target>
+    <target name="clean">
+        <delete dir="org.swtchart/bin"/>
+        <delete file="org.swtchart/META-INF/MANIFEST.MF.OUT"/>
+        <delete file="org.swtchart.jar"/>
+    </target>
+    <target depends="init,doc" name="build">
+        <javac debug="true" destdir="org.swtchart/bin">
+            <src path="org.swtchart/src"/>
+            <classpath>
+                <pathelement location="SWTJAR"/>
+                <pathelement path="org.swtchart/bin"/>
+            </classpath>
+        </javac>
+        <jar destfile="org.swtchart.jar" manifest="org.swtchart/META-INF/MANIFEST.MF.OUT">
+            <manifest>
+                <attribute name="Class-Path" value="/usr/share/java/swt.jar"/>
+            </manifest>
+            <fileset dir="org.swtchart/bin"/>
+        </jar>
+    </target>
+    <target name="doc">
+        <javadoc destdir="api">
+            <fileset dir="org.swtchart/src"/>
+            <classpath>
+                <pathelement location="SWTJAR"/>
+                <pathelement path="org.swtchart/bin"/>
+            </classpath>
+        </javadoc>
+    </target>
+</project>

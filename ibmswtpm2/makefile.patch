@@ -1,0 +1,26 @@
+Index: ibmswtpm2-1119/src/makefile
+===================================================================
+--- ibmswtpm2-1119.orig/src/makefile	2018-01-16 12:46:54.412486803 +0100
++++ ibmswtpm2-1119/src/makefile	2018-01-16 12:48:38.498125716 +0100
+@@ -41,17 +41,17 @@
+ 
+ CC = /usr/bin/gcc
+ 
+-CCFLAGS = -Wall  			\
++CCFLAGS += -fno-strict-aliasing -fno-aggressive-loop-optimizations -Wno-unused-result \
+ 	-Wmissing-declarations -Wmissing-prototypes -Wnested-externs \
+-	-Werror -Wsign-compare \
+-	 -c -ggdb -O0 			\
++	-Werror -Wsign-compare -Wno-unused-value -Wno-aggressive-loop-optimizations \
++	 -c -ggdb -O 			\
+ 	-DTPM_POSIX			\
+ 	-D_POSIX_			\
+ 	-DTPM_NUVOTON			\
+ 	-I../utils			\
+ 	-I.
+ 
+-LNFLAGS = -ggdb 			\
++LNFLAGS += -ggdb 			\
+ 	-DTPM_POSIX			\
+ 	-DTPM_NUVOTON			\
+ 	-lcrypto			\

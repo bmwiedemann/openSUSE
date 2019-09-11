@@ -1,0 +1,485 @@
+-------------------------------------------------------------------
+Tue Feb 16 11:09:04 UTC 2016 - schwab@suse.de
+
+- motif-2.3.4-implicit-fortify-decl.patch: fix bad use of reserved
+  identifier
+
+-------------------------------------------------------------------
+Sat Mar 28 12:44:56 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Cleanup spec file with spec-cleaner
+- Remove old ppc obsoletes/provides
+
+-------------------------------------------------------------------
+Tue Oct 28 08:36:11 UTC 2014 - i@marguerite.su
+
+- Add motif-2.3.4-implicit-fortify-decl.patch
+  * Fix implicit-fortify-decl and implicit-function-decl errors
+
+-------------------------------------------------------------------
+Tue May  6 10:39:24 UTC 2014 - sndirsch@suse.com
+
+- add pkgconfig(printproto) as requires to motif-devel 
+
+-------------------------------------------------------------------
+Wed Mar  5 19:04:27 UTC 2014 - jmatejek@suse.com
+
+- openmotif-2.3.1-suse-stipple.patch - forward-port SLE's feature
+  that allows disabling of upstream fix1381. This is necessary
+  in some legacy scenarios, but undesirable in new apps. To enable
+  the stipple feature (disable fix1381), set environment variable
+  SUSE_OPENMOTIF_ENABLE_STIPPLE to 1.
+
+-------------------------------------------------------------------
+Mon Jul 15 09:06:34 UTC 2013 - coolo@suse.com
+
+- merge motif and openmotif
+- add localonly service to recompress
+
+-------------------------------------------------------------------
+Tue Jul  9 11:31:14 UTC 2013 - coolo@suse.com
+
+- please legal-team (bnc#827674) by removing all files that
+  have strange licenses
+
+-------------------------------------------------------------------
+Fri May  3 07:27:32 UTC 2013 - matwey.kornilov@gmail.com
+
+- Drop openmotif-libpng14.diff: fixed in upstream
+
+-------------------------------------------------------------------
+Sat Jan  5 08:47:33 UTC 2013 - jengelh@inai.de
+
+- Motif 2.3.4 strictly requires Xmu >= 1.1.1 (changed prototypes)
+
+-------------------------------------------------------------------
+Fri Jan  4 17:18:45 UTC 2013 - jengelh@inai.de
+
+- Follow shared library package guidelines
+- Kill Requires: png/jpeg-devel, since there does not seem to be
+  a requirement to have them to build motif programs
+- Added motif-avoid-empty-include.diff, motif-sequence-points.diff
+
+-------------------------------------------------------------------
+Mon Oct 29 16:20:19 UTC 2012 - msrb@novell.com
+
+- Use MWMRCDIR instead of rcdir in spec file. (bnc#786848)
+
+-------------------------------------------------------------------
+Thu May 24 11:57:02 UTC 2012 - vdziewiecki@suse.com
+
+-Update to openmotif 2.3.3 (bnc#752334)
+-Fixed a build failure caused by a function in builtin EditresCom.c not
+matching it's prototype.
+
+
+-------------------------------------------------------------------
+Wed Nov 16 12:38:17 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Wed Nov 16 08:18:48 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Apr  8 17:47:03 CEST 2010 - pgajdos@suse.cz
+
+- fixed build with libpng14
+
+-------------------------------------------------------------------
+Sat Dec 19 19:06:18 UTC 2009 - bernhard@bwalle.de
+
+- Update to openmotif 2.3.2
+  o When we set XmNvisibleItemCount resource available in
+    XmComboBox, the widget displays the wrong number of items
+  o Added missing 'O' character to UTF8_SUPPORTED macro
+  o PanedWindow orientation error
+  o paned widget does not work under Fedora Core 2 with openmotif
+    2.2.3-4.1
+  o XmDropSiteRetrieve frees XRectangles before caller can use them
+  o Build system changes.
+- Refresh mwm.diff.
+
+-------------------------------------------------------------------
+Fri Dec 18 23:08:54 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Thu Apr 30 09:52:52 CEST 2009 - mseben@suse.cz
+
+- removed deprecated datadir.patch - we don't build demos ,
+  added version dependency of openmotif-libs for openmotif-devel
+
+-------------------------------------------------------------------
+Wed Mar 18 14:41:47 CET 2009 - crrodriguez@suse.de
+
+- fix build, deleting la files in wrong rpm spec section 
+
+-------------------------------------------------------------------
+Tue Mar  3 06:48:39 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries 
+
+-------------------------------------------------------------------
+Fri Jan  9 14:19:19 CET 2009 - schwab@suse.de
+
+- Fix last change.
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Nov 10 17:44:13 CET 2008 - schwab@suse.de
+
+- Remove obsolete changes.
+
+-------------------------------------------------------------------
+Thu Oct  9 22:05:49 CEST 2008 - bwalle@suse.de
+
+- Update to openMotif 2.3.1.
+  * Bug fixes, see ftp://ftp.ics.com/openmotif/2.3/2.3.1/RELEASE.
+- Drop openmotif-etched-in-menus: Included in release.
+- Drop openmotif-insensitive-label.diff: Included in release.
+
+-------------------------------------------------------------------
+Tue Apr 22 17:25:00 CEST 2008 - bwalle@suse.de
+
+- Fix look of etched-in menus (patch from
+  http://bugs.motifzone.net/show_bug.cgi?id=1395)
+
+-------------------------------------------------------------------
+Sat Apr 12 10:35:33 CEST 2008 - schwab@suse.de
+
+- Avoid libtool namespace clash.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Nov 16 00:09:43 CET 2007 - bwalle@suse.de
+
+- Fix configure warnings when checking for X11/Xmu/Editres.h.
+- Fix problem that insensitive labels in buttons/menus are
+  represented by a gray box (fix from upstream CVS).
+
+-------------------------------------------------------------------
+Tue Jul 24 09:12:45 CEST 2007 - aj@suse.de
+
+- Remove unneeded build require on xorg-x11.
+
+-------------------------------------------------------------------
+Mon Jul 23 17:21:39 CEST 2007 - schwab@suse.de
+
+- Fix location of system.mwmrc [#287207].
+
+-------------------------------------------------------------------
+Mon Jul 16 14:25:27 CEST 2007 - schwab@suse.de
+
+- Update to openMotif 2.3.0.
+  * Client-side anti-aliased fonts support via XFT
+  * UTF-8 and UTF8_STRING atom support
+  * Ability to show text and pixmaps in Label, LabelGadget and all
+    derived widgets
+  * Support of PNG and JPEG image formats in the same way as XPM is supported
+  * 26 bugs fixes
+
+-------------------------------------------------------------------
+Thu Apr  5 17:38:57 CEST 2007 - schwab@suse.de
+
+- Remove redundant compares.
+
+-------------------------------------------------------------------
+Tue Apr  3 10:30:53 CEST 2007 - schwab@suse.de
+
+- Add libpng-devel and libjpeg-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Thu Mar 29 17:24:25 CEST 2007 - rguenther@suse.de
+
+- add flex BuildRequires.
+
+-------------------------------------------------------------------
+Sat Mar  3 13:05:08 CET 2007 - aj@suse.de
+
+- /usr/share/xsessions is part of filesystems package now.
+
+-------------------------------------------------------------------
+Wed Jan 17 18:14:56 CET 2007 - schwab@suse.de
+
+- Fix string compare.
+
+-------------------------------------------------------------------
+Fri Oct 13 14:00:47 CEST 2006 - schwab@suse.de
+
+- Fix XPM plausibility checks.
+
+-------------------------------------------------------------------
+Thu Aug 17 17:27:03 CEST 2006 - schwab@suse.de
+
+- Fix broken alignment.
+
+-------------------------------------------------------------------
+Wed Aug 16 18:15:40 CEST 2006 - aj@suse.de
+
+- Remove unneeded BuildRequire xorg-x11.
+
+-------------------------------------------------------------------
+Fri Aug  4 10:42:25 CEST 2006 - schwab@suse.de
+
+- Don't build demo programs.
+
+-------------------------------------------------------------------
+Mon Jul 24 16:47:13 CEST 2006 - schwab@suse.de
+
+- Fix building with Xorg 7.
+
+-------------------------------------------------------------------
+Wed Jun 14 20:25:04 CEST 2006 - schwab@suse.de
+
+- Set mandir.
+
+-------------------------------------------------------------------
+Wed Apr 12 10:38:09 CEST 2006 - schwab@suse.de
+
+- Fix build race.
+
+-------------------------------------------------------------------
+Mon Apr 10 23:21:51 CEST 2006 - schwab@suse.de
+
+- Update to openmotif 2.3.0 beta2.
+
+-------------------------------------------------------------------
+Fri Mar 31 18:02:52 CEST 2006 - schwab@suse.de
+
+- Fix fencepost error.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec  5 14:01:07 CET 2005 - schwab@suse.de
+
+- Fix last change.
+
+-------------------------------------------------------------------
+Fri Dec  2 17:15:56 CET 2005 - schwab@suse.de
+
+- Fix buffer overflows in uil [#136628].
+
+-------------------------------------------------------------------
+Tue Nov 29 18:11:55 CET 2005 - schwab@suse.de
+
+- Fix missing sentinel.
+
+-------------------------------------------------------------------
+Tue Nov 29 16:07:29 CET 2005 - schwab@suse.de
+
+- Remove useless buffer.
+
+-------------------------------------------------------------------
+Wed Nov 16 11:46:04 CET 2005 - uli@suse.de
+
+- build with -O1 on ARM (prevents miscompilation that topples
+  test suite)
+
+-------------------------------------------------------------------
+Wed Oct 19 18:05:48 CEST 2005 - schwab@suse.de
+
+- Update to openmotif 2.2.4.
+
+-------------------------------------------------------------------
+Sat Jul  9 18:28:56 CEST 2005 - schwab@suse.de
+
+- Fix warning.
+
+-------------------------------------------------------------------
+Tue May 17 13:24:12 CEST 2005 - schwab@suse.de
+
+- Completely rewrite XPM patch.
+
+-------------------------------------------------------------------
+Mon Feb 14 01:03:27 CET 2005 - schwab@suse.de
+
+- Fix more sentinel warnings.
+
+-------------------------------------------------------------------
+Thu Feb 10 14:50:50 CET 2005 - adrian@suse.de
+
+- install session desktop file
+
+-------------------------------------------------------------------
+Thu Jan 27 01:04:54 CET 2005 - schwab@suse.de
+
+- Fix sentinel warnings.
+
+-------------------------------------------------------------------
+Wed Sep 29 14:51:59 CEST 2004 - meissner@suse.de
+
+- Fixed XPM security problem. #43240.
+
+-------------------------------------------------------------------
+Thu Sep  2 17:50:56 CEST 2004 - schwab@suse.de
+
+- Fix XmResizeHashTable [#44499].
+
+-------------------------------------------------------------------
+Tue Aug 17 11:52:37 CEST 2004 - schwab@suse.de
+
+- Fix dependencies.
+
+-------------------------------------------------------------------
+Tue Jun  1 14:46:54 CEST 2004 - schwab@suse.de
+
+- Fix use of datadir [#41476].
+
+-------------------------------------------------------------------
+Thu Apr 22 17:30:56 CEST 2004 - schwab@suse.de
+
+- Update to openMotif 2.2.3.
+
+-------------------------------------------------------------------
+Sat Apr 17 13:53:53 CEST 2004 - schwab@suse.de
+
+- Pacify autobuild.
+
+-------------------------------------------------------------------
+Wed Feb 11 18:29:44 CET 2004 - schwab@suse.de
+
+- Fix some font problem [#32143].
+
+-------------------------------------------------------------------
+Sat Aug 16 09:53:00 CEST 2003 - adrian@suse.de
+
+- let openmotif-devel require only openmotif-libs
+
+-------------------------------------------------------------------
+Wed Aug 13 17:27:31 CEST 2003 - schwab@suse.de
+
+- Run ldconfig in %post of libs [#28737].
+
+-------------------------------------------------------------------
+Wed Apr 30 13:47:28 CEST 2003 - adrian@suse.de
+
+- split libs into sub package
+
+-------------------------------------------------------------------
+Tue Apr  8 19:52:25 CEST 2003 - schwab@suse.de
+
+- Fix 64 bit bug in input method handling [#24075].
+
+-------------------------------------------------------------------
+Wed Dec 11 18:51:26 CET 2002 - schwab@suse.de
+
+- Fix makefiles for automake.
+
+-------------------------------------------------------------------
+Mon Nov 18 21:12:28 CET 2002 - schwab@suse.de
+
+- Fix duplicate file in AC_OUTPUT.
+
+-------------------------------------------------------------------
+Tue Aug 20 11:02:52 CEST 2002 - mmj@suse.de
+
+- Correct PreReq
+
+-------------------------------------------------------------------
+Sun May 26 17:01:06 CEST 2002 - schwab@suse.de
+
+- Fix invalid cast.
+- Fix automake problem.
+
+-------------------------------------------------------------------
+Wed Apr 24 20:18:02 CEST 2002 - schwab@suse.de
+
+- Move /usr/X11R6/lib64/X11 back to /usr/X11R6/lib/X11.
+
+-------------------------------------------------------------------
+Wed Apr 24 15:12:04 CEST 2002 - schwab@suse.de
+
+- Fix for lib64.
+
+-------------------------------------------------------------------
+Thu Apr 18 11:33:33 CEST 2002 - schwab@suse.de
+
+- Fix permission of site.def after modifying.
+
+-------------------------------------------------------------------
+Thu Apr  4 21:34:41 CEST 2002 - schwab@suse.de
+
+- Remove dependency on libXmu to allow static linking.
+
+-------------------------------------------------------------------
+Thu Apr  4 00:24:53 CEST 2002 - schwab@suse.de
+
+- Update to openMotif 2.2.2.
+- New subpackage openmotif-demo.
+
+-------------------------------------------------------------------
+Fri Jan  4 20:45:36 UTC 2002 - adrian@suse.de
+
+- fix build for mips
+
+-------------------------------------------------------------------
+Thu Nov 15 21:22:46 CET 2001 - schwab@suse.de
+
+- Integrate JDK bug fix.
+
+-------------------------------------------------------------------
+Mon May  7 22:13:58 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Thu Feb 22 18:49:41 CET 2001 - schwab@suse.de
+
+- Trigger on xdevel, not xf86.
+
+-------------------------------------------------------------------
+Fri Jan 19 13:55:59 CET 2001 - bk@suse.de
+
+- Add support for s390.
+
+-------------------------------------------------------------------
+Fri Nov 17 14:52:34 CET 2000 - kukuk@suse.de
+
+- Merge -binaries subpackage
+
+-------------------------------------------------------------------
+Wed Nov  8 10:16:57 CET 2000 - ro@suse.de
+
+- changed %post devel to %triggerin devel -- xf86 
+
+-------------------------------------------------------------------
+Tue Oct 24 16:14:20 CEST 2000 - kukuk@suse.de
+
+- Renamed from motif
+- Split xmbind and mwm into extra "binary" package to avoid
+  conflicts with lesstif
+
+-------------------------------------------------------------------
+Mon Sep 18 15:57:22 CEST 2000 - schwab@suse.de
+
+- Add support for ia64.
+
+-------------------------------------------------------------------
+Fri Jul 28 14:27:43 CEST 2000 - kukuk@suse.de
+
+- You cannot create an array with size NL_TEXTMAX == MAX_INT
+- Add SPARC support to linux.cf
+
+-------------------------------------------------------------------
+Thu Jul 13 15:57:55 CEST 2000 - schwab@suse.de
+
+- Package created.
+

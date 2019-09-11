@@ -1,0 +1,25 @@
+From 1511039a96d158bcf4b731599ae3af3f98b9b166 Mon Sep 17 00:00:00 2001
+From: Chingkai <qkzhu@suse.com>
+Date: Thu, 21 Feb 2019 12:39:52 +0800
+Subject: [PATCH] monitor: Lower HIDPI_LIMIT to 144
+
+---
+ src/backends/meta-monitor.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/backends/meta-monitor.c b/src/backends/meta-monitor.c
+index 60f3674..e0db546 100644
+--- a/src/backends/meta-monitor.c
++++ b/src/backends/meta-monitor.c
+@@ -1476,7 +1476,7 @@ meta_monitor_calculate_crtc_pos (MetaMonitor         *monitor,
+ }
+ 
+ /* The minimum resolution at which we turn on a window-scale of 2 */
+-#define HIDPI_LIMIT 192
++#define HIDPI_LIMIT 144
+ 
+ /*
+  * The minimum screen height at which we turn on a window-scale of 2;
+-- 
+2.16.4
+

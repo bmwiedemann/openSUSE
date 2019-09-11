@@ -1,0 +1,24 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">git://github.com/ClusterLabs/libqb.git</param>
+    <param name="package-meta">yes</param>
+    <param name="exclude">.git</param>
+<!--
+    To update to a new release, change "revision" to the desired
+    git commit hash and bump "version" if necessary
+
+    <param name="version">1.0.3</param>
+-->
+    <param name="versionformat">1.0.3+%cd.%h</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">libqb*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+
+  <service name="set_version" mode="disabled"/>
+</services>

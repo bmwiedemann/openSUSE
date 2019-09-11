@@ -1,0 +1,90 @@
+From d82555d0f32fc341d8f3e58a08f63894a3eb7ce0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20Hor=C3=A1k?= <dan@danny.cz>
+Date: Tue, 6 Mar 2012 11:23:01 +0100
+Subject: [PATCH] add support for systemd
+
+New configure parameter is introduced (--with-systemdsystemunitdir) and when set
+it means that systemd service file will be installed instead of the classis initscript.
+---
+ configure.ac                 | 12 ++++++++++++
+ openhpid/Makefile.am         |  7 +++++++
+ openhpid/openhpid.service.in | 11 +++++++++++
+ 3 files changed, 30 insertions(+)
+ create mode 100644 openhpid/openhpid.service.in
+
+Index: openhpi-3.8.0/configure.ac
+===================================================================
+--- openhpi-3.8.0.orig/configure.ac	2018-09-19 22:47:00.000000000 +0200
++++ openhpi-3.8.0/configure.ac	2018-09-25 11:47:35.199528830 +0200
+@@ -775,6 +775,17 @@ AC_ARG_ENABLE([man],
+         AC_SUBST(MAN,"")
+     fi])
+ 
++dnl systemd system unit files location
++AC_ARG_WITH([systemdsystemunitdir],
++    AS_HELP_STRING([--with-systemdsystemunitdir@<:@=DIR@:>@],[systemd system unit files location]),
++    [enable_systemd=yes],
++    [enable_systemd=no])
++
++dnl enable systemd and set unit dir
++AM_CONDITIONAL([ENABLE_SYSTEMD], [test "x$enable_systemd" = "xyes"])
++unitdir=$with_systemdsystemunitdir
++AC_SUBST(unitdir)
++
+ AC_CONFIG_FILES([openhpi.spec
+         openhpi.pc
+         rt-env.sh
+@@ -818,6 +829,7 @@ AC_CONFIG_FILES([openhpi.spec
+         docs/man/Makefile
+         openhpid/Makefile
+         openhpid/openhpid.sh
++        openhpid/openhpid.service
+         openhpid/t/Makefile
+         openhpid/t/ohpi/Makefile
+         hpi_shell/Makefile
+Index: openhpi-3.8.0/openhpid/Makefile.am
+===================================================================
+--- openhpi-3.8.0.orig/openhpid/Makefile.am	2018-09-19 22:47:00.000000000 +0200
++++ openhpi-3.8.0/openhpid/Makefile.am	2018-09-25 11:47:35.199528830 +0200
+@@ -28,6 +28,7 @@ DIST_SUBDIRS = t
+ 
+ EXTRA_DIST		= \
+     openhpid.sh.in \
++    openhpid.service.in \
+     Makefile.mingw32 \
+     openhpid-win32.cpp \
+     version.rc
+@@ -83,11 +84,17 @@ endif
+ 
+ 
+ install-data-local:
++if ENABLE_SYSTEMD
++	$(mkinstalldirs) $(DESTDIR)$(unitdir)
++	$(INSTALL) -m 0644 openhpid.service $(DESTDIR)$(unitdir)
++else
+ 	$(mkinstalldirs) $(DESTDIR)$(sysconfdir)/init.d
+ 	$(INSTALL) -m 0755 openhpid.sh $(DESTDIR)$(sysconfdir)/init.d/openhpid
++endif
+ 
+ uninstall-local:
+ 	rm -f $(DESTDIR)$(sysconfdir)/init.d/openhpid
++	rm -f $(DESTDIR)$(unitdir)/openhpid.service
+ 	
+ clean-local:
+ 	rm -f *~ core core.* 
+Index: openhpi-3.8.0/openhpid/openhpid.service.in
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ openhpi-3.8.0/openhpid/openhpid.service.in	2018-09-25 11:47:35.199528830 +0200
+@@ -0,0 +1,11 @@
++[Unit]
++Description=Daemon providing access to the SAF Hardware Platform Interface
++After=syslog.target
++
++[Service]
++Type=forking
++PIDFile=/var/run/openhpid.pid
++ExecStart=@sbindir@/openhpid -c @sysconfdir@/openhpi/openhpi.conf
++
++[Install]
++WantedBy=multi-user.target

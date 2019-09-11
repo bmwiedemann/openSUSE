@@ -1,0 +1,361 @@
+-------------------------------------------------------------------
+Mon Jul 29 18:37:55 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Use python2 dependency names.
+- Make sure to provide oldpython names
+
+-------------------------------------------------------------------
+Tue Jul 23 17:30:22 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Implement python2-only version since the latest version does
+  not support python2.
+
+-------------------------------------------------------------------
+Tue Jan 22 11:33:30 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Switch off test_subgraph_centrality_big_graph test, as it leads to
+  crashes on i586, gh#networkx/networkx#3304.
+
+-------------------------------------------------------------------
+Fri Jan  4 14:41:26 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix incomplete summary. Trim filler wording from description.
+
+-------------------------------------------------------------------
+Wed Jan  2 13:55:25 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.2:
+  * Add support for Python 3.7. This is the last release to support
+    Python 2.
+  * Uniform random number generator (RNG) handling which defaults
+    to global RNGs but allows specification of a single RNG for all
+    random numbers in NX.
+  * Improved GraphViews to ease subclassing and remove cyclic
+    references which caused trouble with deepcopy and pickle.
+  * New Graph method G.update(H)
+- Run tests
+- Update project url
+
+-------------------------------------------------------------------
+Sun Sep  2 17:28:03 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * removed devel from noarch package
+
+- update to version 2.1:
+  * Highlights
+    + Arrows for drawing DiGraph edges are vastly improved! And an
+      example to show them.
+    + More than 12 new functions for graph generation, manipulation
+      and/or new graph algorithms.
+       o Add a large clique size heuristic function (#2830)
+       o Add rooted product function (#2825)
+       o Label Propagation Community Detection (#2821)
+       o Minimum cycle basis (#2823)
+       o Add Mycielski Operator (#2785)
+       o Adds prefix_tree, dag_to_branching, and example. (#2784)
+       o Add inverse_line_graph generator from #2241 (#2782)
+       o Steiner tree and metric closure. (#2252)
+       o Add flow based node and edge disjoint paths. (#2063)
+       o Update geometric networks with new models (#2498)
+       o Graph edit distance (#2729)
+       o Added function for finding a k-edge-augmentation (#2572)
+    + G.name is no longer processed by graph operators. It remains as
+      a property mechanism to access G.graph['name'] but the user is
+      in charge of updating or changing it for copies, subgraphs,
+      unions and other graph operations.
+
+-------------------------------------------------------------------
+Tue Oct 31 03:14:26 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * changes from tar.gz to zip
+  * updated sed
+  * INSTALL doesn't seem to be packaged anymore, deleted "rm" command
+
+- update to version 2.0:
+  * Highlights
+    + This release is the result of over two years of work with 1212
+      commits and 193 merges by 86 contributors. Highlights include:
+    + We have made major changes to the methods in the Multi/Di/Graph
+      classes. There is a migration guide for people moving from 1.X
+      to 2.0.
+    + We updated the documentation system.
+  * full release notes at
+    https://networkx.github.io/documentation/stable/release/release_2.0.html
+
+-------------------------------------------------------------------
+Sun Aug  6 04:46:44 UTC 2017 - toddrme2178@gmail.com
+
+- Fix shebangs
+
+-------------------------------------------------------------------
+Thu May 11 03:12:50 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+- Fix source URL.
+
+-------------------------------------------------------------------
+Wed Aug 17 08:35:56 UTC 2016 - tbechtold@suse.com
+
+update to version networkx-1.11
+  * Update release and news info for v1.10.1
+  * Use utils.testing to handle testing edge and node equality
+  * Update news to include 1.10 release highlights
+  * Remove spurious line due to typo.
+  * Fix algebraicconnectivity float conversion
+  * Fix python3 numpy wont read in {}.values to array.
+  * update requirements.txt on v1.11 branch
+  * update doc/requirements.txt to point Sphinx-origin_stable
+  * Update license, readme, and release.py for networkx-1.11
+  * adjust tutorial to mention import write_dot
+  * Revert some API changes in layout.py due to bugs.
+  * Update news and api for v1.11
+  * Update authors, copyrights and EOL space
+  * Add release date in news
+  * Add tests, convert center to np.array, fix domain_size
+  * Put graphviz install outside check for python2.7
+  * Activate Appveyor-CI
+  * Add layout tests and minor docs
+  * networkx-1.11rc2 label
+  * Remove all the symbolic links from the 'examples/' directory
+  * v1.11 Add utils functions to flow variable __all__
+  * Fix Sphinx for v1.11
+  * Prepare release number and news.rst for v1.11
+  * simplify pydot imports, use testing.utils routines
+  * Get the month right.
+  * update release docs files for v1.11
+  * Use pydotplus for all supported python versions
+  * Add note about pyggraphviz and pydotplus import changes
+  * Modified release.py
+  * change copyright year in doc build
+  * For v1.11 drop support for python3.2 and add 3.5
+  * Update news.rst for v1.11
+  * Examples and doc changes
+  * Re-add scaling inside fruchterman_reingold
+  * Update conf.py to point to make_examples_rst.py
+  * Reinstate v1.10 layout except center. Fix bugs
+  * Adjust imports in drawing layouts with graphviz
+  * Doc tweak on edges for v1.11
+
+-------------------------------------------------------------------
+Sun Mar 13 21:28:48 UTC 2016 - dmueller@suse.com
+
+- add license/readme
+
+-------------------------------------------------------------------
+Wed Sep  9 12:32:21 UTC 2015 - tbechtold@suse.com
+
+- update to 1.10:
+  * connected_components, weakly_connected_components, and
+    strongly_connected_components return now a generator of
+    sets of nodes. Previously the generator was of lists of
+    nodes. This PR also refactored the connected_components
+    and weakly_connected_components implementations making them
+    faster, especially for large graphs.
+  * The func_iter functions in Di/Multi/Graphs classes are slated
+    for removal in NetworkX 2.0 release. func will behave like func_iter
+    and return an iterator instead of list. These functions are deprecated
+    in NetworkX 1.10 release.
+  * A enumerate_all_cliques function is added in the clique package
+    (networkx.algorithms.clique) for enumerating all cliques
+    (including nonmaximal ones) of undirected graphs.
+  * A coloring package (networkx.algorithms.coloring) is created for graph
+    coloring algorithms. Initially, a greedy_color function is provided
+    for coloring graphs using various greedy heuristics.
+  * A new generator edge_dfs, added to networkx.algorithms.traversal, implements
+    a depth-first traversal of the edges in a graph. This complements
+    functionality provided by a depth-first traversal of the nodes in
+    a graph. For multigraphs, it allows the user to know precisely which
+    edges were followed in a traversal. All NetworkX graph types are
+    supported. A traversal can also reverse edge orientations or ignore them.
+  * A find_cycle function is added to the networkx.algorithms.cycles package
+    to find a cycle in a graph. Edge orientations can be optionally
+    reversed or ignored.
+  * Add a random generator for the duplication-divergence model.
+  * A new networkx.algorithms.dominance package is added for dominance/dominator
+    algorithms on directed graphs. It contains a immediate_dominators
+    function for computing immediate dominators/dominator trees and a
+    dominance_frontiers function for computing dominance frontiers.
+  * The GML reader/parser and writer/generator are rewritten to remove
+    the dependence on pyparsing and enable handling of arbitrary graph data.
+  * The network simplex method in the networkx.algorithms.flow package is
+    rewritten to improve its performance and support multi- and disconnected
+    networks. For some cases, the new implementation is two or three orders
+    of magnitude faster than the old implementation.
+  * Added the Margulis--Gabber--Galil graph to networkx.generators.
+  * Added the chordal p-cycle graph, a mildly explicit algebraic construction of
+    a family of 3-regular expander graphs. Also, moves both the existing
+    expander graph generator function (for the Margulis-Gabber-Galil expander)
+    and the new chordal cycle graph function to a new module,
+    networkx.generators.expanders.
+  * Allow overwriting of base class dict with dict-like: OrderedGraph, ThinGraph,
+    LogGraph, etc.
+  * Added to_pandas_dataframe and from_pandas_dataframe.
+  * Added the Hopcroft--Karp algorithm for finding a maximum cardinality
+    matching in bipartite graphs.
+  * Expanded data keyword in G.edges and added default keyword.
+  * Added support for finding optimum branchings and arborescences.
+  * Added a from_pandas_dataframe function that accepts Pandas DataFrames
+    and returns a new graph object. At a minimum, the DataFrame must have two
+    columns, which define the nodes that make up an edge. However, the function
+    can also process an arbitrary number of additional columns as edge
+    attributes, such as 'weight'.
+  * Expanded layout functions to add flexibility for drawing subsets of nodes
+    with distinct layouts and for centering each layout around given coordinates.
+  * Added ordered variants of default graph class.
+  * Added harmonic centrality to network.algorithms.centrality.
+  * The generators.bipartite have been moved to algorithms.bipartite.generators.
+    The functions are not imported in the main namespace, so to use it,
+    the bipartite package has to be imported.
+  * Added Kanevsky's algorithm for finding all minimum-size separating node
+    sets in an undirected graph. It is implemented as a generator of node
+    cut sets.
+  * Added power function for simple graphs
+  * Added fast approximation for node connectivity based on White and Newman's
+    approximation algorithm for finding node independent paths between two nodes.
+  * Added transitive closure and antichains function for directed acyclic graphs
+     in algorithms.dag. The antichains function was contributed by Peter Jipsen
+     and Franco Saliola and originally developed for the SAGE project.
+  * Added generator function for the complete multipartite graph.
+  * Added nonisomorphic trees generator.
+  * Added a generator function for circulant graphs to the
+    networkx.generators.classic module.
+  * Added function for computing quotient graphs; also created a new module,
+    networkx.algorithms.minors.
+  * Added longest_path and longest_path_length for DAG.
+  * Added node and edge contraction functions to networkx.algorithms.minors.
+  * Added a new modularity matrix module to networkx.linalg, and associated
+    spectrum functions to the networkx.linalg.spectrum module.
+  * Added function to generate all simple paths starting with the shortest ones
+    based on Yen's algorithm for finding k shortest paths at
+    algorithms.simple_paths.
+  * Added the directed modularity matrix to the
+    networkx.linalg.modularity_matrix module.
+  * Adds triadic_census function; also creates a new module,
+    networkx.algorithms.triads.
+  * Adds functions for testing if a graph has weighted or negatively weighted
+    edges. Also adds a function for testing if a graph is empty. These are
+    is_weighted, is_negatively_weighted, and is_empty.
+  * Added Johnson's algorithm; one more algorithm for shortest paths. It solves
+    all pairs shortest path problem. This is johnson at
+    algorithms.shortest_paths
+  * Added Moody and White algorithm for identifying k_components in a graph,
+    which is based on Kanevsky's algorithm for finding all minimum-size node
+    cut-sets (implemented in all_node_cuts #1391).
+  * Added fast approximation for k_components to the
+    networkx.approximation package. This is based on White and Newman
+    approximation algorithm for finding node independent paths between two
+    nodes (see #1405).
+  * The legacy ford_fulkerson maximum flow function is removed.
+    Use edmonds_karp instead.
+  * Support for Python 2.6 is dropped.
+
+-------------------------------------------------------------------
+Sat Jul 25 12:36:58 UTC 2015 - seife+obs@b1-systems.com
+
+- fix rhel build by conditionalizing "Recommends:" tags
+- do not hardcode /usr/share/doc/packages but use %_docdir
+
+-------------------------------------------------------------------
+Wed Apr 29 14:25:15 UTC 2015 - tbechtold@suse.com
+
+- Don't BuildRequires python-pygraphviz. It's not needed.
+
+-------------------------------------------------------------------
+Thu Oct 30 10:46:52 UTC 2014 - tbechtold@suse.com
+
+- update to version 1.9.1:
+  * Bugfix release for minor installation and documentation issues
+- Don't BuildRequire/Recommend matplotlib and scipy on SLE11
+  and SLE12. Both are not available there.
+
+-------------------------------------------------------------------
+Fri Oct 24 09:35:49 UTC 2014 - toddrme2178@gmail.com
+
+- Add python-decorator in requires to buildrequires
+
+-------------------------------------------------------------------
+Mon Sep 15 14:49:41 UTC 2014 - tbechtold@suse.com
+
+- update to version 1.9:
+  * The flow package (networkx.algorithms.flow) is completely rewritten
+    with backward incompatible changes. It introduces a new interface
+    to flow algorithms. Existing code that uses the flow package will
+     not work unmodified with NetworkX 1.9.
+  * We added two new maximum flow algorithms (preflow_push and
+    shortest_augmenting_path) and rewrote All maximum flow algorithm
+    implementations (including the legacy ford_fulkerson) output now
+    a residual network (i.e., a DiGraph) after computing the maximum
+    flow. See maximum_flow documentation for the details on the
+    conventions that NetworkX uses for defining a residual network.
+  * We removed the old max_flow and min_cut functions. The main entry
+    points to flow algorithms are now the functions maximum_flow,
+    maximum_flow_value, minimum_cut and minimum_cut_value, which have
+    new parameters that control maximum flow computation: flow_func
+    for specifying the algorithm that will do the actual computation
+    (it accepts a function as argument that implements a maximum flow
+    algorithm), cutoff for suggesting a maximum flow value at which the
+    algorithm stops, value_only for stopping the computation as soon as
+    we have the value of the flow, and residual that accepts as argument
+    a residual network to be reused in repeated maximum flow computation.
+  * All flow algorithms are required to accept arguments for these parameters
+    but may selectively ignored the inapplicable ones. For instance,
+    preflow_push algorithm can stop after the preflow phase without computing
+    a maximum flow if we only need the flow value, but both edmonds_karp and
+    shortest_augmenting_path always compute a maximum flow to obtain the
+    low value.
+  * The new function minimum_cut returns the cut value and a node partition
+    that defines the minimum cut. The function minimum_cut_value returns
+    only the value of the cut, which is what the removed min_cut function
+    used to return before 1.9.
+  * The functions that implement flow algorithms (i.e., preflow_push,
+    edmonds_karp, shortest_augmenting_path and ford_fulkerson) are not
+    imported to the base NetworkX namespace. You have to explicitly import
+    them from the flow package.
+  * We also added a capacity-scaling minimum cost flow algorithm: capacity
+    scaling. It supports MultiDiGraph and disconnected networks.
+- Add python-decorator as Requires
+
+-------------------------------------------------------------------
+Mon Dec  9 13:26:37 UTC 2013 - toddrme2178@gmail.com
+
+- Add optional dependencies as Recommends
+
+-------------------------------------------------------------------
+Sun Dec  8 13:49:40 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.8.1
+  + No changelog available
+
+-------------------------------------------------------------------
+Tue Jan 31 14:42:25 UTC 2012 - saschpe@suse.de
+
+- Don't package INSTALL.txt and other docs twice
+
+-------------------------------------------------------------------
+Thu Jan 12 14:52:26 UTC 2012 - saschpe@suse.de
+
+- Spec file cosmetics
+
+-------------------------------------------------------------------
+Wed Jan 11 14:56:08 UTC 2012 - toddrme2178@gmail.com
+
+- Cleaned up spec file
+- Renamed package from python-NetworkX to python-networkx to match the module name
+
+-------------------------------------------------------------------
+Thu Sep  8 20:27:43 UTC 2011 - alinm.elena@gmail.com
+
+- initial commit 
+
+-------------------------------------------------------------------
+Fri Feb  6 00:00:00 UTC 2009 - urs.beyerle@env.ethz.ch
+
+- update to 0.99
+
+-------------------------------------------------------------------
+Thu Jun 26 00:00:00 UTC 2008 - ti.eugene@gmail.com
+
+- Initial build

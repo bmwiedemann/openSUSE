@@ -1,0 +1,148 @@
+-------------------------------------------------------------------
+Tue May  7 07:00:31 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.8.1
+  - Update .gitreview for stable/stein
+  - Fix wrong default JsonDataReader() argument
+
+-------------------------------------------------------------------
+Mon Mar  4 10:13:04 UTC 2019 - Colleen Murphy <comurphy@suse.com>
+
+- update to version 1.8.0
+  -  Add foundation for supporting Redfish OEMs
+  -  Introduce default value for `transfer_protocol` parameter
+  -  Add support for ilo Virtual Media
+  -  Add support for the `CompositionService` resource
+  -  Add support for the `UpdateService` resource
+  -  Follow Up Zuulv3
+  -  Move to zuulv3
+  -  Introduce `dateutil`
+  -  Update the docstring of `sub_processors()`
+  -  Update to public
+  -  Add missing tests
+  -  Add Chassis<->ComputerSystem/Manager linkage
+  -  Add System<->Manager linkage follow up
+  -  Add System<->Manager linkage
+  -  Change openstack-dev to openstack-discuss and update URL
+  -  Add `ChassisCollection` and `Chassis` classes
+  -  Cleanup JsonDataReader name
+  -  remove useless whitespces
+  -  Unify sushy models by Redfish schema bundle
+  -  Delete HTTP tokens on `Sushy` shutdown
+  -  [Trivial Fix] modify spelling errors of fulfill, for, containing
+  -  Change adapter to 'int_or_none' for processor properties
+  -  [Trivial Fix] modify spelling error of "committed"
+  -  Add support for loading resources from archive file
+  -  [Trivial Fix] modify spelling error of "resource"
+  -  Follow-up to 27c725c to move up ``cache_clear``
+  -  Requests session keyword arguments for sushy connector
+  -  Introduce ``cache_it`` and ``cache_clear``
+  -  Fix crashing `BasicAuth` context manager
+  -  Remove stray unicode character from tox.ini
+  -  Add `ProtocolFeaturesSupported` property of the `Root Service`
+  -  Add product property to the root Sushy object
+  -  Update to use mapped field for Settings Message Severity field
+  -  Omit tests from code coverage run
+  -  Use templates for cover and lower-constraints
+  -  Return sizes of storage devices
+  -  Fix for MediaTypes in virtual media
+  -  Add Message Registry File resource
+  -  Cleanup names for message registry
+  -  Add storage and simple_storage attr to system
+  -  Caching ResourceCollectionBase::get_members()
+  -  Add a virtual media resource
+  -  add python 3.6 unit test job
+  -  switch documentation job to new PTI
+  -  import zuul job settings from project-config
+  -  Add system storage resource support
+  -  Cleanup docstring for removed etag param
+  -  Add Redfish Message Registry resource
+  -  Add DictionaryField class to resource base
+  -  Update reno for stable/rocky
+
+-------------------------------------------------------------------
+Tue Sep 11 08:33:41 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid repetition of name in summary (rpmlint).
+
+-------------------------------------------------------------------
+Tue Sep 11 07:55:30 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.6.0
+  - Update reno for stable/queens
+  - Switch to use stestr for unit test
+  - Add processor ProcessorId field and Status field
+  - Hide Attribute Registry property in Bios
+  - Add reusable ActionField
+  - fix error url
+  - Zuul: Remove project name
+  - Add system simple storage resource support
+  - Cleanup unittest file loading
+  - Add storage volume
+  - Do not run functional (API) tests in the CI
+  - Introduce BIOS API
+  - Fix wrong message of invalid boot "enabled" parameter
+  - Gate fix: Cap hacking to avoid gate failure
+  - Add storage disk drive
+  - Replace curly quotes with straight quotes
+  - Add system status field
+  - Change BootSourceOverrideMode from BIOS to Legacy
+  - fix tox python3 overrides
+  - tox: Use default Python 3 version, remove pypy
+  - Restores sushy session functionality.
+  - Remove etag from Bios
+  - Mark Systems/Managers/SessionService optional
+  - Update Launchpad references to Storyboard
+  - Create mappings for System Indicator LED
+  - Updated from global requirements
+  - add lower-constraints job
+
+-------------------------------------------------------------------
+Mon Sep  3 18:03:58 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.3.2
+  - Updated from global requirements
+  - Mark Systems/Managers/SessionService optional
+
+-------------------------------------------------------------------
+Fri Feb 23 13:44:47 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Mon Feb 12 10:10:57 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.3.1 (bsc#1078607)
+  - Enable some off-by-default checks
+  - Add ListField class to resource base
+  - Update .gitreview for stable/queens
+  - Avoid tox_install.sh for constraints support
+  - Replace HTTP numeric constants with http_client constants
+  - Add PUT method to connector
+  - Restore the default semantics of refresh()
+  - Indicating the location tests directory in oslo_debug_helper
+  - Zuul: Remove project name
+  - flake8: Enable some off-by-default checks
+  - Adds EthernetInterface to the library
+  - Add int_or_none adapter function
+  - zuul: clean up job definition
+  - Update documentation related to 'refresh()'
+  - Add DELETE method to connector
+  - Add Zuul v3 jobs in tree
+  - Update UPPER_CONSTRAINTS_FILE for stable/queens
+  - Update method docstring
+  - Use the tempest plugin from openstack/ironic-tempest-plugin
+  - Refining the resource refresh
+  - Update some tests to copy the dictionaries passed in
+  - Update reno for stable/pike
+  - Restores sushy session functionality.
+  - Follow-up patch for 8fe2904a62b0f56dc3fc3fefc5a5a746911ce891
+  - Restore interface of Connector
+  - Implement Redfish Sessions
+  - Updated from global requirements
+  - Add support to accept custom connector object
+
+-------------------------------------------------------------------
+Wed Feb  7 14:09:31 UTC 2018 - tbechtold@suse.com
+
+- Initial packaging (version 1.1.0)

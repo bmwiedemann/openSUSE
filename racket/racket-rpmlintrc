@@ -1,0 +1,8 @@
+addFilter(".*unexpanded-macro.*/usr/share/racket/collects/srfi/.*")
+addFilter(".*W:.*explicit-lib-dependency.*lib.*")
+addFilter(".*W:.*zero-length.*")
+addFilter(".*W:.*pem-certificate.*/test\.pem.*")
+addFilter(".*W:.*script-without-shebang.*/starter-sh.*")
+addFilter(".*file-contains-buildroot.*/usr/share/doc/packages/racket/syntax/module-helpers.html.*")
+addFilter(".*file-contains-buildroot.*/usr/share/doc/packages/racket/rackunit/api.html.*")
+addFilter(".*file-contains-buildroot.*/usr/share/doc/packages/racket/reference/collects.html.*")

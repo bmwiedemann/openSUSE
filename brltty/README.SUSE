@@ -1,0 +1,31 @@
+Some notes on SUSE-specific configuration of brltty
+========================================================================
+
+USB:
+------------------------------------------------------------------------
+Most USB Braille displays should be autodetected by udev, starting brltty.
+However, some Braille displays have the same product IDs as generic
+USB-to-serial adapters, and, in order to avoid a conflict with these
+adapters, the brltty udev rule for them has been disabled. If you have
+an Albatross, Cebra, Hims, HandyTech, or MDV display and connect it
+via USB, then you may want to edit /usr/lib/udev/rules.d/69-brltty.rules
+and uncomment the following line:
+#ENV{PRODUCT}=="403/6001/*", ENV{BRLTTY_BRAILLE_DRIVER}="at,ce,hm,ht,md", GOTO="brltty_usb_run"
+
+See https://bugzilla.opensuse.org/show_bug.cgi?id=1007652 for more
+information.
+
+Alternatively, you can have systemd automatically start brltty at boot. Run
+chkconfig brltty on
+as the superuser.
+
+
+Authentication:
+------------------------------------------------------------------------
+By default, brltty authenticates with clients (such as orca) via a key
+file. However, SUSE enables polkit-based authentication instead.
+This eliminates the need to, ie, add users to the brlapi group in order
+to be able to have orca interact with the Braille display. It also
+disallows remote users from interacting with the display. If you would
+like to change this behavior, then you can edit the api-parameters
+directive in /etc/brltty.conf.

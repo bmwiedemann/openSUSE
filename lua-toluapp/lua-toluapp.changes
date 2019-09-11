@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Tue Feb 26 03:51:05 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- fix tumbleweed build
+- add scons-0.98.1-Options-deprecated.patch
+  * Options object has been deprecated since scons 0.98.1
+    use newer Variables object if available
+
+-------------------------------------------------------------------
+Thu Jan 25 20:16:23 UTC 2018 - tchvatal@suse.com
+
+- Fix build with py3 scons:
+  * toluapp-scons-py3.patch
+
+-------------------------------------------------------------------
+Mon Oct 30 14:45:32 UTC 2017 - jmatejek@suse.com
+
+- do not build for Lua 5.2
+
+-------------------------------------------------------------------
+Sun Sep 10 13:05:01 UTC 2017 - rpm@fthiessen.de
+
+- Do not use tolua++-1.0.93-lua52.patch when using lua51 as it
+  will produce runtime issues. Fixes boo#1057973
+
+-------------------------------------------------------------------
+Tue Sep  5 10:56:14 UTC 2017 - tchvatal@suse.com
+
+- Tweak the tolua++-1.0.93-lua52.patch to work with lua5.1 too correctly
+
+-------------------------------------------------------------------
+Fri Jul 14 11:53:09 UTC 2017 - tchvatal@suse.com
+
+- Add patch to fix build with lua5.2 tolua++-1.0.93-lua52.patch
+
+-------------------------------------------------------------------
+Fri Jul 14 11:39:07 UTC 2017 - tchvatal@suse.com
+
+- Switch to mutlibuild approach for lua modules building
+- Make all the develpacakges to conflict with each other
+
+-------------------------------------------------------------------
+Tue Jul 11 09:30:42 UTC 2017 - tchvatal@suse.com
+
+- Fix build with namespaced lua
+
+-------------------------------------------------------------------
+Tue Nov 15 09:35:21 UTC 2016 - olaf@aepfle.de
+
+- Remove version and timestamp from generated files
+  toluapp-build-compare.patch
+
+-------------------------------------------------------------------
+Thu Jan  7 04:17:11 UTC 2016 - i@marguerite.su
+
+- rename the library to libtolua++-5.1
+- libtolua++-5_1-devel should require toluapp-5.1,
+  which will require the library
+- fix build on openSUSE without lua-5.1.pc
+
+-------------------------------------------------------------------
+Tue Nov 10 12:26:18 UTC 2015 - mlin@suse.com
+
+- Don't version pkgconfig file
+- Delete toluapp-versioned-include.patch
+  * still have packages rely on tolua++.h
+
+-------------------------------------------------------------------
+Sun Oct 18 12:03:33 UTC 2015 - i@marguerite.su
+
+- previous upstream http://www.codenix.com/~tolua/ dead
+  now use https://github.com/LuaDist/toluapp as source
+
+-------------------------------------------------------------------
+Sat Sep  5 15:48:04 UTC 2015 - i@marguerite.su
+
+- build with versioned includes/sharedlibs.
+- add pkgconfig file
+- use update-alternatives to provides tolua++
+
+-------------------------------------------------------------------
+Wed Feb  8 07:48:02 UTC 2012 - pgajdos@suse.com
+
+- build against lua51-devel for openSUSE > 12.1 until tolua++ 
+  isn't ported to lua 5.2
+
+-------------------------------------------------------------------
+Wed Sep 28 22:10:20 UTC 2011 - pascal.bleser@opensuse.org
+
+- don't buildrequire tolua
+
+-------------------------------------------------------------------
+Wed Sep 28 20:32:52 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (1.0.93)
+

@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:50:48 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Oct 18 16:45:01 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Mon Jan 16 12:40:36 UTC 2017 - dmueller@suse.com
+
+- Initial package (1.6)
+

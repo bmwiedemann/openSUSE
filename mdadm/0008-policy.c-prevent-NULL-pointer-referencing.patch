@@ -1,0 +1,29 @@
+From 179cab343006df996f0a85a542b40e44db0c2e2f Mon Sep 17 00:00:00 2001
+From: Gioh Kim <gi-oh.kim@cloud.ionos.com>
+Date: Fri, 7 Dec 2018 12:04:44 +0100
+Subject: [PATCH] policy.c: prevent NULL pointer referencing
+
+paths could be NULL and paths[0] should be followed by NULL pointer
+checking.
+
+Signed-off-by: Gioh Kim <gi-oh.kim@cloud.ionos.com>
+---
+ policy.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/policy.c b/policy.c
+index fa67d5594c04..e3a0671f3a3a 100644
+--- a/policy.c
++++ b/policy.c
+@@ -383,7 +383,7 @@ struct dev_policy *path_policy(char **paths, char *type)
+ 	/* Now add any metadata-specific internal knowledge
+ 	 * about this path
+ 	 */
+-	for (i=0; paths[0] && superlist[i]; i++)
++	for (i=0; paths && paths[0] && superlist[i]; i++)
+ 		if (superlist[i]->get_disk_controller_domain) {
+ 			const char *d =
+ 				superlist[i]->get_disk_controller_domain(
+-- 
+2.14.0.rc0.dirty
+

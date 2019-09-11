@@ -1,0 +1,42 @@
+From 072a5e4ee6a2658d8f422a707115fb36f3e6f959 Mon Sep 17 00:00:00 2001
+From: Nathan Hjelm <hjelmn@me.com>
+Date: Tue, 25 Feb 2014 23:10:01 -0700
+Subject: [PATCH] Add a library destructor to handle cleaning up libusb.
+
+References #6
+---
+ libusb/core.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/libusb/core.c b/libusb/core.c
+index 2dd1b5f..e6e500b 100644
+--- a/libusb/core.c
++++ b/libusb/core.c
+@@ -1,7 +1,9 @@
++/* -*- Mode: C; c-basic-offset:8 ; indent-tabs-mode:t -*- */
+ /*
+  * Core functions for libusb-compat-0.1
+  * Copyright (C) 2008 Daniel Drake <dsd@gentoo.org>
+  * Copyright (c) 2000-2003 Johannes Erdfelt <johannes@erdfelt.com>
++ * Copyright (c) 2014 Nathan Hjelm <hjelmn@cs.unm.edu>
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+@@ -59,6 +61,14 @@ API_EXPORTED struct usb_bus *usb_busses = NULL;
+ 
+ #define compat_err(e) -(errno=libusb_to_errno(e))
+ 
++static void __attribute__ ((destructor)) _usb_exit (void)
++{
++	if (ctx) {
++		libusb_exit (ctx);
++		ctx = NULL;
++	}
++}
++
+ static int libusb_to_errno(int result)
+ {
+ 	switch (result) {
+-- 
+2.3.5
+

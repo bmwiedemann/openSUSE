@@ -1,0 +1,151 @@
+From: John Jolly <john.jolly@gmail.com>
+Date: Tue Sep 11 19:24:33 2018 -0600
+Subject: Add Leap 42.3 & 15.0 & Tumbleweed remove support for openSUSE 13.1 (#133)
+Patch-mainline: Upstream
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: 00cefbcb86996889471c28bafec68c65eb227858
+References: 
+
+Sync SLES-12 support.
+
+Signed-off-by: Egbert Eich <eich@suse.com>---
+ vnfs/libexec/wwmkchroot/Makefile.am              |  2 +-
+ vnfs/libexec/wwmkchroot/opensuse-13.tmpl         | 20 --------------------
+ vnfs/libexec/wwmkchroot/opensuse-15.0.tmpl       | 21 +++++++++++++++++++++
+ vnfs/libexec/wwmkchroot/opensuse-42.3.tmpl       | 21 +++++++++++++++++++++
+ vnfs/libexec/wwmkchroot/opensuse-tumbleweed.tmpl | 20 ++++++++++++++++++++
+ vnfs/libexec/wwmkchroot/sles-12.tmpl             |  4 ++--
+ 6 files changed, 65 insertions(+), 23 deletions(-)
+diff --git a/vnfs/libexec/wwmkchroot/Makefile.am b/vnfs/libexec/wwmkchroot/Makefile.am
+index 2504d8d..99bfe9b 100644
+--- a/vnfs/libexec/wwmkchroot/Makefile.am
++++ b/vnfs/libexec/wwmkchroot/Makefile.am
+@@ -1,6 +1,6 @@
+ wwmkchrootdir = $(libexecdir)/warewulf/wwmkchroot
+ 
+-dist_wwmkchroot_SCRIPTS = centos-5.tmpl centos-6.tmpl centos-7.tmpl include-rhel rhel-generic.tmpl sl-5.tmpl sl-6.tmpl sl-7.tmpl functions include-deb debian-8.tmpl debian7-32.tmpl debian7-64.tmpl golden-system.tmpl include-suse opensuse-13.tmpl sles-11.tmpl sles-12.tmpl include-ubuntu ubuntu-16.04.tmpl
++dist_wwmkchroot_SCRIPTS = centos-5.tmpl centos-6.tmpl centos-7.tmpl include-rhel rhel-generic.tmpl sl-5.tmpl sl-6.tmpl sl-7.tmpl functions include-deb debian-8.tmpl debian7-32.tmpl debian7-64.tmpl golden-system.tmpl include-suse opensuse-42.3.tmpl opensuse-15.0.tmpl opensuse-tumbleweed.tmpl sles-11.tmpl sles-12.tmpl include-ubuntu ubuntu-16.04.tmpl
+  
+ 
+ MAINTAINERCLEANFILES = Makefile.in
+diff --git a/vnfs/libexec/wwmkchroot/opensuse-13.tmpl b/vnfs/libexec/wwmkchroot/opensuse-13.tmpl
+deleted file mode 100644
+index 11596ae..0000000
+--- a/vnfs/libexec/wwmkchroot/opensuse-13.tmpl
++++ /dev/null
+@@ -1,20 +0,0 @@
+-# The general SUSE include has all of the necessary functions, but requires
+-# some basic variables specific to each chroot type to be defined.
+-. include-suse
+-
+-
+-
+-# Define the location of the YUM repository
+-ZYP_MIRROR="http://download.opensuse.org/update/13.1/x86_64/"
+-
+-# Install only what is necessary/specific for this distribution
+-PKGLIST="sysvinit aaa_base bash openSUSE-release coreutils e2fsprogs ethtool \
+-    filesystem findutils gawk grep iproute2 iputils mingetty net-tools \
+-    nfs-kernel-server pam rpcbind procps psmisc rdate rsync sed shadow rsyslog tcpd \
+-    timezone util-linux words libz1 tar less gzip which module-init-tools \
+-    udev openssh dhcp-client pciutils vim strace cronie cpufrequtils cpio wget"
+-
+-
+-
+-
+-# vim:filetype=sh:syntax=sh:expandtab:ts=4:sw=4:
+diff --git a/vnfs/libexec/wwmkchroot/opensuse-15.0.tmpl b/vnfs/libexec/wwmkchroot/opensuse-15.0.tmpl
+new file mode 100644
+index 0000000..db0f43e
+--- /dev/null
++++ b/vnfs/libexec/wwmkchroot/opensuse-15.0.tmpl
+@@ -0,0 +1,21 @@
++# The general SUSE include has all of the necessary functions, but requires
++# some basic variables specific to each chroot type to be defined.
++. include-suse
++
++
++
++# Define the location of the YUM repository
++ZYP_MIRROR="http://download.opensuse.org/distribution/leap/15.0/repo/oss/,\
++http://download.opensuse.org/update/leap/15.0/oss/"
++
++# Install only what is necessary/specific for this distribution
++PKGLIST="systemd-sysvinit aaa_base bash dracut openSUSE-release coreutils \
++    e2fsprogs ethtool filesystem findutils gawk grep iproute2 iputils \
++    mingetty net-tools nfs-kernel-server pam rpcbind procps psmisc shadow \
++    rsync sed rsyslog tcpd timezone util-linux tar less gzip kmod-compat \
++    udev openssh dhcp-client pciutils vim strace cron cpupower cpio wget zypper"
++
++
++
++
++# vim:filetype=sh:syntax=sh:expandtab:ts=4:sw=4:
+diff --git a/vnfs/libexec/wwmkchroot/opensuse-42.3.tmpl b/vnfs/libexec/wwmkchroot/opensuse-42.3.tmpl
+new file mode 100644
+index 0000000..dd6a4a7
+--- /dev/null
++++ b/vnfs/libexec/wwmkchroot/opensuse-42.3.tmpl
+@@ -0,0 +1,21 @@
++# The general SUSE include has all of the necessary functions, but requires
++# some basic variables specific to each chroot type to be defined.
++. include-suse
++
++
++
++# Define the location of the YUM repository
++ZYP_MIRROR="http://download.opensuse.org/distribution/leap/42.3/repo/oss/,\
++http://download.opensuse.org/update/leap/42.3/oss/"
++
++# Install only what is necessary/specific for this distribution
++PKGLIST="systemd-sysvinit aaa_base bash dracut openSUSE-release coreutils \
++    e2fsprogs ethtool filesystem findutils gawk grep iproute2 iputils \
++    mingetty net-tools nfs-kernel-server pam rpcbind procps psmisc shadow \
++    rsync sed rsyslog tcpd timezone util-linux tar less gzip kmod-compat \
++    udev openssh dhcp-client pciutils vim strace cron cpupower cpio wget zypper"
++
++
++
++
++# vim:filetype=sh:syntax=sh:expandtab:ts=4:sw=4:
+diff --git a/vnfs/libexec/wwmkchroot/opensuse-tumbleweed.tmpl b/vnfs/libexec/wwmkchroot/opensuse-tumbleweed.tmpl
+new file mode 100644
+index 0000000..6f973a2
+--- /dev/null
++++ b/vnfs/libexec/wwmkchroot/opensuse-tumbleweed.tmpl
+@@ -0,0 +1,20 @@
++# The general SUSE include has all of the necessary functions, but requires
++# some basic variables specific to each chroot type to be defined.
++. include-suse
++
++
++
++# Define the location of the YUM repository
++ZYP_MIRROR="http://download.opensuse.org/tumbleweed/repo/oss/"
++
++# Install only what is necessary/specific for this distribution
++PKGLIST="systemd-sysvinit aaa_base bash dracut openSUSE-release coreutils \
++    e2fsprogs ethtool filesystem findutils gawk grep iproute2 iputils \
++    mingetty net-tools nfs-kernel-server pam rpcbind procps psmisc shadow \
++    rsync sed rsyslog tcpd timezone util-linux tar less gzip kmod-compat \
++    udev openssh dhcp-client pciutils vim strace cron cpupower cpio wget zypper"
++
++
++
++
++# vim:filetype=sh:syntax=sh:expandtab:ts=4:sw=4:
+diff --git a/vnfs/libexec/wwmkchroot/sles-12.tmpl b/vnfs/libexec/wwmkchroot/sles-12.tmpl
+index 3fc1566..00b2e47 100644
+--- a/vnfs/libexec/wwmkchroot/sles-12.tmpl
++++ b/vnfs/libexec/wwmkchroot/sles-12.tmpl
+@@ -13,8 +13,8 @@ ZYP_MIRROR="SUSE-url"
+ PKGLIST="systemd-sysvinit aaa_base bash dracut sles-release coreutils e2fsprogs ethtool \
+     filesystem findutils gawk grep iproute2 iputils mingetty net-tools \
+     nfs-kernel-server pam rpcbind procps psmisc shadow rsync sed rsyslog tcpd \
+-    timezone util-linux words libz1 tar less gzip kmod-compat udev openssh \
+-    dhcp-client pciutils vim strace cron cpupower cpio wget zypper libstdc++6 libgcc_s1"
++    timezone util-linux tar less gzip kmod-compat udev openssh \
++    dhcp-client pciutils vim strace cron cpupower cpio wget zypper"
+ 
+ 
+ 

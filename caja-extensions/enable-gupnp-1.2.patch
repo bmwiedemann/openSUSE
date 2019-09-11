@@ -1,0 +1,26 @@
+Tumbleweed doesn't ship gupnp-1.0 anymore, so we try to build it with
+gupnp-1.2.
+
+--- configure.ac
++++ configure.ac
+@@ -196,7 +196,7 @@
+             fi
+             ;;
+             upnp)
+-                PKG_CHECK_MODULES(UPNP, gupnp-1.0 >= $GUPNP_REQUIRED,
++                PKG_CHECK_MODULES(UPNP, gupnp-1.2 >= $GUPNP_REQUIRED,
+                     enable_upnp=yes, enable_upnp=no)
+                 if test "${enable_upnp}" != "yes" ; then
+                     sendto_plugin_error_or_ignore "you need gupnp installed to build the upnp plugin"
+
+--- sendto/plugins/upnp/upnp.c
++++ sendto/plugins/upnp/upnp.c
+@@ -206,7 +206,7 @@
+ 		return FALSE;
+ 	g_free (upload_cmd);
+ 
+-	context_manager = gupnp_context_manager_new (NULL, 0);
++	context_manager = gupnp_context_manager_create (0);
+ 	g_assert (context_manager != NULL);
+ 	g_signal_connect (context_manager, "context-available",
+ 			  G_CALLBACK (on_context_available), NULL);

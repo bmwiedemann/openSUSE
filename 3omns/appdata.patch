@@ -1,0 +1,50 @@
+From 2567b6150ef773b5f0a53a494779ac23a37153d1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matthias=20Mail=C3=A4nder?=
+Date: Mon, 26 Dec 2016 04:12:23 +0100
+Subject: [PATCH] Add an appdata.xml file.
+
+---
+ 3omns.appdata.xml | 17 +++++++++++++++++
+ Makefile.am       |  2 ++
+ 2 files changed, 19 insertions(+)
+ create mode 100644 3omns.appdata.xml
+
+diff --git a/3omns.appdata.xml b/3omns.appdata.xml
+new file mode 100644
+index 0000000..934c11d
+--- /dev/null
++++ b/3omns.appdata.xml
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<application>
++  <id type="desktop">3omns.desktop</id>
++  <metadata_licence>CC-0</metadata_licence>
++  <project_license>GPL-3.0</project_license>
++  <name>3omns</name>
++  <summary>simple tile-based bomb-dropping deathmatch game</summary>
++  <description>
++    <p>3omns is an old-school arcade-style tile-based bomb-dropping deathmatch game.</p>
++    <p>The name is a bastardization of the word Bombs (and you should pronounce it however you want).</p>
++  </description>
++  <screenshots>
++    <screenshot type="default">https://chazomaticus.github.io/3omns/3omns-screenshot.png</screenshot>
++  </screenshots>
++  <url type="homepage">https://chazomaticus.github.io/3omns/</url>
++  <updatecontact>chaz@chazomatic.us</updatecontact>
++</application>
+diff --git a/Makefile.am b/Makefile.am
+index 4bc7938..9417a8a 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -4,9 +4,11 @@ dist_noinst_DATA = COPYING.font
+ 
+ 
+ appicondir = $(iconthemedir)/scalable/apps
++appdatadir = $(datarootdir)/appdata
+ 
+ dist_appicon_DATA = 3omns.svg
+ dist_desktop_DATA = 3omns.desktop
++dist_appdata_DATA = 3omns.appdata.xml
+ 
+ install-data-hook: update-caches
+ uninstall-hook: update-caches

@@ -1,0 +1,642 @@
+-------------------------------------------------------------------
+Sat Jul 13 16:35:55 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.18.4:
+  + Distribute extra empty space between offsets and xdisp.
+  + Improve border with calculations.
+  + Migrate build system to meson.
+  + Add OARS metadata.
+  + Update various links after bugzilla to gitlab migration.
+  + Rename icons, appstream and desktop files to consistently use
+    org.gnome.GHex ID.
+  + Add flatpak manifest for nightly builds, enable nightly builds
+    in CI.
+  + Install appstream metadata to non-deprecated location.
+  + Various updates to help docs.
+  + Updated translations.
+- Switch to meson buildsystem following upstreams port: Add meson
+  BuildRequires and macros.
+- Drop now obsolete intltool, translation-update-upstream
+  BuildRequires and glib2_gsettings_schema_requires macro and
+  conditional calling of desktop_database_post(un),
+  icon_theme_cache_post(un) and glib2_gsettings_schema_post(un) in
+  post(un).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:26:28 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct 12 13:14:53 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.18.3:
+  + Add Language headers to po files.
+  + Unbreak build with GCC 4.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 14 18:03:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Fix build with GCC 6.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 17 17:49:10 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20.2  Fate#318572
+
+-------------------------------------------------------------------
+Thu May 12 17:18:41 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Update the AppData file to spec version 0.7+.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 15 17:18:45 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Thu Oct  1 18:42:25 UTC 2015 - zaitor@opensuse.org
+
+- Own %{_datadir}/icons/hicolor/512x512 and subfolders on older
+  versions of openSUSE.
+
+-------------------------------------------------------------------
+Wed Sep 23 08:43:47 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 10:43:50 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.91:
+  + Fix icon installation.
+  + Update screenshot in appdata file.
+- Changes from version 3.17.90:
+  + Add symbolic icon.
+  + Include higher resolution app icons.
+  + Support decoding 64-bit integers.
+  + Allow immediate clicking between gtkhex views.
+  + Improve the default file name when printing to a file.
+  + Updated translations.
+- Drop HighContrast icon theme handling in post/postun.
+
+-------------------------------------------------------------------
+Tue Apr 15 09:32:45 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.10.1:
+  + Update URLs in doap and appdata files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 18:53:08 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.10.0:
+  + Stable release, no changes from version 3.9.92.
+
+-------------------------------------------------------------------
+Wed Sep 18 20:35:21 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.92:
+  + Ship an appdata file.
+  + Don't use AM_GNU_GETTEXT.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May 13 18:51:32 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Validate the .desktop file on 'make check'.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 25 16:38:32 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 19 21:42:42 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.90:
+  + Make it possible to resize the main window to fit smaller
+    screens.
+  + Updated translations.
+- Drop ghex-empty-search-crash.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Feb 19 20:04:46 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 19 19:15:12 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.2:
+  + New icons for the HighContrast theme.
+  + Add search keywords to the .desktop file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 19 18:51:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.1:
+  + Use yelp-tools instead gnome-doc-utils.
+  + Updated translations.
+- Replace gtk-doc-utils-devel BuildRequires with yelp-tools,
+  following upstreams port to the new documentation infrastructure.
+
+-------------------------------------------------------------------
+Tue Feb 19 17:17:47 CET 2013 - sbrabec@suse.cz
+
+- Removed obsolete ghex-empty-search-crash.patch. (bgo#473208)
+
+-------------------------------------------------------------------
+Tue Oct 16 16:01:53 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.6.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 27 18:51:28 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 19 11:05:09 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + Improvements to the size allocation code in the GtkHex widget
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 20 20:34:28 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Port to GtkApplication
+  + Remove deprecated use of GDK_THREADS_ENTER/LEAVE
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 17 20:49:40 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.2:
+  + Fix drag-and-drop from file managers
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 16 17:33:06 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.1:
+  + Prepend 0x to the offset in status bar.
+  + Avoid using gtk 3.4 deprecated symbols.
+  + Windows build improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May 14 14:46:38 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 21:24:49 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.4.0:
+  + Fix a desktop-file-validate warning about ghex.desktop.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:40:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.91:
+  + Store the UI definition file as resource data
+  + Better experience for the "Goto Byte..." dialog
+  + Various code cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 21 09:47:28 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.90:
+  + Fix excessive scrolling back to cursor
+  + Use maintainer mode by default
+  + Remove the use of deprecated GTK+ API
+  + Windows port fixes
+  + Visual improvements with latest Adwaita theme
+  + Updated translations.
+- Stop passing --disable-schemas-install to configure: there is no
+  gconf schema anymore.
+
+-------------------------------------------------------------------
+Mon Sep 26 19:47:21 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.0.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  6 06:24:54 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.90.2:
+  + Fix endianess conversion for 64-bit floating point (bgo#625968,
+    bgo#648644)
+  + Update oudated FSF mailing address (bgo#656596)
+  + Build system cleanups (bgo#656919)
+  + Updated translations.
+- Remove renaming hack of sr@Latn to sr@latin: fixed upstream.
+- Stop changing Name and GenericName in .desktop file: they're
+  correct upstream.
+- Remove sed hack to remove Development category in .desktop file,
+  and instead use -r in %suse_update_desktop_file to replace
+  existing categories. Add GNOME category too.
+- Drop explicit Requires for atk-devel, gail-devel, gtk2-devel in
+  devel subpackage: the right Requires will automatically be added
+  the pkgconfig() way.
+- Split library in libgtkhex-3-0 subpackage, to follow shared
+  library packaging policy.
+
+-------------------------------------------------------------------
+Mon Aug 15 19:37:07 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 2.90.1:
+  + Port from GConf to GSettings
+  + Scrolling code cleanup
+  + Moved internal pkgconfig dependencies to Requires.private
+  + Bugs fixed: bgo#656080, bgo#655973, bgo#572697.
+  + Updated translations.
+- Drop pkgconfig(gconf-2.0) BuildRequires, as the code has been
+  ported to GSettings.
+- Replace the gconf schema handling with gsettings one.
+
+-------------------------------------------------------------------
+Fri Aug  5 20:51:00 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 2.90.0:
+  + Changes for GNOME 3 support:
+    - Port from poptOption to GOptionEntry
+    - Replace deprecated GTK+ symbols
+    - Remove libgnome and libgnomeui dependency
+    - Use Gio instead GnomeVfs
+    - Replace Gdk drawing with Cairo
+    - Port from BonoboUI to GtkUIManager
+    - Remove custom print widgets
+    - Port from libgnomeprint to GtkPrint
+    - Port to GTK+ 3
+    - Rename the shared libray for parallel installability
+  + New Features and UI Improvements:
+    - Improve About dialog
+    - Add relative offset jumping with + and - in 'Go to Byte'
+    - Use double buffering for drawing, reducing flicker
+  + Bug fixes:
+    - Convert po files to UTF-8
+    - Fix various compiler warnings
+    - Fix xsltproc warnings
+    - Fix the order of LDADD
+    - Fix build with stricter linker on latest Fedora
+    - Fix gnome-doc-utils support
+    - Modernize autotools configuration
+    - Use upstream gettext instead the glib one
+    - Fix regression with close on save confirmation
+    - Avoid showing status message on an already destroyed window
+    - Update overview when deleting a character with the 'DEL' key
+  + Bugs fixed: bgo#333819, bgo#445053, bgo#508563, bgo#547882,
+    bgo#548438, bgo#570688, bgo#571892, bgo#584006, bgo#590995,
+    bgo#590996, bgo#597683, bgo#597684, bgo#597685, bgo#597687,
+    bgo#597688, bgo#608275, bgo#608284, bgo#609277, bgo#609548,
+    bgo#612693, bgo#612885, bgo#630377.
+  + Updated translations.
+- Remove libgnomeui-devel and libgnomeprintui-devel BuildRequires.
+- Add pkgconfig(atk), pkgconfig(gail-3.0), pkgconfig(gconf-2.0),
+  pkgconfig(gio-2.0) and pkgconfig(gtk+-3.0) BuildRequires.
+
+-------------------------------------------------------------------
+Sat Feb 12 17:43:30 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Mon Mar 16 14:46:16 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Sun Feb 22 17:37:18 CET 2009 - vuntz@novell.com
+
+- Update to version 2.24.0:
+  + set G_LOG_DOMAIN for the shared libgtkhex library so that
+    warning messages use the right domain
+  + fix background between the hex and ascii widgets becoming dark
+    black. (bgo#527279)
+  + Fix the allocation code to allocate the child widgets relative
+    to the GtkHex allocation.x and allocation.y coordinates instead
+    of (0,0). (bgo#527272)
+  + fix a bug where the selection would always start at 0 if the
+    user only used the keyboard
+  + Update the About Dialog to use the application icon.
+    (bgo#520983)
+  + fix ghex2 printing g_warning on startup because it uses a
+    deprecated API (bgo#564371)
+  + remove unused variables (bgo#564375)
+  + make desktop files follow freedesktop spec (bgo#568023)
+  + Fix an off-by-one error in reporting the number of bytes
+    selected in the status bar
+  + GObject type ids should be instances of GType, not of guint
+- Remove BuildRequires: gail-devel (provided by gtk2-devel),
+  gnome-common, gnutls-devel, libglade2-devel, libwnck-devel,
+  perl-XML-Parser, scrollkeeper
+- Remove check for old versions of openSUSE.
+- Do not set DocPath in the desktop file (not needed by yelp).
+- Remove call to autoreconf.
+
+-------------------------------------------------------------------
+Sat Jan 31 20:46:59 CET 2009 - vuntz@novell.com
+
+- Use sr@latin instead of sr@Latn.
+
+-------------------------------------------------------------------
+Mon Jan 19 22:11:03 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files [BNC#357465] 
+
+-------------------------------------------------------------------
+Tue Sep 02 17:28:13 CEST 2008 - mboman@novell.com
+
+- Update to version 2.22.0:
+  + Cosmetic version bump
+
+-------------------------------------------------------------------
+Thu May  8 17:28:13 CEST 2008 - rodrigo@suse.de
+
+- Upstream remaining patch 
+
+-------------------------------------------------------------------
+Mon Mar 31 19:57:05 CEST 2008 - vuntz@suse.de
+
+- Update to version 2.21.92 (too many changes to list here)
+- Remove ghex_60921.diff (fixed upstream), ghex_60922.diff (fixed
+  upstream), ghex-search-crash.patch (fixed upstream).
+- Remove workaround for no translations.
+- Add gnome-doc-utils-devel buildrequires.
+- Stop using %run_ldconfig and call ldconfig.
+
+-------------------------------------------------------------------
+Thu Mar 13 16:58:01 CET 2008 - sbrabec@suse.cz
+
+- Custom look'n'feel gconf keys moved to gconf2-branding-openSUSE.
+
+-------------------------------------------------------------------
+Thu Mar  6 19:05:47 CET 2008 - maw@suse.de
+
+- Fix the build when against newer versions of intltool.
+
+-------------------------------------------------------------------
+Thu Oct 11 16:39:38 CEST 2007 - sbrabec@suse.cz
+
+- Removed bogus dependency on mDNSResponder.
+
+-------------------------------------------------------------------
+Mon Sep  3 16:46:11 CEST 2007 - sbrabec@suse.cz
+
+- Fixed crash for empty search string (GNOME#473208).
+
+-------------------------------------------------------------------
+Thu Aug  9 19:30:43 CEST 2007 - maw@suse.de
+
+- Fix up the lang subpackage.
+
+-------------------------------------------------------------------
+Wed Aug  8 01:36:51 CEST 2007 - mauro@suse.de
+
+- Split out a -lang subpackage
+- Add %fdupes stuff
+
+-------------------------------------------------------------------
+Fri Apr 27 12:32:12 CEST 2007 - sbrabec@suse.cz
+
+- Do not call meinproc (#227624).
+
+-------------------------------------------------------------------
+Wed Feb  7 12:27:30 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552).
+
+-------------------------------------------------------------------
+Wed Jan  3 18:08:18 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+- Created ghex-devel subpackage.
+
+-------------------------------------------------------------------
+Tue Sep 19 18:54:10 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.8.2
+- translation updates 
+
+-------------------------------------------------------------------
+Wed Apr 19 19:44:35 CEST 2006 - sbrabec@suse.cz
+
+- Fixed crash in search (#155494).
+
+-------------------------------------------------------------------
+Wed Apr 19 18:33:44 CEST 2006 - sbrabec@suse.cz
+
+- I18N fix.
+
+-------------------------------------------------------------------
+Tue Feb 28 15:25:33 CET 2006 - sbrabec@suse.cz
+
+- Use kdelibs3-doc in BuildRequires for meinproc (#153635#c14).
+
+-------------------------------------------------------------------
+Fri Feb 17 22:57:05 CET 2006 - sreeves@suse.de
+
+- Update .desktop file (Name, GenericName, Comment, DocPath)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Feb 22 01:15:59 CET 2005 - ro@suse.de
+
+- change category to build 
+
+-------------------------------------------------------------------
+Fri Feb 18 17:33:06 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 2.8.1.
+
+-------------------------------------------------------------------
+Tue Nov  2 17:11:08 CET 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Wed Aug 25 08:23:49 CEST 2004 - clahey@suse.de
+
+- Cache the ghex help and show ghex in khelpcenter.
+
+-------------------------------------------------------------------
+Fri Jul 16 11:31:52 CEST 2004 - shprasad@suse.de
+
+- Fixes bug #60916 (Fix given by smadduri@novell.com)
+  Corrects Typo mistakes in status messages
+- Fixes bug #60919 (Fix given by smadduri@novell.com)
+  Status bar resets upon file close
+- Fixes bug #60921 (Fix given by smadduri@novell.com)
+  Removed ellipses in Menu option "Character Table"
+- Fixes bug #60922 (Fix given by smadduri@novell.com)
+  Removes Duplicate accelerator keys for Edit menu options.
+- Fixes bug #60918 (Fix given by smadduri@novell.com)
+  Avoids Crashing when trying to open /proc files.
+
+-------------------------------------------------------------------
+Wed Jun 23 13:52:02 CEST 2004 - shprasad@suse.de
+
+- Fixes bug #60089 (Fix given by smadduri@novell.com)
+  Changed The Title Pattern. 
+
+-------------------------------------------------------------------
+Wed Jun 23 13:49:34 CEST 2004 - shprasad@suse.de
+
+- Fixes bug #59873 (Fix given by smadduri@novell.com)
+  Changed the default Fonts.  
+
+-------------------------------------------------------------------
+Wed May 05 16:35:09 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.6.0 (GNOME 2.6).
+
+-------------------------------------------------------------------
+Wed Mar 10 10:34:58 CET 2004 - sbrabec@suse.cz
+
+- Fixed gconf schemas installation (#33114).
+
+-------------------------------------------------------------------
+Fri Feb 20 14:33:02 CET 2004 - sbrabec@suse.cz
+
+- Fixed PreReq.
+
+-------------------------------------------------------------------
+Thu Feb 12 16:51:37 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 2.4.1.
+
+-------------------------------------------------------------------
+Sat Jan 10 18:21:54 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Oct 27 13:11:20 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 2.4.0.1 (GNOME 2.4).
+
+-------------------------------------------------------------------
+Sun Sep 14 23:04:39 CEST 2003 - adrian@suse.de
+
+- add Editor Category
+
+-------------------------------------------------------------------
+Mon Aug 18 14:47:23 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.2.1 (GNOME2).
+
+-------------------------------------------------------------------
+Wed May 28 12:41:34 CEST 2003 - sbrabec@suse.cz
+
+- Include all doc and omf files info package.
+
+-------------------------------------------------------------------
+Wed May 28 01:02:49 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Mon Nov 11 11:26:13 CET 2002 - ro@suse.de
+
+- changed neededforbuild <jade_dsl> to <openjade>
+
+-------------------------------------------------------------------
+Tue Oct 22 11:26:50 CEST 2002 - hhetter@suse.de
+
+- added libxslt to #neededforbuild to get scrollkeeper to run
+- removed wrong docdir 
+
+-------------------------------------------------------------------
+Fri Sep 27 14:34:27 CEST 2002 - ro@suse.de
+
+- Added alsa alsa-devel to neededforbuild (esound)
+
+-------------------------------------------------------------------
+Fri Jul 26 22:21:07 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Tue May 28 01:32:47 CEST 2002 - ro@suse.de
+
+- removed gpc from neededforbuild 
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:13 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Fri Nov 30 15:08:32 CET 2001 - ro@suse.de
+
+- changed neededforbuild <docbktls> to <docbook-toys>
+
+-------------------------------------------------------------------
+Wed Nov 21 00:05:05 CET 2001 - ro@suse.de
+
+- added freetype2 to neededforbuild 
+
+-------------------------------------------------------------------
+Fri Jun 15 10:46:31 CEST 2001 - hhetter@suse.de
+
+- update to 1.2.1
+- use bz2 
+- added scrollkeeper to neededforbuild
+- added suse_update_config
+
+-------------------------------------------------------------------
+Tue Mar 27 12:08:54 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <docbkdsl> to <docbook-dsssl-stylesheets>
+
+-------------------------------------------------------------------
+Thu Mar 22 17:22:29 CET 2001 - hhetter@suse.de
+
+- updated to version 1.2 (RC1)
+- specfile improvements
+
+-------------------------------------------------------------------
+Wed Mar 14 16:54:51 CET 2001 - ro@suse.de
+
+- changed neededforbuild <docbk_4> to <docbook_4> 
+
+-------------------------------------------------------------------
+Thu Feb 22 13:53:09 CET 2001 - hhetter@suse.de
+
+- initial build
+- tested on 7.1 in GNOME1.4 Environment 
+

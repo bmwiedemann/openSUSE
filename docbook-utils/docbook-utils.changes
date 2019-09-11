@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Sat Jan 21 00:10:19 UTC 2017 - bwiedemann@suse.com
+
+- Add support_source_date_epoch.patch to allow for reproducible builds
+  of depending packages like freerdp
+
+-------------------------------------------------------------------
+Sun Oct 19 14:05:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms of jw script
+- add patches:
+  * docbook-utils-0.6.14-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Wed Apr 18 07:51:09 UTC 2012 - coolo@suse.com
+
+- split out the backends that do not require tex to work
+
+-------------------------------------------------------------------
+Thu Dec  1 16:45:16 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Dec 22 18:40:40 CET 2009 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Mar 17 11:15:39 CET 2008 - werner@suse.de
+
+- Use texlive-jadetex instead of jadetex
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Nov 26 13:11:21 CET 2004 - ke@suse.de
+
+- Require 'jadetex'; reported by Philipp Thomas [#48577].
+
+-------------------------------------------------------------------
+Mon Nov  8 16:51:01 CET 2004 - ke@suse.de
+
+- Prepend ':' to the list of SGML_EXTRA_CATALOGS to make sure
+  SGML_CATALOG_FILES are always properly separated; reported by Ruediger
+  Oertel.
+
+-------------------------------------------------------------------
+Mon Nov  8 13:18:37 CET 2004 - ke@suse.de
+
+- Fix problem with finding XML related catalogs; reported by Kerry Cox
+  [# 48020].
+
+-------------------------------------------------------------------
+Thu Feb 12 11:54:54 CET 2004 - ke@suse.de
+
+- Update to version 0.6.14: bugfixes, use w3m als fallback for text
+  generation.
+
+-------------------------------------------------------------------
+Thu Jan 15 12:02:57 CET 2004 - ke@suse.de
+
+- Update to version 0.6.13.
+
+-------------------------------------------------------------------
+Thu Jun 12 15:18:36 CEST 2003 - coolo@suse.de
+
+- package dirs too
+
+-------------------------------------------------------------------
+Mon May 19 08:04:09 CEST 2003 - coolo@suse.de
+
+- package docs too
+
+-------------------------------------------------------------------
+Tue Apr 17 00:37:22 CEST 2001 - adrian@suse.de
+
+- created package
+

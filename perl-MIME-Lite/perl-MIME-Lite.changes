@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Mon Nov 25 07:36:22 UTC 2013 - coolo@suse.com
+
+- updated to 3.030
+ Make send_by_sendmail set sender like documentation says it does (thanks,
+ Michael Schout!)
+
+-------------------------------------------------------------------
+Wed Jun  5 12:31:14 UTC 2013 - coolo@suse.com
+
+- updated to 3.029
+  Allow the MIME-Version header to be replaced (thanks, Florian!)
+
+-------------------------------------------------------------------
+Tue Dec  6 11:59:59 UTC 2011 - coolo@suse.com
+
+- shorten license string
+
+-------------------------------------------------------------------
+Fri Nov 18 11:07:20 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Nov  9 07:54:30 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 3.028: documentation fixes
+
+-------------------------------------------------------------------
+Wed Dec  1 15:40:42 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:32 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Wed Jan 13 16:35:36 CET 2010 - anicka@suse.cz
+
+- update to 3.027
+ * Add send_to_testfile method
+ * Fix tests to pass with MIME::Types 1.28
+ * Added back support for providing a non-default SMTP port
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Fri Feb 27 15:38:50 CET 2009 - anicka@suse.cz
+
+- update to 3.024
+ * Respect crazy people who put multiple Cc or Bcc headers in message
+ * Cope with missing local sendmail
+ * fixes
+- require perl-Email-Date-Format, perl-MailTools, perl-MIME-Types
+
+-------------------------------------------------------------------
+Sat Mar 15 08:26:04 CET 2008 - coolo@suse.de
+
+- removing executable bits on documentation
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:48 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 28 22:12:42 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Aug 22 15:08:51 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 14 16:48:05 CEST 2003 - freitag@suse.de
+
+- removed useless comments and fixed the docs 
+
+-------------------------------------------------------------------
+Mon Jul 14 16:21:36 CEST 2003 - freitag@suse.de
+
+- changed to vendor directories, used autobuild macros 
+
+-------------------------------------------------------------------
+Wed Jun 18 10:48:11 CEST 2003 - coolo@suse.de
+
+- package directories
+
+-------------------------------------------------------------------
+Mon May 26 00:14:27 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Mon May 19 14:00:50 CEST 2003 - freitag@suse.de
+
+- update to version 3.01, only small maintenance, no new feature. 
+  removed perllocal.pod off the filesystem
+
+-------------------------------------------------------------------
+Thu Aug  8 18:45:59 CEST 2002 - mls@suse.de
+
+- use sitearch macro
+
+-------------------------------------------------------------------
+Tue Jul 30 09:13:50 CEST 2002 - freitag@suse.de
+
+- update to version 2.117 with feature improvements. 
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Fri Jun  8 10:57:45 CEST 2001 - freitag@suse.de
+
+- new package with initial version 2.111, required by pdb 
+

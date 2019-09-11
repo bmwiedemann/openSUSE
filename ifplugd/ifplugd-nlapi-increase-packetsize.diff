@@ -1,0 +1,11 @@
+--- ifplugd-0.28/src/nlapi.c.orig	2005-01-04 16:25:31.000000000 -0800
++++ ifplugd-0.28/src/nlapi.c	2017-02-25 21:18:44.487307354 -0800
+@@ -71,7 +71,7 @@
+     
+     for (;;) {
+         int bytes;
+-        char replybuf[1024];
++        char replybuf[4096];
+         struct nlmsghdr *p = (struct nlmsghdr *) replybuf;
+         
+         if ((bytes = recv(nlapi_fd, &replybuf, sizeof(replybuf), block ? 0 : MSG_DONTWAIT)) < 0) {

@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Sun Nov 27 06:57:17 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Mar  9 12:30:16 CET 2011 - tiwai@suse.de
+
+- Fix post scripts to use new gtk2_immodule_* macros (bnc#678080) 
+
+-------------------------------------------------------------------
+Fri Dec 17 10:47:56 UTC 2010 - coolo@novell.com
+
+- fix file list
+
+-------------------------------------------------------------------
+Mon Feb  1 12:33:30 UTC 2010 - jengelh@medozas.de
+
+- Package baselibs.conf
+
+-------------------------------------------------------------------
+Tue Nov 25 17:22:20 CET 2008 - sbrabec@suse.cz
+
+- Supplement gtk2-32bit/gtk2-64bit in baselibs.conf (bnc#354164).
+
+-------------------------------------------------------------------
+Mon Jan  8 00:11:59 CET 2007 - ro@suse.de
+
+- GNOME moved to /usr 
+
+-------------------------------------------------------------------
+Tue Nov  7 15:29:51 CET 2006 - meissner@suse.de
+
+- split biarch and cflags patch.
+
+-------------------------------------------------------------------
+Sat Oct 28 22:58:33 CEST 2006 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Tue Feb 28 19:12:05 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(gtk2:ta)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:00 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Aug 25 13:56:16 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #44155: add /usr/bin/touch to PreReq:.
+
+-------------------------------------------------------------------
+Tue Mar 30 14:32:04 CEST 2004 - sbrabec@suse.cz
+
+- Fixed libtool rpath (#36361).
+
+-------------------------------------------------------------------
+Tue Feb  3 23:36:11 CET 2004 - mfabian@suse.de
+
+- update to 2.2.
+- use # norootforbuild
+
+-------------------------------------------------------------------
+Fri Sep  5 11:31:35 CEST 2003 - mfabian@suse.de
+
+- Bugzilla #29417: don't try to call in gtk-query-immodules-2.0
+  in %post and %postun, just trigger a run of SuSEconfig.gtk2
+  which will then call gtk-query-immodules-2.0.
+
+-------------------------------------------------------------------
+Wed Jul 16 16:47:46 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+- Require gtk2.
+
+-------------------------------------------------------------------
+Sun Jun 15 12:37:02 CEST 2003 - mfabian@suse.de
+
+- fix "directory not owned by any package".
+
+-------------------------------------------------------------------
+Mon May 19 10:52:31 CEST 2003 - mfabian@suse.de
+
+- new package, version 0.20030519

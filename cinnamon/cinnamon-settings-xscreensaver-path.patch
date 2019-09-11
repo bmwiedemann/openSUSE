@@ -1,0 +1,12 @@
+--- a/files/usr/share/cinnamon/cinnamon-settings/modules/cs_screensaver.py
++++ b/files/usr/share/cinnamon/cinnamon-settings/modules/cs_screensaver.py
+@@ -35,7 +35,7 @@ LOCK_INACTIVE_OPTIONS = [
+     (3600, _("1 hour"))
+ ]
+ 
+-XSCREENSAVER_PATH = "/usr/share/xscreensaver/config/"
++XSCREENSAVER_PATH = "/etc/xscreensaver/"
+ 
+ 
+ def list_header_func(row, before, user_data):
+Только в b/files/usr/share/cinnamon/cinnamon-settings/modules: cs_screensaver.py.orig

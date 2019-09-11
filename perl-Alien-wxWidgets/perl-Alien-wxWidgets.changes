@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Tue Apr 11 05:01:27 UTC 2017 - coolo@suse.com
+
+- updated to 0.68
+   see /usr/share/doc/packages/perl-Alien-wxWidgets/Changes
+
+  0.68  Sat Apr 8 2017
+      - RT:120887 - patch from Jim Keenan for '.' no longer in@INC
+      - RT:94367  - allow ENV setting for wx-config
+      - Fix current OSX builds
+  
+  0.67  Tue Mar 10 2015
+      - pause indexing fix
+
+-------------------------------------------------------------------
+Sat Nov 26 13:56:53 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Add perl-Alien-wxWidgets-dump_sorted_config.patch:
+  sort config dictionaries to make builds deterministic
+
+-------------------------------------------------------------------
+Sun Nov 13 15:11:39 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- updated wxWidgets requirements from 2.8 to 3.0 for
+  distribution versions providing wxWidgets-3_0-nostl.
+
+-------------------------------------------------------------------
+Tue Apr 14 08:45:38 UTC 2015 - coolo@suse.com
+
+- updated to 0.67
+   see /usr/share/doc/packages/perl-Alien-wxWidgets/Changes
+
+  0.66  Tue Mar 10 2015
+      - add support for wxWidgets 3.0.1 and 3.0.2
+      - make default wxWidgets 3.0.2
+      - graphics context included now default on Win32
+      - build on MacOSX - xcode 5.x/6.x
+
+-------------------------------------------------------------------
+Tue Jun 17 07:10:00 UTC 2014 - coolo@suse.com
+
+- remove copy of GNU patch
+
+-------------------------------------------------------------------
+Sun Jun  8 11:17:07 UTC 2014 - coolo@suse.com
+
+- updated to 0.65
+ 0.65  Mon Mar 31 2014
+     - Update default to wxWidgets 3.0.0
+     - build on MacOSX Mavericks with Xcode 4.6.3
+     - install builtins on wxMSW (used by some wxWidgets extensions)
+ 
+ 0.64  Sat Apr 13 2013
+     - Build IPC on Windows
+ 
+ 0.63  Fri Oct 26 2012
+     - Patches for wxGTK build fixing dir dialog issues
+ 
+ 0.62  Tue Oct 2 2012
+     - Fix patching on MSWin when buildpaths have spaces.
+     - Allow addition of user patch - --wxWidgets-userpatch
+     - Expand README.txt
+     - Another Mac OS X SDK change
+ 
+ 0.61  Fri Sep 21 2012
+     - change default debug level for wxWidgets >= 2.9 to 1 ( was 0)
+     - fix several incorrect wxWidgets version checks 
+ 
+ 0.60  Fri Aug 24 2012
+     - allow building 2.9.4
+     - correct SDKs for Mountain Lion
+     - fixes for XCode 4.4
+ 
+ 0.59  Tue May 01 2012
+     - Version sub modules to keep meta info users happy
+ 
+ 0.58  Thu Apr 12 2012
+     - WXWIN / WXDIR MSWin32 fix.
+
+-------------------------------------------------------------------
+Tue Apr 12 05:24:58 UTC 2011 - coolo@opensuse.org
+
+- fix build with new wxWidgets
+
+-------------------------------------------------------------------
+Mon Dec 27 00:37:45 UTC 2010 - pascal.bleser@opensuse.org
+
+- spec file rewrite
+
+- added patch to prevent building wxGTK
+
+-------------------------------------------------------------------
+Wed Dec  1 13:30:35 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Nov 26 10:01:55 UTC 2010 - pth@novell.com
+
+- initial package 0.51
+  * created by cpanspec 1.78
+- Spec file cleaned with spec-cleaner

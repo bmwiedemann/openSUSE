@@ -1,0 +1,137 @@
+From: Chet Ramey
+Subject: Re: [bug-bash] bash-5.0: problem with variable scoping in posix-mode
+
+> > Description:
+> > 
+> > There is a problem with variable scoping when variable is created from
+> > assignment statement preceding function call in posix-mode. See an
+> > example below.
+> > 
+> > 
+> > Repeat-By:
+> > 
+> > $ cat test.sh 
+> > #!/bin/sh
+> > 
+> > myecho() {
+> >     echo $var
+> > }
+> > 
+> > foo() {
+> >     local var="foo: FAIL"
+> >     var="foo: bar" myecho
+> > }
+> > 
+> > foo
+> > 
+> > $ bash test.sh 
+> > foo: bar
+> > $ bash --posix test.sh 
+> > foo: FAIL
+> 
+> This is a consequence of a combination of two POSIX features. First, POSIX
+> requires assignment statements preceding special builtins to create global
+> variables (POSIX has no local variables) that persist in the shell context
+> after the special builtin completes. Second, POSIX requires* that
+> assignment statements preceding function calls have the same variable-
+> assignment behavior as special builtins.
+> 
+> So the variable assignment preceding the function call creates a global
+> variable, and the local variable is found before that global when `myecho'
+> is executed according to the standard bash dynamic scoping rules. If you
+> add an `echo $var' after the call to foo, you'll see this behavior.
+> 
+> (*) The most recent version of the standard has removed this requirement
+> for shell functions, and I will change that behavior for the next release
+> of bash. Until then, the old behavior persists.
+
+This behavior is not quite backwards-compatible with bash-4.4. Here is a
+patch that implements a portion of the proposed bash-5.1 behavior. It
+changes the variable assignment semantics so that variable assignments
+preceding builtins and shell functions act more like standalone assignment
+statements and modify the "current execution environment" (in POSIX terms)
+instead of unconditionally modifying the global variable scope.
+
+This means that assignments preceding shell functions and special builtins
+will modify existing local variables and modifications to local variables
+will not propagate to the calling environment, and will create global
+variables if there is not an existing local variable with that name. This
+is compatible with other POSIX shells that implement local variables.
+
+It is not completely compatible with bash-4.4, since the bash-4.4 behavior
+wasn't fully POSIX-conformant and had variable scoping bugs as well.
+
+The original discussion concerning this is at
+
+http://lists.gnu.org/archive/html/bug-bash/2018-05/msg00002.html
+
+Chet
+
+---
+ variables.c |   35 ++++++++++++++++++++++++++++++-----
+ 1 file changed, 30 insertions(+), 5 deletions(-)
+
+--- variables.c
++++ variables.c	2019-03-21 08:21:21.777597991 +0000
+@@ -4507,16 +4507,38 @@ push_posix_temp_var (data)
+ 
+   var = (SHELL_VAR *)data;
+ 
++#if 1 /* TAG:bash-5.1 */
++  /* Just like do_assignment_internal(). This makes assignments preceding
++     special builtins act like standalone assignment statements when in
++     posix mode, satisfying the posix requirement that this affect the
++     "current execution environment." */
++  v = bind_variable (var->name, value_cell (var), ASS_FORCE|ASS_NOLONGJMP);
++
++  /* If this modifies an existing local variable, v->context will be non-zero.
++     If it comes back with v->context == 0, we bound at the global context.
++     Set binding_table appropriately. It doesn't matter whether it's correct
++     if the variable is local, only that it's not global_variables->table */
++  binding_table = v->context ? shell_variables->table : global_variables->table;
++#else
+   binding_table = global_variables->table;
+   if (binding_table == 0)
+     binding_table = global_variables->table = hash_create (VARIABLES_HASH_BUCKETS);
+ 
+   v = bind_variable_internal (var->name, value_cell (var), binding_table, 0, ASS_FORCE|ASS_NOLONGJMP);
++#endif
+ 
+   /* global variables are no longer temporary and don't need propagating. */
+-  var->attributes &= ~(att_tempvar|att_propagate);
++  if (binding_table == global_variables->table)
++    var->attributes &= ~(att_tempvar|att_propagate);
++
+   if (v)
+-    v->attributes |= var->attributes;
++    {
++      v->attributes |= var->attributes;
++      v->attributes &= ~att_tempvar;	/* not a temp var now */
++#if 0	/* TAG:bash-5.1 code doesn't need this, disable for bash-5.1 */
++      v->context = (binding_table == global_variables->table) ? 0 : shell_variables->scope;
++#endif
++    }
+ 
+   if (find_special_var (var->name) >= 0)
+     tempvar_list[tvlist_ind++] = savestring (var->name);
+@@ -4610,14 +4632,17 @@ dispose_temporary_env (pushf)
+      sh_free_func_t *pushf;
+ {
+   int i;
++  HASH_TABLE *disposer;
+ 
+   tempvar_list = strvec_create (HASH_ENTRIES (temporary_env) + 1);
+   tempvar_list[tvlist_ind = 0] = 0;
+-    
+-  hash_flush (temporary_env, pushf);
+-  hash_dispose (temporary_env);
++
++  disposer = temporary_env;
+   temporary_env = (HASH_TABLE *)NULL;
+ 
++  hash_flush (disposer, pushf);
++  hash_dispose (disposer);
++
+   tempvar_list[tvlist_ind] = 0;
+ 
+   array_needs_making = 1;

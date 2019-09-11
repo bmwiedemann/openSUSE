@@ -1,0 +1,11 @@
+--- trackdb/FormatConverter.h
++++ trackdb/FormatConverter.h
+@@ -29,7 +29,7 @@
+ 
+ // Quick abstract class declarations. Format converters should derive
+ // their own FormatSupport and FormatSupportManager.
+-
++class Toc;
+ class FormatSupport
+ {
+  public:

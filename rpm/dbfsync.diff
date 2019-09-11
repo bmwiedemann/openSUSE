@@ -1,0 +1,24 @@
+Support a database-local fsync setting. Needs berkeley db patch.
+
+--- ./lib/backend/db3.c.orig	2017-01-19 10:31:06.874215725 +0000
++++ ./lib/backend/db3.c	2017-01-19 10:32:51.825873926 +0000
+@@ -73,8 +73,10 @@ static const struct poptOption rdbOption
+  { "mp_size",	0,POPT_ARG_INT,		&staticcfg.db_cachesize, 0,
+ 	NULL, NULL },
+ 
++#if 0
+  { "nofsync",	0,POPT_ARG_NONE,	&staticcfg.db_no_fsync, 0,
+ 	NULL, NULL },
++#endif
+ 
+  /* Per-dbi options */
+  { "nommap",	0,POPT_BIT_SET,		&staticdbicfg.dbi_oflags, DB_NOMMAP,
+@@ -84,6 +86,8 @@ static const struct poptOption rdbOption
+ 	NULL, NULL },
+  { "lockdbfd",	0,POPT_ARG_NONE,	&staticdbicfg.dbi_lockdbfd, 0,
+ 	NULL, NULL },
++ { "nofsync",	0,POPT_BIT_SET,		&staticdbicfg.dbi_oflags, DB_NOFSYNC,
++	NULL, NULL },
+ 
+     POPT_TABLEEND
+ };

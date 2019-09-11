@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Wed May 31 21:41:00 UTC 2017 - meissner@suse.com
+
+- Actually build with RPM_OPT_FLAGS, will also catch
+  too long -F arguments (bsc#1041840)
+
+-------------------------------------------------------------------
+Fri Feb 17 18:56:46 UTC 2012 - rschweikert@suse.com
+
+- place binary in /usr tree (UsrMerge project)
+
+-------------------------------------------------------------------
+Thu Dec  1 15:48:27 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Oct  5 19:46:42 CEST 2009 - poeml@suse.de
+
+- add missing executable permissions to /usr/bin/termprobes
+  [bnc#544224]
+
+-------------------------------------------------------------------
+Mon Dec 10 18:12:13 CET 2007 - poeml@suse.de
+
+- update to r27:
+  - when using -e, only output the TERM value and don't add
+    LINES,COLUMNS by default anymore. Discussion in [#184179] (ssh
+    installation exit abnormally when change terminal window size)
+    has shown that they are not needed anyway, and they seem to
+    cause problems in some cases (when used together with ssh).  In
+    order to be able to revert to the previous behaviour, the -s
+    switch was added. It adds LINES and COLUMNS to the eval output
+    again.
+
+-------------------------------------------------------------------
+Wed Nov 14 12:20:42 CET 2007 - poeml@suse.de
+
+- update to r25:
+  - recognize WebSM console
+    https://bugzilla.novell.com/show_bug.cgi?id=256139 
+    which sends a characteristic primary da
+
+-------------------------------------------------------------------
+Thu Jul 19 07:28:29 CEST 2007 - poeml@suse.de
+
+- update to 0.5 (svn r24)
+  - support for mlterm and Terminal.app
+  - prefer Terminal.app over kterm (which responds in the same
+    way). kterm is not widely used anymore, it was an old xterm
+    fork but it isn't UTF-8 capable.
+  - make it compile on Darwin 8.6
+  - fold in patches initviocons-0.4.dif (c shell eval mode)
+                    initviocons.minimal-termsize.patch [#140383]
+                    initviocons.ps3-hack.patch
+                    initviocons.ps3-matching.patch                                                                     
+
+-------------------------------------------------------------------
+Tue Jul 17 12:22:22 CEST 2007 - sassmann@suse.de
+
+- added new /proc/device-tree/model matching for ps3 detection
+
+-------------------------------------------------------------------
+Tue Apr 24 20:48:49 CEST 2007 - olh@suse.de
+
+- do not run initviocons on PS3, until the kernel fb is fixed
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan  8 13:15:57 CET 2006 - olh@suse.de
+
+- do not set cols/rows to less than 80x24 (#140383)
+
+-----------------------------------------------------------------
+Wed Oct 26 13:31:58 CEST 2005 - werner@suse.de
+
+- Add support for C shell in eval mode
+
+-----------------------------------------------------------------
+Wed Oct  5 13:56:12 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Sun Jun  9 18:20:34 CEST 2002 - poeml@suse.de
+
+- update to 0.4
+- no longer ignore carriage return when a Windows telnet client ist
+  connected (on iSeries). The telnet server has been fixed to
+  handle the Network Virtual Terminal newline correctly.  If the
+  respective Program Temporary Fixes are installed on the iSeries,
+  this fix here is needed as well to prevent Enter key malfunction
+  on the virtual console. 
+
+-------------------------------------------------------------------
+Tue Mar 12 10:26:54 CET 2002 - kukuk@suse.de
+
+- Fix filelist (exclude /usr/bin as directory)
+
+-------------------------------------------------------------------
+Mon Feb  4 13:21:37 CET 2002 - poeml@suse.de
+
+- created package
+

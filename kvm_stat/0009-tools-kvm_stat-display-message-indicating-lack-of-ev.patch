@@ -1,0 +1,34 @@
+From 7b0c9240120288190680cb553fef5a6d38a6e9ee Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Date: Wed, 7 Jun 2017 21:08:35 +0200
+Subject: [PATCH 09/43] tools/kvm_stat: display message indicating lack of
+ events
+
+Give users some indication on the reason why no data is displayed on the
+screen yet.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 5725393764a342b6a5420fdd10184984ca08b5f6)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index b9fa1ae12346..112fe57561a5 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1016,6 +1016,8 @@ class Tui(object):
+                                    (key, values[0], values[0] * 100 / total,
+                                     cur))
+             row += 1
++        if row == 3:
++            self.screen.addstr(4, 1, 'No matching events reported yet')
+         self.screen.refresh()
+ 
+     def show_filter_selection(self):
+-- 
+2.12.3
+

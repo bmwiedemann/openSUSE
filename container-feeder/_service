@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">git@github.com:kubic-project/container-feeder.git</param>
+    <param name="scm">git</param>
+    <param name="version">git-master</param>
+    <param name="versionformat">1.0+git.%ct.%h</param>
+    <param name="revision">master</param>
+    <param name="filename">container-feeder</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+  </service>
+</services>

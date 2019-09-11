@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=OpenArena
+GenericName=Classic FPS shooter
+Comment=Quake 3: Arena - like FPS game
+Icon=openarena.svg
+Exec=openarena
+Terminal=0
+StartupNotify=0
+Type=Application
+Categories=Game;ActionGame;

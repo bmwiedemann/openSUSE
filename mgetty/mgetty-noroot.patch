@@ -1,0 +1,50 @@
+Index: mgetty-1.1.37/Makefile
+===================================================================
+--- mgetty-1.1.37.orig/Makefile
++++ mgetty-1.1.37/Makefile
+@@ -174,7 +174,7 @@ LIBS=
+ # if your systems doesn't have one, use the shell script that I provide
+ # in "inst.sh" (taken from X11R5). Needed on IRIX5.2
+ INSTALL=install -c
+-#INSTALL=install -c -o root -g wheel		# NeXT/BSD
++#INSTALL=install -c -g wheel		# NeXT/BSD
+ #INSTALL=/usr/ucb/install -c -o bin -g bin	# AIX, Solaris 2.x
+ #INSTALL=installbsd -c -o bin -g bin		# OSF/1, AIX 4.1, 4.2
+ #INSTALL=/usr/bin/X11/bsdinst -c -o bin 	# IRIX
+@@ -619,15 +619,15 @@ install.bin: mgetty sendfax newslock \
+ 	test -d $(DESTDIR)$(CONFDIR) || \
+ 		( ./mkidirs $(DESTDIR)$(CONFDIR) && chmod 755 $(DESTDIR)$(CONFDIR))
+ 	test -f $(DESTDIR)$(CONFDIR)/login.config || \
+-		$(INSTALL) -o root -m 600 login.config $(DESTDIR)$(CONFDIR)/
++		$(INSTALL) -m 600 login.config $(DESTDIR)$(CONFDIR)/
+ 	test -f $(DESTDIR)$(CONFDIR)/mgetty.config || \
+-		$(INSTALL) -o root -m 600 mgetty.config $(DESTDIR)$(CONFDIR)/
++		$(INSTALL) -m 600 mgetty.config $(DESTDIR)$(CONFDIR)/
+ 	test -f $(DESTDIR)$(CONFDIR)/sendfax.config || \
+-		$(INSTALL) -o root -m 644 sendfax.config $(DESTDIR)$(CONFDIR)/
++		$(INSTALL) -m 644 sendfax.config $(DESTDIR)$(CONFDIR)/
+ 	test -f $(DESTDIR)$(CONFDIR)/dialin.config || \
+-		$(INSTALL) -o root -m 600 dialin.config $(DESTDIR)$(CONFDIR)/
++		$(INSTALL) -m 600 dialin.config $(DESTDIR)$(CONFDIR)/
+ 	test -f $(DESTDIR)$(CONFDIR)/faxrunq.config || \
+-		$(INSTALL) -o root -m 644 faxrunq.config $(DESTDIR)$(CONFDIR)/
++		$(INSTALL) -m 644 faxrunq.config $(DESTDIR)$(CONFDIR)/
+ #
+ # test for outdated stuff
+ #
+@@ -644,14 +644,11 @@ install.bin: mgetty sendfax newslock \
+ 	test -d $(DESTDIR)$(spool) || \
+ 		( mkdir $(DESTDIR)$(spool) && chmod 755 $(DESTDIR)$(spool) )
+ 	test -d $(DESTDIR)$(FAX_SPOOL) || \
+-		( mkdir $(DESTDIR)$(FAX_SPOOL) && \
+-		  chown $(FAX_OUT_USER) $(DESTDIR)$(FAX_SPOOL) && \
+-		  chmod 755 $(DESTDIR)$(FAX_SPOOL) )
++		( mkdir $(DESTDIR)$(FAX_SPOOL) && chmod 755 $(DESTDIR)$(FAX_SPOOL) )
+ 	test -d $(DESTDIR)$(FAX_SPOOL_IN) || \
+ 		( mkdir $(DESTDIR)$(FAX_SPOOL_IN) && chmod 755 $(DESTDIR)$(FAX_SPOOL_IN) )
+ 	test -d $(DESTDIR)$(FAX_SPOOL_OUT) || \
+ 		  mkdir $(DESTDIR)$(FAX_SPOOL_OUT)
+-	chown $(FAX_OUT_USER) $(DESTDIR)$(FAX_SPOOL_OUT)
+ 	chmod 755 $(DESTDIR)$(FAX_SPOOL_OUT)
+ #
+ # g3 tool programs

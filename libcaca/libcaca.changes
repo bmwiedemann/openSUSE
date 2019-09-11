@@ -1,0 +1,364 @@
+-------------------------------------------------------------------
+Thu Aug  1 09:46:57 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add Bug1143286_libcaca_configure_ac_chg_for_lto.patch
+  bypass boo#1143286
+
+-------------------------------------------------------------------
+Mon Jan 21 13:01:52 UTC 2019 - josef.moellers@suse.com
+
+- Cast intermediate results to 64 bits to prevent overflow of
+  calculations with 32-bit quentities.
+  [CVE-2018-20544, bsc#1120502,
+   Bug1120502-add_cast_to_prevent_overflow.patch]
+
+-------------------------------------------------------------------
+Mon Jan 21 12:39:30 UTC 2019 - josef.moellers@suse.com
+
+- Fix the size of width and height to be of size_t rather than
+  int in struct caca_dither. Re-using existing patch.
+  [CVE-2018-20546, bsc#1120503, CVE-2018-20547,
+   bsc#1120504, libcaca-variable-type.patch]
+
+-------------------------------------------------------------------
+Tue Jan 15 15:03:38 UTC 2019 - josef.moellers@suse.com
+
+- Fix the size of width and height to be of size_t rather than
+  unsigned int which may be too small on 64 bit architectures.
+  This fixes three CVS and associated bugs.
+  [CVE-2018-20545, bsc#1120584, CVE-2018-20548, bsc#1120589,
+   CVE-2018-20549, bsc#1120470, libcaca-variable-type.patch]
+
+-------------------------------------------------------------------
+Tue Jan 30 11:03:56 UTC 2018 - davejplater@gmail.com
+
+- Deleted _service and use spec file to download git version.
+- Shorten version field to joliet usable length.
+- Change python headers to allow bindings to build normally with
+  python3.
+- Use %license for license document.
+
+-------------------------------------------------------------------
+Tue Jan 23 18:32:31 UTC 2018 - tchvatal@suse.com
+
+- Drop the py2 bindings they fail to build using rpm macros and
+  somehow ingnore LD_LIBRARY_PATH, anyway provide py3 variant and
+  stick with that
+
+-------------------------------------------------------------------
+Tue Jan 23 10:18:53 UTC 2018 - tchvatal@suse.com
+
+- Switch to git repack service in order to get all the latest fixes
+  * like python3 porting of the bindings
+- Update to version 0.99.beta19+git20171002.da28e96:
+  * img2text.c: fix width arg case in example
+  * ruby: require 'caca' instead of 'caca.so'
+  * Only fail the check-copyright test if more than 10 files are affected.
+  * Try to run Coverity from Travis CI.
+  * Add some missing breaks (thanks coverity)
+  * Fix header copyright.
+  * Fix a bug into the autorepeat trigger.
+- Refresh patches:
+  * libcaca-ruby_am_cflags.patch
+  * libcaca-ruby_vendor_install.patch
+
+-------------------------------------------------------------------
+Mon Jan 22 18:49:24 UTC 2018 - tchvatal@suse.com
+
+- Fix URL
+- Mention github repo containing more changes
+- Format with spec-cleaner
+- Remove support for older distros lets stick with latest only
+- Remove for years disabled mono and java integration code snippets
+- Use python macros to build python instead of waiting for autotools
+- Convert to pkgconfig style dependencies
+
+-------------------------------------------------------------------
+Fri Mar 11 09:19:33 UTC 2016 - hguo@suse.com
+
+- Require imlib2-loaders in caca-utils package.
+  All of the utilities fail to load any image without the dependency.
+
+-------------------------------------------------------------------
+Wed Sep  2 07:14:17 UTC 2015 - dimstar@opensuse.org
+
+- Add libcaca-ncurses6.patch: defined against a function name never
+  worked, so set_escdelay was actually never used. With curses 6.0,
+  though, ESCDELAY is no longer 'a variable', but a reference to a
+  function, so we can't assign anything to it. We just assume that
+  we always use a recent enough version of ncurses to have
+  set_escdelay avaialble.
+
+-------------------------------------------------------------------
+Fri Mar 20 15:50:59 UTC 2015 - dvlaeev@suse.com
+
+- Build without Mono by default
+  coolo says: "We don't want mono in Factory, if somebody needs it
+  it should be set explicit (with_mono) per prjconf"
+
+-------------------------------------------------------------------
+Thu Mar 12 09:52:22 UTC 2015 - dimstar@opensuse.org
+
+- Update libcaca-ruby_vendor_install.patch: Use RbConfig::CONFIG
+  instead of Config::Config to be compatible with ruby 2.2.
+
+-------------------------------------------------------------------
+Tue Feb 17 03:37:09 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.99beta19
+  * No changelog available
+- Remove automake-1.12.patch; fixed on upstream release
+
+-------------------------------------------------------------------
+Thu Jan 15 13:35:26 UTC 2015 - olaf@aepfle.de
+
+- Remove __DATE__ usage from cacaclock
+
+-------------------------------------------------------------------
+Fri Oct  3 17:23:00 UTC 2014 - crrodriguez@opensuse.org
+
+- Add baselibs.conf as source to make factory-auto bot happy 
+
+-------------------------------------------------------------------
+Wed Oct  1 21:28:07 UTC 2014 - crrodriguez@opensuse.org
+
+- Cleanup buildRequires, remove use of xorg-x11-* 
+
+-------------------------------------------------------------------
+Thu Feb 20 14:27:28 UTC 2014 - coolo@suse.com
+
+- remove SUSE prefix from license
+
+-------------------------------------------------------------------
+Wed May 29 14:39:16 CEST 2013 - mhrusecky@suse.cz
+
+- fix build with different versions of ruby
+
+-------------------------------------------------------------------
+Sun Mar 17 21:53:40 UTC 2013 - dmueller@suse.com
+
+- add buildconditional to build optionally without mono 
+
+-------------------------------------------------------------------
+Wed Jun  6 10:09:07 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-WTFPL-2.0
+  SPDX format (choose from http://www.spdx.org/licenses or the list linked
+  at license.opensuse.org)
+
+-------------------------------------------------------------------
+Tue May 29 14:00:53 UTC 2012 - puzel@suse.com
+
+- fix build with automake-12.1 
+
+-------------------------------------------------------------------
+Tue May 29 10:33:39 UTC 2012 - jengelh@inai.de
+
+- Use autoreconf instead of ./bootstrap since (a) that works,
+  (b) avoids the inflexible handcrafted automake version check
+
+-------------------------------------------------------------------
+Mon May 14 09:29:06 UTC 2012 - coolo@suse.com
+
+- update to libcaca-0.99beta18
+  - new "cacaclock" utility
+  - improved FIGlet support
+  - improved Python and Ruby bindings
+  - numerous improvements and bugfixes
+- fix build with ruby 1.9 and re-enable python support
+
+-------------------------------------------------------------------
+Sun Nov 13 09:14:01 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit buildrequire to avoid implicit dependency 
+  from prjconf
+
+-------------------------------------------------------------------
+Tue Apr 12 16:25:52 UTC 2011 - toddrme2178@gmail.com
+
+- Add 32bit compatibility libraries
+
+-------------------------------------------------------------------
+Wed Jan 26 20:40:12 UTC 2011 - davejplater@gmail.com
+
+- Fix libcaca-devel Requires: libcaca-plugins to correct
+  Requires: libcaca0-plugins.
+
+-------------------------------------------------------------------
+Sat Nov 20 01:21:36 UTC 2010 - davejplater@gmail.com
+
+- Update to libcaca-0.99beta17
+- Removed patches: libcaca-no_slang_acsmap.patch for < 10.1
+  libcaca-no_man3_pages.patch - pending investigation
+  remove_badwords.patch - waiting for confirmation about bad words
+  libcaca-0.99.beta16-libtool.patch - libtool method changed.
+- Fixed patches : libcaca-ruby_am_cflags.patch,
+  libcaca-ruby_vendor_install.patch, caca-no-build-date.patch
+  and libcaca-0.99.beta16-missing-GLU.patch.
+- Upstream changes : (See Changelog for more)
+  * Add triangle texture mapping to NEWS and update ChangeLog.
+  * Disable set_dither_palette until we really use it.
+  * Fix distribution of Java source.
+  * Large source code cleanup, getting rid of spaces, tabs, and svn keywords.
+  * Nicer make check output for our custom tests.
+  * Add missing ruby/test file to the distributed tarball.
+  * Update logo in the PHP bindings.
+  * Replace the old caca texture with a copy of our new logo.
+  * Add #undef __extern at the end of caca0.h. Thanks to Carlo Bramini for
+  * fixing this in #48.
+  * Only define CACA_ALIAS with gcc > 3 (instead of >= 3). Patch courtesy of
+  * Carlo Bramini. Addresses #48.
+  * Add brief documentation to figfont functions.
+  * Split check-build into check-doygen, check-source and check-win32.
+  * Document file functions and fix a few issues here and there.
+  * Move some configuration stuff from build-kernel into configure.ac.
+  * Activate colour toilet font support.
+  * Don't fail the check-build test if documentation was not built.
+  * Simpler and more accurate troff colour selection.
+  * Always draw all background in troff output, on beginning of lines too
+  * Fix the source code to reduce testsuite errors.
+  * Always draw all background in troff output
+  * Fix check-build verbosity.
+  * Fix shrext_cmds usage in configure.ac.
+  * Map colors to the ones known by groff, defining mines don't work
+  * Improve a bit troff export
+  * Fix libcaca.a linkage (was off by one argument), fill memory with 0xCACA.
+
+-------------------------------------------------------------------
+Fri Nov 19 12:51:39 UTC 2010 - coolo@novell.com
+
+- disable pdf API reference documentation, it fails to build
+  with newer doxygen and the html documentation should be enough
+  for the package
+
+-------------------------------------------------------------------
+Mon Aug 30 20:36:35 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Do not include build date in binaries
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:25 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Mar 16 14:28:30 CET 2009 - crrodriguez@suse.de
+
+- fix build, missing -lGLU
+- Update to version 0.99.beta16
+- libcucul was merged back into libcaca for more clarity
+- internal FIGlet font support
+- use C99 types in public headers
+- runtime support for output drivers
+- BBcode export support
+
+-------------------------------------------------------------------
+Wed Jan 28 14:38:21 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files
+
+-------------------------------------------------------------------
+Thu Dec  4 13:01:06 CET 2008 - cfarrell@suse.de
+
+- added patch to remove badwords because of bnc#441358
+
+-------------------------------------------------------------------
+Thu Jun 12 19:19:15 CEST 2008 - pth@suse.de
+
+- Build dynamic libraries, disable creation of static ones.
+- Compile with OpenGL support.
+- Install ruby bindings in vendorarch/vendorlib.
+- Fix file list.
+
+-------------------------------------------------------------------
+Wed Feb 13 12:39:11 CET 2008 - pth@suse.de
+
+- Update to 0.99beta13:
+ - device-dependent cursor support
+ - event API rewrite
+ - Ruby bindings
+ - Massive C# bindings improvements
+ - Python sample code
+ - support for 90-degree canvas rotation
+ - better behaviour when trying to output Unicode on an ASCII terminal
+ - the built-in font now supports the Geometric Shapes, Halfwidth and Fullwidth
+   Forms and Miscellaneous Symbols Unicode blocks
+ - new rotozoom effect in cacademo
+ - preliminary .NET bindings
+ - blitting canvases now makes use of the canvas' handle coordinates
+ - import functions can read streamed data
+ - attribute to colorspace transformations
+ - added katakana and hiragana glyphs to the built-in font
+ - support for blink, bold, italics and underline attributes
+ - fixed Imlib2 support in cacaview
+ - fixed buffer overflows in the file importer
+ - support for fullwidth Unicode characters
+ - transparency support in the UTF-8 importer and exporter
+ - ANSI importer now handles transparency and UTF-8
+ - various memory leaks were fixed
+ - implemented cucul_getchar() and cucul_get_color()
+ - handle transparency in the IRC export
+ - new cropping and expanding filters
+ - full Unicode support in the OpenGL driver
+ - all demos except cacafire were merged into cacademo
+ - added a compatibility layer for pre-1.x libcaca applications
+ - libcaca functions use errno for error reporting
+ - ANSI importer
+ - cacadraw, an ANSI viewer that will evolve into an editor
+ - Unicode input and output support for SLang and ncurses
+ - license switched to WTFPL
+ - libcaca was split into libcucul, a standalone text manipulation backend,
+    and libcaca, the display and user input frontend
+ - TrueColor (more than 16 colours) support
+ - Floyd-Steinberg dithering
+ - gamma correction
+ - export functions for HTML, IRC, ANSI, SVG, PostScript, TGA...
+ - builtin fonts for device-independent bitmap output
+ - various text transformation routines (rotation, horizontal flip...)
+ - OpenGL renderer
+ - kernel mode to build libcaca programs into a bootable x86 kernel
+ - cacaserver, a telnet server that can be hooked to libcaca applications
+ - img2irc, an image to IRC conversion utility
+
+-------------------------------------------------------------------
+Sun Apr 22 23:10:09 CEST 2007 - ro@suse.de
+
+- use texlive for building
+
+-------------------------------------------------------------------
+Fri Mar 30 11:57:12 CEST 2007 - rguenther@suse.de
+
+- Add ncurses-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Aug  4 11:14:21 CEST 2006 - pth@suse.de
+
+- Adapt to new X11 paths.
+
+-------------------------------------------------------------------
+Wed Mar 29 18:04:58 CEST 2006 - pth@suse.de
+
+- Fix BuildRequires.
+
+-------------------------------------------------------------------
+Wed Mar 29 16:08:00 CEST 2006 - pth@suse.de
+
+- Add X11 devel files to BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:23 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 19 15:04:33 CET 2005 - ro@suse.de
+
+- added missing manpage symlinks to filelist
+
+-------------------------------------------------------------------
+Fri Nov 25 13:52:49 CET 2005 - pth@suse.de
+
+- Initial package.
+  - undef clashing acs_map from slang.h
+  - don't try to install non-existing man3 pages
+  - install documentation to different directory

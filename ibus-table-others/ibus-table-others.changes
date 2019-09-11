@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Mon Jun 17 07:07:10 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.3.9
+  * Add ZERO WIDTH JOINERS to hu-old-hungarian-rovas.txt to make ligatures work
+    with supporting fonts
+  * Add table for Rovás (Old Hungarian)
+  * Fix wrong key for keyboard in rusle.txt
+  * some fixes in mathwriter-ibus
+  * Use F1,F2,F3,F4,F5,F6,F7,F8,F9 as select keys for the latex table
+  * Make rusle agree with
+    http://ru.pc-history.com/wp-content/uploads/ok-keyboard_xt-at1.jpg
+  * Fix a typo in compose.txt
+  * Use better localized names for the rusle table
+- Change to noarch
+-------------------------------------------------------------------
+Sun Sep 28 23:03:07 PRC 2014 - hillwood@linuxfans.org
+
+- Update to 1.3.4
+  * Make status prompts and symbols more consistent
+  * Change MAX_KEY_LENGTH from 2 to 1 for the rusle, rustrad, thai, and yawerty tables.
+  * Delete the RULES from the emoji-table
+  * Make default options of rusle.txt the same as in rustrad.txt
+  * Add Russian Legacy layout
+  * Add “\circ ∘ U+2218 RING OPERATOR” back to the latex table
+
+-------------------------------------------------------------------
+Sat Jul 26 17:44:31 PRC 2014 - hillwood@linuxfans.org
+
+- Update to 1.3.1
+  * Add _ and ^ to the start characters for the LaTeX table
+  * Updates and bugfixes for the LaTeX table by Giuseppe Castagna (original author of the LaTeX table)
+  * Use SELECT_KEYS = F1,F2,F3,F4,F5,F6,F7,F8,F9 for ipa-x-sampa
+  * Add single and multi wildcard options to all tables
+  * use AUTO_WILDCARD=TRUE for all tables, this option started working in ibus-table > 1.8.0
+  * Don’t force “us” layout for cns11643, compose, ipa-x-sampa, viqr, emoji, mathwriter-ibus, translit-ua, and translit
+  * Keep forcing “us” layout only for “rustrad”, “yawerty”, and “thai”. But ibus does not use the option “KEYBOARD_LAYOUT”, the correct name of that option is just “LAYOUT”. Fix that for all tables.
+  * Don’t force “us” layout for the latex input method
+  * The “latex” table uses “\” as a startchar
+  * includes "Set symbols to be displayed in IM switchers" by Sean Burke
+- Drop old patch (emoji-table.patch) 
+
+-------------------------------------------------------------------
+Tue Jun 26 22:15:17 PRC 2012 - hillwood@linuxfans.org
+
+- fix build with ibus 1.4.1
+
+-------------------------------------------------------------------
+Sun Sep  4 20:44:26 UTC 2011 - andrea.turrini@gmail.com
+
+- Fixed typos in ibus-table-others.spec
+
+-------------------------------------------------------------------
+Mon Jul 25 14:04:04 CEST 2011 - tiwai@suse.de
+
+- Add locale-specific provides tags for automatic installation
+
+-------------------------------------------------------------------
+Tue Jun 28 10:17:18 CEST 2011 - tiwai@suse.de
+
+- Moved from ibus-table package for ibus-1.3.x;
+  this is a compound package of non-Chinese input method tables

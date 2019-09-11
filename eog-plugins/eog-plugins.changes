@@ -1,0 +1,518 @@
+-------------------------------------------------------------------
+Mon Jul 23 18:28:07 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.3:
+  + Plugin changes:
+    - PicasaWeb Uploader.
+    - Avoid compiler warning with glib 2.58.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:25:01 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 13 16:33:28 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.26.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct  3 20:58:08 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.1:
+  + Updated translations.
+- Add '-m 644' to the 'install %{S:1}' at %prep section: remove of
+  executable permitions.
+- Drop %glib2_gsettings_schema_* requires/post/postun:
+  functionality now covered by file triggers.
+
+-------------------------------------------------------------------
+Mon Sep 11 22:22:46 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  6 05:04:43 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.25.92:
+  + Plugin change: "Send by Mail" menu item misses a mnemonic
+    (bgo#786011).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 20 11:55:44 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.1:
+  + Take advantage of Unicode (bgo#774002).
+  + Drop intltool support in favour of plain gettext.
+  + Drop gnome-common dependency.
+  + Updated translations.
+- Drop intltool BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
+Wed Apr 19 09:45:46 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.16.6:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 11 18:59:05 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.16.5:
+  + Map: map plugin:
+    - Use default marker (bgo#771945).
+    - Slowly move to selected image (bgo#771948).
+    - Initial zoom level wrong (bgo#771976).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May  9 19:54:28 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.16.4:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 18 09:55:24 UTC 2016 - dimstar@opensuse.org
+
+- Fix files section to be more tolerant.
+
+-------------------------------------------------------------------
+Mon Nov  9 21:37:29 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.3:
+  + Some entries of the popovermenu entry should be grayed when no
+    image opened (bgo#755244).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 29 09:55:57 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Map plugin uses outdated icon to mark image location
+    (bgo#753761).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 17 21:56:23 UTC 2015 - zaitor@opensuse.org
+
+- Updated to version 3.16.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 20:07:19 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 15:52:03 UTC 2015 - badshah400@gmail.com
+
+- eog-plugins should suggest instead of recommending individual
+  plugin subpackages; for safe updates, have a split provides on
+  eog-plugins for each plugin subpackage.
+
+-------------------------------------------------------------------
+Wed Mar 18 21:43:28 UTC 2015 - sfalken@opensuse.org
+
+- Revised package, to provide individual subpackages for the
+  plugins.
+- Add eog-plugins.SUSE to main package, to ensure it is being built
+  (empty packages are rejected).
+
+-------------------------------------------------------------------
+Tue Mar 17 08:37:16 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 17 12:00:53 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + General changes:
+    - bgo#741503: Typo in translatable string.
+    - bgo#743885: Port plugins to GAction.
+  + New Plugin: Maximize Windows: Causes new windows to open
+    maximized (bgo#744083).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 13 20:14:35 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 22 20:10:29 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + No changes from previous version.
+
+-------------------------------------------------------------------
+Mon Sep 15 19:17:34 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + EOG's Map plugin crashes on invalid GPS coordinates
+    (bgo#735914).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 18 20:58:07 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.1:
+  + General changes: add metainfo files for all available plugins
+    (bgo#731676).
+  + Plugin changes: Exif Display: Fix deprecated stock icon and
+    GtkTable usage.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul 27 13:20:39 UTC 2014 - dimstar@opensuse.org
+
+- Specify correct, minimal version of eog BuildRequires.
+
+-------------------------------------------------------------------
+Tue Apr 15 05:42:07 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Export to Folder: bgo#727218, Make export-to-folder plugin less
+    chatty.
+  + Slideshow Shuffle: bgo#727222, Switch slideshowshuffle to
+    python3 loader.
+
+-------------------------------------------------------------------
+Tue Mar 25 12:21:07 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Stable release, no changes since version 3.11.92.
+
+-------------------------------------------------------------------
+Wed Mar 19 10:03:27 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Export to Folder: Fix PyGObject deprecation warnings.
+  + Python Console: Fix PyGObject deprecation warnings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 13 21:26:31 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Multiplpe plugins: convert to python 3:
+    - Export to Folder.
+    - Fullscreen Background.
+    - Python Console.
+  + Fullscreen Background: Adapt to API changes in eog 3.11.3
+  + Modernize build system.
+  + Raise Python and eog dependencies.
+- Add python3 BuildRequires: required for the move to python3.
+
+-------------------------------------------------------------------
+Tue Oct 15 17:56:25 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 24 13:41:52 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 30 07:05:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.5:
+  + Exif Display: Fails to build against eog trunk (bgo#704081).
+- Drop eog-plugins-fix-eog-3.9.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Jul 12 11:29:17 UTC 2013 - dimstar@opensuse.org
+
+- Add eog-plugins-fix-eog-3.9.patch: Fix build against eog 3.9.1.
+
+-------------------------------------------------------------------
+Tue May 14 17:12:13 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 25 20:54:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 18 22:09:53 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 18:54:16 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Exif Display:
+    - Embed UI files into plugin using GResource.
+  + Fit To Width:
+    - Improve translatability of description strings.
+  + PicasaWeb Uploader:
+    - Embed UI files into plugin using GResource.
+  + Updated translations.
+- Add pkgconfig(glib-2.0) BuildRequires, so it can be versioned.
+
+-------------------------------------------------------------------
+Mon Oct 15 21:35:36 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Adjust egrep(1) usage to be more portable (bgo#685356)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 24 21:33:30 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 19 18:17:16 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  3 21:09:43 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 20 20:45:24 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.5:
+  + New plugins:
+    - Hide Titlebar
+    - Disable Dark Theme
+    - Export to Folder
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 29 18:50:33 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.4.1:
+  + Exif Display:
+    - Remove markup from translatable UI strings.
+    - Fixed bgo#676735, eog crashes when quickly clicking the Back
+      button twice.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 21:34:05 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:57:16 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.3.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 21:06:40 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.91:
+  + Exif Display
+    - Drop unused variable
+  + Fullscreen Background
+    - Actually make use of translations in config dialog
+  + Python Console
+    - Actually make use of translations in config dialog
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 21 08:29:00 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.90:
+  + Fullscreen Background:
+    - Various code improvements
+  + Python Console:
+    - Import latest code from gedit's Python Console plugin
+    - Coding style improvements
+  + Slideshow Shuffle:
+    - Code improvements
+  + Updated translations.
+- Add pkgconfig(gsettings-desktop-schemas) BuildRequires: new
+  dependency for pythonconsole plugin.
+
+-------------------------------------------------------------------
+Thu Feb  9 19:10:35 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.5:
+  + New plugins:
+    - Fullscreen Background (fullscreenbg)
+  + Plugin changes:
+    - Map: Miscellaneous code improvements
+    - Exif Display: Fixed possible memory leak
+  + Bugs fixed: bgo#667979, bgo#643769
+  + Updated translations:
+
+-------------------------------------------------------------------
+Tue Nov 22 09:40:08 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.2:
+  + PicasaWeb Uploader: bgo#663494, The column titles in the
+    postasa-uploads-view are not translatable.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 20 11:46:39 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 30 08:37:26 UTC 2011 - vuntz@opensuse.org
+
+- Remove unneeded pkgconfig(pygobject-2.0) BuildRequires.
+- Change lang subpackages Requires to Recommends.
+
+-------------------------------------------------------------------
+Mon Sep 26 21:29:17 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 22 21:07:08 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.3:
+  + Map: bgo#658349, Support libchamplain 0.11/0.12
+  + Updated translations.
+- Remove sed hack in %prep to enable champlain 0.12 support: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Sep  6 11:41:58 UTC 2011 - vuntz@opensuse.org
+
+- Move to libchamplain 0.12:
+  + Change pkgconfig(champlain-gtk-0.10) BuildRequires to
+    pkgconfig(champlain-gtk-0.12).
+  + Add a sed hack in %prep to make configure look for the right
+    pkg-config file.
+
+-------------------------------------------------------------------
+Tue Jul 26 00:13:28 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.2:
+  + Map
+   - bgo#654650: Wrong location of photos with map plugin
+  + Exif Display
+    - Move GtkBuilder files out of /usr/lib into /usr/share
+  + PicasaWeb Uploader
+    - bgo#654302: postasa plugin doesn't build with libgdata 0.9.x
+    - Move GtkBuilder files out of /usr/lib into /usr/share
+    - Various small code and UI improvements
+  + Updated translatons.
+- Re-enable pkgconfig(libgdata) BuildRequires as the postasa plugin
+  is buildable again.
+
+-------------------------------------------------------------------
+Sat Jul  9 18:38:23 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.1:
+  + Python Console
+    - Install code files into subfolder for a cleaner plugin folder
+  + PicasaWeb Uploader
+    - Port to libpeas-base plugin API
+  + Updated translations.
+- Comment pkgconfig(libgdata) BuildRequires as the postasa plugin
+  doesn't build with libgdata 0.9.x (bgo#654302).
+
+-------------------------------------------------------------------
+Thu Apr 28 12:00:38 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Re-release 2.91.90 as 3.0.0 to have an "official" 3.0-release.
+
+-------------------------------------------------------------------
+Wed Mar 30 15:53:43 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.90:
+  + Python Console
+    - Port to libpeas-based plugin API
+  + Slideshow Shuffle
+    - Port to libpeas-based plugin API
+- Changes from version 2.91.7:
+  + Exif Display
+    - Convert to libpeas-based plugin API
+    - Migrate from GConf to GSettings
+  + Fit to Width:
+    - Convert to libpeas-based plugin API
+  + Map
+    - bgo#642802; Use libchamplain 0.10 for the map plugin
+    - Convert to libpeas-based plugin API
+    - Mark all images from the collection on the map
+    - Make markers clickable to change the current picture
+  + PicasaWeb Uploader
+    - bgo#639261: Fails to build against libgdata 0.8.0
+  + Postr
+    - Convert to libpeas-based plugin API
+  + Send By Mail
+    - Convert to libpeas-based plugin API
+  + Other changes:
+    - Disable python plugins until they work correctly with
+      eog-3.0.
+- Drop eog-plugins-libchamplain-0.8.patch: fixed upstream
+- Use macros for GSettings schemas.
+- postasa plugin isn't available for now, so comment it out in file
+  list.
+- Move to pkgconfig()-style BuildRequires, and to gtk3:
+  + Old ones: clutter-gtk-devel, eog-devel, gconf2-devel,
+    glib2-devel, gtk2-devel, libchamplain-devel, libexif-devel,
+    libgdata-devel, python-gobject2-devel.
+  + New ones: champlain-gtk-0.10, clutter-gtk-1.0, eog, gtk+-3.0,
+    libexif, libgdata, pygobject-2.0.
+- Remove python-gnome-devel, python-gtk-devel BuildRequires and
+  replace with pkgconfig(libpeas-1.0) as plugins are moving to
+  libpeas.
+
+-------------------------------------------------------------------
+Sun Aug 29 11:40:50 CEST 2010 - vuntz@opensuse.org
+
+- Add eog-plugins-libchamplain-0.8.patch to fix build with latest
+  libchamplain.
+
+-------------------------------------------------------------------
+Sat Aug  7 11:57:19 CEST 2010 - vuntz@opensuse.org
+
+- Drop eog-plugins-recent-clutter-gtk.patch: we're going back to a
+  released version of clutter-gtk, so we don't need this anymore.
+
+-------------------------------------------------------------------
+Fri Jul 23 08:47:00 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun  4 16:17:18 CEST 2010 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Thu Apr  1 13:37:42 CEST 2010 - vuntz@opensuse.org
+
+- New package.
+

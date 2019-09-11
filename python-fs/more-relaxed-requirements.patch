@@ -1,0 +1,28 @@
+Index: fs-2.4.8/setup.py
+===================================================================
+--- fs-2.4.8.orig/setup.py	2019-07-26 15:56:23.878197898 +0200
++++ fs-2.4.8/setup.py	2019-07-26 15:57:13.178479543 +0200
+@@ -19,7 +19,7 @@ CLASSIFIERS = [
+     "Topic :: System :: Filesystems",
+ ]
+ 
+-REQUIREMENTS = ["appdirs~=1.4.3", "pytz", "setuptools", "six~=1.10"]
++REQUIREMENTS = ["appdirs>=1.4.3", "pytz", "setuptools", "six>=1.10"]
+ 
+ setup(
+     author="Will McGugan",
+@@ -28,10 +28,10 @@ setup(
+     description="Python's filesystem abstraction layer",
+     install_requires=REQUIREMENTS,
+     extras_require={
+-        "scandir :python_version < '3.5'": ["scandir~=1.5"],
+-        ":python_version < '3.4'": ["enum34~=1.1.6"],
+-        ":python_version < '3.6'": ["typing~=3.6"],
+-        ":python_version < '3.0'": ["backports.os~=0.1"],
++        "scandir :python_version < '3.5'": ["scandir>=1.5"],
++        ":python_version < '3.4'": ["enum34>=1.1.6"],
++        ":python_version < '3.6'": ["typing>=3.6"],
++        ":python_version < '3.0'": ["backports.os>=0.1"],
+     },
+     license="MIT",
+     name="fs",

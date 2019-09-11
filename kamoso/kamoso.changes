@@ -1,0 +1,394 @@
+-------------------------------------------------------------------
+Fri Aug  9 08:30:23 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- No code change since 19.07.90
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:48 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- No code changes since 19.07.80
+
+-------------------------------------------------------------------
+Tue Jul 23 11:58:57 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Follow KDE_APPLICATIONS_VERSION
+  * Easier to read GstPointer
+  * Properly un-mirror images
+  * Allow to enable/disable the mirrored setting (kde#405309)
+  * Remove apparently unused FindGLIB2
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:33 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- No code changes since 19.04.2
+
+-------------------------------------------------------------------
+Thu Jul  4 18:07:21 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Replace BuildDep on Qt5GStreamer with plain gstreamer-1.0
+- Add kirigami2 runtime dep
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:52 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- No code changes since 19.04.1
+
+-------------------------------------------------------------------
+Fri May 10 05:37:12 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- Changes since 19.04.0:
+  * Don't leak gst structures
+  * Add DesktopEntry to notifyrc
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:53 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- No code changes since 19.03.90
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:39 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * No code changes since 19.03.80
+
+-------------------------------------------------------------------
+Wed Mar 27 06:40:57 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:13 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * Fix taking pictures when the pictures directories didn't exist (kde#404456)
+
+-------------------------------------------------------------------
+Sat Feb 09 08:24:56 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * No code changes since 18.12.1
+
+-------------------------------------------------------------------
+Fri Jan 11 05:42:00 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * Fix compilation with -DQT_NO_URL_CAST_FROM_STRING and enable it.
+
+-------------------------------------------------------------------
+Fri Dec 14 06:09:00 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * No code changes since 18.11.90
+
+-------------------------------------------------------------------
+Mon Dec 03 20:55:50 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * Only set the size when starting
+
+-------------------------------------------------------------------
+Tue Nov 20 06:22:01 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:56:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Use API for removing the toolbar
+  * Fix minor EBN issues
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:31 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * No code changes since 18.08.2
+
+-------------------------------------------------------------------
+Thu Oct 11 20:06:47 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 06 18:42:53 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Aug 16 22:02:05 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * Fix crash when destroying a surface
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:33 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Simplify effect items code
+  * Improve appstream summary and description
+  * webcamcontrol: Solve crash when calling gst_element_set_state twice
+  * Fix build against gst 1.14 (kde#392245)
+  * Remove unused defines
+  * Fix warning
+  * Search for runtime components
+
+-------------------------------------------------------------------
+Fri Jul 13 04:49:50 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * Fix qml warning
+  * Unneedd identifier
+  * Make sure we don't offer a null geometry
+
+-------------------------------------------------------------------
+Fri Jun 08 05:06:38 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * webcamcontrol: Solve crash when calling gst_element_set_state twice (kde#394881)
+
+-------------------------------------------------------------------
+Fri May 11 05:17:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Apr 21 16:31:53 UTC 2018 - jengelh@inai.de
+
+- Update description.
+
+-------------------------------------------------------------------
+Wed Apr 18 07:48:44 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * None
+
+-------------------------------------------------------------------
+Sun Apr 08 09:56:58 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.03.80.php
+- Changes since 3.2.4:
+  * Too many changes to list here
+- Moved to KDE Applications
+
+-------------------------------------------------------------------
+Thu Aug  3 11:31:09 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.2.4
+  * Fix run with gstreamer 1.8
+  * Don't crash if we run Kamoso without any webcams
+
+-------------------------------------------------------------------
+Sat Feb 18 13:36:44 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.2.2
+  * No changelog provided
+- Own %{_kf5_appstreamdir} on Leap 42.1 to fix build
+
+-------------------------------------------------------------------
+Fri Oct 28 22:51:26 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 3.2.1
+  * No changelog provided
+
+-------------------------------------------------------------------
+Tue Jan  5 16:03:45 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 3.1.0:
+  * Fixes some small usability issues with regards to the picture gallery.
+- Changes since 3.0:
+  * Now we’re using camerabin for the video capture (in contrast
+    to using v4l2src directly).
+  *  Re-designed interface that integrates some really lean and
+     meaningful animations and sorts the components so that we can
+     get a simple, dialog-free UI.
+  * Adopted the new Purpose technology that is seeing its light
+    for the first time
+
+-------------------------------------------------------------------
+Fri May  1 20:01:02 UTC 2015 - asterios.dramis@gmail.com
+
+- Fix build in Tumbleweed (remove not needed anymore icons rename).
+
+-------------------------------------------------------------------
+Tue Sep 16 21:30:13 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 2.0.3~git20140916 from git:
+  * GStreamer-1.0 API and QtGStreamer-1.2 support
+  * Removed Nepomuk integration
+- Drop patches merged upstream:
+  icon_fix.patch, kamoso-2.0.2-fix_kipi_conflict.patch,
+  fix_build_wih_older_libkipi.patch, GStreamer-1.patch,
+  kamoso-2.0.2-libkipi-build-fix.patch, libkipi2.x_port.patch,
+  make_about_dialog_work.patch and license_header.patch
+
+-------------------------------------------------------------------
+Thu Jul 24 19:39:19 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added GStreamer-1.patch to build with gstreamer 1.0 API
+- Adjust BuildRequires accordingly
+
+-------------------------------------------------------------------
+Sun Dec 30 19:13:33 UTC 2012 - asterios.dramis@gmail.com
+
+- Updated kamoso-2.0.2-fix_kipi_conflict.patch to include the icon rename fix.
+- Updated kamoso-2.0.2-libkipi-build-fix.patch based on upstream fix.
+- Added the following upstream patches:
+  * make_about_dialog_work.patch (Make the About dialog work)
+  * icon_fix.patch (Use camera-web icon instead of webcamreceive)
+  * libkipi2.x_port.patch (Initial port to libkipi-2.x)
+  * license_header.patch (Add license header to newly added file)
+  * fix_build_wih_older_libkipi.patch (Fix build for < libkipi-2)
+
+-------------------------------------------------------------------
+Mon Aug  6 10:42:28 UTC 2012 - toddrme2178@gmail.com
+
+- Fix building on KR49
+
+-------------------------------------------------------------------
+Wed Jul  4 10:52:43 UTC 2012 - toddrme2178@gmail.com
+
+- Fix qtgstreamer package naming
+- Fix translation rpmlint warnings
+
+-------------------------------------------------------------------
+Fri Aug 26 19:47:22 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 2.0.2.
+- Spec file updates:
+  * Changed License: to GPL-2.0+.
+  * Added glib2-devel and gstreamer-0.10 in BuildRequires:.
+
+-------------------------------------------------------------------
+Sun Mar 20 14:20:48 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 2.0beta1.
+- Spec file updates:
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Updates in Summary:, Url:, Group: and %description entries.
+  * Removed kde4-filesystem and kdebase4-workspace-devel from Buildrequires:
+    section (not needed).
+  * Updated Requires: section (gstreamer, gstreamer-plugins-base and
+    kipi-plugins).
+  * Updates in %install and %files sections.
+  * Removed kamoso-lang package (not packaged in this version).
+
+-------------------------------------------------------------------
+Wed Feb  2 22:26:19 UTC 2011 - wstephenson@novell.com
+
+- Kamoso 2.0alpha2
+  * Take pictures
+  * Upload pictures to Facebook
+  * Record video
+  * Upload videos to Youtube
+  * Burst mode
+  * Smoother thumbnails view
+  * Fancy overlay icons to indicate what files are being uploaded
+
+-------------------------------------------------------------------
+Wed Feb  2 20:58:11 UTC 2011 - wstephenson@novell.com
+
+- Initial package, based on jospoortvliet's 1.0 version

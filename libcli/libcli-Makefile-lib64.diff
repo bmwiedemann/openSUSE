@@ -1,0 +1,31 @@
+diff --git a/Makefile b/Makefile
+index 3062635..4639be8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,6 +7,7 @@ TESTS ?= 1
+ 
+ UNAME = $(shell sh -c 'uname -s 2>/dev/null || echo not')
+ DESTDIR =
++LIBDIR = /usr/lib
+ PREFIX = /usr/local
+ 
+ MAJOR = 1
+@@ -64,14 +65,14 @@ clean:
+ 	rm -f *.o $(LIB)* $(LIB_STATIC) clitest
+ 
+ install: $(TARGET_LIBS)
+-	install -d $(DESTDIR)$(PREFIX)/include $(DESTDIR)$(PREFIX)/lib
++	install -d $(DESTDIR)$(PREFIX)/include $(DESTDIR)$(LIBDIR)
+ 	install -m 0644 libcli.h $(DESTDIR)$(PREFIX)/include
+   ifeq (1,$(STATIC_LIB))
+-	install -m 0644 $(LIB_STATIC) $(DESTDIR)$(PREFIX)/lib
++	install -m 0644 $(LIB_STATIC) $(DESTDIR)$(LIBDIR)
+   endif
+   ifeq (1,$(DYNAMIC_LIB))
+-	install -m 0755 $(LIB).$(MAJOR).$(MINOR).$(REVISION) $(DESTDIR)$(PREFIX)/lib
+-	cd $(DESTDIR)$(PREFIX)/lib && \
++	install -m 0755 $(LIB).$(MAJOR).$(MINOR).$(REVISION) $(DESTDIR)$(LIBDIR)
++	cd $(DESTDIR)$(LIBDIR) && \
+ 	    ln -fs $(LIB).$(MAJOR).$(MINOR).$(REVISION) $(LIB).$(MAJOR).$(MINOR) && \
+ 	    ln -fs $(LIB).$(MAJOR).$(MINOR) $(LIB)
+   endif

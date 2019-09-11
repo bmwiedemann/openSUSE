@@ -1,0 +1,65 @@
+Index: go/src/crypto/x509/root_unix.go
+===================================================================
+--- go.orig/src/crypto/x509/root_unix.go
++++ go/src/crypto/x509/root_unix.go
+@@ -6,24 +6,20 @@
+ 
+ package x509
+ 
+-import "io/ioutil"
++import (
++	"io/ioutil"
++	"os"
++)
+ 
+ // Possible certificate files; stop after finding one.
+ var certFiles = []string{
+-	"/etc/ssl/certs/ca-certificates.crt",     // Debian/Ubuntu/Gentoo etc.
+-	"/etc/pki/tls/certs/ca-bundle.crt",       // Fedora/RHEL
+-	"/etc/ssl/ca-bundle.pem",                 // OpenSUSE
+-	"/etc/ssl/cert.pem",                      // OpenBSD
+-	"/usr/local/share/certs/ca-root-nss.crt", // FreeBSD/DragonFly
+-	"/etc/pki/tls/cacert.pem",                // OpenELEC
+-	"/etc/certs/ca-certificates.crt",         // Solaris 11.2+
++	"/etc/ssl/ca-bundle.pem", // openSUSE and SLE12+
+ }
+ 
+ // Possible directories with certificate files; stop after successfully
+ // reading at least one file from a directory.
+ var certDirectories = []string{
+-	"/system/etc/security/cacerts", // Android
+-
++	"/etc/ssl/certs", // SLE11
+ }
+ 
+ func (c *Certificate) systemVerify(opts *VerifyOptions) (chains [][]*Certificate, err error) {
+@@ -41,22 +37,24 @@ func initSystemRoots() {
+ 		}
+ 	}
+ 
++	rootsAdded := false
+ 	for _, directory := range certDirectories {
+ 		fis, err := ioutil.ReadDir(directory)
+ 		if err != nil {
+ 			continue
+ 		}
+-		rootsAdded := false
+ 		for _, fi := range fis {
++			if fi.Mode()&os.ModeSymlink != 0 {
++				continue
++			}
+ 			data, err := ioutil.ReadFile(directory + "/" + fi.Name())
+ 			if err == nil && roots.AppendCertsFromPEM(data) {
+ 				rootsAdded = true
+ 			}
+ 		}
+-		if rootsAdded {
+-			systemRoots = roots
+-			return
+-		}
++	}
++	if rootsAdded {
++		systemRoots = roots
+ 	}
+ 
+ 	// All of the files failed to load. systemRoots will be nil which will

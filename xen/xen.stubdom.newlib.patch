@@ -1,0 +1,119 @@
+# HG changeset patch
+# Parent 02ec826cab1e4acb25b364a180a1597ace1149f9
+stubdom: fix errors in newlib
+
+rpm post-build-checks found a few code bugs in newlib, and marks them as
+errors. Add another newlib patch and apply it during stubdom build.
+
+I: A function uses a 'return;' statement, but has actually a value
+   to return, like an integer ('return 42;') or similar.
+W: xen voidreturn ../../../../newlib-1.16.0/libgloss/i386/cygmon-gmon.c:117, 125, 146, 157, 330
+
+I: Program is using implicit definitions of special functions.
+   these functions need to use their correct prototypes to allow
+   the lightweight buffer overflow checking to work.
+     - Implicit memory/string functions need #include <string.h>.
+     - Implicit *printf functions need #include <stdio.h>.
+     - Implicit *printf functions need #include <stdio.h>.
+     - Implicit *read* functions need #include <unistd.h>.
+     - Implicit *recv* functions need #include <sys/socket.h>.
+E: xen implicit-fortify-decl ../../../../newlib-1.16.0/libgloss/i386/cygmon-gmon.c:119
+
+I: Program returns random data in a function
+E: xen no-return-in-nonvoid-function ../../../../newlib-1.16.0/libgloss/i386/cygmon-gmon.c:362
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+
+Index: xen-4.12.0-testing/stubdom/Makefile
+===================================================================
+--- xen-4.12.0-testing.orig/stubdom/Makefile
++++ xen-4.12.0-testing/stubdom/Makefile
+@@ -88,6 +88,8 @@ newlib-$(NEWLIB_VERSION): newlib-$(NEWLI
+ 	patch -d $@ -p0 < newlib-chk.patch
+ 	patch -d $@ -p1 < newlib-stdint-size_max-fix-from-1.17.0.patch
+ 	patch -d $@ -p1 < newlib-disable-texinfo.patch
++	patch -d $@ -p1 < newlib-cygmon-gmon.patch
++	patch -d $@ -p1 < newlib-makedoc.patch
+ 	find $@ -type f | xargs perl -i.bak \
+ 		-pe 's/\b_(tzname|daylight|timezone)\b/$$1/g'
+ 	touch $@
+Index: xen-4.12.0-testing/stubdom/newlib-cygmon-gmon.patch
+===================================================================
+--- /dev/null
++++ xen-4.12.0-testing/stubdom/newlib-cygmon-gmon.patch
+@@ -0,0 +1,60 @@
++
++I: A function uses a 'return;' statement, but has actually a value
++   to return, like an integer ('return 42;') or similar.
++W: xen voidreturn ../../../../newlib-1.16.0/libgloss/i386/cygmon-gmon.c:117, 125, 146, 157, 330
++
++I: Program is using implicit definitions of special functions.
++   these functions need to use their correct prototypes to allow
++   the lightweight buffer overflow checking to work.
++     - Implicit memory/string functions need #include <string.h>.
++     - Implicit *printf functions need #include <stdio.h>.
++     - Implicit *printf functions need #include <stdio.h>.
++     - Implicit *read* functions need #include <unistd.h>.
++     - Implicit *recv* functions need #include <sys/socket.h>.
++E: xen implicit-fortify-decl ../../../../newlib-1.16.0/libgloss/i386/cygmon-gmon.c:119
++
++I: Program returns random data in a function
++E: xen no-return-in-nonvoid-function ../../../../newlib-1.16.0/libgloss/i386/cygmon-gmon.c:362
++
++---
++ libgloss/i386/cygmon-gmon.c |    6 +++++-
++ 1 file changed, 5 insertions(+), 1 deletion(-)
++
++Index: newlib-1.16.0/libgloss/i386/cygmon-gmon.c
++===================================================================
++--- newlib-1.16.0.orig/libgloss/i386/cygmon-gmon.c
+++++ newlib-1.16.0/libgloss/i386/cygmon-gmon.c
++@@ -61,6 +61,8 @@
++ static char sccsid[] = "@(#)gmon.c	5.3 (Berkeley) 5/22/91";
++ #endif /* not lint */
++
+++#include <string.h>
+++#include <unistd.h>
++ #define DEBUG
++ #ifdef DEBUG
++ #include <stdio.h>
++@@ -89,7 +91,7 @@ static int	s_scale;
++
++ extern int errno;
++
++-int
+++void
++ monstartup(lowpc, highpc)
++      char	*lowpc;
++      char	*highpc;
++@@ -199,6 +201,7 @@ _mcleanup()
++
++ static char already_setup = 0;
++
+++void
++ _mcount()
++ {
++   register char			*selfpc;
++@@ -341,6 +344,7 @@ overflow:
++  *	profiling is what mcount checks to see if
++  *	all the data structures are ready.
++  */
+++void
++ moncontrol(mode)
++     int mode;
++ {
+Index: xen-4.12.0-testing/stubdom/newlib-makedoc.patch
+===================================================================
+--- /dev/null
++++ xen-4.12.0-testing/stubdom/newlib-makedoc.patch
+@@ -0,0 +1,10 @@
++--- newlib-1.16.0/newlib/doc/makedoc.c.orig	2015-04-08 11:56:39.283090914 +0200
+++++ newlib-1.16.0/newlib/doc/makedoc.c	2015-04-08 11:56:51.245227742 +0200
++@@ -39,6 +39,7 @@
++ #include <stdio.h>
++ #include <stdlib.h>
++ #include <ctype.h>
+++#include <string.h>
++
++ #define DEF_SIZE 5000
++ #define STACK 50

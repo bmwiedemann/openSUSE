@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Sat May  4 09:17:56 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.2.0
+  * Tests for all coverage patch versions 4.0 - 5.0a,
+    CPython 2.7 and 3.4 - 3.7 and PyPy 6.0
+  * Add LICENSE to distributions
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:58 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jun  7 17:59:51 UTC 2018 - toddrme2178@gmail.com
+
+- Fix source URL
+
+-------------------------------------------------------------------
+Tue May 29 16:46:05 UTC 2018 - toddrme2178@gmail.com
+
+- Add license file
+
+-------------------------------------------------------------------
+Tue Nov  7 18:23:29 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

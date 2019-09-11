@@ -1,0 +1,60 @@
+--- usr/local/bin/vcron	2004-03-23 11:27:50.000000000 +0100
++++ usr/local/bin/vcron	2004-03-23 13:02:23.000000000 +0100
+@@ -440,7 +440,10 @@
+ 
+ #       if no crontab file , create an empty one 
+ #       to avoid the close to produce an error
+-	exec sh << "crontab -l > /dev/null 2>&1 ; if \[ \$? -ne 0 \]; then > /tmp/croninit; crontab /tmp/croninit; rm /tmp/croninit; fi"
++	set result [catch {exec crontab -l >& /dev/null}]
++	if {$result != 0} {
++	    exec crontab - << ""
++	}
+ 
+ 	.fram1.frm10.lst1 delete 0 end
+ 
+@@ -1077,12 +1080,7 @@
+ 	return "bad"
+     }
+ 
+-    set fid [open "/tmp/atfile" w]
+-    puts $fid $spgm
+-    close $fid
+-
+-    exec at -f /tmp/atfile $hour $day >& /dev/null
+-    file delete "/tmp/atfile"
++    exec at $hour $day << "$fid $spgm\n" >& /dev/null
+ 
+     GetCurrentState 0 1
+ 
+@@ -1104,26 +1102,19 @@
+ 
+ proc RePostCronTab {} {
+     global cronenv
+-
+-    set fid [open "/tmp/croninit" w]
++    set crontab ""
+ 
+     # first set the environment
+     if { [string length $cronenv] } {
+-	puts $fid $cronenv
++	append crontab $cronenv "\n"
+     }
+ 
+     # set each cron line
+-    set ind 0
+     set max [.fram1.frm10.lst1 size]
+-    while { $ind < $max } {
+-	set line [.fram1.frm10.lst1 get $ind]
+-	puts $fid $line
+-	incr ind
++    for {set ind 0} {$ind < $max} {incr ind} {
++	append crontab [.fram1.frm10.lst1 get $ind] "\n"
+     }
+-    close $fid
+-
+-    exec crontab /tmp/croninit
+-    file delete /tmp/croninit
++    exec crontab - << $crontab
+ }
+ 
+ proc RazTabVar {} {

@@ -1,0 +1,116 @@
+-------------------------------------------------------------------
+Wed Jan 11 11:53:07 UTC 2017 - dmueller@suse.com
+
+- set atomictype to pthread for aarch64
+
+-------------------------------------------------------------------
+Fri Dec 30 13:59:56 UTC 2016 - bg@suse.com
+
+- set atomictype on s390x to pthread
+
+-------------------------------------------------------------------
+Fri May  8 10:29:33 UTC 2015 - mpluskal@suse.com
+
+- Add rpmlintrc as source
+- Remove not applied cxxtools-2.1.1-arm.patch
+
+-------------------------------------------------------------------
+Fri Jan 16 14:36:26 UTC 2015 - jengelh@inai.de
+
+- Demos are disabled so remove subpackage. (SLE11 build also
+  rightfully complains about .deps/ files that ought not to be
+  installed.)
+
+-------------------------------------------------------------------
+Thu Sep  4 17:25:41 UTC 2014 - jengelh@inai.de
+
+- Split binary packages to selectively reduce installation size
+
+-------------------------------------------------------------------
+Mon Sep  1 08:02:57 UTC 2014 - mvyskocil@opensuse.org
+
+- Alow cpp files in demo subpackage
+- Don't build demos
+
+-------------------------------------------------------------------
+Thu Aug 28 18:20:28 UTC 2014 - mvyskocil@opensuse.org
+
+- Removed spurious lib prefix from devel subpackage
+- Used an 2.2.1 update from home:-miska-:arm
+  * fixes a major bug when parsing query parameters in http communication
+- Add demo subpackage
+
+-------------------------------------------------------------------
+Sat Jun 15 10:45:33 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 2.2.
+  * Logging is configured now with xml by default but may use other
+  * deserializable formats as well.
+  * Move xml stuff into core library libcxxtools.
+  * Improve iconv wrapper class.
+  * Almost rewrite unicode character class cxxtools::Char.
+  * Simplify use of codecs.
+  * New file device for asynchronous file I/O.
+  * Extend binary rpc protocol to support domains (similar
+  * namespace in C++).
+  * Better handling of SIGPIPE in network classes.
+  * Deseriailzer for property files.
+  * Implement simple API for parallel rpc calls.
+- Libraries major version changed to 9.
+- Add cxxtools-2.2-iconvstream-return.diff: fix "no return"
+  warning.
+- Add BuildRequires: pkg-config.
+
+-------------------------------------------------------------------
+Thu Feb 21 14:39:16 CET 2013 - mhrusecky@suse.cz
+
+- fixed arm compilation using Fedoras patch
+
+-------------------------------------------------------------------
+Fri Feb  1 09:54:28 CET 2013 - mhrusecky@suse.cz
+
+- Update to 2.1.1
+  * Fixes a major bug when parsing query parameters in http communication
+  . Query parameters containing two percent signs resulted in an recursive
+    loop, which results in a crash. Since query parameters are typically
+    received from the network, it is a major problem, since there is no
+    control over the input parameters sent.
+
+-------------------------------------------------------------------
+Wed Apr 25 20:24:21 UTC 2012 - lazy.kent@opensuse.org
+
+- Update to 2.1.
+  * This release adds json and jsonrpc to cxxtools as well as a
+    fast binary rpc server and client. Both are based on the
+    improved serialization framework of cxxtools.
+  * The json and binary format can be used as a storage format.
+    Also serialization and deserialization of csv is possible.
+  * The unicode string as a specialization of std::basic_string got
+    a major rewrite with short string optimization.
+  * Tntnet has mainly many small improvements, better standard
+    compliance and a slightly higher performance.
+  * Tntdb got a replication driver, which is able to replicate the
+    data between databases without database support. The decimal
+    class was rewritten and got unittests. The new RowReader-class
+    makes code more readable, when many columns are read from a
+    result row. A new class BlobStream implements a std::istream
+    interface to blobs.
+- Libraries version changed to 8.
+
+-------------------------------------------------------------------
+Sun Feb 26 11:17:48 UTC 2012 - lazy.kent@opensuse.org
+
+- Use make_install macro.
+
+-------------------------------------------------------------------
+Sun Nov  6 15:00:10 UTC 2011 - lazy.kent@opensuse.org
+
+- Added COPYING to docs.
+- Corrected License tag.
+- Use full URL as a source.
+- spec clean up.
+
+-------------------------------------------------------------------
+Wed Nov  3 04:01:13 UTC 2010 - lazy.kent.suse@gmail.com
+
+- initial package created - 2.0

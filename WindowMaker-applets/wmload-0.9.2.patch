@@ -1,0 +1,19 @@
+--- Imakefile
++++ Imakefile
+@@ -14,4 +14,4 @@
+ SRCS = wmload.c
+ OBJS = wmload.o
+ 
+-ComplexProgramTarget(wmload)
++ComplexProgramTargetNoMan(wmload)
+--- wmload.c
++++ wmload.c
+@@ -1,4 +1,8 @@
+ #include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++#include <unistd.h>
++#include <ctype.h>
+ #include <X11/Xlib.h>
+ #include <X11/xpm.h>
+ #include <X11/extensions/shape.h>

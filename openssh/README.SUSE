@@ -1,0 +1,22 @@
+There are following changes in default settings of ssh client and server:
+
+* Accepting and sending of locale environment variables in protocol 2 is
+  enabled.
+
+* PAM authentication is enabled and mostly even required, do not turn it off.
+
+* root authentiation with password is enabled by default (PermitRootLogin yes).
+  NOTE: this has security implications and is only done in order to not change
+  behaviour of the server in an update. We strongly suggest setting this option
+  either "prohibit-password" or even better to "no" (which disables direct
+  remote root login entirely).
+
+* DSA authentication is enabled by default for maximum compatibility.
+  NOTE: do not use DSA authentication since it is being phased out for a reason
+  - the size of DSA keys is limited by the standard to 1024 bits which cannot
+  be considered safe any more.
+
+* Accepting all RFC4419 specified DH group parameters. See KexDHMin in
+  ssh_config and sshd_config manual pages.
+
+For more information on differences in SUSE OpenSSH package see README.FIPS

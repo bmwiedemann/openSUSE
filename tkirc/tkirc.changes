@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Wed Jan 24 15:04:01 CET 2007 - ro@suse.de
+
+- move from /usr/X11R6 to /usr 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:48:20 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Feb 24 14:24:01 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Thu May 23 17:10:39 CEST 2002 - max@suse.de
+
+- New version 2.46.
+- Patched to use epic instead of ircii.
+- Using Buildroot now.
+
+-------------------------------------------------------------------
+Wed Apr 11 12:20:31 CEST 2001 - max@suse.de
+
+- Added Group: Applications/Networking
+- Added Buildarchitectures: noarch
+- changed path to wish
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Mar 18 18:29:05 MET 1998 - max@suse.de
+
+- new version: 1.202 
+
+-------------------------------------------------------------------
+Tue Oct 28 14:06:45 MET 1997 - max@suse.de
+
+- added tkirc as a new package
+
+

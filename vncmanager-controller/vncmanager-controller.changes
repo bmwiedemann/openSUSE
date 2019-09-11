@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Tue Jul 17 09:02:21 UTC 2018 - msrb@suse.com
+
+- U_vncmanager-controller-Declare-gnome-shell-versions-3.10-to-3.26-as-supported.patch
+  * Makes the extension load on newer gnome shell versions.
+    (bnc#1100768)
+
+-------------------------------------------------------------------
+Mon Jun 11 08:02:00 UTC 2018 - msrb@suse.com
+
+- Update to version 1.0.1
+  * Fixes build with Qt 5.11
+  * Remove patch which is now included:
+    U_vncmanager-fix-installation-directory-and-metadata-of-gnome-shell-extension.patch
+
+-------------------------------------------------------------------
+Thu Mar  1 11:56:26 UTC 2018 - sndirsch@suse.com
+
+- fixed Buildrequires to use pkconfig files instead of devel
+  package names
+
+-------------------------------------------------------------------
+Wed May 18 10:51:17 UTC 2016 - msrb@suse.com
+
+- Improve dependencies. (bnc#980573)
+
+-------------------------------------------------------------------
+Thu May 12 12:11:31 UTC 2016 - msrb@suse.com
+
+- U_vncmanager-fix-installation-directory-and-metadata-of-gnome-shell-extension.patch
+  (bnc#979647)
+- Add LICENSE file to docs.
+
+-------------------------------------------------------------------
+Fri Apr 29 10:38:00 UTC 2016 - msrb@suse.com
+
+- Change group to System/X11/Utilities.
+
+-------------------------------------------------------------------
+Tue Jan 19 12:02:49 UTC 2016 - msrb@suse.com
+
+- Switch to Qt5.
+
+-------------------------------------------------------------------
+Mon Nov  9 09:50:31 UTC 2015 - msrb@suse.com
+
+- Create package.
+

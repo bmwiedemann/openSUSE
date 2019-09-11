@@ -1,0 +1,37 @@
+diff -ruN Argyll_V1.9.2.orig/spectro/conv.c Argyll_V1.9.2/spectro/conv.c
+--- Argyll_V1.9.2.orig/spectro/conv.c	2016-09-28 05:59:09.000000000 +0300
++++ Argyll_V1.9.2/spectro/conv.c	2017-03-14 17:25:20.767520365 +0200
+@@ -19,7 +19,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <stdarg.h>
+-#include <time.h>
++#include <sys/time.h>
+ 
+ #ifdef NT
+ # if !defined(_WIN32_WINNT) || _WIN32_WINNT < 0x0501
+diff -ruN Argyll_V1.9.2.orig/spectro/usbio_lx.c Argyll_V1.9.2/spectro/usbio_lx.c
+--- Argyll_V1.9.2.orig/spectro/usbio_lx.c	2016-10-12 06:05:27.000000000 +0300
++++ Argyll_V1.9.2/spectro/usbio_lx.c	2017-03-14 17:24:58.667519820 +0200
+@@ -22,6 +22,7 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <sys/ioctl.h>
++#include <sys/time.h>
+ #include <linux/usbdevice_fs.h>
+ 
+ /* select() defined, but not poll(), so emulate poll() */
+diff -ruN Argyll_V1.9.2.orig/zlib/gzread.c Argyll_V1.9.2/zlib/gzread.c
+--- Argyll_V1.9.2.orig/zlib/gzread.c	2016-09-28 05:59:28.000000000 +0300
++++ Argyll_V1.9.2/zlib/gzread.c	2017-03-14 17:25:41.655520880 +0200
+@@ -3,6 +3,10 @@
+  * For conditions of distribution and use, see copyright notice in zlib.h
+  */
+ 
++#include "string.h"
++#include "stdio.h"
++#include "unistd.h"
++#include "sys/socket.h"
+ #include "gzguts.h"
+ 
+ /* Local functions */

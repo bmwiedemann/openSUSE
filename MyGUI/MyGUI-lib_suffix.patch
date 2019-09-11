@@ -1,0 +1,51 @@
+diff -Naur MyGUI_3.2.2.orig/CMake/ConfigureBuild.cmake MyGUI_3.2.2/CMake/ConfigureBuild.cmake
+--- MyGUI_3.2.2.orig/CMake/ConfigureBuild.cmake
++++ MyGUI_3.2.2/CMake/ConfigureBuild.cmake
+@@ -47,7 +47,7 @@
+   else ()
+     configure_file(${MYGUI_TEMPLATES_DIR}/MYGUI.pc.in ${MYGUI_BINARY_DIR}/pkgconfig/MYGUI${MYGUI_LIB_SUFFIX}.pc @ONLY)
+   endif ()
+-  install(FILES ${MYGUI_BINARY_DIR}/pkgconfig/MYGUI${MYGUI_LIB_SUFFIX}.pc DESTINATION lib/pkgconfig)
++  install(FILES ${MYGUI_BINARY_DIR}/pkgconfig/MYGUI${MYGUI_LIB_SUFFIX}.pc DESTINATION lib${LIB_SUFFIX}/pkgconfig)
+ 
+   # configure additional packages
+   
+diff -Naur MyGUI_3.2.2.orig/CMake/Utils/MyGUIConfigTargets.cmake MyGUI_3.2.2/CMake/Utils/MyGUIConfigTargets.cmake
+--- MyGUI_3.2.2.orig/CMake/Utils/MyGUIConfigTargets.cmake
++++ MyGUI_3.2.2/CMake/Utils/MyGUIConfigTargets.cmake
+@@ -61,8 +61,8 @@
+ function(mygui_install_target TARGETNAME SUFFIX)
+ 	install(TARGETS ${TARGETNAME}
+ 		RUNTIME DESTINATION "bin${MYGUI_RELEASE_PATH}" CONFIGURATIONS Release None ""
+-		LIBRARY DESTINATION "lib${MYGUI_LIB_RELEASE_PATH}${SUFFIX}" CONFIGURATIONS Release None ""
+-		ARCHIVE DESTINATION "lib${MYGUI_LIB_RELEASE_PATH}${SUFFIX}" CONFIGURATIONS Release None ""
++		LIBRARY DESTINATION "lib${LIB_SUFFIX}${MYGUI_LIB_RELEASE_PATH}${SUFFIX}" CONFIGURATIONS Release None ""
++		ARCHIVE DESTINATION "lib${LIB_SUFFIX}${MYGUI_LIB_RELEASE_PATH}${SUFFIX}" CONFIGURATIONS Release None ""
+ 		FRAMEWORK DESTINATION "${MYGUI_FRAMEWORK_PATH}" CONFIGURATIONS Release None ""
+ 	)
+ 	install(TARGETS ${TARGETNAME}
+@@ -88,8 +88,8 @@
+ # setup common target settings
+ function(mygui_config_common TARGETNAME)
+ 	set_target_properties(${TARGETNAME} PROPERTIES
+-		ARCHIVE_OUTPUT_DIRECTORY ${MYGUI_BINARY_DIR}/lib
+-		LIBRARY_OUTPUT_DIRECTORY ${MYGUI_BINARY_DIR}/lib
++		ARCHIVE_OUTPUT_DIRECTORY ${MYGUI_BINARY_DIR}/lib${LIB_SUFFIX}
++		LIBRARY_OUTPUT_DIRECTORY ${MYGUI_BINARY_DIR}/lib${LIB_SUFFIX}
+ 		RUNTIME_OUTPUT_DIRECTORY ${MYGUI_BINARY_DIR}/bin
+ 	)
+ 	mygui_create_vcproj_userfile(${TARGETNAME})
+diff -Naur MyGUI_3.2.2.orig/CMakeLists.txt MyGUI_3.2.2/CMakeLists.txt
+--- MyGUI_3.2.2.orig/CMakeLists.txt
++++ MyGUI_3.2.2/CMakeLists.txt
+@@ -85,8 +85,8 @@
+ set(MYGUI_LIBRARIES MyGUIEngine)
+ 
+ # Specify build paths
+-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${MYGUI_BINARY_DIR}/lib)
+-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${MYGUI_BINARY_DIR}/lib)
++set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${MYGUI_BINARY_DIR}/lib${LIB_SUFFIX})
++set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${MYGUI_BINARY_DIR}/lib${LIB_SUFFIX})
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${MYGUI_BINARY_DIR}/bin)
+ if (WIN32 OR APPLE)
+ 	if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)

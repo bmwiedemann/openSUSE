@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Xiphos
+GenericName=Bible study tool
+GenericName[ru]=Изучение Библии
+Comment=Study the Bible
+Comment[ru]=Программа для чтения и исследования Библии
+Exec=xiphos
+Icon=xiphos
+Terminal=false
+Type=Application
+Categories=GTK;GNOME;Education;Teaching;Bible;
+StartupNotify=true
+X-Desktop-File-Install-Version=0.15
+TryExec=/usr/bin/xiphos

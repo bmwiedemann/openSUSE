@@ -1,0 +1,74 @@
+From 86f42e5a2a9d8a483ad0ca85fdf090172fb4d385 Mon Sep 17 00:00:00 2001
+From: Stanislav Brabec <sbrabec@suse.cz>
+Date: Thu, 10 Jan 2019 01:28:54 +0100
+Subject: [PATCH 2/2] su-common.c: prefer ENV_SUPATH over ENV_ROOTPATH
+
+ENV_SUPATH and ENV_ROOTPATH are equivalent and ENV_ROOTPATH takes
+precedence in both login and su. It makes no sense. More logical would be
+precedence of ENV_SUPATH in su and ENV_ROOTPATH in login.
+
+Signed-off-by: Stanislav Brabec <sbrabec@suse.cz>
+---
+ login-utils/login.1     | 2 +-
+ login-utils/runuser.1   | 2 +-
+ login-utils/su-common.c | 4 ++--
+ login-utils/su.1        | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/login-utils/login.1 b/login-utils/login.1
+index cb8addec3..b73eae147 100644
+--- a/login-utils/login.1
++++ b/login-utils/login.1
+@@ -282,7 +282,7 @@ a regular user logs in.  The default value is
+ (string)
+ .RS 4
+ If set, it will be used to define the PATH environment variable when
+-the superuser logs in.  The default value is
++the superuser logs in.  ENV_ROOTPATH takes precedence.  The default value is
+ .I /usr\:/local\:/sbin:\:/usr\:/local\:/bin:\:/sbin:\:/bin:\:/usr\:/sbin:\:/usr\:/bin
+ .RE
+ .SH FILES
+diff --git a/login-utils/runuser.1 b/login-utils/runuser.1
+index bf0d02471..221672200 100644
+--- a/login-utils/runuser.1
++++ b/login-utils/runuser.1
+@@ -183,7 +183,7 @@ default value is
+ .B ENV_SUPATH
+ (string)
+ .RS 4
+-Defines the PATH environment variable for root. The default value is
++Defines the PATH environment variable for root.  ENV_SUPATH takes precedence.  The default value is
+ .IR /usr/local/sbin:\:/usr/local/bin:\:/sbin:\:/bin:\:/usr/sbin:\:/usr/bin .
+ .RE
+ .PP
+diff --git a/login-utils/su-common.c b/login-utils/su-common.c
+index 19074247c..0e44eb87c 100644
+--- a/login-utils/su-common.c
++++ b/login-utils/su-common.c
+@@ -989,8 +989,8 @@ static void setenv_path(const struct passwd *pw)
+ 	if (pw->pw_uid)
+ 		rc = logindefs_setenv("PATH", "ENV_PATH", _PATH_DEFPATH);
+ 
+-	else if ((rc = logindefs_setenv("PATH", "ENV_ROOTPATH", NULL)) != 0)
+-		rc = logindefs_setenv("PATH", "ENV_SUPATH", _PATH_DEFPATH_ROOT);
++	else if ((rc = logindefs_setenv("PATH", "ENV_SUPATH", NULL)) != 0)
++		rc = logindefs_setenv("PATH", "ENV_ROOTPATH", _PATH_DEFPATH_ROOT);
+ 
+ 	if (rc)
+ 		err(EXIT_FAILURE, _("failed to set the PATH environment variable"));
+diff --git a/login-utils/su.1 b/login-utils/su.1
+index d6a064fd2..5ae6d6b2d 100644
+--- a/login-utils/su.1
++++ b/login-utils/su.1
+@@ -209,7 +209,7 @@ default value is
+ .B ENV_SUPATH
+ (string)
+ .RS 4
+-Defines the PATH environment variable for root.  The default value is
++Defines the PATH environment variable for root.  ENV_SUPATH takes precedence.  The default value is
+ .IR /usr/local/sbin:\:/usr/local/bin:\:/sbin:\:/bin:\:/usr/sbin:\:/usr/bin .
+ .RE
+ .PP
+-- 
+2.20.1
+

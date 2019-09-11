@@ -1,0 +1,116 @@
+commit a7ebecb9fbee2190e649c44ed53f1299013baa30
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sun Mar 18 11:56:57 2018 +0100
+
+    Fix build with Qt 5.11 (missing headers)
+    
+    Reviewers: #calligra:_3.0, anthonyfieroni, danders
+    
+    Reviewed By: #calligra:_3.0, anthonyfieroni, danders
+    
+    Subscribers: anthonyfieroni, danders
+    
+    Tags: #calligra:_3.0
+    
+    Differential Revision: https://phabricator.kde.org/D11454
+
+diff --git a/src/kptview.h b/src/kptview.h
+index 44d1193..a98e553 100644
+--- a/src/kptview.h
++++ b/src/kptview.h
+@@ -28,6 +28,7 @@
+ #include "kptcontext.h"
+ #include "kptviewbase.h"
+ 
++#include <QActionGroup>
+ #include <QDockWidget>
+ #include <QMap>
+ 
+diff --git a/src/kptviewlist.cpp b/src/kptviewlist.cpp
+index f34e702..0e6db7b 100644
+--- a/src/kptviewlist.cpp
++++ b/src/kptviewlist.cpp
+@@ -25,6 +25,7 @@
+ #include <QStyle>
+ #include <QBrush>
+ #include <QContextMenuEvent>
++#include <QHeaderView>
+ #include <QMenu>
+ 
+ #include <kmessagebox.h>
+diff --git a/src/libs/ui/kptaccountseditor.cpp b/src/libs/ui/kptaccountseditor.cpp
+index 7991faf..54e3a87 100644
+--- a/src/libs/ui/kptaccountseditor.cpp
++++ b/src/libs/ui/kptaccountseditor.cpp
+@@ -40,6 +40,7 @@
+ #include <QContextMenuEvent>
+ #include <QMenu>
+ #include <QAction>
++#include <QHeaderView>
+ 
+ #include <KLocalizedString>
+ #include <kactioncollection.h>
+diff --git a/src/libs/ui/kptdocumentspanel.h b/src/libs/ui/kptdocumentspanel.h
+index 00ea3af..491cb1e 100644
+--- a/src/libs/ui/kptdocumentspanel.h
++++ b/src/libs/ui/kptdocumentspanel.h
+@@ -26,6 +26,7 @@
+ 
+ #include "kptdocuments.h"
+ 
++#include <QModelIndexList>
+ #include <QWidget>
+ #include <kundo2qstack.h>
+ 
+diff --git a/src/libs/ui/kptitemviewsettup.cpp b/src/libs/ui/kptitemviewsettup.cpp
+index d1c3b1f..7c97a07 100644
+--- a/src/libs/ui/kptitemviewsettup.cpp
++++ b/src/libs/ui/kptitemviewsettup.cpp
+@@ -25,9 +25,9 @@
+ 
+ #include "KoPageLayoutWidget.h"
+ 
++#include <QHeaderView>
+ #include <QPushButton>
+ 
+-
+ namespace KPlato
+ {
+ 
+diff --git a/src/libs/ui/kpttaskeditor.cpp b/src/libs/ui/kpttaskeditor.cpp
+index 5f79abf..d08d7f2 100644
+--- a/src/libs/ui/kpttaskeditor.cpp
++++ b/src/libs/ui/kpttaskeditor.cpp
+@@ -45,6 +45,7 @@
+ #include <QVBoxLayout>
+ #include <QDragMoveEvent>
+ #include <QAction>
++#include <QHeaderView>
+ #include <QMenu>
+ 
+ #include <kactionmenu.h>
+diff --git a/src/libs/ui/reportsgenerator/ReportsGeneratorView.cpp b/src/libs/ui/reportsgenerator/ReportsGeneratorView.cpp
+index 344ebc2..9146f06 100644
+--- a/src/libs/ui/reportsgenerator/ReportsGeneratorView.cpp
++++ b/src/libs/ui/reportsgenerator/ReportsGeneratorView.cpp
+@@ -31,6 +31,7 @@
+ #include <KFile>
+ 
+ #include <QAction>
++#include <QHeaderView>
+ #include <QTreeView>
+ #include <QStandardItemModel>
+ #include <QModelIndex>
+diff --git a/src/libs/widgets/KoPageLayoutWidget.cpp b/src/libs/widgets/KoPageLayoutWidget.cpp
+index c9e17b7..b67e984 100644
+--- a/src/libs/widgets/KoPageLayoutWidget.cpp
++++ b/src/libs/widgets/KoPageLayoutWidget.cpp
+@@ -23,6 +23,8 @@
+ 
+ #include <KoUnit.h>
+ 
++#include <QButtonGroup>
++
+ class Q_DECL_HIDDEN KoPageLayoutWidget::Private
+ {
+ public:

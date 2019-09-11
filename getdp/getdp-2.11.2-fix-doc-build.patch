@@ -1,0 +1,15 @@
+Index: getdp-2.11.2-source/CMakeLists.txt
+===================================================================
+--- getdp-2.11.2-source.orig/CMakeLists.txt
++++ getdp-2.11.2-source/CMakeLists.txt
+@@ -969,8 +969,8 @@ if(MAKEINFO)
+   add_custom_target(txt DEPENDS ${TEX_DIR}/getdp.txt)
+   add_custom_command(OUTPUT ${TEX_DIR}/getdp.html DEPENDS ${TEX_SRC}
+     COMMAND ${MAKEINFO} --html --css-ref=http://getdp.info/getdp.css
+-    --no-split --set-customization-variable
+-    EXTRA_HEAD='<meta name="viewport" content="width=device-width,initial-scale=1.0">'
++    --no-split 
++    -D EXTRA_HEAD='<meta name="viewport" content="width=device-width,initial-scale=1.0">'
+     ARGS ${TEX_DIR}/getdp.texi WORKING_DIRECTORY ${TEX_DIR})
+   add_custom_target(html DEPENDS ${TEX_DIR}/getdp.html)
+   install(FILES ${TEX_DIR}/getdp.html DESTINATION ${GETDP_DOC} OPTIONAL)

@@ -1,0 +1,327 @@
+-------------------------------------------------------------------
+Mon Mar 18 08:12:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to upstream download url
+
+-------------------------------------------------------------------
+Wed Mar 13 08:30:42 UTC 2019 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Updated to version 0.9.16 which is now part of libvncserver as in
+  page http://www.karlrunge.com/x11vnc/ there is sentence
+  x11vnc is a contributed program to the LibVNCServer project at SourceForge.net or
+  https://github.com/LibVNC/x11vnc
+
+   Changes:
+   * Build fixes.
+   * Misc. documentation fixes.
+   * Misc. buffer overflow and memleak fixes.
+   * Support for OpenSSL 1.1.0.
+   * Fix for Debian bug #672435.
+   * Added support for the X Composite Extension. For subwindow/appshare
+     modes this allows sharing the respective window/app when it
+     is partially or completely off-screen as XComposite renders
+     the window contents to an off-screen buffer. Before, updating
+     of the window contents would stop once it went even partially
+     off-screen.
+   * Added XInput 2 multi-pointer support which allows multiple clients
+     to view and control a single shared screen, all having their
+     own mouse pointers and keyboard foci. For in-depth info, read
+     http://edoc.hu-berlin.de/master/beier-christian-2011-07-19/PDF/beier.pdf,
+     especially section 5.1.
+  
+     Added some support for running under Wayland via the deskshot utility
+     found in the misc/ subdirectory.
+  
+   - miscellaneous new features and changes:
+   * Separated x11vnc sources from LibVNCServer. The project is now
+     hosted at GitHub under https://github.com/LibVNC/x11vnc/.
+  
+  * Deleted patches
+    - 0001-Fix-openssl-1.1.x-detection.patch this is upstreamed
+    - 0002-Support-openssl-1.1.0.patch this is upstreamed
+    - x11vnc-automake-1.13.patch this not needed anymore
+    - x11vnc-fix-buffer-overflow-in-record_CW.patch this is upstreamed
+    - x11vnc-fix-buffer-overflow-in-snapshot_stack_list.patch this is upstreamed
+    - x11vnc-lame-libm.diff FFMpeg/Lame has been removed
+    - x11vnc-lib64.diff Zlib is correctly found by configure.ac
+
+  * Modified patches
+    - 10_usepkgconfig.diff
+    - x11vnc-examples.diff
+    - x11vnc-thread-auth.diff    
+    - x11vnc.desktop.generics
+    - stack-check
+    
+-------------------------------------------------------------------
+Wed Jan  2 10:47:13 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Fix x11vnc_ssh tool typos
+
+-------------------------------------------------------------------
+Tue Jun  5 10:58:18 UTC 2018 - tchvatal@suse.com
+
+- Properly state mp3lame as dependency and configure detects it
+  but still nothing links up to the x11vnc later on
+- Add patch to fix openssl detection on current TW:
+  * 0001-Fix-openssl-1.1.x-detection.patch
+  * 0002-Support-openssl-1.1.0.patch
+  * 10_usepkgconfig.diff
+
+-------------------------------------------------------------------
+Mon Jun  4 08:29:24 UTC 2018 - tchvatal@suse.com
+
+- Use upstream tarball
+- Require iproute2 for the ss command calls
+
+-------------------------------------------------------------------
+Sun May 30 18:13:07 UTC 2018 - opensuse@dstoecker.de
+
+- In x11vnc_ssh replace deprecated netstat tool by /usr/sbin/ss
+
+-------------------------------------------------------------------
+Mon Jul  4 14:17:12 UTC 2016 - msrb@suse.com
+
+- x11vnc-fix-buffer-overflow-in-snapshot_stack_list.patch,
+  x11vnc-fix-buffer-overflow-in-record_CW.patch
+  * Fix two buffer overflows. (bnc#987182)
+
+-------------------------------------------------------------------
+Sat Jan 16 20:15:07 UTC 2016 - opensuse@dstoecker.de
+
+- again set proper options for vncclient, autodetect client type
+
+-------------------------------------------------------------------
+Tue Apr  7 13:33:46 UTC 2015 - sndirsch@suse.com
+
+- x11vnc_ssh: adjusted vncviewer parameters to tigervnc's 
+  viewer or any other VNC viewer (bnc#926148)
+
+-------------------------------------------------------------------
+Wed Oct  1 23:57:14 UTC 2014 - crrodriguez@opensuse.org
+
+- Cleanup/reduce buildRequires by not pulling metapackage 
+  xorg-x11-devel
+
+-------------------------------------------------------------------
+Wed Mar 13 13:31:35 CET 2013 - pgajdos@suse.cz
+
+- builds with automake 1.13
+  * automake-1.13.patch
+
+-------------------------------------------------------------------
+Mon Feb 13 10:57:48 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Tue Oct 18 20:22:02 UTC 2011 - pascal.bleser@opensuse.org
+
+- merge patches from openSUSE:Factory/x11vnc
+
+-------------------------------------------------------------------
+Sat Oct 15 08:57:59 UTC 2011 - pascal.bleser@opensuse.org
+
+- dropped stack-overflow, merged upstream
+
+- update to 0.9.13:
+  * improved support for non-X11 touchscreen devices, such as the Qtmoko Neo
+    Freerunner
+  * interaction with the TSLIB touchscreen library is supported
+  * the non-X11 input injection methods on Linux are extended to potentially
+    handle more devices
+  * Unix sockets and raw stdio (i.e. non-TCP/socket) connections are enabled
+  * the SSL enabled Java VNC Viewer now handles mouse wheel events
+
+-------------------------------------------------------------------
+Sat Sep 11 16:53:28 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.9.12:
+  * the kdm display manager is now detected when trying not to get killed by
+    the display manager
+  * one can now specify the maximum number of displays that can be created in
+    -create mode via X11VNC_CREATE_MAX_DISPLAYS
+
+-------------------------------------------------------------------
+Mon Aug  9 09:00:23 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.9.11:
+  * the SSL enabled Java VNC Viewer Makefile has been modified so that the jar
+    files that are built are compatible back to Java 1.4
+  * in -create/-unixpw mode, the environment variable FD_USERPREFS may be set
+    to a filename in the user's home directory that includes default
+    username:options values (so the options do not need to be typed every time
+    at the login prompt)
+  * the source tree is synchronized with the most recent libvncclient
+
+-------------------------------------------------------------------
+Mon May  3 21:55:06 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.9.10:
+  * IPv6 is now supported for all usage modes
+  * a demo CGI script, "desktop.cgi", shows how to create an SSL-
+    encrypted, multi-user x11vnc Web login desktop service
+  * the included SSL-enabled Java VNC viewer applet supports
+    Chained SSL Certificates
+  * a Java Viewer applet parameter allows one to specify a VNC
+    server's certificate
+  * the Xdummy utility no longer requires being run as root
+
+-------------------------------------------------------------------
+Mon Dec 21 19:04:43 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.9.9:
+  * a system greeter option enables jumping directly to the GDM/KDM
+    login panel for one's initial unixpw login
+  * x11vnc now avoids GDM's attempts to kill it just after the user
+    logs in
+  * a simple application sharing mode showing multiple windows is
+    enabled via -appshare
+  * XAUTHORITY filename guessing is enabled via -findauth and
+    '-auth guess'
+  * the -stunnel mode now supports most of the -ssl features
+  * workarounds are enabled for bugs in Xorg and GNOME that cause
+    the Xorg server to crash
+  * x11vnc keeps up with viewer update requests more aggressively
+  * fonts may be changed for the GUI
+
+-------------------------------------------------------------------
+Wed Jul  8 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 0.9.8:
+  * web browser viewing with the SSL Java Viewer applet via HTTPS (single port
+    mode) has been made more reliable
+  * web proxy support for downloading the applet has also been improved
+  * proxy authentication is now supported
+  * the stability of the "-threads" mode is greatly improved and may provide a
+    performance enhancement for certain usage scenarios (with either a single
+    client or multiple clients)
+  * workarounds for recent Xorg server and GNOME bugs are implemented
+
+-------------------------------------------------------------------
+Tue Mar 31 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 0.9.7:
+  * support is provided for building with VirtualGL's TurboVNC encoding and
+    TightVNC modifications; TurboVNC is an enhanced TightVNC implementation
+    for fast LAN high frame rate usage
+  * smooth opaque window movement now works correctly in client-side caching
+    mode (-ncache_cr option)
+  * in addition to exporting Linux Virtual Terminals via the full framebuffer
+    device, /dev/fb, one can now export the text-only view provided by
+    /dev/vcsa (this lets the terminal be accessible even if it is not the
+    currently active one)
+  * raw framebuffers with less than 8 bits per pixel are supported
+
+-------------------------------------------------------------------
+Thu Dec 11 00:00:00 CET 2008 - guru@unixtech.be
+
+- update to 0.9.6:
+  * x11vnc's SSL encryption is extended to support the VeNCrypt and TLS VNC
+    security types
+  * Anonymous Diffie-Hellman key exchange support is provided, and Certificate
+    Revocation Lists are implemented
+  * the Java viewer applet is downloadable via the VNC port as well as the
+    HTTP port
+  * if x11vnc is not built with the Avahi Zeroconf library, an external helper
+    program is used instead
+  * a launcher for naive users is provided in x11vnc.desktop
+
+-------------------------------------------------------------------
+Fri Oct 24 00:00:00 CEST 2008 - guru@unixtech.be
+
+- update to 0.9.5:
+  * symmetric key encryption using the RC4, AES, Blowfish, and 3DES ciphers is
+    supported via the '-enc cipher:keyfile' option
+  * server-side scaling can now have different scale factors along the
+    horizontal and vertical axes
+  * the -chatwindow option allows a chat window to appear on the X console
+    during UltraVNC chats
+  * the non-SSL Java viewer applet has been replaced with an improved
+    implementation
+
+-------------------------------------------------------------------
+Thu Sep 18 00:00:00 CEST 2008 - guru@unixtech.be
+
+- update to 0.9.4:
+  * reverse VNC connections now work in the X session -find and -create modes
+  * reverse VNC connections (both normal and using SSL) can use a Web proxy, a
+    SOCKS proxy, the UltraVNC repeater proxy, an SSH connection, or even a CGI
+    URL to make the outgoing connection by using the -proxy option
+  * support for the ZYWRLE encoding is added: it is the RealVNC ZRLE encoding
+    extended to do motion video and photo regions more efficiently by way of a
+    Wavelet based transformation
+  * indexed colormaps with depths other than 8 now work properly
+  * the Java Viewer source code is now included in the release
+
+-------------------------------------------------------------------
+Thu Oct  4 00:00:00 CEST 2007 - guru@unixtech.be
+
+- update to 0.9.3
+
+-------------------------------------------------------------------
+Fri Sep 21 00:00:00 CEST 2007 - guru@unixtech.be
+
+- moved to the openSUSE Build Service
+- merged patches from the x11vnc package in openSUSE Factory (10.3RC1)
+
+-------------------------------------------------------------------
+Sun Aug 26 00:00:00 CEST 2007 - guru@unixtech.be
+
+- fixed buildrequires: removed libffmpeg0 and added avahi and dbus-1
+- removed X-SUSE-Translate from .desktop
+
+-------------------------------------------------------------------
+Thu Jun 14 00:00:00 CEST 2007 - guru@unixtech.be
+
+- new upstream version
+- add ffmpeg support
+
+-------------------------------------------------------------------
+Thu Apr 19 00:00:00 CEST 2007 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Fri Feb  2 00:00:00 CET 2007 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Sun Sep 24 00:00:00 CEST 2006 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Fri Jul 21 00:00:00 CEST 2006 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Tue Jun  6 00:00:00 CEST 2006 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Sun Jan  8 00:00:00 CET 2006 - guru@unixtech.be
+
+- added subpackage "frontend" for tkx11vnc + desktop file
+- changed prefix to /usr
+- rewrote spec file
+- new upstream version
+
+-------------------------------------------------------------------
+Thu Jul 14 00:00:00 CEST 2005 - guru@unixtech.be
+
+- version 0.7.2
+
+-------------------------------------------------------------------
+Wed Mar  9 00:00:00 CET 2005 - guru@unixtech.be
+
+- portable libjpeg-devel across SUSE versions
+- version 0.7.1
+
+-------------------------------------------------------------------
+Fri Jan 14 00:00:00 CET 2005 - guru@unixtech.be
+
+- new package
+

@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sun May 19 23:39:33 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Switch to wheel, which doesn't have the problematic
+  CC-noncomercial licensed documentation.
+
+-------------------------------------------------------------------
+Wed Apr 24 11:59:27 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.0
+  * improve the exception message for ``InvalidURI`` to show the ``config_uri``.
+  See https://github.com/Pylons/plaster/pull/17
+
+-------------------------------------------------------------------
+Fri Jul 14 18:11:11 UTC 2017 - aloisio@gmx.com
+
+- Initial package (0.5)

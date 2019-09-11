@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Jan  9 00:10:51 UTC 2018 - jengelh@inai.de
+
+- Cure linguistic problem in descriptions.
+
+-------------------------------------------------------------------
+Mon Jan  1 12:31:06 UTC 2018 - tchvatal@suse.com
+
+- Update to 0.0.1:
+  * Various coverity fixes
+  * Librevenge stream/generator are now optional deps, enabled in
+    our build
+- Drop upstream merged patch
+  * 0001-don-t-use-RVNGStringStream-in-the-main-lib.patch
+
+-------------------------------------------------------------------
+Mon Sep  4 06:56:36 UTC 2017 - fstrba@suse.com
+
+- Initial version 0.0.0

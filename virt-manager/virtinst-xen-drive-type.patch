@@ -1,0 +1,19 @@
+Reference: bnc#813082
+Virt-manager on Xen doesn't fill in any type thereby defaulting to
+'raw'. This patch will generate the correct XML on Xen.
+
+Index: virt-manager-2.2.0/virtinst/devices/disk.py
+===================================================================
+--- virt-manager-2.2.0.orig/virtinst/devices/disk.py
++++ virt-manager-2.2.0/virtinst/devices/disk.py
+@@ -406,6 +406,10 @@ class DeviceDisk(Device):
+         https://lists.gnu.org/archive/html/qemu-devel/2008-04/msg00675.html
+         """
+         if self.driver_name != self.DRIVER_NAME_QEMU:
++            if self.driver_name and \
++               self.driver_name != self.DRIVER_NAME_PHY and \
++               self.type != 'file':
++                return self.type
+             return None
+ 
+         drvtype = self._storage_backend.get_driver_type()

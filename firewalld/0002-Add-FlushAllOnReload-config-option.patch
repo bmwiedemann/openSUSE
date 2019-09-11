@@ -1,0 +1,427 @@
+From 9103e069cb2983dd814d99de04ca1f9a9d37117f Mon Sep 17 00:00:00 2001
+From: Eric Garver <e@erig.me>
+Date: Tue, 16 Oct 2018 10:02:38 -0400
+Subject: [PATCH] Add "FlushAllOnReload" config option
+
+Default value is "yes".
+
+Even on --reload some runtime configuration was being retained. This was
+a surprise to many users. Lets default to flushing all the runtime
+configuration and also introduce a config option to go back the old
+behavior of retaining; interface to zone assignments, and direct rules.
+
+This also adjusts a few test cases that depend on the old
+FlushAllOnReload=no behavior.
+
+Fixes: suze bz #1109153
+Fixes: #409
+Closes: #408
+---
+ config/firewalld.conf                  |  8 +++
+ doc/xml/firewalld.conf.xml             | 13 ++++
+ doc/xml/firewalld.dbus.xml             |  8 +++
+ src/firewall/config/__init__.py.in     |  1 +
+ src/firewall/core/fw.py                | 99 +++++++++++++++-----------
+ src/firewall/core/io/firewalld_conf.py | 11 ++-
+ src/firewall/server/config.py          | 20 +++++-
+ src/tests/dbus/firewalld.conf.at       |  2 +
+ src/tests/python/firewalld_direct.py   |  6 ++
+ src/tests/python/firewalld_test.py     |  9 ++-
+ src/tests/regression/rhbz1498923.at    |  4 ++
+ 11 files changed, 133 insertions(+), 48 deletions(-)
+
+diff --git a/config/firewalld.conf b/config/firewalld.conf
+index e6afde19..bc6a8860 100644
+--- a/config/firewalld.conf
++++ b/config/firewalld.conf
+@@ -62,3 +62,11 @@ AutomaticHelpers=system
+ #	- nftables
+ #	- iptables (default)
+ FirewallBackend=iptables
++
++# FlushAllOnReload
++# Flush all runtime rules on a reload. In previous releases some runtime
++# configuration was retained during a reload, namely; interface to zone
++# assignment, and direct rules. This was confusing to users. To get the old
++# behavior set this to "no".
++# Default: yes
++FlushAllOnReload=yes
+diff --git a/doc/xml/firewalld.conf.xml b/doc/xml/firewalld.conf.xml
+index fee0d3ca..f9e02b08 100644
+--- a/doc/xml/firewalld.conf.xml
++++ b/doc/xml/firewalld.conf.xml
+@@ -158,6 +158,19 @@
+ 	        </listitem>
+         </varlistentry>
+ 
++        <varlistentry>
++            <term><option>FlushAllOnReload</option></term>
++            <listitem>
++                <para>
++                Flush all runtime rules on a reload. In previous releases some
++                runtime configuration was retained during a reload, namely;
++                interface to zone assignment, and direct rules. This was
++                confusing to users. To get the old behavior set this to "no".
++                Defaults to "yes".
++                </para>
++            </listitem>
++        </varlistentry>
++
+     </variablelist>
+ 
+   </refsect1>
+diff --git a/doc/xml/firewalld.dbus.xml b/doc/xml/firewalld.dbus.xml
+index 8352f96c..132200f3 100644
+--- a/doc/xml/firewalld.dbus.xml
++++ b/doc/xml/firewalld.dbus.xml
+@@ -2592,6 +2592,14 @@
+               </para>
+             </listitem>
+           </varlistentry>
++          <varlistentry id="FirewallD1.config.Properties.FlushAllOnReload">
++            <term>FirewallBackend - s - (rw)</term>
++            <listitem>
++              <para>
++                Flush all runtime rules on a reload. Valid options are; yes, no.
++              </para>
++            </listitem>
++          </varlistentry>
+           <varlistentry id="FirewallD1.config.Properties.IPv6_rpfilter">
+             <term><parameter>IPv6_rpfilter</parameter> - s - (rw)</term>
+             <listitem><para>Indicates whether the reverse path filter test on a packet for IPv6 is enabled. If a reply to the packet would be sent via the same interface that the packet arrived on, the packet will match and be accepted, otherwise dropped.</para></listitem>
+diff --git a/src/firewall/config/__init__.py.in b/src/firewall/config/__init__.py.in
+index cff7c3fe..e9595e4c 100644
+--- a/src/firewall/config/__init__.py.in
++++ b/src/firewall/config/__init__.py.in
+@@ -130,3 +130,4 @@ FALLBACK_INDIVIDUAL_CALLS = False
+ FALLBACK_LOG_DENIED = "off"
+ FALLBACK_AUTOMATIC_HELPERS = "system"
+ FALLBACK_FIREWALL_BACKEND = "iptables"
++FALLBACK_FLUSH_ALL_ON_RELOAD = True
+diff --git a/src/firewall/core/fw.py b/src/firewall/core/fw.py
+index 9be13a5c..7e6255f7 100644
+--- a/src/firewall/core/fw.py
++++ b/src/firewall/core/fw.py
+@@ -113,6 +113,7 @@ class Firewall(object):
+         self._log_denied = config.FALLBACK_LOG_DENIED
+         self._automatic_helpers = config.FALLBACK_AUTOMATIC_HELPERS
+         self._firewall_backend = config.FALLBACK_FIREWALL_BACKEND
++        self._flush_all_on_reload = config.FALLBACK_FLUSH_ALL_ON_RELOAD
+         self.nf_conntrack_helper_setting = 0
+         self.nf_conntrack_helpers = { }
+         self.nf_nat_helpers = { }
+@@ -298,6 +299,15 @@ class Firewall(object):
+                 log.debug1("FirewallBackend is set to '%s'",
+                            self._firewall_backend)
+ 
++            if self._firewalld_conf.get("FlushAllOnReload"):
++                value = self._firewalld_conf.get("FlushAllOnReload")
++                if value.lower() in [ "no", "false" ]:
++                    self._flush_all_on_reload = False
++                else:
++                    self._flush_all_on_reload = True
++                log.debug1("FlushAllOnReload is set to '%s'",
++                           self._flush_all_on_reload)
++
+         self.config.set_firewalld_conf(copy.deepcopy(self._firewalld_conf))
+ 
+         self._select_firewall_backend(self._firewall_backend)
+@@ -963,13 +973,17 @@ class Firewall(object):
+     def reload(self, stop=False):
+         _panic = self._panic
+ 
+-        # save zone interfaces
+-        _zone_interfaces = { }
+-        for zone in self.zone.get_zones():
+-            _zone_interfaces[zone] = self.zone.get_settings(zone)["interfaces"]
+-        # save direct config
+-        _direct_config = self.direct.get_runtime_config()
+-        _old_dz = self.get_default_zone()
++        # must stash this. The value may change after _start()
++        flush_all = self._flush_all_on_reload
++
++        if not flush_all:
++            # save zone interfaces
++            _zone_interfaces = { }
++            for zone in self.zone.get_zones():
++                _zone_interfaces[zone] = self.zone.get_settings(zone)["interfaces"]
++            # save direct config
++            _direct_config = self.direct.get_runtime_config()
++            _old_dz = self.get_default_zone()
+ 
+         # stop
+         self.cleanup()
+@@ -984,41 +998,42 @@ class Firewall(object):
+             # etc. We'll re-raise it at the end.
+             start_exception = e
+ 
+-        # handle interfaces in the default zone and move them to the new
+-        # default zone if it changed
+-        _new_dz = self.get_default_zone()
+-        if _new_dz != _old_dz:
+-            # if_new_dz has been introduced with the reload, we need to add it
+-            # https://github.com/firewalld/firewalld/issues/53
+-            if _new_dz not in _zone_interfaces:
+-                _zone_interfaces[_new_dz] = { }
+-            # default zone changed. Move interfaces from old default zone to
+-            # the new one.
+-            for iface, settings in list(_zone_interfaces[_old_dz].items()):
+-                if settings["__default__"]:
+-                    # move only those that were added to default zone
+-                    # (not those that were added to specific zone same as
+-                    # default)
+-                    _zone_interfaces[_new_dz][iface] = \
+-                        _zone_interfaces[_old_dz][iface]
+-                    del _zone_interfaces[_old_dz][iface]
+-
+-        # add interfaces to zones again
+-        for zone in self.zone.get_zones():
+-            if zone in _zone_interfaces:
+-                self.zone.set_settings(zone, { "interfaces":
+-                                               _zone_interfaces[zone] })
+-                del _zone_interfaces[zone]
+-            else:
+-                log.info1("New zone '%s'.", zone)
+-        if len(_zone_interfaces) > 0:
+-            for zone in list(_zone_interfaces.keys()):
+-                log.info1("Lost zone '%s', zone interfaces dropped.", zone)
+-                del _zone_interfaces[zone]
+-        del _zone_interfaces
+-
+-        # restore direct config
+-        self.direct.set_config(_direct_config)
++        if not flush_all:
++            # handle interfaces in the default zone and move them to the new
++            # default zone if it changed
++            _new_dz = self.get_default_zone()
++            if _new_dz != _old_dz:
++                # if_new_dz has been introduced with the reload, we need to add it
++                # https://github.com/firewalld/firewalld/issues/53
++                if _new_dz not in _zone_interfaces:
++                    _zone_interfaces[_new_dz] = { }
++                # default zone changed. Move interfaces from old default zone to
++                # the new one.
++                for iface, settings in list(_zone_interfaces[_old_dz].items()):
++                    if settings["__default__"]:
++                        # move only those that were added to default zone
++                        # (not those that were added to specific zone same as
++                        # default)
++                        _zone_interfaces[_new_dz][iface] = \
++                            _zone_interfaces[_old_dz][iface]
++                        del _zone_interfaces[_old_dz][iface]
++
++            # add interfaces to zones again
++            for zone in self.zone.get_zones():
++                if zone in _zone_interfaces:
++                    self.zone.set_settings(zone, { "interfaces":
++                                                   _zone_interfaces[zone] })
++                    del _zone_interfaces[zone]
++                else:
++                    log.info1("New zone '%s'.", zone)
++            if len(_zone_interfaces) > 0:
++                for zone in list(_zone_interfaces.keys()):
++                    log.info1("Lost zone '%s', zone interfaces dropped.", zone)
++                    del _zone_interfaces[zone]
++            del _zone_interfaces
++
++            # restore direct config
++            self.direct.set_config(_direct_config)
+ 
+         # enable panic mode again if it has been enabled before or set policy
+         # to ACCEPT
+diff --git a/src/firewall/core/io/firewalld_conf.py b/src/firewall/core/io/firewalld_conf.py
+index 4d57bad6..953a6d26 100644
+--- a/src/firewall/core/io/firewalld_conf.py
++++ b/src/firewall/core/io/firewalld_conf.py
+@@ -30,7 +30,7 @@ from firewall.functions import b2u, u2b, PY2
+ 
+ valid_keys = [ "DefaultZone", "MinimalMark", "CleanupOnExit", "Lockdown", 
+                "IPv6_rpfilter", "IndividualCalls", "LogDenied",
+-               "AutomaticHelpers", "FirewallBackend" ]
++               "AutomaticHelpers", "FirewallBackend", "FlushAllOnReload" ]
+ 
+ class firewalld_conf(object):
+     def __init__(self, filename):
+@@ -80,6 +80,7 @@ class firewalld_conf(object):
+             self.set("LogDenied", config.FALLBACK_LOG_DENIED)
+             self.set("AutomaticHelpers", config.FALLBACK_AUTOMATIC_HELPERS)
+             self.set("FirewallBackend", config.FALLBACK_FIREWALL_BACKEND)
++            self.set("FlushAllOnReload", "yes" if config.FALLBACK_FLUSH_ALL_ON_RELOAD else "no")
+             raise
+ 
+         for line in f:
+@@ -183,6 +184,14 @@ class firewalld_conf(object):
+                             config.FALLBACK_FIREWALL_BACKEND)
+             self.set("FirewallBackend", str(config.FALLBACK_FIREWALL_BACKEND))
+ 
++        value = self.get("FlushAllOnReload")
++        if not value or value.lower() not in [ "yes", "true", "no", "false" ]:
++            if value is not None:
++                log.warning("FlushAllOnReload '%s' is not valid, using default "
++                            "value %s", value if value else '',
++                            config.FALLBACK_FLUSH_ALL_ON_RELOAD)
++            self.set("FlushAllOnReload", str(config.FALLBACK_FLUSH_ALL_ON_RELOAD))
++
+     # save to self.filename if there are key/value changes
+     def write(self):
+         if len(self._config) < 1:
+diff --git a/src/firewall/server/config.py b/src/firewall/server/config.py
+index dfc562b5..ba04107f 100644
+--- a/src/firewall/server/config.py
++++ b/src/firewall/server/config.py
+@@ -106,6 +106,7 @@ class FirewallDConfig(slip.dbus.service.Object):
+                                                 "LogDenied": "readwrite",
+                                                 "AutomaticHelpers": "readwrite",
+                                                 "FirewallBackend": "readwrite",
++                                                "FlushAllOnReload": "readwrite",
+                                               })
+ 
+     @handle_exceptions
+@@ -485,7 +486,8 @@ class FirewallDConfig(slip.dbus.service.Object):
+     def _get_property(self, prop):
+         if prop not in [ "DefaultZone", "MinimalMark", "CleanupOnExit",
+                          "Lockdown", "IPv6_rpfilter", "IndividualCalls",
+-                         "LogDenied", "AutomaticHelpers", "FirewallBackend" ]:
++                         "LogDenied", "AutomaticHelpers", "FirewallBackend",
++                         "FlushAllOnReload" ]:
+             raise dbus.exceptions.DBusException(
+                 "org.freedesktop.DBus.Error.InvalidArgs: "
+                 "Property '%s' does not exist" % prop)
+@@ -530,6 +532,10 @@ class FirewallDConfig(slip.dbus.service.Object):
+             if value is None:
+                 value = config.FALLBACK_FIREWALL_BACKEND
+             return dbus.String(value)
++        elif prop == "FlushAllOnReload":
++            if value is None:
++                value = "yes" if config.FALLBACK_FLUSH_ALL_ON_RELOAD else "no"
++            return dbus.String(value)
+ 
+     @dbus_handle_exceptions
+     def _get_dbus_property(self, prop):
+@@ -551,6 +557,8 @@ class FirewallDConfig(slip.dbus.service.Object):
+             return dbus.String(self._get_property(prop))
+         elif prop == "FirewallBackend":
+             return dbus.String(self._get_property(prop))
++        elif prop == "FlushAllOnReload":
++            return dbus.String(self._get_property(prop))
+         else:
+             raise dbus.exceptions.DBusException(
+                 "org.freedesktop.DBus.Error.InvalidArgs: "
+@@ -590,7 +598,8 @@ class FirewallDConfig(slip.dbus.service.Object):
+         if interface_name == config.dbus.DBUS_INTERFACE_CONFIG:
+             for x in [ "DefaultZone", "MinimalMark", "CleanupOnExit",
+                        "Lockdown", "IPv6_rpfilter", "IndividualCalls",
+-                       "LogDenied", "AutomaticHelpers", "FirewallBackend" ]:
++                       "LogDenied", "AutomaticHelpers", "FirewallBackend",
++                       "FlushAllOnReload" ]:
+                 ret[x] = self._get_property(x)
+         elif interface_name in [ config.dbus.DBUS_INTERFACE_CONFIG_DIRECT,
+                                  config.dbus.DBUS_INTERFACE_CONFIG_POLICIES ]:
+@@ -617,7 +626,7 @@ class FirewallDConfig(slip.dbus.service.Object):
+             if property_name in [ "MinimalMark", "CleanupOnExit", "Lockdown",
+                                   "IPv6_rpfilter", "IndividualCalls",
+                                   "LogDenied", "AutomaticHelpers",
+-                                  "FirewallBackend" ]:
++                                  "FirewallBackend", "FlushAllOnReload" ]:
+                 if property_name == "MinimalMark":
+                     try:
+                         int(new_value)
+@@ -651,6 +660,11 @@ class FirewallDConfig(slip.dbus.service.Object):
+                         raise FirewallError(errors.INVALID_VALUE,
+                                             "'%s' for %s" % \
+                                             (new_value, property_name))
++                if property_name == "FlushAllOnReload":
++                    if new_value.lower() not in ["yes", "true", "no", "false"]:
++                        raise FirewallError(errors.INVALID_VALUE,
++                                            "'%s' for %s" % \
++                                            (new_value, property_name))
+                 self.config.get_firewalld_conf().set(property_name, new_value)
+                 self.config.get_firewalld_conf().write()
+                 self.PropertiesChanged(interface_name,
+diff --git a/src/tests/dbus/firewalld.conf.at b/src/tests/dbus/firewalld.conf.at
+index 473210de..72c61bdc 100644
+--- a/src/tests/dbus/firewalld.conf.at
++++ b/src/tests/dbus/firewalld.conf.at
+@@ -6,6 +6,7 @@ string "AutomaticHelpers" : variant string "system"
+ string "CleanupOnExit" : variant string "no"
+ string "DefaultZone" : variant string "public"
+ string "FirewallBackend" : variant string "nftables"
++string "FlushAllOnReload" : variant string "yes"
+ m4_if(no, HOST_SUPPORTS_NFT_FIB, [dnl
+ string "IPv6_rpfilter" : variant string "no"],[dnl
+ string "IPv6_rpfilter" : variant string "yes"])
+@@ -30,6 +31,7 @@ _helper([LogDenied], [string:"all"], [variant string "all"])
+ _helper([IPv6_rpfilter], [string:"yes"], [variant string "yes"])
+ _helper([IndividualCalls], [string:"yes"], [variant string "yes"])
+ _helper([FirewallBackend], [string:"iptables"], [variant string "iptables"])
++_helper([FlushAllOnReload], [string:"no"], [variant string "no"])
+ _helper([CleanupOnExit], [string:"yes"], [variant string "yes"])
+ dnl Note: DefaultZone is RO
+ m4_undefine([_helper])
+diff --git a/src/tests/python/firewalld_direct.py b/src/tests/python/firewalld_direct.py
+index 4cb84349..28da523d 100755
+--- a/src/tests/python/firewalld_direct.py
++++ b/src/tests/python/firewalld_direct.py
+@@ -36,10 +36,16 @@ class TestFirewallDInterfaceDirect(unittest.TestCase):
+         bus = dbus.SystemBus()
+         dbus_obj = bus.get_object(config.dbus.DBUS_INTERFACE,
+                                   config.dbus.DBUS_PATH)
++        dbus_obj_config = bus.get_object(config.dbus.DBUS_INTERFACE,
++                                         config.dbus.DBUS_PATH_CONFIG)
+         self.fw = dbus.Interface(dbus_obj,
+                                  dbus_interface=config.dbus.DBUS_INTERFACE)
+         self.fw_direct = dbus.Interface(
+             dbus_obj, dbus_interface=config.dbus.DBUS_INTERFACE_DIRECT)
++        self.config_properties = dbus.Interface(dbus_obj_config,
++                                    dbus_interface='org.freedesktop.DBus.Properties')
++        self.config_properties.Set(config.dbus.DBUS_INTERFACE_CONFIG, "FlushAllOnReload", "no")
++        self.fw.reload()
+         # always have "direct_foo1" available
+         self.fw_direct.addChain("ipv4", "filter", "direct_foo1")
+ 
+diff --git a/src/tests/python/firewalld_test.py b/src/tests/python/firewalld_test.py
+index 62c567fc..0d8b4c78 100755
+--- a/src/tests/python/firewalld_test.py
++++ b/src/tests/python/firewalld_test.py
+@@ -28,8 +28,8 @@ import sys
+ import time
+ import unittest
+ 
+-from firewall.config.dbus import DBUS_PATH, DBUS_INTERFACE, \
+-                                 DBUS_INTERFACE_ZONE
++from firewall.config.dbus import DBUS_PATH, DBUS_PATH_CONFIG, DBUS_INTERFACE, \
++                                 DBUS_INTERFACE_ZONE, DBUS_INTERFACE_CONFIG
+ from firewall.dbus_utils import dbus_to_python
+ from pprint import pprint
+ 
+@@ -43,9 +43,14 @@ class TestFirewallD(unittest.TestCase):
+         unittest.TestCase.setUp(self)
+         bus = dbus.SystemBus()
+         dbus_obj = bus.get_object(DBUS_INTERFACE, DBUS_PATH)
++        dbus_obj_config = bus.get_object(DBUS_INTERFACE, DBUS_PATH_CONFIG)
+         self.fw = dbus.Interface(dbus_obj, dbus_interface=DBUS_INTERFACE)
+         self.fw_zone = dbus.Interface(dbus_obj,
+                                      dbus_interface=DBUS_INTERFACE_ZONE)
++        self.config_properties = dbus.Interface(dbus_obj_config,
++                                    dbus_interface='org.freedesktop.DBus.Properties')
++        self.config_properties.Set(DBUS_INTERFACE_CONFIG, "FlushAllOnReload", "no")
++        self.fw.reload()
+ 
+     def test_get_setDefaultZone(self):
+         old_zone = dbus_to_python(self.fw.getDefaultZone())
+diff --git a/src/tests/regression/rhbz1498923.at b/src/tests/regression/rhbz1498923.at
+index 9b686781..ed1022fb 100644
+--- a/src/tests/regression/rhbz1498923.at
++++ b/src/tests/regression/rhbz1498923.at
+@@ -1,4 +1,8 @@
+ FWD_START_TEST([invalid direct rule causes reload error])
++dnl Below we test retention of some items applicable to FlushAllOnReload=no
++AT_CHECK([sed -i 's/^FlushAllOnReload.*/FlushAllOnReload=no/' ./firewalld.conf])
++FWD_RELOAD
++
+ FWD_CHECK([-q --permanent --direct --add-rule ipv4 filter INPUT 0 -p tcp --dport 8080 -j ACCEPT])
+ FWD_CHECK([-q --permanent --direct --add-rule ipv4 filter INPUT 1 --a-bogus-flag])
+ 
+-- 
+2.20.1
+

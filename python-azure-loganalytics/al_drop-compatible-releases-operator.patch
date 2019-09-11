@@ -1,0 +1,12 @@
+diff -Nru azure-loganalytics-0.1.0.orig/setup.py azure-loganalytics-0.1.0/setup.py
+--- azure-loganalytics-0.1.0.orig/setup.py	2018-07-11 23:38:16.000000000 +0200
++++ azure-loganalytics-0.1.0/setup.py	2018-09-03 14:48:18.623204441 +0200
+@@ -79,7 +79,7 @@
+     packages=find_packages(exclude=["tests"]),
+     install_requires=[
+         'msrest>=0.4.29,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     cmdclass=cmdclass
+ )

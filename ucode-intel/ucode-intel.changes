@@ -1,0 +1,433 @@
+-------------------------------------------------------------------
+Wed Jul 17 07:16:15 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 20190618 release (bsc#1111331 CVE-2018-12126 CVE-2018-12130 CVE-2018-12127 CVE-2019-11091)
+
+  ---- updated platforms ------------------------------------
+  SNB-E/EN/EP  C1/M0    6-2d-6/6d 0000061d->0000061f Xeon E3/E5, Core X
+  SNB-E/EN/EP  C2/M1    6-2d-7/6d 00000714->00000718 Xeon E3/E5, Core X
+
+-------------------------------------------------------------------
+Tue May  7 13:27:34 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- Intel QSR 2019.1 Microcode release (bsc#1111331 CVE-2018-12126
+  CVE-2018-12130 CVE-2018-12127 CVE-2019-11091)
+
+  Processor             Identifier     Version       Products
+  Model        Stepping F-MO-S/PI      Old->New
+  ---- new platforms ----------------------------------------
+  VLV          C0       6-37-8/02           00000838 Atom Z series
+  VLV          C0       6-37-8/0C           00000838 Celeron N2xxx, Pentium N35xx
+  VLV          D0       6-37-9/0F           0000090c Atom E38xx
+  CHV          C0       6-4c-3/01           00000368 Atom X series
+  CHV          D0       6-4c-4/01           00000411 Atom X series
+  CLX-SP       B1       6-55-7/bf           05000021 Xeon Scalable Gen2
+  ---- updated platforms ------------------------------------
+  SNB          D2/G1/Q0 6-2a-7/12 0000002e->0000002f Core Gen2
+  IVB          E1/L1    6-3a-9/12 00000020->00000021 Core Gen3
+  HSW          C0       6-3c-3/32 00000025->00000027 Core Gen4
+  BDW-U/Y      E0/F0    6-3d-4/c0 0000002b->0000002d Core Gen5
+  IVB-E/EP     C1/M1/S1 6-3e-4/ed 0000042e->0000042f Core Gen3 X Series; Xeon E5 v2
+  IVB-EX       D1       6-3e-7/ed 00000714->00000715 Xeon E7 v2
+  HSX-E/EP     Cx/M1    6-3f-2/6f 00000041->00000043 Core Gen4 X series; Xeon E5 v3
+  HSX-EX       E0       6-3f-4/80 00000013->00000014 Xeon E7 v3
+  HSW-U        C0/D0    6-45-1/72 00000024->00000025 Core Gen4
+  HSW-H        C0       6-46-1/32 0000001a->0000001b Core Gen4
+  BDW-H/E3     E0/G0    6-47-1/22 0000001e->00000020 Core Gen5
+  SKL-U/Y      D0/K1    6-4e-3/c0 000000c6->000000cc Core Gen6
+  BDX-ML       B0/M0/R0 6-4f-1/ef 0b00002e->00000036 Xeon E5/E7 v4; Core i7-69xx/68xx
+  SKX-SP       H0/M0/U0 6-55-4/b7 0200005a->0000005e Xeon Scalable
+  SKX-D        M1       6-55-4/b7 0200005a->0000005e Xeon D-21xx
+  BDX-DE       V1       6-56-2/10 00000019->0000001a Xeon D-1520/40
+  BDX-DE       V2/3     6-56-3/10 07000016->07000017 Xeon D-1518/19/21/27/28/31/33/37/41/48, Pentium D1507/08/09/17/19
+  BDX-DE       Y0       6-56-4/10 0f000014->0f000015 Xeon D-1557/59/67/71/77/81/87
+  BDX-NS       A0       6-56-5/10 0e00000c->0e00000d Xeon D-1513N/23/33/43/53
+  APL          D0       6-5c-9/03 00000036->00000038 Pentium N/J4xxx, Celeron N/J3xxx, Atom x5/7-E39xx
+  SKL-H/S      R0/N0    6-5e-3/36 000000c6->000000cc Core Gen6; Xeon E3 v5
+  DNV          B0       6-5f-1/01 00000024->0000002e Atom C Series
+  GLK          B0       6-7a-1/01 0000002c->0000002e Pentium Silver N/J5xxx, Celeron N/J4xxx
+  AML-Y22      H0       6-8e-9/10 0000009e->000000b4 Core Gen8 Mobile
+  KBL-U/Y      H0       6-8e-9/c0 0000009a->000000b4 Core Gen7 Mobile
+  CFL-U43e     D0       6-8e-a/c0 0000009e->000000b4 Core Gen8 Mobile
+  WHL-U        W0       6-8e-b/d0 000000a4->000000b8 Core Gen8 Mobile
+  WHL-U        V0       6-8e-d/94 000000b2->000000b8 Core Gen8 Mobile
+  KBL-G/H/S/E3 B0       6-9e-9/2a 0000009a->000000b4 Core Gen7; Xeon E3 v6
+  CFL-H/S/E3   U0       6-9e-a/22 000000aa->000000b4 Core Gen8 Desktop, Mobile, Xeon E
+  CFL-S        B0       6-9e-b/02 000000aa->000000b4 Core Gen8
+  CFL-H/S      P0       6-9e-c/22 000000a2->000000ae Core Gen9
+  CFL-H        R0       6-9e-d/22 000000b0->000000b8 Core Gen9 Mobile
+
+-------------------------------------------------------------------
+Thu Mar 14 14:09:22 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- Update to 20190312 release (bsc#1129231)
+  - Processor             Identifier     Version       Products
+  - Model        Stepping F-MO-S/PI      Old->New
+  - ---- new platforms ----------------------------------------
+  - AML-Y22      H0       6-8e-9/10           0000009e Core Gen8 Mobile
+  - WHL-U        W0       6-8e-b/d0           000000a4 Core Gen8 Mobile
+  - WHL-U        V0       6-8e-d/94           000000b2 Core Gen8 Mobile
+  - CFL-S        P0       6-9e-c/22           000000a2 Core Gen9 Desktop
+  - CFL-H        R0       6-9e-d/22           000000b0 Core Gen9 Mobile
+  - ---- updated platforms ------------------------------------
+  - HSX-E/EP     Cx/M1    6-3f-2/6f 0000003d->00000041 Core Gen4 X series; Xeon E5 v3
+  - HSX-EX       E0       6-3f-4/80 00000012->00000013 Xeon E7 v3
+  - SKX-SP       H0/M0/U0 6-55-4/b7 0200004d->0000005a Xeon Scalable
+  - SKX-D        M1       6-55-4/b7 0200004d->0000005a Xeon D-21xx
+  - BDX-DE       V1       6-56-2/10 00000017->00000019 Xeon D-1520/40
+  - BDX-DE       V2/3     6-56-3/10 07000013->07000016 Xeon D-1518/19/21/27/28/31/33/37/41/48, Pentium D1507/08/09/17/19
+  - BDX-DE       Y0       6-56-4/10 0f000012->0f000014 Xeon D-1557/59/67/71/77/81/87
+  - BDX-NS       A0       6-56-5/10 0e00000a->0e00000c Xeon D-1513N/23/33/43/53
+  - APL          D0       6-5c-9/03 00000032->00000036 Pentium N/J4xxx, Celeron N/J3xxx, Atom x5/7-E39xx
+  - APL          E0       6-5c-a/03 0000000c->00000010 Atom x5/7-E39xx
+  - GLK          B0       6-7a-1/01 00000028->0000002c Pentium Silver N/J5xxx, Celeron N/J4xxx
+  - KBL-U/Y      H0       6-8e-9/c0 0000008e->0000009a Core Gen7 Mobile
+  - CFL-U43e     D0       6-8e-a/c0 00000096->0000009e Core Gen8 Mobile
+  - KBL-H/S/E3   B0       6-9e-9/2a 0000008e->0000009a Core Gen7; Xeon E3 v6
+  - CFL-H/S/E3   U0       6-9e-a/22 00000096->000000aa Core Gen8 Desktop, Mobile, Xeon E
+  - CFL-S B0 6-9e-b/02 0000008e->000000aa Core Gen8
+
+-------------------------------------------------------------------
+Fri Aug 24 15:03:09 UTC 2018 - meissner@suse.com
+
+- updated to 20180807a, no change except licensing. (bsc#1104479)
+
+-------------------------------------------------------------------
+Wed Aug  8 13:53:07 UTC 2018 - meissner@suse.com
+
+- Update to 20180807 release, for the listed CPU chipsets
+  this fixes CVE-2018-3640 (Spectre v3a) CVE-2018-3639 (Spectre v4).
+  (bsc#1104134 bsc#1087082 bsc#1087083)
+
+  Processor             Identifier     Version       Products
+  Model        Stepping F-MO-S/PI      Old->New
+  ---- new platforms ----------------------------------------
+  WSM-EP/WS    U1       6-2c-2/03           0000001f Xeon E/L/X56xx, W36xx
+  NHM-EX       D0       6-2e-6/04           0000000d Xeon E/L/X65xx/75xx
+  BXT          C0       6-5c-2/01           00000014 Atom T5500/5700
+  APL          E0       6-5c-a/03           0000000c Atom x5-E39xx
+  DVN          B0       6-5f-1/01           00000024 Atom C3xxx
+  ---- updated platforms ------------------------------------
+  NHM-EP/WS    D0       6-1a-5/03 00000019->0000001d Xeon E/L/X/W55xx
+  NHM          B1       6-1e-5/13 00000007->0000000a Core i7-8xx, i5-7xx; Xeon L3426, X24xx
+  WSM          B1       6-25-2/12 0000000e->00000011 Core i7-6xx, i5-6xx/4xxM, i3-5xx/3xxM, Pentium G69xx, Celeon P45xx; Xeon L3406
+  WSM          K0       6-25-5/92 00000004->00000007 Core i7-6xx, i5-6xx/5xx/4xx, i3-5xx/3xx, Pentium G69xx/P6xxx/U5xxx, Celeron P4xxx/U3xxx
+  SNB          D2       6-2a-7/12 0000002d->0000002e Core Gen2; Xeon E3
+  WSM-EX       A2       6-2f-2/05 00000037->0000003b Xeon E7
+  IVB          E2       6-3a-9/12 0000001f->00000020 Core Gen3 Mobile
+  HSW-H/S/E3   Cx/Dx    6-3c-3/32 00000024->00000025 Core Gen4 Desktop; Xeon E3 v3
+  BDW-U/Y      E/F      6-3d-4/c0 0000002a->0000002b Core Gen5 Mobile
+  HSW-ULT      Cx/Dx    6-45-1/72 00000023->00000024 Core Gen4 Mobile and derived Pentium/Celeron
+  HSW-H        Cx       6-46-1/32 00000019->0000001a Core Extreme i7-5xxxX
+  BDW-H/E3     E/G      6-47-1/22 0000001d->0000001e Core i5-5xxxR/C, i7-5xxxHQ/EQ; Xeon E3 v4
+  SKL-U/Y      D0       6-4e-3/c0 000000c2->000000c6 Core Gen6 Mobile
+  BDX-DE       V1       6-56-2/10 00000015->00000017 Xeon D-1520/40
+  BDX-DE       V2/3     6-56-3/10 07000012->07000013 Xeon D-1518/19/21/27/28/31/33/37/41/48, Pentium D1507/08/09/17/19
+  BDX-DE       Y0       6-56-4/10 0f000011->0f000012 Xeon D-1557/59/67/71/77/81/87
+  APL          D0       6-5c-9/03 0000002c->00000032 Pentium N/J4xxx, Celeron N/J3xxx, Atom x5/7-E39xx
+  SKL-H/S/E3   R0       6-5e-3/36 000000c2->000000c6 Core Gen6; Xeon E3 v5
+  GLK          B0       6-7a-1/01 00000022->00000028 Pentium Silver N/J5xxx, Celeron N/J4xxx
+  KBL-U/Y      H0       6-8e-9/c0 00000084->0000008e Core Gen7 Mobile
+  CFL-U43e     D0       6-8e-a/c0 00000084->00000096 Core Gen8 Mobile
+  KBL-H/S/E3   B0       6-9e-9/2a 00000084->0000008e Core Gen7; Xeon E3 v6
+  CFL-H/S/E3   U0       6-9e-a/22 00000084->00000096 Core Gen8
+  CFL-H/S/E3   B0       6-9e-b/02 00000084->0000008e Core Gen8 Desktop
+
+-------------------------------------------------------------------
+Wed Jul  4 15:05:31 UTC 2018 - meissner@suse.com
+
+- Update to 20180703 release, for the listed CPU chipsets
+  this fixes CVE-2018-3640 (Spectre v3a) CVE-2018-3639 (Spectre v4).
+  (bsc#1100147 bsc#1087082 bsc#1087083)
+
+  https://downloadcenter.intel.com/download/27945/Linux-Processor-Microcode-Data-File
+
+  Following chipsets are fixed in this round:
+
+  Model        Stepping F-MO-S/PI      Old->New
+  ---- updated platforms ------------------------------------
+  SNB-EP       C1       6-2d-6/6d 0000061c->0000061d Xeon E5
+  SNB-EP       C2       6-2d-7/6d 00000713->00000714 Xeon E5
+  IVT          C0       6-3e-4/ed 0000042c->0000042d Xeon E5 v2; Core i7-4960X/4930K/4820K
+  IVT          D1       6-3e-7/ed 00000713->00000714 Xeon E5 v2
+  HSX-E/EP/4S  C0       6-3f-2/6f 0000003c->0000003d Xeon E5 v3
+  HSX-EX       E0       6-3f-4/80 00000011->00000012 Xeon E7 v3
+  SKX-SP/D/W/X H0       6-55-4/b7 02000043->0200004d Xeon Bronze 31xx, Silver 41xx, Gold 51xx/61xx Platinum 81xx, D/W-21xx; Core i9-7xxxX
+  BDX-DE       A1       6-56-5/10 0e000009->0e00000a Xeon D-15x3N
+
+  ---- intel-ucode-with-caveats/ ----------------------------
+  BDX-ML       B/M/R0   6-4f-1/ef 0b00002c->0b00002e Xeon E5/E7 v4; Core i7-69xx/68xx
+
+-------------------------------------------------------------------
+Tue May 15 15:01:30 UTC 2018 - trenn@suse.de
+
+- Add rpmlintrc filter to ignore false-positive osc warning:
+  Package contains no binary and should be of noarch architecture
+
+-------------------------------------------------------------------
+Fri May  4 09:42:54 UTC 2018 - trenn@suse.de
+
+- Update to version 20180425 (bsc#1091836)
+- Name microcodes which are not allowed to load late
+  with a *.early suffix
+- Add releasenotes and microcode list to docs
+- Remove BuildRequires on iucode-tool, as the microcode files are
+  not provided as one big microcode.dat blob anymore, but are
+  already split up in the needed family-model-stepping files.
+
+-- Updates upon 20180312 release --
+---- updated platforms ------------------------------------
+GLK          B0       6-7a-1/01 0000001e->00000022
+             Pentium Silver N/J5xxx,-Celeron N/J4xxx
+---- removed platforms ------------------------------------
+BDX-ML       B/M/R0   6-4f-1/ef 0b000021
+             Xeon E5/E7 v4; Core-i7-69xx/68xx
+-- Special release with caveats --
+BDX-ML       B/M/R0   6-4f-1/ef           0b00002c
+             Xeon E5/E7 v4; Corei7-69xx/68xx
+
+-------------------------------------------------------------------
+Fri Apr 13 14:24:19 UTC 2018 - meissner@suse.com
+
+- next try to fix CPU detection modalias... The modalias
+  can only have 1 : (bsc#1084687)
+
+-------------------------------------------------------------------
+Wed Mar 21 06:57:59 UTC 2018 - meissner@suse.com
+
+- fix the CPU detection modalias to meet current kernel logic.
+  (bsc#1084687)
+
+-------------------------------------------------------------------
+Wed Mar 14 14:15:49 UTC 2018 - meissner@suse.com
+
+- Updated to microcode version: 20180312 (bsc#1085207 CVE-2017-5715)
+  -- New Platforms --
+  BDX-DE EGW A0 6-56-5:10 e000009
+  SKX B1 6-55-3:97 1000140
+  -- Updates --
+  SNB D2 6-2a-7:12 29->2d
+  JKT C1 6-2d-6:6d 619->61c
+  JKT C2 6-2d-7:6d 710->713
+  IVB E2 6-3a-9:12 1c->1f
+  IVT C0 6-3e-4:ed 428->42c
+  IVT D1 6-3e-7:ed 70d->713
+  HSW Cx/Dx 6-3c-3:32 22->24
+  HSW-ULT Cx/Dx 6-45-1:72 20->23
+  CRW Cx 6-46-1:32 17->19
+  HSX C0 6-3f-2:6f 3a->3c
+  HSX-EX E0 6-3f-4:80 0f->11
+  BDW-U/Y E/F 6-3d-4:c0 25->2a
+  BDW-H E/G 6-47-1:22 17->1d
+  BDX-DE V0/V1 6-56-2:10 0f->15
+  BDW-DE V2 6-56-3:10 700000d->7000012
+  BDW-DE Y0 6-56-4:10 f00000a->f000011
+  SKL-U/Y D0 6-4e-3:c0 ba->c2
+  SKL R0 6-5e-3:36 ba->c2
+  KBL-U/Y H0 6-8e-9:c0 62->84
+  KBL B0 6-9e-9:2a 5e->84
+  CFL D0 6-8e-a:c0 70->84
+  CFL U0 6-9e-a:22 70->84
+  CFL B0 6-9e-b:02 72->84
+  SKX H0 6-55-4:b7 2000035->2000043 
+
+-------------------------------------------------------------------
+Mon Mar  5 21:56:59 UTC 2018 - crrodriguez@opensuse.org
+
+- intel-microcode2ucode.c replaced by better maintained and 
+  feature rich iucode_tool package, add it to buildrequires.
+
+-------------------------------------------------------------------
+Thu Nov 23 14:01:29 UTC 2017 - trenn@suse.de
+
+- Update to microcode version: 20171117 (bsc#1068839)
+
+  -- New Platforms --
+  CFL U0 (06-9e-0a:22) 70
+  CFL B0 (06-9e-0b:2) 72
+  SKX H0 (06-55-04:b7) 2000035
+  GLK B0 (06-7a-01:1) 1e
+  APL Bx (06-5c-09:3) 2c
+  -- Updates --
+  KBL Y0 (06-8e-0a:c0) 66->70
+
+-------------------------------------------------------------------
+Wed Jul 19 15:04:28 UTC 2017 - astieger@suse.com
+
+- Remove code in intel-microcode2ucode.c that refers to 
+  GenuineIntel.bin , previously in binary blob package.
+
+-------------------------------------------------------------------
+Tue Jul 18 11:35:24 UTC 2017 - trenn@suse.de
+
+- Remove binary blob package again. This was intended to be used
+  by linuxrc, but the firmware files can simply be concatenated.
+
+-------------------------------------------------------------------
+Thu Jul 13 14:22:46 UTC 2017 - trenn@suse.de
+
+- Update to version 20170707 (bsc#1048133, bsc#1043358):
+
+  KBL H0 (06-8e-09:c0) 62
+  KBL Y0 (06-8e-0a:c0) 66
+  KBL B0 (06-9e-09:2a) 5e
+  SKX H0 (06-55-04:97) 2000022
+
+-------------------------------------------------------------------
+Tue May 16 08:46:55 UTC 2017 - idonmez@suse.com
+
+- Update to version 20170511:
+
+  BDX-ML B0/M0/R0 (06-4f-01:ef) b00001f->b000021
+  Skylake D0 (06-4e-03:c0) 9e->ba
+  Broadwell ULT/ULX E/F-step (06-3d-04:c0) 24->25
+  ULT Cx/Dx (06-45-01:72) 1f->20
+  Crystalwell Cx (06-46-01:32) 16->17
+  Broadwell Halo E/G-step (06-47-01:22) 16->17
+  HSX EX E0 (06-3f-04:80) d->f
+  Skylake R0 (06-5e-03:36) 9e->ba
+  Haswell Cx/Dx (06-3c-03:32) 20->22
+  HSX C0 (06-3f-02:6f) 39->3a
+
+-------------------------------------------------------------------
+Mon Dec  5 21:25:01 UTC 2016 - crrodriguez@opensuse.org
+
+- Update to version 20161104. 
+
+-------------------------------------------------------------------
+Thu Jul 21 09:21:38 UTC 2016 - trenn@suse.de
+
+- Update to version 20160714.
+- Should fix bsc#987358, a bug which got introduced with the last
+  release.
+- Should finally fix "Intel Skylake bug" (bnc#993639), previous
+  releases since Jan 2016 may or may not have completely fixed it.
+
+-------------------------------------------------------------------
+Thu Jun 23 17:54:26 UTC 2016 - crrodriguez@opensuse.org
+
+- Update to version 20160607, no changelog available
+
+-------------------------------------------------------------------
+Thu Dec 10 17:16:38 CET 2015 - tiwai@suse.de
+
+- Fix dependency on coreutils for initrd macros (boo#958562)
+- Call missing initrd macro at postun (boo#958562)
+
+-------------------------------------------------------------------
+Tue Nov 10 13:27:16 UTC 2015 - fvogt@suse.com
+
+- Fix Url and Source0
+- Add GenuineIntel.bin to ucode-intel-blob
+
+-------------------------------------------------------------------
+Tue Nov 10 12:32:16 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 20151106
+  * No changelog available
+- Use download Url as source
+
+-------------------------------------------------------------------
+Mon Nov  2 15:49:52 UTC 2015 - fvogt@suse.com
+
+- Add ucode-intel-blob subpackage to get the full microcode.dat
+    directly
+
+-------------------------------------------------------------------
+Thu Mar 19 00:52:40 UTC 2015 - crrodriguez@opensuse.org
+
+- Update to microcode 20150121. 
+
+-------------------------------------------------------------------
+Wed Jan 21 20:13:01 UTC 2015 - mpluskal@suse.com
+
+- Pre require coreutils (bnc#914169).
+
+-------------------------------------------------------------------
+Fri Sep 19 12:46:55 UTC 2014 - trenn@suse.de
+
+- Do not try to reload/update microcode at runtime after package
+  installation. Only supported way of updating microcode is via
+  early microcode update via initrd. bnc#896736
+
+-------------------------------------------------------------------
+Wed Sep 17 09:13:25 UTC 2014 - trenn@suse.de
+
+- Update to Intel microcode version 20140624 (bnc#896736, fate#317896)
+  This microcode disables lock elision on CPUs which are known to
+  not work reliable with this feature
+
+-------------------------------------------------------------------
+Wed Jul  2 11:59:34 CEST 2014 - tiwai@suse.de
+
+- Update to Intel microcode version 20140624 (bnc#885213)
+
+-------------------------------------------------------------------
+Fri Jun 13 17:15:38 UTC 2014 - trenn@suse.de
+
+- Delete mkinitrd scripts. This is done via %rpm regenerate_initrd_* macros
+  (bnc#894160)
+
+-------------------------------------------------------------------
+Mon May  5 15:45:49 UTC 2014 - trenn@suse.de
+
+- Update to Intel microcode version 20140430 (bnc#876073)
+
+-------------------------------------------------------------------
+Fri Apr  4 13:39:48 UTC 2014 - mmarek@suse.cz
+
+- Regenerate the initrd in %posttrans (fate#313506)
+
+-------------------------------------------------------------------
+Tue Feb 11 09:13:12 UTC 2014 - idonmez@suse.com
+
+- ucode 20140122, no changelog available.
+
+-------------------------------------------------------------------
+Tue Dec 10 12:43:57 UTC 2013 - trenn@suse.de
+
+- Loading firmware needs udev to be running
+
+-------------------------------------------------------------------
+Mon Dec  2 14:17:33 UTC 2013 - trenn@suse.de
+
+- Add mkinitrd script to add Intel microcode to initrd.
+  This is needed because microcode driver is built in or gets loaded
+  automatically via udev early. Therefore the microcode has to be available
+  in initrd already.
+  This must not be mixed up with early micorcode loading. This feature will
+  not be implemented via mkinitrd. Dracut is doing early microcode loading.
+- bnc#847158
+- mkinitrd scripts:
+    - mkinitrd_setup-intel_microcode.sh
+      Adding microcode to the initrd
+    - mkinitrd_boot-intel_microcode.sh
+      Triggering the reload at boot
+
+-------------------------------------------------------------------
+Mon Nov 25 11:14:51 UTC 2013 - trenn@suse.de
+
+- Correct Supplements string so that the package gets correctly installed
+  on machines with Intel CPUs
+  bnc#847158
+
+-------------------------------------------------------------------
+Sun Sep 22 16:23:54 UTC 2013 - crrodriguez@opensuse.org
+
+- ucode 20130906, no changelog available. 
+
+-------------------------------------------------------------------
+Fri Aug 30 23:31:41 UTC 2013 - crrodriguez@opensuse.org
+
+- ucode 20130808, as usual, no changelog available. 
+
+-------------------------------------------------------------------
+Thu Jul 25 06:33:45 UTC 2013 - aj@suse.com
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jul 24 23:17:08 UTC 2013 - jeffm@suse.com
+
+- Initial packaging. Moved microcode from microctl_ctl package.
+

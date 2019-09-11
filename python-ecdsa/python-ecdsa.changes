@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Tue May 14 07:17:24 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.13.2
+- enable tests
+- fix requires
+ * python packaging fixes
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:34 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Apr 28 11:52:09 UTC 2017 - pousaduarte@gmail.com
+
+- Convert to singlespec
+- Use "download_files" in _service file to automate source fetching
+
+-------------------------------------------------------------------
+Sat Feb 21 01:31:36 UTC 2015 - prusnak@opensuse.org
+
+- update to 0.13
+
+  Fix the argument order for Curve constructor (put openssl_name= at the end,
+  with a default value) to unbreak compatibility with external callers who used
+  the 0.11 convention.
+
+* update to 0.12
+
+  Switch to Versioneer for version-string management (fixing the broken
+  `ecdsa.__version__` attribute). Add Curve.openssl_name property. Mention
+  secp256k1 in README, test against OpenSSL. Produce "wheel" distributions. Add
+  py3.4 and pypy3 compatibility testing. Other minor fixes.
+
+-------------------------------------------------------------------
+Mon Sep 15 09:09:24 UTC 2014 - tbechtold@suse.com
+
+- update to version 0.11:
+  * update NEWS for 0.11 release
+  * VerifyingKey.from_string(): add validate_point= argument
+  * Merge pull request #17 from trezor/master
+  * README: stop claiming py2.5 compatibility.
+  * Merge pull request #18 from alex/patch-2
+  * Merge pull request #16 from alex/patch-1
+  * Remove Python 2.5 from travis.
+  * Added trove classifiers showing versions supported
+  * canonical versions of sigencode methods these enforce low S values,
+    by negating the value (modulo the order) if above order/2
+  * Remove Python 2.5 from travis.
+  * Run tests under PyPy
+
+-------------------------------------------------------------------
+Fri Apr 18 15:14:10 UTC 2014 - rschweikert@suse.com
+
+- include in SLE 12 (FATE #315990)
+
+-------------------------------------------------------------------
+Mon Jan 13 13:55:47 UTC 2014 - dmueller@suse.com
+
+- update to 0.10:
+  * Make the secp256k1 available
+
+-------------------------------------------------------------------
+Wed Oct  9 13:51:36 UTC 2013 - prusnak@opensuse.org
+
+- updated to version 0.9
+  * added secp256k1 curve
+  * added deterministic (no entropy needed) signatures
+  * added py3.2/py3.3 compatibility
+
+-------------------------------------------------------------------
+Fri Dec 14 18:51:58 UTC 2012 - prusnak@opensuse.org
+
+- created package (version 0.8)
+

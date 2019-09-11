@@ -1,0 +1,251 @@
+--- cpi/v4l2cpi/buffermanager.c.orig
++++ cpi/v4l2cpi/buffermanager.c
+@@ -1,12 +1,13 @@
+ #include "config.h"
+ 
++#include <unistd.h>
++#include <sys/mman.h>
+ #include <linux/types.h>
+ #include <linux/videodev2.h>
+ #include <semaphore.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <errno.h>
+-#include <sys/mman.h>
+ 
+ #if V4L2_DEBUG
+ #define DEBUG
+@@ -15,10 +16,12 @@
+ 
+ #include "buffermanager.h"
+ 
++
+ #define MAX_BUFFERS 16
+ 
+ #if USE_LIBV4L
+- #define OPEN   v4l2_open
++#include <libv4l2.h>
++#define OPEN   v4l2_open
+  #define CLOSE  v4l2_close
+  #define IOCTL  v4l2_ioctl
+  #define MMAP   v4l2_mmap
+--- cpi/euvccam/euvccam_colorproc.c.orig
++++ cpi/euvccam/euvccam_colorproc.c
+@@ -18,6 +18,8 @@
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  */
+ 
++#include "config.h"
++#include <string.h>
+ #include "euvccam_cpi.h"
+ #include "debayer.h"
+ 
+--- cpi/euvccam/euvccam_usb.c.orig
++++ cpi/euvccam/euvccam_usb.c
+@@ -18,6 +18,8 @@
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  */
+ 
++#include "config.h"
++#include <stdio.h>
+ #include <sys/types.h>
+ #include <ctype.h>
+ #include <dirent.h>
+--- cpi/euvccam/logging.c.orig
++++ cpi/euvccam/logging.c
+@@ -18,9 +18,11 @@
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  */
+ 
++#include "config.h"
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <stdarg.h>
++#include <string.h>
+ 
+ FILE *g_logfp = NULL;
+ int g_log_modules_mask = 0xffff;
+--- common/Makefile.am.orig
++++ common/Makefile.am
+@@ -1,5 +1,5 @@
+-INCLUDES=-I../include
++AM_CPPFLAGS= -include $(top_builddir)/config.h -I../include
+ 
+ noinst_LTLIBRARIES = libucutils.la
+ libucutils_la_SOURCES = queue.c queue.h ucutil.h
+-libucutils_la_LIBADD = 
+\ No newline at end of file
++libucutils_la_LIBADD = 
+--- cpi/dcam/Makefile.am.orig
++++ cpi/dcam/Makefile.am
+@@ -1,5 +1,5 @@
+ MAINTAINERCLEANFILES = Makefile.in
+-INCLUDES = -I../include -I../../include -I../../ -I../../common @LIBRAW1394_PACKAGE_CFLAGS@
++INCLUDES = -include $(top_builddir)/config.h -I../include -I../../include -I../../ -I../../common @LIBRAW1394_PACKAGE_CFLAGS@
+ 
+ if ENABLE_STATIC_CPI
+ noinst_LTLIBRARIES = libdcam.la
+@@ -14,7 +14,7 @@ libcpidir = $(libdir)/unicap$(pkg_versio
+ libdcam_la_CPPFLAGS = -D@LIBRAW1394_VERSION@
+ libdcam_la_CFLAGS = -fno-strict-aliasing -Wl,-z,defs
+ 
+-libdcam_la_LDFLAGS = -module -avoid-version
++libdcam_la_LDFLAGS = -module -shared -export-dynamic -avoid-version
+ 
+ libdcam_la_SOURCES =  \
+ 	1394util.c \
+--- cpi/euvccam/Makefile.am.orig
++++ cpi/euvccam/Makefile.am
+@@ -1,4 +1,4 @@
+-INCLUDES = -I../include -I../../include -I../../ -I../../common
++INCLUDES = -include $(top_builddir)/config.h -I../include -I../../include -I../../ -I../../common
+ 
+ if ENABLE_STATIC_CPI
+ noinst_LTLIBRARIES=libeuvccam_cpi.la
+@@ -10,8 +10,7 @@ endif
+ libcpidir = $(libdir)/unicap$(pkg_version)/cpi
+ 
+ #libeuvccam_cpi_la_CFLAGS=-msse2 -O2 -g
+-libeuvccam_cpi_la_CFLAGS=-O2 -g
+-libeuvccam_cpi_la_LDFLAGS=-module -avoid-version
++libeuvccam_cpi_la_LDFLAGS= -module -shared -export-dynamic -avoid-version
+ 
+ libeuvccam_cpi_la_SOURCES= \
+ 	euvccam_cpi.c euvccam_cpi.h \
+--- cpi/thing/Makefile.am.orig
++++ cpi/thing/Makefile.am
+@@ -1,5 +1,5 @@
+ MAINTAINERCLEANFILES = Makefile.in
+-INCLUDES = -I../include -I../../include
++INCLUDES = -include $(top_builddir)/config.h -I../include -I../../include
+ 
+ libcpi_LTLIBRARIES = libthing.la
+ 
+--- cpi/v4l/Makefile.am.orig
++++ cpi/v4l/Makefile.am
+@@ -1,5 +1,5 @@
+ MAINTAINERCLEANFILES = Makefile.in
+-INCLUDES = -I../include -I../../include -I../../common
++AM_CPPFLAGS = -include $(top_builddir)/config.h -I../include -I../../include -I../../common
+ 
+ if ENABLE_STATIC_CPI
+ noinst_LTLIBRARIES = libv4l.la
+@@ -12,7 +12,7 @@ endif
+ libcpidir = $(libdir)/unicap$(pkg_version)/cpi
+ 
+ 
+-libv4l_la_LDFLAGS = -module -avoid-version
++libv4l_la_LDFLAGS = -module -shared -export-dynamic -avoid-version
+ 
+ libv4l_la_SOURCES =  \
+ 	v4l.c v4l.h 
+--- cpi/v4l2cpi/Makefile.am.orig
++++ cpi/v4l2cpi/Makefile.am
+@@ -1,5 +1,5 @@
+ MAINTAINERCLEANFILES = Makefile.in
+-INCLUDES = -I../include -I../../include -I../../common
++INCLUDES = -include $(top_builddir)/config.h -I../include -I../../include -I../../common
+ 
+ if ENABLE_STATIC_CPI
+ noinst_LTLIBRARIES = libv4l2cpi.la
+@@ -12,7 +12,7 @@ endif
+ libcpidir = $(libdir)/unicap$(pkg_version)/cpi
+ 
+ 
+-libv4l2cpi_la_LDFLAGS = -module -avoid-version
++libv4l2cpi_la_LDFLAGS = -module -shared -export-dynamic -avoid-version
+ 
+ libv4l2cpi_la_CFLAGS = @LIBV4L_CFLAGS@
+ 
+@@ -22,4 +22,4 @@ libv4l2cpi_la_SOURCES =  \
+ 	tisuvccam.c tisuvccam.h uvcvideo.h uvc_compat.h \
+ 	tiseuvccam.c tiseuvccam.h 
+ 
+-EXTRA_DIST = v4l2_i18n_strings.h
+\ No newline at end of file
++EXTRA_DIST = v4l2_i18n_strings.h
+--- cpi/vid21394/Makefile.am.orig
++++ cpi/vid21394/Makefile.am
+@@ -1,5 +1,5 @@
+ MAINTAINERCLEANFILES = Makefile.in
+-INCLUDES = -I../include -I../../include @LIBRAW1394_PACKAGE_CFLAGS@ -I. -I../../common
++INCLUDES = -include $(top_builddir)/config.h -I../include -I../../include @LIBRAW1394_PACKAGE_CFLAGS@ -I. -I../../common
+ 
+ if ENABLE_STATIC_CPI
+ noinst_LTLIBRARIES = libvid21394.la
+@@ -11,7 +11,7 @@ endif
+ 
+ libcpidir = $(libdir)/unicap$(pkg_version)/cpi
+ 
+-libvid21394_la_LDFLAGS = -module -avoid-version
++libvid21394_la_LDFLAGS = -module -shared -export-dynamic -avoid-version
+ 
+ libvid21394_la_SOURCES = 1394util.c \
+ 			 Fcp.h \
+@@ -25,4 +25,4 @@ libvid21394_la_SOURCES = 1394util.c \
+ 
+ 
+ 
+-libvid21394_la_CFLAGS = -fno-strict-aliasing
+\ No newline at end of file
++libvid21394_la_CFLAGS = -fno-strict-aliasing
+--- src/Makefile.am.orig
++++ src/Makefile.am
+@@ -1,12 +1,12 @@
+ MAINTAINERCLEANFILES = Makefile.in
+ INCLUDES = -I../include -I../cpi/include
+-AM_CPPFLAGS=-DINSTALL_PREFIX="\"$(prefix)\"" -DPKGLIBDIR="\"$(libdir)/unicap$(pkg_version)\"" -DPKG_VERSION="\"@pkg_version@\""
++AM_CPPFLAGS= -include $(top_builddir)/config.h -DINSTALL_PREFIX="\"$(prefix)\"" -DPKGLIBDIR="\"$(libdir)/unicap$(pkg_version)\"" -DPKG_VERSION="\"@pkg_version@\""
+ lib_LTLIBRARIES = libunicap.la
+ 
+ if ENABLE_STATIC_CPI
+ libunicap_la_LDFLAGS = -version-info @lt_major@:@lt_revision@:@lt_age@ @RT_LIBS@ -static
+ else
+-libunicap_la_LDFLAGS = -version-info @lt_major@:@lt_revision@:@lt_age@ @RT_LIBS@
++libunicap_la_LDFLAGS = -no-undefined -version-info @lt_major@:@lt_revision@:@lt_age@ @RT_LIBS@
+ endif
+ 
+ libunicap_la_SOURCES =   \
+--- cpi/v4l2cpi/tiseuvccam.c.orig
++++ cpi/v4l2cpi/tiseuvccam.c
+@@ -37,7 +37,8 @@
+ #define FOURCC(a,b,c,d) (unsigned int)((((unsigned int)d)<<24)+(((unsigned int)c)<<16)+(((unsigned int)b)<<8)+a)
+ 
+ #if USE_LIBV4L
+- #define OPEN   v4l2_open
++#include <libv4l2.h>
++#define OPEN   v4l2_open
+  #define CLOSE  v4l2_close
+  #define IOCTL  v4l2_ioctl
+  #define MMAP   v4l2_mmap
+--- cpi/v4l2cpi/tisuvccam.c.orig
++++ cpi/v4l2cpi/tisuvccam.c
+@@ -39,7 +39,8 @@
+ 
+ 
+ #if USE_LIBV4L
+- #define OPEN   v4l2_open
++#include <libv4l2.h>
++#define OPEN   v4l2_open
+  #define CLOSE  v4l2_close
+  #define IOCTL  v4l2_ioctl
+  #define MMAP   v4l2_mmap
+--- configure.ac.orig
++++ configure.ac
+@@ -38,12 +38,12 @@ AC_SUBST(pkg_version)
+ AC_CONFIG_MACRO_DIR(m4)
+ 
+ # Checks for programs.
+-AC_PROG_CC
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+-AC_PROG_LIBTOOL
+-AM_PROG_LIBTOOL
+-
++LT_INIT([disable-static dlopen pic-only])
+ # Checks for header files.
+ AC_HEADER_DIRENT
+ AC_HEADER_STDC

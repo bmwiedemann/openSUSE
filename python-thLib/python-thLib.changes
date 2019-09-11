@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Thu Jun  6 05:43:04 UTC 2019 - pgajdos@suse.com
+
+- call spec-cleaner
+- note there are no upstream tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:16 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed May 16 15:30:39 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.12.2
+  * quaternion export to "vector" added
+  * quaternion export fixed for one-quaternion input
+  * Equations for rot2Fick changed, so that they work for angles>pi
+  * Fixed a problem for Gram-Schmidt orthogonalization with single vectors
+  * Fixed a problem for for vector normalization in Python
+    2.x, and one for quaternion division in Python 2.x
+  * vel2quat made more stable, documentation adjusted
+  * system identifier for Linux corrected; stereo sound enabled
+  * sound information added
+  * conversion command for FFMPEG adjusted, so that it also works on UNIX systems
+  * Python 2.x compatability with Linux systems fixed
+  * Problems with Sound.play() on POSIX-systems fixed
+  * Kalman filter, Madgwick algorithm, Mahony algorith, getXSens added to thLib. Not thoroughly tested yet
+  * Move all RST-files to the new folder "docs", and images to "_static"
+  * Make it backwards-compatible to older installs of skimage
+  * Clean up "quat"
+  * Clean up "quat" a bit more
+  * fixed error in "kinematics", cleaned the remaining modules up a bit
+  * module "kinematics" replaced by "imus" and "markers", tests adjusted
+  * fixed problems with relative imports
+  * "quat2vel.py" added to "quats", docs and tests updated
+  * fixed 2 errors in "imus.py"
+  * "sound.py" made compatible with Linux
+  * conversion problem in "sound.py" fixed
+  * numerical error fixed
+  * method for getting screen-width and -height added to ui
+  * more info written out for JSON
+  * Restore thLib, as older versions were inadvertently deleted :(
+  * Code cleaned up a bit, comments for Mac added
+  * quaternions and rotation matrices removed (to scikit-kinematics)
+  * import error in sounds.py fixed
+  * removed sound.py, because functionality exists in scikit-sound
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Tue Dec  9 13:38:37 UTC 2014 - toddrme2178@gmail.com
+
+- Initial version
+

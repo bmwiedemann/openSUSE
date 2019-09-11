@@ -1,0 +1,903 @@
+-------------------------------------------------------------------
+Fri Apr 26 08:44:42 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch gcc-564d068.patch from pull request 564d068 of
+  Martin to upstream of bash-completion
+
+-------------------------------------------------------------------
+Fri Mar 29 20:13:38 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Removed bts completions (upcoming devscript package contains a 
+  more recent one).
+
+-------------------------------------------------------------------
+Mon Oct 22 07:06:51 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch PS1-completion-boo903362.patch to make it work with
+  mksh as well (boo#1104531)
+
+-------------------------------------------------------------------
+Thu Aug  2 13:25:06 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 2.8:
+  * Comma separated opt arg completion improvements
+  * Protect _known_hosts_real from user input treated as options
+  * Protect shopt reset from non-default $IFS
+  * Add support for .lz4 extension to file-roller (#158)
+  * Add support for .lzo extension (--lzop) to tar (#155)
+  * Bump copyright years to -2018
+  * README.md: Whitespace cleanup
+  * Whitespace
+  * __expand_tilde_by_ref: Eval tilde expansion only, simplify
+  * __load_completion: Code cleanup
+  * __load_completion: Load "xspec" completions dynamically too
+  * _avaiable_interfaces: Get rid of eval
+  * _expand: Reuse __expand_tilde_by_ref and _tilde logic, clean up
+  * _known_hosts_real: Add option to filter IPv4 and IPv6 addresses
+  * _known_hosts_real: Document -a better
+  * alias: Fix completion followed by = (#146)
+  * apt-get: Complete *.deb on install if argument contains a slash
+  * aptitude-curses: Use aptitude completion
+  * aptitude: Add keep to commands list (Debian: #867587)
+  * bzip2, gzip, and other compressors: Use _tilde instead of _expand
+  * ccze: New completion
+  * cryptsetup: Update option lists
+  * curl: Fix -x etc option argument hostname completion
+  * dd, find, gcc: Remove unnecessary tilde expansion
+  * dd: Omit space only when offering one completion ending with =
+  * dpkg-query: Fix -W/--show completion
+  * dpkg: Add -V/--verify arg completion
+  * dpkg: Complete --vextract on deb files
+  * dpkg: Fix man page section in comment
+  * ebtables: new completion (#150)
+  * flake8: Various option arg completion improvements
+  * geoiplookup: New completion
+  * getconf: New completion
+  * groupdel: Parse and handle long options
+  * info, man, rsync: Defer _expand invocation
+  * iptables: Avoid stderr trashing when invoked as non-root
+  * iptables: Parse options from --help output
+  * iptables: Use invoked command instead of hardcoded "iptables"
+  * java: Complete *.war
+  * kldunload: Increase robustness of compgen filters (#185)
+  * kldunload: Show modules with digits
+  * ktutil: Don't leak i and command environment variables
+  * lftp: Support ~/.local/... bookmark location (#144)
+  * lowriter,localc etc: Use corresponding oo* completions
+  * lspci: New completion
+  * lsscsi: New completion
+  * lsusb: New completion
+  * make-changelog.py: Use python3
+  * make: Pass script to sed as parameter instead of using process substitution
+  * man: Don't use $MANPATH directly (#161)
+  * mkdir: Complete files without appending space
+  * mkdir: Complete on files in addition to dirs
+  * mplayer: Disable user config when parsing options
+  * nproc: New completion
+  * oggdec: New completion
+  * openssl: Add completion for the genpkey, pkey, pkeyparam, and pkeyutl commands
+  * perltidy: New completion
+  * ping*,ssh,scp,sftp,tracepath6: Filter IPv4/IPv6 literal addresses
+  * pv: New completion
+  * pycodestyle: New completion
+  * pylint: Install for pylint-2 and pylint-3 too
+  * pylint: Invoke python3 to search for modules if command contains 3
+  * python: Support completing dotted module hierarchies
+  * radvdump: New completion
+  * reportbug: Add -A/--attach arg completion
+  * reportbug: Don't hardcode option lists, split option args at =
+  * rfkill: Rename to _rfkill to avoid conflict with util-linux >= 2.31
+  * ri: Fix integrated ri 1.8 class completion
+  * ssh,ssh-add,ssh-keygen: Complete pkcs11 options with *.so
+  * ssh-keygen: Add -E arg completion
+  * ssh: Add -J/ProxyJump completion
+  * ssh: Declare $prefix closer to use
+  * test suite: Add basic hid2hci and munin-node-configure test cases
+  * test suite: Add bunch of man and MANPATH test cases
+  * test suite: Add bunch of missing basic test cases
+  * test suite: Add info and pinfo option test cases
+  * test suite: Drop no longer needed fedoradev /usr/bin/which workaround
+  * test suite: Enable wine in ubuntu14
+  * test suite: Install aptitude in ubuntu14 container
+  * test suite: Limit amount of info and pinfo test output
+  * test suite: Limit amount of output from process name completion
+  * test suite: Limit number of screen -T completion matches
+  * test suite: Make man test subject names less generic
+  * test suite: Skip fedoradev GPG checks at least for now
+  * test suite: Some more mplayer and mencoder coverage
+  * test suite: Support overriding default match buffer size (#141)
+  * test suite: man cleanup
+  * test/docker: Tweak work dir, add bash as default cmd
+  * test/unit: Whitespace tweaks
+  * test: Add "postconf -" test case
+  * test: Add assert_complete_homedir, use in dpkg and ls
+  * test: Add files to test older ri with
+  * test: Add some _expand unit tests
+  * test: Add some comments regarding bash init in library.exp
+  * test: Fix getting username in non-login shells
+  * test: Ignore duplicates in find_unique_completion_pair list
+  * test: Remove things moved to library.exp from bashrc
+  * test: Try to skip postconf variable test on broken postfix configs altogether
+  * test: Use prebuilt docker hub bash-completion images
+  * test: Work around broken centos/fedora postfix config in non-IPv6 setup
+  * test: dpkg,ls,_tilde: Skip gracefully if no uniq user for completion is found
+  * test: run bash with --norc to avoid system bashrc
+  * tox: Avoid stderr spewage when -e invoked without tox.ini
+  * tox: Complete comma separated -e arguments
+  * tox: Include ALL in -e completions
+  * tox: New completion (#163)
+  * tox: Remove spurious executable bits
+  * unzip, zipinfo: Associate *.gar (#165)
+  * uscan: Don't leak cword and words environment variables
+  * vpnc: Add some option argument (non)completions
+  * vpnc: Improve config completions
+  * xdg-mime,xdg-settings: Fix inclusion in tarball
+  * xdg-mime: New completion
+  * xdg-settings: New completion
+  * xine etc, ogg123, mplayer -audiofile: Associate with *.oga
+  * xm: Don't leak args and commands environment variables
+
+-------------------------------------------------------------------
+Tue Apr 24 09:21:58 UTC 2018 - werner@suse.de
+
+- Add patch bash-completion-2.7-unRAR-remove.patch that is due legal
+  issue the unRAR part of 7z had been removed (boo#1077978, boo#1090515)
+
+-------------------------------------------------------------------
+Tue Apr  3 15:30:09 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Mon Dec 18 15:29:04 CET 2017 - sbrabec@suse.com
+
+- Remove rfkill conflicting with util-linux-2.31.
+
+-------------------------------------------------------------------
+Tue Jul  4 07:51:31 UTC 2017 - werner@suse.de
+
+- Update to version 2.7
+  * Makefile: update default compatdir (#132)
+  * Make user completion file configurable, disable in tests
+  * test suite: Generalize xspec completion install check
+  * pyflakes: Remove redundant xspec completion
+  * test suite: Fix __expand_tilde_by_ref test expectation output
+  * pdfunite: New *.pdf completion
+  + bash-completion (2.6)
+  * Add missing sidedoor to .gitignore (#114)
+  * test suite: Mark expected centos6 CI _filedir failures as such
+  * Expose version in BASH_COMPLETION_VERSINFO, use it in profile.d
+    script
+  * test suite: Skip an expected make test case failure in centos6 CI
+  * test suite: Fix ifdown and ifup CI test skipping
+  * test suite: Ignore env var pulled in by use of scp in tests
+  * test suite: If colon trim doesn't do anything, trim as usual
+  * tar: Comment spelling fixes
+  * test suite: Mark dpkg -L test case untested if no packages
+    installed
+  * test suite: Cosmetic tweaks
+  * dpkg: Fix dpkg -i home dir completion
+  * test suite: Improve ls home dir test descriptions
+  * python: Split module completion to separate helper
+  * micropython: New completion, aliased from python
+  * test suite: Add Python module completion test case
+  * python: Fix traceback avoidance on module completion error
+  * openssl: Parse available digests from dgst -h
+  * openssl: Add sha2 commands
+  * gm: New completion, commands only for now
+  * (test suite): Test screen -T completions
+  * (test suite): Set TERM to dumb, not dummy
+  * Revert "(test suite): Fix alias and cd cursor position tests"
+  * mplayer: Remove duplicate *.m4a and *.m4v associations
+  * mplayer, xine, etc: Associate *.mp4a and *.mp4v
+  * xine etc: Fix *.m4a association
+  * bind: Add option and argument (non-)completions
+  * _user_at_host: Set nospace only when completing username part
+  * _user_at_host: Append @ suffix to username part completions
+  * man: Don't check OSTYPE or GNU userland, just enable on all
+    systems
+  * (test suite): Set dcop result to untested if dcop server is not
+    running
+  * (test suite): Don't insist on loading all completions dynamically
+  * _configured_interfaces: Parse from /etc/network/interfaces.d/* on
+    Debian
+  * py.test: New completion
+  * oowriter: Associate with *.pdf
+  * Don't define BASH_COMPLETION_COMPAT_DIR
+  * ri: Add option and arg completions
+  * (test suite): Add our own dummy ri test fixture
+  * (test suite): Info test needs docs, don't exclude from CentOS
+  * (test suite): Fix CentOS 6 tcllib setup
+  * (test suite): Simplify renice test, fix with only one completion
+  * (test suite): Don't assume configured interfaces in CI setups
+  * Don't offer * as configured interface when there are none
+  * (test suite): Add basic CentOS 6 container for bash 4.1 coverage
+  * (test suite): Ignore runtime loaded env function changes
+  * (test suite): Add mailman bin dir to PATH for arch test
+  * arch: Parse options from --help
+  * (test suite): Load tested completions dynamically
+  * (test suite): Accept non-whitespace single word in
+    assert_complete_any
+  * (test suite): Avoid interference from user and system dirs (#87)
+  * (test suite): Install some things N/A in ubuntu14 to fedoradev
+  * (test suite): Add unrar to ubuntu14 container
+  * (test suite): Fix alias and cd cursor position tests
+  * (test suite): Add basic alpine test case
+  * alpine: Parse opts from -h output, add some opt arg completions
+  * (test suite): Install jshint globally in ubuntu14
+  * (test suite): Add mailman bin dir to PATH for some mailman tools
+  * (test suite): Install jshint to ubuntu14 container with npm
+  * unshunt: Parse options from --help
+  * (test suite): Test lsof on ubuntu14
+  * (test suite): Add basic hping3 test case
+  * (test suite): Add our ./configure to PATH to test it, test opts
+  * (test suite): Add bunch of packages to ubuntu14 container
+  * (test suite): Ensure /usr/(local/)games is in $PATH
+  * (test suite): Fix perl -d* test cases with no Devel::* installed
+  * (test suite): curl has lots of options, add more test prefix
+  * (test suite): Fix tar test case for ones having --owner-map
+  * (test suite): Unsupport various kill, renice cases if ps is N/A
+  * (test suite): Make chkconfig test behave better in container
+  * (test suite): Don't assume mounted filesystems in quota* tests
+  * newlist: Parse options from --help, add some arg non-completions
+  * (test suite): Delete trailing whitespace
+  * (test suite): Don't assume lists set up in newlist test cases
+  * (docker): Pull in missing fedoradev xvfb-run which dependency
+  * mr: Avoid stderr trash and test suite failure if man is N/A
+  * (test suite): Fix mmsitepass completion test
+  * tshark -G: Avoid stderr noise when running as superuser
+  * (docker): Run completion tests with xvfb-run, e.g. for gkrellm
+  * ssh-keygen: Make option parsing work with OpenSSH < 7
+  * synclient, udevadm: Avoid use of posix char classes for awk
+  * test suite: Add WIP Fedora dev config
+  * Travis: Switch tests to docker, update to Ubuntu 14
+  * xv: Associate with *.j2c, *.j2k, *.jp2, *.jpf, and *.jpg2 (Debian:
+    #859774)
+  * eog: Associate with *.j2c and *.jpg2
+  * Bump copyright years
+  * xine etc: Associate uppercase *.WM[AV]
+  * mplayer: Associate *.weba (#112)
+  * xine etc: Associate *.webm and *.weba (#112)
+- Modify patches
+  * FOO-dir-completion-boo905348.patch
+  * PS1-completion-boo903362.patch
+  * backtick-completion-boo940835.patch
+  * backticks-bsc963140.patch
+  * bash-completion-2.4.patch
+  * bash-completion.changes
+  * bash-completion.spec
+  * ls-completion-boo889319.patch
+  * respect-variables-boo940837.patch
+  * rm-completion-smart-boo958462.patch
+  * sh-script-completion-boo977336.patch
+
+-------------------------------------------------------------------
+Tue May 30 15:59:01 UTC 2017 - nico.kruber@gmail.com
+
+- Update to version 2.5
+  * Support for python gui source files (#91)
+  * mr: New completion
+  * ssh-keygen: support ed25519 keys (#79)
+  * Add sidedoor to _ssh() completion (#106)
+  * .ipa is just a zip file and we should let unzip handle it (#71)
+  * ant: parse targets in imported buildfiles (#84)
+  * Add more tests for ccache
+  * ccache: fix completing compiler's flags
+  * test suite: Add java/javac non-completion fixture
+  * javac: Complete -cp like -classpath
+  * travis: Skip bluez and nis for now due to post-install script
+    issues
+  * test/config/*: Delete trailing whitespace
+  * (test suite): Avoid loading user's ~/.bash_completion, fixes #87
+  * ip: Recognize a as alias for address and l for link
+  * ip: Recognize address in addition to addr
+  * mr: Disable "clean" test case, command N/A before mr 1.20141023
+  * ssh-keygen: Parse switches with _parse_usage, not _parse_help
+  * mplayer: Associate with *.mjpg, *.mjpeg (Debian: #837779)
+  * dd: Sync completions with coreutils 8.24
+  * travis: Add mr
+  * perl: Remove full path to cat in PERLDOC_PAGER call
+  * deja-dup: New completion
+  * CONTRIBUTING: Reorder sections
+  * *: Move indentation settings to .editorconfig
+  * make: Declare _make_target_extract_script like other functions
+  * Travis: zopfli is AWOL?
+  * *: Whitespace fixes
+  * Minor edits to README.md (mostly formatting) (#110)
+  * Fix bug in 'make' completion when using BSD sed (#108)
+  * Add support for Include in ssh config (#70) (#80)
+- adapt LVM-completion-bsc946875.patch
+
+-------------------------------------------------------------------
+Thu Dec 15 09:37:52 UTC 2016 - werner@suse.de
+
+- Detect if the completions for mount/umount have to be removed
+  for modern util-linux package but without using suse_version
+
+-------------------------------------------------------------------
+Thu Dec 15 07:49:36 UTC 2016 - werner@suse.de
+
+- Fix cut&paste error in final ls completion 
+
+-------------------------------------------------------------------
+Wed Dec 14 12:41:38 UTC 2016 - werner@suse.de
+
+- Add patch tar-completion.patch to allow mixed options with long
+  and short options (boo#1012212) 
+
+-------------------------------------------------------------------
+Wed Dec 14 10:46:27 UTC 2016 - werner@suse.de
+
+- Change upstream home to https://github.com/scop/bash-completion
+- Update to version 2.4
+  * xetex, xelatex, luatex, lualatex: Associate with tex files
+  * Support pod document files for perldoc (#39)
+  * tipc: add tipc completions
+  * rpm: Offer --filetriggers with -q
+  * javadoc: Add bunch of option arg (non)completions
+  * lrzip: Add -m arg noncompletion
+  * pypy*: Add basic --jit arg completion
+  * pypy3: Alias to python
+  * hcitool,svcadm,tar: Spelling fixes
+  * tipc: Invoke ls with "command"
+  * tipc: Indentation fix
+  * abook: Parse long options from command including full path
+  * pyvenv: New completion
+  * chroot: New (generic long options) completion, see #38
+  * aptitude: List packages using _apt_cache_packages, fixes #33
+  * vncviewer: Cleanup shopt use, drop an eval
+  * make: Avoid a grep
+  * rpm: Fix --whatenhances arg completion
+  * aspell, minicom, mysql: Replace use of ls with printf
+  * The BitKeeper completion used the wrong set of commands
+  * Completion for python zip archives
+  * lvm: pvcreate should be able to use all block devcices
+  * lvm: fix all commands that should get all PVs
+  * tar: Detect GNU/other from --version only once per session
+  * tar: Remove unused variable
+  * tar: Fix GNU tar help output parsing regex, fixes #15
+  * tar: Don't write to /tmp/jetel
+  * python: Simplify code
+  * python: Complete all files also after -m
+  * python: Don't offer options after -c
+  * python: Complete all files only if -c is before current word
+  * unzip, zipinfo: Complete on *.pyz
+  * _lvm: using a single-pattern case and invoking function according
+    to words[1]
+  * lvm: _lvm_count_args parameter must be quoted in order to failglob
+    not to complain
+  * gendiff: Quoting suffix pattern to avoid triggering failglob
+  * ssh-add, ssh-keygen: -? needs to be quoted under failglob (Alioth:
+    #314709)
+  * Refactor bts and uscan, since they use common functions
+  * uscan: New completion, thanks to Federico Ceratto
+  * bts: New completion, thanks to Federico Ceratto.
+  * nmcli completion was integrated upstream
+  * ssh-add, ssh-keygen: -? needs to be quoted under failglob (take 2)
+    (Alioth: #314709)
+  * umount: Fix mount points escaping/unescaping with Bash-4.3
+  * slapt-src: Handle --config=FILE option properly
+  * sbopkg, slapt-{get,src}: expand tilde in config file name
+  * slapt-{get,src}: Fix issue with sed not being able to handle some
+    characters
+  * slapt-src: split options from their arguments
+  * psql: Tell psql to not load .psqlrc as it may change output format
+    (Alioth: #314636)
+  * mplayer: -dvd-devices takes dvd devices, dirs and .iso files as
+    argument
+  * 7z: Improve completion
+  * f77, f95: Use the same completion as for g77, g95 if they are
+    links to gfortran
+  * make: Use only posix basic regexps with sed (Alioth: #314345)
+  * perl: -d/-dt option argument is optional (Alioth: #314242)
+  * Add config for cmake to bash-completion.
+  * kcov: Add new sort types, complete --replace-src-path arguments
+  * feh: Add new sort type
+  * man: Use -w instead of --path
+  * chronyc: Update help text parsing
+  * chronyc: Add missing subcommands
+  * chronyc: Add -6 option
+  * minicom: Recognize user ~/.minirc.* as config files
+  * rpmbuild: Complete *.spec on --clean (RedHat: #1132959)
+  * tar: rework the completion completely
+  * portsnap: New completion.
+  * modprobe: fix params with multi-line descriptions
+  * gdb: support --args style completion (Alioth: #314664)
+  * make: Fix basic regex for portability (Alioth: #314345)
+  * gnokii: New completion
+  * xmllint, xmlwf, xsltproc: Complete on Mallard *.page files
+  * pypy: New completion identical to python (Alioth: #314501)
+  * make: Don't pick up variables when makefile is reloaded
+  * make: Offer hidden targets when it is clear that the user is
+    trying to complete one of them
+  * make: Fix detection of intermediate targets where make has changed
+    its database whitespace
+  * make: completion shouldn't be confused by the output of $(info
+    confuse: make)
+  * zopflipng: New completion
+  * ssh: Extract duplicate code to _ssh_configfile
+  * gnokii, minicom: Use grep through "command"
+  * Update URLs and various instructions to GitHub
+  * ssh: Avoid completing commands before hostname
+  * chronyc: Parse command args from help output
+  * chronyc: Wrap long lines
+  * Load completions also from $XDG_DATA_DIRS (RedHat: #1264094)
+  * (testsuite) Ignore files generated by complete-ant-cmd.pl
+  * scp, sftp: Complete -S on commands
+  * scp, sftp: Fix querying ssh options
+  * sftp: Add -l arg non-completion
+  * ssh-copy-id: Offer only *.pub to -i
+  * mpv: Remove mplayer-aliased completion
+  * modplug*: Associate *.oct and *.okt
+  * rpm: Add --whatenhances/recommends/suggests/supplements and
+    --recommends/supplements completions
+  * pgrep, pidof, pkill, pwdx, vmstat: Add support for procps-ng
+  * pdftotext: New completion
+  * checksec: New completion
+  * ssh: Complete HostbasedKeyTypes,HostKeyAlgorithms,KexAlgorithms
+    values
+  * ssh: Query ciphers and macs from ssh before hardcoded fallback
+  * ssh: Add -Q argument completion
+  * sysctl: Return early on --help, --version
+  * sysctl: Try parsing options from help before usage
+  * eog: Complete on *.ppm (RedHat: #1090481)
+  * tar: Plug $line var leak
+  * tar: Style tweaks
+  * bsdtar, tar: Remove symlinks from git, have make create them
+  * jshint: New completion
+  * gnokii: Include and install it
+  * gnokii: Fix completions of options that are prefixes for others
+  * gnokii: Drop dead code
+  * (testsuite): Add basic gnokii test case
+  * gnokii: Various minor and cosmetic fixes
+  * Load user completions from $BASH_COMPLETION_USER_DIR/completions
+  * synclient: New completion
+  * tune2fs: Add missing return in -M arg completion
+  * reptyr: Rename file to _reptyr to avoid conflict with upstreamed
+    completion
+  * dropuser: New completion
+  * createuser: New completion
+  * createdb, dropdb: Drop -o default, it does not appear to do
+    anything good here
+  * tshark: Simplify cut usage
+  * mcrypt: Simplify -m arg completion
+  * strings: Fix -T/--target arg completion with non-English locale
+  * chrome, firefox etc: Complete on *.pdf
+  * ccache: Add -o/--set-config arg name completion
+  * gphoto2: Replace tail with awk
+  * gphoto2: Fix split argument handing, and colon treatment in --port
+    args
+  * Actually install the lz4 completion
+  * _pnames: Add -s for producing (possibly) truncated names (RedHat:
+    #744406)
+  * (testsuite) Add cd in dir without subdirs or CDPATH test case
+  * Protect various compgen invocations from -* leakage (Debian:
+    #766163)
+  * pigz, unpigz: Handle *.zz
+  * rpmbuild: Complete *.spec on --nobuild
+  * mplayer, *xine: Complete on *.mts (Debian: #759219)
+  * ant: Support buildfile set in $ANT_ARGS (Alioth: #314735)
+  * ant: Don't offer more completions after options that exit
+  * 7z, adb: Trivial cleanups
+  * python(3): Add -X argument non-completion
+  * xsltproc. TODO fix for previous commit
+  * xmllint, xmlwf, xsltproc: Complete on *.dbk and *.docbook (Alioth:
+    #314770)
+  * xz: Complete -T/--threads argument
+  * adb: New completion
+  * modprobe: Try parsing help before using hardcoding option list
+  * mpv: New completion alias + adjustments for mplayer (Debian:
+    #749115)
+  * hostname: New completion
+  * nslookup: complete on hosts (Alioth: #314673)
+  * eog: Complete on *.pgm (RedHat: #1090481)
+  * pngfix: New completion
+  * qemu: Fix -balloon arg completion
+  * qemu: Apply completion to qemu-kvm/-system-i386/-system-x86_64 too
+  * xrandr: Use the invoked command internally, not hardcoded "xrandr"
+  * xrandr: Add (some) --setprovider* arg completion support
+  * ri: Fix class completion with ri >= 3.
+  * ri: Fix colon handling in class completion.
+  * flake8: New completion
+  * pyflakes: New completion
+  * cal,chfn,chsh,dmesg,eject,hexdump,look,newgrp,renice,runuser,su,wr
+    ite: Deprecate on Linux in favor of util-linux ones (Debian:
+    #737672)
+  * hwclock,ionice,rtcwake: Deprecate in favor of util-linux ones
+    (Debian: #737672)
+  * ssh-keygen: New completion
+  * jpegoptim: New completion
+  * ip: Add some addr, addrlabel, and route arg completions
+  * aptitude, dpkg: Replace some grep+cuts with awk
+  * gcc, lintian, make, pkgadd, slackpkg: grep -> "command grep"
+    (Debian: #734095)
+  * lintian: Replace some grep+cuts with awk
+  * lz4: New completion.
+  * optipng: New completion.
+  * cppcheck: Include - in --file-list completions.
+  * wtf: Look for acronym db from /usr/share/games/bsdgames/acronyms
+    too.
+  * wtf: Don't offer -f if it was already specified.
+  * wtf: Hush stderr when db file doesn't exist.
+  * appdata-validate: New completion.
+  * timeout: New completion.
+  * abook, kldunload: Pre-expand \t instead of relying on sed
+    supporting it.
+  * dict: Trivial regex cleanup.
+  * zopfli: New completion.
+  * bzip2, gzip, lzma: Cleanups.
+  * 2to3: New completion.
+  * file-roller: Reuse unzip's xspec.
+  * 7z: New completion.
+  * hcitool, rfcomm, ciptool, hciconfig: Don't leak $args.
+  * perl: Fix -dt: completion.
+  * perl*: Fix handling of relative paths in @INC.
+  * wget: Add --accept-regex/--reject-regex/--regex-type arg
+    (non)completions.
+  * wget: Drop incorrect -nv arg completion.
+  * wget: Stop completing after --help/--version.
+  * Clean up/compact various globs.
+  * cvs: Fix checkout -j non-completion.
+  * sh: Complete script arguments with all filenames (Alioth:
+    #314226).
+  * nmcli: Deprecate our completion, upstream has one in 0.9.8.0.
+  * cvs rm: Don't filter existing files with -f (RedHat: #949479).
+- Drop patches now upstream
+   init-completion-boo922758.patch
+   pushd-completion-bnc818365.patch
+- Rename patches
+   bash-completion-2.1.patch becomes bash-completion-2.4.patch
+- Port the patches to newer version 2.4
+   FOO-dir-completion-boo905348.patch
+   LVM-completion-bsc946875.patch
+   PS1-completion-boo903362.patch
+   backtick-completion-boo940835.patch
+   backticks-bsc963140.patch
+   ls-completion-boo889319.patch
+   respect-variables-boo940837.patch
+   rm-completion-smart-boo958462.patch
+   sh-script-completion-boo977336.patch
+- Only remove completion for umount/mount for older SUSE versions (boo#995045)
+
+-------------------------------------------------------------------
+Wed Aug 24 06:58:32 UTC 2016 - tchvatal@suse.com
+
+- Mark the documentation as noarch
+
+-------------------------------------------------------------------
+Wed May 18 18:40:09 CEST 2016 - sbrabec@suse.com
+
+- Split doc build into a separate spec file. It makes possible to
+  build package in two stages and prevent build loop.
+
+-------------------------------------------------------------------
+Wed May 18 13:40:01 UTC 2016 - werner@suse.de
+
+- Split off sub packages devel and doc to avoid dependency cycles
+
+-------------------------------------------------------------------
+Wed Apr 27 20:34:12 CEST 2016 - sbrabec@suse.com
+
+- Remove completions conflicting with util-linux (boo#977259#c3).
+
+-------------------------------------------------------------------
+Wed Apr 27 12:42:50 UTC 2016 - werner@suse.de
+
+- Add patch sh-script-completion-boo977336.patch to make _filedir
+  work with COMP_FILEDIR_FALLBACK even if local directries exists
+  this is for bug boo##977336
+
+-------------------------------------------------------------------
+Wed Apr 27 11:54:07 UTC 2016 - werner@suse.de
+
+- Add documentation for this packages below to get the reference
+  of the e.g. the variable COMP_FILEDIR_FALLBACK (boo#977336) 
+
+-------------------------------------------------------------------
+Wed Jan 27 15:42:34 UTC 2016 - werner@suse.de
+
+- Add patch backticks-bsc963140.patch to handle sub commands
+  which will be expanded by backticks (bsc#963140) 
+
+-------------------------------------------------------------------
+Fri Dec 18 09:33:05 UTC 2015 - werner@suse.de
+
+- Add patch respect-variables-boo940837.patch to avoid completions
+  which results in e.g. ls \$HO
+- Add patch rm-completion-smart-boo958462.patch to allow completions
+  list e.g. rm prefix*.jpg<TAB><TAB>
+- Modify patch LVM-completion-bsc946875.patch that is add the
+  new patch from Liuhua Wang
+
+-------------------------------------------------------------------
+Wed Sep 23 11:58:33 UTC 2015 - werner@suse.de
+
+- Add patch LVM-completion-bsc946875.patch to make LVM comands
+  work even without any scan happen (bsc#946875) 
+
+-------------------------------------------------------------------
+Thu Aug 13 06:53:15 UTC 2015 - werner@suse.de
+
+- Add patch backtick-completion-boo940835.patch to allow correct
+  backtick completion (boo#940835) 
+
+-------------------------------------------------------------------
+Wed Aug 12 13:17:40 UTC 2015 - werner@suse.de
+
+- Correct typo in patch ls-completion-boo889319.patch 
+
+-------------------------------------------------------------------
+Mon Jun 15 08:28:30 UTC 2015 - werner@suse.de
+
+- Add patch ls-completion-boo889319.patch to make ls completion
+  more smart (boo#889319) 
+
+-------------------------------------------------------------------
+Wed Mar 18 12:45:23 UTC 2015 - werner@suse.de
+
+- Port my dollar completion from /etc/profile.d/completion.bash to
+  bash_completion which modifies FOO-dir-completion-boo905348.patch
+- Avoid negative cword position counter (boo#922758), this adds
+  the patch init-completion-boo922758.patch
+
+-------------------------------------------------------------------
+Mon Nov 17 12:46:11 UTC 2014 - werner@suse.de
+
+- Add patch PS1-completion-boo903362.patch to avoid trouble if
+  restricted characters of the shell are used in PS1 like
+  exclamation mark (boo#903362).
+- Add patch FOO-dir-completion-boo905348.patch to expand variables
+  which value is actual a directory to avoid excaped dollar sign
+  (boo#905348).
+
+-------------------------------------------------------------------
+Mon May 13 07:08:49 UTC 2013 - werner@suse.de
+
+- Add patch pushd-completion-bnc818365.patch for bnc#818365 -- bash
+  completion for builtin command "pushd" is missing
+
+-------------------------------------------------------------------
+Tue Apr 23 15:42:50 UTC 2013 - werner@suse.de
+
+- Do not ship NetworManager completion file as it is part of NM 
+
+-------------------------------------------------------------------
+Tue Apr 23 14:17:43 UTC 2013 - werner@suse.de
+
+- Update to final 2.1 version
+  + See CHANGES for the full list of changes 
+- Add patch bash-completion-2.1.patch to avoid blanks after during
+  file completion (bnc#717151)
+
+-------------------------------------------------------------------
+Fri Apr 19 17:11:24 UTC 2013 - fcrozat@suse.com
+
+- Do no ship udevadm completion file, it is now part of systemd
+  package.
+
+-------------------------------------------------------------------
+Sat Jul  7 12:20:53 UTC 2012 - reddwarf@opensuse.org
+
+- Update to final 2.0 version
+  + See CHANGES for the full list of changes
+- Add pkg-config file
+
+-------------------------------------------------------------------
+Mon Jan  9 10:26:25 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.99:
+  + New completions: ccache, desktop-file-validate, htop, iperf,
+    koji, lzip, nethogs, plague-client, udevadm.
+  + Fixes for completions: cc, cppcheck, curl, c++, dequote, dict,
+    dmesg, dpkg, lrzip, make, mount, mutt, pidof, removepkg, rpm,
+    umount, upgradepkg, vi, wine, xv.
+  + See details in CHANGES.
+
+-------------------------------------------------------------------
+Wed Nov 30 15:09:57 CET 2011 - tiwai@suse.de
+
+- Update to version 1.90:
+  - new completions: epdfview, lpr, lpq, mysql, puppet, pkgtool,
+    makepkg, rmp2tgz, slapt-get, slapt-src, slackpkg, kcov, feh,
+    xgamma, fbi, fbgs sbopkg, a2x, arping, asciidoc, base64, cal,
+    chrpath, cppcheck, curl, dmesg, dot, file, gnome-mplayer, gprof,
+    hddtemp, host, htpasswd, idn, ionice, jps, lbunzip2, lbzip2,
+    lbzcat, prelink, protoc, pwdx, pwgen, reptyr, sum, watch,
+    phing, pinfo 
+  - installed location changed to /usr/share/bash-completion/*
+  - see more changes in CHANGES file
+
+-------------------------------------------------------------------
+Sat Sep 17 19:13:18 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Feb 25 08:30:09 UTC 2011 - poletti.marco@gmail.com
+
+- Update to version 1.3:
+  + Added completions for: badblocks, compgen, crontab, dumpe2fs,
+    e2freefrag, e2label, ether-wake, filefrag, gendiff, growisofs,
+    hping{,3} (the previous version already completed hping2),
+    iftop, ip, iscsiadm, javaws, kid3, lrzip, lsof, mktemp,
+    perldoc, portecle, POSIX sh, postgresql,
+    sha{,224,256,384,512}sum, sysbench, tune2fs, xfreerdp, xmodmap,
+    xm subcommands and xrdb.
+  + Improve the completions for: autotools, /etc/init.d/*, ipmitool,
+    jar, java, javadoc, MAC address, man, mencoder, mkdir, mplayer,
+    okular, pack200, povray, python, rpm, rpmbuild, sqlite3, tar,
+    unzip, users/groups (in various contexts), wodim, xine-based
+    players and xmllint.
+  + Fix the completions for: avahi-browse, IPv6 known hosts,
+    kompare, muttrc, p4, povray and ~username (in various
+    contexts).
+  + Other changes
+
+-------------------------------------------------------------------
+Thu Jan 13 10:13:48 CET 2011 - vuntz@opensuse.org
+
+- Add bash-completion-fix-service.patch to fix an error created by
+  the "service" completion.
+
+-------------------------------------------------------------------
+Fri Jan  7 14:06:29 UTC 2011 - poletti.marco@gmail.com
+
+- Update to version 1.2.
+  * Add new completions.
+  * Many improvements and fixes to existing completions.
+  * Completely drop support for bash < 3.
+
+-------------------------------------------------------------------
+Tue Oct 20 14:23:47 CEST 2009 - poletti.marco@gmail.com
+
+- Update to version 1.1, that supports bash 4.0 better
+  * Split many completions in files under contrib/
+  * Added new completions
+  * Improved existing completions
+
+-------------------------------------------------------------------
+Mon Oct  5 11:32:39 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 1.0 (too many changes to list).
+- Remove all our patches except bash-completion-speedup_rpm.patch:
+  + bash-completion-bzip2_fix.patch: should be fixed upstream.
+  + bash-completion-cd.patch: doesn't seem to be needed.
+  + bash-completion-complete_spm.patch: source rpms are now src.rpm
+    as far as I can tell, so no need to complete on spm.
+  + bash-completion-mount_dir_fix.patch: the fix is not correct. It
+    should not be for root only. bnc#386459 should be forwarded
+    upstream for a proper fix.
+  + bash-completion-no_tilde_expansion.patch: I'm unsure we want
+    to diverge there. bnc#386844 should be forwarded upstream for a
+    proper fix.
+  + bash-completion-readonly_fix.patch: this is now fixed upstream,
+    I think.
+  + bash-completion-svn_filenames.patch: fixed upstream.
+  + bash_completion-rpm_install_complete.patch: I'm really not sure
+    the fix is right. bnc#242123 should be forwarded upstream.
+- Respin bash-completion-speedup_rpm.patch.
+- Remove the git completion: it's now in git itself.
+
+-------------------------------------------------------------------
+Tue Nov 11 16:25:46 CET 2008 - werner@suse.de
+
+- Make completion for cd command smart (bnc#442827)
+
+-------------------------------------------------------------------
+Fri Sep 26 16:29:52 CEST 2008 - mkoenig@suse.de
+
+- fix problem with readonly vars [bnc#383486]
+- speed up rpm completion [bnc#402659]
+- complete on .spm [bnc#416901] 
+
+-------------------------------------------------------------------
+Tue May  6 15:37:54 CEST 2008 - mkoenig@suse.de
+
+- remove default tilde expansion, as this should be configurable
+  by the expand-tilde readline setting, even with bash-completion
+  installed [bnc#386844] 
+
+-------------------------------------------------------------------
+Mon May  5 16:12:47 CEST 2008 - mkoenig@suse.de
+
+- fix mount completion for root [bnc#386459] 
+
+-------------------------------------------------------------------
+Tue Apr 22 16:30:44 CEST 2008 - mkoenig@suse.de
+
+- use -o filenames for svn completion [bnc#382280]
+- add empty %build section
+
+-------------------------------------------------------------------
+Fri Jun  1 16:38:39 CEST 2007 - mkoenig@suse.de
+
+- fix bzip2 completion to handle filenames with spaces [#278608] 
+
+-------------------------------------------------------------------
+Thu Mar  8 12:51:15 CET 2007 - mkoenig@suse.de
+
+- enhance rpm completion [#242123] 
+
+-------------------------------------------------------------------
+Thu Feb 15 11:43:10 CET 2007 - mkoenig@suse.de
+
+- add git-completion
+- add %clean target to specfile
+- only install really useful completions by default
+
+-------------------------------------------------------------------
+Wed Feb  7 13:23:19 CET 2007 - mkoenig@suse.de
+
+- update to version 20060301
+  * There were probable bash 3.1 POSIX quote problems if 
+    UserKnownHostsFile or GlobalKnownHostsFile keywords were used 
+    inside ssh config files. Fixed.
+  * Added new subversion completion implementation
+  * Added minicom completion
+  * --nodigest and --nosignature options must be set in $nodig and 
+    $nosig within _rpm_installed_packages() itself, not just set 
+    in _rpm() before _rpm_installed_packages() is called. This is 
+    because other completion functions also call 
+    _rpm_installed_packages().
+  * Minor playmidi and timidity additions for .MID(I) 
+    (capital letters) files.
+  * Add kdvi, dvipdf and advi to programs that complete on .dvi 
+    files
+  * iconv completion improvement
+  * Replace invoke-rc.d completion
+- move useful completion files to /etc/bash_completion.d/
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:51 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Aug  2 13:35:20 CEST 2005 - cthiel@suse.de
+
+- Update to version 20050721.
+
+-------------------------------------------------------------------
+Mon Mar  7 11:46:48 CET 2005 - agruen@suse.de
+
+- Update to version 20050121.
+
+-------------------------------------------------------------------
+Tue Sep 21 20:01:03 CEST 2004 - agruen@suse.de
+
+- Update to version 20040711. Drop obsolete patches.
+
+-------------------------------------------------------------------
+Mon Feb 23 16:27:44 CET 2004 - hmacht@suse.de
+
+- added option # norootforbuild in specfile
+
+-------------------------------------------------------------------
+Thu Sep 18 15:48:32 CEST 2003 - agruen@suse.de
+
+- #30648: fix insmod tab completion regexp quoting bug.
+
+-------------------------------------------------------------------
+Wed Sep  3 14:53:08 CEST 2003 - agruen@suse.de
+
+- rschiele@uni-mannheim.de: bash_completion searches lsmod in
+  /sbin, but it is in /bin now.
+
+-------------------------------------------------------------------
+Mon Jul 28 18:26:44 CEST 2003 - agruen@suse.de
+
+- Remove /etc/bash_completion.d/ directory from files list: This
+  directory is now "owned" by bash. (We still must create an
+  /etc directory in the build root, though.)
+
+-------------------------------------------------------------------
+Fri Jul 25 15:38:35 CEST 2003 - agruen@suse.de
+
+- Mark /usr/share/doc/packages/bash-completion/ as owned by that
+  package (RPMv4 complained about that).
+
+-------------------------------------------------------------------
+Thu Jul 24 15:40:01 CEST 2003 - agruen@suse.de
+
+- Create initial package.

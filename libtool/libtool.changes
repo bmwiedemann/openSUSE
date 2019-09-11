@@ -1,0 +1,828 @@
+-------------------------------------------------------------------
+Sat Dec  8 17:55:47 UTC 2018 - meissner@suse.com
+
+- libtool baselib should require libltdl in baselib.
+
+-------------------------------------------------------------------
+Wed May  9 03:34:16 UTC 2018 - bwiedemann@suse.com
+
+- Add libtool-reproducible-hostname.patch
+  to make package build reproducible (boo#1084909)
+
+-------------------------------------------------------------------
+Thu May  3 14:16:43 UTC 2018 - dimstar@opensuse.org
+
+- Drop libtool-no_host_name.patch for now: since we are upgrading
+  to automake 1.16, we can't have any patch that would require us
+  to bootstrap libtool, as this is not exactly trivial.
+- Remove the line containing 'uname -m' from the libtool.m4 package
+  after installation: this has the same effect as the patch above
+  had.
+
+-------------------------------------------------------------------
+Wed Mar 16 15:29:34 UTC 2016 - dimstar@opensuse.org
+
+- Fix install_info_{install,delete} usage: install-info does not
+  allow file globbing.
+
+-------------------------------------------------------------------
+Thu Aug  6 12:02:32 CEST 2015 - pth@suse.de
+
+- Remove spurious install_info_delete in postun (bsc#940773).
+
+-------------------------------------------------------------------
+Mon May  4 09:40:09 CEST 2015 - pth@suse.de
+
+- Fix call of install_info.
+
+-------------------------------------------------------------------
+Mon Apr 20 12:25:22 CEST 2015 - pth@suse.de
+
+- Remove empty entry.
+
+-------------------------------------------------------------------
+Sun Apr 19 12:41:43 UTC 2015 - mpluskal@suse.com
+
+- Use url for signature
+- Add keyring file for automatic verification of signature
+- Cleanup spec file with spec-cleaner
+- Remove old ppc/ppc64 obsolete/provides
+- Update info pre/post requires and replace postun with preun
+
+-------------------------------------------------------------------
+Fri Apr 17 10:02:12 CEST 2015 - pth@suse.de
+
+- Update to 2.4.6:
+  Noteworthy changes in release 2.4.6 (2015-02-15) [stable]
+
+  * New features:
+
+   - LT_SYS_LIBRARY_PATH can be set in config.site, or at configure time
+     and persists correctly in the generated libtool script.
+
+  * Bug fixes:
+
+   - Fix a race condition in ltdl dryrun test that would cause spurious
+     random failures of that test.
+
+   - LT_SYS_DLSEARCH_PATH is munged correctly.
+
+- Add tarball signature.
+
+-------------------------------------------------------------------
+Mon Feb  9 12:45:26 CET 2015 - pth@suse.de
+
+- Add libtool-no_host_name.patch to remove the host name from
+  generated scripts (bnc#916268).
+
+-------------------------------------------------------------------
+Thu Jan 22 23:26:38 UTC 2015 - foss@grueninger.de
+
+- Update to libtool 2.4.5
+  New features:
+
+  - Libtoolize searches for the best available M4 on the user PATH at
+    runtime, rather than settling for the first one found.
+
+  - Support munging sys_lib_dlsearch_path_spec with LT_SYS_LIBRARY_PATH
+    environment variable.
+
+  Bug fixes:
+
+  - Bail out at configure time if the installed M4 is not sufficient
+    for the purposes of libtoolize.
+
+  - freebsd-elf library versioning was upgraded incorrectly in 2.4.4,
+    but now works properly again.
+
+  - Fix a 2.4.4 regression so that libltdl subprojects do not warn
+    about missing libltdl/libltdl directory as in prior releases.
+
+  - When using Sun C++ on Solaris or GNU/Linux we used to set libtool's
+    postdeps permanently, based on the contents of $CXX and $CXXFLAGS at
+    configure time, which was brittle and error-prone.  Now, we no
+    longer check for a SunCC ABI at configure time, but augment the
+    postdeps at libtool time based on the current invocation flags on
+    each call.
+
+  Changes in supported systems or compilers:
+
+  - /usr/local prefixed rpaths are now added to the link-line on
+    ia64-hp-hpux*, because the default system runtime loader path does
+    not contain them.
+
+  - Previously, when using Sun C++ on Solaris or GNU/Linux, `-Cstd -Crun`
+    flags were added to $postdeps unless CXX or CXXFLAGS contained
+    `-library=stlport4`.  Newer releases have added other compiler flags
+    that are also incompatible with `-Cstd -Crun`, so now we don't add
+    them if any of `-std=c++[0-9][0-9]`, `-library=stdcxx4` or
+    `-compat=g` were found in CXX or CXXFLAGS when the Sun C++ compiler
+    is detected.
+
+-------------------------------------------------------------------
+Sat Dec  6 21:11:04 UTC 2014 - foss@grueninger.de
+
+- Require M4 as libtool's libtoolize requires it since 2.4.3
+
+-------------------------------------------------------------------
+Sat Nov 29 19:48:44 UTC 2014 - foss@grueninger.de
+
+- Drop patch libtool-dont_delete_gnulib_files.patch which is
+  included in 2.4.4
+
+- Update to libtool 2.4.4
+** New features:
+
+  - Libltdl maintains its own fork of argz, with macros and files in
+    the LT_ and lt__ namespaces (resp.) where they cannot clash with
+    client projects' use of gnulib argz.
+
+** Bug fixes:
+
+  - Installation of 'libtoolize' once again obeys '--program-prefix',
+    '--program-suffix' and '--program-transform-name' configure options.
+
+  - `libtoolize` doesn't remove any files that it can't reinstall,
+    including old versions of the snippet directory, and gnulib's
+    version of the argz module and supporting files.
+
+  - LT_FUNC_DLYSM_USCORE now works correctly on systems that don't
+    support self dlopen()ing.
+
+** Important incompatible changes:
+
+  - LT_LIB_DLLOAD no longer prepends -ldl or -ldld to LIBS, causing
+    duplicate occurrences in libltdl link lines.  If you need to
+    add a library for dlopen() or shl_load() in your Makefile, then
+    use $(LIBADD_DLOPEN) or $(LIBADD_SHL_LOAD) respectively.  If you
+    are using libltdl, this all happens automatically, and the only
+    difference you'll see is no more duplicated library names in the
+    verbose link line.
+
+** Changes in supported systems or compilers:
+
+  - Preliminary support for tcc on linux*.  Although it already worked
+    sometimes in previous releases, making sure to set LD correctly now
+    avoids mis-matching GNU ld with tcc:
+
+       ./configure CC=tcc LD=tcc
+
+  - Added -os2dllname option to work around 8 character base name
+    limit on OS/2.  The option has no effect on other systems.
+
+  - Support for DLL versioning, -export-symbols and -export-symbols-regex
+    on OS/2.
+
+  - Support filename-based shared library versioning on AIX. See manual
+    for details.
+
+-------------------------------------------------------------------
+Sat Nov 29 19:48:09 UTC 2014 - foss@grueninger.de
+
+- 
+
+-------------------------------------------------------------------
+Fri Nov 21 11:00:57 CET 2014 - pth@suse.de
+
+- Add libtool-dont_delete_gnulib_files.patch that prevents deletion
+  of files from gnulib to be deleted by libtoolize.
+- BuildRequire help2man.
+- Remove unneeded clean section.
+- Use rpm macros where possible.
+- Pass V=1 to make to make compilation verbose.
+
+-------------------------------------------------------------------
+Mon Nov  3 22:35:18 UTC 2014 - foss@grueninger.de
+
+- Drop patch config-guess-sub-update.patch for libltdl/config as the
+  folder no longer exists.
+- Drop patch libtool-ppc64le.patch for ppc handling as it is already
+  part of v2.4.3
+
+- Update to libtool 2.4.3
+** New features:
+
+ - Moved to gnulib release infrastructure.
+
+ - M4 is now used for scanning the M4 macros in your configure.ac that
+  'libtoolize' looks at to determine what files you want, and where you
+   would like them installed.  This means that you can compose your
+   version number or any other argument that Libtoolize needs to know at
+   M4 time using git-version-gen from gnulib, for example.
+
+ - Invoking 'libtoolize --ltdl' no longer maintains a separate autoconf
+   macro directory in the libltdl tree, but automatically adjusts the
+   installed libltdl configuration files to share whatever macro
+   directory is declared by the parent project. (Note: if you were
+   already sharing a macro directory with AC_CONFIG_MACRO_DIR(ltdl/m4)
+   or similar, that still works as does any other directory choice).
+
+ - Invoking 'libtoolize --ltdl' no longer maintains a separate auxiliary
+   scripts directory in the libltdl tree, but automatically adjusts the
+   installed libltdl configuration files to share whatever auxiliary
+   scripts directory is declared by the parent project. (Note: if you
+   were already sharing an auxiliary directory with subproject libltdl
+   using AC_CONFIG_AUX_DIR(ltdl/config) or similar, that still works as
+   does any other directory choice).
+
+ - The legacy tests have all been migrated to the Autotest harness.
+
+ - The Autotest testsuite can be run without the especially time consuming
+   tests with:
+
+       make check-local TESTSUITEFLAGS='-k "!expensive"'
+
+** Bug fixes:
+
+ - Fix a long-standing latent bug in autom4te include path for autotests
+   with VPATH builds.
+ - Fix a long-standing latent bug in libtoolize that could delete lines
+   from libltdl/Makefile.am in recursive mode due to underquoting in a
+   sed script.
+ - Fix a long-standing bug in libtoolize, by outputting the 'putting
+   auxiliary files in' header with 'libtoolize --ltdl --subproject'.
+ - Fix a long-standing bug in libtoolize subproject installation, by not
+   installing a set of autoconf macro files into the parent project if
+   there is no configure.ac present to use them.
+ - The libtoolize subproject mode selector is now named '--subproject'
+   and is equivalent to the implied '--subproject' mode when no other
+   mode is selected; '--standalone' never worked, and is no longer
+   accepted.
+ - Libtool and libtoolize no longer choke on paths with a comma in them.
+ - In the case where $SHELL does not have the same enhanced features
+   (e.g. the ability to parse 'var+=append') as $CONFIG_SHELL, libtool
+   will now correctly fallback to using only vanilla shell features
+   instead of failing with a parse at startup.
+ - Correctly recognize import libraries when Microsoft dumpbin is used
+   as the name lister and extend the dumpbin wrapper to find symbols
+   in import libraries using the -headers option of dumpbin. Also fix a
+   bug in the dumpbin wrapper that could lead to broken symbol listings
+   in some corner cases.
+ - Use the improved Microsoft dumpbin support to mend preloading of
+   import libraries for Microsoft Visual C/C++.
+ - No longer mangle module-definition (.def) files when feeding them to
+   the Microsoft Visual C/C++ linker via the -export-symbols argument to
+   the libtool script, thus matching how .def files are handled when
+   using GNU tools.
+ - Recognize more variants (e.g. those starting with a LIBRARY statement)
+   of module-definitions (.def) files when using them instead of a raw
+   list of symbols to export.
+ - Fix a long-standing bug when using libtoolize without automake; we
+   no longer remove install-sh with --force, since it's not a file
+   libtoolize will reinstall without --install..
+
+** Important incompatible changes:
+
+ - GNU M4 is required to run libtoolize in a directory with a
+   'configure.ac' (or 'configure.in') that needs tracing to determine
+   what modes and directories have been specified.
+
+ - The use of the idiosyncratically named 'Makefile.inc' in nonrecursive
+   libltdl builds is deprecated, although it will be supported for one
+   more year or until the next release, whichever takes longer.  Please
+   upgrade to the more standard naming of 'ltdl.mk' in keeping with other
+   GNU projects.
+
+ - libtoolize now behaves consistenty in respect of multiple directory
+   arguments to ACLOCAL_AMFLAGS and multiple invocations of AC_CONFIG-
+   _MACRO_DIRS, where the first directory is always selected.  Previous
+   releases took the first ACLOCAL_AMFLAGS argument, but the last
+   invocation of AC_CONFIG_MACRO_DIRS.
+
+ - The libtoolize program now advises use of the new Autoconf
+   AC_CONFIG_MACRO_DIRS declaration.  If you follow that advice, all
+   your developers will need at least autoconf-2.70 and automake-1.13
+   to rebootstrap your probject.  If you still need to support
+   bootstrap with older Autotools, then you should add the following
+   to your configure.ac file:
+
+       m4_ifndef([AC_CONFIG_MACRO_DIRS],
+           [m4_define([AC_CONFIG_MACRO_DIRS],
+               m4_defn([AC_CONFIG_MACRO_DIR]))])
+
+ - Overhead of probing for a non-backslash crippled echo equivalent
+   during initialization of every script has been removed in favor of
+   trusting that "printf %s\n" works out of the box on all non-museum
+   host architectures.  Manually setting ECHO appropriately in the
+   build environment will be necessary on some ancient architectures.
+
+** Changes in supported systems or compilers:
+
+ - Support for bitrig (*-*-bitrig*).
+
+ - Solaris 7 and earlier requires ECHO=/usr/ucb/echo in the build
+   environment, to build and use libtool. 
+
+-------------------------------------------------------------------
+Tue Sep  9 03:55:16 UTC 2014 - coolo@suse.com
+
+- install COPYING as %doc
+
+-------------------------------------------------------------------
+Mon Jul 14 15:05:03 UTC 2014 - dvaleev@suse.com
+
+- Add libtool-ppc64le.patch to fix libtool-testsuite tests 
+
+-------------------------------------------------------------------
+Tue Nov 26 16:13:31 CET 2013 - pth@suse.de
+
+- Change License as described in bnc#818958.
+
+-------------------------------------------------------------------
+Sat Feb  2 23:34:27 UTC 2013 - schwab@suse.de
+
+- Add config-guess-sub-update.patch:
+  Update config.guess/sub for aarch64
+
+-------------------------------------------------------------------
+Thu Jul 19 13:42:29 CEST 2012 - pth@suse.de
+
+- buildrequire makeinfo which is a seperate package now.
+
+-------------------------------------------------------------------
+Tue Nov 29 13:45:11 UTC 2011 - coolo@suse.com
+
+- buildrequire automake for file list check
+
+-------------------------------------------------------------------
+Thu Nov 10 10:30:14 CET 2011 - dmueller@suse.de
+
+- update to 2.4.2:
+  - The generic approximation of the command line length limit (when getconf is
+    not available) works again.  Regression introduced in v2.2.6-39-g9c3d4d8.
+  - The bug that leaked developer tool paths into the release tarballs
+    from ./bootstrap is fixed.
+  - Improved support for the Cuda Compiler Driver (nvcc) on Darwin.
+  - For GCC LTO support, the -fuse-linker-plugin switch is now also removed
+    when computing compiler postdeps.
+  - The undocumented hardcode_libdir_flag_spec_ld tag variable has been
+    removed in favor of using hardcode_libdir_flag_spec with $wl set to empty.
+
+-------------------------------------------------------------------
+Fri Sep 16 13:47:52 UTC 2011 - coolo@suse.com
+
+- don't use _service
+
+-------------------------------------------------------------------
+Fri Jul 29 15:06:27 CEST 2011 - pth@suse.de
+
+- Add gcc-c++ gcc-fortran and gcc-objc to buildrequires so that
+  packages using the system wide libtool script compile.
+- Add a rpmlintrc to shut up rpmlint on most warnings.
+
+-------------------------------------------------------------------
+Mon Mar 14 08:52:38 UTC 2011 - coolo@novell.com
+
+- require automake and provide symbolic names for libltdl
+
+-------------------------------------------------------------------
+Wed Mar  9 14:07:54 UTC 2011 - giecrilj@stegny.2a.pl
+
+- update to 2.4, which has quite some new stuff. Limiting here to
+  incompatible changes:
+
+ - The fix_srcfile_path variable has been replaced by a more thorough
+    mechanism triggered by the to_tool_file_cmd variable.
+ - The wrapper command line option support described above introduces the
+    following incompatibility: the wrapper will remove any command line
+    options that begin with '--lt-*' from the argument list before launching
+    (uninstalled) programs. Any '--lt-*' option on the command line not
+    recognized by the wrapper will result in an error.
+ - The type of the symbol lists variables (lt_*_LTX_preloaded_symbols) has
+    been fixed in the manual and in a couple of tests to match the actual
+    implementation.
+
+-------------------------------------------------------------------
+Mon Feb 28 22:00:49 CET 2011 - jslaby@suse.de
+
+- Fix AC_LANG_PROGRAM warnings (bnc#675573)
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Mon May 31 09:55:17 UTC 2010 - coolo@novell.com
+
+- add an empty install section
+
+-------------------------------------------------------------------
+Thu May 27 13:48:42 UTC 2010 - coolo@novell.com
+
+- split out the test suite that takes 95% of the build time
+
+-------------------------------------------------------------------
+Thu May 27 13:49:37 CEST 2010 - dmueller@suse.de
+
+- tar is in /bin/tar, so a requires to /usr/bin/tar doesn't work
+
+-------------------------------------------------------------------
+Fri May  7 16:17:08 UTC 2010 - pth@novell.com
+
+- Libtool needs tar so add it as Requires (bnc#526298).
+
+-------------------------------------------------------------------
+Sun Dec 13 15:35:32 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as source2
+
+-------------------------------------------------------------------
+Sat Dec 12 17:18:41 UTC 2009 - aj@suse.de
+
+- Add libtool-no-hostname.patch to not write hostname in libtool
+  to avoid rebuilds where nothing has changed beside the build host.
+
+-------------------------------------------------------------------
+Wed Nov 18 15:54:26 CET 2009 - pth@suse.de
+
+- VUL-0 CVE-2009-3736 Update to 2.2.6b (bnc#556122):
+  * Fix libltdl to no longer attempt to dlopen() the old_library
+    listed in the .la file. Now will use only the preopen loader to
+    attempt to load it. This may be a security issue, all users are
+    advised to upgrade.
+  * Similarly, don't open module.la from the current directory, this
+    changes the behavior of libltdl to match the documentation.
+  * Adapt test suite to changes.
+
+-------------------------------------------------------------------
+Sat Feb  7 11:11:12 CET 2009 - schwab@suse.de
+
+- Rebuild broken info file.
+
+-------------------------------------------------------------------
+Fri Jan  9 14:13:54 CET 2009 - schwab@suse.de
+
+- Fix last change.
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Sun Sep  7 10:11:40 CEST 2008 - schwab@suse.de
+
+- Update to libtool 2.2.6.
+  * New features:
+    - New lt_dloadvise_preload() call to set a hint that only preloadeded
+      modules can be opened.
+    - libtoolize no longer removes config.guess and config.sub, even when
+      --install is passed.
+  * Changes in supported systems or compilers:
+    - Fixes for ifort on Darwin, and newer Intel compilers (icc 10, ifort 9)
+      on GNU/Linux.
+    - Fixes for cwrapper (cygwin/mingw) under -stdc=c99.
+    - Support cross compile of MinGW with Wine.
+    - Initial support for cegcc (Windows CE/PocketPC) cross compilation.
+    - Initial support for lf95 (Lahey Fortran 8.1) on GNU/Linux.
+  * Bug fixes:
+    - Several testsuite issues have been fixed, thanks to user feedback.
+    - Fix 2.2 regression that caused argz symbols to be exported from
+      libltdl unrenamed on systems that do not have working argz.
+    - Revert "lt_dlopen(NULL) works on AIX again.". It was not the
+      correct fix.
+    - Diagnose '-L' arguments correctly.
+    - Libtool no longer tries to open devices as files in execute mode.
+    - Libtool no longer removes *.gcno profile information from GCC.
+
+-------------------------------------------------------------------
+Wed May 21 19:45:13 CEST 2008 - cthiel@suse.de
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Feb  1 19:33:27 CET 2008 - schwab@suse.de
+
+- Update to libtool 1.5.26.
+  * Improved support for Mac OS X Leopard.
+  * More robust parsing of mangled `.la' files inside libltdl, fixing a
+    possible overrun and a crash due to memory exhaustion.
+  * Fix compile command line for gcj on MinGW.
+  * Some configure variables have been renamed to fix caching:
+    lt_prog_compiler_pic_works to lt_cv_prog_compiler_pic_works
+    lt_prog_compiler_static_works to lt_cv_prog_compiler_static_works.
+  * Support for AIX 6.1.
+  * Bug Fixes.
+
+-------------------------------------------------------------------
+Tue Nov 13 15:18:15 CET 2007 - schwab@suse.de
+
+- Fix C++ includes.
+
+-------------------------------------------------------------------
+Wed Jun 27 11:23:17 CEST 2007 - schwab@suse.de
+
+- Update to libtool 1.5.24.
+  * Initial support for Interix newer than version 3.
+  * Use getconf ARG_MAX to find the max command line length.
+  * Bug Fixes.
+
+-------------------------------------------------------------------
+Wed Jun  6 22:09:13 CEST 2007 - schwab@suse.de
+
+- Rename libltdl to libltdl-3.
+
+-------------------------------------------------------------------
+Mon Sep 18 15:19:31 CEST 2006 - schwab@suse.de
+
+- Remove build requires.
+
+-------------------------------------------------------------------
+Tue May 23 23:44:03 CEST 2006 - schwab@suse.de
+
+- Fix dependency.
+
+-------------------------------------------------------------------
+Fri Jan 27 17:10:08 CET 2006 - schwab@suse.de
+
+- Split off libtldl package.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 11:18:40 CET 2006 - schwab@suse.de
+
+- Run ldconfig.
+
+-------------------------------------------------------------------
+Mon Jan  9 17:30:25 CET 2006 - schwab@suse.de
+
+- Update to libtool 1.5.22.
+
+-------------------------------------------------------------------
+Thu Sep  1 11:34:29 CEST 2005 - schwab@suse.de
+
+- Update to libtool 1.5.20.
+
+-------------------------------------------------------------------
+Tue May 17 10:24:46 CEST 2005 - schwab@suse.de
+
+- Update to libtool 1.5.18.
+
+-------------------------------------------------------------------
+Thu Apr 28 18:18:27 CEST 2005 - schwab@suse.de
+
+- Don't install in libltdl data files in libltdl directory.
+
+-------------------------------------------------------------------
+Tue Apr 26 15:05:30 CEST 2005 - schwab@suse.de
+
+- Update to libtool 1.5.16.
+
+-------------------------------------------------------------------
+Sat Feb 12 15:47:38 CET 2005 - schwab@suse.de
+
+- Update to libtool 1.5.14.
+
+-------------------------------------------------------------------
+Mon Feb  7 13:10:02 CET 2005 - schwab@suse.de
+
+- Fix handling of -pthread during linking.
+
+-------------------------------------------------------------------
+Sat Feb  5 18:38:24 CET 2005 - schwab@suse.de
+
+- Update to libtool 1.5.12.
+
+-------------------------------------------------------------------
+Fri Oct  8 14:59:40 CEST 2004 - schwab@suse.de
+
+- Update to libtool 1.5.10.
+
+-------------------------------------------------------------------
+Tue Aug 10 12:10:30 CEST 2004 - ro@suse.de
+
+- clean neededforbuild
+
+-------------------------------------------------------------------
+Sat Aug  7 17:57:02 CEST 2004 - schwab@suse.de
+
+- Update to libtool 1.5.8.
+
+-------------------------------------------------------------------
+Mon Apr 12 15:10:53 CEST 2004 - schwab@suse.de
+
+- Update to libtool 1.5.6.
+
+-------------------------------------------------------------------
+Mon Jan 26 14:35:33 CET 2004 - schwab@suse.de
+
+- Update to libtool 1.5.2.
+
+-------------------------------------------------------------------
+Wed Oct 15 21:32:49 CEST 2003 - schwab@suse.de
+
+- Make sure we get a full-featured libtool [#32356].
+
+-------------------------------------------------------------------
+Thu Jul  3 23:14:35 CEST 2003 - meissner@suse.de
+
+- biarch fix for powerpc64-*linux*.
+
+-------------------------------------------------------------------
+Fri Apr 25 15:13:53 CEST 2003 - schwab@suse.de
+
+- Update to libtool 1.5.
+- Fix AC_PROG_LD_GNU.
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Apr  7 13:11:56 CEST 2003 - schwab@suse.de
+
+- Only delete info entries when removing last version.
+
+-------------------------------------------------------------------
+Thu Feb  6 17:49:11 CET 2003 - schwab@suse.de
+
+- Use %install_info.
+
+-------------------------------------------------------------------
+Wed Dec  4 14:36:31 CET 2002 - schwab@suse.de
+
+- Make sure we are using the fixed libtool macros during configuring.
+
+-------------------------------------------------------------------
+Thu Oct 24 14:56:05 CEST 2002 - schwab@suse.de
+
+- Update to libtool 1.4.3.
+
+-------------------------------------------------------------------
+Thu Sep 19 16:28:58 CEST 2002 - schwab@suse.de
+
+- Remove execute permission from *.la.
+- libtoolize: fix reference to configure.in.
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Mon Jul 29 16:27:46 CEST 2002 - meissner@suse.de
+
+- Added patch for a directory open problem (exhibited by gphoto in 
+  LANG=de_DE). (extracted from libtool CVS)
+
+-------------------------------------------------------------------
+Fri Jun  7 11:56:52 CEST 2002 - schwab@suse.de
+
+- Fix for lib64.
+
+-------------------------------------------------------------------
+Wed Jun  5 22:19:20 CEST 2002 - schwab@suse.de
+
+- Fix logic in ltmain.sh.
+
+-------------------------------------------------------------------
+Mon Apr 15 14:03:23 CEST 2002 - sf@suse.de
+
+- use pass_all in AC_DEPLIBS_CHECK_METHOD for x86_64 
+
+-------------------------------------------------------------------
+Thu Mar 28 18:14:11 CET 2002 - schwab@suse.de
+
+- Fix last change to not patch the generated file.
+
+-------------------------------------------------------------------
+Wed Feb 13 12:51:06 CET 2002 - stepan@suse.de
+
+- allow link against an archive when building a shared library
+- patch to use mktemp to create the tempdir
+- fix test quoting in ltmain.in
+
+-------------------------------------------------------------------
+Tue Feb  5 21:06:39 CET 2002 - schwab@suse.de
+
+- Add patch to support DESTDIR.
+
+-------------------------------------------------------------------
+Fri Jan  4 18:47:41 CET 2002 - schwab@suse.de
+
+- Quote $AS when writing it to libtool script.
+
+-------------------------------------------------------------------
+Tue Nov 13 18:51:12 CET 2001 - schwab@suse.de
+
+- Use pass_all on mips.
+
+-------------------------------------------------------------------
+Mon Oct  8 17:32:44 CEST 2001 - schwab@suse.de
+
+- Fix quoting with "libtool --mode=execute".
+
+-------------------------------------------------------------------
+Thu Sep 27 15:43:45 CEST 2001 - schwab@suse.de
+
+- Update to libtool 1.4.2 (more portability fixes).
+
+-------------------------------------------------------------------
+Tue Sep  4 11:02:50 CEST 2001 - schwab@suse.de
+
+- Update to libtool 1.4.1 (only portability fixes).
+
+-------------------------------------------------------------------
+Mon Jul 23 17:01:55 CEST 2001 - schwab@suse.de
+
+- Use pass_all in AC_DEPLIBS_CHECK_METHOD for s390* and m68k.
+
+-------------------------------------------------------------------
+Tue Jun 12 14:25:47 CEST 2001 - schwab@suse.de
+
+- Add URL.
+- Install some docs.
+
+-------------------------------------------------------------------
+Mon Jun 11 20:12:30 CEST 2001 - olh@suse.de
+
+- recognize ppc64
+
+-------------------------------------------------------------------
+Thu May  3 11:57:42 CEST 2001 - schwab@suse.de
+
+- Update to libtool 1.4.
+
+-------------------------------------------------------------------
+Mon Feb 19 10:25:57 CET 2001 - schwab@suse.de
+
+- Fix use of suse_update_config macro.
+
+-------------------------------------------------------------------
+Mon Feb 19 02:12:49 CET 2001 - ro@suse.de
+
+- fix specfile for sparc64  (again) 
+
+-------------------------------------------------------------------
+Thu Feb 15 10:34:07 CET 2001 - fober@suse.de
+
+- add suse_update_config (for the reason of 390 and the sake of the
+  rest)
+
+-------------------------------------------------------------------
+Wed Sep 20 13:05:21 CEST 2000 - fober@suse.de
+
+- s390: change deplibs_check_method back to file_magic (like 1.3.4)
+
+-------------------------------------------------------------------
+Mon Sep  4 14:35:50 CEST 2000 - nadvornik@suse.cz
+
+- update to 1.3.5
+
+-------------------------------------------------------------------
+Fri May 12 12:25:02 CEST 2000 - schwab@suse.de
+
+- Don't add libc to deplibs on Linux.
+
+-------------------------------------------------------------------
+Sat Apr  1 23:02:35 CEST 2000 - bk@suse.de
+
+- updated config.sub and config.guess patches for s390
+
+-------------------------------------------------------------------
+Tue Mar 28 08:28:49 EST 2000 - bk@suse.de
+
+- patched config.sub and config.guess for s390
+
+-------------------------------------------------------------------
+Wed Mar 22 19:55:40 CET 2000 - schwab@suse.de
+
+- Fix linux -> linux-gnu transformation in ltconfig.
+
+-------------------------------------------------------------------
+Fri Feb 11 12:24:52 CET 2000 - kukuk@suse.de
+
+- Add patches from LinuxPPC reference sources
+
+-------------------------------------------------------------------
+Tue Jan 25 13:18:53 CET 2000 - kukuk@suse.de
+
+- Update to 1.3.4
+- move /usr/info -> /usr/share/info
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Jul 19 11:44:28 MEST 1999 - florian@suse.de
+
+- update to version 1.3.3
+
+-------------------------------------------------------------------
+Sat Sep 26 18:22:49 MEST 1998 - ke@suse.de
+
+- initial version: 1.2b.

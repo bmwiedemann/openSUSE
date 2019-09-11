@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Mon Mar 21 12:03:55 UTC 2016 - coolo@suse.com
+
+- updated to 0.23
+   see /usr/share/doc/packages/perl-Test-File-Contents/Changes
+
+  0.23  2016-03-16T17:09:37Z
+        - Fix encoding errors when reading in a file on Windows with `utf8`
+          enabled. See https://rt.perl.org/Ticket/Display.html?id=127668 for the
+          bug we've worked around.
+
+-------------------------------------------------------------------
+Tue Mar  8 11:07:03 UTC 2016 - coolo@suse.com
+
+- updated to 0.22
+   see /usr/share/doc/packages/perl-Test-File-Contents/Changes
+
+  0.22  2016-03-02T23:54:26Z
+        - Adjusted tests to account for change in output of Text::Diff 1.44.
+          They still pass with earlier versions of Text::Diff.
+        - Removed Pod tests from the distribution.
+
+-------------------------------------------------------------------
+Mon Apr 13 19:18:35 UTC 2015 - coolo@suse.com
+
+- updated to 0.21
+   see /usr/share/doc/packages/perl-Test-File-Contents/Changes
+
+  0.21    2013-04-12
+        - Require Test::Pod 1.41 for Pod tests. Fixes test failures due to the
+          use of the `L<text|scheme>` Pod syntax diallowed in earlier versions
+          of Test::Pod.
+        - Eliminated "v-string in use/require non-portable" warning on Perl
+          5.10.0.
+
+-------------------------------------------------------------------
+Sun May  1 10:28:21 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.20
+    * created by cpanspec 1.78.04
+

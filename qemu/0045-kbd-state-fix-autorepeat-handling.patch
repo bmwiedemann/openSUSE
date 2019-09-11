@@ -1,0 +1,36 @@
+From: Gerd Hoffmann <kraxel@redhat.com>
+Date: Tue, 14 May 2019 06:24:43 +0200
+Subject: kbd-state: fix autorepeat handling
+
+When allowing multiple down-events in a row (key autorepeat) we can't
+use change_bit() any more to update the state, because autorepeat events
+don't change the key state.  We have to explicitly use set_bit() and
+clear_bit() instead.
+
+Cc: qemu-stable@nongnu.org
+Fixes: 35921860156e kbd-state: don't block auto-repeat events
+Buglink: https://bugs.launchpad.net/qemu/+bug/1828272
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Message-id: 20190514042443.10735-1-kraxel@redhat.com
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ ui/kbd-state.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/ui/kbd-state.c b/ui/kbd-state.c
+index f3ab2d7a66..1668d17dda 100644
+--- a/ui/kbd-state.c
++++ b/ui/kbd-state.c
+@@ -59,7 +59,11 @@ void qkbd_state_key_event(QKbdState *kbd, QKeyCode qcode, bool down)
+     }
+ 
+     /* update key and modifier state */
+-    change_bit(qcode, kbd->keys);
++    if (down) {
++        set_bit(qcode, kbd->keys);
++    } else {
++        clear_bit(qcode, kbd->keys);
++    }
+     switch (qcode) {
+     case Q_KEY_CODE_SHIFT:
+     case Q_KEY_CODE_SHIFT_R:

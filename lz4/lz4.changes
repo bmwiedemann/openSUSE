@@ -1,0 +1,178 @@
+-------------------------------------------------------------------
+Thu Jun  6 18:26:39 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.9.1
+  * Decompression speed was improved by about 12% (x86/x64).
+  * New option `lz4 --list` to inspect the block type, checksum
+    information, compressed and decompressed sizes (if present). The
+    command is limited to single-frame files for the time being.
+
+-------------------------------------------------------------------
+Fri Oct 12 22:04:52 UTC 2018 - astieger@suse.com
+
+- lz4 1.8.3:
+  * minor decompression speed improvement (~+2%) with gcc
+  * fix corruption in v1.8.2 at level 9 for files > 64KB under
+    rare conditions
+  * Add new command --fast
+  * api: LZ4_decompress_safe_partial() now decodes exactly the 
+    number of bytes requested
+
+-------------------------------------------------------------------
+Thu Jun 28 09:38:39 UTC 2018 - astieger@suse.com
+
+- lz4 1.8.2:
+  * speed inprovemtns for compression and decompression
+  * fix compression compatible with low memory addresses
+  * fix decompression segfault when provided with NULL input
+  * cli: new command --favor-decSpeed
+  * cli: benchmark mode more accurate for small inputs
+
+-------------------------------------------------------------------
+Wed Feb  7 04:32:52 UTC 2018 - avindra@opensuse.org
+
+- Update to new upstream release 1.8.1.2
+  * Most visible new feature is support for dictionary compression
+  * Support is now more formally added on the API side within
+    lib/lz4frame_static.h. It's early days, and this new API is
+    tagged "experimental" for the time being.
+  * Support is also added in the command line utility lz4, using
+    the new command -D. The behavior of this command is identical
+    to zstd, should you be already familiar.
+  * lz4 doesn't specify how to build a dictionary. All it says is
+    that it can be any file up to 64 KB.
+  * This approach is compatible with zstd dictionary builder, which
+    can be instructed to create a 64 KB dictionary.
+  * Improved performance at ultra settings (levels 10+).
+  * These levels receive a new code, called optimal parser,
+    available in lib/lz4_opt.h.
+  * New parser uses less memory (from 384KB to 256KB), performs
+    faster, compresses a little bit better (not much, as it was
+    already close to theoretical limit), and resists pathological
+    patterns which could destroy performance.
+  * New parser is directly compatible with lower compression levels,
+    which brings additional benefits:
+    + Compatibility with LZ4_*_destSize() variant, which reverses
+      the logic by trying to fit as much data as possible into a
+      predefined limited size buffer.
+    + Compatibility with Dictionary compression, as it uses the
+      same tables as regular HC mode
+  * In the future, this compatibility will also allow dynamic change
+    of compression level.
+  * Small set of bug fixes and improvements:
+    + perf : faster and stronger ultra modes (levels 10+)
+    + perf : slightly faster compression and decompression speed
+    + perf : fix bad degenerative case
+    + fix : decompression failed when using a combination of
+      extDict + low memory address
+    + cli : support for dictionary compression (-D)
+    + cli : fix : lz4 -d --rm preserves timestamp
+    + cli : fix : do not modify /dev/null permission as root
+    + api : _destSize() variant supported for all compression
+      levels
+- partial cleanup with spec-cleaner
+- drop lz4-use-shlib.diff, breaks build
+- misc spec cleanups
+  - remove Makefile fix
+  - build and install separately
+  - New URL
+
+-------------------------------------------------------------------
+Fri Aug 25 13:59:49 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.8.0
+  * cli: fix: do not modify /dev/null's permissions.
+  * cli: added POSIX separator "--" for specifying that all
+    following arguments are non-options.
+  * cli: restored -BX command enabling block checksum.
+  * API: added LZ4_compress_HC_destSize() and
+    LZ4F_resetDecompressionContext().
+  * API: lz4frame: negative compression levels trigger fast
+    acceleration.
+  * API: lz4frame: ability to control block checksum and
+    dictionary ID.
+  * API: fix: expose obsolete decoding functions
+  * API: experimental: lz4frame_static.h:
+    new dictionary compression API
+  * doc: Updated LZ4 Frame format to v1.6.0, restoring
+    Dictionary ID field in header.
+- Add lz-export.diff
+
+-------------------------------------------------------------------
+Tue Aug 15 17:35:16 UTC 2017 - ddiss@suse.com
+
+- Use official upstream repository; (boo#1053910)
+
+-------------------------------------------------------------------
+Wed Jul  5 22:51:53 UTC 2017 - jengelh@inai.de
+
+- Update to new upstrema release 1.7.5 (2017-01-03)
+  * back to the old version scheme
+  * lz4hc: new compression levels 10-12
+- Remove lz4-soversion.diff (not needed),
+  lz4-killdate.diff (no longer needed)
+
+-------------------------------------------------------------------
+Mon Jan 16 07:57:03 UTC 2017 - dimstar@opensuse.org
+
+- Add baselibs.conf: provide liblz4-1_7 as -32bit compatibility
+  package, required by systemd-32bit.
+
+-------------------------------------------------------------------
+Sat Apr  2 19:26:32 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 131 (library 1.7) (boo#973735)
+* slightly improved decoding speed
+* lz4frame API is included in liblz4
+* new -m command line option to compress multiple files
+* new lz4 and lz4hc compression API (old one retained)
+
+-------------------------------------------------------------------
+Fri Nov 28 19:02:06 UTC 2014 - jengelh@inai.de
+
+- Update to version 1.4+svn124
+* LZ4F_compressBound() may be called with NULL preferencesPtr
+* LZ4_loadDict now returns the dictionary size instead of 1
+  on success
+- Add lz4-soversion.diff to address ABI changes
+
+-------------------------------------------------------------------
+Wed Oct  1 12:18:15 UTC 2014 - jengelh@inai.de
+
+- Update to version 1.3.1+svn123
+* Added a pkgconfig file
+* Fix a LZ4HC streaming bug
+* Updated the framing specificaiton to 1.4.1
+
+-------------------------------------------------------------------
+Wed Jul 16 14:34:44 UTC 2014 - jengelh@inai.de
+
+- Update to svn revision 119, set version to 1.2.0 (based upon
+  Makefile contents; it's still odd to see the 1.4 Windows release)
+* Provide LZ4 as a shared library
+- Remove lz4-automake.diff (no longer deemed necessary)
+- Add lz4-use-shlib.diff
+
+-------------------------------------------------------------------
+Mon Nov 25 23:07:48 UTC 2013 - dsterba@suse.com
+
+- update to svn 108, set version to 1.4 (current windows release)
+  - added manpage
+  - minor code updates
+
+-------------------------------------------------------------------
+Tue Sep  3 16:48:31 UTC 2013 - jengelh@inai.de
+
+- Update to new snapshot svn102; set version as 1.3.3 in accordance
+  with latest Windows releases.
+* Add lz4-killdate.diff (kill the ungodly __DATE__s)
+
+-------------------------------------------------------------------
+Thu Feb 21 05:52:43 UTC 2013 - jengelh@inai.de
+
+- I hate %makeinstall (it fails all the SLES builds), kill it!
+
+-------------------------------------------------------------------
+Sat Mar 17 15:21:31 UTC 2012 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

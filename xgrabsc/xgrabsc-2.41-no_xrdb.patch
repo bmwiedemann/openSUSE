@@ -1,0 +1,13 @@
+Index: Imakefile
+===================================================================
+--- Imakefile.orig
++++ Imakefile
+@@ -78,7 +78,7 @@ XGrab.ad: ADName
+ 
+ ADName: ADSource
+ 	rm -f ADName
+-	$(XRDB) -n ADSource >ADName
++	/lib/cpp --traditional ADSource | grep -v "^\!" | grep -v '^$$' | grep -v "^#" > ADName
+ 
+ clean::
+ 	$(RM) xgrabxaw_ad.h xgrabxm_ad.h xgrabxaw xgrabxm XGrab.ad xgrab_ad.h

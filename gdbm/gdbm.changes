@@ -1,0 +1,457 @@
+-------------------------------------------------------------------
+Wed Oct 31 07:14:06 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 1.18.1:
+  * Fix debian bug 910911: This restores backward compatibility with
+    databases created by version 1.8 (and some later versions, with
+    mmapped I/O disabled).
+
+-------------------------------------------------------------------
+Wed Aug 22 17:24:47 UTC 2018 - astieger@suse.com
+
+- update to 1.18:
+  * Fix directory entry validation
+  * Fix improper use of GDBM_DEBUG macro
+  * Fix spurious error from gdbm_dump and gdbm_export
+  * Make sure gdbm_sync always returns a meaningful value
+- includes changes from 1.17:
+  * Fix bug in gdbm_dump function, it did not clear the
+    GDBM_ITEM_NOT_FOUND error marker, which is set upon its normal
+    termination
+- changes upstreamed:
+  * gdbm_close() and gdbm_sync() now return 0 on success. On error,
+    they return -1 and set gdbm_errno and errno to the appropriate
+    error codes - drop gdbm-close-and-sync-return-value.patch
+
+-------------------------------------------------------------------
+Mon Jul 16 09:24:48 UTC 2018 - pgajdos@suse.com
+
+- update to 1.16:
+  * Fix typo
+  * New gdbmtool variables: coalesce and centfree
+  * src/falloc.c (avail_lookup): Remove the start parameter.
+                 (_gdbm_put_av_elem): Rewrite the "can_merge" loop.
+- added gdbm-close-and-sync-return-value.patch
+  see https://puszcza.gnu.org.ua/bugs/index.php?399
+
+-------------------------------------------------------------------
+Sun Jun 17 13:57:31 UTC 2018 - astieger@suse.com
+
+- update to 1.15:
+  * Extensive database consistency checking
+  * Improved error checking
+  * Removed gdbm-1.8.3 compatibility layer
+  * Commands can be given to gdbmtool in the command line
+  * Fixed data conversion bugs in storing structured keys or content
+  * New member in the gdbm_recovery structure: duplicate_keys
+  * New error codes
+
+-------------------------------------------------------------------
+Wed May 23 08:20:32 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.14.1:
+  * Manpage formating issues
+  * Make gdbm_error thread-safe
+  * Improve database reproducibility
+  * Fix build with --enable-gdbm-export
+- Rebase patch gdbm-no-build-date.patch
+
+-------------------------------------------------------------------
+Fri May 18 16:35:12 UTC 2018 - jengelh@inai.de
+
+- Fix boilerplate summary.
+
+-------------------------------------------------------------------
+Fri May 18 07:28:56 UTC 2018 - tchvatal@suse.com
+
+- Fix missing dash in baselibs.conf
+
+-------------------------------------------------------------------
+Mon May 14 17:55:17 UTC 2018 - tchvatal@suse.com
+
+- Revert to release 1.13 to allow migration to split compat package
+  first. Otherwise OBS can't get heads or tails on conflicts
+
+-------------------------------------------------------------------
+Mon May 14 09:13:07 UTC 2018 - tchvatal@suse.com
+
+- Fix baselibs.conf that got hammered with the compat split from
+  main library
+
+-------------------------------------------------------------------
+Mon May 14 08:56:00 UTC 2018 - tchvatal@suse.com
+
+- Put back ndbm compat as the perl testuite seem to have hard time
+  without it
+- Require both compat and base in develpkg
+
+-------------------------------------------------------------------
+Fri May 11 11:52:38 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.14.1:
+  * Manpage formating issues
+  * Make gdbm_error thread-safe
+  * Improve database reproducibility
+  * Fix build with --enable-gdbm-export
+- Rebase patch gdbm-no-build-date.patch
+
+-------------------------------------------------------------------
+Tue Mar 27 13:17:38 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+- Move docu to -devel subpackage, where it fits better
+
+-------------------------------------------------------------------
+Mon Jul 10 21:22:06 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups.
+
+-------------------------------------------------------------------
+Wed Jun 28 14:20:34 UTC 2017 - tchvatal@suse.com
+
+- Version update to 1.13:
+  * Various few fixes
+- Cleanup the spec a bit
+- Refresh patch gdbm-no-build-date.patch
+- Remove chinese language support patched in house, if anything it
+  should be merged in the upstream git repo
+- Drop the ndbm compats as it is not provided by any other distro
+
+-------------------------------------------------------------------
+Wed May 18 18:04:35 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.12
+  * New configuration variable COMPATINCLUDEDIR
+- Small spec file cleanups
+
+-------------------------------------------------------------------
+Sun Feb 22 10:01:34 UTC 2015 - mpluskal@suse.com
+
+- Clenup spec file with spec-cleaner
+- Update project and download url
+- Add gpg signature
+- Enable checks
+
+-------------------------------------------------------------------
+Mon Aug 18 13:45:45 UTC 2014 - fcrozat@suse.com
+
+- Add obsoletes to baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Mar 31 10:52:05 UTC 2014 - pgajdos@suse.com
+
+- update to 1.11:
+  * Improved dump format.
+  * New function: gdbm_count.
+  * New utilities: gdbm_dump and gdbm_load.
+  * gdbmtool
+
+-------------------------------------------------------------------
+Wed Mar  6 19:44:49 UTC 2013 - jengelh@inai.de
+
+- Specify exact version requirements for build
+
+-------------------------------------------------------------------
+Mon Mar  4 11:09:45 UTC 2013 - pgajdos@suse.com
+
+- buildrequire makeinfo
+
+-------------------------------------------------------------------
+Wed Feb  6 09:55:19 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  See the COPYING file
+
+-------------------------------------------------------------------
+Fri Feb  1 18:52:19 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Mon Sep 24 07:44:41 UTC 2012 - i@marguerite.su
+
+- update baselibs.conf
+
+-------------------------------------------------------------------
+Sun Sep 23 07:43:08 UTC 2012 - i@marguerite.su
+
+- update to 1.10
+  * fully internationalized. available in Finnish
+    ,German, Japanese, Polish and Ukrainian
+  * Support for close-on-exec flag in gdbm_open (see GDBM_CLOEXEC in the docs)
+  * Improved testgdbm command system
+  * Fixed Bug #150, should handle read(2) returning less data
+  * Fixed Bug #151, uses uninitialized memory content 
+  * Fixed handling of NDBM databases in read-only mode
+- add zh_CN translation
+  * manually add. will submit to upstream.
+- drop gdbm-1.8.3.diff (Patch0)
+  * seems this one is useless.
+- regenerate and change gdbm-1.8.3-no-build-date.patch (Patch4) to
+  gdbm-no-build-date.patch
+  * its an universal solution no matter the version.
+- drop gdbm-protoize_dbm_headers.patch (Patch1)
+  * upstream fixed.
+- drop gdbm-prototype_static_functions.patch (Patch2)
+  * upstream fixed.
+- drop gdbm-fix_testprogs.patch (Patch3)
+  * upstream code change. now useless.
+
+-------------------------------------------------------------------
+Fri Mar  2 12:56:37 UTC 2012 - andrea.turrini@gmail.com
+
+- Fixed typos in gdbm.spec descriptions
+
+-------------------------------------------------------------------
+Tue Feb  7 08:02:10 UTC 2012 - coolo@suse.com
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Sun Feb  5 17:48:43 UTC 2012 - jengelh@medozas.de
+
+- Name library package according to shlib policy
+- Update description, source text from GNU homepage
+
+-------------------------------------------------------------------
+Sun Feb  5 16:36:13 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections
+- Replace /usr/%_lib by simpler %_libdir
+
+-------------------------------------------------------------------
+Sat Oct  1 05:39:11 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Tue Sep 21 14:24:33 CEST 2010 - pgajdos@suse.cz
+
+- fixed wrong header of dbmclose() in our 
+  protoize_dbm_headers.patch [bnc#640700]
+
+-------------------------------------------------------------------
+Sun Aug 29 23:43:39 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- DO not include a compile date in the resulting binaries 
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Sun Dec 13 17:25:12 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Sun Dec  6 14:27:54 CET 2009 - jengelh@medozas.de
+
+- Enable parallel building for gdbm package
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Nov 24 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Feb 28 13:05:02 CET 2008 - pth@suse.de
+
+- Add ANSI prototypes to dbm.h and ndbm.h (protected by macros)
+- Provide full prototype for static function.
+- Fix test* apps by including appropriate headers and calling
+  fgets instead of gets.
+
+-------------------------------------------------------------------
+Wed Dec 26 17:57:10 CET 2007 - crrodriguez@suse.de
+
+- both libgdbm.la and libgdbm_compat.la had empty dependency_libs
+  and has been removed.
+- fix library-without-ldconfig-post* errors
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:17 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Aug 24 18:11:07 CEST 2005 - kukuk@suse.de
+
+- Don't reuse old temporary files in gdbm_reorganize [#105763]
+
+-------------------------------------------------------------------
+Mon Aug 30 13:24:25 CEST 2004 - schwab@suse.de
+
+- Fix uses of libtool.
+
+-------------------------------------------------------------------
+Fri Nov 21 14:42:16 CET 2003 - kukuk@suse.de
+
+- Compile with no execstack
+- Build as normal user
+
+-------------------------------------------------------------------
+Wed Jul  2 12:14:25 CEST 2003 - kukuk@suse.de
+
+- Remove man from buildsystem
+
+-------------------------------------------------------------------
+Mon May 12 18:44:04 CEST 2003 - kukuk@suse.de
+
+- Use defattr
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Fri Feb  7 01:24:21 CET 2003 - ro@suse.de
+
+- added install_info macros 
+
+-------------------------------------------------------------------
+Fri Jan 10 14:11:08 CET 2003 - kukuk@suse.de
+
+- Use fcntl instead of flock for locking
+
+-------------------------------------------------------------------
+Mon Dec  2 17:01:21 CET 2002 - kukuk@suse.de
+
+- Update to gdbm 1.8.3 (lot of bug fixes)
+
+-------------------------------------------------------------------
+Fri Aug  9 11:56:24 CEST 2002 - kukuk@suse.de
+
+- Fix requires for gdbm-devel [Bug #17543]
+
+-------------------------------------------------------------------
+Thu May 30 18:50:46 CEST 2002 - olh@suse.de
+
+- use aclocal + autoreconf --force --install, fix for ppc64
+
+-------------------------------------------------------------------
+Wed Apr 17 18:15:23 CEST 2002 - kukuk@suse.de
+
+- Remove gdbm 1.7.3
+
+-------------------------------------------------------------------
+Tue Dec 11 11:27:13 CET 2001 - froh@suse.de
+
+- the Makefile.in of gdbm 1.7 is missing @libdir@, instead of patching
+  that we follow sparc64 and ia64 and just ommit gdbm 1.7 on s390x.
+
+-------------------------------------------------------------------
+Thu Mar 22 18:51:02 CET 2001 - ro@suse.de
+
+- added split-aliases as provides
+
+-------------------------------------------------------------------
+Fri Oct 27 06:45:52 CEST 2000 - kukuk@suse.de
+
+- Create devel subpackage
+
+-------------------------------------------------------------------
+Mon Sep 25 14:47:53 CEST 2000 - kukuk@suse.de
+
+- Use BuildRoot
+
+-------------------------------------------------------------------
+Thu Jun  1 16:40:17 CEST 2000 - kukuk@suse.de
+
+- Add group tag
+
+-------------------------------------------------------------------
+Tue Apr  4 12:16:34 CEST 2000 - kukuk@suse.de
+
+- Add ltconfig fix
+
+-------------------------------------------------------------------
+Tue Apr  4 10:12:47 CEST 2000 - kukuk@suse.de
+
+- Add automake to need for build
+
+-------------------------------------------------------------------
+Mon Apr  3 15:21:14 MEST 2000 - bk@suse.de
+
+- s390 team added config.{sub,guess} update macros for s390
+
+-------------------------------------------------------------------
+Thu Feb  3 17:32:14 CET 2000 - schwab@suse.de
+
+- Update config.{guess,sub} to latest version.
+
+-------------------------------------------------------------------
+Fri Jan 21 10:44:35 CET 2000 - kukuk@suse.de
+
+- Move /usr/{info,man} -> /usr/share/{info,man}
+
+-------------------------------------------------------------------
+Mon Oct 18 16:28:53 MEST 1999 - kukuk@suse.de
+
+- gdbm 1.8.0: Fix memory leak
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Aug 27 08:37:15 MEST 1999 - kukuk@suse.de
+
+- Fix file list
+
+-------------------------------------------------------------------
+Thu Aug 26 15:37:22 MEST 1999 - kukuk@suse.de
+
+- Add libgdbm 1.8.0 as default 
+
+-------------------------------------------------------------------
+Mon Jun 28 13:54:38 MEST 1999 - kukuk@suse.de
+
+- Add libndbm.so and libndbm.a link
+
+-------------------------------------------------------------------
+Mon Mar  1 13:58:23 MET 1999 - ro@suse.de
+
+- added ndbm.h for glibc-2.1
+
+-------------------------------------------------------------------
+Mon Feb 22 17:06:33 MET 1999 - ro@suse.de
+
+- link explicitly with -lc
+
+-------------------------------------------------------------------
+Fri Dec 18 16:14:05 MET 1998 - ro@suse.de
+
+- respect alpha in specfile
+
+-------------------------------------------------------------------
+Mon Dec  7 15:54:39 MET 1998 - ro@suse.de
+
+- pack ndbm.h only for libc5
+
+-------------------------------------------------------------------
+Mon Oct 20 11:35:36 MEST 1997 - ro@suse.de
+
+- ready for autobuild
+
+----------------------------------------------------------------------------
+Wed Nov  6 00:13:26 CET 1996 - florian@suse.de
+
+
+- add ndbm.h header files
+

@@ -1,0 +1,440 @@
+-------------------------------------------------------------------
+Tue Jul  2 15:02:27 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix: [bsc#1140101, CVE-2019-13118]
+  * Fix uninitialized read with UTF-8 grouping chars. Read of
+    uninitialized stack data due to too narrow xsl:number
+    instruction and an invalid character
+  * Added libxslt-CVE-2019-13118.patch
+
+-------------------------------------------------------------------
+Tue Jul  2 15:00:56 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix: [bsc#1140095, CVE-2019-13117]
+  * Fix uninitialized read of xsl:number token. An xsl number with
+    certain format strings could lead to a uninitialized read in
+    xsltNumberFormatInsertNumbers
+  * Added libxslt-CVE-2019-13117.patch
+
+-------------------------------------------------------------------
+Thu Apr 11 06:06:01 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix: [bsc#1132160, CVE-2019-11068]
+  * Bypass of a protection mechanism because callers of xsltCheckRead
+    and xsltCheckWrite permit access even upon receiving a -1 error
+    code. xsltCheckRead can return -1 for a crafted URL that is not
+    actually invalid and is subsequently loaded.
+  * Added libxslt-CVE-2019-11068.patch
+
+-------------------------------------------------------------------
+Mon Mar  4 13:11:30 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to version 1.1.33
+  * Portability:
+    - Variables need 'extern' in static lib on Cygwin
+    - Really declare dllexport/dllimport for Cygwin
+    - Fix callback signatures in Python bindings
+    - Fix transform callback signatures
+    - Fix extension callback signatures
+    - Fix deallocator signatures
+    - Fix XPath callback signatures
+    - Fix hash callback signatures
+  * Bug Fixes:
+    - Don't cache direct evaluation of patterns with variables
+    - Move function result RVTs to context variable
+    - Fix EXSLT functions returning RVTs from outer scopes
+    - Fix handling of RVTs returned from nested EXSLT functions
+    - Fix typos
+  * Improvements:
+    - Run Travis ASan tests with "sudo: required"
+  * Cleanups:
+    - Remove doc/libxslt-decl.txt
+    - Docs for 1.1.32 release
+- Cleaned with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Nov  8 12:13:46 UTC 2017 - vcizek@suse.com
+
+- Update to version 1.1.32
+  * fixes xml-config detection regression (boo#1066525)
+
+-------------------------------------------------------------------
+Thu Oct 19 11:18:49 UTC 2017 - pmonrealgonzalez@suse.com
+
+- Update to version 1.1.30 [bsc#1063934]
+  * Documentation:
+    - Misc doc fixes
+  * Portability:
+    - Look for libxml2 via pkg-config first
+  * Bug Fixes:
+    - Also fix memory hazards in exsltFuncResultElem
+    - Fix NULL deref in xsltDefaultSortFunction
+    - Fix memory hazards in exsltFuncFunctionFunction
+    - Fix memory leaks in EXSLT error paths
+    - Fix memory leak in str:concat with empty node-set
+    - Fix memory leaks in error paths
+    - Switch to xmlUTF8Strsize in numbers.c
+    - Fix NULL pointer deref in xsltFormatNumberFunction
+    - Fix UTF-8 check in str:padding
+    - Fix xmlStrPrintf argument
+    - Check for overflow in _exsltDateParseGYear
+    - Fix double to int conversion
+    - Check for overflow in exsltDateParseDuration
+    - Change version of xsltMaxVars back to 1.0.24
+    - Disable xsltCopyTextString optimization for extensions
+    - Create DOCTYPE for HTML version 5
+    - Make xsl:decimal-format work with namespaces
+    - Remove norm:localTime extension function
+    - Check for integer overflow in xsltAddTextString
+    - Detect infinite recursion when evaluating function arguments
+    - Fix memory leak in xsltElementAvailableFunction
+    - Fix for pattern predicates calling functions
+    - Fix cmd.exe invocations in Makefile.mingw
+    - Don't try to install index.sgml
+    - Fix symbols.xml
+    - Fix heap overread in xsltFormatNumberConversion
+    - Fix <xsl:number level="any"/> for non-element nodes
+    - Fix unreachable code in xsltAddChild
+    - Change version number in xsl:version warning
+    - Avoid infinite recursion after failed param evaluation
+    - Stop if potential recursion is detected
+    - Consider built-in templates in apply-imports
+    - Fix precedence with multiple attribute sets
+    - Rework attribute set resolution
+  * Improvements:
+    - Silence tests a little
+    - Set LIBXML_SRC to absolute path
+    - Add missing #include
+    - Adjust expected error messages in tests
+    - Make xsltDebug more quiet
+    - New-line terminate error message that missed this convention
+    - Use xmlBuffers in EXSLT string functions
+    - Switch to xmlUTF8Strsize in EXSLT string functions
+    - Check for return value of xmlUTF8Strlen
+    - Avoid double/long round trip in FORMAT_ITEM
+    - Separate date and duration structs
+    - Check for overflow in _exsltDateDifference
+    - Clamp seconds field of durations
+    - Change _exsltDateAddDurCalc parameter types
+    - Fix date:difference with time zones
+    - Rework division/remainder arithmetic in date.c
+    - Remove exsltDateCastDateToNumber
+    - Change internal representation of years
+    - Optimize IS_LEAP
+    - Link libraries with libm
+    - Rename xsltCopyTreeInternal to xsltCopyTree
+    - Update linker version script
+    - Add local wildcard to version script
+    - Make some symbols static
+    - Remove redundant NULL check in xsltNumberComp
+    - Fix forwards compatibility for imported stylesheets
+    - Reduce warnings in forwards-compatible mode
+    - Precompute XSLT elements after preprocessing
+    - Fix whitespace in xsltParseStylesheetTop
+    - Consolidate recursion checks
+    - Treat XSLT_STATE_STOPPED same as errors
+    - Make sure that XSLT_STATE_STOPPED isn't overwritten
+    - Add comment regarding built-in templates and params
+    - Rewrite memory management of local RVTs
+    - Validate QNames of attribute sets
+    - Add xsl:attribute-set regression tests
+    - Ignore imported stylesheets in xsltApplyAttributeSet
+
+-------------------------------------------------------------------
+Thu Oct 19 11:15:22 UTC 2017 - pmonrealgonzalez@suse.com
+
+- security update: initialize random generator, CVE-2015-9019         
+  [bsc#934119]                                                        
+  + libxslt-random-seed.patch
+
+-------------------------------------------------------------------
+Mon Sep 11 18:35:31 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups. Drop ineffective --with-pic.
+  Trim conjecture from description.
+
+-------------------------------------------------------------------
+Fri Jul 28 18:49:10 UTC 2017 - mpluskal@suse.com
+
+- Add gpg signature
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Jun 11 12:03:15 UTC 2016 - tchvatal@suse.com
+
+- Version update to 1.1.29 to match libxslt main package
+- Sort out with spec-cleaner
+- BuildIgnore python to avoid cycles
+- Run tests and do not install them as docs
+
+-------------------------------------------------------------------
+Fri May 20 13:55:16 UTC 2016 - kstreitova@suse.com
+
+- add libxslt-1.1.28-type_confusion_preprocess_attr.patch to fix
+  type confusion in preprocessing attributes [bnc#952474],
+  [CVE-2015-7995]
+
+-------------------------------------------------------------------
+Wed Jan 16 08:57:51 UTC 2013 - dl8fcl@darc.de
+
+- in spec file moved the "BuildRequires:" and "Requires:" tags 
+  behind "Version:" tag to have them read the variable correctly.
+
+-------------------------------------------------------------------
+Thu Dec  6 08:17:12 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.1.28: see changelog for libxslt1 1.1.28 for details
+- enforce having the same version of libxslt1
+
+-------------------------------------------------------------------
+Thu Feb 16 21:23:22 UTC 2012 - coolo@suse.com
+
+- add libtool as buildrequire to fix compilation
+
+-------------------------------------------------------------------
+Mon Nov 21 15:49:42 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Tue Aug  2 15:09:50 UTC 2011 - idonmez@novell.com
+
+- Add dependency on libgcrypt-devel and libgpg-error-devel for
+  the libxslt-devel package.
+
+-------------------------------------------------------------------
+Mon Aug  1 09:59:25 UTC 2011 - idonmez@novell.com
+
+- Correctly obsolete libxslt package in the baselibs.conf too 
+
+-------------------------------------------------------------------
+Fri Jul 29 09:37:15 UTC 2011 - idonmez@novell.com
+
+- Fix build by not using %exclude 
+
+-------------------------------------------------------------------
+Fri Jul 29 03:46:57 UTC 2011 - crrodriguez@opensuse.org
+
+- Rework build of this package in a sane way.
+
+-------------------------------------------------------------------
+Wed Jul 21 13:19:36 UTC 2010 - puzel@novell.com
+
+- updated to 1.1.26 
+  - no python related fixes in this libxslt release
+
+-------------------------------------------------------------------
+Fri Apr 11 14:39:52 CEST 2008 - prusnak@suse.cz
+
+- updated to 1.1.23
+    * Documentation
+      fix links for Cygwin DocBook setup (Philippe Bourcier)
+      - xsltParseStylesheetDoc doc fix (Jason Viers)
+      - fix manpage default maxdepth value
+    * Bug fixes:
+      - python segfault (Daniel Gryniewicz)
+      - week-in-year bug fix (Maurice van der Pot)
+      - fix python iterator problem (William Brack)
+      - avoid garbage collection problems on str:tokenize and str:split
+        and function results (William Brack and Peter Pawlowski)
+      - superfluous re-generation of keys (William Brack)
+      - remove superfluous code in xsltExtInitTest (Tony Graham)
+      - func:result segfault fix (William Brack)
+      - timezone offset problem (Peter Pawlowski),
+    * Portability fixes:
+      - old gcrypt support fix (Brent Cowgill)
+      - Python portability patch (Stephane Bidoul)
+      - VS 2008 fix (Rob Richard)
+
+-------------------------------------------------------------------
+Tue Jan 22 12:19:20 CET 2008 - prusnak@suse.cz
+
+- build without strict aliasing (as main package does)
+
+-------------------------------------------------------------------
+Tue Sep 18 16:21:03 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 1.1.22:
+  * Bug fixes: RVT cleanup problems, exclude-result-prefix bug,
+    stylesheet compilation error handling, out of memory allocation
+    errors, namespace problem on compound predicates, python
+    space/tab inconsistencies, hook xsl:message to per
+    transformation error callbacks, cached RVT problem, XPath
+    context maintainance on choose, memory leaks in the math
+    module, exclude-result-prefix induced namespace problem
+  * Portability fixes: improve build with VS2005, fixing build on
+    AIX, fix the security file checks on Windows.
+  * Improvement: add an --encoding option to xsltproc.
+  * Build: configure setup for TRIO_REPLACE_STDIO
+  * Documentation: updated after change from CVs to SVN
+
+-------------------------------------------------------------------
+Mon Aug 20 15:57:47 CEST 2007 - sbrabec@suse.cz
+
+- Commented out NoSource to provide comfortable rebuild.
+
+-------------------------------------------------------------------
+Thu Jan 25 15:53:43 CET 2007 - prusnak@suse.cz
+
+- update to 1.1.20
+  * sync to libxslt-1.1.20
+- drop obsolete patches:
+  * libxslt-transform.patch (included in update)
+
+-------------------------------------------------------------------
+Thu Jan 11 13:59:06 CET 2007 - ke@suse.de
+
+- Adjust python-linkflags.patch for 1.1.19 and do not apply obsolete
+  warn patch.
+
+-------------------------------------------------------------------
+Tue Dec 12 11:14:18 CET 2006 - ke@suse.de
+
+- 1.1.19.
+
+-------------------------------------------------------------------
+Tue Nov 28 12:30:14 CET 2006 - ke@suse.de
+
+- Do not install static Python module; reported by Andreas Hanke
+  [#223696].
+
+-------------------------------------------------------------------
+Fri Jun 16 15:54:03 CEST 2006 - ke@suse.de
+
+- 1.1.17.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:50 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep 30 16:30:21 CEST 2005 - aj@suse.de
+
+- Fix compiler warnings.
+
+-------------------------------------------------------------------
+Fri Sep 16 17:54:17 CEST 2005 - ke@suse.de
+
+- Update to version 1.1.15.
+
+-------------------------------------------------------------------
+Wed Jul  6 16:36:19 CEST 2005 - meissner@suse.de
+
+- removed -fno-strict-aliasing, not needed here.
+
+-------------------------------------------------------------------
+Mon Apr  4 11:06:01 CEST 2005 - ke@suse.de
+
+- Update to version 1.1.14.
+
+-------------------------------------------------------------------
+Wed Nov 24 15:16:44 CET 2004 - mcihar@suse.cz
+
+- use rpm macros to build correcly with current python
+
+-------------------------------------------------------------------
+Tue Nov  2 11:35:10 CET 2004 - ke@suse.de
+
+- Update to version 1.1.12.
+
+-------------------------------------------------------------------
+Tue Oct 12 12:08:57 CEST 2004 - ke@suse.de
+
+- Add libgcrypt* and libgpg-error* to neededforbuild.
+
+-------------------------------------------------------------------
+Fri Oct  8 06:19:39 CEST 2004 - ke@suse.de
+
+- Update to version 1.1.11.
+
+-------------------------------------------------------------------
+Mon Aug 23 08:20:42 CEST 2004 - ke@suse.de
+
+- Update to version 1.1.9.
+
+-------------------------------------------------------------------
+Thu Aug 19 18:48:12 CEST 2004 - schwab@suse.de
+
+- Fix a broken cast.
+
+-------------------------------------------------------------------
+Wed Jul 14 16:19:09 CEST 2004 - ke@suse.de
+
+- Update to version 1.1.8.
+
+-------------------------------------------------------------------
+Fri May 21 16:05:05 CEST 2004 - ke@suse.de
+
+- Update to version 1.1.7.
+
+-------------------------------------------------------------------
+Tue Apr 20 14:24:43 CEST 2004 - ke@suse.de
+
+- Update to version 1.1.6.
+
+-------------------------------------------------------------------
+Fri Dec 12 13:23:41 CET 2003 - ke@suse.de
+
+- Update to version 1.1.1.
+
+-------------------------------------------------------------------
+Wed Nov  5 16:11:09 CET 2003 - ke@suse.de
+
+- Update to version 1.1.0; for details cf. the libxslt changelog.
+
+-------------------------------------------------------------------
+Fri Aug 29 17:47:23 CEST 2003 - mcihar@suse.cz
+
+- require same python version as it was built with
+
+-------------------------------------------------------------------
+Fri Aug 15 17:50:08 CEST 2003 - ke@suse.de
+
+- Update to version 1.0.32; for details cf. the libxslt changelog.
+
+-------------------------------------------------------------------
+Wed Jul  9 16:52:49 CEST 2003 - ke@suse.de
+
+- Update to version 1.0.31; for details cf. the libxslt changelog.
+
+-------------------------------------------------------------------
+Tue Jun 17 17:31:15 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.0.30.
+
+-------------------------------------------------------------------
+Mon May 26 15:29:49 CEST 2003 - ke@suse.de
+
+- Remove unwanted files from $RPM_BUILD_ROOT.
+
+-------------------------------------------------------------------
+Wed Apr  2 15:54:30 CEST 2003 - ke@suse.de
+
+- Update to version 1.0.29; for details cf. the libxslt changelog.
+
+-------------------------------------------------------------------
+Wed Mar 26 14:10:01 CET 2003 - ke@suse.de
+
+- Update to version 1.0.28; for details cf. the libxslt changelog.
+
+-------------------------------------------------------------------
+Tue Feb 11 15:46:00 CET 2003 - ke@suse.de
+
+- Update to version 1.0.26; for details cf. the libxslt changelog.
+
+-------------------------------------------------------------------
+Thu Feb  6 11:28:58 CET 2003 - ke@suse.de
+
+- Update to version 1.0.25; for details cf. the libxslt changelog.
+
+-------------------------------------------------------------------
+Wed Jan 15 10:22:17 CET 2003 - ke@suse.de
+
+- Update to version 1.0.24.
+
+-------------------------------------------------------------------
+Tue Nov 26 17:02:56 CET 2002 - ro@suse.de
+
+- split specfile to get rid of python dependencies in the main tree 
+

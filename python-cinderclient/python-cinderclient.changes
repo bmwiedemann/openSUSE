@@ -1,0 +1,1762 @@
+-------------------------------------------------------------------
+Tue Jun 11 06:16:28 UTC 2019 - cloud-devel@suse.de
+
+- update to version 4.2.0
+  - More shell completion cache additions
+  - Fix: cinder group-list not working with non-admin user
+  - Update .gitreview for stable/stein
+  - Add Python 3.6 classifier to setup.cfg
+  - Re-enable shell UUID completion cache
+  - Remove i18n.enable_lazy() translation
+  - Fix doc build error
+  - Add support for backup user ID
+  - Add dependency on requests lib
+  - Change openstack-dev to openstack-discuss
+  - Cleanup the home page
+  - Fix max version handling for help output
+  - Replace openstack.org git:// URLs with https://
+  - Replace assertRaisesRegexp with assertRaisesRegex
+  - Raise API max version for Stein updates
+  - Don't quote {posargs} in tox.ini
+  - Fix incorrect punctuation
+  - OpenDev Migration Patch
+  - Raise API max version for Rocky updates
+  - Change bash completion dir permissions to 0750
+  - Update UPPER_CONSTRAINTS_FILE for stable/stein
+
+-------------------------------------------------------------------
+Mon Apr  8 12:32:35 UTC 2019 - cloud-devel@suse.de
+
+- update to version 4.1.0
+  - refactor the getid method base.py
+  - Fix functional error check for invalid volume create size
+  - [Optimize] Update help text for hint argument
+  - Fix backwards compat for volume transfer < 3.55
+  - add lib-forward-testing-python3 test job
+  - Default help output to include MV updates
+  - update wrong link
+  - Fix encoding of query parameters
+  - Update reno for stable/rocky
+  - __repr__ crashes when empty dict passed
+  - Fix endpoint identification for api-version query
+  - switch documentation job to new PTI
+  - [Trivial] Add backup-id to 'size' param info
+  - add python 3.6 unit test job
+  - import zuul job settings from project-config
+  - Use templates for cover and lower-constraints
+
+-------------------------------------------------------------------
+Fri Aug 31 16:26:47 UTC 2018 - cloud-devel@suse.de
+
+- update to version 4.0.1
+  - Allow volume-transfer creation < 3.55 microversion
+  - Update pylint to work with python 3
+  - Update reno for stable/queens
+  - fix a typo in documentation
+  - Add mode option to attachment-create
+  - Remove PyPI downloads
+  - Reflect multiattach deprecation in help text
+  - unable to create group from src in cinderclient
+  - Remove unit tests about run_test
+  - Remove replication v1 support
+  - Zuul: Remove project name
+  - update the value of OS_AUTH_URL and OS_VOLUME_API_VERSION
+  - Add release note for ability to set attachment mode
+  - Remove useless args in create_group_from_src
+  - Add reno to requirements
+  - Use api version 3 for functional test
+  - Unreadable output of upload-to-image.
+  - Transfer snapshots with volumes
+  - Remove deprecated CLI options
+  - Add api_version wraps for some v3 volume APIs
+  - Update help text for encryption provider
+  - Support availability-zone in volume type
+  - Add api_version wraps for group snapshot list in v3/shell.py
+  - Trivial: Update pypi url to new url
+  - Add the parameter service-id for service cleanup command
+  - Remove unused cinderclient/apiclient/client.py module
+  - Allow --help for specific commands
+  - Correct errors in snapshot-manageable-list help text
+  - Follow the new PTI for document build
+  - Fix failing functional test cases
+  - Remove initialization of logger if logger is None
+  - Fix for v3 volume unit tests
+  - fix tox python3 overrides
+  - Remove unnecessary parameters from volume create APIs
+  - Add bindep.txt for system packages
+  - Keep is_public usage backwards compatible
+  - Switch from ostestr to stestr
+  - Support cross AZ backups
+  - Updated from global requirements
+  - add lower-constraints job
+  - Update unit_test.rst doc unit test py34 to py35
+  - Update python usage docs
+
+-------------------------------------------------------------------
+Fri Feb 23 12:51:39 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Mon Feb 12 09:52:55 UTC 2018 - cloud-devel@suse.de
+
+- update to version 3.5.0 (bsc#1078607)
+  - Updated from global requirements
+  - Bump API microversion to 3.50
+  - Add api_version wraps for generic volume groups
+  - Add service cleanup command
+  - Fix 'cluster' paramter using for v3 volume manage
+  - Migrate to keystoneauth identity cli opts.
+  - Removes unicode 'u' response for "cinder get-capabilities"
+  - Add snapshot_id param note for backup-create
+  - Support for reporting backend state in service list
+  - Fix v2 volume unit tests
+  - Add cluster support in manage listings
+
+-------------------------------------------------------------------
+Tue Jan 16 22:00:53 UTC 2018 - cloud-devel@suse.de
+
+- update to version 3.4.0
+  - Remove 'end_version' parameter in backup update
+  - Remove setting of version/release from releasenotes
+  - Removed unnecessary parameters from group and group_snapshots create APIs
+  - Follow the new PTI for document build
+  - Fix the way to get backup metadata
+  - Deprecate multiattach flag on volume create
+  - Backup create is not available from 3.0 to 3.42
+  - Updated from global requirements
+- Drop 0001-Fix-man-page-build.patch . Applied upstream.
+
+-------------------------------------------------------------------
+Wed Dec 20 09:33:57 UTC 2017 - cloud-devel@suse.de
+
+- update to version 3.3.0
+  - Implement metadata for backup create/update
+  - Support skip-validation for quota update
+  - Bump Max API version to 3.48
+  - Enable H306
+  - Avoid tox_install.sh for constraints support
+  - Enable F811, F821
+  - Remove unused attribute when updating quota_class
+  - Fix attachment_id returned by create and show volume
+  - Bump Max version to 3.46
+  - Bump MAX version of client to 3.45
+  - Update old url for cinderclient's document
+  - Add api_version_wraps to attachment-complete
+  - Let keystoneauth set the microversion header
+  - Support create volume from backup in client
+  - Explicitly set 'builder' option
+  - Added missing column 'Allocated'
+  - Fix method/module redefinition errors
+  - Revert "Bump MAX version of client to 3.45"
+  - cleanup test-requirements
+  - Migrate to Zuul v3
+  - Add cluster support in migration and manage
+  - Support list with 'with_count' in client
+  - Use generic user for both zuul v2 and v3
+  - Clean the redundant code in shell.py
+  - Fix man page build
+  - Add .stestr.conf configuration
+  - Add an attachment_complete API call
+  - doc: Remove cruft from conf.py
+  - Correct sphinx source code syntax
+  - Fix to use "." to source script files
+  - [Optimize] Adds interval and increase waiting time
+  - Remove run_tests.sh
+  - Update reno for stable/pike
+  - Fix wrong links
+  - Fix OS_AUTH_TYPE env var usage
+  - Fix get_highest_client_server_version with Cinder API + uWSGI
+  - Unsupported 'message' Exception attribute in PY3
+  - Updated from global requirements
+  - Use Sphinx 1.5 warning-is-error
+  - Implement UserID in snapshot list response
+
+-------------------------------------------------------------------
+Mon Aug  7 08:20:22 UTC 2017 - cloud-devel@suse.de
+
+- update to version 3.1.0
+  - Dynamic log level support
+  - Update visibility help message
+  - Fix simple parameter comment error
+  - Add doc for noauth usage
+  - Add pagination for snapshots, backups
+  - Unicode value support for "--filters"
+  - Handle AttributeError in _get_server_version_range
+  - Eliminate function redefined pylint error
+  - Fix client `retries` default value.
+  - Add cinder tests for cinder snapshot create commands with parameters
+  - Cleared type restrictions for metadata option
+  - Make --profile load from environment variables
+  - Update README.rst to remain consistent with python-cinderclient.
+  - Add release note for get_highest_client_server_version return type change
+  - Group show command should be in V3
+  - Replace http with https
+  - Remove explicit global_request_id from keystoneauth subclass
+  - Update reno for stable/ocata
+  - import content from cli-reference in openstack-manuals
+  - Enabled like filter support in client
+  - Add cinder tests for cinder volume create commands with parameters
+  - Add a missing left bracket in help message
+  - support global_request_id in constructor
+  - Rearrange existing documentation to fit the new standard layout
+  - Add print_function import
+  - Handle dashes in encryption-type-create arguments
+  - Fix attribute errors in os-auth-* settings
+  - Replace uuid.uuid4().hex with uuidutils.generate_uuid()
+  - static method to get_highest_client_server_version
+  - Handle log message interpolation by the logger
+  - Remove consistencygroup quota
+  - [BugFix] Make 'instance_id' required in attachment-create CLI.
+  - Fix all_tenants doesn't work for group list
+  - Fix discover_version
+  - Remove duplicate columns from list output
+  - Support list-volume for group show
+  - [BugFix] 'Mountpoint' is missing in attachment CLIs.
+  - Pretty print 'extra_specs' and 'group_specs'
+  - Add start_version check for do_list() image_metadata option
+  - Fix output of update command
+  - Fix highest version supported by client and server
+  - Fix PY2/PY3 specific error in testcases
+  - Fix the wrong help message of marker
+  - Add --metadata option to API v2 cinder list command again
+  - Support generalized resource filter in client
+  - Tiramisu: replication group support
+  - Tests: Add info to assert_called failure message
+  - Add cinder create --poll
+  - Change "--sort" description in help message
+  - Fix reset state v3 unit tests failures
+  - Add description for function do_list_extensions in cinderclient
+  - Remove duplicate get_highest_client_server_version
+  - Remove cinder credentials command
+  - Update cinder.rst and shell.rst
+  - Remove duplicate do_upload_to_image() method def
+  - Do not require network for test_noauth_plugin()
+  - Fix pep8 errors
+  - Update tox to delete py34
+  - Bump MAX_VERSION to 3.27
+  - Fix error in unit testcase
+  - Update URLs in documentation
+  - cinder show with attachments is a mess
+  - Cinder client reset-state improvements
+  - Fix cmd options for updating a quota class
+  - python-cinderclient doc unclear on Volume.attach
+  - Remove unused and duplicated fake_client module
+  - Remove log translations
+  - Add get_highest_version method
+  - cinderclient might not return version for V2 API
+  - Fix service-list command for API v.3.0-3.6
+  - Make V3 the default and fixup version reporting
+  - Support revert to snapshot in client
+  - Fix noauth support
+  - Cinder attachment-* does not support names
+  - Fix support for Unicode value filters
+  - UnboundLocalError on message-list
+  - Support volume summary command
+  - [BugFix] Add 'all_tenants', 'project_id' in attachment-list
+  - Switch from oslosphinx to openstackdocstheme
+  - Remove direct dependency on requests
+  - Disable functional tests with multiattach
+  - Updated from global requirements
+- Add 0001-Fix-man-page-build.patch
+
+-------------------------------------------------------------------
+Mon Feb 13 11:12:28 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.11.0:
+  - Replace 'MagicMock' with 'Mock'
+  - Fix test_auth_with_keystone_v3 test
+  - Fix the optional argument of cinder api
+  - Enable coverage report in console output
+  - Move old oslo-incubator code out of openstack/common
+  - add an alternative way of authenticating client
+  - Metadata based snapshop filtering
+  - Move trace ID print statement to finally
+  - _human_id_cache or _uuid_cache error about completion_cache
+  - Enable release notes translation
+  - Use 'ostestr {posargs}' to run functional tests
+  - stop adding log handler
+  - x-openstack-request-id logged twice in logs
+  - Volume detail support glance_metadata in CLI
+  - Fix volume type 'is_public' flag update
+  - Update release notes information for reno
+  - Remove discover from test-requirements
+  - Update hacking version
+  - Update reno for stable/newton
+  - Refactor v2 and v3 APIs support
+  - TrivialFix: Removed redundant 'the'
+  - Fix typos in the files
+  - Fix typo in set unicode metadata key
+  - Show team and repo badges on README
+  - Update to current version of hacking
+  - Help msg and output info should support il8n.
+  - Fix error during set unicode metadata key
+  - AttributeError when print service object
+  - Handle error response for webob>=1.6.0
+  - Remove unused keystone service catalog parse file.
+  - Missing client version 3.0 support for "delete_metadata" method
+  - Update param docstring to ducument search_opts
+  - Print backtrace for exception when in debug mode
+  - Replace six.iteritems(iter) with iter.items()
+  - Minor refactoring for nested try-block
+  - Removed multiple import from shell.py
+  - Fix "ref[project_name]"
+  - Modify assertTrue
+  - Fix some PEP8 issues and Openstack Licensing
+  - Support filter volumes by group_id
+  - Removed unnecessary 'service_type' decorator
+  - Fix adding non-ascii attrs to Resource objects error
+  - Fix spelling of consistency groups
+  - Remove assertTableStruct from ClientTestBase
+  - Fix getting metadata attr error in snapshot-list command
+  - Mask passwords when logging HTTP req/resp bodies
+  - Parse filter item "name" correctly for snapshot-list
+  - Attach/Detach V2
+  - Optimize: add build_query_param method to clean code
+  - Remove white space between print and ()
+  - (Trival)Modify the version_header with self.version_header
+  - Fix help message for 'type-list' command
+  - modify the wrong comment of the Client class
+  - Fix test_version_discovery test
+  - Add Constraints support
+  - Remove extra 'u' from cli output
+  - Support Keystone V3 with HttpClient
+  - Import module instead of object
+  - static method to get_server_version
+  - remove raise "e"
+  - Python3 common patterns
+  - Fix v3 volume list based on image_metadata
+  - Update --endpoint-type dest to os_endpoint_type
+  - Add convertation of query parameters to string
+  - Updated from global requirements
+  - Showing the metadata readonly value as a separate field
+
+-------------------------------------------------------------------
+Mon Sep  5 08:25:20 UTC 2016 - tbechtold@suse.com
+
+update to version 1.9.0
+  * Fix Unicode error printing extra-specs
+  * Fix batch deleting issue in volume_type.unset_keys()
+  * List manageable volumes and snapshots
+  * base.Resource not define __ne__() built-in function
+  * Make Resource class's function can be wraped by api_version
+  * Add group types and group specs
+  * Fix Service.__repr__ to remove the undefined attribute
+  * Wrap group type and group spec with api_version
+  * Wrap volume_backup's update function with api_version
+  * Fix _get_rate_limit when resp is None
+  * Make __repr__ print encryption_id for VolumeEncryptionType class
+  * Fixing parsing problem of cascade in client
+  * Fix useless api_version of Manager class
+  * Add cluster related commands
+  * Add Negative tests for cinder volume extend command
+  * Fix python 2,3 compatibility issue with six
+  * Use 'six' instead of oslo_utils.strutils.six
+  * Add generic volume groups
+  * Support for snapshot force delete
+  * Add backup-update
+  * Add Python3.5 classifier and venv
+  * OS_TENANT_NAME is not required when we have OS_PROJECT_NAME
+  * Wrap cluster related function with api_version
+  * Fix argument order for assertEqual to (expected, observed)
+  * Make APIVersion's null check more pythonic
+  * Switch to keystoneauth
+  * Fix output error for type-show command
+  * Support name option for volume restore
+  * Replace OpenStack LLC with OpenStack Foundation
+  * Changed backup-restore to accept backup name
+  * Deleting volume metadata keys with a single request
+  * Add "start_version" and "end_version" support to  argparse
+  * Add tenant_id parameter to limits.
+  * deprecate command `cinder endpoints`
+  * Log request-id for each api call
+  * Fix NoneType error for cinderclient v1
+  * Fix authentication issue
+  * Fix Capabilities.__repr__ to remove the undefined attribute
+  * Add support for group snapshots
+  * Fix the incorrect alignment
+  * Make dict.keys() PY3 compatible
+  * Add strict Boolean checking
+  * Tests for testing volume-create command
+  * Add api-version to get server versions
+  * Enhance help message of upload_to_image
+  * Replace functions 'Dict.get' and 'del' with 'Dict.pop'
+  * Cinder client should retry with Retry-After value
+  * Use self.ks_logger instead of ks_logger
+  * Change api-version help to indicate server API
+  * Delete mox in cinderclient
+  * Fix string interpolation to delayed to be handled by the logging code
+  * Add Negative tests for cinder volume create command
+  * print endpoints using new keystoneauth catalog object
+  * Update the home-page with developer documentation
+  * Replace assertTrue(isinstance()) by optimal assert
+  * Remove self.__dict__ for formatting strings
+  * Make sure --bypass-url honored if specified
+  * Updated from global requirements
+  * Add v3 user messages with pagination
+  * Wrap GroupType class's function with api_version
+
+-------------------------------------------------------------------
+Mon Aug  1 18:44:56 UTC 2016 - tbechtold@suse.com
+
+- update to 1.8.0:
+  * Don't enable lazy translation when loading client
+  * Support for cinder backup force delete
+  * Fix upload_to_image method
+  * Remove deprecated tempest_lib and use tempest.lib
+- update _service and switch to upstream spec file
+
+-------------------------------------------------------------------
+Thu Mar  3 15:34:00 UTC 2016 - tbechtold@suse.com
+
+- update to 1.6.0:
+  * Remove replication v2 calls
+  * Update minimum tox version to 1.8
+  * snapshot-list now supports filtering by tenant
+  * Fix return type in consistencygroups docstring
+  * Updated from global requirements
+  * Use instanceof instead of type
+  * Don't print HTTP codes for non-HTTP errors
+  * Add replication v2.1 (cheesecake) calls
+  * Add release notes for return-request-id-to-caller
+  * Remove pypy from tox environment list
+  * Extra 'u' in output of cinder cli commands
+  * Add extra_specs_list test
+  * Add request_ids attribute to resource objects
+  * Fix return type in backup docstring
+  * Fix omission of request_ids returned to user
+  * Eliminate unnecessary character
+  * Avoid logging sensitive info in http requests
+  * Add request_ids attribute to resource objects
+  * Add request_ids attribute to resource objects
+  * Provide consistency for Wrapper classes
+  * Allow "cinder backup-delete" to delete multiple backups in one request
+  * Updated from global requirements
+  * Fix some flake8 violations
+  * Bootable filter for listening volumes from CLI
+  * Remove debug statement
+  * is_public=N/A in output of cinder type-update
+  * Return wrapper classes with request_ids attribute
+  * Pass insecure option to HTTPClient
+  * Add Wrapper classes for list, dict, tuple
+  * Remove argparse from requirements
+  * Fix sort problem in snapshot and backup list
+  * Code is hosted on git.openstack.org
+  * Fix link for OpenStack manual
+  * Update HACKING with current information
+  * Word Misspelling
+  * Trival: Remove 'MANIFEST.in'
+  * Remove openstack-common.conf
+  * Make _discover_extensions public
+  * improve readme contents
+  * Set default service type to 'volumev2'
+  * Updated from global requirements
+  * Fix help message in backup reset-state
+  * Remove the mutable default arguments "[]"
+  * Do not require functional_creds.conf for functional tests
+  * Fix for 'quota-delete' call to API v2
+  * Removes MANIFEST.in as it is not needed explicitely by PBR
+  * Drop py33 support
+  * Add to_dict method to Resource class
+  * Add reno for release notes management
+  * Deprecated tox -downloadcache option removed
+  * Updated from global requirements
+  * Updated from global requirements
+  * Pass proxy environment variable to tox
+  * Add optional argument to list subcommand
+  * Remove py26 support
+  * Delete python bytecode before every test run
+  * support for snapshot management
+  * Fix comma location in comment
+  * Remove ureachable code in fakes.py
+  * Updated from global requirements
+  * Adds v2 replication support
+  * Fix v2 qos-key command
+  * Add functional tests: backup creation and deletion
+  * Use oslo_utils encodeutils and strutils
+  * CLI for backup snapshots
+  * Update CONTRIBUTING.md to CONTRIBUTING.rst
+  * Update help message for cinder migrate
+  * Fix volume size units to match the API
+  * Fix functional tests fail on the env with https
+  * Add the version attribute to the Client class
+  * Adding backup-reset-state to CLI
+  * Put py34 first in the env order of tox
+  * Implement cinder type-show
+  * Updated from global requirements
+  * Update release notes for 1.3.1 and 1.4.0 releases
+  * Remove duplicate code in functional tests
+  * Add note for broken cinderclient versions 1.2.?
+  * Adding pagination to snapshots and backups lists
+  * Updated from global requirements
+  * Add commands to show image metadata
+  * Fully support os-endpoint-type
+  * Fix three resources not being deleted by using name
+  * Use dictionary literal for dictionary creation
+  * Change ignore-errors to ignore_errors
+  * Updated from global requirements
+  * Updating volume type 'is_public' status support
+  * No longer ignores CINDER_SERVICE_NAME
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Mon Sep 14 09:27:16 UTC 2015 - tbechtold@suse.com
+
+- update to 1.4.0:
+  * Updated from global requirements
+  * Update path to subunit2html in post_test_hook
+  * Adds command to fetch specified backend capabilities
+  * Volume status management for volume migration
+  * Fixed test_password_prompted
+  * Fix help message for reset-state commands
+  * Add functional tests for python-cinderclient
+  * Add support '--all-tenants' for cinder backup-list
+  * CLI: Non-disruptive backup
+  * Add tests for python-cinderclient
+  * Replace assertEqual(None, *) with assertIsNone in tests
+  * CLI: Clone CG
+  * Fix ClientException init when there is no message on py34
+  * Fixes table when there are multiline in result data
+  * Set default OS_VOLUME_API_VERSION to '2'
+  * Add commands for modifying image metadata
+  * Updated from global requirements
+  * Remove H302
+  * Show backup and volume info in backup_restore
+  * Add response message when volume delete
+  * Implement reset-state for attach_status and migration_status
+  * Add more details for replication
+  * New mock release(1.1.0) broke unit/function tests
+  * Remove unnecessary check for tenant information
+  * Remove redundant statement and refactor
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Mon Sep  7 11:31:25 UTC 2015 - dmueller@suse.com
+
+- update to 1.3.1:
+  * Prep for 1.3.0
+  * Updated from global requirements
+  * Revert "Enable version discovery"
+  * Fix typo in comment message
+  * Add set_management_url to cinderclient.client
+  * cinderclient does not honor --os-region-name or ENV[OS_REGION_NAME]
+  * Add encryption-type-update to cinderclient
+  * Set max volume size limit for the tenant
+  * Add tests for python-cinderclient and style fix
+  * The is_public filter in VolumeTypeManager.list broke the find in VolumeTypeAccessManager, which caused all commands which should have taken a volume_type name to fail. I have choosen to fix this by effectively removing the filter in the client (and the --all argument to type-list). This is OK, since Cinder implements the filtering by user anyway. The consequence of this change is that the Admin user will always see the entire list (including private types) every time they execute type-list
+  * Add volume multi attach support
+  * Fix functional post test_hook
+  * Fix condition in CheckSizeArgForCreate parser action
+  * Support host-attach of volumes
+  * Bump hacking to >=0.10.0,<0.11 to fix failure of gate pep8
+  * Fix functional readonly_cli tests
+  * Add findall server side filtering
+  * Fix functional tests and tox 2.0 errors
+  * Fixed typos and repeated docstrings
+  * cinderclient deprecated endpoint_type needs dest=
+  * cinderclient no longer honors --endpoint-type
+  * Add functional post test_hook
+  * Add --os-endpoint-type to match other services
+  * Find resource refactoring
+  * Avoid _get_keystone_session() if auth_plugin
+  * Update release notes for 1.2.0 and 1.2.1
+  * Add CLI read-only functional tests
+  * Change --force parameter into boolean
+  * Add search_opts into the method list() for qos specs
+  * Add version removal rule to stop discovery warning
+  * V2:cinder create --image option doesn't work
+  * Create Consistency Group from CG Snapshot CLI
+  * Kilo Consistency Group CLI update
+  * Remove "OPTIONAL:" from optional argument help text (v2)
+  * Support pagination param limit in volume list in V1
+  * Update README to work with release tools
+  * Add support to incremental backups in cinder
+  * Enable version discovery
+  * Remove print statement in unit test
+  * Add ability to specify path var to testr
+  * cinder list now supports filter by tenant
+  * Remove duplicate find request in find_resource
+  * Allow cinderclient to handle exception response
+  * Move unit tests into test directory
+  * Add covhtml to gitignore
+  * bash_completion now shows only subcommands when subcommand is "help"
+  * Update to change name for volume type client
+  * cinder list now prints dash '-' when data is None
+  * cinderclient accepts arguments after metadata without -- separator
+  * Updated help on cinder reset-state cli
+  * Fix outdated URLs and some minor fixes
+  * Fixes quota-class-update commands
+  * Adopt CLI sorting argument guidelines
+  * Add missing all-tenants option to transfer-list
+  * Add -d short option for --debug
+  * Fix volume_transfers import in v2
+  * reset-state should warn that it is DB only
+  * Expose cinder's scheduler pool API
+  * Fix up help message for reset-state call
+  * Add tests for consistency groups and cgsnapshots
+  * cinder list fails with 'name' sort key
+  * Remove commented code in cinderclient/v1/volumes.py
+  * Make cinderclient metadata CLI output consistent
+  * Leverage openstack.common.importutils import_class
+  * v2 error message grammatical error
+  * Add command to show pool information for backends
+  * Client output is not sorted by --sort_key
+  * Add support for os-volume-type-access extension
+  * Added type description for volume type client
+  * Don't use sessions if third party plugin is used
+  * Workflow documentation is now in infra-manual
+  * List all the request items when the list is over osapi_max_limit
+  * Allow CG quota to be showed and updated
+  * Add the parameter bypass_url to the cinder client
+  * Use newer features from keystoneclient
+  * Support Volume Backup Quota
+  * Add ability to create volume from image by image name
+  * Remove cinderclient/tests from coverage report
+  * Fix 'search_opts' error with backup delete command
+  * Remove unused methods from utils.py
+  * Fix incorrect variable name
+  * cinderclient does not retry with TimeoutException
+  * Adds tty password entry for cinderclient
+  * Don't git ignore .mailmap and .testr.conf
+  * gitignore /.*
+  * Add profiling support to cinderclient
+  * Fix volume name support of unmanage and replication commands
+  * Simplify cinder manage command args
+  * Add swap and it's variants to gitignore
+  * Docstring of unmanage subcommand is missing
+
+-------------------------------------------------------------------
+Fri Apr 24 12:09:23 UTC 2015 - tbechtold@suse.com
+
+- Use %{version} in source
+
+-------------------------------------------------------------------
+Thu Apr 23 20:15:42 UTC 2015 - tbechtold@suse.com
+
+- Switch to version 1.1.1
+
+-------------------------------------------------------------------
+Wed Apr 22 00:23:06 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.2.0.post2:
+  * Add support to incremental backups in cinder
+  1.2.0
+  * Enable version discovery
+  * Remove print statement in unit test
+  * Add ability to specify path var to testr
+  * cinder list now supports filter by tenant
+
+-------------------------------------------------------------------
+Sun Apr 19 00:36:06 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post97:
+  * Uncap library requirements for liberty
+
+-------------------------------------------------------------------
+Tue Apr  7 01:04:07 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post96:
+  * Allow cinderclient to handle exception response
+
+-------------------------------------------------------------------
+Wed Apr  1 00:58:57 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post95:
+  * Move unit tests into test directory
+
+-------------------------------------------------------------------
+Thu Mar 19 12:12:22 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post94:
+  * bash_completion now shows only subcommands when subcommand is "help"
+  * cinder list now prints dash '-' when data is None
+
+-------------------------------------------------------------------
+Tue Mar 17 01:53:56 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post91:
+  * Update to change name for volume type client
+  * cinderclient accepts arguments after metadata without -- separator
+
+-------------------------------------------------------------------
+Fri Mar  6 01:47:23 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post88:
+  * Updated help on cinder reset-state cli
+
+-------------------------------------------------------------------
+Tue Mar  3 01:54:53 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post87:
+  * Adopt CLI sorting argument guidelines
+
+-------------------------------------------------------------------
+Mon Mar  2 01:53:23 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post85:
+  * Make cinderclient metadata CLI output consistent
+
+-------------------------------------------------------------------
+Fri Feb 27 01:53:57 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post83:
+  * Add missing all-tenants option to transfer-list
+
+-------------------------------------------------------------------
+Thu Feb 19 01:06:06 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post82:
+  * Add -d short option for --debug
+
+-------------------------------------------------------------------
+Mon Feb 16 01:05:42 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post80:
+  * Fix volume_transfers import in v2
+
+-------------------------------------------------------------------
+Wed Feb 11 01:05:54 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post78:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Feb  6 01:57:17 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post77:
+  * Fix up help message for reset-state call
+
+-------------------------------------------------------------------
+Thu Feb  5 01:46:04 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post75:
+  * reset-state should warn that it is DB only
+
+-------------------------------------------------------------------
+Wed Feb  4 01:58:49 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post73:
+  * Add support for os-volume-type-access extension
+  * Don't use sessions if third party plugin is used
+
+-------------------------------------------------------------------
+Sat Jan 31 01:46:59 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post69:
+  * Expose cinder's scheduler pool API
+
+-------------------------------------------------------------------
+Sat Jan 24 01:33:13 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post67:
+  * Add tests for consistency groups and cgsnapshots
+  * cinder list fails with 'name' sort key
+
+-------------------------------------------------------------------
+Fri Jan 23 01:34:33 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post63:
+  * Leverage openstack.common.importutils import_class
+
+-------------------------------------------------------------------
+Wed Jan 21 01:36:27 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post61:
+  * Remove commented code in cinderclient/v1/volumes.py
+
+-------------------------------------------------------------------
+Sat Jan 17 01:32:36 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post59:
+  * v2 error message grammatical error
+  * Allow CG quota to be showed and updated
+
+-------------------------------------------------------------------
+Wed Jan 14 01:31:48 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post55:
+  * Add command to show pool information for backends
+
+-------------------------------------------------------------------
+Fri Jan  9 01:32:08 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post53:
+  * Client output is not sorted by --sort_key
+
+-------------------------------------------------------------------
+Wed Jan  7 01:34:30 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post51:
+  * Fix incorrect variable name
+
+-------------------------------------------------------------------
+Mon Dec 22 01:32:20 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post49:
+  * Use immutable arg rather mutable arg
+
+-------------------------------------------------------------------
+Sun Dec 21 01:32:17 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post47:
+  * Add CONTRIBUTING.rst
+
+-------------------------------------------------------------------
+Fri Dec 19 01:02:43 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.post45:
+  * Added type description for volume type client
+
+-------------------------------------------------------------------
+Sat Dec 13 01:03:05 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.44.gc3b1b1b:
+  * Remove cinderclient/tests from coverage report
+  * Fix comment in tearDown()
+
+-------------------------------------------------------------------
+Mon Dec  8 01:00:51 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.40.g2f130e3:
+  * Workflow documentation is now in infra-manual
+  * List all the request items when the list is over osapi_max_limit
+
+-------------------------------------------------------------------
+Thu Dec  4 01:01:45 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.37.g9295913:
+  * Add ability to create volume from image by image name
+
+-------------------------------------------------------------------
+Wed Dec  3 01:03:03 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.35.g3398e42:
+  * Use newer features from keystoneclient
+  * Updated from global requirements
+  * client HTTPClient __init__ fails if auth_url None
+
+-------------------------------------------------------------------
+Tue Dec  2 01:03:12 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.29.g4154f88:
+  * Add the parameter bypass_url to the cinder client
+  * Support Volume Backup Quota
+  * Fix 'search_opts' error with backup delete command
+
+-------------------------------------------------------------------
+Wed Nov 26 00:51:49 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.24.gd6f4ab3:
+  * Fixed typos found by RETF rules
+
+-------------------------------------------------------------------
+Thu Nov 20 14:36:50 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.22.gf5a4e59:
+  * Remove unused methods from utils.py
+  * Adds tty password entry for cinderclient
+  * Don't git ignore .mailmap and .testr.conf
+  * Remove Python 2.4 compat shim
+
+-------------------------------------------------------------------
+Wed Oct 29 01:11:26 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.15.ga6b434e:
+  * cinderclient does not retry with TimeoutException
+
+-------------------------------------------------------------------
+Tue Oct 21 11:38:20 UTC 2014 - dmueller@suse.com
+
+- add rpmlintrc as a source 
+
+-------------------------------------------------------------------
+Wed Oct 15 00:30:32 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.14.g8428ffd:
+  * Fix volume name support of unmanage and replication commands
+  * Stop using intersphinx
+
+-------------------------------------------------------------------
+Fri Oct 10 00:12:19 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.10.gf5d0908:
+  * gitignore /.*
+
+-------------------------------------------------------------------
+Thu Oct  9 00:12:06 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.8.g6f5fd37:
+  * Add profiling support to cinderclient
+
+-------------------------------------------------------------------
+Sat Oct  4 00:31:00 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.7.g892b739:
+  * Simplify cinder manage command args
+  * Add swap and it's variants to gitignore
+
+-------------------------------------------------------------------
+Wed Oct  1 23:42:00 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.4.g26e19ff:
+  * Docstring of unmanage subcommand is missing
+
+-------------------------------------------------------------------
+Tue Sep 30 23:41:34 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.1.2.g5922af5:
+  1.1.1
+  * Ability to pass metadata during snapshot create
+
+-------------------------------------------------------------------
+Sat Sep 27 00:16:09 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.0.2.gac9b091:
+  * Update version to 1.1.1 in index
+
+-------------------------------------------------------------------
+Wed Sep 24 00:31:34 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.1.0.1.g36dd138:
+  * Enables debug mode for keystone session object
+  1.1.0
+
+-------------------------------------------------------------------
+Sat Sep 13 00:06:23 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.74.g4c84641:
+  * Make <volume-types> required option for create cg
+  * Update index file for release of 1.1.0
+
+-------------------------------------------------------------------
+Wed Sep 10 00:06:11 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.70.g9bd8c5d:
+  * Cinder Client for Consistency Groups
+  * Use adapter from keystoneclient
+  * Add client support in Cinder for volume replication
+  * Quotaset update does not return result
+
+-------------------------------------------------------------------
+Sat Aug 30 00:43:29 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.62.g8e87c0b:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Aug 29 00:45:46 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.60.g7bd8eb2:
+  * convert availability zone tests to requests-mock
+  * Fix order of arguments in assertEqual
+
+-------------------------------------------------------------------
+Thu Aug 28 00:53:01 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.56.g8f23885:
+  * Convert snapshot tests to requests-mock
+
+-------------------------------------------------------------------
+Wed Aug 27 00:48:11 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.55.g44f842b:
+  * Replace httpretty with requests-mock
+
+-------------------------------------------------------------------
+Sun Aug 24 00:51:03 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.54.g0c5f0a9:
+  * Avoid extra lookups in extra-specs-list
+
+-------------------------------------------------------------------
+Thu Aug 21 12:28:02 UTC 2014 - tbechtold@suse.com
+
+- Update to version python-cinderclient-1.0.9.52.g09422b6:
+  * Support pagination for volume list
+  * Update theme for docs
+  * Use suitable assert
+  * Reuse Resource from oslo
+- Add python-oslosphinx as BuildRequires according to test-requirements.txt
+
+-------------------------------------------------------------------
+Mon Aug  4 00:41:46 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.44.gc9e7818:
+  * Fix the return code of the command reset-state
+  * Change "Connection refused" to "Connection error"
+  * Add a tox job for generating docs
+
+-------------------------------------------------------------------
+Sun Aug  3 00:43:36 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.38.gd5c5bac:
+  * Mask passwords in client debug output
+
+-------------------------------------------------------------------
+Thu Jul 31 00:43:59 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.36.g6823b18:
+  * sync latest strutils to python-cinderclient
+  * Add tenant uuid when running cinder list --all-tenants
+
+-------------------------------------------------------------------
+Wed Jul 30 00:41:26 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.32.gb4acbd2:
+  * Move debug logging to shell
+
+-------------------------------------------------------------------
+Fri Jul 25 00:37:15 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.31.g14a5aa0:
+  * Retry when connection to cinder is refused
+  * Add commands for managing and unmanaging volumes
+  * Optional size parameter for volume creation
+
+-------------------------------------------------------------------
+Wed Jul 16 23:57:42 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.25.g0c4010e:
+  * Add set-bootable command
+
+-------------------------------------------------------------------
+Mon Jul 14 00:45:30 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.23.gda4117f:
+  * Mark cinderclient as being a universal wheel
+
+-------------------------------------------------------------------
+Sat Jul 12 00:48:42 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.21.g37879ba:
+  * Remove dependent module py3kcompat
+
+-------------------------------------------------------------------
+Thu Jul  3 00:11:05 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.19.gb4906c8:
+  * Fix version discovery and auth_plugins
+
+-------------------------------------------------------------------
+Wed Jul  2 00:10:00 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.18.g67a5f72:
+  * Remove deprecated command-line args
+
+-------------------------------------------------------------------
+Tue Jul  1 00:09:24 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.16.g9485337:
+  * Remove "OPTIONAL:" from optional argument help text
+  * Use region_name in service catalog
+
+-------------------------------------------------------------------
+Thu Jun 26 00:08:12 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.12.gcc90227:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Jun 25 00:12:16 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.11.g408994c:
+  * Fix Volume.extend and Volume.update_readonly_flag methods
+
+-------------------------------------------------------------------
+Thu Jun 19 00:30:14 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.9.ge8e06ee:
+  * Added support for keystone v3client
+
+-------------------------------------------------------------------
+Tue Jun 17 00:32:13 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.8.ga87ee75:
+  * Pretty print of endpoints for ambiguous error
+
+-------------------------------------------------------------------
+Sat Jun 14 00:32:32 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.6.g0039f1d:
+  * Updated from global requirements
+  * Use real timestamps in authentication tests
+
+-------------------------------------------------------------------
+Thu May  8 23:53:33 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.3.g12347c1:
+  * Ambiguous option error should not appear if Arg is SUPPRESS
+
+-------------------------------------------------------------------
+Sun May  4 00:13:53 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.9.1.g0d2bf65:
+  * Update help strings for cinder client
+  1.0.9
+
+-------------------------------------------------------------------
+Tue Apr 22 00:41:54 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.45.g4163fa2:
+  * Bump client doc index version to 1.0.9
+
+-------------------------------------------------------------------
+Sat Apr 19 00:43:03 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.44.g04eaa48:
+  * Fix usage of v1 and v2 availability zones
+  * When there is no error body return the HTTP reason
+
+-------------------------------------------------------------------
+Fri Apr 18 00:42:54 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.40.g71daa36:
+  * Fix malformed encryption-type body in test cases
+  * Accept deleting multiple snapshots in one shot
+  * Add auth_plugin support to cinderclient
+
+-------------------------------------------------------------------
+Wed Apr 16 00:35:25 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.35.geb301ec:
+  * Include the Python 3/3.3 trove classifiers
+
+-------------------------------------------------------------------
+Thu Apr 10 00:21:31 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.33.ga58e14f:
+  * CLI for disable service reason
+  * Wrong hint key in volume create function
+  * Sync latest apiclient code from Oslo
+
+-------------------------------------------------------------------
+Fri Apr  4 08:09:40 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.27.g6dc3185:
+  * replace assertTrue(isinstance) to assertIsInstance
+
+-------------------------------------------------------------------
+Tue Apr  1 23:39:09 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.25.g5278bdb:
+  * Add quota-delete command to cinder client
+
+-------------------------------------------------------------------
+Sat Mar 29 01:36:14 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.24.g07fd0fa:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Mon Mar 24 16:57:29 UTC 2014 - dmueller@suse.com
+
+- fix requires 
+- add python_requires service
+
+-------------------------------------------------------------------
+Fri Mar 21 01:51:48 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.23.g7240040:
+  * Allow list_extensions to work in cinderclient v2
+  * Remove vim header
+
+-------------------------------------------------------------------
+Sat Mar 15 00:55:27 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.19.g98dade0:
+  * Update service function name for service enable
+  * Remove call to undefined install.post_process()
+
+-------------------------------------------------------------------
+Fri Mar 14 01:16:49 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.15.gbd98d32:
+  * Updated from global requirements
+  * Import access module from keystoneclient to handle V3 endpoints
+  * Update doc string for service disable
+
+-------------------------------------------------------------------
+Wed Mar 12 06:23:26 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.10.gde4f9c4:
+  * Client support for export and import backup service metadata
+
+-------------------------------------------------------------------
+Mon Mar  3 00:38:55 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.8.g3ec28c3:
+  * Fix type-delete to allow deletion by name and ID
+
+-------------------------------------------------------------------
+Thu Feb 27 01:16:52 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.7.gea8c955:
+  * Fix typos in the volumes and snapshots docstrings
+  * Set v2 commands available for v2 service_type
+
+-------------------------------------------------------------------
+Wed Feb 26 00:45:48 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.4.g0b9e2f5:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Feb 14 08:09:32 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.3.g6fd8d8e:
+  * Require ctrl_location for encryption-type-create
+
+-------------------------------------------------------------------
+Wed Feb 12 01:05:44 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-cinderclient-1.0.8.2.g7914e46:
+  * Remove tox locale overrides
+
+-------------------------------------------------------------------
+Tue Feb 11 15:38:05 UTC 2014 - speilicke@suse.com
+
+- Update to version python-cinderclient-1.0.8.1.g4273bbe:
+  * Fix typos in cinderclient
+  1.0.8
+  * Revert "Update cinderclient to skip the additional GET during create"
+- Replace git_tarballs source service with download_files and set_version
+  + Use upstream URL as source (enables verification)
+- Require argparse only on SLE
+
+-------------------------------------------------------------------
+Tue Feb  4 00:56:22 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.54:
+  + Fixed image_name from image-name in upload-to-image
+
+-------------------------------------------------------------------
+Mon Feb  3 00:42:18 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.52:
+  + Update release notes for push to pypi
+
+-------------------------------------------------------------------
+Fri Jan 31 01:31:59 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.51:
+  + Sync up with oslo-incubator
+
+-------------------------------------------------------------------
+Tue Jan 28 01:35:21 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.49:
+  + Add shell tests for snapshot_delete
+
+-------------------------------------------------------------------
+Mon Jan 27 10:03:57 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.48:
+  + Remove RAX-specific auth in cinderclient
+
+-------------------------------------------------------------------
+Mon Jan 27 01:11:24 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.46:
+  + Add volume retype command
+  + Add retype to index.rst
+
+-------------------------------------------------------------------
+Sun Jan 26 01:26:34 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.43:
+  + Fix 'search_opts' unexpected keyword argument error
+  + disable/enable a service has no output
+  + Unit tests for limits.py in cinderclient/v1 and v2
+
+-------------------------------------------------------------------
+Fri Jan 24 13:18:46 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.37:
+  + Remove copyright from empty files
+  + Add encryption-type-delete to cinderclient
+
+-------------------------------------------------------------------
+Mon Jan 20 00:52:28 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.33:
+  + Remove dependencies on pep8, pyflakes and flake8
+
+-------------------------------------------------------------------
+Mon Jan 13 01:35:50 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.32:
+  + Update cinderclient to skip the additional GET during create
+
+-------------------------------------------------------------------
+Wed Jan  8 01:29:14 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.31:
+  + Updates .gitignore
+
+-------------------------------------------------------------------
+Thu Jan  2 18:16:41 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.29:
+  + Fix inappropriate comment for volume update api
+  + Fix RateLimit.__repr__ - self.method is undefined
+  + Updates .gitignore for environment files
+
+-------------------------------------------------------------------
+Wed Dec 18 00:47:40 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.25:
+  + Updates tox.ini to use new features
+  + Discrepancy between README.rst and cinder help
+
+-------------------------------------------------------------------
+Fri Dec 13 01:29:29 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.21:
+  + Reset-state and snapshot-reset-state for multiple objects
+  + Fix broken argument name in v2 volume extend routine
+
+-------------------------------------------------------------------
+Thu Dec 12 00:51:06 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.17:
+  + Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Dec  6 10:27:59 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.16:
+  + Ignore swap files generated during file edting by vim
+
+-------------------------------------------------------------------
+Wed Dec  4 00:48:40 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.15:
+  + Update HACKING.rst with release note requirement
+  + Add assert to delete multiple test
+  + Add search_opts into the method list() for VolumeTypeManager
+
+-------------------------------------------------------------------
+Sun Dec  1 01:05:35 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.10:
+  + Fix string representation of VolumeBackupsRestore
+
+-------------------------------------------------------------------
+Fri Nov 29 00:53:38 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.8:
+  + Fix typo in cinderclient
+
+-------------------------------------------------------------------
+Thu Nov 28 00:49:53 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.7:
+  + Fix inappropriate comment for set_metadata
+
+-------------------------------------------------------------------
+Sat Nov 23 01:30:54 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.6:
+  + Added support for running the tests under PyPy with tox
+
+-------------------------------------------------------------------
+Sun Nov 17 00:38:56 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.4:
+  + Updated from global requirements
+
+-------------------------------------------------------------------
+Sat Nov 16 00:58:54 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.3:
+  + change assertEquals to assertEqual
+
+-------------------------------------------------------------------
+Fri Nov 15 17:42:01 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.2:
+  + Add index.rst section for patches merged to master
+
+-------------------------------------------------------------------
+Tue Nov 12 01:19:20 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.7.1:
+  + Update link in HACKING.rst and Make it DRYer
+
+-------------------------------------------------------------------
+Fri Nov  1 01:09:29 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.6.29:
+  + Update version and index.rst for push
+
+-------------------------------------------------------------------
+Thu Oct 31 01:35:43 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.6.28:
+  + Fix py33 due to readonly and metadata patches
+  + Enable del of other tenants resources by name
+
+-------------------------------------------------------------------
+Wed Oct 30 10:11:10 UTC 2013 - dmueller@suse.com
+
+- move test-related requires to test subpackage 
+
+-------------------------------------------------------------------
+Tue Oct 29 14:06:12 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.6.25:
+  + Adding volume readonly-mode-update interface to Cinder client
+
+-------------------------------------------------------------------
+Mon Oct 28 02:06:19 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.6.22:
+  + Addition of volume/snapshot_metadata CLI
+
+-------------------------------------------------------------------
+Sat Oct 26 23:38:45 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.6.20:
+  + Enable "cinder delete" can delete multiple volumes in one request
+
+-------------------------------------------------------------------
+Wed Oct 23 23:44:30 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.6.19:
+  + Deprecates --volume-id arg for v2 backup-restore
+  + python3: align the order of parameters for urlencode()
+  + python3: sort dict for post_volumes_1234_action test
+
+-------------------------------------------------------------------
+Wed Oct 23 00:03:37 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.6.14:
+  + Fixes broken v1 and v2 api backup-restore
+
+-------------------------------------------------------------------
+Tue Oct 22 00:00:28 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.6.12:
+  + Add quota-usage command
+
+-------------------------------------------------------------------
+Sun Oct 20 00:17:00 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.6.10:
+  + Override endpoint URL check for API version
+
+-------------------------------------------------------------------
+Thu Oct 17 16:18:01 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.6.9:
+  + python3: iteration order of dict is unpredictable
+
+-------------------------------------------------------------------
+Mon Oct 14 23:53:57 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.6.7:
+  + Fix the failure of fetching the version in cinder endpoint
+
+-------------------------------------------------------------------
+Mon Oct 14 12:32:11 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.6.5:
+  + Updated from global requirements
+  + Fix DeprecationWarning when printing exception
+  + python3: Refactor dict for python2/python3 compat
+
+-------------------------------------------------------------------
+Tue Oct  8 12:21:49 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.5.41:
+  + Replace OpenStack LLC with OpenStack Foundation
+  + Use v2 endpoint with v2 shell for migration
+  + Implement qos support
+  + Fix find volume for migrate command
+  + Synch up with OSLO-Incubator
+  + Error if arguments are not supplied for rename commands
+  + Update docs/index.rst with release info for 1.0.6
+
+-------------------------------------------------------------------
+Thu Sep 26 10:11:11 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.5.29:
+  + Fix help messages for name arguments
+  + Add volume name arguments
+
+-------------------------------------------------------------------
+Sun Sep 15 23:49:02 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.5.25:
+  + Implement ability to migrate volume
+
+-------------------------------------------------------------------
+Fri Sep  6 00:12:40 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.5.24:
+  + Don't need to init testr explicitly
+
+-------------------------------------------------------------------
+Mon Sep  2 00:13:46 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.5.23:
+  + Add volume encryption metadata to cinderclient
+
+-------------------------------------------------------------------
+Thu Aug 29 00:00:45 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.5.21:
+  + Add update_snapshot_metadata action
+  + Fixing erroneous clearing of test callstack
+
+-------------------------------------------------------------------
+Thu Aug 15 23:38:58 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.5.18:
+  + Fixing malformed assert message formatting
+
+-------------------------------------------------------------------
+Wed Aug 14 23:40:41 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.5.16:
+  + Updated from global requirements
+  + python3: Fix tox requirements
+  + Add timeout parameter in requests
+  + Sync strutils from oslo
+  + Add print for "backup-create" command
+
+-------------------------------------------------------------------
+Tue Aug 13 23:38:59 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.5.7:
+  + Add commandline option --metadata for cinder list
+
+-------------------------------------------------------------------
+Tue Aug 13 00:02:36 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.5.5:
+  + Add missing babel dependency
+  + convert third-party exception to ConnectionError
+
+-------------------------------------------------------------------
+Sat Aug 10 10:54:02 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.5.1:
+  + Add support for multiple cinder endpoints
+
+-------------------------------------------------------------------
+Wed Aug  7 00:15:19 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.4.86:
+  + Provide cinder CLI man page.
+  + Sync with global requirements
+  + Add a couple more things to index before release
+
+-------------------------------------------------------------------
+Tue Jul 16 00:21:35 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.4.62:
+  + Update to latest openstack/requirements.
+
+-------------------------------------------------------------------
+Sat Jul 13 23:35:16 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.4.61:
+  + Fix wrong method call for extend subcommand
+  + Sync install_venv_common from oslo
+  + Implement ability to extend volume for v1.
+
+-------------------------------------------------------------------
+Fri Jul  5 23:42:47 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.4.56:
+  + Implement ability to extend volume.
+  + Enable ability to reset state on snapshots.
+
+-------------------------------------------------------------------
+Wed Jul  3 08:38:49 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.4.52:
+  + Use exceptions from oslo
+
+-------------------------------------------------------------------
+Tue Jul  2 23:44:53 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 1.0.4.50:
+  + Fix volume info display error on create with v2.
+
+-------------------------------------------------------------------
+Wed Jun 26 22:26:45 UTC 2013 - dmueller@suse.com
+
+- update requires 
+
+-------------------------------------------------------------------
+Wed May 29 11:21:43 UTC 2013 - dmueller@suse.com
+
+- remove setBadness call from rpmlintrc
+
+-------------------------------------------------------------------
+Mon May 27 09:49:50 UTC 2013 - speilicke@suse.com
+
+- Add new build dependencies:
+  + python-pbr
+  + python-d2to1
+
+-------------------------------------------------------------------
+Mon May  6 11:29:42 UTC 2013 - dmueller@suse.com
+
+- update requires to python-PrettyTable
+
+-------------------------------------------------------------------
+Tue Apr  2 09:46:11 UTC 2013 - dmueller@suse.com
+
+- update to 1.0.3:
+  + Released version of the tarball
+
+-------------------------------------------------------------------
+Mon Mar 18 10:42:23 UTC 2013 - speilicke@suse.com
+
+- Drop +git.$TIMESTAMP.$COMMITHASH version suffix
+
+--------------------------------------------------------------------
+Fri Feb 22 12:57:59 UTC 2013 - saschpe@suse.de
+
+- Update to version 1.0.2.26+git.1361537879.458ff24:
+  + Allow requests 0.8 and greater
+  + Avoid UnicodeEncodeError exception on exception
+  + Handle metadata args the same for all calls.
+  + Fix upload-to-image volume_id help
+  + adding v2 support to cinderclient
+  + Fix typo breaking --debug option to cinder client
+- Drop patches (merged upstream):
+  + print-exceptions.patch
+  + support-requests-1.0.patch
+
+-------------------------------------------------------------------
+Fri Feb 22 11:27:25 UTC 2013 - saschpe@suse.de
+
+- BuildRequire openstack-suse-macros instead of openstack-macros
+
+-------------------------------------------------------------------
+Tue Feb 12 17:20:28 UTC 2013 - dmueller@suse.com
+
+- Update support-requests-1.0.patch:
+  + Use alternative version from upstream
+
+-------------------------------------------------------------------
+Mon Feb 11 16:14:36 UTC 2013 - dmueller@suse.com
+
+- Fix requires of test package
+
+--------------------------------------------------------------------
+Mon Feb 11 15:10:30 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 1.0.2.17+git.1360595430.c5cd7e4:
+  + Correct parsing of volume metadata
+  + Update to latest oslo version code.
+  + Re-add setuptools-git to setup.py.
+
+-------------------------------------------------------------------
+Wed Feb  6 16:35:02 UTC 2013 - dmueller@suse.com
+
+- Add print-exceptions.patch:
+  Fix printing of exceptions
+- Add support-requests-1.0.patch
+  Fix support for requests >= 1.0
+
+--------------------------------------------------------------------
+Mon Feb  4 12:03:11 UTC 2013 - dmueller@suse.com
+
+- Update to version 1.0.2.13+git.1359979391.b49f727:
+  + Fixed documentation of the cinder shell command.
+  + Change Nova -> Cinder in credentials error message
+  + Add ability to call force_delete from cinderclient
+  + Move from nose to testr.
+  + Fixed Version Functionality
+  + Add upload-to-image function to client.
+
+-------------------------------------------------------------------
+Thu Jan 17 14:08:20 UTC 2013 - vuntz@suse.com
+
+- Use version-regexp param for git_tarballs service to avoid
+  uselessly including the last git commit id twice.
+
+--------------------------------------------------------------------
+Mon Jan 14 12:42:54 UTC 2013 - saschpe@suse.de
+
+- Update to version 1.0.2.3.g61e2a42+git.1358163774.61e2a42:
+  + Add access to update volume metadata.
+  + Move from unittest2 to testtools
+  + Add list-extensions capability to cinderclient.
+- Updated requirements
+
+--------------------------------------------------------------------
+Wed Dec 19 11:26:15 UTC 2012 - saschpe@suse.de
+
+- Move to obs-service-git_tarballs
+  + Drop BuildRequires: python-setuptools-git
+- Update to version 1.0.1.5.g82e47d0+git.1355912775.82e47d0:
+  + Use requests module for HTTP/HTTPS
+  + Port some additional logging changes from novaclient
+  + Bring back the output from client.http_log()
+  + Update to swapped versioninfo logic.
+  + Align cinderclient version code.
+  + Adding bootable column to volume list view
+  + Pin pep8 to 1.3.3
+  + show help when calling without arguments
+  + Add retries to cinderclient.
+  + Fixes setup compatibility issue on Windows
+  + Revert "Add retries to cinderclient."
+  + Add retries to cinderclient.
+  + Remove extra-specs from types-list command output
+  + Remove attach/detach code from cinderclient
+
+-------------------------------------------------------------------
+Wed Dec  5 09:28:00 UTC 2012 - saschpe@suse.de
+
+- Use @PARENT_TAG@ in _service file to automate versioning
+
+-------------------------------------------------------------------
+Thu Nov 15 13:03:57 UTC 2012 - saschpe@suse.de
+
+- Use openstack-macros
+- Add cinderclient/versioninfo for build
+
+-------------------------------------------------------------------
+Thu Nov  8 11:59:12 UTC 2012 - saschpe@suse.de
+
+- No need for cinderclient/versioninfo, it's only used in setup.py
+  but our package has it's own version
+
+-------------------------------------------------------------------
+Thu Nov  8 11:28:25 UTC 2012 - saschpe@suse.de
+
+- Split of doc package
+- Drop from_vcs build flag
+
+-------------------------------------------------------------------
+Wed Oct 31 14:45:38 UTC 2012 - saschpe@suse.de
+
+- Re-add missing tarball
+
+-------------------------------------------------------------------
+Wed Oct 31 14:02:10 UTC 2012 - saschpe@suse.de
+
+- Fixed Version tag
+
+-------------------------------------------------------------------
+Wed Oct 31 12:19:47 UTC 2012 - saschpe@suse.de
+
+- Set version to 1.0.0 (was wrong before)
+
+-------------------------------------------------------------------
+Tue Oct 16 07:36:11 UTC 2012 - saschpe@suse.de
+
+- Build documentation
+- Added rpmlint file
+
+-------------------------------------------------------------------
+Tue Oct 16 06:53:06 UTC 2012 - saschpe@suse.de
+
+- Initial version
+

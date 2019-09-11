@@ -1,0 +1,11 @@
+--- src/log.c.orig
++++ src/log.c
+@@ -249,7 +249,7 @@ static void output_to_syslog(const char
+    va_copy(ap_copy, ap);
+    vsnprintf(outbuf, sizeof(outbuf), format, ap_copy);
+    va_end(ap_copy);
+-   syslog(LOG_USER|level, "%s:%i %s%s", file, line, label, outbuf);
++   syslog(LOG_DAEMON|level, "%s:%i %s%s", file, line, label, outbuf);
+    return;
+ }
+ 

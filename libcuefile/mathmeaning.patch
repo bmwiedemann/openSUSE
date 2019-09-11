@@ -1,0 +1,20 @@
+--- src/cd.c.orig	2011-06-18 14:28:43.000000000 +0300
++++ src/cd.c	2013-03-10 19:13:53.901992012 +0200
+@@ -173,7 +173,7 @@
+ 
+ Track *cd_get_track (Cd *cd, int i)
+ {
+-	if (0 < i <= cd->ntrack)
++	if ((0 < i) && (i <= cd->ntrack))
+ 		return cd->track[i - 1];
+ 
+ 	return NULL;
+@@ -306,7 +306,7 @@
+ 
+ long track_get_index (Track *track, int i)
+ {
+-	if (0 <= i < track->nindex)
++	if ((0 <= i) &&  (i < track->nindex))
+ 		return track->index[i];
+ 
+ 	return -1;

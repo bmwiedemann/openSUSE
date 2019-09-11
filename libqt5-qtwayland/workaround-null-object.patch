@@ -1,0 +1,21 @@
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Subject: Work around crash in QtWaylandClient::QWaylandEglWindow::updateSurface
+References: kde#381630
+
+object() is nullptr when it crashes, so do not try to reference it.
+This is only a workaround as object() should never be nullptr AFAICT.
+So far I haven't discovered any bad side effects.
+
+Index: qtwayland-opensource-src-5.9.1/src/hardwareintegration/client/wayland-egl/qwaylandeglwindow.cpp
+===================================================================
+--- qtwayland-opensource-src-5.9.1.orig/src/hardwareintegration/client/wayland-egl/qwaylandeglwindow.cpp
++++ qtwayland-opensource-src-5.9.1/src/hardwareintegration/client/wayland-egl/qwaylandeglwindow.cpp
+@@ -112,7 +112,7 @@ void QWaylandEglWindow::updateSurface(bo
+     // mesa's egl returns NULL if we try to create a, invalid wl_egl_window, however not all EGL
+     // implementations may do that, so check the size ourself. Besides, we must deal with resizing
+     // a valid window to 0x0, which would make it invalid. Hence, destroy it.
+-    if (sizeWithMargins.isEmpty()) {
++    if (sizeWithMargins.isEmpty() || !object()) {
+         if (m_eglSurface) {
+             eglDestroySurface(m_clientBufferIntegration->eglDisplay(), m_eglSurface);
+             m_eglSurface = 0;

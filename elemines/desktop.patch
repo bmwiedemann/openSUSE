@@ -1,0 +1,16 @@
+Index: elemines-0.1/data/desktop/elemines.desktop
+===================================================================
+--- elemines-0.1.orig/data/desktop/elemines.desktop
++++ elemines-0.1/data/desktop/elemines.desktop
+@@ -2,9 +2,10 @@
+ Version=1.0
+ Type=Application
+ Name=elemines
++GenericName=elemines
+ Comment=EFL mine sweeper
+ Exec=elemines
+ Terminal=false
+ StartupNotify=true
+ Icon=elemines
+-Categories=Applications;Game;
++Categories=Applications;Game;ArcadeGame;

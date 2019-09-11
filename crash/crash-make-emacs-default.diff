@@ -1,0 +1,30 @@
+---
+ main.c |    8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+Index: b/main.c
+===================================================================
+--- a/main.c
++++ b/main.c
+@@ -1164,12 +1164,6 @@ setup_environment(int argc, char **argv)
+ 	pc->flags |= READLINE;
+ 	pc->editing_mode = "no_mode";
+ 
+-	if ((p1 = getenv("EDITOR"))) {
+-		if (strstr(p1, "vi"))
+-			pc->editing_mode = "vi";
+-		if (strstr(p1, "emacs"))
+-			pc->editing_mode = "emacs";
+-	}
+ 
+ 	/*
+ 	 *  Resolve $HOME .rc file first, then the one in the local directory.
+@@ -1219,7 +1213,7 @@ setup_environment(int argc, char **argv)
+ 	}
+ 
+ 	if (STREQ(pc->editing_mode, "no_mode"))
+-		pc->editing_mode = "vi";
++		pc->editing_mode = "emacs";
+ 
+ 	machdep_init(SETUP_ENV);
+ }

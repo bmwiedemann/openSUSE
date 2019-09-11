@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Sun Jul  9 20:48:05 UTC 2017 - seife+obs@b1-systems.com
+
+- actually build and install the cursors, instead of random stuff
+
+-------------------------------------------------------------------
+Sat Jun 24 06:51:50 UTC 2017 - lbeltrame@kde.org
+
+- Update to the latest version in Debian (0.4.4)
+  * Provide DMZ-White and DMZ-Black cursors
+
+-------------------------------------------------------------------
+Thu Jan 17 16:42:54 UTC 2013 - vuntz@opensuse.org
+
+- Change license from GPL-2.0+ to CC-BY-SA-3.0. Fix bnc#782743.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Sun Aug  8 01:53:00 CEST 2010 - vuntz@opensuse.org
+
+- Rename package from icon-theme-dmz-cursors to
+  dmz-icon-theme-cursors, to follow convention used by other
+  packages. Add appropriate Provides/Obsoletes.
+
+-------------------------------------------------------------------
+Wed Aug 19 02:42:29 CEST 2009 - abockover@novell.com
+
+- created package 
+

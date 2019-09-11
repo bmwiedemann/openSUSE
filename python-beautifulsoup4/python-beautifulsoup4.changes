@@ -1,0 +1,511 @@
+-------------------------------------------------------------------
+Mon Jul 22 16:18:23 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 4.8.0
+  * It's now possible to customize the TreeBuilder object by passing
+    keyword arguments into the BeautifulSoup constructor. The main
+    reason to do this right now is to change how which attributes are
+    treated as multi-valued attributes (the way 'class' is treated by
+    default). You can do this with the `multi_valued_attributes` argument.
+  * The role of Formatter objects has been greatly expanded. The Formatter
+    class now controls the following:
+    > The function to call to perform entity substitution. (This was
+      previously Formatter's only job.)
+    > Which tags should be treated as containing CDATA and have their
+      contents exempt from entity substitution.
+    > The order in which a tag's attributes are output.
+    > Whether or not to put a '/' inside a void element, e.g. '<br/>' vs '<br>'
+    All preexisting code should work as before.
+  * Added a new method to the API, Tag.smooth(), which consolidates
+    multiple adjacent NavigableString elements.
+  * &apos; (which is valid in XML, XHTML, and HTML 5, but not HTML 4) is now
+    recognized as a named entity and converted to a single quote.
+
+-------------------------------------------------------------------
+Fri Mar  1 11:23:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not generate doc for py2 and py3 variant they are the same
+  so keep just one around
+- Update to 4.7.1:
+  * Fixed a significant performance problem introduced in 4.7.0. [bug=1810617]
+  * Fixed an incorrectly raised exception when inserting a tag before or
+    after an identical tag. [bug=1810692]
+  * Beautiful Soup will no longer try to keep track of namespaces that
+    are not defined with a prefix; this can confuse soupselect. [bug=1810680]
+  * Tried even harder to avoid the deprecation warning originally fixed in
+     4.6.1. [bug=1778909]
+  * Beautiful Soup's CSS Selector implementation has been replaced by a
+    dependency on Isaac Muse's SoupSieve project (the soupsieve package
+    on PyPI). The good news is that SoupSieve has a much more robust and
+    complete implementation of CSS selectors, resolving a large number
+    of longstanding issues. The bad news is that from this point onward,
+    SoupSieve must be installed if you want to use the select() method.
+  * Added the PageElement.extend() method, which works like list.append().
+     [bug=1514970]
+  * PageElement.insert_before() and insert_after() now take a variable
+     number of arguments. [bug=1514970]
+  * Fix a number of problems with the tree builder that caused
+    trees that were superficially okay, but which fell apart when bits
+    were extracted. Patch by Isaac Muse. [bug=1782928,1809910]
+  * Fixed a problem with the tree builder in which elements that
+    contained no content (such as empty comments and all-whitespace
+    elements) were not being treated as part of the tree. Patch by Isaac
+    Muse. [bug=1798699]
+  * Fixed a problem with multi-valued attributes where the value
+    contained whitespace. Thanks to Jens Svalgaard for the
+    fix. [bug=1787453]
+  * Clarified ambiguous license statements in the source code. Beautiful
+    Soup is released under the MIT license, and has been since 4.4.0.
+
+
+-------------------------------------------------------------------
+Thu Dec  6 14:47:30 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 4.6.3
+ * Fix an exception when a custom formatter was asked to format
+     a void element
+
+-------------------------------------------------------------------
+Sun Aug  5 11:02:25 UTC 2018 - adrian@suse.de
+
+- update to 4.6.1:
+  * Stop data loss when encountering an empty numeric entity, and
+    possibly in other cases.  Thanks to tos.kamiya for the fix. [bug=1698503]
+  
+  * Preserve XML namespaces introduced inside an XML document, not just
+     the ones introduced at the top level. [bug=1718787]
+  
+  * Added a new formatter, "html5", which represents void elements
+     as "<element>" rather than "<element/>".  [bug=1716272]
+  
+  * Fixed a problem where the html.parser tree builder interpreted
+    a string like "&foo " as the character entity "&foo;"  [bug=1728706]
+  
+  * Correctly handle invalid HTML numeric character entities like &#147;
+    which reference code points that are not Unicode code points. Note
+    that this is only fixed when Beautiful Soup is used with the
+    html.parser parser -- html5lib already worked and I couldn't fix it
+    with lxml.  [bug=1782933]
+  
+  * Improved the warning given when no parser is specified. [bug=1780571]
+  
+  * When markup contains duplicate elements, a select() call that
+    includes multiple match clauses will match all relevant
+    elements. [bug=1770596]
+  
+  * Fixed code that was causing deprecation warnings in recent Python 3
+    versions. Includes a patch from Ville Skyttä. [bug=1778909] [bug=1689496]
+  
+  * Fixed a Windows crash in diagnose() when checking whether a long
+    markup string is a filename. [bug=1737121]
+  
+  * Stopped HTMLParser from raising an exception in very rare cases of
+    bad markup. [bug=1708831]
+  
+  * Fixed a bug where find_all() was not working when asked to find a
+    tag with a namespaced name in an XML document that was parsed as
+    HTML. [bug=1723783]
+  
+  * You can get finer control over formatting by subclassing
+    bs4.element.Formatter and passing a Formatter instance into (e.g.)
+    encode(). [bug=1716272]
+  
+  * You can pass a dictionary of `attrs` into
+    BeautifulSoup.new_tag. This makes it possible to create a tag with
+    an attribute like 'name' that would otherwise be masked by another
+    argument of new_tag. [bug=1779276]
+  
+  * Clarified the deprecation warning when accessing tag.fooTag, to cover
+    the possibility that you might really have been looking for a tag
+    called 'fooTag'.
+
+-------------------------------------------------------------------
+Mon Jul 16 18:08:01 UTC 2018 - mcepl@suse.com
+
+- Clean SPEC file
+  Use py.test for running the tests instead of nosetests, which
+  breaks with python 3.7.
+
+-------------------------------------------------------------------
+Tue Mar  6 12:27:41 UTC 2018 - aplanas@suse.com
+
+- Allows Recommends and Suggest in Fedora
+
+-------------------------------------------------------------------
+Tue Feb 27 17:00:11 UTC 2018 - aplanas@suse.com
+
+- Recommends and Suggest are for SUSE
+
+-------------------------------------------------------------------
+Thu Aug 10 13:38:03 UTC 2017 - tbechtold@suse.com
+
+- Only Suggests python-html5lib and python-lxml (instead of Requires
+  them). Both are not striclty needed. See
+  https://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-a-parser
+
+-------------------------------------------------------------------
+Wed Jul  5 06:28:31 UTC 2017 - dmueller@suse.com
+
+- update to 4.6.0:
+  * Added the `Tag.get_attribute_list` method, which acts like `Tag.get` for
+    getting the value of an attribute, but which always returns a list,
+    whether or not the attribute is a multi-value attribute. [bug=1678589]
+  * Improved the handling of empty-element tags like <br> when using the
+    html.parser parser. [bug=1676935]
+  * HTML parsers treat all HTML4 and HTML5 empty element tags (aka void
+    element tags) correctly. [bug=1656909]
+  * Namespace prefix is preserved when an XML tag is copied. Thanks
+    to Vikas for a patch and test. [bug=1685172]
+
+-------------------------------------------------------------------
+Mon May 22 13:25:06 UTC 2017 - aloisio@gmx.com
+
+- Fixed failing tests in python3
+
+-------------------------------------------------------------------
+Sat Apr  8 17:35:17 UTC 2017 - aloisio@gmx.com
+
+- update to version 4.5.3:
+  * Fixed foster parenting when html5lib is the tree builder. Thanks
+    to Geoffrey Sneddon for a patch and test.
+  * Fixed yet another problem that caused the html5lib tree builder to
+    create a disconnected parse tree. [bug=1629825]
+  changes from version 4.5.2:
+  * Apart from the version number, this release is identical to
+    4.5.3. Due to user error, it could not be completely uploaded to
+    PyPI. Use 4.5.3 instead.
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Thu Sep  1 19:20:36 UTC 2016 - tbechtold@suse.com
+
+- Relax BuildRequires for python-Sphinx
+
+-------------------------------------------------------------------
+Thu Sep  1 10:26:24 UTC 2016 - tbechtold@suse.com
+
+- update to 4.5.1:
+  * Fixed a crash when passing Unicode markup that contained a
+    processing instruction into the lxml HTML parser on Python
+    3. [bug=1608048]
+  * Beautiful Soup is no longer compatible with Python 2.6. This
+    actually happened a few releases ago, but it's now official.
+  * Beautiful Soup will now work with versions of html5lib greater than
+    0.99999999. [bug=1603299]
+  * If a search against each individual value of a multi-valued
+    attribute fails, the search will be run one final time against the
+    complete attribute value considered as a single string. That is, if
+    a tag has class="foo bar" and neither "foo" nor "bar" matches, but
+    "foo bar" does, the tag is now considered a match.
+    This happened in previous versions, but only when the value being
+    searched for was a string. Now it also works when that value is
+    a regular expression, a list of strings, etc. [bug=1476868]
+  * Fixed a bug that deranged the tree when a whitespace element was
+    reparented into a tag that contained an identical whitespace
+    element. [bug=1505351]
+  * Added support for CSS selector values that contain quoted spaces,
+    such as tag[style="display: foo"]. [bug=1540588]
+  * Corrected handling of XML processing instructions. [bug=1504393]
+  * Corrected an encoding error that happened when a BeautifulSoup
+    object was copied. [bug=1554439]
+  * The contents of <textarea> tags will no longer be modified when the
+    tree is prettified. [bug=1555829]
+  * When a BeautifulSoup object is pickled but its tree builder cannot
+    be pickled, its .builder attribute is set to None instead of being
+    destroyed. This avoids a performance problem once the object is
+    unpickled. [bug=1523629]
+  * Specify the file and line number when warning about a
+    BeautifulSoup object being instantiated without a parser being
+    specified. [bug=1574647]
+  * The `limit` argument to `select()` now works correctly, though it's
+    not implemented very efficiently. [bug=1520530]
+  * Fixed a Python 3 ByteWarning when a URL was passed in as though it
+    were markup. Thanks to James Salter for a patch and
+    test. [bug=1533762]
+  * We don't run the check for a filename passed in as markup if the
+    'filename' contains a less-than character; the less-than character
+    indicates it's most likely a very small document. [bug=1577864]
+
+-------------------------------------------------------------------
+Sun Nov 15 16:31:46 UTC 2015 - idonmez@suse.com
+
+- Update to version 4.4.1
+  * Fixed a bug that deranged the tree when part of it was
+    removed. Thanks to Eric Weiser for the patch and John Wiseman for a
+    test. lp#1481520
+  * Fixed a parse bug with the html5lib tree-builder. Thanks to Roel
+    Kramer for the patch. lp#1483781
+  * Improved the implementation of CSS selector grouping. Thanks to
+    Orangain for the patch. lp#1484543
+  * Fixed the test_detect_utf8 test so that it works when chardet is
+    installed. lp#1471359
+  * Corrected the output of Declaration objects. lp#1477847
+
+-------------------------------------------------------------------
+Mon Jul 27 18:54:20 UTC 2015 - aloisio@gmx.com
+
+- update to 4.4.0
+  Especially important changes:
+  * Added a warning when you instantiate a BeautifulSoup object without
+    explicitly naming a parser. [bug=1398866]
+  * __repr__ now returns an ASCII bytestring in Python 2, and a Unicode
+    string in Python 3, instead of a UTF8-encoded bytestring in both
+    versions. In Python 3, __str__ now returns a Unicode string instead
+    of a bytestring. [bug=1420131]
+  * The `text` argument to the find_* methods is now called `string`,
+    which is more accurate. `text` still works, but `string` is the
+    argument described in the documentation. `text` may eventually
+    change its meaning, but not for a very long time. [bug=1366856]
+  * Changed the way soup objects work under copy.copy(). Copying a
+    NavigableString or a Tag will give you a new NavigableString that's
+    equal to the old one but not connected to the parse tree. Patch by
+    Martijn Peters. [bug=1307490]
+  * Started using a standard MIT license. [bug=1294662]
+  * Added a Chinese translation of the documentation by Delong .w.
+  New features:
+  * Introduced the select_one() method, which uses a CSS selector but
+    only returns the first match, instead of a list of
+    matches. [bug=1349367]
+  * You can now create a Tag object without specifying a
+    TreeBuilder. Patch by Martijn Pieters. [bug=1307471]
+  * You can now create a NavigableString or a subclass just by invoking
+    the constructor. [bug=1294315]
+  * Added an `exclude_encodings` argument to UnicodeDammit and to the
+    Beautiful Soup constructor, which lets you prohibit the detection of
+    an encoding that you know is wrong. [bug=1469408]
+  * The select() method now supports selector grouping. Patch by
+    Francisco Canas [bug=1191917]
+  Bug fixes:
+  * Fixed yet another problem that caused the html5lib tree builder to
+    create a disconnected parse tree. [bug=1237763]
+  * Force object_was_parsed() to keep the tree intact even when an element
+    from later in the document is moved into place. [bug=1430633]
+  * Fixed yet another bug that caused a disconnected tree when html5lib
+    copied an element from one part of the tree to another. [bug=1270611]
+  * Fixed a bug where Element.extract() could create an infinite loop in
+    the remaining tree.
+  * The select() method can now find tags whose names contain
+    dashes. Patch by Francisco Canas. [bug=1276211]
+  * The select() method can now find tags with attributes whose names
+    contain dashes. Patch by Marek Kapolka. [bug=1304007]
+  * Improved the lxml tree builder's handling of processing
+    instructions. [bug=1294645]
+  * Restored the helpful syntax error that happens when you try to
+    import the Python 2 edition of Beautiful Soup under Python 3.
+    [bug=1213387]
+  * In Python 3.4 and above, set the new convert_charrefs argument to
+    the html.parser constructor to avoid a warning and future
+    failures. Patch by Stefano Revera. [bug=1375721]
+  * The warning when you pass in a filename or URL as markup will now be
+    displayed correctly even if the filename or URL is a Unicode
+    string. [bug=1268888]
+  * If the initial <html> tag contains a CDATA list attribute such as
+    'class', the html5lib tree builder will now turn its value into a
+    list, as it would with any other tag. [bug=1296481]
+  * Fixed an import error in Python 3.5 caused by the removal of the
+    HTMLParseError class. [bug=1420063]
+  * Improved docstring for encode_contents() and
+    decode_contents(). [bug=1441543]
+  * Fixed a crash in Unicode, Dammit's encoding detector when the name
+    of the encoding itself contained invalid bytes. [bug=1360913]
+  * Improved the exception raised when you call .unwrap() or
+    .replace_with() on an element that's not attached to a tree.
+  * Raise a NotImplementedError whenever an unsupported CSS pseudoclass
+    is used in select(). Previously some cases did not result in a
+    NotImplementedError.
+  * It's now possible to pickle a BeautifulSoup object no matter which
+    tree builder was used to create it. However, the only tree builder
+    that survives the pickling process is the HTMLParserTreeBuilder
+    ('html.parser'). If you unpickle a BeautifulSoup object created with
+    some other tree builder, soup.builder will be None. [bug=1231545]
+- Aligned requirement version with PyPI
+
+-------------------------------------------------------------------
+Fri Jul 24 20:25:54 UTC 2015 - seife+obs@b1-systems.com
+
+- fix non-SUSE build by conditionalizing Recommends: tag
+
+-------------------------------------------------------------------
+Wed Jan  8 15:05:55 UTC 2014 - speilicke@suse.com
+
+- Add beautifulsoup4-lxml-fixes.patch: LXML fixes
+
+-------------------------------------------------------------------
+Tue Oct 22 13:00:00 UTC 2013 - toddrme2178@gmail.com
+
+- update to 4.3.2
+  * Fixed a bug in which short Unicode input was improperly encoded to
+    ASCII when checking whether or not it was the name of a file on
+    disk. [bug=1227016]
+  * Fixed a crash when a short input contains data not valid in
+    filenames. [bug=1232604]
+  * Fixed a bug that caused Unicode data put into UnicodeDammit to
+    return None instead of the original data. [bug=1214983]
+  * Combined two tests to stop a spurious test failure when tests are
+    run by nosetests. [bug=1212445]
+- update to 4.3.1
+  * Fixed yet another problem with the html5lib tree builder, caused by
+    html5lib's tendency to rearrange the tree during
+    parsing. [bug=1189267]
+  * Fixed a bug that caused the optimized version of find_all() to
+    return nothing. [bug=1212655]
+- update to 4.3.0
+  * Instead of converting incoming data to Unicode and feeding it to the
+    lxml tree builder in chunks, Beautiful Soup now makes successive
+    guesses at the encoding of the incoming data, and tells lxml to
+    parse the data as that encoding. Giving lxml more control over the
+    parsing process improves performance and avoids a number of bugs and
+    issues with the lxml parser which had previously required elaborate
+    workarounds:
+    - An issue in which lxml refuses to parse Unicode strings on some
+      systems. [bug=1180527]
+    - A returning bug that truncated documents longer than a (very
+      small) size. [bug=963880]
+    - A returning bug in which extra spaces were added to a document if
+      the document defined a charset other than UTF-8. [bug=972466]
+    This required a major overhaul of the tree builder architecture. If
+    you wrote your own tree builder and didn't tell me, you'll need to
+    modify your prepare_markup() method.
+  * The UnicodeDammit code that makes guesses at encodings has been
+    split into its own class, EncodingDetector. A lot of apparently
+    redundant code has been removed from Unicode, Dammit, and some
+    undocumented features have also been removed.
+  * Beautiful Soup will issue a warning if instead of markup you pass it
+    a URL or the name of a file on disk (a common beginner's mistake).
+  * A number of optimizations improve the performance of the lxml tree
+    builder by about 33%, the html.parser tree builder by about 20%, and
+    the html5lib tree builder by about 15%.
+  * All find_all calls should now return a ResultSet object. Patch by
+    Aaron DeVore. [bug=1194034]
+
+-------------------------------------------------------------------
+Fri Jul 19 17:07:52 UTC 2013 - berendt@b1-systems.de
+
+- remove .buildinfo before installation
+
+-------------------------------------------------------------------
+Thu Jul 18 08:25:50 UTC 2013 - berendt@b1-systems.de
+
+- removed python-lxml as build requirement to be able to
+  successfully pass the check section on SLES11 SP3
+
+-------------------------------------------------------------------
+Thu Jun 27 13:32:06 UTC 2013 - speilicke@suse.com
+
+- Update upstream URL
+
+-------------------------------------------------------------------
+Tue Jun 25 11:52:34 UTC 2013 - dmueller@suse.com
+
+- update to 4.2.1:
+ * The default XML formatter will now replace ampersands even if they
+   appear to be part of entities. That is, "&lt;" will become
+   "&amp;lt;". The old code was left over from Beautiful Soup 3, which
+   didn't always turn entities into Unicode characters.
+ 
+   If you really want the old behavior (maybe because you add new
+   strings to the tree, those strings include entities, and you want
+   the formatter to leave them alone on output), it can be found in
+   EntitySubstitution.substitute_xml_containing_entities(). [bug=1182183]
+ 
+ * Gave new_string() the ability to create subclasses of
+   NavigableString. [bug=1181986]
+ 
+ * Fixed another bug by which the html5lib tree builder could create a
+   disconnected tree. [bug=1182089]
+ 
+ * The .previous_element of a BeautifulSoup object is now always None,
+   not the last element to be parsed. [bug=1182089]
+ 
+ * Fixed test failures when lxml is not installed. [bug=1181589]
+ 
+ * html5lib now supports Python 3. Fixed some Python 2-specific
+   code in the html5lib test suite. [bug=1181624]
+ 
+ * The html.parser treebuilder can now handle numeric attributes in
+   text when the hexidecimal name of the attribute starts with a
+   capital X. Patch by Tim Shirley. [bug=1186242]
+
+-------------------------------------------------------------------
+Mon Jun 10 20:34:00 UTC 2013 - dmueller@suse.com
+
+- disable tests on SLE_11, fail due to too old python-lxml 
+
+-------------------------------------------------------------------
+Sat May 18 13:30:00 UTC 2013 - toddrme2178@gmail.com
+
+- Update to  4.2.0
+    * The Tag.select() method now supports a much wider variety of CSS
+      selectors.
+        - Added support for the adjacent sibling combinator (+) and the
+          general sibling combinator (~). Tests by "liquider". [bug=1082144]
+        - The combinators (>, +, and ~) can now combine with any supported
+          selector, not just one that selects based on tag name.
+        - Added limited support for the "nth-of-type" pseudo-class. Code
+          by Sven Slootweg. [bug=1109952]
+    * The BeautifulSoup class is now aliased to "_s" and "_soup", making
+      it quicker to type the import statement in an interactive session
+      The alias may change in the future, so don't use this in code you're
+      going to run more than once.
+    * Added the 'diagnose' submodule, which includes several useful
+      functions for reporting problems and doing tech support.
+        - diagnose(data) tries the given markup on every installed parser,
+          reporting exceptions and displaying successes. If a parser is not
+          installed, diagnose() mentions this fact.
+        - lxml_trace(data, html=True) runs the given markup through lxml's
+          XML parser or HTML parser, and prints out the parser events as
+          they happen. This helps you quickly determine whether a given
+          problem occurs in lxml code or Beautiful Soup code.
+        - htmlparser_trace(data) is the same thing, but for Python's
+          built-in HTMLParser class.
+    * In an HTML document, the contents of a <script> or <style> tag will
+      no longer undergo entity substitution by default. XML documents work
+      the same way they did before. [bug=1085953]
+    * Methods like get_text() and properties like .strings now only give
+      you strings that are visible in the document--no comments or
+      processing commands. [bug=1050164]
+    * The prettify() method now leaves the contents of <pre> tags
+      alone. [bug=1095654]
+    * Fix a bug in the html5lib treebuilder which sometimes created
+      disconnected trees. [bug=1039527]
+    * Fix a bug in the lxml treebuilder which crashed when a tag included
+      an attribute from the predefined "xml:" namespace. [bug=1065617]
+    * Fix a bug by which keyword arguments to find_parent() were not
+      being passed on. [bug=1126734]
+    * Stop a crash when unwisely messing with a tag that's been
+      decomposed. [bug=1097699]
+    * Now that lxml's segfault on invalid doctype has been fixed, fixed a
+      corresponding problem on the Beautiful Soup end that was previously
+      invisible. [bug=984936]
+    * Fixed an exception when an overspecified CSS selector didn't match
+      anything. Code by Stefaan Lippens. [bug=1168167]
+- Re-enable lxml support (unit tests require it)
+- Build documentation and add doc sub-package
+
+-------------------------------------------------------------------
+Tue Apr 30 12:59:02 UTC 2013 - dmueller@suse.com
+
+- remove lxml support (fails unit test) 
+
+-------------------------------------------------------------------
+Sat Jan 12 14:10:18 UTC 2013 - toddrme2178@gmail.com
+
+- Use explicit file list
+- Fix building on openSUSE 12.1 and 12.2
+- Use recommended lxml parser instead of native one 
+  (native fails fails for some python versions)
+
+-------------------------------------------------------------------
+Wed Jan  9 21:15:18 UTC 2013 - cfarrell@suse.com
+
+- license update: MIT
+  See COPYING.txt
+
+-------------------------------------------------------------------
+Mon Sep 10 18:52:45 UTC 2012 - nmo.marques@gmail.com
+
+- initial package from version 4.1.3
+  - based on spec file from python-beautifulsoup
+  - requires python >= 2.6
+

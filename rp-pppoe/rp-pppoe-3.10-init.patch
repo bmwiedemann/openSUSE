@@ -1,0 +1,144 @@
+diff -ruN rp-pppoe-3.10-orig/scripts/pppoe-init-suse.in rp-pppoe-3.10/scripts/pppoe-init-suse.in
+--- rp-pppoe-3.10-orig/scripts/pppoe-init-suse.in	2008-06-30 14:00:42.000000000 +0000
++++ rp-pppoe-3.10/scripts/pppoe-init-suse.in	2009-05-08 00:07:50.511480596 +0000
+@@ -12,53 +12,114 @@
+ # 2 or any later version.
+ # Modifed to work with SuSE 6.4 linux by Gary Cameron.
+ #
+-# Source function library.
+-#. /etc/rc.d/init.d/functions  # For red hat?
+-. /etc/rc.config               # For SuSE, enables setting from /etc/rc.config
++# Modifed and fixed to work with SuSE linux by Anas Nashif <nashif@suse.de>
++
++### BEGIN INIT INFO
++# Provides:          rp-pppoe
++# Required-Start:    $remote_fs $syslog $network $named
++# Required-Stop:     $syslog $remote_fs
++# Default-Start:     3 5
++# Default-Stop:      0 1 2 6
++# Short-Description: Start Roaring Penguin ADSL
++# Description:       Start Roaring Penguin ADSL
++### END INIT INFO
++
++. /etc/rc.status
+ 
+ #Tweak this
+ restart_time=120
+ 
+ # From AUTOCONF
+ prefix=@prefix@
+-exec_prefix=@exec_prefix@
++exec_prefix=${prefix}
+ 
+ # Paths to programs
+ START=@sbindir@/pppoe-start
+ STOP=@sbindir@/pppoe-stop
+ STATUS=@sbindir@/pppoe-status
+ 
+-test "$PPPoE_START" = "yes" || exit 0
++CONFIG=`cat @sbindir@/pppoe-start | grep "^CONFIG" | awk -F"=" '{print $2}'`
++CF_BASE=$(basename $CONFIG)
++PIDFILE=`cat $CONFIG | grep "^PIDFILE" | awk -F"=" '{print $2}'`
++PPPOE_PIDFILE=`cat @sbindir@/pppoe-connect | grep "^PPPOE_PIDFILE" | awk -F"=" '{print $2}'`
++PPPD_PIDFILE=`cat @sbindir@/pppoe-connect | grep "^PPPD_PIDFILE" | awk -F"=" '{print $2}'`
++
++# IN: RET
++chk_status(){
++  RES=
++  case $1 in
++    0)	RES=0
++  ;;
++    1)	if [ -e $PPPOE_PIDFILE ] || [ -e $PPPD_PIDFILE ]; then
++		RES=1
++	else
++		RES=3
++	fi 
++  ;;
++  esac
++  return $RES
++}
++
+ 
+ # The echo return value for success (defined in /etc/rc.config).
+-return=$rc_done
+ case "$1" in
+     start)
+-        echo -n "Bringing up PPPoE link"
+-        $START  > /dev/null 2>&1 || return=$rc_failed
+-        echo -e "$return"
+-        ;;
++	echo -n "Bringing up PPPoE link: "
++	$START  > /dev/null 2>&1
+ 
++	# Remember status and be verbose
++	rc_status -v
++	;;
+     stop)
+-        echo -n "Shutting down PPPoE link"
+-        $STOP > /dev/null 2>&1 || return=$rc_failed
+-        echo -e "$return"
+-        ;;
++	echo -n "Shutting down PPPoE link: "
++	$STOP > /dev/null 2>&1
+ 
++	# Remember status and be verbose
++	rc_status -v
++	;;
++    try-restart)
++	## Stop the service and regardless of whether it was
++	## running or not, start it again.
++	$0 stop
++	$0 start
++
++	# Remember status and be quiet
++	rc_status
++	;;
+     restart)
+-        $0 stop
+-        echo "Waiting" $restart_time "seconds for the host to reset itself"
+-        sleep $restart_time  #Note: Need time for host to reset itself
+-        $0 start
+-        ;;
+-
++	$0 stop
++	echo "Waiting" $restart_time "seconds for the host to reset itself"
++	sleep $restart_time  #Note: Need time for host to reset itself
++	$0 start
++
++	# Remember status and be quiet
++	rc_status
++	;;
++    reload|force-reload)
++	echo -n "Reload PPPoE link: "
++	rc_failed 5
++
++	# Remember status and be verbose
++	rc_status -v
++	;;
+     status)
+-        $STATUS
+-        ;;
+-
++	echo -n "Checking PPPoE link: "
++	# Return value is slightly different for the status command:
++	# 0 - service up and running
++	# 1 - service dead, but /var/run/  pid  file exists
++	# 2 - service dead, but /var/lock/ lock file exists
++	# 3 - service not running (unused)
++	# 4 - service status unknown :-(
++	# 5--199 reserved (5--99 LSB, 100--149 distro, 150--199 appl.)
++	RET=`$STATUS > /dev/null 2>&1; echo $?`
++	chk_status $RET
++
++	# Remember status and be verbose
++	rc_status -v
++	;;
+     *)
+-        echo "Usage: pppoe {start|stop|restart|status}"
+-        exit 1
++	echo "Usage: pppoe {start|stop|restart|status|try-restart}"
++	exit 1
+ esac
++rc_exit
+ 
+-exit 0

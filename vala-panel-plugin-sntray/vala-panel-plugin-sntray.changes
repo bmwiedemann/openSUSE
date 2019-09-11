@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Mon Aug 27 11:59:46 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.4.11:
+  * No changelog available.
+- Remove vala-panel-plugin-sntray-0.4.1-vala-0.36.patch.
+
+-------------------------------------------------------------------
+Thu Apr 13 11:23:50 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.4.3:
+  * No changelog available.
+- Update the licence to LGPLv3+.
+
+-------------------------------------------------------------------
+Sat Apr  1 11:12:25 UTC 2017 - sor.alexei@meowr.ru
+
+- Add vala-panel-plugin-sntray-0.4.1-vala-0.36.patch: Fix build
+  with Vala 0.36 and newer.
+
+-------------------------------------------------------------------
+Mon Jan 23 12:25:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.4.1:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Sat May  7 07:12:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Make vala-panel-plugin-sntray-lang recommend neither
+  vala-panel-plugin-sntray, nor xfce4-panel-plugin-sntray, to
+  avoid recommending one when other is being installed.
+- Fix build by using upstream glib-2.0.vapi.
+
+-------------------------------------------------------------------
+Mon Aug 17 20:06:37 UTC 2015 - sor.alexei@meowr.ru
+
+- Build xfce4-panel-plugin-sntray for openSUSE Leap 42.x.
+
+-------------------------------------------------------------------
+Wed Jun 24 13:59:40 UTC 2015 - cdenicolo@suse.com
+
+- license update: LGPL-3.0+ and GPL-3.0+
+  see license file.
+
+-------------------------------------------------------------------
+Fri Jun 19 12:43:17 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

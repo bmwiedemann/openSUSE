@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">git://git.kernel.dk/blktrace.git</param>
+          <param name="changesrevision">70d5ca2d5f3d6b97c11c641b7e0c5836983219a0</param></service></servicedata>

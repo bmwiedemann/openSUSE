@@ -1,0 +1,42 @@
+From 5376a134f13124b9b228dd160f151a7c8eccd09a Mon Sep 17 00:00:00 2001
+From: Christian Tismer <tismer@stackless.com>
+Date: Thu, 27 Jun 2019 12:37:41 +0200
+Subject: [PATCH 1/7] Fix qApp import of QCoreApplication
+
+The qApp fix for embedding has a recursion bug when
+QCoreApplication is imported.
+This patch avoids imports altogether and uses the already
+captured module, instead.
+
+Change-Id: I1af7293a31840f6b09f8611446f6f35952dedd21
+Reviewed-by: Milian Wolff <milian.wolff@kdab.com>
+---
+ sources/shiboken2/libshiboken/qapp_macro.cpp | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/sources/shiboken2/libshiboken/qapp_macro.cpp b/sources/shiboken2/libshiboken/qapp_macro.cpp
+index df24a805..12af9613 100644
+--- a/sources/shiboken2/libshiboken/qapp_macro.cpp
++++ b/sources/shiboken2/libshiboken/qapp_macro.cpp
+@@ -240,11 +240,13 @@ NotifyModuleForQApp(PyObject *module, void *qApp)
+      * Therefore, the implementation is very simple and just redirects the
+      * qApp_contents variable and assigns the instance, instead of vice-versa.
+      */
+-    if (qApp != nullptr) {
+-        Shiboken::AutoDecRef pycore(PyImport_ImportModule("PySide2.QtCore"));
+-        Shiboken::AutoDecRef coreapp(PyObject_GetAttrString(pycore, "QCoreApplication"));
+-        qApp_content = PyObject_CallMethod(coreapp, "instance", "");
+-        reset_qApp_var();
++    PyObject *coreDict = qApp_moduledicts[1];
++    if (qApp != nullptr && coreDict != nullptr) {
++        PyObject *coreApp = PyDict_GetItemString(coreDict, "QCoreApplication");
++        if (coreApp != nullptr) {
++            qApp_content = PyObject_CallMethod(coreApp, "instance", "");
++            reset_qApp_var();
++        }
+     }
+ }
+ 
+-- 
+2.22.0
+

@@ -1,0 +1,11 @@
+--- pam_mktemp-1.1.1/Makefile.orig	2010-09-17 18:18:15.000000000 -0400
++++ pam_mktemp-1.1.1/Makefile	2011-10-13 13:22:15.000000000 -0400
+@@ -10,7 +10,7 @@
+ MKDIR = mkdir -p
+ INSTALL = install -c
+ CFLAGS = -Wall -O2 -fPIC
+-LDFLAGS = -s --shared -Wl,--version-script,$(MAP)
++LDFLAGS = --shared -Wl,--version-script,$(MAP)
+ LDLIBS = -lpam
+ 
+ # This requires GNU make

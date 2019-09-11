@@ -1,0 +1,16 @@
+Index: ujson-1.35/tests/tests.py
+===================================================================
+--- ujson-1.35.orig/tests/tests.py
++++ ujson-1.35/tests/tests.py
+@@ -11,10 +11,7 @@ import json
+ import math
+ import time
+ import pytz
+-if six.PY2:
+-    import unittest2 as unittest
+-else:
+-    import unittest
++import unittest
+ 
+ import ujson
+ 

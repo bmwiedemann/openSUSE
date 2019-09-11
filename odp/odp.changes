@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Fri Mar 16 15:28:55 UTC 2018 - marco.varlese@suse.de
+
+- Removed 0002-fix_libopenssl.patch since fix in upstream code
+- Upgraded to latest monarch release 1.11.0.1
+
+-------------------------------------------------------------------
+Wed Feb 21 09:52:25 UTC 2018 - vcizek@suse.com
+
+- BuildRequires just libopenssl-devel
+
+-------------------------------------------------------------------
+Wed Nov  8 08:19:40 UTC 2017 - marco.varlese@suse.com
+
+- Bug 1066963: address build with libopenssl-1_1_0
+  * Patch file: 0002-fix_libopenssl.patch
+
+-------------------------------------------------------------------
+Thu Sep 21 10:59:18 UTC 2017 - marco.varlese@suse.com
+
+- Removed examples sub-package
+
+-------------------------------------------------------------------
+Wed Jun 14 07:03:51 UTC 2017 - marco.varlese@suse.com
+
+- Removed 0002-fix-PKTIO_NAME_LEN.patch
+- Following instructions from upstream to build with gcc-7
+
+-------------------------------------------------------------------
+Mon Jun  5 15:24:42 UTC 2017 - marco.varlese@suse.com
+
+- Added 0002-fix-PKTIO_NAME_LEN.patch
+
+-------------------------------------------------------------------
+Mon Jun  5 14:04:03 UTC 2017 - marco.varlese@suse.com
+
+- Support for GCC-7
+
+-------------------------------------------------------------------
+Mon Mar  6 11:11:23 UTC 2017 - marco.varlese@suse.com
+
+- fate#321977
+
+-------------------------------------------------------------------
+Fri Mar  3 20:02:46 UTC 2017 - marco.varlese@suse.com
+
+- Refactored to the subpackages to simplify coexistance with the
+  odp-thunderx package on the installation media
+
+-------------------------------------------------------------------
+Thu Feb 16 18:49:52 UTC 2017 - jengelh@inai.de
+
+- Throw out static libraries, extraneous Require tags,
+  rectify RPM groups and redo the description.
+
+-------------------------------------------------------------------
+Thu Feb  9 16:30:36 UTC 2017 - marco.varlese@suse.com
+
+- This release supports ODP API version v1.11.0.0 aka Monarch LTS
+

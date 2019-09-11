@@ -1,0 +1,60 @@
+Author: Eric Wheeler
+Found-Where: http://lists.gnu.org/archive/html/rdiff-backup-users/2011-01/msg00000.html
+Found-By: Stefan Seyfried <seife+obs@b1-systems.com>
+
+Efficiently back up sparse files
+
+Index: b/rdiff_backup/rpath.py
+===================================================================
+--- a/rdiff_backup/rpath.py
++++ b/rdiff_backup/rpath.py
+@@ -56,14 +56,48 @@ class SkipFileException(Exception):
+ class RPathException(Exception): pass
+ 
+ def copyfileobj(inputfp, outputfp):
+ 	"""Copies file inputfp to outputfp in blocksize intervals"""
+ 	blocksize = Globals.blocksize
++
++	sparse = False
++	buf = None
+ 	while 1:
+ 		inbuf = inputfp.read(blocksize)
+ 		if not inbuf: break
+-		outputfp.write(inbuf)
++
++		if not buf: 
++			buf = inbuf
++		else:
++			buf += inbuf
++
++		# Combine "short" reads
++		if (len(buf) < blocksize):
++			continue
++
++		buflen = len(buf)
++		if buf == "\x00" * buflen:
++			outputfp.seek(buflen, os.SEEK_CUR)
++			buf = None
++			# flag sparse=True, that we seek()ed, but have not written yet
++			# The filesize is wrong until we write
++			sparse = True 
++		else:
++			outputfp.write(buf)
++			buf = None
++
++			# We wrote, so clear sparse.
++			sparse = False
++
++	
++	if buf:
++		outputfp.write(buf)
++		buf = None
++
++	elif sparse:
++		outputfp.seek(-1, os.SEEK_CUR)
++		outputfp.write("\x00")
+ 
+ def cmpfileobj(fp1, fp2):
+ 	"""True if file objects fp1 and fp2 contain same data"""
+ 	blocksize = Globals.blocksize
+ 	while 1:

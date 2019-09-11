@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:50:14 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Nov 16 19:06:28 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.11
+  * Add very hacky limited support for @loader_path. This is just
+    enough to deal with extensions and dylibs found in Python
+    binary wheels.
+- Update to 1.10
+  * #25: Add support for LC_NOTE and LC_BUILD_VERSION
+
+-------------------------------------------------------------------
+Thu May 24 17:35:17 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 1.9
+  + Features:
+    * Add definition for ``macholib.mach_o.reloc_type_generic``, which
+      was used in code but never defined.
+    * #22: Add LICENSE file
+    * #23: Added "--help" option for "python -m macholib"
+    * Added function ``macholib.MachO.lc_str_value`` which should
+      help in decoding value of ``macholib.mach_o.lc_str``. Those
+      values are offsets in the data of a load command, the function
+      will return the actually value as a byte string.
+  + Bug fixes:
+    * Pull request #15: Fix typo in thread_command class
+- Spec file cleanups
+- Fix rpmlint issues
+
+-------------------------------------------------------------------
+Thu Oct 19 00:50:50 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

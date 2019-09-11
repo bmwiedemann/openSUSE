@@ -1,0 +1,92 @@
+#! /bin/bash
+#
+# nfs - start NFS in response to interface change
+#
+# Bastian Senst <bholst@lusku.de>
+
+function net_umount {
+    umount -l -f $1 &>/dev/null
+}
+
+function net_mount {
+    mountpoint -q $1 || mount $1
+}
+
+function test_reach {
+    if [ "$(ip link show up $1)" = "" ]; then
+        return 1
+    else 
+        ping -n -c1 -w2 -I "$1" "$2" 2>&1 > /dev/null
+    fi
+}
+
+DEVICE="$1"
+COMMAND="$2"
+
+function test_other_reaches {
+    for other in $(ls /sys/class/net); do
+        if [[ "$other" != "$DEVICE" ]]; then 
+            if test_reach "$other" "$1"; then
+                return 0
+            fi
+        fi
+    done
+    return 1
+}
+
+declare -A reaches
+
+function other_reaches {
+    if [[ "${reaches[$1]-}" == "yes" ]]; then
+        return 0
+    elif [[ "${reaches[$1]-}" == "no" ]]; then
+        return 1
+    else
+        if test_other_reaches $1; then
+            reaches[$1]="yes"
+            return 0
+        else 
+            reaches[$1]="no"
+            return 1
+        fi
+    fi
+}
+
+NET_MOUNTS=$(sed -e '/^.*#/d' -e '/^.*:/!d' -e 's/\t/ /g' /etc/fstab | tr -s " ")$'\n'
+
+case "$COMMAND" in
+    up|dhcp4-change|dhcp6-change)
+        # Check with systemd if nfs service is enabled
+        if /usr/bin/systemctl is-enabled nfs.service >/dev/null 2>&1; then
+            printf %s "$NET_MOUNTS" | while IFS= read -r line; do
+                MOUNT_POINT=$(echo $line | cut -f2 -d" ")
+                FS_TYPE=$(echo $line | cut -f3 -d" ")
+                # Only mount it when the type is nfs
+                if [ "$FS_TYPE" == "nfs" ]; then
+                    net_mount "$MOUNT_POINT"
+                fi
+            done
+        fi
+        ;;
+    pre-down|down|vpn-pre-down)
+        printf %s "$NET_MOUNTS" | while IFS= read -r line; do
+            [[ $line ]] || continue
+            MOUNT_POINT=$(echo $line | cut -f2 -d" ")
+            FS_TYPE=$(echo $line | cut -f3 -d" ")
+            HOST=$(echo $line |  cut -f1 -d":")
+            if other_reaches $HOST; then
+                echo >&2 "Other network interfaces reach $HOST for $MOUNT_POINT."
+            else
+                # Only unmount it when the type is nfs
+                if [ "$FS_TYPE" == "nfs" ]; then
+                    net_umount "$MOUNT_POINT"
+                fi
+            fi
+        done
+        exit 0
+        ;;
+    *)
+        exit 0
+        ;;
+esac
+

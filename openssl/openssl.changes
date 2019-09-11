@@ -1,0 +1,2470 @@
+-------------------------------------------------------------------
+Thu May 30 13:18:44 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 1.1.1c release
+
+-------------------------------------------------------------------
+Thu Feb 28 09:32:27 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 1.1.1b release
+
+-------------------------------------------------------------------
+Tue Nov 20 14:36:29 UTC 2018 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 1.1.1a release
+
+-------------------------------------------------------------------
+Tue Sep 11 13:46:57 UTC 2018 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 1.1.1 release
+
+-------------------------------------------------------------------
+Fri Aug 24 10:32:43 UTC 2018 - vcizek@suse.com
+
+- Update to 1.1.1~pre9 (Beta 7)
+
+-------------------------------------------------------------------
+Tue Aug 14 14:11:48 UTC 2018 - vcizek@suse.com
+
+- Update to 1.1.0i release
+
+-------------------------------------------------------------------
+Tue Mar 27 14:29:04 UTC 2018 - vcizek@suse.com
+
+- Update to 1.1.0h release
+
+-------------------------------------------------------------------
+Fri Feb 16 11:55:28 UTC 2018 - vcizek@suse.com
+
+- change the sonum to 1.1, as all the minor versions keep ABI
+  compatibility (bsc#1081335)
+- update baselibs.conf
+
+-------------------------------------------------------------------
+Mon Nov  6 15:42:39 UTC 2017 - vcizek@suse.com
+
+- Update to 1.1.0g release
+
+-------------------------------------------------------------------
+Thu Nov  2 16:42:16 UTC 2017 - vcizek@suse.com
+
+- Revert version back to 1.0.2m to get security fixes quickly to
+  Tumbleweed
+  * OpenSSL Security Advisory [02 Nov 2017] (bsc#1066242,bsc#1056058)
+
+-------------------------------------------------------------------
+Mon Jul 31 11:16:45 UTC 2017 - tchvatal@suse.com
+
+- Switch to 1.1.0f release as default again
+
+-------------------------------------------------------------------
+Tue Jul 11 11:46:56 UTC 2017 - vcizek@suse.com
+
+- Obsolete openssl-debuginfo
+  * the package doesn't exist any more, has been replaced by
+    openssl-{so_version}-debuginfo (bsc#1040172)
+
+-------------------------------------------------------------------
+Fri Jun 23 15:23:59 UTC 2017 - tchvatal@suse.com
+
+- Revert back to 1.0.2l for now so we get new fixes of 1.0 openssl
+  to tumbleweed
+
+-------------------------------------------------------------------
+Mon May 29 10:18:31 UTC 2017 - tchvatal@suse.com
+
+- Update to 1.1.0f release
+
+-------------------------------------------------------------------
+Wed May 24 08:06:58 UTC 2017 - tchvatal@suse.com
+
+- Switch default to openssl-1.1.0
+
+-------------------------------------------------------------------
+Fri May  5 09:21:04 UTC 2017 - tchvatal@suse.com
+
+- Provide pkgconfig(openssl)
+
+-------------------------------------------------------------------
+Tue May  2 10:34:51 UTC 2017 - tchvatal@suse.com
+
+- Provide basic baselibs.conf for 32bit subpackages
+- Specify this package as noarch (as we just provide README files)
+
+-------------------------------------------------------------------
+Wed Apr 26 12:51:45 UTC 2017 - tchvatal@suse.com
+
+- Fix typo in openssl requires
+- Add dependency on the branched devel package
+- Provide all pkgconfig symbols to hide them in versioned subpkgs
+- This allows us to propagate only the preffered version of openssl
+  while allowing us to add extra openssl only as additional dependency
+
+-------------------------------------------------------------------
+Wed Apr 12 12:25:26 UTC 2017 - tchvatal@suse.com
+
+- Remove the ssl provides as it is applicable for only those that
+  really provide it
+
+-------------------------------------------------------------------
+Wed Apr 12 11:51:36 UTC 2017 - tchvatal@suse.com
+
+- Prepare to split to various subpackages converting main one to
+  dummy package
+- Reduce to only provide main pkg and devel and depend on proper
+  soversioned package
+- Version in this package needs to be synced with the one provided
+  by the split package
+- Remove all the patches, now in the proper versioned namespace:
+  * merge_from_0.9.8k.patch
+  * openssl-1.0.0-c_rehash-compat.diff
+  * bug610223.patch
+  * openssl-ocloexec.patch
+  * openssl-1.0.2a-padlock64.patch
+  * openssl-fix-pod-syntax.diff
+  * openssl-truststore.patch
+  * compression_methods_switch.patch
+  * 0005-libssl-Hide-library-private-symbols.patch
+  * openssl-1.0.2a-default-paths.patch
+  * openssl-pkgconfig.patch
+  * openssl-1.0.2a-ipv6-apps.patch
+  * 0001-libcrypto-Hide-library-private-symbols.patch
+  * openssl-1.0.2i-fips.patch
+  * openssl-1.0.2a-fips-ec.patch
+  * openssl-1.0.2a-fips-ctor.patch
+  * openssl-1.0.2i-new-fips-reqs.patch
+  * openssl-gcc-attributes.patch
+  * 0001-Axe-builtin-printf-implementation-use-glibc-instead.patch
+  * openssl-no-egd.patch
+  * openssl-fips-hidden.patch
+  * openssl-1.0.1e-add-suse-default-cipher.patch
+  * openssl-1.0.1e-add-test-suse-default-cipher-suite.patch
+  * openssl-missing_FIPS_ec_group_new_by_curve_name.patch
+  * openssl-fips-dont_run_FIPS_module_installed.patch
+  * openssl-fips_disallow_x931_rand_method.patch
+  * openssl-fips_disallow_ENGINE_loading.patch
+  * openssl-rsakeygen-minimum-distance.patch
+  * openssl-urandom-reseeding.patch
+  * openssl-fips-rsagen-d-bits.patch
+  * openssl-fips-selftests_in_nonfips_mode.patch
+  * openssl-fips-fix-odd-rsakeybits.patch
+  * openssl-fips-clearerror.patch
+  * openssl-fips-dont-fall-back-to-default-digest.patch
+  * openssl-fipslocking.patch
+  * openssl-print_notice-NULL_crash.patch
+  * openssl-randfile_fread_interrupt.patch
+
+
+-------------------------------------------------------------------
+Tue Apr  4 11:41:40 UTC 2017 - tchvatal@suse.com
+
+- Remove O3 from optflags, no need to not rely on distro wide settings
+- Remove conditions for sle10 and sle11, we care only about sle12+
+- USE SUSE instead of SuSE in readme
+- Pass over with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Feb  2 15:19:15 UTC 2017 - vcizek@suse.com
+
+- fix X509_CERT_FILE path (bsc#1022271) and rename
+  updated openssl-1.0.1e-truststore.diff to openssl-truststore.patch
+
+-------------------------------------------------------------------
+Fri Jan 27 10:21:42 UTC 2017 - meissner@suse.com
+
+- Updated to openssl 1.0.2k
+  - bsc#1009528 / CVE-2016-7055: openssl: Montgomery multiplication may produce incorrect results
+  - bsc#1019334 / CVE-2016-7056: openssl: ECSDA P-256 timing attack key recovery
+  - bsc#1022085 / CVE-2017-3731: openssl: Truncated packet could crash via OOB read
+  - bsc#1022086 / CVE-2017-3732: openssl: BN_mod_exp may produce incorrect results on x86_64
+
+-------------------------------------------------------------------
+Fri Sep 30 10:53:56 UTC 2016 - vcizek@suse.com
+
+- resume reading from /dev/urandom when interrupted by a signal
+  (bsc#995075)
+  * add openssl-randfile_fread_interrupt.patch
+
+-------------------------------------------------------------------
+Fri Sep 30 10:53:06 UTC 2016 - vcizek@suse.com
+
+- add FIPS changes from SP2:
+- fix problems with locking in FIPS mode (bsc#992120)
+  * duplicates: bsc#991877, bsc#991193, bsc#990392, bsc#990428
+    and bsc#990207
+  * bring back openssl-fipslocking.patch
+- drop openssl-fips_RSA_compute_d_with_lcm.patch (upstream)
+  (bsc#984323)
+- don't check for /etc/system-fips (bsc#982268)
+  * add openssl-fips-dont_run_FIPS_module_installed.patch
+- refresh openssl-fips-rsagen-d-bits.patch
+
+-------------------------------------------------------------------
+Tue Sep 27 06:20:03 UTC 2016 - michael@stroeder.com
+
+- update to openssl-1.0.2j
+  * Missing CRL sanity check (CVE-2016-7052 bsc#1001148)
+
+-------------------------------------------------------------------
+Fri Sep 23 08:22:01 UTC 2016 - vcizek@suse.com
+
+- OpenSSL Security Advisory [22 Sep 2016] (bsc#999665)
+  Severity: High
+  * OCSP Status Request extension unbounded memory growth
+    (CVE-2016-6304) (bsc#999666)
+  Severity: Low
+  * Pointer arithmetic undefined behaviour (CVE-2016-2177) (bsc#982575)
+  * Constant time flag not preserved in DSA signing (CVE-2016-2178) (bsc#983249)
+  * DTLS buffered message DoS (CVE-2016-2179) (bsc#994844)
+  * OOB read in TS_OBJ_print_bio() (CVE-2016-2180) (bsc#990419)
+  * DTLS replay protection DoS (CVE-2016-2181) (bsc#994749)
+  * OOB write in BN_bn2dec() (CVE-2016-2182) (bsc#993819)
+  * Birthday attack against 64-bit block ciphers (SWEET32)
+    (CVE-2016-2183) (bsc#995359)
+  * Malformed SHA512 ticket DoS (CVE-2016-6302) (bsc#995324)
+  * OOB write in MDC2_Update() (CVE-2016-6303) (bsc#995377)
+  * Certificate message OOB reads (CVE-2016-6306) (bsc#999668)
+- update to openssl-1.0.2i
+  * remove patches:
+    openssl-1.0.2a-new-fips-reqs.patch
+    openssl-1.0.2e-fips.patch
+  * add patches:
+    openssl-1.0.2i-fips.patch
+    openssl-1.0.2i-new-fips-reqs.patch
+
+-------------------------------------------------------------------
+Wed Aug  3 12:41:41 UTC 2016 - vcizek@suse.com
+
+- fix crash in print_notice (bsc#998190)
+  * add openssl-print_notice-NULL_crash.patch
+
+-------------------------------------------------------------------
+Tue May  3 14:43:47 UTC 2016 - vcizek@suse.com
+
+- OpenSSL Security Advisory [3rd May 2016]
+- update to 1.0.2h (boo#977584, boo#977663)
+  * Prevent padding oracle in AES-NI CBC MAC check
+     A MITM attacker can use a padding oracle attack to decrypt traffic
+     when the connection uses an AES CBC cipher and the server support
+     AES-NI.
+     (CVE-2016-2107, boo#977616)
+  * Fix EVP_EncodeUpdate overflow
+     An overflow can occur in the EVP_EncodeUpdate() function which is used for
+     Base64 encoding of binary data. If an attacker is able to supply very large
+     amounts of input data then a length check can overflow resulting in a heap
+     corruption.
+     (CVE-2016-2105, boo#977614)
+  * Fix EVP_EncryptUpdate overflow
+     An overflow can occur in the EVP_EncryptUpdate() function. If an attacker
+     is able to supply very large amounts of input data after a previous call to
+     EVP_EncryptUpdate() with a partial block then a length check can overflow
+     resulting in a heap corruption.
+     (CVE-2016-2106, boo#977615)
+  * Prevent ASN.1 BIO excessive memory allocation
+     When ASN.1 data is read from a BIO using functions such as d2i_CMS_bio()
+     a short invalid encoding can casuse allocation of large amounts of memory
+     potentially consuming excessive resources or exhausting memory.
+     (CVE-2016-2109, boo#976942)
+  * EBCDIC overread
+     ASN1 Strings that are over 1024 bytes can cause an overread in applications
+     using the X509_NAME_oneline() function on EBCDIC systems. This could result
+     in arbitrary stack data being returned in the buffer.
+     (CVE-2016-2176, boo#978224)
+  * Modify behavior of ALPN to invoke callback after SNI/servername
+     callback, such that updates to the SSL_CTX affect ALPN.
+  * Remove LOW from the DEFAULT cipher list.  This removes singles DES from the
+     default.
+  * Only remove the SSLv2 methods with the no-ssl2-method option. When the
+     methods are enabled and ssl2 is disabled the methods return NULL.
+
+-------------------------------------------------------------------
+Fri Apr 15 16:55:05 UTC 2016 - dvaleev@suse.com
+
+- Remove a hack for bsc#936563 
+- Drop bsc936563_hack.patch
+
+-------------------------------------------------------------------
+Fri Apr 15 11:59:48 UTC 2016 - vcizek@suse.com
+
+- import fips patches from SLE-12
+  * openssl-fips-clearerror.patch
+  * openssl-fips-dont-fall-back-to-default-digest.patch
+  * openssl-fips-fix-odd-rsakeybits.patch
+  * openssl-fips-rsagen-d-bits.patch
+  * openssl-fips-selftests_in_nonfips_mode.patch
+  * openssl-fips_RSA_compute_d_with_lcm.patch
+  * openssl-fips_disallow_ENGINE_loading.patch
+  * openssl-fips_disallow_x931_rand_method.patch
+  * openssl-rsakeygen-minimum-distance.patch
+  * openssl-urandom-reseeding.patch
+
+-------------------------------------------------------------------
+Tue Mar  8 12:50:28 UTC 2016 - vcizek@suse.com
+
+- add support for "ciphers" providing no encryption (bsc#937085)
+  * don't build with -DSSL_FORBID_ENULL
+
+-------------------------------------------------------------------
+Tue Mar  1 14:40:18 UTC 2016 - vcizek@suse.com
+
+- update to 1.0.2g (bsc#968044)
+  * Disable weak ciphers in SSLv3 and up in default builds of OpenSSL.
+    Builds that are not configured with "enable-weak-ssl-ciphers" will not
+    provide any "EXPORT" or "LOW" strength ciphers.
+  * Disable SSLv2 default build, default negotiation and weak ciphers.  SSLv2
+    is by default disabled at build-time.  Builds that are not configured with
+    "enable-ssl2" will not support SSLv2.  Even if "enable-ssl2" is used,
+    users who want to negotiate SSLv2 via the version-flexible SSLv23_method()
+    will need to explicitly call either of:
+        SSL_CTX_clear_options(ctx, SSL_OP_NO_SSLv2);
+    or
+        SSL_clear_options(ssl, SSL_OP_NO_SSLv2);
+    (CVE-2016-0800)
+  * Fix a double-free in DSA code
+     (CVE-2016-0705)
+  * Disable SRP fake user seed to address a server memory leak.
+     Add a new method SRP_VBASE_get1_by_user that handles the seed properly.
+     (CVE-2016-0798)
+  * Fix BN_hex2bn/BN_dec2bn NULL pointer deref/heap corruption
+     (CVE-2016-0797)
+  *) Side channel attack on modular exponentiation
+     http://cachebleed.info.
+     (CVE-2016-0702)
+  *) Change the req app to generate a 2048-bit RSA/DSA key by default,
+     if no keysize is specified with default_bits. This fixes an
+     omission in an earlier change that changed all RSA/DSA key generation
+     apps to use 2048 bits by default.
+
+-------------------------------------------------------------------
+Thu Jan 28 15:10:38 UTC 2016 - vcizek@suse.com
+
+- update to 1.0.2f (boo#963410)
+  *) DH small subgroups (boo#963413)
+     Historically OpenSSL only ever generated DH parameters based on "safe"
+     primes. More recently (in version 1.0.2) support was provided for
+     generating X9.42 style parameter files such as those required for RFC 5114
+     support. The primes used in such files may not be "safe". Where an
+     application is using DH configured with parameters based on primes that are
+     not "safe" then an attacker could use this fact to find a peer's private
+     DH exponent. This attack requires that the attacker complete multiple
+     handshakes in which the peer uses the same private DH exponent. For example
+     this could be used to discover a TLS server's private DH exponent if it's
+     reusing the private DH exponent or it's using a static DH ciphersuite.
+     (CVE-2016-0701)
+  *) SSLv2 doesn't block disabled ciphers (boo#963415)
+     A malicious client can negotiate SSLv2 ciphers that have been disabled on
+     the server and complete SSLv2 handshakes even if all SSLv2 ciphers have
+     been disabled, provided that the SSLv2 protocol was not also disabled via
+     SSL_OP_NO_SSLv2.
+     (CVE-2015-3197)
+  *) Reject DH handshakes with parameters shorter than 1024 bits.
+
+-------------------------------------------------------------------
+Fri Dec  4 23:06:18 UTC 2015 - vcizek@suse.com
+
+- update to 1.0.2e
+  * fixes five security vulnerabilities
+  * Anon DH ServerKeyExchange with 0 p parameter
+    (CVE-2015-1794) (bsc#957984)
+  * BN_mod_exp may produce incorrect results on x86_64
+    (CVE-2015-3193) (bsc#957814)
+  * Certificate verify crash with missing PSS parameter
+    (CVE-2015-3194) (bsc#957815)
+  * X509_ATTRIBUTE memory leak
+    (CVE-2015-3195) (bsc#957812)
+  * Race condition handling PSK identify hint
+    (CVE-2015-3196) (bsc#957813)
+- pulled a refreshed fips patch from Fedora
+  * openssl-1.0.2a-fips.patch was replaced by
+    openssl-1.0.2e-fips.patch
+- refresh openssl-ocloexec.patch
+
+-------------------------------------------------------------------
+Thu Jul  9 13:32:34 UTC 2015 - vcizek@suse.com
+
+- update to 1.0.2d
+  * fixes CVE-2015-1793 (bsc#936746)
+
+  Alternate chains certificate forgery
+
+     During certificate verfification, OpenSSL will attempt to find an
+     alternative certificate chain if the first attempt to build such a chain
+     fails. An error in the implementation of this logic can mean that an
+     attacker could cause certain checks on untrusted certificates to be
+     bypassed, such as the CA flag, enabling them to use a valid leaf
+     certificate to act as a CA and "issue" an invalid certificate.
+- drop openssl-fix_invalid_manpage_name.patch (upstream)
+
+-------------------------------------------------------------------
+Thu Jul  2 14:46:36 UTC 2015 - dvaleev@suse.com
+
+- Workaround debugit crash on ppc64le with gcc5
+  bsc936563_hack.patch (bsc#936563) 
+
+-------------------------------------------------------------------
+Wed Jul  1 09:26:26 UTC 2015 - normand@linux.vnet.ibm.com
+
+- update merge_from_0.9.8k.patch replacing __LP64__ by __LP64
+  this is a change versus previous request 309611
+  required to avoid build error for ppc64
+
+-------------------------------------------------------------------
+Fri Jun 26 00:11:20 UTC 2015 - crrodriguez@opensuse.org
+
+- Build with no-ssl3, for details on why this is needed read 
+  rfc7568. Contrary to the "no-ssl2" option, this does not
+  require us to patch dependant packages as the relevant 
+  functions are still available (SSLv3_(client|server)_method) 
+  but will fail to negotiate. if removing SSL3 methods is desired
+  at a later time, option "no-ssl3-method" needs to be used.
+
+-------------------------------------------------------------------
+Fri Jun 12 21:22:45 UTC 2015 - vcizek@suse.com
+
+- update to 1.0.2c
+  * Fix HMAC ABI incompatibility
+- refreshed openssl-1.0.2a-fips.patch
+
+-------------------------------------------------------------------
+Thu Jun 11 15:50:44 UTC 2015 - vcizek@suse.com
+
+- update to 1.0.2b
+  * Malformed ECParameters causes infinite loop (CVE-2015-1788)
+  * Exploitable out-of-bounds read in X509_cmp_time (CVE-2015-1789)
+  * PKCS7 crash with missing EnvelopedContent (CVE-2015-1790)
+  * CMS verify infinite loop with unknown hash function (CVE-2015-1792)
+  * Race condition handling NewSessionTicket (CVE-2015-1791)
+- refreshed patches:
+  * 0001-Axe-builtin-printf-implementation-use-glibc-instead.patch
+  * 0001-libcrypto-Hide-library-private-symbols.patch
+  * openssl-1.0.2a-default-paths.patch
+  * openssl-1.0.2a-fips.patch
+  * compression_methods_switch.patch
+  * openssl-1.0.1e-add-test-suse-default-cipher-suite.patch
+
+-------------------------------------------------------------------
+Sun May 24 12:13:14 UTC 2015 - vcizek@suse.com
+
+- update to 1.0.2a
+  * Major changes since 1.0.1:
+    - Suite B support for TLS 1.2 and DTLS 1.2
+    - Support for DTLS 1.2
+    - TLS automatic EC curve selection.
+    - API to set TLS supported signature algorithms and curves
+    - SSL_CONF configuration API.
+    - TLS Brainpool support.
+    - ALPN support.
+    - CMS support for RSA-PSS, RSA-OAEP, ECDH and X9.42 DH.
+- packaging changes:
+  * merged patches modifying CIPHER_LIST into one, dropping:
+    - openssl-1.0.1e-add-suse-default-cipher-header.patch
+    - openssl-libssl-noweakciphers.patch
+  * fix a manpage with invalid name
+    - added openssl-fix_invalid_manpage_name.patch
+  * remove a missing fips function
+    - openssl-missing_FIPS_ec_group_new_by_curve_name.patch
+  * reimported patches from Fedora
+    dropped patches:
+    - openssl-1.0.1c-default-paths.patch
+    - openssl-1.0.1c-ipv6-apps.patch
+    - openssl-1.0.1e-fips-ctor.patch
+    - openssl-1.0.1e-fips-ec.patch
+    - openssl-1.0.1e-fips.patch
+    - openssl-1.0.1e-new-fips-reqs.patch
+    - VIA_padlock_support_on_64systems.patch
+    added patches:
+    - openssl-1.0.2a-default-paths.patch
+    - openssl-1.0.2a-fips-ctor.patch
+    - openssl-1.0.2a-fips-ec.patch
+    - openssl-1.0.2a-fips.patch
+    - openssl-1.0.2a-ipv6-apps.patch
+    - openssl-1.0.2a-new-fips-reqs.patch
+    - openssl-1.0.2a-padlock64.patch
+  * dropped security fixes (upstream)
+    - openssl-CVE-2015-0209.patch
+    - openssl-CVE-2015-0286.patch
+    - openssl-CVE-2015-0287.patch
+    - openssl-CVE-2015-0288.patch
+    - openssl-CVE-2015-0289.patch
+    - openssl-CVE-2015-0293.patch
+  * upstream reformatted the sources, so all the patches have to
+    be refreshed
+
+-------------------------------------------------------------------
+Thu Mar 19 14:26:01 UTC 2015 - vcizek@suse.com
+
+- security update:
+ * CVE-2015-0209 (bnc#919648)
+   - Fix a failure to NULL a pointer freed on error
+ * CVE-2015-0286 (bnc#922496)
+   - Segmentation fault in ASN1_TYPE_cmp
+ * CVE-2015-0287 (bnc#922499)
+   - ASN.1 structure reuse memory corruption
+ * CVE-2015-0288 x509: (bnc#920236)
+   - added missing public key is not NULL check
+ * CVE-2015-0289 (bnc#922500)
+   - PKCS7 NULL pointer dereferences
+ * CVE-2015-0293 (bnc#922488)
+   - Fix reachable assert in SSLv2 servers
+ * added patches:
+   openssl-CVE-2015-0209.patch
+   openssl-CVE-2015-0286.patch
+   openssl-CVE-2015-0287.patch
+   openssl-CVE-2015-0288.patch
+   openssl-CVE-2015-0289.patch
+   openssl-CVE-2015-0293.patch
+
+-------------------------------------------------------------------
+Wed Feb  4 08:08:27 UTC 2015 - meissner@suse.com
+
+- The DATE stamp moved from crypto/Makefile to crypto/buildinf.h,
+  replace it there (bsc#915947)
+
+-------------------------------------------------------------------
+Fri Jan  9 10:03:37 UTC 2015 - meissner@suse.com
+
+- openssl 1.0.1k release
+  bsc#912294 CVE-2014-3571: Fix DTLS segmentation fault in dtls1_get_record.
+  bsc#912292 CVE-2015-0206: Fix DTLS memory leak in dtls1_buffer_record.
+  bsc#911399 CVE-2014-3569: Fix issue where no-ssl3 configuration sets method to NULL.
+  bsc#912015 CVE-2014-3572: Abort handshake if server key exchange
+                            message is omitted for ephemeral ECDH ciphersuites.
+  bsc#912014 CVE-2015-0204: Remove non-export ephemeral RSA code on client and server.
+  bsc#912293 CVE-2015-0205: Fixed issue where DH client certificates are accepted without verification.
+  bsc#912018 CVE-2014-8275: Fix various certificate fingerprint issues.
+  bsc#912296 CVE-2014-3570: Correct Bignum squaring.
+  and other bugfixes.
+- openssl.keyring: use Matt Caswells current key. 
+  pub  2048R/0E604491 2013-04-30
+  uid                            Matt Caswell <frodo@baggins.org>
+  uid                            Matt Caswell <matt@openssl.org>
+  sub  2048R/E3C21B70 2013-04-30
+
+- openssl-1.0.1e-fips.patch: rediffed
+- openssl-1.0.1i-noec2m-fix.patch: removed (upstream)
+- openssl-ocloexec.patch: rediffed
+
+-------------------------------------------------------------------
+Tue Nov 18 09:42:50 UTC 2014 - brian@aljex.com
+
+- suse_version 10.1 & 10.2 x86_64 can not enable-ec_nistp_64_gcc_128
+
+-------------------------------------------------------------------
+Mon Nov 17 12:34:12 UTC 2014 - meissner@suse.com
+
+- openssl-1.0.1i-noec2m-fix.patch: only report the Elliptic Curves
+  we actually support (not the binary ones) (bnc#905037)
+
+-------------------------------------------------------------------
+Fri Nov  7 22:09:27 UTC 2014 - brian@aljex.com
+
+- openSUSE < 11.2 doesn't have accept4()
+
+-------------------------------------------------------------------
+Tue Oct 21 19:58:31 UTC 2014 - crrodriguez@opensuse.org
+
+- openSSL 1.0.1j 
+* Fix SRTP Memory Leak (CVE-2014-3513)
+* Session Ticket Memory Leak (CVE-2014-3567)
+* Add SSL 3.0 Fallback protection (TLS_FALLBACK_SCSV)
+* Build option no-ssl3 is incomplete (CVE-2014-3568)
+
+-------------------------------------------------------------------
+Thu Aug 21 15:05:43 UTC 2014 - meissner@suse.com
+
+- openssl.keyring: the 1.0.1i release was done by 
+  Matt Caswell <matt@openssl.org> UK 0E604491
+
+-------------------------------------------------------------------
+Thu Aug 14 10:27:07 UTC 2014 - vcizek@suse.com
+
+- rename README.SuSE (old spelling) to README.SUSE (bnc#889013)
+
+-------------------------------------------------------------------
+Wed Aug 13 17:43:21 UTC 2014 - vcizek@suse.com
+
+- update to 1.0.1i
+  * Fix SRP buffer overrun vulnerability. Invalid parameters passed to the
+    SRP code can be overrun an internal buffer. Add sanity check that
+    g, A, B < N to SRP code.
+    (CVE-2014-3512)
+  * A flaw in the OpenSSL SSL/TLS server code causes the server to negotiate
+    TLS 1.0 instead of higher protocol versions when the ClientHello message
+    is badly fragmented. This allows a man-in-the-middle attacker to force a
+    downgrade to TLS 1.0 even if both the server and the client support a
+    higher protocol version, by modifying the client's TLS records.
+    (CVE-2014-3511)
+  * OpenSSL DTLS clients enabling anonymous (EC)DH ciphersuites are subject
+    to a denial of service attack. A malicious server can crash the client
+    with a null pointer dereference (read) by specifying an anonymous (EC)DH
+    ciphersuite and sending carefully crafted handshake messages.
+    (CVE-2014-3510)
+  * By sending carefully crafted DTLS packets an attacker could cause openssl
+    to leak memory. This can be exploited through a Denial of Service attack.
+    (CVE-2014-3507)
+  * An attacker can force openssl to consume large amounts of memory whilst
+    processing DTLS handshake messages. This can be exploited through a
+    Denial of Service attack.
+    (CVE-2014-3506)
+  * An attacker can force an error condition which causes openssl to crash
+    whilst processing DTLS packets due to memory being freed twice. This
+    can be exploited through a Denial of Service attack.
+    (CVE-2014-3505)
+  * If a multithreaded client connects to a malicious server using a resumed
+    session and the server sends an ec point format extension it could write
+    up to 255 bytes to freed memory.
+    (CVE-2014-3509)
+  * A malicious server can crash an OpenSSL client with a null pointer
+    dereference (read) by specifying an SRP ciphersuite even though it was not
+    properly negotiated with the client. This can be exploited through a
+    Denial of Service attack.
+    (CVE-2014-5139)
+  * A flaw in OBJ_obj2txt may cause pretty printing functions such as
+    X509_name_oneline, X509_name_print_ex et al. to leak some information
+    from the stack. Applications may be affected if they echo pretty printing
+    output to the attacker.
+    (CVE-2014-3508)
+  * Fix ec_GFp_simple_points_make_affine (thus, EC_POINTs_mul etc.)
+    for corner cases. (Certain input points at infinity could lead to
+    bogus results, with non-infinity inputs mapped to infinity too.)
+- refreshed patches:
+  * openssl-1.0.1e-new-fips-reqs.patch
+  * 0005-libssl-Hide-library-private-symbols.patch
+    (thanks to Marcus Meissner)
+
+-------------------------------------------------------------------
+Mon Jul 21 10:49:35 UTC 2014 - jengelh@inai.de
+
+- Move manpages around: *.1ssl should be in openssl
+  (e.g. ciphers(1ssl) is also referenced by openssl(1)),
+  and *.3ssl should be in openssl-doc.
+
+-------------------------------------------------------------------
+Tue Jun 24 08:22:24 UTC 2014 - meissner@suse.com
+
+- recommend: ca-certificates-mozilla instead of openssl-certs
+
+-------------------------------------------------------------------
+Thu Jun  5 14:37:19 UTC 2014 - meissner@suse.com
+
+- updated openssl to 1.0.1h (bnc#880891):
+  - CVE-2014-0224: Fix for SSL/TLS MITM flaw. An attacker using a carefully crafted
+    handshake can force the use of weak keying material in OpenSSL
+    SSL/TLS clients and servers.
+  - CVE-2014-0221: Fix DTLS recursion flaw. By sending an invalid DTLS handshake to an
+    OpenSSL DTLS client the code can be made to recurse eventually crashing
+    in a DoS attack.
+  - CVE-2014-0195: Fix DTLS invalid fragment vulnerability. A buffer
+    overrun attack can be triggered by sending invalid DTLS fragments to
+    an OpenSSL DTLS client or server. This is potentially exploitable to
+    run arbitrary code on a vulnerable client or server.
+  - CVE-2014-3470: Fix bug in TLS code where clients enable anonymous
+    ECDH ciphersuites are subject to a denial of service attack.
+- openssl-buffreelistbug-aka-CVE-2010-5298.patch: removed, upstream
+- CVE-2014-0198.patch: removed, upstream
+- 0009-Fix-double-frees.patch: removed, upstream
+- 0012-Fix-eckey_priv_encode.patch: removed, upstream
+- 0017-Double-free-in-i2o_ECPublicKey.patch: removed, upstream
+- 0018-fix-coverity-issues-966593-966596.patch: removed, upstream
+- 0020-Initialize-num-properly.patch: removed, upstream
+- 0022-bignum-allow-concurrent-BN_MONT_CTX_set_locked.patch: removed, upstream
+- 0023-evp-prevent-underflow-in-base64-decoding.patch: removed, upstream
+- 0024-Fixed-NULL-pointer-dereference-in-PKCS7_dataDecode-r.patch: removed, upstream
+- 0025-fix-coverity-issue-966597-error-line-is-not-always-i.patch: removed, upstream
+
+- 0001-libcrypto-Hide-library-private-symbols.patch: disabled heartbeat testcase
+- openssl-1.0.1c-ipv6-apps.patch: refreshed
+- openssl-fix-pod-syntax.diff: some stuff merged upstream, refreshed
+
+-------------------------------------------------------------------
+Wed May 21 12:19:53 UTC 2014 - vpereira@novell.com
+
+- Added new SUSE default cipher suite
+  openssl-1.0.1e-add-suse-default-cipher.patch
+  openssl-1.0.1e-add-suse-default-cipher-header.patch
+  openssl-1.0.1e-add-test-suse-default-cipher-suite.patch
+
+-------------------------------------------------------------------
+Fri May  9 04:42:46 UTC 2014 - crrodriguez@opensuse.org
+
+- Add upstream patches fixing coverity scan issues:
+* 0018-fix-coverity-issues-966593-966596.patch
+* 0020-Initialize-num-properly.patch
+* 0022-bignum-allow-concurrent-BN_MONT_CTX_set_locked.patch
+* 0023-evp-prevent-underflow-in-base64-decoding.patch
+* 0024-Fixed-NULL-pointer-dereference-in-PKCS7_dataDecode-r.patch
+* 0025-fix-coverity-issue-966597-error-line-is-not-always-i.patch
+
+- Update 0001-libcrypto-Hide-library-private-symbols.patch
+  to cover more private symbols, now 98% complete and probably
+  not much more can be done to fix the rest of the ill-defined API.
+
+- openssl-fips-hidden.patch new, hides private symbols added by the
+  FIPS patches.
+
+- openssl-no-egd.patch disable the EGD (entropy gathering daemon)
+  interface, we have no EGD in the distro and obtaining entropy from
+  a place other than /dev/*random, the hardware rng or the openSSL
+  internal PRNG is an extremely bad & dangerous idea.
+
+- use secure_getenv instead of getenv everywhere.
+
+-------------------------------------------------------------------
+Mon May  5 16:25:17 UTC 2014 - crrodriguez@opensuse.org
+
+-  0005-libssl-Hide-library-private-symbols.patch
+   Update to hide more symbols that are not part of
+   the public API
+
+- openssl-gcc-attributes.patch BUF_memdup also
+  needs attribute alloc_size as it returns memory
+  of size of the second parameter.
+
+- openssl-ocloexec.patch Update, accept()
+  also needs O_CLOEXEC.
+
+- 0009-Fix-double-frees.patch, 0017-Double-free-in-i2o_ECPublicKey.patch
+  fix various double frees (from upstream)
+
+- 012-Fix-eckey_priv_encode.patch eckey_priv_encode should 
+  return an error inmediately on failure of i2d_ECPrivateKey (from upstream)
+
+- 0001-Axe-builtin-printf-implementation-use-glibc-instead.patch 
+  From libressl, modified to work on linux systems that do not have
+  funopen() but fopencookie() instead.
+  Once upon a time, OS didn't have snprintf, which caused openssl to
+  bundle a *printf implementation. We know better nowadays, the glibc
+  implementation has buffer overflow checking, has sane failure modes
+  deal properly with threads, signals..etc..
+ 
+- build with -fno-common as well.
+
+-------------------------------------------------------------------
+Mon May  5 06:45:19 UTC 2014 - citypw@gmail.com
+
+- Fixed bug[ bnc#876282], CVE-2014-0198 openssl: OpenSSL NULL pointer dereference in do_ssl3_write
+  Add file: CVE-2014-0198.patch
+
+-------------------------------------------------------------------
+Sun Apr 20 00:53:34 UTC 2014 - crrodriguez@opensuse.org
+
+- Build everything with full RELRO (-Wl,-z,relro,-z,now)
+- Remove -fstack-protector from the hardcoded build options
+  it is already in RPM_OPT_FLAGS and is replaced by 
+  -fstack-protector-strong with gcc 4.9
+
+-------------------------------------------------------------------
+Sun Apr 20 00:49:25 UTC 2014 - crrodriguez@opensuse.org
+
+- Remove the "gmp" and "capi" shared engines, nobody noticed 
+  but they are just dummies that do nothing. 
+
+-------------------------------------------------------------------
+Sat Apr 19 22:29:10 UTC 2014 - crrodriguez@opensuse.org
+
+- Use enable-rfc3779 to allow projects such as rpki.net 
+  to work in openSUSE and match the functionality
+  available in Debian/Fedora/etc
+
+-------------------------------------------------------------------
+Sat Apr 19 22:22:01 UTC 2014 - crrodriguez@opensuse.org
+
+- openssl-buffreelistbug-aka-CVE-2010-5298.patch fix 
+  CVE-2010-5298 and disable the internal BUF_FREELISTS
+  functionality. it hides bugs like heartbleed and is
+  there only for systems on which malloc() free() are slow.
+
+- ensure we export MALLOC_CHECK and PERTURB during the test
+  suite, now that the freelist functionality is disabled it
+  will help to catch bugs before they hit users.
+
+-------------------------------------------------------------------
+Sat Apr 19 03:45:20 UTC 2014 - crrodriguez@opensuse.org
+
+- openssl-libssl-noweakciphers.patch do not offer "export"
+  or "low" quality ciphers by default. using such ciphers
+  is not forbidden but requires an explicit request
+
+-------------------------------------------------------------------
+Fri Apr 18 14:07:47 UTC 2014 - crrodriguez@opensuse.org
+
+- openssl-gcc-attributes.patch: fix thinko, CRYPTO_realloc_clean does 
+  not return memory of "num * old_num" but only "num" size
+  fortunately this function is currently unused.
+
+-------------------------------------------------------------------
+Fri Apr 11 02:40:34 UTC 2014 - crrodriguez@opensuse.org
+
+- openssl-gcc-attributes.patch 
+  * annotate memory allocation wrappers with attribute(alloc_size)
+    so the compiler can tell us if it knows they are being misused
+  * OPENSSL_showfatal is annotated with attribute printf to detect
+    format string problems.
+
+- It is time to try to disable SSLv2 again, it was tried a while
+  ago but broke too many things, nowadays Debian, Ubuntu, the BSDs
+  all have disabled it, most components are already fixed.
+  I will fix the remaining fallout if any. (email me)
+
+-------------------------------------------------------------------
+Tue Apr  8 08:12:38 UTC 2014 - dmueller@suse.com
+
+- update to 1.0.1g:
+  * fix for critical TLS heartbeat read overrun (CVE-2014-0160) (bnc#872299)
+  * Fix for Recovering OpenSSL ECDSA Nonces (CVE-2014-0076) (bnc#869945)
+  * Workaround for the "TLS hang bug" (see FAQ and PR#2771)
+- remove CVE-2014-0076.patch
+
+- openssl.keyring: upstream changed to:
+  pub  4096R/FA40E9E2 2005-03-19 Dr Stephen N Henson <steve@openssl.org>
+  uid                            Dr Stephen Henson <shenson@drh-consultancy.co.uk>
+  uid                            Dr Stephen Henson <shenson@opensslfoundation.com>
+
+-------------------------------------------------------------------
+Tue Mar 25 08:11:11 UTC 2014 - shchang@suse.com
+
+- Fix bug[ bnc#869945] CVE-2014-0076: openssl: Recovering OpenSSL ECDSA Nonces Using the FLUSH+RELOAD Cache Side-channel Attack
+  Add file: CVE-2014-0076.patch
+
+-------------------------------------------------------------------
+Mon Mar  3 06:44:52 UTC 2014 - shchang@suse.com
+
+- additional changes required for FIPS validation( from Fedora repo) 
+  Add patch file: openssl-1.0.1e-new-fips-reqs.patch
+
+-------------------------------------------------------------------
+Sat Jan 11 08:42:54 UTC 2014 - shchang@suse.com
+
+- Remove GCC option "-O3" for compiliation issue of ARM version 
+  Modify: openssl.spec
+
+-------------------------------------------------------------------
+Fri Jan 10 14:43:20 UTC 2014 - shchang@suse.com
+
+- Adjust the installation path( libopenssl/hmac into /lib or /lib64)
+  Modify files: README-FIPS.txt openssl.spec 
+
+-------------------------------------------------------------------
+Thu Jan  9 23:08:29 UTC 2014 - andreas.stieger@gmx.de
+
+- 1.0.1f:
+  * Fix for TLS record tampering bug CVE-2013-4353
+- already included:
+  * Fix for TLS version checking bug CVE-2013-6449
+  * Fix for DTLS retransmission bug CVE-2013-6450
+- removed patches:
+  * CVE-2013-6449.patch, committed upstream
+  * CVE-2013-6450.patch, committed upstream
+  * SSL_get_certificate-broken.patch, committed upstream
+  * openssl-1.0.1e-bnc822642.patch, committed upstream
+- modified patches:
+  * openssl-1.0.1e-fips.patch, adjust for upstream changes
+  * openssl-fix-pod-syntax.diff, adjust for upstream changes
+
+-------------------------------------------------------------------
+Wed Jan  8 22:01:36 UTC 2014 - andreas.stieger@gmx.de
+
+- add a gpg keyring for source tarball
+
+-------------------------------------------------------------------
+Wed Jan  8 10:57:24 UTC 2014 - shchang@suse.com
+
+- Fixed bnc#857850, openssl doesn't load engine
+  Modify file: openssl.spec
+
+-------------------------------------------------------------------
+Thu Jan  2 17:28:41 UTC 2014 - shchang@suse.com
+
+- Fixed bnc#857203, openssl: crash in DTLS renegotiation after packet loss
+  Add file: CVE-2013-6450.patch 
+
+-------------------------------------------------------------------
+Sun Dec 22 08:10:55 UTC 2013 - shchang@suse.com
+
+- Fixed bnc#856687, openssl: crash when using TLS 1.2 
+  Add file: CVE-2013-6449.patch 
+
+-------------------------------------------------------------------
+Tue Dec 17 13:57:40 UTC 2013 - meissner@suse.com
+
+- compression_methods_switch.patch: setenv might not be successful
+  if a surrounding library or application filters it, like e.g. sudo.
+  As setenv() does not seem to be useful anyway, remove it.
+  bnc#849377
+
+-------------------------------------------------------------------
+Mon Dec 16 04:28:09 UTC 2013 - shchang@suse.com
+
+- Adjust the installation path.
+  Modify files: README-FIPS.txt openssl.spec
+
+-------------------------------------------------------------------
+Fri Dec  6 08:07:06 UTC 2013 - lnussel@suse.de
+
+- don't own /etc/ssl/certs, it's owned by ca-certificates
+
+-------------------------------------------------------------------
+Tue Dec  3 12:51:15 UTC 2013 - meissner@suse.com
+
+- Actually enable it (in a building way) for openSUSE and SLES,
+  as we intended.
+- Add README-FIPS.txt from SLE 11.
+
+-------------------------------------------------------------------
+Mon Dec  2 21:15:41 UTC 2013 - crrodriguez@opensuse.org
+
+- Restrict the (broken beyond build) FIPS certification code
+  to SLE releases only, it has no value in openSUSE at all.
+
+-------------------------------------------------------------------
+Sat Nov 23 08:23:59 UTC 2013 - shchang@suse.com
+
+- Patches for OpenSSL FIPS-140-2/3 certification
+  Add patch files: openssl-1.0.1e-fips.patch, openssl-1.0.1e-fips-ec.patch,
+  openssl-1.0.1e-fips-ctor.patch
+
+-------------------------------------------------------------------
+Wed Oct 23 02:59:05 UTC 2013 - crrodriguez@opensuse.org
+
+- 0001-libcrypto-Hide-library-private-symbols.patch 
+  This patch implements the libcrpto part complimentary to
+  0005-libssl-Hide-library-private-symbols.patch.
+  This patch is however not 100% complete, as some private library 
+  symbols are declared in public headers that shall not be touched 
+  or are defined/declared in "perlasm". (tested in 13.1, 12.3, factory)
+
+- openSSL defaults to -O3 optimization level but we override
+  it with RPM_OPT_FLAGS, ensure we use -O3 like upstream.
+
+-------------------------------------------------------------------
+Fri Oct 11 12:24:14 UTC 2013 - meissner@suse.com
+
+- openssl-1.0.1c-ipv6-apps.patch: 
+  Support ipv6 in the openssl s_client / s_server commandline app.
+
+-------------------------------------------------------------------
+Fri Sep 27 10:26:43 UTC 2013 - dmacvicar@suse.de
+
+- VPN openconnect problem (DTLS handshake failed)
+  (git 9fe4603b8, bnc#822642, openssl ticket#2984)
+
+-------------------------------------------------------------------
+Wed Sep  4 18:56:38 UTC 2013 - guillaume@opensuse.org
+
+- Fix armv6l arch (armv7 was previously used to build armv6 which 
+  lead to illegal instruction when used)
+
+-------------------------------------------------------------------
+Mon Aug 12 06:05:03 UTC 2013 - shchang@suse.com
+
+- Fix bug[ bnc#832833] openssl ssl_set_cert_masks() is broken
+  modify patch file: SSL_get_certificate-broken.patch
+
+-------------------------------------------------------------------
+Fri Aug  9 23:24:14 UTC 2013 - crrodriguez@opensuse.org
+
+- Via padlock is only found in x86 and x86_64 CPUs, remove 
+  the shared module for other archs.
+
+-------------------------------------------------------------------
+Wed Aug  7 18:30:45 UTC 2013 - crrodriguez@opensuse.org
+
+- Cleanup engines that are of no use in a modern linux distro
+- The following engines stay:
+* libcapi.so --> usable in case you have third party /dev/crypto
+* libgmp.so --> may help to doing some maths using GMP
+* libgost.so --> implements the GOST block cipher
+* libpadlock.so --> VIA padlock support
+- Al other are removed because they require third party propietary 
+ shared libraries nowhere to be found or that we can test.
+
+-------------------------------------------------------------------
+Wed Aug  7 18:30:23 UTC 2013 - crrodriguez@opensuse.org
+
+- openssl-pkgconfig.patch: Here we go.. For applications 
+to benefit fully of features provided by openSSL engines 
+(rdrand, aes-ni..etc) either builtin or in DSO form applications 
+have to call ENGINE_load_builtin_engines() or OPENSSL_config()
+unfortunately from a total of 68 apps/libraries linked to libcrypto
+in a desktop system, only 4 do so, and there is a sea of buggy
+code that I dont feel like fixing.
+Instead we can pass -DOPENSSL_LOAD_CONF in the pkgconfig files
+so the needed operation becomes implicit the next time such apps
+are recompiled, see OPENSSL_config(3)
+Unfortunately this does not fix everything, because there are apps
+not using pkgconfig or using it incorrectly, but it is a good start.
+
+-------------------------------------------------------------------
+Wed Aug  7 09:33:55 UTC 2013 - dmueller@suse.com
+
+- add openssl-1.0.1c-default-paths.patch:
+  Fix from Fedora for openssl s_client not setting 
+  CApath by default
+
+-------------------------------------------------------------------
+Sat Aug  3 21:15:07 UTC 2013 - crrodriguez@opensuse.org
+
+- 0005-libssl-Hide-library-private-symbols.patch: hide 
+  private symbols, this *only* applies to libssl where
+  it is straightforward to do so as applications should
+  not be using any of the symbols declared/defined in headers
+  that the library does not install.
+  A separate patch MAY be provided in the future for libcrypto
+  where things are much more complicated and threfore requires
+  careful testing.
+
+-------------------------------------------------------------------
+Mon Jul 29 08:06:48 UTC 2013 - meissner@suse.com
+
+- compression_methods_switch.patch: Disable compression by default to
+  avoid the CRIME attack (CVE-2012-4929 bnc#793420)
+
+  Can be override by setting environment variable
+      OPENSSL_NO_DEFAULT_ZLIB=no
+
+-------------------------------------------------------------------
+Tue Jul  2 09:02:59 UTC 2013 - lnussel@suse.de
+
+- Don't use the legacy /etc/ssl/certs directory anymore but rather
+  the p11-kit generated /var/lib/ca-certificates/openssl one
+  (fate#314991, openssl-1.0.1e-truststore.diff)
+
+-------------------------------------------------------------------
+Sat Jun 29 22:47:54 UTC 2013 - crrodriguez@opensuse.org
+
+- Build enable-ec_nistp_64_gcc_128, ecdh is many times faster
+  but only works in x86_64.
+  According to the openSSL team
+"it is superior to the default in multiple regards (speed, and also
+security as the new implementations are secure against timing
+attacks)"
+It is not enabled by default due to the build system being unable
+to detect if the compiler supports __uint128_t. 
+
+-------------------------------------------------------------------
+Thu Jun 20 07:58:33 UTC 2013 - coolo@suse.com
+
+- pick openssl-fix-pod-syntax.diff out of the upstream RT to fix
+  build with perl 5.18
+
+-------------------------------------------------------------------
+Sat May 25 10:10:07 UTC 2013 - i@marguerite.su
+
+- add %if tag for BuildArch. sles may also need latest openssl.
+
+-------------------------------------------------------------------
+Fri Feb 22 16:00:16 UTC 2013 - dmueller@suse.com
+
+- disable fstack-protector on aarch64
+
+-------------------------------------------------------------------
+Tue Feb 12 00:08:06 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 1.0.1e
+  o Bugfix release (bnc#803004)
+- Drop openssl-1.0.1d-s3-packet.patch, included upstream
+
+-------------------------------------------------------------------
+Sun Feb 10 20:33:51 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added openssl-1.0.1d-s3-packet.patch from upstream, fixes 
+  bnc#803004, openssl ticket#2975
+
+-------------------------------------------------------------------
+Tue Feb  5 16:00:17 UTC 2013 - meissner@suse.com
+
+- update to version 1.0.1d, fixing security issues
+  o Fix renegotiation in TLS 1.1, 1.2 by using the correct TLS version.
+  o Include the fips configuration module.
+  o Fix OCSP bad key DoS attack CVE-2013-0166
+  o Fix for SSL/TLS/DTLS CBC plaintext recovery attack CVE-2013-0169
+    bnc#802184
+  o Fix for TLS AESNI record handling flaw CVE-2012-2686
+
+-------------------------------------------------------------------
+Mon Nov 12 08:39:31 UTC 2012 - gjhe@suse.com
+
+- fix bug[bnc#784994] - VIA padlock support on 64 systems
+  e_padlock: add support for x86_64 gcc
+
+-------------------------------------------------------------------
+Sun Aug 19 23:38:32 UTC 2012 - crrodriguez@opensuse.org
+
+- Open Internal file descriptors with O_CLOEXEC, leaving
+  those open across fork()..execve() makes a perfect
+  vector for a side-channel attack... 
+
+-------------------------------------------------------------------
+Tue Aug  7 17:17:34 UTC 2012 - dmueller@suse.com
+
+- fix build on armv5 (bnc#774710)
+
+-------------------------------------------------------------------
+Thu May 10 19:18:06 UTC 2012 - crrodriguez@opensuse.org
+
+- Update to version 1.0.1c for the complete list of changes see
+  NEWS, this only list packaging changes.
+- Drop aes-ni patch, no longer needed as it is builtin in openssl
+  now.
+- Define GNU_SOURCE and use -std=gnu99 to build the package.
+- Use LFS_CFLAGS in platforms where it matters.
+
+-------------------------------------------------------------------
+Fri May  4 12:09:57 UTC 2012 - lnussel@suse.de
+
+- don't install any demo or expired certs at all
+
+-------------------------------------------------------------------
+Mon Apr 23 05:57:35 UTC 2012 - gjhe@suse.com
+
+- update to latest stable verison 1.0.0i
+  including the following patches:
+  CVE-2012-2110.path
+  Bug748738_Tolerate_bad_MIME_headers.patch
+  bug749213-Free-headers-after-use.patch
+  bug749210-Symmetric-crypto-errors-in-PKCS7_decrypt.patch
+  CVE-2012-1165.patch
+  CVE-2012-0884.patch
+  bug749735.patch
+
+-------------------------------------------------------------------
+Tue Mar 27 09:16:37 UTC 2012 - gjhe@suse.com
+
+- fix bug[bnc#749735] - Memory leak when creating public keys.
+  fix bug[bnc#751977] - CMS and S/MIME Bleichenbacher attack
+  CVE-2012-0884
+
+-------------------------------------------------------------------
+Thu Mar 22 03:24:20 UTC 2012 - gjhe@suse.com
+
+- fix bug[bnc#751946] - S/MIME verification may erroneously fail
+  CVE-2012-1165
+
+-------------------------------------------------------------------
+Wed Mar 21 02:44:41 UTC 2012 - gjhe@suse.com
+
+- fix bug[bnc#749213]-Free headers after use in error message
+  and bug[bnc#749210]-Symmetric crypto errors in PKCS7_decrypt
+
+-------------------------------------------------------------------
+Tue Mar 20 14:29:24 UTC 2012 - cfarrell@suse.com
+
+- license update: OpenSSL
+
+-------------------------------------------------------------------
+Fri Feb 24 02:33:22 UTC 2012 - gjhe@suse.com
+
+- fix bug[bnc#748738] - Tolerate bad MIME headers in openssl's 
+  asn1 parser.
+  CVE-2006-7250
+
+-------------------------------------------------------------------
+Thu Feb  2 06:55:12 UTC 2012 - gjhe@suse.com
+
+- Update to version 1.0.0g fix the following:
+  DTLS DoS attack (CVE-2012-0050)
+
+-------------------------------------------------------------------
+Wed Jan 11 05:35:18 UTC 2012 - gjhe@suse.com
+
+- Update to version 1.0.0f fix the following:
+  DTLS Plaintext Recovery Attack (CVE-2011-4108)
+  Uninitialized SSL 3.0 Padding (CVE-2011-4576)
+  Malformed RFC 3779 Data Can Cause Assertion Failures (CVE-2011-4577)
+  SGC Restart DoS Attack (CVE-2011-4619)
+  Invalid GOST parameters DoS Attack (CVE-2012-0027) 
+
+-------------------------------------------------------------------
+Tue Oct 18 16:43:50 UTC 2011 - crrodriguez@opensuse.org
+
+- AES-NI: Check the return value of Engine_add() 
+  if the ENGINE_add() call fails: it ends up adding a reference 
+  to a freed up ENGINE which is likely to subsequently contain garbage 
+  This will happen if an ENGINE with the same name is added multiple
+  times,for example different libraries. [bnc#720601]
+
+-------------------------------------------------------------------
+Sat Oct  8 21:36:58 UTC 2011 - crrodriguez@opensuse.org
+
+- Build with -DSSL_FORBID_ENULL so servers are not 
+  able to use the NULL encryption ciphers (Those offering no 
+  encryption whatsoever).
+
+-------------------------------------------------------------------
+Wed Sep  7 14:29:41 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to openssl 1.0.0e fixes CVE-2011-3207 and CVE-2011-3210
+  see http://openssl.org/news/secadv_20110906.txt for details.
+
+-------------------------------------------------------------------
+Sat Aug  6 00:33:47 UTC 2011 - crrodriguez@opensuse.org
+
+- Add upstream patch that calls ENGINE_register_all_complete()
+  in ENGINE_load_builtin_engines() saving us from adding dozens
+  of calls to such function to calling applications. 
+
+-------------------------------------------------------------------
+Fri Aug  5 19:09:42 UTC 2011 - crrodriguez@opensuse.org
+
+- remove -fno-strict-aliasing from CFLAGS no longer needed 
+  and is likely to slow down stuff.
+
+-------------------------------------------------------------------
+Mon Jul 25 19:07:32 UTC 2011 - jengelh@medozas.de
+
+- Edit baselibs.conf to provide libopenssl-devel-32bit too
+
+-------------------------------------------------------------------
+Fri Jun 24 04:51:50 UTC 2011 - gjhe@novell.com
+
+- update to latest stable version 1.0.0d.
+  patch removed(already in the new package):
+  CVE-2011-0014
+  patch added:
+  ECDSA_signatures_timing_attack.patch
+
+-------------------------------------------------------------------
+Tue May 31 07:07:49 UTC 2011 - gjhe@novell.com
+
+- fix bug[bnc#693027].
+  Add protection against ECDSA timing attacks as mentioned in the paper
+  by Billy Bob Brumley and Nicola Tuveri, see:
+  http://eprint.iacr.org/2011/232.pdf
+  [Billy Bob Brumley and Nicola Tuveri]
+
+-------------------------------------------------------------------
+Mon May 16 14:38:26 UTC 2011 - andrea@opensuse.org
+
+- added openssl as dependency in the devel package 
+
+-------------------------------------------------------------------
+Thu Feb 10 07:42:01 UTC 2011 - gjhe@novell.com
+
+- fix bug [bnc#670526]
+  CVE-2011-0014,OCSP stapling vulnerability
+
+-------------------------------------------------------------------
+Sat Jan 15 19:58:51 UTC 2011 - cristian.rodriguez@opensuse.org
+
+- Add patch from upstream in order to support AES-NI instruction
+  set present on current Intel and AMD processors 
+
+-------------------------------------------------------------------
+Mon Jan 10 11:45:27 CET 2011 - meissner@suse.de
+
+- enable -DPURIFY to avoid valgrind errors.
+
+-------------------------------------------------------------------
+Thu Dec  9 07:04:32 UTC 2010 - gjhe@novell.com
+
+- update to stable version 1.0.0c.
+  patch included:
+  CVE-2010-1633_and_CVE-2010-0742.patch
+  patchset-19727.diff
+  CVE-2010-2939.patch
+  CVE-2010-3864.patch
+
+-------------------------------------------------------------------
+Thu Nov 18 07:53:12 UTC 2010 - gjhe@novell.com
+
+- fix bug [bnc#651003]
+  CVE-2010-3864
+
+-------------------------------------------------------------------
+Sat Sep 25 08:55:02 UTC 2010 - gjhe@novell.com
+
+- fix bug [bnc#629905]
+  CVE-2010-2939 
+
+-------------------------------------------------------------------
+Wed Jul 28 20:55:18 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Exclude static libraries, see what breaks and fix that
+  instead 
+
+-------------------------------------------------------------------
+Wed Jun 30 08:47:39 UTC 2010 - jengelh@medozas.de
+
+- fix two compile errors on SPARC
+
+-------------------------------------------------------------------
+Tue Jun 15 09:53:54 UTC 2010 - bg@novell.com
+
+- -fstack-protector is not supported on hppa
+
+-------------------------------------------------------------------
+Fri Jun  4 07:11:28 UTC 2010 - gjhe@novell.com
+
+- fix bnc #610642
+  CVE-2010-0742
+  CVE-2010-1633 
+
+-------------------------------------------------------------------
+Mon May 31 03:06:39 UTC 2010 - gjhe@novell.com
+
+- fix bnc #610223,change Configure to tell openssl to load engines
+  from /%{_lib} instead of %{_libdir} 
+
+-------------------------------------------------------------------
+Mon May 10 16:11:54 UTC 2010 - aj@suse.de
+
+- Do not compile in build time but use mtime of changes file instead.
+  This allows build-compare to identify that no changes have happened.
+
+-------------------------------------------------------------------
+Tue May  4 02:55:52 UTC 2010 - gjhe@novell.com
+
+- build libopenssl to /%{_lib} dir,and keep only one 
+  libopenssl-devel for new developping programs.
+
+-------------------------------------------------------------------
+Tue Apr 27 05:44:32 UTC 2010 - gjhe@novell.com
+
+- build libopenssl and libopenssl-devel to a version directory 
+
+-------------------------------------------------------------------
+Sat Apr 24 09:46:37 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Wed Apr 21 13:54:15 UTC 2010 - lnussel@suse.de
+
+- also create old certificate hash in /etc/ssl/certs for
+  compatibility with applications that still link against 0.9.8
+
+-------------------------------------------------------------------
+Mon Apr 12 16:12:08 CEST 2010 - meissner@suse.de
+
+- Disable our own build targets, instead use the openSSL provided ones
+  as they are now good (or should be good at least).
+
+- add -Wa,--noexecstack to the Configure call, this is the upstream
+  approved way to avoid exec-stack marking
+
+-------------------------------------------------------------------
+Mon Apr 12 04:57:17 UTC 2010 - gjhe@novell.com
+
+- update to 1.0.0 
+  Merge the following patches from 0.9.8k:
+  openssl-0.9.6g-alpha.diff
+  openssl-0.9.7f-ppc64.diff
+  openssl-0.9.8-flags-priority.dif
+  openssl-0.9.8-sparc.dif
+  openssl-allow-arch.diff
+  openssl-hppa-config.diff
+
+-------------------------------------------------------------------
+Fri Apr  9 11:42:51 CEST 2010 - meissner@suse.de
+
+- fixed "exectuable stack" for libcrypto.so issue on i586 by
+  adjusting the assembler output during MMX builds.
+
+-------------------------------------------------------------------
+Wed Apr  7 14:08:05 CEST 2010 - meissner@suse.de
+
+- Openssl is now partially converted to libdir usage upstream, 
+  merge that in to fix lib64 builds.
+
+-------------------------------------------------------------------
+Thu Mar 25 02:18:22 UTC 2010 - gjhe@novell.com
+
+- fix security bug [bnc#590833] 
+  CVE-2010-0740
+
+-------------------------------------------------------------------
+Mon Mar 22 06:29:14 UTC 2010 - gjhe@novell.com
+
+- update to version 0.9.8m 
+  Merge the following patches from 0.9.8k:
+  bswap.diff
+  non-exec-stack.diff
+  openssl-0.9.6g-alpha.diff
+  openssl-0.9.7f-ppc64.diff
+  openssl-0.9.8-flags-priority.dif
+  openssl-0.9.8-sparc.dif
+  openssl-allow-arch.diff
+  openssl-hppa-config.diff
+
+-------------------------------------------------------------------
+Fri Feb  5 01:24:55 UTC 2010 - jengelh@medozas.de
+
+- build openssl for sparc64
+
+-------------------------------------------------------------------
+Mon Dec 14 16:11:11 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+- package documentation as noarch
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:35 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Tue Sep  1 10:21:16 CEST 2009 - gjhe@novell.com
+
+- fix Bug [bnc#526319] 
+
+-------------------------------------------------------------------
+Wed Aug 26 11:24:16 CEST 2009 - coolo@novell.com
+
+- use %patch0 for Patch0
+
+-------------------------------------------------------------------
+Fri Jul  3 11:53:48 CEST 2009 - gjhe@novell.com
+
+- update to version 0.9.8k 
+- patches merged upstream:
+  openssl-CVE-2008-5077.patch
+  openssl-CVE-2009-0590.patch  
+  openssl-CVE-2009-0591.patch
+  openssl-CVE-2009-0789.patch  
+  openssl-CVE-2009-1377.patch
+  openssl-CVE-2009-1378.patch  
+  openssl-CVE-2009-1379.patch
+  openssl-CVE-2009-1386.patch
+  openssl-CVE-2009-1387.patch
+
+-------------------------------------------------------------------
+Tue Jun 30 05:17:26 CEST 2009 - gjhe@novell.com
+
+- fix security bug [bnc#509031]
+  CVE-2009-1386
+  CVE-2009-1387
+
+-------------------------------------------------------------------
+Tue Jun 30 05:16:39 CEST 2009 - gjhe@novell.com
+
+- fix security bug [bnc#504687]
+  CVE-2009-1377
+  CVE-2009-1378
+  CVE-2009-1379
+
+-------------------------------------------------------------------
+Wed Apr 15 12:28:29 CEST 2009 - gjhe@suse.de
+
+- fix security bug [bnc#489641]
+  CVE-2009-0590
+  CVE-2009-0591
+  CVE-2009-0789
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Dec 18 08:15:12 CET 2008 - jshi@suse.de
+
+- fix security bug [bnc#459468]
+  CVE-2008-5077
+
+-------------------------------------------------------------------
+Tue Dec  9 11:32:50 CET 2008 - xwhu@suse.de
+
+- Disable optimization for s390x
+
+-------------------------------------------------------------------
+Mon Dec  8 12:12:14 CET 2008 - xwhu@suse.de
+
+- Disable optimization of md4
+
+-------------------------------------------------------------------
+Mon Nov 10 10:22:04 CET 2008 - xwhu@suse.de
+
+- Disable optimization of ripemd [bnc#442740] 
+
+-------------------------------------------------------------------
+Tue Oct 14 09:08:47 CEST 2008 - xwhu@suse.de
+
+- Passing string as struct cause openssl segment-fault [bnc#430141] 
+
+-------------------------------------------------------------------
+Wed Jul 16 12:02:37 CEST 2008 - mkoenig@suse.de
+
+- do not require openssl-certs, but rather recommend it
+  to avoid dependency cycle [bnc#408865] 
+
+-------------------------------------------------------------------
+Wed Jul  9 12:53:27 CEST 2008 - mkoenig@suse.de
+
+- remove the certs subpackage from the openssl package
+  and move the CA root certificates into a package of its own
+
+-------------------------------------------------------------------
+Tue Jun 24 09:09:04 CEST 2008 - mkoenig@suse.de
+
+- update to version 0.9.8h
+- openssl does not ship CA root certificates anymore
+  keep certificates that SuSE is already shipping
+- resolves bad array index (function has been removed) [bnc#356549]
+- removed patches
+  openssl-0.9.8g-fix_dh_for_certain_moduli.patch
+  openssl-CVE-2008-0891.patch
+  openssl-CVE-2008-1672.patch
+
+-------------------------------------------------------------------
+Wed May 28 15:04:08 CEST 2008 - mkoenig@suse.de
+
+- fix OpenSSL Server Name extension crash (CVE-2008-0891)
+  and OpenSSL Omit Server Key Exchange message crash (CVE-2008-1672) 
+  [bnc#394317] 
+
+-------------------------------------------------------------------
+Wed May 21 20:48:39 CEST 2008 - cthiel@suse.de
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Tue Apr 22 14:39:35 CEST 2008 - mkoenig@suse.de
+
+- add -DMD32_REG_T=int for x86_64 and ia64 [bnc#381844] 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Nov  5 14:27:06 CET 2007 - mkoenig@suse.de
+
+- fix Diffie-Hellman failure with certain prime lengths 
+
+-------------------------------------------------------------------
+Mon Oct 22 15:00:21 CEST 2007 - mkoenig@suse.de
+
+- update to version 0.9.8g:
+  * fix some bugs introduced with 0.9.8f
+
+-------------------------------------------------------------------
+Mon Oct 15 11:17:14 CEST 2007 - mkoenig@suse.de
+
+- update to version 0.9.8f:
+  * fixes CVE-2007-3108, CVE-2007-5135, CVE-2007-4995
+- patches merged upstream:
+  openssl-0.9.8-key_length.patch
+  openssl-CVE-2007-3108-bug296511
+  openssl-CVE-2007-5135.patch
+  openssl-gcc42.patch
+  openssl-gcc42_b.patch
+  openssl-s390-config.diff
+
+-------------------------------------------------------------------
+Mon Oct  1 11:29:55 CEST 2007 - mkoenig@suse.de
+
+- fix buffer overflow CVE-2007-5135 [#329208] 
+
+-------------------------------------------------------------------
+Wed Sep  5 11:39:26 CEST 2007 - mkoenig@suse.de
+
+- fix another gcc 4.2 build problem [#307669]
+
+-------------------------------------------------------------------
+Fri Aug  3 14:17:27 CEST 2007 - coolo@suse.de
+
+- provide the version obsoleted (#293401)
+
+-------------------------------------------------------------------
+Wed Aug  1 18:01:45 CEST 2007 - werner@suse.de
+
+- Add patch from CVS for RSA key reconstruction vulnerability 
+  (CVE-2007-3108, VU#724968, bug #296511)
+
+-------------------------------------------------------------------
+Thu May 24 16:18:50 CEST 2007 - mkoenig@suse.de
+
+- fix build with gcc-4.2
+  openssl-gcc42.patch
+- do not install example scripts with executable permissions  
+
+-------------------------------------------------------------------
+Mon Apr 30 01:32:44 CEST 2007 - ro@suse.de
+
+- adapt requires
+
+-------------------------------------------------------------------
+Fri Apr 27 15:25:13 CEST 2007 - mkoenig@suse.de
+
+- Do not use dots in package name
+- explicitly build with gcc-4.1 because of currently unresolved
+  failures with gcc-4.2
+
+-------------------------------------------------------------------
+Wed Apr 25 12:32:44 CEST 2007 - mkoenig@suse.de
+
+- Split/rename package to follow library packaging policy [#260219]
+  New package libopenssl0.9.8 containing shared libs 
+  openssl-devel package renamed to libopenssl-devel
+  New package openssl-certs containing certificates 
+- add zlib-devel to Requires of devel package
+- remove old Obsoletes and Conflicts
+  openssls (Last used Nov 2000) 
+  ssleay (Last used 6.2)
+
+-------------------------------------------------------------------
+Mon Apr 23 11:17:57 CEST 2007 - mkoenig@suse.de
+
+- Fix key length [#254905,#262477]
+
+-------------------------------------------------------------------
+Tue Mar  6 10:38:10 CET 2007 - mkoenig@suse.de
+
+- update to version 0.9.8e:
+  * patches merged upstream:
+    openssl-CVE-2006-2940-fixup.patch
+    openssl-0.9.8d-padlock-static.patch
+
+-------------------------------------------------------------------
+Tue Jan  9 14:30:28 CET 2007 - mkoenig@suse.de
+
+- fix PadLock support [#230823]
+
+-------------------------------------------------------------------
+Thu Nov 30 14:33:51 CET 2006 - mkoenig@suse.de
+
+- enable fix for CVE-2006-2940 [#223040], SWAMP-ID 7198
+
+-------------------------------------------------------------------
+Mon Nov  6 18:35:10 CET 2006 - poeml@suse.de
+
+- configure with 'zlib' instead of 'zlib-dynamic'. Build with the
+  latter, there are problems opening the libz when running on the
+  Via Epia or vmware platforms. [#213305]
+
+-------------------------------------------------------------------
+Wed Oct  4 15:07:55 CEST 2006 - poeml@suse.de
+
+- add patch for the CVE-2006-2940 fix: the newly introduced limit
+  on DH modulus size could lead to a crash when exerted. [#208971]
+  Discovered and fixed after the 0.9.8d release.
+
+-------------------------------------------------------------------
+Fri Sep 29 18:37:01 CEST 2006 - poeml@suse.de
+
+- update to 0.9.8d
+  *) Introduce limits to prevent malicious keys being able to
+     cause a denial of service.  (CVE-2006-2940)
+  *) Fix ASN.1 parsing of certain invalid structures that can result
+     in a denial of service.  (CVE-2006-2937)
+  *) Fix buffer overflow in SSL_get_shared_ciphers() function. 
+     (CVE-2006-3738)
+  *) Fix SSL client code which could crash if connecting to a
+     malicious SSLv2 server.  (CVE-2006-4343)
+  *) Since 0.9.8b, ciphersuite strings naming explicit ciphersuites
+     match only those.  Before that, "AES256-SHA" would be interpreted
+     as a pattern and match "AES128-SHA" too (since AES128-SHA got
+     the same strength classification in 0.9.7h) as we currently only
+     have a single AES bit in the ciphersuite description bitmap.
+     That change, however, also applied to ciphersuite strings such as
+     "RC4-MD5" that intentionally matched multiple ciphersuites --
+     namely, SSL 2.0 ciphersuites in addition to the more common ones
+     from SSL 3.0/TLS 1.0.
+     So we change the selection algorithm again: Naming an explicit
+     ciphersuite selects this one ciphersuite, and any other similar
+     ciphersuite (same bitmap) from *other* protocol versions.
+     Thus, "RC4-MD5" again will properly select both the SSL 2.0
+     ciphersuite and the SSL 3.0/TLS 1.0 ciphersuite.
+     Since SSL 2.0 does not have any ciphersuites for which the
+     128/256 bit distinction would be relevant, this works for now.
+     The proper fix will be to use different bits for AES128 and
+     AES256, which would have avoided the problems from the beginning;
+     however, bits are scarce, so we can only do this in a new release
+     (not just a patchlevel) when we can change the SSL_CIPHER
+     definition to split the single 'unsigned long mask' bitmap into
+     multiple values to extend the available space.
+- not in mentioned in CHANGES: patch for CVE-2006-4339 corrected
+  [openssl.org #1397]
+
+-------------------------------------------------------------------
+Fri Sep  8 20:33:40 CEST 2006 - schwab@suse.de
+
+- Fix inverted logic.
+
+-------------------------------------------------------------------
+Wed Sep  6 17:56:08 CEST 2006 - poeml@suse.de
+
+- update to 0.9.8c
+  Changes between 0.9.8b and 0.9.8c  [05 Sep 2006]
+  *) Avoid PKCS #1 v1.5 signature attack discovered by Daniel Bleichenbacher
+     (CVE-2006-4339)  [Ben Laurie and Google Security Team]
+  *) Add AES IGE and biIGE modes.  [Ben Laurie]
+  *) Change the Unix randomness entropy gathering to use poll() when
+     possible instead of select(), since the latter has some
+     undesirable limitations.  [Darryl Miles via Richard Levitte and Bodo Moeller]
+  *) Disable "ECCdraft" ciphersuites more thoroughly.  Now special
+     treatment in ssl/ssl_ciph.s makes sure that these ciphersuites
+     cannot be implicitly activated as part of, e.g., the "AES" alias.
+     However, please upgrade to OpenSSL 0.9.9[-dev] for
+     non-experimental use of the ECC ciphersuites to get TLS extension
+     support, which is required for curve and point format negotiation
+     to avoid potential handshake problems.  [Bodo Moeller]
+  *) Disable rogue ciphersuites:
+      - SSLv2 0x08 0x00 0x80 ("RC4-64-MD5")
+      - SSLv3/TLSv1 0x00 0x61 ("EXP1024-RC2-CBC-MD5")
+      - SSLv3/TLSv1 0x00 0x60 ("EXP1024-RC4-MD5")
+     The latter two were purportedly from
+     draft-ietf-tls-56-bit-ciphersuites-0[01].txt, but do not really
+     appear there.
+     Also deactive the remaining ciphersuites from
+     draft-ietf-tls-56-bit-ciphersuites-01.txt.  These are just as
+     unofficial, and the ID has long expired.  [Bodo Moeller]
+  *) Fix RSA blinding Heisenbug (problems sometimes occured on
+     dual-core machines) and other potential thread-safety issues.
+     [Bodo Moeller]
+  *) Add the symmetric cipher Camellia (128-bit, 192-bit, 256-bit key
+     versions), which is now available for royalty-free use
+     (see http://info.isl.ntt.co.jp/crypt/eng/info/chiteki.html).
+     Also, add Camellia TLS ciphersuites from RFC 4132.
+     To minimize changes between patchlevels in the OpenSSL 0.9.8
+     series, Camellia remains excluded from compilation unless OpenSSL
+     is configured with 'enable-camellia'.  [NTT]
+  *) Disable the padding bug check when compression is in use. The padding
+     bug check assumes the first packet is of even length, this is not
+     necessarily true if compresssion is enabled and can result in false
+     positives causing handshake failure. The actual bug test is ancient
+     code so it is hoped that implementations will either have fixed it by
+     now or any which still have the bug do not support compression.
+     [Steve Henson]
+  Changes between 0.9.8a and 0.9.8b  [04 May 2006]
+  *) When applying a cipher rule check to see if string match is an explicit
+     cipher suite and only match that one cipher suite if it is.  [Steve Henson]
+  *) Link in manifests for VC++ if needed.  [Austin Ziegler <halostatue@gmail.com>]
+  *) Update support for ECC-based TLS ciphersuites according to
+     draft-ietf-tls-ecc-12.txt with proposed changes (but without
+     TLS extensions, which are supported starting with the 0.9.9
+     branch, not in the OpenSSL 0.9.8 branch).  [Douglas Stebila]
+  *) New functions EVP_CIPHER_CTX_new() and EVP_CIPHER_CTX_free() to support
+     opaque EVP_CIPHER_CTX handling.  [Steve Henson]
+  *) Fixes and enhancements to zlib compression code. We now only use
+     "zlib1.dll" and use the default __cdecl calling convention on Win32
+     to conform with the standards mentioned here:
+           http://www.zlib.net/DLL_FAQ.txt
+     Static zlib linking now works on Windows and the new --with-zlib-include
+     --with-zlib-lib options to Configure can be used to supply the location
+     of the headers and library. Gracefully handle case where zlib library
+     can't be loaded.  [Steve Henson]
+  *) Several fixes and enhancements to the OID generation code. The old code
+     sometimes allowed invalid OIDs (1.X for X >= 40 for example), couldn't
+     handle numbers larger than ULONG_MAX, truncated printing and had a
+     non standard OBJ_obj2txt() behaviour.  [Steve Henson]
+  *) Add support for building of engines under engine/ as shared libraries
+     under VC++ build system.  [Steve Henson]
+  *) Corrected the numerous bugs in the Win32 path splitter in DSO.
+     Hopefully, we will not see any false combination of paths any more.
+     [Richard Levitte]
+- enable Camellia cipher. There is a royalty free license to the
+  patents, see http://info.isl.ntt.co.jp/crypt/eng/info/chiteki.html.
+  NOTE: the license forbids patches to the cipher.
+- build with zlib-dynamic and add zlib-devel to BuildRequires.
+  Allows compression of data in TLS, although few application would
+  actually use it since there is no standard for negotiating the
+  compression method. The only one I know if is stunnel.
+
+-------------------------------------------------------------------
+Fri Jun  2 15:00:58 CEST 2006 - poeml@suse.de
+
+- fix built-in ENGINESDIR for 64 bit architectures. We change only
+  the builtin search path for engines, not the path where engines
+  are packaged. Path can be overridden with the OPENSSL_ENGINES
+  environment variable. [#179094]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 13:13:13 CET 2006 - mc@suse.de
+
+- fix build problems on s390x (openssl-s390-config.diff)
+- build with -fstack-protector 
+
+-------------------------------------------------------------------
+Mon Nov  7 16:30:49 CET 2005 - dmueller@suse.de
+
+- build with non-executable stack 
+
+-------------------------------------------------------------------
+Thu Oct 20 17:37:47 CEST 2005 - poeml@suse.de
+
+- fix unguarded free() which can cause a segfault in the ca
+  commandline app [#128655]
+
+-------------------------------------------------------------------
+Thu Oct 13 15:10:28 CEST 2005 - poeml@suse.de
+
+- add Geotrusts Equifax Root1 CA certificate, which needed to
+  verify the authenticity of you.novell.com [#121966]
+
+-------------------------------------------------------------------
+Tue Oct 11 15:34:07 CEST 2005 - poeml@suse.de
+
+- update to 0.9.8a
+  *) Remove the functionality of SSL_OP_MSIE_SSLV2_RSA_PADDING
+     (part of SSL_OP_ALL).  This option used to disable the
+     countermeasure against man-in-the-middle protocol-version
+     rollback in the SSL 2.0 server implementation, which is a bad
+     idea.  (CAN-2005-2969)
+  *) Add two function to clear and return the verify parameter flags.
+  *) Keep cipherlists sorted in the source instead of sorting them at
+     runtime, thus removing the need for a lock.
+  *) Avoid some small subgroup attacks in Diffie-Hellman.
+  *) Add functions for well-known primes.
+  *) Extended Windows CE support.
+  *) Initialize SSL_METHOD structures at compile time instead of during
+     runtime, thus removing the need for a lock.
+  *) Make PKCS7_decrypt() work even if no certificate is supplied by
+     attempting to decrypt each encrypted key in turn. Add support to
+     smime utility.
+
+-------------------------------------------------------------------
+Thu Sep 29 18:53:08 CEST 2005 - poeml@suse.de
+
+- update to 0.9.8
+  see CHANGES file or http://www.openssl.org/news/changelog.html
+- adjust patches
+- drop obsolete openssl-no-libc.diff
+- disable libica patch until it has been ported
+
+-------------------------------------------------------------------
+Fri May 20 11:27:12 CEST 2005 - poeml@suse.de
+
+- update to 0.9.7g. The significant changes are:
+  *) Fixes for newer kerberos headers. NB: the casts are needed because
+     the 'length' field is signed on one version and unsigned on another
+     with no (?) obvious way to tell the difference, without these VC++
+     complains. Also the "definition" of FAR (blank) is no longer included
+     nor is the error ENOMEM. KRB5_PRIVATE has to be set to 1 to pick up
+     some needed definitions.
+  *) Added support for proxy certificates according to RFC 3820.
+     Because they may be a security thread to unaware applications,
+     they must be explicitely allowed in run-time.  See
+     docs/HOWTO/proxy_certificates.txt for further information.
+
+-------------------------------------------------------------------
+Tue May 17 16:28:51 CEST 2005 - schwab@suse.de
+
+- Include %cflags_profile_generate in ${CC} since it is required for
+  linking as well.
+- Remove explicit reference to libc.
+
+-------------------------------------------------------------------
+Fri Apr  8 17:27:27 CEST 2005 - poeml@suse.de
+
+- update to 0.9.7f. The most significant changes are:
+    o Several compilation issues fixed.
+    o Many memory allocation failure checks added.
+    o Improved comparison of X509 Name type.
+    o Mandatory basic checks on certificates.
+    o Performance improvements.
+  (for a complete list see http://www.openssl.org/source/exp/CHANGES)
+- adjust openssl-0.9.7f-ppc64.diff
+- drop obsolete openssl-0.9.7d-crl-default_md.dif [#55435]
+
+-------------------------------------------------------------------
+Tue Jan  4 16:47:02 CET 2005 - poeml@suse.de
+
+- update to 0.9.7e
+  *) Avoid a race condition when CRLs are checked in a multi
+     threaded environment. This would happen due to the reordering
+     of the revoked entries during signature checking and serial
+     number lookup. Now the encoding is cached and the serial
+     number sort performed under a lock.  Add new STACK function
+     sk_is_sorted().
+  *) Add Delta CRL to the extension code.
+  *) Various fixes to s3_pkt.c so alerts are sent properly.
+  *) Reduce the chances of duplicate issuer name and serial numbers
+     (in violation of RFC3280) using the OpenSSL certificate
+     creation utilities.  This is done by creating a random 64 bit
+     value for the initial serial number when a serial number file
+     is created or when a self signed certificate is created using
+     'openssl req -x509'. The initial serial number file is created
+     using 'openssl x509 -next_serial' in CA.pl rather than being
+     initialized to 1.
+- remove obsolete patches
+- fix openssl-0.9.7d-padlock-glue.diff and ICA patch to patch
+  Makefile, not Makefile.ssl
+- fixup for spaces in names of man pages not needed now
+- pack /usr/bin/openssl_fips_fingerprint
+- in rpm post/postun script, run /sbin/ldconfig directly (the macro
+  is deprecated)
+
+-------------------------------------------------------------------
+Mon Oct 18 15:03:28 CEST 2004 - poeml@suse.de
+
+- don't install openssl.doxy file [#45210]
+
+-------------------------------------------------------------------
+Thu Jul 29 16:56:44 CEST 2004 - poeml@suse.de
+
+- apply patch from CVS to fix segfault in S/MIME encryption
+  (http://cvs.openssl.org/chngview?cn=12081, regression in
+  openssl-0.9.7d) [#43386]
+
+-------------------------------------------------------------------
+Mon Jul 12 15:22:31 CEST 2004 - mludvig@suse.cz
+
+- Updated VIA PadLock engine.
+
+-------------------------------------------------------------------
+Wed Jun 30 21:45:01 CEST 2004 - mludvig@suse.cz
+
+- Updated openssl-0.9.7d-padlock-engine.diff with support for
+  AES192, AES256 and RNG.
+
+-------------------------------------------------------------------
+Tue Jun 15 16:18:36 CEST 2004 - poeml@suse.de
+
+- update IBM ICA patch to last night's version. Fixes ibmca_init()
+  to reset ibmca_dso=NULL after calling DSO_free(), if the device
+  driver could not be loaded. The bug lead to a segfault triggered
+  by stunnel, which does autoload available engines [#41874]
+- patch from CVS: make stack API more robust (return NULL for
+  out-of-range indexes). Fixes another possible segfault during
+  engine detection (could also triggered by stunnel)
+- add patch from Michal Ludvig for VIA PadLock support 
+
+-------------------------------------------------------------------
+Wed Jun  2 20:44:40 CEST 2004 - poeml@suse.de
+
+- add root certificate for the ICP-Brasil CA [#41546]
+
+-------------------------------------------------------------------
+Thu May 13 19:53:48 CEST 2004 - poeml@suse.de
+
+- add patch to use default_md for CRLs too [#40435]
+
+-------------------------------------------------------------------
+Tue May  4 20:45:19 CEST 2004 - poeml@suse.de
+
+- update ICA patch to apr292004 release [#39695]
+
+-------------------------------------------------------------------
+Thu Mar 18 13:47:09 CET 2004 - poeml@suse.de
+
+- update to 0.9.7d
+  o Security: Fix Kerberos ciphersuite SSL/TLS handshaking bug
+    (CAN-2004-0112)
+  o Security: Fix null-pointer assignment in do_change_cipher_spec() 
+    (CAN-2004-0079)
+  o Allow multiple active certificates with same subject in CA index
+  o Multiple X590 verification fixes
+  o Speed up HMAC and other operations
+- remove the hunk from openssl-0.9.6d.dif that added NO_IDEA around
+  IDEA_128_CBC_WITH_MD5 in the global cipher list. Upstream now has
+  OPENSSL_NO_IDEA around it
+- [#36386] fixed (broken generation of EVP_BytesToKey.3ssl from the
+  pod file)
+- permissions of lib/pkgconfig fixed
+
+-------------------------------------------------------------------
+Wed Feb 25 20:42:39 CET 2004 - poeml@suse.de
+
+- update to 0.9.7c
+  *) Fix various bugs revealed by running the NISCC test suite:
+     Stop out of bounds reads in the ASN1 code when presented with
+     invalid tags (CAN-2003-0543 and CAN-2003-0544).
+     Free up ASN1_TYPE correctly if ANY type is invalid (CAN-2003-0545).
+     If verify callback ignores invalid public key errors don't try to check
+     certificate signature with the NULL public key.
+  *) New -ignore_err option in ocsp application to stop the server
+     exiting on the first error in a request.
+  *) In ssl3_accept() (ssl/s3_srvr.c) only accept a client certificate
+     if the server requested one: as stated in TLS 1.0 and SSL 3.0
+     specifications.
+  *) In ssl3_get_client_hello() (ssl/s3_srvr.c), tolerate additional
+     extra data after the compression methods not only for TLS 1.0
+     but also for SSL 3.0 (as required by the specification).
+  *) Change X509_certificate_type() to mark the key as exported/exportable
+     when it's 512 *bits* long, not 512 bytes.
+  *) Change AES_cbc_encrypt() so it outputs exact multiple of
+     blocks during encryption.
+  *) Various fixes to base64 BIO and non blocking I/O. On write
+     flushes were not handled properly if the BIO retried. On read
+     data was not being buffered properly and had various logic bugs.
+     This also affects blocking I/O when the data being decoded is a
+     certain size.
+  *) Various S/MIME bugfixes and compatibility changes:
+     output correct application/pkcs7 MIME type if
+     PKCS7_NOOLDMIMETYPE is set. Tolerate some broken signatures.
+     Output CR+LF for EOL if PKCS7_CRLFEOL is set (this makes opening
+     of files as .eml work). Correctly handle very long lines in MIME
+     parser.
+- update ICA patch 
+  quote: This version of the engine patch has updated error handling in
+  the DES/SHA code, and turns RSA blinding off for hardware
+  accelerated RSA ops.
+- filenames of some man pages contain spaces now. Replace them with
+  underscores
+- fix compiler warnings in showciphers.c
+- fix permissions of /usr/%_lib/pkgconfig
+
+-------------------------------------------------------------------
+Sat Jan 10 10:55:59 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+- remove unneeded PreRequires
+
+-------------------------------------------------------------------
+Tue Nov 18 14:07:53 CET 2003 - poeml@suse.de
+
+- ditch annoying mail to root about moved locations [#31969]
+
+-------------------------------------------------------------------
+Wed Aug 13 22:30:13 CEST 2003 - poeml@suse.de
+
+- enable profile feedback based optimizations (except AES which
+  becomes slower)
+- add -fno-strict-aliasing, due to warnings about code where
+  dereferencing type-punned pointers will break strict aliasing
+- make a readlink function if readlink is not available
+
+-------------------------------------------------------------------
+Mon Aug  4 16:16:57 CEST 2003 - ro@suse.de
+
+- fixed manpages symlinks
+
+-------------------------------------------------------------------
+Wed Jul 30 15:37:37 CEST 2003 - meissner@suse.de
+
+- Fix Makefile to create pkgconfig file with lib64 on lib64 systems.
+
+-------------------------------------------------------------------
+Sun Jul 27 15:51:04 CEST 2003 - poeml@suse.de
+
+- don't explicitely strip binaries since RPM handles it, and may
+  keep the stripped information somewhere
+
+-------------------------------------------------------------------
+Tue Jul 15 16:29:16 CEST 2003 - meissner@suse.de
+
+- -DMD32_REG_T=int for ppc64 and s390x.
+
+-------------------------------------------------------------------
+Thu Jul 10 23:14:22 CEST 2003 - poeml@suse.de
+
+- update ibm ICA patch to 20030708 release (libica-1.3)
+
+-------------------------------------------------------------------
+Mon May 12 23:27:07 CEST 2003 - poeml@suse.de
+
+- package the openssl.pc file for pkgconfig 
+
+-------------------------------------------------------------------
+Wed Apr 16 16:04:32 CEST 2003 - poeml@suse.de
+
+- update to 0.9.7b. The most significant changes are:
+  o New library section OCSP.
+  o Complete rewrite of ASN1 code.
+  o CRL checking in verify code and openssl utility.
+  o Extension copying in 'ca' utility.
+  o Flexible display options in 'ca' utility.
+  o Provisional support for international characters with UTF8.
+  o Support for external crypto devices ('engine') is no longer
+    a separate distribution.
+  o New elliptic curve library section.
+  o New AES (Rijndael) library section.
+  o Support for new platforms: Windows CE, Tandem OSS, A/UX, AIX 64-bit,
+    Linux x86_64, Linux 64-bit on Sparc v9
+  o Extended support for some platforms: VxWorks
+  o Enhanced support for shared libraries.
+  o Now only builds PIC code when shared library support is requested.
+  o Support for pkg-config.
+  o Lots of new manuals.
+  o Makes symbolic links to or copies of manuals to cover all described
+    functions.
+  o Change DES API to clean up the namespace (some applications link also
+    against libdes providing similar functions having the same name).
+    Provide macros for backward compatibility (will be removed in the
+    future).
+  o Unify handling of cryptographic algorithms (software and engine)
+    to be available via EVP routines for asymmetric and symmetric ciphers.
+  o NCONF: new configuration handling routines.
+  o Change API to use more 'const' modifiers to improve error checking
+    and help optimizers.
+  o Finally remove references to RSAref.
+  o Reworked parts of the BIGNUM code.
+  o Support for new engines: Broadcom ubsec, Accelerated Encryption
+    Processing, IBM 4758.
+  o A few new engines added in the demos area.
+  o Extended and corrected OID (object identifier) table.
+  o PRNG: query at more locations for a random device, automatic query for
+    EGD style random sources at several locations.
+  o SSL/TLS: allow optional cipher choice according to server's preference.
+  o SSL/TLS: allow server to explicitly set new session ids.
+  o SSL/TLS: support Kerberos cipher suites (RFC2712).
+    Only supports MIT Kerberos for now.
+  o SSL/TLS: allow more precise control of renegotiations and sessions.
+  o SSL/TLS: add callback to retrieve SSL/TLS messages.
+  o SSL/TLS: support AES cipher suites (RFC3268).
+- adapt the ibmca patch
+- remove openssl-nocrypt.diff, openssl's crypt() vanished
+- configuration syntax has changed ($sys_id added before $lflags)
+
+-------------------------------------------------------------------
+Thu Feb 20 11:55:34 CET 2003 - poeml@suse.de
+
+- update to bugfix release 0.9.6i:
+  - security fix: In ssl3_get_record (ssl/s3_pkt.c), minimize
+    information leaked via timing by performing a MAC computation
+    even if incorrrect block cipher padding has been found.  This
+    is a countermeasure against active attacks where the attacker
+    has to distinguish between bad padding and a MAC verification
+    error.  (CAN-2003-0078)
+  - a few more small bugfixes (mainly missing assertions)
+
+-------------------------------------------------------------------
+Fri Dec  6 10:07:20 CET 2002 - poeml@suse.de
+
+- update to 0.9.6h (last release in the 0.9.6 series)
+  o New configuration targets for Tandem OSS and A/UX.
+  o New OIDs for Microsoft attributes.
+  o Better handling of SSL session caching.
+  o Better comparison of distinguished names.
+  o Better handling of shared libraries in a mixed GNU/non-GNU environment.
+  o Support assembler code with Borland C.
+  o Fixes for length problems.
+  o Fixes for uninitialised variables.
+  o Fixes for memory leaks, some unusual crashes and some race conditions.
+  o Fixes for smaller building problems.
+  o Updates of manuals, FAQ and other instructive documents.
+- add a call to make depend
+- fix sed expression (lib -> lib64) to replace multiple occurences
+  on one line
+
+-------------------------------------------------------------------
+Mon Nov  4 13:16:09 CET 2002 - stepan@suse.de
+
+- fix openssl for alpha ev56 cpus
+
+-------------------------------------------------------------------
+Thu Oct 24 12:57:36 CEST 2002 - poeml@suse.de
+
+- own the /usr/share/ssl directory [#20849]
+- openssl-hppa-config.diff can be applied on all architectures
+
+-------------------------------------------------------------------
+Mon Sep 30 16:07:49 CEST 2002 - bg@suse.de
+
+- enable hppa distribution; use only pa1.1 architecture. 
+
+-------------------------------------------------------------------
+Tue Sep 17 17:13:46 CEST 2002 - froh@suse.de
+
+- update ibm-hardware-crypto-patch to ibmca.patch-0.96e-2 (#18953)
+
+-------------------------------------------------------------------
+Mon Aug 12 18:34:58 CEST 2002 - poeml@suse.de
+
+- update to 0.9.6g and drop the now included ASN1 check patch.
+  Other change:
+  - Use proper error handling instead of 'assertions' in buffer
+    overflow checks added in 0.9.6e.  This prevents DoS (the
+    assertions could call abort()).
+
+-------------------------------------------------------------------
+Fri Aug  9 19:49:59 CEST 2002 - kukuk@suse.de
+
+- Fix requires of openssl-devel subpackage
+
+-------------------------------------------------------------------
+Tue Aug  6 15:18:59 MEST 2002 - draht@suse.de
+
+- Correction for changes in the ASN1 code, assembled in
+  openssl-0.9.6e-cvs-20020802-asn1_lib.diff
+
+-------------------------------------------------------------------
+Thu Aug  1 00:53:33 CEST 2002 - poeml@suse.de
+
+- update to 0.9.6e. Major changes:
+  o Various security fixes (sanity checks to asn1_get_length(),
+    various remote buffer overflows)
+  o new option SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS, disabling the
+    countermeasure against a vulnerability in the CBC ciphersuites
+    in SSL 3.0/TLS 1.0 that was added in 0.9.6d which turned out to
+    be incompatible with buggy SSL implementations
+- update ibmca crypto hardware patch (security issues fixed)
+- gcc 3.1 version detection is fixed, we can drop the patch
+- move the most used man pages from the -doc to the main package
+  [#9913] and resolve man page conflicts by putting them into ssl
+  sections [#17239] 
+- spec file: use PreReq for %post script
+
+-------------------------------------------------------------------
+Fri Jul 12 17:59:10 CEST 2002 - poeml@suse.de
+
+- update to 0.9.6d. Major changes:
+  o Various SSL/TLS library bugfixes.
+  o Fix DH parameter generation for 'non-standard' generators.
+  Complete Changelog: http://www.openssl.org/news/changelog.html
+- supposed to fix a session caching failure occuring with postfix
+- simplify local configuration for the architectures
+- there's a new config variable: $shared_ldflag
+- use RPM_OPT_FLAGS in favor of predifined cflags by appending them
+  at the end
+- validate config data (config --check-sanity)
+- resolve file conflict of /usr/share/man/man1/openssl.1.gz [#15982]
+- move configuration to /etc/ssl [#14387]
+- mark openssl.cnf %config (noreplace)
+
+-------------------------------------------------------------------
+Sat Jul  6 20:28:56 CEST 2002 - schwab@suse.de
+
+- Include <crypt.h> to get crypt prototype.
+
+-------------------------------------------------------------------
+Fri Jul  5 08:51:16 CEST 2002 - kukuk@suse.de
+
+- Remove crypt prototype from des.h header file, too.
+
+-------------------------------------------------------------------
+Mon Jun 10 11:38:16 CEST 2002 - meissner@suse.de
+
+- enhanced ppc64 support (needs seperate config), reenabled make check
+
+-------------------------------------------------------------------
+Fri May 31 14:54:06 CEST 2002 - olh@suse.de
+
+- add ppc64 support, temporary disable make check
+
+-------------------------------------------------------------------
+Thu Apr 18 16:30:01 CEST 2002 - meissner@suse.de
+
+- fixed x86_64 build, added bc to needed_for_build (used by tests)
+
+-------------------------------------------------------------------
+Wed Apr 17 16:56:34 CEST 2002 - ro@suse.de
+
+- fixed gcc version determination
+- drop sun4c support/always use sparcv8 
+- ignore return code from showciphers
+
+-------------------------------------------------------------------
+Fri Mar 15 16:54:44 CET 2002 - poeml@suse.de
+
+- add settings for sparc to build shared objects. Note that all
+  sparcs (sun4[mdu]) are recognized as linux-sparcv7 
+
+-------------------------------------------------------------------
+Wed Feb  6 14:23:44 CET 2002 - kukuk@suse.de
+
+- Remove crypt function from libcrypto.so.0 [Bug #13056]
+
+-------------------------------------------------------------------
+Sun Feb  3 22:32:16 CET 2002 - poeml@suse.de
+
+- add settings for mips to build shared objects
+- print out all settings to the build log
+
+-------------------------------------------------------------------
+Tue Jan 29 12:42:58 CET 2002 - poeml@suse.de
+
+- update to 0.9.6c:
+  o bug fixes
+  o support for hardware crypto devices (Cryptographic Appliances,
+  Broadcom, and Accelerated Encryption Processing)
+- add IBMCA patch for IBM eServer Cryptographic Accelerator Device
+  Driver (#12565) (forward ported from 0.9.6b)
+  (http://www-124.ibm.com/developerworks/projects/libica/)
+- tell Configure how to build shared libs for s390 and s390x 
+- tweak Makefile.org to use %_libdir
+- clean up spec file
+- add README.SuSE as source file instead of in a patch
+
+-------------------------------------------------------------------
+Wed Dec  5 10:59:59 CET 2001 - uli@suse.de
+
+- disabled "make test" for ARM (destest segfaults, the other tests
+  seem to succeed)
+
+-------------------------------------------------------------------
+Wed Dec  5 02:39:16 CET 2001 - ro@suse.de
+
+- removed subpackage src 
+
+-------------------------------------------------------------------
+Wed Nov 28 13:28:42 CET 2001 - uli@suse.de
+
+- needs -ldl on ARM, too
+
+-------------------------------------------------------------------
+Mon Nov 19 17:48:31 MET 2001 - mls@suse.de
+
+- made mips big endian, fixed shared library creation for mips
+
+-------------------------------------------------------------------
+Fri Aug 31 11:19:46 CEST 2001 - rolf@suse.de
+
+- added root certificates [BUG#9913]
+- move from /usr/ssh to /usr/share/ssl
+
+-------------------------------------------------------------------
+Wed Jul 18 10:27:54 CEST 2001 - rolf@suse.de
+
+- update to 0.9.6b
+- switch to engine version of openssl, which supports hardware 
+  encryption for a few popular devices
+- check wether shared libraries have been generated
+
+-------------------------------------------------------------------
+Thu Jul  5 15:06:03 CEST 2001 - rolf@suse.de
+
+- appliy PRNG security patch
+
+-------------------------------------------------------------------
+Tue Jun 12 10:52:34 EDT 2001 - bk@suse.de
+
+- added support for s390x
+
+-------------------------------------------------------------------
+Mon May  7 21:02:30 CEST 2001 - kukuk@suse.de
+
+- Fix building of shared libraries on SPARC, too.
+
+-------------------------------------------------------------------
+Mon May  7 11:36:53 MEST 2001 - rolf@suse.de
+
+- Fix ppc and s390 shared library builds
+- resolved conflict in manpage naming: 
+	rand.3 is now sslrand.3 [BUG#7643]
+
+-------------------------------------------------------------------
+Tue May  1 22:32:48 CEST 2001 - schwab@suse.de
+
+- Fix ia64 configuration.
+- Fix link command.
+
+-------------------------------------------------------------------
+Thu Apr 26 03:17:52 CEST 2001 - bjacke@suse.de
+
+- updated to 0.96a
+
+-------------------------------------------------------------------
+Wed Apr 18 12:56:48 CEST 2001 - kkaempf@suse.de
+
+- provide .so files in -devel package only
+
+-------------------------------------------------------------------
+Tue Apr 17 02:45:36 CEST 2001 - bjacke@suse.de
+
+- resolve file name conflict (#6966)
+
+-------------------------------------------------------------------
+Wed Mar 21 10:12:59 MET 2001 - rolf@suse.de
+
+- new subpackage openssl-src [BUG#6383]
+- added README.SuSE which explains where to find the man pages [BUG#6717]
+
+-------------------------------------------------------------------
+Fri Dec 15 18:09:16 CET 2000 - sf@suse.de
+
+- changed CFLAG to -O1 to make the tests run successfully 
+
+-------------------------------------------------------------------
+Mon Dec 11 13:33:55 CET 2000 - rolf@suse.de
+
+- build openssl with no-idea and no-rc5 to meet US & RSA regulations
+- build with -fPIC on all platforms (especially IA64)
+
+-------------------------------------------------------------------
+Wed Nov 22 11:27:39 MET 2000 - rolf@suse.de
+
+- rename openssls to openssl-devel and add shared libs and header files
+- new subpackge openssl-doc for manpages and documentation
+- use BuildRoot
+
+-------------------------------------------------------------------
+Fri Oct 27 16:53:45 CEST 2000 - schwab@suse.de
+
+- Add link-time links for libcrypto and libssl.
+- Make sure that LD_LIBRARY_PATH is passed down to sub-makes.
+
+-------------------------------------------------------------------
+Mon Oct  2 17:33:07 MEST 2000 - rolf@suse.de
+
+- update to 0.9.6
+
+-------------------------------------------------------------------
+Mon Apr 10 23:04:15 CEST 2000 - bk@suse.de
+
+- fix support for s390-linux
+
+-------------------------------------------------------------------
+Mon Apr 10 18:01:46 MEST 2000 - rolf@suse.de
+
+- new version 0.9.5a
+
+-------------------------------------------------------------------
+Sun Apr  9 02:51:42 CEST 2000 - bk@suse.de
+
+- add support for s390-linux
+
+-------------------------------------------------------------------
+Mon Mar 27 19:25:25 CEST 2000 - kukuk@suse.de
+
+- Use sparcv7 for SPARC
+
+-------------------------------------------------------------------
+Wed Mar  1 16:42:00 MET 2000 - rolf@suse.de
+
+- move manpages back, as too many conflict with system manuals
+
+-------------------------------------------------------------------
+Wed Mar  1 11:23:21 MET 2000 - rolf@suse.de
+
+- move manpages to %{_mandir}
+- include static libraries
+
+-------------------------------------------------------------------
+Wed Mar  1 02:52:17 CET 2000 - bk@suse.de
+
+- added subpackage source openssls, needed for ppp_ssl
+
+-------------------------------------------------------------------
+Tue Feb 29 12:50:48 MET 2000 - rolf@suse.de
+
+- new version 0.9.5
+
+-------------------------------------------------------------------
+Thu Feb 24 15:43:38 CET 2000 - schwab@suse.de
+
+- add support for ia64-linux
+
+-------------------------------------------------------------------
+Mon Jan 31 13:05:59 CET 2000 - kukuk@suse.de
+
+- Create and add libcrypto.so.0 and libssl.so.0
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Sep  1 12:30:08 MEST 1999 - rolf@suse.de
+
+- new version 0.9.4
+
+-------------------------------------------------------------------
+Wed May 26 16:26:49 MEST 1999 - rolf@suse.de
+
+- new version 0.9.3 with new layout
+- alpha asm disabled by default now, no patch needed
+
+-------------------------------------------------------------------
+Thu May 20 09:38:09 MEST 1999 - ro@suse.de
+
+- disable asm for alpha: seems incomplete
+
+-------------------------------------------------------------------
+Mon May 17 17:43:34 MEST 1999 - rolf@suse.de
+
+- don't use -DNO_IDEA
+
+-------------------------------------------------------------------
+Wed May 12 16:10:03 MEST 1999 - rolf@suse.de
+
+- first version 0.9.2b

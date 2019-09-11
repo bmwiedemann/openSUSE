@@ -1,0 +1,13 @@
+## Path:	Network/Subversion/svnserve
+## Description:	Basic configuration for svnserve
+
+## Type:	string
+## Default	"-d -R -r /srv/svn/repos"
+#
+# Default options for the svnserve process.
+# The -R option enforces read-only access, i.e. write operations to the
+# repository (such as commits) will not be allowed.
+# Authentication should be configured before allowing write access.
+# See http://svnbook.red-bean.com/en/1.8/svn.serverconfig.svnserve.html#svn.serverconfig.svnserve.auth
+#
+SVNSERVE_OPTIONS="-d -R -r /srv/svn/repos"

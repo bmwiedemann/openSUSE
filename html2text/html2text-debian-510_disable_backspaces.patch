@@ -1,0 +1,14 @@
+Don't use backspaces.
+Index: html2text-1.3.2a/html2text.C
+===================================================================
+--- html2text-1.3.2a.orig/html2text.C	2008-09-20 00:36:07.709605411 +0300
++++ html2text-1.3.2a/html2text.C	2008-09-20 00:50:20.938879802 +0300
+@@ -188,7 +188,7 @@
+   const char *style            = "compact";
+   int        width             = 79;
+   const char *output_file_name = "-";
+-  bool       use_backspaces    = true;
++  bool       use_backspaces    = false;
+ 
+   int i;
+   for (i = 1; i < argc && argv[i][0] == '-' && argv[i][1]; i++) {

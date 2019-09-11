@@ -1,0 +1,19 @@
+# NB: This is a template file, DO NOT USE!
+# See README.md for instructions on use.
+
+get
+digest
+
+# Replace with the login credentials of your DNS24 account
+user = "USERNAME:PASSWORD"
+
+# NB: mixing IPv4 and IPv6 updates within a single config file does not work
+
+ipv4
+# Replace YOUR.DOMAIN.NAME with the domain name to be updated
+url = "http://dyn.dns24.ch/update?type=A&data=client&hostname=YOUR.DOMAIN.NAME"
+# You can update multiple domains at once by adding more "url=..." lines
+
+#ipv6
+#url = "http://dyn.dns24.ch/update?type=AAAA&data=client&hostname=YOUR.DOMAIN.NAME"
+

@@ -1,0 +1,428 @@
+-------------------------------------------------------------------
+Tue Mar  5 15:31:55 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add ppc64-fix-367fd5731a8c68225cb870aa656ea0ce677fe040.patch
+  in order to address power targets.
+
+-------------------------------------------------------------------
+Fri Feb 15 09:37:39 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to version 2.7:
+  * bug in span stats printing introduced by new scalable page heap
+    change was fixed.
+  * Christoph Müllner has contributed couple warnings fixes and
+    initial support for aarch64_ilp32 architecture.
+  * Ben Dang contributed documentation fix for heap checker.
+  * Fabrice Fontaine contributed fixed for linking benchmarks
+    with --disable-static.
+  * Holy Wu has added sized deallocation unit tests.
+  * Holy Wu has enabled support of sized deallocation (c++14)
+    on recent MSVC.
+  * Holy Wu has fixed MSVC build in WIN32_OVERRIDE_ALLOCATORS
+    mode. This closed issue #716.
+  * Holy Wu has contributed cleanup of config.h used on windows.
+  * Mao Huang has contributed couple simple tcmalloc changes from
+    chromium code base. Making our tcmalloc forks a tiny bit closer.
+  * issue #946 that caused compilation failures on some Linux
+    clang installations has been fixed. Much thanks to github
+    user htuch for helping to diagnose issue and proposing a fix.
+  * Tulio Magno Quites Machado Filho has contributed build-time
+    fix for PPC (for problem introduced in one of commits
+    since RC).
+- Add gcc-dont-clobber-rsp.patch (bsc#1121265).
+- Remove ucontext.patch, gperftools-s390.patch
+  and gperftools-aarch64.patch patches.
+
+-------------------------------------------------------------------
+Tue May  8 14:54:18 UTC 2018 - mrostecki@suse.com
+
+- Add devel-static package, which is needed for building Envoy
+  (https://www.envoyproxy.io/) and Cilium with Envoy integration
+
+-------------------------------------------------------------------
+Mon Mar 26 00:35:41 CEST 2018 - ro@suse.de
+
+- add patch gperftools-aarch64.patch (bsc#1086762)
+  (analog upstream commit 02eeed29df112728564a5dde6417fa4622b57a06)
+  fix build on aarch64 by removing conflicting mmap definition 
+
+-------------------------------------------------------------------
+Thu Mar 15 01:43:38 CET 2018 - ro@suse.de
+
+- add patch gperftools-s390.patch to fix build on s390
+  (bnc#1085398)
+  (basically git commit bf8eacce69df877d1cecdab8c7a6cc3f218ebcc2)
+
+-------------------------------------------------------------------
+Wed Mar 14 18:38:44 CET 2018 - ro@suse.de
+
+- do not buildrequire valgrind on s390, only exists on s390x 
+
+-------------------------------------------------------------------
+Thu Aug 10 10:17:23 UTC 2017 - schwab@suse.de
+
+- ucontext.patch: fix use of ucontext_t
+
+-------------------------------------------------------------------
+Fri Mar 31 15:23:59 UTC 2017 - fcrozat@suse.com
+
+- Don't BuildRequires libunwind-devel on s390*, it doesn't exist
+  there.
+
+-------------------------------------------------------------------
+Tue Aug  2 08:45:28 UTC 2016 - jslaby@suse.com
+
+- use valgrind from system, not the custom one
+
+-------------------------------------------------------------------
+Tue Mar 22 13:33:02 UTC 2016 - cgardner@suse.com
+
+- gperftools 2.5, available 12 March 2016.
+  See https://github.com/gperftools/gperftools/releases
+  * Bryan Chan has contributed s390x support
+  * stacktrace capturing via libgcc's _Unwind_Backtrace was implemented
+    (for architectures with missing or broken libunwind).
+  * "emergency malloc" was implemented. Which unbreaks recursive calls
+    to malloc/free from stacktrace capturing functions (such us glib'c
+    backtrace() or libunwind on arm). It is enabled by
+    --enable-emergency-malloc configure flag or by default on arm when
+    --enable-stacktrace-via-backtrace is given. It is another fix for a
+    number common issues people had on platforms with missing or broken
+    libunwind.
+  * C++14 sized-deallocation is now supported (on gcc 5 and recent
+    clangs). It is off by default and can be enabled at configure time
+    via --enable-sized-delete. On GNU/Linux it can also be enabled at
+    run-time by either TCMALLOC_ENABLE_SIZED_DELETE environment variable
+    or by defining tcmalloc_sized_delete_enabled function which should
+    return 1 to enable it.
+  * we've lowered default value of transfer batch size to 512. Previous
+    value (bumped up in 2.1) was too high and caused performance
+    regression for some users. 512 should still give us performance
+    boost for workloads that need higher transfer batch size while not
+    penalizing other workloads too much.
+  * Brian Silverman's patch finally stopped arming profiling timer
+    unless profiling is started.
+  * Andrew Morrow has contributed support for obtaining cache size of the
+    current thread and softer idling (for use in MongoDB).
+  * we've implemented few minor performance improvements, particularly
+    on malloc fast-path.
+  * issue that caused spurious profiler_unittest.sh failures was fixed.
+  * Jonathan Lambrechts contributed improved callgrind format support to
+    pprof.
+  * Matt Cross contributed better support for debug symbols in separate
+    files to pprof.
+  * Matt Cross contributed support for printing collapsed stack frame
+    from pprof aimed at producing flame graphs.
+  * Angus Gratton has contributed documentation fix mentioning that on
+    windows only tcmalloc_minimal is supported.
+  * Anton Samokhvalov has made tcmalloc use mi_force_{un,}lock on OSX
+    instead of pthread_atfork. Which apparently fixes forking
+    issues tcmalloc had on OSX.
+  * Milton Chiang has contributed support for building 32-bit gperftools
+    on arm8.
+  * Patrick LoPresti has contributed support for specifying alternative
+    profiling signal via CPUPROFILE_TIMER_SIGNAL environment variable.
+  * Paolo Bonzini has contributed support configuring filename for
+    sending malloc tracing output via TCMALLOC_TRACE_FILE environment
+    variable.
+  * user spotrh has enabled use of futex on arm.
+  * user mitchblank has contributed better declaration for arg-less
+    profiler functions.
+  * Tom Conerly contributed proper freeing of memory allocated in
+    HeapProfileTable::FillOrderedProfile on error paths.
+  * user fdeweerdt has contributed curl arguments handling fix in pprof
+  * Frederik Mellbin fixed tcmalloc's idea of mangled new and delete
+    symbols on windows x64
+  * Dair Grant has contributed cacheline alignment for ThreadCache
+    objects
+  * Fredrik Mellbin has contributed updated windows/config.h for Visual
+    Studio 2015 and other windows fixes.
+  * we're not linking libpthread to libtcmalloc_minimal anymore. Instead
+    libtcmalloc_minimal links to pthread symbols weakly. As a result
+    single-threaded programs remain single-threaded when linking to or
+    preloading libtcmalloc_minimal.so.
+  * Boris Sazonov has contributed mips compilation fix and printf misue
+    in pprof.
+  * Adhemerval Zanella has contributed alignment fixes for statically
+    allocated variables.
+  * Jens Rosenboom has contributed fixes for heap-profiler_unittest.sh
+  * gshirishfree has contributed better description for GetStats method.
+  * cyshi has contributed spinlock pause fix.
+  * Chris Mayo has contributed --docdir argument support for configure.
+  * Duncan Sands has contributed fix for function aliases.
+  * Simon Que contributed better include for malloc_hook_c.h
+  * user wmamrak contributed struct timespec fix for Visual Studio 2015.
+  * user ssubotin contributed typo in PrintAvailability code.
+  * build fix for Visual Studio. 
+  * dynamic sized delete is now disabled by default. It turned out that 
+    IFUNC relocations are not supporting our advanced use case on all 
+    platforms and in all cases.
+- Removed the following patches. All have either been incorporated
+  upstream or are no longer applicable in current distros.
+  * gperftools-fix_docdir.patch
+
+-------------------------------------------------------------------
+Sat Oct 31 13:35:12 UTC 2015 - mpluskal@suse.com
+
+- Update project and download url
+- Tiny spec file cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jan 10 16:30:24 UTC 2015 - cgardner@suse.com
+
+- gperftools 2.4, available 10 Jan 2015.
+  Skipped version 2.3, release 7 Dec 2014. 2.3 changes included:
+  * ( issue 631 ) fixed debugallocation miscompilation on mmap-less 
+    platforms (courtesy of user iamxujian) 
+  * ( issue 630 ) reference to wrong PROFILE (vs. correct CPUPROFILE) 
+    environment variable was fixed (courtesy of WenSheng He) 
+  * pprof now has option to display stack traces in output for heap 
+    checker (courtesy of Michael Pasieka) 
+  * ( issue 636 ) pprof web command now works on mingw 
+  * ( issue 635 ) pprof now handles library paths that contain spaces 
+    (courtesy of user mich...@sebesbefut.com) 
+  * ( issue 637 ) pprof now has an option to not strip template 
+    arguments (patch by jiakai) 
+  * ( issue 644 ) possible out-of-bounds access in GetenvBeforeMain 
+    was fixed (thanks to user abyss.7) 
+  * ( issue 641 ) pprof now has an option --show_addresses (thanks to 
+    user yurivict). New option prints instruction address in addition 
+    to function name in stack traces 
+  * ( issue 646 ) pprof now works around some issues of addr2line 
+    reportedly when DWARF v4 format is used (patch by Adam McNeeney) 
+  * ( issue 645 ) heap profiler exit message now includes remaining 
+    memory allocated info (patch by user yurivict) 
+  * pprof code that finds location of /proc/pid/maps in cpu profile 
+    files is now fixed (patch by Ricardo M. Correia) 
+  * ( issue 654 ) pprof now handles "split text segments" feature of 
+    Chromium for Android (patch by simonb) 
+  * ( issue 655 ) potential deadlock on windows caused by early call 
+    to getenv in malloc initialization code was fixed (bug reported 
+    and fix proposed by user zndmitry) 
+  * incorrect detection of arm 6zk instruction set support 
+    (-mcpu=arm1176jzf-s) was fixed. (Reported by pedronavf on old issue-493) 
+  * new cpu profiling mode on Linux is now implemented. It sets up separate 
+    profiling timers for separate threads. Which improves accuracy of 
+    profiling on Linux a lot. It is off by default. And is enabled if both 
+    librt.f is loaded and CPUPROFILE_PER_THREAD_TIMERS environment 
+    variable is set. But note that all threads need to be registered 
+    via ProfilerRegisterThread. 
+  Changes for version 2.4~rc
+  * enabled aggressive decommit option by default. It was found to 
+    significantly improve memory fragmentation with negligible impact 
+    on performance. (Thanks to investigation work performed by Adhemerval 
+    Zanella) 
+  * added ./configure flags for tcmalloc pagesize and tcmalloc allocation 
+    alignment. Larger page sizes have been reported to improve performance 
+    occasionally. (Patch by Raphael Moreira Zinsly) 
+  * sped-up hot-path of malloc/free. By about 5% on static library and 
+    about 10% on shared library. Mainly due to more efficient checking 
+    of malloc hooks. 
+  * improved accuracy of stacktrace capturing in cpu profiler (due to 
+    issue found by Arun Sharma). As part of that issue pprof's handling 
+    of cpu profiles was also improved. 
+- Removed missing_includes.patch; incorporated upstream.
+
+-------------------------------------------------------------------
+Sun Sep 28 18:44:03 UTC 2014 - jengelh@inai.de
+
+- Implement shlib packaging guidelines: split libraries
+- Improve on RPM group classification
+
+-------------------------------------------------------------------
+Mon Sep 15 00:33:02 CEST 2014 - ro@suse.de
+
+- set excludearch for s390 and s390x: not ported there
+
+-------------------------------------------------------------------
+Mon Jun 16 10:51:46 UTC 2014 - dvaleev@suse.com
+
+- fix issue 628 (gperftools 2.2 fails to build on powerpc)
+  missing_includes.patch
+
+-------------------------------------------------------------------
+Mon May 19 15:39:40 UTC 2014 - cgardner@suse.com
+
+- gperftools 2.2, released 3 May 2014.
+  * issue 620 (crash on windows when c runtime dll is reloaded) was
+    fixed
+  * a number of fixes for a number compilers and platforms. Notably
+    Visual Studio 2013, recent mingw with c++ threads and some OSX
+    fixes.
+  * we now have mips and mips64 support! (courtesy of Jovan Zelincevic,
+    Jean Lee, user xiaoyur347 and others)
+  * we now have aarch64 (aka arm64) support! (contributed by Riku
+    Voipio)
+  * there's now support for ppc64-le (by Raphael Moreira Zinsly and
+    Adhemerval Zanella)
+  * there's now some support of uclibc (contributed by user xiaoyur347)
+  * google/ headers will now give you deprecation warning. They are
+    deprecated since 2.0
+  * there's now new api: tc_malloc_skip_new_handler (ported from chromium
+    fork)
+  * issue-557: added support for dumping heap profile via signal (by
+    Jean Lee)
+  * issue-567: Petr Hosek contributed SysAllocator support for windows
+  * Joonsoo Kim contributed several speedups for central freelist code
+  * TCMALLOC_MAX_TOTAL_THREAD_CACHE_BYTES environment variable now works
+  * configure scripts are now using AM_MAINTAINER_MODE. It'll only
+    affect folks who modify source from .tar.gz and want automake to
+    automatically rebuild Makefile-s. See automake documentation for
+    that.
+  * issue-586: detect main executable even if PIE is active (based on
+    patch by user themastermind1). Notably, it fixes profiler use with
+    ruby.
+  * there is now support for switching backtrace capturing method at
+    runtime (via TCMALLOC_STACKTRACE_METHOD and
+    TCMALLOC_STACKTRACE_METHOD_VERBOSE environment variables)
+  * there is new backtrace capturing method using -finstrument-functions
+    prologues contributed by user xiaoyur347
+  * few cases of crashes/deadlocks in profiler were addressed. See
+    (famous) issue-66, issue-547 and issue-579.
+  * issue-464 (memory corruption in debugalloc's realloc after
+    memallign) is now fixed
+  * tcmalloc is now able to release memory back to OS on windows
+    (issue-489). The code was ported from chromium fork (by a number of
+    authors).
+  * Together with issue-489 we ported chromium's "aggressive decommit"
+    mode. In this mode (settable via malloc extension and via
+    environment variable TCMALLOC_AGGRESSIVE_DECOMMIT), free pages are
+    returned back to OS immediately.
+  * MallocExtension::instance() is now faster (based on patch by
+    Adhemerval Zanella)
+  * issue-610 (hangs on windows in multibyte locales) is now fixed
+- Removed the following patches. All have either been incorporated 
+  upstream or are no longer applicable in current distros.
+  * gperftools_fix_multiple_install_headers.patch
+  * gperftools-glibc216.patch
+  * spinlock-rand.patch
+  * gperftools_use_older_autoconf.diff
+
+-------------------------------------------------------------------
+Mon Aug 12 15:49:12 UTC 2013 - cgardner@suse.com
+
+- Fixed configure.ac to use older version of autoconf, so that 
+  gperftools can build for SLE10.
+
+-------------------------------------------------------------------
+Tue Jul 30 17:44:01 UTC 2013 - cgardner@suse.com
+
+- gperftools 2.1, released 30 July 2013.
+  * fixes for building on newer platforms. Notably, there's now initial
+    support for x32 ABI (--enable-minimal only at this time))
+  * Some fixes for debug allocation on POWER/Linux 
+  * new getNumericProperty stats for cache sizes
+  * added HEAP_PROFILER_TIME_INTERVAL variable (see documentation)
+  * added environment variable to control heap size (TCMALLOC_HEAP_LIMIT_MB)
+  * added environment variable to disable release of memory back to OS
+    (TCMALLOC_DISABLE_MEMORY_RELEASE)
+  * cpu profiler can now be switched on and off by sending it a signal
+    (specified in CPUPROFILESIGNAL)
+  * (issue 491) fixed race-ful spinlock wake-ups
+  * (issue 496) added some support for fork-ing of process that is using
+    tcmalloc
+  * (issue 368) improved memory fragmentation when large chunks of
+    memory are allocated/freed
+
+-------------------------------------------------------------------
+Thu Dec 27 11:08:09 UTC 2012 - dvaleev@suse.com
+
+- spinlock-rand.patch fixes an issue encountered on PPC with 
+  undefined conversions from 'base::subtle::Atomic64*' to 'const 
+  volatile Atomic32*' 
+
+-------------------------------------------------------------------
+Sun Jul 22 07:47:04 UTC 2012 - aj@suse.de
+
+- replace struct siginfo with siginfo_t since the former is not
+  available with glibc 2.16 anymore.
+
+-------------------------------------------------------------------
+Mon May 14 13:25:33 UTC 2012 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  SPDX format
+
+-------------------------------------------------------------------
+Fri Feb 17 11:23:45 CET 2012 - hmacht@suse.de
+
+- enable build with libunwind
+
+-------------------------------------------------------------------
+Thu Feb 16 22:17:11 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Simply file lists (why would mode 0775 be needed anyway?)
+
+-------------------------------------------------------------------
+Thu Feb 16 15:37:36 UTC 2012 - cgardner@suse.com
+
+- Fix make target.
+
+-------------------------------------------------------------------
+Thu Feb 16 11:28:14 UTC 2012 - coolo@suse.com
+
+- Remove redudant tags/sections
+
+-------------------------------------------------------------------
+Tue Feb  7 18:12:39 UTC 2012 - cgardner@suse.com
+
+- gperftools 2.0, released 3 Feb 2012.
+- Primarily renamed from google-perftools to gperftools, with ownership
+  shifted from Google to the community.
+
+-------------------------------------------------------------------
+Sat Dec 24 19:05:13 UTC 2011 - cgardner@suse.com
+
+- Version 1.9.1, released 23 Dec 2011.
+  * google-perftools: version 1.9 release
+  * Lightweight check for double-frees (blount)
+  * BUGFIX: Fix pprof to exit properly if run with no args (dagitses)
+  * Suggest ASan as a way to diagnose buggy code (ppluzhnikov)
+  * Get rid of unused CACHELINE_SIZE (csilvers)
+  * Replace atexit() calls with global dtors; helps freebsd (csilvers)
+  * Disable heap-checker under AddressSanitizer (kcc)
+  * Fix bug in powerpc stacktracing (ppluzhnikov)
+  * PERF: Use exponential backoff waiting for spinlocks (m3b)
+  * Fix 64-bit nm on 32-bit binaries in pprof (csilvers)
+  * Add ProfileHandlerDisallowForever (rsc)
+  * BUGFIX: Shell escape when forking in pprof (csilvers)
+  * No longer combine overloaded functions in pprof (csilvers)
+  * Fix address-normalizing bug in pprof (csilvers)
+  * More consistently call abort() instead of exit() on failure (csilvers)
+  * Allow NoGlobalLeaks to be safely called more than once (csilvers)
+  * PORTING/BUGFIX: Fix ARM cycleclock to use volatile asm (dougkwan)
+  * PORTING: 64-bit atomic ops for ARMv7 (dougkwan)
+  * PORTING: Implement stacktrace for ARM (dougkwan)
+  * PORTING: Fix malloc_hook_mmap_linux for ARM (dougkwan)
+  * PORTING: Update linux_syscall_support.h for ARM/etc (evannier, sanek)
+  * PORTING: Fix freebsd to work on x86_64 (chapp...@gmail.com)
+  * PORTING: Added additional SYS_mmap fixes for FreeBSD (chappedm)
+  * PORTING: Allow us to compile on OS X 10.6 and run on 10.5 (raltherr)
+  * PORTING: Check for mingw compilers that *do* define timespec
+  * PORTING: Add "support" for MIPS cycletimer
+  * PORTING: Fix fallback cycle-timer to work with Now (dougkwan)
+  * PERF: Move stack trace collecting out of the mutex (taylorc)
+  * PERF: Get the deallocation stack trace outside the mutex (sean)
+  * Make PageHeap dynamically allocated for leak checks (maxim)
+  * BUGFIX: Fix probing of nm -f behavior in pprof (dpeng)
+  * BUGFIX: Fix a race with the CentralFreeList lock before main (sanjay)
+  * Support /pprof/censusprofile url arguments (rajatjain)
+  * Change IgnoreObject to return its argument (nlewycky)
+  * Update malloc-hook files to support more CPUs
+  * BUGFIX: write our own strstr to avoid libc problems (csilvers)
+  * Use simple callgrind compression facility in pprof
+  * Print an error message when we can't run pprof to symbolize (csilvers)
+  * Die in configure when g++ is't installed (csilvers)
+  * DOC: Beef up the documentation a bit about using libunwind (csilvers)
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:04 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sun Jul 17 21:59:38 UTC 2011 - cgardner@suse.com
+
+- Google perftools 1.8, released 15 July 2011.
+

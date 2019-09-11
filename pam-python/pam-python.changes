@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Fri Jul 27 12:43:21 UTC 2018 - alexander_naumov@opensuse.org
+
+- Adding werror.patch
+  This patch remove warninig option -Werror. This option makes all
+  warnings into errors.
+
+-------------------------------------------------------------------
+Thu Oct 05 14:18:33 UTC 2017 - alexander_naumov@opensuse.org
+
+- Adding not_null_argument_for_strcmp.patch
+
+-------------------------------------------------------------------
+Wed May 10 08:38:56 UTC 2017 - jengelh@inai.de
+
+- Resolve errors in description
+- Drop unnecessary clean sections
+
+-------------------------------------------------------------------
+Wed Apr 19 13:55:53 UTC 2017 - alexander_naumov@opensuse.org
+
+- Version 1.0.6 
+

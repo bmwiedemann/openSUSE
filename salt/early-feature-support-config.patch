@@ -1,0 +1,1996 @@
+From 7c72c080c6b47cccecdf058cfe1be8f465d568a6 Mon Sep 17 00:00:00 2001
+From: Bo Maryniuk <bo@suse.de>
+Date: Tue, 10 Jul 2018 12:06:33 +0200
+Subject: [PATCH] early feature: support-config
+
+Add support script function
+
+Add salt-support starter
+
+Initial support wrapper
+
+Add data collector skeleton
+
+Add default scenario of the support configuration
+
+Add main flow for the collector.
+
+Move support library to its own package
+
+Add default support collection scenario
+
+Add logging
+
+Handle CLI error.
+
+Update format of the default support scenario
+
+Default archive name
+
+Finalise local data collection
+
+Write archive from memory objects.
+
+Add colored console outputter for salt-support.
+
+Use colored outputter
+
+Add message output class
+
+Remove try/except capture from the scripts and move to the runner directly
+
+Implement output highlighter methods for CLI output
+
+Move scenarios to profiles
+
+Get return section from the output. Tolerate raw data.
+
+Implement internal data collector
+
+Add network stack examination to the default profile
+
+Add an internal filetree function
+
+Add a method to discard current session
+
+Add a method to link a static file to the resulting archive
+
+Implement internal function caller
+
+Add internal functions
+
+Add default root for the one-file support data
+
+Set output device
+
+Separate dynamic data and static files on the fs
+
+Update color theme
+
+Add ident to the error message
+
+Report rejected files with the ident
+
+Reuse system error exceptions and reduce stat on the file check
+
+Use socket name of the host machine
+
+Add options for profile and archive settings
+
+Use archive name from options.
+
+Get profile by config/options
+
+Cleanup broken archive on crash/exception
+
+Use profile from the options/configuration
+
+Add more colored messages :-)
+
+Initial implementation of get static profiles
+
+Update docstring
+
+Move PostgreSQL profile to its own
+
+Handle profile listing, do not yield sys.exit on specific module
+
+Add network profile
+
+Add Salt's profile
+
+Uncomment package profile
+
+Allow several profiles to be specified
+
+Remove comments, add parameter to get more profiles
+
+Implement existing configuration finder
+
+Add options to handle unit configurations
+
+Pre-parse options prior run() to choose proper configuration target
+
+Handle arg parse generic errors, unit mis-choose
+
+Let cleanup be aware of pre-config state
+
+Fix imports
+
+Handle exit codes properly
+
+Allow to overwrite existing archive
+
+Use py2/3 exceptions equally
+
+Include exit exception on debugging
+
+Render profiles as Jinja2, add basic recursive caller to the template of the profile
+
+Add "users" profile
+
+Implement basic caller for the profile template
+
+Add table output renderer
+
+Fix typo
+
+Remove table outputter
+
+Allow default outputters and specify outputters inside the profile
+
+Remove group.getent from the loop per each user
+
+Add table outputter to network profile
+
+Add text outputter to hostname/fqdn data
+
+Remove network part from the default profile. Add text/table outputters.
+
+Fix Py3 compat
+
+Collect status (initial)
+
+Avoid irrelevant to profile files
+
+Add job profiles
+
+Add profile template trace
+
+Add inspection through the runners
+
+Allow parameters in callers and runners
+
+Handle non-dict iterables
+
+Highlight template content in the trace log
+
+Add return extractor from the local call returns
+
+Move local runner to its own namespace
+
+Lintfix: PEP8
+
+Remove duplicate code
+
+Fix caller return
+
+Add description tag to the scenario
+
+Add generic colored message
+
+Add wrapping function. NOTE: it should be refactored with the other similar functions
+
+Print description while processing the scenario
+
+Turn off default profile and print help instead
+
+Move command-line check before collector
+
+Do not verify archive if help needs to be printed
+
+Add console output unit test for indent output
+
+Fix docstring
+
+Rename test class
+
+Refactor test to add setup/teardown
+
+Add unit test to verify indent
+
+Use direct constants instead of encoded strings
+
+Add unit test for color indent rotation check
+
+Add a test case for Collector class
+
+Add unit test for closing the archive
+
+Add unit test for add/write sections on the collector object
+
+Add test for linking an external file
+
+Cleanup tests on tear-down method
+
+Add call count check
+
+Add unit test for support collection section discard
+
+Add unittest for SaltSupport's function config preparation
+
+Fix docstring
+
+Add unit test for local caller
+
+Add unit test for local runner
+
+Add unit test for internal function call
+
+Add unit test for getting an action description from the action meta
+
+Add unit test for internal function call
+
+Add unit test for return extration
+
+Add unit test for determine action type from the action meta
+
+Add unit test for cleanup routine
+
+Fix typo of method name
+
+Add unit test for check existing archive
+
+Add test suite for profile testing
+
+Add unit test for default profile is YAML-parseable
+
+Add unit test for user template profile rendering
+
+Update unit test for all non-template profiles parse check
+
+Add function to render a Jinja2 template by name
+
+Use template rendering function
+
+Add unit test on jobs-trace template for runner
+
+Move function above the tests
+
+Add current logfile, if defined in configuration
+
+Bugfix: ignore logfile, if path was not found or not defined or is None
+
+Lintfix: iteration over .keys()
+
+Remove template "salt" from non-template checks
+
+Lintfix: use salt.utils.files.fopen for resource leak prevention
+
+Lintfix: PEP8 E302: expected 2 blank lines, found 0
+
+Lintfix: use salt.utils.files.fopen instead of open
+
+Lintfix: PEP8 E303: too many blank lines (3)
+
+Lintfix: Uses of an external blacklisted import 'six': Please use 'import salt.ext.six as six'
+
+Lintfix: use salt.utils.files.fopen instead of open
+
+Fix unit tests
+
+Fix six import
+
+Mute pylint: file handler explicitly needed
+
+Lintfix: explicitly close filehandle
+
+Lintfix: mute fopen warning
+
+Remove development stub. Ughh...
+
+Removed blacklist of pkg_resources
+---
+ salt/cli/support/__init__.py              |  65 +++
+ salt/cli/support/collector.py             | 495 ++++++++++++++++++++++
+ salt/cli/support/console.py               | 165 ++++++++
+ salt/cli/support/intfunc.py               |  42 ++
+ salt/cli/support/localrunner.py           |  34 ++
+ salt/cli/support/profiles/default.yml     |  71 ++++
+ salt/cli/support/profiles/jobs-active.yml |   3 +
+ salt/cli/support/profiles/jobs-last.yml   |   3 +
+ salt/cli/support/profiles/jobs-trace.yml  |   7 +
+ salt/cli/support/profiles/network.yml     |  27 ++
+ salt/cli/support/profiles/postgres.yml    |  11 +
+ salt/cli/support/profiles/salt.yml        |   9 +
+ salt/cli/support/profiles/users.yml       |  22 +
+ salt/scripts.py                           |  14 +
+ salt/utils/parsers.py                     |  65 +++
+ scripts/salt-support                      |  11 +
+ setup.py                                  |   2 +
+ tests/unit/cli/test_support.py            | 477 +++++++++++++++++++++
+ 18 files changed, 1523 insertions(+)
+ create mode 100644 salt/cli/support/__init__.py
+ create mode 100644 salt/cli/support/collector.py
+ create mode 100644 salt/cli/support/console.py
+ create mode 100644 salt/cli/support/intfunc.py
+ create mode 100644 salt/cli/support/localrunner.py
+ create mode 100644 salt/cli/support/profiles/default.yml
+ create mode 100644 salt/cli/support/profiles/jobs-active.yml
+ create mode 100644 salt/cli/support/profiles/jobs-last.yml
+ create mode 100644 salt/cli/support/profiles/jobs-trace.yml
+ create mode 100644 salt/cli/support/profiles/network.yml
+ create mode 100644 salt/cli/support/profiles/postgres.yml
+ create mode 100644 salt/cli/support/profiles/salt.yml
+ create mode 100644 salt/cli/support/profiles/users.yml
+ create mode 100755 scripts/salt-support
+ create mode 100644 tests/unit/cli/test_support.py
+
+diff --git a/salt/cli/support/__init__.py b/salt/cli/support/__init__.py
+new file mode 100644
+index 0000000000..6a98a2d656
+--- /dev/null
++++ b/salt/cli/support/__init__.py
+@@ -0,0 +1,65 @@
++# coding=utf-8
++'''
++Get default scenario of the support.
++'''
++from __future__ import print_function, unicode_literals, absolute_import
++import yaml
++import os
++import salt.exceptions
++import jinja2
++import logging
++
++log = logging.getLogger(__name__)
++
++
++def _render_profile(path, caller, runner):
++    '''
++    Render profile as Jinja2.
++    :param path:
++    :return:
++    '''
++    env = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(path)), trim_blocks=False)
++    return env.get_template(os.path.basename(path)).render(salt=caller, runners=runner).strip()
++
++
++def get_profile(profile, caller, runner):
++    '''
++    Get profile.
++
++    :param profile:
++    :return:
++    '''
++    profiles = profile.split(',')
++    data = {}
++    for profile in profiles:
++        if os.path.basename(profile) == profile:
++            profile = profile.split('.')[0]  # Trim extension if someone added it
++            profile_path = os.path.join(os.path.dirname(__file__), 'profiles', profile + '.yml')
++        else:
++            profile_path = profile
++        if os.path.exists(profile_path):
++            try:
++                rendered_template = _render_profile(profile_path, caller, runner)
++                log.trace('\n{d}\n{t}\n{d}\n'.format(d='-' * 80, t=rendered_template))
++                data.update(yaml.load(rendered_template))
++            except Exception as ex:
++                log.debug(ex, exc_info=True)
++                raise salt.exceptions.SaltException('Rendering profile failed: {}'.format(ex))
++        else:
++            raise salt.exceptions.SaltException('Profile "{}" is not found.'.format(profile))
++
++    return data
++
++
++def get_profiles(config):
++    '''
++    Get available profiles.
++
++    :return:
++    '''
++    profiles = []
++    for profile_name in os.listdir(os.path.join(os.path.dirname(__file__), 'profiles')):
++        if profile_name.endswith('.yml'):
++            profiles.append(profile_name.split('.')[0])
++
++    return sorted(profiles)
+diff --git a/salt/cli/support/collector.py b/salt/cli/support/collector.py
+new file mode 100644
+index 0000000000..478d07e13b
+--- /dev/null
++++ b/salt/cli/support/collector.py
+@@ -0,0 +1,495 @@
++# coding=utf-8
++from __future__ import absolute_import, print_function, unicode_literals
++import os
++import sys
++import copy
++import yaml
++import json
++import logging
++import tarfile
++import time
++import salt.ext.six as six
++
++if six.PY2:
++    import exceptions
++else:
++    import builtins as exceptions
++    from io import IOBase as file
++
++from io import BytesIO
++
++import salt.utils.stringutils
++import salt.utils.parsers
++import salt.utils.verify
++import salt.utils.platform
++import salt.utils.process
++import salt.exceptions
++import salt.defaults.exitcodes
++import salt.cli.caller
++import salt.cli.support
++import salt.cli.support.console
++import salt.cli.support.intfunc
++import salt.cli.support.localrunner
++import salt.output.table_out
++import salt.runner
++import salt.utils.files
++
++
++salt.output.table_out.__opts__ = {}
++log = logging.getLogger(__name__)
++
++
++class SupportDataCollector(object):
++    '''
++    Data collector. It behaves just like another outputter,
++    except it grabs the data to the archive files.
++    '''
++    def __init__(self, name, output):
++        '''
++        constructor of the data collector
++        :param name:
++        :param path:
++        :param format:
++        '''
++        self.archive_path = name
++        self.__default_outputter = output
++        self.__format = format
++        self.__arch = None
++        self.__current_section = None
++        self.__current_section_name = None
++        self.__default_root = time.strftime('%Y.%m.%d-%H.%M.%S-snapshot')
++        self.out = salt.cli.support.console.MessagesOutput()
++
++    def open(self):
++        '''
++        Opens archive.
++        :return:
++        '''
++        if self.__arch is not None:
++            raise salt.exceptions.SaltException('Archive already opened.')
++        self.__arch = tarfile.TarFile.bz2open(self.archive_path, 'w')
++
++    def close(self):
++        '''
++        Closes the archive.
++        :return:
++        '''
++        if self.__arch is None:
++            raise salt.exceptions.SaltException('Archive already closed')
++        self._flush_content()
++        self.__arch.close()
++        self.__arch = None
++
++    def _flush_content(self):
++        '''
++        Flush content to the archive
++        :return:
++        '''
++        if self.__current_section is not None:
++            buff = BytesIO()
++            buff._dirty = False
++            for action_return in self.__current_section:
++                for title, ret_data in action_return.items():
++                    if isinstance(ret_data, file):
++                        self.out.put(ret_data.name, indent=4)
++                        self.__arch.add(ret_data.name, arcname=ret_data.name)
++                    else:
++                        buff.write(salt.utils.stringutils.to_bytes(title + '\n'))
++                        buff.write(salt.utils.stringutils.to_bytes(('-' * len(title)) + '\n\n'))
++                        buff.write(salt.utils.stringutils.to_bytes(ret_data))
++                        buff.write(salt.utils.stringutils.to_bytes('\n\n\n'))
++                        buff._dirty = True
++            if buff._dirty:
++                buff.seek(0)
++                tar_info = tarfile.TarInfo(name="{}/{}".format(self.__default_root, self.__current_section_name))
++                if not hasattr(buff, 'getbuffer'):  # Py2's BytesIO is older
++                    buff.getbuffer = buff.getvalue
++                tar_info.size = len(buff.getbuffer())
++                self.__arch.addfile(tarinfo=tar_info, fileobj=buff)
++
++    def add(self, name):
++        '''
++        Start a new section.
++        :param name:
++        :return:
++        '''
++        if self.__current_section:
++            self._flush_content()
++        self.discard_current(name)
++
++    def discard_current(self, name=None):
++        '''
++        Discard current section
++        :return:
++        '''
++        self.__current_section = []
++        self.__current_section_name = name
++
++    def write(self, title, data, output=None):
++        '''
++        Add a data to the current opened section.
++        :return:
++        '''
++        if not isinstance(data, (dict, list, tuple)):
++            data = {'raw-content': str(data)}
++        output = output or self.__default_outputter
++
++        if output != 'null':
++            try:
++                if isinstance(data, dict) and 'return' in data:
++                    data = data['return']
++                content = salt.output.try_printout(data, output, {'extension_modules': '', 'color': False})
++            except Exception:  # Fall-back to just raw YAML
++                content = None
++        else:
++            content = None
++
++        if content is None:
++            data = json.loads(json.dumps(data))
++            if isinstance(data, dict) and data.get('return'):
++                data = data.get('return')
++            content = yaml.safe_dump(data, default_flow_style=False, indent=4)
++
++        self.__current_section.append({title: content})
++
++    def link(self, title, path):
++        '''
++        Add a static file on the file system.
++
++        :param title:
++        :param path:
++        :return:
++        '''
++        # The filehandler needs to be explicitly passed here, so PyLint needs to accept that.
++        # pylint: disable=W8470
++        if not isinstance(path, file):
++            path = salt.utils.files.fopen(path)
++        self.__current_section.append({title: path})
++        # pylint: enable=W8470
++
++
++class SaltSupport(salt.utils.parsers.SaltSupportOptionParser):
++    '''
++    Class to run Salt Support subsystem.
++    '''
++    RUNNER_TYPE = 'run'
++    CALL_TYPE = 'call'
++
++    def _setup_fun_config(self, fun_conf):
++        '''
++        Setup function configuration.
++
++        :param conf:
++        :return:
++        '''
++        conf = copy.deepcopy(self.config)
++        conf['file_client'] = 'local'
++        conf['fun'] = ''
++        conf['arg'] = []
++        conf['kwarg'] = {}
++        conf['cache_jobs'] = False
++        conf['print_metadata'] = False
++        conf.update(fun_conf)
++        conf['fun'] = conf['fun'].split(':')[-1]  # Discard typing prefix
++
++        return conf
++
++    def _get_runner(self, conf):
++        '''
++        Get & setup runner.
++
++        :param conf:
++        :return:
++        '''
++        conf = self._setup_fun_config(copy.deepcopy(conf))
++        if not getattr(self, '_runner', None):
++            self._runner = salt.cli.support.localrunner.LocalRunner(conf)
++        else:
++            self._runner.opts = conf
++        return self._runner
++
++    def _get_caller(self, conf):
++        '''
++        Get & setup caller from the factory.
++
++        :param conf:
++        :return:
++        '''
++        conf = self._setup_fun_config(copy.deepcopy(conf))
++        if not getattr(self, '_caller', None):
++            self._caller = salt.cli.caller.Caller.factory(conf)
++        else:
++            self._caller.opts = conf
++        return self._caller
++
++    def _local_call(self, call_conf):
++        '''
++        Execute local call
++        '''
++        try:
++            ret = self._get_caller(call_conf).call()
++        except SystemExit:
++            ret = 'Data is not available at this moment'
++            self.out.error(ret)
++        except Exception as ex:
++            ret = 'Unhandled exception occurred: {}'.format(ex)
++            log.debug(ex, exc_info=True)
++            self.out.error(ret)
++
++        return ret
++
++    def _local_run(self, run_conf):
++        '''
++        Execute local runner
++
++        :param run_conf:
++        :return:
++        '''
++        try:
++            ret = self._get_runner(run_conf).run()
++        except SystemExit:
++            ret = 'Runner is not available at this moment'
++            self.out.error(ret)
++        except Exception as ex:
++            ret = 'Unhandled exception occurred: {}'.format(ex)
++            log.debug(ex, exc_info=True)
++
++        return ret
++
++    def _internal_function_call(self, call_conf):
++        '''
++        Call internal function.
++
++        :param call_conf:
++        :return:
++        '''
++        def stub(*args, **kwargs):
++            message = 'Function {} is not available'.format(call_conf['fun'])
++            self.out.error(message)
++            log.debug('Attempt to run "{fun}" with {arg} arguments and {kwargs} parameters.'.format(**call_conf))
++            return message
++
++        return getattr(salt.cli.support.intfunc,
++                       call_conf['fun'], stub)(self.collector,
++                                               *call_conf['arg'],
++                                               **call_conf['kwargs'])
++
++    def _get_action(self, action_meta):
++        '''
++        Parse action and turn into a calling point.
++        :param action_meta:
++        :return:
++        '''
++        conf = {
++            'fun': list(action_meta.keys())[0],
++            'arg': [],
++            'kwargs': {},
++        }
++        if not len(conf['fun'].split('.')) - 1:
++            conf['salt.int.intfunc'] = True
++
++        action_meta = action_meta[conf['fun']]
++        info = action_meta.get('info', 'Action for {}'.format(conf['fun']))
++        for arg in action_meta.get('args') or []:
++            if not isinstance(arg, dict):
++                conf['arg'].append(arg)
++            else:
++                conf['kwargs'].update(arg)
++
++        return info, action_meta.get('output'), conf
++
++    def collect_internal_data(self):
++        '''
++        Dumps current running pillars, configuration etc.
++        :return:
++        '''
++        section = 'configuration'
++        self.out.put(section)
++        self.collector.add(section)
++        self.out.put('Saving config', indent=2)
++        self.collector.write('General Configuration', self.config)
++        self.out.put('Saving pillars', indent=2)
++        self.collector.write('Active Pillars', self._local_call({'fun': 'pillar.items'}))
++
++        section = 'highstate'
++        self.out.put(section)
++        self.collector.add(section)
++        self.out.put('Saving highstate', indent=2)
++        self.collector.write('Rendered highstate', self._local_call({'fun': 'state.show_highstate'}))
++
++    def _extract_return(self, data):
++        '''
++        Extracts return data from the results.
++
++        :param data:
++        :return:
++        '''
++        if isinstance(data, dict):
++            data = data.get('return', data)
++
++        return data
++
++    def collect_local_data(self):
++        '''
++        Collects master system data.
++        :return:
++        '''
++        def call(func, *args, **kwargs):
++            '''
++            Call wrapper for templates
++            :param func:
++            :return:
++            '''
++            return self._extract_return(self._local_call({'fun': func, 'arg': args, 'kwarg': kwargs}))
++
++        def run(func, *args, **kwargs):
++            '''
++            Runner wrapper for templates
++            :param func:
++            :return:
++            '''
++            return self._extract_return(self._local_run({'fun': func, 'arg': args, 'kwarg': kwargs}))
++
++        scenario = salt.cli.support.get_profile(self.config['support_profile'], call, run)
++        for category_name in scenario:
++            self.out.put(category_name)
++            self.collector.add(category_name)
++            for action in scenario[category_name]:
++                if not action:
++                    continue
++                action_name = next(iter(action))
++                if not isinstance(action[action_name], six.string_types):
++                    info, output, conf = self._get_action(action)
++                    action_type = self._get_action_type(action)  # run:<something> for runners
++                    if action_type == self.RUNNER_TYPE:
++                        self.out.put('Running {}'.format(info.lower()), indent=2)
++                        self.collector.write(info, self._local_run(conf), output=output)
++                    elif action_type == self.CALL_TYPE:
++                        if not conf.get('salt.int.intfunc'):
++                            self.out.put('Collecting {}'.format(info.lower()), indent=2)
++                            self.collector.write(info, self._local_call(conf), output=output)
++                        else:
++                            self.collector.discard_current()
++                            self._internal_function_call(conf)
++                    else:
++                        self.out.error('Unknown action type "{}" for action: {}'.format(action_type, action))
++                else:
++                    # TODO: This needs to be moved then to the utils.
++                    #       But the code is not yet there (other PRs)
++                    self.out.msg('\n'.join(salt.cli.support.console.wrap(action[action_name])), ident=2)
++
++    def _get_action_type(self, action):
++        '''
++        Get action type.
++        :param action:
++        :return:
++        '''
++        action_name = next(iter(action or {'': None}))
++        if ':' not in action_name:
++            action_name = '{}:{}'.format(self.CALL_TYPE, action_name)
++
++        return action_name.split(':')[0] or None
++
++    def collect_targets_data(self):
++        '''
++        Collects minion targets data
++        :return:
++        '''
++        # TODO: remote collector?
++
++    def _cleanup(self):
++        '''
++        Cleanup if crash/exception
++        :return:
++        '''
++        if (hasattr(self, 'config')
++           and self.config.get('support_archive')
++           and os.path.exists(self.config['support_archive'])):
++            self.out.warning('Terminated earlier, cleaning up')
++            os.unlink(self.config['support_archive'])
++
++    def _check_existing_archive(self):
++        '''
++        Check if archive exists or not. If exists and --force was not specified,
++        bail out. Otherwise remove it and move on.
++
++        :return:
++        '''
++        if os.path.exists(self.config['support_archive']):
++            if self.config['support_archive_force_overwrite']:
++                self.out.warning('Overwriting existing archive: {}'.format(self.config['support_archive']))
++                os.unlink(self.config['support_archive'])
++                ret = True
++            else:
++                self.out.warning('File {} already exists.'.format(self.config['support_archive']))
++                ret = False
++        else:
++            ret = True
++
++        return ret
++
++    def run(self):
++        exit_code = salt.defaults.exitcodes.EX_OK
++        self.out = salt.cli.support.console.MessagesOutput()
++        try:
++            self.parse_args()
++        except (Exception, SystemExit) as ex:
++            if not isinstance(ex, exceptions.SystemExit):
++                exit_code = salt.defaults.exitcodes.EX_GENERIC
++                self.out.error(ex)
++            elif isinstance(ex, exceptions.SystemExit):
++                exit_code = ex.code
++            else:
++                exit_code = salt.defaults.exitcodes.EX_GENERIC
++                self.out.error(ex)
++        else:
++            if self.config['log_level'] not in ('quiet', ):
++                self.setup_logfile_logger()
++                salt.utils.verify.verify_log(self.config)
++                salt.cli.support.log = log  # Pass update logger so trace is available
++
++            if self.config['support_profile_list']:
++                self.out.put('List of available profiles:')
++                for idx, profile in enumerate(salt.cli.support.get_profiles(self.config)):
++                    msg_template = '  {}. '.format(idx + 1) + '{}'
++                    self.out.highlight(msg_template, profile)
++                    exit_code = salt.defaults.exitcodes.EX_OK
++            elif self.config['support_show_units']:
++                self.out.put('List of available units:')
++                for idx, unit in enumerate(self.find_existing_configs(None)):
++                    msg_template = '  {}. '.format(idx + 1) + '{}'
++                    self.out.highlight(msg_template, unit)
++                exit_code = salt.defaults.exitcodes.EX_OK
++            else:
++                if not self.config['support_profile']:
++                    self.print_help()
++                    raise SystemExit()
++
++                if self._check_existing_archive():
++                    try:
++                        self.collector = SupportDataCollector(self.config['support_archive'],
++                                                              output=self.config['support_output_format'])
++                    except Exception as ex:
++                        self.out.error(ex)
++                        exit_code = salt.defaults.exitcodes.EX_GENERIC
++                        log.debug(ex, exc_info=True)
++                    else:
++                        try:
++                            self.collector.open()
++                            self.collect_local_data()
++                            self.collect_internal_data()
++                            self.collect_targets_data()
++                            self.collector.close()
++
++                            archive_path = self.collector.archive_path
++                            self.out.highlight('\nSupport data has been written to "{}" file.\n',
++                                               archive_path, _main='YELLOW')
++                        except Exception as ex:
++                            self.out.error(ex)
++                            log.debug(ex, exc_info=True)
++                            exit_code = salt.defaults.exitcodes.EX_SOFTWARE
++
++        if exit_code:
++            self._cleanup()
++
++        sys.exit(exit_code)
+diff --git a/salt/cli/support/console.py b/salt/cli/support/console.py
+new file mode 100644
+index 0000000000..fb6992d657
+--- /dev/null
++++ b/salt/cli/support/console.py
+@@ -0,0 +1,165 @@
++# coding=utf-8
++'''
++Collection of tools to report messages to console.
++
++NOTE: This is subject to incorporate other formatting bits
++      from all around everywhere and then to be moved to utils.
++'''
++
++from __future__ import absolute_import, print_function, unicode_literals
++
++import sys
++import os
++import salt.utils.color
++import textwrap
++
++
++class IndentOutput(object):
++    '''
++    Paint different indends in different output.
++    '''
++    def __init__(self, conf=None, device=sys.stdout):
++        if conf is None:
++            conf = {0: 'CYAN', 2: 'GREEN', 4: 'LIGHT_BLUE', 6: 'BLUE'}
++        self._colors_conf = conf
++        self._device = device
++        self._colors = salt.utils.color.get_colors()
++        self._default_color = 'GREEN'
++        self._default_hl_color = 'LIGHT_GREEN'
++
++    def put(self, message, indent=0):
++        '''
++        Print message with an indent.
++
++        :param message:
++        :param indent:
++        :return:
++        '''
++        color = self._colors_conf.get(indent + indent % 2, self._colors_conf.get(0, self._default_color))
++
++        for chunk in [' ' * indent, self._colors[color], message, self._colors['ENDC']]:
++            self._device.write(str(chunk))
++        self._device.write(os.linesep)
++        self._device.flush()
++
++
++class MessagesOutput(IndentOutput):
++    '''
++    Messages output to the CLI.
++    '''
++    def msg(self, message, title=None, title_color=None, color='BLUE', ident=0):
++        '''
++        Hint message.
++
++        :param message:
++        :param title:
++        :param title_color:
++        :param color:
++        :param ident:
++        :return:
++        '''
++        if title and not title_color:
++            title_color = color
++        if title_color and not title:
++            title_color = None
++
++        self.__colored_output(title, message, title_color, color, ident=ident)
++
++    def info(self, message, ident=0):
++        '''
++        Write an info message to the CLI.
++
++        :param message:
++        :param ident:
++        :return:
++        '''
++        self.__colored_output('Info', message, 'GREEN', 'LIGHT_GREEN', ident=ident)
++
++    def warning(self, message, ident=0):
++        '''
++        Write a warning message to the CLI.
++
++        :param message:
++        :param ident:
++        :return:
++        '''
++        self.__colored_output('Warning', message, 'YELLOW', 'LIGHT_YELLOW', ident=ident)
++
++    def error(self, message, ident=0):
++        '''
++        Write an error message to the CLI.
++
++        :param message:
++        :param ident
++        :return:
++        '''
++        self.__colored_output('Error', message, 'RED', 'LIGHT_RED', ident=ident)
++
++    def __colored_output(self, title, message, title_color, message_color, ident=0):
++        if title and not title.endswith(':'):
++            _linesep = title.endswith(os.linesep)
++            title = '{}:{}'.format(title.strip(), _linesep and os.linesep or ' ')
++
++        for chunk in [title_color and self._colors[title_color] or None, ' ' * ident,
++                      title, self._colors[message_color], message, self._colors['ENDC']]:
++            if chunk:
++                self._device.write(str(chunk))
++        self._device.write(os.linesep)
++        self._device.flush()
++
++    def highlight(self, message, *values, **colors):
++        '''
++        Highlighter works the way that message parameter is a template,
++        the "values" is a list of arguments going one after another as values there.
++        And so the "colors" should designate either highlight color or alternate for each.
++
++        Example:
++
++           highlight('Hello {}, there! It is {}.', 'user', 'daytime', _main='GREEN', _highlight='RED')
++           highlight('Hello {}, there! It is {}.', 'user', 'daytime', _main='GREEN', _highlight='RED', 'daytime'='YELLOW')
++
++        First example will highlight all the values in the template with the red color.
++        Second example will highlight the second value with the yellow color.
++
++        Usage:
++
++            colors:
++              _main: Sets the main color (or default is used)
++              _highlight: Sets the alternative color for everything
++              'any phrase' that is the same in the "values" can override color.
++
++        :param message:
++        :param formatted:
++        :param colors:
++        :return:
++        '''
++
++        m_color = colors.get('_main', self._default_color)
++        h_color = colors.get('_highlight', self._default_hl_color)
++
++        _values = []
++        for value in values:
++            _values.append('{p}{c}{r}'.format(p=self._colors[colors.get(value, h_color)],
++                                              c=value, r=self._colors[m_color]))
++        self._device.write('{s}{m}{e}'.format(s=self._colors[m_color],
++                                              m=message.format(*_values), e=self._colors['ENDC']))
++        self._device.write(os.linesep)
++        self._device.flush()
++
++
++def wrap(txt, width=80, ident=0):
++    '''
++    Wrap text to the required dimensions and clean it up, prepare for display.
++
++    :param txt:
++    :param width:
++    :return:
++    '''
++    ident = ' ' * ident
++    txt = (txt or '').replace(os.linesep, ' ').strip()
++
++    wrapper = textwrap.TextWrapper()
++    wrapper.fix_sentence_endings = False
++    wrapper.initial_indent = wrapper.subsequent_indent = ident
++
++    return wrapper.wrap(txt)
+diff --git a/salt/cli/support/intfunc.py b/salt/cli/support/intfunc.py
+new file mode 100644
+index 0000000000..2727cd6394
+--- /dev/null
++++ b/salt/cli/support/intfunc.py
+@@ -0,0 +1,42 @@
++# coding=utf-8
++'''
++Internal functions.
++'''
++# Maybe this needs to be a modules in a future?
++
++from __future__ import absolute_import, print_function, unicode_literals
++import os
++from salt.cli.support.console import MessagesOutput
++import salt.utils.files
++
++
++out = MessagesOutput()
++
++
++def filetree(collector, path):
++    '''
++    Add all files in the tree. If the "path" is a file,
++    only that file will be added.
++
++    :param path: File or directory
++    :return:
++    '''
++    if not path:
++        out.error('Path not defined', ident=2)
++    else:
++        # The filehandler needs to be explicitly passed here, so PyLint needs to accept that.
++        # pylint: disable=W8470
++        if os.path.isfile(path):
++            filename = os.path.basename(path)
++            try:
++                file_ref = salt.utils.files.fopen(path)  # pylint: disable=W
++                out.put('Add {}'.format(filename), indent=2)
++                collector.add(filename)
++                collector.link(title=path, path=file_ref)
++            except Exception as err:
++                out.error(err, ident=4)
++        # pylint: enable=W8470
++        else:
++            for fname in os.listdir(path):
++                fname = os.path.join(path, fname)
++                filetree(collector, fname)
+diff --git a/salt/cli/support/localrunner.py b/salt/cli/support/localrunner.py
+new file mode 100644
+index 0000000000..26deb883bc
+--- /dev/null
++++ b/salt/cli/support/localrunner.py
+@@ -0,0 +1,34 @@
++# coding=utf-8
++'''
++Local Runner
++'''
++
++from __future__ import print_function, absolute_import, unicode_literals
++import salt.runner
++import salt.utils.platform
++import salt.utils.process
++import logging
++
++log = logging.getLogger(__name__)
++
++
++class LocalRunner(salt.runner.Runner):
++    '''
++    Runner class that changes its default behaviour.
++    '''
++
++    def _proc_function(self, fun, low, user, tag, jid, daemonize=True):
++        '''
++        Same as original _proc_function in AsyncClientMixin,
++        except it calls "low" without firing a print event.
++        '''
++        if daemonize and not salt.utils.platform.is_windows():
++            salt.log.setup.shutdown_multiprocessing_logging()
++            salt.utils.process.daemonize()
++            salt.log.setup.setup_multiprocessing_logging()
++
++        low['__jid__'] = jid
++        low['__user__'] = user
++        low['__tag__'] = tag
++
++        return self.low(fun, low, print_event=False, full_return=False)
+diff --git a/salt/cli/support/profiles/default.yml b/salt/cli/support/profiles/default.yml
+new file mode 100644
+index 0000000000..01d9a26193
+--- /dev/null
++++ b/salt/cli/support/profiles/default.yml
+@@ -0,0 +1,71 @@
++sysinfo:
++  - description: |
++      Get the Salt grains of the current system.
++  - grains.items:
++      info: System grains
++
++packages:
++  - description: |
++      Fetch list of all the installed packages.
++  - pkg.list_pkgs:
++      info: Installed packages
++
++repositories:
++  - pkg.list_repos:
++      info: Available repositories
++
++upgrades:
++  - pkg.list_upgrades:
++      info: Possible upgrades
++
++## TODO: Some data here belongs elsewhere and also is duplicated
++status:
++  - status.version:
++      info: Status version
++  - status.cpuinfo:
++      info: CPU information
++  - status.cpustats:
++      info: CPU stats
++  - status.diskstats:
++      info: Disk stats
++  - status.loadavg:
++      info: Average load of the current system
++  - status.uptime:
++      info: Uptime of the machine
++  - status.meminfo:
++      info: Information about memory
++  - status.vmstats:
++      info: Virtual memory stats
++  - status.netdev:
++      info: Network device stats
++  - status.nproc:
++      info: Number of processing units available on this system
++  - status.procs:
++      info: Process data
++
++general-health:
++  - ps.boot_time:
++      info: System Boot Time
++  - ps.swap_memory:
++      info: Swap Memory
++      output: txt
++  - ps.cpu_times:
++      info: CPU times
++  - ps.disk_io_counters:
++      info: Disk IO counters
++  - ps.disk_partition_usage:
++      info: Disk partition usage
++      output: table
++  - ps.disk_partitions:
++      info: Disk partitions
++      output: table
++  - ps.top:
++      info: Top CPU consuming processes
++
++system.log:
++  # This works on any file system object.
++  - filetree:
++      info: Add system log
++      args:
++        - /var/log/syslog
++
+diff --git a/salt/cli/support/profiles/jobs-active.yml b/salt/cli/support/profiles/jobs-active.yml
+new file mode 100644
+index 0000000000..508c54ece7
+--- /dev/null
++++ b/salt/cli/support/profiles/jobs-active.yml
+@@ -0,0 +1,3 @@
++jobs-active:
++  - run:jobs.active:
++      info: List of all actively running jobs
+diff --git a/salt/cli/support/profiles/jobs-last.yml b/salt/cli/support/profiles/jobs-last.yml
+new file mode 100644
+index 0000000000..e3b719f552
+--- /dev/null
++++ b/salt/cli/support/profiles/jobs-last.yml
+@@ -0,0 +1,3 @@
++jobs-last:
++  - run:jobs.last_run:
++      info: List all detectable jobs and associated functions
+diff --git a/salt/cli/support/profiles/jobs-trace.yml b/salt/cli/support/profiles/jobs-trace.yml
+new file mode 100644
+index 0000000000..00b28e0502
+--- /dev/null
++++ b/salt/cli/support/profiles/jobs-trace.yml
+@@ -0,0 +1,7 @@
++jobs-details:
++  {% for job in runners('jobs.list_jobs') %}
++  - run:jobs.list_job:
++      info: Details on JID {{job}}
++      args:
++        - {{job}}
++  {% endfor %}
+diff --git a/salt/cli/support/profiles/network.yml b/salt/cli/support/profiles/network.yml
+new file mode 100644
+index 0000000000..268f02e61f
+--- /dev/null
++++ b/salt/cli/support/profiles/network.yml
+@@ -0,0 +1,27 @@
++network:
++  - network.get_hostname:
++      info: Hostname
++      output: txt
++  - network.get_fqdn:
++      info: FQDN
++      output: txt
++  - network.default_route:
++      info: Default route
++      output: table
++  - network.interfaces:
++      info: All the available interfaces
++      output: table
++  - network.subnets:
++      info: List of IPv4 subnets
++  - network.subnets6:
++      info: List of IPv6 subnets
++  - network.routes:
++      info: Network configured routes from routing tables
++      output: table
++  - network.netstat:
++      info: Information on open ports and states
++      output: table
++  - network.active_tcp:
++      info: All running TCP connections
++  - network.arp:
++      info: ARP table
+diff --git a/salt/cli/support/profiles/postgres.yml b/salt/cli/support/profiles/postgres.yml
+new file mode 100644
+index 0000000000..2238752c7a
+--- /dev/null
++++ b/salt/cli/support/profiles/postgres.yml
+@@ -0,0 +1,11 @@
++system.log:
++  - filetree:
++      info: Add system log
++      args:
++        - /var/log/syslog
++
++etc/postgres:
++  - filetree:
++      info: Pick entire /etc/postgresql
++      args:
++        - /etc/postgresql
+diff --git a/salt/cli/support/profiles/salt.yml b/salt/cli/support/profiles/salt.yml
+new file mode 100644
+index 0000000000..4b18d98870
+--- /dev/null
++++ b/salt/cli/support/profiles/salt.yml
+@@ -0,0 +1,9 @@
++sysinfo:
++  - grains.items:
++      info: System grains
++
++logfile:
++  - filetree:
++      info: Add current logfile
++      args:
++        - {{salt('config.get', 'log_file')}}
+diff --git a/salt/cli/support/profiles/users.yml b/salt/cli/support/profiles/users.yml
+new file mode 100644
+index 0000000000..391acdb606
+--- /dev/null
++++ b/salt/cli/support/profiles/users.yml
+@@ -0,0 +1,22 @@
++all-users:
++  {%for uname in salt('user.list_users') %}
++  - user.info:
++      info: Information about "{{uname}}"
++      args:
++        - {{uname}}
++  - user.list_groups:
++      info: List groups for user "{{uname}}"
++      args:
++        - {{uname}}
++  - shadow.info:
++      info: Shadow information about user "{{uname}}"
++      args:
++        - {{uname}}
++  - cron.raw_cron:
++      info: Cron for user "{{uname}}"
++      args:
++        - {{uname}}
++  {%endfor%}
++  - group.getent:
++      info: List of all available groups
++      output: table
+diff --git a/salt/scripts.py b/salt/scripts.py
+index e677368a0f..7a1b4bb133 100644
+--- a/salt/scripts.py
++++ b/salt/scripts.py
+@@ -508,3 +508,17 @@ def salt_extend(extension, name, description, salt_dir, merge):
+                           description=description,
+                           salt_dir=salt_dir,
+                           merge=merge)
++
++
++def salt_support():
++    '''
++    Run Salt Support that collects system data, logs etc for debug and support purposes.
++    :return:
++    '''
++
++    import salt.cli.support.collector
++    if '' in sys.path:
++        sys.path.remove('')
++    client = salt.cli.support.collector.SaltSupport()
++    _install_signal_handlers(client)
++    client.run()
+diff --git a/salt/utils/parsers.py b/salt/utils/parsers.py
+index 9a7f27ac11..56a8961c3a 100644
+--- a/salt/utils/parsers.py
++++ b/salt/utils/parsers.py
+@@ -20,6 +20,7 @@ import getpass
+ import logging
+ import optparse
+ import traceback
++import tempfile
+ from functools import partial
+ 
+ 
+@@ -34,6 +35,7 @@ import salt.utils.data
+ import salt.utils.files
+ import salt.utils.jid
+ import salt.utils.kinds as kinds
++import salt.utils.network
+ import salt.utils.platform
+ import salt.utils.process
+ import salt.utils.stringutils
+@@ -1863,6 +1865,69 @@ class SyndicOptionParser(six.with_metaclass(OptionParserMeta,
+             self.get_config_file_path('minion'))
+ 
+ 
++class SaltSupportOptionParser(six.with_metaclass(OptionParserMeta, OptionParser, ConfigDirMixIn,
++                                                 MergeConfigMixIn, LogLevelMixIn, TimeoutMixIn)):
++    default_timeout = 5
++    description = 'Salt Support is a program to collect all support data: logs, system configuration etc.'
++    usage = '%prog [options] \'<target>\' <function> [arguments]'
++    # ConfigDirMixIn config filename attribute
++    _config_filename_ = 'master'
++
++    # LogLevelMixIn attributes
++    _default_logging_level_ = config.DEFAULT_MASTER_OPTS['log_level']
++    _default_logging_logfile_ = config.DEFAULT_MASTER_OPTS['log_file']
++
++    def _mixin_setup(self):
++        self.add_option('-P', '--show-profiles', default=False, action='store_true',
++                        dest='support_profile_list', help='Show available profiles')
++        self.add_option('-p', '--profile', default='', dest='support_profile',
++                        help='Specify support profile or comma-separated profiles, e.g.: "salt,network"')
++        support_archive = '{t}/{h}-support.tar.bz2'.format(t=tempfile.gettempdir(),
++                                                           h=salt.utils.network.get_fqhostname())
++        self.add_option('-a', '--archive', default=support_archive, dest='support_archive',
++                        help=('Specify name of the resulting support archive. '
++                              'Default is "{f}".'.format(f=support_archive)))
++        self.add_option('-u', '--unit', default='', dest='support_unit',
++                        help='Specify examined unit (default "master").')
++        self.add_option('-U', '--show-units', default=False, action='store_true', dest='support_show_units',
++                        help='Show available units')
++        self.add_option('-f', '--force', default=False, action='store_true', dest='support_archive_force_overwrite',
++                        help='Force overwrite existing archive, if exists')
++        self.add_option('-o', '--out', default='null', dest='support_output_format',
++                        help=('Set the default output using the specified outputter, '
++                              'unless profile does not overrides this. Default: "yaml".'))
++
++    def find_existing_configs(self, default):
++        '''
++        Find configuration files on the system.
++        :return:
++        '''
++        configs = []
++        for cfg in [default, self._config_filename_, 'minion', 'proxy', 'cloud', 'spm']:
++            if not cfg:
++                continue
++            config_path = self.get_config_file_path(cfg)
++            if os.path.exists(config_path):
++                configs.append(cfg)
++
++        if default and default not in configs:
++            raise SystemExit('Unknown configuration unit: {}'.format(default))
++
++        return configs
++
++    def setup_config(self, cfg=None):
++        '''
++        Open suitable config file.
++        :return:
++        '''
++        _opts, _args = optparse.OptionParser.parse_args(self)
++        configs = self.find_existing_configs(_opts.support_unit)
++        if cfg not in configs:
++            cfg = configs[0]
++
++        return config.master_config(self.get_config_file_path(cfg))
++
++
+ class SaltCMDOptionParser(six.with_metaclass(OptionParserMeta,
+                                              OptionParser,
+                                              ConfigDirMixIn,
+diff --git a/scripts/salt-support b/scripts/salt-support
+new file mode 100755
+index 0000000000..48ce141c67
+--- /dev/null
++++ b/scripts/salt-support
+@@ -0,0 +1,11 @@
++#!/usr/bin/env python
++'''
++Salt support is to collect logs,
++debug data and system information
++for support purposes.
++'''
++
++from salt.scripts import salt_support
++
++if __name__ == '__main__':
++    salt_support()
+diff --git a/setup.py b/setup.py
+index 0841c93553..8d0dcaa4b8 100755
+--- a/setup.py
++++ b/setup.py
+@@ -1015,6 +1015,7 @@ class SaltDistribution(distutils.dist.Distribution):
+                         'scripts/salt-key',
+                         'scripts/salt-master',
+                         'scripts/salt-minion',
++                        'scripts/salt-support',
+                         'scripts/salt-ssh',
+                         'scripts/salt-syndic',
+                         'scripts/salt-unity',
+@@ -1052,6 +1053,7 @@ class SaltDistribution(distutils.dist.Distribution):
+                         'salt-key = salt.scripts:salt_key',
+                         'salt-master = salt.scripts:salt_master',
+                         'salt-minion = salt.scripts:salt_minion',
++                        'salt-support = salt.scripts:salt_support',
+                         'salt-ssh = salt.scripts:salt_ssh',
+                         'salt-syndic = salt.scripts:salt_syndic',
+                         'salt-unity = salt.scripts:salt_unity',
+diff --git a/tests/unit/cli/test_support.py b/tests/unit/cli/test_support.py
+new file mode 100644
+index 0000000000..85ea957d79
+--- /dev/null
++++ b/tests/unit/cli/test_support.py
+@@ -0,0 +1,477 @@
++# -*- coding: utf-8 -*-
++'''
++    :codeauthor: Bo Maryniuk <bo@suse.de>
++'''
++
++from __future__ import absolute_import, print_function, unicode_literals
++
++from tests.support.unit import skipIf, TestCase
++from tests.support.mock import MagicMock, patch, NO_MOCK, NO_MOCK_REASON
++
++from salt.cli.support.console import IndentOutput
++from salt.cli.support.collector import SupportDataCollector, SaltSupport
++from salt.utils.color import get_colors
++from salt.utils.stringutils import to_bytes
++import salt.exceptions
++import salt.cli.support.collector
++import salt.utils.files
++import os
++import yaml
++import jinja2
++
++try:
++    import pytest
++except ImportError:
++    pytest = None
++
++
++@skipIf(not bool(pytest), 'Pytest needs to be installed')
++@skipIf(NO_MOCK, NO_MOCK_REASON)
++class SaltSupportIndentOutputTestCase(TestCase):
++    '''
++    Unit Tests for the salt-support indent output.
++    '''
++
++    def setUp(self):
++        '''
++        Setup test
++        :return:
++        '''
++
++        self.message = 'Stubborn processes on dumb terminal'
++        self.device = MagicMock()
++        self.iout = IndentOutput(device=self.device)
++        self.colors = get_colors()
++
++    def tearDown(self):
++        '''
++        Remove instances after test run
++        :return:
++        '''
++        del self.message
++        del self.device
++        del self.iout
++        del self.colors
++
++    def test_standard_output(self):
++        '''
++        Test console standard output.
++        '''
++        self.iout.put(self.message)
++        assert self.device.write.called
++        assert self.device.write.call_count == 5
++        for idx, data in enumerate(['', str(self.colors['CYAN']), self.message, str(self.colors['ENDC']), '\n']):
++            assert self.device.write.call_args_list[idx][0][0] == data
++
++    def test_indent_output(self):
++        '''
++        Test indent distance.
++        :return:
++        '''
++        self.iout.put(self.message, indent=10)
++        for idx, data in enumerate([' ' * 10, str(self.colors['CYAN']), self.message, str(self.colors['ENDC']), '\n']):
++            assert self.device.write.call_args_list[idx][0][0] == data
++
++    def test_color_config(self):
++        '''
++        Test color config changes on each ident.
++        :return:
++        '''
++
++        conf = {0: 'MAGENTA', 2: 'RED', 4: 'WHITE', 6: 'YELLOW'}
++        self.iout = IndentOutput(conf=conf, device=self.device)
++        for indent in sorted(list(conf)):
++            self.iout.put(self.message, indent=indent)
++
++        step = 1
++        for ident_key in sorted(list(conf)):
++            assert str(self.device.write.call_args_list[step][0][0]) == str(self.colors[conf[ident_key]])
++            step += 5
++
++
++@skipIf(not bool(pytest), 'Pytest needs to be installed')
++@skipIf(NO_MOCK, NO_MOCK_REASON)
++class SaltSupportCollectorTestCase(TestCase):
++    '''
++    Collector tests.
++    '''
++    def setUp(self):
++        '''
++        Setup the test case
++        :return:
++        '''
++        self.archive_path = '/highway/to/hell'
++        self.output_device = MagicMock()
++        self.collector = SupportDataCollector(self.archive_path, self.output_device)
++
++    def tearDown(self):
++        '''
++        Tear down the test case elements
++        :return:
++        '''
++        del self.collector
++        del self.archive_path
++        del self.output_device
++
++    @patch('salt.cli.support.collector.tarfile.TarFile', MagicMock())
++    def test_archive_open(self):
++        '''
++        Test archive is opened.
++
++        :return:
++        '''
++        self.collector.open()
++        assert self.collector.archive_path == self.archive_path
++        with pytest.raises(salt.exceptions.SaltException) as err:
++            self.collector.open()
++        assert 'Archive already opened' in str(err)
++
++    @patch('salt.cli.support.collector.tarfile.TarFile', MagicMock())
++    def test_archive_close(self):
++        '''
++        Test archive is opened.
++
++        :return:
++        '''
++        self.collector.open()
++        self.collector._flush_content = lambda: None
++        self.collector.close()
++        assert self.collector.archive_path == self.archive_path
++        with pytest.raises(salt.exceptions.SaltException) as err:
++            self.collector.close()
++        assert 'Archive already closed' in str(err)
++
++    def test_archive_addwrite(self):
++        '''
++        Test add to the archive a section and write to it.
++
++        :return:
++        '''
++        archive = MagicMock()
++        with patch('salt.cli.support.collector.tarfile.TarFile', archive):
++            self.collector.open()
++            self.collector.add('foo')
++            self.collector.write(title='title', data='data', output='null')
++            self.collector._flush_content()
++
++            assert (archive.bz2open().addfile.call_args[1]['fileobj'].read()
++                    == to_bytes('title\n-----\n\nraw-content: data\n\n\n\n'))
++
++    @patch('salt.utils.files.fopen', MagicMock(return_value='path=/dev/null'))
++    def test_archive_addlink(self):
++        '''
++        Test add to the archive a section and link an external file or directory to it.
++
++        :return:
++        '''
++        archive = MagicMock()
++        with patch('salt.cli.support.collector.tarfile.TarFile', archive):
++            self.collector.open()
++            self.collector.add('foo')
++            self.collector.link(title='Backup Path', path='/path/to/backup.config')
++            self.collector._flush_content()
++
++            assert archive.bz2open().addfile.call_count == 1
++            assert (archive.bz2open().addfile.call_args[1]['fileobj'].read()
++                    == to_bytes('Backup Path\n-----------\n\npath=/dev/null\n\n\n'))
++
++    @patch('salt.utils.files.fopen', MagicMock(return_value='path=/dev/null'))
++    def test_archive_discard_section(self):
++        '''
++        Test discard a section from the archive.
++
++        :return:
++        '''
++        archive = MagicMock()
++        with patch('salt.cli.support.collector.tarfile.TarFile', archive):
++            self.collector.open()
++            self.collector.add('solar-interference')
++            self.collector.link(title='Thermal anomaly', path='/path/to/another/great.config')
++            self.collector.add('foo')
++            self.collector.link(title='Backup Path', path='/path/to/backup.config')
++            self.collector._flush_content()
++            assert archive.bz2open().addfile.call_count == 2
++            assert (archive.bz2open().addfile.mock_calls[0][2]['fileobj'].read()
++                    == to_bytes('Thermal anomaly\n---------------\n\npath=/dev/null\n\n\n'))
++            self.collector.close()
++
++        archive = MagicMock()
++        with patch('salt.cli.support.collector.tarfile.TarFile', archive):
++            self.collector.open()
++            self.collector.add('solar-interference')
++            self.collector.link(title='Thermal anomaly', path='/path/to/another/great.config')
++            self.collector.discard_current()
++            self.collector.add('foo')
++            self.collector.link(title='Backup Path', path='/path/to/backup.config')
++            self.collector._flush_content()
++            assert archive.bz2open().addfile.call_count == 2
++            assert (archive.bz2open().addfile.mock_calls[0][2]['fileobj'].read()
++                    == to_bytes('Backup Path\n-----------\n\npath=/dev/null\n\n\n'))
++            self.collector.close()
++
++
++@skipIf(not bool(pytest), 'Pytest needs to be installed')
++@skipIf(NO_MOCK, NO_MOCK_REASON)
++class SaltSupportRunnerTestCase(TestCase):
++    '''
++    Test runner class.
++    '''
++
++    def setUp(self):
++        '''
++        Set up test suite.
++        :return:
++        '''
++        self.archive_path = '/dev/null'
++        self.output_device = MagicMock()
++        self.runner = SaltSupport()
++        self.runner.collector = SupportDataCollector(self.archive_path, self.output_device)
++
++    def tearDown(self):
++        '''
++        Tear down.
++
++        :return:
++        '''
++        del self.archive_path
++        del self.output_device
++        del self.runner
++
++    def test_function_config(self):
++        '''
++        Test function config formation.
++
++        :return:
++        '''
++        self.runner.config = {}
++        msg = 'Electromagnetic energy loss'
++        assert self.runner._setup_fun_config({'description': msg}) == {'print_metadata': False,
++                                                                       'file_client': 'local',
++                                                                       'fun': '', 'kwarg': {},
++                                                                       'description': msg,
++                                                                       'cache_jobs': False, 'arg': []}
++
++    def test_local_caller(self):
++        '''
++        Test local caller.
++
++        :return:
++        '''
++        msg = 'Because of network lag due to too many people playing deathmatch'
++        caller = MagicMock()
++        caller().call = MagicMock(return_value=msg)
++
++        self.runner._get_caller = caller
++        self.runner.out = MagicMock()
++        assert self.runner._local_call({}) == msg
++
++        caller().call = MagicMock(side_effect=SystemExit)
++        assert self.runner._local_call({}) == 'Data is not available at this moment'
++
++        err_msg = "The UPS doesn't have a battery backup."
++        caller().call = MagicMock(side_effect=Exception(err_msg))
++        assert self.runner._local_call({}) == "Unhandled exception occurred: The UPS doesn't have a battery backup."
++
++    def test_local_runner(self):
++        '''
++        Test local runner.
++
++        :return:
++        '''
++        msg = 'Big to little endian conversion error'
++        runner = MagicMock()
++        runner().run = MagicMock(return_value=msg)
++
++        self.runner._get_runner = runner
++        self.runner.out = MagicMock()
++        assert self.runner._local_run({}) == msg
++
++        runner().run = MagicMock(side_effect=SystemExit)
++        assert self.runner._local_run({}) == 'Runner is not available at this moment'
++
++        err_msg = 'Trojan horse ran out of hay'
++        runner().run = MagicMock(side_effect=Exception(err_msg))
++        assert self.runner._local_run({}) == 'Unhandled exception occurred: Trojan horse ran out of hay'
++
++    @patch('salt.cli.support.intfunc', MagicMock(spec=[]))
++    def test_internal_function_call_stub(self):
++        '''
++        Test missing internal function call is handled accordingly.
++
++        :return:
++        '''
++        self.runner.out = MagicMock()
++        out = self.runner._internal_function_call({'fun': 'everythingisawesome',
++                                                   'arg': [], 'kwargs': {}})
++        assert out == 'Function everythingisawesome is not available'
++
++    def test_internal_function_call(self):
++        '''
++        Test missing internal function call is handled accordingly.
++
++        :return:
++        '''
++        msg = 'Internet outage'
++        intfunc = MagicMock()
++        intfunc.everythingisawesome = MagicMock(return_value=msg)
++        self.runner.out = MagicMock()
++        with patch('salt.cli.support.intfunc', intfunc):
++            out = self.runner._internal_function_call({'fun': 'everythingisawesome',
++                                                       'arg': [], 'kwargs': {}})
++            assert out == msg
++
++    def test_get_action(self):
++        '''
++        Test action meta gets parsed.
++
++        :return:
++        '''
++        action_meta = {'run:jobs.list_jobs_filter': {'info': 'List jobs filter', 'args': [1]}}
++        assert self.runner._get_action(action_meta) == ('List jobs filter', None,
++                                                        {'fun': 'run:jobs.list_jobs_filter', 'kwargs': {}, 'arg': [1]})
++        action_meta = {'user.info': {'info': 'Information about "usbmux"', 'args': ['usbmux']}}
++        assert self.runner._get_action(action_meta) == ('Information about "usbmux"', None,
++                                                        {'fun': 'user.info', 'kwargs': {}, 'arg': ['usbmux']})
++
++    def test_extract_return(self):
++        '''
++        Test extract return from the output.
++
++        :return:
++        '''
++        out = {'key': 'value'}
++        assert self.runner._extract_return(out) == out
++        assert self.runner._extract_return({'return': out}) == out
++
++    def test_get_action_type(self):
++        '''
++        Test action meta determines action type.
++
++        :return:
++        '''
++        action_meta = {'run:jobs.list_jobs_filter': {'info': 'List jobs filter', 'args': [1]}}
++        assert self.runner._get_action_type(action_meta) == 'run'
++
++        action_meta = {'user.info': {'info': 'Information about "usbmux"', 'args': ['usbmux']}}
++        assert self.runner._get_action_type(action_meta) == 'call'
++
++    @patch('os.path.exists', MagicMock(return_value=True))
++    def test_cleanup(self):
++        '''
++        Test cleanup routine.
++
++        :return:
++        '''
++        arch = '/tmp/killme.zip'
++        unlink = MagicMock()
++        with patch('os.unlink', unlink):
++            self.runner.config = {'support_archive': arch}
++            self.runner.out = MagicMock()
++            self.runner._cleanup()
++
++            assert self.runner.out.warning.call_args[0][0] == 'Terminated earlier, cleaning up'
++            unlink.assert_called_once_with(arch)
++
++    @patch('os.path.exists', MagicMock(return_value=True))
++    def test_check_existing_archive(self):
++        '''
++        Test check existing archive.
++
++        :return:
++        '''
++        arch = '/tmp/endothermal-recalibration.zip'
++        unlink = MagicMock()
++        with patch('os.unlink', unlink), patch('os.path.exists', MagicMock(return_value=False)):
++            self.runner.config = {'support_archive': '',
++                                  'support_archive_force_overwrite': True}
++            self.runner.out = MagicMock()
++            assert self.runner._check_existing_archive()
++            assert self.runner.out.warning.call_count == 0
++
++        with patch('os.unlink', unlink):
++            self.runner.config = {'support_archive': arch,
++                                  'support_archive_force_overwrite': False}
++            self.runner.out = MagicMock()
++            assert not self.runner._check_existing_archive()
++            assert self.runner.out.warning.call_args[0][0] == 'File {} already exists.'.format(arch)
++
++        with patch('os.unlink', unlink):
++            self.runner.config = {'support_archive': arch,
++                                  'support_archive_force_overwrite': True}
++            self.runner.out = MagicMock()
++            assert self.runner._check_existing_archive()
++            assert self.runner.out.warning.call_args[0][0] == 'Overwriting existing archive: {}'.format(arch)
++
++
++@skipIf(not bool(pytest), 'Pytest needs to be installed')
++@skipIf(NO_MOCK, NO_MOCK_REASON)
++class ProfileIntegrityTestCase(TestCase):
++    '''
++    Default profile integrity
++    '''
++    def setUp(self):
++        '''
++        Set up test suite.
++
++        :return:
++        '''
++        self.profiles = {}
++        profiles = os.path.join(os.path.dirname(salt.cli.support.collector.__file__), 'profiles')
++        for profile in os.listdir(profiles):
++            self.profiles[profile.split('.')[0]] = os.path.join(profiles, profile)
++
++    def tearDown(self):
++        '''
++        Tear down test suite.
++
++        :return:
++        '''
++        del self.profiles
++
++    def _render_template_to_yaml(self, name, *args, **kwargs):
++        '''
++        Get template referene for rendering.
++        :return:
++        '''
++        with salt.utils.files.fopen(self.profiles[name]) as t_fh:
++            template = t_fh.read()
++        return yaml.load(jinja2.Environment().from_string(template).render(*args, **kwargs))
++
++    def test_non_template_profiles_parseable(self):
++        '''
++        Test shipped default profile is YAML parse-able.
++
++        :return:
++        '''
++        for t_name in ['default', 'jobs-active', 'jobs-last', 'network', 'postgres']:
++            with salt.utils.files.fopen(self.profiles[t_name]) as ref:
++                try:
++                    yaml.load(ref)
++                    parsed = True
++                except Exception:
++                    parsed = False
++                assert parsed
++
++    def test_users_template_profile(self):
++        '''
++        Test users template profile.
++
++        :return:
++        '''
++        users_data = self._render_template_to_yaml('users', salt=MagicMock(return_value=['pokemon']))
++        assert len(users_data['all-users']) == 5
++        for user_data in users_data['all-users']:
++            for tgt in ['user.list_groups', 'shadow.info', 'cron.raw_cron']:
++                if tgt in user_data:
++                    assert user_data[tgt]['args'] == ['pokemon']
++
++    def test_jobs_trace_template_profile(self):
++        '''
++        Test jobs-trace template profile.
++
++        :return:
++        '''
++        jobs_trace = self._render_template_to_yaml('jobs-trace', runners=MagicMock(return_value=['0000']))
++        assert len(jobs_trace['jobs-details']) == 1
++        assert jobs_trace['jobs-details'][0]['run:jobs.list_job']['info'] == 'Details on JID 0000'
++        assert jobs_trace['jobs-details'][0]['run:jobs.list_job']['args'] == [0]
+-- 
+2.17.1
+
+

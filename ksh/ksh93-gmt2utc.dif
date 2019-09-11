@@ -1,0 +1,70 @@
+--- src/lib/libast/man/tm.3
++++ src/lib/libast/man/tm.3	2006-04-19 15:55:42.000000000 +0000
+@@ -70,7 +70,7 @@ are used to determine local time zone an
+ .PP
+ .L time_t
+ values are the number of seconds since the epoch,
+-.BR "Jan 1 00:00:00 GMT 1970" ,
++.BR "Jan 1 00:00:00 UTC 1970" ,
+ with leap seconds omitted.
+ .PP
+ The global variable
+@@ -433,7 +433,7 @@ that includes the hours and minutes.
+ .B z
+ Time zone
+ .I SHHMM
+-west of GMT offset where
++west of UTC offset where
+ .I S
+ is
+ .B +
+@@ -614,7 +614,7 @@ Meridian names: AM, PM.
+ .TP
+ .B 43-46
+ .B UTC
+-time zone names: GMT, UTC, UCT, CUT.
++time zone names: UTC, GMT, UCT, CUT.
+ .TP
+ .B 47-50
+ Daylight savings time suffix names: DST.
+--- src/lib/libast/man/tmx.3
++++ src/lib/libast/man/tmx.3	2006-04-19 15:54:55.000000000 +0000
+@@ -59,7 +59,7 @@ are used to determine local time zone in
+ .PP
+ .L time_t
+ values are the number of seconds since the epoch,
+-.BR "Jan 1 00:00:00 GMT 1970" ,
++.BR "Jan 1 00:00:00 UTC 1970" ,
+ with leap seconds omitted.
+ .PP
+ The global variable
+@@ -492,7 +492,7 @@ Meridian names: AM, PM.
+ .TP
+ .B 43-46
+ .B UTC
+-time zone names: GMT, UTC, UCT, CUT.
++time zone names: UTC, GMT, UCT, CUT.
+ .TP
+ .B 47-50
+ Daylight savings time suffix names: DST.
+--- src/lib/libast/tm/tmdata.c
++++ src/lib/libast/tm/tmdata.c	2006-04-19 15:52:53.000000000 +0000
+@@ -54,7 +54,7 @@ static char*		format[] =
+ 
+ 	"AM",		"PM",
+ 
+-	"GMT",		"UTC",		"UCT",		"CUT",
++	"UTC",		"GMT",		"UCT",		"CUT",
+ 
+ 	"DST",		"",		"",		"",
+ 
+@@ -230,8 +230,8 @@ static Tm_leap_t	leap[] =
+ 
+ static Tm_zone_t	zone[] =
+ {
+- 0,	"GMT",	0,	 ( 0 * 60),	     0,	/* UTC			*/
+  0,	"UCT",	0,	 ( 0 * 60),	     0,	/* UTC			*/
++ 0,	"GMT",	0,	 ( 0 * 60),	     0,	/* UTC			*/
+  0,	"UTC",	0,	 ( 0 * 60),	     0,	/* UTC			*/
+  0,	"CUT",	0,	 ( 0 * 60),	     0,	/* UTC			*/
+  0,	"Z",	0,	 ( 0 * 60),	     0,	/* UTC			*/

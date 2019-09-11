@@ -1,0 +1,2781 @@
+--------------------------------------------------------------------
+Wed Jul 3 06:39:41 UTC 2019 - jreidinger@suse.cz
+
+- merge gh#openSUSE/perl-bootloader#122
+- Replace --suse-signed-grub by --suse-force-signed to follow
+  update from boo#1136601
+- 0.925
+
+--------------------------------------------------------------------
+Thu Jun 6 06:22:24 UTC 2019 - jreidinger@suse.cz
+
+- merge gh#openSUSE/perl-bootloader#121
+- Fix secureboot on aarch64 (boo#1136601)
+- [RFC] Fix secureboot on aarch64 (boo#1136601)
+- 0.924
+
+--------------------------------------------------------------------
+Thu Sep 27 11:15:33 UTC 2018 - snwint@suse.de
+
+- merge gh#openSUSE/perl-bootloader#120
+- create temporary files in /tmp (bsc#1108777)
+- 0.923
+
+--------------------------------------------------------------------
+Fri Aug 24 09:37:49 UTC 2018 - wfeldt@opensuse.org
+
+- update git2log script
+- 0.922
+
+--------------------------------------------------------------------
+Fri Aug 24 09:25:12 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#117
+- work without /etc/default/grub_installdevice (bsc#1079321,
+  bsc#994322)
+- removed unused function
+
+--------------------------------------------------------------------
+Thu Jul 5 13:10:53 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#116
+- add --get-option to pbl (bsc#1033776, bsc#1050349)
+- 0.921
+
+--------------------------------------------------------------------
+Thu Jul 5 11:32:35 UTC 2018 - bwiedemann@suse.de
+
+- merge gh#openSUSE/perl-bootloader#115
+- Avoid undefined var warning
+- 0.920
+
+-------------------------------------------------------------------
+Mon Mar 26 15:49:57 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+--------------------------------------------------------------------
+Fri May 12 09:34:28 UTC 2017 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#113
+- fix device name check (bsc#1033634, bsc#1033776)
+- 0.919
+
+--------------------------------------------------------------------
+Fri Apr 28 14:10:38 UTC 2017 - mchang@suse.com
+
+- merge gh#openSUSE/perl-bootloader#112
+- implemented trusted boot/TPM support in UEFI mode (bsc#1036735,
+  fate#315831)
+- 0.918
+
+-------------------------------------------------------------------
+Tue Jan 24 13:05:53 UTC 2017 - snwint@suse.com
+
+- grub2: drop trailing space from saved entry
+- grub2: parse initrd (bsc#1007335)
+- 0.917
+
+-------------------------------------------------------------------
+Tue Oct 18 13:38:20 UTC 2016 - snwint@suse.com
+
+- run shim-install only if secure boot is set to yes (bsc#985567)
+- 0.916
+
+-------------------------------------------------------------------
+Fri Jul 22 14:50:18 UTC 2016 - snwint@suse.com
+
+- also clear LC_ALL when setting locale
+- run grub in RC_LANG locale taken from sysconfig (bsc#985946)
+- 0.915
+
+-------------------------------------------------------------------
+Fri Jul 22 14:27:23 UTC 2016 - snwint@suse.com
+
+- ensure trusted boot setting is used (fate#316553)
+- 0.914
+
+-------------------------------------------------------------------
+Wed May 11 11:57:18 UTC 2016 - snwint@suse.com
+
+- Don't install grub2-efi during installation (bsc#979145)
+- 0.913
+
+-------------------------------------------------------------------
+Thu Apr 21 14:22:20 UTC 2016 - snwint@suse.com
+
+- we don't need grub_installdevice on s390x (bsc#976466)
+- 0.912
+
+-------------------------------------------------------------------
+Thu Mar 31 10:04:20 UTC 2016 - snwint@suse.com
+
+- Revert "Set GRUB_GFXPAYLOAD based on gfxterm"
+- 0.911
+
+-------------------------------------------------------------------
+Tue Mar 29 10:47:18 UTC 2016 - snwint@suse.com
+
+- Set GRUB_GFXPAYLOAD based on gfxterm
+- Fix syntax errors in grub2/install
+- 0.910
+
+-------------------------------------------------------------------
+Tue Mar 15 13:37:15 UTC 2016 - snwint@suse.com
+
+- Skip grub2-install on PowerNV
+- 0.908
+
+-------------------------------------------------------------------
+Thu Mar  3 11:37:18 UTC 2016 - snwint@suse.com
+
+- grub2-efi: Allow fallback to removable booting
+- grub2-efi: Make 32bit arm be a wildcard match
+- 0.907
+
+-------------------------------------------------------------------
+Mon Feb  8 10:37:23 UTC 2016 - snwint@suse.com
+
+- fix misleading error message (bsc#965499)
+- 0.906
+
+-------------------------------------------------------------------
+Mon Feb  8 10:17:24 UTC 2016 - snwint@suse.com
+
+- Fix parsing of /etc/default/grub
+- 0.905
+
+-------------------------------------------------------------------
+Fri Jan 22 10:33:47 UTC 2016 - snwint@suse.com
+
+- fix typo
+- Fix dtb searching
+- 0.904
+
+-------------------------------------------------------------------
+Fri Dec 18 15:32:13 UTC 2015 - snwint@suse.com
+
+- improve add/del-option scripts
+- rename uboot to u-boot
+- 0.903
+
+-------------------------------------------------------------------
+Fri Dec 18 13:42:13 UTC 2015 - snwint@suse.com
+
+- added support for modifying default boot options
+- 0.902
+
+-------------------------------------------------------------------
+Wed Dec 16 11:52:12 UTC 2015 - snwint@suse.com
+
+- Add initial implementation of uboot/config script
+- 0.901
+
+-------------------------------------------------------------------
+Wed Nov 25 14:16:19 UTC 2015 - snwint@suse.com
+
+- make grub_installdevice parsing more robust
+- continue after wrong entries in grub_install_device
+- move bootloader scripts into separate subdirectories
+- updated doc
+- introduce separate per-bootloader scripts
+- add documentation
+- some minor corrections
+- support --reinit option to force grub2 install
+- adjust Makefile
+- add new wrapper script to get rid of old perl-Bootloader code for grub2
+- 0.900
+
+-------------------------------------------------------------------
+Tue Oct  6 11:13:20 UTC 2015 - snwint@suse.com
+
+- rework boot.readme (bsc#948778)
+- 0.844
+
+-------------------------------------------------------------------
+Wed Sep 30 12:17:54 UTC 2015 - snwint@suse.com
+
+- fix extended partition detection (bsc#947697)
+- 0.843
+
+-------------------------------------------------------------------
+Tue Sep 22 16:25:39 CEST 2015 - snwint@suse.com
+
+- allow empty distributor, which for new grub2 means use os-release (bsc#942519)
+- more fixes in grub2-efi
+- fix empty distributor handling for grub2-efi (bsc#942519)
+- 0.842
+
+-------------------------------------------------------------------
+Fri Aug 14 16:06:08 CEST 2015 - snwint@suse.com
+
+- update git2log script to latest version
+- remove no longer needed quotes (bsc#940486)
+- 0.840
+
+-------------------------------------------------------------------
+Mon Jul 20 11:06:23 CEST 2015 - snwint@suse.com
+
+- do not escape empty string as it lead to invalid kernel command line (bsc#937806)
+- 0.839
+
+-------------------------------------------------------------------
+Tue Jun 23 17:11:06 CEST 2015 - snwint@suse.com
+
+- do not prepend additional empty space to append (bsc#926426)
+- 0.838
+
+-------------------------------------------------------------------
+Thu Jun 18 12:20:55 CEST 2015 - snwint@suse.com
+
+- use proper upstream name for disabling recovery section (bsc#898099)
+- 0.837
+
+-------------------------------------------------------------------
+Wed Jun 17 15:20:57 CEST 2015 - snwint@suse.com
+
+- ensure to uncommend grub2 disabling option (fate#317016)
+- 0.836
+
+-------------------------------------------------------------------
+Tue Jun 16 17:05:55 CEST 2015 - snwint@suse.com
+
+- Allow to setup disabling of recovery section (fate#317016)
+- 0.835
+
+-------------------------------------------------------------------
+Fri Jun  5 11:25:55 CEST 2015 - snwint@suse.com
+
+- Escape dollar signs (bsc#857556)
+- 0.834
+
+-------------------------------------------------------------------
+Thu Apr 30 08:41:08 CEST 2015 - snwint@suse.com
+
+- Escape/unescape special characters on write/read (bsc#831791)
+- 0.833
+
+-------------------------------------------------------------------
+Wed Apr 22 14:01:05 CEST 2015 - snwint@suse.com
+
+- started pbl-yaml testsuite
+- added test cases for various utf8/non-utf8/really broken config files
+- rewrite file-io to do some utf8 processing that keeps non-utf8 files intact as much as possible
+- use only WriteFileRaw() to actually write files
+- use ReadFileRaw() to read grub2 config (bnc#899921)
+- rewrite ReadFile() to handle utf8 properly (bnc#899921)
+- export more pbl functions via yaml interface to allow easier testing
+- 0.832
+
+-------------------------------------------------------------------
+Thu Mar 26 13:01:23 CET 2015 - snwint@suse.com
+
+- remove unrelated comment
+- add device scannning speed-ups done for sle11-sp3 (bnc#910479)
+- 0.831
+
+-------------------------------------------------------------------
+Wed Feb 11 09:41:21 CET 2015 - jenkins@suse.com
+
+- Initialize GRUB_USE_LINUXEFI from target setting
+- 0.830
+
+-------------------------------------------------------------------
+Tue Jan 27 10:41:10 CET 2015 - snwint@suse.com
+
+- Determine disk device from sysfs tree
+- 0.829
+
+-------------------------------------------------------------------
+Mon Jan 19 14:11:14 CET 2015 - snwint@suse.com
+
+- preserve config file permissions (bnc#908664)
+- 0.828
+
+-------------------------------------------------------------------
+Mon Dec  8 10:56:00 CET 2014 - snwint@suse.com
+
+- Add armv7l support for grub2
+- 0.827
+
+-------------------------------------------------------------------
+Wed Oct 15 14:41:35 CEST 2014 - snwint_jenkins@suse.com
+
+- prepare for jenkins auto-submission
+- 0.826
+
+-------------------------------------------------------------------
+Wed Oct 15 12:52:10 CEST 2014 - snwint@suse.de
+
+- handle aarch64 in GRUB2EFI
+- 0.825
+
+-------------------------------------------------------------------
+Fri Sep 26 13:14:57 CEST 2014 - snwint@suse.de
+
+- fix GRUB_TERMINAL check to accept multiple terminal devices (bsc#898609)
+- 0.824
+
+-------------------------------------------------------------------
+Fri Sep 26 10:56:10 CEST 2014 - snwint@suse.de
+
+- write only files we have data for (bsc#898429)
+- 0.823
+
+-------------------------------------------------------------------
+Tue Sep 16 10:36:10 CEST 2014 - snwint@suse.de
+
+- join byid and kern maps instead of picking one (bnc#896665)
+- 0.822
+
+-------------------------------------------------------------------
+Tue Aug 19 15:04:27 CEST 2014 - snwint@suse.de
+
+- support GRUB_ENABLE_CRYPTODISK config option (bnc#887888)
+- 0.821
+
+-------------------------------------------------------------------
+Fri Aug  8 11:59:42 CEST 2014 - snwint@suse.de
+
+- remove dependency on e2fsprogs (bnc#890795)
+- 0.820
+
+-------------------------------------------------------------------
+Wed Aug  6 15:21:15 UTC 2014 - jreidinger@suse.com
+
+- fix encoding when reading grub2.conf (bnc#890362)
+- 0.819
+
+-------------------------------------------------------------------
+Tue Jul  8 03:41:07 UTC 2014 - mchang@suse.com
+
+- fix error on firmware raid install (bnc#865553)
+- 0.818
+
+-------------------------------------------------------------------
+Fri Jun  6 09:18:10 UTC 2014 - mchang@suse.com
+
+- use linuxefi as default (bnc#880819)
+- 0.817 
+
+-------------------------------------------------------------------
+Thu May 15 11:48:38 CEST 2014 - snwint@suse.de
+
+- remove grub2 sections workaround
+- 0.816
+
+-------------------------------------------------------------------
+Thu May 15 06:28:56 UTC 2014 - mchang@suse.com
+
+- enable btrfs snapshot booting on all architectures
+- 0.815 
+
+-------------------------------------------------------------------
+Tue May  6 11:15:41 UTC 2014 - jreidinger@suse.com
+
+- fix upgrade when converting from grub1 to grub2 (bnc#876359)
+- 0.814
+
+-------------------------------------------------------------------
+Tue Apr 29 10:21:07 CEST 2014 - snwint@suse.de
+
+- fix regexp to not backtrack endlessly if parentheses don't match (bnc#875369)
+- 0.813
+
+-------------------------------------------------------------------
+Tue Apr 22 07:33:01 UTC 2014 - mchang@suse.com
+
+- enable btrfs snapshot booting on ppc
+- remove suse_btrfs_grub2_install.sh as it's no longer used
+- 0.812
+
+-------------------------------------------------------------------
+Wed Apr  9 15:06:33 CEST 2014 - snwint@suse.de
+
+- drop old log /var/log/YaST2/perl-BL-standalone-log
+- remove /var/log/YaST2/y2log_bootloader
+- add MaxDepth parameter to logging function
+- clean up logging in some functions
+- use logrotate file (bnc#822774)
+- 0.811
+
+-------------------------------------------------------------------
+Thu Apr  3 14:16:07 CEST 2014 - snwint@suse.de
+
+- fix ppc install (bnc#871691)
+- 0.810
+
+-------------------------------------------------------------------
+Thu Apr  3 09:09:37 CEST 2014 - snwint@suse.de
+
+- don't forget to update device.map (bnc#869083)
+- 0.809
+
+-------------------------------------------------------------------
+Tue Apr  1 09:43:57 UTC 2014 - mchang@suse.com
+
+- enable SUSE_BTRFS_SNAPSHOT_BOOTING on x86 as other architectures
+  are working in progress.
+- 0.808  
+
+-------------------------------------------------------------------
+Mon Mar 31 12:18:44 UTC 2014 - mchang@suse.com
+
+- support snapper rollback (fate##317062)
+- 0.807 
+
+-------------------------------------------------------------------
+Tue Mar  4 17:48:03 CET 2014 - snwint@suse.de
+
+- support grub2 on s390x
+- 0.806
+
+-------------------------------------------------------------------
+Thu Feb 27 11:52:10 CET 2014 - snwint@suse.de
+
+- propagate serial console setting to xen (bnc#862614)
+- fix reading xen sections
+- 0.805
+
+-------------------------------------------------------------------
+Mon Feb 17 13:15:12 CET 2014 - snwint@suse.de
+
+- fix section info not returning initrd (bnc#863909)
+- 0.804
+
+-------------------------------------------------------------------
+Tue Feb 11 13:14:12 CET 2014 - snwint@suse.de
+
+- fix grub2-editenv path: failed to determine default menu entry (bnc#861469)
+- 0.803
+
+-------------------------------------------------------------------
+Thu Jan 16 16:41:54 CET 2014 - snwint@suse.de
+
+- workaround to avoid double rootflags entries
+- 0.802
+
+-------------------------------------------------------------------
+Tue Jan 14 14:12:44 CET 2014 - snwint@suse.de
+
+- fix confusion between Tools::GetDeviceMapping() and Core::GetDeviceMapping()
+  (bnc#858268)
+- 0.801
+
+-------------------------------------------------------------------
+Tue Oct 29 15:13:22 CET 2013 - snwint@suse.de
+
+- add pbl-yaml: a command line interface to perl-Bootloader using YAML files
+  for input and output
+- 0.800
+
+-------------------------------------------------------------------
+Tue Oct 15 13:09:05 CEST 2013 - snwint@suse.de
+
+- more flexible GetProduct() uses /etc/os-release (bnc#845606)
+- 0.711
+
+-------------------------------------------------------------------
+Tue Oct  1 09:10:04 CEST 2013 - snwint@suse.de
+
+- grub2-efi: fix installation boot parameters not written
+- 0.710
+
+-------------------------------------------------------------------
+Mon Aug 26 14:29:03 CEST 2013 - snwint@suse.de
+
+- update-bootloader refresh cleanup and introduce reinit
+- better way to know kerenl device of physical drive
+- fix grub2-set-default error during installation
+- remove floppy in device map
+- clean up unused functions and variables
+- use grub2-probe to get device map
+- unify indention
+- require coreutils for %post
+- 0.709
+
+-------------------------------------------------------------------
+Tue Jul  2 08:29:00 UTC 2013 - dvaleev@suse.com
+
+- Enable grub2 installation on PowerPC 
+
+-------------------------------------------------------------------
+Tue Jul  2 08:18:58 UTC 2013 - dvaleev@suse.com
+
+- Package grub2 for PowerPC 
+
+-------------------------------------------------------------------
+Mon Feb 25 16:22:22 CET 2013 - snwint@suse.de
+
+- support uefi secureboot
+- fix timeout 0 not work
+- default to entry 0 if no saved_entry is present in grub2 env
+- mention grub2 in /boot/boot.readme
+- 0.708
+
+-------------------------------------------------------------------
+Tue Feb 12 09:26:38 UTC 2013 - coolo@suse.com
+
+- require coreutils for %post
+
+-------------------------------------------------------------------
+Mon Feb  4 14:50:59 CET 2013 - snwint@suse.de
+
+- fix undefined value warning (#799644)
+- 0.707
+
+-------------------------------------------------------------------
+Fri Jan 11 17:23:53 CET 2013 - snwint@suse.de
+
+- arvidjaar: use explicit target arch for GRUB2 and remove grub2-efi calls
+- mchang: handle add and remove in update-bootloader for grub2
+- 0.706
+
+-------------------------------------------------------------------
+Thu Dec  6 16:42:59 CET 2012 - snwint@suse.de
+
+- don't report an error if bootloader type is unset (bnc#757942)
+- don't run external grep to read sysconfig variables
+- don't use Sys::Hostname (bnc#792634)
+- 0.705
+
+-------------------------------------------------------------------
+Wed Nov 14 15:06:42 CET 2012 - snwint@suse.de
+
+- support 'parmfile' option in zipl.conf (bnc#788391)
+- fix zipl (s390x) support
+- 0.704
+
+-------------------------------------------------------------------
+Mon Oct 15 13:02:06 CEST 2012 - snwint@suse.de
+
+- fix compat issues with older perl & rpm
+- 0.703
+
+-------------------------------------------------------------------
+Thu Sep  6 16:25:49 CEST 2012 - snwint@suse.de
+
+- if called from yast: log directly to y2log, not via limal
+- don't use udev for device mapping; instead read symlinks in dev tree
+- add package-local make target
+- clean up spec file
+- log root device & chroot
+- use additional log file /var/log/pbl.log for now to work around broken yast logging
+- 0.702
+
+-------------------------------------------------------------------
+Thu Aug 30 12:07:22 CEST 2012 - snwint@suse.de
+
+- pbl rewrite continued
+- 0.701
+
+-------------------------------------------------------------------
+Thu Aug 30 12:07:21 CEST 2012 - mchang@suse.com
+
+- add management to GRUB_BACKGROUND
+- export section and write as global option
+- manage GRUB_DISABLE_OS_PROBER settings
+- use grub device name in /etc/default/grub_installdevice
+
+-------------------------------------------------------------------
+Thu Aug 23 16:52:34 CEST 2012 - snwint@suse.de
+
+- rewite pbl's logging functions
+- start new version number scheme
+- 0.700
+
+-------------------------------------------------------------------
+Mon Aug 20 14:06:18 CEST 2012 - mchang@suse.com
+
+- fix missing newline in the config
+- 0.6.8
+
+-------------------------------------------------------------------
+Fri Jul 13 15:45:47 CEST 2012 - mchang@suse.com
+
+- fix new menuentry format introduced by 2.0
+- support failsafe kernel parameters
+- 0.6.7
+
+-------------------------------------------------------------------
+Fri Jul  6 14:18:45 CEST 2012 - mchang@suse.com
+
+- use 'auto' for default gfxmode
+- replace background with theme
+- support editing GRUB_DISTRIBUTOR
+- re-enable to create device.map from BootStorage
+- 0.6.6
+
+-------------------------------------------------------------------
+Fri Jun 29 16:20:02 CEST 2012 - snwint@suse.de
+
+- mchang: fix error caused by grub.cfg missing (bnc#769350)
+- make dependency on Pod::Usage optional (bnc#760464)
+- 0.6.5
+
+-------------------------------------------------------------------
+Mon Jun  4 15:40:15 CEST 2012 - mchang@suse.com
+
+- support console related global options gfxterm, serial, gfxbackground and gfxmode
+- 0.6.4
+
+-------------------------------------------------------------------
+Fri Apr 27 12:06:09 CEST 2012 - mchang@suse.de
+
+- fix after grub2 package update, the system become unbootable. (bnc#758570)
+  also fix running update-bootloader --refresh returns error when extended
+  partition is to be installed.
+- 0.6.3
+
+-------------------------------------------------------------------
+Mon Apr 23 11:26:15 CEST 2012 - mchang@suse.de
+
+- add read/write grub2-efi's settings for global options from yast2's
+  bootloader option widgets, including timeout, hiddenmenu, vgamode, append
+  and default
+- add read/write grub2's settings for serial console from yast2's bootloader
+  option widgets
+- add read/write grub2's settings for global options from yast2's bootloader
+  option widgets, including timeout, hiddenmenu, vgamode, append and default
+- fix bootloader_entry util to correctly handle grub2's case (bnc#755183)
+
+-------------------------------------------------------------------
+Thu Mar 22 10:30:34 UTC 2012 - mchang@suse.com
+
+- grub2-kernel-commandline.patch: add kerenl parameters (detected
+  necessary and user specfied one during installation) to grub2's
+  config file.(bnc#752939)
+- 0.6.1
+
+-------------------------------------------------------------------
+Thu Mar 22 10:30:33 UTC 2012 - mchang@suse.com
+
+- grub2-efi-module.patch: add new grub2-efi module to support
+  booting on UEFI firmware.
+
+-------------------------------------------------------------------
+Fri Mar  9 08:40:15 UTC 2012 - mchang@suse.com
+
+- grub2-skip-fs-probe-for-extended-partition.patch (bnc#750897) 
+
+-------------------------------------------------------------------
+Mon Mar  5 15:38:44 CET 2012 - snwint@suse.de
+
+- integrate grub2 patch
+
+-------------------------------------------------------------------
+Wed Feb 15 09:16:19 UTC 2012 - mchang@suse.com
+
+- add-basic-grub2-module.patch : add basic grub2 support 
+
+-------------------------------------------------------------------
+Wed Dec 14 11:06:44 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Fri Oct 14 09:31:40 CEST 2011 - snwint@suse.de
+
+- support more devices in fallback heuristics
+- add basic grub2 support to update-bootloader
+- 0.5.22
+
+-------------------------------------------------------------------
+Wed Sep 21 12:26:34 CEST 2011 - snwint@suse.de
+
+- also log udevinfo
+- 0.5.21
+
+-------------------------------------------------------------------
+Mon Sep 19 16:54:56 CEST 2011 - snwint@suse.de
+
+- add warning to log if udev is missing
+- 0.5.20
+
+-------------------------------------------------------------------
+Fri Sep  2 14:08:54 CEST 2011 - snwint@suse.de
+
+- use UnixDev2GrubDev() from sle11-sp2
+- 0.5.19
+
+-------------------------------------------------------------------
+Mon Aug  1 14:39:07 UTC 2011 - jreidinger@novell.com
+
+- prepare for use perl-Bootloader for other boot management tools
+  (bnc#672471#c8) 
+- change behavior during kernel update to first try use parameters
+  from fitting section and have sysconfig only as failsafe
+  (FATE#310946)
+- 0.5.18
+
+-------------------------------------------------------------------
+Fri May 13 12:19:30 CEST 2011 - snwint@suse.de
+
+- fix conversion function from unix disk names to grub names (bnc#688418)
+- 0.5.17
+
+-------------------------------------------------------------------
+Mon Feb 21 16:03:34 UTC 2011 - jreidinger@novell.com
+
+- in tools return reference for easy to implement advanced command line scripts
+- force order of serial and terminal configuration (bnc#650150)
+- fix detecting extended partition on virtual discs (bnc#659905)
+- 0.5.16
+
+-------------------------------------------------------------------
+Thu Feb 17 12:29:28 UTC 2011 - lnussel@suse.de
+
+- own /var/log/YaST2 as perl-Bootloader can be installed without
+  yast but spams stderr with debug output if the log dir is not
+  present.
+
+-------------------------------------------------------------------
+Tue Jan  4 13:12:51 UTC 2011 - jreidinger@novell.com
+
+- fix build with new perl missing .packlist
+- fix malformed xen append (bnc#657911)
+- 0.5.15
+
+-------------------------------------------------------------------
+Mon Dec  6 18:02:40 UTC 2010 - jreidinger@novell.com
+
+- fix creating new xen section with vga mode
+- 0.5.14
+
+-------------------------------------------------------------------
+Tue Oct 19 09:49:28 UTC 2010 - jreidinger@novell.com
+
+- DM_NAME could contain also partition number in some case
+  (bnc#590637)
+- fix detect of md raid (bnc#626132)
+- 0.5.13
+
+-------------------------------------------------------------------
+Tue Oct 19 08:47:51 UTC 2010 - coolo@novell.com  
+
+- add perl as explicit buildrequire  
+
+------------------------------------------------------------------- 
+Tue May 25 14:53:23 UTC 2010 - jreidinger@novell.com
+
+- port changes from SLE11SP1
+- user properly names for raid disc in partition map (bnc#607852)
+- add missing keyword to hashed password (bnc#598025)
+- 0.5.12
+
+-------------------------------------------------------------------
+Thu Apr 22 12:48:03 UTC 2010 - jreidinger@novell.com
+
+- adapt to new kernel which use only ext_range (bnc#597774)
+- explicitelly mention that output come from pbl (bnc#597810)
+- port changes from SP1 - avoid warning if path is not used 
+  and create failsafe also on s390
+- 0.5.11
+
+-------------------------------------------------------------------
+Fri Apr  9 09:08:34 UTC 2010 - jreidinger@novell.com
+
+- use same root as it is in etc/fstab (bnc#575362)
+- use new zypper method to get boot label (prevent hang during
+  installation)
+- 0.5.10
+
+-------------------------------------------------------------------
+Wed Mar 31 08:21:21 UTC 2010 - jreidinger@novell.com
+
+- don't allow empty custom boot for GRUB (bnc#589433)
+
+-------------------------------------------------------------------
+Fri Feb 26 14:01:47 UTC 2010 - jreidinger@novell.com
+
+- don't print outside if mdadm missing (bnc#578003)
+- fix splitting of values which now doesn't use that structure
+  (bnc#566020)
+- adapt to new version of getting product description (bnc#583034)
+- 0.5.9
+
+-------------------------------------------------------------------
+Sun Jan  3 15:41:34 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Tue Dec 15 14:18:51 UTC 2009 - jreidinger@novell.com
+
+- fix md raid duplication of boot sector (bnc#555574)
+- adapt failsafe to disable KMS (bnc#560426)
+- fix printing warning (bnc#559151)
+- 0.5.8
+
+-------------------------------------------------------------------
+Wed Nov 25 13:50:16 UTC 2009 - jreidinger@novell.com
+
+- don't translate during kernel-update mdraid over whole disc
+  (FATE#305883)
+- fix problems with MD Raid (bnc#533866,bnc#547580)
+- pass vga mode to xen kernel (FATE#305310); fix mdraid test to
+  check proper directory
+- 0.5.7
+
+
+-------------------------------------------------------------------
+Fri Oct  9 13:39:06 CEST 2009 - jreidinger@suse.cz
+
+-  add tests for md raid
+-  add more verbose logging for md raid
+-  add fix for labeled md raid partitions bnc#535065
+-  fix root paramtere for S390 (bnc#539824)
+-  0.5.6
+-------------------------------------------------------------------
+Mon Sep  7 15:05:53 CEST 2009 - jreidinger@suse.cz
+
+- Adapt to new kernel flavor desktop and create fallback section
+  for this section (bnc#537208)
+- 0.5.5 
+
+-------------------------------------------------------------------
+Mon Aug 24 13:55:32 CEST 2009 - jreidinger@suse.cz
+
+- don't use blkid for UUID and label, as it is deprecated and 
+  causes problems if have in cache non-existed devices
+  (bnc#531636) 
+
+-------------------------------------------------------------------
+Tue Aug 11 13:21:46 CEST 2009 - jreidinger@suse.cz
+
+- fail during kernel update if new settings fail to write
+  (bnc#529729) 
+
+-------------------------------------------------------------------
+Tue Aug 11 10:54:30 CEST 2009 - jreidinger@suse.cz
+
+- fix getting extended partition on specific raid controller
+  (bnc#528220) 
+
+-------------------------------------------------------------------
+Tue Aug  4 17:23:48 CEST 2009 - jreidinger@suse.cz
+
+- Allow parameters without root in zipl (bnc#511398)
+- implement failover boot for md arrays (FATE #305008)
+- fix perl warnings if target device cannot be read
+- 0.5.4 
+
+-------------------------------------------------------------------
+Mon Aug  3 14:36:07 CEST 2009 - jreidinger@suse.cz
+
+- disable check for partition table incostitency for lilo
+  (bnc#466427) 
+
+-------------------------------------------------------------------
+Mon Aug  3 11:52:07 CEST 2009 - jreidinger@suse.cz
+
+- Improve partition fallback if something goes wrong (bnc#483617)  
+
+-------------------------------------------------------------------
+Mon Jun  8 09:26:06 CEST 2009 - jreidinger@suse.cz
+
+- fix bad timeout in lilo
+- fix bad log channel (bnc#510037)
+- fix parsing global options
+- 0.5.3
+
+-------------------------------------------------------------------
+Tue Jun  2 16:01:26 CEST 2009 - jreidinger@suse.cz
+
+- suppress warning about testing extended partition (bnc#504083)
+- don't warn if multipath module is not loaded and just log it
+  (bnc#506742)
+- remove last occurences of metadata as now yast2-bootloader 
+  doesn't use it
+- 0.5.2 
+
+-------------------------------------------------------------------
+Thu May  7 09:44:37 CEST 2009 - jreidinger@suse.cz
+
+- add SplitPath to library interface
+- fix filling partitions
+- set thinkpad detection to last know detection
+- fix building on ppc
+- 0.5.1
+
+-------------------------------------------------------------------
+Tue Apr 14 14:22:39 CEST 2009 - jreidinger@suse.cz
+
+- Code cleanup
+- abstract udev settings from library
+- abstract architecture from library
+- doesn't parse # after text for grub bootloader (bnc#481416)
+- move MBR handling code from yast2-bootlaoder to pbl
+- 0.5.0  
+
+-------------------------------------------------------------------
+Tue Apr 14 12:44:58 CEST 2009 - jreidinger@suse.cz
+
+- count timeout for elilo and Powerlilo in seconds instead
+  tenths of seconds
+- 0.4.91 
+
+-------------------------------------------------------------------
+Tue Apr 14 12:44:05 CEST 2009 - jreidinger@suse.cz
+
+- allow disabling changing default for testing purpose
+- 0.4.90  
+
+-------------------------------------------------------------------
+Tue Feb 24 12:19:06 CET 2009 - jreidinger@suse.cz
+
+- also remove bootloader section properly in XEN guest (bnc#478365)
+- 0.4.89
+
+-------------------------------------------------------------------
+Mon Feb 23 15:00:43 CET 2009 - jsrain@suse.cz
+
+- add bootloader section properly in XEN guest (bnc#478365)
+- 0.4.88
+
+-------------------------------------------------------------------
+Thu Feb  5 14:07:43 CET 2009 - jreidinger@suse.cz
+
+- proper detect of multipath with user friendly names (bnc#468792)
+- 0.4.87
+
+-------------------------------------------------------------------
+Mon Jan 26 08:51:34 CET 2009 - jreidinger@suse.cz
+
+- avoid multipath hang (but not properly fixed as it need more
+  testing in this phase(bnc#468792)
+- avoid non-exist default (bnc#669314)
+- 0.4.86 
+
+-------------------------------------------------------------------
+Tue Jan 20 15:56:50 CET 2009 - jreidinger@suse.cz
+
+- parse correctly multiline entries (bnc#466250)
+- 0.4.85 
+
+-------------------------------------------------------------------
+Mon Jan 19 16:33:06 CET 2009 - jreidinger@suse.cz
+
+- filter out initrd with empty value (bnc#465148)
+- doesn't output any warnings to console even if storage have empty
+  mount points map (happen during autoyast setup) (bnc#464098)
+- 0.4.84 
+
+-------------------------------------------------------------------
+Thu Jan  8 14:03:36 CET 2009 - jreidinger@suse.cz
+
+- fix chomping of dmsetup output (bnc#463451)
+- fix translating udev dmraid device (bnc#445602) 
+- 0.4.83
+
+-------------------------------------------------------------------
+Thu Dec 18 09:25:45 CET 2008 - jreidinger@suse.cz
+
+- RT kernel special support (bnc#450153)
+- remove obsolete former default, which breaks changing flavor
+  (bnc#450880)
+- generate man page for kernel update script (bnc#450880)
+- change logging performance, especial on system with many
+  partition (bnc#447142)
+- 0.4.82
+
+-------------------------------------------------------------------
+Tue Dec  2 13:55:11 CET 2008 - jreidinger@suse.cz
+
+- fix menu section in grub and add it to test-suite (bnc#449863)
+- create mapping of multipath to real device and back (bnc#448110)
+- properly enclose arguments for commands (bnc#447591)
+- 0.4.81
+
+-------------------------------------------------------------------
+Thu Nov 27 16:36:22 CET 2008 - jreidinger@suse.cz
+
+- serial console handling in append moved to interface
+  (bnc#449726) 
+- fix broken udev on device-mapper (bios raid and multipath)
+  (bnc#448110)
+- write to device map physical interface to multipath 
+  (bnc#448110)
+- change serial console handling, instead append use edit
+  (bnc#444719)
+- fix uninitialized value (regression) (bnc#440122)
+- 0.4.80
+
+-------------------------------------------------------------------
+Fri Nov 21 13:58:20 CET 2008 - jsrain@suse.cz
+
+- load initrd at 16MB on S/390 (bnc#434234)
+- 0.4.79
+
+-------------------------------------------------------------------
+Tue Nov 18 20:27:56 CET 2008 - jreidinger@suse.cz
+
+- fix test suite hardware dependencies
+  (reported by mpolster@suse.de) 
+- improve logging of detecting hardware during kernel upgrade
+- allow only one serial console (bnc#444522)
+- ensure that keywords is in correct section (bnc#443790)
+- add readme with basic howto rescue to /boot (bnc#224476)
+- 0.4.78
+
+-------------------------------------------------------------------
+Thu Nov  6 15:17:43 CET 2008 - jreidinger@suse.cz
+
+- ignore keys image, xen and initrd in chainloader section
+  (bnc#441463) 
+- fix warnings (bnc#440122)
+- break attach mountpoint to grub dev if grub dev translate fail
+  (bnc#438051)
+- add blank bootloader for ignore any write (bnc#438833)
+- change /etc/mtab to /proc/mounts and allow skip (bnc#439181)
+- add autogenerate of html documentation to Makefile
+- 0.4.77
+
+-------------------------------------------------------------------
+Thu Oct 23 17:15:02 CEST 2008 - jreidinger@suse.cz
+
+- improve logging library input/output 
+- fix bug with xen kernel in xen enviroment (bnc#436899)
+- 0.4.76
+
+-------------------------------------------------------------------
+Thu Oct 23 12:54:40 CEST 2008 - jreidinger@suse.cz
+
+- add workaround for live installation (bnc#432699)
+- 0.4.75 
+
+-------------------------------------------------------------------
+Thu Oct  9 15:34:48 CEST 2008 - jreidinger@suse.cz
+
+- use option relocatable only on ia64 architecture (FATE #301882)
+- improve selecting root devices (bnc#433347)
+- fix regex to confirm mounted /boot (bnc#433835) 
+- add support for xen to elilo, as elilo now must work also on
+  x86_64  (FATE #301882)
+- 0.4.74
+
+-------------------------------------------------------------------
+Tue Oct  7 14:51:05 CEST 2008 - jreidinger@suse.cz
+
+- Fix syntax error in bootloader_entry (bnc#430666 patch by
+  kukuk@suse.de)
+- fix reading lilo configuration (needed to convert lilo to grub
+  FATE #305006)
+- fix kernel/image mismatch (bnc#229978)
+- add support for modulenounzip in xen section (bnc#397864)
+- doesn't count commented boot entry in fstab (bnc#431535)
+- don't fail if section is already removed (bnc#431535)
+- 0.4.73
+
+-------------------------------------------------------------------
+Fri Sep 26 16:23:39 CEST 2008 - jreidinger@suse.cz
+
+- add password generator for grub (bnc#407887)
+- fix handling boolean parameters in powerLILO( bnc#383287)
+- exit as soon as possible if user request skip updating bootloader
+  (bnc#425501)
+- fix permission for directory with script for kernel-update
+- use udevadm info instead of udevinfo (patch by ro)
+- 0.4.72
+
+-------------------------------------------------------------------
+Fri Sep 19 15:46:10 CEST 2008 - jreidinger@suse.cz
+
+- doesn't allow change between default and xen kernel during
+  install (bnc#397075)
+- don't resolve user specified symlinks (bnc#410431)
+- remove unnecesary spaces in append line (bnc#266223)
+- always have default section in ELILO (bnc#250981)
+- try mount /sys if doesn't contain files (bnc#151877)
+- check if /boot is mounted during kernel update (bnc#340837)
+- properly handle setkey option in GRUB (bnc#410004)
+- move thinkpad mbr detection to perl-Bootloader from yast
+  (start moving some functionality from yast to perl-BL)
+- 0.4.71
+
+-------------------------------------------------------------------
+Fri Sep 12 13:38:11 CEST 2008 - jreidinger@suse.cz
+
+- gfxmenu menu is removed from trustedgrub global section
+- if type of kernel is changed, then correctly transfer default
+  (bnc#402789)
+- if kernel params is not set in sysconfig, use old way to transfer
+  it (bnc#423613)
+- fix root in chainloading (bnc#394319)
+- don't change original name (bnc#397067)
+- drop support xen-pae from metadata (kernel update still support
+  it) (bnc#400526)
+- don't use uninitialized variable in elilo (bnc#252148)
+- remove read-only flag from lilo, because it stop booting
+  (bnc#381669)
+- 0.4.70 
+
+-------------------------------------------------------------------
+Thu Aug 21 15:51:15 CEST 2008 - jreidinger@suse.cz
+
+- add support for trusted grub
+- add support for reading console a trusted grub params from
+  sysconfig (except measures)
+- split metadata and internal information about possible keys in 
+  local/global sections
+- fix duplicating configfile line (bnc#389891)
+- fix selecting failsafe as default (bnc#413280)
+- 0.4.69
+
+-------------------------------------------------------------------
+Fri Aug 15 15:03:52 CEST 2008 - jreidinger@suse.cz
+
+- added testsuite - now contains reading config files for grub,
+  elilo and powerlilo (fate#303444)
+- implement serial console parameter for image and xen section for
+  grub, elilo and powerlilo (fate#110038)
+- fix root for booting freedos floppy (bnc#278699)
+- 0.4.68 
+
+-------------------------------------------------------------------
+Mon Aug  4 16:43:48 CEST 2008 - jsrain@suse.cz
+
+- fixed creating chainloader GRUB sections with disk remapping
+  (fate#301994)
+- 0.4.67
+
+-------------------------------------------------------------------
+Tue Jul 29 15:51:16 CEST 2008 - jsrain@suse.cz
+
+- return unmodified GRUB device from GrubDev2UnixDev when match not
+  found in device map so that it is distinguishable GRUB device and
+  cannot be understood as UNIX device (bnc#411937)
+- version bump to 0.4.66
+
+-------------------------------------------------------------------
+Tue Jul 22 10:29:14 CEST 2008 - jreidinger@suse.cz
+
+- fix crash in update-bootloader (bnc#411161)
+- don't try remove kernel image if none bootloader installed
+  (bnc#237620)
+- version bump to 0.4.65 
+
+-------------------------------------------------------------------
+Mon Jul 21 18:42:53 CEST 2008 - snwint@suse.de
+
+- removed 'use Env' from Path.pm (bnc#410878)
+
+-------------------------------------------------------------------
+Thu Jul 17 17:33:47 CEST 2008 - jreidinger@suse.cz
+
+- refactor pathnames, no it can be used 
+  $PERL_BOOTLOADER_TESTSUITE_PATH variable for prefix
+- fixed manpage warnings bnc#398538
+- added fix for bnc#381386 to trunk
+- perl-gettext is only reccomends (FATE #301805)
+- read kernel parametrs from sysconfig (jsrain)
+- Version bump to 0.4.64 
+
+-------------------------------------------------------------------
+Wed Jun  4 14:04:38 CEST 2008 - aosthof@suse.de
+
+- Reverted the fix for minor bnc#389891 causing blocker bnc#395085
+- Fixed perl dependency in perl-Bootloader.spec
+- Version bump to 0.4.63
+
+-------------------------------------------------------------------
+Thu May 29 11:51:02 CEST 2008 - aosthof@suse.de
+
+- Corrected naming scheme for pae kernels (bnc#395085)
+- Version bump to 0.4.62
+
+-------------------------------------------------------------------
+Mon May 26 17:07:46 CEST 2008 - aosthof@suse.de
+
+- Create failsafe sections also for pae kernels (former bigsmp)
+  (bnc#372168)
+- Version bump to 0.4.61
+
+-------------------------------------------------------------------
+Mon May 26 16:51:59 CEST 2008 - aosthof@suse.de
+
+- Omit warning when dm_mod is not available (bnc#393229)
+- Version bump to 0.4.60
+
+-------------------------------------------------------------------
+Tue May 20 10:44:02 CEST 2008 - aosthof@suse.de
+
+- Remove duplicate configfile lines (bnc#389891)
+- Version bump to 0.4.59
+
+-------------------------------------------------------------------
+Thu May 15 13:53:45 CEST 2008 - aosthof@suse.de
+
+- Removed "read-only" flag from elilo.conf (bnc#381669)
+- Version bump to 0.4.58
+
+-------------------------------------------------------------------
+Thu May 15 11:07:20 CEST 2008 - aosthof@suse.de
+
+- Removed "read-only" flag from lilo.conf (bnc#381669)
+- Version bump to 0.4.57
+
+-------------------------------------------------------------------
+Fri Apr 25 13:18:14 CEST 2008 - aosthof@suse.de
+
+- Enhanced graphical failsafe mode (bnc#352020)
+- Version bump to 0.4.56
+
+-------------------------------------------------------------------
+Wed Apr 23 15:17:31 CEST 2008 - aosthof@suse.de
+
+- Fixed grub device pattern (bnc#382724)
+- Version bump to 0.4.55
+
+-------------------------------------------------------------------
+Fri Apr 18 16:34:59 CEST 2008 - aosthof@suse.de
+
+- Fixed translation of unix devices to grub devices (bnc#375176)
+- Version bump to 0.4.54
+
+-------------------------------------------------------------------
+Mon Apr  7 16:15:05 CEST 2008 - aosthof@suse.de
+
+- Prevent perl-Bootloader from segfaulting when loader type is set
+  to "none" (bnc#362650)
+- Version bump to 0.4.53
+
+-------------------------------------------------------------------
+Fri Apr  4 11:25:53 CEST 2008 - aosthof@suse.de
+
+- Adapted changelog to use bugzilla number references in the
+  following form: (bnc#<number>)
+- Version bump to 0.4.52
+
+-------------------------------------------------------------------
+Thu Apr  3 16:29:15 CEST 2008 - aosthof@suse.de
+
+- Corrected typo in pattern matching in GRUB.pm
+- Verion bump to 0.4.51
+
+-------------------------------------------------------------------
+Thu Apr  3 14:23:18 CEST 2008 - aosthof@suse.de
+
+- Fixed string-to-array conversion for menu lists (bnc#352495)
+- Version bump to 0.4.50
+
+-------------------------------------------------------------------
+Fri Mar 28 18:54:53 CET 2008 - aosthof@suse.de
+
+- Implemented a fallback for failing udevinfo call (bnc#371618)
+- Version bump to 0.4.49
+
+-------------------------------------------------------------------
+Wed Mar 12 15:12:13 CET 2008 - aosthof@suse.de
+
+- Fixed global default label for lilo (bnc#361079)
+- Version bump to 0.4.48
+
+-------------------------------------------------------------------
+Fri Feb 22 15:16:52 CET 2008 - aosthof@suse.de
+
+- Changed some l_debug output to l_milestone to be always present
+- Added some additional milestones
+- Added a fallback for grub devices if translation fails
+- Version bump to 0.4.47
+
+-------------------------------------------------------------------
+Fri Jan 25 16:24:06 CET 2008 - aosthof@suse.de
+
+- Enhanced distinction in section labels in a way to append the
+  flavors to the labels if necessary (bnc#351126)
+- Version bump to 0.4.46
+
+-------------------------------------------------------------------
+Fri Jan 11 17:37:48 CET 2008 - aosthof@suse.de
+
+- Inherit appended xen parameters from previous xen entry if
+  existent (#349207)
+- Version bump to 0.4.45
+
+-------------------------------------------------------------------
+Wed Dec 19 11:10:39 CET 2007 - aosthof@suse.de
+
+- Omit error messages on console when looking for devices
+- Version bump to 0.4.44
+
+-------------------------------------------------------------------
+Wed Dec 19 10:42:30 CET 2007 - aosthof@suse.de
+
+- Changed a (misleading) warning to a milestone (#345848)
+- Version bump to 0.4.43
+
+-------------------------------------------------------------------
+Tue Dec 18 13:45:16 CET 2007 - aosthof@suse.de
+
+- Fixed last checkin so that labels for xen entries get displayed
+  correctly now (#340922)
+- Version bump to 0.4.42
+
+-------------------------------------------------------------------
+Fri Dec  7 17:22:00 CET 2007 - aosthof@suse.de
+
+- Distinguish between various xen kernel names (#340922)
+- Version bump to 0.4.41
+
+-------------------------------------------------------------------
+Fri Dec  7 17:21:02 CET 2007 - aosthof@suse.de
+
+- Corrected mechanism of removing obsolete boot entries (#285421)
+- Version bump to 0.4.40
+
+-------------------------------------------------------------------
+Wed Dec  5 14:53:20 CET 2007 - aosthof@suse.de
+
+- Fixed removal of xen (-pae) entries (#345188)
+- Version bump to 0.4.39
+
+-------------------------------------------------------------------
+Fri Nov 30 10:19:02 CET 2007 - aosthof@suse.de
+
+- Prevent changing root device in kernel append line (#344447)
+- Version bump to 0.4.38
+
+-------------------------------------------------------------------
+Thu Nov 15 13:31:06 CET 2007 - aosthof@suse.de
+
+- Fixed quoting of single arguments (#276464)
+- Version bump to 0.4.37
+
+-------------------------------------------------------------------
+Wed Nov 14 14:57:09 CET 2007 - aosthof@suse.de
+
+- Reverted last patch (non existing initrd) because it's already
+  implemented and I've overseen it during patch session.
+- Version bump to 0.4.36
+
+-------------------------------------------------------------------
+Fri Oct 19 12:58:18 CEST 2007 - aosthof@suse.de
+
+- Moved former change to function RemoveSections(), this is the
+  right place
+
+-------------------------------------------------------------------
+Fri Oct 19 11:43:54 CEST 2007 - aosthof@suse.de
+
+- detect wether there is an entry with a non existing initrd and
+  remove the corresponding section (#276923)
+- Version bump to 0.4.35
+
+-------------------------------------------------------------------
+Fri Oct 19 11:01:24 CEST 2007 - aosthof@suse.de
+
+- Added new parameter "force-default" to both bootloader_entry and
+  update-bootloader. This parameter (if used) forces the new boot
+  entry to be the default one (#327308)
+- Version bump to 0.4.34
+
+-------------------------------------------------------------------
+Fri Oct 19 10:56:46 CEST 2007 - aosthof@suse.de
+
+- Fixed perl warning in Core.pm (#302174)
+- Version bump to 0.4.33
+
+-------------------------------------------------------------------
+Wed Sep 26 21:01:33 CEST 2007 - od@suse.de
+
+- Added flag avoid_reading_device_map to Library::ReadSettings()
+  and to all ParseLines() (#328448)
+- Added more logging to GrubDev2UnixDev()
+- Version bump to 0.4.32
+
+-------------------------------------------------------------------
+Mon Sep 24 17:56:48 CEST 2007 - aosthof@suse.de
+
+- Fixed missing image line in lilo (#294432)
+
+-------------------------------------------------------------------
+Fri Sep 21 19:12:35 CEST 2007 - aosthof@suse.de
+
+- Save command for adding new section(s) (also multiple kernels) in
+  /boot/perl-BL_delayed_exec for delayed execution in the target 
+  system. This script will be run by yast2-bootloader after the 
+  installation of packages is finished (#309837) 
+
+-------------------------------------------------------------------
+Fri Sep 21 15:13:09 CEST 2007 - aosthof@suse.de
+
+- Save command for removal of old sections in
+  /boot/perl-BL_delayed_exec for delayed execution in the target
+  system, script will be run by yast2-bootloader after installation
+  of packages is finished (#309837)
+- Version bump to 0.4.30
+
+-------------------------------------------------------------------
+Wed Sep 19 21:55:09 CEST 2007 - aosthof@suse.de
+
+- Again added more logging - also related to #309837
+
+-------------------------------------------------------------------
+Tue Sep 18 20:56:03 CEST 2007 - aosthof@suse.de
+
+- Added more verbose logging to update-bootloader and
+  bootloader_entry to be able to better analyze occurring
+  problems (#309837)
+
+-------------------------------------------------------------------
+Tue Sep 18 20:35:18 CEST 2007 - od@suse.de
+
+- Add comment for former default value only during update (related
+  to #309837, prevents accumulating wrong information that may be
+  used during a later update)
+- Version bump to 0.4.29
+
+-------------------------------------------------------------------
+Tue Sep 18 14:11:17 CEST 2007 - aosthof@suse.de
+
+- Adapted timestamps for log files (#309837)
+- Version bump to 0.4.28
+
+-------------------------------------------------------------------
+Tue Sep 18 10:12:53 CEST 2007 - od@suse.de
+
+- Add comment for former default value only if it does not yet
+  exist (#309837)
+- Version bump to 0.4.27
+
+-------------------------------------------------------------------
+Mon Sep 17 20:35:15 CEST 2007 - aosthof@suse.de
+
+- Added comment line to default value in globals of menu.lst, so
+  yast2-bootloader is able to set the new default value properly in
+  case of an update (#309837)
+- Version bump to 0.4.26
+
+-------------------------------------------------------------------
+Thu Sep 13 23:10:58 CEST 2007 - od@suse.de
+
+- Needed for #309837 and #304515 and others:
+  - Convert debug messages to milestones in GrubDev2UnixDev() and
+    UnixDev2GrubDev(): we always want to have logs available when
+    device translation goes wrong
+  - Actually log contents of new lines in CreateGrubConfLines()
+- Version bump to 0.4.25
+
+-------------------------------------------------------------------
+Wed Sep 12 16:18:04 CEST 2007 - od@suse.de
+
+- Needed for #309837 and #304515 and others:
+  - Added (pseudo-)timestamps to standalone logging
+  - Removed code from update-bootloader to remove old standalone
+    log file: with the timestamps now the log entries from
+    different runs of update-bootloader can be discerned 
+- Minor correction of error message: use ASCII "'" instead of
+  similar Unicode character
+
+-------------------------------------------------------------------
+Thu Aug 23 12:48:58 CEST 2007 - aosthof@suse.de
+
+- Added check for /etc/sysconfig/bootloader in bootloader_entry
+  preventing installation errors in case of shared boot partitions
+  (#303734)
+
+-------------------------------------------------------------------
+Wed Aug 22 15:16:33 CEST 2007 - aosthof@suse.de
+
+- Check for defined types in GRUB.pm to prevent perl warnings
+  (#302174)
+
+-------------------------------------------------------------------
+Tue Aug 21 18:16:41 CEST 2007 - aosthof@suse.de
+
+- Check for defined keys in GRUB.pm to prevent perl warnings
+  (#302174)
+
+-------------------------------------------------------------------
+Tue Aug 21 15:22:05 CEST 2007 - aosthof@suse.de
+
+- Removed requirement of mdadm (#302052)
+
+-------------------------------------------------------------------
+Mon Aug 20 16:54:34 CEST 2007 - aosthof@suse.de
+
+- Provided functionality for adding of new boot entries (#300930)
+
+-------------------------------------------------------------------
+Thu Aug 16 17:24:30 CEST 2007 - aosthof@suse.de
+
+- Provided functionality for removal of old boot entries (#300930)
+
+-------------------------------------------------------------------
+Thu Aug 16 11:16:37 CEST 2007 - aosthof@suse.de
+
+- Improved error handling for mdadm call in Tools.pm (#288842)
+
+-------------------------------------------------------------------
+Wed Aug 15 20:35:25 CEST 2007 - od@suse.de
+
+- accept all "original_name"s, not only alphanumeric (fate#302302)
+
+-------------------------------------------------------------------
+Tue Aug 14 18:01:21 CEST 2007 - aosthof@suse.de
+
+- Implemented new function AdaptCommentLine in Tools.pm which
+  adapts YaST-like comments in existing sections to be handled
+  properly by yast-bootloader (#283709)
+- Version bump to 0.4.21
+
+-------------------------------------------------------------------
+Mon Aug 13 22:53:26 CEST 2007 - od@suse.de
+
+- feature #302302:
+  - removed CreateChainloaderLine() function and call again:
+    - we use a "root" entry now in a configfile section
+    - perl-Bootloader cannot pass a value consisting of both a Unix
+      device name and a file name between yast2-bootloader and
+      perl-Bootloader (i.e.
+      "/dev/disk/by-label/testing/boot/grub/menu.lst"), this is not
+      safely analyzable
+    - during the last tests, the line was disabled anyway because
+      it triggered on "other" instead of "menu" section type
+  - fetching grub_root device (to be used in re-created "root" key)
+    from "root" key in "other" section now as well
+- never use a hardcoded device like "(hd0,0)" in a "rootnoverify"
+  key as a fallback for a missing "root" specification from
+  yast2-bootloader: using "(hd)" now, which will generate an error
+  when the section is selected during boot
+- version bump to 0.4.20
+
+-------------------------------------------------------------------
+Mon Aug 13 13:12:20 CEST 2007 - aosthof@suse.de
+
+- Version bump to 0.4.19
+
+-------------------------------------------------------------------
+Fri Aug 10 15:08:23 CEST 2007 - sf@suse.de
+
+- enable configfile sections:
+    - add CreateConfigFileLine()
+    - some comments 
+
+-------------------------------------------------------------------
+Mon Aug  6 15:51:28 CEST 2007 - aosthof@suse.de
+
+- Adapted yast2-bootloader-style comments to be correctly detected
+  by yast2-bootloader (fate#302407)
+
+-------------------------------------------------------------------
+Thu Aug  2 14:25:22 CEST 2007 - aosthof@suse.de
+
+- Determine md device corresponding to md member device, e.g.
+  if /dev/md0 consists of /dev/sda1 and /dev/sda2, then /dev/md0
+  corresponds to both /dev/sda1 and /dev/sda2 (#271797)
+
+-------------------------------------------------------------------
+Wed Aug  1 17:31:42 CEST 2007 - aosthof@suse.de
+
+- Adapt function DumpLog() to only write to perl-BL-standalone-log,
+  because against expectations yast2-bootloader does logging of
+  called perl-Bootloader functions on its own
+
+-------------------------------------------------------------------
+Wed Aug  1 11:09:18 CEST 2007 - aosthof@suse.de
+
+- Added milestones to functions AddSection() and RemoveSections()
+  to print new section entries, already existing section entries
+  and section entries to be removed
+
+-------------------------------------------------------------------
+Wed Aug  1 11:07:52 CEST 2007 - aosthof@suse.de
+
+- Improved logging mechanism to write log messages either to
+  /var/log/YaST2/y2log or to /var/log/YaST2/perl-BL-standalone-log,
+  depending on the state of the environment variable
+  YAST_IS_RUNNING. In addition to that, the printing of log
+  messages with level DEBUG can be switched on/off by
+  setting/unsetting the environment variable Y2DEBUG.
+
+-------------------------------------------------------------------
+Mon Jul 30 14:28:34 CEST 2007 - aosthof@suse.de
+
+- Use small letters in YaST-style comments due to case sensitive
+  parser (#283709)
+
+-------------------------------------------------------------------
+Mon Jul 30 13:49:03 CEST 2007 - aosthof@suse.de
+
+- Version bump to 0.4.18
+
+-------------------------------------------------------------------
+Mon Jul 30 11:13:17 CEST 2007 - aosthof@suse.de
+
+- Avoid duplicate entries in elilo.conf (#294717)
+
+-------------------------------------------------------------------
+Mon Jul 30 10:18:05 CEST 2007 - aosthof@suse.de
+
+- Added yast2-bootloader-style comment to sections created by
+  perl-Bootloader (bug #283709 and fate#302407)
+
+-------------------------------------------------------------------
+Mon Jul 23 17:15:10 CEST 2007 - aosthof@suse.de
+
+- Fixed boot entries of self compiled kernels (#265564)
+
+-------------------------------------------------------------------
+Thu Jul 12 17:35:52 CEST 2007 - aosthof@suse.de
+
+- Generalized last fix to not touch any unknown or user-specified
+  sections (#272625)
+
+-------------------------------------------------------------------
+Thu Jul 12 15:13:44 CEST 2007 - aosthof@suse.de
+
+- Implemented a mechanism to not throw out user defined grub setup
+  sections in menu.lst (#272625)
+
+-------------------------------------------------------------------
+Fri Jul  6 10:39:13 CEST 2007 - aosthof@suse.de
+
+- Version bump to 0.4.17
+
+-------------------------------------------------------------------
+Fri Jul  6 10:36:01 CEST 2007 - aosthof@suse.de
+
+- Fixed default value handling in update-bootloader. Check if
+  default image is a symlink. If this is the case, let the new
+  kernel be the default one. Else, if the flavor is the same as the
+  one of the new kernel, let the new kernel become the default
+  one. (#276923)
+
+-------------------------------------------------------------------
+Fri Jul  6 10:32:48 CEST 2007 - aosthof@suse.de
+
+- Fixed resolution of kernel and initrd symlinks in Tools.pm
+  (#276923)
+
+-------------------------------------------------------------------
+Fri Jul  6 10:31:45 CEST 2007 - aosthof@suse.de
+
+- Implemented a special handling to make sure that all image
+  sections are referenced at least in the base menu (#266605)
+
+-------------------------------------------------------------------
+Fri Jul  6 10:30:42 CEST 2007 - aosthof@suse.de
+
+- Fixed function FixSectionName() in ZIPL.pm to fix section names
+  on s390 properly (also related to #284308)
+
+-------------------------------------------------------------------
+Fri Jul  6 10:29:55 CEST 2007 - aosthof@suse.de
+
+- implement FixSectionName funtion for ZIPL module according to the
+  zipl sources (#267866)
+- adjust inline interface documentation accordingly
+
+-------------------------------------------------------------------
+Fri Jul  6 10:26:42 CEST 2007 - aosthof@suse.de
+
+- Removed an "o" suffix from a perl s/foo/bar/ expression that it
+  gets compiled every time, not only once. This enables section
+  names to get fixed properly. (related to ##284308)
+
+-------------------------------------------------------------------
+Fri Jul  6 10:25:06 CEST 2007 - aosthof@suse.de
+
+- Removed a line in update-bootloader which replaced spaces by
+  underscores, because this functionality is done by
+  FixSectionName() in the according bootloader modules (#284308)
+
+-------------------------------------------------------------------
+Fri Jul  6 10:23:05 CEST 2007 - aosthof@suse.de
+
+- Corrected naming scheme for boot entry labels to display long
+  ones in case of GRUB and short ones for all other loaders
+  (#277405)
+
+-------------------------------------------------------------------
+Fri Jul  6 10:20:03 CEST 2007 - aosthof@suse.de
+
+- detect wether we have an entry with non existing initrd (#276923)
+
+-------------------------------------------------------------------
+Mon Jul  2 14:29:10 CEST 2007 - aosthof@suse.de
+
+- Removed require for limal-bootloader in .spec due to drop of
+  limal-bootloader package in openSUSE 10.3
+- Added my name to the list of authors
+
+-------------------------------------------------------------------
+Wed Jun 13 10:35:25 CEST 2007 - aosthof@suse.de
+
+- Minor corrections on naming scheme of boot entries
+
+-------------------------------------------------------------------
+Thu May 31 15:46:13 CEST 2007 - aosthof@suse.de
+
+- Fixed creation of failsafe sections in boot menu, this issue is
+  also related to bugs #272236, #272208 and #277405
+- Verion bump to 0.4.16
+
+-------------------------------------------------------------------
+Thu May 31 15:16:46 CEST 2007 - aosthof@suse.de
+
+- The last commit is also related to bugs #272236 and #272208
+
+-------------------------------------------------------------------
+Thu May 31 14:59:11 CEST 2007 - aosthof@suse.de
+
+- Fixed label naming scheme for boot entries so that debug or
+  vanilla kernel entries for instance get named correctly (#277405)
+
+-------------------------------------------------------------------
+Thu Apr 26 13:41:38 CEST 2007 - aosthof@suse.de
+
+- Fixed failsafe parameters to boot in runlevel 3 instead of 5
+
+-------------------------------------------------------------------
+Wed Apr 25 19:11:25 CEST 2007 - aosthof@suse.de
+
+- Fixed usage of md raids for ia64 (#233255)
+- Reverted EFI Bootloader Label code in ELILO.pm to display gui
+  wigets in YaST as they used to be displayed (#242985)
+- Version bump to 0.4.15
+
+-------------------------------------------------------------------
+Wed Apr 25 19:09:18 CEST 2007 - aosthof@suse.de
+
+- Fixed naming scheme of product name for boot menu entries, so
+  that Xen or Failsafe entries for instance get displayed correctly
+
+-------------------------------------------------------------------
+Wed Apr 25 19:07:47 CEST 2007 - aosthof@suse.de
+
+- Fix for booting from extended partitions (#246161, #259050)
+
+-------------------------------------------------------------------
+Wed Apr 25 13:32:01 CEST 2007 - jplack@suse.de
+
+- do section type checking cleanly for ZIPL (#261551)
+
+-------------------------------------------------------------------
+Thu Apr 19 11:16:43 CEST 2007 - sf@suse.de
+
+- use underlying device instead of md RAID-device (Bug #265867) 
+
+-------------------------------------------------------------------
+Thu Apr 12 18:08:58 CEST 2007 - aosthof@suse.de
+
+- Fixed error handling for "dmsetup" calls in DMRaidAvailable(),
+  IsDMDevice() and IsDMRaidSlave() in Tools.pm
+
+-------------------------------------------------------------------
+Wed Apr 11 18:36:37 CEST 2007 - aosthof@suse.de
+
+- Corrected resolution of symlinks in Tools.pm (#244033)
+
+-------------------------------------------------------------------
+Wed Apr 11 18:32:45 CEST 2007 - aosthof@suse.de
+
+- Adapted EFI Bootloader Label code in ELILO.pm (#242985)
+  --> Renamed "boot_efilabel" flag to "efilabel"
+  --> Removed "boot_rm_efilabel" flag because it's now obsolete
+
+-------------------------------------------------------------------
+Tue Apr  3 17:26:31 CEST 2007 - aosthof@suse.de
+
+- Cosmetic correction in Tools.pm
+
+-------------------------------------------------------------------
+Tue Apr  3 16:36:29 CEST 2007 - aosthof@suse.de
+
+- Improved error handling in Tools.pm
+
+-------------------------------------------------------------------
+Mon Apr  2 19:22:20 CEST 2007 - aosthof@suse.de
+
+- Fixed 'uname' call in Tools.pm due to return of false
+  architectures (e.g. i586 instead of i386)
+
+-------------------------------------------------------------------
+Mon Apr  2 14:07:55 CEST 2007 - aosthof@suse.de
+
+- Fixed typo in GRUB.pm
+
+-------------------------------------------------------------------
+Mon Apr  2 11:38:57 CEST 2007 - aosthof@suse.de
+Following changes all refer to bugs #252911 and #255851 which
+indeed are bugs against openSUSE 10.2 & 10.3, however those bugs
+will occur in SLES10-SP1 as well. Thus, those fixes are necessary
+to not mess up configuration after kernel-updates.
+
+Related (fixes) features: #232, #2154, #11011, #300543
+
+- Added function GrubDev2MountPoint() to GRUB.pm to be able to
+  retrieve mountpoints of grub devices
+- Fixed functions GrubDev2UnixDev(), UnixDev2GrubDev(),
+  GrubPath2UnixPath() and ParseLines() in GRUB.pm
+
+- Added wrapper for GrubDev2UnixDev() to Library.pm to be able to
+  call it from Tools.pm
+
+- Fixed functions ReadDMRaidPartitions(), IsDMRaidSlave(),
+  Udev2MajMin() and AddSection() in Tools.pm
+- Commented out obsolete code in GetSectionList() and
+  RemoveSections() in Tools.pm
+
+- Fixed 'uname' call in update-bootloader due to return of false
+  architectures (e.g. i586 instead of i386)
+
+-------------------------------------------------------------------
+Mon Mar 26 19:06:17 CEST 2007 - aosthof@suse.de
+
+- Corrected mechanism for removal of sections in Tools.pm - part 2
+
+-------------------------------------------------------------------
+Mon Mar 26 17:54:54 CEST 2007 - aosthof@suse.de
+
+- Corrected mechanism for removal of sections in Tools.pm
+
+-------------------------------------------------------------------
+Mon Mar 26 13:57:04 CEST 2007 - sf@suse.de
+
+- fixed typo 
+
+-------------------------------------------------------------------
+Mon Mar 26 11:23:35 CEST 2007 - aosthof@suse.de
+
+- Corrected mechanism for adapting default value in Tools.pm
+
+-------------------------------------------------------------------
+Fri Mar 23 19:25:14 CET 2007 - aosthof@suse.de
+
+- Commented out wrong code in update-bootloader and Tools.pm
+
+-------------------------------------------------------------------
+Fri Mar 23 14:26:58 CET 2007 - aosthof@suse.de
+
+- Removed function AddNewImageSection() because it's obsolete
+- Corrected resolution of symlinks in Tools.pm
+- Corrected deletion of obsolete entries in Tools.pm
+- Removed commented out code sections
+
+-------------------------------------------------------------------
+Thu Mar 22 17:11:47 CET 2007 - aosthof@suse.de
+
+- Added mechanism to name boot entries in a unique way
+- Added mechanism to resolve symlinks in boot entries to be able to
+  remove them properly if needed
+- Corrected naming scheme appropriate to corresponding bootloader
+
+-------------------------------------------------------------------
+Tue Mar 20 12:41:23 CET 2007 - sf@suse.de
+
+- implemented DM RAID functionality, using devicemapper instead
+  of udev (to "emulate" yast2-storage)
+
+-------------------------------------------------------------------
+Mon Mar 19 18:59:06 CET 2007 - aosthof@suse.de
+
+- Added mechanism to create failsafe boot entries appropriately
+- Corrected handling for default boot entries
+
+-------------------------------------------------------------------
+Wed Mar 14 09:47:40 CET 2007 - aosthof@suse.de
+
+- New kernels will now be put on top of menu.lst 
+
+-------------------------------------------------------------------
+Tue Mar 13 16:16:56 CET 2007 - aosthof@suse.de
+
+- Display labels of boot entries correctly, e.g. "openSUSE 10.2 --
+  Kernel-2.6.20-9-default" (#252911)
+- Fixed handling concerning which kernel will be the default entry
+  in bootloader menu (#252911)
+
+-------------------------------------------------------------------
+Tue Mar 13 13:09:18 CET 2007 - aosthof@suse.de
+
+- Following changes merged from branch SLES10-SP1 to trunk:
+- Fixed removal of obsolete entries in /boot/grub/menu.lst
+- Exluded kernel-debug from getting default (#241370)
+
+-------------------------------------------------------------------
+Wed Feb 28 11:46:53 CET 2007 - aosthof@suse.de
+
+- Fixed a perl warning bug in Core/GRUB.pm (#248211)
+
+-------------------------------------------------------------------
+Wed Feb 21 14:29:18 CET 2007 - aosthof@suse.de
+
+- Corrected a typo in Core.pm
+
+-------------------------------------------------------------------
+Fri Feb 16 16:45:48 CET 2007 - jplack@suse.de
+
+- Fallback to first section as default boot if bogus value is given
+
+-------------------------------------------------------------------
+Thu Feb 15 16:41:15 CET 2007 - jplack@suse.de
+
+- handle boolean options correctly in GRUB (#244530)
+
+-------------------------------------------------------------------
+Wed Feb 14 11:51:49 CET 2007 - aosthof@suse.de
+
+- manually merge SLES10 branch with trunk, part 4/4:
+- fixed function SplitDevPath() in src/Core.pm to avoid an endless
+  loop (#228570) & (#236777)
+- version bump 0.4.11 (skipped 0.4.10 to be consistent again)
+
+-------------------------------------------------------------------
+Wed Feb 14 11:44:14 CET 2007 - aosthof@suse.de
+
+- manually merge SLES10 branch with trunk, part 3/4:
+- Reverted to make Xen kernel default boot kernel if Xen pattern
+  or Xen RPMs are installed. (Fate #301384)
+
+-------------------------------------------------------------------
+Wed Feb 14 11:40:20 CET 2007 - aosthof@suse.de
+
+- manually merge SLES10 branch with trunk, part 2/4:
+- fixed function InitializeBootloader() in src/Core/ZIPL.pm to
+  correctly call /sbin/zipl (without param "-m menu") (#199582)
+
+-------------------------------------------------------------------
+Wed Feb 14 11:31:30 CET 2007 - aosthof@suse.de
+
+- manually merge SLES10 branch with trunk, part 1/4:
+- fixed default/minimum/maximum values for timeout in ELILO.pm
+- fixed some typos (in descriptions) in ELILO.pm
+- IA 64: Added missing options in elilo.conf (#235400)
+
+-------------------------------------------------------------------
+Wed Jan 17 12:37:41 CET 2007 - jplack@suse.de
+
+- fix for efi boot entry handling (#233537)
+
+-------------------------------------------------------------------
+Wed Jan 17 12:21:02 CET 2007 - jplack@suse.de
+
+- proposed fix for append quotation in elilo (#235400)
+
+-------------------------------------------------------------------
+Tue Jan 16 23:46:31 CET 2007 - jplack@suse.de
+
+- fix various zipl configuration problems (#235486)
+
+-------------------------------------------------------------------
+Thu Jan 11 16:16:36 CET 2007 - jplack@suse.de
+
+- final (at least should be ) fix for ELILO (#228833)
+- version bump 0.4.9  
+
+-------------------------------------------------------------------
+Wed Jan 10 18:12:52 CET 2007 - jplack@suse.de
+
+- mostly complete fix for #228833, wrong elilo configurator
+
+-------------------------------------------------------------------
+Fri Dec 22 17:12:57 CET 2006 - aosthof@suse.de
+
+- partial fix for ELILO (#228833)
+
+-------------------------------------------------------------------
+Fri Dec 22 16:56:07 CET 2006 - jplack@suse.de
+
+- complete implementation for (Fate#300732)
+- fix config file syntax problems from #228841
+- version bump 0.4.8  
+
+-------------------------------------------------------------------
+Fri Dec  8 13:04:55 CET 2006 - jplack@suse.de
+
+- fixed comment handling for ZIPL
+- basic implementation for generic bootloader widgets for ZIPL
+  (Fate#300732)
+- basic implementation for generic bootloader widgets for ELILO
+  (Fate#300732)
+- version bump 0.4.7  
+
+-------------------------------------------------------------------
+Thu Dec  7 13:52:00 CET 2006 - aosthof@suse.de
+
+- fixed identation (correct usage of tabs)
+- fixed remove_entry() that it removes xen entries correctly
+  (#223576)
+
+-------------------------------------------------------------------
+Thu Nov 30 15:42:48 CET 2006 - jplack@suse.de
+
+- implement new section type menu neccessary for linking to other
+  systems/ complexer multiboot setups
+
+-------------------------------------------------------------------
+Wed Nov 29 13:34:40 CET 2006 - jplack@suse.de
+
+- handle xen sections correctly in update-bootloader (#224330)
+
+-------------------------------------------------------------------
+Mon Nov 27 17:44:26 CET 2006 - od@suse.de
+
+- do not specify the name of a bootloader entry when removing it
+  with bootloader_entry, thus removing all sections matching the
+  kernel image and initrd names (if these are on a currently
+  mounted partition) (#223030)
+
+-------------------------------------------------------------------
+Tue Nov 21 14:44:51 CET 2006 - jplack@suse.de
+
+- fix mostly all remaining warnings (#222600)
+
+-------------------------------------------------------------------
+Mon Nov 20 15:53:09 CET 2006 - jplack@suse.de
+
+- fix various warnings (#222600)
+
+-------------------------------------------------------------------
+Fri Nov 17 17:34:00 CET 2006 - jplack@suse.de
+
+- some more finer fixes for the last entries stuff
+
+-------------------------------------------------------------------
+Fri Nov 17 15:55:17 CET 2006 - jplack@suse.de
+
+- kernel line and vga mode now editable again (#214875)
+- show most partitions in Custom Boot Partition drop-down list
+  (#220283)
+- fix handling for chainloader sections (broken)
+- fix handling for xen sections (various problems, partial redesign
+  neccessary)
+- boot from MBR does now address the first bios disk (#221204)
+
+-------------------------------------------------------------------
+Fri Nov 17 14:57:43 CET 2006 - jplack@suse.de
+
+- adding support for 'macos_timeout'
+
+-------------------------------------------------------------------
+Mon Nov 13 16:20:01 CET 2006 - jplack@suse.de
+
+- use selectdevice type for "root" tag: may be given by-id as well
+- include logical partitions in list of custom boot devices
+  (#213256)
+
+-------------------------------------------------------------------
+Thu Nov  9 13:12:23 CET 2006 - aosthof@suse.de
+
+- accept old arguments and new arguments in bootloader_entry
+- fixed usage() and did some cleanup
+
+-------------------------------------------------------------------
+Wed Nov  8 13:57:40 CET 2006 - schwab@suse.de
+
+- Fix error checking.
+
+-------------------------------------------------------------------
+Tue Nov  7 16:46:47 CET 2006 - aosthof@suse.de
+
+- changed interface of bootloader_entry script to kernel rpm, 
+  no more second guessing.
+
+-------------------------------------------------------------------
+Tue Nov  7 15:27:15 CET 2006 - jplack@suse.de
+
+- fix implementation for grub.conf generation and parsing
+  (FATE#300732, bug#213256)
+- version bump 0.4.0
+
+-------------------------------------------------------------------
+Tue Oct 31 15:47:35 CET 2006 - jplack@suse.de
+
+- fix typo in Library.pm (#215613)
+- reduce build dependencies
+- version bump 0.3.5
+
+-------------------------------------------------------------------
+Tue Oct 31 00:33:15 CET 2006 - od@suse.de
+
+- increase maximum timeout for grub to 3600 seconds (#214146)
+
+-------------------------------------------------------------------
+Wed Oct 25 10:29:43 CEST 2006 - jplack@suse.de
+
+- do error handling when $loader is not yet initialized (#213873)
+
+-------------------------------------------------------------------
+Mon Oct 23 16:34:14 CEST 2006 - jplack@suse.de
+
+- move GetMetaData call to the constructor (#213255)
+
+-------------------------------------------------------------------
+Sat Oct 21 15:47:49 CEST 2006 - od@suse.de
+
+- grub: using OO call for last fix (#213255)
+
+-------------------------------------------------------------------
+Fri Oct 20 17:25:03 CEST 2006 - od@suse.de
+
+- grub: fix writing globals (#213255)
+
+-------------------------------------------------------------------
+Thu Oct 12 09:27:48 CEST 2006 - jplack@suse.de
+
+- first chunk of changes for GRub using generic interface,
+  grub.conf handling still missing
+
+-------------------------------------------------------------------
+Fri Sep 29 12:41:55 CEST 2006 - jplack@suse.de
+
+- new interface for FATE#300732
+
+-------------------------------------------------------------------
+Thu Sep 28 15:47:23 CEST 2006 - aosthof@suse.de
+
+- added new interface script bootloader_entry
+
+-------------------------------------------------------------------
+Tue Sep 19 17:29:38 CEST 2006 - jplack@suse.de
+
+- fix man page for update-bootloader
+
+-------------------------------------------------------------------
+Mon Sep  4 17:15:19 CEST 2006 - jplack@suse.de
+
+- support new options no_os_chooser and optional (#202069, #202072)
+
+-------------------------------------------------------------------
+Mon Sep  4 17:00:54 CEST 2006 - jplack@suse.de
+
+- remove braces when parsing device.map file (#203545)
+
+-------------------------------------------------------------------
+Mon Aug  7 17:16:10 CEST 2006 - jplack@suse.de
+
+- add requirement for 'mdadm' and 'e2fsprogs' (#197471)
+
+-------------------------------------------------------------------
+Mon Jul 31 16:19:46 CEST 2006 - jplack@suse.de
+
+- typo fix
+
+-------------------------------------------------------------------
+Fri Jul 28 17:40:51 CEST 2006 - jplack@suse.de
+
+- Tools.pm@Udev2Dev : CCISS driver maps slashes to bangs so we
+  have to reverse that, suppress ignorable warnings from udevinfo
+  (#189348)
+
+-------------------------------------------------------------------
+Tue Jul 25 14:17:40 CEST 2006 - jplack@suse.de
+
+- do not use device symlink in sysfs as a criteria for device
+  detection which breaks on SmartArray controllers (#189348)
+- bump version to 0.2.27
+
+-------------------------------------------------------------------
+Tue Jul 11 18:45:33 CEST 2006 - jplack@suse.de
+
+- move Partition2Disk function to Grub.pm as the only place of
+  usage and the only place to make it really work (#189348).
+
+-------------------------------------------------------------------
+Thu Jul  6 20:00:28 CEST 2006 - jplack@suse.de
+
+- do not replace section names of new sections by default section
+  name (#190529)
+- do not interpret zero integer values as null string (#190529)
+
+-------------------------------------------------------------------
+Mon Jul  3 23:18:44 CEST 2006 - jplack@suse.de
+
+- several 'each' iterators for global hashes not properly reset.
+  This broke root-on-raid1 support so far.
+
+-------------------------------------------------------------------
+Mon Jul  3 20:40:11 CEST 2006 - jplack@suse.de
+
+- fix CountSections/GetSectionList which always returned all
+  sections
+
+-------------------------------------------------------------------
+Mon Jul  3 18:54:57 CEST 2006 - jplack@suse.de
+
+- fix raid1 support in Tools.pm, still more problems in
+  Grub.pm:GrubPath2UnixPath
+
+-------------------------------------------------------------------
+Mon Jul  3 12:23:58 CEST 2006 - jplack@suse.de
+
+- fixed severe syntax problems introduced by r113&r111 in Tools.pm
+  and broke update-bootloader
+
+-------------------------------------------------------------------
+Wed Jun 28 19:38:31 CEST 2006 - jplack@suse.de
+
+- map kernel_append params to xen_append params (#188614) when
+  having a serial console
+
+-------------------------------------------------------------------
+Wed Jun 28 19:32:25 CEST 2006 - jplack@suse.de
+
+- be nicer while handling empty paths (#177083)
+- remove call to RealFileName which is called in SplitDevPath
+  anyway
+- extended/reworked interface in Tools.pm, more generic functions
+  those are needed for another tool needed to enable multipathing
+  after install, add new entries
+- check for RAID1 md arrays as all others will break on reboot
+  (#178802), fix mdadm call (RAID1 check)
+- changed name of ReadMDArrays to ReadRAID1Array which matches its
+  intended functionality.
+- Added FIXME notes for mskibbe
+
+-------------------------------------------------------------------
+Tue May 30 15:04:15 CEST 2006 - jplack@suse.de
+
+- fixed broken parsing/handling/reassembly esp. of comments in
+  config files
+- fixed inline documentation for MD2Members
+
+-------------------------------------------------------------------
+Mon May 22 18:09:07 CEST 2006 - jplack@suse.de
+
+- fix broken selection list (#167390)
+- bump version to 0.2.24
+
+-------------------------------------------------------------------
+Fri May 19 15:47:45 CEST 2006 - jplack@suse.de
+
+- fix xen section counting when adding (#161559)
+- omit bogus warning (#165158)
+- move check for bool type to save code area (#175228)
+- do syntax checking for global "default" parameter. Has to be an
+  integer (#174829)
+- bump version to 0.2.23
+
+-------------------------------------------------------------------
+Fri May 12 15:56:05 CEST 2006 - jplack@suse.de
+
+- do not accept empty product string
+
+-------------------------------------------------------------------
+Fri May 12 14:22:12 CEST 2006 - jplack@suse.de
+
+- call setlocale only when neccessary (helps with --refresh in
+  instsys)
+- do not define opt_xen_kernel initially hence else all new entries
+  will be xen entries.
+
+-------------------------------------------------------------------
+Wed May 10 15:34:20 CEST 2006 - jplack@suse.de
+
+- fix blocking bootloader issue (all archs) found by kukuk right
+  now: bootloader config files are not moved to final destination
+  and bootloader installation thus hangs complete install.
+
+-------------------------------------------------------------------
+Tue May  9 13:05:37 CEST 2006 - jplack@suse.de
+
+- follow symlinks for dev-by-id (#170588) 
+- bump version to 0.2.21
+
+-------------------------------------------------------------------
+Wed Apr 19 19:34:52 CEST 2006 - agruen@suse.de
+
+- Fix a bug in CountSections(), and be more specific in
+  update-bootloader, even though it shouldn't be necessary with
+  the fix.
+
+-------------------------------------------------------------------
+Wed Apr 19 17:08:50 CEST 2006 - agruen@suse.de
+
+- Change option --xen to --xen-kernel=... (161197).
+- Fix a bug when removing xen bootloader entries.
+
+-------------------------------------------------------------------
+Wed Apr 12 18:11:46 CEST 2006 - sf@suse.de
+
+- remove wrong dashes from update-bootloader 
+- bump version to 0.2.20 
+
+-------------------------------------------------------------------
+Wed Apr 12 16:47:23 CEST 2006 - od@suse.de
+
+- make error checking for yast2 print-product independent of
+  the contents of the product name
+- bump version to 0.2.19
+
+-------------------------------------------------------------------
+Fri Apr  7 17:03:05 CEST 2006 - jplack@suse.de
+
+- changed update-bootloader semantic according to #164427
+- bump version to 0.2.18
+
+-------------------------------------------------------------------
+Mon Apr  3 20:15:35 CEST 2006 - jplack@suse.de
+
+- extended interface to fix #161755
+- bump version to 0.2.17
+
+------------------------------------------------------------------------
+Mon Mar 27 17:44:12 CEST 2006 - jplack@suse.de
+
+- always regenerate our 'meta global' section to avoid #160595
+- bump version to 0.2.16
+
+-------------------------------------------------------------------
+Tue Mar 21 17:51:20 CET 2006 - jplack@suse.de
+
+- added package dependency to perl-gettext (#159773)
+- add a fallback value of "SUSE Code 10" instead of error in
+  function GetProduct
+- bump version to 0.2.15
+
+-------------------------------------------------------------------
+Tue Mar 21 14:10:18 CET 2006 - sf@suse.de
+
+- use print-product.ycp again, fallback to /etc/SuSE-release
+  if that doesn't work.  
+
+-------------------------------------------------------------------
+Fri Mar 17 17:15:49 CET 2006 - jplack@suse.de
+
+- moved unification of section names in FixSectionName to Core.pm
+- altered loader specific code to use that (needed by #158274)
+- rearranged update-bootloader so that bootloader entry translation
+  works again (#158274)
+- bump version to 0.2.14
+
+-------------------------------------------------------------------
+Wed Mar 15 17:35:56 CET 2006 - od@suse.de
+
+- fix erroneous error message on ELILO installation (#156993)
+
+-------------------------------------------------------------------
+Mon Mar 13 18:41:14 CET 2006 - jplack@suse.de
+
+- create a nicer default for Xen
+
+-------------------------------------------------------------------
+Mon Feb 27 19:00:27 CET 2006 - jplack@suse.de
+
+- change log file name for _all- archs to y2log_bootloader(#145106)
+
+-------------------------------------------------------------------
+Thu Feb 23 19:44:27 CET 2006 - jplack@suse.de
+
+- modified interface in Tools.pm to enable more generic chages to the
+  bl config sections (#148461)
+- use new interface of Tools.pm for the xen case in update-bootloader
+  (#148461)
+- bump version to 0.2.12
+
+-------------------------------------------------------------------
+Sun Feb 19 16:32:41 CET 2006 - agruen@suse.de
+
+- update-bootloader: Only modify the section name if no explicit
+  name is specified. Strip directories when generating a name from
+  the image name.
+
+-------------------------------------------------------------------
+Tue Feb 14 13:53:05 CET 2006 - jplack@suse.de
+
+- implement new requirements/word split in FixSectionName
+- bump version to 0.2.11
+
+-------------------------------------------------------------------
+Mon Feb 13 18:56:56 CET 2006 - sf@suse.de
+
+- workaround for broken Product.ycp (Bug #148625) 
+
+-------------------------------------------------------------------
+Fri Feb 10 18:50:26 CET 2006 - jplack@suse.de
+
+- fix boot_*/stage1_dev tag handling which breaks kernel builds
+  through update-bootloader, hopefully final checkin´ for FATE #2154
+- remove stage1_dev code for POWER
+- bump version to 0.2.10
+
+-------------------------------------------------------------------
+Thu Feb  9 13:41:56 CET 2006 - jplack@suse.de
+
+- added help messages to make update-bootloader usuable
+- added error handling which was not there at all
+- added --force and --refresh option for FATE #2154
+- introduce Bootloader::Tools::UpdateBootloader(), no longer in
+  Add/Remove Section functions
+- image name may be empty and stored either under "kernel" or "image"
+- bump version to 0.2.9
+
+-------------------------------------------------------------------
+Mon Feb  6 18:03:19 CET 2006 - jplack@suse.de
+
+- catch cases wherethere is no key 'kernel' (FATE #2154)
+- create name and initrd only if not given via parameter
+- use functions to detect kernel/initrd
+- bump version to 0.2.8
+
+-------------------------------------------------------------------
+Mon Feb  6 11:53:55 CET 2006 - sf@suse.de
+
+- get kernel/initrd  name and path from default section
+- put GetSystemLanguage in Tools.pm
+
+-------------------------------------------------------------------
+Fri Feb  3 17:01:01 CET 2006 - sf@suse.de
+
+- fix typo in image name 
+
+-------------------------------------------------------------------
+Wed Feb  1 15:52:00 CET 2006 - od@suse.de
+
+- update-bootloader changes from pth@suse.de and od@suse.de:
+  - only grub allows blanks in section titles
+  - for non-grub: restrict section title lenght to 16 chars
+  - beautify code
+
+-------------------------------------------------------------------
+Wed Feb  1 14:42:26 CET 2006 - od@suse.de
+
+- update-bootloader:
+  - use /etc/sysconfig/language:RC_LANG
+  - translated section name must be non-empty to be used
+
+-------------------------------------------------------------------
+Tue Jan 31 11:50:40 CET 2006 - sf@suse.de
+
+- localize only on Grub or lilo
+- check if translated section name contains non-ASCII characters
+  and fallback to english
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:29 CET 2006 - mls@suse.de
+ 
+- converted neededforbuild to BuildRequires
+  
+-------------------------------------------------------------------
+Tue Jan 24 16:08:20 CET 2006 - jplack@suse.de
+
+- added changes from pth for (FATE #2154)
+
+-------------------------------------------------------------------
+Tue Jan 24 15:48:08 CET 2006 - jplack@suse.de
+
+- handle entries for block devices in sysfs correctly. replaced
+  heuristic term by a proper device and partition detection
+  (FATE #2154)
+
+-------------------------------------------------------------------
+Fri Jan 20 14:22:09 CET 2006 - jplack@suse.de
+
+- defaultboot section must not be empty (#144321)
+- avoid colliding definition of default label in 'menu' and
+  'defaultboot'
+
+-------------------------------------------------------------------
+Wed Jan 18 15:56:38 CET 2006 - jplack@suse.de
+
+- add nice paranthesis to fix blocking yast2 crash (#143746)
+
+-------------------------------------------------------------------
+Wed Jan 18 15:12:50 CET 2006 - rw@suse.de
+
+- get rid of 'append=splash=silent" default
+
+-------------------------------------------------------------------
+Mon Jan 16 18:09:10 CET 2006 - jplack@suse.de
+
+- fixed famous last typo
+
+-------------------------------------------------------------------
+Mon Jan 16 11:04:44 CET 2006 - jplack@suse.de
+
+- unify format of type spec string, they alway start with type,
+  desc, default now.
+
+-------------------------------------------------------------------
+Wed Jan 11 11:31:00 CET 2006 - uli@suse.de
+
+- ZIPL: take out the [defaultboot] garbage
+
+-------------------------------------------------------------------
+Tue Jan  3 14:59:45 CET 2006 - uli@suse.de
+
+- ZIPL: implemented new UI scheme
+- ZIPL: actually use autogenerated boot menu
+- ZIPL: syntax fix in boot menu
+
+-------------------------------------------------------------------
+Tue Dec 20 13:53:21 CET 2005 - jplack@suse.de
+
+- installer segfaults due to empty config (means always) #140127
+- bump version to 0.2.3
+
+-------------------------------------------------------------------
+Mon Dec 19 17:12:40 CET 2005 - jplack@suse.de
+
+- add needed label text
+- bump version to 0.2.2
+
+-------------------------------------------------------------------
+Fri Dec 16 09:49:15 CET 2005 - jsrain@suse.cz
+
+- fixed getting MD array info via mdadm (#137987)
+
+-------------------------------------------------------------------
+Fri Nov 18 11:21:14 CET 2005 - jplack@suse.de
+
+- extend partition information interface transparently
+- encode module exports and transport them through 'global'
+  (intermediate solution/ proof of concept)
+- eliminate some unneeded 'system' calls
+- reenable ppc bootloader config
+- bump version to 0.2.1
+
+-------------------------------------------------------------------
+Mon Oct 31 10:50:08 CET 2005 - jsrain@suse.cz
+
+- fixed reading GRUB settings when /boot subtree is on MD array
+  (#130236)
+
+-------------------------------------------------------------------
+Wed Oct 26 09:18:20 CEST 2005 - jsrain@suse.cz
+
+- fixed updating elilo configuration (#116739)
+- do more verbose output to log when installing lilo
+
+-------------------------------------------------------------------
+Wed Sep 28 22:08:05 CEST 2005 - dmueller@suse.de
+
+- add norootforbuild
+
+-------------------------------------------------------------------
+Tue Sep 27 10:44:50 CEST 2005 - jsrain@suse.cz
+
+- fixed quoting of options in lilo.conf (#117642)
+
+-------------------------------------------------------------------
+Tue Aug 30 11:48:39 CEST 2005 - jsrain@suse.cz
+
+- added ELILO support
+
+-------------------------------------------------------------------
+Mon Aug 29 21:56:45 CEST 2005 - aj@suse.de
+
+- Do not package .orig file.
+
+-------------------------------------------------------------------
+Mon Aug 29 10:34:57 CEST 2005 - jsrain@suse.cz
+
+- added support for PPC loader
+- fixed rootnoverify handling for GRUB (#113683)
+
+-------------------------------------------------------------------
+Fri Aug 19 09:08:13 CEST 2005 - jsrain@suse.cz
+
+- fixed kernel/initrd specification in merged sections (#105660)
+
+-------------------------------------------------------------------
+Thu Aug 18 13:52:52 CEST 2005 - jsrain@suse.cz
+
+- fixed order of lines in XEN sections (#105171)
+
+-------------------------------------------------------------------
+Wed Aug 17 12:57:45 CEST 2005 - jsrain@suse.cz
+
+- fixed installing GRUB if /boot is on MD array (104908)
+- fixed displayed paths in configuration file editor during
+  bootloader installation (105140)
+
+-------------------------------------------------------------------
+Tue Aug  9 14:31:41 CEST 2005 - jsrain@suse.cz
+
+- fixed writing chainloader sections for GRUB (#102703)
+
+-------------------------------------------------------------------
+Wed Aug  3 14:15:11 CEST 2005 - jsrain@suse.cz
+
+- fixed crashes if using on unsupported bootloader
+
+-------------------------------------------------------------------
+Tue Aug  2 11:25:11 CEST 2005 - jsrain@suse.cz
+
+- fixed crash in some cases
+
+-------------------------------------------------------------------
+Wed Jul 27 13:57:16 CEST 2005 - jsrain@suse.cz
+
+- added possibility to set password
+
+-------------------------------------------------------------------
+Tue Jul 26 14:37:39 CEST 2005 - jsrain@suse.cz
+
+- fixed typo in function name
+
+-------------------------------------------------------------------
+Thu Jul 21 16:30:19 CEST 2005 - jsrain@suse.cz
+
+- fixed GRUB <-> UNIX path translations to make menus merging work
+
+-------------------------------------------------------------------
+Thu Jun 30 11:00:39 CEST 2005 - jsrain@suse.cz
+
+- fixed handling of wildcard sections
+- fixed determining whether bootloader initialization succeeded
+  for LILO and ZIPL
+
+-------------------------------------------------------------------
+Wed Jun 29 11:37:23 CEST 2005 - jsrain@suse.cz
+
+- fixed checking of labels for LILO
+- fixed creating global sections during distro installation
+
+-------------------------------------------------------------------
+Thu Jun  2 16:01:16 CEST 2005 - jsrain@suse.cz
+
+- use rootnoverify instead of root in chainloader sections (#84575)
+
+-------------------------------------------------------------------
+Wed Jun  1 15:11:42 CEST 2005 - jsrain@suse.cz
+
+- merged last patch to main tarball
+- fixed cripplink lilo.conf if detailed disk information is
+  present (#81526)
+
+-------------------------------------------------------------------
+Tue May 31 16:07:35 CEST 2005 - uli@suse.de
+
+- fixed syntax error 
+
+-------------------------------------------------------------------
+Mon May 23 14:17:34 CEST 2005 - uli@suse.de
+
+- shift s390* ramdisk up to 16MB so it will not be overwritten
+  on machines with many CPUs (bug #63045)
+
+-------------------------------------------------------------------
+Fri Apr 15 11:31:10 CEST 2005 - jsrain@suse.cz
+
+- added GRUB support for XEN
+
+-------------------------------------------------------------------
+Wed Apr  6 13:08:28 CEST 2005 - jsrain@suse.cz
+
+- removed code duplication between generic and S/390 specific code
+
+-------------------------------------------------------------------
+Wed Mar 16 13:24:39 CET 2005 - jsrain@suse.cz
+
+- added license to documentation
+
+-------------------------------------------------------------------
+Mon Mar 14 09:33:56 CET 2005 - jsrain@suse.cz
+
+- limit LILO section name length (#71830)
+- fixed setting default entry when GRUB section added (#71217)
+- make bootloader files not public readable (#72385)
+
+-------------------------------------------------------------------
+Tue Mar  8 17:29:32 CET 2005 - jsrain@suse.de
+
+- fixed creating zipl.conf during installation
+- added missing documentation in source code
+
+-------------------------------------------------------------------
+Mon Mar  7 15:36:11 CET 2005 - jsrain@suse.cz
+
+- fixed reading zip.conf (uli)
+
+-------------------------------------------------------------------
+Wed Mar  2 15:17:03 CET 2005 - jsrain@suse.cz
+
+- fixed error message written on terminal while finishing
+  installation
+
+-------------------------------------------------------------------
+Fri Feb 25 16:07:39 CET 2005 - jsrain@suse.cz
+
+- fixed initialization when device specified via UUID or LABEL
+  in /etc/fstab (#66623)
+
+-------------------------------------------------------------------
+Fri Feb 25 14:31:11 CET 2005 - agruen@suse.de
+
+- Add --default option to update-bootloader script.
+
+-------------------------------------------------------------------
+Wed Feb 23 16:52:16 CET 2005 - ihno@suse.de
+
+- added s390/s390x specific part (zipl)
+
+-------------------------------------------------------------------
+Thu Feb 17 18:15:53 CET 2005 - jsrain@suse.cz
+
+- avoid calling hwinfo when detecting partitioning (#50615)
+
+-------------------------------------------------------------------
+Wed Feb 16 22:26:30 CET 2005 - schwab@suse.de
+
+- Don't remove BuildRoot in %install.
+
+-------------------------------------------------------------------
+Wed Feb 16 13:51:49 CET 2005 - jsrain@suse.cz
+
+- added support for embedding stage1.5 of GRUB
+
+-------------------------------------------------------------------
+Mon Feb 14 09:36:36 CET 2005 - jsrain@suse.cz
+
+- fixed parameters of added kernel if the comment saying which
+  kernel comes from initial installation is missing (#50708)
+- fixed errors if removing entry for unexistent kernel (#50708)
+
+-------------------------------------------------------------------
+Mon Feb  7 10:43:00 CET 2005 - jsrain@suse.cz
+
+- fixed last patch (more entries can be removed with one kernel)
+- write only modified configuration files and modified sections
+- fixed splitting path to mountpoint + path relative to the mp
+
+-------------------------------------------------------------------
+Fri Feb  4 18:17:56 CET 2005 - agruen@suse.de
+
+- Set the new default boot entry to the first entry in the boot
+  menu when removing the current default entry.
+- A few minor code cleanups.
+
+-------------------------------------------------------------------
+Fri Feb  4 15:56:00 CET 2005 - jsrain@suse.de
+
+- fixed possible corruption of data files
+- fixed counting and removing sections with specified kernel
+
+-------------------------------------------------------------------
+Thu Feb  3 15:00:28 CET 2005 - agruen@suse.de
+
+- Rename the man pages so that they include the Bootloader::
+  prefix.
+- Fix a bug in Bootloader::Core::SplitDevPath.
+- Add update-bootloader frontend script.
+
+-------------------------------------------------------------------
+Mon Jan 31 16:11:48 CET 2005 - jsrain@suse.cz
+
+- fixed several bugs
+
+-------------------------------------------------------------------
+Tue Jan 25 16:27:09 CET 2005 - jsrain@suse.cz
+
+- fixed GRUB to work properly with MD arrays
+- fixed handlink of symlinks
+- fixed root device when creating a new section
+- implemented logging support when running without YaST
+- fixed handling of GRUB path prefix
+
+-------------------------------------------------------------------
+Mon Jan 24 17:35:27 CET 2005 - jsrain@suse.cz
+
+- implemented logging mechanism
+- several bugfixes
+
+-------------------------------------------------------------------
+Thu Jan 20 16:21:27 CET 2005 - jsrain@suse.cz
+
+- initial package
+

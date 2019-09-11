@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Tue Mar 22 10:02:36 UTC 2016 - coolo@suse.com
+
+- updated to 0.56
+   see /usr/share/doc/packages/perl-DBIx-Connector/Changes
+
+  0.56  2016-03-16T17:07:05Z
+        - Added Firebird support, thanks to Stefan Suciu.
+        - Fixed SQLite savepoint support to properly detect SQlite versions 3.9
+          and higher.
+        - Restored MySQL savepoint testing when the DBICTEST_* environment
+          variables are set.
+
+-------------------------------------------------------------------
+Sun Feb  7 09:48:11 UTC 2016 - coolo@suse.com
+
+- updated to 0.55
+   see /usr/share/doc/packages/perl-DBIx-Connector/Changes
+
+  0.55  2016-02-05T18:59:24Z
+        - Added versions to the RollbackError exception classes to make PAUSE
+          happy.
+  
+  0.54  2016-02-05T18:52:44Z
+        - Removeed the Pod tests from the distribution.
+        - Fixed the example code for handling `rollback_error` exceptions in the
+          documentation to properly wrap the transaction in an exception
+          handler. Patch from Perlover (issue #32).
+        - Improved handling of connection failures when RaiseError (or
+          HandleError) is not set. Thanks to Andreas Huber for the report and
+          fix.
+        - Document that `$_` is set locally, not globally, in the methods that
+          set it. Suggested by William Lindley.
+        - The disconnect method no longer longer remove entries from the DBI
+          handle's CachedKids attribute. That behavior appears to be a
+          workaround for a database we don't (yet) support.
+        - Fixed a test failure where the test system has the `$DBI_DSN` or
+          `$DBI_DRIVER` environment variable set. Thanks to Erik Rijkers for the
+          patch.
+        - Added recommendation to use DBD::Pg 3.5.0 or later to the Pg driver.
+          Earlier versions had an incorrect implementation of the `ping()`
+          method (Issue #41).
+
+-------------------------------------------------------------------
+Thu Dec  4 15:15:36 UTC 2014 - ncutler@suse.com
+
+- updated to upstream version 0.53
+
+0.53  2013-03-20T06:04:34Z
+      - Fixed some documentation typos, thanks to Mike O'Regan (Issue #22).
+      - Fixed issue where an connection failure caused an unhelpful error
+        (Issue #26).
+ 
+0.52  2012-05-29T18:32:42Z
+      - The DBI params are now encapsulated in a code reference, rather than
+        stored as the passed array, so that the password is less likely to be
+        displayed in a dump. Idea borrowed from Rose::DB. Patch from Brad
+        Bowman.
+      - Eliminated warning about the non-portability of a v-string on older
+        Perls. Thanks to Mark Lawrence for the report (Issue #17).
+      - Removed a couple of leftover examples of the feature removed
+        in v0.50. Thanks to Randy Stauner for the patch!
+      - Eliminated more "Use of qw(...) as parentheses" syntax errors in tests
+        when running on Perl 5.17.
+      - Add mention of DBI Callbacks parameter to the docs, as folks often ask
+        for this functionality, not realizing that the DBI already provides
+        it. Randy Stauner.
+
+-------------------------------------------------------------------
+Mon Feb 27 08:39:55 UTC 2012 - coolo@suse.com
+
+- initial package 0.51
+    * created by cpanspec 1.78.06
+

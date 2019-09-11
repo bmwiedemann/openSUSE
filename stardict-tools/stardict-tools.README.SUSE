@@ -1,0 +1,13 @@
+The stardict-tools package exists since 2.4.8 and contains 
+additional tools to convert DICT, mova, pydict and wquick 
+dictionaries to stardict format.
+
+You can find some perl and python scripts in:
+ /usr/share/stardict-tools/
+
+Some additional tools for dictionary conversion can be 
+found in:
+ __LIBDIR__/stardict-tools/
+
+
+

@@ -1,0 +1,17 @@
+Index: grub-0.97/lib/device.c
+===================================================================
+--- grub-0.97.orig/lib/device.c
++++ grub-0.97/lib/device.c
+@@ -831,9 +831,11 @@ int
+ is_disk_device (char **map, int drive)
+ {
+   struct stat st;
++  int retval;
+   
+   assert (map[drive] != 0);
+-  assert (stat (map[drive], &st) == 0);
++  retval = stat (map[drive], &st);
++  assert (retval == 0);
+   /* For now, disk devices under Linux are all block devices.  */
+   return S_ISBLK (st.st_mode);
+ }

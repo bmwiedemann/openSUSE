@@ -1,0 +1,113 @@
+-------------------------------------------------------------------
+Thu Mar  7 11:11:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Wed Dec 19 00:13:49 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in descriptions.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:10 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Oct 18 15:55:53 UTC 2017 - toddrme2178@gmail.com
+
+- Version 2.4
+    PR 157 unwrap dictionary comprehensions to allow for python 2.6 to work - Issue #156
+    PR #153 Fix/day of week offsets
+    PR #146 Test failure: eom is correct, but expectation is wrong
+    PR #142 Fixed all PyICU test failure
+    PR #138 bug(date3): rely on comparison of hour and year strings but not strict char position
+    PR #135 update manifest, clean up setup.py and move historical text files
+    PR #130 Refactoring of pdt_locales
+    PR #134 Uses `codecov` to generate coverage report
+    PR #128 Master
+    PR #127 Issue #126 - removed inheritance from object and removed return value…
+    PR #118 ADD: improve russian locale
+    PR #117 ADD: Russian Locale
+    PR #116 Fix spelling of "separator". 
+    PR #115 Update README.rst 
+    PR #113 Add datetime example to readme. 
+    PR #111 Allowed real number appear in text like "5.5 days ago" 
+    Issue #219 - remove 'setup_requires' from setup.py
+    Issue #215 - tests fail in March
+    Issue #156 parsedatetime 2.0 doesn't work on py26
+    Issue #155 Relative times containing years fail when computed from a leap day
+    Issue #145 cal.parse('2015-11-18') returns November 19th 2015
+    Issue #143 What is the second value returned by `parse`?
+    Issue #141 Bad test case in TestComplexDateTimes
+    Issue #123 update supporting files for v2.0 release
+    Issue #124 Put locales into config-files (yaml)
+    Issue #125 Remove extra files
+    Issue #137 Year is parsed wrongly if the date is of format MMM DD, YYxx xx:SS bug
+    Issue #136 Why I see 2016 instead of 2015?
+    Issue #133 Bug: "2015-01-01" is parsed as the current date.
+    Issue #126 "Unresolved attribute reference 'parse' for class 'object'... " in Pycharm IDE. bug
+    Issue #120 the pdt_locales/en_AU.py file uses en_A for the localID instead of en_AU 
+    Issue #114 Dates in the format 'YYYY-MM-DD HH:MM' give the incorrect month and day
+    Issue #112 Document getting a time from parsedatetime into a standard Python structure
+    Issue #110 AttributeError when running in the context of an HTTP request
+    Issue #109 YearParseStyle is ignored for dates in MM/DD style
+    Issue #107 yyyy/mm/dd date format
+    Issue #105 "this week" is not parsed
+    Issue #103 get UTC times from parseDT - trouble with at 9:30 clock times being interpreted directly in UTC
+    Issue #100 Fractional deltas result in incoherent results.
+
+-------------------------------------------------------------------
+Thu Aug 24 13:48:53 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Fri Oct 16 08:54:35 UTC 2015 - t.gruner@katodev.de
+
+- Version 1.5 (25 Jun 2015)
+    Issue #99 Which year is implied when given just a month and day? Next and last? question
+    Issue #96 Word boundary issues for specials (on, at, in) in nlp
+    Issue #94 inconsistent application of sourceTime in Calendar.parseDT
+    Issue #87 nlp() doesn't recognize some "next ..." expressions
+    Issue #84 Afternoon? bug
+    Issue #82 'last week' and 'next week' are broken
+    Issue #81 parse returns default time of 0900 with dates like 'next friday' despite passed struct_time bug
+    Issue #78 Link for Travis in README is wrong
+    Issue #72 Enable travis
+    Issue #71 Calendar() class can not be initialized 1.4 (it's fine)
+    Issue #66 Unexpected struct_time flag with Calendar.parse on HTML <a href> string
+    Issue #65 NLP false positives
+    Issue #63 Supporting multiple shortweekday abbreviations
+    Issue #61 Short weekday abbreviations bug
+    Issue #56 Parse words to numbers (thirteen => 13)
+    Issue #54 testMonths fails
+
+    commit 107c7e4655 fix for issue 95 - parsing 'next june 15'
+    commit 2c0c8ec778 Fixed faulty test, "730am" parses as "73:0 am" which is a bug for a later day.
+    commit 6f244e891d Fix "ones" parsing as "1s." Require a word boundary between spelled numbers and units.
+    commit 035818edef Fix "1 day ago" parsing like "1d 1y ago" where "a" within the word "day" is interpreted as 1.
+    commit 45002e6eec Fixes "next week" and similar modifier + unit pairs in nlp()
+    commit 47d2e1d527 Fixed "last week"
+
+-------------------------------------------------------------------
+Mon Jul 13 13:12:38 UTC 2015 - toddrme2178@gmail.com
+
+- Fix building on SLES 11
+
+-------------------------------------------------------------------
+Fri Jul 10 09:47:52 UTC 2015 - jkeil@suse.de
+
+- Fix service file
+
+-------------------------------------------------------------------
+Tue Jun  9 08:17:43 UTC 2015 - jkeil@suse.de
+
+- Fix source url
+
+-------------------------------------------------------------------
+Tue Jun  9 08:16:30 UTC 2015 - jkeil@suse.de
+
+- Initial package
+
+

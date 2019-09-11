@@ -1,0 +1,41 @@
+--- octave-4.4.1/src/module.mk_orig	2019-01-11 00:52:01.913918346 +0100
++++ octave-4.4.1/src/module.mk	2019-01-11 18:44:13.272208383 +0100
+@@ -73,6 +73,7 @@
+ %canon_reldir%_octave_LDFLAGS = \
+   $(NO_UNDEFINED_LDFLAG) \
+   $(OCTAVE_LINK_OPTS) \
++  -pie \
+   $(WARN_LDFLAGS)
+ 
+ if AMCOND_BUILD_QT_GUI
+@@ -93,6 +94,7 @@
+ %canon_reldir%_octave_cli_LDFLAGS = \
+   $(NO_UNDEFINED_LDFLAG) \
+   $(OCTAVE_LINK_OPTS) \
++  -pie \
+   $(WARN_LDFLAGS)
+ 
+ %canon_reldir%_octave_cli_CPPFLAGS = \
+@@ -118,6 +120,7 @@
+ %canon_reldir%_octave_gui_LDFLAGS = \
+   $(NO_UNDEFINED_LDFLAG) \
+   $(OCTAVE_GUI_LINK_OPTS) \
++  -pie \
+   $(WARN_LDFLAGS)
+ 
+ %canon_reldir%_octave_svgconvert_SOURCES = %reldir%/octave-svgconvert.cc
+@@ -140,8 +143,14 @@
+   $(SRC_DIR_CPPFLAGS) \
+   $(OCTAVE_CPPFLAGS)
+ 
++%canon_reldir%_mkoctfile_LDFLAGS = \
++  -pie
++
+ %canon_reldir%_octave_config_SOURCES =
+ 
++%canon_reldir%_octave_config_LDFLAGS = \
++  -pie
++
+ nodist_%canon_reldir%_octave_config_SOURCES = %reldir%/octave-config.cc
+ 
+ %canon_reldir%_octave_config_LDADD = \

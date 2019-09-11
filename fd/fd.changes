@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Sun Sep 16 18:11:33 UTC 2018 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 7.1.0
+Features
+  * Added --size filter option
+  * Added --type empty (or -t e) to search for empty files and/or directories
+Changes
+  * .gitignore files will only be respected in Git repositories, not outside.
+  * A few performance improvements for --type searches
+- cleanup with spec-cleaner 
+
+-------------------------------------------------------------------
+Mon Mar 26 10:30:09 UTC 2018 - avindra@opensuse.org
+
+- Update to version 7.0.0
+Features
+  * Added --type executable (or -t x) to search for executable
+    files only
+  * Added support for .fdignore files
+  * Added --ignore-file option to add custom ignore files
+  * Suggest --fixed-strings on invalid regular expressions
+  * Detect when user supplied path instead of pattern
+Changes
+  * .ignore and .rgignore files are not parsed anymore. Use
+    .fdignore files
+  * or add custom files via --ignore-file instead.
+Bugfixes
+  * Properly normalize absolute paths
+  * Invalid utf8 filenames displayed when -e is used
+  * If --type is used, fifos/sockets/etc. are always shown
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Sun Mar 18 21:52:23 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description. Describe the feature
+  differences to GNU find.
+
+-------------------------------------------------------------------
+Tue Mar 13 21:46:53 UTC 2018 - avindra@opensuse.org
+
+ - ship man page and shell completions
+ - reduce size of tarballs
+ - neutralize description a bit
+ - port history to fd.changes
+
+-------------------------------------------------------------------
+Sat Mar 10 01:00:00 UTC 2018 - viktor.saevars@gmail.com
+
+ - Updated to version 6.3.0
+
+-------------------------------------------------------------------
+Sun Oct 08 01:00:00 UTC 2017 - viktor.saevars@gmail.com
+
+ - Initial packaging  @ 4.0.0

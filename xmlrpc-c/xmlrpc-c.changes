@@ -1,0 +1,232 @@
+-------------------------------------------------------------------
+Fri Mar 24 17:48:14 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.39.12:
+  * For full list of changes see:
+    http://xmlrpc-c.sourceforge.net/change_super_stable.html
+- Drop upstreamed narrowing.patch
+- Add xmlrpc-c-no_return_nonvoid.patch
+
+-------------------------------------------------------------------
+Wed Jul 27 10:16:05 UTC 2016 - schwab@suse.de
+
+- narrowing.patch: fix invalid narrowing conversion
+
+-------------------------------------------------------------------
+Tue Nov 17 12:20:54 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.33.18
+  * Fix bug: infinite recursion if you try to format a floating 
+		point value that was created from something other than a 
+		finite number. Creation of a floating point XML-RPC value from 
+		something other than a number now fails.
+
+-------------------------------------------------------------------
+Mon Apr 20 09:16:01 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.33.17
+  * Build: fix a "recompile with -fPIC" failure in parallel make.
+
+-------------------------------------------------------------------
+Mon Mar  9 16:03:12 UTC 2015 - mpluskal@suse.com
+
+- Update dependencies
+- Enable checks
+
+-------------------------------------------------------------------
+Sun Mar  8 10:45:39 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use url for source
+- Update to 1.33.16
+  * Packet stream socket: fix: sends corrupted packet when the 
+    packet contains an ESC character. Always broken. (packet 
+    stream sockets were new in Xmlrpc-c 1.11 - June 2007).
+  * Build: fix 'make distclean' so it doesn't leave src/cpp/srcdir 
+    and src/cpp/blddir.
+- Changes for 1.33.15
+  * Build: fix 'make distclean' so it doesn't leave src/cpp/srcdir 
+    and src/cpp/blddir.
+
+-------------------------------------------------------------------
+Mon Nov 25 12:03:46 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.33
+* Abyss XML-RPC server: Implement HTTP access control and the
+  OPTIONS method
+* Change strategy for overallocating memory - grow blocks no more
+  than a megabyte at a time
+
+-------------------------------------------------------------------
+Sat Jun  1 20:11:13 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to 1.25.23:
+  * Test program build: include <unistd.h> instead of <sys/unistd.h>.
+  1.25.22:
+  *Abyss server: don't reject a request with colons in the host name (e.g. IPv6
+   address form "[::1]") as invalid. This appears to be all that is required
+   for Abyss to work on an IPv6 network, as long as the user binds the
+   listening socket himself.
+  1.25.21:
+  * libxml2: fix memory leaks.
+  * Server: fix method add failure when signature string contains "I" (for 64
+    bit integer).
+  1.25.20:
+  * Client with Curl transport: fix bug which disables interruption unless you
+    register a progress function for the transport. Introduced in 1.24.
+  1.25.19:
+  * Server: Fix crash when string value in parameter list contains invalid
+    UTF-8. Broken in 1.18 (March 2006).
+  1.25.18:
+  * Build: fix build tree != source tree bug: no transport_config.mk. Broken in
+    1.10 (March 2007).
+  1.25.17:
+  * Fix crash due to bogus memory free when xmlrpc_parse_value() fails. Broken
+    in 1.07 (October 2006).
+  1.25.16:
+  * Install: fix install of man pages to wrong directory. Broken in 1.18 (March
+    2009).
+  * Build: Add a user-defined default constructor for class callInfo to avoid
+    compilation failure with recent GNU compilers.
+  1.25.15:
+  * Abyss XML-RPC server: Fix bug in access control expiration.
+  * xmlrpc, xmlrpc_pstream client programs: fix bug in display of unprintable
+    ASCII as \xHH: shows \xff where it should be something else.
+  1.25.14:
+  * Windows Abyss: fix 16 byte per thread memory leak. Thanks Angelo Masci.
+  1.25.13:
+  * xmlrpc client program: fix bug: doesn't accept b/f to mean boolean false.
+    Broken since 1.07.
+  1.25.12:
+  * Fix crash when sending structure with a member value too large. Introduced
+    in 1.21.
+  1.25.11:
+  * Build with --disable-abyss-threads: include <sys/wait.h> instead of
+    <wait.h> in Abyss thread_fork.c.
+  1.25.10:
+  * Fix bug: infinite loop parsing XML when a string or character data is
+    longer than 1K in UTF-8. Introduced in 1.12.
+  * Client curl transport: fix bug: multiple authentication methods doesn't
+    work; only one of them takes effect. Always broken.
+  1.25.09:
+  * Curl client: fix libcurl version in user-agent header. Always broken
+    (user-agent function added in Release 1.03).
+  * C++ Curl client: fix bug: ignores proxy Curl transport options. Always
+    broken.
+  1.25.08:
+  * Accomodate newer libcurl, which does not have <curl/types.h>.
+  * Build of test programs: Fix "struct sockaddr_in" not defined in
+    server_pstream.cpp.
+  * Fix per-connection memory leak in libwww client XML transport. Present
+    since the beginning.
+- Removed xmlrpc-c-default-constructor.patch (fixed upstream).
+- Removed xmlrpc-c-no-curltypes-incl.patch (fixed upstream).
+- Updated license to "BSD-3-Clause and MIT".
+- Removed autoconf, automake, file, libtool and libstdc++-devel build
+  requirements (not needed).
+- Added ncurses-devel and readline-devel build requirements.
+- Removed support for openSUSE < 10.4.
+- Renamed libxmlrpc-c-devel package to xmlrpc-c-devel. Added the necessary
+  Provides/Obsoletes entries for libxmlrpc-c-devel.
+- Remove static libraries.
+
+-------------------------------------------------------------------
+Tue Nov 22 19:53:34 UTC 2011 - pascal.bleser@opensuse.org
+
+- fix requires in -devel package
+- remove Authors block from description
+
+-------------------------------------------------------------------
+Mon Nov 21 17:11:37 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Mon Nov 21 15:09:55 UTC 2011 - rschweikert@suse.com
+
+- remove include of curl/types.h; file no longer exists and has been
+  empty for a while
+
+-------------------------------------------------------------------
+Tue Jun 28 22:08:44 UTC 2011 - appleonkel@opensuse.org
+
+- update to 1.25.07
+  * soname for cpp libs to 7
+  * 3 new libraries (server_cgi++, server_pstream++, packetsocket)
+- deleted old patches, looks like upstream had fixed it
+- added fix for default constructor
+
+-------------------------------------------------------------------
+Sat Oct 30 17:46:21 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.06.41:
+  * CGI XML-RPC server accepts (ignores) parameters after "text/xml" in Content-type header from client
+
+- moved changelog entries from spec file to .changes file
+- added patches to fix wrong usage of printf format for size_t (upstream uses llu instead of zu)
+
+-------------------------------------------------------------------
+Tue Aug 31 21:29:13 UTC 2010 - chris@computersalat.de
+
+- merge with hamradio/xmlrpc-c
+  o there shouldn't be 2 maintained packages :(
+- used Source from sourceforge.net
+  o correct named: xmlrpc-c-1.06.40.tgz
+
+-------------------------------------------------------------------
+Thu Jul  8 00:00:00 UTC 2010 - dl8fcl@darc.de
+
+- imported fixes from pascal@links2linux.de
+  * C++ bytesFromBase64(): fix bug: high two bits always zero.
+    Broken since created (2005)
+  * Abyss: terminate after current request, not current connection.
+    (Matters with keepalive)
+  * fix xmlrpc_inetd_server C++ example. It has never worked.
+  * fix error message about invalid <int> XML
+
+-------------------------------------------------------------------
+Sun Dec 20 00:00:00 UTC 2009 - dl8fcl@darc.de
+
+- update to 1.06.38
+
+-------------------------------------------------------------------
+Mon Sep 28 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.06.37
+
+-------------------------------------------------------------------
+Sat May  9 00:00:00 UTC 2009 - bitshuffler #suse@irc.freenode.org
+
+- Updated to 1.06.33
+* Mon Aug  4 00:00:00 UTC 2008 - Peter Nixon
+- Add xmlrpc-c-gcc43.patch from Gentoo project to placate newer GCC
+  version on openSUSE 11.0
+- Add Packager tag
+- Update group for -devel package
+- replace %%%%run_ldconfig with %%post(un) -p /sbin/ldconfig
+* Tue Jun 12 00:00:00 UTC 2007 - Peter Nixon
+- Updated to 1.06.14
+- Enabled all options
+- Fixed 64bit build problems
+
+-------------------------------------------------------------------
+Tue Mar 14 00:00:00 UTC 2006 - Peter Nixon
+
+- enabled abyss-server
+
+-------------------------------------------------------------------
+Wed Jan 25 00:00:00 UTC 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Mar 18 00:00:00 UTC 2004 - hvogel@suse.de
+
+- fix files list
+
+-------------------------------------------------------------------
+Tue Mar 16 00:00:00 UTC 2004 - kkaempf@suse.de
+
+- initial package version 0.9.10
+
+

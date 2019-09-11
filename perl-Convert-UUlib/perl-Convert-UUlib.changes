@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Tue Sep 25 15:50:19 UTC 2018 - pmonrealgonzalez@suse.com
+
+- update to 1.4
+        - fix a heap overflow (testcase by Krzysztof Wojtaś).
+        - on systems that support it (posix + mmap + map_anonymous),
+          allocate all dynamic areas via mmap and put four guard
+          pages around them, to catch similar heap overflows
+          safely in the future.
+        - find a safer way to pass in CC/CFLAGS to uulib.
+        - added stability canary support.
+
+-------------------------------------------------------------------
+Wed Oct  8 17:02:56 UTC 2014 - jengelh@inai.de
+
+- Use source URLs, and remove old specfile tags and sections.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:10:42 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Mon May 30 07:43:35 UTC 2011 - vcizek@novell.com
+
+- update to 1.4
+	- avoid a classical buffer overflow in case a progress
+          message is too long.
+        - this release adds depdencies for snprintf/vsnprintf.
+	- some uuencode encoders do not generate a final "space" line
+          before the "end" marker, so do not rely on the line to be there.
+
+-------------------------------------------------------------------
+Thu Dec 16 13:48:36 CET 2010 - anicka@suse.cz
+
+- update to 1.34 
+ * fix a one-byte-past-end-write buffer overflow in UURepairData
+   (reported, analysed and testcase provided by Marco Walther).
+ * quoted-printable decoding was completely broken, try a fix.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:14 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:34 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:26 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Feb 14 10:17:27 UTC 2010 - coolo@novell.com
+
+- update to 1.33
+  * many changes in the last 5 years, see Changes
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:34 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Apr 15 10:55:33 CEST 2005 - schubi@suse.de
+
+- update to most recent version 1.051 
+
+-------------------------------------------------------------------
+Fri Feb 27 11:42:22 CET 2004 - choeger@suse.de
+
+- update to most recent version 1.0
+
+-------------------------------------------------------------------
+Sun Jan 11 10:19:50 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Fri Aug 22 14:18:47 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Thu Jul 17 11:39:15 CEST 2003 - choeger@suse.de
+
+- use install_vendor and new %perl_process_packlist macro
+
+-------------------------------------------------------------------
+Tue Jun 17 11:22:31 CEST 2003 - choeger@suse.de
+
+- updated filelist
+- update to version 0.31
+
+-------------------------------------------------------------------
+Mon May 19 12:30:33 CEST 2003 - choeger@suse.de
+
+- remove installed (but unpackaged) file perllocal.pod
+
+-------------------------------------------------------------------
+Mon Aug  5 12:37:21 MEST 2002 - link@suse.de
+
+- updated to 0.213 
+- overhauled spec file
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Sun Jan 13 03:41:44 MET 2002 - link@suse.de
+
+- update to v0.201 
+
+-------------------------------------------------------------------
+Wed Nov 15 17:06:07 CET 2000 - choeger@suse.de
+
+- long package name
+- buildroot
+
+-------------------------------------------------------------------
+Wed Jul 19 09:14:30 MEST 2000 - choeger@suse.de
+
+- first package, v0.11
+

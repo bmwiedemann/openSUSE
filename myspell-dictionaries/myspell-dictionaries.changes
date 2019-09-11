@@ -1,0 +1,672 @@
+-------------------------------------------------------------------
+Tue Apr 23 11:28:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 20190423:
+  * Serbian dictionary updated
+  * Update af_ZA hunspell
+  * Update Spanish dictionary
+  * Update Slovenian dictionary
+  * Update Breton dictionary
+  * Update Galician dictionary
+
+-------------------------------------------------------------------
+Thu Oct 25 14:16:21 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 20181025:
+  * Turkish dictionary added
+  * Updated French dictionary
+
+-------------------------------------------------------------------
+Wed Jul  4 10:35:31 UTC 2018 - tchvatal@suse.com
+
+- Update to 20180704 bsc#1102294 bsc#1099508:
+  * Indonesian hyphenation added
+  * English updates
+  * Croatian updates
+  * Bulgarian files converted to UTF8 in order to avoid bugs
+
+-------------------------------------------------------------------
+Tue Apr  3 10:26:06 UTC 2018 - tchvatal@suse.com
+
+- Update to 20180403:
+  * Various updates around
+  * Indonesian spelling dictionary and thesaurus added
+
+-------------------------------------------------------------------
+Mon Dec 18 10:04:29 UTC 2017 - pgajdos@suse.com
+
+- git state 20171218
+  * hungarian, spanish
+- update.sh: save git log before removing .git; run spec-cleaner
+  if present
+
+-------------------------------------------------------------------
+Thu Nov  2 10:48:35 UTC 2017 - tchvatal@suse.com
+
+- Version update to git state 20171102:
+  * Albanian dictionary
+  * Udates all around the place
+    Spanish/English/Swedish/...
+
+-------------------------------------------------------------------
+Thu May 11 12:19:08 UTC 2017 - tchvatal@suse.com
+
+- Update to git state 20170511:
+  * Add Tibetian dictionary
+- Update update.sh script to not bother < 12.3 releases
+
+-------------------------------------------------------------------
+Fri Dec  9 15:54:44 UTC 2016 - pgajdos@suse.com
+
+- add FLAG UTF-8 to es_ANY.aff [bsc#1014742]
+  + myspell-dictionaries-es-FLAG-UTF-8.patch
+
+-------------------------------------------------------------------
+Mon Oct 31 14:15:19 UTC 2016 - tchvatal@suse.com
+
+- Update to git state 20161031:
+  * Various language updates
+  * Notably Swedish and pt_PT
+
+-------------------------------------------------------------------
+Wed May 11 10:15:02 UTC 2016 - tchvatal@suse.com
+
+- Version update to git state 20160511:
+  * Notably croatian and czech rules updates
+
+-------------------------------------------------------------------
+Wed Feb  3 10:33:34 UTC 2016 - tchvatal@suse.com
+
+- git state 20160203 to incorporate the previous change
+
+-------------------------------------------------------------------
+Wed Feb  3 10:21:41 UTC 2016 - tchvatal@suse.com
+
+- Fix description of the package bnc#718113
+
+-------------------------------------------------------------------
+Thu Dec 17 12:22:19 UTC 2015 - pgajdos@suse.com
+
+- git state 20151217
+
+-------------------------------------------------------------------
+Thu Aug 27 11:46:36 UTC 2015 - tchvatal@suse.com
+
+- Fixup es generating in update script
+
+-------------------------------------------------------------------
+Thu Aug 27 11:21:23 UTC 2015 - tchvatal@suse.com
+
+- Slightly whitespace the spec.in file
+
+-------------------------------------------------------------------
+Thu Aug 27 10:34:23 UTC 2015 - tchvatal@suse.com
+
+- Update to git state 20150827 reflecting LO 5.0
+
+-------------------------------------------------------------------
+Thu Apr 23 09:28:23 UTC 2015 - pgajdos@suse.com
+
+- fix build for 11sp3
+
+-------------------------------------------------------------------
+Mon Apr 20 10:51:32 UTC 2015 - pgajdos@suse.com
+
+- remove Obsoletes: bits from myspell-dictionaries rpm which we
+  provide in language sub-subpackages
+
+-------------------------------------------------------------------
+Tue Apr  7 12:03:58 UTC 2015 - pgajdos@suse.com
+
+- git state 20150407, fixes [bnc#806250]
+
+-------------------------------------------------------------------
+Fri Jan 30 09:24:32 UTC 2015 - pgajdos@suse.com
+
+- git state 20150130
+- fixed [bnc#914911]:
+  * gl: fixed dangling symlinks when gl_ES not installed
+  * de: _frami dropped from dictionaries name,
+        removed hyph_de.dic, th_de_v2.dat, th_de_v2.idx links from
+        myspell-de main language package (dangling when no 
+        variant is installed)
+  * en: introduced dependenciencies between language subpackages 
+        to not have dangling symlinks:
+        - all variants depends on en_US variant
+        - all except en_PH depends on en_GB
+        - en_MW, en_NA and en_ZW variants depends on en_ZA
+  * ca: ca-valencia.{dic,aff} regular files moved to 
+        myspell-ca_ES_valencia
+
+-------------------------------------------------------------------
+Fri Dec 19 08:32:12 UTC 2014 - pgajdos@suse.com
+
+- update to 20141215
+- package split according to locale [bnc#907966]
+
+-------------------------------------------------------------------
+Thu Sep 11 09:43:48 UTC 2014 - pgajdos@suse.com
+
+- package lightproof files [bnc#890735]
+- package all doc files
+- update to 20140911
+
+-------------------------------------------------------------------
+Tue May 20 14:15:52 UTC 2014 - tchvatal@suse.com
+
+- Remove unzip buildrequire and add xz one.
+
+-------------------------------------------------------------------
+Tue May 13 09:05:03 UTC 2014 - pgajdos@suse.com
+
+- always end thesaurus files with _v2
+
+-------------------------------------------------------------------
+Mon May 12 09:05:03 UTC 2014 - pgajdos@suse.com
+
+- improve thesaurus link names
+
+-------------------------------------------------------------------
+Wed May  7 09:24:10 UTC 2014 - pgajdos@suse.com
+
+- updated to 20140507
+  * fdo#73544 update catalan linguistic components
+- improve dictionary file names
+
+-------------------------------------------------------------------
+Tue May  6 15:22:09 UTC 2014 - pgajdos@suse.com
+
+- generate and package *.idx files
+
+-------------------------------------------------------------------
+Mon May  5 14:21:37 UTC 2014 - pgajdos@suse.com
+
+- package compat symlinks in /usr/share/myspell
+
+-------------------------------------------------------------------
+Mon Apr 28 14:48:48 UTC 2014 - pgajdos@suse.com
+
+- myspell-de provides myspell-austrian, myspell-german and
+  myspell-nswiss (removed subpackages from igerman98 source
+  package)
+
+-------------------------------------------------------------------
+Thu Apr 24 11:38:16 UTC 2014 - pgajdos@suse.cz
+
+- obsolete libreoffice-hyphen
+- obsolete/provide libreoffice-thesaurus-*
+
+-------------------------------------------------------------------
+Tue Apr 22 11:12:27 UTC 2014 - pgajdos@suse.com
+
+- do not provide locale(OpenOffice_org:*) [bnc#806250#c21]
+
+-------------------------------------------------------------------
+Tue Apr 22 10:59:45 UTC 2014 - pgajdos@suse.com
+
+- subpackages Provides old names
+
+-------------------------------------------------------------------
+Fri Apr 18 07:37:32 UTC 2014 - pgajdos@suse.com
+
+- package reworked, using data and layout from
+  http://cgit.freedesktop.org/libreoffice/dictionaries/
+  [bnc#806250]
+
+-------------------------------------------------------------------
+Thu Jan  2 10:47:02 UTC 2014 - pmladek@suse.com
+
+- update Polish dictionary to version 20140102 (bnc#857026)
+
+-------------------------------------------------------------------
+Thu Aug  9 18:24:06 UTC 2012 - elchevive@opensuse.org
+
+- Update pt_BR dictionary (Vero 2.1.1), Portugue dictionary (12.7.1.1) and
+  its info (URL), correct Kichwa URL (there was an incorrect one)
+
+-------------------------------------------------------------------
+Tue Apr  3 13:21:48 UTC 2012 - pmladek@suse.com
+
+- update license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Tue Mar 27 13:55:20 UTC 2012 - elchevive@opensuse.org
+
+- Update pt_BR dictionary (Vero 2.1), its license, URL and description
+
+-------------------------------------------------------------------
+Wed Feb  8 10:01:55 UTC 2012 - pmladek@suse.com
+
+- http://extensions.services.openoffice.org was not reliable; removed this URL
+  from the source tag to pass the commit check; kept the URL just in a comment
+
+-------------------------------------------------------------------
+Thu Jan 26 20:10:24 UTC 2012 - asterios.dramis@gmail.com
+
+- Updated Greek dictionary to version 20100124 (1.1.0)
+- Updated spec file based on spec-cleaner run
+
+-------------------------------------------------------------------
+Tue Oct  4 12:03:58 UTC 2011 - pmladek@suse.com
+
+- updated description for LibreOffice (bnc#718113)
+
+-------------------------------------------------------------------
+Mon Jun 13 19:22:03 CEST 2011 - pmladek@suse.cz
+
+- myspell-portuguese (bnc#688200):
+    * added myspell-portuguese-dictionary into Provides to have a common
+      provides with the myspell-portuguese-preao package
+    * added myspell-portuguese-preao into Conflicts
+
+-------------------------------------------------------------------
+Sat Jun 4 08:19:21 CEST 2011 - kkemenczy@opensuse.org
+
+- updated Portuguese (pt_PT) dictionary (bnc#688200)
+
+-------------------------------------------------------------------
+Thu Apr 21 19:30:45 CEST 2011 - pmladek@suse.cz
+
+- updated Valencian dictionary; used avl version again (bnc#681560)
+
+-------------------------------------------------------------------
+Wed Feb  2 20:47:09 CET 2011 - pmladek@suse.cz
+
+- added provides locale(libreoffice:<lang>) to make it installed
+  with libreoffice (bnc#668145)
+
+-------------------------------------------------------------------
+Thu Dec 16 14:56:22 CEST 2010 - kkemenczy@opensuse.org
+
+- updated Belarusian (be_BY)
+
+-------------------------------------------------------------------
+
+
+Thu Nov 29 17:50:49 CEST 2010 - kkemenczy@opensuse.org
+
+- add Coptic (cop_EG) dictionary, Valencian (ca_XV)
+- updated Esperanto (eo_EO), Portuguese (pt_PT,)
+  Romanian (ro_RO) dictionary
+
+-------------------------------------------------------------------
+
+Thu Oct 02 22:26:41 CEST 2010 - kkemenczy@opensuse.org
+
+- updated Yiddish (yi_IL) dictionary
+
+-------------------------------------------------------------------
+Thu Sep 16 12:10:52 CEST 2010 - kkemenczy@opensuse.org
+
+- updated Bulgarian (bg_BG) dictionary
+
+-------------------------------------------------------------------
+
+Wed Sep 01 21:09:22 CEST 2010 - kkemenczy@opensuse.org
+
+- added Armenian (hy_AM), Friulian (fur_IT), Kazakh (kk_KZ), Korean (ko_KR),
+  Latin (la_LA), Lower sorbian (dsb_DE), Serbian Latin (sh_RS),
+  Serbian Cyrillic (sr_RS), Sinhala (si_LK), Yiddish (yi_IL)
+- updated Albanian (sq_AL), Chichewa (ny_MW), French (fr_FR), Khmer (km_KH)
+
+-------------------------------------------------------------------
+
+Sun May 16 22:46:34 CEST 2010 - kkemenczy@opensuse.org
+
+- updated Italian (it_IT), Franch (fr_FR) dictionaries
+
+-------------------------------------------------------------------
+
+Mon Apr 19 13:10:18 CEST 2010 - kkemenczy@opensuse.org
+
+- updated Latvian (lv_LV) dictionary
+
+-------------------------------------------------------------------
+Fri Apr 15 19:14:33 CEST 2010 - kkemenczy@opensuse.org
+
+- added Asturian (ast_ES), Kikuyu (kik_KE) dictionaries, Canadian (en_CA)
+- updated Hungarian (hu_HU), American (en_US), Australian (en_AU),
+  British (en_BG), South African English (en_ZA) dictionaries
+
+-------------------------------------------------------------------
+Fri Apr  9 19:59:07 CEST 2010 - pmladek@suse.cz
+
+- used the be_BY locale instead of be_UA for Belarusian; the old one was not
+  detected by OOo
+- added dos2unix to BuildRequires; called on documentation files
+
+-------------------------------------------------------------------
+Wed Apr  7 17:50:57 CEST 2010 - pmladek@suse.cz
+
+- started to generate the spec file using a script:
+    + avoid duplicated information; reduce cut&paste errors
+    + update License tags according to Kalman's notes
+    + list all licenses for the source package
+
+-------------------------------------------------------------------
+
+Mon Mar 16 16:31:29 CEST 2010 - kkemenczy@opensuse.org
+
+- Remove German myspell dictionaries from openSUSE 11.3 and later
+  (de_DE, de_AT, de_CH) [bnc#547549]
+
+-------------------------------------------------------------------
+
+Mon Mar 08 13:55:32 CEST 2010 - kkemenczy@opensuse.org
+
+- update NSwiss (de_CH) dictionary
+
+-------------------------------------------------------------------
+
+Mon MAr 08 13:48:22 CEST 2010 - kkemenczy@opensuse.org
+
+- update Austrian (de_AT), German (de_DE) dictionaries
+
+-------------------------------------------------------------------
+
+Fri Feb 27 19:59:42 CEST 2010 - kkemenczy@opensuse.org
+
+- update Breton (br_FR), Spanish-venezuelan (es_VE) dictionaries
+
+-------------------------------------------------------------------
+
+Tue Feb 12 13:22:14 CEST 2010 - kkemenczy@opensuse.org
+
+- add Swedish in Finland (sv_FI) dictionary
+- update Catalan (ca_ES), Costa Rican Spanish (es_CR) dictionaries
+
+-------------------------------------------------------------------
+
+Tue Feb 09 13:35:28 CEST 2010 - kkemenczy@opensuse.org
+
+- update Slovak (sk_SK) dictionary
+
+-------------------------------------------------------------------
+
+Sat Feb 06 15:45:18 CEST 2010 - kkemenczy@opensuse.org
+
+- update Hungarian (hu_HU) dictionary
+
+-------------------------------------------------------------------
+
+Mon Feb 01 14:46:11 CEST 2010 - kkemenczy@opensuse.org
+
+- update Swedish (sv_SE) dictionary
+
+-------------------------------------------------------------------
+
+Mon Jan 27 12:01:22 CEST 2010 - kkemenczy@opensuse.org
+
+- add Maithili (mai_IN) dictionary
+- update French (fr_FR), Hungarian (hu_HU), Marathi (mr_IN), Brazilian (pt_BR) dictionaries
+
+-------------------------------------------------------------------
+
+
+Fri Jan 01 23:30:19 CEST 2010 - kkemenczy@opensuse.org
+
+- add Belarusian (be_UA), Esperanto (eo_EO), Haitian (ht_HT), Kichwa (qu_EC) dictionary
+- update Mexican (es_MX), Occitan-lengadocian (oc_FR), Zulu (zu_ZA) dictionary
+
+-------------------------------------------------------------------
+
+Fri Dec 11 09:30:19 CEST 2009 - kkemenczy@opensuse.org
+
+- add Albanian (sq_AL) dictionary
+
+-------------------------------------------------------------------
+
+Fri Dec 4 09:45:00 CEST 2009 - kkemenczy@opensuse.org
+
+- updated dictionaries: Afrikaans (af_ZA), Austrian (de_AT), American (en_US), 
+  Brazilian (pt_BR), Bulgarian (bg_BG), Czech (cs_CZ), Estorian (et_EE), French (fr_FR),
+  Galleic-Scots (gd_GB), German (de_DE), Hindi (hi_IN), Icelandic (is_IS),
+  Kinyarwanda (rw_RW), Kurdish (ku_TR), Latvian (lv_LV), Malayalam (ml_IN), Marathi (mr_IN),
+  Ndebele (nr_ZA), New-Zealand English (en_NZ), NSwiss (de_CH), Romanian (ro_RO),
+  Slovene (sl_SI), South-African Englis (en_ZA), Spanish-argentine (es_AR),
+  Swati (ss_ZA), Swedish (sv_SE), Ukrainian (uk_UA), Venda (ve_ZA), Vietnamese (vi_VN),
+  Xhosa (xh_ZA), Zulu (zu_ZA)
+- review all licenses
+- add dictionary type (hunspell or myspell) to the new comment structure
+
+-------------------------------------------------------------------
+Tue Nov 24 18:07:09 CEST 2009 - kkemenczy@opensuse.org
+
+- updated hu dictionary
+
+-------------------------------------------------------------------
+Wed Aug  5 16:29:34 CEST 2009 - pmladek@suse.cz
+
+- added back the older Hungarian dictionary for openSUSE <= 11.1;
+  the new version requires hunspell-1.2.8; thanks to Kálmán Kéménczy
+  for pointing this out
+
+-------------------------------------------------------------------
+Fri Jul 31 16:52:57 CEST 2009 - pmladek@suse.cz
+
+-updated dictionaries: Australian, Brazilian, Catalan, French, Galician,
+  Hebrew, Hungarian, Irish, Italian, Latvian, Marathi, Mexican, Occitan
+  Lengadocian, Polish, Portuguese, Romanian, Russian, Slovak, Spanish
+  Venezuelan, Swedish, Ukrainian
+- updated license: Australian, Brazilian, Catalan, French, Hebrew, Hungarian,
+  Italian, Marathi, Occitan Lengadocian, Polish, Portuguese, Romanian, Russian,
+  Slovak, Spanish, Venezuelan
+- added dictionaries: Arabic, Assamese, Bengali, Breton, Khmer, Malayalam
+- more automatized packaging:
+    * added unzip to BuildRequires
+    * added support to repack dictionaries from different type of sources,
+      including OOo extensions
+    * added heuristics to install the documentation
+    * generated file list automatically
+
+-------------------------------------------------------------------
+Mon Sep 29 15:00:38 CEST 2008 - pmladek@suse.cz
+
+- updated dictionaries: Australian, French, Maory, Norwegian Bokmaal,
+  Norwegian Nynorsk, Polish, Romanian, Setswana, Swedish
+- removed obsolete triggerin and postun scripts; OOo-3.0 does not need
+  it anymore
+
+-------------------------------------------------------------------
+Tue Aug 12 18:20:46 CEST 2008 - lmichnovic@suse.cz
+
+- updated sk_SK dictionary
+
+-------------------------------------------------------------------
+Fri Jun 27 16:24:29 CEST 2008 - lmichnovic@suse.cz
+
+- erased nonsense part in zu_ZA dic file. 
+  The source tarball was repacked (zu_ZA.tar.bz2)
+
+-------------------------------------------------------------------
+Fri Jun 27 12:07:18 CEST 2008 - lmichnovic@suse.cz
+
+- fixed missing newline at the end of the *.dic file when adding
+  Novell jargon words. 
+
+-------------------------------------------------------------------
+Wed Jun 25 16:23:26 CEST 2008 - lmichnovic@suse.cz
+
+- Added Novell jargon [bnc#306333] (Nwordlist.tgz)
+
+-------------------------------------------------------------------
+Mon Apr 14 12:00:54 CEST 2008 - lmichnovic@suse.cz
+
+- added hungarian dictionary which was in ispell-hungarian
+
+-------------------------------------------------------------------
+Fri Mar 14 14:31:32 CET 2008 - lmichnovic@suse.cz
+
+- erased dots in Summary
+- no remove RPM_BUILD_ROOT in %install section
+
+-------------------------------------------------------------------
+Fri Mar 14 13:36:49 CET 2008 - lmichnovic@suse.cz
+
+- updated: bg_BG, da_dk, de_AT, de_CH, de_DE, gl_ES, lv_LV, sk_SK,
+  sv_SV
+
+-------------------------------------------------------------------
+Fri Aug 31 20:32:10 CEST 2007 - pmladek@suse.cz
+
+- updated dictionaries: German, Austrian, Swiss [n#306321]
+
+-------------------------------------------------------------------
+Fri Jul 27 19:39:15 CEST 2007 - pmladek@suse.cz
+
+- updated dictionaries: American, Brazilian, Czech, Danish, Dutch, Faroese,
+  Latvian, Polish, Slovene, Ukrainian
+- added dictionaries: Occitan Lengadocian, South African English, Salvadorean
+  Spanish, Thai
+
+-------------------------------------------------------------------
+Tue Apr 17 15:18:41 CEST 2007 - pmladek@suse.cz
+
+- updated Swedish dictionary from another source [#260708]
+
+-------------------------------------------------------------------
+Mon Oct 23 18:21:11 CEST 2006 - pmladek@suse.cz
+
+- updated dictionaries: African, Austrian, Croatian, Danish, Faroese, French,
+  Galician, German, Hebwer, Italian, Irish, Latvian, Norwegian Bokmaal,
+  Norwegian Nynorsk, Polish, Zulu
+- added dictionaries: Gujarati, Hindi, Marathi, Ndebele, Northern Sotho,
+  Swati, Tsonga, Venda, Xhosa
+
+-------------------------------------------------------------------
+Wed Mar 29 11:42:28 CEST 2006 - pmladek@suse.cz
+
+- removed full specifiers from some more locales (bg_BG -> bg,
+  ca_ES -> ca) [#154079]
+
+-------------------------------------------------------------------
+Mon Mar 13 16:52:07 CET 2006 - pmladek@suse.cz
+
+- one more attempt to fix the African locale() provides; the wrong
+  variant seems to be somewhat persistent ;-) [#154077]
+
+-------------------------------------------------------------------
+Tue Feb 28 14:54:24 CET 2006 - anicka@suse.cz
+
+- fix african locale() provides [#154077]
+- remove full specifiers from locale() provides where appropriate
+  [#154079]
+ 
+-------------------------------------------------------------------
+Fri Feb 24 21:08:04 CET 2006 - lmichnovic@suse.cz
+
+- added Provides:  locale(*_*)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:47:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 16:53:41 CET 2006 - pmladek@suse.cz
+
+- updated Austrian, German, and Swiss dictionaries to use better sources
+  from http://j3e.de/hunspell/ [#141750]
+
+-------------------------------------------------------------------
+Fri Jan 13 22:30:13 CET 2006 - pmladek@suse.cz
+
+- updated dictionaries: African, Faroese, German, Mexican, Polish, Romanian,
+  Slovak, Spanish, Swiss, Ukrainian
+- added dictionaries: Chichewa, Latvian, Macedonian, Argentine Spanish,
+  Bolivian Spanish, Chilean Spanish, Colombian Spanish, Costa Rican Spanish,
+  Dominican Spanish, Ecuadorian Spanish, Guatemalan Spanish, Honduran Spanish,
+  Nicaraguan Spanish, Panamanian Spanish, Peruvian Spanish,
+  Puerto Rican Spanish, Paraguayan Spanish, Uruguayan Spanish,
+  Venezuelan Spanish, 
+
+-------------------------------------------------------------------
+Wed Jul 27 19:00:32 CEST 2005 - pmladek@suse.cz
+
+- updated dictionaries: British, Danish, Dutch, Faroese, German, Irish,
+  Italian, Norwegian Bokmaal, Polish, Romanian, Slovak, Spanish
+- added dictionaries: Scottish Gaelic, Galician
+
+-------------------------------------------------------------------
+Fri Feb 18 16:49:46 CET 2005 - pmladek@suse.cz
+
+- added Estonian dictionary
+
+-------------------------------------------------------------------
+Tue Feb  8 18:41:17 CET 2005 - pmladek@suse.cz
+
+- updated dictionaries: Danish, French, German, Greek, Irish, Italian, Malay,
+  Mexican, Norwegian Bokmaal, Norwegian Nynorsk, and Spanish
+- added dictionaries: Bulgarian, Hebrew, Kinyarwanda, Kiswahili, Kurdish,
+  Lithuanian, Malagasy, Setswana, Tagalog, and Zulu
+
+-------------------------------------------------------------------
+Tue Feb  1 13:42:23 CET 2005 - pmladek@suse.cz
+
+- recoded README files to UTF-8; added recode to neededforbuild [#50106]
+
+
+-------------------------------------------------------------------
+Mon Aug 30 19:19:42 CEST 2004 - pmladek@suse.cz
+
+- updated dictionaries: American, Danish, German, Greek, Italian, Russian,
+  Spanish
+- added dictionaries: African, Austrian, Brazilian, Croatian, Faroese,
+  Indonese, Irish, Malay, Maory, Mexican, New Zealand, Romanian, Ukrainian,
+  Welsh
+- removed obsolete patch for American dictionary
+
+-------------------------------------------------------------------
+Thu Aug  5 17:14:01 CEST 2004 - pmladek@suse.cz
+
+- added former Ximian's packages to Provides
+
+-------------------------------------------------------------------
+Tue Jun 29 12:58:32 CEST 2004 - pmladek@suse.cz
+
+- added triggerin and postun scripts to solve links to OpenOffice_org;
+  this solution replaces the old one with SuSEconfig and is usable
+  in Ximian's products
+
+-------------------------------------------------------------------
+Fri Mar 05 20:58:14 CET 2004 - pmladek@suse.cz
+
+- updated all dictionaries to the latest available version
+- the russian dictionary has been get from
+  ftp://scon155.phys.msu.su/pub/russian/ispell/myspell/ becase of the repacked
+  package on http://lingucomponent.openoffice.org/spell_dic.html does not
+  contain license file
+
+-------------------------------------------------------------------
+Mon Feb 23 14:14:14 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Mon Sep  1 16:12:26 CEST 2003 - pmladek@suse.cz
+
+- added myspell-german-dictionary to Provides of myspell-german
+- added myspell-german-old to Conflicts of myspell-german [#29591]
+- cleaned up neededforbuild
+
+-------------------------------------------------------------------
+Wed Jul 30 09:47:19 CEST 2003 - pmladek@suse.cz
+
+- each dictionary provides "myspell-dictionary" now [#26290]
+
+-------------------------------------------------------------------
+Tue Jul 29 20:54:30 CEST 2003 - pmladek@suse.cz
+
+- new source package for myspell dictionaries, version 20030729
+- branched from the OpenOffice_org source package [#26290]
+- added american dictionary
+- updated nswiss, german, spanish, italian and swedish dictionary
+- added small fix from OOo sources to the american dictionary
+- installed dictionaries into /usr/share/myspell to be usable with mozilla
+  as well
+- removed dependencies on OpenOffice_org
+- changed rpm group from "Productivity/Office/Suite" to
+  "Productivity/Text/Spell"
+- fixed labels and descriptions
+- marked packages as noarch
+

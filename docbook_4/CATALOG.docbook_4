@@ -1,0 +1,60 @@
+OVERRIDE YES
+-- Load iso_ent early to prevent docbook.cat from biting --
+CATALOG  "/var/lib/sgml/CATALOG.iso_ent"
+
+DTDDECL "-//OASIS//DTD DocBook CALS Table Model V4.5//EN" /usr/share/sgml/docbook/dtd/4.5/docbook.dcl
+DTDDECL "-//OASIS//DTD DocBook V4.5//EN" "/usr/share/sgml/docbook/dtd/4.5/docbook.dcl"
+CATALOG "/usr/share/sgml/docbook/dtd/4.5/docbook.cat"
+
+DTDDECL "-//OASIS//DTD DocBook CALS Table Model V4.4//EN" /usr/share/sgml/docbook/dtd/4.4/docbook.dcl
+DTDDECL "-//OASIS//DTD DocBook V4.4//EN" "/usr/share/sgml/docbook/dtd/4.4/docbook.dcl"
+CATALOG "/usr/share/sgml/docbook/dtd/4.4/docbook.cat"
+
+DTDDECL "-//OASIS//DTD DocBook CALS Table Model V4.3//EN" /usr/share/sgml/docbook/dtd/4.3/docbook.dcl
+DTDDECL "-//OASIS//DTD DocBook V4.3//EN" "/usr/share/sgml/docbook/dtd/4.3/docbook.dcl"
+CATALOG "/usr/share/sgml/docbook/dtd/4.3/docbook.cat"
+
+PUBLIC "-//USA-DOD//DTD Table Model 951010//EN" "/usr/share/sgml/docbook/dtd/4.1/cals-tbl.dtd"
+-- PUBLIC "-//OASIS//ENTITIES DocBook Notations V4.4//EN" "/usr/share/sgml/docbook/dtd/4.4/dbnotnx.mod" --
+PUBLIC "-//OASIS//ENTITIES DocBook Notations V4.2//EN" "/usr/share/sgml/docbook/dtd/4.2/dbnotnx.mod"
+PUBLIC "-//OASIS//ENTITIES DocBook Notations V4.1//EN" "/usr/share/sgml/docbook/dtd/4.1/dbnotn.mod"
+PUBLIC "-//OASIS//ENTITIES DocBook Notations V4.1.2//EN" "/usr/share/sgml/docbook/dtd/4.1/dbnotn.mod"
+PUBLIC "-//OASIS//ENTITIES DocBook Notations V4.0//EN" "/usr/share/sgml/docbook/dtd/4.1/dbnotn.mod"
+-- PUBLIC "-//OASIS//ENTITIES DocBook Character Entities V4.4//EN" "/usr/share/sgml/docbook/dtd/4.4/dbcentx.mod" --
+PUBLIC "-//OASIS//ENTITIES DocBook Character Entities V4.2//EN" "/usr/share/sgml/docbook/dtd/4.2/dbcentx.mod"
+PUBLIC "-//OASIS//ENTITIES DocBook Character Entities V4.1//EN" "/usr/share/sgml/docbook/dtd/4.1/dbcent.mod"
+PUBLIC "-//OASIS//ENTITIES DocBook Character Entities V4.1.2//EN" "/usr/share/sgml/docbook/dtd/4.1/dbcent.mod"
+PUBLIC "-//OASIS//ENTITIES DocBook Character Entities V4.0//EN" "/usr/share/sgml/docbook/dtd/4.1/dbcent.mod"
+-- PUBLIC "-//OASIS//ENTITIES DocBook Additional General Entities V4.4//EN" "/usr/share/sgml/docbook/dtd/4.4/dbgenent.mod" --
+PUBLIC "-//OASIS//ENTITIES DocBook Additional General Entities V4.2//EN" "/usr/share/sgml/docbook/dtd/4.2/dbgenent.mod"
+PUBLIC "-//OASIS//ENTITIES DocBook Additional General Entities V4.1//EN" "/usr/share/sgml/docbook/dtd/4.1/dbgenent.mod"
+PUBLIC "-//OASIS//ENTITIES DocBook Additional General Entities V4.1.2//EN" "/usr/share/sgml/docbook/dtd/4.1/dbgenent.mod"
+PUBLIC "-//OASIS//ENTITIES DocBook Additional General Entities V4.0//EN" "/usr/share/sgml/docbook/dtd/4.1/dbgenent.mod"
+-- PUBLIC "-//OASIS//ELEMENTS DocBook Information Pool V4.4//EN" "/usr/share/sgml/docbook/dtd/4.4/dbpoolx.mod" --
+PUBLIC "-//OASIS//ELEMENTS DocBook Information Pool V4.2//EN" "/usr/share/sgml/docbook/dtd/4.2/dbpoolx.mod"
+PUBLIC "-//OASIS//ELEMENTS DocBook Information Pool V4.1//EN" "/usr/share/sgml/docbook/dtd/4.1/dbpool.mod"
+PUBLIC "-//OASIS//ELEMENTS DocBook Information Pool V4.1.2//EN" "/usr/share/sgml/docbook/dtd/4.1/dbpool.mod"
+PUBLIC "-//OASIS//ELEMENTS DocBook Information Pool V4.0//EN" "/usr/share/sgml/docbook/dtd/4.1/dbpool.mod"
+-- PUBLIC "-//OASIS//ELEMENTS DocBook Document Hierarchy V4.4//EN" "/usr/share/sgml/docbook/dtd/4.4/dbhierx.mod" --
+PUBLIC "-//OASIS//ELEMENTS DocBook Document Hierarchy V4.2//EN" "/usr/share/sgml/docbook/dtd/4.2/dbhierx.mod"
+PUBLIC "-//OASIS//ELEMENTS DocBook Document Hierarchy V4.1//EN" "/usr/share/sgml/docbook/dtd/4.1/dbhier.mod"
+PUBLIC "-//OASIS//ELEMENTS DocBook Document Hierarchy V4.1.2//EN" "/usr/share/sgml/docbook/dtd/4.1/dbhier.mod"
+PUBLIC "-//OASIS//ELEMENTS DocBook Document Hierarchy V4.0//EN" "/usr/share/sgml/docbook/dtd/4.1/dbhier.mod"
+PUBLIC "-//OASIS//DTD XML Exchange Table Model 19990315//EN" "/usr/share/sgml/docbook/dtd/4.2/soextblx.dtd"
+PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "/usr/share/sgml/docbook/dtd/4.5/docbookx.dtd"
+PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "/usr/share/sgml/docbook/dtd/4.4/docbookx.dtd"
+PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "/usr/share/sgml/docbook/dtd/4.2/docbookx.dtd"
+PUBLIC "-//OASIS//DTD DocBook V4.2//EN" "/usr/share/sgml/docbook/dtd/4.2/docbook.dtd"
+PUBLIC "-//OASIS//DTD DocBook V4.1//EN" "/usr/share/sgml/docbook/dtd/4.1/docbook.dtd"
+PUBLIC "-//OASIS//DTD DocBook V4.1.2//EN" "/usr/share/sgml/docbook/dtd/4.1/docbook.dtd"
+PUBLIC "-//OASIS//DTD DocBook V4.0//EN" "/usr/share/sgml/docbook/dtd/4.1/docbook.dtd"
+PUBLIC "-//OASIS//ELEMENTS DocBook XML HTML Tables V4.5//EN" "/usr/share/sgml/docbook/dtd/4.5/htmltblx.mod"
+PUBLIC "-//OASIS//ELEMENTS DocBook XML HTML Tables V4.4//EN" "/usr/share/sgml/docbook/dtd/4.4/htmltblx.mod"
+PUBLIC "-//OASIS//ELEMENTS DocBook XML HTML Tables V4.3//EN" "/usr/share/sgml/docbook/dtd/4.3/htmltblx.mod"
+-- PUBLIC "-//OASIS//DTD DocBook CALS Table Model V4.4//EN" "/usr/share/sgml/docbook/dtd/4.4/calstblx.dtd" --
+PUBLIC "-//OASIS//DTD DocBook CALS Table Model V4.2//EN" "/usr/share/sgml/docbook/dtd/4.2/calstblx.dtd"
+DTDDECL "-//OASIS//DTD XML Exchange Table Model 19990315//EN" /usr/share/sgml/docbook/dtd/4.2/docbook.dcl
+DTDDECL "-//OASIS//DTD DocBook XML V4.2//EN" /usr/share/sgml/docbook/dtd/4.2/docbook.dcl
+DTDDECL "-//OASIS//DTD DocBook V4.1//EN" "/usr/share/sgml/docbook/dtd/4.1/docbook.dcl"
+DTDDECL "-//OASIS//DTD DocBook V4.1.2//EN" "/usr/share/sgml/docbook/dtd/4.1/docbook.dcl"
+DTDDECL "-//OASIS//DTD DocBook CALS Table Model V4.2//EN" /usr/share/sgml/docbook/dtd/4.2/docbook.dcl

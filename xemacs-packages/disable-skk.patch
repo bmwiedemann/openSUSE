@@ -1,0 +1,21 @@
+--- packges/package-compile.el.orig
++++ packges/package-compile.el
+@@ -220,7 +220,6 @@
+     ("lookup" . "mule-packages")
+     ("mule-base" . "mule-packages")
+     ("mule-ucs" . "mule-packages")
+-    ("skk" . "mule-packages")
+     ))
+ 
+ (defvar package-source-root nil)
+--- packges/mule-packages/Makefile.orig
++++ packges/mule-packages/Makefile
+@@ -19,7 +19,7 @@
+ include ../Local.rules.inc
+ 
+ ifeq ('$(MULE_PACKAGES)','mule-packages')
+-PACKAGES := mule-base locale leim lookup edict egg-its skk \
++PACKAGES := mule-base locale leim lookup edict egg-its \
+ 	latin-unity latin-euro-standards mule-ucs
+ else
+ PACKAGES := $(MULE_PACKAGES)

@@ -1,0 +1,90 @@
+--- /dev/null
++++ configure.ac
+@@ -0,0 +1,42 @@
++#                                               -*- Autoconf -*-
++# Process this file with autoconf to produce a configure script.
++
++AC_PREREQ([2.60])
++AC_INIT([cachefilesd], [0.10.5], [http://people.redhat.com/~dhowells/fscache/])
++AC_CONFIG_SRCDIR([cachefilesd.c])
++AC_CONFIG_HEADERS([config.h])
++AC_CONFIG_AUX_DIR([build-aux])
++AM_INIT_AUTOMAKE([foreign -Wall -Wno-portability tar-pax no-dist-gzip dist-xz subdir-objects])
++# Checks for programs.
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
++AC_PROG_INSTALL
++AC_PROG_LN_S
++
++# Checks for libraries.
++
++# Checks for header files.
++AC_CHECK_HEADERS([fcntl.h stdlib.h string.h sys/time.h sys/vfs.h syslog.h unistd.h])
++
++# systemd check
++PKG_PROG_PKG_CONFIG
++AC_ARG_WITH([systemdsystemunitdir],
++AS_HELP_STRING([--with-systemdsystemunitdir=DIR], [Directory for systemd service files]),
++[], [with_systemdsystemunitdir=$($PKG_CONFIG --variable=systemdsystemunitdir systemd)])
++if test "x$with_systemdsystemunitdir" != xno; then
++AC_SUBST([systemdsystemunitdir], [$with_systemdsystemunitdir])
++fi
++AM_CONDITIONAL(HAVE_SYSTEMD, [test -n "$with_systemdsystemunitdir" -a "x$with_systemdsystemunitdir" != xno ])
++
++# Checks for typedefs, structures, and compiler characteristics.
++AC_TYPE_SIZE_T
++AC_TYPE_SSIZE_T
++
++# Checks for library functions.
++AC_FUNC_ERROR_AT_LINE
++AC_FUNC_FORK
++AC_CHECK_FUNCS([alarm dup2 fchdir gettimeofday memchr memmove memset rmdir strchr strdup strpbrk strtoul strtoull])
++
++AC_CONFIG_FILES([Makefile])
++AC_OUTPUT
+--- /dev/null
++++ Makefile.am
+@@ -0,0 +1,14 @@
++DISTCHECK_CONFIGURE_FLAGS = --with-systemdsystemunitdir=$$dc_install_base/$(systemdsystemunitdir)
++
++sbin_PROGRAMS = cachefilesd
++
++if HAVE_SYSTEMD
++systemdsystemunit_DATA = cachefilesd.service
++endif
++
++sysconf_DATA = cachefilesd.conf
++
++cachefilesd_CFLAGS = -fwhole-program
++cachefilesd_SOURCES = cachefilesd.c
++dist_man8_MANS = cachefilesd.8
++dist_man5_MANS = cachefilesd.conf.5
+\ No newline at end of file
+--- cachefilesd.c.orig
++++ cachefilesd.c
+@@ -27,9 +27,10 @@
+  * NUL characters are cause for error
+  */
+ 
++#include "config.h"
++
+ #define CACHEFILESD_VERSION "0.10.2"
+ 
+-#define _GNU_SOURCE
+ #include <stdarg.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+--- cachefilesd.service.orig
++++ cachefilesd.service
+@@ -2,9 +2,7 @@
+ Description=Local network file caching management daemon
+ 
+ [Service]
+-Type=simple
+-ExecStartPre=-/sbin/modprobe -qab cachefiles
+-ExecStart=/sbin/cachefilesd -n -f /etc/cachefilesd.conf
++ExecStart=/usr/sbin/cachefilesd -s -n
+ 
+ [Install]
+ WantedBy=multi-user.target

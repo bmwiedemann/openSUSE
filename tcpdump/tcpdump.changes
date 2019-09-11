@@ -1,0 +1,825 @@
+-------------------------------------------------------------------
+Tue Jul 23 11:45:46 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix [bsc#1142439, CVE-2019-1010220]
+  * Buffer Over-read in print_prefix which may expose data
+  * Added tcpdump-CVE-2019-1010220.patch
+
+-------------------------------------------------------------------
+Tue Jul 23 10:37:17 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Use %license macro for LICENSE file
+
+-------------------------------------------------------------------
+Tue Jul 23 10:24:31 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix [bsc#1068716, CVE-2017-16808]
+  * Heap-based buffer over-read related to aoe_print and lookup_emem
+  * Added tcpdump-CVE-2017-16808.patch
+
+-------------------------------------------------------------------
+Thu Dec  6 11:49:16 UTC 2018 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix [bsc#1117267, CVE-2018-19519]
+  * Buffer overread in print-hncp.c:print_prefix.
+  * Added patch tcpdump-CVE-2018-19519.patch
+
+-------------------------------------------------------------------
+Tue Sep 12 15:23:04 UTC 2017 - pmonrealgonzalez@suse.com
+
+- Disabled ikev2pI2 test that fails on some architectures
+  * Added patch tcpdump-ikev2pI2.patch
+
+-------------------------------------------------------------------
+Tue Sep 12 14:51:00 UTC 2017 - pmonrealgonzalez@suse.com
+
+- Update to version 4.9.2 [bsc#1057247]
+  * Security fixes:
+    - CVE-2017-11108 segfault in STP decoder
+    - Segfault in ESP decoder with OpenSSL 1.1
+    - CVE-2017-11543 buffer overflow in SLIP decoder
+    - CVE-2017-13011 buffer overflow in bittok2str_internal()
+    - CVE-2017-12989 infinite loop in the RESP parser
+    - CVE-2017-12990 infinite loop in the ISAKMP parser
+    - CVE-2017-12995 infinite loop in the DNS parser
+    - CVE-2017-12997 infinite loop in the LLDP parser
+    - CVE-2017-11541 buffer over-read in safeputs()
+    - CVE-2017-11542 buffer over-read in PIMv1 decoder
+    - CVE-2017-12893 buffer over-read in the SMB/CIFS parser
+    - CVE-2017-12894 buffer over-read in several protocol parsers
+    - CVE-2017-12895 buffer over-read in the ICMP parser
+    - CVE-2017-12896 buffer over-read in the ISAKMP parser
+    - CVE-2017-12897 buffer over-read in the ISO CLNS parser
+    - CVE-2017-12898 buffer over-read in the NFS parser
+    - CVE-2017-12899 buffer over-read in the DECnet parser
+    - CVE-2017-12900 buffer over-read in the in several protocol parsers
+    - CVE-2017-12901 buffer over-read in the EIGRP parser
+    - CVE-2017-12902 buffer over-read in the Zephyr parser
+    - CVE-2017-12985 buffer over-read in the IPv6 parser
+    - CVE-2017-12986 buffer over-read in the IPv6 routing header parser
+    - CVE-2017-12987 buffer over-read in the 802.11 parser
+    - CVE-2017-12988 buffer over-read in the telnet parser
+    - CVE-2017-12991 buffer over-read in the BGP parser
+    - CVE-2017-12992 buffer over-read in the RIPng parser
+    - CVE-2017-12993 buffer over-read in the Juniper protocols parser
+    - CVE-2017-12994 buffer over-read in the BGP parser
+    - CVE-2017-12996 buffer over-read in the PIMv2 parser
+    - CVE-2017-12998 buffer over-read in the IS-IS parser
+    - CVE-2017-12999 buffer over-read in the IS-IS parser
+    - CVE-2017-13000 buffer over-read in the IEEE 802.15.4 parser
+    - CVE-2017-13001 buffer over-read in the NFS parser
+    - CVE-2017-13002 buffer over-read in the AODV parser
+    - CVE-2017-13003 buffer over-read in the LMP parser
+    - CVE-2017-13004 buffer over-read in the Juniper protocols parser
+    - CVE-2017-13005 buffer over-read in the NFS parser
+    - CVE-2017-13006 buffer over-read in the L2TP parser
+    - CVE-2017-13007 buffer over-read in the Apple PKTAP parser
+    - CVE-2017-13008 buffer over-read in the IEEE 802.11 parser
+    - CVE-2017-13009 buffer over-read in the IPv6 mobility parser
+    - CVE-2017-13010 buffer over-read in the BEEP parser
+    - CVE-2017-13012 buffer over-read in the ICMP parser
+    - CVE-2017-13013 buffer over-read in the ARP parser
+    - CVE-2017-13014 buffer over-read in the White Board protocol parser
+    - CVE-2017-13015 buffer over-read in the EAP parser
+    - CVE-2017-13016 buffer over-read in the ISO ES-IS parser
+    - CVE-2017-13017 buffer over-read in the DHCPv6 parser
+    - CVE-2017-13018 buffer over-read in the PGM parser
+    - CVE-2017-13019 buffer over-read in the PGM parser
+    - CVE-2017-13020 buffer over-read in the VTP parser
+    - CVE-2017-13021 buffer over-read in the ICMPv6 parser
+    - CVE-2017-13022 buffer over-read in the IP parser
+    - CVE-2017-13023 buffer over-read in the IPv6 mobility parser
+    - CVE-2017-13024 buffer over-read in the IPv6 mobility parser
+    - CVE-2017-13025 buffer over-read in the IPv6 mobility parser
+    - CVE-2017-13026 buffer over-read in the ISO IS-IS parser
+    - CVE-2017-13027 buffer over-read in the LLDP parser
+    - CVE-2017-13028 buffer over-read in the BOOTP parser
+    - CVE-2017-13029 buffer over-read in the PPP parser
+    - CVE-2017-13030 buffer over-read in the PIM parser
+    - CVE-2017-13031 buffer over-read in the IPv6 fragmentation header parser
+    - CVE-2017-13032 buffer over-read in the RADIUS parser
+    - CVE-2017-13033 buffer over-read in the VTP parser
+    - CVE-2017-13034 buffer over-read in the PGM parser
+    - CVE-2017-13035 buffer over-read in the ISO IS-IS parser
+    - CVE-2017-13036 buffer over-read in the OSPFv3 parser
+    - CVE-2017-13037 buffer over-read in the IP parser
+    - CVE-2017-13038 buffer over-read in the PPP parser
+    - CVE-2017-13039 buffer over-read in the ISAKMP parser
+    - CVE-2017-13040 buffer over-read in the MPTCP parser
+    - CVE-2017-13041 buffer over-read in the ICMPv6 parser
+    - CVE-2017-13042 buffer over-read in the HNCP parser
+    - CVE-2017-13043 buffer over-read in the BGP parser
+    - CVE-2017-13044 buffer over-read in the HNCP parser
+    - CVE-2017-13045 buffer over-read in the VQP parser
+    - CVE-2017-13046 buffer over-read in the BGP parser
+    - CVE-2017-13047 buffer over-read in the ISO ES-IS parser
+    - CVE-2017-13048 buffer over-read in the RSVP parser
+    - CVE-2017-13049 buffer over-read in the Rx protocol parser
+    - CVE-2017-13050 buffer over-read in the RPKI-Router parser
+    - CVE-2017-13051 buffer over-read in the RSVP parser
+    - CVE-2017-13052 buffer over-read in the CFM parser
+    - CVE-2017-13053 buffer over-read in the BGP parser
+    - CVE-2017-13054 buffer over-read in the LLDP parser
+    - CVE-2017-13055 buffer over-read in the ISO IS-IS parser
+    - CVE-2017-13687 buffer over-read in the Cisco HDLC parser
+    - CVE-2017-13688 buffer over-read in the OLSR parser
+    - CVE-2017-13689 buffer over-read in the IKEv1 parser
+    - CVE-2017-13690 buffer over-read in the IKEv2 parser
+    - CVE-2017-13725 buffer over-read in the IPv6 routing header parser
+  * Dropped patch tcpdump-reverted-test-scripts-fix.patch
+
+-------------------------------------------------------------------
+Wed Aug 23 13:51:30 UTC 2017 - pmonrealgonzalez@suse.com
+
+- Reverted upstream commit that makes some tests to fail when
+  compiling with openssl-1.1.0
+  * Upstream commit 68cc39dd64688829be2632d9cd24f7efa3da79bb
+  * Added patch tcpdump-reverted-test-scripts-fix.patch
+  * Removed patch tcpdump-ikev2pI2-test-fails-ppc.patch
+
+-------------------------------------------------------------------
+Wed Jul 26 12:33:53 UTC 2017 - pmonrealgonzalez@suse.com
+
+- Disable ikev2pI2 test that fails on ppc, ppc64 and ppc64le
+  * Added patch tcpdump-ikev2pI2-test-fails-ppc.patch 
+
+-------------------------------------------------------------------
+Wed Jul 26 09:16:56 UTC 2017 - pmonrealgonzalez@suse.com
+
+- Update to version 4.9.1 [bsc#1047873]
+  * CVE-2017-11108/Fix bounds checking for STP.
+  * Make assorted documentation updates and fix a few typos in output.
+  * Fixup -C for file size >2GB
+  * Show AddressSanitizer presence in version output.
+  * Fix a bug in test scripts.
+  * Fix a use-after-free when the requested interface does not exist.
+
+-------------------------------------------------------------------
+Thu Feb  2 14:47:56 UTC 2017 - pmonrealgonzalez@suse.com
+
+- version update to 4.9.0 bsc#1020940
+  * CVE-2016-7922 The AH parser in tcpdump before 4.9.0 has a buffer overflow in print-ah.c:ah_print().
+  * CVE-2016-7923 The ARP parser in tcpdump before 4.9.0 has a buffer overflow in print-arp.c:arp_print().
+  * CVE-2016-7924 The ATM parser in tcpdump before 4.9.0 has a buffer overflow in print-atm.c:oam_print().
+  * CVE-2016-7925 The compressed SLIP parser in tcpdump before 4.9.0 has a buffer overflow in print-sl.c:sl_if_print().
+  * CVE-2016-7926 The Ethernet parser in tcpdump before 4.9.0 has a buffer overflow in print-ether.c:ethertype_print().
+  * CVE-2016-7927 The IEEE 802.11 parser in tcpdump before 4.9.0 has a buffer overflow in print-802_11.c:ieee802_11_radio_print().
+  * CVE-2016-7928 The IPComp parser in tcpdump before 4.9.0 has a buffer overflow in print-ipcomp.c:ipcomp_print().
+  * CVE-2016-7929 The Juniper PPPoE ATM parser in tcpdump before 4.9.0 has a buffer overflow in print-juniper.c:juniper_parse_header().
+  * CVE-2016-7930 The LLC parser in tcpdump before 4.9.0 has a buffer overflow in print-llc.c:llc_print().
+  * CVE-2016-7931 The MPLS parser in tcpdump before 4.9.0 has a buffer overflow in print-mpls.c:mpls_print().
+  * CVE-2016-7932 The PIM parser in tcpdump before 4.9.0 has a buffer overflow in print-pim.c:pimv2_check_checksum().
+  * CVE-2016-7933 The PPP parser in tcpdump before 4.9.0 has a buffer overflow in print-ppp.c:ppp_hdlc_if_print().
+  * CVE-2016-7934 The RTCP parser in tcpdump before 4.9.0 has a buffer overflow in print-udp.c:rtcp_print().
+  * CVE-2016-7935 The RTP parser in tcpdump before 4.9.0 has a buffer overflow in print-udp.c:rtp_print().
+  * CVE-2016-7936 The UDP parser in tcpdump before 4.9.0 has a buffer overflow in print-udp.c:udp_print().
+  * CVE-2016-7937 The VAT parser in tcpdump before 4.9.0 has a buffer overflow in print-udp.c:vat_print().
+  * CVE-2016-7938 The ZeroMQ parser in tcpdump before 4.9.0 has an integer overflow in print-zeromq.c:zmtp1_print_frame().
+  * CVE-2016-7939 The GRE parser in tcpdump before 4.9.0 has a buffer overflow in print-gre.c, multiple functions.
+  * CVE-2016-7940 The STP parser in tcpdump before 4.9.0 has a buffer overflow in print-stp.c, multiple functions.
+  * CVE-2016-7973 The AppleTalk parser in tcpdump before 4.9.0 has a buffer overflow in print-atalk.c, multiple functions.
+  * CVE-2016-7974 The IP parser in tcpdump before 4.9.0 has a buffer overflow in print-ip.c, multiple functions.
+  * CVE-2016-7975 The TCP parser in tcpdump before 4.9.0 has a buffer overflow in print-tcp.c:tcp_print().
+  * CVE-2016-7983 The BOOTP parser in tcpdump before 4.9.0 has a buffer overflow in print-bootp.c:bootp_print().
+  * CVE-2016-7984 The TFTP parser in tcpdump before 4.9.0 has a buffer overflow in print-tftp.c:tftp_print().
+  * CVE-2016-7985 The CALM FAST parser in tcpdump before 4.9.0 has a buffer overflow in print-calm-fast.c:calm_fast_print().
+  * CVE-2016-7986 The GeoNetworking parser in tcpdump before 4.9.0 has a buffer overflow in print-geonet.c, multiple functions.
+  * CVE-2016-7992 The Classical IP over ATM parser in tcpdump before 4.9.0 has a buffer overflow in print-cip.c:cip_if_print().
+  * CVE-2016-7993 A bug in util-print.c:relts_print() could cause a buffer overflow in multiple protocol parsers (DNS, DVMRP, HSRP, IGMP, lightweight resolver protocol, PIM).
+  * CVE-2016-8574 The FRF.15 parser in tcpdump before 4.9.0 has a buffer overflow in print-fr.c:frf15_print().
+  * CVE-2016-8575 The Q.933 parser in tcpdump before 4.9.0 has a buffer overflow in print-fr.c:q933_print().
+  * CVE-2017-5202 The ISO CLNS parser in tcpdump before 4.9.0 has a buffer overflow in print-isoclns.c:clnp_print().
+  * CVE-2017-5203 The BOOTP parser in tcpdump before 4.9.0 has a buffer overflow in print-bootp.c:bootp_print().
+  * CVE-2017-5204 The IPv6 parser in tcpdump before 4.9.0 has a buffer overflow in print-ip6.c:ip6_print().
+  * CVE-2017-5205 The ISAKMP parser in tcpdump before 4.9.0 has a buffer overflow in print-isakmp.c:ikev2_e_print().
+  * CVE-2017-5341 The OTV parser in tcpdump before 4.9.0 has a buffer overflow in print-otv.c:otv_print().
+  * CVE-2017-5342 In tcpdump before 4.9.0 a bug in multiple protocol parsers (Geneve, GRE, NSH, OTV, VXLAN and VXLAN GPE) could cause a buffer overflow in print-ether.c:ether_print().
+  * CVE-2017-5482 The Q.933 parser in tcpdump before 4.9.0 has a buffer overflow in print-fr.c:q933_print().
+  * CVE-2017-5483 The SNMP parser in tcpdump before 4.9.0 has a buffer overflow in print-snmp.c:asn1_parse().
+  * CVE-2017-5484 The ATM parser in tcpdump before 4.9.0 has a buffer overflow in print-atm.c:sig_print().
+  * CVE-2017-5485 The ISO CLNS parser in tcpdump before 4.9.0 has a buffer overflow in addrtoname.c:lookup_nsap().
+  * CVE-2017-5486 The ISO CLNS parser in tcpdump before 4.9.0 has a buffer overflow in print-isoclns.c:clnp_print(). 
+
+-------------------------------------------------------------------
+Fri Apr 15 01:28:38 CEST 2016 - ro@suse.de
+
+- fix filelist to fix build on s390/s390x 
+
+-------------------------------------------------------------------
+Wed Mar 30 07:43:04 UTC 2016 - bg@suse.com
+
+- correctly reference SOURCE1 during installation for s390x
+
+-------------------------------------------------------------------
+Sun Apr 26 18:51:40 UTC 2015 - astieger@suse.com
+
+- tcpdump 4.7.4:
+  * PPKI to Router Protocol: Fix Segmentation Faults and other problems
+  * RPKI to Router Protocol: print strings with fn_printn()
+  * wb: fix some bounds checks 
+    (previously patched in, removed CVE-2015-3138.patch)
+
+-------------------------------------------------------------------
+Fri Apr 17 20:00:24 UTC 2015 - astieger@suse.com
+
+- fix a DoS vulnerability in print-wb.c
+  CVE-2015-3138 [boo#927637] adding CVE-2015-3138.patch
+
+-------------------------------------------------------------------
+Fri Mar 13 09:54:11 UTC 2015 - vcizek@suse.com
+
+- update to 4.7.3
+- fixes four security bugs:
+  * CVE-2015-0261 - IPv6 mobility printer (bnc#922220)
+  * CVE-2015-2153 - tcp printer           (bnc#922221)
+  * CVE-2015-2154 - ethernet printer      (bnc#922222)
+  * CVE-2015-2155 - force printer         (bnc#922223)
+- drop patches with security fixes (upstream):
+  * tcpdump-CVE-2014-8767.patch
+  * tcpdump-CVE-2014-8768.patch
+  * tcpdump-CVE-2014-8769.patch
+  * 0001-Clean-up-error-message-printing.patch
+
+-------------------------------------------------------------------
+Fri Feb  6 12:31:23 UTC 2015 - vcizek@suse.com
+
+- fix CVE-2014-8767 (bnc#905870)
+  * denial of service in verbose mode using malformed OLSR payload
+  * added tcpdump-CVE-2014-8767.patch
+- fix CVE-2014-8768 (bnc#905871)
+  * denial of service in verbose mode using malformed Geonet payload
+  * added tcpdump-CVE-2014-8768.patch
+- fix CVE-2014-8769 (bnc#905872)
+  * unreliable output using malformed AOVD payload
+  * added tcpdump-CVE-2014-8769.patch
+  * added 0001-Clean-up-error-message-printing.patch
+
+-------------------------------------------------------------------
+Wed Sep  3 18:44:03 UTC 2014 - andreas.stieger@gmx.de
+
+- tcpdump 4.6.2:
+  * fix out-of-source-tree builds: find libpcap that is out of source
+  * better configure check for libsmi
+
+-------------------------------------------------------------------
+Fri Aug 15 19:45:52 UTC 2014 - andreas.stieger@gmx.de
+
+- tcpdump 4.6.1:
+  * add a short option '#', same as long option '--number'
+- includes changes from 4.6.0:
+  * all of tcpdump is now using the new "NDO" code base
+  * nflog, mobile, forces, pptp, AODV, AHCP, IPv6, OSPFv4, RPL,
+    DHCPv6 enhancements/fixes
+  * M3UA decode added.
+  * many new test cases: 82 in 4.5.1 to 133 in 4.6.0
+  * cleaned up some unnecessary header files
+  * Added bittok2str().
+  * a number of unaligned access faults fixed
+  * -A flag does not consider CR to be printable anymore
+  * fx.lebail took over coverity baby sitting
+  * default snapshot size increased to 256K for accomodate USB
+    captures
+- includes changes from 4.5.2:
+  * man page fix
+- add build and runtime libpcap minimum version
+- remove old patches, thus making package patchless:
+    tcpdump-4.0.0-prototypes.patch
+    tcpdump-4.0.0-aliasing.patch
+- run spec cleaner on spec file
+- remove gpg-offline, now part of source validator
+- remove versioned binary
+- run regression tests
+
+-------------------------------------------------------------------
+Sat Dec 14 11:19:45 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 4.5.1
+  Version 4.5.0 revised for non-code related edits
+  - some NFSv4 fixes for printing  
+  - fix printing of unknown TCP options, and tcp fast-open
+  - fixes for syslog parser
+  - some gcc-version-specific flag tuning
+  - improvements to babel printing
+  - add OpenFlow 1.0 (no SSL) and test cases
+  - GeoNet printer.
+  - added STBC Rx support
+  - improvements to DHCPv6 decoder
+  - clarify which autoconf is needed
+  - Point users to the the-tcpdump-group repository on GitHub rather
+    than the mcr repository
+  - Add MSDP printer.
+  - Fixed IPv6 check on Solaris and other OSes requiring extra
+    networking libraries.
+  - Add support for VXLAN (draft-mahalingam-dutt-dcops-vxlan-03),
+    and add "vxlan" as an option for -T.
+  - Add support for OTV (draft-hasmit-otv-04).
+    fixes for DLT_IEEE802_11_RADIO datalink types
+  - added MPTCP decoder
+
+-------------------------------------------------------------------
+Fri Sep 13 20:37:14 UTC 2013 - andreas.stieger@gmx.de
+
+- verify source signature
+
+-------------------------------------------------------------------
+Wed Sep 11 11:51:41 UTC 2013 - reddwarf@opensuse.org
+
+- update to 4.4.0
+  - RPKI-RTR (RFC6810) is now official (TCP Port 323)
+  - Fix detection of OpenSSL libcrypto.
+  - Add DNSSL (RFC6106) support.
+  - Add "radius" as an option for -T.
+  - Update Action codes for handle_action function according to
+    802.11s amendment.
+  - Decode DHCPv6 AFTR-Name option (RFC6334).
+  - Updates for Babel.
+  - Fix printing of infinite lifetime in ICMPv6.
+  - Added support for SPB, SPBM Service Identifier, and Unicast
+    Address sub-TLV in ISIS.
+  - Decode RIPv2 authentication up to RFC4822.
+  - Fix RIP Request/full table decoding issues.
+  - On Linux systems with cap-ng.h, drop root privileges
+    using Linux Capabilities.
+  - Add support for reading multiple files.
+
+-------------------------------------------------------------------
+Fri Jun 15 15:37:15 CEST 2012 - jslaby@suse.de
+
+- remove tcpdump-4.0.0-uninitialized.patch, it's solved differently
+
+-------------------------------------------------------------------
+Thu Jun 14 23:48:25 CEST 2012 - jslaby@suse.de
+
+- update to 4.3.0
+  - fixes for forces: SPARSE data (per RFC 5810)
+  - some more test cases added
+  - updates to documentation on -l, -U and -w flags.
+  - Fix printing of BGP optional headers.
+  - Tried to include DLT_PFSYNC support, failed due to headers required.
+  - added TIPC support.
+  - Fix LLDP Network Policy bit definitions.
+  - fixes for IGMPv3's Max Response Time: it is in units of 0.1 second.
+  - SIGUSR1 can be used rather than SIGINFO for stats
+  - permit -n flag to affect print-ip for protocol numbers
+  - ND_OPT_ADVINTERVAL is in milliseconds, not seconds
+  - Teach PPPoE parser about RFC 4638
+
+-------------------------------------------------------------------
+Tue Jan  3 14:48:56 UTC 2012 - puzel@suse.com
+
+- update to 4.2.1
+  - Only build the Babel printer if IPv6 is enabled.
+  - Support Babel on port 6696 as well as 6697.
+  - Include ppi.h in release tarball.
+  - Include all the test files in the release tarball, and don't
+    "include" test files that no longer exist.
+  - Don't assume we have <rpc/rpc.h> - check for it.
+  - Support "-T carp" as a way of dissecting IP protocol 112 as CARP
+    rather than VRRP.
+  - Support Hilscher NetAnalyzer link-layer header format.
+  - Constify some pointers and fix compiler warnings.
+  - Get rid of never-true test.
+  - Fix an unintended fall-through in a case statement in the ARP
+    printer.
+  - Fix several cases where sizeof(sizeof(XXX)) was used when just
+    sizeof(XXX) was intended.
+  - Make stricter sanity checks in the ES-IS printer.
+  - Get rid of some GCCisms that caused builds to fail with compilers
+    that don't support them.
+  - Fix typo in man page.
+  - Added length checks to Babel printer.
+- drop tcpdump-4.2.0-ppi.patch (upstream)
+
+-------------------------------------------------------------------
+Mon Nov 28 12:32:25 UTC 2011 - vcizek@suse.com
+
+- update to 4.2.0
+  * patch that adds missing ppi.h
+  * Summary for 4.2.0
+    - merged 802.15.4 decoder from Dmitry Eremin-Solenikov <dbaryshkov
+      at gmail dot com>
+    - updates to forces for new port numbers
+    - Use "-H", not "-h", for the 802.11s option. (-h always help)
+    - Better ICMPv6 checksum handling.
+    - add support for the RPKI/Router Protocol, per -ietf-sidr-rpki-rtr-12
+    - get rid of uuencoded pcap test files, git can do binary.
+    - sFlow changes for 64-bit counters.
+    - fixes for PPI packet header handling and printing.
+    - Add DCB Exchange protocol (DCBX) version 1.01.
+    - Babel dissector, from Juliusz Chroboczek and GrÃ©goire Henry.
+    - improvements to radiotap for rate values > 127.
+    - Many improvements to ForCES decode, including fix SCTP TML port
+    - updated RPL type code to RPL-17 draft
+    - Improve printout of DHCPv6 options.
+    - added support and test case for QinQ (802.1q VLAN) packets
+    - Handle DLT_IEEE802_15_4_NOFCS like DLT_IEEE802_15_4.
+    - Build fixes for Sparc and other machines with alignment restrictions.
+    - Merged changes from Debian package.
+    - PGM: Add ACK decoding and add PGMCC DATA and FEEDBACK options.
+    - Build fixes for OSX (Snow Leopard and others)
+    - Add support for IEEE 802.15.4 packets
+  * Summary for 4.1.2 tcpdump release
+    - If -U is specified, flush the file after creating it, so it's
+      not zero-length
+    - Fix TCP flags output description, and some typoes, in the man
+      page
+    - Add a -h flag, and only attempt to recognize 802.11s mesh
+      headers if it's set
+    - When printing the link-layer type list, send *all* output to
+      stderr
+    - Include the CFLAGS setting when configure was run in the
+      compiler flags
+
+-------------------------------------------------------------------
+Tue Apr  6 09:13:45 UTC 2010 - puzel@novell.com
+
+- update to tcpdump-4.1.1
+  * Don't blow up if a zero-length link-layer address is passed to
+    linkaddr_string()
+  * Fix printing of MAC addresses for VLAN frames with a length
+    field
+  * Add some additional bounds checks and use the EXTRACT_ macros
+    more
+  * Add a -b flag to print the AS number in BGP packets in ASDOT
+    notation rather than ASPLAIN notation
+  * Add ICMPv6 RFC 5006 support
+  * Decode the access flags in NFS access requests
+  * Handle the new DLT_ for memory-mapped USB captures on Linux
+  * Make the default snapshot (-s) the maximum
+  * Print name of device (when -L is used)
+  * Print new TCP flags
+  * Add support for RPL DIO
+  * Add support for TCP User Timeout (UTO)
+  * Add support for non-standard Ethertypes used by 3com PPPoE gear
+  * Add support for 802.11n and 802.11s
+  * Add support for Transparent Ethernet Bridge ethertype in GRE
+  * Add 4 byte AS support for BGP printer
+  * Add support for the MDT SAFI 66 BG printer
+  * Add basic IPv6 support to print-olsr
+  * Add USB printer
+  * Add printer for ForCES
+  * Handle frames with an FCS
+  * Handle 802.11n Control Wrapper, Block Acq Req and Block Ack frames
+  * Fix TCP sequence number printing 
+  * Report 802.2 packets as 802.2 instead of 802.3
+- drop tcpdump-4.0.0-autoconf.patch (not needed with new autoconf)
+- compile with -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Wed Jan 14 16:48:42 CET 2009 - prusnak@suse.cz
+
+- updated to 4.0.0
+  * Add support for Bluetooth Sniffing
+  * Add support for Realtek Remote Control Protocol (openrrcp.org.ru)
+  * Add support for 802.11 AVS
+  * Add support for SMB over TCP
+  * Add support for 4 byte BGP AS printing
+  * Add support for compiling on case-insensitive file systems
+  * Add support for ikev2 printing
+  * Update support for decoding AFS
+  * Update DHCPv6 printer
+  * Use newer libpcap API's (allows -B option on all platforms)
+  * Add -I to turn on monitor mode
+  * Bugfixes in lldp, lspping, dccp, ESP, NFS printers
+  * Cleanup unused files and various cruft
+- dropped obsoleted juniper.patch (included in update)
+
+-------------------------------------------------------------------
+Tue Jan  8 18:04:02 CET 2008 - prusnak@suse.cz
+
+- updated to 3.9.8
+  * Rework ARP printer
+  * Rework OSPFv3 printer
+  * Add support for Frame-Relay ARP
+  * Decode DHCP Option 121 (RFC 3442 Classless Static Route)
+  * Decode DHCP Option 249 (MS Classless Static Route) the same as Option 121
+  * TLV: Add support for Juniper .pcap extensions
+  * Print EGP header in new-world-order style
+  * Converted print-isakmp.c to NETDISSECT
+  * Moved AF specific stuff into af.h
+  * Test subsystem now table driven, and saves outputs and diffs to one place
+  * Require <net/pfvar.h> for pf definitions - allows reading of pflog formatted
+    libpcap files on an OS other than where the file was generated
+
+-------------------------------------------------------------------
+Thu Jul 26 16:03:44 CEST 2007 - prusnak@suse.cz
+
+- updated to 3.9.7
+  * NFS: Print unsigned values as such
+  * RX: parse safely
+  * BGP: fixes for IPv6-less builds
+  * 801.1ag: use standard codepoint
+  * use /dev/bpf on systems with such a device
+  * 802.11: print QoS data, avoid dissect of no-data frame, ignore padding
+  * smb: make sure that we haven't gone past the end of the captured data
+  * smb: squelch an uninitialized complaint from coverity
+  * NFS: from NetBSD; don't interpret the reply as a possible NFS reply if it got MSG_DENIED
+  * BGP: don't print TLV values that didn't fit, from www.digit-labs.org
+  * revised INSTALL.txt about libpcap dependancy
+- dropped obsolete patch:
+  * bgp-overflow.diff (fixed in update)
+  * 802_11-overflow.diff (included in update)
+- changed libpcap to libpcap-devel in BuildRequires
+
+-------------------------------------------------------------------
+Thu Jul 12 11:37:08 CEST 2007 - prusnak@suse.cz
+
+- update to 3.9.6
+  * added support for:
+    - OIF RSVP Extensions UNI 1.0 Rev. 2 and additional RSVP objects
+    - Message-id NACK c-type
+    - 802.3ah loopback ctrl msg
+    - Multiple-STP as per 802.1s
+    - rapid-SPT as per 802.1w
+    - CFM Link-trace msg, Link-trace-Reply msg, 
+    - unidirectional link detection
+    - the olsr protocol as per RFC 3626 plus the LQ extensions from olsr.org
+    - variable-length checksum in DCCP, as per section 9 of RFC 4340
+    - per-VLAN spanning tree and per-VLAN rapid spanning tree
+    - Multiple-STP as per 802.1s
+    - the cisco propriatry 'dynamic trunking protocol'
+    - the cisco proprietary VTP protocol
+    - additional values in pflog
+  * changes to both TCP and IP Printer Output
+  * fixed a potential buffer overflow in the 802.11 printer
+  * print basic info about a few more Cisco LAN protocols
+  * mDNS cleanup
+  * ICMP MPLS rework of the extension code
+  * use the correct codepoint for the OSPF simple text auth token entry
+  * use safeputs to print the password
+  * update dhcp6 options table as per IETF standardization activities
+- fixed overflow in bgp (bgp-overflow.patch) [#291356]
+
+-------------------------------------------------------------------
+Fri Mar  2 11:44:35 CET 2007 - prusnak@suse.cz
+
+- fixed one byte overflow (802_11-overflow.diff) [#250163]
+
+-------------------------------------------------------------------
+Wed Jan  3 15:43:19 CET 2007 - prusnak@suse.cz
+
+- update to 3.9.5
+  * Fixes for 64bit compiling
+  * Updated list of DNS RR typecodes
+  * Add basic support for keyed authentication TCP option
+  * Fix printing for 4.4BSD/NetBSD NFS Filehandles
+  * Add support for:
+    - Frame-Relay ARP
+    - parsing Juniper .pcap files
+    - FRF.16 Multilink Frame-Relay (DLT_MFR)
+    - PIMv2 checksum verification
+    - further dissection of the IPCP Compression Option
+    - Cisco's proposed VQP protocol
+    - Cisco style NLPID encapsulation
+    - PPP over Frame-Relay
+    - Address-Withdraw and Label-Withdraw Msgs
+    - BFD Discriminator TLV
+    - BGP signaled VPLS
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 20:17:27 CET 2006 - mjancar@suse.cz
+
+- compile with -fstack-protector
+
+-------------------------------------------------------------------
+Mon Jan  9 17:30:29 CET 2006 - mjancar@suse.cz
+
+- update to 3.9.4
+- drop obsolete patches
+  * tcpdump-3.9.4-overflow.diff
+
+-------------------------------------------------------------------
+Thu Sep  1 14:50:13 CEST 2005 - mjancar@suse.cz
+
+- enable support for TSO packets (#114159)
+
+-------------------------------------------------------------------
+Fri Aug  5 08:59:48 CEST 2005 - cthiel@suse.de
+
+- fixed buffer overflow in addrtoname.c:499
+
+-------------------------------------------------------------------
+Tue Aug  2 19:43:32 CEST 2005 - mjancar@suse.cz
+
+- update to 3.9.3
+
+-------------------------------------------------------------------
+Thu Aug 05 13:11:52 CEST 2004 - postadal@suse.cz
+
+- updated to version 3.8.3
+- removed obsoleted patches (isakmp-fix2, isakmp-fix3, radius-fix)
+
+-------------------------------------------------------------------
+Mon Mar 29 17:44:10 CEST 2004 - postadal@suse.cz
+
+- fixed overflow in ISAKMP (CAN-2004-0183) [#36828]
+
+-------------------------------------------------------------------
+Fri Feb  6 09:32:15 CET 2004 - ro@suse.de
+
+- fix configure.in (test for pcap_debug was broken)
+
+-------------------------------------------------------------------
+Tue Jan 20 15:42:46 CET 2004 - postadal@suse.cz
+
+- updated to version 3.8.1
+  * fixed security bug in L2TP (CAN-2003-1029)
+- removed obsoleted patches (isakmp-buffer-overflow-fix, compile)
+
+- fixed security bugs in these parsers: RADIUS (CAN-2004-0055),
+  ISAKMP (CAN-2004-0057) [#33763]
+
+-------------------------------------------------------------------
+Sat Jan 10 17:26:25 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Tue Jan 06 14:12:36 CET 2004 - postadal@suse.cz
+
+- fixed two remotely exploitable buffer overflows in the ISAKMP parser
+  [#33763] (CAN-2003-0989)
+
+-------------------------------------------------------------------
+Thu Jul 24 14:03:01 CEST 2003 - postadal@suse.cz
+
+- updated to version 3.7.2
+- removed obsoleted patches (tcpdump-nfs-fix, tcpdump-isakmp, tcpdump-bgp)
+
+-------------------------------------------------------------------
+Wed May  7 16:08:11 CEST 2003 - ro@suse.de
+
+- make it compile with current glibc headers
+  (move include of netinet/in.h further up) 
+
+-------------------------------------------------------------------
+Wed Mar 05 15:22:20 CET 2003 - postadal@suse.cz
+
+- fixed security bugs in parsing ISAKMP, BGP and NFS
+
+-------------------------------------------------------------------
+Tue Oct  1 12:04:37 CEST 2002 - froh@suse.de
+
+- s390/s390x: dumping of qeth interfaces needs some filtering, which
+  is accomplished by the new 'tcpdump-qeth' (#15626, #22085)
+
+-------------------------------------------------------------------
+Mon May 20 13:12:35 CEST 2002 - postadal@suse.de
+
+- fixed bug in displaying NFS traffic
+- updated to version 3.7.1
+  * support more protocols
+  * better Linux libc5 compat  
+
+-------------------------------------------------------------------
+Wed Apr  3 17:05:07 CEST 2002 - postadal@suse.cz
+
+- fixed to compile with autoconf-2.53
+
+-------------------------------------------------------------------
+Mon Jun 18 11:09:57 CEST 2001 - cihlar@suse.cz
+
+- updated to version 3.6.2
+- removed obsolete patches
+- compile against package libpcap
+
+-------------------------------------------------------------------
+Tue Feb  6 12:02:52 CET 2001 - ro@suse.de
+
+- tcpclice.c: include time.h
+- smbutil.c: include time.h 
+
+-------------------------------------------------------------------
+Fri Jan 19 00:35:14 PST 2001 - bk@suse.de
+
+- Turn off PACKET_RX_RING too. It is not available in lx_sus22 and
+  not enabled in our 2.4 kernel configs and causes a warning on
+  every start and possible trouble. See bug #5178
+
+-------------------------------------------------------------------
+Thu Jan 11 20:01:29 CET 2001 - ak@suse.de
+
+- Turn off PACKET_TRECV. It's not enabled in our kernel and causes some
+problems.
+
+-------------------------------------------------------------------
+Fri Nov 24 17:31:36 CET 2000 - ak@suse.de
+
+- Add mb() for ppc
+
+-------------------------------------------------------------------
+Tue Nov 14 13:00:34 CET 2000 - ro@suse.de
+
+- groups sorted 
+
+-------------------------------------------------------------------
+Tue Nov 14 12:09:19 MET 2000 - ak@suse.de
+
+- add some protocols to make it build on 6.1 again
+
+-------------------------------------------------------------------
+Mon Nov 13 18:19:49 MET 2000 - ak@suse.de
+
+- add membar fix for sparc
+
+-------------------------------------------------------------------
+Sat Nov 11 20:10:43 MET 2000 - ak@suse.de
+
+- fix some buffer overflows.
+
+-------------------------------------------------------------------
+Thu May 18 17:46:34 CEST 2000 - schwab@suse.de
+
+- Fix missing declaration.
+- Fix broken includes.
+- Get rid of Makefile.Linux and clean up spec file.
+- Update config.{sub,guess}.
+
+-------------------------------------------------------------------
+Thu May 11 13:41:14 CEST 2000 - ak@suse.de
+
+- add security fix for endless dns looping. From Guy Harris.
+
+-------------------------------------------------------------------
+Thu Mar  2 12:38:44 CET 2000 - ak@suse.de
+
+- move man pages to /usr/share/man
+
+-------------------------------------------------------------------
+Wed Dec 22 14:24:46 CET 1999 - ak@suse.de
+
+- fix promiscuous mode bug
+
+-------------------------------------------------------------------
+Fri Dec  3 21:45:44 CET 1999 - bk@suse.de
+
+- disabled NO_SMP_DEBUG changes by ank(did not compile on sparc)
+
+-------------------------------------------------------------------
+Sat Nov  6 16:22:35 CET 1999 - bk@suse.de
+
+- Integrated changes from ak:
+  strip tcpdump and a fix a -p crash bug (pcap-maddr-fix)
+
+-------------------------------------------------------------------
+Wed Oct 27 04:52:43 CEST 1999 - bk@suse.de
+
+- Andi Kleen added patches from Alexey Kuznetsov. Features e.g.:
+  - device independent libpcap, Kernel support for new link-layers, e.g. ISDN
+    (libpcap uses PF_PACKET,SOCK_DGRAM instead of PF_INET,SOCK_PACKET)
+  - IPv6 and APM support, SMB updates
+  - libpcap support for "In Kernel Packet Filtering" (CONFIG_FILTER)
+- made a libpcapn subpackage which holds the new libpcap for developers.
+- Added fix to reestablish old output format of tcpdump from Andi Kleen.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Sep 29 10:03:04 MEST 1998 - ro@suse.de
+
+- print_i4l : include net/ethernet.h instead of netinet/if_ether.h for glibc
+
+----------------------------------------------------------------------------
+Mon Mar  2 16:58:50 MET 1998 - florian@suse.de
+
+- update to version 3.4a6
+
+----------------------------------------------------------------------------
+Mon Jul  7 13:17:08 CEST 1997 - florian@suse.de
+
+- update to version 3.4a5
+
+- added isdn-patches
+
+
+----------------------------------------------------------------------------
+Mon Jul  7 13:17:08 CEST 1997 - florian@suse.de
+
+
+- update to version 3.4a3
+
+
+----------------------------------------------------------------------------
+Sun Apr 13 23:04:29 MEST 1997 - florian@suse.de
+
+
+- update to new version 3.3.1a2 with automatic detection of packet types
+
+
+----------------------------------------------------------------------------
+Sun Nov 10 22:17:10 CET 1996 - florian@suse.de
+
+
+- added the changes distributed with samba
+
+- added isdn patches
+
+

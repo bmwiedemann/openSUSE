@@ -1,0 +1,22 @@
+Index: gnucobol-3.0-rc1/configure
+===================================================================
+--- gnucobol-3.0-rc1.orig/configure
++++ gnucobol-3.0-rc1/configure
+@@ -18460,7 +18460,7 @@ fi
+ unset enable_cflags_setting
+ 
+ if test "$enable_debug" != "yes" -a "x$CFLAGS" != "x"; then
+-	CFLAGS=`echo "$CFLAGS" | sed -e 's/-g3//' -e 's/-g//' -e 's/^ //' -e 's/ $//'`
++	CFLAGS=`echo "$CFLAGS" | sed -e 's/-g3//' -e 's/-g //' -e 's/^ //' -e 's/ $//'`
+ fi
+ 
+ if test "$COB_USES_GCC" = "yes"; then
+@@ -18564,7 +18564,7 @@ if test "x$CPPFLAGS" != "x"; then
+ 	fi
+ fi
+ if test "x$cob_temp_flags" != "x"; then
+-	cob_temp_flags=`echo "$cob_temp_flags" | sed -e 's/-g3//' -e 's/-g//' -e 's/ $//' -e 's/^ //'`
++	cob_temp_flags=`echo "$cob_temp_flags" | sed -e 's/-g3//' -e 's/-g //' -e 's/ $//' -e 's/^ //'`
+ 	cob_temp_flags=`echo "$cob_temp_flags" | sed -e 's/[+-]O[0-9s]//' -e 's/ $//' -e 's/^ //'`
+ 	cob_temp_flags=`echo "$cob_temp_flags" | sed -e 's/-O//' -e 's/ $//' -e 's/^ //'`
+ 	cob_temp_flags=`echo "$cob_temp_flags" | sed -e 's/-fmessage-length=0//'`

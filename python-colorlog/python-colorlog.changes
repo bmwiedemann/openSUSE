@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Thu Feb 28 09:43:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.0.2:
+  * Minor typo fixes
+
+-------------------------------------------------------------------
+Wed Jan 16 09:37:28 UTC 2019 - mvetter@suse.com
+
+- Update to 4.0.0:
+  * Breaking change: TTYColoredFormatter requires the stream
+    argument, avoiding checking the wrong stream and still
+	displaying colors when it shouldn't.
+  * Includes some other minor changes, and attempts to close the
+    last few months worth of minor issues (#54, #62, #64, #65).
+- Changes from 3.1.0:
+  * This removed the use of parse_colors directly in format
+    strings, as it relied on an implementation specific detail of
+	Python 2 and was broken on Python 3
+- Install LICENSE
+- Run tests
+
+-------------------------------------------------------------------
+Wed Mar  1 10:15:34 UTC 2017 - aloisio@gmx.com
+
+- Converted to singlespec
+
+-------------------------------------------------------------------
+Thu Jan 26 21:11:25 UTC 2017 - jengelh@inai.de
+
+- Description fixes
+
+-------------------------------------------------------------------
+Fri Dec 16 10:28:01 UTC 2016 - aloisio@gmx.com
+
+- Update to version 2.10.0
+  * Parameterise test_ttycolorlog to mock isatty()
+  * Add a TTYColoredFormatter class 
+  * Remove qutebrowser from projects using colorlog 
+
+-------------------------------------------------------------------
+Mon Oct 10 18:30:53 UTC 2016 - mardnh@gmx.de
+
+- Update to version 2.7.0
+  + Adds a level based formatter
+- Fix source url
+- minor spec-cleanups
+
+-------------------------------------------------------------------
+Wed Feb 11 15:50:23 UTC 2015 - aloisio@gmx.com
+
+- Initial version 2.6.0
+

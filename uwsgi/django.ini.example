@@ -1,0 +1,10 @@
+[uwsgi]
+plugin = python
+socket = 127.0.0.1:3034
+threads = 40
+master = 1
+autoload = 1
+env = DJANGO_SETTINGS_MODULE=myapp.settings
+module = django.core.handlers.wsgi:WSGIHandler()
+chdir = /srv/djangoapp001
+

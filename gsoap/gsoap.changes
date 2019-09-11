@@ -1,0 +1,978 @@
+-------------------------------------------------------------------
+Thu Aug 15 14:22:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.91
+  * Correction to fix soapcpp2 2.8.90 `-z#` flag enforcement
+    problem.
+- Removed revert-z.diff (solved upstream)
+
+-------------------------------------------------------------------
+Wed Aug 14 18:19:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.90
+  * Internal changes related to gsoap's own build only.
+- Add revert-z.diff to counter a regression in handling the
+  soapcpp2 "-z" option introduced in 2.8.89.
+
+-------------------------------------------------------------------
+Sun Aug 11 13:33:42 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.89
+  * Added wsdl2h option `-X` to do not qualify part names in
+    order to disambiguate document/literal wrapped patterns (as
+    the other choice to disambiguate instead of the default
+    qualification with schema namespaces).
+  * Added wsdl2h option `-z8` for backward compatibility with
+    2.8.74 and earlier: don't qualify part names to disambiguate
+    doc/lit wrapped patterns and revert to the old wrapper
+    class/struct naming used for `xs:anyType` inheritance.
+
+-------------------------------------------------------------------
+Wed Jun 26 07:39:10 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.87
+  * Added `soap::connect_retry` to specify a number of retries at
+    the client side when connecting to a server fails, with
+    exponential backoff of 2^n seconds between retries.
+    Zero by default, meaning no retries.
+  * Added `soap::client_addr_ipv6` to optionally specify a IPv6 or
+    host address to bind to at the client side, when the
+    destination is a IPv6 server. Otherwise uses
+    `soap::client_addr` to bind.
+
+-------------------------------------------------------------------
+Wed Jun 26 07:39:10 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.86
+  * Added `soap::client_addr` string to specify a IPv4 or IPv6 or
+    a host address to bind to before connecting. This can be used
+    at the client side to bind to an address before connecting to
+    a server endpoint, similar to `soap::client_port`.
+  * Fixed wsdl2h compilation issue with C++17.
+  * Fixed a problem with the `SOAP_SSL_DEFAULT` settings
+    parameter used with `soap_ssl_client_context` and
+    `soap_ssl_server_context` that may lead to a weaker setting
+    than specified.
+
+-------------------------------------------------------------------
+Thu May 16 10:48:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.84
+  * Unspecific minor fixes.
+
+-------------------------------------------------------------------
+Tue Apr 23 10:09:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.83
+  * Added wsdl2h optimization options `-Ow2`, `-Ow3`, and `-Ow4`
+    to optimize the generated source code by schema slicing,
+    while retaining all derived extensions of base types.
+  * Added wsdl2h option `-Q` to make `xsd__anySimpleType` equal
+    to `xsd__anyType` to use as the base type for derived types,
+    so that elements of type `xsd:anySimpleType` can be
+    serialized with a derived type, using inheritance in C++ and
+    by using simulated inheritance in C using wsdl2h option `-F`.
+  * Updated wsdl2h options `-p` and `-F` to generate additional
+    wrappers for primitive types that aren't XSD primitive types,
+    such as `SOAP-ENC:base64`.
+  * Improved wsdl2h output for the infrequently-used
+    `SOAP-ENC:Array` type.
+  * Fixed an issue with soapcpp2 option `-A` that resulted in
+    error 13 `SOAP_NO_METHOD`.
+
+-------------------------------------------------------------------
+Fri Mar 15 09:37:32 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.82
+  * Minor fixes and improvements not specified further in detail.
+
+-------------------------------------------------------------------
+Thu Mar  7 20:47:26 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.81
+  * Added the ability to specify `nullptr` web service operation
+    arguments, similar to `nullptr` struct and class members.
+    This enables `xs:nillable="true"` elements corresponding to
+    web service operation arguments.
+  * Updated wsdl2h `import schemaLocation` logic to handle
+    relative paths.
+  * Updated DOM API for embedded serializable data types:
+    `SOAP_DOM_ASIS` removes XML namespace bindings (`xmlns`) from
+    the XML output of the embedded data type, which are normally
+    added to ensure namespace prefixes are always valid.
+    `SOAP_DOM_ASIS` requires the DOM to specify the namespace
+    bindings explicitly.
+
+-------------------------------------------------------------------
+Thu Feb 21 17:36:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.80
+  * Updated to remove GCC 8.2 warnings.
+  * Improved wsdl2h handling of relative file paths.
+
+-------------------------------------------------------------------
+Tue Feb 12 12:51:00 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove gsconfig.patch (this patch is broken)
+
+-------------------------------------------------------------------
+Mon Feb 11 10:39:52 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.79
+  * Fixed a bug in wsdl2h option `-c` for C source code output,
+    resulting in a missing `*` pointer for `_XML __any` member
+    declaration when declared after the `$ int __size` array size
+    member. The bug may lead to validation errors in extensible
+    types when extra elements are present in the XML payload
+    received. The fix produces the correct `_XML *__any` member
+    declaration.
+
+-------------------------------------------------------------------
+Fri Feb  1 16:27:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.78
+  * wsdl2h: WSDL and schema imports of files on relative paths:
+    file name without path or file name with path stating with
+    ../ are considered relative locations with respect to the
+    current WSDL and schema that is importing, otherwise imported
+    files are considered relative to the directory in which
+    wsdl2h is run (the `-I` option can be used to change that
+    location).
+  * wsdl2h: to display warnings for invalid complexType and
+    simpleType extensions/restrictions but generates valid code
+    in such cases by inference, the update also fixes a valid
+    extension case.
+  * Fixed compilation error for soapcpp2 options `-i` and `-j`
+    caused by special case with empty input arguments to service
+    operations.
+  * Added jsoncpp new option `-k`.
+
+-------------------------------------------------------------------
+Sat Jan 19 10:11:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.75
+  * Added wsdl2h option `-F` to add transient pointer members to
+    structs to simulate type derivation with structs in C.
+  * Added wsdl2h option `-L` to generate less documentation in
+    interface header files.
+  * Added `WITH_NOEMPTYNAMESPACES` compile-time flag to disable
+    `xmlns=""`, this is intended for backward compatibility with
+    old XML parsers and old gSOAP versions that do not support
+    `xmlns=""` empty default namespaces.
+  * Updated wsdl2h option `-D` to make attributes with fixed
+    values pointer members in structs and classes, not just
+    attributes with default values.
+  * Updated wsdl2h option `-f` to flatten C++ class hierarchy by
+    removing inheritance. This option removes support for type
+    derivation with `xsi:type` in XML.
+  * Updated soapcpp2 to split up the `soap_call_ns__webmethod`
+    functions into new `soap_send_ns__webmethod` and
+    `soap_recv_ns__webmethod` functions called by
+    `soap_call_ns__webmethod`. The new functions can be used for
+    asynchronous messaging.
+  * Updated soapcpp2 option `-j` to call `destroy()` in
+    destructor to deallocate managed heap data.
+  * Updated call to OpenSSL `ERR_remove_state` (deprecated) by
+    `ERR_remove_thread_state`.
+  * Fixed a bug in HTTP cookie handling by the engine. HTTP
+    cookies are disabled by default, but enabled with the
+    `-DWITH_COOKIES` compile-time flag or when using the C/C++
+    `libgsoapck`/`libgsoapck++` and `libgsoapssl`/`libgsoapssl++`
+    libraries.
+
+-------------------------------------------------------------------
+Wed Dec 19 10:14:23 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.74
+  * Fixed an issue with MIME/MTOM attachment sending when the
+    HTTP-digest plugin is used or when compression is enabled,
+    returning incorrect `SOAP_EOM` error (i.e. not caused by
+    out-of-memory). The problem had been introduced in 2.8.70.
+
+-------------------------------------------------------------------
+Thu Dec  6 11:23:31 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.73
+  * Improved `soap_ssl_accept()` timeout settings to improve the
+    performance of gSOAP stand-alone HTTPS servers.
+  * Renamed `soap_get_http_body()` to `soap_http_get_body()` to
+    avoid name clashes with soapcpp2-generated `soap_get_T`
+    functions.
+  * Renamed `soap_get_form()` to `soap_http_get_form()` to avoid
+    name clashes with soapcpp2-generated `soap_get_T` functions.
+  * Renamed `soap_get_mime_attachment()` to
+    `soap_recv_mime_attachment()` to avoid name clashes with
+    soapcpp2-generated `soap_get_T` functions.
+  * Renamed `soap_get_stats()` to `soap_http_get_stats()` of the
+    httpget plugin to avoid name clashes with soapcpp2-generated
+    `soap_get_T` functions.
+  * Renamed `soap_get_logging_stats()` to `soap_logging_stats()`
+    of the logging plugin to avoid name clashes with
+    soapcpp2-generated `soap_get_T` functions.
+  * Moved `soap_http_get_form()`, `soap_query()`,
+    `soap_query_key()`, and `soap_query_val()` functions from the
+    httpget and httpform plugin APIs to the stdsoap2.c[pp]
+    library API. No project rebuilds should be necessary when
+    using these plugins with this upgrade.
+
+-------------------------------------------------------------------
+Fri Nov 30 09:45:21 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.72
+  * Improved the HTTP GET `http_get` and HTTP POST `http_post`
+    plugins, handling of a HTTP POST request that has an empty
+    body is now supported.
+  * Updated user guide, corrected `soap_rand_uuid` description:
+    string returned is stored in a temporary buffer, not stored
+    in managed memory.
+  * Fixed spurious constant initialization problem for `enum`
+    types in soapcpp2-generated code, the problem was introduced
+    with soapcpp2 2.8.71 C/C++ grammar expansion.
+  * Fixed a CURL plugin issue that prevented PUT and DELETE
+    methods to work properly.
+
+-------------------------------------------------------------------
+Mon Nov 12 23:25:33 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.71
+  * Added TLSv1.3 support with OpenSSL 1.1.1.
+  * Added HTTP PATCH support.
+  * Updated SSL/TLS options for `soap_ssl_client_context` and
+    `soap_ssl_server_context` to allow combinations of
+    `SOAP_TLSv1_0`, `SOAP_TLSv1_1`, `SOAP_TLSv1_2`,
+    `SOAP_TLSv1_3` protocols (v1.3 only available with OpenSSL
+    1.1.1 and greater), a change from the single TLS protocol
+    flag.
+  * Fixed soapcpp2 code generation issue for single- and
+    multi-dimensional fixed-size arrays.
+
+-------------------------------------------------------------------
+Tue Sep 11 11:26:23 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.8.70
+  * Updated `typemap.dat` for ONVIF and upgraded `wsdd10.h`
+    (WS-Discovery 1.0 with WS-Addressing 2004/08) to `wsdd5.h`
+    (WS-Discovery 1.0 with WS-Addressing 2005/08).
+  * Fixed a deserialization issue with Qt `QString` used in a
+    wrapper class (as `__item` member), when the wrapper class is
+    used in a container, such as `std::vector`.
+
+-------------------------------------------------------------------
+Tue Jul 24 09:34:56 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream relesae 2.8.69
+  * Improved `xs:redefine` processing, fixing the remaining
+    "circular group reference" warnings.
+  * Improved XML sample message generation.
+
+-------------------------------------------------------------------
+Sat Jul  7 08:43:36 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.8.68
+  * Unspecified minor improvements
+
+-------------------------------------------------------------------
+Wed Jun 27 12:50:29 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.8.67
+  * Changed `typemap.dat` to disable `xsd__duration` custom
+    serializer by default, meaning that `xsd__duration` is
+    serialized as a string by default.
+  * Fixed an issue where the 64-bit integer types `LONG64` and
+    `ULONG64` and their serializers would be downcast to to 32-bit
+    when compiling C code with newer GCC versions, due to
+    `__STDC_VERSION__` no longer being defined by the compiler.
+
+-------------------------------------------------------------------
+Tue Apr 10 13:57:01 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.8.66
+  * Added `soap_close_connection()` to close a connection from
+    another thread.
+  * Fixed C++ proxy and server class `copy()` and `operator=()`
+    methods to prevent a possible memory leak which may occur in
+    certain usage scenarios.
+  * Fixed an issue in wsdl2h, generating an incorrect simpleType
+    element name that leads to a soapcpp2 error. The element has
+    a local simpleType restriction of a simpleType with the same
+    name as the element type, where this simpleType in turn is a
+    restriction.
+
+-------------------------------------------------------------------
+Sat Mar 10 09:52:44 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.8.65
+  * Corrected an issue in soapcpp2 to parse negative floating range
+    bounds declared in typedefs.
+- Remove linker.patch (merged upstream)
+
+-------------------------------------------------------------------
+Mon Mar  5 20:19:50 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.8.64
+  * Upgraded TLS/SSL engine to support GNUTLS 3.3.0 and greater.
+  * Improved Test Messenger with new options `-d num` and `-u`,
+    where `-dnum` specifies the number of iterations to hit a
+    server with test messages, and `-u` includes Unicode
+    characters in randomized content. Other usability
+    improvements and a bug fix.
+  * Improved WSSE WS-Security plugin and added documentation
+    section with clarifications on how the plugin defends against
+    signature wrapping attacks when you perform signature
+    verification function calls.
+- Remove xlocale.diff
+- Add gsconfig.patch, linker.patch
+
+-------------------------------------------------------------------
+Mon Feb 26 11:54:21 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.8.63
+  * Improved Test Messenger: randomized testing of Web Services;
+    added `__PERMUTE` indicator and automatic handling of SOAP
+    1.1/1.2 array dimension adjustments (`arrayType` and
+    `arraySize` attributes).
+
+-------------------------------------------------------------------
+Wed Feb 14 20:27:46 UTC 2018 - jengelh@inai.de
+
+- Add xlocale.diff
+
+-------------------------------------------------------------------
+Mon Feb 12 11:19:35 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.8.62
+  * Added wsdl2h options `-O3` and `-O4` to aggressively optimize
+    WSDLs internally by "schema slicing": `-O3` applies `-O2` and
+    also removes unused root attributes, `-O4` applies `-O3` and
+    also removes unused root elements. It only makes sense to use
+    `-O4` with one or more WSDLs (and XSDs that are imported by
+    the WSDL), because all schema components will be removed from
+    XSDs that are not used by WSDLs.
+  * Updated HTTP digest plugin.
+  * Improved soapcpp2 options `-g` and `-y`, may be used together
+    to generate sample XML messages.
+
+-------------------------------------------------------------------
+Mon Jan 29 22:06:17 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.8.61
+  * Added `WITH_DEFAULT_VIRTUAL` to generate default methods that
+    return `SOAP_NO_METHOD` for C++ services generated with
+    soapcpp2 option `-j` or `-i`. A derived class can then
+    selectively implement service methods as needed. This
+    addition required the use of a new macro
+    `SOAP_PURE_VIRTUAL_COPY` for virtual `::copy()` methods,
+    replacing `SOAP_PURE_VIRTUAL` for `::copy()`.
+  * Added the `SOAP_H_FILE` macro to improve the use of plugins
+    and custom serializers in project builds with soapcpp2
+    options `-p` and `-q` that rename the generated files such as
+    `soapH.h`, the macro changes the `#include "soapH.h"` to
+    `#include "nameH.h"` by invoking the C/C++ compiler with
+    option `-DSOAP_H_FILE=nameH.h`.
+  * Fixed a glitch in soapcpp2 to generate `soap_write_T`
+    functions for `typedef ... T` types that represent XML
+    elements.
+
+-------------------------------------------------------------------
+Tue Jan 16 09:15:30 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.8.60
+  * Added wsdl2h options `-O1` and `-O2` to optimize schemas
+    internally after reading WSDL and XSD files: `-O1` removes
+    duplicate members from nested choice/sequence and `-O2` also
+    removes unused schema types that are unreachable from WSDL
+    and XSD root definitions.
+  * Added ability to specify `$SIZE = TYPE` in `typemap.dat` for
+    setting `size_t` or `int` type for array sizes, see
+    [databindings](https://www.genivia.com/doc/databinding/html).
+  * Changed wsdl2h C++ source code generated for *`xs:choice
+    maxOccurs>0`* with simpler `std::vector` instead of a dynamic
+    array with size and pointer members, use wsdl2h option `-z7`
+    to revert to the old wsdl2h behavior for backward
+    compatibility.
+  * Improved soapcpp2-generated sample XML messages and fixed a
+    special case where base class namespace prefixes may be
+    rendered incorrectly in an XML sample or test message.
+  * Improved handling of nested *`xs:sequence`* in *`xs:choice`*
+    by removing duplicate name warnings, the duplicate member is
+    still generated by wsdl2h however as a reminder, but should
+    be ignored in your code. Use the new wsdl2h option `-O1` to
+    remove the duplicate member altogether.
+  * Fixed a soapcpp2 problem with bitmask enumerations of
+    QName values.
+
+-------------------------------------------------------------------
+Thu Jan  4 11:31:56 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.8.59
+  * Removed `#include soapH.h` from generated `.nsmap` file to
+    promote transparency and to prevent accidental inclusions
+    that may cause definition clashes when soapcpp2 option -q is
+    used.
+  * Fixed UDP message transport compression, compile flag
+    `-DWITH_ZLIB` and runtime flag `SOAP_ENC_ZLIB`.
+
+-------------------------------------------------------------------
+Mon Dec 25 14:03:40 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.58
+  * Improvements to prevent macro `USE_32BIT_TIME_T` to cause
+    misaligned `soap` contexts, due to inconsistent size of
+    `time_t`.
+  * Improvements to support obsolete HTTP cookie formats.
+
+-------------------------------------------------------------------
+Wed Dec 13 09:46:00 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.57
+  * `struct soap::bind_v6only` field had no effect; this was fixed.
+
+-------------------------------------------------------------------
+Fri Dec  8 21:22:27 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.56
+  * Added new `soap::bind_v6only` context flag, replacing
+    compile-time flag `WITH_IPV6_V6ONLY` (`soap->bind_v6only=1`)
+    and `WITH_NO_IPV6_V6ONLY` (`soap->bind_v6only=0`).
+  * Fixed missing C++ custom serializer type object allocators
+    (e.g. `gsoap/custom/qstring.cpp`), when pointers to custom
+    serialized C++ types are used.
+
+-------------------------------------------------------------------
+Wed Nov  1 16:14:45 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.55
+  - Improved Test Messenger to generate and consume XML test
+    messages with MTOM/MIME attachments.
+  - Fixed deserialization of pointers to Qt types with the custom
+    serializers `custom/qbytearray_base64.h`,
+    `custom/qbytearray_hex.h`, `custom/qdate.h`,
+    `custom/qstring.h`, and `custom/qtime.h`.
+  - Fixed `WITH_NOIO` compilation errors (`close()` and/or
+    `gettimeofday()` not found).
+
+-------------------------------------------------------------------
+Fri Sep 22 10:18:25 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.54
+  * Added wsdl2h option `-S` to specify a name for the soap
+    context member variable of generated classes (C++ only), use
+    `-S ''` to remove the `soap` member variable.
+  * Improved handling of empty SOAP Body responses by client
+    applications using doc/lit style messaging, returns `SOAP_OK`
+    instead of HTTP 200 error code.
+
+-------------------------------------------------------------------
+Fri Sep  1 18:07:07 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.52
+  * Fixed 2.8.51 issue in parsing HTTP empty lines
+  * Fixed WS-RM plugin blocking issue on fatal errors.
+- Update to new upstream release 2.8.53
+  * Fixed DIME receiver looping on specific malformed DIME headers.
+
+-------------------------------------------------------------------
+Fri Jul 28 18:58:15 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.51
+  * Additional checks added to source code for its own robustness.
+
+-------------------------------------------------------------------
+Thu Jul 27 13:13:31 UTC 2017 - jengelh@inai.de
+
+- gsoap-01-sharedlibs.diff: add missing libssl link to libgsoapssl
+
+-------------------------------------------------------------------
+Mon Jul 24 08:30:47 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.50
+  * Added `soap->recv_maxlength` to change the limit on the
+    length of messages received. Default is 2GB max. Greater
+    lengths are possible.
+  * Removed client-side `SOAP_PURE_VIRTUAL` from `copy()` in the
+    code generated by soapcpp2 for options `-i` and `-j`.
+  * Updated memory deallocation of `soap_del_xsd__anyAttribute`.
+  * Updated the callback function signatures of `fpost` and
+    `fresponse`.
+
+-------------------------------------------------------------------
+Thu Jul 13 11:39:49 UTC 2017 - olaf@aepfle.de
+
+- Remove gnutls because openssl overrides it already
+
+-------------------------------------------------------------------
+Tue Jul 11 08:33:39 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.49
+  * union constructors are re-emitted correctly
+  * Improved JSON API to compile with XML data bindings, see
+    updated JSON API documentation on "Compiling XML-RPC/JSON
+    together with gSOAP XML data binding code".
+
+-------------------------------------------------------------------
+Tue Jun 27 14:03:51 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.48
+  * Added CURL plugin to use libcurl for gSOAP client applications.
+  * Added `soap->transfer_timeout` max transfer timeout, to use in
+    combination with `soap->send_timeout` and `soap->recv_timeout`.
+  * Fixed a potential vulnerability that may be exposed with large
+    and specific XML messages over 2 GB in size.
+    CVE-2017-9765 bsc#1049348
+- Remove gsoap-sslverify.diff (merged upstream)
+
+-------------------------------------------------------------------
+Fri May 19 10:23:02 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.46
+  * Improved WS-Trust API, updated import/wst.h, import/saml1.h,
+    import/saml2.h and import/wsdd.h definitions.
+  * Added `soap.client_interface` string to set the client IP
+    address interface with `inet_pton()`
+
+-------------------------------------------------------------------
+Mon Apr 24 14:33:49 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.45
+  * Fixed an issue with the WSSE plugin that caused WS-Security
+    SignedInfo/Reference/Transforms/Transform/InclusiveNamespaces/@PrefixList
+    ending up being ignored by the canonicalizer.
+
+-------------------------------------------------------------------
+Wed Mar 15 16:11:44 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.44
+  * Fixed WS-Discovery `soap_wsdd_listen` memory cleanup on timeouts.
+  * Fixed `soap->os` saved message string NUL termination (a
+    problem in C code, not in C++).
+- Add gsoap-sslverify.diff
+
+-------------------------------------------------------------------
+Wed Feb  8 09:24:37 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.43
+  * Added `SSL_CTX_need_tmp_RSA()` check (OpenSSL 1.0.1+
+    and LibreSSL).
+  * Fixed string length limiting issue in QT QString type
+    serializer `custom/qstring.h` and addressed compilation issue
+    with other QT types serializers.
+  * Fixed `soap_psha1` string buffering.
+- Drop gsoap-02-implicit.diff (merged upstream)
+
+-------------------------------------------------------------------
+Tue Jan 24 13:53:09 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.42
+  * Fixed shared pointer to QName string QName output normalization.
+  * Improved `WITH_REPLACE_ILLEGAL_UTF8` flag to optionally compile
+    the library with: this replaces illegal UTF-8 input/output
+    with the replacement character U+FFFD (or define your own
+    `SOAP_UNKNOWN_UNICODE_CHAR`).
+- Add gsoap-02-implicit.diff
+
+-------------------------------------------------------------------
+Thu Jan 19 09:06:14 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.8.41
+  * Added updates to support OpenSSL 1.1.0.
+  * Added HTTP header `Accept:
+    multipart/related,application/xop+xml,*/*;q=0.8` when MTOM is
+    expected (i.e. when the input mode flag is set to
+    `SOAP_ENC_MTOM`).
+  * Improved CORS internals and compatibility.
+  * Fixed minor issues with `WITH_NOIO` and `WITH_NO_C_LOCALE`.
+- Drop gsoap-openssl110.patch (included upstream)
+
+-------------------------------------------------------------------
+Tue Dec 13 09:34:31 UTC 2016 - jengelh@inai.de
+
+- Add gsoap-openssl110.patch to support OpenSSL 1.1.0
+
+-------------------------------------------------------------------
+Sun Dec 11 20:29:51 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.8.40
+* Improved wsdl2h import/include relative path search.
+* Fixed wsdl2h schema import when imports are deeply nested in
+  imports/includes.
+* Fixed MinGW compilation issue.
+
+-------------------------------------------------------------------
+Mon Nov 21 18:39:11 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.8.39
+* Added auto-generated client-side REST API functions to simplify
+  REST GET, PUT, POST operations with XML data.
+* the engine sets the temporary "C" locale for floating point
+  conversion on most systems.
+- Drop gsoap-locale.diff (upstreamed)
+
+-------------------------------------------------------------------
+Tue Nov 15 22:35:48 UTC 2016 - jengelh@inai.de
+
+- Add gsoap-locale.diff to resolve truncation of "double"
+  type floating point numbers when deserializing XML
+
+-------------------------------------------------------------------
+Wed Oct 26 13:24:28 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.8.37
+* Added server-side HTTP cross-origin resource sharing (CORS)
+  access control using HTTP OPTIONS `fopt()` callback.
+* Fixed an issue causing UDP message fragmentation.
+* Fixed `soap_mq` message queue plugin dropping connections.
+* Fixed missing nested [] in arrayType value in SOAP 1.1 encoding.
+
+-------------------------------------------------------------------
+Mon Sep 26 23:56:23 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.8.36
+* New features include C++ QT type serialization in XML, HTTP
+  session management, WADL support for wsdl2h (REST XML apps),
+  updated iOS support and more examples, and WS-Security updates
+  and fixes.
+* Also includes WS-Trust extensible framework with SAML 1.0/2.0
+  tokens, PSHA1 algorithm, and an example WS-Trust client and
+  server to request, create, sign, and verify SAML tokens.
+
+-------------------------------------------------------------------
+Mon Jun 20 17:15:13 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.8.33
+* Updated WS-Trust gsoap/import/wstx.h
+  `__wst__RequestSecurityToken` response message parameter to
+  `wst__RequestSecurityTokenResponseCollection`
+* Updated WS-Security gsoap/import/wsse.h with optional SAML
+  assertions in the Security header.
+* Updated response processing for empty HTTP body with HTTP code
+  200 to 202: no longer forces socket close when HTTP keep-alive
+  is enabled.
+* Updated `_XML` literal string XML serialization for qualified
+  tag names, no longer uses default namespace (as in
+  `xmlns="URI"`) but a prefixed tag name only.
+* Updated wsdl2h options `-p` and `-d`, now generates
+  `xsd__anyType*` (i.e. with pointer) data members without
+  requiring the user to define a typemap.dat rule to do so. This
+  change reinstates some of the old behavior of 2.8.23 and
+  earlier versions.
+* Fixed wsddapi.c compilation issue on Windows (`usleep`
+  replaced).
+* Fixed validation of `simpleType/restriction/length` when
+  restriction base is a list that is mapped to a string.
+* Fixed validation of `simpleType/restriction` with base type
+  string length bounds restrictions.
+
+-------------------------------------------------------------------
+Mon May 23 14:29:47 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.8.32
+* Improved soapcpp2 code generation of type converters
+  `int soap_s2T(soap*, const char*, T*)` and
+  `const char *soap_T2s(soap*, T)` for primitive and binary types T.
+* Fixed unqualified `xsi:type` content matching with default
+  namespace, which may lead to a failure in the 2.8.31 release to
+  instantiate derived instances for complexType extensions.
+
+-------------------------------------------------------------------
+Mon May  9 13:23:38 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.8.31
+* Added engine context `sndbuf` and `rcvbuf` attributes to (re)set 
+  setsockopt` values for `SO_SNDBUF` and `SO_RCVBUF`, respectively.
+  Default value is `SOAP_BUFLEN`, same as engine's internal message
+  buffer size. Setting to zero forces the engine to omit the
+  `setsockopt` `SO_SNDBUF` and `SOAP_RCVBUF` calls.
+* Improved soapcpp2 option `-t` and `//gsoap ns schema typed: y`
+  directive that force the addition of `xsi:type` attributes to XML
+  content except for types whose type names are prefixed with an
+  underscore (i.e. root elements w/o type as per wsdl2h data
+  bindings rules).
+* Fixed wsdl2h 2.8.28-30 parsing of *`xs:unique`* causing wsdl2h to
+  skip over schema components. The fix also improved string-based
+  parsing of XML content with a fix for 2.8.28-30 XML string
+  handling.
+
+-------------------------------------------------------------------
+Mon Apr  4 07:49:55 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.8.30
+* Added backtick XML tag name syntax to interface files for
+  soapcpp2, which allows for the overriding of the translated tag
+  names of struct/class members and service operation parameters,
+  see the [Data Bindings
+  documentation](http://www.genivia.com/doc/databinding/html#toxsd9-5).
+  Older gSOAP versions do not support the backtick tag in the
+  generated WSDL and schemas (messages are OK).
+* Added macro `SOAP_MAXLEVEL` to trigger `SOAP_LEVEL` error when
+  XML nesting level of inbound XML exceeds the value of
+  `SOAP_MAXLEVEL`. Default value is 10000. Redefine `SOAP_MAXLEVEL`
+  as needed, with lower values to restrict XML nesting depth for
+  receivers to accept.
+* Added macro `SOAP_MAXLENGTH` to trigger `SOAP_LENGTH` content
+  length error when string content in inbound XML exceeds the value
+  of `SOAP_MAXLENGTH`. Applies to strings that are potentially
+  unbounded, i.e. that are not already constrained by XML
+  validation maxLength constaints (which could be larger than
+  `SOAP_MAXLENGTH`). Default value is zero (0) which means that
+  string length is unconstrained if XML validation maxLength is not
+  given. Redefine `SOAP_MAXLENGTH` as needed, with lower values to
+  restrict string lengths for receivers to accept.
+* Added macro `SOAP_MAXOCCURS` to trigger `SOAP_OCCURS` content
+  error when array and container lengths exceed the value of
+  `SOAP_MAXOCCURS`. Must be greater than zero (0). Default value is
+  100000. Redefine `SOAP_MAXOCCURS` as needed, with lower values to
+  restrict array and container lengths for receivers to accept.
+* Updated wsdl2h WS-Policy processing to include WS-RM protocol
+  versioning.
+* Improved soapcpp2 generation of WSDL and XSD for unqualified
+  C/C++ types or when mixing qualified and unqualified C/C++ types
+  and type names.
+* Changed soapcpp2 default behavior for generating WSDL and XSD
+  files with *`elementFormDefault="unqualified"`* from the old
+  default behavior with *`elementFormDefault="qualified"`*
+* Fixed soapcpp2 crash with enum constants > 255 due to libc
+  `isalpha` crashing on some Linux systems.
+* Fixed `import/wsp.h` soapcpp2 compilation error.
+* Fixed soapcpp2 option `-w` that may cause a message response
+  element tag name inconsistency with SOAP doc/lit style.
+* Fixed deserialization issue with dynamic arrays of STL
+  containers/smart-pointers (i.e. a pointer to an array of
+  containers/smart-pointers, which is an unlikely combination to
+  use, but should work).
+- Remove gsoap-00-builtsource.diff, gsoap-02-typepuns.diff
+  (merged upstream)
+
+-------------------------------------------------------------------
+Tue Mar 22 09:38:28 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.8.29
+* Added new soapcpp2 option `-r` to generate a soapReadme.md report
+  that summarizes the input .h file information, the serializable
+  C/C++ types, the services, and the generated code.
+* Added new wsdl2h option `-M` to suppress error "must understand
+  element with wsdl:required='true'".
+* Upgraded HTTP digest authentication "httpda" plugin to 2.0 to
+  support RFC7616 "HTTP Digest Access Authentication" with SHA2
+  (replaciing MD5) that is compatibale with RFC2617
+* Updated `wsdl2h` HTTPS-enabled build steps to use upgraded
+  "httpda" plugin.
+* Fixed wsdl2h skipping mime:multipartRelated/mime:part.
+- Drop gsoap-03-seqpoint.diff, gsoap-mindeflateratio.diff,
+  gsoap-no-tcpfastopen-fail.diff (applied upstream)
+
+-------------------------------------------------------------------
+Thu Feb 18 21:39:20 UTC 2016 - jengelh@inai.de
+
+- Employ full version SO naming because of ABI changes within 2.8.x
+
+-------------------------------------------------------------------
+Wed Feb  3 09:07:07 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.8.28
+* Added many new API functions to a fully redisigned XML DOM API
+  v5 for C and C++ with new DOM API documentation. The redesigned
+  DOM API v5 is mostly backward compatible to DOM API v4, but
+  with DOM string data members changed to text members. Many API
+  functions are added to define a clean interface without having
+  to use the DOM structure data members. The
+  soap_dom_next_element() function now takes a second parameter
+  that is an element pointer to stop deep traversal at (use NULL
+  for old behavior). See updated XML DOM and XPath documentation
+  for details.
+* Added C serialization to/from strings with new C soap struct
+  members const char *soap::is input string to parse from and
+  const char **soap:os pointer to string that is set by the
+  engine to point to the output. Note that C++ code is unchanged
+  and the soap::is and soap::os are still members pointers to
+  istream and ostream streams (use std::stringstream for
+  input/output from/to strings).
+* Added JSON API C function set_size to set/change array sizes
+  and JSON API C function set_struct to create an empty JSON
+  object.
+* Improved jsoncpp command line tool to generate JSONPath C code
+  and improved overall to generate more compact code.
+* Improved SOAP_DEFAULTNS flag to emit XML default namespace
+  declarations.
+* Improved strictness of XML verification under default settings
+  (i.e. without requiring SOAP_XML_STRICT).
+* Changed string deserialization when XML content with tags is
+  encountered: XML tags are no longer parsed as part of strings.
+  You must use XML string type to parse literal XML content or
+  use DOM.
+- Remove gsoap-allocator.diff, gsoap-reset-error-code.diff
+  (merged upstream)
+- Add gsoap-00-builtsource.diff, gsoap-03-seqpoint.diff,
+  gsoap-no-tcpfastopen-fail.diff
+
+-------------------------------------------------------------------
+Tue Jun  2 11:19:46 UTC 2015 - jengelh@inai.de
+
+- Replace gsoap-02-typepuns.diff with better version from SF
+- Add gsoap-allocator.diff to please UBSAN
+
+-------------------------------------------------------------------
+Thu May 28 17:31:39 UTC 2015 - jengelh@inai.de
+
+- Drop unnecessary -version-info argument from _LDFLAGS variable
+  in gsoap-01-sharedlibs.diff (we have -release)
+
+-------------------------------------------------------------------
+Thu Apr 23 11:45:28 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.8.22
+* Enhancements include XSD 1.1 support and improved portability.
+
+-------------------------------------------------------------------
+Thu Apr 23 10:59:00 UTC 2015 - jengelh@inai.de
+
+- Include SSL libraries in the link to reduce undefined symbols
+
+-------------------------------------------------------------------
+Thu Jan 15 18:34:35 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.8.21
+* Added xs:precision and xs:scale support.
+* Added support for BPEL PartnerLink and VariableProperties to
+  wsdl2h in support of BPEL projects.
+* Added soapcpp -z2 flag for backward compatibility with to 2.7.x:
+  omit XML output of elements for pointers that are NULL even when
+  minOccurs=1 (required).
+* Changed wsdl2h C++ output to always generate pass-by-reference
+  response parameters (disable with -z6).
+* Added XML 1.1 control char encoding support.
+* Added -DWITH_REPLACE_ILLEGAL_UTF8 compilation option to replace
+  UTF8 content that is outside the allowed range of XML 1.0.
+- Remove gsoap-05-ipv6.diff, gsoap-06-ipv6retry.diff
+  (merged upstream)
+
+-------------------------------------------------------------------
+Sun Aug  3 23:16:48 UTC 2014 - jengelh@inai.de
+
+- Add gsoap-06-ipv6retry.diff to try all getaddrinfo results
+
+-------------------------------------------------------------------
+Wed Jan 15 19:35:58 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.8.17
+* Improved WCF interop duplex messaging requiring ChannelInstances.
+* Fixed complexType restriction of schema types with redefined
+  attributes in wsdl2h output.
+* Fixed wcf/WS/DualHttp example (wrong use of send_X() replaced by X()
+  for client-side operations X, to allow HTTP keep-alive to be used).
+* Fixed use of sprintf's that trigger Valgrind and Fortify warnings.
+* Fixed parsing character strings from CDATA sections ending in ']'.
+* Fixed DOM output for SOAP_XML_CANONICAL c14n normalization of
+  xmlns namespace bindings.
+* Added WS-RM message queueing option for WS-RM NoDiscard.
+* Added wsdl2h option -r for authorized web access and proxy access.
+- Remove gsoap-04-strerror.diff (merged upstream)
+
+-------------------------------------------------------------------
+Thu Jun 27 06:44:56 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.8.15
+* Added wsdl2h option -R for auto-generation of REST-based service
+  operations (also added examples/rest example).
+* Change soap_read_X() and soap_write_X() to prevent removal of
+  HTTP headers after calling soap_connect().
+* Fixed automatic detection of DIME/MIME transfers.
+* Fixed a HTTP 1.0 chunking issue.
+* Fixed HTTP digest authentication with DIME/MIME transfers.
+* Fixed OpenSSL subject alt name check.
+* Fixed a HTTP 100 message handling issue.
+- Reenable default optimization
+
+-------------------------------------------------------------------
+Thu Feb 28 22:31:47 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.8.14
+* Added explanation of wsdl2h option -Nname which is used to
+  generate a service (and its prefix name) for each service
+  binding (bindings are collected in one service by default).
+
+-------------------------------------------------------------------
+Wed Nov 14 22:36:29 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.8.11
+* Added soapcpp2 -0 option to remove SOAP bindings when applicable
+* Changed wsdl2h output for the few cases that multiple service
+  bindings are defined, use wsdl2h -Nns for backward compatibility
+- Update to new upstream release 2.8.10
+* Added soapcpp2 -Q option (C++ namespaces)
+* Added wsdl2h -b option (bi-directional operations for duplex services)
+- Removed gsoap-03-initext.diff, merged upstream
+
+-------------------------------------------------------------------
+Tue Sep  4 03:58:01 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.8.9
+* Added examples to interoperate with WCF basicHttp,
+  basicTransportSecurity, basicMessageSecurity, and wsDualHttp.
+* Added soapcpp2 option -A for service dispatching based on Action
+  values only.
+* Added wsdl2h option -z3.
+* Added wsse support for WS-SecureConversation.
+* Added wsrm5 WS-ReliableMessaging 1.0 2005.
+* Added iOS plugin with examples.
+* Improved WS-Policy analysis and reporting.
+* Fixed and improved wsse plugin for WS-Security interoperability
+  with WCF and other implementations (required a small API change).
+* Fixed HTTP headers for NTLM.
+* Fixed httpda plugin OpenSSL init crash in md5evp.c.
+- Update to new upstream release 2.8.10
+* Added soapcpp2 -Q option (C++ namespaces).
+* Added wsdl2h -b option (bi-directional operations for duplex
+  services).
+* Updated WS-Addressing and WS-ReliableMessaging plugins,
+  documentation, and examples.
+
+-------------------------------------------------------------------
+Fri Mar  9 10:03:18 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-GPL-2.0+-with-openssl-exception
+  gsoap allows linking against openssl. Use the SUSE- proprietary prefix
+  until spdx.org accepts this license
+
+-------------------------------------------------------------------
+Tue Feb  7 13:09:08 UTC 2012 - mseben@gmail.com
+
+- Update to gsoap 2.8.7
+* Added new REST examples.
+* Added libary versioning check to ensure project builds are
+  consistent.
+* Improved interoperability of wsdl2h output wrt. to element
+  qualification.
+* Renamed TANDEM to TANDEM_NONSTOP to prevent naming conflicts.
+* Fixed WS-Discovery URL.
+* Fixed soapcpp2 option -i and -j server chaining.
+- changes in version 2.8.6
+* Improved WS-Security compatibility.
+* Fixed multi and cyclic WSDL import.
+* Fixed tags of qualified referenced elements.
+* Fixed C builds for improved portability.
+- changes in version 2.8.5
+* Fixed build issues with WS-Discovery.
+* Fixed HTTP basic auth crash.
+* Fixed WITH_COMPAT and WITH_C_LOCALE.
+* Fixed wsdl2h output for XSD abstract element extraneous ';'.
+
+-------------------------------------------------------------------
+Thu Nov 10 11:40:07 UTC 2011 - jengelh@medozas.de
+
+- Update to gsoap 2.8.4
+* Added NTLM support (enabled with -DWITH_NTLM, requires libntlm).
+* Added WS-Discovery 1.1 support
+* Added //gsoap typed directive to control xsi:type attribuation
+  per namespace.
+* Added SOAP_XML_NOTYPE flag to disable xsi:type attributes.
+* Improved WS-Security encryption (AES,
+  soap_wsse_add_EncryptedKey_encrypt_only).
+* Improved HTTP proxy authentication support (digest and NTLM).
+- Added patch to fix empty error strings (gsoap-04-strerror.diff)
+- Added patch to avoid calling IPv6-only socket options on non-IPv6
+  sockets (gsoap-05-ipv6.diff)
+
+-------------------------------------------------------------------
+Tue Oct 18 15:39:46 UTC 2011 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

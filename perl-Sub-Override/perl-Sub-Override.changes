@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Tue Jun  4 17:18:39 UTC 2013 - coolo@suse.com
+
+- updated to 0.09
+      Switch from Test::Exception to Test::Fatal.
+      Fix two typos on the POD. Patches from Ansgar Burchardt and david.skyba.
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:45 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Aug 23 07:43:44 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+- changelog to changes file
+
+-------------------------------------------------------------------
+Wed Jun 21 20:38:00 UTC 2006 - jfunk@funktronics.ca
+
+- Build under buildservice
+
+-------------------------------------------------------------------
+Fri Nov 11 08:34:11 UTC 2005 - jfunk@funktronics.ca
+
+- Update
+- Build for SL10
+
+-------------------------------------------------------------------
+Thu May 12 06:23:45 UTC 2005 - jfunk@funktronics.ca
+
+- Update
+- Build for SL93
+
+-------------------------------------------------------------------
+Fri Nov 19 01:22:09 UTC 2004 - jfunk@funktronics.ca
+
+- Initial release
+

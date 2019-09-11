@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Wed Mar  6 19:28:58 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 2.1.0
+  + New Features:
+    * Added back read/write support for unicode field names. 
+    * Improved Record representation
+    * More support for geojson on Reader, ShapeRecord, ShapeRecords, and shapes()
+  + Bug fixes:
+    * Fixed error when reading optional m-values
+    * Fixed Record attribute autocomplete in Python 3
+    * Misc readme cleanup
+- Update to version 2.0.1
+  + Fix pip install setup.py README decoding error. 
+- Update to version 2.0.0
+  + New Features:
+    * Full support for unicode text, with custom encoding, and exception handling. 
+      > Means that the Reader returns unicode, and the Writer accepts unicode. 
+    * PyShp has been simplified to a pure input-output library using the Reader and Writer classes, dropping the Editor class. 
+    * Switched to a new streaming approach when writing files, keeping memory-usage at a minimum:
+      > Specify filepath/destination and text encoding when creating the Writer. 
+      > The file is written incrementally with each call to shape/record. 
+      > Adding shapes is now done using dedicated methods for each shapetype. 
+    * Reading shapefiles is now more convenient:
+      > Shapefiles can be opened using the context manager, and files are properly closed. 
+      > Shapefiles can be iterated, have a length, and supports the geo interface. 
+      > New ways of inspecing shapefile metadata by printing. [@megies]
+      > More convenient accessing of Record values as attributes. [@philippkraft]
+      > More convenient shape type name checking. [@megies] 
+    * Add more support and documentation for MultiPatch 3D shapes. 
+    * The Reader "elevation" and "measure" attributes now renamed "zbox" and "mbox", to make it clear they refer to the min/max values. 
+    * Better documentation of previously unclear aspects, such as field types. 
+  + Bug Fixes:
+    * More reliable/robust:
+      > Fixed shapefile bbox error for empty or point type shapefiles. [@mcuprjak]
+      > Reading and writing Z and M type shapes is now more robust, fixing many errors, and has been added to the documentation. [@ShinNoNoir]
+      > Improved parsing of field value types, fixed errors and made more flexible. 
+      > Fixed bug when writing shapefiles with datefield and date values earlier than 1900 [@megies]
+    * Fix some geo interface errors, including checking polygon directions.
+    * Bug fixes for reading from case sensitive file names, individual files separately, and from file-like objects. [@gastoneb, @kb003308, @erickskb]
+    * Enforce maximum field limit. [@mwtoews]
+- Update to version 1.2.11
+  * Fixed bugs when reading and writing empty shapefiles. 
+  * Fixed bug when writing null geometry.
+  * Fixed misc data type errors.
+  * Fixed error when reading files with wrong record length.
+  * Use max field precision when saving decimal numbers. 
+  * Improved shapetype detection. 
+  * Expanded docs on data types. 
+  * General doc additions and travis icon. 
+- Update to version 1.2.10
+  * Bump version to fix pip install issue.
+- Update to version 1.2.8
+  * Configured Travis-CI 
+- Update to version 1.2.5
+  * Reader speed up through batch unpacking bytes
+  * Merge README text into markdown file. Remove text version.
+  * Fixed parsing of number of points for some shapes (MULTIPOINTM, MULTIPOINTZ)
+- Update to version 1.2.3
+  * shapefile.py (u) Bugfix for Python3 with Reader.iterShapeRecords()
+- Update to version 1.2.2
+  * Raise ShapefileException for runtime errors rather than using `assert()`
+  * Return None when parsing (illegal) NULL attribute values in numeric and date fields, like those produced by QGIS
+  * Update link to "XBase File Format Description"
+  * Added `Reader.iterShapeRecords` to help work with larger files
+  * Update README.txt
+- Update to version 1.2.1
+  * shapefile.py (u) fixed bug which failed to properly read some dbf fields in Python
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Sat Dec 21 07:44:20 UTC 2013 - ocefpaf@gmail.com
+
+- Updated to release 91; version 1.2.0
+
+-------------------------------------------------------------------
+Fri Jul 12 16:24:11 UTC 2013 - ocefpaf@gmail.com
+
+- Updated to version 1.1.8
+
+-------------------------------------------------------------------
+Fri Jul 12 15:49:31 UTC 2013 - ocefpaf@gmail.com
+
+- First OpenSUSE release; version 1.1.4
+

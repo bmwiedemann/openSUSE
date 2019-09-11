@@ -1,0 +1,221 @@
+-------------------------------------------------------------------
+Wed Aug 14 15:37:39 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.2.1:
+  * Lots of changes, see provided CHANGELOG
+- Drop no longer needed re2c-nogenerationdatedefault.patch
+- Enable profile guided optimization during build
+
+-------------------------------------------------------------------
+Mon Mar 11 00:09:53 UTC 2019 - Chris Coutinho <chrisbcoutinho@gmail.com>
+
+- Update re2c to 1.1.1
+  * Fixed bug #211 re2c '-V' throws 'std::out_of_range' (version to vernum conversion).
+  * Replaced Kuklewicz POSIX disambiguation algorithm with Okui algorithm.
+  * Optimized GOR1 algorithm (computation of tagged epsilon-closure).
+  * Added option "--conditions" (an alias for "-c" and "--start-conditions").
+  * Fixed bug #201 Bugs with option: 're2c:flags:no-debug-info'.
+  * Reworked first part of TDFA paper.
+
+-------------------------------------------------------------------
+Thu Mar 15 10:11:22 UTC 2018 - mpluskal@suse.com
+
+- Modernise spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Nov  9 15:02:34 UTC 2017 - aavindraa@gmail.com
+
+- Update to version 1.0.3:
+  * Fixes build failure on Mac OS X 10.5.8 with gcc 4.2.1
+  * Documentation fix
+  * 2 examples removed
+
+-------------------------------------------------------------------
+Mon Sep  4 12:02:10 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.0.2:
+  * Fixed bug #194 “Build with --enable-docs”
+  * Updated documentation.
+- Changes for version 1.0.1:
+  * Fixed bug #193 “1.0 build failure on macOS: error: calling a
+    * private constructor of class ‘re2c::Rule’”
+- Changes for version 1.0:
+  * Added several new options
+  * Added new inplace confgurations
+  * Added warning -Wnondeterministic-tags
+  * Added fuzz-testing scripts
+  * Added paper “Tagged Deterministic Finite Automata with Lookahead”
+  * See provided CHANGELOG for full list of new features
+  * Fixed bugs:
+    + #121 “trailing contexts are fundamentally broken”
+    + #135 “In installation make check give syntax error”
+    + #137 “run_tests.sh fail when running configure script with absolute path”
+    + #138 “website improvement”
+    + #141 “Tests under Windows”
+    + #142 “segvault with null terminated input”
+    + #145 “Values for enum YYCONDTYPE are not generated when default rules with conditions are used”
+    + #147 “Please add symbol name to “can’t find symbol” error message”
+    + #152 “Line number in #line directive after enum YYCONDTYPE is 0-based”
+    + #156 “Build with Visual Studio 14 2015: symbol name conflict”
+    + #158 “Inconsistent forward declaration of struct/class vs definition”
+    + #160 “Open text files with “wb” causes issues on Windows”
+    + #162 “Reading files with “rb” causes issues in Windows”
+    + #165 “Trailing context consumed if initial expression matches it”
+    + #176 “re2c help message is too wide for most terminals”
+    + #184 “Small documentation issue”
+
+-------------------------------------------------------------------
+Sat Jan 30 21:50:07 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.16
+  * Fixed bug #127 "code generation error with wide chars and 
+    bitmaps (omitted 'goto' statement)"
+  * Added DFA minimization and option '--dfa-minimization 
+    <table | moore>'
+  * Fixed bug #128 "very slow DFA construction (resulting in a very
+    large DFA)"
+  * Fixed bug #132 "test failure on big endian archs with 0.15.3"
+- Make building more verbose
+
+-------------------------------------------------------------------
+Fri Jan  8 11:17:08 UTC 2016 - tchvatal@suse.com
+
+- Version update to 0.15.3:
+  * Syntax expansion and various updates
+  * See CHANGELOG for in-depth details
+- Rebase patch to apply:
+  * re2c-nogenerationdatedefault.patch
+
+-------------------------------------------------------------------
+Mon Oct  5 14:31:57 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.14.3
+  * applied patch '#27 re2c crashes reading files containing %{ %}'
+  * dropped distfiles for MSVC (they are broken anyway)
+- Changes for 0.14.2
+  * fixed #57 Wrong result only if another rule is present
+
+-------------------------------------------------------------------
+Fri Mar 13 14:23:10 UTC 2015 - tchvatal@suse.com
+
+- Version bump to latest 0.14.1:
+  * Plenty of bugfixes all around
+
+-------------------------------------------------------------------
+Tue Feb  3 11:35:34 UTC 2015 - crrodriguez@opensuse.org
+
+- re2c-nogenerationdatedefault.patch: Default to 
+  --no-generation-date to avoid build-compare problems [BNC#915937]
+
+-------------------------------------------------------------------
+Thu Dec 11 23:03:37 UTC 2014 - crrodriguez@opensuse.org
+
+- make test currently does nothing, make check however
+  executes the test suite.
+
+-------------------------------------------------------------------
+Thu Dec 11 21:36:57 UTC 2014 - crrodriguez@opensuse.org
+
+- version 0.13.7.5 
+* Added UTF-8 and UTF-16 support.
+* fixed PHP HEREDOC problems.
+
+-------------------------------------------------------------------
+Mon May 12 15:03:28 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Sort out the %prep finds that are no longer needed.
+
+-------------------------------------------------------------------
+Sat Aug  3 03:10:02 UTC 2013 - crrodriguez@opensuse.org
+
+- version 0.13.6
+* allow Yacc-style %{code brackets}%
+* allow C++ // comments
+* Fixed inplace configuration in -e mode
+* Fixed Wrong start_label in -c mode.
+* Fixed Unescaped backslash in file name of #line directive
+
+-------------------------------------------------------------------
+Fri Sep  9 20:17:36 UTC 2011 - andrea.turrini@gmail.com
+
+- Fixed typo in re2c.spec
+
+-------------------------------------------------------------------
+Tue Nov 23 12:52:50 UTC 2010 - cristian.rodriguez@opensuse.org
+
+-  Use smp_flags
+- when rebuilding the scanner use -g, to generate GCC specific
+  code that is slightly faster.
+
+-------------------------------------------------------------------
+Thu Jun 26 18:36:53 CEST 2008 - mmarek@suse.cz
+
+- updated to version 0.13.5
+  * Fixed sf#1952896 Segfault in re2c::Scanner::scan.
+  * Fixed sf#1952842 Regression.
+
+-------------------------------------------------------------------
+Mon Apr  7 13:06:36 CEST 2008 - mmarek@suse.cz
+
+- updated to version 0.13.4
+  * Added transparent handling of #line directives in input files.
+  * Added re2c:yyfill:check inplace configuration.
+  * Added re2c:define:YYSETSTATE:naked inplace configuration.
+  * Added re2c:flags:w and re2c:flags:u inplace configurations.
+  * Added the ability to add rules in 'use:re2c' blocks.
+  * Changed -r flag to accept only 'rules:re2c' and 'use:re2c'
+    blocks.
+
+-------------------------------------------------------------------
+Mon Mar 17 20:33:16 CET 2008 - crrodriguez@suse.de
+
+- update to version 0.13.3 , required for new PHP language parser
+    * Added -r flag to allow reuse of scanner definitions.
+    * Added -F flag to support flex syntax in rules.
+    * Fixed SEGV in scanner that occurs with very large blocks.
+    * Fixed issue with unused yybm.
+    * Partial support for flex syntax.
+    * Changed to allow /* comments with -c switch.
+    * Added flag -D/--emit-dot.
+
+-------------------------------------------------------------------
+Mon Feb  4 14:20:48 CET 2008 - mmarek@suse.cz
+
+- updated to version 0.13.1
+  * build fixes for non-linux platforms only
+
+-------------------------------------------------------------------
+Mon Jun 25 18:38:49 CEST 2007 - dmueller@suse.de
+
+- add gcc-c++ buildrequires
+
+-------------------------------------------------------------------
+Mon Jun 25 11:58:00 CEST 2007 - dmueller@suse.de
+
+- update to versoin 0.13.0:
+  * Fixed issue with short form of switches and parameter if not first switch.
+  * Fixed #1708378 segfault in actions.cc. 
+  * Added -c and -t to generate scanners with (f)lex-like condition support.
+
+-------------------------------------------------------------------
+Fri May  4 01:41:09 CEST 2007 - dmueller@suse.de
+
+- update to version 0.12.0
+
+-------------------------------------------------------------------
+Sun Apr  1 22:00:58 CEST 2007 - mrueckert@suse.de
+
+- update to version 0.11.3
+
+-------------------------------------------------------------------
+Sun Mar  4 09:41:10 CET 2007 - mrueckert@suse.de
+
+- update to version 0.11.2
+
+-------------------------------------------------------------------
+Tue Feb 20 21:06:08 CET 2007 - mrueckert@suse.de
+
+- This version fixes a warning in the generated code that some
+  compilers issue. No other changes have been made.
+

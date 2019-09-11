@@ -1,0 +1,138 @@
+From 2dcee9c2773f588cc5ca040b1d22c1e8036dcbf7 Mon Sep 17 00:00:00 2001
+From: Mihai Dinca <mdinca@suse.de>
+Date: Tue, 7 May 2019 12:24:35 +0200
+Subject: [PATCH] Fix async-batch multiple done events
+
+---
+ salt/cli/batch_async.py            | 17 ++++++++++++-----
+ tests/unit/cli/test_batch_async.py | 20 +++++++++++++-------
+ 2 files changed, 25 insertions(+), 12 deletions(-)
+
+diff --git a/salt/cli/batch_async.py b/salt/cli/batch_async.py
+index 9c20b2fc6e..8c8f481e34 100644
+--- a/salt/cli/batch_async.py
++++ b/salt/cli/batch_async.py
+@@ -84,6 +84,7 @@ class BatchAsync(object):
+             listen=True,
+             io_loop=ioloop,
+             keep_loop=True)
++        self.scheduled = False
+ 
+     def __set_event_handler(self):
+         ping_return_pattern = 'salt/job/{0}/ret/*'.format(self.ping_jid)
+@@ -116,8 +117,7 @@ class BatchAsync(object):
+                     if minion in self.active:
+                         self.active.remove(minion)
+                         self.done_minions.add(minion)
+-                        # call later so that we maybe gather more returns
+-                        self.event.io_loop.call_later(self.batch_delay, self.schedule_next)
++                        self.schedule_next()
+ 
+     def _get_next(self):
+         to_run = self.minions.difference(
+@@ -137,7 +137,7 @@ class BatchAsync(object):
+         self.active = self.active.difference(self.timedout_minions)
+         running = batch_minions.difference(self.done_minions).difference(self.timedout_minions)
+         if timedout_minions:
+-            self.event.io_loop.call_later(self.batch_delay, self.schedule_next)
++            self.schedule_next()
+         if running:
+             self.event.io_loop.add_callback(self.find_job, running)
+ 
+@@ -189,7 +189,7 @@ class BatchAsync(object):
+                 "metadata": self.metadata
+             }
+             self.event.fire_event(data, "salt/batch/{0}/start".format(self.batch_jid))
+-            yield self.schedule_next()
++            yield self.run_next()
+ 
+     def end_batch(self):
+         left = self.minions.symmetric_difference(self.done_minions.union(self.timedout_minions))
+@@ -204,8 +204,14 @@ class BatchAsync(object):
+             self.event.fire_event(data, "salt/batch/{0}/done".format(self.batch_jid))
+             self.event.remove_event_handler(self.__event_handler)
+ 
+-    @tornado.gen.coroutine
+     def schedule_next(self):
++        if not self.scheduled:
++            self.scheduled = True
++            # call later so that we maybe gather more returns
++            self.event.io_loop.call_later(self.batch_delay, self.run_next)
++
++    @tornado.gen.coroutine
++    def run_next(self):
+         next_batch = self._get_next()
+         if next_batch:
+             self.active = self.active.union(next_batch)
+@@ -225,3 +231,4 @@ class BatchAsync(object):
+                 self.active = self.active.difference(next_batch)
+         else:
+             self.end_batch()
++        self.scheduled = False
+diff --git a/tests/unit/cli/test_batch_async.py b/tests/unit/cli/test_batch_async.py
+index d519157d92..441f9c58b9 100644
+--- a/tests/unit/cli/test_batch_async.py
++++ b/tests/unit/cli/test_batch_async.py
+@@ -111,14 +111,14 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
+ 
+     @tornado.testing.gen_test
+     def test_start_batch_calls_next(self):
+-        self.batch.schedule_next = MagicMock(return_value=MagicMock())
++        self.batch.run_next = MagicMock(return_value=MagicMock())
+         self.batch.event = MagicMock()
+         future = tornado.gen.Future()
+         future.set_result(None)
+-        self.batch.schedule_next = MagicMock(return_value=future)
++        self.batch.run_next = MagicMock(return_value=future)
+         self.batch.start_batch()
+         self.assertEqual(self.batch.initialized, True)
+-        self.assertEqual(len(self.batch.schedule_next.mock_calls), 1)
++        self.assertEqual(len(self.batch.run_next.mock_calls), 1)
+ 
+     def test_batch_fire_done_event(self):
+         self.batch.targeted_minions = {'foo', 'baz', 'bar'}
+@@ -154,7 +154,7 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
+         future = tornado.gen.Future()
+         future.set_result({'minions': ['foo', 'bar']})
+         self.batch.local.run_job_async.return_value = future
+-        ret = self.batch.schedule_next().result()
++        ret = self.batch.run_next().result()
+         self.assertEqual(
+             self.batch.local.run_job_async.call_args[0],
+             ({'foo', 'bar'}, 'my.fun', [], 'list')
+@@ -253,7 +253,7 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
+         self.assertEqual(self.batch.done_minions, {'foo'})
+         self.assertEqual(
+             self.batch.event.io_loop.call_later.call_args[0],
+-            (self.batch.batch_delay, self.batch.schedule_next))
++            (self.batch.batch_delay, self.batch.run_next))
+ 
+     def test_batch__event_handler_find_job_return(self):
+         self.batch.event = MagicMock(
+@@ -263,10 +263,10 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
+         self.assertEqual(self.batch.find_job_returned, {'foo'})
+ 
+     @tornado.testing.gen_test
+-    def test_batch_schedule_next_end_batch_when_no_next(self):
++    def test_batch_run_next_end_batch_when_no_next(self):
+         self.batch.end_batch = MagicMock()
+         self.batch._get_next = MagicMock(return_value={})
+-        self.batch.schedule_next()
++        self.batch.run_next()
+         self.assertEqual(len(self.batch.end_batch.mock_calls), 1)
+ 
+     @tornado.testing.gen_test
+@@ -342,3 +342,9 @@ class AsyncBatchTestCase(AsyncTestCase, TestCase):
+             self.batch.event.io_loop.add_callback.call_args[0],
+             (self.batch.find_job, {'foo'})
+         )
++
++    def test_only_on_run_next_is_scheduled(self):
++        self.batch.event = MagicMock()
++        self.batch.scheduled = True
++        self.batch.schedule_next()
++        self.assertEqual(len(self.batch.event.io_loop.call_later.mock_calls), 0)
+-- 
+2.21.0
+
+

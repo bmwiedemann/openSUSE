@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Thu Mar 21 12:51:03 UTC 2019 - andy@onthewings.net
+
+- Update to 0.1.10:
+  * Parse warning in META file. 
+- Add b40c69380f724933c462ede4b926e3c4f4182d09.patch to enable
+  reproducible builds (bsc#1087961).
+
+-------------------------------------------------------------------
+Fri Mar  9 16:31:56 UTC 2018 - jengelh@inai.de
+
+- Trim filler wording from descriptions.
+- Replace old $RPM_* shell vars by macros.
+
+-------------------------------------------------------------------
+Fri Mar  9 02:34:41 UTC 2018 - andy@onthewings.net
+
+- Initial packaging.

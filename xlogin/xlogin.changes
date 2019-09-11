@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Tue Nov 18 23:05:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in xtelnet script:
+  option '-e' of 'echo' command may be unsupported in other
+  POSIX-complete shells
+- add patches:
+  * xlogin-0.2-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Sun Nov  2 00:48:23 UTC 2014 - crrodriguez@opensuse.org
+
+- This package oinly buildRequires imake, not xorg-x11-devel 
+  it is also, a noarch package.
+
+-------------------------------------------------------------------
+Mon Aug 21 19:42:51 CEST 2006 - werner@suse.de
+
+- Make it work with X.org 7.1
+
+-------------------------------------------------------------------
+Sun Aug  6 15:23:26 CEST 2006 - cthiel@suse.de
+
+- fix build with X.org 7.1
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:13 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 11 09:58:49 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Tue Jun  3 10:33:20 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Wed Sep 12 14:12:03 CEST 2001 - werner@suse.de
+
+- Do not use -n if rsh is used within a pipe
+
+-------------------------------------------------------------------
+Fri Mar  9 02:43:20 CET 2001 - ro@suse.de
+
+- added xf86 
+
+-------------------------------------------------------------------
+Fri Dec 15 13:50:08 CET 2000 - kukuk@suse.de
+
+- fix requires
+
+-------------------------------------------------------------------
+Tue Dec 12 14:18:20 CET 2000 - werner@suse.de
+
+- Make ssh work proper
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+----------------------------------------------------------------------------
+Wed Jan 22 21:10:02 MET 1997 - werner@suse.de
+
+  - Erstellung der Sourcen und des Paketes
+    * xlogin: Skript zum Start eines remoten xterms
+          auf dem lokalen Display.
+    * xtelnet: Skript zum Start eines lolkalen xterms
+          mit einer telnet-Session auf dem lokalen Display.
+

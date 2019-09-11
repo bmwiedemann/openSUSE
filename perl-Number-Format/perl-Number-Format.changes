@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Mon Jun 29 01:24:48 UTC 2015 - coolo@suse.com
+
+- updated to 1.75
+   see /usr/share/doc/packages/perl-Number-Format/CHANGES
+
+  Changes for version 1.75 (June 25, 2015)
+  ------------------------
+    - Export only necessary from POSIX (RT#99970, thanks Alexandr Ciornii)
+    - Upgrade Makefile.PL (thanks Alexandr Ciornii)
+    - Fix testing issue with missing locales (RT 97607, 97766, thanks to KHW)
+      (thanks David Solimano)
+    - Fix testing issue with bad Russian data on some platforms (RT 92666)
+      (thanks David Solimano)
+    - Add t/bigfloat.t (thanks Paul Miller / Alexandr Ciornii)
+  
+  Changes for version 1.74 (April 19, 2011)
+  ------------------------
+    - Only Perl 5.10.0 and newer supported
+    - Allow multi-character (e.g. "&nbsp;" for thousands_sep) (thanks
+      Nick Patch; RT 65489)
+    - Strip out illegal negative values returned by localeconv(),
+      observed on Windows - see @IGNORE_NEGATIVE (thanks Adam Kennedy;
+      RT 56802)
+    - Manage warnings when undef is passed to methods (RT 48038)
+    - Fix round() for Math::BigFloat objects (RT 62059)
+
+-------------------------------------------------------------------
+Thu Jan 17 12:08:12 UTC 2013 - cfarrell@suse.com
+
+- license update: Artistic-1.0 or GPL-1.0+
+  See the bottom of README
+
+-------------------------------------------------------------------
+Thu Dec 06 16:28:12 UTC 2012 - mopp@gmx.net
+
+- removed perl-macros for openSUSE 11.4 and higher.
+
+-------------------------------------------------------------------
+Mon Aug 22 14:50:24 UTC 2011 - lars@linux-schulserver.de
+
+- update to 1.73
+  + Add support for IEC60027 (Ki, Mi, Gi prefixes) with mode option
+  + Minor tweak to format_bytes test for German locales
+  + many bug fixes
+  + for more details, please see:
+  /usr/share/doc/packages/perl-Number-Format/CHANGES
+- specfile rebuild via cpanspec
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:15 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:48 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:53 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+

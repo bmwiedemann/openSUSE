@@ -1,0 +1,50 @@
+--- src/autoconf
++++ src/autoconf	2008-03-04 12:33:44.000000000 +0000
+@@ -249,6 +249,7 @@ then
+ fi
+ 
+ cat >grepfor <<HERE
++#!/bin/sh
+ $FGREP -e "\$1" _autotst.rrr >$DEVNULL && echo "\$2" >>$ACONF
+ HERE
+ chmod 0755 grepfor
+@@ -1017,14 +1018,38 @@ cat >_autotst.c <<HERE
+ #include <pwd.h>
+ int main()
+ { struct passwd*pw=getpwuid(0);
+-  return (pw->pw_passwd==0)+(pw->pw_class==0)+(pw->pw_gecos==0);
++  return (pw && pw->pw_passwd);
+ }
+ HERE
+ 
+ echo 'Testing for various struct passwd members'
+ $MAKE _autotst.$O >_autotst.rrr 2>&1
+ grepfor pw_passwd '#define NOpw_passwd'
++$RM _autotst.$O _autotst.rrr
++
++cat >_autotst.c <<HERE
++#include <pwd.h>
++int main()
++{ struct passwd*pw=getpwuid(0);
++  return (pw && pw->pw_class==0);
++}
++HERE
++
++echo 'Testing for various struct passwd members'
++$MAKE _autotst.$O >_autotst.rrr 2>&1
+ grepfor pw_class  '#define NOpw_class'
++$RM _autotst.$O _autotst.rrr
++
++cat >_autotst.c <<HERE
++#include <pwd.h>
++int main()
++{ struct passwd*pw=getpwuid(0);
++  return (pw && pw->pw_gecos==0);
++}
++HERE
++
++echo 'Testing for various struct passwd members'
++$MAKE _autotst.$O >_autotst.rrr 2>&1
+ grepfor pw_gecos  '#define NOpw_gecos'
+ $RM _autotst.$O _autotst.rrr
+ 

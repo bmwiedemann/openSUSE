@@ -1,0 +1,40 @@
+From c95cb269a6f0cb57c1204c29bec30d40e41eb2ef Mon Sep 17 00:00:00 2001
+From: Ralph Bean <rbean@redhat.com>
+Date: Thu, 2 Feb 2017 12:19:00 -0500
+Subject: [PATCH] Handle /etc/resolv.conf
+
+---
+ DNS/Base.py | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/DNS/Base.py b/DNS/Base.py
+index 4a70613..b5d97c8 100644
+--- a/DNS/Base.py
++++ b/DNS/Base.py
+@@ -11,7 +11,7 @@ Changes for Python3 port © 2011-14 Scott Kitterman <scott@kitterman.com>
+     Base functionality. Request and Response classes, that sort of thing.
+ """
+ 
+-import socket, string, types, time, select
++import socket, string, types, time, select, warnings
+ from . import Type,Class,Opcode
+ import asyncore
+ #
+@@ -49,8 +49,12 @@ defaults= { 'protocol':'udp', 'port':53, 'opcode':Opcode.QUERY,
+ 
+ def ParseResolvConf(resolv_path="/etc/resolv.conf"):
+     "parses the /etc/resolv.conf file and sets defaults for name servers"
+-    with open(resolv_path, 'r') as stream:
+-        return ParseResolvConfFromIterable(stream)
++    try:
++        with open(resolv_path, 'r') as stream:
++            return ParseResolvConfFromIterable(stream)
++    except FileNotFoundError as e:
++        warnings.warn(e)
++        return
+ 
+ def ParseResolvConfFromIterable(lines):
+     "parses a resolv.conf formatted stream and sets defaults for name servers"
+-- 
+2.9.3
+

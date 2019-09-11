@@ -1,0 +1,20 @@
+--- cloudinit/util.py.orig
++++ cloudinit/util.py
+@@ -35,6 +35,7 @@ import time
+ from errno import ENOENT, ENOEXEC
+ 
+ from base64 import b64decode, b64encode
++from signal import signal, SIGPIPE, SIG_DFL
+ from six.moves.urllib import parse as urlparse
+ 
+ import six
+@@ -2031,7 +2032,8 @@ def subp(args, data=None, rcs=None, env=
+     try:
+         sp = subprocess.Popen(bytes_args, stdout=stdout,
+                               stderr=stderr, stdin=stdin,
+-                              env=env, shell=shell)
++                              env=env, shell=shell,
++                              preexec_fn=lambda: signal(SIGPIPE, SIG_DFL))
+         (out, err) = sp.communicate(data)
+     except OSError as e:
+         if status_cb:

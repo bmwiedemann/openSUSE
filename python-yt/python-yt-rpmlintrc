@@ -1,0 +1,4 @@
+addFilter("devel-file-in-non-devel-package .*\.c")
+addFilter("devel-file-in-non-devel-package .*\.h")
+addFilter("no-soname .*\.so")
+addFilter("zero-length .*\.py")

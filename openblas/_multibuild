@@ -1,0 +1,7 @@
+<multibuild>
+  <package>serial</package>
+  <package>openmp</package>
+  <package>pthreads</package>
+  <package>gnu-hpc</package>
+  <package>gnu-hpc-pthreads</package>
+</multibuild>

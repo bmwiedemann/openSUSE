@@ -1,0 +1,191 @@
+-------------------------------------------------------------------
+Thu Jul 18 13:26:46 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.23.0:
+  * Translations update
+  * silent output
+  * Fix HTTPD config notice
+  * help: update copyright
+- remove patch:
+  * mate-user-share-gtk-3.20.patch: we don't support gtk3.22
+    anymore
+- build require gtk >= 3.22 and glib >= 2.50
+- reduce duplicated files with fdupes
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * caja-share-bar: Avoid deprecated g_type_class_add_private.
+  * Drop obsolete configure option from distcheck.
+  * Use make functions for HELP_LINGUAS.
+  * Disable deprecation warnings for distcheck.
+  * file-share-properties.ui: Avoid deprecations.
+  * Use the same legal.xml file.
+  * Update translations.
+- Rebase mate-user-share-gtk-3.20.patch.
+
+-------------------------------------------------------------------
+Fri Jun 22 17:10:44 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Require GTK+ 3.22 and GLib 2.50.
+   * build: Use correct macros to fix cross-build.
+   * don't use deprecated gtk_show_uri().
+  * Update translations.
+- Add mate-user-share-gtk-3.20.patch: Restore GLib 2.48 and
+  GTK+ 3.20 support.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * Move to GTK+3 (>= 3.14), drop the GTK+2 code and --with-gtk
+    build option.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Build: Use 'm4' dir for m4 macros, like in other projects.
+  * GTK+3: Port from libunique to GtkApplication.
+  * Make distcheck use a currently selected GTK+ version.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * Drop MateConf migration script.
+  * Update translations.
+  * Fix Changelog generation
+
+-------------------------------------------------------------------
+Wed Jan 27 06:26:36 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0:
+  * Don't translate Keywords field in .desktop files.
+  * Drop MateConf migration script.
+  * GTK+3: Fix some deprecations.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0.
+
+-------------------------------------------------------------------
+Wed Oct 14 22:24:48 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0:
+  * Switch to org.gnome.SessionManager (used for BT services
+    start/stop).
+  * Drop useless dependency on dbus-1.
+  * Drop Apache 2.0 support.
+  * Some more cleanups.
+
+-------------------------------------------------------------------
+Wed May  6 20:14:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.0 (changes since 1.9.0):
+  * Add missing variable type in user_share.c.
+  * Fix logic flow (out-of-bounds array access if bluetooth is
+    disabled).
+  * Fix memory leak.
+  * Gtk3: Fix UI load.
+  * Add user-share caja extension ini file.
+  * Rename extension lib to libcaja-user-share.
+  * Fix Glib >= 2.43 compatibility.
+  * [obexftp] Fix spacing a bit.
+  * Update translations.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Sun Nov 23 16:55:06 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.0 (unstable)
+  + Add GTK3 support
+- Bump version requirements
+
+-------------------------------------------------------------------
+Wed Mar  5 12:59:24 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Thu Feb 20 22:04:27 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.90 (unstable)
+  + restore user-guide and port it to yelp.
+  + disable bluetooth by default.
+- Remove useless xz requirement
+- Upstream use yelp-tools instead of mate-doc-utils; drop mate-doc-utils
+  requirement and replace it with yelp-tools
+- Add itstool and gnome-doc-utils require; new upstream dependency
+
+-------------------------------------------------------------------
+Wed Jan  1 16:06:15 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.6.1
+  + Fix data passed to disabled_timeout_callback
+    In mate-user-share/src/user_share.c, the wrong variable is being
+    passed as a gsettings pointer to the disabled_timeout_callback.
+    https://bugs.launchpad.net/linuxmint/+bug/1005649/comments/36
+  + Added manpage.
+    Closes #10 (https://github.com/mate-desktop/mate-user-share/issues/10)
+  + fix automake-1.13 deprecations
+  + Add support for Apache HTTPD 2.4
+  + Use mate-session to track the active session
+  + Require dbus >= 1.1.1
+  + Fix turning on sharing not starting mate-user-share
+  + OpenBSD suffers from the same httpd race condition as the other BSDs
+  + build: Add build options summary
+  + make bluetooth really optional
+  + add desktop files for autostart folder
+  + Add support for Apache HTTPD 2.4
+  + fix typo in share-extension.c
+- Disable bluetooth support; mate-bluetooth has not been ported to bluez5
+  yet
+
+-------------------------------------------------------------------
+Thu Sep 19 14:20:43 UTC 2013 - johann.luce@wanadoo.fr
+
+- Fix %exclude problem for factory
+  Add macro %desktop_database_postun %desktop_database_post
+
+-------------------------------------------------------------------
+Wed Apr  3 23:49:03 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.0
+  + no changes since 1.5.1
+
+-------------------------------------------------------------------
+Sat Mar 23 14:49:59 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5.1
+  + fix GSettings path
+  + use libnotify instead of libmatenotify
+  + add mateconf-gsettings-data-convert file
+- Replace libmatenotify BuildRequires with libnotify
+- Do not include mateconf-gsettings-data-convert file in package
+
+-------------------------------------------------------------------
+Sun Dec  9 16:28:29 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.0
+  + only add Bluetooth support to build if Bluetooth is available
+  + migration to gsettings and fixes
+  + lots of other fixes
+
+-------------------------------------------------------------------
+Tue Sep 11 22:36:14 UTC 2012 - nmo.marques@gmail.com
+
+- Initial package from version 1.4.1
+

@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Fri Mar 29 09:53:27 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.20.0
+  * Fix url_query_cleaner to do not append "?" to urls without a 
+    query string (issue #109)
+  * Add support for Python 3.7 and drop Python 3.3 (issue #113)
+  * Add `w3lib.url.add_or_replace_parameters` helper (issue #117)
+  * Documentation fixes (issue #115)
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:15 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Nov 16 18:49:26 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.19.0
+  * Add a workaround for CPython segfault (https://bugs.python.org/issue32583)
+    which affect w3lib.encoding functions. This is technically **backwards
+    incompatible** because it changes the way non-decodable bytes are replaced
+    (in some cases instead of two ``\ufffd`` chars you can get one).
+    As a side effect, the fix speeds up decoding in Python 3.4+.
+  * Add 'encoding' parameter for w3lib.http.basic_auth_header.
+  * Fix pypy testing setup, add pypy3 to CI.
+
+-------------------------------------------------------------------
+Thu Dec 21 22:45:16 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.18.0:
+  * No upstream changelog available
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Thu Jun  2 16:54:55 UTC 2016 - jacobwinski@gmail.com
+
+- Update to 1.14.2 (2016-04-11)
+  * fix function import for (deprecated) ``urljoin_rfc`` (issue #51)
+  * only expose wanted functions from ``w3lib.url``, via ``__all__``
+      (see issue #54, https://github.com/scrapy/scrapy/issues/1917)
+- Update to 1.14.1 (2016-04-07)
+  * For bytes URLs, when supplied encoding (or default UTF8) is wrong,
+      ``safe_url_string`` falls back to percent-encoding offending bytes.
+- Update to 1.14.0 (2016-04-06)
+  * proper handling of non-ASCII characters in Python2 and Python3
+  * support IDNs
+  * new `path_encoding` to override default UTF-8 when serializing non-ASCII
+      characters before percent-encoding
+  * html_body_declared_encoding also detects encoding when not sole attribute
+    in ``<meta>``.
+  * Package is now properly marked as ``zip_safe``.
+- Update to 1.13.0 (2015-11-05)
+  * remove_tags removes uppercase tags as well;
+  * ignore meta-redirects inside script or noscript tags by default,
+      but add an option to not ignore them;
+  * replace_entities now handles entities without trailing semicolon;
+  * fixed uncaught UnicodeDecodeError when decoding entities.
+- Update to 1.12.0 (2015-06-29)
+  * meta_refresh regex now handles leading newlines and whitespaces in the url;
+  * include tests folder in source distribution.
+- Update to 1.11.0 (2015-01-13)
+  * url_query_cleaner now supports str or list parameters;
+  * add support for resolving base URLs in <base> tags with attributes
+      before href.
+- Update spec file to reflect new upstream package requirements.
+
+-------------------------------------------------------------------
+Fri Sep  5 10:08:16 UTC 2014 - toddrme2178@gmail.com
+
+- Update to version 1.10.0
+  + See https://github.com/scrapy/w3lib/commits/v1.10.0 for a list
+    of changes.
+
+-------------------------------------------------------------------
+Fri Nov 15 20:36:22 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5
+  + No changelog available
+- Add python-setuptools BuildRequires; new dependency 
+
+-------------------------------------------------------------------
+Wed May 23 21:43:14 UTC 2012 - jfunk@funktronics.ca
+
+- Initial release
+

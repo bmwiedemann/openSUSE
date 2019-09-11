@@ -1,0 +1,53 @@
+Index: bless-0.6.0/doc/user/Makefile.am
+===================================================================
+--- bless-0.6.0.orig/doc/user/Makefile.am
++++ bless-0.6.0/doc/user/Makefile.am
+@@ -1,20 +1,7 @@
+ 
+ DOCS=legal.xml bless-manual.xml
+-OMF=bless-manual.omf
+ FIGURES=$(wildcard figures/*)
+ 
+-CLEANFILES=$(OMF)
+-
+-noinst_SCRIPTS=$(OMF)
+-
+-
+-$(OMF): $(OMF).in
+-	if [ -x `which scrollkeeper-preinstall` ]; then \
+-	    scrollkeeper-preinstall file:$(datadir)/doc/$(PACKAGE_NAME)/user/bless-manual.xml $(OMF).in $(OMF); \
+-	else \
+-	    cp $(OMF).in $(OMF); \
+-	fi
+-
+ doc:
+ 	xsltproc /usr/share/xml/docbook/stylesheet/nwalsh/html/chunk.xsl bless-manual.xml
+ 
+@@ -22,7 +9,7 @@ doc:
+ # Cannot use $(wildcard)... See http://savannah.gnu.org/bugs/?14617
+ dist-hook: doc
+ 	ls *.html > html_file_list
+-	cp --parents $(DOCS) $(OMF).in `cat html_file_list` \
++	cp --parents $(DOCS) `cat html_file_list` \
+ 		     $(FIGURES) $(distdir)
+ 	rm html_file_list
+ 
+@@ -32,17 +19,6 @@ install-data-local:
+ 	$(INSTALL_DATA) $(DOCS) $(wildcard *.html) \
+ 			$(DESTDIR)$(datadir)/doc/$(PACKAGE_NAME)/user
+ 	$(INSTALL_DATA) $(FIGURES) $(DESTDIR)$(datadir)/doc/$(PACKAGE_NAME)/user/figures
+-	$(INSTALL) -d $(DESTDIR)$(datadir)/omf/$(PACKAGE_NAME)
+-	$(INSTALL_DATA) $(OMF) $(DESTDIR)$(datadir)/omf/$(PACKAGE_NAME)
+-if WITH_SCROLLKEEPER
+-	scrollkeeper-update -o $(DESTDIR)$(datadir)/omf/$(PACKAGE_NAME)
+-endif
+ 
+ uninstall-local:
+-	rm -rf $(DESTDIR)$(datadir)/doc/$(PACKAGE_NAME)/user
+-	rm $(DESTDIR)$(datadir)/omf/$(PACKAGE_NAME)/$(OMF)
+-if WITH_SCROLLKEEPER
+-	scrollkeeper-update -o $(DESTDIR)$(datadir)/omf/$(PACKAGE_NAME)
+-endif
+-	rm -rf $(DESTDIR)$(datadir)/omf/$(PACKAGE_NAME)
+-
++	rm -rf $(DESTDIR)$(datadir)/doc/$(PACKAGE_NAME)

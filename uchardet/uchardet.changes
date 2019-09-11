@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Wed Feb 28 20:22:45 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb  8 23:51:40 UTC 2017 - dimstar@opensuse.org
+
+- Fix Source URL.
+
+-------------------------------------------------------------------
+Tue Aug 30 14:05:21 UTC 2016 - virtuousfox@gmail.com
+
+- Update to version 0.0.6:
+- Improve ASCII and ISO-8859-1 detection.
+- Improve language models: Greek, Hungarian.
+- New supports:
+  * Arabic - ISO-8859-6 and Windows-1256.
+  * Danish - Windows-1252, ISO-8859-1 and ISO-8859-15.
+  * Spanish - ISO-8859-1, ISO-8859-15 and Windows-1252.
+  * Vietnamese - VISCII and Windows-1258.
+- Improve single-byte encoding detection algorithm by giving more weight
+  to "probable" sequences (less frequent than "positive" sequence, yet
+  not "negative").
+- `uchardet` command line tool improved:
+  * exits with non-zero return values on error.
+- CMake build improved with more options:
+  * Binary can be installed to non-default dir.
+  * Allow building static-only builds.
+  * Allow not building the command line tool.
+  * Add static lib destination.
+- Changes from 0.0.4 to 0.0.5:
+- Revert UTF-16 and UTF-32 label change:
+  it was an error to specify endianness for texts with BOM.
+  The Unicode standard explicitly warns against it, and it actually
+  even (partially) break conversions.
+- Added supports:
+    - French: Windows-1252.
+    - German: ISO-8859-1, Windows-1252
+    - Esperanto: ISO-8859-3
+    - Turkish: ISO-8859-3 and ISO-8859-9
+    - Thai: ISO-8859-11 (and TIS-620 model rebuilt).
+- Single Byte charset detection algorithm improved:
+  detection of control characters lowers confidence.
+- Changes from 0.0.3 to 0.0.4:
+- Add support of ISO-8859-1 and ISO-8859-15 for French.
+- Re-enable Hungarian language models (ISO-8859-2 and Windows-1250)
+  which used to conflict with other charsets (should be better now).
+- Differentiate ASCII detection and detection failure.
+- Improve single-byte charset detection confidence algorithm (fixes for
+  instance Windows-1251 Russian text detection).
+- "UTF-16" is now outputted with endianness information (UTF-16LE/BE).
+- Add UTF-32 BOM detection.
+- Discard single byte charsets upon illegal codepoint detection.
+- Internal redesign of single-byte charmaps with more semantics, and
+  variable sample size length (different languages have different sizes
+  of grapheme lists).
+- A lot more test files (33 successful unit tests should be successful
+  with `make test`).
+- Adding python scripts to generate language models from Wikipedia data
+  in a single command.
+- Changes from 0.0.2 to 0.0.3:
+- A quick release after 0.0.2 mostly to fix a bad crash on the command
+  line tool when charset detection failed (or detected ASCII).
+- The build now includes more test files for various language/encoding
+  and a `make test` target for unit testing (20 encoding detection tests
+  should be successful upon running it).
+- The build has a new BUILD_STATIC option, by default set to ON,
+  allowing to disable static library building if not needed.
+- All encoding names are iconv-compatible, enabling developers to
+  directly feed the result of uchardet_get_charset() into libiconv.
+- Compilation warnings fixed.
+- Changes from 0.0.1 to 0.0.2:
+- Version 0.0.2 mostly fixes various bugs and allow querying charsets
+  for multiple files in the same command with uchardet command line tool.
+
+-------------------------------------------------------------------
+Mon Oct 14 10:06:31 UTC 2013 - lazy.kent@opensuse.org
+
+- Initial package created - 0.0.1.
+

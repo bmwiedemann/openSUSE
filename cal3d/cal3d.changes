@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Thu Oct 12 14:29:51 CEST 2017 - sbrabec@suse.com
+
+- Change Converters -> Convertors in RPM group, as all other
+  packages use this spelling.
+
+-------------------------------------------------------------------
+Tue May 16 16:05:35 UTC 2017 - aloisio@gmx.com
+
+- Removed superfluous .la files.
+- Corrected group for main package
+
+-------------------------------------------------------------------
+Sat Apr  8 08:58:07 UTC 2017 - aloisio@gmx.com
+
+- Updated to 0.120
+- Switched to github source URL
+- Refreshed fix-boolean-to-pointer.patch and fix-date-time.patch
+- Added add-vsxu-support.patch
+
+-------------------------------------------------------------------
+Mon Jun 27 03:06:19 UTC 2016 - rpm@fthiessen.de
+
+- Update to current SVN head
+- Added fix-date-time.patch to reduce warnings
+- Added fix-boolean-to-pointer.patch to fix build with gcc6
+
+-------------------------------------------------------------------
+Tue Jan 29 17:52:24 UTC 2013 - joop.boonen@opensuse.org
+
+- Renamed the devel package to name-devel as this is standard
+- Cleaned the spec file up 
+
+-------------------------------------------------------------------
+Sat Mar 24 02:17:53 UTC 2012 - jengelh@medozas.de
+
+- Add autotools BuildRequires for Factory/12.2
+
+-------------------------------------------------------------------
+Sun May 16 12:01:21 UTC 2010 - adam@mizerski.pl
+
+- some housekeeping
+
+-------------------------------------------------------------------
+Tue Jun  5 00:00:00 UTC 2007 - toni@links2linux.de
+
+- Initial version 0.11.0
+

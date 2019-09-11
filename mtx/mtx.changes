@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Fri Jul 21 07:59:13 UTC 2017 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Add download url for the tarball
+- Add patch mtx-1.3.12-destdir.patch to respect destdir (from Fedora)
+
+-------------------------------------------------------------------
+Wed Apr  9 17:09:23 UTC 2014 - jmatejek@suse.com
+
+- mtx-1.3.11-large-slots.patch: fix problem with large number of
+  slots in a virtual tape library (bnc#857901, forward from SLE11)
+
+-------------------------------------------------------------------
+Fri Dec  2 16:43:20 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Jan 15 13:24:28 CET 2009 - mseben@suse.cz
+
+- updated to 1.3.12:
+  * Incorporate debian packaging
+  * Remove strip of binaries
+  * Remove unsupported nsmhack from list of binaries built by default
+  * Add support for building outside of source tree
+  * Update copyrights
+  * Fix typo in mtx.1 man page
+  * Clear outstanding UNIT ATTENTION state at start
+
+-------------------------------------------------------------------
+Fri Nov 14 11:48:36 CET 2008 - nadvornik@suse.cz
+
+- fixed build on s390x
+
+-------------------------------------------------------------------
+Tue Jan 22 14:26:06 CET 2008 - nadvornik@suse.cz
+
+- updated to 1.3.11:
+  * scsieject: New tool that handles start/stop, load/unload
+  * support for Sony VGP-XL1B(2) Media Changer
+  * many bugfixes
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 01:40:10 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Feb 25 15:30:49 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Tue Jul 29 10:28:13 CEST 2003 - tcrhak@suse.cz
+
+- update to version 1.2.18rel
+
+-------------------------------------------------------------------
+Thu Feb 13 15:29:53 CET 2003 - tcrhak@suse.cz
+
+- include sys/param.h into scsi_linux.c in order to achieve
+  correct timeouts [bug #23496]
+
+-------------------------------------------------------------------
+Tue Jan 14 21:59:44 CET 2003 - tcrhak@suse.cz
+
+- update to version 1.2.17rel
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Fri Dec 14 15:26:21 CEST 2001 - tcrhak@suse.cz
+
+- update to 1.2.15
+
+-------------------------------------------------------------------
+Wed Aug 22 13:34:24 CEST 2001 - dan@suse.cz
+
+- update to 1.2.13
+- install man pages
+
+-------------------------------------------------------------------
+Fri Apr  6 17:55:36 CEST 2001 - kukuk@suse.de
+
+- Fix group tag
+
+-------------------------------------------------------------------
+Mon May 22 11:15:23 CEST 2000 - cihlar@suse.cz
+
+- Group sorted
+- Added buildroot 
+
+-------------------------------------------------------------------
+Fri Dec  3 11:56:35 MET 1999 - kukuk@suse.de
+
+- Set CFLAGS to RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Sep 10 15:42:36 CEST 1999 - uli@suse.de
+
+- fixed Makefile for PPC
+
+-------------------------------------------------------------------
+Mon May  3 17:14:39 MEST 1999 - ro@suse.de
+
+- mo m486 on alpha
+
+-------------------------------------------------------------------
+Tue Mar 23 19:28:52 MET 1999 - choeger@suse.de
+
+- first package, 1.1
+

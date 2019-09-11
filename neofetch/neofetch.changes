@@ -1,0 +1,205 @@
+-------------------------------------------------------------------
+Wed Jan  9 12:47:28 UTC 2019 - Alexander Graul <agraul@suse.com>
+
+- Update to 6.0.0:
+  * Breaking change: Removed get_line_break() from config
+  * Added support for arbitrary shell commands for ASCII art
+  * Added plain text output for individual functions that can be
+    used in scripts
+  * Color Blocks now have padding built-in
+  * Public IP: Added configurable timeout to requests
+  * Fixed numerous "Song" issues
+  * Complete changelog can be found at https://github.com/dylanaraps/neofetch/releases/tag/6.0.0
+- Drop remove-non-linux.patch, maintenance cost is high and not
+  enough space is saved to justify it
+
+-------------------------------------------------------------------
+Fri Jul 27 13:25:57 UTC 2018 - idonmez@suse.com
+
+- Use %license everywhere.
+- No need to manually require bash.
+
+-------------------------------------------------------------------
+Thu Jul 26 10:28:52 UTC 2018 - jengelh@inai.de
+
+- Reword description not to assume a particular user.
+
+-------------------------------------------------------------------
+Wed Jul 25 14:54:49 UTC 2018 - agraul@suse.com
+
+- remove suse-defaults.patch since it is not used anymore
+
+-------------------------------------------------------------------
+Wed Jul 25 14:29:55 UTC 2018 - mvetter@suse.com
+
+- Add 5.0.0.tar.gz tarball and remove service file
+
+-------------------------------------------------------------------
+Tue Jul 24 13:58:30 UTC 2018 - agraul@suse.com
+
+- add w3m-inline-image to "Recommends" for image mode
+
+-------------------------------------------------------------------
+Thu Jul 12 09:34:53 UTC 2018 - agraul@suse.com
+
+- Update to 5.0.0
+  * Added json output option
+  * Fixed bug in prompt location after Neofetch ran
+  * Removed all deprecated options and functions
+  * Removed install date information
+  * Images: Improved performance
+  * Images: removed catimg support
+  * Images: fixed tycat, sixel and kittty icat image sizes
+  * Removed screenshot functionality (including uploading)
+  * Packages: added support for snap
+  * Packages: added support for flatpak 
+  * Song: added support for gmusicbrowser
+  * Song: added support for SMPlayer
+  * Song: added support for Dragon Player
+  * Song: fixed song output on systems using C locale
+  * Song: added mpc_args to send additional arguments to mpc
+  * Resolution: added support for xwininfo
+- Included updates from 4.0.0
+  * Neofetch is a single executable now
+  * Simplified --version output
+  * Fixed theme issues
+  * Wallpaper: added wal/pywal support
+  * Wallpaper: added setroot support
+  * Images: added kitty image backend
+  * Song: added VLC support
+  * Song: added Sayonara support
+  * Song: added album data to song output
+  * Song: added song_format to configure display format
+  * Fixed unexpected backslash in title on some systems
+  * CPU: added temperature support for Zen processors
+  * GPU: fixed duplicate Intel GPUs
+  * WM: added dwm support 
+  * Terminal: added st support 
+  * Terminal: added qterminal support
+  * Terminal: fixed kitty font bug
+- drop suse-defaults.patch, there is no separate "ascii" directory anymore
+- remove additional-art package, ascii art is in the single executable now
+- refresh remove-non-linux.patch to handle source changes
+- refresh fix-shebang.patch to handle source changes
+
+
+-------------------------------------------------------------------
+Sat Apr  7 21:21:52 UTC 2018 - avindra@opensuse.org
+
+- Update to 3.4.0
+  * Added support for openSUSE Tumbleweed, 15 others
+  * Added more info to verbose mode for debugging.
+  * Fixed bug in prompt location calculation.
+  * Fixed function not working in bash 3.
+  * Swapped sequences from \033 to \e.
+  * Removed the last echo in the script.
+  * Fixed typo
+  * images: Fixed bug with getting wallpaper from feh.
+  * images: Added pixterm backend.
+  * images: Don't force resolution in catimg.
+  * DE: Added GNOME version.
+  * DE: Added support for TDE.
+  * WM: Added support for most (if not all) current Wayland
+    compositors/window manager's.
+  * WM: Added support for some non-EWMH window managers.
+  * WM theme: Fixed sawfish detection.
+  * Theme: Fixed KDE font issue.
+  * CPU: Detect correct temperature file to use.
+  * GPU: Added driver version to NVIDIA and Intel output.
+  * Song: Added option to manually specify the player to use.
+  * Song: Added support for Elisa.
+  * Model: Remove more unneeded outputs
+  * Shell: Support for tcsh
+  * Terminal: Added more paths for Alacritty.
+  * Terminal: Added font support for Kitty.
+  * Terminal: Fixed Kitty font_size regex.
+  * Terminal: Added support for XTerm.vt11.facename
+  * ascii: color updates for Kubuntu logo
+  * ascii: New DragonflyBSD logo
+- Package extraneous ascii art separately
+- partial cleanup with spec-cleaner
+- add fix-shebang.patch (fix E: env-script-interpreter)
+- add remove-non-linux.patch (drops code unrelated to linux)
+- add suse-defaults.patch (ship sane default logos by default)
+- Remove get_from_git.sh
+
+-------------------------------------------------------------------
+Fri Sep 29 21:13:11 UTC 2017 - malcolmlewis@opensuse.org
+- Update to version fd04aa1 (2017-09-26):
+  * Config file now has a .conf suffix.
+  * Neofetch now assumes target directories (config file and ASCII
+    directory) at install time.
+  * stdout mode is now reimplemented;
+    + This mode prints the information in plain text.
+    + You can use it with --stdout. 
+  * Fixed prompt location if color blocks are disabled.
+  * Make makefile more portable.
+  * Added support for using all image types as input.
+    + Neofetch now supports svg, tiff etc.
+  * Added a new info function (off by default) to display
+    the GPU Driver currently in use.
+  * Add info "GPU Driver" gpu_driver to your config to use it.
+  * Fixed inaccurate output on ARM SoC devices.
+  * Fixed CPU speed not appearing on PowerPC systems.
+  * Fixed inaccurate speed output in systems with CPU speed less
+    than 1 GHz.
+  * Deprecated cpu_shorthand in favor of cpu_brand.
+  * Added support for QEMU/KVM.
+  * Renamed subtitle to Host:.
+  * Fixed infinite loop if neofetch is run on non-interactive
+    shells.
+  * Added support for LXTerminal.
+  * Added support for GNUStep Terminal.
+  * Fixed Xfce4-terminal font output when system-wide font is used.
+  * Fixed MATE-Terminal issue.
+  * Fixed URxvt font detection failing if period is used.
+  * Fixed inaccurate theme naming (Qt/KDE).
+  * GTK theme is now shows as well (Qt/KDE).
+  * Fix incorrect output when using WindowMaker.
+  * Fixed bug with players not being found.
+  * Added battery support for Thinkpads and other devices that use
+    the CMB naming for batteries.
+  * Fixed division by 0 error in XTerm.
+  * Use maim over scrot.
+  * Fixed scrot_cmd arguments not being used.
+- Add recommends for maim screenshot utility.
+
+-------------------------------------------------------------------
+Mon Aug 14 13:27:49 UTC 2017 - malcolmlewis@opensuse.org
+
+- Update to version c108713 (2017-08-13):
+  * Fixed resolution bug (gh#dylanaraps/neofetch#803).
+- Fixed license location for releases not supporting new
+  macro.
+ 
+-------------------------------------------------------------------
+Fri Aug  4 14:19:08 UTC 2017 - malcolmlewis@opensuse.org
+
+- Update to version 3cefcf0 (2017-08-04):
+  * Config file now has a `.conf` suffix.
+  * Neofetch now assumes target directories (config file and ASCII
+    directory) at install time.
+  * `stdout` mode is now reimplemented.
+    + This mode prints the information in plain text.
+    + You can use it with `--stdout`.
+  * [w3m] Fixed w3m-img not found on NixOS.
+  * Added support for using all image types as input.
+    + Neofetch now supports `svg`, `tiff` etc.
+  * Fixed inaccurate output on ARM SoC devices.
+  * Fixed CPU speed not appearing on PowerPC systems.
+  * Fixed inaccurate speed output in systems with CPU speed less than
+    1 GHz.
+  * Deprecated `cpu_shorthand` in favor of `cpu_brand`.
+  * Filter out duplicate entries.
+  * Fixed infinite loop if neofetch is run on non-interactive shells.
+  * Added support for LXTerminal.
+  * Fixed Xfce4-terminal font output when system-wide font is used.
+  * Fixed inaccurate theme naming.
+  * Fix incorrect output when using WindowMaker.
+  * Added support for Pogo.
+  * Fixed division by 0 error in XTerm.
+
+-------------------------------------------------------------------
+Sat Jul 22 17:59:15 UTC 2017 - malcolmlewis@opensuse.org
+
+- Initial build.

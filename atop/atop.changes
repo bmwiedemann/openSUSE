@@ -1,0 +1,254 @@
+-------------------------------------------------------------------
+Sun Feb 17 20:14:07 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to 2.4.0
+  * Modifications for atop:
+    + Support for Nvidia GPU statistics:
+      A separate daemon atopgpud has been developed to maintain statistics of
+	  Nvidia GPUs in the system. When this daemon is running, atop will
+	  connect to this daemon and will get/show the GPU statistics with every
+	  interval on system level and process level (key 'e').
+      The atopgpud daemon will only be active when it is explicitly enabled 
+	  (see man pages for more info).
+    + Support for Infiniband statistics:
+      Counters showing the bandwidth utilization of Infiniband ports
+	  (system level) are added.
+    + Support for Pressure Stall Information (PSI):
+      The average pressure percentages of CPU, memory and I/O are reported
+	  for the last 10, 60 and 300 seconds. These percentage are provided from
+	  kernel 4.20 onwards.
+    + Faster startup of atop:
+      The allocation strategy for processes and threads has been improved,
+	  which will specifically be noticable on larger systems with lots of
+	  multi-threaded processes.
+    + Configurable options for atop running in the background:
+      Default options of script atop.daily can be overruled by
+	  /etc/default/atop file.
+    + CPU Instructions Per Cycle (IPC):
+      For every CPU, the average number of instructions per CPU cycle is
+	  shown as 'ipc'. Besides, a column is shown with the number of cycles
+	  executed per second as `cycl` (shown as effective Hz frequency).
+    + Various fixes:
+      Various NFS counters corrected.
+      Recognition of nvme and nbd disks.
+      Recognition of DEADLINE scheduling policy.
+      Proper handling of memory locking (improper handling caused malloc
+	  failures in previous versions).
+  * New program atopconvert:
+    + This program can be used to convert the layout of older raw files to
+	  newer raw files. Raw files from atop 2.0 onwards can be converted to
+	  the newest version (now: 2.4).
+  * Modifications for atopsar:
+    + Reports can be printed now about the utilization of GPUs and Infiniband,
+	  and about the PSI percentages.
+  * General:
+    + The format of the raw file is incompatible with earlier versions.
+	  However, old raw files can be converted now by the program atopconvert
+	  to be read or extended by newer atop versions.
+- Clean with spec-cleaner
+- Refresh atop-makefile.patch
+
+-------------------------------------------------------------------
+Mon Jun 25 09:49:45 UTC 2018 - rbrown@suse.com
+
+- Correct copyright attribution 
+
+-------------------------------------------------------------------
+Sun Jun 10 11:22:35 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to 2.3:
+  * Modifications for atop:
+    + Support for Docker containers.
+    + Improved gathering of process data.
+    + Improved memory figures for processes.
+    + Variable width for PID column.
+    + Better handling when started via sudo (not entering stopped
+    + state).
+    + Handling of disk drives starting with 'xvd...'.
+  * Modifications for atopacct:
+    + Better error handling of Netlink interface.
+    + Immediate reaction when receiving SIGTERM signal.
+    + Bypass for kernel bug 190711 (Netlink interface not
+      available).
+    + Bypass for kernel bug 190271 (process accounting does not
+      always start).
+  * Modifications for atopsar:
+    + Top-3 of resource consuming processes only shows active
+      processes now.
+  * General:
+    + The format of the raw file is upward compatible with version
+      2.2-3.
+- Clean with spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Nov 22 14:11:06 UTC 2016 - coolo@suse.com
+
+- update to 2.2:
+     * Modifications for atop:
+         a. New keys for process selection:
+            '/' to select processes containing a particular search string in the command line arguments.
+            'I' to select processes running with particular PIDs.
+         b. New counters for NFS activity:
+            On system level, counters are maintained about NFS traffic. Three new labels are introduced for this purpose:
+            'NFS' for NFS server statistics (overall).
+            'NFC' for NFS client statistics (overall).
+            'NFM' for NFS client statistics per mounted NFS filesystem (so multiple lines possible).
+         c. New counters for OpenVZ containers:
+            CPU consumption and memory occupation are shown per container on system level (label 'CON').
+            Container ID and virtual PID are shown on process level (when using key 'v' or 's').
+         d. Bug fixes:
+            The maximum transfer rate larger than 1 Gbit for ethernet interfaces is now correctly shown.
+            The maximum transfer rate for wifi connections is now shown.
+            For interfaces in general, the maximum transfer rate is shown as a separate column ('sp').
+            
+            Counters about virtual disk type 'xvd[a-z]' are shown.
+            
+            Several minor bugs have been solved.
+     * Modifications for atopacct:
+         a. Avoid that process accounting is reactivated too frequently (and unnecessary).
+     * Modifications for atopsar:
+         a. Add flags for NFS traffic ('-n' for NFS mounts, '-j' for overall NFS 
+            client activity and '-J' for overall NFS server activity).
+     * General:
+         a. Support for systemd-based distributions has been added.
+         b. The format of the raw file is incompatible with earlier versions. However, 
+            the earlier version of atop is automatically activated when accessing an 
+            older raw file.
+- cleanup spec file - remove support for < 12.1
+
+-------------------------------------------------------------------
+Sat Oct 18 12:40:40 UTC 2014 - pascal.bleser@opensuse.org
+
+- update to 2.1:
+  * OpenVZ support: virtual environment identifier per process (envID)
+  * Bug solution: when the screen-width is larger than the total number of
+    columns to be printed, empty columns are added, however one column too many
+  * Removed useless empty column for memory statistics
+  * Introduce the 'G' key to suppress showing/accumulating exited processes
+    in the output
+  * Support CPU frequencies for systems with Intel P-state driver
+  * Introduction of new daemon atopacctd. This daemon switches on process
+    accounting and transfers every accounting record to an accounting shadow
+    file. The source accounting file will regularly be truncated, while the
+    shadow files are written with a limited size in a queued way. Non-used
+    shadow files are deleted regularly.
+  * Bug-solution: segmentation fault when one of the process names in the
+    system contains a newline
+  * Introduce configurable colors: in the atoprc file, colors can be defined
+    for information messages (default green), threads (default yellow), almost
+    critical resources (default cyan) and critical resources (default red).
+  * Limit the names of network interfaces to six characters max
+  * Introduction of proportional memory size (PSIZE) per process. For the
+    resident memory parts used by a process that are shared with other
+    processes, only a proportional part (shared memory part divided by the
+    number of sharers) is accounted to the process. Since the gathering of this
+    value is rather time-consuming (reading the smaps file of every process),
+    it is optional ('R' key or '-R' flag).
+  * Increased number of LVMs and disks supported
+  * Support for huge pages (total and in use).
+
+-------------------------------------------------------------------
+Thu Jul 26 07:48:55 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.27-3:
+  * service file for systemd
+  * solved division-by-zero when maxfreq=0 and more precise coloring of
+    concerning CPU-values when CPU overloaded
+  * if setuid-root is set for atop, root-privileges are regained when reading
+    /proc/pid/io (nowadays only readable for root) to obtain the disk stats per
+    process
+  * added EMC Power device recognition
+  * better recognition of version of process accounting file
+  * improved error handling when not enough columns or lines
+  * suppress sorting of system resources by key F or flag -F (toggle)
+  * create unique /tmp name for decompressed raw file
+  * numerous cosmetic changes and man-page updates
+  * improved screen handling
+  * limited maximum file-size for process accounting file (200 MiB)
+  * improved handling of process accounting
+  * new key 'S' to make selections of system resources like logical volumes,
+    disks and network interfaces (regular expression)
+  * use of arrow-keys and PgUp/PgDown for vertical scroll
+  * use of -> and <- keys for horizontal scroll of command line
+  * support statistics for virtio disks (vd*)
+  * fetching and displaying of individual threads
+  * add various details about the memory usage of processes, like stack size,
+    data size, shared library size and size used on swap
+  * show new value about swap space usage per process
+  * colors are shown now for separate system-level counters instead of for the
+    entire line with counters
+  * enhanced security: improved dropping of root privileges
+
+-------------------------------------------------------------------
+Mon Jan  9 18:45:42 UTC 2012 - pascal.bleser@opensuse.org
+
+- remove licenses package mumbo-jumbo altogether
+- use pristine upstream tarball instead of recompressing as bz2
+- added Recommends for logrotate and cron in the -daemon subpackage
+
+-------------------------------------------------------------------
+Mon Jan  9 17:16:58 UTC 2012 - graham@andtech.eu
+
+- change License: and %if statement in .spec
+
+-------------------------------------------------------------------
+Tue Mar 15 02:13:10 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.26:
+  * an additional value is shown for the current frequency and the current
+    scaling percentage of the CPU
+  * additional system-level counters are shown for the total number of threads
+    that are running, sleeping interruptible, and sleeping uninterruptible
+  * when the number of lines in a window is too small for the amount of
+    system-level lines, the number of variable resources (like disks,
+    interfaces, etc.) is limited automatically to be able to continue
+  * the signal SIGUSR2 can be sent to atop to take one more sample and
+    terminate (e.g. used to speed up suspend/hibernate)
+  * support for the disk type 'mmcblk'
+
+-------------------------------------------------------------------
+Mon May  3 12:18:43 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.25:
+  * disk I/O statistics are maintained on level of logical volume
+    (LVM) and MD device
+  * log files are properly switched in case of suspend/hibernate
+  * layout of lines with system-level statistics can be redefined
+  * previous atop versions are automatically activated for older
+    log files
+
+-------------------------------------------------------------------
+Tue Jan 26 08:59:08 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.24:
+  * the screen interface has been redesigned completely with
+    support for a variable number of columns depending on the
+    window size
+  * it is now possible to define your own output line with
+    process-level statistics
+  * a system-wide configuration file was introduced for atop and
+    atopsar
+  * handling of log files was improved and additional counters are
+    maintained
+
+-------------------------------------------------------------------
+Thu Mar  6 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 1.23
+
+-------------------------------------------------------------------
+Wed Nov 21 00:00:00 UTC 2007 - guru@unixtech.be
+
+- update to 1.22
+
+-------------------------------------------------------------------
+Mon Aug 20 00:00:00 UTC 2007 - guru@unixtech.be
+
+- update to 1.21
+
+-------------------------------------------------------------------
+Mon Jun 11 00:00:00 UTC 2007 - guru@unixtech.be
+
+- inital openSUSE Build Service submission
+
+

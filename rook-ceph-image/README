@@ -1,0 +1,5 @@
+# HOWTO generate kiwi file for different platfoms
+
+* xsltproc rook-ceph-image.xsl tumbleweed.xml > rook-ceph-image.kiwi
+* xsltproc rook-ceph-image.xsl leap15_1.xml > rook-ceph-image.kiwi
+* xsltproc rook-ceph-image.xsl ses6.xml > rook-ceph-image.kiwi

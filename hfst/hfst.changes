@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Sep  5 00:44:15 UTC 2017 - jengelh@inai.de
+
+- Add gcc7.diff
+
+-------------------------------------------------------------------
+Thu Apr 27 16:53:12 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.12.2
+* Implement hfst-twolc as a single program instead of a script. Get
+  rid of hfst-twolc-system and hfst-twolc-loc tools.
+- Remove hfst-badcode.diff (applied upstream)
+
+-------------------------------------------------------------------
+Thu Sep 11 22:28:33 UTC 2014 - jengelh@inai.de
+
+- Initial package for build.opensuse.org (version 3.7.2)

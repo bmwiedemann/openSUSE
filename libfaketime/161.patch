@@ -1,0 +1,119 @@
+From 0d964363a4352b7ee358f523c3416d07378d4583 Mon Sep 17 00:00:00 2001
+From: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+Date: Thu, 17 May 2018 22:55:22 +0200
+Subject: [PATCH 1/4] libfaketime.c: fix strncpy() issues raised by gcc 8.x
+
+gcc 8.x introduced stricter checking on strncpy(), and causes the
+following build failures:
+
+libfaketime.c: In function 'fake_clock_gettime.part.4':
+libfaketime.c:2134:7: error: 'strncpy' specified bound 256 equals destination size [-Werror=stringop-truncation]
+       strncpy(user_faked_time, tmp_env, BUFFERLEN);
+       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+libfaketime.c:2134:7: error: 'strncpy' specified bound 256 equals destination size [-Werror=stringop-truncation]
+       strncpy(user_faked_time, tmp_env, BUFFERLEN);
+       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+libfaketime.c: In function 'ftpl_init':
+libfaketime.c:1884:12: error: 'strncpy' specified bound 1024 equals destination size [-Werror=stringop-truncation]
+     (void) strncpy(ft_spawn_target, getenv("FAKETIME_SPAWN_TARGET"), 1024);
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+libfaketime.c:1945:5: error: 'strncpy' specified bound 8192 equals destination size [-Werror=stringop-truncation]
+     strncpy(user_faked_time_fmt, tmp_env, BUFSIZ);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+libfaketime.c: In function 'ftpl_init':
+libfaketime.c:1884:12: error: 'strncpy' specified bound 1024 equals destination size [-Werror=stringop-truncation]
+     (void) strncpy(ft_spawn_target, getenv("FAKETIME_SPAWN_TARGET"), 1024);
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+libfaketime.c:1945:5: error: 'strncpy' specified bound 8192 equals destination size [-Werror=stringop-truncation]
+     strncpy(user_faked_time_fmt, tmp_env, BUFSIZ);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This commit fixes that by making sure we keep one final byte for the
+nul terminator, as suggested by
+https://github.com/wolfcw/libfaketime/issues/150.
+
+Signed-off-by: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+---
+ src/libfaketime.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+Index: libfaketime-0.9.7/src/libfaketime.c
+===================================================================
+--- libfaketime-0.9.7.orig/src/libfaketime.c
++++ libfaketime-0.9.7/src/libfaketime.c
+@@ -1828,7 +1828,8 @@ void ftpl_init(void)
+   if ((tmp_env = getenv("FAKETIME_SPAWN_TARGET")) != NULL)
+   {
+     spawnsupport = true;
+-    (void) strncpy(ft_spawn_target, getenv("FAKETIME_SPAWN_TARGET"), 1024);
++    (void) strncpy(ft_spawn_target, getenv("FAKETIME_SPAWN_TARGET"), sizeof(ft_spawn_target) - 1);
++    ft_spawn_target[sizeof(ft_spawn_target) - 1] = 0;
+     if ((tmp_env = getenv("FAKETIME_SPAWN_SECONDS")) != NULL)
+     {
+       ft_spawn_secs = atol(tmp_env);
+@@ -1889,7 +1890,8 @@ void ftpl_init(void)
+   }
+   else
+   {
+-    strncpy(user_faked_time_fmt, tmp_env, BUFSIZ);
++    strncpy(user_faked_time_fmt, tmp_env, BUFSIZ - 1);
++    user_faked_time_fmt[BUFSIZ - 1] = 0;
+   }
+ 
+   if (shared_sem != 0)
+@@ -1960,6 +1962,14 @@ static void remove_trailing_eols(char *l
+  *      =======================================================================
+  */
+ 
++#ifdef PTHREAD_SINGLETHREADED_TIME
++static void pthread_cleanup_mutex_lock(void *data)
++{
++  pthread_mutex_t *mutex = data;
++  pthread_mutex_unlock(mutex);
++}
++#endif
++
+ int fake_clock_gettime(clockid_t clk_id, struct timespec *tp)
+ {
+   /* variables used for caching, introduced in version 0.6 */
+@@ -1983,7 +1993,7 @@ int fake_clock_gettime(clockid_t clk_id,
+ #ifdef PTHREAD_SINGLETHREADED_TIME
+   static pthread_mutex_t time_mutex=PTHREAD_MUTEX_INITIALIZER;
+   pthread_mutex_lock(&time_mutex);
+-  pthread_cleanup_push((void (*)(void *))pthread_mutex_unlock, (void *)&time_mutex);
++  pthread_cleanup_push(pthread_cleanup_mutex_lock, &time_mutex);
+ #endif
+ 
+   if ((limited_faking &&
+@@ -2078,7 +2088,8 @@ int fake_clock_gettime(clockid_t clk_id,
+ 
+     if (NULL != (tmp_env = getenv("FAKETIME")))
+     {
+-      strncpy(user_faked_time, tmp_env, BUFFERLEN);
++      strncpy(user_faked_time, tmp_env, BUFFERLEN - 1);
++      user_faked_time[BUFFERLEN - 1] = 0;
+     }
+     else
+     {
+Index: libfaketime-0.9.7/src/faketime.c
+===================================================================
+--- libfaketime-0.9.7.orig/src/faketime.c
++++ libfaketime-0.9.7/src/faketime.c
+@@ -209,7 +209,7 @@ int main (int argc, char **argv)
+     int shm_fd;
+     sem_t *sem;
+     struct ft_shared_s *ft_shared;
+-    char shared_objs[PATH_BUFSIZE];
++    char shared_objs[PATH_BUFSIZE * 2 + 1];
+ 
+     /*
+      * Casting of getpid() return value to long needed to make GCC on SmartOS
+@@ -286,7 +286,7 @@ int main (int argc, char **argv)
+       exit(EXIT_FAILURE);
+     }
+ 
+-    snprintf(shared_objs, PATH_BUFSIZE, "%s %s", sem_name, shm_name);
++    snprintf(shared_objs, sizeof(shared_objs), "%s %s", sem_name, shm_name);
+     setenv("FAKETIME_SHARED", shared_objs, true);
+     sem_close(sem);
+   }

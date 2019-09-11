@@ -1,0 +1,269 @@
+-------------------------------------------------------------------
+Wed Jul 10 08:29:15 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Replace old mgrep script with new m(mime)grep written in hackweek
+
+-------------------------------------------------------------------
+Tue Jun 11 17:07:38 UTC 2019 - olaf@aepfle.de
+
+- Remove tcsh dependency by dropping bogus mailserver and
+  sun-message.csh
+- use autosetup, refresh all 5 patches
+
+-------------------------------------------------------------------
+Sat May 28 20:22:34 UTC 2016 - mardnh@gmx.de
+
+- add patches:
+  * metamail-2.7-19-provide-filenames-for-attachments.patch
+    rebased from Immanuel Halupczok original debian patch:
+    https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=321968
+
+-------------------------------------------------------------------
+Sat Dec 27 23:15:00 UTC 2014 - Led <ledest@gmail.com>
+
+- rebase metamail-2.7-19-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Thu Nov 27 01:57:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in showaudio and mgrep scripts
+- update patches:
+  * metamail-2.7-19.dif
+- add patches:
+  * metamail-2.7-19-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Tue Oct  7 00:59:52 UTC 2014 - crrodriguez@opensuse.org
+
+- xorg libraries are not needed for build, just bdftopcf and 
+  mkfontdir
+
+-------------------------------------------------------------------
+Tue Oct 20 16:16:32 CEST 2009 - werner@suse.de
+
+- Yet an other David Binderman fix (bnc#547909)
+
+-------------------------------------------------------------------
+Sun Aug 30 20:07:44 CEST 2009 - coolo@novell.com
+
+- provide Patch0
+
+-------------------------------------------------------------------
+Sun Jun  7 12:12:22 CEST 2009 - ro@suse.de
+
+- rename getline to my_getline to avoid conflict with function
+  from glibc 
+
+-------------------------------------------------------------------
+Mon Sep 15 17:09:56 CEST 2008 - werner@suse.de
+
+- Fix typo in mailto manual page (bnc#422090)
+
+-------------------------------------------------------------------
+Mon Sep 15 11:51:25 CEST 2008 - werner@suse.de
+
+- Avoid autobuild error
+
+-------------------------------------------------------------------
+Thu Jun 28 15:57:46 CEST 2007 - werner@suse.de
+
+- Add MIME check script usable e.g. in procmailrc filter rules
+
+-------------------------------------------------------------------
+Thu Mar 29 17:30:05 CEST 2007 - rguenther@suse.de
+
+- Add ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Thu Feb 23 18:57:11 CET 2006 - werner@suse.de
+
+- Fix for buffer overflow (bug #153145)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:14 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 00:11:45 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Fri Jul  1 12:37:19 CEST 2005 - werner@suse.de
+
+- Remove -fsigned-char (bug #93881)
+
+-------------------------------------------------------------------
+Fri Jun 10 14:31:16 CEST 2005 - werner@suse.de
+
+- Use declaration from stdio.h for gets(3)
+
+-------------------------------------------------------------------
+Thu May  6 16:45:09 CEST 2004 - hmacht@suse.de
+
+- added # norootforbuild in specfile
+
+-------------------------------------------------------------------
+Fri Mar 19 14:48:10 CET 2004 - werner@suse.de
+
+- Fix date issue with locale: be always RFC 822 conform (#35828)
+
+-------------------------------------------------------------------
+Tue Mar  2 13:20:30 CET 2004 - werner@suse.de
+
+- Fix security fix: sizeof(char*) is not equal to sizeof(char[250])
+
+-------------------------------------------------------------------
+Mon Feb  9 16:16:52 CET 2004 - werner@suse.de
+
+- Security fix format-string bug and buffer overflow (bug #34369)
+
+-------------------------------------------------------------------
+Fri Jan 23 17:17:44 CET 2004 - werner@suse.de
+
+- Fix declarations of the stuff to make gcc happy
+
+-------------------------------------------------------------------
+Fri Jun 13 11:06:38 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+- really package mgrep (not just the man page :)
+- use %_mandir
+
+-------------------------------------------------------------------
+Tue Dec 17 16:39:20 CET 2002 - werner@suse.de
+
+- New: mgrep which does similar to zgrep on mimencoded data
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Sat Jul 13 23:07:40 CEST 2002 - schwab@suse.de
+
+- mmencode: don't change mode of stdout.
+
+-------------------------------------------------------------------
+Mon Oct  1 16:55:41 CEST 2001 - schwab@suse.de
+
+- Fix quoting in shell scripts.
+
+-------------------------------------------------------------------
+Tue May 22 12:29:28 CEST 2001 - werner@suse.de
+
+- Remove space after ?= closing phrase
+
+-------------------------------------------------------------------
+Wed Mar  7 17:09:27 CET 2001 - uli@suse.de
+
+- added xf86 to neededforbuild
+
+-------------------------------------------------------------------
+Wed Mar  7 12:39:54 CET 2001 - werner@suse.de
+
+- Be sure that font directory exists
+
+-------------------------------------------------------------------
+Fri Dec 22 15:36:06 CET 2000 - werner@suse.de
+
+- If terminal attributes will be restored then do this immediately
+
+-------------------------------------------------------------------
+Fri Dec 22 13:17:35 CET 2000 - werner@suse.de
+
+- Declare standard functions
+- Use putenv of glibc
+- Print commando is lpr
+- Use limits.h
+- Use termios interface of glibc
+
+-------------------------------------------------------------------
+Mon Nov 27 14:58:43 CET 2000 - sndirsch@suse.de
+
+- removed /usr/X11R6/lib/X11/fonts/misc/heb8x13B.pcf.gz
+  from filelist (font already included in xf86 package)
+
+-------------------------------------------------------------------
+Fri Nov 17 13:06:18 CET 2000 - kukuk@suse.de
+
+- fix Requires: sharutil -> sharutils
+
+-------------------------------------------------------------------
+Mon Nov 13 10:42:50 CET 2000 - ro@suse.de
+
+- don't redeclare killpg 
+
+-------------------------------------------------------------------
+Wed Oct 11 18:09:34 CEST 2000 - werner@suse.de
+
+- Fix bug within metasend (bug# 4099)
+
+-------------------------------------------------------------------
+Wed Jun  7 15:46:21 CEST 2000 - ro@suse.de
+
+- doc relocation 
+
+-------------------------------------------------------------------
+Thu Mar  2 18:30:26 CET 2000 - werner@suse.de
+
+- /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Tue Oct 19 23:59:02 MEST 1999 - werner@suse.de
+
+- If -o is used for mmencoding the file permissions should
+  be the same as the input file
+- Use Fopen within mmencode.c
+- sendmail is stored in /usr/sbin/
+- MAILCAPDIR is /etc
+- showexternal: check for broken arguments
+- mailto.c: don't be fooled by newlines
+- Use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Aug 24 19:15:17 MEST 1999 - uli@suse.de
+
+- added -fsigned-char to CFLAGS (PPC)
+
+----------------------------------------------------------------------------
+Fri Jul 17 14:25:28 MET DST 1998 - werner@suse.de
+
+- Add C source fixes of RedHat against temp exploits
+- Make sh and shell scripts using mktemp for temp files
+- Use PAGER if set
+- Use -o of uudecode to avoid attacks over net
+
+----------------------------------------------------------------------------
+Tue May 27 20:03:59 MEST 1997 - florian@suse.de
+
+
+- fix shell script "audiosend"
+
+
+
+----------------------------------------------------------------------------
+Sat Apr 26 19:14:59 MEST 1997 - florian@suse.de
+
+
+- update to new version 2.7-19 from debian
+
+
+----------------------------------------------------------------------------
+Tue Oct 22 22:14:08 MEST 1996 - florian@suse.de
+
+
+- Bisherige Anpassungen mit der neusten debian-Version vergleichen
+  und zusammenbringen.
+
+- Die extra Fonts sind momentan nicht mehr dabei,
+  sollten aber auch nicht fehlen...
+
+

@@ -1,0 +1,35 @@
+---
+ buildflags.mak |    6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+Index: buildflags.mak
+===================================================================
+--- buildflags.mak.orig	2014-10-10 23:07:04.000000000 +0200
++++ buildflags.mak	2015-05-29 13:40:24.855086640 +0200
+@@ -61,7 +61,7 @@ ifdef SCIF_ROOT_DIR
+ endif
+ 
+ PSM_HAVE_SCIF ?= $(shell printf '\#include <scif.h>\nint main(void){return(0);}\n' | \
+-	$(CC) $(CFLAGS) $(LDFLAGS) -x c - -o /dev/null &> /dev/null && echo 1 || echo 0)
++	$(CC) $(CFLAGS) $(RPM_OPT_FLAGS) $(LDFLAGS) -x c - -o /dev/null &> /dev/null && echo 1 || echo 0)
+ 
+ ifeq (1,$(PSM_HAVE_SCIF))
+ 	SCIF_INCLUDE_FLAGS += -DPSM_HAVE_SCIF=1
+@@ -72,7 +72,7 @@ WERROR := -Werror
+ INCLUDES := -I. -I$(top_srcdir)/include -I$(top_srcdir)/mpspawn \
+ 	-I$(top_srcdir)/include/$(os)-$(arch) $(SCIF_INCLUDE_FLAGS)
+ BASECFLAGS += $(BASE_FLAGS) $(if $(MIC:0=),$(if $(filter $(CC),icc),-mmic,-D__MIC__)) \
+-	-Wall $(WERROR) $(if $(MIC:0=),-Wno-unused) -fpic -fPIC -D_GNU_SOURCE \
++	-Wall $(WERROR) $(RPM_OPT_FLAGS) $(if $(MIC:0=),-Wno-unused) -fpic -fPIC -D_GNU_SOURCE \
+ 	$(if $(filter $(CC),icc),,-funwind-tables) $(if $(PSM_PROFILE:0=),-DPSM_PROFILE) \
+ 	${IPATH_CFLAGS}
+ ASFLAGS += $(BASE_FLAGS) $(if $(MIC:0=),$(if $(filter $(CC),icc),-mmic,-D__MIC__)) -g3 -fpic
+@@ -85,8 +85,6 @@ LDFLAGS += $(SCIF_LINK_FLAGS)
+ ifneq (,${PSM_DEBUG})
+   BASECFLAGS += -O -g3 -DPSM_DEBUG $(if $(filter $(CC),icc),,-funit-at-a-time) \
+ 	-Wp,-D_FORTIFY_SOURCE=2
+-else
+-  BASECFLAGS += -O3 -g3 
+ endif
+ ifeq (1,${PSM_USE_SYS_UUID})
+   BASECFLAGS += -DPSM_USE_SYS_UUID

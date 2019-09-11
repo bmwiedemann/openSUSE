@@ -1,0 +1,127 @@
+diff --git a/sesman/sesman.ini b/sesman/sesman.ini
+index 37c7816..4a428ec 100644
+--- a/sesman/sesman.ini
++++ b/sesman/sesman.ini
+@@ -40,7 +40,7 @@ DisconnectedTimeLimit=0
+ 
+ ;; Policy - session allocation policy
+ ; Type: enum [ "Default" | "UBD" | "UBI" | "UBC" | "UBDI" | "UBDC" ]
+-; Default: Xrdp:<User,BitPerPixel> and Xvnc:<User,BitPerPixel,DisplaySize>
++; Default: Xrdp and Xvnc:<User,BitPerPixel>
+ ; "UBD" session per <User,BitPerPixel,DisplaySize>
+ ; "UBI" session per <User,BitPerPixel,IPAddr>
+ ; "UBC" session per <User,BitPerPixel,Connection>
+diff --git a/sesman/session.c b/sesman/session.c
+index 0b8bb6a..3a0164b 100644
+--- a/sesman/session.c
++++ b/sesman/session.c
+@@ -105,9 +105,6 @@ session_get_bydata(const char *name, int width, int height, int bpp, int type,
+     {
+         case SCP_SESSION_TYPE_XVNC: /* 0 */
+             type = SESMAN_SESSION_TYPE_XVNC; /* 2 */
+-            /* Xvnc cannot resize */
+-            policy = (enum SESMAN_CFG_SESS_POLICY)
+-                     (policy | SESMAN_CFG_SESS_POLICY_D);
+             break;
+         case SCP_SESSION_TYPE_XRDP: /* 1 */
+             type = SESMAN_SESSION_TYPE_XRDP; /* 1 */
+diff --git a/vnc/vnc.c b/vnc/vnc.c
+index db593da..0db68b9 100644
+--- a/vnc/vnc.c
++++ b/vnc/vnc.c
+@@ -383,7 +383,8 @@ lib_mod_event(struct vnc *v, int msg, long param1, long param2,
+         /* FramebufferUpdateRequest */
+         init_stream(s, 8192);
+         out_uint8(s, 3);
+-        out_uint8(s, 0);
++        out_uint8(s, v->incremental);
++        v->incremental = 1;
+         x = (param1 >> 16) & 0xffff;
+         out_uint16_be(s, x);
+         y = param1 & 0xffff;
+@@ -724,7 +725,24 @@ lib_framebuffer_update(struct vnc *v)
+             {
+                 v->mod_width = cx;
+                 v->mod_height = cy;
+-                error = v->server_reset(v, cx, cy, v->mod_bpp);
++            }
++            else if (encoding == 0xfffffecc) /* extended desktop resize */
++            {
++                init_stream(s, 8192);
++                error = trans_force_read_s(v->trans, s, 4);
++                if (error == 0)
++                {
++                    in_uint8(s, k); /* number of screens */
++                    in_uint8s(s, 3);
++                    error = trans_force_read_s(v->trans, s, k * 16);
++                    if (error == 0)
++                    {
++                        in_uint8s(s, k * 16); /* skip screen list */
++                        /* note new dimensions for later */
++                        v->server_width = cx;
++                        v->server_height = cy;
++                    }
++                }
+             }
+             else
+             {
+@@ -740,12 +758,22 @@ lib_framebuffer_update(struct vnc *v)
+         error = v->server_end_update(v);
+     }
+ 
++    if (v->mod_width != v->server_width || v->mod_height != v->server_height)
++    {
++        /* perform actual resize outside the update */
++        v->mod_width = v->server_width;
++        v->mod_height = v->server_height;
++        error = v->server_reset(v, v->mod_width, v->mod_height, v->mod_bpp);
++        v->incremental = 0;
++    }
++
+     if (error == 0)
+     {
+         /* FramebufferUpdateRequest */
+         init_stream(s, 8192);
+         out_uint8(s, 3);
+-        out_uint8(s, 1);
++        out_uint8(s, v->incremental);
++        v->incremental = 1;
+         out_uint16_be(s, 0);
+         out_uint16_be(s, 0);
+         out_uint16_be(s, v->mod_width);
+@@ -1327,11 +1355,12 @@ lib_mod_connect(struct vnc *v)
+         init_stream(s, 8192);
+         out_uint8(s, 2);
+         out_uint8(s, 0);
+-        out_uint16_be(s, 4);
++        out_uint16_be(s, 5);
+         out_uint32_be(s, 0); /* raw */
+         out_uint32_be(s, 1); /* copy rect */
+         out_uint32_be(s, 0xffffff11); /* cursor */
+         out_uint32_be(s, 0xffffff21); /* desktop size */
++        out_uint32_be(s, 0xfffffecc); /* extended desktop resize */
+         v->server_msg(v, "VNC sending encodings", 0);
+         s_mark_end(s);
+         error = trans_force_write_s(v->trans, s);
+@@ -1347,7 +1376,8 @@ lib_mod_connect(struct vnc *v)
+         /* FramebufferUpdateRequest */
+         init_stream(s, 8192);
+         out_uint8(s, 3);
+-        out_uint8(s, 0);
++        out_uint8(s, v->incremental);
++        v->incremental = 1;
+         out_uint16_be(s, 0);
+         out_uint16_be(s, 0);
+         out_uint16_be(s, v->mod_width);
+diff --git a/vnc/vnc.h b/vnc/vnc.h
+index 3eee4e0..1990778 100644
+--- a/vnc/vnc.h
++++ b/vnc/vnc.h
+@@ -113,6 +113,7 @@ struct vnc
+   int clip_chanid;
+   struct stream *clip_data_s;
+   int delay_ms;
++  int incremental;
+   struct trans *trans;
+   int got_guid;
+   tui8 guid[16];

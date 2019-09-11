@@ -1,0 +1,98 @@
+-------------------------------------------------------------------
+Sat Aug 10 05:12:29 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.14
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.14 2019-08-09T23:52:24+0200
+   - Fix failing tests #169
+
+-------------------------------------------------------------------
+Fri Aug  9 05:10:48 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.13
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.13 2019-08-08T16:27:29+0200
+   - Fix extend() should not mutate the source objects #167
+  
+  3.12 2019-08-08T12:02:14+0200
+   - Fix bug: Joi->extend(...) will also merge "required" #166
+   - Fix deprecation warning from $joi->validate #165
+     Contributor: Mattias Päivärinta
+   - Fix loading Time::Local in the correct module #163
+     Contributor: Bernhard Graf
+
+-------------------------------------------------------------------
+Wed May  8 05:10:07 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.11
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.11 2019-05-07T21:53:16+0700
+   - Bundle https://github.com/OAI/OpenAPI-Specification/blob/master/schemas/v3.0/schema.json #157
+
+-------------------------------------------------------------------
+Mon May  6 05:11:22 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.10
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.10 2019-05-05T14:32:15+0700
+   - Should not add "/definitions" to bundle, if there are no definitions
+   - A bit too soon to deprecate bundle({replace => 1}) in 3.09
+
+-------------------------------------------------------------------
+Sun May  5 05:13:01 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.09
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.09 2019-05-04T22:28:55+0700
+   - Prettier definition names from bundle().
+   - Changed default bundle() definitions location from "x-bundle" to "definitions".
+   - Deprecated bundle({ref_ref => ...})
+   - Deprecated bundle({replace => ...})
+
+-------------------------------------------------------------------
+Sun Apr  7 05:09:45 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.08
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.08 2019-04-06T15:07:11+0700
+   - Add support for "default" in object definitions #155
+   - Add support for coerce("bool,def,num,str") as alternative to hash
+   - Add support for setting coerce in new()
+   - Deprecated support for coerce(1)
+
+-------------------------------------------------------------------
+Fri Apr  5 05:11:55 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.07
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.07 2019-04-04T23:43:55+0700
+   - Fix not leaking file names with bundle()
+
+-------------------------------------------------------------------
+Fri Feb 15 06:12:00 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.06
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.06 2019-02-14T18:24:29+0100
+   - Fix coercing integers and numbers #147
+   - Changed recursion guard to not keeping tracking of plain scalars #147
+
+-------------------------------------------------------------------
+Fri Feb  1 06:09:45 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.05
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+-------------------------------------------------------------------
+Wed Jan 30 17:25:40 UTC 2019 - Christian Dywan <cdywan@suse.de>
+
+- Add missing BuildRequires for tests
+- Skip failing id-keyword-draft4.t

@@ -1,0 +1,36 @@
+# HG changeset patch
+# User msirringhaus@suse.de
+# Date 1558452408 -7200
+#      Tue May 21 17:26:48 2019 +0200
+# Node ID 602e92722e765a3c238d3b96b26c0c8063b5eeb4
+# Parent  a3cc550d25e3a04d906f516928cbcbe50efd585e
+[mq]: mozilla-s390-context.patch
+
+diff -r a3cc550d25e3 -r 602e92722e76 js/src/wasm/WasmSignalHandlers.cpp
+--- a/js/src/wasm/WasmSignalHandlers.cpp	Tue May 21 17:22:06 2019 +0200
++++ b/js/src/wasm/WasmSignalHandlers.cpp	Tue May 21 17:26:48 2019 +0200
+@@ -154,6 +154,10 @@
+ #    define R01_sig(p) ((p)->uc_mcontext.gp_regs[1])
+ #    define R32_sig(p) ((p)->uc_mcontext.gp_regs[32])
+ #  endif
++#  if defined(__linux__) && defined(__s390x__)
++#    define GR_sig(p,x) ((p)->uc_mcontext.gregs[x])
++#    define PSWa_sig(p) ((p)->uc_mcontext.psw.addr)
++#  endif
+ #elif defined(__NetBSD__)
+ #  define EIP_sig(p) ((p)->uc_mcontext.__gregs[_REG_EIP])
+ #  define EBP_sig(p) ((p)->uc_mcontext.__gregs[_REG_EBP])
+@@ -385,8 +389,13 @@
+ #  define PC_sig(p) R32_sig(p)
+ #  define SP_sig(p) R01_sig(p)
+ #  define FP_sig(p) R01_sig(p)
++#elif defined(__s390x__)
++# define PC_sig(p) PSWa_sig(p)
++# define SP_sig(p) GR_sig(p, 15)
++# define FP_sig(p) GR_sig(p, 11)
+ #endif
+ 
++
+ static void SetContextPC(CONTEXT* context, uint8_t* pc) {
+ #ifdef PC_sig
+   *reinterpret_cast<uint8_t**>(&PC_sig(context)) = pc;

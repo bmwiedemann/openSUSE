@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Wed Jun 12 15:06:06 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Sun Jan  6 10:35:59 UTC 2019 - Thomas Wagner <wagner-thomas@gmx.at>
+
+- added dependency for ifconfig
+
+-------------------------------------------------------------------
+Thu Nov 23 13:45:54 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Mon Mar 13 00:54:38 UTC 2017 - malcolmlewis@opensuse.org
+
+- Remove insserv requirement and macro to fix Factory build.
+- Add fdupes check to avoid duplicate man page warning.
+
+-------------------------------------------------------------------
+Wed Dec  28 13:14:22 UTC 2016 - wagner-thomas@gmx.at
+- fixed unbalanced quotes in service files bnc#1017236
+
+-------------------------------------------------------------------
+Sat May  9 13:40:37 UTC 2015 - wagner-thomas@gmx.at
+
+- start iodine and iodined after network.target
+- added rc-link
+
+-------------------------------------------------------------------
+Wed Aug 27 08:34:22 UTC 2014 - wagner-thomas@gmx.at
+
+- separate user for iodined
+- added a default config (bnc#857181) with a chroot directory
+- fixed license string
+- Update to 0.7.0:
+  * Artial IPv6 support (#107)
+    Client can connect to iodined through an relaying IPv6
+	nameserver. Server only supports IPv4 for now.
+	Traffic inside tunnel is IPv4.
+  * dd socket activation for systemd, by Michael Scherer.
+  * Add automated lookup of external ip (via -n auto).
+  * Bugfix for OS X (Can't assign requested address)
+  * Fix DNS tunneling bug caused by uninitialized variable, #94
+  * Handle spaces when entering password interactively, fixes
+    #93. Patch by Hagar.
+  * Add -R option to set OpenBSD routing domain for the DNS
+    socket. Patch by laurent at gouloum fr, fixes #95.
+  * Add android patches and makefile, from Marcel Bokhorst,
+    fixes #105.
+  * Added missing break in iodine.c, by Pavel Pergamenshchik,
+    #108.
+  * A number of minor patches from Frank Denis, Gregor Herrmann
+    and Barak A. Pearlmutter.
+	+ Testcase compilation fixes for OS X and FreeBSD
+	+ Do not let sockets be inherited by sub-processes, fixes
+      #99.
+	+ Add unspecified RR type (called PRIVATE; id 65399, in
+      private use range). For servers with RFC3597 support.
+      Fixes #97.
+    + Fix authentication bypass vulnerability; found by Oscar
+      Reparaz.
+
+-------------------------------------------------------------------
+Wed Sep 19 01:16:32 UTC 2012 - malcolmlewis@opensuse.org
+
+- Initial build.
+- Add iodine-fix-makefile-prefix.patch: Modify default install
+  prefix.
+- Add systemd service and sysconfig files for both server and
+  client.

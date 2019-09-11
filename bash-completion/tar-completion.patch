@@ -1,0 +1,17 @@
+boo#1012212 -- bash tab-autocompletion hangs on TAR-archiving with --create key
+
+---
+ completions/tar |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- completions/tar
++++ completions/tar	2016-12-14 12:37:15.952363674 +0000
+@@ -191,7 +191,7 @@ __tar_preparse_cmdline()
+     first_arg=1
+     for i in "$@"; do
+         case "$i" in
+-            --delete|--test-label)
++            --delete|--test-label|--catenate|--concatenate|--extract|--get|--update|--list|--append|--create)
+                 tar_mode=${i:2:100}
+                 tar_mode_arg=$i
+                 break

@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Sun Aug 19 10:47:50 UTC 2018 - jengelh@inai.de
+
+- Wrap description only at spaces. Trim redundancies from
+  descriptions. Set CFLAGS/CXXFLAGS properly.
+
+-------------------------------------------------------------------
+Sun Aug 12 09:49:42 UTC 2018 - kkirill@opensuse.org
+
+- Update to 2.0.1
+  + Protocol change, so, the major revision is bumped to v2
+  + Chat message support. A new message type BSP_CHAT (0x04)
+    is supported
+
+-------------------------------------------------------------------
+Sat May  9 09:48:46 UTC 2015 - kkirill@opensuse.org
+
+- Initial package of 1.1.2 version for openSUSE based on
+  the upstream spec by Karl Kleinpaste and Fedora modifications
+

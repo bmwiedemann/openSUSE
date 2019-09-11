@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="localonly">
+    <param name="url">svn://svn.code.sf.net/p/wxcode/code/trunk/wxCode/components/stedit/</param>
+    <param name="scm">svn</param>
+    <param name="versionprefix">1.6.0</param>
+    <param name="versionformat">r%r</param>
+    <param name="filename">wxstedit</param>
+  </service>
+  <service name="set_version" mode="localonly" />
+  <service name="recompress" mode="localonly">
+    <param name="file">*.tar</param>
+    <param name="compression">bz2</param>
+  </service>
+</services>

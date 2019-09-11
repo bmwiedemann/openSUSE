@@ -1,0 +1,169 @@
+-------------------------------------------------------------------
+Sat Dec 13 16:52:21 UTC 2014 - p.drouand@gmail.com
+
+- Clean up specfile
+- Use download Url as source
+- Update to version 4.1.1
+  + Add WhenNotified class and method.  Replaces need for third party
+    pgnotify.
+  + Sharpen test for inserting current_timestamp.
+  + Add more quote tests.  False and 0 should evaluate to NULL.
+  + More tests   + Any number other than 0 is True.
+  + Do not use positional parameters internally.
+    This restores backward compatibility with version 4.0.
+  + Add methods for changing the decimal point.
+- Changes from version 4.1
+  + Dropped support for Python below 2.5 and PostgreSQL below 8.3.
+  + Added support for Python up to 2.7 and PostgreSQL up to 9.2.
+  + Particularly, support PQescapeLiteral() and PQescapeIdentifier().
+  + The query method of the classic API now supports positional parameters.
+    This an effective way to pass arbitrary or unknown data without worrying
+    about SQL injection or syntax errors
+  + The classic API now supports a method namedresult() in addition to
+    getresult() and dictresult(), which returns the rows of the result
+    as named tuples if these are supported (Python 2.6 or higher).
+  + The classic API has got the new methods begin(), commit(), rollback(),
+    savepoint() and release() for handling transactions.
+  + Both classic and DBAPI 2 connections can now be used as context
+    managers for encapsulating transactions.
+  + The execute() and executemany() methods now return the cursor object,
+    so you can now write statements like "for row in cursor.execute(...)"
+  + Binary objects are now automatically escaped and unescaped.
+  + Bug in money quoting fixed.  Amounts of $0.00 handled correctly.
+  + Proper handling of date and time objects as input.
+  + Proper handling of floats with 'nan' or 'inf' values as input.
+  + Fixed the set_decimal() function.
+  + All DatabaseError instances now have a sqlstate attribute.
+  + The getnotify() method can now also return payload strings (#15).
+  + Better support for notice processing with the new methods
+    set_notice_receiver() and get_notice_receiver()
+  + Open transactions are rolled back when pgdb connections are closed
+  + Connections and cursors can now be used with the "with" statement
+  + New method use_regtypes() that can be called to let getattnames()
+  return regular type names instead of the simplified classic types (#44).
+- Fix Provides/Obsoletes tags
+
+-------------------------------------------------------------------
+Sat Sep 17 10:15:35 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Fri Mar  4 10:23:19 UTC 2011 - nkrinner@novell.com
+
+- New version: 4.0
+- Dropped support for Python below 2.3 and PostgreSQL below 7.4.
+- Improved performance of fetchall() for large result sets by
+  speeding up the type casts (as suggested by Peter Schuller).
+- Exposed exceptions as attributes of the connection object.
+- Exposed connection as attribute of the cursor object.
+- Cursors now support the iteration protocol.
+- Added new method to get parameter settings.
+- Added customizable row_factory as suggested by Simon Pamies.
+- Separated between mandatory and additional type objects.
+- Added keyword args to insert, update and delete methods.
+- Added exception handling for direct copy.
+- Start transactions only when necessary, not after every commit().
+- Release the GIL while making a connection (as suggested by Peter
+  Schuller).
+- If available, use decimal.Decimal for numeric types.
+- Allow DB wrapper to be used with DB-API 2 connections (as
+  suggested by Chris Hilton).
+- Made private attributes of DB wrapper accessible.
+- Dropped dependence on mx.DateTime module.
+- Support for PQescapeStringConn() and PQescapeByteaConn(); these
+  are now also used by the internal _quote() functions.
+- Added 'int8' to INTEGER types. New SMALLINT type.
+- Added a way to find the number of rows affected by a query()
+  with the classic pg module by returning it as a string. For single
+  inserts, query() still returns the oid as an integer. The pgdb
+  module already provides the "rowcount" cursor attribute for the
+  same purpose.
+- Improved getnotify() by calling PQconsumeInput() instead of
+  submitting an empty command.
+- Removed compatibility code for old OID munging style.
+- The insert() and update() methods now use the "returning" clause
+  if possible to get all changed values, and they also check in
+  advance whether a subsequent select is possible, so that ongoing
+  transactions won't break if there is no select privilege.
+- Added "protocol_version" and "server_version" attributes.
+- Revived the "user" attribute.
+- The pg module now works correctly with composite primary keys;
+  these are represented as frozensets.
+- Removed the undocumented and actually unnecessary "view"
+  parameter from the get() method.
+- get() raises a nicer ProgrammingError instead of a KeyError if
+  no primary key was found.
+- delete() now also works based on the primary key if no oid
+  available and returns whether the row existed or not.
+
+-------------------------------------------------------------------
+Tue Jul 25 17:20:11 CEST 2006 - max@suse.de
+
+- New version: 3.8.1
+- Use string methods instead of deprecated string functions.
+- Only use SQL-standard way of escaping quotes.
+- Added the functions escape_string() and escape/unescape_bytea().
+- Reverted code in clear() method that set date to current.
+- Added code for backwards compatibility in OID munging code.
+- Reorder attnames tests so that "interval" is checked for before
+  "int."
+- If caller supplies key dictionary, make sure that all has a
+  namespace.
+- Installed new favicon.ico from Matthew Sporleder <mspo@mspo.com>
+- Replaced snprintf by PyOS_snprintf.
+- Removed NO_SNPRINTF switch which is not needed any longer
+- Clean up some variable names and namespace
+- Add get_relations() method to get any type of relation
+- Rewrite get_tables() to use get_relations()
+- Use new method in get_attnames method to get attributes of views
+  as well
+- Add Binary type
+- Number of rows is now -1 after executing no-result statements
+- Fix some number handling
+- Non-simple types do not raise an error any more
+- Improvements to documentation framework
+- Take into account that nowadays not every table must have an oid
+  column
+- Simplification and improvement of the inserttable() function
+- Fix up unit tests
+- The usual assortment of minor fixes and enhancements 
+
+-------------------------------------------------------------------
+Sat Mar  4 18:45:07 CET 2006 - kukuk@suse.de
+
+- updated to reflect python changes due to #149809
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:54 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan  5 17:53:31 CET 2006 - max@suse.de
+
+- New version: 3.7
+
+-------------------------------------------------------------------
+Mon Jul  4 14:24:00 CEST 2005 - tarnold@suse.de
+
+- Neew vrsion: 3.6.2
+
+-------------------------------------------------------------------
+Thu Jan 27 19:53:18 CET 2005 - max@suse.de
+
+- New version: 3.6.1
+
+-------------------------------------------------------------------
+Fri Mar 19 16:50:37 CET 2004 - max@suse.de
+
+- Add a dependency to python (bug #36499).
+
+-------------------------------------------------------------------
+Fri Mar  5 16:29:42 CET 2004 - max@suse.de
+
+- Package postgresql-python separated from the PostgreSQL source
+  RPM and renamed to PyGreSQL to reflect the fact, that it is a
+  separete project now.
+
+- Version: 3.4

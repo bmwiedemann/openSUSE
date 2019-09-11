@@ -1,0 +1,15 @@
+/var/log/nginx/*.log {
+    compress
+    dateext
+    maxage 365
+    rotate 99
+    size=+4096k
+    missingok
+    notifempty
+    create 644 root root
+    postrotate
+      # -s reopen will use the pid file passed in the config file or the compiled in default path
+      /usr/sbin/nginx -s reopen
+    endscript  
+}
+

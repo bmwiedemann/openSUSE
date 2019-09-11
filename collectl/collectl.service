@@ -1,0 +1,12 @@
+[Unit]
+Description=Performance data collection for a number of subsystems
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/collectl.pid
+EnvironmentFile=/etc/sysconfig/collectl
+ExecStart=/usr/bin/collectl $OPTS /etc/collectl.conf
+
+[Install]
+WantedBy=multi-user.target

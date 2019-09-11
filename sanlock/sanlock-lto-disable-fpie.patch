@@ -1,0 +1,16 @@
+Do not mix -fPIC and -FPIE, it is causing issue in LTO mode
+(boo#1138836).
+
+diff --git a/python/setup.py b/python/setup.py
+index 91311a8..91b8b2f 100644
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -11,7 +11,7 @@ sanlock = Extension(name='sanlock',
+                     sources=['sanlock.c'],
+                     include_dirs=['../src'],
+                     library_dirs=['../src'],
+-                    extra_link_args=['-fPIE', '-Wl,-z,relro,-z,now'],
++                    extra_link_args=['-Wl,-z,relro,-z,now'],
+                     libraries=sanlocklib)
+ 
+ version = None

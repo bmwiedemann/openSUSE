@@ -1,0 +1,13 @@
+Index: gnome-session-3.28.0/tools/gnome-session-check-accelerated.c
+===================================================================
+--- gnome-session-3.28.0.orig/tools/gnome-session-check-accelerated.c
++++ gnome-session-3.28.0/tools/gnome-session-check-accelerated.c
+@@ -147,7 +147,7 @@ main (int argc, char **argv)
+          * Also make sure that we don't read cached information about the first GPU
+          * when requesting information about the second.
+          */
+-        if (is_discrete_gpu_check () || g_strcmp0 (g_getenv ("XDG_SESSION_TYPE"), "x11") != 0) {
++        if (is_discrete_gpu_check () || g_strcmp0 (g_getenv ("XDG_SESSION_TYPE"), "wayland") == 0) {
+                 renderer_string = get_gtk_gles_renderer ();
+                 if (renderer_string) {
+                         g_print ("%s", renderer_string);

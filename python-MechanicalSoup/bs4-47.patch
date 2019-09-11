@@ -1,0 +1,123 @@
+From 6c5408b123c9260e3debd63f3cb78c6634b9d4fa Mon Sep 17 00:00:00 2001
+From: Dan Hemberger <daniel.hemberger@gmail.com>
+Date: Thu, 17 Jan 2019 10:58:10 -0800
+Subject: [PATCH] Fix tests for bs4 4.7.0+
+
+CSS selectors in bs4 now return elements in page order, whereas
+they did not previously.
+
+This requires us to re-order some of our expected test output,
+and to perform an order-independent comparison if tested with
+a bs4 version before 4.7.0.
+
+Tested and passing with bs4 4.6.0 and 4.7.1.
+
+Closes #257.
+---
+ tests/test_form.py             | 12 ++++++------
+ tests/test_stateful_browser.py | 10 +++++-----
+ tests/utils.py                 |  9 ++++++++-
+ 3 files changed, 19 insertions(+), 12 deletions(-)
+
+diff --git a/tests/test_form.py b/tests/test_form.py
+index 8db2042..32d6463 100644
+--- a/tests/test_form.py
++++ b/tests/test_form.py
+@@ -74,30 +74,30 @@ def test_submit_set(httpbin):
+ @pytest.mark.parametrize("expected_post", [
+     pytest.param(
+         [
++            ('text', 'Setting some text!'),
+             ('comment', 'Testing preview page'),
+             ('preview', 'Preview Page'),
+-            ('text', 'Setting some text!')
+         ], id='preview'),
+     pytest.param(
+         [
++            ('text', '= Heading =\n\nNew page here!\n'),
+             ('comment', 'Created new page'),
+             ('save', 'Submit changes'),
+-            ('text', '= Heading =\n\nNew page here!\n')
+         ], id='save'),
+     pytest.param(
+         [
++            ('text', '= Heading =\n\nNew page here!\n'),
+             ('comment', 'Testing choosing cancel button'),
+             ('cancel', 'Cancel'),
+-            ('text', '= Heading =\n\nNew page here!\n')
+         ], id='cancel'),
+ ])
+ def test_choose_submit(expected_post):
+     browser, url = setup_mock_browser(expected_post=expected_post)
+     browser.open(url)
+     form = browser.select_form('#choose-submit-form')
+-    browser['text'] = expected_post[2][1]
+-    browser['comment'] = expected_post[0][1]
+-    form.choose_submit(expected_post[1][0])
++    browser['text'] = dict(expected_post)['text']
++    browser['comment'] = dict(expected_post)['comment']
++    form.choose_submit(expected_post[2][0])
+     res = browser.submit_selected()
+     assert(res.status_code == 200 and res.text == 'Success!')
+ 
+diff --git a/tests/test_stateful_browser.py b/tests/test_stateful_browser.py
+index 291bec2..5c5876a 100644
+--- a/tests/test_stateful_browser.py
++++ b/tests/test_stateful_browser.py
+@@ -125,15 +125,15 @@ def test_links():
+ @pytest.mark.parametrize("expected_post", [
+     pytest.param(
+         [
++            ('text', 'Setting some text!'),
+             ('comment', 'Selecting an input submit'),
+             ('diff', 'Review Changes'),
+-            ('text', 'Setting some text!')
+         ], id='input'),
+     pytest.param(
+         [
++            ('text', '= Heading =\n\nNew page here!\n'),
+             ('comment', 'Selecting a button submit'),
+             ('cancel', 'Cancel'),
+-            ('text', '= Heading =\n\nNew page here!\n')
+         ], id='button'),
+ ])
+ def test_submit_btnName(expected_post):
+@@ -141,9 +141,9 @@ def test_submit_btnName(expected_post):
+     browser, url = setup_mock_browser(expected_post=expected_post)
+     browser.open(url)
+     browser.select_form('#choose-submit-form')
+-    browser['text'] = expected_post[2][1]
+-    browser['comment'] = expected_post[0][1]
+-    res = browser.submit_selected(btnName=expected_post[1][0])
++    browser['text'] = dict(expected_post)['text']
++    browser['comment'] = dict(expected_post)['comment']
++    res = browser.submit_selected(btnName=expected_post[2][0])
+     assert(res.status_code == 200 and res.text == 'Success!')
+ 
+ 
+diff --git a/tests/utils.py b/tests/utils.py
+index 25f8ea4..3d4a72b 100644
+--- a/tests/utils.py
++++ b/tests/utils.py
+@@ -1,5 +1,7 @@
+ import mechanicalsoup
+ import requests_mock
++from distutils.version import StrictVersion
++import bs4
+ try:
+     from urllib.parse import parse_qsl
+ except ImportError:
+@@ -62,7 +64,12 @@ def mock_post(mocked_adapter, url, expected, reply='Success!'):
+     def text_callback(request, context):
+         # Python 2's parse_qsl doesn't like None argument
+         query = parse_qsl(request.text) if request.text else []
+-        assert (query == expected)
++        # In bs4 4.7.0+, CSS selectors return elements in page order,
++        # but did not in earlier versions.
++        if StrictVersion(bs4.__version__) >= StrictVersion('4.7.0'):
++            assert query == expected
++        else:
++            assert sorted(query) == sorted(expected)
+         return reply
+ 
+     mocked_adapter.register_uri('POST', url, text=text_callback)

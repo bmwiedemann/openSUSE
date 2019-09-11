@@ -1,0 +1,272 @@
+-------------------------------------------------------------------
+Mon Apr  8 12:26:15 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.10.1
+  - Fix calls to functions removed from openstacksdk
+  - Update json module to jsonutils
+  - Imported Translations from Zanata
+  - Use template for lower-constraints
+  - Enable cluster profile only and replace function test
+  - Fix getting action id in Location header
+  - Use latest senlin microversion for Stein
+  - Change openstack-dev to openstack-discuss
+  - import zuul job settings from project-config
+  - Add Stein release notes
+  - Update reno for stable/rocky
+  - Don't quote {posargs} in tox.ini
+  - add python 3.6 unit test job
+  - Add senlinclient support bandit test
+  - Add Python 3.6 classifier to setup.cfg
+  - Bump openstacksdk to 0.24.0
+  - switch documentation job to new PTI
+  - Update hacking version
+  - Fix _get_config_from_profile key building
+  - Update client to account for 409 error in cluster actions
+  - add python 3.7 unit test job
+  - Update python-senlinclient to use current openstacksdk
+
+-------------------------------------------------------------------
+Mon Sep  3 12:50:41 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.8.0
+  - Change event and node module describe error.
+  - Switch to stestr
+  - Imported Translations from Zanata
+  - Add function test path to test_path
+  - Add node functional test and fix type list test
+  - Update reno for stable/queens
+  - Zuul: Remove project name
+  - Change CURRENT_API_VERSION to "1.10"
+  - Add profile, policy functional test
+  - fix tox python3 overrides
+  - Rocky releasenotes for python-senlinclient
+  - Add cli and contributor documents file.
+  - Fix docs cli authorize environment variables
+  - pypy is no longer supported by oslo libraries
+  - Remove run_tests.sh
+  - Follow the new PTI for document build
+  - Fix request version returns value handling error.
+  - Remove unnecessary definition
+  - Add back client module
+  - Add cluster and receiver function test
+  - Retrieve profile type by type name and version
+  - Zuul enable senlinclient function check
+  - Updated from global requirements
+  - add lower-constraints job
+  - Fix request return resp not exist 'action' key
+
+-------------------------------------------------------------------
+Fri Feb 23 13:42:24 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.7.0
+  - Q3 release note
+  - Receiver update faild when action value None
+  - Refactored make_client
+  - Zuul: Remove project name
+  - Retire senlin command line tool
+  - Update the home page
+  - Add support for region_name and interface for client connection
+  - Avoid tox_install.sh for constraints support
+  - Fix cluster/node force delete parameter location error
+  - Add basic functional tests
+  - Updated from global requirements
+  - Delete TODO file support action create,delete operation
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Mon Jan 15 12:04:59 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.5.0
+  - Add profile type ops cli
+  - Switch to Zuul v3 testing
+  - Update reno for stable/pike
+  - Updated from global requirements
+  - Remove setting of version/release from releasenotes
+  - Imported Translations from Zanata
+  - fixes support for osprofiler
+  - Fix the ineffective url links in python-senlinclient docs
+  - Fix delete cluster/node miss force-delete parameter
+  - Add force parameter for cluster and node deletion
+  - Support node-adopt/preview CLI
+  - Fix unit test failure
+
+-------------------------------------------------------------------
+Mon Aug  7 14:21:17 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.4.0
+  - OSC command for node op and cluster op
+  - Enable coverage report in console output
+  - Param "response" is not used any more in
+  - Profile id or name is a default profile
+  - Enable some off-by-default checks
+  - Update reno for stable/ocata
+  - import cli-reference from openstack-manuals
+  - Fix hacking requirement for testing
+  - Cleanup sphinx building
+  - Add filter "user_id" for receiver list
+  - Fix SDK version problem
+  - Revise service list help info
+  - Add --config option parameter for cluster-create command
+  - Delete TODO about event-delete, The event-delete
+  - Revert "Revert "Revert "Revert "Fix `openstack  cluster profile validate` bug""""
+  - Initial test hooks for functional test
+  - Avoid import internal classes from SDK (3)
+  - Using fixtures.MockPatch instead of mockpatch.Patch
+  - remove redundant value when cluster-show
+  - Add services list
+  - Update imoprt order
+  - Replaces yaml.load() with yaml.safe_load()
+  - Update and optimize documentation links
+  - Fix openstackdocstheme settings
+  - Fix senlin cluster policy list error
+  - Check node status before do cluster-recover action
+  - Fix `openstack cluster service`
+  - Add user_id in receiver list
+  - Revise `senlin service-list`
+  - Fix cluster update failed problem
+  - Make --os-profile load from environment variables
+  - Revise command reminder when we run `senlin cluster-resize`
+  - Client support for "destroy_after_deletion" in cluster del nodes
+  - Add oslo_debug_helper to tox.ini
+  - Replace six.itervalues with dict.values()
+  - Fix receiver-update mistake
+  - delete bash_completion in subcommand
+  - Unify style of 'domain' field
+  - The python 3.4 support is removed
+  - Print support status while listing policy types
+  - Fix `openstack cluster service` Exception raised
+  - Support check before do node-recover action
+  - Fixed warnings when building docs
+  - Remove a py34 environment from tox
+  - Revise command reminder when we run `openstack cluster resize`
+  - fix setup.cfg cluster service path error
+  - Add an installation doc
+  - Remove log translations
+  - Support  receiver update operation
+  - List services doc link cannot be found
+  - Fix development document api-ref link error
+  - Support to cluster-op and node-op operations
+  - Support status output for profile type list
+  - Avoid import internal classes from SDK (2)
+  - Fix html_last_updated_fmt for Python3.
+  - Add parameter in CLUSTER_DEL_NODES action
+  - Support profile-only to cluster update
+  - Updated from global requirements
+  - Avoid import internal classes from SDK
+
+-------------------------------------------------------------------
+Mon Feb 13 13:00:49 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.2.0:
+  - Fix help msg of node-check and node-recover
+  - Replace 'MagicMock' with 'Mock'
+  - Fix 'type_name' in `openstack cluster profile list`
+  - Add AUTHORS and ChangeLog into gitignore
+  - Delete python bytecode file
+  - key=value should be key2=value2
+  - Fix cluster_id field when listing events
+  - fix indentation of reno toctree
+  - Fix receiver list
+  - Add Constraints support
+  - Make shell main() specify return value in exit code
+  - Changed the link to home-page
+  - Show team and repo badges on README
+  - Add plug-in summary for osc doc
+  - Add sort key "oid" in event list
+  - Fix target ID display when listing actions
+  - Fix `openstack  cluster profile validate` bug
+  - Fix error in policy-show
+  - Trivial: Modify the description of profile validate
+  - Fix error in build-info
+  - Fix `openstack  cluster policy vaildate` bug
+  - Revise help string profile list
+  - Revise key1=value to key1=value1
+  - Add missing requirements
+  - Updated from global requirements
+  - Fix error in do_profile_type_list
+  - Change osprofiler option "--profile" to "--os-profile"
+  - Add receiver type instruction
+  - Release note for python-senlinclient 1.1.0
+  - Show 'dependents' property in node details
+  - Fix cluster_collect interface
+  - Fix resource update issues
+  - Fix `openstack cluster event list` bug
+  - Revise the help message of policy binding list
+  - Revise the help message of cluster-collect
+  - revise the "cluster-policy-attach"
+  - Revise "enabled" related code in ClusterPolicyUpdate
+  - Modify several marker's help
+  - Remove six.moves module
+  - Revise the help info of cluster collect
+  - Fix `openstack cluster action list` bug
+  - Add metadata clean help
+  - Fix import method to follow community guideline
+  - Fix doc build if git is absent
+  - Correct deprecation of scale-in and scale-out cli
+  - Enhance the parameter check for "path" in cluster collect
+  - Revise 'openstack cluster node members list'
+  - The output of action list filtered by "target" returns empty
+  - Remove unsupported sort key "user"
+  - Fix error in action list
+  - Add deprecation of cluster-run cli
+  - Fix senlin cluster-policy-detach cannot disable
+  - cluster policy attach cannot work
+  - Client support for node replace
+  - action-list's given id not event id
+  - All dictionary options need be a string
+  - The output of event-list by filter "cluster_id" return empty
+  - Add filters "policy_type" and "policy_name" for policy binding list
+  - Rework take_action function in class ListAction
+  - Policy binding attach cannot work
+  - Update reno for stable/newton
+  - Fix list of event with timestamp field
+  - Support  "global_project" arguments for action-list
+  - Rework do_action_list function's "full_id" handling
+  - Revert "Fix `openstack  cluster profile validate` bug"
+  - senlin profile-create has no argument -t
+  - Add filter "is_enabled" for policy binding list
+  - Trivial: Modify the description of policy validate
+  - Fix project_id show in 'senlin xyz_list -g'
+  - Fix error in cluster collect
+  - policy binding update cannot work
+  - Point out valid sort keys in `openstack cluster member list`
+  - Add "cluster_id" column to  `openstack cluster event list`
+  - Point out valid filter keys in `openstack cluster member list`
+  - Support xyz_update purging metadata
+  - Release note for python-senlinclient 1.2.0
+  - Enable release notes translation
+  - Trivial: Fix a typo in cluster-run's error message
+  - Change the type of the parameter "enabled" to boolean
+  - Fix `openstack  cluster policy show` bug
+  - Fix the incorrect version and release details
+  - Profile list can not display the "type" column
+  - Remove unnecessary coding format in the head of files
+  - Get project_id and user_id when show profile
+  - profile's name also can be use in some commands
+  - event-list cannot display correctly according to the sort option
+  - Fix profile list
+  - Show project_id field when xyz-list with global-project
+  - `openstack cluster event list --help` bug
+  - Revert "Revert "Fix `openstack  cluster profile validate` bug""
+  - Revert "Revert "Revert "Fix `openstack  cluster profile validate` bug"""
+  - Fix error in "action list"
+  - Revert "Get project_id and user_id when show profile"
+  - Delete pbr generated files
+  - Modify development doc url in CONTRIBUTING.rst
+  - Revert "Revert "Get project_id and user_id when show profile""
+
+-------------------------------------------------------------------
+Fri Jan 27 10:57:11 UTC 2017 - jengelh@inai.de
+
+- Use more specific RPM group
+
+-------------------------------------------------------------------
+Fri Oct 21 07:39:25 UTC 2016 - tbechtold@suse.com
+
+- Switch to stable/newton
+
+-------------------------------------------------------------------
+Thu Oct 13 14:33:40 UTC 2016 - tbechtold@suse.com
+
+- Initial packaging (version 1.0.0)
+

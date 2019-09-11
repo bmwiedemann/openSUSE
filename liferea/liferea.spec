@@ -1,0 +1,113 @@
+#
+# spec file for package liferea
+#
+# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+#
+
+
+Name:           liferea
+Version:        1.12.1
+Release:        0
+Summary:        Linux Feed Reader
+License:        GPL-2.0
+Group:          Productivity/Other
+Url:            http://liferea.sourceforge.net/
+Source0:        https://github.com/lwindolf/liferea/releases/download/v%{version}/%{name}-%{version}.tar.bz2
+# PATCH-FEATURE-OPENSUSE liferea-opensuse-feeds.patch -- Add openSUSE feeds to default feeds
+Patch0:         liferea-opensuse-feeds.patch
+
+BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  intltool >= 0.40.0
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(glib-2.0) >= 2.28.0
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gsettings-desktop-schemas)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4.0
+BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(libpeas-1.0) >= 1.0.0
+BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.0.0
+BuildRequires:  pkgconfig(libsoup-2.4) >= 2.28.2
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.27
+BuildRequires:  pkgconfig(libxslt) >= 1.1.19
+BuildRequires:  pkgconfig(pango) >= 1.4.0
+BuildRequires:  pkgconfig(sqlite3) >= 3.7.0
+BuildRequires:  pkgconfig(webkit2gtk-4.0)
+Requires:       dbus-1 >= 0.30
+Recommends:     %{name}-lang
+
+%description
+Liferea is an abbreviation for Linux Feed Reader. It is a news
+aggregator for online news feeds. It supports a number of different
+feed formats including RSS/RDF, CDF, Atom, OCS, and OPML. There are
+many other news readers available, but these others are not available
+for Linux or require many extra libraries to be installed. Liferea
+tries to fill this gap by creating a fast, easy-to-use, easy-to-install
+news aggregator for GTK and GNOME.
+
+%lang_package
+
+%prep
+%setup -q
+%patch0
+
+%build
+%configure \
+        --disable-static
+make %{?_smp_mflags}
+
+%install
+%make_install
+%suse_update_desktop_file net.sourceforge.liferea X-SuSE-RSS-News
+%find_lang %{name} %{?no_lang_C}
+rm doc/Makefile*
+rm doc/html/Makefile*
+%fdupes %{buildroot}
+
+%if 0%{?suse_version} < 1500
+%post
+%desktop_database_post
+%icon_theme_cache_post
+%glib2_gsettings_schema_post
+
+%postun
+%desktop_database_postun
+%icon_theme_cache_postun
+%glib2_gsettings_schema_postun
+%endif
+
+%files
+%doc AUTHORS COPYING ChangeLog
+%{_bindir}/liferea
+%{_bindir}/liferea-add-feed
+%{_datadir}/applications/net.sourceforge.liferea.desktop
+%{_datadir}/dbus-1/services/net.sourceforge.liferea.service
+%{_datadir}/liferea/
+%dir %{_datadir}/appdata
+%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/GConf/gsettings/liferea.convert
+%{_datadir}/glib-2.0/schemas/net.sf.liferea.gschema.xml
+%{_datadir}/icons/hicolor/*/*/*.*
+%{_libdir}/%{name}/
+%doc %{_mandir}/man1/liferea.1*
+# We can't really move the localized manpages to the lang package, since they'd
+# create a conflict between the lang subpackage and bundles
+%lang(pl) %dir %{_mandir}/pl
+%lang(pl) %dir %{_mandir}/pl/man1
+%lang(pl) %{_mandir}/pl/man1/liferea.1*
+
+%files lang -f %{name}.lang
+
+%changelog

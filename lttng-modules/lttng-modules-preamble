@@ -1,0 +1,3 @@
+Requires: kernel-%1
+Requires: lttng-modules
+Enhances: kernel-%1

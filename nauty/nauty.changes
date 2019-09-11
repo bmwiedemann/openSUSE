@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Thu Oct 25 10:11:59 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstrem release 2.6.11
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Mon Jul 30 03:57:10 UTC 2018 - bwiedemann@suse.com
+
+- Disable popcnt instruction to make build reproducible (boo#1100677)
+
+-------------------------------------------------------------------
+Mon Apr 30 22:26:29 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.6.10
+  * Problems with input of graphs with 0 vertices were fixed.
+    Many utilities in the package will not work with such graphs.
+    It is NOT TRUE that graphs of order 0 are now supported.
+  * Stronger measures are taken to ensure that the sort order
+    used by shortg is plain byte order. This corresponds to the C
+    collation order, also known as POSIX, but it may be different
+    from the collation order used by default on your command
+    line. This means that utilities like sort, uniq, comm and
+    join might consider the output of shortg to be out of order.
+    To avoid this, define the environment variable LC_ALL to
+    equal the string "C":
+  * bash: export LC_ALL=C
+  * tcsh: setenv LC_ALL C
+  * If LC_ALL is undefined, it will also be sufficient to define
+    LC_COLLATE to equal "C". The POSIX standard says that LC_ALL
+    takes precedence over LC_COLLATE if both are defined, but
+    this might not be true for older systems.
+
+-------------------------------------------------------------------
+Thu Sep 14 19:26:13 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.6.7;
+  initial version for build.opensuse.org
+  * Switch from Non-Commercial Non-Military license to Apache-2.0
+  * The "dreadnaut" tool now catches control-C when nauty or Traces
+    is running. This uses the global variable nauty_kill_request.
+  * dreadnaut: new command "vv" to display sorted degree sequence.
+  * dreadnaut: new command "r&" to relabel according to the
+    partition.
+  * dreadnaut: new command "->>" to flush the output.
+  * dreadnaut: new command "B" to turn on output flushing at the
+    end of every command. Command "-B" turns it off. Default off.
+  * dreadnaut: Command with short arguments now have to be all on
+    one line. Most errors cause the rest of the input line to be
+    skipped.
+  * dreadnaut: The "R" command now preserves the colouring.
+  * The "nauty" tool has an extra hook usercanonproc().
+  * nauty: The maximum number of vertices is now 2 billion.
+- Add nauty-am.diff, nauty-uninitialized.diff
+
+-------------------------------------------------------------------
+Sat May 18 13:48:53 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 2.5.3)

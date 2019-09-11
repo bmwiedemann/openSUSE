@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Mon Mar  9 15:42:44 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Cleanup spec file with spec-cleaner
+- Enable build for aarch64
+
+-------------------------------------------------------------------
+Thu Dec 12 14:45:20 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.7
+  + ChangeLog has not been updated
+- Remove acpi-memset-with-zero-length.patch; merged on upstream release
+
+-------------------------------------------------------------------
+Sat Oct 19 15:01:47 UTC 2013 - p.drouand@gmail.com
+
+- Package doesn't contain sysconfig file or sysvinit script; remove
+  useless %insserv_prereq and %fillup_prereq macros
+
+-------------------------------------------------------------------
+Sat Sep 17 10:45:24 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Tue Apr  5 14:09:15 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix memset-with-zero-length bug. 
+
+-------------------------------------------------------------------
+Sat Oct  2 19:20:37 UTC 2010 - aj@suse.de
+
+- Update to new upstream version 1.5:
+  * Print error message if no information can be retrieved e.g. because acpi
+    is not activated
+  * Read power_now and use it to replace current_now if the battery is
+    reporting energy values, closes: 532000
+
+-------------------------------------------------------------------
+Sat Oct  2 19:02:35 UTC 2010 - aj@suse.de
+
+- Split up from acpid package.
+

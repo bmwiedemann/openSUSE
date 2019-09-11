@@ -1,0 +1,30 @@
+Index: mathgl-2.4.1/mgltex/CMakeLists.txt
+===================================================================
+--- mathgl-2.4.1.orig/mgltex/CMakeLists.txt
++++ mathgl-2.4.1/mgltex/CMakeLists.txt
+@@ -10,15 +10,6 @@ find_program(findmktexlsr mktexlsr)
+ if(NOT findmktexlsr)
+ 	message(SEND_ERROR "Couldn't find mktexlsr needed for LATEX example install.")
+ endif(NOT findmktexlsr)
+-execute_process(
+-	COMMAND ${findkpsewhich} -var-value=TEXMFLOCAL
+-	OUTPUT_VARIABLE TEXMFLOCALDIR
+-	RESULT_VARIABLE TEXMFLOCAL_ERR
+-	OUTPUT_STRIP_TRAILING_WHITESPACE
+-)
+-if(NOT TEXMFLOCALDIR)
+-	message(SEND_ERROR "Couldn't find TEXMFLOCAL directory.")
+-endif(NOT TEXMFLOCALDIR)
+ 
+ # set(extramgl Axis_projection Vectorial)
+ 
+@@ -49,6 +40,6 @@ get_directory_property(mglconv_clean ADD
+ set(mglconv_clean ${mglconv_clean} scripts mgltex.sty sample.tex sample.aux sample.log)
+ set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${mglconv_clean}")
+ 
+-install(FILES ${MathGL2_BINARY_DIR}/mgltex/mgltex.sty DESTINATION ${TEXMFLOCALDIR}/tex/latex/mgltex/)
+-install(FILES sample.tex mgltex.pdf ${MathGL2_BINARY_DIR}/mgltex/sample.pdf DESTINATION ${TEXMFLOCALDIR}/doc/latex/mgltex/)
+-install(CODE "execute_process(COMMAND ${findmktexlsr} ${TEXMFLOCALDIR})")
++install(FILES ${MathGL2_BINARY_DIR}/mgltex/mgltex.sty DESTINATION ${TEXMFDIR}/tex/latex/mgltex/)
++install(FILES sample.tex mgltex.pdf ${MathGL2_BINARY_DIR}/mgltex/sample.pdf DESTINATION ${TEXMFDIR}/doc/latex/mgltex/)
++install(CODE "execute_process(COMMAND ${findmktexlsr} ${TEXMFDIR})")

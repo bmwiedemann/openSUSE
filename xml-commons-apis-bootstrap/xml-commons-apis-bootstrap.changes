@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Fri Feb  1 12:14:36 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Speed-up build by compiling all *.java files in one javac
+  invocation
+
+-------------------------------------------------------------------
+Fri Dec  7 07:33:59 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Provide xml-resolver by package xml-commons-resolver-bootstrap
+- Provide compatibility symlinks xml-apis.jar and xml-resolver.jar
+- Removed patches:
+  * xml-commons-encoding.patch
+  * xml-commons-no-javadoc.patch
+    + not needed any more
+
+-------------------------------------------------------------------
+Wed Oct  4 19:43:23 UTC 2017 - fstrba@suse.com
+
+- Don't depend on java-1_5_0-gcj-compat
+- Depend on java-devel >= 1.6 instead
+- Don't build the javax.xml.parsers.* and javax.xml.transformers.*
+  classes, since they are part of jdk6+
+
+-------------------------------------------------------------------
+Thu Sep 14 09:00:18 UTC 2017 - fstrba@suse.com
+
+- Fix build with javac that has OpenJDK compatible options
+
+-------------------------------------------------------------------
+Fri May 19 11:40:41 UTC 2017 - vsistek@suse.com
+
+- Add BuildRequires: javapackages-local (for maven conversions)
+- .spec file cleanup 
+
+-------------------------------------------------------------------
+Sat Mar  7 12:17:15 UTC 2015 - afaerber@suse.de
+
+- Bump version to 1.4.01, to match xml-commons.spec
+- Drop unused 1.2.06 and 1.3.05 sources for build speedup
+
+-------------------------------------------------------------------
+Fri Mar  6 19:18:05 UTC 2015 - afaerber@suse.de
+
+- Update to 1.3.05
+- Update to 1.2.06
+
+-------------------------------------------------------------------
+Mon Jul 28 06:48:00 UTC 2014 - tchvatal@suse.com
+
+- Remove update-alternatives as they are not used here.
+
+-------------------------------------------------------------------
+Sat Sep 14 09:29:44 UTC 2013 - schwab@suse.de
+
+- Fix quoting of $
+
+-------------------------------------------------------------------
+Mon Mar 14 13:20:56 UTC 2011 - mvyskocil@suse.cz
+
+- build ignore of openjdk 
+
+-------------------------------------------------------------------
+Tue Feb 22 09:29:27 UTC 2011 - mvyskocil@suse.cz
+
+- build xml-commons-resolver-bootstrap from own tarball
+  fix build of xerces-j2-bootstrap
+
+-------------------------------------------------------------------
+Tue Nov  2 15:28:42 UTC 2010 - mvyskocil@suse.cz
+
+- merge with xml-commons-1.3.04-5.jpp5.src.rpm 
+  * include xml-commons-resolver
+
+-------------------------------------------------------------------
+Thu Sep  2 12:46:03 UTC 2010 - mvyskocil@suse.cz
+
+- ignore antlr(-java) to reduce build cycles
+
+-------------------------------------------------------------------
+Tue Jan 22 15:49:47 CET 2008 - mvyskocil@suse.cz
+
+- fixed beta build 
+
+-------------------------------------------------------------------
+Tue Aug 28 16:36:50 CEST 2007 - skh@suse.de
+
+- add BuildRequires: antlr-bootstrap and #!BuildIgnore: antlr to break
+  build cycle caused further down the dependency chain
+  (java-1_4_2-gcj-compat->gjdoc->antlr->ant->xml-commons-apis-bootstrap)
+
+-------------------------------------------------------------------
+Wed Jun 27 22:25:15 CEST 2007 - rguenther@suse.de
+
+- remove libgcj BuildRequires
+
+-------------------------------------------------------------------
+Wed May  2 11:53:52 CEST 2007 - dbornkessel@suse.de
+
+- added unzip to BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep 29 02:20:37 CEST 2006 - ro@suse.de
+
+- added gcc-java,gcc-gij to BuildRequires 
+
+-------------------------------------------------------------------
+Thu Sep 21 21:23:34 CEST 2006 - dbornkessel@suse.de
+
+- first version
+

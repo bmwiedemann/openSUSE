@@ -1,0 +1,224 @@
+-------------------------------------------------------------------
+Sat Aug 12 16:17:23 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups.
+
+-------------------------------------------------------------------
+Wed Aug  9 11:26:06 UTC 2017 - tchvatal@suse.com
+
+- Drop ispell dependency wrt fate#323578 rh dropped the same subpkg
+  in 2011
+- Cleanup the dependencies to not pull in full x11 suite and depend
+  only on the required libs
+- Build with --as-needed
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Dec  7 10:38:53 UTC 2016 - maiku.fabian@gmail.com
+
+- Fix crash in Marathi transliteration:
+  m17n-lib-1.7.0-fix-crash-in-marathi-transliteration.patch
+  See also:
+  https://lists.nongnu.org/archive/html/m17n-list/2015-08/msg00001.html
+  https://lists.nongnu.org/archive/html/m17n-list/2015-08/msg00002.html
+
+-------------------------------------------------------------------
+Sun Mar  1 18:02:09 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.7.0
+  * The mechanism of fallback input method is implemented.  For that, a
+    new variable fallback-input-method and new commands switch-im,
+    push-im, pop-im are supported.
+
+-------------------------------------------------------------------
+Mon Jul  1 09:38:07 UTC 2013 - i@marguerite.su
+
+- update version 1.6.4
+  * no change, just update version number
+
+-------------------------------------------------------------------
+Mon Mar 18 09:21:48 UTC 2013 - cfarrell@suse.com
+
+- license update: LGPL-2.1+ and GPL-2.0+
+  Consolidate - the GPL-2.0+ is only included because of test scripts (e.g.
+  src/linkcore.c).
+
+-------------------------------------------------------------------
+Fri Feb  1 12:02:35 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Tue Jan 31 17:21:44 CET 2012 - tiwai@suse.de
+
+- updated to version 1.6.3:
+  Minor bugs fixed and several new input methods added, including
+  the segfault fix with VLC
+
+-------------------------------------------------------------------
+Tue Aug  2 16:59:23 CEST 2011 - tiwai@suse.de
+
+- Update to version 1.6.2: bug fix release; see ChangeLog
+- Fix compile warnings
+- Split libm17n0 subpackage for shared libraries
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Mon May 17 14:41:39 UTC 2010 - coolo@novell.com
+
+- do not require anthy, it creates a build cycle with emacs
+
+-------------------------------------------------------------------
+Thu Apr 22 17:38:25 CEST 2010 - tiwai@suse.de
+
+- updated to version 1.6.0:
+  requires the new libotf; plugin locations changed
+
+-------------------------------------------------------------------
+Mon Oct 27 15:57:18 CET 2008 - mfabian@suse.de
+
+- update to m17n-lib 1.5.3.
+  • only bugfixes.
+
+-------------------------------------------------------------------
+Fri Jun 13 02:31:25 CEST 2008 - crrodriguez@suse.de
+
+- disable unusable static libraries 
+
+-------------------------------------------------------------------
+Thu Feb 28 13:44:11 CET 2008 - schwab@suse.de
+
+- Update to m17n-lib 1.5.1.
+  * New API layer FLT is created.
+  * New environment variable MDEBUG_FLT is available to turn on
+    printing debug information for FLT, and these are now obsolete;
+    MDEBUG_FONT_FLT, MDEBUG_FONT_OTF.
+  * New functions mchartable_min_char () returns the mininum character.
+    that is set some value in a char-table.  New funcion
+    mchartable_min_char () is for the maximum character.
+
+-------------------------------------------------------------------
+Wed Sep 05 18:48:43 CEST 2007 - mfabian@suse.de
+
+- add extra BuildRequires for SUSE_Linux_10.0 repository in the
+  openSUSE build service.
+
+-------------------------------------------------------------------
+Wed Aug 01 20:15:20 CEST 2007 - mfabian@suse.de
+
+- update to 1.4.0:
+  • New function msymbol_put_func (), msymbol_get_func
+    (), mplist_put_func (), mplist_get_func (),
+    mface_put_hook (), and mface_get_hook () are
+    available to avoid unsafe casting of function
+    pointer.  New macro M17N_FUNC and new type
+    M17NFunc are also introduced.
+- remove bugzilla-232303-local-variable-used-before-set.patch
+  (was from upstream CVS).
+- add -fno-strict-aliasing .
+- add gd-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Thu May 24 02:00:50 CEST 2007 - ro@suse.de
+
+- added ldconfig to post scripts 
+
+-------------------------------------------------------------------
+Tue Jan 09 14:30:08 CET 2007 - mfabian@suse.de
+
+- update to 1.3.4.
+- fix bugzilla #32303.
+
+-------------------------------------------------------------------
+Sun Oct 29 12:09:33 CET 2006 - meissner@suse.de
+
+- build with RPM_OPT_FLAGS. Added some requires to -devel package.
+
+-------------------------------------------------------------------
+Mon Aug 28 12:45:06 CEST 2006 - mfabian@suse.de
+
+- update to 1.3.3.20060828 (fixes bugzilla #199870).
+  • If the environment variable "M17NDIR" is not set, the
+    directory "~/.m17n.d" is serched for database files.
+  • New function mfont_list_family_names () returns a list of
+    available font family names.
+  • New functions mlanguage_list (), mlanguage_code (),
+    mlanguage_name (), and mlanguage_text () return various
+    language-related information.
+  • New functions mscript_list () and mscript_language_list ()
+    return various script-related information.
+
+-------------------------------------------------------------------
+Mon Aug 14 11:22:19 CEST 2006 - mfabian@suse.de
+
+- move app-defaults to /usr/share/X11 (for X11R7).
+
+-------------------------------------------------------------------
+Tue Jun 20 12:10:09 CEST 2006 - mfabian@suse.de
+
+- update to 1.3.3.20060620:
+  fixes bugzilla #185572 and some other small bugs.
+- install Japanese app-defaults.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:08 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 10:15:21 CET 2006 - mfabian@suse.de
+
+- update to 1.3.0.20060113 (CVS HEAD).
+
+-------------------------------------------------------------------
+Fri Jan 13 09:38:49 CET 2006 - mfabian@suse.de
+
+- update to 1.3.0.
+- add pkgconfig to # neededforbuild.
+
+-------------------------------------------------------------------
+Fri Jan 14 18:53:33 CET 2005 - mfabian@suse.de
+
+- add "ispell words ispell-british" to "# neededforbuild" to
+  make the ispell input method work.
+
+-------------------------------------------------------------------
+Tue Dec 28 12:56:41 CET 2004 - mfabian@suse.de
+
+- update to 1.2.0.
+
+-------------------------------------------------------------------
+Tue Dec 21 18:02:16 CET 2004 - mfabian@suse.de
+
+- update to 1.1.0.20041221 (cvs version) to test the new
+  minput_reset_ic() function.
+
+-------------------------------------------------------------------
+Thu Sep 30 18:26:43 CEST 2004 - mfabian@suse.de
+
+- add "Requires: m17n-db". m17n-lib is almost useless without
+  m17n-db and scim-m17n doesn't work at all without m17n-db.
+
+-------------------------------------------------------------------
+Mon Sep 20 19:00:01 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #45562: move .so files to main package. scim-m17n needs
+  the  .so files but it should not need to require m17n-devel.
+
+-------------------------------------------------------------------
+Fri Aug 20 15:39:46 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #44028: rename binaries from m* to m17n-* to remove
+  conflict with majordomo's /usr/bin/medit. 
+
+-------------------------------------------------------------------
+Tue Aug 17 12:37:30 CEST 2004 - mfabian@suse.de
+
+- update to 1.1.0.
+- remove Zhe Su's patch m17n-lib-typedef.diff (included upstream).
+- remove my useless-header.patch (included upstream).
+
+-------------------------------------------------------------------
+Mon Aug 16 19:48:54 CEST 2004 - mfabian@suse.de
+
+- new package: m17n-lib, version 1.0.2

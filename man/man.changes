@@ -1,0 +1,1592 @@
+-------------------------------------------------------------------
+Tue Jun 11 12:49:35 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Tue Apr 30 10:57:35 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Make systemd timers and services optional but hold them enabled
+  as maybe in future all packages providing manual pages might use
+  a posttrans scriplet to trigger a refresh of the man db (boo#1133762).
+
+-------------------------------------------------------------------
+Tue Apr 30 09:09:19 UTC 2019 - lnussel@suse.de
+
+- remove %verify(not group) from /var/cache/man, the inconsistent
+  permissions are fixed in the permissions package (boo#1133678)
+
+-------------------------------------------------------------------
+Fri Mar  8 13:12:07 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Ah ... yes, manual pages are also provides by e.g. mandoc
+
+-------------------------------------------------------------------
+Thu Mar  7 07:59:37 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Skip %verify(not link mtime) from symbolic links %_bindir even if
+  those should not hurt but avoid superfluous verify messages
+
+-------------------------------------------------------------------
+Wed Mar  6 13:15:43 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Minor corrections on %ghost /var/cache/man and link to apropos 
+
+-------------------------------------------------------------------
+Wed Mar  6 11:47:58 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Use update-alternatives to allow that man(1), apropos(1), whatis(1)
+  can be overwritten by an other package like mandoc
+- Reintroduce wrapper for man(1) but without mapping to user man to
+  be able to reset the PATH to the standard for any preprocessor
+
+-------------------------------------------------------------------
+Mon Nov 26 11:37:32 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Update to man-db 2.8.4
+  * Major changes since man-db 2.8.3:
+   + Rely on decompressors reading from their standard input rather
+     than redundantly passing them the input file on their command
+     line.  This works better with downstream AppArmor confinement of
+     decompressors.
+   + Fix invalid syntax in tmpfiles.d/man-db.conf when configured with
+     --disable-cache-owner.
+   + Make seccomp sandbox allow sched_getaffinity, sometimes used by
+     xz.
+   + Check for mandb_nfmt and mandb_tfmt in the manual page hierarchy
+     as documented, not in the current directory.  This was broken by
+     the working-directory-handling changes in 2.8.3.  Note that this
+     change means that "man -l" will never use an external formatter
+     (which was never documented behaviour and was surely a bad idea).
+   + Make seccomp sandbox allow some shared memory operations across
+     the board rather than just when ESET File Security is in use; the
+     Astrill VPN seems to require something similar, and there are
+     doubtless other such preload hacks.
+   + Some versions of ESET File Security call msgget and msgsnd; if
+     this program is in use, then allow those.
+  * Major changes since man-db 2.8.2:
+   + Make seccomp sandbox allow madvise, since that's used by lbzip2.
+   + Make seccomp sandbox allow kill and tgkill outright, since groff
+     uses kill to pass on signals to its child processes.
+   + Make seccomp sandbox allow sibling architectures on
+     x86/x86_64/x32, since people sometimes mix and match architectures
+     there for performance reasons.
+   + Fix version check in locale macro loading to tolerate groff
+     release candidates.
+   + man now only changes working directory in child processes, so
+     never fails due to being unable to change back to its original
+     working directory.
+   + accessdb, apropos, and lexgrog no longer emit spurious gettext
+     headers in their --help output when localised.
+  * Major changes since man-db 2.8.1:
+   + Make seccomp sandbox allow kill and tgkill when the signal is
+     directed at the current process or one of its threads; this is
+     needed by xz.
+   + Make seccomp sandbox allow ioctl(fd, TIOCGWINSZ), since that's used
+     by musl.
+   + Work around the proprietary "ESET File Security" antivirus program in
+     seccomp sandbox: if this is in use then we need to allow some
+     socket-related system calls.
+   + Work around the "snoopy" execve() wrapper and logger in seccomp
+     sandbox: if this is in use then we need to allow some
+     socket-related system calls.
+   + Interpret EFAULT from seccomp_load as meaning that seccomp is
+     unavailable, since this can be returned by some versions of
+     qemu-user.
+  * Major changes since man-db 2.8.0:
+   + Fix seccomp sandbox build on Linux/POWER.
+   + Fix manconv execution under seccomp when man is installed setuid.
+   + Make seccomp sandbox allow mremap (used by iconv, for example).
+   + configure now has a --without-libseccomp option to disable the use
+     of seccomp even if the library is available.
+  * Major changes since man-db 2.7.6.1:
+   + Fix locale macro loading for Chinese to load the macro file
+     corresponding to just the language part of the user's locale.
+   + Honour --enable-cache-owner in generated systemd tmpfiles snippet
+     rather than hardcoding "man".
+   + If man adds prefixes to a page to handle such things as disabling
+     hyphenation, then take account of those when looking for a
+     preprocessor line at the start of the page.
+   + Fix a segfault in 'man -D --help'.
+   + Treat "\(en" as another synonym for "\-" in NAME sections.
+   + Confine most subprocesses that handle untrusted data using
+     seccomp.  This mainly deals with subprocesses that perform
+     encoding conversions, (de)compressors, groff programs, and a few
+     other odds and ends.  groff programs use a slightly more
+     permissive filter since they need to create temporary files, so
+     additional path-based confinement (e.g. using AppArmor) is still
+     useful.
+     If this goes wrong, then MAN_DISABLE_SECCOMP=1 can be set in the
+     environment to disable it, but please report any such problem as a
+     bug.
+   + man now falls back to cat if the compile-time default pager is not
+     executable.
+  * Major changes since man-db 2.7.6:
+   + Don't chmod CACHEDIR.TAG if it doesn't exist.
+   + Correct installation of Swedish manual pages.
+- Modify the patches
+   *man-db-2.6.3-listall.dif
+  * man-db-2.6.3-man0.dif
+  * man-db-2.6.3-section.dif
+  * man-db-2.7.1-firefox.dif
+  * man-db-2.7.1-security4.dif
+  * man-db-2.7.1-zio.dif
+- Rename patch man-db-2.7.6.dif which is now man-db-2.8.4.dif
+
+-------------------------------------------------------------------
+Fri Nov  9 13:37:43 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Add systemd timer service and its timer unit to refresh man
+  data base daily without using cron (bsc#1115406)
+
+-------------------------------------------------------------------
+Mon Apr 16 14:25:43 UTC 2018 - werner@suse.de
+
+- Skip cron job for cleaning /var/cache/man as there exists
+  /usr/lib/tmpfiles.d/man-db.conf
+
+-------------------------------------------------------------------
+Thu Dec  7 17:33:26 CET 2017 - kukuk@suse.de
+
+- Add man-db-create.service to fill /var/cache/man at bootup
+  if the directory is empty (required by FHS and for transactional
+  updates).
+- Don't fill /var/cache/man if it does not exist yet (needed for
+  transactional updates).
+- We don't need to package /var/cache/man, systemd-tmpfiles is
+  creating it already for us.
+
+-------------------------------------------------------------------
+Wed Nov 29 12:44:41 UTC 2017 - werner@suse.de
+
+- Make /var/cache/man a real directory as in system-user-man the
+  directory is gone
+
+-------------------------------------------------------------------
+Thu Nov 23 13:40:41 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Tue Nov 21 07:45:36 UTC 2017 - werner@suse.de
+
+- Require package man-pages at build time for testing 
+
+-------------------------------------------------------------------
+Thu Feb 16 10:00:30 UTC 2017 - werner@suse.de
+
+- Use _libexecdir instead of _prefix/lib 
+
+-------------------------------------------------------------------
+Sat Jan 21 06:35:30 UTC 2017 - kukuk@suse.com
+
+- Require user and group man
+
+-------------------------------------------------------------------
+Fri Dec 16 09:37:34 UTC 2016 - werner@suse.de
+
+- Update to version 2.7.6
+  * Many bug fixes
+  * man understands the <page>.<section> form on its command line,
+    so for example 'man chmod.2' is now the same as 'man 2 chmod'
+    (Contributed by Mihail Konev)
+  * Document that 'man -K' searches page source, not rendered text
+- Rename patch man-db-2.7.1.dif which becomes man-db-2.7.6.dif
+- Port the patches
+   man-MAN_POSIXLY_CORRECT-man1.dif
+   man-db-2.6.3-chinese.dif
+   man-db-2.6.3-listall.dif
+   man-db-2.6.3-section.dif
+   man-db-2.7.1-firefox.dif
+   man-db-2.7.1-security4.dif
+   man-db-2.7.1-zio.dif
+- Add an rpmlintrc file man-rpmlintrc as we apply a patch
+  on generated manual pages
+- Do not wrap man anymore (boo#986211)
+
+-------------------------------------------------------------------
+Fri Jun 24 10:06:32 UTC 2016 - werner@suse.de
+
+- Give man(1) command a home that is let pager less(1) handle its
+  history (boo#986211) 
+
+-------------------------------------------------------------------
+Mon Mar 21 15:04:48 UTC 2016 - bwiedemann@suse.com
+
+- Add reproducible.patch to fix build-compare (bnc#971922)
+
+-------------------------------------------------------------------
+Mon Jun  8 08:31:52 UTC 2015 - werner@suse.de
+
+- Allow root to use man command within its home 
+
+-------------------------------------------------------------------
+Fri May 29 10:34:37 UTC 2015 - werner@suse.de
+
+- Own /usr/lib/tmpfiles.d if not owned by package filesystem
+
+-------------------------------------------------------------------
+Thu May 28 12:55:34 UTC 2015 - werner@suse.de
+
+- Update to version 2.7.1
+  For the first time since version 2.4.0, the database format has
+  changed slightly, so you will need to run 'mandb --create' after
+  installing the new version to rebuild your databases from scratch.
+- Fixes
+  * Various portability fixes for Solaris, contributed by Peter Bray.
+  * man now runs correctly when its current working directory has been
+    deleted.  (As a result of this fix, man-db now requires
+    libpipeline >= 1.4.0.)
+  * 'man -a' sends its prompts to /dev/tty rather than to stderr, and
+    likewise reads replies from /dev/tty rather than from stdin.
+  * Be more careful to avoid using or double-closing closed database
+    handles.  Fixes test suite failures on some systems.
+  * Patch the fdutimens function imported from Gnulib to work around a
+    libc bug in GNU/Hurd.
+  * Fix test suite in the case where the system supports
+    high-precision timestamps but the file system containing the build
+    directory does not.
+  * lexgrog now filters terminal escape sequences out of cat pages
+    before trying to parse them.
+  * Tools that consider the terminal line length now prioritise the
+    COLUMNS environment variable above the TIOCGWINSZ ioctl.
+  * Manpath elements are no longer canonicalised before being inserted
+    into the search path; this caused the use of incorrect catpaths in
+    some cases.  This was broken by the LANGUAGE-handling fixes in
+    2.5.4.
+  * Remove test suite dependency on realpath(1).
+  * Fix a test failure when configured with --enable-undoc.
+  * Run the pager in man's original working directory rather than in
+    the manual hierarchy.  (As a result of this fix, man-db now
+    requires libpipeline >= 1.3.0.)
+  * mandb only creates a cache directory tag if the catpath is
+    different from the manpath, since it should only be created in
+    directories that consist entirely of cached information.
+- Improvements
+  * Ship a systemd tmpfiles snippet to clean up old cat files after a
+    week.
+  * The modification time of manual databases is now simply stored in
+    the mtime of the database files themselves, rather than using a
+    special row.  This makes databases reproducible between
+    otherwise-identical installations, as long as the underlying
+    database has predictable behaviour.  As a bonus, man-db now uses
+    high-precision timestamps to determine whether it needs to update
+    databases.
+  * Timestamps of manual pages are also now stored in the database
+    with high precision and compared accordingly.
+  * Files are now ordered by first physical extent before reading
+    them, for substantial performance improvements in operations such
+    as mandb and 'man -K'.
+  * 'man -H' shows a better error message if no browser is configured.
+  * zsoelim is now installed in $pkglibexecdir, to avoid clashes with
+    other packages.
+- Rename patches
+  man-db-2.6.5-firefox.dif becomes man-db-2.7.1-firefox.dif
+  man-db-2.6.5-security4.dif becomes man-db-2.7.1-security4.dif
+  man-db-2.6.5-zio.dif becomes man-db-2.7.1-zio.dif
+  man-db-2.6.5.dif becomes man-db-2.7.1.dif
+
+-------------------------------------------------------------------
+Thu Jul 31 08:33:00 UTC 2014 - werner@suse.de
+
+- The former change had added the patch man-MAN_POSIXLY_CORRECT-man1.dif 
+
+-------------------------------------------------------------------
+Tue Jul 29 19:40:08 UTC 2014 - auxsvr@gmail.com
+
+- Added description of MAN_POSIXLY_CORRECT in man.man1,
+  patch man-MAN_POSIXLY_CORRECT-man1.dif (bnc#786679)
+
+-------------------------------------------------------------------
+Tue Jun 10 15:13:45 UTC 2014 - werner@suse.de
+
+- Avoid messages on deleted cache directories bewlow /var/cache/man/
+  that is tag them as %ghost (bnc#882030)
+- The former submit had rebased the patches
+  man-db-2.6.3.dif
+  man-db-2.6.3-security4.dif
+  man-db-2.6.3-firefox.dif
+  man-db-2.6.3-zio.dif
+  which now had renamed to
+  man-db-2.6.5.dif
+  man-db-2.6.5-security4.dif
+  man-db-2.6.5-firefox.dif
+  man-db-2.6.5-zio.dif
+  accordingly
+
+------------------------------------------------------------------
+Tue Apr  8 12:26:37 UTC 2014 - sweet_f_a@gmx.de
+
+- Update to version 2.6.6
+- Fixes since 2.6.3:
+  * man(1) and catman(8) now document the default section list set at
+    configure time.
+  * Build fixes for Automake 1.13.
+  * man-db 2.6.0 arranged to search the full manpath when expanding
+    .so directives in manual pages (so that ".so name.1" works as well
+    as ".so man1/name.1"), but this incorrectly did not take effect
+    for manual pages that consist only of a .so directive.  This is
+    now fixed.
+- Improvements since 2.6.3:
+  * The MANLESS environment variable is now treated as if it were a
+    default value for the -r option to man: occurrences of the text
+    "$MAN_PN" are expanded, and explicitly using the -r option
+    overrides the default.
+  * The (unfortunately still hardcoded) maximum length for paths to
+    manual page hierarchies in the configuration file is now 511
+    characters rather than 49.
+  * MANPATH entries now undergo glob(7)-style wildcard expansion,
+    allowing entries such as "/opt/*/man".
+- Fixes since 2.6.4:
+  * man's --warnings option works again on systems with versions of
+    groff that support it (broken in 2.6.4).
+  * man automatically falls back to C.UTF-8 and then en_GB.UTF-8 if
+    trying to find a UTF-8 locale on a system without
+    /usr/share/i18n/SUPPORTED.
+- Fixes since 2.6.5:
+  * apropos's --and option now works again; it was broken by the
+    optimisations in 2.6.2.
+  * Restore compatibility with Automake 1.10.
+  * Improve support for translation of common elements of help
+    messages.
+  * Don't issue error messages when the database refers to a page that
+    no longer exists.
+  * Pass macro and hyphenation language tags to groff again (broken in
+    2.6.5).
+- Improvements since 2.6.5:
+  * ./configure --with-override-dir=OVERRIDE arranges to look for
+    manual pages in DIR/OVERRIDE before each path element DIR.
+- rebase following patches:
+  * man-db-2.6.3.dif
+  * man-db-2.6.3-security4.dif
+  * man-db-2.6.3-firefox.dif
+  * man-db-2.6.3-zio.dif
+- enable checks 
+
+-------------------------------------------------------------------
+Thu Sep 12 11:33:08 UTC 2013 - mvyskocil@suse.com
+
+- Recommends groff-full to reduce dependencies (bnc#839717) 
+
+-------------------------------------------------------------------
+Mon Jun 17 09:23:47 UTC 2013 - werner@suse.de
+
+- Just be able to print manual pages, that is require groff-full 
+- Be second owner of /usr/share/groff/site-tmac
+
+-------------------------------------------------------------------
+Mon Apr 22 11:55:06 UTC 2013 - meissner@suse.com
+
+- remove japanese manpages
+
+-------------------------------------------------------------------
+Tue Apr 16 12:32:31 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Mon Oct 29 12:55:03 UTC 2012 - werner@suse.de
+
+- Make shadowed manual pages accessible (bnc#786679) 
+
+-------------------------------------------------------------------
+Tue Oct  9 15:20:03 UTC 2012 - werner@suse.de
+
+- Avoid double free of pointer internal_locale due dup onto
+  pointer lang
+
+-------------------------------------------------------------------
+Thu Oct  4 09:16:16 UTC 2012 - werner@suse.de
+
+- Update to version 2.6.3
+  * Build fixes for glibc 2.16 and Automake 1.12.
+  * apropos prints an error message and returns non-zero when it finds
+    no matches.  (Regression introduced in 2.5.1.)
+  * The presence of a 64-bit GDBM database on the manpath no longer
+    causes a 32-bit man process to exit with a fatal error.
+  * apropos is much faster when run with many arguments.
+  * whatis may be given the full path to an executable as an argument,
+    in which case it will look up the base name of that executable in
+    the appropriate parts of the manpath.
+  * Translated manual pages are no longer displayed starting with a
+    spurious blank line.
+  * Fix double-free in mandb when encountering a symlink outside the
+    manual hierarchy, thanks to Peter Schiffer.
+  * Running 'man -w' (with a new --path alias) without a name now
+    prints the manpath, for compatibility with other man
+    implementations.  The vim viewdoc plugin makes use of this.
+  * Fix a segfault when scanning links to empty pages.
+  * Once we've seen at least one record in a page's NAME section,
+    ignore any further records that don't include a whatis
+    description, as they tend to be noise.
+  * Ensure that the target of a symlink or .so chain is always recorded
+    as a real page.
+  * Read a user-specified configuration file even if HOME is unset.
+  * Fix failure to display manual pages in some encodings when
+    installed setuid.
+  * Wrap long table cells in man(1), fixing test failures with groff
+    1.21.
+  * If an explicit section is passed to man, then pages that match
+    that section exactly will be preferred over pages that only have
+    that section as a prefix.
+  * Fix a segfault when 'man -K' tries to display certain pages.
+  * Fix a segfault in some situations when processes are killed by
+    SIGHUP, SIGINT, or SIGTERM.
+  * As promised in the release notes for man-db 2.5.8, man-db no
+    longer ships its own copy of libpipeline
+    (http://libpipeline.nongnu.org/).  You must build and install that
+    library separately.
+  * Search the full manpath when expanding .so directives in manual
+    pages.  As part of this, '.so name.1' should now work as well as
+    '.so man1/name.1'.
+  * lexgrog handles roff named glyphs and perldoc strings in NAME
+    sections.
+  * man no longer starts a pager if standard output is not a tty.
+  * The -s option to whatis and apropos now takes a colon- or
+    comma-separated list of sections, similar to 'man -S'.
+  * mandb error output is neater when stderr is not a terminal.
+  * Add basic support for the implementation of nroff/troff in the
+    Heirloom Documentation Tools.  Title lengths are not properly set
+    as yet, and many features are untested.
+  * mandb removes cat* and NLS subdirectories of cat directories whose
+    corresponding man directories no longer exist.
+  * mandb forces SIGPIPE back to its default disposition on startup,
+    to avoid noisy output in case it was started in a context where
+    SIGPIPE was ignored.
+  * SECTION entries in a user configuration file now override those in
+    the system configuration file, rather than appending to them.
+  * The default less prompt now includes "(press h for help or q to
+    quit)" to help novices find their way around.
+  * man-db may now be built to use Berkeley DB version 5
+    (--with-db=db5).
+  * Fix assertion failure on 'man -l' with an uncompressed page and
+    any of --no-hyphenation, --no-justification, or a non-English
+    page.
+  * Try underscore-separated subpages as well as hyphen-separated
+    ones, thanks to Tanguy Ortolo.
+  * Build libman and libmandb as shared libraries, reducing installed
+    footprint by about 200K (at least on GNU/Linux).
+  * Warnings about unrecognised locales are now suppressed if the
+    DPKG_RUNNING_VERSION environment variable is set (i.e. man-db is
+    running within a Debian package's maintainer script), since the
+    system locales are often out of sync with the C library in that
+    context.  Thanks to the Debian Perl maintainers for the idea.
+  * Allow building with an external libpipeline
+    (http://libpipeline.nongnu.org/), which has been split out from
+    man-db.  This is a transitional measure: a future version of
+    man-db will stop shipping its own copy of libpipeline.
+  * mandb should no longer repeatedly rescan manual page hierarchies
+    when a whatis entry turns into a broken link.
+  * If a subprocess exits before man manages to read all the output
+    from it, it now drains the output file descriptor rather than
+    immediately discarding it.
+  * If /usr/share/i18n/SUPPORTED is available, man attempts to use it
+    to ensure that LC_CTYPE is set to an appropriate locale for the
+    selected character set when invoking col. This fixes 'LANG=C man
+    -E UTF-8', as used by lintian.
+  * Fix possible mandb crash when MAN_MUST_CREATE is unset.
+  * man can now tell nroff to disable justification if the
+    --no-justification option is used.
+  * If the full path to an executable is given as an argument, man
+    will try looking up the corresponding manual page in the
+    appropriate part of the manpath, rather than just trying to format
+    the text of the executable as a manual page.
+  * In the GNU manual hierarchy layout, search man<sec><ext>
+    directories as well as just man<sec> (e.g. /usr/share/man/man3p as
+    well as /usr/share/man/man3).
+  * By request, man now prefers getting a page from the best manual
+    section over getting a page in the correct language.
+  * All programs now support a MAN_DEBUG environment variable which
+    can be used in place of the -d/--debug option. This is useful in
+    some situations where a program is being called deep in a process
+    tree.
+  * Add support for emulating pipe() with socketpair(), which is
+    faster on some systems; thanks to Werner Fink of SUSE.
+  * Cat pages are now always saved in UTF-8, and converted to the
+    proper encoding at display time, which means that cat pages can
+    now be saved regardless of locale. Note that a consequence of this
+    is that cat pages now include formatting information (e.g.
+    overstriking) and need to be run through col(1) before display.
+  * Exact-section database lookups were incorrectly returning all
+    database entries whose section names were prefixes of the
+    requested section name. In some cases this could confuse mandb
+    into never believing that the database was up to date.
+  * Fix handling of pages with comma-separated names ("foo, bar,
+    baz") in their NAME sections, broken by a change in 2.5.0 (!)
+    to ignore manual page names containing spaces.
+  * Fixed a buffer overflow in the pipeline library's line-reading
+    functions. I don't believe this to be exploitable: at worst we
+    might believe that there's some garbage at the end of manual pages
+    (whose contents are untrusted anyway) and this bug typically
+    resulted in a failed assertion the next time anything tried to
+    read a line.
+  * Plugged two substantial memory leaks in the pipeline library.
+  * whatis and apropos only display any given manual page, or pointers
+    to it, once.
+  * man now sets less(1)'s environment up correctly for manual pages
+    encoded in CP1251.
+  * manconv no longer confuses situations such as "this UTF-8
+    character is not representable in the target encoding" with "this
+    text is not in UTF-8".
+  * The default configuration file now includes section 0, used on
+    some systems to document C library header files.
+  * 'make check' now passes in the presence of a UTF-8-aware col, such
+    as that in util-linux-ng.
+  * The 'man -K' option is now supported to search the full text of
+    all manual pages. This was inspired by a similar option in the
+    other man package (currently at version 1.6f) currently maintained
+    by Federico Lucifredi and formerly by Andries Brouwer, but I took
+    advantage of man-db's pipeline library to implement it entirely
+    in-process, without having to start a separate grep process for
+    every manual page. In my tests with fairly typical searches across
+    variously all manual pages or just one section, man-db's
+    implementation ran between 3 and 10 times faster.
+  * Database directories are now only created when there are
+    corresponding manual page directories, not just because they're
+    mentioned in the configuration file.
+  * By default, man will now try to interpret pairs of manual page
+    names given on the command line as equivalent to a single manual
+    page name containing a hyphen (e.g. 'man foo bar' => foo-bar(1)).
+    This supports the common pattern of programs that implement a
+    number of subcommands, allowing them to provide manual pages for
+    each that can be accessed using similar syntax as would be used to
+    invoke the subcommands themselves. Suggested by H. Peter Anvin,
+    Federico Lucifredi, and others on the git mailing list.
+  * The build process is now quieter by default. Use './configure
+    --disable-silent-rules' or 'make V=0' if you don't like this or
+    your make(1) doesn't support the non-standard extension required.
+  * manconv understands a wider range of Emacs-style coding tags.
+  * Recommendations to change MAN_DB_CREATES, MAN_DB_UPDATES, and
+    MAN_CATS #define options in manconfig.h have been replaced by new
+    configure options --enable-automatic-create,
+    --disable-automatic-update, and --disable-cats respectively. Note
+    that automatic user database creation is now off by default, as it
+    is often too slow for the usefulness it adds; use
+    --enable-automatic-create to enable it.
+  * Pages that declare a non-default encoding in their preprocessor
+    lines are now handled correctly.
+  * man-db's 'make check' now tests that all its own manual pages
+    format without errors or warnings from groff, to ensure a
+    better-quality release.
+  * lexgrog now stops on any unrecognised roff request, rather than
+    continuing and often littering the database with garbage.
+  * man no longer requires both standard input and standard output to
+    be terminals in order to use the terminal line length. The line
+    length from standard output is preferred if available.
+  * The manpath was built completely wrongly when multiple entries
+    were present in LANGUAGE: duplicates were handled strangely, and
+    languages were effectively iterated in reverse order. It should be
+    rather more sensible now.
+  * The MAN_KEEP_STDERR environment variable can now be used to
+    override man's default of discarding stderr when stdout is a
+    terminal.
+  * Handling of terminal widths for cat pages is now configurable,
+    using the MINCATWIDTH, MAXCATWIDTH, and CATWIDTH configuration
+    file directives.
+  * 'man -a' now detects duplicate manual page candidates more
+    reliably, and sorts them better.
+  * Belarusian, Estonian, Greek, Latvian, Lithuanian, Macedonian,
+    Romanian, Slovenian, and Ukrainian pages are now supported.
+  * man can now search for pages using regular expressions (with
+    --regex) or shell wildcards (with --wildcard). By default this
+    searches both page names and descriptions, like apropos, but if
+    the --names-only option is used then it searches page names only,
+    like whatis.
+  * man can now tell nroff to disable hyphenation if the
+    --no-hyphenation option is used.
+  * man-db already searched for manual pages in ../man and man
+    directories relative to each $PATH component; it now searches in
+    ../share/man and share/man directories too.
+  * Groff 1.20 was recently released, including the 'preconv'
+    preprocessor. Although man-db has supported preconv to some extent
+    since 2.4.4, man-db's configure now detects its presence and
+    infers that groff supports Unicode input using it; man also now
+    takes slightly better advantage of preconv than before.
+  * Per-locale groff macros are now loaded if possible, allowing us to
+    take advantage of such things as localised versions of predefined
+    strings and language-aware hyphenation. This only works with Groff
+    1.20.2 or better (not yet released), since earlier versions did
+    not allow us to suppress warnings in the event that the
+    appropriate macro file is not available.
+  * Cleaned up a number of possible crashes, memory leaks, and missing
+    error checks found by the Coverity Scan project.
+  * Fix build if MAN_CATS is undefined.
+  * If the LINGUAS environment variable is set while running
+    configure, it now controls building and installation of localised
+    manual pages as well as program translations.
+  * The LANGUAGE environment variable is now tokenised properly,
+    rather than only taking the first two characters of each element.
+  * Fix build if --disable-nls is used or iconv is not available.
+  * man now correctly propagates the exit code of whatis or apropos
+    when called with the -f or -k option respectively.
+  * A number of inconsistencies and readability problems with man-db's
+    own manual pages have been cleaned up, thanks mainly to Yuri
+    Kozlov.
+  * Reduce the number of warnings emitted when using an unrecognised
+    locale.
+  * manconv and zsoelim are now called internally rather than by
+    executing external programs, to improve performance.
+  * man-db now uses GDBM (--with-db=gdbm) in preference to Berkeley DB
+    (--with-db=db or --with-db=dbN where N is 1, 2, 3, or 4) by
+    default, since hardware improvements have rendered Berkeley DB's
+    speed advantages negligible for our purposes and the relatively
+    frequent SONAME and on-disk format changes are not worth the
+    hassle. Distributors should note that if they follow this change
+    then they will need to arrange for databases to be rebuilt on
+    upgrade to this version.
+  * Duplicate manual page hierarchies due to symlinks (e.g. /usr/man
+    -> /usr/share/man) are detected and removed from the search order.
+  * A locale modifier (e.g. @latin) in a directory name must now match
+    the locale if the former is set, in addition to the language and
+    territory.
+  * Bare .so includes (e.g. ".so foo.1" rather than ".so man1/foo.1")
+    now work, although only within the same manual page hierarchy for
+    now.
+  * 'man -H' (without a browser argument) was completely broken in
+    2.5.1 and is now fixed.
+  * man no longer breaks in Japanese locales when using less as a
+    pager.
+  * The --encoding option to man can now take a true character
+    encoding rather than a *roff device; the latter was an unreliable,
+    inflexible, and awkward way to select an output encoding. The old
+    semantics are still supported for backward compatibility.
+  * Whatis parsing stops at .ie or .if conditionals.
+  * CJK locale specifications where the codeset component is
+    equivalent to but not stringwise-identical to UTF-8 (e.g.
+    zh_CN.utf8) are handled better.
+  * man(1)'s OPTIONS section is ordered more comprehensibly.
+  * apropos, lexgrog, man, mandb, and whatis ignore encoding
+    conversion errors for the last possible encoding of the source
+    page. This helps, for example, with pages including misencoded
+    non-ASCII names of authors; it usually seems better to allow these
+    pages to pass with small errors than to break them entirely.
+
+-------------------------------------------------------------------
+Mon Oct  1 13:13:14 UTC 2012 - werner@suse.de
+
+- Add ChangeLog and COPYING to documentation (bnc #777385) 
+
+-------------------------------------------------------------------
+Tue Sep  4 13:44:08 UTC 2012 - coolo@suse.com
+
+- move man page directories to filesystem
+
+-------------------------------------------------------------------
+Mon Jul  2 05:08:10 UTC 2012 - coolo@suse.com
+
+- merge the automake 1.12 patches
+
+-------------------------------------------------------------------
+Thu Jun 28 09:48:13 UTC 2012 - i@marguerite.su
+
+- fix build for openSUSE.
+  * AM_PROG_AR 
+- fix 12.2 builds
+  * replace depreciated am_prog_mkdir_p with ac_prog_mkdir_p.
+
+-------------------------------------------------------------------
+Tue May 29 12:39:10 UTC 2012 - puzel@suse.com
+
+- fix build with automake-1.12
+  - add: automake-1.12.patch
+
+-------------------------------------------------------------------
+Sun Dec 25 22:22:18 UTC 2011 - coolo@suse.com
+
+- cleanup spec file
+
+-------------------------------------------------------------------
+Thu Dec  1 11:22:35 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu May 26 10:32:14 CEST 2011 - werner@suse.de
+
+- man requires glibc-locale otherwise manconv does not work
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Fri Apr 30 13:49:23 CEST 2010 - werner@suse.de
+
+- Add a hint how to avoid the listall default behaviour of man
+
+-------------------------------------------------------------------
+Sun Dec 13 17:02:44 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:30 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Tue Sep 22 00:19:11 CEST 2009 - crrodriguez@suse.de
+
+- tag localized man pages correctly 
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Mon Aug  3 13:26:52 CEST 2009 - werner@suse.de
+
+- Remove catman directories from /var/cache (bnc#527434)
+
+-------------------------------------------------------------------
+Fri Jan 16 17:03:24 CET 2009 - werner@suse.de
+
+- Add ../share/man/ to manpath expansion mentioned by
+  Matt_Domsch@dell.com, done for man_db by Colin Watson
+
+-------------------------------------------------------------------
+Fri Nov 28 13:15:30 CET 2008 - werner@suse.de
+
+- For listall patch: add support for multiple man pages in the
+  same section (bnc#448283)
+- Fix bug in listall patch: initialize variable len as this may
+  break on some system otherwise.
+
+-------------------------------------------------------------------
+Thu Nov 20 18:13:38 CET 2008 - werner@suse.de
+
+- Skip mandocdb workaround as groff now works in UTF-8 (bnc#446710)
+- Replace pipe(2) with socketpair(2) to speed up mandb (bnc#381830)
+
+-------------------------------------------------------------------
+Thu Oct  2 13:03:40 CEST 2008 - werner@suse.de
+
+- Fix option handling for renice in cron script (bnc#431027)
+
+-------------------------------------------------------------------
+Tue Aug 12 17:41:26 CEST 2008 - werner@suse.de
+
+- Update to version 2.5.2
+  * `man -H' (without a browser argument) was completely broken in
+    2.5.1 and is now fixed.
+  * man no longer breaks in Japanese locales when using less.
+  * The --encoding option to man can now take a true character
+    encoding rather than a *roff device; the latter was an
+    unreliable, inflexible, and awkward way to select an output
+    encoding. The old semantics are still supported for backward
+    compatibility.
+  * Whatis parsing stops at .ie or .if conditionals.
+  * CJK locale specifications where the codeset component is
+    equivalent to but not stringwise-identical to UTF-8 (e.g.
+    zh_CN.utf8) are handled better.
+  * man(1)'s OPTIONS section is ordered more comprehensibly.
+  * apropos, lexgrog, man, mandb, and whatis ignore encoding
+    conversion errors for the last possible encoding of the source
+    page. This helps, for example, with pages including misencoded
+    non-ASCII names of authors; it usually seems better to allow
+    these pages to pass with small errors than to break them
+    entirely.
+
+-------------------------------------------------------------------
+Thu Jun  5 17:04:01 CEST 2008 - werner@suse.de
+
+- Show the user if there are more than one manual page found for
+  the stated item (fate#303433)
+
+-------------------------------------------------------------------
+Tue May 13 15:22:58 CEST 2008 - werner@suse.de
+
+- Avoid tab stops in section names
+
+-------------------------------------------------------------------
+Wed Apr 23 13:12:12 CEST 2008 - werner@suse.de
+
+- Use speedup for bnc#381830  only in mandb as man would be break
+- Avoid trouble with -Wl,--as-needed therefore fore -lbz2 and -lz
+
+-------------------------------------------------------------------
+Tue Apr 22 15:45:22 CEST 2008 - werner@suse.de
+
+- Make libzio interface smarter, that is if used only for simple
+  decompression do not use a pipe (saves 30% mandb run time)
+  (bnc#381830)
+- Make cron.daily.do_mandb smarter, that is check if anything
+  has changes in the global manual paths that needs to run mandb
+  (bnc#381830)
+- Update to bug fix version 2.5.1
+  * The manual is now built automatically, avoiding some ordering
+    problems on 'make distclean'.
+  * Manual pages are converted to the proper input encoding for troff
+    output as well as nroff output.
+  * The -t, -T, -X, and -Z options to man work again; in 2.5.0, they
+    read input from stdin rather than from the manual page.
+  * apropos and whatis no longer segfault when given an explicit
+    locale using -L.
+  * man now understands that groff's ascii device takes ASCII input,
+    not ISO-8859-1.
+  * man no longer discards stderr when writing to a file or a pipe;
+    this was broken by an overenthusiastic change in 2.5.0.
+  * manconv now falls back to the next encoding in its list if any
+    characters in an entire 64KB block fail to decode using the
+    current encoding, as was originally intended.
+  * manconv is more careful about extracting coding: directives from
+    manual pages.
+  * Ctrl-C and Ctrl-\ now work again at the prompt issued by 'man -a'.
+  * There is a new --with-sections configure option to change the
+    default value of SECTION in the configuration file.
+  * Automake is now used to generate Makefiles. Among other things,
+    this fixes VPATH builds and some bugs in dependency generation,
+    and should allow building with non-GNU versions of make.
+  * man-db now uses the Gnulib portability library, allowing the
+    removal of earlier haphazard portability code. While this results
+    in a somewhat larger source distribution, it makes man-db easier
+    to maintain and should make it easier to build on systems to which
+    the maintainer does not have access.
+  * In the process of switching to Gnulib, the last vestiges of
+    pre-C89 support have been removed; they were documented to be
+    broken anyway.
+  * If the MANROFFOPT environment variable is set, man now appends its
+    value to the *roff command line.
+  * man now accepts a --recode option to output a source manual page
+    converted to a specified encoding.
+  * For compatibility with System V, man accepts -s as an alias for
+    -S, and permits sections to be comma-separated as well as
+    colon-separated.
+  * man now accepts a --warnings option to enable groff warnings.
+
+-------------------------------------------------------------------
+Tue Feb 26 13:10:39 CET 2008 - werner@suse.de
+
+- Ensure to find local manual pages even in sub directories
+
+-------------------------------------------------------------------
+Wed Jan 30 12:09:07 CET 2008 - werner@suse.de
+
+- Make mandb cron job ionice bnc#356792
+- Avoid assert on wrong locale man path
+- Do mix bits of get_catpath() with hash tags in man db files
+
+-------------------------------------------------------------------
+Fri Jan 18 15:29:48 CET 2008 - mkoenig@suse.de
+
+- Fix path in sysconfig.cron-man [#350542] 
+
+-------------------------------------------------------------------
+Mon Jan  7 13:08:16 CET 2008 - werner@suse.de
+
+- Remove suid root from wrapper as we do not cache manual page 
+  anymore (bug #351988)
+
+-------------------------------------------------------------------
+Thu Dec 13 17:07:08 CET 2007 - werner@suse.de
+
+- Add workaround for gettext 0.17
+
+-------------------------------------------------------------------
+Mon Dec 10 17:23:04 CET 2007 - werner@suse.de
+
+- Update to man-db 2.5.0-4
+  * No temporary files anymore due usage of pipes
+  * Our libzio patch is simply to add due this new API
+  * Better UTF-8 support
+  * Disable straycats for now
+- Add sample script mancoding to show how to use encoding tag
+
+-------------------------------------------------------------------
+Wed Sep 19 13:39:50 CEST 2007 - werner@suse.de
+
+- Be sure that e.g. /usr/share/man/man3p/open.3p.gz is found before
+  /usr/share/man/man3/open.3pm.gz by "man 3p open" (bug #310498)
+ 
+-------------------------------------------------------------------
+Fri Jul 27 12:50:48 CEST 2007 - mfabian@suse.de
+
+- change BuildRequires to make it build in the openSUSE build
+  service for versions <= 10.2 as well.
+
+-------------------------------------------------------------------
+Thu Jul 26 14:33:08 CEST 2007 - mfabian@suse.de
+
+- Bugzilla #292412 comment #47: accept both UTF-8 an legacy
+  encodings in the man-page sources for Japanese and Chinese
+  as well.
+
+-------------------------------------------------------------------
+Wed Jul 25 12:09:51 CEST 2007 - mfabian@suse.de
+
+- Bugzilla #292412 comment #30 and #39: improve Chinese patch.
+- use %find_lang macro
+
+-------------------------------------------------------------------
+Thu Jul 19 17:36:07 CEST 2007 - werner@suse.de
+
+- Add Chinese support to man (bug #292412)
+
+-------------------------------------------------------------------
+Wed Jul 18 15:11:37 CEST 2007 - werner@suse.de
+
+- Add workaround for html browsers which do their job in
+  background: do not remove the temporary files to fast (#280613)
+- Update to debain patch level 6 which
+  * includes bug fix for CVE-2006-4250 (bug #262747)
+  * includes french manual pages
+
+-------------------------------------------------------------------
+Tue Apr 17 10:44:44 CEST 2007 - werner@suse.de
+
+- Fix heap buffer overflow (CVE-2006-4250, bug #262747)
+
+-------------------------------------------------------------------
+Mon Mar 26 11:38:22 CEST 2007 - rguenther@suse.de
+
+- Add libbz2-devel and libzio-devel BuildRequires
+
+-------------------------------------------------------------------
+Wed Mar 21 13:35:40 CET 2007 - rguenther@suse.de
+
+- Remove unused util-linux BuildRequires, added less, zlib-devel
+  and gdbm-devel BuildRequires
+
+-------------------------------------------------------------------
+Thu Feb 15 13:20:38 CET 2007 - werner@suse.de
+
+- Remove not used path elements (X11R6, openwin, allman) (#245692)
+
+-------------------------------------------------------------------
+Fri Feb  9 13:16:35 CET 2007 - werner@suse.de
+
+- Make it build without root privileges, loosing time for texlive
+
+-------------------------------------------------------------------
+Mon Jan 29 16:10:01 CET 2007 - sbrabec@suse.cz
+
+- Removed references to /opt/gnome.
+
+-------------------------------------------------------------------
+Mon Sep  4 15:40:44 CEST 2006 - rguenther@suse.de
+
+- Remove unused sharutils dependency.
+
+-------------------------------------------------------------------
+Mon Sep  4 13:11:09 CEST 2006 - rguenther@suse.de
+
+- Remove lynx build dependency.  Set default for AC_PATH_PROG for
+  lynx to /usr/bin/lynx.
+
+-------------------------------------------------------------------
+Mon Aug  7 15:43:06 CEST 2006 - werner@suse.de
+
+- Make it work even with new gettext package
+
+-------------------------------------------------------------------
+Thu Aug  3 10:52:50 CEST 2006 - sndirsch@suse.de
+
+- read also manual pages in man4x subdirectories; required for
+  conflicting 'mouse' manual page and i810 driver manual page,
+  which has been moved to man4x directory
+
+-------------------------------------------------------------------
+Wed Jun 14 18:27:48 CEST 2006 - werner@suse.de
+
+- Update to man-db 2.4.3 patchlevel 3 to get the first part of bug
+  #183796 fixed.
+- Change lex scanner to set sperator ony onece per whatis/apropos
+  line to get second part of bug #183796 fixed
+- Support several language types/locations
+- Do not fail on verbatim macro of perl man pages on whatis/apropos
+- Do not fail on DOS formated manual pages on whatis/apropos
+
+-------------------------------------------------------------------
+Fri Apr  7 13:05:49 CEST 2006 - werner@suse.de
+
+- Do not reset terminal if stdout is not a tty (bug #152793)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:31 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 15:32:27 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Dec 14 16:12:26 CET 2005 - werner@suse.de
+
+- Make cron job files word readable (bug #138549)
+
+-------------------------------------------------------------------
+Tue Dec 13 18:51:22 CET 2005 - werner@suse.de
+
+- Add section 0 for header files
+
+-------------------------------------------------------------------
+Wed Jun  1 11:04:56 CEST 2005 - kukuk@suse.de
+
+- Make cron.daily script names LSB conform
+
+-------------------------------------------------------------------
+Thu Feb 10 16:59:37 CET 2005 - mfabian@suse.de
+
+- Bugzilla #50694: add another request to tmac.andocdb:
+      ".  char  ` \N'96'"
+  makes sure U+0060 (GRAVE ACCENT) doesn't get replaced by
+  U+2018 (LEFT SINGLE QUOTATION MARK)
+
+-------------------------------------------------------------------
+Wed Sep 22 19:03:33 CEST 2004 - werner@suse.de
+
+- Use safe-rm for deleting straycats (bug #45612, comment #14)
+
+-------------------------------------------------------------------
+Thu Sep  9 15:56:34 CEST 2004 - werner@suse.de
+
+- Be ready for flex-2.5.31
+
+-------------------------------------------------------------------
+Wed Apr 21 18:16:27 CEST 2004 - werner@suse.de
+
+- Use libzio together with zlib and libbz2 to support bz2 manual
+  pages to avoids pipe()/fork()/execve() calls in mandb/man.
+
+-------------------------------------------------------------------
+Tue Mar 16 13:41:00 CET 2004 - werner@suse.de
+
+- Activate path for bug #35821 due its fixed now.
+
+-------------------------------------------------------------------
+Fri Mar 12 17:12:20 CET 2004 - werner@suse.de
+
+- Be prepared for bug #35821
+
+-------------------------------------------------------------------
+Thu Sep  4 17:28:52 CEST 2003 - werner@suse.de
+
+- It seems that basename(3) results shouldn't be freed even if
+  the manual page says they should. (bug #30093)
+
+-------------------------------------------------------------------
+Fri Aug 29 15:56:30 CEST 2003 - werner@suse.de
+
+- Add workaround for less using xselection even if no -A is
+  specified for bug #29612. Nevertheless less has to be fixed.
+
+-------------------------------------------------------------------
+Wed Aug 20 19:13:50 CEST 2003 - werner@suse.de
+
+- Update to 2.4.1-13 security only, due missed fixes in previous
+  patches.
+
+-------------------------------------------------------------------
+Fri Aug 15 15:35:57 CEST 2003 - kukuk@suse.de
+
+- Use same permissions for man/mandb as in permissions package
+
+-------------------------------------------------------------------
+Thu Aug  7 18:33:41 CEST 2003 - werner@suse.de
+
+- YaSP: Added more security
+- Ensure that no version conflict happens during db purge (#28414)
+
+-------------------------------------------------------------------
+Fri Jul 11 17:59:15 CEST 2003 - werner@suse.de
+
+- Update to 2.4.1-10
+- Security fix: create the temporary database exclusive
+
+-------------------------------------------------------------------
+Mon Jul  7 14:59:10 CEST 2003 - werner@suse.de
+
+- Security fix (bug #27474)
+
+-------------------------------------------------------------------
+Fri Jun 20 21:53:29 CEST 2003 - ro@suse.de
+
+- fix build with current gettext
+
+-------------------------------------------------------------------
+Thu Jun 12 16:14:52 CEST 2003 - olh@suse.de
+
+- disable sync call in install section
+
+-------------------------------------------------------------------
+Thu Jun 12 11:17:18 CEST 2003 - kukuk@suse.de
+
+- /var/cache/man is part of filesystem
+
+-------------------------------------------------------------------
+Fri Jan 17 15:20:50 CET 2003 - mfabian@suse.de
+
+- add another request to tmac.andocdb:  ".  char  ' \N'39'"
+  makes sure U+0027 (APOSTROPHE) doesn't get replaced by
+  U+2019 (RIGHT SINGLE QUOTATION MARK)
+
+-------------------------------------------------------------------
+Sun Jan 12 14:13:37 CET 2003 - mfabian@suse.de
+
+- fix header of de.po to enable gettext to convert to locale
+  encoding
+- fix and update some translations in de.po
+
+-------------------------------------------------------------------
+Wed Jan  8 11:50:47 CET 2003 - werner@suse.de
+
+- bug #22628 -- add missed meta data within sysconfig file
+
+-------------------------------------------------------------------
+Mon Dec  2 18:33:29 CET 2002 - werner@suse.de
+
+- Make compress local manuals work if placed in a writable dir for
+  the user man (bug #22215).
+
+-------------------------------------------------------------------
+Fri Oct 11 18:09:54 CEST 2002 - mfabian@suse.de
+
+- add another request to tmac.andocdb similar to the one
+  in the last changelog entry to make the regular minus '-'
+  (without backslash) get rendered as U+002D (HYPHEN-MINUS)
+  in man-pages as well.
+
+-------------------------------------------------------------------
+Fri Sep  6 19:27:08 CEST 2002 - mfabian@suse.de
+
+- add the two lines
+	.if '\*[.T]'utf8' \
+	.  char \- \N'45'
+  to /usr/share/groff/site-tmac/tmac.andocdb in order to get
+  U+002D (HYPHEN-MINUS) instead of U+2212 (MINUS SIGN) as the
+  minus sign in front of options in man-pages rendered in UTF-8
+  locales. U+2212 (MINUS SIGN) makes searching in man-pages for
+  options unnecessarily difficult.
+
+-------------------------------------------------------------------
+Fri Aug 23 16:53:50 CEST 2002 - werner@suse.de
+
+- Use LESSCHARSET=japanese-euc for japanese to support even konsole
+  (bug #18222)
+
+-------------------------------------------------------------------
+Fri Aug 16 13:51:44 CEST 2002 - werner@suse.de
+
+- Add PreReq (bug #17927)
+
+-------------------------------------------------------------------
+Wed Jul 31 18:51:16 CEST 2002 - poeml@suse.de
+
+- add ssl to the list of man sections (bug #17239)
+
+-------------------------------------------------------------------
+Sat Jul 27 15:39:15 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Wed Jun  5 12:26:35 CEST 2002 - ro@suse.de
+
+- run suse_update_config for subdir tools 
+
+-------------------------------------------------------------------
+Fri May 10 16:05:29 CEST 2002 - werner@suse.de
+
+- Use buildroot (fix bug #12158)
+- Don't cache utf8 formatted man pages (fix bug #16067)
+
+-------------------------------------------------------------------
+Thu Apr  4 11:20:50 CEST 2002 - ro@suse.de
+
+- fix for autoconf LIBOBJS vs AC_LIBOBJ 
+
+-------------------------------------------------------------------
+Wed Mar 27 16:58:22 CET 2002 - werner@suse.de
+
+- Add space between grep command and its options for whatis
+  text file fallback.
+
+-------------------------------------------------------------------
+Thu Mar 14 17:13:54 CET 2002 - werner@suse.de
+
+- Use nroff asci8 character set for korean (nippon does not work).
+
+-------------------------------------------------------------------
+Wed Feb  6 13:32:03 CET 2002 - ro@suse.de
+
+- sysconfig/cron_daily -> sysconfig/cron 
+
+-------------------------------------------------------------------
+Thu Jan 31 18:41:27 CET 2002 - werner@suse.de
+
+- Add security patch from Olaf Kirch
+
+-------------------------------------------------------------------
+Thu Jan 31 18:33:02 CET 2002 - ro@suse.de
+
+- moved cron.daily scripts do_mandb and clean_catman to this pkg 
+
+-------------------------------------------------------------------
+Fri Jan 11 18:31:44 CET 2002 - werner@suse.de
+
+- Add security patch from Thomas Biege
+
+-------------------------------------------------------------------
+Thu Dec 20 14:59:11 CET 2001 - werner@suse.de
+
+- Check existence of user man
+
+-------------------------------------------------------------------
+Tue Sep 25 14:30:14 CEST 2001 - werner@suse.de
+
+- Close nonsens bug report #9419
+
+-------------------------------------------------------------------
+Tue Sep 18 11:32:24 CEST 2001 - werner@suse.de
+
+- Avoid possible crash in mandb
+
+-------------------------------------------------------------------
+Fri Aug 31 14:14:15 CEST 2001 - werner@suse.de
+
+- I vote to remove strtok() from ANSI-C: Use strsep() within
+  pathappend() because thew calling function add_nls_manpath()
+  uses strtok().
+
+-------------------------------------------------------------------
+Wed Aug 29 18:47:28 CEST 2001 - werner@suse.de
+
+- More work on the whatis data base storage
+
+-------------------------------------------------------------------
+Tue Aug 28 20:33:31 CEST 2001 - werner@suse.de
+
+- Whatis: Avoid error messages caused by buggy manual pages
+  to see the wrong man pages one may use -v for verbose
+
+-------------------------------------------------------------------
+Thu Aug 16 14:44:04 CEST 2001 - werner@suse.de
+
+- Global UTF-8 handling instead of two different ways
+
+-------------------------------------------------------------------
+Wed Aug 15 18:47:34 CEST 2001 - werner@suse.de
+
+- Better UTF-8 man page handling: use curent locale even if we
+  overwrite man page locale.
+- Sometime there is no man page path for local man page files,
+  therefore force language if not found.
+
+-------------------------------------------------------------------
+Mon Aug 13 16:53:54 CEST 2001 - werner@suse.de
+
+- Initialize variable used in lexgrog.l
+
+-------------------------------------------------------------------
+Mon Jul 30 13:40:47 CEST 2001 - werner@suse.de
+
+- Update to vesion 2.3.19deb4.0
+- Port libz patch to this version
+- Map UTF-8 man pages to appropiate groff command
+- Make it work
+
+-------------------------------------------------------------------
+Sun Jun 17 22:33:11 CEST 2001 - bk@suse.de
+
+- new location of tmac files is /usr/share/groff/site-tmac,
+  needed for groff 1.17 and does not work with older versions
+
+-------------------------------------------------------------------
+Thu Jun  7 15:13:49 CEST 2001 - werner@suse.de
+
+- Fix autoconf trouble
+
+-------------------------------------------------------------------
+Wed May 16 19:30:31 CEST 2001 - werner@suse.de
+
+- Make xcopy more handy (bug#8499)
+
+-------------------------------------------------------------------
+Tue May 15 13:26:58 CEST 2001 - werner@suse.de
+
+- Fix segfault on option -S parser
+
+-------------------------------------------------------------------
+Sat Apr 21 21:44:03 CEST 2001 - schwab@suse.de
+
+- Fix inapproriate mixing of pointer and integers.
+
+-------------------------------------------------------------------
+Mon Apr  9 11:46:00 CEST 2001 - werner@suse.de
+
+- Make it work
+
+-------------------------------------------------------------------
+Fri Apr  6 19:48:23 CEST 2001 - werner@suse.de
+
+- Use own tmac groff files to avoid page headers and footers
+  on ttys only
+
+-------------------------------------------------------------------
+Tue Mar 20 11:03:30 CET 2001 - werner@suse.de
+
+- Avoid deleting of data bases if we've newer version around
+
+-------------------------------------------------------------------
+Mon Mar 19 18:45:22 CET 2001 - werner@suse.de
+
+- Remove data bases at install time
+
+-------------------------------------------------------------------
+Mon Mar 19 17:51:07 CET 2001 - werner@suse.de
+
+- Update to 2.3.17-3.2
+  * Port our patches and bugfixes to this new version
+  * Change the wrapper to use setre(r|g)id and use
+    this wrapper suid root
+
+-------------------------------------------------------------------
+Thu Feb  8 19:10:04 CET 2001 - werner@suse.de
+
+- Avoid error() call without format
+
+-------------------------------------------------------------------
+Mon Dec 11 17:15:37 CET 2000 - werner@suse.de
+
+- Correct depth level of patch
+
+-------------------------------------------------------------------
+Mon Dec 11 12:29:41 GMT 2000 - werner@suse.de
+
+- Make `setlocale'zing more reliable accordingly to Andreas
+  Jaeger.
+
+-------------------------------------------------------------------
+Sat Dec  9 02:15:38 CET 2000 - mfabian@suse.de
+
+- replaced all setlocale(LC_MESSAGES,"") with
+  setlocale(LC_MESSAGES,"") *and* setlocale(LC_CTYPE,"").
+
+  After the upgrade to Glibc 2.2, 8 bit characters in the
+  French, Czech, and Japanese messages were displayed as "?".
+  Changing the setlocale calls in the above way fixed it.
+  Messages in all languages now display correctly again.
+
+  First I replaced all setlocale(LC_MESSAGES,"") by
+  setlocale(LC_ALL,""), but this causes problems. In that case,
+  the messages display correctly, but  "LANG=ja_JP man man"
+  incorrectly displays the English manpage. Strange.
+  When using both setlocale(LC_MESSAGES,"") *and*
+  setlocale(LC_CTYPE,"") but not setlocale(LC_ALL,""),
+  everything seems to work correctly. 
+
+-------------------------------------------------------------------
+Tue Dec  5 20:48:29 PST 2000 - bk@suse.de
+
+- added %dir /usr/share/man/{de,es,it,ja}+man[158] to file list
+
+-------------------------------------------------------------------
+Fri Sep 15 17:15:21 MEST 2000 - pthomas@suse.de
+
+- Add 3C++, 3C++std and 8C++ to the list of man sections, the
+  Compaq man pages for C++ use these.
+
+-------------------------------------------------------------------
+Thu May 25 11:45:15 CEST 2000 - werner@suse.de
+
+- Fix the man path problem (hint from Michael Reichardt
+  <mrabuse@adlatus.muc.de>)
+- Make mandir depending on the RPM macro %_mandir
+- Make zsoemlin zlib interface functions more compatible to cookie
+  I/O functions (type changed in new glibc 2.1 and higher)
+
+-------------------------------------------------------------------
+Thu Mar 16 22:10:07 CET 2000 - werner@suse.de
+
+- Make lexgrog knowing the japanese multibyte string of section NAME
+- Make flex use memory aligned tables.
+
+-------------------------------------------------------------------
+Wed Mar  8 22:15:55 CET 2000 - werner@suse.de
+
+- Security fix in straycats: Check if we got a temporary file!
+
+-------------------------------------------------------------------
+Thu Mar  2 10:33:47 CET 2000 - ro@suse.de
+
+- added usr/share/man/allman 
+
+-------------------------------------------------------------------
+Tue Dec 14 21:18:20 CET 1999 - werner@suse.de
+
+- New version 2.3.10-69s
+  * better NLS support
+- Add all languages to /etc/manpatch.config before english default
+- Make mandb usable only for root (avoid DOS attacks)
+
+-------------------------------------------------------------------
+Fri Nov 26 16:46:16 CET 1999 - ro@suse.de
+
+- printout full path-name on check
+
+-------------------------------------------------------------------
+Fri Nov 26 16:04:08 CET 1999 - ro@suse.de
+
+- patched configure.in to prefer gdbm 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Sep  6 23:38:44 CEST 1999 - ro@suse.de
+
+- removed (now) conflicting redeclarations from zsoelim.l
+
+-------------------------------------------------------------------
+Thu Sep  2 20:37:21 CEST 1999 - werner@suse.de
+
+- Make man.c work again
+- Use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Mon Aug 30 23:10:01 MEST 1999 - werner@suse.de
+
+- Few simple changes
+  * drop privileges before chdir back into current directory
+  * do not search for local man page if not given `-l'
+
+-------------------------------------------------------------------
+Mon Jul 19 18:02:32 MEST 1999 - bs@suse.de
+
+- fixed file list (/var/cache/man)
+
+-------------------------------------------------------------------
+Thu Jul 15 17:29:46 CEST 1999 - werner@suse.de
+
+- Don't use carriage return but newline in messages.
+
+-------------------------------------------------------------------
+Wed Jul 14 12:29:54 MEST 1999 - kukuk@suse.de
+
+- Fix %pre section (use rm -rf)
+
+-------------------------------------------------------------------
+Mon Jul 12 14:59:16 CEST 1999 - werner@suse.de
+
+- Add allman sub tree to fsstnd tree
+
+-------------------------------------------------------------------
+Fri Jul  9 07:57:34 MEST 1999 - ro@suse.de
+
+- fixed filelist
+
+-------------------------------------------------------------------
+Tue Jul  6 23:01:33 CEST 1999 - werner@suse.de
+
+- Update to debian version 2.3.10-69i
+  * Change from /var/catman/ to /var/cache/man/
+  * Make /usr/share/man/ possible
+  * Buildin NLS support
+- Fix some debian bugs (sig handlers!)
+- Add SuSE bug fixes (sig handler) and zlib feature
+
+-------------------------------------------------------------------
+Wed Jun 30 23:31:03 CEST 1999 - werner@suse.de
+
+- First changes for SuSE 6.2
+  * Use fopencookie in zsoelim if glibc 2.1 or higher to avoid any
+    possible link attack in /tmp/
+  * Kill all possible childs (e.g. gunzip) of zsoelim for glibc 2.0
+    to be able to unlink the temporary files during signal handling.
+  * Use better sig and exit handling
+  
+-------------------------------------------------------------------
+Fri Jun  4 21:41:48 CEST 1999 - werner@suse.de
+
+- Fix security leak in zsoelim
+- Set sig and exit handler for removing temporary files
+- ToDo: use libz instead of gzip
+
+------------------------------------------------------------------
+Mon May  3 15:08:05 MEST 1999 - ro@suse.de
+
+- removed forgotten debug message 
+
+-------------------------------------------------------------------
+Thu Mar 11 16:07:26 MET 1999 - werner@suse.de
+
+- Use -Tlatin1 if eqn is geqn
+- Remove the index.bt's in /var/catman before being installed
+- Support stupid manual pages using .\" instead of '\" for
+  preprocessor cockies
+
+-------------------------------------------------------------------
+Thu Mar 11 00:28:20 MET 1999 - werner@suse.de
+
+- Use db2 if available
+
+-------------------------------------------------------------------
+Wed Mar 10 21:51:14 MET 1999 - werner@suse.de
+
+- Work around of a buffer/pointer cludge of strncat and strncpy
+  (glibc/axp)
+- Make CAT_FILE work
+- ToDo: libdb1 is broken on axp
+
+-------------------------------------------------------------------
+Wed Feb 10 17:20:02 MET 1999 - werner@suse.de
+
+- Fix the SIGHUP/SIGTERM bug
+- Use seteuid for LINUX_VERSION_CODE >= ((1<<16)+(1<<8)+37)
+- Remove temp files for man -l even if signaled
+- Fix some more possible SIGSEGV's
+
+-------------------------------------------------------------------
+Tue Sep 29 17:07:04 MEST 1998 - ro@suse.de
+
+- restarted from stable-man:
+    use usr/include/db1 and libdb1  for db lib
+    added HAVE_STRSEP to include/config.h.in (this file is broken)
+    libdb/Makefile.in, src/Makefile.in : removed -I- from CFLAGS
+
+-------------------------------------------------------------------
+Fri Aug  7 11:52:57 MEST 1998 - bs@suse.de
+
+- added catman dirs for es, fr & it to file list.
+
+-------------------------------------------------------------------
+Thu Aug  6 20:21:23 MEST 1998 - bs@suse.de
+
+- added es, fr & it.
+
+-------------------------------------------------------------------
+Wed Jul 15 14:09:01 MEST 1998 - bs@suse.de
+
+- fixed /usr/man/allman/de
+
+------------------------------------------------------------------------------
+Thu Apr 23 00:27:06 MET DST 1998 - werner@suse.de
+
+	- Fix preprocessor handling:
+	  was missed since libz was used instead of gzip -dc
+
+------------------------------------------------------------------------------
+Thu Mar 19 17:44:43 MET 1998 - werner@suse.de
+
+	- Use lib(g)z for mandb
+	  * no temporary nroff files for parsing of the manual pages
+	  * handle only the first 4096 bytes from the first .SH down
+	  * now zsoelim gets the gezipped man page without extension
+	    instead a temporary nroff file
+	  * extend lexgrog.l-2.4a to catch most pages as possible
+	  * add -funroll-loop to the compile options, use -O2
+
+------------------------------------------------------------------------------
+Fri Jun  6 17:49:08 MEST 1997 - bs@suse.e
+
+- added allman stuff
+

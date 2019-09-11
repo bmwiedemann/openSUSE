@@ -1,0 +1,11 @@
+--- apr-util-1.5.3.orig/test/testmemcache.c
++++ apr-util-1.5.3/test/testmemcache.c
+@@ -420,7 +420,7 @@ static void test_memcache_multiget(abts_
+   apr_status_t rv;
+   apr_memcache_t *memcache;
+   apr_memcache_server_t *server;
+-  apr_hash_t *tdata, *values;
++  apr_hash_t *tdata, *values = NULL;
+   apr_hash_index_t *hi;
+   apr_uint32_t i;
+ 

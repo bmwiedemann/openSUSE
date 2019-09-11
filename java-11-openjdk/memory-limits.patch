@@ -1,0 +1,11 @@
+--- jdk11/src/hotspot/share/gc/shared/gc_globals.hpp	2018-04-20 08:14:25.796265133 +0200
++++ jdk11/src/hotspot/share/gc/shared/gc_globals.hpp	2018-04-20 08:15:53.656690011 +0200
+@@ -640,7 +640,7 @@
+           "Initial heap size (in bytes); zero means use ergonomics")        \
+           constraint(InitialHeapSizeConstraintFunc,AfterErgo)               \
+                                                                             \
+-  product(size_t, MaxHeapSize, ScaleForWordSize(96*M),                      \
++  product(size_t, MaxHeapSize, ScaleForWordSize(512*M),                     \
+           "Maximum heap size (in bytes)")                                   \
+           constraint(MaxHeapSizeConstraintFunc,AfterErgo)                   \
+                                                                             \

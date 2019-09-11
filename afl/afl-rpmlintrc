@@ -1,0 +1,10 @@
+# packages a number of fuzzed files as samples and test cases
+addFilter("arch-dependent-file-in-usr-share.*/usr/share/doc/packages/afl/vuln_samples")
+addFilter("arch-dependent-file-in-usr-share.*/usr/share/afl/testcases")
+addFilter("devel-file-in-non-devel-package.*/usr/share/afl/testcases")
+addFilter("binaryinfo-readelf-failed.*/usr/share/afl/testcases")
+addFilter("bad-crc-in-zip.*/usr/share/doc/packages/afl/vuln_samples/")
+addFilter("missing-PT_GNU_STACK-section.*/usr/share/doc/packages/afl/vuln_samples")
+addFilter("missing-PT_GNU_STACK-section.*/usr/share/afl/testcases")
+addFilter("statically-linked-binary.*/usr/share/doc/packages/afl/vuln_samples")
+addFilter("statically-linked-binary.*/usr/share/afl/testcases")

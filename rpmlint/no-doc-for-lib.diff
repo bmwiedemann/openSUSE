@@ -1,0 +1,22 @@
+From: Some One <nobody@opensuse.org>
+Date: Thu, 9 Apr 2015 14:55:38 +0200
+Subject: [PATCH] no-doc-for-lib.diff
+
+===================================================================
+---
+ FilesCheck.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: rpmlint-rpmlint-1.11/FilesCheck.py
+===================================================================
+--- rpmlint-rpmlint-1.11.orig/FilesCheck.py
++++ rpmlint-rpmlint-1.11/FilesCheck.py
+@@ -464,7 +464,7 @@ class FilesCheck(AbstractCheck.AbstractC
+         debuginfo_srcs = False
+         debuginfo_debugs = False
+ 
+-        if not doc_files:
++        if not lib_package and not doc_files:
+             printWarning(pkg, 'no-documentation')
+ 
+         if files:

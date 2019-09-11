@@ -1,0 +1,496 @@
+-------------------------------------------------------------------
+Tue Jun  4 14:29:52 UTC 2019 - ecsos@opensuse.org
+
+- Update to pgadmin4 4.8
+  - New features
+    * Feature #2653 - Allow the UI layout to be fully locked or to 
+      prevent docking changes.
+  - Bug fixes
+    * Omit the geometry viewer in the Query Tool from layout 
+      saving.
+    * Improve the performance of explain plan by embedding the
+      images only when downloading it.
+    * Fix the issue of accessing the SQL for Views and Materialized
+      Views. Regression of pluralisation of folder names.
+
+-------------------------------------------------------------------
+Sun Jun  2 08:26:47 UTC 2019 - ecsos@opensuse.org
+
+- Update to pgadmin4 4.7
+  - Bug fixes
+    * In server mode, update all the saved server credentials when 
+      user password is changed.
+    * Fix the responsive layout of the main menu bar.
+    * Fix syntax error when adding more than one column to the 
+      existing table.
+    * Fix file browser path issue which occurs when client is on 
+      Windows and server is on Mac/Linux.
+    * Added Master Password to increase the security of saved 
+      passwords.
+    * Fix accessibility issue for menu navigation.
+    * Update the UI logo.
+    * Fixed CSRF security vulnerability issue, per Alvin Lindstam
+    * Properly assign dropdownParent in Select2 controls.
+    * Ensure popper.js is installed when needed.
+    * Fixed Tab key navigation for Maintenance dialog.
+    * Fix Tab key issue for Toggle switch controls and button on 
+      the dialog footer in Safari browser.
+    * Ensure that element should get highlighted when they get 
+      focus on using Tab key.
+    * Fixed console error when subnode control is used in panels.
+    * Stop using application/x-javascript as a mime type and use 
+      the RFC-compliant application/javascript instead.
+    * Fixed error on displaying table properties of a table 
+      partitioned by list having a default partition.
+    * Fix handling of JSON in the Query Tool with NULL elements.
+    * Fix navigation of switch cells in grids.
+    * Clarify wording for the NO INHERIT option on constraints, 
+      per Michel Feinstein.
+    * Relax the permission check on the directory containing the 
+      config database, as it may fail in some environments such as 
+      OpenShift.
+    * Prevent Backgrid Password cells from losing focus if the 
+      browser opens an autocomplete list.
+    * Fix syntax error when creating a table with a serial column.
+
+-------------------------------------------------------------------
+Tue May 21 07:51:34 UTC 2019 - ecsos@opensuse.org
+
+- Update to pgadmin4 4.6
+  - Features
+    * Feature #4165 - Depend on psycopg2-binary in the Python 
+      wheel, rather than psycopg2.
+  - Bug fixes
+    * Ensure that on clicking Delete button should not delete rows
+      immediately from the database server, it should be deleted 
+      when Save button will be clicked.
+    * Ensure that newly added row in backgrid should be visible.
+    * Ensure that JSON strings as comments should be added properly
+      for all the objects.
+    * Fix an issue where Deleting N number of rows makes 
+      first N number of rows disable.
+    * Added support for Default Partition.
+    * Fix an issue where ‘GRANT UPDATE’ sql should be displayed 
+      for default sequence privileges.
+    * Ensure that confirmation dialog should be popped up before 
+      reload of query tool or debugger if it is opened in a new 
+      browser tab.
+    * Ensure that record should be add/edited for root partition 
+      table with primary keys.
+    * Fixed alignment issue of columns in definition section of 
+      Index node.
+    * Fixed ‘Location cannot be empty’ error when open Tablespace
+      properties.
+    * Fix an issue where the dropdown becomes misaligned/displaced.
+    * Ensure the treeview shows all sequences except those used to
+      implement IDENTITY columns (which can be edited as part of 
+      the column). Show all if Show System Objects is enabled.
+    * Fixed ‘Increment value cannot be empty’ error for existing
+      tables.
+    * Ensure that parameters of procedures for EPAS server 10 and 
+      below should be set/reset properly.
+    * Prevent duplicate columns being included in reverse 
+      engineered SQL for tables.
+    * Ensure sanity of the permissions on the storage and session
+      directories and the config database.
+
+-------------------------------------------------------------------
+Mon Apr 15 17:43:50 UTC 2019 - ecsos@opensuse.org
+
+- Update to pgadmin4 4.5
+  - Bug fixes
+    * Fixed ‘Change Password’ issue for SCRAM authentication.
+    * Ensure that two consecutive SELECT statements should work 
+      properly.
+    * Relabel the Save button on the datagrid text editor to avoid 
+      confusion with the actual Save button that updates the 
+      database.
+    * Added recommended ESLinter checks.
+    * Ensure that pgAdmin4 should work properly with psycopg2 v2.8
+
+- Changes from pgadmin4 4.4
+
+  Warning: 
+  This release includes a bug fix (Bug #3887) which will rename the
+  per-user storage directories for existing users when running in 
+  server mode. Previously, saved SQL queries were stored under the 
+  STORAGE_DIR in a sub-directory named after the username part of 
+  the user’s email address. From this version onwards, the full 
+  email address is used, with the @ replaced with an underscore. 
+  For example, in v.4.3 with STORAGE_DIR set to /var/lib/pgadmin4 
+  user files may be stored in:
+    /var/lib/pgadmin4/storage/username/
+  With the fix, that directory will be renamed (or created for new 
+  users) as:
+    /var/lib/pgadmin4/storage/username_example.com/
+
+  - Features
+    * Add support for reverse proxied setups with Gunicorn, 
+      and document Gunicorn, uWSGI & NGINX configurations.
+    * Make the Query Tool history persistent across sessions.
+    * Remove the large and unnecessary dependency on React 
+      and 87 other related libraries.
+    * Add support for IDENTITY columns.
+    * Add an ePub doc build target.
+  - Bug fixes
+    * Fix naming inconsistency for the column and FTS parser 
+      modules.
+    * Include inherited column comments and defaults in reverse 
+      engineered table SQL.
+    * Improve a couple of German translations.
+    * Use the user’s full email address (not just the username 
+      part) as the basis for the storage directory name.
+    * Update wcDocker to fix the issue where the Scratch Pad grows 
+      in size if the results panel is resized.
+    * Avoid ‘bogus varno’ message from Postgres when viewing the 
+      SQL for a table with triggers.
+    * Update all Python and JavaScript dependencies.
+    * Include comment SQL for inherited columns in reverse 
+      engineered table SQL.
+    * Make the WHEN field a CodeMirror control on the Event Trigger 
+      dialogue.
+    * Fix the online help button on the resource group dialogue.
+    * Enable the online help button on the index dialogue.
+    * Handle resultsets with zero columns correctly in the Query 
+      Tool.
+    * Include inherited columns in SELECT scripts.
+    * Fix the latexpdf doc build.
+    * Fix handling of numeric arrays in View/Edit Data.
+    * Enlarge the grab handles for resizing dialogs etc.
+    * Append the file suffix to filenames when needed in the File 
+      Create dialogue.
+    * Ensure that Firefox prompts for a filename/location when 
+      downloading query results as a CSV file.
+    * Change the CodeMirror active line background colour to 
+      $color-danger-lighter so it doesn’t conflict with the 
+      selection colour.
+    * Fix the RE-SQL syntax for roles with a VALID UNTIL clause.
+    * Prevent an empty error message being shown when “downloading”
+      a CREATE script using the CSV download.
+    * Overhaul the layout saving code so it includes the Query Tool 
+      and Debugger, and stores the layout when change events are 
+      detected rather than (unreliably) on exit.
+    * Display errors during CSV download from the Query Tool in the 
+      UI rather than putting them in the CSV file.
+    * Improve the German translation for Backup Server.
+    * Ensure the toolbar buttons are properly reset following 
+      a CSV download in the Query Tool.
+    * Fix SQL help for EPAS 10+, and refactor the URL generation
+      code into a testable function.
+    * Ensure sequences can be created with increment, start, 
+      minimum and maximum options set.
+    * Fix an issue where JSON data would not be rendered in the 
+      Query Tool.
+    * Ensure View/Materialized View node should be visible after 
+      updating any property.
+    * Fix custom autovacuum configuration for Materialized Views.
+
+-------------------------------------------------------------------
+Thu Mar  7 14:22:56 UTC 2019 - ecsos@opensuse.org
+
+- Update to pgadmin4 4.3
+  - Features
+    * Install a script to start pgAdmin (pgadmin4) from the command
+      line when installed from the Python wheel.
+    * Add a “scratch pad” to the Query Tool to hold text snippets 
+      whilst editing.
+    * Add Commit and Rollback buttons to the Query Tool.
+    * Allow X-FRAME-OPTIONS to be set for security. Default to 
+      SAMEORIGIN.
+    * Automatically expand child nodes as well as the selected node 
+      on the treeview if there is only one.
+    * Include multiple versions of the PG utilties in containers.
+    * Update Alpine Linux version in the docker container.
+    * Support double-click on Query Tool result grid column resize 
+      handles to auto-size to the content.
+  - Bug fixes
+    * Ensure size stats are prettified on the statistics tab when 
+      the UI language is not English.
+    * Handle display of roles with expiration set to infinity 
+      correctly.
+    * Allow editing of values in columns with the oid datatype 
+      which are not an actual row OID.
+    * Make the Query Tool tab titles more concise and useful.
+    * Fix support for bigint’s in JSONB data.
+    * Update CodeMirror to 5.43.0 to resolve issues with 
+      auto-indent.
+    * Ensure JSON data isn’t modified in-flight by psycopg2 when 
+      using View/Edit data.
+    * Modify the Download as CSV option to use the same connection 
+      as the Query Tool its running in so temporary tables etc. 
+      can be used.
+    * Fix context sub-menu alignment on Safari.
+    * Update documentation screenshots as per new design.
+    * Fix alignment of Close and Maximize button of Grant Wizard.
+    * Add full support and testsfor all PG server side encodings.
+    * Fix editing of table data with a JSON primary key.
+    * Ignore exceptions in the logger.
+    * Close connections gracefully when the user logs out of 
+      pgAdmin.
+    * Fix alignment of checkbox to drop multiple schedules of 
+      pgAgent job.
+    * Don’t exclude SELECT statements from transaction management 
+      in the Query Tool in case they call data-modifying functions.
+    * Optimise display of Dependencies and Dependents, and use 
+      on-demand loading of rows in batches of 100.
+    * Fix alignment of import/export toggle switch.
+    * Prevent an error when closing the Sort/Filter dialogue with 
+      an empty filter string.
+    * Fix alignment of Connection type toggle switch of pgagent.
+    * Fix the query to set bytea_output so that read-only standbys
+      don’t consider it a write query.
+    * Add full support and testsfor all PG server side encodings.
+    * Don’t embed docs and external sites in iframes, to allow the 
+      external sites to set X-FRAME-OPTIONS = DENY for security.
+    * Add full support and testsfor all PG server side encodings.
+    * Custom-encode forward slashes in URL parameters as Apache 
+      HTTPD doesn’t allow them in some cases.
+    * Update CodeMirror to 5.43.0 to resolve issues with tab indent 
+      with use spaces enabled.
+    * Ensure long queries don’t cause errors when downloading CSV 
+      in the Query Tool.
+    * Disable the editor and execute functions whilst queries are 
+      executing.
+    * Fix an issue where importing servers fails if a group already 
+      exists for a different user.
+
+-------------------------------------------------------------------
+Tue Mar  5 11:26:22 UTC 2019 - ecsos@opensuse.org
+
+- Update to pgadmin4 4.2
+  - Bug fixes
+    * Replace Bootstrap switch with Bootstrap4 toggle to improve 
+      the performance.
+    * Replace the PyCrypto module with the cryptography module.
+    * Fixed SQL for foreign table options.
+    * Fixed execution time to show Hours part for long running 
+      queries in Query Tool.
+    * Messages tab of query tool should be clear on subsequent 
+      execution of table/view using View/Edit Data.
+    * Clear drop-down menu should be disabled for View/Edit Data.
+    * Fixed Statistics panel hang issue for 1000+ tables.
+    * Proper error should be thrown when server group is created 
+      with existing name.
+    * Ensure long string should be wrap in alertify dialogs.
+    * Ensure that output of the query should be displayed even if
+      Data Output window is detached from the Query Tool.
+    * Inline edbspl trigger functions should not be visible in 
+      Grant Wizard.
+    * Proper SQL should be generated when create function with 
+      return type as custom type argument.
+    * Ensure that database restriction of server dialog should work
+      with special characters.
+    * Ensure that Backup/Restore button should work on single
+      click.
+    * Fixed SQL for when clause while creating Trigger.
+    * Proper SQL should be generated when creating/changing column 
+      with custom type argument.
+    * Ensure that file format combo box value should be retained 
+      when hidden files checkbox is toggled.
+    * Proper SQL should be generated when create procedure with 
+      custom type arguments.
+    * Ensure that browser should warn before close or refresh.
+    * Fixed EXEC script for procedures.
+    * Proper SQL should be generated when create domain of type 
+      interval with precision.
+    * Drop-down should be closed when click on any other toolbar 
+      button.
+    * Fixed keyboard navigation for dialog tabs.
+    * Increase frames splitter mouse hover area to make it easier
+      to resize.
+    * Fixed alignment of tree arrow icons for Internet Explorer.
+    * Ensure object names in external process dialogues are 
+      properly escaped.
+    * Correct order of Save and Cancel button for json/jsonb 
+      editing.
+    * Data should be updated properly for FTS Configurations, 
+      FTS Dictionaries, FTS Parsers and FTS Templates.
+    * Fixed unable to drop multiple Rules and Foreign Tables from
+      properties tab.
+    * Fixed Query Tool Initialization Error.
+    * Fixed keyboard navigation for Select2 and Privilege cell in 
+      Backgrid.
+    * Correct schema should be displayed in Materialized View 
+      dialog.
+    * Fixed debugger issue for procedure inside package for EPAS
+      servers.
+    * Fix alignment of help messages in properties panels.
+    * Fix alignment of submenu for Internet Explorer.
+    * Ensure that grant wizard should list down functions for EPAS 
+      server running with no-redwood-compat mode.
+    * Dashboard graph optimization.
+    * Remove Python 2.6 code that’s now obsolete.
+    * Expose the bind address in the Docker container via 
+      PGADMIN_BIND_ADDRESS.
+    * Exclude HTTPExceptions from the all_exception_handler as they 
+      should be returned as-is.
+- Rebase fix-python3-crypto-call.patch
+
+-------------------------------------------------------------------
+Tue Jan 15 16:31:56 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to pgadmin4 4.1
+  - Bug fixes
+    * Fix SQL generated for tables with inherited columns.
+    * Ensure the context menu works after a server is renamed.
+    * Fix ordering of VACUUM options which changed in PG11.
+    * Don’t show system catalogs in the schemas property list unless
+      show system objects is enabled.
+    * Fix help for the backup/restore dialogues.
+    * Ensure that last row of table data should be visible and user
+      will be able to add new row.
+    * Make the browser more robust in the face of multibyte characters
+      in SQL_ASCII databases.
+
+- Update to pgadmin4 4.0
+  - Features
+    * Allow query plans to be downloaded as an SVG file.
+    * New UI design.
+    * Allow servers to be pre-loaded into container deployments.
+  - Bug fixes
+    * Increase the size of the resize handle of the edit grid text
+      pop-out.
+    * Fix handling of array types as inputs to the debugger.
+    * Fix an issue that could cause the Query Tool to fail to render.
+    * Display event trigger functions correctly on EPAS.
+    * Further improvements to treeview restoration.
+    * Run Postfix in the container build so passwords can be reset etc.
+    * Add titles to the code areas of the Query Tool and Debugger to
+      ensure that panels can be re-docked within them.
+    * Fix a webpack issue that could cause the Query Tool to fail to
+      render.
+    * Ensure we display the relation name (and not the OID) in the
+      locks table wherever possible.
+    * Fix an encoding issue in the query tool.
+    * Include the WHERE clause on EXCLUDE constraints in RE-SQL.
+    * Fix an issue when user define Cast from smallint->text is created.
+    * Hide Radio buttons that should not be shown on the maintenance
+      dialogue.
+    * Ensure that null values handled properly in CSV download.
+    * Tweak the wording on the Grant Wizard.
+    * Prevent attempts to bulk-drop schema objects.
+    * Ensure the browser toolbar buttons work in languages other than
+      English.
+    * Allow horizontal sizing of the edit grid text pop-out.
+    * Ensure auto complete should works when first identifier in the
+      FROM clause needs quoting.
+    * Ensure auto complete should works for columns from a
+      schema-qualified table.
+    * Ensure identifiers are properly displayed in the plan viewer.
+    * Make the setup process more robust against aborted executions.
+    * Fixed an issue while creating export job.
+
+- Make pgadmin4-web suggest the pgadmin4-doc package instead of
+  requiring it.
+
+-------------------------------------------------------------------
+Fri Nov 30 09:30:56 UTC 2018 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to pgadmin4 3.6
+  - Features
+  * Add support for dropping multiple objects at once from the
+    collection Properties panel.
+  * Add the ability to import and export server definitions from
+    a config database
+
+  - Bug fixes
+  * Ensure previous notices are not removed from the Messages tab in
+    the Query Tool if an error occurs during query execution.
+  * Allow the selection order to be preserved in the Select2 control
+    to fix column ordering in data Import/Export.
+  * Allow use of 0 (integer) and empty strings as parameters in the debugger.
+  * Properly report errors when debugging cannot be started.
+  * Prevent the debugger controls being pressed again before previous
+    processing is complete.
+  * Fix toggle breakpoints buttons in the debugger.
+  * Fix changes to the NOT NULL and default value options in the
+    Table Dialogue.
+  * Fix dropping of multiple functions/procedures at once.
+
+-------------------------------------------------------------------
+Wed Nov 14 19:19:48 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Compact description and trim first-person grammar.
+- Rename pgadmin4-docs to pgadmin4-doc to be in line with
+  the naming of other packages in openSUSE.
+- Safeguard fdupes to not run over partition boundaries.
+
+-------------------------------------------------------------------
+Wed Nov  7 17:31:38 UTC 2018 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to pgadmin4 3.5
+  - Features
+  * Save the treeview state periodically, and restore it automatically when
+    reconnecting.
+  * Migrate from Bootstrap 3 to Bootstrap 4.
+
+  - Bug fixes
+  * Ensure that Utilities(Backup/Restore/Maintenence/Import-Export) should
+    not be started if binary path is wrong and also added ‘Stop Process’ button
+    to cancel the process.
+  * Fix syntax error when creating new pgAgent schedules with a start date/time
+    and exception.
+  * Cleanup session files periodically.
+  * Rename the ‘SQL Editor’ section of the Preferences to ‘Query Tool’ as it
+    applies to the whole tool, not just the editor.
+  * Fix CREATE Script functionality for EDB-Wrapped functions.
+  * Fix connection garbage collector.
+  * Purge connections from the cache on logout.
+  * Ensure that utility existence check should work for schema and other child
+    objects while taking Backup/Restore.
+  * Fixed fatal error while launching the pgAdmin4 3.5. Update the version of
+    the Flask to 0.12.4 for release.
+
+-------------------------------------------------------------------
+Mon Oct  8 11:02:50 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 3.4
+
+- Update to pgadmin4 3.4
+  - Features
+  * Move all CSS into SCSS files for consistency and ease of colour maintenance etc.
+  * Add optional data point markers and mouse-over tooltips to display values on graphs.
+  * Add shortcuts for View Data and the Query tool to the Browser header bar.
+
+  - Bug fixes
+  * Ensure the runtime can startup properly if there are wide characters in the logfile path on Windows.
+  * Fix handling of backslashes in the edit grid.
+  * Ensure queries are no longer executed when dashboards are closed.
+  * Fix support for the CLOB datatype in EPAS.
+  * Fix logic around validation and highlighting of Sort/Filter in the Query Tool.
+  * Ensure auto-complete works for objects in schemas other than public and pg_catalog.
+  * Ensure changes to Query Tool settings from the Preferences dialogue are applied before executing queries.
+  * Swap the Schema and Schemas icons and Catalog and Catalogs icons that had been used the wrong way around.
+
+-------------------------------------------------------------------
+Wed Oct  3 08:59:31 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 3.3
+
+- Update to pgadmin4 3.3
+  - Features
+  * Add a geometry viewer that can render PostGIS data on a blank canvas or various map sources.
+  * Added new backup/restore options for PostgreSQL 11. Added dump options for 'pg_dumpall'.
+  * Add a Spanish translation.
+
+  - Bug fixes
+  * Stabilise feature tests for continuous running on CI systems.
+  * Fixed debugger execution issues.
+  * Ensure 'select all' and 'unselect all' working properly for pgAgent schedule.
+  * Fix sort/filter dialog issue where it incorrectly requires ASC/DESC.
+  * Ensure backup should work with '--data-only' and '--schema-only' for any format.
+  * Fix keyboard shortcuts layout in the preferences panel.
+  * Merge pgcli code with version 1.10.3, which is used for auto complete feature.
+  * Ensure that refreshing a node also updates the Property list.
+  * Ensure that refresh button on dashboard should refresh the table.
+  * Handle connection errors properly in the query tool.
+  * Make session implementation thread safe
+  * Ensure external table node should be visible only for GPDB.
+  * Fix auto scrolling issue in debugger on step in and step out.
+  * Fix sort/filter dialog editing issue.
+  * Ensure sort/filter dialog should display proper message after losing database connection.
+  * Ensure sql for Role should be visible in SQL panel for GPDB.
+  * When building the Windows installer, copy system Python packages before installing dependencies to ensure we don't end up with older versions than intended.
+  * Correct the documentation of View/Edit data.
+
+
+-------------------------------------------------------------------
+Tue Aug 21 09:08:55 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 3.2
+
+- Initial release of pgadmin4 3.2

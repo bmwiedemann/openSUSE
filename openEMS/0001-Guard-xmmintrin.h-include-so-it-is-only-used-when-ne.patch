@@ -1,0 +1,51 @@
+From 120691d8a7a3bd951e74a5436a2b26fa4c0478d1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 27 Mar 2018 02:28:22 +0200
+Subject: [PATCH] Guard xmmintrin.h include so it is only used when necessary
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The x86/SSE specific code for Flush-To-Zero is only used when
+SSE_CORRECT_DENORMALS is not defined. Guarding the include allows the
+code to compile on e.g. ARM.
+
+Signed-off-by: Stefan Brüns <stefan.bruens@rwth-aachen.de>
+---
+ FDTD/engine_multithread.cpp | 3 +++
+ FDTD/engine_sse.cpp         | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/FDTD/engine_multithread.cpp b/FDTD/engine_multithread.cpp
+index 7370198..7ebe0d7 100644
+--- a/FDTD/engine_multithread.cpp
++++ b/FDTD/engine_multithread.cpp
+@@ -32,7 +32,10 @@
+ #include "boost/date_time/posix_time/posix_time.hpp"
+ #include "boost/date_time/gregorian/gregorian.hpp"
+ #include <iomanip>
++
++#ifndef SSE_CORRECT_DENORMALS
+ #include <xmmintrin.h>
++#endif
+ 
+ //! \brief construct an Engine_Multithread instance
+ //! it's the responsibility of the caller to free the returned pointer
+diff --git a/FDTD/engine_sse.cpp b/FDTD/engine_sse.cpp
+index 660e6d6..2e06685 100644
+--- a/FDTD/engine_sse.cpp
++++ b/FDTD/engine_sse.cpp
+@@ -15,7 +15,10 @@
+ *	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#ifndef SSE_CORRECT_DENORMALS
+ #include <xmmintrin.h>
++#endif
++
+ #include "engine_sse.h"
+ 
+ //! \brief construct an Engine_sse instance
+-- 
+2.16.2
+

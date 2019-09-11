@@ -1,0 +1,29 @@
+From 7de35a682eebbfae33cae3d9fd77a74f850c8915 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Date: Wed, 7 Jun 2017 21:08:31 +0200
+Subject: [PATCH 05/43] tools/kvm_stat: remove extra statement
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 5e3823a49c50d70cc6b92808c262a43cf3505f3c)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 3d40809a3ff2..11aea9fb3ce0 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1069,7 +1069,6 @@ class Tui(object):
+ 
+             except ValueError:
+                 msg = '"' + str(pid) + '": Not a valid pid'
+-                continue
+ 
+     def show_vm_selection_by_guest_name(self):
+         """Draws guest selection mask.
+-- 
+2.12.3
+

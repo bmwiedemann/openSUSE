@@ -1,0 +1,203 @@
+-------------------------------------------------------------------
+Fri Apr 12 19:27:24 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to vhostmd 1.1
+  - Merge libserialclient with libmetrics
+  - Misc bug fixes and improvements
+  - bsc#1129772
+
+-------------------------------------------------------------------
+Mon Dec  3 22:53:13 UTC 2018 - James Fehlig <jfehlig@suse.com>
+
+- Update to vhostmd 1.0
+  - Add virtio as transport mechanism
+  - Update to work with modern Xen
+  - Add SIGPIPE handler and reconnect
+  - Add systemd service file
+  - Modernize build files
+  - Misc bug fixes and improvements
+  - Dropped patches:
+    modernize-build-files.patch,
+    add-systemd-service.patch,
+    c7646e32-handle-sigpipe-reconnect.patch,
+    03dc9982-fix-deallocation.patch
+
+-------------------------------------------------------------------
+Mon Jun 25 15:05:23 UTC 2018 - jfehlig@suse.com
+
+- Handle SIGPIPE and reconnect to libvirtd
+  c7646e32-handle-sigpipe-reconnect.patch,
+  03dc9982-fix-deallocation.patch
+  bsc#1098804
+
+-------------------------------------------------------------------
+Mon Apr 30 18:31:17 UTC 2018 - jfehlig@suse.com
+
+- vhostmd.service: fix typo and move Documentation from [Service]
+  to [Unit] section
+  bsc#1090769
+
+-------------------------------------------------------------------
+Sat Apr 29 15:58:03 UTC 2017 - jengelh@inai.de
+
+- Fix RPM group for libmetrics0
+- Replace old RPM shell vars in %install
+- Author lists do not belong into the description
+- Use macros in file list to compact paths
+
+-------------------------------------------------------------------
+Thu Apr 27 16:34:53 UTC 2017 - jfehlig@suse.com
+
+- Add systemd service file
+  add-systemd-service.patch
+  bsc#1036427
+- Replace build-improvements.patch with
+  modernize-build-files.patch sent upstream
+
+-------------------------------------------------------------------
+Wed Jan 14 09:21:43 MST 2015 - jfehlig@suse.com
+
+- Build vhostmd for all architectures
+
+-------------------------------------------------------------------
+Mon Nov 10 20:19:34 MST 2014 - jfehlig@suse.com
+
+- Improve build scripts
+  Replace build-fix.patch with build-improvements.patch
+
+-------------------------------------------------------------------
+Mon Nov  3 16:02:45 MST 2014 - jfehlig@suse.com
+
+- Fix Factory build
+  build-fix.patch
+
+-------------------------------------------------------------------
+Fri Jun 13 19:34:33 UTC 2014 - mlatimer@suse.com
+
+- Further updates to vmhostd.xml
+  - Support both xen and non-xen hypervisors (kvm)
+  - Document reserved characters in 'action' field
+  - Revert xen_version back to major/minor/extra to maintain compatability
+    with xend
+  - Minor syntax and legibility cleanup
+  vhostmd-conf.patch
+  bnc#872736
+
+-------------------------------------------------------------------
+Wed Jun 11 23:02:06 UTC 2014 - mlatimer@suse.com
+
+- Various updates to vmhostd.xml
+  - Replace xm commands with xl commands
+  - Add /sbin and /bin to <path>
+  - Use xen_version for VirtualizationProductInfo
+  vhostmd-conf.patch
+
+-------------------------------------------------------------------
+Mon Dec  9 17:42:19 MST 2013 - jfehlig@suse.com
+
+- link libmetrics with libxml to fix Factory build
+
+-------------------------------------------------------------------
+Sun Nov 20 06:29:32 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Mar 30 11:00:42 MDT 2010 - jfehlig@novell.com
+
+- Fixed vm-dump-metrics man page
+  bnc#592242
+  manpage.patch
+- Build vhostmd without xenstore support since it is not well
+  tested on SuSE distributions.  Additionally, it can be confusing
+  when used in context of KVM where xenstore does not exist.
+- Strip 's' (seconds) from metrics that contain a time value
+  vhostmd-conf.patch
+- Remove stray newline from metric values to improve XML readability
+  value-newline.patch
+
+-------------------------------------------------------------------
+Wed Dec  9 09:17:48 MST 2009 - jfehlig@novell.com
+
+- Release of version 0.4
+  - configure.ac: Fix C compiler detection to be compatible with
+    automake
+  - chdir ("/") when daemonizing self
+
+-------------------------------------------------------------------
+Fri Oct 30 15:04:32 MDT 2009 - jfehlig@novell.com
+
+- Release of version 0.3
+  - change default disk location to /dev/shm/vhostmd0
+  - open metrics disk with O_DIRECT
+  - Fixes for '--with{,out}-xenstore' option
+  - Allow gcc to check calls to vu_log* printf-like functions
+  - Always connect to libvirt read-only
+  - Add '-u user' command line option to drop root privs
+  - Add '-c uri' command line option to specify libvirt connection
+    URI
+  - Add CONNECT substitution <action>s
+  - vm-dump-metrics: On error, exit with status code 1
+
+-------------------------------------------------------------------
+Tue Sep 29 13:00:27 UTC 2009 - aj@suse.de
+
+- Fix devel package requires.
+
+-------------------------------------------------------------------
+Wed Sep 16 22:11:57 CEST 2009 - dmueller@suse.de
+
+- fix devel package requires
+
+-------------------------------------------------------------------
+Mon Jun 29 16:42:39 MDT 2009 - jfehlig@novell.com
+
+- Validate XML returned by 'action' for metric type 'xml'
+- Do not convert metrics values internally in vhostmd.  Treat
+  all metric values as strings and leave it to consumers to do
+  any conversion.
+
+-------------------------------------------------------------------
+Fri Jun 26 17:24:38 MDT 2009 - jfehlig@novell.com
+
+- Allow larger buffer for 'xml' type
+
+-------------------------------------------------------------------
+Thu Jun 25 22:24:27 MDT 2009 - jfehlig@novell.com
+
+- Add metric type 'XML'
+
+-------------------------------------------------------------------
+Fri Jun 19 14:19:19 MDT 2009 - jfehlig@novell.com
+
+- vhostmd is currently only used with Xen so make it
+  ExclusiveArch x86 and x86_64
+
+-------------------------------------------------------------------
+Mon Jun 15 14:47:42 MDT 2009 - jfehlig@novell.com
+
+- Truncate metrics disk on open
+
+-------------------------------------------------------------------
+Tue Jun  9 09:30:06 MDT 2009 - jfehlig@novell.com
+
+- Change COPYING from GPL3 to LGPL2.1
+
+-------------------------------------------------------------------
+Fri Jun  5 11:16:36 MDT 2009 - jfehlig@novell.com
+
+- Explicitly name subpackages with -n
+
+-------------------------------------------------------------------
+Thu Jun  4 18:29:39 MDT 2009 - jfehlig@novell.com
+
+- Version 0.2
+  - Updated documentation
+  - Added group metric type
+  - Added perl script for generating {PageIn,PageFault}Rate
+
+------------------------------------------------------------
+Wed Jan 7 12:39:17 MST 2009 - plc@novell.com
+
+- Initial creation
+

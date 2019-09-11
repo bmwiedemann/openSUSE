@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Mon Jul 15 20:19:17 UTC 2019 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.2.3:
+  * Rides can now be simulated with ghost trains during construction.
+  * Multi-threaded rendering.
+  * Various other bugfixes and improvements.
+- Added fix-maybe-uninitialized.patch to fix a gcc warning.
+- Added no-werror.patch to build as wno-clobbered does not work
+- Install needed object files
+  * Fixed boo#1120400
+- Splitted optional titlesequences as a subpackage (sequences 
+  which need RCT1 or RCT2 to be installed). 
+- Update to version 0.2.2:
+  * Allow steep slopes on the side-friction roller coaster.
+  * Mulitple glyphs for multiple eastern languages have been added
+  * Allow building footpaths on 'corner down' terrain.
+  * Allow building on-ride photos and water S-bends on the Water
+    Coaster.
+  * Add replay system.
+  * No longer require the generic scenery groups and tarmac footpath
+    to be checked when creating a scenario.
+  * Client IP address is logged as `(null)` in server logs.
+  * Fixed crash when switching between languages.
+  * Fixed desync due to boats colliding with ghost pieces.
+  * Removed support for scenario text objects.
+  * Various other bugfixes and improvements
+
+-------------------------------------------------------------------
+Sun Sep  9 17:58:35 UTC 2018 - mailaender@opensuse.org
+
+- Update to version 0.2.1
+- Drop mime.patch (included upstream)
+- Drop appdata.patch (included upstream) 
+
+-------------------------------------------------------------------
+Sat Aug 12 09:53:59 UTC 2017 - mailaender@opensuse.org
+
+- Add mime.patch
+- Add appdata.patch
+
+-------------------------------------------------------------------
+Fri Aug 11 20:42:58 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 0.1.1
+- Drop libsuffix.patch
+
+-------------------------------------------------------------------
+Sat Jul 15 14:09:42 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 0.1.0
+- Drop download-title-sequences.patch (applied upstream)
+- Don't require SDL2_ttf (not used anymore)
+- Add libsuffix.patch
+
+-------------------------------------------------------------------
+Tue Feb  7 08:53:58 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 0.0.6
+  * Drop fix-no-real-prototypes.patch (included upstream)
+- Fix the title sequences
+  * Drop bundled-title-sequences.patch
+  * Add download-title-sequences.patch
+
+-------------------------------------------------------------------
+Wed Jan 11 18:46:02 UTC 2017 - rpm@fthiessen.de
+
+- Update to version 0.0.5
+  * First version which does not require original exe (just assets)
+  * Runs on x64
+- Added bundled-title-sequences.patch
+- Removed upstream merged patches:
+  * 3507.patch
+  * 9d1fee2bda3dbbefbf69641876ba6315bcbe6da0.patch
+
+-------------------------------------------------------------------
+Sun May  8 11:34:24 UTC 2016 - mailaender@opensuse.org
+
+- Fix file-contains-date-and-time
+
+-------------------------------------------------------------------
+Fri May  6 05:53:43 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.0.4
+
+-------------------------------------------------------------------
+Wed Dec 30 11:46:25 UTC 2015 - mailaender@opensuse.org
+
+- initial packaging of version 0.0.3.1
+
+

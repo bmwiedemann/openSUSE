@@ -1,0 +1,6 @@
+# They are just for testing / examples needed
+addFilter("W: pem-certificate /usr/share/doc/packages/swipl-*")
+# They are needed for swipl / pl
+addFilter("E: devel-file-in-non-devel-package *")
+# Needed for own shared libraries
+addFilter("W: rpath-in-buildconfig *")

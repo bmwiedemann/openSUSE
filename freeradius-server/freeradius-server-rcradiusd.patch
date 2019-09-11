@@ -1,0 +1,13 @@
+--- freeradius-server-3.0.8.orig/suse/rcradiusd	2015-04-22 19:21:34.000000000 +0200
++++ freeradius-server-3.0.8.suse/suse/rcradiusd	2015-04-23 10:02:01.393574445 +0200
+@@ -50,6 +50,10 @@
+     start)
+         configtest || { rc_failed 150; rc_exit; }
+         echo -n "Starting RADIUS daemon "
++        # /var/run might be on tmpfs, create runtime directory if needed
++        if [ ! -d /run/radiusd ]; then
++            install -d -m 0700 -g radiusd -o radiusd /run/radiusd
++        fi
+         startproc $exec >/dev/null
+         rc_status -v
+         ;;

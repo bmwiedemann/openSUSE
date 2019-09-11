@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Jun 21 22:50:42 UTC 2016 - mardnh@gmx.de
+
+- update to version 3.09b
+  - Fixed a likely only cosmetic bug with a one-byte overread of
+    the pcap packet buffer, which would cause an error under ASAN.
+  - Added a new signature for Chrome.
+  - Updated another signature for Chrome.
+
+-------------------------------------------------------------------
+Sat Jan  3 12:32:52 UTC 2015 - mardnh@gmx.de
+
+- initial package. version 3.08b
+

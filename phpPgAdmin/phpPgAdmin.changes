@@ -1,0 +1,269 @@
+-------------------------------------------------------------------
+Sat Jan 19 13:08:04 UTC 2019 - Christian Wittmer <chris@computersalat.de>
+
+- update to 5.6.0
+  - fix for boo#1094772
+    Distributed phpPgAdmin 5.1 does not support distributed PostgreSQL 10.3
+  - Released: 12th November, 2018 
+  - Features
+    * Add support for PostgreSQL 9.3, 9.4, 9.5, 9.6, 10, 11
+    * Development support for PostgreSQL 12
+    * Add support for brows/select navigation tabs (firzen)
+    * Add new theme, "bootstrap" (amenadiel)
+    * Improved support for json/jsonb
+  - Bugs
+    * Fix bug in Turkish translation which caused failed ajax responses 
+    * Account for Blocked field in admin processes Selenium test
+    * Properly handle column comments 
+    * Fix background css issue
+    * Additional language updates
+  - Incompatabilities
+    * Dropped testing of pre-9.3 versions of Postgres, which are now EOL
+- add license tag
+
+-------------------------------------------------------------------
+Fri Dec  2 11:24:39 UTC 2016 - chris@computersalat.de
+
+- udpate phpPgAdmin.http
+  * add support for Apache 2.2/2.4
+  * add suppport for php7
+
+-------------------------------------------------------------------
+Wed Jan  6 18:26:46 UTC 2016 - chris@computersalat.de
+
+- fix for boo#951002
+  * make http config compatible with apache 2.4
+
+-------------------------------------------------------------------
+Fri Jan 31 14:43:01 UTC 2014 - rsalevsky@suse.com
+
+-update to 5.1
+	- Released: 14th April 2013
+	- Features
+		* Full support for PostgreSQL 9.1 and 9.2
+		* New plugin architecture, including addition of several new hooks
+		* Support nested groups of servers
+		* Expanded test coverage in Selenium test suite
+		* Highlight referencing fields on hovering Foriegn Key values when browsing tables
+		* Simplified translation system implementation
+		* Don't show cancel/kill options in process page to non-superusers
+		* Add download ability from the History window
+		* User queries now paginate by default
+	- Translations
+		* Lithuanian
+	- Bug Fixes
+		* Numeruous fixes for running under PHP Strict Standards
+		* Fix an issue with autocompletion of text based Foreign Keys
+		* Fix a bug when browsing tables with no unique key
+		* Fix several bugs with bytea support, including possible data
+		  corruption bugs when updating rows that have bytea fields
+
+-------------------------------------------------------------------
+Thu Mar 29 10:59:18 UTC 2012 - chris@computersalat.de
+
+- update to 5.0.4
+  - Released: 22th March 2012
+  - Bug fixes.
+    * Fix #3468882 "UPDATE single row with varchar key: empty where
+      clause", reported by "Dirk Kraemer"
+    * Fix XSS in function.php, reported by Mateusz Goik
+    * Fix bug where renaming a tablespace was leading to an error
+    * Fix a bug where clicking to "Show all schemas" on schema
+      privilege page leads back to the latest tab used in database level
+    * Fix a bug when executing a query from the history
+    * Fix bad confirmation message when droping an autovacuum table setup
+    * Fix bug #3429633 '"Back" link from "Browse" leads to error'
+    * Fix a PHP warning when Slony conf parameters are not set
+    * Show cancel/kill actions in process page only if role is a superuser
+    * Some more small code cleanup and fixes.
+- fix for bnc#754694 (CVE-2012-1600)
+  * https://bugzilla.novell.com/show_bug.cgi?id=754694
+
+-------------------------------------------------------------------
+Thu Oct 20 18:36:19 UTC 2011 - chris@computersalat.de
+
+- update to 5.0.3
+  - Released: 3rd October 2011
+  - Some bug fixes.
+    * Fix bug with enable/disable triggers on multiple triggers
+      (Dawid 'DeyV' Polak)
+    * Fix bug #3353670: Error when executing a report with paging
+    * Fix bug with OpenBSD about where setting application_name using
+      PGOPTIONS was raising an ERROR
+    * Two security fix about code injection, reported by Mateusz Goik,
+      fixed by ioguix
+    * Fix character-encoding problem with autocomplete
+- fixes bnc#721976 (CVE-2011-3598)
+  * http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-3598
+
+-------------------------------------------------------------------
+Thu May 26 15:23:55 UTC 2011 - chris@computersalat.de
+
+- update to 5.0.2
+  - Released: 3rd January 2011
+  - Some bug fixes.
+    * Fix a css typo & error in cappuccino theme
+    * Fix #3139003 "Autocomplete doesn't insert value", report and
+      patch by Aleksander Machniak
+    * Fix bad inheritance between pg83 -> pg instead of pg83 -> pg84 in
+      the database access classes. This bug was breaking some
+      functionnalities with 8.3
+    * Fix a lot of nonstandard escaped string in the database access
+      classes
+ - Version 5.0.1
+  - Released: 14th December 2010
+  - Minor bug fix and update version.
+    * Fix #3124417 "Wrong german translation", reported by schnoesel
+    * Fix (officialy) a bug where non-super user roles cannot check
+      ownership on objects
+    * Add forgotten Galician language to the target "all" of lang/Makefile
+    * Update jQuery library to current stable 1.4.4
+    * remove useless date from the topbar informations.
+      This was the only place that did PHP 5.3 complain about bad timezone
+      configuration (a non-PPA related warning). As it was a totaly
+      useless information, we decide to remove it.
+ - Version 5.0
+  - Released: 29th November 2010
+  - Features
+    * Support for PostgreSQL 8.4 and 9.0
+    * Support for database level collation for 8.4+
+    * Support for schema level export
+    * Add ability to alter schema ownership
+    * Clean up domain support and improve interface
+    * Add support for commenting on functions
+    * Allow user to rename role/users and set new passwords at the same time
+    * Greatly enhanced Full-Text-Search capabilities (ioguix, Loomis_K)
+    * Overhauled Selenium Test suite to support multiple database versions
+    * Optimized application graphics (Limo Driver)
+    * Support for Column Level Privileges
+    * Allow users to specify a template database at database creation time
+    * Support killing processes
+    * Add ability to create indexes concurrently
+    * Much better support of autovacuum configuration
+    * Add an admin page for table level
+    * Refactored autocompletion:
+      * fix support for cross-schema objects
+      * support multi-field FK
+      * support for pagination of values in the auto-complete list
+    * Allow user to logicaly group their server under custom named
+      node in the browser tree
+    * New themes (Cappuccino and Gotar) and a theme switcher on the
+      introduction page
+    * Auto refresh Locks page
+    * Auto refresh Processes page
+    * Link in the bottom of the page to go to top of page
+    * Browsing on Foreign Keys (When browsing a table, clicking on a
+      FK value, jump to the PK row)
+  - Bugs
+    * Fix problems with query tracking on overly long queries
+    * Ensure pg_dump paths are valid
+    * Fix multiple bugs about quoting and escaping database objects
+      names with special chars
+    * Fix multiple bugs in the browser tree
+    * Fix multiple bugs on the SQL and script file import form
+    * One security fix about code injection
+    * Don't allow inserting on a table without fields
+    * Some fix about commenting databases
+    * removed deprecated functions from PHP 5.3
+    * Lot of code cleanup
+    * Many other small minor bugs found on our way
+    * Fix the operator property page
+  - Translations
+    * Czech (Marek Cernocky)
+    * Greek (Adamantios Diamantidis)
+    * Brazillian Portuguese (Fernando Wendt)
+    * Galician (Adrián Chaves Fernández)
+  - Incompatabilities
+    * No longer support PHP < 5.0
+    * No longer support Postgres < 7.4
+- some spec cleanup
+  o fix description
+
+-------------------------------------------------------------------
+Fri Feb 18 23:51:19 UTC 2011 - chris@computersalat.de
+
+- update to 4.2.3
+  * Fix bug where space as first character in a bytea column was
+    removed by html renderer
+  * Check if the given pg_dumpall / pg_dump paths are correct before
+    using them
+  * Fix some transalation files that had bad UTF-8 declaration, rising
+    a warning
+  * Fix bug with tables that contain quote in their name
+  * support PHP 5.3
+- Version 4.2.2
+  * Fix bug where long SQL queries get truncated
+  * Fix createFunction method on PostgreSQL < 7.3
+  * Fix bug with alter schema in PostgreSQL < 7.4
+  * Remove alter domain for PostgreSQL < 7.4
+  * Fix local file inclusion vulnerability:
+    http://www.securityfocus.com/bid/32670/
+    Unset language variable before determine file includes
+- Version 4.2.1
+  * Fix table icon/link disapearing when navigating between pages
+    during column browse (ioguix)
+  * Fix import/export links from tree menu (Denis Golovtsov, ioguix)
+  * Fix missing language string for shared credential logout
+  * Add missing text search functions/operators (Loomis K, xzilla)
+  * Update FAQ info for postgres win32 releases
+  * Fix database list error for users without connect privileges on
+    all databases (Thomi Dammann, xzilla)
+- add/remove patches
+  * remove obsolete CVE-2008-5587 patch
+  * add config.inc patch
+- add http config
+- add some macros
+- fix deps
+- fix descr
+- remove changelog from spec
+
+-------------------------------------------------------------------
+Tue Feb  3 14:56:06 CET 2009 - max@suse.de
+
+- Added phpPgAdmin-CVE-2008-5587.patch to fix a directory
+  traversal vulnerability (bnc#462762).
+
+-------------------------------------------------------------------
+Tue Apr  8 14:55:15 CEST 2008 - tpatzig@suse.de
+
+- update to Version 4.2
+	* Add Analyze to Table Level Actions (ioguix)
+	* Add support for multiple actions on main pages (ioguix, Robert Treat)
+	* Added favicon for Mozilla and a backwards compatible version for IE.
+	* Allow browsers to save different usernames and passwords for different servers.
+	* Pagination selection available for reports
+	* You can configure reports db, schema and table names
+	* Add support for creating a table using an exsting one (ioguix)
+	* Auto-expand a node in the tree browser if there are no other nodes (Tomasz Pala)
+	* Add column about fields constraints type + links in table properties page (ioguix)
+	* Support for built-in Full Text Search (Ivan Zolotukhin)  
+	* Addd alter name, owner & comment on views (ioguix)
+	* Add column about called procedure + links to their definition in the triggers
+	  properties page (ioguix)
+	* Add Support for Enum type creation (ioguix,xzilla)
+	* Add alter name, owner, comment and properties for sequences (ioguix)
+	* Add function costing options (xzilla)
+	* Add alter owner & schema on function (xzilla)
+	* Add a popup window for the session requests history (karl, ioguix)
+	* Add alter table, view, sequence schema (ioguix)
+
+	* several bugfixes
+
+-------------------------------------------------------------------
+Sat Aug  4 13:14:12 CEST 2007 - tpatzig@suse.de
+
+- update to Version 4.1.3
+	* Send encrypted passwords over the wire wherever possible.
+	* Alter sequence, nextval and setval (Guillaume)
+	* Autovacuum configuration support (Robert Treat)
+	* Basic ROLE support (Chris Kings-Lynne, Javier Carlos)
+	* Add support for SSL connections (Eric Kinolik)
+	* Display Prepared Transactions (Javier Carlos)
+	* Add automatic lookup of foreign key values in insert/update fields (John Jawed)
+	* several bugfixes
+
+-------------------------------------------------------------------
+Wed Oct 18 17:09:27 CEST 2006 - tpatzig@suse.de
+
+- initial build of phpPgAdmin Version 4.0.1
+

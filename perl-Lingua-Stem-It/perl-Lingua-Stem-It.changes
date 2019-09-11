@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed Dec  3 09:49:31 UTC 2014 - coolo@suse.com
+
+- redo packaging
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:39 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Jul 15 10:12:11 UTC 2010 - chris@computersalat.de
+
+- initial package 0.02
+  * created by cpanspec 1.78
+

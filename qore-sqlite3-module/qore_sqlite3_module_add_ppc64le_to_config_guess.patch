@@ -1,0 +1,25 @@
+From: Michel Normand <normand@linux.vnet.ibm.com>
+Subject: qore sqlite3 module add ppc64le to config guess
+Date: Mon, 31 Aug 2015 05:50:04 +0200
+
+qore sqlite3 module add ppc64le to config guess
+
+Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
+---
+ config.guess |    3 +++
+ 1 file changed, 3 insertions(+)
+
+Index: qore-sqlite3-module-1.0.1/config.guess
+===================================================================
+--- qore-sqlite3-module-1.0.1.orig/config.guess
++++ qore-sqlite3-module-1.0.1/config.guess
+@@ -952,6 +952,9 @@ EOF
+     ppc64:Linux:*:*)
+ 	echo powerpc64-unknown-linux-gnu
+ 	exit ;;
++    ppc64le:Linux:*:*)
++	echo powerpc64le-unknown-linux-gnu
++	exit ;;
+     ppc:Linux:*:*)
+ 	echo powerpc-unknown-linux-gnu
+ 	exit ;;

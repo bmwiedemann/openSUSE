@@ -1,0 +1,423 @@
+-------------------------------------------------------------------
+Thu Aug  8 09:06:06 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.3.3
+  * Removed workaround for garcon that did not always fix crash.
+  * Translation updates
+
+-------------------------------------------------------------------
+Fri Jul 12 16:06:08 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro 
+- Cleaned up spec file
+- Added conditional to prevent build failure with cmake and Leap 15.0
+
+-------------------------------------------------------------------
+Tue Mar 26 10:05:25 UTC 2019 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- update to 2.3.2
+  * Fix editing menu items containting a single quote. (bxo#15091)
+  * Fix displaying empty tooltips. (bxo#15137)
+  * Translation updates: Dutch, Galician, Spanish, Swedish, Ukrainian.
+
+-------------------------------------------------------------------
+Sun Jan 20 09:00:42 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- update to 2.3.1
+  * Fix crash when reload is required.
+  * Translation updates
+
+- drop obsolete macros
+
+-------------------------------------------------------------------
+Mon Oct 15 20:28:58 UTC 2018 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to 2.3.0:
+  * Fix sidebar wider than iconless categories.
+  * Add buttons for individual logout commands. (bxo#14639)
+  * Add option to stay visible when focus is lost. (bxo#12240)
+  * Always allow positioning commands next to search.
+  * Improve preferences spacing. (bxo#14683)
+  * Translation updates
+
+-------------------------------------------------------------------
+Mon Aug  6 06:32:46 UTC 2018 - seife+obs@b1-systems.com
+
+- update to 2.2.1:
+  * Fix category button staying active when dragged. (bxo#14419)
+  * Fix regression of non-square panel image support. (bxo#14506)
+  * Fix redundant hiding of menu.
+  * Fix sidebar buttons retaining incorrect width.
+  * Fix commands not following sidebar.
+  * Translation updates
+
+-------------------------------------------------------------------
+Fri May 25 13:50:43 UTC 2018 - seife+obs@b1-systems.com
+
+- update to 2.2.0:
+  * Fix panel icon size not following theme.
+  * Disable opacity option when non-composited.
+  * Rename option for including favorites in recent.
+  * Load applications in a thread. (bxo#12903)
+  * Slide out search results.
+  * Require GTK+ version 3.22.
+  * Translation updates
+- packaging: remove icon_theme_cache_{post,postun} macros, package
+  does not build for pre-Leap-15 anyway and today they are no-ops.
+
+-------------------------------------------------------------------
+Thu Apr 26 18:39:42 UTC 2018 - seife+obs@b1-systems.com
+
+- update to 2.1.7:
+  * Fix memory leak when recreating window.
+  * Use HTTPS for plugin website.
+  * Fix losing search focus. (bxo#14209)
+  * Fix crash when last search action is deleted.
+  * Fix menu shown in alt-tab.
+  * Translation updates
+
+-------------------------------------------------------------------
+Sat Dec 30 13:43:24 UTC 2017 - seife+obs@b1-systems.com
+
+- update to 2.1.5:
+  - Fix class/struct typo. (bxo#14001)
+  - Translation updates
+
+-------------------------------------------------------------------
+Fri Nov 17 21:19:22 UTC 2017 - seife+obs@b1-systems.com
+
+- update to 2.1.4:
+  - Fix excessive padding on panel button. (bxo#13611)
+  - Fix blurry category buttons with high DPI.
+  - Fix blurry profile picture with high DPI.
+  - Fix panel icon too big with high DPI. (bxo#13893)
+  - Translation updates
+
+-------------------------------------------------------------------
+Sat Aug 19 09:57:32 UTC 2017 - seife+obs@b1-systems.com
+
+- update to 2.1.3:
+  - Fixed desktop action incorrectly parsing escaped k
+  - Translation updates
+
+-------------------------------------------------------------------
+Wed Apr 19 19:02:49 UTC 2017 - seife+obs@b1-systems.com
+
+- update to 2.1.2:
+  - Fixed category names checkbox incorrectly enabled when opening
+    dialog
+  - Fixed category names turning off at login. (bug #13422)
+  - Fixed memory leak when editing launcher (2.1.1)
+  - Translation updates
+
+-------------------------------------------------------------------
+Mon Feb 27 21:44:30 UTC 2017 - seife+obs@b1-systems.com
+
+- update to 2.1.0:
+  - Add editing launchers from context menu (bxo#13290)
+  - Add support for desktop actions (bxo#11787)
+  - Add option to hide category names (bxo#12895)
+  - Load applications immediately
+  - Translation updates
+
+-------------------------------------------------------------------
+Sun Dec 25 18:35:31 UTC 2016 - seife+obs@b1-systems.com
+
+- update to 2.0.3:
+  - translation updates
+
+-------------------------------------------------------------------
+Sat Nov 26 16:54:07 UTC 2016 - seife+obs@b1-systems.com
+
+- update to 2.0.2:
+  - port to GTK3
+
+-------------------------------------------------------------------
+Tue Oct 25 01:24:00 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 1.6.1.
+  * Translation updates: Asturian, Basque, Catalan (Valencian),
+    Chinese (China), Kazakh, Lithuanian, Polish, Russian, Turkish,
+    Ukrainian.
+
+-------------------------------------------------------------------
+Wed Aug 31 14:47:56 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 1.6.0.
+  * Add keyboard navigation for categories.
+  * Add tooltips for program descriptions.
+  * Add web search action.
+  * Hide recent items when maximum is set to zero.
+  * Prevent memory leak when changing element text.
+  * Search favorites and recent first.
+  * Switch to icon names from GtkStock.
+  * Translation updates: Bulgarian, Catalan, Chinese (Taiwan),
+    Czech, Dutch, German, French, Hebrew, Hungarian, Lithuanian,
+    Polish, Slovak, Slovenian, Serbian, Spanish.
+
+-------------------------------------------------------------------
+Sun Apr 17 09:17:41 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 1.5.3.
+  * Fix stuck button highlight.
+  * Fix losing categories.
+  * Fix warning about infinite recursion.
+  * Translation updates: Basque, Dutch, Hebrew, Icelandic.
+
+-------------------------------------------------------------------
+Fri Jan  1 21:16:01 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 1.5.2.
+  * Fix modifier keys resetting focus to search entry.
+  * Fix limited input length for search actions.
+  * Fix menu shrinking unnecessarily.
+  * Fix minimum window size.
+  * Translation updates: Chinese (China), Hungarian, Korean,
+    Lithuanian, Romanian.
+- Correct the source URL.
+- No more the ChangeLog file in the source (removed from %doc).
+
+-------------------------------------------------------------------
+Thu Oct  1 17:38:19 UTC 2015 - lazy.kent@opensuse.org
+
+- Update to 1.5.1.
+  * Fix window being draggable.
+  * Fix not searching descriptions.
+  * Translation updates: Asturian, Bulgarian, Chinese
+    (China), Chinese (Taiwan), Croatian, Czech, Danish, Dutch,
+    French, Finnish,German, Indonesian, Japanese, Kazakh,
+    Lithuanian, Malay, Nepali, Norwegian Bokmål, Persian, Polish,
+    Portuguese, Russian, Serbian, Slovak, Slovenian, Spanish,
+    Swedish, Turkish.
+
+-------------------------------------------------------------------
+Sat Feb 21 18:16:56 UTC 2015 - lazy.kent@opensuse.org
+
+- Update to 1.5.0.
+  * Fix search activation to allow input methods.
+  * Fix broken menu when closed by window manager.
+  * Fix unnecessary assignment to NULL.
+  * Fix possible null pointer dereference.
+  * Add option to set background opacity.
+  * Add command to edit profile.
+  * Add profile picture.
+  * Add customizable limit for recently used.
+  * Add support for non-square panel button icon.
+  * Add items of Xfce settings manager to allow searching.
+  * Expand subcategories when activated.
+  * Load default settings from XDG location.
+  * Make launchers executable when they are added to desktop.
+  * Rearrange options in configuration dialog.
+  * Refactor list page code.
+  * Rename option for including favorites in recently used.
+  * Rename option to use single panel row.
+  * Rename button to match default menu applet.
+  * Use a single instance of the garcon menu.
+  * Translation updates: Bulgarian, Catalan, Dutch, French, German,
+    Hebrew, Italian, Japanese, Lithuanian, Polish, Portuguese,
+    Slovak, Slovenian, Spanish, Swedish, Turkish, Chinese (Taiwan).
+
+-------------------------------------------------------------------
+Sat Feb 14 14:12:35 UTC 2015 - lazy.kent@opensuse.org
+
+- Update to 1.4.3.
+  * Fix hang at launch by removing load thread.
+  * Fix not saving sorted favorites.
+  * Translation updates: French, Hungarian, Russian, Slovak.
+- Use %cmake and %cmake_install macros.
+
+-------------------------------------------------------------------
+Thu Jan  1 07:54:09 UTC 2015 - lazy.kent@opensuse.org
+
+- Update to 1.4.2.
+  * Fix panel button border not shown when pressed.
+  * Fix commands were editable when disabled.
+  * Fix incorrectly disabled checkbox for commands position.
+  * Fix commands next to search when not next to panel button.
+  * Translation updates: French, Hebrew, Serbian.
+
+-------------------------------------------------------------------
+Mon Dec  8 17:23:01 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 1.4.1.
+  * Fix crash with invalid utf8 encoding.
+  * Fix not searching descriptions unless shown.
+  * Fix not using secure connection to Wikipedia.
+  * Translation updates: Asturian, Basque, Dutch, Finnish, French,
+    Greek, Indonesian, Kazakh, Lithuanian, Nepali, Persian, Polish,
+    Romanian, Spanish, Swedish, Turkish, Ukrainian, Uzbek.
+
+-------------------------------------------------------------------
+Mon Jun 30 22:21:38 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 1.4.0.
+  * Add option to switch position of categories and launchers.
+  * Add waiting for grabs.
+  * Allows modifier as shortcut.
+  * Add padding to username.
+  * Add single panel row option.
+  * Add about entry to context menu.
+  * Load applications immediately.
+  * Recognize keypad enter as return for searching.
+  * Set menu window type hint to DIALOG.
+  * Translation updates: Bulgarian, Catalan, Chinese (Taiwan),
+    Czech, Dutch, French, German, Hebrew, Italian, Japanese, Malay,
+    Norwegian Bokmål, Polish, Portuguese, Russian, Slovak, Spanish,
+    Swedish.
+
+-------------------------------------------------------------------
+Tue Mar 18 17:33:56 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 1.3.2.
+  * Fix crash when rearranging favorites.
+  * Fix menu flashing when panel button is pressed rapidly.
+  * Fix unable to click command buttons when focus follows mouse.
+  * Fix panel button icon alignment in deskbar mode.
+  * Translation updates: Arabic, Asturian, Chinese (Taiwan),
+    Croatian, Czech, Danish, Finnish, Latvian, Nepali, Norwegian
+    Bokmål, Portuguese (Brazil), Slovenian, Vietnamese.
+- Drop
+  xfce4-whiskermenu-plugin-1.3.1-fix_crash_while_dragging.patch
+  (fixed upstream).
+
+-------------------------------------------------------------------
+Sun Mar 16 15:25:14 UTC 2014 - lazy.kent@opensuse.org
+
+- Add
+  xfce4-whiskermenu-plugin-1.3.1-fix_crash_while_dragging.patch:
+  fixed crash when accessing null launcher in assert
+  (gh#gottcode/xfce4-whiskermenu-plugin/issues/#77).
+
+-------------------------------------------------------------------
+Mon Jan  6 22:15:52 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 1.3.1.
+  * Fix crash when menu items are changed.
+  * Fixes to the button layout.
+  * Translation updates: German, French, Nepali, Polish, Spanish,
+    Uzbek, Vietnamese.
+
+-------------------------------------------------------------------
+Mon Dec 30 07:53:17 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.3.0.
+  * Fix menu artifacts when switching categories.
+  * Fix undefined behavior in slots.
+  * Add command to launch menu editor.
+  * Add command to switch users.
+  * Add hiding commands.
+  * Add browsing for commands.
+  * Add hiding category and launcher icons.
+  * Add loading default settings from a file.
+  * Add search actions.
+  * Add running arbitrary programs in PATH.
+  * Add dragging launchers to panel or desktop.
+  * Add support for custom menu files.
+  * Defer loading applications until window is shown.
+  * Merge configuration dialog tabs.
+  * Rearrange source files to match standard layout of Xfce
+    plugins.
+  * Reduce unnecessary reloading of applications.
+  * Rewrite search model code.
+  * Use a single row in Xfce 4.10 panel.
+  * Use empty file for saving settings.
+  * Translation updates: Asturian, Brazilian Portuguese, Bulgarian,
+    Catalan, Chinese (Taiwan), Dutch, German, Hebrew, Hungarian,
+    Italian, Japanese, Kazakh, Nepali, Norwegian Bokmål, Persian,
+    Polish, Portuguese, Romanian, Russian, Serbian,
+    Serbian (Latin), Slovak, Spanish, Turkish, Ukrainian.
+
+-------------------------------------------------------------------
+Wed Dec  4 10:06:03 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.2.2.
+  * Fix incorrect fetching of panel orientation in Xfce 4.10.
+  * Fix menu item icons colored by selection background.
+  * Fix unable to set custom commands with parameters.
+  * Translation updates: Arabic, German, Spanish, Ukrainian.
+
+-------------------------------------------------------------------
+Wed Nov 20 11:26:01 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.2.1.
+  * Fix incorrect comparison for checking icon sizes.
+  * Add window title to allow identifying menu window.
+  * Add tips to README for popup script and compiz workaround.
+  * Improve build system files.
+  * Translation updates: Asturian, Catalan, Chinese (Taiwan),
+    Czech, German, Estonian, French, Hungarian, Indonesian,
+    Persian, Russian, Spanish, Turkish.
+
+-------------------------------------------------------------------
+Wed Oct 30 17:11:07 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.2.0.
+  * Fix popup script to show correct version information.
+  * Fix memory leak when reloading applications.
+  * Fix favorites and recent deleted when menu failed to load.
+  * Add option to load menu hierarchy.
+  * Add option to not include favorites in recently used.
+  * Add options to set custom commands.
+  * Add option to show recently used by default.
+  * Add option to position search entry next to panel button.
+  * Add option to position command buttons next to search entry.
+  * Add manual page for popup script.
+  * Use tabs for configuration dialog layout.
+  * Translation updates: Brazilian Portuguese, Bulgarian, Catalan,
+    Croatian, Danish, Dutch, Finnish, French, German, Greek,
+    Hebrew, Italian, Japanese, Norwegian Bokmål, Polish,
+    Portuguese, Romanian, Russian, Serbian (Latin), Slovak,
+    Spanish.
+
+-------------------------------------------------------------------
+Fri Aug  9 06:38:01 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.1.1.
+  * Add name to main widget to allow styling.
+  * Build system improvements.
+  * Translation updates: Arabic, Catalan, French, Indonesian,
+    Japanese, Russian, Spanish.
+- Drop xfce4-whiskermenu-plugin-1.1.0-russian.patch (fixed
+  upstream).
+
+-------------------------------------------------------------------
+Wed Jul 31 18:12:10 UTC 2013 - lazy.kent@opensuse.org
+
+- Add xfce4-whiskermenu-plugin-1.1.0-russian.patch: update Russian
+  translation (submitted to Transifex).
+
+-------------------------------------------------------------------
+Thu Jul 25 05:34:39 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.1.0.
+  * Fix hang at launch when there are too many recent items.
+  * Fix focus selection not properly reset when switching
+    categories.
+  * Fix menu not hiding when configuration dialog is clicked.
+  * Fix context menu disabling detection of clicks outside menu.
+  * Fix filter applied when button is deselected.
+  * Fix not showing items with duplicate text.
+  * Add external command to popup menu.
+  * Add option to show label with or instead of icon.
+  * Add option to switch categories by hovering.
+  * Add choosing icon sizes of launchers and categories.
+  * Add scrolling to sidebar.
+  * Add menu action to clear recently used.
+  * Add menu actions to sort favorites alphabetically.
+  * Add icons to context menu.
+  * New search algorithm.
+  * Refactor category code.
+  * Show launcher name in context menu.
+  * Build system improvements.
+  * Reduce C++ version.
+  * Translation updates: Brazilian Portuguese, Bulgarian, Danish,
+    Dutch, German, Greek, Hebrew, Kazakh, Hungarian, Indonesian,
+    Italian, Norwegian Bokmål, Polish, Portuguese, Romanian,
+    Slovak, Swedish, Turkish, Vietnamese.
+
+-------------------------------------------------------------------
+Mon Jul 15 13:22:19 UTC 2013 - lazy.kent@opensuse.org
+
+- Initial package created - 1.0.3.
+

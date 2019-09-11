@@ -1,0 +1,262 @@
+--- jna-4.5.1/build.xml	2017-12-27 20:27:16.000000000 +0100
++++ jna-4.5.1/build.xml	2018-06-12 08:12:51.563582824 +0200
+@@ -374,6 +374,7 @@
+            source="${compatibility}"
+            target="${compatibility}"
+            destdir="${classes}"
++           nativeheaderdir="${build.native}"
+            includeantruntime="false"
+            deprecation="on" 
+            debug="${debug}"
+@@ -664,94 +665,6 @@
+     </jar>
+   </target>
+ 
+-  <target name="javah" depends="compile" unless="-native">
+-    <javah classpath="${classes}" destdir="${build.native}" force="yes">
+-      <class name="com.sun.jna.Function"/>
+-      <class name="com.sun.jna.Native"/>
+-      <class name="com.sun.jna.win32.DLLCallback"/>
+-    </javah>
+-    <condition property="grep" value="/usr/sfw/bin/ggrep">
+-      <os name="SunOS"/>
+-    </condition>
+-    <condition property="grep" value="ggrep">
+-      <os name="OpenBSD"/>
+-    </condition>
+-    <property name="grep" value="grep"/>
+-    <condition property="grep.required" value="false" else="true">
+-      <os name="AIX"/>
+-    </condition>
+-    <!-- args are based on GNU grep, other versions may differ -->
+-    <apply dir="${build.native}" executable="${grep}" parallel="true"
+-           failonerror="${grep.required}" relative="true" output="${md5.file}">
+-      <arg value="-A"/>
+-      <arg value="1"/>
+-      <arg value="JNIEXPORT"/>
+-      <fileset dir="${build.native}" includes="*.h"/>
+-    </apply>
+-    <!-- Clean up gcj javah output to match that of Sun's javah -->
+-    <fixcrlf file="${md5.file}" eol="unix"/>
+-    <replaceregexp match="^((.*\.h):JNIEXPORT[^(]+)( +\(.*)"
+-                   replace="\1&#xa;\2- \3&#xa;--"
+-		   byline="true"
+-                   file="${md5.file}"/>
+-    <replaceregexp match="(JNIEnv *\*) *env"
+-                   replace="\1"
+-		   byline="true"
+-                   file="${md5.file}"/>
+-    <replaceregexp match="&#xa;--&#xa;.*\.h-$"
+-                   replace=""
+-		   flags="m"
+-                   file="${md5.file}"/>
+-    <checksum property="md5" file="${md5.file}" />
+-    <condition property="jni.valid" value="true">
+-      <or>
+-        <os name="AIX"/>
+-        <equals arg1="${jni.md5}" arg2="${md5}" trim="true"/>
+-        <equals arg1="${jni.md5}" arg2=""/>
+-      </or>
+-    </condition>
+-  </target>
+-
+-  <!-- Invalidate native libraries when native API changes -->
+-  <target name="-native-api-check" depends="javah" unless="jni.valid">
+-    <echo>Invalidating native code, new checksum is ${md5}</echo>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/darwin.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/win32-x86.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/win32-x86-64.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/w32ce-arm.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/linux-x86.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/linux-x86-64.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/linux-arm.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/linux-armel.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/linux-aarch64.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/linux-ia64.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/linux-ppc.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/linux-ppc64.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/linux-ppc64le.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/linux-sparcv9.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/linux-mips64el.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/linux-s390x.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/freebsd-x86.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/freebsd-x86-64.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/openbsd-x86.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/openbsd-x86-64.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/sunos-x86.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/sunos-x86-64.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/sunos-sparc.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/sunos-sparcv9.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/android-arm.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/android-armv7.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/android-aarch64.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/android-x86.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/android-x86-64.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/android-mips.jar" overwrite="true"/>
+-    <copy file="${lib.native}/out-of-date.jar" tofile="${lib.native}/android-mips64.jar" overwrite="true"/>
+-    <delete failOnError="false" includeEmptyDirs="true">
+-      <fileset dir="${build.native}" includes="*.o,*jnidispatch*"/>
+-    </delete>
+-    <fail>API for native code has changed, or javah output is inconsistent.  Re-run this build after checking ${md5.file} or updating jni.version and jni.md5 in build.xml</fail>
+-  </target>
+-
+   <target name=":rsrc">
+     <condition property="-rsrc">
+       <and>
+@@ -790,7 +703,7 @@
+                    file="${rsrc}" byline="true"/>
+   </target>
+ 
+-  <target name="native" depends="-enable-native,-setup,javah,-native-api-check,rsrc" unless="-native"
++  <target name="native" depends="-enable-native,-setup,compile,rsrc" unless="-native"
+           description="Build native libraries.  Use 'ant -DCC=xxx' to build using a compiler other than gcc">
+     <property name="comment" value="# auto-generated by ant"/>
+     <replaceregexp match="^JNA_JNI_VERSION=.*"
+@@ -931,7 +844,6 @@
+ 
+     <exec executable="${make}" dir="${native}" failonerror="true">
+       <arg value="JAVA_HOME=${jdk.home}"/>
+-      <arg value="JAVAH=${build.native}"/>
+       <arg value="DEBUG=${debug.native}"/>
+       <arg value="CFLAGS_EXTRA=${cflags_extra.native}"/>
+       <arg value="DYNAMIC_LIBFFI=${dynlink.native}"/>
+@@ -1214,7 +1126,6 @@
+       <doctitle>JNA API Documentation</doctitle>
+       <header>${header}</header>
+       <bottom>${footer}</bottom>
+-      <link href="http://download.oracle.com/javase/${compatibility}/docs/api/"/>
+ 
+       <packageset dir="${src}" defaultexcludes="yes">
+         <patternset>
+--- jna-4.5.1/src/com/sun/jna/Function.java	2017-12-27 20:27:16.000000000 +0100
++++ jna-4.5.1/src/com/sun/jna/Function.java	2018-06-12 08:09:21.662479140 +0200
+@@ -21,6 +21,7 @@
+  */
+ package com.sun.jna;
+ 
++import java.lang.annotation.Native;
+ import java.lang.reflect.Method;
+ import java.util.Collections;
+ import java.util.Map;
+@@ -60,18 +61,18 @@
+     }
+ 
+     /** Maximum number of arguments supported by a JNA function call. */
+-    public static final int MAX_NARGS = 256;
++    @Native public static final int MAX_NARGS = 256;
+ 
+     /** Standard C calling convention. */
+-    public static final int C_CONVENTION = 0;
++    @Native public static final int C_CONVENTION = 0;
+     /** First alternate convention (currently used only for w32 stdcall). */
+-    public static final int ALT_CONVENTION = 0x3F;
++    @Native public static final int ALT_CONVENTION = 0x3F;
+ 
+-    private static final int MASK_CC = 0x3F;
++    @Native private static final int MASK_CC = 0x3F;
+     /** Whether to throw an exception if last error is non-zero after call. */
+-    public static final int THROW_LAST_ERROR = 0x40;
++    @Native public static final int THROW_LAST_ERROR = 0x40;
+     /** Mask for number of fixed args (1-3) for varargs calls. */
+-    public static final int USE_VARARGS = 0x180;
++    @Native public static final int USE_VARARGS = 0x180;
+ 
+     static final Integer INTEGER_TRUE = Integer.valueOf(-1);
+     static final Integer INTEGER_FALSE = Integer.valueOf(0);
+@@ -236,7 +237,7 @@
+         this.functionName = functionName;
+         this.callFlags = callFlags;
+         this.options = library.options;
+-        this.encoding = encoding != null ? encoding : Native.getDefaultStringEncoding();
++        this.encoding = encoding != null ? encoding : com.sun.jna.Native.getDefaultStringEncoding();
+         try {
+             this.peer = library.getSymbolAddress(functionName);
+         } catch(UnsatisfiedLinkError e) {
+@@ -272,7 +273,7 @@
+         this.peer = functionAddress.peer;
+         this.options = Collections.EMPTY_MAP;
+         this.encoding = encoding != null
+-            ? encoding : Native.getDefaultStringEncoding();
++            ? encoding : com.sun.jna.Native.getDefaultStringEncoding();
+     }
+ 
+     private void checkCallingConvention(int convention)
+@@ -405,24 +406,24 @@
+         Object result = null;
+ 	int callFlags = this.callFlags | ((fixedArgs & 0x3) << 7);
+         if (returnType == null || returnType==void.class || returnType==Void.class) {
+-            Native.invokeVoid(this, this.peer, callFlags, args);
++            com.sun.jna.Native.invokeVoid(this, this.peer, callFlags, args);
+             result = null;
+         } else if (returnType==boolean.class || returnType==Boolean.class) {
+-            result = valueOf(Native.invokeInt(this, this.peer, callFlags, args) != 0);
++            result = valueOf(com.sun.jna.Native.invokeInt(this, this.peer, callFlags, args) != 0);
+         } else if (returnType==byte.class || returnType==Byte.class) {
+-            result = Byte.valueOf((byte)Native.invokeInt(this, this.peer, callFlags, args));
++            result = Byte.valueOf((byte)com.sun.jna.Native.invokeInt(this, this.peer, callFlags, args));
+         } else if (returnType==short.class || returnType==Short.class) {
+-            result = Short.valueOf((short)Native.invokeInt(this, this.peer, callFlags, args));
++            result = Short.valueOf((short)com.sun.jna.Native.invokeInt(this, this.peer, callFlags, args));
+         } else if (returnType==char.class || returnType==Character.class) {
+-            result = Character.valueOf((char)Native.invokeInt(this, this.peer, callFlags, args));
++            result = Character.valueOf((char)com.sun.jna.Native.invokeInt(this, this.peer, callFlags, args));
+         } else if (returnType==int.class || returnType==Integer.class) {
+-            result = Integer.valueOf(Native.invokeInt(this, this.peer, callFlags, args));
++            result = Integer.valueOf(com.sun.jna.Native.invokeInt(this, this.peer, callFlags, args));
+         } else if (returnType==long.class || returnType==Long.class) {
+-            result = Long.valueOf(Native.invokeLong(this, this.peer, callFlags, args));
++            result = Long.valueOf(com.sun.jna.Native.invokeLong(this, this.peer, callFlags, args));
+         } else if (returnType==float.class || returnType==Float.class) {
+-            result = Float.valueOf(Native.invokeFloat(this, this.peer, callFlags, args));
++            result = Float.valueOf(com.sun.jna.Native.invokeFloat(this, this.peer, callFlags, args));
+         } else if (returnType==double.class || returnType==Double.class) {
+-            result = Double.valueOf(Native.invokeDouble(this, this.peer, callFlags, args));
++            result = Double.valueOf(com.sun.jna.Native.invokeDouble(this, this.peer, callFlags, args));
+         } else if (returnType==String.class) {
+             result = invokeString(callFlags, args, false);
+         } else if (returnType==WString.class) {
+@@ -435,7 +436,7 @@
+         } else if (Structure.class.isAssignableFrom(returnType)) {
+             if (Structure.ByValue.class.isAssignableFrom(returnType)) {
+                 Structure s =
+-                    Native.invokeStructure(this, this.peer, callFlags, args,
++                    com.sun.jna.Native.invokeStructure(this, this.peer, callFlags, args,
+                                            Structure.newInstance(returnType));
+                 s.autoRead();
+                 result = s;
+@@ -473,7 +474,7 @@
+                 result = p.getPointerArray(0);
+             }
+         } else if (allowObjects) {
+-            result = Native.invokeObject(this, this.peer, callFlags, args);
++            result = com.sun.jna.Native.invokeObject(this, this.peer, callFlags, args);
+             if (result != null
+                 && !returnType.isAssignableFrom(result.getClass())) {
+                 throw new ClassCastException("Return type " + returnType
+@@ -487,7 +488,7 @@
+     }
+ 
+     private Pointer invokePointer(int callFlags, Object[] args) {
+-        long ptr = Native.invokePointer(this, this.peer, callFlags, args);
++        long ptr = com.sun.jna.Native.invokePointer(this, this.peer, callFlags, args);
+         return ptr == 0 ? null : new Pointer(ptr);
+     }
+ 
+@@ -615,7 +616,7 @@
+                                                + argClass.getComponentType());
+         } else if (allowObjects) {
+             return arg;
+-        } else if (!Native.isSupportedNativeType(arg.getClass())) {
++        } else if (!com.sun.jna.Native.isSupportedNativeType(arg.getClass())) {
+             throw new IllegalArgumentException("Unsupported argument type "
+                                                + arg.getClass().getName()
+                                                + " at parameter " + index
+@@ -801,7 +802,7 @@
+     private static class NativeMappedArray extends Memory implements PostCallRead {
+         private final NativeMapped[] original;
+         public NativeMappedArray(NativeMapped[] arg) {
+-            super(Native.getNativeSize(arg.getClass(), arg));
++            super(com.sun.jna.Native.getNativeSize(arg.getClass(), arg));
+             this.original = arg;
+             setValue(0, original, original.getClass());
+         }

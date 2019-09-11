@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 Edgar Muniz Berlinck <edgar.vv@gmail.com> -->
+<!-- Submitted upstream http://mantis.freepascal.org/view.php?id=31364 -->
+<application>
+	<id type="desktop">lazarus.desktop</id>
+	<metadata_license>CC0-1.0</metadata_license>
+	<summary>
+		Create cross-plataform applications using Free Pascal
+	</summary>
+	<description>
+		<p>
+			Lazarus is a free cross-platform IDE for Free Pascal. The environment is similar to Delphi 7	
+			and some of the components found in the LCL - Lazarus Component Library.
+		</p>
+		<p>
+			Lazarus is compatible with some Delphi code, so if you have a standard delphi application
+			using standard components (or other with Lazarus compatible version) you can compile it 
+			with no problems.
+		</p>
+	</description>
+	<url type="homepage">http://www.lazarus.freepascal.org/</url>
+	<screenshots>
+		<screenshot type="default">http://wiki.lazarus.freepascal.org/images/b/b2/Fedora19.png</screenshot>
+		<screenshot>http://wiki.lazarus.freepascal.org/images/0/0e/Error_Build.jpg</screenshot>
+	</screenshots>
+</application>

@@ -1,0 +1,279 @@
+-------------------------------------------------------------------
+Sun Apr 14 11:01:24 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Fix wording in the package summary
+- Update to version 1.18.2
+  + mbim-proxy:
+    - Increased empty lifetime to 300s.
+-------------------------------------------------------------------
+Tue Jan  8 20:40:43 UTC 2019 - mardnh@gmx.de
+
+- Update to version 1.18.0
+  + New Microsoft Basic Connect Extensions service, that includes
+    new commands to manage Protocol Configuration Operations (PCO)
+    as well as LTE attach status and settings.
+  + libmbim-glib:
+    - Added support to fully print all message contents, including
+      all fields, when traces are enabled.
+    - Added support for QMI indications over MBIM.
+    - Added additional cause codes to MbimNwError.
+    - Fixed signal emission in device, so that it's done before
+      completing transaction task.
+  + mbim-proxy: Fixed the management of subscribed events, so that
+    the lists are maintained per-device.
+  + mbimcli:
+    - New '--ms-query-pco' action.
+    - New '--ms-query-lte-attach-configuration' action.
+    - New '--ms-query-lte-attach-status' action.
+  + Several other minor improvements and fixes.
+
+-------------------------------------------------------------------
+Sat Aug 25 19:54:09 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.16.2:
+  + mbimcli:
+    - Fix SNR reporting in --atds-query-signal output.
+    - Longer timeout (60s) in --disconnect.
+    - Add "ip-type" property to --connect.
+  + libmbim-glib:
+    - Fix printing message in Intel Firmware Update service.
+    - Fix error reporting when unknown status.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:35:35 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jan 22 02:06:52 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 1.16.0:
+  + All the code base was ported to use the GTask based
+    asynchronous operations support instead of the deprecated
+    GSimpleAsyncResult.
+  + New support for AT&T Device Service and Intel Firmware Update
+    Service.
+  + libmbim-glib:
+    - Added:
+      . MBIM_STATUS_ERROR_CONTEXT_NOT_SUPPORTED to MbimStatusError.
+      . Support to detect already open MBIM channels on the Sierra
+        Wireless EM7345.
+    - Avoid using iconv() directly for the UTF-16BE conversions,
+      which makes it possible to use libmbim on systems with a stub
+      iconv() implementation.
+    - Prefer realpath() to canonicalize_file_name().
+    - Added MBIM_READY_INFO_FLAG_NONE to MbimReadyInfoFlag.
+  + mbimcli:
+    - New: --query-ip-packet-filters, --query-pin-list action,
+      --atds-query-signal, --atds-query-location and
+      --intel-modem-reboot actions.
+    - Add cancellability to the query-ip-configuration action.
+  + mbim-proxy: Avoid receiving signals from the parent process.
+- Add pkgconfig(gio-unix-2.0) BuildRequires: it was being pulled
+  by another pkgconfig module that live in glib2-devel package and
+  used already.
+
+-------------------------------------------------------------------
+Thu Nov  2 09:06:32 UTC 2017 - mpluskal@suse.com
+
+- Enable tests
+- Do not rely on env for python during build
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Sep  7 15:06:56 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.14.2:
+  + libmbim-glib:
+    - Added MBIM_READY_INFO_FLAG_NONE to MbimReadyInfoFlag.
+    - Fixed G_DEPRECATED_FOR annotations.
+  + mbim-proxy:
+    - Fixed segfault when device goes away while being opened.
+    - Avoid receiving signals from the parent process.
+  + mbimcli:
+    - Fix second ctrl+c handling.
+    - Add cancellability to the query-ip-configuration action.
+  + mbim-network: Fix bashisms.
+  + Several other minor improvements and fixes.
+- Drop libmbim-plug-mem-leak.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Mar  1 17:53:28 UTC 2017 - zaitor@opensuse.org
+
+- Add libmbim-plug-mem-leak.patch: libmbim-glib: device: Plug
+  memory leak in open timeout, patch from upstream stable git.
+
+-------------------------------------------------------------------
+Mon Jul 11 20:03:00 UTC 2016 - bruno@ioda-net.ch
+
+- Update to version 1.14.0:
+  + New support for the 'QMI over MBIM' service, so that clients
+    can use libqmi to build messages and libmbim to transport them.
+  + The GUDev library, which we use to read the max message size
+    from the USB descriptor, is now optional. When configuring, it
+    will be used by default only if it's found. It can also be
+    explicitly disabled using the new configure  switch
+    '--without-udev' or explicitly enabled using '--with-udev'.
+    If GUDev isn't used, libmbim-glib will rely on sysfs directly.
+  + libmbim-glib updates: Added support for building messages of
+    custom services.
+  + mbim-network updates:
+    - Added support for loading profiles from different paths using
+      the new '--profile' option. This makes it possible to use
+      mbim-network with multiple devices running in the same
+      system.
+    - Added support to allow specifying APN user (APN_USER),
+      password (APN_PASS) and authentication type (APN_AUTH) in the
+      profile.
+    - Added support to allow using the mbim-proxy setup by
+      configuring it in the profile file (PROXY=yes).
+  + Several other minor improvements and fixes.
+  + The following features which were backported to 1.12.x releases
+    are also present in libmbim 1.14.0:
+    - mbimcli updates:
+      . Updated '--connect' arguments to allow specifying
+        "key=value" pairs. The old legacy
+        "[(APN),(PAP|CHAP|MSCHAPV2),(Username),(Password)]" format
+        is kept as valid for backwards compatibility, although it
+        should be assumed deprecated.
+      . Longer timeouts for connect/register operations.
+      . Report IP configuration when connected.
+      . Allow specifying session ids.
+  + libmbim-glib updates: Probing retry interval increased to 5s.
+ - Split out mbimcli-bash-completion package, requiring and
+   supplementing bash-completion.
+- Pass --with-udev to configure: new config parameter, but keeping
+  the old behavior (it was non-optional before).
+
+-------------------------------------------------------------------
+Fri Apr 15 02:09:53 CEST 2016 - hpj@suse.com
+
+- Update to GNOME 3.20 -- Fate#318572.
+
+-------------------------------------------------------------------
+Fri Mar 18 15:03:56 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.12.4:
+  + Updated '--connect' arguments to allow specifying "key=value"
+    pairs. The old legacy "[(APN), (PAP|CHAP|MSCHAPV2), (Username),
+    (Password)]" format is kept as valid for backwards
+    compatibility, although it should be assumed deprecated.
+  + mbimcli:
+    - Longer timeouts for connect/register operations.
+    - Report IP configuration when connected.
+    - Allow specifying session ids.
+  + libmbim-glib: probing retry interval increased to 5s.
+  + Some other minor fixes.
+
+-------------------------------------------------------------------
+Sun Feb  1 09:10:57 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.12.2:
+  + Fix assertion triggered by a bug in the removal of unreleased
+    transactions.
+
+-------------------------------------------------------------------
+Wed Jan 28 15:46:04 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.12.0:
+  + New `--enable-mbim-username' option during configure, which
+    allows specifying which will be the user owning the
+    /dev/cdc-wdm character devices of all MBIM modems (udev rules
+    are installed to change file ownership). If this option is
+    used, the mbim-proxy will only allow connections from processes
+    running by the specified user or by the root user.
+  + Function error messages can now be returned by the MbimDevice
+    as responses to `Command', `Open' or `Close' messages. Users of
+    the library should not assume the type of message returned to
+    the previous actions.
+  + The MbimProxy will monitor for 'NotOpened' errors, and when one
+    detected it will directly close the internal MbimDevice. Any
+    subsequent request sent by clients to that specific device will
+    be aborted with a proxy-generated 'NotOpened' error. Clients
+    will need to explicitly reopen the ports in that case.
+  + The API now has a new mbim_message_response_get_result() method
+    which allows getting a GError from a message which may be of a
+    specific type (e.g. a `Command Done' message in response to a
+    `Command' request) or instead the generic `Function Error'
+    message type. Users of the library can use this new method to
+    avoid assuming the type of message returned.
+  + Other bugfixes and minor improvements:
+    - Attach timeout and idle events to the thread-default context.
+    - Fix bashisms in the mbim-network script.
+- Drop libmbim-1.10.0-fix-bashisms.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Nov 27 01:00:00 UTC 2014 - Led <ledest@gmail.com>
+
+- Add libmbim-1.10.0-fix-bashisms.patch: fix bashisms in
+  mbim-network script.
+
+-------------------------------------------------------------------
+Mon Oct 20 12:09:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.10.0:
+  + API break: Flag values in 'MbimRegistrationFlag' were updated
+    to match the ones in the MBIM documentation.
+  + Implemented a new 'mbim-proxy', which allows sharing a single
+    MBIM control port among different processes. The usage of the
+    proxy is optional, and can be requested by specifying the
+    MBIM_DEVICE_OPEN_FLAGS_PROXY flag in the new
+    mbim_device_open_full() method. The 'mbimcli' command line tool
+    was also extended with a new '--device-open-proxy,-p' option,
+    to allow requesting the use of the proxy process.
+  + New 'removed' signal added to the MbimDevice, to notify when
+    the underlying connection to the device is lost (e.g. lost
+    connection to the mbim-proxy, or lost access to the MBIM
+    control port).
+  + Added support for registering and using custom services.
+  + Added additional GMM cause codes to MbimNwError.
+  + Transactions are now matched not only by ID but also by type.
+  + Several other minor improvements and fixes.
+- Changes from version 1.8.0:
+  + Added support for additional MBIM messages:
+    - MBIM_CID_MS_FIRMWARE_ID_GET
+    - MBIM_CID_MS_HOST_SHUTDOWN_NOTIFY
+  + Updated mbimcli with new commands:
+    - --set-radio-state
+    - --ms-query-firmware-id
+    - --ms-notify-host-shutdown
+    - --dss-connect
+    - --dss-disconnect
+  + Several enums and functions were renamed, and marked as
+    deprecated. A small layer is given to provide backwards
+    compatibility.
+  + Several other minor improvements and fixes.
+- Rename libmbim-glib0 subpackage to libmbim-glib4, following
+  upstreams soname change.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:41:50 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.6.0:
+  + Updated mbimcli with new commands:
+    --phonebook-query-configuration, --phonebook-read,
+    --phonebook-read-all, --phonebook-write, --phonebook-delete,
+    --phonebook-delete-all.
+  + Added generation of man pages for mbimcli and mbim-network.
+  + Several other minor improvements and fixes.
+- Stop packaging Changelog in docs as it is empty.
+
+-------------------------------------------------------------------
+Mon Dec 16 18:11:23 UTC 2013 - dimstar@opensuse.org
+
+- Update License fields:
+  + Main package: GPL-2.0+ and LGPL-2.1+ (also for the src pkg).
+  + Library and -devel subpackage: LGPL-2.1+.
+  + The Small tools shipped in the main package (binary) are
+    licensed GPL-2.0+.
+
+-------------------------------------------------------------------
+Wed Dec  4 20:05:30 UTC 2013 - dimstar@opensuse.org
+
+- Call ldconfig on post/postun of libmbim-glib0.
+
+-------------------------------------------------------------------
+Sun Dec  1 17:35:58 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 1.4.0.
+

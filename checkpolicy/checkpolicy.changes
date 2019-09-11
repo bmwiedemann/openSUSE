@@ -1,0 +1,186 @@
+-------------------------------------------------------------------
+Wed Mar 20 14:58:08 UTC 2019 - jsegitz@suse.com
+
+- Update to version 2.9
+  * Add option to sort contexts when creating a binary policy
+  * Update manpage
+  * check the result value of hashtable_search
+  * destroy the class datum if it fails to initialize
+  * remove extraneous policy build noise
+
+-------------------------------------------------------------------
+Sun Nov 11 17:19:04 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable parallel build. Remove ineffective LDFLAGS="$RPM_LD_FLAGS"
+  (RPM_LD_FLAGS is always empty).
+
+-------------------------------------------------------------------
+Wed Nov  7 16:26:24 UTC 2018 - jsegitz@suse.com
+
+- Source URL was invalid (bsc#1115052)
+
+-------------------------------------------------------------------
+Wed Oct 17 11:52:55 UTC 2018 - jsegitz@suse.com
+
+- Update to version 2.8 (bsc#1111732). 
+  For changes please see
+  https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20180524/RELEASE-20180524.txt
+- Dropped checkpolicy-build.patch, not necessary anymore
+- Removed BuildRequires for byacc. It builds without and this blocks
+  building on SLE 15
+
+-------------------------------------------------------------------
+Mon Jun 11 07:48:05 UTC 2018 - jsegitz@suse.com
+
+- checkpolicy-build.patch was added in the former change to fix build
+  failures
+
+-------------------------------------------------------------------
+Wed May 16 07:16:19 UTC 2018 - mcepl@suse.com
+
+- Rebase to 2.7. 
+  For changes please see
+  https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/RELEASE-20170804.txt
+
+-------------------------------------------------------------------
+Fri Nov 24 09:01:04 UTC 2017 - jsegitz@suse.com
+
+- Update to version 2.6. Notable changes:
+  * Add types associated to a role in the current scope when parsing
+  * Extend checkpolicy pathname matching
+  * Set flex as default lexer
+  * Fix checkmodule output message
+  * Fail if module name different than output base filename
+  * Add support for portcon dccp protocol
+
+-------------------------------------------------------------------
+Thu Jun 29 21:05:43 UTC 2017 - mpluskal@suse.com
+
+- Use plain flex
+
+-------------------------------------------------------------------
+Thu Jul 21 13:02:06 UTC 2016 - jengelh@inai.de
+
+- Trim/update description
+
+-------------------------------------------------------------------
+Thu Jul 14 14:18:26 UTC 2016 - jsegitz@novell.com
+
+- Without bug number no submit to SLE 12 SP2 is possible, so to make
+  sle-changelog-checker happy: bsc#988977
+
+-------------------------------------------------------------------
+Fri Jul  8 16:22:15 UTC 2016 - i@marguerite.su
+
+- update version 2.5
+  * Add neverallow support for ioctl extended permissions
+  * fix double free on name-based type transitions
+  * switch operations to extended perms
+  * policy_define.c: fix compiler warnings
+  * Remove uses of -Wno-return-type
+  * Fix -Wreturn-type issues
+  * dispol: display operations as ranges
+  * dispol: Extend to display operations
+  * Add support for ioctl command whitelisting
+  * Add option to write CIL policy
+  * Add device tree ocontext nodes to Xen policy
+  * Widen Xen IOMEM context entries
+  * Expand allowed character set in paths
+  * Fix precedence between number and filesystem tokens
+  * dispol/dismod fgets function warnings fix
+- changes in 2.4
+  * Fix bugs found by hardened gcc flags
+  * Add missing semicolon in cond_else parser rule
+  * Clear errno before call to strtol(3)
+  * Global C++11 compatibility
+  * Allow libsepol C++ static library on device
+
+-------------------------------------------------------------------
+Sun May 18 00:18:53 UTC 2014 - crrodriguez@opensuse.org
+
+- version 2.3
+* Report source file and line information for neverallow failures.
+* Prevent incompatible option combinations for checkmodule.
+* Drop -lselinux from LDLIBS for test programs; not used.
+* Add debug feature to display constraints/validatetrans from Richard Haines.
+
+-------------------------------------------------------------------
+Thu Oct 31 13:41:13 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 2.2
+  * Fix hyphen usage in man pages
+  * handle-unknown / -U required argument fix
+  * Support overriding Makefile PATH and LIBDIR
+  * Support space and : in filenames
+- Remove checkpolicy-rhat.patch; fixed on upstream
+
+-------------------------------------------------------------------
+Thu Jun 27 14:29:19 UTC 2013 - vcizek@suse.com
+
+- change the source url to the official 2.1.12 release tarball
+
+-------------------------------------------------------------------
+Fri Mar 29 13:10:16 UTC 2013 - vcizek@suse.com
+
+- update to 2.1.12
+	* Fix errors found by coverity
+	* implement default type policy syntax
+	* Free allocated memory when clean up / exit.
+- changes in checkpolicy-rhat.patch:
+        * original hunk was merged upstream
+	* space should be allowed for file trans names
+
+-------------------------------------------------------------------
+Wed Jan 30 11:40:10 UTC 2013 - vcizek@suse.com
+
+- update to 2.1.11
+	* fd leak reading policy
+	* check return code on ebitmap_set_bit
+	* sepolgen: We need to support files that have a + in them
+	* implement new default labeling behaviors for usr, role, range
+
+-------------------------------------------------------------------
+Wed Jul 25 11:24:54 UTC 2012 - meissner@suse.com
+
+- updated to 2.1.8
+  - various fixes
+
+-------------------------------------------------------------------
+Sat Sep 17 22:52:07 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Thu Feb 25 14:51:44 UTC 2010 - prusnak@suse.cz
+
+- updated to 2.0.21
+  * Add support for building Xen policies from Paul Nuzzi.
+  * Add long options to checkpolicy and checkmodule by Guido
+    Trentalancia <guido@trentalancia.com>
+
+-------------------------------------------------------------------
+Tue Jun 23 12:29:42 CEST 2009 - prusnak@suse.cz
+
+- require libsepol-devel-static
+
+-------------------------------------------------------------------
+Wed May 27 13:52:37 CEST 2009 - prusnak@suse.cz
+
+- updated to 2.0.19
+  * fix alias field in module format, caused by boundary format change
+    from Caleb Case
+  * properly escape regex symbols in the lexer from Stephen Smalley
+  * add bounds support from KaiGai Kohei
+
+-------------------------------------------------------------------
+Mon Oct 20 18:03:54 CEST 2008 - prusnak@suse.cz
+
+- use flex-old for building (using flex does not build refpolicy)
+
+-------------------------------------------------------------------
+Tue Jul 15 17:56:14 CEST 2008 - prusnak@suse.cz
+
+- initial version 2.0.16
+  * based on Fedora package by Dan Walsh <dwalsh@redhat.com>
+

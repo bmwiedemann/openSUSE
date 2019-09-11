@@ -1,0 +1,555 @@
+-------------------------------------------------------------------
+Wed Apr 10 14:30:38 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add lsof-glibc-linux-5.0.patch: Fix build with
+  linux-glibc-devel-5.0 by including sysmacros.h as needed.
+
+-------------------------------------------------------------------
+Tue Mar 27 09:46:50 UTC 2018 - kstreitova@suse.com
+
+- Update to version 4.91
+  * This revision applies two fixes that correct the Linux PTY
+ endpoint processing bug [bsc#1082900]
+
+-------------------------------------------------------------------
+Mon Feb 19 13:07:42 UTC 2018 - kstreitova@suse.com
+
+- Update to version 4.90 [bsc#1081562]
+  * Taught the Configure script to create a dummy opt_random.h
+    for FreeBSD systems whose <sys/random.h> includes it.
+  * Added support for the FreeBSD ZFUSE file system.
+  * Corrected the quoting in a Darwin putchar() statement in the
+    dfile.c source file. 
+  * Added support for the FreeBSD DTYPE_PTS file descriptor and
+    for unknown descriptors that reference the kernel's badfileops
+    operation switch.  Enabled FreeBSD 12.0 support.
+  * Enhanced -K option with the form "-K i" to direct lsof to
+    (i)gnore tasks. Linux task reports now include both
+    process and task command names, making lsof's "-c <name>"
+    option work correctly.
+  * Added a patch to prevent NFS blocking in Linux
+  * Installed a FreeBSD patch that prevents examining a TCP state
+    structure during a race condition.
+  * Updated FreeBSD for new UFS inode structure that lacks an i_dev
+    member in the most recent 12.0-CURRENT.  
+  * Added "#define KLD_MODULE" to dlsof.h and dnode2.c to prevent
+    <machine/cpuconf.h> from generating an "ARM_NARCH is 0" error.
+    This is needed so lsof can access kernel structures.
+  * Added recognition of the FreeBSD 11 file system name "nullfs".
+  * Added a patch that is needed on FreeBSD 12 so the lsof
+    compilation can obtain the inpcb and tcpcb structures from
+    their respective header files. Updated FreeBSD dmnt.c for the
+    ino64 changes.
+  * Inserted a patch for Solaris 12.x to avoid compilation errors
+    from <sys/aio_req.h>.
+  * Added performance enhancement that uses the FreeBSD closefrom()
+    and dup2() C library functions when available.
+  * Corrected FreeBSD lsof's gathering of ZFS file device numbers.
+  * Updated lsof test library for FreeBSD.
+  * Updated socket optons information collection from the socket
+    structure
+  * Added patch to dlsof.h that avoids a _KERNEL conflict with
+    bzero.
+  * Corrected test library to handle 64 bit FreeBSD device numbers.
+  * Added #defines for FreeBSD 12, src r324225
+  * Incorporated Linux pseudoterminal endpoint processing (+|-E)
+  * Corrected Linux command extraction for commands that include
+    parentheses -- e.g., "(sd-pam)".
+- remove lsof_4.89-nfs_hanging.patch that was applied upstream
+
+-------------------------------------------------------------------
+Mon Aug 29 14:19:53 UTC 2016 - kstreitova@suse.com
+
+- modify lsof_4.89-nfs_hanging.patch and add a check for HasNFS
+  variable as HasNFS may already have been set to 2 in the
+  readmnt() function [bsc#995061]
+
+-------------------------------------------------------------------
+Fri Aug 26 12:33:49 UTC 2016 - kstreitova@suse.com
+
+- add lsof_4.89-nfs_hanging.patch to prevent 'lsof -b' from hanging
+  when NFS server is unavailable [bsc#995061]
+
+-------------------------------------------------------------------
+Thu May  5 09:34:09 UTC 2016 - kstreitova@suse.com
+
+- submit utilities/lsof package to SUSE:SLE-12-SP2:GA [fate#320541]
+
+-------------------------------------------------------------------
+Mon May  2 16:10:30 UTC 2016 - kstreitova@suse.com
+
+- Update to version 4.89
+  * Applied correction from Casper Dik <Casper.Dik@oracle.com> to
+    his patch for Solaris 11 that I applied incorrectly in revision
+    4.88. 
+  * Updated for latest version of FreeBSD 11.0-CURRENT.
+  * Compensated for a missing FreeBSD 10.0 typedef of bool on the
+    i386 architecture.  Allen Hewes <rallenh@hotmail.com> provided
+    a test system. Andrey Chernov <ache@freebsd.org> provided
+    useful advice.
+  * Improved tests/Add2TestDB script with a patch from Peter
+    Schiffer <pschiffe@redhat.com>.  Added patches from Peter to
+    eliminate Linux gcc warnings.  Updated Lsof.8 with improvements
+    supplied by Bjarni Ingi Gislason <bjarniig@rhi.hi.is>.
+  * Changed FreeBSD global CFLAGS extraction per Terry Kennedy
+    <TERRY@tmk.com>.  Also made sure -DNEEDS_BOOL_TYPEDEF is
+    #define'd when the resulting CFLAGS doesn't contain it.  Terry
+    reported that need.
+  * Improved Linux test for tcp.h in response to a report from
+    Cato Auestad <cato@cato.ninja>.  Cato did the testing.
+  * Fixed Linux UNIX socket search by name bug reported by
+    Stephane Chazelas <stephane.chazelas@gmail.com>.
+  * Added Linux display of UNIX socket endpoint information with
+    code provided by Masatake YAMATO <yamato@redhat.com>.  Peter
+    Schiffer <pschiffe@redhat.com> provided a test system.
+  * Insured that type definitions from <vm/vm.h> were again made
+    visible to lsof on FreeBSD 11 after a system header file change
+    hid them.
+- use spec-cleaner to clean specfile
+
+-------------------------------------------------------------------
+Sun Mar  1 12:15:34 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 4.88
+  * Reduced to 50 the number of open file descriptors lsof attempts
+    to close while trying to protect itself from a file descriptor 
+    exec() attack.  This limits the overhead lsof incurs on systems
+    that have large file descriptor limits, yet provides sufficient
+    open descriptors for the library functions lsof calls.
+  * Updated for changes in FreeBSD 10.  Taught Configure to recognize
+    FreeBSD 8.4.
+  * lsof for Solaris 10 or 11 is no longer supported.
+  * Initialized local variables in the Linux process_id() function.
+  * Added support for FreeBSD 11.
+  * Updated FreeBSD ZFS Configure stanza to supply a dummy opt_kdtrace.h
+    when needed.
+  * Added tmpfs file system support for FreeBSD.
+  * Since a test system is no longer available, dropped the claim of 
+    FreeBSD 4.9 support.
+  * Added the +|-E options for Linux.  -E displays endpoint info; +E 
+    displays endpoint info and endpopint files.
+  * Fixed a Linux bug handling processes whose command includes a 
+    non-printing character, particularly a NEWLINE character, and
+    clarified printing of single '\\' characters in command and file names.
+  * Added support for Linux RDMA and CRYPTO protocal names and UNIX 
+    socket type
+  * Fixed field output to insure that the field descriptor field is
+    always selected, since it identifies the file set.
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Mar 26 14:59:31 UTC 2012 - cfarrell@suse.com
+
+- license update: Zlib
+  lsof license is most similar to Zlib (also use SPDX format)
+
+-------------------------------------------------------------------
+Tue Aug 16 13:52:59 UTC 2011 - puzel@novell.com
+
+- repack the tarball to remove legally problematic files
+  (bnc#705143)
+
+-------------------------------------------------------------------
+Mon Jun 27 16:17:12 CEST 2011 - ro@suse.de
+
+- change perl reference to /usr/bin/perl which actually exists 
+
+-------------------------------------------------------------------
+Thu Jun  9 11:22:04 UTC 2011 - k0da@opensuse.org
+
+- perl4 refference causes missing perl4 dependency
+
+-------------------------------------------------------------------
+Wed Jan 12 10:51:34 UTC 2011 - puzel@novell.com
+
+- portability fixes (by Pascal) 
+
+-------------------------------------------------------------------
+Sun Aug 29 18:40:53 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Do not include build host specific information including
+  date and compilation time to make build-compare happy 
+
+-------------------------------------------------------------------
+Tue Aug 17 15:58:50 UTC 2010 - puzel@novell.com
+
+- update to lsof 4.84
+  * corrects a man page nroff command error
+  * recognizes FreeBSD 7.3
+  * adds improved task support, initially for Linux
+
+-------------------------------------------------------------------
+Fri Apr  9 10:40:17 UTC 2010 - puzel@novell.com
+
+- update to lsof 4.83 
+  * corrects an over-zealous test that causes lsof to produce no 
+    ouput when the HASSECURITY and HASNOSOCKSECURITTY have been 
+    specified at lsof build time
+  * fixes a typo with the LINUX_HASSELUNIX Configure variable
+  * accepts LSOF_RANLIB from the environment
+  * added Linux test for __UCLIBC__
+
+-------------------------------------------------------------------
+Fri Feb 19 12:02:54 UTC 2010 - coolo@novell.com
+
+- fix 64bit issue (gcc 4.5)
+
+-------------------------------------------------------------------
+Sun Dec 20 17:22:37 CET 2009 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Jan 19 10:56:10 CET 2009 - prusnak@suse.cz
+
+- updated to 4.81
+  * Updated the Darwin libproc sources with changes from
+    Allan Nathanson <ajn@apple.com>.  Tested them on a iMac
+    mini, provided by Apple Inc.
+  * Changed dummy declarations in library source files to
+    eliminate complaints about unused variables and empty
+    object files.  This change may not work on dialects I
+    can no longer test; it has been tested on some versions
+    of AIX, Darwin, FreeBSD, Linux and Solaris.
+  * At the request of Hal Brooks <hal@uga.edu> added support
+    for Linux /proc/net/packet files.  Hal tested it.
+  * Added socket file only performance enhancements to Linux
+    and PSTAT-based HPUX lsof.
+  * Added htonl call around improper usage of INADDR_LOOPBACK;
+    report from an Apple engineer forwarded by Allan Nathanson
+    <ajn@apple.com>.
+  * Adjusted for FreeBSD-8.0 change in device number handling.
+    The adjustment should work for FreeBSD 5 and above, should
+    the 8.0 change be propagated downward.  The problem was
+    reported by Pav Lucistnik <pav@FreeBSD.org>.  An updated
+    test system was provided by Erwin Lansing <erwin@FreeBSD.org>.
+  * Reduced AIX support to version 5.3, since test systems with
+    older versions are no longer available to me.
+  * At the request of Marjo F. Mercado <mmercado@xceedium.com>
+    and Phil Shin <pshin@xceedium.com> applied some speed
+    improvements to lsof, particularly when the files of
+    interest are /Internet files -- i.e., selected with lsof's 
+    -i" option.  Added a two new options to assist the
+    improvements: 1) "-c^<command>" to tell lsof to exclude the
+    named command(s); and 2) "-stcp|ud>:[^]state' to tell lsof
+    to include in its reporting or exclude ('^') from its
+    reporting Internet files in the named states (e.g., LISTEN,
+    ^CLOSE_WAIT, IDLE, etc.)  For the most part these changes
+    apply only to AIX, Darwin, FreeBSD, PSTAT-based HP-UX, Linux
+    and Solaris, since those are the only places I could test
+    them.  They are controlled by the HASTCPUDPSTATE definition
+    in each dialect's machine.h header file.  Marjo and Phil
+    provided HP-UX 11.23 and 11.31 test systems.
+  * Fixed a stat(2) problem on HP-UX 11.31 while testing the
+    speed improvements.
+  * Adjusted for kernel header file changes in FreeBSD
+    8.0-CURRENT.  Larry Rosenman <ler@lerctr.org> provided
+    a test system.
+  * Added a warning for Solaris systems where VxFS node info
+    can't be obtained from the VxFS utility library.  The
+    warning was requested by Tom Matthews <Tom.MATTHEWS@rbs.com>.
+  * Corrected mishandling of file system path name arguments
+    that have trailing slashes, except, of course, the root
+    file system, "/".  Allan Nathanson <ajn@apple.com> reported
+    the bug.
+
+-------------------------------------------------------------------
+Mon Sep  8 17:10:32 CEST 2008 - prusnak@suse.cz
+
+- updated to 4.80
+  * Updated for a FreeBSD 7.0 and above byte level locking
+    change.  The problem was reported by Conrad J. Sabatier
+    <conrads@cox.net>, who helped test the update.  Wesley
+    Shields <wxs@FreeBSD.org> provided an 8.0-CURRENT test
+    system.
+  * Propagated the FreeBSD 7.0 and above locking changes to
+    FreeBSD 6.x, based on a report from Edwin Groothuis
+    <edwin@FreeBSD.org>.
+  * Added warnings for unsupported dialects or versions.
+  * Added Linux support for the UDPLITE protocol.  Eric
+    Dumazet <dada1@cosmosbay.com> supplied a patch.
+  * Added a missing quote to the Configure script's
+    FreeBSD stanza.
+  * Added a usage.o rule to the HP-UX PSTAT-based
+    Makefile.  I mistakenly deleted the rule at revision
+    4.79.  The missing rule was reported by Kawaljeet Kaur
+    <kawaljeet.malviya@gmail.com> who tested the corrected
+    Makefile.
+
+-------------------------------------------------------------------
+Wed Aug 20 15:38:29 CEST 2008 - prusnak@suse.cz
+
+- enabled SELinux support [Fate#303662]
+
+-------------------------------------------------------------------
+Tue Apr 22 14:22:59 CEST 2008 - prusnak@suse.cz
+
+- updated to 4.79
+  * improved Linux /proc file stream reading speed
+  * improved TCP, TCP6, UDP and UDP6 hashing by determining
+    the hash bucket count from the /proc/net sockstat and sockstat6
+    files
+  * fixed a Linux maps file processing bug that prevented path names
+    from having an embedded colon
+  * added support for the Linux 2.6.22 kernel's /proc/<PID>/fdinfo
+    files - i.e. file offset and flags
+  * fixed a Linux UNIX socket memory leak
+  * corrected a getpidcon() error message
+  * insured that inode numbers are handled correctly for their
+    unsigned long long type
+  * improved SELinux handling
+  * fixed a socket file identification problem
+  * added the ability to format the repeat mode marker line
+
+-------------------------------------------------------------------
+Thu Jul 26 15:02:59 CEST 2007 - prusnak@suse.cz
+
+- update to 4.78
+  * simplified stat() and lstat() usage
+  * avoid processing /proc/<PID>/maps file entries with zero device
+    and node numbers
+  * enabled ZFS support
+
+-------------------------------------------------------------------
+Fri Oct 20 18:30:28 CEST 2006 - mjancar@suse.cz
+
+- update to 4.77
+  * lots of small bugfixes
+- drop lsof_4.76_src-return.diff (included upstream)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:03 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 15 17:44:54 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 11 13:35:18 CET 2006 - mjancar@suse.cz
+
+- update to 4.76
+
+-------------------------------------------------------------------
+Tue Aug  2 18:48:59 CEST 2005 - mjancar@suse.cz
+
+- update to 4.75
+
+-------------------------------------------------------------------
+Mon Feb  7 20:30:50 CET 2005 - mjancar@suse.cz
+
+- update to 4.74
+
+-------------------------------------------------------------------
+Fri Aug 06 18:27:40 CEST 2004 - mjancar@suse.cz
+
+- update to 4.72
+
+-------------------------------------------------------------------
+Mon Apr 19 16:30:32 CEST 2004 - mjancar@suse.cz
+
+- add return to nonvoid functions
+
+-------------------------------------------------------------------
+Thu Feb 26 14:48:21 CET 2004 - mjancar@suse.cz
+
+- uopdate to 4.70
+
+-------------------------------------------------------------------
+Wed Nov  5 12:41:48 CET 2003 - ro@suse.de
+
+- fix make test as non-root 
+
+-------------------------------------------------------------------
+Thu Oct 30 17:47:27 CET 2003 - mjancar@suse.cz
+
+- update to 4.69
+- no root for build
+
+-------------------------------------------------------------------
+Thu Jul 24 11:52:19 CEST 2003 - mjancar@suse.cz
+
+- update to 4.68
+- kill obsolete patches
+    * lsof_4.67_src-unescape.diff
+    * lsof_4.68_src-uninitialized.diff
+
+-------------------------------------------------------------------
+Thu Jun 12 16:12:17 CEST 2003 - mjancar@suse.cz
+
+- unescape paths from /proc/mounts (Bug #27321)
+- fix mising prototypes and uninitialized variables
+
+-------------------------------------------------------------------
+Tue Apr 22 13:48:50 CEST 2003 - vbobek@suse.cz
+
+- updated to version 4.67
+    * added the "+c <width>" option to enable optional changing
+      of the COMMAND column output maximum width
+    * many other fixes
+
+-------------------------------------------------------------------
+Mon Feb 17 10:30:15 CET 2003 - vbobek@suse.cz
+
+- updated to version 4.66
+
+-------------------------------------------------------------------
+Tue Dec 03 14:45:05 CET 2002 - jderfina@suse.cz
+
+- upgrade to version 4.65
+
+-------------------------------------------------------------------
+Thu Jul 11 18:01:27 CEST 2002 - nadvornik@suse.cz
+
+- updated to 4.64
+
+-------------------------------------------------------------------
+Tue Mar  5 13:07:11 CET 2002 - nadvornik@suse.cz
+
+- fixed permissions of man page
+
+-------------------------------------------------------------------
+Mon Nov 26 17:35:40 CET 2001 - nadvornik@suse.cz
+
+- update to 4.60:
+  - adds an IP version selector to the -i parameters
+  - adds better handling of IPv6 selectors
+  - makes safer lsof's ending of its child process
+  - adds options to affect -v output
+- added example scripts to documentation 
+
+-------------------------------------------------------------------
+Tue Aug 14 16:19:46 CEST 2001 - nadvornik@suse.cz
+
+- update to 4.57
+
+-------------------------------------------------------------------
+Thu Mar  8 12:08:09 CET 2001 - nadvornik@suse.cz
+
+- update to 4.55
+
+-------------------------------------------------------------------
+Sun Dec  3 15:17:46 CET 2000 - smid@suse.cz
+
+- new version 4.52
+
+-------------------------------------------------------------------
+Wed Oct  4 11:19:49 CEST 2000 - smid@suse.cz
+
+- new version 4.51
+
+-------------------------------------------------------------------
+Wed Apr  5 15:14:33 CEST 2000 - smid@suse.cz
+
+- upgrade to 4.49
+- BuildRoot added
+
+-------------------------------------------------------------------
+Thu Jan 20 15:17:23 CET 2000 - aj@suse.de
+
+- /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Thu Nov  4 14:32:37 CET 1999 - ro@suse.de
+
+- update to 4.46 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Sep  1 17:51:45 CEST 1999 - ro@suse.de
+
+- update to 4.45
+
+-------------------------------------------------------------------
+Tue Mar  9 14:28:51 MET 1999 - ro@suse.de
+
+- force LSOF_VERS=22003
+
+-------------------------------------------------------------------
+Tue Mar  9 01:48:16 MET 1999 - ro@suse.de
+
+- use proc-base version for STABLE, now that we're 2.2-based
+
+-------------------------------------------------------------------
+Fri Mar  5 01:30:43 MET 1999 - ro@suse.de
+
+- for BETA: use proc version
+- changed proc/dlsof.h to work with glibc-2.1
+
+-------------------------------------------------------------------
+Fri Feb 26 22:56:48 MET 1999 - florian@suse.de
+
+- add security patches
+
+-------------------------------------------------------------------
+Thu Dec 10 16:04:58 MET 1998 - ro@suse.de
+
+- disabled proc-version in Configure
+
+-------------------------------------------------------------------
+Thu Dec 10 15:04:12 MET 1998 - ro@suse.de
+
+- update to 4.38
+- added rh-patch for kmem/dlsof.h
+- compile as 2.0 (kmem) version
+
+-------------------------------------------------------------------
+Tue Sep 22 17:19:32 MEST 1998 - ro@suse.de
+
+- update to 4.37 / for now only the proc version works with glibc
+                   but that needs a running 2.1 kernel !!!!
+
+-------------------------------------------------------------------
+Wed Jun 24 15:48:34 MEST 1998 - ro@suse.de
+
+- update to 4.31 using diff from jurix/source
+
+----------------------------------------------------------------------------
+Thu Oct  9 19:01:21 MEST 1997 - florian@suse.de
+
+
+- update to version 4.16
+
+
+----------------------------------------------------------------------------
+Wed Oct  8 17:40:51 MEST 1997 - max@suse.de
+
+
+- changed to rpm format and eliminated Makefile.Linux
+
+
+----------------------------------------------------------------------------
+Mon Jul  7 13:17:08 CEST 1997 - florian@suse.de
+
+
+- update to version 4.11
+
+
+----------------------------------------------------------------------------
+Sat Apr 26 19:14:59 MEST 1997 - florian@suse.de
+
+
+- add new package of lsof 4.05
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

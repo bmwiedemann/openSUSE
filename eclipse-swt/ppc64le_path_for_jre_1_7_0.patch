@@ -1,0 +1,30 @@
+From: Michel Normand <normand@linux.vnet.ibm.com>
+Subject: pppc64le path for jre 1 7 0
+Date: Fri, 28 Aug 2015 17:22:15 +0200
+
+For Leap 42 the jre is version 1.7.0 that still have ppc64le path
+for ppc64le architecture.
+
+Similarly since java 1.8 rev 131 the ppc64le is reported os.arch
+https://build.opensuse.org/package/rdiff/Java:Factory/java-1_8_0-openjdk?linkrev=base&rev=131
+
+Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
+---
+ build.sh |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: libswt-4.333/build.sh
+===================================================================
+--- libswt-4.333.orig/build.sh
++++ libswt-4.333/build.sh
+@@ -95,6 +95,10 @@ case $MODEL in
+ 		SWT_ARCH=x86
+ 		AWT_ARCH=i386
+ 		;;
++	ppc64le)
++		SWT_ARCH=ppc64
++		AWT_ARCH=ppc64le
++		;;
+ 	ppc64*)
+ 		SWT_ARCH=ppc64
+ 		AWT_ARCH=ppc64

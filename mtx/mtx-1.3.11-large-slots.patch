@@ -1,0 +1,95 @@
+--- mtxl.c.orig	2014-03-03 06:50:09.000000000 +0100
++++ mtxl.c	2014-03-03 06:52:54.000000000 +0100
+@@ -39,6 +39,8 @@
+ /* zap the following define when we finally add real import/export support */
+ #define IMPORT_EXPORT_HACK 1 /* for the moment, import/export == storage */
+ 
++#define ElemsPerRES 5000  /* WEK only so many element per SCSI Read Element Status */
++
+ /* First, do some SCSI routines: */
+ 
+ /* the camlib is used on FreeBSD. */
+@@ -1131,6 +1143,7 @@
+ 	int empty_idx = 0;
+ 	boolean is_attached = false;
+ 	int i,j;
++	int FirstElem, NumElem, NumThisRES;  /* WEK */
+ 
+ 	ElementModeSense_T *mode_sense = NULL;
+ 
+@@ -1195,14 +1208,31 @@
+ 	{
+ #ifdef DEBUG
+ 		fprintf(stderr,"Using original element status polling method (storage, import/export, drivers etc independantly)\n");
++		fprintf(stderr,"Storage start %d, Num %d, max %d\n", mode_sense->StorageStart, mode_sense->NumStorage - mode_sense->NumImportExport, mode_sense->MaxReadElementStatusData);  /* WEK */
+ #endif
+ 		flags->elementtype = StorageElement; /* sigh! */
++
++	NumElem = mode_sense->NumStorage - mode_sense->NumImportExport;
++        FirstElem = mode_sense->StorageStart;
++
++	do
++	{
++		if  (NumElem > ElemsPerRES)
++			{
++			NumThisRES = ElemsPerRES;
++			}
++		else
++			{
++			NumThisRES = NumElem;
++			}
++
+ 		DataBuffer = SendElementStatusRequest(	MediumChangerFD, RequestSense,
+ 												inquiry_info, flags,
+-												mode_sense->StorageStart,
++												FirstElem, /* WEK */
+ 												/* adjust for import/export. */
+-												mode_sense->NumStorage - mode_sense->NumImportExport,
+-												mode_sense->MaxReadElementStatusData);
++												NumThisRES, /* WEK */
++												ElemsPerRES * 52 +120);
++												/* mode_sense->MaxReadElementStatusData); WEK */
+ 
+ 		if (!DataBuffer)
+ 		{
+@@ -1224,6 +1254,10 @@
+ 			DataBuffer,ElementStatus,mode_sense,NULL);
+ 
+ 		free(DataBuffer); /* sigh! */
++	FirstElem += ElemsPerRES;
++	NumElem -= ElemsPerRES;
++
++	} while ( NumElem > 0 );  /* WEK */
+ 
+ 		/* --------------IMPORT/EXPORT--------------- */
+ 		/* Next let's see if we need to do Import/Export: */
+@@ -1237,7 +1271,8 @@
+ 													inquiry_info, flags,
+ 													mode_sense->ImportExportStart,
+ 													mode_sense->NumImportExport,
+-													mode_sense->MaxReadElementStatusData);
++												ElemsPerRES * 52 +120);
++												/* mode_sense->MaxReadElementStatusData); WEK */
+ 
+ 			if (!DataBuffer)
+ 			{
+@@ -1273,7 +1308,8 @@
+ 												inquiry_info, flags,
+ 												mode_sense->DataTransferStart,
+ 												mode_sense->NumDataTransfer,
+-												mode_sense->MaxReadElementStatusData);
++												ElemsPerRES * 52 +120);
++												/* mode_sense->MaxReadElementStatusData); WEK */
+ 		if (!DataBuffer)
+ 		{
+ #ifdef DEBUG
+@@ -1312,7 +1348,8 @@
+ 													inquiry_info, flags,
+ 													mode_sense->MediumTransportStart,
+ 													1, /* only get 1, sigh. */
+-													mode_sense->MaxReadElementStatusData);
++												ElemsPerRES * 52 +120);
++												/* mode_sense->MaxReadElementStatusData); WEK */
+ 			if (!DataBuffer)
+ 			{
+ #ifdef DEBUG

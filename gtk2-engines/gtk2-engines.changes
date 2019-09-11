@@ -1,0 +1,679 @@
+-------------------------------------------------------------------
+Fri Mar  1 12:43:47 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Fri Jan 13 12:23:41 UTC 2012 - vuntz@opensuse.org
+
+- Manually remove translations in %install and drop lang
+  subpackage: the translations are useless at runtime, since they
+  are integrated in the xml files.
+- Add Obsoletes for gtk-engines-lang to main subpackage, for smooth
+  upgrades.
+
+-------------------------------------------------------------------
+Sat Dec 24 20:39:29 UTC 2011 - gankov@opensuse.org
+
+- Split gtk2-engines package in subpackages for each engine and
+  theme: gtk2-engine-{engine_name} and gtk2-theme-{theme_name}, for
+  clearlooks, crux, glide, hcengine, industrial, mist, redmond95,
+  thinice. Fix bnc#706929.
+- Add Requires for all new subpackages to gtk2-engines: it is now a
+  metapackage used to install all engines and themes.
+- Add README.openSUSE to gtk2-engines to explain that this is a
+  metapackage.
+- Remove fdupes BuildRequires and call to %fdupes since it can't be
+  useful anymore with split packages.
+
+-------------------------------------------------------------------
+Sun Nov 27 14:04:53 UTC 2011 - dimstar@opensuse.org
+
+- Add gtk-engines-glib.patch: Fix build with newer glib, where only
+  glib.h can be #include'd.
+
+-------------------------------------------------------------------
+Mon Jul 25 16:17:21 UTC 2011 - andrea.turrini@gmail.com
+
+- Fixed typo in description of gtk2-engines.spec
+
+-------------------------------------------------------------------
+Thu Oct 14 13:51:36 CEST 2010 - vuntz@opensuse.org
+
+- Use --whatprovides to find the version of gtk2 since we split
+  gtk2 according to the shared library packaging policy, and there
+  is no gtk2 package anymore.
+
+-------------------------------------------------------------------
+Fri Oct  1 21:19:39 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.20.2:
+  + Fix evolution ETree header in Clearlooks
+  + Minor fixes in mist
+  + Removed Xfce specific workaround from the clearlooks engine
+    (bgo#616124)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 29 02:16:15 UTC 2010 - aj@suse.de
+
+- Change lang package Requires to Recommends since it is not
+  mandatory at runtime.
+
+-------------------------------------------------------------------
+Thu May  6 23:53:10 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.20.1:
+  + Fixes the shadow around entries in the Clearlooks Gummy style.
+- BuildRequire pgk-config for proper .pc dependencies.
+
+-------------------------------------------------------------------
+Tue Apr 27 12:47:06 UTC 2010 - aj@suse.de
+
+- Create devel package so that users of the base package do not
+  need other development files installed.
+- Fix obsoletes to not self-obsolete the package.
+
+-------------------------------------------------------------------
+Tue Mar 30 01:38:34 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.20.0:
+  + Increased spacing between icons and labels in Clearlooks
+  + bgo#594014 - gtk-engines: system-lua check is buggy
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jan 31 23:42:43 UTC 2010 - jengelh@medozas.de
+
+- Package baselibs.conf
+
+-------------------------------------------------------------------
+Sat Jan 16 05:21:17 CET 2010 - vuntz@opensuse.org
+
+- Compile with animation support: add --enable-animation configure
+  option.
+
+-------------------------------------------------------------------
+Fri Jan 15 15:51:16 CET 2010 - vuntz@opensuse.org
+
+- Do not package en@shaw locale on openSUSE 11.2 and earlier.
+
+-------------------------------------------------------------------
+Thu Jan 14 03:49:55 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 2.19.0:
+  + Option to use the systems version of liblua
+  + Removal of a potential endless loop in different Clearlooks
+    styles
+  + Support for Automake 1.11.
+  + Improvements for bgo#525065 (small Clearlooks themes)
+
+-------------------------------------------------------------------
+Sat Jan  2 16:14:42 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.18.5:
+  + Removal of a potential infinite loop in different clearlooks
+    styles
+  + bgo#603445 - update to support automake 1.11 +silent build.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 19 09:01:01 CEST 2009 - mxwu@novell.com
+
+- Add gtk-engines-bnc546966-clearlooks-fix-main-menu-icon-size.patch 
+  fix bnc#546966.
+
+-------------------------------------------------------------------
+Wed Sep 30 10:32:29 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.18.4:
+  + bgo#595907 - liblua not disted in 2.18.3
+- Changes from version 2.18.3:
+  + bgo#593674 - Add --enable-system-lua configure option for
+    system liblua linkage
+  + bgo#594014 - system-lua check is buggy
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 19 05:09:26 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.18.2:
+  + Changes for the git migration (doap file, ChangeLog)
+  + bgo#578882 – gtk-engines-2.18.1 doesn't pass tests due to
+    exported_lua
+  + Updated translations.
+- Add lang package: for some reasons, the translations were never
+  installed before (?).
+
+-------------------------------------------------------------------
+Tue Apr 28 18:41:28 CEST 2009 - vuntz@novell.com
+
+- Require specific version of gtk2 we were built against, instead
+  of >= 2.10.0. This helps when using various projects with more
+  than one gtk2 version and the versioned directories for engines
+  has changed. Fix bnc#484104.
+
+-------------------------------------------------------------------
+Tue Apr 14 15:16:08 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.18.1:
+  + Clearlooks draws the focus line of entries now correct.
+  + Clearlooks now only draws a one pixel line between two adjacent
+    steppers.
+ + bgo#576786 – clearlooks is broken on trunk
+ + bgo#576787 – export hygiene
+ + bgo#572178 – Remove deprecated GTK+ symbols
+ + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 22:55:40 CET 2009 - vuntz@novell.com
+
+- Update to version 2.18.0:
+  + Improved entry progress drawing in Clearlooks.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  6 14:03:34 CET 2009 - vuntz@novell.com
+
+- Update to version 2.17.4:
+  + Many themes have some initial support for progressbars in
+    entries.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 24 23:49:02 CET 2009 - vuntz@novell.com
+
+- Drop gnome-themes-industrial-tree-insensitive-text-color.diff:
+  it's not needed anymore (it has been fixed upstream during some
+  rewrite)
+- Drop indus_43092.diff: upstream doesn't want this and we don't
+  want to differ there, especially for a theme we don't use as the
+  default one.
+
+-------------------------------------------------------------------
+Tue Feb 17 03:23:28 CET 2009 - vuntz@novell.com
+
+- Update to version 2.17.3:
+  + Relicense to LGPL 2.1 or later.
+  + Clean up GLib and GTK+ includes (bgo#563787)
+  + Focus inconsistent between expander and other widgets in
+    Clearlooks (bgo#571835)
+  + Updated translations.
+- Do not call autoreconf.
+- Remove BuildRequires: perl-XML-Parser
+
+-------------------------------------------------------------------
+Sat Dec 20 11:05:28 EST 2008 - mboman@suse.de
+
+- Update to version 2.17.2:
+  + bgo#563256 – 2.17.1 ftbfs
+  + A leak in Clearlooks that happened for default buttons was fixed.
+  + The Clearlooks inconsistent radio indicator drawing was fixed.
+  + bgo#560042 – Sub-optimal -I flag ordering
+  + bgo#560443 – GNOME Goal: Remove deprecated GLib symbols
+  + bgo#549830 – Use G_DEFINE_DYNAMIC_TYPE in theme engines
+  + Focus indicator drawing in Mist
+  + Clearlooks now has a disable_focus option to do screenshots for
+    documentation
+  + Fixed the background color of viewports in notebooks in Clearlooks.
+  + bgo#553575 – [PATCH] Only draw focus when navigating with the keyboard
+  + bgo#555890 – Button rendering bug
+  + Translation updates
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Sun Nov 30 17:22:26 CET 2008 - mboman@suse.de
+
+- Fix up .changes as it was not in chronological order.
+
+-------------------------------------------------------------------
+Tue Nov 25 17:22:26 CET 2008 - sbrabec@suse.cz
+
+- Supplement gtk2-32bit/gtk2-64bit in baselibs.conf (bnc#354164).
+
+-------------------------------------------------------------------
+Mon Nov 24 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Wed Oct 22 14:41:16 CDT 2008 - maw@suse.de
+
+- Update to version 2.16.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  3 11:02:02 WST 2008 - mboman@suse.de
+
+- Update to version 2.16.0:
+  + Small fix in Clearlooks spinbutton drawing.
+  + Translation updates.
+
+-------------------------------------------------------------------
+Tue Sep 02 16:21:11 CEST 2008 - mboman@novell.com
+
+- Updated to version 2.15.4:
+  + Reworked Clearlooks gtkrc.
+  + Bugs fixed: bgo#549830, bgo#546839, bgo#547024
+  + A problem in the glide engine where the drawing of some widgets could
+    suddenly disappear forever was fixed.
+  + Updated translations
+
+-------------------------------------------------------------------
+Tue Aug 12 16:21:11 CEST 2008 - mboman@novell.com
+
+- Updated to version 2.15.2:
+  + The most important change in this release is that the smooth GTK+
+    engine has been removed. This engine has long lost its popularity
+    and it had a huge codebase that has not been properly maintained
+    for years now.
+  + Larger menuitem separators in the Clearlooks theme
+  + Frame drawing fixes in the Clearlooks engine
+  + Padding of progress bars inside menus is fixed in the Industrial theme
+  + Fixed bug bgo#511958  - List store tree view contains superfluous
+    border (clearlooks)
+  + Fixed bug bgo#542625 - 1px gap between notebook at extension
+    (industrial)
+  + Fixed bug bgo#501734 - Dead code in glide_gtk2_drawing.c
+  + Fixed bug bgo#535456 - Unnecessary cast breaks build on Solaris
+  + Fixed bug bgo#543608 - Fix for Fortify detected problem
+  + Updated translations
+- Remove gnome-themes-fortify.patch. It's upstream.
+
+-------------------------------------------------------------------
+Fri Jun 27 16:21:11 CEST 2008 - maw@suse.de
+
+- Remove the %lang_package macro.
+
+-------------------------------------------------------------------
+Thu Jun 26 14:34:06 CEST 2008 - coolo@suse.de
+
+- there is no -lang package anymore, so don't require it
+
+-------------------------------------------------------------------
+Mon Jun 16 23:37:07 CEST 2008 - maw@suse.de
+
+- Update to version 2.15.1:
+  + Schema translations are no longer installed, so the -lang
+    subpackage has been dropped
+  + Improvements to the Redmond scrollbars, scrolled window and
+    menus
+  + Various internal changes in the Clearlooks engine
+  + Modifications to the "classic" style to be more like the pre
+    cairo versions of the engine
+  + Bugs fixed: bgo#526890 and bgo#531633
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 15 16:35:22 CEST 2008 - olh@suse.de
+
+- remove unneeded Recommends: -64bit on ppc (bnc#390761)
+
+-------------------------------------------------------------------
+Tue May 13 18:22:35 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 2.14.1:
+  * Warning fixes
+  * Parser fix in thinice
+  * Added a workaround for bgo#514400 (Glitches on panel launcher)
+  * Some improvements in Clearlooks (insensitive spinbuttons,
+    scales, notebook background color)
+  * New and udpated translations
+- Enabled lua and animation support.
+- Split gtk2-engine-cleanice out and moved to GNOME:Community Build
+  Service repository (bnc#380955).
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Mar 14 14:44:12 CET 2008 - vuntz@suse.de
+
+- Update to version 2.14.0:
+  + Text color fixes and workarounds in the different themes
+  + Clearlooks:
+    * Correct shadow for insensitive entries
+    * Changed contrast handling
+  + Crux:
+    * Several improvements, this includes spinbuttons and
+      comboboxes.
+  + bgo#395013: Visual artifacts setting radius to 10.0 (max value)
+  + bgo#505334: work around GtkList label colors
+  + Updated translations.
+- Changes from version 2.13.6:
+  + Clearlooks:
+    * Fix in the clearlooks schema file. It listed the wrong
+      default style.
+    * Some small changes in the Clearlooks GUMMY focus drawing.
+  + Crux:
+    * Lighter background color
+  + Updated translations.
+- Changes from version 2.13.5:
+  + Clearlooks:
+    * Read the shadow before drawing toolbars and menubars
+  + mist:
+    * bgo#500952: check/radio buttons have no insensitive states
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 10 14:41:51 CET 2008 - sbrabec@suse.cz
+
+- Added bi-arch counterpart Recommends to prevent arch clashes
+  (bnc#354164).
+- Added Enhances: gtk2.
+
+-------------------------------------------------------------------
+Wed Jan 30 18:02:19 CET 2008 - rodrigo@suse.de
+
+- Update to version 2.13.4:
+  * Clearlooks progressbar padding inside menus has been fixed
+  * New "reliefstyle" option for clearlooks, which controls inset
+    vs. shadow around buttons. GUMMY based themes will now use inset
+    by default and need to be modified
+  * Updated focus drawing for treeviews and notebook tabs in GUMMY
+  * bgo#509226: focus rect not painted in aisleriot with clearlooks
+  * Updated translations
+
+-------------------------------------------------------------------
+Tue Nov 27 14:33:05 CET 2007 - prusnak@suse.cz
+
+- removed gtk-xfce-engine [#342676]
+
+-------------------------------------------------------------------
+Tue Sep 18 17:51:22 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.12.0:
+  * A set of tweaks to the Clearlooks theme and Gummy engine code
+  * Fixed color scheme support in Clearlooks, Crux and Industrial
+  * Fixed GTK+ 2.12 tooltips in Clearlooks, Crux, Industrial and
+    Thinice
+  * Better notebook edge drawing in Clearlooks
+  * New and updated translations
+
+-------------------------------------------------------------------
+Fri Aug 31 00:22:28 CEST 2007 - maw@suse.de
+
+- Update to version 2.11.7:
+  + Improvements to and cleanups of the clearlooks theme
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug  8 00:25:44 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Thu Aug  2 22:01:31 CEST 2007 - mauro@suse.de
+
+- Update to version 2.11.4
+- Small fixes, new ColorScheme, use of CairoColor when available.
+
+-------------------------------------------------------------------
+Fri Jul  6 18:37:20 CEST 2007 - maw@suse.de
+
+- Update to version 2.11.2
+- Bug fixes, including bugzilla.gnome.org #429988, #430012,
+  #429761, #429730, #428772, #427265, #438397, #438456, and
+  #413055.
+
+-------------------------------------------------------------------
+Mon Mar 26 19:38:06 CEST 2007 - sbrabec@suse.cz
+
+- Fixed BuildRequires and file list, use %find_lang.
+
+-------------------------------------------------------------------
+Fri Mar 23 12:27:17 CST 2007 - maw@suse.de
+
+- Update to version 2.10.0
+- Minor changes
+- Now requires perl-XML-Parser to build.
+
+-------------------------------------------------------------------
+Mon Feb 19 10:39:31 CST 2007 - maw@suse.de
+
+- Update to version 2.9.3
+- Remove gtk2-engines-missing-return-type.patch which is now
+  upstream.
+
+-------------------------------------------------------------------
+Tue Dec 19 15:25:13 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Tue Nov 14 23:40:27 CET 2006 - jhargadon@suse.de
+
+- added static void return type to engines/crux/src/crux-draw.c
+  paint_scale_trough function to resolve defect #217105 
+
+-------------------------------------------------------------------
+Tue Oct  3 18:42:31 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.8.1
+- Visual improvements to the Crux engine
+- Implement "contrast" option in Industrial
+- Minor build and information fixes 
+
+-------------------------------------------------------------------
+Fri Sep 15 00:02:55 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.8.0
+- engines/crux/src/crux-draw.c: (draw_handle): Fix grip position
+- themes/Crux/gtk-2.0/gtkrc: Make sure icons are 22x22 in toolbars etc
+- themes/Mist/gtk-2.0/gtkrc: Use new Tango blue as "hilight" colour 
+
+-------------------------------------------------------------------
+Wed Sep  6 00:20:45 CEST 2006 - ro@suse.de
+
+- autoreconf in cleanice to fix build on x86_64 
+
+-------------------------------------------------------------------
+Fri Aug 25 19:06:23 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.7.8
+- Add paranoia and deprecated configure flags
+- Improve HighContrast (HC) engine inconsistent state check mark
+- Use the base/text values for expander arrow in HC
+- Improve visibility/contrast of checks in HC
+- Fix broken Clearlooks menu on panel check
+- Implement a focus rectangle for GtkEntry
+- New cairo based Engine called Glide for the Glider theme
+- Fixed lots of memory leaks in Clearlooks, and several other bugs 
+
+-------------------------------------------------------------------
+Thu Aug  3 16:39:54 CEST 2006 - rml@suse.de
+
+- Update to gtk-engines 2.10 and force rebuild against new gtk2 
+  * Fixed bugs:
+    Bug 342199 - add locking to clearlooks animation code.
+    Bug 341694 - Crash in d4x (Industrial)
+    Bug 334557 - Compile errors with gcc 2.95 (Clearlooks)
+    Bug 333398 - Menubars in panel applets have sunken mode (Clearlooks)
+    Bug 317639 - GtkHScale not rendered properly in Clearlooks
+    Bug 148848 - No visual difference of disabled checkboxes in SimplySmooth (Smooth)
+  * Fixes for notebook dnd releated crash bugs in both industrial and crux.
+  * Slightly improved box_gap drawing in crux and industrial.
+  * Lots of other miscellaneous fixes
+  * Prevent unnecessary symbols from being exported (all engines)
+  * Prefix symbols in engines, to prevent possible conflicts with applications
+  * Improved RTL support in Clearlooks
+
+-------------------------------------------------------------------
+Mon Mar 13 16:00:55 CET 2006 - sbrabec@suse.cz
+
+- Added Industrial theme fixes from gnome-themes.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:09 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 18 17:00:33 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 2.6.7.
+
+-------------------------------------------------------------------
+Wed Nov 30 23:24:45 CET 2005 - gekker@suse.de
+
+- Update to version 2.6.6
+
+-------------------------------------------------------------------
+Fri Oct  7 16:03:28 CEST 2005 - sbrabec@suse.cz
+
+- Removed unneeded static modules and .la files for modules.
+
+-------------------------------------------------------------------
+Sun Sep  4 22:29:26 CEST 2005 - jpr@suse.de
+
+- Renable clearlooks, upstream removed clearlooks gtkrc from 
+  gnome-themes (114702)
+
+-------------------------------------------------------------------
+Tue Aug 23 22:06:12 CEST 2005 - gekker@suse.de
+
+- Update to version 2.6.5 
+
+-------------------------------------------------------------------
+Tue Aug 16 12:27:24 CEST 2005 - ro@suse.de
+
+- remove gnome-themes from nfb (not needed and creates cycle) 
+
+-------------------------------------------------------------------
+Fri Aug 12 11:47:47 CEST 2005 - ro@suse.de
+
+- removed gtkrc for Clearlooks (now in gnome-themes) 
+
+-------------------------------------------------------------------
+Thu Aug  4 16:46:20 CEST 2005 - clahey@suse.de
+
+- Move Industrial gtk2 theme from gnome-themes.
+
+-------------------------------------------------------------------
+Tue Aug  2 22:47:40 CEST 2005 - gekker@suse.de
+
+- Update to version 2.6.4 
+
+-------------------------------------------------------------------
+Tue Jun 21 00:19:31 CEST 2005 - gekker@suse.de
+
+- Update to version 2.6.3 
+
+-------------------------------------------------------------------
+Thu Mar 10 00:16:47 CET 2005 - gekker@suse.de
+
+- Update to version 2.6.2 (GNOME 2.10). 
+
+-------------------------------------------------------------------
+Tue Feb 22 16:51:18 CET 2005 - sbrabec@suse.cz
+
+- Package all engines.
+
+-------------------------------------------------------------------
+Fri Feb 11 05:27:03 CET 2005 - gekker@suse.de
+
+- Update to version 2.6.1 
+
+-------------------------------------------------------------------
+Sun Feb  6 03:52:34 CET 2005 - gekker@suse.de
+
+- Update gtk-engines-cleanice to 2.4.0
+- Update gtk-xfce-engine to 2.2.1 
+
+-------------------------------------------------------------------
+Sat Jan 22 11:56:15 CET 2005 - ro@suse.de
+
+- remove files also present in gnome-themes 
+
+-------------------------------------------------------------------
+Fri Jan 21 07:18:41 CET 2005 - clahey@suse.de
+
+- Updated to 2.6.0.
+
+-------------------------------------------------------------------
+Fri Jan 14 01:25:07 CET 2005 - ro@suse.de
+
+- fix file conflict with gtk2 
+
+-------------------------------------------------------------------
+Fri Mar 19 13:07:38 CET 2004 - pmladek@suse.cz
+
+- fixed bg[SELECTED] to correspond to the color used by the native
+  gtk2 widget, bg[SELECTED] is used only by OpenOffice.org now
+
+-------------------------------------------------------------------
+Wed Mar 10 10:46:36 CET 2004 - hhetter@suse.de
+
+- applied patch to resolve issues with 6nome widget theme
+  (and some others) in conjunction with gnumeric crashes 
+  ( SUSE Bugzilla ID#32861, also related:
+  http://bugzilla.gnome.org/show_bug.cgi?id=112066 )
+
+-------------------------------------------------------------------
+Sat Mar  6 20:21:45 CET 2004 - schwab@suse.de
+
+- Fix doc location.
+
+-------------------------------------------------------------------
+Sat Jan 10 17:38:03 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Thu Oct 09 15:51:11 CEST 2003 - sbrabec@suse.cz
+
+- Removed thinice engine - now part of gnome-themes.
+- Don't package *.la files.
+
+-------------------------------------------------------------------
+Wed Jul 23 07:41:11 CEST 2003 - hhetter@suse.de
+
+- really prefix to /opt/gnome 
+
+-------------------------------------------------------------------
+Mon Jul 14 14:43:22 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Wed Jun 25 15:57:15 CEST 2003 - sbrabec@suse.cz
+
+- Updated neededforbuild.
+- Added xfce and cleanice engines.
+
+-------------------------------------------------------------------
+Wed Mar 12 14:23:46 CET 2003 - sbrabec@suse.cz
+
+- Fixed prefix clash (fixes bug 25170).
+
+-------------------------------------------------------------------
+Thu Feb 06 11:54:15 CET 2003 - sbrabec@suse.cz
+
+- Fixed %files.
+- Added gtk-thinice-engine-2.0.2 to package.
+
+-------------------------------------------------------------------
+Wed Jan 29 08:38:48 CET 2003 - hhetter@suse.de
+
+- up to version 2.2.0 
+
+-------------------------------------------------------------------
+Wed Jan 15 00:04:33 CET 2003 - ro@suse.de
+
+- use wildcard in filelist for gtk2-version 
+
+-------------------------------------------------------------------
+Fri Jun 21 13:45:17 CEST 2002 - hhetter@suse.de
+
+- initial SuSE package 
+

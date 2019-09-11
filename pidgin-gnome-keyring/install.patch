@@ -1,0 +1,34 @@
+From e219f56050fe6d02ad474cc517251fd641b69b5b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matthias=20Mail=C3=A4nder?=
+ <Mailaender@users.noreply.github.com>
+Date: Sat, 28 Jan 2017 10:03:17 +0100
+Subject: [PATCH] Install to a system defined purple plugin folder
+
+---
+ Makefile | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 617522a..a9dc852 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,6 +7,8 @@ ifeq ($(strip $(VERSION)),)
+ 	VERSION = `git describe --tags`
+ endif
+ 
++PLUGINDIRPURPLE:=$(shell pkg-config --variable=plugindir purple)
++
+ all: ${TARGET}.so
+ 
+ clean: 
+@@ -18,8 +20,8 @@ ${TARGET}.so: ${TARGET}.c
+ 	${CC} ${CFLAGS} ${LDFLAGS} -Wall -I. -g -O2 ${TARGET}.c -o ${TARGET}.so -shared -fPIC -DPIC -ggdb ${PURPLEFLAGS} ${SECRETFLAGS} -DVERSION=\"${VERSION}\"
+ 
+ install: ${TARGET}.so
+-	mkdir -p ${DESTDIR}/usr/lib/purple-2/
+-	cp ${TARGET}.so ${DESTDIR}/usr/lib/purple-2/
++	mkdir -p ${DESTDIR}${PLUGINDIRPURPLE}
++	cp ${TARGET}.so ${DESTDIR}${PLUGINDIRPURPLE}
+ 
+ install_local: ${TARGET}.so
+ 	mkdir -p ~/.purple/plugins

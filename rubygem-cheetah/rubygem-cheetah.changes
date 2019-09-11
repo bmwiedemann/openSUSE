@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Sat Dec 19 05:30:47 UTC 2015 - coolo@suse.com
+
+- updated to version 0.5.0
+ see installed CHANGELOG
+
+  0.5.0 (2015-12-18)
+  ------------------
+  
+  * Added chroot option for executing in different system root.
+  * Added ENV overwrite option.
+  * Allowed to specify known exit codes that are not errors.
+  * Documented how to execute in different working directory.
+  * Allowed passing nil as :stdin to be same as :stdout and :strerr.
+  * Converted parameters for command to strings with `.to_s`.
+  * Adapted testsuite to new rspec.
+  * Updated documentation with various fixes.
+  * Dropped support for Ruby 1.9.3.
+  * Added support for Ruby 2.1 and 2.2.
+
+-------------------------------------------------------------------
+Wed Nov  5 15:50:28 UTC 2014 - thardeck@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Fri Nov 22 08:40:30 UTC 2013 - coolo@suse.com
+
+- updated to version 0.4.0
+ * Implemented incremental logging. The input and both outputs of the executed
+   command are now logged one-by-line by the default recorder. A custom recorder
+   can record them on even finer granularity.
+ * Dropped support of Ruby 1.8.7.
+ * Added support of Ruby 2.0.0.
+ * Internal code improvements.
+
+-------------------------------------------------------------------
+Fri Jun 22 12:12:11 UTC 2012 - jreidinger@suse.com
+
+- use gem2rpm-opensuse instead to get better result 
+
+-------------------------------------------------------------------
+Fri Jun 22 07:26:07 UTC 2012 - dmajda@suse.com
+
+- Removed the rpmlintrc file. We should make gem2rpm to produce RPMs that pass
+  rpmlint, not fix its bugs after the fact.
+- Regenerated the .spec file using gem2rpm.
+
+-------------------------------------------------------------------
+Thu Jun 21 14:36:59 UTC 2012 - dmajda@suse.com
+
+- Updated to version 0.3.0.
+
+-------------------------------------------------------------------
+Fri Apr  6 08:35:58 UTC 2012 - dmajda@suse.com
+
+- Attempted to fix rpmlint warnings produced by OBS.
+
+-------------------------------------------------------------------
+Fri Apr  6 07:45:05 UTC 2012 - dmajda@suse.com
+
+- Packaged version 0.2.0.
+

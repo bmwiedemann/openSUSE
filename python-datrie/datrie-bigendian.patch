@@ -1,0 +1,15 @@
+--- datrie-0.7.1/src/datrie.pyx	2018/03/15 17:07:17	1.1
++++ datrie-0.7.1/src/datrie.pyx	2018/03/15 17:09:19
+@@ -1108,8 +1108,10 @@
+     if length == 0:
+         length = cdatrie.alpha_char_strlen(key)*sizeof(cdatrie.AlphaChar)
+     cdef char* c_str = <char*> key
+-    return c_str[:length].decode('utf_32_le')
+-
++    if sys.byteorder == "big":
++        return c_str[:length].decode('utf_32_be')
++    else:
++        return c_str[:length].decode('utf_32_le')
+ 
+ def to_ranges(lst):
+     """

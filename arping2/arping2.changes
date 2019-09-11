@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Thu Aug 31 04:30:22 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.19
+  * Make `arping` -w/-W behave like `ping` and `iputils-arping`
+  * Add option -g to specify group to drop privs to
+
+-------------------------------------------------------------------
+Thu Dec  8 15:07:17 CET 2016 - aginies@suse.com
+
+- Update to new upstream release 2.17
+* Add padding to IP and MAC pings
+
+-------------------------------------------------------------------
+Thu Feb  4 08:41:36 UTC 2016 - mpluskal@suse.com
+
+- Update to 2.16
+- Add gpg signature
+
+-------------------------------------------------------------------
+Sun Jan 11 16:40:32 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.15
+* Add option -m to allow setting timestamp type
+
+-------------------------------------------------------------------
+Mon Aug 11 01:10:59 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.14
+* Drop privileges, where possible.
+* Added ability to send unsolicited replies, instead of requests
+  (-P option).
+* Quit after N replies, with -C <N>
+* Beeping (-a) now works in quiet (-q) and cisco (-D) mode.
+* Cisco mode (-D) now works when pinging MACs.
+* Work around libnet interface autodetection bug.
+* Added -W, like -w but in seconds.
+- Add arping-setgroups.diff to fix use of implicitly-declared
+  function
+
+-------------------------------------------------------------------
+Sun Dec 30 05:42:51 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.13
+* A bug with fractions of seconds with the -w option has been fixed
+* Gratuitous ARP supporting with the -U option
+
+-------------------------------------------------------------------
+Sun Jul  1 20:07:06 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.12
+* This release fixes a timing issue on BSD and adds a statistics
+  line with min/avg/max/std-dev.
+
+-------------------------------------------------------------------
+Wed Feb 29 07:21:54 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 2.11
+* Fixes a segfault introduced in 2.10
+
+-------------------------------------------------------------------
+Mon Feb 27 04:55:30 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 2.10
+* This release adds much improved and portable interface
+  autodetection. It replaces gettimeofday() with clock_gettime()
+  where available.
+
+-------------------------------------------------------------------
+Sat Sep 17 12:16:01 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Tue Jul 19 20:38:02 UTC 2011 - jengelh@medozas.de
+
+- Package imported to build.opensuse.org
+
+-------------------------------------------------------------------
+Sun Feb 27 23:10:07 UTC 2011 - jengelh@medozas.de
+
+- Adjust BuildRequires for openSUSE_11.4

@@ -1,0 +1,40 @@
+Fix build with libnotify 0.7
+
+Reported in upstream bug tracker at http://code.google.com/p/gnome-gmail-notifier/issues/detail?id=86
+Patch attached as http://gnome-gmail-notifier.googlecode.com/issues/attachment?aid=7808802110135663959&name=gnome-gmail-notifier-libnotify-0.7.patch&token=553edde5089734ddb9c57a04399095b8
+
+Index: gnome-gmail-notifier-0.10.1/src/ggn-icon.c
+===================================================================
+--- gnome-gmail-notifier-0.10.1.orig/src/ggn-icon.c
++++ gnome-gmail-notifier-0.10.1/src/ggn-icon.c
+@@ -32,6 +32,10 @@
+ #include <main.h>
+ #include "ggn-icon-priv.h"
+ 
++#ifndef NOTIFY_CHECK_VERSION
++#define NOTIFY_CHECK_VERSION(x,y,z) 0
++#endif
++
+ /*
+  * forward function definitions.
+  */
+@@ -566,12 +570,17 @@ gpointer ggn_icon_show_notification_thre
+   /* create a new notification. */
+   icon->priv->note = notify_notification_new (icon->priv->title,
+                                               icon->priv->summary,
+-                                              icon->priv->icon_file,
+-                                              NULL);
++                                              icon->priv->icon_file
++#if NOTIFY_CHECK_VERSION (0, 7, 0)
++                                              );
++  /* notify_notification_attach_to_status_icon dropped */
++#else
++                                              ,NULL);
+ 
+   /* attach the notification to our icon. */
+   notify_notification_attach_to_status_icon (icon->priv->note,
+                                              icon->priv->icon);
++#endif
+ 
+   /* set the notification timeout. */
+   notify_notification_set_timeout (icon->priv->note, (4 * 1000));

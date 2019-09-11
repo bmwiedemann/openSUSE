@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Tue Jul  2 14:57:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip one randomly failing test
+
+-------------------------------------------------------------------
+Tue May 22 09:28:48 UTC 2018 - tchvatal@suse.com
+
+- Cleanup to match up requirements and pass tests
+
+-------------------------------------------------------------------
+Thu Aug 24 13:58:10 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Tue Nov 15 10:10:15 UTC 2016 - dmueller@suse.com
+
+- update to 0.2.2
+
+-------------------------------------------------------------------
+Thu May 14 16:18:42 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.2.1:
+  * Remove testtools as an install requirement
+  * Changed attribute name "_child_watches" to "_child_watchers"
+  * Update run_zookeeper.sh
+- add runtime dependencies (python-kazoo, python-six) as build
+  dependencies to ensure their availability
+- remove python-testtools from runtime dependencies
+- add test dependencies python-nose and python-testtools
+- run the tests during build with nosetests
+
+-------------------------------------------------------------------
+Thu Feb 26 10:50:21 UTC 2015 - tbechtold@suse.com
+
+- update to version 0.2.0:
+   * Allow FORCE=yes override
+   * Update run_zookeeper.sh
+   * Release 0.2.0
+   * Ensure kill command is sent as byte string
+   * Result from command() should be regular string, not bytes
+   * Ensure commands are always byte strings
+   * Release 0.1.8
+   * Add basic envi command support
+   * Release 0.1.7
+   * Merge pull request #12 from kennethmyers/master
+   * Changed attribute name "_data_watches" to "_data_watchers".
+   * Unify the exception messaging for no node found                                    
+
+-------------------------------------------------------------------
+Sat Feb 21 06:46:04 UTC 2015 - dmueller@suse.com
+
+- add dependency on testtools (which is needed during runtime)
+
+-------------------------------------------------------------------
+Tue Sep 16 19:56:08 UTC 2014 - dmueller@suse.com
+
+- update to 0.1.6:
+  * Support for multi-client storage
+  * Bugfixes
+
+-------------------------------------------------------------------
+Tue Jun 24 07:21:50 UTC 2014 - dmueller@suse.com
+
+- update to 0.0.20:
+  * Added testsuite
+  * Use concurrent.future for greater good
+
+-------------------------------------------------------------------
+Wed Apr  2 08:02:53 UTC 2014 - speilicke@suse.com
+
+- Initial version
+

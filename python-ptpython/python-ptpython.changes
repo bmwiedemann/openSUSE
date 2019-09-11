@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Mon Jun  3 17:04:50 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix jupyter dependencies.
+- Update to 2.0.4
+  * Fixed ptipython.
+  * Fixed config: setting of color depth.
+  * Fixed auto-suggest key bindings.
+  * Fixed Control-D key binding for exiting REPL when (confirm_exit=False).
+  * Correctly focus/unfocus sidebar.
+  * Fixed open_in_editor and suspend key bindings.
+
+-------------------------------------------------------------------
+Mon Feb  4 19:03:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim conjecture from descriptions.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:46 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Oct 26 15:41:55 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 2.0.3
+  * Allow changing the min/max brightness.
+  * Some changes for compatibility with the latest prompt_toolkit.
+- Update to version 2.0.2
+  * Don't crash the history browser when there was no history.
+  * Set last exception in the sys module, when an exception was
+    raised.
+  * Require prompt_toolkit 2.0.5.
+- Update to version 2.0.1
+  * Upgrade to prompt_toolkit 2.0.x.
+- Split IPython support into its own subpackage and make it
+  python3-only. Due to the python2 version of IPython using
+  prompt_toolkit 1.x and both the python3 version of IPython
+  and Ptpython using prompt_toolkit 2.x, the python2 version of
+  Ptpython cannot be used with IPython anymore.
+
+-------------------------------------------------------------------
+Thu May 24 17:38:09 UTC 2018 - toddrme2178@gmail.com
+
+- spec file cleanups
+
+-------------------------------------------------------------------
+Wed Oct 18 16:45:24 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 0.41
+  * See changelog at https://github.com/jonathanslenders/ptpython/blob/da2c5281f60c2d8a92749709219771ffaa84220f/CHANGELOG
+
+-------------------------------------------------------------------
+Thu Mar  5 10:21:06 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version

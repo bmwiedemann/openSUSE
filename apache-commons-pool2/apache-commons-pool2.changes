@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Mon Mar 25 17:47:40 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove pom parent, since we don't use it when not building with
+  maven
+
+-------------------------------------------------------------------
+Thu Dec 13 11:27:43 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Add maven pom file
+
+-------------------------------------------------------------------
+Tue May 15 13:19:59 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+- Run fdupes on documentation
+
+-------------------------------------------------------------------
+Thu Sep 14 14:55:25 UTC 2017 - fstrba@suse.com
+
+- Fix javadoc build
+
+-------------------------------------------------------------------
+Thu Sep 29 11:24:32 UTC 2016 - tchvatal@suse.com
+
+- Version update to 2.4.2 release from pool2:
+  * rename to latest 2.x pool series for dbcp and other packages
+
+-------------------------------------------------------------------
+Thu Sep 29 10:59:24 UTC 2016 - tchvatal@suse.com
+
+- Rename from jakarta-commons-pool to apache-commons-pool
+- Version update to 1.6:
+  * drop the tomcat5 package, we need pool2 to work with new tomcat
+  * Last and final from the pool1 series, new pool2 was introduced
+    for future developement.
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:48 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Thu Mar 13 17:07:19 CET 2008 - mvyskocil@suse.cz
+
+- merged with jpackage 1.7
+- update to 1.3
+- changes in BuildRequires:
+  - java2-deve-packages was substituded by java-devel
+  - added a junit
+  - added a maven build support and maven related BuildRequires
+  - xml-commons-apis was moved to the maven build branch
+- added a gcj build support
+- included a maven depmap files
+- remove a source=1.4 from build and a java14compat patch
+- provides and obsoletes of main package contains the version
+- new tomcat5 subpackage
+- new manual subpackage (build only with maven)
+
+-------------------------------------------------------------------
+Fri Sep 15 15:05:27 CEST 2006 - ro@suse.de
+
+- set source=1.4 for java 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:38 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jul 28 13:53:21 CEST 2005 - jsmeix@suse.de
+
+- Adjustments in the spec file.
+
+-------------------------------------------------------------------
+Mon Jul 18 16:28:18 CEST 2005 - jsmeix@suse.de
+
+- Current version 1.2 from JPackage.org
+
+-------------------------------------------------------------------
+Thu Sep 16 15:49:57 CEST 2004 - skh@suse.de
+
+- Fix prerequires of javadoc subpackage
+
+-------------------------------------------------------------------
+Thu Sep  2 18:58:54 CEST 2004 - skh@suse.de
+
+- Initial package created with version 1.2 (JPackage 1.5)
+

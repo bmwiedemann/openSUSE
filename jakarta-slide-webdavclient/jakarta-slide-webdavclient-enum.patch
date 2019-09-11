@@ -1,0 +1,40 @@
+--- jakarta-slide-webdavclient-src-2.1/commandline/src/java/org/apache/webdav/cmd/Client.java	2017-09-18 17:22:32.161020568 +0200
++++ jakarta-slide-webdavclient-src-2.1/commandline/src/java/org/apache/webdav/cmd/Client.java	2017-09-18 17:23:17.885021349 +0200
+@@ -368,14 +368,14 @@
+             if (param != null) {
+                 if (!param.startsWith("/")) {
+                     httpURL = uriToHttpURL(param);
+-                    Enumeration enum = null;
++                    Enumeration emun = null;
+                     try {
+                         // OPTIONS business logic
+-                        enum =
++                        emun =
+                             webdavResource.optionsMethod(httpURL);
+-                        while (enum.hasMoreElements()) {
+-                            out.print(enum.nextElement());
+-                            if (enum.hasMoreElements()) {
++                        while (emun.hasMoreElements()) {
++                            out.print(emun.nextElement());
++                            if (emun.hasMoreElements()) {
+                                 out.print(", ");
+                             } else {
+                                 out.println();
+@@ -399,13 +399,13 @@
+                                     // OPTIONS business logic
+                                     httpURL.setUserinfo(userName,
+                                         password);
+-                                    enum = webdavResource.
++                                    emun = webdavResource.
+                                         optionsMethod(httpURL);
+                                     while (
+-                                        enum.hasMoreElements()) {
++                                        emun.hasMoreElements()) {
+                                         out.print
+-                                            (enum.nextElement());
+-                                        if (enum.
++                                            (emun.nextElement());
++                                        if (emun.
+                                             hasMoreElements()) {
+                                             out.print
+                                                 (", ");

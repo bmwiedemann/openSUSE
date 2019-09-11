@@ -1,0 +1,142 @@
+Index: PackageKit-1.1.12/data/Makefile.am
+===================================================================
+--- PackageKit-1.1.12.orig/data/Makefile.am
++++ PackageKit-1.1.12/data/Makefile.am
+@@ -9,12 +9,16 @@ SUBDIRS = 						\
+ upgradescriptdir = $(datadir)/PackageKit
+ upgradescript_SCRIPTS = pk-upgrade-distro.sh
+ 
++backgroundscriptdir = $(datadir)/PackageKit
++backgroundscript_SCRIPTS = packagekit-background.sh
++
+ dbusdir = ${DBUS_SYS_DIR}
+ dist_dbus_DATA = 					\
+ 	org.freedesktop.PackageKit.conf
+ 
+ %.service: %.service.in Makefile
+ 	$(AM_V_GEN)sed -e 's|\@libexecdir\@|$(libexecdir)|' \
++	               -e 's|\@datadir\@|$(datadir)|' \
+ 	               -e 's|\@PACKAGEKIT_USER\@|$(PACKAGEKIT_USER)|' $< > $@.tmp && mv $@.tmp $@
+ 
+ servicemaindir       = $(DBUS_SERVICES_DIR)
+@@ -23,14 +27,18 @@ servicemain_DATA     = $(servicemain_in_
+ 
+ systemdservice_in_files =				\
+ 	packagekit.service.in				\
++	packagekit-background.service.in	\
+ 	packagekit-offline-update.service.in
+ 
+ if HAVE_SYSTEMD
+ systemdservicedir       = $(systemdsystemunitdir)
+ systemdservice_DATA	= packagekit.service
++systemdservice_DATA += packagekit-background.service
+ if ENABLE_OFFLINE_UPDATE
+ systemdservice_DATA	+= packagekit-offline-update.service
+ endif
++systemdtimerdir       = $(systemdsystemunitdir)
++systemdtimer_DATA = packagekit-background.timer
+ endif
+ 
+ 
+@@ -54,9 +62,11 @@ EXTRA_DIST =						\
+ 	$(servicetest_in_files)				\
+ 	$(serviceapt_in_files)				\
+ 	$(systemdservice_in_files)			\
++	$(systemdtimer_DATA)			\
+ 	$(localcache_DATA)				\
+ 	$(database_DATA)				\
+-	$(upgradescript_SCRIPTS)
++	$(upgradescript_SCRIPTS)		\
++	$(backgroundscript_SCRIPTS)
+ 
+ clean-local:
+ 	rm -f *~
+Index: PackageKit-1.1.12/data/packagekit-background.service.in
+===================================================================
+--- /dev/null
++++ PackageKit-1.1.12/data/packagekit-background.service.in
+@@ -0,0 +1,5 @@
++[Unit]
++Description=Script to update the system with PackageKit
++
++[Service]
++ExecStart=@datadir@/PackageKit/packagekit-background.sh
+Index: PackageKit-1.1.12/data/packagekit-background.sh
+===================================================================
+--- /dev/null
++++ PackageKit-1.1.12/data/packagekit-background.sh
+@@ -0,0 +1,58 @@
++#!/bin/bash
++# Copyright (C) 2008 Richard Hughes <richard@hughsie.com>
++#
++# Some material taken from yum-cron, Copyright 2007 Alec Habig <ahabig@umn.edu>
++#
++# Licensed under the GNU General Public License Version 2
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 2 of the License, or
++# (at your option) any later version.
++
++[ -f /etc/sysconfig/packagekit-background ] && . /etc/sysconfig/packagekit-background
++
++# are we disabled?
++if [ "$ENABLED" = "no" ]; then
++	exit 0
++fi
++
++# set default for SYSTEM_NAME
++[ -z "$SYSTEM_NAME" ] && SYSTEM_NAME=$(hostname)
++
++PKTMP=$(mktemp /var/run/packagekit-cron.XXXXXX)
++PKCON_OPTIONS="--background --noninteractive --plain"
++if [ "$UPDATE_OFFLINE" = "yes" ]; then
++	ONLY_DOWNLOAD="--only-download"
++else
++	ONLY_DOWNLOAD=""
++fi
++
++# wait a random amount of time to avoid hammering the servers
++[ -z "$SLEEP_MAX" ] && SLEEP_MAX=$RANDOM
++sleep $(( $RANDOM % $SLEEP_MAX + 1 ))
++
++# do action
++if [ "$CHECK_ONLY" = "yes" ]; then
++	pkcon $PKCON_OPTIONS get-updates &> $PKTMP
++	PKCON_RETVAL=$?
++else
++	pkcon $PKCON_OPTIONS $ONLY_DOWNLOAD update &> $PKTMP
++	PKCON_RETVAL=$?
++	if [ $PKCON_RETVAL -eq 0 -a "$UPDATE_OFFLINE" = "yes" ]; then
++		pkcon $PKCON_OPTIONS offline-trigger &> $PKTMP
++	fi
++fi
++
++# this is when seomthing useful was done
++if [ $PKCON_RETVAL -ne 5 ]; then
++	# send email
++	if [ -n "$MAILTO" ]; then
++		mail -s "System updates available: $SYSTEM_NAME" $MAILTO < $PKTMP
++	else
++		# default behavior is to use cron's internal mailing of output from cron-script
++		cat $PKTMP
++	fi
++fi
++
++rm -f $PKTMP
++
+Index: PackageKit-1.1.12/data/packagekit-background.timer
+===================================================================
+--- /dev/null
++++ PackageKit-1.1.12/data/packagekit-background.timer
+@@ -0,0 +1,11 @@
++[Unit]
++Description=Systemd timer to update the system daily with PackageKit
++
++[Timer]
++OnCalendar=daily
++AccuracySec=12h
++Persistent=true
++Unit=packagekit-background.service
++
++[Install]
++WantedBy=timers.target

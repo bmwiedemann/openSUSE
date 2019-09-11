@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Tue May  8 06:04:16 UTC 2018 - coolo@suse.com
+
+- updated to 2.021
+   see /usr/share/doc/packages/perl-Test-Manifest/Changes
+
+  2.021 2018-05-08T02:47:56Z
+        * Clarify that it's the Artistic License 2.0
+
+  2.02_01 2016-06-07T20:39:40Z
+        * Start tracking down odd get_test_files failures.
+
+-------------------------------------------------------------------
+Tue Apr 14 18:13:57 UTC 2015 - coolo@suse.com
+
+- updated to 2.02
+   see /usr/share/doc/packages/perl-Test-Manifest/Changes
+
+  Changes for Test::Manifest
+  
+  2.02 - Tue Aug 26 13:01:43 2014
+  	Fix rt.cpan.org #98288: fix a spelling mistake
+  
+  2.00_001 - Thu Jul 11 20:22:40 2013
+  	* Switch back to Makefile.PL—so much simpler
+  
+  2.00_01 - Wed Jul 20 01:02:11 2011
+  	* Work with Module::Build by supplying a subclass.
+  
+  1.23 - Fri Jul 17 03:04:38 2009
+  	* Move everything to git and finally make a release
+
+-------------------------------------------------------------------
+Fri Nov 18 11:10:06 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Feb  2 13:41:30 UTC 2011 - vcizek@novell.com
+
+- bzipped source tarball 
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:49 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Aug 27 15:44:17 UTC 2010 - chris@computersalat.de
+
+- update to 1.23
+  * Fixed bug for missing file: previously the missing file
+    name was passed through to run_t_files, although without
+    the t/ added to its path. Test::Manifest should only
+    warn about and skip missing files.
+- 1.22_03 - Tue Jul 29 21:14:49 2008
+  * Fixed bug for missing file: previously the missing file
+    name was passed through to run_t_files, although without
+    the t/ added to its path. Test::Manifest should only
+    warn about and skip missing files.
+- recreated by cpanspec 1.78
+- noarch pkg
+
+-------------------------------------------------------------------
+Tue Aug 10 15:31:05 CEST 2010 - anicka@suse.cz
+
+- state license correctly (bnc#627747) 
+
+-------------------------------------------------------------------
+Mon Aug  2 08:47:46 UTC 2010 - anicka@suse.cz
+
+- initial package
+

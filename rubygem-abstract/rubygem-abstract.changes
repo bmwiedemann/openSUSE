@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Mon Jan 12 17:00:17 UTC 2015 - jmassaguerpla@suse.com
+
+- update to new gem2rpm scheme 
+
+-------------------------------------------------------------------
+Mon Mar 26 13:46:20 UTC 2012 - cfarrell@suse.com
+
+- license update: Ruby
+  See README.txt
+
+-------------------------------------------------------------------
+Thu Jun 10 14:10:15 UTC 2010 - mrueckert@suse.de
+
+- spec file cleanup
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Wed Sep 30 20:26:20 CEST 2009 - mrueckert@suse.de
+
+- package documentation
+
+-------------------------------------------------------------------
+Wed Jun 21 00:59:38 CEST 2006 - mrueckert@suse.de
+
+- use rubygems_with_buildroot_patch instead of the versioned
+  buildrequires
+
+-------------------------------------------------------------------
+Mon Jun 19 21:30:13 CEST 2006 - mrueckert@suse.de
+
+- Initial package version 1.0.0
+

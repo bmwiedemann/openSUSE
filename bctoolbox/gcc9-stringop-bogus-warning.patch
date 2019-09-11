@@ -1,0 +1,23 @@
+diff --git a/src/logging/logging.c b/src/logging/logging.c
+index 7252840..0f135fa 100644
+--- a/src/logging/logging.c
++++ b/src/logging/logging.c
+@@ -305,6 +305,9 @@ char *bctbx_strdup_printf(const char *fmt,...){
+ 	return ret;
+ }
+ 
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wstringop-truncation"
++
+ char * bctbx_strcat_vprintf(char* dst, const char *fmt, va_list ap){
+ 	char *ret;
+ 	size_t dstlen, retlen;
+@@ -326,6 +329,8 @@ char * bctbx_strcat_vprintf(char* dst, const char *fmt, va_list ap){
+ 	}
+ }
+ 
++#pragma GCC diagnostic pop
++
+ char *bctbx_strcat_printf(char* dst, const char *fmt,...){
+ 	char *ret;
+ 	va_list args;

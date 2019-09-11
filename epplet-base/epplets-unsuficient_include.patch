@@ -1,0 +1,10 @@
+--- epplets/CalcEphem.h
++++ epplets/CalcEphem.h
+@@ -1,6 +1,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <math.h>
++#include <string.h>
+ 
+ #define DegPerRad       57.29577951308232087680
+ #define RadPerDeg        0.01745329251994329576

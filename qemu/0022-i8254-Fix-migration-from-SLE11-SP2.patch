@@ -1,0 +1,42 @@
+From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+Date: Wed, 31 Jul 2013 17:05:29 +0200
+Subject: i8254: Fix migration from SLE11 SP2
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+qemu-kvm 0.15 had a VMSTATE_UINT32(flags, PITState) field that
+qemu 1.4 does not have.
+
+Addresses part of BNC#812836.
+
+Signed-off-by: Andreas Färber <afaerber@suse.de>
+---
+ hw/timer/i8254_common.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/hw/timer/i8254_common.c b/hw/timer/i8254_common.c
+index 6190b6fc5d..177b1acf37 100644
+--- a/hw/timer/i8254_common.c
++++ b/hw/timer/i8254_common.c
+@@ -259,6 +259,12 @@ static int pit_dispatch_post_load(void *opaque, int version_id)
+     return 0;
+ }
+ 
++static bool is_qemu_kvm(void *opaque, int version_id)
++{
++    /* HACK: We ignore incoming migration from upstream qemu */
++    return version_id < 3;
++}
++
+ static const VMStateDescription vmstate_pit_common = {
+     .name = "i8254",
+     .version_id = 3,
+@@ -268,6 +274,7 @@ static const VMStateDescription vmstate_pit_common = {
+     .pre_save = pit_dispatch_pre_save,
+     .post_load = pit_dispatch_post_load,
+     .fields = (VMStateField[]) {
++        VMSTATE_UNUSED_TEST(is_qemu_kvm, 4),
+         VMSTATE_UINT32_V(channels[0].irq_disabled, PITCommonState, 3),
+         VMSTATE_STRUCT_ARRAY(channels, PITCommonState, 3, 2,
+                              vmstate_pit_channel, PITChannelState),

@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Mon Jan  1 12:37:03 UTC 2018 - tchvatal@suse.com
+
+- Version update to 0.1.2:
+  * Fix several issues identified by Coverity.
+  * Parse paragraph and cell borders.
+  * Improve parsing of lists.
+  * Fix build with boost >= 1.59.
+  * Make the output of abw2* --help more compatible with help2man.
+  * Fix various problems when parsing broken files found by oss-fuzz.
+  * Require C++11 for build.
+  * Parse fields. (tdf#74466)
+  * Parse floating (not inline) images. (tdf#74463)
+  * Parse text boxes.
+  * Drop outdated MSVC project files.
+  * Set minimal width/height of inline images (which usually do not have
+    dimensions set in the file) to 1 inch. (tdf#74462)
+
+-------------------------------------------------------------------
+Wed Feb  1 12:39:55 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Thu Mar 24 14:13:45 UTC 2016 - tchvatal@suse.com
+
+- Add copying also to the library shipped
+
+-------------------------------------------------------------------
+Wed Nov 11 11:07:21 UTC 2015 - idonmez@suse.com
+
+- Fix compilation with boost 1.59 
+
+-------------------------------------------------------------------
+Tue Jan 13 12:46:20 UTC 2015 - tchvatal@suse.com
+
+- Change the url to new one
+
+-------------------------------------------------------------------
+Mon Dec 22 10:04:30 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 0.1.1:
+  * Various small fixes
+
+-------------------------------------------------------------------
+Wed Aug 13 14:20:28 CEST 2014 - fcrozat@suse.com
+
+- Fix source url.
+
+-------------------------------------------------------------------
+Mon May 26 09:34:24 UTC 2014 - fstrba@suse.com
+
+- Upgrade to upstream version 0.1.0
+  * ABI change
+  * Remove dependency on libwpd-devel
+  * Add dependency on librevenge-devel
+
+-------------------------------------------------------------------
+Tue May 20 14:24:59 UTC 2014 - tchvatal@suse.com
+
+- Fix build on SLE11.
+
+-------------------------------------------------------------------
+Wed Apr 30 01:45:08 UTC 2014 - crrodriguez@opensuse.org
+
+- This package also needs -fvisibility-inlines-hidden to
+  cut down the bloat of the exported symbol table in around 200
+  symbols less.
+
+-------------------------------------------------------------------
+Mon Mar 10 18:20:00 UTC 2014 - fstrba@suse.com
+
+- Fix descriptions in spec file
+  * libabw handles AbiWord files
+- Fix license
+  * libabw is released under MPL-2.0
+
+-------------------------------------------------------------------
+Tue Feb 25 19:52:49 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 0.0.2:
+  * various bugfixes
+  * build fixes with various boost versions.
+
+-------------------------------------------------------------------
+Fri Jan 17 19:00:13 UTC 2014 - tchvatal@suse.com
+
+- Initial commit, package will be required with libreoffice 4.2
+

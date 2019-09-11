@@ -1,0 +1,18 @@
+--- ksym.c
++++ ksym.c	2001-05-23 18:54:18.000000000 +0000
+@@ -345,6 +345,7 @@ static char * FindSymbolFile()
+ 		if ( (sym_file = fopen(symfile, "r")) != (FILE *) 0 ) {
+ 			if (CheckMapVersion(symfile) == 1)
+ 				file = symfile;
++			fclose(sym_file);
+ 		}
+ 		if (sym_file == (FILE *) 0 || file == (char *) 0) {
+ 			sprintf (symfile, "%s", *mf);
+@@ -353,6 +354,7 @@ static char * FindSymbolFile()
+ 			if ( (sym_file = fopen(symfile, "r")) != (FILE *) 0 ) {
+ 				if (CheckMapVersion(symfile) == 1)
+ 					file = symfile;
++				fclose(sym_file);
+ 			}
+ 		}
+ 

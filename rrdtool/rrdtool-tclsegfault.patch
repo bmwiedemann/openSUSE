@@ -1,0 +1,30 @@
+Index: bindings/tcl/tclrrd.c
+===================================================================
+--- bindings/tcl/tclrrd.c.orig
++++ bindings/tcl/tclrrd.c
+@@ -472,6 +472,12 @@ static int Rrd_Graph(
+     char    **argv2;
+     CONST84 char *save;
+ 
++    if (argc < 2) {
++        Tcl_AppendResult(interp, "RRD Error: needs image filename",
++                         (char *) NULL);
++        return TCL_ERROR;
++    }
++
+     /*
+      * If the "filename" is a Tcl fileID, then arrange for rrd_graph() to write to
+      * that file descriptor.  Will this work with windoze?  I have no idea.
+@@ -597,6 +603,12 @@ static int Rrd_Resize(
+ {
+     char    **argv2;
+ 
++    if (argc < 2) {
++        Tcl_AppendResult(interp, "RRD Error: needs rrd filename",
++                         (char *) NULL);
++        return TCL_ERROR;
++    }
++
+     argv2 = getopt_init(argc, argv);
+     rrd_resize(argc, argv2);
+     getopt_cleanup(argc, argv2);

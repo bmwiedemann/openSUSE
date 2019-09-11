@@ -1,0 +1,2 @@
+addFilter("binaryinfo-readelf-failed")  # go binaries are suposedly ELF-compliant
+addFilter("no-manual-page-for-binary")

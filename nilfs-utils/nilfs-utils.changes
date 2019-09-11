@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Sat Jul 25 12:04:17 UTC 2015 - mpluskal@suse.com
+
+- Update to 2.2.3
+  * lscp: accelerate backward checkpoint listing
+  * lib/nilfs.c: fix potential leak at nilfs_open()
+  * get rid of unnecessary null checks before calling free()
+  * get rid of my_free() wrapper function
+- Changes for 2.2.2
+  * mount.nilfs2: invoke cleanerd even if no-mtab option is specified;
+    this fixes failure of cleanerd invocation under systemd 216+.
+  * lscp: always show snapshots, even if marked minor.
+- Changes for 2.2.1
+  * nilfs-clean: do not override min_reclaimable_blocks if -m option
+    is not used.
+  * nilfs_cleanerd.conf: try to use set_suinfo ioctl by default
+  * nilfs_cleanerd.conf: set min_reclaimable_blocks parameter to 10
+    percent to more reduce relocation of static data.
+  * libnilfs: set errno when device doesn't contain valid NILFS data
+  * mkfs.nilfs2: fix gcc warning "array subscript is above array bounds"
+  * bin/*: improve error message on failure of nilfs_open()
+  * install nilfs-* executables to /usr/sbin to resolve warnings of
+    adequate (Debian package quality testing tool).
+  * nilfs_cleanerd: link libraries statically to make nilfs_cleanerd
+    self-contained in /sbin directory.
+  * fix typos in messages, manpages, source files, and ChangeLog file.
+- Changes for 2.2.0
+  * lscp: show block count by default
+  * lssu: add option to print count of live blocks
+  * lssu: display "p" flag on protected segments
+  * fix build of dist archives
+  * lib/gc.c: refactor reclaim function
+  * lib/gc.c: add optimized version of nilfs_xreclaim_segments
+  * cleanerd: use nilfs_xreclaim_segment()
+  * cleanerd: add a no_timeout flag to enable faster loop
+  * lib/nilfs.c: add support for NILFS_IOCTL_SET_SUINFO ioctl
+  * lib/nilfs.c: add NILFS_OPT_SET_SUINFO
+  * nilfs-clean: add cmdline param min-reclaimable-blocks
+  * move generic macros into util.h
+  * fix coding style issues
+  * bump up version of nilfs-utils written in manpages  
+- Build devel package
+- Split shared libraries to separate packages
+
+-------------------------------------------------------------------
+Fri Mar 27 17:28:52 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Clenup spec-file with spec-cleaner
+- Update to 2.1.6:
+  * cleanerd: fix wrong cleaner speed of manual clean mode
+  * add missing initializations of ioctl arguments
+  * cleanerd: adjust the OOM killer
+  * mkfs: check sizes of important structs at build time
+  * cleanerd: rework daemonize() of cleanerd
+  * cleaner_exec.c: get process ID of cleanerd through pipe
+  * mount.nilfs2: ensure that gcpid option is dropped if the value
+    is zero
+  * lib/nilfs.c: remove broken readonly fs check at nilfs_sync()
+  * lib/nilfs.c: add missing comments of API functions
+  * allow to make without libblkid
+  * remove redundant selinux library references
+  * compile legacy {mount,umount}.nilfs2 with libselinux
+  * add --with-libmount build option
+  * add checkpatch script
+  * fix many coding style issues
+  * a minor update in lscp manpage
+  * update README file
+  * update AUTHORS file  
+
+-------------------------------------------------------------------
+Mon Jul 23 17:39:39 CEST 2012 - tiwai@suse.de
+
+- Update to version 2.1.4: Major version up, addition of
+  nilfs-cleanup and nilfs-resize programs, etc.
+  See ChangeLog for details
+- Enable libmount for avoiding the read-only /etc/mtab problem
+  (bnc#773184)
+
+-------------------------------------------------------------------
+Sat May 26 10:40:56 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Nov 29 09:53:41 CET 2011 - tiwai@suse.de
+
+- fix License tag to GPL-2.0 only (bnc#733051)
+
+-------------------------------------------------------------------
+Sun Nov 27 06:44:10 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Jun  6 09:22:26 UTC 2011 - aj@suse.de
+
+- Fix build with new glibc.
+
+-------------------------------------------------------------------
+Mon Jul 20 08:08:08 CEST 2009 - tiwai@suse.de
+
+- updated to version 2.0.14:
+  * fix privilege escalation vulnerability in mkfs.nilfs2
+  * make the invocation of badblocks safer
+  * fix failure of nilfs_open for devices aliased as a symlink
+  * add -p option to cleanerd which overrides protection period
+  * fix code checker warnings reported by Eric Sandeen
+  * drop suid/sgid in proper order when invoking cleaner
+  * drop other suid bits for safety
+  * code cleanups
+
+-------------------------------------------------------------------
+Wed Jun 24 08:00:29 CEST 2009 - tiwai@suse.de
+
+- updated to version 2.0.13:
+  * The reported cleanerd failure on mount was fixed
+  * The rmcp command was enhanced so that it can handle range of
+    checkpoint numbers
+
+-------------------------------------------------------------------
+Thu Jun  4 00:32:20 CEST 2009 - tiwai@suse.de
+
+- initial version: 2.0.12
+

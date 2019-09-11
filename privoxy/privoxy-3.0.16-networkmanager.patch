@@ -1,0 +1,24 @@
+--- privoxy_nm
++++ privoxy_nm
+@@ -0,0 +1,20 @@
++#! /bin/sh
++#
++# privoxy - rerun privoxy in response to interface change
++#
++# Ladislav Michnovic <lmichnovic@suse.cz>
++# This script should go into /etc/NetworkManager/dispatcher.d/ directory.
++. /etc/rc.status
++
++case "$2" in
++    up)
++        #if privoxy is running or is activated in some runlevel restart it
++        ( checkproc /usr/sbin/privoxy || rc_active privoxyd ) && /etc/init.d/privoxyd restart
++        ;;
++    down)
++        ( checkproc /usr/sbin/privoxy || rc_active privoxyd ) && /etc/init.d/privoxyd restart
++        ;;
++    *)
++        exit 0
++        ;;
++esac
++

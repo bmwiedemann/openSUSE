@@ -1,0 +1,16 @@
+#
+# Froxlor logrotate snipet
+#
+/srv/customers/logs/*.log {
+  missingok
+  weekly
+  rotate 4
+  compress
+  delaycompress
+  notifempty
+  create
+  sharedscripts
+  postrotate
+  systemctl reload apache2 > /dev/null 2>&1 || true
+  endscript
+}

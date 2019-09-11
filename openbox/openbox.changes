@@ -1,0 +1,909 @@
+-------------------------------------------------------------------
+Wed Oct 14 13:47:48 UTC 2015 - dimstar@opensuse.org
+
+- Add xsltproc Requires: /usr/bin/openbox-pipemenu launches
+  xsltproc to build up the menu (boo#949357).
+
+-------------------------------------------------------------------
+Fri Aug  7 14:05:59 UTC 2015 - jengelh@inai.de
+
+- Implement the shared library packaging style
+- Resolve rpmlint warning: files-duplicate
+  /usr/share/doc/packages/openbox/xbm/shade.xbm
+  /usr/share/doc/packages/openbox/xbm/shade_toggled.xbm
+
+-------------------------------------------------------------------
+Thu Jul 30 19:26:15 UTC 2015 - trcs@gmx.com
+
+- update to 3.6.1:
+  * Bump ABI version of libobrender that should have been done in
+    3.6
+  * Added various new abilities to If action, including the <query>
+    tag, matching class, name, role and window type.
+  * Added ForEach action.
+  * Restore the <center> option for window placement.
+  * New GrowToFill action.
+  * Updated Portuguese and Polish translations.
+  * New Galician translation.
+  * Added strict option to ToggleShowDesktop action.
+  * Speed optimization in rendering code.
+  * New <position> tag for ShowMenu action allows placing menus
+    other than at the mouse cursor.
+  * Fix some corner cases of relative position to work correctly.
+  * Allow specifying multiple mousebinds in one tag as we already
+    do for keybinds (separated by spaces, as "W-Return M-S-F3" for
+    example).
+  * Added option rebindOnMappingNotify option, on by default, which
+    controls if we update binds when the keyboard layout changes at
+    runtime.
+  * The resize action now only considers the part of the client
+    that is onscreen for purposes of picking an action to perform.
+  * Make desktop actions non-interactive (means you can have more
+    actions bound to a key after them, and the dialog disappears on
+    a timer instead of when releasing the modifier keys).
+  * obxprop is now not pathologically slow when printing very long
+    arrays.
+  * Fix menu accelerator underlines sometimes not showing up.
+  * Fix so you can click menu entries before the menuHideDelay
+    expires if it's a new click.
+  * Don't readd the X event fd to the poll set every time we
+    reconfigure.
+  * Fix some specialized button bitmaps not loading from the
+    correct files. (toggled + pressed or hover would just be the
+    base toggled image).
+  * Various small bugfixes.
+- spec file clean-up
+  * removed unnecessary Requires: libxslt-tools
+  * removed unnecessary %clean section
+- Removed unnecessary patch:
+  * openbox-3.5-2-toggled_hover-toggled_pressed-bitmaps-ignored.patch
+- Removed openbox-3.5.2-return.patch
+- Added openbox-3.6.1-return.patch to fix a new 
+  no-return-in-nonvoid-function error in actions/if.c
+  * openbox-3.5.2-return.patch is included in this patch
+
+-------------------------------------------------------------------
+Fri Mar  6 14:38:59 UTC 2015 - trcs@gmx.com
+
+- added openbox-3.5-2-toggled_hover-toggled_pressed-bitmaps-ignored.patch
+  * fixes https://bugzilla.icculus.org/show_bug.cgi?id=6065
+- spec file cleanup
+  * removed checks for discontinued openSUSE versions
+  * removed explicit dependency libxslt to fix RPMLINT warning
+  * renamed README.SuSE to README.SUSE to fix RPMLINT warning
+
+-------------------------------------------------------------------
+Mon Oct  6 17:01:56 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Fixup previous changes: explicitly add pkgconfig(sm), pkgconfig(ice)
+  and pkgconfig(x11), otherwise packages linking against obrender
+  fail unless they also require those libraries for themselves.
+  The are not picked up by dependancy generator, as they are hidden
+  behind a var and added to Libs section
+
+-------------------------------------------------------------------
+Wed Sep 24 02:25:13 UTC 2014 - crrodriguez@opensuse.org
+
+- In the previous change I forgot to remove xorg-x11-devel 
+  from the -devel package requires. Remove *all* hardcoded
+  deps of that package and let pkgconfig dependency generator
+  pick the correct packages for us.
+
+-------------------------------------------------------------------
+Mon Sep 15 20:44:30 UTC 2014 - crrodriguez@opensuse.org
+
+- Cleanup BuildRequires so only exactly what is required is 
+  pulled for build, in particular avoid using metapackage 
+  xorg-x11-dev.
+- Enable verbose build.
+- Use --disable-static instead of just removing the libraries.
+- removed unused openbox-no_nb.patch patch
+
+-------------------------------------------------------------------
+Thu Apr 10 13:20:51 UTC 2014 - mq@suse.com
+
+- fixed xsession file to run openbox-session (BNC 806790) instead of directly
+  the openbox binary
+
+-------------------------------------------------------------------
+Tue Aug 13 06:33:04 UTC 2013 - pascal.bleser@opensuse.org
+
+- update to 3.5.2:
+  * Fix crash in theme rendering code, and in theme parsing code.
+  * Maximize windows without borders to fill the whole screen, don't leave a
+    one-pixel empty space. (Bug #5996)
+- changes from 3.5.1:
+  * New translations: Afrikaans, Belarusian, Interlingua, Hebrew, Romanian,
+    Greek.
+  * Updated translations: Italian, Serbian, Spanish, Czech, Hungarian, Turkish,
+    German, Arabic, Polish, Dutch, Lithuanian, Portuguese, Estonian.
+  * SVG icon support
+  * Allow application rules to control window size with a new <size> tag.
+  * Allow application rules to pick a monitor for new windows without forcing
+    a position.
+  * Allow non-interactive focus cycling with a new <interactive> tag.
+  * New LeastOverlap window placement policy replaces the old default
+    behaviour. It finds a place on a given monitor that overlaps as few
+    windows as possible. Contributed by Ian Zimmerman.
+  * Improved Xinerama behaviour.
+  * Correctly interface with latest gnome-session for Gnome/Openbox X sessions.
+  * Allow third-party control of window opacity in compositing managers.
+  * Improved themeing options. Contributed by Dave Foster.
+  * Add <monitor>, <title type="regex">, <title type="exact"> and
+    <activedesktop> options to If action.
+  * Addresses bugs #4661, #5506, #5186, #5758, #5410, #5228, #5277, #5731,
+    #5746, #5737, #5419, #5721, #5711, #5385, #5500, #4992, #5443, #5518,
+    #5444, #4782, #5237, #5228, #5173, #5203, #5246, #5180, #5179, #5150,
+    #5132, #4937, #4889, #5253, #3769, #5819, #5811, #5081, #5426 among others.
+
+- add imlib2 support
+- add rsvg and cairo support on openSUSE >= 12.3
+- packager changelog:
+  * dropped openbox-3.5.0-moveresize.patch, merged upstream [bio#5460]
+  * rewrote openbox-3.5.0-return.diff to openbox-3.5.2-return.patch
+  * use perl regex instead of patch to rename no to nb in LINGUAS
+  * removed obsolete Authors: section in descriptions
+  * use safe clean section
+
+-------------------------------------------------------------------
+Wed Aug 15 12:32:14 CST 2012 - dram.wang@gmail.com
+
+- add openbox-3.5.0-moveresize.patch to fix crash on unexpected
+  NET_WM_MOVERESIZE_CANCEL messages bio#5460
+
+-------------------------------------------------------------------
+Wed Nov 23 09:29:33 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Aug  7 14:40:14 UTC 2011 - andrea@opensuse.org
+
+- new upstream version 3.5.0
+  * New alt-tab dialog shows windows in a vertical list
+  * Improved Xinerama support
+  * Allow icons in menus
+  * Theme options for prompt dialogs (osd.button.unpressed.*,
+    osd.button.pressed.*, osd.button.focused.*)
+  * Addresses bug #4877, #4596, #4617, #4752, #4663, #4662,
+    #4586, #2319, #4341, #4519, #4543, #4503, #4355, #4072,
+    #3702, #4284
+  * Lots of additional bug fixes and performance improvements
+- removed openbox-3.4.7.2-24bit.patch now in upstream code
+
+-------------------------------------------------------------------
+Mon Mar 14 21:28:19 UTC 2011 - gber@opensuse.org
+
+- merged erroneously duplicated %post/un
+
+-------------------------------------------------------------------
+Mon Mar 14 18:52:55 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+
+-------------------------------------------------------------------
+Tue Aug  3 14:38:27 UTC 2010 - andrea@opensuse.org
+
+- fixed openbox-kde description bnc#622879 
+
+-------------------------------------------------------------------
+Tue Jun 22 10:21:33 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- fix issue with xcompmgr-autostart putting the .desktop-file in
+  $XDG_CONFIG_HOME instead of $XDG_CONFIG_HOME/autostart
+
+-------------------------------------------------------------------
+Fri Jun  4 10:16:58 UTC 2010 - andrea@opensuse.org
+
+- added xcompmgr-autostart to easly enable compositing
+
+-------------------------------------------------------------------
+Wed May 26 21:47:43 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- fixed typo in menu.xml
+
+-------------------------------------------------------------------
+Mon May 17 18:59:42 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- new version of openbox-pipemenu which works properly in
+  non-English locales
+- added new dynamic default menu
+
+-------------------------------------------------------------------
+Sat May 15 04:21:34 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.4.11.2, bug fix release
+    *  Updated Estonian and Portuguese translations.
+    * Fix a rare crash involving moving fullscreen windows to
+      different monitors
+    * Fix a more common crash involving pressing right in a menu 
+- split out -kde and -gnome integration
+
+-------------------------------------------------------------------
+Fri Apr 16 07:13:22 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.4.11.1, bug fix release
+- removed openbox-3.4.11-fix-SIGABRT-#bio4563.patch now in
+  upstream code
+
+-------------------------------------------------------------------
+Tue Mar  2 20:45:06 UTC 2010 - andrea@opensuse.org
+
+- added openbox-3.4.11-fix-SIGABRT-#bio4563.patch to fix
+  a SIGABRT detected with gcc 4.5 #bio4563 
+
+-------------------------------------------------------------------
+Tue Feb  9 09:47:36 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.4.11
+    * Update Hungarian, Japanese, and Latvian translations.
+    * Make xdg-autostart use the OPENBOX environment by default,
+      so you can use OnlyShowIn=OPENBOX in an autostart .desktop
+      and it will work as expected.
+    * Don't close the menu when you hold control and execute
+      something.
+    * Fix bug #4503 (Adjust who shows up in the Alt-Tab list
+      using SKIP_TASKBAR).
+    * Fix flickering window when moving maximized window between
+      monitors of different sizes.
+    * Fix bug #4355 (Allow multiple escaped _'s in a menu label
+      and allow a menu shortcut to come after an escaped _).
+    * Remember the maximized state of a window when it goes
+      fullscreen, and restore it when leaving fullscreen state.
+    * Fix bug #4072 (Openbox is stopped by terminal applications
+      writing to stdout).
+    * Fix bug #4492 (Mistake in openbox-gnome-session check
+      while setting up).
+    * Fix obxprop to make --root and --id work correctly.
+    * Add _OB_APP_ROLE/CLASS/NAME/TYPE properties
+      (replaces _OB_ROLE/CLASS/NAME).
+    * Make the focus cycling popup dynamic when windows
+      appear/disappear.
+    * Fix bug #4411 (Crash when window appears during focus cycling).
+    * Allow the user to specify which properties should be
+      shown by obxprop.
+    * Fix tilde expansion in the Execute action
+    * Make Home and End keys move to the top/bottom of the
+      active menu.
+    * Use the submenuShowDelay when navigating menus with
+      the keyboard.  
+
+-------------------------------------------------------------------
+Sat Jan 16 20:39:51 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.4.10
+    * Improve keyboard navigation in Openbox menus.
+    * Add a --root option and a manpage for obxprop.
+    * Use a negative value for submenuShowDelay and submenuHideDelay
+      to cause an infinite delay. This means you have to click to
+      show a submenu, rather than just hover over it.
+    * Improved code for submenu show/hide delay. Added the
+      submenuHideDelay config file option, under the "menu" section.
+    * Fixed bug #4464 (Typo in openbox-gnome-session script).
+    * Fixed bug #4436 (Focusing a window used to stop focus cycling).
+    * Renamed obprop to obxprop due to collision with
+      Open Babel (See bug #4419). 
+- changed Url to new http://openbox.org/
+
+-------------------------------------------------------------------
+Sat Dec 19 17:09:10 UTC 2009 - andrea@opensuse.org
+
+- new upstream version 0.4.9
+    * Allow focus to move while inside an Openbox menu, or
+      during an interactive action such as window cycling.
+    * Fixed bug #3717 (Empty dock interfered with move/grow to edge actions).
+    * Fixed bug #4411 (Crash when switching desktops and window cycling).
+    * Fixed bug #4377 (Window resistance against struts).
+    * Fixed bug #4035 (Prevent focus from moving under the mouse after
+      activating a window with an Openbox menu.
+    * Correct the value provided by the _NET_WORKAREA hint, so desktop
+      icons will place across all monitors.
+    * Don't hide submenus immediately when moving through the parent menu.
+      (Resolves request #3762).
+    * Fix for showing Openbox menus with multiple monitors, don't
+      restrict them to the monitor where the mouse is.
+    * Fixed bug #4023 (Allow the user to have multiple keys which
+      perform the same function in Openbox menus/move/resize.
+      E.g. two keys which are both bound to Escape.
+    * Add a new obprop tool, which can be used to read the _OB_ROLE,
+      _OB_NAME, and _OB_CLASS (as well as any other UTF-8 window
+      properties) off of a window.
+    * Add _OB_ROLE, _OB_NAME, and _OB_CLASS hints on each window that
+      show the respective values for use in the rc.xml applications
+      section, to modify the window when it appears.
+    * Improve Openbox interoperability with gnome-session >= 2.24.
+    * Fixed bug #4040 (Remove desktop hints set by gdm in the
+      openbox-session scripts, so that Openbox can set the number
+      of desktops (assuming gnome-settings-daemon doesn't first)).
+    * Fix a bug in xdg-autostart preventing some .desktop files from working.
+    * Show the desktop pager popup on the primary monitor instead
+      of on all monitors.
+    * Add a new primaryMonitor config option, which is where
+      Openbox popups will appear. Defaults to a fixed monitor
+      but can be made to behave as before with the "active" value for it.
+    * Correct edge detection for move/grow to edge to properly use
+      monitor edges for multi-monitor setups.
+    * Change default window placement policy to stay on the active
+      monitor for multi-monitor setups.
+    * Fixed bug #1149 (Crash with some window icon sizes).
+    * Respond to all strut changes, fixes moving/hiding panels.
+    * Fix internal code to focus windows on other desktops correctly
+      (Fixes bug #4413).
+    * Focus correctness fixups for switching desktops.
+    * Fixed bug #4373 (Decoration bug for shaded maximized windows).
+    * Fixed bug #4350 (Allow a window to be made skip_taskbar but still
+      get focused by the user's rc.xml).
+    * Fixed bug #4307 (Set a minimum time for screenEdgeWarpTime).
+    * Fixed bug #4253 (Support for Solaris in openbox-session scripts).
+    * Fixed bug #3851 (Allow transient windows to be above helper windows). 
+
+-------------------------------------------------------------------
+Wed Dec  9 23:55:50 UTC 2009 - andrea@opensuse.org
+
+- new upstream version 0.4.8 
+
+-------------------------------------------------------------------
+Mon Sep 21 13:51:56 UTC 2009 - andrea@opensuse.org
+
+- improved italian translation
+
+-------------------------------------------------------------------
+Wed Jan  7 21:04:38 CET 2009 - mmj@mmj.dk
+
+- Not use ldconfig macro
+- Own %libdir/%name
+
+-------------------------------------------------------------------
+Wed Jan  7 16:12:21 CET 2009  - mmj@mmj.dk
+
+- Fix missing return statements
+
+-------------------------------------------------------------------
+Fri May  2 19:48:25 CEST 2008 - bwalle@suse.de
+
+- update to 3.4.7.2
+  o fix empty manpages
+
+-------------------------------------------------------------------
+Sat Apr 19 22:36:11 CEST 2008 - bwalle@suse.de
+
+- drop openbox-menu.patch
+- update to 3.4.7.1
+  o Not to be outdone by the cairo team, I introduced a bug in the
+    last release which made resizing not give any feedback. This is
+    now fixed. 
+  o Fully updated Czech, Simplified Chinese, Traditional Chinese,
+    German, French, Hungarian, Norwegian, Vietnamese, Dutch, Swedish,
+    Finnish, Brazilian Portuguese, Japanese and Portuguese
+    translations
+  o Partially updated Spanish translation
+  o Add an example of the "force" option for the per-app placement
+    options to the default rc.xml file
+  o Add a new xdg-autostart script. This will eventually end up in
+    the PyXDG distribution hopefully, but it is included in Openbox
+    for now. This script runs things based on the freedesktop.org
+    autostart specification. You can have it run GNOME, KDE, ROX,
+    or XFCE specific things if you want. The new default
+    system-wide autostart.sh script runs it automatically
+  o Update the default menu.xml to include a lot of common apps
+  o Fix white font shadows (negative shadowtint)
+  o Update the autostart.sh to find gnome-settings-daemon
+    correctly, as the GNOME people have moved it to libexec
+  o Fix focus possibly getting stolen when using the Focus action
+  o Drastically speed up rendering of Vertical and SplitVertical
+    gradients
+  o Speed improvements also for Horizonal and Pyramid gradients
+  o Add new theme options, menu.overlap.x and menu.overlap.y
+    options, that let you independently control the horizontal and
+    vertical position of submenus
+  o Change _NET_ACTIVE_WINDOW messages to not change the current
+    desktop, but to bring the window to the current desktop instead.
+    This is the industry standard policy
+  o Use the pretty new openbox.png icon as the default window icon
+  o Allow matching per-application rules to windows by their window
+    type (normal, dialog, splash, etc). The default rc.xml has more
+    details
+  o Add new Openbox-themed prompt windows. Use these prompt windows
+    to ask before killing off windows that aren't responding. This
+    also means we don't need to ping every window constantly forever
+  o Add a new <prompt> option to the Execute action. If this is set
+    to a string, a dialog will be shown with that string in it and
+    "yes"/"no" buttons. The command to be executed will only be run
+    if the user selects "yes" in the dialog
+  o Add a new <prompt> option to the Exit action, which is a
+    boolean (not a string). When true, Openbox will show a dialog
+    confirming if you want to exit. The default is to show the prompt
+  o Reduce Openbox's memory footprint and speed up rendering
+    through the use of a new icon cache, so that Openbox only needs
+    to keep 1 copy of an icon when 100 different windows share it
+  o Make Openbox menus have the "menu type" hint for compositors to
+    see and use
+  o Fix the MoveResizeTo action for negative coords (opposite
+    edges)
+  o Fix key bindings getting lost if multiple bindings at the same
+    level could not be translated (Fixes VMWare causing Openbox
+    keybindings to stop working)
+  o Fix the resize popup box for terminal windows with a base size
+    of 0 (show the right size values for urxvt terminals)
+  o Fix some off-by-one bugs with the edge growing/shrinking code
+  o Add new theme options for menu line separators:
+    menu.separator.color, menu.separator.width,
+    menu.separator.padding.width, menu.separator.padding.height
+  o Add xfce-mcs-manager to the default autostart.sh, and run it
+    automatically when gnome-settings-daemon is not present to have
+    GTK apps inherit settings from the XFCE configuration tools
+  o Make the send-to-desktop menu in the client-menu indicate which
+    is the current desktop for omnipresent windows, and don't close
+    it if just toggling omni-presence when ctrl-clicking
+  o Add a new SessionLogout action that logs out through the
+    session manager, when running Openbox within a session manager
+    such as within an GNOME/Openbox or KDE/Openbox session. The
+    action includes a <prompt> option which is similar to the Exit
+    action's
+  o Add a new gdm-control command that lets you control gdm from
+    within an X session. The gdm-control lets you change GDM's
+    behaviour for when you end the current session. For instance,
+    you can tell GDM to reboot, and then immediately log out of the
+    current session, and the computer will be rebooted
+  o Show an information dialog when an error occurs for Openbox,
+    such as when the Execute action fails or when XML syntax errors
+    are present in the configuration files
+  o When making a window very narrow, don't draw buttons to the
+    right of the title on top of the ones on its left. 
+
+-------------------------------------------------------------------
+Fri Apr  4 20:25:21 CEST 2008 - bwalle@suse.de
+
+- update to 3.4.6.1
+  o Updated Clearlooks theme 
+  o Add the force="yes/no" option for the per-app settings'
+    <position> tag 
+  o Raise and focus modal children and their direct parents
+    together, improved usability with direct modal transient
+    windows 
+  o Fix crash when using <raise> for NextWindow and there are no
+    windows to move focus to 
+  o Add the <manageDesktops> option in the rc.xml <menu> section,
+    which toggles the "Manage Desktops" section appearing in the
+    combined-client-list-menu 
+  o Fix for menu headers showing the wrong text 
+  o Fix for the <focusLast> behavior 
+  o Treat modal direct children as one window with their parent
+    consistently
+
+-------------------------------------------------------------------
+Wed Jan 16 15:24:34 CET 2008 - hvogel@suse.de
+
+- Update to 3.4.5
+  * Added Hungarian and Ukrainian translation
+  * Updated translations:
+    - Japanese, Dutch, Polish, Italian, Estonian, German, Portuguese,
+      Vietnamese, Finnish, Czech, Arabic, Spanish, Swedish, French, Russian,
+      Traditional Chinese, Norwegian
+  * Add --exit to exit the currently running openbox instance
+  * Let you specify the vertical and horizontal padding independently in themes
+  * Don't focus new windows on other desktops if they aren't related to the
+    currently focused window
+  * New focus stealing prevention that is smart and not intrusive and not
+    annoying
+  * Show a notification when switching desktops
+  * Fix for resizing terminals in the top/left sides getting a little confused
+  * Fix to keep oldschool (Non-EWMH) fullscreen windows from being moved and
+    resized inside of the struts (Fixes Acroread)
+  * Let windows skip across monitors in a Xinerama setup when using MoveToEdge
+    or Shift-arrow in an interactive move
+  * Make move and resize take the dock into account for resistance
+  * Raise new windows when it makes sense, when they aren't being focused
+  * Change default config to use click events for mouse wheel bindings instead
+    of presses
+  * Improve focus fallback - don't fallback to windows you can't focus cycle
+    (Alt-Tab) to
+  * Don't show the client border for undecorated windows when keepBorder is on,
+    just the outer border
+  * Don't focus windows that appear under the mouse in mouse-focus mode unless
+    underMouse is enabled
+  * Don't move focus when the window under the pointer iconifies unless
+    underMouse is enabled
+  * Respect min/max window sizes when a window is fullscreened or maximized.
+    This fixes problems experienced with maximizing vnc windows
+  * Correct calculations for the menu header width, so that they are not
+    ellisized unnecessarily
+  * Advanced support for partial struts.  When you maximize a window it will
+    now only use the struts it needs to.  This can greatly improve
+    xinerama functionality.
+  * Fixes for how the dock is placed in certain positions on screen (off by 1
+    errors)
+  * New default bindings:
+    - don't unshade when clicking on the titlebar
+    - raise when unshading with the scrollwheel
+    - lower when shading with the scrollwheel
+  * Optimize rendering of window decorations
+  * Optimize splitvertical gradients - no more malloc/free during render
+  * Let the theme specify all colors for a splitvertical gradient with the new
+    .splitTo theme elements
+  * Improve decorations for maximized windows.  Don't draw the side borders in
+    the titlebar.
+  * Don't resist against desklet windows (below layer + skip taskbar)
+  * New actions for dynamically adjusting your desktop workspaces:
+    - AddDesktopLast, RemoveDesktopLast
+    - AddDesktopCurrent, RemoveDestopCurrent
+  * New <center> option for smart placement (default is on)
+  * Fix MoveToCenter in Xinerama (TwinView) setups
+  * Let you lower a window without lowering its children or siblings
+  * Don't set the default Openbox icon on child windows, let them inherit the
+    icon from their parents
+  * Fix Onyx themes - fade out disabled buttons
+  * Don't auto-resize windows to fit on screen if they are UserSpecified
+    Size or Position
+  * Rewrite of the actions subsystem
+  * Removed deprecated actions:
+    - ShowDesktop, UnshowDesktop (Use ToggleShowDesktop)
+    - ResizeRelativeVert, ResizeRelativeHorz (Use ResizeRelative)
+  * Switch desktops when moving a window and you drag it to the edge of the
+    screen (added the <screenEdgeWarpTime> option for this)
+  * Add actions to add/remove the last desktop in the client list menus
+  * Use startup notification when launching ObConf in the default root menu
+  * Fancy keyboard window moving:
+    - Shift-arrow will move the window to the next edge
+    - Arrow will move the window by a larger number of pixels
+  * Fancy keyboard window resizing:
+    - The first arrow will choose an edge to resize (then you can grow or
+      shrink the window on that edge)
+    - Hitting an arrow perpendicular to your selected edge will choose a
+      different edge to resize
+    - Shift-arrow will grow/shrink the window to the next edge
+    - Control arrow will grow/shrink the window by only 1 pixel
+    - Arrow will grow/shrink the window by a larger number of pixel
+  * Timeout when synchronously resizing a window so you can still resize busy
+    or dead application windows
+  * Let you specify keyboard shortcuts in your root menus with _. Such as
+    label="XTe_rm" would make 'r' the shortcut key.
+  * Fixes for placing windows with per-app settings:
+    - you can now place windows relative to any edge of the screen instead of
+      only the top left. (-0 uses the far edge, +0 uses the near edge.  You can
+      use --0 and +-0 to specify negative numbers.)
+    - allow you to place windows partially outside of the screen
+    - let per-app settings override program-specified positions (but not if it
+      is user-specified)
+  * Add user-specified margins to the configuration file
+  * New preferred option for the Execute action is <command> instead of
+    <execute> but the old one will still work.
+  * Add new actions for controlling window decorations:
+    - Decorate, Undecorate
+  * Fix crash with very small windows
+
+-------------------------------------------------------------------
+Sun Aug 12 15:20:32 CEST 2007 - dmueller@suse.de
+
+- fix permissions on openbox-pipemenu
+
+-------------------------------------------------------------------
+Wed Jul  4 13:15:31 CEST 2007 - hvogel@suse.de
+
+- Update to version 3.4.2
+  * various fixes
+  * Translation updates for Vietnamese, Japanese, Bengali,
+    Arabic, Italian, Czech, Estonian, Norwegian, and German
+  * Cache pipe menus while the menus are open
+  * Remove SCIM from the default autostart.sh
+  * Add some new theme options
+  * Add new Onyx and Onyx-Citrus themes
+  * Improvements to smart placement
+
+-------------------------------------------------------------------
+Wed May 16 22:35:48 CEST 2007 - hvogel@suse.de
+
+- Fix pipemenu by ugly shell script hack [#273050]
+
+-------------------------------------------------------------------
+Sat Mar  3 13:12:07 CET 2007 - aj@suse.de
+
+- /usr/share/xsessions is part of filesystem now.
+
+-------------------------------------------------------------------
+Wed Jan 31 00:24:44 CET 2007 - ro@suse.de
+
+- GNOME moved to /usr 
+
+-------------------------------------------------------------------
+Wed Sep 13 16:13:19 CEST 2006 - hvogel@suse.de
+
+- move out of /usr/X11R6
+- update to version 3.3.1
+  o Fix drawing of icons taller than wide
+  o Translations for de, hr and zh_TW added
+  o Add initial per-app settings support.
+  o Fix some outstanding issues with 64-bit support.
+  o New themes!
+- new patches: 
+  * openbox-initval.patch
+    o init some variable
+  * openbox-no_nb.patch
+    o locale no is non existent. moved to nb
+- drop patches:
+  * openbox-execlp-NULL.diff (included)
+  * openbox-3.2-64bit-changeproperty.diff (included) 
+- get rid .la/.a files 
+- fix missing requires in -devel package
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:02 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Apr  1 14:29:05 CEST 2005 - mmj@suse.de
+
+- (char*)NULL as last execlp argument
+
+-------------------------------------------------------------------
+Wed Feb 23 14:51:33 CET 2005 - mmj@suse.de
+
+- Add fix for 64-bit properties
+
+-------------------------------------------------------------------
+Thu Feb 10 14:37:51 CET 2005 - adrian@suse.de
+
+- install session desktop file
+
+-------------------------------------------------------------------
+Tue Nov 30 17:50:41 CET 2004 - hvogel@suse.de
+
+- update menu patch to use pipe menu
+- require xdg-menu 
+
+-------------------------------------------------------------------
+Mon Nov  8 12:30:25 CET 2004 - hvogel@suse.de
+
+- update menu patch 
+
+-------------------------------------------------------------------
+Wed Apr 21 23:21:30 CEST 2004 - mmj@suse.de
+
+- Config files are config(noreplace)
+
+-------------------------------------------------------------------
+Mon Apr 19 15:35:06 CEST 2004 - mmj@suse.de
+
+- Update to 3.2, including:
+  o Added spanish and swedish translations
+  o Changed "Unnamed Desktop" to "Desktop n" where n is the
+    actual number of the desktop
+  o Hopefully no more of the hanging X totally bug
+  o the fullscreen property now overrides aspect hints, all
+    programs i've tried that use it (mplayer and tvtime) handle
+    the aspect internally anyway, this just makes sure you have
+    black borders all the way to the edge. If this breaks
+    anything for you, let me know.
+  o Added M as an alias for Mod3 in the same manner that W is an
+    alias for Mod4
+  o Added probably too many options and actions
+  o ToggleDockAutohide to toggle the autohide option at runtime,
+    doesn't save it to the config
+  o keepBorder option to set if you want the 1-pixel border when
+    you toggleDecorations
+  o added popupShow and popupPosition to control where and when the
+    move/resize-popup is shown, these go in the resize section of
+    the config popupPosition can be Top or Center, popupShow can
+    be Always, Never or Nonpixel (this is the default).
+  o Added the xorStyle option to change the behaviour of menus
+    along the bottom edge, note that the default is true
+  o warpPointer option in the menu section to control if the
+    mouse cursor is to be warped by openbox when the menu moves
+    to keep on screen to keep the cursor in the same place
+    relative to the menu. (I think i got that right)
+  o Added back the focusLast option (this controls what happens
+    when you change desktops and have followMouse on)
+  o Added an option to set which desktop to start on when you
+    start openbox, firstdesk, for example you might like to set it
+    to 5 if you have a 3x3 grid to start in the middle.
+
+-------------------------------------------------------------------
+Tue Mar 16 18:30:57 CET 2004 - mmj@suse.de
+
+- Red as background is too crazy, so make it indianred
+
+-------------------------------------------------------------------
+Tue Feb 10 17:27:56 CET 2004 - hvogel@suse.de
+
+- rename menu patch
+- rename Restart back to Reconfigure
+
+-------------------------------------------------------------------
+Mon Feb  2 16:19:36 CET 2004 - hvogel@suse.de
+
+- readd SUSE menu
+
+-------------------------------------------------------------------
+Thu Jan 29 11:36:53 CET 2004 - mmj@suse.de
+
+- Also run ldconfig when uninstalling
+
+-------------------------------------------------------------------
+Mon Dec 29 10:33:21 CET 2003 - mmj@suse.de
+
+- Update to openbox-3.1 which is a bugfix release including a
+  japanese translation
+
+-------------------------------------------------------------------
+Thu Nov  6 23:02:59 CET 2003 - mmj@suse.de
+
+- Update to openbox-3.0 final version
+
+-------------------------------------------------------------------
+Thu Oct 16 10:57:43 CEST 2003 - mmj@suse.de
+
+- Don't build as root
+
+-------------------------------------------------------------------
+Tue Oct 14 10:59:32 CEST 2003 - mmj@suse.de
+
+- Update to openbox-3.0-rc4
+
+-------------------------------------------------------------------
+Fri Oct 10 09:53:04 CEST 2003 - mmj@suse.de
+
+- Update to openbox-3.0-rc3
+
+-------------------------------------------------------------------
+Fri Oct  3 12:58:26 CEST 2003 - mmj@suse.de
+
+- Update to openbox-3.0-rc2
+
+-------------------------------------------------------------------
+Mon Sep 29 11:29:05 CEST 2003 - mmj@suse.de
+
+- Own some dirs when building on older distributions
+- Update to openbox-3.0-rc1
+- Add a README.SuSE explaining the changes with the new version
+
+-------------------------------------------------------------------
+Fri Sep 26 15:47:15 CEST 2003 - mmj@suse.de
+
+- Update to openbox-3.0-beta6
+
+-------------------------------------------------------------------
+Thu Sep 25 17:05:44 CEST 2003 - mmj@suse.de
+
+- Update to openbox-3.0-beta5
+
+-------------------------------------------------------------------
+Tue Sep 23 00:35:18 CEST 2003 - mmj@suse.de
+
+- Update to openbox-3.0-beta4
+
+-------------------------------------------------------------------
+Wed Sep 17 13:58:11 CEST 2003 - mmj@suse.de
+
+- Update to openbox3 branch, which is a completely new windowmanager,
+  implemented from scratch. This is openbox-3.0-beta3.
+
+-------------------------------------------------------------------
+Mon Aug 11 10:16:20 CEST 2003 - mmj@suse.de
+
+- Fix typo in the menu
+
+-------------------------------------------------------------------
+Tue Aug  5 20:35:40 CEST 2003 - mmj@suse.de
+
+- Install nice SuSE Openbox menu from Hendrik Norman Vogelsang
+- Don't strip explicitly
+
+-------------------------------------------------------------------
+Tue May 13 11:51:23 CEST 2003 - mmj@suse.de
+
+- Remove files we don't want to package
+
+-------------------------------------------------------------------
+Tue Apr 29 17:27:20 CEST 2003 - mfabian@suse.de
+
+- update to openbox-2.3.0 CVS Branch.
+- remove openbox-nls.diff (included upstream)
+
+-------------------------------------------------------------------
+Thu Apr 24 12:42:01 CEST 2003 - mfabian@suse.de
+
+- update to openbox-2.3.0 CVS Branch.
+- featuring new Danish translations by Mads Martin Joergensen
+  <mmj@suse.de> (how can I write the U+00F8 LATIN SMALL LETTER O
+  WITH STROKE from Mads' name in such a changelog entry?)
+- fix problems with messages displayed when moving or resizing
+  windows.
+
+-------------------------------------------------------------------
+Tue Apr 22 22:57:20 CEST 2003 - mfabian@suse.de
+
+- update to openbox-2.3.0 CVS Branch
+- remove openbox-styles.diff, openbox-i18n.diff (included upstream)
+- adjust other patches (most of them already included upstream,
+  only a few hunks left).
+
+-------------------------------------------------------------------
+Mon Apr 14 05:09:06 CEST 2003 - mfabian@suse.de
+
+- improve openbox-2.2.3-64bit.diff: now most keybindings
+  controlled by epist work now on x86_64.
+
+-------------------------------------------------------------------
+Sat Apr 12 23:54:08 CEST 2003 - mfabian@suse.de
+
+- update to openbox-2.3.0 CVS Branch, openbox-nls.diff already
+  included
+
+-------------------------------------------------------------------
+Fri Apr 11 10:39:12 CEST 2003 - mfabian@suse.de
+
+- update to openbox-2.3.0 CVS Branch
+- openbox-2.2.3-configure-utf8.diff, openbox-2.2.3-ko_KR.diff,
+  openbox-2.2.3-setlocale-cvs.diff:
+  remove (included upstream)
+- update openbox-styles.diff my old patch was included upstream
+  but I forgot two changes to font entries.
+- remove nls_iconv script, translations are converted to UTF-8
+  upstream.
+
+-------------------------------------------------------------------
+Thu Apr  3 18:38:56 CEST 2003 - mfabian@suse.de
+
+- openbox-2.2.3-64bit.diff: make it work on x86_64. Without
+  this patch 'epist' runs into an endless loop and
+  restarting or quitting the window manager runs into an
+  endless loop as well.
+- add script 'nls-iconv' to convert all Translations to UTF-8
+- openbox-2.2.3-configure-utf8.diff: add configure check
+  for XFT_UTF8
+- openbox-2.2.3-i18n.diff: Make Xft support work for multibyte
+  locales and other i18n fixes.
+- openbox-2.2.3-ko_KR.diff: fix name of Korean translation
+  directory (already in upstream CVS)
+- openbox-2.2.3-styles.diff: use generic font alias "sans" in
+  all style files to make it work with more languages correctly
+  by default
+- openbox-2.2.3-setlocale-cvs.diff: the directories with the
+  translation files were not found because of buggy parsing of
+  the return value of setlocale (already in upstream CVS).
+
+-------------------------------------------------------------------
+Tue Feb 25 07:32:09 CET 2003 - mmj@suse.de
+
+- Set the locale and add missing #include <assert.h>
+
+-------------------------------------------------------------------
+Fri Feb 14 08:10:53 CET 2003 - mmj@suse.de
+
+- Move libc function check so they are done before AC_LANG(C++) and
+  therefore succeeds
+
+-------------------------------------------------------------------
+Sun Feb  2 04:26:06 CET 2003 - mmj@suse.de
+
+- Upgrade to 2.2.3 and not package xftlsfonts.1.gz
+
+-------------------------------------------------------------------
+Thu Jan  9 02:12:12 CET 2003 - ro@suse.de
+
+- xftlsfonts is not built for Xft2
+
+-------------------------------------------------------------------
+Thu Jan  9 01:50:32 CET 2003 - ro@suse.de
+
+- add "foreign" as automake option 
+
+-------------------------------------------------------------------
+Mon Dec  9 09:18:13 CET 2002 - mmj@suse.de
+
+- Upgrade to 2.2.2
+- Do not pack bsetbg and bsetroot but require commonbox-tools
+- Fix for build with no strftime()
+
+-------------------------------------------------------------------
+Thu Nov 28 00:52:40 CET 2002 - ro@suse.de
+
+- fixed typo in configure.in 
+
+-------------------------------------------------------------------
+Wed Nov 27 14:53:50 CET 2002 - mmj@suse.de
+
+- Initial version 2.2.1
+
+-------------------------------------------------------------------

@@ -1,0 +1,18 @@
+#!/bin/sh
+for i in $(find . -name "*.texi*")
+do 
+xemacs -q -batch \
+       -eval '(setq load-path (append (list "xemacs-packages/xemacs-base/") load-path)))' \
+       -eval '(setq load-path (append (list "xemacs-packages/sgml/") load-path)))' \
+       -eval '(setq load-path (append (list "xemacs-packages/texinfo/") load-path)))' \
+       -eval '(load-library "skeleton")' \
+       -eval '(load-library "outline")' \
+       -eval '(load-library "texinfo")' \
+	$i \
+       -eval '(set-language-environment "Japanese")' \
+       -eval '(replace-regexp "\\(-\\*-.*coding:\\s-*\\)\\(\\S-+\\)\\(\\s-*-\\*-\\)" "\\1utf-8\\3")' \
+       -eval '(set-buffer-file-coding-system (quote utf-8))' \
+       -eval '(set-buffer-modified-p t (current-buffer))' \
+       -eval '(save-buffer 0)'
+done
+

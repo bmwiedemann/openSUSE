@@ -1,0 +1,18 @@
+kdm_start_proc() {
+    splashcopy 0 6
+    return 0
+}
+    
+kdm_vars() {
+    KDM4_BIN=/usr/bin/kdm
+    case "${DISPLAYMANAGER##*/}" in
+	kdm|kdm4|kde|KDM|KDE)
+	    export KDEROOTHOME=/root/.kdm
+            DISPLAYMANAGER=$KDM4_BIN
+	    STARTPROC=kdm_start_proc
+	    ;;
+	*) return 1 ;;
+    esac
+    return 0
+}
+

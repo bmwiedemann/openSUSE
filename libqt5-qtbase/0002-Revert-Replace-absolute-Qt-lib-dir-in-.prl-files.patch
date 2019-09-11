@@ -1,0 +1,26 @@
+From 71b2d89fd5e3427b767e29b5f0bb6d4ca41806fa Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 6 Jun 2019 20:05:37 +0200
+Subject: [PATCH 2/3] Revert "Replace absolute Qt lib dir in .prl files"
+
+This reverts commit f00de3322e05c62021082463b6de24805afc1355.
+---
+ mkspecs/features/qt_common.prf | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/mkspecs/features/qt_common.prf b/mkspecs/features/qt_common.prf
+index 17a07dbab9..e51aa4766b 100644
+--- a/mkspecs/features/qt_common.prf
++++ b/mkspecs/features/qt_common.prf
+@@ -49,8 +49,6 @@ contains(TEMPLATE, .*lib) {
+         lib_replace.match = $$rplbase/lib
+         lib_replace.replace = $$qqt_libdir
+     }
+-    !equals(qt_libdir, $$rplbase/lib): \
+-        lib_replace.match = \\($$lib_replace.match\\)\\|\\($$qt_libdir\\)
+     lib_replace.CONFIG = path
+     QMAKE_PRL_INSTALL_REPLACE += lib_replace
+ }
+-- 
+2.21.0
+

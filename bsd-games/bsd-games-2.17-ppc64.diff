@@ -1,0 +1,188 @@
+--- bsd-games-2.17/backgammon/backgammon/main.c
++++ bsd-games-2.17/backgammon/backgammon/main.c
+@@ -99,6 +99,7 @@
+ 	char    c;		/* non-descript character storage */
+ 	long    t;		/* time for random num generator */
+ 
++
+ 	/* revoke setgid privileges */
+ 	setregid(getgid(), getgid());
+ 
+@@ -137,15 +138,15 @@
+ 
+ 	/* check if restored game and save flag for later */
+ 	if ((rfl = rflag) != 0) {
+-		text(message);	/* print message */
+-		text(contin);
++		backgammon_text(message);	/* print message */
++		backgammon_text(contin);
+ 		wrboard();	/* print board */
+ 		/* if new game, pretend to be a non-restored game */
+ 		if (cturn == 0)
+ 			rflag = 0;
+ 	} else {
+ 		rscore = wscore = 0;	/* zero score */
+-		text(message);	/* update message without pausing */
++		backgammon_text(message);	/* update message without pausing */
+ 
+ 		if (aflag) {	/* print rules */
+ 			writel(rules);
+@@ -162,7 +163,7 @@
+ 				writel(need);
+ 				if (yorn(0)) {	/* print instructions */
+ 					clear();
+-					text(instr);
++					backgammon_text(instr);
+ 				}
+ 			}
+ 		}
+@@ -227,7 +228,7 @@
+ 		} else
+ 			if (!aflag)
+ 				/* pause to read message */
+-				text(contin);
++				backgammon_text(contin);
+ 
+ 		wrboard();	/* print board */
+ 
+@@ -420,7 +421,7 @@
+ 						curmove(20, 0);
+ 					else
+ 						writec('\n');
+-					text(helpm);
++					backgammon_text(helpm);
+ 					if (tflag)
+ 						curmove(cturn == -1 ? 18 : 19, 0);
+ 					else
+--- bsd-games-2.17/backgammon/backgammon/text.c
++++ bsd-games-2.17/backgammon/backgammon/text.c
+@@ -107,7 +107,7 @@
+ 0};
+ 
+ int
+-text(t)
++backgammon_text(t)
+ 	const char  *const *t;
+ {
+ 	int     i;
+--- bsd-games-2.17/backgammon/common_source/back.h
++++ bsd-games-2.17/backgammon/common_source/back.h
+@@ -174,7 +174,7 @@
+ void	roll(void);
+ int	rsetbrd(void);
+ void	save(int);
+-int	text(const char *const *);
++int	backgammon_text(const char *const *);
+ void	wrboard(void);
+ void	wrbsub(void);
+ void	wrhit(int);
+--- bsd-games-2.17/backgammon/common_source/table.c
++++ bsd-games-2.17/backgammon/common_source/table.c
+@@ -262,7 +262,7 @@
+ 					curmove(20, 0);
+ 				else
+ 					writec('\n');
+-				(void) text(help2);
++				(void) backgammon_text(help2);
+ 				if (tflag) {
+ 					curmove(cturn == -1 ? 18 : 19, 39);
+ 				} else {
+--- bsd-games-2.17/backgammon/teachgammon/teach.c
++++ bsd-games-2.17/backgammon/teachgammon/teach.c
+@@ -89,9 +89,9 @@
+ 		bg_raw.c_oflag &= ~(ONLCR | OXTABS);
+ 		clear();
+ 	}
+-	text(hello);
+-	text(list);
+-	i = text(contin);
++	backgammon_text(hello);
++	backgammon_text(list);
++	i = backgammon_text(contin);
+ 	if (i == 0)
+ 		i = 2;
+ 	init();
+@@ -101,42 +101,42 @@
+ 			leave();
+ 
+ 		case 2:
+-			if ((i = text(intro1)) != 0)
++			if ((i = backgammon_text(intro1)) != 0)
+ 				break;
+ 			wrboard();
+-			if ((i = text(intro2)) != 0)
++			if ((i = backgammon_text(intro2)) != 0)
+ 				break;
+ 
+ 		case 3:
+-			if ((i = text(moves)) != 0)
++			if ((i = backgammon_text(moves)) != 0)
+ 				break;
+ 
+ 		case 4:
+-			if ((i = text(removepiece)) != 0)
++			if ((i = backgammon_text(removepiece)) != 0)
+ 				break;
+ 
+ 		case 5:
+-			if ((i = text(hits)) != 0)
++			if ((i = backgammon_text(hits)) != 0)
+ 				break;
+ 
+ 		case 6:
+-			if ((i = text(endgame)) != 0)
++			if ((i = backgammon_text(endgame)) != 0)
+ 				break;
+ 
+ 		case 7:
+-			if ((i = text(doubl)) != 0)
++			if ((i = backgammon_text(doubl)) != 0)
+ 				break;
+ 
+ 		case 8:
+-			if ((i = text(stragy)) != 0)
++			if ((i = backgammon_text(stragy)) != 0)
+ 				break;
+ 
+ 		case 9:
+-			if ((i = text(prog)) != 0)
++			if ((i = backgammon_text(prog)) != 0)
+ 				break;
+ 
+ 		case 10:
+-			if ((i = text(lastch)) != 0)
++			if ((i = backgammon_text(lastch)) != 0)
+ 				break;
+ 		}
+ 	tutor();
+--- bsd-games-2.17/backgammon/teachgammon/ttext2.c
++++ bsd-games-2.17/backgammon/teachgammon/ttext2.c
+@@ -127,7 +127,7 @@
+ 
+ 
+ int
+-text(txt)
++backgammon_text(txt)
+ 	const char  *const *txt;
+ {
+ 	const char  *const *begin;
+@@ -158,7 +158,7 @@
+ 							clear();
+ 					} else
+ 						writec('\n');
+-					text(list);
++					backgammon_text(list);
+ 					writel(prompt);
+ 					continue;
+ 				}
+--- bsd-games-2.17/backgammon/teachgammon/tutor.c
++++ bsd-games-2.17/backgammon/teachgammon/tutor.c
+@@ -85,7 +85,7 @@
+ 		}
+ 		if (tflag)
+ 			curmove(18, 0);
+-		text(*test[i].com);
++		backgammon_text(*test[i].com);
+ 		if (!tflag)
+ 			writec('\n');
+ 		if (i == maxmoves)

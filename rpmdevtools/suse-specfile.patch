@@ -1,0 +1,911 @@
+Index: rpmdevtools-8.10/newspec.conf
+===================================================================
+--- rpmdevtools-8.10.orig/newspec.conf
++++ rpmdevtools-8.10/newspec.conf
+@@ -9,7 +9,7 @@
+ # to support with the generated specfiles.  See the -r option in the
+ # rpmdev-newspec manual page for more information.
+ #
+-#NEWSPEC_MIN_RPMVER=
++NEWSPEC_MIN_RPMVER=1
+ 
+ # Source user configuration
+ if [ -f "$HOME/.config/rpmdevtools/newspec.conf" ] ; then
+Index: rpmdevtools-8.10/spectemplate-R.spec
+===================================================================
+--- rpmdevtools-8.10.orig/spectemplate-R.spec
++++ rpmdevtools-8.10/spectemplate-R.spec
+@@ -1,27 +1,41 @@
++#
++# spec file for package [spectemplate]
++#
++# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++#
++# All modifications and additions to the file contributed by third parties
++# remain the property of their copyright owners, unless otherwise agreed
++# upon. The license for this file, and modifications and additions to the
++# file, is the same license as for the pristine package itself (unless the
++# license for the pristine package is not an Open Source License, in which
++# case the license is the MIT License). An "Open Source License" is a
++# license that conforms to the Open Source Definition (Version 1.9)
++# published by the Open Source Initiative.
++
++# Please submit bugfixes or comments via https://bugs.opensuse.org/
++#
++
++
+ %define packname %(echo %{name} | sed -e 's/^R-//')
+ %global packrel 1
+ # Pick one of these (_datadir for noarch, _libdir for others), remove the other
+ %global rlibdir %{_datadir}/R/library
+ %global rlibdir %{_libdir}/R/library
+-
+ Name:           
+ Version:        
+-Release:        1%{?dist}
++Release:        0
+ Summary:        
+-
+-Group:          Applications/Engineering
+ License:        
++Group:          Development/Libraries/Other
+ URL:            http://cran.r-project.org/web/packages/%{packname}/
+ Source0:        ftp://cran.r-project.org/pub/R/contrib/main/%{packname}_%{version}-%{packrel}.tar.gz
+-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+-
+-BuildArch:      
+ BuildRequires:  R-devel
+ BuildRequires:  tex(latex)
+-Requires(post): R-core
+-Requires(postun): R-core
+ # Remove this from non-noarch packages
+ Requires:       R-core
++Requires(post): R-core
++Requires(postun): R-core
++BuildArch:      
+ 
+ %description
+ 
+@@ -29,28 +43,18 @@ Requires:       R-core
+ %prep
+ %setup -q -c -n %{packname}
+ 
+-
+ %build
+ 
+-
+ %install
+-rm -rf $RPM_BUILD_ROOT
+-mkdir -p $RPM_BUILD_ROOT%{rlibdir}
+-%{_bindir}/R CMD INSTALL -l $RPM_BUILD_ROOT%{rlibdir} %{packname}
++mkdir -p %{buildroot}%{rlibdir}
++%{_bindir}/R CMD INSTALL -l %{buildroot}%{rlibdir} %{packname}
+ test -d %{packname}/src && (cd %{packname}/src; rm -f *.o *.so)
+-rm -f $RPM_BUILD_ROOT%{rlibdir}/R.css
+-
++rm -f %{buildroot}%{rlibdir}/R.css
+ 
+ %check
+ %{_bindir}/R CMD check %{packname}
+ 
+-
+-%clean
+-rm -rf $RPM_BUILD_ROOT
+-
+-
+ %files
+-%{!?_licensedir:%global license %%doc}
+ %license add-license-file-here
+ %dir %{rlibdir}/%{packname}
+ %doc %{rlibdir}/%{packname}/doc
+@@ -64,5 +68,4 @@ rm -rf $RPM_BUILD_ROOT
+ %{rlibdir}/%{packname}/R-ex
+ %{rlibdir}/%{packname}/help
+ 
+-
+ %changelog
+Index: rpmdevtools-8.10/spectemplate-dummy.spec
+===================================================================
+--- rpmdevtools-8.10.orig/spectemplate-dummy.spec
++++ rpmdevtools-8.10/spectemplate-dummy.spec
+@@ -1,31 +1,38 @@
++#
++# spec file for package [spectemplate]
++#
++# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++#
++# All modifications and additions to the file contributed by third parties
++# remain the property of their copyright owners, unless otherwise agreed
++# upon. The license for this file, and modifications and additions to the
++# file, is the same license as for the pristine package itself (unless the
++# license for the pristine package is not an Open Source License, in which
++# case the license is the MIT License). An "Open Source License" is a
++# license that conforms to the Open Source Definition (Version 1.9)
++# published by the Open Source Initiative.
++
++# Please submit bugfixes or comments via https://bugs.opensuse.org/
++#
++
++
+ Name:           
+ Version:        1.0
+-Release:        1%{?dist}
++Release:        0
+ Summary:        Dummy test package
+-
+-Group:          Development/Debug
+-License:        Public Domain
+-URL:            http://fedoraproject.org/
+-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
++License:        SUSE-Public-Domain
++Group:          Productivity/Other
++URL:            http://www.opensuse.org
+ 
+ %description
+-
++This is a dummy test package
+ 
+ %prep
+ 
+-
+ %build
+ 
+-
+ %install
+-rm -rf $RPM_BUILD_ROOT
+-
+-
+-%clean
+-rm -rf $RPM_BUILD_ROOT
+-
+ 
+ %files
+ 
+-
+ %changelog
+Index: rpmdevtools-8.10/spectemplate-lib.spec
+===================================================================
+--- rpmdevtools-8.10.orig/spectemplate-lib.spec
++++ rpmdevtools-8.10/spectemplate-lib.spec
+@@ -1,14 +1,29 @@
++#
++# spec file for package [spectemplate]
++#
++# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++#
++# All modifications and additions to the file contributed by third parties
++# remain the property of their copyright owners, unless otherwise agreed
++# upon. The license for this file, and modifications and additions to the
++# file, is the same license as for the pristine package itself (unless the
++# license for the pristine package is not an Open Source License, in which
++# case the license is the MIT License). An "Open Source License" is a
++# license that conforms to the Open Source Definition (Version 1.9)
++# published by the Open Source Initiative.
++
++# Please submit bugfixes or comments via https://bugs.opensuse.org/
++#
++
++
+ Name:           
+ Version:        
+-Release:        1%{?dist}
++Release:        0
+ Summary:        
+-
+-Group:          System Environment/Libraries
+ License:        
++Group:          System/Libraries
+ URL:            
+ Source0:        
+-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+-
+ BuildRequires:  
+ Requires:       
+ 
+@@ -17,40 +32,28 @@ Requires:
+ 
+ %package        devel
+ Summary:        Development files for %{name}
+-Group:          Development/Libraries
+-Requires:       %{name}%{?_isa} = %{version}-%{release}
++Group:          Development/Libraries/
++Requires:       %{name} = %{version}
+ 
+ %description    devel
+ The %{name}-devel package contains libraries and header files for
+ developing applications that use %{name}.
+ 
+-
+ %prep
+ %setup -q
+ 
+-
+ %build
+ %configure --disable-static
+ make %{?_smp_mflags}
+ 
+-
+ %install
+-rm -rf $RPM_BUILD_ROOT
+-make install DESTDIR=$RPM_BUILD_ROOT
+-find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
+-
+-
+-%clean
+-rm -rf $RPM_BUILD_ROOT
+-
++%make_install
++find %{buildroot} -type f -name "*.la" -delete -print
+ 
+ %post -p /sbin/ldconfig
+-
+ %postun -p /sbin/ldconfig
+ 
+-
+ %files
+-%{!?_licensedir:%global license %%doc}
+ %license add-license-file-here
+ %doc add-main-docs-here
+ %{_libdir}/*.so.*
+@@ -60,5 +63,4 @@ rm -rf $RPM_BUILD_ROOT
+ %{_includedir}/*
+ %{_libdir}/*.so
+ 
+-
+ %changelog
+Index: rpmdevtools-8.10/spectemplate-minimal.spec
+===================================================================
+--- rpmdevtools-8.10.orig/spectemplate-minimal.spec
++++ rpmdevtools-8.10/spectemplate-minimal.spec
+@@ -1,14 +1,29 @@
++#
++# spec file for package [spectemplate]
++#
++# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++#
++# All modifications and additions to the file contributed by third parties
++# remain the property of their copyright owners, unless otherwise agreed
++# upon. The license for this file, and modifications and additions to the
++# file, is the same license as for the pristine package itself (unless the
++# license for the pristine package is not an Open Source License, in which
++# case the license is the MIT License). An "Open Source License" is a
++# license that conforms to the Open Source Definition (Version 1.9)
++# published by the Open Source Initiative.
++
++# Please submit bugfixes or comments via https://bugs.opensuse.org/
++#
++
++
+ Name:           
+ Version:        
+-Release:        1%{?dist}
++Release:        0
+ Summary:        
+-
+-Group:          
+ License:        
++Group:          
+ URL:            
+ Source0:        
+-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+-
+ BuildRequires:  
+ Requires:       
+ 
+@@ -18,26 +33,15 @@ Requires:
+ %prep
+ %setup -q
+ 
+-
+ %build
+ %configure
+ make %{?_smp_mflags}
+ 
+-
+ %install
+-rm -rf $RPM_BUILD_ROOT
+-make install DESTDIR=$RPM_BUILD_ROOT
+-
+-
+-%clean
+-rm -rf $RPM_BUILD_ROOT
+-
++%make_install
+ 
+ %files
+-%{!?_licensedir:%global license %%doc}
+ %license add-license-file-here
+ %doc add-docs-here
+ 
+-
+-
+ %changelog
+Index: rpmdevtools-8.10/spectemplate-ocaml.spec
+===================================================================
+--- rpmdevtools-8.10.orig/spectemplate-ocaml.spec
++++ rpmdevtools-8.10/spectemplate-ocaml.spec
+@@ -1,72 +1,76 @@
++#
++# spec file for package [spectemplate]
++#
++# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++#
++# All modifications and additions to the file contributed by third parties
++# remain the property of their copyright owners, unless otherwise agreed
++# upon. The license for this file, and modifications and additions to the
++# file, is the same license as for the pristine package itself (unless the
++# license for the pristine package is not an Open Source License, in which
++# case the license is the MIT License). An "Open Source License" is a
++# license that conforms to the Open Source Definition (Version 1.9)
++# published by the Open Source Initiative.
++
++# Please submit bugfixes or comments via https://bugs.opensuse.org/
++#
++
++
+ %global opt %(test -x %{_bindir}/ocamlopt && echo 1 || echo 0)
+ %global debug_package %{nil}
+ %global _use_internal_dependency_generator 0
+-%global __find_requires /usr/lib/rpm/ocaml-find-requires.sh
+-%global __find_provides /usr/lib/rpm/ocaml-find-provides.sh
++%global __find_requires %{_prefix}/lib/rpm/ocaml-find-requires.sh
++%global __find_provides %{_prefix}/lib/rpm/ocaml-find-provides.sh
+ %define libname %(echo %{name} | sed -e 's/^ocaml-//')
+-
+ Name:           
+ Version:        
+-Release:        1%{?dist}
++Release:        0
+ Summary:        
+-
+-Group:          Development/Libraries
+ License:        
++Group:          System/Libraries
+ URL:            
+ Source0:        
+-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+-
++BuildRequires:  chrpath
+ BuildRequires:  ocaml >= 3.10.0
+ BuildRequires:  ocaml-findlib-devel
+ BuildRequires:  ocaml-ocamldoc
+-BuildRequires:  chrpath
+ 
+ %description
+ 
+ 
+ %package        devel
+ Summary:        Development files for %{name}
+-Group:          Development/Libraries
+-Requires:       %{name} = %{version}-%{release}
++Group:          Development/Libraries/Other
++Requires:       %{name} = %{version}
+ 
+ %description    devel
+ The %{name}-devel package contains libraries and signature files for
+ developing applications that use %{name}.
+ 
+-
+ %prep
+ %setup -q -n %{libname}-%{version}
+ 
+-
+ %build
+ # You may need a %%configure step here (or ./configure if it doesn't work).
+-make byte
+-%if %opt
+-make opt
++make %{?_smp_mflags} byte
++%if %{opt}
++make %{?_smp_mflags} opt
+ %endif
+ 
+-
+ %install
+-rm -rf $RPM_BUILD_ROOT
+ # These rules work if the library uses 'ocamlfind install' to install itself.
+-export DESTDIR=$RPM_BUILD_ROOT
+-export OCAMLFIND_DESTDIR=$RPM_BUILD_ROOT%{_libdir}/ocaml
++export DESTDIR=%{buildroot}
++export OCAMLFIND_DESTDIR=%{buildroot}%{_libdir}/ocaml
+ mkdir -p $OCAMLFIND_DESTDIR $OCAMLFIND_DESTDIR/stublibs
+-make install
++%make_install
+ 
+-strip $OCAMLFIND_DESTDIR/stublibs/dll*.so
++#strip $OCAMLFIND_DESTDIR/stublibs/dll*.so
+ chrpath --delete $OCAMLFIND_DESTDIR/stublibs/dll*.so
+ 
+-
+-%clean
+-rm -rf $RPM_BUILD_ROOT
+-
+-
+ %files
+-%{!?_licensedir:%global license %%doc}
+ %license LICENSE
+ %dir %{_libdir}/ocaml/%{libname}/
+-%if %opt
++%if %{opt}
+ %exclude %{_libdir}/ocaml/*/*.a
+ %exclude %{_libdir}/ocaml/*/*.cmxa
+ %exclude %{_libdir}/ocaml/*/*.cmx
+@@ -75,16 +79,14 @@ rm -rf $RPM_BUILD_ROOT
+ %{_libdir}/ocaml/stublibs/*.so
+ %{_libdir}/ocaml/stublibs/*.so.owner
+ 
+-
+ %files devel
+ %license LICENSE
+ %doc README
+-%if %opt
++%if %{opt}
+ %{_libdir}/ocaml/*/*.a
+ %{_libdir}/ocaml/*/*.cmxa
+ %{_libdir}/ocaml/*/*.cmx
+ %endif
+ %{_libdir}/ocaml/*/*.mli
+ 
+-
+ %changelog
+Index: rpmdevtools-8.10/spectemplate-perl.spec
+===================================================================
+--- rpmdevtools-8.10.orig/spectemplate-perl.spec
++++ rpmdevtools-8.10/spectemplate-perl.spec
+@@ -1,24 +1,38 @@
++#
++# spec file for package [spectemplate]
++#
++# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++#
++# All modifications and additions to the file contributed by third parties
++# remain the property of their copyright owners, unless otherwise agreed
++# upon. The license for this file, and modifications and additions to the
++# file, is the same license as for the pristine package itself (unless the
++# license for the pristine package is not an Open Source License, in which
++# case the license is the MIT License). An "Open Source License" is a
++# license that conforms to the Open Source Definition (Version 1.9)
++# published by the Open Source Initiative.
++
++# Please submit bugfixes or comments via https://bugs.opensuse.org/
++#
++
++
+ Name:           
+ Version:        
+-Release:        1%{?dist}
++Release:        0
+ Summary:        
+-
+-Group:          Development/Libraries
+ License:        
++Group:          Development/Libraries/Perl
+ URL:            
+ Source0:        
+-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+-
+-BuildArch:      
+ BuildRequires:  perl
+ # Remove "BuildRequires:  perl-devel" for noarch packages (unneeded)
+ BuildRequires:  perl-devel
+ BuildRequires:  perl-generators
++BuildRequires:  perl-macros
+ # Correct for lots of packages, other common choices include eg. Module::Build
+ BuildRequires:  perl(ExtUtils::MakeMaker)
+-Requires:  perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
+-
+-%{?perl_default_filter}
++BuildArch:      
++%{perl_requires}
+ 
+ %description
+ 
+@@ -26,33 +40,20 @@ Requires:  perl(:MODULE_COMPAT_%(eval "`
+ %prep
+ %setup -q
+ 
+-
+ %build
+ # Remove OPTIMIZE=... from noarch packages (unneeded)
+-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="$RPM_OPT_FLAGS"
++perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+ make %{?_smp_mflags}
+ 
+-
+ %install
+-rm -rf $RPM_BUILD_ROOT
+-make pure_install DESTDIR=$RPM_BUILD_ROOT
+-find $RPM_BUILD_ROOT -type f -name .packlist -exec rm -f {} ';'
+-# Remove the next line from noarch packages (unneeded)
+-find $RPM_BUILD_ROOT -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
+-find $RPM_BUILD_ROOT -depth -type d -exec rmdir {} 2>/dev/null ';'
+-%{_fixperms} $RPM_BUILD_ROOT/*
+-
++%perl_make_install
++%perl_process_packlist
++%perl_gen_filelist
+ 
+ %check
+ make test
+ 
+-
+-%clean
+-rm -rf $RPM_BUILD_ROOT
+-
+-
+-%files
+-%{!?_licensedir:%global license %%doc}
++%files -f %{name}.files
+ %license add-license-file-here
+ %doc add-docs-here
+ # For noarch packages: vendorlib
+@@ -60,7 +61,6 @@ rm -rf $RPM_BUILD_ROOT
+ # For arch-specific packages: vendorarch
+ %{perl_vendorarch}/*
+ %exclude %dir %{perl_vendorarch}/auto/
+-%{_mandir}/man3/*.3*
+-
++%{_mandir}/man3/*.3%{?ext_man}
+ 
+ %changelog
+Index: rpmdevtools-8.10/spectemplate-php-pear.spec
+===================================================================
+--- rpmdevtools-8.10.orig/spectemplate-php-pear.spec
++++ rpmdevtools-8.10/spectemplate-php-pear.spec
+@@ -1,59 +1,64 @@
++#
++# spec file for package [spectemplate]
++#
++# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++#
++# All modifications and additions to the file contributed by third parties
++# remain the property of their copyright owners, unless otherwise agreed
++# upon. The license for this file, and modifications and additions to the
++# file, is the same license as for the pristine package itself (unless the
++# license for the pristine package is not an Open Source License, in which
++# case the license is the MIT License). An "Open Source License" is a
++# license that conforms to the Open Source Definition (Version 1.9)
++# published by the Open Source Initiative.
++
++# Please submit bugfixes or comments via https://bugs.opensuse.org/
++#
++
++
+ %{!?__pear: %{expand: %%global __pear %{_bindir}/pear}}
+ %define pear_name %(echo %{name} | sed -e 's/^php-pear-//' -e 's/-/_/g')
+-
++%define peardir %(pear config-get php_dir 2> /dev/null || echo %{_datadir}/pear)
++%define pear_xmldir  /var/lib/pear
+ Name:           
+ Version:        
+-Release:        1%{?dist}
++Release:        0
+ Summary:        
+-
+-Group:          
+ License:        
++Group:          
+ URL:            http://pear.php.net/package/%{pear_name}
+ Source0:        http://pear.php.net/get/%{pear_name}-%{version}.tgz
+-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+-
++BuildRequires:  php-pear >= 5.1.1
++Requires:       php
++Requires:       php5-pear
++Requires(post): pear
++Requires(postun): pear
+ BuildArch:      noarch
+-BuildRequires:  php-pear >= 1:1.4.9-1.2
+-Requires:       php-pear(PEAR)
+-Requires(post): %{__pear}
+-Requires(postun): %{__pear}
+-Provides:       php-pear(%{pear_name}) = %{version}
+ 
+ %description
+ 
+ 
+ %prep
+-%setup -q -c
+-[ -f package2.xml ] || mv package.xml package2.xml
+-mv package2.xml %{pear_name}-%{version}/%{pear_name}.xml
+-cd %{pear_name}-%{version}
+-
++%setup -q -c -T
+ 
+ %build
+-cd %{pear_name}-%{version}
+ # Empty build section, most likely nothing required.
+ 
+-
+ %install
+ cd %{pear_name}-%{version}
+-rm -rf $RPM_BUILD_ROOT docdir
+-%{__pear} install --nodeps --packagingroot $RPM_BUILD_ROOT %{pear_name}.xml
++rm -rf docdir
++%{__pear} install --nodeps --packagingroot %{buildroot} %{pear_name}.xml
+ 
+ # Move documentation
+ mkdir -p docdir
+-mv $RPM_BUILD_ROOT%{pear_docdir}/* docdir
++mv %{buildroot}%{pear_docdir}/* docdir
+ 
+ # Clean up unnecessary files
+-rm -rf $RPM_BUILD_ROOT%{pear_phpdir}/.??*
++rm -rf %{buildroot}%{pear_phpdir}/.??*
+ 
+ # Install XML package description
+-mkdir -p $RPM_BUILD_ROOT%{pear_xmldir}
+-install -pm 644 %{pear_name}.xml $RPM_BUILD_ROOT%{pear_xmldir}
+-
+-
+-%clean
+-rm -rf $RPM_BUILD_ROOT
+-
++mkdir -p %{buildroot}%{pear_xmldir}
++install -pm 644 %{pear_name}.xml %{buildroot}%{pear_xmldir}
+ 
+ %post
+ %{__pear} install --nodeps --soft --force --register-only \
+@@ -65,9 +70,7 @@ if [ $1 -eq 0 ] ; then
+         %{pear_name} >/dev/null || :
+ fi
+ 
+-
+ %files
+-%{!?_licensedir:%global license %%doc}
+ %license add-license-file-here
+ %doc %{pear_name}-%{version}/docdir/%{pear_name}/*
+ %{pear_xmldir}/%{pear_name}.xml
+@@ -76,5 +79,4 @@ fi
+ # Expand this as needed to avoid owning dirs owned by our dependencies
+ %{pear_phpdir}/*
+ 
+-
+ %changelog
+Index: rpmdevtools-8.10/spectemplate-ruby.spec
+===================================================================
+--- rpmdevtools-8.10.orig/spectemplate-ruby.spec
++++ rpmdevtools-8.10/spectemplate-ruby.spec
+@@ -1,26 +1,39 @@
+-%{!?ruby_sitelib: %global ruby_sitelib %(ruby -rrbconfig -e "puts Config::CONFIG['sitelibdir']")}
+-%{!?ruby_sitearch: %global ruby_sitearch %(ruby -rrbconfig -e "puts Config::CONFIG['sitearchdir']")}
++#
++# spec file for package [spectemplate]
++#
++# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++#
++# All modifications and additions to the file contributed by third parties
++# remain the property of their copyright owners, unless otherwise agreed
++# upon. The license for this file, and modifications and additions to the
++# file, is the same license as for the pristine package itself (unless the
++# license for the pristine package is not an Open Source License, in which
++# case the license is the MIT License). An "Open Source License" is a
++# license that conforms to the Open Source Definition (Version 1.9)
++# published by the Open Source Initiative.
++
++# Please submit bugfixes or comments via https://bugs.opensuse.org/
++#
++
+ 
+ Name:           
+ Version:        
+-Release:        1%{?dist}
++Release:        0
+ Summary:        
+-
+-Group:          Development/Languages
+-
+ License:        
++Group:          Development/Languages/Ruby
+ URL:            
+ Source0:        
+-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+-
+-BuildArch:      
+-BuildRequires:  ruby ruby-devel
+-Requires:       ruby(abi) = 1.8
++BuildRequires:  ruby
++BuildRequires:  ruby-devel
++BuildRequires:  ruby-macros >= 1
++Requires:       ruby
+ # If this package is mainly a ruby library, it should provide
+ # whatever people have to require in their ruby scripts to use the library
+ # For example, if people use this lib with "require 'foo'", it should provide
+ # ruby(foo)
+ Provides:       ruby(LIBNAME)
++#BuildArch:      noarch
+ 
+ %description
+ 
+@@ -28,30 +41,20 @@ Provides:       ruby(LIBNAME)
+ %prep
+ %setup -q
+ 
+-
+ %build
+-export CFLAGS="$RPM_OPT_FLAGS"
+-
++export CFLAGS="%{optflags}"
+ 
+ %install
+-rm -rf $RPM_BUILD_ROOT
++%gem_install -f
+ 
+- 
+ %check
+ 
+-
+-%clean
+-rm -rf $RPM_BUILD_ROOT
+-
+-
+ %files
+-%{!?_licensedir:%global license %%doc}
+ %license add-license-file-here
+ %doc add-docs-here
+-# For noarch packages: ruby_sitelib
+-%{ruby_sitelib}/*
+-# For arch-specific packages: ruby_sitearch
+-%{ruby_sitearch}/*
+-
++# For noarch packages: rb_sitelibdir
++%{rb_sitelibdir}/*
++# For arch-specific packages: rb_sitearchdir
++%{rb_sitearchdir}/*
+ 
+ %changelog
+Index: rpmdevtools-8.10/spectemplate-python.spec
+===================================================================
+--- rpmdevtools-8.10.orig/spectemplate-python.spec
++++ rpmdevtools-8.10/spectemplate-python.spec
+@@ -1,117 +1,58 @@
+-# sitelib for noarch packages, sitearch for others (remove the unneeded one)
+-%{!?__python2: %global __python2 %__python}
+-%{!?python2_sitelib: %global python2_sitelib %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
+-%{!?python2_sitearch: %global python2_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
+-
+-%if 0%{?fedora}
+-%bcond_without python3
+-%else
+-%bcond_with python3
+-%endif
++#
++# spec file for package [spectemplate]
++#
++# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++#
++# All modifications and additions to the file contributed by third parties
++# remain the property of their copyright owners, unless otherwise agreed
++# upon. The license for this file, and modifications and additions to the
++# file, is the same license as for the pristine package itself (unless the
++# license for the pristine package is not an Open Source License, in which
++# case the license is the MIT License). An "Open Source License" is a
++# license that conforms to the Open Source Definition (Version 1.9)
++# published by the Open Source Initiative.
+ 
++# Please submit bugfixes or comments via https://bugs.opensuse.org/
++#
++
++
++%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+ Name:           
+ Version:        
+-Release:        1%{?dist}
++Release:        0
+ Summary:        
+-
+-Group:          Development/Languages
+ License:        
++Group:          Development/Languages/Python
+ URL:            
+ Source0:        
+-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+-
+-BuildArch:      
+-BuildRequires:  python2-devel
+-%if %{with python3}
+-BuildRequires:  python3-devel
+-%endif # with python3
++BuildRequires:  %{python_module devel}
++BuildRequires:  python-rpm-macros
++#BuildArch:      noarch
++%python_subpackages
+ 
+ %description
+ 
+ 
+-%if %{with python3}
+-%package     -n 
+-Summary:        
+-Group:          Development/Languages
+-
+-%description -n 
+-
+-%endif # with python3
+-
+-
+ %prep
+-%setup -q -c
+-mv %{name}-%{version} python2
+-
+-%if %{with python3}
+-cp -a python2 python3
+-%endif # with python3
+-
++%setup -q
+ 
+ %build
+-pushd python2
+-# Remove CFLAGS=... for noarch packages (unneeded)
+-CFLAGS="$RPM_OPT_FLAGS" %{__python2} setup.py build
+-popd
+-
+-%if %{with python3}
+-pushd python3
+-# Remove CFLAGS=... for noarch packages (unneeded)
+-CFLAGS="$RPM_OPT_FLAGS" %{__python3} setup.py build
+-popd
+-%endif # with python3
+-
++# Remove export CFLAGS=... for noarch packages (unneeded)
++export CFLAGS="%{optflags}"
++%python_build
+ 
+ %install
+-rm -rf $RPM_BUILD_ROOT
+-# Must do the python3 install first because the scripts in /usr/bin are
+-# overwritten with every setup.py install (and we want the python2 version
+-# to be the default for now).
+-%if %{with python3}
+-pushd python3
+-%{__python3} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
+-popd
+-%endif # with python3
+-
+-pushd python2
+-%{__python2} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
+-popd
+-
++%python_install
+ 
+ %check
+-pushd python2
+-%{__python2} setup.py test
+-popd
+-
+-%if %{with python3}
+-pushd python3
+-%{__python3} setup.py test
+-popd
+-%endif
+-
++%python_expand $python setup.py test
+ 
+-%clean
+-rm -rf $RPM_BUILD_ROOT
+-
+-
+-%files
+-%{!?_licensedir:%global license %%doc}
++%files %{python_files}
+ %license add-license-file-here
+ %doc add-docs-here
+ # For noarch packages: sitelib
+-%{python2_sitelib}/*
++%{python_sitelib}/*
+ # For arch-specific packages: sitearch
+-%{python2_sitearch}/*
+-
+-%if %{with python3}
+-%files -n 
+-%license add-license-file-here
+-%doc add-docs-here
+-# For noarch packages: sitelib
+-%{python3_sitelib}/*
+-# For arch-specific packages: sitearch
+-%{python3_sitearch}/*
+-%endif # with python3
+-
++%{python_sitearch}/*
+ 
+ %changelog

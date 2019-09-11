@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Sun Apr 15 00:12:26 UTC 2018 - gutaper@gmail.com
+
+- bump to 4.8
+  for complete list of changes see
+  see https://git.suckless.org/dmenu/log/?h=4.8&qt=range&q=4.7..4.8
+-------------------------------------------------------------------
+Fri Feb  9 13:52:15 UTC 2018 - crrodriguez@opensuse.org
+
+- dmenu-optflags.patch: Fix optflags handling
+- Fix BuildRequires not to use xorg-x11-devel  
+
+-------------------------------------------------------------------
+Wed Jul 26 10:12:54 UTC 2017 - sleep_walker@opensuse.org
+
+- bump to 4.7
+  for complete list of changes see
+  see http://git.suckless.org/dmenu/log/?h=4.7&qt=range&q=4.6..4.7
+
+-------------------------------------------------------------------
+Mon Nov  9 07:46:13 UTC 2015 - sleep_walker@opensuse.org
+
+- bump to 4.6
+  - no changelog generated for 4 years of development
+    so check http://git.suckless.org/dmenu/ by yourself
+- add Xft and freetype2 into dependencies to follow changes in this
+  new version
+
+-------------------------------------------------------------------
+Fri Jul  3 11:03:03 UTC 2015 - mimi.vx@gmail.com
+
+- spec cleaned with spec-cleaner 
+
+-------------------------------------------------------------------
+Tue May 15 13:11:38 UTC 2012 - seiler@b1-systems.de
+
+- added link to dmenu changelog in the *.changes file
+
+-------------------------------------------------------------------
+Mon Mar 19 12:20:42 UTC 2012 - seiler@b1-systems.de
+
+- updated to version 4.5
+Changelog:
+http://hg.suckless.org/dmenu/log
+- enhanced description
+- removed package name from summary
+- added new files to %file section
+
+-------------------------------------------------------------------
+Mon Oct 11 12:20:42 UTC 2007 - sschober@suse.de
+
+- incorporated latest changeset [231:9ab649b3b3e5]
+
+-------------------------------------------------------------------
+Mon Oct 03 12:20:42 UTC 2007 - sschober@suse.de
+
+- updated to version 3.4
+
+-------------------------------------------------------------------
+Mon Jul 27 12:20:42 UTC 2007 - sschober@suse.de
+
+- initial packaging.  

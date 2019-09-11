@@ -1,0 +1,18 @@
+---
+ src/d_text.c |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+--- src/d_text.c
++++ src/d_text.c	2016-09-22 08:46:29.848945840 +0000
+@@ -1968,7 +1968,10 @@ xim_initialize(Widget w)
+       if (xim_style == 0) xim_style = style_root;
+     }
+   }
+-  if (xim_style != preferred_style) {
++  if (xim_style != preferred_style
++      && *modifier_list != '\0'
++      && ! strstr(modifier_list,"@im=local")
++      && ! strstr(modifier_list,"@im=none")) {
+     fprintf(stderr, "xfig: this input-method doesn't support %s input style\n",
+ 	    appres.xim_input_style);
+     if (xim_style == 0) {

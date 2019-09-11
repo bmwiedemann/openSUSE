@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Fri Oct 14 13:20:26 UTC 2016 - mstaudt@suse.com
+
+- ddccontrol-db.spec: Remove AUTHORS section
+
+-------------------------------------------------------------------
+Wed Feb 10 14:30:37 UTC 2016 - maximilian.staudt@suse.com
+
+- Change source archive name to include last commit date
+- .spec: Make this package 'noarch'
+
+-------------------------------------------------------------------
+Tue Feb  9 16:50:54 UTC 2016 - maximilian.staudt@suse.com
+
+- We don't depend on ddccontrol, but the other way around.
+  Removed the dependency.
+
+-------------------------------------------------------------------
+Tue Feb  9 13:27:40 UTC 2016 - maximilian.staudt@suse.com
+
+- Check in rpmlintrc
+
+-------------------------------------------------------------------
+Tue Feb  9 10:27:59 UTC 2016 - maximilian.staudt@suse.com
+
+- Included remaining documentation
+- Added rpmlintrc to silence warning on duplicate XML files
+
+-------------------------------------------------------------------
+Mon Feb  8 17:13:26 UTC 2016 - maximilian.staudt@suse.com
+
+- ddccontrol-db.spec: Simplified and corrected warnings emitted by rpmlint
+
+-------------------------------------------------------------------
+Mon Feb  8 15:23:53 UTC 2016 - maximilian.staudt@suse.com
+
+- Initial version: git 130da80
+

@@ -1,0 +1,378 @@
+-------------------------------------------------------------------
+Thu Mar 28 22:35:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop unused pkgconfig(gtkhtml-editor-4.0) BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jun 13 21:21:18 UTC 2018 - bjorn.lie@gmail.com
+
+- Add evolution-rss-drop-gconf-for-good.patch: Drop gconf2 for
+  good (glgo#GNOME/evolution-rss/#2).
+- Following the above patch, drop gconf2-devel BuildRequires and
+  glib2_gsettings_schema_requires macro: No longer mandatory.
+- Add evolution-rss-use-unicode.patch: Use Unicode in translatable
+  strings and remove markup from strings in UI files
+  (glgo#GNOME/evolution-rss/#1).
+- Drop post(un) handling of glib2_gsettings_schema_post(un), no
+  longer needed on new versions of openSUSE.
+- Drop update-desktop-files BuildRequires and
+  suse_update_desktop_file macro, no longer needed.
+- Modernize spec, use autosetup and make_build macros.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:25:17 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 06 18:36:23 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 0.3.95+git.20171129:
+  + Crash when importing OPML file with feeds without 'title'
+    attribute.
+  + gschema: Fix gettext-domain
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 14 12:39:11 UTC 2017 - fezhang@suse.com
+
+- Drop the pre- SLE12 / Leap42 conditional for _evo_errordir.
+
+-------------------------------------------------------------------
+Fri Feb  3 22:03:58 UTC 2017 - zaitor@opensuse.org
+
+-  Drop pkgconfig(webkitgtk-3.0) BuildRequires: We build against
+   evolution 3.22.x or newer, and support for webkitgtk-3.0 has
+   been dropped upstream for this version and newer in both
+   evolution-rss and evolution.
+
+-------------------------------------------------------------------
+Mon Jan 16 16:50:13 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.3.95+git.20161130:
+  + Fix typo in Spanish translation header.
+  + bgo#764065: [Camel] Port more classes to GObject.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 17 19:55:41 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.3.95+git.20160817:
+  + bgo#752197: Teach cache-reaper of 3rd-party private
+    directories.
+  + bgo#752197: Correct undefined cache reaper symbols from the
+    link time.
+  + Do not use global variables for EShellView and EShellWindow.
+  + add formater libs to the missing libs defs.
+  + various cleanups.
+  + Fix spelling of "OK" in a translatable string.
+  + Adapt to changes in evolution 3.21.90.
+  + Auto-disable WebKit support when compiled against evolution
+    3.21.90+.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 26 14:11:07 UTC 2015 - dimstar@opensuse.org
+
+- Fix build for openSUSE 42 (possibly breaking clean SLE12).
+
+-------------------------------------------------------------------
+Wed Apr 08 07:45:42 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.3.95:
+  + Don't crash on failed plugin initialization.
+  + Fix show placeholder rss icon.
+  + bgo#746511: E: evolution-rss no-return-in-nonvoid-function.
+  + bgo#741570: Typo in translatable string.
+  + Add appdata files to dist target.
+  + Updated translations.
+- Drop 0001-Fix-compiler-warning.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Mar 20 08:33:14 UTC 2015 - dimstar@opensuse.org
+
+- Add 0001-Fix-compiler-warning.patch: Fix compiler warning.
+
+-------------------------------------------------------------------
+Thu Mar 19 09:55:55 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.3.95~20150316:
+  + Updated Greek translation
+  + better handle enclosures obey filesize if present
+  + fix subject on enclosured feed messages
+  + fix subject on feeds (take II) and bring back categories
+  + Updated Hungarian translation
+  + Updated Polish translation
+  + Updated Czech translation
+  + don't crash on freeing category
+  + bring back feeds comments
+  + hide individual feed errors by default it gests annoying to
+    have a lot of errors alert dialogs for each feed every time it
+    is fetched.
+  + Added Bosnian translation
+  + Updated Lithuanian translation
+  + Updated Swedish translation
+
+-------------------------------------------------------------------
+Thu Feb 19 12:15:02 UTC 2015 - opensuse-packaging@opensuse.org
+
+- Update to version 0.3.95~20150213:
+  + add link/href parsing (fixes html rendering).
+  + make feed enclosures work again.
+- Add gnome-common and gconf2-devel BuildRequires and call to
+  autogen.sh.
+
+-------------------------------------------------------------------
+Wed Jan 28 08:49:03 UTC 2015 - dimstar@opensuse.org
+
+- Updated files section for Evolution 3.13.x.
+
+-------------------------------------------------------------------
+Thu Nov 20 00:42:23 UTC 2014 - fstrba@suse.com
+
+- Update to git master (0.3.95~git20141120.b2253df):
+  + Fixes miscellaneous crashes while editing feeds.
+  + General improvement of stability.
+- Drop upstreamed patches:
+  + evolution-rss-EMailPart.patch
+  + evolution-rss-ESEvent.patch
+  + evolution-rss-evo3.11.3.patch
+  + evolution-rss-evo3.11.91.patch
+  + evolution-rss-evo3.11.patch
+  + evolution-rss-remove-EShellSettings-requirements.patch
+- Detect the _evo_errordir with the same logic as the
+  m4/evolution.m4: allows building for SLE12.
+
+-------------------------------------------------------------------
+Sun Oct  5 20:58:32 UTC 2014 - dimstar@opensuse.org
+
+- Do not show evolution-rss in the menu: it's integrated into
+  evolution directly (suse_update_desktop_files -u).
+
+-------------------------------------------------------------------
+Tue Mar  4 21:02:09 UTC 2014 - dimstar@opensuse.org
+
+- Add evolution-rss-evo3.11.91.patch: Fix build with evolution
+  3.11.91.
+- Drop evolution-rss-soup-linking.patch: obsoleted by above patch.
+
+-------------------------------------------------------------------
+Sat Jan 11 23:55:00 UTC 2014 - dimstar@opensuse.org
+
+- Add evolution-rss-evo3.11.3.patch: Fix build with evolution
+  3.11.3.
+
+-------------------------------------------------------------------
+Mon Dec  2 18:17:13 UTC 2013 - dimstar@opensuse.org
+
+- Add evolution-rss-evo3.11.patch: Fix build with evolution 3.11.2.
+
+-------------------------------------------------------------------
+Mon Sep  2 09:13:35 UTC 2013 - dimstar@opensuse.org
+
+- Add evolution-rss-ESEvent.patch: Adapt to ESEvent changes in
+  Evolution 3.9.
+
+-------------------------------------------------------------------
+Thu Jul  4 18:15:13 UTC 2013 - dimstar@opensuse.org
+
+- Add evolution-rss-EMailPart.patch: adapt to EMailPart changes in
+  Evolution 3.9.3.
+
+-------------------------------------------------------------------
+Sun May 12 12:39:20 UTC 2013 - dimstar@opensuse.org
+
+- Add evolution-rss-remove-EShellSettings-requirements.patch: Fix
+  build with evolution 3.9.
+
+-------------------------------------------------------------------
+Sun Mar 10 20:41:22 UTC 2013 - dimstar@opensuse.org
+
+- Add evolution-rss-soup-linking.patch: link the plugin against
+  libsoup, so it can be loaded.
+- Add gnome-common and gconf2-devel BuildRequries and call to
+  gnome-autogen.sh, as above patch touches the build system.
+
+-------------------------------------------------------------------
+Sat Mar  9 22:04:55 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.3.93:
+  + Adapt to evolution API changes.
+  + Bugs fixed: bgo#684120, bgo#686142.
+  + Updated translations.
+- Drop pkgconfig(libemail-utils) and pkgconfig(libevolution-utils
+  BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
+Fri Jan 18 21:11:56 UTC 2013 - dimstar@opensuse.org
+
+- Add the post/postun scriptlet to the actual package (bnc#794866).
+
+-------------------------------------------------------------------
+Fri Sep 14 20:42:01 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.3.92:
+  + Fix gconf migration
+  + Adapt to latest evo/eds changes
+  + Port to GSettings.
+  + Updated translations.
+- Drop xz BuildRequires, as it now comes for free in the build
+  system.
+- Replace %gconf schema handling macros with %glib variants.
+
+-------------------------------------------------------------------
+Wed Jun 13 10:50:27 UTC 2012 - badshah400@gmail.com
+
+- Added pkgconfig(libemail-utils), pkgconfig(libevolution-utils),
+  pkgconfig(libemail-engine) as the configure script checks for
+  these explicitly, and fails if they are not present; makes
+  building unresolvable (instead of failing) for openSUSE <= 12.1.
+
+-------------------------------------------------------------------
+Fri Apr  6 15:17:44 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.3.91:
+  + Additional fixes for compatibility with evolution 3.4.
+  + Fix memory leaks.
+- Drop evolution-rss-evo-3.4.patch: fixed upstream.
+- Remove gnome-common BuildRequires and call to gnome-autogen.sh,
+  that were only needed for above patch.
+
+-------------------------------------------------------------------
+Wed Feb 29 07:29:14 UTC 2012 - vuntz@opensuse.org
+
+- Add evolution-rss-evo-3.4.patch: commits from git to fix build
+  with evolution 3.4.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh,
+  needed for above patch.
+
+-------------------------------------------------------------------
+Fri Jan  6 15:43:25 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.3.90 (git commit cac58a2f - not released), to
+  fix build with evolution 3.3:
+  + Fix build against evolution 3.1.x/3.2.x/3.3.x.
+  + Small bug fixes.
+  + Build fixes.
+- Drop evolution-rss-evo311.patch, evolution-rss-evo314.patch,
+  evolution-rss-evo315.patch, evolution-rss-gtk_hvbox_new.patch:
+  patches all included in the new git checkout.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Add update-desktop-files BuildRequires and call to
+  %suse_update_desktop_file for new .desktop files: while not
+  needed for Factory/12.2, we still support previous versions of
+  openSUSE in this package.
+
+-------------------------------------------------------------------
+Wed Sep 28 08:38:27 UTC 2011 - vuntz@opensuse.org
+
+- Add evolution-rss-evo315.patch: fix build with evolution 3.1.5,
+  taken from git.
+
+-------------------------------------------------------------------
+Sun Aug  7 22:11:23 UTC 2011 - dimstar@opensuse.org
+
+- Add evolution-rss-evo314.patch: Adapt to changes in evo 3.1.4.
+  Patch taken from upstream git
+- Add evoltution-rss-gtk_hbvox_new.patch: Stop using depreacated
+  gtk_[hv]box_new calls. Patch submitted as bgo#656126.
+
+-------------------------------------------------------------------
+Thu Jun  2 23:36:25 CEST 2011 - vuntz@opensuse.org
+
+- Drop now unneeded libgnomecanvas-devel BuildRequires.
+- Change libwebkitgtk-devel BuildRequires to
+  pkgconfig(webkitgtk-3.0).
+- Add explicit pkgconfig() BuildRequires instead of relying on
+  other packages to bring them in: evolution-data-server-1.2,
+  glib-2.0, libebook-1.2, libsoup-2.4, evolution-plugin-3.0,
+  gtk+-3.0, gtkhtml-editor-4.0.
+
+-------------------------------------------------------------------
+Wed Jun  1 15:17:06 UTC 2011 - dimstar@opensuse.org
+
+- Forward to git commit 11637dc: support evolution 3.1.1.
+- Add evolution-rss-evo311.patch: the evolution-rss git snapshot is
+  against evolution master, which is still called 3.1.1.
+
+-------------------------------------------------------------------
+Mon May 16 14:29:47 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.2.90 (git commit 592138d - not released), to
+  fix build with evolution 3.0 and gtk+ 3.0. New features and bug
+  fixes from git will be listed on update to 0.2.90.
+- Change evolution-devel BuildRequires to
+  pkgconfig(evolution-shell-3.0).
+- Update the evo_* defines to reflect evolution 3.0 names (e.g.
+  evolution-shell => evolution-shell-3.0)
+
+-------------------------------------------------------------------
+Mon May 16 16:08:04 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.2.5:
+  + Miscellaneous Fixes:
+    - Fix export function
+    - Improve debug output
+    - Fix deleting folder contents
+    - Make opml filter default when exporting
+    - Add default export file name
+  + Bugs fixed: bgo#648559, bgo#648490, bgo#647142, bgo#644100.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May  4 09:50:48 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.2.4:
+  + bgo#643187: url redirection for enclosures doesn't work as
+    expected.
+  + bgo#643050: crash on moving rss-folder.
+  + bgo#642357: crash on parsing RSS feed.
+  + bgo#641237: Importing RDF feed fails.
+
+-------------------------------------------------------------------
+Mon Feb 14 03:30:47 CET 2011 - vuntz@opensuse.org
+
+- Update to version 0.2.3:
+  + Fix parsing of ref=alternate nodes
+  + Do not pass empty string to strcasecmp
+  + Fix fetch feed operation progress bar
+  + Allow build with newer webkit
+  + Fix parsing children nodes
+  + Remove excesive debug warnings
+  + Init rss folder hooks later
+  + Print imported feed url in case cannot lookup channel name
+  + Use ref alternate in atom feeds to get feed link
+  + Bug fixes: bgo#639825, bgo#639942, bgo#638297.
+
+-------------------------------------------------------------------
+Fri Jan  7 18:12:17 CET 2011 - vuntz@opensuse.org
+
+- Update to version 0.2.2:
+  + Remove warnings on missing shellview.
+  + Fix render engine combo.
+  + Fix gtkhtml detection.
+  + Fix sending RSS articles as mails.
+  + Improve displaying of folder icons (it greately speeds up the
+    loading)
+  + bgo#635157: Bad character encoding when showing full text
+  + bgo#636053: Host-relative links in atom feed don't work
+- Changes from version 0.2.1:
+  + Add support for evolution 2.32.
+- Remove gnome-common BuildRequires and call to ./autogen.sh since
+  this is no longer a git snapshot.
+- Add Url tag.
+
+-------------------------------------------------------------------
+Thu Nov 18 19:47:50 UTC 2010 - aj@suse.de
+
+- Add libgnomecanvas-devel as BuildRequires to fix build.
+
+-------------------------------------------------------------------
+Sun Oct  3 21:47:18 UTC 2010 - dimstar@opensuse.org
+
+- Initial package, based on current git commit 686d979. Latest
+  version was 0.2.0, this the version 0.2.0+git. 0.2.0 does not
+  work with Evolution 2.32 due to architecture changes of evo.
+

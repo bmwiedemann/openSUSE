@@ -1,0 +1,1 @@
+SPAMPD_OPTIONS="--host=localhost:10025 --relayhost=localhost:10026 --user=vscan --tagall --children=5 --maxsize=768 --homedir=/home/vscan"

@@ -1,0 +1,153 @@
+From 79028ae93b5f719a5ad1d7091b7a63f67920adcf Mon Sep 17 00:00:00 2001
+From: Thorsten Behrens <tbehrens@suse.com>
+Date: Sat, 21 Feb 2015 21:48:20 +0100
+Subject: [PATCH 1/2] Fix html entities showing up in tweets.
+
+Seems there's no need to escape entities, quite the contrary -
+they show up as &amp; etc in piding...
+---
+ src/gtkprpltwtr/gtkprpltwtr.c | 13 ++------
+ src/prpltwtr/prpltwtr_util.c  | 71 ++-----------------------------------------
+ 2 files changed, 5 insertions(+), 79 deletions(-)
+
+diff --git a/src/gtkprpltwtr/gtkprpltwtr.c b/src/gtkprpltwtr/gtkprpltwtr.c
+index 3a755f0..8367ff0 100644
+--- a/src/gtkprpltwtr/gtkprpltwtr.c
++++ b/src/gtkprpltwtr/gtkprpltwtr.c
+@@ -946,13 +946,6 @@ static const char *_find_first_delimiter(const char *text, const char *delimiter
+     return NULL;
+ }
+ 
+-static void _g_string_append_escaped_len(GString * s, const gchar * txt, gssize len)
+-{
+-    gchar          *tmp = purple_markup_escape_text(txt, len);
+-    g_string_append(s, tmp);
+-    g_free(tmp);
+-}
+-
+ //TODO: move those
+ static char    *twitter_linkify(PurpleAccount * account, const char *message)
+ {
+@@ -974,11 +967,11 @@ static char    *twitter_linkify(PurpleAccount * account, const char *message)
+         int             symbol_index = 0;
+         first_token = _find_first_delimiter(ptr, symbols, &symbol_index);
+         if (first_token == NULL) {
+-            _g_string_append_escaped_len(ret, ptr, -1);
++            g_string_append(ret, ptr);
+             break;
+         }
+         current_action = symbol_actions[symbol_index];
+-        _g_string_append_escaped_len(ret, ptr, first_token - ptr);
++        g_string_append_len(ret, ptr, first_token - ptr);
+         ptr = first_token;
+         delim = _find_first_delimiter(ptr, delims, NULL);
+         if (delim == NULL)
+@@ -986,7 +979,7 @@ static char    *twitter_linkify(PurpleAccount * account, const char *message)
+         link_text = g_strndup(ptr, delim - ptr);
+         //Added the 'a' before the account name because of a highlighting issue... ugly hack
+         g_string_append_printf(ret, "<a href=\"" TWITTER_URI ":///%s?account=a%s&text=%s&protocol_id=%s\">", current_action, purple_account_get_username(account), purple_url_encode(link_text), purple_account_get_protocol_id(account));
+-        _g_string_append_escaped_len(ret, link_text, -1);
++        g_string_append(ret, link_text);
+         g_string_append(ret, "</a>");
+         ptr = delim;
+ 
+diff --git a/src/prpltwtr/prpltwtr_util.c b/src/prpltwtr/prpltwtr_util.c
+index fa1219e..249b309 100644
+--- a/src/prpltwtr/prpltwtr_util.c
++++ b/src/prpltwtr/prpltwtr_util.c
+@@ -25,70 +25,6 @@
+ #include <version.h>
+ #include <signals.h>
+ 
+-#if !PURPLE_VERSION_CHECK(2, 6, 0)
+-
+-//from libpurple/util.c
+-static void append_escaped_text(GString * str, const gchar * text, gssize length)
+-{
+-    const gchar    *p;
+-    const gchar    *end;
+-    gunichar        c;
+-
+-    p = text;
+-    end = text + length;
+-
+-    while (p != end) {
+-        const gchar    *next;
+-        next = g_utf8_next_char(p);
+-
+-        switch (*p) {
+-        case '&':
+-            g_string_append(str, "&amp;");
+-            break;
+-
+-        case '<':
+-            g_string_append(str, "&lt;");
+-            break;
+-
+-        case '>':
+-            g_string_append(str, "&gt;");
+-            break;
+-
+-        case '"':
+-            g_string_append(str, "&quot;");
+-            break;
+-
+-        default:
+-            c = g_utf8_get_char(p);
+-            if ((0x1 <= c && c <= 0x8) || (0xb <= c && c <= 0xc) || (0xe <= c && c <= 0x1f) || (0x7f <= c && c <= 0x84) || (0x86 <= c && c <= 0x9f))
+-                g_string_append_printf(str, "&#x%x;", c);
+-            else
+-                g_string_append_len(str, p, next - p);
+-            break;
+-        }
+-
+-        p = next;
+-    }
+-}
+-
+-//from libpurple/util.c
+-static gchar   *purple_markup_escape_text(const gchar * text, gssize length)
+-{
+-    GString        *str;
+-
+-    g_return_val_if_fail(text != NULL, NULL);
+-
+-    if (length < 0)
+-        length = strlen(text);
+-
+-    /* prealloc at least as long as original text */
+-    str = g_string_sized_new(length);
+-    append_escaped_text(str, text, length);
+-
+-    return g_string_free(str, FALSE);
+-}
+-#endif
+-
+ gboolean twitter_usernames_match(PurpleAccount * account, const gchar * u1, const gchar * u2)
+ {
+     gboolean        match;
+@@ -112,11 +48,9 @@ char           *twitter_format_tweet(PurpleAccount * account, const char *src_us
+     if (linkified_message)
+         return linkified_message;
+ 
+-    linkified_message = purple_markup_escape_text(message, -1);
+-
+-    g_return_val_if_fail(linkified_message != NULL, NULL);
++    g_return_val_if_fail(message != NULL, NULL);
+ 
+-    tweet = g_string_new(linkified_message);
++    tweet = g_string_new(message);
+ 
+     if (twitter_option_add_link_to_tweet(account) && is_tweet && tweet_id) {
+         PurpleConnection *gc = purple_account_get_connection(account);
+@@ -128,7 +62,6 @@ char           *twitter_format_tweet(PurpleAccount * account, const char *src_us
+         }
+     }
+ 
+-    g_free(linkified_message);
+     return g_string_free(tweet, FALSE);
+ }
+ 
+-- 
+1.8.4.5
+

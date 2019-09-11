@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Wed Aug 29 10:58:41 UTC 2018 - tchvatal@suse.com
+
+- Update to release 1.0.0:
+  * asyncio support
+  * Various tweaks for python3
+- Make sure to run tests
+
+-------------------------------------------------------------------
+Thu Sep  7 22:42:03 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

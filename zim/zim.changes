@@ -1,0 +1,341 @@
+-------------------------------------------------------------------
+Sat Mar  2 23:01:33 UTC 2019 - Karl Cheng <qantas94heavy@gmail.com>
+
+- Fix missing python-xml runtime requirement.
+
+-------------------------------------------------------------------
+Mon Dec 17 14:30:33 UTC 2018 - Karol Babioch <kbabioch@suse.de>
+
+- Update to version 0.69:
+  * Performance improvements for indexing large notebooks
+  * Performance improvement for auto-completion of page names in dialogs
+  * Updated translations from launchpad
+
+-------------------------------------------------------------------
+Fri Mar 23 05:57:49 UTC 2018 - qantas94heavy@gmail.com
+
+- Update to version 0.68:
+  * Critical fixes:
+    + For updating links on move page and rename page
+    + For rename page and indexing on case-insensitive file systems
+      (like windows)
+  * Fix regressions:
+    + In tasklist option to _not_ regard all checkboxes as tasks
+    + In index navigation with previous page and next page
+  * Other fixes:
+    + Memory leak in spell checker plugin
+    + Multi-line selections in linesorter plugin
+    + Opening notebook list from tray icon
+    + "-s" commandline argument for exporting
+    + importing attachments in quicknote plugin commandline use
+  * New features:
+    + Pathbar now reveals more path elements in case of ambiguous
+      pages
+    + Add "font" property for use in "styles.conf"
+    + Add "navigation.home" to template parser for export
+    + Extend interface for "image generator" plugins
+  * Miscellaneous changes:
+    + Version control plugin updated to better handle git staging
+    + Code cleaned up to be a bit PEP8 compliant and more future
+      proof for python3 conversion
+- Rename appdata XML to reflect changed component ID
+  * Also relocate to /usr/share/mimeinfo instead of legacy
+    /usr/share/appdata
+
+-------------------------------------------------------------------
+Sat Sep 23 23:17:45 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 0.67:
+  + Critical fixes:
+    - For missing page headers & remembering custom headers.
+    - By removing dependency on threading for index and socket
+      handling.
+      . Hidden option to also do autosave without thread to test
+        further issues.
+    - For handling unicode file names on windows.
+  + More robustness:
+    - For socket errors, fallback to --standalone automaticlly.
+    - At startup when default notebook went missing, fallback
+      to --list.
+    - In preferences dialog when plugins give exceptions.
+    - For invalid dates in tasklist parser.
+  + Merge patch to add accelerators for bookmarks.
+  + Fix regressions:
+    - In close-page when autosave ongoing.
+    - Drag-n-drop index pane.
+    - For keybindings in index pane.
+    - For attaching files.
+    - For opening folders.
+    - In opening inter-wiki links.
+    - In custom tools.
+    - In completion of page name in dialog entry.
+    - In quicknote "--attachments" option.
+    - For quicknote plugin due to process management.
+    - In date format for recentchanges dialog.
+    - In custom tool execution.
+  + Fixes for unicode: In auto-linking and arithmetic plugin.
+  + More fixes:
+    - "insert image" also inserting a text link.
+    - Search regex for chinese language to not match whitespace for
+      start/end of word.
+    - Table editor plugin when sorting rows.
+    - Wrong usage of escapes in latex export for verbatim blocks.
+    - The issue where config values go missing if not used.
+    - Error for file shortcuts in various dialogs.
+    - Indexing errors on move/rename page.
+- Changes from version 0.66:
+  + Multiple notebooks run as single process now to reduce
+    multi-process complexity - more robust startup, reduce need for
+    "--standalone".
+  + SQLite indexer re-written to fix long standing bugs and design
+    flaws with indexing.
+  + Improved performance tag filtering in side pane.
+  + Detect pages have changed on disk, even when page present in
+    cache.
+  + Bug fix for drag-n-drop of text within the editor.
+  + New checkbox type available for "moved task" for journal
+    workflow.
+  + Context menu defined for checkboxes.
+  + Horizontal lines "<HR>" added to wiki syntax.
+  + Pathbar buttons can now also be used to insert page links by
+    drag-n-drop.
+  + Added to context mennu for pages: "search in section" and
+    "search backlinks".
+  + Keyboard navigation of plugin tab in preferences dialog.
+  + Allow "mailto:" links contain arguments like "?subject=".
+  + Tasklist plugin:
+    - Now also available embedded in side pane.
+    - New:
+      . Syntax for including due and start dates.
+      . Formatting priority column including
+        deadlines.
+      . "flat list" mode to only see lowest level tasks.
+    - Removed support for "next" label.
+    - Dialog now remembers sorting.
+  + Versioncontrol plugin:
+    - git: removed global "git add", instead
+      stage individual files.
+    - fossil: fix for fossil "addremove".
+  + Attachment browser: bug fix for drag-n-drop.
+  + Linesorter plugin: added keybindings to move / duplicate /
+    delete lines.
+  + Sourceview plugin:
+    - Bug fixes:
+      . To make export via commandline also use objects.
+      . To follow editable state of parent window.
+  + Bookmarks plugin updates.
+  + Tableeditor plugin: bug fix for links.
+  + Linkmap plugin: bug fix "unexpected char '-'".
+  + Arithmic plugin: bug fix to allow negative numbers.
+  + Dev:
+    - Templates are now translatable, using "gettext()".
+    - Index API completely changed, see tasklist for a plugin
+      example.
+    - New:
+      . Module for file-system interaction, to be used in new
+        code.
+      . Parsing strategy based on tokenlist, used for tasklist
+        parser.
+    - Defined notebook API for concurrent operations in gtk main
+      loop.
+    - Simplified SignalEmitter code.
+  + Packaging:
+    - Removed support for maemo build - code went stale.
+    - Make package build reproducible.
+  + Updated translations.
+- Drop /usr/bin/update-mime-database in %post/%postun: its use is
+  obsolete and now is covered by file triggers.
+- Add conditional %desktop_database_*, %icon_theme_cache_* and
+  %mime_database_* post/postun macros for versions older than
+  tumbleweed: tumbleweed and factory now use file triggers.
+- Add conditional use to shared-mime-info BuildRequires: only old
+  suse versions need it.
+- Drop obsoleted conditionals for versions older than 11.2: not
+  needed/used.
+
+-------------------------------------------------------------------
+Wed Nov 11 09:41:13 UTC 2015 - thehejik@suse.com
+
+- Updated to version 0.65:
+  + <Control> keybindings fail for older gtk versions, and in 
+    particular for the <Control><Space> keybinding.
+  + The table editor tends to drop columns of content in the
+    precences of empty cells.
+  + Features from 0.64
+    - Bookmark plugin.
+    - Updated spell plugin to allow using gtkspellcheck as backend.
+    - Updated attachmentbrowser plugin with new thumbnailing logic.
+    - Speed up of sqlite indexing.
+    - Updated support for OS X.
+    - Bug fixes for the Fossil version control support.
+    - Bug fixes for locale in strftime and strxfrm functions.
+    - Bug fix to avoid overwriting the accelmap config file.
+
+-------------------------------------------------------------------
+Mon Jun 15 10:07:39 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.63:
+  + Table plugin.
+  + Support for Fossil version control.
+  + Many bug fixes.
+
+-------------------------------------------------------------------
+Wed Oct  1 20:27:08 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.62 (boo#899449):
+  + Fixed broken Source View plugin.
+  + Fixed Tray Icon plugin for Ubuntu.
+  + Fixed bug with Caps Lock on windows.
+  + Fixed behavior of New Page dialog.
+  + Fixed status parsing for Git backend.
+  + Fixed bug with CamelCase parsing for Persian & Arabic script.
+  + Fixed parsing of numbered list character to be robust for
+    Chinese characters.
+  + Fixed bug with www server dialog.
+  + Fixed bug in Go Child Page action.
+  + Fixed export using the S5 slideshow template - now splits by
+    heading.
+  + Fixed bug in indexing for python 2.6.
+  + Fixed bug in Open Notebook dialog when selecting current
+    notebook.
+  + Changed lookup path for 3rd party plugin modules - now uses XDG
+    path.
+  + Merged patch to support more screenshot tools in the Insert
+    Screenshot plugin.
+  + Updated Sort Lines plugin to use natural sorting for unicode.
+  + Added control for handling of line breaks in HTML export.
+  + Changed rendering of checkboxes in HTML export.
+  + Merged patch to set image size for GNU R plugin.
+  + Added control to toggle full page name in Tag index view.
+  + Added handling of SIGTERM signal.
+
+-------------------------------------------------------------------
+Fri Aug  8 22:26:02 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.61:
+  + Full refactoring of code for parsing and processing wiki syntax
+    making parser easier to extend and document interface more
+    scalable.
+  + Full refactoring of code for plugin framework making plugins
+    more flexible by defining decorators for specific application
+    objects.
+  + Full refactoring of code for exporting pages from zim
+    - Now supports MHTML export format.
+    - Supports exporting multiple pages to a single file.
+    - Supports recursive export of a page and all it's sub-pages.
+    - Templates now support many more instructions and expressions.
+  + Full refactoring of the code for parsing commandline commands
+    and initializing the application.
+  + New config manager code to make parsing and handling of config
+    files more robust.
+  + Merged new plugin for editing sequence diagrams.
+  + Improved the ToC plugin with floating widget.
+  + Fixed unicode issue when calling external applications, and in
+    particular for the hg and git commands.
+  + Fixed support for unicode CamelCase word detection.
+  + Fixed bug on windows with unicode user names in background
+    process connection.
+  + Changed "tags" plugin to show full page paths in the pre-tag
+    view.
+  + Added option for custom commands to replace the current
+    selection.
+  + Added keybindings for XF86Back and XF86Forward.
+  + Many small fixes & patches.
+  + Updated translations.
+- Add python-xml BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Fri May  3 10:39:22 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.60:
+  + In this release the required python version is changed from
+    2.5 to 2.6.
+  + Added a Recent Changes dialog and a Recent Changes pathbar
+    option.
+  + Added search entry to toolbar.
+  + Added function to attachment browser plugin to zoom icon size.
+  + Added new template.
+  + Critical bug fix for using templates that have a resources
+    folder.
+  + Fix for week number in Journal plugin page template (again).
+  + Fix for focus switching with distraction free editing plugin.
+  + Fix for handling BOM character at start of file.
+  + Fixed quicknote dialog to ask for confirmation on discard.
+  + Fix to allow calling executables that do not end in .exe on
+    windows.
+  + Fix for various typos in the manual.
+  + Removed custom zim.www.Server class in favor of standard
+    library version.
+
+-------------------------------------------------------------------
+Thu Jan 24 17:43:37 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.59:
+  + Fixed a critical bug in the editor widget that can lead to
+    loss of content for specific combinations of formatting.
+  + Fixed week numbers in Journal pages.
+  + Improved Tasklist tag inheritance.
+
+-------------------------------------------------------------------
+Sun Dec 16 19:00:42 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.58:
+  + New plugin for distraction free fullscreen mode.
+  + Added options to limit tasklist plugin to certain namespaces.
+  + Added option to tasklist plugin to flag non-actionable tasks by
+    a special tag.
+  + Added prompt for filename for Insert New File action.
+  + Added template option to list attachments in export.
+  + Added class attributes to links in HTML output.
+  + Added two more commandline options to quicknote plugin.
+  + Made sidepanes more compact by embedding close buttons in
+    widgets.
+  + Critical fix for restarting zim after a crash (cleaning up
+    socket).
+  + Several bugs fixed.
+  + Fix first day of week locale for calendar plugin.
+  + Fix for handling "file:/" and "file://" URIs in links.
+  + Fix for windows to not open consoles for each external
+    application.
+  + Fix for windows to put config files under %APPDATA%.
+  + Fix to have "update heading" toggle in rename dialog more
+    intelligent.
+  + Fix to make template errors report relevant error dialogs.
+  + Fix for search and replace whitespace in pageview.
+  + Various small fixes.
+
+-------------------------------------------------------------------
+Fri Oct 12 07:11:26 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.57:
+  + New features:
+    - Option to export to ReST
+  + New plugins:
+    - Insert music scores using GNU Lilypond
+    - Zeitgeist integration.
+  + A rework of the side panes
+  + Allowing plugins to be positioned on any side
+  + Simpler configuration for external applications
+  + A critical bug fix for the version control plugin
+  + Improved the attachment browser, the calendar plugin and the
+    tasklist plugin.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 26 09:23:25 UTC 2012 - vuntz@opensuse.org
+
+- Cleanup package originally created by Matthias Propst
+  <propstmatthias@googlemail.com> (using zim 0.55).
+- Update to version 0.56:
+  + Add support for version control with Mercurial and Git as
+    backend in addition to the previous Bazaar support.
+  + Add drag & drop support to attachment browser.
+  + Notebooks now can have a notebook specific configuration
+    "profile".
+  + Add new plugin to handle "ditaa" diagrams.
+  + Fix critical bug that prevented opening email addresses without
+    a "mailto:" prefix.
+  + Fix bug where context menu for page index applied to the
+    current page.
+  + Make sidepane and tagcloud remember state.
+  + Updated translations.

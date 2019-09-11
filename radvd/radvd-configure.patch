@@ -1,0 +1,15 @@
+Index: radvd-2.11/configure.ac
+===================================================================
+--- radvd-2.11.orig/configure.ac
++++ radvd-2.11/configure.ac
+@@ -47,7 +47,9 @@ you must specify it with --target on the
+ esac
+ 
+ dnl Determine CC and preset CFLAGS
+-AC_PROG_CC_C99
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ AC_PROG_RANLIB
+ 
+ AC_ARG_WITH([check], AS_HELP_STRING([--without-check], [Build without check unit testing framework]),[],[with_check=no])

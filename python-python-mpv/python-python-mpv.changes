@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:53:06 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jul 26 18:38:59 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.3.9 (no changelog supplied)
+
+-------------------------------------------------------------------
+Tue May  8 15:55:55 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.3.8 (no changelog supplied)
+
+-------------------------------------------------------------------
+Fri Nov 24 14:03:25 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.3.6
+  * Fixed TypeError: _handle_key_binding_message() signature
+    incompatibility with mpv < v0.15.0
+  * Nicer API names for add/multiply/cycle property
+  * Wrap all docstrings to 120 char line width
+  * Reformat doctrings to follow PEP 257 and use reStructuredText
+  * Fix add, cycle and multiply command.
+  * README: loop -> loop_playlist
+  * Add on_key_press
+  * Fix key binding registration for bound methods, add unit tests
+  * Fix window dragging while using custom key bindings
+  * mpv, mpv-test: Fix vim mode lines
+  * setup.py: Add pillow extra dependency
+  * Restore compatibility with older libmpv versions
+  * Re-nerf property observer tests
+  * mpv-test.py: Add more thorough property tests
+  * mpv.py: Un-break property write access
+  * Add pillow-based screenshot_raw command
+  * Move to fully FORMAT_NODE-based API
+  * mpv module: Remove load_lua
+  * MPV constructor: Add loglevel argument
+  * Fix register_event_callback to work with methods
+  * Remove debug hack accidentially left in the code
+  * Fix message handler registration and advanced README example
+  * setup.py: Small syntax fixes
+  * tests: Add test for multi-valued property-mapped options
+  * Add support for string-array options
+  * Fix racy property tests
+  * README: Add version compatibility blurb
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Mon Jun 19 16:17:47 UTC 2017 - aloisio@gmx.com
+
+- Initial package (0.2.3)

@@ -1,0 +1,23 @@
+Index: hdf-4.2.9/mfhdf/hdfimport/gen_sds_floats.c
+===================================================================
+--- hdf-4.2.9.orig/mfhdf/hdfimport/gen_sds_floats.c
++++ hdf-4.2.9/mfhdf/hdfimport/gen_sds_floats.c
+@@ -109,4 +109,6 @@ main()
+     */
+     status = SDend (sd2_id);
+     status = SDend (sd3_id);
++
++    return 0;
+ }
+Index: hdf-4.2.9/mfhdf/libsrc/putget.c
+===================================================================
+--- hdf-4.2.9.orig/mfhdf/libsrc/putget.c
++++ hdf-4.2.9/mfhdf/libsrc/putget.c
+@@ -86,6 +86,7 @@ const char *caller;
+     nc_api = strstr(caller, "nc");
+     if (nc_api == caller)
+         return TRUE;
++    return FALSE;
+ }
+ 
+ /*

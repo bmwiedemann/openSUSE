@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Mon Jul 29 20:02:51 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9
+  * Check FTP root security after dropping privileges
+  * Revert insecure default: "writable FTP root", introduced in v2.8
+  * Revert part of issue #18 to fix issue #23; "CWD /" doesn't work
+  * Fix spelling errors found by Lintian
+  * Fix package description, more formal and less personal
+
+-------------------------------------------------------------------
+Tue May 28 17:44:15 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8
+  Changes:
+  * The FTP command processor now always converts all inbound
+    commands to uppercase to handle clients sending commands in
+    lowercase
+  * Any arguments to the FTP LIST command are now ignored
+  * Improved user feedback on bad FTP root error message
+  Fixes
+  * Fix #18: KDE Dolphin, FTP client interop problems.
+  * Fix off-by-one regression introduced in v2.5
+
+-------------------------------------------------------------------
+Sun Mar  3 16:50:58 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7
+  Changes
+  * Documentation updates, commands added in v2.5 and writable opt
+  * Require libuEv v2.2, or later
+  Fixes
+  * Issues with relative FTP root when running unpriviliged
+
+-------------------------------------------------------------------
+Fri Jul 27 14:47:13 UTC 2018 - jengelh@inai.de
+
+- Remove rhetoric filler wording from descriptions.
+
+-------------------------------------------------------------------
+Wed Jul  4 15:20:38 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.6
+  Fixes
+  * Issue #16: 100% CPU when client session exits
+  * Add missing include file for `gettimeofday()`
+  * Flush stdout logging when running in the foreground
+
+-------------------------------------------------------------------
+Thu Jun 28 07:49:34 UTC 2018 - mardnh@gmx.de
+
+- Add Conflicts to not interfere with other packages that also
+  provide /usr/sbin/in.tftpd
+
+-------------------------------------------------------------------
+Mon Jun 18 12:07:49 UTC 2018 - mardnh@gmx.de
+
+- Initial package, version 2.5

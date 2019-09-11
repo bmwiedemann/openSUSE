@@ -1,0 +1,4403 @@
+diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/Charset88591.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/Charset88591.java
+--- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/Charset88591.java	2018-11-22 13:19:57.942962135 +0100
++++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/Charset88591.java	2018-11-29 11:58:08.843028188 +0100
+@@ -9,6 +9,7 @@
+ 
+ package com.ibm.icu.charset;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.charset.CharsetDecoder;
+@@ -91,8 +92,8 @@
+              * early termination of the loop
+              */
+             if ((ch & 0xff00) != 0) {
+-                source.position((i + 1) - source.arrayOffset());
+-                target.position(i + offset);
++                ((Buffer)source).position((i + 1) - source.arrayOffset());
++                ((Buffer)target).position(i + offset);
+                 return encodeMalformedOrUnmappable(source, ch, flush);
+             } else
+                 return null;
+diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetASCII.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetASCII.java
+--- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetASCII.java	2018-11-22 13:19:57.942962135 +0100
++++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetASCII.java	2018-11-29 12:02:08.908262688 +0100
+@@ -10,6 +10,7 @@
+  */
+ package com.ibm.icu.charset;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.IntBuffer;
+@@ -80,12 +81,12 @@
+                 cr = decodeLoopCoreOptimized(source, target, sourceArray, targetArray, sourceIndex, offset, limit);
+                 if (cr == null) {
+                     if (sourceLength <= targetLength) {
+-                        source.position(oldSource + sourceLength);
+-                        target.position(oldTarget + sourceLength);
++                        ((Buffer)source).position(oldSource + sourceLength);
++                        ((Buffer)target).position(oldTarget + sourceLength);
+                         cr = CoderResult.UNDERFLOW;
+                     } else {
+-                        source.position(oldSource + targetLength);
+-                        target.position(oldTarget + targetLength);
++                        ((Buffer)source).position(oldSource + targetLength);
++                        ((Buffer)target).position(oldTarget + targetLength);
+                         cr = CoderResult.OVERFLOW;
+                     }
+                 }
+@@ -125,8 +126,8 @@
+              * early termination of the loop
+              */
+             if ((ch & 0x80) != 0) {
+-                source.position(i + 1);
+-                target.position(i + offset);
++                ((Buffer)source).position(i + 1);
++                ((Buffer)target).position(i + offset);
+                 return decodeMalformedOrUnmappable(ch);
+             } else
+                 return null;
+@@ -238,12 +239,12 @@
+                     cr = encodeLoopCoreOptimized(source, target, sourceArray, targetArray, sourceIndex, offset, limit, flush);
+                     if (cr == null) {
+                         if (sourceLength <= targetLength) {
+-                            source.position(oldSource + sourceLength);
+-                            target.position(oldTarget + sourceLength);
++                            ((Buffer)source).position(oldSource + sourceLength);
++                            ((Buffer)target).position(oldTarget + sourceLength);
+                             cr = CoderResult.UNDERFLOW;
+                         } else {
+-                            source.position(oldSource + targetLength);
+-                            target.position(oldTarget + targetLength);
++                            ((Buffer)source).position(oldSource + targetLength);
++                            ((Buffer)target).position(oldTarget + targetLength);
+                             cr = CoderResult.OVERFLOW;
+                         }
+                     }
+@@ -286,8 +287,8 @@
+              * early termination of the loop
+              */
+             if ((ch & 0xff80) != 0) {
+-                source.position((i + 1) - source.arrayOffset());
+-                target.position(i + offset);
++                ((Buffer)source).position((i + 1) - source.arrayOffset());
++                ((Buffer)target).position(i + offset);
+                 return encodeMalformedOrUnmappable(source, ch, flush);
+             } else
+                 return null;
+diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetBOCU1.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetBOCU1.java
+--- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetBOCU1.java	2018-11-22 13:19:57.942962135 +0100
++++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetBOCU1.java	2018-11-29 12:53:21.308190661 +0100
+@@ -8,6 +8,7 @@
+  */
+ package com.ibm.icu.charset;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.IntBuffer;
+@@ -446,7 +447,7 @@
+                     if(offsets!=null){
+                         offsets.put(nextSourceIndex++);
+                     }
+-                    source.position(source.position()+1);
++                    ((Buffer)source).position(source.position()+1);
+                     --targetCapacity;
+                 }else {
+                     diff = c-prev;
+@@ -456,7 +457,7 @@
+                         if(offsets!=null){
+                             offsets.put(nextSourceIndex++);
+                         }
+-                        source.position(source.position()+1);
++                        ((Buffer)source).position(source.position()+1);
+                         --targetCapacity;
+                     }else {
+                         break;
+@@ -471,7 +472,7 @@
+                 /*test the following code unit*/
+                 char trail = source.get(source.position());
+                 if(UTF16.isTrailSurrogate(trail)){
+-                    source.position(source.position()+1);
++                    ((Buffer)source).position(source.position()+1);
+                     ++nextSourceIndex;
+                     c=UCharacter.getCodePoint((char)c, trail);
+                 }
+@@ -873,7 +874,7 @@
+                 } else {
+                     break;
+                 }
+-                source.position(source.position()+1);
++                ((Buffer)source).position(source.position()+1);
+                 --count;
+             }
+             sourceIndex=nextSourceIndex; /* wrong if offsets==NULL but does not matter */
+diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetCompoundText.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetCompoundText.java
+--- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetCompoundText.java	2018-11-22 13:19:57.942962135 +0100
++++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetCompoundText.java	2018-11-29 13:03:46.783452275 +0100
+@@ -8,6 +8,7 @@
+  */
+ package com.ibm.icu.charset;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.IntBuffer;
+@@ -269,7 +270,7 @@
+ 
+         if (matchFound) {
+             state = i;
+-            source.position(sourceIndex + (escSeqCompoundText[i].length - offset));
++            ((Buffer)source).position(sourceIndex + (escSeqCompoundText[i].length - offset));
+         }
+ 
+         return state;
+@@ -371,8 +372,8 @@
+                     }
+ 
+                     targetLength = 0;
+-                    tmpTargetBuffer.position(0);
+-                    tmpTargetBuffer.limit(3);
++                    ((Buffer)tmpTargetBuffer).position(0);
++                    ((Buffer)tmpTargetBuffer).limit(3);
+ 
+                     /* check if the char is a First surrogate */
+                     if (UTF16.isSurrogate((char)sourceChar) || gotoGetTrail) {
+@@ -385,7 +386,7 @@
+                             if (source.hasRemaining()) {
+                                 /* test the following code unit */
+                                 char trail = source.get();
+-                                source.position(source.position()-1);
++                                ((Buffer)source).position(source.position()-1);
+                                 if (UTF16.isTrailSurrogate(trail)) {
+                                     source.get();
+                                     sourceChar = UCharacter.getCodePoint((char)sourceChar, trail);
+@@ -423,18 +424,18 @@
+                             err = gbEncoder[i].cnvMBCSFromUnicodeWithOffsets(CharBuffer.wrap(sourceCharArray), tmpTargetBuffer, offsets, true);
+                             if (!err.isError()) {
+                                 tmpState = (byte)i;
+-                                tmpTargetBuffer.limit(tmpTargetBuffer.position());
++                                ((Buffer)tmpTargetBuffer).limit(tmpTargetBuffer.position());
+                                 implReset();
+                                 break;
+                             }
+                         }
+                     } else if (tmpState == COMPOUND_TEXT_SINGLE_0) {
+                         tmpTargetBuffer.put(0, (byte)sourceChar);
+-                        tmpTargetBuffer.limit(1);
++                        ((Buffer)tmpTargetBuffer).limit(1);
+                     } else {
+                         err = gbEncoder[tmpState].cnvMBCSFromUnicodeWithOffsets(CharBuffer.wrap(sourceCharArray), tmpTargetBuffer, offsets, true);
+                         if (!err.isError()) {
+-                            tmpTargetBuffer.limit(tmpTargetBuffer.position());
++                            ((Buffer)tmpTargetBuffer).limit(tmpTargetBuffer.position());
+                         }
+                     }
+                     if (err.isError()) {
+@@ -568,7 +569,7 @@
+                             }
+                         }
+                     } else if (source.hasRemaining()) {
+-                        source.limit(findNextEsc(source));
++                        ((Buffer)source).limit(findNextEsc(source));
+ 
+                         decoder = gbDecoder[currentState];
+ 
+@@ -591,7 +592,7 @@
+                             }
+                         }
+ 
+-                        source.limit(sourceLimit);
++                        ((Buffer)source).limit(sourceLimit);
+                     }
+ 
+                     if (err.isError()) {
+diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetDecoderICU.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetDecoderICU.java
+--- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetDecoderICU.java	2018-11-22 13:19:57.946962156 +0100
++++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetDecoderICU.java	2018-11-29 12:57:02.929351601 +0100
+@@ -11,6 +11,7 @@
+ 
+ package com.ibm.icu.charset;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.IntBuffer;
+@@ -248,14 +249,14 @@
+ //            return CoderResult.UNDERFLOW;
+ //        }
+ 
+-        in.position(in.position() + toUCountPending());
++        ((Buffer)in).position(in.position() + toUCountPending());
+ 
+         /* do the conversion */
+         CoderResult ret = decode(in, out, null, false);
+ 
+         // ok was there input held in the previous invocation of decodeLoop
+         // that resulted in output in this invocation?
+-        in.position(in.position() - toUCountPending());
++        ((Buffer)in).position(in.position() - toUCountPending());
+ 
+         return ret;
+     }
+@@ -428,8 +429,8 @@
+             //UConverterUtility.uprv_memcpy(replayArray, replayBegin, preToUArray, preToUBegin, -preToULength);
+             replayArray.put(preToUArray,0, -preToULength);
+             source=replayArray;
+-            source.position(0);
+-            source.limit(replayArrayIndex-preToULength);
++            ((Buffer)source).position(0);
++            ((Buffer)source).limit(replayArrayIndex-preToULength);
+             flush=false;
+             sourceIndex=-1;
+             preToULength=0;
+@@ -515,10 +516,10 @@
+                         //UConverterUtility.uprv_memcpy(replayArray, replayBegin, preToUArray, preToUBegin, -preToULength);
+                         replayArray.put(preToUArray,0, -preToULength);
+                         // reset position
+-                        replayArray.position(0);
++                        ((Buffer)replayArray).position(0);
+ 
+                         source=replayArray;
+-                        source.limit(replayArrayIndex-preToULength);
++                        ((Buffer)source).limit(replayArrayIndex-preToULength);
+                         flush=false;
+                         if((sourceIndex+=preToULength)<0) {
+                             sourceIndex=-1;
+diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetEncoderICU.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetEncoderICU.java
+--- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetEncoderICU.java	2018-11-22 13:19:57.942962135 +0100
++++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetEncoderICU.java	2018-11-29 13:13:30.814469043 +0100
+@@ -11,6 +11,7 @@
+ 
+ package com.ibm.icu.charset;
+ 
++import java.nio.Buffer;
+ import java.nio.BufferOverflowException;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+@@ -265,7 +266,7 @@
+             //fromUnicodeReset();
+             return CoderResult.UNDERFLOW;
+         }
+-        in.position(in.position() + fromUCountPending());
++        ((Buffer)in).position(in.position() + fromUCountPending());
+         /* do the conversion */
+         CoderResult ret = encode(in, out, null, false);
+         setSourcePosition(in);
+@@ -421,8 +422,8 @@
+             //UConverterUtility.uprv_memcpy(replayArray, replayArrayIndex, preFromUArray, 0, -preFromULength*UMachine.U_SIZEOF_UCHAR);
+             replayArray.put(preFromUArray, 0, -preFromULength);
+             source = replayArray;
+-            source.position(replayArrayIndex);
+-            source.limit(replayArrayIndex - preFromULength); //preFromULength is negative, see declaration
++            ((Buffer)source).position(replayArrayIndex);
++            ((Buffer)source).limit(replayArrayIndex - preFromULength); //preFromULength is negative, see declaration
+             flush = false;
+ 
+             preFromULength = 0;
+@@ -502,8 +503,8 @@
+                         replayArray.put(preFromUArray, 0, -preFromULength);
+ 
+                         source = replayArray;
+-                        source.position(replayArrayIndex);
+-                        source.limit(replayArrayIndex - preFromULength);
++                        ((Buffer)source).position(replayArrayIndex);
++                        ((Buffer)source).limit(replayArrayIndex - preFromULength);
+                         flush = false;
+                         if ((sourceIndex += preFromULength) < 0) {
+                             sourceIndex = -1;
+@@ -760,7 +761,7 @@
+ 
+         // ok was there input held in the previous invocation of encodeLoop
+         // that resulted in output in this invocation?
+-        source.position(source.position() - fromUCountPending());
++        ((Buffer)source).position(source.position() - fromUCountPending());
+     }
+ 
+     /*
+@@ -829,7 +830,7 @@
+             /* start the new target at the first free slot in the error buffer */
+             int errBuffLen = encoder.errorBufferLength;
+             ByteBuffer newTarget = ByteBuffer.wrap(encoder.errorBuffer);
+-            newTarget.position(errBuffLen); /* set the position at the end of the error buffer */
++            ((Buffer)newTarget).position(errBuffLen); /* set the position at the end of the error buffer */
+             encoder.errorBufferLength = 0;
+ 
+             encoder.encode(source, newTarget, null, false);
+@@ -879,7 +880,7 @@
+ 
+         if (!UTF16.isTrailSurrogate(trail)) {
+             fromUChar32 = lead;
+-            source.position(source.position() - 1);
++            ((Buffer)source).position(source.position() - 1);
+             return CoderResult.malformedForLength(1);
+         }
+ 
+diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetHZ.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetHZ.java
+--- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetHZ.java	2018-11-22 13:19:57.942962135 +0100
++++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetHZ.java	2018-11-29 12:34:14.602235201 +0100
+@@ -8,6 +8,7 @@
+  */
+ package com.ibm.icu.charset;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.IntBuffer;
+@@ -125,7 +126,7 @@
+                             if (isStateDBCS ? (0x21 <= mySourceChar && mySourceChar <= 0x7e) : mySourceChar <= 0x7f) {
+                                 /* The current byte could be the start of a character: Back it out. */
+                                 toULength = 1;
+-                                source.position(source.position() - 1);
++                                ((Buffer)source).position(source.position() - 1);
+                             } else {
+                                 /* Include the current byte in the illegal sequence. */
+                                 toUBytesArray[1] = (byte)mySourceChar;
+@@ -170,7 +171,7 @@
+                                 mySourceChar = (leadByte << 8) | mySourceChar;
+                             } else if (trailIsOk) {
+                                 /* report a single illegal byte and continue with the following DBCS starter byte */
+-                                source.position(source.position() - 1);
++                                ((Buffer)source).position(source.position() - 1);
+                                 mySourceChar = leadByte;
+                             } else {
+                                 /* report a pair of illegal bytes if the second byte is not a DBCS starter */
+diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetISO2022.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetISO2022.java
+--- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetISO2022.java	2018-11-22 13:19:57.942962135 +0100
++++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetISO2022.java	2018-11-29 13:25:35.038077488 +0100
+@@ -8,6 +8,7 @@
+  */
+ package com.ibm.icu.charset;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.IntBuffer;
+@@ -701,7 +702,7 @@
+                 int bytesFromThisBuffer = decoder.toULength - initialToULength;
+                 if (backOutDistance <= bytesFromThisBuffer) {
+                     /* same as initialToULength<=1 */
+-                    source.position(source.position() - backOutDistance);
++                    ((Buffer)source).position(source.position() - backOutDistance);
+                 } else {
+                     /* Back out bytes from the previous buffer: Need to replay them. */
+                     decoder.preToULength = (byte)(bytesFromThisBuffer - backOutDistance);
+@@ -710,7 +711,7 @@
+                     for (int i = 0; i < -(decoder.preToULength); i++) {
+                         decoder.preToUArray[i] = decoder.toUBytesArray[i+1];
+                     }
+-                    source.position(source.position() - bytesFromThisBuffer);
++                    ((Buffer)source).position(source.position() - bytesFromThisBuffer);
+                 }
+                 decoder.toULength = 1;
+             }
+@@ -907,7 +908,7 @@
+ 
+                     case ESC_2022:
+                         if (!gotoEscape) {
+-                            source.position(source.position() - 1);
++                            ((Buffer)source).position(source.position() - 1);
+                         } else {
+                             gotoEscape = false;
+                         }
+@@ -1061,14 +1062,14 @@
+                         /* disassemble the surrogate pair and write to output */
+                         targetUniChar -= 0x0010000;
+                         target.put((char)(0xd800 + (char)(targetUniChar>>10)));
+-                        target.position(target.position()-1);
++                        ((Buffer)target).position(target.position()-1);
+                         if (offsets != null) {
+                             offsets.put(target.remaining(), source.remaining() - (mySourceChar <= 0xff ? 1 : 2));
+                         }
+                         target.get();
+                         if (target.hasRemaining()) {
+                             target.put((char)(0xdc00+(char)(targetUniChar&0x3ff)));
+-                            target.position(target.position()-1);
++                            ((Buffer)target).position(target.position()-1);
+                             if (offsets != null) {
+                                 offsets.put(target.remaining(), source.remaining() - (mySourceChar <= 0xff ? 1 : 2));
+                             }
+@@ -1167,7 +1168,7 @@
+ 
+                     case ESC_2022:
+                         if (!gotoEscape) {
+-                            source.position(source.position()-1);
++                            ((Buffer)source).position(source.position()-1);
+                         }
+ // escape label
+                         gotoEscape = false;
+@@ -1239,7 +1240,7 @@
+                                         tempBufLen = 2;
+                                     }
+                                     ByteBuffer tempBuffer = ByteBuffer.wrap(tempBuf);
+-                                    tempBuffer.limit(tempBufLen);
++                                    ((Buffer)tempBuffer).limit(tempBufLen);
+                                     targetUniChar = MBCSSimpleGetNextUChar(cnv, tempBuffer, false);
+                                     mySourceChar = (mySourceChar << 8) | trailByte;
+ 
+@@ -1366,7 +1367,7 @@
+                         continue;
+                     } else if (!gotoGetTrailByte && (gotoEscape || mySourceChar == ESC_2022)) {
+                         if (!gotoEscape) {
+-                            source.position(source.position()-1);
++                            ((Buffer)source).position(source.position()-1);
+                         }
+ // escape label
+                         gotoEscape = false; // reset gotoEscape flag
+@@ -1419,11 +1420,11 @@
+                     } else if (mySourceChar <= 0x7f) {
+                         int savedSourceLimit = source.limit();
+                         int savedSourcePosition = source.position();
+-                        source.limit(source.position());
+-                        source.position(source.position()-1);
++                        ((Buffer)source).limit(source.position());
++                        ((Buffer)source).position(source.position()-1);
+                         targetUniChar = MBCSSimpleGetNextUChar(myConverterData.currentConverter.sharedData, source, usingFallback);
+-                        source.limit(savedSourceLimit);
+-                        source.position(savedSourcePosition);
++                        ((Buffer)source).limit(savedSourceLimit);
++                        ((Buffer)source).position(savedSourcePosition);
+                     } else {
+                         targetUniChar = 0xffff;
+                     }
+@@ -1468,7 +1469,7 @@
+                     /* Find the end of the buffer e.g : Next Escape Seq | end of Buffer */
+                     int oldSourcePos = source.position();
+                     sourceLimit = getEndOfBuffer_2022(source);
+-                    source.position(oldSourcePos);
++                    ((Buffer)source).position(oldSourcePos);
+                     if (source.position() != sourceLimit) {
+                         /*
+                          * get the current partial byte sequence
+@@ -1489,9 +1490,9 @@
+                          */
+                         argTarget = target.position();
+                         oldSourceLimit = source.limit(); // save the old source limit change to new one
+-                        source.limit(sourceLimit);
++                        ((Buffer)source).limit(sourceLimit);
+                         err = myConverterData.currentDecoder.cnvMBCSToUnicodeWithOffsets(source, target, offsets, flush);
+-                        source.limit(oldSourceLimit); // restore source limit;
++                        ((Buffer)source).limit(oldSourceLimit); // restore source limit;
+                         if (offsets != null && sourceStart != argSource) {
+                             /* update offsets to base them on the actual start of the input */
+                             int delta = argSource - sourceStart;
+@@ -1770,7 +1771,7 @@
+                                 /* test the following code unit */
+                                 char trail = source.get();
+                                 /* go back to the previous position */
+-                                source.position(source.position()-1);
++                                ((Buffer)source).position(source.position()-1);
+                                 if (UTF16.isTrailSurrogate(trail)) {
+                                     source.get();
+                                     sourceChar = UCharacter.getCodePoint((char)sourceChar, trail);
+@@ -2277,7 +2278,7 @@
+                             if (source.hasRemaining()) {
+                                 /* test the following code unit */
+                                 char trail = source.get();
+-                                source.position(source.position()-1);
++                                ((Buffer)source).position(source.position()-1);
+                                 if (UTF16.isTrailSurrogate(trail)) {
+                                     source.get();
+                                     sourceChar = UCharacter.getCodePoint((char)sourceChar, trail);
+@@ -2777,7 +2778,7 @@
+                                 if (source.hasRemaining()) {
+                                     /* test the following code unit */
+                                     char trail = source.get();
+-                                    source.position(source.position()-1);
++                                    ((Buffer)source).position(source.position()-1);
+                                     if (UTF16.isTrailSurrogate(trail)) {
+                                         source.get();
+                                          sourceChar = UCharacter.getCodePoint((char)sourceChar, trail);
+diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetLMBCS.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetLMBCS.java
+--- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetLMBCS.java	2018-11-22 13:19:57.942962135 +0100
++++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetLMBCS.java	2018-11-29 13:16:06.663274127 +0100
+@@ -8,6 +8,7 @@
+  */
+ package com.ibm.icu.charset;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.IntBuffer;
+@@ -597,13 +598,13 @@
+             oldSourceLimit = source.limit();
+             oldSourcePos = source.position();
+ 
+-            source.position(oldSourcePos + positionOffset);
+-            source.limit(source.position() + length);
++            ((Buffer)source).position(oldSourcePos + positionOffset);
++            ((Buffer)source).limit(source.position() + length);
+ 
+             uniChar = extraInfo.decoder.simpleGetNextUChar(source, false);
+ 
+-            source.limit(oldSourceLimit);
+-            source.position(oldSourcePos);
++            ((Buffer)source).limit(oldSourceLimit);
++            ((Buffer)source).position(oldSourcePos);
+ 
+             return uniChar;
+         }
+@@ -649,7 +650,7 @@
+                     /* CHECK_SOURCE_LIMIT(1) */
+                     if (source.position() + 1 > source.limit()) {
+                         err[0] = CoderResult.OVERFLOW;
+-                        source.position(source.limit());
++                        ((Buffer)source).position(source.limit());
+                         return 0xFFFF;
+                     }
+                     C0C1byte = (short)(source.get() & UConverterConstants.UNSIGNED_BYTE_MASK);
+@@ -658,7 +659,7 @@
+                     /* CHECK_SOURCE_LIMIT(2) */
+                     if (source.position() + 2 > source.limit()) {
+                         err[0] = CoderResult.OVERFLOW;
+-                        source.position(source.limit());
++                        ((Buffer)source).position(source.limit());
+                         return 0xFFFF;
+                     }
+ 
+@@ -673,7 +674,7 @@
+                         /* CHECK_SOURCE_LIMIT(2) */
+                         if (source.position() + 2 > source.limit()) {
+                             err[0] = CoderResult.OVERFLOW;
+-                            source.position(source.limit());
++                            ((Buffer)source).position(source.limit());
+                             return 0xFFFF;
+                         }
+ 
+@@ -693,7 +694,7 @@
+                         /* CHECK_SOURCE_LIMIT(1) */
+                         if (source.position() + 1 > source.limit()) {
+                             err[0] = CoderResult.OVERFLOW;
+-                            source.position(source.limit());
++                            ((Buffer)source).position(source.limit());
+                             return 0xFFFF;
+                         }
+                         CurByte = (short)(source.get() & UConverterConstants.UNSIGNED_BYTE_MASK);
+@@ -724,7 +725,7 @@
+                             /* CHECK_SOURCE_LIMIT(0) */
+                             if (source.position() + 0 > source.limit()) {
+                                 err[0] = CoderResult.OVERFLOW;
+-                                source.position(source.limit());
++                                ((Buffer)source).position(source.limit());
+                                 return 0xFFFF;
+                             }
+ 
+@@ -734,7 +735,7 @@
+                             /* CHECK_SOURCE_LIMIT(1) */
+                             if (source.position() + 1 > source.limit()) {
+                                 err[0] = CoderResult.OVERFLOW;
+-                                source.position(source.limit());
++                                ((Buffer)source).position(source.limit());
+                                 return 0xFFFF;
+                             }
+ 
+@@ -781,9 +782,9 @@
+                         }
+                     }
+                     tmpSourceBuffer = ByteBuffer.wrap(LMBCS);
+-                    tmpSourceBuffer.limit(savebytes);
++                    ((Buffer)tmpSourceBuffer).limit(savebytes);
+                     uniChar = (char)LMBCSGetNextUCharWorker(tmpSourceBuffer, err);
+-                    source.position(saveSource + tmpSourceBuffer.position() - size_old);
++                    ((Buffer)source).position(saveSource + tmpSourceBuffer.position() - size_old);
+                     errSource = saveSource - size_old;
+ 
+                     if (err[0].isOverflow()) { /* err == U_TRUNCATED_CHAR_FOUND */
+@@ -792,7 +793,7 @@
+                         for (int i = 0; i < savebytes; i++) {
+                             toUBytesArray[i] = LMBCS[i];
+                         }
+-                        source.position(source.limit());
++                        ((Buffer)source).position(source.limit());
+                         err[0] = CoderResult.UNDERFLOW;
+                         return err[0];
+                     } else {
+diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetMBCS.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetMBCS.java
+--- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetMBCS.java	2018-11-22 13:19:57.946962156 +0100
++++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetMBCS.java	2018-11-29 12:30:39.493123785 +0100
+@@ -1458,7 +1458,7 @@
+         // TODO: It is very inefficient to create Buffer objects for each array access.
+         // We should create an inner class Extensions (or sibling class CharsetMBCSExtensions)
+         // which has buffers for the arrays, together with the code that works with them.
+-        indexes.position(indexes.getInt(index << 2));
++        ((Buffer)indexes).position(indexes.getInt(index << 2));
+         if (itemType == int.class)
+             b = indexes.asIntBuffer();
+         else if (itemType == char.class)
+@@ -1468,12 +1468,12 @@
+         else
+             // default or (itemType == byte.class)
+             b = indexes.slice();
+-        indexes.position(oldpos);
++        ((Buffer)indexes).position(oldpos);
+         return b;
+     }
+ 
+     private static int GET_MAX_BYTES_PER_UCHAR(ByteBuffer indexes) {
+-        indexes.position(0);
++        ((Buffer)indexes).position(0);
+         return indexes.getInt(EXT_COUNT_BYTES) & 0xff;
+     }
+ 
+@@ -1649,7 +1649,7 @@
+             if (match > 0) {
+                 if (match >= preToULength) {
+                     /* advance src pointer for the consumed input */
+-                    source.position(source.position() + match - preToULength);
++                    ((Buffer)source).position(source.position() + match - preToULength);
+                     preToULength = 0;
+                 } else {
+                     /* the match did not use all of preToU[] - keep the rest for replay */
+@@ -1670,7 +1670,7 @@
+                 for (j = preToULength; j < match; ++j) {
+                     preToUArray[j] = source.get(sArrayIndex++);
+                 }
+-                source.position(sArrayIndex); /* same as *src=srcLimit; because we reached the end of input */
++                ((Buffer)source).position(sArrayIndex); /* same as *src=srcLimit; because we reached the end of input */
+                 preToULength = (byte) match;
+             } else /* match==0 */{
+                 /*
+@@ -1829,7 +1829,7 @@
+ 
+                 char[] a = new char[TO_U_GET_LENGTH(value)];
+                 CharBuffer cb = ((CharBuffer) ARRAY(cx, EXT_TO_U_UCHARS_INDEX, char.class));
+-                cb.position(TO_U_GET_INDEX(value));
++                ((Buffer)cb).position(TO_U_GET_INDEX(value));
+                 cb.get(a, 0, a.length);
+                 return toUWriteUChars(this, a, 0, a.length, target, offsets, srcIndex);
+             }
+@@ -1925,7 +1925,7 @@
+                     value, isToUUseFallback(), flush);
+             if (match > 0) {
+                 /* advance src pointer for the consumed input */
+-                source.position(source.position() + match - firstLength);
++                ((Buffer)source).position(source.position() + match - firstLength);
+ 
+                 /* write result to target */
+                 cr[0] = writeToU(value[0], target, offsets, srcIndex);
+@@ -1950,7 +1950,7 @@
+                 for (; j < match; ++j) {
+                     preToUArray[j] = source.get(sArrayIndex++);
+                 }
+-                source.position(sArrayIndex);
++                ((Buffer)source).position(sArrayIndex);
+                 preToULength = (byte) match;
+                 return true;
+             } else /* match==0 no match */{
+@@ -2330,7 +2330,7 @@
+                 } else /* unassigned sequences indicated with byteIndex>0 */{
+                     /* try an extension mapping */
+                     int sourceBeginIndex = sourceArrayIndex;
+-                    source.position(sourceArrayIndex);
++                    ((Buffer)source).position(sourceArrayIndex);
+                     byteIndex = toU(byteIndex, source, target, offsets, sourceIndex, flush, cr);
+                     sourceArrayIndex = source.position();
+                     sourceIndex = nextSourceIndex += (sourceArrayIndex - sourceBeginIndex);
+@@ -2348,7 +2348,7 @@
+             toULength = byteIndex;
+ 
+             /* write back the updated pointers */
+-            source.position(sourceArrayIndex);
++            ((Buffer)source).position(sourceArrayIndex);
+ 
+             return cr[0];
+         }
+@@ -2446,7 +2446,7 @@
+                     /* try an extension mapping */
+                     lastSource = sourceArrayIndex;
+                     toUBytesArray[0] = source.get(sourceArrayIndex - 1);
+-                    source.position(sourceArrayIndex);
++                    ((Buffer)source).position(sourceArrayIndex);
+                     toULength = toU((byte) 1, source, target, offsets, sourceIndex, flush, cr);
+                     sourceArrayIndex = source.position();
+                     sourceIndex += 1 + (sourceArrayIndex - lastSource);
+@@ -2480,7 +2480,7 @@
+             }
+ 
+             /* write back the updated pointers */
+-            source.position(sourceArrayIndex);
++            ((Buffer)source).position(sourceArrayIndex);
+ 
+             return cr[0];
+         }
+@@ -2600,7 +2600,7 @@
+                     /* try an extension mapping */
+                     int sourceBeginIndex = sourceArrayIndex;
+                     toUBytesArray[0] = source.get(sourceArrayIndex - 1);
+-                    source.position(sourceArrayIndex);
++                    ((Buffer)source).position(sourceArrayIndex);
+                     toULength = toU((byte) 1, source, target, offsets, sourceIndex, flush, cr);
+                     sourceArrayIndex = source.position();
+                     sourceIndex += 1 + (sourceArrayIndex - sourceBeginIndex);
+@@ -2613,7 +2613,7 @@
+             }
+ 
+             /* write back the updated pointers */
+-            source.position(sourceArrayIndex);
++            ((Buffer)source).position(sourceArrayIndex);
+ 
+             return cr[0];
+         }
+@@ -2772,7 +2772,7 @@
+                 if (sharedData.mbcs.extIndexes != null) {
+                     /* Increase the limit for proper handling. Used in LMBCS. */
+                     if (source.limit() > i + length) {
+-                        source.limit(i + length);
++                        ((Buffer)source).limit(i + length);
+                     }
+                     return simpleMatchToU(source, useFallback);
+                 }
+@@ -3358,7 +3358,7 @@
+                 fromUChar32 = c;
+                 fromUnicodeStatus = prevLength;
+ 
+-                source.position(sourceArrayIndex);
++                ((Buffer)source).position(sourceArrayIndex);
+             } catch (BufferOverflowException ex) {
+                 cr[0] = CoderResult.OVERFLOW;
+             }
+@@ -3533,7 +3533,7 @@
+ 
+                 if (match >= preFromULength) {
+                     /* advance src pointer for the consumed input */
+-                    source.position(source.position() + match - preFromULength);
++                    ((Buffer)source).position(source.position() + match - preFromULength);
+                     preFromULength = 0;
+                 } else {
+                     /* the match did not use all of preFromU[] - keep the rest for replay */
+@@ -3558,7 +3558,7 @@
+                 for (j = preFromULength; j < match; ++j) {
+                     preFromUArray[j] = source.get(sArrayIndex++);
+                 }
+-                source.position(sArrayIndex); /* same as *src=srcLimit; because we reached the end of input */
++                ((Buffer)source).position(sArrayIndex); /* same as *src=srcLimit; because we reached the end of input */
+                 preFromULength = (byte) match;
+             } else { /* match==0 or 1 */
+                 /*
+@@ -3672,8 +3672,8 @@
+                 for (;;) {
+                     /* go to the next section */
+                     int oldpos = fromUTableUChars.position();
+-                    fromUSectionUChars = ((CharBuffer) fromUTableUChars.position(index)).slice();
+-                    fromUTableUChars.position(oldpos);
++                    fromUSectionUChars = ((CharBuffer) ((Buffer)fromUTableUChars).position(index)).slice();
++                    ((Buffer)fromUTableUChars).position(oldpos);
+                     oldpos = fromUTableValues.position();
+                     fromUSectionValues = ((IntBuffer) fromUTableValues.position(index)).slice();
+                     fromUTableValues.position(oldpos);
+@@ -3835,7 +3835,7 @@
+                 byte[] slice = new byte[length];
+ 
+                 ByteBuffer bb = ((ByteBuffer) ARRAY(cx, EXT_FROM_U_BYTES_INDEX, byte.class));
+-                bb.position(value);
++                ((Buffer)bb).position(value);
+                 bb.get(slice, 0, slice.length);
+ 
+                 resultArray = slice;
+@@ -3943,7 +3943,7 @@
+             if (match >= 2
+                     && !(FROM_U_GET_LENGTH(value[0]) == 1 && sharedData.mbcs.outputType == MBCS_OUTPUT_DBCS_ONLY)) {
+                 /* advance src pointer for the consumed input */
+-                source.position(source.position() + match - 2); /* remove 2 for the initial code point */
++                ((Buffer)source).position(source.position() + match - 2); /* remove 2 for the initial code point */
+ 
+                 /* write result to target */
+                 cr[0] = writeFromU(value[0], target, offsets, srcIndex);
+@@ -3962,7 +3962,7 @@
+                 for (j = 0; j < match; ++j) {
+                     preFromUArray[j] = source.get(sArrayIndex++);
+                 }
+-                source.position(sArrayIndex); /* same as *src=srcLimit; because we reached the end of input */
++                ((Buffer)source).position(sArrayIndex); /* same as *src=srcLimit; because we reached the end of input */
+                 preFromULength = (byte) match;
+                 return true;
+             } else if (match == 1) {
+@@ -4102,7 +4102,7 @@
+ 
+                     /* try an extension mapping */
+                     lastSource = sourceArrayIndex;
+-                    source.position(sourceArrayIndex);
++                    ((Buffer)source).position(sourceArrayIndex);
+                     c = fromU(c, source, target, offsets, sourceIndex, length, flush, cr);
+                     sourceArrayIndex = source.position();
+                     sourceIndex += length + (sourceArrayIndex - lastSource);
+@@ -4142,7 +4142,7 @@
+             fromUChar32 = c;
+ 
+             /* write back the updated pointers */
+-            source.position(sourceArrayIndex);
++            ((Buffer)source).position(sourceArrayIndex);
+ 
+             return cr[0];
+         }
+@@ -4292,7 +4292,7 @@
+             fromUChar32 = c;
+ 
+             /* write back the updated pointers */
+-            source.position(sourceArrayIndex);
++            ((Buffer)source).position(sourceArrayIndex);
+ 
+             return cr[0];
+         }
+@@ -4482,7 +4482,7 @@
+             fromUChar32 = c;
+ 
+             /* write back the updated pointers */
+-            source.position(sourceArrayIndex);
++            ((Buffer)source).position(sourceArrayIndex);
+ 
+             return cr[0];
+         }
+@@ -4576,7 +4576,7 @@
+                 boolean flush, CoderResult[] cr) {
+             /* try an extension mapping */
+             int sourceBegin = x.sourceArrayIndex;
+-            source.position(x.sourceArrayIndex);
++            ((Buffer)source).position(x.sourceArrayIndex);
+             x.c = fromU(x.c, source, target, null, x.sourceIndex, x.nextSourceIndex, flush, cr);
+             x.sourceArrayIndex = source.position();
+             x.nextSourceIndex += x.sourceArrayIndex - sourceBegin;
+@@ -4649,7 +4649,7 @@
+                 boolean flush, CoderResult[] cr) {
+             /* try an extension mapping */
+             int sourceBegin = x.sourceArrayIndex;
+-            source.position(x.sourceArrayIndex);
++            ((Buffer)source).position(x.sourceArrayIndex);
+             x.c = fromU(x.c, source, target, null, x.sourceIndex, x.nextSourceIndex, flush, cr);
+             x.sourceArrayIndex = source.position();
+             x.nextSourceIndex += x.sourceArrayIndex - sourceBegin;
+diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetSCSU.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetSCSU.java
+--- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetSCSU.java	2018-11-22 13:19:57.946962156 +0100
++++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetSCSU.java	2018-11-29 12:17:22.584999036 +0100
+@@ -8,6 +8,7 @@
+  */
+ package com.ibm.icu.charset;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.IntBuffer;
+@@ -293,7 +294,7 @@
+ 
+                 if(state==readCommand){
+                     while(source.hasRemaining() && target.hasRemaining() && (b=(short)(source.get(source.position()) & UConverterConstants.UNSIGNED_BYTE_MASK)) >= 0x20){
+-                        source.position(source.position()+1);
++                        ((Buffer)source).position(source.position()+1);
+                         ++nextSourceIndex;
+                         if(b <= 0x7f){
+                             /*Write US graphic character or DEL*/
+diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF16.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF16.java
+--- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF16.java	2018-11-22 13:19:57.946962156 +0100
++++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF16.java	2018-11-29 12:46:51.854150535 +0100
+@@ -8,6 +8,7 @@
+  */
+ package com.ibm.icu.charset;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.IntBuffer;
+@@ -216,7 +217,7 @@
+             if (!UTF16.isTrailSurrogate(trail)) {
+                 // pretend like we didnt read the last 2 bytes
+                 toULength = 2;
+-                source.position(source.position() - 2);
++                ((Buffer)source).position(source.position() - 2);
+ 
+                 // 2 bytes, lead malformed
+                 toUnicodeStatus = 0;
+diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF7.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF7.java
+--- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF7.java	2018-11-22 13:19:57.942962135 +0100
++++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF7.java	2018-11-29 13:18:08.639896912 +0100
+@@ -8,6 +8,7 @@
+  */
+ package com.ibm.icu.charset;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.IntBuffer;
+@@ -302,7 +303,7 @@
+                                 if(base64Counter==-1) {
+                                     /* illegal: + immediately followed by something other than base64 or minus sign */
+                                     /* include the plus sign in the reported sequence, but not the subsequent char */
+-                                    source.position(source.position() -1);
++                                    ((Buffer)source).position(source.position() -1);
+                                     toUBytesArray[0]=PLUS;
+                                     byteIndex=1;
+                                     cr=CoderResult.malformedForLength(sourceArrayIndex);
+@@ -310,7 +311,7 @@
+                                 } else if(bits!=0) {
+                                     /* bits are illegally left over, a UChar is incomplete */
+                                     /* don't include current char (legal or illegal) in error seq */
+-                                    source.position(source.position() -1);
++                                    ((Buffer)source).position(source.position() -1);
+                                     --byteIndex;
+                                     cr=CoderResult.malformedForLength(sourceArrayIndex);
+                                     break directMode;
+@@ -322,7 +323,7 @@
+                                         break directMode;
+                                     } else {
+                                         /* un-read the current character in case it is a plus sign */
+-                                        source.position(source.position() -1);
++                                        ((Buffer)source).position(source.position() -1);
+                                         sourceIndex=nextSourceIndex-1;
+                                         continue directMode;
+                                     }
+@@ -555,7 +556,7 @@
+                         }
+                     } else {
+                         /* un-read this character and switch to unicode mode */
+-                        source.position(source.position() - 1);
++                        ((Buffer)source).position(source.position() - 1);
+                         target.put(useIMAP ? AMPERSAND : PLUS);
+                         if (offsets != null) {
+                             offsets.put(sourceIndex);
+@@ -581,7 +582,7 @@
+                             inDirectMode=1;
+ 
+                             /* trick: back out this character to make this easier */
+-                            source.position(source.position() - 1);
++                            ((Buffer)source).position(source.position() - 1);
+ 
+                             /* terminate the base64 sequence */
+                             if (base64Counter!=0) {
+diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF8.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF8.java
+--- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF8.java	2018-11-22 13:19:57.938962113 +0100
++++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF8.java	2018-11-29 12:44:59.221565806 +0100
+@@ -11,6 +11,7 @@
+ 
+ package com.ibm.icu.charset;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.IntBuffer;
+@@ -359,8 +360,8 @@
+                     srcIdx = sourceIndex;
+                     tgtIdx = targetIndex;
+                     if (cr != null) {
+-                        source.position(srcIdx - source.arrayOffset());
+-                        target.position(tgtIdx - target.arrayOffset());
++                        ((Buffer)source).position(srcIdx - source.arrayOffset());
++                        ((Buffer)target).position(tgtIdx - target.arrayOffset());
+                         return cr;
+                     }
+                 }
+@@ -432,8 +433,8 @@
+                 }
+ 
+                 /* set the new source and target positions and return the CoderResult stored in cr */
+-                source.position(srcIdx - source.arrayOffset());
+-                target.position(tgtIdx - target.arrayOffset());
++                ((Buffer)source).position(srcIdx - source.arrayOffset());
++                ((Buffer)target).position(tgtIdx - target.arrayOffset());
+                 return cr;
+ 
+             } else {
+diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/UConverterDataReader.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/UConverterDataReader.java
+--- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/UConverterDataReader.java	2018-11-22 13:19:57.942962135 +0100
++++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/UConverterDataReader.java	2018-11-29 12:32:45.649775586 +0100
+@@ -10,6 +10,7 @@
+ package com.ibm.icu.charset;
+ 
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.IntBuffer;
+@@ -596,7 +597,7 @@
+             throw new InvalidFormatException();
+         }
+         int numBytesExtensionStructure = b.getInt(31 * 4);
+-        b.limit(numBytesExtensionStructure);
++        ((Buffer)b).limit(numBytesExtensionStructure);
+         ICUBinary.skipBytes(byteBuffer, numBytesExtensionStructure);
+         return b;
+     }
+diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java icu4j-63.1.new/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java
+--- icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java	2018-11-22 13:19:56.538954635 +0100
++++ icu4j-63.1.new/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java	2018-11-29 12:52:25.063896025 +0100
+@@ -15,6 +15,7 @@
+ import java.io.FileNotFoundException;
+ import java.io.IOException;
+ import java.io.InputStream;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.ByteOrder;
+ import java.nio.channels.FileChannel;
+@@ -93,8 +94,8 @@
+             int index = binarySearch(bytes, key);
+             if (index >= 0) {
+                 ByteBuffer data = bytes.duplicate();
+-                data.position(getDataOffset(bytes, index));
+-                data.limit(getDataOffset(bytes, index + 1));
++                ((Buffer)data).position(getDataOffset(bytes, index));
++                ((Buffer)data).limit(getDataOffset(bytes, index + 1));
+                 return ICUBinary.sliceWithOrder(data);
+             } else {
+                 return null;
+@@ -608,7 +609,7 @@
+                             formatVersion[2] & 0xff, formatVersion[3] & 0xff));
+         }
+ 
+-        bytes.position(headerSize);
++        ((Buffer)bytes).position(headerSize);
+         return  // dataVersion
+                 (bytes.get(20) << 24) |
+                 ((bytes.get(21) & 0xff) << 16) |
+@@ -647,7 +648,7 @@
+ 
+     public static void skipBytes(ByteBuffer bytes, int skipLength) {
+         if (skipLength > 0) {
+-            bytes.position(bytes.position() + skipLength);
++            ((Buffer)bytes).position(bytes.position() + skipLength);
+         }
+     }
+ 
+diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundleReader.java icu4j-63.1.new/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundleReader.java
+--- icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundleReader.java	2018-11-22 13:19:56.538954635 +0100
++++ icu4j-63.1.new/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundleReader.java	2018-11-29 13:10:56.773673336 +0100
+@@ -11,6 +11,7 @@
+ import java.io.IOException;
+ import java.io.InputStream;
+ import java.lang.ref.SoftReference;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.IntBuffer;
+@@ -293,7 +294,7 @@
+                 // unlike regular bundles' key strings for which indexes
+                 // are based on the start of the bundle data.
+                 keyBytes = new byte[(keysTop - keysBottom) << 2];
+-                bytes.position(keysBottom << 2);
++                ((Buffer)bytes).position(keysBottom << 2);
+             } else {
+                 localKeyLimit = keysTop << 2;
+                 keyBytes = new byte[localKeyLimit];
+@@ -306,9 +307,9 @@
+             int _16BitTop = getIndexesInt(URES_INDEX_16BIT_TOP);
+             if(_16BitTop > keysTop) {
+                 int num16BitUnits = (_16BitTop - keysTop) * 2;
+-                bytes.position(keysTop << 2);
++                ((Buffer)bytes).position(keysTop << 2);
+                 b16BitUnits = bytes.asCharBuffer();
+-                b16BitUnits.limit(num16BitUnits);
++                ((Buffer)b16BitUnits).limit(num16BitUnits);
+                 maxOffset |= num16BitUnits - 1;
+             } else {
+                 b16BitUnits = EMPTY_16_BIT_UNITS;
+@@ -326,7 +327,7 @@
+         }
+ 
+         // Reset the position for future .asCharBuffer() etc.
+-        bytes.position(0);
++        ((Buffer)bytes).position(0);
+     }
+ 
+     private int getIndexesInt(int i) {
+@@ -386,7 +387,7 @@
+             }
+         } else {
+             CharBuffer temp = bytes.asCharBuffer();
+-            temp.position(offset / 2);
++            ((Buffer)temp).position(offset / 2);
+             temp.get(chars);
+         }
+         return chars;
+@@ -402,7 +403,7 @@
+             }
+         } else {
+             IntBuffer temp = bytes.asIntBuffer();
+-            temp.position(offset / 4);
++            ((Buffer)temp).position(offset / 4);
+             temp.get(ints);
+         }
+         return ints;
+@@ -417,7 +418,7 @@
+                 }
+             } else {
+                 CharBuffer temp = b16BitUnits.duplicate();
+-                temp.position(offset);
++                ((Buffer)temp).position(offset);
+                 temp.get(result);
+             }
+             return result;
+@@ -664,7 +665,7 @@
+                     }
+                 } else {
+                     ByteBuffer temp = bytes.duplicate();
+-                    temp.position(offset);
++                    ((Buffer)temp).position(offset);
+                     temp.get(ba);
+                 }
+                 return ba;
+@@ -695,7 +696,7 @@
+                 }
+                 offset += 4;
+                 ByteBuffer result = bytes.duplicate();
+-                result.position(offset).limit(offset + length);
++                ((Buffer)result).position(offset).limit(offset + length);
+                 result = ICUBinary.sliceWithOrder(result);
+                 if(!result.isReadOnly()) {
+                     result = result.asReadOnlyBuffer();
+diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/text/RBBIDataWrapper.java icu4j-63.1.new/main/classes/core/src/com/ibm/icu/text/RBBIDataWrapper.java
+--- icu4j-63.1/main/classes/core/src/com/ibm/icu/text/RBBIDataWrapper.java	2018-11-22 13:19:52.518933156 +0100
++++ icu4j-63.1.new/main/classes/core/src/com/ibm/icu/text/RBBIDataWrapper.java	2018-11-29 13:51:10.350010633 +0100
+@@ -10,6 +10,7 @@
+ package com.ibm.icu.text;
+ 
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.ByteOrder;
+ 
+@@ -268,7 +269,7 @@
+         ICUBinary.skipBytes(bytes, This.fHeader.fTrie - pos);  // seek buffer from end of
+         pos = This.fHeader.fTrie;               // previous section to the start of the trie
+ 
+-        bytes.mark();                           // Mark position of start of TRIE in the input
++        ((Buffer)bytes).mark();                 // Mark position of start of TRIE in the input
+                                                 //  and tell Java to keep the mark valid so long
+                                                 //  as we don't go more than 100 bytes past the
+                                                 //  past the end of the TRIE.
+@@ -277,7 +278,7 @@
+                                                 //  at an unknown position, preceding the
+                                                 //  padding between TRIE and following section.
+ 
+-        bytes.reset();                          // Move buffer back to marked position at
++        ((Buffer)bytes).reset();                // Move buffer back to marked position at
+                                                 //   the start of the serialized TRIE.  Now our
+                                                 //   "pos" variable and the buffer are in
+                                                 //   agreement.
+diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/text/SpoofChecker.java icu4j-63.1.new/main/classes/core/src/com/ibm/icu/text/SpoofChecker.java
+--- icu4j-63.1/main/classes/core/src/com/ibm/icu/text/SpoofChecker.java	2018-11-22 13:19:52.514933136 +0100
++++ icu4j-63.1.new/main/classes/core/src/com/ibm/icu/text/SpoofChecker.java	2018-11-29 13:52:34.718447691 +0100
+@@ -14,6 +14,7 @@
+ import java.io.IOException;
+ import java.io.LineNumberReader;
+ import java.io.Reader;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.text.ParseException;
+ import java.util.ArrayList;
+@@ -1792,7 +1793,7 @@
+         // A ByteBuffer is what the ICU internal data loading functions provide.
+         private SpoofData(ByteBuffer bytes) throws java.io.IOException {
+             ICUBinary.readHeader(bytes, DATA_FORMAT, IS_ACCEPTABLE);
+-            bytes.mark();
++            ((Buffer)bytes).mark();
+             readData(bytes);
+         }
+ 
+@@ -1845,15 +1846,15 @@
+             // of the data items. Now read each in turn, first seeking the
+             // input stream to the position of the data item.
+ 
+-            bytes.reset();
++            ((Buffer)bytes).reset();
+             ICUBinary.skipBytes(bytes, CFUKeysOffset);
+             fCFUKeys = ICUBinary.getInts(bytes, CFUKeysSize, 0);
+ 
+-            bytes.reset();
++            ((Buffer)bytes).reset();
+             ICUBinary.skipBytes(bytes, CFUValuesOffset);
+             fCFUValues = ICUBinary.getShorts(bytes, CFUValuesSize, 0);
+ 
+-            bytes.reset();
++            ((Buffer)bytes).reset();
+             ICUBinary.skipBytes(bytes, CFUStringTableOffset);
+             fCFUStrings = ICUBinary.getString(bytes, CFUStringTableSize, 0);
+         }
+diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestCharset.java icu4j-63.1.new/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestCharset.java
+--- icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestCharset.java	2018-11-22 13:19:35.306841227 +0100
++++ icu4j-63.1.new/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestCharset.java	2018-11-29 14:05:40.610525909 +0100
+@@ -9,6 +9,7 @@
+ 
+ package com.ibm.icu.dev.test.charset;
+ 
++import java.nio.Buffer;
+ import java.nio.BufferOverflowException;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+@@ -104,30 +105,30 @@
+             }
+ 
+ 
+-            us.limit(us.position());
+-            us.position(0);
++            ((Buffer)us).limit(us.position());
++            ((Buffer)us).position(0);
+             if(us.length()==0){
+                 continue;
+             }
+ 
+ 
+-            bs1.limit(bs1.position());
+-            bs1.position(0);
++            ((Buffer)bs1).limit(bs1.position());
++            ((Buffer)bs1).position(0);
+             ByteBuffer newBS = ByteBuffer.allocate(bs1.capacity());
+             //newBS.put((byte)0xFE);
+             //newBS.put((byte)0xFF);
+             newBS.put(bs1);
+-            bs1.position(0);
++            ((Buffer)bs1).position(0);
+             smBufDecode(d1, "UTF-16", bs1, us);
+             smBufEncode(e1, "UTF-16", us, newBS);
+ 
+-            bs2.limit(bs2.position());
+-            bs2.position(0);
+-            newBS.clear();
++            ((Buffer)bs2).limit(bs2.position());
++            ((Buffer)bs2).position(0);
++            ((Buffer)newBS).clear();
+             //newBS.put((byte)0xFF);
+             //newBS.put((byte)0xFE);
+             newBS.put(bs2);
+-            bs2.position(0);
++            ((Buffer)bs2).position(0);
+             smBufDecode(d2, "UTF16-LE", bs2, us);
+             smBufEncode(e2, "UTF-16LE", us, newBS);
+ 
+@@ -175,12 +176,12 @@
+                 bs2.put((byte) (c >>> 16));
+                 bs2.put((byte) (c >>> 24));
+             }
+-            bs1.limit(bs1.position());
+-            bs1.position(0);
+-            bs2.limit(bs2.position());
+-            bs2.position(0);
+-            us.limit(us.position());
+-            us.position(0);
++            ((Buffer)bs1).limit(bs1.position());
++            ((Buffer)bs1).position(0);
++            ((Buffer)bs2).limit(bs2.position());
++            ((Buffer)bs2).position(0);
++            ((Buffer)us).limit(us.position());
++            ((Buffer)us).position(0);
+             if(us.length()==0){
+                 continue;
+             }
+@@ -194,12 +195,12 @@
+             newBS.put((byte)0xFF);
+ 
+             newBS.put(bs1);
+-            bs1.position(0);
++            ((Buffer)bs1).position(0);
+             smBufDecode(d1, "UTF-32", bs1, us);
+             smBufEncode(e1, "UTF-32", us, newBS);
+ 
+ 
+-            newBS.clear();
++            ((Buffer)newBS).clear();
+ 
+             newBS.put((byte)0xFF);
+             newBS.put((byte)0xFE);
+@@ -207,7 +208,7 @@
+             newBS.put((byte)0x00);
+ 
+             newBS.put(bs2);
+-            bs2.position(0);
++            ((Buffer)bs2).position(0);
+             smBufDecode(d2, "UTF-32LE", bs2, us);
+             smBufEncode(e2, "UTF-32LE", us, newBS);
+ 
+@@ -446,7 +447,7 @@
+         for (int index = 0; index < input.length; index++) {
+             CharBuffer source = CharBuffer.wrap(input[index]);
+             cr = encoder.encode(source, bs, true);
+-            bs.rewind();
++            ((Buffer)bs).rewind();
+             encoder.reset();
+ 
+             // if cr != results[x]
+@@ -461,7 +462,7 @@
+ 
+             source = CharBuffer.wrap(input[index].toCharArray());
+             cr = encoder.encode(source, bs, true);
+-            bs.rewind();
++            ((Buffer)bs).rewind();
+             encoder.reset();
+ 
+             // if cr != results[x]
+@@ -560,8 +561,8 @@
+ 
+                 decoder.reset();
+                 cr = decoder.decode(bs, us, true);
+-                bs.rewind();
+-                us.rewind();
++                ((Buffer)bs).rewind();
++                ((Buffer)us).rewind();
+                 if (!cr.isMalformed() || cr.length() != 1) {
+                     errln("Incorrect result in " + converter + " decoder for 0x"
+                             + Integer.toHexString(i) + " received " + cr);
+@@ -569,8 +570,8 @@
+                 }
+                 encoder.reset();
+                 cr = encoder.encode(us, bs, true);
+-                bs.rewind();
+-                us.rewind();
++                ((Buffer)bs).rewind();
++                ((Buffer)us).rewind();
+                 if (!cr.isMalformed() || cr.length() != 1) {
+                     errln("Incorrect result in " + converter + " encoder for 0x"
+                             + Integer.toHexString(i) + " received " + cr);
+@@ -582,8 +583,8 @@
+ 
+                 decoder.reset();
+                 cr = decoder.decode(bs, us, true);
+-                bs.rewind();
+-                us.rewind();
++                ((Buffer)bs).rewind();
++                ((Buffer)us).rewind();
+                 if (!cr.isMalformed() || cr.length() != 1) {
+                     errln("Incorrect result in " + converter + " decoder for 0x"
+                             + Integer.toHexString(i) + " received " + cr);
+@@ -591,8 +592,8 @@
+                 }
+                 encoder.reset();
+                 cr = encoder.encode(us, bs, true);
+-                bs.rewind();
+-                us.rewind();
++                ((Buffer)bs).rewind();
++                ((Buffer)us).rewind();
+                 if (!cr.isMalformed() || cr.length() != 1) {
+                     errln("Incorrect result in " + converter + " encoder for 0x"
+                             + Integer.toHexString(i) + " received " + cr);
+@@ -666,9 +667,9 @@
+         int ccPositions[] = { 0, 0, 0, 2, 2 };
+         for (int i = 0; i < testLoopSize; i++) {
+             encoder.reset();
+-            bb.limit(bbLimits[i]);
+-            bb.position(bbPositions[i]);
+-            cb.position(ccPositions[i]);
++            ((Buffer)bb).limit(bbLimits[i]);
++            ((Buffer)bb).position(bbPositions[i]);
++            ((Buffer)cb).position(ccPositions[i]);
+             result = encoder.encode(cb, bb, true);
+ 
+             if (i < 3) {
+@@ -835,7 +836,7 @@
+             encoder.onUnmappableCharacter(CodingErrorAction.REPORT);
+             encoder.onMalformedInput(CodingErrorAction.REPORT);
+             for (int i=0; i<n; i++) {
+-                source.limit(i+1);
++                ((Buffer)source).limit(i+1);
+                 cr = encoder.encode(source, target, i == n - 1);
+                 if (!(equals(cr, results[i])
+                         || (results[i].isUnmappable() && cr.isUnderflow()) // mappability depends on the converter
+@@ -1239,7 +1240,7 @@
+             decoder.reset();
+             CoderResult result=null;
+             for (int i = 1; i <= byteStr.length; i++) {
+-                b.limit(i);
++                ((Buffer)b).limit(i);
+                 result = decoder.decode(b, chars, false);
+                 if(result.isOverflow()){
+                     errln("ToChars single threw an overflow exception");
+@@ -1267,9 +1268,9 @@
+         try {
+             CharBuffer chars = CharBuffer.allocate(unistr.length());
+             decoder.reset();
+-            byes.rewind();
++            ((Buffer)byes).rewind();
+             for (int i = 1; i <= byteStr.length; i++) {
+-                byes.limit(i);
++                ((Buffer)byes).limit(i);
+                 CoderResult result = decoder.decode(byes, chars, false);
+                 if (result.isError()) {
+                     errln("Error while decoding: "+result.toString());
+@@ -1311,7 +1312,7 @@
+             if(result.isOverflow()){
+                 errln("FromChars threw an overflow exception");
+             }
+-            bytes.position(0);
++            ((Buffer)bytes).position(0);
+             if (!bytes.equals(expected)) {
+                 errln("FromChars does not match");
+                 printbytes(bytes);
+@@ -1331,7 +1332,7 @@
+             encoder.reset();
+             CoderResult result= null;
+             for (int i = 1; i <= unistr.length(); i++) {
+-                c.limit(i);
++                ((Buffer)c).limit(i);
+                 result = encoder.encode(c, bytes, false);
+                 if(result.isOverflow()){
+                     errln("FromChars single threw an overflow exception");
+@@ -1345,7 +1346,7 @@
+                 rc = 3;
+             }
+ 
+-            bytes.position(0);
++            ((Buffer)bytes).position(0);
+             if (!bytes.equals(expected)) {
+                 errln("FromChars single does not match");
+                 printbytes(bytes);
+@@ -1399,11 +1400,11 @@
+         int i;
+         char[] chars = new char[buf.limit()];
+         //save the current position
+-        int pos = buf.position();
+-        buf.position(0);
++        int pos = ((Buffer)buf).position();
++        ((Buffer)buf).position(0);
+         buf.get(chars);
+         //reset to old position
+-        buf.position(pos);
++        ((Buffer)buf).position(pos);
+         for (i = 0; i < chars.length; i++) {
+             err(hex(chars[i]) + " ");
+         }
+@@ -1421,10 +1422,10 @@
+         byte[] bytes = new byte[buf.limit()];
+         //save the current position
+         int pos = buf.position();
+-        buf.position(0);
++        ((Buffer)buf).position(0);
+         buf.get(bytes);
+         //reset to old position
+-        buf.position(pos);
++        ((Buffer)buf).position(pos);
+         for (i = 0; i < bytes.length; i++) {
+             System.out.print(hex(bytes[i]) + " ");
+         }
+@@ -1461,10 +1462,10 @@
+         char[] chars = new char[buf.limit()];
+         //save the current position
+         int pos = buf.position();
+-        buf.position(0);
++        ((Buffer)buf).position(0);
+         buf.get(chars);
+         //reset to old position
+-        buf.position(pos);
++        ((Buffer)buf).position(pos);
+         return equals(chars, compareTo);
+     }
+ 
+@@ -1498,10 +1499,10 @@
+         byte[] chars = new byte[buf.limit()];
+         //save the current position
+         int pos = buf.position();
+-        buf.position(0);
++        ((Buffer)buf).position(0);
+         buf.get(chars);
+         //reset to old position
+-        buf.position(pos);
++        ((Buffer)buf).position(pos);
+         return equals(chars, compareTo);
+     }
+     public boolean equals(ByteBuffer buf, ByteBuffer compareTo) {
+@@ -1733,7 +1734,7 @@
+             buffer.put(unibytes);
+ 
+             //reset postion
+-            buffer.flip();
++            ((Buffer)buffer).flip();
+ 
+             decoder.onMalformedInput(CodingErrorAction.REPLACE);
+             CharBuffer out = decoder.decode(buffer);
+@@ -1800,8 +1801,8 @@
+             errln("FAIL: \\ud800 is OK for ICU4JNI utf-8 encoder");
+         }
+ 
+-        in.position(0);
+-        out.clear();
++        ((Buffer)in).position(0);
++        ((Buffer)out).clear();
+ 
+         CharsetEncoder encoderJDK = Charset.forName("utf-8").newEncoder();
+         result = encoderJDK.encode(in, out, true);
+@@ -1852,9 +1853,9 @@
+         inBuf.put(in);
+         CharsetEncoder encoder = cs.newEncoder();
+         ByteBuffer outBuf = ByteBuffer.allocate(in.length*2+2);
+-        inBuf.rewind();
++        ((Buffer)inBuf).rewind();
+         encoder.encode(inBuf, outBuf, true);
+-        outBuf.rewind();
++        ((Buffer)outBuf).rewind();
+         if(outBuf.get(0)!= (byte)0xFE && outBuf.get(1)!= (byte)0xFF){
+             errln("The UTF16 encoder did not appended bom. Length returned: " + outBuf.remaining());
+         }
+@@ -1862,7 +1863,7 @@
+             logln("0x"+hex(outBuf.get()));
+         }
+         CharsetDecoder decoder = cs.newDecoder();
+-        outBuf.rewind();
++        ((Buffer)outBuf).rewind();
+         CharBuffer rt = CharBuffer.allocate(in.length);
+         CoderResult cr = decoder.decode(outBuf, rt, true);
+         if(cr.isError()){
+@@ -1870,8 +1871,8 @@
+         }
+         equals(rt, in);
+         {
+-            rt.clear();
+-            outBuf.rewind();
++            ((Buffer)rt).clear();
++            ((Buffer)outBuf).rewind();
+             Charset utf16 = Charset.forName("UTF-16");
+             CharsetDecoder dc = utf16.newDecoder();
+             cr = dc.decode(outBuf, rt, true);
+@@ -1909,9 +1910,9 @@
+ 
+         {
+             decoder.reset();
+-            myTarget.limit(target.limit());
+-            mySource.limit(source.limit());
+-            mySource.position(source.position());
++            ((Buffer)myTarget).limit(target.limit());
++            ((Buffer)mySource).limit(source.limit());
++            ((Buffer)mySource).position(source.position());
+             CoderResult result = CoderResult.UNDERFLOW;
+             result = decoder.decode(mySource, myTarget, true);
+             if (flush) {
+@@ -1931,9 +1932,9 @@
+                 errln("Test complete buffers while decoding threw overflow exception");
+                 return;
+             }
+-            myTarget.limit(myTarget.position());
+-            myTarget.position(0);
+-            target.position(0);
++            ((Buffer)myTarget).limit(myTarget.position());
++            ((Buffer)myTarget).position(0);
++            ((Buffer)target).position(0);
+             if (result.isUnderflow() && !equals(myTarget, target, targetLimit)) {
+                 errln(" Test complete buffers while decoding  " + encoding + " TO Unicode--failed");
+             }
+@@ -1943,11 +1944,11 @@
+         }
+         {
+             decoder.reset();
+-            myTarget.limit(target.position());
+-            mySource.limit(source.position());
+-            mySource.position(source.position());
+-            myTarget.clear();
+-            myTarget.position(0);
++            ((Buffer)myTarget).limit(target.position());
++            ((Buffer)mySource).limit(source.position());
++            ((Buffer)mySource).position(source.position());
++            ((Buffer)myTarget).clear();
++            ((Buffer)myTarget).position(0);
+ 
+             int inputLen = mySource.remaining();
+ 
+@@ -1978,18 +1979,18 @@
+         }
+         {
+             decoder.reset();
+-            myTarget.limit(0);
+-            mySource.limit(0);
+-            mySource.position(source.position());
+-            myTarget.clear();
++            ((Buffer)myTarget).limit(0);
++            ((Buffer)mySource).limit(0);
++            ((Buffer)mySource).position(source.position());
++            ((Buffer)myTarget).clear();
+             while (true) {
+                 CoderResult result = decoder.decode(mySource, myTarget, false);
+                 if (result.isUnderflow()) {
+                     if (mySource.limit() < source.limit())
+-                        mySource.limit(mySource.limit() + 1);
++                        ((Buffer)mySource).limit(mySource.limit() + 1);
+                 } else if (result.isOverflow()) {
+                     if (myTarget.limit() < target.limit())
+-                        myTarget.limit(myTarget.limit() + 1);
++                        ((Buffer)myTarget).limit(myTarget.limit() + 1);
+                     else
+                         break;
+                 } else /*if (result.isError())*/ {
+@@ -2038,17 +2039,17 @@
+             mySource = ByteBuffer.allocateDirect(source.capacity() * 2).asCharBuffer();
+             myTarget = ByteBuffer.allocateDirect(target.capacity());
+         }
+-        mySource.position(source.position());
++        ((Buffer)mySource).position(source.position());
+         for (int i = source.position(); i < source.limit(); i++)
+             mySource.put(i, source.get(i));
+ 
+-        myTarget.clear();
++        ((Buffer)myTarget).clear();
+         {
+             logln("Running tests on small input buffers for " + encoding);
+             encoder.reset();
+-            myTarget.limit(target.limit());
+-            mySource.limit(source.limit());
+-            mySource.position(source.position());
++            ((Buffer)myTarget).limit(target.limit());
++            ((Buffer)mySource).limit(source.limit());
++            ((Buffer)mySource).position(source.position());
+             CoderResult result = null;
+ 
+             result = encoder.encode(mySource, myTarget, true);
+@@ -2081,10 +2082,10 @@
+         {
+             logln("Running tests on small input buffers for " + encoding);
+             encoder.reset();
+-            myTarget.clear();
+-            myTarget.limit(target.limit());
+-            mySource.limit(source.limit());
+-            mySource.position(source.position());
++            ((Buffer)myTarget).clear();
++            ((Buffer)myTarget).limit(target.limit());
++            ((Buffer)mySource).limit(source.limit());
++            ((Buffer)mySource).position(source.position());
+             int inputLen = mySource.limit();
+             CoderResult result = null;
+             for (int i = 1; i <= inputLen; i++) {
+@@ -2109,12 +2110,12 @@
+         {
+             logln("Running tests on small output buffers for " + encoding);
+             encoder.reset();
+-            myTarget.clear();
+-            myTarget.limit(target.limit());
+-            mySource.limit(source.limit());
+-            mySource.position(source.position());
+-            mySource.position(0);
+-            myTarget.position(0);
++            ((Buffer)myTarget).clear();
++            ((Buffer)myTarget).limit(target.limit());
++            ((Buffer)mySource).limit(source.limit());
++            ((Buffer)mySource).position(source.position());
++            ((Buffer)mySource).position(0);
++            ((Buffer)myTarget).position(0);
+ 
+             logln("myTarget.limit: " + myTarget.limit() + " myTarget.capcity: " + myTarget.capacity());
+ 
+@@ -2134,7 +2135,7 @@
+                         errln("Test small output buffers while encoding " + result.toString());
+                     }
+ 
+-                    myTarget.limit(myTarget.capacity());
++                    ((Buffer)myTarget).limit(myTarget.capacity());
+                     result = encoder.flush(myTarget);
+                     if (result.isError()) {
+                         errln("Test small output buffers while encoding " + result.toString());
+@@ -2560,8 +2561,8 @@
+             in.put((byte)i);
+             i++;
+         }
+-        in.limit(in.position());
+-        in.position(0);
++        ((Buffer)in).limit(in.position());
++        ((Buffer)in).position(0);
+         CharsetDecoder decoder = cs.newDecoder();
+         decoder.onMalformedInput(CodingErrorAction.IGNORE);
+         decoder.onUnmappableCharacter(CodingErrorAction.REPORT);
+@@ -2593,9 +2594,9 @@
+         inBuf.put(in);
+         CharsetEncoder encoder = cs.newEncoder();
+         ByteBuffer outBuf = ByteBuffer.allocate(in.length*4+4);
+-        inBuf.rewind();
++        ((Buffer)inBuf).rewind();
+         encoder.encode(inBuf, outBuf, true);
+-        outBuf.rewind();
++        ((Buffer)outBuf).rewind();
+         if(outBuf.get(0)!= (byte)0x00 && outBuf.get(1)!= (byte)0x00 &&
+                 outBuf.get(2)!= (byte)0xFF && outBuf.get(3)!= (byte)0xFE){
+             errln("The UTF32 encoder did not appended bom. Length returned: " + outBuf.remaining());
+@@ -2604,8 +2605,8 @@
+             logln("0x"+hex(outBuf.get()));
+         }
+         CharsetDecoder decoder = cs.newDecoder();
+-        outBuf.limit(outBuf.position());
+-        outBuf.rewind();
++        ((Buffer)outBuf).limit(outBuf.position());
++        ((Buffer)outBuf).rewind();
+         CharBuffer rt = CharBuffer.allocate(in.length);
+         CoderResult cr = decoder.decode(outBuf, rt, true);
+         if(cr.isError()){
+@@ -2613,8 +2614,8 @@
+         }
+         equals(rt, in);
+         try{
+-            rt.clear();
+-            outBuf.rewind();
++            ((Buffer)rt).clear();
++            ((Buffer)outBuf).rewind();
+             Charset utf16 = Charset.forName("UTF-32");
+             CharsetDecoder dc = utf16.newDecoder();
+             cr = dc.decode(outBuf, rt, true);
+@@ -2742,16 +2743,16 @@
+            byteBuffer.put((byte)j);
+         }
+ 
+-        byteBuffer.limit(byteBufferLimit = byteBuffer.position());
+-        byteBuffer.position(0);
+-        charBuffer.limit(charBufferLimit = charBuffer.position());
+-        charBuffer.position(0);
++        ((Buffer)byteBuffer).limit(byteBufferLimit = byteBuffer.position());
++        ((Buffer)byteBuffer).position(0);
++        ((Buffer)charBuffer).limit(charBufferLimit = charBuffer.position());
++        ((Buffer)charBuffer).position(0);
+ 
+         //test for overflow
+-        byteBufferTest.limit(byteBufferLimit - 5);
+-        byteBufferTest.position(0);
+-        charBufferTest.limit(charBufferLimit - 5);
+-        charBufferTest.position(0);
++        ((Buffer)byteBufferTest).limit(byteBufferLimit - 5);
++        ((Buffer)byteBufferTest).position(0);
++        ((Buffer)charBufferTest).limit(charBufferLimit - 5);
++        ((Buffer)charBufferTest).position(0);
+         try {
+             smBufDecode(decoder, "ASCII", byteBuffer, charBufferTest, true, false);
+             errln("Overflow exception while decoding ASCII should have been thrown.");
+@@ -2803,10 +2804,10 @@
+         bs.put((byte)0x49); bs.put((byte)0x44); bs.put((byte)0x6b); bs.put((byte)0x51);
+         bs.put((byte)0x4f); bs.put((byte)0x62); bs.put((byte)0x2e);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         smBufDecode(decoder, "UTF-7", bs, us);
+         smBufEncode(encoder, "UTF-7", us, bs);
+@@ -2852,10 +2853,10 @@
+         ccbs.put((byte)0x0D); ccbs.put((byte)0x05);
+         ccus.put((char)0x0000);
+ 
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF-7-CC-DE-1", ccbs, ccus, true, false);
+@@ -2864,17 +2865,17 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for illegal base64 character
+         ccbs.put((byte)0x2b); ccbs.put((byte)0xff);
+         ccus.put((char)0x0000);
+ 
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF-7-CC-DE-2", ccbs, ccus, true, false);
+@@ -2883,17 +2884,17 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for illegal order of the base64 character sequence
+         ccbs.put((byte)0x2b); ccbs.put((byte)0x2d); ccbs.put((byte)0x2b); ccbs.put((byte)0x49); ccbs.put((byte)0x2d);
+         ccus.put((char)0x0000); ccus.put((char)0x0000);
+ 
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF-7-CC-DE-3", ccbs, ccus, true, false);
+@@ -2902,17 +2903,17 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for illegal order of the base64 character sequence
+         ccbs.put((byte)0x2b); ccbs.put((byte)0x0a); ccbs.put((byte)0x09);
+         ccus.put((char)0x0000);
+ 
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF-7-CC-DE-4", ccbs, ccus, true, false);
+@@ -2921,17 +2922,17 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for illegal order of the base64 character sequence
+         ccbs.put((byte)0x2b); ccbs.put((byte)0x49); ccbs.put((byte)0x0a);
+         ccus.put((char)0x0000);
+ 
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF-7-CC-DE-5", ccbs, ccus, true, false);
+@@ -2940,17 +2941,17 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for illegal order of the base64 character sequence
+         ccbs.put((byte)0x2b); ccbs.put((byte)0x00);
+         ccus.put((char)0x0000);
+ 
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF-7-CC-DE-6", ccbs, ccus, true, false);
+@@ -2959,16 +2960,16 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for overflow buffer error
+         ccbs.put((byte)0x2b); ccbs.put((byte)0x49);
+ 
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(0);
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(0);
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF-7-CC-DE-7", ccbs, ccus, true, false);
+@@ -2977,16 +2978,16 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for overflow buffer error
+         ccbs.put((byte)0x0c); ccbs.put((byte)0x0c);
+ 
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(0);
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(0);
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF-7-CC-DE-8", ccbs, ccus, true, false);
+@@ -2997,16 +2998,16 @@
+         //end of charset decoder code coverage code
+ 
+         //start of charset encoder code coverage code
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+         //test for overflow buffer error
+         ccus.put((char)0x002b);
+         ccbs.put((byte)0x2b);
+ 
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufEncode(encoder, "UTF-7-CC-EN-1", ccus, ccbs, true, false);
+@@ -3015,17 +3016,17 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for overflow buffer error
+         ccus.put((char)0x002b); ccus.put((char)0x2262);
+         ccbs.put((byte)0x2b); ccbs.put((byte)0x2d); ccbs.put((byte)0x00); ccbs.put((byte)0x00);
+ 
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufEncode(encoder, "UTF-7-CC-EN-2", ccus, ccbs, true, false);
+@@ -3034,16 +3035,16 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for overflow buffer error
+         ccus.put((char)0x2262); ccus.put((char)0x0049);
+         ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00);
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufEncode(encoder, "UTF-7-CC-EN-3", ccus, ccbs, true, false);
+@@ -3052,16 +3053,16 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for overflow buffer error
+         ccus.put((char)0x2262); ccus.put((char)0x0395);
+         ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00);
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufEncode(encoder, "UTF-7-CC-EN-4", ccus, ccbs, true, false);
+@@ -3070,16 +3071,16 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for overflow buffer error
+         ccus.put((char)0x2262); ccus.put((char)0x0395);
+         ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00);
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufEncode(encoder, "UTF-7-CC-EN-5", ccus, ccbs, true, false);
+@@ -3088,16 +3089,16 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for overflow buffer error
+         ccus.put((char)0x2262); ccus.put((char)0x0395); ccus.put((char)0x0391);
+         ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00);
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufEncode(encoder, "UTF-7-CC-EN-6", ccus, ccbs, true, false);
+@@ -3106,17 +3107,17 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for overflow buffer error
+         ccus.put((char)0x2262); ccus.put((char)0x0395); ccus.put((char)0x0391);
+         ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00);
+         ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00);
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufEncode(encoder, "UTF-7-CC-EN-7", ccus, ccbs, true, false);
+@@ -3125,16 +3126,16 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for overflow buffer error
+         ccus.put((char)0x0049); ccus.put((char)0x0048);
+         ccbs.put((byte)0x00);
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufEncode(encoder, "UTF-7-CC-EN-8", ccus, ccbs, true, false);
+@@ -3143,16 +3144,16 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for overflow buffer error
+         ccus.put((char)0x2262);
+         ccbs.put((byte)0x00);
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufEncode(encoder, "UTF-7-CC-EN-9", ccus, ccbs, true, false);
+@@ -3161,16 +3162,16 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for overflow buffer error
+         ccus.put((char)0x2262); ccus.put((char)0x0049);
+         ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00); ccbs.put((byte)0x00);
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufEncode(encoder, "UTF-7-CC-EN-10", ccus, ccbs, true, false);
+@@ -3179,35 +3180,35 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for overflow buffer error
+         ccus.put((char)0x2262);
+         ccbs.put((byte)0x2b); ccbs.put((byte)0x49); ccbs.put((byte)0x6d); ccbs.put((byte)0x49); ccbs.put((byte)0x2d);
+ 
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+         try {
+             smBufEncode(encoder, "UTF-7-CC-EN-11", ccus, ccbs, false, true);
+         } catch (Exception ex) {
+             errln("Exception while encoding UTF-7 code coverage test should not have been thrown.");
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test for overflow buffer error
+         encoder.reset();
+         ccus.put((char)0x3980); ccus.put((char)0x2715);
+         ccbs.put((byte)0x2b); ccbs.put((byte)0x4f); ccbs.put((byte)0x59); ccbs.put((byte)0x2d);
+ 
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         result = encoder.encode(ccus, ccbs, true);
+         result = encoder.flush(ccbs);
+@@ -3369,12 +3370,12 @@
+         bsr.put((byte)0xBF); bsr.put((byte)0xE9); bsr.put((byte)0xC0); bsr.put((byte)0xE9); bsr.put((byte)0xC9); bsr.put((byte)0xE9);
+         bsr.put((byte)0xD9); bsr.put((byte)0xE8); bsr.put((byte)0xCF); bsr.put((byte)0x00); bsr.put((byte)0xA0);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
+-        bsr.limit(bsr.position());
+-        bsr.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bsr).limit(bsr.position());
++        ((Buffer)bsr).position(0);
+ 
+         //round trip test
+         try {
+@@ -3402,15 +3403,15 @@
+         us.put(u_pts);
+         bs.put(b_pts);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufDecode(decoder, "ISCII-update", bs, us, true, true);
+-            bs.position(0);
+-            us.position(0);
++            ((Buffer)bs).position(0);
++            ((Buffer)us).position(0);
+             smBufEncode(encoder, "ISCII-update", us, bs, true, true);
+         } catch (Exception ex) {
+             errln("Error occurred while encoding/decoding ISCII with the new characters.");
+@@ -3424,10 +3425,10 @@
+         //test overflow buffer
+         ccbs.put((byte)0x49);
+ 
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(0);
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(0);
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufDecode(decoder, "ISCII-CC-DE-1", ccbs, ccus, true, false);
+@@ -3436,17 +3437,17 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test atr overflow buffer
+         ccbs.put((byte)0xEF); ccbs.put((byte)0x40); ccbs.put((byte)0xEF); ccbs.put((byte)0x20);
+         ccus.put((char)0x00);
+ 
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
+ 
+         try {
+             smBufDecode(decoder, "ISCII-CC-DE-2", ccbs, ccus, true, false);
+@@ -3457,17 +3458,17 @@
+ 
+         //end of charset decoder code coverage code
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //start of charset encoder code coverage code
+         //test ascii overflow buffer
+         ccus.put((char)0x41);
+ 
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
+-        ccbs.limit(0);
+-        ccbs.position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
++        ((Buffer)ccbs).limit(0);
++        ((Buffer)ccbs).position(0);
+ 
+         try {
+             smBufEncode(encoder, "ISCII-CC-EN-1", ccus, ccbs, true, false);
+@@ -3476,17 +3477,17 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test ascii overflow buffer
+         ccus.put((char)0x0A); ccus.put((char)0x0043);
+         ccbs.put((byte)0x00); ccbs.put((byte)0x00);
+ 
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
+ 
+         try {
+             smBufEncode(encoder, "ISCII-CC-EN-2", ccus, ccbs, true, false);
+@@ -3495,17 +3496,17 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test surrogate malform
+         ccus.put((char)0x06E3);
+         ccbs.put((byte)0x00);
+ 
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
+ 
+         try {
+             smBufEncode(encoder, "ISCII-CC-EN-3", ccus, ccbs, true, false);
+@@ -3514,17 +3515,17 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test surrogate malform
+         ccus.put((char)0xD801); ccus.put((char)0xDD01);
+         ccbs.put((byte)0x00);
+ 
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
+ 
+         try {
+             smBufEncode(encoder, "ISCII-CC-EN-4", ccus, ccbs, true, false);
+@@ -3533,17 +3534,17 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test trail surrogate malform
+         ccus.put((char)0xDD01);
+         ccbs.put((byte)0x00);
+ 
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
+ 
+         try {
+             smBufEncode(encoder, "ISCII-CC-EN-5", ccus, ccbs, true, false);
+@@ -3552,17 +3553,17 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccbs.clear();
+-        ccus.clear();
++        ((Buffer)ccbs).clear();
++        ((Buffer)ccus).clear();
+ 
+         //test lead surrogates malform
+         ccus.put((char)0xD801); ccus.put((char)0xD802);
+         ccbs.put((byte)0x00);
+ 
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
+ 
+         try {
+             smBufEncode(encoder, "ISCII-CC-EN-6", ccus, ccbs, true, false);
+@@ -3571,17 +3572,17 @@
+         catch (Exception ex) {
+         }
+ 
+-        ccus.clear();
+-        ccbs.clear();
++        ((Buffer)ccus).clear();
++        ((Buffer)ccbs).clear();
+ 
+         //test overflow buffer
+         ccus.put((char)0x0901);
+         ccbs.put((byte)0x00);
+ 
+-        ccus.limit(ccus.position());
+-        ccus.position(0);
+-        ccbs.limit(ccbs.position());
+-        ccbs.position(0);
++        ((Buffer)ccus).limit(ccus.position());
++        ((Buffer)ccus).position(0);
++        ((Buffer)ccbs).limit(ccbs.position());
++        ((Buffer)ccbs).position(0);
+ 
+         cs = provider.charsetForName("ISCII,version=0");
+         encoder = cs.newEncoder();
+@@ -3612,27 +3613,27 @@
+         bs.put((byte)0x41); bs.put((byte)0x2D); bs.put((byte)0x41);
+ 
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         smBufDecode(decoder, "IMAP", bs, us);
+         smBufEncode(encoder, "IMAP", us, bs);
+ 
+         //the rest of the code in this method is for better code coverage
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //start of charset encoder code coverage
+         //test buffer overflow
+         us.put((char)0x0026); us.put((char)0x17A9);
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufEncode(encoder, "IMAP-EN-1", us, bs, true, false);
+@@ -3640,17 +3641,17 @@
+         } catch(Exception ex) {
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test buffer overflow
+         us.put((char)0x17A9); us.put((char)0x0941);
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufEncode(encoder, "IMAP-EN-2", us, bs, true, false);
+@@ -3658,17 +3659,17 @@
+         } catch(Exception ex) {
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test buffer overflow
+         us.put((char)0x17A9); us.put((char)0x0941);
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufEncode(encoder, "IMAP-EN-3", us, bs, true, false);
+@@ -3676,18 +3677,18 @@
+         } catch(Exception ex) {
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test buffer overflow
+         us.put((char)0x17A9); us.put((char)0x0941); us.put((char)0x0955);
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+         bs.put((byte)0x00);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufEncode(encoder, "IMAP-EN-4", us, bs, true, false);
+@@ -3695,18 +3696,18 @@
+         } catch(Exception ex) {
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test buffer overflow
+         us.put((char)0x17A9); us.put((char)0x0941); us.put((char)0x0955);
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+         bs.put((byte)0x00); bs.put((byte)0x00);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufEncode(encoder, "IMAP-EN-5", us, bs, true, false);
+@@ -3714,18 +3715,18 @@
+         } catch(Exception ex) {
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test buffer overflow
+         us.put((char)0x17A9); us.put((char)0x0941); us.put((char)0x0955); us.put((char)0x0970);
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufEncode(encoder, "IMAP-EN-6", us, bs, true, false);
+@@ -3733,18 +3734,18 @@
+         } catch(Exception ex) {
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test buffer overflow
+         us.put((char)0x17A9); us.put((char)0x0941);
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);  bs.put((byte)0x00); bs.put((byte)0x00);
+         bs.put((byte)0x00);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufEncode(encoder, "IMAP-EN-7", us, bs, true, true);
+@@ -3752,18 +3753,18 @@
+         } catch(Exception ex) {
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test flushing
+         us.put((char)0x17A9); us.put((char)0x0941);
+         bs.put((byte)0x26); bs.put((byte)0x46); bs.put((byte)0x36); bs.put((byte)0x6b);  bs.put((byte)0x4a); bs.put((byte)0x51);
+         bs.put((byte)0x51); bs.put((byte)0x2d);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufEncode(encoder, "IMAP-EN-8", us, bs, true, true);
+@@ -3778,10 +3779,10 @@
+         us.put((char)0x0061);
+         bs.put((byte)0x61); bs.put((byte)0x00);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufEncode(encoder, "IMAP-EN-9", us, bs, true, true);
+@@ -3798,10 +3799,10 @@
+         us.put((char)0x0000); us.put((char)0x0000);
+         bs.put((byte)0x26); bs.put((byte)0x41); bs.put((byte)0x43); bs.put((byte)0x41);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufDecode(decoder, "IMAP-DE-1", bs, us, true, false);
+@@ -3809,18 +3810,18 @@
+         } catch(Exception ex) {
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test malform case 5
+         us.put((char)0x0000); us.put((char)0x0000); us.put((char)0x0000);
+         bs.put((byte)0x26); bs.put((byte)0x41); bs.put((byte)0x41); bs.put((byte)0x41);
+         bs.put((byte)0x41); bs.put((byte)0x49); bs.put((byte)0x41);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufDecode(decoder, "IMAP-DE-2", bs, us, true, false);
+@@ -3828,8 +3829,8 @@
+         } catch(Exception ex) {
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test malform case 7
+         us.put((char)0x0000); us.put((char)0x0000); us.put((char)0x0000); us.put((char)0x0000);
+@@ -3837,10 +3838,10 @@
+         bs.put((byte)0x41); bs.put((byte)0x41); bs.put((byte)0x41); bs.put((byte)0x42);
+         bs.put((byte)0x41);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufDecode(decoder, "IMAP-DE-3", bs, us, true, false);
+@@ -3867,10 +3868,10 @@
+         us.put((char)0xD901);
+         bs.put((byte)0x00);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufEncode(encoder, "UTF32LE-EN-1", us, bs, true, false);
+@@ -3878,17 +3879,17 @@
+         } catch (Exception ex) {
+         }
+ 
+-        bs.clear();
+-        us.clear();
++        ((Buffer)bs).clear();
++        ((Buffer)us).clear();
+ 
+         //test malform surrogate
+         us.put((char)0xD901); us.put((char)0xD902);
+         bs.put((byte)0x00);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         result = encoder.encode(us, bs, true);
+ 
+@@ -3896,18 +3897,18 @@
+             errln("Error while encoding UTF32LE (2) should have occurred.");
+         }
+ 
+-        bs.clear();
+-        us.clear();
++        ((Buffer)bs).clear();
++        ((Buffer)us).clear();
+ 
+         //test overflow trail surrogate
+         us.put((char)0xDD01); us.put((char)0xDD0E); us.put((char)0xDD0E);
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         result = encoder.encode(us, bs, true);
+ 
+@@ -3915,17 +3916,17 @@
+             errln("Error while encoding UTF32LE (3) should have occurred.");
+         }
+ 
+-        bs.clear();
+-        us.clear();
++        ((Buffer)bs).clear();
++        ((Buffer)us).clear();
+ 
+         //test malform lead surrogate
+         us.put((char)0xD90D); us.put((char)0xD90E);
+         bs.put((byte)0x00);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufEncode(encoder, "UTF32LE-EN-4", us, bs, true, false);
+@@ -3933,17 +3934,17 @@
+         } catch (Exception ex) {
+         }
+ 
+-        bs.clear();
+-        us.clear();
++        ((Buffer)bs).clear();
++        ((Buffer)us).clear();
+ 
+         //test overflow buffer
+         us.put((char)0x0061);
+         bs.put((byte)0x00);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufEncode(encoder, "UTF32LE-EN-5", us, bs, true, false);
+@@ -3951,17 +3952,17 @@
+         } catch (Exception ex) {
+         }
+ 
+-        bs.clear();
+-        us.clear();
++        ((Buffer)bs).clear();
++        ((Buffer)us).clear();
+ 
+         //test malform trail surrogate
+         us.put((char)0xDD01);
+         bs.put((byte)0x00);
+ 
+-        bs.limit(bs.position());
+-        bs.position(0);
+-        us.limit(us.position());
+-        us.position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
+ 
+         try {
+             smBufEncode(encoder, "UTF32LE-EN-6", us, bs, true, false);
+@@ -3996,10 +3997,10 @@
+         us.put(u_pts1);
+         bs.put(b_pts1);
+ 
+-        us.limit(1);
+-        us.position(0);
+-        bs.limit(1);
+-        bs.position(0);
++        ((Buffer)us).limit(1);
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(1);
++        ((Buffer)bs).position(0);
+ 
+         result = encoder.encode(us, bs, true);
+ 
+@@ -4009,10 +4010,10 @@
+         }
+ 
+         // Test for malform surrogate from previous buffer
+-        us.limit(4);
+-        us.position(1);
+-        bs.limit(7);
+-        bs.position(1);
++        ((Buffer)us).limit(4);
++        ((Buffer)us).position(1);
++        ((Buffer)bs).limit(7);
++        ((Buffer)bs).position(1);
+ 
+         result = encoder.encode(us, bs, true);
+ 
+@@ -4023,17 +4024,17 @@
+         // Test for malform trail surrogate
+         encoder.reset();
+ 
+-        us.limit(1);
+-        us.position(0);
+-        bs.limit(1);
+-        bs.position(0);
++        ((Buffer)us).limit(1);
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(1);
++        ((Buffer)bs).position(0);
+ 
+         result = encoder.encode(us, bs, true);
+ 
+-        us.limit(6);
+-        us.position(4);
+-        bs.limit(4);
+-        bs.position(1);
++        ((Buffer)us).limit(6);
++        ((Buffer)us).position(4);
++        ((Buffer)bs).limit(4);
++        ((Buffer)bs).position(1);
+ 
+         result = encoder.encode(us, bs, true);
+ 
+@@ -4074,10 +4075,10 @@
+         us.put(us_array);
+         bs.put(bs_array1);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF32-DE-1", bs, us, true, false);
+@@ -4090,10 +4091,10 @@
+         bs = ByteBuffer.allocate(bs_array2.length);
+         bs.put(bs_array2);
+ 
+-        us.limit(4);
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(4);
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF32-DE-2", bs, us, true, false);
+@@ -4103,16 +4104,16 @@
+         }
+ 
+         //Test malform exception
+-        bs.clear();
+-        us.clear();
++        ((Buffer)bs).clear();
++        ((Buffer)us).clear();
+ 
+         bs.put((byte)0x00); bs.put((byte)0xFE); bs.put((byte)0xFF); bs.put((byte)0x00); bs.put((byte)0x00);
+         us.put((char)0x0000);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF32-DE-3", bs, us, true, false);
+@@ -4121,16 +4122,16 @@
+         }
+ 
+         //Test BOM testing
+-        bs.clear();
+-        us.clear();
++        ((Buffer)bs).clear();
++        ((Buffer)us).clear();
+ 
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0xFF); bs.put((byte)0xFE);
+         us.put((char)0x0000);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF32-DE-4", bs, us, true, false);
+@@ -4148,10 +4149,10 @@
+         us.put((char)0xDC01);
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         result = encoder.encode(us, bs, true);
+         // must try to output BOM first for UTF-32 (not UTF-32BE or UTF-32LE)
+@@ -4159,86 +4160,86 @@
+             errln("Buffer overflow error while encoding UTF32 charset (1) should have occurred.");
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test malform surrogate and store value in fromChar32
+         us.put((char)0xD801); us.put((char)0xD802);
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         result = encoder.encode(us, bs, true);
+         if (!result.isMalformed()) {
+             errln("Malformed error while encoding UTF32 charset (2) should have occurred.");
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test malform surrogate
+         us.put((char)0x0000); us.put((char)0xD902);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         result = encoder.encode(us, bs, true);
+         if (!result.isOverflow()) {
+             errln("Overflow error while encoding UTF32 charset (3) should have occurred.");
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test malform surrogate
+         encoder.reset();
+         us.put((char)0xD801);
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         result = encoder.encode(us, bs, true);
+         if (!result.isMalformed()) {
+             errln("Malform error while encoding UTF32 charset (4) should have occurred.");
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test overflow surrogate
+         us.put((char)0x0000); us.put((char)0xDDE1); us.put((char)0xD915); us.put((char)0xDDF2);
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         result = encoder.encode(us, bs, true);
+         if (!result.isOverflow()) {
+             errln("Overflow error while encoding UTF32 charset (5) should have occurred.");
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test malform surrogate
+         encoder.reset();
+         us.put((char)0xDDE1);
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         result = encoder.encode(us, bs, true);
+         if (!result.isMalformed()) {
+@@ -4262,10 +4263,10 @@
+         bs.put((byte)0x41); bs.put((byte)0xFF); bs.put((byte)0x01); bs.put((byte)0x00);
+         us.put((char)0x0000);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF-32LE", bs, us, true, false);
+@@ -4273,8 +4274,8 @@
+         } catch (Exception ex) {
+         }
+         // test overflow buffer handling in CharsetDecoderICU
+-        bs.position(0);
+-        us.position(0);
++        ((Buffer)bs).position(0);
++        ((Buffer)us).position(0);
+         decoder.reset();
+         result = decoder.decode(bs, us, true);
+         if (result.isOverflow()) {
+@@ -4286,16 +4287,16 @@
+             errln("Overflow buffer error while decoding UTF32LE should have occurred.");
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+         //test malform buffer
+         bs.put((byte)0x02); bs.put((byte)0xD9); bs.put((byte)0x00); bs.put((byte)0x00);
+         us.put((char)0x0000);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF-32LE", bs, us, true, false);
+@@ -4303,17 +4304,17 @@
+         } catch (Exception ex) {
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+         //test malform buffer
+         bs.put((byte)0xFF); bs.put((byte)0xFE); bs.put((byte)0x00); bs.put((byte)0x00);
+         bs.put((byte)0xFF); bs.put((byte)0xDF); bs.put((byte)0x10);
+         us.put((char)0x0000);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         try {
+             // must flush in order to exhibit malformed behavior
+@@ -4322,17 +4323,17 @@
+         } catch (Exception ex) {
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+         //test malform buffer
+         bs.put((byte)0xFF); bs.put((byte)0xFE); bs.put((byte)0x00); bs.put((byte)0x00);
+         bs.put((byte)0x02); bs.put((byte)0xD9); bs.put((byte)0x00); bs.put((byte)0x00);
+         us.put((char)0x0000);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF-32LE", bs, us, true, false);
+@@ -4340,17 +4341,17 @@
+         } catch (Exception ex) {
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+         //test overflow buffer
+         bs.put((byte)0xFF); bs.put((byte)0xFE); bs.put((byte)0x00); bs.put((byte)0x00);
+         bs.put((byte)0xDD); bs.put((byte)0xFF); bs.put((byte)0x10); bs.put((byte)0x00);
+         us.put((char)0x0000);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF-32LE", bs, us, true, false);
+@@ -4359,8 +4360,8 @@
+         }
+         //end of decode UTF32LE
+ 
+-        bs.clear();
+-        us.clear();
++        ((Buffer)bs).clear();
++        ((Buffer)us).clear();
+ 
+         //decode UTF32BE
+         decoder = provider.charsetForName("UTF-32BE").newDecoder();
+@@ -4368,10 +4369,10 @@
+         bs.put((byte)0x00); bs.put((byte)0x01); bs.put((byte)0xFF); bs.put((byte)0x41);
+         us.put((char)0x0000);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF-32BE", bs, us, true, false);
+@@ -4379,16 +4380,16 @@
+         } catch (Exception ex) {
+         }
+ 
+-        bs.clear();
+-        us.clear();
++        ((Buffer)bs).clear();
++        ((Buffer)us).clear();
+         //test malform buffer
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0xD9); bs.put((byte)0x02);
+         us.put((char)0x0000);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF-32BE", bs, us, true, false);
+@@ -4396,17 +4397,17 @@
+         } catch (Exception ex) {
+         }
+ 
+-        bs.clear();
+-        us.clear();
++        ((Buffer)bs).clear();
++        ((Buffer)us).clear();
+         //test malform buffer
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0xFE); bs.put((byte)0xFF);
+         bs.put((byte)0x10); bs.put((byte)0xFF); bs.put((byte)0xDF);
+         us.put((char)0x0000);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         try {
+             // must flush to exhibit malformed behavior
+@@ -4415,17 +4416,17 @@
+         } catch (Exception ex) {
+         }
+ 
+-        bs.clear();
+-        us.clear();
++        ((Buffer)bs).clear();
++        ((Buffer)us).clear();
+         //test overflow buffer
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0xFE); bs.put((byte)0xFF);
+         bs.put((byte)0x00); bs.put((byte)0x10); bs.put((byte)0xFF); bs.put((byte)0xDD);
+         us.put((char)0x0000);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         try {
+             smBufDecode(decoder, "UTF-32BE", bs, us, true, false);
+@@ -4433,16 +4434,16 @@
+         } catch (Exception ex) {
+         }
+ 
+-        bs.clear();
+-        us.clear();
++        ((Buffer)bs).clear();
++        ((Buffer)us).clear();
+         //test malform buffer
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0xFE);
+         us.put((char)0x0000);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         try {
+             // must flush to exhibit malformed behavior
+@@ -4477,10 +4478,10 @@
+         limit_us = us.position();
+         limit_bs = bs.position();
+ 
+-        us.limit(limit_us);
+-        us.position(0);
+-        bs.limit(limit_bs);
+-        bs.position(0);
++        ((Buffer)us).limit(limit_us);
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(limit_bs);
++        ((Buffer)bs).position(0);
+         bs2 = bs.asReadOnlyBuffer();
+         us2 = us.asReadOnlyBuffer();
+ 
+@@ -4489,18 +4490,18 @@
+             errln("Error while decoding UTF-8 (1) should not have occured.");
+         }
+ 
+-        us2.limit(limit_us);
+-        us2.position(0);
+-        bs.limit(limit_bs);
+-        bs.position(0);
++        ((Buffer)us2).limit(limit_us);
++        ((Buffer)us2).position(0);
++        ((Buffer)bs).limit(limit_bs);
++        ((Buffer)bs).position(0);
+ 
+         result = encoder.encode(us2, bs, true);
+         if (!result.isUnderflow() || !equals(bs, bs2)) {
+             errln("Error while encoding UTF-8 (1) should not have occured.");
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test overflow buffer while encoding
+         //readonly buffer
+@@ -4509,10 +4510,10 @@
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+         limit_us = us.position();
+         us2 = us.asReadOnlyBuffer();
+-        us2.limit(limit_us);
+-        us2.position(0);
+-        bs.limit(1);
+-        bs.position(0);
++        ((Buffer)us2).limit(limit_us);
++        ((Buffer)us2).position(0);
++        ((Buffer)bs).limit(1);
++        ((Buffer)bs).position(0);
+         result = encoder.encode(us2, bs, true);
+         if (!result.isOverflow()) {
+             errln("Overflow Error should have occured while encoding UTF-8 (2).");
+@@ -4520,10 +4521,10 @@
+ 
+         encoder.reset();
+ 
+-        us2.limit(limit_us);
+-        us2.position(1);
+-        bs.limit(1);
+-        bs.position(0);
++        ((Buffer)us2).limit(limit_us);
++        ((Buffer)us2).position(1);
++        ((Buffer)bs).limit(1);
++        ((Buffer)bs).position(0);
+         result = encoder.encode(us2, bs, true);
+         if (!result.isOverflow()) {
+             errln("Overflow Error should have occured while encoding UTF-8 (3).");
+@@ -4531,10 +4532,10 @@
+ 
+         encoder.reset();
+ 
+-        us2.limit(limit_us);
+-        us2.position(1);
+-        bs.limit(2);
+-        bs.position(0);
++        ((Buffer)us2).limit(limit_us);
++        ((Buffer)us2).position(1);
++        ((Buffer)bs).limit(2);
++        ((Buffer)bs).position(0);
+         result = encoder.encode(us2, bs, true);
+         if (!result.isOverflow()) {
+             errln("Overflow Error should have occured while encoding UTF-8 (4).");
+@@ -4542,10 +4543,10 @@
+ 
+         encoder.reset();
+ 
+-        us2.limit(limit_us);
+-        us2.position(0);
+-        bs.limit(2);
+-        bs.position(0);
++        ((Buffer)us2).limit(limit_us);
++        ((Buffer)us2).position(0);
++        ((Buffer)bs).limit(2);
++        ((Buffer)bs).position(0);
+         result = encoder.encode(us2, bs, true);
+         if (!result.isOverflow()) {
+             errln("Overflow Error should have occured while encoding UTF-8 (5).");
+@@ -4554,10 +4555,10 @@
+         //not readonly buffer
+         encoder.reset();
+ 
+-        us.limit(limit_us);
+-        us.position(0);
+-        bs.limit(1);
+-        bs.position(0);
++        ((Buffer)us).limit(limit_us);
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(1);
++        ((Buffer)bs).position(0);
+         result = encoder.encode(us, bs, true);
+         if (!result.isOverflow()) {
+             errln("Overflow Error should have occured while encoding UTF-8 (6).");
+@@ -4565,10 +4566,10 @@
+ 
+         encoder.reset();
+ 
+-        us.limit(limit_us);
+-        us.position(0);
+-        bs.limit(3);
+-        bs.position(0);
++        ((Buffer)us).limit(limit_us);
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(3);
++        ((Buffer)bs).position(0);
+         result = encoder.encode(us, bs, true);
+         if (!result.isOverflow()) {
+             errln("Overflow Error should have occured while encoding UTF-8 (7).");
+@@ -4576,10 +4577,10 @@
+ 
+         encoder.reset();
+ 
+-        us.limit(limit_us);
+-        us.position(1);
+-        bs.limit(2);
+-        bs.position(0);
++        ((Buffer)us).limit(limit_us);
++        ((Buffer)us).position(1);
++        ((Buffer)bs).limit(2);
++        ((Buffer)bs).position(0);
+         result = encoder.encode(us, bs, true);
+         if (!result.isOverflow()) {
+             errln("Overflow Error should have occured while encoding UTF-8 (8).");
+@@ -4587,17 +4588,17 @@
+ 
+         encoder.reset();
+ 
+-        us.limit(limit_us + 1);
+-        us.position(1);
+-        bs.limit(3);
+-        bs.position(0);
++        ((Buffer)us).limit(limit_us + 1);
++        ((Buffer)us).position(1);
++        ((Buffer)bs).limit(3);
++        ((Buffer)bs).position(0);
+         result = encoder.encode(us, bs, true);
+         if (!result.isOverflow()) {
+             errln("Overflow Error should have occured while encoding UTF-8 (9).");
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test encoding 4 byte characters
+         encoder.reset();
+@@ -4605,10 +4606,10 @@
+         bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
+         limit_us = us.position();
+         us2 = us.asReadOnlyBuffer();
+-        us2.limit(limit_us);
+-        us2.position(0);
+-        bs.limit(1);
+-        bs.position(0);
++        ((Buffer)us2).limit(limit_us);
++        ((Buffer)us2).position(0);
++        ((Buffer)bs).limit(1);
++        ((Buffer)bs).position(0);
+         result = encoder.encode(us2, bs, true);
+         if (!result.isOverflow()) {
+             errln("Overflow Error should have occured while encoding UTF-8 (10).");
+@@ -4616,10 +4617,10 @@
+ 
+         encoder.reset();
+ 
+-        us2.limit(limit_us);
+-        us2.position(0);
+-        bs.limit(2);
+-        bs.position(0);
++        ((Buffer)us2).limit(limit_us);
++        ((Buffer)us2).position(0);
++        ((Buffer)bs).limit(2);
++        ((Buffer)bs).position(0);
+         result = encoder.encode(us2, bs, true);
+         if (!result.isOverflow()) {
+             errln("Overflow Error should have occured while encoding UTF-8 (11).");
+@@ -4627,10 +4628,10 @@
+ 
+         encoder.reset();
+ 
+-        us2.limit(limit_us);
+-        us2.position(0);
+-        bs.limit(3);
+-        bs.position(0);
++        ((Buffer)us2).limit(limit_us);
++        ((Buffer)us2).position(0);
++        ((Buffer)bs).limit(3);
++        ((Buffer)bs).position(0);
+         result = encoder.encode(us2, bs, true);
+         if (!result.isOverflow()) {
+             errln("Overflow Error should have occured while encoding UTF-8 (12).");
+@@ -4638,17 +4639,17 @@
+ 
+         encoder.reset();
+ 
+-        us2.limit(limit_us);
+-        us2.position(0);
+-        bs.limit(4);
+-        bs.position(0);
++        ((Buffer)us2).limit(limit_us);
++        ((Buffer)us2).position(0);
++        ((Buffer)bs).limit(4);
++        ((Buffer)bs).position(0);
+         result = encoder.encode(us2, bs, true);
+         if (!result.isOverflow()) {
+             errln("Overflow Error should have occured while encoding UTF-8 (13).");
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //decoding code coverage
+         //test malform error
+@@ -4657,10 +4658,10 @@
+         us.put((char)0x0000);
+         bs2 = bs.asReadOnlyBuffer();
+ 
+-        us.limit(1);
+-        us.position(0);
+-        bs2.limit(1);
+-        bs2.position(0);
++        ((Buffer)us).limit(1);
++        ((Buffer)us).position(0);
++        ((Buffer)bs2).limit(1);
++        ((Buffer)bs2).position(0);
+ 
+         result = decoder.decode(bs2, us, true);
+         result = decoder.flush(us);
+@@ -4668,68 +4669,68 @@
+             errln("Malform error should have occurred while decoding UTF-8 (1).");
+         }
+ 
+-        us.limit(1);
+-        us.position(0);
+-        bs2.limit(1);
+-        bs2.position(0);
++        ((Buffer)us).limit(1);
++        ((Buffer)us).position(0);
++        ((Buffer)bs2).limit(1);
++        ((Buffer)bs2).position(0);
+ 
+         decoder.reset();
+ 
+         result = decoder.decode(bs2, us, true);
+-        us.limit(1);
+-        us.position(0);
+-        bs2.limit(2);
+-        bs2.position(0);
++        ((Buffer)us).limit(1);
++        ((Buffer)us).position(0);
++        ((Buffer)bs2).limit(2);
++        ((Buffer)bs2).position(0);
+         result = decoder.decode(bs2, us, true);
+         if (!result.isMalformed()) {
+             errln("Malform error should have occurred while decoding UTF-8 (2).");
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test overflow buffer
+         bs.put((byte)0x01); bs.put((byte)0x41);
+         us.put((char)0x0000);
+         bs2 = bs.asReadOnlyBuffer();
+-        us.limit(1);
+-        us.position(0);
+-        bs2.limit(2);
+-        bs2.position(0);
++        ((Buffer)us).limit(1);
++        ((Buffer)us).position(0);
++        ((Buffer)bs2).limit(2);
++        ((Buffer)bs2).position(0);
+ 
+         result = decoder.decode(bs2, us, true);
+         if (!result.isOverflow()) {
+             errln("Overflow error should have occurred while decoding UTF-8 (3).");
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test malform string
+         decoder.reset();
+         bs.put((byte)0xF5); bs.put((byte)0xB4); bs.put((byte)0x8A); bs.put((byte)0x8C);
+         us.put((char)0x0000);
+         bs2 = bs.asReadOnlyBuffer();
+-        us.limit(1);
+-        us.position(0);
+-        bs2.limit(4);
+-        bs2.position(0);
++        ((Buffer)us).limit(1);
++        ((Buffer)us).position(0);
++        ((Buffer)bs2).limit(4);
++        ((Buffer)bs2).position(0);
+ 
+         result = decoder.decode(bs2, us, true);
+         if (!result.isMalformed()) {
+             errln("Malform error should have occurred while decoding UTF-8 (4).");
+         }
+ 
+-        bs.clear();
++        ((Buffer)bs).clear();
+ 
+         //test overflow
+         decoder.reset();
+         bs.put((byte)0xF3); bs.put((byte)0xB4); bs.put((byte)0x8A); bs.put((byte)0x8C);
+         bs2 = bs.asReadOnlyBuffer();
+-        us.limit(1);
+-        us.position(0);
+-        bs2.limit(4);
+-        bs2.position(0);
++        ((Buffer)us).limit(1);
++        ((Buffer)us).position(0);
++        ((Buffer)bs2).limit(4);
++        ((Buffer)bs2).position(0);
+ 
+         result = decoder.decode(bs2, us, true);
+         if (!result.isOverflow()) {
+@@ -4738,10 +4739,10 @@
+ 
+         //test overflow
+         decoder.reset();
+-        us.limit(2);
+-        us.position(0);
+-        bs2.limit(5);
+-        bs2.position(0);
++        ((Buffer)us).limit(2);
++        ((Buffer)us).position(0);
++        ((Buffer)bs2).limit(5);
++        ((Buffer)bs2).position(0);
+ 
+         result = decoder.decode(bs2, us, true);
+         if (!result.isOverflow()) {
+@@ -4750,25 +4751,25 @@
+ 
+         //test overflow
+         decoder.reset();
+-        us.limit(1);
+-        us.position(0);
+-        bs.limit(5);
+-        bs.position(0);
++        ((Buffer)us).limit(1);
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(5);
++        ((Buffer)bs).position(0);
+ 
+         result = decoder.decode(bs, us, true);
+         if (!result.isOverflow()) {
+             errln("Overflow error should have occurred while decoding UTF-8 (6).");
+         }
+ 
+-        bs.clear();
++        ((Buffer)bs).clear();
+ 
+         //test overflow
+         decoder.reset();
+         bs.put((byte)0x41); bs.put((byte)0x42);
+-        us.limit(1);
+-        us.position(0);
+-        bs.limit(2);
+-        bs.position(0);
++        ((Buffer)us).limit(1);
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(2);
++        ((Buffer)bs).position(0);
+ 
+         result = decoder.decode(bs, us, true);
+         if (!result.isOverflow()) {
+@@ -4792,10 +4793,10 @@
+         bs.put((byte)0xFF);
+         us.put((char)0x0000);
+ 
+-        us.limit(us.position());
+-        us.position(0);
+-        bs.limit(bs.position());
+-        bs.position(0);
++        ((Buffer)us).limit(us.position());
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(bs.position());
++        ((Buffer)bs).position(0);
+ 
+         result = decoder.decode(bs, us, true);
+         result = decoder.flush(us);
+@@ -4803,28 +4804,28 @@
+             errln("Malform error while decoding UTF-16 should have occurred.");
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         us.put((char)0xD902); us.put((char)0xDD01); us.put((char)0x0041);
+ 
+-        us.limit(1);
+-        us.position(0);
+-        bs.limit(4);
+-        bs.position(0);
++        ((Buffer)us).limit(1);
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(4);
++        ((Buffer)bs).position(0);
+ 
+         result = encoder.encode(us, bs, true);
+-        us.limit(3);
+-        us.position(0);
+-        bs.limit(3);
+-        bs.position(0);
++        ((Buffer)us).limit(3);
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(3);
++        ((Buffer)bs).position(0);
+         result = encoder.encode(us, bs, true);
+         if (!result.isOverflow()) {
+             errln("Overflow buffer while encoding UTF-16 should have occurred.");
+         }
+ 
+-        us.clear();
+-        bs.clear();
++        ((Buffer)us).clear();
++        ((Buffer)bs).clear();
+ 
+         //test overflow buffer
+         decoder.reset();
+@@ -4832,10 +4833,10 @@
+ 
+         bs.put((byte)0xFF); bs.put((byte)0xFE); bs.put((byte)0x41);
+ 
+-        us.limit(0);
+-        us.position(0);
+-        bs.limit(3);
+-        bs.position(0);
++        ((Buffer)us).limit(0);
++        ((Buffer)us).position(0);
++        ((Buffer)bs).limit(3);
++        ((Buffer)bs).position(0);
+ 
+         result = decoder.decode(bs, us, true);
+         if (!result.isOverflow()) {
+@@ -5076,20 +5077,20 @@
+         ByteBuffer bb = ByteBuffer.wrap(bytearray);
+         CharBuffer cb = CharBuffer.allocate(10);
+ 
+-        bb.limit(4);
+-        cb.limit(1); // Overflow should occur and is expected
++        ((Buffer)bb).limit(4);
++        ((Buffer)cb).limit(1); // Overflow should occur and is expected
+         result = decoder.decode(bb, cb, false);
+         if (result.isError()) {
+             errln("Error occurred while decoding: " + charsetName + " with error: " + result);
+         }
+ 
+-        bb.limit(8);
++        ((Buffer)bb).limit(8);
+         result = decoder.decode(bb, cb, false);
+         if (result.isError()) {
+             errln("Error occurred while decoding: " + charsetName + " with error: " + result);
+         }
+ 
+-        bb.limit(12);
++        ((Buffer)bb).limit(12);
+         result = decoder.decode(bb, cb, true);
+         if (result.isError()) {
+             errln("Error occurred while decoding: " + charsetName + " with error: " + result);
+@@ -5104,18 +5105,18 @@
+         cb = CharBuffer.wrap(chararray);
+         bb = ByteBuffer.allocate(10);
+ 
+-        bb.limit(2);
+-        cb.limit(4);
++        ((Buffer)bb).limit(2);
++        ((Buffer)cb).limit(4);
+         result = encoder.encode(cb, bb, false);
+         if (result.isError()) {
+             errln("Error occurred while encoding: " + charsetName + " with error: " + result);
+         }
+-        cb.limit(5);
++        ((Buffer)cb).limit(5);
+         result = encoder.encode(cb, bb, false);
+         if (result.isError()) {
+             errln("Error occurred while encoding: " + charsetName + " with error: " + result);
+         }
+-        cb.limit(6);
++        ((Buffer)cb).limit(6);
+         result = encoder.encode(cb, bb, true);
+         if (!result.isError()) {
+             errln("Error should have occurred while encoding: " + charsetName);
+@@ -5302,21 +5303,21 @@
+             CharBuffer ubuf = CharBuffer.wrap(ccSrc[i]);
+             encode.reset();
+             decode.reset();
+-            trgt.clear();
+-            test.clear();
++            ((Buffer)trgt).clear();
++            ((Buffer)test).clear();
+             ccResult = encode.encode(ubuf, trgt, true);
+             if (ccResult.isError()) {
+                 errln("Error while encoding " + charset.name() + " in test for code coverage[" + i + "].");
+             } else {
+-                trgt.limit(trgt.position());
+-                trgt.position(0);
++                ((Buffer)trgt).limit(trgt.position());
++                ((Buffer)trgt).position(0);
+                 ccResult = decode.decode(trgt, test, true);
+                 if (ccResult.isError()) {
+                     errln("Error while decoding " + charset.name() + " in test for code coverage[" + i + "].");
+                 } else {
+-                    ubuf.position(0);
+-                    test.limit(test.position());
+-                    test.position(0);
++                    ((Buffer)ubuf).position(0);
++                    ((Buffer)test).limit(test.position());
++                    ((Buffer)test).position(0);
+                     if (!equals(test, ubuf)) {
+                         errln("Roundtrip failed for " + charset.name() + " in test for code coverage[" + i + "].");
+                     }
+@@ -5478,7 +5479,7 @@
+             // Decoding
+             CharBuffer decoderResult = decode.decode(decoderBuffer);
+ 
+-            encoderBuffer.position(0);
++           ((Buffer)encoderBuffer).position(0);
+             if(!decoderResult.equals(encoderBuffer)){
+                 errln("Error occured while decoding "+ charset.name());
+             }
+@@ -5488,7 +5489,7 @@
+             ByteBuffer roundTrip = encoderResult;
+             CharBuffer roundTripResult = decode.decode(roundTrip);
+ 
+-            encoderBuffer.position(0);
++            ((Buffer)encoderBuffer).position(0);
+             if(!roundTripResult.equals(encoderBuffer)){
+                 errln("Error occured while encoding "+ charset.name());
+             }
+@@ -5612,10 +5613,10 @@
+         for (int n = 0; n < malformedLimits.length; n++) {
+             malformedDecoderTest.reset();
+ 
+-            malformedSrc.position(0);
+-            malformedSrc.limit(malformedLimits[n]);
++            ((Buffer)malformedSrc).position(0);
++            ((Buffer)malformedSrc).limit(malformedLimits[n]);
+ 
+-            malformedTrgt.clear();
++            ((Buffer)malformedTrgt).clear();
+ 
+             malformedResult = malformedDecoderTest.decode(malformedSrc,malformedTrgt, true);
+             if (!malformedResult.isMalformed()) {
+@@ -5649,8 +5650,8 @@
+             }
+             CharsetDecoder decoder = charset.newDecoder();
+ 
+-            src.position(0);
+-            trgt.clear();
++            ((Buffer)src).position(0);
++            ((Buffer)trgt).clear();
+ 
+             result = decoder.decode(src, trgt, true);
+             if (result.isError()) {
+@@ -5750,14 +5751,14 @@
+         CharBuffer charBuffer = CharBuffer.allocate(firstLine.length() + secondLine.length());
+         charBuffer.put(firstLine);
+         charBuffer.put(secondLine);
+-        charBuffer.flip();
++        ((Buffer)charBuffer).flip();
+ 
+         for (int i = 0; i < charsetNames.length; i++) {
+             encoder =  CharsetICU.forNameICU(charsetNames[i]).newEncoder();
+ 
+-            charBuffer.position(firstLine.length());
++            ((Buffer)charBuffer).position(firstLine.length());
+             CharBuffer charBufferSlice = charBuffer.slice();
+-            charBufferSlice.limit(secondLine.length() - 2);
++            ((Buffer)charBufferSlice).limit(secondLine.length() - 2);
+ 
+ 
+             try {
+diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestConversion.java icu4j-63.1.new/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestConversion.java
+--- icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestConversion.java	2018-11-22 13:19:35.306841227 +0100
++++ icu4j-63.1.new/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestConversion.java	2018-11-29 15:00:47.299287777 +0100
+@@ -9,6 +9,7 @@
+ 
+ package com.ibm.icu.dev.test.charset;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.charset.Charset;
+@@ -337,13 +338,13 @@
+ 
+             try {
+                 out = encoder.encode(CharBuffer.wrap(cc.unicode.toCharArray()));
+-                out.position(out.limit());
++                ((Buffer)out).position(out.limit());
+                 if (out.limit() != out.capacity() || cc.finalFlush) {
+                     int pos = out.position();
+                     byte[] temp = out.array();
+                     out = ByteBuffer.allocate(temp.length * 4);
+                     out.put(temp);
+-                    out.position(pos);
++                    ((Buffer)out).position(pos);
+                     CoderResult cr = encoder.flush(out);
+                     if (cr.isOverflow()) {
+                         logln("Overflow error with flushing encoder");
+@@ -391,8 +392,8 @@
+         CoderResult cr = null;
+ 
+         for (;;) {
+-            source.limit(currentSourceLimit);
+-            target.limit(currentTargetLimit);
++            ((Buffer)source).limit(currentSourceLimit);
++            ((Buffer)target).limit(currentTargetLimit);
+ 
+             cr = encoder.encode(source, target, currentSourceLimit == sourceLen);
+ 
+@@ -404,8 +405,8 @@
+                     }
+                     // Do a final flush for cleanup, then break out
+                     // Encode loop, exits with cr==underflow in normal operation.
+-                    //target.limit(targetLen);
+-                    target.limit(targetLen);
++                    //((Buffer)target).limit(targetLen);
++                    ((Buffer)target).limit(targetLen);
+                     cr = encoder.flush(target);
+                     if (cr.isUnderflow()) {
+                         // good
+@@ -631,15 +632,15 @@
+             CharBuffer out = null;
+ 
+             try {
+-                cc.bytes.rewind();
++                ((Buffer)cc.bytes).rewind();
+                 out = decoder.decode(cc.bytes);
+-                out.position(out.limit());
++                ((Buffer)out).position(out.limit());
+                 if (out.limit() < cc.unicode.length()) {
+                     int pos = out.position();
+                     char[] temp = out.array();
+                     out = CharBuffer.allocate(cc.bytes.limit());
+                     out.put(temp);
+-                    out.position(pos);
++                    ((Buffer)out).position(pos);
+                     CoderResult cr = decoder.flush(out);
+                     if (cr.isOverflow()) {
+                         logln("Overflow error with flushing decodering");
+@@ -677,9 +678,9 @@
+         int sourceLen;
+         source = cc.bytes;
+         sourceLen = cc.bytes.limit();
+-        source.position(0);
++        ((Buffer)source).position(0);
+         target = CharBuffer.allocate(cc.unicode.length() + 4);
+-        target.position(0);
++        ((Buffer)target).position(0);
+         cc.toUnicodeResult = null;
+         decoder.reset();
+ 
+@@ -691,15 +692,15 @@
+             for (;;) {
+ 
+                 if (step != 0) {
+-                    source.limit((iStep <= sourceLen) ? iStep : sourceLen);
+-                    target.limit((oStep <= target.capacity()) ? oStep : target
++                    ((Buffer)source).limit((iStep <= sourceLen) ? iStep : sourceLen);
++                    ((Buffer)target).limit((oStep <= target.capacity()) ? oStep : target
+                             .capacity());
+                     flush = (cc.finalFlush && source.limit() == sourceLen);
+ 
+                 } else {
+                     //bulk mode
+-                    source.limit(sourceLen);
+-                    target.limit(target.capacity());
++                    ((Buffer)source).limit(sourceLen);
++                    ((Buffer)target).limit(target.capacity());
+                     flush = cc.finalFlush;
+                 }
+                 // convert
+@@ -711,7 +712,7 @@
+                     if (cr.isOverflow()) {
+                         // the partial target is filled, set a new limit,
+                         oStep = (target.position() + step);
+-                        target.limit((oStep < target.capacity()) ? oStep
++                        ((Buffer)target).limit((oStep < target.capacity()) ? oStep
+                                 : target.capacity());
+                         if (target.limit() > target.capacity()) {
+                             //target has reached its limit, an error occurred or test case has an error code
+@@ -736,7 +737,7 @@
+                         //due to limitation of the API we need to check for target limit for expected
+                         if (target.position() != cc.unicode.length()) {
+                             if (target.limit() != cc.unicode.length()) {
+-                                target.limit(cc.unicode.length());
++                                ((Buffer)target).limit(cc.unicode.length());
+                             }
+                             cr = decoder.flush(target);
+                             if (cr.isError()) {
+@@ -765,14 +766,14 @@
+                 // convert
+                 if ((step & 1) != 0 /* odd: -1, -3, -5, ... */) {
+ 
+-                    target.limit(target.position() < target.capacity() ? target
++                    ((Buffer)target).limit(target.position() < target.capacity() ? target
+                             .position() + 1 : target.capacity());
+ 
+                     // decode behavior is return to output target 1 character
+                     CoderResult cr = null;
+ 
+                     //similar to getNextUChar() , input is the whole string, while outputs only 1 character
+-                    source.limit(sourceLen);
++                    ((Buffer)source).limit(sourceLen);
+                     while (target.position() != target.limit()
+                             && source.hasRemaining()) {
+                         cr = decoder.decode(source, target,
+@@ -786,7 +787,7 @@
+                                 break;
+                             } else {
+                                 //1 character has been consumed
+-                                target.limit(target.position() + 1);
++                                ((Buffer)target).limit(target.position() + 1);
+                                 break;
+                             }
+                         } else if (cr.isError()) {
+@@ -801,7 +802,7 @@
+                         else {
+                             // one character has been consumed
+                             if (target.limit() == target.position()) {
+-                                target.limit(target.position() + 1);
++                                ((Buffer)target).limit(target.position() + 1);
+                                 break;
+                             }
+                         }
+@@ -814,7 +815,7 @@
+                         cr = decoder.decode(source, target, true);
+                         if (target.position() != cc.unicode.length()) {
+ 
+-                            target.limit(cc.unicode.length());
++                            ((Buffer)target).limit(cc.unicode.length());
+                             cr = decoder.flush(target);
+                             if (cr.isError()) {
+                                 errln("Flush operation failed");
+@@ -829,14 +830,14 @@
+                 } else {/* step is even */
+                     // allow only one UChar output
+ 
+-                    target.limit(target.position() < target.capacity() ? target
++                    ((Buffer)target).limit(target.position() < target.capacity() ? target
+                             .position() + 1 : target.capacity());
+                     if (step == -2) {
+-                        source.limit(sourceLen);
++                        ((Buffer)source).limit(sourceLen);
+                     } else {
+-                        source.limit(source.position() + (-step - 2) / 2);
++                        ((Buffer)source).limit(source.position() + (-step - 2) / 2);
+                         if (source.limit() > sourceLen) {
+-                            source.limit(sourceLen);
++                            ((Buffer)source).limit(sourceLen);
+                         }
+                     }
+                     CoderResult cr = decoder.decode(source, target, source
+@@ -1003,43 +1004,43 @@
+         if (start[0] == (byte) 0xFE && start[1] == (byte) 0xFF) {
+             signatureLength = 2;
+             sigUniCharset = "UTF-16BE";
+-            source.position(signatureLength);
++            ((Buffer)source).position(signatureLength);
+             return sigUniCharset;
+         } else if (start[0] == (byte) 0xFF && start[1] == (byte) 0xFE) {
+             if (start[2] == (byte) 0x00 && start[3] == (byte) 0x00) {
+                 signatureLength = 4;
+                 sigUniCharset = "UTF-32LE";
+-                source.position(signatureLength);
++                ((Buffer)source).position(signatureLength);
+                 return sigUniCharset;
+             } else {
+                 signatureLength = 2;
+                 sigUniCharset = "UTF-16LE";
+-                source.position(signatureLength);
++                ((Buffer)source).position(signatureLength);
+                 return sigUniCharset;
+             }
+         } else if (start[0] == (byte) 0xEF && start[1] == (byte) 0xBB
+                 && start[2] == (byte) 0xBF) {
+             signatureLength = 3;
+             sigUniCharset = "UTF-8";
+-            source.position(signatureLength);
++            ((Buffer)source).position(signatureLength);
+             return sigUniCharset;
+         } else if (start[0] == (byte) 0x00 && start[1] == (byte) 0x00
+                 && start[2] == (byte) 0xFE && start[3] == (byte) 0xFF) {
+             signatureLength = 4;
+             sigUniCharset = "UTF-32BE";
+-            source.position(signatureLength);
++            ((Buffer)source).position(signatureLength);
+             return sigUniCharset;
+         } else if (start[0] == (byte) 0x0E && start[1] == (byte) 0xFE
+                 && start[2] == (byte) 0xFF) {
+             signatureLength = 3;
+             sigUniCharset = "SCSU";
+-            source.position(signatureLength);
++            ((Buffer)source).position(signatureLength);
+             return sigUniCharset;
+         } else if (start[0] == (byte) 0xFB && start[1] == (byte) 0xEE
+                 && start[2] == (byte) 0x28) {
+             signatureLength = 3;
+             sigUniCharset = "BOCU-1";
+-            source.position(signatureLength);
++            ((Buffer)source).position(signatureLength);
+             return sigUniCharset;
+         } else if (start[0] == (byte) 0x2B && start[1] == (byte) 0x2F
+                 && start[2] == (byte) 0x76) {
+@@ -1047,20 +1048,20 @@
+             if (start[3] == (byte) 0x38 && start[4] == (byte) 0x2D) {
+                 signatureLength = 5;
+                 sigUniCharset = "UTF-7";
+-                source.position(signatureLength);
++                ((Buffer)source).position(signatureLength);
+                 return sigUniCharset;
+             } else if (start[3] == (byte) 0x38 || start[3] == (byte) 0x39
+                     || start[3] == (byte) 0x2B || start[3] == (byte) 0x2F) {
+                 signatureLength = 4;
+                 sigUniCharset = "UTF-7";
+-                source.position(signatureLength);
++                ((Buffer)source).position(signatureLength);
+                 return sigUniCharset;
+             }
+         } else if (start[0] == (byte) 0xDD && start[2] == (byte) 0x73
+                 && start[2] == (byte) 0x66 && start[3] == (byte) 0x73) {
+             signatureLength = 4;
+             sigUniCharset = "UTF-EBCDIC";
+-            source.position(signatureLength);
++            ((Buffer)source).position(signatureLength);
+             return sigUniCharset;
+         }
+ 
+@@ -1074,7 +1075,7 @@
+         for (int i = 0; i < pos; i++) {
+             res += "(" + i + ")" + hex(buf.get(i) & 0xff).substring(2) + " ";
+         }
+-        buf.position(cur);
++        ((Buffer)buf).position(cur);
+         return res + "]";
+     }
+ 
+@@ -1084,7 +1085,7 @@
+         for (int i = 0; i < pos; i++) {
+             res += "(" + i + ")" + hex(buf.get(i)) + " ";
+         }
+-        buf.position(cur);
++        ((Buffer)buf).position(cur);
+         return res + "]";
+     }
+ 
+@@ -1092,9 +1093,9 @@
+             ByteBuffer output) {
+ 
+         boolean res = true;
+-        expected.rewind();
+-        output.limit(output.position());
+-        output.rewind();
++        ((Buffer)expected).rewind();
++        ((Buffer)output).limit(output.position());
++        ((Buffer)output).rewind();
+ 
+         // remove any BOM signature before checking
+         if (!cc.charset.contains("UnicodeLittle") && !cc.charset.contains("UnicodeBig")) {
+@@ -1137,8 +1138,8 @@
+     private boolean checkResultsToUnicode(ConversionCase cc, String expected, CharBuffer output) {
+ 
+         boolean res = true;
+-        output.limit(output.position());
+-        output.rewind();
++        ((Buffer)output).limit(output.position());
++        ((Buffer)output).rewind();
+ 
+         // test to see if the conversion matches actual results
+         if (output.limit() != expected.length()) {
+diff -urEbwB icu4j-63.1/main/tests/core/src/com/ibm/icu/dev/test/util/ICUBinaryTest.java icu4j-63.1.new/main/tests/core/src/com/ibm/icu/dev/test/util/ICUBinaryTest.java
+--- icu4j-63.1/main/tests/core/src/com/ibm/icu/dev/test/util/ICUBinaryTest.java	2018-11-22 13:19:21.194765845 +0100
++++ icu4j-63.1.new/main/tests/core/src/com/ibm/icu/dev/test/util/ICUBinaryTest.java	2018-11-29 11:56:14.962442494 +0100
+@@ -10,6 +10,7 @@
+ package com.ibm.icu.dev.test.util;
+ 
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ 
+ import org.junit.Test;
+@@ -88,7 +89,7 @@
+         }
+         // no restriction to the data version
+         try {
+-            bytes.rewind();
++            ((Buffer)bytes).rewind();
+             ICUBinary.readHeader(bytes, formatid, null);
+         } catch (IOException e) {
+             errln("Failed: Null authenticate object should pass ICUBinary.readHeader");
+@@ -96,7 +97,7 @@
+         // lenient data version
+         array[17] = 9;
+         try {
+-            bytes.rewind();
++            ((Buffer)bytes).rewind();
+             ICUBinary.readHeader(bytes, formatid, authenticate);
+         } catch (IOException e) {
+             errln("Failed: Lenient authenticate object should pass ICUBinary.readHeader");
+@@ -104,7 +105,7 @@
+         // changing the version to an incorrect one, expecting failure
+         array[16] = 2;
+         try {
+-            bytes.rewind();
++            ((Buffer)bytes).rewind();
+             ICUBinary.readHeader(bytes, formatid, authenticate);
+             errln("Failed: Invalid version number should not pass authenticate object");
+         } catch (IOException e) {
+diff -urEbwB icu4j-63.1/perf-tests/src/com/ibm/icu/dev/test/perf/ConverterPerformanceTest.java icu4j-63.1.new/perf-tests/src/com/ibm/icu/dev/test/perf/ConverterPerformanceTest.java
+--- icu4j-63.1/perf-tests/src/com/ibm/icu/dev/test/perf/ConverterPerformanceTest.java	2018-11-22 13:20:03.174990079 +0100
++++ icu4j-63.1.new/perf-tests/src/com/ibm/icu/dev/test/perf/ConverterPerformanceTest.java	2018-11-29 13:42:18.211256208 +0100
+@@ -13,6 +13,7 @@
+ import java.io.FileInputStream;
+ import java.io.InputStreamReader;
+ import java.io.OutputStreamWriter;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.charset.Charset;
+@@ -214,8 +215,8 @@
+                     try{
+                         decoder.decode(srcBuf,outBuf,false);
+                         decoder.reset();
+-                        srcBuf.rewind();
+-                        outBuf.rewind();
++                        ((Buffer)srcBuf).rewind();
++                        ((Buffer)outBuf).rewind();
+                     }catch(Exception e){
+                         e.printStackTrace();
+                         throw new RuntimeException(e.getMessage());
+@@ -243,8 +244,8 @@
+                     try{
+                         encoder.encode(srcBuf,outBuf,false);
+                         encoder.reset();
+-                        srcBuf.rewind();
+-                        outBuf.rewind();
++                        ((Buffer)srcBuf).rewind();
++                        ((Buffer)outBuf).rewind();
+                     }catch(Exception e){
+                         e.printStackTrace();
+                         throw new RuntimeException(e.getMessage());
+@@ -272,8 +273,8 @@
+                     try{
+                         decoder.decode(srcBuf,outBuf,false);
+                         decoder.reset();
+-                        srcBuf.rewind();
+-                        outBuf.rewind();
++                        ((Buffer)srcBuf).rewind();
++                        ((Buffer)outBuf).rewind();
+                     }catch(Exception e){
+                         e.printStackTrace();
+                         throw new RuntimeException(e.getMessage());
+@@ -301,8 +302,8 @@
+                     try{
+                         encoder.encode(srcBuf,outBuf,false);
+                         encoder.reset();
+-                        srcBuf.rewind();
+-                        outBuf.rewind();
++                        ((Buffer)srcBuf).rewind();
++                        ((Buffer)outBuf).rewind();
+                     }catch(Exception e){
+                         e.printStackTrace();
+                         throw new RuntimeException(e.getMessage());

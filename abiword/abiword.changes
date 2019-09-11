@@ -1,0 +1,845 @@
+-------------------------------------------------------------------
+Wed Mar 21 20:28:12 UTC 2018 - dimstar@opensuse.org
+
+- Drop --with-pic configure parameter: since we disable static
+  libs, it has no effect.
+  
+-------------------------------------------------------------------
+Sun Mar 18 09:37:21 UTC 2018 - bjorn.lie@gmail.com
+
+- Add missing pkgconfig(libjpeg) BuildRequires: Previously pulled
+  in by libwmf.
+- Stop handling desktop_database_post(un) in post(un), no longer
+  needed since file-triggers takes care of this now.
+- Drop update-desktop-files BuildRequires and stop passing
+  suse_update_desktop_file macro.
+- Run spec-cleaner, modernize spec.
+
+-------------------------------------------------------------------
+Mon May  1 14:59:15 UTC 2017 - dufresnep@gmail.com
+
+- Add abiword-fix-black-overlay.patch: Remove the black covering
+  full window and make all unreadable, patch from upstream.
+
+-------------------------------------------------------------------
+Tue Jan 17 16:03:35 UTC 2017 - adam.majer@suse.de
+
+- Add boost_asio.patch: Add support for boost::asio.
+- Drop asio-devel BuildRequires, merged into boost 1.62.
+- Replace boost-devel with libboost_headers-devel BuildRequires.
+- Drop obsolete conditional for post(un) handling.
+
+-------------------------------------------------------------------
+Wed Jan  4 17:31:06 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.0.2:
+  + See http://www.abisource.com/release-notes/3.0.2.phtml for an
+    overview of all bugs fixed in this release.
+- Drop abiword-3.0.0-linkgrammar.patch and
+  abiword-3.0.1-gcc6.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Fri Jun 17 13:08:40 UTC 2016 - normand@linux.vnet.ibm.com
+
+- Add abiword-3.0.1-gcc6.patch: Fix build with gcc6 (boo#985070).
+
+-------------------------------------------------------------------
+Mon May  9 13:35:56 UTC 2016 - dimstar@opensuse.org
+
+- Re-add abiword-librevenge.patch that was wrongly dropped when
+  upgrading to Abiword 3.0.1.
+- Add libtool BuildRequires and an injected copy of abiword's
+  autogen.sh, as above patch touches the build system.
+- Add abiword-libwps-0.4.patch: Port to libwps 0.4.
+- Change pkgconfig(libwps-0.3) BuildRequires to
+  pkgconfig(libwps-0.4) in order to enable Microsoft Works Document
+  support again.
+- Drop explicit libabiword-3_0 and link-grammar Requires: they are
+  auto-detected.
+
+-------------------------------------------------------------------
+Wed Feb 25 14:40:40 UTC 2015 - dimstar@opensuse.org
+
+- Drop loudmouth-devel BuildRequires: loudmouth is dead upstream
+  and not worth to be maintained.
+
+-------------------------------------------------------------------
+Wed Jan 28 13:55:08 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.0.1:
+  + See http://www.abiword.org/release-notes/3.0.1.phtml for an
+    overview of all bugs fixed in this release.
+- Drop upstream fixed patches: abiword-3.0.0-html_segfault.patch,
+  abiword-boost.patch, abiword-gcrypt-1.6.0.patch and
+  abiword-librevenge.patch.
+- Drop libtool, autogen and automake BuildRequires: we don't touch
+  the buildsystem anymore.
+- Drop the in-file copy of upstream's autogen.sh: as we don't have
+  to bootstrap, there is no need to preserve this code piece. If
+  we ever need it again, we better sync up with upstreams changes
+  at that moment again.
+
+-------------------------------------------------------------------
+Mon Oct  6 19:47:40 UTC 2014 - dimstar@opensuse.org
+
+- Add abiword.appdata.xml to the package.
+
+-------------------------------------------------------------------
+Wed Jul 23 20:47:25 UTC 2014 - dimstar@opensuse.org
+
+- Update old-style -devel BuildRequires with pkgconfig()-style,
+  matching what configure checks for:
+  + Old: libgsf-devel, fribidi-devel, wv-devel, libxslt-devel,
+    enchant-devel, gtk3-devel.
+  + New pkgconfig(): libgsf-1, fribidi,, wv-1.0, libxslt, enchant,
+    gtk+-3.0, cairo.
+
+-------------------------------------------------------------------
+Tue Jul 22 13:55:02 UTC 2014 - fstrba@suse.com
+
+- Add abiword-3.0.0-html_segfault.patch:
+  + upstream patch to fix segfault in the html conversion.
+  + this will fix build of abiword-docs on some platforms.
+
+-------------------------------------------------------------------
+Tue Jul 22 09:59:47 UTC 2014 - fstrba@suse.com
+
+- Add abiword-3.0.0-linkgrammar.patch:
+  + upstream patch to fix building with newer versions of
+    linkgrammar.
+
+-------------------------------------------------------------------
+Wed May 28 09:42:33 UTC 2014 - fstrba@suse.com
+
+- Add abiword-librevenge.patch:
+  + upstream patch to build against libwpd 0.10.x, libwpg 0.3.x
+    and libwps 0.3.x that have different ABI from their
+    predecessors.
+- Add pkgconfig(librevenge-0.0) BuildRequires: the new base
+  framework library for the 3 above-mentioned libraries
+- Replace old-style -devel BuildRequires with pkgconfig() style:
+  + old: libpwd-devel, libwpg-devel, libwps-devel.
+  + new: pkgconfig(libwpd-0.10,libwpg-0.3,libwps-0.3).
+- As above patches touch the build system:
+  - Add libtool, autoconf and automake BuildRequires.
+  - Add copy of autogen-common.sh to correctly bootstrap the
+    sources.
+
+-------------------------------------------------------------------
+Thu May  1 15:28:48 UTC 2014 - dimstar@opensuse.org
+
+- Add abiword-boost.patch: Fix build with boost: missing includes.
+
+-------------------------------------------------------------------
+Sun Jan 19 08:59:50 UTC 2014 - zaitor@opensuse.org
+
+- Drop psiconv-devel BuildRequires, as I doubt there are any users
+  left of this.
+
+-------------------------------------------------------------------
+Sun Jan  5 20:59:40 UTC 2014 - dimstar@opensuse.org
+
+- Add abiword-gcrypt-1.6.0.patch: Fix build with gcrypt 1.6.0.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:12:35 UTC 2013 - cornelis@solcon.nl
+
+- Update to final release 3.0.0:
+  + Besides porting to GTK+ 3.x, the AbiWord 3.0 release has a heck
+    of a lot of bug-fixes, much-improved internationalization, RDF
+    drag-and-drop, double-buffering of drawings to reduce screen
+    flickering, and numerous other changes throughout the entire
+    code-base.
+
+-------------------------------------------------------------------
+Sat Sep 21 14:25:55 UTC 2013 - dimstar@opensuse.org
+
+- Change RPM Group of shared library package to System/Libraries.
+
+-------------------------------------------------------------------
+Wed Aug 14 12:41:18 UTC 2013 - cornelis@solcon.nl
+
+- Update to svn.
+
+-------------------------------------------------------------------
+Fri Jun 14 20:39:07 UTC 2013 - cornelis@solcon.nl
+
+- gtk2 is not supported, so back to gtk3, now done everywhere in
+  spec file:
+  + Replace gtk2-devel BuildRequires with gtk3-devel.
+
+-------------------------------------------------------------------
+Fri Jun 14 19:38:21 UTC 2013 - cornelis@solcon.nl
+
+- Use gtk2 again:
+  + Replace gtk3-devel BuildRequires with gtk2-devel.
+
+-------------------------------------------------------------------
+Sun Jun  2 07:25:53 UTC 2013 - cornelis@solcon.nl
+
+- Update to svn 3_0_0 branch
+  + Switch to GTK3.
+- Replace gtk2-devel BuildRequires with gtk3-devel.
+- Add libxslt-devel BuildRequires: new dependency.
+- Replace pkgconfig(libgoffice-0.8) BuildRequires with
+  pkgconfig(libgoffice-0.10).
+- Rename libabiword-2_8 subpackage to libabiword-3_0 and
+  libabiword-2_8-devel to libabiword-3_0-devel
+- Remove all patches (are upstream now):
+  + abiword-gcc46.patch
+  + abiword-glib-2.31.patch
+  + abiword-libpng15.patch
+
+-------------------------------------------------------------------
+Wed Oct  3 19:04:19 UTC 2012 - pgajdos@suse.com
+
+- build also with libpng15
+  * libpng15.patch
+
+-------------------------------------------------------------------
+Thu Jan 19 07:23:31 UTC 2012 - vuntz@opensuse.org
+
+- Change goffice-devel BuildRequires to pkgconfig(libgoffice-0.8)
+  to prepare for goffice bump to 0.9 and new goffice-0_8 source
+  package.
+
+-------------------------------------------------------------------
+Mon Jan  9 13:02:49 UTC 2012 - vuntz@opensuse.org
+
+- Add libgcrypt-devel BuildRequires: gcrypt.h is being included in
+  some code, even if configure doesn't look for libgcrypt yet. Not
+  that in the current development releases, libgcrypt is being
+  explicitly checked for in configure, so this is a change we'd
+  have to do in the future anyway.
+
+-------------------------------------------------------------------
+Mon Nov 28 22:03:52 UTC 2011 - dimstar@opensuse.org
+
+- Add abiword-glib-2.31.patch: Fix build with glib 2.31.
+
+-------------------------------------------------------------------
+Sat Sep 17 10:42:11 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Mon May 16 09:49:58 UTC 2011 - dimstar@opensuse.org
+
+- Add abiword-gcc46.patch: Fix build with gcc 4.6.
+
+-------------------------------------------------------------------
+Sat Feb 12 16:46:19 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Improve descriptions by removing outdated references.
+
+-------------------------------------------------------------------
+Tue Jul 27 22:32:10 UTC 2010 - andrea@opensuse.org
+
+- Update to version 2.8.6:
+  + Preserve character properties when typing.
+- Changes from version 2.8.5:
+  + Fix paste of rich text from HTML and ODT, where previously some
+    formatting properties were not closed properly
+  + Add a number of robustness fixes to the layout engine
+  + Fix a table selection bug
+  + OpenDocument Import/Export:
+    - Significant OpenDocument filter improvements
+  + Collaboration Plugin:
+    - Fix a potential crash when more than 2 people are
+      collaborating on a document and one of the collaborators
+      disconnects
+    - Don't include document names that a buddy does not have
+      access to in the list of available shared documents that is
+      sent to him
+    - Fix some small memory leaks in the *.abicollab importer
+    - Honor SRV DNS records when collaborating over XMPP
+  + MS Write Plugin:
+    - Improved MS Write filter support
+- Changes from version 2.8.4:
+  + Fix a bug where deleting a character in non-Western scripts
+    caused a random number of characters to be deleted.
+  + Fix cursor movement for complex scripts, as text cluster
+    boundaries are now honored.
+  + Fix the text rendering of complex scripts when text is selected
+  + Fix text rendering errors when font substitution was involved
+  + GNOME Office Plugin:
+    - Use double click to select a component type and close the
+      dialog
+- Changes from version 2.8.3:
+  + Fix random crashes mostly observed on Linux/Unix platforms
+    coupled with PulseAudio (it's not Pulse's fault!)
+  + Abiword Format Import/Export:
+    - Meta data is escaped twice in the AbiWord exporter
+  + OpenDocument Import/Export:
+    - Fix crash in OpenDocument importer
+    - Add tabstop/tableader/tab default interval support to the
+      OpenDocument import/export filters
+    - Support opening password protected OpenDocument files
+    - Add application/vnd.oasis.opendocument.text-web as a
+      supported mimetype in the ODF importer. Also add
+      application/vnd.oasis.opendocument.text-{template,web} to
+      abiword.desktop.
+    - Add AbiWord's version and platform in the meta:generator
+      field.
+
+-------------------------------------------------------------------
+Sat Feb 13 13:47:56 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.8.2:
+  + See http://abisource.com/changelogs/2.8.2.phtml for the full
+    list of changes.
+  + Fix German smart-quote support
+  + Fix landscape printing on GTK+ platforms
+  + Improved OpenDocument compatibility
+  + Add an abiword(1) manpage
+- Remove gnome-vfs2-devel BuildRequires and Requires in devel
+  package: it's only needed if gio is not there.
+- Remove gucharmap-devel BuildRequires and Requires in devel
+  package: the support has been removed because of unstable API.
+- Add goffice-devel to Requires of devel package since it's now
+  successfully used in the build.
+
+-------------------------------------------------------------------
+Sat Dec  5 16:00:40 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.8.1:
+  + See http://abisource.com/release-notes/2.8.0.phtml for the list
+    of major changes in the 2.8 series.
+  + Improved Collaboration support, with abicollab.net
+  + Annotation / Comment support
+  + Proper Smart Quote support
+  + Multi-Page View
+  + True Scalable Vector Graphics (SVG) support
+  + Improved OpenDocument Format (.odt) support
+  + Improved Office Open XML (.docx) support
+  + New printing framework
+- Add gnome-vfs2-devel, goffice-devel, gtk2-devel, gucharmap-devel,
+  libsoup-devel, libwmf-devel, libwpg-devel, libwps-devel
+  BuildRequires.
+- Add cairo-devel, gucharmap-devel, librsvg-devel to Requires of
+  devel package.
+- Remove gtkmathview-devel, libglade2-devel, libgnomeprintui-devel,
+  nautilus-devel BuildRequires
+- Remove fontconfig-devel, freetype2-devel, libglade2-devel,
+  libgnomeprint-devel, libgnomeprintui-devel, libgnomeui-devel,
+  libpng-devel, xorg-x11-devel Requires of devel
+  package.
+- Drop abiword-plugins-glibc-const.patch: fixed upstream.
+- Drop abiword-plugins-ncurses.patch: not needed anymore.
+- Remove py_requires macro, there's no python here.
+- Remove --enable-libabiword from configure, and instead pass
+  --enable-dynamic to configure, as recommended for pyabiword.
+- Pass --enable-plugins, --enable-clipart, --enable-templates to
+  configure.
+- Pass --enable-emacs-keybinding and --enable-vi-keybinding to
+  configure.
+- Fix self-obsoletion of libabiword-devel.
+- Use fdupes.
+- The abiword-extras and abiword-plugins tarballs have been merged
+  with the main abiword package, and the abiword-doc tarball will
+  move to another package, so adapt the build for this.
+
+-------------------------------------------------------------------
+Wed Jun 10 21:25:23 CEST 2009 - vuntz@novell.com
+
+- Add abiword-plugins-glibc-const.patch to fix build failure with
+  latest glibc.
+
+-------------------------------------------------------------------
+Fri May 22 19:51:25 CEST 2009 - vuntz@novell.com
+
+- Add bison, flex, gtkmathview-devel BuildRequires for the plugins.
+
+-------------------------------------------------------------------
+Fri Apr 24 20:46:07 CEST 2009 - vuntz@novell.com
+
+- Completely reorganize the spec file to make it clearer what
+  applies to abiword, and what applies to abiword-plugins.
+  (Note: we can't split abiword and abiword-plugins in two source
+  packages since abiword-plugins needs to be built with abiword
+  source code)
+- Also compile abiword-extras and abiword-docs in the package,
+  since it's useful stuff for the user.
+- Add some BuildRequires: dbus-1-glib-devel, libglade2-devel
+- Comment some BuildRequires that won't work for various reasons:
+  goffice-devel, gucharmap-devel, libgda-4_0-devel,
+  libgnomedb-devel
+- Remove unneeded BuildRequires: aspell-devel, gnutls-devel,
+  libtiff-devel, libwnck-devel, mDNSResponder-devel
+- Add some notes about missing BuildRequires for libraries that are
+  not in openSUSE.
+- Add missing requires to the devel package: enchant-devel,
+  fontconfig-devel, fribidi-devel, gnome-vfs2-devel, libgsf-devel,
+  libpng-devel, wv-devel, xorg-x11-devel.
+- Pass --with-abicollab-sugar-backend to the configure of
+  abiword-plugins to get the sugar backend of abicollab too.
+- Do not add categories to the desktop files.
+- Remove checks for old versions of openSUSE.
+- Move the plugins and data files in the libabiword-2_6 package
+  instead of just the abiword package since other applications
+  using libabiword-2_6 need them.
+- Add abiword-plugins-ncurses.patch to make the abicommand plugin
+  compile.
+
+-------------------------------------------------------------------
+Sun Apr 12 00:50:23 CEST 2009 - mboman@suse.de
+
+- Update to version 2.6.8:
+  + See http://www.abisource.com/changelogs/2.6.8.phtml for what's
+    new in this version
+- Remove abiword-fixes.patch. Fixed upstream
+- Merge -devel into libabiword-2_6-devel
+- Clean up requires for libabiword-2_6-devel
+- Remove %if statements <= 10.2
+- Use CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
+
+-------------------------------------------------------------------
+Tue Feb 24 04:32:34 CET 2009 - vuntz@novell.com
+
+- Remove eel-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sat Feb  7 23:48:17 EST 2009 - hfiguiere@suse.de
+
+- Added abiword-fixes.patch for some crasher fixes from upstream.
+
+-------------------------------------------------------------------
+Sun Jan 25 02:34:54 CET 2009 - vuntz@novell.com
+
+- Don't use -n for %suse_update_desktop_file on abiword, to alllow
+  update of translations. Part of bnc#445728.
+
+-------------------------------------------------------------------
+Sat Jan 10 14:30:40 EST 2009 - hfiguiere@suse.de
+
+- Update to version 2.6.6:
+  + Add further error-checking to the handling of dimension units
+  + Fix a bug that caused scrolling in the opposite direction when 
+    scrolling quickly
+  + Fix a mismatched delete in the AbiWidget
+  + Show the right and left alignment toolbar buttons regardless of 
+    locale
+  + Bug 11898: MS Office Open XML exporter conflicts with other exporters
+  + Bug 11852: ODT: Font family is not imported correctly
+  + Bug 11854: ODT: Single document files are not imported at all
+  + Bug 11896: ODT: Non-breaking spaces are not imported correctly
+  + Update the Slovak (sk-SK) translation
+
+-------------------------------------------------------------------
+Mon Dec 29 12:11:28 EST 2008 - mboman@suse.de
+
+- Update to version 2.6.5:
+  + Added first iteraton of an Office Open XML filter
+  + Vastly improved LaTeX export filter
+  + Fixed a couple of annoying crashes in the GTK frontend
+  + Fixed a bug that prevented the correct shaping of glyphs
+  + Translation updates
+
+-------------------------------------------------------------------
+Fri Aug 29 23:24:01 IST 2008 - cyberorg@opensuse.org
+
+- Enable libabiword required for OLPC's Write application 
+
+-------------------------------------------------------------------
+Fri Jul 18 16:23:51 CEST 2008 - jpr@suse.de
+
+- Update to 2.6.4
+  * Fixed inconsistent text rendering and layout with different zoom
+    levels on Unix platforms.
+  * The usual set of OpenDocument filter updates, most notably the
+    added ability to import MathML formulas.
+  * Add the ability to export specific pages and page ranges on the
+    command line using the PostScript and PDF exporters on Linux.
+- Drop abiword-no-return.diff, it was upstreamed
+
+-------------------------------------------------------------------
+Wed May  7 17:25:47 CEST 2008 - hfiguiere@suse.de
+
+- Patch : abiword-no-return-diff: fix now fatal compilation warnings.
+
+-------------------------------------------------------------------
+Sun Apr  6 19:25:03 EDT 2008 - hfiguiere@suse.de
+
+- Upgrade to AbiWord 2.6.2
+  * Make the presentation plugin work.
+  * Fix a bunch of small bugs in our XSL-FO, Applix, LaTeX, WML and HTML
+    import/export filters.
+- Remove all current patches
+- Don't disable AbiCollab on configure
+
+-------------------------------------------------------------------
+Sat Apr  5 20:23:07 EDT 2008 - hfiguiere@suse.de
+
+- Add asio-devel in BuildRequires to enable AbiCollab
+- Remove duplicate BuildRequires.
+- Fix a warning with non executable script.
+- Split -devel files.
+
+-------------------------------------------------------------------
+Thu Apr  3 12:29:13 EDT 2008 - hfiguiere@suse.de
+
+- Fix a bad build failure from last minute related to %fdupes
+  misuse
+
+-------------------------------------------------------------------
+Wed Apr  2 19:50:51 EDT 2008 - hfiguiere@suse.de
+
+- Upgrade to AbiWord 2.6 (bnc#374240)
+  * New pango renderer (but support for asian languages)
+  * GNOME Office plugin
+  * Gnome-VFS support
+  * Better ODF support
+  * OOX support
+  * Lot of bug fixes (bnc#234432)
+- Grammar checking support
+
+-------------------------------------------------------------------
+Tue Nov  6 18:30:21 CET 2007 - maw@suse.de
+
+- Add abiword-gcc4.3-fixes.patch, which fixes the build against
+  newer versions of poppler
+- Use %fdupes.
+
+-------------------------------------------------------------------
+Fri Nov  2 15:42:41 CET 2007 - sbrabec@suse.cz
+
+- Reverted one chunk of poppler patch to follow poppler changes.
+
+-------------------------------------------------------------------
+Tue Oct 23 20:59:25 CEST 2007 - meissner@suse.de
+
+- fixed gcc 4.3 build
+
+-------------------------------------------------------------------
+Thu Oct 11 18:40:37 CEST 2007 - sbrabec@suse.cz
+
+- poppler devel package names prepended by "lib".
+
+-------------------------------------------------------------------
+Mon Oct  8 17:27:59 CEST 2007 - sbrabec@suse.cz
+
+- Fixed build with poppler 0.6.
+
+-------------------------------------------------------------------
+Tue Jul 31 21:54:38 CEST 2007 - jpr@suse.de
+
+-Update to 2.4.6
+- Fix IDEF vulnerabilities IDEF1613 and IDEF1614 in the MS Word 
+import library wvWare
+- Fix a longstanding bug that made AbiWord crash on Windows when the 
+WordPerfect plugin was installed
+- Massive updates to the OpenDocument, WML, XSL-FO and AbiCommand plugins
+-Remove upstreamed patch
+
+-------------------------------------------------------------------
+Fri Mar 16 12:30:41 CET 2007 - sbrabec@suse.cz
+
+- Added c++ packages to BuildRequires.
+
+-------------------------------------------------------------------
+Wed Feb 21 18:52:16 CET 2007 - mvaner@suse.cz
+
+- Array bounds (#242029)
+  - array-bounds.patch
+
+-------------------------------------------------------------------
+Thu Jan  4 13:49:41 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Tue Dec 19 10:28:55 CET 2006 - meissner@suse.de
+
+- fixed build fail due to warnings.
+
+-------------------------------------------------------------------
+Tue Nov  7 13:36:32 CET 2006 - ro@suse.de
+
+- fix icon permission 
+
+-------------------------------------------------------------------
+Tue Oct 31 22:05:38 CET 2006 - jhargadon@suse.de
+
+- added a patch to remove call to FcFini from the XAP_UnixApp
+  destructor to resolve crashes that occur during shutdown of the
+  application.
+
+-------------------------------------------------------------------
+Sat Sep 30 08:00:46 CEST 2006 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Fri Sep  1 23:47:48 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.4.5
+- many bug fixes
+- grammar checker added
+- added tight mage wrapping
+- added equations
+- added OpenDocument support
+- added Gnome-Office charting
+- patch for compiler warnings 
+
+-------------------------------------------------------------------
+Thu Aug 31 18:29:03 CEST 2006 - gekker@suse.de
+
+- Remove unnecessary gal2-devel from BuildRequires
+
+-------------------------------------------------------------------
+Wed Aug  9 22:38:30 CEST 2006 - gekker@suse.de
+
+- Fix missing sentinel warnings
+
+-------------------------------------------------------------------
+Fri Jul  7 14:17:46 CEST 2006 - aj@suse.de
+
+- Fix build with new poppler version.
+
+-------------------------------------------------------------------
+Sun Mar 26 23:15:47 CEST 2006 - olh@suse.de
+
+- remove -ansi -pedantic from CFLAGS to allow compilation with 
+  perl use64bitint and c++
+
+-------------------------------------------------------------------
+Fri Feb 24 13:52:00 CET 2006 - sbrabec@suse.cz
+
+- Improved Categories.
+
+-------------------------------------------------------------------
+Mon Feb  6 00:01:58 CET 2006 - ro@suse.de
+
+- use -fstack-protector only for > 10.0
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:13 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 15:53:19 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 2.4.2.
+
+-------------------------------------------------------------------
+Fri Jan 13 10:14:13 CET 2006 - meissner@suse.de
+
+- Added -fno-strict-aliasing -fstack-protector.
+
+-------------------------------------------------------------------
+Fri Nov  4 15:20:44 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 2.4.1.
+
+-------------------------------------------------------------------
+Sun Oct 30 22:09:00 CET 2005 - ro@suse.de
+
+- remove extra qualifications to fix build with gcc-4.1 
+
+-------------------------------------------------------------------
+Wed Oct 19 18:50:30 CEST 2005 - sbrabec@suse.cz
+
+- Build with libwpd.
+
+-------------------------------------------------------------------
+Wed Oct  5 11:20:02 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.4.0.
+- Fixed more buffer overflows in RTF importer (#120097).
+
+-------------------------------------------------------------------
+Tue Sep 27 19:37:38 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.2.10 (#118545, CESA-2005-004 - rev 1).
+
+-------------------------------------------------------------------
+Thu Jul 28 18:19:16 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.2.9.
+
+-------------------------------------------------------------------
+Sat Jul  9 07:30:03 CEST 2005 - gekker@suse.de
+
+- Fix uninitialzed variables and remove .la files 
+
+-------------------------------------------------------------------
+Mon May 23 15:21:47 CEST 2005 - schwab@suse.de
+
+- Fix missing declaration.
+
+-------------------------------------------------------------------
+Tue Apr 26 16:19:05 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.2.7.
+
+-------------------------------------------------------------------
+Fri Apr 15 15:37:23 CEST 2005 - sbrabec@suse.de
+
+- Fixed cast from pointer to integer.
+
+-------------------------------------------------------------------
+Tue Feb 22 12:33:27 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 2.2.4.
+
+-------------------------------------------------------------------
+Sun Jan 23 16:23:33 CET 2005 - meissner@suse.de
+
+- use system wv lib, drop -fstrict-aliasing.
+
+-------------------------------------------------------------------
+Thu Jan 20 17:14:09 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 2.2.3.
+
+-------------------------------------------------------------------
+Tue Jan 11 18:45:18 CET 2005 - sbrabec@suse.cz
+
+- Update to version 2.2.2.
+
+-------------------------------------------------------------------
+Fri Dec 10 01:58:13 CET 2004 - ro@suse.de
+
+- install icon file 
+
+-------------------------------------------------------------------
+Thu Nov 11 15:21:13 CET 2004 - sbrabec@suse.cz
+
+- Fixed buffer overflow in the wvHandleDateTimePicture function in wv
+  library: CAN-2004-0645 (#47767).
+
+-------------------------------------------------------------------
+Tue Sep 14 18:53:29 CEST 2004 - ro@suse.de
+
+- added ImageMagick-Magick++-devel to neededforbuild
+
+-------------------------------------------------------------------
+Tue Jun 29 01:11:29 CEST 2004 - ro@suse.de
+
+- added libtiff to neededforbuild
+
+-------------------------------------------------------------------
+Thu May 13 02:38:33 CEST 2004 - clahey@suse.de
+
+- Added patch to fix two missing return values.
+
+-------------------------------------------------------------------
+Tue May 11 14:22:29 CEST 2004 - ro@suse.de
+
+- added libcroco,libcroco-devel to neededforbuild
+
+-------------------------------------------------------------------
+Wed Apr 21 16:38:58 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.0.6.
+
+-------------------------------------------------------------------
+Wed Mar 17 14:21:36 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 2.0.5.
+
+-------------------------------------------------------------------
+Mon Mar 08 12:37:28 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 2.0.4.
+
+-------------------------------------------------------------------
+Sat Feb 21 10:04:21 CET 2004 - ro@suse.de
+
+- updated neededforbuild
+
+-------------------------------------------------------------------
+Fri Feb 20 13:01:31 CET 2004 - sbrabec@suse.cz
+
+- Package renamed to abiword.
+
+-------------------------------------------------------------------
+Mon Feb 16 18:44:58 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 2.0.3.
+
+-------------------------------------------------------------------
+Sat Jan 10 15:28:30 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Wed Oct 29 18:52:21 CET 2003 - sbrabec@suse.cz
+
+- Removed garbage from spec file (move to pixmaps).
+
+-------------------------------------------------------------------
+Wed Oct 29 18:00:48 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 2.0.1.
+- Fixed wv wmf to png support.
+
+-------------------------------------------------------------------
+Tue Oct 28 01:49:27 CET 2003 - ro@suse.de
+
+- added gtksourceview to neededforbuild 
+
+-------------------------------------------------------------------
+Thu Sep 18 12:29:45 CEST 2003 - meissner@suse.de
+
+- drop glib and glib-devel from neededforbuild, no longer needed.
+
+-------------------------------------------------------------------
+Tue Sep 16 11:47:21 CEST 2003 - sbrabec@suse.cz
+
+- Provide and obsolete abiword (bug #31002).
+
+-------------------------------------------------------------------
+Mon Sep  1 15:01:27 CEST 2003 - adrian@suse.de
+
+- install desktop file
+
+-------------------------------------------------------------------
+Thu Aug 28 15:50:17 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.99.5.
+- Added gnome-libs-devel to neededforbuild (for gnome-config).
+- Fixed Python 2.3 support.
+
+-------------------------------------------------------------------
+Tue Aug 26 19:13:08 CEST 2003 - sbrabec@suse.cz
+
+- Fixed GNOME-DB support.
+
+-------------------------------------------------------------------
+Wed Aug 20 15:07:27 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.99.4.
+
+-------------------------------------------------------------------
+Tue Aug 19 15:25:09 CEST 2003 - sbrabec@suse.cz
+
+- Updated neededforbuild (rename of librsvg2, eel2).
+
+-------------------------------------------------------------------
+Mon Aug 18 18:38:01 CEST 2003 - sbrabec@suse.cz
+
+- Use libgda instead of libgda2 (package was renamed).
+
+-------------------------------------------------------------------
+Thu Jul 31 11:23:31 CEST 2003 - sf@suse.de
+
+- fixed broken VA_COPY (use __va_copy)  
+
+-------------------------------------------------------------------
+Mon Jul 14 15:21:25 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Mon Jun 16 16:57:22 CEST 2003 - sbrabec@suse.cz
+
+- Initial SuSE version of GNOME2 port.
+
+

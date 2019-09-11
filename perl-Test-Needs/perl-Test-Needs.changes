@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Fri Apr  5 05:29:56 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.002006
+   see /usr/share/doc/packages/perl-Test-Needs/Changes
+
+  0.002006 - 2019-04-04
+    - added additional references to related modules in pod
+    - various internal cleanups
+    - fix backwards compatibility with earlier versions of version.pm
+    - fix output from test script when tests fail
+    - added note about RELEASE_TESTING to test message on forced failures
+
+-------------------------------------------------------------------
+Tue Sep 27 06:17:39 UTC 2016 - coolo@suse.com
+
+- updated to 0.002005
+   see /usr/share/doc/packages/perl-Test-Needs/Changes
+
+  0.002005 - 2016-09-27
+    - fix skipping when Test::Tester (Test::More < v2) is loaded
+
+-------------------------------------------------------------------
+Fri Aug 19 06:03:25 UTC 2016 - coolo@suse.com
+
+- updated to 0.002004
+   see /usr/share/doc/packages/perl-Test-Needs/Changes
+
+  0.002004 - 2016-08-18
+    - fix test counts when Test2 not available
+  
+  0.002003 - 2016-08-18
+    - fix loud warnings when aborting a test under Test2
+    - some kwalitee improvements
+
+-------------------------------------------------------------------
+Sun Jun 12 14:14:40 UTC 2016 - coolo@suse.com
+
+- initial package 0.002002
+ * created by cpanspec 1.78.08
+

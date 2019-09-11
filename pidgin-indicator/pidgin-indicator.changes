@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Thu Aug  9 12:01:37 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.0.1:
+  * Reduce logging spam.
+- Add pidgin-indicator-ayatana-appindicator.patch: Support and
+  prefer Ayatana AppIndicators.
+- Build with Ayatana AppIndicators on openSUSE Leap 15.0 or newer.
+
+-------------------------------------------------------------------
+Sun Dec 25 15:03:45 UTC 2016 - sor.alexei@meowr.ru
+
+- Rename the pidgin-indicator package to pidgin-plugin-indicator.
+- Require Pidgin of the exact or greater version.
+
+-------------------------------------------------------------------
+Sat Nov  5 12:43:10 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0:
+  * Add links to package repositories.
+  * Add Russian and Spanish translations.
+
+-------------------------------------------------------------------
+Fri Mar 13 22:45:09 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.9 (changes since 0.7):
+  * Implement proper blinking notification for status icon.
+  * Add Hungarian and Simplied Chinese translations.
+
+-------------------------------------------------------------------
+Sun Aug  3 15:54:24 UTC 2014 - sor.alexei@meowr.ru
+
+- Initial package (boo#902984).

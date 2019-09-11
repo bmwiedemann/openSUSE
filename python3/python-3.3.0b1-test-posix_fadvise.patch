@@ -1,0 +1,11 @@
+--- a/Lib/test/test_posix.py
++++ b/Lib/test/test_posix.py
+@@ -409,7 +409,7 @@ class PosixTester(unittest.TestCase):
+     def test_posix_fadvise(self):
+         fd = os.open(support.TESTFN, os.O_RDONLY)
+         try:
+-            posix.posix_fadvise(fd, 0, 0, posix.POSIX_FADV_WILLNEED)
++            posix.posix_fadvise(fd, 0, 0, posix.POSIX_FADV_RANDOM)
+         finally:
+             os.close(fd)
+ 

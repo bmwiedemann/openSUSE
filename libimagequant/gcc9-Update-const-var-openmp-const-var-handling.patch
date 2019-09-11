@@ -1,0 +1,72 @@
+From 62c4bf1dc8bda1e53fbb65e596a141c5a15a4f00 Mon Sep 17 00:00:00 2001
+From: Nicholas Vinson <nvinson234@gmail.com>
+Date: Sat, 4 May 2019 14:03:48 -0700
+Subject: [PATCH] Update const-var openmp const-var handling
+
+OpenMP 4.0 dropped the data-sharing rule that predetermined const-vars
+as "shared".  GCC implemented this rule change with GCC-9.  Because of
+the rule change, libimagequant fails to build with gcc-9.1.0.  This
+patch updates the code so that it is conformant with OpenMP 4.0 rules.
+---
+ kmeans.c        | 5 +++++
+ libimagequant.c | 5 +++++
+ mediancut.c     | 5 +++++
+ 3 files changed, 15 insertions(+)
+
+diff --git a/kmeans.c b/kmeans.c
+index 7ee273d..c8630ae 100644
+--- a/kmeans.c
++++ b/kmeans.c
+@@ -73,8 +73,13 @@ LIQ_PRIVATE double kmeans_do_iteration(histogram *hist, colormap *const map, kme
+     const int hist_size = hist->size;
+ 
+     double total_diff=0;
++#if __GNUC__ >= 9
++    #pragma omp parallel for if (hist_size > 2000) \
++        schedule(static) default(none) shared(achv,average_color,callback,hist_size,map,n) reduction(+:total_diff)
++#else
+     #pragma omp parallel for if (hist_size > 2000) \
+         schedule(static) default(none) shared(average_color,callback) reduction(+:total_diff)
++#endif
+     for(int j=0; j < hist_size; j++) {
+         float diff;
+         unsigned int match = nearest_search(n, &achv[j].acolor, achv[j].tmp.likely_colormap_index, &diff);
+diff --git a/libimagequant.c b/libimagequant.c
+index 3506564..114e5f1 100644
+--- a/libimagequant.c
++++ b/libimagequant.c
+@@ -1276,8 +1276,13 @@ LIQ_NONNULL static float remap_to_palette(liq_image *const input_image, unsigned
+     LIQ_ARRAY(kmeans_state, average_color, (KMEANS_CACHE_LINE_GAP+map->colors) * max_threads);
+     kmeans_init(map, max_threads, average_color);
+ 
++#if __GNUC__ >= 9
++    #pragma omp parallel for if (rows*cols > 3000) \
++        schedule(static) default(none) shared(acolormap,average_color,cols,input_image,map,n,output_pixels,rows,transparent_index) reduction(+:remapping_error)
++#else
+     #pragma omp parallel for if (rows*cols > 3000) \
+         schedule(static) default(none) shared(acolormap) shared(average_color) reduction(+:remapping_error)
++#endif
+     for(int row = 0; row < rows; ++row) {
+         const f_pixel *const row_pixels = liq_image_get_row_f(input_image, row);
+         const f_pixel *const bg_pixels = input_image->background && acolormap[transparent_index].acolor.a < 1.f/256.f ? liq_image_get_row_f(input_image->background, row) : NULL;
+diff --git a/mediancut.c b/mediancut.c
+index 447a4af..4421cb4 100644
+--- a/mediancut.c
++++ b/mediancut.c
+@@ -195,8 +195,13 @@ static double prepare_sort(struct box *b, hist_item achv[])
+ 
+     const unsigned int ind1 = b->ind;
+     const unsigned int colors = b->colors;
++#if __GNUC__ >= 9
++    #pragma omp parallel for if (colors > 25000) \
++        schedule(static) default(none) shared(achv, channels, colors, ind1)
++#else
+     #pragma omp parallel for if (colors > 25000) \
+         schedule(static) default(none) shared(achv, channels)
++#endif
+     for(unsigned int i=0; i < colors; i++) {
+         const float *chans = (const float *)&achv[ind1 + i].acolor;
+         // Only the first channel really matters. When trying median cut many times
+-- 
+2.21.0
+

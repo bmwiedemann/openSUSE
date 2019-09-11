@@ -1,0 +1,91 @@
+From: Egbert Eich <eich@suse.com>
+Date: Tue Nov 7 14:16:53 2017 +0100
+Subject: [PATCH]PPC64LE: Fix long double handling
+Git-commit: ad6559a71b7ba3cacb4b56d4747db63f28a12f55
+References: 
+Signed-off-by: Egbert Eich <eich@suse.com>
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ hdf5-1.10.1/config/cmake/ConversionTests.c | 16 ++++++++++++++++
+ hdf5-1.10.1/test/dt_arith.c                | 26 ++++++++++++++++++++++++--
+ 2 files changed, 40 insertions(+), 2 deletions(-)
+
+diff --git a/hdf5-1.10.1/config/cmake/ConversionTests.c b/hdf5-1.10.1/config/cmake/ConversionTests.c
+index 082dbd4..9618a14 100644
+--- a/config/cmake/ConversionTests.c
++++ b/config/cmake/ConversionTests.c
+@@ -34,6 +34,14 @@ int main(void)
+     unsigned char       s2[8];
+     int                 ret = 1;
+ 
++#if defined __powerpc64__ && defined _LITTLE_ENDIAN
++                /* Don't bother checking on ppc64le, we know it'll work, and
++                   that what hdf5 calls 'special algorithm' simply is
++                   IBM ldouble 128 (i.e. two seperately scaled doubles).
++                   The check below assumes big endian.  */
++                ret = 0;
++#endif
++
+     if(sizeof(long double) == 16 && sizeof(long) == 8) {
+     /*make sure the long double type has 16 bytes in size and
+     * 11 bits of exponent.  If it is,
+@@ -157,6 +165,14 @@ int main(void)
+     unsigned char       s[16];
+     int                 ret = 0;
+ 
++#if defined __powerpc64__ && defined _LITTLE_ENDIAN
++                /* Don't bother checking on ppc64le, we know it'll work, and
++                   that what hdf5 calls 'special algorithm' simply is
++                   IBM ldouble 128 (i.e. two seperately scaled doubles).
++                   The check below assumes big endian.  */
++                ret = 0;
++#endif
++
+     if(sizeof(long double) == 16) {
+         /*make sure the long double type is the same as the failing type
+          *which has 16 bytes in size and 11 bits of exponent.  If it is,
+diff --git a/hdf5-1.10.1/test/dt_arith.c b/hdf5-1.10.1/test/dt_arith.c
+index 8f3e6e4..084b47c 100644
+--- a/test/dt_arith.c
++++ b/test/dt_arith.c
+@@ -3051,7 +3051,18 @@ test_conv_flt_1 (const char *name, int run_test, hid_t src, hid_t dst)
+                         buf, saved, nelmts);
+ #if H5_SIZEOF_LONG_DOUBLE!=H5_SIZEOF_DOUBLE && H5_SIZEOF_LONG_DOUBLE!=0
+             } else if(src_type == FLT_LDOUBLE) {
+-                 INIT_FP_SPECIAL(src_size, src_nbits, sendian, LDBL_MANT_DIG, dst_size,
++		 size_t mant_dig = LDBL_MANT_DIG;
++		 if (mant_dig >= src_nbits) {
++		     /* This happens for IBM long double in little endian.
++		        The macro LDBL_MANT_DIG says 106 mantissa bits, but the
++			HDF5 detection code actually represents it as a normal 64bit
++			double (52 bit mantissa) with the upper double being
++			unspec bits (which is sort of okay as the testsuite
++			wouldn't deal with that format correctly anyway).  So
++			override the mantissa size.  */
++		     mant_dig = 52;
++		 }
++                 INIT_FP_SPECIAL(src_size, src_nbits, sendian, mant_dig, dst_size,
+                         buf, saved, nelmts);
+ #endif
+             } else
+@@ -3712,7 +3723,18 @@ test_conv_int_fp(const char *name, int run_test, hid_t src, hid_t dst)
+             INIT_FP_DENORM(long double, LDBL_MANT_DIG, src_size, src_nbits, sendian, dst_size,
+                     buf, saved, nelmts);
+         } else {
+-            INIT_FP_SPECIAL(src_size, src_nbits, sendian, LDBL_MANT_DIG, dst_size, buf, saved, nelmts);
++	    size_t mant_dig = LDBL_MANT_DIG;
++	    if (mant_dig >= src_nbits) {
++		/* This happens for IBM long double in little endian.
++		   The macro LDBL_MANT_DIG says 106 mantissa bits, but the
++		   HDF5 detection code actually represents it as a normal 64bit
++		   double (52 bit mantissa) with the upper double being
++		   unspec bits (which is sort of okay as the testsuite
++		   wouldn't deal with that format correctly anyway).  So
++		   override the mantissa size.  */
++		mant_dig = 52;
++	    }
++            INIT_FP_SPECIAL(src_size, src_nbits, sendian, mant_dig, dst_size, buf, saved, nelmts);
+         }
+ #endif
+     } else

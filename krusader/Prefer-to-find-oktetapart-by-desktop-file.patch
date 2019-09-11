@@ -1,0 +1,51 @@
+From 796b33f0e6c8b8545f7eb3bba8f6eb6f373e41c8 Mon Sep 17 00:00:00 2001
+From: "Friedrich W. H. Kossebau" <kossebau@kde.org>
+Date: Sat, 9 Feb 2019 18:36:30 +0100
+Subject: Prefer to find oktetapart by desktop file, not binary name
+
+Summary:
+Okteta >= 0.26 installs the oktetapart binary in the kf5/parts subdir
+of the plugins, so the old check will not find it.
+But that version also installs a desktop file again, so prefer to use that.
+
+Test Plan:
+Okteta KParts plugin is found also with devel version of what will be 0.26
+in some weeks.
+
+Reviewers: #krusader, nmel
+
+Reviewed By: #krusader, nmel
+
+Subscribers: nmel, yurchor
+
+Differential Revision: https://phabricator.kde.org/D18881
+---
+ krusader/KViewer/panelviewer.cpp | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/krusader/KViewer/panelviewer.cpp b/krusader/KViewer/panelviewer.cpp
+index c6c6df1..80e69d8 100644
+--- a/krusader/KViewer/panelviewer.cpp
++++ b/krusader/KViewer/panelviewer.cpp
+@@ -146,8 +146,16 @@ KParts::ReadOnlyPart* PanelViewer::getHexPart()
+ 
+     if (KConfigGroup(krConfig, "General").readEntry("UseOktetaViewer", _UseOktetaViewer)) {
+         if (mimes->find("oktetapart") == mimes->end()) {
+-            KPluginLoader loader("oktetapart");
+-            if (KPluginFactory *factory = loader.factory()) {
++            KPluginFactory* factory = nullptr;
++            // Okteta >= 0.26 provides a desktop file, prefer that as the binary changes name
++            KService::Ptr service = KService::serviceByDesktopName("oktetapart");
++            if (service) {
++                factory = KPluginLoader(*service.data()).factory();
++            } else {
++                // fallback to search for desktopfile-less old variant
++                factory = KPluginLoader("oktetapart").factory();
++            }
++            if (factory) {
+                 if ((part = factory->create<KParts::ReadOnlyPart>(this, this)))
+                     mimes->insert("oktetapart", part);
+             }
+-- 
+cgit v1.1
+

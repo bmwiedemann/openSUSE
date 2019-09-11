@@ -1,0 +1,22 @@
+--- src/cmd/ksh93/sh/init.c
++++ src/cmd/ksh93/sh/init.c	2013-02-15 13:29:57.129444048 +0000
+@@ -336,6 +336,8 @@ static void put_restricted(register Namv
+ 	int	path_scoped = 0, fpath_scoped=0;
+ 	Pathcomp_t *pp;
+ 	char *name = nv_name(np);
++	if (!shp)
++		shp = sh_getinterp();
+ 	if(!(flags&NV_RDONLY) && sh_isoption(SH_RESTRICTED))
+ 		errormsg(SH_DICT,ERROR_exit(1),e_restricted,nv_name(np));
+ 	if(np==PATHNOD	|| (path_scoped=(strcmp(name,PATHNOD->nvname)==0)))		
+--- src/cmd/ksh93/sh/name.c
++++ src/cmd/ksh93/sh/name.c	2012-10-16 12:12:43.000000000 +0000
+@@ -2162,7 +2162,7 @@ static void attstore(register Namval_t *
+ 	if((flag&(NV_UTOL|NV_LTOU|NV_INTEGER)) == (NV_UTOL|NV_LTOU))
+ 	{
+ 		data = (void*)nv_mapchar(np,0);
+-		if(strcmp(data,e_tolower) && strcmp(data,e_toupper))
++		if(data && strcmp(data,e_tolower) && strcmp(data,e_toupper))
+ 			return;
+ 	}
+ 	flag &= (NV_RDONLY|NV_UTOL|NV_LTOU|NV_RJUST|NV_LJUST|NV_ZFILL|NV_INTEGER);

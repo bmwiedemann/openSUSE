@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Mon Jun  3 10:34:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.6.7:
+  * Commands: Added run_* methods as an alternative to modifiers (#386)
+  * CLI: Added support for ALLOW_ABREV (#401)
+  * CLI: Added DESCRIPTION_MORE, preserves spacing (#378)
+  * Color: Avoid throwing error in atexit in special cases (like pytest) (#393)
+  * Including Python 3.7 in testing matrix.
+  * Smaller bugfixes and other testing improvements.
+- Switch to github archive for tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:36 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu May 24 04:07:26 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

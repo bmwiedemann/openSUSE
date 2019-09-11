@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Mon Dec  8 23:47:57 UTC 2014 - jengelh@inai.de
+
+- Drop %version from subincludedir, it tends to break recompiles of
+  already-built trees on library updates.
+
+-------------------------------------------------------------------
+Tue Sep 23 15:43:40 UTC 2014 - jengelh@inai.de
+
+- Drop gpg-offline build-time requirement; this is now handled by
+  the local source validator
+
+-------------------------------------------------------------------
+Wed Nov 28 20:37:20 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature
+
+-------------------------------------------------------------------
+Mon Jan  2 21:16:51 UTC 2012 - jengelh@medozas.de
+
+- update to new upstream release 1.0.1
+* build and compile fixes
+
+-------------------------------------------------------------------
+Thu Dec 29 21:25:32 UTC 2011 - jengelh@medozas.de
+
+- Use SPDX format for License: tag
+- Use separate include directory to detect compile errors
+
+-------------------------------------------------------------------
+Fri Jul 16 10:51:21 UTC 2010 - jengelh@medozas.de
+
+- New upstream release 1.0.0
+  * This releases contains a new function to print logs in XML
+    format and the doxygen-based documentation.
+
+-------------------------------------------------------------------
+Tue Feb 23 22:16:17 UTC 2010 - jengelh@medozas.de
+
+- add baselibs.conf
+- use %_smp_mflags
+- remove unnecessary PreReq: glibc
+- secure the *.la delete call
+- wrap description at col 70
+- merge extra libnetfilter_log_libipulog package back into main

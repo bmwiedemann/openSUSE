@@ -1,0 +1,22 @@
+From 8e156aac68e4dc202483d86fd33a24dfa53d3d25 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Rene=CC=81=20Schwaiger?= <sanssecours@me.com>
+Date: Wed, 23 May 2018 07:32:22 +0200
+Subject: [PATCH] Qt-GUI: Do not use deprecated `qt5_use_modules`
+
+---
+ src/tools/qt-gui/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tools/qt-gui/CMakeLists.txt b/src/tools/qt-gui/CMakeLists.txt
+index 65e118a4df..7acf6b72c7 100644
+--- a/src/tools/qt-gui/CMakeLists.txt
++++ b/src/tools/qt-gui/CMakeLists.txt
+@@ -61,7 +61,7 @@ else ()
+ add_executable(qt-gui ${qt-gui_SRCS} ${qt-gui_HDRS} ${UIS} ${RSCS} ${TRS})
+ add_dependencies (qt-gui kdberrors_generated)
+ 
+-qt5_use_modules(qt-gui Quick Gui Core Qml Widgets)
++target_link_libraries(qt-gui Qt5::Quick Qt5::Gui Qt5::Core Qt5::Qml Qt5::Widgets)
+ 
+ include_directories(${DISCOUNT_INCLUDES})
+ target_link_libraries(qt-gui ${DISCOUNT_LIBRARIES})

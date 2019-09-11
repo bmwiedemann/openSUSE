@@ -1,0 +1,905 @@
+-------------------------------------------------------------------
+Wed Aug  7 17:51:03 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * android: Allow overriding ANDROID_ARCH and ANDROID_ARCH_ABI as envvars 
+  * Notify users when not using KDE_INSTALL_USE_QT_SYS_PATHS about prefix.sh 
+  * Provide a more sensible CMAKE_INSTALL_PREFIX default 
+  * Make the default build type "Debug" when compiling a git checkout. 
+  * Fix type names casing
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Small API docs fixes
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- Changes since 5.58.0:
+  * Create specific directory for Qt logging categories file
+  * Don't enable QT_STRICT_ITERATORS on Windows.
+
+-------------------------------------------------------------------
+Wed May 15 18:16:15 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * Bug fix: find c++ stl using regex
+  * Detect duplicate ANDROID_EXTRA_LIBS and minor bug fix
+  * Unconditionally enable -DQT_STRICT_ITERATORS, not just in debug mode
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Re-enable the setting of QT_PLUGIN_PATH, without the strange backslash.
+  * ecm_add_wayland_client_protocol: Improve error messages
+  * ECMGeneratePkgConfigFile: make all vars dependent on ${prefix}
+  * Add UDev find module
+  * Fix harmless warnings when creating the doc.
+  * Also ignore __pycache__
+  * ECMGeneratePkgConfigFile: add variables used by pkg_check_modules
+  * Restore FindFontconfig backward compatibility for plasma-desktop
+  * Add Fontconfig find module
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:35 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Android: Reflect on using clang now
+  * Fix releaseme checkout when this is included in a sub-directory
+  * Fix a typo in the compatibility vars.
+  * Fix FindEGL
+  * new find module for Canberra
+  * Update Android toolchain files to reality
+  * Add compile check to FindEGL
+  * ECMGeneratePkgConfigFile API dox: fix "Since" for DESCRIPTION arg
+  * Fix destroying QThread while still running -> warning -> crash
+  * Fix ENABLE_CLAZY option with clazy >= 1.5
+
+-------------------------------------------------------------------
+Sun Feb 10 22:02:59 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * FindGperf: in ecm_gperf_generate set SKIP_AUTOMOC for generated file
+  * Move -Wsuggest-override -Wlogical-op to regular compiler settings
+  * Fix python binding generation for classes with deleted copy constructors
+  * Fix qmake module generation for Qt 5.12.1
+  * Use more https in links
+  * API dox: add missing entries for some find-modules & modules
+  * FindGperf: improve api dox: mark-up usage example
+  * ECMGenerateQmlTypes: fix api dox: title needs more --- markup
+  * ECMQMLModules: fix api dox: title match module name, add missing "Since"
+  * FindInotify: fix api dox .rst tag, add missing "Since"
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * Add find module for Google's libphonenumber
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:42 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Rename FindExiv2 to FindLibExiv2.
+  * Add FindExiv2.cmake to ECM
+  * Android: improve clang support
+  * FindQHelpGenerator: try to find Qt5Help instead of Qt5Core
+  * Use `MATCHES "Clang"` to detect clang
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:02 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * ECMAddQch: help doxygen by predefining more Q_DECL_* macros
+  * Bindings: Support using sys paths for python install directory
+  * Bindings: Remove INSTALL_DIR_SUFFIX from ecm_generate_python_binding
+  * Add support for the fuzzer sanitizer
+
+-------------------------------------------------------------------
+Tue Oct 16 08:01:44 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:51:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Compile python bindings with the same sip flags used by PyQt
+  * Android: Allow passing a relative path as the apk dir
+  * Android: Properly offer a fallback to applications that don't have a manifest
+  * l10n: Fix matching digits in the repository name
+  * Android: Make sure Qm translations get loaded
+  * Fix Android builds using cmake 3.12.1
+  * Add QT_NO_NARROWING_CONVERSIONS_IN_CONNECT as default compile flags
+  * Python bindings: use cmake_parse_arguments, fix documentation
+  * Bindings: Correct handling of sources containing utf-8
+  * autotests: actually iterate over the list, rather than checking item 0 all the time
+  * Actually iterate over CF_GENERATED, rather than checking item 0 all the time
+  * Fix minor EBN issues
+- Refresh patches:
+  * bundle-lang.patch
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * Revert "Add _XOPEN_SOURCE to C definitions"
+  * Bindings: Check if bindings can be generated for a specific python version
+  * Bindings: Use python version matching the found clang python module
+  * Bindings: Make generator forward compatible with Python 3
+  * Disable alteration of QT_PLUGIN_PATH by ECM when running tests.
+  * Add _XOPEN_SOURCE to C definitions (kde#373175)
+  * Change documentation to reflect the real toolchain CMake name
+  * Bindings: Add support for scoped enums (kde#397154)
+  * Bindings: Check for libclang without version suffix also
+  * Make it possible for ECM to detect po files at configure time
+
+-------------------------------------------------------------------
+Sun Aug 19 09:18:42 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Android: Don't hardcode a random version of the Android SDK
+  * ECMOptionalAddSubdirectory: Provide a bit more detail
+  * Fix variable definition check
+  * Change the 'since' version.
+  * Improve ECMAddAppIconMacro.
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:34 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Android: Make it possible to override a target's APK directory
+  * Drop outdated QT_USE_FAST_OPERATOR_PLUS
+  * Add -Wlogical-op -Wzero-as-null-pointer-constant to KF5 warnings
+  * [ECMGenerateHeaders] Add option for other header file extension than .h
+  * Don't include a 64 when building 64bit architectures on flatpak
+  * skip automoc here
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:01 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Android toolchain: allow to specify extra libs manually
+  * Android: fix typo
+  * Android: Don't define qml-import-paths if it's empty
+  * Fix minor documentation typos
+
+-------------------------------------------------------------------
+Sun May 13 21:02:59 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Include FeatureSummary before calling set_package_properties.
+  * Android: fix dumb mistakes
+  * Don't install plugins within lib on android
+  * Android: Make sure variable is defined before using it
+  * Make it possible to build several apk out of a project
+  * Check if the application androiddeployqt package has a main() symbol
+  * Android: Explicitly point at upstream documentation and deprecate duplicated concepts
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:02 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Make use of upstream CMake infrastructure to detect the compiler toolchain
+  * API dox: fix some "code-block" lines to have empty lines before/after
+  * Add ECMSetupQtPluginMacroNames
+  * Provide androiddeployqt with all prefix paths
+  * Include the "stdcpp-path" in the json file
+  * Resolve symlinks in QML import paths
+  * Provide QML import paths to androiddeployqt
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:40 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * Define __ANDROID_API__
+  * Fix readelf command name on x86
+  * Remove obsolete policy settings
+  * Extend search path for NDK dependencies
+  * Set ANDROID in the Android toolchain file
+  * Fix include path for x86 targets
+  * Android toolchain: add ANDROID_COMPILER_PREFIX variable.
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:06 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * ecm_install_icons: refer to non-deprecated KDE_INSTALL_ICONDIR
+  * FindQtWaylandScanner.cmake: Use qmake-query for HINT
+  * Make sure to search for Qt5-based qmlplugindump
+  * ECMToolchainAndroidTest doesn't exist anymore (kde#389519)
+  * Don't set the LD_LIBRARY_PATH in prefix.sh
+  * Add FindSeccomp to find-modules
+  * Fall back to language name for translations lookup if locale name fails
+  * Android: Add more includes
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:13 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Use readelf to find project dependencies
+  * Introduce INSTALL_PREFIX_SCRIPT to easily set up prefixes
+
+-------------------------------------------------------------------
+Mon Jan  8 08:41:54 UTC 2018 - tchvatal@suse.com
+
+- Use python3 sphinx to generate the documentation module
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:47 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Add the description tag to the generated pkgconfig files
+  * ecm_add_test: Use proper path sep on Windows
+  * Fix variable name
+  * restore old behaviour of FindPulseAudio
+  * Remove FindSasl2.cmake from the ECM's attic.
+  * Delete the .reviewboardrc file.
+  * Add FindSasl2.cmake to ECM
+  * Only pass the ARGS thing when doing Makefiles
+  * Remove FindGLIB2.cmake and FindPulseAudio.cmake from attic
+  * Add FindGLIB2.cmake and FindPulseAudio.cmake
+  * ECMAddTests: set QT_PLUGIN_PATH so locally built plugins can be found
+  * KDECMakeSettings: more docu about the layout of the build dir
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:36 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * Fix python bindings compilation after 7af93dd23873d0b9cdbac192949e7e5114940aa6
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:16 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * Fix python bindings compilation after 7af93dd23873d0b9cdbac192949e7e5114940aa6
+  * Forgot to add the test
+  * Fix the fix
+  * Fix build with older CMake versions.
+  * Revert "RFC: Make ECMAddTests respect BUILD_TESTING"
+  * Revert "doc: Add 'Since' note"
+  * Set CMAKE_*_OUTPUT_DIRECTORY to run tests without installing.
+  * Include a module for finding qml imports as runtime dependencies
+  * doc: Add 'Since' note
+  * RFC: Make ECMAddTests respect BUILD_TESTING
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:14 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * Add --gradle to androiddeployqt
+  * Fix install apk target
+  * Make ECMPoQmToolsTest actually fail if a translation is wrong
+  * Fix usage of query_qmake: differ between calls expecting qmake or not
+  * Add API dox for KDEInstallDirs' KDE_INSTALL_USE_QT_SYS_PATHS
+  * KDECompilerSettings.cmake - handle Cywgin when setting LINK_FLAGS
+  * Fix incomplete default path noted in QTQCHDIR documentation
+  * Properly point at ECM
+  * add a metainfo.yaml to make ECM a proper framework
+  * Android: scan for qml files in the source dir, not in the install dir.
+  * Stabilize ECMQtDeclareLoggingCategoryTest
+
+-------------------------------------------------------------------
+Thu Jul 13 14:22:07 UTC 2017 - wbauer@tmo.at
+
+- Add bundle-lang.patch to find .qm translations in
+  /usr/share/locale-bundle/ (boo#1027925, boo#1048030)
+
+-------------------------------------------------------------------
+Wed Jul 12 07:13:58 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * FindQHelpGenerator: avoid picking up Qt4 version
+  * ECMAddQch: fail hard if needed tools are not present, to avoid surprises
+  * Drop perl as dep for ecm_add_qch, not needed/used
+  * (always include CheckCXXCompilerFlag before calling it)
+  * guess less, test more
+  * detect Xcode <= 6.2 from Clang version only
+  * scan the whole install folder for qml dependencies
+  * New: ECMAddQch, for generating qch & doxygen tag files
+  * tests: improve error reporting for ECMAddAppIconTest
+  * tests: fix output directory for KDEFetchTranslations
+  * tests: fix last change on KDEFetchTranslations
+  * tests: hopefully fix KDEFetchTranslations on Windows
+  * Fix KDEInstallDirsTest.relative_or_absolute_usr, avoid Qt paths being used
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * restore hidden-visibility testing with Xcode 6.2
+  * ecm_qt_declare_logging_category(): more unique include guard for header
+  * Drop modules from attic that are not useful anymore
+  * Add or improve "Generated. Don't edit" messages and make consistent
+  * Add a new FindGperf module
+  * Change default pkgconfig install path for FreeBSD
+
+-------------------------------------------------------------------
+Mon May 15 13:53:14 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * Fix test when compiling from a tarball
+  * Sanitizers: Don't use GCC-like flags for e.g. MSVC
+  * adapt to fetchpo changes and use vars for target directories to dry code
+  * fix documentation, ecm_install_po_files_as_qm generates .qm, not .mo
+  * use correct variable for fetch-translations injection
+  * KDEPackageAppTemplates: improve API dox notation of function signature
+  * KDEPackageAppTemplates: mark %{dest} as deprecated
+  * KDEPackageAppTemplates: fix note for %{PROJECTDIRNAME}
+  * KDEPackageAppTemplates: remove note of placeholder %{src}, never supported
+  * Fix minor CMake warning (CMP0054)
+  * KDECompilerSettings: Pass -Wvla & -Wdate-time
+  * Don't include tests together with modules
+  * Allow test to work with older versions of qmlplugindump
+  * Don't enable the test by default
+  * Support older qmlplugindump versions
+  * Introduce ecm_generate_qmltypes
+  * Add a test for _repository_name() a function added for fetch-translations
+  * Fix compilation under AppleClang (kde#377933)
+  * Allow projects to include the file twice
+  * Move the repository name recognition into a function
+  * Fix rx that matches project names out of the git uri
+  * Introduce fetch-translations build command
+  * Use -Wno-gnu-zero-variadic-macro-arguments more
+  * FindPyModGen: Also search for an unversioned clang++
+- Remove patches, now upstream:
+  * 0001-FindPyModGen-Also-search-for-an-unversioned-clang.patch
+  * 0002-Import-Find-Clang-LLVM-from-KDevelop-for-Python-bind.patch
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * KDE compiler settings: treat Clang and AppleClang equally
+  * Improve error messages
+  * Specify qml-root-path as the share directory in the prefix
+  * default for ECM_ADDITIONAL_FIND_ROOT_PATH
+  * Fix ecm_generate_pkgconfig_file compatibility with new cmake
+  * Upgrade ECM version to 5.33.0.
+  * Only register APPLE_* options if(APPLE)
+
+-------------------------------------------------------------------
+Tue Apr  4 18:20:57 UTC 2017 - lbeltrame@kde.org
+
+- Add upstream patches to fix Python binding generation:
+  * 0001-FindPyModGen-Also-search-for-an-unversioned-clang.patch
+  * 0002-Import-Find-Clang-LLVM-from-KDevelop-for-Python-bind.patch
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Detect inotify.
+  * Upgrade ECM version to 5.32.0.
+  * Revert "Automatically mark classes with pure virtual functions as /Abstract/."
+
+-------------------------------------------------------------------
+Thu Feb  9 09:20:54 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:36:41 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:54:18 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * Skip Python bindings test if PyQt isn't installed
+  * Only add the test if python is found
+  * Reduce the CMake minimum required
+  * Add ecm_win_resolve_symlinks module
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 20:03:21 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * Make KDECMakeSettings work with KDE_INSTALL_DIRS_NO_DEPRECATED
+  * Don't require the python bindings dependencies for ECM
+  * Add the PythonModuleGeneration module
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:48:08 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * Make sure we don't add the appstream test twice
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:45:37 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * ecm_process_po_files_as_qm: Skip fuzzy translations
+  * The default level for logging categories should be Info rather
+    than Warning
+  * Document ARGS variable in the create-apk-* targets
+  * Create a test that validates projects' appstream information
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:49:07 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * Fix inclusion when there's no Qt5
+  * Add a fallback method for query_qmake() when there's no
+    Qt5 installation
+  * Make sure ECMGeneratePriFile.cmake behaves like the rest of ECM
+  * Appstream data changed its preferred location
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:01:05 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * Integrate relative library paths to APK
+  * Use "/data" for DATAROOTDIR on Windows
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:22:11 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:29:15 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * Android deployment: support projects without things in share
+    or lib/qml (kde#362578)
+  * Enables KDE_INSTALL_USE_QT_SYS_PATHS if CMAKE_INSTALL_PREFIX
+    Qt5 prefix
+  * ecm_qt_declare_logging_category: improve error message when
+    using without including
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:18:07 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Fix _ecm_update_iconcache to only update the install location
+  * Revert "ECMQtDeclareLoggingCategory: Include <QDebug> with the
+    generated file"
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:53:14 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 17:57:39 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * ECMAddAppIcon: Use absolute path when operating on icons
+  * Make sure the prefix is looked-up on Android
+  * Add a FindPoppler module
+  * Use PATH_SUFFIXES in ecm_find_package_handle_library_components()
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:41:05 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * Make the KAppTemplate CMake module global
+  * Silence CMP0063 warnings with KDECompilerSettings
+  * ECMQtDeclareLoggingCategory: Include <QDebug> with the generated file
+  * Fix CMP0054 warnings
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:01:29 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * Don't warn when SVG(Z) icons are provided with multiple
+    sizes/level of detail
+  * Make sure we load translations on the main thread. (kde#346188)
+  * Overhaul the ECM build system.
+  * Make it possible to enable Clazy on any KDE project
+  * Do not find XCB's XINPUT library by default.
+  * Clean export dir before generating an APK again
+  * Use quickgit for Git repository URL.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 16:56:34 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * Warn instead of error if ecm_install_icons finds no icons.
+    (bug 354610)
+  * Make it possible to build KDE Frameworks 5 with a plain qt 5.5.x
+    installed from the normal qt.io installer on mac os
+  * Do not unset cache variables in KDEInstallDirs. (kde#342717)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:36:58 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * Update GTK icon cache when installing icons.
+  * Remove workaround to delay execution on Android
+  * ECMEnableSanitizers: The undefined sanitizer is supported by gcc 4.9
+  * Disable X11,XCB etc. detection on OS X
+  * Look for the files in the installed prefix rather the prefix path
+  * Use Qt5 to specify what's Qt5 installation prefix
+  * Add definition ANDROID as needed in qsystemdetection.h.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:12:28 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * Add macro to generate logging category declarations for Qt5.
+  * ecm_generate_headers: Add COMMON_HEADER option and multiple
+    header functionality
+  * Add -pedantic for KF5 code (when using gcc or clang)
+  * KDEFrameworkCompilerSettings: only enable strict iterators
+    in debug mode
+  * Also set the default visibility for C code to hidden.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:10 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:44:44 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * Improve error reporting of query_qmake macro
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:07 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * New arguments for ecm_add_tests(). (kde#345797)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:42:15 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:29 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * Extra CMake Modules (ECM) is now versioned like KDE Frameworks,
+    therefore it is now 5.9, while it was 1.8 previously.
+  * Allow configuration of SHARE_INSTALL_DIR, to handle multi-arch
+    layouts better
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:31 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * Extend ecm_generate_headers macro to also support CamelCase.h headers
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:18:35 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * KDEInstallDirs: warn about mixing relative and absolute
+    installation paths on the command line
+  * Added ECMAddAppIcon module to add icons to executable
+    targets on Windows and Mac OS X
+  * Fixed CMP0053 warning with CMake 3.1
+  * Do not unset cache variables in KDEInstallDirs
+  * New Android toolchain module
+  * New ECMUninstallTarget module to create an uninstall target
+  * Make KDECMakeSettings import ECMUninstallTarget by default
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sun Jan 11 18:12:19 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 1.6.1
+  * Fix building projects that use both GNUInstallDirs and
+    KDEInstallDirs in different subdirectories by not unsetting
+    cache variables in KDEInstallDirs.
+  * Fix KDE_INSTALL_TARGETS_DEFAULT_ARGS value on OSX.
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 1.6.0
+  * ECM's KDEInstallDirs now provides KDE_INSTALL_* variables.
+    Both CMAKE_INSTALL_* variables and the older KDELibs4-compatible
+    variables are provided, unless KDE_INSTALL_DIRS_NO_DEPRECATED
+    is set to TRUE before the module is included. Even then, the
+    CMAKE_INSTALL_* variables provided by the GNUInstallDirs module
+    will still be set and understood (for compatibility with that
+    module), unless KDE_INSTALL_DIRS_NO_CMAKE_VARIABLES
+    is set to TRUE.
+  * Add COMPATIBILITY argument to ecm_setup_version().
+    Lots of libraries will want to use SameMajorVersion to make
+    sure searching for version 1 of a library doesn't give you
+    version 2, for example.
+  * Fix ECMQueryQmake when Qt5Core is missing.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+- BuildRequire 5.6.0 kf5-filesystem
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:48 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 1.5.0
+  * Set CMAKE_INSTALL_SYSCONFDIR to /etc when CMAKE_INSTALL_PREFIX
+    is /usr (instead of /usr/etc)
+  * Enable -D_USE_MATH_DEFINES on Windows
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:46:38 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 1.4.0
+  * New modules FindWaylandScanner and FindQtWaylandScanner,
+    including macros ecm_add_qtwayland_client_protocol and
+    ecm_add_qtwayland_server_protocol
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+- Don't build docs for SLE, python-Sphinx is not available there
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:54 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 1.3.0
+  * New module ECMGeneratePkgConfigFile, for frameworks to
+    install a pkgconfig file.
+  * New option ECM_ENABLE_SANITIZERS, to enable clang sanitizers.
+    Example: ECM_ENABLE_SANITIZERS='address;undefined'
+  * New option BUILD_COVERAGE, to enable code coverage.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:34 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 1.2.0
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+- Drop 0001-Remove-Qt5-debugfull-hack-from-ECMConfig.cmake.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:07 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 1.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+- Add Source URL
+- Added 0001-Remove-Qt5-debugfull-hack-from-ECMConfig.cmake.patch from
+  upstream
+- Per patch, pkgconfig(Qt5Core) >= 5.2.0 for gcc-c++ Requires
+
+-------------------------------------------------------------------
+Tue Jul  1 21:35:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 1.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:20 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.0.14
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Make only doc subpackage noarch; due to changes since 0.0.13, e-c-m
+  can no longer be packaged as noarch
+- Drop libqt5-linguist-devel Requires
+
+-------------------------------------------------------------------
+Sun May  4 01:08:25 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.0.13
+  * Further buildsystem improvements
+- Added python-Sphinx BuildRequires to build docs
+- Provide doc subpackage
+- Added kf5-filesystem >= 4.99.0 and libqt5-linguist-devel >= 5.2.0
+  Requires
+- Obsolete and provide kf5umbrella (e-c-m now provides KF5Config)
+
+-------------------------------------------------------------------
+Tue Apr 22 19:25:50 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added pkgconfig(Qt5Core) to e-c-m Requires, every user of the
+  package always needs it
+
+-------------------------------------------------------------------
+Sat Mar 29 19:57:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.0.12
+  * Buildsystem improvements
+
+-------------------------------------------------------------------
+Wed Mar  5 19:00:19 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.0.11
+  * Buildsystem cleanups
+  * Added FindEGL, FindSharedMimeInfo and FindWayland modules
+
+-------------------------------------------------------------------
+Sat Feb  8 02:17:05 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init extra-cmake-modules package
+

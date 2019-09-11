@@ -1,0 +1,48 @@
+Index: telnet-bsd-1.2/telnet/commands.c
+===================================================================
+--- telnet-bsd-1.2.orig/telnet/commands.c
++++ telnet-bsd-1.2/telnet/commands.c
+@@ -2450,17 +2450,21 @@ tn (int argc, char *argv[])
+ 	  error = getaddrinfo (aliasp, "0", &ahints, &ares);
+ 	  if (error)
+ 	    {
++	      printf ("Couldn't get address for %s\n", aliasp);
+ 	      warn ("%s: %s", aliasp, gai_strerror (error));
+ 	      close (net);
+-	      freeaddrinfo (ares);
++	      net = -1;
+ 	      continue;
+ 	    }
+ 
+ 	  if (bind (net, ares->ai_addr, ares->ai_addrlen) < 0)
+ 	    {
++	      printf ("Couldn't bind to %s\n", aliasp);
+ 	      perror (aliasp);
+ 	      close (net);	/* dump descriptor */
+-	      return 0;
++	      net = -1;
++	      freeaddrinfo (ares);
++	      continue;
+ 	    }
+ 	  freeaddrinfo (ares);
+ 	}
+Index: telnet-bsd-1.2/telnet/telnet.1
+===================================================================
+--- telnet-bsd-1.2.orig/telnet/telnet.1
++++ telnet-bsd-1.2/telnet/telnet.1
+@@ -121,12 +121,11 @@ The name used is that of the current use
+ .Xr getlogin 2
+ if it agrees with the current user ID,
+ otherwise it is the name associated with the user ID.
+-.It Fl b Ar hostalias
++.It Fl b Ar ip_address
+ Uses
+ .Xr bind 2
+-on the local socket to bind it to an aliased address (see
+-.Xr ifconfig 8
+-and the ``alias'' specifier) or to the address of
++on the local socket to bind it to an aliased ip address
++or to the ip address of
+ another interface than the one naturally chosen by
+ .Xr connect 2 .
+ This can be useful when connecting to services which use IP addresses

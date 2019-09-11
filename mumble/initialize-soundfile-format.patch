@@ -1,0 +1,12 @@
+Index: mumble-1.2.19/src/mumble/AudioOutputSample.cpp
+===================================================================
+--- mumble-1.2.19.orig/src/mumble/AudioOutputSample.cpp
++++ mumble-1.2.19/src/mumble/AudioOutputSample.cpp
+@@ -41,6 +41,7 @@ SoundFile::SoundFile(const QString &fnam
+ 	siInfo.samplerate = 0;
+ 	siInfo.sections = 0;
+ 	siInfo.seekable = 0;
++	siInfo.format = 0;
+ 
+ 	sfFile = NULL;
+ 

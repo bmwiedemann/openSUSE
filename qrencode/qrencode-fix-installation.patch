@@ -1,0 +1,25 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f08b2cb..b87d2ac 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -110,7 +110,7 @@ endif()
+ 
+ set(prefix "${CMAKE_INSTALL_PREFIX}")
+ set(exec_prefix "${CMAKE_INSTALL_PREFIX}/bin")
+-set(libdir "${CMAKE_INSTALL_PREFIX}/lib")
++set(libdir "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}")
+ set(includedir "${CMAKE_INSTALL_PREFIX}/include")
+ set(VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
+ 
+@@ -118,9 +118,9 @@ configure_file(qrencode.1.in qrencode.1 @ONLY)
+ configure_file(libqrencode.pc.in libqrencode.pc @ONLY)
+ 
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qrencode.1 DESTINATION share/man/man1)
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libqrencode.pc DESTINATION lib/pkgconfig)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libqrencode.pc DESTINATION lib${LIB_SUFFIX}/pkgconfig)
+ install(FILES qrencode.h DESTINATION include)
+-install(TARGETS qrencode DESTINATION lib)
++install(TARGETS qrencode DESTINATION lib${LIB_SUFFIX})
+ 
+ ## Build utility tools
+ if(WITH_TOOLS AND TARGET PNG::PNG)

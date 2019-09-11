@@ -1,0 +1,38 @@
+From 5ec9d9034650ae4372dc1bd44d33a1e8768e3409 Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.com>
+Date: Wed, 8 Feb 2017 08:18:34 +1100
+Subject: [PATCH] conffile: ignore empty environment variables.
+
+conf_set() already refuses to set an empty value, so if
+  foo=
+appear in the config file, it will be ignored.
+This patch extends the policy to environment variables, so empty
+environment variables are treats as though they didn't exist.
+
+This means that a separate environment file (e.g. /etc/sysconfig/nfs)
+will be treated the same way whether it is:
+ - included in the [environment] section of /etc/nfs.conf
+ - sourced by the shell before running code
+ - sourced by the systemd EnvironmentFile directive.
+
+Signed-off-by: NeilBrown <neilb@suse.com>
+---
+ support/nfs/conffile.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/support/nfs/conffile.c b/support/nfs/conffile.c
+index e717c1e39bab..203efd2aa602 100644
+--- a/support/nfs/conffile.c
++++ b/support/nfs/conffile.c
+@@ -533,7 +533,7 @@ retry:
+ 				 * or from environment
+ 				 */
+ 				char *env = getenv(cb->value+1);
+-				if (env)
++				if (env && *env)
+ 					return env;
+ 				section = "environment";
+ 				tag = cb->value + 1;
+-- 
+2.11.0
+

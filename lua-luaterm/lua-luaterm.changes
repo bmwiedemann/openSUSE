@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Mon Oct 30 14:45:32 UTC 2017 - jmatejek@suse.com
+
+- do not build for Lua 5.2
+
+-------------------------------------------------------------------
+Thu Aug 10 08:39:57 UTC 2017 - tchvatal@suse.com
+
+- Fix provides/obsoletes for the old package name
+
+-------------------------------------------------------------------
+Thu Jul 13 18:19:03 UTC 2017 - tchvatal@suse.com
+
+- Switch to multibuild layout to deploy all lua versions at once
+
+-------------------------------------------------------------------
+Thu Jul 13 18:17:50 UTC 2017 - tchvatal@suse.com
+
+- Fix build with namespaced lua
+
+-------------------------------------------------------------------
+Wed Jan  4 15:52:54 UTC 2017 - eich@suse.com
+
+- Replaced 'makeinstall' by 'make_install'.
+
+-------------------------------------------------------------------
+Mon Oct 17 13:32:19 UTC 2016 - eich@suse.com
+
+- Setting 'download_files' service to mode='localonly'
+  and adding source tarball. (Required for Factory).
+
+-------------------------------------------------------------------
+Wed Oct 12 18:21:45 UTC 2016 - eich@suse.com
+
+- Initial import of lua-term version 0.07
+

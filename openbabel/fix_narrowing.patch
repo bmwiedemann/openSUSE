@@ -1,0 +1,37 @@
+From e26491017efefdc6aaf73d4d49f284f4e9436244 Mon Sep 17 00:00:00 2001
+From: Noel O'Boyle <baoilleach@gmail.com>
+Date: Wed, 3 Jan 2018 21:27:53 +0000
+Subject: [PATCH] Fix #1689 by using positive values and explicitly stating
+ unsigned char
+
+---
+ src/formats/pngformat.cpp    | 2 +-
+ src/formats/yasaraformat.cpp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/formats/pngformat.cpp b/src/formats/pngformat.cpp
+index 49bff17fc..79f8a4902 100644
+--- a/src/formats/pngformat.cpp
++++ b/src/formats/pngformat.cpp
+@@ -218,7 +218,7 @@ bool PNGFormat::ReadMolecule(OBBase* pOb, OBConversion* pConv)
+     _count=0;
+     _hasInputPngFile=true;
+   }
+-  const char pngheader[] = {-119,80,78,71,13,10,26,10,0};
++  const unsigned char pngheader[] = {137,80,78,71,13,10,26,10,0};
+   char readbytes[9];
+   ifs.read(readbytes, 8);
+ 
+diff --git a/src/formats/yasaraformat.cpp b/src/formats/yasaraformat.cpp
+index 25f7d2295..e666d0176 100644
+--- a/src/formats/yasaraformat.cpp
++++ b/src/formats/yasaraformat.cpp
+@@ -472,7 +472,7 @@ bool YOBFormat::WriteMolecule(OBBase* pOb, OBConversion* pConv)
+ 
+   //  bool hetatom;
+   char buffer[32],/*resname[4],*/atomname[5];
+-  char double1[8]={0,0,0,0,0,0,-16,0x3f};
++  unsigned char double1[8]={0,0,0,0,0,0,0xf0,0x3f};
+   //   char *str;
+   int i,j,/*m,q,*/pos;
+   int /*resno,chainNum,link,linktype,*/atoms,element,links/*,chain*/;

@@ -1,0 +1,12 @@
+Index: cfe-6.0.0rc1.src/include/clang/Driver/Options.td
+===================================================================
+--- cfe-6.0.0rc1.src.orig/include/clang/Driver/Options.td
++++ cfe-6.0.0rc1.src/include/clang/Driver/Options.td
+@@ -816,6 +816,7 @@ def fexcess_precision_EQ : Joined<["-"],
+     Group<clang_ignored_gcc_optimization_f_Group>;
+ def : Flag<["-"], "fexpensive-optimizations">, Group<clang_ignored_gcc_optimization_f_Group>;
+ def : Flag<["-"], "fno-expensive-optimizations">, Group<clang_ignored_gcc_optimization_f_Group>;
++def : Flag<["-"], "fstack-clash-protection">, Group<clang_ignored_f_Group>;
+ def fextdirs_EQ : Joined<["-"], "fextdirs=">, Group<f_Group>;
+ def : Flag<["-"], "fdefer-pop">, Group<clang_ignored_gcc_optimization_f_Group>;
+ def : Flag<["-"], "fno-defer-pop">, Group<clang_ignored_gcc_optimization_f_Group>;

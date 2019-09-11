@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Mon Mar 12 23:24:55 UTC 2018 - astieger@suse.com
+
+- time 1.9:
+  * reports percent CPU usage for programs lasting less then 1s
+  * "time -p" no longers adds the "Command exited with non-zero
+    status" message (POSIX compliance)
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Sat Nov 18 20:41:15 UTC 2017 - astieger@suse.com
+
+- time 1.8:
+  * license changed to GPL-3.0+
+- incorporate functionality previously carried as patches:
+  * -q/--quiet option to suppresses abnormal program terminal
+    (non-exit codes or signals).
+    Drop time-debian-quiet.patch
+    Drop time-fedora-verbose.patch
+  * use the following exit codes (same as GNU coreutils' env):
+    125 = Wrong usage or internal error prior to exec attempt.
+    126 = Program located, but not usable.
+    127 = Could not find program to exec.
+  * exit with code '128 + Signal number' when the program
+    is terminated by a signal.
+    Drop time-debian-non-normal-exit.patch
+  * report MAX-RSS values correctly on modern systems
+    Drop time-fedora-ru_maxrss-is-in-kilobytes-on-Linux.patch
+    Drop time-fedora-Recompute-CPU-usage-at-microsecond-level.patch
+  * Use gnulib modules and build infrastructure.
+  * New tests infrastructure (make check).
+- drop unneeded patches:
+  * time-debian-bug-address.patch
+  * time-alpha.patch
+  * time-debian-configure.patch
+  * time-debian-info-direntry.patch
+  * time-debian-info-nav.patch
+  * time-debian-rusage-portability.patch
+  * time-fsf-address.patch
+- add upstream keyring and verify source signature
+
+-------------------------------------------------------------------
+Fri May 23 19:14:12 CEST 2014 - sbrabec@suse.cz
+
+- Add time.rpmlint suppressing the missing time man page warning.
+
+-------------------------------------------------------------------
+Tue May 20 08:53:31 UTC 2014 - pgajdos@suse.com
+
+- remove time.1 [bnc#878057]
+
+-------------------------------------------------------------------
+Thu Sep  5 20:49:42 CEST 2013 - sbrabec@suse.cz
+
+- Sync patches with Debian and Fedora:
+  * Add man page (time.1).
+  * Less nonverbose output (time-fedora-verbose.patch).
+  * Fix maximal RSS report
+    (time-fedora-ru_maxrss-is-in-kilobytes-on-Linux.patch,
+    bnc#836049, Redhat#702826).
+  * Switch to microsecond accuracy if miliseconds arithmetic rounds
+    to zero
+    (time-fedora-Recompute-CPU-usage-at-microsecond-level.patch,
+    Redhat#527276).
+  * When time exits in a non-normal way, return 128 plus the number
+    of the signal which caused time to stop or abort
+    (time-debian-non-normal-exit.patch).
+  * struct rusage and sys/resource.h portability fix
+    (time-debian-rusage-portability.patch, Debian#144819).
+  * Add -q,--quiet functionality
+    (time-debian-quiet.patch, Debian#56853).
+  * Update bug reporting address
+    (time-debian-bug-address.patch, Debian#542469).
+  * Modernize the configure.in file to current autoconf style
+    (time-debian-configure.patch).
+  * Add a directory entry to the info page
+    (time-debian-info-direntry.patch).
+- Fix FSF address (time-fsf-address.patch).
+- Update Summary.
+- Rename time-1.7.diff to time-alpha.patch.
+
+-------------------------------------------------------------------
+Sun Jan 20 21:21:13 UTC 2013 - jengelh@inai.de
+
+- Split "time" off util-linux
+
+-------------------------------------------------------------------
+Tue Feb 21 13:46:25 UTC 2012 - puzel@suse.com
+
+- disabled make check for time (noop)
+
+-------------------------------------------------------------------
+Thu Oct 31 00:40:09 CET 2002 - ro@suse.de
+
+- hack time to build on alpha 
+

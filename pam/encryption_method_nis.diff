@@ -1,0 +1,71 @@
+--- modules/pam_unix/pam_unix_passwd.c
++++ modules/pam_unix/pam_unix_passwd.c	2016/04/11 13:49:32
+@@ -840,6 +840,29 @@
+ 		 * rebuild the password database file.
+ 		 */
+ 
++
++		/* if it is a NIS account, check for special hash algo */
++		if (on(UNIX_NIS, ctrl) && _unix_comesfromsource(pamh, user, 0, 1)) {
++		  /* preset encryption method with value from /etc/login.defs */
++		  int j;
++		  char *val = _unix_search_key ("ENCRYPT_METHOD_NIS", LOGIN_DEFS);
++		  if (val) {
++		    for (j = 0; j < UNIX_CTRLS_; ++j) {
++		      if (unix_args[j].token && unix_args[j].is_hash_algo
++			  && !strncasecmp(val, unix_args[j].token, strlen(unix_args[j].token))) {
++			break;
++		      }
++		    }
++		    if (j >= UNIX_CTRLS_) {
++		      pam_syslog(pamh, LOG_WARNING, "unrecognized ENCRYPT_METHOD_NIS value [%s]", val);
++		    } else {
++		      ctrl &= unix_args[j].mask;  /* for turning things off */
++		      ctrl |= unix_args[j].flag;  /* for turning things on  */
++		    }
++		    free (val);
++		  }
++		}
++
+ 		/*
+ 		 * First we encrypt the new password.
+ 		 */
+--- modules/pam_unix/support.c
++++ modules/pam_unix/support.c	2016/04/11 13:49:32
+@@ -31,8 +31,8 @@
+ #include "support.h"
+ #include "passverify.h"
+ 
+-static char *
+-search_key (const char *key, const char *filename)
++char *
++_unix_search_key (const char *key, const char *filename)
+ {
+   FILE *fp;
+   char *buf = NULL;
+@@ -153,7 +153,7 @@
+ 	}
+ 
+ 	/* preset encryption method with value from /etc/login.defs */
+-	val = search_key ("ENCRYPT_METHOD", LOGIN_DEFS);
++	val = _unix_search_key ("ENCRYPT_METHOD", LOGIN_DEFS);
+ 	if (val) {
+ 	  for (j = 0; j < UNIX_CTRLS_; ++j) {
+ 	    if (unix_args[j].token && unix_args[j].is_hash_algo
+@@ -171,7 +171,7 @@
+ 
+ 	  /* read number of rounds for crypt algo */
+ 	  if (rounds && (on(UNIX_SHA256_PASS, ctrl) || on(UNIX_SHA512_PASS, ctrl))) {
+-	    val=search_key ("SHA_CRYPT_MAX_ROUNDS", LOGIN_DEFS);
++	    val=_unix_search_key ("SHA_CRYPT_MAX_ROUNDS", LOGIN_DEFS);
+ 
+ 	    if (val) {
+ 	      *rounds = strtol(val, NULL, 10);
+--- modules/pam_unix/support.h
++++ modules/pam_unix/support.h	2016/04/11 13:49:32
+@@ -174,4 +174,5 @@
+ 
+ extern int _unix_run_verify_binary(pam_handle_t *pamh,
+ 			unsigned int ctrl, const char *user, int *daysleft);
++extern char *_unix_search_key(const char *key, const char *filename);
+ #endif /* _PAM_UNIX_SUPPORT_H */

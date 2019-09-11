@@ -1,0 +1,16 @@
+Index: libkipi-15.12.0/CMakeLists.txt
+===================================================================
+--- libkipi-15.12.0.orig/CMakeLists.txt
++++ libkipi-15.12.0/CMakeLists.txt
+@@ -102,10 +102,10 @@ ecm_setup_version(${LIBKIPI_LIB_VERSION}
+ 
+ add_definitions(-DTRANSLATION_DOMAIN=\"libkipi\")
+ 
+-add_subdirectory(pics)
+ add_subdirectory(src)
+ 
+ if (BUILD_TESTING)
++    add_subdirectory(pics)
+     add_subdirectory(tests)
+ endif()
+ 

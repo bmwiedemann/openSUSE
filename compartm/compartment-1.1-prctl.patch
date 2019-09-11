@@ -1,0 +1,68 @@
+--- compartment-1.1/compartment.1.prctl	2000-04-16 14:54:39.000000000 +0200
++++ compartment-1.1/compartment.1	2002-08-07 19:32:17.000000000 +0200
+@@ -23,7 +23,7 @@
+ sets the defined
+ .I CAPABILITY
+ for the process.
+-See the README file and the section LIMITATIONS for more information and examples.
++See the README file for more information.
+ 
+ .PP
+ .TP
+@@ -85,14 +85,6 @@
+ .B supports running of initial scripts
+ before running a program/service, e.g. to build a chroot environment.
+ 
+-.SH LIMITATIONS
+-Currently the kernel does not allow capabilities on processes which are not
+-running with euid 0. Therefore
+-.I compartment 
+-will exit with an error if --user and --cap is used together.
+-.PP
+-Please note that this will change for the 2.4 kernel.
+-
+ .SH BUGS
+ No bugs are currently known
+ 
+@@ -125,4 +117,4 @@
+ .I chroot
+ (1),
+ .I chroot
+-(2)
+\ No newline at end of file
++(2)
+--- compartment-1.1/compartment.c.prctl	2002-08-07 19:32:17.000000000 +0200
++++ compartment-1.1/compartment.c	2002-08-07 19:32:27.000000000 +0200
+@@ -35,6 +35,7 @@
+ #include <syslog.h>
+ #include <sys/time.h>
+ #include <sys/resource.h>
++#include <sys/prctl.h>
+ 
+ #define PROGRAM_NAME	"SuSE secure compartment"
+ #define VERSION		"v1.1"
+@@ -350,10 +351,11 @@
+         }
+     }
+ 
+-    if (do_caps)
+-        my_caps();
+-
+     if (do_user) {
++	if (do_caps && prctl(PR_SET_KEEPCAPS, 1) < 0) {
++	    print_msg("Error setting KEEPCAPS: %m");
++	    exit(1);
++	}
+         if (setuid(set_user)) {
+             print_msg("Error setting uid to %u\n", set_user);
+             exit(1);
+@@ -363,6 +365,9 @@
+           }
+     }
+ 
++    if (do_caps)
++        my_caps();
++
+     for (fd = 3; fd <= 1023; fd++) // set close_on_exec on all open fd´s > 2
+         (void) fcntl(fd, F_SETFD, FD_CLOEXEC);
+     if (verbose)

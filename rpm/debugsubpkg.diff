@@ -1,0 +1,41 @@
+--- ./scripts/find-debuginfo.sh.orig	2017-12-01 15:35:59.023537837 +0000
++++ ./scripts/find-debuginfo.sh	2017-12-01 15:36:30.351447397 +0000
+@@ -548,19 +548,25 @@ if $run_dwz \
+   fi
+ fi
+ 
+-# For each symlink whose target has a .debug file,
+-# make a .debug symlink to that file.
+-find "$RPM_BUILD_ROOT" ! -path "${debugdir}/*" -type l -print |
+-while read f
+-do
+-  t=$(readlink -m "$f").debug
+-  f=${f#$RPM_BUILD_ROOT}
+-  t=${t#$RPM_BUILD_ROOT}
+-  if [ -f "$debugdir$t" ]; then
+-    echo "symlinked /usr/lib/debug$t to /usr/lib/debug${f}.debug"
+-    debug_link "/usr/lib/debug$t" "${f}.debug"
+-  fi
+-done
++# We used to make a .debug symlink for each symlink whose target
++# has a .debug file to that file.  This is not necessary because
++# the debuglink section contains only the destination of those links.
++# Creating those links anyway results in debuginfo packages for
++# devel packages just because of the .so symlinks in them.
++
++## For each symlink whose target has a .debug file,
++## make a .debug symlink to that file.
++#find "$RPM_BUILD_ROOT" ! -path "${debugdir}/*" -type l -print |
++#while read f
++#do
++#  t=$(readlink -m "$f").debug
++#  f=${f#$RPM_BUILD_ROOT}
++#  t=${t#$RPM_BUILD_ROOT}
++#  if [ -f "$debugdir$t" ]; then
++#    echo "symlinked /usr/lib/debug$t to /usr/lib/debug${f}.debug"
++#    debug_link "/usr/lib/debug$t" "${f}.debug"
++#  fi
++#done
+ 
+ if [ -s "$SOURCEFILE" ]; then
+   # See also debugedit invocation. Directories must match up.

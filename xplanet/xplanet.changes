@@ -1,0 +1,338 @@
+-------------------------------------------------------------------
+Tue May 14 23:42:40 UTC 2019 - John Jolly <jjolly@suse.com>
+
+- Added link to gobject-2.0 libraries (glib2.patch)
+  * Pango use to do this, but it has removed this for libraries
+    linking to Pango
+
+-------------------------------------------------------------------
+Fri Jun 17 18:53:46 UTC 2016 - asterios.dramis@gmail.com
+
+- Update to 1.3.1:
+  * Changelog not available.
+- Removed xplanet-libpng16.patch (fixed upstream).
+- Updated xplanet-giflib5.patch (taken from Fedora). Only needed
+  for openSUSE > 13.2.
+- Added gcc6.patch to fix compilation with GCC 6 (boo#985129).
+
+-------------------------------------------------------------------
+Sun Jun  1 09:40:00 UTC 2014 - jengelh@inai.de
+
+- Update xplanet-giflib5.patch to support giflib7-5.1
+
+-------------------------------------------------------------------
+Sat Mar 22 19:32:26 UTC 2014 - avvissu@yandex.ru
+
+- Fix rpmlint error for SLE11 and Fedora: unresolvable:
+  * add ?suse_version
+
+-------------------------------------------------------------------
+Tue Mar 12 16:36:52 UTC 2013 - seife+obs@b1-systems.com
+
+- fix build with giflib-5, xplanet-giflib5.patch
+
+-------------------------------------------------------------------
+Fri Feb 15 07:28:36 UTC 2013 - pgajdos@suse.com
+
+- build also with libpng16
+  * libpng16.patch
+
+-------------------------------------------------------------------
+Fri Sep 28 19:37:45 UTC 2012 - asterios.dramis@gmail.com
+
+- Added "CPPFLAGS=-I%{_includedir}/netpbm" to fix compilation with netpbm
+  support in Factory (the netpbm headers where moved from /usr/include to
+  /usr/include/netpbm).
+- Use pkgconfig(...) for xorg-x11 build requirements.
+
+-------------------------------------------------------------------
+Sat Mar 24 19:20:46 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to 1.3.0:
+  * add "outlined" keyword to marker files
+  * update JPL ephemeris code for 64 bit machines
+  * add bump_shade config file parameter
+  * add opacity keyword for markers
+  * implement Rayleigh scattering
+
+-------------------------------------------------------------------
+Sun Mar  4 21:02:26 UTC 2012 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Updated XOrg BuildRequires: for openSUSE > 12.1.
+
+-------------------------------------------------------------------
+Sun May 22 20:18:13 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 1.2.2:
+  * Lots of changes (see ChangeLog).
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Added libjpeg-devel and pango-devel in BuildRequires:.
+  * Minor other updates.
+  * Removed changelog entries.
+- Removed fix-buffer-overflow.patch (fixed upstream).
+- Removed gcc43 and gcc44 patches (not needed).
+
+-------------------------------------------------------------------
+Sat Dec  5 00:00:00 UTC 2009 - dg7gt@gmx.de
+
+- Fix compilation with gcc44
+
+-------------------------------------------------------------------
+Wed Oct  3 11:27:30 CEST 2007 - coolo@suse.de
+
+- fix compilation with gcc43
+
+-------------------------------------------------------------------
+Fri Aug 10 04:55:52 CEST 2007 - crrodriguez@suse.de
+
+- libnetpbm-devel fixes build
+- add fno-strict-aliasing as well.  
+
+-------------------------------------------------------------------
+Wed Jan 17 12:19:05 CET 2007 - jsmeix@suse.de
+
+- Use our preferred architecture-specific RPM_OPT_FLAGS.
+- fix-buffer-overflow.patch avoids an unfounded buffer overflow
+  error message.
+
+-------------------------------------------------------------------
+Thu Dec  7 16:46:16 CET 2006 - jsmeix@suse.de
+
+- Changed /usr/X11R6/bin/ to /usr/bin/
+  (see Suse bugzilla bug #224882).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jun 22 13:13:48 CEST 2005 - mmj@suse.de
+
+- Update to 1.2.0 including:
+  o Added the -grs_longitude option, to specify the longitude of
+    Jupiter's Great Red Spot, in System II coordinates.  This assumes
+    the Jupiter image has the center of the Great Red Spot at pixel 0
+    (at the left side of the image) in order to draw it at the right
+    position.
+  o Added the Icosagnomonic projection
+  o Fixed a bug where output filenames had an extra digit in some
+    cases
+  o Added the bump_map and bump_scale options in the configuration
+    file
+  o Added the -glare option to set the size of the sun's glare
+  o An image map may be specified for the sun in the configuration
+    file now.  A shade value is now required for the sun (should be
+    100, otherwise the sun will have a night side!)
+  o Added the -arc_spacing option to set the default angular
+    distance between great arc points.  It used to be 0.1 degree, so
+    arcs smaller than this wouldn't get drawn
+  o Fixed a bug where markers were not aligned properly when using
+    align = "above" or "below"
+  o Added warnings if options are specified in the [default] section
+    of the configuration file that probably shouldn't be there
+
+-------------------------------------------------------------------
+Mon Dec  6 09:34:19 CET 2004 - mmj@suse.de
+
+- Update to xplanet-1.1.2 including:
+  o Saturn's rings are now drawn properly when using "magnify" in
+    the config file.
+  o Added marker_fontsize as an option in the configuration file.
+  o Added the Bonne, Gnomonic, Polyconic, and Tangential Spherical
+    Cube (TSC) projections.
+  o Added the -proj_param option.  Note that the -projection option
+    cannot be abbreviated to -proj anymore!
+  o Color cloud maps are now allowed.
+  o A color may now be specified with -background.
+
+-------------------------------------------------------------------
+Mon Aug  9 10:55:44 CEST 2004 - mmj@suse.de
+
+- Update to xplanet-1.1.1 including:
+  o Added -north path, -target path, and -path_relative_to options.
+  o Added -output_start_index option.
+  o Print a list of compile-time options when using the -version
+    option.
+  o Fixed a bug where orbits were not drawn for bodies using SPICE
+    kernels.
+  o Added ssec_map option to configuration files to use University
+    of Wisconsin cloud maps.
+
+-------------------------------------------------------------------
+Tue Jun 29 07:22:54 CEST 2004 - mmj@suse.de
+
+- Update to xplanet-1.1.0 including:
+  o Added the -fork option.
+  o Fixed a bug where stars were not drawn when using the -proj
+    option.
+
+-------------------------------------------------------------------
+Mon May 24 13:29:54 CEST 2004 - mmj@suse.de
+
+- Update to xplanet-1.0.8 including:
+  o Fixed a bug where eclipse shadows were not drawn properly
+  o Timer now sleeps until it's time to wake up, instead of
+    sleeping for a set time.
+
+-------------------------------------------------------------------
+Thu May  6 12:54:31 CEST 2004 - mmj@suse.de
+
+- Update to xplanet-1.0.7 including:
+  o Fixed a segfault when writing image files.
+  o Minor updates to allow compilation with gcc 3.4.0.
+
+-------------------------------------------------------------------
+Fri Apr 23 16:05:52 CEST 2004 - mmj@suse.de
+
+- Update to xplanet-1.0.6 with the following since 1.0.4:
+  o Fixed a bug where markers on the far side of a planet were being
+    drawn when they shouldn't have been.
+  o Fixed a bug where satellites were not drawn for some locales.
+  o Added -projection random.  This picks a random projection.
+  o Improved locale support. The date string is now converted to
+    UTF-8 using iconv() after being created by strftime() in the
+    default encoding.  Added the "lang" keyword to marker files.
+  o Floating point numbers in all input files must be in the "C"
+    locale format, meaning that the decimal separator must be the '.'
+    character and not the ','.
+  o Fixed align=center option in marker files.
+
+-------------------------------------------------------------------
+Mon Mar  8 11:20:28 CET 2004 - mmj@suse.de
+
+- Update to xplanet-1.0.4:
+  o Added support for SPICE kernels for spacecraft ephemerides.
+  o Xplanet now works without freetype.  There will be no text
+    annotation, but it will run instead of exit immediately.
+
+-------------------------------------------------------------------
+Wed Jan  7 10:49:23 CET 2004 - mmj@suse.de
+
+- Update to xplanet-1.0.3
+
+-------------------------------------------------------------------
+Mon Dec 29 11:15:33 CET 2003 - mmj@suse.de
+
+- Update to xplanet-1.0.2
+
+-------------------------------------------------------------------
+Thu Oct 16 18:27:00 CEST 2003 - mmj@suse.de
+
+- Don't build as root
+- Cleanup a bit
+
+-------------------------------------------------------------------
+Tue May 13 13:27:05 CEST 2003 - mmj@suse.de
+
+- Use %defattr
+
+-------------------------------------------------------------------
+Wed Mar 19 13:59:44 CET 2003 - mmj@suse.de
+
+- Update to 1.0.1 which is a rewrite of xplanet changing it's beha-
+  viour somewhat. See the file /usr/share/doc/packages/xplanet/NEWS
+  for more info on that.
+- Remove the update_clouds.sh script. People who know what they're
+  doing should be the only ones doing this, and they will make such
+  a script by themselves.
+
+-------------------------------------------------------------------
+Thu Nov  7 15:01:38 CET 2002 - mmj@suse.de
+
+- Fix build on other archs
+
+-------------------------------------------------------------------
+Thu Oct 31 11:26:49 CET 2002 - mmj@suse.de
+
+- Make detection of graphic formats work again [#21452]
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Apr 16 12:51:57 CEST 2002 - mmj@suse.de
+
+- Fix to own /usr/share/xplanet
+- Fix the xplanet_getmaps.sh script to fetch the right files
+
+-------------------------------------------------------------------
+Wed Apr  3 13:49:37 CEST 2002 - mmj@suse.de
+
+- Use %{_libdir}
+- Updated to 0.94 which includes:
+  o Minor changes to allow compilation with Sun Workshop compiler.
+  o Great arc files may now be placed in an "arcs" subdirectory.
+  o Added the -mapbounds options.  Xplanet now works with maps
+    that don't cover the whole globe.  This is useful if the user
+    has a hi-res map and wants to display a small area.
+  o Added the -print_coordinates option.  Xplanet will print out the
+    observer's location and then exit.  This might be useful for
+    satellite tracking, or getting the position of the sun or
+    moon.
+  o Added the -start_cloud and -stop_cloud options to xplanetbg.
+    They are cloud images assumed to be at the start and end
+    times of the run.  Intermediate cloud images are interpolated
+    linearly.  This only works if the -num_times option is also
+    used.
+  o Added the -specular_file option.  This adds the sunlight
+    reflected off of the ocean. 
+  o Set LC_NUMERIC to C so that satellite marker files get written
+    properly for some locales.
+  o Added the -spacing option to set spacing between great arc
+    points.
+  o Added the "symbolsize" option to the marker file.
+  o Added the -hibernate and -idlewait options to xplanetbg.
+    Contributed by Leif Van Horn.
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:11 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Thu Jan 24 20:21:59 CET 2002 - poeml@suse.de
+
+- update to 0.93
+
+-------------------------------------------------------------------
+Thu Nov  8 18:40:07 CET 2001 - ro@suse.de
+
+- use mesa-devel-packages in neededforbuild 
+
+-------------------------------------------------------------------
+Fri Aug 24 02:45:09 CEST 2001 - poeml@suse.de
+
+- update to 0.84, new features: -fontsize and -prev_command/ 
+  -post_command options, and saturn rings :)
+
+-------------------------------------------------------------------
+Wed Apr  4 21:25:22 CEST 2001 - poeml@suse.de
+
+- update to 0.81
+- drop Requires on xglobe-maps (now, two nice images come with
+  xplanet)
+- drop Requires on perl-libwww-perl, use wget instead
+- fix Version tag (was a macro)
+- add xf86glu xf86glu-devel to neededforbuild
+- use BuildRoot
+
+-------------------------------------------------------------------
+Wed Mar  7 16:58:42 CET 2001 - ro@suse.de
+
+- changed neededforbuild <mesadev> to <mesa-devel>
+
+-------------------------------------------------------------------
+Wed Feb 21 12:30:41 CET 2001 - poeml@suse.de
+
+- fix missing include (yes, sent patch to author)
+
+-------------------------------------------------------------------
+Mon Dec  4 21:56:35 CET 2000 - poeml@suse.de
+
+- initial SuSE-RPM
+

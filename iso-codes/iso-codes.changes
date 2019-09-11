@@ -1,0 +1,858 @@
+-------------------------------------------------------------------
+Sat Nov 17 07:48:31 UTC 2018 - sean@suspend.net
+
+- Update to version 4.01:
+  + ISO-3166-2: Update codes for ZA-GT (Gauteng) and ZA-NL (Kwazulu-Natal) 
+  + ISO-3166-3: translations (Italian)
+  + ISO-15924: translations (Estonian)
+
+-------------------------------------------------------------------
+Thu Aug  9 22:08:08 UTC 2018 - rpm@fthiessen.de
+
+- Update to version 3.79:
+  + Updated translations for ISO 3166-1, ISO 3166-2, ISO 639-2,
+    ISO 639-3, ISO 639-5, ISO 4217 and ISO 15924
+- Changes from version 3.78:
+  + Update all .pot and .po files with new URL for msgid bugs
+  + Fix copyright headers in .po files
+  + Remove old script with l10n status
+  + Fix some errors in .po files, spotted by Weblate
+  + Updated translations for ISO 3166-1, ISO 3166-2, ISO 3166-3,
+    ISO 639-2, ISO 639-3, ISO 639-5, ISO 4217 and ISO 15924
+
+-------------------------------------------------------------------
+Wed Feb 28 16:33:40 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jan 24 01:26:15 UTC 2018 - avindra@opensuse.org
+
+- Update to version 3.77:
+  + Updated translations for ISO 3166-1, ISO 3166-2, ISO 4217,
+    ISO 3166-3, ISO 639-2, ISO 639-5, ISO 639-3, ISO 15924.
+- Cleanup with spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Nov  1 11:32:48 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.76:
+  + ISO 3166-3:
+    - Add alpha_2 codes.
+    - Correct numeric code for Netherlands Antilles (ANHH) from 532
+      to 530.
+  + Updated translations for ISO 3166-1, ISO 3166-2, ISO 4217,
+    ISO 639-2, ISO 639-3 and ISO 15924.
+- Changes from version 3.75:
+  + ISO 3166-1: Add 'Vietnam' as common name.
+  + ISO 3166-2: Update French metropolitan regions (alioth#315693).
+  + ISO 4217: Add new Belarusian Ruble (alioth#315696).
+  + Updated translations for ISO 639-2, ISO 639-3, ISO 639-5,
+    ISO 3166-1, ISO 3166-2, ISO 4217 and ISO 15924.
+
+-------------------------------------------------------------------
+Mon Mar 13 20:09:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.74:
+  + ISO 3166-2: Remove GB- prefix from parent code for Great
+    Britain (deb#315604).
+- Changes from version 3.73:
+  + ISO 3166-2: Remove CZ- prefix from parent code for Czechia.
+- Changes from version 3.72:
+  + ISO 3166-2: Update from iso.org for Great Britain (deb#315563).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 16 10:18:20 UTC 2016 - jbohac@suse.com
+
+- Update to version 3.71:
+  + Add short name of CZ to ISO 3166-1 and ISO 3166-2.
+  + Updated translations for ISO 3166-1, ISO 3166-2 and ISO 4217.
+- Changes from version 3.70:
+  + Update name for ES-SS in ISO 3166-2.
+  + Updated translations for ISO 3166-1, ISO 3166-2 and ISO 639-2.
+- Changes from version 3.69:
+  + Update name for PH-NEC and ES-BI in ISO 3116-2.
+  + Updated translations for ISO 3166-1, ISO 3166-2, ISO 15924
+    and ISO 4217.
+- Changes from version 3.68:
+  + Change long name of GM to ISO-3166-1.
+  + Add changes for Lao in ISO 3166-2.
+  + Updated translations for ISO 3166-1, ISO 3166-2, ISO 639-2,
+    ISO 639-3, ISO 15924 and ISO 4217.
+- Changes from version 3.67:
+  + The data is now included in JSON files.
+  + The XML files are deprecated.
+  + The gettext domains have been renamed to better match the
+    actual ISO number; previously used gettext domains are linked
+    to the new  domain names.
+  + A new ISO standard has been included: ISO 3166-3.
+  + The standard ISO 4217 (currency names) now includes only the
+    currently used currencies. Entries of withdrawn currencies are
+    no longer included.
+  + The standard ISO 639-5 now includes only the language families
+    which are part of the official standard. The previously
+    included languages were not part of the standard and have been
+    removed.
+  + ISO 639-3 has been updated from the latest upstream sources.
+  + Updated translations for ISO 3166-1.
+- Changes from version 3.66:
+  + start distributing JSON data files in
+    /usr/share/iso-codes/json.
+  + Updated translations for ISO 639-5.
+
+-------------------------------------------------------------------
+Wed Feb 17 14:18:18 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.65:
+  + Updated translations for ISO 3166 and ISO 4217.
+- Changes from version 3.64:
+  + Updated translations for ISO 3166-2, ISO 15924, ISO 4217 and
+    ISO 3166.
+
+-------------------------------------------------------------------
+Sun Nov 29 13:31:37 UTC 2015 - mpluskal@suse.com
+
+- Update to version 3.63:
+  + Updated translations for ISO 639 and ISO 639-3.
+- Changes from version 3.62:
+  + Updated translations for ISO 639 and ISO 639-3.
+
+-------------------------------------------------------------------
+Sun Sep 20 16:47:22 UTC 2015 - mpluskal@suse.com
+
+- Update to version 3.61:
+  + Updated translations for ISO 639, ISO 639-3, ISO 3166,
+    ISO 4217, ISO 3166-2 and ISO 15924.
+- Add gpg signature.
+- Cleanup spec file with spec-cleaner.
+
+-------------------------------------------------------------------
+Sun Aug 16 11:34:24 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.60:
+  + Correct name for AOK (Angolan Kwanza).
+  + Updated translations for ISO 4217, ISO 639-5, ISO 639-3,
+    ISO 3166, ISO 639 and ISO 3166-2.
+
+-------------------------------------------------------------------
+Mon Jul 13 17:34:30 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.59:
+  + Updated translations for ISO 639, ISO 3166, ISO 639-3,
+    ISO 639-5, ISO 15924 and ISO 4217.
+- Changes from version 3.58:
+  + Update autotools files.
+  + Updated translations for ISO 3166, ISO 3166-2, ISO 639,
+    ISO 639-3, ISO 639-5 and ISO 4217.
+
+-------------------------------------------------------------------
+Thu Nov 27 09:43:38 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.57:
+  + Updated translations for ISO 639-3, ISO 639-5 and ISO 3166-2.
+
+-------------------------------------------------------------------
+Sat Sep 27 17:14:29 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.56:
+  + Updated translations for ISO 3166-2, ISO 639-3, ISO 639-5 and
+    ISO 639.
+
+-------------------------------------------------------------------
+Fri Jul 11 17:45:03 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.55:
+  + Updated translations for ISO 639-3 and ISO 639-5.
+
+-------------------------------------------------------------------
+Tue Jul  1 18:55:43 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.54:
+  + Updated translations for ISO 639, ISO 639-5, ISO 3166-2 and
+    ISO 15924.
+
+-------------------------------------------------------------------
+Mon May  5 16:26:19 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.53:
+  + Fixed code for BH-AK (alioth#314648).
+  + Complete Japanese translation of Maryland (alioth#746533).
+  + Updated translations for ISO 639, ISO 3166, ISO 3166-2, ISO
+    4217, ISO 15924, ISO 639-5 and ISO 639-3.
+
+-------------------------------------------------------------------
+Sat Apr  5 15:48:39 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.52:
+  + New addition of ISO 639-5 (language families and groups).
+  + Updated translations for iso 3166 and iso 15924.
+
+-------------------------------------------------------------------
+Mon Feb 10 12:50:02 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.51:
+  + Updated translations for ISO 639, ISO 639-3, ISO 3166, ISO
+    3166-2 and ISO 15924.
+
+-------------------------------------------------------------------
+Mon Feb  3 22:35:21 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.50:
+  + Updated translations for ISO 639, ISO 639-3, ISO 15924 and ISO
+    3166.
+
+-------------------------------------------------------------------
+Sun Dec  8 12:27:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.49:
+  + General:
+    - Rename all tt.po files to tt@iqtelif.po. The Tatar
+      translations use the latin script, which is specified with
+      the modifier @iqtelif (alioth#314422).
+    - Add sed script to convert latin Tatar into cyrillic Tatar.
+  + ISO 15924:
+    - Modified Mend
+    - Added Modi, Pauc, Sidd, Ahom, Hatr, Mult
+  + Updated translations for ISO 639, ISO 639-3 and ISO 15924.
+- Changes from version 3.48:
+  + Updated translations for ISO 639, ISO 639-3, ISO 3166 and
+    ISO 15924.
+
+-------------------------------------------------------------------
+Wed Oct  2 11:21:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.47:
+  + Updated translations for ISO ISO 639-3 and ISO 3166.
+
+-------------------------------------------------------------------
+Sun Sep  1 19:40:57 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.46:
+  + Updated translations for ISO 639-3, and ISO 3166.
+
+-------------------------------------------------------------------
+Mon Aug  5 16:23:17 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.45:
+  + Update ISO-3166 after publication of ISO-3166 maintenance
+    agency Newsletter VI-16 dated 2013-07-11:
+    - Name change for Somalia.
+  + Bugs fixed: alioth#314331, alioth#717003.
+  + Updated translations for ISO 639, ISO 639-3 and ISO 3166.
+
+-------------------------------------------------------------------
+Fri Jul  5 17:52:04 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.44:
+  + ISO 639-2: Update by SIL as of 2013-05-31.
+  + ISO 3166-2: Fix country code for SH, SS regions
+    (alioth#712794).
+  + Updated translations for ISO 3166 and ISO 3166-2.
+
+-------------------------------------------------------------------
+Sat Jun 22 18:50:11 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.43:
+  + ISO 3166: 
+    - Update ISO-3166 after publication of ISO-3166 maintenance agency
+      Newsletter VI-15 dated 2013-05-10:
+      . Change name for Papua New Guinea
+  + ISO 3166-2:
+    - Fix spelling of a Sewdish region: Jämtlande län -> Jämtlands
+      län (alioth#31428).
+  + Updated translations for ISO 639, ISO 3166, ISO 3166-2 and
+    ISO 15924.
+
+-------------------------------------------------------------------
+Wed May  8 06:55:48 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.42:
+  + Updated translations for ISO 639, ISO 639-3, ISO 3166,
+    ISO 4217 and ISO 15924.
+
+-------------------------------------------------------------------
+Mon Mar 11 19:47:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.41:
+  + Update ISO 3166 after publication of ISO-3166 maintenance
+    agency Newsletter VI-14 dated 2013-02-06:
+    - Change name for the State of Palestine
+  + ISO 639-2:
+    - Update to 2012-11-21 (addition of zgh)
+  + Updated translations for ISO 639-2, ISO 3166, ISO 639-3,
+    ISO 639, ISO 15924, ISO 4217 and ISO 3166-2.
+
+-------------------------------------------------------------------
+Tue Nov  6 10:52:11 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.40:
+  + ISO 15924 (Updated as of 2012-10-16 changes):
+    - Added Aghb
+    - Renamed Hung
+    - Added Mahj
+    - Ignored addition of "property alias" for Geok as we don't
+      include these (yet?)
+  + ISO 639 and ISO 639-3:
+    - Introduce the concept of common_name in ISO-639 lists to
+      allow solving issues where the standard are clearly lagging
+      behind common practice
+    - Use "Bangla" as common name for Bengali (lp#991002).
+  + Updated translations for ISO 15924, ISO 3166, ISO 3166-2,
+    ISO 639 and ISO 639-3.
+
+-------------------------------------------------------------------
+Fri Oct  5 10:23:46 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.39:
+  + ISO 3166: Add official name for Eritrea
+  + ISO 3166-2:
+    - Corrections and removals of some entries (alioth#313748)
+    - Fix spelling of "type" attribute for Finland. (alioth#313749)
+  + Updated translations for ISO 3166, ISO 3166-2, ISO 639-3,
+    ISO 4217 and ISO 15924.
+
+-------------------------------------------------------------------
+Tue Aug 14 09:06:46 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.38:
+  + Updated translations for ISO 3166, ISO 3166-2, ISO 639 and
+    ISO 639-3.
+
+-------------------------------------------------------------------
+Fri Jul  6 16:45:25 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.37:
+  + ISO 639-3: Use new tabular file from sil.org and add three more
+    fields to the XML file to provide more information.
+  + Updated translations for ISO 3166, ISO 3166-2, ISO 639,
+    ISO 639-3 and ISO 15924.
+
+-------------------------------------------------------------------
+Wed Jun  6 19:29:11 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.36:
+  + ISO 3166-2: 
+    - Fix numeric code of Sint Maarten
+    - Fix typos in names for BE-WAL and PS-NBS (alioth#313619)
+  + Updated translations for ISO 639-3, ISO 3166, ISO 3166-2 and
+    ISO 15924.
+
+-------------------------------------------------------------------
+Sun May  6 11:03:17 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.35:
+  + ISO 3166-2:
+    - Update ISO-3166-2 after publication of ISO-3166 maintenance
+      agency Newsletter II-3 dated 2011-12-13:
+      . changes in Latvia subdivisions (alioth#313599)
+      . correct code for "São Lourenço dos Órgãos" (alioth#313598)
+      . many other changes to many other countries...
+  + ISO 639-3:
+    - Update to 2012-02-28
+  + Updated translations for ISO 639, ISO 639-3, ISO 3166 and
+    ISO 3166-2.
+
+-------------------------------------------------------------------
+Thu Apr  5 08:24:55 UTC 2012 - praful.johari@gmail.com
+
+- Update to version 3.34:
+  + Update ISO-3166 after publication of ISO-3166 maintenance 
+    agency newsletter VI-12 dated 2012-02-15:
+    - Change English full name of Hungary to..."Hungary"
+  + Updated translations for ISO 3166, ISO 15924, ISO 639-3, 
+    ISO 639 and ISO 3166-2.
+
+-------------------------------------------------------------------
+Sun Mar  4 11:10:04 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.33:
+  + ISO-15924:
+    - Update ISO-15924 as of 2012-02-06 changes.
+  + ISO 639-3:
+    - Update to 2012-02-06.
+  + ISO 3166:
+    - Add accent in "Réunion" (alioth#313537).
+  + Updated translations for ISO 3166, ISO 15924 and ISO 639-3.
+
+-------------------------------------------------------------------
+Sun Jan  8 13:54:51 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.32:
+  + ISO 15924:
+    - Fix code for Prti. (alioth#313492).
+  + ISO 3166-2:
+    - Fix syntax error in XML for Greenland. (alioth#313493).
+  + Updated translations for ISO 3166, ISO 4217, ISO 3166-2.
+
+-------------------------------------------------------------------
+Sun Dec 11 19:01:09 CET 2011 - zaitor@opensuse.org
+
+- Update to version 3.31:
+  + ISO 3166:
+    - Change name and official name for Libya.
+  + ISO 3166-2:
+    - Add subdivisions Davao and Vayamba paḷāta (alioth#313372).
+  + Updated translations for ISO 639, ISO 3166, ISO 3166-2,
+    ISO 4217 and ISO 15926.
+
+-------------------------------------------------------------------
+Mon Nov 14 12:15:31 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.30:
+  + ISO 3166:
+    - Properly capitalize "Republic" in Venezuela name.
+      Translations unfuzzied. [deb#647148]
+    - Add "(Dutch part)" in Sint Maarten's "short" name as this is
+      what's defined by the standard. [deb#647151]
+  + ISO 3166-2:
+    - Add district suffix for district of Latvia. [lp#882216]
+  + Updated translations for ISO 639, ISO 3166 and ISO 3166-2.
+
+-------------------------------------------------------------------
+Mon Oct  3 20:56:49 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.29:
+  + ISO 3166-2:
+    - Fix code error for Vakaga (CF-VK).
+    - Normalize all subdivision codes to <country_code>-<code>
+      instead of using either spaces or dashes.
+  + Updated translations for ISO 3166, ISO 15924, ISO 4217, ISO 639
+    and ISO 639-3.
+
+-------------------------------------------------------------------
+Sun Sep  4 16:25:55 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.28:
+  + ISO 3166:
+    - Update ISO-3166 after publication of ISO-3166 maintenance
+      agency Newsletter VI-10 dated 2011-08-09:
+      . Addition of South Sudan (SS)
+      . Change of numeric code for Sudan
+  + ISO 3166-2:
+    - Fix errors in some codes. Closes: alioth#313307,
+      alioth#313317.
+  + Updated translations for ISO 639, ISO 639-3, ISO 3166,
+    ISO 3166-2, ISO 4217, ISO 15924.
+
+-------------------------------------------------------------------
+Sat Jul  9 14:30:29 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.27:
+  + ISO 3166:
+    - Update ISO-3166 after publication of ISO-3166 maintenance
+      agency Newsletter VI-9 dated 2011-06-12:
+      . changed official name of BQ from "Saint Eustatius and Saba"
+        to "Sint Eustatius and Saba"
+      . changed official name of FJ from "the Republic of the Fiji"
+        to "the Republic of Fiji"
+      . changed official name of MM from "the Union of Myanmar"
+        to "the Republic of Myanmar"
+      . changed official name of NU from "the Republic of Niue" to
+        "Niue"
+  + ISO 15924:
+    - Update ISO-15924 as of 2011-06-21 changes.
+  + Updated translations for ISO 639, ISO 639-3, ISO 3166,
+    ISO 3166-2, ISO 4217, ISO 15924.
+
+-------------------------------------------------------------------
+Thu Jun  9 14:04:02 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.26:
+  + ISO 639-3:
+    - Update to 2011-05-25
+  + Updated translations for ISO 639, ISO 639-3, ISO 3166,
+    ISO 3166-2, ISO 4217.
+- Changes from version 3.25.1:
+  + Updated translations for ISO 639, ISO 639-3, ISO 3166,
+    ISO 4217.
+- Stop using source services: the ftp server where the tarballs are
+  hosted doesn't work reliably, and that breaks the package.
+
+-------------------------------------------------------------------
+Fri Apr 29 18:11:16 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.25:
+  + ISO 3166-2:
+    - Correct spelling for Sao Paulo
+- Changes from version 3.24.2:
+  + Updated translations for ISO 3166, ISO 639, ISO 15924 and
+    ISO 3166-2.
+- Changes from version 3.24.1:
+  + Updated translations for ISO 15924, ISO 3166, ISO 3166-2,
+    ISO 639-3 and ISO 639.
+- Use source services: download_url and set_version.
+
+-------------------------------------------------------------------
+Tue Jan 25 20:08:06 UTC 2011 - dimstar@opensuse.org
+
+- Split out -lang package (bnc#645077).
+
+-------------------------------------------------------------------
+Fri Jan 14 18:42:56 UTC 2011 - coolo@novell.com
+
+- Replace pyxml BuildRequires with python-lxml: pyxml was dropped.
+
+-------------------------------------------------------------------
+Fri Jan  7 17:45:27 CET 2011 - vuntz@opensuse.org
+
+- Update to version 3.24:
+  + ISO 3166:
+    - Update after publication of ISO-3166 maintenance agency
+      Newsletter VI-8 (split of Netherland Antilles).
+  + ISO 3166-2:
+    - Add parents for Bosnia cantons.
+  + ISO 15924:
+    - Incorporate changes from the 2010-12-21 edition of ISO 15924.
+  + Updated translations for ISO 3166, ISO 3166-2, ISO 15924,
+    ISO 639, ISO 639-3, ISO 4217.
+- Change group to System/Localization (and
+  Development/Libraries/Other for the devel subpackage), away from
+  System/GUI/GNOME which wasn't appropriate.
+
+-------------------------------------------------------------------
+Tue Dec  7 11:32:10 CET 2010 - vuntz@opensuse.org
+
+- Update to version 3.23:
+  + Updated translations for ISO 15925, ISO 3166, ISO 639,
+    ISO 4217.
+
+-------------------------------------------------------------------
+Sat Nov  6 18:24:58 CET 2010 - dimstar@opensuse.org
+
+- Update to version 3.22:
+  + ISO 3166-2:
+    - Fix typos in BS-MC and CF-KG. Closes: alioth#312747.
+  + Updated translations for ISO 3166, ISO 3166-2, ISO 15924,
+    ISO 4217, ISO 639, ISO 639-3.
+
+-------------------------------------------------------------------
+Mon Oct  4 12:09:15 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 3.21:
+  + ISO 3166-2:
+    - Copy/paste errors leading to code duplication errors fixed.
+      Fixes deb#596368
+  + Updated translations for ISO 3166-2, ISO 4217, ISO 639,
+    ISO 3166, ISO 15924.
+
+-------------------------------------------------------------------
+Sat Sep  4 17:39:49 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 3.20:
+  + ISO 3166-2:
+    - Changes from ISO-3166-2 MA Newsletter II-2 issue 2010-06-30
+      Affected countries: Antigua and Barbuda, Argentina, Bosnia
+      and Herzegovina, Burkina Faso, Burundi, Bahamas, Belarus,
+      Central African Republic, Chile, Cape Verde, Ecuador, Egypt,
+      United Kingdom, Greenland, Hungary, Italy, Kenya, Comoros,
+      Lybian Arab Jamahiriya, Moldova, Republic of, Malawi,
+      Nigeria, New Zealand, Oman, Panama, Peru, Philippines,
+      Russian Federation, Seychelles, Saint Helena, Ascension and
+      Tristan da Cunha, Slovenia, Senegal, Chad, Turkmenistan,
+      Yemen
+    - Correct code for Lyantonde, Uganda from UG-106 to UG-116
+    - Correct spelling of country divisions for Moldova and Romania
+  + Updated translations for ISO 3166-2, ISO 3166, ISO 639,
+    ISO 15924, ISO 639-3 and ISO 4217.
+- Use _smp_mflags.
+
+-------------------------------------------------------------------
+Thu Sep  2 09:43:40 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 3.19:
+  + ISO 15924:
+    - Incorporate changes from the 2010-07-18 edition of ISO 15924
+  + ISO 639-3:
+    - Update to 2010-07-07
+  + Updated translations for ISO 639-3, ISO 3166, ISO 3166-2,
+    ISO 15924.
+- Changes from version 3.18:
+  + ISO 3166-2:
+    - Fix spelling errors in some greece departments.
+  + Updated translations for ISO 3166, ISO 3166-2, ISO 639,
+    ISO 4217, ISO 15924
+- Changes from version 3.17:
+  + ISO 3166-2: Changes from ISO-3166-2 MA Newsletter II-1 issue
+    2010-02-19:
+    - local language names for some regions and provinces of Spain
+    - dashes in name of Wallis-et-Futuna for France
+    - Agio Oros, Irakleio, Kefallonia corrected for Greece
+    - local names of divisions for North Korea
+    - local names of divisions for Sri Lanka (in Sinhala)
+    - corrections, additions, removals for Morocco
+    - added "chains of islands" subdivisions for Marshall Islands
+    - corrected Ailinglaplap, Enewetak for Marshall Islands
+    - dropped Ujelang for Marshall Islands
+    - added subdivisions of Nepal
+    - local names of divisions for Serbia
+    - added dashes in codes for regions of Uganda
+    - added Bududa, Bukedea, Lyantonde for Uganda
+    - corrected Buliisa for Uganda
+  + Updated translations for ISO 3166, ISO 3166-2, ISO 4217,
+    ISO 639-3, ISO 15924, ISO 639.
+- Changes from version 3.16:
+  + ISO 4217:
+    - Correct name for ZMK: Zambian Kwacha.
+    - Correct name for CDF: Congolese Franc.
+  + Updated translations for ISO 3166-2, ISO 4217, ISO 15924,
+    ISO 639, ISO 3166, ISO 639-3.
+- Changes from version 3.15:
+  + ISO 15924:
+    - Incorporate changes from the 2010-03-26 edition of ISO 15924
+  + ISO 639:
+    - Incorporate changes from the 2010-03-29 edition of ISO 639
+  + Updated translations for ISO 15924, ISO 3166-2, ISO 639-3,
+    ISO 3166, ISO 639.
+- Changes from version 3.14:
+  + ISO 3166: Changes from ISO-3166 MA Newsletter VI-7.
+    - SH name from "Saint Helena" to "Saint Helena, Ascension
+      and Tristan da Cunha"
+  + ISO 3166-2:
+    - Correct typo: "Ben Slimane" for Morocco
+    - Correct typo: "Azad Kashmir" for Pakistan
+  + ISO 639-3:
+    - Update to 2010-02-17
+  + Updated translations for ISO 3166, ISO 15924, ISO 639-3,
+    ISO 639, ISO 3166, ISO 4217.
+- Changes from version 3.13:
+  + ISO 639-3:
+    - Update to 2010-01-10
+  + Updated translations for ISO 3166, ISO 3166-2, ISO 639,
+    ISO 639-3, ISO 15924, ISO 4217.
+- Changes from version 3.12.1:
+  + Updated translations for ISO 15924, ISO 639-3, ISO 3166-2,
+    ISO 3166.
+- Changes from version 3.12:
+  + General:
+    - The package iso-codes does no longer provide a gzip'ed
+      tarball, the compression method is now bzip2
+  + ISO 15924:
+    - Incorporate changes from the 2009-11-11 and 2009-06-01
+      editions of ISO 15924
+  + ISO 3166-2:
+    - Fix spelling error of Northumberland (England).
+  + Updated translations for ISO 15924, ISO 3166-2, ISO 3166,
+    ISO 639.
+- Changes from version 3.11.1:
+  + Updated translations for ISO 639, ISO 639-3, ISO 3166,
+    ISO 3166-2, ISO 15924.
+- Changes from version 3.11:
+  + ISO 639-2:
+    - Update to 2009-09-01 (changes to bih and him)
+  + Updateed translations for ISO 639, ISO 639-3, ISO 3166,
+    ISO 3166-2, ISO 4217, ISO 15924.
+
+-------------------------------------------------------------------
+Wed Apr 28 10:07:59 UTC 2010 - dimstar@opensuse.org
+
+- Clean spec file with spec-cleaner
+- BuildRequire pkg-config to provide pkgconfig() provides.
+
+-------------------------------------------------------------------
+Mon Sep  7 13:15:00 CEST 2009 - lmedinas@opensuse.org
+
+- Update to version 3.10.3:
+  + Updated translations for ISO 3166, ISO 639, ISO 639-3, 
+    ISO 15924.
+
+-------------------------------------------------------------------
+Mon Aug  3 20:02:24 CEST 2009 - vuntz@novell.com
+
+- Update to version 3.10.2:
+  + Updated translations for ISO 3166, ISO 3166-2, ISO 639,
+    ISO 639-3, ISO 15924, ISO 4217.
+
+-------------------------------------------------------------------
+Sat Jul 18 23:46:17 CEST 2009 - captain.magnus@opensuse.org
+
+- Update to version 3.10.1:
+  + Translation updates for ISO; 3166, 3166-2, 4217, 639, 639-3
+  + ISO-639-3:
+    * Marathi almost completely removed 
+
+-------------------------------------------------------------------
+Tue Jun  2 17:30:48 CEST 2009 - vuntz@novell.com
+
+- Update to version 3.10:
+  + General
+    - Move directory iso_3166_2 from iso_3166 directory into top
+      source directory
+    - Move directory iso_639_3 from iso_639 directory into top
+      source directory
+  + ISO-3166
+    - Changes from ISO-3166 MA Newsletter VI-6.
+      * BO "short" name to "Bolivia, Plurinational State of"
+      * BO long name to "Plurinational State of Bolivia"
+      * introduce a "common_name" for Bolivia
+    - Use a "common name" also for Libya
+  + ISO 3166-2
+    - Add provinces of Gabon (GA-*)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun May  3 00:50:22 CEST 2009 - mboman@suse.de
+
+- Update to version 3.9:
+  + Use the GNU Lesser General Public License for all files
+    included in this package
+  + Do no longer provide the file /usr/share/iso-codes/iso_639.tab
+    which has been deprecated for a long time now.
+  + Do no longer include the notes directory in the tarball,
+    because all files were outdated and deprecated. Moreover, none
+    of those files have ever been installed
+  + ISO 3166: Fix wrong capitalization for "Moldova, Republic of"
+  + ISO 15924: Changes made by the Maintenance Agency on 2009-02-23
+  + Translation updates for ISO 15924, ISO 3166, ISO 3166-2,
+    ISO 639, ISO 639-3, ISO 4217
+- Remove AutoReqProv since it's default
+
+-------------------------------------------------------------------
+Sun Apr  5 14:16:50 CEST 2009 - vuntz@novell.com
+
+- Update to version 3.8:
+  + ISO-3166:
+    - MD "short" name to "Moldova, republic of"
+    - introduce a "common_name" for Moldova
+    - VE "short" name to "Venezuela, Bolivarian republic of"
+    - introduce a "common_name" for Venezuela
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  9 00:39:10 CET 2009 - vuntz@novell.com
+
+- Update to version 3.7:
+  + Use a Perl script for a complete check of valid UTF-8 text in
+    po files
+  + ISO 639-2: Update to 2009-03-03
+  + ISO 639-3: Update to 2009-02-10
+  + ISO 3166-2: Update Danemark entry as in second edition of the
+    standard
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  2 16:25:41 EST 2009 - mboman@suse.de
+
+- Update to version 3.6:
+  + [ ISO-639-3 ]
+  + [ ISO 4217 ]
+  + [ ISO 639-3 translations ]
+  + [ ISO 639 translations ]
+  + [ ISO 3166 translations ]
+  + [ ISO 3166-2 translations ]
+  + [ ISO 4217 translations ]
+
+-------------------------------------------------------------------
+Sat Jan  3 07:46:38 EST 2009 - mboman@suse.de
+
+- Update to version 3.5.1:
+  + [ ISO 4217 translations ]
+  + [ ISO 15924 translations ]
+  + [ ISO 639 translations ]
+  + [ ISO 3166 translations ]
+
+-------------------------------------------------------------------
+Sat Dec 20 11:15:29 EST 2008 - mboman@suse.de
+
+- Update to version 3.5:
+  + Too many updates to list. Please see NEWS for full details 
+
+-------------------------------------------------------------------
+Fri Sep 12 16:55:16 CEST 2008 - crrodriguez@suse.de
+
+- update to version 3.3
+- fix build (workaround BNC#424730) 
+
+-------------------------------------------------------------------
+Tue Apr  1 18:18:50 CEST 2008 - rodrigo@suse.de
+
+- Update to version 2.0:
+  * http://pkgsrc.se/textproc/iso-codes
+
+-------------------------------------------------------------------
+Tue Feb 26 04:45:49 CET 2008 - crrodriguez@suse.de
+
+- fix filelist again 
+
+-------------------------------------------------------------------
+Fri Feb 15 01:11:42 CET 2008 - ro@suse.de
+
+- modify filelist to fix build 
+
+-------------------------------------------------------------------
+Thu Jan 31 17:01:00 CET 2008 - rodrigo@suse.de
+
+- Update to version 1.8:
+  * Added 'Pashto' as alternative for ps 
+  * Remove attribute "alpha_2_code" from some entries, as the
+    information is included in the first two letters of the
+    "alpha_4_code"
+  * Fix typos in LR-GB and LV-JK
+  * Complete the list with modifications from the ISO-3166 MA
+    newsletter I-9 of 2007-11-28
+  * Add missing subset information
+  * GWP removed from the non-historic section
+  * SVC removed from the historic section
+  * Add Saint Barthélemy and Saint Martin (French part) according to
+    ISO-3166-1 newsletter VI-1, dated 2007-09-21
+  * Update translations
+
+-------------------------------------------------------------------
+Fri Apr  6 12:56:32 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 1.0a:
+  * Many data updates.
+  * Support for ISO-639-3.
+  * Stable version.
+
+-------------------------------------------------------------------
+Mon Jan  8 16:20:50 CET 2007 - sbrabec@suse.cz
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Sun Mar  5 07:31:37 CET 2006 - aj@suse.de
+
+- removed "tt" directories since they are in filesystem now.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:17 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 18:58:33 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 0.49.
+
+-------------------------------------------------------------------
+Thu Jan  5 02:02:07 CET 2006 - ro@suse.de
+
+- removed "fo" directories (in filesystem) 
+
+-------------------------------------------------------------------
+Thu Sep 29 00:22:43 CEST 2005 - dmueller@suse.de
+
+- add norootforbuild 
+
+-------------------------------------------------------------------
+Wed Aug  3 16:34:30 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.47.
+
+-------------------------------------------------------------------
+Mon Jun 27 18:00:39 CEST 2005 - sbrabec@suse.cz
+
+- Bi-arch fix.
+
+-------------------------------------------------------------------
+Wed Jun 22 00:50:52 CEST 2005 - gekker@suse.de
+
+- Fix the file lists 
+- Patch the Makefile
+
+-------------------------------------------------------------------
+Tue Jun 21 17:24:40 CEST 2005 - gekker@suse.de
+
+- Initial import of iso-codes version 0.25 
+

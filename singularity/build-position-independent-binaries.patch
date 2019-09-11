@@ -1,0 +1,28 @@
+From: Egbert Eich <eich@suse.com>
+Date: Fri May 17 11:15:57 2019 +0200
+Subject: build position independent binaries
+Patch-mainline: Not yet
+Git-commit: a083559a1c42459142e3501a33581089cb35e6d2
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ src/github.com/sylabs/singularity/mlocal/frags/go_common_opts.mk | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+diff --git a/src/github.com/sylabs/singularity/mlocal/frags/go_common_opts.mk b/src/github.com/sylabs/singularity/mlocal/frags/go_common_opts.mk
+index 87359af..045563a 100644
+--- a/src/github.com/sylabs/singularity/mlocal/frags/go_common_opts.mk
++++ b/src/github.com/sylabs/singularity/mlocal/frags/go_common_opts.mk
+@@ -2,10 +2,10 @@
+ GO111MODULE := on
+ GO_TAGS := containers_image_openpgp sylog
+ GO_LDFLAGS :=
+-GO_BUILDMODE := -buildmode=default
++GO_BUILDMODE := -buildmode=pie
+ GO_GCFLAGS := -gcflags=all=-trimpath=$(SOURCEDIR)
+ GO_ASMFLAGS := -asmflags=all=-trimpath=$(SOURCEDIR)
+-GO_MODFLAGS :=
++GO_MODFLAGS := -x -v -work
+ GOFLAGS := -mod=vendor
+ 
+ export GOFLAGS GO111MODULE

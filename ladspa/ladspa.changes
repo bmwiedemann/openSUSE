@@ -1,0 +1,600 @@
+-------------------------------------------------------------------
+Sun Jan  6 13:37:27 UTC 2019 - davejplater@gmail.com
+
+- Update to version 1.15 removed incorporated patch:
+  ladspa-ldcommand.patch and ladspa.diff
+- Upstream changes:
+  *Perform macro string expansion in C code rather than in Makefile
+   for better portability.
+  *Modernise init()/fini() style in GNU C plugin builds (not C++),
+   tweak link line to correspond.
+
+-------------------------------------------------------------------
+Sat Jan  5 10:53:13 UTC 2019 - davejplater@gmail.com
+
+- Update to version 1.4 and remove incorporated patches:
+  ladspa-find-plugin-path.patch and ladspa-pie.patch
+- Modified ladspa.dif, one hunk was incorporated.
+- Added ladspa-ldcommand.patch to fix plugin linking.
+- Upstream changes:
+  *Rename Makefile.
+  *Modernise C++ #include style.
+  *Make some globals static.
+  *Use mkdir -p rather than mkdirhier during build.
+  *Use GCC export map to ensure only the ladspa_descriptor()
+   is  exported.
+  *Put libraries at the end of link instructions.
+  *Package with version number in archive and directory names.
+  *Tweaks to documentation processing.
+  *Fix bug in LADSPA plugin search which did not handle shared
+   libraries that are not plugins correctly.
+  *Introduce a default LADSPA plugin search path.
+
+-------------------------------------------------------------------
+Sat Nov  4 08:39:00 UTC 2017 - davejplater@gmail.com
+
+- Add ladspa-find-plugin-path.patch to enable listplugins to find
+  plugins without LADSPA_PATH variable set.
+- Add ladspa-pie.patch to enable position independent executables.
+
+-------------------------------------------------------------------
+Mon Mar  3 11:58:41 CET 2014 - tiwai@suse.de
+
+- package the original tarball instead of re-packed tar.bz2
+
+-------------------------------------------------------------------
+Sat Mar  1 21:25:49 UTC 2014 - andreas.stieger@gmx.de
+
+- some spec file cleanup
+- add source URLs, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Mon Dec 16 15:14:29 CET 2013 - tiwai@suse.de
+
+- Split to each plugin sub-package; also fix the self-dependency
+  on ladspa-devel
+- Fix build with SLE11 targets
+
+-------------------------------------------------------------------
+Wed Dec  4 15:55:53 CET 2013 - tiwai@suse.de
+
+- Merge ladspa-devel.spec into ladspa.spec; back to root, as OBS
+  doesn't like split packages (the submitreq always declined),
+  and the development activity of this package is pretty low, so
+  no worth to resist
+
+-------------------------------------------------------------------
+Thu Sep 26 14:37:25 CEST 2013 - tiwai@suse.de
+
+- caps-fix-double-free.diff:
+  Fix double free in destructor of caps plugin (bnc#842420)
+
+-------------------------------------------------------------------
+Tue Feb 14 07:51:10 UTC 2012 - coolo@suse.com
+
+- remove old %suse_update_config
+
+-------------------------------------------------------------------
+Thu Feb  9 14:20:40 UTC 2012 - reddwarf@opensuse.org
+
+- Remove swh-configure-2.65.patch for >12.1
+
+-------------------------------------------------------------------
+Sun Nov 13 09:12:07 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit buildrequire to avoid implicit dependency from prjconf
+
+-------------------------------------------------------------------
+Sun May  1 17:35:27 UTC 2011 - toddrme2178@gmail.com
+
+- Added 32bit compatibility libraries
+- Removed tests for obsolete openSUSE versions
+- Fixed self-obsoletes (fix for RPMLINT warning)
+
+-------------------------------------------------------------------
+Thu Apr 22 11:50:49 UTC 2010 - davejplater@gmail.com
+
+- Added obsoletes and provides for all conflicting packman plugins.
+- Changed group to more suitable one.
+
+-------------------------------------------------------------------
+Wed Apr 14 08:24:43 UTC 2010 - davejplater@gmail.com
+
+- Enabled "autoreconf --install --force" in blop build to fix a
+  segfault in blop plugins
+- Removed old BuildRequires:fftw-devel because fftw3-devel is sufficient
+- Enabled multiple jobs in all plugin builds.
+
+-------------------------------------------------------------------
+Mon Mar 22 05:12:28 UTC 2010 - davejplater@gmail.com
+
+- Add swh-configure-2.65.patch for autoconf-2.65 build
+
+-------------------------------------------------------------------
+Tue Jan 26 07:21:56 UTC 2010 - davejplater@gmail.com
+
+- Fixed swt lib build with swh-liblo.dif & swh-configure.patch
+
+-------------------------------------------------------------------
+Fri Jan 22 08:52:05 UTC 2010 - davejplater@gmail.com
+
+- Update plugins to AMB-plugins-0.6.1, FIL-plugins-0.3.0, 
+  MCP-plugins-0.4.0, caps_0.4.4, pvoc_0.1.12, tap-plugins-0.7.1 and
+  vocoder-ladspa-0.3.
+- Fix tap-type-punning-fix.dif
+
+-------------------------------------------------------------------
+Thu Jan 21 07:00:52 UTC 2010 - davejplater@gmail.com
+
+- Update to ladspa-1.13
+- Removed ladspa_sdk-compile-fix.diff and adapted ladspa.dif
+- Moved examples directory to {_docdir}/{name}/examples
+- Updated "License: LGPL2.1+"
+- Version 1.13 - 6 Nov 2007
+
+  • Fix compile error in sine.cpp (GCC4).
+  • Fix typo in text output by analyseplugin.
+  • Extra usage text in analyseplugin and applyplugin.
+  • Replace strdup() with localStrdup() in sine.cpp to avoid malloc/new
+    mismatch.
+  • Remove "local" part from install directories.
+
+-------------------------------------------------------------------
+Wed Nov 25 13:58:09 UTC 2009 - mseben@novell.com
+
+- added blop-ladspa_dir.diff to correct ladspa dir for 64 bit arch
+- corrected blop-wdautil-fix.diff (bnc#553647)
+
+-------------------------------------------------------------------
+Tue Nov 17 08:58:59 CET 2009 - tiwai@suse.de
+
+- refresh patches with fuzz=0
+- add -fno-strict-aliasing for swh plugins
+
+-------------------------------------------------------------------
+Tue Nov 10 20:22:43 CET 2009 - tiwai@suse.de
+
+- make static varibles in some blop plugins (possible fix for
+  bnc#553647)
+
+-------------------------------------------------------------------
+Mon Nov  2 15:53:13 CET 2009 - tiwai@suse.de
+
+- fix invalid so files due to static linking in swh plugins
+  (bnc#549865)
+
+-------------------------------------------------------------------
+Fri Jun 19 10:35:46 CEST 2009 - coolo@novell.com
+
+- disable as-needed for this package as it fails to build with it
+
+-------------------------------------------------------------------
+Thu Nov 22 12:59:00 CET 2007 - tiwai@suse.de
+
+- fix build with gcc 4.3
+- update swh plugins 0.4.15; minor fixes
+
+-------------------------------------------------------------------
+Wed Jun 20 14:04:50 CEST 2007 - tiwai@suse.de
+
+- fixed filelist (examples directory).
+- fix fdupes usage
+
+-------------------------------------------------------------------
+Tue Jun 19 19:19:01 CEST 2007 - tiwai@suse.de
+
+- updated CAPS plugin to 0.4.2
+- use fdupes
+- use find_lang
+
+-------------------------------------------------------------------
+Fri May  4 10:39:53 CEST 2007 - tiwai@suse.de
+
+- remove the explicit requirement of ladspa-devel (#270555)
+
+-------------------------------------------------------------------
+Wed Apr 18 13:01:25 CEST 2007 - tiwai@suse.de
+
+- split ladspa-devel.spec to reduce the build dependency
+
+-------------------------------------------------------------------
+Tue Apr 17 16:41:11 CEST 2007 - tiwai@suse.de
+
+- split ladspa SDK to devel sub package
+
+-------------------------------------------------------------------
+Tue Jan 16 16:19:45 CET 2007 - tiwai@suse.de
+
+- fix build warnings regarding RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Tue Jan  9 12:17:02 CET 2007 - tiwai@suse.de
+
+- fix array out of range in caps Amp plugin (#232111)
+
+-------------------------------------------------------------------
+Tue Nov  7 01:09:41 CET 2006 - ro@suse.de
+
+- fix permissions for docu 
+
+-------------------------------------------------------------------
+Mon Jul 31 18:27:59 CEST 2006 - tiwai@suse.de
+
+- fixed broken patch in the last change for triangle_1649 plugin
+  (#194955).
+
+-------------------------------------------------------------------
+Mon May 22 22:11:27 CEST 2006 - schwab@suse.de
+
+- Use RPM_OPT_FLAGS.
+- Don't strip binaries.
+- Fix building of shared libraries.
+
+-------------------------------------------------------------------
+Tue Mar 28 11:22:52 CEST 2006 - tiwai@suse.de
+
+- fixed the wrong permission for vlevel-bin (#157814)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:17 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 16:41:54 CET 2006 - tiwai@suse.de
+
+- updated caps plugin to 0.3.0
+- fixed compile warnings with swh plugins
+
+-------------------------------------------------------------------
+Thu Oct  6 20:41:50 CEST 2005 - tiwai@suse.de
+
+- updated swh plugin to 0.4.14.
+- fix some compile problems with the recent gcc.
+
+-------------------------------------------------------------------
+Thu Aug  4 14:14:42 CEST 2005 - tiwai@suse.de
+
+- updated caps plugin to 0.2.3.
+- added AMB plugin 0.0.1.
+
+-------------------------------------------------------------------
+Mon Apr 11 11:21:16 CEST 2005 - tiwai@suse.de
+
+- fix build with gcc-4.0 again.
+
+-------------------------------------------------------------------
+Fri Apr  8 17:44:12 CEST 2005 - tiwai@suse.de
+
+- fixed build with gcc-4.0.
+
+-------------------------------------------------------------------
+Wed Feb 16 17:26:45 CET 2005 - tiwai@suse.de
+
+- updated swh-plugins to (real) 0.4.13.
+
+-------------------------------------------------------------------
+Thu Feb 10 12:19:38 CET 2005 - tiwai@suse.de
+
+- updated REV plugins to 0.3.1.
+- added blepvco-0.1.0.
+
+-------------------------------------------------------------------
+Fri Jan 21 16:37:39 CET 2005 - tiwai@suse.de
+
+- updated swh-plugins to 0.4.13.
+- updated caps-plugins to 0.2.0.
+
+-------------------------------------------------------------------
+Wed Aug 18 17:33:16 CEST 2004 - tiwai@suse.de
+
+- updated swh-plugins to 0.4.7.
+- updated TAP-plugins to 0.7.0.
+- updated caps-plugins to 0.1.12.
+- updated blop plugin to 0.2.8.
+- added FIL-plugins 0.0.1.
+- added pvoc-plugins 0.1.10.
+
+-------------------------------------------------------------------
+Mon Jun 21 23:40:29 CEST 2004 - ro@suse.de
+
+- remove some "const" statements where the pointer is modified
+
+-------------------------------------------------------------------
+Mon Jun 14 12:04:50 CEST 2004 - mana@suse.de
+
+- Updated MCP and VCO plugins
+
+-------------------------------------------------------------------
+Fri Mar  5 15:51:37 CET 2004 - tiwai@suse.de
+
+- added TAP-plugins 0.4.2.
+- added CAPS 0.1.10.
+- added super-60 plugin.
+
+-------------------------------------------------------------------
+Thu Jan 22 12:48:09 CET 2004 - tiwai@suse.de
+
+- fixed the build of swh-plugins with the latest automake.
+- updated MCP and REV plugins to version 0.2.1.
+- added VCO plugins 0.2.1.
+- updated blop to version 0.2.7.
+- updated preamp v2.
+- added matched plugin.
+- updated sooperlooper to 0.93.
+- updated vocoder to 0.2.
+- clean up the installation phase.
+- fixed the type punning in swh and blop plugins.
+
+-------------------------------------------------------------------
+Mon Jan 12 10:41:23 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Fri Jan  9 17:45:25 CET 2004 - tiwai@suse.de
+
+- updated swh plugins to version 0.4.3.
+
+-------------------------------------------------------------------
+Mon Aug 25 17:06:33 CEST 2003 - tiwai@suse.de
+
+- added vlevel plugin.
+
+-------------------------------------------------------------------
+Mon Aug 25 16:36:28 CEST 2003 - tiwai@suse.de
+
+- updated to LADSPA-SDK 1.12, CMT-1.15.
+- added REV-plugins.
+
+-------------------------------------------------------------------
+Mon Aug 18 17:47:59 CEST 2003 - tiwai@suse.de
+
+- added RDF file for CMT.
+
+-------------------------------------------------------------------
+Wed Aug  6 11:25:05 CEST 2003 - meissner@suse.de
+
+- do not compile gverb-test.c on !i386, until the code
+  gets rid of hardcoded "rdtsc" assembler.
+
+-------------------------------------------------------------------
+Tue Aug  5 17:49:21 CEST 2003 - tiwai@suse.de
+
+- use fftw3 for swh plugins.
+
+-------------------------------------------------------------------
+Tue Jul 29 15:36:53 CEST 2003 - tiwai@suse.de
+
+- added pkgconfig to neededforbuild.
+- fixed the build on x86-64.
+
+-------------------------------------------------------------------
+Fri Jun  6 15:58:07 CEST 2003 - tiwai@suse.de
+
+- updated swh-plugins to ver.0.4.2.
+- added MCP-plugins-0.0.2.
+- fixed the symlink of ladspa.h.txt.
+
+-------------------------------------------------------------------
+Thu Apr  3 15:32:11 CEST 2003 - tiwai@suse.de
+
+- updated swh-plugins to ver.0.3.7.
+
+-------------------------------------------------------------------
+Mon Mar  3 15:33:41 CET 2003 - tiwai@suse.de
+
+- removed _init and _fini patches from swh plugin.
+  works with ams now (bug #24523).
+
+-------------------------------------------------------------------
+Mon Jan 20 01:34:29 CET 2003 - ro@suse.de
+
+- fix multiline-string issue in code (pitchscale.c) 
+
+-------------------------------------------------------------------
+Thu Jan 16 14:09:15 CET 2003 - tiwai@suse.de
+
+- updated swh plugsin to version 0.3.6.
+
+-------------------------------------------------------------------
+Tue Nov 26 15:16:03 CET 2002 - tiwai@suse.de
+
+- updated LADSPA SDK ver.1.1.
+- updated CMT.
+- updated to swh plugin ver.0.3.0.
+- added unmatched and preamp plugins.
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Sep 17 14:56:29 CEST 2002 - arvin@suse.de
+
+- fixed seg. fault in alienwah plugin on hammer
+
+-------------------------------------------------------------------
+Tue Sep  3 16:56:57 CEST 2002 - mana@suse.de
+
+- Added README_VCF for vcf filter plugins
+
+-------------------------------------------------------------------
+Mon Aug 12 14:57:48 CEST 2002 - tiwai@suse.de
+
+- added vcf plugin version 0.0.5.
+
+-------------------------------------------------------------------
+Wed Jul 24 13:47:00 CEST 2002 - tiwai@suse.de
+
+- added blop plugins ver.0.2.5.
+- updated the swh documents.
+
+-------------------------------------------------------------------
+Mon Jul 22 18:01:57 CEST 2002 - tiwai@suse.de
+
+- updated swh-plugins to ver.0.2.8.
+
+-------------------------------------------------------------------
+Tue Jun 25 15:24:23 CEST 2002 - tiwai@suse.de
+
+- updated swh-plugins to ver.0.2.7.
+  fixed for gcc-3.1.
+- updated alienwah plugin to ver.1.13.
+
+-------------------------------------------------------------------
+Tue May  7 14:41:24 CEST 2002 - schwab@suse.de
+
+- Link with $(CC) instead of ld.
+- Fix invalid casts.
+
+-------------------------------------------------------------------
+Wed Apr 10 16:36:37 CEST 2002 - tiwai@suse.de
+
+- updated swh plugins to version 0.2.5.
+- fixed build with gcc-3.1.
+
+-------------------------------------------------------------------
+Mon Jan 28 15:03:02 CET 2002 - tiwai@suse.de
+
+- added sooperlooper plugin (ver.0.9).
+- fixed installation of alienwah plugin.
+
+-------------------------------------------------------------------
+Tue Jan 15 18:04:31 CET 2002 - tiwai@suse.de
+
+- updated swh plugins ver.0.2.3.
+  some plugins are added; many bug fixes.
+- updated ladspa-swh.{tex,pdf}.
+
+-------------------------------------------------------------------
+Wed Jan  2 17:11:37 CET 2002 - tiwai@suse.de
+
+- updated swh plugins ver.0.2.2.
+
+-------------------------------------------------------------------
+Mon Dec 10 10:47:44 CET 2001 - tiwai@suse.de
+
+- added alienwah plugin (ver.1.11).
+- updated version number.
+
+-------------------------------------------------------------------
+Fri Oct 19 12:02:02 CEST 2001 - tiwai@suse.de
+
+- updated to swh plugins ver.0.2.1.
+
+-------------------------------------------------------------------
+Fri Oct  5 17:03:42 CEST 2001 - tiwai@suse.de
+
+- added vocoder plugin (ver.0.1).
+
+-------------------------------------------------------------------
+Fri Aug 24 12:09:04 CEST 2001 - tiwai@suse.de
+
+- updated to swh plugins ver.0.2.0.
+  + fixed a major bug that bit somtimes in instantiation.
+  + human readable docs (pdf & TeX).
+
+-------------------------------------------------------------------
+Fri Aug  3 11:32:37 CEST 2001 - tiwai@suse.de
+
+- fixed compile on ia64.
+
+-------------------------------------------------------------------
+Mon Jul 23 17:10:45 CEST 2001 - tiwai@suse.de
+
+- updated swh plugins to 0.1.14.
+
+-------------------------------------------------------------------
+Mon Jul  9 14:08:20 CEST 2001 - tiwai@suse.de
+
+- updated swh plugins to 0.1.13.
+
+-------------------------------------------------------------------
+Thu Jun  7 11:54:07 CEST 2001 - tiwai@suse.de
+
+- fixed build.
+
+-------------------------------------------------------------------
+Thu Apr  5 16:57:08 CEST 2001 - tiwai@suse.de
+
+- Updated swh plugins to 0.1.11.
+- Updated cmt libs.
+
+-------------------------------------------------------------------
+Wed Mar  7 12:51:28 CET 2001 - tiwai@suse.de
+
+- Fixed compile on ia64 and axp.
+- Replace mkdirhier with mkdir -p in CMT's makefile.
+- Use RPM_OPT_FLAGS for CFLAGS in compile of swh plugins.
+
+-------------------------------------------------------------------
+Thu Feb  1 14:54:25 CET 2001 - tiwai@suse.de
+
+- Updated swh plugins to 0.1.10.
+
+-------------------------------------------------------------------
+Tue Jan 30 13:56:57 CET 2001 - tiwai@suse.de
+
+- Updated swh plugins to 0.1.9.
+
+-------------------------------------------------------------------
+Mon Jan  8 12:29:00 CET 2001 - tiwai@suse.de
+
+- Linked dynamically with fftw lib.
+
+-------------------------------------------------------------------
+Fri Jan  5 16:47:26 CET 2001 - tiwai@suse.de
+
+- Updated swh plugins to 0.1.8.
+- Correct the address of swh.
+
+-------------------------------------------------------------------
+Wed Dec 13 15:22:10 CET 2000 - tiwai@suse.de
+
+- Updated swh plugins to 0.1.7.
+
+-------------------------------------------------------------------
+Tue Nov 28 19:51:56 CET 2000 - tiwai@suse.de
+
+- Linked statically with fftw.
+
+-------------------------------------------------------------------
+Tue Nov 21 14:04:49 CET 2000 - tiwai@suse.de
+
+- Updated swh plugin 0.1.2.
+
+-------------------------------------------------------------------
+Fri Nov 17 17:08:15 CET 2000 - tiwai@suse.de
+
+- Updated swh plugin 0.1.1.
+
+-------------------------------------------------------------------
+Fri Nov 17 16:31:32 CET 2000 - tiwai@suse.de
+
+- Added swh plugins.
+
+-------------------------------------------------------------------
+Tue Nov  7 13:49:33 CET 2000 - tiwai@suse.de
+
+- Updated to the latest source.
+- Fixed autobuild on beta-i386.
+- Remove compat requirement.
+
+-------------------------------------------------------------------
+Tue Sep 26 17:03:37 CEST 2000 - tiwai@suse.de
+
+- Changed to bzip2.
+
+-------------------------------------------------------------------
+Wed Aug 16 15:41:07 CEST 2000 - uli@suse.de
+
+- now links to standard libstdc++ instead of 2.9 from compat (which does
+  not exist on PPC)
+
+-------------------------------------------------------------------
+Tue Aug  1 12:44:56 CEST 2000 - tiwai@suse.de
+
+- Initial package - LADSPA SDK and CMT libraries ver.1.
+

@@ -1,0 +1,445 @@
+-------------------------------------------------------------------
+Mon Aug 12 07:30:19 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.6.18
+    T7449: Automatically try to search for bootloader if port was changed by OS.
+    T1250: Avoid crashing when USB serial device disappears (unplugged cable for example)
+    T8859: fixed crash on firmware update if printer is connected
+    T9067: Changed EXTRUDER_TYPE for LulzBot TAZ Workhorse with DualExtruder v3 to be what Marlin expects.
+    T9067: Changed MACHINE_TYPE for LulzBot TAZ Workhorse to be what Marlin expects.
+    T9046: Removed heatbed heatup from wipe gcode for redgum. Changed hardcoded values for soften and wipe temperatures to the parametric ones as is the wipe code for the rest of our printers.
+    T9046: Removed toolhead name from filename of wipe gcode for redgum.
+    T9015 updating workhorse v3 start gcode
+    T6932 updating prime tower location
+    T9046 fixing workhorse wiping position
+    T8949: unchecked "Update EEPROM" checkbox by default for quiver and redgum
+    Updated Redgum NinjaFlex Profiles T9019
+    T8902: fixed crash while pressing wipe button with no model loaded
+    Updated Redgum PETG Profiles T8930
+    Changed Marlin2 FW to v2.0.0.144 for all LulzBot printers.
+    T8671: added ability to print "one at a time" for dual extruders machines if only one extruder is used
+    Updated Redgum IC3D ABS High Detail and Standard Profiles T8816
+    Updated Redgum ChromaStrand ABS High Detail and Standard Profiles T8815
+    adding wipe gcode Pro
+    Corrected TazPro CSL ABS High Detail profile - T8772
+    Updated Redgum PC-Max Profiles T8784
+    Updated Redgum nGen Profiles T8783
+    Updated TazPro Evergreen Bagworm - Chroma ABS Standard and High Detail Profiles -  T8772
+    Updated TazPro-evergreen bagworm Chroma ABS HighSpeed T8772
+    Updated Redgum Polylite-PLA Profiles T8776
+    Updated Polylite-PLA Taz Pro Profiles T8773
+    Updated Taz Pro IC3D-ABS Profiles T8771
+    T8548: Toolhead options when adding machine fixed.
+    T7365: [Kangaroo Paw] Changed default material to sodium alginate.
+    T8177 fixing goldenrod customer facing name
+    T7998: Ignoring values from No Material
+    T8177 setting first print quality and material for all redgummachines
+    Setting Pro to 5th spot in printer addition, T8177
+    adding first print model from T8365 to branch T8177
+    updating start gcode with customer facing names T8177:
+    Fixing T8410 on branch T8177, updating names, adding yellowfin to lulzbot
+    T8177 adding v3 dual in proper tool head order, redgum
+    T8177 fixing printer order to match QSG
+    Duplicated PetG Profiles to replace nGen on Redgum T7805
+    T8369: fixed parsing of negative numbers and numbers starting with "."
+    T8177 updating customer facing tool head name
+    T8177 updating redgum base
+    T7365 adding kangaroo machine, sodium alginate, gcodes, extruder, profile
+    T8177 updating customer facing names
+- disabled 32bit builds since the engine is not supporting it anymore
+
+-------------------------------------------------------------------
+Mon Jul  8 17:06:39 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.6.13
+    T8017: Some text formatting fixes.
+    Fixing layer height T8371 for Pro polylite pla std
+    T8203: Removed TAZ6 names from redgum base.
+    T1250: Return from serial port init function if we can't open serial device.
+    T8017: fixed extruder changing in print monitor
+    Updated Redgum IC3D-ABS High Speed Profile T8199
+    Updated Redgum CSL-ABS High Speed Profile T8198
+    Updated Redgum ColorFabb PA-CF T8010
+    Changed Marlin2 FW to v2.0.0.135 for all LulzBot printers.
+    Updated Redgum Alloy 910 Profiles T8007
+    Updated Redgum Bridge Nylon Profiles T8009
+    T7962: readded "retraction amount" key that was deleted (some start g-codes might still use it).
+    T4329: Saving manual control settings reworked.
+    T8012: fixed bed temperature resolve
+    T7388 updating start gcode name
+    updating redgum start gcode T7522
+    Updated Setting for High Detail Alloy 910 Profile T7537
+    Updated High Detail Alloy 910 Profile for Taz Pro T7537
+    Updated Taz Pro Alloy 910 Profile T7537
+    T7962 adding TAZ Pro Alloy 920 profiles/material
+    adding smaller STL file for redgum bedplate T7379
+    Updated Taz Pro Polyflex Profiles Changed from Experimental to All T7539
+    T7388 adding redgum base
+    T7858: Tooltip for adhesion extruder selection.
+    T7858: Spacing fix
+    T7858: typo fix for e1f0e8b37f4f
+    T7858: Extruder option for brim and raft.
+    Updated Taz Pro PolyLite PLA Profiles T7671
+    Updated Taz Pro NinjaFlex Profiles T7540
+    T7554: Added protection when support enabled.
+    Updated Taz Pro PVA Profiles T7386
+    Updated Taz Pro ColorFabb PaCF HighSpeed Profile T7538
+    Updated Taz Pro ColorFabb PaCF HighDetail Profile T7538
+    Updated Taz ProColorFabb PaCF Standard T7538
+    T7388 initial inclusion of redgum yellowfin
+    T7379 updating redgum STL, fixing machine train to include redgum base
+
+-------------------------------------------------------------------
+Tue Jun 25 12:59:43 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.6.10
+    T6335: Icons and buttons size fix for lulzbot-dark theme
+    T7462: Making sure we're not dividing by zero.
+    T7419: [TAZ Pro] [Dual Extruder] Start g-code changes:
+    * Wiping location changed for both extruders.
+    * Shear-off location is now closer to the bed.
+    * Added turning fan on right after shear-off
+    * Increased retraction after purge.
+    T6335: Refactoring 2641de8bb69d
+    T7452 updating bed temp variable to wait for temp to be reached
+    T7418 putting T-Glase to experimental for PRO
+    T6335: Icon and button size in toolbar on hi-res displays fixed.
+    T7000: fixed Support infill layer thickness setting
+    T7257: Added _layer_0 for initial heat bed warmup for all printers. Fixed extruders heatup for dual extruders.
+    T7257: Allow material_print_temperature_layer_0_ExtruderNumber to be used in g-code tokens.
+    T7367: add resolve function to "keep heating" setting
+    T7257: Reverting invalid changes made to TAZ6 with FlexyDually toolhead.
+    T7257: To be consistent with other start g-code reverting R option back to S for setting bed temperature on TAZ6 Banded Tiger.
+    T7188: fixed resolving error
+    updating first layer print variable T7257
+    T7306: When changing toolhead issue an additional S1 parameter, which should indicate not to move toolhead itself when selecting hotend for dual extruder toolheads.
+    T7188: removed debug code
+    T7188: Fixed adhesion type combobox on recommended settings tab
+
+-------------------------------------------------------------------
+Tue Jun 25 11:10:42 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- add dependency for libqt5-qtquickcontrols
+
+-------------------------------------------------------------------
+Mon May 27 14:51:50 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.6.9
+    T7039: Fixed material first layer flow setting
+    T6777: Rounding in profile selection changed.
+    adding density and diameter to PA-CF T7180
+    Changed Marlin2 FW to v2.0.0.116 for quiver printer
+    adding IC3D PLA to TAZ 6 Cecropia
+    T6020 getting in SL machine, extruder, materials, profiles, start end gcode
+    T6928: fixed material setting while importing profiles
+    T7000: fixed support_enable resolve function
+    T1250: Add .bin format to file format filter while flashing from ChangeToolHead window.
+    T6020 updating PETG profiles, adding PA-CF base profiles
+    T6020 updating redgum profiles
+    removing duplicated setting T6020
+    T6020 updating ngen, removing duplicate banded tiger profiles
+    fixing temp and flow rate on ninja T6020
+    T6020 adding in redgum dingy cutworm
+    T6020 redgum HS profiles, machine, extruder, materials, gcode added
+    T6020 PCmax updates
+    T6020 updating polylite profiles
+    T6020 disabling support ninja HD
+    T6020 fixing temperature ninja HD
+    T6020 fixing duplicate setting, changing support
+    T6020 updating redgum profiles
+    T6020 fixing cooling settings
+    T6020 updating redgum initial profiles
+    T6020 initial addition of redgum
+
+-------------------------------------------------------------------
+Mon May  6 08:26:50 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.6.8
+    T7000: fixed profile updating
+    T7015 updating user agreement
+    T6777: Quality section now shows averaged layer height between the two extruders
+    T6928: fixed new profile creation
+
+-------------------------------------------------------------------
+Wed May  1 11:21:28 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update ot 3.6.7
+    T6903 updating backlash fading for all pro machines on branch T6889
+    T6906 polydissolve updates for pro on branch T6889
+    T6904 pc-max updates on branch T6889
+    T6901 verbatim pro updates, on branch T6889
+    T6902 polylite pro updates on branch T6889
+    T6889 updating pro bridge profiles
+    T6887 ABS updates, setting fading distance allowable per extruder
+    T6857 updating baud rates quiver and TAZ 5 machines
+    T5667, T6669: Removed autobaud detection, when specific baudrate is defined.
+    T6396: prevent profiles which created on duplicating base materials
+    T6797: Fixed crash while extruder is not selected before cold pull
+    T6756 updating splash screen
+    T2421: set blank profile for global quality
+    T6749 updating first print model 01
+
+-------------------------------------------------------------------
+Thu Apr 18 06:31:27 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.6.6
+    T6515: Changed Marlin2 FW to v2.0.0.109 for Quiver printer.
+    T3206 putting quiver materials in experimental
+    T1868: Quiver wipe gcode fix
+    T6435 updating pro profiles
+    T6343 updating initial layer height quiver evergreen bagworm
+    updating first print models for quiver dual extruder
+    Updating start gcode T6488
+    T6513 updating adhesion info
+    T5928: [Quiver] Changed wiping locations for Evergreen Bagworm toolhead.
+    T3377: [Bug] Only PrintMonitor currently has formData property, SidebarContents
+           doesn't have this property, therefore onLoaded requires this check.
+    T1713: Loading different models for different printers
+    T5766: Machine actions buttons order changed.
+
+-------------------------------------------------------------------
+Fri Apr  5 11:59:05 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.6.5
+    T1868: [Quiver] Changed firmware printer and toolheads definitions to correspond to ones in Marlin.
+    T1868, T5980: Added FW files definitions for Quiver.
+    T5686: [BUG] Fix for exception observed in T6071.
+    T1626: [BUG] The search function introduced was causing "cannot use a bytes pattern on a string-like object" exception.
+    T6100 updating quiver build volumes
+    T6088 removing support extruder from quiver profiles
+    T5688: Fixed wrong comparison statement which were causing "PROBE FAIL CLEAN NOZZLE" condition.
+    T6009: [Quiver] Updating start and end gcode.
+    T5823: [TAZ6] Updating MOARStruder start g-code.
+    T5832, T5831, T5830, T5829, T5072: [Quiver] Updating profile settings for Evergreen Bagworm.
+    T6004: [Quiver] Disabling backlash fading for Evergreen Bagworm.
+    T5923: [Quiver] Adding missing profiles for xstrand and colorFabb PA-CF.
+    T5832, T5831, T5830, T5829: [Quiver] Updating quiver profiles for Evergreen Bagworm.
+    T5823: [Quiver] Updating Evergreen Bagworm profiles.
+    T1868: [Quiver] Updating customer facing tool head name.
+    T1868: [Quiver] Tool head order and printer order adjusted.
+    T1868: [Quiver] Fixing bed STL location.
+    T1868: [Quiver] Updating bed STL file, customer facing names, printer locations.
+    T5842: added rambo driver installation
+    T4367: QML error fixed.
+    T1273: Another fix for correct handling of control undefined case.
+    Added missing setting_control_radius options for all themes.
+    T3377: Top border of extrusion amount field changed.
+    Workaround for G29 crashing Marlin (T5686)
+    updating dark theme printing text T5783
+    Explicitly call out T0 in M104
+    Restored message that was mistakenly removed.
+    Enhancements for USB printing (T5697, T5685, T5688)
+    - Implemented more "//action:" commands.
+    - Cool down T1 on print abort.
+    - Shut off print timer on print abort.
+    - Pause/resume print timer on print pause/resume.
+    - Reset filament sensor on print resume.
+    T3377: Values in Manual Control section  now saves after switch to Prepeare stage
+    T5549: Extruder disallowed areas function added.
+
+-------------------------------------------------------------------
+Wed Feb 20 09:32:24 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.6.4
+  * T1250: Added list of serial port USB VIDs that will be autodetected by USB printer plugin.
+  * T1250: For port autodetection, we should use pyserial tools instead of programmer.
+  * T1250: Commenting out some too verbose log messages.
+  * Merge branch 'master' into T1250
+  * T1250: The minimum set of code that flashes Archim board is now working.
+
+  * Verifying flash and progress hooks are not implemented yet.
+  * T1250: Added WordCopy applet and added mor functions to Samba and EEFC Flash.
+  * T1250: Added classes for SAM-BA and EEFC flash.
+  * T1250: Added some chips to the chip DB.
+  * T5129 updating Q start gcode
+  * T5522 updating tool tip for accel and jerk control for LB printers only
+  * T5551 updating single tool head start gcode, quiver
+  * Fix for 9a2a39ab9afc
+  * Merge branch 'master' into T1250
+  * Merge branch 'T5198'
+  * T5189 Polycast profile addition, move to intermediate
+  * T5467 fixing job specs background
+  * T5465 updating file name to dark green
+  * T5465 adding lulzbot dark theme
+  * T5198 T5419 fixed support infill layer thickness
+  * Merge branch 'T5184'
+  * T5198 removing support infill thickness
+  * T5072 adding no material and profiles to v3 and evergeen bagworm
+  * Changed Marlin FW to v1.1.9.34 for all LulzBot printers.
+  * T1868 adding Q - HS machine, materials, profiles, gcode, extruder
+  * T1868 adding Q - HS+ machine, materials, profiles, gcode, extruder
+  * T1868 adding Quiver SL machine, profiles, extruders, gcodes, materials
+  * T1868 adding Q - SE machine, materials, extruder, profiles
+  * T4924: Extruder 2 progress bar color changed.
+  * T4945 removing g21 from start gcode
+  * T5184 Support Eraser plugin
+  * T5198: fixed resolve function
+  * T5043: Custom support plugin
+  * T5034: fixed transfet of model extruders on multiplication
+  * T1868 updating start and end gcode for Q
+  * T5130 updating q end gcode
+  * T5121 more polycast profiles
+  * T5121 adding polycast profiles
+  * adding polycast T5121
+  * T5061 adding PVA to q
+  * adding polydissolve to q T5061
+  * T1250: Added more functionality to bossapy. It enters bootloader and reads ChipID now upon trying to flash BIN file. It's still not functioning properly.
+  * T1250: Added initial (dummy) version of bossa programmer.
+
+-------------------------------------------------------------------
+Wed Jan  9 09:48:45 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.6.1
+  https://code.alephobjects.com/w/cura-lulzbot/
+
+-------------------------------------------------------------------
+Tue Nov 20 15:50:13 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.2.32
+  * profile updates
+
+-------------------------------------------------------------------
+Mon Oct 22 06:54:08 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.2.29
+   * Improved error handling in MarlinSerialProtocol.
+   * Tested to operate more reliabily with Marlin 1.1.9 with no lock-ups at
+   * high error rates.
+   * fixing bridge cooling setting
+   * More spacing for add machine dialog.
+   * Dingy PETg profile updates
+   * adding machine, extruders, materials, profiles, start gcode
+   * updating alloy 910 temperatures
+   * updating banded and dingy customer facing names
+
+-------------------------------------------------------------------
+Tue Sep 25 14:45:32 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.2.28
+  * Marlin FW dep to 1.1.9.17_82d1e4ffa
+  * profile updates
+
+-------------------------------------------------------------------
+Mon Aug  6 06:58:28 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.24
+  * Changed Marlin FW to v1.1.8.66
+  * double loading of models fixed
+  * profile updates
+
+-------------------------------------------------------------------
+Fri Jul 13 04:57:54 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.23
+  * profile updates
+
+-------------------------------------------------------------------
+Thu Jul 12 11:45:17 UTC 2018 - adrian@suse.de
+
+- fixed missing sidebar
+  * added dependency to libqt5-qtquickcontrols2
+
+-------------------------------------------------------------------
+Tue Jul  3 13:08:59 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.22
+  * new blacklash option
+
+-------------------------------------------------------------------
+Wed May 30 06:15:54 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.21
+  * Changed Marlin FW to v1.1.8.59
+  * mostly improvements for Mini 2
+
+-------------------------------------------------------------------
+Mon May 14 09:56:48 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.20
+  * Changed Marlin FW to v1.1.8.51
+  * minor bugfixes
+
+-------------------------------------------------------------------
+Wed May  2 14:42:50 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.19
+ * Changed Marlin FW to v1.1.8.42
+ * Mini 2 support (former Hibiscus)
+ * various printer fixes
+
+-------------------------------------------------------------------
+Thu Apr 19 07:41:09 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.18
+ * Changed Marlin FW to vv1.1.8.29
+ * various printer fixes
+
+-------------------------------------------------------------------
+Mon Mar 26 06:55:25 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.16
+ * Changed Marlin FW to v1.1.8.21
+ * fixed profiles filter in preferences page
+ * fix bed pre-heat button
+ * updating Polylite Standard print temp
+ * Further UI and material updates
+- compile in cura version
+
+-------------------------------------------------------------------
+Thu Mar  8 20:26:14 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.9
+  * Updates for various printers
+
+-------------------------------------------------------------------
+Wed Jan 31 13:05:31 UTC 2018 - jengelh@inai.de
+
+- Say what the package does, not what it aims to do in future.
+
+-------------------------------------------------------------------
+Wed Jan 31 08:34:30 UTC 2018 - adrian@suse.de
+
+- update to version 3.2.1
+  * entire rewrite
+  * supports network and headless mode
+- Patches:
+  dynamic-linking.patch was never applied on the package, but 
+                        factory check scripts got confused due
+                        to rename
+  fix-build.patch: adapt SUSE python installation pathes
+  CuraEngine-lulzbot.patch: Find the LulzBot CuraEngine by default
+
+-------------------------------------------------------------------
+Wed Jan  3 10:30:48 UTC 2018 - adrian@suse.de
+
+- fix license tag
+
+-------------------------------------------------------------------
+Fri Sep  8 12:47:52 UTC 2017 - adrian@suse.de
+
+- fix startup crash due to missing libglut3
+
+-------------------------------------------------------------------
+Tue Jul 25 00:29:54 UTC 2017 - jengelh@inai.de
+
+- Fix grammatical errors.
+
+-------------------------------------------------------------------
+Mon Jul 24 22:56:20 UTC 2017 - adrian@suse.de
+
+- update to version 21.06
+  * use original upstream tar ball
+  * clone curaengine via source service since it is not included anymore
+
+-------------------------------------------------------------------
+Mon Jun 26 06:14:27 UTC 2017 - adrian@suse.de
+
+- avoid conflicts with cura 2
+- link CuraEngine dynamic
+- open documentation using xdg-open instead of hardcoded Firefox
+
+-------------------------------------------------------------------
+Wed Jun 21 19:13:18 UTC 2017 - adrian@suse.de
+
+- initial package based on upstream package for Fedora
+

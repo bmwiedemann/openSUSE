@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Thu Apr 11 12:08:13 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.2.0:
+  * Improvements
+    + Use QPageSize::name() for names of page sizes
+  * Buildsystem
+    + Fix data install dir for Windows, make icons installed
+      relative to that, make icons coinstallable
+    + Make sure we don't try to build maps on Windows, even if
+      Marble is around (it has Unix requirements)
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Mar 20 11:02:22 UTC 2018 - wbauer@tmo.at
+
+- Update to 3.1.0:
+  * General
+    + Bump soname for the libraries to separate from incompatible
+      3.0.x versions
+    + Add Python 3 support for the buildsystem
+  * New features
+    + Add support for custom page width/height
+    + Add more page sizes
+  * API changes
+    + see https://community.kde.org/Kexi/Releases/3.1.0_Changes for
+      details
+  * Bug fixes
+    + Fix rendering asynchronously rendered elements such as maps and
+      web boxes
+    + Stability fixes from Coverity tests
+    + Fix build warnings and clear up init() code for items
+    + Fix crash in SortedField when copy-constructing
+    + Fix usage of QPageLayout by calling the non default constructor
+    + Port QRegExp to QRegularExpression
+    + Remove unnescessary strings for translation
+    + Linestyle width > weight
+    + Fix initialization of report elements created by user, e.g.
+      barcodes had invalid default settings
+    + Fix field type not updating report dirty state
+    + Improve detection of scripting in reports
+    + Set the default interpreter to Javascript if it is empty
+    + Fix interpreter if empty
+    + Add missing features from 2.9
+    + Always save the interpreter as javascript if empty
+    + Fix broken logic related to looping over report elements
+    + Fix recursion crash when item is smaller than scene
+    + Change X-KReport-Priority field in .desktop files to
+      X-KReport-PluginInfo-Priority
+    + Fix horizontal alignment for barcode scripting and use 
+      alignment enum
+    + Make KReport build and kreportexample run also when
+      KREPORT_SCRIPTING is OFF
+    + Fix crash when showing first-page section
+    + Fix crash when pasting line element
+    + Improve initialization of properties in Report Designer
+    + Use suffix option from the new KProperty instead of units;
+      implement units locally in KReport
+  * Docs and examples
+    + Enable creation of API docs QCH file during the build
+    + Add and improve user scripting API docs from 2.9
+    + Add brief docs for exported classes
+- Add separate lang subpackage that contains the new translations
+
+-------------------------------------------------------------------
+Wed Feb 28 12:23:15 UTC 2018 - wbauer@tmo.at
+
+- Add python-base build requirement to fix build in Leap 15
+
+-------------------------------------------------------------------
+Sat Aug 12 13:10:24 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.0.2:
+  * General
+    - New: Port the Group dialog widget from Qt 4.
+    - Fix loading of pen style data (kde#378561)
+    - Improvements of handling pen width. Set step value of 1.0.
+    - Improve accuracy of line weight property.
+    - Fix initialization of report elements created by user, e.g.
+      barcodes had invalid default settings
+    - Fix possible crashes while switching from design view to
+      preview
+    - Improve detection of scripting. Always save the script,
+      regardless of whether or not the object script is empty, this
+      way and default to the original script, unless the object
+      script has been changed so the original interpreter should be
+      saved properly.
+    - Set the default interpreter to JavaScript if empty
+  * Buildsystem
+    - Make sure KProperty* libs are not newer than 3.0.x
+  * Tests
+    - Fix HeadersTest for paths containing spaces
+
+-------------------------------------------------------------------
+Tue Apr  4 17:57:45 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.0.1:
+  * General
+    - Add 24x24 icons, useful on classic Windows
+    - Try to locate rcc files in PATH subdirs too, useful for
+      running apps from the build dir, without installing
+    - Fix async rendering of map item (Review #3028)
+    - Add all PROJECT_STABLE* and KREPORT_TESTING_EXPORT constants
+    - Synchronize plugin versions with KReport version: 3.0
+    - Check for plugin versions and duplicates in the plugin
+      manager
+    - Fix uninitialized variables in KReportItemMaps()
+    - Fix uninitialized variables in KReportItemText(), OROCheck(),
+      KReportPluginMetaData::Private()
+    - Add checks for nullptrs in KReportItemWeb, KReportItemMaps,
+      KReportItemChart
+    - Add missing initializations in KReportSectionData
+    - Add missing initializations in KReportItemBarcode
+    - Add BoundedTextItem init, make the type qreal [0..1] for
+      consistency with Qt
+    - Keep apps in the same bin dir so resources that are kept
+      relative to this dir can be found without installing
+  * Buildsystem
+    - macro kreport_add_icons_rcc_file: generate rcc icons in the
+      builddir/bin/data/icons/ dir so it can be used within the
+      builddir
+    - Use ecm_install_po_files_as_qm macro for Qt Translation
+      catalogs
+    - Fix finding KReport config - use
+      ecm_configure_package_config_file macro
+- Drop unused KF5I18n BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 11 09:47:46 UTC 2017 - jengelh@inai.de
+
+- RPM group fix
+
+-------------------------------------------------------------------
+Sun Jan  8 11:13:53 UTC 2017 - tittiatcoke@gmail.com
+
+- Initial package based on version 3.0.0
+

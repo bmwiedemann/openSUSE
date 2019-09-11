@@ -1,0 +1,17 @@
+CVE: CVE-2015-8936
+URL: http://seclists.org/oss-sec/2016/q2/569
+
+Index: squidGuard-1.4/samples/squidGuard.cgi.in
+===================================================================
+--- squidGuard-1.4.orig/samples/squidGuard.cgi.in
++++ squidGuard-1.4/samples/squidGuard.cgi.in
+@@ -317,6 +317,9 @@ if ($targetgroup eq "in-addr") {
+    showinaddr($targetgroup,$protocol,$address,$port,$path);
+ }
+ 
++$url =~ s/</&lt;/g ;
++$url =~ s/>/&gt;/g ;
++
+ status("403 Forbidden");
+ expires(0);
+ print "Content-type: text/html\n\n";

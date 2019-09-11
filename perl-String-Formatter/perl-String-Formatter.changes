@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Mon Nov 25 07:38:07 UTC 2013 - coolo@suse.com
+
+- updated to 0.102084
+    - typo fixes
+    - update repo and bugtracker links
+
+-------------------------------------------------------------------
+Mon Jan  9 14:17:38 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0
+  Look at Formatter.pm - the licence makes no reference to an ^or later^
+  version
+
+-------------------------------------------------------------------
+Mon Aug 29 13:12:31 UTC 2011 - chris@computersalat.de
+
+- fix deps
+  * ExtUtils::MakeMaker >= 6.31
+  * Test::More >= 0.88
+- fix build for CentOS, RHEL, SLE_10, SLE_11
+
+-------------------------------------------------------------------
+Mon Jan 17 20:53:26 UTC 2011 - coolo@novell.com
+
+- initial package 0.102082
+  * created by cpanspec 1.78.03
+

@@ -1,0 +1,5 @@
+<services>
+<service name="download_files" mode="localonly">
+    <param name="enforceupstream">yes</param>
+  </service>
+</services>

@@ -1,0 +1,3 @@
+# not everything starting with lib is a lib
+addFilter("shlib-policy-missing-lib")
+addFilter("shlib-policy-nonversioned-dir")

@@ -1,0 +1,45 @@
+Index: lldb-5.0.0.src/source/lldb.cpp
+===================================================================
+--- lldb-5.0.0.src.orig/source/lldb.cpp
++++ lldb-5.0.0.src/source/lldb.cpp
+@@ -23,11 +23,7 @@ using namespace lldb_private;
+ #endif
+ 
+ static const char *GetLLDBRevision() {
+-#ifdef LLDB_REVISION
+   return LLDB_REVISION;
+-#else
+-  return NULL;
+-#endif
+ }
+ 
+ static const char *GetLLDBRepository() {
+Index: lldb-5.0.0.src/source/Core/IOHandler.cpp
+===================================================================
+--- lldb-5.0.0.src.orig/source/Core/IOHandler.cpp
++++ lldb-5.0.0.src/source/Core/IOHandler.cpp
+@@ -11,8 +11,8 @@
+ 
+ // C Includes
+ #ifndef LLDB_DISABLE_CURSES
+-#include <curses.h>
+-#include <panel.h>
++#include <ncurses/curses.h>
++#include <ncurses/panel.h>
+ #endif
+ 
+ // C++ Includes
+Index: lldb-5.0.0.src/source/Host/CMakeLists.txt
+===================================================================
+--- lldb-5.0.0.src.orig/source/Host/CMakeLists.txt
++++ lldb-5.0.0.src/source/Host/CMakeLists.txt
+@@ -159,6 +159,8 @@ endif()
+ set(EXTRA_LIBS)
+ if (CMAKE_SYSTEM_NAME MATCHES "NetBSD")
+   list(APPEND EXTRA_LIBS kvm)
++elseif (CMAKE_SYSTEM_NAME MATCHES "Linux")
++  list(APPEND EXTRA_LIBS dl pthread)
+ endif ()
+ if (APPLE)
+   list(APPEND EXTRA_LIBS xml2)
+Index: lldb-5.0.0.src/tools/lldb-mi/CMakeLists.txt

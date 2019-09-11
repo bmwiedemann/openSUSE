@@ -1,0 +1,64 @@
+From 3c5eabd99472e3c753e7660e9bde38be61c376bc Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <stefan.raspl@de.ibm.com>
+Date: Mon, 11 Dec 2017 12:25:23 +0100
+Subject: [PATCH 26/43] tools/kvm_stat: fix child trace events accounting
+
+Child trace events were included in calculation of the overall total,
+which is used for calculation of the percentages of the '%Total' column.
+However, the parent trace envents' stats summarize the child trace
+events, hence we'd incorrectly account for them twice, leading to
+slightly wrong stats.
+With this fix, we use the correct total. Consequently, the sum of the
+child trace events' '%Total' column values is identical to the
+respective value of the respective parent event. However, this also
+means that the sum of the '%Total' column values will aggregate to more
+than 100 percent.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit fff8c9eb48aa58259071b5df0e6d4c1c0bc1ba51)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat     | 6 +++---
+ tools/kvm/kvm_stat/kvm_stat.txt | 2 ++
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 639f9a40a9e4..f2711b0a04f5 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1095,14 +1095,14 @@ class Tui(object):
+             # sort by totals
+             return (0, -stats[x][0])
+         total = 0.
+-        for val in stats.values():
+-            total += val[0]
++        for key in stats.keys():
++            if key.find('(') is -1:
++                total += stats[key][0]
+         if self._sorting == SORT_DEFAULT:
+             sortkey = sortCurAvg
+         else:
+             sortkey = sortTotal
+         for key in sorted(stats.keys(), key=sortkey):
+-
+             if row >= self.screen.getmaxyx()[0]:
+                 break
+             values = stats[key]
+diff --git a/tools/kvm/kvm_stat/kvm_stat.txt b/tools/kvm/kvm_stat/kvm_stat.txt
+index e9e8e6b8a1be..b5b3810c9e94 100644
+--- a/tools/kvm/kvm_stat/kvm_stat.txt
++++ b/tools/kvm/kvm_stat/kvm_stat.txt
+@@ -50,6 +50,8 @@ INTERACTIVE COMMANDS
+ *s*::   set update interval
+ 
+ *x*::	toggle reporting of stats for child trace events
++ ::     *Note*: The stats for the parents summarize the respective child trace
++                events
+ 
+ Press any other key to refresh statistics immediately.
+ 
+-- 
+2.12.3
+

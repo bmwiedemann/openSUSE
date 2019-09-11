@@ -1,0 +1,456 @@
+-------------------------------------------------------------------
+Sat Feb 11 13:32:04 UTC 2017 - jengelh@inai.de
+
+- Compact descriptions
+
+-------------------------------------------------------------------
+Fri Dec 16 10:27:40 UTC 2016 - mliska@suse.cz
+
+- gcc7-fix-warnings.patch - Fix warnings reported by GCC7.
+
+-------------------------------------------------------------------
+Wed Dec  2 08:28:55 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+- Remove old ppc provides/obsoletes
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Apr 14 14:04:48 UTC 2014 - pgajdos@suse.com
+
+- baselibs.conf: libaspell15
+   obsoletes "aspell-<targettype> <= <version>"
+   provides "aspell-<targettype> = <version>"
+
+-------------------------------------------------------------------
+Wed Mar  6 13:00:31 UTC 2013 - pgajdos@suse.com
+
+- license GFDL-1.1+ and LGPL-2.1 and HPND and SUSE-BSD-Mark-Modifications
+  [bnc#777131]
+
+-------------------------------------------------------------------
+Wed Mar  6 10:48:02 UTC 2013 - cfarrell@suse.com
+
+- license update: GFDL-1.1+ and LGPL-2.1 and HPND and BSD-3-Clause
+  SDPX
+
+-------------------------------------------------------------------
+Mon Mar  4 08:44:42 UTC 2013 - pgajdos@suse.com
+
+- license GFDL-1.1+ and LGPL-2.1 and HPND and BSD-Mark-Modifications
+
+-------------------------------------------------------------------
+Thu Feb 28 15:34:59 UTC 2013 - pgajdos@suse.com
+
+- fix build with new automake
+  * automake-1.13.patch
+
+-------------------------------------------------------------------
+Tue Oct  9 06:32:36 UTC 2012 - pgajdos@suse.com
+
+- license FDL-1.1+ and LGPL-2.1 and HPND and BSD-Mark-Modifications
+
+-------------------------------------------------------------------
+Fri Feb 24 21:06:58 UTC 2012 - crrodriguez@opensuse.org
+
+- Build C++ code with -fvisibility-inlines-hidden
+- Fix ncurses linkage.
+
+-------------------------------------------------------------------
+Sat Jan 28 21:01:20 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+
+-------------------------------------------------------------------
+Tue Nov 22 14:03:06 UTC 2011 - pgajdos@suse.com
+
+- add -ltinfo
+
+-------------------------------------------------------------------
+Sun Oct  2 17:58:18 UTC 2011 - asterios.dramis@gmail.com
+
+- update to version 0.60.6.1
+  * Update to Automake 1.10.3.
+  * Fix a bug which caused a race condition (leading to a likely crash)
+    when two threads try to update the dictionary cache at the same
+    time.
+  * Make it very clear that compiling Aspell with NDEBUG is a bad idea
+    (see `http://aspell.net/ndebug.html') by outputting a warning when
+    building with NDEBUG defined.
+  * Numerous other minor updates and bug fixes.
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Changed License: to LGPL-2.1+.
+  * Splitted the package according to the shared library packaging policy
+    (added libaspell15 and libpspell15 sub-packages).
+  * Added descriptions for the patches based on openSUSE guidelines.
+  * Suggest also aspell-spell sub-package.
+  * Added versioned Provides:/Obsoletes: for pspell and pspell-devel (rpmlint
+    warning fix).
+  * Removed libstdc++-devel from Requires: of aspell-devel (not needed).
+  * Improved summaries and descriptions.
+  * Clean up in %build, %install and %files sections.
+  * Install the "spell" script provided by the package for compatibility
+    reasons (added a aspell-spell sub-package containing this script and moved
+    the Provides: entry for "spell" into this package).
+  * Use %fdupes macro to fix rpmlint warning about duplicate files.
+  * Use %install_info_delete in %preun instead of %postun section.
+  * Add pspell-config.1 man page to the aspell-devel sub-package instead of
+    aspell.
+- Removed the following patches (fixed upstream):
+  * aspell-iterator-after-erase.patch
+  * aspell-make-static-filters.patch
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:42 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Fri Dec 18 23:02:54 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Mon Jul 20 15:19:24 CEST 2009 - pgajdos@suse.cz
+
+- fixed invalid iterator [bnc#523345]
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Nov 20 18:07:06 CET 2008 - pgajdos@suse.cz
+
+- fixed wrong static filter handling [bnc#441008]
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Sep  9 14:13:33 CEST 2008 - pgajdos@suse.cz
+
+- created aspell-ispell subpackage [bnc#165023]
+
+-------------------------------------------------------------------
+Fri Jul 25 10:37:20 CEST 2008 - lmichnovic@suse.cz
+
+- update to version 0.60.6
+ * bugfix release
+- obsoletes *duplicate_name.patch, *gcc4_3.patch
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Oct 26 18:55:18 CEST 2007 - nadvornik@suse.cz
+
+- fixed to compile with gcc 4.3 (gcc4_3.patch)
+
+-------------------------------------------------------------------
+Wed Aug 22 15:29:31 CEST 2007 - lmichnovic@suse.cz
+
+- defining ncurses_wide library for configure to enable wide 
+  UTF-8 characters [#266153]
+
+-------------------------------------------------------------------
+Thu Aug 16 16:38:45 CEST 2007 - lmichnovic@suse.cz
+
+- fixed SIGSEV when checking empty file(epmty_file.patch) [#266130]
+- using parallel build
+
+-------------------------------------------------------------------
+Thu Aug 16 14:38:45 CEST 2007 - lmichnovic@suse.cz
+
+- changed dict- and data-dir back to /usr/{%lib} because dictionary 
+  files depends on endian.
+- fixed command execution in script "run-with-aspell" (quotes.patch)
+
+-------------------------------------------------------------------
+Wed Aug 15 13:26:44 CEST 2007 - lmichnovic@suse.cz
+
+- using lang macro
+- not using obsoleted %run_ldconfig macro
+- defining dict- and data-dir to arch independent directory which
+  allow made dictionaries noarch and save 30 MB on BiArch media
+
+-------------------------------------------------------------------
+Sat Mar 31 19:23:54 CEST 2007 - rguenther@suse.de
+
+- add ncurses-devel BuildRequires. 
+
+-------------------------------------------------------------------
+Sat Mar 31 15:19:36 CEST 2007 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Thu Jan 11 14:09:22 CET 2007 - lmichnovic@suse.cz
+
+- gettextize is needed before autoreconf
+
+-------------------------------------------------------------------
+Thu Jan 11 12:28:38 CET 2007 - lmichnovic@suse.cz
+
+- update to version 0.60.5
+   * Compile fix for gcc 4.1 (obsoletes gcc-warning.patch)
+   * Updated to Gettext 0.16.1, Libtool 1.5.22, Automake 1.10, 
+     Autoconf 2.61
+   * Documentation improvements, including an updated `man' page.
+   * Complain if more than one file is specified when checking 
+     files using the `aspell check' command, rather than ignoring 
+     the other files.
+   * Large number of bug fixes.
+
+-------------------------------------------------------------------
+Tue Sep  5 12:16:07 CEST 2006 - pnemec@suse.cz
+
+- changed Requires to aspell-en to Recommends
+
+-------------------------------------------------------------------
+Wed Aug  2 14:56:54 CEST 2006 - pnemec@suse.cz
+
+- fixed wrong parametr name in header file [#175555]
+
+-------------------------------------------------------------------
+Fri Jun 30 14:56:21 CEST 2006 - pnemec@suse.cz
+
+- updated to 0.60.4
+  primary a bug fix release
+
+-------------------------------------------------------------------
+Mon Mar 20 13:34:06 CET 2006 - pnemec@suse.cz
+
+- removed virtual package dependency 
+- added aspell-en to Requires #158675
+
+-------------------------------------------------------------------
+Tue Feb 21 06:54:55 CET 2006 - aj@suse.de
+
+- Fix Require for devel package.
+
+-------------------------------------------------------------------
+Tue Feb  7 13:01:10 CET 2006 - pnemec@suse.cz
+
+- fixed virtual package name
+
+-------------------------------------------------------------------
+Fri Feb  3 11:51:20 CET 2006 - pnemec@suse.cz
+
+- added virtual package aspell_dictionary to Requires
+
+-------------------------------------------------------------------
+Thu Jan 26 15:51:26 CET 2006 - sbrabec@suse.cz
+
+- Added %install_info_prereq.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:25 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan  2 14:50:47 CET 2006 - pnemec@suse.cz
+
+- fixed gcc strict aliasing warnings
+
+-------------------------------------------------------------------
+Tue Oct  4 17:23:45 CEST 2005 - pnemec@suse.cz
+
+- fixed gcc warning and aspell-devel requires
+
+-------------------------------------------------------------------
+Wed Jun 29 20:00:31 CEST 2005 - ltinkl@suse.cz
+
+- update to 0.60.3
+
+-------------------------------------------------------------------
+Tue Mar 15 15:34:11 CET 2005 - ltinkl@suse.cz
+
+- update to 0.60.2 which fixes some critical bugs (munch-list, better
+  support for non-English languages)
+
+-------------------------------------------------------------------
+Tue Nov 30 02:42:55 CET 2004 - ro@suse.de
+
+- fix file list 
+
+-------------------------------------------------------------------
+Mon Nov 29 18:22:05 CET 2004 - ro@suse.de
+
+- fix libdir usage 
+
+-------------------------------------------------------------------
+Mon Nov 29 13:49:36 CET 2004 - ltinkl@suse.cz
+
+- update to 0.60.1.1
+
+-------------------------------------------------------------------
+Fri Nov 26 11:57:30 CET 2004 - ltinkl@suse.cz
+
+- updated to 0.60
+- correctly install info pages
+- package the HTML manuals
+
+-------------------------------------------------------------------
+Fri Aug 13 15:29:14 CEST 2004 - lnussel@suse.de
+
+- apply corrected patch for #42197
+
+-------------------------------------------------------------------
+Thu Jun 24 13:44:38 CEST 2004 - ltinkl@suse.cz
+
+- fix #42197
+
+-------------------------------------------------------------------
+Mon Feb 16 16:11:28 CET 2004 - ltinkl@suse.cz
+
+- update to 0.50.5
+
+-------------------------------------------------------------------
+Sat Jan 10 11:25:48 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Thu Oct 23 14:09:43 CEST 2003 - ltinkl@suse.cz
+
+- update to latest stable version (0.50.4.1)
+- throw away unused patch
+
+-------------------------------------------------------------------
+Wed Jul 23 16:41:40 CEST 2003 - ltinkl@suse.cz
+
+- updated sources to 0.50.3
+- package ChangeLog instead of empty TODO
+- removed unused patch
+
+-------------------------------------------------------------------
+Wed May 21 21:25:48 CEST 2003 - pmladek@suse.cz
+
+- fixed installation of documentation that rpm does not complain
+  about unpacked files
+
+-------------------------------------------------------------------
+Tue Feb 25 09:12:03 CET 2003 - kukuk@suse.de
+
+- Include assert.h
+
+-------------------------------------------------------------------
+Fri Jan 31 20:48:36 CET 2003 - pmladek@suse.cz
+
+- fixed to link the libraries with -lstdc++
+
+-------------------------------------------------------------------
+Wed Nov 20 12:03:58 CET 2002 - pmladek@suse.cz
+
+- fixed invalid declaration which breaks building with gcc-3.3
+- used x-devel-packages in neededforbuild instead of the obsolete xf86
+
+-------------------------------------------------------------------
+Fri Nov 01 19:28:21 CET 2002 - pmladek@suse.cz
+
+- updated to version 0.50.2:
+    * merged with pspell
+    * changed way to handle dictionaries
+    * added aspell-import script to convert old dictionaries
+    * pspell ABI is now part of aspell except that the name of everything has
+      changed due to the renaming of pspell to aspell
+    * provided pspell backward compatibility header file
+    * the name of the language-tag option has changed to lang
+    * backward compatible the language-tag option will still work
+    * english dictionaries are built from separate package
+    * see more details in /usr/share/doc/packages/aspell/README    
+- removed obsolete config files
+- removed obsolete patches for automake, gcc3.x and x86_64
+- fixed list of documentation to install
+- fixed to compile example with gcc
+- fixed problem with locking on nfs
+
+-------------------------------------------------------------------
+Fri Aug 30 15:48:48 CEST 2002 - pmladek@suse.cz
+
+- fixed dependency of the devel subpackage on the main package (used %version)
+
+-------------------------------------------------------------------
+Wed May 29 16:11:36 CEST 2002 - meissner@suse.de
+
+- The hashing code did not halt in some hash bucket size cases
+  which were reached due to slightly different floating point
+  handling in x86_64.
+  Now using integer arithmetic.
+
+-------------------------------------------------------------------
+Mon Apr 15 19:37:15 CEST 2002 - pmladek@suse.cz
+
+- fixed to compile with gcc-3.1
+
+-------------------------------------------------------------------
+Thu Jan 10 10:31:07 CET 2002 - pmladek@suse.cz
+
+- used macro %{_libdir} to fix for lib64
+
+-------------------------------------------------------------------
+Fri Dec 14 17:20:04 CET 2001 - pmladek@suse.cz
+
+- updated to version .33.7.1:
+	* Minor manual fixes
+	* compile fix for gcc 3.0 and Solaris
+- added the patch aspell-.33-fix2.diff from sourceforge
+- removed obsolete axp patch
+- fixed file list
+
+-------------------------------------------------------------------
+Thu Oct 18 10:48:21 CEST 2001 - pmladek@suse.cz
+
+- moved spell to /usr/bin (default path)
+- added spell to Provides
+- added aspell-en to Requires because of spell
+
+-------------------------------------------------------------------
+Thu Oct  4 14:58:01 CEST 2001 - schwab@suse.de
+
+- Fix for automake 1.5.
+- Avoid macro in Version tag.
+
+-------------------------------------------------------------------
+Mon Aug 27 15:08:23 CEST 2001 - pmladek@suse.cz
+
+- fixed to compile on axp:
+	* fixed declaration of friend classes
+
+-------------------------------------------------------------------
+Fri Aug 17 10:41:17 CEST 2001 - pmladek@suse.cz
+
+- fixed file list
+- added ed and dialog to neededforbuild through tetex
+
+-------------------------------------------------------------------
+Thu Aug 16 13:25:22 CEST 2001 - pmladek@suse.cz
+
+- updated to version 0.33.7
+- fixed documentation
+
+-------------------------------------------------------------------
+Tue Jun 26 15:23:26 CEST 2001 - schwab@suse.de
+
+- Remove -I$(includedir).
+
+-------------------------------------------------------------------
+Mon Jun 11 17:55:05 CEST 2001 - ro@suse.de
+
+- libtoolize to build 
+
+-------------------------------------------------------------------
+Wed May 30 10:51:32 CEST 2001 - pmladek@suse.cz
+
+- package created
+- added start script and configurations for each spelling and jargon

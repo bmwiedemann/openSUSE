@@ -1,0 +1,29 @@
+From 346cbd958f578a643be58ec519592b0c2f7dccee Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Thu, 31 May 2012 17:38:38 +0200
+Subject: [PATCH 1/4] Get release string and version right
+
+---
+ build/Makefile.pf.Linux |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/build/Makefile.pf.Linux b/build/Makefile.pf.Linux
+index 5dd8e53..4b67797 100644
+--- a/build/Makefile.pf.Linux
++++ b/build/Makefile.pf.Linux
+@@ -70,9 +70,9 @@ CHECK_RHEL=$(shell if [ -e /etc/redhat-release ]; then echo 1; fi)
+ # assuming version can be found as "<space><Major>[.<Minor>]";
+ # if minor is not set, "0" is returned
+ ifeq ($(CHECK_SUSE),1)
+-	PF_DISTRO=SUSE
+-	PF_MAJOR=$(shell head -n 1 /etc/SuSE-release | sed 's/.* \([0-9][0-9]*\)[ \.].*/\1/')
+-	PF_MINOR=$(shell (head -n 1 /etc/SuSE-release | sed 's/.* [0-9][0-9]*[\.]\([0-9][0-9]*\).*/\1/') | grep -v '[^0-9]' || echo '0')
++	PF_DISTRO=$(shell head -n 1 /etc/SuSE-release | cut -f 1 -d " ")
++	PF_MAJOR=$(shell grep VERSION /etc/SuSE-release | sed 's/.* \([0-9][0-9]*\)[ \.].*/\1/')
++	PF_MINOR=$(shell (grep VERSION /etc/SuSE-release | sed 's/.* [0-9][0-9]*[\.]\([0-9][0-9]*\).*/\1/') | grep -v '[^0-9]' || echo '0')
+ else
+ ifeq ($(CHECK_RHEL),1)
+ 	PF_DISTRO=REDHAT
+-- 
+1.7.9.2
+

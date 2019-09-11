@@ -1,0 +1,380 @@
+-------------------------------------------------------------------
+Fri May 17 11:25:31 UTC 2019 - Lukas Krause <lukas.krause@suse.com>
+
+- update to version 2.9.1
+ see installed CHANGELOG.md
+  
+  2.9.1
+  -----
+  * Respect JSON encoding customizations
+
+  2.9.0
+  -----
+  * Fix passing object with partial without locals
+  * Fix deprecation warning in Rails 6.0
+  * Use quotes consistently in generated templates
+  * Allow omitting timestamps from generated partials
+  * Respect changing scaffold generator
+  * Use a symbolic default format for Rails 6.0 forward compatibility
+  * Drop MultiJSON in favor of Ruby standard library JSON
+
+-------------------------------------------------------------------
+Tue Nov  6 10:20:54 UTC 2018 - mschnitzer@suse.com
+
+- updated to version 2.8.0
+
+  * Replace deprecated fragment_cache_key for Rails 5.2 support
+
+-------------------------------------------------------------------
+Tue Jun  6 05:36:41 UTC 2017 - coolo@suse.com
+
+- updated to version 2.7.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue May 23 10:00:38 UTC 2017 - coolo@suse.com
+
+- updated to version 2.6.4
+ see installed CHANGELOG.md
+
+  2.6.4
+  -----
+  
+  * Drop the pessimistic upper-bound restriction on Active Support and MultiJSON to prevent future gemfile resolution deadlocks *DHH*
+
+-------------------------------------------------------------------
+Thu Mar 16 05:33:29 UTC 2017 - coolo@suse.com
+
+- updated to version 2.6.3
+ see installed CHANGELOG.md
+
+  2.6.3
+  -----
+  
+  * Support Rails 5.1
+
+-------------------------------------------------------------------
+Thu Feb 23 05:37:52 UTC 2017 - coolo@suse.com
+
+- updated to version 2.6.2
+ see installed CHANGELOG.md
+
+  2.6.2
+  -----
+  
+  * Fix thor warnings
+
+-------------------------------------------------------------------
+Tue Nov 29 05:35:00 UTC 2016 - coolo@suse.com
+
+- updated to version 2.6.1
+ see installed CHANGELOG.md
+
+  2.6.1
+  -----
+  
+  * [Optimize root caches with cache_root!][https://github.com/rails/jbuilder/pull/370]
+
+-------------------------------------------------------------------
+Thu Jul 21 04:30:38 UTC 2016 - coolo@suse.com
+
+- updated to version 2.6.0
+ see installed CHANGELOG.md
+
+  2.6.0
+  -----
+  
+  * [Rails 5 cache! with expire support](https://github.com/rails/jbuilder/commit/d61e3354563863731bc1f358f495b1dbb7ae9d32)
+  * [Generated view DRYed by using model partial](https://github.com/rails/jbuilder/commit/83256f4d7e9211c9dc47972feaed7fd31e4f7cac)
+
+-------------------------------------------------------------------
+Tue May 31 04:29:24 UTC 2016 - coolo@suse.com
+
+- updated to version 2.5.0
+ see installed CHANGELOG.md
+
+  2.5.0
+  -----
+  
+  * [Rails 5 compatibility](https://github.com/rails/jbuilder/commit/64c510ec69d9e63b73ffd5942e802d21a7d14701)
+
+-------------------------------------------------------------------
+Wed Feb 10 05:30:45 UTC 2016 - coolo@suse.com
+
+- updated to version 2.4.1
+ see installed CHANGELOG.md
+
+  2.4.1
+  -----
+  
+  * [Fix controller generators to be Rails 5 compatible](https://github.com/rails/jbuilder/commit/2dc6203c5c4a98701d5b64c2a5200835a48bb533)
+  
+  2.4.0
+  -----
+  
+  * [Rails 5 compatibility](https://github.com/rails/jbuilder/commit/4aa2cfcc19a4634d65a28ffc75f0ac0cb8304115)
+
+-------------------------------------------------------------------
+Thu Jan 21 05:37:48 UTC 2016 - coolo@suse.com
+
+- updated to version 2.4.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Oct  1 04:30:29 UTC 2015 - coolo@suse.com
+
+- updated to version 2.3.2
+ see installed CHANGELOG.md
+
+  2.3.2
+  -----
+  
+  * [Remove Mime Types deprecation message](https://github.com/rails/jbuilder/commit/5ba4e4ac654cc8388619538f576fe234659b84ec)
+
+-------------------------------------------------------------------
+Mon Jul  6 04:31:06 UTC 2015 - coolo@suse.com
+
+- updated to version 2.3.1
+ see installed CHANGELOG.md
+
+  2.3.1
+  -----
+  
+  * [Explicitly require ostruct to prevent NameError](https://github.com/rails/jbuilder/pull/281)
+
+-------------------------------------------------------------------
+Tue Jun 16 04:32:15 UTC 2015 - coolo@suse.com
+
+- updated to version 2.3.0
+ see installed CHANGELOG.md
+
+  2.3.0
+  -----
+  
+  * [Add new in-place partial invocation support](https://github.com/rails/jbuilder/commit/1feda7ee605c136e59fb4de970f4674de518e6de)
+  * [Add implicit partial rendering for AM::Models](https://github.com/rails/jbuilder/commit/4d5bf7d0ea92765adb7be36834e84f9855a061df)
+  * [Generate API controller if Rails API option is enabled](https://github.com/rails/jbuilder/commit/db68f6bd327cf42b47ef22d455fb5721a8c2cf5f)
+  * [JBuilder's templates have less priority than app templates](https://github.com/rails/jbuilder/commit/7c1a5f25603ec1f4e51fba3dbba9db23726a5d69)
+  * [Add AC::Helpers module to jbuilder for api only apps](https://github.com/rails/jbuilder/commit/7cf1d1eb7d125caf38309b5427952030011c1aa0)
+
+-------------------------------------------------------------------
+Tue May 19 04:29:00 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.16
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon May 18 04:29:26 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.15
+ see installed CHANGELOG.md
+
+  2.2.15
+  ------
+  
+  * [Fix NoMethodError around `api_only` in railtie](https://github.com/rails/jbuilder/commit/705d1d6af3671d0bf0f78e9bb3136e727be1fb63)
+  
+  2.2.14
+  ------
+  
+  * [Make Jbuilder compatible with Rails API](https://github.com/rails/jbuilder/commit/29c0014a9c954c990075d42c45c66075260e924b)
+
+-------------------------------------------------------------------
+Sat Apr 11 06:02:26 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.13
+  * Several peformance optimizations: [#260](https://github.com/rails/jbuilder/pull/260) & [#261]
+
+-------------------------------------------------------------------
+Fri Mar 20 20:46:24 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.12
+  [Replace explici block calls with yield for performance]
+
+-------------------------------------------------------------------
+Sun Mar  8 05:28:38 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.11
+  * Generate the templates for Rails 5+ [#258]
+
+-------------------------------------------------------------------
+Sat Mar  7 05:28:40 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.10
+  * Add Jbuilder::Blank#empty? to tell if attributes are empty [#257]
+
+-------------------------------------------------------------------
+Fri Mar  6 18:06:43 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.9
+  * Support `partial!` call with `locals` option in `JbuilderTemplate` [#251](https://github.com/rails/jbuilder/pull/251)
+
+-------------------------------------------------------------------
+Mon Feb 23 05:29:24 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.8
+
+-------------------------------------------------------------------
+Sun Feb 15 05:29:08 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.7
+
+-------------------------------------------------------------------
+Mon Feb  9 06:18:56 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.6
+ * [Make sure dependency tracker loads after template handler](https://github.com/rails/jbuilder/commit/3ba404b1207b557e14771c90b8832bc01ae67a42)
+ 
+ 2.2.5
+ -----
+ * [Refactor merge block behavior to raise error for unexpected values](https://github.com/rails/jbuilder/commit/4503162fb26f53f613fc83ac081fd244748b6fe9)
+ 
+ 2.2.4
+ -----
+ * [Typecast locals hash key during collection render](https://github.com/rails/jbuilder/commit/a6b0c8651a08e01cb53eee38e211c65423f275f7)
+ 
+ 2.2.3
+ -----
+ * [Move template handler registration into railtie](https://github.com/rails/jbuilder/commit/c8acc5cea6da2a79b7b345adc301cb5ff2517647)
+ * [Do not capture the block where it is possible](https://github.com/rails/jbuilder/commit/973b382c3924cb59fc0e4e25266b18e74d41d646)
+ 
+ 2.2.2
+ -----
+ * [Fix `Jbuilder#merge!` inside block](https://github.com/rails/jbuilder/commit/a7b328552eb0d36315f75bff813bea7eecf8c1d7)
+ 
+ 2.2.1
+ -----
+ * [Fix empty block handling](https://github.com/rails/jbuilder/commit/972a11141403269e9b17b45b0c95f8a9788245ee)
+ 
+ 2.2.0
+ -----
+ * [Allow to skip `array!` iterations by calling `next`](https://github.com/rails/jbuilder/commit/81a63308fb9d5002519dd871f829ccc58067251a)
+ 
+ 2.1.2
+ -----
+ * [Cast array-like objects to array before merging](https://github.com/rails/jbuilder/commit/7b8c8a1cb09b7f3dd26e5643ebbd6b2ec67185db)
+ 
+ 2.1.1
+ -----
+ * [Remove unused file](https://github.com/rails/jbuilder/commit/e49e1047976fac93b8242ab212c7b1a463b70809)
+
+-------------------------------------------------------------------
+Mon Oct 13 12:17:36 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Sun May 18 09:04:35 UTC 2014 - coolo@suse.com
+
+- updated to version 2.0.7
+ * [Add destroy notice to scaffold generator](https://github.com/rails/jbuilder/commit/8448e86f8cdfa0f517bd59576947875775a1d43c)
+
+-------------------------------------------------------------------
+Mon Apr 21 17:43:45 UTC 2014 - coolo@suse.com
+
+- updated to version 2.0.6
+  * [Use render short form in controller generator](https://github.com/rails/jbuilder/commit/acf37320a7cea7fcc70c791bc94bd5f46b8349ff)
+
+-------------------------------------------------------------------
+Sun Mar 23 06:56:31 UTC 2014 - coolo@suse.com
+
+- updated to version 2.0.5
+ * [Fix edgecase when json is defined as a method]
+
+-------------------------------------------------------------------
+Sat Mar 15 18:46:00 UTC 2014 - coolo@suse.com
+
+- updated to version 2.0.4
+ * [Add cache_if! to conditionally cache JSON fragments]
+
+-------------------------------------------------------------------
+Sat Feb 22 06:25:43 UTC 2014 - coolo@suse.com
+
+- updated to version 2.0.3
+ * [Pass options when calling cache_fragment_name](https://github.com/rails/jbuilder/commit/07c2cc7486fe9ef423d7bc821b83f6d485f330e0)
+
+-------------------------------------------------------------------
+Sun Jan  5 14:39:52 UTC 2014 - coolo@suse.com
+
+- updated to version 2.0.2
+
+-------------------------------------------------------------------
+Sat Dec 21 08:14:20 UTC 2013 - coolo@suse.com
+
+- updated to version 2.0.0
+
+-------------------------------------------------------------------
+Wed Dec  4 11:31:19 UTC 2013 - coolo@suse.com
+
+- updated to version 1.5.3
+
+-------------------------------------------------------------------
+Sun Oct 13 18:10:02 UTC 2013 - coolo@suse.com
+
+- updated to version 1.5.2
+
+-------------------------------------------------------------------
+Mon Aug 26 05:05:51 UTC 2013 - coolo@suse.com
+
+- updated to version 1.5.1
+
+-------------------------------------------------------------------
+Wed Jul 31 05:45:53 UTC 2013 - coolo@suse.com
+
+- updated to version 1.5.0
+
+-------------------------------------------------------------------
+Thu Jun  6 05:29:25 UTC 2013 - coolo@suse.com
+
+- updated to version 1.4.2
+
+-------------------------------------------------------------------
+Sun May 26 07:45:36 UTC 2013 - coolo@suse.com
+
+- updated to version 1.4.1
+
+-------------------------------------------------------------------
+Thu Jan 24 06:43:52 UTC 2013 - coolo@suse.com
+
+- updated to version 1.0.2
+
+-------------------------------------------------------------------
+Fri Dec 28 08:04:49 UTC 2012 - coolo@suse.com
+
+- updated to version 0.9.1
+
+-------------------------------------------------------------------
+Tue Nov 27 20:00:41 UTC 2012 - coolo@suse.com
+
+- updated to version 0.8.3
+
+-------------------------------------------------------------------
+Fri Oct 26 15:54:00 UTC 2012 - coolo@suse.com
+
+- updated to version 0.8.2
+
+-------------------------------------------------------------------
+Mon Oct  1 10:56:50 UTC 2012 - coolo@suse.com
+
+- updated to version 0.8.0
+
+-------------------------------------------------------------------
+Tue Sep 11 16:35:24 UTC 2012 - coolo@suse.com
+
+- updated to version 0.5.0
+
+-------------------------------------------------------------------
+Thu Aug  9 07:54:01 UTC 2012 - coolo@suse.com
+
+- updated to version 0.4.3
+
+-------------------------------------------------------------------
+Wed Mar 28 14:22:58 UTC 2012 - jmassaguerpla@suse.com
+
+- update to versions: 0.4.0 
+
+-------------------------------------------------------------------
+Mon Feb  6 17:20:41 UTC 2012 - fcastelli@suse.com
+
+- initial package: 0.3.2
+

@@ -1,0 +1,35 @@
+From c56a018d0d6f1754142f45c44ecc859e8d1b35d1 Mon Sep 17 00:00:00 2001
+From: "Henry S. Harrison" <henry.schafer.harrison@gmail.com>
+Date: Tue, 23 Jan 2018 12:14:17 -0500
+Subject: [PATCH] update for networkx 2.0; fixes #24
+
+---
+ setup.py                      | 2 +-
+ src/experimentator/section.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index cf6f645..bb59b3e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -53,6 +53,6 @@ def read(*names, **kwargs):
+           'docopt',
+           'schema',
+           'pyyaml',
+-          'networkx',
++          'networkx>=2.0',
+       ],
+       )
+diff --git a/src/experimentator/section.py b/src/experimentator/section.py
+index b8a0ec0..0429bef 100644
+--- a/src/experimentator/section.py
++++ b/src/experimentator/section.py
+@@ -168,7 +168,7 @@ def _add_to_graph(self, graph, id_list=None):
+         parent_id_list = id_list or []
+         id_list = parent_id_list + [self._solo_id]
+ 
+-        graph.add_node(tuple(id_list), self._saveworthy_data)
++        graph.add_node(tuple(id_list), **self._saveworthy_data)
+ 
+         if parent_id_list:
+             graph.add_edge(tuple(parent_id_list), tuple(id_list))

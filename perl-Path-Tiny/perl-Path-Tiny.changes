@@ -1,0 +1,615 @@
+-------------------------------------------------------------------
+Tue Jul 31 05:49:23 UTC 2018 - coolo@suse.com
+
+- updated to 0.108
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.108     2018-07-30 15:35:23-04:00 America/New_York
+  
+      - No changes from 0.107-TRIAL.
+  
+  0.107     2018-07-24 15:10:36-04:00 America/New_York (TRIAL RELEASE)
+  
+      [Fixes]
+  
+      - Fixed a bug where failure to load optional modules would trigger
+        an external $SIG{__DIE__} handler.
+
+-------------------------------------------------------------------
+Sun Jul 15 05:54:57 UTC 2018 - coolo@suse.com
+
+- updated to 0.106
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.106     2018-07-14 09:37:00-04:00 America/New_York
+  
+      [Tests]
+  
+      - Protected t/locking.t from PERL_PATH_TINY_NO_FLOCK already
+        in the environment.
+  
+  0.105     2018-07-07 10:09:04-04:00 America/New_York (TRIAL RELEASE)
+  
+      [Additions]
+  
+      - The PERL_PATH_TINY_NO_FLOCK environment variable has been added to
+        allow users to disable file locking (and any associated warnings).
+  
+      [Changes]
+  
+      - Detection of unsupported 'flock' is no longer BSD-specific.  This
+        allows detecting and warning, for example, with the Luster filesystem
+        on Linux.
+  
+      [Tests]
+  
+      - Improve reliability and diagnostics of tests run via 'do'.
+
+-------------------------------------------------------------------
+Sat Feb 18 07:12:28 UTC 2017 - coolo@suse.com
+
+- updated to 0.104
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.104     2017-02-17 07:17:00-05:00 America/New_York
+  
+      - No changes from 0.103-TRIAL.
+  
+  0.103     2017-02-10 17:25:06-05:00 America/New_York (TRIAL RELEASE)
+  
+      [Bug fixes]
+  
+      - Path::Tiny 0.101 on Windows made `$path->absolute("/foo")` return an
+        absolute path starting with 'C:/foo', which was an unintentional
+        behavior change.  This release now uses any absolute base without
+        further normalization.
+  
+  0.101     2017-02-05 09:56:46-05:00 America/New_York (TRIAL RELEASE)
+  
+      [Changes]
+  
+      - The 'absolute' method now always returns an absolute path, even if a
+        user provided a relative path for the base path.  The old, odd
+        behavior was documented, but people often don't read docs.  The new
+        behavior avoids suprises.
+  
+      [Additions]
+  
+      - Added 'cached_temp' method.
+
+-------------------------------------------------------------------
+Mon Feb 13 12:47:43 UTC 2017 - coolo@suse.com
+
+- updated to 0.100
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.100     2017-01-14 22:47:55-05:00 America/New_York
+  
+      - No changes from 0.099-TRIAL.
+  
+  0.099     2017-01-10 15:12:13-05:00 America/New_York (TRIAL RELEASE)
+  
+      [Tests]
+  
+      - Fixed tests for eventual removal of '.' from `@INC` in Perl.
+  
+      [Documentation]
+  
+      - Fixed filehandle mode typo.
+  
+      - Fixed typo in relative() that mentioned rel2abs instead of abs2rel.
+
+-------------------------------------------------------------------
+Tue Oct 11 06:04:21 UTC 2016 - coolo@suse.com
+
+- updated to 0.098
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.098     2016-10-09 23:25:11-04:00 America/New_York
+  
+      - No changes from 0.097-TRIAL.
+  
+  0.097     2016-09-30 22:03:10-04:00 America/New_York (TRIAL RELEASE)
+  
+      [Additions]
+  
+      - Added 'realpath' option for 'tempfile' and 'tempdir' for situations
+        where an absolute temporary path just isn't enough.
+
+-------------------------------------------------------------------
+Mon Jul  4 13:05:08 UTC 2016 - coolo@suse.com
+
+- updated to 0.096
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.096     2016-07-02 21:25:33-04:00 America/New_York
+  
+      - No changes from 0.095
+  
+  0.095     2016-06-28 12:05:03-04:00 America/New_York (TRIAL RELEASE)
+  
+      [Tests]
+  
+      - Improved method for hiding some modules during tests.
+
+-------------------------------------------------------------------
+Sat May 28 10:23:26 UTC 2016 - coolo@suse.com
+
+- updated to 0.094
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.094     2016-05-23 12:45:19-04:00 America/New_York
+  
+      - Fixed Changes note typo in 0.092.  0.092 had no changes since 0.091,
+        not 0.090, meaning that all 0.091 changes were (and are) included.
+  
+  0.092     2016-05-23 11:36:54-04:00 America/New_York
+  
+      - No changes from 0.091
+  
+  0.091     2016-05-17 13:32:21-04:00 America/New_York (TRIAL RELEASE)
+  
+      [Changes]
+  
+      - Path::Tiny will prefer PerlIO::utf8_strict over encoding(UTF-8)
+        if available and Unicode::UTF8 is not installed.
+  
+      [Fixes]
+  
+      - The 'touch' method can now set the current time on files that aren't
+        owned, as long as they are writeable.
+  
+      [Tests]
+  
+      - Improved consistency of symlink support inspection; now always
+        looks at $Config{d_symlink}.
+  
+      - Skips impossible test on 'msys' platform.
+
+-------------------------------------------------------------------
+Thu May  5 09:54:39 UTC 2016 - coolo@suse.com
+
+- updated to 0.090
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.090     2016-05-02 07:08:58-04:00 America/New_York
+  
+      - No changes from 0.089
+  
+  0.089     2016-04-26 22:21:00-04:00 America/New_York (TRIAL RELEASE)
+  
+      [Fixes]
+  
+      - Fix spew_utf8 to allow array references as input.
+  
+  0.088     2016-04-15 08:41:07-04:00 America/New_York
+  
+      - No changes from 0.087
+  
+  0.087     2016-04-12 12:13:14-04:00 America/New_York (TRIAL RELEASE)
+  
+      [Fixes]
+  
+      - Fixed bugs in relative symlink resolution for realpath, spew and
+        edit_lines.
+  
+      [Changes]
+  
+      - Symlink resolution will detect circular loops and throw an error.
+
+-------------------------------------------------------------------
+Mon Apr  4 10:12:18 UTC 2016 - coolo@suse.com
+
+- updated to 0.086
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.086     2016-04-03 13:49:37-04:00 America/New_York
+  
+      [Documented]
+  
+      - Improved documentation of copy and move.
+
+-------------------------------------------------------------------
+Tue Mar  8 10:48:07 UTC 2016 - coolo@suse.com
+
+- updated to 0.084
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.084     2016-03-04 07:17:49-05:00 America/New_York
+  
+      [Fixes]
+  
+      - Fixed relative() for the case with regex metacharacters in the path
+  
+  0.082     2016-03-01 18:23:26-05:00 America/New_York
+  
+      [!!! INCOMPATIBLE CHANGES !!!]
+  
+      - (This warning repeated from 0.079-TRIAL) The relative() method no
+        longer uses File::Spec's buggy rel2bs method.  The new Path::Tiny
+        algorithm should be comparable and passes File::Spec rel2abs test
+        cases, except that it correctly accounts for symlinks.  For common
+        use, you are not likely to notice any difference. For uncommon use,
+        this should be an improvement.  As a side benefit, this change drops
+        the minimum File::Spec version required, allowing Path::Tiny to be
+        fatpacked if desired.
+  
+      [Changes]
+  
+      - no other changes from 0.081
+  
+  0.081     2016-02-18 16:55:37-05:00 America/New_York (TRIAL RELEASE)
+  
+      [Fixed]
+  
+      - Fixed lines_utf8+chomp and relative() bugs on Windows
+  
+  0.079     2016-02-15 20:52:10-07:00 America/Mazatlan (TRIAL RELEASE)
+  
+      [!!! INCOMPATIBLE CHANGES !!!]
+  
+      - The relative() method no longer uses File::Spec's buggy rel2bs
+        method.  The new Path::Tiny algorithm should be comparable and passes
+        File::Spec rel2abs test cases, except that it correctly accounts for
+        symlinks.  For common use, you are not likely to notice any
+        difference. For uncommon use, this should be an improvement.  As a
+        side benefit, this change drops the minimum File::Spec version
+        required, allowing Path::Tiny to be fatpacked if desired.
+  
+      [FIXED]
+  
+      - Fixed lines_utf8() with chomping for repeated empty lines.
+  
+      [DOCS]
+  
+      - Documented that subclassing is not supported
+  
+  0.077     2016-02-10 14:17:32-07:00 America/Mazatlan (TRIAL RELEASE)
+  
+      [ADDED]
+  
+      - Added 'edit' and 'edit_lines' plus _utf8 and _raw variants; this
+        is similar to perl's -i flag (though without backups)
+
+-------------------------------------------------------------------
+Thu Nov 19 10:11:53 UTC 2015 - coolo@suse.com
+
+- updated to 0.076
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.076     2015-11-16 10:47:24-05:00 America/New_York
+  
+      - no changes from 0.075
+  
+  0.075     2015-11-15 21:02:18-05:00 America/New_York (TRIAL RELEASE)
+  
+      [FIXED]
+  
+      - Tilde expansion on Windows was resulting in backslashes.  Now they
+        are correctly normalized to forward slashes.
+  
+      [DOCS]
+  
+      - Typos fixed
+  
+  0.073     2015-10-30 10:36:18-04:00 America/New_York (TRIAL RELEASE)
+  
+      [FIXED]
+  
+      - Fixed spewing to a symlink that crosses a filesystem boundary
+  
+      [PREREQS]
+  
+      - Add Test::MockRandom to META as an recommended test prerequisite.
+
+-------------------------------------------------------------------
+Tue Jul 21 09:08:05 UTC 2015 - coolo@suse.com
+
+- updated to 0.072
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.072     2015-07-20 16:07:20-04:00 America/New_York
+  
+      - No changes from 0.071
+  
+  0.071     2015-07-17 13:40:08-04:00 America/New_York (TRIAL RELEASE)
+  
+      [FIXED]
+  
+      - Fixed incorrect error argument for File::Path functions
+        (mkpath and remove_tree)
+
+-------------------------------------------------------------------
+Mon Jun 29 01:27:23 UTC 2015 - coolo@suse.com
+
+- updated to 0.070
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.070     2015-06-28 13:50:16-04:00 America/New_York
+  
+      - No changes from 0.069
+  
+  0.069     2015-06-18 18:09:44-04:00 America/New_York (TRIAL RELEASE)
+  
+      [CHANGED]
+  
+      - The 'copy' menthod now returns the object for the copied file
+  
+      [FIXED]
+  
+      - The 'visit' method only dereferences the callback return value
+        for scalar refs, avoiding some common bugs
+
+-------------------------------------------------------------------
+Mon Apr 13 18:49:17 UTC 2015 - coolo@suse.com
+
+- updated to 0.068
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.068     2015-03-23 20:42:56-04:00 America/New_York
+  
+      [META]
+  
+      - Jumping to 0.068 to get to an even-version for a stable release
+  
+      [DOCUMENTED]
+  
+      - Noted that 0.66 changed the 'filehandle' method
+  
+  0.066     2015-03-20 23:59:08-04:00 America/New_York (TRIAL RELEASE)
+  
+      [ADDED]
+  
+      - Added exclusive locking option to filehandle opens; spew now
+        exclusively locks tempfile used for atomic writes
+  
+  0.065     2015-03-06 05:59:56-05:00 America/New_York
+  
+      [ADDED]
+  
+      - Added 'assert' method
+  
+      - Added 'visit' method
+  
+      - Added support for a negative count for 'lines' to get the
+        last lines of a file
+  
+      [FIXED]
+  
+      - Fixed tilde expansion if path has spaces
+  
+      - Make realpath non-fatal if the parent path exists and only the final
+        path component does not. (Was fatal on Windows and some Unixes.)
+  
+      - Removed rendundant locking on tempfile use for spewing
+  
+      - Work around File::Temp bugs on older ActiveState Windows Perls
+        https://bugs.activestate.com/show_bug.cgi?id=104767 
+  
+      [DOCUMENTED]
+  
+      - Fixed SYNOPSIS example
+  
+  0.064     2015-03-05 03:58:42-05:00 America/New_York (TRIAL RELEASE)
+  
+  0.063     2015-03-04 16:00:17-05:00 America/New_York (TRIAL RELEASE)
+  
+  0.062     2015-03-04 13:59:31-05:00 America/New_York (TRIAL RELEASE)
+  
+  0.061     2014-11-13 16:50:05-05:00 America/New_York
+  
+      [FIXED]
+  
+      - Fixed append_utf8 and append_raw with 'truncate' option.
+  
+  0.060     2014-11-04 17:33:39-05:00 America/New_York
+  
+      [ADDED]
+  
+      - Added 'truncate' option to append for in-place replacement of
+        file contents.
+  
+  0.059     2014-10-14 12:45:46-04:00 America/New_York
+  
+      [FIXED]
+  
+      - Fixed precedence bug in the check for Unicode::UTF8
+  
+  0.058     2014-09-23 11:00:24-04:00 America/New_York
+  
+      [ADDED]
+  
+      - Added a 'sibling' method as a more efficient form of
+        calling $path->parent->child(...).
+  
+      [DOCUMENTED]
+  
+      - Every method annotated with the version number of the
+        last API change.
+  
+  0.057     2014-09-19 11:23:05-04:00 America/New_York
+  
+      [FIXED]
+  
+      - On AIX, reads that default to locking would fail without
+        write permissions, because locking needs write permissions.
+        The fix is only to lock reads if write permissions exist;
+        otherwise locking is skipped.
+  
+  0.056     2014-08-07 15:08:41-04:00 America/New_York
+  
+      [*** DEPRECATIONS ***]
+  
+      - The 'dirname' method is deprecated due to exposing File::Spec
+        inconsistencies
+  
+      [ADDED]
+  
+      - The 'digest' method now takes a 'chunk_size' option to avoid
+        slurping files entirely into memory.
+  
+      [FIXED]
+  
+      - Fixed problem throwing errors from 'remove'
+  
+  0.055     2014-06-30 10:29:28-04:00 America/New_York
+  
+      [FIXED]
+  
+      - tempfile/tempdir won't warn if used as functions without arguments
+  
+  0.054     2014-05-04 13:56:11-04:00 America/New_York
+  
+      [ADDED]
+  
+      - The 'basename' method now takes a list of suffixes to remove before
+        returning the name
+  
+      - FREEZE/THAW/TO_JSON serialization helpers
+  
+      [CHANGED]
+  
+      - When constructing a Path::Tiny object from another, the original
+        is returned unless it's a temp dir/file.  This significantly
+        speeds up calling path($path) if $path is already a Path::Tiny
+        object. (Thanks to Michael Schwern for prompting such benchmarking.)
+  
+      [FIXED]
+  
+      - Constructing any path -- e.g. with child() -- with undef or
+        zero-length parts throws an error instead of constructing an
+        invalid path
+  
+  0.053     2014-03-24 09:25:51-04:00 America/New_York (TRIAL RELEASE)
+  
+      [INCOMPATIBLE CHANGES]
+  
+      - The 'is_file' method now does -e && ! -d and not -f because -f
+        is often more restrictive than people intend or expect.
+  
+      [ADDED]
+  
+      - Added 'chmod' method with symbolic chmod support ("a=r,u+rx")
+  
+  0.052     2014-01-14 15:58:03-05:00 America/New_York
+  
+      [FIXED]
+  
+      - Backslash-to-slash conversion now only happens on Windows
+        (since backslash is legal on Unix, we must allow it)
+  
+  0.051     2013-12-20 07:34:14 America/New_York
+  
+      [FIXED]
+  
+      - Fixed file order bug in the new test file
+  
+  0.050     2013-12-20 07:27:20 America/New_York
+  
+      [FIXED]
+  
+      - Recursive iteration won't throw an exception if a directory is
+        removed or unreadable during iteration.
+  
+  0.049     2013-12-12 00:48:01 America/New_York
+  
+      [FIXED]
+  
+      - Generates filename for atomic writes independent of thread-ID.
+        Fixes crashing bug on Win32 when fork() is called.
+  
+  0.048     2013-12-11 21:56:23 America/New_York
+  
+      [ADDED]
+  
+      - Added 'subsumes' method
+  
+      [CHANGED]
+  
+      - The 'chomp' option for 'lines' will remove any end-of-line sequences
+        fully instead of just chomping the last character
+  
+      - The 'flock' package will no longer indexed by PAUSE
+  
+      [FIXED]
+  
+      - Hides warnings and fixes possible fatal errors from pure-perl Cwd,
+        particularly on MSWin32
+
+-------------------------------------------------------------------
+Mon Dec  9 13:31:53 UTC 2013 - opensuse@dstoecker.de
+
+- update to 0.047
+    - Revised locking tests for portability again: locks are now tested
+      from a separate process
+    - Fixed child path construction against the root path.
+    - Fixed t/00-report-prereqs.t for use with older versions of
+      CPAN::Meta::Requirements
+    - When 'realpath' can't be resolved (because intermediate directories
+      don't exist), the exception now explains the error clearly instead of
+      complaining about path() needing a defined, positive-length argument.
+    - Removes duplicate test dependency on File::Spec that triggers
+      a CPAN.pm bug
+    - When using 'filehandle' to request a locked handle that truncates an
+      existing file and has a binmode starting with ":unix", this fixes a
+      bug where pseudo-layers weren't being cleared properly.
+    - The 'filehandle' method now offers an option to return locked handles
+      based on the file mode.  Input-output methods now rely on this
+      feature internally.  Truncating file modes defer truncation until
+      after an exclusive lock is acquired.
+    - The 'filehandle' method now respects default encoding set by
+      the caller's open pragma.
+
+-------------------------------------------------------------------
+Tue Oct  8 15:50:04 UTC 2013 - coolo@suse.com
+
+- updated to 0.038
+   [ADDITIONS]
+   - Added 'is_rootdir' method to simplify testing if a path is
+     the root directory
+
+   [FIXES]
+   - Fixed for v5.8
+
+   [PREREQS]
+   - No longer lists 'threads' as a prerequisite.  If you have a threaded
+     perl, you have it and if you're not, Path::Tiny doesn't care.
+
+-------------------------------------------------------------------
+Wed Sep 25 07:34:04 UTC 2013 - opensuse@dstoecker.de
+
+- update to 0.035
+    [INCOMPATIBLE CHANGE]
+    - Exceptions are now Path::Tiny::Error objects, not autodie exceptions;
+      this removes the last dependency on autodie, which allows us to
+      support Perls as far back as v5.8.1
+
+    - Fixed flock warning on BSD that was broken with the autodie
+      removal; now also applies to all BSD flavors
+    - BSD/NFS flock fix was not backwards compatible before v5.14.  This
+      fixes it harder.
+    - dropped autodie
+    - lowered ExtUtils::MakeMaker configure_requires version to 6.17
+    - Perl on BSD may not support locking on an NFS filesystem.  If this is
+      detected, Path::Tiny warns and continues in an unsafe mode.  The
+      'flock' warning category may be fatalized to die instead.
+    - Added 'iterator' example showing defaults
+    - Removed several test dependencies.  Path::Tiny now only needs
+      core modules, though some must be upgraded on old Perls
+    - parent() on paths with internal double dots (e.g. /foo..bar.txt) now works
+      correctly
+    - t/zzz-spec.t used getcwd() instead of getdcwd(), which breaks
+      on Windows if the build directory isn't on the 'C' drive
+    - On Win32, "C:/" no longer is changed to "C:".  Also, "C:" is
+      converted to the absolute path of cwd on the "C:" volume.  UNC paths
+      ("//server/share/") now retain their trailing slash to correctly
+      distinguish volume and directory paths when split
+    - The 'children()' method now takes an optional regular expression to
+      filter the results
+
+-------------------------------------------------------------------
+Tue Jul 30 05:43:48 UTC 2013 - coolo@suse.com
+
+- initial package 0.027
+    * created by cpanspec 1.78.06
+

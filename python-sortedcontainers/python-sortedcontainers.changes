@@ -1,0 +1,164 @@
+-------------------------------------------------------------------
+Tue Mar 26 11:36:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.1.0:
+  * Small updates to docs and tests for Python 3.7.
+  * Change imports for Abstract Base Classes to collections.abc to avoid warnings in Python 3.7.
+  * SortedDict methods iterkeys, iteritems, itervalues, viewkeys, viewitems, and viewvalues are not implemented for Python 2. Attribute lookup now raises :exc:`AttributeError`.
+  * Accessing SortedDict.iloc will emit DeprecationWarning.
+  * SortedSet.__rsub__ erroneously reversed its arguments. The method has been removed in favor of the inherited Set.__rsub__ which has a correct implementation.
+  * :class:`SortedKeysView` and :class:`SortedValuesView` set-operations now return :class:`SortedSet` objects to better match the semantics of version 1.
+- use github tarball for tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:28 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed May 30 19:10:37 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 2.0.2
+  + API Changes
+    * SortedListWithKey is deprecated. Use SortedKeyList instead.
+      The name SortedListWithKey remains as an alias for SortedKeyList. The
+      alias will be removed in Version 3.
+    * sortedcontainers.sortedlist.LOAD has moved to
+      SortedList.DEFAULT_LOAD_FACTOR so that derived classes can customize the
+      value.
+    * SortedList._half and SortedList._dual have been removed. Use
+      SortedList._load instead.
+    * SortedList.add parameter val renamed to value.
+    * SortedList.__contains__ parameter val renamed to value.
+    * SortedList.discard parameter val renamed to value.
+    * SortedList.remove parameter val renamed to value.
+    * SortedList.__delitem__ parameter idx renamed to index.
+    * SortedList.__getitem__ parameter idx renamed to index.
+    * SortedList.__setitem__ now raises :exc:NotImplementedError. Use
+      SortedList.__delitem__ and SortedList.add instead.
+    * SortedList.bisect_left parameter val renamed to value.
+    * SortedList.bisect_right parameter val renamed to value.
+    * SortedList.bisect parameter val renamed to value.
+    * SortedList.count parameter val renamed to value.
+    * SortedList.append now raises :exc:NotImplementedError. Use
+      SortedList.add instead.
+    * SortedList.extend now raises :exc:NotImplementedError. Use
+      SortedList.update instead.
+    * SortedList.insert now raises :exc:NotImplementedError. Use
+      SortedList.add instead.
+    * SortedList.pop parameter idx renamed to index.
+    * SortedList.index parameter val renamed to value.
+    * SortedList.__add__ parameter that renamed to other.
+    * SortedList.__iadd__ parameter that renamed to other.
+    * SortedList.__mul__ parameter that renamed to num.
+    * SortedList.__imul__ parameter that renamed to num.
+    * SortedList._make_cmp renamed to SortedList.__make_cmp.
+    * SortedKeyList.add parameter val renamed to value.
+    * SortedKeyList.__contains__ parameter val renamed to value.
+    * SortedKeyList.discard parameter val renamed to value.
+    * SortedKeyList.remove parameter val renamed to value.
+    * SortedKeyList.bisect_left parameter val renamed to value.
+    * SortedKeyList.bisect_right parameter val renamed to value.
+    * SortedKeyList.bisect parameter val renamed to value.
+    * SortedKeyList.count parameter val renamed to value.
+    * SortedKeyList.append now raises :exc:NotImplementedError. Use
+      SortedKeyList.add instead.
+    * SortedKeyList.extend now raises :exc:NotImplementedError. Use
+      SortedKeyList.update instead.
+    * SortedKeyList.insert now raises :exc:NotImplementedError. Use
+      SortedKeyList.add instead.
+    * SortedKeyList.index parameter val renamed to value.
+    * SortedKeyList.__add__ parameter that renamed to other.
+    * SortedKeyList.__radd__ added.
+    * SortedKeyList.__iadd__ parameter that renamed to other.
+    * SortedKeyList.__mul__ parameter that renamed to num.
+    * SortedKeyList.__rmul__ added.
+    * SortedKeyList.__imul__ parameter that renamed to num.
+    * Removed SortedDict.iloc. Use SortedDict.keys and
+      SortedKeysView instead.
+    * SortedDict.fromkeys parameter seq renamed to iterable.
+    * SortedDict.keys now returns SortedKeysView.
+    * SortedDict.items now returns SortedItemsView.
+    * SortedDict.values now returns SortedValuesView.
+    * Removed SortedDict.viewkeys. Use SortedDict.keys instead.
+    * Removed SortedDict.viewitems. Use SortedDict.items instead.
+    * Removed SortedDict.viewvalues. Use SortedDict.values instead.
+    * SortedDict.iterkeys removed. Use SortedDict.keys instead.
+    * SortedDict.iteritems removed. Use SortedDict.items instead.
+    * SortedDict.itervalues removed. Use SortedDict.values instead.
+    * SortedDict.popitem now accepts an optional index argument. Default
+      `-1`.
+    * sorteddict.KeysView renamed to SortedKeysView.
+    * sorteddict.ItemsView renamed to SortedItemsView.
+    * sorteddict.ValuesView renamed to SortedValuesView.
+    * Sorted dict views rely on collections abstract base classes: dict views and
+      sequence. The SortedKeysView.__getitem__,
+      SortedItemsView.__getitem__, and SortedValuesView.__getitem__
+      methods are implemented and optimized. All other mixin methods use the
+      default implementation provided by the base class. Prefer SortedDict
+      methods to view methods when possible.
+    * SortedSet._make_cmp renamed to SortedSet.__make_cmp.
+    * SortedSet.symmetric_difference parameter that renamed to other.
+    * SortedSet.symmetric_difference_update parameter that renamed to
+      other.
+  + Miscellaneous
+    * Sphinx autodoc now used for API documentation.
+    * All benchmarks now run on CPython 3.6 unless otherwise noted.
+    * Testing now uses pytest rather than nose.
+    * AppVeyor CI testing added.
+    * Updated versions of alternative implementations.
+    * Rename Github repo from grantjenks/sorted_containers to
+      grantjenks/python-sortedcontainers.
+    * Fix broken links in documentation.
+
+
+-------------------------------------------------------------------
+Thu May 10 15:10:46 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 1.5.10:
+  * Improved performance of islice(...) methods.
+
+-------------------------------------------------------------------
+Sat Dec  9 17:15:38 UTC 2017 - arun@gmx.de
+
+- update to version 1.5.9:
+  * Dropped CPython 2.6 testing.
+
+- changes from version 1.5.8:
+  * Bugfixes
+    + Added SortedList.reverse to override MutableSequence.reverse and
+      raise NotImplementedError.
+
+-------------------------------------------------------------------
+Sat Jul 15 15:58:07 UTC 2017 - aloisio@gmx.com
+
+- Update to version 1.5.7
+  * Changed ``SortedList.__setitem__`` to support slices with stop
+    less than start and step equal one.
+  1.5.6:
+  * Changed ``SortedList.__setitem__`` to support slices that alias
+    itself.
+  1.5.5:
+  * Changed ``SortedList.extend`` to support empty iterables.
+  1.5.4:
+  * Changed ``SortedList.__new__`` to call
+    ``SortedListWithKey.__init__`` once instead of twice.
+
+- Build HTML documentation and put it into -doc subpackage
+- Enabled tests
+- Converted to singlespec
+
+-------------------------------------------------------------------
+Sun Oct  2 07:51:12 UTC 2016 - toddrme2178@gmail.com
+
+- Update to 1.5.3
+  * No upstream changelog
+
+-------------------------------------------------------------------
+Tue Dec  9 13:38:25 UTC 2014 - toddrme2178@gmail.com
+
+- Initial version
+

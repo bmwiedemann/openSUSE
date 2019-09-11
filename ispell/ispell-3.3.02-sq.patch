@@ -1,0 +1,219 @@
+---
+ Makefile |   10 +++++++---
+ sq.c     |   36 ++++++++++++++++++++++--------------
+ unsq.c   |   31 +++++++++++++++++++------------
+ 3 files changed, 48 insertions(+), 29 deletions(-)
+
+--- Makefile
++++ Makefile	2016-02-12 10:34:00.287895315 +0000
+@@ -286,7 +286,7 @@ all:	all-languages
+ 
+ programs: buildhash findaffix tryaffix ispell
+ programs: icombine ijoin munchlist
+-programs: subset zapdups
++programs: subset zapdups sq unsq
+ 
+ defmt-programs:
+ 	cd deformatters; $(MAKE) all
+@@ -345,11 +345,15 @@ install-basic:
+ 	@. ./config.sh; \
+ 	  set -x; \
+ 	  $$INSTALL ispell.1 $(DESTDIR)$$MAN1DIR/ispell$$MAN1EXT; \
+-	  $$INSTALL ispell.5 $(DESTDIR)$$MAN45DIR/ispell$$MAN45EXT
++	  $$INSTALL ispell.5 $(DESTDIR)$$MAN45DIR/ispell$$MAN45EXT; \
++	  $$INSTALL sq.1     $(DESTDIR)$$MAN1DIR/sq$$MAN1EXT; \
++	  echo .so man1/sq.1 > $(DESTDIR)$$MAN1DIR/unsq$$MAN1EXT
+ 	@. ./config.sh; \
+ 	  set -x; \
+ 	  cd $(DESTDIR)$$MAN1DIR; \
+ 	  chmod 644 ispell$$MAN1EXT; \
++	  chmod 644 sq$$MAN1EXT; \
++	  chmod 644 unsq$$MAN1EXT; \
+ 	  cd $(DESTDIR)$$MAN45DIR; \
+ 	  chmod 644 ispell$$MAN45EXT
+ 
+@@ -383,7 +387,7 @@ install-dictbuild:
+ 	@. ./config.sh; \
+ 	  set -x; \
+ 	  $$INSTALL buildhash icombine ijoin munchlist findaffix \
+-	      tryaffix \
++	      tryaffix sq unsq \
+ 	    $(DESTDIR)$$BINDIR
+ 	@. ./config.sh; \
+ 	  set -x; \
+--- sq.c
++++ sq.c	2016-02-12 10:31:20.083026011 +0000
+@@ -1,5 +1,5 @@
+ #ifndef lint
+-static char Rcs_Id[] =
++static char Rcs_Id[] __attribute__ ((unused)) =
+     "$Id: sq.c,v 1.16 2005/04/14 14:38:23 geoff Exp $";
+ #endif
+ 
+@@ -59,6 +59,7 @@ static char Rcs_Id[] =
+  */
+ 
+ #include <stdio.h>
++#include <string.h>
+ 
+ #ifdef __STDC__
+ #define P(x)	x
+@@ -67,7 +68,7 @@ static char Rcs_Id[] =
+ #endif /* __STDC__ */
+ 
+ int		main P ((int argc, char * argv[]));
+-static void	trunc P ((char * word, char * prev));
++static void	sqtrunc P ((const char * word, char * prev));
+ 
+ /*
+  * The following table encodes prefix sizes as a single character.  A
+@@ -84,27 +85,34 @@ static char size_encodings[] =
+     'y', 'z'						/* 60-61 */
+     };
+ 
+-#define MAX_PREFIX	(sizeof (size_encodings) - 1)
++#define MAX_PREFIX	((sizeof(size_encodings)/sizeof(char)) - 1)
++#define UNSEQBUFSIZE	257
+ 
+ int main (argc, argv)
+     int		argc;
+     char *	argv[];
+     {
+-    char	word[257];
+-    static char	prev[257] = "";
+-
+-    while (gets (word) != NULL)
+-	trunc (word, prev);
++    char	word[UNSEQBUFSIZE];
++    char *	nl;
++    static char	prev[UNSEQBUFSIZE] = "";
++
++    while (fgets (word, UNSEQBUFSIZE, stdin) != NULL) {
++	if ((nl = strrchr(word, '\n')))
++	    *nl = '\0';
++	else
++	    word[UNSEQBUFSIZE - 1] = '\0';
++	sqtrunc (word, prev);
++    }
+     return 0;
+     }
+ 
+-static void trunc (word, prev) 
+-    char *		word;
++static void sqtrunc (word, prev) 
++    const char *	word;
+     char *		prev;
+     {
+-    register char *	wordp;
+-    register char *	prevp;
+-    register int	same_count;
++    const register char *	wordp;
++    const register char *	prevp;
++    register int		same_count;
+ 
+     wordp = word;
+     prevp = prev;
+@@ -113,7 +121,7 @@ static void trunc (word, prev)
+     if (same_count>MAX_PREFIX)
+ 	same_count = MAX_PREFIX;
+     (void) putchar (size_encodings[same_count]);
+-    (void) puts (wordp);
++    (void) puts (&word[same_count]);
+     (void) strcpy (prev, word);
+     }
+ 
+--- unsq.c
++++ unsq.c	2016-02-12 10:31:20.083026011 +0000
+@@ -1,5 +1,5 @@
+ #ifndef lint
+-static char Rcs_Id[] =
++static char Rcs_Id[] __attribute__ ((unused)) =
+     "$Id: unsq.c,v 1.18 2005/04/14 14:38:23 geoff Exp $";
+ #endif
+ 
+@@ -58,7 +58,9 @@ static char Rcs_Id[] =
+  *
+  */
+ 
++#include <stdlib.h>
+ #include <stdio.h>
++#include <string.h>
+ #include "msgs.h"
+ 
+ #ifdef __STDC__
+@@ -68,7 +70,7 @@ static char Rcs_Id[] =
+ #endif /* __STDC__ */
+ 
+ int		main P ((int argc, char * argv[]));
+-static int	expand P ((char * word, char * prev));
++static int	sqexpand P ((char * word, char * prev));
+ 
+ /*
+  * The following table encodes prefix sizes as a single character.  A
+@@ -85,39 +87,40 @@ static char size_encodings[] =
+     'y', 'z'						/* 60-61 */
+     };
+ 
+-#define MAX_PREFIX	(sizeof (size_encodings) - 1)
+-
+-extern void	exit P ((int status));
++#define MAX_PREFIX	((sizeof(size_encodings)/sizeof(char)) - 1)
++#define UNSEQBUFSIZE	257
+ 
+ int main (argc, argv)
+     int			argc;
+     char *		argv[];
+     {
+-    char		word[257];
+-    static char		prev[257] = "";
++    char		word[UNSEQBUFSIZE];
++    static char		prev[UNSEQBUFSIZE] = "";
+ 
+-    while (!expand (word, prev))
++    while (!sqexpand (word, prev))
+         puts (word);
+     return 0;
+     }
+ 
+-static int expand (word, prev) 
++static int sqexpand (word, prev) 
+     char *		word;
+     char *		prev;
+     {
+     register char *	wordp;
+     register char *	prevp;
++    register char *	nl;
+     register int	same_count;
+     register int	count_char;
++    register off_t	size;
+ 
+     count_char = getchar ();
+     if (count_char == EOF)
+ 	return(1);
+     for (same_count = 0;
+-      same_count < MAX_PREFIX  &&  size_encodings[same_count] != count_char;
++      same_count <= MAX_PREFIX  &&  size_encodings[same_count] != count_char;
+       same_count++)
+ 	;
+-    if (same_count == MAX_PREFIX)
++    if (same_count > MAX_PREFIX)
+ 	{
+ 	(void) fprintf (stderr, UNSQ_C_BAD_COUNT, (unsigned int) count_char);
+ 	exit (1);
+@@ -126,11 +129,15 @@ static int expand (word, prev)
+     wordp = word;
+     while (same_count--)
+ 	*wordp++ = (*prevp++);
+-    if (gets (wordp) == NULL)
++    size = UNSEQBUFSIZE - (wordp - word);
++    if (fgets(wordp, size <= UNSEQBUFSIZE ? size : 0, stdin) == NULL)
+ 	{
+ 	(void) fprintf (stderr, UNSQ_C_SURPRISE_EOF);
+ 	exit (1);
+ 	}
++    word[UNSEQBUFSIZE - 1] = '\0';	/* In case of no newline */
++    if ((nl = strrchr(wordp, '\n')))
++	*nl = '\0';
+     (void) strcpy (prev, word);
+     return 0 ;
+     }

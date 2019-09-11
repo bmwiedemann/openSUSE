@@ -1,0 +1,180 @@
+-------------------------------------------------------------------
+Wed Feb 27 09:39:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop patch grabber_fix.diff that was never upstreamed. Should
+  not be needed anymore
+
+-------------------------------------------------------------------
+Mon Feb 25 17:44:43 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to the upstream version 4.0.0:
+  * Port to Python 3 rocket
+  * Add curl_obj option to grabber
+  * Throw an obvious error message when urlgrabber-ext-down is
+    missing when attempting to use external downloader
+  * Use setuptools for setup.py instead of distutils
+- Remove merged patches:
+  * declare-dollar-sign-as-safe-in-urlquote.patch
+  * python-urlgrabber-3.9.1-set-SSL_VERIFYHOST-correct.dif
+  * python-urlgrabber-3.9.1-preserve-queryparams-in-urls.patch
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:41 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue May 29 14:23:52 UTC 2018 - mcepl@suse.com
+
+- Clean SPEC file
+
+-------------------------------------------------------------------
+Thu Aug 24 13:56:44 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Thu Feb 12 13:42:05 CET 2015 - mc@suse.de
+
+- declare $ sign as a safe character in url paths to prevent
+  escaping /$RCE/ which lead into problems with token auth
+  (bnc#902416)
+  * declare-dollar-sign-as-safe-in-urlquote.patch
+  * python-urlgrabber-3.9.1-set-SSL_VERIFYHOST-correct.dif
+- set curl option SSL_VERIFYHOST correct
+
+-------------------------------------------------------------------
+Tue Sep 16 12:38:07 UTC 2014 - dmacvicar@suse.de
+
+- Add python-urlgrabber-3.9.1-preserve-queryparams-in-urls.patch
+  (bnc#896844)
+
+-------------------------------------------------------------------
+Wed Feb  6 18:06:41 UTC 2013 - jmatejek@suse.com
+
+- Add grabber_fix.diff: Fixed timeout and other errors breaking yum
+  compatibility (bnc#793650)
+
+-------------------------------------------------------------------
+Mon Oct  1 09:53:26 UTC 2012 - saschpe@suse.de
+
+- Fixed wrong license header in urlgrabber/__init__.py (bnc#781323)
+- Updated upstream URL, the project moved the baseurl.org (yum)
+
+-------------------------------------------------------------------
+Tue Sep 20 11:40:05 UTC 2011 - saschpe@suse.de
+
+- Update to version 3.9.1:
+  * cleanup all the old urlgrabber urllib code that's not being used
+  * delete sslfactory and keepalive fix up the unittests to match existing code
+  * make sure the value we get back from the parse150 and other calls is
+    converted to an int before we make it 'size' rhbug: #524705
+- Spec file updates:
+  * Removed authors from description
+  * Dropped useless python-urlgrabber-2.9.9.patch
+  * Dropped obsolete python-urlgrabber-3.1.0.patch (upstream changed)
+  * Require python-pycurl 
+
+-------------------------------------------------------------------
+Wed Aug 12 20:10:37 CEST 2009 - matejcik@suse.cz
+
+- build as noarch on newer distros
+- switched filelist to --record-rpm
+
+-------------------------------------------------------------------
+Mon Aug 10 14:06:55 CEST 2009 - coolo@novell.com
+
+- sync factory and build service
+
+-------------------------------------------------------------------
+Sun Aug  9 08:45:09 CEST 2009 - coolo@novell.com
+
+- use new python macros
+
+-------------------------------------------------------------------
+Tue May 12 14:14:04 CEST 2009 - poeml@suse.de
+
+- fix build on 11.1 onwards, where python must be in the
+  buildrequires in addition to python-devel, because otherwise
+  urllib2 appears to have no SSL support
+
+-------------------------------------------------------------------
+Fri Sep 26 11:11:32 CEST 2008 - cthiel@suse.de
+
+- add python to BuildRequires to fix build
+
+-------------------------------------------------------------------
+Tue Feb 19 16:01:09 CET 2008 - cthiel@suse.de
+
+- fix url parsing error in grabber.py (bnc #362937)
+
+-------------------------------------------------------------------
+Mon Oct  2 13:53:16 CEST 2006 - cthiel@suse.de
+
+- fix build on older distributions
+
+-------------------------------------------------------------------
+Sun Oct  1 15:34:10 CEST 2006 - cthiel@suse.de
+
+- update to version 3.1.0
+  * various fixes
+
+-------------------------------------------------------------------
+Thu Sep 21 14:26:46 CEST 2006 - cthiel@suse.de
+
+- fix build with python 2.5
+
+-------------------------------------------------------------------
+Fri Aug  4 17:25:18 CEST 2006 - cthiel@suse.de
+
+- update to version 2.9.10
+ * Make keepalive, byteranges, etc. work with https.
+ * Fixed a minor error reporting bug due to changes in python 2.4.
+ * Catch read errors after the file has been opened.
+- removed obsolete urlgrabber-read-error.patch
+
+-------------------------------------------------------------------
+Thu May 25 14:19:34 CEST 2006 - cthiel@suse.de
+
+- update to version 2.9.9
+  * Added tests to make sure that the "quote" option works as advertised
+  * Significant improvement to URL parsing.  Parsing is now broken out into
+    a separate class (URLParser).  It will now (by default) guess whether a
+    URL is already quoted, properly handle local files and URLs on windows,
+    and display un-quoted versions of the filename in the progress meter.
+  * Added a reget progress bar patch from Menno, and fixed the annoying next
+    _IndexError bug.
+- added urlgrabber-read-error.patch (from Fedora)
+- removed python-urlgrabber-2.9.7-reget.patch (included upstream)
+
+-------------------------------------------------------------------
+Tue Feb 28 16:46:03 CET 2006 - jmatejek@suse.cz
+
+- updated to reflect python changes due to #149809
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:54 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct 31 11:56:02 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Wed Oct 26 13:14:27 CEST 2005 - cthiel@suse.de
+
+- update to version 2.9.7 
+
+-------------------------------------------------------------------
+Tue Sep 13 11:01:26 CEST 2005 - cthiel@suse.de
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+Sun Aug 14 02:04:14 CEST 2005 - cthiel@suse.de
+
+- initial package (version 2.9.6)
+
+

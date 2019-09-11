@@ -1,0 +1,605 @@
+-------------------------------------------------------------------
+Sun Aug  4 09:23:16 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.9:
+  * Add the fossil git export command
+  * Web UI layout and behavior improvements
+  * Add the fossil touch command, and the --setmtime option on the
+    fossil open and fossil update commands
+  * Add the /secureraw page that requires the complete SHA1 or SHA3
+    hash, not just a prefix, before it will deliver content
+  * Improvement to clone and sync behavior
+  * many other bug fixes and improvements
+- includes changes from 2.8:
+  * Show cherry-pick merges as dotted lines on the timeline graph.
+    The "fossil rebuild" command must be run to create and populate
+    the new "cherrypick" table in the repository in order for this
+    feature to operate.
+  * Web UI improvements
+  * Wiki setup is now at /setup_wiki
+  * Provide the ability to redirect all HTTP pages to HTTPS
+  * Add the backoffice-disable setting to completely disable the
+    backoffice feature
+
+-------------------------------------------------------------------
+Thu Sep 27 09:17:44 UTC 2018 - astieger@suse.com
+
+- update to 2.7:
+  * New email alerts feature
+  * New discussion forum feature
+  * UI improvements for built-in skins on small screens
+  * Use of Content Security Policy (CSP) in built-in skins
+- includes changes from 2.6:
+  * Add the new "Classic" timeline viewing mode
+  * Add support HTTP cache control mechanisms
+  * Improvements to various pages and functions
+  * Additional defenses against web-based attacks
+- requires SQLite >= 3.25.0
+- rebase fossil-1.37-remove_date_time.patch to
+  fossil-2.7-remove_date_time.patch
+
+-------------------------------------------------------------------
+Mon Feb 26 15:18:04 UTC 2018 - astieger@suse.com
+
+- update to 2.5:
+  * UI updates
+  * display ettings persist across pages
+  * improve responsiveness fo server process
+  * Support for SQL Archives as a download option
+
+-------------------------------------------------------------------
+Thu Dec  7 13:09:48 UTC 2017 - max@suse.com
+
+- Use bcond for deciding between system and builtin sqlite.
+- Update to version 2.4:
+  * New feature: URL Aliases. URL Aliases allow an administrator to
+    define their own URLs on the web interface that are rewritten to
+    built-in URLs with specific parameters. Create and configure
+    URL Aliases using the /Setup/URL_Aliases menu option in the
+    web interface.
+  * Add tech-note search capability.
+  * Add the -r|--revision and -o|--origin options to the annotate
+    command.
+  * Add the origin= query parameter to the /annotate webpage.
+  * The fossil annotate command and the /annotate web page go
+    backwards in time as far as can be computed in 30 milliseconds
+    by default, rather than stopping after 20 steps. The new
+    limit= query parameter or the --limit command-line option can
+    be used to alter this timeout.
+  * Provide separate on-line help screens for each setting.
+  * Back out support for the --no-dir-symlinks option
+  * Remove support from the legacy configuration sync
+    protocol. The only way now to do a configuration push or pull
+    is to use the new protocol that was added in 2011.
+  * Add the from= and to= query parameters to /fdiff in order to
+    get a diff of two files in the same check-in.
+  * CVE-2017-17459, bsc#1071709: Fix the "ssh://" protocol to
+    prevent an attack whereby the attacker convinces a victim to
+    run a "clone" with a dodgy URL and thereby gains access to
+    their system
+  * Provide a checkbox that will temporarily disable all ad-units.
+  * Improvements to the /stat page
+  * Various new hyperlinks to the /bloblist and /bigbloblist pages.
+  * Correct the /doc page to support read-only repositories.
+  * Correct /zip, /tarball, zip, and tarball pages and commands to
+    honor the versioned manifest setting when outside of an open
+    checkout directory.
+  * The admin-log and access-log settings are now on by default
+    for new repositories.
+  * Update the built-in SQLite to version 3.21.0.
+
+-------------------------------------------------------------------
+Fri Aug 11 13:54:35 UTC 2017 - max@suse.com
+
+- Update to version 2.3:
+  * Update internal Unicode character tables, used in regular
+    expression handling, from version 9.0 to 10.0.
+  * Show the last-sync-URL on the /urllist page (
+  * Added the "Event Summary" activity report. example
+  * Added the "Security Audit" page, available to administrators
+    only
+  * Added the Last Login time to the user list page,
+    for administrators only
+  * Added the --numstat option to the fossil diff command
+  * Limit the size of the heap and stack on unix systems, as a
+    proactive defense against the Stack Clash attack.
+  * Fix "database locked" warnings caused by "PRAGMA optimize".
+  * Fix a potential XSS vulnerability on the /help webpage.
+    (bsc#1053267).
+  * Documentation updates
+
+-------------------------------------------------------------------
+Mon May  8 11:55:37 UTC 2017 - max@suse.com
+
+- Update to version 2.2:
+  * GIT comment tags are now handled by Fossil during import/export.
+  * Show the content of README files on directory listings.
+  * Support for Basic Authentication if enabled (default off).
+  * Show the hash algorithms used on the /rcvfromlist page.
+  * The /tarball and /zip pages now use the the r= query parameter to
+    select which check-in to deliver. The uuid= query parameter is
+    still accepted for backwards compatibility.
+  * Update the built-in SQLite to version 3.18.0.
+  * Run "PRAGMA optimize" on the database connection as it is closing.
+- Changes in Version 2.1:
+  * Add support for hash policies that control which of the
+    Hardened-SHA1 or SHA3-256 algorithms is used to name new
+    artifacts.
+  * Add the "gshow" and "gcat" subcommands to fossil stash.
+  * Add the /juvlist web page and use it to construct the Download
+    Page of the Fossil self-hosting website using Ajax.
+
+-------------------------------------------------------------------
+Wed Mar  8 11:07:11 UTC 2017 - max@suse.com
+
+- Update to version 2.0:
+  * Use the hardened SHA1 implemenation by Marc Stevens and Dan
+    Shumow.
+  * Add the ability to read and understand artifact names that are
+    based on SHA3-256 rather than SHA1, but do not actually
+    generate any such names.
+  * Added the sha3sum command.
+  * Update the built-in SQLite to version 3.17.0.
+
+-------------------------------------------------------------------
+Sat Feb 18 16:11:57 UTC 2017 - jengelh@inai.de
+
+- Trim description
+
+-------------------------------------------------------------------
+Thu Feb 16 11:50:24 UTC 2017 - idonmez@suse.com
+
+- Update to version 1.37:
+  Changes for Version 1.37 (2017-01-16)
+
+  * Add checkbox widgets to various web pages.
+  * Add the fossil all ui command
+  * Add the /file webpage
+  * Enhance the /brlist webpage to make use of branch colors.
+  * Add support for the ms=EXACT|LIKE|GLOB|REGEXP query parameter
+    on the /timeline webpage, with associated form widgets.
+  * Enhance the changes and status commands with many new filter
+    options so that specific kinds of changes can be found without
+    having to pipe through grep or sed.
+  * Enhanced the fossil sql command so that it opens the checkout
+    database and the configuration database in addition to the
+    respository database.
+  * TH1 enhancements:
+  * Add [unversioned content] command.
+  * Add [unversioned list] command.
+  * Add project_description variable.
+  * Rename crnl-glob setting to crlf-glob, but keep crnl-glob as
+    a compatibility alias.
+  * Added the --command option to the diff command.
+  * Fix a C99-ism that prevents the 1.36 release from building
+    with MSVC.
+  * Fix ticket set when using the "+" prefix with fields from the
+    "ticketchng" table.
+  * Remove the "fusefs" command from builds that do not have the
+    underlying support enabled.
+  * Fixes for incremental git import/export.
+  * Minor security enhancements to encrypted repositories.
+
+  Changes for Version 1.36 (2016-10-24)
+
+  * Add support for unversioned content, the fossil unversioned
+    command and the /uv and /uvlist web pages.
+  * The download page is moved into unversioned content so that
+    the self-hosting Fossil websites no longer uses any external
+    content.
+  * Added the "Search" button to the graphical diff generated by
+    the --tk option on the diff command.
+  * Added the "--checkin VERSION" option to the diff command.
+  * Various performance enhancements to the diff command.
+  * Update internal Unicode character tables, used in regular
+    expression handling, from version 8.0 to 9.0.
+  * Fix multi-line timeline bug
+  * Enhance the fossil purge command.
+  * New command fossil shell.
+  * SQL parameters whose names are all lower-case in Ticket Report
+    SQL queries are filled in using HTTP query parameter values.
+  * Added support for child projects that are able to pull from
+    their parent but not push.
+  * Added the -nocomplain option to the TH1 "query" command.
+  * Added support for the chng=GLOBLIST query parameter on the
+    /timeline webpage.
+
+- Refresh fossil-1.30-remove_date_time.patch and rename it to
+  fossil-1.37-remove_date_time.patch
+- Drop support for < openSUSE 11.4
+
+-------------------------------------------------------------------
+Mon Jun 27 11:48:35 UTC 2016 - astieger@suse.com
+
+- fossil 1.35:
+  * Enable symlinks by default on all non-Windows platforms.
+  * Enhance the Markdown formatting so that hyperlinks that begin
+    with "/" are relative to the root of the Fossil repository.
+  * Rework the /setup_list page (the User List page) to display all
+    users in a click-to-sort table.
+  * Fix backslash-octal escape on filenames while importing from git
+  * When markdown documents begin with <h1> HTML elements, use that
+     header at the document title.
+  * Added the /bigbloblist page.
+  * Enhance the /finfo page so that when it is showing the ancestors
+    of a particular file version, it only shows direct ancestors and
+    omits changes on branches, thus making it show the same set of
+    ancestors that are used for /blame.
+  * Added the --page option to the fossil ui command
+  * Added the fossil bisect ui command
+  * Enhanced the fossil diff command so that it accepts directory
+    names as arguments and computes diffs on all files contained
+    within those directories.
+  * Fix the fossil add command so that it shows "SKIP" for files
+    added that were already under management.
+  * TH1 enhancements:
+        Add [array exists] command.
+        Add minimal [array names] command.
+        Add tcl_platform(engine) and tcl_platform(platform) array elements.
+  * Added the fossil reparent command
+  * Added --include and --exclude options to fossil tarball and
+    fossil zip and the in= and ex= query parameters to the
+    /tarball and /zip web pages.
+  * Add support for encrypted Fossil repositories.
+  * If the FOSSIL_PWREADER environment variable is set, then use
+    the program it names in place of getpass() to read passwords
+    and passphrases
+
+-------------------------------------------------------------------
+Tue Nov 10 12:38:05 UTC 2015 - astieger@suse.com
+
+- fossil 1.34:
+  * Make the fossil clean command undoable for files less than
+    10MiB.
+  * Update internal Unicode character tables, used in regular
+    expression handling, from version 7.0 to 8.0.
+  * Add the new amend command which is used to modify tags of a
+    "check-in".
+  * Fix bug in import command, handling version 3 of the svndump
+    format for subversion.
+  * Add the all cache command.
+  * TH1 enhancements
+  * Add the --undo option to the diff command.
+  * Build-in Antirez's "linenoise" command-line editing library
+    for use with the fossil sql command on Unix platforms.
+  * Add stash cat as an alias for the stash show command.
+  * Automatically pull before fossil merge when auto-sync is
+    enabled.
+  * Fix --hard option to fossil mv and fossil rm to enable them to
+    work properly with certain relative paths.
+  * Change the mimetype for ".n" and ".man" files to text/plain.
+  * Display improvements in the fossil bisect chart command.
+
+-------------------------------------------------------------------
+Mon May 25 06:16:14 UTC 2015 - astieger@suse.com
+
+- fossil 1.33:
+  * Improved fork detection on fossil update, fossil status and
+     related commands.
+   * Change the default skin to what used to be called "San
+     Francisco Modern".
+   * Add the /repo-tabsize web page
+   * Add fossil import --svn, for importing a subversion repository
+     into fossil which was exported using "svnadmin dump".
+   * Add the "--compress-only" option to fossil rebuild.
+   * Use a pie chart on the /reports?view=byuser page.
+   * Enhanced fossil clean --verily so that it ignores keep-glob
+     and ignore-glob settings. Added the -x alias for --verily.
+   * Add the --soft and --hard options to fossil rm and fossil mv.
+   * Improved ability to customize the timelime graph.
+   * Improvements to the /sitemap page.
+   * Automatically adjust the CLI timeline to the terminal width on Linux.
+   * Added [info commands] and [info vars] commands to TH1.
+   * Fix some obscure issues with TH1 expression processing.
+   * Fix titles in search results for documents that are not wiki,
+     markdown, or HTML.
+   * Formally translate TH1 to Tcl return codes and vice-versa,
+     where necessary, in the Tcl integration subsystem.
+   * Add fossil leaves -multiple, for finding multiple leaves on
+     the same branch.
+   * Added the "Blitz" skin option.
+   * Make fossil open honor ".fossil-settings/allow-symlinks".
+   * Allow fossil add to be used on symlinks to nonexistent or
+     unreadable files in the same way as fossil addremove.
+   * Added fork warning to be issued if sync produced a fork
+   * Update the info page to report when a file becomes a symlink.
+     Additionally show the UUID for files whose types have changed
+     without changing contents or symlink target.
+   * Have fossil changes and fossil status report when executable
+     or symlink status changes on otherwise unmodified files.
+   * Permit filtering weekday and file reports by user. Also ensure
+     the user parameter is preserved when changing types. Add a
+     field for direct entry of the user name to each applicable
+     report.
+   * Create parent directories of empty-dirs if they don't already
+     exist.
+   * Inhibit timeline links to wiki pages that have been deleted.
+- source tarball signature not available for this release
+- new minimum sqlite3 requirement is 3.8.7, build with bundled
+  version where it is not available.
+
+-------------------------------------------------------------------
+Sat Mar 21 16:47:35 UTC 2015 - astieger@suse.com
+
+- fossil 1.32:
+  * backwards compatibility fixes
+  * Anti-aliased rendering of arrowheads on timeline graphs.
+  * Added vi/less-style key bindings to the --tk diff GUI.
+  * Documentation updates
+  * Add the --repolist option to server commands
+  * Added the "Xekri" skin.
+  * Enhance the "ln=" query parameter on artifact displays to accept
+    multiple ranges, separate by spaces (or "+" when URL-encoded).
+  * Added fossil forget as an alias for fossil rm.
+- includes changes from 1.31:
+  * Improve file change graphs, fossil rebuild recommended
+  * Optional full-text search, /srchsetup page, fts-config command
+  * Improve UI and wiki funktionality
+  * new rebuild --ifneeded 
+  * Added override skins option ("skin:", --skin)
+  * Added the /md_rules pages about Markdown format.
+  * Added the --repolist and --nojail options to server commands
+  * Added the fossil all add subcommand to "fossil all".
+  * Improvements to the /login page.
+  * Downloads by "nobody" now enabled by default in new repositories.
+  * Add IPv6 support to fossil sync and fossil clone
+  * Added the /mimetype_list page.
+  * Added the /hash-collisions page.
+
+-------------------------------------------------------------------
+Tue Jan 20 16:32:52 UTC 2015 - andreas.stieger@gmx.de
+
+- fossil 1.30:
+  * Added the fossil bundle command.
+  * Added the fossil purge command.
+  * Added the fossil publish command.
+  * Added the fossil unpublished command.
+  * Add support for Docker.
+  * Enhancements and additions to web interface
+  * Add the fossil fusefs DIRECTORY command ans FuseFS support for
+    examining history
+  * Add the administrative log that records all configuration.
+  * Improvements to command line interface
+  * Use full 40-character SHA1 hashes (instead of abbreviations)
+    in most internal URLs.
+  * Improvements to sync resilience
+  * Fix CVE-2014-3566 "POODLE SSL 3.0" vulnerability.
+- build with system sqlite that have a new enough version
+- build with fuse
+- update fossil-1.29-remove_date_time.patch
+  to fossil-1.30-remove_date_time.patch
+
+-------------------------------------------------------------------
+Mon Sep 22 23:15:08 UTC 2014 - andreas.stieger@gmx.de
+
+- fossil 1.29:
+  * Add the ability to display content, diffs and annotations for
+    UTF16 text files in the web interface.
+  * Add the "SaveAs..." and "Invert" buttons to the graphical diff
+    display that results from using the --tk option with the fossil
+    diff command.
+  * The /reports page now requires Read ("o") permissions. The 
+    "byweek" report now properly propagates the selected year
+    through the event type filter links.
+  * The info command now shows leaf status of the checkout.
+  * Add support for tunneling https through a http proxy
+  * Add option --empty to the "fossil open" command.
+  * Enhanced the fileage page to support a glob parameter.
+  * Add -w|--ignore-all-space and -Z|--ignore-trailing-space
+    options to fossil annotate, fossil blame, fossil (g)diff, 
+    fossil stash diff.
+  * Add --strip-trailing-cr option to fossil (g)diff and fossil
+    stash diff.
+  * Add button "Ignore Whitespace" to /annotate, /blame, /ci, /fdiff
+    and /vdiff UI pages.
+  * Enhance /reports with a "byweekday" view.
+  * Enhance the fossil cat command so that it works outside of a
+    checkout when using the -R command-line option.
+  * Use full-length SHA1 hashes, not abbreviations, in most
+    hyperlinks.
+  * Correctly render the <title> markup on wiki pages in the
+    /artifact webpage.
+  * Enhance the fossil whatis command to report on attachments
+    and cluster artifacts. Added the /help?cmd=test-whatis-all
+    command for testing purposes.
+  * Add support for HTTP Basic Authentication on clone and sync.
+  * Fix the stash so that it remembers added files and re-adds them
+    when the stash is applied.
+  * Fix the server so that it avoids writing to the database (and
+    thus avoids database locking issues) on a pull or clone.
+  * Add support for server load management using both a cache of
+    expensive pages (the fossil cache command) and by rejecting
+    expensive page requests when the server load average is too
+     high.
+  * Add the fossil praise command as an alias for fossil blame for
+    subversion compatibility.
+  * Enhance the fossil test-diff command with -y or --tk options so
+    that it shows both filenames above their respective columns in
+    the side-by-side diff output.
+  * Issue a warning if a fossil add command tries to add a file that
+    matches the ignore-glob.
+  * Add option -W|--width to "fossil stash ls" and "fossil leaves"
+     commands.
+  * Enhance support for running as the root user
+  * Added the -empty option to fossil new, which causes it to not
+    create an initial empty commit. The first commit after
+    checking out a repo created this way will become the initial
+    commit.
+  * Enhance sync operations by committing each round-trip to
+    minimize number of retransmits when autosync fails. Include
+    option for fossil update and fossil merge to continue even if
+    missing content.
+  * Minor portability fixes for platforms where the char type is
+    unsigned by default.
+- use source URLs
+- verify source signatures
+- add fossil-1.29-remove_date_time.patch to fix packaging warning
+
+-------------------------------------------------------------------
+Thu May 22 07:26:09 UTC 2014 - max@suse.de
+
+- Update to version 1.28:
+  * Enhance /reports to support event type filtering.
+  * When cloning a repository, the user name passed via the URL
+    (if any) is now used as the default local admin user's name.
+  * Enhance the SSH transport mechanism so that it runs a single
+    instance of the "fossil" executable on the remote side,
+    obviating the need for a shell on the remote side. Some users
+    may need to add the "?fossil=/path/to/fossil" query parameter
+    to "ssh:" URIs if their fossil binary is not in a standard
+    place.
+  * Add the "fossil blame" command that works just like "fossil
+    annotate" but uses a different output format that includes the
+    user who made each changes and omits line numbers.
+  * Add the "Tarball and ZIP-archive Prefix" configuration
+    parameter under Admin/Configuration.
+  * Fix CGI processing so that it works on web servers that do not
+    supply REQUEST_URI.
+  * Add options --dirsonly, --emptydirs, and --allckouts to the
+    "fossil clean" command.
+  * Ten-fold performance improvement in large "fossil blame" or
+    "fossil annotate" commands.
+  * Add option -W|--width and --offset to "fossil timeline" and
+    "fossil finfo" commands.
+  * Option -n|--limit of "fossil timeline" now specifies the
+    number of entries, just like all other commands which have the
+    -n|--limit option. The various timeline-related functions now
+    output "--- ?? limit (??) reached ---" at the end whenever
+    appropriate. Use "-n 0" if no limit is desired.
+  * Fix handling of password embedded in Fossil URL.
+  * New --once option to fossil clone command which does not store
+    the URL or password when cloning.
+  * Modify fossil ui to respect "default user" in an open
+    repository.
+  * Fossil now hides check-ins that have the "hidden" tag in
+    timeline webpages.
+  * Enhance /ci_edit page to add the "hidden" tag to check-ins.
+  * Advanced possibilities for commit and ticket change
+    notifications over http using TH1 scripting.
+  * Add --sha1sum and --integrate options to the "fossil commit"
+    command.
+  * Add the "clean" and "extra" subcommands to the "fossil all"
+    command
+  * Add the --whatif option to "fossil clean" that works the same
+    as "--dry-run", so that the name does not collide with the
+    --dry-run option of "fossil all".
+  * Provide a configuration option to show dates on the web
+    timeline as "YYMMMDD HH:MM"
+  * Add an option to the "stats" webpage that allows an
+    administrator to see the current repository schema.
+  * Enhancements to the "/vdiff" webpage for more difference
+    display options.
+  * Added the "/tree" webpage as an alternative to "/dir" and make
+    it the default way of showing file lists.
+  * Send gzipped HTTP responses to clients that support it.
+
+-------------------------------------------------------------------
+Tue Oct 15 15:31:43 UTC 2013 - max@suse.com
+
+- Update to Version 1.27
+  * Enhance the fossil changes, fossil clean, fossil extras,
+    fossil ls and fossil status commands to restrict operation to
+    files and directories named on the command-line.
+  * New --integrate option to fossil merge, which automatically
+    closes the merged branch when committing.
+  * Renamed /stats_report page to /reports. Graph width is now
+    relative, not absolute.
+  * Added yw=YYYY-WW (year-week) filter to timeline to limit the
+    results to a specific year and calendar week number,
+    e.g. /timeline?yw=2013-01.
+  * Updates to SQLite to prevent opening a repository file using
+    file descriptors 1 or 2 on unix. This fixes a bug under which
+    an assertion failure could overwrite part of a repository
+    database file, corrupting it.
+  * Added support for unlimited line lengths in side-by-side
+    diffs.
+  * New --close option to fossil commit, which immediately closes
+    the branch being committed.
+  * Added chart option to fossil bisect.
+  * Improvements to the "human or bot?" determination.
+  * Reports errors about missing CGI-standard environment
+    variables for HTTP servers which do not support them.
+  * Added --scgi option to fossil server.
+  * Internal improvements to the sync process.
+  * The internals of the JSON API are now MIT-licensed, so
+    downstream users/packagers are no longer affected by the "do
+    no evil" license clause.
+  * The argument to the --port option for the "fossil ui" and
+    "fossil server" commands can take an IP address in addition to
+    the port number, causing Fossil to bind to just that one IP
+    address.
+  * After prompting for a password, also ask if that password
+    should be remembered.
+  * Performance improvements to the diff engine.
+  * Fix the side-by-side diff engine to work better with
+    multi-byte unicode text.
+  * Color-coding in the web-based annotation (blame) display. Fix
+    the annotation engine so that it is no longer confused by
+    time-warps.
+  * The markdown formatter is now available by default and can be
+    used for tickets, wiki, and embedded documentation.
+  * Add subcommands "fossil bisect log" and "fossil bisect status"
+    to the "fossil bisect" command, as well as other bisect
+    enhancements.
+  * Enhanced defenses that prevent spiders from using excessive
+    CPU and bandwidth.
+  * Consistent use of the -n or --dry-run command line options.
+  * Enhancements to /timeline.rss, adding more flags for filtering
+    results, including the ability to subscribe to changes made to
+    individual tickets.
+  * Improved handling of the differences between case-sensitive
+    and case-insensitive filesystems.
+  * JSON API: added the 'status' command to report local checkout
+    status.
+  * Fixes to the --args support and documented this feature in the
+    help.
+  * Added /stats_report page.
+  * Added ym=YYYY-MM filter to the "/timeline" url.
+  * Fixed: config reset now re-installs default ticket report
+    format.
+  * ssh:// and file:// protocols now ignore proxy settings.
+  * Added /hash-color-test web page.
+  * Cherry-pick merges are recorded internally (though no yet
+    displayed on the timeline graph.)
+  * Bring in the latest versions of SQLite, zlib, and autosetup
+    from upstream.
+
+-------------------------------------------------------------------
+Mon Feb 18 10:52:45 UTC 2013 - mmeister@suse.com
+
+- Update to Version 1.25
+  * Timeline Nodes in the ui selectable to diff between two nodes.
+  * Added and enhanced a few commands and options.
+  * Added a few JavaScripts to the web ui.
+
+-------------------------------------------------------------------
+Thu Nov 22 11:56:37 UTC 2012 - max@suse.com
+
+- Update to version 1.24 and change the versioning scheme from
+  time stamp to upstream version number. This shouldn't be a
+  problem, because fossil never was on Factory or any release.
+
+-------------------------------------------------------------------
+Wed Jun  1 17:36:02 UTC 2011 - prusnak@opensuse.org
+
+- updated to 20110528185122
+  - see changelog at http://www.fossil-scm.org/index.html/timeline
+
+-------------------------------------------------------------------
+Sun Apr  3 16:14:48 UTC 2011 - jw@novell.com
+
+- updated to 20110316111914
+  The changelog from upstream is huge
+  http://www.fossil-scm.org/index.html/timeline
+  has ca. 600 checkins since 2010-09
+
+-------------------------------------------------------------------
+Tue Sep 28 03:58:27 UTC 2010 - prusnak@opensuse.org
+
+- updated to 20100918155143
+
+-------------------------------------------------------------------
+Wed Sep  8 08:18:30 UTC 2010 - dmacvicar@novell.com
+
+- initial package based on version 20100823222416
+

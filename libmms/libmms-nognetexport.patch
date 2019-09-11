@@ -1,0 +1,17 @@
+--- src/uri.h.orig
++++ src/uri.h
+@@ -27,6 +27,7 @@
+ extern "C" {
+ #endif /* __cplusplus */
+ 
++#pragma GCC visibility push(hidden)
+ 
+ /**
+  *  GURI:
+@@ -90,5 +91,5 @@ char*     gnet_mms_helper(const GURI* ur
+ #ifdef __cplusplus
+ }
+ #endif				/* __cplusplus */
+-
++#pragma GCC visibility pop
+ #endif /* _GNET_URI_H */

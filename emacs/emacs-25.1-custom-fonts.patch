@@ -1,0 +1,83 @@
+Work around openSUSE bug #1016172
+ 
+--
+ lisp/dynamic-setting.el |   29 +++++++++++++++--------------
+ src/xsettings.c         |    7 ++++++-
+ 2 files changed, 21 insertions(+), 15 deletions(-)
+
+--- lisp/dynamic-setting.el
++++ lisp/dynamic-setting.el	2016-12-20 16:51:49.533433283 +0000
+@@ -33,6 +33,7 @@
+ ;;; Customizable variables
+ 
+ (declare-function font-get-system-font "xsettings.c" ())
++(declare-function font-face-attributes "font.c" (font &optional frame))
+ 
+ (defvar font-use-system-font)
+ 
+@@ -42,28 +43,28 @@ If DISPLAY-OR-FRAME is a frame, the disp
+ 
+ If SET-FONT is non-nil, change the font for frames.  Otherwise re-apply the
+ current form for the frame (i.e. hinting or somesuch changed)."
+-  (let ((new-font (and (fboundp 'font-get-system-font)
+-		       (font-get-system-font)))
+-	(frame-list (frames-on-display-list display-or-frame)))
+-    (when (and new-font (display-graphic-p display-or-frame))
++  (let ((system-font (and (fboundp 'font-get-system-font)
++                       (font-get-system-font)))
++        (frame-list (frames-on-display-list display-or-frame))
++	(user-font (face-attribute 'default :font)))
++    (when (and system-font (display-graphic-p display-or-frame))
+       (clear-font-cache)
+       (if set-font
+ 	  ;; Set the font on all current and future frames, as though
+ 	  ;; the `default' face had been "set for this session":
+-	  (set-frame-font new-font nil frame-list)
++	  (if (not user-font)
++	      (set-frame-font system-font nil frame-list)
++	     (set-frame-font user-font nil frame-list))
+ 	;; Just redraw the existing fonts on all frames:
+ 	(dolist (f frame-list)
+-	  (let ((frame-font
+-		 (or (font-get (face-attribute 'default :font f 'default)
+-			       :user-spec)
+-		     (frame-parameter f 'font-parameter))))
++	  ;; (apply 'font-spec (font-face-attributes (font-get-system-font)))
++	  (let* ((frame-font
++		  (or (face-attribute 'default :font f 'default)
++		      (frame-parameter f 'font-parameter)))
++		 (font-attr (font-face-attributes frame-font)))
+ 	    (when frame-font
+ 	      (set-frame-parameter f 'font-parameter frame-font)
+-	      (set-face-attribute 'default f
+-				  :width 'normal
+-				  :weight 'normal
+-				  :slant 'normal
+-				  :font frame-font))))))))
++	      (apply #'set-face-attribute 'default f font-attr))))))))
+ 
+ (defun dynamic-setting-handle-config-changed-event (event)
+   "Handle config-changed-event on the display in EVENT.
+--- src/xsettings.c
++++ src/xsettings.c	2016-12-21 07:25:17.605036477 +0000
+@@ -45,6 +45,7 @@ along with GNU Emacs.  If not, see <http
+ #endif
+ 
+ #ifdef HAVE_XFT
++#include <math.h>
+ #include <X11/Xft/Xft.h>
+ #endif
+ 
+@@ -620,7 +621,11 @@ apply_xft_settings (struct x_display_inf
+ #endif
+   FcPatternGetInteger (pat, FC_LCD_FILTER, 0, &oldsettings.lcdfilter);
+   FcPatternGetInteger (pat, FC_RGBA, 0, &oldsettings.rgba);
+-  FcPatternGetDouble (pat, FC_DPI, 0, &oldsettings.dpi);
++
++  if (FcPatternGetDouble (pat, FC_DPI, 0, &oldsettings.dpi) == FcResultMatch)
++    {
++      oldsettings.dpi = round(oldsettings.dpi);
++    }
+ 
+   if ((settings->seen & SEEN_AA) != 0 && oldsettings.aa != settings->aa)
+     {

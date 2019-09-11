@@ -1,0 +1,1157 @@
+-------------------------------------------------------------------
+Tue Mar 12 06:40:27 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Stable release version bump.
+
+-------------------------------------------------------------------
+Tue Mar  5 02:31:02 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.31.92:
+  + Fix a crash when retrieveing headers from table cells.
+
+-------------------------------------------------------------------
+Tue Mar  5 02:31:02 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.31.2:
+  + Add ScrollSubstringTo and ScrollSubstringToPoint interfaces.
+
+-------------------------------------------------------------------
+Mon Mar  4 22:11:31 UTC 2019 - mgorse@suse.com
+
+- Update to version 2.30.1:
+  + Fix crash retrieving table cell headers (bsc#1127792)..
+
+-------------------------------------------------------------------
+Fri Sep  7 20:26:29 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.30.0:
+  + No changes, stable bump only.
+
+-------------------------------------------------------------------
+Tue Jun 19 23:02:29 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.29.1:
+  + Fix a case where we could return without unlocking a mutex
+    (bgo#793625).
+  + Add ScrollTo and ScrollToPoint interfaces.
+  + Fix various compiler warnings and build issues.
+- Pass disable_p2p=false to meson, ensure we build the features we
+  want, currently following upstream defaults.
+
+-------------------------------------------------------------------
+Tue Mar 13 08:02:12 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 2.26.2:
+  + Fix a couple of cache-related functions so that they don't
+    return without unlocking the mutex (bgo#793625).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:23:08 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Dec  1 08:11:52 UTC 2017 - zaitor@opensuse.org
+
+- Switch to meson build-system:
+  + Add meson BuildRequires.
+  + Replace autotools macros with meson, meson_build and
+    meson_install.
+  + Clean up spec, run spec-cleaner.
+- Add explicit pkgconfig(libxml-2.0) BuildRequires: Needed after
+  the switch to meson.
+
+-------------------------------------------------------------------
+Mon Oct 30 23:43:40 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.26.1:
+  + Meson: Ensure paths written to .pc file are absolute.
+  + Package a couple of missing meson.build files.
+
+-------------------------------------------------------------------
+Tue Sep 12 00:01:14 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.26.0:
+  + Single commit.
+
+-------------------------------------------------------------------
+Fri Sep  8 13:29:30 UTC 2017 - jengelh@inai.de
+
+- Update summaries, RPM groups and old macros.
+
+-------------------------------------------------------------------
+Tue Jun 20 12:03:43 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 2.25.3:
+  + Add error-message, error-for, details, and details-for relation
+    types.
+  + Add Meson build system.
+
+-------------------------------------------------------------------
+Tue May 23 11:46:53 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.25.2:
+  + Fix use after free when returned objects hold only one ref
+    (bgo#781716).
+  + Add some missing roles to correspond with atk (description
+    list, description term, description value, and footnote).
+
+-------------------------------------------------------------------
+Sat May 20 11:55:00 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.25.1:
+  + Fix memory corruption when deleting an event from the list of
+    events for which there are registered listeners (bgo#781658).
+
+-------------------------------------------------------------------
+Wed May 10 20:58:14 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.24.1:
+  + Fix position getter for table cells.
+  + atk-adaptor/bridge: Fix GList handling resulting in memory
+    corruption (bgo#781658).
+  + Fix use after free when returned objects hold only one ref
+    (bgo#781716).
+
+-------------------------------------------------------------------
+Mon Mar 20 23:07:40 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 2.24.0:
+  + test: remove atk_table_cell_get_column_index test, as the
+    at-spi2-core function no longer exists (and never worked
+    anyhow).
+
+-------------------------------------------------------------------
+Mon Sep 26 07:54:31 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.22.0:
+  + Remove some inadvertently-committed debugging code.
+
+-------------------------------------------------------------------
+Mon Aug 29 22:05:52 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.21.91:
+  + atk_bridge_adaptor_init: return -1 if NO_AT_BRIDGE is set
+    (bgo#770574).
+
+-------------------------------------------------------------------
+Tue Jul 19 07:52:07 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.21.4:
+  + emit_event: Fix out-of-bounds memory access if class is NULL.
+
+-------------------------------------------------------------------
+Thu Apr 14 13:04:25 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Tue Apr 12 12:16:41 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.20.1:
+  + emit_event: Fix out-of-bounds memory access if class is NULL
+    (bgo#758935).
+  + Remove a debug print.
+  + Collection: fix missing return value (bgo#758934).
+
+-------------------------------------------------------------------
+Tue Mar 22 10:03:42 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.20.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:47:30 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.19.92:
+  + Don't drop the main context when p2p socket configuration fails
+    (bgo#763273).
+  + Make sure the runtime directory exists (bgo#763274).
+
+-------------------------------------------------------------------
+Tue Mar  1 16:59:16 UTC 2016 - mgorse@suse.com
+
+- Drop at-spi2.sh; equivalent functionality now upstream
+  (bgo#761600).
+
+-------------------------------------------------------------------
+Tue Mar  1 12:03:35 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.19.91:
+  + Avoid lagging with large gtk menus (bgo#754048).
+
+-------------------------------------------------------------------
+Tue Feb 16 11:11:08 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.19.90:
+  + Always accept connections as root if unable to find an owning
+    user.
+
+-------------------------------------------------------------------
+Tue Nov 24 19:32:57 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.19.2:
+  + Test fixes for atk-adaptor and cache changes.
+  + Fixes for Text, Value, and Table Cell adaptors (bgo#755724).
+  + Many new tests.
+
+-------------------------------------------------------------------
+Mon Oct 12 20:02:38 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.18.1:
+  + Fix text, value, and table cell adaptors (bgo#755724).
+  + Test fixes.
+
+-------------------------------------------------------------------
+Tue Sep 22 07:15:24 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.18.0:
+  + Stable release, no changes to version 2.17.90.
+
+-------------------------------------------------------------------
+Mon Aug 17 20:45:31 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.17.90:
+  + Update for new caching API (bgo#650090).
+
+-------------------------------------------------------------------
+Thu Jul 23 08:10:44 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.17.1:
+  + Eliminate some console warnings due to NULL gobjects.
+  + Tests: fix out-of-source and parallel build (bgo#751137).
+  + Add some missing files to the distribution (bgo#751138).
+
+-------------------------------------------------------------------
+Tue Mar 24 21:27:22 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.16.0:
+  + Add component interface tests.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:30:00 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.15.92:
+  + Version bump for GNOME 3.15.92 release.
+
+-------------------------------------------------------------------
+Tue Feb 17 12:13:55 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.15.90:
+  + Add roles for fractions, roots, subscripts, and superscripts.
+  + Add action tests (bgo#743418).
+
+-------------------------------------------------------------------
+Wed Jan 28 15:35:21 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.15.4:
+  + Don't parse non-existent signal arguments from atk.
+  + Support ATK_STATE_HAS_TOOLTIP (bgo#738953).
+  + Support ATK_STATE_READ_ONLY (bgo#690008).
+
+-------------------------------------------------------------------
+Thu Dec 18 02:29:32 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.15.3:
+  + Add mapping between ATK_ROLE_STATIC and ATSPI_ROLE_STATIC.
+
+-------------------------------------------------------------------
+Tue Oct 14 00:00:05 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.14.1:
+  + Aggressively filter out children-changed signals for objects
+    with MANAGES_DESCENDANTS (bgo#728319).
+
+-------------------------------------------------------------------
+Mon Sep 22 17:11:40 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.14.0:
+  + Add doap files and category.
+
+-------------------------------------------------------------------
+Mon Jul 21 17:22:42 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.13.4:
+  + Fix typo in .pc file (bgo#721719).
+  + Fix retrieving text attributes (bgo#731980).
+  + Correctly remove the socket on exit (bgo#684076).
+
+-------------------------------------------------------------------
+Sat Jul  5 12:51:04 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.13.1:
+  + Add an atexit handler to remove the D-Bus socket (bgo#684076).
+  + Only send cache-related events for transients when explicitly
+    requested. Hopefully this will improve performance when we are
+    flooded with them (bgo#728319).
+
+-------------------------------------------------------------------
+Thu May 15 08:35:10 UTC 2014 - fezhang@suse.com
+
+- add a script that prevents forwarding accesibility through
+  SSH (bnc#861557)
+  + added source: at-spi2.sh
+
+-------------------------------------------------------------------
+Tue Apr 15 05:29:48 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.12.1:
+  + Clean up socket files and directories on exit (bgo#684076).
+
+-------------------------------------------------------------------
+Tue Mar 25 09:27:23 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.12.0:
+  + Stable release, no changes since version 2.11.92.
+
+-------------------------------------------------------------------
+Wed Mar 19 09:51:24 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.11.92:
+  + Bump minimum libdbus version needed, since we use a function
+    introduced in 1.5.
+
+-------------------------------------------------------------------
+Tue Mar  4 08:55:52 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.11.91:
+  + Improve compatibility with at-spi2-registryd <= 2.10.
+  + Collection: Fix an infinite loop when encountering a NULL
+    parent.
+
+-------------------------------------------------------------------
+Wed Feb 19 10:37:00 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.11.90:
+  + Add AtspitableCell, tracking the new atk interface.
+
+-------------------------------------------------------------------
+Tue Feb  4 17:20:19 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.11.5:
+  + Allow sending of properties with events upon request
+    (bgo#708695).
+
+-------------------------------------------------------------------
+Mon Dec 16 23:04:58 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.11.3:
+  + Fix atspi_text_get_bounded_ranges.
+  + bgo#719508: document: add support to current page and page
+    count.
+
+-------------------------------------------------------------------
+Tue Nov 19 19:29:59 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.11.2:
+  + Add new roles and states to track atk (bgo#710464, bgo#712608,
+    bgo#712609).
+
+-------------------------------------------------------------------
+Sun Nov 17 10:11:46 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.11.1:
+  + Fix Contains method for components (bgo#710730).
+
+-------------------------------------------------------------------
+Tue Nov 12 08:07:54 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.10.2 (bnc#849913):
+  + Fix atk_component_contains wrapper (bgo#710730).
+
+-------------------------------------------------------------------
+Fri Sep 27 14:36:57 UTC 2013 - dimstar@opensuse.org
+
+- Require at-spi2-core from libatk-bridge-2_0-0: the library
+  interacts on DBus with org.a11y (bnc#818808#c4).
+
+-------------------------------------------------------------------
+Tue Sep 24 07:45:00 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.10.0:
+  + No changes since version 2.9.92.
+
+-------------------------------------------------------------------
+Mon Sep 16 22:09:46 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.9.92:
+  + Properly clean up when timing out when motifying keystroke
+    listeners (bgo#707218).
+  + Allow lists of attribute values when reading collection match
+    rules (bgo#700865).
+
+-------------------------------------------------------------------
+Tue Aug 20 07:04:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.9.90:
+  + Implement GetStringAtOffset (bgo#7055810).
+
+-------------------------------------------------------------------
+Tue Jul 30 07:04:43 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.9.5:
+  + Fix another crash when we're initialized and shut down
+    repeatedly.
+
+-------------------------------------------------------------------
+Mon Jul  8 22:19:33 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.9.4:
+  + Fix a deadlock for apps that also register AT-SPI key event
+    listeners (ie, the Orca preferences dialog works again).
+
+-------------------------------------------------------------------
+Fri Jun 21 19:07:47 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.9.3:
+  + Fix reentrancy issues with gnome-shell (bgo#681276).
+
+-------------------------------------------------------------------
+Tue May 28 19:51:22 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.9.2:
+  + Fix various DBusError leaks (bgo#698951).
+  + Suppress a warning if an app returns NULL when referencing a
+    child.
+
+-------------------------------------------------------------------
+Wed Apr 17 06:53:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.8.1:
+  + Fix memory leak in socketadaptor.c (bgo#696733).
+  + Fix a crash when handling a D-Bus method reply after
+    deinitialization.
+
+-------------------------------------------------------------------
+Tue Mar 26 11:07:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.8.0:
+  + No changes since version 2.7.91.
+
+-------------------------------------------------------------------
+Mon Mar  4 23:30:38 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.7.91:
+  + Add Locale property (bgo#694368).
+
+-------------------------------------------------------------------
+Tue Feb 19 09:28:48 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.7.90:
+  + Bump atk dependency to 2.7.5 (bgo#693189).
+- Clean up BuildRequires to match what configure looks for:
+  + Removed: atk-devel, gtk2-devel
+  + Added: pkgconfig(atk), pkgconfig(dbus-1),
+    pkgconfig(gmodule-2.0) and pkgconfig(gobject-2.0).
+
+-------------------------------------------------------------------
+Mon Feb  4 23:25:09 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.7.5:
+  + Support ATSPI_ROLE_LEVEL_BAR to correspond to the new atk role.
+  + Fix various compiler warnings.
+
+-------------------------------------------------------------------
+Wed Dec 26 08:50:57 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 2.7.3:
+  + Re-register if the registry goes away and later returns.
+  + Stop using deprecated glib functions.
+  + Fix a few memory leaks.
+- Add BuildRequires:  pkgconfig(glib-2.0), so we can version it.
+- Remove a cosmetic '-' in order to remove a rpmlint warning about
+  summary being to long.
+
+-------------------------------------------------------------------
+Sun Nov 25 18:10:42 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.7.2:
+  + atk-adaptor: don't emit a critical in case the bridge was not
+    initialized (bgo#684334).
+  + Remove dbind (it was only used for the droute test).
+  + Fix a crash in socket_embed_hook if spi_global_register is NULL
+  + [droute] Fix memory leak in path cleanup (bgo#688363).
+
+-------------------------------------------------------------------
+Fri Nov 16 22:32:40 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.7.1:
+  + Remove the schema; it was only used to specify the location of
+    the atk-bridge library, which is now installed in the standard
+    path.
+  + Fix compiler warnings (bgo#678045).
+- Drop glib2_gsettings_schema_post/postun schema handling from
+  -common package, as there are no more schemas installed.
+
+-------------------------------------------------------------------
+Thu Nov 15 20:46:20 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.6.2:
+  + Up libatspi dependency to what is actually required
+    (bgo#686667).
+  + Don't distribute dbind-config.h (bgo#688083).
+
+-------------------------------------------------------------------
+Wed Oct 17 06:37:41 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.6.1:
+  + Make atk-bridge location empty in the schema, to fix problems
+    with multilib builds.
+
+-------------------------------------------------------------------
+Tue Sep 25 06:43:59 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.6.0:
+  + Fix some crashes in atk_bridge_adaptor_cleanup (bgo#684434)
+  + When the cache is activated, register it on the main D-Bus
+    connection.
+
+-------------------------------------------------------------------
+Tue Sep 18 14:35:35 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 2.5.92:
+  + Fix atspi_hyperlink_get_uri (bgo#683182).
+  + Only initialize the cache when an AT is running.
+  + Fix various memory leaks (bgo#683979, bgo#684077).
+- Drop lang_package, removed upstream, see (bgo#678035) (RPM-wise
+  obsoleted by the -common package).
+- Remove  intltool and translation-update-upstream BuildRequires,
+  not needed anymore.
+- Cleanup spec, remove source service checkout support and checks
+  for obsolete versions of openSUSE.
+
+-------------------------------------------------------------------
+Wed Sep  5 13:13:29 UTC 2012 - cfarrell@suse.com
+
+- License update: LGPL-2.0+
+  No GPL found in the package. COPYING is LGPL-2.0 (not 2.1).
+
+-------------------------------------------------------------------
+Tue Sep  4 07:45:23 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.5.91:
+  + Removed the gtk 3.0 module (bgo#678315).
+- Drop the -gtk3 package, following upstream (RPM-wise obsoleted
+  by the -common package)
+- Move org.a11y.atspi.gschema.xml to -common: even though the gtk3
+  package has been removed, this is still referenced. So the
+  assumption that only the gtk3 module uses it was obviously wrong,
+  but as the gtk3 module was per default installed (incl. the
+  schema, there was never an issue reported).
+- Move glib schema handling macros from (dropped) -gtk3 package
+  to -common package (following the schema file).
+
+-------------------------------------------------------------------
+Mon Aug 20 20:52:46 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.5.90:
+  + Don't leak a GError when option parsing fails (bgo#679296)
+  + Rework some inefficient code when removing clients and events
+    (bgo#679295, bgo#679297).
+
+-------------------------------------------------------------------
+Mon Aug  6 21:54:36 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.5.5:
+  + Implement GetLocalizedName for actions (bgo#680598).
+  + Allow to build out of source directory (bgo#680280).
+
+-------------------------------------------------------------------
+Tue Jul 17 18:18:04 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.5.4:
+  + AtspiCollection should be implemented for all containers
+    (bgo#679013)
+  + Don't create a (non-readable) subdirectory for the socket when
+    root
+  + Plug ref count leaks (bgo#679285)
+  + Only create a directory and a socket when requested
+  + Only add items to the cache on children-changed if the children
+    are included in the event
+  + Only send PropertyChange signals used for caching, absent
+    listeners.
+- Drop at-spi2-atk-bnc770177: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jul  9 07:24:10 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.5.3:
+  + Create a library (libatk-bridge), currently with
+    atk_bridge_adaptor_init() and atk_bridge_adaptor_cleanup()
+    functions, to facilitate linking directly into, ie GTK+ 3.
+  + Only register events at beginning if an AT is listening
+    (bgo#678475).
+  + Use XDG_RUNTIME_DIR to hold the socket, rather than a
+    potentially secure directory hard-coded under /tmp (bgo#678348)
+  + Fix various compiler warnings and build errors.
+- Create new subpackages libatk-bridge-2_0-0 and a devel package.
+- Add baselibs.conf (for libatk-bridge-2_0-0).
+
+-------------------------------------------------------------------
+Sun Jul  8 17:29:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.5.2:
+  + The collection interface's MATCH_ANY fails for states
+    (bgo#677211).
+
+-------------------------------------------------------------------
+Sat Jul  7 19:25:58 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 2.5.1:
+  + Updated translations.
+- Disable update-translation-upstream, breaks build atm.
+
+-------------------------------------------------------------------
+Fri Jul  6 07:34:39 UTC 2012 - dimstar@opensuse.org
+
+- Add at-spi2-atk-bnc770177: Use XDG_RUNTIME_DIR to hold sockets,
+  and do not make a world-writable dir (bnc#770177).
+
+-------------------------------------------------------------------
+Tue Mar 27 06:21:13 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:33:52 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.3.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  6 08:31:37 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.3.91:
+  + Have GetIndexInParent() return a signed int, per the spec.
+  + Send a DoAction reply message before invoking atk (works around
+    atk_action_do_action potentially not returning right away for
+    gtk).
+
+-------------------------------------------------------------------
+Tue Feb 21 07:49:09 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.3.90:
+  + Have GrabFocus return a bool, per the spec, rather than a
+    uint32.
+  + Fix a potential crash when emitting a signal if the ATK
+    implementor misbehaves.
+
+-------------------------------------------------------------------
+Tue Feb  7 08:16:44 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.3.5:
+  + Remove the ability to set an accessible's name and description
+    via AT-SPI (it seems wrong to have been exposing this in the
+    first place).
+  + bgo#659967: some list API usage fixes.
+  + bgo#663967: Don't use /a11y/ as a dconf path.
+  + bgo#666371: possible crash when accessibles are created and
+    deleted in rapid succession (eg, in gnome-shell)
+  + Avoid triggering GLib criticals in a few places.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Mon Jan 16 13:24:29 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.3.4:
+  + bgo#666870: Keystroke listeners do not work unless an event
+    listener is also registered [also needs updated at-spi2-core]
+
+-------------------------------------------------------------------
+Tue Dec 20 09:36:16 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.3.3:
+  + bgo#664822: gnome-shell crash when an AT is launched
+  + Fix a reference leak if a child-added signal has no object
+    value.
+  + Change a : to a / in the suffix to an event, to allow DBus
+    match rules using arg0path.
+  + Only deregister objects when they are marked defunct, not when
+    a previously defunct object is marked as no longer defunct.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Tue Nov 22 09:37:40 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.3.2:
+  + Have AtkSocket's implementation of ref_state_set to return
+    empty sets instead of NULL
+  + bgo#663876: Make sure the a11y hierarchy under an AtkPlug is
+    generated when embedding.
+
+-------------------------------------------------------------------
+Tue Nov 15 10:22:25 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.3.1:
+  + Fix a small coding error that could generate compiler warnings.
+
+-------------------------------------------------------------------
+Tue Oct 18 06:34:24 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.2.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 27 06:59:31 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.2.0:
+  + bgo#658013: Attach the timeout for a key listener to the
+    appropriate main loop context.
+
+-------------------------------------------------------------------
+Wed Sep 21 17:23:36 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.1.92:
+  + bgo#658013: Add timeout to check for disconnect on a key
+    listener.
+
+-------------------------------------------------------------------
+Sat Sep 17 13:27:24 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Sep  6 06:11:45 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.1.91:
+  + bgo#645321: Use an array of bytes rather than a string for the
+    atk-bridge location in the schema.
+
+-------------------------------------------------------------------
+Wed Aug 31 12:54:30 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.1.90:
+  + Try to use the new AtkWindow interface to register for window
+    events.
+
+-------------------------------------------------------------------
+Tue Aug 16 04:31:47 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 2.1.5:
+  + Use libatspi constants rather than keeping duplicate copies of
+    the constants in at-spi2-atk.
+  + Fixed some problems when shutting down and restarting the
+    module.
+
+-------------------------------------------------------------------
+Tue Jul 26 09:29:53 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.1.4:
+  + Ensure the detail integers are initialized before sending
+    events.
+  + Map some new atk roles.
+
+-------------------------------------------------------------------
+Tue Jul  5 07:46:07 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.1.3:
+  + Only register events when something is listening. In theory,
+    this should mitigate performance loss that might show up when
+    no ATs are running.
+  + bgo#652797: Remove unused AtkMisc instance.
+  + bgo#652596: Allow setting value via the DBus property again.
+  + bgo#652858: Deregister objects on state-changed:defunct.
+  + Add AT-SPI mapping for ATK_RELATION_NODE_PARENT_OF.
+
+-------------------------------------------------------------------
+Wed Jun  1 16:39:18 CEST 2011 - vuntz@opensuse.org
+
+- Rename the main binary package to at-spi2-atk-common, as it only
+  contains files common to the gtk2/gtk3 subpackages, and nothing
+  else. Add appropriate Provides/Obsoletes for upgrades.
+
+-------------------------------------------------------------------
+Mon May 30 14:20:58 UTC 2011 - fcrozat@suse.com
+
+- Update to version 2.0.2:
+  + Fix matching on attributes for collection methods.
+  + bgo#650286: Ensure valid UTF-8 from ATK.
+  + Always emit children-changed, property-change, and
+    state-changed events, in order to keep caches synchronized.
+  + Add GetAtspiVersion to fetch the version of the AT-SPI
+    specification provided by an application.
+
+-------------------------------------------------------------------
+Sat May  7 17:08:37 UTC 2011 - nmarques@opensuse.org
+
+- Split GTK+ modules in two subpackages (at-spi2-atk-gtk2 and
+  at-spi2-atk-gtk3) to avoid this package depending on both gtk2
+  and gtk3. Fix bnc#675959.
+
+-------------------------------------------------------------------
+Tue Apr 26 16:09:39 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.0.1:
+  + Fix a memory leak in impl_GetText.
+
+-------------------------------------------------------------------
+Tue Apr 19 11:49:57 UTC 2011 - fcrozat@novell.com
+
+- Do not Obsoletes / Provides at-spi, we just need to switch at-spi
+  as non default a11y stack instead.
+
+-------------------------------------------------------------------
+Thu Apr 14 13:54:09 UTC 2011 - fcrozat@novell.com
+
+- Obsoletes / Provides at-spi < 2.0.0, since you can't have two
+  registries running and gtk2 modules from this package and from
+  at-spi conflicts.
+
+-------------------------------------------------------------------
+Tue Apr  5 16:40:06 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.0.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 28 15:00:54 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.91.93:
+  + Removed dbus-glib-related includes, as they are no longer
+    required.
+- Drop dbus-1-glib-devel BuildRequires.
+
+-------------------------------------------------------------------
+Thu Mar 24 17:56:08 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.91.92:
+  + Handle text-insert and text-removed signals from ATK
+    (bgo#638377).
+  + Use the new dbus errors when compiled against a version of
+    libdbus that defines them.
+  + Use libatspi to get the accessibility bus and handle main loop
+    integration. This fixes a crash with some builds of Firefox
+    (fdo#35115). Note that this adds a dependency on libatspi.
+  + Fix accessibility of applications running as root on Linux.
+- Changes from version 1.91.91:
+  + Fix some missing prototypes.
+  + Do not exit if the accessibility bus disconnects.
+- Fix directory ownership of
+  %{_libdir}/gnome-settings-daemon-3.0/gtk-modules and
+  %{_libdir}/gtk-3.0/modules by owning them.
+- Drop at-spi2-missing-header.patch: fixed upstream
+- Add pkgconfig(atspi-2) BuildRequires.
+
+-------------------------------------------------------------------
+Wed Mar  2 11:00:05 CET 2011 - vuntz@opensuse.org
+
+- Drop at-spi2-atk-gtk-64-fix.patch: this is not needed anymore as
+  this was only used if this at-spi stack was not the default.
+
+-------------------------------------------------------------------
+Tue Mar  1 15:53:38 CET 2011 - vuntz@opensuse.org
+
+- Remove unneeded gconf2-devel BuildRequires.
+- Add packageand(at-spi2-core:gtk3) Supplements to make sure this
+  gets installed if GTK+ 3 and the at-spi stack are installed.
+
+-------------------------------------------------------------------
+Tue Feb 22 15:54:10 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.91.90:
+  + Change accessibility key name
+  + Add missing standard header / fix prototype
+  + Fix some memory leaks
+  + bgo#641338: Gracefully handle errors listening to dbus server
+    for p2p
+  + bgo#641869: Remove --enable-relocate and associated autostart
+    file and schema
+  + Updated translations.
+- Update to version 1.91.6:
+  + Fixed the path in org.a11y.atspi.gschema.xml for lib64.
+  + Implemented SetPosition, SetExtents, and SetSize for
+    components.
+- Changes from version 1.91.5:
+  + Fixed some memory leaks.
+  + Fixed a crash if peer-to-peer connections are disabled.
+  + Fixed setting of GTK_PATH with --enable-relocate
+    (was broken in 1.91.4).
+- Changes from version 1.91.4:
+  + Support direct dbus connections to improve performance if
+    dbus-glib 0.90 or greater is available.
+  + Added a GSettings key to specify the location of
+    libatk-bridge.so.
+  + Added a desktop file to load gail and atk-bridge with the new
+    gnome-settings-daemon.
+- Changes from version 1.91.3:
+  + Attributes in a collection match rule are now expected to be
+    sent as a dictionary.
+- Changes from version 1.91.2:
+  + bgo#563546: Removed the g_atexit hook.
+- Changes from version 1.91.1:
+  + Fire all events until we receive a reply from
+    GetRegisteredEvents
+- Changes from version 1.91.0:
+  + --disable-relocate is the default again.
+- Add at-spi2-fix-headers.patch to fix build (missing headers).
+- Stop using IS_DEFAULT_ATSPI_STACK: upstream decided (and we
+  agree) that this at-spi stack should be the default now. The
+  at-spi package will be updated accordingly.
+- Remove gconf schema handling in scriptlets as there is no gconf
+  schema anymore.
+- Use %glib2_gsettings_schema_* macros.
+- Add support for source service checkout, with %BUILD_FROM_VCS:
+  + Add call to ./autogen.sh.
+
+-------------------------------------------------------------------
+Mon Feb 14 16:27:55 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Tue Dec 28 08:42:05 UTC 2010 - dimstar@opensuse.org
+
+- Own directory structure for gtk3 modules.
+
+-------------------------------------------------------------------
+Thu Nov 18 10:22:17 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.4.1:
+  + Fire all events until we receive a reply from
+    GetRegisteredEvents.
+  + Remove g_atexit handler.
+
+-------------------------------------------------------------------
+Tue Sep 28 01:53:11 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.4.0:
+  + Version bump to stable 0.4.0, without any change.
+
+-------------------------------------------------------------------
+Tue Sep 14 08:43:15 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.3.92:
+  + Have value methods return 0 on failure rather than fail, as in
+    original pyatspi.
+
+-------------------------------------------------------------------
+Wed Sep  1 23:59:35 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.3.91.1:
+  + Fix a build error introduced in 0.3.91.
+
+-------------------------------------------------------------------
+Tue Aug 31 08:57:02 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.3.91:
+  + Default to --enable-relocate for now.
+  + fdo#29880: gtk module can't handle reloading.
+
+-------------------------------------------------------------------
+Tue Aug 17 10:56:52 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.3.90:
+  + fdo#29365: Stop using a deprecated glib function.
+  + Caching fixes: GetItems was completely broken in v0.3.6, and
+    fixed a possible crash when it is called.
+  + Only emit signals when AT-SPI clients are listening for them.
+
+-------------------------------------------------------------------
+Fri Aug  6 13:47:52 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.3.6:
+  + Fixed a problem with dbus introspection.
+  + Do not block waiting for a response when registering.
+- Changes from version 0.3.5:
+  + Have a socket retrieve its state set from its embedded plug.
+  + Rename AT_SPI_CLIENT to AT_SPI_REENTER_G_MAIN_LOOP, but still
+    check the former variable as well for now.
+- Changes from version 0.3.4:
+  + Ref an object while adding it to the message generated by
+    GetItems. This prevents a crash if all other references to the
+    objects go away while it is being analyzed.
+  + Add GetChildren to the introspection.
+  + Fix NSelectedRows and NSelectedColumns.
+  + Fix the behavior of ChildCount and GetChildAtIndex for sockets
+    with embedded plugs.
+  + Fix extra unref when calling get_row_header or
+    get_column_header on a table, or calling atk_hyperlink_get_object.
+  + Set the /desktop/gnome/interface/at-spi-dbus gconf key to false
+    by default (this key is only used when at-spi2 is relocated,
+    which it is not by default).
+  + Fix a few compiler warnings.
+
+-------------------------------------------------------------------
+Fri Jun  4 21:19:10 UTC 2010 - sshaw@decriptor.com
+
+- Update to version 0.3.3
+  + Remove unused gtk build dependency.
+  + Install a copy of the module into the gtk-3.0 modules
+    directory.
+  + Correct handling of some children-changed events sent by
+    Firefox.
+  + Lease objects that send events if they are not cached; fixes
+    some tracebacks when handling Firefox events.
+- Changes from version 0.3.2:
+  + Some hyperlink fixes.
+  + Cache additions are now done in an idle call. This prevents
+    additions from being made when an object may not be fully
+    initialized and prevents Firefox 3.6 from crashing. Fix
+    bnc#611149.
+  + The cache object has been placed into the org.a11y.atspi
+    namespace.
+- Changes from version 0.3.1:
+  + Added a gconf schema.
+  + org.freedesktop.DBus.Properties.GetAll now works rather then
+    crashing.
+  + The position, size, and extents of an AtkSocket are now fetched
+    from the corresponding AtkPlug.
+  + An application is no longer registered if its root is an
+    AtkPlug.
+  + Fix bgo#538680 - Count ignored in GetMatchesTo
+  + Fix fdo#27626 - deadlock when registering an application.
+  + Fix a problem with various hyperlink methods.
+  + Fix for an AtkPlug sometimes not appearing in the hierarchy.
+  + Fix a crash if the registry returns an unexpected message while
+    embedding.
+  + Remove libxml2 dependency since libxml2 is no longer used.
+  + Fix handling of MATCH_ANY for a stateset in a collection match
+    rule.
+  + Disabled relocation by default.
+- Add at-spi2-atk-gtk-64-fix.patch: this is needed to have the GTK+
+  module work correctly on 64 bit architectures. Fix bnc#611766.
+- Remove libxml2-devel BuildRequires.
+- Add gconf2-devel and intltool BuildRequires, package the gconf
+  schemas, and create a lang subpackage.
+
+-------------------------------------------------------------------
+Thu Apr  8 01:37:24 CEST 2010 - vuntz@opensuse.org
+
+- Make this new at-spi stack optional again: the at-spi2 developers
+  think it's safer to ship 11.3 with the old stack by default.
+- Add a IS_DEFAULT_ATSPI_STACK define to easily change this
+  behavior.
+
+-------------------------------------------------------------------
+Wed Mar 31 01:26:04 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.8:
+  + List org.a11y.atspi.Application in interfaces for applications
+  + Only query a relation set if it is non-NULL
+  + Avoid calling g_error and aborting the application on some
+    errors
+  + Only reenter the main loop if AT_SPI_CLIENT is set
+
+-------------------------------------------------------------------
+Sun Feb 21 17:28:14 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.7:
+  + Convert droute introspection to use string literals created
+    from the introspection XML in at-spi2-core.
+  + Change the name of interfaces from org.freedesktop.atspi to
+    org.a11y.atspi.
+  + Fix error of prefix length that was preventing matching of new
+    object references.
+  + Modify the droute tests to use the new introspection scheme.
+
+-------------------------------------------------------------------
+Fri Feb 12 15:04:57 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.6:
+  + Allow make distcheck to still ship the atk-adapter *.desktop.in
+    file.
+  + Re-add spi_dbus_general_error method as it is used by the
+    collections adaptor.
+  + Fix cache update signature
+  + Fix appending attribute set
+  + Fix collection interface-checking code
+  + Event fixes
+  + Modify the paths scheme.
+  + Correct the root path definition.
+  + The StreamableContent interface is not currently supported.
+  + Change the keystroke delivery methid re-entrancy from
+  + PropertyChange fixes
+  + Plug/socket fixes, and remove conditional
+  + Fix issue where we would attempt to reference null objects
+  + Move spi_object_append_null_reference and adjust its usage
+  + Fix error where null objects were sent with wrong address.
+  + Enhance droute so that unhandled messages are better debugged.
+  + Move the application argument to the end of the event structure
+  + Make AT-SPI/CORBA the default and relocate AT-SPI/D-Bus
+  + Increase the lease time to rectify errors seen during orca
+    testing.
+  + Attempt to fix build warning related to 64bit builds.
+  + Add change to fix rpmlint 64bit portability errors.
+- Pass --disable-relocate to configure because we want at-spi2 by
+  default.
+
+-------------------------------------------------------------------
+Fri Jan 15 01:54:28 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.5:
+  + For a full list of changes, see
+    http://git.gnome.org/cgit/at-spi2-atk/log/?id=AT_SPI2_ATK_0_1_5
+  + Fix g_warning
+  + Fix parents of plugs
+  + Code style enforcement.
+  + Move the D-Bus adaptor code into its own folder within the
+    atk-adaptor library codebase.
+  + Add a class for taking leased references of GObjects.
+  + Integrate leasing scheme in-to atk-bridge.
+  + Fix object lifecycle errors.
+  + Translate child changed ATK signals to AT-SPI.
+  + Fix build error
+  + Ensure the child data is added to children-changed events
+    properly.
+
+-------------------------------------------------------------------
+Tue Dec 22 17:37:40 CET 2009 - vuntz@opensuse.org
+
+- Update to version 0.1.4:
+  + For a full list of changes, see
+    http://git.gnome.org/cgit/at-spi2-atk/log/?id=AT_SPI2_ATK_0_1_4
+  + Use the new 'Accessibility' bus if the bus address is available
+    in the AT_SPI_BUS X property.
+  + Only set parent to the desktop if an accessible is an
+    Application
+  + Send UpdateAccessible for transient objects
+  + Remove i18n macro that was causing link errors.
+  + Only check for plug if atkplug.h has been included
+  + Finished collection support
+  + Use datarootdir for finding the introspection XML files. They
+    are now in a shared directory under 'at-spi2'.
+
+-------------------------------------------------------------------
+Wed Dec  2 17:17:42 CET 2009 - vuntz@opensuse.org
+
+- Update to version 0.1.3:
+  + For a list of changes, see
+    http://git.gnome.org/cgit/at-spi2-atk/log/?id=AT_SPI2_ATK_0_1_3
+- Remove at-spi2-core-devel BuildRequires.
+- Change gtk-devel BuildRequires to gtk2-devel BuildRequires.
+- Remove libcspi0, libcspi-devel, python-atspi subpackages: the
+  first two were for a library that wasn't used by anything else
+  (so it's statically linked now) and the third one is becoming a
+  new package on its own.
+- Obsolete libcspi0 and libcspi-devel packages, without providing
+  them (that would be wrong). Add a rpmlintrc file to make rpmlint
+  happy for this.
+- Add conflict with old versions of at-spi: some files are
+  clashing.
+
+-------------------------------------------------------------------
+Fri Aug 14 15:49:00 UTC 2009 - sshaw@decriptor.com
+
+- Update to version 0.1.1:
+  + Add ATK libraries to cspi LIBADD. Fixes build problems on
+    OpenSUSE.
+  + Removal of Accessible objects is now handled properly. Object
+    removal causes signal to be emitted.
+  + Fix signature of keyboard event registration when key array is
+    empty.
+
+-------------------------------------------------------------------
+Fri Aug 14 04:25:13 CEST 2009 - vuntz@novell.com
+
+- Clean up packaging a bit.
+
+-------------------------------------------------------------------
+Thu Aug 13 15:31:35 UTC 2009 - sshaw@decriptor.com
+
+- Initial packaging of at-spi2-atk (0.1.0)

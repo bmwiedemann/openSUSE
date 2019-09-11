@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Mon May 14 06:40:13 UTC 2018 - jweberhofer@weberhofer.at
+
+- Due to a packaging change in ghostscript the ghostscript-fonts-std
+  has to be included explicitly to successfully run the tests. Elsewise
+  the required helvetica-font is missing. Fix for bnc#1091930.
+
+-------------------------------------------------------------------
+Thu May 10 15:23:14 UTC 2018 - ilya@ilya.pp.ua
+
+- Disable tests, because test fail with php7 7.2.5. (bsc#1091930)
+
+-------------------------------------------------------------------
+Fri Mar 16 13:35:22 UTC 2018 - crrodriguez@opensuse.org
+
+- Build extension with -fvisibility=hidden, to limit
+  chance of symbol collisions with other extensions or libraries
+  loaded in the same process.
+
+- This extenion conflicts with php7-imagick (boo#1085595)
+
+-------------------------------------------------------------------
+Thu Mar  8 11:26:34 UTC 2018 - ilya@ilya.pp.ua
+
+- Remove %configure/make duplicates.
+- Add %licence macros.
+
+-------------------------------------------------------------------
+Thu Jan  4 15:17:11 UTC 2018 - ilya@ilya.pp.ua
+
+- Update to 2.0.5RC1
+  * ChangeLog https://pecl.php.net/package-changelog.php?package=gmagick&release=2.0.5RC1
+  * hasNextImage() and hasPreviousImage() now actually returns TRUE on success instead of Gmagick object.
+
+-------------------------------------------------------------------
+Tue Jul 11 05:38:22 UTC 2017 - jweberhofer@weberhofer.at
+
+- Cleaned up spec
+- Updated dependencies
+
+-------------------------------------------------------------------
+Mon Jul 10 15:06:33 UTC 2017 - ilya@ilya.pp.ua
+
+- Initial package for version 2.0.4RC1
+  * ChangeLog https://pecl.php.net/package-changelog.php?package=gmagick&release=2.0.4RC1

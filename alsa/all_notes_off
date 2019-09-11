@@ -1,0 +1,23 @@
+#!/bin/bash 
+#
+# Send an "all notes off" event to all channels of all 
+# MIDI-Devices configured in the System
+# 
+# Written by Matthias Nagorni, (c) 2001 SuSE GmbH Nuremberg
+#                              (c) 2014 SUSE Linux Products GmbH
+#
+for d in /dev/snd/midiC?D?; do
+    echo Sending "all notes off" to MIDI device $d
+    cat /usr/lib/all_notes_off.bin > $d
+done
+if [ -x /usr/bin/pmidi ]; then
+    echo Can execute pmidi. Fine. 
+    plist=$(pmidi -l)
+    for p in $plist; do
+        p1=${p%:0}
+        if [ "$p1" != "$p" ] && [ $p1 -gt 16 ]; then
+            echo Sending "all notes off" to MIDI port $p
+            pmidi -p $p -d 0 /usr/lib/all_notes_off.mid
+        fi
+    done
+fi

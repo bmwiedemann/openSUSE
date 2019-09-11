@@ -1,0 +1,316 @@
+-------------------------------------------------------------------
+Tue May 28 06:37:05 UTC 2019 - mvetter@suse.com
+
+- Update to 3.2.0:
+  * Fix invalid include (#783[1])
+  * Add timespec support (#781[2])
+  * Fix unchecked fnprintf on C (#780[3])
+  * Improve integer overflow checking on C (#776[4])
+  * Fix warnings on -Wconversion (#770[5], #777[6], #784[7])
+  * Fix invalid passed by value on aligned_zone_size_visitor (#764[8])
+  * Improve windows support (#757[9], #779[10])
+  * Fix msgpack::object size caluclation error (#754[11])
+  * Fix memory error on example code (#753[12])
+  * Fix redundant memory allocation on C (#747[13])
+  * Fix msgpack::type::tuple base class conversion (#743[14])
+
+-------------------------------------------------------------------
+Mon Sep 10 12:26:49 UTC 2018 - mvetter@suse.com
+
+- Update to 3.1.1:
+  * Add force endian set functionality (#736[1])
+  * Fix vrefbuffer memory management problem (#733[2])
+  * Fix msvc specific problem (#731[3], #732[4])
+  * Update boost from 1.61.0 to 1.68.0 (#730[5])
+  * Fix msgpack_timestamp type mismatch bug (#726[6])
+
+-------------------------------------------------------------------
+Wed Aug 22 07:37:39 UTC 2018 - mvetter@suse.com
+
+- Update to 3.1.0:
+  * Improve documents (#687[1], #718[2])
+  * Add fuzzer support (#689[3])
+  * Fix msgpack::object union member access bug (#694[4])
+  * Improve cross platform configuration (#704[5])
+  * Fix out of range dereference bug of EXT (#705[6])
+  * Add timestamp support. std::chrono::system_clock::time_point is mapped to TIMESTAMP (#706[7])
+  * Add minimal timestamp support for C. The type msgpack_timestamp and the function msgpack_object_to_timestamp() are introduced (#707[8])
+  * Improve MSGPACK_DEFINE family name confliction probability (#710[9])
+  * Add no static-library build option (BUILD_SHARED_LIBS=ON) (#713[10], #717[11], #722[12])
+  * Add header only cmake target (#721[13])
+  * Add std::byte adaptor (#719[14])
+  * Remove some warnings (#720[15])
+
+-------------------------------------------------------------------
+Wed Jun 13 14:14:18 UTC 2018 - mvetter@suse.com
+
+- Update to 3.0.1:
+  * Add fuzz directory to release tar ball (#686)
+  * Add include file checking for X-Code (#683)
+- Changes from 3.0.0:
+  * Change offset parameter updating rule. If parse error is
+     happend, offset is updated to the error position.
+  * Improve cross platform configuration (#655, #677)
+  * Improve build system (#647)
+  * Improve user class adaptor (#645, #673)
+  * Improve msgpack::object visitation logic (#676)
+  * Remove some warnings (#641, 659)
+  * Add -> and * operators to object_handle (#635)
+  * Improve CI environment (#631, #634, #643, #657, #662, #668)
+  * Improve documents (#630, #661)
+  * Refactoring (#670)
+  * Add OSS-Fuzz support (#672, #674, #675, #678)
+
+-------------------------------------------------------------------
+Sat Nov 11 16:30:59 UTC 2017 - aavindraa@gmail.com
+
+- Update to version 2.1.5 (2.1.4 was skipped):
+  * Improve cross platform configuration
+  * Add boost asio examples (including zlib)
+  * Remove some warnings
+  * Fix unpack visitor to treat float32/64 correctly
+  * Improve documentation
+  * Fix alignment problem on some platform
+  * Fix conflict std::tuple, std::pair, and boost::fusion::sequence problem
+- Changes for version 2.1.3:
+  * Improve build system
+  * Add C++17 adaptors std::optional and std::string_view.
+  * Improve cross platform configuration
+  * Remove some warnings
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Jun 10 12:49:19 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.1.2:
+  * Improve documents (#565)
+  * Fix empty map parse bug (#568)
+  * Improve build system (#569, #570, #572, #579, #591, #592)
+  * Remove some warnings (#574, #578, #586, #588)
+  * Improve cross platform configuration (#577, #582)
+  * Add cmake package config support (#580)
+  * Fix streaming unpack bug (#585)
+- Changes for version 2.1.1:
+  * Fix unpacker's buffer management bug (#561)
+  * Add boost string_view adaptor (#558)
+  * Remove some warnings (#557, #559)
+  * Improve coding style (#556)
+- Changes for version 2.1.0:
+  * Fix object internal data type is float if msgpack format is float32 (#531)
+  * Add FLOAT64 type. Please use it instead of DOUBLE (#531)
+  * Add FLOAT32 type. Please use it instead of FLOAT (#531)
+  * Add iterator based parse/unpack function(experimental) (#553)
+  * Add [[deprecated]] attribute for C++14 (#552)
+  * Fix msgpack_unpack() return code (#548)
+  * Fix integer overflow (#547, #549, #550)
+  * Add example codes (#542)
+  * Add MSGPACK_NVP. You can use not only variable name but also any strings (#535)
+  * Fix and Improve build system (#532, #545)
+  * Fix gcc_atomic.hpp include path (#529, #530)
+  * Improve CI environment (#526)
+  * Improve documents (#524)
+  * Add msgpack_unpacker_next_with_size() function (#515)
+  * Fix as() applying condition (#511)
+  * Fix fbuffer write (#504)
+  * Add gcc bug workaround (#499)
+  * Improve object print (#497, #500, #505, #533)
+  * Remove some warnings (#495, #506, #508, #513, #528, #538, #545)
+- Use cmake macros
+
+-------------------------------------------------------------------
+Sun Jan  1 12:38:42 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from description
+
+-------------------------------------------------------------------
+Thu Aug 25 16:26:07 UTC 2016 - ronisbr@gmail.com
+
+- Version bump to 2.0.0.
+  Changelog:
+
+  Version 2.0.0
+
+    Breaking Changes:
+
+    * Removed autotools support. Use cmake instead (#476, #479)
+    * Removed pointer version of msgpack::unpack APIs. Use
+      reference version instead (#453)
+    * Removed MSGPACK_DISABLE_LEGACY_CONVERT.
+      msgpack::object::convert(T*) is removed by default. Use
+      msgpack::object::convert(T&) instead (#451)
+    * Removed msgpacl::type::nil. Use nil_t or define
+      MSGPACK_USE_LECACY_NIL (#444)
+    * Removed std::string to msgpack::object conversion (#434)
+
+    Recommended Changes
+
+    * Replaced msgpack::unpacked with msgpack::object_handle.
+      msgpack::unpacked is kept as a typedef of
+      msgpack::object_handle. (#448)
+
+    Other Updates
+
+    * Add strict size checking adaptor. Relaxed tuple conversion
+      (#489)
+    * Fix and Improve example codes (#487)
+    * Add C++/CLI support for nullptr (#481)
+    * Update the boost libraries that are contained by msgpack-c
+      (#475)
+    * Fix gcc_atomic.hpp location (#474)
+    * Add C-Style array support (#466, #488)
+    * Fix include file dependency (#464)
+    * Add a visitor version of unpack API (#461)
+    * Fix JSON string conversion from "nil" to "null" (#458)
+    * Fix and Improve build system (#455, #471, #473, #486, #491)
+    * Fix comments (#452)
+    * Fix unintentional msgpack::zone moving problem (#447)
+    * Fix operator>> and << for msgpack::object (#443)
+    * Fix C++03 msgpack::zone::clear() memory access violation bug
+      (#441)
+    * Fix TARGET_OS_IPHONE checking (#436)
+    * Fix invalid front() call for empty container (#435)
+    * Fix compile error on g++6 (C++11 only) (#426, #430)
+    * Fix zone size expansion logic (#423)
+    * Fix wrong hader file dependency (#421)
+    * Fix msvc specific problem (#420)
+    * Add v2 API support (#415)
+
+  Version 1.4.2
+
+    * Fix C++03 msgpack::zone::clear() memory access violation bug
+      (#467)
+
+-------------------------------------------------------------------
+Fri Apr  1 07:55:20 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.4.1
+  * Fix TARGET_OS_IPHONE checking (#436, #438)
+  * Fix invalid front() call for empty container (#435. #437)
+  * Fix compile error on g++6 (C++11 only) (#426, #428)
+  * Fix zone size expansion logic (#423, #427)
+- Changes for 1.4.0
+  * Improve documents (#387, #407)
+  * Remove C++ version library (#394, #402)
+  * Add Doxyfile and ChangeLog to the distribution package (#397)
+  * Add signed/unsigned char test to travis-ci (#398)
+  * Remove some warnings (#400, #401, #409)
+  * Fix endian checking. (#404)
+
+-------------------------------------------------------------------
+Wed Dec  2 15:11:30 UTC 2015 - ronisbr@gmail.com
+
+- Version bump to 1.3.0.
+- Changelog between v0.5.9 and v1.3.0:
+
+    - Version 1.0.0
+        * No changelog available.
+
+    - Version 1.0.1
+        * This is a maintenance release and it includes following
+        * fixes:
+            - Fix compilation error on Mac 10.9 (#244)
+            - Fix typos in documents (#240)
+            - Update CHANGELOG.md for version 1.0.0 (#242)
+            - Fix erb templates for the next code generation (#239)
+
+    - Version 1.1.0
+        * Breaking changes:
+            - Remove msgpack_fwd.hpp (#262)
+            - Improve user types adaptation mechanism (#262)
+                Since version 1.0.0, users need to obey the correct
+                include order. However, it is very difficult to
+                maintain the correct order in big projects. version
+                1.1.0 removed this order. Users don't need to care
+                about include order. Migration guide from 1.0.x to
+                1.1.0 has been written. See
+                https://github.com/msgpack/msgpack-c/wiki
+        * Other updates:
+            - Fix vector size check (#251)
+            - Fix inttypes.h inclusion on MSVC (#257)
+            - Support documents generation by Doxygen (#259)
+            - Remove C99 style variable declaration (#253)
+            - Improve documents
+              (https://github.com/msgpack/msgpack-c/wiki)
+
+    - Version 1.2.0
+        * Breaking changes:
+            - Change std::vector and std::array mapped to BIN
+              instead of ARRAY (#243)
+            - Remove redundant copy (#285)
+        * Other changes:
+            - Add array_ref to map to ARRAY (#243)
+            - Add variant type and adaptor (#349)
+            - Add object::convert_if_not_nil() (#357)
+            - Fix invalid offset update (#354)
+            - Add C++11 support on MSVC2015(#339, #347)
+            - Fix and Improve build system (#346, #350, #361, #363)
+            - Import Boost.Preprocessor as a part of msgpack-c
+              (#312)
+            - Fix OSX with libc++ specific errors (#334, #362)
+            - Add customized containers support (#330)
+            - Add std::unique_ptr and std::shared_ptr support
+              (#329)
+            - Add missing install files (#328)
+            - Add shared/static library switching option (#316)
+            - Improve no throw description on C++11 (#313)
+            - Import Boost.Predef as a part of msgpack-c (#312)
+            - Add map based serialize support (#306)
+            - Add Boost.Fusion support (#305)
+            - Add v4 format RAW support (#304)
+            - Fix zbuffer with empty string problem (#303)
+            - Add non default constructible class support (#302,
+              #324, #327, #331, #332, #345)
+            - Add inline keyword to function (template) (#299)
+            - Add EXT type supporting classes (#292, #308)
+            - Fix raw_ref != comparison (#290)
+            - Add object deep copy (#288)
+            - Remove some warnings (#284, #322, #323, #335)
+            - Improve compiler version checking (#283)
+            - Add return value to object::convert() (#282)
+            - Improve move semantic support in C++11 (#279, #353)
+            - Add Boost.StringRef support (#278)
+            - Improve CI environment (#276, #294, #338)
+            - Add converting to JSON (#274, #301)
+            - Fix iOS specific problem (#270)
+            - Improve doxtgen document generation (#269)
+            - Add Boost.Optional support (#268)
+            - Fix msvc specific problem (#267, #295)
+            - Add base class serialization. (#265, #277)
+            - Add and improve examples. (#264, #310, #311, #341,
+              #342, #344)
+            - Fix wiki URL. (#263)
+
+    - Version 1.3.0
+        * Change the license from the Apache License Version 2.0 to
+          the Boost Software License, Version 1.0.(#386)
+        * Remove some warnings (#365)
+        * Add std::reference_wrapper support(#373, #384)
+        * Improve tests (#375, #378, #379, #380)
+        * Fix msvc specific problem (#376, #383)
+        * Fix typos (#381)
+
+-------------------------------------------------------------------
+Mon Mar  2 18:35:13 UTC 2015 - tchvatal@suse.com
+
+- Spec-cleaner (just kill few small empty comment lines)
+
+-------------------------------------------------------------------
+Thu Aug 14 08:09:47 UTC 2014 - idonmez@suse.com
+
+- Update to version 0.5.9
+  * Support std::tr1 unordered containers by default
+  * Crash fixes
+  * Add FILE* buffer
+
+-------------------------------------------------------------------
+Tue Feb 11 11:52:44 UTC 2014 - jengelh@inai.de
+
+- Don't even build static libraries if they are going to be removed
+  again.
+- Remove redundant build dependencies that are not used
+
+-------------------------------------------------------------------
+Mon Feb 10 11:55:48 UTC 2014 - asn@cryptomilk.org
+
+- Big bang!
+

@@ -1,0 +1,465 @@
+-------------------------------------------------------------------
+Mon Apr  8 11:31:42 UTC 2019 - cloud-devel@suse.de
+
+- update to version 2.32.2
+  - Change openstack-dev to openstack-discuss
+  - add lib-forward-testing-python3 test job
+  - Add DVS utility methods
+  - import zuul job settings from project-config
+  - Imported Translations from Zanata
+  - Update reno for stable/rocky
+  - Clean up .gitignore references to personal tools
+  - Use template for lower-constraints
+  - add python 3.6 unit test job
+  - py37: deal with Exception repr changes
+  - Check if there is a context set before updating the store
+  - add python 3.7 unit test job
+  - Set request context when polling vCenter tasks
+  - delete useless indent
+
+-------------------------------------------------------------------
+Mon Sep  3 09:03:04 UTC 2018 - cloud-devel@suse.de
+
+- update to version 2.31.0
+  - Update reno for stable/queens
+  - pypy is not checked at gate
+  - Switch to stestr
+  - Imported Translations from Zanata
+  - Add release notes link to README
+  - Refactor _start_transfer
+  - Fix session re-establish failure with PBM APIs
+  - Add function for getting recommended datastore
+  - Fix docstring which breaks doc generation
+  - Utility method to check SDRS enabled status
+  - Remove stale pip-missing-reqs tox test
+  - Update links in README
+  - PBM WSDL for vSphere 6.7
+  - Trivial: Update pypi url to new url
+  - set default python to python3
+  - fix tox python3 overrides
+  - fix lower constraints and uncap eventlet
+  - add lower-constraints job
+  - fix a typo:s/extention/extension
+  - Add traversal spec for datastoreFolder
+  - Specify CA store when making secure connections with urllib3
+  - Updated from global requirements
+  - Add utility function for datastore clusters
+
+-------------------------------------------------------------------
+Fri Feb 23 13:30:31 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Mon Jan 15 12:02:26 UTC 2018 - cloud-devel@suse.de
+
+- update to version 2.26.0
+  - Fix the repeating titles
+  - Remove -U from pip install
+  - Update reno for stable/pike
+  - Remove setting of version/release from releasenotes
+  - Imported Translations from Zanata
+  - Avoid tox_install.sh for constraints support
+  - Cleanup test-requirements
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Mon Aug  7 13:59:56 UTC 2017 - cloud-devel@suse.de
+
+- update to version 2.23.0
+  - Trivial: Remove testscenarios from test-requirements.txt
+  - rearrange existing documentation to fit the new standard layout
+  - Make the mock call in MemoryCacheTest forward-compatible
+  - Remove log translations
+  - Make sure host in maintenance mode excluded from image upload
+  - Add hacking rule to prevent log translations
+  - Wrong member variable name in class Datastore
+  - Improve unit test coverage
+  - Use https for references to openstack.org
+  - Use request_handler() for ExtensionManager APIs
+  - Update URLs in documents according to document migration
+  - [Fix gate]Update test requirement
+  - pbr.version.VersionInfo needs package name (oslo.xyz and not oslo_xyz)
+  - Update reno for stable/ocata
+  - Do not prune some special XML elements which are empty
+  - Improving cover testenv
+  - Improve logging for task updates
+  - Updated from global requirements
+  - Enable warning-is-error in doc build
+  - Switch from oslosphinx to openstackdocstheme
+  - Add in support for removeKey
+- drop 0001-Make-the-mock-call-in-MemoryCacheTest-forward-compat.patch
+  Applied upstream
+
+-------------------------------------------------------------------
+Mon Feb 13 09:53:36 UTC 2017 - cloud-devel@suse.de
+
+- update to version 2.17.0:
+  - Pass connection timeout so that invoke_api will not wait forever
+  - Update reno for stable/newton
+  - Remove mox3 in test-requirement.txt
+  - Add 'uncommitted' field to the 'Datastore' class
+  - Update home page link in cfg file
+  - Fix setting the SOAP headers for remote calls.
+  - Add Constraints support
+  - Remove some useless log messages
+  - Trivial fixes to the usage doc
+  - Show team and repo badges on README
+  - Imported Translations from Zanata
+  - Add operation ID for remote calls
+  - Remove references to Python 3.4
+  - Enable release notes translation
+  - Set pool size for HTTPS connections
+  - Fix image meta-data update for Glance v2
+  - Files with no code must be left completely empty
+  - Updated from global requirements
+  - Add SPBM WSDL for vSphere 6.5
+  - [TrivialFix] Replace 'assertTrue(a in b)' with 'assertIn(a, b)'
+- Add 0001-Make-the-mock-call-in-MemoryCacheTest-forward-compat.patch
+
+-------------------------------------------------------------------
+Thu Sep  1 07:28:42 UTC 2016 - tbechtold@suse.com
+
+- update to version 2.14.0
+  * Fix TypeError:six.StringIO(resp.content) must be str or None, not bytes.
+  * Updated from global requirements
+  * Method to download file to VMware server
+
+-------------------------------------------------------------------
+Wed Aug 10 12:07:27 UTC 2016 - tbechtold@suse.com
+
+- update to 2.12.0:
+  * Updated from global requirements
+  * Add http_method to download_stream_optimized_data
+  * Refactor the image transfer
+  * Remove discover from test-requirements
+  * Add a py35 tox venv for upcoming py35 support
+  * Remove unnecessary properties from image-meta
+
+-------------------------------------------------------------------
+Mon Aug  1 19:03:35 UTC 2016 - tbechtold@suse.com
+
+- update to 2.10.0:
+  * Updated from global requirements
+  * Imported Translations from Zanata
+  * Refactor VmdkWriteHandle and VmdkReadHandle
+  * Add reno for release notes management
+  * Support download of virtual disk in ova container
+  * Trivial: ignore openstack/common in flake8 exclude list
+  * Should not raise Exception before connection close
+  * Remove explicit use of asserts
+  * Move bandit into pep8
+- update _service and switch to upstream spec
+
+-------------------------------------------------------------------
+Fri Apr  1 10:26:16 UTC 2016 - tbechtold@suse.com
+
+- update to 2.5.0:
+  * Updated from global requirements
+  * Remove bandit.yaml in favor of defaults
+  * Update translation setup
+  * Imported Translations from Zanata
+  * Use oslo_utils reflection to get function name
+  * Python 3 deprecated the logger.warn method in favor of warning
+  * Put py34 first in the env order of tox
+  * assertIsNone(val) instead of assertEqual(None,val)
+  * isoformat instead of deprecated timeutils.strtime
+  * Overwrite VMwareDriverException message
+  * Clean requirements
+  * Trival: Remove 'MANIFEST.in'
+  * Remove python 2.6 classifier
+  * Remove python 2.6 and cleanup tox.ini
+
+-------------------------------------------------------------------
+Wed Oct 14 12:51:10 UTC 2015 - tbechtold@suse.com
+
+- update to 1.22:
+  * Updated from global requirements
+  * Fix coverage configuration and execution
+  * No need for Oslo Incubator Sync
+  * Add support for SSL thumbprint when using FileWriteHandle
+  * Define WithRetrieval context
+  * Imported Translations from Zanata
+  * Add shields.io version/downloads links/badges into README.rst
+  * docs - Set pbr 'warnerrors' option for doc build
+  * clean up auto-doc api build
+  * do not show the full release history in the main table of contents
+  * clean up readme and documentation titles
+  * Change ignore-errors to ignore_errors
+  * Updated from global requirements
+  * Add support for using HTTP POST in VmdkWriteHandle
+  * Add unit tests for FileHandle._create_connection
+  * Update the documentation
+
+-------------------------------------------------------------------
+Wed Sep  9 07:15:02 UTC 2015 - tbechtold@suse.com
+
+- update to 1.21.0:
+  * Updated from global requirements
+  * Use SSL thumbprints for NFC transfer
+  * Update bandit.yaml to the latest
+  * flake8 - remove unused rules
+  * Imported Translations from Transifex
+  * Allow http connection pool size to be configured
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Fri Jul 31 06:49:39 UTC 2015 - tbechtold@suse.com
+
+- Unify spec file #2
+- Remove conditionals for older SUSE versions
+
+-------------------------------------------------------------------
+Wed Jul 29 10:44:39 UTC 2015 - tbechtold@suse.com
+
+- Unify spec file. Use fedora compatible files macros
+
+-------------------------------------------------------------------
+Tue Jul 28 13:20:06 UTC 2015 - tbechtold@suse.com
+
+- update to 1.18.0:
+  * Make usage doc easier to understand for library consumers
+  * Imported Translations from Transifex
+  * Remove username from logs
+  * Updated from global requirements
+- update Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Mon Jul 27 07:12:30 UTC 2015 - dmueller@suse.com
+
+- update to 1.17.0:
+  * Update log level of session related logs
+  * Fix mock calls
+  * Updated from global requirements
+  * Mask/truncate vCenter credentials in suds logs
+  * Imported Translations from Transifex
+  * Add tox target to find missing requirements
+  * Updated from global requirements  
+  * Fix exception to string in py34
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Thu Jun 25 09:55:29 UTC 2015 - tbechtold@suse.com
+
+- update to 0.15.1:
+  * Add in support for ManagedObjectNotFound exception
+  * Deprecate unused exceptions
+  * Raise VimFaultException for unknown faults
+  * Exception hierarchy refactoring
+  * Update progress lease every 60 seconds
+  * Fix bandit tox environment to properly run
+  * Updated from global requirements
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Mon Jun 22 14:57:29 UTC 2015 - tbechtold@suse.com
+
+- update to 0.14.0:
+  * Remove oslo namespace package
+  * Port test from Nova
+  * Imported Translations from Transifex
+
+-------------------------------------------------------------------
+Mon Jun  1 13:43:22 UTC 2015 - tbechtold@suse.com
+
+- update to 0.13.1:
+  * Imported Translations from Transifex
+  * Revert "Raise VimFaultException for unknown faults"
+  * Add ToolsUnavailable exception
+  * Add support for dynamicProperty
+  * Remove support for Python 3.3
+  * Updated from global requirements
+  * Remove run_cross_tests.sh
+  * Use suds-jurko on Python 2
+  * Updated from global requirements
+  * Imported Translations from Transifex
+  * Updated from global requirements
+  * Raise VimFaultException for unknown faults
+  * Imported Translations from Transifex
+  * Add NoDiskSpaceException
+  * Add utility function to get profiles by IDs
+  * Add bandit to tox for security static analysis
+  * Add SPBM WSDL for vSphere 6.0
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Sat May 16 13:34:09 UTC 2015 - dmueller@suse.com
+
+- update to 0.12.0:
+  * Uncap library requirements for liberty
+  * Cleanup README.rst and setup.cfg
+  * Update to latest hacking
+  * Imported Translations from Transifex
+  * Revert "VMWare NSXv: Common components"
+  * Updated from global requirements
+  * Move pylint dependency to tox.ini
+  * Move exception related tests to new module
+
+-------------------------------------------------------------------
+Tue Apr  7 10:25:37 UTC 2015 - tbechtold@suse.com
+
+- update to 0.11.1:
+  * Switch to non-namespaced module imports
+  * Imported Translations from Transifex
+  * Move missing tests to new oslo_vmware location
+  * Imported Translations from Transifex
+  * Add get_datastore_by_ref method to oslo.vmware
+  * Change use of random to random.SystemRandom
+
+
+-------------------------------------------------------------------
+Mon Mar  2 10:20:58 UTC 2015 - tbechtold@suse.com
+
+- update to 0.10.0:
+  * Imported Translations from Transifex
+  * Updated from global requirements
+  * Handle SPBM SecurityError
+  * PBM utility method to retrieve profiles of a VM
+  * Updated from global requirements
+  * Imported Translations from Transifex
+  * Add missing links to README
+  * VMWare NSXv: Common components
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Tue Feb 10 09:09:27 UTC 2015 - dmueller@suse.com
+
+- update to 0.9.0:
+  * Imported Translations from Transifex
+  * Updated from global requirements
+  * Correct usage to oslo_vmware
+  * Fix line wrapping
+  * Correct the doc usage example
+  * Fix missing project name in installation doc
+  * Fix race during session creation
+  * Make setup.cfg packages include oslo.vmware
+  * Move files out of the namespace package
+  * Use ToggleLazy fixture from oslo.i18n
+  * Use _is_valid_ipv6 from oslo.utils
+  * Allow checking api session
+  * Add pbr to installation requirements
+  * Update urllib3 requirements
+  * Workflow documentation is now in infra-manual
+  * Fix re-create session during transient failures
+
+-------------------------------------------------------------------
+Mon Jan  5 14:27:28 UTC 2015 - dmueller@suse.com
+
+- update to 0.8.0:
+  * Switch to use requests/urllib3 and enable cacert validation
+  * Updated from global requirements
+  * Enable support for python 3.x
+  * Imported Translations from Transifex
+  * Activate pep8 check that _ is imported
+  * Do not log when reraising an exception
+  * Imported Translations from Transifex
+  * Add unit test for VC 5.1 web fault handling
+  * Fix to get exception detail with vCenter 5.1
+  * Download image API to bypass vCenter
+  * Enable the PBM WSDL to be updated
+  * Support building wheels (PEP-427)
+  * Fixup autoindex.rst only if it exists
+  * Supress error logs when exception is thrown
+  * Fix handling of fault details
+  * Fix UnboundLocalError during WebFault handling
+  * Use faultstring attribute in suds.WebFault.fault
+  * Imported Translations from Transifex
+  * Fix the log message for progress
+  * Add API to get the entity inventory path
+  * VimExceptions need to support i18n objects
+  * Switch to using oslo.utils
+  * Use custom transport adapter for file URLs
+  * getText can be called only when doc is not None
+  * Add unit test for suds cache expiration
+  * Add a memory based shared cache
+
+-------------------------------------------------------------------
+Sat Sep 27 17:22:49 UTC 2014 - dmueller@suse.com
+
+- update to 0.6.0:
+  * Add DuplicateName exception
+  * Add 'details' property to VMwareDriverException
+  * Enable oslo.i18n for oslo.vmware
+  * Add API to enable calling module to register an exception
+  * Imported Translations from Transifex
+  * Add docs target and generate api docs
+  * Updated from global requirements
+  * Work toward Python 3.4 support and testing
+  * warn against sorting requirements
+  * Add exception for TaskInProgress
+  * Updated from global requirements
+  * Refactoring to reduce noise in log files
+  * Imported Translations from Transifex
+  * Add missing session parameter to get_summary
+  * Updated from global requirements
+  * Switch off caching to prevent cache poisoning by local attacker
+  * Support for copying streamOptimized disk to file
+  * Add support for the DatastoreURL object
+  * Add methods to the Datastore objects
+  * Imported Translations from Transifex
+  * Add Pylint testenv environment
+
+-------------------------------------------------------------------
+Sun Aug 31 14:03:37 UTC 2014 - dmueller@suse.com
+
+- update to 0.5.0:
+  * _trunc_id to check if the session_id is not None
+  * Enabled hacking check H305
+  * Imported Translations from Transifex
+  * Add constant for ESX datacenter path (HTTP access)
+  * Store PBM wsdl in the oslo.vmware git repository
+  * Bump hacking to version 0.9.2
+  * Add support for using extensions
+  * The 'result' variable in RetryDecorator may be undefined
+  * Imported Translations from Transifex
+  * Fix docstrings of constructors
+  * Do not log the full session ID
+  * Refactor the PBM support
+  * Fix wrong usage of assertRaises
+  * Translations: make use of _LE, _LI and _LW 
+
+-------------------------------------------------------------------
+Fri Jul 11 08:13:44 UTC 2014 - dmueller@suse.com
+
+- update to 0.4.0:
+  * Sync excutils from Oslo
+  * Updated from global requirements
+  * Use assertIsNone
+  * Bump hacking to 0.9.x series
+  * replace iterator.next() with next(iterator)
+  * remove definitions of Python Source Code Encoding
+  * Setup for translation
+  * Updated from global requirements
+  * cleaning up index.rst file
+  * Add networkFolder in the traversal spec
+  * Ensure port support does not break backward compatibility
+  * replace string format arguments with function parameters
+  * Support for IPv6 and Non-standard ports
+  * Support 'InvalidPowerState' exception
+  * Don't translate debug level logs in oslo-vmware
+  * Updated from global requirements
+  * Sync changes from Nova error_util.py
+  * Updated from global requirements
+  * Remove __del__ usage in oslo.vmware driver
+  * Add a test to oslo.vmware test_image_transfer
+  * import run_cross_tests.sh from incubator
+  * Fix vim25:InvalidRequest when no profiles exist
+  * VMware: treat cases when SOAP reply does not have a body
+  * Add unittest method "test_download_flat_image"
+  * Add missing unit tests for VMwareAPISession
+
+-------------------------------------------------------------------
+Thu May 22 11:26:20 UTC 2014 - dmueller@suse.com
+
+- update to 0.3.0 
+
+-------------------------------------------------------------------
+Fri Mar  7 09:12:06 UTC 2014 - speilicke@suse.com
+
+- Add python_requires source service
+
+-------------------------------------------------------------------
+Fri Mar  7 09:00:06 UTC 2014 - speilicke@suse.com
+
+- Initial version
+

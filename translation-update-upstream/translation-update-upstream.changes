@@ -1,0 +1,305 @@
+-------------------------------------------------------------------
+Mon Dec 10 22:58:25 CET 2018 - sbrabec@suse.com
+
+- translation-update-upstream.in: Restore time stamp to prevent
+  triggering of aclocal (boo#1118603).
+  * Refresh translation-update-upstream-embedded.patch.
+- Add a check that prevents build of SLE version for openSUSE.
+
+-------------------------------------------------------------------
+Wed Nov 28 23:31:49 CET 2018 - sbrabec@suse.com
+
+- Update to Factory specific version 20181128 that contains only
+  abandoned packages in static.tlst (bsc#1100398).
+  *.tlst: Port from SLE15 SP1:
+- Comment upstream-collect.conf.
+- upstream-collect.sh supplementary script:
+  * Make paths compatible with Tumbleweed.
+  * Add support for .tar.xz files.
+- Improved create-tlst scripts to work with standard DVD medium
+  (create-tlst-step1-list-all-po-projects.sh,
+  create-tlst-step2-create-gnome_gtp.sh, create-tlst.conf),
+  add upstream-gnome_gtp-not-on-media.tlst.
+- Move libgnomecanvas dropped in upstream to
+  translation-update-static.tar.bz2.
+- Add github.tlst.
+
+-------------------------------------------------------------------
+Wed May  2 19:50:06 CEST 2018 - sbrabec@suse.com
+
+- Improve meson/ninja domain detection (boo#1091307).
+
+-------------------------------------------------------------------
+Fri Apr 27 15:06:30 CEST 2018 - sbrabec@suse.com
+
+- Implement support for meson/ninja build system (fixes missing
+  translations in nautilus, bsc#1087076, upstream-collect.sh,
+  translation-update-upstream.in,
+  translation-update-upstream-embedded.patch).
+- Update to version 20180426:
+  * Update for translation-update-upstream fixes (bsc#1087076).
+  * Correct files from meson/ninja based builds.
+
+-------------------------------------------------------------------
+Tue Apr 10 18:31:45 CEST 2018 - sbrabec@suse.com
+
+- Update to version 20180410:
+  * Reflect latest package updates (e. g. gtk3, bsc#1087126).
+  * Update for translation-update-upstream fixes (bsc#1086036#c13).
+  * Package is now SLE 15 specific. Update *.tlst to exclude
+    openSUSE-only packages.
+- Configure upstream-collect.conf to SLE 15.
+
+-------------------------------------------------------------------
+Mon Apr  9 18:04:00 CEST 2018 - sbrabec@suse.com
+
+- Update to version 20180313.2:
+  * Add upstream eiciel to misc.tlst, remove merged downstream from
+    lcn-sle.tlst.
+  * Update eiciel (bsc#1087321).
+
+-------------------------------------------------------------------
+Wed Mar 28 22:55:39 CEST 2018 - sbrabec@suse.com
+
+- Refresh gdm after dropping of gdm-nb-translations.patch
+  (bump version to 20180313.1, boo#1087338).
+
+-------------------------------------------------------------------
+Tue Mar 13 18:54:11 CET 2018 - sbrabec@suse.com
+
+- Updated strings from the latest upstream translations and for the
+  latest Factory snapshot (version 20180313).
+- create-tlst-step2-create-gnome_gtp.sh:
+  * Use latest branches.
+  * Add code matching NetworkManager plugins (bsc#989505).
+- create-tlst.conf: Switch to x86_64.
+- misc.tlst:
+  * Add firewalld (bsc#1082309, bsc#1081815, bsc#1081623,
+    bsc#1081625, bsc#1081823).
+  * Add virt-manager (bsc#1081541).
+- lcn-sle.tlst: Remove dropped packages.
+- upstream-collect.sh: Remove more macros in rpmprep.
+
+-------------------------------------------------------------------
+Fri Aug 21 16:23:02 CEST 2015 - sbrabec@suse.com
+
+- upstream-collect.sh supplementary script: Prevent plural form
+  clash in case of additions only (bsc#894913).
+
+-------------------------------------------------------------------
+Thu Sep  4 17:32:24 CEST 2014 - sbrabec@suse.cz
+
+- upstream-collect.sh supplementary script: Fixed inverted po file
+  age check (bnc#889513).
+- create-tlst-step2-create-gnome_gtp.sh: Add support for udisks.
+- Reset translation tarballs: use only packaged translations.
+
+-------------------------------------------------------------------
+Tue May  6 23:37:37 CEST 2014 - sbrabec@suse.cz
+
+- New supplementary script: check-translation-completeness.sh
+  that creates statistics of translation completeness.
+- Merge latest upstream-collect.sh fixes from SLE11 SP3:
+  * Re-add all strings lost after removal from upstream
+    (bnc#807817#c15).
+  * Do incremental update by default to prevent loss of strings
+    removed from upstream (bnc#807817#c15).
+  * Fix errors in debug mode.
+- Merge latest translation-update-upstream-to-translation-update.sh
+  fixes from SLE11 SP3:
+  * rewrote to include strings from gnome-patch-translation
+    (bnc#807817, bnc#811265).
+
+-------------------------------------------------------------------
+Fri Apr 25 09:58:27 UTC 2014 - schwab@linux-m68k.org
+
+- Only process PO header in msgheadermerge
+
+-------------------------------------------------------------------
+Wed Apr 23 09:22:19 UTC 2014 - dmueller@suse.com
+
+- speed up msgheadermerge by factor 20-25 
+
+-------------------------------------------------------------------
+Wed Mar 13 20:29:06 CET 2013 - sbrabec@suse.cz
+
+- Supplementary scripts update:
+  * GTP: Update to the new GTP web engine.
+
+-------------------------------------------------------------------
+Fri Mar  8 22:02:53 CET 2013 - sbrabec@suse.cz
+
+- Remove glib.glib-2-30.gu.po file that comes from GTP
+  (bnc#808436).
+
+-------------------------------------------------------------------
+Thu Feb 14 20:30:28 CET 2013 - sbrabec@suse.cz
+
+- Improve supplementary script
+  translation-update-upstream-to-translation-update.sh to fit well
+  for SLE, openSUSE and SLE service packs.
+
+-------------------------------------------------------------------
+Thu Feb 14 16:51:59 CET 2013 - sbrabec@suse.cz
+
+- Updated strings from the latest upstream translations and for the
+  latest 12.3 snapshot.
+
+-------------------------------------------------------------------
+Thu Jan 24 20:29:07 CET 2013 - sbrabec@suse.cz
+
+- Updated strings from the latest upstream translations and for the
+  latest Factory snapshot.
+- Supplementary scripts improvements:
+  * Validate all imported po files before merge.
+  * Try harder to make plural forms consistent.
+  * Collect full translations of all projects.
+  * Create a domain map.
+  * Added a script that makes possible to prepare translations for
+    post-install translation-update package.
+  * Support for pending translation fixes.
+  * "static" method for update from attached tarball
+    (needed if upstream disappeared)
+
+-------------------------------------------------------------------
+Mon Aug  6 19:58:07 CEST 2012 - sbrabec@suse.cz
+
+- Updated strings from the latest upstream translations and for the
+  latest 12.2 snapshot.
+- Reflect migration of LCN from Berlios to svn.opensuse.org.
+- Supplementary scripts fix:
+  * Fixed name of archive.
+  * Integrate strings from SLE11 SP2.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:57:09 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Tue Oct 18 19:07:52 CEST 2011 - sbrabec@suse.cz
+
+- Supplementary scripts improvement:
+  * Fixed partial mandatory update.
+
+-------------------------------------------------------------------
+Fri Oct 14 01:58:46 CEST 2011 - sbrabec@suse.cz
+
+- Updated strings from the latest upstream translations and for the
+  latest Factory.
+- Supplementary scripts improvement:
+  * Keep pot file in place, so "true" can be used as a pot generator.
+
+-------------------------------------------------------------------
+Wed Sep  7 14:44:21 CEST 2011 - sbrabec@suse.cz
+
+- Supplementary scripts improvements:
+  * Support for pot-only run (COLLECT_UPSTREAM=false).
+  * Implemented check for possible strings in patches.
+  * Support for import of strings from different gettext domain.
+  * Allow to skip time consuming update by setting SKIP_TUU=true.
+
+-------------------------------------------------------------------
+Thu Jul  7 20:57:26 CEST 2011 - sbrabec@suse.cz
+
+- Don't process .reduced.po files from GTP (bnc#703739).
+
+-------------------------------------------------------------------
+Fri Jun 24 19:03:18 CEST 2011 - sbrabec@suse.cz
+
+- Updated strings from the latest upstream translations and for the
+  latest Factory.
+- COPYING file update.
+
+-------------------------------------------------------------------
+Tue May 24 13:52:12 UTC 2011 - coolo@novell.com
+
+- fake %find_lang as if the translations are provided by the packages
+
+-------------------------------------------------------------------
+Wed Feb 23 17:11:45 CET 2011 - sbrabec@suse.cz
+
+- Added translations for more packages (bnc#673924).
+- Supplementary scripts improvements:
+  * Improved support for partial translations update.
+  * Added support for parallel processing of po files.
+  * Do not generate empty new translations.
+  * Use gettext-tools instead of sed hacks.
+
+-------------------------------------------------------------------
+Mon Feb 14 15:12:54 CET 2011 - sbrabec@suse.cz
+
+- Updated strings from the latest upstream translations and for the
+  latest Factory.
+
+-------------------------------------------------------------------
+Tue Dec 14 18:10:56 CET 2010 - sbrabec@suse.cz
+
+- Validate locales and remove invalid ones (bnc#658999).
+
+-------------------------------------------------------------------
+Mon Jun 14 20:22:26 CEST 2010 - sbrabec@suse.cz
+
+- Fixes of build failures:
+  * Edit configure* only if po/LINGUAS does not exist.
+  * Support LINGUAS list in a single line.
+- Added the latest upstream and LCN strings.
+
+-------------------------------------------------------------------
+Fri Jun  4 12:47:12 CEST 2010 - sbrabec@suse.cz
+
+- Added the latest upstream and LCN strings.
+- Ported fixes from SLE11-SP1:
+  * Added support for custom pot generator.
+  * Implemented suppport for LCN as a translation source.
+  * Implemented mandatory sources with absolute precedence.
+  * Symlinks to the new name: translation-update-tool.
+  * Updated translation sources.
+
+-------------------------------------------------------------------
+Tue Feb  2 18:35:28 CET 2010 - sbrabec@suse.cz
+
+- Use dummy tarball before version freeze.
+- Migration of servers from Novell Forge to Berlios.
+- Supports newer version of cgit.
+- Support for multiple osc sources.
+- Support for extracting new and changed strings for review.
+- Never overwrite strings by po file with older time stamp.
+
+-------------------------------------------------------------------
+Tue Oct 27 16:21:20 CET 2009 - sbrabec@suse.cz
+
+- Added several more packages.
+- Fixed errors if one package has updates on more servers.
+- Do not interfere with gnome-patch-translation (bnc#517629#c17).
+- Added translation-update-upstream-embedded script (src rpm only).
+
+-------------------------------------------------------------------
+Fri Oct  9 17:01:19 CEST 2009 - sbrabec@suse.cz
+
+- Updated for the latest Factory and collected fresh translations.
+- Fixed bugs in merge that caused lost strings (bnc#517629#c12).
+- Implemented git, git web and GNOME Translation Project support.
+- GNOME SVN is obsolete, migrate to GNOME Translation Project.
+- Fixed for new RPM.
+- Support for multiple domains in a single package.
+- Generate non-volatile POT time stamps (bnc#489139).
+- Ignore update if it is older than the package.
+
+-------------------------------------------------------------------
+Thu Mar 26 14:34:21 CET 2009 - sbrabec@suse.cz
+
+- Reset mostly outdated translations until next freeze.
+
+-------------------------------------------------------------------
+Wed Feb 11 15:32:59 CET 2009 - sbrabec@suse.cz
+
+- Modularization of package lists.
+- Make possible update of a single translation.
+- Added pidgin.
+
+-------------------------------------------------------------------
+Fri Feb  6 16:32:55 CET 2009 - sbrabec@suse.cz
+
+- New SuSE package (FATE#301344).
+

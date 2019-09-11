@@ -1,0 +1,52 @@
+Index: src/fsvs.c
+===================================================================
+--- src/fsvs.c.orig
++++ src/fsvs.c
+@@ -640,8 +640,7 @@ const char* Version(FILE *output)
+ 			" version " FSVS_VERSION "\n");
+ 	if (opt__is_verbose()>0)
+ 	{
+-		fprintf(output, "compiled on " __DATE__ " " __TIME__ 
+-				", with options:\n\t"
++		fprintf(output, "compiled on with options:\n\t"
+ #ifdef HAVE_VALGRIND
+ 				STRINGIFY(HAVE_VALGRIND)
+ #endif
+Index: src/Makefile.in
+===================================================================
+--- src/Makefile.in.orig
++++ src/Makefile.in
+@@ -16,7 +16,7 @@ HEADREV	:= "$Revision: 2478 $"
+ VERSION	= $(shell  perl -e '($$r) = (q( $(HEADREV) ) =~ m:(\d+):); $$t= q( $(HEADURL) ) =~ m:/tags/([^/]+): ? $$1 : "trunk"; print "$$t:$$r\n";' )
+ 
+ CFLAGS	:= @CFLAGS@
+-CFLAGS	+= -Wall -funsigned-char -Os -DFSVS_VERSION='"$(VERSION)"'
++CFLAGS	+= -Wall -funsigned-char -DFSVS_VERSION='"$(VERSION)"'
+ LDFLAGS	:= @LDFLAGS@
+ FSVS_LDFLAGS = $(LDFLAGS) -lsvn_subr-1 -lsvn_delta-1 -lsvn_ra-1 -lpcre -lgdbm -ldl
+ EXTRALIBS	:= @EXTRALIBS@
+@@ -146,13 +146,13 @@ docs: $(MANDEST)/fsvs-howto-backup.5 $(M
+ ################################ Rules ######################################
+ %.o:	%.c
+ 	@echo "     CC $<"
+-	@$(CC) $(CFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) -c -o $@ $<
+ 
+ # if the Makefile has changed, the output will (at least sometimes)
+ # change, too.
+ $(DEST): $(C_FILES:%.c=%.o)
+ 	@echo "     Link $@"
+-	@$(CC) $(FSVS_LDFLAGS) $(LDLIBS) $(LIBS) $(EXTRALIBS) -o $@ $^
++	$(CC) -Wl,--unresolved-symbols=report-all -Wl,-z,noexecstack -o $@ $^  $(FSVS_LDFLAGS) $(LDLIBS) $(LIBS) $(EXTRALIBS)
+ ifeq (@ENABLE_RELEASE@, 1)
+ 	-strip $@
+ endif
+@@ -169,7 +169,7 @@ endif
+ deps:	$(D_FILES)
+ .%.d:	%.c
+ 	@echo "     deps for $<"
+-	@$(CC) $(CFLAGS) -MM $< | perl -pe 's#\bdoc.g-c\b##' > $@
++	$(CC) $(CFLAGS) -MM $< | perl -pe 's#\bdoc.g-c\b##' > $@
+ include $(D_FILES)
+ 
+ tools/fsvs-chrooter: tools/fsvs-chrooter.c

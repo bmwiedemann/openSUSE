@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Dec  2 13:19:06 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Aug 11 15:49:05 CEST 2008 - tiwai@suse.de
+
+- initial version: 1.0.0 (FATE#303779)
+- fix some bugs in buffer size handling
+

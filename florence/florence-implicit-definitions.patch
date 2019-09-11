@@ -1,0 +1,12 @@
+Index: florence-0.6.3/src/controller.c
+===================================================================
+--- florence-0.6.3.orig/src/controller.c
++++ florence-0.6.3/src/controller.c
+@@ -46,7 +46,6 @@ void controller_icon_expose (GtkWidget *
+ 	cairo_paint(context);
+ 	cairo_set_operator(context, CAIRO_OPERATOR_SOURCE);
+ 	style_render_svg(context, handle, w, h, FALSE, NULL);
+-	wait();
+ 	END_FUNC
+ }
+ 

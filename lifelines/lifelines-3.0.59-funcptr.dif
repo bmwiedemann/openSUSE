@@ -1,0 +1,14 @@
+--- src/hdrs/standard.h
++++ src/hdrs/standard.h	2007-06-21 17:35:28.384885093 +0200
+@@ -111,7 +111,11 @@ typedef unsigned char uchar;
+ #endif
+ 
+ /* INTEGER AND FLOATING POINT TYPES */
++#if __LP64__
++#define INT	int64_t
++#else
+ #define INT	int32_t
++#endif
+ #define SHORT	int16_t
+ #define FLOAT	double
+ 

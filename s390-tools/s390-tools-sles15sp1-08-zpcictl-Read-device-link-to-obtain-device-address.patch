@@ -1,0 +1,77 @@
+Subject: zpcictl: Read device link to obtain device address
+From: Jan Hoeppner <jan.hoeppner@de.ibm.com>
+
+Summary:     zpcictl: Add tool to manage PCI devices
+Description: Use the zpcictl tool to manage PCI devices on the IBM Z
+             platform.  Initial functions include generating firmware
+             error logs, resetting PCI devices, and preparing a device
+             for further repair actions.
+Upstream-ID: e2a8d85916fb77d2a9b41253446973cd97107c42
+Problem-ID:  RAS1703
+
+Upstream-Description:
+
+             zpcictl: Read device link to obtain device address
+
+             The address sysfs attribute might not be present on some older kernel
+             levels. Read the device link instead using readlink() to obtain the
+             address.
+
+             Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Jan Hoeppner <jan.hoeppner@de.ibm.com>
+---
+ zpcictl/zpcictl.c |   27 ++++++++++++++++++---------
+ 1 file changed, 18 insertions(+), 9 deletions(-)
+
+--- a/zpcictl/zpcictl.c
++++ b/zpcictl/zpcictl.c
+@@ -172,13 +172,16 @@ static void sysfs_write_data(struct zpci
+ 	free(path);
+ }
+ 
++/* lstat() doesn't work for sysfs files, so we have to work with a fixed size */
++#define READLINK_SIZE	256
++
+ static void sysfs_get_slot_addr(const char *dev, char *slot)
+ {
++	char device[READLINK_SIZE], *result;
+ 	unsigned int major, minor;
+ 	struct stat dev_stat;
+-	char addr[13];
++	ssize_t len;
+ 	char *path;
+-	FILE *fp;
+ 
+ 	if (stat(dev, &dev_stat) != 0) {
+ 		errx(EXIT_FAILURE, "Could not get stat information for %s: %s",
+@@ -187,15 +190,21 @@ static void sysfs_get_slot_addr(const ch
+ 	major = major(dev_stat.st_rdev);
+ 	minor = minor(dev_stat.st_rdev);
+ 
+-	path = util_path_sysfs("dev/char/%u:%u/address", major, minor);
+-	fp = fopen(path, "r");
+-	if (!fp)
+-		fopen_err(path);
+-	fscanf(fp, "%s", addr);
+-	fclose(fp);
++	path = util_path_sysfs("dev/char/%u:%u/device", major, minor);
++	len = readlink(path, device, READLINK_SIZE - 1);
+ 	free(path);
++	if (len != -1)
++		device[len] = '\0';
++	else
++		errx(EXIT_FAILURE, "Could not read device link for %s", dev);
++
++	result = strrchr(device, '/');
++	if (result)
++		result++;
++	else
++		result = device;
+ 
+-	strcpy(slot, addr);
++	strcpy(slot, result);
+ }
+ 
+ static void get_device_node(struct zpci_device *pdev)

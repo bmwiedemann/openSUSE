@@ -1,0 +1,26 @@
+pkgname=kopano
+pkgver=8.7.0.110
+pkgrel=0
+pkgdesc='Kopano'
+arch=('x86_64')
+url='https://kopano.com/'
+license=('AGPL3')
+makedepends=('bin' 'libxslt' 'libxml2' 'libgcrypt' 'libgpg-error' 'libidn' 'tar' 'libical' 'automake' 'autoconf' 'gperftools' 'gsoap' 'libatomic-ops' 'libunwind' 'm4' 'php' 'openldap-client' 'swig' 'mysql' 'pam' 'krb5' 'icu' 'python' 'libvmime' 'linuxdoc-tools' 'gnutls' 'libgcrypt' 'clucene' 'gettext-tools')
+
+source=("${pkgname}-${pkgver}.tar.gz")
+sha1sums=('SKIP')
+
+build() {
+	cd $srcdir/${pkgname}-${pkgver}
+	autoreconf -fi;
+	#export CFLAGS="%optflags"
+	#export CXXFLAGS="$CFLAGS"
+	./configure --prefix=/usr
+	make || cp -f /usr/bin/libtool libtool
+	make
+}
+
+package() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	make DESTDIR="${pkgdir}" install
+}

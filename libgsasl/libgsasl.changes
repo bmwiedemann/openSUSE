@@ -1,0 +1,200 @@
+-------------------------------------------------------------------
+Mon Apr  4 14:22:22 CEST 2016 - kukuk@suse.de
+
+- Remove unused buildrequires for libgssglue-devel
+
+-------------------------------------------------------------------
+Tue Oct 27 14:44:53 UTC 2015 - meissner@suse.com
+
+- run "make check"
+
+-------------------------------------------------------------------
+Sun Feb  8 23:38:09 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  * SAML20 support following RFC 6595.
+  * OPENID20 support following RFC 6616.
+  * Various cleanups, portability and other bug fixes.
+    See the NEWS entries during the 1.7.x branch for details
+- Use %lang_package macro instead of manually defined -lang package
+- Remove libgsasl-stdio.h.patch; fixed
+- Remove fix-arm.patch; fixed
+- Use download Url as source
+    
+-------------------------------------------------------------------
+Thu May  2 04:59:03 UTC 2013 - jengelh@inai.de
+
+- "Recommends" is not understood by RHEL6ish
+
+-------------------------------------------------------------------
+Thu Mar 21 08:45:52 UTC 2013 - dmueller@suse.com
+
+- fix build on aarch64 by applying fix-arm.patch 
+
+-------------------------------------------------------------------
+Mon Feb 11 13:54:19 UTC 2013 - aj@suse.com
+
+- Change lang package Requires to Recommends since it is not
+  mandatory at runtime.
+
+-------------------------------------------------------------------
+Thu Aug 16 21:34:34 UTC 2012 - agraf@suse.com
+
+- fix-arm.patch: Add hack to fix compiling on ARM
+
+-------------------------------------------------------------------
+Mon Aug 13 08:54:08 UTC 2012 - cfarrell@suse.com
+
+- license update: LGPL-2.1+ and GPL-3.0+
+  contains numerous GPL-3.0+ licensed test files
+
+-------------------------------------------------------------------
+Sat Aug 11 13:44:34 UTC 2012 - jengelh@inai.de
+
+- Have package compile on RHEL6ish.
+
+-------------------------------------------------------------------
+Fri Jul 27 08:14:09 UTC 2012 - aj@suse.de
+
+- Fix build with missing gets declaration (glibc 2.16)
+
+-------------------------------------------------------------------
+Sun Mar 25 00:49:09 UTC 2012 - jengelh@medozas.de
+
+- Enable building against libntlm (now that it exists in factory)
+
+-------------------------------------------------------------------
+Sun Mar 25 00:14:56 UTC 2012 - jengelh@medozas.de
+
+- Parallel build with %_smp_mflags; strip redundant spec sections
+
+-------------------------------------------------------------------
+Fri Jul  8 01:31:06 CEST 2011 - vuntz@opensuse.org
+
+- Stop using source service to download the tarball, as Factory
+  will move away from this.
+
+-------------------------------------------------------------------
+Fri May 27 17:40:04 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.6.1:
+  + Add a Libs.private to libgsasl.pc.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 29 18:33:05 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 1.6.0:
+  + SCRAM: General fixes and support for SCRAM-SHA-1-PLUS with
+    channel bindings.
+  + GS2-KRB5: New mechanism GS2 with support for Kerberos V5.
+  + GSSAPI/GS2-KRB5: Support for MIT Kerberos for Windows GSS-API
+    library.
+  + DIGEST-MD5: The server code now returns GSASL_OK after the
+    final token.
+  + Added property for tls-unique channel binding.
+  + No longer require the same or newer libgcrypt it was built
+    with.
+  + Several doc improvements.
+  + Update gnulib files.
+- Use source services: download_url, recompress and set_Version.
+
+-------------------------------------------------------------------
+Thu Mar 25 17:32:27 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.4.4:
+  + SCRAM: Fix build error on platforms without strnlen.
+- Changes from version 1.4.3:
+  + SCRAM: Don't read out of bounds when parsing tokens.
+
+-------------------------------------------------------------------
+Tue Mar 16 15:50:19 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.4.2:
+  + SCRAM: Encode and decode username/authzid properly. Before any
+    username/authzid that contained '=' or ',' would not work.
+  + Fix typo in error message for
+    GSASL_GSSAPI_ACCEPT_SEC_CONTEXT_ERROR.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 17 11:57:31 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.4.1:
+  + gsasl: Improve application data throughput
+  + Improve MinGW builds
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec  2 01:09:19 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.4.0:
+  + Fix Visual Studio project files to work with SCRAM.
+  + Properly increment libtool version to reflect newly added ABIs.
+    This was accidentally forgotten in the last release.
+  + Export gsasl_sha1 and gsasl_hmac_sha1 in linker version script.
+    This was accidentally forgotten in the last release.
+  + Fix crash in SCRAM-SHA-1 client when the application provides a
+    value for GSASL_SCRAM_SALTED_PASSWORD.
+  + Fix detection of libgcrypt during builds.
+  + Updated translations.
++ Add libgcrypt-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Nov 13 17:38:06 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.3:
+  + libgsasl: Implement SCRAM-SHA-1.
+    New properties are GSASL_SCRAM_ITER, GSASL_SCRAM_SALT,
+    andGSASL_SCRAM_SALTED_PASSWORD.
+  + libgsasl: Add helper APIs for SHA-1 and HMAC-SHA-1.
+    New functions are gsasl_sha1 and gsasl_hmac_sha1.
+
+-------------------------------------------------------------------
+Sun Jun 14 04:07:09 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.2:
+  + The library needs at most around 250 bytes of stack frame size.
+    This is useful for embedded platforms with limited amount of
+    RAM.
+  + Obsolete gsasl_md5pwd_get_password rewritten to use modern API.
+  + Include a copy of the GPLv3 license in the archive. Some parts,
+    such as the gnulib self-tests, are licensed under the GPLv3.
+    The library remains licensed under LGPLv2.1+ though.
+- Package COPYING.LIB instead of COPYING: there's no GPLv3 file in
+  the built package (the GPLv3 files are only in the tarball).
+
+-------------------------------------------------------------------
+Wed Jun 10 17:21:15 CEST 2009 - dmueller@suse.de
+
+- Add Requires for lang package to libgsasl7.
+
+-------------------------------------------------------------------
+Thu May  7 03:43:32 CEST 2009 - vuntz@novell.com
+
+- Review package.
+- Update to version 1.1:
+  + DIGEST-MD5 client: Add support for client integrity layer.
+  + DIGEST-MD5: Decoding of integrity protected sessions now works
+    better.
+  + libgsasl: Add new property GSASL_QOPS.
+  + libgsasl: Add new property GSASL_QOP.
+  + DIGEST-MD5 client: Now queries application for QOP value
+  + DIGEST-MD5 server: Now queries application for QOP values.
+  + DIGEST-MD5 server: No longer advertises support for integrity
+    by default.
+  + libgsasl: Added C pre-processor expressions for version
+    handling.
+  + libgsasl: Use a LD version script on platforms where it is
+    supported.
+  + libgsasl: Compiled with -fvisibility=hidden by default if
+    supported.
+- Remove unneeded libxml2-devel BuildRequires.
+- Add a note about libntlm that doesn't exist in openSUSE.
+- Do not make libgsasl7 Provide/Obsolete libgsasl.
+
+-------------------------------------------------------------------
+Mon Mar 16 09:16:40 CET 2009 - novell@mirell.de
+
+- initial SUSE package 
+

@@ -1,0 +1,22 @@
+Index: src/collectd.conf.in
+===================================================================
+--- src/collectd.conf.in.orig
++++ src/collectd.conf.in
+@@ -272,7 +272,7 @@
+ #<Plugin apache>
+ #  <Instance "local">
+ #    URL "http://localhost/status?auto"
+-#    User "www-user"
++#    User "www"
+ #    Password "secret"
+ #    CACert "/etc/ssl/ca.crt"
+ #  </Instance>
+@@ -291,7 +291,7 @@
+ 
+ #<Plugin ascent>
+ #	URL "http://localhost/ascent/status/"
+-#	User "www-user"
++#	User "www"
+ #	Password "secret"
+ #	CACert "/etc/ssl/ca.crt"
+ #</Plugin>

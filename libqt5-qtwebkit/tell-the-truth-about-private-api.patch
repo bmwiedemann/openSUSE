@@ -1,0 +1,28 @@
+From: Fabian Vogt <fvogt@suse.com>
+Subject: Tell the same truth as QtCore about the private API
+
+It may change with each new release, so also include the minor
+and patch versions in the symbol version.
+
+Index: qtwebkit-5.212.0-alpha2/Tools/qt/generate-version-script.pl
+===================================================================
+--- qtwebkit-5.212.0-alpha2.orig/Tools/qt/generate-version-script.pl
++++ qtwebkit-5.212.0-alpha2/Tools/qt/generate-version-script.pl
+@@ -32,14 +32,15 @@ my $qtNamespace = shift @ARGV;
+ 
+ die "Usage: $0 <Qt version> [Qt namespace]\n" unless $qtVer;
+ 
+-$qtVer =~ /^(\d+)\.(\d+)\.\d+$/ or die "$qtVer is not valid Qt version\n";
++$qtVer =~ /^(\d+)\.(\d+)\.(\d+)$/ or die "$qtVer is not valid Qt version\n";
+ my $major = $1;
+ my $minor = $2;
++my $patch = $3;
+ 
+ # Next code tries to mirror logic of mkspecs/features/qt_module.prf
+ 
+ say
+-"Qt_${major}_PRIVATE_API {
++"Qt_${major}.${minor}.${patch}_PRIVATE_API {
+     qt_private_api_tag*;
+ };";
+ 

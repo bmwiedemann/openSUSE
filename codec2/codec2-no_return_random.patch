@@ -1,0 +1,12 @@
+Index: codec2-0.8.1/src/gp_interleaver.c
+===================================================================
+--- codec2-0.8.1.orig/src/gp_interleaver.c
++++ codec2-0.8.1/src/gp_interleaver.c
+@@ -74,6 +74,7 @@ int choose_interleaver_b(int Nbits)
+     /* if we get it means a Nbits we dont have in our table so choke */
+     
+     assert(0);
++    return(0);
+ }
+ 
+ 

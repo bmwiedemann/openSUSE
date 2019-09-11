@@ -1,0 +1,276 @@
+-------------------------------------------------------------------
+Fri Jul 12 17:22:49 UTC 2019 - Kasimir _ <kasimir_@outlook.de>
+
+- Add patch to support for armv6
+  * perftest-armv6.patch
+
+-------------------------------------------------------------------
+Fri Apr 26 14:43:40 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add Fixed-ToS-Type-of-Service-variable-size-issue.patch to fix
+  issue when setting the ToS whith any test. (bsc#1133533)
+
+-------------------------------------------------------------------
+Thu Mar 21 15:58:52 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Backport patches for Intel and Broadcom HW support
+  - perftest-add-Broadcom-s-netxtreme-pci-ids.patch (bsc#1125651)
+  - Add-Intel-devices-to-the-perftest-device-list.patch
+
+-------------------------------------------------------------------
+Mon Oct 15 08:05:47 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to version 4.4-0.4 (fate#326013)
+  * No release notes available
+- Drop perftest-license.patch as it was fixed upstream
+
+-------------------------------------------------------------------
+Mon Sep 11 12:58:00 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Move call to autogen.sh to the %build section
+
+-------------------------------------------------------------------
+Thu Sep  7 06:06:05 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update URL of perftest.
+
+-------------------------------------------------------------------
+Fri Aug  4 12:01:12 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to version 4.1
+  * Avoid configuring the MRs with 1's
+  * Warning messages clean-up
+  * Modify the version to support upgrade of RH7.4
+  * Added run_perftest_multi_devices script
+  * Modify perftest version control logic
+  * Add new FS rate test
+  * Fix ODP compilation issue
+  * Add support for selecting comp vector when using events
+  * Remove redundant ibv_query_gid
+  * Fix latency report in iteration mode
+  * Fix Max and percentile results
+  * Add fflush to results print
+- Remove perftest-armv7.patch, perftest-s390.patch and
+  perftest-fix_segfault_at_end_of_test.patch as they have
+  been merged upstream.
+- Add perftest-license.patch to fix header license
+
+-------------------------------------------------------------------
+Wed May 17 15:49:56 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add support for armv7
+
+-------------------------------------------------------------------
+Wed May 17 09:01:24 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Force autogen.sh to run in order to avoid autotools
+  version conflicts.
+- Drop rdma-core version requirements
+
+-------------------------------------------------------------------
+Mon Apr 10 08:47:25 UTC 2017 - jengelh@inai.de
+
+- Drop redundant %clean and norootforbuild and feed through
+  format_spec_file once.
+
+-------------------------------------------------------------------
+Thu Apr  6 07:39:15 CEST 2017 - pth@suse.de
+
+- Remove perftest-use_optflags.patch as it isn't needed anymore.
+
+-------------------------------------------------------------------
+Wed Apr  5 11:40:38 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Upgrade to perftest 3.4 from linux-rdma upstream
+
+-------------------------------------------------------------------
+Wed Apr  5 09:11:10 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add aarch64 support
+
+-------------------------------------------------------------------
+Wed Mar 29 08:17:14 CEST 2017 - pth@suse.de
+
+- Make dependencies on libs now coming from rdma-core versioned.
+
+-------------------------------------------------------------------
+Sun Oct 11 13:33:39 UTC 2015 - dmueller@suse.com
+
+- add perftest-aarch64.patch (fate#318444): Fix build
+  for aarch64
+
+-------------------------------------------------------------------
+Mon Sep 14 15:27:44 CEST 2015 - pth@suse.de
+
+- Add patch from GIT that fixes the segfault when running
+  'ib_send_bw -z' (bsc#945017).
+
+-------------------------------------------------------------------
+Mon Oct 20 13:25:02 CEST 2014 - pth@suse.de
+
+- Go back to perftest version from RC3
+
+-------------------------------------------------------------------
+Tue Sep  9 16:39:47 CEST 2014 - pth@suse.de
+
+- License is BSD-2-Clause or GPL-2.0.
+- Don't use full source URL.
+
+-------------------------------------------------------------------
+Tue Jun  3 11:24:34 CEST 2014 - pth@suse.de
+
+- Update to OFED 3.12 final.
+
+-------------------------------------------------------------------
+Wed May 21 12:07:11 CEST 2014 - pth@suse.de
+
+- Update to 2.2-0.17.g5eba807 from OFED 3.12 RC3. No log of changes
+  included.
+
+-------------------------------------------------------------------
+Fri May 16 11:59:21 CEST 2014 - pth@suse.de
+
+- Redo perftest-s390.patch to just mark code __s390x__ || __s390__,
+  i.e. applies to both 64 and 31 bit.
+
+-------------------------------------------------------------------
+Thu May 15 19:43:48 CEST 2014 - pth@suse.de
+
+- Remove perftest-s390.patch as the patch has been applied
+  upstream.
+
+-------------------------------------------------------------------
+Tue May 13 18:29:15 CEST 2014 - pth@suse.de
+
+- Update to 2.2-0.16.g8406133 from OFED 3.12 rc2. No change log
+  present.
+- Refresh perftest-use_optflags.patch to match source.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:12:57 UTC 2014 - stefan.fent@suse.com
+
+- merge the changes from ro (2014-03-20)
+  in perftest-s390.patch and the changelog to the current version 
+  in Devel:OFED:3.12 
+
+-------------------------------------------------------------------
+Fri Apr  4 15:28:28 CEST 2014 - pth@suse.de
+
+- Add two binaries to file list.
+
+-------------------------------------------------------------------
+Thu Mar 20 00:23:36 CET 2014 - ro@suse.de
+
+- fix s390 patch to accept s390 additional to s390x
+
+-------------------------------------------------------------------
+Wed Feb 26 16:19:31 CET 2014 - pth@suse.de
+
+- Update to 2.0-0.80.g54c73c6 from the latest 3.12-daily.
+  No Changelog present.
+- Add perftest-use_optflags.patch so that compilation uses
+  RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Thu Feb 13 19:24:24 CET 2014 - pth@suse.de
+
+- Update to 2.0-0.76.gbf9a463 for fate#315488, no changelog present.
+
+-------------------------------------------------------------------
+Mon Jan 20 19:47:04 CET 2014 - pth@suse.de
+
+- Update to 2.0-0.63.g5bb5fe6 from OFED 3.12.
+- Make program list explicit.
+- Add perftest-s390.patch for s390 support.
+- libibumad-devel is now also required.
+- Use complete source URL.
+
+-------------------------------------------------------------------
+Wed Jan 15 14:08:01 CET 2014 - pth@suse.de
+
+- Use spdx.org format for license specification.
+
+-------------------------------------------------------------------
+Mon Sep 24 16:38:06 CEST 2012 - pth@suse.de
+
+- Update to the perftest version form OFED 1.5.4.2
+- Simplify %%install section.
+
+-------------------------------------------------------------------
+Tue May  8 18:35:05 CEST 2012 - pth@suse.de
+
+- BuildRequire automake, autoconf and libtool.
+
+-------------------------------------------------------------------
+Wed Oct 26 17:58:34 CEST 2011 - pth@suse.de
+
+- Update to the perftest version from OFED 1.5.4 (bnc#710754).
+
+-------------------------------------------------------------------
+Fri Oct 29 17:37:39 UTC 2010 - stefan.fent@novell.com
+
+- correct requires to libibumad (revert 1st part of last change) 
+
+-------------------------------------------------------------------
+Thu Oct 28 18:36:28 UTC 2010 - jjolly@novell.com
+
+- Added dependency to libibumad3
+- Removed ib_ prefix from rdma_lat and rdma_bw
+
+-------------------------------------------------------------------
+Mon Oct 25 14:16:08 UTC 2010 - jjolly@novell.com
+
+- Update to v1.3.0 from OFED 1.4.2
+
+-------------------------------------------------------------------
+Fri Dec 12 05:42:31 CET 2008 - jjolly@suse.de
+
+- Updated to package from OFED 1.4 GA
+  - Added option not to fail on cpuFreq module
+
+-------------------------------------------------------------------
+Tue Oct 28 15:02:48 CET 2008 - jjolly@suse.de
+
+- Updated to version from OFED 1.4 rc3
+- Removed execute right from README and COPYING
+
+-------------------------------------------------------------------
+Thu Sep 25 11:06:22 CEST 2008 - jjolly@suse.de
+
+- Excluded s390 and s390x as they do not have a get_cycles api
+
+-------------------------------------------------------------------
+Mon Mar 03 00:00:00 CET 2008 - - jjolly@suse.de
+
+- Updated to package from the OFED 1.3 GA release
+
+-------------------------------------------------------------------
+Mon Aug 20 17:41:23 CEST 2007 - hvogel@suse.de
+
+- Update 2.6.20 patch to the official one
+
+-------------------------------------------------------------------
+Tue Aug  7 12:24:34 CEST 2007 - hvogel@suse.de
+
+- Update to version from OFED 1.2c
+
+-------------------------------------------------------------------
+Mon Jul 09 00:00:00 CET 2007 - - hvogel@suse.de
+
+- Use correct version
+
+-------------------------------------------------------------------
+Wed Jul 04 00:00:00 CET 2007 - - hvogel@suse.de
+
+- Add GPL COPYING file [#289509]
+
+-------------------------------------------------------------------
+Mon Jul 02 00:00:00 CET 2007 - - hvogel@suse.de
+
+- Update to the OFED 1.2 version
+
+-------------------------------------------------------------------
+Fri Jun 22 00:00:00 CET 2007 - - hvogel@suse.de
+
+- Initial Package, Version 1.1
+

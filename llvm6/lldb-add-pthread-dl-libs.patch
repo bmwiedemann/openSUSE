@@ -1,0 +1,20 @@
+Index: lldb-5.0.0.src/cmake/modules/LLDBConfig.cmake
+===================================================================
+--- lldb-5.0.0.src.orig/cmake/modules/LLDBConfig.cmake
++++ lldb-5.0.0.src/cmake/modules/LLDBConfig.cmake
+@@ -336,13 +336,9 @@ else()
+ 
+ endif()
+ 
+-if (HAVE_LIBPTHREAD)
+-  list(APPEND system_libs pthread)
+-endif(HAVE_LIBPTHREAD)
++list(APPEND system_libs pthread)
+ 
+-if (HAVE_LIBDL)
+-  list(APPEND system_libs ${CMAKE_DL_LIBS})
+-endif()
++list(APPEND system_libs ${CMAKE_DL_LIBS})
+ 
+ # Figure out if lldb could use lldb-server.  If so, then we'll
+ # ensure we build lldb-server when an lldb target is being built.

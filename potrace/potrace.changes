@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Wed Dec 13 09:48:27 UTC 2017 - dimstar@opensuse.org
+
+- Do not use clang to build: even though it is the preferred
+  compiler, it moves potrace behind an 8h-long build of llvm/clang,
+  which in turn holds up building of the entire Distribion, as
+  potrace is used by texlive which in turn provides many modules to
+  be used for documentation building across the board.
+
+-------------------------------------------------------------------
+Mon Aug 28 10:06:44 UTC 2017 - meissner@suse.com
+
+- clang currently does not support -fstack-clash-protector.
+
+-------------------------------------------------------------------
+Mon Aug  7 17:28:41 CEST 2017 - sbrabec@suse.com
+
+- Update to version 1.15:
+  * Fix potential buffer overflows and arithmetic overflows
+    (bsc#1051634, CVE-2017-12067).
+  * Fix bug triggered by very large bitmaps.
+  * Other bugfixes.
+- Build position independent binaries.
+- Process with spec-cleaner.
+- Work around failure of -fstack-protector on s390x.
+
+-------------------------------------------------------------------
+Tue Feb 28 14:18:04 CET 2017 - sbrabec@suse.com
+
+- Update to version 1.14:
+  * Bugs triggered by malformed BMP files have been fixed,
+    including CVE-2016-8685 (bsc#1005026) and CVE-2016-8686.
+  * Error reporting has been improved.
+  * The image size is now truncated when the bitmap data ends
+    prematurely.
+  * It is now possible to use negative dy in bitmap data.
+- Upstream prefers clang to compile potrace. Use clang if possible.
+
+-------------------------------------------------------------------
+Fri Oct 23 14:26:39 CEST 2015 - sbrabec@suse.com
+
+- Update to version 1.13:
+  * Some critical bugs in the processing of BMP files were fixed
+    (bsc#951760).
+  * Portability was improved for C99 and for MSVC++.
+
+-------------------------------------------------------------------
+Thu Apr  2 19:41:08 CEST 2015 - sbrabec@suse.cz
+
+- Update to version 1.12:
+  * fix memory overflow bug triggered by very large bitmaps
+    (bsc#924904, CVE-2013-7437)
+  * minor fixes
+
+-------------------------------------------------------------------
+Wed Feb 20 16:34:36 CET 2013 - sbrabec@suse.cz
+
+- Update to version 1.11:
+  * A GeoJSON backend was added.
+  * Support for bitfields in the BMP format was added.
+  * A minor change was made to the behavior of the alphamax
+    parameter; a value of 0 now gives a true polygon. 
+- Build shared libpotrace.
+
+-------------------------------------------------------------------
+Sun Nov 27 06:45:03 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Aug 20 16:38:22 UTC 2011 - mrdocs@opensuse.org
+- update to 1.10
+  + added --tight option
+  + backends: simplified dimension calculations
+  + eps backend: prevent integer overflow in bounding box.
+  + disallow resolution of 0 dpi.
+  + man page: added BACKEND TYPES section
+  + fixed default scaling at 72dpi for 	variable-sized backends
+  + new gimppath backend produces SVG output
+  + suitable for current versions of Gimp.
+  + added a --flat option for the SVG backend.
+  + test suite: renamed *.out files to prevent make's
+  + built-in implicit rules from accidentally overwriting them.
+  + added DXF backend. Thanks to Jonas Benedett Dorr for testing.
+  + use high resolution bounding box in EPS, PDF, and SVG backends
+  + autoconf: CADD can now be given at compile time 
+
+-------------------------------------------------------------------
+Mon Mar 21 16:48:05 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+
+-------------------------------------------------------------------
+Tue Jan 11 23:16:21 UTC 2011 - mrdocs@opensuse.org
+
+-Update to 1.9
+  +the XFig and EPS backends were improved, and a fixed pagesize PDF backend was added;
+  + support for BMP version 4 and version 5 files, as well as top-down BMP files, was added;
+  + you'll see minor speed improvements to Potrace and major speed improvements to mkbitmap;
+  + a Gaussian blur option was added to mkbitmap;
+  + a change in the build sustem: libtool is now used to build and optionally install the Potrace library;
+  + an optional simplified progress bar was added for dumb terminals;
+  + this release also contains some portability improvements, cross-compilation improvements, and minor bug fixes.
+
+- run spec cleaner on the spec file and remove redundant changes from spec
+- drop xfig-patch as it is upstream now
+
+
+-------------------------------------------------------------------
+Thu Jul 26 18:46:12 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 1.8:
+  * minor bugfixes and portability improvements
+  * rotation is now implemented in the PDF backend
+
+-------------------------------------------------------------------
+Thu Mar 29 17:12:49 CEST 2007 - rguenther@suse.de
+
+- add zlib-devel BuildRequires. 
+
+-------------------------------------------------------------------
+Wed Nov 15 15:27:29 CET 2006 - jw@suse.de
+
+- replaced wrong_allocation.patch by official 
+  io.patch -- more bugs fixed.
+
+-------------------------------------------------------------------
+Wed Jul 19 11:19:25 CEST 2006 - pnemec@suse.cz
+
+- fixed wrong memory allocation in potracelib.c
+  (added potrace-wrong_allocation.patch)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:32 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Mar  9 14:20:18 CET 2005 - nadvornik@suse.cz
+
+- Updated to version 1.7:
+  * A bug in the progress bar code, which caused arithmetic 
+    exceptions on some 64-bit architectures, has been fixed.
+
+-------------------------------------------------------------------
+Mon Feb 28 12:26:42 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 1.6.
+
+-------------------------------------------------------------------
+Thu Jan 06 15:58:58 CET 2005 - sbrabec@suse.cz
+
+- Provide bitmap_tracing virtual.
+
+-------------------------------------------------------------------
+Fri Aug 27 14:32:28 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 1.5 (with LZW support).
+
+-------------------------------------------------------------------
+Mon Mar 08 11:41:28 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 1.4.
+
+-------------------------------------------------------------------
+Thu Feb 05 14:13:02 CET 2004 - sbrabec@suse.cz
+
+- Added speed optimization patch from author.
+
+-------------------------------------------------------------------
+Thu Jan 15 12:16:52 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 1.3.
+
+-------------------------------------------------------------------
+Wed Aug 13 11:19:30 CEST 2003 - sbrabec@suse.cz
+
+- Initial version 1.0.
+

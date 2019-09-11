@@ -1,0 +1,35 @@
+README.SUSE for package 'isapnp'
+
+
+See the documentation in /usr/doc/packages/isapnp.
+Quickinstall:
+
+1) Run pnpdump to generate an isapnp.conf file:
+-----------------------------------------------
+pnpdump > /etc/isapnp.conf
+
+
+2) Edit the isapnp.conf file to place the device(s)
+---------------------------------------------------
+where your driver(s) expect. This is where step 4 would have
+been useful.
+
+a) All configuration information is commented out, so uncomment
+the lines beginning with '# (' that you want to use.
+b) If the resource data specified a range of values, then only
+the first will be put in the config entry. This should be editted
+to suit.
+c) DON'T FORGET to uncomment the (ACT Y) at the end of the logical
+device entry if you want the device enabled !
+
+
+3) Run isapnp
+-------------
+on the isapnp.conf file to check it has no errors.
+
+4) Try to load the modules to access the PnP-hardware.
+
+5) Booting:
+-----------
+If the file '/etc/isapnp.conf' exists, the programm 'isapnp' will be
+executed automatically by '/sbin/init.d/pnp' in runlevel 1, 2 and 3.

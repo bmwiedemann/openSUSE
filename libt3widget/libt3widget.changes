@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Mon Jan  7 15:42:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.0.3
+  * Fixed: The indicator in list panes would disappear of screen
+    when scrolling beyond the first page.
+  * Fixed: The cursor position after undoing an unindent
+    operation was set incorrectly.
+  * Fixed: Bracketed paste mode was not handled correctly due to
+    inadvertent setting of the EKEY_PROTECT bit.
+  * The API has been overhauled to use more of the features of
+    the C++11 standard.
+  * Fixed: Unsplitting caused segmentation faults.
+  * The connection to GPM remained open during suspend, making
+    GPM useless for the duration of the suspend.
+  * Prevent the mouse cursor from moving beyond the top of the
+    screen while holding down the mouse button in GPM mode.
+  * Ensure that the mouse cursor is visible when the holding down
+    the mouse button in GPM mode.
+  * Allow searching for empty strings using regular expressions.
+
+-------------------------------------------------------------------
+Mon Aug  7 19:07:50 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.5.2
+  * Added an extra function for thread-safe termination of the main
+    loop.
+
+-------------------------------------------------------------------
+Thu Feb 19 18:12:35 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.4.7
+  * Fix crashes due to invisible widgets getting activated through hotkeys.
+  * Fix read of uninitialized value.
+  * Fix memory leaks in edit widget undo/redo.
+
+-------------------------------------------------------------------
+Mon Jul 21 19:08:19 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.4.6
+* This release fixes the movement of cursor after inserting a tab
+  and when pressing left or right when text is selected.
+  Furthermore, it disallows pasting of values with filtered
+  characters in text fields.
+* This release also fixes the movement of cursor after positioning
+  the cursor with the mouse; a crash when clicking beyond the text
+  in wrap mode; sanitization of directory names.
+
+-------------------------------------------------------------------
+Mon Feb  3 19:03:35 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.4.4
+* This release fixes the drawing of the last line when text
+  wrapping is enabled, and fixes problems with X11 copy/paste and
+  handles trailing slashes and double slashes in directory names
+  in the file dialog properly.
+
+-------------------------------------------------------------------
+Mon Jun 10 13:26:28 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 0.4.2) for build.opensuse.org

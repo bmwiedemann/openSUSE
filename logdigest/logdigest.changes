@@ -1,0 +1,305 @@
+-------------------------------------------------------------------
+Sat Dec 21 20:10:49 UTC 2013 - wr@rosenauer.org
+
+- split logtail binary out of main package to avoid running
+  logdigest via cron if only the logtail tool is required
+- clean up spec file
+
+-------------------------------------------------------------------
+Fri Dec  9 12:44:33 UTC 2011 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  There are no GPL-2.0 (only) files in the package nor any indication that
+  there is a restriction to version 2 only of the GPL. According to the
+  terms of the GPL itself, this makes the package GPL-2.Ã0+ (using SPDX
+  syntax)
+
+-------------------------------------------------------------------
+Fri Dec  2 16:27:46 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Nov  5 15:32:51 UTC 2009 - poeml@cmdline.net
+
+- update to 0.2.4:
+  - XFS defragmentizer: ignore "fsr[31435]: ino=687296846: zero size, ignoring"
+    type messages
+  - ignore start message from fsr (XFS defragmentizer), when it logs a
+    mountpoint instead of a device.
+  - APPARMOR_HINT messages are only used as hint to the Apparmor profiling tool
+    when forking a program that is in learn mode.
+
+-------------------------------------------------------------------
+Tue Oct 27 21:07:17 UTC 2009 - crrodriguez@opensuse.org
+
+- if EXTENDED_STATS is set to yes, cronjob fails
+  due to the missing dependency on procinfo package 
+
+-------------------------------------------------------------------
+Wed Aug 19 13:50:03 CEST 2009 - poeml@suse.de
+
+- update to 0.2.3:
+  - vnstat now runs under it's own user id - ignore the logged 'su'
+    commands from cron.
+  - ignore syslog-ng's new way of reporting statistics
+  - ignore ntpd kernel sync status changes
+    http://groups.google.com/group/linux.debian.bugs.dist/browse_thread/thread/e6cc09f19296e3dd
+  - the XFS filesystem optimizer rules still missed some log lines
+
+-------------------------------------------------------------------
+Fri Jun 19 11:34:07 CEST 2009 - poeml@suse.de
+
+- update to 0.2.2:
+  - ignore more "passes" of fsr, the XFS filesystem optimizer
+  - ignore Linux kernel log messages about IPv6 path MTU discovery,
+    which seem to be harmless debug messages. See
+    http://readthefuckingmanual.net/error/407/
+  - ignore sshd's warning about DNS inconsistencies (IP addresses
+    resolving to names that don't map back). Well-known advice is
+    to use only key-based authentication, and unless the attackers
+    steal significant amount of CPU there shouldn't be a need to
+    deal with log lines caused by this kind of attack.
+  - ignore log messages from named when varying the
+    clients-per-query value
+    http://www.forum.psoft.net/showthread.php?t=29007
+  - don't show crontab edits without changes
+
+-------------------------------------------------------------------
+Mon Jun  8 14:37:56 CEST 2009 - poeml@suse.de
+
+- adjust URL to new project site (after move to sourceforge)
+- hide script output for checking about whether eddie needs to be
+  restarted, when it's not running
+
+-------------------------------------------------------------------
+Wed Jun  3 15:27:25 CEST 2009 - poeml@suse.de
+
+- update to 0.2.1:
+  - changed mail subject for better sortability in mailboxes: put
+    hostname in front of the rest, and omit date and time, which is
+    recorded in any mail per se. This changes actually dates back
+    to revision 80.
+  - list logfiles only when something to be reported has been found
+  - reword the leading mail text
+  - ignore "ctl_cyrusdb.*: removing log file"
+  - rewrite imaps DBMSG rule, so it includes the service name
+  - ignore messages from rrpm (remote rpm calls)
+  - ignore PAM audit_log_acct_message warning triggered by atd, which is a known
+    bug on various openSUSE/SLE releases
+  - ignore yum messages about installs/updates/erasures of packages
+  - make xinetd rules match all harmless log lines (there were some
+    left), and make a second attempt at ignoring the messages about
+    the unconfigured svnserve service.
+
+-------------------------------------------------------------------
+Thu May 28 09:12:52 CEST 2009 - poeml@suse.de
+
+- update to svn r89:
+  - ignore more stuff from xinetd
+
+-------------------------------------------------------------------
+Thu May 28 07:58:56 CEST 2009 - poeml@suse.de
+
+- create *.local files if they are missing. There seems to be a
+  scenario which makes them go away, even though the order of
+  %preun/%post handling should be correct. It works correctly with
+  rpm -Uhv, but maybe the (very old) yum I use has a bug here.
+
+-------------------------------------------------------------------
+Wed May 27 20:27:54 CEST 2009 - poeml@suse.de
+
+- add script /usr/share/logdigest/logdigest-all-ignores-autogeneration 
+  which is a little more sophisticated in creating the ignore file,
+  can be run from %post, and can restart a running eddie daemon if
+  the ignores have changed
+
+-------------------------------------------------------------------
+Wed May 27 08:22:25 CEST 2009 - poeml@novell.com
+
+- update to svn r87:
+  - ignore su'ing to user vnstat
+
+-------------------------------------------------------------------
+Mon Apr 27 16:28:21 CEST 2009 - poeml@suse.de
+
+- don't remove empty /etc/logdigest/*.local files when updating. Do
+  that only when removing the logdigest package from the system.
+
+-------------------------------------------------------------------
+Mon Apr 27 11:18:29 CEST 2009 - poeml@suse.de
+
+- update to svn r86:
+  - ignore output from fsr (XFS filesystem optimizer)
+  - ignore nagios, called from cron
+  - don't log when crontabs are listed
+
+-------------------------------------------------------------------
+Thu Aug 14 18:22:22 CEST 2008 - poeml@suse.de
+
+- update to svn r83: added an ignore for cvs (password mismatch)
+  and one for amavis
+
+-------------------------------------------------------------------
+Mon Jul 21 22:17:57 CEST 2008 - poeml@suse.de
+
+- update to svn r82:
+  ignore new smartd message Airflow_Temperature_Cel
+
+-------------------------------------------------------------------
+Sat Jul 19 13:49:16 CEST 2008 - poeml@suse.de
+
+- update ignores to svn r81, with changes for openSUSE 11.0,
+  mostly imapd and named related.
+
+-------------------------------------------------------------------
+Sun Apr 13 12:23:37 CEST 2008 - poeml@suse.de
+
+- don't try to use "Recommends" tag on very old distro
+
+-------------------------------------------------------------------
+Wed Mar 26 15:30:00 CET 2008 - poeml@suse.de
+
+- update ignores to svn r78 (fix openvpn rule)
+
+-------------------------------------------------------------------
+Tue Feb 19 13:36:43 CET 2008 - poeml@suse.de
+
+- add "Recommends: cron" [bnc #354704]
+
+-------------------------------------------------------------------
+Tue Feb  5 12:24:03 CET 2008 - poeml@suse.de
+
+- update ignores to svn r77 (more cyrus and named ignores)
+
+-------------------------------------------------------------------
+Wed Jan 30 13:07:24 CET 2008 - poeml@suse.de
+
+- update ignores to svn r76 (postfix/cleanup rule fixed)
+
+-------------------------------------------------------------------
+Tue Jan 29 09:12:51 CET 2008 - poeml@suse.de
+
+- update ignores to svn r75
+
+-------------------------------------------------------------------
+Mon Jan 28 11:51:34 CET 2008 - poeml@suse.de
+
+- add logdigest-0.1.7-ignores.patch, with ignores from svn r74
+
+-------------------------------------------------------------------
+Fri Jan 25 14:15:55 CET 2008 - poeml@suse.de
+
+- fix creation of cron snippet (forgot to quote the dollar signs)
+
+-------------------------------------------------------------------
+Thu Jan 24 17:03:47 CET 2008 - poeml@suse.de
+
+- chmod 600 the ignores.autogenerated, just as the source files.
+
+-------------------------------------------------------------------
+Thu Jan 24 13:06:50 CET 2008 - poeml@suse.de
+
+- update to 0.1.7
+- add ignores for syslog-ng
+
+-------------------------------------------------------------------
+Thu Jan 24 12:02:35 CET 2008 - poeml@suse.de
+
+- install /etc/cron.d/logdigest-ignores-autogeneration, a cron
+  snippet which concatenates the ignore files into a single file,
+  /etc/logdigest/ignores.autogenerated pruned by spaces. That file
+  can be used by other programs (e.g.  eddie-tool) for
+  log-scanning.
+
+-------------------------------------------------------------------
+Fri Sep 28 14:13:16 CEST 2007 - poeml@suse.de
+
+- update to 0.1.6
+- add some regexps (postfix, auditd); add to TODO
+- use CFLAGS in Makefile.am
+
+-------------------------------------------------------------------
+Tue Jan 16 19:51:04 CET 2007 - poeml@suse.de
+
+- use RPM_OPT_FLAGS
+- remove special case for SuSE Linux 8.0
+
+-------------------------------------------------------------------
+Fri Nov 17 00:00:00 CET 2006 - mge@suse.de
+
+- fix SPEC-file for Mandriva and Fedora: mix of filelist
+  and explicitly given files not possible, ...
+
+-------------------------------------------------------------------
+Thu Nov  2 17:17:02 CET 2006 - poeml@suse.de
+
+- bump version (0.1.5)
+- ignore empty lines in the regexp files [#207883]
+- fold in logdigest-0.1.4-apparmor.dif
+- add some keywords to ignore (zmd, smartd, stunnel, imap, sshd)
+
+-------------------------------------------------------------------
+Thu Feb 16 10:30:13 CET 2006 - poeml@suse.de
+
+- add the linux audit framework daemons log location to the
+  default configuration (AppArmor will make use of the audit
+  framework if its running). - add AppArmor keywords to the
+  alarming list. (Patch from Steve Beattie)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:59 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct 31 12:38:39 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Fri Jan 14 14:03:36 CET 2005 - ro@suse.de
+
+- fix typo in specfile 
+
+-------------------------------------------------------------------
+Wed Jan 14 10:08:58 CET 2004 - poeml@suse.de
+
+- update to 0.1.4. Some more regexps
+
+-------------------------------------------------------------------
+Thu Aug  7 20:07:43 CEST 2003 - poeml@suse.de
+
+- update to 0.1.3. More added regexps
+
+-------------------------------------------------------------------
+Thu Jul 24 22:22:04 CEST 2003 - poeml@suse.de
+
+- update to 0.1.2
+  - added a number of regexps
+
+-------------------------------------------------------------------
+Thu Aug  1 03:57:15 CEST 2002 - poeml@suse.de
+
+- use PreReq
+- fix check for SuSE-release
+
+-------------------------------------------------------------------
+Fri Mar 22 19:32:56 CET 2002 - ro@suse.de
+
+- fix broken check for SuSE-release 
+
+-------------------------------------------------------------------
+Mon Feb 25 02:04:52 CET 2002 - poeml@suse.de
+
+- version 0.1.1
+  - don't send empty mails
+  - don't print login stats
+  - remove temp files
+  - always print mail queue
+
+-------------------------------------------------------------------
+Sun Jan 20 03:20:46 CET 2002 - poeml@suse.de
+
+- initial package
+

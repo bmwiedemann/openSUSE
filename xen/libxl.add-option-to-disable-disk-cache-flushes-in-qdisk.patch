@@ -1,0 +1,215 @@
+https://bugzilla.novell.com/show_bug.cgi?id=879425
+---
+ tools/libxl/libxl.c         |    2 ++
+ tools/libxl/libxl.h         |   12 ++++++++++++
+ tools/libxl/libxlu_disk.c   |    2 ++
+ tools/libxl/libxlu_disk_i.h |    2 +-
+ tools/libxl/libxlu_disk_l.l |    1 +
+ 5 files changed, 18 insertions(+), 1 deletion(-)
+
+Index: xen-4.12.0-testing/docs/man/xl-disk-configuration.5.pod
+===================================================================
+--- xen-4.12.0-testing.orig/docs/man/xl-disk-configuration.5.pod
++++ xen-4.12.0-testing/docs/man/xl-disk-configuration.5.pod
+@@ -344,6 +344,32 @@ can be used to disable "hole punching" f
+ were intentionally created non-sparse to avoid fragmentation of the
+ file.
+ 
++=item B<suse-diskcache-disable-flush>
++
++=over 4
++
++=item Description
++
++Request that the qemu block driver does not automatically flush written data to the backend storage.
++
++=item Supported values
++
++absent, present
++
++=item Mandatory
++
++No
++
++=item Default value
++
++absent
++
++=back
++
++This enables the '-disk cache=unsafe' mode inside qemu.
++In this mode writes to the underlying blockdevice are delayed.
++While using this option in production is dangerous, it improves performance during installation of a domU.
++
+ =back
+ 
+ 
+Index: xen-4.12.0-testing/tools/libxl/libxl.h
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxl/libxl.h
++++ xen-4.12.0-testing/tools/libxl/libxl.h
+@@ -377,6 +377,21 @@
+ #define LIBXL_HAVE_EXTENDED_VKB 1
+ 
+ /*
++ * The libxl_device_disk has no way to indicate that cache=unsafe is
++ * supposed to be used. Provide this knob without breaking the ABI.
++ * This is done by overloading struct libxl_device_disk->readwrite:
++ * readwrite == 0: disk is readonly, cache= does not matter
++ * readwrite == 1: disk is readwrite, backend driver may tweak cache=
++ * readwrite == MAGIC: disk is readwrite, backend driver should ignore
++ * flush requests from the frontend driver.
++ * Note: the macro with MAGIC is used by libvirt to decide if this patch is applied
++ */
++#define LIBXL_HAVE_LIBXL_DEVICE_DISK_DISABLE_FLUSH_MAGIC 0x00006000U
++#define LIBXL_HAVE_LIBXL_DEVICE_DISK_DISABLE_FLUSH_MASK  0xffff0fffU
++#define LIBXL_SUSE_IS_CACHE_UNSAFE(rw) (((rw) & ~LIBXL_HAVE_LIBXL_DEVICE_DISK_DISABLE_FLUSH_MASK) == LIBXL_HAVE_LIBXL_DEVICE_DISK_DISABLE_FLUSH_MAGIC)
++#define LIBXL_SUSE_SET_CACHE_UNSAFE(rw) (((rw) & LIBXL_HAVE_LIBXL_DEVICE_DISK_DISABLE_FLUSH_MASK) | LIBXL_HAVE_LIBXL_DEVICE_DISK_DISABLE_FLUSH_MAGIC)
++
++/*
+  * libxl ABI compatibility
+  *
+  * The only guarantee which libxl makes regarding ABI compatibility
+Index: xen-4.12.0-testing/tools/libxl/libxl_disk.c
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxl/libxl_disk.c
++++ xen-4.12.0-testing/tools/libxl/libxl_disk.c
+@@ -405,6 +405,8 @@ static void device_disk_add(libxl__egc *
+         flexarray_append_pair(back, "discard-enable",
+                               libxl_defbool_val(disk->discard_enable) ?
+                               "1" : "0");
++        if (LIBXL_SUSE_IS_CACHE_UNSAFE(disk->readwrite))
++            flexarray_append_pair(back, "suse-diskcache-disable-flush", "1");
+ 
+         flexarray_append(front, "backend-id");
+         flexarray_append(front, GCSPRINTF("%d", disk->backend_domid));
+Index: xen-4.12.0-testing/tools/libxl/libxl_dm.c
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxl/libxl_dm.c
++++ xen-4.12.0-testing/tools/libxl/libxl_dm.c
+@@ -984,14 +984,27 @@ enum {
+     LIBXL__COLO_SECONDARY,
+ };
+ 
++static const char *qemu_cache_mode(const libxl_device_disk *disk)
++{
++    static const char cache_directsync[] = "directsync";
++    static const char cache_writeback[] = "writeback";
++    static const char cache_unsafe[] = "unsafe";
++
++    if (LIBXL_SUSE_IS_CACHE_UNSAFE(disk->readwrite))
++        return cache_unsafe;
++    if (disk->direct_io_safe)
++        return cache_directsync;
++    return cache_writeback;
++}
++
+ static char *qemu_disk_scsi_drive_string(libxl__gc *gc, const char *target_path,
+                                          int unit, const char *format,
+                                          const libxl_device_disk *disk,
+                                          int colo_mode, const char **id_ptr)
+ {
+     char *drive = NULL;
+-    char *common = GCSPRINTF("if=none,readonly=%s,cache=writeback",
+-                             disk->readwrite ? "off" : "on");
++    char *common = GCSPRINTF("if=none,readonly=%s,cache=%s",
++                             disk->readwrite ? "off" : "on", qemu_cache_mode(disk));
+     const char *exportname = disk->colo_export;
+     const char *active_disk = disk->active_disk;
+     const char *hidden_disk = disk->hidden_disk;
+@@ -1050,8 +1063,8 @@ static char *qemu_disk_ide_drive_string(
+     switch (colo_mode) {
+     case LIBXL__COLO_NONE:
+         drive = GCSPRINTF
+-            ("file=%s,if=ide,index=%d,media=disk,format=%s,cache=writeback",
+-             target_path, unit, format);
++            ("file=%s,if=ide,index=%d,media=disk,format=%s,cache=%s",
++             target_path, unit, format, qemu_cache_mode(disk));
+         break;
+     case LIBXL__COLO_PRIMARY:
+         /*
+@@ -1064,13 +1077,14 @@ static char *qemu_disk_ide_drive_string(
+          *  vote-threshold=1
+          */
+         drive = GCSPRINTF(
+-            "if=ide,index=%d,media=disk,cache=writeback,driver=quorum,"
++            "if=ide,index=%d,media=disk,cache=%s,driver=quorum,"
+             "id=%s,"
+             "children.0.file.filename=%s,"
+             "children.0.driver=%s,"
+             "read-pattern=fifo,"
+             "vote-threshold=1",
+-             unit, exportname, target_path, format);
++            unit, qemu_cache_mode(disk),
++            exportname, target_path, format);
+         break;
+     case LIBXL__COLO_SECONDARY:
+         /*
+@@ -1084,7 +1098,7 @@ static char *qemu_disk_ide_drive_string(
+          *  file.backing.backing=exportname,
+          */
+         drive = GCSPRINTF(
+-            "if=ide,index=%d,id=top-colo,media=disk,cache=writeback,"
++            "if=ide,index=%d,id=top-colo,media=disk,cache=%s,"
+             "driver=replication,"
+             "mode=secondary,"
+             "top-id=top-colo,"
+@@ -1093,7 +1107,8 @@ static char *qemu_disk_ide_drive_string(
+             "file.backing.driver=qcow2,"
+             "file.backing.file.filename=%s,"
+             "file.backing.backing=%s",
+-            unit, active_disk, hidden_disk, exportname);
++            unit, qemu_cache_mode(disk),
++            active_disk, hidden_disk, exportname);
+         break;
+     default:
+          abort();
+@@ -1890,8 +1905,8 @@ static int libxl__build_device_model_arg
+                         return ERROR_INVAL;
+                     }
+                     flexarray_vappend(dm_args, "-drive",
+-                        GCSPRINTF("file=%s,if=none,id=ahcidisk-%d,format=%s,cache=writeback",
+-                        target_path, disk, format),
++                        GCSPRINTF("file=%s,if=none,id=ahcidisk-%d,format=%s,cache=%s",
++                        target_path, disk, format, qemu_cache_mode(&disks[i])),
+                         "-device", GCSPRINTF("ide-hd,bus=ahci0.%d,unit=0,drive=ahcidisk-%d",
+                         disk, disk), NULL);
+                     continue;
+Index: xen-4.12.0-testing/tools/libxl/libxlu_disk.c
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxl/libxlu_disk.c
++++ xen-4.12.0-testing/tools/libxl/libxlu_disk.c
+@@ -79,6 +79,8 @@ int xlu_disk_parse(XLU_Config *cfg,
+         if (!disk->pdev_path || !strcmp(disk->pdev_path, ""))
+             disk->format = LIBXL_DISK_FORMAT_EMPTY;
+     }
++    if (disk->readwrite && dpc.suse_diskcache_disable_flush)
++        disk->readwrite = LIBXL_SUSE_SET_CACHE_UNSAFE(disk->readwrite);
+ 
+     if (!disk->vdev) {
+         xlu__disk_err(&dpc,0, "no vdev specified");
+Index: xen-4.12.0-testing/tools/libxl/libxlu_disk_i.h
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxl/libxlu_disk_i.h
++++ xen-4.12.0-testing/tools/libxl/libxlu_disk_i.h
+@@ -10,7 +10,7 @@ typedef struct {
+     void *scanner;
+     YY_BUFFER_STATE buf;
+     libxl_device_disk *disk;
+-    int access_set, had_depr_prefix;
++    int access_set, suse_diskcache_disable_flush, had_depr_prefix;
+     const char *spec;
+ } DiskParseContext;
+ 
+Index: xen-4.12.0-testing/tools/libxl/libxlu_disk_l.l
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxl/libxlu_disk_l.l
++++ xen-4.12.0-testing/tools/libxl/libxlu_disk_l.l
+@@ -196,6 +196,7 @@ colo-port=[^,]*,?	{ STRIP(','); setcolop
+ colo-export=[^,]*,?	{ STRIP(','); SAVESTRING("colo-export", colo_export, FROMEQUALS); }
+ active-disk=[^,]*,?	{ STRIP(','); SAVESTRING("active-disk", active_disk, FROMEQUALS); }
+ hidden-disk=[^,]*,?	{ STRIP(','); SAVESTRING("hidden-disk", hidden_disk, FROMEQUALS); }
++suse-diskcache-disable-flush,? { DPC->suse_diskcache_disable_flush = 1; }
+ 
+  /* the target magic parameter, eats the rest of the string */
+ 

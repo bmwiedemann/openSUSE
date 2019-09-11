@@ -1,0 +1,232 @@
+-------------------------------------------------------------------
+Tue Jul 30 16:37:37 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build on x86_64 and some other, do not force -fPIE, -fPIC would be
+  needed but is the default already.
+
+-------------------------------------------------------------------
+Fri Apr  5 15:51:37 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add Conflicts between libCGAL_core and old unsplit package, both
+  provide the same library file.
+
+-------------------------------------------------------------------
+Thu Apr  4 01:23:23 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Split library package into 4 subpackages, libCGAL, libCGAL_Core
+  libCGAL_ImageIO and libCGAL_Qt5, to properly adhere to the
+  Shared Libraray Packaging policy, versions are no longer in sync.
+- Add bcond for Qt5 component. It requires Qt5 built with Desktop
+  OpenGL support, which is not available on ARM and Aarch64.
+- Remove fdupes filter from rpmlintrc, not required any more.
+
+-------------------------------------------------------------------
+Mon Apr  1 08:51:07 UTC 2019 - mvetter@suse.com
+
+- Update to 4.14:
+  * new 2D Periodic Hyperbolic Triangulations
+  * new 2D Hyperbolic Triangulations
+  * new The Heat Method
+  * new Triangulated Surface Mesh Approximation
+  * For bugfixes and details see:
+    https://www.cgal.org/2019/03/29/cgal414/
+
+-------------------------------------------------------------------
+Tue Oct  2 11:36:44 UTC 2018 - mvetter@suse.com
+
+- Update to 4.13:
+  * Added: 3D Periodic Mesh Generation
+  * Classification package can now handle classification of surface
+	meshes and clusters, and can compute features in parallel.
+  * For list of more changes and bugfixes see:
+    https://www.cgal.org/2018/10/01/cgal413/
+
+-------------------------------------------------------------------
+Wed Sep  5 07:50:30 UTC 2018 - mvetter@suse.com
+
+- Update to 4.12.1:
+  Please see https://github.com/CGAL/cgal/milestone/33?closed=1
+  for the full list of fixed bugs
+
+-------------------------------------------------------------------
+Mon Jun 18 17:59:24 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Use correct BuildRequires for libboost_atomic-devel
+- Manually install documentation, %doc does not preserve symlinks
+- Cleanup
+
+-------------------------------------------------------------------
+Mon Apr 30 15:16:47 UTC 2018 - jengelh@inai.de
+
+- Use %setup logic to extract supplementary source archives.
+
+-------------------------------------------------------------------
+Thu Apr 26 10:02:46 UTC 2018 - mvetter@suse.com
+
+- Remove cgal-4.11-opengl-es-arm.patch: upstreamed
+- Update to 4.12:
+  * New 2D Movable Separability of Sets
+  * Classification: algorithm that classifies a data set into a
+    user-defined set of labels
+  * Removed Kinetic Data Structures
+  * See https://www.cgal.org/2018/04/25/cgal412/ for a complete
+    list of changes
+
+-------------------------------------------------------------------
+Tue Feb 27 09:46:40 UTC 2018 - mvetter@suse.com
+
+- Update to 4.11.1:
+  * Bug fix release
+    Please see https://github.com/CGAL/cgal/milestone/28?closed=1
+	for the full list of fixed bugs
+
+-------------------------------------------------------------------
+Thu Dec  7 08:13:02 UTC 2017 - normand@linux.vnet.ibm.com
+
+- remove in spec the Requires: qt-devel that is Qt4 related
+
+-------------------------------------------------------------------
+Wed Sep 27 14:58:36 UTC 2017 - mvetter@suse.com
+
+- Always use Qt5
+
+-------------------------------------------------------------------
+Wed Sep 27 13:48:30 UTC 2017 - mvetter@suse.com
+
+- boo#1060631: Add cgal-4.11-opengl-es-arm.patch
+  On armv7 Qt uses OpenGL ES headers.
+  cgal included GL/gl.h desktop header, but they cannot be mixed.
+
+-------------------------------------------------------------------
+Wed Sep 27 09:54:34 UTC 2017 - mvetter@suse.com
+
+- Remove boost conditionals. They are handled in prj conf.
+
+-------------------------------------------------------------------
+Tue Sep 26 13:35:19 UTC 2017 - mvetter@suse.com
+
+- Update to 4.11
+  * details can be found in CHANGES file
+
+-------------------------------------------------------------------
+Tue Feb  7 11:13:52 UTC 2017 - jengelh@inai.de
+
+- Redo description and RPM groups
+- Rename %_soname to %_sover to better reflect its use
+
+-------------------------------------------------------------------
+Wed Feb  1 10:21:22 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sun Nov 22 11:38:55 UTC 2015 - wk@ire.pw.edu.pl
+
+- fixed build for SLE-12 and some earlier releases
+
+-------------------------------------------------------------------
+Tue Nov 17 18:38:10 UTC 2015 - mpluskal@suse.com
+
+- Update to 4.7
+  * switch to qt5
+  * details can be found in CHANGES file
+- Use github for download urls
+
+-------------------------------------------------------------------
+Mon Sep 28 15:48:29 UTC 2015 - mpluskal@suse.com
+
+- Update to 4.6.3
+  * details can be found in CHANGES file
+
+-------------------------------------------------------------------
+Tue Sep  1 11:17:05 UTC 2015 - dimstar@opensuse.org
+
+- Fix Source URLs.
+
+-------------------------------------------------------------------
+Wed Aug 19 06:28:53 UTC 2015 - adrian@suse.de
+
+- Update to 4.6.1
+  * details can be found in CHANGES file
+
+-------------------------------------------------------------------
+Sat Feb 28 22:13:24 UTC 2015 - mpluskal@suse.com
+
+- Remove conditionals and use only cmake macros for building
+
+-------------------------------------------------------------------
+Sat Feb 28 08:51:44 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Remove sha256sum.txt
+- Update to 4.5.2
+  * Fix a bug that prevented the compilation with recent versions 
+    of Boost (>=1.56) when explicit conversions operators 
+    (from C++11) are supported. That prevented the compilation with 
+    Microsoft Visual Studio 2013.
+  * 3D Convex Hulls: Fix a non-robust predicate bug that was 
+    showing up when input points where lexicographically sorted.
+  * 3D Mesh Generation: Fix a bug in the sliver perturbation 
+    optimization method. It could create some holes on the 
+    surface of the mesh.
+
+-------------------------------------------------------------------
+Thu Dec 25 18:52:27 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 4.5.1,http://www.cgal.org/releases.html#release4.5.1
+- Bump sover to 10.0.4
+
+-------------------------------------------------------------------
+Tue Jun  3 06:12:13 UTC 2014 - bruno@ioda-net.ch
+
+- update to 4.4, see http://www.cgal.org/releases.html#release4.4
+- packaging : remove libcgal%soname as main package 
+- cgal is dumb empty package
+- libcgalsoname contain only library
+- cgal-demo-examples-devel contain all demo and example
+- cgal-doc contain the whole documentation
+- Fix & cleanup Licence as specified in sources
+- Make it build for SLE with exception for noarch.
+
+-------------------------------------------------------------------
+Tue Dec 17 20:11:08 UTC 2013 - coolo@suse.com
+
+- update to 4.3, see http://www.cgal.org/releases.html#release4.3
+
+-------------------------------------------------------------------
+Sat Jan 19 14:11:47 UTC 2013 - prusnak@opensuse.org
+
+- updated to 4.1
+
+-------------------------------------------------------------------
+Fri Aug  3 22:54:57 UTC 2012 - jw@suse.com
+
+- added happy_gcc.patch
+  fixed c++ syntax for a more strict gcc
+
+-------------------------------------------------------------------
+Fri Aug  3 15:06:57 UTC 2012 - jw@suse.com
+
+- fixed Group and License
+
+-------------------------------------------------------------------
+Fri Aug  3 14:39:20 UTC 2012 - jw@suse.com
+
+- added boost149workaround.patch
+
+-------------------------------------------------------------------
+Sun Jan  8 16:45:23 UTC 2012 - prusnak@opensuse.org
+
+- updated to 3.9
+
+-------------------------------------------------------------------
+Sat May 14 00:47:33 UTC 2011 - prusnak@opensuse.org
+
+- don't build Qt3 library anymore
+- use fdupes
+
+-------------------------------------------------------------------
+Fri May 13 14:48:41 UTC 2011 - prusnak@opensuse.org
+
+- based on a Fedora package by Laurent Rineau (version 3.8)
+

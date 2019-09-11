@@ -1,0 +1,15 @@
+---
+ install.sh |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/install.sh
++++ b/install.sh
+@@ -149,7 +149,7 @@ do
+       && echo " html $BUILD_ROOT$DOC_DIR/`basename $html`"
+ done
+ 
+-for f in BUGS CREDITS COPYING NEWS
++for f in BUGS CREDITS COPYING NEWS README.openSUSE sbclrc.sample
+ do
+   test -e $f && $CP $f "$BUILD_ROOT$DOC_DIR"/
+ done

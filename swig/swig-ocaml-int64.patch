@@ -1,0 +1,19 @@
+ocaml pr#6517
+---
+ Lib/ocaml/ocamldec.swg |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/Lib/ocaml/ocamldec.swg
++++ b/Lib/ocaml/ocamldec.swg
+@@ -101,9 +101,9 @@ SWIGEXT {
+ 
+ 
+ #ifndef ARCH_ALIGN_INT64
+-#define SWIG_Int64_val(v) (*((int64 *) SWIG_Data_custom_val(v)))
++#define SWIG_Int64_val(v) (*((int64_t *) SWIG_Data_custom_val(v)))
+ #else
+-CAMLextern int64 Int64_val(caml_value_t v);
++CAMLextern int64_t Int64_val(caml_value_t v);
+ #define SWIG_Int64_val(v) Int64_val(v)
+ #endif
+ 

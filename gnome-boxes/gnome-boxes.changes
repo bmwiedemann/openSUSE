@@ -1,0 +1,2468 @@
+-------------------------------------------------------------------
+Sat May 11 06:25:31 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Keep the app ID same as in 3.30 in appdata file.
+  + Offer RHEL 8.0 download and new Red Hat logo.
+  + Offer newest Ubuntu, Fedora, OpenSUSE.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 29 12:02:40 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0.2:
+  + Enable Snapshots for host-passthrough.
+  + Creation method of abstract class cannot be public.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 18 10:28:14 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0.1:
+  + Offer option to disable 3D acceleration.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 11 16:13:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Make "Launch" string translatable.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 09:30:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.91:
+  + Fix default collection names in translations.
+  + Use nonet for AppStream metadata test.
+  + Prevent X11 access in a Wayland session with newer Flatpak.
+  + Check libosinfo for optional passwords.
+  + Only express-install supported medias.
+  + Improve initrd-injection support.
+  + Support express-installing Ubuntu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 18 22:20:19 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Use "host-passthrough" as default CPU mode.
+  + Always override the CPU mode. (Use host-passthrough for
+    existing VMs too).
+  + Remove custom "devel" styling (use GTK one).
+  + Make the application icon more legible.
+  + Pass a better keyboard id for express installations.
+  + Paint thumbnails' background with CSS.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 10 17:53:35 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  + Shared folders code was decoupled from SpiceDisplay.
+  + Handle disconnection events from remote machines.
+  + Introduce ssh client support.
+  + Drop support for gnome-continuos images.
+  + Add "backup" instructions to the docs.
+  + Improve the appdata file and validate it on build.
+  + Allow list view to shrink.
+  + Enable virtio-gpu if OS supports it in osinfo-db.
+  + Enable 3D acceleration and OpenGL for virtio-gpu.
+  + Only add USB Tablet device if OS supports it in osinfo-db.
+  + Don't quit on Ctrl+Q while on Display page.
+  + Reduce build warnings by handling some exceptions.
+  + Default to PS2 input bus (except for devices that support USB
+    tablet).
+  + Updated translations.
+- Add pkgconfig(vte-2.91) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Sat Jan  5 11:16:12 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.3:
+  + Drop Application Menu.
+  + Make shortcuts window transient to the main window.
+  + Use GFile API to get shared folder path and name. (This way we
+    can handle UTF-8 names).
+  + Convert README to markdown.
+  + Don't use Osinfo.Device.get_name directly. (Names don't
+    necessarily match between osinfo and libvirt).
+  + Add a libosinfo metadata to the domain's XMLs.
+  + Recreate network interface for clones. (This way clones won't
+    have the same IP address).
+  + Don't hardcode RHEL version. (So we can automatically install
+    newly released RHELs).
+  + Fix listbox styling in non-standard themes.
+  + Improve the search results in "Download an OS".
+  + Recommend the latest OSes released to date.
+  + Offer a convenient way for distros to set recommended
+    downloads.
+  + Updated translations.
+- Changes from version 3.31.2:
+  + Set the default machine-type to q35.
+  + Use SATA as default when using q35.
+  + Use ICH9 as default when using q35.
+  + Updated translations.
+- Changes from version 3.31.1:
+  + Update app icon.
+  + Don't GPG check for Fedora in CI.
+  + Use view-more-symbolic icon in display view toolbar.
+  + Flatpak specific improvements:
+    - Lower Flatpak bundle expiration interval.
+    - Always build with the latest osinfo-db.
+    - Install libfreerdp under the right prefix.
+    - Support Folder Sharing.
+    - Fix the Flatpak build on Aarch64.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 23 10:52:47 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.3:
+  + Offer new OS releases to Download.
+  + Fixes authentication issues with RDP.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 24 15:32:00 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.2:
+  + Offer the latest RHEL in the "Download an OS" page.
+  + Mirror the Flathub manifest for 3.30.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 26 11:33:16 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Hardcode xmlns URI.
+  + Fixed the setting of rpath for subprojects.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  8 12:57:52 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Updated subprojects (gtk-frdp, libovf-glib).
+  + Updated translations.
+- Drop gnome-boxes-fix-meson_build.patch (fixed upstream).
+- Remove lang package from recommended packages as it already
+  supplements main package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Sat Sep  1 23:03:20 UTC 2018 - luc14n0@linuxmail.org
+
+- Add gnome-boxes-fix-meson_build.patch: move package_subdir to 
+  private location while still complying with FHS
+  (glgo#GNOME/gnome-boxes#219).
+
+-------------------------------------------------------------------
+Thu Aug 30 00:03:17 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.92:
+  + Updated translations.
+- Changes from version 3.29.91:
+  + Updated translations.
+- Changes from version 3.29.4:
+  + Handle RDP and VNC mimetypes.
+  + Introduce the "Initial setup" page in the wizard.
+  + Various UI changes in the new box assistant:
+    - Handle URLs of images in the "Download an OS" page;
+    - Fix inconsistencies with the back/cancel buttons in the
+      topbar;
+    - Revamp the "Enter URL" page;
+    - Rename "Enter URL" page to "Connect to a remote box";
+    - Add subtitles to the menu options.
+  + Updated translations.
+- Changes from version 3.29.3:
+  + Rename icons to match application id
+  + Use VIRTIO video adapter for new VMs.
+  + Add support for the ovf format (.ova).
+  + List Fedora Silverblue 28 in the "Download an OS" page.
+  + Updated translations.
+- Split gtk-frdp subpackage into shared library, GI bindings and
+  devel subpackages to ease possible splitting into their own
+  package in the future since gtk-frdp has it's own GitLab repo.
+- Add libovf-glib shared library, GI bindings and devel
+  subpackages. Libovf-glib is a new upstream addition.
+- Enable tests run to increase QA of package.
+
+-------------------------------------------------------------------
+Fri Jun  8 19:31:27 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.2:
+  + Don't recreate bridge network when already existent
+    (making ip address/mac address persistent).
+  + Show a list of recommended OSes and a show more button to list
+    all.
+  + Show an empty-state page when there's no downloads to list.
+  + Wrap views in a backgrounded widget so it doesn't present black
+    borders.
+  + Delete stored credentials when deleting a machine.
+  + Don't keep credentials around when authentication fails.
+  + Introduce RDP support.
+- Add pkgconfig(freerdp2) BuildRequires to allow testing RDP
+  support.
+- Drop gnome-boxes-fix-icons.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Fri Jun  8 18:31:27 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.5:
+  + Rename icons to match application id.
+  + Build in Flatpak.
+  + Use VIRTIO video adapter for new VMs.
+  + Updated translations.
+- Add gnome-boxes-fix-icons.patch: build: Unbreak the icon
+  installation in gnome-3-28.
+
+-------------------------------------------------------------------
+Wed May  9 10:10:57 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.4:
+  + Revert filter of incompatible OS supported architectures.
+
+-------------------------------------------------------------------
+Mon May  7 09:36:34 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 10 10:58:26 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.2:
+  + Revert "Inhibit suspend" functionality due to breakage of
+    string freeze break.
+
+-------------------------------------------------------------------
+Mon Apr  9 12:41:55 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1:
+  + Offer to download only supported architectures.
+  + Inhibit suspending in various long lasting operations:
+    - Downloading media.
+    - Installing (under-construction).
+    - Cloning machine.
+  + Select PUBLIC by default in the Shared Folder popover.
+  + Select box on child-activated in the icon view.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:29:59 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Sun Mar  4 23:20:19 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.92:
+  - Don't offer EOL operating systems for download.
+  - Handle mime-types (allows opening ISOs w/ Boxes from file
+    manager).
+  - Fix window grouping for multiple windows.
+  - Fix showing logo while downloading an image from the internet.
+  - Download logos from new source
+    (gitlab.gnome.org/gnome/gnome-boxes-logos).
+  - Add FreeDOS logo.
+- Add:
+  + pkgconfig(gobject-2.0) BuildRequires to avoid implicit
+    dependency.
+  + fdupes BuildRequires and its macro for replacement of
+    duplicates with links under the data directory.
+- Drop pkgconfig(rest-0.7) BuildRequires: it is no longer a
+  required anymore.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:27:16 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb  6 14:01:19 UTC 2018 - dimstar@opensuse.org
+
+- Switch to meson build system:
+  + Add meson BuildRequires.
+  + Replace configure/make/make_install macros with
+    meson/meson_build/meson_install.
+- Drop gettext BuildRequires: no explicitly required by the build
+  system (but since RPM pulls it in, it's there anyway).
+
+-------------------------------------------------------------------
+Tue Feb  6 13:55:05 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.90:
+  + Various documentation updates.
+  + Fix notification dismissal that prevented Boxes from exiting.
+  + Introduce selection mode keybord shortcuts.
+  + Remember user credentials (keyring) for remote machines.
+  + Show "oops page" when failing to connect to the backend.
+  + Add DnD file transfer UI (visual feedback).
+  + Add Transfers popover to keep track of ongoing file transfers.
+  + Many wizard UI/UX changes such as:
+    - Make "Select a File" a menu entry.
+    - Introduce the "Download an OS" section.
+    - Make it possible to search for a downloadable OS.
+    - Offer to download an ISO if none is found in the filesystem.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan  9 23:54:51 UTC 2018 - zaitor@opensuse.org
+
+- Update to version 3.27.4:
+  + Various build (meson) fixes and improvements.
+  + Port of the IconView to GtkFlowBox.
+  + Fix notification dismissal at application shutdown.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan  3 03:27:03 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.3:
+  + Use a more convenient developers.redhat.com API end-point.
+  + Port the Downloaded list to GtkListBox.
+  + Introduce a flat styling for the wizard rows.
+  + Set a user-agent when using the network.
+  + Make the wizard content scrollable.
+  + Updated translations.
+- Update Url to https://wiki.gnome.org/Design/Apps/Boxes: current
+  Boxes' web page.
+- Drop pkgconfig(json-glib-1.0) BuildRequires: it's no longer a
+  requirement.
+- Drop %glib2_gsettings_schema_*, %desktop_database_*,
+  %icon_theme_cache_* post/postun scriptlets and
+  %glib2_gsettings_schema_requires macro since their functionality
+  has been transfered to RPM file triggers.
+- Add pkgconfig(gio-2.0) BuildRequires: it was already being pulled
+  with glib-2.0 module and used, since both of them live in
+  glib2-devel package.
+- Adopt the use of %make_build macro instead of raw make command,
+  following the best practices.
+- Drop gnome-boxes-nb-translations.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jan  3 03:27:02 UTC 2018 - fezhang@suse.com
+
+- Update to version 3.27.2:
+  + Sufix screenshot filenames with .png.
+  + Install appstream metadata at the new right location.
+  + Fix enable-debug CFlags in the build machinery.
+  + Don't use the default size as minimum size in the machine setup
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan  3 03:27:01 UTC 2018 - badshah400@gmail.com
+
+- Update to version 3.27.1:
+  + Allow multiple attempts to authenticate a VNC connection.
+  + Allow keeping the media after installation.
+  + Fix the logo resolution in the wizard.
+  + Fix target dev name for floppy nodes.
+  + Allow resize of disks with snapshots.
+  + Make the wizard look closer to the mockups.
+  + Introduce RHEL Developer Suite integration.
+  + Updated translations.
+- Add pkgconfig(json-glib-1.0) and pkgconfig(webkit2gtk-4.0)
+  BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
+Tue Jan  2 15:51:35 UTC 2018 - zaitor@opensuse.org
+
+- Add gnome-boxes-nb-translations.patch: Update Norwegian Bokmål
+  translations.
+- Stop post(un) handling of glib2_gsettings_schema_post(un),
+  desktop_database_post(un) and icon_theme_cache_post(un), we have
+  file-triggers taking care of this now.
+- Drop gnome-shell BuildRequires, just own the dirs in spec.
+
+-------------------------------------------------------------------
+Wed Nov  1 10:57:04 UTC 2017 - badshah400@gmail.com
+
+- Update to version 3.26.2:
+  + Restore logo definition for RHEL 4.x.
+  + Allow resize of disk with snapshots.
+  + Append extension to screenshot filenames.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct  4 10:13:55 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.1:
+  + Properly pick the right logo during install.
+  + Fix Windows 7 express install.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 11 21:18:16 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.0:
+  + Fix Icon in Nepali tranlation.
+  + Correct docs for the download method.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  8 16:28:35 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Thu Aug 24 08:20:44 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + Fixes in the gettext machinery.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug  7 11:10:06 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.90:
+  + Migrate from Intltool to Gettext.
+  + Deattach notifications after timeout.
+  + Update TODO file.
+  + Updated translations.
+- Drop intltool BuildRequires following upstreams port, add
+  explicit gettext BuildRequires.
+
+-------------------------------------------------------------------
+Mon Jul 17 10:46:13 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.4:
+  + Suggest 5GM RAM and 20GB of free disk in Help docs.
+  + Add libtracker-sparql-2.0 to build checks.
+  + Use GLib.uuid_string_random instead of libuuid.
+  + Add DBus activatable service file.
+  + Drop libuuid.
+  + Updated translations.
+- Replace pkgconfig(tracker-sparql-1.0) with
+  pkgconfig(tracker-sparql-2.0) BuildRequires following upstreams
+  changes.
+- Drop pkgconfig(uuid) BuildRequires following upstreams changes.
+
+-------------------------------------------------------------------
+Tue Jun 20 12:16:31 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.3:
+  + Add screenshot option.
+  + Introduce shared folders.
+  + Mark schema strings for translation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 23 12:09:08 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.2:
+  + Port auth notifications to Gtk+ revealer.
+  + Update help documentation to 3.24.
+  + Let GtkApplication load the appmenu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 25 16:59:07 UTC 2017 - firebird209@gmail.com
+
+- Update to version 3.25.1:
+  + Do not expose "Read only" VNC option.
+  + Keep aspect ration when scaling VNC display.
+  + Drop "maximum" text at the properties dialog.
+  + Allow sending ctrl+alt+del keys.
+  + Set VM to run in background during install.
+  + Do not transfer open_fd() ownership in spice-session.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 20 11:59:07 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 27 14:26:29 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.91:
+  + Fix build with vala >= 0.36.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  6 17:22:06 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.4.1:
+  + Fix translator comments.
+  + Port BoxesNotification from GdNotification to GtkRevealer.
+  + Store the user password in the keyring during an express
+    installation.
+  + Use unicode in a new translatable string.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  6 17:22:05 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.4:
+  + Add option groups for spice-gtk, gtk-vnc and gtk+.
+  + Fix typo in debug string in vm-configurator.
+  + Withdraw system notifications on exit.
+
+-------------------------------------------------------------------
+Mon Feb  6 17:22:04 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.3:
+  + Don't sanitize oVirt URI in ovirt-brokers.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  6 17:22:03 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.2:
+  + Allow sending CTRL+ALT+F3 key combo to guest (for reaching
+    TTY3) shortcut.
+  + Don't autosave live & under-installation VMs.
+  + Use new Gtk+ CSS property names.
+  + Re-layout custom osinfo db to comply with new libosinfo format.
+  + Use latest libgd.
+  + Fix some user-visible strings.
+  + Allow redirection of USB mouse and keyboard if
+    'BOXES_USB_REDIR_ALL' environment variable is set.
+  + Make use of unicode in translatable strings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  6 17:22:02 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.22.4:
+  + Store the user password in the keyring during an express
+    installation.
+  + Fix typo in debug string in vm-configurator.
+  + Fix printf format strings in the selectiontoolbar.
+  + Updated translations.
+- Add pkgconfig(libsecret-1) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Tue Nov 22 10:33:06 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.3:
+  + Fix thread leaks.
+  + Fix issue of primary window closing along with last secondary
+    window.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Nov  5 11:48:11 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.2:
+  + Work around a libvirt-glib bug to avoid a crash during startup.
+  + Updated translations.
+- Drop
+  ad606291-vm-configurator-Don-t-access-invalid-device-objects.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Oct 26 16:13:26 UTC 2016 - cbosdonnat@suse.com
+
+- Add
+  ad606291-vm-configurator-Don-t-access-invalid-device-objects.patch:
+  Fix crash in update_existing_domain() (boo#1005488, bgo#769718).
+
+-------------------------------------------------------------------
+Fri Oct  7 18:02:34 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Fix some glitches on display resize.
+  + Fix build against latest valac.
+
+-------------------------------------------------------------------
+Tue Sep 20 08:34:49 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 18 10:35:39 UTC 2016 - zaitor@opensuse.org
+
+- Stop passing --enable-smartcard and --enable-usbredir to
+  configure. No longer recognized nor needed.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Wed Sep 14 08:05:19 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Limit concurrent notifications to 5.
+  + Fix check for "our" VMs.
+  + Only update configuration of "our" VMs on startup.
+  + Use URL in strings instead of URI.
+  + Stricter validation of SPICE URLs.
+  + Inform user if SPICE agent is not installed in guest.
+  + Enable USB redirection for VMs running in background.
+  + Drop redundant check for QXL support by guest OS.
+  + Drop now redundant USB redirection and smartcard hacks for
+    < Qemu 1.3.
+  + Fix "Keyboard Shortcuts" placement and capitalization in global
+    menu.
+  + Distribute README.logos.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 21 22:55:15 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.3:
+  + Add cloning option.
+  + Remove "Pause" action from the popover menu, in display mode.
+  + Add a "Restart" action in the display mode popover-menu.
+  + Preserve order of boxes over restarts.
+  + Don't use characters in hostnames that Microsoft Windows find
+    offensive.
+  + Don't allow launching or saving of under-import VMs.
+  + Handle spice+unix SPICE URLs.
+  + Remember 'read-only' property for VNC boxes.
+  + Ensure new VMs do not expose the SPICE connection to all users.
+  + Ensure Boxes can connect to local VMs through file descriptor.
+  + Ensure "Back" button is not made sensitive on the first wizard
+    page.
+  + Don't launch polkit dialog on startup.
+  + Sort medias in wizard by vendor.
+  + Sort medias in wizard in (intended) reverse-chronological
+    order.
+  + Fix a test for availability of bridge networking.
+  + Support non-srcdir builds.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun May 22 15:47:38 UTC 2016 - zaitor@opensuse.org
+
+- Pass --enable-vala to configure. Build from vala sources.
+
+-------------------------------------------------------------------
+Tue May 10 18:15:55 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Fix sorting of media by release date in wizard menu.
+  + Ensure we don't expose private SPICE connection to other users.
+  + Fix a corner case in wizard, where going back showed incorrect
+    page.
+  + Suppress irrelevant logging of a SPICE event.
+  + Fix issue of "ready-only" property of VNC box not being
+    reliably saved.
+  + Don't provide inapplicable options to launch or save
+    under-import VMs.
+  + Remove all characters from assigned hostnames to VMs, that
+    Microsoft Windows does not like.
+  + Don't update last access time of remote boxes on startup so the
+    order of VMs is preserved accross Boxes lifetime.
+- Changes from version 3.20.1:
+  + Ensure boxes get deleted if user quits Boxes immediately after
+    deletion.
+  + Don't loose URI on navigating back in wizard.
+  + Don't provide option to import unimportable system libvirt VMs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 23 08:29:18 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 17 08:56:40 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + Fix two crashes in VNC-related code.
+  + Fix Boxes quitting on failure to connect to default broker
+    (session libvirt).
+  + Fix removal of box configuration on failure to connect to its
+    broker.
+  + Fix regression of configuration data being saved in ~.cache
+    rather than ~/.config.
+  + Fix resource graph drawing code against latest gtk+.
+  + Fix typo in the title of a keyboard shortcut.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  3 02:22:54 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + Add context to some translated strings.
+  + Fix AppData file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 19 10:50:36 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.4:
+  + Automatically create a snapshot after a VM is installed, to
+    serve as a reset mechanism.
+  + Fix translation comments in UI files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Dec 19 02:51:55 UTC 2015 - damjanovic.ivo@gmail.com
+
+- Update to version 3.19.3:
+  + On restoring a libvirt VM from saved state, try to sync the
+    guest clock with host clock. This requires Qemu guest agent
+    in the VM.
+  + Keyboard shorcuts:
+    - Add shortcuts help window.
+    - Fix shortcuts for RTL locales.
+    - Drop alt+a shortcut.
+  + Add kudos in appdata file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov 23 23:47:15 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.1:
+  + Add note about spice-vdagent in help pages.
+  + Add missing accessibility labels on buttons.
+  + Better accessibility label for 'Exit fullscreen' button.
+  + Fix the issue of VM not starting if bridge networking is no
+    longer available.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 12 19:14:16 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Disable view switcher when there are no boxes.
+  + Fix a regression causing Boxes to never show IP of local
+    libvirt VMs.
+  + Allow resources change of live and under-installation VMs, if
+    they are forced stopped.
+  + Fix issue of properties window blocking all windows from user.
+  + Fix a potential Qemu crash by ensuring we don't allocate more
+    than 4G RAM to 32-bit VMs.
+  + Ensure all windows are hidden before starting to suspend local
+    VMs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 15:36:35 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0:
+  + Remember view (icon vs list) over restarts.
+  + Fix redundant topbar and menu if "Show application menu" is
+    disabled through tweak-tool.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 18 17:48:22 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.92:
+  + Don't show launching status in overview.
+  + Theme:
+    - Drop most of custom CSS.
+    - Fix and improve custom CSS.
+  + Add some comments for translators.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 10:22:14 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.91:
+  + Add a list view.
+  + Many internal cleanups and fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 18 21:55:32 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Add toggle buttons to titlebar to easily filter the main view
+    to show:
+    - All
+    - Remote or
+    - Local boxes
+  + Show IP/hostname of remote libvirt and oVirt boxes in main
+    icon view.
+  + Improve accessibility:
+    - Add mnemonics to various UI components.
+    - Allow switching settings pages through Alt+Left/Right.
+  + Fix SPICE connection leaks.
+  + Better handle box launch cancellation.
+  + Port/fix tests.
+  + Add tests for Fedora 21 and 22 express installation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 23 07:31:00 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + Show guest IP on 'General' page for local VMs.
+  + Show IP/hostname of remote desktop boxes in main icon view.
+  + Add a switch to allow disabling autosaving for a box in the
+    'System' page of properties window.
+  + Improved:
+    - Favourite emblem.
+    - Stopped boxes and fallback, thumbnails.
+  + Fix the issue of secondary windows ending up in weird unusable
+    state on closing of properties window over main window.
+  + More reliable setup of storage pool.
+  + Fix import of system libvirt VMs that use device nodes as main
+    disk.
+  + Fix crash on failure to import system libvirt VMs.
+  + Fix transparency of underflow and overflow indicators.
+  + Make values of text properties, selectable.
+  + Only autosave VMs on default connection.
+  + Smaller markers on resource properties' scales.
+  + Avoid some criticals warnings on console.
+  + More vertical spacing between resource scales in customization
+    view.
+  + More reliable test for raw images.
+  + Fix alignment of resource properties' values.
+  + Prefix display properties' labels with "Display " to make the
+    context clear.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 25 10:01:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.3:
+  + Add CD-ROM device to imported VMs too.
+  + Make storage pool autostart on boot.
+  + Fix issue of "ghost" VMs appearing when going back and forth in
+    wizard.
+  + Automated tests:
+    - Port to new UI.
+    - Add a test for sending key combos to box.
+    - Speed up many tests.
+    - Improve reliability of many tests.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 28 07:16:43 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.2:
+  + Adapt to new libosinfo API to be able to offer express
+    installation for Fedora 21 and 22.
+  + Display system notification on install completion.
+  + Assign 2G RAM by default to new VMs.
+  + Stack up notifications vertically, instead of displaying them
+    in the same place and ending up with all but one being
+    obstructed.
+  + Asynchronously setup non-default sources at startup to not
+    block UI.
+  + Look for bridge.conf in /etc/qemu-kvm directory too.
+  + Selection bar:
+    - Drop "Properties" button.
+    - Move "Delete" button at the end and apply destructive theme
+      to it.
+  + Adapt to Gtk+ Vala API change.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 13 10:29:41 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.1:
+  + Add "Restart" button to properties view, for libvirt machines.
+  + Add "Force shutdown" option in context and hamburger menu.
+  + Provide a symbolic icon.
+  + Dismiss properties window on restart and force shutdown.
+  + Check files' extensions in a case-insensitive way. This fixes
+    support for latest Windows ISOs that have filenames in all
+    caps.
+  + Revert the changes to only add USB input devices if guest was
+    known to support them. I-e always add USB input devices to new
+    VMs.
+  + Ensure "Saving…" status goes away on saving operation failure.
+  + Only autosave running machines.
+  + Don't show "Delete" option in the hamburger menu. Showing it
+    there when box is in foreground, looks odd.
+  + Other minor UI improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 13 10:21:31 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Provide symbolic icon.
+  + Case-insensitive check for file extension.
+  + Remove redundant work-around for Windows XP installer.
+  + Ensure "Saving…" status goes away on error.
+  + Only autosave running machines.
+  + Assign 2G RAM to VMs by default.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 14 11:42:15 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.1:
+  + Support home directories on filesystems without (good) O_DIRECT
+    support.
+  + Fix the issue of wizard remaining in seconardary views when
+    cancelled through 'Esc' key.
+  + Show Boxes in menus of other desktops than GNOME, too.
+  + Only add USB keyboard and mouse to new VMs they are supported
+    out of the box by the guest OS. This fixes installation of
+    Windows XP.
+  + Gracefully handle case of no cpu defined in libvirt VMs.
+  + Load correct screenshot for shutdown machines.
+
+-------------------------------------------------------------------
+Tue Mar 24 08:19:02 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Ensure wizard page titles are translated.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:47:41 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Notifications no longer timeout when mouse is hovering above
+    them.
+  + Show correct favorite option in box actions popup menu.
+  + Only show resolution overlay on actual resize.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 17:58:45 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Cache express install toggle, username, password and product
+    key for every media. No need to keep product keys in a separate
+    file and having to paste them each time you create a windows
+    box anymore.
+  + Beautify:
+    - USB devices list
+    - Snapshots list
+    - Resource graphs
+  + Friendlier 'no snapshots' view.
+  + Fix invisible separators in menus.
+  + Fix some label alignments.
+  + Fix main window hanging in weird blank state on launching new
+    windows.
+  + Don't present useless 'Open in new window' option when box
+    already has its own window.
+  + Connect to local libvirt machines' SPICE display through a
+    file descriptor. While this alone doesn't fix the issue of
+    spice connection being exposed to other local users yet, all
+    work in Boxes is done for that.
+  + Mark a few forgotten UI strings for translation.
+  + Fix a few UI strings.
+  + Ellipsize URL in the middle to ensure the hostname and
+    filename are visible.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 19 10:36:33 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + New cool first experience screen.
+  + Drop intro page from wizard now that we have a cool first
+    experience screen.
+  + Show step titles rather than numbers in wizard titlebar.
+  + Ensure titlebar always has a title.
+  + Inform users how to release the keyboard grab.
+  + Don't autosave a VM when view/editing its propties.
+  + Show normal entries for editable string properties instead of
+    our custom widget that shows a button to edit.
+  + Ensure selection-mode exit on launching properties view.
+  + URL entry in wizard:
+    - Provide completion based on media URLs known to libosinfo.
+    - More thorough validation of local URLs.
+    - Don't enable 'Continue' for invalid URLs.
+    - Better explain expected URLs.
+  + Fix and improve snapshot naming.
+  + Add automated UI tests.
+  + Import of system libvirt VMs:
+    - Fix import failing with a weird 'Empty location' error
+      message.
+    - Don't needlessly chmod disk (and hence launch annoying
+      policykit dialog).
+    - Replace network interface so imported VM can be started
+      successfully.
+  + Set proper accessible name on windows.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 12 03:15:04 UTC 2015 - badshah400@gmail.com
+
+- Update to version 3.15.4:
+  + Add a menu button that, when clicked pops up a menu to allow
+    user to send system key combos to guest. Currently supported
+    combos are: Ctrl+Alt+Backspace, Ctrl+Alt+F1, Ctrl+Alt+F2,
+    Ctrl+Alt+F7.
+  + Drop all nested dialogs by use of notifications and GtkStack
+    widget. This also implies that we now only allow
+    customization of resources before a box is created.
+  + As a USB device is no longer available on the host after
+    being redirected to guest, do not present keyboards and
+    mice to user for redirection.
+  + Place fullscreen button before others in display headerbar.
+    This is for consistency with UI mockups and other apps.
+  + Show correct number of steps in wizard title.
+  + Show notifications on correct window in properties and wizard
+    views.
+  + Apply appropriate theme to 'Force shutdown' button.
+  + Correctly restore notebook page in properties view.
+  + Don't show empty pages in properties view.
+  + Bigger properties and wizard windows.
+  + Add a USB keyboard to new domains.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 12 03:15:03 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.15.3:
+  + Add a menu button that, when clicked pops up a menu to allow
+    user to send system key combos to guest. Currently supported
+    combos are:
+    - Ctrl+Alt+Backspace
+    - Ctrl+Alt+F1
+    - Ctrl+Alt+F2
+    - Ctrl+Alt+F7
+  + Drop all nested dialogs by use of notifications and GtkStack
+    widget. This also implies that we now only allow customization
+    of resources before a box is created.
+  + As a USB device is no longer available on the host after being
+    redirected to guest, do not present keyboards and mice to user
+    for redirection.
+  + Place fullscreen button before others in display headerbar.
+    This is for consistency with UI mockups and other apps.
+  + Show correct number of steps in wizard title.
+  + Show notifications on correct window in properties and wizard
+    views.
+  + Apply appropriate theme to 'Force shutdown' button.
+  + Correctly restore notebook page in properties view.
+  + Don't show empty pages in properties view.
+  + Bigger properties and wizard windows.
+  + Add a USB keyboard to new domains.
+  + Updated translations.
+- Add pkgconfig(libusb-1.0) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Thu Feb 12 03:15:02 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.15.2:
+  + Properties view rework:
+    - Now a separate dialog-like window.
+    - Rename 'Login' section to 'General'.
+    - Merge 'Display' secion into 'General' section.
+    - Replace sidebar with:
+      . system stats and controls in the 'System' section.
+      . notebook tabs for each section.
+    - Remove the vague 'Resize guest' property and instead tell
+      SPICE to always try to scale the guest display to allocated
+      size.
+    - Remove vague auto-usbredirection option.
+    - Replace use of vague term 'Virtualizer' with a more
+      friendlier (and consistent) term, 'Broker'.
+    - Show broker name instead of URL in properties view but do
+      show broker URL in troubleshooting log.
+  + Wizard view rework:
+    - Now a separate dialog-like window.
+    - Replace sidebar with step info in the title.
+    - Present a popover with item-specific actions menu that
+      includes:
+      . Open in new window.
+      . Favorite.
+      . Pause.
+      . Delete.
+      . Properties when user:
+        - right-clicks (or hits menu key) over an item.
+        - clicks a new menu button in display view that replaces
+          the 'properties' button.
+  + Show box display resolution on window resize.
+  + Automatically save/pause VMs running in background, except for
+    ones under express installation.
+  + Tell SPICE to also upscale the display when needed so that we
+    don't end up with a very tiny box display on hidpi screens when
+    no autoresolution is in effect (e.g boot loader screen or
+    guests with no qxl/agent).
+  + Download files to temporary location first. This fixes the
+    issue of Boxes trying to use partially downloaded files.
+  + Set 'USB' bus for mouse since the default PS/2 bus has been
+    reported to be much slower.
+  + Correctly handle the case of user clicking on a box that is
+    being saved.
+  + Explicitly disable HPET, based on input from libvirt and Qemu
+    developers.
+  + Report ovirt support in the configure summary.
+  + Don't spin spinner on paused machines.
+  + If Boxes is launched with SOUP_DEBUG environment variable set,
+    attach a logger to libsoup session.
+
+-------------------------------------------------------------------
+Wed Feb 11 10:02:22 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.14.3.1 (boo#916784):
+  + Fix generated C files.
+- Changes from version 3.14.3:
+  + Fix express installation for Fedora and RHEL.
+  + Add automated tests.
+  + Fix import of VMs from system libvirt broker.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 13 20:02:43 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Remove redundant revealer from snapshots view.
+  + Fix a potential crash on snapshot deletion.
+  + Print a more descriptive warning on failing to rename a
+    snapshot.
+  + Report ovirt support in configure summary.
+- Changes from version 3.14.1.2:
+  + Fix crash on launching a VNC box.
+  + Fix exit of wizard when going back from customization screen.
+  + Don't start the VM after reverting to a snapshot unless it was
+    running in foreground before the reversion operation.
+  + Always show "Reverting to SNAPSHOT_NAME" message when reverting
+    as we can never be sure about the speed of the operation.
+  + Fix the issue of pause button still being available to user
+    when a selected box(es) is already being paused and Boxes
+    leading into interesting scenerios if user clicks on the
+    button.
+  + Fix the issue of change of box name from toolbar title not
+    getting saved.
+  + Fix cancellation of media setup and therefore wizard jumping to
+    setup page even after user has cancelled creation of
+    corresponding VM.
+  + Continue wizard to next step on user hitting 'Enter' in URL
+    entry.
+  + Correctly handle HTTP(S) redirection.
+  + Remove a now redundant work around.
+  + Updated translations.
+- Changes from version 3.14.1.1:
+  + Fix express installation for Microsoft Windows.
+  + Fix handling of downloads of unknown size.
+
+-------------------------------------------------------------------
+Mon Oct 13 19:16:14 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.1:
+  + Documentation improvements.
+  + Fix gnome-shell search provider by updating .desktop ID.
+  + Add padding to left and right of display header bar.
+  + Fix handling of remote non-ISO (import) images.
+  + Update CPU model also for boxes created through old Boxes on
+    startup.
+  + Replace user interface with bridge in existing domains on
+    startup.
+  + Fix download of logo files by direct use of actual HTTPS URLs
+    as redirection is currently not handled by Boxes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 12:16:41 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + Documentation improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 16 10:20:33 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Remove custom code for RTL back icon as gtk+ takes care of that
+    for us now.
+  + Fix hang on editting of box name.
+  + Drop some redunant color hardcoding from theme.
+  + Don't show snapshots option for machines that can't handle
+    snapshots.
+  + Don't show snapshots option for machines under installation.
+  + Update CPU model for existing/old machines that were created by
+    Boxes.
+  + Make empty boxes image more visible.
+  + Fix alignment of a empty boxes description label.
+  + Fix Boxes ending up in weird states on hitting back button.
+  + Close secondary window automatically if its machine
+    - stops running.
+    - is deleted.
+  + Update screenshot on machine disconnection.
+  + Fix checkboxes in selection mode by use of latest libgd.
+  + Make D-Bus autolaunch work.
+  + User help:
+    - Add page about keyboard shortcuts.
+    - Add page about gnome-continuous images.
+    - Add page about snapshots.
+    - Add pages about various options in properties view.
+    - Updates/cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  7 10:34:25 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + Add ability to create, delete, rename and revert to VM
+    snapshots.
+  + Don't ignore CDROM devices.
+  + Fix build against '-Wl,--as-needed' linker flags.
+  + Better error message on failure to start a VM.
+  + Fix a regression that broke showing of 'empty boxes' UI.
+  + Alignment fixes.
+  + Updated translations.
+- Drop gnome-boxes-asneeded.patch: Fixed upstream.
+- Drop libtool BuildRequires and call to autoreconf: No longer
+  needed.
+
+-------------------------------------------------------------------
+Wed Aug 20 16:56:18 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Allow running boxes in their own seperate windows.
+  + Handle initrd script injection method and therefore support for
+    Debian express installation through libosinfo >= 0.2.11.
+  + Introduce media downloading feature. You can now enter an
+    HTTP(S) URL to a remote media in wizard and Boxes will download
+    it for you.
+  + Allow editting the machine's name through the title in
+    properties view.
+  + More keyboard shortcuts:
+    - Ctrl+N for launching wizard.
+    - Ctrl+F for launching search.
+  + If internet connection is required for express installation by
+    an OS:
+    - ensure it is available before allowing to start express
+      installation.
+    - Inform user of this requirement.
+  + Replace hardcoded colors and background images with theme
+    colors.
+  + Menu button in selection mode disappeared recently due to a
+    gtk+ bug, lets bring it back using a simple work around.
+  + Fix support for non-kvm hosts.
+  + Ensure minimum storage for an OS is actually known before using
+    that information.
+  + Improved maximum disk capacity calculation.
+  + Warn on not enough space on the host to inscrease maximum disk
+    size of VMs.
+  + More information in DOAP file.
+  + Updated translations.
+- Add pkgconfig(libarchive) BuildRequires: new dependency.
+- Add gnome-boxes-asneeded.patch: Fix building with
+  -Wl,--as-needed.
+- Add libtool BuildRequires and call to autoreconf: above patch
+  touches the build system.
+
+-------------------------------------------------------------------
+Mon Jul 21 18:08:05 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + Don't reveal fullscreen topbar on pointer over edges to not
+    interfere with user trying to reach WM decorations or apply
+    edge gestures (as used in many modern operating systems) in the
+    guest.
+  + Don't show WM decorations in fullscreen. This is especially
+    ugly in classic-mode where we have 3 buttons.
+  + Drop weird and buggy custom thumbnail hilighting and enable it
+    from gtk+ through latest libgd.
+  + Fix max storage capacity going lower than min storage capacity.
+  + Add F1 shortcut for help.
+  + Allow selecting file from remote shares (for real this time).
+  + Drop usage of deprecated APIs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 12 23:28:39 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.3:
+  + Remove 'New' entry from global menu. It's context-sensitive and
+    therefore does not belong there.
+  + Specify exact Ctrl key in hint for ungrabbing..
+  + Don't auto-fullscreen Boxes on launch.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 08:02:09 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Fix a regression that breaks express installation for Microsoft
+    Windows.
+  + Fix the issue of VM always going fullscreen on going back from
+    properties.
+  + Fix a potential crash.
+  + A minor documentation fix.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 15 16:31:27 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.1:
+  + Only disallow ejection of media when we are very sure user will
+    not need it: live media and express installation.
+  + Fix the issue of user ending up in the wrong wizard pages and
+    getting stuck on preparation page.
+  + Fix the issue of 'Import 0 boxes from system broker' button
+    showing up in the wizard.
+  + Fix the issue of window suddenly growing back on its own after
+    user has put it in a particular size.
+  + Make window fit on small screens: 625x678px.
+  + Make wizard look better on small screens.
+  + Other minor fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 18:59:31 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 12:09:56 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Implement prelight on mouse hover.
+  + Drop use of deprecated libsoup and gio API.
+  + Add missing transition animations from properties and wizard
+    pages.
+  + Provide 'undo' option for live VM autodeletion.
+  + Make use of system-wide cache for logos and drivers in
+    /var/cache/gnome-boxes.
+  + Fix recent regressions:
+    - Boxes showing a spinner forevever if a commandline argument
+      was passed.
+    - An ugly looking border at the right of wizard and properties
+      sidebar.
+    - Missing 'back' button on wizard's source URL page.
+  + Add Alt+Left and Alt+Right shortcuts for going back and forward
+    in different views.
+  + Add Esc shortcut for cancelling wizard.
+  + Focus 'Create' button on last page of wizard so that user can
+    quickly confirm by hitting 'Enter'.
+  + Existing disk capacity should not be taken into account to
+    calculate the maximum value for disk capacity. It should simply
+    be the space available on host disk.
+  + Set disk size in correct units for running machines. We were
+    setting size to valuex1024.
+  + Refresh disk info after resizing disk of running machines.
+    Otherwise we keep showing the older value when user goes back
+    to properties.
+  + Disable 'save on timeout' all together for storage volume size
+    change since that easily leads to horrible user experience: You
+    accidently increase the capacity to too high value and if you
+    are not quick enough to change it again, you'll not be able to
+    correct this ever as we don't support shrinking of volumes.
+  + Allow shrinking storage volumes in wizard.
+  + Fix a crasher bug.
+  + Add info about runtime deps and reporting bugs to README.
+  + Add a HACKING file for people interested in developing Boxes.
+  + Report progress for non-http(s) downloads as well.
+  + Don't register for 'x-content/bootable-media' mimetype as in
+    most cases that results in user given the option to launch
+    Boxes for an ISO9660 device and then Boxes failing to handle
+    it.
+  + Don't present CD-ROM and non-readable devices in wizard's
+    source selection.
+  + Don't try to copy non-existant avatar.
+  + Remove some obsolete workarounds.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  4 20:14:29 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+  + Drop all usage of clutter and clutter-gtk API.
+  + Show spinner in the middle of the view (rather than on top
+    right) and hide all boxes while launching a box.
+  + Fix issues with searchbar visibility.
+  + Don't display searchbar on keyboard events until we have boxes
+    to search through.
+  + Correct selection menu theme in topbar.
+  + Fix regression of disabled selection menu items in topbar.
+  + Don't show Yes/No dialog, as per HIG.
+  + Fix the issue of window going beyond the screen when switching
+    to properties from display page in fullscreen mode.
+  + Improved transitions and adjusted transition speeds.
+  + Fix the issue of 'Continue' button getting insensitive on
+    cancelling the wizard at Introduction page.
+  + Fix regression of file selection & URL entry buttons not
+    appearing in wizard's source page.
+  + Fix regressions related to box thumbnail in properties sidebar.
+  + Drop gsetting for animation duration. Such a setting, if really
+    needed, belongs in Gtk+.
+  + Add mnemonics to shutdown dialog.
+  + Lots of internal clean-ups.
+  + Updated translations.
+- Drop pkgconfig(clutter-1.0) and pkgconfig(clutter-gtk-1.0)
+  BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
+Mon Feb 24 10:32:23 UTC 2014 - zaitor@opensuse.org
+
+- Pass --enable-smartcard to configure, this is now needed to build
+  smartcard support.
+
+-------------------------------------------------------------------
+Wed Feb 19 09:10:12 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90.1:
+  + Make use of GtkActionBar API.
+
+-------------------------------------------------------------------
+Tue Feb 18 18:18:00 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Show spinner while initializing.
+  + Avoid warnings on console by only connecting to running
+    displays.
+  + Remove 'Reboot required' infobar from properties. This infobar
+    was redundant and looked ugly. We do present a notification that
+    says basically the same thing and it even offers a button to
+    actually restart the machine.
+  + Instead of spamming 'Reboot required' notifications each time
+    user make a change, lets just show it once when user is done
+    changing all the properties.
+  + Avoid 'Yes' and 'No' buttons as per HIG in 'Reboot required'
+    notification.
+  + Correct order of buttons in topbar w.r.t Gtk+ 3.11.4.
+  + Support latest tracker version.
+  + Move most of the UI setup to .ui files.
+  + Reduced usage of clutter/clutter-gtk.
+  + Don't build redundant gd modules.
+  + Updated translations.
+- Replace pkgconfig(tracker-sparql-0.18) for
+  pkgconfig(tracker-sparql-1.0) BuildRequires.
+
+-------------------------------------------------------------------
+Thu Feb  6 22:09:46 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5.1:
+  + Fix regression of wizard labels not changing style. This
+    regression also meant many criticals on the console.
+
+-------------------------------------------------------------------
+Wed Feb  5 11:52:09 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5:
+  + Remove redundant workarounds.
+  + Reduced usage of libgd and clutter-gtk.
+  + Upadted translations.
+
+-------------------------------------------------------------------
+Tue Jan 14 19:35:55 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Avoid listing duplicate media in wizard.
+  + Bundle application data with application binary, using
+    GResource.
+  + Ensure we use best CPU architecture for new VMs.
+  + Fix handling of ISO9660 devices by more reliable check for
+    media type.
+  + Fix the issue of VMs not booting on certain CPUs. The downside
+    is that users will now loose VMs' states if they change host
+    CPU.
+  + Reduced usage of clutter-gtk (Goal is to completely abondon
+    it).
+  + Add logo for RHEL 7.
+  + Fixes to build system.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Dec 16 21:23:24 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Setup NAT networking for new VMs so that all VMs are on the
+    same private (to host) network and therefore VMs and host can
+    directly communicate with each other.
+  + Fix the regression of system libvirt import getting wrongly
+    activated.
+  + Fix the issue of fullscreen/restore button being chopped on the
+    left side.
+  + Improved detection of gnome-continuous images.
+  + Make use of new OS variant API of libosinfo for improved naming
+    of VMs and presentation of OS medias.
+  + Fix a potential crash.
+  + Instead of using unmaintained fuseiso for extracting files from
+    ISOs, we now use iso-read command.
+  + Simplify "About Boxes" to "About" in global menu.
+  + Add a missing translation marker.
+  + Updated translations.
+- Replace pkgconfig(tracker-sparql-0.16) BuildRequires with
+  pkgconfig(tracker-sparql-0.18): move to Tracker 0.18.
+
+-------------------------------------------------------------------
+Wed Nov 20 20:59:52 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + Allow import of system libvirt VMs.
+  + Enable users to use force shutdown as a work around for
+    completing installations from live sessions for OSes (e.g
+    Ubuntu) that require you to eject the CDROM after installation.
+  + Fix regression of empty Boxes UI not showing up.
+  + Handle the case of user manually deleting storage pool
+    directory.
+  + Only show cutomize button in wizard summary when creating
+    single machines as it currently does not work for other cases.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 13 16:36:35 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.2 (bnc#849913):
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 14:57:58 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 17 17:01:43 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.92:
+  + Don't mark empty string ("") for translation.
+  + Use 'virtio-net' in new VM boxes when supported by guest OS.
+  + Fix network for VM boxes created from gnome-continuous images.
+  + Fix regression of spinner not getting removed from on top of
+    under construction boxes, after import/install was finished.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 11 17:00:42 UTC 2013 - rbrownccb@opensuse.org
+
+- Requires libvirt-daemon-qemu instead of
+  libvirt-daemon-driver-qemu since libvirt package has been split
+  again.
+
+-------------------------------------------------------------------
+Thu Sep  5 07:06:42 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.91.1:
+  + Apply correct style to enable rounded corners in latest
+    gnome-shell.
+  + Correct desktop file name in AppData file.
+  + Rebuild against latest Vala to fix build against older libsoup.
+  + Fix 'No KVM' warning visibility issues.
+  + Remove redundant workaround for bgo#677260.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  3 06:41:15 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.91:
+  + Provide an AppData file for GNOME software center.
+  + Fix regression in launching of VMs from commandline.
+  + Switch to client-side decoration in preparation for 3.10
+    wayland tech demo.
+  + Baseline align wizard's setup widgets.
+  + Don't hang on failure to handle a URL.
+  + Fix the regression of inability to handle local paths in
+    wizard.
+  + Handle files on locally mounted SMB shares.
+  + Some important accessibility fixes.
+  + Fix CTRL+Q and ALT+A handling.
+  + Provide keyboard accelerator for "New" button.
+  + Adapt to new UI design for selection mode.
+  + Drop usage of now deprecated gtk stock items.
+  + Fix bug in favorites button handling in selection mode.
+  + Fix build against Automake 1.14.
+  + Drop usage of Gd.MainToolbar in favor of new Gtk.HeaderBar.
+  + Work around vala issues reported in bgo#706517.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 20 15:49:51 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.90:
+  + Adapt to latest govirt and libvirt-gconfig API.
+  + Fix a typo in user-visible string.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug  1 09:16:56 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.5:
+  + Don't show spinner on live boxes.
+  + Correct button arrows for RTL locales.
+  + Fix properties to display animation against Clutter 1.16.
+  + More noticeable warning on VT unavailability.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 25 13:26:29 UTC 2013 - fcrozat@suse.com
+
+- Requires libvirt-daemon-driver-qemu instead of libvirt +
+  qemu/kvm, since libvirt package has been split and kvm has
+  been merged in qemu package.
+
+-------------------------------------------------------------------
+Fri Jun 21 20:04:16 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.3:
+  + Add support for import of ready-made disk images. Supported
+    formats are: qcow2, qcow, cow, raw (.img extension), vdi, vmdk,
+    vpc, cloop. Also gzip compressed images are supported.
+  + Show a spinner on top of under-construction boxes in collection
+    view.
+  + Fix cancellation of ovirt authentication.
+  + Asynchronously initialize brokers so UI doesn't remain empty
+    for slow brokers.
+  + Handle SPICE connection errors and avoid user seeing a stuck UI
+    indefinitely in case of such errors.
+  + Fix selectionbar overlay not becoming visible on right-click.
+  + Fix Boxes showing mostly invisible wizard when launched with a
+    media argument.
+  + Fix display ending-up at the top of item in collection view at
+    the end of display->collection animation when linked against
+    clutter 1.16.
+  + Fix ellipsizing of wizard summary labels.
+  + Use new libgovirt API to know the host subject to use to
+    validate the SSL certificate of a given VM without user having
+    to set environment variable.
+  + If recommended/min memory for an OS or OS itself is unknown, we
+    now allocate 1G rather than 500M. 500M is too little for most
+    modern OSs.
+  + Drop file extension when naming a VM by its source media
+    filename.
+  + Ensure that newly created boxes appear first in the collection
+    view.
+  + Remove now redundant style & associated data.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 28 06:45:16 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.2:
+  + Fix focus going out of password/username entries on each key
+    press.
+  + Fix unwanted '_' in wizard toolbar button labels.
+  + Make use of new libosinfo API to set direct boot commandline
+    for Fedora express installation instead of hardcoding it.
+  + Allow changing URI of non-connected remote displays.
+  + Fix sorting of boxes that were never accessed.
+  + Handle locales with '.UTF-8' suffix and hence fix Fedora 19
+    express installation against such locales.
+  + Fix non-express installation of Windows XP and 7.
+  + Fix regression in setup->review->setup->review wizard
+    transition.
+  + Don't automatically jump to next page in wizard on express
+    install untoggled.
+  + Show display overlay toolbar until mouse moves so that user
+    doesn't miss it.
+  + Ensure display toolbar is visible when mouse can be grabbed.
+  + Mark two user visible strings for translation.
+  + Never make the 'Express Install' label in wizard, insensitive.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 14 07:11:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2:
+  + Fix underline char in "Done" selection button.
+  + Avoid showing weird errors when user is entering URI in wizard.
+  + Correct size of 'read-only' toggle in VNC box properties.
+  + Fix a regression that disables Boxes from connecting to the
+    same box more than once.
+  + Tone down hologram effect in Boxes icon not to appear broken.
+  + Correctly set timezone configuration on new VMs.
+  + Work around the issue of dialog being blank after first usage
+    (bgo#699376).
+  + Activation of text entries in wizard's setup page now behave as
+    expected.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 19 10:50:58 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1.2:
+  + Fix focus going out of password/username entries on each key
+    press.
+  + Fix unwanted '_' in wizard toolbar button labels.
+
+-------------------------------------------------------------------
+Tue Apr 16 07:09:19 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Don't crash on missing udev properties.
+  + Enable usb-redirection by default.
+  + Allow rebooting the box on changes to system properties, even
+    if box is in saved state.
+  + Automatically delete under-install/live VM on source media
+    deletion.
+  + Use correctly sized logos.
+  + Avoid weird glitches in UI by actually cancelling the
+    connecting process when user goes back to collection view.
+  + Add '--enable-ovirt' configure option.
+  + Delete box configuration even when box is deleted by another
+    UI.
+  + Continue/Create buttons in wizard should have the focus when
+    they are sensitive. In most cases, this will enable users to
+    create VMs very quickly.
+  + More info on hardware requirements in user help pages.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 26 10:44:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Much improved user help pages.
+  + Fix regression in rebooting of machines after editing
+    properties.
+  + Allow editing system properties before creation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 20 18:45:41 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Fix progress update on wizard's 'preparation' page.
+  + Remove empty help page.
+  + Use correct version of tracker vala binding.
+  + Don't automatically download drivers for all media on startup.
+  + Improve high resolution icon.
+  + Don't provide option to eject CDROM or changing of system
+    properties during installation.
+  + Set RAM size in correct units.
+  + Disable SPICE image compression in new VM boxes since the VMs
+    we create are by default local-only.
+  + Explicitly disable driver signing for unsigned drivers. With
+    this change, QXL drivers actually work out of the box now.
+  + More translator comments.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 14 20:07:00 CET 2013 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Tue Mar  5 18:57:55 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Allow drag to unfullscreen Boxes.
+  + Align the spinner that is shown when connecting to and
+    restoring saved Boxes.
+  + Don't allow smaller window than the UI requires.
+  + Ensure all potentially long labels are ellipsized.
+  + Fix current memory size display in properties.
+  + Show correct max. memory in diagnostics log.
+  + Allow ignoring saved state if restore fails.
+  + Change category in desktop file from 'Network;RemoteAccess' to
+    'System'.
+  + Use more appr. icon for properties.
+  + Forgotten (from last release) adaptations for media detection
+    code against latest udev and libosinfo.
+  + Fix launching of multiple installation from same media in the
+    menu.
+  + Fix the ungrab label sometimes rendering wrong.
+  + Fix sidebar width on non-english locales.
+  + Change mnemonic for 'Done' as it conflicts with 'Delete' button
+    in selection view.
+  + List favorite boxes and most recently used boxes before others.
+  + Hide USB devices from properties when usbredir is disabled.
+  + Refresh USB devices in properties when devices are
+    added/removed.
+  + Fix a crash in notification bar.
+  + Better error messages on failure to change box properties.
+  + Add preliminary user documentation.
+  + Validate desktop file during build.
+  + Add memory units to diagnostics log.
+  + Updated translations.
+- Add yelp-tools BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Tue Feb 19 22:46:09 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.90:
+  + Add oVirt support.
+  + Add support for post-installation drivers. This combined with
+    libosinfo 0.2.4 means automatic installation of QXL and all
+    virio drivers, and spice-vdagent as part of Windows XP express
+    installation.
+  + VM properties:
+    - Mark recommended RAM and storage when known.
+    - The 1M step and minimum we use for RAM is too small. Bump it
+      to 64M.
+    - The 1G step value we use for storage is too big. Decrease it
+      to 256M.
+  + Don't use IEC units for storage in wizard and properties.
+  + Fix crash when passing media on command line.
+  + Fix an infinite loop.
+  + Fix positioning of thumbnail in properties view.
+  + Adapt media detection code against latest udev and libosinfo.
+  + More rebust media detection.
+  + More robust restart of installations.
+  + Ensure driver installation progress always reaches 100% even if
+    an error occurs during the installation.
+  + Allow search with multiple terms. A search like "foo bar" now
+    means name containing "foo" and "bar". This is nicer, and what
+    you expect from e.g. gnome-shell search.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  5 19:49:47 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + Fix screenshot zooming when going to properties view.
+  + Fix squished icon in properties during wizard.
+  + Add header to properties view.
+  + Make fullscreen toolbar translucent.
+  + Use the standard OSD look for the fullscreen toolbar.
+  + Remove 'fullscreen' and 'properties' from global menu.
+  + Fix the last of clutter deprecated API warnings.
+  + (Try to) support product logos and driver files from non-HTTP
+    sources.
+  + Move 'Cancel' button to left in wizard.
+  + Put selection toolbar in the right place in the UI.
+  + Be less strict about device driver architecture.
+  + Support new tracker version.
+  + Proper support for command line args in secondary process.
+  + Always grab focus when switching to display mode.
+  + Use stock buttons for 'Delete' and 'Properties' rather than
+    icons in selection toolbar.
+  + Update to latest libgd.
+  + Add initial experience greeting. As a consequence, we don't
+    autolaunch wizard on first time usage anymore.
+  + Don't force fullscreen when a newly created vm is started.
+  + Selecting item when maximized enters fullscreen.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 17 18:34:11 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + Make use of new libosinfo API to avoid starting installation in
+    language unsupported by installer media.
+  + Add smartcard support.
+  + Ensure driver files cache is up2date and unique.
+  + Once installation is complete,
+    - Eject CDROM.
+    - Delete installer files.
+  + Make the progressbar on wizard's preparation page more useful
+    by showing progress of media detection and drivers download and
+    keeping the user informed bout current activity.
+  + Adapt to Clutter 1.12 and Gtk+ 3.2.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 16 20:44:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.2:
+  + Add storage pool test to --checks.
+  + Enter selection mode on right-click in collection view.
+  + Move force shutdown button from application menu to properties
+    view.
+  + Add option to pause VMs.
+  + Make selection and properties views, and wizard's setup page
+    look more like mockups/gnome-documents.
+  + Add options to select all, none and running boxes.
+  + Allow search in selection mode.
+  + Allow accessing properties for non-running VMs (through
+    selection mode).
+  + Show notifications on display page as well.
+  + Go back to display when user clicks thumbnail in properties
+    view.
+  + Be more strict about SPICE URIs.
+  + Allow tweaking properties for remote machines in the wizard.
+  + Add keywords to the desktop file to make gnome-shell search
+    more satisfying.
+  + Ensure we always disconnect display when we're not displaying
+    it.
+  + Force shutdown the machine with user's consent if ACPI shutdown
+    request is ignored by guest OS.
+  + Remove libvirt-glib hacks.
+  + Add USB redirection support in new VMs if supported. Also
+    provide configure option to completely disable it at build time
+  + Don't show USB properties if VM does not support USB
+    redirection.
+  + Add option to add USB redirection support to existing VMs.
+  + Load OS database asynchronously to reduce Boxes load time.
+  + Updated translations.
+- Pass --enable-usbredir to configure to make sure it's enabled.
+
+-------------------------------------------------------------------
+Tue Jan 15 20:22:47 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.6.3:
+  + Fix express installation for Fedora 18.
+  + Don't crash when running Boxes while it's already running.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 13 07:47:21 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.2:
+  + More reliable tracking of installation.
+  + Fix 'Continue' button disabled when choosing non-express
+    installation for Windows XP.
+  + Clear search when search bar is dismissed.
+  + Use the right icon for selection mode and fullscreen buttons.
+  + Reset selection when exiting selection mode.
+  + Fix a bug in properties view where incorrect tab was shown for
+    remote machines.
+  + Handle screenshots correctly on force shutdown.
+  + Workaround some potential crashes in search provider.
+  + When password entry loses input focus while its empty, it now
+    reverts back to 'Add password' button.
+  + Add logo for RHEL 4.x, 5.x and 6.x.
+  + Ensure storage pool is active before using it.
+  + More reliable resetting of URL entry.
+  + Fix a build issue.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 16 19:10:46 UTC 2012 - dimstar@opensuse.org
+
+- Add tracker Requires: gnome-boxes fails to start otherwise with
+  (gnome-boxes:18054): GLib-GIO-ERROR **: Settings schema
+  'org.freedesktop.Tracker.FTS' is not installed (bnc#785356).
+
+-------------------------------------------------------------------
+Tue Oct 16 19:06:45 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1.1:
+  + Add a forgotten file from distribution tarball.
+
+-------------------------------------------------------------------
+Mon Oct 15 19:40:08 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Make spinner spin.
+  + Enable key navigation in main view.
+  + Disable/ignore keynav and other irrelevant keyboard events in
+    search entry.
+  + Add Ctrl-Q keyboard shortcut for quitting Boxes.
+  + Correct/improve look&feel of selection mode.
+  + Gracefully handle 'topology node missing from libvirt
+    capabilities' scenerio.
+  + Directly use libsoup for HTTP downloads.
+  + Add a SLEEPING mode for libvirt's new 'PMSUSPEND' state.
+  + Use GNOME logo for representing GNOME live media.
+  + Disable customization of remote boxes at creation for now. This
+    was nonfunctional and not as important as customization of VMs.
+  + Automatically switch to 'System' tab in properties for VM under
+    creation.
+  + Fix regression of not automatically continuing saved
+    installations on launch.
+  + Fix inconsistencies in sizes of wizard toolbar buttons.
+  + Fix incorrect enabling of 'Continue' button in wizard.
+  + Don't crash when Tracker service is unavailable.
+  + Don't automatically delete live VM box on forced shutdown.
+  + Correct configure check for forcing building from vala sources.
+  + Disable S3/S4 states for new VMs to avoid some issues with
+    these power states in latest libvirt/qemu.
+  + Only gather stats for running VMs to save resources
+  + Updated translations.
+- Add pkgconfig(libsoup-2.4) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Fri Oct  5 08:25:29 UTC 2012 - dmueller@suse.com
+
+- Require qemu on arm instead of kvm.
+
+-------------------------------------------------------------------
+Tue Sep 25 12:20:06 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 19 09:11:13 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.92:
+  + Fix running 'gnome-boxes filename.iso' from the command line
+  + Fix changing the amount of RAM when libvirt-glib 0.1.3 or newer
+    is used
+  + Make sure all running boxes are finished suspending before
+    exiting Boxes
+  + Selection/search mode refinements
+  + Various bugfixes and general polishing
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  7 18:01:59 UTC 2012 - vuntz@opensuse.org
+
+- Create a gnome-shell-search-provider-boxes for the GNOME Shell
+  search provider. It will automatically be installed if
+  gnome-boxes and gnome-shell are installed.
+- Add a gnome-shell BuildRequires for directory ownership.
+
+-------------------------------------------------------------------
+Mon Sep  3 20:26:29 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + Download OS logos on demand instead of shipping them in
+    gnome-boxes or in a non-free package.
+  + Allow to customize box memory and maximum disk size before
+    creating it.
+  + More responsive box removals.
+  + Make stopped/saved boxes easier to distinguish. Saved boxes
+    show a grayed out thumbnail of their display and stopped boxes
+    show a black screen.
+  + Add the ability to use an additional ISO with extra Windows
+    drivers for use during unattended installs. For now, Boxes can
+    use it to install the Windows system to a virtio disk. It also
+    needs to be made available manually (this will be improved at a
+    later point), 'make win-tools.iso' can be used to download it,
+  + Tweak auto-hiding of fullscreen toolbar.
+  + Improve box display scaling (when using a very recent
+    spice-gtk).
+  + Various UI fixes and improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 21 20:55:37 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Add search feature, both inside Boxes and in GNOME Shell.
+  + Selection view now looks a lot prettier (i-e like in
+    gnome-documents) and we now retain the selection when switching
+    away from selection view.
+  + Add an info text column under the box in collection view.
+    Currently its used to indicate installation or live status of
+    VMs.
+  + Asynchronously launch machines so the UI doesn't hang and user
+    sees that something is actually happening.
+  + Make 'favorite' button in selection view, actually work.
+  + Express installation:
+    - Use the new info text column to show the progress of the
+      installation.
+    - Don't set SPICE password. Our own created VMs are supposed to
+      be private to user (at least by default) so there is no need
+      to add password protection to display connection.
+    - Allow password-less Fedora VM, just like Windows XP and 7.
+    - Require user to input product key for Windows XP.
+    - Remove work around for broken QXL drivers on Fedora 16 ISOs.
+    - Use the new schemas for detecting the keyboard layout.
+  + 'check' commandline option:
+     - Add a check for SELinux context.
+     - Add check for whether we have the kvm capability on
+       qemu:///session.
+     - Prettier output.
+  + Add 'open-uuid' commandline option that allows to open a box by
+    its UUID.
+  + Fixes to satisfy recent valac.
+  + Fix issue of Fedora installations looping forever.
+  + Fix a series of small issues in the UI.
+  + Updated translations.
+- Add pkgconfig(uuid) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Tue Aug  7 10:41:10 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.5:
+  + Allow renaming virtual machines
+  + Gracefully handle errors from text entries in properties
+  + Notify user when properties changes are pending
+  + Ensure changes to RAM and storage properties are not lost
+  + Don't lose display connection when a machine reboots
+  + More reliable virtual machine reboot/shutdown
+  + Show the display in the right place of properties page
+    depending on current UI state
+  + Properly update screenshot on machine shutdown
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 18 08:27:57 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4.1:
+  + Create VM based on host capabilities: Choose the virtualization
+    type (KVM or Qemu), architecture and features (acpi, apic and
+    pae) of the created domain based on host capabilities. This
+    means we now allow creation of VMs even when KVM is not
+    available.
+  + Warn about unavailability of KVM
+  + Assign best possible CPU configuration to VMs
+  + Reduce the chances of failures at review page of wizard by
+    pre-creating VMs
+  + Error out on failure to create VMs
+  + More reliable post-installation setup
+  + Automatically resume saved installations on launch
+  + Friendlier error on new VM setup failure
+  + Fix collisions in multiple express installations of the same OS
+  + Don't shutdown guest after win7/win2k8 express installation
+  + Avoid redundant number suffix in live VMs
+  + Fix the regression of 'SETUP' not being skipped for live medias
+    when going backwords in wizard
+  + Fix layout of initial wizard page
+  + Fix creation of VM from hardware CDROM media
+  + Sort media in ascending order, not descending
+  + Fix not showing selection in file chooser dialog
+  + Drop non-free logo files
+  + Don't crash when zooming out of a removed box
+  + Fixes to box thumbnail drawing/animations
+  + Make paused/saved state of dark thumbnails more visible
+  + Fix color of toolbar in fullscreen
+  + Fix transparent topbar
+  + Fix nasty flashing when clicking on toolbar
+  + Add translator comment to explain 'Express Install'
+  + Add missing files to POTFILES.in and POTFILES.skip
+  + Add --debug configure option to set Vala & C debug flags
+  + Remove exclamation mark from error messages
+  + Bugs fixed: bgo#671251, bgo#673850, bgo#674209, bgo#676029,
+    bgo#676256, bgo#677274, bgo#678455, bgo#678769, bgo#678849,
+    bgo#678876, bgo#678888, bgo#678894, bgo#678900, bgo#678902,
+    bgo#678933, bgo#679040, bgo#679066, bgo#679121, bgo#679229,
+    bgo#679293, bgo#679429, bgo#679430, bgo#679482, bgo#679645,
+    bgo#679646, bgo#679657, bgo#679666, bgo#679706.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 26 08:24:17 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + Port to clutter 1.10 API.
+  + Big overhaul of the UI code to make the UI look and feel a lot
+    more like the design and fix many small issues.
+  + Wait for libvirt setup before creating VMs and save a potential
+    crash.
+  + Fix warnings on canceling of VM selection.
+  + Zoom VM into icon when exiting display mode.
+  + Fixes issue of selection bar sometimes hiding on animation
+    completion.
+  + Re-introduce 'ComputerName' setting in Windows 7 express
+    installation but this time around, put it in the correct pass.
+  + Make use of 'title' node in libvirt XML. Mainly done to fix
+    Windows 7 express installation.
+  + Sort the list of boxes shown to the user according to the
+    sorting rules in use for his/her locale.
+  + Fix a wrong assumption in wizard.
+  + Always skip setup page for live media in wizard instead of
+    presenting UI options to user that will be ignored completely.
+  + Escape key now quits selection mode.
+  + Provide a menu entry to force shutdown VMs.
+  + Do not show URL entry when going back after selecting source in
+    wizard.
+  + Always reset wizard source page when moving forward.
+  + Stop resizing the display when switching to properties.
+  + Remove some rendering glitches by removing some obsolete code.
+  + Bugs fixed: bgo#672152, bgo#672456, bgo#672527, bgo#673072
+    bgo#674669, bgo#674673, bgo#676216, bgo#676669, bgo#677034
+    bgo#677177, bgo#677666, bgo#677690, bgo#677713, bgo#677730
+    bgo#677739, bgo#678302, bgo#678456, bgo#678545, bgo#678569
+    bgo#678624.
+  + Updated translations.
+- Add pkgconfig(clutter-1.0) BuildRequires: configure now checks
+  for clutter.
+
+-------------------------------------------------------------------
+Tue Jun 12 20:28:21 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.2:
+  + Rework media menu to look good and allow scrolling.
+  + Indicate live medias and VMs as such.
+  + Correctly report 'i686' architecture as 32-bit.
+  + Avoid deadlock during startup.
+  + Fix toolbar not showing up.
+  + Always automatically launch wizard on startup when Boxes is
+    empty, not just on the first run.
+  + Update topbar title to help with ungrab.
+  + Do not forward grab-broken events to box' display.
+  + Allow to open a machine from command line. This allows calling
+    "gnome-boxes xp" to start and open that VM for example.
+  + Add a command line argument to open in full screen.
+  + Always install a tablet device.
+  + Do not skip review page for unknown or live media when creating
+    VM manually from wizard.
+  + Fix blurry notifications.
+  + Fix escaping from fullscreen when caps/numlock are on.
+  + Setup VM timers policies that fixes Windows 7 hangs.
+    - Set hostname based on its box's name for Windows XP and
+      Fedora.
+    - Setup user account and autologon for Windows XP.
+    - Setup user's avatar for Windows XP and Fedora.
+    - Correctly setup admin password for Windows XP.
+    - Use gtk+ password character in Summary page.
+  + Some other functional and non-functional improvements and fixes
+  + Bugs fixed: bgo#664239, bgo#665562, bgo#670306, bgo#672159,
+    bgo#672160, bgo#672458, bgo#672528, bgo#672567, bgo#672601,
+    bgo#672853, bgo#672872, bgo#672983, bgo#673053, bgo#673847,
+    bgo#674035, bgo#674657, bgo#674794, bgo#676176, bgo#676222,
+    bgo#676307, bgo#676320, bgo#676588, bgo#676589, bgo#676590,
+    bgo#676591, bgo#676631, bgo#676632, bgo#676648, bgo#676658,
+    bgo#676676, bgo#676679, bgo#676834, bgo#677117, bgo#677177.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jun 10 14:27:06 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.4.3:
+  + Correctly report 'i686' architecture as 32-bit.
+  + Avoid deadlock during startup.
+  + Fix toolbar not showing up.
+  + Always automatically launch wizard on startup when Boxes is
+    empty, not just on the first run.
+  + Update topbar title to help with ungrab.
+  + Do not forward grab-broken events to box' display.
+  + Always install a tablet device.
+  + Fix blurry notifications.
+  + Fix escaping from fullscreen when caps/numlock are on.
+  + Setup VM timers policies that fixes Windows 7 hangs.
+  + Express installation:
+    - Setup user account and autologon for Windows XP.
+    - Correctly setup admin password for Windows XP.
+    - Use gtk+ password character in Summary page.
+  + Bugs fixed: bgo#674035, bgo#674657, bgo#674794, bgo#676176,
+    bgo#676222, bgo#676307, bgo#676320, bgo#676588, bgo#676590,
+    bgo#676591, bgo#676679, bgo#676834, bgo#677117, bgo#677177.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 15 06:04:08 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.2:
+  + Performance-related fixes and improvements:
+    - Asynchronously fetch VM information from libvirt to not block
+      the UI.
+    - Cache VM information to reduce potentially costly periodic
+      calls to libvirt.
+    - Unset cache on disk driver for main storage.
+    - Use virtio disk for OSs that support it out of the box.
+  + Fix product logo fetching that broke against libosinfo 0.1.1.
+  + Dragging window in Microsoft Windows 7 shouldn't bring topbar.
+  + Make wizard file chooser dialog, modal.
+  + Fix mouse scrollwheel not working.
+  + Express installation:
+    - Mark CD-ROM and floppy devices/images as optional after
+      installation.
+    - Fix Fedora 17 express installation.
+    - Translate X keyboard layout ID to console layout ID as
+      Anaconda expects the latter in the kickstart file.
+  + Bugs fixed: bgo#670777, bgo#673856, bgo#674228, bgo#674328,
+    bgo#674352, bgo#674361, bgo#674647, bgo#675615, bgo#675617,
+    bgo#675663, bgo#675813.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:51:41 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + Express installation:
+    - Require password for Fedora express installation since
+      Anaconda requires it. To not complicate users' life more than
+      needed in this case, we free them from display (SPICE)
+      authentication.
+    - Make use of 'distro' data from libosinfo. No need to hardcode
+      each Fedora version anymore.
+  + Fix selection/fullscreen'ing of new machines.
+  + Mark a user-visible string for translation.
+  + Bugs fixed: bgo#670306, bgo#673847, bgo#672567.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Apr  1 08:45:09 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.4.0.1:
+  + Fix broken layouts.
+  + Fix first-time connection to boxes requiring password.
+  + Fix text color of notifications during selection mode.
+  + Don't timeout notifications if main window isn't active so that
+    user can't easily miss them.
+  + Box creation wizard:
+    - Remember the selected file/URL when going back to source
+      selection page.
+    - Forget the selected file/URL when box creation is cancelled.
+    - Install Fedora 16 and older from remote repository.
+    - Add SPICE agent channel to newly created domains so that
+      features like copy&paste with client/host work for guests
+      with vdagent drivers installed.
+    - Sane default sound and video devices for unknown OSs.
+  + Rid of theme parser warnings.
+  + Bugs fixed: bgo#670306, bgo#672159, bgo#672160, bgo#672528,
+    bgo#672853, bgo#672872, bgo#672983, bgo#673053.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:33:34 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 18:27:49 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.92:
+  + Cancel notificationbar actions before exiting.
+  + Box creation wizard:
+    - Only show ISO files in file chooser.
+    - Don't wait for domain creation event.
+  + Add --checks commandline option to check if HW virtualization
+    extensions and kvm modules are available/enabled.
+  + Correct Debian and openSUSE trademark ownership.
+  + Bugs fixed: bgo#671673, bgo#671847, bgo#671878, bgo#671921,
+    bgo#672153.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  6 17:55:46 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.91:
+  + Box creation wizard:
+    - Correct architecture comparison so that all medias don't get
+      presented as 64-bit.
+    - Present OS logos. Due to legal reasons, we are currently
+      limited to Debian, Fedora, Ubuntu and openSUSE.
+    - More reliable way to retrieve user's avatar.
+    - Fedora express install: Correct commandline to add user to
+      'wheel' group.
+  + Instead of presenting a boring empty space on first launch,
+    start the wizard.
+  + Allow changing of RAM allocation and storage capacity.
+  + Disable screenshots when machine is deleted.
+  + Some other functional and non-functional improvements and fixes
+  + Bugs fixed: bgo#664774, bgo#670003, bgo#670539, bgo#670573,
+    bgo#670994, bgo#671253, bgo#671304.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 21 20:05:53 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.90:
+  + Box creation wizard:
+    - Present bootable medias and user's ISO files on 'Source'
+      page. For fetching/tracking user's ISOs, we make use of
+      Tracker.
+    - Teach the Wizard to accept 'qemu..://' sources.
+    - Move to 'Preparation' once file/media is selected.
+    - Display notification against errors during 'prepare' and
+      'create' steps. In case of 'prepare', we go back to previous
+      step since user is very likely to be able to fix the issue.
+    - Add mnemonic accelerator to 'Continue' button.
+  + More reliable tracking of installations. Previously, Boxes used
+    to forget ongoing installations once user quit the application
+    and that would lead to installations looping forever.
+  + Don't take post-installation steps for saved domains. Saved
+    domains are stopped as well so them being stopped doesn't mean
+    that first boot is done and its time to perform post install
+    setup.
+  + Launch new domain in fullscreen, unless express installations
+    is going to be performed on it.
+  + Make user deletion work for saved VMs.
+  + Leave fullscreen when going back to collection view.
+  + Fix the white triangle stats graph.
+  + Ability to disable source by manually editing source file.
+    Useful for debugging.
+  + Other functional and non-functional improvements and fixes
+  + Updated translations.
+- Add pkgconfig(tracker-sparql-0.14) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Thu Feb  9 17:33:01 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.5.1:
+  + Distribute C files generated against last libvirt-glib release
+    (0.0.4), rather than git master.
+  + A micro non-functional improvement.
+
+-------------------------------------------------------------------
+Tue Feb  7 22:48:03 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.5:
+  + Fix startup against latest gtk+.
+  + Make sure VM image dir exists. This got broken when we started
+    using XDG_CONFIG_DIR as VM image directory.
+  + Don't choke on unknown installer media.
+  + Fix build against git master of libvirt-glib.
+  + Confine file chooser dialog in creation wizard to local
+    filesystem.
+  + Be slightly helpful to users when they are typing URL manually
+    in creation wizard.
+  + Fix recent regression in non-express installations.
+  + Express install:
+    + Support 32-bit Windows 7.
+    + Add user to 'wheel' group in Fedora, rather than editing the
+      sudoers file.
+  + Disable screenshots on machine deletion.
+  + Choose resources according to media architecture.
+  + Don't use gettext since we're using intltool.
+  + Mark comments string in About dialog as translatable and add
+    translation credits.
+  + Many other functional and non-functional improvements and fixes
+  + Bugs fixed: bgo#668162, bgo#668230, bgo#668536, bgo#668653,
+    bgo#669409
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 31 09:04:40 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.4.1:
+  + Fix bug preventing Boxes to start when using latest gtk+
+  + Minor build system fixes
+  + Bugs fixed: bgo#668104, bgo#668584.
+- Changes from version 3.3.4:
+  + Add GtkApplication and gnome-shell menu.
+  + Add 'about' dialog.
+  + Hide titlebar when maximized.
+  + Use overlay toolbar only in fullscreen mode.
+  + Fix auto-hidden topbar not being shown again.
+  + Save default libvirt connection machines on quit.
+  + Delete storage volume along with its VM.
+  + Box creation wizard:
+    - Don't accept empty URL.
+    - Add a sound card device.
+    - Add devices based on what is supported by the OS.
+    - Put VM images in XDG_DATA_DIR, not XDG_CONFIG_DIR.
+    - Express install:
+      . Fix a race-condition by adding a missing 'yield' keyword.
+      . Disable first boot menu for Fedora.
+      . Single password setup: User now need to only authenticate
+        once when selecting the box using the password provided at
+        box creation time and not inside the guest.
+      . Use floppy image only for Windows OSs.
+  + Use ngettext where appropriate.
+  + Various other functional and non-functional improvements and
+    fixes.
+  + Bugs fixed: bgo#665812, bgo#666354, bgo#666355, bgo#666366,
+    bgo#666368, bgo#666369, bgo#666599, bgo#666739, bgo#666956,
+    bgo#667140, bgo#667362, bgo#667363, bgo#667435, bgo#667660,
+    bgo#667785, bgo#667859.
+  + Updated translations:
+- Changes from version 3.3.3:
+  + Instead of manually writing the libvirt's XML strings, we now
+    make use of libvirt-gconfig to deal with the XML for us.
+  + Protect user from accidental deletion of boxes by providing an
+    'undo' button until after 6 seconds of deletion.
+  + Rely on libvirt for automatic assignment of unique SPICE port
+    for new VMs.
+  + Don't destroy boxes on reboot.
+  + Also entertain medias of i686 architecture.
+  + Define a log domain for easier filtering of console log.
+  + Adapt to libosinfo 0.0.3 API for better OS media detection.
+  + Make the VM thumbnail in the properties view insensitive.
+  + Box creation wizard:
+    - Make wizard topbar a real toolbar. This way, the window can
+      be moved, and it can be styled correctly.
+    - Only return from wizard to collection view if box creation
+      succeeds.
+    - Skip directly to 'Preparation' step when URI is passed
+      through commandline argument.
+    - Bump default storage allocation to 20 GiB.
+      . This should be adequate storage for most OSs out there.
+      . We use the dynamically growing storage format (qcow2) so
+        actual amount of disk space used is completely dependent on
+        the OS.
+    - Special handling of live and unknown OS media:
+      . Create initially transient box and only make it permanent
+        if media installs anything on the storage.
+      . Skip 'Setup' and 'Review' pages.
+    - Only boot new VMs from hard drive after something is actually
+      installed on the storage.
+    - Accept path for URI as well.
+    - More details at summary page on VM creation.
+    - Express installation:
+      . Actually update the settings after the first install of an
+        OS.
+      . UI to set admin and user password.
+      . UI for specifying product key for Windows XP and 2003.
+        Note that product keys are not required by recent Windows
+        (Vista, 7  and 2008) installers.
+      . Install QXL on Fedora guests to take full advantage of
+        SPICE's efficiency.
+      . Enable X/graphics for Fedora.
+      . Add user to admin group for Fedora.
+      . Automatically timezone and keyboard layout setup. This
+        currently only works for Fedora.
+      . Automatically language setup. Currently it only works for
+        Windows 7, Windows 2008 and Fedora.
+      . Fix user account setup for Windows 7 and 2008.
+      . Fix some fundamental issues with Windows 2008. Now at least
+        most of the installation is automated.
+      . Fix express installation floppy image and in turn express
+        installation of Microsoft Windows XP.
+  + Various other functional and non-functional improvements and
+    fixes.
+  + Bugs fixed: bgo#664214, bgo#664215, bgo#664527, bgo#664528,
+    bgo#664561, bgo#664578, bgo#664594, bgo#664600, bgo#664603,
+    bgo#664676, bgo#664690, bgo#664759, bgo#664760, bgo#664766,
+    bgo#664773, bgo#665001, bgo#665068, bgo#665198, bgo#665254,
+    bgo#665290, bgo#665320, bgo#665333, bgo#665336, bgo#665444,
+    bgo#665803, bgo#666019, bgo#666030, bgo#666032, bgo#666086,
+    bgo#666315, bgo#666324, bgo#666334.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 22 16:37:18 UTC 2011 - dimstar@opensuse.org
+
+- Initial package, version 3.3.2.
+

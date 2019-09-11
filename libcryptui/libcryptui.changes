@@ -1,0 +1,177 @@
+-------------------------------------------------------------------
+Mon Mar  5 14:24:39 UTC 2018 - jengelh@inai.de
+
+- Update summaries.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:34:10 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Aug 30 12:24:52 UTC 2017 - dimstar@opensuse.org
+
+- Add 2.2 to the list of accepted GPG versions.
+
+-------------------------------------------------------------------
+Tue Dec 16 14:17:01 UTC 2014 - dimstar@opensuse.org
+
+- Inject version 2.1 as acceptable gpg version into configure:
+  GPG 2.1 is verified to be compatible and supported.
+
+-------------------------------------------------------------------
+Sat May 17 08:12:31 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Build fix on FreeBSD (bgo#727196).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 17 06:34:48 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 19:15:01 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Build fix.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 26 17:06:16 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Add symmetric encryption as a choice in "choose recipients"
+    dialog (bgo#325803).
+  + Add support for symmetric encryption (bgo#699161).
+  + Add cryptui_need_to_get_keys_or_symmetric() (bgo#325803).
+  + Avoid repeating the self encryption key in
+    cryptui_key_chooser_ge (bgo#701987).
+  + Fix warning on startup about missing seahorse-daemon.desktop
+    file.
+  + Set the source on UID objects.
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 25 10:28:34 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + no changes from previous release.
+
+-------------------------------------------------------------------
+Fri Mar 15 18:57:18 CET 2013 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Mon Feb  4 23:05:31 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 25 15:32:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Stable release: no changes from previous release.
+
+-------------------------------------------------------------------
+Tue Sep 18 13:47:36 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 18 11:01:29 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Make the default key chooser window size bigger
+  + Bump dependency versions, and fix deprecetions
+  + Documentation fixes.
+- Add pkgconfig(gthread-2.0) BuildRequires so it can be versioned.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:49:50 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + Build fixes
+
+-------------------------------------------------------------------
+Mon Mar 26 13:00:46 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:08:48 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.91:
+  + Add dependency on libSM and libICE, needed for XSMP client
+- No packaging change: we already have those BuildRequires.
+
+-------------------------------------------------------------------
+Sun Feb 19 18:37:42 UTC 2012 - dimstar@opensuse.org
+
+- Add pkgconfig(ice) and pkgconfig(sm) BuildRequires: they used to
+  be pulled in by something else, but the relayout of xorg-x11
+  packages changed that.
+
+-------------------------------------------------------------------
+Sun Feb  5 21:18:18 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.5:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec  7 10:22:14 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib file into typelib-1_0-CryptUI-0_0 subpackage.
+- Add typelib-1_0-CryptUI-0_0 Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Sun Dec  4 14:14:41 UTC 2011 - dimstar@opensuse.org
+
+- Add libtool BuildRequires to fix build (not entirely sure here
+  why it's needed though).
+- Change License tags to spdx identifier.
+
+-------------------------------------------------------------------
+Tue Nov 15 10:27:55 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.2:
+  + Fix GSettings conversion
+
+-------------------------------------------------------------------
+Fri Sep 30 06:45:52 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Updated translations.
+- Changes from version 3.1.91:
+  + Port to GSettings instead of GConf
+  + Build fixes
+- Remove gnome-doc-utils-devel BuildRequires: the unneeded
+  dependency was removed upstream.
+- Remove pkgconfig(gconf-2.0) BuildRequires: port to GSettings.
+- Split the GSettings schema in a libcryptui-data subpackage, and
+  add a Requires for it to libcryptui0 and seahorse-daemon.
+- Replace all the gconf packaging machinery with the gsettings one.
+- Drop libcryptui-no-seahorse-conflict.patch: fixed upstream.
+- Remove call to autoreconf, as it was only needed for the patch
+  above.
+
+-------------------------------------------------------------------
+Thu Jul 28 11:05:00 CEST 2011 - vuntz@opensuse.org
+
+- Add libcryptui-no-seahorse-conflict.patch: this renames some
+  files to avoid conflicts with seahorse on the filesystem.
+  Add call to autoreconf, needed by the patch.
+
+-------------------------------------------------------------------
+Tue Jul 26 00:53:52 CEST 2011 - vuntz@opensuse.org
+
+- Initial package (version 3.1.4); libcryptui was split from
+  seahorse upstream.
+

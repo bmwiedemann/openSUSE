@@ -1,0 +1,55 @@
+From 5ae7c3aa2847b44f188704049724424b5eb3cdaf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 25 Dec 2018 03:46:59 +0100
+Subject: [PATCH 1/2] Fix leaking AvahiServiceResolver in the error paths
+
+---
+ modules/services_discovery/avahi.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/modules/services_discovery/avahi.c b/modules/services_discovery/avahi.c
+index 1d71cc82d3..aa58c7f673 100644
+--- a/modules/services_discovery/avahi.c
++++ b/modules/services_discovery/avahi.c
+@@ -148,7 +148,10 @@ static void resolve_callback(
+         avahi_address_snprint(a, (sizeof(a)/sizeof(a[0]))-1, address);
+         if( protocol == AVAHI_PROTO_INET6 )
+             if( asprintf( &psz_addr, "[%s]", a ) == -1 )
++            {
++                avahi_service_resolver_free( r );
+                 return;
++            }
+ 
+         const char *psz_protocol = NULL;
+         for( unsigned int i = 0; i < NB_PROTOCOLS; i++ )
+@@ -157,7 +160,11 @@ static void resolve_callback(
+                 psz_protocol = protocols[i].psz_protocol;
+         }
+         if( psz_protocol == NULL )
++        {
++            free( psz_addr );
++            avahi_service_resolver_free( r );
+             return;
++        }
+ 
+         if( txt != NULL )
+             asl = avahi_string_list_find( txt, "path" );
+@@ -175,6 +182,7 @@ static void resolve_callback(
+                           port, value ) == -1 )
+                 {
+                     free( psz_addr );
++                    avahi_service_resolver_free( r );
+                     return;
+                 }
+             }
+@@ -190,6 +198,7 @@ static void resolve_callback(
+                       psz_addr != NULL ? psz_addr : a, port ) == -1 )
+             {
+                 free( psz_addr );
++                avahi_service_resolver_free( r );
+                 return;
+             }
+         }
+-- 
+2.20.1
+

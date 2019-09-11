@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Thu Nov 16 10:44:09 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.12:
+  * Lots of changes - see provided changelog.txt
+- Cleanup spec file with spec-cleaner
+- Switch to python3
+
+-------------------------------------------------------------------
+Mon Apr 08 17:36:07 UTC 2013 - pascal.bleser@opensuse.org
+
+- update to 1.1:
+  * Add support for zopfli, Googles new zlib compressor
+  * Fix an error repacking compressed tar archives with 7z
+- changes from 1.0:
+  * Add support for searching in archive contents
+  * Add support for ISO image handling
+  * Allow multiple --verbose options to increase program output
+  * Fixed Python lzma archive handling
+  * Fixed lzop, lrzip and rzip archive handling
+  * Fixed Python 3.x support
+- changes from 0.19:
+  * Support the lzma module in Python >= 3.3
+  * Optimize repacking of archives with the same format
+
+-------------------------------------------------------------------
+Tue Dec 18 06:19:57 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 0.18:
+  * Fixed unadf archive listing
+  * Added support for Python 3.x
+  * Use importlib to find program modules and depend on Python >= 2.7
+  * Added support for archmage and chmlib handling CHM (.chm) archives
+
+-------------------------------------------------------------------
+Mon Aug 20 19:20:12 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 0.17:
+  * Added support for Monkey's Audio Compressor handling APE (.ape) archives.
+  * Added support for shorten handling SHN (.shn) archives.
+  * Added support for flac handling FLAC (.flac) archives.
+  * Added support for the BSD cpio and tar programs.
+  * Added support for lhasa handling LZH (.lzh, .lha) archives.
+  * Added support for lcap handling CAB (.cab) archives.
+  * Added support for shar handling SHAR (.shar) shell archives.
+  * Added support for unadf handling ADF (.adf) amiga disk archives.
+  * Removed support for orange handling self-extracting installers.
+  * Generate standalone Windows .exe and Linux .rpm installer.
+  * Initialize the internal MIME database correct on all platforms.
+  * Improved option compatibility for the ar, cpio and tar programs.
+  * Rename the temporary output directory if it contains multiple files. The
+    name is the archive name without extension, which is more readable than a
+    random filename "UnpackXyz".
+  * Require and use Python >=2.5
+
+- changes from 0.16:
+  * Document the --outdir option for the extract command.
+  * Added convenience library function to handle archives.
+  * Added support for the lbzip2 program handling BZIP2 archives.
+  * Added support for the plzip program handling LZIP archives.
+  * Prevent overwriting files with repack.
+  * Support extraction of BZIP2 (.bz2) files with the Python bz2 module.
+  * Support extraction of GZIP (.gz) files with the Python gzip module.
+  * Support extraction of ZIP (.zip) files with the Python zipfile module.
+  * Support extraction of TAR (.tar) files with the Python tarfile module.
+
+-------------------------------------------------------------------
+Sat Apr 14 15:53:58 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 0.15:
+  * print help when unknown options are given
+  * print error when archive files do not exist
+  * added support for the pigz program handling GZIP archives
+
+- changes from 0.14:
+  * handle CRX (.crx) files as ZIP archives: they have garbage at
+    the beginning of the file, but some unzip programs can cope with
+    that
+  * the xz program supports listing of XZ archives: adjust the
+    configuration accordingly
+
+-------------------------------------------------------------------
+Wed Jan 26 01:09:11 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.13:
+  * adds support for DMS (.dms) files
+  * fixes a bug in extracting cpio archives
+  * improved MIME type detection
+
+-------------------------------------------------------------------
+Thu Jan 20 01:11:18 UTC 2011 - pascal.bleser@opensuse.org
+
+- split out bash completion into patool-bash-completion, as it requires the
+  package "bach-completion"
+- fixes bnc#661851 (bash-completion issues error for missing patool pkg which
+  is present)
+
+-------------------------------------------------------------------
+Sun Nov 21 00:10:18 UTC 2010 - pascal.bleser@opensuse.org
+
+- reformatted spec file
+
+- update to 0.12:
+  * archive commands are now printed on the console before running them
+  * a RAR extraction bug has been fixed
+
+-------------------------------------------------------------------
+Wed Oct  6 08:01:21 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.11:
+  * adds support for the "7za" archive program
+
+-------------------------------------------------------------------
+Sat Apr 10 22:10:05 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.10)
+

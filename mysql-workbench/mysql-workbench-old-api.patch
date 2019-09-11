@@ -1,0 +1,12 @@
+diff -uNr mysql-workbench-community-8.0.15-org/build/cmake/Modules/FindMySQLCppConn.cmake mysql-workbench-community-8.0.15-src/build/cmake/Modules/FindMySQLCppConn.cmake
+--- mysql-workbench-community-8.0.15-org/build/cmake/Modules/FindMySQLCppConn.cmake	2019-01-30 15:32:36.000000000 +0200
++++ mysql-workbench-community-8.0.15-src/build/cmake/Modules/FindMySQLCppConn.cmake	2019-02-16 13:56:53.711465800 +0200
+@@ -27,7 +27,7 @@
+   set(MySQLCppConn_FIND_QUIETLY TRUE)
+ endif ()
+ 
+-find_path(MySQLCppConn_INCLUDE_DIR NAMES mysql_connection.h PATHS /usr/include /usr/local/include)
++find_path(MySQLCppConn_INCLUDE_DIR NAMES mysql_connection.h PATHS /usr/include/jdbc /usr/local/include/jdbc)
+ 
+ SET(MySQLCppConn_NAMES mysqlcppconn)
+ 

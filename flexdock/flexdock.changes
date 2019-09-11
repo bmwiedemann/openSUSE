@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Thu May 17 06:26:03 UTC 2018 - fstrba@suse.com
+
+- Modified patch:
+  * flexdock-1.2.4-jdk9.patch
+    + Build with Java source/target levels 8
+
+-------------------------------------------------------------------
+Mon Sep 18 07:51:12 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * flexdock-1.2.4-jdk9.patch
+    + Fix build with jdk9
+    + Specify java source and target version 1.6
+
+-------------------------------------------------------------------
+Sun Feb  2 14:15:23 UTC 2014 - badshah400@gmail.com
+
+- Update to version 1.2.4:
+  * Remove deferred splitpane validation
+- Rebase patches.
+- Rename flexdock-nojmf.diff to flexdock-nojmf.patch
+
+-------------------------------------------------------------------
+Sat Aug  3 17:30:00 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 1.2.3
+  * Avoid useless updateUI at PlafManager initialization
+  * Remove warning about the serial version uid missing
+  * Avoid to setActive an unregistered dockable.
+  * Remove targets build.default & build.with.native which are no
+    longer relevant since we removed the native libraries.
+  * Default ant target is now "jar"
+  * Add method org.flexdock.docking.event.hierarchy.DockingPortTracker.remove()
+    to remove objects.
+
+-------------------------------------------------------------------
+Sat Dec  1 19:52:55 UTC 2012 - dmitry_r@opensuse.org
+
+- Update to version 1.2.0
+  * Development moved to http://forge.scilab.org/index.php/p/flexdock/
+  * Add the possibility to move the focus with keyboard on the different docked
+    elements.
+  * Fix bug 125: http://java.net/jira/browse/FLEXDOCK-125
+    Application minimized to tray icon throws uncaught exception on restore of
+    minimized window to its original size.
+  * Fix bug 126: http://java.net/jira/browse/FLEXDOCK-126
+    Application consumes some CPU time even if doing nothing.
+  * Fix but 792: Icons did not show with the look and feel 'Nimbus'
+  * ant build shows the Java warnings
+
+-------------------------------------------------------------------
+Wed Mar 23 23:00:13 UTC 2011 - kirill.kirillov@gmail.com
+
+- Added flexdock-0.5.2-adjust-color-settings.patch to match
+  default openSUSE gtk theme Sonar
+
+-------------------------------------------------------------------
+Wed Sep  1 08:40:10 UTC 2010 - vincent.lejeune@scilab.org
+
+- Updated to version 0.5.2
+
+-------------------------------------------------------------------
+Mon Jul 13 02:36:19 CEST 2009 - kirill.kirillov@gmail.com
+
+- added flexdock-nojmf.diff and removed demos to avoid dependency
+  on restricted formats
+- repackaged source file to remove restricted files
+
+-------------------------------------------------------------------
+* Sat Sep 01 2007 Toni Graffy <toni@links2linux.de> - 0.5.1-0.pm.2
+
+- removed external workingcopies.properties, params are passed via -D to ant
+- fixed demo start-script
+- fixed 64bit build
+-------------------------------------------------------------------
+* Sun Mar 11 2007 Toni Graffy <toni@links2linux.de> - 0.5.1-0.pm.1
+
+- update to 0.5.1
+- jgoodies-looks2 is used now
+
+-------------------------------------------------------------------
+* Thu Feb 01 2007 Toni Graffy <toni@links2linux.de> - 0.5.0-0.pm.1
+
+- update to 0.5.0
+
+-------------------------------------------------------------------
+* Sun Apr 09 2005 oc2pus <oc2pus@arcor.de> - 0.4.0-0.oc2pus.2
+
+- build against skinlf-6.2
+
+-------------------------------------------------------------------
+* Wed Jan 18 2005 oc2pus <oc2pus@arcor.de> - 0.4.0-0.oc2pus.1
+
+- First packaged release 0.4.0

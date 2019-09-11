@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Thu Oct 25 09:34:40 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Oct 25 07:40:33 UTC 2018 - Antonio Larrosa <alarrosa@suse.com>
+
+- Changed the value of the LANG env var when building the package
+- Be more explicit in the package filelist
+
+-------------------------------------------------------------------
+Thu Sep 20 11:05:55 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 2.0.0
+
+- Initial release of python-pytest-translations 2.0.0

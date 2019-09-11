@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Tue May 14 17:34:03 UTC 2019 - Gary Smith <GSmith@suse.com>
+
+- Update to version 4.7.2
+  * no changelog
+
+-------------------------------------------------------------------
+Sat Dec 22 02:11:33 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 4.7.0
+  * Add failing test and fix for old-style relative import. (#109)
+  * Old-style relative import ipython_kernel plugin (#108)
+  * Fix attractors example (#103)
+  * Use --gui rather than --matplotlib when starting IPython kernel. (#101)
+  * InternalIPKernel.shutdown method doesn't stop the kernel's IOPubThread (#93)
+  * Fix task layout serialization under Python3
+
+-------------------------------------------------------------------
+Fri May 18 17:10:44 UTC 2018 - jengelh@inai.de
+
+- Do not assume any specific user in the description.
+
+-------------------------------------------------------------------
+Wed May  9 02:37:06 UTC 2018 - toddrme2178@gmail.com
+
+- Add license files
+
+-------------------------------------------------------------------
+Wed Aug 23 20:35:25 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 4.6.0
+  * no changelog
+
+-------------------------------------------------------------------
+Tue Apr 12 19:25:53 UTC 2016 - toddrme2178@gmail.com
+
+- Update to Version 4.5.1
+  + Enhancements
+    * Add tox for testing package install (#67)
+  + Fixes
+    * Include missing test files in the package data (#67)
+    * Include missing test cases for Python 3.4 (#67)
+- Update to Version 4.5.0
+  + New features
+    * IPythonKernelPlugin for Tasks: run an IPython kernel within the
+      envisage app and expose it as a service (#54).
+    * Envisage now supports Python 3.4 (#61).
+  + Enhancements
+    * Allow loading plugins from an egg basket even when some eggs are
+      invalid (#40, #46).
+    * Add a simple ``GUIApplication`` to bootstrap basic plugin-driven
+      applications (#34).
+    * Split the IPython kernel and IPython menu action into two separate
+      plugins for flexibility (#57).
+  + Fixes
+    * Use new Traits interfaces and adaptation implementation (#37).
+    * Envisage now configures the logger with a ``NullHandler`` to avoid
+      spurios unconfigured logger warnings (#45).
+    * Envisage no longer swallows exceptions in plugin startup (#50).
+    * Various fixes to continuous integration configuration (#47, #60).
+
+-------------------------------------------------------------------
+Mon Oct 13 15:37:25 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 4.4.0
+  * no changelog
+- Update source to pypi url.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:05:20 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Sat Apr 20 15:35:16 UTC 2013 - toddrme2178@gmail.com
+
+- Added a note about being part of the Enthought Tool Suite (ETS).
+
+-------------------------------------------------------------------
+Thu Apr 18 12:12:24 UTC 2013 - toddrme2178@gmail.com
+
+- Update to 4.3.0
+  * no changelog
+
+-------------------------------------------------------------------
+Tue May 22 10:23:36 UTC 2012 - toddrme2178@gmail.com
+
+- Initial spec file
+

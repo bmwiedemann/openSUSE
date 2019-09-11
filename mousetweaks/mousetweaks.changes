@@ -1,0 +1,698 @@
+-------------------------------------------------------------------
+Thu Mar 28 20:56:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Mon Mar 11 09:01:18 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + New stable release.
+
+-------------------------------------------------------------------
+Mon Mar  4 08:36:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Stop using gnome-common.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 15 23:01:54 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Stop using intltool.
+  + Updated translations.
+- Drop intltool BuildRequires: No longer needed after upstream
+  changes.
+- Stop handling glib2_gsettings_schema_post(un) in post(un) and
+  drop glib2_gsettings_schema_requires macro., no longer needed.
+- Update URL to new gitlab home and use modern macros.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:37:19 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Aug 24 22:57:20 UTC 2017 - zaitor@opensuse.org
+
+- Export LANG=C.UTF-8, fix build with new glib2.
+- Run spec-cleaner, modernize spec.
+
+-------------------------------------------------------------------
+Thu Apr 14 15:37:57 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Mon Mar 24 18:56:41 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Remove old MAINTAINERS file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 20:42:27 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 26 07:10:36 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 20:10:47 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Do not mention gnome-doc-utils.make as it doesn't exist.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 24 20:18:07 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Use bug tracker url in README that is also browsable with GNOME
+    account
+  + Sync description in doap file with README and add homepage
+    information
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 22:17:41 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  3 18:46:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + Remove outdated help files (bgo#681268)
+  + Updated translations.
+- Drop gnome-doc-utils-devel BuildRequires: there is no help to be
+  built.
+- Remove --disable-scrollkeeper configure parameter: no longer
+  known.
+
+-------------------------------------------------------------------
+Wed Jul 18 09:09:10 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Use xdg runtime dir for pid file (bgo#675447)
+  + Switch to g_clear_object
+  + Add missing break statement in switch statement
+  + Remove outdated reference to gnome-panel applets from man page
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May 14 20:43:10 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:13:00 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:31:36 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:48:28 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 15:51:20 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 21 07:57:12 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.90:
+  + Fix deprecation warnings
+  + Change click-type window default to 'show'
+  + Change default click-type window orientation to vertical
+  + Add support for middle mouse button dwell-clicks
+  + Remove gnome-panel applets; mousetweaks does not offer them
+    anymore
+  + Various build system updates
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 19 16:32:48 UTC 2012 - dimstar@opensuse.org
+
+- Add pkgconfig() BuildRequires that used to be pulled in by
+  something else before (but the relayout of xorg-x11 packages
+  changed that): x11, xcursor, xfixes, xtst.
+
+-------------------------------------------------------------------
+Mon Oct 17 18:23:15 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 26 16:34:20 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  5 17:34:54 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 25 23:57:38 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.4:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 14 09:35:27 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.2:
+  + Remove animate-cursor key from mousetweaks.convert
+  + Limit passive mouse button grabs to the mouse wheel
+  + Use new macro for boxed gtypes
+  + Disable multidevice support in gdk
+  + Build fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 10 10:40:12 UTC 2011 - fcrozat@novell.com
+
+- Remove BuildRequires on gnome-panel-devel (obsolete).
+
+-------------------------------------------------------------------
+Tue May 17 18:34:15 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May  4 10:30:41 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.0.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr  5 13:36:02 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 30 16:33:11 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.92:
+  + Fix compiler warnings
+  + Add GTK option group
+  + Change click-type window title to "Hover Click"
+  + Bump dependency to stable GTK 3.0 release
+  + Use G_SETTINGS_BIND_GET for settings that never get modified
+  + Load existing cursors from the library
+  + Sync schema path with gsettings-desktop-schemas
+  + Updated translations
+- Changes from version 2.91.90:
+  + Fix signal number argument in callback
+  + Do a NULL check before referencing a cursor
+- Changes from version 2.91.3:
+  + Port applets to libpanelapplet-3
+- Changes from version 2.91.2:
+  + Add gsettings convert data
+  + Add "geometry" option to set size and position of the
+    click-type window.
+  + Add new "orientation" option to the click-type window
+  + Remove "animate-cursor" option
+  + Sync with changes in gsettings-desktop-schemas
+  + Fix mem leak and reduce nr. of cursor image copies
+  + Don't emit cursor_changed signals if we have set the cursor
+  + Bump gsettings-desktop-schemas dependency to 0.1.0
+  + Remove mt-main header file
+  + bgo#633844: L10N: Fix a typo
+  + bgo#633932: L10N: Add translation comments for button
+    orientation.
+- Changes from version 2.91.1:
+  + Disable panel applets by default for GNOME 3
+  + Use gdk_display_get_default instead of GDK_DISPLAY
+  + Remove GdkGc based drawing code
+  + Use a common X Display accessor
+  + Remove mouse orientation checks
+  + Only install man pages if the applets are built
+  + Sync with GSettings changes in gnome-settings-daemon
+  + Launch UA panel instead of the mouse capplet
+  + bgo#631533: Adapt to GtkObject removal in GTK3
+  + bgo#620171: Migrate to GSettings
+- Change old-style BuildRequires to new pkgconfig()/GNOME3 ones:
+  gconf2-devel, gtk2-devel to gsettings-desktop-schemas, gtk+-3.0.
+- Replace GConf2 schemas handling with GSettings schemas handling,
+  with %glib2_gsettings_schema_* macros.
+
+-------------------------------------------------------------------
+Mon Feb 14 19:49:23 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sun Feb 13 18:36:52 CET 2011 - vuntz@opensuse.org
+
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Nov 16 09:36:29 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.32.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 27 22:32:42 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 14 08:50:25 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 30 16:48:52 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 17 11:11:57 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  6 00:03:44 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.6:
+  + Clean up indentations in Makefiles
+  + Fix spelling mistakes in the manual (bgo#625770)
+  + Update version of manual to 2.32
+  + Updated translations.
+- Changes from version 2.31.5:
+  + Updated translations.
+- Drop at-spi-devel, dbus-1-glib-devel BuildRequires since
+  dependencies were removed in 2.31.4.
+
+-------------------------------------------------------------------
+Mon Jul  5 20:50:48 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.4:
+  + Migrate daemon and dwell click to GDBus
+  + Remove dbus-glib dependency
+  + Unify code style
+  + Make singleton classes reusable
+  + Integrate unix signals into the main loop
+  + Rework pointer-capture applet
+  + Update man pages
+  + Update manual about modified cli commands
+  + Update manual about drop of AT-SPI dependency
+- Changes from version 2.31.3:
+  + Drop the use of AT-SPI to get global mouse events
+  + Remove dependency from the AT-SPI framework
+  + Remove a11y gconf key
+  + Don't use a separate X connection for XTest
+  + Code cleanups
+  + Update man page
+- Changes from version 2.31.2:
+  + bgo#612492: Compile with -DGSEAL_ENABLED; bumps gtk+ to 2.18
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 29 14:31:50 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 27 16:10:30 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Adapt manual to new behaviour of the simulated secondary click
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  8 22:43:56 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.92:
+  + lp#525735: Fix secondary clicks
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 23 15:11:09 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.91:
+  + Use input-mouse icon for Enable button
+  + Add changes of this development cycle to manual
+  + Add --login option to manpage
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 10 19:39:57 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 25 22:28:01 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 2.29.6:
+  + Translation updates
+
+-------------------------------------------------------------------
+Thu Jan 14 05:22:25 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 2.29.5:
+  + Add --login command-line option
+  + Translation updates
+
+-------------------------------------------------------------------
+Tue Dec 22 04:41:53 CET 2009 - lmedinas@opensuse.org
+
+- Update to version 2.29.4:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec  1 20:26:33 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.3:
+  + Updated translations.
+- Changes from version 2.29.2:
+  + Fix the default dwell mode in the gconf schema file
+  + Do not daemonize by default and add the --daemonize cli option
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Nov 14 22:38:11 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.1:
+  + Don't use a pointer grab to lock the cursor - bgo#598538
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 12:20:42 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  9 04:33:20 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.27.92:
+  + Fix installation of dwell click applet on GNOME panel
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 25 17:15:37 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.91:
+  + Use AM_SILENT_RULES if available
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 11 04:18:18 CEST 2009 - lmedinas@gmail.com
+
+- Update to version 2.27.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 28 16:25:47 CEST 2009 - lmedinas@gmail.com
+
+- Update to version 2.27.5:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 20 11:19:05 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.4:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 15 01:49:44 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.3:
+  + Fix cursor drawing on 64bit platforms - closes bgo#584256
+  + Use 'test ! -d' in autogen.sh - closes bgo#583311
+  + Link directly to libX11 - closes bgo583471
+  + Fix sequence-point warning - bgo#583993
+  + Restore contextual menu in click-type window
+  + Fix POTFILES.in to make intltool extract strings from .ui files
+  + Get back lost translations from 2.24
+  + Remove markup from translatable strings
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 27 14:34:55 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.2:
+  + Fix dwell click for left-handed mouse orientation - bgo#582319
+  + Fix FDL license version of the manual
+  + Add comment to manual that hardware click interrupts dwell
+    click
+  + Updated translations.
+- Do not package omf files twice.
+
+-------------------------------------------------------------------
+Tue May  5 17:54:37 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.1:
+  + Changes due to moving from svn to git
+  + Fix FDL license version of the manual
+  + Clean up AUTHORS file
+  + update copyright year
+  + remove the INSTALL file
+  + Automatically generate ChangeLog file when creating a tarball
+  + Cancel dwell click if a hardware click occurs, bgo#580174
+  + create m4 directory during autogen.sh, bgo#579397
+  + Rename MTClosure to MtData
+  + Use structure bit fields to save some memory
+  + Optimization to reduce usage of G_TYPE_INSTANCE_GET_PRIVATE
+  + remove unused virtual methods from MtTimerClass
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 22:46:26 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0:
+  + Updated translations.
+- Remove AutoReqProv: it's default now.
+- Don't specify CFLAGS.
+
+-------------------------------------------------------------------
+Mon Mar  9 13:02:54 CET 2009 - vuntz@novell.com
+
+- Pass --disable-scrollkeeper to configure.
+
+-------------------------------------------------------------------
+Sun Mar  8 23:52:09 CET 2009 - vuntz@novell.com
+
+- Review changes.
+
+-------------------------------------------------------------------
+Wed Mar  4 00:10:08 WET 2009 - lmedinas@gmail.com
+
+- Update to version 2.25.92:
+  + lp#332084 - Fix possible crash if accessible object is 
+    defunct
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Feb 16 23:38:47 CET 2009 - mboman@suse.de
+
+- Update to version 2.25.91:
+  + bgo#571133: Improve long descriptions in schemas
+  + bgo#569457: Also keep english gconf values in translations
+  + Translation updates
+- Remove libglade2-devel, libgnome-devel, libgnomeui-devel and
+  perl-XML-Parser from BuildRequires
+
+-------------------------------------------------------------------
+Tue Feb 10 18:44:55 CET 2009 - vuntz@novell.com
+
+- Review changes.
+
+-------------------------------------------------------------------
+Tue Feb  3 00:04:21 WET 2009 - lmedinas@gmail.com
+
+- Update to version 2.25.90:
+  + Update manual for GNOME 2.26 and raise its license to GFDL 1.3
+  + Translation updates
+
+-------------------------------------------------------------------
+Sun Feb  1 18:10:10 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.5:
+  + Remove old glade files.
+  + Improve key descriptions in pointer-capture-applet.schemas.
+  + bgo#545059: Use standard icon for activation button on dwell applet
+    and use standard icon name.
+  + bgo#567197: Use N_() instead of _() for command-line options.
+  + bgo#567483: Add missing <locale.h>.
+  + Translation updates
+
+-------------------------------------------------------------------
+Tue Jan  6 09:50:16 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.4:
+  + Improved descriptions in pointer-capture-applet.schemas
+  + Translation updates
+
+-------------------------------------------------------------------
+Sat Dec 20 11:41:28 EST 2008 - mboman@suse.de
+
+- Update to version 2.25.2:
+  + Increase internal double click delay in dwell mode to
+    make it compatible to gftp.
+  + bgo#562212: Fix conflict when dwell click and simulated secondary
+    click are simultaneously running.
+  + Migrated from libglade to GtkBuilder
+  + bgo#556946: Fixed accessibility warning at GDM
+  + Translation updates
+
+-------------------------------------------------------------------
+Tue Oct 21 19:23:40 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.1:
+  + Translation updates 
+
+-------------------------------------------------------------------
+Tue Sep 23 08:50:40 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.0:
+  + Removed cursor_set guard to avoid out of syncs on grabs
+  + Fix of a duplicated accelerator in it.po
+  + Fixed bgo#551762
+  + Translation updates
+
+-------------------------------------------------------------------
+Sat Sep 13 13:48:45 CEST 2008 - vuntz@novell.com
+
+- Merge the following change by aj@suse.de from autobuild:
+  + Fix directory ownership.
+
+-------------------------------------------------------------------
+Wed Sep 10 09:11:43 EST 2008 - mboman@novell.com
+
+- Update to version 2.23.92:
+  + Improved drag click handling
+  + Fix typo causing double clicks to not work
+  + Fix StatusChanged signal emission.
+  + Cleanup
+  + bgo#551133: Mark modifier labels for translation
+  + Translation updates. 
+
+-------------------------------------------------------------------
+Tue Sep 02 20:35:43 CEST 2008 - mboman@novell.com
+
+- Update to version 2.23.91:
+  + Multiscreen support
+  + Fix regression with drag clicks.
+  + Use theme colors for cursor overlays.
+  + Drop libgnomeui and libgnome.
+  + Fix bgo#532934: Improve secondary clicks on window frames and desktop
+    icons.
+  + Translation updates.
+
+-------------------------------------------------------------------
+Tue Aug 26 20:35:43 CEST 2008 - mboman@novell.com
+
+- Update to version 2.23.90:
+  + Translation updates.
+
+-------------------------------------------------------------------
+Sat Aug 09 20:35:43 CEST 2008 - captain.magnus@opensuse.org
+
+- Update to version 2.23.6:
+  + Fix new compile warnings
+  + Remove Ubuntu logo from figure with Dwell Click applet
+  + Fix bug bgo#545059: Use standard icon name (Matthias Clasen)
+  + Update manual for the coming 2.24 release
+  + Translation updates
+  + New time animation for enable button in the dwell-click applet
+  + Change the dwell delay range to 0.2-3.0 sec
+  + Don't send cursor_changed signals if the new cursor has no name
+  + Build system improvements
+  + Don't try to install schemas.in files
+  + Bump intltool to 0.40.0
+  + Fix bug bgo#543272: Add dependency to xcursor (Thadeu Lima de Souza Cascardo)
+  + Fix bug bgo#538004: gok does not see synthetic clicks from mousetweaks
+
+-------------------------------------------------------------------
+Mon Jun 23 20:35:43 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.4:
+  + New features:
+    * Cursor animation
+    * Add simple line drawing for gesture mode
+    * Add dwellable On/Off button to dwell applet
+    * Show warning if gnome-mouse-properties cannot launch
+  + Misc improvements/fixes:
+    * Move to dbus-glib
+    * Use new 'show-page' option of mouse capplet
+    * Improve secondary clicks on gnome-panel
+    * Improve Assistive Technology warning. (bgo#531693)
+    * Check on start-up if daemon is already running
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 11 17:30:07 CEST 2008 - maw@suse.de
+
+- Update to version 2.22.1:
+  + Don't send right-clicks too fast; avoids some problems with
+    secondary clicks on the gnome-panel
+  + Bug fixed: bgo#525032
+  + Updated translations
+- Use %fdupes.
+
+-------------------------------------------------------------------
+Fri Mar 14 05:49:50 CET 2008 - maw@suse.de
+
+- Update to version 2.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  5 01:12:41 CET 2008 - maw@suse.de
+
+- Update to version 2.21.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 19 18:59:43 CET 2008 - maw@suse.de
+
+- Update to version 2.21.91:
+  + Improve --shutdown handling
+  + Fix focus handling in click-type window
+  + Set bonobo environment for dwell applet
+  + Fix gconf error
+  + Fix for bln#188872
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb  1 17:25:58 CET 2008 - maw@suse.de
+
+- Initial version of the mousetweaks package, version 2.21.90.
+

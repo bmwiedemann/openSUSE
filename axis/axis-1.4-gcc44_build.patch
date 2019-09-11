@@ -1,0 +1,18 @@
+Index: axis-1_4/src/org/apache/axis/i18n/ProjectResourceBundle.java
+===================================================================
+--- axis-1_4.orig/src/org/apache/axis/i18n/ProjectResourceBundle.java	2006-04-23 03:57:27.000000000 +0200
++++ axis-1_4/src/org/apache/axis/i18n/ProjectResourceBundle.java	2009-05-21 14:44:28.299254186 +0200
+@@ -360,10 +360,11 @@
+     /**
+      * Clears the internal cache
+      */
+-    public static void clearCache()
++/*  Final method in gcc44, so lets delete
++ *  public static void clearCache()
+     {
+         bundleCache.clear();
+-    }
++    }*/
+     
+     public String toString() {
+         return resourceName;

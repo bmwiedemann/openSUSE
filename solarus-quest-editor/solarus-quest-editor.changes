@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Sat Aug 17 15:49:47 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.6.2:
+  * Fix crash when closing tileset views (#467).
+  * Fix broken enemies in the initial quest (#466).
+  * Automatically install translation files.
+  * Update French translation.
+- Remove solarus-quest-editor-v1.6.1-install-translations.patch:
+  Merged upstream.
+
+-------------------------------------------------------------------
+Mon Aug 12 08:13:44 UTC 2019 - antoine.belvire@opensuse.org
+
+- Install translations:
+  * Add solarus-quest-editor-v1.6.1-install-translations.patch
+    which allows installation of translation files with CMake.
+  * Add lang subpackage.
+- Split assets into a noarch subpackage.
+- Drop obsolete build dependency on update-desktop-files.
+
+-------------------------------------------------------------------
+Sat Aug 10 16:43:35 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.6.1:
+  * Allow to build a quest package (#431).
+  * Map editor: allow teletransporters to have any size multiple of
+    8 pixels.
+  * Map editor: improve performance of deleting multiple entities.
+  * Map editor: fix performance of changing entities layer (#454).
+  * Map editor: fix wrong selections after undoing changing layers.
+  * Tileset editor: fix performance of removing multiple patterns
+    (#456).
+  * Sprite editor: fix persisting error message about missing
+    source image (#451).
+  * Dialogs editor: fix line wrapping.
+  * Initial quest: remove proprietary file added by mistake.
+  * Add Force Software Rendering option to 'Running' section.
+
+-------------------------------------------------------------------
+Mon Dec 24 11:32:53 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 1.6.0:
+  * Allow to import files from other quests.
+  * Quest tree:
+    + Show all .png and .dat files.
+    + Show all language files, map files and tileset files.
+    + Allow to set the author and license information of files.
+    + Automatically select the currently open file.
+    + Allow to update sprites when renaming a .png file.
+    + Allow to open folders with the system explorer.
+    + Allow to select multiple files.
+    + Allow to delete multiple files and directories.
+  * Allow to view PNG files.
+  * Map/tileset editor: allow to generate borders automatically
+    (autotiles).
+  * Map editor:
+    + Add support of custom properties for entities by Maxs.
+    + Allow to use multiple tilesets in the same map.
+    + Allow to change the pattern of existing tiles.
+    + Allow to change the pattern of all similar tiles at once.
+    + Allow to change the origin of custom entities.
+    + Allow to initially enable or disable any entity.
+    + Allow to export the view as a PNG file.
+    + Allow to lock layers.
+    + Show the layer under the cursor in the status bar.
+    + Add shortcuts to show/hide negative layers too.
+    + Keep the selection after adding entities with ctrl or shift.
+    + Add a shortcut to open the tileset by Akadream.
+    + Don't reload the tileset if it is already open elsewhere.
+    + Automatically reload the tileset when it has changed.
+  * Tileset editor:
+    + Allow to change the frame number and delay of patterns.
+    + Allow to duplicate tile patterns.
+    + Allow to move several patterns at once.
+  * Sprite editor:
+    + Allow to reorder directions by Maxs.
+    + Allow to change the frame number graphically by Maxs.
+    + The default origin is now 8,13 as usual in Solarus.
+    + Fix precision issues when creating or moving directions.
+    + Fix scrollbars reset when adding directions by Maxs.
+    + Show the line and column number.
+    + Allow a replace option to the find dialog by Akadream.
+  * Allow to select map/tileset/sprite/etc. ids to copy-paste them.
+  * Lua console: provide variables game, map, entities and function
+    tp.
+  * Clear the console when a quest is started.
+  * Fix resource declaration not updated when renaming a directory.
+  * Fix crash when opening quest in non-UTF8 filesystems.
+  * Fix error message when opening a read-only quest.
+  * Fix memory not released when closing an editor.
+  * Initial quest: add some shaders.
+  * Text editor: allow to set an external editor to be used instead
+    of the built-in one.
+- Update build dependencies:
+  * Add glm-devel: Was previously embedded in upstream tarball.
+  * Add pkgconfig(Qt5Concurrent): New dependency.
+- Remove solarus-quest-editor-1.5.3-fix-compilation.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Thu Nov  8 20:05:52 UTC 2018 - antoine.belvire@opensuse.org
+
+- Add solarus-quest-editor-1.5.3-fix-compilation.patch: Fix build
+  on Tumbleweed (boo#1115055).
+- Update source URL: Project has migrated to GitLab.
+- Minor spec file cleanup.
+
+-------------------------------------------------------------------
+Wed Apr 11 19:16:11 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 1.5.3:
+  * Initial quest: add enemy killed animation from Diarandor.
+  * Initial quest: fix the source image of the bomb sprite.
+  * Initial quest: make musics loop without separate file for their
+    intro.
+  * Initial quest: add sounds from the Solarus Free Resource Pack.
+  * Initial quest: play a sound with the Solarus logo.
+  * Fix error message when converting from older formats to 1.5.2.
+- Remove upstreamed patch:
+  * desktop-icons.patch.
+  * luajit-5_1-2.1.patch.
+- Use %license instead of %doc for license files (boo#1082318).
+
+-------------------------------------------------------------------
+Thu Jan 26 14:05:05 UTC 2017 - jengelh@inai.de
+
+- Trim filler words
+
+-------------------------------------------------------------------
+Wed Jan 25 08:29:16 UTC 2017 - mailaender@opensuse.org
+
+- initial packaging of version 1.5.2
+- Added luajit-5_1-2.1.patch
+- Added desktop-icons.patch

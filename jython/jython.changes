@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Wed Jun 26 15:53:35 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Add maven artifact alias
+
+-------------------------------------------------------------------
+Tue Feb 12 13:35:57 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against jline1, a compatibility package
+
+-------------------------------------------------------------------
+Fri Nov 23 09:23:44 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Distribute the maven pom file and generate the mvn(...) provides
+- Added patch:
+  * jython-dont-validate-pom.patch
+    + Do not validate the pom.xml file during the build
+
+-------------------------------------------------------------------
+Mon Dec 18 12:27:08 UTC 2017 - fstrba@suse.com
+
+- Require java 8 or higher to build.
+
+-------------------------------------------------------------------
+Mon Sep 18 12:50:14 UTC 2017 - fstrba@suse.com
+
+- Removed patch:
+  * jython-javadoc.patch
+    - Not needed, since doclint is disabled by default
+
+-------------------------------------------------------------------
+Sun Sep 10 19:26:18 UTC 2017 - fstrba@suse.com
+
+- Added patches:
+  * jython-compareto.patch
+  * jython-module.patch
+    + Fix build breakages with jdk9
+  * jython-javadoc.patch
+    + Disable doclint in order not to die on javadoc formatting
+      errors
+  * jython-sourcetarget.patch
+    + Specify java target and source level 1.6 in order to allow
+      building with jdk9
+- Depend on jline
+  * Fixes missing symbols with javadoc and jdk9
+
+-------------------------------------------------------------------
+Wed Jun 28 07:21:39 UTC 2017 - tchvatal@suse.com
+
+- Drop bogus ht2html dependency
+
+-------------------------------------------------------------------
+Tue Jul 21 09:10:18 UTC 2015 - tchvatal@suse.com
+
+- Do not add release to the readline requirement
+
+-------------------------------------------------------------------
+Wed Feb  4 14:23:46 UTC 2015 - tchvatal@suse.com
+
+- Added patches to fix CVE-2013-2027 bnc#916224:
+  * jython-cached-classes.patch
+  * jython-cacheperms.patch
+  * jython-makeCompiledFilename.patch
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:09 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Tue Mar 13 08:36:41 UTC 2012 - cfarrell@suse.com
+
+- license update: Python-2.0 and Apache-2.0
+  Use SPDX format
+
+-------------------------------------------------------------------
+Tue Feb 28 14:11:15 UTC 2012 - mvyskocil@suse.cz
+
+- do not require mysql-connector-java, just recommend 
+  to break some build cycles
+
+-------------------------------------------------------------------
+Fri Mar 11 13:01:53 UTC 2011 - mvyskocil@suse.cz
+
+- Update to 2.2.1 - this obsolete the pyxml patch
+- merge with jython-2.2.1-6.fc16.src.rpm
+
+-------------------------------------------------------------------
+Tue Feb 22 11:06:57 UTC 2011 - coolo@novell.com
+
+- do not copy pyxml, python 2.7's xml support is good enough
+
+-------------------------------------------------------------------
+Sun Sep 17 23:20:33 CEST 2006 - ro@suse.de
+
+- set source=1.4 for java 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:49 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Sep 11 23:56:02 CEST 2005 - ro@suse.de
+
+- remove epoch leftover 
+
+-------------------------------------------------------------------
+Thu Jul 28 15:44:29 CEST 2005 - jsmeix@suse.de
+
+- Adjustments in the spec file.
+
+-------------------------------------------------------------------
+Mon Jul 25 15:29:07 CEST 2005 - jsmeix@suse.de
+
+- Current version 2.2 from JPackage.org
+
+-------------------------------------------------------------------
+Wed Sep  8 01:23:21 CEST 2004 - ro@suse.de
+
+- fix lib64 issue
+
+-------------------------------------------------------------------
+Thu Sep  2 19:03:57 CEST 2004 - skh@suse.de
+
+- Initial package created with version 2.2 (JPackage 1.5)
+

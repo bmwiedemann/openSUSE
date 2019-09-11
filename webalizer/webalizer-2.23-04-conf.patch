@@ -1,0 +1,58 @@
+Index: sample.conf
+===================================================================
+--- sample.conf.orig
++++ sample.conf
+@@ -26,7 +26,7 @@
+ # (bzip2 compressed file), it will be decompressed on the fly as it
+ # is being read.
+ 
+-#LogFile        /var/lib/httpd/logs/access_log
++LogFile		/var/log/apache2/access_log
+ 
+ # LogType defines the log type being processed.  Normally, the Webalizer
+ # expects a CLF or Combined web server log as input.  Using this option,
+@@ -40,7 +40,7 @@
+ # should be a full path name, however relative ones might work as well.
+ # If no output directory is specified, the current directory will be used.
+ 
+-#OutputDir      /var/lib/httpd/htdocs/usage
++OutputDir	/srv/www/htdocs/webalizer 
+ 
+ # HistoryName allows you to specify the name of the history file produced
+ # by the Webalizer.  The history file keeps the data for previous months,
+@@ -168,7 +168,7 @@ PageType	cgi
+ # relative to the default output directory.  See the DNS.README file for
+ # additional information.
+ 
+-#DNSCache	dns_cache.db
++DNSCache	dns_cache.db
+ 
+ # DNSChildren allows you to specify how many "children" processes are
+ # run to perform DNS lookups to create or update the DNS cache file.
+@@ -182,7 +182,7 @@ PageType	cgi
+ # normal system operations.  Reasonable values should be between 5 and
+ # 20.  See the DNS.README file for additional information.
+ 
+-#DNSChildren	0
++DNSChildren	10
+ 
+ # CacheIPs allows unresolved IP addresses to be cached in the DNS
+ # database.  Normally, only resolved addresses are saved.  At some
+@@ -214,7 +214,7 @@ PageType	cgi
+ # to the output directory being used unless an absolute name
+ # (ie: starts with a leading '/') is specified.
+ 
+-#GeoDBDatabase	/usr/share/GeoDB/GeoDB.dat
++#GeoDBDatabase	/var/lib/GeoDB/GeoDB.dat
+ 
+ # The GeoIP option enables or disables the use of geolocation
+ # services provided by the GeoIP library (http://www.maxmind.com),
+@@ -229,7 +229,7 @@ PageType	cgi
+ # (ie: starts with a leading '/'), then the name is relative to the
+ # default output directory. This option should not normally be needed.
+ 
+-#GeoIPDatabase	/usr/share/GeoIP/GeoIP.dat
++#GeoIPDatabase	/var/lib/GeoIP/GeoIP.dat
+ 
+ # HTMLPre defines HTML code to insert at the very beginning of the
+ # file.  Default is the DOCTYPE line shown below.  Max line length

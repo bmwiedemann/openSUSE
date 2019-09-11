@@ -1,0 +1,14 @@
+#
+# Macros for mk-configure's make
+#
+
+%mkcmake \
+    export CFLAGS="%{optflags}" \
+    export PREFIX=%{_prefix} \
+    export DOCDIR=%{_docdir} \
+    export LIBDIR=%{_libdir} \
+    export MANDIR=%{_mandir} \
+    export SYSCONFDIR=%{_sysconfdir} \
+    export DESTDIR=%{buildroot} \
+    %{_bindir}/mkcmake \\\
+        %{?_smp_mflags}

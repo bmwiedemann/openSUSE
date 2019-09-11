@@ -1,0 +1,13 @@
+Index: zinnia-0.06/configure.in
+===================================================================
+--- zinnia-0.06.orig/configure.in
++++ zinnia-0.06/configure.in
+@@ -288,7 +288,7 @@ if test "x$ac_cv_x86_sse" = "xyes"; then
+ fi   
+ 
+ AC_SUBST(datarootdir)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AC_CONFIG_FILES([zinnia.pc:zinnia.pc.in])
+ AC_OUTPUT([Makefile Makefile.msvc swig/version.h])
+ 

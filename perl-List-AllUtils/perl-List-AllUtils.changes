@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Wed Dec 12 06:09:15 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-List-AllUtils/Changes
+
+  0.15    2018-12-10
+  
+  - Require List::UtilsBy 0.11 and include the docs from that version.
+  
+  - Require List::SomeUtils 0.56 and include the docs from that version.
+
+-------------------------------------------------------------------
+Mon Feb 13 12:19:34 UTC 2017 - coolo@suse.com
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-List-AllUtils/Changes
+
+  0.14    2017-02-07
+  
+  - Re-release after git pull of some changes.
+  
+  
+  0.13    2017-02-07
+  
+  - The docs for the subs from List::UtilsBy were repeated twice. Reported by
+    Andy Lester. RT #120123.
+
+-------------------------------------------------------------------
+Mon Oct 17 05:35:50 UTC 2016 - coolo@suse.com
+
+- updated to 0.12
+   see /usr/share/doc/packages/perl-List-AllUtils/Changes
+
+  0.12    2016-10-16
+  
+  - Nothing from List::UtilsBy was actually being exported, because of a type
+    and a lack of testing. Reported by Greg Oschwald. GitHub #5.
+
+-------------------------------------------------------------------
+Mon Jun 27 08:09:40 UTC 2016 - coolo@suse.com
+
+- updated to 0.11
+   see /usr/share/doc/packages/perl-List-AllUtils/Changes
+
+  0.11    2016-06-26
+  
+  - Added List::UtilsBy to the list of included modules. Based on a patch from
+    Yanick Champoux. GH #3.
+
+-------------------------------------------------------------------
+Tue May 31 10:37:04 UTC 2016 - coolo@suse.com
+
+- updated to 0.10
+   see /usr/share/doc/packages/perl-List-AllUtils/Changes
+
+  0.10    2016-05-08
+  
+  - Switched from List::MoreUtils to List::SomeUtils. This should not change any
+    functionality of the module.
+  
+  - Make the test for subroutine redefined warnings much more
+    specific. Previously tests could fail because of totally unrelated warnings
+    from other modules. Reported by ribasushi. RT #113740.
+
+-------------------------------------------------------------------
+Tue Apr 14 21:00:52 UTC 2015 - coolo@suse.com
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-List-AllUtils/Changes
+
+  0.09    2014-10-05
+  
+  - Clarify which of List::Util and List::MoreUtils wins when they both provide
+    the same function. Requested by Karen Etheridge. RT #98560.
+
+-------------------------------------------------------------------
+Thu Jul 17 09:27:56 UTC 2014 - coolo@suse.com
+
+- updated to 0.08
+ - This version now works with both List::MoreUtils 0.28-0.33 and the latest
+   trial version, 0.400_006. Note that it does not work with earlier versions
+   of 0.400.
+
+-------------------------------------------------------------------
+Mon Nov 25 07:39:19 UTC 2013 - coolo@suse.com
+
+- updated to 0.07
+ - The last version totally broke all exports from List::MoreUtils. Now there
+   are actual tests for this. Reported by Tatsuhiko Miyagawa. RT #89509.
+ - List::Util 1.33 provides some subs that are also provided by
+   List::MoreUtils. This caused subroutine redefeined warnings. List::AllUtils
+   now only imports subs from List::MoreUtils that aren't defined by
+   List::Util. This works with List::Util 1.31+. Reported by Zefram. RT #89467.
+
+-------------------------------------------------------------------
+Fri Oct  4 09:13:59 UTC 2013 - coolo@suse.com
+
+- updated to 0.05
+ - Really require List::Util 1.31, instead of just saying so in the
+   Changes. Reported by Przemysław Wesołek. RT #88296
+ - Updated to require List::Util 1.31, which includes a bunch of new pairwise
+   functions.
+ - Updated docs to match List::MoreUtils 0.28+. Reported by ilmari. RT #75196.
+
+-------------------------------------------------------------------
+Tue May 22 13:12:35 UTC 2012 - werner@suse.de
+
+- run osc service localrun format_spec_file 
+
+-------------------------------------------------------------------
+Thu Feb 17 14:27:45 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.02)
+

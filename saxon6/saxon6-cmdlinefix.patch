@@ -1,0 +1,58 @@
+--- com/icl/saxon/StyleSheet.java.orig	2004-07-20 13:04:01.490886776 +0300
++++ com/icl/saxon/StyleSheet.java	2004-07-20 13:08:45.562006674 +0300
+@@ -141,7 +141,7 @@
+ 
+                     else if (args[i].equals("-x")) {
+                         i++;
+-                        if (args.length < i+2) badUsage(name, "No source parser class");
++                        if (args.length < i+1) badUsage(name, "No source parser class");
+                         String sourceParserName = args[i++];
+                         factory.setAttribute(
+                                 FeatureKeys.SOURCE_PARSER_CLASS,
+@@ -150,7 +150,7 @@
+ 
+                     else if (args[i].equals("-y")) {
+                         i++;
+-                        if (args.length < i+2) badUsage(name, "No style parser class");
++                        if (args.length < i+1) badUsage(name, "No style parser class");
+                         String styleParserName = args[i++];
+                         factory.setAttribute(
+                                 FeatureKeys.STYLE_PARSER_CLASS,
+@@ -159,7 +159,7 @@
+ 
+                     else if (args[i].equals("-r")) {
+                         i++;
+-                        if (args.length < i+2) badUsage(name, "No URIResolver class");
++                        if (args.length < i+1) badUsage(name, "No URIResolver class");
+                         String r = args[i++];
+                         factory.setURIResolver(makeURIResolver(r));
+                     }
+@@ -177,7 +177,7 @@
+ 
+                     else if (args[i].equals("-TL")) {
+                         i++;
+-                        if (args.length < i+2) badUsage(name, "No TraceListener class");
++                        if (args.length < i+1) badUsage(name, "No TraceListener class");
+                         TraceListener traceListener = makeTraceListener(args[i++]);
+                         factory.setAttribute(
+                                 FeatureKeys.TRACE_LISTENER,
+@@ -208,7 +208,7 @@
+ 
+                     else if (args[i].equals("-m")) {
+                         i++;
+-                        if (args.length < i+2) badUsage(name, "No message Emitter class");
++                        if (args.length < i+1) badUsage(name, "No message Emitter class");
+                         factory.setAttribute(
+                                 FeatureKeys.MESSAGE_EMITTER_CLASS,
+                                 args[i++]);
+@@ -530,7 +530,9 @@
+         System.err.println("  -ds             Use standard tree data structure ");
+         System.err.println("  -dt             Use tinytree data structure (default)");
+         System.err.println("  -o filename     Send output to named file or directory ");
++        System.err.println("  -l              Switch on line numbering for the source document ");
+         System.err.println("  -m classname    Use specified Emitter class for xsl:message output ");
++        System.err.println("  -noext          Suppress calls on non-system extension functions ");
+         System.err.println("  -r classname    Use specified URIResolver class ");
+         System.err.println("  -t              Display version and timing information ");
+         System.err.println("  -T              Set standard TraceListener");
+Nur in com/icl/saxon: StyleSheet.java.orig.

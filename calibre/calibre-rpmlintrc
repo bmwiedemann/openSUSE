@@ -1,0 +1,5 @@
+# # Output filters 
+addFilter("non-executable-script")
+addFilter("no-manual-page-for-binary")
+addFilter("pem-certificate")
+addFilter("explicit-lib-dependency")

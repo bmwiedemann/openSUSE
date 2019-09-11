@@ -1,0 +1,762 @@
+-------------------------------------------------------------------
+Thu Jun 27 23:43:02 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gst-vaapi-fix-garbled-screen-totem.patch: Fix garbled video
+  in totem.
+- Add missing pkgconfig(wayland-protocols) BuildRequires for
+  wayland support.
+- Drop conditionals for no longer supported versions of openSUSE.
+
+-------------------------------------------------------------------
+Wed Jun 19 13:17:00 UTC 2019 - mgorse@suse.com
+
+- Update to version 1.16.0: 
+  + Highlights
+    - GStreamer WebRTC stack gained support for data channels for
+      peer-to-peer communication based on SCTP, BUNDLE support, as
+      well as support for multiple TURN servers.
+    - AV1 video codec support for Matroska and QuickTime/MP4
+      containers and more configuration options and supported
+      input formats for the AOMedia AV1 encoder
+    - Support for Closed Captions and other Ancillary Data in video
+    - Support for planar (non-interleaved) raw audio
+    - GstVideoAggregator, compositor and OpenGL mixer elements are
+      now in -base
+    - New alternate fields interlace mode where each buffer carries
+      a single field
+    - WebM and Matroska ContentEncryption support in the Matroska
+      demuxer
+    - new WebKit WPE-based web browser source element
+    - Video4Linux: HEVC encoding and decoding, JPEG encoding, and
+      improved dmabuf import/export
+    - Hardware-accelerated Nvidia video decoder gained support for
+      VP8/VP9 decoding, whilst the encoder gained support for
+      H.265/HEVC encoding.  
+    - Many improvements to the Intel Media SDK based
+      hardware-accelerated video decoder and encoder plugin (msdk):
+      dmabuf import/export for zero-copy integration with other
+      components; VP9 decoding; 10-bit HEVC encoding; video
+      post-processing (vpp) support including deinterlacing; and
+      the video decoder now handles dynamic resolution changes.
+    - The ASS/SSA subtitle overlay renderer can now handle multiple
+      subtitles that overlap in time and will show them on screen
+      simultaneously
+    - The Meson build is now feature-complete (*) and it is now the
+      recommended build system on all platforms. The Autotools
+      build is scheduled to be removed in the next cycle.
+    - The GStreamer Rust bindings and Rust plugins module are now
+      officially part of upstream GStreamer.
+    - The GStreamer Editing Services gained a gesdemux element that
+      allows directly playing back serialized edit list with
+      playbin or (uri)decodebin
+    - Many performance improvements
+- Add support for meson, but disable for now, since plugin docs
+  are not built.
+
+-------------------------------------------------------------------
+Fri May 31 22:33:31 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.5:
+  + Thread-safety and memory leak fixes.
+  + Improve caps negotiation if downstream takes ANY caps.
+  + Fix build with -DG_DISABLE_ASSERT.
+
+-------------------------------------------------------------------
+Wed Oct  3 15:51:18 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.4:
+  + Bugfix release, please see .changes in gstreamer main package.
+
+-------------------------------------------------------------------
+Wed Sep 26 20:28:44 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.3:
+  + Bugfix release, please see .changes in gstreamer main package.
+
+-------------------------------------------------------------------
+Tue Jul 24 08:08:18 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.2:
+  + Update docs.
+  + vaapibufferpool: declare parameter display as object.
+  + vaapiencode:
+    - h264: set best profile in the intersected caps.
+    - h264: log output caps.
+    - h264: find profile in available and allowed caps.
+  + plugins:
+    - verify EGL display is not NULL.
+    - guard GstGL code.
+    - handle EGL when creating VAAPI display from gl.
+  + libs:
+    - display: resurrect parent private memember.
+    - display: egl: initialize params structure.
+    - encoder: h265: increase log2_max_pic_order_cnt range
+      according to spec.
+  + display: egl: fix to create VaapiDisplayEGL with native EGL
+    display.
+
+-------------------------------------------------------------------
+Sat Jun 23 22:05:56 UTC 2018 - bjorn.lie@gmail.com
+
+- Conditionalize wayland support for openSUSE Leap 15 and newer,
+  fix build for SLE 12.
+
+-------------------------------------------------------------------
+Sun May 20 09:41:34 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.1:
+  + GstPad: Fix race condition causing the same probe to be called
+    multiple times
+  + Fix occasional deadlocks on windows when outputting debug
+    logging
+  + Fix debug levels being applied in the wrong order
+  + GIR annotation fixes for bindings
+  + audiomixer, audioaggregator: fix some negotiation issues
+  + gst-play-1.0: fix leaving stdin in non-blocking mode after exit
+  + flvmux: wait for caps on all input pads before writing header
+    even if source is live
+  + flvmux: don't wake up the muxer unless there is data, fixes
+    busy looping if there's no input data
+  + flvmux: fix major leak of input buffers
+  + rtspsrc, rtsp-server: revert to RTSP RFC handling of
+    sendonly/recvonly attributes
+  + rtpvrawpay: fix payloading with very large mtu sizes where
+    everything fits into a single RTP packet
+  + v4l2: Fix hard-coded enabled v4l2 probe on Linux/ARM
+  + v4l2: Disable DMABuf for emulated formats when using libv4l2
+  + v4l2: Always set colorimetry in S_FMT
+  + asfdemux: Set stream-format field for H264 streams and handle
+    H.264 in bytestream format
+  + x265enc: Fix tagging of keyframes on output buffers
+  + ladspa: Fix critical during plugin load on Windows
+  + decklink: Fix COM initialisation on Windows
+  + h264parse: fix re-use across pipeline stop/restart
+  + mpegtsmux: fix force-keyframe event handling and PCR/PMT
+    changes that would confuse some players with generated HLS
+    streams
+  + adaptivedemux: Support period change in live playlist
+  + rfbsrc: Fix support for applevncserver and support NULL pool in
+    decide_allocation
+  + jpegparse: Fix APP1 marker segment parsing
+  + h265parse: Make caps writable before modifying them, fixes
+    criticals
+  + fakevideosink: request an extra buffer if enable-last-sample is
+    enabled
+  + wasapisrc: Don't provide a clock based on WASAPI's clock
+  + wasapi: Only use audioclient3 when low-latency, as it might
+    otherwise glitch with slow CPUs or VMs
+  + wasapi: Don't derive device period from latency time, should
+    make it more robust against glitches
+  + audiolatency: Fix wave detection in buffers and avoid bogus pts
+    values while starting
+  + msdk: fix plugin load on implementations with only HW support
+  + msdk: dec: set framerate to the driver only if provided, not in
+    0/1 case
+  + msdk: Don't set extended coding options for JPEG encode
+  + rtponviftimestamp: fix state change function init/reset causing
+    races/crashes on shutdown
+  + decklink: fix initialization failure in windows binary
+  + ladspa: Fix critical warnings during plugin load on Windows and
+    fix dependencies in meson build
+  + gl: fix cross-compilation error with viv-fb
+  + qmlglsink: make work with eglfs_kms
+  + rtspclientsink: Don't deadlock in preroll on early close
+  + rtspclientsink: Fix client ports for the RTCP backchannel
+  + rtsp-server: Fix session timeout when streaming data to client
+    over TCP
+  + vaapiencode: h264: find best profile in those available, fixing
+    negotiation errors
+  + vaapi: remove custom GstGL context handling, use GstGL instead.
+    Fixes GL Context sharing with WebkitGtk on wayland
+  + gst-editing-services: various fixes
+  + gst-python: bump pygobject req to 3.8;
+    fix GstPad.set_query_function(); dist autogen.sh and
+    configure.ac in tarball
+  + g-i: pick up GstVideo-1.0.gir from local build directory in
+    GstGL build
+  + g-i: update constant values for bindings
+  + avoid duplicate symbols in plugins across modules in static
+    builds
+  + ... and many, many more!
+- Drop gst-vaapi-egl-mark-context-wrapped.patch and
+  gst-vaapi-wayland-dont-poll-no-pending-frames.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed May  9 16:54:16 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop gst-vaapi-add-zero-as-valid-value.patch for gst-1.14 branch.
+
+-------------------------------------------------------------------
+Tue May  8 11:25:09 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.0:
+  + Highlights:
+    - WebRTC support: real-time audio/video streaming to and from
+      web browsers;
+    - Experimental support for the next-gen royalty-free AV1 video
+      codec
+    - Video4Linux: encoding support, stable element names and
+      faster device probing;
+    - Support for the Secure Reliable Transport (SRT) video
+      streaming protocol;
+    - RTP Forward Error Correction (FEC) support (ULPFEC);
+    - RTSP 2.0 support in rtspsrc and gst-rtsp-server;
+    - ONVIF audio backchannel support in gst-rtsp-server and
+      rtspsrc;
+    - playbin3 gapless playback and pre-buffering support;
+    - Tee, our stream splitter/duplication element, now does
+      allocation query aggregation which is important for efficient
+      data handling and zero-copy;
+    - QuickTime muxer has a new prefill recording mode that allows
+      file import in Adobe Premiere and FinalCut Pro while the file
+      is still being written;
+    - rtpjitterbuffer fast-start mode and timestamp offset
+      adjustment smoothing;
+    - souphttpsrc connection sharing, which allows for connection
+      reuse, cookie sharing, etc;
+    - nvdec: new plugin for hardware-accelerated video decoding
+      using the NVIDIA NVDEC API;
+    - Adaptive DASH trick play support;
+    - ipcpipeline: new plugin that allows splitting a pipeline
+      across multiple processes;
+    - Major gobject-introspection annotation improvements for large
+      parts of the library API;
+    - GStreamer C# bindings have been revived and seen many updates
+      and fixes;
+    - The externally maintained GStreamer Rust bindings had many
+      usability improvements and cover most of the API now.
+      Coinciding with the 1.14 release, a new release with the 1.14
+      API additions is happening.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May  7 13:14:54 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gst-vaapi-add-zero-as-valid-value.patch: libs: encoder: add
+  zero as valid value for periodic keyframe. Enabled zero as valid
+  value for keyframe-period property (bgo#793829).
+
+-------------------------------------------------------------------
+Wed May  2 06:33:17 UTC 2018 - bjorn.lie@gmail.com
+
+- Add upstream bug fix patches:
+  + gst-vaapi-egl-mark-context-wrapped.patch: libs: egl: utils:
+    mark context as wrapped when it is. The returning egl context
+    may be null, so we should check the return value (bgo#795391).
+  + gst-vaapi-wayland-dont-poll-no-pending-frames.patch: wayland:
+    don't poll if there are no pending frames. Otherwise the
+    following poll may not return for an arbitrary amount of time.
+    This can happen if another wayland event queue has flushed and
+    read our events (bgo#795224).
+
+-------------------------------------------------------------------
+Thu Mar 29 13:08:16 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.12.5:
+  + Bugs fixed: bgo#793836, bgo#789476.
+- Drop upstream fixed patches:
+  + gst-vaapi-add-NULL-sentinel-to-kernel_names.patch.
+  + gst-vaapi-h264-ensure-num_ref_frames-greater-0.patch.
+  + gst-vaapi-plugins-handle-vaapi-allocator.patch.
+  + gst-vaapi-vaapipostproc-lock-ensure_filter.patch.
+  + gst-vaapi-vaapipostproc-set-discont-flag.patch.
+  + gst-vaapi-vaapivideobufferpool-fix-regression.patch.
+  + gst-vaapi-vaapivideomemory-remove-unused-macro.patch.
+
+-------------------------------------------------------------------
+Wed Mar 21 19:23:10 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gst-vaapi-h264-ensure-num_ref_frames-greater-0.patch: libs:
+  decoder: h264: ensure num_ref_frames is greater than 0. Even if
+  it is the h264parse fault or bad video file, vaapih264dec should
+  set a proper value for
+  VAPictureParameterBufferH264.num_ref_frames as the driver might
+  use it (bgo#793836).
+
+-------------------------------------------------------------------
+Mon Mar  5 17:37:42 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gst-vaapi-vaapivideobufferpool-fix-regression.patch:
+  vaapivideobufferpool: fix regression. The allocator in the config
+  may be not VAAPI (videotestsrc, for example) and it will not have
+  a video info configuration (bgo#789476).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:31:52 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner.
+
+-------------------------------------------------------------------
+Thu Feb 22 19:41:54 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gst-vaapi-vaapipostproc-set-discont-flag.patch:
+  vaapipostproc: set discont flag at vpp deinterlacing. When
+  deinterlacing with VPP the discont flag was not forwarded to the
+  new created buffer. This patch sets the discont flag if input
+  buffer has it.
+
+-------------------------------------------------------------------
+Mon Feb 12 11:35:03 UTC 2018 - bjorn.lie@gmail.com
+
+- Add upstream bug fix patches:
+  + gst-vaapi-vaapipostproc-lock-ensure_filter.patch.
+  + gst-vaapi-add-NULL-sentinel-to-kernel_names.patch.
+  + gst-vaapi-vaapivideomemory-remove-unused-macro.patch.
+  + gst-vaapi-plugins-handle-vaapi-allocator.patch.
+- Drop non built devel subpackage, and do a minor spec clean.
+- Drop no longer needed obsoletes, no current version of openSUSE
+  have ever had them, do minor spec cleanup, use autosetup macro.
+
+-------------------------------------------------------------------
+Mon Dec 11 12:13:12 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.4:
+  + Bugs fixed: bgo#784398, bgo#786173, bgo#787818.
+- Drop gst-vaapi-version-fix.patch: Fixed upstream, following this:
+  drop libtool BuildRequires and no longer pass autogen.sh, and
+  drop sed hack, no longer needed.
+
+-------------------------------------------------------------------
+Fri Dec  1 09:03:13 UTC 2017 - zaitor@opensuse.org
+
+- Add sed hack to lower needed version of autotools to that we have
+  in Leap 42.x.
+
+-------------------------------------------------------------------
+Thu Nov 16 13:26:49 UTC 2017 - zaitor@opensuse.org
+
+- Add gst-vaapi-version-fix.patch: Fix build with new libva 2.0
+  version (bgo#784398, bgo#786173, bgo#787818).
+- Following the above, add libtool BuildRequires and pass
+  autogen.sh before configure, as the patch touches buildsystem.
+- Further drop pkgconfig(libva-egl) and pkgconfig(libva-tpi)
+  BuildRequires: No longer available.
+- Also drop obsolete --disable-builtin-libvpx configure call.
+
+-------------------------------------------------------------------
+Mon Sep 18 21:52:28 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.3:
+  + Bugs fixed: bgo#754885, bgo#785032, bgo#786307, bgo#787733.
+
+-------------------------------------------------------------------
+Fri Jul 14 11:52:28 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.2:
+  + Bugs fixed: bgo#784320.
+
+-------------------------------------------------------------------
+Wed Jun 21 08:45:26 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.1:
+  + Bugs fixed: bgo#781759, bgo#782542, bgo#782543, bgo#783726.
+
+-------------------------------------------------------------------
+Tue May  9 10:42:50 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.0:
+  + Bugs fixed: bgo#782063, bgo#781866.
+- Changes from version 1.11.91:
+  + Bugs fixed: bgo#773689, bgo#774029, bgo#775848, bgo#780442,
+    bgo#781142, bgo#781573, bgo#781577, bgo#781695, bgo#781759.
+- Changes from version 1.11.90:
+  + Bugs fixed: bgo#771291, bgo#772838, bgo#778676, bgo#778750,
+    bgo#778781, bgo#779120, bgo#779400, bgo#780302, bgo#780620.
+
+-------------------------------------------------------------------
+Wed Apr 26 11:25:02 UTC 2017 - dimstar@opensuse.org
+
+- Drop vaapi-tools BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
+Sat Feb 25 00:21:27 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.2:
+  + Bugs fixed: bgo#749950, bgo#754680, bgo#777409, bgo#778250,
+    bgo#778318, bgo#778576, bgo#778782.
+- Add explicit pkgconfig(gstreamer-codecparsers-1.0) BuildRequires
+  and version it: align with what configure checks for.
+
+-------------------------------------------------------------------
+Thu Feb 23 19:36:17 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.1:
+  + Bugs fixed: bgo#753591, bgo#768266, bgo#769266, bgo#772151,
+    bgo#773323, bgo#773546, bgo#773593, bgo#773939, bgo#773948,
+    bgo#774030, bgo#774213, bgo#774782, bgo#775040, bgo#775041,
+    bgo#775203, bgo#776084, bgo#776175, bgo#776303, bgo#777115.
+
+-------------------------------------------------------------------
+Thu Feb 23 19:36:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.10.4:
+  + Bugs fixed: bgo#777506, bgo#778010.
+- Drop gstreamer-plugins-vaapi-vaapipostproc-set-GST_VAAPI.patch
+  and gstreamer-plugins-vaapi-h264-reduce-frame-gaps.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Thu Feb  9 20:08:39 UTC 2017 - zaitor@opensuse.org
+
+- Add gstreamer-plugins-vaapi-vaapipostproc-set-GST_VAAPI.patch and
+  gstreamer-plugins-vaapi-h264-reduce-frame-gaps.patch: Add two
+  upstream bugfix commits (bgo#777506).
+
+-------------------------------------------------------------------
+Mon Jan 30 16:51:59 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.10.3:
+  + Bugs fixed: bgo#775204, bgo#774254, bgo#777146, bgo#777395,
+    bgo#777395.
+
+-------------------------------------------------------------------
+Sat Dec  3 19:21:32 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.2:
+  + Bugs fixed: bgo#772838.
+- Drop gstreamer-plugins-vaapi-va_wayland.patch: Fixed upstream.
+- Following the above, drop libtool BuildRequires and stop passing
+  autoreconf. We no longer carry any patches.
+
+-------------------------------------------------------------------
+Sun Nov 27 11:13:55 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.1:
+  + Minor bug fixes.
+
+-------------------------------------------------------------------
+Wed Nov  2 23:52:15 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.0:
+  + All the decoders have been split, one plugin feature per codec.
+    So far, the available ones, depending on the driver, are:
+    vaapimpeg2dec, vaapih264dec, vaapih265dec, vaapivc1dec,
+    vaapivp8dec, vaapivp9dec and vaapijpegdec (which already was
+    split).
+  + Improvements when mapping VA surfaces into memory. It now
+    differentiates between negotiation caps and allocations caps,
+    since the allocation memory for surfaces may be bigger than one
+    that is going to be mapped.
+  + Vaapih265enc now supports constant bitrate mode (CBR).
+  + Since several VA drivers are unmaintained, we decide to keep a
+    whitelist with the va drivers we actually test, which is mostly
+    the i915 and to a lesser degree gallium from the mesa project.
+  + Exporting the environment variable GST_VAAPI_ALL_DRIVERS disables
+    the whitelist.
+  + Plugin features are registered at run-time, according to their
+    support by the loaded VA driver. So only the decoders and
+    encoder supported by the system are registered. Since the
+    driver can change, some dependencies are tracked to invalidate
+    the GStreamer registry and reload the plugin.
+  + Dmabuf importation from upstream has been improved, gaining
+    performance.
+  + Vaapipostproc now can negotiate buffer transformations via
+    caps.
+  + Decoders now can do I-frame only reverse playback. This decodes
+    I-frames only because the surface pool is smaller than the
+    required by the GOP to show all the frames.
+  + The upload of frames onto native GL textures has been optimized
+    too, keeping a cache of the internal structures for the offered
+    textures by the sink.
+  + Bugs fixed: bgo#754680, bgo#772554, bgo#772599, bgo#773497,
+    bgo#773589.
+- Stop passing --enable-opengl to configure: No longer recognized
+  nor needed.
+- Pass --disable-builtin-libvpx to configure: Ensure we are using
+  system provided libvpx.
+- Drop libva-devel BuildRequires, and instead add vaapi-tools,
+  vaapi-wayland-tools, pkgconfig(libva), pkgconfig(libva-drm),
+  pkgconfig(libva-glx), pkgconfig(libva-tpi),
+  pkgconfig(wayland-cursor), pkgconfig(wayland-egl),
+  pkgconfig(wayland-scanner), pkgconfig(wayland-server) following
+  what configure really looks for.
+- Add gstreamer-plugins-vaapi-va_wayland.patch: Correctly locate
+  libva-wayland headers (bgo#773946).
+- All call to autoreconf, as above patch touches the build system.
+
+-------------------------------------------------------------------
+Mon Aug 22 19:33:53 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.3 (boo#996937):
+  + Bugs fixed: bgo#769250, bgo#768458, bgo#769237, bgo#768458,
+    bgo#768544, bgo#767946, bgo#767934, bgo#767699, bgo#766184,
+    bgo#765368.
+
+-------------------------------------------------------------------
+Tue Jun 14 20:05:03 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.2:
+  + bgo#765702: build: errors when compiling without X11.
+
+-------------------------------------------------------------------
+Sat May 28 23:22:10 UTC 2016 - zaitor@opensuse.org
+
+- Add pkgconfig(libva-drm), pkgconfig(libva-egl) and
+  pkgconfig(libva-wayland): Ensure that all the libva-subpackages
+  are available during build.
+
+-------------------------------------------------------------------
+Wed Apr 20 22:40:19 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.1:
+  + bgo#764231 : Bad call to
+    gst_buffer_add_video_gl_texture_upload_meta() in
+    gstvaapivideometa_texture.c.
+
+-------------------------------------------------------------------
+Sat Mar 26 20:16:34 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.0:
+  + Hardware-accelerated zero-copy video decoding on Android
+  + New video capture source for Android using the
+    android.hardware.Camera API.
+  + Windows Media reverse playback support (ASF/WMV/WMA).
+  + New tracing system provides support for more sophisticated
+    debugging tools.
+  + New high-level GstPlayer playback convenience API.
+  + Initial support for the new Vulkan API, see Matthew Waters'
+    blog post for more details.
+  + Improved Opus audio codec support: Support for more than two
+    channels; MPEG-TS demuxer/muxer can now handle Opus;
+    sample-accurate encoding/decoding/transmuxing with Ogg,
+    Matroska, ISOBMFF (Quicktime/MP4), and MPEG-TS as container;
+    new codec utility functions for Opus header and caps handling
+    in pbutils library. The Opus encoder/decoder elements were
+    also moved to gst-plugins-base (from -bad), and the opus RTP
+    depayloader/payloader to -good.
+  + GStreamer VAAPI module now released and maintained as part of
+    the GStreamer project.
+  + Asset proxy support in the GStreamer Editing Services.
+- Update Url and Source to new home at freedesktop.org.
+- Pass --enable-egl, --enable-encoders, --enable-drm,
+  --enable-opengl, --enable-wayland and --enable-x11 to configure
+  to ensure we build support for them.
+- Bump soname following upstream changes.
+- Add Mesa-libGLESv3-devel, pkgconfig(gl), pkgconfig(libdrm),
+  pkgconfig(libudev), pkgconfig(libva), pkgconfig(libva-x11),
+  pkgconfig(vpx) BuildRequires: New explicit dependencies.
+- Drop libgstcodecparsers_vpx0, libgstvaapi-1_6-1, libgstvaapi-drm,
+  libgstvaapi-egl, libgstvaapi-glx, libgstvaapi-wayland and
+  libgstvaapi-x11 sub-packages and obsolete them.
+- Add new doc sub-package.
+
+-------------------------------------------------------------------
+Thu Dec 24 13:02:19 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.7.0:
+  + Add VP9 Decoder.
+  + Improvements to HEVC(H265) decoder:
+    - Fix the decoding of dependent slice segment.
+    - Fix decoding of stream when it has temporal sublayers.
+    - Added Workaround to recognize wrongly encoded main profile
+      streams.
+    - Add SEI Header parsing.
+    - Fix the value assigning for delta_chroma_log2_weight_denom.
+    - Fix default value assignment of pred_weight_table.
+    - Fix ChromaOffsetL0/ChromaOffsetL1 calculation.
+    - Add calculation of WpOffsetHalfRangeC.
+    - Fix the scaling list scan order.
+    - Fix the picture addition in dpb() based on spec H265 v3.
+    - Fix the dpb_add() based on C.5.2.3.
+    - Fix flushing of dpb for EOS/EOB nal.
+  + Added infrastructure for handling corrupted pictures in h264
+    decoder (bgo#703921, bgo#751434).
+  + Add number of fixes and optimizations to GstContext sharing
+    (bgo#757598).
+  + Add API for dynamic detection of OpenGL API in use
+    (bgo#753099).
+  + Make vaapidecode + glimagesink combination work with opengl3
+    (bgo#753099).
+  + Fix segfault in vaapipostproc (bgo#752558).
+  + Fix seeking while using GLTextureUpload for rendering
+    (bgo#752929).
+  + Ported JPEG decoder to new API/ABI changes in codecparser.
+  + Removed gstvaapiuploader (bgo#752777).
+  + Fix 0/1 frame-rate handling in encoder (bgo#744042).
+  + Validate chroma sampling according to the VA's RT format in
+    Encoder (bgo#744042).
+  + Number of improvements in vaapi video memory handling
+    (bgo#744042).
+  + Stabilization of vaapidecodebin (bgo#749554, bgo#757957).
+  + Wayland fixes: Don't return GST_FLOW_ERROR on flushing
+    (bgo#753598).
+  + Add yasm as build dependency.
+  + Remvoved custom(non-official) debian parallel compilation
+    option.
+  + Fix multi-resolution video handling in vaapidecode
+    (bgo#753914).
+  + Adding stereoscopic/multiview upstream API support
+    (bgo#750835).
+  + Fixed fps calculation for for forced latency framerate
+    (bgo#755040).
+  + Fix build issues while disabling built-in codecparsers
+    (bgo#754845).
+  + Mark support for GStreamer 1.2 as obsolete.
+  + Update libvpx submodule to 1.4.0.
+  + Fix caps negotiation for meta:GstVideoGLTextureUploadMeta
+    (bgo#756686).
+  + Fixed leaked display instance in vaapidecodebin (bgo#757595).
+
+-------------------------------------------------------------------
+Tue Oct 27 10:23:24 UTC 2015 - zaitor@opensuse.org
+
+- Stop using wayland bcond, it does not work out for us.
+- Add new %define gst_so and %define gst_ver and use suse_version
+  to decide the value of these. Allowing package to be built with
+  the different branches of gstreamer existing in older versions of
+  openSUSE.
+- Following this, subpackages get new name depending on what
+  gst-branch they are built against.
+
+-------------------------------------------------------------------
+Tue Oct 20 17:27:01 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.6.1:
+  + Fix a possible segmentation fault using gstreamer 1.4
+    (bgo#752558).
+  + Don't loose the GLTextureUpload meta on seek (bgo#752929).
+  + Remove in debian rules the option --with-gstreamer-api
+    (bgo#753618).
+  + Add in debian rules yasm as dependency.
+  + Keep a copy of input codec state (bgo#753914).
+  + Renegotiate if the input caps are not equal (bgo#750835).
+  + Fix the FPS denominator and numerator (bgo#755040).
+  + Initialize H264 PPS's slice_group_id (bgo#754845).
+  + Verify for H264 MVC and H265 SPS when running configure
+    (bgo#754845).
+  + Link libgstvaapi_parse.so against libgstcodecparsers.so.
+- Stop passing --with-gstreamer-api=1.0 to configure, no longer
+  recognized.
+
+-------------------------------------------------------------------
+Mon Jul 20 12:08:17 UTC 2015 - zaitor@opensuse.org
+
+- Correct %bconds, fixes build on SLE12 and openSUSE42 where we do
+  not have wayland.
+- Clean up spec.
+- Update URL to new home.
+
+-------------------------------------------------------------------
+Fri Jul 17 20:31:42 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.6.0:
+  + Major changes:
+    - Add HEVC(H265) Decoder.
+    - Add HEVC(H265) Encoder.
+    - Add VP8 Encoder.
+    - Add JPEG Encoder.
+    - Add a vaapidecodebin(vaapidecode->queue->vaapipostproc)
+      element.
+    - Add support for EGL.
+    - Add Skin-Tone-Enhancement feature in vaapipostproc.
+    - Add support for H.264 Multiview High profile encoding with
+      more than 2 views.
+  + Other Changes of interest:
+    - Add support for loss of pictures in h264 decoder.
+    - Add support for GstVideoGLTextureOrientation in plugins.
+    - Add support for BGRA textures in plugins.
+    - Add a simple-encoder test program that uses libgstvaapi for
+      video encoding to elementary streams.
+    - Add finer wayland frame control and many other optimizations.
+    - Add packed SEI header message support in h264 encoder for CBR
+      mode.
+    - Add scaling of quality factor and Quantization tables for
+      JPEG encoder.
+    - Add GstColorBalance interface in vaapipostproc.
+    - Add a handoff signal to vaapisink.
+    - Add rounding control handling for VC1 simple and Main
+      profile.
+    - Record glconext supplied by downstream to enable run-time
+      compatibility check.
+    - Switch back to single thread implementation in vaapidecode.
+    - Set decoding latency in vaapidecode by assuming realtime
+      performance for the HW decoding.
+    - Allow vaapidecode to connect with glimagesink, mark x11
+      display as compatible with EGL.
+    - Allow decoding of VC1 streams which contain user BDUs.
+    - Use git.mk, a small Makefile to autogenerate .gitignore
+      files.
+    - Expose the overlay capability in vaapisink for compatibility
+      with dvbsuboverlay.
+    - Expose deinterlace property to vaapidecodebin.
+    - Enable VPP element in vaapidecodebin only if there is HW
+      support.
+    - Fix autoplugging of vaapidecode in playbin for wmv/asf
+      streams.
+    - Fix multi-slice hevc encoding.
+    - Fix ABBA deadlock between vaapisink and vaapipostproc if
+      running in different threads.
+    - Fix Seeking failure while using navseek in pipeline.
+    - Fix PTS cache for MPEG2 GOP start.
+    - Fix the wrong selection of passthrough mode in vaapipostproc.
+    - Fix GstVaapiVideoPool related dead-lock.
+    - Fix the race condition while setting drm device type.
+    - Fix crash in vaapidecode if buffer outlives the decoder.
+    - Fix memory leak in vaapidecode.
+    - Fix multiple caps negotiation issues with vaapi elements.
+    - Improve check for upstream element that requires DMABUF
+      buffer pool.
+    - Fix vaapisink memory leak in debug mode.
+    - Fix crash when seeking mpeg2 strems.
+    - Fix support for Wayland/EGL running alongside X11 (around 70+
+      bug reports fixed).
+  + GStreamer support corner:
+    - Removed the support for GStreamer 0.10 and 1.0
+    - GStreamer >= 1.2 is the minimal requirement
+    - GStreamer 1.2.x is deprecated, and will be obsoleted in a
+      future release
+- Add a define soname and set it to 2, following upstream changes.
+  Rename all sub-packages to get the new soname.
+
+-------------------------------------------------------------------
+Sun Mar 29 15:36:38 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.5.10:
+  + Add support for DRM Render-Nodes for headless operation.
+  + Add support for VA surface buffer sharing with DMABUF and GEM
+    handles.
+  + Add support for v4l2src with io-mode={dmabuf,dmabuf-import}.
+  + Drop support for VA/GLX specific APIs in libgstvaapi and
+    vaapisink (bgo#736711).
+  + Improvements to H.264 codecs:
+    - Fix profile limits for encoding.
+    - Fix pixel-aspect-ratio in the encoded stream.
+    - Add decoding support for interlaced streams with
+      repeat-first-field (RFF).
+   - Fix decoding of interlaced streams in top-field-first order
+     (TFF) (bgo#739291).
+   - Fix decoding of UK DVB-T2 streams (bgo#739291).
+  + Improvements to plugin elements:
+    - Add support for dma_buf imports (Wind Yuan) (bgo#735362).
+    - Allow for SW decoding fallbacks with unsupported profiles
+      (bgo#730997).
+    - Make vaapipostproc work with SW elements (bgo#720174,
+      bgo#704078).
+    - Allow vaapipostproc to integrate with GL downstream elements
+      (bgo#735231).
+    - Add support for high-quality scaling to vaapipostproc
+      ("scale-method=hq").
+    - Fix advanced deinterlacing when it is the unique filter
+      applied.
+    - Add GstColorBalance interface to vaapisink (bgo#722390).
+    - Implement the GstNavigation interface into vaapisink
+      (bgo#711479).
+    - Allow rescaling of X11 window for vaapisink (bgo#711478).
+    - Optimizations to vaapidecode thread handling (bgo#734616).
+    - Fix deinterlacing from non VA memory buffers (bgo#726270).
+    - Fix clearing of subtitle overlay.
+    - Fix clearing of vaapipostproc state during restart.
+- Bump soname following upstream changes.
+
+-------------------------------------------------------------------
+Sat Dec 13 17:43:53 UTC 2014 - zaitor@opensuse.org
+
+- Add pkgconfig(xrender) and pkgconfig(xrandr) BuildRequires: They
+  were missing from the inital build.
+
+-------------------------------------------------------------------
+Tue Dec  9 01:47:12 UTC 2014 - zaitor@opensuse.org
+
+- Initial packaging.
+

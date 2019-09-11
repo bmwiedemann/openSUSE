@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Wed Dec  5 16:53:13 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.13.1
+  * Fixed man page problems
+  * Fixed h5topng compilation for modern libpng versions. Thanks to Daisuke Fujimura (@fd00 on github) for posting patches.
+  * Moved hosting to Github and translated documentation to Markdown.
+- Remove unneeded h5utils-png14.patch
+
+-------------------------------------------------------------------
+Mon Mar 25 11:44:50 UTC 2013 - joop.boonen@opensuse.org
+
+- Cleaned the spec file up
+- Added a png14 patch
+
+-------------------------------------------------------------------
+Sun May 29 00:00:00 UTC 2011 - werner.ho@gmx.de
+
+- fixed hdf5-devel package name change
+
+-------------------------------------------------------------------
+Sun Sep 19 00:00:00 UTC 2010 - werner.ho@gmx.de
+
+- fixed libhdf5 dependancy
+
+-------------------------------------------------------------------
+Sat Oct 10 00:00:00 UTC 2009 - werner.ho@gmx.de
+
+- new version 1.12.1
+
+-------------------------------------------------------------------
+Sun Nov 23 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- build fixes for factory
+
+-------------------------------------------------------------------
+Sun Jul 20 00:00:00 UTC 2008 - werner.ho@gmx.de
+
+- new version 1.11.1
+
+-------------------------------------------------------------------
+Sun Oct 21 00:00:00 UTC 2007 - werner.ho@gmx.de
+
+- Initial build of version 1.10.1
+
+

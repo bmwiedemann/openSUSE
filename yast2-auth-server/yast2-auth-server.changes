@@ -1,0 +1,908 @@
+-------------------------------------------------------------------
+Fri Jul 19 09:16:56 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added "BuildRequires: update-desktop-files"
+- Related to the previous desktop file changes (fate#319035)
+- 4.2.2
+
+-------------------------------------------------------------------
+Mon Jul 1 15:24:00 UTC 2019 - William Brown <wbrown@suse.de>
+
+- Add dependency on krb5-plugin-kdb-ldap
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri May 31 12:26:05 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Fri Nov 23 23:00:04 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Provide icon with module (boo#1109310)
+- 4.1.0
+
+-------------------------------------------------------------------
+Tue Oct 16 15:48:53 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Wed Aug 22 14:51:28 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Fri Apr  6 20:11:00 UTC 2018 - mfilka@suse.com
+
+- bnc#1087957 - version bump
+- 4.0.0
+
+-------------------------------------------------------------------
+Mon Mar 19 09:30:15 UTC 2018 - hguo@suse.com
+
+- Fix unreliable server setup routine caused by incorrect handling
+  of external program IO (bsc#1081324), bump to version 3.2.2.
+
+-------------------------------------------------------------------
+Mon Feb 19 13:49:24 UTC 2018 - hguo@suse.com
+
+- Upgrade to version 3.2.1 that resolves issues in setting up
+  new directory and kerberos servers and renames program entry
+  points (bsc#1081324 and bsc#1072808).
+
+-------------------------------------------------------------------
+Fri Sep 22 08:47:51 UTC 2017 - hguo@suse.com
+
+- Upgrade to version 3.2.0 that is a rewrite to work with 389 instead
+  of openldap. (fate#323362)
+
+-------------------------------------------------------------------
+Tue Aug  2 12:37:42 UTC 2016 - ralf.habacker@freenet.de
+
+- bnc#991677 - Fix broken detection of common server certificate CA file
+- 3.1.18
+
++-------------------------------------------------------------------
+Tue Jun  7 09:25:45 UTC 2016 - igonzalezsosa@suse.com
+
+- Stop generating autodocs (fate#320356)
+- 3.1.17
+
+-------------------------------------------------------------------
+Fri Apr  8 12:12:45 UTC 2016 - hguo@suse.com
+
+- The recent OpenLDAP upgrade in Tumbleweed no longer loads DB
+  drivers and essential modules by default, hence adapting to that
+  by explicitly loading them. Bump version to 3.1.16.
+  Address bsc#959760 bsc#964924.
+- 3.1.16
+
+-------------------------------------------------------------------
+Fri Mar 25 09:59:43 UTC 2016 - varkoly@suse.de
+
+- Fix bsc#967178 - Edit password policy for ldap authentication
+  server in yast returns "undefined method" error.
+- bnc#965311 yast ldap-server-ssl-check does not handle ldaps only
+  ldap+starttls works.
+
+-------------------------------------------------------------------
+Tue Jun 30 05:46:47 UTC 2015 - mfilka@suse.com
+
+- bnc#923990
+  - fixed proposing TLD
+- 3.1.15 
+
+-------------------------------------------------------------------
+Tue Apr 28 11:32:22 UTC 2015 - hguo@suse.com
+
+- Fix a typedef line in C header file in order to compile on GCC 5.
+
+-------------------------------------------------------------------
+Thu Dec  4 09:49:23 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+
+-------------------------------------------------------------------
+Fri Nov 21 12:41:12 CET 2014 - varkoly@suse.com
+
+- bnc#897441 - Yast2 Certificate module are broken
+- 3.1.12 
+
+-------------------------------------------------------------------
+Wed Oct  1 10:09:24 UTC 2014 - varkoly@suse.com
+
+- bnc#897441 - Yast2 Certificate module are broken
+- 3.1.11 
+
+-------------------------------------------------------------------
+Fri Jul  4 10:03:05 UTC 2014 - ckornacker@suse.com
+
+- fix undefined method 'WriteKdbvalue' (bnc#885833)
+- add Kerberos dialog to Replication Master Setup (bnc#885829)
+- update kerberos stash when changing LDAP password (bnc#865296)
+- 3.1.10
+
+-------------------------------------------------------------------
+Sun Jun  8 06:24:03 UTC 2014 - varkoly@suse.com
+
+- bnc#881516 - OpenLDAP server mdb integration missing in yast
+- bnc#881631 - YaST Module MirrorMode crash
+- 3.1.9 
+
+-------------------------------------------------------------------
+Wed May 28 08:54:18 UTC 2014 - ckornacker@suse.com
+
+- translate some untranslated strings (bnc#880031)
+- 3.1.8
+
+-------------------------------------------------------------------
+Wed Mar 26 14:20:41 UTC 2014 - ckornacker@suse.com
+
+- add missing SUSE attributes for user and group configuration
+- 3.1.7
+
+-------------------------------------------------------------------
+Fri Mar 14 11:10:21 UTC 2014 - ckornacker@suse.com
+
+- use same password for LDAP and Kerberos stash
+- 3.1.6
+
+-------------------------------------------------------------------
+Thu Mar 13 15:41:40 UTC 2014 - ckornacker@suse.com
+
+- kerberos: use ldapi for communication
+- add SUSE objects to the database
+- fix LDAP ACLs
+- 3.1.5
+
+-------------------------------------------------------------------
+Fri Feb 14 10:39:49 UTC 2014 - ckornacker@suse.com
+
+- adapt to ldap.conf SCR agent namechange
+- restruct kerberos service invocation
+- 3.1.4 
+
+-------------------------------------------------------------------
+Wed Feb 12 10:13:07 UTC 2014 - ckornacker@suse.com
+
+- rename ldap-server.rnc autoyast profile to auth-server.rnc
+- replace deprecated Service calls
+
+-------------------------------------------------------------------
+
+Fri Jan 31 23:44:25 UTC 2014 - varkoly@suse.com
+
+- Fix the requirement yast2-ldap-client -> yast2-ldap 
+
+-------------------------------------------------------------------
+Wed Jan 22 11:39:48 UTC 2014 - ckornacker@suse.com
+
+- rename yast2-ldap-server to yast2-auth-server
+- add Kerberos support
+
+-------------------------------------------------------------------
+Wed Nov 13 15:56:18 UTC 2013 - jreidinger@suse.com
+
+- Add explicit COPYING file
+
+-------------------------------------------------------------------
+Thu Sep 19 07:05:55 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Wed Jul 31 08:32:25 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Mon Jul 29 11:02:52 UTC 2013 - varkoly@suse.com
+
+- bnc#777449 - Puzzlestring in yasts ldap server module (ldap-server.pot)
+- bnc#757132 - Puzzle-String in ldap-server module
+
+-------------------------------------------------------------------
+Tue Jul  2 11:44:46 UTC 2013 - varkoly@suse.com
+
+- bnc#533243 - After starting YaST LDAP server, during initialization get error
+- 2.22.3
+
+-------------------------------------------------------------------
+Sun Jun 16 20:07:33 UTC 2013 - lslezak@suse.cz
+
+- fixed build in Factory/openSUSE-13.1: added cyrus-sasl-devel to
+  BuildRequires
+
+-------------------------------------------------------------------
+Fri Mar  1 11:21:39 UTC 2013 - rhafer@suse.com
+
+- Opening the Access Control UI could create duplicated syncrepl
+  ACLs (bnc#798788)
+
+-------------------------------------------------------------------
+Fri Mar  1 06:12:51 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Thu Mar 29 10:21:20 CEST 2012 - jsuchome@suse.cz
+
+- fixed build failure (symlink to find include file)
+- 2.22.2 
+
+-------------------------------------------------------------------
+Thu Mar 22 11:28:19 CET 2012 - jsuchome@suse.cz
+
+- PasswordPolicyDialog moved to users module (fate#313143) 
+- 2.22.1
+
+-------------------------------------------------------------------
+Wed Dec  7 10:05:50 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Mon Nov 21 13:46:09 UTC 2011 - rhafer@suse.de
+
+- Version 2.22.0
+- merged SLE-11-SP2 changes (mirrormode support)
+- merged results from proofreading
+
+-------------------------------------------------------------------
+Sun Nov 20 06:30:02 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Sep 26 12:19:24 CEST 2011 - visnov@suse.cz
+
+- set dialog title
+- 2.21.2 
+
+-------------------------------------------------------------------
+Mon Sep 19 14:50:34 CEST 2011 - visnov@suse.cz
+
+- remove dependency on Wizard_hw
+- 2.21.1 
+
+-------------------------------------------------------------------
+Fri Aug  5 12:33:05 CEST 2011 - tgoettlicher@suse.de
+
+- fixed .desktop file (bnc #681249)
+
+-------------------------------------------------------------------
+Wed Jul 13 15:27:41 UTC 2011 - rhafer@suse.de
+
+- Version 2.21.0
+- Fixed typos (bnc#703175, bnc#692812)
+- silence perl error message when creating db without rootpw
+
+-------------------------------------------------------------------
+Wed Feb 16 11:00:52 UTC 2011 - rhafer@suse.de
+
+- Version 2.20.0
+- Warn user, when creating a database with a non-standard base DN and
+  disable base-object creation in such case (bnc#669213)
+- Allow non-standard db-directory when creating the first database
+  (bnc#669213)
+
+-------------------------------------------------------------------
+Wed Aug 18 15:23:05 CEST 2010 - mzugec@suse.cz
+
+- fixed typos (bnc#631743)
+
+-------------------------------------------------------------------
+Thu Jul 22 10:05:25 UTC 2010 - rhafer@novell.com
+
+- Create LDAP Base objects only after ldap.conf has be written
+  (bnc#619549)
+
+-------------------------------------------------------------------
+Tue Jul  6 11:29:07 UTC 2010 - rhafer@novell.com
+
+- Version 2.19.1
+  * Write tls_cacert option to ldap.conf (bnc#619549)
+  * Rename ReadInitialDefaults() back to CreateInitialDefaults()
+    to stay backwards compatible. (bnc#615805)
+
+-------------------------------------------------------------------
+Fri Apr 16 09:27:08 UTC 2010 - rhafer@novell.com
+
+- Version 2.19.0
+  * merged in replication Support from sles11-sp1
+
+------------------------------------------------------------------
+Wed Jan 13 18:56:03 CET 2010 - kmachalkova@suse.cz
+
+- Adjusted .desktop file(s) to wrap /sbin/yast2/ calls in xdg-su
+  where root privileges are needed, removed X-KDE-SubstituteUID key 
+  (bnc#540627)
+
+-------------------------------------------------------------------
+Fri Sep 25 13:48:52 UTC 2009 - rhafer@novell.com
+
+- Version 2.18.3
+  * Fixed crasher and improved sanity checks when adding new
+    schema elements (bnc#541819)
+
+-------------------------------------------------------------------
+Mon Sep 14 13:32:08 UTC 2009 - rhafer@novell.com
+
+- Version 2.18.2
+  * Adding indexes could crash yast2-ldap-server, because
+    attributes names were not handled case-insensitve and addtional
+    names for Attributes were ignored, when analyzing the directory
+    schema (bnc#504214).
+
+-------------------------------------------------------------------
+Fri Jul 31 09:48:56 CEST 2009 - rhafer@novell.com
+
+- Version 2.18.1
+  * Fixes for AutoYaST integration, error out on invalid profiles
+    (bnc#522216)
+
+-------------------------------------------------------------------
+Mon Jul 13 15:03:39 CEST 2009 - rhafer@novell.com
+
+- Version 2.18.0
+- don't use deprecated YCPMapIterator (bnc#520674)
+
+-------------------------------------------------------------------
+Fri Jun 19 12:17:51 CEST 2009 - mvidner@suse.cz
+
+- Using autodocs-ycp.ami, which contains a fix for automake 1.11.
+
+-------------------------------------------------------------------
+Mon May 11 14:26:59 CEST 2009 - rhafer@suse.de
+
+- error out on unsupported access levels when creating ACLs 
+  (bnc#492441)
+
+-------------------------------------------------------------------
+Thu Apr 30 13:25:12 CEST 2009 - rhafer@novell.com
+
+- call SuSEFirewall::Read() in installation proposal to avoid 
+  overwriting Firewall configuration (bnc#496862) 
+
+-------------------------------------------------------------------
+Mon Dec 15 14:34:57 CET 2008 - rhafer@suse.de
+
+- Version 2.17.20
+  * Service proposal page didn't update correctly after
+    disabling LDAP server (bnc#456524) 
+
+-------------------------------------------------------------------
+Fri Dec 12 16:39:44 CET 2008 - rhafer@suse.de
+
+- Version 2.17.19
+  * pam_password in /etc/ldap.conf was set to an invalid value
+    because of a missing Ldap::Read() in the ldap-server proposal
+    (bnc#458363)
+
+-------------------------------------------------------------------
+Fri Dec  5 12:00:32 CET 2008 - rhafer@suse.de
+
+- Version 2.17.18
+  * Fixed translation issues (bnc#448282, bnc#447631)
+  * when a restart of slapd is required wait until slapd finishes
+    any running indexing task before restarting (bnc#450457)
+
+-------------------------------------------------------------------
+Tue Dec  2 11:05:22 CET 2008 - rhafer@suse.de
+
+- Version 2.17.17
+  * removed unneeded restart of slapd when running for the first
+    time after the initial configuration, this broke indexing
+    under certain conditions (bnc#450457)
+
+-------------------------------------------------------------------
+Mon Dec  1 15:03:36 CET 2008 - rhafer@suse.de
+
+- Version 2.17.16
+  * Add hint howto access back-config data via SASL-external
+    (bnc#450103)
+  * DefaultIndexes were not created when running from yast2-
+    kerberos-server (bnc#450439)
+
+-------------------------------------------------------------------
+Mon Nov 17 15:30:56 CET 2008 - rhafer@suse.de
+
+- Version 2.17.15
+  * Add "eq" index on memberUid by default (bnc#444546)
+  * Set an increased sizelimit in new configurations (bnc#444529)
+  * Don't offer to configure a password for cn=config (bnc#445118)
+  * recognize "caCertDir" in TLS configurations (was breaking migration
+    from SLES10 based setups (bnc#445115)
+  * honor database type selection when creating initial database
+    (bnc#445587)
+  * Fixed perl crasher in installation proposal (bnc#445566)
+
+-------------------------------------------------------------------
+Thu Nov  6 14:53:18 CET 2008 - rhafer@suse.de
+
+- Version 2.17.14
+  * Create ACL to protect operational Attributes of Password
+    Policies (bnc#439487)
+  * Fixed HTML syntax and typos in Online Help (bnc#440230,
+    bnc#440902)
+  * Fixed Button-Labels and ordering according to YaST Style Guide
+    (bnc#440526)
+  * Adjusted default slapd loglevel (bnc#442260)
+  * Additional fix for bnc#437267, disabling SLP had no effect, when
+    configuring a new server
+
+-------------------------------------------------------------------
+Mon Oct 27 15:51:31 CET 2008 - rhafer@suse.de
+
+- Version 2.17.13
+  * fixed creation of default password policies (bnc#439188)
+
+-------------------------------------------------------------------
+Fri Oct 24 16:28:16 CEST 2008 - rhafer@suse.de
+
+- Version 2.17.12
+  * SLP Checkbox had no effect in Proposal and was not displayed
+    in "normal" Mode (bnc#437267)
+
+-------------------------------------------------------------------
+Wed Oct 15 14:52:59 CEST 2008 - rhafer@suse.de
+
+- Version 2.17.11
+  * Error message when initialization fails (bnc#435642)
+  * restart slapd when needed (bnc#435625)
+  * Add not about back-config to slapd.conf (bnc#435623)
+  * Fixed typo (bnc#435153)
+  * Remove some unused code, less verbose default logging
+
+-------------------------------------------------------------------
+Wed Oct  8 17:44:04 CEST 2008 - rhafer@suse.de
+
+- Version 2.17.10
+  * fixed typo and HTML on online help (bnc#430521,bnc#432416,
+    bnc#433082, bnc#433440)
+  * adjusted size of Admin-DN input field (bnc#432503)
+  * Fix calculation of next schema index when adding .schema files
+    (bnc#432733)
+  * Allow uncommitted schema changes to be deleted (bnc#431264)
+  * Fixed cleanup procedures in SCR-agent (bnc#433089)
+  * Don't display informative message as error (bnc#432476)
+
+-------------------------------------------------------------------
+Wed Oct  1 16:01:24 CEST 2008 - rhafer@suse.de
+
+- Verstion 2.17.9
+  * revived commandline support  (bnc#429486)
+  * additional checks when adding .schema files (bnc#431168)
+  * workaround for Firewall-Widget in installation proposal 
+    (bnc#428364)
+  * fixed regression in initial server configuration (bnc#431250)
+  * use ldap-server icon in all wizards (bnc#431210)
+  * adjust size of Warning Popup (bnc#431228)
+
+-------------------------------------------------------------------
+Mon Sep 29 13:03:41 CEST 2008 - rhafer@suse.de
+
+- Version 2.17.8
+  * revived AutoYaST support (bnc#429528)
+  * Additional fix for installation proposal. Don't propose 
+    configuration if openldap2 is not installed (bnc#426593)
+
+-------------------------------------------------------------------
+Wed Sep 24 12:58:24 CEST 2008 - rhafer@suse.de
+
+- Version 2.17.7
+  * Fixed crashes and consistency checks for ACLs ((bnc#425821)
+  * Fixed adding multiple Databases at once (bnc#429450)
+  * Smaller fixes to source documentation
+
+-------------------------------------------------------------------
+Thu Sep 18 12:19:16 CEST 2008 - rhafer@suse.de
+
+- Version 2.17.6:
+  * more Online Help updates
+  * Various fixes for the installation proposal.
+    (bnc#427260, bnc#426634, bnc#426593)
+-------------------------------------------------------------------
+Fri Sep 12 14:58:14 CEST 2008 - rhafer@suse.de
+
+- Version 2.17.5:
+  * Updated Online Help
+  * Ask for confirmation before aborting the module
+
+-------------------------------------------------------------------
+Thu Sep 11 17:38:35 CEST 2008 - rhafer@suse.de
+
+- Version 2.17.4:
+  * merged texts from proofreading
+  * Support for deleting databases
+  * improvements on ACL managment code (allow re-ordering, allow 
+    global ACLs, ...)
+  * Updated Online Help
+  * Re-Implemented support for managing Password Policy Entries
+  * YaPI Support for managing ACLs (Fate#120061)
+
+-------------------------------------------------------------------
+Fri Sep  5 14:24:36 CEST 2008 - rhafer@suse.de
+
+- yast2-ca-management is still required, as it can be launched from
+  the TLS/SSL dialog
+- cleanup for ACL Management Code
+
+-------------------------------------------------------------------
+Thu Sep  4 10:28:21 CEST 2008 - locilka@suse.cz
+
+- CaMgmt and DNS modules not needed anymore.
+- Adjusted RPM dependencies.
+
+-------------------------------------------------------------------
+Wed Sep  3 14:35:17 CEST 2008 - rhafer@suse.de
+
+- Added support of managing ACLs (Fate#120060)
+- Version 2.17.3
+
+-------------------------------------------------------------------
+Wed Aug 13 19:57:31 CEST 2008 - rhafer@suse.de
+
+- Create default indexes after adding a new database
+- Add support to edit indexing, caching and checkpoiniting settings
+  on BDB/HDB Databases. (Fate#120068)
+- Allow to update /etc/openldap/ldap.conf settings when creating a new
+  database. (Fate#303399)
+- Insert new databases before databases that serve a superior base-DN
+- database settings can be change after the database was created.
+  (Fate#120067)
+- Version 2.17.2
+
+-------------------------------------------------------------------
+Mon Aug 11 10:06:42 CEST 2008 - rhafer@suse.de
+
+- Build libslapdconfig as a convenience library for now.
+- Version 2.17.1 
+
+-------------------------------------------------------------------
+Fri Aug  8 12:50:21 CEST 2008 - rhafer@suse.de
+
+- Version 2.17.0
+- Major rewrite of the whole module. yast2-ldap-server is using
+  OpenLDAP's configuration database (back-config) now instead of
+  /etc/openldap/slapd.conf
+- The module can handle /etc/sysconfig/openldap settings now.
+  (Fate#303058)
+- Automatically setup TLS if certificates exist (Fate#303165)
+- CA-Management Module can be launched from within 
+  yast2-ldap-server (Fate#303546)
+
+-------------------------------------------------------------------
+Fri May 16 16:49:30 CEST 2008 - rhafer@suse.de
+
+- Error out if Database does not exist in
+  YaPI::LdapServer->AddIndex() (bnc#389144)
+- Version 2.16.3
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Tue May 13 10:59:58 CEST 2008 - rhafer@suse.de
+
+- Remove unneeded '&' from frame Headline (bnc#388750)
+- Don't start/enable LDAP Server when the configuration of the 
+  initial database failed (Partly fixes bnc#388270)
+- Version 2.16.2
+
+-------------------------------------------------------------------
+Fri Apr 18 15:24:58 CEST 2008 - jsrain@suse.cz
+
+- merged texts from proofread
+- 2.16.1
+
+-------------------------------------------------------------------
+Wed Mar 26 17:04:46 CET 2008 - rhafer@suse.de
+
+- Version 2.16.0
+- Add _() where missing and appropriate.
+- Require acl package (bnc#338952)
+
+-------------------------------------------------------------------
+Mon Mar 17 12:43:32 CET 2008 - jsrain@suse.cz
+
+- added 'StartupNotify=true' to the desktop file (bnc#304964)
+
+-------------------------------------------------------------------
+Fri May 25 13:30:04 CEST 2007 - jsrain@suse.cz
+
+- removed outdated translations from .desktop-files (bnc#271209)
+
+-------------------------------------------------------------------
+Wed Apr 11 10:36:03 CEST 2007 - rhafer@suse.de
+
+- Version 2.15.5
+- Keep Firewall-Settings when switching to configuration Dialog (Bug
+  #259798)
+- Display status of TLS configuration correctly (Bug #259806)
+
+-------------------------------------------------------------------
+Thu Mar 15 15:01:37 CET 2007 - rhafer@suse.de
+
+- Fixed RPM dependencies (Bug #253525)
+- Version 2.15.4
+
+-------------------------------------------------------------------
+Fri Mar  2 15:42:32 CET 2007 - rhafer@suse.de
+
+- Fixes for Bug #250228:
+  * Don't write duplicate Database sections into AutoYaST profiles
+  * Leave out default Server Certificate Settings as long as CA-Management
+    does not export its settings
+- Version 2.15.3
+
+-------------------------------------------------------------------
+Tue Feb 20 14:27:35 CET 2007 - mc@suse.de
+
+- version 2.15.2
+- add krb5ACLHack 
+
+-------------------------------------------------------------------
+Tue Feb  6 14:36:56 CET 2007 - rhafer@suse.de
+
+- Added AutoYaST Schema file (Bug #242571) 
+
+-------------------------------------------------------------------
+Mon Feb  5 18:44:23 CET 2007 - rhafer@suse.de
+
+- Fixed Export() for AutoYaST to also export newly created 
+  Databases (Bug #241101)
+
+-------------------------------------------------------------------
+Thu Feb  1 12:03:15 CET 2007 - rhafer@suse.de
+
+- Close window did not work in autoyast UI (Bug #241009)
+
+-------------------------------------------------------------------
+Thu Jan 25 17:17:28 CET 2007 - mc@suse.de
+
+- add commandline interface [Feature #120062]
+
+-------------------------------------------------------------------
+Wed Jan 17 15:04:14 CET 2007 - rhafer@suse.de
+
+- The Overlay subsection should aways be the last part of a
+  database section (Bug #235385)
+- Do not create TreeDialog multiple times. Breaks AutoYaST 
+  (Bug #232838)
+- Version 2.15.0
+
+-------------------------------------------------------------------
+Fri Jan 12 11:20:50 CET 2007 - rhafer@suse.de
+
+- Added support of LDAP Password Policy overlay (ppolicy). 
+  Fate #301179. 
+- Version 2.14.1 
+
+-------------------------------------------------------------------
+Mon Nov 20 13:43:21 CET 2006 - jsrain@suse.cz
+
+- 2.14.0
+
+-------------------------------------------------------------------
+Wed May 31 20:33:44 CEST 2006 - rhafer@suse.de
+
+- Fix Import/Export functions for AutoYaST (Bugzilla #179750)
+- Fixed call to Package Module to detect if openldap2 package is
+  installed (Bug #180142)
+- Version 2.13.15
+
+-------------------------------------------------------------------
+Wed May 24 13:48:03 CEST 2006 - rhafer@suse.de
+
+- Don't try to Read() config when openldap2 is not installed, e.g.
+  during autoyast cloning. (Bugzilla #178159)
+- Version 2.13.14
+
+-------------------------------------------------------------------
+Fri May 19 11:22:34 CEST 2006 - ug@suse.de
+
+- fixed desktop file for autoyast cloning (#177082)
+- Version 2.13.13
+
+-------------------------------------------------------------------
+Wed May  3 16:39:05 CEST 2006 - rhafer@suse.de
+
+- Improved error message when root password is not available in
+  proposal (Bugzilla #171413)
+- Version 2.13.12
+  
+-------------------------------------------------------------------
+Wed Apr  5 15:39:05 CEST 2006 - rhafer@suse.de
+
+- Allow to open the LDAP/LDAPS ports on the firewall 
+  (Bugzilla #163275)
+
+-------------------------------------------------------------------
+Mon Apr  3 14:50:29 CEST 2006 - rhafer@suse.de
+
+- Remove TLS settings if TLS is disabled (Bugzilla #162476)
+- 2.13.10
+
+-------------------------------------------------------------------
+Thu Mar  9 16:48:13 CET 2006 - rhafer@suse.de
+
+- Better validation of rootdn and suffix in proposal 
+  (Bugzilla #114359) 
+
+-------------------------------------------------------------------
+Mon Feb 20 14:30:17 CET 2006 - rhafer@suse.de
+
+- removed yast2-devel-packages macro BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:49:45 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 19 12:47:46 CET 2006 - rhafer@suse.de
+
+- Better checks of suffix and rootdn (Bugzilla #56638)
+- 2.13.7 
+
+-------------------------------------------------------------------
+Tue Jan 17 10:28:52 CET 2006 - rhafer@suse.de
+
+- Don't overwrite database configuration when viewing it 
+  (Bugzilla #143039)
+- 2.13.6
+
+-------------------------------------------------------------------
+Fri Jan 13 12:01:28 CET 2006 - rhafer@suse.de
+
+- create first database in /var/lib/ldap
+- 2.13.5
+
+-------------------------------------------------------------------
+Tue Jan 10 07:51:55 CET 2006 - visnov@suse.cz
+
+- fix syntax error in proposal
+- 2.13.4 
+
+-------------------------------------------------------------------
+Mon Jan  9 12:23:05 CET 2006 - visnov@suse.cz
+
+- use Package
+- 2.13.3 
+
+-------------------------------------------------------------------
+Mon Dec 19 16:32:13 CET 2005 - jsuchome@suse.cz
+
+- merged proofread texts
+- 2.13.2 
+
+-------------------------------------------------------------------
+Fri Dec  9 10:58:00 CET 2005 - rhafer@suse.de
+
+- version 2.13.1
+- suggest and create directory for new databases
+
+-------------------------------------------------------------------
+Wed Oct 19 11:57:37 CEST 2005 - rhafer@suse.de
+
+- version 2.13.0
+- merged fixes from 9.1 branch
+
+-------------------------------------------------------------------
+Thu Aug 18 12:40:26 CEST 2005 - locilka@suse.cz
+
+- merged proofread texts
+
+-------------------------------------------------------------------
+Thu Mar 31 17:34:55 CEST 2005 - mc@suse.de
+
+- add requires yast2-ca-management to spec file 
+
+-------------------------------------------------------------------
+Tue Nov 30 10:05:44 CET 2004 - schubi@suse.de
+
+- changes for new yast intepreter
+
+-------------------------------------------------------------------
+Wed Jun 16 14:19:47 CEST 2004 - abauer@suse.de
+
+- version 2.10.0
+- merged from 9.1 branch
+
+-------------------------------------------------------------------
+Tue Jun 15 16:34:20 CEST 2004 - abauer@suse.de
+
+- version 2.9.11
+- #41638 - Misconfigured ldap server cannot be fixed in installation
+  Append Base DN checkbox in proposal dialog defaults to true
+  values are now autogenerated even if the service is disabled
+
+-------------------------------------------------------------------
+Mon Jun 14 10:15:39 CEST 2004 - mc@suse.de
+
+- #41643,  slapd loglevel fills up /var/log/messages
+  set default loglevel to 0 
+
+-------------------------------------------------------------------
+Thu May 27 17:58:36 CEST 2004 - schubi@suse.de
+
+- #41292 fixed; LDAP server module Samba hack writes multiple ACLs
+- modify the indices (#41165)
+
+-------------------------------------------------------------------
+Tue May 25 10:28:52 CEST 2004 - schubi@suse.de
+
+- Bug 40664 - Beta5: YaST2 ldap proposal, but no openldap2 installed
+
+-------------------------------------------------------------------
+Mon May 24 16:49:18 CEST 2004 - schubi@suse.de
+
+- Bug 41069 - yast2-ldap-server does not check for openldap2.rpm
+
+-------------------------------------------------------------------
+Mon May 24 12:58:38 CEST 2004 - schubi@suse.de
+
+- Bug 40839 - Installation - Service Configuration - Illogical workflow
+
+-------------------------------------------------------------------
+Thu May 13 15:40:22 CEST 2004 - abauer@suse.de
+
+- version 2.9.5
+- fixed wrong insert position of schema includes (#40331)
+- changed _() to __() (#40160)
+- proper close of all dialogs (#40061)
+- added ldap client default "create_ldap" (#40484)
+- changed hostname passed to ldap-client to 'localhost'
+
+-------------------------------------------------------------------
+Fri May  7 17:14:18 CEST 2004 - abauer@suse.de
+
+- version 2.9.4
+- added net-tools to Requires, removed openldap2 (#39578)
+- openldap sysconfig agent taken from yast2-openteam-server (#39865)
+- possibility to switch off slp registering (#39865)
+- added schema configuration dialog (#40036)
+- bugfix: rootpw was deleted from a database section if no changes were made in that section (#39975)
+- bugfix: changing tree items in ncurses ui now opens the corresponding dialog (#39990)
+- design changes (#39879, #39944)
+- more defaults set for ldap client module (#39901, #39937)
+
+-------------------------------------------------------------------
+Fri Apr 30 14:54:12 CEST 2004 - abauer@suse.de
+
+- version 2.9.3
+- changed initially displayed tree item to 'databases' (#39660)
+- removed 'Reload Configuration' button from global item (#39659)
+- workaround for umlaut problems (#39661): database item keys in widget_map changed to md5sum of suffix
+- design changes in tls dialogs 
+
+-------------------------------------------------------------------
+Thu Apr 29 17:41:54 CEST 2004 - mc@suse.de
+
+- version 2.9.2
+- first working version
+- add main UI
+- improve the API 
+
+-------------------------------------------------------------------
+Fri Apr 23 18:11:15 CEST 2004 - mc@suse.de
+
+- version 2.9.1
+- working proposal 
+
+-------------------------------------------------------------------
+Thu Mar 18 15:44:36 2004 - abauer@suse.de
+
+- initial version

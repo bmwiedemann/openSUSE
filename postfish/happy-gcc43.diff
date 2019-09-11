@@ -1,0 +1,20 @@
+--- postfish/main.c.orig	2007-10-10 16:43:20.000000000 +0200
++++ postfish/main.c	2008-03-12 15:16:41.172500000 +0100
+@@ -80,7 +80,7 @@
+   }
+ 
+   /* otherwise inform the UI thread that we've requested shutdown */
+-  write(eventpipe[1],"\001",1);
++  (void)write(eventpipe[1],"\001",1);
+ 
+ }
+ 
+@@ -266,7 +266,7 @@
+ #include <altivec.h>
+   signal(SIGILL,sigill_handler);
+   
+-#if (defined __GNUC__) && (__GNUC__ == 3) && ! (defined __APPLE_CC__)
++#if (defined __GNUC__) && (__GNUC__ >= 3) && ! (defined __APPLE_CC__)
+   __vector unsigned short noTrap = 
+     (__vector unsigned short){0,0,0,0,0,0,0x1,0};
+ #else

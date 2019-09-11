@@ -1,0 +1,36 @@
+---
+#description_paragraphs: 3
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+preamble: |-
+ BuildRequires:  gmp-devel
+ BuildRequires:  perl(Test::Pod) >= 1.22
+ BuildRequires:  perl(Test::Pod::Coverage) >= 1.08
+ # Version check does not work for perl packages before 5.22
+ %if 0%{?suse_version} <= 1320
+ BuildRequires:  perl-Math-BigInt >= 1.999714
+ Requires:       perl-Math-BigInt >= 1.999714
+ %endif
+description: |-
+ Math::BigInt::GMP is a replacement library for Math::BigInt::Calc that
+ reimplements some of the Math::BigInt::Calc functions in XS. It can be used
+ via:
+ 
+     use Math::BigInt lib => 'GMP';
+ 
+ This package contains a replacement (drop-in) module for Math::BigInt's core,
+ Math::BigInt::Calc.pm.
+#post_prep: |-
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+#post_install: |-
+# sed on %{name}.files
+#license: SUSE-NonFree
+#skip_noarch: 1
+#custom_build: -
+#./Build build flags=%{?_smp_mflags} --myflag

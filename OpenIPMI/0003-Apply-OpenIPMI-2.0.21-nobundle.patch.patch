@@ -1,0 +1,28 @@
+Index: OpenIPMI-2.0.25/configure.ac
+===================================================================
+--- OpenIPMI-2.0.25.orig/configure.ac	2018-08-28 16:21:06.379098464 +0200
++++ OpenIPMI-2.0.25/configure.ac	2018-08-28 16:21:12.511447871 +0200
+@@ -841,7 +841,6 @@ AC_OUTPUT(Makefile
+ 	  swig/perl/Makefile
+ 	  swig/python/Makefile
+ 	  swig/python/openipmigui/Makefile
+-	  libedit/Makefile
+ 	  cmdlang/Makefile
+ 	  include/Makefile
+ 	  include/OpenIPMI/Makefile
+Index: OpenIPMI-2.0.25/sample/Makefile.am
+===================================================================
+--- OpenIPMI-2.0.25.orig/sample/Makefile.am	2018-08-28 16:21:06.379098464 +0200
++++ OpenIPMI-2.0.25/sample/Makefile.am	2018-08-28 16:21:12.511447871 +0200
+@@ -71,9 +71,9 @@ rmcp_ping_SOURCES = rmcp_ping.c
+ rmcp_ping_LDADD = $(SOCKETLIB)
+ 
+ ipmi_serial_bmc_emu_SOURCES = ipmi_serial_bmc_emu.c
+-ipmi_serial_bmc_emu_LDADD = $(top_builddir)/libedit/libedit.a $(TERM_LIBS) \
++ipmi_serial_bmc_emu_LDADD = $(EDIT_LIBS) $(TERM_LIBS) \
+ 		$(SOCKETLIB)
+-ipmi_serial_bmc_emu_CFLAGS = -I $(top_srcdir)/libedit
++ipmi_serial_bmc_emu_CFLAGS = $(EDIT_CFLAGS)
+ 
+ EXTRA_DIST = example_oem.c
+ 

@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Thu May 24 17:30:28 UTC 2018 - toddrme2178@gmail.com
+
+- spec file cleanups
+
+-------------------------------------------------------------------
+Fri Aug 11 03:37:30 UTC 2017 - toddrme2178@gmail.com
+
+- Update to Version 1.1.2
+  * Upgrade internal version of Python Toolbox to 0.9.3.
+- Update to Version 1.1.1
+  * Fix installation bugs
+- Update to Version 1.1.0
+  * Support Python 2.6.
+  * Upgraded internal version of Python Toolbox from 0.8.0 to 0.9.0.
+- Update to Version 1.0.0
+  * Upgraded internal version of Python Toolbox from 0.7.0 to 0.8.0.
+
+-------------------------------------------------------------------
+Fri Jun 23 16:54:29 UTC 2017 - jmatejek@suse.com
+
+- convert to singlespec
+
+-------------------------------------------------------------------
+Fri Nov 28 11:52:32 UTC 2014 - toddrme2178@gmail.com
+
+- Add unit tests
+
+-------------------------------------------------------------------
+Fri Nov 28 11:14:14 UTC 2014 - toddrme2178@gmail.com
+
+- Initial version
+

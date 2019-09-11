@@ -1,0 +1,30 @@
+--- commons-el-1.0-src/src/java/org/apache/commons/el/ImplicitObjects.java	2003-02-04 01:22:25.000000000 +0100
++++ commons-el-1.0-src/src/java/org/apache/commons/el/ImplicitObjects.java	2018-11-26 08:54:18.489575421 +0100
+@@ -535,10 +535,10 @@
+ 	  if (pKey instanceof String) {
+ 	    // Drain the header enumeration
+ 	    List l = new ArrayList ();
+-	    Enumeration enum = request.getHeaders ((String) pKey);
+-	    if (enum != null) {
+-	      while (enum.hasMoreElements ()) {
+-		l.add (enum.nextElement ());
++	    Enumeration emun = request.getHeaders ((String) pKey);
++	    if (emun != null) {
++	      while (emun.hasMoreElements ()) {
++		l.add (emun.nextElement ());
+ 	      }
+ 	    }
+ 	    String [] ret = (String []) l.toArray (new String [l.size ()]);
+--- commons-el-1.0-src/src/java/org/apache/commons/el/parser/ELParser.java	2003-03-31 03:17:07.000000000 +0200
++++ commons-el-1.0-src/src/java/org/apache/commons/el/parser/ELParser.java	2018-11-26 08:54:27.193619805 +0100
+@@ -1838,8 +1838,8 @@
+         jj_expentry[i] = jj_lasttokens[i];
+       }
+       boolean exists = false;
+-      for (java.util.Enumeration enum = jj_expentries.elements(); enum.hasMoreElements();) {
+-        int[] oldentry = (int[])(enum.nextElement());
++      for (java.util.Enumeration emun = jj_expentries.elements(); emun.hasMoreElements();) {
++        int[] oldentry = (int[])(emun.nextElement());
+         if (oldentry.length == jj_expentry.length) {
+           exists = true;
+           for (int i = 0; i < jj_expentry.length; i++) {

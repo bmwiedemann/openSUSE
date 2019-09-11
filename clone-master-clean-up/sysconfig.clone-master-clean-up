@@ -1,0 +1,37 @@
+# config file for clone-master-clean-up to allow minimal user intervention
+#
+#
+## Path:        
+## Type:        yesno
+## Default:     "no"
+#
+# clean up user ids >= 1000
+CMCU_USERIDS="no"
+
+## Path:        
+## Type:        yesno
+## Default:     "no"
+#
+# clean up /etc/sudoers
+CMCU_SUDOERS="no"
+
+## Path:        
+## Type:        yesno
+## Default:     "no"
+#
+# clean up zypper repositories
+CMCU_ZYPP_REPOS="no"
+
+## Path:        
+## Type:        yesno
+## Default:     "yes"
+#
+# remove btrfs snapshots of root filesystem
+CMCU_RSNAP="yes"
+
+## Path:
+## Type:        yesno
+## Default:     "no"
+#
+# allow ec2-user to run sudo
+CMCU_EC2="no"

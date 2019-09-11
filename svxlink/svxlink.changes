@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Sun Feb 24 11:19:12 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 17.12.2
+- Specfile Cleanup
+  * Use pkgconfig style build-dependencies
+  * Use %cmake macros
+  * Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct 26 21:58:30 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 15.11
+
+-------------------------------------------------------------------
+Thu Aug  8 10:04:10 UTC 2013 - dl8fcl@darc.de
+
+- Update to 13.06
+  8k and 16k sound files included. 
+
+-------------------------------------------------------------------
+Thu Jun  6 20:36:39 UTC 2013 - dl8fcl@darc.de
+
+- Update to 13.06 
+
+-------------------------------------------------------------------
+Sat Mar  9 01:18:16 UTC 2013 - dl8fcl@darc.de
+
+- Update to 13.03
+  a lot of new features and a fixes 
+
+-------------------------------------------------------------------
+Sun Jun 17 15:32:24 UTC 2012 - dl8fcl@darc.de
+
+- Fix for openSUSE 12.2 
+
+-------------------------------------------------------------------
+Mon Dec 19 17:22:46 UTC 2011 - dl8fcl@darc.de
+
+- Update to svxlink version 11.11.1, Bugfix release 
+
+-------------------------------------------------------------------
+Sat Nov 12 09:47:41 UTC 2011 - dl8fcl@darc.de
+
+- Update to svxlink version 11.11 
+
+-------------------------------------------------------------------
+Tue May 24 14:11:44 UTC 2011 - dl8fcl@darc.de
+
+- Update to svxlink version 11.05 
+
+-------------------------------------------------------------------
+Sat Apr 14 2007 Tobias Blomberg (SM0SVX) <sm0svx@users.sourceforge.net>
+- Added this ChangeLog :-)
+- Improved pre/post scriptlets
+- Added a dist variable that should be set to a short form of the distribution
+  name (e.g. fc6 for Fedora Core 6).
+- Added new project files to the file lists.
+- Added new tags: vendor, url.
+- Changed the group tags to something more "standard" but it seems like
+  there is no standard for ham radio. 
+

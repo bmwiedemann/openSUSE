@@ -1,0 +1,29 @@
+Index: grub-2.02~beta3/docs/grub.texi
+===================================================================
+--- grub-2.02~beta3.orig/docs/grub.texi
++++ grub-2.02~beta3/docs/grub.texi
+@@ -32,15 +32,15 @@ Invariant Sections.
+ 
+ @dircategory Kernel
+ @direntry
+-* GRUB: (grub).                 The GRand Unified Bootloader
+-* grub-install: (grub)Invoking grub-install.    Install GRUB on your drive
+-* grub-mkconfig: (grub)Invoking grub-mkconfig.  Generate GRUB configuration
+-* grub-mkpasswd-pbkdf2: (grub)Invoking grub-mkpasswd-pbkdf2.
+-* grub-mkrelpath: (grub)Invoking grub-mkrelpath.
+-* grub-mkrescue: (grub)Invoking grub-mkrescue.  Make a GRUB rescue image
+-* grub-mount: (grub)Invoking grub-mount.        Mount a file system using GRUB
+-* grub-probe: (grub)Invoking grub-probe.        Probe device information
+-* grub-script-check: (grub)Invoking grub-script-check.
++* GRUB2: (grub2).                 The GRand Unified Bootloader
++* grub2-install: (grub2)Invoking grub-install.    Install GRUB on your drive
++* grub2-mkconfig: (grub2)Invoking grub-mkconfig.  Generate GRUB configuration
++* grub2-mkpasswd-pbkdf2: (grub2)Invoking grub-mkpasswd-pbkdf2.
++* grub2-mkrelpath: (grub2)Invoking grub-mkrelpath.
++* grub2-mkrescue: (grub2)Invoking grub-mkrescue.  Make a GRUB rescue image
++* grub2-mount: (grub2)Invoking grub-mount.        Mount a file system using GRUB
++* grub2-probe: (grub2)Invoking grub-probe.        Probe device information
++* grub2-script-check: (grub2)Invoking grub-script-check.
+ @end direntry
+ 
+ @setchapternewpage odd

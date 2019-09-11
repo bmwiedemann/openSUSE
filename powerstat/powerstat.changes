@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Mon Jul 23 06:24:59 UTC 2018 - mardnh@gmx.de
+
+- update to version 0.02.18
+  * Makefile: bump version
+  * Rename snapcraft directory to snap, add .travis.yml file to dist rule
+  * Compute Geometric Mean without overflow with large sets of data
+  * Add travis yaml file
+
+-------------------------------------------------------------------
+Fri Jun  1 19:51:51 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.02.17
+  * Makefile: bump version
+  * voidify returns from log_printf call
+  * Make indices arrays const
+  * Make cpu_freq_scale const
+  * Add hint on how to run if not in "discharge" mode
+  * Add adjustable C-state column width for C-state name column
+  * snapcraft: make confinement strict
+  * snapcraft: add plugs
+
+-------------------------------------------------------------------
+Sat May 19 08:40:36 UTC 2018 - mardnh@gmx.de
+
+- update to version 0.02.16
+  * Makefile: bump version
+  * debian/copyright: use secure https url
+  * debian/control: remove empty last line
+  * update debian/compat to 11
+  * Fix range of CPU frequencies histogram. Scale by 1000 and not 1e9
+
+-------------------------------------------------------------------
+Wed Jan 31 19:26:59 UTC 2018 - mardnh@gmx.de
+
+- update to version 0.02.15
+  * Makefile: bump version
+  * Fix spelling mistake in comment
+  * Update copyright year
+  * Add GNU format attribute to log_printf
+
+-------------------------------------------------------------------
+Wed Nov  1 09:31:35 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.02.14
+  * Makefile: bump version
+  * Add geometic mean to statistics
+
+-------------------------------------------------------------------
+Fri Oct 20 13:25:40 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.02.13
+  * Makefile: bump version
+  * Increase temp buf from 16 to 32 bytes, cleans up gcc warning
+  * Add more scanf sanity checking
+  * debian/control: update Standards-version to 4.1.1
+  * voidify function returns
+  * use sizeof an object rather than the objects type
+  * Don't use sentinel for end of signals[], use array size instead
+  * include <sys/uio.h> for writev
+  * powerstat: break wide macro over 2 lines
+
+-------------------------------------------------------------------
+Wed Jun 21 06:43:41 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.02.12
+  * Makefile: bump version
+  * Makefile: add snapcraft files to dist rule
+  * Fix incorrect GPU stats when sample rate is not 1 second (LP: #1699134)
+  * snapcraft: add default type and grade keys
+  * snapcraft: Makefile: remove icon hack
+  * reduce the scope of the variable 'buf'
+  * snapcraft.yaml: remove bogos unnecessary libs
+  * Add snapcraft files
+  * update copyright year
+
+-------------------------------------------------------------------
+Wed May 10 15:37:32 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.02.11
+  * Makefile: bump version
+  * Makefile: add mascot to dist rule
+  * Remove two blank lines
+  * Allow float compares a little slop
+  * Makefile: add PEDANTIC flags
+  * Add powerstat mascot
+
+-------------------------------------------------------------------
+Sat Jul 30 13:51:55 UTC 2016 - mardnh@gmx.de
+
+- update to version 0.02.10
+  * Makefile: bump version
+  * debian/control: update Standards-Version to 3.9.8
+
+- update to version 0.02.09
+  * Makefile: bump version
+  * Do not overflow power domain and thermal zone buffers (LP: #1551297)
+  * Tag RAPL stats as valid so stats show up in avg, std.dev. (LP: #1551287)
+
+- update to version 0.02.08
+  * Makefile: bump version
+  * Move N/A message for GPU power right one char
+  * Add some more per function comments
+  * constify a few more func args
+  * Make all non-main functions static
+  * Minor fix up on GPU Watts field
+  * Add GPU average stats
+  * Clean up column formatting
+  * add -g GPU stats
+  * Update and correct copyright years
+
+-------------------------------------------------------------------
+Thu Feb 18 10:44:56 UTC 2016 - mardnh@gmx.de
+
+- update to version 0.02.07
+  * Makefile: bump version
+  * Manual: re-work some parts of the manual
+  * Manual: add missong comma in SEE ALSO list
+  * Move structure links to head of structures
+  * Use a more efficient hashing function
+
+-------------------------------------------------------------------
+Wed Nov 11 20:55:01 UTC 2015 - mardnh@gmx.de
+
+- initial package
+

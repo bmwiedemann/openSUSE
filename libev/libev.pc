@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/@lib_suffix@
+includedir=${prefix}/include
+
+Name: libev
+Description: high-performance event loop
+Version: @VERSION@
+Libs: -L${libdir} -lev
+Cflags: -I${includedir}

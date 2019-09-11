@@ -1,0 +1,82 @@
+#!/bin/sh
+#
+### BEGIN INIT INFO
+# Provides:          xrootd
+# Required-Start:    $syslog $remote_fs $network
+# Required-Stop:     $syslog $remote_fs $network
+# Default-Start:     3 5
+# Default-Stop:      0 1 2 6
+# Short-Description: xrootd daemon providing xrootd-server
+# Description:       xrootd daemon providing xrootd-server
+### END INIT INFO
+
+XROOTD_BIN=/usr/bin/xrootd
+test -x $XROOT_BIN || { echo "$XROOTD_BIN not installed"; 
+        if [ "$1" = "stop" ]; then exit 0;
+        else exit 5; fi; }
+
+XROOTD_CONFIG=/etc/sysconfig/xrootd
+test -r $XROOTD_CONFIG || { echo "$XROOTD_CONFIG not existing";
+        if [ "$1" = "stop" ]; then exit 0;
+        else exit 6; fi; }
+
+XROOTD_FUNCTIONS=/etc/xrootd/xrootd.functions
+test -r $XROOTD_FUNCTIONS || { echo "$XROOTD_FUNCTIONS not existing";
+        if [ "$1" = "stop" ]; then exit 0;
+        else exit 6; fi; }
+
+. $XROOTD_FUNCTIONS
+. $XROOTD_CONFIG
+. /etc/rc.status
+rc_reset
+
+case "$1" in
+    start)
+        echo -n "Starting XROOTD "
+        /sbin/startproc $XROOTD_BIN
+        rc_status -v
+        ;;
+    stop)
+        echo -n "Shutting down XROOTD "
+        /sbin/killproc $XROOTD_BIN
+        rc_status -v
+        ;;
+    try-restart|condrestart)
+        if test "$1" = "condrestart"; then
+                echo "${attn} Use try-restart ${done}(LSB)${attn} rather than condrestart ${warn}(RH)${norm}"
+        fi
+        $0 status
+        if test $? = 0; then
+                $0 restart
+        else
+                rc_reset        # Not running is not a failure.
+        fi
+        rc_status
+        ;;
+    restart)
+        $0 stop
+        $0 start
+        rc_status
+        ;;
+    force-reload)
+        echo -n "Reload service XROOTD "
+        /sbin/killproc -HUP $XROOTD_BIN
+        rc_status -v
+
+        ;;
+    reload)
+        echo -n "Reload service XROOTD "
+        /sbin/killproc -HUP $XROOTD_BIN
+        rc_status -v
+        ;;
+    status)
+        echo -n "Checking for service XROOTD "
+        /sbin/checkproc $XROOTD_BIN
+        rc_status -v
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|status|try-restart|restart|force-reload|reload|probe}"
+        exit 1
+        ;;
+esac
+rc_exit

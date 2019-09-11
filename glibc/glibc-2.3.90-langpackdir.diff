@@ -1,0 +1,34 @@
+Index: glibc-2.27/intl/loadmsgcat.c
+===================================================================
+--- glibc-2.27.orig/intl/loadmsgcat.c
++++ glibc-2.27/intl/loadmsgcat.c
+@@ -796,8 +796,27 @@ _nl_load_domain (struct loaded_l10nfile
+   if (domain_file->filename == NULL)
+     goto out;
+ 
+-  /* Try to open the addressed file.  */
+-  fd = open (domain_file->filename, O_RDONLY | O_BINARY);
++  /* Replace /locale/ with /usr/share/locale-langpack/ */
++  const char *langpackdir = "/usr/share/locale-langpack/";
++  char *filename_langpack = malloc (strlen (domain_file->filename) +
++				    strlen (langpackdir));
++  if (filename_langpack != NULL)
++    {
++      char *p = strstr (domain_file->filename, "/locale/");
++      if (p != NULL)
++       {
++         strcpy (filename_langpack, langpackdir);
++         strcpy (&filename_langpack[strlen (langpackdir)], p + 8);
++         fd = open (filename_langpack, O_RDONLY | O_BINARY);
++       }
++
++      free (filename_langpack);
++    }
++
++  if (fd == -1)
++    /* Try to open the addressed file.  */
++    fd = open (domain_file->filename, O_RDONLY | O_BINARY);
++
+   if (fd == -1)
+     goto out;
+ 

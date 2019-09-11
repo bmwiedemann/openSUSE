@@ -1,0 +1,23 @@
+# HG changeset patch
+# Parent 0e1bcdeb29f31b5108e857072e172a9ba47589d7
+
+diff --git a/js/src/vm/SPSProfiler.cpp b/js/src/vm/SPSProfiler.cpp
+--- a/js/src/vm/SPSProfiler.cpp
++++ b/js/src/vm/SPSProfiler.cpp
+@@ -1,14 +1,16 @@
+ /* -*- Mode: C++; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 4 -*-
+  * vim: set ts=8 sts=4 et sw=4 tw=99:
+  * This Source Code Form is subject to the terms of the Mozilla Public
+  * License, v. 2.0. If a copy of the MPL was not distributed with this
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
++#include "jscntxtinlines.h"
++
+ #include "vm/SPSProfiler.h"
+ 
+ #include "mozilla/DebugOnly.h"
+ 
+ #include "jsnum.h"
+ #include "jsprf.h"
+ #include "jsscript.h"
+ 

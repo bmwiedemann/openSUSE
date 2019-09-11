@@ -1,0 +1,33 @@
+--- ./src/lib/libast/misc/stk.c.orig	2014-11-26 16:01:29.606716557 +0000
++++ ./src/lib/libast/misc/stk.c	2014-11-26 16:03:06.031328609 +0000
+@@ -505,7 +505,7 @@ static char *stkgrow(register Sfio_t *st
+ 	register char *cp, *dp=0;
+ 	register size_t m = stktell(stream);
+ 	size_t endoff;
+-	char *end=0;
++	char *end=0, *oldbase=0;
+ 	int nn=0,add=1;
+ 	n += (m + sizeof(struct frame)+1);
+ 	if(sp->stkflags&STK_SMALL)
+@@ -521,6 +521,7 @@ static char *stkgrow(register Sfio_t *st
+ 		dp=sp->stkbase;
+ 		sp->stkbase = ((struct frame*)dp)->prev;
+ 		end = fp->end;
++		oldbase = dp;
+ 	}
+ 	endoff = end - dp;
+ 	cp = newof(dp, char, n, nn*sizeof(char*));
+@@ -547,10 +548,10 @@ static char *stkgrow(register Sfio_t *st
+ 	if(fp->nalias=nn)
+ 	{
+ 		fp->aliases = (char**)fp->end;
+-		if(end && nn>1)
+-			memmove(fp->aliases,end,(nn-1)*sizeof(char*));
++		if(end && nn>add)
++			memmove(fp->aliases,end,(nn-add)*sizeof(char*));
+ 		if(add)
+-			fp->aliases[nn-1] = dp + roundof(sizeof(struct frame),STK_ALIGN);
++			fp->aliases[nn-1] = oldbase + roundof(sizeof(struct frame),STK_ALIGN);
+ 	}
+ 	if(m && !dp)
+ 	{

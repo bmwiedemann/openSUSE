@@ -1,0 +1,206 @@
+-------------------------------------------------------------------
+Tue Apr 23 09:06:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.15:
+  * Use zlib more
+  * Fuzzing fixes
+
+-------------------------------------------------------------------
+Wed May 30 10:29:13 UTC 2018 - tchvatal@suse.com
+
+- Update to 0.3.14:
+  * Support MS Multiplan 1.1 files
+- Remove merged patch libmwaw-0.3.13-buildfix.patch
+
+-------------------------------------------------------------------
+Tue Dec  5 09:58:25 UTC 2017 - tchvatal@suse.com
+
+- Add patch to build with old gcc:
+  * libmwaw-0.3.13-buildfix.patch
+
+-------------------------------------------------------------------
+Wed Nov 29 12:32:16 UTC 2017 - tchvatal@suse.com
+
+- Version update to 0.3.13:
+  * Remove merged CVE-2017-9433.patch
+  * Many fuzzing fixes
+
+-------------------------------------------------------------------
+Thu Jun 29 07:43:48 UTC 2017 - tchvatal@suse.com
+
+- Add patch CVE-2017-9433.patch fixing bsc#1042828 CVE-2017-9433
+
+-------------------------------------------------------------------
+Mon May 15 13:14:36 UTC 2017 - tchvatal@suse.com
+
+- Update to 0.3.11:
+  * Various small updates
+
+-------------------------------------------------------------------
+Thu Feb  9 11:33:17 UTC 2017 - tchvatal@suse.com
+
+- Version update to 0.3.10:
+  * Various fixes for importing Mac powerpoint v4
+
+-------------------------------------------------------------------
+Wed Feb  1 13:05:45 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sat Dec  3 11:59:15 UTC 2016 - tchvatal@suse.com
+
+- Version update to 0.3.9:
+  * Various warning and clang fixes all around
+
+-------------------------------------------------------------------
+Thu Jul 14 08:52:04 UTC 2016 - tchvatal@suse.com
+
+- Version update to 0.3.8:
+  * Various clang and -W* fixes all around
+  * Bunch of bugfixes
+
+-------------------------------------------------------------------
+Mon Dec 21 11:49:10 UTC 2015 - tchvatal@suse.com
+
+- Version update to 0.3.7:
+  - RagTime v5-v6 parser: try to retrieve the embedded spreadsheets
+    + begin to understand the hierarchical structures which store
+      a chart (but not the meaning of each field),
+  - ClarisWorks/AppleWorks: find a new structure in the file's header
+    (which could prevent to convert some database's file),
+  - BeagleWorks/GreatWorks/Word Perfect Works: retrieve the picture's
+    field in a database
+  - all: improve a little the methods which create spreadsheets,
+  - all: make some constructors explicit.
+  - add a parser for Style documents(at least v1.6 and v1.9)
+  - add file signatures for FullPaint documents which have the same format as
+    MacPaint..
+  - add a parser for Pixel Paint documents
+
+-------------------------------------------------------------------
+Fri Aug 28 07:38:50 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 0.3.6:
+  - Added a minimal parser for ApplePict v1.v2, ie. no clipping, does not
+    take in account the copy mode: srcCopy, srcOr, ...
+  - Extended the --with-docs configure option to allow to build doc only
+    for the API classes: --with-docs=no|api|full .
+  - Added a parser for MacDraft v4-v5 documents.
+  - RagTime v5-v6 parser: try to retrieve the main layouts and the
+    picture/shape/textbox, ie. now, it generates result but it is
+    still very imcomplete... 
+  - MWAW{Graphic,Presentation,Text}Listener: corrected a problem in openGroup
+    which may create to incorrect document.
+  - Created an MWAWEmbeddedObject class to store a picture with various
+    representations.
+  - MWAW*Listener: renamed insertPicture to insertShape, added a function to
+    insert a texbox in a MWAWGraphicShape (which only insert a basic textbox).
+  - Fixed many crashes and hangs when importing broken files, found with the
+    help of american-fuzzy-lop.
+  - And several other minor fixes and improvements.
+
+-------------------------------------------------------------------
+Sat Jun 13 12:58:37 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 0.3.5
+  * Various small fixes on 0.3 series, nothing big woth mention
+
+-------------------------------------------------------------------
+Fri Jan  2 13:24:30 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 0.3.4:
+  * Various tweaks&fixes on the 0.3 series found by fuzzy testing/etc
+- Removed patch libmwaw-0.3.1-stream.patch as we should not bother
+  with old autotools
+
+-------------------------------------------------------------------
+Tue Jul  1 14:47:43 UTC 2014 - fstrba@suse.com
+
+- Fix patch libmwaw-0.3.1-stream.patch to allow buiding with older
+  version of autotools.
+
+-------------------------------------------------------------------
+Wed Jun 11 09:34:13 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 0.3.1:
+  * Switch over to librevenge framework
+- Add patch libmwaw-0.3.1-stream.patch to fix streams
+
+-------------------------------------------------------------------
+Sat Jan 25 21:05:10 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner and noarch documenation.
+
+-------------------------------------------------------------------
+Sat Jan 18 15:57:32 UTC 2014 - crrodriguez@opensuse.org
+
+- build with -fvisibility-inlines-hidden, around 2800 
+  less in the export symbol table.
+
+-------------------------------------------------------------------
+Tue Dec 17 10:17:43 UTC 2013 - fridrich.strba@suse.com
+
+- Upgrade to upstream 0.2.0
+  - ABI change
+  - Several improvements in handling of embedded graphics
+
+-------------------------------------------------------------------
+Tue Dec  3 13:27:31 UTC 2013 - tchvatal@suse.com
+
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Nov  1 09:13:30 UTC 2013 - tchvatal@suse.com
+
+- Drop doc conditional and use verbose build.
+
+-------------------------------------------------------------------
+Mon May 27 11:34:16 UTC 2013 - tchvatal@suse.com
+
+- Version bump to 0.1.9 providing following fixes:
+
+ - improve a little the Microsoft Word filter to better manage
+   character and paragraph properties
+ - check that the remaining parsers (excepted Microsoft Word) use the
+   new properties' classes,
+ - add table generation in FullWrite parser,
+ - rewrite from scratch zip.cpp (to avoid using different license),
+ - + many code corrections done by David Tardon.
+ - check that the WriterPlus parsers use the new properties' classes,
+ - simplify a little the code of MWAWDocument
+ - add a parser for Acta v2 and Acta Classic v1,
+ - check that the DOCMaker, eDOC, SimpleText, Tex-Edit, Z-Write parsers
+   use the new properties' classes,
+ - rewrite MWAWPageSpan,
+ - add classes MWAWField, MWAWNote, MWAWSection to store/manage
+   field, note, section properties,
+ - check that the ClarisWorks/AppleWorks, MacWrite, MindWrite,
+   WriteNow parsers use the new properties' classes,
+ - improve a little the ClarisWorks/AppleWorks frame position by
+   placing <<correctly>> all page's frames,
+ - MWAWContentListener : add a sanity check to insure that at most
+   200 very small pictures are generated.
+
+-------------------------------------------------------------------
+Sun Apr 28 13:44:00 UTC 2013 - fridrich.strba@suse.com
+
+- Upgrade to upstream 0.1.8
+  - Several improvements in different parsers
+
+-------------------------------------------------------------------
+Sat Apr 20 12:08:23 UTC 2013 - tchvatal@suse.com
+
+- Use download URL path.
+
+-------------------------------------------------------------------
+Tue Mar 26 10:00:07 UTC 2013 - cfarrell@suse.com
+
+- license update: (LGPL-2.1+ or MPL-2.0) and GPL-2.0+
+  Most of package is dual MPL-2.0 or LGPL-2.1+ but tools/zip is GPL-2.0+
+
+-------------------------------------------------------------------
+Wed Mar 13 11:24:31 CEST 2013 - tchvatal@suse.com
+
+- Initial package of libmwaw. Required by libreoffice-4.1
+

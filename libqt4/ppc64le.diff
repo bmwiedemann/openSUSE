@@ -1,0 +1,15 @@
+--- ./configure.orig	2013-12-06 13:27:48.591433470 +0000
++++ ./configure	2013-12-06 13:29:28.583433293 +0000
+@@ -3234,6 +3234,12 @@ if [ -z "${CFG_HOST_ARCH}" ]; then
+         fi
+         CFG_HOST_ARCH=powerpc
+         ;;
++    *:*:ppc64le)
++        if [ "$OPT_VERBOSE" = "yes" ]; then
++            echo "    64-bit PowerPC LE (powerpc)"
++        fi
++        CFG_HOST_ARCH=powerpc
++        ;;
+     *:*:s390*)
+     	if [ "$OPT_VERBOSE" = "yes" ]; then
+     	    echo "    IBM S/390 (s390)"

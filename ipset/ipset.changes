@@ -1,0 +1,334 @@
+-------------------------------------------------------------------
+Mon Jun 10 13:09:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 7.2
+  * ipset: Fix memory accounting for hash types on resize
+
+-------------------------------------------------------------------
+Tue Dec 11 13:02:03 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 7.1
+  * Correct the manpage about the sort option
+  * Implement sorting for hash types in the ipset tool
+  * Fix to list/save into file specified by option
+- Remove ipset-file.diff (merged)
+
+-------------------------------------------------------------------
+Tue Nov 20 17:58:53 UTC 2018 - Arjen de Korte <suse+build@de-korte.org>
+
+- Add ipset-file.diff [boo#1116432].
+
+-------------------------------------------------------------------
+Tue Oct 30 07:54:50 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 7.0
+  * A new internal protocol version between the kernel and
+    userspace is used. This is required in order to support two
+    new functions and the extendend LIST operation, which makes
+    possible to run ipset in every case entirely over netlink,
+    without the need to use getsockopt().
+  * The userspace library was reworked so it can be embedded
+    without calling the binary.
+
+-------------------------------------------------------------------
+Tue Apr 10 20:21:59 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 6.38
+  * Fix parsing service names for ports.
+
+-------------------------------------------------------------------
+Sat Mar  3 23:27:51 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 6.36
+  * Adding a IPv4 range x.x.x.x–255.255.255.255 could lead to
+    memory exhaustion, which has been fixed.
+- Drop 0001-build-do-install-libipset-args.h.patch (merged)
+
+-------------------------------------------------------------------
+Mon Jan 22 21:49:31 UTC 2018 - jengelh@inai.de
+
+- Add 0001-build-do-install-libipset-args.h.patch [boo#1077037].
+
+-------------------------------------------------------------------
+Sat Jan  6 21:47:52 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 6.35
+  * Userspace revision handling is reworked
+  * Backport patch: netfilter: ipset: use nfnl_mutex_is_locked
+  * Missing nfnl_lock()/nfnl_unlock() is added to
+    ip_set_net_exit()
+  * netfilter: ipset: add resched points during set listing
+  * Fix "don't update counters" mode when counters used at the
+    matching
+  * netfilter: ipset: Fix race between dump and swap
+
+-------------------------------------------------------------------
+Sat Sep 23 19:10:12 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 6.34
+  * Reset state after a command failed, when multiple ones
+    are issued.
+  * Handle padding attribute properly in userspace.
+  * Test to check the fix to add an IPv4 range containing more
+    than 2^31 addresses.
+- Remove ipset-6.33-export-func.diff (merged)
+
+-------------------------------------------------------------------
+Sun Sep 17 21:19:30 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 6.33
+  * Report if the option is supported by a newer kernel release
+- Add ipset-6.33-export-func.diff
+
+-------------------------------------------------------------------
+Fri Sep 15 16:44:31 UTC 2017 - kstreitova@suse.com
+
+- fix build for Factory
+
+-------------------------------------------------------------------
+Fri Mar 17 11:45:35 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 6.31
+  * ipset: avoid kernel null pointer exception in ipset list:set
+  * fix bug: sometimes valid entries in hash:* types of sets were
+    evicted
+- Update to new upstream release 6.32
+  * fix possible truncated output in ipset output buffer handling
+
+-------------------------------------------------------------------
+Thu Oct 20 18:25:24 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 6.30
+* hash:ipmac type support added to ipset
+
+-------------------------------------------------------------------
+Wed Mar 16 23:25:41 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 6.29
+* Fix race condition in ipset save, swap and delete
+
+-------------------------------------------------------------------
+Sat Mar 12 21:40:08 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 6.28
+* Test added to check 0.0.0.0/0,iface to be matched in
+  hash:net,iface type
+* Check IPSET_ATTR_ETHER netlink attribute length
+* Fix set:list type crash when flush/dump set in parallel
+* Allow a 0 netmask with hash_netiface type
+- Restore unreviewed deletion of KMP production,
+  undo spec-cleaner refucktoring
+- Add ipset-destdir.diff
+
+-------------------------------------------------------------------
+Mon Jan 18 15:42:54 UTC 2016 - kstreitova@suse.com
+
+- update to 6.27:
+  * kernel part changes
+    * fix reported memory size for hash:* types
+    * fix hash type expire: release empty hash bucket block
+    * fix hash type expiration: incorrect index fixed
+    * collapse same condition body to a single one
+    * fix extension alignment
+    * compatibility: include linux/export.h when needed
+    * compatibility: make sure vmalloc.h is included for kvfree()
+    * compatibility: Fix detecting 'struct net' in 'struct tcf_ematch'
+    * compatibility: Protect definition of RCU_INIT_POINTER in 
+      compatibility header file
+    * netfilter: ipset: Fix sleeping memory allocation in atomic
+      context (Nikolay Borisov)
+  * userspace changes
+    * handle uint64_t alignment issue in ipset tool
+- disable KMP build as we support the in-kernel version instead.
+  Remove ipset-preamble file that is no longer needed [bsc#962345]
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Sun Aug 30 11:23:27 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 6.26
+* Out of bound access in hash:net* types fixed
+* Make struct htype per ipset family
+* Optimize hash creation routine
+
+-------------------------------------------------------------------
+Thu Jun 25 09:57:08 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 6.25.1
+* Add element count to all set types header
+* Add element count to hash headers
+* Support linking libipset to C++ programs
+* When a single set is destroyed, make sure it cannot
+  be grabbed by dump
+* Check CIDR value only when attribute is given
+* Permit CIDR equal to the host address CIDR in IPv6
+
+-------------------------------------------------------------------
+Mon Nov 24 21:31:24 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 6.24
+* Alignment problem between 64bit kernel 32bit userspace fixed
+* Potential read beyond the end of buffer resolved
+* Fix parallel resizing and listing of the same set
+* Introduce RCU in all set types instead of rwlock per set
+* Remove rbtree from hash:net,iface in order to run under RCU
+* Explicitly add padding elements to hash:net,net and
+  hash:net,port,net
+* Allocate the proper size of memory when /0 networks are supported
+* Simplify cidr handling for hash:*net* types
+* Indicate when /0 networks are supported
+
+-------------------------------------------------------------------
+Tue Sep 23 18:04:06 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 6.23
+* Order create and add options in manpage so that generic ones
+  come first
+* Centralise generic create options (family, hashsize, maxelem)
+  on top of man page in the generic options section.
+* Add description of hash:mac set type to man page.
+* Add missing space for skbinfo option synopsis.
+* Support updating extensions when the set is full
+- Drop sovers.diff (no longer needed)
+
+-------------------------------------------------------------------
+Tue Sep 16 06:27:32 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 6.22
+* includes the new set type hash:mac
+* The new skbinfo extension makes possible to store fw mark, tc
+  class and/or hardware queue parameters together with the set
+  elements and then attach them to the matchig packets by the SET
+  target.
+- Add sovers.diff to counter missing symbol errors
+
+-------------------------------------------------------------------
+Wed Mar  5 08:47:39 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 6.21.1
+* add userspace support for forceadd
+* fix ifname "physdev:" prefix parsing
+* print mark & mark mask in hex rather then decimal
+* add markmask for hash:ip,mark data type
+* add hash:ip,mark data type to ipset
+* Fix all set output from list/save when set with counters in use.
+* ipset: Fix malformed output from list/save for ICMP types in port 
+  field
+* ipset: fix timeout data type size (Nikolay Martynov)
+
+-------------------------------------------------------------------
+Mon Oct 28 12:34:04 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 6.20.1
+* build fixes for kernel 3.8 and the userspace library
+- Remove 0001-build-fix-incorrect-library-versioning.patch (merged)
+
+-------------------------------------------------------------------
+Sun Oct 20 13:03:53 UTC 2013 - jengelh@inai.de
+
+- Add 0001-build-fix-incorrect-library-versioning.patch
+
+-------------------------------------------------------------------
+Sun Oct 20 12:43:51 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 6.20
+* netns support
+* new set types: hash:net,net and hash:net,port,net
+* new extension: "comment", for annotation of set elements
+- Drop sles11.diff (no longer needed, upstream has better fix)
+
+-------------------------------------------------------------------
+Fri May 10 20:11:15 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 6.19
+* This release adds per-element byte and packet counters for every
+  set type. (Matching these will be available in iptables-1.4.19.)
+
+-------------------------------------------------------------------
+Mon Apr 15 06:20:31 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 6.18
+* bitmap:ip,mac: fix listing with timeout
+* hash:*net*: nomatch flag not excluded on set resize
+* list:set: update reference counter when last element pushed off
+
+-------------------------------------------------------------------
+Thu Feb 21 16:07:01 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 6.17
+* Fix revision printing in XML mode
+* Correct "Suspicious condition (assignment + comparison)"
+* Fix error path when protocol number is used with port range
+* Interactive mode error after syntax error
+* New utilities: ipset_bash_completion, ipset_list
+* Ensure ip_set_max is not set to IPSET_INVALID_ID
+* Resolve corrupted timeout values on set resize
+* Resolve "Directory not empty" error message
+
+-------------------------------------------------------------------
+Tue Nov 27 12:50:37 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 6.16.1
+* Fix RCU handling when the number of maximal sets are increased
+* netfilter: ipset: fix netiface set name overflow
+- Remove 0001-build-support-for-Linux-3.7-UAPI.patch, merged upstream
+- Remove 0001-build-Linux-3.7-netlink-fun.patch, merged upstream
+
+-------------------------------------------------------------------
+Mon Nov 19 16:20:13 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 6.15
+* Userspace changes:
+* Use gethostbyname2 instead of getaddrinfo
+* Support protocol numbers as well, not only protocol names
+* Kernel part changes:
+* Increase the number of maximal sets automatically as needed
+* Fix range bug in hash:ip,port,net
+- Add 0001-build-support-for-Linux-3.7-UAPI.patch
+- Add 0001-build-Linux-3.7-netlink-fun.patch
+
+-------------------------------------------------------------------
+Sat Sep 22 14:20:06 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 6.14
+* Internal CIDR bookkeeping was broken and would lead to mismatches
+  when the number of different sized networks are greater than the
+  smallest CIDR value
+* Support to match elements marked with "nomatch" in hash:*net* sets
+* Add /0 network support to hash:net,iface type
+
+-------------------------------------------------------------------
+Sat Jun 30 18:33:33 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 6.13
+* more restrictive command-line parser
+* documentation updates w.r.t. src/dst for hash:net,iface
+* allow saving to/restoring from a file without shell redirection
+* kernel: hash:net,iface: fix interface comparison
+* timeout fixing bug broke SET target special timeout value, fixed
+
+-------------------------------------------------------------------
+Thu May 10 11:07:52 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 6.12
+* Report syntax error messages immediately
+* Add dynamic module support to ipset userspace tool
+* Fix timeout value overflow bug at large timeout parameters
+* gcc 4.7 support
+
+-------------------------------------------------------------------
+Fri Jan 20 17:27:01 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 6.11
+* libipset is now complete; ipset is just a frontend
+* Log warning when a hash type of set gets full
+* Exceptions support added to hash:*net* types
+* hash:net,iface timeout bug fixed
+* Support hostnames and service names with dash
+
+
+-------------------------------------------------------------------
+Sun Jan  1 03:17:39 UTC 2012 - jengelh@medozas.de
+
+- Populate ipset package on build.opensuse.org after disabling
+  ipset-genl compilation in xtables-addons

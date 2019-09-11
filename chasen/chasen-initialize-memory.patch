@@ -1,0 +1,30 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2017-11-08
+
+Problem: when building the ipadic package it differed for every build
+because its chadic.dat contains uninitialized memory
+from the da_dat_t structure's padding bytes
+
+Solution: initilize memory (including padding added by compilers)
+before use
+
+Index: chasen-2.4.4/mkchadic/dumpdic.c
+===================================================================
+--- chasen-2.4.4.orig/mkchadic/dumpdic.c
++++ chasen-2.4.4/mkchadic/dumpdic.c
+@@ -45,6 +45,7 @@ dump_dat(lexicon_t *lex, FILE *datfile,
+     long index;
+     da_dat_t dat;
+ 
++    memset(&dat, 0, sizeof(dat));
+     index = ftell(datfile);
+     dat.stem_len = lex->stem_len;
+     dat.reading_len = lex->reading_len;
+@@ -137,6 +138,7 @@ dump_dic(lexicon_t *entries, FILE *outpu
+     da_lex_t lex;
+     long compound = NO_COMPOUND;
+ 
++    memset(&lex, 0, sizeof(lex));
+     if (entries[1].pos)
+ 	compound = dump_compound(entries, lexfile, datfile);
+ 

@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Mon Feb 26 09:09:35 UTC 2018 - kbabioch@suse.com
+
+- Update to version 1.0.5:
+  * No chagelog provided by upstream
+  * CVE-2018-7439 (boo#1082774) from 1.0.4 is fixed
+  * CVE-2018-7438 (boo#1082775) from 1.0.4 is fixed
+  * CVE-2018-7437 (boo#1082776) from 1.0.4 is fixed
+  * CVE-2018-7436 (boo#1082777) from 1.0.4 is fixed
+  * CVE-2018-7435 (boo#1082778) from 1.0.4 is fixed
+
+-------------------------------------------------------------------
+Wed Sep 13 08:12:07 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.0.4:
+  * No chagelog provided by upstream
+  * CVE-2017-2924 (boo#1058433) from 1.0.3 is fixed
+  * CVE-2017-2923 (boo#1058431) from 1.0.3 is fixed
+- Small packaging cleanup
+
+-------------------------------------------------------------------
+Mon Jun 27 09:44:06 UTC 2016 - mpluskal@suse.com
+
+- Drop html documentation
+- Small spec file cleanups
+- Referencing security issues fixed in 1.0.1
+
+-------------------------------------------------------------------
+Sat Oct 31 06:40:08 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.0.2
+  * no changelog provided by upstream
+
+-------------------------------------------------------------------
+Mon Apr 20 09:56:32 UTC 2015 - opensuse@dstoecker.de
+
+- update to 1.0.1 (boo#986614)
+  * CVE-2015-2753: denial of service (stack corruption) or possibly 
+                   execution of arbitrary code via a crafted sector
+                   in a workbook
+  * CVE-2015-2754: denial of service (stack corruption) and possibly
+                   execution of arbitrary code via a crafted
+                   workbook, related to a "premature EOF."
+  * CVE-2015-2776: denial of service (memory consumption) via a
+                   crafted shared strings table in a workbook.
+
+-------------------------------------------------------------------
+Sat Mar  7 21:12:45 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.0.0i
+  * no changelog provided by upstream
+
+-------------------------------------------------------------------
+Wed Feb  4 10:29:10 UTC 2015 - mpluskal@suse.com
+
+- Update licence information (MPL-1.1 or GPL-2.0+ or LGPL-2.1+)
+- Remove static library.
+
+-------------------------------------------------------------------
+Mon Feb  2 08:46:05 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Enable tests execution during build
+- Build documentation
+- Update to 1.0.0h (no changelog provided by upstream
+
+-------------------------------------------------------------------
+Sun Jul  7 18:55:33 UTC 2013 - tzotsos@opensuse.org
+
+- update to 1.0.0e
+
+-------------------------------------------------------------------
+Sat Aug 11 19:32:16 UTC 2012 - opensuse@dstoecker.de
+
+- update to 1.0.0d
+
+-------------------------------------------------------------------
+Tue Mar 6 17:00:00 UTC 2012 - tzotsos@opensuse.org
+
+- Initial build

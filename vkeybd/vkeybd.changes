@@ -1,0 +1,242 @@
+-------------------------------------------------------------------
+Tue Apr  3 11:33:52 UTC 2018 - tchvatal@suse.com
+
+- Format with spec-cleaner
+- Fix rpmlint warnings
+- Disable lash integration for now as we try to remove it from
+  Tumbleweed
+
+-------------------------------------------------------------------
+Tue Nov 28 19:11:42 UTC 2017 - crrodriguez@opensuse.org
+
+- Remove xorg-x11-devel from BuildRequires and explicit linking
+  to x11, not required anymore to build tk apps.
+
+-------------------------------------------------------------------
+Wed Aug 26 16:52:00 CEST 2009 - tiwai@suse.de
+
+- version 0.1.18d:
+  Two debian fixes regarding keyboard inputs:
+    http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=527942
+    http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=527943
+
+-------------------------------------------------------------------
+Thu Jul 16 14:25:00 CEST 2009 - tiwai@suse.de
+
+- version 0.1.18c:
+  * Add LASH support
+
+-------------------------------------------------------------------
+Thu Apr 17 14:31:08 CEST 2008 - tiwai@suse.de
+
+- version 0.1.18b:
+  * improved vkeybd.desktop
+- use 48x48 pixmap for the default icon
+- automated tcl version detection in spec file
+
+-------------------------------------------------------------------
+Mon Apr  7 10:54:02 CEST 2008 - ro@suse.de
+
+- hardcode tcl version for the moment to fix build 
+
+-------------------------------------------------------------------
+Mon Jan 14 16:32:08 CET 2008 - tiwai@suse.de
+
+- version 0.1.18a:
+  * fixed a packaging bug
+- version 0.1.18:
+  * select the default keymap per locale
+
+-------------------------------------------------------------------
+Mon Aug  6 19:25:53 CEST 2007 - tiwai@suse.de
+
+- version 0.1.17b:
+  * fix build without linux/awe_voice.h
+
+-------------------------------------------------------------------
+Tue Jan 16 14:23:43 CET 2007 - tiwai@suse.de
+
+- use $RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:40 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 11 11:46:57 CEST 2005 - tiwai@suse.de
+
+- updated to version 0.1.17a.
+- removed ladcca support (temprarily)
+
+-------------------------------------------------------------------
+Wed Sep 15 16:31:24 CEST 2004 - tiwai@suse.de
+
+- fixed missing icon; create symlink vkeybd_32x32.png -> vkeybd.png.
+
+-------------------------------------------------------------------
+Tue Aug 31 17:53:33 CEST 2004 - tiwai@suse.de
+
+- updated to version 0.1.17.
+
+-------------------------------------------------------------------
+Wed Mar  3 15:07:49 CET 2004 - tiwai@suse.de
+
+- updated to version 0.1.16
+  desktop and icons are included in tarball.
+
+-------------------------------------------------------------------
+Sun Jan 11 11:05:23 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Thu Nov 20 18:20:18 CET 2003 - tiwai@suse.de
+
+- updated to version 0.1.15.
+- added jack and e2fsprogs to neededforbuild, which are required
+  by the new ladcca.
+
+-------------------------------------------------------------------
+Mon Sep 15 17:33:44 CEST 2003 - tiwai@suse.de
+
+- added desktop icon.
+
+-------------------------------------------------------------------
+Tue Aug 19 18:07:00 CEST 2003 - tiwai@suse.de
+
+- updated to version 0.1.14.
+
+-------------------------------------------------------------------
+Mon Aug 18 13:00:51 CEST 2003 - tiwai@suse.de
+
+- added desktop file.
+
+-------------------------------------------------------------------
+Thu Jul 24 11:07:44 CEST 2003 - tiwai@suse.de
+
+- added tk-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Thu Jul  3 16:34:26 CEST 2003 - tiwai@suse.de
+
+- updated to version 0.1.13a.
+- added the support of LADCCA.
+
+-------------------------------------------------------------------
+Fri Feb 28 17:10:17 CET 2003 - tiwai@suse.de
+
+- removed the annoying debug messages.
+
+-------------------------------------------------------------------
+Thu Jan 23 17:03:19 CET 2003 - tiwai@suse.de
+
+- updated to version 0.1.13.
+
+-------------------------------------------------------------------
+Fri Jan 17 12:09:16 CET 2003 - tiwai@suse.de
+
+- added the extended rc file for the german keyboard layout.
+
+-------------------------------------------------------------------
+Mon Nov 11 23:49:53 CET 2002 - ro@suse.de
+
+- changed neededforbuild <xshared> to <x-devel-packages>
+- changed neededforbuild <xdevel> to <>
+
+-------------------------------------------------------------------
+Fri Aug 23 16:53:31 CEST 2002 - tiwai@suse.de
+
+- removed (again) debug prints.
+
+-------------------------------------------------------------------
+Wed Aug 14 16:21:02 CEST 2002 - tiwai@suse.de
+
+- neededforbuild xf86 -> xdevel, xshared
+
+-------------------------------------------------------------------
+Thu Jul 25 17:25:23 CEST 2002 - tiwai@suse.de
+
+- removed debug prints.
+
+-------------------------------------------------------------------
+Fri Jul 12 16:09:52 CEST 2002 - max@suse.de
+
+- Detecting Tcl/Tk version at build time.
+
+-------------------------------------------------------------------
+Mon May  6 16:14:08 CEST 2002 - tiwai@suse.de
+
+- fixed build on 64bit architectures.
+- check Tk_Main is defined.
+- do not bind default keys if already defined by user.
+
+-------------------------------------------------------------------
+Thu Jan 17 11:56:19 CET 2002 - tiwai@suse.de
+
+- fixed mouse motion on ebony keys.
+
+-------------------------------------------------------------------
+Mon Jan  7 15:00:04 CET 2002 - tiwai@suse.de
+
+- updated to ver.0.1.11.
+  key auto-repeat hack is enabled.
+
+-------------------------------------------------------------------
+Tue Jul 24 12:50:12 CEST 2001 - tiwai@suse.de
+
+- updated to ver.0.1.10a.
+  ALSA 0.9.x API is supported.
+
+-------------------------------------------------------------------
+Fri Jul 13 11:22:12 CEST 2001 - grimmer@suse.de
+
+- Fixed file list (using wildcards for man pages)
+
+-------------------------------------------------------------------
+Wed Nov 29 17:26:48 CET 2000 - ro@suse.de
+
+- changed neededforbuild <tcld> to <tcl-devel>
+
+-------------------------------------------------------------------
+Tue Nov 28 19:44:28 CET 2000 - tiwai@suse.de
+
+- Fixed title bar on alsa device mode.
+- Added a hack to avoid kernel oops on alsa device mode.
+
+-------------------------------------------------------------------
+Mon Nov 20 19:11:29 CET 2000 - tiwai@suse.de
+
+- Updated to ver.0.1.9.
+- Added --octave and --name options.
+
+-------------------------------------------------------------------
+Fri Nov 17 16:52:42 CET 2000 - tiwai@suse.de
+
+- Fixed window title.
+
+-------------------------------------------------------------------
+Thu Nov  2 16:03:29 CET 2000 - tiwai@suse.de
+
+- Fixed typo.
+
+-------------------------------------------------------------------
+Thu Nov  2 13:39:45 CET 2000 - tiwai@suse.de
+
+- Fixed spec file for long package-name support.
+
+-------------------------------------------------------------------
+Fri Oct 13 14:52:23 CEST 2000 - tiwai@suse.de
+
+- Updated to 0.1.8
+
+-------------------------------------------------------------------
+Tue Sep 26 16:33:46 CEST 2000 - tiwai@suse.de
+
+- Changed to bzip2
+
+-------------------------------------------------------------------
+Tue Jul 11 18:12:31 CEST 2000 - tiwai@suse.de
+
+- First version: 0.1.7c
+

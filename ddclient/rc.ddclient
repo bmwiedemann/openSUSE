@@ -1,0 +1,134 @@
+#!/bin/sh
+# Copyright (c) 2005-2006 SUSE Linux AG, Nuernberg, Germany.
+# All rights reserved.
+#
+# Author: Klaus Singvogel.
+# Please send feedback to http://www.suse.de/feedback
+#
+# ddclient      This shell script takes care of starting and stopping
+#               ddclient.
+#
+#
+### BEGIN INIT INFO
+# Provides:          ddclient
+# Required-Start:    $syslog $local_fs $network
+# Should-Start:      $time ypbind sendmail $remote_fs rp-pppoe
+# Required-Stop:     $syslog $local_fs
+# Should-Stop:       $time ypbind sendmail $remote_fs rp-pppoe
+# Default-Start:     3 5
+# Default-Stop:      0 1 2 6
+# Short-Description: ddclient a daemon to update dynamic DNS entries
+# Description:       ddclient is a Perl client used to update dynamic DNS
+#                    entries for accounts on many dynamic DNS services and
+#                    can be used on many types of firewalls
+### END INIT INFO
+# 
+
+
+DDCLIENT_BIN=/usr/sbin/ddclient
+DDCLIENT_CONFIG=/etc/ddclient.conf
+DDCLIENT_SYSCONFIG=/etc/sysconfig/ddclient
+
+[ -x $DDCLIENT_BIN ] || exit 5
+[ -s $DDCLIENT_CONFIG ] || exit 6
+[ -s $DDCLIENT_SYSCONFIG ] && . $DDCLIENT_SYSCONFIG
+
+# some defaults
+dd_intervall=${DDCLIENT_INTERVALL:-300}
+
+# if no "use=" is set in ddclient.conf try 'ppp0' as a default
+if [ `/bin/cat $DDCLIENT_CONFIG | grep -e "^use=" >/dev/null; echo $?` -eq 0 ]; then
+  dd_use=
+else
+  dd_use="-use=if -if ppp0"
+fi
+# extract pid= from config, strip trailing comments and trailing whitespace...
+pid_file=`sed -n '/^pid=/{s@#.*$@@;s@[[:space:]]*$@@;s@^pid=@@;p}' /etc/ddclient.conf`
+# default is /var/run/ddclient.pid
+[ -z "$pid_file" ] && pid_file=/var/run/ddclient.pid
+
+# Shell functions sourced from /etc/rc.status:
+#      rc_check         check and set local and overall rc status
+#      rc_status        check and set local and overall rc status
+#      rc_status -v     ditto but be verbose in local rc status
+#      rc_status -v -r  ditto and clear the local rc status
+#      rc_failed        set local and overall rc status to failed
+#      rc_failed <num>  set local and overall rc status to <num><num>
+#      rc_reset         clear local rc status (overall remains)
+#      rc_exit          exit appropriate to overall rc status
+. /etc/rc.status
+
+# First reset status of this service
+rc_reset
+
+# Return values acc. to LSB for all commands but status:
+# 0 - success
+# 1 - generic or unspecified error
+# 2 - invalid or excess argument(s)
+# 3 - unimplemented feature (e.g. "reload")
+# 4 - insufficient privilege
+# 5 - program is not installed
+# 6 - program is not configured
+# 7 - program is not running
+# 
+# Note that starting an already running service, stopping
+# or restarting a not-running service as well as the restart
+# with force-reload (in case signalling is not supported) are
+# considered a success.
+
+case "$1" in
+  start)
+	echo -n "Starting ddclient daemon :"
+	# startproc does check the name of the binary, and this is "perl" in this case,
+	# so better start it this way or systemd will not know it is running
+	/sbin/startproc -p $pid_file /usr/bin/perl "$DDCLIENT_BIN" -daemon $dd_intervall "$dd_use" $DDCLIENT_OPTIONS -pid $pid_file
+
+	# remember status and be verbose
+	rc_status -v
+	;;
+  stop)
+	echo -n "Shutting down ddclient daemon :"
+	/sbin/killproc -p $pid_file -TERM /usr/bin/perl
+
+	# remember status and be verbose
+	rc_status -v
+	;;
+  try-restart)
+	$0 status >/dev/null &&  $0 restart
+
+	# Remember status and be quiet
+	rc_status
+	;;
+  restart)
+	$0 stop
+	$0 start
+
+	# Remember status and be quiet
+	rc_status
+	;;
+  force-reload)
+#	echo -n "Reload service ddclient"
+	rc_failed 3
+
+	# remember status and be verbose
+	rc_status -v
+	;;
+  reload)
+	rc_failed 3
+
+	# remember status and be verbose
+	rc_status -v
+	;;
+  status)
+	echo -n "Checking for service ddclient :"
+	/sbin/checkproc -p $pid_file /usr/bin/perl
+
+	# remember status and be verbose
+	rc_status -v
+	;;
+  *)
+	echo "Usage: ddclient {start|stop|try-restart|restart|status}"
+	exit 1
+esac
+
+rc_exit

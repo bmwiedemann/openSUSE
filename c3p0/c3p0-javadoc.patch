@@ -1,0 +1,11 @@
+--- c3p0-0.9.5.2.src/build.xml	2017-09-18 08:13:57.431789022 +0200
++++ c3p0-0.9.5.2.src/build.xml	2017-09-18 08:14:32.571789622 +0200
+@@ -597,7 +597,7 @@
+   <target name="javadoc" depends="init">
+     <javadoc packagenames="com.mchange.v2.c3p0"
+              destdir="${build.apidocs.dir}" 
+-             classpathref="build-classpath" 
++             classpathref="test-classpath" 
+              windowtitle="${c3p0.name} API Documentation"
+ 	     >
+       <fileset dir="${java.src.dir}" />

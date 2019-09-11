@@ -1,0 +1,144 @@
+-------------------------------------------------------------------
+Wed Dec 13 04:57:58 UTC 2017 - i@marguerite.su
+
+- own %{_libdir}/fcitx/qt
+
+-------------------------------------------------------------------
+Thu Sep 28 03:21:19 UTC 2017 - hillwood@opensuse.org
+
+- Update to 0.5.3
+  * Update translation.
+  * Use libpinyin 2.1.0
+
+-------------------------------------------------------------------
+Wed Aug 23 01:35:58 UTC 2017 - hillwood@opensuse.org
+
+- Update to 0.5.1
+  * Fix a typo: continous -> continuous
+  * [trans] Update Translation
+  * QWidget is under QtWidgets in Qt5 
+
+-------------------------------------------------------------------
+Sat Feb 11 23:09:41 UTC 2017 - i@marguerite.su
+
+- update version 0.5.0
+  * port dictmanager to qt5
+- add dictmanager-qt5.4.patch
+  * downgrade qt5 requirement to 5.4 since qtwebengine is available
+    at 5.4
+- add fcitx-libpinyin-linking.patch
+  * linking against fcitx
+
+-------------------------------------------------------------------
+Tue Jan 31 11:23:31 UTC 2017 - i@marguerite.su
+
+- update version 0.4.1
+  * add libpinyin 1.7.0 support
+  * fixed issue#21
+
+-------------------------------------------------------------------
+Fri Aug 12 09:14:17 UTC 2016 - hillwood@opensuse.org
+
+- Update to 0.3.91
+  * update for libpinyin 1.5.91
+  * [libpinyin] use only invalid pinyin in cand word string
+  * [libpinyin] let's filter out ascii character for libpinyin/libpinyin#62 
+  * fixes https://github.com/fcitx/fcitx-libpinyin/issues/18
+
+-------------------------------------------------------------------
+Thu Dec 24 14:50:44 UTC 2015 - i@marguerite.su
+
+- update version 0.3.3
+  * fix sogou download wrong file name encoding
+  * update libpinyin requirement to 1.2.91
+
+-------------------------------------------------------------------
+Tue Aug 25 16:06:07 UTC 2015 - i@marguerite.su
+
+- update version 0.3.2
+  * bind_textdomain_codeset to utf8
+  * Close Issue#9 Disable all dictionary by default
+  * add missing libintl libraries
+  * no matter libpinyin tools found or not,we can build it
+  * compatible with new libpinyin
+  * add phrase to actual user dictionary
+  * fix sogou download wrong file name encoding
+
+-------------------------------------------------------------------
+Mon Feb 17 10:40:47 UTC 2014 - fcrozat@suse.com
+
+- Add COPYING to %doc
+
+-------------------------------------------------------------------
+Tue Jul 16 19:39:58 UTC 2013 - i@marguerite.su
+
+- update version 0.3.1
+  * add new icon
+  * fix import if import directory doesn't exist
+  * a possible fix for Issue 699
+
+-------------------------------------------------------------------
+Mon Jul  1 12:17:46 UTC 2013 - i@marguerite.su
+
+- update version 0.3.0
+  * Support typing mixed Chinese/English when selection is done in half way.
+  * Add new dictionary manager
+  * Translation Update 
+
+-------------------------------------------------------------------
+Wed Jun 26 15:49:21 UTC 2013 - i@marguerite.su
+
+- update version 0.2.92
+  * compatible with libpinyin api change 0.8.93->0.9.0
+  * fix shuangpinyin might cause crash when using cloudpinyin
+  * complete dictionary management 
+
+-------------------------------------------------------------------
+Thu Oct 11 14:55:05 UTC 2012 - i@marguerite.su
+
+- update version 0.2.1
+  * fix Traditional Chinese data file.
+  * compatible with libpinyin 0.7.91
+
+-------------------------------------------------------------------
+Sun Sep 16 15:48:19 UTC 2012 - i@marguerite.su
+
+- use standard source.
+
+-------------------------------------------------------------------
+Thu Aug  2 20:39:47 UTC 2012 - i@marguerite.su
+
+- update version 0.2.0
+  * fix builds with libpinyin 0.7.x
+
+-------------------------------------------------------------------
+Mon Jun 25 11:17:18 UTC 2012 - i@marguerite.su
+
+- fix fedora builds.
+
+-------------------------------------------------------------------
+Mon May 28 23:16:56 UTC 2012 - i@marguerite.su
+
+- bring it into DVD.
+
+-------------------------------------------------------------------
+Fri Mar 09 14:45:52 UTC+8 2012 - hillwood@linuxfan.org
+
+- update to 0.1.1
+  * Portable
+  * Can use traditional chinese data for pinyin and simplified 
+    chinese data for zhuyin
+  * Use tone for zhuyin by default
+  * When using Zhuyin, Enter for first candidate, Shift+Enter 
+    for commit English Character
+
+-------------------------------------------------------------------
+Wed Feb 29 20:45:53 UTC 2012 - i@marguerite.su
+
+- set _service disabled. update source from git.
+
+-------------------------------------------------------------------
+Sat Jan 28 19:22:20 UTC 2012 - i@marguerite.su
+
+- initial package 0.1 from git
+

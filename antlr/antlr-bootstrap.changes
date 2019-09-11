@@ -1,0 +1,113 @@
+-------------------------------------------------------------------
+Thu May  9 12:54:52 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop unused BuildRequires: zip+unzip
+
+-------------------------------------------------------------------
+Fri Feb  1 11:19:37 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Speed-up build by compiling all *.java files in one javac
+  invocation
+
+-------------------------------------------------------------------
+Tue May 15 05:55:58 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+
+-------------------------------------------------------------------
+Thu Dec  7 11:38:17 UTC 2017 - dimstar@opensuse.org
+
+- Escape the usage of %{VERSION} when calling out to rpm.
+  RPM 4.14 has %{VERSION} defined as 'the main packages version'.
+
+-------------------------------------------------------------------
+Mon Oct  9 09:56:54 UTC 2017 - fstrba@suse.com
+
+- Remove requirement of gcc-java all together and build with
+  any java version that exists and is able to use source and target
+  1.6
+
+-------------------------------------------------------------------
+Wed Sep 20 17:39:46 UTC 2017 - fstrba@suse.com
+
+- Remove requirements of ecj-bootstrap and fastjar
+  * use the gcj.jar that comes with gccN-java
+  * use gjar-N instead of fastjar
+
+-------------------------------------------------------------------
+Fri Jul  4 11:17:30 UTC 2014 - tchvatal@suse.com
+
+- Cleanup a bit with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jul 17 13:14:27 UTC 2013 - schwab@suse.de
+
+- Fix quoting of $
+
+-------------------------------------------------------------------
+Tue Aug 31 09:09:28 UTC 2010 - mvyskocil@suse.cz
+
+- Do not install antlr.jar to avoid conflicts with a regular
+  antlr-java packages. Packages using antlr-bootstrap needs to have
+  antlr-bootstrap in their CLASSPATH
+
+-------------------------------------------------------------------
+Mon Aug 23 08:18:40 UTC 2010 - mvyskocil@suse.cz
+
+- do not Provide antlr 
+
+-------------------------------------------------------------------
+Mon Mar  3 11:02:14 CET 2008 - mvyskocil@suse.cz
+
+- updated to 2.7.7
+
+-------------------------------------------------------------------
+Wed Jan 30 08:09:43 CET 2008 - adrian@suse.de
+
+- add Provides: antlr on sugggestion of dbornkessel
+
+-------------------------------------------------------------------
+Fri May  4 09:12:00 CEST 2007 - dbornkessel@suse.de
+
+- added unzip to BuildRequires 
+
+-------------------------------------------------------------------
+Wed Nov 15 14:33:57 CET 2006 - dbornkessel@suse.de
+
+- delete "Provides: antlr" ... packages that need the bootstrap package should have a hard require on it 
+
+-------------------------------------------------------------------
+Thu Oct 12 20:28:43 CEST 2006 - ro@suse.de
+
+- change buildreq to ">=" for ecj-bootstrap 
+
+-------------------------------------------------------------------
+Sat Oct  7 11:55:37 CEST 2006 - dbornkessel@suse.de
+
+- added check that checks whether deleted files ShowString.java and StreamConverter.java are really not in place
+ 
+
+-------------------------------------------------------------------
+Thu Oct  5 11:21:47 CEST 2006 - dbornkessel@suse.de
+
+- deleted 
+  antlr-2.7.6/examples/java/unicode.IDENTs/ShowString.java
+  antlr-2.7.6/examples/java/unicode.IDENTs/StreamConverter.java
+  from tar ball due to licensing issues (Bug #207621)
+
+-------------------------------------------------------------------
+Thu Sep 28 01:00:26 CEST 2006 - ro@suse.de
+
+- added gcc-gij to BuildRequires 
+
+-------------------------------------------------------------------
+Wed Sep 20 10:34:54 CEST 2006 - dbornkessel@suse.de
+
+- renamed antlr-bootstrap.jar to antlr.jar 
+
+-------------------------------------------------------------------
+Mon Sep 18 11:33:12 CEST 2006 - dbornkessel@suse.de
+
+- created bootstrapping package 
+

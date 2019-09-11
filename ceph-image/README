@@ -1,0 +1,5 @@
+# HOWTO generate kiwi file for the different platfoms
+
+* xsltproc ceph-image.xsl tumbleweed.xml > ceph-image.kiwi
+* xsltproc ceph-image.xsl leap15_1.xml > ceph-image.kiwi
+* xsltproc ceph-image.xsl ses6.xml > ceph-image.kiwi

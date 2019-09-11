@@ -1,0 +1,226 @@
+-------------------------------------------------------------------
+Tue Apr 16 07:02:02 UTC 2019 - josef.moellers@suse.com
+
+- Added support for pkg-config, keeping support for pg_config
+  [libpqxx-add-pkg-config-support.patch]
+
+-------------------------------------------------------------------
+Tue Apr 16 07:01:40 UTC 2019 - josef.moellers@suse.com
+
+- Added support for python3.
+  [libpqxx-add-python3-support.patch]
+
+-------------------------------------------------------------------
+Fri Dec  1 14:08:10 UTC 2017 - josef.moellers@suse.com
+
+- Changed build reuirements for python to "%{pythons}"
+  as suggested by "openSUSE:Packaging Python Singlespec"
+
+-------------------------------------------------------------------
+Sun Apr 23 08:43:47 UTC 2017 - jengelh@inai.de
+
+- Select better RPM groups
+
+-------------------------------------------------------------------
+Mon Apr 17 18:06:38 UTC 2017 - adam@mizerski.pl
+
+- update to 5.0.1
+  * See NEWS or https://github.com/jtv/libpqxx/blob/5.0.1/NEWS
+    for details
+- rebased libpqxx-sed-4.3.patch
+- split doc subpackage
+
+-------------------------------------------------------------------
+Tue Mar 14 15:42:31 UTC 2017 - dimstar@opensuse.org
+
+- Add libpqxx-sed-4.3.patch: Fix build with sed 4.3, which is
+  stricter regarding [[:space:]] vs [:space:]. configure.ac needs
+  this to be represented as [[[:space:]]], as autoFOO itself
+  swallows one pair of [].
+- Add libtool BuildRequires and call to autoreconf, as above patch
+  touches the build system.
+
+-------------------------------------------------------------------
+Mon Apr 25 15:15:14 UTC 2016 - mrueckert@suse.de
+
+- add back buildroot to fix build on sle 11
+
+-------------------------------------------------------------------
+Tue Apr  9 23:37:54 UTC 2013 - adam@mizerski.pl
+
+- update to 4.0.1
+  * See NEWS or http://pqxx.org/development/libpqxx/browser/tags/4.0.1/NEWS
+    for details.
+- spec cleanup
+  * Provide library in subpackage, which name follows
+    shared library naming policy.
+- removed libpqxx-rpmlintrc
+  * it contained only addFilter("shlib-policy-name-error")
+- removed patches libpqxx-gcc46.patch libpqxx-gcc47.patch -
+  merged upstream.
+
+-------------------------------------------------------------------
+Mon Mar 19 11:59:02 UTC 2012 - dimstar@opensuse.org
+
+- Add libpqxx-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Sat Dec  3 09:47:09 UTC 2011 - aj@suse.de
+
+- Add require on pkg-config to provide pkg-config provides.
+- Don't package libpqxx-3.1.so twice.
+
+-------------------------------------------------------------------
+Wed May 25 10:10:37 UTC 2011 - max@novell.com
+
+- Rename libpqxx-3.1-gcc46.patch to libpqxx-gcc46.patch.
+
+-------------------------------------------------------------------
+Tue May 24 15:18:43 UTC 2011 - idonmez@novell.com
+
+- Add libpqxx-3.1-gcc46.patch, add missing cstddef include to
+  fix compilation with gcc 4.6, upstream revision 1722 
+
+-------------------------------------------------------------------
+Thu Apr 14 19:23:12 UTC 2011 - mrueckert@suse.de
+
+- only use fdupes on 11.1 or newer
+
+-------------------------------------------------------------------
+Fri Feb 19 19:39:54 CET 2010 - max@suse.de
+
+- New version: 3.1:
+- Shared libraries are now versioned by ABI: 3.1 instead of 3.1.0.
+- Threading behaviour is now documented, and can be queried.
+- Version information available at compile time.
+- Supports parameterized statements.
+- Result tuples now support slicing.
+- Configure with --with-tr1=boost to use BOOST shared_ptr.
+- String conversion now has its own header file.
+- Supports read-only transactions.
+- Uses shared_ptr if available.
+- binarystring::str() is no longer cached; no longer returns
+  reference.
+- Lets you check whether a prepared statement has been defined.
+- "Varargs" prepared statements.
+- Unnamed prepared statements now supported.
+- Results have iterator as well as const_iterator.
+- Rewrite of robusttransaction logic; may actually do its job now.
+- Connections support async query cancel from signal handler or
+  thread.
+- More documentation for performance features.
+
+-------------------------------------------------------------------
+Mon Aug  3 12:08:13 CEST 2009 - max@suse.de
+
+- New version: 3.0.1:
+- All items marked as deprecated in the 2.x API have been removed.
+- Fixed various problems in Visual C++ makefile for test suite.
+- Fixed some problems with RPM packaging.
+- Completely replaced cursor classes
+- More helpful error messages on failed connections
+- More detailed hierarchy of constraint-violation exception classes
+- trigger is now called notify_listener, trigger header is now
+  notify-listen
+- New mixin base class pqxx_exception distinguishes libpqxx exception
+  types
+- Quoting is back! transaction_base::quote() &
+  connection_base::quote()
+- Several build & documentation problems with Visual C++ fixed
+- Compile fixes for gcc 4.2, 4.3
+- Uses strlcpy() where available, instead of strncpy()
+- Keeps better track of applicable text encodings
+- Fixed bug with prepared statement parameters in separate C++
+  statements
+- robusttransaction now works for multiple users
+- Pipeline lets you cancel ongoing queries, e.g. because they run for
+  too long
+- Fixed broken escaping of binary values in tablewriter
+- Floating-point types now represented with full precision
+- Proper unit tests for new functionality
+- New traits-based system for adding data types
+- Floating-point infinities now supported
+- Flushing/completing a pipeline now frees up the transaction for
+  other use
+- Completely reworked test suite, builds and runs much faster
+- tablewriter supports writing of raw lines
+
+-------------------------------------------------------------------
+Fri Mar 13 20:57:35 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries 
+
+-------------------------------------------------------------------
+Fri Jun 27 17:52:23 CEST 2008 - schwab@suse.de
+
+- Use autoreconf.
+
+-------------------------------------------------------------------
+Mon Jan 14 19:20:29 CET 2008 - dmueller@suse.de
+
+- fix last change
+
+-------------------------------------------------------------------
+Mon Jan 14 09:54:55 CET 2008 - aj@suse.de
+
+- Fix build with g++.
+
+-------------------------------------------------------------------
+Mon Jul 30 15:14:03 CEST 2007 - max@suse.de
+
+- New version: 2.6.9 (#280593). Changes include:
+  * Removed old 1.x API
+  * Greatly reduced memory usage while escaping strings
+  * Useful error messages when preparing statements
+  * New cursor class, absolute_cursor
+  * New, encoding-safe string-escaping functions
+  * Radical rework of prepared statements;
+    INCOMPATIBLE INTERFACE CHANGE!
+  * Support for subtransactions
+  * Detect more connection capabilities
+  * Greatly improved cursor support
+  * ... and many many mire bug fixes and improvements.
+- Tell rpmlint to shut up.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:40 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan  9 16:48:42 CET 2006 - max@suse.de
+
+- New version 2.5.5
+
+-------------------------------------------------------------------
+Thu Nov 18 15:48:05 CET 2004 - ro@suse.de
+
+- use kerberos-devel-packages 
+
+-------------------------------------------------------------------
+Thu Aug 19 14:58:32 CEST 2004 - max@suse.de
+
+- New version: 2.2.7
+
+-------------------------------------------------------------------
+Tue Nov 18 10:50:07 CET 2003 - max@suse.de
+
+- New version: 2.1.1
+
+- Split off a libpqxx-devel package
+
+- Added heimdal-lib to neededforbuild
+
+- Enabled building as non-root user
+
+-------------------------------------------------------------------
+Mon Jan 27 16:22:18 CET 2003 - max@suse.de
+
+- Quote $RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Mon Jan 27 13:27:03 CET 2003 - max@suse.de
+
+- New Package libpqxx: A C++ client library for PostgreSQL
+
+- Version 1.3.3

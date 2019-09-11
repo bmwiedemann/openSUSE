@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Thu Mar  8 13:44:20 UTC 2018 - mpluskal@suse.com
+
+- Update spec file with spec-cleaner
+- Install license
+
+-------------------------------------------------------------------
+Sun Jan 29 12:41:56 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.1.0.1
+  * No upstream changelog provided
+- Drop no longer needed p8-platform-install_noarch.patch
+
+-------------------------------------------------------------------
+Mon Jan 25 12:34:34 UTC 2016 - olaf@aepfle.de
+
+- p8-platform-devel does not obsolete libplatform-devel because
+  there are no file or provides conflicts
+
+-------------------------------------------------------------------
+Sat Jan 23 19:02:55 UTC 2016 - mpluskal@suse.com
+
+- Rename package
+- Rename patch install_noarch.patch to 
+  p8-platform-install_noarch.patch
+
+-------------------------------------------------------------------
+Fri Jan 22 12:40:19 UTC 2016 - sagiben@gmail.com
+
+- install_noarch.patch patch was added :
+  * Fix path to libdir in .pc file instead of using sed
+  * Fix .pc and .cmake files install location
+- p8-platform 2.0.1
+  * Avoid that cmake removes variables from pkg-config file
+- p8-platform 2.0.0-1
+  * renamed to p8-platform
+- platform 2.0.0-1
+  * removed: fstrcmp and StringUtils::CompareFuzzy() + 
+    StringUtils::FindBestMatch() because of an incompatible license
+- platform 1.0.10-1
+  * fixed: posix socket return value for connect
+
+-------------------------------------------------------------------
+Sat Jan  2 16:47:41 UTC 2016 - mpluskal@suse.com
+
+- Fix path to libdir in .pc file (boo#960475)
+
+-------------------------------------------------------------------
+Sat Jul 18 10:39:35 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.0.10
+  * fixed: posix socket return value for connect. 
+
+-------------------------------------------------------------------
+Tue Jun  9 19:11:14 UTC 2015 - mpluskal@suse.com
+
+- Fix previous changelog entry
+- Use url for source
+- Use cmake macro
+
+-------------------------------------------------------------------
+Thu May 14 03:37:42 UTC 2015 - sagiben@gmail.com
+
+- platform 1.0.9-1
+  * fixed: add missing stdio.h include in windows/os-socket.h
+- platform 1.0.8-1
+  * added: cdevsocket.h character device socket
+  * fixed: guards for #defines on OS X and iOS for values already 
+    defined in
+    CFPlugInCOM.h
+- platform 1.0.7-1~trusty
+  * fixed: include on OS X
+- platform 1.0.6-1
+  * fixed: add include path and link the threads lib
+  * (re-)added: public Reset() function in CEvent
+  * sync UseMultiArch.cmake
+- platform 1.0.5-1
+  * fixed: missing #include <string> in socket.h
+- platform 1.0.4-1
+  * proper platform.pc.in fix
+- platform 1.0.3-1
+  * platform.pc.in fix
+- platform 1.0.2-1
+  * Build fixes
+- platform 1.0.0-1
+  * Initial release

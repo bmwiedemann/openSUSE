@@ -1,0 +1,148 @@
+-------------------------------------------------------------------
+Mon Jul 29 17:21:09 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Don't allow python-tornado >= 5
+
+-------------------------------------------------------------------
+Wed Jul  3 09:18:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Sort out a bit to pass the tests again
+
+-------------------------------------------------------------------
+Tue Apr 23 14:52:51 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.7.0 (bsc#1139695)
+  * Implemented :autoquickref: option that use available 
+    informations to build a quickref.
+  * Remove references to the sphinx.util.compat module which was 
+    deprecated in Sphinx 1.6 and removed in 1.7.
+  * Made :mod:`sphinxcontrib.autohttp.tornado` compatible with 
+    Tornado 4.5 and newer.
+  * Minimum compatible version of Sphinx became changed to 1.5.
+  * Use HTTPS for :rfc: generated links.
+- Dropped obsolete patch newer-sphinx.patch
+- Take upstream release tarball because of tests
+
+-------------------------------------------------------------------
+Mon Dec 10 12:19:24 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Fix %pycache_only in %files
+
+-------------------------------------------------------------------
+Fri Dec  7 21:05:21 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove wrong BR on python-sphinxcontrib
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:42 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+--------------------------------------------------------------------
+Mon Sep 18 22:29:06 UTC 2017 - toddrme2178@gmail.com
+
+- Use new python-sphinxcontrib package to provide namespace
+  directory.
+
+------------------------------------------------------------------
+Mon Sep 18 20:36:57 UTC 2017 - toddrme2178@gmail.com
+
+- Specify files to guarantee namespace package doesn't conflict
+  with python(2|3)-Sphinx
+
+-------------------------------------------------------------------
+Wed Jul  5 07:44:42 UTC 2017 - tbechtold@suse.com
+
+- add newer-sphinx.patch. Needed to make httpdomain working with
+  Sphinx >= 1.6 .
+
+-------------------------------------------------------------------
+Wed Jul  5 07:32:16 UTC 2017 - tbechtold@suse.com
+
+- convert to singlespec
+
+-------------------------------------------------------------------
+Mon Nov 14 14:20:01 UTC 2016 - dmueller@suse.com
+
+- update to 1.5.0
+
+-------------------------------------------------------------------
+Wed Jul 27 10:55:41 UTC 2016 - buschmann23@opensuse.org
+
+- update to version 1.4.0
+  * Added 429 Too Many Requests as a valid http:statuscode.
+    [pull request #81 by DDBReloaded]
+  * Became to not resolve references if they can’t be resolved.
+    [pull request #87 by Ken Robbins]
+  * Became to preserve endpoint ordering when :endpoints: option is
+    given. [pull request #88 by Dan Callaghan]
+  * Added status codes for WebDAV. [pull request #92 by Ewen
+    Cheslack-Postava]
+  * Added CORS headers. [pull request #96 by Tomi Pieviläinen]
+  * Now sphinxcontrib.autohttp.flask supports multiple paths for
+    endpoints using same HTTP method. [pull request #97 by Christian
+    Felder]
+
+-------------------------------------------------------------------
+Tue Sep 16 06:36:36 UTC 2014 - tbechtold@suse.com
+
+- update to version 1.3.0:
+  * jsonparameter/jsonparam/json became deprecated and split into
+    reqjsonobj/reqjson/<jsonobj/<json and reqjsonarr/<jsonarr.
+    [issue #55, pull request #72 by Alexander Shorin]
+  * Support synopsis (short description in HTTP index), deprecation
+    and noindex options for resources.
+    [issue #55, pull request #72 by Alexander Shorin]
+  * Stabilize order of index items.
+    [issue #55, pull request #72 by Alexander Shorin]
+  * Added :rst:directive:`http:any` directive and
+    http:any role for ANY method.
+    [issue #55, pull request #72 by Alexander Shorin]
+  * Added :rst:directive:`http:copy` directive and http:copy role
+    for COPY method.
+    [issue #55, pull request #72 by Alexander Shorin]
+  * Added http:header role that also creates reference to the
+    related specification.
+    [issue #55, pull request #72 by Alexander Shorin]
+  * http:statuscode role became to provide references to
+    specification sections.
+    [issue #55, pull request #72 by Alexander Shorin]
+  * Fixed Python 3 incompatibility of autohttp.tornado.
+    [pull request #61 by Dave Shawley]
+
+-------------------------------------------------------------------
+Tue Jun 24 08:18:04 UTC 2014 - dmueller@suse.com
+
+- update to 1.2.1:
+  * Six support
+
+-------------------------------------------------------------------
+Mon Oct 21 13:32:04 UTC 2013 - dmueller@suse.com
+
+- update to 1.2.0:
+  * Add tornado support
+
+-------------------------------------------------------------------
+Thu Aug  8 20:26:27 UTC 2013 - dmueller@suse.com
+
+- update to 1.1.9:
+  * Add sphinx.ext.autodoc-style HTTP API reference builder (from Bottle)
+
+-------------------------------------------------------------------
+Mon May 13 09:01:41 UTC 2013 - dmueller@suse.com
+
+- update to 1.1.8:
+ * Added better support for docstrings in flask.views.MethodView
+ * Added jsonparameter along side form and query parameters.
+ * Fixed issue with undefined Value and umethod variables.
+ * Now http Pygments lexer can Handle continuous header lines well.
+ * Added undoc-blueprints flag option to autoflask directive.
+ * Fixed issue #29, a bug that autoflask directive raised
+   UnicodeDecodeError when it contains non-ASCII characters.
+ * Added endpoints flag option to autoflask directive.
+
+-------------------------------------------------------------------
+Thu Nov 15 15:20:35 UTC 2012 - saschpe@suse.de
+
+- Initial version
+

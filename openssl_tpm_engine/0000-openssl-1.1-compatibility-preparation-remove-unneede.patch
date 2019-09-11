@@ -1,0 +1,33 @@
+From 592ecaa916bec4764c74fd378803252f13d0ec61 Mon Sep 17 00:00:00 2001
+From: Matthias Gerstner <mgerstner@suse.de>
+Date: Thu, 30 Nov 2017 12:58:39 +0100
+Subject: [PATCH] openssl 1.1 compatibility preparation: remove unneeded
+ setting of rsa->e
+
+The fixed exponent is later set in fill_out_rsa_object. This piece of code is
+thus useless.
+---
+ e_tpm.c | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/e_tpm.c b/e_tpm.c
+index f3e8bcf..924a4e0 100644
+--- a/e_tpm.c
++++ b/e_tpm.c
+@@ -1137,13 +1137,6 @@ static int tpm_rsa_keygen(RSA *rsa, int bits, BIGNUM *e, BN_GENCB *cb)
+ 		return 0;
+ 	}
+ 
+-	/* set e in the RSA object as done in the built-in openssl function */
+-	if (!rsa->e && ((rsa->e = BN_new()) == NULL)) {
+-		TSSerr(TPM_F_TPM_RSA_KEYGEN, ERR_R_MALLOC_FAILURE);
+-		return 0;
+-	}
+-	BN_copy(rsa->e, e);
+-
+ 	switch (bits) {
+ 		case 512:
+ 			initFlags |= TSS_KEY_SIZE_512;
+-- 
+2.13.6
+

@@ -1,0 +1,46 @@
+Author: Adam Majer <adam.majer@suse.de>
+Summary: SUSE OpenSSL version scheme does not follow upstream.
+ Relax, breathe, apply.
+
+Index: freeradius-server-3.0.12/src/main/version.c
+===================================================================
+--- freeradius-server-3.0.12.orig/src/main/version.c
++++ freeradius-server-3.0.12/src/main/version.c
+@@ -50,36 +50,7 @@ static long ssl_built = OPENSSL_VERSION_
+  */
+ int ssl_check_consistency(void)
+ {
+-	long ssl_linked;
+-
+-	ssl_linked = SSLeay();
+-
+-	/*
+-	 *	Status mismatch always triggers error.
+-	 */
+-	if ((ssl_linked & 0x0000000f) != (ssl_built & 0x0000000f)) {
+-	mismatch:
+-		ERROR("libssl version mismatch.  built: %lx linked: %lx",
+-		      (unsigned long) ssl_built,
+-		      (unsigned long) ssl_linked);
+-
+-		return -1;
+-	}
+-
+-	/*
+-	 *	Use the OpenSSH approach and relax fix checks after version
+-	 *	1.0.0 and only allow moving backwards within a patch
+-	 *	series.
+-	 */
+-	if (ssl_built & 0xf0000000) {
+-		if ((ssl_built & 0xfffff000) != (ssl_linked & 0xfffff000) ||
+-		    (ssl_built & 0x00000ff0) > (ssl_linked & 0x00000ff0)) goto mismatch;
+-	/*
+-	 *	Before 1.0.0 we require the same major minor and fix version
+-	 *	and ignore the patch number.
+-	 */
+-	} else if ((ssl_built & 0xfffff000) != (ssl_linked & 0xfffff000)) goto mismatch;
+-
++	// noop, since ABI is compatible for SUSE OpenSSL
+ 	return 0;
+ }
+ 

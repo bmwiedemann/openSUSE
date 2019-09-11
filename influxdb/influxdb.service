@@ -1,0 +1,16 @@
+[Unit]
+Description=InfluxDB database server
+After=network.target
+
+[Service]
+Environment="config=/etc/influxdb/config.toml" "pidfile=/run/influxdb/influxdb.pid"
+LimitNOFILE=100000
+ExecStart=/usr/bin/influxd -config ${config} -pidfile ${pidfile}
+Type=simple
+StandardOutput=journal
+StandardError=journal
+User=influxdb
+Group=influxdb
+
+[Install]
+WantedBy=multi-user.target

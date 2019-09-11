@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Wed Apr 13 20:11:17 UTC 2016 - seroton10@gmail.com
+
+- Security update to v3 (CVE-2016-3992):
+  * Use mktemp-d to avoid race-conditions and security problems.
+  * Drop cronic.patch, which has become redundant.
+
+-------------------------------------------------------------------
+Fri Sep  5 11:07:44 UTC 2014 - seroton10@gmail.com
+
+- Fix /tmp races
+
+-------------------------------------------------------------------
+Wed Sep  3 19:15:54 UTC 2014 - seroton10@gmail.com
+
+- Fixed license string in .spec file
+
+-------------------------------------------------------------------
+Mon Sep  1 15:48:39 UTC 2014 - seroton10@gmail.com
+
+- Updated script from source, it now states the license
+
+-------------------------------------------------------------------
+Mon Sep  1 13:12:00 UTC 2014 - seroton10@gmail.com
+
+- Added source URL
+- Fix license specification
+
+-------------------------------------------------------------------
+Sat Apr  6 23:17:51 UTC 2013 - seroton10@gmail.com
+
+- Initial RPM package
+

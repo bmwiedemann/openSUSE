@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Mon Mar  5 14:02:55 UTC 2018 - sndirsch@suse.com
+
+- Update to version 1.13
+  * This release of xcb-proto brings support for buffer modifiers and
+    multi-planar buffers through DRI3 v1.2 and Present v1.2, support for
+    leasing KMS devices to clients via RandR 1.6, and also allows clients
+    to send each other XInput2 events via support for the GenericEvent
+    extension's SendExtension event.
+- supersedes U_xinput-typedef-for-event_type_base.patch,
+  U_add-support-for-eventstruct.patch, 
+  U_SendExtensionEvent-uses-eventstruct.patch,
+  U_python-whitespace.patch,
+  U_python3-compat.patch
+
+-------------------------------------------------------------------
+Wed Jan 17 13:05:11 UTC 2018 - tchvatal@suse.com
+
+- Tweak the python conditions to pick between py2 and py3 only
+  do not bother with "both at once" scenario
+- Apply patches to make sure we really work with python3:
+  * U_python-whitespace.patch
+  * U_python3-compat.patch
+
+-------------------------------------------------------------------
+Mon Jan  8 13:56:31 UTC 2018 - msrb@suse.com
+
+- Update xinput to the state when it was enabled by default
+  upstream. (bnc#1074249)
+  * U_SendExtensionEvent-uses-eventstruct.patch
+  * U_add-support-for-eventstruct.patch
+  * U_xinput-typedef-for-event_type_base.patch
+
+-------------------------------------------------------------------
+Tue Dec  5 12:37:37 UTC 2017 - msrb@suse.com
+
+- Python2 is gone since suse_version >= 1500.
+
+-------------------------------------------------------------------
+Thu Nov 16 10:09:19 UTC 2017 - dimstar@opensuse.org
+
+- Shrink dep-chain: we only need a python interpreter, not the
+  entire devel suite. Replace python[23]-devel BuildRequires with
+  python[23]-base.
+
+-------------------------------------------------------------------
+Wed Nov  1 15:09:24 UTC 2017 - mpluskal@suse.com
+
+- Build both python2 and python3 versions
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu May 19 09:31:46 UTC 2016 - sndirsch@suse.com
+
+- Update to version 1.12
+  * here is a new version of xcb-proto for you to enjoy. Highlights
+    are lots of improvements especially to the xinput extension,
+    support for RandR 1.5 and an automatic alignment checker.
+
+-------------------------------------------------------------------
+Wed Dec 16 16:22:14 UTC 2015 - fcrozat@suse.com
+
+- Add provides/obsoletes to python-xcb-proto-devel to ease upgrade.
+
+-------------------------------------------------------------------
+Thu Sep 18 11:33:19 UTC 2014 - jengelh@inai.de
+
+- Update description and other metadata
+- Use full %configure for build, and remove CFLAGS (nothing is
+  compiled)
+- Make file list more compact
+
+-------------------------------------------------------------------
+Tue Aug  5 23:04:04 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.11 (7.6_1.11):
+  Minor bug fixes and things that libxcb 1.11 will need.
+
+-------------------------------------------------------------------
+Tue Apr 29 13:50:59 UTC 2014 - sndirsch@suse.com
+
+- added COPYING to %doc
+
+-------------------------------------------------------------------
+Tue Apr 29 12:52:52 UTC 2014 - cfarrell@suse.com
+
+- license update: X11
+  See COPYING
+
+-------------------------------------------------------------------
+Sun Apr 27 16:26:03 UTC 2014 - sndirsch@suse.com
+
+- raise version number to 7.6_1.10 and provide/obsolete
+  xorg-x11-proto-devel in the hope to fix build deps
+
+-------------------------------------------------------------------
+Wed Apr 23 16:41:57 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
+
+- Created package xcb-proto with initial version 1.10
+

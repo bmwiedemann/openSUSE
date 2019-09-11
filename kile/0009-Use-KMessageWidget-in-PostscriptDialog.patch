@@ -1,0 +1,208 @@
+From b12a9475797aad5e44b7902b39a6892101b2b7b1 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Sat, 18 Aug 2018 17:50:57 +0200
+Subject: [PATCH 09/35] Use KMessageWidget in PostscriptDialog
+
+Instead of appending the error about not found pstops/psselect tools
+(even in a not translatable way), use KMessageWidget to show the
+error/warning message.
+---
+ src/dialogs/postscriptdialog.cpp     |  22 +++---
+ src/dialogs/postscriptdialog_base.ui | 100 +++++++++++++++------------
+ 2 files changed, 67 insertions(+), 55 deletions(-)
+
+diff --git a/src/dialogs/postscriptdialog.cpp b/src/dialogs/postscriptdialog.cpp
+index 4ee27f3b..63b5c97b 100644
+--- a/src/dialogs/postscriptdialog.cpp
++++ b/src/dialogs/postscriptdialog.cpp
+@@ -93,17 +93,17 @@ PostscriptDialog::PostscriptDialog(QWidget *parent,
+     bool pstops = !QStandardPaths::findExecutable("pstops").isEmpty();
+     bool psselect = !QStandardPaths::findExecutable("psselect").isEmpty();
+ 
+-    if (!pstops || !psselect) {
+-        QString msg;
+-        if (!pstops) {
+-            msg = "'pstops'";
+-            if (!psselect)
+-                msg += " and ";
+-        }
+-        if (!psselect) {
+-            msg += "'psselect'";
+-        }
+-        m_PostscriptDialog.m_lbInfo->setText(m_PostscriptDialog.m_lbInfo->text() + "\n(Error: " + msg + " not found.)");
++    if (!pstops && !psselect) {
++        m_PostscriptDialog.m_mwErrors->setMessageType(KMessageWidget::Error);
++        m_PostscriptDialog.m_mwErrors->setText(i18n("Neither 'pstops' nor 'psselect' found."));
++    } else if (!pstops) {
++        m_PostscriptDialog.m_mwErrors->setMessageType(KMessageWidget::Warning);
++        m_PostscriptDialog.m_mwErrors->setText(i18n("'pstops' not found."));
++    } else if (!psselect) {
++        m_PostscriptDialog.m_mwErrors->setMessageType(KMessageWidget::Warning);
++        m_PostscriptDialog.m_mwErrors->setText(i18n("'psselect' not found."));
++    } else {
++        m_PostscriptDialog.m_mwErrors->hide();
+     }
+ 
+     m_PostscriptDialog.m_edInfile->lineEdit()->setText(psfilename);
+diff --git a/src/dialogs/postscriptdialog_base.ui b/src/dialogs/postscriptdialog_base.ui
+index 5ec0e024..868e57af 100644
+--- a/src/dialogs/postscriptdialog_base.ui
++++ b/src/dialogs/postscriptdialog_base.ui
+@@ -29,6 +29,13 @@
+       <string>Parameter</string>
+      </property>
+      <layout class="QGridLayout">
++      <item row="4" column="1">
++       <widget class="KComboBox" name="m_cbTask">
++        <property name="whatsThis">
++         <string>Choose one of the 18 operations to convert a postscript file. The last four operations need specific parameters.</string>
++        </property>
++       </widget>
++      </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="m_lbInfo">
+         <property name="text">
+@@ -41,24 +48,14 @@ hyperref package (if needed) with option 'a4paper'.</string>
+         </property>
+        </widget>
+       </item>
+-      <item row="1" column="0">
++      <item row="2" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Input file:</string>
+         </property>
+        </widget>
+       </item>
+-      <item row="1" column="1">
+-       <widget class="KUrlRequester" name="m_edInfile">
+-        <property name="whatsThis">
+-         <string>Input file, which should be converted.</string>
+-        </property>
+-        <property name="filter">
+-         <string>*.ps|PS Files\n*.ps.gz|Zipped PS Files</string>
+-        </property>
+-       </widget>
+-      </item>
+-      <item row="2" column="0">
++      <item row="3" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Output file:</string>
+@@ -66,44 +63,16 @@ hyperref package (if needed) with option 'a4paper'.</string>
+        </widget>
+       </item>
+       <item row="2" column="1">
+-       <widget class="KUrlRequester" name="m_edOutfile">
++       <widget class="KUrlRequester" name="m_edInfile">
+         <property name="whatsThis">
+-         <string>The name of the output file. This entry may also be empty, if you only want to view the result without saving it. In this case the viewer checkbox must be checked.</string>
++         <string>Input file, which should be converted.</string>
+         </property>
+         <property name="filter">
+          <string>*.ps|PS Files\n*.ps.gz|Zipped PS Files</string>
+         </property>
+        </widget>
+       </item>
+-      <item row="3" column="0">
+-       <widget class="QLabel" name="label_4">
+-        <property name="text">
+-         <string>Task:</string>
+-        </property>
+-       </widget>
+-      </item>
+-      <item row="3" column="1">
+-       <widget class="KComboBox" name="m_cbTask">
+-        <property name="whatsThis">
+-         <string>Choose one of the 18 operations to convert a postscript file. The last four operations need specific parameters.</string>
+-        </property>
+-       </widget>
+-      </item>
+-      <item row="4" column="0">
+-       <widget class="QLabel" name="m_lbParameter">
+-        <property name="text">
+-         <string>Parameter:</string>
+-        </property>
+-       </widget>
+-      </item>
+-      <item row="5" column="0">
+-       <widget class="QLabel" name="label_6">
+-        <property name="text">
+-         <string>Viewer:</string>
+-        </property>
+-       </widget>
+-      </item>
+-      <item row="5" column="1">
++      <item row="6" column="1">
+        <widget class="QCheckBox" name="m_cbView">
+         <property name="whatsThis">
+          <string>View the result of the conversion process. okular is always taken as an external viewer.</string>
+@@ -116,7 +85,14 @@ hyperref package (if needed) with option 'a4paper'.</string>
+         </property>
+        </widget>
+       </item>
+-      <item row="4" column="1">
++      <item row="4" column="0">
++       <widget class="QLabel" name="label_4">
++        <property name="text">
++         <string>Task:</string>
++        </property>
++       </widget>
++      </item>
++      <item row="5" column="1">
+        <widget class="QWidget" name="widget" native="true">
+         <layout class="QVBoxLayout">
+          <property name="spacing">
+@@ -154,6 +130,37 @@ hyperref package (if needed) with option 'a4paper'.</string>
+         </layout>
+        </widget>
+       </item>
++      <item row="3" column="1">
++       <widget class="KUrlRequester" name="m_edOutfile">
++        <property name="whatsThis">
++         <string>The name of the output file. This entry may also be empty, if you only want to view the result without saving it. In this case the viewer checkbox must be checked.</string>
++        </property>
++        <property name="filter">
++         <string>*.ps|PS Files\n*.ps.gz|Zipped PS Files</string>
++        </property>
++       </widget>
++      </item>
++      <item row="6" column="0">
++       <widget class="QLabel" name="label_6">
++        <property name="text">
++         <string>Viewer:</string>
++        </property>
++       </widget>
++      </item>
++      <item row="5" column="0">
++       <widget class="QLabel" name="m_lbParameter">
++        <property name="text">
++         <string>Parameter:</string>
++        </property>
++       </widget>
++      </item>
++      <item row="1" column="0" colspan="2">
++       <widget class="KMessageWidget" name="m_mwErrors">
++        <property name="closeButtonVisible">
++         <bool>false</bool>
++        </property>
++       </widget>
++      </item>
+      </layout>
+     </widget>
+    </item>
+@@ -173,6 +180,11 @@ hyperref package (if needed) with option 'a4paper'.</string>
+   </layout>
+  </widget>
+  <customwidgets>
++  <customwidget>
++   <class>KMessageWidget</class>
++   <extends>QFrame</extends>
++   <header>kmessagewidget.h</header>
++  </customwidget>
+   <customwidget>
+    <class>KUrlRequester</class>
+    <extends>QWidget</extends>
+-- 
+2.20.1
+

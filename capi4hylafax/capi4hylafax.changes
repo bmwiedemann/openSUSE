@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Sat Dec 27 18:22:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in setupconffile (faxaddmodem.capi_dia) script
+- update patches:
+  + capi4hylafax-suse.diff
+
+-------------------------------------------------------------------
+Mon Dec  8 23:23:46 UTC 2014 - jengelh@inai.de
+
+- Use source URL, use rpm macros.
+
+-------------------------------------------------------------------
+Mon Nov 17 15:01:00 UTC 2014 - Led <ledest@gmail.com>
+
+- Add capi4hylafax-01.03.00-fix-bashisms.patch to fix bashisms in
+  setupconffile (faxaddmodem.capi_dia) script
+
+-------------------------------------------------------------------
+Sat Oct 26 13:01:49 UTC 2013 - p.drouand@gmail.com
+
+- Remove %insserv_prereq %fillup_prereq PreReq tag
+  package provide neither sysconfig file or sysvinit script
+
+-------------------------------------------------------------------
+Tue Jun 25 08:27:23 UTC 2013 - pgajdos@suse.com
+
+- fix build with gcc 4.8
+  * capi4hylafax-gcc48.diff
+
+-------------------------------------------------------------------
+Wed Dec 21 23:33:23 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Tue Dec 20 20:14:21 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Sat Sep 17 22:38:16 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Mon Sep 27 01:02:16 CEST 2010 - ro@suse.de
+
+- fix grep syntax in configure for new grep(1) 
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Tue Jul 31 14:39:43 CEST 2007 - kkeil@suse.de
+
+- first standalone source
+
+
+

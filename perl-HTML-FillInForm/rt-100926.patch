@@ -1,0 +1,17 @@
+diff -ur a/HTML-FillInForm-2.21/lib/HTML/FillInForm.pm b/HTML-FillInForm-2.21/lib/HTML/FillInForm.pm
+--- a/HTML-FillInForm-2.21/lib/HTML/FillInForm.pm	2014-08-14 17:21:43.000000000 +0200
++++ b/HTML-FillInForm-2.21/lib/HTML/FillInForm.pm	2015-08-27 15:10:07.462905794 +0200
+@@ -424,7 +424,12 @@
+   # traverse the list in reverse order for backwards compatibility
+   # with the previous implementation.
+   for my $o (reverse @{$self->{objects}}) {
+-    my @v = $o->param($param);
++    my @v;
++    if ($o->can('multi_param')) {
++      @v = $o->multi_param($param);
++    } else {
++      @v = $o->param($param);
++    } 
+ 
+     next unless @v;
+ 

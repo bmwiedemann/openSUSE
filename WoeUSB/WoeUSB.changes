@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Sun Apr 21 12:35:20 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 3.3.0
+  * Improvements to the WoeUSB GUI
+  * The option of using the NTFS filesystem as the target filesystem
+    has now being provided in the GUI
+
+-------------------------------------------------------------------
+Sun Mar 31 14:47:41 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Explicitly Require all runtime dependencies, rather than depending on users
+  to install packages from the startup error messages.
+
+-------------------------------------------------------------------
+Tue Dec 25 09:34:06 UTC 2018 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 3.2.12
+  * This release features some minor improvements to the code.
+- Version 3.2.11
+  * This release fixes a big regression causing source image with 
+    >4GiB file can't be installed on disks with NTFS target filesystem
+    using --partition USB preparation mode, refer Issue #226 for more
+    info.
+  * We would like to thank Luke Anderson(@spble) that brought up the
+    issue, @0xC1A551C for confirming it and providing mitigation,
+    and everyone in the discussion thread that helped to escalate
+    the issue.
+
+-------------------------------------------------------------------
+Wed Sep 19 07:35:47 UTC 2018 - Yunhe Guo <yunhe.guo@protonmail.com>
+
+- Version 3.2.10
+  * This release fixes a regression that makes the --partition
+    device preparation mode failed to work. We would like to thank
+    @jackvnimble for the patch!
+
+-------------------------------------------------------------------
+Sun Sep 16 07:22:29 UTC 2018 - Yunhe Guo <yunhe.guo@protonmail.com>
+
+- Version 3.2.9
+  * This release fixes a regression that will make --target-filesystem
+    command-line option not working(#210).  We would like to thank 
+    @mishka81 for bringing up the issue.
+- Version 3.2.8
+  * This release fixes a typecasting bug in the graphical wrapper
+    code. We would like to thank @dcb314 and @Skrilltrax for bringing
+    it up and provide the patch!
+- Version 3.2.7
+  * This release fixes a typo which will lead to command not found
+    when FAT32 4GiB single file size limitation is detected. Enjoy!
+- Version 3.2.6
+  * This release fixes a issue when user uses lowercase filesystem
+    name as --target-filesystem's argument.
+- Version 3.2.5
+  * This release fixes a major regression introduced by v3.2.4.
+
+-------------------------------------------------------------------
+Thu Sep 13 07:43:30 UTC 2018 - Yunhe Guo <yunhe.guo@protonmail.com>
+
+- Version 3.2.4
+  * This release features a major cleanup to the code, be sure to
+    report any regressions you've encountered.
+- Version 3.2.3
+  * This release fixes a bug that will make woeusb bailout when the
+    ISO filename contains a valid token of a regular expression.
+
+-------------------------------------------------------------------
+Tue Aug 14 07:20:45 UTC 2018 - guoyunhebrave@gmail.com
+
+- Version 3.2.2
+  * This release improves compatibility with space-included filenames.
+
+-------------------------------------------------------------------
+Wed May  9 08:28:30 UTC 2018 - guoyunhebrave@gmail.com
+
+- Version 3.2.1
+  * This patch release fixes the fatal error slipped into last minute patch in v3.2.0.
+
+-------------------------------------------------------------------
+Tue May  8 11:32:57 UTC 2018 - guoyunhebrave@gmail.com
+
+- Version 3.2.0
+  * A check for "FAT32 Filesystem 4GiB Single File Size Limitation" has been
+    implemented thanks to Jakub Szymański
+  * A fix to comply with the recent changes of UEFI:NTFS has been implemented
+    thanks to Felipe Magno de Almeida
+  * PNG images distributed in WoeUSB has been optimized to smaller size thanks
+    to Peter Dave Hello
+  * A typo has been picked out in woeusb(1) manpage thanks to Anthony Fok
+  * Detailed changes see https://github.com/slacka/WoeUSB/releases/tag/v3.2.0
+
+-------------------------------------------------------------------
+Thu Mar 29 05:43:11 UTC 2018 - guoyunhebrave@gmail.com
+
+- Version 3.1.5
+  * Packaging: Debian: Downgrade debian/compat to 9 to match debian/control
+  * Packaging: Debian: Downgrade debhelper dependency to v9 to support Ubuntu 14.04(till April 2019)
+  * Packaging: Debian: Add missing build dependency: dh-autoreconf
+  * Packaging: Debian: Depend on grub2-common instead of grub-common
+  * Packaging: Debian: Add gettext package as build dependencies
+  * Merge branch 'master' of github.com:slacka/WoeUSB
+  * Manpages: woeusbgui(1): Fix typo
+  * Add VCS- fields to debian/control
+  * Remove versioned dependencies where satisfied by all releases since oldoldstable (Wheezy)
+  * Remove dependencies on essential packages as they're always there
+  * Fix priority-extra-is-replaced-by-priority-optional
+  * Bump Debian Standards Version to 4.1.1
+  * build-depends-on-1-revision build-depends: coreutils (>= 8.23-1)
+  * Remove trailing whitespace
+  * Fix obsolete-relation-form-in-source in woeusb depends: bash (>4.3)
+  * core: Eliminate abused double quotes
+
+-------------------------------------------------------------------
+Sat Mar 10 10:01:26 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 3.1.4:
+ * no changelog available, please see https://github.com/slacka/WoeUSB/commits/master
+
+-------------------------------------------------------------------
+Mon Jan 15 11:07:11 UTC 2018 - jengelh@inai.de
+
+- Avoid assuming specific user context in description.
+
+-------------------------------------------------------------------
+Fri Dec 22 20:39:50 UTC 2017 - sebix+novell.com@sebix.at
+
+- inital package for version 2.2.2

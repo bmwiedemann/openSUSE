@@ -1,0 +1,9 @@
+--- a/src/libbluray.pc.in
++++ b/src/libbluray.pc.in
+@@ -7,6 +7,4 @@ Name: libbluray
+ Description: library supporting Blu-ray playback
+ Version: @PACKAGE_VERSION@
+ Libs: -L${libdir} -lbluray
+-Libs.private: @DLOPEN_LIBS@ @EXTRA_LIBS@
+-Requires.private: @PACKAGES@
+ Cflags: -I${includedir}

@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Mon May  1 20:14:03 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch and override HOST in order to
+  make build fully reproducible
+
+-------------------------------------------------------------------
+Mon Nov  3 03:41:50 UTC 2014 - crrodriguez@opensuse.org
+
+- Do not buildrequire xorg-x11-devel, never used. 
+
+-------------------------------------------------------------------
+Thu Dec  1 17:05:51 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Nov  8 13:10:29 UTC 2010 - coolo@novell.com
+
+- remove support for pre-9.1
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:17 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Thu Aug 21 18:57:26 CEST 2008 - lmichnovic@suse.cz
+
+- update to version 0.7.0
+ * new themes
+ * if xmessage is'n found invoke other dialog tools using FvwmPerl
+ - requires fvwm > 2.5.8
+- obsoleted patches: *icon-names.patch, *menustyle-fontset.patch, 
+  *windowlook-fontset.patch, *modules-fontset.patch, acdivert.patch
+
+-------------------------------------------------------------------
+Mon Aug 14 18:19:26 CEST 2006 - mfabian@suse.de
+
+- fix build in STABLE (move to X11R7).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:24 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Feb 23 16:05:18 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Mon Aug 25 21:38:25 CEST 2003 - mfabian@suse.de
+
+- update to 0.6.2.
+
+-------------------------------------------------------------------
+Tue Jul  1 22:09:33 CEST 2003 - ro@suse.de
+
+- remove traces of buildroot from installed files 
+
+-------------------------------------------------------------------
+Fri Jun 13 22:32:35 CEST 2003 - mfabian@suse.de
+
+- fix "directory not owned by any package".
+
+-------------------------------------------------------------------
+Thu Apr 10 00:49:34 CEST 2003 - ro@suse.de
+
+- fix deprecated head calling syntax (-1) 
+- fix deprecated sort calling syntax in configure.in
+
+-------------------------------------------------------------------
+Fri Aug 16 12:06:35 CEST 2002 - mfabian@suse.de
+
+- add Prereq:       /usr/bin/perl /usr/bin/mkfifo
+- xf86 -> x-devel-packages in # neededforbuild
+
+-------------------------------------------------------------------
+Thu Apr 26 15:21:11 CEST 2001 - mfabian@suse.de
+
+- correct icon names
+- patch fonts to work with Japanese 
+
+-------------------------------------------------------------------
+Tue Apr 24 17:52:00 CEST 2001 - mfabian@suse.de
+
+- new package: fvwm-themes, version 0.4.2
+
+

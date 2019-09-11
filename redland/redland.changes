@@ -1,0 +1,258 @@
+-------------------------------------------------------------------
+Fri Mar  1 14:56:41 UTC 2019 - Reinhard Max <max@suse.com>
+
+- PostrgeSQL's pg_config is meant for linking server extensions,
+  use libpq's pkg-config instead (redland-postgresql.patch).
+  This is needed to fix build with PostgreSQL 11.
+
+-------------------------------------------------------------------
+Sun Mar 15 20:29:33 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.17
+  * Configuration and build improvements
+  * Fixed Issues: [1]0000529, [2]0000540, [3]0000541, [4]0000542 and
+    [5]0000543
+- Adapt redland-ocloexec.patch to upstream changes
+
+-------------------------------------------------------------------
+Sat Jun 15 22:37:54 UTC 2013 - jengelh@inai.de
+
+- Add redland-db6.diff to make it look for libdb 6.0
+- Implement shlib packaging guidelines
+  (rename libredland0 -> librdf0)
+
+-------------------------------------------------------------------
+Wed Jan  2 17:55:06 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 1.0.16
+  * Fixed Issues: [1]#0000443, [2]#0000460, [3]#0000497, [4]#0000518,
+    [5]#0000519
+  * Postgres, MySQL and Hashes storage bug fixes.
+  * Multiple other API bug fixes
+  * Multiple build fixes to help building on Windows.
+  * Requires Raptor 2.0.7 or newer
+  * librdf_model_contains_statement() and librdf_storage_contains_
+    statement() now return 0 for invalid statements
+
+-------------------------------------------------------------------
+Wed May  9 13:43:42 UTC 2012 - darin@darins.net
+
+- removed unnecessary postgresl-devel package and it's .la
+- removed libpq5 require 
+
+-------------------------------------------------------------------
+Tue May  8 16:23:51 UTC 2012 - darin@darins.net
+
+- Updated to include postgresql storage support and development
+  packages
+
+-------------------------------------------------------------------
+Wed Dec 21 12:51:02 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 1.0.15
+  Issues Fixed:
+     0000461: librdf error - query language vsparql already 
+              registered
+     0000468: xlc on AIX configure tests for both 
+              HAVE_BDB_OPEN_7_ARGS and HAVE_BDB_OPEN_6_ARGS pass
+     0000475: Freeing a counted_string returned by redland on a 
+              modern Windows system crashes
+     0000478: Object returned from librdf_stream_get_object must 
+              be copied, but may not copiable
+     0000483: Documentation of 
+              librdf_parser_get_namespaces_seen_count return is 
+              incorrect
+     0000485: No rule to make target `-lltdl', needed by 
+              `librdf.la'. Stop.
+
+-------------------------------------------------------------------
+Wed Dec 21 10:41:59 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Nov 16 08:11:50 UTC 2011 - tittiatcoke@gmail.com
+
+- Ensure that the patch regarding O_CLOEXEC is only applied on
+  versions equal or higher than 12.1
+
+-------------------------------------------------------------------
+Mon Nov 14 21:39:58 UTC 2011 - crrodriguez@opensuse.org
+
+- open all file descriptors with O_CLOEXEC to avoid 
+  races and leaks.
+
+-------------------------------------------------------------------
+Mon Sep 19 11:29:36 UTC 2011 - tittiatcoke@gmail.com
+
+- update to 1.0.14
+  * Fixed Issues: [1]#0000419, [2]#0000404, [3]#0000325, [4]#0000447,
+    [5]#0000432, [6]#0000418 and [7]#0000375
+  * librdf_node_write() is defined to now always write N-Triples 
+    format
+  * Added librdf_query_language_get_description() to return the full 
+    description of of the query language  
+  * Removed Raptor V1 support code as librdf no longer supports 
+    Raptor V1
+- Created a separate package for the redland-bindings as this no 
+  longer compiles without redland installed
+
+-------------------------------------------------------------------
+Fri Apr 14 13:38:21 UTC 2011 - toddrme2178@gmail.com
+    
+- added 32bit compatibility libraries
+ 
+-------------------------------------------------------------------
+Tue Feb 15 16:47:42 UTC 2011 - davejplater@gmail.com
+
+- Removed incomplete patch redland-perl-vendor_perl.patch until the
+  fix is ready.
+
+-------------------------------------------------------------------
+Sun Jan 30 22:44:01 UTC 2011 - davejplater@gmail.com
+
+- Perl bindings install in site_arch disabled with bcond
+
+-------------------------------------------------------------------
+Sun Jan 16 11:05:09 UTC 2011 - davejplater@gmail.com
+
+- Added perl, python, php5 and ruby bindings.
+
+-------------------------------------------------------------------
+Tue Oct 19 15:24:30 CEST 2010 - dmueller@suse.de
+
+- update to 1.0.12:
+   Enable librdf.h to be used as the top-level header in addition to
+   redland.h
+   Fix linking issues when building with GNU ld with DT_NEEDED disabled
+   Fixed Issues: [1]#0000329, [2]#0000348 [3]#0000391, [4]#0000392 and
+   [5]#0000393.
+   Virtuoso storage backend querying now fully works.
+   Several new convenience APIs were added and others deprecated.
+   Support building with Raptor V2 API if configured with --with-raptor2.
+   Exports more functions to SWIG language bindings.
+   Switched to GIT version control [7]hosted by GitHub.
+   Many other bug fixes and improvements were made.
+   Fixed Issues: [8]#0000124, [9]#0000284, [10]#0000321, [11]#0000322,
+   [12]#0000334, [13]#0000338, [14]#0000341, [15]#0000344, [16]#0000350,
+   [17]#0000363, [18]#0000366, [19]#0000371, [20]#0000380, [21]#0000382
+   and [22]#0000383
+
+-------------------------------------------------------------------
+Sat Jan  2 18:26:53 CET 2010 - dmueller@suse.de
+
+- update to 1.0.10:
+  Added a Virtuoso storage by Patrick van Kleef
+  Support Rasqal 0.9.17 API
+  Fix compiling against sqlite 3.6.17 or newer
+  Fix modular storage dynamic loading linking problems
+
+-------------------------------------------------------------------
+Wed Dec 16 13:39:47 CET 2009 - dmueller@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Jul 27 13:41:02 CEST 2009 - beineri@opensuse.org
+
+- update to version 1.0.9: many bug fixes
+
+-------------------------------------------------------------------
+Tue Jan 13 10:52:47 CET 2009 - coolo@suse.de
+
+- fix the syntax of enums
+
+-------------------------------------------------------------------
+Fri Jul 25 00:23:50 CEST 2008 - dmueller@suse.de
+
+- update to 1.0.8 
+  * add in memory index trees
+  * fix mysql connect hang
+
+-------------------------------------------------------------------
+Mon Apr  7 14:29:00 CEST 2008 - dmueller@suse.de
+
+- disable testsuite for older distributions
+- build parallel again
+
+-------------------------------------------------------------------
+Sun Apr  6 03:21:57 CEST 2008 - crrodriguez@suse.de
+
+- update to version 1.0.7
+	* 0000187: "rdf_query_results.c", line 630: void function cannot return value
+    * 0000189: librdf_uri_is_file_uri: wrong return value
+    * 0000203: API declarations for Symbian portability
+    * 0000205: Memory leak in rdf_query_rasqal.c
+    * 0000209: Null dereference + assertion failures in minimal librdf setup-cleanup
+    * 0000213: Multiple instances of world object make trouble
+    * 0000215: librdf_new_node_from_typed_counted_literal() does not respect parameter lengths
+    * 0000218: librdf_query_execute does not assert model parameter
+    * 0000229: Segmentation fault when invoking librdf_new_model_from_model()
+    * 0000230: on Gentoo/FreeBSD redland fails compilation due to a missing #define pthread.h
+    * 0000234: autogen.sh $dir quoting
+    * 0000235: $(EXEEXT) in tests
+    * 0000236: EOL issues when building svn version on cygwin
+- disable static libraries 
+- remove "la" file
+- cleanup -devel package dependencies again
+
+-------------------------------------------------------------------
+Thu Feb 28 11:15:23 CET 2008 - dmueller@suse.de
+
+- add missing post/postun ldconfig calls
+
+-------------------------------------------------------------------
+Fri Feb 15 18:42:38 CET 2008 - dmueller@suse.de
+
+- reduce -devel requires
+
+-------------------------------------------------------------------
+Tue Jan 15 11:51:42 CET 2008 - dmueller@suse.de
+
+- build without postgres/mysql support for now, sqlite and bdb is
+  enough. Please report if the backend support is required
+
+-------------------------------------------------------------------
+Wed May  9 19:32:45 CEST 2007 - wstephenson@suse.de
+
+- update to version 1.0.6
+  * Added a new transactions API for graph changes, implemented for
+    MySQL
+  * Added a new query results formatter class
+  * Many other bug fixes addressing Issues #0000175, #0000173, 
+    #0000159, #0000153, #0000150 and #0000038
+
+-------------------------------------------------------------------
+Fri May  4 10:12:56 CEST 2007 - dmueller@suse.de
+
+- fix requires
+
+-------------------------------------------------------------------
+Thu May  3 12:28:49 CEST 2007 - wstephenson@suse.de
+
+- rename -devel subpackage
+
+-------------------------------------------------------------------
+Wed May  2 17:07:43 CEST 2007 - wstephenson@suse.de
+
+- update to version 1.0.5
+  * Several API additions
+  * Parsing methods can take a NULL base URI when it is not needed
+  * Added serializer methods to serialize from a stream
+  * Many fixes and improvements to the SQLite storage
+  * Export some more functions to the SWIG binding
+  * Many minor improvements
+  * Many other bug fixes addressing Issues #0000092, #0000103, 
+    #0000105, #0000107, #0000114, #0000116, #0000125, #0000130, 
+    #0000132, #0000136 and #0000139.  
+
+-------------------------------------------------------------------
+Thu Jul 13 2006 - mrueckert@suse.de
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+* Mon Jun 26 2006 - dmacvicar@suse.de
+
+- initial package of 1.0.4
+

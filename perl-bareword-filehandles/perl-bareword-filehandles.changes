@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Tue May 28 05:35:18 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.007
+   see /usr/share/doc/packages/perl-bareword-filehandles/Changes
+
+  0.007     2019-05-27 20:15:54+01:00 Europe/London
+   - Disable checking filetest ops on perl < 5.31.1 (RT#127073)
+
+-------------------------------------------------------------------
+Fri Apr 27 06:08:40 UTC 2018 - coolo@suse.com
+
+- updated to 0.006
+   see /usr/share/doc/packages/perl-bareword-filehandles/Changes
+
+  0.006     2018-04-26 22:36:49+01:00 Europe/London
+   - Only use Lexical::SealRequireHints before perl 5.12
+
+-------------------------------------------------------------------
+Fri Apr 21 07:09:21 UTC 2017 - coolo@suse.com
+
+- updated to 0.005
+   see /usr/share/doc/packages/perl-bareword-filehandles/Changes
+
+  0.005     2017-04-20 16:27:24+01:00 Europe/London
+   - Switch to Dist::Zilla::PluginBundle::Starter
+     and ::Plugin::DymamicPrereqs
+   - Use Devel::PPPort insted of hand-rolled compat macros
+
+-------------------------------------------------------------------
+Mon May 23 13:08:18 UTC 2016 - coolo@suse.com
+
+- updated to 0.004
+   see /usr/share/doc/packages/perl-bareword-filehandles/Changes
+
+  0.004     2016-05-16 19:18:36+01:00 Europe/London
+   - fix POD typo (RT#76421)
+   - Use "bareword::filehandles/disabled" as the hint hash key
+   - Fix building on -DPERL_OP_PARENT perls (RT#114394)
+
+-------------------------------------------------------------------
+Mon Feb 24 08:40:07 UTC 2014 - coolo@suse.com
+
+- initial package 0.003
+    * created by cpanspec 1.78.07
+

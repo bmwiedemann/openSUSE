@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Mon Jul 29 15:43:49 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.2.0:
+  * App has a redesign
+  * Removed Del keybind - it was legacy code
+
+-------------------------------------------------------------------
+Mon Apr 29 11:56:07 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.7:
+  * Update Task.vala
+  * Update README
+  * Switch to UTF-8
+  * Add other languages
+
+-------------------------------------------------------------------
+Mon Mar 11 18:19:57 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.6:
+  * Update fr.po
+  * Delete de_DE.mo
+  * Update com.github.lainsce.yishu.appdata.xml
+  * Update POTFILES
+  * Update com.github.lainsce.yishu.pot
+  * Update com.github.lainsce.yishu.desktop
+  * Merge pull request #31 from NathanBnm/master
+  * Create fr.po
+  * Update LINGUAS
+  * fix building
+- Drop yishu-1.1.2-vala-0.42.patch
+
+-------------------------------------------------------------------
+Sun Nov 25 20:38:55 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.2:
+  * Fixing startup
+  * Remove confliting search
+  * Functioning search!
+  * Trying to do search
+  * Start the new version up
+- Add yishu-1.1.2-vala-0.42.patch
+
+-------------------------------------------------------------------
+Mon Sep 17 18:05:45 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.0.9:
+  * Update AUTHORS
+  * Fix language name for Czech po
+
+-------------------------------------------------------------------
+Wed Aug  1 21:35:51 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0.8
+- Switch to metainfo from appdata
+- Remove obsolete macros
+
+-------------------------------------------------------------------
+Sat Jun 23 13:09:09 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0.7:
+  * Update Application.vala
+  * Bugfixing galore
+  * Rename pt-br.po to pt_BR.po
+  * Update LINGUAS
+  * Support PT-BR
+  * Update README.md
+
+-------------------------------------------------------------------
+Tue Jan 30 20:09:25 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0.5:
+  * Fix this, not ready for houston yet
+  * 1.0.4:
+  * New icon / Minor improvements all around to fix GTK
+    deprecations
+  * Add ProjectManagement
+  * Add spanish traslate
+- Add translations package
+
+-------------------------------------------------------------------
+Sat Jan  6 02:13:47 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0.3:
+  * - small changes
+  * - new screenshot
+
+-------------------------------------------------------------------
+Sun Dec 24 19:26:27 UTC 2017 - avvissu@yandex.by
+
+- Initial package
+

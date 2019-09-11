@@ -1,0 +1,853 @@
+-------------------------------------------------------------------
+Wed Aug  7 17:55:39 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- No code change since 5.60.0
+- Add 0001-Fix-the-attica-pkgconfig-file.patch
+
+-------------------------------------------------------------------
+Fri Jul 19 11:37:22 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:36 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Add some documentation for PlatformDependent
+  * Install in new logging directory when we use kf5 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:10 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- No code changes since 5.58.0
+
+-------------------------------------------------------------------
+Wed May 15 18:16:14 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- No code changes since 5.57.0
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:40 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Accept any HTTP status between 100 and 199 as benign
+  * Additions for ProviderManager documentation
+  * [attica] compile without foreach
+  * autotests: use new signal failedToLoad in ProviderTest
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:34 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * It compiles fine with qt5.13
+  * Remove deprecated QSignalMapper
+  * Fix some clazy error
+  * Port to for(...:...)
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:02:57 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * No code changes since 5.54.0
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:40 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * Fix providertest. exec() only once, with the right settings upfront.
+  * Notify if a default provider failed to download
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:41 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Use isEmpty
+  * Use new syntax
+  * Add missing override
+  * Remove Qt include prefix
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:02 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * No code changes since 5.51.0
+
+-------------------------------------------------------------------
+Tue Oct 16 08:01:41 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:51:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Make sure that it compiles with strict compile flags
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * Add support for proposed tags addition in OCS 1.7
+  * Use QTEST_GUILESS_MAIN
+
+-------------------------------------------------------------------
+Sun Aug 19 09:18:39 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Don't instantiate a QStringRef into a QString only to search in a QStringList
+  * Define elements when they're declared
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:32 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Use more nullptr
+  * Port remaining uses of qDebug() to qcDebug(ATTICA)
+  * Remove QT definitions duplicated from KDEFrameworkCompilerSettings or dead
+  * Add debug output for all network requests
+  * Fix checking invalid provider url
+  * Unbreak building tests on Windows
+  * Add provider auto test
+  * Fix broken url to API specification
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:01 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Add override
+  * Use override
+
+-------------------------------------------------------------------
+Sun May 13 20:58:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:01 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Remove not necessary QtCore and co
+  * Explicitly set content type to form data
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:40 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:06 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:12 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:47 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * We depend against 5.7
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:36 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:16 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:12 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * Add categories file
+
+-------------------------------------------------------------------
+Wed Jul 12 07:13:58 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * [FEATURE] Option to build & install QCH file with the public API dox
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * Improve error notification
+
+-------------------------------------------------------------------
+Mon May 15 13:53:13 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * Fix warning
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:41 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:11 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:21:06 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:36:49 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:54:25 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 20:04:00 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:48:18 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:45:44 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * Add Qt5Network as a public dependency
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug 21 16:40:09 UTC 2016 - jengelh@inai.de
+
+- Do not rely on pkg-config being pulled in by something else;
+  make sure pkgconfigdeps.sh runs without a doubt.
+
+-------------------------------------------------------------------
+Sun Aug  7 21:49:14 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * Follow HTTP redirects
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:01:12 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:22:31 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * Make it actually possible to tell providers from the url
+    we were given
+  * Provide QDebug helpers for some Attica classes
+  * Fix redirection of absolute Urls (kde#354748)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:29:21 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * Properly check if a URL is a local file
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:18:11 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Add const variant to getter method
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:53:22 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 17:57:48 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * Simplify attica plugin look-up and initialization
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:41:10 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:01:37 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 16:56:42 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:36:56 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:12:21 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:09 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:44:42 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:05 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:42:21 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:30 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:31 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:00 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+- Add Source URL
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:04 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:27 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * Use all of QT_PLUGIN_PATH paths rather than just QLibraryInfo
+    path to look for plugins
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:46:38 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * Fix build with Qt 5.4
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:06 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:11 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+
+-------------------------------------------------------------------
+Sat Aug  2 10:19:55 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+
+-------------------------------------------------------------------
+Sun Jul 27 18:20:05 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Harden required Qt5 libs versions
+
+-------------------------------------------------------------------
+Tue Jul  1 21:35:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:02 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+
+-------------------------------------------------------------------
+Sun May  4 01:40:54 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:18 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:38:04 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Sat Feb  8 02:17:01 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.96.0
+  * attica is now a part of KDE Frameworks libraries
+  * adjust baselibs for soname change
+
+-------------------------------------------------------------------
+Wed Nov 27 00:50:33 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to git snapshot
+  * Qt5 support
+- Enable Qt5 build
+
+-------------------------------------------------------------------
+Thu Jun 13 00:28:45 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 0.4.2
+  * Do HTTP basic authentication the right way
+  * Add API to get the URL for registering an account from the
+    providers file
+  * Qt5 build fixes
+
+-------------------------------------------------------------------
+Tue Nov 20 10:30:12 UTC 2012 - cgiboudeaux@gmx.com
+
+- Fix installation on SLES
+
+-------------------------------------------------------------------
+Thu Aug 23 10:26:30 UTC 2012 - mlin@suse.com
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Mon Aug 20 17:20:19 UTC 2012 - mlin@suse.com
+
+- Update to version 0.4.1
+  * Add some Qt5 support in tests
+  * Comment out some qDebug calls
+  * Fix various Qt5 issues
+
+-------------------------------------------------------------------
+Mon Jul 16 16:01:41 UTC 2012 - dev@dominik-schmidt.de
+
+- update to 0.4.0:
+* fixes for proxy support
+
+-------------------------------------------------------------------
+Wed Jan 25 15:05:41 UTC 2012 - coolo@suse.com
+
+- fix baselibs.conf after library name change
+
+-------------------------------------------------------------------
+Fri Jan 20 20:37:21 UTC 2012 - crrodriguez@opensuse.org
+
+- Build with -fvisibility-inlines-hidden (around 50 symbols less)
+- libattica-devel Requires: libqt4-devel
+
+-------------------------------------------------------------------
+Tue Jan 10 20:02:45 UTC 2012 - idonmez@suse.com
+
+- Fix library name
+
+-------------------------------------------------------------------
+Wed Jan  4 19:37:07 CET 2012 - dmueller@suse.de
+
+- update to 0.3.0:
+  - Bump soname from .0 to .0.3 since we have a BIC change.
+  - Fix upload errors resulting from content-id not being set.
+  - Add Forum, Achievement, services and related dependencies.
+  - Make it build against Qt 4.8.
+  - Add static build option
+
+-------------------------------------------------------------------
+Sat Sep 17 13:32:58 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Add libattica-devel to baselibs
+
+-------------------------------------------------------------------
+Wed Aug 24 08:40:31 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed sentence in attica.spec
+
+-------------------------------------------------------------------
+Thu Nov 25 18:39:24 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 0.2.2
+  * add support for openSUSE OBS
+
+-------------------------------------------------------------------
+Mon Oct 18 12:36:46 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to 0.2.0
+  * final release
+
+-------------------------------------------------------------------
+Fri Sep 10 20:00:00 CEST 2010 - johannesobermayr@gmx.de
+
+- update to released 0.1.91 tarball
+  - makes gluon compile against K:D:F
+
+-------------------------------------------------------------------
+Fri Sep 10 17:58:53 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 0.1.91 (0.2.0-rc1)
+  - Update voting function (add overload) to take uint 0..100
+    according to ocs 1.6 spec
+  - Add comments interface to request comments, add new comments
+    and vote for comments
+  - Add distribution interface to request distributions available
+    in the server
+  - Add homepagetype interface to request home page types from
+    the server
+  - Add methods to access home page entries in content
+  - Add support of icons to content (OCS 1.6)
+  - Add support of videos to content (OCS 1.6)
+  - Add summary description to content (OCS 1.6)
+  - Add size to download description (OCS 1.6)
+  - Add fields to download item for package name, package repository,
+    gpg fingerprint, mimetype (OCS 1.6)
+
+-------------------------------------------------------------------
+Tue Aug 17 15:08:58 UTC 2010 - tittiatcoke@gmail.com
+
+- update to a new svn snapshot of the upcoming 0.2.0
+  * beginning of the attributes API
+  * make it clear that attributes belongs to persons
+  * improve apidox
+  * bugfixes (bko#243168,)
+  * new voting api for ocs 1.6
+  * Added comments interface to request comments, add new
+    comments and vote for comment
+  * Added distribution interface to request distributions
+    available in the server
+  * Added homepagetype interface to request home page types
+    from the server
+  * Added support of icons to content (OCS 1.6)
+  * Added support of videos to content (OCS 1.6)
+  * Added summary description to content (OCS 1.6)
+  * Added size to download description (OCS 1.6)
+  * Added fields to download item for package name, package
+    repository, gpg fingerprint, mimetype (OCS 1.6)
+  * Added methods to access home page entries in a content
+
+-------------------------------------------------------------------
+Wed May 19 14:31:42 CEST 2010 - dmueller@suse.de
+
+- update to released 0.1.4 tarball:
+  - includes upstream changelog (no code change)
+
+-------------------------------------------------------------------
+Fri May  7 13:05:00 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 0.1.4 (trunk)
+  - Remove function decls without body introduced in 0.1.3
+  - Add functions to check for provider services (parts of the api
+    they implement)
+  - Make adding, disabling and removing default providers possible
+    (so we can have other providers than openDesktop.org)
+
+
+-------------------------------------------------------------------
+Fri May  7 11:20:46 CEST 2010 - dmueller@suse.de
+
+- update to 0.1.3:
+ - Add possibility to get Licenses from server
+ - Add search for contents by username
+ - Add convenience function to get list of download links and fix some related strings
+ - Fix qt-only hasCredentials
+ - Win and Mac compile/link fixes
+ - Fix crash when multiple apps would use attica simultaneously: do not delete root component of qtplugins
+
+-------------------------------------------------------------------
+Mon Apr 26 12:29:26 CEST 2010 - ro@suse.de
+
+- try to fix version in pkgconfig file
+
+-------------------------------------------------------------------
+Thu Jan 14 23:00:53 CET 2010 - dmueller@suse.de
+
+- update to 0.1.2:
+  - Don't define qHash for QUrl in Qt 4.7
+  - fix memlead for aborted requests
+  - qt platform plugin implements basic password/user name handling
+  - copying file: lesser gpl 2.1
+  - don't link qtgui without reason
+  - make hasCredentials const (new function
+
+-------------------------------------------------------------------
+Thu Dec 31 15:08:57 CET 2009 - dmueller@suse.de
+
+- add libattica0 baselibs, needed for libkde4
+
+-------------------------------------------------------------------
+Fri Dec 18 23:06:58 CET 2009 - dmueller@suse.de
+
+- packaging cleanups
+
+-------------------------------------------------------------------
+Tue Dec 15 10:34:38 UTC 2009 - wstephenson@novell.com
+
+- Update to released stable version 0.1.1
+
+-------------------------------------------------------------------
+Mon Dec 14 12:01:19 UTC 2009 - tittiatcoke@gmail.com
+
+- update to svn1060455
+
+-------------------------------------------------------------------
+Sat Dec  5 21:07:03 UTC 2009 - tittiatcoke@gmail.com
+
+- update to svn1058931
+
+-------------------------------------------------------------------
+Fri Nov 27 07:03:08 UTC 2009 - wstephenson@novell.com
+
+- Update to svnr1054392
+
+-------------------------------------------------------------------
+Fri Nov 20 16:56:41 UTC 2009 - wstephenson@novell.com
+
+- Initial version
+

@@ -1,0 +1,102 @@
+Subject: zkey: Fix memory leak
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary: zkey: Support CCA master key change with LUKS2 volumes using paes     
+Description: Support the usage of protected key crypto for dm-crypt disks in
+             LUKS2 format by providing a tool allowing to re-encipher a 
+             secure LUKS2 volume key when the CCA master key is changed
+Upstream-ID: d6a96f07c1a0ba9b1a559561698f82f5a19829ff
+Problem-ID:  SEC1424.1
+
+Upstream-Description:
+
+             zkey: Fix memory leak
+
+             The APQN check routine as well as the properties helper functions
+             do not free all memory that they allocated.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/keystore.c   |   22 +++++++++++++++-------
+ zkey/properties.c |    5 +++++
+ 2 files changed, 20 insertions(+), 7 deletions(-)
+
+--- a/zkey/keystore.c
++++ b/zkey/keystore.c
+@@ -981,25 +981,33 @@ static int _keystore_apqn_check(const ch
+ 	rc = regexec(&reg_buf, apqn, (size_t) 1, pmatch, 0);
+ 	if (rc != 0) {
+ 		warnx("the APQN '%s' is not valid", apqn);
+-		return -EINVAL;
++		rc = -EINVAL;
++		goto out;
+ 	}
+ 
+-	if (sscanf(apqn, "%x.%x", &card, &domain) != 2)
+-		return -EINVAL;
++	if (sscanf(apqn, "%x.%x", &card, &domain) != 2) {
++		rc = -EINVAL;
++		goto out;
++	}
+ 
+ 	util_asprintf(normalized, "%02x.%04x", card, domain);
+ 
+-	if (remove)
+-		return 0;
++	if (remove) {
++		rc = 0;
++		goto out;
++	}
+ 
+ 	rc = _keystore_is_apqn_online(card, domain);
+ 	if (rc != 1) {
+ 		warnx("The APQN %02x.%04x is %s", card, domain,
+ 		      rc == -1 ? "not a CCA card" : "not online");
+-		return -EIO;
++		rc = -EIO;
++		goto out;
+ 	}
+ 
+-	return 0;
++out:
++	regfree(&reg_buf);
++	return rc;
+ }
+ 
+ 
+--- a/zkey/properties.c
++++ b/zkey/properties.c
+@@ -149,6 +149,7 @@ void properties_free(struct properties *
+ 		free(property->name);
+ 		free(property->value);
+ 		util_list_remove(&properties->list, property);
++		free(property);
+ 	}
+ 
+ 	free(properties);
+@@ -259,6 +260,7 @@ int properties_remove(struct properties
+ 	free(property->name);
+ 	free(property->value);
+ 	util_list_remove(&properties->list, property);
++	free(property);
+ 	return 0;
+ }
+ 
+@@ -614,10 +616,13 @@ char *str_list_remove(const char *str_li
+  */
+ void str_list_free_string_array(char **strings)
+ {
++	char **list = strings;
++
+ 	util_assert(strings != NULL, "Internal error: strings is NULL");
+ 
+ 	while (*strings != NULL) {
+ 		free((void *)*strings);
+ 		strings++;
+ 	}
++	free(list);
+ }

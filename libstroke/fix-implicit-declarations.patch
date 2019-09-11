@@ -1,0 +1,11 @@
+diff -ru libstroke-0.5.1.orig/libstroke/stroke.c libstroke-0.5.1/libstroke/stroke.c
+--- libstroke-0.5.1.orig/libstroke/stroke.c	2001-07-06 06:32:42.000000000 +0200
++++ libstroke-0.5.1/libstroke/stroke.c	2005-09-22 18:27:25.000000000 +0200
+@@ -12,6 +12,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <math.h>
++#include <string.h>
+ 
+ #ifdef STROKE_MOUSE_FOOTPRINTS
+ #include <X11/Xutil.h>

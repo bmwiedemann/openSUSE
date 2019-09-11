@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Sat Jun  8 05:04:07 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.11
+   see /usr/share/doc/packages/perl-Cookie-Baker/Changes
+
+  0.11 2019-06-07T06:27:50Z
+  
+     - Supportt SameSite=None https://github.com/kazeburo/Cookie-Baker/pull/15
+
+-------------------------------------------------------------------
+Sat Sep 22 05:09:45 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.10
+   see /usr/share/doc/packages/perl-Cookie-Baker/Changes
+
+  0.10 2018-09-21T07:40:25Z
+  
+     - Add samesite https://github.com/kazeburo/Cookie-Baker/pull/13
+     - Documentation cleanup
+
+-------------------------------------------------------------------
+Sun Mar  4 06:08:57 UTC 2018 - coolo@suse.com
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-Cookie-Baker/Changes
+
+-------------------------------------------------------------------
+Wed Jul 19 05:16:10 UTC 2017 - coolo@suse.com
+
+- updated to 0.08
+   see /usr/share/doc/packages/perl-Cookie-Baker/Changes
+
+  0.08 2017-07-18T03:36:55Z
+  
+     - Disallow , as a delimiter
+     - accept max-age=0 #5 (Thank you skaji)
+
+-------------------------------------------------------------------
+Thu Sep 22 05:12:26 UTC 2016 - coolo@suse.com
+
+- updated to 0.07
+   see /usr/share/doc/packages/perl-Cookie-Baker/Changes
+
+  0.07 2016-09-21T01:35:56Z
+  
+     - Allow quoted cookie values, as per RFC 6265. #8
+
+-------------------------------------------------------------------
+Tue Jun 30 14:22:33 UTC 2015 - coolo@suse.com
+
+- updated to 0.06
+   see /usr/share/doc/packages/perl-Cookie-Baker/Changes
+
+  0.06 2015-06-29T05:53:57Z
+  
+     - fix compatibility issue. #4 (Thank you shogo82148)
+
+-------------------------------------------------------------------
+Tue Dec  2 13:20:01 UTC 2014 - ncutler@suse.com
+
+- update from 0.03 to 0.05 to bring in upstream changes:
+
+0.05 2014-11-26T05:49:50Z
+ 
+    - fix bug. accepts expires => 0
+     
+0.04 2014-11-25T02:36:43Z
+      
+    - requires perl-5.8.1
+           
+
+-------------------------------------------------------------------
+Wed Jul 30 12:30:34 UTC 2014 - ncutler@suse.com
+
+- check license
+- take maintainership
+

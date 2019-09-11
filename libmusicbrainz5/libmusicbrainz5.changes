@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Tue Sep 18 08:40:11 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to %cmake macros
+- Drop the test phase, it does nothing it just compiles file that
+  can communicate with the musicbrainz server, which can't be
+  validated in OBS
+
+-------------------------------------------------------------------
+Thu Feb  5 08:21:22 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 5.1.0
+  * Fix LMB-33 - Handle 'ended' element in 'relation'
+  * Fix LMB-34 - Remove non-free XML parser and replace with libxml2
+  * Add support for cross-compilation and building out of tree
+- Add pkgconfig(libxml-2.0) build requires; new upstream dependency
+- Bump so version to 5-1
+- Delete 0001-Correct-inconsistent-licensing-text.patch
+
+-------------------------------------------------------------------
+Sat Oct 11 02:17:27 UTC 2014 - crrodriguez@opensuse.org
+
+- Build the shared library with -fvisibility-inlines-hidden 
+
+-------------------------------------------------------------------
+Wed Sep 12 16:12:57 CEST 2012 - ohering@suse.de
+
+- Correct inconsistent licensing text (bnc#779931)
+
+-------------------------------------------------------------------
+Sun Jun 10 23:37:45 CEST 2012 - ohering@suse.de
+
+- Update to 5.0.1
+  Fix LMB-32 - Correctly ignore unrecognised nodes
+  Don't compile using -Werror when building from tarball
+
+-------------------------------------------------------------------
+Wed May 16 09:19:14 CEST 2012 - ohering@suse.de
+
+- Update to 5.0.0
+  Deprecated functions removed
+
+-------------------------------------------------------------------
+Wed May 16 07:18:14 CEST 2012 - ohering@suse.de
+
+- Update to 4.0.2
+  Add extra attributes to Alias
+  Add IPI lists to Artist and Label
+  Add 'Ended' to Lifespan
+  Add PrimaryType and SecondaryTypeList to ReleaseGroup
+  Add text based track number to Track
+  Add ISWC list to Work
+  Debug builds show queries and responses on stderr
+  Documentation updates
+
+-------------------------------------------------------------------
+Wed May  2 16:46:41 CEST 2012 - ohering@suse.de
+
+- Update to 4.0.1
+  Fixed bug LMB-30 - Unable to access all relation lists on objects with multiple relation lists
+  Fixed bug LMB-31 - mb_relationlist_get_targettype always returns "target-type"
+
+-------------------------------------------------------------------
+Sat Mar 24 13:37:36 UTC 2012 - dimstar@opensuse.org
+
+- Add libmusicbrainz4-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Sun Feb 26 15:38:57 UTC 2012 - vuntz@opensuse.org
+
+- Cleanup for inclusion in Factory:
+  + Add copyright header.
+  + Drop libmusicbrainz4-trunk.patch and
+    libmusicbrainz4-update-trunk-patch.sh: remove setup to add
+    patch for trunk, since it's unused, and I don't think it's
+    needed anymore.
+  + Remove libmusicbrainz4 Provides from libmusicbrainz4-3: there
+    is already a libmusicbrainz4 binary package (from an earlier
+    version of libmusicbrainz; because of the shared library
+    packaging policy), and that would just create some confusion.
+  + Fix baselibs.conf.
+  + Run spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Jan 17 08:20:48 CET 2012 - ohering@suse.de
+
+- Update to 4.0.0
+  Added support for collection list being returned as part of a release
+
+-------------------------------------------------------------------
+Wed Aug 10 14:12:03 CEST 2011 - ohering@suse.de
+
+- New version libmusicbrainz-4.0.0beta2
+

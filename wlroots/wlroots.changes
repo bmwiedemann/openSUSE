@@ -1,0 +1,141 @@
+-------------------------------------------------------------------
+Mon May  6 08:44:03 UTC 2019 - mvetter@suse.com
+
+- Update to 0.6.0:
+  * We have removed the long-deprecated wl_shell implementation from wlroots.
+  * output: refactor frame submission API
+  * output: remove lx, ly
+  * Rename lid_switch to switch_device to disambiguate lid and tablet mode switches
+  * Add FreeRDP backend for remote desktop support
+- Remove wlroots-0.3-libinput-include.patch: not needed anymore
+
+-------------------------------------------------------------------
+Tue Mar 12 07:58:48 UTC 2019 - mvetter@suse.com
+
+- Update to 0.5.0:
+  * DISPLAY is no longer set automatically for Xwayland
+  * wlr_output_layout_get_box: handle empty layout
+  * Unbreak build with '-Wstrict-prototypes'
+  * rootston/view: Remove redundant declaration in the same file
+  * wlr_xdg_shell: Remove redundant declaration in the same file
+  * Remove glEGLImageTargetTexture2DOES
+  * seat: fix remaining wlr_button_state enum rename
+  * xwm: use min size as base size hint if it is missing and vice versa
+  * xwm: fix typos in WM_NORMAL_HINTS handling
+  * backend/session: Allow setting a custom tty via WLR_DIRECT_TTY
+  * backend/drm: Don't fail on failing to find overlay format
+  * seat: guard against button count corruption
+  * meson: enable more compiler warnings
+  * seat: use wlr_button_state enum instead of uint32_t
+  * seat: only store serial if pressing a button
+  * tinywl: send pointer frame events
+  * backend/session: add noop session
+  * rootston: refactor rendering
+  * rootston: fix rotated views rendering
+  * rootston: fix Xwayland children rendering when fullscreen
+  * rootston: split rendering code into render.c
+  * rootston: fix input events for rotated views
+  * xwayland: don't set DISPLAY
+  * seat: add debug logs when validating grab serials
+  * backend/session: open TTY with O_CLOEXEC for direct session
+  * xwayland: set CLOEXEC on /dev/null FD
+- Compile with -Wno-redundant-decls
+  See: https://gitlab.freedesktop.org/wayland/wayland/issues/82
+
+-------------------------------------------------------------------
+Thu Feb 28 07:59:57 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.1:
+  * rootston: Make add_{switch,binding}_config static
+  * clang compile fix#1572[1]
+
+-------------------------------------------------------------------
+Tue Feb 26 08:20:27 UTC 2019 - mvetter@suse.com
+
+- Update to 0.4:
+  * xwm: stack below on map
+  * drm: do not modeset to current mode
+  * wlr_output: do not modeset to current mode
+  * backend/drm: fix modeset on drm fd resume
+  * Make popup inert when destroyed.
+  * Add build-*/ to gitignore.
+  * Revert "drm: do not modeset to current mode"
+  * Add a wlr_output_set_subpixel()
+  * data-control: add primary selection support
+  * Prevent NULL dereference in tablet_tool handler
+  * backend/drm: fix memory leak in realloc crtcs
+  * backend/drm: Unset cursor on cleanup
+  * Post protocol error on invalid wl_surface scale
+  * rootston: don't try to maximize fullscreen surfaces
+  * rootston: surface_at: check for fullscreen surfaces in between TOP and OVERLAY layers
+  * xwm: Add _NET_CLIENT_LIST support
+  * Allow cursor render surface to be used as fb
+  * Copy cursor surface to secondary gpu if necessary
+  * Add workaround for hardware cursors on nouveau
+  * data-device: destroy previous source when starting drag
+  * xdg-shell: destroy child popups on unmap
+  * Deprecate old protocols
+  * primary-selection-v1: copy from gtk-primary-selection
+  * surface: error out on invalid transform
+  * subsurface: add map/unmap events
+  * xwayland, data-device: fix surface state on unmap
+  * data-device: make old offers inert before sending selection
+  * backend/drm: fix NULL dereference when unsetting cursor
+  * xwayland: don't use SOCK_CLOEXEC
+  * xwayland: remove remaining SOCK_CLOEXEC
+  * data-device: refactor wlr_drag
+  * data-device: fix drag cleanup if not started
+  * rootston: cancel drag on invalid serial
+  * data-offer: send WL_DATA_OFFER_ERROR_INVALID_FINISH
+  * data-device: unbreak wl_data_source.cancel during drag-and-drop
+  * rootston: move part of desktop.c to view.c, use an interface for views
+  * rootston: add a view child interface
+  * rootston: make roots_view embedded and remove unions
+  * data-device: check if there's a source before sending dnd_finish
+  * Allow compositors to run as systemd user units
+
+-------------------------------------------------------------------
+Mon Feb  4 08:55:24 UTC 2019 - mvetter@suse.com
+
+- Update to 0.3:
+  * gtk-primary-selection: refactor everything, untie from seat (#1397).
+    Various properties related to this unstable protocol have been
+    removed from wlr_seat and wlr_seat_client. Use wlr_gtk_primary_selection_* instead.
+  * output: switch wlr_output_swap_buffers damage to output-buffer-local coords (#1403)
+  * Standardize the wlr_box input paramaters (#1441). The destination
+    parameter is now always the first one.
+  * Remove wlr_xdg_surface_send_close (#1461). Use
+    wlr_xdg_toplevel_send_close and wlr_xdg_popup_destroy instead.
+  * data-device, primary-selection: add request_set_selection (#1402).
+    Compositors now need to listen on wlr_seat.events.request_set_selection
+    and wlr_seat.events.request_set_primary_selection, then decide whether or not to
+    accept the request with wlr_seat_set_selection and wlr_seat_set_primary_selection.
+  * wlr_seat_client_send_selection has been removed, this is an internal function (#1427)
+  * wlr_data_source_finish has been removed, this is now handled
+    by wlr_data_source_destroy (#1427)
+  * wlr_data_source_cancel has been renamed to wlr_data_source_destroy (#1427)
+  * Compositors now need to listen on the wlr_pointer.frame or wlr_cursor.frame
+    events, and call wlr_seat_notify_frame (#1503). If you're simulating pointer events,
+    you'll need to call wlr_seat_notify_frame manually.
+- Add wlroots-0.3-libinput-include.patch: fix include
+
+-------------------------------------------------------------------
+Mon Jan 28 10:51:39 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid pointless scriptlet dependency on /bin/sh.
+- Avoid double-shipping documentation.
+
+-------------------------------------------------------------------
+Fri Jan 25 11:45:34 UTC 2019 - mvetter@suse.com
+
+- Update description
+
+-------------------------------------------------------------------
+Thu Jan 24 21:54:01 UTC 2019 - mvetter@suse.com
+
+- Adjust spec file to not use git but version 0.2
+
+-------------------------------------------------------------------
+Thu May 17 15:20:27 UTC 2018 - rzl@l2f.inesc-id.pt
+
+- Initial version

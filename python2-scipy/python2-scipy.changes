@@ -1,0 +1,916 @@
+-------------------------------------------------------------------
+Mon Jul 29 18:37:55 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Use python2 dependency names.
+
+-------------------------------------------------------------------
+Tue May 21 16:29:02 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix Provides
+
+-------------------------------------------------------------------
+Sun May 19 18:26:34 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix rpmlint warnings
+
+-------------------------------------------------------------------
+Sun May 19 03:03:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Create python 2 backwards-compatibility version since 1.3.0+
+  doesn't support python 2
+
+-------------------------------------------------------------------
+Tue Mar 19 17:08:19 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.2.1
+  * SyntaxError: Non-ASCII character 'xe2' in file scipy/stats/_continuous_distns.py on line 3346, but no encoding declared
+  * Version 1.2.0 introduces `too many indices for array` error in `optimize.newton()`
+  * scipy.stats.gaussian_kde normalizes the weights keyword argument externally.
+  * scipy.linalg.qr_update gives NaN result
+  * CI: Is scipy.scipy Windows Python36-32bit-full working?
+
+-------------------------------------------------------------------
+Fri Mar  1 20:45:50 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Use direct number in the Version tag
+
+-------------------------------------------------------------------
+Tue Feb 12 08:55:55 UTC 2019 - Egbert Eich <eich@suse.com>
+
+bsc#1130564: Apply update from the openSUSE package
+
+- Properly create and tear down default version links when the
+  HPC master packages are installed/uninstalled.
+- Make use of %hpc_modules_init to make modules also known to
+  client.
+- Module file:
+  * remove PATH element. Package has no binary,
+  * make cosmetic changes.
+- Remove use of %%python_module in dependency.
+
+-------------------------------------------------------------------
+Mon Jan 21 19:11:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Fri Jan 18 11:33:14 UTC 2019 - eich@suse.com
+
+- Some futher changes:
+  * Remove the use of fftw. The code doesn't link against it
+    anywhere. For HPC we would have to build things separately
+    for different MPI flavors as fftw3 exists only with HPC
+    support there.
+  * restructure the build process: since the environment for
+    the right python version of Numpy needs to be loaded, wrap
+    entire build (and install) in %%{python_expand: ..}.
+
+-------------------------------------------------------------------
+Thu Jan 17 23:58:18 UTC 2019 - jjolly@suse.com
+
+- Add support for HPC builds:
+  * Add _multibuild file
+  * Add standard and gnu-hpc builds
+  * Create initialization for both flavors to set the correct
+    target directories in macros and replace install paths
+    with these.
+  * Restructure the build process.
+  * Create 'master' packages for non-HPC builds.
+  * Create environment module information,
+
+-------------------------------------------------------------------
+Sat Dec 22 02:01:08 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.2.0
+  * Many changes. Please see changelog at:
+    https://github.com/scipy/scipy/blob/v1.2.0/doc/release/1.2.0-notes.rst
+
+-------------------------------------------------------------------
+Fri May 11 20:17:12 UTC 2018 - toddrme2178@gmail.com
+
+- Fix build on SLE
+
+-------------------------------------------------------------------
+Mon May  7 06:48:57 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 1.1.0
+  * Many changes. Please see changelog at:
+    https://github.com/scipy/scipy/blob/v1.1.0/doc/release/1.1.0-notes.rst
+
+-------------------------------------------------------------------
+Sun Apr  1 22:41:09 UTC 2018 - arun@gmx.de
+
+- update to version 1.0.1:
+  * Issues closed for 1.0.1
+    + #7493: ndimage.morphology functions are broken with numpy 1.13.0
+    + #8118: minimize_cobyla broken if disp=True passed
+    + #8142: scipy-v1.0.0 pdist with metric=`minkowski` raises
+       `ValueError:...
+    + #8173: scipy.stats.ortho_group produces all negative
+       determinants...
+    + #8207: gaussian_filter seg faults on float16 numpy arrays
+    + #8234: scipy.optimize.linprog interior-point presolve bug with
+       trivial...
+    + #8243: Make csgraph importable again via from scipy.sparse
+       import*
+    + #8320: scipy.root segfaults with optimizer 'lm'
+  * Pull requests for 1.0.1
+    + #8068: BUG: fix numpy deprecation test failures
+    + #8082: BUG: fix solve_lyapunov import
+    + #8144: MRG: Fix for cobyla
+    + #8150: MAINT: resolve UPDATEIFCOPY deprecation errors
+    + #8156: BUG: missing check on minkowski w kwarg
+    + #8187: BUG: Sign of elements in random orthogonal 2D matrices in
+       "ortho_group_gen"...
+    + #8197: CI: uninstall oclint
+    + #8215: Fixes Numpy datatype compatibility issues
+    + #8237: BUG: optimize: fix bug when variables fixed by bounds are
+       inconsistent...
+    + #8248: BUG: declare "gfk" variable before call of terminate() in
+       newton-cg
+    + #8280: REV: reintroduce csgraph import in scipy.sparse
+    + #8322: MAINT: prevent scipy.optimize.root segfault closes #8320
+    + #8334: TST: stats: don't use exact equality check for hdmedian
+       test
+    + #8477: BUG: signal/signaltools: fix wrong refcounting in
+       PyArray_OrderFilterND
+    + #8530: BUG: linalg: Fixed typo in flapack.pyf.src.
+    + #8566: CI: Temporarily pin Cython version to 0.27.3
+    + #8573: Backports for 1.0.1
+    + #8581: Fix Cython 0.28 build break of qhull.pyx
+
+-------------------------------------------------------------------
+Tue Feb 13 12:48:45 UTC 2018 - schwab@suse.de
+
+- Don't use openblas on m68k and riscv64
+
+-------------------------------------------------------------------
+Thu Oct 26 03:22:32 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 1.0.0
+  * Many changes. Please see changelog at:
+    https://github.com/scipy/scipy/blob/v1.0.0/doc/release/1.0.0-notes.rst#why-1-0-now
+- Rebase no_implicit_decl.patch
+
+-------------------------------------------------------------------
+Tue Jul 11 19:55:40 UTC 2017 - toddrme2178@gmail.com
+
+- More rpmlint fixes.
+
+-------------------------------------------------------------------
+Mon Jul 10 18:25:30 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 0.19.1
+  * #7214: Memory use in integrate.quad in scipy-0.19.0
+  * #7258: linalg.matrix_balance gives wrong transformation matrix
+  * #7262: Segfault in daily testing
+  * #7273: scipy.interpolate._bspl.evaluate_spline gets wrong type
+  * #7335: scipy.signal.dlti(A,B,C,D).freqresp() fails
+  * #7211: BUG: convolve may yield inconsistent dtypes with method changed
+  * #7216: BUG: integrate: fix refcounting bug in quad()
+  * #7229: MAINT: special: Rewrite a test of wrightomega
+  * #7261: FIX: Corrected the transformation matrix permutation
+  * #7265: BUG: Fix broken axis handling in spectral functions
+  * #7266: FIX 7262: ckdtree crashes in query_knn.
+  * #7279: Upcast half- and single-precision floats to doubles in BSpline...
+  * #7336: BUG: Fix signal.dfreqresp for StateSpace systems
+  * #7419: Fix several issues in sparse.load_npz, save_npz
+  * #7420: BUG: stats: allow integers as kappa4 shape parameters
+- Add no_implicit_decl.patch
+  Fixes implicit-pointer-decl warnings and implicit-fortify-decl error.
+- Fix wrong-script-interpreter rpmlint error.
+
+-------------------------------------------------------------------
+Wed Apr 19 18:52:04 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 0.19.0
+  + Highlights
+    * A unified foreign function interface layer, `scipy.LowLevelCallable`.
+    * Cython API for scalar, typed versions of the universal functions from
+      the `scipy.special` module, via `cimport scipy.special.cython_special`.
+- Removed weave subpackage. It was removed upstream in this release.
+
+-------------------------------------------------------------------
+Fri Oct 21 19:12:29 UTC 2016 - toddrme2178@gmail.com
+
+- Switch to single-spec version
+- update to version 0.18.1:
+  * #6357: scipy 0.17.1 piecewise cubic hermite interpolation does not
+     return...
+  * #6420: circmean() changed behaviour from 0.17 to 0.18
+  * #6421: scipy.linalg.solve_banded overwrites input 'b' when the
+     inversion...
+  * #6425: cKDTree INF bug
+  * #6435: scipy.stats.ks_2samp returns different values on different
+     computers
+  * #6458: Error in scipy.integrate.dblquad when using variable
+     integration...
+  * #6405: BUG: sparse: fix elementwise divide for CSR/CSC
+  * #6431: BUG: result for insufficient neighbours from cKDTree is
+     wrong.
+  * #6432: BUG Issue #6421: scipy.linalg.solve_banded overwrites input
+     'b'...
+  * #6455: DOC: add links to release notes
+  * #6462: BUG: interpolate: fix .roots method of PchipInterpolator
+  * #6492: BUG: Fix regression in dblquad: #6458
+  * #6543: fix the regression in circmean
+  * #6545: Revert gh-5938, restore ks_2samp
+  * #6557: Backports for 0.18.1
+- update to version 0.18.0:
+  (see http://scipy.github.io/devdocs/release.0.18.0.html for full changelog)
+  * Highlights of this release include:
+    + A new ODE solver for two-point boundary value problems,
+      scipy.optimize.solve_bvp.
+    + A new class, CubicSpline, for cubic spline interpolation of
+      data.
+    + N-dimensional tensor product polynomials,
+      scipy.interpolate.NdPPoly.
+    + Spherical Voronoi diagrams, scipy.spatial.SphericalVoronoi.
+    + Support for discrete-time linear systems, scipy.signal.dlti.
+- update to version 0.17.1:
+  * #5817: BUG: skew, kurtosis return np.nan instead of "propagate"
+  * #5850: Test failed with sgelsy
+  * #5898: interpolate.interp1d crashes using float128
+  * #5953: Massive performance regression in cKDTree.query with L_inf
+     distance...
+  * #6062: mannwhitneyu breaks backward compatibility in 0.17.0
+  * #6134: T test does not handle nans
+  * #5902: BUG: interpolate: make interp1d handle np.float128 again
+  * #5957: BUG: slow down with p=np.inf in 0.17 cKDTree.query
+  * #5970: Actually propagate nans through stats functions with
+     nan_policy="propagate"
+  * #5971: BUG: linalg: fix lwork check in *gelsy
+  * #6074: BUG: special: fixed violation of strict aliasing rules.
+  * #6083: BUG: Fix dtype for sum of linear operators
+  * #6100: BUG: Fix mannwhitneyu to be backward compatible
+  * #6135: Don't pass null pointers to LAPACK, even during workspace
+     queries.
+  * #6148: stats: fix handling of nan values in T tests and kendalltau
+- specfile:
+  * updated source url to files.pythonhosted.org
+  * require setuptools
+  * Add openBLAS support.
+    This can improve performance in many situations.
+  * Drop ATLAS support.
+
+-------------------------------------------------------------------
+Thu Jan 28 09:21:47 UTC 2016 - toddrme2178@gmail.com
+
+- specfile:
+  * update copyright year
+
+- update to version 0.17.0:
+  (see http://scipy.github.io/devdocs/release.0.17.0.html for full changelog)
+  * Highlights
+    + New functions for linear and nonlinear least squares
+      optimization with constraints: scipy.optimize.lsq_linear and
+      scipy.optimize.least_squares
+    + Support for fitting with bounds in scipy.optimize.curve_fit.
+    + Significant improvements to scipy.stats, providing many
+      functions with better handing of inputs which have NaNs or are
+      empty, improved documentation, and consistent behavior between
+      scipy.stats and scipy.stats.mstats.
+    + Significant performance improvements and new functionality in
+      scipy.spatial.cKDTree.
+
+-------------------------------------------------------------------
+Fri Oct 30 09:04:05 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 0.16.1
+  SciPy 0.16.1 is a bug-fix release with no new features compared
+  to 0.16.0.
+
+-------------------------------------------------------------------
+Mon Jul 27 15:24:02 UTC 2015 - toddrme2178@gmail.com
+
+- Remove Cython subpackage.  The sources are not as cleanly 
+  separated as the changelog implied.
+
+-------------------------------------------------------------------
+Mon Jul 27 09:26:20 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 0.16.0
+  * Highlights of this release include:
+    - A Cython API for BLAS/LAPACK in scipy.linalg
+    - A new benchmark suite.  It's now straightforward to add new benchmarks,
+       and they're routinely included with performance enhancement PRs.
+    - Support for the second order sections (SOS) format in scipy.signal.
+  * New features
+    - Benchmark suite
+      + The benchmark suite has switched to using Airspeed Velocity
+        for benchmarking.
+    - scipy.linalg improvements
+      + A full set of Cython wrappers for BLAS and LAPACK has been added in 
+        the modules scipy.linalg.cython_blas and scipy.linalg.cython_lapack.
+        In Cython, these wrappers can now be cimported from their 
+        corresponding modules and used without linking directly against BLAS 
+        or LAPACK.
+      + The functions scipy.linalg.qr_delete, scipy.linalg.qr_insert and
+        scipy.linalg.qr_update for updating QR decompositions were added.
+      + The function scipy.linalg.solve_circulant solves a linear system with
+       a circulant coefficient matrix.
+      + The function scipy.linalg.invpascal computes the inverse of a Pascal matrix.
+      + The function scipy.linalg.solve_toeplitz, a Levinson-Durbin Toeplitz solver,
+        was added.
+      + Added wrapper for potentially useful LAPACK function *lasd4.  It computes
+        the square root of the i-th updated eigenvalue of a positive symmetric rank-one
+        modification to a positive diagonal matrix. See its LAPACK documentation and
+        unit tests for it to get more info.
+      + Added two extra wrappers for LAPACK least-square solvers. Namely, they are 
+        *gelsd and *gelsy.
+       + Wrappers for the LAPACK *lange functions, which calculate various matrix
+         norms, were added.
+       + Wrappers for *gtsv and *ptsv, which solve A*X = B for tri-diagonal
+         matrix A, were added.
+    - scipy.signal improvements
+       + Support for second order sections (SOS) as a format for IIR filters
+         was added.  The new functions are:
+         * scipy.signal.sosfilt
+         * scipy.signal.sosfilt_zi,
+         * scipy.signal.sos2tf
+         * scipy.signal.sos2zpk
+         * scipy.signal.tf2sos
+         * scipy.signal.zpk2sos.
+       + Additionally, the filter design functions iirdesign, iirfilter, butter,
+         cheby1, cheby2, ellip, and bessel can return the filter in the SOS
+         format.
+       + The function scipy.signal.place_poles, which provides two methods to place
+         poles for linear systems, was added.
+       + The option to use Gustafsson's method for choosing the initial conditions
+         of the forward and backward passes was added to scipy.signal.filtfilt.
+       + New classes TransferFunction, StateSpace and ZerosPolesGain were
+         added.  These classes are now returned when instantiating scipy.signal.lti.
+         Conversion between those classes can be done explicitly now.
+       + An exponential (Poisson) window was added as scipy.signal.exponential, and a
+         Tukey window was added as scipy.signal.tukey.
+       + The function for computing digital filter group delay was added as
+         scipy.signal.group_delay.
+       + The functionality for spectral analysis and spectral density estimation has
+         been significantly improved: scipy.signal.welch became ~8x faster and the
+         functions scipy.signal.spectrogram, scipy.signal.coherence and
+         scipy.signal.csd (cross-spectral density) were added.
+       + scipy.signal.lsim was rewritten - all known issues are fixed, so this
+         function can now be used instead of lsim2; lsim is orders of magnitude
+         faster than lsim2 in most cases.
+    - scipy.sparse improvements
+       + The function scipy.sparse.norm, which computes sparse matrix norms, was
+         added.
+       + The function scipy.sparse.random, which allows to draw random variates from
+         an arbitrary distribution, was added.
+    - scipy.spatial improvements
+       + scipy.spatial.cKDTree has seen a major rewrite, which improved the
+         performance of the query method significantly, added support for parallel
+         queries, pickling, and options that affect the tree layout.  See pull request
+         4374 for more details.
+       + The function scipy.spatial.procrustes for Procrustes analysis (statistical
+         shape analysis) was added.
+    - scipy.stats improvements
+       + The Wishart distribution and its inverse have been added, as
+         scipy.stats.wishart and scipy.stats.invwishart.
+       + The Exponentially Modified Normal distribution has been
+         added as scipy.stats.exponnorm.
+       + The Generalized Normal distribution has been added as scipy.stats.gennorm.
+       + All distributions now contain a random_state property and allow specifying a
+         specific numpy.random.RandomState random number generator when generating
+         random variates.
+       + Many statistical tests and other scipy.stats functions that have multiple
+         return values now return namedtuples.  See pull request 4709 for details.
+    - scipy.optimize improvements
+       + A new derivative-free method DF-SANE has been added to the nonlinear equation
+         system solving function scipy.optimize.root.
+  * Deprecated features
+    - scipy.stats.pdf_fromgamma is deprecated.  This function was undocumented,
+      untested and rarely used.  Statsmodels provides equivalent functionality
+      with statsmodels.distributions.ExpandedNormal.
+    - scipy.stats.fastsort is deprecated.  This function is unnecessary,
+      numpy.argsort can be used instead.
+    - scipy.stats.signaltonoise and scipy.stats.mstats.signaltonoise are
+      deprecated.  These functions did not belong in scipy.stats and are rarely
+      used.  See issue #609 for details.
+    - scipy.stats.histogram2 is deprecated. This function is unnecessary, 
+      numpy.histogram2d can be used instead.
+  * Backwards incompatible changes
+    - The deprecated global optimizer scipy.optimize.anneal was removed.
+    - The following deprecated modules have been removed. They had been deprecated
+      since Scipy 0.12.0, the functionality should be accessed as scipy.linalg.blas
+      and scipy.linalg.lapack.
+      + scipy.lib.blas
+      + scipy.lib.lapack
+      + scipy.linalg.cblas
+      + scipy.linalg.fblas
+      + scipy.linalg.clapack
+      + scipy.linalg.flapack.
+    - The deprecated function scipy.special.all_mat has been removed.
+    - These deprecated functions have been removed from scipy.stats:
+      + scipy.stats.fprob
+      + scipy.stats.ksprob
+      + scipy.stats.zprob
+      + scipy.stats.randwcdf
+      + scipy.stats.randwppf
+  * Other changes
+    - The version numbering for development builds has been updated to comply with PEP 440.
+    - Building with python setup.py develop is now supported.
+- Move Cython imports to another package
+
+-------------------------------------------------------------------
+Mon Mar  2 15:57:12 UTC 2015 - toddrme2178@gmail.com
+
+- update to version 0.15.1:
+  * #4413: BUG: Tests too strict, f2py doesn't have to overwrite this array
+  * #4417: BLD: avoid using NPY_API_VERSION to check not using deprecated...
+  * #4418: Restore and deprecate scipy.linalg.calc_work
+
+-------------------------------------------------------------------
+Mon Jan 12 13:36:00 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 0.15.0
+  * New features
+    * scipy.optimize improvements
+      * scipy.optimize.linprog now provides a generic
+        linear programming similar to the way scipy.optimize.minimize
+        provides a generic interface to nonlinear programming optimizers.
+        Currently the only method supported is simplex which provides
+        a two-phase, dense-matrix-based simplex algorithm. Callbacks
+        functions are supported,allowing the user to monitor the progress
+        of the algorithm.
+      * The differential_evolution function is available from the scipy.optimize
+        module.  Differential Evolution is an algorithm used for finding the global
+        minimum of multivariate functions. It is stochastic in nature (does not use
+        gradient methods), and can search large areas of candidate space, but often
+        requires larger numbers of function evaluations than conventional gradient
+        based techniques.
+    * scipy.signal improvements
+      * The function max_len_seq was added, which computes a Maximum
+        Length Sequence (MLS) signal.
+    * scipy.integrate improvements
+      * The interface between the scipy.integrate module and the QUADPACK library was 
+        redesigned. It is now possible to use scipy.integrate to integrate 
+        multivariate ctypes functions, thus avoiding callbacks to Python and providing 
+        better performance, especially for complex integrand functions.
+    * scipy.sparse improvements
+      * scipy.sparse.linalg.svds now takes a LinearOperator as its main input.
+    * scipy.stats improvements
+      * Added a Dirichlet distribution as multivariate distribution.
+      * The new function `scipy.stats.median_test` computes Mood's median test.
+      * `scipy.stats.describe` returns a namedtuple rather than a tuple, allowing
+        users to access results by index or by name.
+  * Deprecated features
+    * The scipy.weave module is deprecated.  It was the only module never ported
+      to Python 3.x, and is not recommended to be used for new code - use Cython
+      instead.  In order to support existing code, scipy.weave has been packaged
+      separately: https://github.com/scipy/weave.  It is a pure Python package, so
+      can easily be installed with pip install weave.
+    * scipy.special.bessel_diff_formula is deprecated.  It is a private function,
+      and therefore will be removed from the public API in a following release.
+  * Backwards incompatible changes
+    * scipy.ndimage
+      * The functions scipy.ndimage.minimum_positions,
+      scipy.ndimage.maximum_positions and scipy.ndimage.extrema return
+      positions as ints instead of floats.
+  * Other changes
+    * scipy.integrate
+      * The OPTPACK and QUADPACK code has been changed to use the LAPACK matrix
+        solvers rather than the bundled LINPACK code. This means that there is no
+        longer any need for the bundled LINPACK routines, so they have been removed.
+- Update copyright year
+
+-------------------------------------------------------------------
+Mon Aug 11 08:53:11 UTC 2014 - toddrme2178@gmail.com
+
+- Switch to pypi download location
+- Minor spec file cleanups
+
+-------------------------------------------------------------------
+Fri May 30 15:06:23 UTC 2014 - toddrme2178@gmail.com
+
+- Mark python-scipy-weave as deprecated.
+  Please use python-weave package instead.
+
+-------------------------------------------------------------------
+Thu May  8 10:16:00 UTC 2014 - toddrme2178@gmail.com
+
+- Update to version 0.14.0
+  * New features
+    * scipy.interpolate improvements
+      * A new wrapper function `scipy.interpolate.interpn` for 
+        interpolation onregular grids has been added. `interpn` 
+        supports linear and nearest-neighbor interpolation in 
+        arbitrary dimensions and spline interpolation in two 
+        dimensions.
+      * Faster implementations of piecewise polynomials in power 
+        and Bernstein polynomial bases have been added as 
+        `scipy.interpolate.PPoly` and `scipy.interpolate.BPoly`. 
+        New users should use these in favor of 
+        `scipy.interpolate.PiecewisePolynomial`.
+      * `scipy.interpolate.interp1d` now accepts non-monotonic 
+        inputs and sorts them.  If performance is critical, sorting 
+        can be turned off by using the new ``assume_sorted`` 
+        keyword.
+      * Functionality for evaluation of bivariate spline 
+        derivatives in ``scipy.interpolate`` has been added.
+      * The new class `scipy.interpolate.Akima1DInterpolator` 
+        implements the piecewise cubic polynomial interpolation 
+        scheme devised by H. Akima.
+      * Functionality for fast interpolation on regular, unevenly 
+        spaced grids in arbitrary dimensions has been added as 
+        `scipy.interpolate.RegularGridInterpolator` .
+    * ``scipy.linalg`` improvements
+      * The new function `scipy.linalg.dft` computes the matrix of 
+        the discrete Fourier transform.
+      * A condition number estimation function for matrix 
+        exponential, `scipy.linalg.expm_cond`, has been added.
+    * ``scipy.optimize`` improvements
+      * A set of benchmarks for optimize, which can be run with 
+        ``optimize.bench()``, has been added.
+      * `scipy.optimize.curve_fit` now has more controllable error 
+        estimation via the ``absolute_sigma`` keyword.
+      * Support for passing custom minimization methods to 
+        ``optimize.minimize()``  and ``optimize.minimize_scalar()``
+        has been added, currently useful especially for combining
+        ``optimize.basinhopping()`` with custom local optimizer 
+        routines.
+    * ``scipy.stats`` improvements
+      * A new class `scipy.stats.multivariate_normal` with 
+        functionality for  multivariate normal random variables 
+        has been added.
+      * A lot of work on the ``scipy.stats`` distribution framework 
+        has been done.  Moment calculations (skew and kurtosis 
+        mainly) are fixed and verified, all examples are now 
+        runnable, and many small accuracy and performance 
+        improvements for individual distributions were merged.
+      * The new function `scipy.stats.anderson_ksamp` computes the 
+        k-sample Anderson-Darling test for the null hypothesis that 
+        k samples come from the same parent population.
+    * ``scipy.signal`` improvements
+      * ``scipy.signal.iirfilter`` and related functions to design 
+        Butterworth, Chebyshev, elliptical and Bessel IIR filters 
+        now all use pole-zero ("zpk") format internally instead of 
+        using transformations to numerator/denominator format.  
+        The accuracy of the produced filters, especially high-order
+        ones, is improved significantly as a result.
+      * The new function `scipy.signal.vectorstrength` computes the 
+        vector strength, a measure of phase synchrony, of a set of 
+        events.
+    * ``scipy.special`` improvements
+      * The functions `scipy.special.boxcox` and 
+        `scipy.special.boxcox1p`, which compute the 
+        Box-Cox  transformation, have been added.
+    * ``scipy.sparse`` improvements
+      * Significant performance improvement in CSR, CSC, and DOK 
+        indexing speed. 
+      * When using Numpy >= 1.9 (to be released in MM 2014), sparse 
+        matrices function correctly when given to arguments of 
+        ``np.dot``, ``np.multiply`` and other ufuncs.  
+        With earlier Numpy and Scipy versions, the results of such 
+        operations are undefined and usually unexpected. 
+      * Sparse matrices are no longer limited to ``2^31`` nonzero 
+        elements.  They automatically switch to using 64-bit index 
+        data type for matrices containing more elements.  User code 
+        written assuming the sparse matrices use int32 as the index 
+        data type will continue to work, except for such large 
+        matrices. Code dealing with larger matrices needs to accept 
+        either int32 or int64 indices. 
+  * Deprecated features
+    * ``anneal``
+      * The global minimization function `scipy.optimize.anneal` is 
+        deprecated.  All users should use the 
+        `scipy.optimize.basinhopping` function instead.
+    * ``scipy.stats``
+      * ``randwcdf`` and ``randwppf`` functions are deprecated. 
+        All users should use distribution-specific ``rvs`` methods 
+        instead.
+      * Probability calculation aliases ``zprob``, ``fprob`` and 
+        ``ksprob`` are deprecated. Use instead the ``sf`` methods 
+        of the corresponding distributions or the ``special`` 
+        functions directly.
+    * ``scipy.interpolate``
+      * ``PiecewisePolynomial`` class is deprecated.
+  * Backwards incompatible changes
+    * scipy.special.lpmn
+      * ``lpmn`` no longer accepts complex-valued arguments. A new 
+        function ``clpmn`` with uniform complex analytic behavior 
+        has been added, and it should be used instead.
+    * scipy.sparse.linalg
+      * Eigenvectors in the case of generalized eigenvalue problem 
+        are normalized to unit vectors in 2-norm, rather than 
+        following the LAPACK normalization convention.
+      * The deprecated UMFPACK wrapper in ``scipy.sparse.linalg`` 
+        has been removed due to license and install issues.  If 
+        available, ``scikits.umfpack`` is still used transparently 
+        in the ``spsolve`` and ``factorized`` functions.  
+        Otherwise, SuperLU is used instead in these functions.
+    * scipy.stats
+      * The deprecated functions ``glm``, ``oneway`` and 
+        ``cmedian`` have been removed from ``scipy.stats``.
+      * ``stats.scoreatpercentile`` now returns an array instead of
+        a list of percentiles.
+    * scipy.interpolate
+      * The API for computing derivatives of a monotone piecewise 
+        interpolation has changed: if `p` is a 
+        ``PchipInterpolator`` object, `p.derivative(der)`  
+        returns a callable object representing the derivative of 
+        `p`. For in-place derivatives use the second argument of 
+        the `__call__` method: `p(0.1, der=2)` evaluates the 
+        second derivative of `p` at `x=0.1`.
+      * The method `p.derivatives` has been removed.
+      
+-------------------------------------------------------------------
+Sun Mar  2 04:22:42 UTC 2014 - arun@gmx.de
+
+- updated to version 0.13.3
+  Issues fixed:
+  * 3148: fix a memory leak in ``ndimage.label``.
+  * 3216: fix weave issue with too long file names for MSVC.
+  Other changes:
+  * Update Sphinx theme used for html docs so ``>>>`` in examples can be toggled.
+
+-------------------------------------------------------------------
+Wed Dec 11 14:15:25 UTC 2013 - toddrme2178@gmail.com
+
+- Update to version 0.13.2
+  + require Cython 0.19, earlier versions have memory leaks in 
+    fused types
+  + ndimage.label fix swapped 64-bitness test
+  + optimize.fmin_slsqp constraint violation
+- Require python-Cython >= 0.19
+
+-------------------------------------------------------------------
+Tue Nov 19 21:23:02 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.13.1
+  + ``ndimage.label`` returns incorrect results in scipy 0.13.0
+  + ``ndimage.label`` return type changed from int32 to uint32
+  + `ndimage.find_objects`` doesn't work with int32 input in some cases
+  
+-------------------------------------------------------------------
+Fri Oct 25 15:17:10 UTC 2013 - toddrme2178@gmail.com
+
+- Update to 0.13.0
+  * Highlights
+      * support for fancy indexing and boolean comparisons with 
+        sparse matrices
+      * interpolative decompositions and matrix functions in the 
+        linalg module
+      * two new trust-region solvers for unconstrained minimization
+  * scipy.integrate improvements
+      * N-dimensional numerical integration
+      * dopri* improvements
+  * scipy.linalg improvements
+      * Interpolative decompositions
+      * Polar decomposition
+      * BLAS level 3 functions
+      * Matrix functions
+  * scipy.optimize improvements
+      * Trust-region unconstrained minimization algorithms
+  * scipy.sparse improvements
+      * Boolean comparisons and sparse matrices
+      * CSR and CSC fancy indexing
+  * scipy.io improvements
+      * Unformatted Fortran file reader
+      * scipy.io.wavfile enhancements
+  * scipy.interpolate improvements
+      * B-spline derivatives and antiderivatives
+  * Deprecated features
+    * expm2 and expm3
+    * scipy.stats functions
+  * Backwards incompatible changes
+    * LIL matrix assignment
+    * Deprecated radon function removed
+    * Removed deprecated keywords xa and xb from 
+      stats.distributions
+    * Changes to MATLAB file readers / writers
+- Add a new flag to easily enable/disable atlas support for if it
+  ever gets fixed in the future
+- Added numpy version number to requires and buildrequires
+- Updated rpmlint fixes
+
+-------------------------------------------------------------------
+Sun Apr 14 04:43:43 UTC 2013 - termim@gmail.com
+
+- Update to version 0.12.0
+  Some of the highlights of this release are:
+  * Completed QHull wrappers in scipy.spatial.
+  * cKDTree now a drop-in replacement for KDTree.
+  * A new global optimizer, basinhopping.
+  * Support for Python 2 and Python 3 from the same code base (no more 2to3).
+ 
+-------------------------------------------------------------------
+Mon Oct  1 12:45:12 UTC 2012 - toddrme2178@gmail.com
+
+- Update to version 0.11.0:
+  * Sparse Graph Submodule
+  * scipy.optimize improvements
+    * A unified interface to minimizers of univariate and 
+      multivariate functions has been added. 
+    * A unified interface to root finding algorithms for 
+      multivariate functions has been added.
+    * The L-BFGS-B algorithm has been updated to version 3.0.
+  * scipy.linalg improvements
+    * New matrix equation solvers
+    * QZ and QR Decomposition
+    * Pascal matrices
+    * Sparse matrix construction and operations
+    * LSMR iterative solver 
+    * Discrete Sine Transform
+  * scipy.interpolate improvements
+    * Interpolation in spherical coordinates
+  * scipy.stats improvements
+    * Binned statistics
+- Remove upstreamed patches
+
+-------------------------------------------------------------------
+Mon Aug 27 09:12:38 UTC 2012 - toddrme2178@gmail.com
+
+- Disable broken libatlas3
+
+-------------------------------------------------------------------
+Mon Jun  4 15:32:19 UTC 2012 - toddrme2178@gmail.com
+
+- Add suitesparse buildrequires
+- Remove blas/lapack tests since these build successfully on all
+  targets now
+  
+-------------------------------------------------------------------
+Tue May 29 19:51:34 UTC 2012 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  No LGPL licenses found in the package
+
+-------------------------------------------------------------------
+Tue May 29 11:28:00 UTC 2012 - toddrme2178@gmail.com
+
+- Don't build against libatlas on factory since libatlas doesn't 
+  work there
+
+-------------------------------------------------------------------
+Fri May 18 08:54:19 UTC 2012 - toddrme2178@gmail.com
+
+- Fix rmplint warnings
+- Clean up spec file formatting
+
+-------------------------------------------------------------------
+Mon Apr 30 15:17:34 UTC 2012 - toddrme2178@gmail.com
+
+- Removed tests for unsupported openSUSE versions
+
+-------------------------------------------------------------------
+Tue Apr 24 12:06:38 UTC 2012 - toddrme2178@gmail.com
+
+- Add python 3 package
+
+-------------------------------------------------------------------
+Sat Apr 14 03:11:58 UTC 2012 - badshah400@gmail.com
+
+- Modify BuildRequires to match recent name changes of lapack and
+  blas in project. 
+
+-------------------------------------------------------------------
+Tue Mar 27 09:35:10 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.10.1:
+  * AFAICS, upstream provides no changelog
+- Spec file cleanup:
+  * New sub-package weave provides the devel package (only headers in
+    a 'devel' package won't work)
+  * Don't ship testsuite and package weave examples as documentation
+  * Set license to SDPX style
+
+-------------------------------------------------------------------
+Sun Oct  2 22:16:43 CEST 2011 - behrisch@users.sf.net
+
+- update to 0.10.0b2
+- added patch for fortran functions returning random data
+- prepared addition of ufsparse
+
+-------------------------------------------------------------------
+Mon Sep 13 08:13:03 UTC 2010 - coolo@novell.com
+
+- update to 0.8.0:
+   * Python 3 compat
+   * Major documentation improvements
+   * Deprecated features
+      o Swapping inputs for correlation functions (scipy.signal)
+      o Obsolete code deprecated (scipy.misc)
+   * New features
+      o DCT support (scipy.fftpack)
+      o Single precision support for fft functions (scipy.fftpack)
+      o Correlation functions now implement the usual definition (scipy.signal)
+      o Additions and modification to LTI functions (scipy.signal)
+    ... many more, see 0.8.0-notes.rst
+
+-------------------------------------------------------------------
+Tue Jul 14 17:44:43 CEST 2009 - lars@linux-schulserver.de
+
+- update to 0.7.1:
+  + Several fixes in Matlab file IO
+  + Work around a failure with Python 2.6
+  + Memory leak in lfilter have been fixed
+  + Several bugs of varying severity were fixed in the special 
+    functions
+- adapted patches to latest version
+- also package release notes
+
+-------------------------------------------------------------------
+Sun Jun 21 12:12:10 CEST 2009 - lars@linux-schulserver.de
+
+- update to 0.7.0.3 (0.7.1rc3):
+  + bugfix release
+- adapted patches:
+  + scipy-0.7.1rc3-implicit-fortify-decl.patch (xerbla.c)
+  + scipy-0.7.1rc3-undefined_operation.patch (zutil.c; cutil.c) 
+- new patches:
+  + scipy-0.7.1rc3-umfpack-include.patch (fix to find umfpack)
+  + scipy-0.7.1rc3-atlas-include.patch (fix to find atlas)
+  + scipy-0.7.1rc3-superlu.patch (correct use of fprintf)
+- enable umfpack, atlas and amd support
+- drop devel subpackage 
+- enable mandriva build
+
+-------------------------------------------------------------------
+Mon Mar  9 15:55:36 CET 2009 - lars@linux-schulserver.de
+
+- update to 0.7.0:
+  SciPy 0.7.0 is the culmination of 16 months of hard work. It 
+  contains many new features, numerous bug-fixes, improved test 
+  coverage and better documentation.
+  + Python 2.6 support (NOT Python 3.0)
+  + Major documentation improvements
+  + Support for NumScons has been added
+  + Sandbox Removed
+  + Sparse matrices have seen extensive improvements
+  + Statistical functions for masked arrays have been added
+  + The IO code in both NumPy and SciPy is being extensively
+    reworked
+  + New Hierarchical Clustering module
+  + New Spatial package
+  + Reworked fftpack package
+  + New Constants package
+  + New Radial Basis Function module
+  + New complex ODE integrator
+  + New generalized symmetric and hermitian eigenvalue problem solver
+  + Bug fixes in the interpolation package
+  + Weave clean up
+- adapted patches to new source  
+
+-------------------------------------------------------------------
+Fri Dec 19 23:48:19 CET 2008 - lars@linux-schulserver.de
+
+- fix compile errors on 11.1 and Factory (should go upstream):
+  + scipy-0.6.0-implicit-fortify-decl.patch
+  + scipy-0.6.0-undefined_operation.patch
+  + scipy-0.6.0-no-return-in-nonvoid-function.patch
+
+-------------------------------------------------------------------
+Thu Oct 30 21:29:56 CET 2008 - lars@linux-schulserver.de
+
+- temporary fix _Py_c_abs compile error on new python
+
+-------------------------------------------------------------------
+Thu Sep 25 16:21:33 CEST 2008 - lars@linux-schulserver.de
+
+- moved to Education base repository
+
+-------------------------------------------------------------------
+Thu Jul 01 14:10:10 CEST 2008 - andrea@opensuse-org
+
+- fixed spec file
+- libblas-devel is now libblas3 and blas to avoid version conflicts
+- devel package splitted out to make rpmlint happy
+
+-------------------------------------------------------------------
+Sun May 11 18:11:16 CEST 2008 - lars@linux-schulserver.de
+
+- build for openSUSE-Education
+- Require python-numpy-devel for build
+- blas-devel is now libblas-devel
+- beautify specfile
+
+-------------------------------------------------------------------
+Tue Nov 06 00:00:00 CEST 2007 Felix Richter <felix.richter2@uni-rostock.de>
+
+- version bump to 0.6.0
+
+-------------------------------------------------------------------
+Fri Oct 19 00:00:00 CEST 2007 Werner Hoch <werner.ho@gmx.de>
+
+- removed blas/lapack-devel packages for newer distributions
+
+-------------------------------------------------------------------
+Sat Sep 08 00:00:00 CEST 2007 Werner Hoch <werner.ho@gmx.de>
+
+- new version 0.5.2.1
+
+-------------------------------------------------------------------
+Fri Jan 19 00:00:00 CEST 2007 Werner Hoch <werner.ho@gmx.de>
+
+- version upgraded to 0.5.2
+
+-------------------------------------------------------------------
+Thu Dec 05 00:00:00 CEST 2006 Werner Hoch <werner.ho@gmx.de>
+
+- added blas-devel and lapack-devel to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 28 00:00:00 CEST 2006 Werner Hoch <werner.ho@gmx.de>
+
+- Initial build.

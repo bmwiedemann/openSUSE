@@ -1,0 +1,117 @@
+diff -uprN kinput2-v3.1.orig/lib/OffConv.c kinput2-v3.1/lib/OffConv.c
+--- kinput2-v3.1.orig/lib/OffConv.c	2003-11-20 22:48:22.000000000 +0900
++++ kinput2-v3.1/lib/OffConv.c	2003-11-20 22:48:34.000000000 +0900
+@@ -44,6 +44,14 @@ static char *rcsid = "$Id: OffConv.c,v 1
+ #define DEBUG_VAR debug_OffTheSpotConversion
+ #include "DebugPrint.h"
+ 
++#define CloseWindowProtection(w) \
++     {\
++         Atom protocols;\
++         protocols = XInternAtom(XtDisplay(w), "WM_DELETE_WINDOW", False);\
++         XSetWMProtocols(XtDisplay(w), XtWindow(w), &protocols, 1);\
++     }
++ 
++
+ /*- resource table for OffTheSpotConversion (SeparateConversion has no resources -*/
+ static XtResource off_resources[] = {
+ #define offset(field) XtOffset(OffTheSpotConversionWidget, offthespot.field)
+@@ -619,6 +627,7 @@ ConversionAttributes *value;
+ 
+     /* ポップアップする */
+     XtPopup(widget, XtGrabNone);
++    CloseWindowProtection(widget);
+ }
+ 
+ /*- Separate_ConversionFinish: Separate conversion finish -*/
+@@ -1024,6 +1033,7 @@ Widget w;
+     XtVaSetValues(ocw->offthespot.modewidget,
+ 		  XtNlabel, ICGetMode(ocw->ccontrol.inputobj),
+ 		  NULL);
++    TRACE(("OffTheSpotConversion:UpdateMode():end\n"));
+ }
+ 
+ static void
+@@ -1088,6 +1098,7 @@ int kind;
+     LocateSelectionPopup(ocw);
+ 
+     XtPopup(ocw->offthespot.selectionshell, XtGrabNone);
++    CloseWindowProtection(ocw->offthespot.selectionshell);
+     ocw->offthespot.selectionpoppedup = True;
+ }
+ 
+@@ -1253,6 +1264,7 @@ OffTheSpotConversionWidget ocw;
+   LocateAuxPopup(ocw);
+ 
+   XtPopup(ocw->offthespot.auxshell, XtGrabNone);
++  CloseWindowProtection(ocw->offthespot.auxshell);
+   ocw->offthespot.auxpoppedup = True;
+ }
+ 
+diff -uprN kinput2-v3.1.orig/lib/OnConv.c kinput2-v3.1/lib/OnConv.c
+--- kinput2-v3.1.orig/lib/OnConv.c	2003-11-20 22:48:22.000000000 +0900
++++ kinput2-v3.1/lib/OnConv.c	2003-11-20 22:48:34.000000000 +0900
+@@ -39,6 +39,14 @@ static char *rcsid = "$Id: OnConv.c,v 10
+ #define DEBUG_VAR debug_OnTheSpotConversion
+ #include "DebugPrint.h"
+ 
++#define CloseWindowProtection(w) \
++    {\
++        Atom protocols;\
++        protocols = XInternAtom(XtDisplay(w), "WM_DELETE_WINDOW", False);\
++        XSetWMProtocols(XtDisplay(w), XtWindow(w), &protocols, 1);\
++    }
++
++
+ /*- resource table -*/
+ static XtResource resources[] = {
+ #define offset(field) XtOffset(OnTheSpotConversionWidget, onthespot.field)
+@@ -778,6 +786,7 @@ int kind;
+ 
+     LocateSelectionPopup(ocw);
+     XtPopup(ocw->onthespot.selectionshell, XtGrabNone);
++    CloseWindowProtection(ocw->onthespot.selectionshell);
+     ocw->onthespot.selectionpoppedup = True;
+ }
+ 
+@@ -952,6 +961,7 @@ OnTheSpotConversionWidget ocw;
+   LocateAuxPopup(ocw);
+ 
+   XtPopup(ocw->onthespot.auxshell, XtGrabNone);
++  CloseWindowProtection(ocw->onthespot.auxshell);
+   ocw->onthespot.auxpoppedup = True;
+ }
+ 
+diff -uprN kinput2-v3.1.orig/lib/OverConv.c kinput2-v3.1/lib/OverConv.c
+--- kinput2-v3.1.orig/lib/OverConv.c	2003-11-20 22:48:22.000000000 +0900
++++ kinput2-v3.1/lib/OverConv.c	2003-11-20 22:48:34.000000000 +0900
+@@ -37,6 +37,13 @@ static char *rcsid = "$Id: OverConv.c,v 
+ #define DEBUG_VAR debug_OverTheSpotConversion
+ #include "DebugPrint.h"
+ 
++#define CloseWindowProtection(w) \
++    {\
++        Atom protocols;\
++        protocols = XInternAtom(XtDisplay(w), "WM_DELETE_WINDOW", False);\
++        XSetWMProtocols(XtDisplay(w), XtWindow(w), &protocols, 1);\
++    }
++
+ typedef enum { NeedNone, NeedRedraw, NeedReconfig } ResetStatus;
+ 
+ /*- resource table -*/
+@@ -1295,6 +1302,7 @@ int kind;
+ 
+     locateSelectionPopup(ocw);
+     XtPopup(ocw->overthespot.selectionshell, XtGrabNone);
++    CloseWindowProtection(ocw->overthespot.selectionshell); 
+     ocw->overthespot.selectionpoppedup = True;
+ }
+ 
+@@ -1504,6 +1512,7 @@ OverTheSpotConversionWidget ocw;
+   locateAuxPopup(ocw, False);
+   
+   XtPopup(ocw->overthespot.auxshell, XtGrabNone);
++  CloseWindowProtection(ocw->overthespot.auxshell)
+   ocw->overthespot.auxpoppedup = True;
+ }
+ 

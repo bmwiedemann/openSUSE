@@ -1,0 +1,24 @@
+--- args.h
++++ args.h
+@@ -29,8 +29,8 @@
+ 
+ /* defaults macros */
+ #define WMAPPLRC ".wmapplrc"
+-#define ICONPATH "/usr/share/icons/wmappl:/usr/share/pixmaps/mini"
+-
++#define ICONPATH "/usr/share/icons/wmappl:/usr/share/pixmaps/mini:/usr/X11R6/share/WindowMaker/Icons:/usr/X11R6/share/WindowMaker/Pixmaps:/usr/X11R6/share/WindowMaker/Backgrounds:/usr/X11R6/include/X11/pixmaps:/usr/share/pixmaps:/usr/local/share/pixmaps"
++ 
+ 
+ /* MACRO defining the path separator */
+ #define PATHSEP     ':'
+--- rcparser.c
++++ rcparser.c
+@@ -349,7 +349,7 @@
+ 	char *return_line = NULL;
+ 	char *this_line = NULL;
+ 
+-	char c;
++	int c;
+ 	int char_count;
+   int inquote = 0;
+ 

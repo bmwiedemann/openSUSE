@@ -1,0 +1,70 @@
+---
+ src/Scrollbar.c  |   11 +++++++----
+ src/SimpleMenu.c |    2 +-
+ src/Xaw3dP.c     |    2 +-
+ 3 files changed, 9 insertions(+), 6 deletions(-)
+
+Index: libXaw3d-1.6.2/src/Scrollbar.c
+===================================================================
+--- libXaw3d-1.6.2.orig/src/Scrollbar.c
++++ libXaw3d-1.6.2/src/Scrollbar.c
+@@ -159,9 +159,8 @@ static Boolean SetValues(Widget, Widget,
+ 
+ #ifdef XAW_ARROW_SCROLLBARS
+ static void HandleThumb(Widget, XEvent *, String *, Cardinal *);
+-#else
+-static void StartScroll(Widget, XEvent *, String *, Cardinal *);
+ #endif
++static void StartScroll(Widget, XEvent *, String *, Cardinal *);
+ static void MoveThumb(Widget, XEvent *, String *, Cardinal *);
+ static void NotifyThumb(Widget, XEvent *, String *, Cardinal *);
+ static void NotifyScroll(Widget, XEvent *, String *, Cardinal *);
+@@ -170,9 +169,8 @@ static void EndScroll(Widget, XEvent *,
+ static XtActionsRec actions[] = {
+ #ifdef XAW_ARROW_SCROLLBARS
+     {"HandleThumb",	HandleThumb},
+-#else
+-    {"StartScroll",     StartScroll},
+ #endif
++    {"StartScroll",     StartScroll},
+     {"MoveThumb",	MoveThumb},
+     {"NotifyThumb",	NotifyThumb},
+     {"NotifyScroll",	NotifyScroll},
+@@ -1055,6 +1053,11 @@ RepeatNotify(XtPointer client_data, XtIn
+ 		    client_data);
+ }
+ 
++static void StartScroll (Widget w, XEvent *event, String *params, Cardinal *num_params )
++//    String *params;		/* direction: Back|Forward|Smooth */
++//    Cardinal *num_params;	/* we only support 1 */
++{
++}
+ #else /* XAW_ARROW_SCROLLBARS */
+ /* ARGSUSED */
+ static void
+Index: libXaw3d-1.6.2/src/SimpleMenu.c
+===================================================================
+--- libXaw3d-1.6.2.orig/src/SimpleMenu.c
++++ libXaw3d-1.6.2/src/SimpleMenu.c
+@@ -1302,7 +1302,7 @@ SetMarginWidths(Widget w)
+     SimpleMenuWidget smw = (SimpleMenuWidget)w;
+     SmeObject *entry;
+     SmeBSBObject bsb_entry;
+-    Dimension l_mrgn, l_bmw, r_mrgn, r_bmw;
++    Dimension l_mrgn = 0, l_bmw, r_mrgn = 0, r_bmw;
+ 
+     if (smw->simple_menu.left_whitespace || smw->simple_menu.right_whitespace)
+     {
+Index: libXaw3d-1.6.2/src/Xaw3dP.c
+===================================================================
+--- libXaw3d-1.6.2.orig/src/Xaw3dP.c
++++ libXaw3d-1.6.2/src/Xaw3dP.c
+@@ -73,7 +73,7 @@ stipplePixmap(Widget w, Pixmap pm, Color
+     Display *dpy;
+     XpmImage image;
+     XpmAttributes attr;
+-    XpmColor *src_table, *dst_table;
++    XpmColor *src_table = NULL, *dst_table;
+     int i, j, index = -1;
+ 
+     if (pm == None)

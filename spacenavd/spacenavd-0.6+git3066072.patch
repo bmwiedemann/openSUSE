@@ -1,0 +1,900 @@
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..9cb4787
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,6 @@
++*.o
++*.d
++*.swp
++Makefile
++spacenavd
++config.h
+diff --git a/AUTHORS b/AUTHORS
+index b0e0027..f7911f6 100644
+--- a/AUTHORS
++++ b/AUTHORS
+@@ -4,5 +4,5 @@ Main author and maintainer:
+ Serial device support (libsball):
+ 	John E. Stone <j.stone@acm.org>	
+ 
+-Minor fixes:
++Contributors:
+ 	Doug LaRue, Krister Svanlun, Hans Meine, Jaroslaw Bulat, Pavel Frolov
+diff --git a/Makefile.in b/Makefile.in
+index 686bfa5..9eba102 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1,4 +1,4 @@
+-src = $(wildcard src/*.c) $(wildcard src/serial/*.c) $(wildcard src/magellan/*.c)
++src = $(sort $(wildcard src/*.c) $(wildcard src/serial/*.c) $(wildcard src/magellan/*.c))
+ hdr = $(wildcard src/*.h) $(wildcard src/serial/*.h) $(wildcard src/magellan/*.h)
+ obj = $(src:.c=.o)
+ dep = $(obj:.o=.d)
+diff --git a/README b/README
+deleted file mode 100644
+index 87ca923..0000000
+--- a/README
++++ /dev/null
+@@ -1,60 +0,0 @@
+-spacenavd - 0.6
+----------------
+-
+-1. About
+-  Spacenavd, is a free software replacement user-space driver (daemon), for
+-  3Dconnexion's space-something 6dof input devices. It's compatible with the
+-  original 3dxsrv proprietary daemon provided by 3Dconnexion, and works
+-  perfectly with any program that was written for the 3Dconnexion driver.
+-
+-  For more info on the spacenav project, visit: http://spacenav.sourceforge.net
+-
+-
+-2. Dependencies
+-  In order to compile the spacenavd daemon, you'll need the following:
+-    * GNU C Compiler
+-    * GNU make
+-    * Xlib headers (optional)
+-
+-  You can compile the daemon without Xlib, but it won't be compatible with
+-  applications that where written for the original proprietary 3Dconnexion
+-  driver (e.g. blender, maya, etc). The 3dxsrv compatibility interface needs to
+-  go through the X window system.
+-
+-3. Installation
+-  If you have the dependencies installed, just run ``./configure'' and then
+-  ``make'' to compile the daemon, and ``make install'', to install it. The
+-  default installation prefix is ``/usr/local''. If you wish to install
+-  somewhere else, you may pass --prefix=/whatever to the configure script.
+-
+-4. Running spacenavd
+-  If your system uses SysV init, then you may run the supplied ``setup_init''
+-  script, and everything should be set up to have spacenavd start automatically
+-  during system startup. However, for now, you won't have to reboot, just type
+-  ``/etc/init.d/spacenavd start'' as root, to start the daemon immediately.
+-
+-  If your system uses BSD init (you can tell if you *don't* have a series of
+-  directories called rc0.d, rc1.d, and so on, in /etc), then you'll have to
+-  follow your init documentation and set this up yourself. You may be able to
+-  use the provided init_script file as a starting point.
+-
+-5. Configuration
+-  The spacenavd daemon reads a number of options from the /etc/spnavrc file. If
+-  that file doesn't exist, then it uses default values for everything. You may
+-  use the graphical spnavcfg program to interactively set any of these options.
+-  The daemon should respond immediately to your changes, and also the
+-  configuration file should be updated automatically.
+-  An example configuration file is included in the doc subdirectory.
+-
+-6. Troubleshooting
+-  If you're having trouble running spacenavd, read the up to date FAQ on the
+-  spacenav website: http://spacenav.sourceforge.net/faq.html
+-
+-  If you're still having trouble, send a description of your problem to the
+-  spacenav-users mailing list: spacenav-users@lists.sourceforge.net
+-  along with a copy of your /var/log/spnavd.log and any other relevant
+-  information.
+-
+-7. License
+-  This program is released under the terms of the GNU GPLv3, see COPYING for
+-  details.
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..88c6be0
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1,82 @@
++spacenavd
++=========
++
++About
++-----
++Spacenavd is a free software user-space driver (daemon), for 6-dof input
++devices, like 3Dconnexion's space-mice. It's compatible with the original 3dxsrv
++proprietary daemon provided by 3Dconnexion, and works as a drop-in replacement
++with any program that was written for the 3Dconnexion driver, but also provides
++an improved communication mechanism for programs designed specifically to work
++with spacenavd.
++
++For more info on the spacenav project, visit: http://spacenav.sourceforge.net
++
++License
++-------
++Copyright (C) 2007-2018 John Tsiombikas <nuclear@member.fsf.org>
++
++This program is free software. Feel free to copy, modify and/or redistribute it
++under the terms of the GNU General Public Licens version 3, or at your option,
++any later version published by the Free Software Foundation. See COPYING for
++details.
++
++Dependencies
++------------
++In order to compile the spacenavd daemon, you'll need the following:
++ - GNU C Compiler
++ - GNU make
++ - Xlib headers (optional)
++
++You can compile the daemon without Xlib, but it won't be compatible with
++applications that where written for the original proprietary 3Dconnexion driver
++(e.g. maya, houdini, etc). The 3dxsrv compatibility interface needs to
++communicate with clients through the X window system. Programs designed to work
++with the alternative spacenavd-specific interface however (e.g. blender) will
++work fine even when spacenavd is built without X11 support.
++
++Installation
++------------
++If you have the dependencies installed, just run `./configure` and then `make`
++to compile the daemon, and then `make install`, to install it.The default
++installation prefix is `/usr/local`. If you wish to install somewhere else, you
++may pass `--prefix=/whatever` to the configure script.
++
++Running spacenavd
++-----------------
++Spacenavd is designed to run during startup as a system daemon.
++
++If your system uses SysV init, then you may run `setup_init` as root, to install
++the spacenavd init script, and have spacenavd start automatically during
++startup. To start the daemon right after installing it, without having to reboot
++your system, just type `/etc/init.d/spacenavd start` as root.
++
++If your system uses BSD init or some other init system, then you'll have to
++follow your init documentation to set this up yourself. You may be able to
++use the provided `init_script` file as a starting point.
++
++For systems running systemd, there is a spacenavd.service file under
++`contrib/systemd`. Follow your system documentation for how to use it.
++
++Configuration
++-------------
++The spacenavd daemon reads a number of options from `/etc/spnavrc`. If
++that file doesn't exist, then it will use default values for everything. An
++example configuration file is included in the doc subdirectory, which you may
++copy to `/etc` and tweak.
++
++You may use the graphical spnavcfg program to interactively set any of these
++options, which will create the spnavrc file for you, and automatically notify
++the daemon to re-read it.
++
++Troubleshooting
++---------------
++If you're having trouble running spacenavd, read the up to date FAQ on the
++spacenav website: http://spacenav.sourceforge.net/faq.html
++
++If you're still having trouble, send a description of your problem to the
++spacenav-users mailing list: spacenav-users@lists.sourceforge.net along with a
++copy of your /var/log/spnavd.log and any other relevant information.
++
++If you have encountered a bug, please file a bug report in our bug tracking
++system: https://sourceforge.net/p/spacenav/bugs/
+diff --git a/configure b/configure
+index 2795a3c..a20f704 100755
+--- a/configure
++++ b/configure
+@@ -28,7 +28,7 @@ test_kver() {
+ check_header() {
+ 	echo "#include <$1>" >.chkhdr.c
+ 	if cpp .chkhdr.c >/dev/null 2>&1; then
+-		echo "#define HAVE_`echo $1 | tr '[:lower:]' '[:upper:]' | sed 's/\./_/g'`"
++		echo "#define HAVE_`basename $1 | tr '[:lower:]' '[:upper:]' | sed 's/\./_/g'`"
+ 	fi
+ 	rm -f .chkhdr.c
+ }
+@@ -39,10 +39,11 @@ OPT=yes
+ DBG=yes
+ X11=yes
+ HOTPLUG=yes
+-VER=`head -1 README | sed 's/^.*- //'`
++XINPUT=yes
++VER=`git describe --tags 2>/dev/null`
+ 
+-if echo $VER | grep '$Rev' >/dev/null; then
+-	VER=svn-r`echo $VER | awk '{print $2}' | sed 's/$//g'`
++if [ -z "$VER" ]; then
++	VER=`git rev-parse --short HEAD`
+ fi
+ 
+ echo "configuring spacenavd - $VER"
+@@ -140,6 +141,9 @@ fi
+ 
+ if [ "$X11" = 'yes' ]; then
+ 	echo 'xlib = -L/usr/X11/lib -lX11' >>Makefile
++	if [ -n "`check_header X11/extensions/XInput2.h 2>&1`" ]; then
++		echo 'xlib += -lXi' >>Makefile
++	fi
+ fi
+ 
+ if [ -n "$add_cflags" ]; then
+@@ -170,6 +174,7 @@ echo >>src/config.h
+ 
+ # check for alloca.h
+ check_header alloca.h >>src/config.h
++check_header X11/extensions/XInput2.h >>src/config.h
+ 
+ echo >>src/config.h
+ echo '#endif	/* CONFIG_H_ */' >>src/config.h
+diff --git a/doc/example-spnavrc b/doc/example-spnavrc
+index 964b343..0f33b2c 100644
+--- a/doc/example-spnavrc
++++ b/doc/example-spnavrc
+@@ -9,34 +9,116 @@
+ 
+ 
+ # Sensitivity is multiplied with every motion (1.0 normal).
++#
+ #sensitivity = 1.0
+ 
+-
+ # Separate sensitivity for rotation and translation.
++#
+ #sensitivity-translation = 1.0
+ #sensitivity-rotation = 1.0
+ 
++# Separate sensitivity for each roation and translation axis.
++#
++#sensitivity-translation-x = 1.0
++#sensitivity-translation-y = 1.0
++#sensitivity-translation-z = 1.0
++#sensitivity-rotation-x = 1.0
++#sensitivity-rotation-y = 1.0
++#sensitivity-rotation-z = 1.0
++
+ 
+ # Dead zone; any motion less than this number is discarded as noise.
++#
+ #dead-zone = 2
+ 
++# Separate dead-zone for each rotation and translation axis.
++#
++#dead-zone-translation-x = 2
++#dead-zone-translation-y = 2
++#dead-zone-translation-z = 2
++#dead-zone-rotation-x = 2
++#dead-zone-rotation-y = 2
++#dead-zone-rotation-z = 2
++
+ 
+ # Selectively invert translation and rotation axes. Valid values are
+ # combinations of the letters x, y, and z.
++#
+ #invert-rot = yz
+ #invert-trans = yz
+ 
+ 
+ # Swap Y and Z axes
++#
+ #swap-yz = false
+ 
+ 
++# Axis remapping (zero-based)
++#
++#axismap0 = 0
++#axismap1 = 1
++#...
++#axismapN = N  (N < 64)
++
++
++# Button remapping (zero-based)
++#
++#bnmap0 = 0
++#bnmap1 = 1
++#...
++#bnmapN = N  (N < 64)
++
++
++# Map buttons to keyboard keys (experimental)
++# By default no such mappings are active. Use the following syntax:
++#    kbmapN = <keysym>
++# where N is the button number (zero-based), and <keysym> is a keysym name from
++# /usr/include/X11/keysymdef.h, without the leading XK_
++# Example:
++#    kbmap0 = Escape
++
++
+ # Serial device
+ # Set this only if you have a serial device, and make sure you specify the
+ # correct device file. If you do set this option, any USB devices will be
+ # ignored!
++#
+ #serial = /dev/ttyS0
+ 
+ 
+ # Enable/disable LED light (for devices that have one).
++#
+ #led = on
++
++
++# Device grab (USB)
++#
++# When set to true (default): grab the USB device to prevent other programs
++# (such as the X server) from also using it.
++#
++# Grabbing the device ensures that other programs won't be able to use it without
++# talking to spacenavd. For instance some versions of Xorg will use the device to move
++# the mouse pointer if we don't grab it.
++# Set this to false if you want to use programs that try to talk to the device directly
++# such as google earth, then follow FAQ 11 http://spacenav.sourceforge.net/faq.html#faq11
++# to force the X server to ignore the device
++#
++#grab = true
++
++
++# List of additional USB devices to use (multiple devices can be listed)
++#
++# example:
++#    device-id = 046d:c625
++
++
++# Repeat interval (milliseconds)
++# Non-deadzone events are repeated every so many milliseconds (-1 to disable).
++#
++# You probably don't need this setting. Set it to something like 250 if you
++# find that your apps stop moving the view while you hold the puck/ball at a
++# fixed off-center position (like bottomed out on the vertical axis).
++# Might cause inadvertent continuous motion if the deadzone is too small for
++# the re-centering power of the device.
++#
++#repeat-interval = -1
+diff --git a/src/cfgfile.c b/src/cfgfile.c
+index 75cb45a..9c42ac6 100644
+--- a/src/cfgfile.c
++++ b/src/cfgfile.c
+@@ -1,6 +1,6 @@
+ /*
+ spacenavd - a free software replacement driver for 6dof space-mice.
+-Copyright (C) 2007-2013 John Tsiombikas <nuclear@member.fsf.org>
++Copyright (C) 2007-2018 John Tsiombikas <nuclear@member.fsf.org>
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+@@ -42,7 +42,7 @@ void default_cfg(struct cfg *cfg)
+ 		cfg->dead_threshold[i] = 2;
+ 	}
+ 
+-	cfg->led = 1;
++	cfg->led = LED_ON;
+ 	cfg->grab_device = 1;
+ 
+ 	for(i=0; i<6; i++) {
+@@ -268,10 +268,12 @@ int read_cfg(const char *fname, struct cfg *cfg)
+ 			if(isint) {
+ 				cfg->led = ival;
+ 			} else {
+-				if(strcmp(val_str, "true") == 0 || strcmp(val_str, "on") == 0 || strcmp(val_str, "yes") == 0) {
+-					cfg->led = 1;
++				if(strcmp(val_str, "auto") == 0) {
++					cfg->led = LED_AUTO;
++				} else if(strcmp(val_str, "true") == 0 || strcmp(val_str, "on") == 0 || strcmp(val_str, "yes") == 0) {
++					cfg->led = LED_ON;
+ 				} else if(strcmp(val_str, "false") == 0 || strcmp(val_str, "off") == 0 || strcmp(val_str, "no") == 0) {
+-					cfg->led = 0;
++					cfg->led = LED_OFF;
+ 				} else {
+ 					fprintf(stderr, "invalid configuration value for %s, expected a boolean value.\n", key_str);
+ 					continue;
+@@ -293,7 +295,7 @@ int read_cfg(const char *fname, struct cfg *cfg)
+ 			}
+ 
+ 		} else if(strcmp(key_str, "serial") == 0) {
+-			strncpy(cfg->serial_dev, val_str, PATH_MAX);
++			strncpy(cfg->serial_dev, val_str, PATH_MAX - 1);
+ 
+ 		} else if(strcmp(key_str, "device-id") == 0) {
+ 			unsigned int vendor, prod;
+@@ -333,7 +335,7 @@ int write_cfg(const char *fname, struct cfg *cfg)
+ 		return -1;
+ 	}
+ 
+-	/* aquire exclusive write lock */
++	/* acquire exclusive write lock */
+ 	flk.l_type = F_WRLCK;
+ 	flk.l_start = flk.l_len = 0;
+ 	flk.l_whence = SEEK_SET;
+@@ -427,10 +429,8 @@ int write_cfg(const char *fname, struct cfg *cfg)
+ 		fputc('\n', fp);
+ 	}
+ 
+-	if(!cfg->led) {
+-		fprintf(fp, "# disable led\n");
+-		fprintf(fp, "led = 0\n\n");
+-	}
++	fprintf(fp, "# led status: on, off, or auto (turn on when a client is connected)\n");
++	fprintf(fp, "led = %s\n\n", (cfg->led ? (cfg->led == LED_AUTO ? "auto" : "on") : "off"));
+ 
+ 	if(!cfg->grab_device) {
+ 		fprintf(fp, "# Don't grab USB device\n");
+@@ -452,8 +452,7 @@ int write_cfg(const char *fname, struct cfg *cfg)
+ 		fprintf(fp, "#serial = /dev/ttyS0\n");
+ 	}
+ 
+-	fprintf(fp, "# custom list USB device ids to open if present\n");
+-	fprintf(fp, "# (multiple entries can be listed)\n");
++	fprintf(fp, "List of additional USB devices to use (multiple devices can be listed)");
+ 	for(i=0; i<MAX_CUSTOM; i++) {
+ 		if(cfg->devid[i][0] != -1 && cfg->devid[i][1] != -1) {
+ 			fprintf(fp, "device-id = %x:%x\n", cfg->devid[i][0], cfg->devid[i][1]);
+diff --git a/src/cfgfile.h b/src/cfgfile.h
+index 0d85303..8d56df3 100644
+--- a/src/cfgfile.h
++++ b/src/cfgfile.h
+@@ -25,6 +25,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #define MAX_BUTTONS		64
+ #define MAX_CUSTOM		64
+ 
++enum {
++	LED_OFF		= 0,
++	LED_ON		= 1,
++	LED_AUTO	= 2
++};
++
+ struct cfg {
+ 	float sensitivity, sens_trans[3], sens_rot[3];
+ 	int dead_threshold[MAX_AXES];
+diff --git a/src/client.c b/src/client.c
+index 27d1931..5d13386 100644
+--- a/src/client.c
++++ b/src/client.c
+@@ -20,6 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include "client.h"
++#include "dev.h"
++#include "spnavd.h"
+ 
+ #ifdef USE_X11
+ #include <X11/Xlib.h>
+@@ -77,9 +79,9 @@ struct client *add_client(int type, void *cdata)
+ 	client->sens = 1.0f;
+ 	client->dev_idx = 0; /* default/first device */
+ 
+-	if(client_list == NULL) {
+-		client->next = NULL;
+-		return (client_list = client);
++	if(!client_list && cfg.led == LED_AUTO) {
++		/* on first client, turn the led on */
++		set_devices_led(1);
+ 	}
+ 	client->next = client_list;
+ 	client_list = client;
+@@ -90,14 +92,18 @@ struct client *add_client(int type, void *cdata)
+ void remove_client(struct client *client)
+ {
+ 	struct client *iter = client_list;
++	if(!iter) return;
+ 
+-	if(iter == NULL)
+-		return;
+ 	if(iter == client) {
+ 		client_list = iter->next;
+ 		free(iter);
+-		if((iter = client_list) == NULL)
++		iter = client_list;
++		if(!iter) {
++			if(cfg.led == LED_AUTO) {
++				set_devices_led(0); /* no more clients, turn off led */
++			}
+ 			return;
++		}
+ 	}
+ 
+ 	while(iter->next) {
+@@ -150,12 +156,14 @@ int get_client_device_index(struct client *client)
+ 
+ struct client *first_client(void)
+ {
+-	return (client_iter = client_list);
++	client_iter = client_list;
++	return client_iter;
+ }
+ 
+ struct client *next_client(void)
+ {
+-	if(client_iter)
++	if(client_iter) {
+ 		client_iter = client_iter->next;
++	}
+ 	return client_iter;
+ }
+diff --git a/src/dev.c b/src/dev.c
+index 7fbfc02..b4e5b4b 100644
+--- a/src/dev.c
++++ b/src/dev.c
+@@ -25,6 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include "dev_serial.h"
+ #include "event.h" /* remove pending events upon device removal */
+ #include "spnavd.h"
++#include "proto_x11.h"
+ 
+ static struct device *add_device(void);
+ static struct device *dev_path_in_use(char const * dev_path);
+@@ -72,7 +73,7 @@ int init_devices(void)
+ 			if(open_dev_usb(dev) == -1) {
+ 				remove_device(dev);
+ 			} else {
+-				printf("using device: %s\n", dev->path);
++				printf("using device: %s (%s)\n", dev->name, dev->path);
+ 				device_added++;
+ 				break;
+ 			}
+@@ -82,10 +83,12 @@ int init_devices(void)
+ 
+ 	free_usb_devices_list(usblist);
+ 
+-	if(!device_added) {
++	if(!usblist) {
+ 		fprintf(stderr, "failed to find any supported devices\n");
+ 		return -1;
+ 	}
++
++	drop_xinput();
+ 	return 0;
+ }
+ 
+@@ -180,11 +183,22 @@ void set_device_led(struct device *dev, int state)
+ 	}
+ }
+ 
++void set_devices_led(int state)
++{
++	struct device *dev = get_devices();
++	while(dev) {
++		set_device_led(dev, state);
++		dev = dev->next;
++	}
++}
++
+ struct device *get_devices(void)
+ {
+ 	return dev_list;
+ }
+ 
++#define VENDOR_3DCONNEXION	0x256f
++
+ static int devid_list[][2] = {
+ 	/* 3Dconnexion devices */
+ 	{0x46d, 0xc603},	/* spacemouse plus XT */
+@@ -212,8 +226,13 @@ static int match_usbdev(const struct usb_device_info *devinfo)
+ 		return 1;
+ 	}
+ 
+-	/* match any device in the devid_list */
+ 	if(devinfo->vendorid != -1 && devinfo->productid != -1) {
++		/* match any device with the new 3Dconnexion device id */
++		if(devinfo->vendorid == VENDOR_3DCONNEXION) {
++			return 1;
++		}
++
++		/* match any device in the devid_list */
+ 		for(i=0; devid_list[i][0] > 0; i++) {
+ 			if(devinfo->vendorid == devid_list[i][0] && devinfo->productid == devid_list[i][1]) {
+ 				return 1;
+diff --git a/src/dev.h b/src/dev.h
+index f7ef691..37a7001 100644
+--- a/src/dev.h
++++ b/src/dev.h
+@@ -1,6 +1,6 @@
+ /*
+ spacenavd - a free software replacement driver for 6dof space-mice.
+-Copyright (C) 2007-2013 John Tsiombikas <nuclear@member.fsf.org>
++Copyright (C) 2007-2018 John Tsiombikas <nuclear@member.fsf.org>
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+@@ -31,7 +31,7 @@ struct device {
+ 	char name[MAX_DEV_NAME];
+ 	char path[PATH_MAX];
+ 
+-	int num_axes;
++	int num_axes, num_buttons;
+ 	int *minval, *maxval;	/* input value range (default: -500, 500) */
+ 	int *fuzz;				/* noise threshold */
+ 
+@@ -39,7 +39,7 @@ struct device {
+ 	int (*read)(struct device*, struct dev_input*);
+ 	void (*set_led)(struct device*, int);
+ 
+-  struct device *next;
++	struct device *next;
+ };
+ 
+ int init_devices(void);
+@@ -51,6 +51,7 @@ int get_device_fd(struct device *dev);
+ int get_device_index(struct device *dev);
+ int read_device(struct device *dev, struct dev_input *inp);
+ void set_device_led(struct device *dev, int state);
++void set_devices_led(int state);
+ 
+ struct device *get_devices(void);
+ 
+diff --git a/src/dev_usb_darwin.c b/src/dev_usb_darwin.c
+index 0849f80..f3cb9a4 100644
+--- a/src/dev_usb_darwin.c
++++ b/src/dev_usb_darwin.c
+@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include <stdio.h>
+ #include <IOKit/IOKitLib.h>
+ #include <IOKit/hid/IOHIDLib.h>
++#include "spnavd.h"
+ #include "dev.h"
+ #include "dev_usb.h"
+ 
+diff --git a/src/dev_usb_linux.c b/src/dev_usb_linux.c
+index 30db579..e206de4 100644
+--- a/src/dev_usb_linux.c
++++ b/src/dev_usb_linux.c
+@@ -1,6 +1,6 @@
+ /*
+ spacenavd - a free software replacement driver for 6dof space-mice.
+-Copyright (C) 2007-2013 John Tsiombikas <nuclear@member.fsf.org>
++Copyright (C) 2007-2018 John Tsiombikas <nuclear@member.fsf.org>
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+@@ -34,6 +34,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include "spnavd.h"
+ #include "event.h"
+ #include "hotplug.h"
++#include "client.h"
+ 
+ #define DEF_MINVAL	(-500)
+ #define DEF_MAXVAL	500
+@@ -64,9 +65,9 @@ static void set_led_evdev(struct device *dev, int state);
+ 
+ int open_dev_usb(struct device *dev)
+ {
+-	int i;
++	int i, axes_rel = 0, axes_abs = 0;
+ 	struct input_absinfo absinfo;
+-	unsigned char evtype_mask[(EV_MAX + 7) / 8];
++	unsigned char evtype_mask[((EV_MAX | KEY_MAX) + 7) / 8];
+ 
+ 	if((dev->fd = open(dev->path, O_RDWR)) == -1) {
+ 		if((dev->fd = open(dev->path, O_RDONLY)) == -1) {
+@@ -83,22 +84,61 @@ int open_dev_usb(struct device *dev)
+ 	printf("device name: %s\n", dev->name);
+ 
+ 	/* get number of axes */
+-	dev->num_axes = 6;	/* default to regular 6dof controller axis count */
+-	if(ioctl(dev->fd, EVIOCGBIT(EV_ABS, sizeof evtype_mask), evtype_mask) == 0) {
+-		dev->num_axes = 0;
++	if(ioctl(dev->fd, EVIOCGBIT(EV_ABS, sizeof evtype_mask), evtype_mask) != -1) {
+ 		for(i=0; i<ABS_CNT; i++) {
+ 			int idx = i / 8;
+ 			int bit = i % 8;
+ 
+ 			if(evtype_mask[idx] & (1 << bit)) {
+-				dev->num_axes++;
++				axes_abs++;
+ 			} else {
+ 				break;
+ 			}
+ 		}
++	} else {
++		perror("EVIOCGBIT(EV_ABS) ioctl failed");
+ 	}
+-	if(verbose) {
+-		printf("  Number of axes: %d\n", dev->num_axes);
++	if(ioctl(dev->fd, EVIOCGBIT(EV_REL, sizeof evtype_mask), evtype_mask) != -1) {
++		for(i=0; i<ABS_CNT; i++) {
++			int idx = i / 8;
++			int bit = i % 8;
++
++			if(evtype_mask[idx] & (1 << bit)) {
++				axes_rel++;
++			}
++		}
++	}
++	dev->num_axes = axes_rel + axes_abs;
++	if(!dev->num_axes) {
++		fprintf(stderr, "failed to retrieve number of axes. assuming 6\n");
++		dev->num_axes = 6;
++	} else {
++		if(verbose) {
++			printf("  Number of axes: %d (%da %dr)\n", dev->num_axes, axes_abs, axes_rel);
++		}
++	}
++
++	/* get number of buttons */
++	dev->num_buttons = 0;
++	if(ioctl(dev->fd, EVIOCGBIT(EV_KEY, sizeof evtype_mask), evtype_mask) != -1) {
++		for(i=0; i<KEY_CNT; i++) {
++			int idx = i / 8;
++			int bit = i % 8;
++
++			if(evtype_mask[idx] & (1 << bit)) {
++				dev->num_buttons++;
++			}
++		}
++	} else {
++		perror("EVIOCGBIT(EV_KEY) ioctl failed");
++	}
++	if(!dev->num_buttons) {
++		fprintf(stderr, "failed to retrieve number of buttons, will default to 2\n");
++		dev->num_buttons = 2;
++	} else {
++		if(verbose) {
++			printf("  Number of buttons: %d\n", dev->num_buttons);
++		}
+ 	}
+ 
+ 	dev->minval = malloc(dev->num_axes * sizeof *dev->minval);
+@@ -127,12 +167,6 @@ int open_dev_usb(struct device *dev)
+ 		}
+ 	}
+ 
+-	/*if(ioctl(dev->fd, EVIOCGBIT(0, sizeof(evtype_mask)), evtype_mask) == -1) {
+-		perror("EVIOCGBIT ioctl failed\n");
+-		close(dev->fd);
+-		return -1;
+-	}*/
+-
+ 	if(cfg.grab_device) {
+ 		int grab = 1;
+ 		/* try to grab the device */
+@@ -144,7 +178,7 @@ int open_dev_usb(struct device *dev)
+ 	/* set non-blocking */
+ 	fcntl(dev->fd, F_SETFL, fcntl(dev->fd, F_GETFL) | O_NONBLOCK);
+ 
+-	if(cfg.led) {
++	if(cfg.led == 1 || (cfg.led == 2 && first_client())) {
+ 		set_led_evdev(dev, 1);
+ 	}
+ 
+@@ -229,6 +263,9 @@ static int read_evdev(struct device *dev, struct dev_input *inp)
+ 			break;
+ 
+ 		default:
++			if(verbose) {
++				printf("unhandled event: %d\n", iev.type);
++			}
+ 			return -1;
+ 		}
+ 	}
+@@ -290,7 +327,7 @@ struct usb_device_info *find_usb_devices(int (*match)(const struct usb_device_in
+ 			if(next_section == NULL) {
+ 				/* move last (partial) section to start of buf */
+ 				/* sizeof(buf) - 1 because the last one is '\0' */
+-				buf_used = (buf + sizeof(buf) - 1) - section_start;
++				buf_used = strlen(section_start);
+ 				memmove(buf, section_start, buf_used);
+ 				buf[buf_used] = '\0';
+ 				/* point to end of last section and calc remaining space in buf */
+@@ -342,11 +379,16 @@ struct usb_device_info *find_usb_devices(int (*match)(const struct usb_device_in
+ 				case 'H':
+ 					keyptr = strstr(cur_line, "Handlers=");
+ 					if(keyptr) {
+-						char *devfile, *valptr = keyptr + strlen("Handlers=");
++						char *devfile = 0, *valptr = keyptr + strlen("Handlers=");
+ 						static const char *prefix = "/dev/input/";
+ 
+ 						int idx = 0;
+-						while((devfile = strtok(idx ? 0 : valptr, " \t\v\n\r"))) {
++						while((devfile = strtok(devfile ? 0 : valptr, " \t\v\n\r"))) {
++							if(strstr(devfile, "event") != devfile) {
++								/* ignore everything which isn't an event interface device */
++								continue;
++							}
++
+ 							if(!(devinfo.devfiles[idx] = malloc(strlen(devfile) + strlen(prefix) + 1))) {
+ 								perror("failed to allocate device filename buffer");
+ 								continue;
+diff --git a/src/event.c b/src/event.c
+index 6ed9875..5812779 100644
+--- a/src/event.c
++++ b/src/event.c
+@@ -129,11 +129,11 @@ void process_input(struct device *dev, struct dev_input *inp)
+ 
+ 	switch(inp->type) {
+ 	case INP_MOTION:
++		inp->idx = cfg.map_axis[inp->idx];
++
+ 		if(abs(inp->val) < cfg.dead_threshold[inp->idx] ) {
+ 			inp->val = 0;
+ 		}
+-
+-		inp->idx = cfg.map_axis[inp->idx];
+ 		sign = cfg.invert[inp->idx] ? -1 : 1;
+ 
+ 		inp->val = (int)((float)inp->val * cfg.sensitivity * (inp->idx < 3 ? cfg.sens_trans[inp->idx] : cfg.sens_rot[inp->idx - 3]));
+diff --git a/src/proto_x11.c b/src/proto_x11.c
+index a338ff8..86ebc6f 100644
+--- a/src/proto_x11.c
++++ b/src/proto_x11.c
+@@ -35,9 +35,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include "proto_x11.h"
+ #include "client.h"
+ #include "spnavd.h"
++#include "dev.h"
+ #include "xdetect.h"
+ #include "kbemu.h"
+ 
++#ifdef HAVE_XINPUT2_H
++#include <X11/Xatom.h>
++#include <X11/extensions/XInput2.h>
++#endif
++
+ 
+ enum cmd_msg {
+ 	CMD_NONE,
+@@ -168,6 +174,8 @@ int init_x11(void)
+ 	kbemu_set_display(dpy);
+ 
+ 	xdet_stop();	/* stop X server detection if it was running */
++
++	drop_xinput();
+ 	return 0;
+ }
+ 
+@@ -346,6 +354,42 @@ void remove_client_window(Window win)
+ 	}
+ }
+ 
++void drop_xinput(void)
++{
++#ifdef HAVE_XINPUT2_H
++	XIDeviceInfo *xidevs;
++	int i, num_devs;
++	static Atom atom_enabled;
++
++	if(!dpy) return;
++
++	if(!atom_enabled) {
++		atom_enabled = XInternAtom(dpy, "Device Enabled", False);
++	}
++
++	if(!(xidevs = XIQueryDevice(dpy, XIAllDevices, &num_devs))) {
++		fprintf(stderr, "failed to query XInput2 devices\n");
++		return;
++	}
++
++	for(i=0; i<num_devs; i++) {
++		struct device *dev = get_devices();
++		while(dev) {
++			if(strcmp(dev->name, xidevs[i].name) == 0 && xidevs[i].enabled) {
++				unsigned char zero = 0;
++				printf("Removing device \"%s\" from X server\n", dev->name);
++
++				XIChangeProperty(dpy, xidevs[i].deviceid, atom_enabled, XA_INTEGER, 8, PropModeReplace, &zero, 1);
++				break;
++			}
++			dev = dev->next;
++		}
++	}
++	XIFreeDeviceInfo(xidevs);
++
++#endif	/* HAVE_XINPUT2_H */
++}
++
+ 
+ /* X11 error handler */
+ static int xerr(Display *dpy, XErrorEvent *err)
+diff --git a/src/proto_x11.h b/src/proto_x11.h
+index 6b78361..49881e5 100644
+--- a/src/proto_x11.h
++++ b/src/proto_x11.h
+@@ -37,5 +37,7 @@ int handle_xevents(fd_set *rset);
+ void set_client_window(Window win);
+ void remove_client_window(Window win);
+ 
++void drop_xinput(void);
++
+ 
+ #endif	/* PROTO_X11_H_ */

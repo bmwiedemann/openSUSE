@@ -1,0 +1,13 @@
+--- build.xml.orig	2015-04-30 18:11:44.075363204 +0300
++++ build.xml	2015-04-30 18:12:37.964085560 +0300
+@@ -172,8 +172,8 @@
+       <classpath>
+         <pathelement location="${build.classes.dir}"/>
+         <pathelement location="${build.test.dir}/classes"/>
+-        <pathelement location="lib/junit_4/junit-4.11.jar"/>
+-        <pathelement location="lib/junit_4/hamcrest-core-1.3.jar"/>
++        <pathelement location="lib/junit.jar"/>
++        <pathelement location="lib/hamcrest_core.jar"/>
+       </classpath>
+       <sysproperty key="java.library.path" value="${build.native.dir}"/>
+ 

@@ -1,0 +1,46 @@
+From 8b12f8194120e32775e16c2856a8776d93295082 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Chv=C3=A1tal?= <tomas.chvatal@gmail.com>
+Date: Fri, 8 Mar 2019 16:15:17 +0100
+Subject: [PATCH] Skip tests where we didn't find the binaries
+
+skip tests if we didn't find babel or postcss node binaries allowing us to pass testsuite without them present.
+---
+ tests/test_filters.py | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_filters.py b/tests/test_filters.py
+index 75325a61..3ffdb563 100644
+--- a/tests/test_filters.py
++++ b/tests/test_filters.py
+@@ -1522,7 +1522,14 @@ class TestAutoprefixer6Filter(TempEnvironmentHelper):
+     }
+ 
+     def test_first(self):
+-        self.mkbundle('test.css', filters='autoprefixer6', output='output.css').build()
++        try:
++            self.mkbundle('test.css', filters='autoprefixer6', output='output.css').build()
++        except FilterError as e:
++            # postcss is not installed, that's ok.
++            if 'Program file not found' in e.message:
++                raise SkipTest()
++            else:
++                raise
+         out = self.get('output.css')
+         assert 'webkit' in out
+ 
+@@ -1546,7 +1553,14 @@ def test_es2015(self):
+ 
+     def test_extra_args(self):
+         self.env.config['BABEL_EXTRA_ARGS'] = ['--minified']
+-        self.mkbundle('test.es6', filters='babel', output='output.js').build()
++        try:
++            self.mkbundle('test.es6', filters='babel', output='output.js').build()
++        except FilterError as e:
++            # babel is not installed, that's ok.
++            if 'Program file not found' in e.message:
++                raise SkipTest()
++            else:
++                raise
+         assert (self.get('output.js').strip() ==
+                 'var x=p=>{return false};')
+ 

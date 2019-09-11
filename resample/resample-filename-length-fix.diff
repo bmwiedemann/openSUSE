@@ -1,0 +1,56 @@
+---
+ src/resample.c |   21 +++++++++++++--------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
+
+--- a/src/resample.c
++++ b/src/resample.c
+@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
+ 
+     struct stat statbuf;
+     char *insfname, *outsfname, *argv0;
+-    char filterFile[512] = "";
++    char *filterFile = NULL;
+ 
+     if (argc == 1) {
+ 	fprintf(stderr, USAGE);
+@@ -94,8 +94,11 @@ int main(int argc, char *argv[])
+ 	    knowFactor = TRUE;
+ 	    break;
+ 	case 'f':  			       /* -filter filterFile */
+-	    if (--argc)
+-		strcpy(filterFile, *++argv);
++	    if (--argc) {
++		filterFile = strdup(*++argv);
++		if (!filterFile)
++		    fail("Cannot allocate filter file name");
++	    }
+ 	    else
+ 		fail("Need to specify filter file name");
+ 	    if (trace)
+@@ -197,11 +200,12 @@ int main(int argc, char *argv[])
+     if (newsrate <= 0)
+       newsrate = (int)((double)insrate * factor + 0.5); /* round */
+     
+-    sprintf(comment,"%s -by %f %s%s%s%s%s%s%s %s",argv0,factor,
++    snprintf(comment, sizeof(comment),
++	     "%s -by %f %s%s%s%s%s%s%s %s",argv0,factor,
+ 	    (largeFilter?"-expensiveFilter ":""),
+-	    (strcmp(filterFile,"")==0?"":"-f "),
+-	    (strcmp(filterFile,"")==0?"":filterFile),
+-	    (strcmp(filterFile,"")==0?"":" "),
++	    (filterFile && strcmp(filterFile,"")==0?"":"-f "),
++	    (filterFile && strcmp(filterFile,"")==0?"":filterFile),
++	    (filterFile && strcmp(filterFile,"")==0?"":" "),
+ 	    (linearInterp? "-linearSigInterp ":""),
+ 	    (interpFilt? "":"-noFilterInterp "),
+ 	    insfname, outsfname);
+@@ -213,7 +217,8 @@ int main(int argc, char *argv[])
+ 
+     printf("\nStarting Conversion\n");
+     outCountReal = resample(factor, infd, outfd, inCount, outCount, nChans,
+-			    interpFilt, linearInterp, largeFilter, filterFile);
++			    interpFilt, linearInterp, largeFilter,
++			    filterFile ? filterFile : "");
+ 
+     if (outCountReal <= 0)
+       fail("Conversion factor out of range");

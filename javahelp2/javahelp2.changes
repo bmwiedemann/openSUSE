@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Mon Apr 15 14:07:51 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build classpath directly with the jar files and not with symlink
+  that might not exist.
+
+-------------------------------------------------------------------
+Mon Sep 18 21:07:13 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify java target and source 1.6
+- Clean spec file and fix duplicate waste error
+
+-------------------------------------------------------------------
+Fri May 19 11:28:09 UTC 2017 - dziolkowski@suse.com
+
+- New build dependency: javapackages-local
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:12 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Tue Jul  8 10:56:25 UTC 2014 - tchvatal@suse.com
+
+- Do not depend on ant-nodeps.
+
+-------------------------------------------------------------------
+Tue Sep 10 11:34:03 UTC 2013 - mvyskocil@suse.com
+
+- use add_maven_depmap from javapackages-tools
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:55 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Sun Nov  4 14:08:32 CEST 2011 - fschuett@gymnasium-himmelsthuer.de
+
+- Fixed jhindexer, jhsearch jar name 
+
+-------------------------------------------------------------------
+Mon May 18 10:35:56 CEST 2009 - mvyskocil@suse.cz
+
+- fixed bnc#503327:  Confirm licenses of javahelp2
+  * used clean source code from javahelp.dev.java.net
+  * added a license.txt from this site
+
+-------------------------------------------------------------------
+Wed May  6 14:08:32 CEST 2009 - mvyskocil@suse.cz
+
+- Initial SUSE packaging of 2.0.05 (from jpp 5.0) 
+

@@ -1,0 +1,257 @@
+-------------------------------------------------------------------
+Sat Feb 12 18:07:46 CET 2011 - vuntz@opensuse.org
+
+- Use the %icon_theme_cache_* macros to make sure the icon theme
+  caches are created/updated. Add hicolor-icon-theme BuildRequires
+  for this.
+
+-------------------------------------------------------------------
+Thu Dec  2 11:32:03 UTC 2010 - prusnak@opensuse.org
+
+- Update to 5.5.1
+  + Add icons for Empathy.
+  + Add better support for Ubuntu Karmic's panel applets.
+  + Minor updates and clean-ups on some icons.
+- Changes from 5.5
+  + New, redesigned folders!
+  + Add folder-xdg icons for Karmic/GNOME 2.28.
+  + Add some new icons/update others for better Karmic support.
+  + Minor bugfixes.
+- Changes from 5.3
+  + Change Green and Pink Palettes for better contrast.
+  + Source pack can now build mix n' match themes like
+    "gnome-tribute".
+  + Release a recreated "Tribute" variation as extras.
+  + Release a dark "Carbonite" variation as extras.
+  + Minor shadow/consistency fixes.
+  + File manager icons are recolorable again.
+  + Allow for unbranded installation (no gnome-colors logo).
+  + Add icons for root terminals.
+- Changes from 5.2.2
+  + Fix Inkscape rendering bug in Karmic.
+- Changes from 5.2.1
+  + Fix make install in distribution tarball.
+- Changes from 5.2
+  + Minor consistency fixes.
+  + Recreate all recolorable icons from source.
+  + Gradient and stroke fixes to folders.
+  + Better palette for Red (Wine) variation.
+  + Add a new color variation - Pink (Illustrious).
+  + GNOME-Colors now allows for creating custom color icon sets
+    from the source package. This means GNOME-Colors now has
+    infinite possible color variations, feel free to read the
+    documentation and make your own in minutes!
+- Changes from 5.1.1
+  + Adjust permissions on newly added icons.
+- Changes from 5.1
+  + Minor cosmetic tweaks.
+  + Make wireless icons more accurate (0% signal = 0 bars).
+  + Backport document-revert icon from gnome's one-canvas.
+  + Redo some application icons for better consistency and looks.
+- Changes from 5.0
+  + Redesign old HAL-9000 Hibernate icon.
+  + Make suspend icons consistent with new media-actions coloring.
+  + Redesign some tons of action icons with better and smoother
+    gradients.
+  + Add RapidSVN icons.
+  + Minor cosmetic fixes to many icons.
+  + Move project to SVN, include makefiles and update
+    documentation.
+  + Use new common library to reduce file size by as much as 4
+    times! Users are encouraged to read documentation before
+    installation, as the new gnome-colors-common folder is a
+    required dependency for all icon sets.
+- Changes from 4.5
+  + New phone icons.
+  + New wireless icons - more intuitive and informative at any
+    size.
+  + Redo all spherical icons with better radial gradients.
+  + Add more app and mimetype syslinks.
+  + Minor fixes.
+- Changes from 4.3.5
+  + Fix an oops, missing two .icon links in previous upload.
+- Changes from 4.3.4
+  + Create new Desktop icons.
+  + Fix color of some gradients in scalable places folders.
+  + Remove all animation folders gnome-icon-theme already ships.
+  + Remove all emblems that are already inherited from
+    gnome-icon-theme.
+- Changes from 4.3.3
+  + Redraw a few icons, make a few more icons common across sets.
+  + Fix smaller wireless icons for light panels.
+  + Add some more application links.
+- Changes from 4.3.2
+  + Redraw the smaller sizes of many icons for better looks.
+  + Create a few new category icons.
+  + Add more application links.
+  + Minor consistency fixes.
+- Changes from 4.3.1
+  + New system icons and redo icons based on them.
+  + Fix some minor positioning errors in some icons.
+  + Redraw reboot/reload icon for 32, 24 and 22 px sizes.
+  + Remove blur from gnome-colors logo in scalable version.
+  + Add icons for a few more apps.
+  + Redesign software update icons for better consistency and
+    better metaphor.
+- Changes from 4.3
+  + Redraw entire Human icon set with a subtler, less vibrant
+    palette.
+  + Minor fixes and redrawing of some icons.
+  + Remove some old, deprecated stock icons.
+  + Remove some evolution icons now that evolution uses the correct
+    ones.
+  + Enable drag n' drop installation to Appearance preferences by
+    not repackaging the icon sets inside the download package. It's
+    still recommended to extract the package even after
+    installation, in order to view the documentation files.
+- Changes from 4.2
+  + Copy icons in "stock" folders to "actions".
+  + Delete scalable search animations, they are no longer used in
+    GNOME 2.26.
+  + Delete icons that were deprecated by GNOME before 2.24. GNOME
+    2.24 or above is now recommended.
+  + Minor color consistency fixes in Dust and Noble variants.
+  + Manually optimize most of the scalable files for better size
+    and performance.
+- Changes from 4.1
+  + More consistent media icons.
+  + Brand new Dust with a better color palette.
+  + Minor fixes.
+- Changes from 4.0
+  + Brand new icon set! GNOME-Dust, meant to be used with
+    Shiki-Dust GTK theme.
+  + Media icons are now aluminium-colored.
+  + Made many application icons neutral/aluminium.
+  + Hundreds of minor improvements to tons of icons.
+  + Improve color variety greatly to avoid monotony.
+  + New font icons.
+- Changes from 3.9.4
+  + Minor fixes to a few icons.
+  + Removed some unnecessary icons.
+- Changes from 3.9.3
+  + Better syslink usage to avoid duplicate icons.
+  + New go-home icons, so now it's actually a home.
+  + Minor fixes to window icons.
+  + Use better metaphors for a few icons.
+  + Add System Testing icons for Jaunty.
+- Changes from 3.9.2
+  + Use rescue float icon for help, it's a better metaphor and more
+    consistent.
+  + New locale icons, as not to have any language/country
+    preference.
+  + Tango appearance preferences icons are a better metaphor for
+    theming.
+  + Add media-optical icons for better small sizes and update their
+    related icons.
+  + Minor fixes to some other icons.
+- Changes from 3.9.1
+  + Add Midori icons
+  + Let Evince use their own icons instead of generic PDF ones.
+  + Add some missing links for notifications.
+  + New nautilus-actions icons.
+- Changes from 3.9
+  + New File Manager icons.
+  + New virtualbox icons.
+  + Fixed vmware icons.
+  + Better metaphors for some other icons.
+  + Minor fixes.
+- Changes from 3.8.9
+  + Remove firefox/thunderbird icons (now in "extras" package).
+  + Minor fixes to more 16px icons.
+  + New gnome-mplayer/smplayer icons.
+- Changes from 3.8.8
+  + Minor improvements in 16px media-action icons.
+  + Use green instead of yellow as secondary color in human/wine sets.
+
+-------------------------------------------------------------------
+Wed Jun 10 14:31:37 CEST 2009 - vuntz@novell.com
+
+- Update to version 3.8.7:
+  + Minor fixes to a few icons.
+  + Add Gnote icons.
+  + Fix minor issue with scalable remote folders.
+  + Fix wrong colored icon in wise version.
+  + New delete/trash/warning icons from one-canvas.
+  + New inkscape icons.
+  + Add back usb-creator icons.
+- Changes from version 3.8.5:
+  + Fix color of Add icon in wise version.
+- Changes from version 3.8.4:
+  + New multimedia icons.
+  + Make cd-audio icon more consistent.
+  + Remove more unneeded icons.
+  + Create proper remove icon.
+- Changes from version 3.8.2/3.8.3:
+  + New text editor/edit/tomboy/alacarte icons.
+  + Add a few more syslinks for mimetypes and apps.
+  + Remove last few unnecessary icons.
+  + Add back Transmission icons to fix small tray icon in Shiki-Colors.
+  + Add some syslinks for xfce4 panel icons.
+  + Minor fixes.
+- Changes from version 3.8.1:
+  + Fix Rhythmbox' library icon.
+  + Removed a few remaining duplicate icons.
+  + New phone and music player icons!
+- Changes from version 3.8:
+  + New hard drive and all related icons.
+  + Minor enhancements to a few icons.
+  + Tons of clean-up, optimized many links.
+  + Removed icons for outdated/deprecated applications.
+  + Removed icons for apps that ship the same ones.
+- Changes from version (22 - May - 2009):
+  + Forgot to add the new desktop icons in last release ¯ロ¯
+  + Minor fixes to all the *-remote icons.
+  + Created new Server and related icons.
+  + New CD drive/removable drive icons from gnome-icon-theme's one-canvas.
+- Changes from version (20 - May - 2009):
+  + Created new printer icons!
+  + Recreated all mimetypes for best consistency.
+  + Minor touch-ups to some existing icons.
+- Changes from version (19 - May - 2009):
+  + Created new about/star icons.
+  + Created new search and related icons for the larger sizes.
+  + Cleaned up and improved mimetypes.
+  + Miscelaneous improvements and cleanups.
+- Changes from version (18 - May - 2009):
+  + Refreshed many icons for style and consistency.
+  + New package icons.
+  + Revert to old printer icons.
+  + Minor bugfixes.
+- Changes from version (17 - May - 2009):
+  + Removal of some unnecessary icons for even better filesize.
+  + Added shadow to logout icons.
+  + Added some more links to devices and apps for better device/GDM theming.
+  + Better use of links on some icons to improve filesize.
+  + Other minor fixes to improve consistency.
+  + Changed ccsm icon to a prettier one.
+
+-------------------------------------------------------------------
+Thu May 14 10:34:54 CEST 2009 - vuntz@novell.com
+
+- Recompress source tarball to bz2.
+- Do not make tar verbose when extracting the themes.
+- Limit width of description lines.
+
+-------------------------------------------------------------------
+Tue May 12 23:23:04 BRT 2009 - ecanuto@novell.com
+
+- Update to 3.3.2
+  + Features
+    - New icons
+    - Removed some unnecessary icons, as latest gnome-icon-theme
+      already include these
+    - Fixed positioning on some mimetypes for improved consistency
+    - Fixed some small bugs, found some 22px icons in 24px folder,
+      so fixed those as well
+  + Bug fixes
+    - Remove the fix for exec attibute, 3.3.2 already fixed that
+    - Remove unneeded parameters from fdupes macro
+    - Fix index.theme files for openSUSE versions prior to 11.2
+    - Fix package license, it is GPL v2
+- Add Tango to the list of Inherited theme in 11.1 and earlier so
+  that the thumbnail looks good in the appearance capplet.
+
+-------------------------------------------------------------------
+Mon May 11 13:12:23 BRT 2009 - ecanuto@novell.com
+
+- Initial package for GNOME-colors icon themes.

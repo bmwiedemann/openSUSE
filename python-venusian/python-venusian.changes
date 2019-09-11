@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Thu Feb  7 16:26:44 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 1.2.0 (2019-01-08)
+  + Add support for Python 3.7.
+  + Drop support for Python 3.3.
+- Combine package-doc and package spec
+- add fix-pylons-sphinx-theme.diff patch
+  to generate docs with the pylons-sphinx-themes package
+
+-------------------------------------------------------------------
+Thu Jun 28 17:17:31 UTC 2018 - mcepl@suse.com
+
+- Clean up SPEC file
+- Enable tests and make docs work again
+
+-------------------------------------------------------------------
+Thu Aug 24 13:56:55 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Fri Jul 14 07:00:53 UTC 2017 - aloisio@gmx.com
+
+- Update to version 1.1.0
+  *  Updated to using py.test instead of nosetest, and added
+     support for Python 3.4 -> 3.6
+  *  Make scanning more resilient of metaclasses that return
+     proxies for any attribute access.
+  *  Fix bug where using the same venusian decorator on both a
+     class and its methods would cause the method decorations to be
+     ignored. See https://github.com/Pylons/venusian/issues/40
+  *  Drop support for Python 2.6.
+  *  Drop support for Python 3.2: it is no longer supported by
+     current packaging / CI tools.
+  *  Support loaders that require the module name as argument to
+     their get_filename() method. This fixes problems with zipped
+     packages on Python 3.
+  *  Micro-optimization when ignores are used (see
+     https://github.com/Pylons/venusian/pull/20).
+  *  A tox run now combines coverage between Py2 and Py3.
+
+- Split docs and tests into separate package to make the
+  latter work
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Fri Feb  6 11:12:24 UTC 2015 - hpj@urpla.net
+
+- update to version 1.0
+  - Fix an issue under PyPy > 2.0 where attached decorators may not be found.
+  - Drop support of Python 2.4 / 2.5 / Jython.
+  - Add lift and onlyliftedfrom class decorators to allow for inheritance of
+    venusian decorators attached to superclass methods. See the API
+    documentation for more information.
+  - Fix bug where otherwise undecorated subclass of a superclass that had
+    venusian decorators on it would inherit its superclass' decorations.
+    Venusian decorators should have never been inherited implicitly. See
+    https://github.com/Pylons/venusian/issues/11#issuecomment-4977352
+
+-------------------------------------------------------------------
+Wed Dec 18 13:53:45 UTC 2013 - cfarrell@suse.com
+
+- license update: SUSE-Repoze
+  See LICENSE
+
+-------------------------------------------------------------------
+Tue Dec 10 13:08:49 UTC 2013 - p.drouand@gmail.com
+
+- Use tarball from pypi.python.org/ as source
+
+-------------------------------------------------------------------
+Tue Dec 10 13:01:51 UTC 2013 - p.drouand@gmail.com
+
+- Change license to get it SPDX compliant;
+  In general, python packages are licensed under BSD derived; the
+  most closed license is BSD-2-Clause
+
+-------------------------------------------------------------------
+Mon Jul 29 13:40:30 UTC 2013 - speilicke@suse.com
+
+- Simplify macro usage
+
+-------------------------------------------------------------------
+Sun Jul 28 20:12:18 UTC 2013 - hpj@urpla.net
+
+- version 1.0a8: initial release
+

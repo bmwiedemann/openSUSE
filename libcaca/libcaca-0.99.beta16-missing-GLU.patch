@@ -1,0 +1,13 @@
+Index: caca/Makefile.am
+===================================================================
+--- caca/Makefile.am.orig	2012-05-14 11:37:31.929230228 +0200
++++ caca/Makefile.am	2012-05-14 11:39:48.458807793 +0200
+@@ -55,7 +55,7 @@ libcaca_la_DEPENDENCIES = \
+ 	$(NULL)
+ libcaca_la_CPPFLAGS = $(AM_CPPFLAGS) @CACA_CFLAGS@ -D__LIBCACA__
+ libcaca_la_LDFLAGS = -no-undefined -version-number @LT_VERSION@
+-libcaca_la_LIBADD = @CACA_LIBS@ $(ZLIB_LIBS) $(GETOPT_LIBS)
++libcaca_la_LIBADD = @CACA_LIBS@ $(ZLIB_LIBS) $(GETOPT_LIBS) -lGLU
+ 
+ codec_source = \
+ 	codec/import.c \

@@ -1,0 +1,13 @@
+Index: mtpaint-3.40/src/font.c
+===================================================================
+--- mtpaint-3.40.orig/src/font.c
++++ mtpaint-3.40/src/font.c
+@@ -1206,7 +1206,7 @@ static void populate_font_clist( mtfonts
+ static void click_add_font_dir(GtkWidget *widget, gpointer user)
+ {
+ 	int i = inifile_get_gint32("font_dirs", 0 );
+-	char txt[PATHBUF], buf[32];
++	char txt[PATHBUF], buf[128];
+ 	gchar *row_text[FONTSEL_CLISTS_MAXCOL] = {NULL, NULL, NULL};
+ 	mtfontsel *fp = user;
+ 

@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Sun Aug 11 01:27:08 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.1.1
+  * Fix extension_name validation
+  * Remove 'coded redirect' to default_url
+  * Fix default_url redirect with default 'main' handler
+  * pass extension_name to only extension app handlers
+
+-------------------------------------------------------------------
+Sun Jul 28 20:33:09 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.1.0
+  * Update jupyter_client
+  * Removed Python 3.4 from the matrix
+  * fix bug from empty argv in extension app
+  * refactor extension testing to handle server instances
+  * add initial tests for extensionapp
+  * rearrange initialization steps for sanity
+  * add extension config as an attribute of the ExtensionApp
+  * pass extension traits to extension handlers as `config` property
+  * handler sources extension name from extension app object
+  * allow application to generate config
+  * Added control channel to ZMQChannelsHandler
+  * make extension handlers and settings configurable
+  * properly handle generate-config command
+  * working command line configuration, help, version, etc.
+  * add server extension submodule to jupyter_server
+  * remove notebook templates and replace with simple server templates
+  * Add localhost to list of default local_hostnames
+
+-------------------------------------------------------------------
+Wed Jun 12 20:07:20 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.0.5
+  * Remove bundler endpoints
+
+-------------------------------------------------------------------
+Wed May 22 21:53:32 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Remove selenium test dependency, it isn't really needed for the
+  tests and doesn't work on ARM.
+
+-------------------------------------------------------------------
+Thu May  2 18:13:49 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

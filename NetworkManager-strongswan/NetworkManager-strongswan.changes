@@ -1,0 +1,153 @@
+-------------------------------------------------------------------
+Mon Jun 11 11:46:07 UTC 2018 - bjorn.lie@gmail.com
+
+- Fix packaging error in previous sub, README was moved from
+  source1 tag to source3, move to tag source99 to avoid similar
+  error in the future.
+
+-------------------------------------------------------------------
+Wed May 23 15:15:03 UTC 2018 - kbabioch@suse.com
+
+- Use OpenPGP signature provided upstream
+- Added NetworkManager-strongswan.keyring, which contains the key
+  from the author  
+
+-------------------------------------------------------------------
+Wed May  9 12:58:33 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.4.4:
+  + Fixed paths when building without libnm-glib.
+  + Fixed proposal tooltips.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 17 11:45:17 UTC 2018 - bjorn.lie@gmail.com
+
+- Pass --without-libnm-glib, no longer build deprecated libnm-glib
+  support, following this, drop pkgconfig(NetworkManager),
+  pkgconfig(libnm-glib), pkgconfig(libnm-glib-vpn),
+  pkgconfig(libnm-gtk) and pkgconfig(libnm-util) BuildRequires.
+- Add pkgconfig(libnm) BuildRequires.
+- Add explicit --with-charon=%%{_libexecdir}/ipsec/charon-nm to
+  configure.
+- Drop unneeded NetworkManager-gnome Requires from gnome
+  sub-package, it is no longer of use for us.
+
+-------------------------------------------------------------------
+Wed Mar  7 20:06:29 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.4.3:
+  + Add option to disable libnm-glib compatibility.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:37:51 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Sep  7 19:57:20 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.4.2:
+  + Add support to configure IKE/ESP proposals.
+  + Explicitly prevent PIN from getting stored.
+
+-------------------------------------------------------------------
+Fri Oct 28 12:34:24 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.4.1:
+  + Fixed several build issues.
+
+-------------------------------------------------------------------
+Fri Sep  9 17:27:03 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.4.0:
+  + Updated to NetworkManager 1.2.
+- Changes from version 1.3.2:
+  + GUI fix.
+  + Update to libsecret.
+  + D-Bus policy moved to charon-nm.
+- Modify BuildRequires following upstreams changes:
+  + Drop: pkgconfig(gnome-keyring-1), pkgconfig(gtk+-2.0),
+    pkgconfig(dbus-glib-1) and pkgconfig(libgnomeui-2.0).
+  + Add pkgconfig, pkgconfig(libnm-gtk), pkgconfig(libnma),
+    pkgconfig(gtk+-3.0) and pkgconfig(libsecret-1).
+- Drop nm-strongswan-service-conf.patch,
+  nm-strongswan-fix-config.patch and nm-strongswan-UI-fixup.patch.
+- Drop libtool BuildRequires and autoreconf call, we no longer
+  carry any patches.
+
+-------------------------------------------------------------------
+Tue Sep  8 06:14:23 UTC 2015 - dimstar@opensuse.org
+
+- Add nm-strongswan-fix-config.patch: Fix path to NM plugins in
+  config files (boo#944769).
+- Add nm-strongswan-UI-fixup.patch: Fix broken UI (boo#944769).
+- Add libtool BuildRequires and call to autoreconf, as above patch
+  touches the build system.
+
+-------------------------------------------------------------------
+Wed Jun 10 07:56:56 UTC 2015 - dimstar@opensuse.org
+
+- Drop the sed hack to fix bnc#824079: since verson 1.3.1, the
+  charon binary to be found is already called charon-nm by
+  upstream (boo#934129).
+- Clean out conditions for legacy openSUSE versions: we will always
+  require strongswan > 5 as a consequence (which is correct, as
+  that's when charon-nm was introduced).
+
+-------------------------------------------------------------------
+Fri Apr 25 09:09:01 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.3.1:
+  + Add PSK support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 31 10:20:48 UTC 2014 - dimstar@opensuse.org
+
+- Pass --disable-more-warnings to configure: deal with deprecations
+  in libraries (like libgnome-keyring).
+
+-------------------------------------------------------------------
+Mon Jun 10 08:57:49 UTC 2013 - i@marguerite.su
+
+- fix bnc#824079: "program" in nm-strongswan-service.name points 
+  to a wrong binary
+
+-------------------------------------------------------------------
+Fri Mar  1 12:42:21 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Thu Sep 29 08:22:12 UTC 2011 - vuntz@opensuse.org
+
+- Move to pkgconfig()-style BuildRequires:
+  + Old ones: NetworkManager-devel, libglade2-devel,
+    libgnomeui-devel, libgudev-1_0-devel.
+  + New ones: NetworkManager, dbus-glib-1, gnome-keyring-1,
+    gtk+-2.0, libgnomeui-2.0, libnm-glib,libnm-glib-vpn,
+    libnm-util.
+- Remove unneeded update-desktop-files BuildRequires.
+
+-------------------------------------------------------------------
+Wed Sep 28 15:33:35 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.3.0:
+  + Updated to NetworkManager 0.9
+
+-------------------------------------------------------------------
+Mon Dec  6 14:45:40 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.2.0:
+  + Added Smartcard support
+- Remove unneeded dependencies: NetworkManager-gnome,
+  perl-XML-Parser.
+- Make sure to install README from the source package (as
+  README.SUSE).
+
+-------------------------------------------------------------------
+Fri Nov 19 09:03:07 UTC 2010 - binli@opensuse.org
+
+- Add the 1.1.2's package.
+

@@ -1,0 +1,862 @@
+-------------------------------------------------------------------
+Wed Aug  7 11:43:40 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 3.53:
+  * Fixed out-of-range exception with repeated AddKeyword calls.
+  * Added KeywordFormatHints, Priority and Constraints elements to
+    syntax definitions.
+  * Added Lua function AddPersistentState
+    (gl#saalen/highlight#112).
+  * Renamed md.lang to markdown.lang.
+  * Added Fish syntax definition.
+  * Makefile: added _FILE_OFFSET_BITS=64 flag.
+  * CLI: added optional fallback syntax to --force
+    (gl#saalen/highlight#126).
+  * CLI: added option --max-size (gl#saalen/highlight#127).
+  * GUI: added multibyte path trace window.
+  * GUI: fixed superfluous creation of the same stylesheet file.
+- Rebase optflags patch:
+  * Remove highlight-3.52-use_optflags.patch.
+  * Add highlight-3.53-use_optflags.patch.
+
+-------------------------------------------------------------------
+Fri Jul 19 18:04:50 UTC 2019 - antoine.belvire@opensuse.org
+
+- Fix build instability (boo#1142155).
+
+-------------------------------------------------------------------
+Wed May 29 05:31:04 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 3.52:
+  * Added negation `~` to test state indicators
+    (gl#saalen/highlight#122).
+  * Added support for Hugo.
+  * Added 5 duotone themes.
+  * CLI: fixed segfault with `--force` (gl#saalen/highlight#125).
+  * GUI: limited font selection to monospace fonts
+    (gl#saalen/highlight#124).
+- Rebase optflags patch:
+  * Remove highlight-3.42-use_optflags.patch.
+  * Add highlight-3.52-use_optflags.patch.
+- Remove obsolete conditionals.
+
+-------------------------------------------------------------------
+Sat May 18 07:38:29 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 3.51:
+  * SVG output: Added `white-space: pre` in styles.
+  * HTML output: Replaced &apos; by &#39; (deb#927410).
+  * HTML output: Fixed index file format (missing close tags).
+  * CLI: Moved syntax recognition functions to DataDir class.
+  * CLI: Added regular expressions and default false values to
+    --verbose output.
+  * CLI: Fixed `--list-cat` without `--list-scripts`
+    (gl#saalen/highlight#107).
+  * CLI: Added optional argument to `--base16`
+    (gl#saalen/highlight#113).
+  * CLI: Added default base16 themes (gl#saalen/highlight#113).
+  * CLI: Added `--isolate` option (gl#saalen/highlight#118).
+
+-------------------------------------------------------------------
+Sat Mar 30 08:23:39 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 3.50:
+  * Added lineno, column parameters to OnStateChange hook.
+  * Added support for Crystal.
+  * Added support for Slim.
+  * Fixed several typos in documentaion and manpages.
+  * CLI: Added `--syntax-by-name` option.
+  * CLI: Removed deprecated `--list-langs` and`--list-themes`
+    options.
+  * GUI: Added terminal sequence output options
+    (gl#saalen/highlight#110).
+
+-------------------------------------------------------------------
+Fri Feb  8 06:56:27 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 3.49:
+  * Fixed more problems with syntax test indicators reporting wrong
+    states (gl#saalen/highlight#102).
+  * Added support for Meson, Solidity, TOML and Terraform.
+  * Improved Perl and Yaml highlighting.
+  * Added Categories field to all config files.
+  * CLI: added category info in --list-scripts output.
+  * CLI: added --list-cat option (gl#saalen/highlight/99).
+  * CLI: added optional topic parameter to --help.
+  * GUI: added theme category selection.
+  * GUI: display categories of selected syntax or theme.
+
+-------------------------------------------------------------------
+Fri Dec 14 16:25:18 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.48:
+  * Fixed --list-scripts abortion with Fedora default compilation
+    options (gl#saalen/highlight#84).
+  * Fixed a problem with syntax test indicators reporting wrong
+    states after comments.
+  * Improved Verilog syntax.
+  * Improved quoted string highlighting for Perl and Ruby.
+  * Detection of pkg-config's Lua version in src/makefile.
+
+-------------------------------------------------------------------
+Sun Oct 14 07:32:17 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.47:
+  * Fixed xterm256 and truecolor whitespace output #2
+    (gl#saalen/highlight#90).
+  * Fixed LaTeX, TeX, SVG and ODT whitespace output (regression of
+    3.45).
+  * Added darkplus theme.
+  * Converted ChangeLog to AsciiDoc.
+  * Allowed state test indicators to match both whitespace (ws) and
+    the enclosing state (others).
+  * CLI: Default output changed to xterm256 or truecolor if run in
+    a terminal with color support and only a single file is
+    outputted.
+  * GUI: Added checkbox in the clipboard tab to output selected
+    lines only.
+
+-------------------------------------------------------------------
+Sun Oct  7 15:31:19 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.46:
+  * Fixed xterm256 and truecolor whitespace output
+    (gl#saalen/highlight#90).
+  * Converted manuals to AsciiDoc.
+
+-------------------------------------------------------------------
+Fri Oct  5 19:37:00 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.45:
+  * Added DocumentHeader and DocumentFooter plug-in hooks.
+  * Added RemoveKeyword Lua function for syntax definitions.
+  * Added syntax test indicators (see README_TESTCASES).
+  * Added support for ISO and R10 variants of Modula2.
+  * Fixed R identifiers.
+  * Fixed ALAN IF identifiers.
+  * Fixed issue with Bash string interpolation.
+  * Fixed some bugs found by coverity tool
+    (gl#saalen/highlight#82).
+  * Added Swift keywords and types.
+  * Added filetypes.conf.5 man page (gl#saalen/highlight#83).
+  * Added Gradle extension mapping.
+- Renamed highlight-3.43-fix-doc-dir.patch to
+  highlight-3.45-fix-doc-dir.patch: Rebased patch to 3.45.
+
+-------------------------------------------------------------------
+Sat Jul 21 22:40:47 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.44:
+  * Fixed gcc 8 compilation warnings.
+  * Fixed Ruby string interpolation (gh#andre-simon/higlight#70).
+  * Added support for ALAN IF.
+  * Added 107 Base16 themes.
+  * Updated Rust and Java reserved words lists.
+  * Revised documentation.
+  * Moved extras/css-themes into extras/themes-resources.
+  * Added extras/themes-resources/base16.
+  * GUI: added Base16 theme selection checkbox.
+  * CLI: added --base16 option to enable the new themes.
+  * CLI: accept - as argument to read from stdin
+    (gh#andre-simon/highlight#73).
+
+-------------------------------------------------------------------
+Fri May  4 06:10:46 UTC 2018 - antoine.belvire@opensuse.org
+
+- Make the build of gui subpackage conditional (built by default).
+- Clean spec file with spec-cleaner.
+
+-------------------------------------------------------------------
+Tue May  1 10:16:05 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.43:
+  * Updated astyle code to release 3.1 (Rev. 655).
+  * Added webkit reformatting style.
+  * Improved several language definitions.
+  * Fixed Matlab string recognition (#61).
+  * Fixed Autohotkey escape sequence recognition.
+  * Added excel.lang (#60).
+  * Improved Qt pro file (#59).
+  * CLI: Added --reformat-option (#62).
+  * CLI: Added --line-range (#64).
+  * GUI: Added Bulgarian translation.
+- Rebase docdir patch on 3.43:
+  * Remove highlight-3.41-fix-doc-dir.patch.
+  * Add highlight-3.43-fix-doc-dir.patch.
+
+-------------------------------------------------------------------
+Wed Jan 24 06:49:16 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.42:
+  * Fix HL_OUTPUT in Lua state for HL_FORMAT_XHTML and
+    HL_FORMAT_TRUECOLOR values.
+  * Fix lib-shared make target.
+  * Update astyle code to release 3.1.0 beta.
+  * Add Polygen and EBNF2 syntax definitions.
+  * Add pywal terminal colouring template in extras/pywal.
+  * Add reformatting style ratliff (replaces banner).
+  * Add extras/langDefs-resources/cleanslate.lang.
+  * Improve Perl6 compatibility.
+  * Improve PHP string interpolation.
+  * Improve Haskell definition.
+  * CLI: Add --canvas option to define background color padding in
+    ANSI output.
+  * GUI: Add French translation.
+  * GUI: Add Scripts tab.
+  * GUI: Minor bugfixes.
+- Rebase optflags patch on 3.42:
+  * Remove highlight-3.34-use_optflags.patch.
+  * Add highlight-3.42-use_optflags.patch.
+
+-------------------------------------------------------------------
+Wed Nov 29 18:30:58 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to version 3.41:
+  * Rename examples directory to extras.
+  * Line anchors (-a) are attached as id attribute to the first
+    span or li tag in HTML output.
+  * Rename ID prefix in outhtml_codefold plug-in to be compatible
+    with -a IDs.
+  * Add fstab.lang and add anacrontab in filetypes.conf.
+  * Remove references to OutputType::HTML32.
+  * Add extras/css-themes and extras/langDefs-resources.
+  * CLI: Remove deprecated indicator of --data-dir option.
+  * CLI: Add --no-version-info option.
+  * GUI: Fix initial theme selection.
+  * GUI: Add "Omit version info comment" option.
+  * GUI: Add "Copy with MIME type" option for HTML output.
+- Rebase patch about documentation directory:
+  * Remove highlight-3.32-fix-doc-dir.patch.
+  * Add highlight-3.41-fix-doc-dir.patch.
+
+-------------------------------------------------------------------
+Wed Oct 25 19:03:57 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to version 3.40:
+  * Fix Ruby string parsing.
+  * Fix segfault on sparc64.
+  * Fix PureBasic definition.
+  * Add CMake definition.
+  * Add email definition.
+  * Link scm suffix to lisp definition.
+- Remove _service file (not used after all).
+
+-------------------------------------------------------------------
+Wed Jul 26 22:46:18 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to version 3.39:
+  * Add syntax for Docker and Elixir.
+  * Improve HTML, Julia, Kotlin and Smalltalk syntax definitions.
+  * GUI: Add "Paste, Convert and Copy" button.
+
+-------------------------------------------------------------------
+Sun Jul 23 08:19:51 UTC 2017 - antoine.belvire@opensuse.org
+
+- Fix rpmlint warnings:
+  * Convert some files to Unix end-of-line format using dos2unix.
+  * Shorten subpackage summaries.
+  * Add conditional in order not to call desktop_database_post(un)
+    macros on Tumbleweed, as it's now handled by RPM filetriggers.
+- Move Qt build dependency to gui subpackage.
+
+-------------------------------------------------------------------
+Wed Jun 21 21:36:29 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to version 3.38:
+  * Fix Bash variable highlighting issue
+  * Update astyle code to release 3.0.1
+  * Add bash_ref_man7_org.lua plugin
+- Improve spec file:
+  * Create separate gui-lang subpackage for gui translations
+  * Use find_lang macro
+  * Add desktop database update calls in pre and post
+
+-------------------------------------------------------------------
+Wed May 31 22:17:04 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to version 3.37:
+  * Fix Perl string highlighting issue
+  * Fix highlighting if a line continues after the nested code
+    delimiter
+  * Update astyle code to release 3.0
+  * Add examples/pandoc
+  * Add syntax mapping for markdown
+  * Add syntax mapping for clj
+  * Improve Java definition
+  * Add theme to JSON converter in examples/json
+  * CLI: Add support for environment variable HIGHLIGHT_OPTIONS
+
+-------------------------------------------------------------------
+Sun May 21 22:07:49 UTC 2017 - antoine.belvire@opensuse.org
+
+- Add service file
+  * set_version (disabled)
+  * download_files (disabled)
+- Update highlight.keyring: Key had expired in 2017/02
+
+-------------------------------------------------------------------
+Fri Apr 14 20:09:00 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to version 3.36:
+  * Fix code folding plugin to support more Ruby conditional
+    modifiers
+  * Fix Perl quoted string highlighting
+  * Add new GeneratorOverride syntax definition parameter
+  * Add Filenames parameter in filetypes.conf to assign input
+    filenames to syntax types
+  * Add FASM definition and edit-fasm theme
+  * Add outhtml_ie7_webctrl plug-in
+  * GUI: File extensions can be configured for multiple languages,
+    triggers syntax selection prompt
+  * GUI: Added Italian translation
+- Changes from version 3.35:
+  * Fix code folding plugin to support Ruby conditional modifiers
+  * Fix JSON definition
+  * Fix output of unknown syntax warning with applied force switch
+  * Add state trace parameter to Decorate plug-in function 
+  * Add GDScript definition and edit-godot theme
+  * Update SWIG code samples
+  * Update Artistic Style lib
+  * Revise docs
+  * CLI: Fix creation of hidden files if output filename is
+    prepended by its input path
+  * CLI: added switch --stdout
+- Drop highlight-3.34-use-default-compiler.patch (fixed upstream).
+
+-------------------------------------------------------------------
+Wed Feb  1 11:23:45 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Tue Jan 24 21:50:55 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to 3.34:
+  * Fix segfault with --skip applied on a single file input list
+  * Add support for Python 3.6 syntax
+  * Add GitHub and Sourceforge themes
+- Rebase highlight-3.30-use_optflags.patch, renamed into
+  highlight-3.34-use_optflags.patch.
+- Add highlight-3.34-use-default-compiler.patch: Don't force the
+  use of the clang compiler for GUI.
+
+-------------------------------------------------------------------
+Sat Nov  5 21:16:41 UTC 2016 - antoine.belvire@opensuse.org
+
+- Update to 3.33:
+  * Fix highlighting of nested section delimiters
+  * Fix PHP definition
+  * Fix font family declaration in SVG
+  * Fix user defined encoding in ODT
+  * Fix unnecessary output of style file with --inline-css
+  * Add vimscript language definition
+  * Add Coffeescript language definition
+  * Add PureBasic definition and theme
+  * Add JSX language definition
+  * Add PO translation definition
+  * Add plug-in outhtml_add_figure.lua
+  * Update js definition
+  * Update Artistic Style lib
+  * Improve various color themes and syntax definitions
+
+-------------------------------------------------------------------
+Tue Sep 27 09:49:58 UTC 2016 - antoine.belvire@opensuse.org
+
+- Patch to actually fix doc directory for GUI package:
+  * Change default value of DOC_DIR to %{_docdir}/%{name} in
+    highlight.pro as custom values are not correctly taken into
+    account.
+  * Rename highlight-2.10-makefile_suse.patch into
+    highlight-3.32-fix-doc-dir.patch.
+
+-------------------------------------------------------------------
+Mon Sep 26 13:47:50 UTC 2016 - antoine.belvire@opensuse.org
+
+- Update to 3.32:
+  * Add support for true color escape codes (--out-format
+    truecolor)
+  * Fix xterm256 output for paging with less
+  * Fix operator regex in rnc.lang, crk.lang and yaml.lang
+  * Add Pony and Whiley definitions
+  * Update Ceylon, Julia and TypeScript definitions
+  * Add Go, AutoHotKey, TypeScript and R to the foldable list in
+    the outhtml_codefold.lua plug-in
+  * Remove plugins/bash_ref_linuxmanpages_com.lua
+  * GUI: fix README, ChangeLog and License file paths on Linux
+
+-------------------------------------------------------------------
+Thu Aug 11 16:14:10 UTC 2016 - antoine.belvire@opensuse.org
+
+- Build highlight-gui with Qt5 instead of Qt4.
+
+-------------------------------------------------------------------
+Thu Aug 11 09:08:32 UTC 2016 - antoine.belvire@opensuse.org
+
+- Add signature verification:
+  * Add highlight.keyring (highlight's main developer Andre Simon
+    public key)
+  * Add highlight-3.31.tar.bz2.asc
+- Update highlight-3.31.tar.bz2:
+  * Updated by upstream
+  * Windows line endings has been replaced by UNIX ones
+  * A useless file has been removed
+- Update highlight-3.30-use_optflags.patch:
+  * Switch to UNIX line endings
+
+-------------------------------------------------------------------
+Mon Aug  1 10:58:12 UTC 2016 - antoine.belvire@opensuse.org
+
+- Update to 3.31:
+  * Revise documentation
+  * GUI: fix minor layout issues
+- Change arguments order for suse_update_desktop_file: GenericName
+  was not set.
+
+-------------------------------------------------------------------
+Wed Jul  6 17:14:06 UTC 2016 - antoine.belvire@opensuse.org
+
+- Update to 3.30:
+  * The data directory can be defined with the HIGHLIGHT_DATADIR
+    environment variable
+  * Fix RTF output of UTF-8 input; needs input encoding set to
+    utf-8
+  * Fix XML comment recognition
+  * Data search directories is appended to the result of
+    --list-scripts
+  * Revise older syntax definitions
+  * Update base URLs of bash_ref_linuxmanpages and
+    cpp_ref_qtproject plug-ins
+  * GUI: add system copy and paste shortcuts for clipboard
+    functions 
+- Remove highlight-3.29-use_optflags.patch
+- Add highlight-3.30-use_optflags.patch (rebased)
+
+-------------------------------------------------------------------
+Tue May 24 18:59:48 UTC 2016 - antoine.belvire@opensuse.org
+
+- Update to 3.29:
+  * Add Ansible Yaml definition (thanks to Raphael Droz)
+  * Add Chapel definition (thanks to Lydia Duncan)
+  * Fix gcc 6 warnings about deprecated auto_ptr usage
+  * GUI: fix style file output if "write to source directory"
+    option is checked (thanks to Jim Pattee)
+- Remove highlight-3.25-use_optflags.patch
+- Add highlight-3.29-use_optflags.patch (rebased)
+
+-------------------------------------------------------------------
+Mon Mar 21 21:57:47 UTC 2016 - antoine.belvire@opensuse.org
+
+- Fix licence in spec file: it's GPL-3.0+ since v2.10.
+
+-------------------------------------------------------------------
+Sat Mar 12 10:13:57 UTC 2016 - antoine.belvire@opensuse.org
+
+- Update to 3.28:
+  * add support of Pascal, Lua, Ruby and C# regions in
+    outhtml_codefold.lua
+  * improve outhtml_codefold.lua to handle embedded languages
+  * add string delimiters in the Ruby definition
+  * add new AssertEqualLength flag in string section of language
+    definitions
+  * improve heredoc parsing
+  * fix Lua multiline string recognition
+  * improve SVG whitespace output (patch by Paul de Vrieze)
+  * add Nim and mIRC Scripting definitions
+- Changes from 3.27:
+  * improve outhtml_codefold.lua to ignore brackets on the same
+    line
+  * add RTF output to mark_lines.lua 
+  * fix Powershell and NSIS definitions
+  * add JSON and Github Markdown definitions
+  * CLI: add --keep-injections option to force plugin injection
+    output with -f
+  * GUI: add keep injections checkbox
+  * GUI: fix crash after removing selected plugins
+- Changes from 3.26:
+  * add HL_REJECT state to be used in a OnStateChange function
+  * add DecorateLineBegin and DecorateLineEnd hooks
+  * add mark_lines.lua, outhtml_codefold.lua, comment_links.lua
+    plug-ins
+  * fix font face in ODT output
+  * fix Operators parameter in frink.lang and oorexx.lang
+  * fix regular expression parsing within strings for JS, Perl and
+    Ruby
+  * CLI: add --page-color option to include a page color in RTF
+    output
+  * GUI: add RTF page color option
+- Remove LDFLAGS+="-s" from spec file: don't strip the binaries,
+  the build service will do it and will create -debuginfo
+  packages
+
+-------------------------------------------------------------------
+Sun Dec 27 13:10:23 UTC 2015 - antoine.belvire@opensuse.org
+
+- Update to 3.25:
+  * add new SVG definition to support embedded scripting
+  * improve js.lang, css.lang, scss.lang, less.lang, tsql.lang
+  * modifiy HTML ordered list output to work better with new plug-ins
+  * rename plug-in variable HL_INPUT_FILE to HL_PLUGIN_PARAM
+  * CLI: rename --plug-in-read option to --plug-in-param
+  * GUI: update plug-in parameter label and tool-tips
+  * GUI: fix minor issues
+- Delete highlight-3.22-use_optflags.patch
+- Add highlight-3.25-use_optflags.patch (rebased)
+
+-------------------------------------------------------------------
+Fri Nov  6 21:33:02 UTC 2015 - antoine.belvire@opensuse.org
+
+- Update to 3.24:
+  * fix TeX output for cweb documents (patch by Ingo Krabbe)
+  * fix string interpolation in bat.lang
+  * add reduce_filesize.lua, outhtml_add_shadow.lua, 
+    outhtml_add_background_svg.lua, outhtml_add_background_stripes.lua, 
+    outhtml_add_line.lua plug-ins 
+  * add TCL extension in examples/tcl
+  * add kotlin.lang, nginx.lang and julia.lang
+  * update php.lang to include version 7 keywords 
+  * update ceylon.lang to include version 1.2 keywords 
+  * update scripts in examples directory
+  * CLI: style-infile option marked as deprecated
+  * GUI: shorten paths in file input lists 
+
+-------------------------------------------------------------------
+Thu Sep 17 17:17:42 UTC 2015 - antoine.belvire@opensuse.org
+
+- Update to 3.23:
+  * add rs.lang
+  * add conf.lang (thanks to Victor Ananjevsky)
+  * add some extensions in filetypes.conf (patch by Victor Ananjevsky)
+  * fix Matlab definition and style (thanks to Justin Pearson)
+  * CLI: fix --list-scripts with unknown argument (thanks to Jens Schleusener)
+
+-------------------------------------------------------------------
+Wed May 27 21:55:02 UTC 2015 - antoine.belvire@opensuse.org
+
+- Update to 3.22:
+  * update astyle code to release 2.05.1
+  * fix shebang recognition (thanks to Victor Ananjevsky)
+  * GUI: add option to define line numbering start
+  * see /usr/share/doc/packages/highlight/ChangeLog for changes
+    introduced in version 3.21
+- Update spec file:
+  * remove lua 5.1 compatibility patch for openSUSE < 12.2
+  * rebase highlight-use_optflags.patch
+  * exclude INSTALL file from doc
+  * clean with spec-cleaner
+
+-------------------------------------------------------------------
+Sun Feb  1 18:09:19 UTC 2015 - antoine.belvire@opensuse.org
+
+- Update to 3.20:
+  * updated astyle code to release 2.05
+  * added astyle reformatting style vtk
+  * see /usr/share/doc/packages/highlight/ChangeLog for changes
+    introduced in 3.13 to 3.19 versions
+- Update spec file:
+  * use lua-devel instead of lua51-devel (Lua 5.2 support was
+    introduced with highlight 3.15)
+  * add lua 5.1 compatibility patch for openSUSE < 12.2
+  * explicitly strip binary with LDFLAGS="-s" (it's now
+    disabled by default for MacOS compatibility reasons)
+  * fix rpmlint license error
+  * update patches
+
+-------------------------------------------------------------------
+Tue Nov 20 17:50:48 UTC 2012 - vjt@openssl.it
+
+- Use lua51 for OpenSUSE 12.2 and upwards. 
+
+-------------------------------------------------------------------
+Mon Nov 19 15:31:25 UTC 2012 - vjt@openssl.it
+
+- update to 3.12 
+
+-------------------------------------------------------------------
+Sat Jun 04 23:38:39 UTC 2011 - pascal.bleser@opensuse.org
+
+- use %{optflags}
+
+- update to 3.5:
+  * updated astyle code to release 2.02
+  * fixed --force option
+
+-------------------------------------------------------------------
+Sat Apr 02 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <3.4>
+
+  * added support for ABC, Algol, AS/400 CL, BCPL,  Limbo, Gambas, JavaFX,
+    RPG, Transact-SQL, PL/Perl, PL/Tcl, PL/Python, Charmm
+  * fixed web plugins (Serendipity, DokuWiki, Wordpress)
+  * fixed BBCode closing tag order
+  * GUI: Updated Czech translation (thanks to Pavel Fric)
+
+-------------------------------------------------------------------
+Thu Dec 30 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <3.3>
+  * updated astyle code to release 2.01
+  * fixed overwriting of files with the same name in recursive batch mode
+    (thanks to Ramanathan U.)
+  * added DataDir class to SWIG interface (patch by David Bremner)
+  * added Andes theme (thanks to Roger Sperberg)
+  * enabled deprecated @highlight pass-through (suggested by David Bremner)
+  * dropped oceandeep theme
+  * updated documentation
+
+-------------------------------------------------------------------
+Sat Nov 13 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <3.2>
+  * added plug-in function AddKeyword (suggested by Michael Serrano)
+  * language definitions are cached instead of being reloaded if input syntax
+    changes
+  * added keyword group ID parameter to the plug-in function OnStateChange
+  * added plug-in script bash_functions.lua
+  * added theme description in output style's comment
+  * added enum and union keywords in c.lang (thanks to Thiago)
+  * added dl linking flag in Makefile to fix Debian build error.
+    (thanks to Michael Serrano)
+  * added NDEBUG flag in makefile to disable asserts
+
+
+-------------------------------------------------------------------
+Wed Aug 25 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <3.1>
+
+
+-------------------------------------------------------------------
+Fri Apr  2 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <2.16>
+  * updated astyle code to release 1.24
+  * added indentation styles 1tbs and horstmann
+  * added --no-trailing-nl switch (suggested by Adiel Mittmann)
+  * added Modula2 definition (thanks to Benjamin Kowarsch)
+  * added EBNF definition (thanks to Mate Ory)
+  * added ABNF, AutoHotKey, BBCode and Clean language definitions
+  * updated C++ definition to support C++0x syntax
+  * added StartupNotify switch in desktop file (patch by Jochen Schmitt)
+
+
+-------------------------------------------------------------------
+Sat Feb 27 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <2.15>
+  * improved HTML nested language patterns (thanks to Simone)
+  * improved Rexx and PL1 definitions (thabnks to Robert Prins)
+  * added support for NXC and NBC
+  * GUI: added copy and paste support (thanks to Torsten Flamminger)
+  * GUI: fixed preview of UTF-8 input
+
+
+-------------------------------------------------------------------
+Mon Jan 25 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <2.14>
+  * fixed Rexx output (thanks to Marc Hessling)
+  * added support for Go and Pure
+  * added support for BNF (thanks to Julien Fontanet)
+  * updated Logtalk definition (thanks to Paulo Moura)
+  * updated THE theme  (thanks to Marc Hessling)
+  * CLI: --quiet switch supresses "Unknown source file extension" error
+    (suggested by Nathan Gray)
+
+
+-------------------------------------------------------------------
+Tue Oct 13 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <2.13>
+  * Fixed SVG output (thanks to Xico)
+  * GUI: added new icon
+
+-------------------------------------------------------------------
+Fri Sep 11 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <2.12>
+  * fixed bug with $INCLUDE statement
+  * fixed ctags file parsing
+  * added nested language recognition within a source file (suggested by Pavel Striz)
+  * added $NESTED statement to language definitions (pas, html, tex)
+  * added support for F# (fs.lang)
+  * added support for haXe (hx.lang)
+  * improved various language definitions
+  * revised documentation
+  * LIB: added version to shared lib output name
+  * CLI: added options --start-nested and --print-style
+
+-------------------------------------------------------------------
+Sat Aug  1 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <2.11>
+  * added BBCode output option (--bbcode, suggested by Qui Peccavit)
+  * added new --delim-cr option to cope with MacOS 9 files
+    (suggested by Steven Haddock)
+  * added shared lib target (make lib-shared, suggested by Dario Teixeira)
+  * list of installed languages (--list-langs) was enhanced to include mapped file
+    extensions (suggested by Martin Kammerlander)
+  * improved many colour themes using Agave (agave.sf.net)
+
+-------------------------------------------------------------------
+Wed Jul 22 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <2.10>
+  * fixed CR parsing bug on MacOS (thanks to Shiro Wilde)
+  * fixed SWIG makefile (thanks to David Bremner)
+  * license changed from GPLv2 to GPLv3 (incl. included libs)
+  * updated Artistic Style lib to version 1.23
+  * new indentation schemes: stroustrup, whitesmith, banner
+  * removed indentSchemes and helpmsg directories
+  * removed README_INDENT
+  * replaced ide-devcpp theme by a new jedit theme
+  * added support for Interactive Data Language (idlang, thanks to Roberto
+    Mendoza)
+  * added support for Rebol, Oz, Mercury, Zonnon, ATS (Applied Type System),
+    CHILL, NetRexx, Inno Setup and INTERLIS
+  * added pp, rjs, jnlp, groovy, gnad, es, sblc, ooc, gst, sq extensions
+    to filetypes.conf
+  * improved Prolog, Pike, Oberon, Nice, Java, Lisp, Lua, Haskell, C# and SML
+    definitions
+  * improved spec.lang for RPM (thanks to Luoyi Ly)
+  * CLI: option --help-lang is deprecated
+  * API: dropped setSpecialOptions(), renamed initializing methods to init*
+- 2.9
+  * added more customized boxes for the LaTeX --pretty-symbols switch
+    (thanks to Romain Francois)
+  * GUI: fixed makefile to pass costum paths to the Qt project makefile
+    (thanks to Joerg Germeroth)
+  * GUI: reduced window height (thanks to Fidel Barrera)
+  * GUI: added Spanish translation (thanks to Fidel Barrera)
+  * GUI: added drag and drop for input files
+- 2.8
+  * added --pretty-symbols option to improve LaTeX output quality of tilde and
+    braces (thanks to Romain Francois)
+  * omitted warning message if --syntax parameter is contained in the --skip list
+    (thanks to Bob Smith)
+  * included language descriptions in --list-langs output
+  * dropped dependency of --replace-quotes and --fragment options
+  * enhanced Python SWIG example (testmod.py)
+  * added qmake language definition
+  * fixed SWIG scripts (thanks to David Bremner)
+  * fixed gcc 4.4 compilation (patch by Jochen Schmitt)
+  * dropped core/html32generator.*
+  * dropped src/gui (wxWidgets based interface)
+  * GUI: rewrote the user interface using Qt
+
+-------------------------------------------------------------------
+Wed Jan 14 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <2.7>
+
+-------------------------------------------------------------------
+Sat Nov  1 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <2.6.14>
+  * added --ctags-file option to add tooltips with meta information in HTML output
+  * added options to improve compatibility with GNU source-highlight:
+    --doc, --no-doc, --tab, --css, --output-dir, --failsafe, --out-format,
+    --src-lang, --line-number, --line-number-ref
+  * fixed ADA95, C#, Eiffel, Fortran, TCL, Bash definitions
+  * added Vala language definition
+  * added several file suffixes to filetypes.conf
+  * fixed gcc 4.3 compilation issues (patch by Detlef Reichelt)
+  * fixed race condition in makefile (patch by Jochen Schmitt)
+  * added exit condition if input path matches output path (suggested by James Haefner)
+  * GUI: added ctags file selection options (only wx2.9 version)
+
+-------------------------------------------------------------------
+Fri Oct  3 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <2.6.13>
+- add gcc43 patch
+  * added --skip option to ignore unknown file types (suggested by Bob Smith)
+  * added Haskell LHS language definition (suggested by Sebastian Roeder)
+  * added regex description for Perl and Ruby definitions
+  * improved Bison, Paradox, SML, Snobol, Verilog definitions
+  * renamed snobol.lang to sno.lang
+  * updated Artistic Style lib to version 1.22
+  * replaced dirstream lib by a faster file globbing method (invoked with --batch-recursive)
+  * support for USE_FN_MATCH compile flag was dropped
+  * Makefile generates libhighlight.a (suggested by Adiel Mittmann)
+  * updated SWIG makefile and documentation
+
+-------------------------------------------------------------------
+Thu Aug  7 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <2.6.12>
+  * added RTF character stylesheet option (suggested by Klaus Nordby)
+  * fixed filetypes.conf path in RPM specfile (thanks to Nikita Borodikhin)
+
+-------------------------------------------------------------------
+Fri Jul 18 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <2.6.11>
+  * added SVG output option (--svg)^
+  * reassigned -G short option from --class-name to --svg^
+  * fixed various makefile issues (patches by Samuli Suominen)^
+  * added highlight.desktop file (suggested by Samuli Suominen)^
+  * GUI: added SVG and font selection options (only wx2.9 version)^
+  * GUI: reduced window height by hiding format specific input controls^
+  * updated highlight.spec to compile wx2.9 GUI^
+
+-------------------------------------------------------------------
+Sat May 10 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <2.6.10>
+
+-------------------------------------------------------------------
+Fri Mar 28 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <2.6.9>
+
+-------------------------------------------------------------------
+Fri Feb  1 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <2.6.8>
+
+-------------------------------------------------------------------
+Tue Dec 11 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version <2.6.6>
+
+-------------------------------------------------------------------
+Fri Oct  5 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version <2.6.5>
+
+-------------------------------------------------------------------
+Sat Sep 15 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version <2.6.4>
+
+-------------------------------------------------------------------
+Fri Sep  7 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version <2.6.3>
+
+-------------------------------------------------------------------
+Mon Jul 23 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version <2.6.2>
+
+-------------------------------------------------------------------
+Thu Jun 28 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version <2.6.1>
+
+-------------------------------------------------------------------
+Thu May 10 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version
+
+-------------------------------------------------------------------
+Fri Nov 17 00:00:00 UTC 2006 - detlef@links2linux.de
+
+- new upstream version
+
+-------------------------------------------------------------------
+Sat Aug  5 00:00:00 UTC 2006 - detlef@links2linux.de
+
+- first build for packman
+

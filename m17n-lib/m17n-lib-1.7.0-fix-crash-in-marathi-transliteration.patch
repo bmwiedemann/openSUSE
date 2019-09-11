@@ -1,0 +1,43 @@
+From 868093b0b0504da6693f5e868e7deb468009b5af Mon Sep 17 00:00:00 2001
+From: Mike FABIAN <mfabian@redhat.com>
+Date: Wed, 26 Aug 2015 15:42:28 +0200
+Subject: [PATCH] Bug 1256244 - Transliteration not working on Marathi language
+
+---
+ src/input.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/input.c b/src/input.c
+index 1160085..5a86b10 100644
+--- a/src/input.c
++++ b/src/input.c
+@@ -1083,7 +1083,7 @@ load_translation (MIMMap *map, MPlist *keylist, MPlist *map_actions,
+       len = MPLIST_LENGTH (elt);
+       if (MFAILP (len > 0))
+ 	return -1;
+-      keyseq = (MSymbol *) alloca (sizeof (int) * len);
++      keyseq = (MSymbol *) alloca (sizeof (MSymbol) * len);
+       for (i = 0; i < len; i++, elt = MPLIST_NEXT (elt))
+ 	{
+ 	  if (MPLIST_INTEGER_P (elt))
+@@ -4264,7 +4264,7 @@ filter (MInputContext *ic, MSymbol key, void *arg)
+   if (ic_info->commit_key_head > 0)
+     {
+       memmove (ic_info->keys, ic_info->keys + ic_info->commit_key_head,
+-	       sizeof (int) * (ic_info->used - ic_info->commit_key_head));
++	       sizeof (MSymbol *) * (ic_info->used - ic_info->commit_key_head));
+       ic_info->used -= ic_info->commit_key_head;
+       ic_info->key_head -= ic_info->commit_key_head;
+       ic_info->state_key_head -= ic_info->commit_key_head;
+@@ -4278,7 +4278,7 @@ filter (MInputContext *ic, MSymbol key, void *arg)
+       if (ic_info->key_head > 0)
+ 	{
+ 	  memmove (ic_info->keys, ic_info->keys + ic_info->key_head,
+-		   sizeof (int) * (ic_info->used - ic_info->key_head));
++		   sizeof (MSymbol *) * (ic_info->used - ic_info->key_head));
+ 	  ic_info->used -= ic_info->key_head;
+ 	  ic_info->key_head = ic_info->state_key_head
+ 	    = ic_info->commit_key_head = 0;
+-- 
+2.4.3
+

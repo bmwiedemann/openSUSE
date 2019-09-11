@@ -1,0 +1,472 @@
+-------------------------------------------------------------------
+Fri Jan 11 06:36:27 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.76
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  1.76      2019-01-09 16:59:54Z
+      - Revert changes introduced in 1.75
+
+-------------------------------------------------------------------
+Wed Jan  9 06:32:56 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.75
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  1.75      2019-01-08 19:45:38Z
+      - $uri->canonical unconditionally returns a clone (GH#58) (Dorian Taylor)
+
+-------------------------------------------------------------------
+Tue Apr 24 05:59:20 UTC 2018 - coolo@suse.com
+
+- updated to 1.74
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  1.74      2018-04-22 12:30:44Z
+      - avoid 'uninitialized' warning in URI::File when host has no domain name
+        set (PR#53, thanks Shoichi Kaji!)
+
+-------------------------------------------------------------------
+Wed Jan 10 07:26:44 UTC 2018 - coolo@suse.com
+
+- updated to 1.73
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  1.73      2018-01-09 06:42:51Z
+      - Update documentation for URI::_punycode (GH Issue #45)
+
+-------------------------------------------------------------------
+Thu Jul 27 06:26:53 UTC 2017 - coolo@suse.com
+
+- updated to 1.72
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  1.72      2017-07-25
+      - Convert the dist to Dist::Zilla for authoring.
+      - Remove recommendation of Business::ISBN as urn/isbn.pm is deprecated
+      - Use Test::Needs instead of raw eval in urn-isbn.t
+
+-------------------------------------------------------------------
+Wed Jan 13 10:38:07 UTC 2016 - coolo@suse.com
+
+- updated to 1.71
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  2016-01-08   Karen Etheridge <ether@cpan.org>
+  
+    Release 1.71
+  
+      No changes since 1.70_001
+  
+  2015-12-29   Karen Etheridge <ether@cpan.org>
+  
+    Release 1.70_001
+  
+    Kaitlyn Parkhurst:
+  
+      - Localize $@ when attempting to load URI subclasses (PR#30)
+  
+    Karen Etheridge:
+  
+      - speed up construction time by not attempting to load the same
+        non-existent URI subclass twice
+
+-------------------------------------------------------------------
+Sat Jul 25 09:17:47 UTC 2015 - coolo@suse.com
+
+- updated to 1.69
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  2015-07-25   Karen Etheridge <ether@cpan.org>
+  
+    Release 1.69
+  
+    Karen Etheridge:
+      - add $VERSIONs for all modules that lack them
+  
+    Olaf Alders:
+      - add missing documentation for URI::sftp
+      - Clarify use of query_param() method
+
+-------------------------------------------------------------------
+Sat Jun 27 09:06:28 UTC 2015 - coolo@suse.com
+
+- updated to 1.68
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  2015-06-25   Karen Etheridge <ether@cpan.org>
+  
+    Release 1.68
+  
+    Kent Fredric:
+      - Sort hash keys to make generated query predictable
+  
+    Slaven Rezic:
+      - Add new tests for path segments
+  
+    Brendan Byrd:
+      - Add sftp scheme
+
+-------------------------------------------------------------------
+Tue Apr 14 17:31:35 UTC 2015 - coolo@suse.com
+
+- updated to 1.67
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  Revision history for URI
+  
+  2015-02-24   Karen Etheridge <ether@cpan.org>
+  
+    Release 1.67
+  
+    Karen Etheridge:
+      - properly skip author test for normal user installs
+  
+  
+  2015-02-24   Karen Etheridge <ether@cpan.org>
+  
+    Release 1.66
+  
+    Adam Herzog:
+      - reorganize .pm files under lib/ (github #20)
+  
+  
+  2014-11-05   Karen Etheridge <ether@cpan.org>
+  
+    Release 1.65
+  
+    Karen Etheridge:
+      - add a TO_JSON method, to assist JSON serialization
+  
+  
+  2014-07-13   Karen Etheridge <ether@cpan.org>
+  
+    Release 1.64
+  
+    Eric Brine:
+      - better fix for RT#96941, that also works around utf8 bugs on older perls
+  
+  
+  2014-07-13   Karen Etheridge <ether@cpan.org>
+  
+    Release 1.63
+  
+    Karen Etheridge:
+      - mark utf8-related test failures on older perls caused by recent string
+        parsing changes as TODO (RT#97177, RT#96941)
+  
+  
+  2014-07-12   Karen Etheridge <ether@cpan.org>
+  
+    Release 1.62
+  
+    Karen Etheridge (2):
+      - use strict and warnings in all modules, tests and scripts
+      - remove all remaining uses of "use vars"
+  
+    Eric Brine:
+      - fixed new "\C is deprecated in regex" warning in 5.21.2 (RT#96941)
+  
+  
+  2014-07-01   Karen Etheridge <ether@cpan.org>
+  
+    Release 1.61
+  
+    David Schmidt:
+        Fix test failure if local hostname is 'foo' [RT#75519]
+  
+    Gisle Aas (2):
+        New 'has_recognized_scheme' interface [RT#71204]
+        Interfaces that return a single value now return undef rather than an
+        empty list in list context
+  
+    Slaven Rezic:
+        Fix bad regex when parsing hostnames
+  
+    Piotr Roszatycki:
+        Preferentially use $ENV{TMPDIR} for temporary test files over /tmp
+        (fixes tests on Android)
+
+-------------------------------------------------------------------
+Sun Apr 01 17:27:05 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.60:
+  * avoid failure if the local hostname is 'foo' [RT#75519]
+  * fix RT#59274 - courtesy of a stupid 5.8.[12] join bug
+
+-------------------------------------------------------------------
+Fri Sep 16 11:52:48 UTC 2011 - coolo@suse.com
+
+- use original source URI
+
+-------------------------------------------------------------------
+Mon Aug 29 08:24:20 UTC 2011 - vcizek@suse.com
+
+- update to 1.59
+  Make sure accessor methods don't return utf8::upgraded() bytes
+  for URLs initialized from Unicode strings.
+  Version number increments.
+  Documentation tweaks.
+
+-------------------------------------------------------------------
+Mon Jan 24 10:51:31 UTC 2011 - vcizek@novell.com
+
+- update to 1.58
+
+  This release reverts the patch in 1.57 that made query_form distingush
+  between empty and undef values.  It broke stuff. [RT#62708]
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:59 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Nov 30 16:16:58 UTC 2010 - coolo@novell.com
+
+- do not use suggests on fedora
+
+-------------------------------------------------------------------
+Mon Nov 22 12:53:06 CET 2010 - anicka@suse.cz
+
+- update to 1.56
+ * Don't depend on DNS for the heuristics test
+
+-------------------------------------------------------------------
+Sat Sep  4 19:29:40 UTC 2010 - chris@computersalat.de
+
+- added bcond_with opt (for local build tests)
+  o BuildRequires perl-Business-ISBN
+
+-------------------------------------------------------------------
+Sat Sep  4 19:13:49 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+- rpmlint
+  o spurious-executable-perm uri-test
+- removed obsolete patch
+  o URI-1.37-path.diff
+
+-------------------------------------------------------------------
+Thu Sep  2 05:05:04 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.55:
+  * Treat ? as a reserved character in file: URIs
+    " is not a URI character [RT#56421]
+  * Avoid test failure unless defined $Config{useperlio}
+
+-------------------------------------------------------------------
+Thu Apr  1 18:09:05 CEST 2010 - anicka@suse.cz
+
+- update to 1.54
+ * Fix heuristic test fails on hosts in .su (or .uk) domains
+
+-------------------------------------------------------------------
+Fri Mar 26 13:37:06 CET 2010 - vuntz@opensuse.org
+
+- Changes perl-Business-ISBN Recommends to Suggests:
+  perl-Business-ISBN requires perl-GD-Barcode, and having this
+  installed by default on minimal installs doesn't make sense,
+  especially since it's big.
+
+-------------------------------------------------------------------
+Thu Mar 25 17:43:34 CET 2010 - anicka@suse.cz
+
+- update to 1.53
+ * Remove unneeded execute permissions.
+ * Add $uri->secure() method.
+ * Documentation and comment spelling fixes.
+ * Fix heuristics when COUNTRY is set to "gb".
+ * Use HTTP_ACCEPT_LANGUAGE, LC_ALL, and LANG in country heuristics.
+ * POD linking improvements.
+ * Rewrite the URI::Escape tests with Test::More
+ * Update URI::Escape for RFC 3986
+ * Bump MIN_PERL_VERSION to 5.6.1 [RT#54078]
+ * Suppress wide caracters warnings in iri.t [RT#53737]
+
+-------------------------------------------------------------------
+Fri Jan 15 14:22:29 CET 2010 - anicka@suse.cz
+
+- update to 1.52
+ * Encode::decode('UTF-8',...) with callback implemented in 2.39
+ * A "test case" to start IDNA prototype from
+ * Escape IDNA hostnames
+ * Introduce the as_unicode method
+ * Make as_unicode undo punycode for server URLs
+ * Hack to make as_iri turn A-labels into U-labels
+ * Make as_iri leave escapes not forming valid UTF-8 sequences
+ * Don't include RFCs in the cpan tarball
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Sep  7 14:49:24 CEST 2009 - mls@suse.de
+
+- break build cycle by removing perl-Business-ISBN BuildRequires
+
+-------------------------------------------------------------------
+Sat Jul 25 19:45:41 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sun Jun 28 18:20:41 CEST 2009 - chris@computersalat.de
+
+- update to 1.38
+ * Spelling fixes.
+ * skip DNS test if wildcard domain catcher (e.g. OpenDNS) is there
+ * Avoid "Insecure $ENV{PATH} while running with -T switch" error with perl-5.6.
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o fixed deps
+
+-------------------------------------------------------------------
+Fri Jun 27 16:27:48 CEST 2008 - anicka@suse.cz
+
+- update to 1.37 
+ * Support ";" delimiter in $u->query_form
+ * We get different test result when www.perl.com doesn't resolve.
+ * URI::Heuristic didn't work for generic country code
+
+-------------------------------------------------------------------
+Wed Apr  9 13:46:46 CEST 2008 - anicka@suse.cz
+
+- update to 1.36
+ * Escape Unicode strings as UTF-8.
+ * fixed URL encoded data: URLs
+ * uri_escape_utf8() now exported by default as documented.
+ * Test fails with Business::ISBN installed
+ * lc(undef) reports warning in blead
+ * add some tests for gopher URIs
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Feb 17 19:40:43 CET 2005 - mjancar@suse.cz
+
+- update to 1.35
+
+-------------------------------------------------------------------
+Wed Nov 24 12:22:59 CET 2004 - ro@suse.de
+
+- disable remote connecting test
+
+-------------------------------------------------------------------
+Mon Sep 20 18:02:25 CEST 2004 - ro@suse.de
+
+- update to 1.33 to make it build again
+
+-------------------------------------------------------------------
+Fri Aug 06 18:53:55 CEST 2004 - mjancar@suse.cz
+
+- update to 1.31
+
+-------------------------------------------------------------------
+Thu Feb 26 17:35:25 CET 2004 - mjancar@suse.cz
+
+- update to 1.30
+
+-------------------------------------------------------------------
+Thu Oct 30 17:07:01 CET 2003 - mjancar@suse.cz
+
+- update to 1.27
+
+-------------------------------------------------------------------
+Fri Aug 22 15:56:55 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Tue Jul 15 16:40:31 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Mon Jun 09 15:51:37 CEST 2003 - mjancar@suse.cz
+
+- don't package MANIFEST
+
+-------------------------------------------------------------------
+Mon May 19 11:45:27 CEST 2003 - ro@suse.de
+
+- remove perllocal.pod 
+
+-------------------------------------------------------------------
+Mon Apr 28 11:37:10 CEST 2003 - mjancar@suse.cz
+
+- update to version 1.23
+
+-------------------------------------------------------------------
+Thu Oct 03 18:46:47 CEST 2002 - prehak@suse.cz
+
+- updated to version 1.22
+- removed perl-MIME-Base64 from neededforbuild
+
+-------------------------------------------------------------------
+Mon Jul 29 12:44:24 CEST 2002 - mls@suse.de
+
+- Fixed neededforbuild for perl-5.8.0
+
+-------------------------------------------------------------------
+Mon Jul 22 20:21:54 CEST 2002 - prehak@suse.cz
+
+- update to version 1.20
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Mon Jan 14 17:20:22 CET 2002 - rvasice@suse.cz
+
+- update to version 1.18
+
+-------------------------------------------------------------------
+Wed Aug 15 16:14:49 CEST 2001 - rvasice@suse.cz
+
+- update to version 1.15
+
+-------------------------------------------------------------------
+Wed Mar 14 08:20:13 CET 2001 - cihlar@suse.cz
+
+- update to version 1.11
+
+-------------------------------------------------------------------
+Tue Nov 14 11:59:33 CET 2000 - cihlar@suse.cz
+
+- renamed perl_uri -> perl-URI
+
+-------------------------------------------------------------------
+Tue Aug 22 13:50:09 CEST 2000 - cihlar@suse.cz
+
+- update to 1.09
+- bzipped sources
+
+-------------------------------------------------------------------
+Mon Aug 21 16:40:42 CEST 2000 - ro@suse.de
+
+- adapted for perl-5.6 
+
+-------------------------------------------------------------------
+Fri Mar 31 10:33:42 CEST 2000 - cihlar@suse.cz
+
+- added BuildRoot
+- added manpages to files 
+
+-------------------------------------------------------------------
+Fri Mar 17 14:26:40 MET 2000 - ug@suse.de
+
+- build for IMap Server CD 
+

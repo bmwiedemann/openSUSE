@@ -1,0 +1,16 @@
+Index: isdn4k-utils/vbox/src/vbox.c
+===================================================================
+--- isdn4k-utils.orig/vbox/src/vbox.c
++++ isdn4k-utils/vbox/src/vbox.c
+@@ -1801,9 +1801,9 @@ static void set_window_background(WINDOW
+ 
+ 	wattrset(win, col);
+ 
+-	for (y = 0; y < (win->_maxy + 1); y++)
++	for (y = 0; y < (getmaxy(win) + 1); y++)
+ 	{
+-		mvwhline(win, y, 0, ' ', (win->_maxx + 1));
++		mvwhline(win, y, 0, ' ', (getmaxx(win) + 1));
+ 	}
+ }
+ 

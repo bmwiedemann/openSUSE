@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Tue Apr  9 07:46:56 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Don't treat use of deprecated declarations as error to fix build
+  against Qt 5.13
+
+-------------------------------------------------------------------
+Sat Sep  8 16:50:13 UTC 2018 - fabian@ritter-vogt.de
+
+- Don't install examples and tests
+
+-------------------------------------------------------------------
+Fri Nov  3 10:05:16 UTC 2017 - buschmann23@opensuse.org
+
+- update to version 0.24
+  * OAuth2: allow token URL to be on a different host
+  * OAuth2: accept replies carrying text/html content type 
+- update to version 0.23
+  * OAuth: propagate network and SSL errors from SignOnUI
+  * OAuth2: add an option to disable "state" parameter
+  * Base: disconnect from reply on SSL errors
+- update to version 0.22
+  * OAuth2: add the list of granted permissions to the reply
+  * OAuth2: use "state" parameter to check for CSRF
+  * Build with QT 5 only
+  * OAuth2: Use QUrlQuery to parse callback fragment
+  * OAuth2: handle errors occurring when refreshing a token
+- update to version 0.21
+  * OAuth2: implement a fallback mechanism when parsing replies
+  * OAuth 1.0a and 2.0: allow forcing a new token
+  * Delay instantiation of QNetworkAccessManager 
+- updated patches
+  * 0001_Multilib.patch
+
+-------------------------------------------------------------------
+Sat Jun  4 12:09:33 UTC 2016 - wbauer@tmo.at
+
+- Conflict with libproxy1-config-kde4, that's the actual name of
+  the package, and having it installed makes the plugin crash
+  (boo#953175)
+
+-------------------------------------------------------------------
+Sat Feb 22 21:34:26 UTC 2014 - tittiatcoke@gmail.com
+
+- Initial package 

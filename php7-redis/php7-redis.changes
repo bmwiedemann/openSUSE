@@ -1,0 +1,304 @@
+-------------------------------------------------------------------
+Wed Aug  7 07:36:40 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refresh spec-file with manual optmizations
+  * Remove version limit from BuildRequires:php7-devel (no actual).
+  * Remove BuildRequires:php7-soap (no needed).
+  * Add BuildRequires:php7-json (need for tests, but still does not load).
+  * Add %make_build and %make_install macros.
+- Update to 5.0.2
+  * https://pecl.php.net/package-changelog.php?package=redis&release=5.0.2
+  * RedisCluster segfaults after second connection with cache_slots enabled.
+  * Cleanup TSRMLS_* usage.
+  * Replace ulong with zend_ulong.
+  * Replace uint with uint32_t.
+  * Fix regression for conntecting to ports > 32767.
+  * RedisCluster segfaults after second connection with cache_slots enabled.
+  * Documentation improvements.
+
+-------------------------------------------------------------------
+Tue Jul  2 06:31:59 UTC 2019 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 5.0.0
+  This release contains important improvements and breaking changes.
+  The most interesting are: drop PHP5 support, RedisCluster slots caching,
+  JSON and msgpack serializers, soft deprecation of non-Redis commands.
+
+  * Remove HAVE_SPL
+  * Allow compilation without JSON serialization enabled and fixes for
+    deprecated helper methods.
+  * Enable connection pooling by default 
+  * Soft deprecate methods that aren't actually Redis commands
+  * Enable pooling for cluster slave nodes
+  * xInfo response format
+  * Make the XREADGROUP optional COUNT and BLOCK arguments nullable
+  * Allow PING to take an optional argument
+  * Allow ZRANGE to be called either with `true` or `['withscores' => true]`
+  * Allow to specify server address as schema://host
+  * Allow persistent_id to be passed as NULL with strict_types enabled
+  * Add server address to exception message
+  * Adds OPT_REPLY_LITERAL for rawCommand and EVAL
+  * JSON serializer
+  * Add support for STREAM to the type command
+  * Fix TypeError when using built-in constants in `setOption`
+  * Handle references in MGET
+  * msgpack serializer
+  * Add Cluster slots caching
+  * Drop PHP5 support
+  * Documentation improvements
+
+-------------------------------------------------------------------
+Fri Mar 15 09:44:51 UTC 2019 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 4.3.0
+  * Proper persistent connections pooling implementation
+  * RedisArray auth
+  * Use zend_string for storing key
+  * Add ZPOPMAX and ZPOPMIN support
+  * Implement GEORADIUS_RO and GEORADIUSBYMEMBER_RO
+  * Add callback parameter to subscribe/psubscribe arginfo
+  * Don't check the number affected keys in PS_UPDATE_TIMESTAMP_FUNC
+  * Xgroup updates
+  * RedisCluster auth
+  * Cancel pipeline mode without executing commands
+  * Use zend_string for pipeline_cmd
+  * Different key hashing algorithms from hash extension
+  * Breaking the lock acquire loop in case of network problems
+  * Implement consistent hashing algorithm for RedisArray
+  * Use zend_string for storing RedisArray hosts
+  * Update lzf_compress to be compatible with PECL lzf extension
+  * Fix RedisCluster keys memory leak
+  * Directly use return_value in RedisCluster::keys method
+  * Fix segfault in Redis Cluster with inconsistent configuration
+  * Masters info leakfix
+  * Refactor redis_sock_read_bulk_reply
+  * Remove unused parameter lazy_connect from redis_sock_create
+  * Remove useless ZEND_ACC_[C|D]TOR.
+  * Documentation improvements
+
+- Added additional settings to redis.ini
+
+-------------------------------------------------------------------
+Fri Nov 30 06:50:49 UTC 2018 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 4.2.0
+  * https://pecl.php.net/package-changelog.php?package=redis&release=4.2.0
+  * Optimize close method.
+  * Prevent potential infinite loop for sessions.
+  * Fix coverty warnings.
+  * Fix session memory leaks.
+  * Fix XCLAIM on 32-bit installs.
+  * Build warning fixes.
+  * Fix incorrect arginfo for `Redis::sRem` and `Redis::multi`.
+  * Update STREAM API to handle STATUS -> BULK reply change.
+  * Treat a -1 response from cluster_check_response as a timeout.
+  * Use a ZSET insted of SET for EVAL tests.
+  * Missing space between command and args.
+  * Streams API.
+  * Reset the socket after a timeout to make sure no wrong data is received.
+  * Modify session testing logic.
+  * Allow '-' and '+' arguments and add tests for zLexCount and zRemRangeByLex.
+  * Fix printf format warnings.
+  * Session module is required.
+  * Set default values for ini entries.
+  * Display ini entries in output of phpinfo.
+  * Persistant connections can be closed via close method + change reconnection logic.
+  * Documentation improvements.
+
+-------------------------------------------------------------------
+Thu Aug 16 23:58:41 UTC 2018 - ilya@ilya.pp.ua
+
+- Update to 4.1.1
+  * https://pecl.php.net/package-changelog.php?package=redis&release=4.1.1
+  * Fix arginfo for Redis::set method.
+  * Fix compression in RedisCluster.
+  * Fix TravisCI builds.
+  * Highlight php codes in documentation.
+
+-------------------------------------------------------------------
+Fri Jul 13 12:56:48 UTC 2018 - ilya@ilya.pp.ua
+
+- Update to 4.1.0
+  * https://pecl.php.net/package-changelog.php?package=redis&release=4.1.0
+  * Add callbacks validate_sid and update_timestamp to session handler.
+  * Call cluster_disconnect before destroying cluster object.
+  * Bulk strings can be zero length.
+  * Handle async parameter for flushDb and flushAll.
+  * Split INSTALL and add more instructions.
+  * Only the first arg of connect and pconnect is required.
+  * Add session locking functionality.
+  * Fix compression in RedisCluster.
+  * Refactor geo* commands + documentation improvements.
+
+-------------------------------------------------------------------
+Fri Apr 27 14:25:22 UTC 2018 - ilya@ilya.pp.ua
+
+- Update to 4.0.2
+  * https://pecl.php.net/package-changelog.php?package=redis&release=4.0.2
+  * Fix of exists method to take multiple keys and return integer value.
+
+-------------------------------------------------------------------
+Fri Apr 20 07:27:53 UTC 2018 - jweberhofer@weberhofer.at
+
+- Update to 4.0.1
+  * Fix arginfo for connect/pconnect issue
+  * Don't leak a ZVAL
+  * Fix config.m4 for lzf
+  * Updates EXISTS documentation and notes change in 4.0.0
+  * Fix typo in notes
+
+-------------------------------------------------------------------
+Mon Mar 19 09:23:42 UTC 2018 - ilya@ilya.pp.ua
+
+- Update to 4.0.0
+  * https://pecl.php.net/package-changelog.php?package=redis&release=4.0.0
+  * Add proper ARGINFO for all methods.
+  * Let EXISTS take multiple keys.
+  * Use zend_string as returning value for ra_extract_key and ra_call_extractor.
+  * Implement SWAPDB and UNLINK commands.
+  * Return real connection error as exception.
+  * Disallow using empty string as session name.
+  * Use zend_string for storing auth and prefix members.
+  * The element of z_seeds may be a reference on php7.
+  * Avoid connection in helper methods.
+  * Add tcp_keepalive option to redis sock.
+  * More robust GEORADIUS COUNT validation.
+  * Add LZF compression (experimental).
+  * Allow to use empty string as persistant_id.
+  * Don't use convert_to_string in redis_hmget_cmd.
+  * Allow mixing MULTI and PIPELINE modes (experimental).
+  * PHP >=7.3.0 uses zend_string to store `php_url` elements.
+  * Documentation improvements.
+
+-------------------------------------------------------------------
+Thu Mar  8 11:42:07 UTC 2018 - ilya@ilya.pp.ua
+
+- Remove %configure/make duplicates.
+- Add %licence macros.
+
+-------------------------------------------------------------------
+Tue Jan 30 12:47:36 UTC 2018 - crrodriguez@opensuse.org
+
+- Build with hidden visibility, only a few symbols must be 
+  exported, those are marked with default visibility in PHP core
+  headers.
+
+-------------------------------------------------------------------
+Thu Jan  4 15:03:01 UTC 2018 - ilya@ilya.pp.ua
+
+- Update to 3.1.6
+  * ChangeLog https://pecl.php.net/package-changelog.php?package=redis&release=3.1.6
+  * Fix of RedisArray distributor hashing function which was broken in 3.1.4.
+  * Fix RedisCluster constructor with PHP 7 strict scalar type.
+  * Allow to use empty string as persistant_id.
+  * Fix cluster_init_seeds.
+  * Fix z_seeds may be a reference.
+  * PHP >=7.3 uses zend_string for php_url elements.
+
+-------------------------------------------------------------------
+Sun Oct  8 14:29:00 UTC 2017 - ilya@ilya.pp.ua
+
+- Update to 3.1.4
+  * ChangeLog https://pecl.php.net/package-changelog.php?package=redis&release=3.1.4
+  * Allow mixing MULTI and PIPELINE modes (experimental).
+  * Added integration for coverty static analysis and fixed several warnings.
+  * Fixed link to redis cluster documentation.
+  * Remove unused PHP_RINIT and PHP_RSHUTDOWN functions.
+  * Removed duplicate HGET in redis array hash table, formatting.
+  * Treat NULL bulk as success for session read.
+  * Refactor redis_send_discard.
+  * Updated runtime exception handling.
+  * Added a github issue template.
+  * Initialize gc member of zend_string.
+  * Fix valgrind warnings.
+  * Fix php5/php7 compatibility layer.
+  * Fix typo in README.markdown.
+  * Improve redis array rehash.
+  * Change redis array pure_cmds from zval to hashtable.
+  * Don't try to set TCP_NODELAY on a unix socket and don't warn on multiple calls to pipeline.
+  * Use zend_string rather than char* for various context fields.
+  * Various other library fixes.
+
+-------------------------------------------------------------------
+Wed Aug  2 11:34:01 UTC 2017 - tchvatal@suse.com
+
+- Remove the php5 packages as the php5 language is being removed
+
+-------------------------------------------------------------------
+Wed Jul 19 22:23:34 UTC 2017 - ilya@ilya.pp.ua
+
+- Update to 3.1.3
+  * ChangeLog https://pecl.php.net/package-changelog.php?package=redis&release=3.1.3
+
+-------------------------------------------------------------------
+Mon Jul 10 18:10:23 UTC 2017 - ilya@ilya.pp.ua
+
+- Add config file redis.ini
+- Format spec-file to macro style
+
+-------------------------------------------------------------------
+Tue Jun 27 14:50:44 UTC 2017 - jweberhofer@weberhofer.at
+
+- Upgraded to version 3.1.2
+  * RedisArray segfault fix [564ce3] (Pavlo Yatsukhnenko)
+  * Small memory leak fix [645888b] (Mike Grunder)
+  * Segfault fix when recreating RedisCluster objects [abf7d4] (Michael Grunder)
+  * Fix for RedisCluster bulk response parsing [4121c4] (Alberto Fern?ndez)
+  * Re allow single array for sInterStore [6ef0c2, d01966] (Michael Grunder)
+  * Better TravisCI integration [4fd2f6] (Pavlo Yatsukhnenko)
+
+-------------------------------------------------------------------
+Sat Feb 18 06:39:37 UTC 2017 - jweberhofer@weberhofer.at
+
+- Upgraded to version 3.1.1
+  This release contains mostly fixes for issues introduced when merging
+  the php 5 and 7 codebase into a single branch.
+
+  * Fixed a segfault in igbinary serialization (@yatsukhnenko)
+  * Restore 2.2.8/3.0.0 functionality to distinguish between an error
+    and simply empty session data. (@remicollet)
+  * Fix double to string conversion function (@yatsukhnenko)
+  * Use PHP_FE_END definition when available (@remicollet)
+  * Fixed various 'static function declared but not used' warnings
+  * Fixes to various calls which were typecasting pointers to the wrong size. (@remicollet)
+
+  * Additional test updates for 32 bit systems (@remicollet)
+  * ARM rounding issue in tests (@remicollet)
+  * Use new zend_list_close instead of zend_list_delete when reconnecting.
+  * Refactoring of redis_boolean_response_impl and redis_sock_write (@yatsukhnenko)
+  * Added php session unit test (@yatsukhnenko)
+  * Added explicit module dependancy for igbinary (@remicollet)
+  * Added phpinfo serialization information (@remicollet)
+
+- Version 3.1.0
+  In this version of phpredis codebase was unified to work with all versions of php.
+  Also many bug fixes and some improvements has been made.
+
+- Improvements
+  * Support the client to Redis Cluster just having one master (andyli) [892e5646]
+  * Allow both long and strings that are longs for zrangebyscore offset/limit (Michael Grunder) [bdcdd2aa]
+  * Process NX|XX, CH and INCR options in zAdd command (Pavlo Yatsukhnenko) [71c9f7c8]
+- Fixes
+  * Fix incrby/decrby for large integers (Michael Grunder) [3a12758a]
+  * Use static declarations for spl_ce_RuntimeException decl (Jeremy Mikola) [a9857d69]
+  * Fixed method call problem causes session handler to display two times (ZiHang Gao) [24f86c49]
+  * psetex method returns '+OK' on success, not true (sitri@ndxbn) [afcd8445]
+  * Fix integer overflow for long (>32bit) increments in hIncrBy (iyesin) [58e1d799]
+  * Move zend_object handler to the end (Michael Grunder) [34107966]
+  * Using setOption on redis array causes immediate connection (Pavlo Yatsukhnenko) [f1a85b38]
+
+-------------------------------------------------------------------
+Sun Jan 29 06:00:00 UTC 2017 - jweberhofer@weberhofer.at
+
+- Provide php-redis as php5 and php7 can't be installed together
+
+-------------------------------------------------------------------
+Tue Jan 10 14:18:38 UTC 2017 - jweberhofer@weberhofer.at
+
+- Updated to version 3.0.0 - no changelog provided
+
+-------------------------------------------------------------------
+Tue Mar  8 10:45:25 UTC 2016 - danimo@owncloud.com
+
+- Update build from php7 branch 
+

@@ -1,0 +1,111 @@
+--- commons-exec-1.3-src/build.xml	2014-11-03 00:43:14.000000000 +0100
++++ commons-exec-1.3-src/build.xml	2019-04-04 07:41:59.501363164 +0200
+@@ -23,7 +23,7 @@
+   <property file="user.properties" />
+   
+   <property file="build.properties" />
+-  <property name="maven.build.version" value="1.2"/>
++  <property name="maven.build.version" value="1.3"/>
+   <property name="maven.build.output" value="target/classes"/>
+   <property name="maven.build.directory" value="target"/>
+   <property name="maven.build.final.name" value="commons-exec-${maven.build.version}"/>
+@@ -33,8 +33,8 @@
+   <!-- JUnit version should agree with the version in pom.xml -->
+   <property name="maven.junit.jar" value="${maven.repo.local}/junit/junit/4.11/junit-4.11.jar"/>
+   <!-- These must agree with the versions in pom.xml -->
+-  <property name="maven.compiler.source" value="1.3"/>
+-  <property name="maven.compiler.target" value="1.3"/>
++  <property name="maven.compiler.source" value="1.6"/>
++  <property name="maven.compiler.target" value="1.6"/>
+ 
+   <path id="junit">
+       <pathelement location="${maven.junit.jar}"/>
+@@ -56,10 +56,35 @@
+   </target>
+ 
+   <target name="jar" depends="compile,test" description="Build the JAR">
+-    <jar jarfile="${maven.build.directory}/${maven.build.final.name}.jar" basedir="${maven.build.output}" excludes="**/package.html"/>
++    <jar jarfile="${maven.build.directory}/${maven.build.final.name}.jar" basedir="${maven.build.output}" excludes="**/package.html">
++      <manifest>
++		<attribute name="Bundle-Description" value="Apache Commons Exec is a library to reliably execute external processes from within the JVM."/>
++		<attribute name="Bundle-DocURL" value="http://commons.apache.org/proper/commons-exec/"/>
++		<attribute name="Bundle-License" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Apache Commons Exec"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.commons.commons-exec"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${maven.build.version}.0"/>
++		<attribute name="Export-Package" value="org.apache.commons.exec;version=&quot;${maven.build.version}&quot;,org.apache.commons.exec.environment;version=&quot;${maven.build.version}&quot;,org.apache.commons.exec.launcher;version=&quot;${maven.build.version}&quot;,org.apache.commons.exec.util;version=&quot;${maven.build.version}&quot;"/>
++		<attribute name="Implementation-Title" value="Apache Commons Exec"/>
++		<attribute name="Implementation-URL" value="http://commons.apache.org/proper/commons-exec/"/>
++		<attribute name="Implementation-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Implementation-Vendor-Id" value="org.apache"/>
++		<attribute name="Implementation-Version" value="${maven.build.version}"/>
++		<attribute name="Include-Resource" value="META-INF/NOTICE.txt=NOTICE.txt,META-INF/LICENSE.txt=LICENSE.txt"/>
++		<attribute name="JavaPackages-ArtifactId" value="commons-exec"/>
++		<attribute name="JavaPackages-GroupId" value="org.apache.commons"/>
++		<attribute name="JavaPackages-Version" value="${maven.build.version}"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${maven.compiler.target}))&quot;"/>
++		<attribute name="Specification-Title" value="Apache Commons Exec"/>
++		<attribute name="Specification-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Specification-Version" value="${maven.build.version}"/>
++      </manifest>
++    </jar>
+   </target>
+ 
+-  <target name="compile-tests" depends="junit-present, compile" description="Compile the test code" if="junit.present">
++  <target name="compile-tests" depends="compile" description="Compile the test code" unless="maven.test.skip">
+     <mkdir dir="${maven.test.output}"/>
+     <javac destdir="${maven.test.output}" excludes="**/package.html" debug="true" deprecation="true" optimize="false" 
+         includeAntRuntime="false"
+@@ -74,7 +100,15 @@
+     </javac>
+   </target>
+ 
+-  <target name="test" depends="junit-present, compile-tests" if="junit.present" description="Run the test cases">
++  <target name="javadoc" description="Generates the Javadoc of the application">
++    <javadoc sourcepath="${basedir}/src/main/java" packagenames="*" destdir="${maven.build.directory}/site/apidocs"
++        access="protected" verbose="false" encoding="iso-8859-1" version="true" use="true" author="true"
++		splitindex="false" nodeprecated="false" nodeprecatedlist="false" notree="false" noindex="false"
++		nohelp="false" nonavbar="false" serialwarn="false" source="${maven.compiler.source}" linksource="true" breakiterator="false">
++    </javadoc>
++  </target>
++
++  <target name="test" depends="compile-tests, junit-missing" unless="junit.skipped" description="Run the test cases">
+     <mkdir dir="${maven.test.reports}"/>
+     <junit printSummary="yes" haltonerror="true" haltonfailure="true" fork="true" dir=".">
+       <sysproperty key="basedir" value="."/>
+@@ -101,7 +135,23 @@
+     <available classname="junit.framework.Test" property="junit.present" classpathref="junit"/>
+   </target>
+ 
+-  <target name="junit-present" depends="test-junit-present" unless="junit.present">
++  <target name="test-junit-status" 
++          depends="test-junit-present">
++    <condition property="junit.missing">
++      <and>
++        <isfalse value="${junit.present}"/>
++        <isfalse value="${maven.test.skip}"/>
++      </and>
++    </condition>
++    <condition property="junit.skipped">
++      <or>
++        <isfalse value="${junit.present}"/>
++        <istrue value="${maven.test.skip}"/>
++      </or>
++    </condition>
++  </target>
++
++  <target name="junit-missing" depends="test-junit-status" if="junit.missing">
+     <echo>================================= WARNING ================================</echo>
+     <echo> JUnit isn't present in your classpath. Tests not executed. </echo>
+     <echo>==========================================================================</echo>
+@@ -147,7 +197,7 @@
+     <delete file="${maven.build.directory}/dist/commons-exec-test-${maven.build.version}.tar"/>
+   </target>
+ 
+-  <target name="test-distribution" depends="junit-present,test-distribution-zip,test-distribution-tar" description="Creates a test distribution" if="junit.present" >
++  <target name="test-distribution" depends="junit-missing,test-distribution-zip,test-distribution-tar" description="Creates a test distribution" if="junit.present" >
+   </target>
+   
+ </project>

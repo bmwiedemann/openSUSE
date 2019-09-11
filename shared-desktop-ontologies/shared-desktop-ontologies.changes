@@ -1,0 +1,158 @@
+-------------------------------------------------------------------
+Sun Jun 23 20:27:32 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to 0.11:
+  * Added new properties to NMM:
+     nmm:albumArtist
+     nmm:albumProducer
+     nmm:albumConductor
+  * Make nco:emailAddress a subPropertyOf nao:identifier
+  * Change the range of nfo:fileSize from int to long
+  From 0.10.1:
+  * Fixed range of nmm:musicBrainzTrackID: xsd:string instead of xsd:integer
+- Removed gcc-c++ build requirement (not needed).
+
+-------------------------------------------------------------------
+Wed Jun 13 11:26:56 UTC 2012 - toddrme2178@gmail.com
+
+- Update to 0.10:
+  * Added nmm:TVSeason and friends to make TV seasons fully 
+    qualified resources.
+  * Fixed nmo:messageHeader cardinality restriction.
+- Remove patch about cardinality of nmo#mailHeader, since it is now
+  included
+
+-------------------------------------------------------------------
+Thu Mar 15 11:24:53 UTC 2012 - wstephenson@suse.com
+
+- Backport fix to cardinality of nmo#mailHeader, fixing mail indexing
+
+-------------------------------------------------------------------
+Sat Feb 11 18:41:08 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Update to 0.9.0
+ * Added properties nfo:depicts and nfo:depiction 
+ * Made nmm:artwork a subproperty of nfo:depiction 
+ * Added nrl:DefiningProperty and nrl:NonDefiningProperty 
+ * Set nao:userVisible on the following classes and properties: nao:score nao:hasSubResource nao:hasSuperResource nrl:Graph rdf:Property rdfs:Class rdfs:Resource nie:hasPart nie:isPartOf nfo:hasHash nuao:Event 
+ * Added class nfo:LocalFileDataObject
+
+-------------------------------------------------------------------
+Wed Jan 18 13:56:36 UTC 2012 - cfarrell@suse.com
+
+- license update: (CC-BY-SA-3.0 or BSD-3-Clause) and CC-BY-3.0 and W3C
+  SPDX format reflecting the license as stated in LICENSE.README
+
+-------------------------------------------------------------------
+Fri Nov 25 18:15:15 UTC 2011 - idoenmez@suse.de
+
+- Update to 0.8.1
+  * Fixed domain of nmm:setSize to nmm:MusicAlbum. 
+  This fixes indexing of certain mp3 files in Nepomuk.
+
+-------------------------------------------------------------------
+Wed Oct 12 09:11:14 CEST 2011 - dmueller@suse.de
+
+- update to 0.8.0:
+   Made nfo:FileName a sub-property of nao:prefLabel
+   Added nfo:WebDataObject
+   Fixed range of nexif:orientation
+   Added nmm:setNumber and nmm:setSize
+   Added nmm:albumTrackCount
+   nmm:MusicPiece is a subclass of nfo:Audio instead of nfo:Media
+   Added focus event handling
+   Made ncal:comment a subproperty of nie:comment
+   Add nco:imStatusType
+   Added nie:modified and nie:contentModified
+   Fixed ranges of
+    nmm:albumPeakGain
+    nmm:trackGain
+    nmm:trackPeakGain
+    nmm:albumGain
+
+-------------------------------------------------------------------
+Thu Jul 21 15:17:31 UTC 2011 - idonmez@novell.com
+
+- Update to 0.7.1 
+  *  Fixed domain of nao:maintainedBy
+  *  Lots of new classes
+
+-------------------------------------------------------------------
+Tue May  3 10:02:27 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.0:
+  + Added new properties:
+    - nco:hasIMCapability
+    - nco:isAccessedBy
+    - nco:publishesPresenceTo
+    - nco:requestedPresenceSubscriptionTo
+    - nco:isBlocked
+  + Added new class nco:IMCapability and instances
+    nco:imCapabilityText, nco:imCapabilityAudio, and
+    nco:imCapabilityVideo
+- Add pkg-config BuildRequires to automatically get the pkgconfig()
+  Provides.
+
+-------------------------------------------------------------------
+Sun May  9 14:11:31 UTC 2010 - tittiatcoke@gmail.com
+
+- update to version 0.5
+  * Added NDO and NUAO ontologies to the distributed ontologies 
+  * Fixed syntax error in nid3.trig
+  * Deprecated NMO properties with range nco:Contact and added 
+    equivalent ones with range nco:ContactMedium
+  * Fixed graph URIs in NDO metadata
+  * Inverted property ndo:involvedInEvent by switching
+    domain and range. The new property is named ndo:involve
+  * Added new properties: nco:start and nco:end to allow defining 
+    nco:Roles that only span a certain time.
+
+-------------------------------------------------------------------
+Tue Mar  9 23:09:29 UTC 2010 - wstephenson@novell.com
+
+- update to version 0.3
+  * Added nrl:DiscardableInstanceBase
+  * Added new classes and properties to NMM:
+      nmm:Movie
+      nmm:TVShow
+      nmm:TVSeries
+      nmm:Season
+      nmm:genre
+      nmm:series
+      nmm:hasEpisode
+      nmm:episodeNumber
+      nmm:season
+      nmm:seasonNumber
+      nmm:audienceRating
+      nmm:writer
+      nmm:director
+      nmm:producer
+      nmm:actor
+      nmm:cinematographer
+      nmm:releaseDate
+  * Added nao:deprecated property and added deprecation flags to:
+      nfo:fileLastModified
+      nfo:fileUrl
+
+-------------------------------------------------------------------
+Sat Jan  2 12:39:58 CET 2010 - dmueller@suse.de
+
+- fix devel package requires
+
+-------------------------------------------------------------------
+Wed Dec 16 16:16:26 CET 2009 - dmueller@suse.de
+
+- fix group
+
+-------------------------------------------------------------------
+Tue Dec 01 01:08:20 UTC 2009 - tittiatcoke@gmail.com
+
+- update to version 0.2
+  * Added SharedDesktopOntologiesConfig.cmake
+  * Added "nrl:maxCardinality 1"
+
+-------------------------------------------------------------------
+Thu Nov 26 23:52:20 UTC 2009 - wstephenson@novell.com
+
+- initial package v0.1
+

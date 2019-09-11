@@ -1,0 +1,194 @@
+-------------------------------------------------------------------
+Thu Jul  6 09:17:14 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups
+
+-------------------------------------------------------------------
+Wed Jul 05 06:44:41 UTC 2017 - mardnh@gmx.de
+
+- Use stable version 1.9.7+git.20161026
+- Adapted URL
+- Use _service files
+- Run spec-cleaner
+- removed patch
+- Adapt patch:
+  - libcli-Makefile-lib64.diff
+- Remove patch:
+  - libcli-fix-utf8garbage.diff (not needed)
+
+-------------------------------------------------------------------
+Wed Jun 12 14:07:49 UTC 2013 - joop.boonen@opensuse.org
+
+- Cleaned the spec file up 
+
+-------------------------------------------------------------------
+Mon Feb  1 00:00:00 UTC 2010 - david@dparrish.com
+
+- Removed dependence on "quit" command
+- Added cli_set_idle_timeout_callback() for custom timeout handling
+- Fixed an error caused by vsnprintf() overwriting it's input data
+- Added #ifdef __cplusplus which should allow linking with C++ now
+
+
+-------------------------------------------------------------------
+Thu Oct  9 00:00:00 UTC 2008 - david@dparrish.com
+
+- cli_regular() failures now close client connections
+- Migrate development to Google Code
+- Remove docs as they were out of date and now migrated to Google Code wiki
+
+
+-------------------------------------------------------------------
+Mon Jul 28 00:00:00 UTC 2008 - david@dparrish.com
+
+- Add support for compiling on WIN32 (Thanks Hamish Coleman)
+- Fix cli_build_shortest() length handling
+- Don't call cli_build_shortest() when registering every command
+- Disable TAB completion during username entry
+
+
+-------------------------------------------------------------------
+Mon Jun  2 00:00:00 UTC 2008 - david@dparrish.com
+
+- Add configurable timeout for cli_regular() - defaults to 1 second
+- Add idle timeout support
+
+
+-------------------------------------------------------------------
+Thu Jul  5 00:00:00 UTC 2007 - bod@optus.net
+
+- Revert callback argument passing to match 1.8.x
+- Recalculate unique_len on change of priv/mode
+- Fixes for tab completion
+
+
+-------------------------------------------------------------------
+Thu Jun  7 00:00:00 UTC 2007 - david@dparrish.com
+
+- Implemented tab completion - Thanks Marc Donner, Andrew Silent, Yuriy N. Shkandybin and others
+- Filters are now extendable
+- Rename internal functions to all be cli_xxxx()
+- Many code cleanups and optimisations
+- Fix memory leak calling cli_loop() repeatedly - Thanks Qiang Wu
+
+
+-------------------------------------------------------------------
+Fri Jan 19 00:00:00 UTC 2007 - david@dparrish.com
+
+- Fix broken auth_callback logic - Thanks Ben Menchaca
+
+
+-------------------------------------------------------------------
+Sat Jun 17 00:00:00 UTC 2006 - bod@optus.net
+
+- Code cleanups.
+- Declare internal functions static.
+- Use private data in cli_def rather than static buffers for do_print
+  and command_name functions.
+
+
+-------------------------------------------------------------------
+Mon Mar  6 00:00:00 UTC 2006 - david@dparrish.com
+
+- Fix file descriptor leak in cli_loop() - Thanks Liam Widdowson
+- Fix memory leak when calling cli_init() and cli_done() repeatedly.
+
+
+-------------------------------------------------------------------
+Fri Nov 25 00:00:00 UTC 2005 - bod@optus.net
+
+- Apply spec changes from Charlie Brady: use License header, change
+  BuildRoot to include username.
+
+
+-------------------------------------------------------------------
+Mon May  2 00:00:00 UTC 2005 - bod@optusnet.com.au
+
+- Add cli_error function which does not filter output.
+
+
+-------------------------------------------------------------------
+Wed Jan  5 00:00:00 UTC 2005 - bod@optusnet.com.au
+
+- Add printf attribute to cli_print prototype
+
+
+-------------------------------------------------------------------
+Fri Nov 19 00:00:00 UTC 2004 - bod@optusnet.com.au
+
+- Free help if set in cli_unregister_command (reported by Jung-Che Vincent Li)
+- Correct auth_callback() documentation (reported by Serge B. Khvatov)
+
+
+-------------------------------------------------------------------
+Thu Nov 11 00:00:00 UTC 2004 - bod@optusnet.com.au
+
+- Allow config commands to exit a submode
+- Make "exit" work in exec/config/submodes
+- Add ^K (kill to EOL)
+
+
+-------------------------------------------------------------------
+Mon Jul 12 00:00:00 UTC 2004 - bod@optusnet.com.au
+
+- Documentation update.
+- Allow NULL or "" to be passed to cli_set_banner() and
+  cli_set_hostname() to clear a previous value.
+
+
+-------------------------------------------------------------------
+Sun Jul 11 00:00:00 UTC 2004 - bod@optusnet.com.au
+
+- Dropped prompt arg from cli_loop now that prompt is set by
+  hostname/mode/priv level; bump soname.  Fixes ^L and ^A.
+- Reworked parsing/filters to allow multiple filters (cmd|inc X|count).
+- Made "grep" use regex, added -i, -v and -e args.
+- Added "egrep" filter.
+- Added "exclude" filter.
+
+
+-------------------------------------------------------------------
+Fri Jul  2 00:00:00 UTC 2004 - bod@optusnet.com.au
+
+- Add mode argument to cli_file(), bump soname.
+- Return old value from cli_set_privilege(), cli_set_configmode().
+
+
+-------------------------------------------------------------------
+Fri Jun 25 00:00:00 UTC 2004 - david@dparrish.com
+
+- Add support for privilege levels and nested config levels. Thanks to Friedhelm
+  Düsterhöft for most of the code.
+
+
+-------------------------------------------------------------------
+Tue Feb 24 00:00:00 UTC 2004 - david@dparrish.com
+
+- Add cli_print_callback() for overloading the output
+- Don't pass around the FILE * handle anymore, it's in the cli_def struct anyway
+- Add cli_file() to execute every line read from a file handle
+- Add filter_count
+
+
+-------------------------------------------------------------------
+Sat Feb 14 00:00:00 UTC 2004 - bod@optusnet.com.au
+
+- Add more line editing support: ^W, ^A, ^E, ^P, ^N, ^F, ^B
+- Modify cli_print() to add \r\n and to split on \n to allow inc/begin
+  to work with multi-line output (note:  API change, client code
+  should not include trailing \r\n; version bump)
+- Use libcli.so.M.m as the soname
+
+
+-------------------------------------------------------------------
+Fri Jul 25 00:00:00 UTC 2003 - david@dparrish.com
+
+- Add cli_regular to enable regular processing while cli is connected
+
+
+-------------------------------------------------------------------
+Wed Jun 25 00:00:00 UTC 2003 - david@dparrish.com
+
+- Stop random stack smashing in cli_command_name.
+- Stop memory leak by allocating static variable in cli_command_name.
+

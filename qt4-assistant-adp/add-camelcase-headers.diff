@@ -1,0 +1,23 @@
+--- lib/lib.pro
++++ lib/lib.pro
+@@ -62,7 +62,7 @@
+ }
+ 
+ qt_install_headers {
+-    assistant_headers.files = qassistantclient.h qassistantclient_global.h
++    assistant_headers.files = qassistantclient.h qassistantclient_global.h QtAssistant/QAssistantClient QtAssistant/QAssistant
+     assistant_headers.path = $$[QT_INSTALL_HEADERS]/QtAssistant
+     INSTALLS        += assistant_headers
+ }
+--- lib/QtAssistant/QAssistantClient
++++ lib/QtAssistant/QAssistantClient
+@@ -0,0 +1 @@
++#include "qassistantclient.h"
+--- lib/QtAssistant/QtAssistant
++++ lib/QtAssistant/QtAssistant
+@@ -0,0 +1,5 @@
++#ifndef QT_QTASSISTANT_MODULE_H
++#define QT_QTASSISTANT_MODULE_H
++#include <QtNetwork/QtNetwork>
++#include "qassistantclient.h"
++#endif

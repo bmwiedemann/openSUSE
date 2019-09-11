@@ -1,0 +1,2660 @@
+-------------------------------------------------------------------
+Tue Aug  6 17:05:32 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed unit test, reset the mocked addons in the
+  addon_eula_dialog_test.rb test (bsc#1144550)
+- 4.2.6
+
+-------------------------------------------------------------------
+Thu Jun 20 14:15:48 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Do not abort when an addon license is refused (bsc#1114018).
+- 4.2.5
+
+-------------------------------------------------------------------
+Wed Jun 12 12:00:17 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Improve error message when migration products could not be found
+  during an offline upgrade (bsc#1078739).
+- 4.2.4
+
+-------------------------------------------------------------------
+Tue Jun  4 18:36:37 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.3
+
+-------------------------------------------------------------------
+Mon Jun  3 09:26:29 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Update labels and help texts related to registration server,
+  replacing SMT by RMT since the former is not longer supported
+  (bsc#1129206, bsc#1136433).
+- 4.2.2
+
+-------------------------------------------------------------------
+Thu May 30 13:37:19 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Properly display the openSUSE Leap to SLES migration summary
+  (bsc#1136325)
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri Mar 29 14:34:42 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Update the  label used for the option to register the system
+  via local server (bsc#1129206).
+- 4.2.0
+
+-------------------------------------------------------------------
+Fri Mar 15 18:03:43 UTC 2019 - Ladislav Slezak <lslezak@suse.cz>
+
+- Run the solver to correctly initialize the product statuses
+  (fixes displaying SUMA RN during a SLES upgrade) (bsc#1129029)
+- 4.1.21
+
+-------------------------------------------------------------------
+Sun Mar 10 18:58:40 UTC 2019 - knut.anderssen@suse.com
+
+- Permit to retry the registration in case of a timeout or a json
+  parse error and hide the error details which will be accesible
+  through the 'details' button (bsc#1058375, bsc#1126045).
+- 4.1.20
+
+-------------------------------------------------------------------
+Fri Mar  1 09:50:20 UTC 2019 - lslezak@suse.cz
+
+- Skip SLP discovery when going back after registering the system,
+  the server cannot be changed anyway (related to bsc#1071887)
+- 4.1.19
+
+-------------------------------------------------------------------
+Mon Feb 25 12:32:35 UTC 2019 - lslezak@suse.cz
+
+- Better handle the SSL certificates signed by an uknown CA
+  (bsc#1124992)
+    - Display details in a scrollable widget
+    - Display hints how to install the certificate manually
+- 4.1.18
+
+-------------------------------------------------------------------
+Mon Feb 18 13:11:12 UTC 2019 - lslezak@suse.cz
+
+- Fixed "can't modify frozen String" crash (bsc#1125006)
+- 4.1.17
+
+-------------------------------------------------------------------
+Fri Feb  1 12:18:35 UTC 2019 - lslezak@suse.cz
+
+- Improved the message in the registration skipping dialog
+  (bsc#1122608)
+- 4.1.16
+
+-------------------------------------------------------------------
+Fri Jan 25 10:52:15 CET 2019 - schubi@suse.de
+
+- Do not try to remove services which have already been deleted.
+  (bsc#1110246)
+- 4.1.15
+
+-------------------------------------------------------------------
+Thu Jan 17 15:08:40 UTC 2019 - lslezak@suse.cz
+
+- Save the current repository configuration so it is properly
+  restored after restarting the package manager (bsc#1122011)
+- 4.1.14
+
+-------------------------------------------------------------------
+Wed Jan 16 08:53:13 UTC 2019 - lslezak@suse.cz
+
+- Do not crash when no base product to register is found
+  (bsc#1122011)
+- 4.1.13
+
+-------------------------------------------------------------------
+Thu Jan 10 09:58:10 UTC 2019 - lslezak@suse.cz
+
+- Properly restart the package management to avoid using a possibly
+  outdated configuration (related to bsc#1120568)
+- 4.1.12
+
+-------------------------------------------------------------------
+Fri Dec 14 13:14:15 UTC 2018 - jlopez@suse.com
+
+- Hardening commands execution (part of bsc#1118291).
+- Replace backticks by Yast::Execute.
+- 4.1.11
+
+-------------------------------------------------------------------
+Fri Dec 14 09:41:49 UTC 2018 - lslezak@suse.cz
+
+- Fixed UI display issue in the installation workflow
+  (not cleared screen) (bsc#1117492)
+- 4.1.10
+
+-------------------------------------------------------------------
+Mon Nov 26 01:17:32 UTC 2018 - Noah Davis <noahadvs@gmail.com>
+
+- Provide icon with module (boo#1109310)
+- 4.1.9
+
+-------------------------------------------------------------------
+Wed Nov 21 16:39:02 CET 2018 - schubi@suse.de
+
+- Do not allow redirection while checking via HTTP request if
+  (old) NCC API is present at the server (bsc#1111404).
+- 4.1.8
+
+-------------------------------------------------------------------
+Mon Nov 19 16:11:29 CET 2018 - schubi@suse.de
+
+- Improved error messages (bsc#1060151).
+- 4.1.7
+
+-------------------------------------------------------------------
+Tue Nov  6 13:56:48 UTC 2018 - dgonzalez@suse.com
+
+- Do not display a connection error when automatically trying to
+  use the base product registration code for the extensions
+  (bsc#1091825).
+- 4.1.6
+
+-------------------------------------------------------------------
+Tue Oct 16 15:35:43 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Fri Oct 12 10:41:27 CEST 2018 - schubi@suse.de
+
+- Added tags full_system_media_name and full_system_download_url
+  in control.xml which describe the location for the
+  "all-packages" medium. This information will be shown if the
+  registration has been scipped by the user. No hint will be shown
+  if these tags have not been defined. (fate#325834)
+- 4.1.5
+
+-------------------------------------------------------------------
+Thu Oct 11 14:55:15 UTC 2018 - lslezak@suse.cz
+
+- CRLF control characters cannot be included in the registration
+  code, added validation check (bsc#1111419)
+- 4.1.4
+
+-------------------------------------------------------------------
+Mon Sep 17 08:54:19 UTC 2018 - lslezak@suse.cz
+
+- Suggest downloading the "SLE-15-SP1-Packages" medium instead of
+  the old "SLE-15-Packages" (bsc#1108620)
+- 4.1.3
+
+-------------------------------------------------------------------
+Tue Sep  4 08:34:31 UTC 2018 - dgonzalez@suse.com
+
+- Limit the registration code size to 512 characters (bsc#1098576)
+- 4.1.2
+
+-------------------------------------------------------------------
+Fri Aug 31 10:12:16 UTC 2018 - lslezak@suse.cz
+
+- Better check the not installed addon products, some specific
+  repositories do not provide any product
+- Fixes online migration on PPC (bsc#1103412)
+- 4.1.1
+
+-------------------------------------------------------------------
+Mon Aug 20 09:28:58 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Tue Aug 14 13:10:04 UTC 2018 - knut.anderssen@suse.com
+
+- Modified addon selection filter for filtering all the testing
+  (not released) versions (bsc#1104450)
+- 4.1.0
+
+-------------------------------------------------------------------
+Wed Jul 18 10:45:15 CEST 2018 - schubi@suse.de
+
+- Do not crash if getting zypp lock failed. (bnc#1043125)
+- 4.0.43
+
+-------------------------------------------------------------------
+Mon Jul  2 17:05:19 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.42
+
+-------------------------------------------------------------------
+Wed Jun 27 13:10:18 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.41
+
+-------------------------------------------------------------------
+Wed Jun 13 14:00:30 UTC 2018 - lslezak@suse.cz
+
+- Prefer the SCC credentials at upgrade when both NCC and SCC
+  credentials are present in the system (bsc#1096813)
+- 4.0.40
+
+-------------------------------------------------------------------
+Wed Jun  6 07:33:07 UTC 2018 - lslezak@suse.cz
+
+- Fixed also the another places detecting the installed product
+  (bsc#1095702)
+- 4.0.39
+
+-------------------------------------------------------------------
+Tue Jun  5 10:12:07 UTC 2018 - lslezak@suse.cz
+
+- Fixed evaluating the installed product (the installed upgraded
+  products are marked as "removed") (bsc#1095702)
+- 4.0.38
+
+-------------------------------------------------------------------
+Wed May 30 12:26:23 UTC 2018 - lslezak@suse.cz
+
+- Fixes for upgrade via SMT (bsc#1094865):
+  - Set the new "target_distro" for libzypp also after reloading
+    the target otherwise libzypp might reject the new repositories
+  - Copy also the SMT credentials into the installation system,
+    not only the SCC ones
+  - Copy the SMT (and also the RMT) SSL certificate into the
+    installation system (for HTTPS communication)
+- 4.0.37
+
+-------------------------------------------------------------------
+Tue May  8 17:27:36 CEST 2018 - schubi@suse.de
+
+- Fixed: Offline migration against RMT sends some requests to 
+  SCC instead (bnc#1090911)
+- 4.0.36
+
+-------------------------------------------------------------------
+Fri Apr 27 15:44:43 UTC 2018 - lslezak@suse.cz
+
+- Install a registration rollback script to rollback the
+  registration in case YaST is aborted or crashes during upgrade
+  (bsc#1089643)
+- 4.0.35
+
+-------------------------------------------------------------------
+Mon Apr 16 11:39:41 UTC 2018 - lslezak@suse.cz
+
+- Reimplemented AutoYaST autoupgrade, use the same API and workflow
+  like in a manual upgrade (bsc#1087206)
+- 4.0.34
+
+-------------------------------------------------------------------
+Tue Apr 10 13:43:12 UTC 2018 - igonzalezsosa@suse.com
+
+- Select wanted release packages during SCC based offline
+  migration (bsc#1086818)
+- 4.0.33
+
+-------------------------------------------------------------------
+Mon Apr  9 09:47:09 UTC 2018 - jsrain@suse.cz
+
+- do not build on 32-bit architectures (bsc#1088552)
+- 4.0.32
+
+-------------------------------------------------------------------
+Thu Apr  5 16:36:49 UTC 2018 - knut.anderssen@suse.com
+
+- Given a license, remember whether another one with the same
+  content was already accepted (fate#325461).
+- 4.0.31
+
+-------------------------------------------------------------------
+Tue Apr  3 15:44:53 UTC 2018 - lslezak@suse.cz
+
+- Better evaluate the product to upgrade, do not use the package
+  solver if there is only one base product to install, use some
+  fallbacks when the solver fails (bsc#1086259)
+- 4.0.30
+
+-------------------------------------------------------------------
+Tue Mar 27 14:58:42 UTC 2018 - jreidinger@suse.com
+
+- Improve text for migration targets (bsc#1079075)
+- 4.0.29
+
+-------------------------------------------------------------------
+Wed Mar 21 16:40:25 UTC 2018 - lslezak@suse.cz
+
+- Import the SMT SSL certificate at offline upgrade into
+  the inst-sys so the SMT server can be accessed (bsc#1080518)
+- 4.0.28
+
+-------------------------------------------------------------------
+Mon Mar 19 10:39:30 UTC 2018 - jreidinger@suse.com
+
+- Do not hide beta addons that are preselected (bsc#1066216,
+  bsc#1085286)
+- 4.0.27
+
+-------------------------------------------------------------------
+Fri Mar 16 17:17:42 UTC 2018 - lslezak@suse.cz
+
+- Implemented the registration rollback functionality when going
+  back in the upgrade workflow (bsc#1080979)
+- Properly handle going back also in unregistered systems
+- Refresh the add-on IDs after migrating the registration to show
+  the correct values in the addon and the upgrade overview dialog
+- In the offline migration do not set the solver flags designed for
+  the online migration
+- 4.0.26
+
+-------------------------------------------------------------------
+Fri Mar 16 13:22:35 UTC 2018 - knut.anderssen@suse.com
+
+- Just use the first product available from the media When a self
+  update id is defined in the control file (bsc#1084820)
+- 4.0.25
+
+-------------------------------------------------------------------
+Tue Mar 13 09:37:14 UTC 2018 - knut.anderssen@suse.com
+
+- Prevent crashing when no product was defined in the profile
+  (bsc#1084820)
+- 4.0.24
+
+-------------------------------------------------------------------
+Mon Mar  5 10:14:28 UTC 2018 - lslezak@suse.cz
+
+- Display additional error details when refreshing a service fails
+  (related to bsc#1083503)
+- 4.0.23
+
+-------------------------------------------------------------------
+Mon Feb 19 13:08:55 UTC 2018 - lslezak@suse.cz
+
+- Support for offline migration from SLE11 to SLE15 (fate#323395)
+- Fixed evaluating the migration summary for renamed or merged
+  products (bsc#1080913)
+- 4.0.22
+
+-------------------------------------------------------------------
+Wed Feb  7 12:26:17 UTC 2018 - lslezak@suse.cz
+
+- Do no send the product release version ("11.4-1.109") at upgrade,
+  send only the major and minor version ("11.4") (bsc#1079051)
+- 4.0.21
+
+-------------------------------------------------------------------
+Fri Feb  2 14:20:22 UTC 2018 - lslezak@suse.cz
+
+- Fixes for the SLE11 -> SLE15 offline migration (fate#323395)
+- 4.0.20
+
+-------------------------------------------------------------------
+Fri Jan 26 16:05:55 UTC 2018 - lslezak@suse.cz
+
+- Initial support for the SLE15 offline migration (fate#323163)
+- 4.0.19
+
+-------------------------------------------------------------------
+Wed Jan 17 14:24:58 UTC 2018 - mvidner@suse.com
+
+- Try base product registration code first (bsc#1075551).
+  Some add-ons/extensions are not free but can be registered
+  using their base product's registration code. Try it automatically
+  so that the user does not have to enter it again.
+- 4.0.18
+
+-------------------------------------------------------------------
+Tue Jan 16 12:39:14 UTC 2018 - lslezak@suse.cz
+
+- Adjust the base product selection so it is not influenced by
+  a possibly changed repository priority, use the
+  "system-installation()" provides just like the other code in the
+  installer (related to bsc#1071742)
+- 4.0.17
+
+-------------------------------------------------------------------
+Fri Jan 12 10:07:29 UTC 2018 - mfilka@suse.com
+
+- bnc#1075723
+  - added missing part of previous patch
+- 4.0.16
+
+-------------------------------------------------------------------
+Wed Jan 10 14:36:51 UTC 2018 - igonzalezsosa@suse.com
+
+- Fix initialization to copy the profile to /tmp/profile again
+  (bsc#1075334)
+- Fix package build (dropping symlinks under test/fixtures/anchors)
+- 4.0.15
+
+-------------------------------------------------------------------
+Thu Dec 14 08:45:40 UTC 2017 - mfilka@suse.com
+
+- fate#323450
+  - added support for reading registration code from install.inf
+- 4.0.14
+
+-------------------------------------------------------------------
+Wed Nov 22 09:52:16 UTC 2017 - lslezak@suse.cz
+
+- AutoYaST fixes (bsc#1065438):
+  - fixed addon registration order
+  - automatically register the dependant addons
+- Preselect also the recommended beta addons, display them by
+  default even when the beta filter is active
+  (related to bsc#1056413)
+- 4.0.13
+
+-------------------------------------------------------------------
+Wed Nov  8 14:36:05 CET 2017 - schubi@suse.de
+
+- Changed warning text if user has skipped registration.
+  (bnc#1055023)
+- 4.0.12
+
+-------------------------------------------------------------------
+Fri Oct 27 12:44:58 UTC 2017 - lslezak@suse.cz
+
+- Do not preselect the default addons when some addon is already
+  registered (avoid selecting again when going back after
+  registration) (related to bsc#1056413)
+- 4.0.11
+
+-------------------------------------------------------------------
+Fri Oct 27 11:18:10 UTC 2017 - lslezak@suse.cz
+
+- Do not crash when displaying the AutoYaST summary in installed
+  system (bsc#1065432)
+- 4.0.10
+
+-------------------------------------------------------------------
+Thu Oct 26 12:42:18 UTC 2017 - lslezak@suse.cz
+
+- Use the correct install.inf key for media base upgrade (related
+  to fate#323163)
+- Warn when doing media based upgrade for a registered system
+- Preselect the recommended modules and extensions (bsc#1056413)
+- Describe the icons in the modules and extensions dialog help
+- 4.0.9
+
+-------------------------------------------------------------------
+Thu Oct 26 08:35:42 UTC 2017 - jsrain@suse.cz
+
+- fixed detection of base product during upgrade (bsc#1064191)
+- 4.0.8
+
+-------------------------------------------------------------------
+Thu Oct 19 11:53:37 UTC 2017 - lslezak@suse.cz
+
+- Display an informative popup when upgrading an unregistered
+  system, preselect adding DVD add-ons to make upgrade using media
+  easier (fate#323163)
+- Support "media_upgrade=1" boot parameter for media based upgrade
+  even for registered systems (fate#323163)
+- 4.0.7
+
+-------------------------------------------------------------------
+Thu Oct 12 11:57:29 UTC 2017 - mfilka@suse.com
+
+- fate#323450
+  - when searching for base product check also AY profiles for
+    user's selection
+- 4.0.6 
+-------------------------------------------------------------------
+Wed Oct 11 11:51:31 UTC 2017 - jreidinger@suse.com
+
+- use self update id if defined instead of product name to make
+  self update predictable on multi-product media (bsc#1055556)
+- 4.0.5
+
+-------------------------------------------------------------------
+Wed Oct 11 08:49:16 UTC 2017 - jreidinger@suse.com
+
+- Fixed registration of autoselected extensions (bsc#1062684)
+- 4.0.4
+
+-------------------------------------------------------------------
+Tue Oct 10 08:19:27 UTC 2017 - lslezak@suse.cz
+
+- Add the /mnt prefix only at upgrade, in installation still use /
+  for storing the credentials (bsc#1062468)
+- 4.0.3
+
+-------------------------------------------------------------------
+Mon Oct  9 12:33:17 UTC 2017 - jreidinger@suse.com
+
+- Fix showing modules and extensions when there is more then
+  simple one level dependencies. (bsc#1054965)
+- 4.0.2
+
+-------------------------------------------------------------------
+Tue Oct  3 14:17:52 UTC 2017 - lslezak@suse.cz
+
+- Initial support for the SLE12 -> SLE15 upgrade, honor the target
+  mount point prefix (fate#323163)
+- Do not crash when the baseproduct symlink does not exist in
+  installed system
+- Dump the available addons to a separate file
+  (/var/log/YaST2/registration_addons.yml) instead of the y2log
+  to make it better readable
+- 4.0.1
+
+-------------------------------------------------------------------
+Thu Sep 14 07:27:48 UTC 2017 - knut.anderssen@suse.com
+
+- Do not display info.txt file anymore (bsc#1047060).
+- 4.0.0
+
+-------------------------------------------------------------------
+Tue Sep 12 08:20:51 UTC 2017 - mfilka@suse.com
+
+- bnc#1056318
+  - fixed internal error raised when cloning configuration
+- 3.3.3
+
+-------------------------------------------------------------------
+Wed Aug 30 14:20:46 UTC 2017 - knut.anderssen@suse.com
+
+- Wrap text of connection_helpers error messages (bsc#1055643)
+- 3.3.2
+
+-------------------------------------------------------------------
+Mon Jul 31 14:20:44 UTC 2017 - lslezak@suse.cz
+
+- LeanOS: Better handle multiple products on the installation
+  medium, register the selected product (FATE#323450)
+- 3.3.1
+
+-------------------------------------------------------------------
+Thu Jul 13 11:46:08 UTC 2017 - jreidinger@suse.com
+
+- workaround YAML loading issue in ruby 2.4 (bsc#1048526)
+- 3.3.0
+
+-------------------------------------------------------------------
+Thu Jun 22 13:46:00 UTC 2017 - lslezak@suse.cz
+
+- Do not display a hint about the old registration server when
+  SCC is used (bsc#1045344)
+- 3.2.12
+
+-------------------------------------------------------------------
+Fri Jun  9 09:52:43 UTC 2017 - gsouza@suse.com
+
+- A system registered in a local SMT server uses the same SMT
+  server URL to register during upgrade (bsc#1043033).
+- 3.2.11
+
+-------------------------------------------------------------------
+
+Mon May  8 13:27:09 UTC 2017 - knut.anderssen@suse.com
+
+- Don't crash if the regurl provided by linuxrc is invalid, use
+  the one provided by the control file as fallback (bsc#1035908).
+- 3.2.10
+
+-------------------------------------------------------------------
+Fri Apr 28 11:11:22 CEST 2017 - schubi@suse.de
+
+- AY inst-sys: Copy certificate to /etc/pki/trust/anchors instead of
+  /usr/share/pki/trust/anchors which is read only (bnc#1034663).
+- 3.2.9
+
+-------------------------------------------------------------------
+Wed Apr 19 08:37:28 UTC 2017 - gsouza@suse.com
+
+- Removed the option "Register Extensions of Modules Again"
+  (bsc#1029885).
+- Hides "Filter Beta Versions" checkbox when there is no beta
+  version to filter.
+- Hides "Network config" option when the system is already
+  installed.
+- 3.2.8
+
+-------------------------------------------------------------------
+Mon Apr 10 07:38:45 WEST 2017 - knut.anderssen@suse.com
+
+- Online Migration (fate#320534)
+  - Added step for check registered but not installed addons to the
+    migration workflow. In case of existence, allow the user to
+    install the release package or deactivate the products.
+  - In case of abort, only registered products are downgraded and
+    synced.
+  - Added to the migration summary information about products not
+    offering migrations (third party addons).
+- 3.2.7
+
+-------------------------------------------------------------------
+Mon Mar 20 12:28:45 UTC 2017 - okurz@suse.com
+
+- Be explicit about 'Details' box not being localized (bsc#1025846)
+- 3.2.6
+
+-------------------------------------------------------------------
+Fri Mar 17 09:23:03 UTC 2017 - gsouzadossantos@suse.com
+
+- Remember the state of the checkbox when leaving the dialog
+  (bsc#1026155) and correct the filter to always show installed
+  addons, even if they are beta versions.
+- 3.2.5
+
+-------------------------------------------------------------------
+Tue Mar  7 12:59:27 UTC 2017 - kanderssen@suse.com
+
+- Adjusted .desktop files wrapping /sbin/yast2 calls that requires
+  root permisions with xdg-su (bsc#1028053).
+- 3.2.4
+
+-------------------------------------------------------------------
+Tue Feb 14 10:00:41 UTC 2017 - igonzalezsosa@suse.com
+
+- Registration#get_updates_list won't catch errors anymore because
+  that's something tightly coupled to the user interface. They
+  should be handled outside that method (bsc#1025251)
+- 3.2.3
+
+-------------------------------------------------------------------
+Mon Jan 30 20:05:56 UTC 2017 - mfilka@suse.com
+
+- fate#321044
+  - provide a shortcut for running "Add System Extensions/Modules"
+    dialog directly from control centre.
+- 3.2.2
+
+-------------------------------------------------------------------
+Fri Jan 27 17:18:29 UTC 2017 - kanderssen@suse.com
+
+- Added Registration::Widgets::RegistrationCode (fate#322328).
+- Fixed initialization of the registration code in case of called
+  more than once (fate#322328).
+- 3.2.1
+
+-------------------------------------------------------------------
+Thu Nov 24 09:28:31 UTC 2016 - jreidinger@suse.com
+
+- allow user to go forward in firstboot when system is already
+  registered (bsc#975368)
+- 3.2.0
+
+-------------------------------------------------------------------
+Wed Nov 23 10:01:44 UTC 2016 - jreidinger@suse.com
+
+- do not crash if empty regurl paremeter is passed (bsc#1010387)
+
+-------------------------------------------------------------------
+Mon Oct  3 19:11:11 UTC 2016 - lslezak@suse.cz
+
+- Better handle invalid credentials at start - start the repository
+  manager to allow manually removing the offending service or
+  repository (bsc#941427)
+- 3.1.190
+
+-------------------------------------------------------------------
+Mon Oct  3 09:26:28 UTC 2016 - jreidinger@suse.com
+
+- Remember the beta filter value and set it when going back
+  (bnc#996891)
+- 3.1.189
+
+-------------------------------------------------------------------
+Wed Aug 31 09:10:41 UTC 2016 - jreidinger@suse.com
+
+- more robust check for installation dark theme (bnc#996258)
+- 3.1.188
+
+-------------------------------------------------------------------
+Thu Aug 25 12:22:58 UTC 2016 - jreidinger@suse.com
+
+- write name of server which have certificate problem in error
+  popup (bnc#995526)
+- 3.1.187
+
+-------------------------------------------------------------------
+Wed Aug 24 12:21:26 UTC 2016 - jreidinger@suse.com
+
+- fix detection of installation qss, so registration in first boot
+  have readable text (bnc#995333)
+- 3.1.186
+
+-------------------------------------------------------------------
+Mon Aug 15 14:54:16 UTC 2016 - lslezak@suse.cz
+
+- Fixed typos and grammar issues in the SSL certificate import
+  dialog (bsc#992585)
+- 3.1.185
+
+-------------------------------------------------------------------
+Fri Aug 12 11:58:58 UTC 2016 - igonzalezsosa@suse.com
+
+- Improve 'connection timeout' error messages (related to
+  bsc#993467)
+- 3.1.184
+
+-------------------------------------------------------------------
+Tue Aug  9 12:59:25 UTC 2016 - lslezak@suse.cz
+
+- Removed workaround for making /etc/zypp directory writable,
+  it has been fixed in the installation-images package (bsc#967828)
+- 3.1.183
+
+-------------------------------------------------------------------
+Fri Aug  5 15:50:59 UTC 2016 - lslezak@suse.cz
+
+- Preselect the add-on products also during installation
+  (bsc#992304)
+- 3.1.182
+
+-------------------------------------------------------------------
+Fri Aug  5 10:20:55 UTC 2016 - igonzalezsosa@suse.com
+
+- Fix package building in AArch64 (bsc#992341)
+- 3.1.181
+
+-------------------------------------------------------------------
+Wed Aug  3 15:51:28 UTC 2016 - mvidner@suse.com
+
+- Declare textdomain to fix untranslated texts in the previous
+  change (related to FATE#319716)
+- 3.1.180
+
+-------------------------------------------------------------------
+Mon Aug  1 07:34:21 UTC 2016 - igonzalezsosa@suse.com
+
+- Extract the services selection dialog so it can be used by
+  other YaST modules (related to FATE#319716)
+- 3.1.179
+
+-------------------------------------------------------------------
+Fri Jul 29 09:29:45 UTC 2016 - igonzalezsosa@suse.com
+
+- Improve certificates handling during registration:
+  - Write imported certificates to /etc/pki/trust/anchors
+    instead of the /usr/share/pki/trust/anchors counterpart
+    (bsc#989787).
+  - Prevent removal of installation system CA certificates
+    when importing a new one (bsc#981428).
+  - Continue the registration after successful import of
+    a new certificate (bsc#991028).
+- 3.1.178
+
+-------------------------------------------------------------------
+Mon Jul 25 14:21:00 UTC 2016 - mvidner@suse.com
+
+- Extensions and Modules:
+  - do not show beta versions of products (FATE#319909)
+  - make many items fit by using a scrollable widget (bsc#967387)
+- 3.1.177
+
+-------------------------------------------------------------------
+Fri Jun 17 12:45:21 UTC 2016 - mvidner@suse.com
+
+- For "Register System via local SMT Server" offer a list of servers
+  found with SLP (bsc#981633).
+- 3.1.176
+
+-------------------------------------------------------------------
+Mon Jun 13 17:08:26 UTC 2016 - lslezak@suse.cz
+
+- Automatically preselect the Toolchain module on ARM in SLES12-SP2
+  (FATE#320679)
+- 3.1.175
+
+-------------------------------------------------------------------
+Fri Jun  3 09:53:50 UTC 2016 - igonzalezsosa@suse.com
+
+- regurl parameter overwrites default SCC registration URL
+  (bsc#982974)
+- 3.1.174
+
+-------------------------------------------------------------------
+Mon May 23 12:27:38 UTC 2016 - igonzalezsosa@suse.com
+
+- Redesigned UI for the registration of the base system
+  (bsc#974626)
+- 3.1.173
+
+-------------------------------------------------------------------
+Wed May  4 12:58:57 UTC 2016 - lslezak@suse.cz
+
+- Select the default product patterns for the registered modules
+  and extensions (FATE#320199)
+- 3.1.172
+
+-------------------------------------------------------------------
+Wed Apr  6 16:10:58 CEST 2016 - schubi@suse.de
+
+- Force refreshing while adding a service (bnc#967828).
+  Otherwise some services will not be refreshed due TTL entries.
+  So, some packages are not be available for installation.
+- Enable [Next] button in the first boot workflow to allow using
+  the registration module (pass the WFM arguments with the Back/Next
+  status to the internally called client) (bsc#970572)
+- 3.1.171
+
+-------------------------------------------------------------------
+Wed Apr  6 10:21:38 UTC 2016 - knut.anderssen@suse.com
+
+- Unified shortcut 'alt-w' for network setup button (bsc#974216)
+- 3.1.170
+
+-------------------------------------------------------------------
+Thu Feb 18 08:24:18 UTC 2016 - mvidner@suse.com
+
+- Read registration codes from a USB stick (FATE#316796)
+- 3.1.169
+
+-------------------------------------------------------------------
+Fri Feb 12 12:42:19 UTC 2016 - knut.anderssen@suse.com
+
+- Ask again after some provided registration code failed (bsc#958521)
+- 3.1.168
+
+-------------------------------------------------------------------
+Fri Jan 15 08:44:50 UTC 2016 - lslezak@suse.cz
+
+- Fixed a crash when EULA download fails (bsc#941232)
+- 3.1.167
+
+-------------------------------------------------------------------
+Wed Nov 18 11:32:26 UTC 2015 - igonzalezsosa@suse.com
+
+- Fix validation of AutoYaST profiles (bsc#954412)
+- 3.1.166
+
+-------------------------------------------------------------------
+Fri Nov  6 20:26:06 UTC 2015 - lslezak@suse.cz
+
+- always enable update repositories for modules during online
+  migration (bsc#953536)
+- 3.1.165
+
+-------------------------------------------------------------------
+Mon Nov  2 14:21:16 UTC 2015 - lslezak@suse.cz
+
+- display a better error message when registration fails because
+  of a typo in the URL (bsc#952443)
+- 3.1.164
+
+-------------------------------------------------------------------
+Mon Oct 19 07:21:58 UTC 2015 - lslezak@suse.cz
+
+- Addon upgrade - fixed crash when upgrading installed addon
+  (undefined method) (bsc#950795)
+- 3.1.163
+
+-------------------------------------------------------------------
+Mon Oct 14 09:55:05 CEST 2015 - schubi@suse.de
+
+- AutoYaST: Taking registration server from AutoYaST configuration
+  file and set it in /etc/SUSEConnect. (bnc#943466,bnc#950233)
+- 3.1.162
+
+-------------------------------------------------------------------
+Tue Oct 13 15:30:58 UTC 2015 - ancor@suse.com
+
+- Using a "suse_register" section in the AutoYaST profile does not
+  produce an error message anymore (bsc#950119)
+- 3.1.161
+
+-------------------------------------------------------------------
+Tue Oct 13 09:04:45 UTC 2015 - lslezak@suse.cz
+
+- disable the [Clone] button in the AutoYaST configuration UI, the
+  registration module does not support cloning (bsc#950098)
+- 3.1.160
+
+-------------------------------------------------------------------
+Mon Oct 12 07:44:14 UTC 2015 - lslezak@suse.cz
+
+- AutoYaST config: fixed crash at the end of the configuration
+  workflow (bsc#949934)
+- Add the SUSEConnect dependency to install the packages required
+  by suse-connect gem (workaround for bsc#947482)
+- 3.1.159
+
+-------------------------------------------------------------------
+Thu Oct  8 15:51:19 UTC 2015 - lslezak@suse.cz
+
+- Addon selection dialog - sort the addons by the displayed label,
+  not by the internal name (which might not be unique) (bsc#949424)
+- 3.1.158
+
+-------------------------------------------------------------------
+Fri Oct  2 10:26:44 UTC 2015 - lslezak@suse.cz
+
+- Restore the original $releasever value and refresh the
+  repositories when online migration is aborted (bsc#948363)
+- 3.1.157
+
+-------------------------------------------------------------------
+Fri Sep 25 07:41:32 UTC 2015 - lslezak@suse.cz
+
+- do not crash when a repository cannot be accessed, ask the user
+  to skip it or abort the online migration (bsc#946200)
+- 3.1.156
+
+-------------------------------------------------------------------
+Wed Sep 23 18:03:15 UTC 2015 - lslezak@suse.cz
+
+- migration rollback: make sure the base product is downgraded
+  first (FATE#315161)
+- 3.1.155
+
+-------------------------------------------------------------------
+Wed Sep 23 12:14:17 UTC 2015 - lslezak@suse.cz
+
+- check whether the system is registered before running online
+  migration (bsc#946004)
+- 3.1.154
+
+-------------------------------------------------------------------
+Mon Sep 21 13:53:12 UTC 2015 - lslezak@suse.cz
+
+- restore the original product registration when online migration
+  is aborted (FATE#315161)
+- set the selected repository states in the manual repository
+  selection dialog before starting the full repository management
+  module
+- 3.1.153
+
+-------------------------------------------------------------------
+Wed Sep 16 19:04:05 UTC 2015 - lslezak@suse.cz
+
+- properly return the certificate import result
+- avoid an import loop after importing a SSL certificate
+  (bsc#942986)
+- 3.1.152
+
+-------------------------------------------------------------------
+Fri Sep 11 07:54:56 UTC 2015 - lslezak@suse.cz
+
+- use better labels - specific migration repositories are not used
+  in SLE12, use better wording (bsc#944510)
+- 3.1.151
+
+-------------------------------------------------------------------
+Thu Sep 10 15:37:08 UTC 2015 - lslezak@suse.cz
+
+- set the $releasever URL variable to the new base product
+  during online migration (bsc#941563)
+- 3.1.150
+
+-------------------------------------------------------------------
+Wed Sep  9 12:34:35 UTC 2015 - lslezak@suse.cz
+
+- display short product names instead of the internal identifiers
+  in the migration selection dialog (bsc#945028)
+- 3.1.149
+
+-------------------------------------------------------------------
+Tue Sep  2 10:27:28 UTC 2015 - lslezak@suse.cz
+
+- disable "Back" at the initial dialog
+- restore (enable) the Updates repositories at the end of the
+  migration workflow (bsc#943960)
+- 3.1.148
+
+-------------------------------------------------------------------
+Wed Sep  2 05:45:28 UTC 2015 - jsrain@suse.cz
+
+- fixed syntax error (bsc#944089)
+- 3.1.147
+
+-------------------------------------------------------------------
+Mon Aug 31 12:17:49 UTC 2015 - lslezak@suse.cz
+
+- make the migration selection widget smaller to have more space
+  for details when only few migrations are available (bsc#943636)
+
+-------------------------------------------------------------------
+Fri Aug 28 10:31:56 UTC 2015 - lslezak@suse.cz
+
+- Keep the original NCCCredentials file permissions when upgrading
+  from SLE11 (bsc#943568)
+- 3.1.146
+
+-------------------------------------------------------------------
+Wed Aug 26 07:33:14 UTC 2015 - lslezak@suse.cz
+
+- Better wording in the "install updates" popup (bsc#942843)
+- 3.1.145
+
+-------------------------------------------------------------------
+Tue Aug 25 13:54:46 UTC 2015 - lslezak@suse.cz
+
+- Handle not available products when using a SMT server for running
+  online migration (bsc#942892)
+- 3.1.144
+
+-------------------------------------------------------------------
+Fri Aug 21 11:38:22 UTC 2015 - lslezak@suse.cz
+
+- Fixed registering a product with POOL flavor (bsc#941402)
+- Addon selection dialog - avoid possible ID duplicates when
+  an addon with multiple versions is displayed
+- 3.1.143
+
+-------------------------------------------------------------------
+Mon Aug 17 14:40:05 UTC 2015 - igonzalezsosa@suse.com
+
+- Fix AutoYaST crash during registration (bsc#941449)
+- 3.1.142
+
+-------------------------------------------------------------------
+Fri Aug 14 16:01:41 UTC 2015 - lslezak@suse.cz
+
+- Catch exceptions also when loading the available extensions
+  (bsc#941491)
+- 3.1.141
+
+-------------------------------------------------------------------
+Fri Aug 14 15:11:37 UTC 2015 - ancor@suse.com
+
+- User messages improved when registration does not happen during
+  installation (bnc#941403, bnc#941739)
+
+-------------------------------------------------------------------
+Fri Aug 14 08:20:21 UTC 2015 - lslezak@suse.cz
+
+- Reload the packages after modifying the repository setup
+  (bsc#941532)
+- 3.1.140
+
+-------------------------------------------------------------------
+Fri Aug  7 14:11:57 UTC 2015 - ancor@suse.com
+
+- Fixed 'back' button in registration screen during installation
+  (bnc#940915)
+- 3.1.139
+
+-------------------------------------------------------------------
+Thu Jul 30 12:26:48 CEST 2015 - gs@suse.de
+
+- change category from "Support" to "Software" (bsc#939543)
+- 3.1.138
+
+-------------------------------------------------------------------
+Fri Jul 10 14:45:02 UTC 2015 - lslezak@suse.cz
+
+- set the correct vendor change flag (for the DUP mode instead of
+  the normal mode) (FATE#319128)
+- 3.1.137
+
+-------------------------------------------------------------------
+Tue Jul  7 13:02:23 UTC 2015 - lslezak@suse.cz
+
+- Use "zypper dup --no-vendor-change" equivalent for online
+  migration (FATE#319138)
+- 3.1.136
+
+-------------------------------------------------------------------
+Tue Jun 30 14:28:43 UTC 2015 - lslezak@suse.cz
+
+- added support for online migration, the registration part handles
+  the service upgrade and migration repository management
+  (fate#315161)
+- 3.1.135
+
+-------------------------------------------------------------------
+Tue Jun 16 08:37:02 UTC 2015 - jreidinger@suse.com
+
+- Adapt module to new version of SUSEConnect (FATE#318800)
+- 3.1.134
+
+-------------------------------------------------------------------
+Tue Jun  9 15:35:19 UTC 2015 - mvidner@suse.com
+
+- Renamed the module again to "Product Registration" after a
+  clarification in FATE#318800.
+- 3.1.133
+
+-------------------------------------------------------------------
+Tue Jun  2 13:03:10 UTC 2015 - gs@suse.de
+
+- Renamed the module from "SUSE Customer Center Configuration" to
+  "System Registration" (FATE#318800).
+- 3.1.132
+
+-------------------------------------------------------------------
+Thu May 14 13:31:12 UTC 2015 - lslezak@suse.cz
+
+- added support for re-registering extensions and modules
+  (FATE#318800)
+- 3.1.131
+
+-------------------------------------------------------------------
+Fri Apr 24 06:56:06 UTC 2015 - lslezak@suse.cz
+
+- allow registering add-ons installed from media (fate#318505)
+- allow network configuration also in installed system
+- refactoring/cleanup
+- 3.1.130
+
+-------------------------------------------------------------------
+Wed Apr  8 15:31:18 UTC 2015 - lslezak@suse.cz
+
+- collect product rename also for the base product (the internal
+  SLES-for-SAP product identifier has been changed) (bsc#925700)
+- 3.1.129.1
+
+-------------------------------------------------------------------
+Thu Nov  6 08:32:36 UTC 2014 - lslezak@suse.cz
+
+- display correct default EULA translation for extensions/modules
+  (bnc#894460)
+- 3.1.129
+
+-------------------------------------------------------------------
+Fri Oct 17 13:01:54 UTC 2014 - lslezak@suse.cz
+
+- reset registration URL when registration upgrade fails to allow
+  easily switch from SMT to SCC and to be consistent with full
+  installation (bnc#891293)
+- 3.1.128
+
+-------------------------------------------------------------------
+Fri Oct 10 11:23:07 UTC 2014 - lslezak@suse.cz
+
+- re-enable the update repositories in the installed system
+  when updates are disabled during installation (bnc#899999)
+- 3.1.127
+
+-------------------------------------------------------------------
+Thu Oct  2 15:06:22 UTC 2014 - lslezak@suse.cz
+
+- fixed failure in AutoYast autoupgrade mode when the upgraded
+  system was not registered (in that case the system is newly
+  registered) (bnc#899168)
+- 3.1.126
+
+-------------------------------------------------------------------
+Mon Sep 29 08:42:17 UTC 2014 - lslezak@suse.cz
+
+- fixed AutoYast autoupgrade - use the SMT server from the AutoYast
+  profile instead of the public SCC server (bnc#897040)
+- 3.1.125
+
+-------------------------------------------------------------------
+Wed Sep 24 19:00:11 UTC 2014 - lslezak@suse.cz
+
+- export registration settings also when no extension or module
+  has been registered (bnc#897755)
+- 3.1.124
+
+-------------------------------------------------------------------
+Mon Sep 22 12:09:53 UTC 2014 - lslezak@suse.cz
+
+- fixed crash at AutoYast export at the end of installation when
+  a SMT certificate has been imported (export the fingerprint value
+  instead of the Fingerprint object which cannot be serialized to
+  Autoyast XML) (bnc#897449)
+- 3.1.123
+
+-------------------------------------------------------------------
+Tue Sep 16 08:54:54 UTC 2014 - lslezak@suse.cz
+
+- properly mark children addons as registered when loading the
+  current status
+- make sure the addon is marked as registered after registering or
+  upgrading it (bnc#893364)
+- 3.1.122
+
+-------------------------------------------------------------------
+Fri Sep 12 10:44:49 UTC 2014 - lslezak@suse.cz
+
+- fixed displaying pop question _after_ successfuly uprading the
+  registration at upgrade (bnc#896018)
+- 3.1.121
+
+-------------------------------------------------------------------
+Wed Sep 10 08:37:34 UTC 2014 - lslezak@suse.cz
+
+- update the system registration in update mode, set the new target
+  distribution value (needed for update via SMT, bnc#889778)
+- 3.1.120
+
+-------------------------------------------------------------------
+Mon Sep  8 08:36:48 UTC 2014 - lslezak@suse.cz
+
+- ask for installing updates _after_ successfuly registering the
+  system (bnc#895000)
+- 3.1.119
+
+-------------------------------------------------------------------
+Thu Sep  4 14:13:20 UTC 2014 - lslezak@suse.cz
+
+- sort displayed addons to have requested order (bnc#888567)
+- use the custom URL also in upgrade (bnc#894592)
+- don't run SLP discovery if the system has been registered
+  using the public SCC server
+- added missing "require" in Autoyast client (bnc#895147)
+- 3.1.118
+
+-------------------------------------------------------------------
+Thu Sep  4 12:24:30 UTC 2014 - mvidner@suse.com
+
+- Use a more flexible rubygem requirement syntax (bnc#895069)
+- 3.1.117
+
+-------------------------------------------------------------------
+Thu Sep  4 06:58:14 UTC 2014 - jreidinger@suse.com
+
+- avoid crash in autoinstallation with method called on nil
+  (bnc#894877)
+- 3.1.116
+
+-------------------------------------------------------------------
+Tue Sep  2 15:30:07 UTC 2014 - lslezak@suse.cz
+
+- do not log the registration code or the credentials to y2log
+  (bnc#894670)
+- 3.1.115
+
+-------------------------------------------------------------------
+Mon Sep  1 17:21:41 UTC 2014 - lslezak@suse.cz
+
+- ignore SUSE Manager services in SLP discovery (bnc#894470)
+- 3.1.114
+
+-------------------------------------------------------------------
+Mon Sep  1 09:42:45 UTC 2014 - lslezak@suse.cz
+
+- select extension/module products to install in Autoyast mode
+  (bnc#893750)
+- upgrade registration in Autoyast autoupgrade mode
+- 3.1.113
+
+-------------------------------------------------------------------
+Thu Aug 28 14:06:14 UTC 2014 - lslezak@suse.cz
+
+- read proxy credentials from .curlrc file (bnc#885957)
+- do not ask for network configuration in Autoyast mode
+- 3.1.112
+
+-------------------------------------------------------------------
+Tue Aug 26 18:34:07 UTC 2014 - ancor@suse.com
+
+- Added proper handling for the user clicking the cancel button in
+  "Local Registration Servers" window (bnc#893462)
+- 3.1.111 
+
+-------------------------------------------------------------------
+Tue Aug 26 12:03:39 UTC 2014 - ancor@suse.com
+
+- Replaced call to private method SslCertificate#sha256_fingerprint
+  with the proper SslCertificate#fingerprint (bnc#893561)
+- 3.1.110
+
+-------------------------------------------------------------------
+Mon Aug 25 08:21:18 UTC 2014 - lslezak@suse.cz
+
+- select and install extension/module products also in installed
+  system (bnc#891891)
+- 3.1.109
+
+-------------------------------------------------------------------
+Thu Aug 21 09:41:10 UTC 2014 - lslezak@suse.cz
+
+- save the registration settings to autoinst.xml at the end of
+  installation (bnc#892449)
+- decrease vertical spacing in text mode to fit 80x25 screen
+  (bnc#892747)
+- 3.1.108
+
+-------------------------------------------------------------------
+Thu Aug 21 11:07:07 CEST 2014 - locilka@suse.com
+
+- Fixed aborting from the base product registration dialog in
+  installation - it needs user confirmation now (bnc#886662)
+- 3.1.107
+
+-------------------------------------------------------------------
+Tue Aug 19 14:17:23 UTC 2014 - lslezak@suse.cz
+
+- check for old SMT server API when registration fails, display
+  error about outdated SMT server (bnc#889503)
+- 3.1.106
+
+-------------------------------------------------------------------
+Mon Aug 18 13:34:05 UTC 2014 - lslezak@suse.cz
+
+- allow starting the module directly at the extension selection
+  screen when invoked from "repositories" Yast module (bnc#888566)
+- 3.1.105
+
+-------------------------------------------------------------------
+Mon Aug 18 13:49:45 CEST 2014 - schubi@suse.de
+
+- Autoyast: Moving registration to first stage of installation.
+  (bnc#890073)
+- 3.1.104
+
+-------------------------------------------------------------------
+Thu Aug 14 15:23:54 UTC 2014 - lslezak@suse.cz
+
+- fixed importing SSL certificate, log errors in the SSL verify
+  callback (bnc#891940)
+- 3.1.103
+
+-------------------------------------------------------------------
+Thu Aug 14 12:34:50 UTC 2014 - lslezak@suse.cz
+
+- do not crash when SSL certificate download fails (bnc#891896)
+- 3.1.102
+
+-------------------------------------------------------------------
+Thu Aug 14 10:57:03 UTC 2014 - lslezak@suse.cz
+
+- reset registration status on failure (bnc#889531)
+- removed (sometimes) confusing error message (bnc#889531)
+- 3.1.101
+
+-------------------------------------------------------------------
+Tue Aug 12 15:32:51 UTC 2014 - lslezak@suse.cz
+
+- handle closing by window manager (:cancel event) (bnc#891550)
+- 3.1.100
+
+-------------------------------------------------------------------
+Tue Aug 12 14:03:35 UTC 2014 - lslezak@suse.cz
+
+- report more details when registration fails (bnc#890873)
+- added some hints to the error message displayed when the base
+  product is not found (bnc#890863)
+- 3.1.99
+
+-------------------------------------------------------------------
+Thu Aug  7 07:43:49 UTC 2014 - lslezak@suse.cz
+
+- Fixed AutoYast clonning in installed system: registration cannot
+  be clonned, skip it (bnc#888168)
+- AutoYast fixes and improvements:
+    - optionally register online extensions
+    - download and import SSL certificate from the specified URL
+    - automatically import the server SSL certificate if the
+      certificate fingerprint matches the specified value
+    - in the config mode allow downloading the list of extensions
+      from the server
+- Added HTTP redirection handling in the download code
+- 3.1.98
+
+-------------------------------------------------------------------
+Tue Aug  5 14:48:35 CEST 2014 - locilka@suse.com
+
+- Fixed handling while aborting an extension license confirmation
+  (bnc#886662)
+- 3.1.97
+
+-------------------------------------------------------------------
+Wed Jul 30 14:11:51 UTC 2014 - locilka@suse.com
+
+- Asking for confirmation when aborting Extension and Module
+  Selection dialog (bnc#886662)
+- 3.1.96
+
+-------------------------------------------------------------------
+Tue Jul 29 15:26:07 UTC 2014 - lslezak@suse.cz
+
+- improved "skip registration" label (bnc#888561)
+- 3.1.95
+
+-------------------------------------------------------------------
+Tue Jul 29 12:24:36 UTC 2014 - lslezak@suse.cz
+
+- display error details when package management initialization
+  fails, do not abort silently (bnc#887089)
+- 3.1.94
+
+-------------------------------------------------------------------
+Fri Jul 25 12:36:39 UTC 2014 - lslezak@suse.cz
+
+- another "E-mail Address" label fixes (bnc#888158)
+- 3.1.93
+
+-------------------------------------------------------------------
+Thu Jul 24 20:17:31 UTC 2014 - lslezak@suse.cz
+
+- call SLP discovery at upgrade when the system was not registered
+  at NCC (bnc#886804)
+- 3.1.92
+
+-------------------------------------------------------------------
+Tue Jul 22 15:45:44 UTC 2014 - lslezak@suse.cz
+
+- do not cache the base product upgrade, always do the upgrade
+  (bnc#882039)
+- fixed error code handling, display an additional hint when
+  upgrade from SLE11 fails (bnc#885506)
+- use "E-mail Address" label (bnc#888158)
+- handle missing SSL certificate attributes (bnc#886850)
+- 3.1.91
+
+-------------------------------------------------------------------
+Thu Jul 10 07:21:36 UTC 2014 - lslezak@suse.cz
+
+- skip SLP discovery if SMT is used, use the URL from config file
+  (bnc#886423)
+- allow changing the registration server when re-registering
+- reset registration status when upgrade fails to allow
+  re-registering from scratch (bnc#886387)
+- 3.1.90
+
+-------------------------------------------------------------------
+Tue Jul  8 09:22:44 UTC 2014 - lslezak@suse.cz
+
+- fixed check for registered status (bnc#886116)
+- 3.1.89
+
+-------------------------------------------------------------------
+Mon Jul  7 13:46:45 UTC 2014 - lslezak@suse.cz
+
+- better handle "Network unreachable" error (Errno::ENETUNREACH)
+  (bnc#885638)
+- 3.1.88
+
+-------------------------------------------------------------------
+Mon Jul  7 13:09:34 UTC 2014 - lslezak@suse.cz
+
+- added "Cancel" button to SLP selection dialog to allow to change
+  the entered values before connecting to the server (bnc#885633)
+- 3.1.87
+
+-------------------------------------------------------------------
+Mon Jul  7 11:03:17 UTC 2014 - lslezak@suse.cz
+
+- copy imported SMT certificate from inst-sys to the target system
+  (bnc#885968)
+- 3.1.86
+
+-------------------------------------------------------------------
+Fri Jul  4 15:37:14 UTC 2014 - lslezak@suse.cz
+
+- pass product renames to AddOnProduct module to update the
+  default fallback mapping
+- 3.1.85
+
+-------------------------------------------------------------------
+Fri Jul  4 07:55:33 UTC 2014 - lslezak@suse.cz
+
+- check also the previous product name to handle addon/extension
+  renames (bnc#883206)
+- 3.1.84
+
+-------------------------------------------------------------------
+Thu Jul  3 13:03:49 UTC 2014 - lslezak@suse.cz
+
+- improved user visible texts (bnc#883769)
+- 3.1.83
+
+-------------------------------------------------------------------
+Tue Jul  1 11:49:20 UTC 2014 - lslezak@suse.cz
+
+- use the status call and properly mark the already registered
+  extensions
+- 3.1.82
+
+-------------------------------------------------------------------
+Mon Jun 30 11:36:46 UTC 2014 - lslezak@suse.cz
+
+- enable autorefresh for registered services (bnc#884937)
+- 3.1.81
+
+-------------------------------------------------------------------
+Thu Jun 26 17:59:09 UTC 2014 - lslezak@suse.cz
+
+- update: automatically update installed addons (using simple
+  product name match so far) (bnc#871141)
+- 3.1.80
+
+-------------------------------------------------------------------
+Thu Jun 26 10:34:02 UTC 2014 - lslezak@suse.cz
+
+- removed workaround for failed EULA download (now do not allow to
+  continue when download fails) (bnc#880649)
+- 3.1.79
+
+-------------------------------------------------------------------
+Wed Jun 25 09:37:12 UTC 2014 - jreidinger@suse.com
+
+- add reading of old url from suseRegister.conf during upgrade
+- 3.1.78
+
+-------------------------------------------------------------------
+Fri Jun 20 10:24:04 UTC 2014 - lslezak@suse.cz
+
+- display SSL error details from exception, hide the details
+  section if there are no details actually (bnc#882573)
+- send correct base product name when downloading available
+  extensions (fix by Michael Calmer)
+- do not log the registration code to y2log
+- use the new suse-connect SSL API (0.1.2)
+- fixed selecting extensions when going back in the installation
+  workflow
+- added a popup for changing the registration server URL
+  (bnc#883138)
+- removed Beta warning workaround (bnc#882034) 
+- 3.1.77
+
+-------------------------------------------------------------------
+Mon Jun 16 16:05:20 UTC 2014 - lslezak@suse.cz
+
+- fixed crash (nil error) when reading available extensions
+- 3.1.76
+
+-------------------------------------------------------------------
+Fri Jun 13 15:32:20 UTC 2014 - lslezak@suse.cz
+
+- port to the new suse-connect API (suse-connect >= 0.1.0)
+- fixed removing previous credentials at installation restart
+- libzypp now properly sets the repository statuses from service,
+  no need to explicitly enforce them
+- 3.1.75
+
+-------------------------------------------------------------------
+Thu Jun 12 13:48:59 UTC 2014 - lslezak@suse.cz
+
+- reset registration status when installation is restarted
+  (bnc#877365)
+- 3.1.74
+
+-------------------------------------------------------------------
+Thu Jun 12 07:28:51 UTC 2014 - lslezak@suse.cz
+
+- removed media addons from registratoin workflow (bnc#880507)
+- 3.1.73
+
+-------------------------------------------------------------------
+Tue Jun 11 14:22:07 UTC 2014 - jreidinger@suse.com
+
+- write changes at the end of installation for suse connect
+- 3.1.72
+
+-------------------------------------------------------------------
+Mon Jun 11 12:52:44 UTC 2014 - lslezak@suse.cz
+
+- updated dialog title (extension selection) (bnc#881627)
+- 3.1.71
+
+-------------------------------------------------------------------
+Wed Jun 11 12:42:53 UTC 2014 - lslezak@suse.cz
+
+- display a fixed Beta warning for all online extensions
+  (temporary workaround for bnc#882034)
+- 3.1.70
+
+-------------------------------------------------------------------
+Mon Jun  9 11:26:18 UTC 2014 - lslezak@suse.cz
+
+- display where to download the extension EULA text (bnc#880685)
+- 3.1.69
+
+-------------------------------------------------------------------
+Mon Jun  9 08:02:03 UTC 2014 - jreidinger@suse.com
+
+- switch build tool from autotools to yast-rake
+- 3.1.68
+
+-------------------------------------------------------------------
+Fri Jun  6 15:27:28 UTC 2014 - lslezak@suse.cz
+
+- properly leave the addon workflow when registration was skipped
+  (bnc#880941)
+- 3.1.67
+
+-------------------------------------------------------------------
+Fri Jun  6 11:41:21 UTC 2014 - jreidinger@suse.com
+
+- added support for nested extensions to display e.g. HA GEO
+  extension (bnc#873185)
+- improve test coverage
+- 3.1.66
+
+-------------------------------------------------------------------
+Thu Jun  5 12:43:27 UTC 2014 - jsrain@suse.cz
+
+- add explanation to extension regcode dialog (bnc#881466)
+- 3.1.65
+
+-------------------------------------------------------------------
+Tue Jun  3 16:08:38 UTC 2014 - lslezak@suse.cz
+
+- fixed accepting more than one extension EULA (bnc#881078)
+- 3.1.64
+
+-------------------------------------------------------------------
+Tue Jun  3 12:38:47 UTC 2014 - jsrain@suse.cz
+
+- UX improvements for registration server selection (bnc#878649)
+- 3.1.63
+
+-------------------------------------------------------------------
+Mon Jun  2 16:47:14 UTC 2014 - lslezak@suse.cz
+
+- automatically upgrade the registration without asking for
+  a registration code when upgrading from SLE11 (bnc#876849)
+- 3.1.62
+
+-------------------------------------------------------------------
+Fri May 30 11:43:18 UTC 2014 - lslezak@suse.cz
+
+- fixed displaying EULA translations (bnc#880504)
+- removed EULA printing text (part of bnc#878976)
+- 3.1.61
+
+-------------------------------------------------------------------
+Mon May 26 11:15:39 UTC 2014 - jreidinger@suse.com
+
+- empty eula url mean no eula (Bnc#879456)
+- 3.1.60
+
+-------------------------------------------------------------------
+Fri May 23 13:14:45 UTC 2014 - jreidinger@suse.com
+
+- fix registration of multiple addons (bnc#879421)
+- 3.1.59
+
+-------------------------------------------------------------------
+Thu May 22 07:57:07 UTC 2014 - jreidinger@suse.com
+
+- Enable next button for kernel cmdline specified addons
+  (bnc#878997,bnc#879140)
+- 3.1.58
+
+-------------------------------------------------------------------
+Wed May 21 20:14:26 UTC 2014 - jreidinger@suse.com
+
+- Do not abort after pressing back in add-on dialog (bnc#878997)
+- 3.1.57
+
+-------------------------------------------------------------------
+Tue May 20 09:05:39 UTC 2014 - jreidinger@suse.com
+
+- Allow failed eula download for betas to make testing easier
+- 3.1.56
+
+-------------------------------------------------------------------
+Mon May 19 11:32:40 UTC 2014 - jreidinger@suse.com
+
+- fix sequencer in inst_scc (bnc#878534)
+- adapt to changes in suseconnect API(bnc#875456)
+- 3.1.55
+
+-------------------------------------------------------------------
+Thu May 15 15:51:43 UTC 2014 - lslezak@suse.cz
+
+- download and confirm add-on licenses from the registration server
+- 3.1.54
+
+-------------------------------------------------------------------
+Thu May 15 13:36:12 UTC 2014 - lslezak@suse.cz
+
+- fixed package dependency (it is 'yast2-add-on')
+- 3.1.53
+
+-------------------------------------------------------------------
+Tue May 13 20:12:46 UTC 2014 - lslezak@suse.cz
+
+- allow adding media addons without registering the base system
+  (bnc#870625)
+- 3.1.52
+
+-------------------------------------------------------------------
+Mon May 12 13:35:09 UTC 2014 - lslezak@suse.cz
+
+- use "modules" term as well (bnc#875199#c10)
+- 3.1.51
+
+-------------------------------------------------------------------
+Fri May  9 12:27:20 UTC 2014 - lslezak@suse.cz
+
+- remember registered extensions, do not register them again
+  and disable the checkboxes (extensions cannot be "unregistered")
+- display registered status in the main dialog
+- use "extension" term consistently (bnc#875199)
+- allow registering extensions in installed system without
+  re-registering the base product (bnc#876328)
+- 3.1.50
+
+-------------------------------------------------------------------
+Wed May  7 13:17:23 UTC 2014 - lslezak@suse.cz
+
+- Save the repository credentials to /mnt during upgrade (libzypp
+  is already switched to the target system) (bnc#876151)
+- 3.1.49
+
+-------------------------------------------------------------------
+Wed May  7 11:38:30 UTC 2014 - lslezak@suse.cz
+
+- fixed setting the repository status (to properly enable e.g. the
+  *-Pool repositories) (bnc#875839)
+- 3.1.48
+
+-------------------------------------------------------------------
+Tue May  6 12:38:51 UTC 2014 - lslezak@suse.cz
+
+- use PackageCallbacks instead of obsoleted PackageCallbacksInit
+  module (bnc#873936)
+- fixed base product detection (bnc#875194)
+- 3.1.47
+
+-------------------------------------------------------------------
+Tue May  6 07:07:56 UTC 2014 - lslezak@suse.cz
+
+- fixed a crash in addon registration
+- use generic "Registration Server" in progress message (SCC
+  title does not make sense for SMT registration (bnc#875196)
+- fixed caching the registration URL
+- display product names in progess
+- fixed "Next" button label in installed system
+- 3.1.46
+
+-------------------------------------------------------------------
+Mon May  5 15:54:04 UTC 2014 - lslezak@suse.cz
+
+- initialize the connection object when reading addons
+  (otherwise a "nil" bug appears when going back in the
+  installation workflow)
+- cache the registration server URL (to use the same server when
+  going back)
+- added "nil" check for long product description
+- typo in a logger call
+- 3.1.45
+
+-------------------------------------------------------------------
+Mon May  5 15:34:47 UTC 2014 - jreidinger@suse.com
+
+- add product name when something wrong happen with addon
+  registration(bnc#872481)
+- register as much addons as possible and skip only failed ones
+- improve progress to print which addon it register
+- 3.1.44
+
+-------------------------------------------------------------------
+
+Mon May  5 13:33:21 UTC 2014 - lslezak@suse.cz
+
+- Update "enabled" and "autorefresh" repository flags according to
+  the registration response, e.g. enable -Pool repositories
+  (bnc#875839)
+- 3.1.43
+
+-------------------------------------------------------------------
+Fri May  2 12:01:45 UTC 2014 - lslezak@suse.cz
+
+- ask user to import an unknown SSL certificate (bnc#874745)
+- fixed wrong method name causing crash when adding repositories
+  (bnc#875412)
+- remove the base product from the addons list (bnc#872483)
+- 3.1.42
+
+-------------------------------------------------------------------
+Wed Apr 30 12:26:52 UTC 2014 - lslezak@suse.cz
+
+- added a nil check when reading the long product name to avoid
+  possible failure (bnc#875796)
+- 3.1.41
+
+-------------------------------------------------------------------
+Wed Apr 30 11:45:57 UTC 2014 - lslezak@suse.cz
+
+- fixed failure when registering the base product 
+  (fixed return value from product registration call) (bnc#875412)
+- 3.1.40
+
+-------------------------------------------------------------------
+Thu Apr 24 16:05:17 UTC 2014 - lslezak@suse.cz
+
+- "reg_ssl_verify=0" boot parameter disables SSL checks (part of
+  bnc#874745)
+- reuse already known "regurl" parameter (instead "reg_url" cannot
+  be used as it conflicts with it) (bnc#874997)
+- 3.1.39
+
+-------------------------------------------------------------------
+Thu Apr 24 07:53:57 UTC 2014 - lslezak@suse.cz
+
+- use "is_update_repo" flag for finding update repositories
+
+-------------------------------------------------------------------
+Wed Apr 23 07:29:37 UTC 2014 - lslezak@suse.cz
+
+- use "suse-connect" gem as the backend (to share the code with
+  the command line registration tool)
+- 3.1.38
+
+-------------------------------------------------------------------
+Tue Apr 22 07:04:33 UTC 2014 - lslezak@suse.cz
+
+- use "registration code" term everywhere to be consistent with
+  SCC terminology
+
+-------------------------------------------------------------------
+Fri Apr 18 10:00:40 UTC 2014 - lslezak@suse.cz
+
+- do not fail if the service already exists (bnc#873198)
+- 3.1.37
+
+-------------------------------------------------------------------
+Thu Apr 18 08:42:01 UTC 2014 - lslezak@suse.cz
+
+- send base product base version (i.e. remove build suffix from the
+  version) (bnc#873193)
+- 3.1.36
+
+-------------------------------------------------------------------
+Thu Apr 17 09:45:50 UTC 2014 - lslezak@suse.cz
+
+- check the libzypp lock at start, do not continue if libzypp is
+  already locked by another application (bnc#873882)
+- check the base product at start to avoid problems later
+
+-------------------------------------------------------------------
+Tue Apr 15 16:47:27 UTC 2014 - lslezak@suse.cz
+
+- fixed using nil base product when registration failed
+  (bnc#873683)
+- register the base product again if it failed
+- 3.1.35
+
+-------------------------------------------------------------------
+Mon Apr 14 12:32:17 UTC 2014 - lslezak@suse.cz
+
+- pass also version and architecture when registering an addon
+  product
+- 3.1.34
+
+-------------------------------------------------------------------
+Mon Apr 14 10:52:16 UTC 2014 - lslezak@suse.cz
+
+- pass also "release_type" product parameter (bnc#873194)
+- 3.1.33
+
+-------------------------------------------------------------------
+Fri Apr 11 12:14:04 UTC 2014 - lslezak@suse.cz
+
+- use generic SLP service name for both SMT and SUSE Manager
+  (fate#316384)
+- fixed namespace error when reading SLP service URL
+- 3.1.32
+
+-------------------------------------------------------------------
+Thu Apr 10 08:43:48 UTC 2014 - lslezak@suse.cz
+
+- ask simple Yes/No for installing online updates (instead of
+  complex repository selection)
+- 3.1.31
+
+-------------------------------------------------------------------
+Tue Apr  8 16:05:20 UTC 2014 - lslezak@suse.cz
+
+- redesiged addon selection dialog
+- small UI improvements
+- 3.1.30
+
+-------------------------------------------------------------------
+Fri Apr  4 10:56:53 UTC 2014 - lslezak@suse.cz
+
+- fixed undefined method (bnc#872012)
+- 3.1.29
+
+-------------------------------------------------------------------
+Thu Apr  3 07:17:20 UTC 2014 - lslezak@suse.cz
+
+- avoid client class redefinition (bnc#871651)
+
+-------------------------------------------------------------------
+Tue Apr  1 16:08:46 UTC 2014 - lslezak@suse.cz
+
+- make the input fields slighly narrow (bnc#864882#c7)
+- 3.1.28
+
+-------------------------------------------------------------------
+Tue Apr  1 13:53:37 UTC 2014 - lslezak@suse.cz
+
+- fix up, removed forgotten require (bnc#871400)
+- 3.1.27
+
+-------------------------------------------------------------------
+Tue Apr  1 08:25:30 UTC 2014 - lslezak@suse.cz
+
+- do not restore the original repository status (enabled/disabled
+  Updates), keep the user changes in installed system (bnc#869088)
+- 3.1.26
+
+-------------------------------------------------------------------
+Mon Mar 31 13:46:00 UTC 2014 - lslezak@suse.cz
+
+- fixes/enhancements:
+  - do not ask for credentials when the system is already
+    registered (avoid re-registration when going back)
+  - display details when registration fails
+  - register only the base product (add-ons use a different reg.
+    key, important in running system)
+- 3.1.25
+
+-------------------------------------------------------------------
+Fri Mar 28 10:39:38 UTC 2014 - lslezak@suse.cz
+
+- better error message for failed registration (bnc#870787#c2)
+
+-------------------------------------------------------------------
+Fri Mar 28 08:20:17 UTC 2014 - mfilka@suse.com
+
+- bnc#870622
+  - fixed handling "Network Configuration" button
+- 3.1.24 
+
+-------------------------------------------------------------------
+Tue Mar 25 17:38:37 UTC 2014 - lslezak@suse.cz
+
+- use an ERB template instead of ugly Summary module for rendering
+  AutoYast rich text summary
+- 3.1.23
+
+-------------------------------------------------------------------
+Tue Mar 25 09:25:38 UTC 2014 - lslezak@suse.cz
+
+- initial AutoYast support, allow specifying the registration
+  server URL in the AutoYast profile (FATE#312433)
+- 3.1.22
+
+-------------------------------------------------------------------
+Thu Mar 20 14:55:07 UTC 2014 - lslezak@suse.cz
+
+- added "Network Configuration" button for manual network
+  configuration, ask user to configure network if registration
+  fails because of missing network setup (bnc#868830)
+- 3.1.21
+
+-------------------------------------------------------------------
+Wed Mar 19 14:28:56 UTC 2014 - lslezak@suse.cz
+
+- ask for media addons when the respective checkbox is set
+  (bnc#868942)
+- 3.1.20
+
+-------------------------------------------------------------------
+Tue Mar 18 09:31:39 UTC 2014 - lslezak@suse.cz
+
+- Display and allow registering online add-ons from SCC during
+  installation (FATE#312925, FATE#315685)
+- 3.1.19
+
+-------------------------------------------------------------------
+Thu Mar  6 20:31:05 UTC 2014 - lslezak@suse.cz
+
+- display a popup for selecting/deselecting registered repositories
+  (to allow e.g. disabling Updates and installing GA version)
+  (FATE#312012)
+- 3.1.18
+
+-------------------------------------------------------------------
+Thu Mar  6 14:18:51 UTC 2014 - lslezak@suse.cz
+
+- fixed service refresh loop (bnc#867120)
+- 3.1.17
+
+-------------------------------------------------------------------
+Thu Mar  6 12:57:21 UTC 2014 - lslezak@suse.cz
+
+- fixed crash at start (added missing "require" call) (bnc#867120)
+- 3.1.16
+
+-------------------------------------------------------------------
+Wed Mar  5 07:49:49 UTC 2014 - lslezak@suse.cz
+
+- added SLP service discovery (FATE#316384)
+- 3.1.15
+
+-------------------------------------------------------------------
+Mon Mar  3 13:18:11 UTC 2014 - lslezak@suse.cz
+
+- allow changing the registration server URL in installation via
+  boot command line ("reg_url" option) (FATE#312433)
+- 3.1.14
+
+-------------------------------------------------------------------
+Thu Feb 27 08:35:31 UTC 2014 - lslezak@suse.cz
+
+- Check for errors when adding/refreshing services
+- 3.1.13
+
+-------------------------------------------------------------------
+Wed Feb 26 14:44:09 CET 2014 - locilka@suse.com
+
+- Initializing packager before registration on a running system
+- Registering selected or installed products (both bnc#865737)
+- 3.1.12
+
+-------------------------------------------------------------------
+Wed Feb 26 10:11:05 UTC 2014 - vmoravec@suse.com
+
+- Check for defined client class
+- 3.1.11
+
+-------------------------------------------------------------------
+Tue Feb 25 16:37:23 UTC 2014 - lslezak@suse.cz
+
+- better error handling
+- 3.1.10
+
+-------------------------------------------------------------------
+Tue Feb 25 09:14:24 UTC 2014 - lslezak@suse.cz
+
+- make the credentials input fields wider (bnc#864882)
+- ask user to confirm skipping the registration
+- use the current language in "Accept-Language" HTTP header
+- 3.1.9
+
+-------------------------------------------------------------------
+Fri Feb 21 08:02:38 UTC 2014 - vmoravec@suse.com
+
+- Add SLP service discovery dialog for registration (FATE#316384)
+- 3.1.8
+
+-------------------------------------------------------------------
+Fri Feb 14 16:09:13 UTC 2014 - lslezak@suse.cz
+
+- display progress when adding registered services
+- 3.1.7
+
+-------------------------------------------------------------------
+Fri Feb 14 14:31:09 UTC 2014 - lslezak@suse.cz
+
+- fixed mounting write copy of /etc/zypp at installation
+- 3.1.6
+
+-------------------------------------------------------------------
+Thu Feb 13 11:17:39 UTC 2014 - lslezak@suse.cz
+
+- save repositories before refreshing added services (otherwise
+  pkg-bindings will treat them as removed by the service refresh
+  and unloads them)
+- 3.1.5
+
+-------------------------------------------------------------------
+Wed Feb 12 14:12:23 UTC 2014 - lslezak@suse.cz
+
+- pass the repository services returned by SCC to libzypp
+- make /etc/zypp writable during installation
+- 3.1.4
+
+-------------------------------------------------------------------
+Mon Feb  3 20:00:19 UTC 2014 - lslezak@suse.cz
+
+- use scc_api gem for communication with SCC
+- 3.1.3
+
+-------------------------------------------------------------------
+Mon Jan 27 15:11:17 UTC 2014 - lslezak@suse.cz
+
+- added "Skip Registration" button (FATE#312925)
+- workaround for SCC not accepting JSON input
+- 3.1.2
+
+-------------------------------------------------------------------
+Tue Jan 21 10:19:13 UTC 2014 - lslezak@suse.cz
+
+- changed the implementation to use SCC instead of NCC
+- 3.1.1
+
+-------------------------------------------------------------------
+Thu Sep 19 15:15:58 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Wed Jul 31 08:38:22 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Tue Jul  2 05:30:32 UTC 2013 - lslezak@suse.cz
+
+- use new polkit instead of deprecated PolicyKit
+- use perl-camgm instead of limal-ca-mgm-perl (dropped in
+  Factory/openSUSE-13.1)
+- removed useless BuildRequires: perl-XML-Writer yast2-packager
+  yast2-testsuite perl-TimeDate yast2-pkg-bindings suseRegister
+  (not needed durign build)
+- 2.24.0
+
+-------------------------------------------------------------------
+Tue Nov 20 17:26:13 UTC 2012 - jdsn@suse.de
+
+- show detailed registration status window (fate#312712)
+- confirmed license GPL v2
+- 2.21.2
+
+-------------------------------------------------------------------
+Fri Aug 31 15:58:49 UTC 2012 - jdsn@suse.de
+
+- do not block registration browser via SSH (bnc#179614) (bnc#718334)
+
+-------------------------------------------------------------------
+Tue May  8 12:22:16 UTC 2012 - jdsn@suse.de
+
+- fix typo in help text (bnc#759735)
+
+-------------------------------------------------------------------
+Thu Mar 29 15:50:13 CEST 2012 - jsuchome@suse.cz
+
+- merge proofread texts 
+
+-------------------------------------------------------------------
+Fri Aug  5 17:26:09 CEST 2011 - jdsn@suse.de
+
+- make use of ButtonBox where possible to make button order
+  depending on desktop environment (bnc#701264)
+
+-------------------------------------------------------------------
+Mon Jul  4 15:59:24 CEST 2011 - jdsn@suse.de
+
+- fix typo in registration process (bnc#703222)
+
+-------------------------------------------------------------------
+Thu Jun 30 21:25:18 CEST 2011 - jdsn@suse.de
+
+- cleanup xauth export after interactive registration (bnc#702638)
+- fix broken xauth export file in post install script (bnc#702423)
+- 2.21.1
+
+-------------------------------------------------------------------
+Tue Jun 28 19:11:55 CEST 2011 - jdsn@suse.de
+
+- bump version
+- 2.21.0 
+
+-------------------------------------------------------------------
+Sat Aug 28 00:43:11 CEST 2010 - jdsn@suse.de
+
+- fix registration status detection (bnc#634026)
+  use a common flag file (bnc#633183)
+- fix proxy settings for WebYaST registrations (bnc#626965)
+- 2.19.7
+
+-------------------------------------------------------------------
+Fri Aug 20 15:45:49 CEST 2010 - jdsn@suse.de
+
+- use correct error code for backend init errors (bnc#633183)
+- touch flag file to show in webyast that the system is registered
+- 2.19.6 
+
+-------------------------------------------------------------------
+Wed Aug 18 15:19:55 CEST 2010 - mzugec@suse.cz
+
+- fixed typo (bnc#631743)
+- 2.19.5 
+
+-------------------------------------------------------------------
+Thu Jul 15 16:09:26 CEST 2010 - jdsn@suse.de
+
+- fix for the SMT server configuration via WebYaST (bnc#621914)
+- 2.19.4 
+
+-------------------------------------------------------------------
+Wed May 19 18:10:23 CEST 2010 - jdsn@suse.de
+
+- catch severe backend error and pass error message on (bnc#604777)
+- 2.19.3
+
+-------------------------------------------------------------------
+Wed Apr 28 20:59:51 CEST 2010 - jdsn@suse.de
+
+- split off online-update-configuration module (fate#308494)
+- 2.19.2
+
+-------------------------------------------------------------------
+Wed Apr 21 13:46:58 UTC 2010 - coolo@novell.com
+
+- buildrequire PolicyKit-devel to fix build
+
+-------------------------------------------------------------------
+Sat Nov 14 04:37:29 CET 2009 - jdsn@suse.de
+
+- fixes in REST API to prevent server error and loops (bnc#553244)
+- 2.19.1 
+
+-------------------------------------------------------------------
+Thu Nov 12 20:32:57 CET 2009 - jdsn@suse.de
+
+- fix catalog checks in stateless registration API
+- fix XML format in stateless registration API
+
+-------------------------------------------------------------------
+Thu Nov  5 17:28:43 CET 2009 - jdsn@suse.de
+
+- fix XML format for stateless registration API
+- disable help texts for Open-SLX (bnc#544907)
+- 2.19.0
+
+-------------------------------------------------------------------
+Mon Oct 26 12:13:22 CET 2009 - jdsn@suse.de
+
+- enable the webyast API by default
+- 2.18.1 
+
+-------------------------------------------------------------------
+Tue Oct 13 17:12:54 CEST 2009 - jdsn@suse.de
+
+- adding help texts for Open-SLX 
+
+-------------------------------------------------------------------
+Thu Sep 24 18:37:23 CEST 2009 - jdsn@suse.de
+
+- disable update repo restore because of bnc#449842
+- update cronjob support for auto license agreement (bnc#474573)
+- 2.18.0
+
+-------------------------------------------------------------------
+Wed Jul  8 14:48:32 CEST 2009 - ug@suse.de
+
+- Autoinst Resource in desktop file fixed
+
+-------------------------------------------------------------------
+Thu Apr 23 21:15:50 CEST 2009 - jdsn@suse.de
+
+- check boolean values also for nil to prevent crashes (bnc#463800) 
+
+-------------------------------------------------------------------
+Mon Feb 23 12:50:14 CET 2009 - jdsn@suse.de
+
+- reload SourceManager after registration (bnc#468449)
+- do not force the refreshes during registration (bnc#476429)
+
+-------------------------------------------------------------------
+Tue Feb 17 21:46:59 CET 2009 - jdsn@suse.de
+
+- fix autoyast registration; fix ported from SLE11 (bnc#476494) 
+- without network connection skip registration (bnc#475795)
+
+-------------------------------------------------------------------
+Tue Jan 27 17:35:44 CET 2009 - jdsn@suse.de
+
+- use OKDialog for online_update_configuration (bnc#440568)
+
+-------------------------------------------------------------------
+Mon Jan 26 17:48:44 CET 2009 - jdsn@suse.de
+
+- keep target initialized on exit (bnc#468449)
+- setup proxy before suseRegister initializes (bnc#468480)
+- setup http and https proxy settings individually (bnc#468919)
+
+-------------------------------------------------------------------
+Mon Dec  1 18:21:35 CET 2008 - jdsn@suse.de
+
+- fix detection of base product (bnc#449844)
+- 2.17.17
+
+-------------------------------------------------------------------
+Thu Nov 27 21:08:07 CET 2008 - jdsn@suse.de
+
+- fix restoring the default update repository (bnc#444301)
+- 2.17.16 
+
+-------------------------------------------------------------------
+Mon Nov 24 12:27:12 CET 2008 - jdsn@suse.de
+
+- call other modules via WFM (bnc#447043)
+- 2.17.15
+
+-------------------------------------------------------------------
+Fri Nov 21 12:22:33 CET 2008 - jdsn@suse.de
+
+- adapt to new suseRegister states (bnc#446572)
+- 2.17.14
+
+-------------------------------------------------------------------
+Thu Nov 20 17:33:30 CET 2008 - jdsn@suse.de
+
+- finish sources when changed to enforce reload (bnc#447080)
+- merge service repo flags instead overwriting them
+
+-------------------------------------------------------------------
+Fri Nov 14 17:55:56 CET 2008 - jdsn@suse.de
+
+- fix repo type definition for adding sources (bnc#444770)
+- remove deprecated unused function
+- add more debug logging
+- service changes should not enable all its catalogs
+- refresh services prior to repositories
+- 2.17.13
+
+-------------------------------------------------------------------
+Thu Nov 13 15:33:39 CET 2008 - jdsn@suse.de
+
+- fix empty install message (bnc#444638)
+
+-------------------------------------------------------------------
+Tue Nov 11 16:34:24 CET 2008 - jdsn@suse.de
+
+- fix error in sformat statement (bnc#443781)
+- 2.17.12 
+
+-------------------------------------------------------------------
+Tue Nov 11 14:51:44 CET 2008 - jdsn@suse.de
+
+- fix registration code parameter (bnc#443704) 
+
+-------------------------------------------------------------------
+Fri Nov  7 19:14:00 CET 2008 - jdsn@suse.de
+
+- fix reading repo settings (bnc#427698)
+- 2.17.11
+
+-------------------------------------------------------------------
+Thu Nov  6 15:21:49 CET 2008 - jdsn@suse.de
+
+- split off branding packages (bnc#436644)
+- fix error code handling of SuseRegister
+- updated yastbrowser for xulrunner191 (bnc#383660)
+
+-------------------------------------------------------------------
+Wed Nov  5 14:37:32 CET 2008 - ug@suse.de
+
+- desktop file changed
+
+-------------------------------------------------------------------
+Fri Oct 31 10:38:49 CET 2008 - mc@suse.de
+
+- YSR module should return true 
+
+-------------------------------------------------------------------
+Thu Oct 30 21:09:12 CET 2008 - jdsn@suse.de
+
+- check for w3m in textmode registration (bnc#440289)
+- reset registration backend before exiting
+
+-------------------------------------------------------------------
+Wed Oct 29 16:32:31 CET 2008 - jdsn@suse.de
+
+- remove requires to sles-release
+- 2.17.10
+
+-------------------------------------------------------------------
+Wed Oct 29 15:31:04 CET 2008 - jdsn@suse.de
+
+- consistent naming in autoYaST profile
+
+-------------------------------------------------------------------
+Fri Oct 24 23:06:02 CEST 2008 - jdsn@suse.de
+
+- checking if registration runs on xen (bnc#418287)
+- more verbose logging
+- 2.17.9
+
+-------------------------------------------------------------------
+Mon Oct 20 19:15:42 CEST 2008 - jdsn@suse.de
+
+- activate autorefresh for new services
+- remove requires to mozilla-xulrunner (bnc#436900) 
+- 2.17.8
+
+-------------------------------------------------------------------
+Fri Oct 17 19:22:24 CEST 2008 - jdsn@suse.de
+
+- changing repos and services only via pkg-bindings (bnc#435669)
+- 2.17.7
+
+-------------------------------------------------------------------
+Fri Oct 17 18:03:34 CEST 2008 - jdsn@suse.de
+
+- fix to display correct text in manual interaction (bnc#435869)
+- refresh services after creating them
+- 2.17.6
+
+-------------------------------------------------------------------
+Fri Oct 17 17:17:50 CEST 2008 - jdsn@suse.de
+
+- display correct text during manual interaction (bnc#435869)
+- fix repeated initializations of suseRegister
+- ask to trust CA certificate of registration server (port from SP2)
+- spec file clean up
+- 2.17.5
+
+-------------------------------------------------------------------
+Thu Oct 16 13:12:43 CEST 2008 - jdsn@suse.de
+
+- call to saveLastZmdConfig added (bnc#435696)
+- removed installing the certificate to zmd (bnc#435631)
+- add credetials information to services url (bnc#435645)
+- fix xulrunner dependency (bnc#435872)
+- 2.17.4
+
+-------------------------------------------------------------------
+Tue Oct 14 18:06:33 CEST 2008 - jdsn@suse.de
+
+- check if initialization of SuseRegister succeeds (bnc#435188)
+- initialize the target to prevent repeated key import (bnc#435192)
+- adapting repo changes as well in autoYaST mode
+- 2.17.3 
+
+-------------------------------------------------------------------
+Mon Oct 13 18:38:31 CEST 2008 - jdsn@suse.de
+
+- support repository changes in catalogs (bnc#430896)
+- added mandatory source refreshes
+- 2.17.2
+
+-------------------------------------------------------------------
+Wed Oct  8 23:39:11 CEST 2008 - jdsn@suse.de
+
+- use new suse_register backend (bnc#430896)
+- change registration server in UI
+- 2.17.1
+
+-------------------------------------------------------------------
+Fri Sep 12 14:57:48 CEST 2008 - jdsn@suse.de
+
+- new module for online update configuration (fate#303458)
+- simplifying/cleaning up sw management (fate#303458) 
+- 2.17.0
+
+-------------------------------------------------------------------
+Tue Jul  1 16:02:14 CEST 2008 - jdsn@suse.de
+
+- removed unused GetInstArgs call
+
+-------------------------------------------------------------------
+Fri May 30 08:02:51 CEST 2008 - lslezak@suse.cz
+
+- initialize the target to read the GPG keys (bnc#394662)
+- 2.16.7
+
+-------------------------------------------------------------------
+Thu May 29 17:33:18 CEST 2008 - locilka@suse.cz
+
+- Lslezak's patch for inst_suse_register to save all sources but
+  not to disable them (bnc #395333).
+- 2.16.6
+
+-------------------------------------------------------------------
+Thu May 29 14:26:25 CEST 2008 - jdsn@suse.de
+
+- call Pkg::SourceRestore before adding new source (bnc#395333)
+- 2.16.5
+
+-------------------------------------------------------------------
+Tue May 27 18:10:13 CEST 2008 - jdsn@suse.de
+
+- handling cancel event in info window (bnc#217249)
+
+-------------------------------------------------------------------
+Mon May 26 17:05:32 CEST 2008 - jdsn@suse.de
+
+- fix preselected checkboxes (bnc#390367)
+- create repositories with proper umask (bnc#392072)
+- 2.16.4
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Fri May  9 14:35:19 CEST 2008 - jdsn@suse.de
+
+- removed online update from piwo (bnc#386633)
+- adapted version compatibility flag of yastbrowser (bnc#383660)
+- 2.16.3 
+
+-------------------------------------------------------------------
+Fri Apr 25 15:59:18 CEST 2008 - jdsn@suse.de
+
+- show error output behind details button on error 101 (bnc#308117) 
+
+-------------------------------------------------------------------
+Fri Apr 25 14:21:22 CEST 2008 - jdsn@suse.de
+
+- adding alternative strings using repository instead of source 
+
+-------------------------------------------------------------------
+Tue Apr 24 17:15:09 CEST 2008 - jdsn@suse.de
+
+- fixed SMT autoyast bug (bnc#377929)
+- integrated SMT renaming (bnc#376000)
+- removed dependencies to limal for SMT support (bnc#380060)
+- cleaned gui layout
+- initial release of postinstallation workflow (piwo) (fate#303359)
+- 2.16.2 
+
+-------------------------------------------------------------------
+Tue Apr  1 21:09:48 CEST 2008 - jdsn@suse.de
+
+- proper pluralization in autoYaST (bnc#184893) 
+
+-------------------------------------------------------------------
+Mon Mar 17 12:43:32 CET 2008 - jsrain@suse.cz
+
+- added 'StartupNotify=true' to the desktop file (bnc #304964)
+
+-------------------------------------------------------------------
+Wed Mar  5 20:56:16 CET 2008 - jdsn@suse.de
+
+- added support for SMT (registration proxy)
+- 2.16.1 
+
+-------------------------------------------------------------------
+Fri Nov  2 16:53:01 CET 2007 - locilka@suse.cz
+
+- Removed dependency on yast2-network, Internet YCP module has been
+  moved to yast2.rpm.
+- 2.16.0
+
+-------------------------------------------------------------------
+Fri Sep  7 16:37:41 CEST 2007 - jdsn@suse.de
+
+- importing PackageCallbacks (#307764)
+- 2.15.3 
+
+-------------------------------------------------------------------
+Sat Sep  1 08:34:49 CEST 2007 - jdsn@suse.de
+
+- adapted source management changes (#304310)
+- wrapping of detailled error messages (#239570)
+- 2.15.2 
+
+-------------------------------------------------------------------
+Tue Aug 21 21:42:33 CEST 2007 - jdsn@suse.de
+
+- handling sysconfig file with fillup (#300064)
+- code cleanup - nonroot user not supported
+- 2.15.1
+
+-------------------------------------------------------------------
+Fri Aug  3 20:13:19 CEST 2007 - jdsn@suse.de
+
+- new version
+- 2.15.0 
+
+-------------------------------------------------------------------
+Tue Jul 17 20:44:16 CEST 2007 - jdsn@suse.de
+
+- made multiline texts gettext compatible (#230388)
+- reactivated skip button in case of error (#240174)
+- ensure that Sources are initialized on startup (#270899)
+- 2.14.6 
+
+-------------------------------------------------------------------
+Fri May 25 12:51:16 CEST 2007 - jsrain@suse.cz
+
+- removed X-SuSE-translate in order to build
+- 2.14.5
+
+-------------------------------------------------------------------
+Mon Apr  2 17:09:52 CEST 2007 - jdsn@suse.de
+
+- fixed category in desktop files (#259914)
+- 2.14.4 
+
+-------------------------------------------------------------------
+Mon Mar 19 17:53:01 CET 2007 - jdsn@suse.de
+
+- improved dependecies in spec file (#253975)
+- 2.14.3 
+
+-------------------------------------------------------------------
+Tue Nov 21 21:49:45 CET 2006 - jdsn@suse.de
+
+- added autoyast schema file (#219408)
+- 2.14.2
+
+-------------------------------------------------------------------
+Fri Nov 17 18:00:55 CET 2006 - jdsn@suse.de
+
+- yastbrowser update, support for mozilla-xulrunner181 (#219354)
+- removed dependencies to rug and zmd for openSUSE (#220807)
+- hard dependencies to rug and zmd for SLE (#220807)
+- check for wrong proxy settings (#208651)
+- removed SuSEregister.pango call (FATE #300947)
+- 2.14.1
+
+-------------------------------------------------------------------
+Mon Nov 13 16:45:50 CET 2006 - jsrain@suse.cz
+
+- 2.14.0
+
+-------------------------------------------------------------------
+Thu Nov  9 14:43:24 CET 2006 - jsrain@suse.cz
+
+- fixed textdomain (#219378)
+- 2.13.4
+
+-------------------------------------------------------------------
+Tue Oct 31 21:57:57 CET 2006 - jdsn@suse.de
+
+- using own icon in installation workflow (#211552)
+- check for rug and zmd to be installed (#191135)
+- show message if no product to be registered (#191258)
+- avoid missing file error in log (#211899)
+- do not log sensitive data from autoyast (#195624)
+- renamed the _not_ missing file (inst_)suse_register.ycp
+- 2.13.3
+
+-------------------------------------------------------------------
+Wed Oct  4 09:14:50 CEST 2006 - jsrain@suse.cz
+
+- added missing inst_suse_register.ycp
+- 2.13.2
+
+-------------------------------------------------------------------
+Mon Oct  2 11:07:40 CEST 2006 - locilka@suse.cz
+
+- Added missing yast2-packager into BuildRequires
+- 2.13.1
+
+-------------------------------------------------------------------
+Sat Aug 26 20:20:49 2006 - jdsn@suse.de
+
+- initial version
+- split off registration from installation (#203551)
+- fixed desktop files (#165891)
+- fixed proxy bug under Gnome (#207332)

@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:06 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Mon Apr 23 09:10:51 UTC 2012 - pgajdos@suse.com
+
+- remove Vendor: tag
+
+-------------------------------------------------------------------
+Thu Apr 19 11:51:15 UTC 2012 - pgajdos@suse.com
+
+- License OFL-1.1
+
+-------------------------------------------------------------------
+Thu Apr 19 11:44:54 UTC 2012 - pgajdos@suse.com
+
+- package OFL.txt
+
+-------------------------------------------------------------------
+Sat Feb  4 14:50:10 UTC 2012 - toms@opensuse.org
+
+- Added small caps variant
+
+-------------------------------------------------------------------
+Sat Jan 28 20:24:11 UTC 2012 - toms@opensuse.org
+
+- Initial release 1.003 from googlefontdirectory
+

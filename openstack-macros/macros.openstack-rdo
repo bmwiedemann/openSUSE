@@ -1,0 +1,166 @@
+# RDO macros
+
+# Create given user with given group (to be used as %pre scriptlet for
+# openstack related daemons). Also migrates away from openstack- prefixed
+# users/group if it exists
+# Optional:
+#   -u userid to pick
+#   -g groupid to pick
+#   -s shell to pick
+# Example: openstack_pre_user_group_create keystone keystone
+%openstack_pre_user_group_create(u:g:s:) \
+    getent group %2 >/dev/null || { \
+        groupadd -r %2 $oldg \
+    } \
+    getent passwd %1 >/dev/null || { \
+        useradd -r -g %2 %{-u:-u %{-u*}} -d %{_sharedstatedir}/%1 %{-s:-s %{-s*}}%{!-s: -s /sbin/nologin} -c "OpenStack %1 Daemon" %1 \
+    } \
+%nil
+
+
+%py_req_cleanup() \
+sed -i 's/^warning-is-error.*/warning-is-error = 0/g' setup.cfg \
+rm -rf *requirements.txt \
+%nil
+
+# Create a fake tempest plugin entry point which will
+# resides under %{python2_sitelib}/%{service}_tests.egg-info.
+# The prefix is %py2_entrypoint %{modulename} %{service}
+# where service is the name of the openstack-service or the modulename
+# It should used under %install section
+# the generated %{python2_sitelib}/%{service}_tests.egg-info
+# will go under %files section of tempest plugin subpackage
+# Example: %py2_entrypoint %{modulename} %{service}
+# In most of the cases %{service} is same as %{modulename}
+# but in case of neutron plugins it is different
+# like servicename is neutron-lbaas and modulename is neutron_lbass
+%py2_entrypoint() \
+egg_path=%{buildroot}%{python2_sitelib}/%{1}-*.egg-info \
+tempest_egg_path=%{buildroot}%{python2_sitelib}/%{1}_tests.egg-info \
+mkdir $tempest_egg_path \
+echo %{1} >$tempest_egg_path/top_level.txt \
+grep "tempest\\|Tempest" %{1}.egg-info/entry_points.txt >$tempest_egg_path/entry_points.txt \
+sed -i "/tempest\\|Tempest/d" $egg_path/entry_points.txt \
+cp -r $egg_path/PKG-INFO $tempest_egg_path \
+sed -i "s/%{2}/%{1}_tests/g" $tempest_egg_path/PKG-INFO \
+%nil
+
+
+# compat macros with Fedora
+%python_provide() %{lua:\
+        function string.starts(String,Start)\
+                return string.sub(String,1,string.len(Start))==Start\
+        end\
+        str = rpm.expand("%{?1:%{1}}");\
+        vr = rpm.expand("%{?epoch:%{epoch}:}%{version}-%{release}")
+        if (string.starts(str, "python2-")) then\
+                print("Provides: python-");\
+                print(string.sub(str,9,string.len(str)));\
+                print(" = ");\
+                print(vr);\
+                --Obsoleting the previous default python package\
+                print("\\nObsoletes: python-");\
+                print(string.sub(str,9,string.len(str)));\
+                print(" < ");\
+                print(vr);\
+        elseif (string.starts(str, "python3-")) then\
+                --No unversioned provides as python3 is not default\
+        elseif (string.starts(str, "pypy-")) then\
+                --No unversioned provides as pypy is not default\
+        elseif (string.starts(str, "pypy3-")) then\
+                --No unversioned provides as pypy is not default\
+        elseif (string.starts(str, "python-")) then\
+                --Providing the current default python\
+                print("Provides: python2-");\
+                print(string.sub(str,8,string.len(str)));\
+                print(" = ");\
+                print(vr);\
+        else\
+                print("ERROR: ");\
+                print(str);\
+                print("not recognized.");\
+        end\
+}
+
+#
+# Missing systemd macros in EL7 (taken from systemd under GPL 2.1+)
+#
+%sysctl_apply() \
+/usr/lib/systemd/systemd-sysctl %{?*} >/dev/null 2>&1 || : \
+%{nil}
+
+%binfmt_apply() \
+/usr/lib/systemd/systemd-binfmt %{?*} >/dev/null 2>&1 || : \
+%{nil}
+
+#
+# Apache related macros
+#
+%apache_name httpd
+%apache_site_dir %{_sysconfdir}/%{apache_name}/conf.d/
+%apache_conf_dir %{_sysconfdir}/%{apache_name}/conf.d/
+%apache_user apache
+%apache_group apache
+
+#
+# ext_man is used by the singlespec macro but is not defined on Fedora
+#
+%ext_info .gz
+%ext_man .gz
+
+
+# This macro defines environment variables available during the build
+# Currently sets:
+# - RHEL_ALLOW_PYTHON2_FOR_BUILD=1
+# (enable python2 in RHEL between 7 and 9 buildroot)
+%__openstack_set_env  %{lua:
+rhel_version=tonumber(rpm.expand("0%{?rhel}"))
+if rhel_version > 7 then posix.setenv("RHEL_ALLOW_PYTHON2_FOR_BUILD",1) end
+}
+
+# Compatibility with fedora in CentOS7
+
+# Macro to replace overly complicated references to PyPI source files.
+# Expands to the pythonhosted URL for a package
+# Accepts zero to three arguments:
+# 1:  The PyPI project name, defaulting to %srcname if it is defined, then
+#     %pypi_name if it is defined, then just %name.
+# 2:  The PYPI version, defaulting to %version.
+# 3:  The file extension, defaulting to "tar.gz".  (A period will be added
+#     automatically.)
+# Requires %__pypi_url and %__pypi_default_extension to be defined.
+%__pypi_url https://files.pythonhosted.org/packages/source/
+%__pypi_default_extension tar.gz
+
+%pypi_source() %{lua:
+    local src = rpm.expand('%1')
+    local ver = rpm.expand('%2')
+    local ext = rpm.expand('%3')
+    local url = rpm.expand('%__pypi_url')
+\
+    -- If no first argument, try %srcname, then %pypi_name, then %name
+    -- Note that rpm leaves macros unchanged if they are not defined.
+    if src == '%1' then
+        src = rpm.expand('%srcname')
+    end
+    if src == '%srcname' then
+        src = rpm.expand('%pypi_name')
+    end
+    if src == '%pypi_name' then
+        src = rpm.expand('%name')
+    end
+\
+    -- If no second argument, use %version
+    if ver == '%2' then
+        ver = rpm.expand('%version')
+    end
+\
+    -- If no third argument, use the preset default extension
+    if ext == '%3' then
+        ext = rpm.expand('%__pypi_default_extension')
+    end
+\
+    local first = string.sub(src, 1, 1)
+\
+    print(url .. first .. '/' .. src .. '/' .. src .. '-' .. ver .. '.' .. ext)
+}

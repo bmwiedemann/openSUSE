@@ -1,0 +1,94 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2011-10-18 02:57:32.146273571 +0200
+Upstream: tbd
+PreReq: ln -s mpfr fparser
+
+---
+ Makefile.am       |   20 +++++++++++++++++++-
+ configure.ac      |    9 ++++++++-
+ fparser_gmpint.hh |    2 +-
+ fparser_mpfr.hh   |    2 +-
+ 4 files changed, 29 insertions(+), 4 deletions(-)
+
+Index: fparser4.5.2/Makefile.am
+===================================================================
+--- fparser4.5.2.orig/Makefile.am
++++ fparser4.5.2/Makefile.am
+@@ -1,11 +1,29 @@
+ # -*- Makefile -*-
+ 
++AM_CPPFLAGS = ${my_CPPFLAGS}
++
++include_HEADERS = fparser.hh
++pkginclude_HEADERS =
++
+ lib_LTLIBRARIES = libfparser.la
+ 
+ libfparser_la_SOURCES = fparser.cc fpoptimizer.cc
+ libfparser_la_LDFLAGS = -release ${PACKAGE_VERSION}
++libfparser_la_LIBADD =
+ 
+-include_HEADERS = fparser.hh
++if HAVE_GMP
++libfparser_la_SOURCES += mpfr/GmpInt.cc
++libfparser_la_LIBADD += -lgmp
++include_HEADERS += fparser_gmpint.hh
++pkginclude_HEADERS += mpfr/GmpInt.hh
++endif
++
++if HAVE_MPFR
++libfparser_la_SOURCES += mpfr/MpfrFloat.cc
++libfparser_la_LIBADD += -lmpfr
++include_HEADERS += fparser_mpfr.hh
++pkginclude_HEADERS = mpfr/MpfrFloat.hh
++endif
+ 
+ pkgconfigdir = ${libdir}/pkgconfig
+ pkgconfig_DATA = fparser.pc
+Index: fparser4.5.2/configure.ac
+===================================================================
+--- fparser4.5.2.orig/configure.ac
++++ fparser4.5.2/configure.ac
+@@ -1,8 +1,15 @@
+ AC_INIT([fparser], [4.5.2])
+ AC_CONFIG_SRCDIR([extrasrc/fpaux.hh])
+-AM_INIT_AUTOMAKE([-Wall foreign])
++AM_INIT_AUTOMAKE([-Wall foreign 1.10])
+ AC_DISABLE_STATIC
+ LT_INIT
+ AC_PROG_CXX
++
++AC_CHECK_HEADERS([gmp.h], [have_gmp=1; my_CPPFLAGS="$my_CPPFLAGS -DFP_SUPPORT_GMP_INT_TYPE"])
++AC_CHECK_HEADERS([mpfr.h], [have_mpfr=1; my_CPPFLAGS="$my_CPPFLAGS -DFP_SUPPORT_MPFR_FLOAT_TYPE"])
++AM_CONDITIONAL([HAVE_GMP], [test "$have_gmp" = 1])
++AM_CONDITIONAL([HAVE_MPFR], [test "$have_mpfr" = 1])
++AC_SUBST([my_CPPFLAGS])
++
+ AC_CONFIG_FILES([Makefile fparser.pc])
+ AC_OUTPUT
+Index: fparser4.5.2/fparser_gmpint.hh
+===================================================================
+--- fparser4.5.2.orig/fparser_gmpint.hh
++++ fparser4.5.2/fparser_gmpint.hh
+@@ -8,7 +8,7 @@
+ #define ONCE_FPARSER_GMPINT_H_
+ 
+ #include "fparser.hh"
+-#include "mpfr/GmpInt.hh"
++#include "fparser/GmpInt.hh"
+ 
+ class FunctionParser_gmpint: public FunctionParserBase<GmpInt> {};
+ 
+Index: fparser4.5.2/fparser_mpfr.hh
+===================================================================
+--- fparser4.5.2.orig/fparser_mpfr.hh
++++ fparser4.5.2/fparser_mpfr.hh
+@@ -8,7 +8,7 @@
+ #define ONCE_FPARSER_MPFR_H_
+ 
+ #include "fparser.hh"
+-#include "mpfr/MpfrFloat.hh"
++#include "fparser/MpfrFloat.hh"
+ 
+ class FunctionParser_mpfr: public FunctionParserBase<MpfrFloat> {};
+ 

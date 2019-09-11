@@ -1,0 +1,11 @@
+--- doc/Doxyfile.orig	2013-08-13 22:05:17.574000023 +0300
++++ doc/Doxyfile	2013-08-13 22:05:17.578000023 +0300
+@@ -989,7 +989,7 @@
+ # page will contain the date and time when the page was generated. Setting
+ # this to NO can help when comparing the output of multiple runs.
+ 
+-HTML_TIMESTAMP         = YES
++HTML_TIMESTAMP         = NO
+ 
+ # If the HTML_DYNAMIC_SECTIONS tag is set to YES then the generated HTML
+ # documentation will contain sections that can be hidden and shown after the

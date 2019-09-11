@@ -1,0 +1,68 @@
+From: Alexey Svistunov <svalx@svalx.net>
+Date:  2017-02-17 16:07:00 +0300
+Subject: open device with O_NONBLOCK option
+References: https://savannah.gnu.org/patch/?9263, bnc#94449 
+Upstream: submitted
+
+When running the 2.6 kernel, "mt -f /dev/nst0 status" blocks if there is
+no media in the drive.  The same occurs for other commands.
+
+When running the 2.4.24 kernel, "mt -f /dev/nst0 status" does not block
+when there is no tape in the drive.
+
+This behavior change is documented for the 2.6 kernel (see
+kernel-source-2.6.3/Documentation/scsi/st.txt for the full doc):
+
+If the open option O_NONBLOCK is used, open succeeds even if the
+drive is not ready. If O_NONBLOCK is not used, the driver waits for
+the drive to become ready. If this does not happen in ST_BLOCK_SECONDS
+seconds, open fails with the errno value EIO. With O_NONBLOCK the
+device can be opened for writing even if there is a write protected
+tape in the drive (commands trying to write something return error if
+attempted).
+
+It appears that the use of O_NONBLOCK is safe with pre-2.6 kernels.
+Suggest adding the use of O_NONBLOCK when opening the device.  As it is,
+for long-running commands such as "fsf", one cannot tell if the command is
+progressing or if it's blocking waiting for media.
+
+Index: src/mt.c
+===================================================================
+--- src/mt.c.orig
++++ src/mt.c
+@@ -333,11 +333,11 @@
+ #ifdef MTERASE
+     case MTERASE:
+ #endif
+-      tapedesc = rmtopen (tapedev, O_WRONLY, 0, rsh_command_option);
++      tapedesc = rmtopen (tapedev, O_WRONLY | O_NONBLOCK, 0, rsh_command_option);
+       break;
+ 
+     default:
+-      tapedesc = rmtopen (tapedev, O_RDONLY, 0, rsh_command_option);
++      tapedesc = rmtopen (tapedev, O_RDONLY | O_NONBLOCK, 0, rsh_command_option);
+     }
+   
+   if (tapedesc == -1)
+Index: src/util.c
+===================================================================
+--- src/util.c.orig
++++ src/util.c
+@@ -814,14 +814,14 @@
+   copy_in = process_copy_in;
+ 
+   if (copy_function == copy_in)
+-    fd = rmtopen (file, O_RDONLY | O_BINARY, MODE_RW, rsh_command_option);
++    fd = rmtopen (file, O_RDONLY | O_BINARY | O_NONBLOCK, MODE_RW, rsh_command_option);
+   else
+     {
+       if (!append_flag)
+-	fd = rmtopen (file, O_WRONLY | O_CREAT | O_TRUNC | O_BINARY, MODE_RW,
++	fd = rmtopen (file, O_WRONLY | O_CREAT | O_TRUNC | O_BINARY | O_NONBLOCK, MODE_RW,
+ 			rsh_command_option);
+       else
+-	fd = rmtopen (file, O_RDWR | O_BINARY, MODE_RW, rsh_command_option);
++	fd = rmtopen (file, O_RDWR | O_BINARY | O_NONBLOCK, MODE_RW, rsh_command_option);
+     }
+ 
+   return fd;

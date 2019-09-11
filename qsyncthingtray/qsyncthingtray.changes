@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Tue Jun 12 11:12:00 UTC 2018 - sor.alexei@meowr.ru
+
+- Add qsyncthingtray-fix-qt-cmake.patch: Fix Qt 5.11 CMake
+  compatibility.
+
+-------------------------------------------------------------------
+Fri Jul  7 18:00:35 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.5.8:
+  * Better handling of file paths.
+  * Fix the inotify path forgetting issue.
+- Remove qsyncthingtray-0.5.7-fix-syncthing-launch.patch.
+
+-------------------------------------------------------------------
+Sat Jun 24 15:55:41 UTC 2017 - bwiedemann@suse.com
+
+- Use convert -strip to not add timestamps to png files
+
+-------------------------------------------------------------------
+Sun Apr 20 10:12:43 UTC 2017 - sor.alexei@meowr.ru
+
+- Initial package.

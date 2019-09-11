@@ -1,0 +1,21 @@
+---
+ mpn/m4-ccas |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+Index: mpir-2.6.0/mpn/m4-ccas
+===================================================================
+--- mpir-2.6.0.orig/mpn/m4-ccas
++++ mpir-2.6.0/mpn/m4-ccas
+@@ -88,8 +88,11 @@ if test $SEEN_O = no; then
+   CC="$CC -o $BASENAME.o"
+ fi
+ 
++echo '.section .note.GNU-stack,"",@progbits' > $TMP
++echo '.previous' >> $TMP
++
+ echo "$M4 $DEFS $ASM >$TMP"
+-$M4 $DEFS $ASM >$TMP || exit
++$M4 $DEFS $ASM >>$TMP || exit
+ 
+ echo "$CC"
+ $CC || exit

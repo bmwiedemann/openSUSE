@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Wed May 28 05:29:26 UTC 2014 - crrodriguez@opensuse.org
+
+- disable doxyegn timestamps that break build-compare.
+
+-------------------------------------------------------------------
+Fri Mar 22 22:31:48 UTC 2013 - asterios.dramis@gmail.com
+
+- Added a patch "automake-1.13.patch" to fix build with automake 1.13.
+
+-------------------------------------------------------------------
+Tue Nov 20 15:08:44 UTC 2012 - nico.kruber@gmail.com
+
+- Fix the SLES build (%make_install is not expanded on SLES)
+
+-------------------------------------------------------------------
+Sat Sep 22 18:15:21 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 0.15.0:
+  * Bugfix release.
+- Regenerate build system because of errors about libtool during compilation
+  (added libtool build requirement for this).
+- Compile developer documentation (added doxygen build requirement for this).
+
+-------------------------------------------------------------------
+Wed Aug 31 21:11:34 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 0.14.0:
+  * Various bugfixes.
+- Spec file updates:
+  * Changed License: to LGPL-2.0+.
+  * Minor other updates.
+
+-------------------------------------------------------------------
+Fri May 20 19:48:21 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 0.13.0:
+  * Added heliocentric time corrections calculations.
+  * Various bugfixes.
+  * Sun/Solaris support fixes.
+  From 0.12.3:
+  * MS Windows support fixes.
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Changed License: to LGPLv2+.
+  * Updates in Summary: and Group entries.
+  * Removed %changelog entries.
+  * Minor other updates.
+- Removed libnova-0.12.2-optflags.patch and replaced it with a fix inside the
+  spec file.
+
+-------------------------------------------------------------------
+Tue May 19 21:28:49 CEST 2009 - dmueller@suse.de
+
+- fix debuginfo package requires
+
+-------------------------------------------------------------------
+Wed Mar 11 20:41:38 CET 2009 - crrodriguez@suse.de
+
+-  remove static libraries an "la" files
+- fix devel package dependencies
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Tue Jan  6 23:22:08 CET 2009 - dmueller@suse.de
+
+- Initial version (0.12.2)
+

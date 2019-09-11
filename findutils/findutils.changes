@@ -1,0 +1,1006 @@
+-------------------------------------------------------------------
+Thu Jun 20 09:45:24 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add disable-broken-tests.patch in order to remove broken
+  tests (boo#1138800).
+
+-------------------------------------------------------------------
+Wed Aug  1 14:09:38 UTC 2018 - schwab@suse.de
+
+- gnulib-libio.patch: Update gnulib for libio.h removal
+- sysmacros.patch: Include <sys/sysmacros.h> for makedev
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:31 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Tue May 31 00:01:05 UTC 2016 - mail@bernhard-voelker.de
+
+- sv-bug-48030-find-exec-plus-does-not-pass-all-arguments.patch:
+  Add upstream patch to fix https://savannah.gnu.org/bugs/?48030
+
+-------------------------------------------------------------------
+Mon Jan 11 22:25:09 UTC 2016 - mail@bernhard-voelker.de
+
+- Upgrade to 4.6.0
+    stable release, removing 'oldfind'.
+- Delete now-upstream patches: findutils-gnulib-ppc64le.patch,
+    gnulib-perl522.patch
+- Refresh patch: findutils-4.4.2-xautofs.patch
+
+-------------------------------------------------------------------
+Sun Dec 20 12:29:05 UTC 2015 - mail@bernhard-voelker.de
+
+- Upgrade to 4.5.15
+- Delete now-upstream patch:
+    findutils-oldfind-fix-dotdot-skipping.patch
+- Refresh patches:
+    findutils-4.4.2-xautofs.patch
+    gnulib-perl522.patch
+
+-------------------------------------------------------------------
+Mon Jul  6 10:19:01 UTC 2015 - coolo@suse.com
+
+- add gnulib-perl522.patch from gnulib upstream
+
+-------------------------------------------------------------------
+Tue Jan  6 16:44:55 UTC 2015 - mail@bernhard-voelker.de
+
+- findutils-oldfind-fix-dotdot-skipping.patch: Add upstream patch
+    to fix 'oldfind' which skipped all files starting with ".."
+    (e.g. "..file").
+- findutils.spec: Add BuildRequires:dejagnu - otherwise only a
+    very limited set of the tests was run by 'make check'.
+
+-------------------------------------------------------------------
+Sun Aug  3 22:56:51 UTC 2014 - mail@bernhard-voelker.de
+
+- Upgrade to 4.5.14
+- Refresh patches:
+    findutils-4.4.2-xautofs.patch
+    findutils-gnulib-ppc64le.patch (using -p0 for consistency)
+- findutils.spec (Version): s/4.5.12/4.5/14
+  (%patch1): Remove -p1.
+  (%configure): Remove --without-included-regex option,
+    as it is the default anyway.
+
+-------------------------------------------------------------------
+Wed Dec 18 19:19:34 UTC 2013 - uweigand@de.ibm.com
+
+- findutils-gnulib-ppc64le.patch: Fix imported gnulib long double
+  math tests for little-endian PowerPC.
+
+-------------------------------------------------------------------
+Thu Dec  5 20:55:16 CET 2013 - pth@suse.de
+
+- Do not build findutils-locate anymore as mlocate obsoletes it
+  since openSUSE 13.1.
+- Remove findutils-4.4.2-updatedb.patch as it's not needed anymore.
+- Remove cron.daily.updatedb and sysconfig.locate as they aren't
+  needed anymore.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:47:17 CEST 2013 - pth@suse.de
+
+- Fix spelling of the btrfs snapshot directory (bnc#847240).
+
+-------------------------------------------------------------------
+Thu Sep 26 15:45:16 UTC 2013 - schwab@suse.de
+
+- Conditionalize the qemu arg size workaround on %qemu_user_space_build
+
+-------------------------------------------------------------------
+Mon Sep 23 23:17:08 UTC 2013 - mail@bernhard-voelker.de
+
+- Remove patches:
+  - findutils-4.5.10-use_proc_mounts.patch:
+    /etc/mtab is a link to /proc/self/mounts nowadays.
+  - findutils-4.5.10-prune_unknown.patch:
+    merge patch into findutils-4.4.2-updatedb.patch.
+  - findutils-4.5.10-updatedb_ignore_nfsv4.patch:
+    fixed upstream.
+  - findutils-stdio.in.patch:
+    fixed upstream (in included gnulib).
+  - findutils-init_stat_buf.patch:
+    fixed upstream.
+
+- Refresh other patches:
+  - findutils-4.4.2-updatedb.patch:
+    refresh with changes from the above, removed patch.
+  - findutils-4.4.2-xautofs.patch:
+    refresh, and added -xautofs in find's usage text.
+
+- Adapt findutils.spec:
+  - Version bump.
+  - Remove above removed patches.
+  - Add BuildRequires for makeinfo.
+  - configure call: remove --enable-d_type-optimization
+    option because turned on by default since 4.2.15.
+  - Do not remove oldfind's man page in %install.
+  - Add oldfind's binary and man page in %files.
+
+- Update to 4.5.12
+  See /usr/share/doc/packages/findutils/NEWS,
+  section "Major changes in release 4.5.12, 2013-09-22"
+
+- Update to 4.5.11 (2013-02-02)
+  See /usr/share/doc/packages/findutils/NEWS,
+  section "Major changes in release 4.5.11, 2013-02-02"
+
+-------------------------------------------------------------------
+Tue Apr 23 12:24:12 CEST 2013 - pth@suse.de
+
+- Add /var/run/media to UPDATEDB_PRUNEPATHS in sysconfig.locate
+  so that updatedb doesn't index removable media (bnc#807170).
+
+-------------------------------------------------------------------
+Tue Mar 26 13:29:42 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Feb  6 16:48:10 UTC 2013 - schwab@suse.de
+
+- Remove useless findutils-automake-1.12.patch
+
+-------------------------------------------------------------------
+Wed Dec  5 11:43:21 CET 2012 - pth@suse.de
+
+- Fix typo in findutils-4.5.10-updatedb_ignore_nfsv4.patch that
+  lead to nfs4 directories being searched again (bnc#792323).
+- Enable FTS based search.
+- Replace $RPM_BUILD_ROOT by %%buildroot in specfile.
+
+-------------------------------------------------------------------
+Thu Nov 15 13:32:47 CET 2012 - pth@suse.de
+
+- Initialize stat_buf in find.c(process_path) so that find by inum
+  works (bnc#780928 http://savannah.gnu.org/bugs/?37683)
+  findutils-init_stat_buf.patch.
+- Exclude /.snapshot from updatedb's indexing (bnc#780918)
+  No patch, change was done in the sysconfig file of this package.
+- Rename automake-1.12.patch to findutils-automake-1.12.patch
+
+-------------------------------------------------------------------
+Thu Jul 26 07:24:20 UTC 2012 - aj@suse.de
+
+- Fix build with missing gets declaration (glibc 2.16)
+
+-------------------------------------------------------------------
+Wed May 30 17:13:20 UTC 2012 - sweet_f_a@gmx.de
+
+- remove useless automake dependency, it was needed for selinux.patch
+  which has been removed since findutils 4.5.10
+
+-------------------------------------------------------------------
+Tue May 29 11:29:27 UTC 2012 - puzel@suse.com
+
+- fix build with automake-1.12
+ - add: automake-1.12.patch
+
+-------------------------------------------------------------------
+Mon Feb 13 14:19:23 CET 2012 - pth@suse.de
+
+- Fix updatedb to work again (bnc#746610).
+
+-------------------------------------------------------------------
+Sat Feb  4 23:27:05 UTC 2012 - rschweikert@suse.com
+
+- keep binary in /usr tree (UsrMerge project)
+
+-------------------------------------------------------------------
+Tue Jan 17 02:40:55 UTC 2012 - tabraham@novell.com
+
+- removed patches deprecated by this release
+  - findutils-4.4.2-selinux.patch
+  - findutils-4.4.2-selinux-gnulib.patch
+  - findutils-4.4.2-fts-remount.patch
+- refreshed other patches as required
+
+- Update to 4.5.10
+  + doc: The manual now includes a small number of references to 
+   further reading on security.
+  + fixed bug #30608: Automagic dependency on selinux. The configure 
+    script now provides a --without-selinux option.
+  + fixed bug #29949: find -execdir does not change working directory
+  + fixed bug #31359: test-strstr unit test fails on alpha.
+  + fixed bug #30777: find -exec echo TURNIP{} \+ is accepted but 
+    TURNIP is eaten
+  + fixed bug #30180: error message from incorrect -size option is off
+  + fixed bug #29828: test suite deadlock on FreeBSD
+  + updated translations - Finnish, Italian, Danish, Slovenian,
+    German, Estonian, French, Japanese and Danish
+
+- Update to 4.5.9
+  + fixed bug #29593: Make import-gnulib.sh work under a POSIX shell.
+  + fixed bug #29511: fails to build on kfreebsd-*
+  + fixed bug #27563: -L breaks -execdir
+  + fixed bug #19593: -execdir .... {} + has suboptimal performance 
+    (see below)
+  + updated translation - Chinese (simplified)
+  + The find program will once again build argument lists longer 
+    than 1 with "-execdir ...+".  The upper limit of 1 argument for 
+    execdir was introduced as a workaround in findutils-4.3.4. The 
+    limit is now removed, but find still does not issue the maximum 
+    possible number of arguments, since an exec will occur each time 
+    find encounters a subdirectory (if at least one argument is 
+    pending).
+  + You can now increase the parallelism of xargs in mid-run by 
+    sending it SIGUSR1, and decrease the parallelism with SIGUSR2.
+
+- Update to 4.5.8
+  + fixed bug #29460: -printf %Y fails in $CWD-dependent way
+  + fixed bug #27974: Use gnulib's xreadlinkat support
+  + fixed bug #29435: fd_is_cloexec does not work on Fedora buildhosts
+  + fixed bug #27221: symlink_loop check broken by FTS_CWDFD
+  + fixed bug #27213: avoid failed assertions for non-executable 
+    directories.
+  + updated translations - Vietnamese, Czech, Dutch, Polish, Russian
+
+- Update to 4.5.7
+  + If you use the -fstype FOO predicate and specify a filsystem 
+    type FOO which is not known (e.g. present in /etc/mtab) at the 
+    time find starts, that predicate is now equivalent to -false. 
+    This substitution currently occurs at optimisation level 2 and 
+    above.
+
+- Update to 4.5.6
+  + patch #4848 - support for SELinux
+  + fixed bug #29089 - SELinux --context and %Z options
+  + fixed bug #28872: Mistake in "#safer" example in "Problems with 
+    -exec and filenames" section of the Texinfo manual.
+  + fixed bug #28824: Corrected error message for "-ctime x".
+    Likewise for -gid, -inum, -links, -mmin, -cmin, -amin,
+    -uid, -used, -atime, -mtime, -ctime.
+  + fixed bug #27975: Infinite loop for -exec [..] {} +.
+  + fixed bug #27846: Assertion failure in xargs.c on AIX.
+  + fixed bug #27375: Open file descriptors leak into child processes.
+  + fixed bug #27017: find -D opt / -fstype ext3 -print , -quit coredumps
+  + fixed bug #27328: segfault if the initial exec for "find -exec" fails.
+  + fixed bug #26868: compilation error in pred.c on Solaris x86_64
+  + fixed bug #24873: Duplicate fprint option corrupts output
+  + fixed bug #23920: warn about un-matchable -path arguments ending in /.
+  + fixed bug #19120: Patch to fix single quotes in man page find(1)
+  + fixed bug #26327: xargs man page is vague about the number of times 
+    command is executed.
+
+- Update to 4.5.5
+  + xargs now handles the case where the system's actual exec limits
+    are smaller than the value of ARG_MAX at compile time. Very few
+    platforms normally have this property, but it is possible to
+    configure sume Unix systems this way.
+  + fixed bug #25359 - files/testsuite/find.gnu/posix-h.exp test fail
+  + fixed bug #26587 - fix a typo in -execdir documentation (it says
+    -exec by mistake in the text)
+  + fixed bug #26537 - find -prune now makes sure it has valid stat()
+    information
+  + fixed bug #22708 - exit status 126 and 127 from the utility invoked
+    from xargs now makes xargs return 123, meaning that exit status
+    values 126 and 127 not unambiguously mean that the utility could
+    not be run or could not be found, respectively.
+  + doc: the -wholename option to find is no longer preferred over
+    -ipath
+
+- Update to 4.5.4
+  + The ftsfind executable (which is built by default as "find") now
+    calls fts() in such a way that it avoids calling stat() on directory
+    entries, if it doesn't need the information. This can produce a
+    significant speedup on filesystems which don't populate the d_type
+    element of struct dirent, for example reiserfs. Anecdotal evidence
+    suggests this can speed updatedb up from about 30 minutes to 3-4
+    minutes.
+  + The ftsfind executable also now avoids calling stat() functions to
+    discover the inode number of a file, if we already read this
+    information from the directory. This does provide a speed-up, but
+    only for a restricted set of commands such as "find . -inum 4001".
+    This fix is listed below as bug #24342
+  + fixed bug #25764 - remove duplicate entry for 'proc' in updatedb's 
+    $PRUNEFS
+  + fixed bug #25359 - find -H wrongly behaves like -L sometimes; this
+    bug affects only filesystems which populate d_type and affects
+    -type and -printf %y. This does not affect the default behavior of
+    find or find -P
+  + fixed bug #25144 - misleading error message when argument to
+    find -user is an unknown user or is missing
+  + fixed bug #25154 - allow compilation with C compilers that don't
+    allow declarations to follow statements
+  + fixed bug #24342 - -inum predicate should use dirent.d_ino instead
+    of stat.st_ino (this is a performance bug)
+  + updated translations - Bulgarian, German, Irish, Hungarian, 
+    Lithuanian, Dutch, Polish, Slovenian, Swedish, Turkish, Ukranian,
+    Vietnamese
+
+- Update to 4.5.3
+  + fixed bug #24283 - find -printf %TY causes NULL pointer dereference
+  + changes to gnulib's fts code should provide performance improvements
+    in find when processing very large directories (for example
+    directories containing significantly more than 10000 filenames).
+    Performance improvements may only exist for some find command
+    lines (performance testing was done for the fts implementation
+    itself but we haven't done the analogous performance tests in find).
+  + file type information is also passed back from fts to find,
+    saving  calls to the stat system call for find command lines
+    which don't need the stat information. This provides a performance
+    improvement for common cases like find "find . -type d".
+
+- Update to 4.5.2
+  + fixed bug #24169 - find would segfault if the -newerXY test was
+    not followed by any argument
+  + fixed bug #23996 - integer overflow on some platforms when
+    parsing "-used 3"
+  + New translation - Czech
+  + Updated translations - French, Indonesian
+  + doc: bug #23070 - corrected manpage description of find -perm /000
+    (the change was already made by the manpage indicated the change
+    would happen "soon")
+
+- Update to 4.5.1
+  + New translation - Lithuanian
+  + Updated translation - Chinese (simplified)
+  + doc: added a working example describing how to find the
+    shallowest instances of a given directoty name (or names) in a
+    directory hierarchy
+  + fixed bug #22662 - find -printf %AX appends nanoseconds in the
+    right place now
+  + fixed bug #23663 - crash in some locales for -print %AX (this
+    problem seems to have affected only the CVS code, and not any
+    public releases)
+
+- Update to 4.5.0
+  + If POSIXLY_CORRECT environment variable is set, the system's
+    definition of "yes" and "no" responses are used to interpret
+    the response to questions from -ok and -okdir. The default is
+    still to use information from the findutils message translations.
+  + If xargs find that exec fails because the argument size limit it
+    calculated is larger than the system's actual maximum, it now
+    adapts by passing fewer arguments (as opposed to failing)
+  + The default optimization level for find is now -O2 instead of
+    -O0 meaning that a number of additional optimizations are
+    performed by default. Current optimizations at each level are:
+
+    0: Perform -name, -path, -iname, -ipath before other checks
+    1: Expressions containing only cost-free tests are evaluated
+       before expressions which contain more costly tests
+    2: Bring forward all tests that need to know the type of a file
+       but don't need to stat it
+    3: All tests are ordered by their estimated cost
+
+    Cost here is simply an estimate of how time consuming the I/O
+    operations needed to make a test are
+  + Various bug fixes (See NEWS)
+
+-------------------------------------------------------------------
+Thu Dec  1 15:47:34 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Fri Apr 29 17:29:58 CEST 2011 - pth@suse.de
+
+- findutils-locate needs find so require findutils.
+
+-------------------------------------------------------------------
+Wed Nov 17 14:11:57 CET 2010 - pth@suse.de
+
+- Really do use /proc/mounts instead of /etc/mtab.
+
+-------------------------------------------------------------------
+Mon Sep 27 06:30:15 UTC 2010 - lnussel@suse.de
+
+- remove nobody wrapper again. It's not needed due to a fix in
+  coreutils that allows su from root to any user without account
+  checks.
+
+-------------------------------------------------------------------
+Mon Aug 23 12:36:49 CEST 2010 - pth@suse.de
+
+- Add NFSv4 to updatedb's prune list, i.e. make it ignore such 
+  file systems.
+
+-------------------------------------------------------------------
+Fri Jul 30 18:53:26 CEST 2010 - werner@suse.de
+
+- Add a simple wrapper for user root to switch over to user nobody
+  for the command ls and find without using su.
+
+-------------------------------------------------------------------
+Thu Apr  1 12:22:10 CEST 2010 - pth@suse.de
+
+- Use /proc/mounts instead of /etc/mtab as in newer kernels autofs
+  entries appear only in the former (bnc#591460)
+- updatedb will by default ignore filesystems where it can't determine the
+  type.
+
+-------------------------------------------------------------------
+Mon Mar  8 18:53:10 CET 2010 - prusnak@suse.cz
+
+- updated to 4.4.2
+  * see NEWS for more info
+- updated SElinux patches (selinux.patch, selinux-gnulib.patch)
+- added more patches from Fedora (autofs.patch, ftsremount.patch, xautofs.patch)
+- findutils.patch renamed to updatedb.patch
+- split-off lang package
+
+-------------------------------------------------------------------
+Fri Jul 10 19:26:16 UTC 2009 - jansimon.moeller@opensuse.org
+
+- Workaround for a qemu-user bug, we hit.
+  A qemu patch is being discussed, but for now ...
+  This is important for the ARM build process to work.
+
+-------------------------------------------------------------------
+Tue Mar 10 16:16:36 CET 2009 - werner@suse.de
+
+- Fix manual page [bnc#466425]
+
+-------------------------------------------------------------------
+Mon Sep  1 10:24:34 CEST 2008 - schwab@suse.de
+
+- Fix last change.
+- Optimize find expressions in updatedb.
+
+-------------------------------------------------------------------
+Mon Aug 25 14:44:40 CEST 2008 - prusnak@suse.cz
+
+- enabled SELinux support [Fate#303662]
+
+-------------------------------------------------------------------
+Mon Aug 11 11:07:15 CEST 2008 - schwab@suse.de
+
+- Fix undefined behaviour.
+
+-------------------------------------------------------------------
+Mon Aug  4 11:19:33 CEST 2008 - schwab@suse.de
+
+- Don't use fts.
+
+-------------------------------------------------------------------
+Tue Mar 18 10:40:04 CET 2008 - schwab@suse.de
+
+- Update to findutils 4.4.0.
+  See NEWS for details.
+
+-------------------------------------------------------------------
+Sun Feb 24 17:24:53 CET 2008 - crrodriguez@suse.de
+
+- use find_lang macro
+
+-------------------------------------------------------------------
+Thu Feb 14 10:33:47 CET 2008 - schwab@suse.de
+
+- Update to findutils 4.2.33.
+  ** Translations
+  The following translations are new:
+      Ukranian
+  The following translations have been updated:
+      Hungarian, Dutch, Slovenian, Swedish, Traditional Chinese,
+      Polish, Irish, Portuguese, Slovak.
+
+-------------------------------------------------------------------
+Fri Jan 25 22:32:40 CET 2008 - schwab@suse.de
+
+- Update to findutils 4.2.32.
+  ** License changes
+  This version of findutils is now distributed under version 3 (or
+  later) of the GNU GPL.   The documentation is distributed under
+  version 1.2 (or later) of the GNU Free Documentation License.
+  ** Documentation Fixes
+  #19596: -printf %b should be compared with %s/512, not %s/1024.
+  ** Bug Fixes
+  #21568: When building from CVS in 4.2.x, we now check gnulib out using git
+  instead of CVS.  This fixes Savannah bug 21568, the problem being that
+  git-cvspserevr does not currently support -D, and the ond CVS server
+  for gnulib has been frozen.
+  #20970: Trailing slash on directory arguments breaks -name.  "find
+  foo/ -name foo" now correctly matches foo and printf foo/.  See POSIX
+  interp http://www.opengroup.org/austin/interps/uploads/40/14959/AI-186.txt
+  #20751: Avoid memory corruption in find -ls that has been present
+  since 4.2.28.
+  #20662: Avoid memory leak in find -name and other places affected by
+  gnulib dirname module.  The leak had been present since 4.2.28.
+  #20310: configure uses hosts's support status for "sort -z" when
+  generating the updatedb script for use on the target.  This is not a
+  reliable strategy when cross-compiling, so assume no support for -z in
+  that situation.
+  #20273: When xargs is successful without consuming all of stdin (for
+  example, with the -E option), and stdin is seekable, xargs now
+  correctly restores the file position, even on platforms where exit()
+  does not follow the POSIX rules of doing likewise.  Likewise for find
+  (for example, with the -ok action).
+  #19660: Fix compilation failure on Cygwin.
+  #15384: Find misbehaves when parent directory is not readable.
+  ** Enhancements
+  #20688: The warning printed by -name or -iname when the pattern to
+  match contains a slash can now be silenced by -nowarn.  This warning
+  was originally introduced unconditionally in 4.2.21.
+
+-------------------------------------------------------------------
+Thu Jul  5 18:34:37 CEST 2007 - schwab@suse.de
+
+- Drop clean core script.
+
+-------------------------------------------------------------------
+Sun Jun  3 19:48:01 CEST 2007 - schwab@suse.de
+
+- Update to findutils 4.2.31.
+  ** Security Fixes
+  #20014: Findutils-4.2.31 includes a patch for a potential security
+  problem in locate.  When locate read an old-format database, it read
+  file names into a fixed-length buffer allocated on the heap without
+  checking for overflow.  Although overflowing a heap buffer if often
+  somewhat safer than overflowing a buffer on the stack, this bug still
+  has potential security implications.
+  All previous releases of findutils are affected by this bug.  It has
+  been assigned CVE number CVE-2007-2452.
+  ** Documentation Fixes
+  #19596: Corrected the documentation for "find -printf %b".
+  #19483: updatedb manpage has inconsistent highlighting for --help
+  option.
+  #19155: Fixed typo in the output of "locate --help".
+  ** Other Bug Fixes
+  #19658: When cross-compiling, "make clean" no longer deletes the
+  generated file doc/regexprops.texi, because there is no way to
+  regenerate it.
+  #19484: Decompressed data is wrong in locate if the first filename
+  indexed by updatedb starts with a space (instead of a slash).
+  ** Other Changes
+  Findutils has switched to a new way of building the code from gnulib.
+  There should be no functional difference; the change should not be
+  visible to those using the findutils binaries, except for changes to
+  the output of "find --version", which should now show the version of
+  Gnulib which was used.
+
+-------------------------------------------------------------------
+Wed Feb 28 19:58:59 CET 2007 - schwab@suse.de
+
+- Update to findutils 4.2.30.
+  ** Bug Fixes
+  Savannah Bug #13252: The test suite now works on platforms where
+  DejaGnu is based on Tcl 8.3 (previously, 8.4 or later was required).
+  Savannah Bug bug #17861: this version should build on Solaris and HPUX
+  once again.
+  Savannah Bug #18433: findutils now compiles if "--enable-debug" was
+  specified as an option to configure.  Previously this caused a
+  compilation failure in find.
+  ** Documentation Fixes
+  Some typos in the Texinfo manual and one typo in in the usage message
+  for xargs have been fixed.
+
+-------------------------------------------------------------------
+Mon Feb 12 13:53:12 CET 2007 - schwab@suse.de
+
+- Fix memleaks.
+
+-------------------------------------------------------------------
+Mon Dec  4 13:22:38 CET 2006 - schwab@suse.de
+
+- Update to findutils 4.2.29.
+  ** Documentation Fixes
+  The global effect of options (other than -daystart and -follow) is now
+  explained more clearly in the manual page.   Savannah bug #15360.
+  ** Bug Fixes
+  #17782: find -execdir now correctly puts the prefix "./" before the
+  expansion of "{}" rather than at the start of the argument it appears
+  in.  Please note that if you use the -exec or -execdir actions with a
+  shell, then you may be vulnerable to shell code injection attacks, so
+  don't do that.  It's not a security defect in find - you should not be
+  passing untrusted data (such as file names chosen by other people) to
+  the shell.
+  #17477: find -printf '%' (that is, where the format has a trailing %)
+  now generates an error message.
+
+-------------------------------------------------------------------
+Mon Nov 20 13:26:15 CET 2006 - schwab@suse.de
+
+- cron.daily.clean_core: robustify even more.
+
+-------------------------------------------------------------------
+Mon Oct 16 13:56:56 CEST 2006 - schwab@suse.de
+
+- cron.daily.clean_core: robustify to avoid matching non-cores [#210987].
+
+-------------------------------------------------------------------
+Mon Aug  7 11:46:08 CEST 2006 - schwab@suse.de
+
+- Update to findutils 4.2.28.
+  ** Bug Fixes
+  Savannah bug #15800: If find finds more subdirectories within a parent
+  directory than it previously expected to based on the link count of
+  the parent, the resulting error message now gives the correct
+  directory name (previously an error message was issued but it
+  specified the wrong directory).
+  Savannah bug #16738: "find .... -exec ... {} +" now works if you have
+  a large environment and many files must be passed to the -exec
+  action.  The same problem affected the -execdir action, though since
+  the number of files in a given directory will normally be smaller, the
+  problem was worse for -exec.
+  Savannah bug #16579: Updatedb now works if it is running as a user
+  whose login shell is not actually a shell.
+  ** Translations
+  The following translations have been updated:
+   Vietnamese, Belarusian, Catalan, Danish, German, Greek, Esperanto,
+   Spanish, Estonian, Finnish, French, Irish, Galician, Croatian, Hungarian,
+   Indonesian, Italian, Japanese, Korean, Luganda, Malay, Dutch, Polish,
+   Portuguese, Brazilian Portuguese, Romanian, Russian, Kinyarwanda,
+   Slovak, Slovenian, Serbian, Swedish, Turkish, Chinese (simplified),
+   Chinese (traditional), Bulgarian
+
+-------------------------------------------------------------------
+Mon Jul 24 16:47:14 CEST 2006 - rguenther@suse.de
+
+- Do not run autoreconf.
+
+-------------------------------------------------------------------
+Mon Jul 24 14:31:33 CEST 2006 - schwab@suse.de
+
+- Add 9P to PRUNEFS [#129339].
+
+-------------------------------------------------------------------
+Fri Jun 30 13:06:55 CEST 2006 - schwab@suse.de
+
+- Add nfs4 to PRUNEFS [#189281].
+
+-------------------------------------------------------------------
+Thu Mar 23 17:42:50 CET 2006 - schwab@suse.de
+
+- Add /sys to UPDATEDB_PRUNEPATHS [#160354].
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:12 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 14:01:33 CET 2006 - schwab@suse.de
+
+- Fix permissions of cron scripts [#138550].
+
+-------------------------------------------------------------------
+Wed Dec  7 13:33:54 CET 2005 - schwab@suse.de
+
+- Update to findutils 4.2.27.
+
+-------------------------------------------------------------------
+Mon Dec  5 16:52:06 CET 2005 - schwab@suse.de
+
+- Drop SELinux support.
+
+-------------------------------------------------------------------
+Tue Nov 22 21:43:47 CET 2005 - schwab@suse.de
+
+- Update to findutils 4.2.26.
+
+-------------------------------------------------------------------
+Wed Oct 19 14:39:21 CEST 2005 - schwab@suse.de
+
+- Add cifs to the default for PRUNEFS [#129339].
+
+-------------------------------------------------------------------
+Wed Oct  5 10:13:09 CEST 2005 - schwab@suse.de
+
+- Cleanup.
+
+-------------------------------------------------------------------
+Sun Sep 25 21:46:24 CEST 2005 - schwab@suse.de
+
+- Fix warnings.
+
+-------------------------------------------------------------------
+Sun Sep  4 16:26:36 CEST 2005 - schwab@suse.de
+
+- Update to findutils 4.2.25.
+
+-------------------------------------------------------------------
+Sun Sep  4 11:26:26 CEST 2005 - schwab@suse.de
+
+- Don't link libselinux statically.
+
+-------------------------------------------------------------------
+Mon Aug  1 14:22:19 CEST 2005 - mmj@suse.de
+
+- Make updatedb run as an idle io process
+
+-------------------------------------------------------------------
+Sun Jun 26 10:47:28 CEST 2005 - schwab@suse.de
+
+- Make regex syntax compatible to previous versions again.
+
+-------------------------------------------------------------------
+Mon Jun 20 13:39:29 CEST 2005 - schwab@suse.de
+
+- Update to findutils 4.2.23.
+
+-------------------------------------------------------------------
+Wed Jun  1 13:47:41 CEST 2005 - schwab@suse.de
+
+- Rename cron scripts.
+
+-------------------------------------------------------------------
+Thu Mar 24 10:48:37 CET 2005 - schwab@suse.de
+
+- Update to findutils 4.2.20.
+
+-------------------------------------------------------------------
+Wed Mar  9 14:26:52 CET 2005 - schwab@suse.de
+
+- Update to findutils 4.2.19 [#71803].
+
+-------------------------------------------------------------------
+Sat Feb 19 16:14:25 CET 2005 - schwab@suse.de
+
+- Update to findutils 4.2.18.
+
+-------------------------------------------------------------------
+Mon Jan 31 12:12:10 CET 2005 - schwab@suse.de
+
+- Update to findutils 4.2.15.
+
+-------------------------------------------------------------------
+Wed Jan 26 10:48:21 CET 2005 - schwab@suse.de
+
+- Update to findutils 4.2.14.
+
+-------------------------------------------------------------------
+Mon Jan 24 14:16:17 CET 2005 - schwab@suse.de
+
+- Update to findutils 4.2.13.
+
+-------------------------------------------------------------------
+Mon Jan 17 16:15:37 CET 2005 - schwab@suse.de
+
+- Fix use of next_element.
+
+-------------------------------------------------------------------
+Wed Jan 12 13:47:24 CET 2005 - schwab@suse.de
+
+- Update to findutils 4.2.11.
+
+-------------------------------------------------------------------
+Mon Nov 22 21:55:40 CET 2004 - schwab@suse.de
+
+- Update to findutils 4.2.7.
+
+-------------------------------------------------------------------
+Mon Nov  1 23:39:47 CET 2004 - schwab@suse.de
+
+- Update to findutils 4.2.3.
+
+-------------------------------------------------------------------
+Tue Oct 26 15:53:04 CEST 2004 - schwab@suse.de
+
+- Update to findutils 4.2.2.
+
+-------------------------------------------------------------------
+Thu Aug  5 15:44:31 CEST 2004 - schwab@suse.de
+
+- Update to findutils 4.1.20.
+
+-------------------------------------------------------------------
+Thu Jul 29 12:04:28 CEST 2004 - schwab@suse.de
+
+- Add patch to support d_type.
+- Add patch to support POSIX xargs options.
+
+-------------------------------------------------------------------
+Mon Mar 15 16:27:21 CET 2004 - kukuk@suse.de
+
+- Adjust for new SELinux version
+
+-------------------------------------------------------------------
+Fri Dec 12 23:14:04 CET 2003 - schwab@suse.de
+
+- Fix file list.
+
+-------------------------------------------------------------------
+Tue Nov 11 20:51:59 CET 2003 - schwab@suse.de
+
+- Terminate xargs help output with a newline.
+
+-------------------------------------------------------------------
+Wed Oct 15 15:05:38 CEST 2003 - schwab@suse.de
+
+- Cleanup selinux patch.
+
+-------------------------------------------------------------------
+Wed Oct 15 01:08:24 CEST 2003 - ro@suse.de
+
+- link libselinux static
+
+-------------------------------------------------------------------
+Tue Oct 14 22:24:38 CEST 2003 - kukuk@suse.de
+
+- Add selinux patch
+- Build not as root
+- Fix permissions in RPM filelist
+
+-------------------------------------------------------------------
+Fri Oct  3 13:23:32 CEST 2003 - kukuk@suse.de
+
+- Remove tetex from neededforbuild
+
+-------------------------------------------------------------------
+Tue May 13 17:42:56 CEST 2003 - schwab@suse.de
+
+- Add %defattr.
+- Fix file list.
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Apr  7 13:11:26 CEST 2003 - schwab@suse.de
+
+- Only delete info entries when removing last version.
+
+-------------------------------------------------------------------
+Thu Mar  6 16:10:59 CET 2003 - schwab@suse.de
+
+- Fix clean_core cron script [#22758]:
+  * use /etc/sysconfig/locate
+  * add proper quoting
+  * use mtime for finding old cores.
+- Fix feedback address.
+
+-------------------------------------------------------------------
+Thu Feb  6 17:48:22 CET 2003 - schwab@suse.de
+
+- Use %install_info.
+
+-------------------------------------------------------------------
+Tue Dec 10 17:12:14 CET 2002 - schwab@suse.de
+
+- Add meta tags to fillup templates.
+
+-------------------------------------------------------------------
+Fri Aug  9 18:51:56 CEST 2002 - bk@suse.de
+
+- findutils-locate: use nice -n 19 for the daily cronjob of updatedb
+
+-------------------------------------------------------------------
+Mon Aug  5 13:53:18 CEST 2002 - schwab@suse.de
+
+- Fix missing newline [#17427].
+
+-------------------------------------------------------------------
+Wed Jul 31 17:43:39 CEST 2002 - schwab@suse.de
+
+- Add PreReq for locate.
+
+-------------------------------------------------------------------
+Sun Jun 23 21:29:07 CEST 2002 - schwab@suse.de
+
+- Make -name conforming to POSIX.
+
+-------------------------------------------------------------------
+Fri Mar  8 21:24:10 CET 2002 - schwab@suse.de
+
+- Add some documentation [#14733].
+
+-------------------------------------------------------------------
+Mon Feb 25 13:06:48 CET 2002 - schwab@suse.de
+
+- Fix permissions.
+
+-------------------------------------------------------------------
+Wed Feb  6 13:30:16 CET 2002 - ro@suse.de
+
+- sysconfig/cron_daily -> sysconfig/cron
+
+-------------------------------------------------------------------
+Thu Jan 31 17:46:08 CET 2002 - ro@suse.de
+
+- added sysconfig.locate and cron.daily scripts updatedb and
+  clean core to locate subpackage
+
+-------------------------------------------------------------------
+Thu Jan 31 17:20:41 CET 2002 - schwab@suse.de
+
+- Put locate and related programs in their own subpackage.
+
+-------------------------------------------------------------------
+Wed Jun  6 23:25:58 CEST 2001 - schwab@suse.de
+
+- Update to findutils 4.1.7.
+
+-------------------------------------------------------------------
+Thu Nov 23 16:35:08 CET 2000 - bk@suse.de
+
+- added suse update config macro, was needed for s390
+
+-------------------------------------------------------------------
+Tue Oct 24 13:51:01 CEST 2000 - schwab@suse.de
+
+- Update to findutils 4.1.6.
+- Renamed from find.
+
+-------------------------------------------------------------------
+Fri Oct 13 09:56:21 CEST 2000 - schwab@suse.de
+
+- Fix substitution in updatedb script.
+
+-------------------------------------------------------------------
+Wed Sep 13 21:16:02 CEST 2000 - schwab@suse.de
+
+- Fix compilation problem with getline.
+- Don't use included regex.
+
+-------------------------------------------------------------------
+Wed Sep 13 15:27:31 CEST 2000 - schwab@suse.de
+
+- Update to findutils 4.1.3.
+
+-------------------------------------------------------------------
+Thu Mar 16 15:35:08 CET 2000 - schwab@suse.de
+
+- xargs: Move arg_max limit check after environ size check.
+
+-------------------------------------------------------------------
+Wed Feb  2 18:07:57 CET 2000 - schwab@suse.de
+
+- Fix substitutions in updatedb.
+
+-------------------------------------------------------------------
+Mon Jan 17 17:59:44 CET 2000 - schwab@suse.de
+
+- /usr/{info,man} -> /usr/share/{info,man}
+- Get rid of Makefile.Linux
+- Remove some obsolete changes
+
+-------------------------------------------------------------------
+Mon Nov 15 19:10:13 MET 1999 - kukuk@suse.de
+
+- fix returncode from dostat and dolstat
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Aug 26 17:12:33 CEST 1999 - schwab@suse.de
+
+- fix "find -false , -name ."
+
+-------------------------------------------------------------------
+Fri Dec 18 16:02:24 MET 1998 - ro@suse.de
+
+- for glibc: use getline from libc
+
+-------------------------------------------------------------------
+Tue Sep  1 12:01:46 MEST 1998 - ro@suse.de
+
+- fixed macro problems with strcpy,strdup,...
+
+-------------------------------------------------------------------
+Thu May 14 11:05:35 MEST 1998 - florian@suse.de
+
+- added "-s /bin/sh" to further 2 places
+- also prune "afs smbfs autofs" filesystems
+- fix "find / -xtype l"
+- xargs: raise default limit of 20k to 80k for the environment and
+  all command parameters
+
+-------------------------------------------------------------------
+Mon Nov 10 11:04:28 MET 1997 - bs@suse.de
+
+- added "-s /bin/sh" to su command in updatedb (our nobody has /bin/false
+  for default shell)
+
+----------------------------------------------------------------------------
+Sun Apr 13 23:04:29 MEST 1997 - florian@suse.de
+
+- add bug-fixes from debian and gnu.utils.bugs
+- updatedb now supports "--prunefs"
+- "mv /usr/libexec/* /usr/lib/find/"
+

@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Wed Jul 10 06:37:12 UTC 2019 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Add patches to make FreeCAD not crash at start
+  * 0002-Fix-qApp-import-of-QCoreApplication.patch
+  * 0003-PySide2-QtCore-Remove-duplicated-type-entry-for-bool.patch
+
+-------------------------------------------------------------------
+Mon Jul  1 18:00:38 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove "CFLAGS=-I/usr/include/linux" export, otherwise pthreads.h
+  includes linux/time.h instead of time.h. As a result CMake no longer
+  finds a valid pthreads.h and aborts.
+- Drop "docs", which included building and installing instructions only,
+  as done upstream. See https://doc.qt.io/qtforpython/ and
+  https://wiki.qt.io/Qt_for_Python/Tutorial for developer documentation.
+
+-------------------------------------------------------------------
+Thu Jun 27 07:58:17 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.13.0
+  * Add bindings for 5.13
+  * Support the qApp macro in "scriptable application"
+  * Doc: Add QML Integration tutorial
+  * Docs: Add Expenses tool tutorial
+  * Regenerate all example forms using the python-extended rcc of 5.14
+  * Fix type name for lookup of QFlags<> converters
+  Check the changes-* files for older changes.
+  
+-------------------------------------------------------------------
+Mon May  6 08:19:22 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.12.3. No changelog available for this version.
+- Fix the license tag, the shiboken2 subdir uses a different license.
+
+-------------------------------------------------------------------
+Sat Apr  6 17:08:25 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.12.2
+  * Added binding for QWebEngineUrlScheme
+  * Fixed a crash related to multiple inheritance
+  * Fixed wrong METADATA for generated wheels
+  * Prevent Python 3.5 from crashing the build
+  Check the changes-* files for the complete list of changes.
+- Drop fix-cmake.patch
+- Drop 0001-Avoid-creation-of-empty-build-directories-in-install.patch
+- Refresh lib64.patch
+- Drop the unused _service file.
+
+-------------------------------------------------------------------
+Fri Dec 28 11:38:26 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use %python_sitearch instead of %py_sitedir
+
+-------------------------------------------------------------------
+Mon Dec 24 13:45:19 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid repeating the name in the summary.
+
+-------------------------------------------------------------------
+Wed Dec 19 00:34:58 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.12
+- Package examples
+- Include PEP484 type hints
+- Use parallel make
+- Rebase lib64.patch
+- Drop fix_build.patch, obsoleted by upstream changes
+- Add 0001-Avoid-creation-of-empty-build-directories-in-install.patch
+- Add 0001-Remove-unnecessary-she-bang-from-icon-cache.py.patch
+
+-------------------------------------------------------------------
+Wed Oct 24 07:14:44 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- enable support for Qt5Scxml
+- cleanup python2 deps
+- enable doc generation
+
+-------------------------------------------------------------------
+Tue Oct 23 20:29:53 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add fix_build.patch to fix an error reported by the post build checks.
+
+-------------------------------------------------------------------
+Mon Oct 22 14:40:28 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to version 5.11.2 tag
+
+-------------------------------------------------------------------
+Tue Jun  5 10:11:27 UTC 2018 - christophe@krop.fr
+
+- Update license to LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+
+-------------------------------------------------------------------
+Fri Apr 27 09:32:03 UTC 2018 - adrian@suse.de
+
+- build against Qt 5.11
+
+-------------------------------------------------------------------
+Tue Mar 13 07:07:28 UTC 2018 - adrian@suse.de
+
+- disable python2 build
+  No one needs it atm and it is conflicting at installation time
+  with python3 variant
+
+-------------------------------------------------------------------
+Mon Mar  5 05:52:58 UTC 2018 - adrian@suse.de
+
+- update to current snapshot from dev branch for Qt 5.10
+- make test optional
+- fix-cmake.patch lib64.patch for fixing build and installation
+
+-------------------------------------------------------------------
+Sat Mar  3 06:26:03 UTC 2018 - adrian@suse.de
+
+- build fix
+
+-------------------------------------------------------------------
+Thu Sep 14 20:15:52 UTC 2017 - kkaempf@suse.com
+
+- add Qt5-svg support
+
+-------------------------------------------------------------------
+Wed Jun 28 06:09:43 UTC 2017 - jengelh@inai.de
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Mon Jun 12 06:37:36 UTC 2017 - adrian@suse.de
+
+- initial package of PySide2 for Qt5.9
+- includes also shiboken
+

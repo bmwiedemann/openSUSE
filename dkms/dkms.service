@@ -1,0 +1,12 @@
+[Unit]
+Description=Dynamic Kernel Modules System
+Before=display-manager.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/lib/systemd/system/dkms.systemd start
+ExecStop=/usr/lib/systemd/system/dkms.systemd stop
+
+[Install]
+WantedBy=multi-user.target

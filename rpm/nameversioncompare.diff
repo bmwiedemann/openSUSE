@@ -1,0 +1,39 @@
+Also compare the name/arch and not only the version when checking if
+two packages are the same. rh#104066
+
+--- ./lib/depends.c.orig	2014-06-26 06:51:54.163820067 +0000
++++ ./lib/depends.c	2014-08-04 12:22:24.030575105 +0000
+@@ -158,6 +158,24 @@ static int skipColor(rpm_color_t tscolor
+     return tscolor && color && ocolor && !(color & ocolor);
+ }
+ 
++static int rpmNameVersionCompare(Header first, Header second)
++{
++    const char * one, * two;
++    int rc;
++
++    one = headerGetString(first, RPMTAG_NAME);
++    two = headerGetString(second, RPMTAG_NAME);
++    rc = strcmp(one, two);
++    if (rc)
++	return rc;
++    one = headerGetString(first, RPMTAG_ARCH);
++    two = headerGetString(second, RPMTAG_ARCH);
++    rc = strcmp(one, two);
++    if (rc)
++	return rc;
++    return rpmVersionCompare(first, second);
++}
++
+ /* Add erase elements for older packages of same color (if any). */
+ static int addSelfErasures(rpmts ts, rpm_color_t tscolor, int op,
+ 				rpmte p, rpm_color_t hcolor, Header h)
+@@ -172,7 +190,7 @@ static int addSelfErasures(rpmts ts, rpm
+ 	if (skipColor(tscolor, hcolor, headerGetNumber(oh, RPMTAG_HEADERCOLOR)))
+ 	    continue;
+ 
+-	cmp = rpmVersionCompare(h, oh);
++	cmp = rpmNameVersionCompare(h, oh);
+ 
+ 	/* On upgrade, skip packages that contain identical NEVR. */
+ 	if ((op == RPMTE_UPGRADE) && (cmp == 0))

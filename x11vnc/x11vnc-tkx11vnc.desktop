@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=
+Encoding=UTF-8
+Terminal=false
+Exec=tkx11vnc
+Icon=x11vnc
+Type=Application
+StartupNotify=false
+Name=X11VNC
+GenericName=X11VNC
+Comment=Connect to remote X display through VNC

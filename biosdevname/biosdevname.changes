@@ -1,0 +1,289 @@
+-------------------------------------------------------------------
+Wed May 23 11:32:02 UTC 2018 - josef.moellers@suse.com
+
+- Prevent infinite recursion in dmidecode.c::smbios_setslot by
+  checking that subordinate bus has a number greater than the
+  current bus.
+  [bsc#1093625, dmidecode-prevent-infinite-recursion.patch]
+
+-------------------------------------------------------------------
+Tue Mar 27 11:52:38 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Fri Sep 22 12:27:58 UTC 2017 - josef.moellers@suse.com
+
+- Update to version 0.7.3
+  * Shipping and future Dell EMC systems support consistent network
+    device naming feature.
+  [fate#332490]
+
+-------------------------------------------------------------------
+Fri Jun  9 16:27:56 UTC 2017 - fschnizlein@suse.com
+
+- Update to latest HEAD to 02811d5165c2eeecf8797fe9b5088d6e78bd25db
+  * Changed source to github
+  * Ignore naming of non-Ethernet network interfaces
+  * Prevent reading of VPD-DCM strings for SRIOV-vfs
+  - removed patch v0.7.2_to_HEAD_66eab208.patch
+
+-------------------------------------------------------------------
+Thu Jan 19 17:44:56 UTC 2017 - felix.gerling@suse.com
+
+-  Update to HEAD 66eab208d3c2abe947ba0a793094ee856e8fb3ee
+  * Fix use-after-free of fd
+
+-------------------------------------------------------------------
+Tue Aug 16 14:18:06 UTC 2016 - olaf@aepfle.de
+
+- Detect dom0 via xenfs instead of cpuid to compensate for ABI
+  change in xen-4.7 on AMD systems. (bnc#974257)
+  biosdevname-dom0.patch
+
+-------------------------------------------------------------------
+Fri Mar  4 13:34:44 UTC 2016 - trenn@suse.de
+
+- Update to latest 0.7.2 version (fate#319998)
+
+-------------------------------------------------------------------
+Sun Jan 17 10:14:18 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.7.1
+  * no upstream changelog provided
+
+-------------------------------------------------------------------
+Thu Dec 10 16:00:47 CET 2015 - tiwai@suse.de
+
+- Fix missing dependency on coreutils for initrd macros (boo#958562)
+- Call missing initrd macro at postun (boo#958562)
+
+-------------------------------------------------------------------
+Mon Jul 13 07:08:26 UTC 2015 - werner@suse.de
+
+- Add missed build require on pkgconfig udev 
+
+-------------------------------------------------------------------
+Wed Jun  3 07:29:09 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.6.2
+  * no upstream changelog provided
+
+-------------------------------------------------------------------
+Fri Apr 10 12:38:21 UTC 2015 - zaitor@opensuse.org
+
+- Fix fault in ignore-broken-BIOSes patch (boo#920054).
+
+-------------------------------------------------------------------
+Fri Apr  3 08:56:16 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Feb 21 22:49:47 UTC 2015 - meissner@suse.com
+
+- biosdevname-pic.patch: make cpuid() not expose %ebx out of 
+  assembler, so we can build it with -fPIE.
+
+-------------------------------------------------------------------
+Thu Jan 22 13:02:08 UTC 2015 - trenn@suse.de
+
+- Update to version 0.6.1
+- Do not disable rule via perl script in .spec file, better use a patch
+  (biosdevname_udevrule_rename_all_network_devices.patch)
+- Modify configure.ac via sed to make use of %{_udevruledir} from .spec file
+- Remove already integrated patches in latest source code:
+  Delete biosdevname_v0.5.0_to_git_c140ce659a204d67e4cc.patch
+  Delete biosdevname_udevrule_rename_all_network_devices.patch
+  Delete fix_several_PCI_root_ports_in_one_bus.patch
+  Modify udev-rule-path.patch
+  Modify whitelist-dell
+
+-------------------------------------------------------------------
+Tue Aug 12 16:03:10 UTC 2014 - trenn@suse.de
+
+- Add mainline commit: 51b8cdb0b60df3baa
+  With this patch, the info can be showed correctly if there are two or more
+  PCI root ports in the same Bus ID/Device ID (bnc#890562)
+  Add: fix_several_PCI_root_ports_in_one_bus.patch
+
+-------------------------------------------------------------------
+Fri Jun 13 17:01:24 UTC 2014 - trenn@suse.de
+
+- Fix missing %posttrans section
+
+-------------------------------------------------------------------
+Fri Jun 13 11:13:27 UTC 2014 - trenn@suse.de
+
+- For some reason /usr/lib/udev/rules.d/99-systemd.rules seem not to exist
+  anymore. This is used to determine which udev rules.d to use.
+  Use 95-udev-late.rules instead.
+  Modified: udev-rule-path.patch
+
+-------------------------------------------------------------------
+Fri May 16 11:11:22 UTC 2014 - trenn@suse.de
+
+- Revert biosdevname calling with different parameters introduced
+  with the change from the 22th of April as suggested by Dell.
+  Modified: biosdevname_udevrule_rename_all_network_devices.patch
+
+-------------------------------------------------------------------
+Thu May  8 09:10:30 UTC 2014 - trenn@suse.de
+
+- Provide Supplements:    modalias(dmi:*svnDell*)
+  so that the package gets autoinstalled on all Dell platforms
+  bnc#876733
+
+-------------------------------------------------------------------
+Tue Apr 22 13:41:21 UTC 2014 - trenn@suse.de
+
+- Take mainline patch to fix (bnc#869614)
+  Modified: biosdevname_udevrule_rename_all_network_devices.patch
+- Remove %config from etc rule to please obs checker
+- Remove mkinitrd setup script
+
+-------------------------------------------------------------------
+Thu Apr 10 17:14:24 UTC 2014 - trenn@suse.de
+
+- Remove eth* check, devices might have been renamed already bnc#869614
+  Add biosdevname_udevrule_rename_all_network_devices.patch
+- Remove old mkinitrd stuff and replace it with dracut rpm macros to ensure
+  the initrd is rebuild if biosdevname got installed or updated.
+
+-------------------------------------------------------------------
+Tue Mar 25 13:42:43 UTC 2014 - trenn@suse.de
+
+- update to latest git repo patches (c140ce659a204d67e4) including a fix
+  requested by Dell for Enterprise procducts (bnc#836342)
+- Pass --no-configure to autogen.sh avoid double calling of ./configure
+
+-------------------------------------------------------------------
+Mon Jan 20 16:34:53 UTC 2014 - juwolf@suse.com
+
+- Updated to version 0.5.0
+  * Add version number to biosdevname
+  * Save off Secondary PCI bus for PCI tree traversal
+  * Change scan of SMBIOS slot <-> PCI mapping
+- Drop: biosdevname-0.4.1.tar.gz
+- Add: biosdevname-0.5.0.tar.bz2
+- Add biosdevname_git_v050_to_head.patch: Latest fixes from v0.5.0 to HEAD
+
+-------------------------------------------------------------------
+Fri Jul 12 19:33:10 CEST 2013 - ohering@suse.de
+
+- Update mkinitrd helper to look for rules in /lib and /usr/lib (bnc#820216)
+
+-------------------------------------------------------------------
+Mon Apr 22 12:08:57 UTC 2013 - idonmez@suse.com
+
+- Use correct directory for udev rules 
+
+-------------------------------------------------------------------
+Mon Dec  3 13:51:01 UTC 2012 - p.drouand@gmail.com
+
+- Update to 0.4.1 version:
+  * Use addslot() to track both embedded and physical index per slot
+  * Add fixes to ignore NPAR parsing on some cards
+- Removed patchs: more-cmdline-args, verify-network-VPD, bug-706505
+  fixed on upstream releases bnc#706505
+-------------------------------------------------------------------
+Wed May 30 16:37:11 UTC 2012 - sweet_f_a@gmx.de
+
+- remove useless automake dependecy
+
+-------------------------------------------------------------------
+Wed Dec 21 09:04:06 UTC 2011 - aj@suse.de
+
+- Fix download URL.
+
+-------------------------------------------------------------------
+Wed Nov 30 09:43:41 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Sep 23 12:02:44 UTC 2011 - duwe@suse.com
+
+- fix bnc#706505
+
+-------------------------------------------------------------------
+Sat Sep 17 19:47:58 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Wed Sep  7 14:50:24 UTC 2011 - duwe@suse.com
+
+- Verify length of VPD on network device (bnc#711172)
+
+-------------------------------------------------------------------
+Wed Aug  3 16:11:21 UTC 2011 - duwe@novell.com
+
+- Enable on all Dell machines (bnc#705109)
+
+-------------------------------------------------------------------
+Mon Aug  1 13:17:24 UTC 2011 - duwe@novell.com
+
+- pull patch to restrict SMBIOS version and to disable PIRQ usage
+  from upstream.
+- use the above to fix bnc#705162
+
+-------------------------------------------------------------------
+Tue Jul 19 10:45:45 UTC 2011 - duwe@novell.com
+
+- version 0.3.8 contains unconditional asm inline, making it
+  x86-only (bnc#706622)
+
+-------------------------------------------------------------------
+Thu Jul  7 18:38:07 UTC 2011 - duwe@novell.com
+
+- fix bnc#704182
+
+-------------------------------------------------------------------
+Thu Jun 16 13:54:58 CEST 2011 - duwe@suse.de
+
+- update to 0.3.8, disable rule by default (FATE#312154)
+- remove now obsolete patches biosdevname-delete-unused-function.diff,
+  biosdevname-policy-all_names.diff and
+  biosdevname-0.2.4-wronglinking.patch.
+
+-------------------------------------------------------------------
+Sat Apr 30 15:55:06 UTC 2011 - crrodriguez@opensuse.org
+
+- fix build with gcc 4.6, wrong linker options 
+
+-------------------------------------------------------------------
+Mon Nov 24 17:46:38 CET 2008 - bwalle@suse.de
+
+- Change to --policy=all_names (bnc#441079).
+
+-------------------------------------------------------------------
+Thu Oct 09 18:11:29 CEST 2008 - bwalle@suse.de
+
+- Delete unused function onboard_device_type() (bnc#433795).
+
+-------------------------------------------------------------------
+Thu Jul 31 13:48:47 CEST 2008 - bwalle@suse.de
+
+- integrate biosdevname to initrd (bnc#403269,  FATE#301528)
+
+-------------------------------------------------------------------
+Sat Sep 22 17:37:00 CEST 2007 - bwalle@suse.de
+
+- update to 0.2.4
+  o coordinate udev rules usage with udev maintainer
+  o fix crashes in pcmcia search, in_ethernet(), and incorrect
+    command line parsing.
+
+-------------------------------------------------------------------
+Mon Sep  3 16:28:27 CEST 2007 - bwalle@suse.de
+
+- fix crash on startup
+
+-------------------------------------------------------------------
+Mon Sep  3 00:00:00 CEST 2007 - bwalle@suse.de
+
+- initial package for SUSE (209107, FATE 301528)
+
+-------------------------------------------------------------------

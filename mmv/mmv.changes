@@ -1,0 +1,122 @@
+-------------------------------------------------------------------
+Sun Jul 12 19:26:49 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Sep 30 15:38:39 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Sat Feb  5 14:56:08 UTC 2011 - asterios.dramis@gmail.com
+
+- Use as source package the one from Debian pool (since this seems the main
+  development place for mmv).
+- Added the copyright file from
+  http://packages.debian.org/changelogs/pool/main/m/mmv/current/copyright
+- Spec file updates:
+  * Changed the License to GPL+ based on the copyright file. 
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Updates in Summary: and %description sections.
+  * Added description for patches based on openSUSE Patches Guidelines.
+  * Removed %changelog entries from spec file.
+  * bzip the source package.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:21 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Dec 13 17:17:42 CET 2005 - anicka@suse.cz
+
+- add LARGEFILE to CFLAGS (bug #137906) 
+
+-------------------------------------------------------------------
+Tue Apr  5 13:20:26 CEST 2005 - nadvornik@suse.cz
+
+- fixed include files for gcc4
+
+-------------------------------------------------------------------
+Thu Mar 04 18:39:34 CET 2004 - tcrhak@suse.cz
+
+- honor '--' in option list (bug #35289)
+
+-------------------------------------------------------------------
+Fri Jan 30 18:08:25 CET 2004 - mfabian@suse.de
+
+- add patch from Bjoern Jacke <jacke@exsuse.de> to allow
+  non-ASCII for the target file names (see Bugzilla #34232).
+- use # norootforbuild.
+
+-------------------------------------------------------------------
+Wed Sep 25 14:48:21 CEST 2002 - tcrhak@suse.cz
+
+- in checkto(): assign fdel NULL if it is
+  assigned no value so far (fixes bug #19924)
+- linked dynamically
+
+-------------------------------------------------------------------
+Fri Apr 20 09:33:27 CEST 2001 - cihlar@suse.cz
+
+- use RPM_OPT_FLAGS 
+- fixed to compile on s390
+
+-------------------------------------------------------------------
+Tue Mar 20 09:12:12 CET 2001 - cihlar@suse.cz
+
+- fix to compile on axp
+
+-------------------------------------------------------------------
+Wed Dec  6 22:44:00 CET 2000 - schwab@suse.de
+
+- Fix to build on ia64.
+
+-------------------------------------------------------------------
+Thu Nov  9 09:42:46 CET 2000 - cihlar@suse.cz
+
+- clean up spec file
+- fixed copyrigt tag
+
+-------------------------------------------------------------------
+Wed May 17 13:00:40 CEST 2000 - cihlar@suse.cz
+
+- added BuildRoot
+- Group sorted 
+
+-------------------------------------------------------------------
+Fri May 12 15:13:38 CEST 2000 - schwab@suse.de
+
+- Fix Makefile for ia64.
+
+-------------------------------------------------------------------
+Tue Jan 25 17:31:46 CET 2000 - ro@suse.de
+
+- man to /usr/share using macro 
+
+-------------------------------------------------------------------
+Sun Dec 19 18:50:34 CET 1999 - kukuk@suse.de
+
+- Fix Makefile for SPARC
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Aug 25 17:51:06 MEST 1999 - uli@suse.de
+
+- no m486 on PPC
+
+-------------------------------------------------------------------
+Wed Feb  3 00:40:14 MET 1999 - ro@suse.de
+
+- no m486 on alpha 
+
+-------------------------------------------------------------------
+Thu Jun 18 13:44:25 MEST 1998 - ro@suse.de
+
+- builds for libc5 and glibc 
+

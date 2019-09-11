@@ -1,0 +1,12 @@
+diff -Nru azure-cognitiveservices-language-textanalytics-0.1.0.orig/setup.py azure-cognitiveservices-language-textanalytics-0.1.0/setup.py
+--- azure-cognitiveservices-language-textanalytics-0.1.0.orig/setup.py	2018-01-12 18:33:00.000000000 +0100
++++ azure-cognitiveservices-language-textanalytics-0.1.0/setup.py	2018-01-22 14:34:04.023717184 +0100
+@@ -78,7 +78,7 @@
+     packages=find_packages(exclude=["tests"]),
+     install_requires=[
+         'msrest>=0.4.24,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     cmdclass=cmdclass
+ )

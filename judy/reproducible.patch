@@ -1,0 +1,15 @@
+Index: judy-1.0.5/tool/jhton.c
+===================================================================
+--- judy-1.0.5.orig/tool/jhton.c
++++ judy-1.0.5/tool/jhton.c
+@@ -693,8 +693,8 @@ FUNCTION void EmitNroffHeader(
+ // Emit file header; note, ctime() output already contains a newline:
+ 
+ 	(void) time(&currtime);
+-	(void) printf(".\\\" Auto-translated to nroff -man from %s by %s at %s",
+-		      Filename, gc_myname, ctime(&currtime));
++	(void) printf(".\\\" Auto-translated to nroff -man from %s by %s",
++		      Filename, gc_myname);
+ 
+ 	(void) printf(".\\\" %s\n",  filerev);
+ 	(void) printf(".TA %c\n",    lcletter);

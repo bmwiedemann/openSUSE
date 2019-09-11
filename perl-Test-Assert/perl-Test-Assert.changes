@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Wed Aug 24 22:43:21 UTC 2011 - chris@computersalat.de
+
+- fix BuildReq deps
+  * +perl(parent)
+  * -perl(Symbol::Util)
+
+-------------------------------------------------------------------
+Fri Apr  1 17:09:30 UTC 2011 - coolo@novell.com
+
+- initial package 0.0504
+    * created by cpanspec 1.78.03
+

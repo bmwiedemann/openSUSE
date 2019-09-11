@@ -1,0 +1,235 @@
+diff --git a/configure.ac b/configure.ac
+index 54a8558..0ac76ad 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -152,7 +152,9 @@ telemetrics-client $VERSION
+ prefix:                 $prefix
+ exec_prefix:            $exec_prefix
+ libdir:                 $libdir
++libexecdir:             $libexecdir
+ bindir:                 $bindir
++sbindir:                $sbindir
+ datarootdir:            $datarootdir
+ 
+ compiler:               $CC
+diff --git a/scripts/local.mk b/scripts/local.mk
+index a64bc1e..c12f901 100644
+--- a/scripts/local.mk
++++ b/scripts/local.mk
+@@ -1,3 +1,3 @@
+-dist_bin_SCRIPTS = %D%/telemctl
++dist_sbin_SCRIPTS = %D%/telemctl
+ 
+ # vim: filetype=automake tabstop=8 shiftwidth=8 noexpandtab
+diff --git a/src/data/40-crash-probe.conf.in b/src/data/40-crash-probe.conf.in
+index 486067e..ea4d156 100644
+--- a/src/data/40-crash-probe.conf.in
++++ b/src/data/40-crash-probe.conf.in
+@@ -1 +1 @@
+-kernel.core_pattern = |@bindir@/crashprobe -p %e -E %E -s %s
++kernel.core_pattern = |@libexecdir@/crashprobe -p %e -E %E -s %s
+diff --git a/src/data/bert-probe.service.in b/src/data/bert-probe.service.in
+index 9bd4f91..08b0bb3 100644
+--- a/src/data/bert-probe.service.in
++++ b/src/data/bert-probe.service.in
+@@ -6,7 +6,7 @@ ConditionPathExists=!/etc/telemetrics/opt-out
+ ConditionPathExists=/sys/firmware/acpi/tables/data/BERT
+ 
+ [Service]
+-ExecStart=@bindir@/bertprobe
++ExecStart=@libexecdir@/bertprobe
+ User=telemetry
+ 
+ [Install]
+diff --git a/src/data/hprobe.service.in b/src/data/hprobe.service.in
+index 41574cf..d110026 100644
+--- a/src/data/hprobe.service.in
++++ b/src/data/hprobe.service.in
+@@ -5,7 +5,7 @@ After=telemprobd.socket
+ ConditionPathExists=!/etc/telemetrics/opt-out
+ 
+ [Service]
+-ExecStart=@bindir@/hprobe -Hlu
++ExecStart=@libexecdir@/hprobe -Hlu
+ User=telemetry
+ 
+ [Install]
+diff --git a/src/data/journal-probe-tail.service.in b/src/data/journal-probe-tail.service.in
+index c65b812..a7f1541 100644
+--- a/src/data/journal-probe-tail.service.in
++++ b/src/data/journal-probe-tail.service.in
+@@ -5,7 +5,7 @@ After=telemprobd.socket
+ ConditionPathExists=!/etc/telemetrics/opt-out
+ 
+ [Service]
+-ExecStart=@bindir@/journalprobe -t
++ExecStart=@libexecdir@/journalprobe -t
+ User=telemetry
+ 
+ [Install]
+diff --git a/src/data/journal-probe.service.in b/src/data/journal-probe.service.in
+index d81b2c7..08a9b58 100644
+--- a/src/data/journal-probe.service.in
++++ b/src/data/journal-probe.service.in
+@@ -5,7 +5,7 @@ After=telemprobd.socket
+ ConditionPathExists=!/etc/telemetrics/opt-out
+ 
+ [Service]
+-ExecStart=@bindir@/journalprobe
++ExecStart=@libexecdir@/journalprobe
+ User=telemetry
+ 
+ [Install]
+diff --git a/src/data/klogscanner.service.in b/src/data/klogscanner.service.in
+index f722f70..7f7e081 100644
+--- a/src/data/klogscanner.service.in
++++ b/src/data/klogscanner.service.in
+@@ -4,7 +4,7 @@ Requires=telemprobd.socket
+ After=telemprobd.socket
+ 
+ [Service]
+-ExecStart=@bindir@/klogscanner
++ExecStart=@libexecdir@/klogscanner
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/src/data/local.mk b/src/data/local.mk
+index 7beaf7e..e52a0c4 100644
+--- a/src/data/local.mk
++++ b/src/data/local.mk
+@@ -2,6 +2,8 @@ pathfix = @sed \
+ 	-e 's|@prefix[@]|$(prefix)|g' \
+ 	-e 's|@bindir[@]|$(bindir)|g' \
+ 	-e 's|@libdir[@]|$(libdir)|g' \
++	-e 's|@sbindir[@]|$(sbindir)|g' \
++	-e 's|@libexecdir[@]|$(libexecdir)|g' \
+ 	-e 's|@localstatedir[@]|$(localstatedir)|g' \
+ 	-e 's|@PACKAGE_VERSION[@]|$(PACKAGE_VERSION)|g' \
+ 	-e 's|@SOCKETDIR[@]|$(SOCKETDIR)|g' \
+diff --git a/src/data/pstore-clean.service.in b/src/data/pstore-clean.service.in
+index 34647db..c051771 100644
+--- a/src/data/pstore-clean.service.in
++++ b/src/data/pstore-clean.service.in
+@@ -2,7 +2,7 @@
+ Description=Telemetrics Pstore Clean Service
+ 
+ [Service]
+-ExecStart=@bindir@/pstoreclean
++ExecStart=@libexecdir@/pstoreclean
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/src/data/pstore-probe.service.in b/src/data/pstore-probe.service.in
+index 8eace15..4bab2db 100644
+--- a/src/data/pstore-probe.service.in
++++ b/src/data/pstore-probe.service.in
+@@ -4,7 +4,7 @@ Requires=telemprobd.socket
+ After=telemprobd.socket
+ 
+ [Service]
+-ExecStart=@bindir@/pstoreprobe
++ExecStart=@libexecdir@/pstoreprobe
+ User=telemetry
+ 
+ [Install]
+diff --git a/src/data/python-probe.service.in b/src/data/python-probe.service.in
+index 38be074..0f47544 100644
+--- a/src/data/python-probe.service.in
++++ b/src/data/python-probe.service.in
+@@ -6,7 +6,7 @@ ConditionPathExists=!/etc/telemetrics/opt-out
+ 
+ [Service]
+ User=telemetry
+-ExecStart=@bindir@/pythonprobe
++ExecStart=@libexecdir@/pythonprobe
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/src/data/telempostd.service.in b/src/data/telempostd.service.in
+index b0dfb73..f63e5f6 100644
+--- a/src/data/telempostd.service.in
++++ b/src/data/telempostd.service.in
+@@ -3,7 +3,7 @@ Description=Telemetrics Post Daemon
+ ConditionPathExists=!/etc/telemetrics/opt-out
+ 
+ [Service]
+-ExecStart=@bindir@/telempostd
++ExecStart=@sbindir@/telempostd
+ WorkingDirectory=@localstatedir@/spool/telemetry
+ User=telemetry
+ 
+diff --git a/src/data/telemprobd.service.in b/src/data/telemprobd.service.in
+index 71e5fbd..946645f 100644
+--- a/src/data/telemprobd.service.in
++++ b/src/data/telemprobd.service.in
+@@ -3,7 +3,7 @@ Description=Telemetrics Daemon
+ ConditionPathExists=!/etc/telemetrics/opt-out
+ 
+ [Service]
+-ExecStart=@bindir@/telemprobd
++ExecStart=@sbindir@/telemprobd
+ WorkingDirectory=@localstatedir@/spool/telemetry
+ User=telemetry
+ 
+diff --git a/src/journal/local.mk b/src/journal/local.mk
+index bb6175f..1e6a382 100644
+--- a/src/journal/local.mk
++++ b/src/journal/local.mk
+@@ -1,4 +1,4 @@
+-bin_PROGRAMS += \
++sbin_PROGRAMS += \
+ 	%D%/telem_journal
+ 
+ %C%_telem_journal_SOURCES = %D%/cli.c \
+diff --git a/src/local.mk b/src/local.mk
+index 18a8156..3d2ea60 100644
+--- a/src/local.mk
++++ b/src/local.mk
+@@ -1,4 +1,4 @@
+-bin_PROGRAMS = \
++sbin_PROGRAMS = \
+ 	%D%/telemprobd \
+ 	%D%/telempostd
+ 
+@@ -15,7 +15,7 @@ bin_PROGRAMS = \
+ 	%D%/libtelemetry.la
+ 
+ %C%_telemprobd_CFLAGS = \
+-	$(AM_CFLAGS)
++	$(AM_CFLAGS) -fPIE
+ 
+ %C%_telemprobd_LDFLAGS = \
+ 	$(AM_LDFLAGS) \
+@@ -56,7 +56,7 @@ endif
+ 	%D%/libtelemetry.la
+ 
+ %C%_telempostd_CFLAGS = \
+-	$(AM_CFLAGS)
++	$(AM_CFLAGS) -fPIE
+ 
+ %C%_telempostd_LDFLAGS = \
+ 	$(AM_LDFLAGS) \
+diff --git a/src/probes/local.mk b/src/probes/local.mk
+index 0aeadce..e45cb98 100644
+--- a/src/probes/local.mk
++++ b/src/probes/local.mk
+@@ -1,7 +1,8 @@
+-bin_PROGRAMS += \
++bin_PROGRAMS = \
++	%D%/telem-record-gen
++libexec_PROGRAMS = \
+ 	%D%/hprobe \
+ 	%D%/crashprobe \
+-	%D%/telem-record-gen \
+ 	%D%/klogscanner \
+ 	%D%/pstoreprobe \
+ 	%D%/pythonprobe \
+@@ -131,7 +132,7 @@ endif
+ 
+ if HAVE_SYSTEMD_JOURNAL
+ if HAVE_SYSTEMD_ID128
+-bin_PROGRAMS += \
++libexec_PROGRAMS += \
+ 	%D%/journalprobe
+ 
+ %C%_journalprobe_SOURCES = \

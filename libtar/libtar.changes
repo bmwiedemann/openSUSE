@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Fri Apr 13 08:43:24 UTC 2018 - mpluskal@suse.com
+
+- Small packaging cleanup
+
+-------------------------------------------------------------------
+Thu Apr 20 11:15:51 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM groups.
+
+-------------------------------------------------------------------
+Thu Jan  7 08:09:52 UTC 2016 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Do not ship .la files
+- Update licensing information
+
+-------------------------------------------------------------------
+Sat Jan  2 21:27:29 UTC 2016 - freitag@opensuse.org
+
+- Fix patch notification in spec file and changes. 
+
+-------------------------------------------------------------------
+Fri Dec 25 20:35:02 UTC 2015 - freitag@opensuse.org
+
+- Update to upstream version 1.2.20
+- Adopted Fedoras patchset for this package
+- Drop libtar_1.2.11-6.diff.gz: Made it to upstream code.
+- Drop libtar-1.2.11-tar_header.patch: Made it to upstream code.
+- Add libtar-1.2.11-bz729009.patch: do not strip on install
+- Add libtar-1.2.11-missing-protos.patch: adding missing headers
+- Add libtar-1.2.11-mem-deref.patch: two crash avoiding fixes 
+- Add libtar-1.2.20-fix-resource-leaks.patch: fix resource leaks
+- Add libtar-1.2.20-no-static-buffer.patch: do not use a static buffer as return value
+
+-------------------------------------------------------------------
+Sat Jan  5 22:35:10 UTC 2013 - joop.boonen@opensuse.org
+
+- Fixed SLE, Mandriva and Fedora build
+- Cleaned the spec file up
+
+-------------------------------------------------------------------
+Sat Jun  5 00:32:37 CEST 2010 - joop.boonen@opensuse.org
+- build patch version libtar 1.2.11-6
+- Using the fedora project buffer overflowpatch
+- http://cvs.fedoraproject.org/viewvc//devel/libtar/
+
+-------------------------------------------------------------------
+Sun Mar 15 21:10:45 CET 2009 - lars@linux-schulserver.de
+
+- build for openSUSE-Education (stopmotion needs it)
+- fix rpmlint warnings
+- split out libtar1
+
+-------------------------------------------------------------------
+Sat Dec 13 00:00:00 CET 2008 - coyoteuser@gmail.com
+
+- Hacked for libtool => 2.2.6
+- Initial build for openSUSE build service
+

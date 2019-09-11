@@ -1,0 +1,287 @@
+-------------------------------------------------------------------
+Fri Feb 23 10:25:42 UTC 2018 - sndirsch@suse.com
+
+- n_Use-newly-introduced-GLAPIVAR-for-variables.patch
+  * moved bits from Mesa's n_Define-GLAPIVAR-separate-from-GLAPI.patch
+    into this one (boo#1082297)
+- always build with Motif support
+
+-------------------------------------------------------------------
+Mon May 29 14:21:55 UTC 2017 - sndirsch@suse.com
+
+- includes everything needed for missing sle issue entries:
+  fate #315643-315645, 319159-319161, 319618 (bsc#1041368) 
+
+-------------------------------------------------------------------
+Sat Mar 19 20:18:54 UTC 2016 - eich@suse.com
+
+- Consolidate building of libGLw for Xt and Motif.
+
+-------------------------------------------------------------------
+Wed Mar 16 18:15:24 UTC 2016 - eich@suse.com
+
+- n_Use-newly-introduced-GLAPIVAR-for-variables.patch
+  Use newly introduced GLAPIVAR instead of GLAPI for
+  variable declarations. This adds an 'extern' in cases
+  where GLAPI doesn't have one and avoids a variable
+  declarartion to become a definition (bsc#970725).
+
+-------------------------------------------------------------------
+Fri Jan 30 10:20:28 UTC 2015 - sndirsch@suse.com
+
+- updated to current git 8.0.0_20130123_c4f7cdf; since 
+  1.0.0_20120320_4d1acb3 this is just a version bump to 8.0.0
+  and one typo fix (git commit c4f7cdf)
+- specfile cleanup 
+
+-------------------------------------------------------------------
+Mon Oct 27 08:48:50 UTC 2014 - sndirsch@suse.com
+
+- fixed buildrequires: pkgconfig(dri) -> pkgconfig(gl) 
+- added baselibs.conf as source to specfile
+
+-------------------------------------------------------------------
+Fri Sep 21 09:39:37 UTC 2012 - sndirsch@suse.com
+
+- fixed BuildRequires 
+
+-------------------------------------------------------------------
+Wed Sep 19 08:36:57 UTC 2012 - sndirsch@suse.com
+
+- fixed build on openSUSE 12.2 
+
+-------------------------------------------------------------------
+Tue Jun  5 13:48:58 UTC 2012 - sndirsch@suse.com
+
+- enable Motif support if %use_motif is set (currently done in
+  X11:XOrg, but likely planned also for openSUSE:Factory:NonFree
+  project)
+
+-------------------------------------------------------------------
+Mon Jun  4 16:07:26 UTC 2012 - sndirsch@suse.com
+
+- added generation of biarch packages
+
+-------------------------------------------------------------------
+Wed May 30 18:35:12 UTC 2012 - crrodriguez@opensuse.org
+
+- Fix -devel package requires, it needs pkgconfig(gl)
+- Fix buildrequires to require explicitely all needed libraries.
+
+-------------------------------------------------------------------
+Thu May 10 09:11:25 UTC 2012 - sndirsch@suse.com
+
+- disable motif support in light of recent findings of the
+  legal-team 
+- switched to minimal pkgconfig buildrequires
+
+-------------------------------------------------------------------
+Fri Mar 23 12:02:04 UTC 2012 - eich@suse.com
+
+- Change file naming sceme to what's expected for libraries:
+  Now the packages are named after the library, without any Mesa*
+  in their names. 
+
+-------------------------------------------------------------------
+Thu Mar 22 16:49:03 UTC 2012 - eich@suse.com
+
+- Replace Mesa package as source of libGLw by stand alone glw package
+  created by the Mesa Project:
+  Delete: MesaLib-7.10.2.tar.bz2
+  Add: glw-1.0.0_20120320_4d1acb3.tar.bz2
+  NOTE: Since there is no release of glw yet a tarball generated from
+	the source repository is used. This contains the sources of
+	the last version in MesaLib-7.10.2 plus a few bug fixes.
+
+-------------------------------------------------------------------
+Tue Feb 21 08:24:59 UTC 2012 - sndirsch@suse.com
+
+- No particular reason for having conflicts with other providers
+  of libGLw1, since there are no other providers of this lib and
+  probably will never be
+
+-------------------------------------------------------------------
+Mon Feb 20 11:56:15 UTC 2012 - sndirsch@suse.com
+
+- use pkgconfig(...) capabilities for BuildRequires
+
+-------------------------------------------------------------------
+Mon Feb 13 03:38:40 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Try shlib policy on the package
+
+-------------------------------------------------------------------
+Sun Oct  2 17:33:13 CEST 2011 - mhrusecky@suse.cz
+
+- configure -> ./configure (fixes build)
+
+-------------------------------------------------------------------
+Mon Jun  6 18:16:32 UTC 2011 - eich@suse.de
+
+- remove GLw-motif.diff. Instead resolve in spec file.
+
+-------------------------------------------------------------------
+Sat Sep  4 16:14:20 UTC 2010 - sndirsch@novell.com
+
+- update to Mesa 7.8.2 
+
+-------------------------------------------------------------------
+Sat Apr 10 23:33:08 CEST 2010 - sndirsch@suse.de
+
+- update to Mesa 7.8.1 sources
+- legal check no longer necessary 
+
+-------------------------------------------------------------------
+Tue Mar  3 11:27:47 CET 2009 - sndirsch@suse.de
+
+- update to Mesa 7.3 sources
+
+-------------------------------------------------------------------
+Sat Sep 20 18:39:15 CEST 2008 - sndirsch@suse.de
+
+- update to Mesa 7.2 sources
+
+-------------------------------------------------------------------
+Wed Aug 27 16:47:05 CEST 2008 - sndirsch@suse.de
+
+- update to Mesa release 7.1 
+
+-------------------------------------------------------------------
+Sat Apr  5 03:47:24 CEST 2008 - sndirsch@suse.de
+
+- update to Mesa bugfix release 7.0.3 (final) 
+
+-------------------------------------------------------------------
+Wed Apr  2 09:24:54 CEST 2008 - sndirsch@suse.de
+
+- update to Mesa bugfix release 7.0.3 RC3 
+
+-------------------------------------------------------------------
+Fri Feb 22 04:06:43 CET 2008 - sndirsch@suse.de
+
+- update to Mesa bugfix release 7.0.3 RC2
+  * Fixed GLX indirect vertex array rendering bug (14197)
+  * Fixed crash when deleting framebuffer objects (bugs 13507,
+    14293)
+  * User-defined clip planes enabled for R300 (bug 9871)
+  * Fixed glBindTexture() crash upon bad target (bug 14514)
+  * Fixed potential crash in glDrawPixels(GL_DEPTH_COMPONENT) (bug
+    13915)
+  * Bad strings given to glProgramStringARB() didn't generate
+    GL_INVALID_OPERATION
+  * Fixed minor point rasterization regression (bug 11016)
+
+-------------------------------------------------------------------
+Wed Jan 23 12:26:48 CET 2008 - sndirsch@suse.de
+
+- update to Mesa bugfix release 7.0.3 RC1
+  * Added missing glw.pc.in file to release tarball
+  * Fix GLUT/Fortran issues
+  * GLSL gl_FrontLightModelProduct.sceneColor variable wasn't 
+    defined
+  * Fix crash upon GLSL variable array indexes (not yet supported)
+  * Two-sided stencil test didn't work in software rendering
+  * Fix two-sided lighting bugs/crashes (bug 13368)
+  * GLSL gl_FrontFacing didn't work properly
+  * glGetActiveUniform returned incorrect sizes (bug 13751)
+  * Fix several bugs relating to uniforms and attributes in GLSL
+    API (Bruce Merry, bug 13753)
+  * glTexImage3D(GL_PROXY_TEXTURE_3D) mis-set teximage depth field
+
+-------------------------------------------------------------------
+Tue Jan  1 23:56:21 CET 2008 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-* error
+
+-------------------------------------------------------------------
+Sat Nov 10 20:07:41 CET 2007 - sndirsch@suse.de
+
+- updated to Mesa 7.0.2 (final) 
+
+-------------------------------------------------------------------
+Wed Oct 31 22:45:44 CET 2007 - sndirsch@suse.de
+
+- updated to Mesa 7.0.2 RC1 
+
+-------------------------------------------------------------------
+Sat Aug  4 05:57:38 CEST 2007 - sndirsch@suse.de
+
+- updated to bugfix release 7.0 
+
+-------------------------------------------------------------------
+Sat Jun 23 04:54:33 CEST 2007 - sndirsch@suse.de
+
+- updated to final release 7.0 
+
+-------------------------------------------------------------------
+Thu Jun 21 16:12:26 CEST 2007 - sndirsch@suse.de
+
+- updated Mesa to release 7.0 RC1
+  * Mesa 7.0 is a stable, follow-on release to Mesa 6.5.3. The only
+    difference is bug fixes. The major version number bump is due
+    to OpenGL 2.1 API support.
+
+-------------------------------------------------------------------
+Mon Apr 30 22:28:06 CEST 2007 - sndirsch@suse.de
+
+- updated to Mesa 6.5.3
+
+-------------------------------------------------------------------
+
+Fri Apr 27 17:00:08 CEST 2007 - sndirsch@suse.de
+
+- back to Mesa 6.5.2 (Bug #269155/269042)
+
+-------------------------------------------------------------------
+Wed Apr 25 19:34:01 CEST 2007 - sndirsch@suse.de
+
+- 4th RC ready
+  * This fixes some breakage in RC3.
+
+-------------------------------------------------------------------
+Tue Apr 24 18:55:53 CEST 2007 - sndirsch@suse.de
+
+- 3rd release candidate 
+  * updated Windows/VC8 project files.
+
+-------------------------------------------------------------------
+Sun Apr 22 11:30:09 CEST 2007 - sndirsch@suse.de
+
+- updated to Mesa 6.5.3rc2
+  * a number of bug fixes since the first RC
+
+-------------------------------------------------------------------
+Sat Apr 21 17:22:45 CEST 2007 - sndirsch@suse.de
+
+- updated to Mesa 6.5.3rc1 
+
+-------------------------------------------------------------------
+Sat Dec  2 22:22:40 CET 2006 - sndirsch@suse.de
+
+- updated to Mesa 6.5.2 
+
+-------------------------------------------------------------------
+Mon Sep 18 15:55:36 CEST 2006 - sndirsch@suse.de
+
+- updated to Mesa 6.5.1
+
+-------------------------------------------------------------------
+Sat Sep  9 10:20:15 CEST 2006 - sndirsch@suse.de
+
+- removed two source files with imcompatible license from Mesa 
+  tarball (Bug #204110)
+- added a check to specfile to make sure that these will not be 
+  reintroduced with the next Mesa update again (Bug #204110)
+
+-------------------------------------------------------------------
+Sat Aug 19 04:45:50 CEST 2006 - sndirsch@suse.de
+
+- fixed build for X.Org < 7 
+- .so/.so.1 files should be symlinks!
+
+-------------------------------------------------------------------
+Thu Aug 17 16:07:58 CEST 2006 - sndirsch@suse.de
+
+- created package 
+

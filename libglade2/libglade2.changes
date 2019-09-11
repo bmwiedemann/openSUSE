@@ -1,0 +1,274 @@
+-------------------------------------------------------------------
+Mon Mar  5 14:11:14 UTC 2018 - jengelh@inai.de
+
+- Remove ineffective --with-pic.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:34:35 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Nov 29 16:53:52 UTC 2017 - dimstar@opensuse.org
+
+- Switch to python3:
+  + Add libglade2-python3.patch: convert libglade-convert to a
+    python3 program.
+  + Export PYTHON=/usr/bin/python3 before calling configure.
+  + Replace python-devel and python-xml BuildRequires with
+    python3-devel and python3-xml.
+  + Add libtool BuildRequires and call to autoreconf: the currently
+    bootstrapped configure script can't cope with python3 version
+    comparison.
+
+-------------------------------------------------------------------
+Fri Mar  1 12:44:58 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Mon Oct 11 21:16:53 CEST 2010 - vuntz@opensuse.org
+
+- Update packaging to use the shared library packaging policy:
+  + Create libglade-2_0-0 subpackage.
+  + Add Provides/Obsoletes for libglade2 to libglade-2_0-0.
+  + Update baselibs.conf accordingly.
+- Remove explicit Requires of devel packages in devel subpackage:
+  they will be added automatically the pkgconfig() way.
+
+-------------------------------------------------------------------
+Thu Dec 17 17:14:44 CET 2009 - jengelh@medozas.de
+
+- Add baselibs.conf as a source
+- Make doc subpackage a noarch package
+
+-------------------------------------------------------------------
+Tue Mar 17 18:06:57 CET 2009 - vuntz@novell.com
+
+- Update to version 2.6.4:
+  + Fix GTK+ single includes
+  + Use G_DEFINE_TYPE instead of registering the type by hand
+  + Clean up code
+  + Remove deprecated GLib functions
+- Remove AutoReqProv: it's default now.
+- Remove unneeded BuildRequires: gnome-common, gtk-doc, indent,
+  orbit2-devel, update-desktop-files.
+- Do not call autoreconf.
+
+-------------------------------------------------------------------
+Wed Jan 21 23:31:40 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files 
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Aug 28 19:01:08 CEST 2008 - maw@suse.de
+
+- Update to version 2.6.3:
+  + glade_xml_new_from_buffer(): Do not call g_free() on a GObject
+  + Documentation:
+    * Actually show glade_xml_construct_from_buffer()
+	(Murray Cumming)
+    * Improve the book title and abstract
+    + Mention gmodule-export-2.0 for autoconnecting (bgo#446175).
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Jul 31 20:37:11 CEST 2007 - maw@suse.de
+
+- Update to version 2.6.2, which fixes building with gtk+ 2.11
+- Remove dont-disable-deprecated.patch as it is no longer needed.
+
+-------------------------------------------------------------------
+Fri Jul 27 21:25:10 CEST 2007 - maw@suse.de
+
+- Add dont-disable-deprecated.patch
+- Use %fdupes.
+
+-------------------------------------------------------------------
+Wed Jul 11 21:35:31 CEST 2007 - mauro@suse.de
+
+- Update to version 2.6.1
+- Fix for bug #326511
+- Added support for automake 1.10 and autoconf 2.6x
+
+-------------------------------------------------------------------
+Wed Feb  7 12:27:30 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552).
+
+-------------------------------------------------------------------
+Fri Dec  8 16:24:43 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Sat Jul 22 00:51:16 CEST 2006 - gekker@suse.de
+
+- Update to version 2.6.0
+  - Win32 portability fixes (Tor)
+  - Compiler warning fixes (Kjartan)
+  - Fixes for ASCII characters in entries (Matthias)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:20 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep 26 22:41:05 CEST 2005 - mls@suse.de
+
+- make devel package require base package
+
+-------------------------------------------------------------------
+Mon Apr 11 16:52:52 CEST 2005 - sbrabec@suse.cz
+
+- Fixed Requires of doc subpackage.
+
+-------------------------------------------------------------------
+Mon Mar 21 11:14:41 CET 2005 - sbrabec@suse.cz
+
+- Fixed Requires of devel subpackage (#61933).
+
+-------------------------------------------------------------------
+Wed Mar  2 22:55:02 CET 2005 - gekker@suse.de
+
+- Update to version 2.5.1 
+- Note: the update below was to 2.5.0
+-------------------------------------------------------------------
+Thu Dec 16 01:02:52 CET 2004 - gekker@suse.de
+
+- Update version
+- Change aclocal to find new xml_catalog macros 
+
+-------------------------------------------------------------------
+Mon Nov 22 20:42:44 CET 2004 - gekker@suse.de
+
+- Update version to 2.8.0 
+
+-------------------------------------------------------------------
+Thu Apr 15 18:05:42 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.3.6 (GNOME 2.6).
+
+-------------------------------------------------------------------
+Sat Jan 10 18:23:55 CET 2004 - adrian@suse.de
+
+- add %defattr and %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Jul 14 14:36:52 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Fri Jun 20 13:02:23 CEST 2003 - sbrabec@suse.cz
+
+- Created empty directory for libglade modules.
+
+-------------------------------------------------------------------
+Fri Jun 13 13:15:12 CEST 2003 - sbrabec@suse.cz
+
+- Fixed directory packaging.
+- Prefix clash fix.
+
+-------------------------------------------------------------------
+Tue May 27 16:16:45 CEST 2003 - sbrabec@suse.cz
+
+- Clean install-root.
+
+-------------------------------------------------------------------
+Fri Oct 18 17:39:13 CEST 2002 - sbrabec@suse.cz
+
+- Update to version to 2.0.1.
+- Clean up %files and splitting to sub-packages.
+
+-------------------------------------------------------------------
+Fri Sep 27 14:34:29 CEST 2002 - ro@suse.de
+
+- Added alsa alsa-devel to neededforbuild (esound)
+
+-------------------------------------------------------------------
+Thu Aug 15 14:46:39 CEST 2002 - hhetter@suse.de
+
+- branch doc package 
+
+-------------------------------------------------------------------
+Tue Aug 13 10:16:11 CEST 2002 - hhetter@suse.de
+
+- build with bonobo support (#17641)
+
+-------------------------------------------------------------------
+Fri Jun  7 08:43:38 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.0
+	* gtkdoc improvements 
+
+-------------------------------------------------------------------
+Tue Jun  4 10:24:44 CEST 2002 - hhetter@suse.de
+
+- updated to version 1.99.12, source frozen
+        * more changes to help with Murray's C++ bindings.
+          check whether GTK has a GtkPlug implementation to help with
+        * building with gtk targets other than X11.
+          Only build the docs if --enable-gtk-doc is passed to configure.
+        * pass CFLAGS and LDFLAGS to gtkdoc when building docs, in
+          case they are needed to build against the library (fixes
+          64-bit solaris issues, #81347).
+        * fix up a missing g_object_ref() call in AtkRelationSet
+          handling code.
+        * More helpful error message if glade file could not be found
+          (#80411).
+
+-------------------------------------------------------------------
+Wed May 15 11:07:33 CEST 2002 - ro@suse.de
+
+- use libdir 
+
+-------------------------------------------------------------------
+Tue Apr  9 16:16:35 CEST 2002 - hhetter@suse.de
+
+- update to version 1.99.10 [gnome desktop beta3] 
+
+-------------------------------------------------------------------
+Fri Feb  1 10:12:40 CET 2002 - hhetter@suse.de
+
+- updated to version 1.99.6 [gnome desktop alpha2] 
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:05 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Thu Jan 17 09:51:35 CET 2002 - hhetter@suse.de
+
+- filelist cleanup
+- prefix to /opt/gnome2 
+
+-------------------------------------------------------------------
+Wed Jan 16 09:02:31 CET 2002 - hhetter@suse.de
+
+- build with python-expat support 
+- provide libglade2-convert
+
+-------------------------------------------------------------------
+Fri Jan 11 08:48:55 CET 2002 - hhetter@suse.de
+
+- build with freetype2 
+
+-------------------------------------------------------------------
+Wed Jan  9 16:23:37 CET 2002 - hhetter@suse.de
+
+- initial SuSE package for GNOME 2.0 platform 
+

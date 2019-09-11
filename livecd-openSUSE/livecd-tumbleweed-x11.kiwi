@@ -1,0 +1,544 @@
+<?xml version="1.0"?>
+
+<!-- OBS-ExclusiveArch: aarch64 i586 x86_64 -->
+
+<image schemaversion="6.5" name="openSUSE-Tumbleweed-Rescue-CD" displayname="openSUSE Tumbleweed Rescue CD">
+  <description type="system">
+    <author>openSUSE Project</author>
+    <contact>opensuse@opensuse.org</contact>
+    <specification>openSUSE Live system</specification>
+  </description>
+  <profiles>
+    <profile name="noEFI" description="no EFI for x86" import="true" arch="i686"/>
+    <profile name="EFI" description="EFI" import="true" arch="x86_64,aarch64"/>
+  </profiles>
+  <preferences profiles="EFI">
+    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="uefi" volid="openSUSE_Tumbleweed_Rescue_CD" mediacheck="true"/>
+    <version>2.8.0</version>
+    <bootloader-theme>openSUSE</bootloader-theme>
+    <bootsplash-theme>bgrt</bootsplash-theme>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <locale>en_US</locale>
+    <rpm-excludedocs>true</rpm-excludedocs>
+  </preferences>
+  <preferences profiles="noEFI">
+    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="bios" volid="openSUSE_Tumbleweed_Rescue_CD" mediacheck="true"/>
+    <version>2.8.0</version>
+    <bootloader-theme>openSUSE</bootloader-theme>
+    <bootsplash-theme>bgrt</bootsplash-theme>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <locale>en_US</locale>
+    <rpm-excludedocs>true</rpm-excludedocs>
+  </preferences>
+  <users>
+    <user groups="root" name="root" password="" home="/root"/>
+  </users>
+  <packages type="image" patternType="plusRecommended">
+    <package name="kernel-default"/>
+    <package name="gfxboot-branding-openSUSE" bootinclude="true" bootdelete="true" arch="i686,x86_64"/>
+    <package name="grub2-branding-openSUSE" bootinclude="true"/>
+    <package name="dracut-kiwi-live"/>
+    <!-- workaround for bnc#892087 -->
+    <package name="e2fsprogs" bootinclude="true"/>
+    <package name="pam"/>
+    <package name="pam-config"/>
+    <package name="udev"/>
+    <package name="aaa_base"/>
+    <package name="tar"/>
+    <package name="patch"/>
+    <package name="zypper"/>
+    <package name="grub2-x86_64-efi" arch="x86_64"/>
+    <package name="grub2-arm64-efi" arch="aarch64"/>
+    <package name="memtest86+" arch="i686,x86_64"/>
+    <package name="live-langset-data"/>
+    <package name="live-add-yast-repos"/>
+    <archive name="livecd-udev.tar.xz"/>
+    
+    <!-- list-common.sh -->
+    <package name="aaa_base" replaces="poppler-data"/>
+    <ignore name="poppler-data"/>
+    <package name="aaa_base" replaces="tin"/>
+    <ignore name="tin"/>
+    <package name="aaa_base" replaces="desktop-translations"/>
+    <ignore name="desktop-translations"/>
+    <package name="aaa_base" replaces="ft2demos"/>
+    <ignore name="ft2demos"/>
+    <package name="aaa_base" replaces="libreoffice-base"/>
+    <ignore name="libreoffice-base"/>
+    <package name="aaa_base" replaces="libreoffice-mailmerge"/>
+    <ignore name="libreoffice-mailmerge"/>
+    <package name="aaa_base" replaces="libreoffice-math"/>
+    <ignore name="libreoffice-math"/>
+    <package name="aaa_base" replaces="libreoffice-filters-optional"/>
+    <ignore name="libreoffice-filters-optional"/>
+    <package name="aaa_base" replaces="libreoffice-pyuno"/>
+    <ignore name="libreoffice-pyuno"/>
+    <package name="aaa_base" replaces="readline-doc"/>
+    <ignore name="readline-doc"/>
+    <package name="aaa_base" replaces="graphviz"/>
+    <ignore name="graphviz"/>
+    <package name="aaa_base" replaces="linux-kernel-headers"/>
+    <ignore name="linux-kernel-headers"/>
+    <package name="aaa_base" replaces="bash-doc"/>
+    <ignore name="bash-doc"/>
+    <package name="aaa_base" replaces="gimp-plugins-python"/>
+    <ignore name="gimp-plugins-python"/>
+    <package name="aaa_base" replaces="patterns-openSUSE-gnome_basis_opt"/>
+    <ignore name="patterns-openSUSE-gnome_basis_opt"/>
+    <package name="aaa_base" replaces="patterns-openSUSE-gnome_admin"/>
+    <ignore name="patterns-openSUSE-gnome_admin"/>
+    <package name="aaa_base" replaces="patterns-openSUSE-gnome_multimedia_opt"/>
+    <ignore name="patterns-openSUSE-gnome_multimedia_opt"/>
+    <package name="aaa_base" replaces="patterns-openSUSE-gnome_imaging_opt"/>
+    <ignore name="patterns-openSUSE-gnome_imaging_opt"/>
+    <package name="aaa_base" replaces="patterns-openSUSE-gnome_office_opt"/>
+    <ignore name="patterns-openSUSE-gnome_office_opt"/>
+    <package name="aaa_base" replaces="patterns-openSUSE-apparmor_opt"/>
+    <ignore name="patterns-openSUSE-apparmor_opt"/>
+    <package name="aaa_base" replaces="patterns-openSUSE-enhanced_base_opt"/>
+    <ignore name="patterns-openSUSE-enhanced_base_opt"/>
+    <package name="aaa_base" replaces="patterns-openSUSE-fonts_opt"/>
+    <ignore name="patterns-openSUSE-fonts_opt"/>
+    <package name="aaa_base" replaces="patterns-openSUSE-imaging_opt"/>
+    <ignore name="patterns-openSUSE-imaging_opt"/>
+    <package name="aaa_base" replaces="patterns-openSUSE-kde_utilities_opt"/>
+    <ignore name="patterns-openSUSE-kde_utilities_opt"/>
+    <package name="aaa_base" replaces="patterns-openSUSE-multimedia_opt"/>
+    <ignore name="patterns-openSUSE-multimedia_opt"/>
+    <package name="aaa_base" replaces="patterns-openSUSE-non_oss_opt"/>
+    <ignore name="patterns-openSUSE-non_oss_opt"/>
+    <package name="aaa_base" replaces="patterns-openSUSE-office_opt"/>
+    <ignore name="patterns-openSUSE-office_opt"/>
+    <package name="aaa_base" replaces="patterns-openSUSE-x11_opt"/>
+    <ignore name="patterns-openSUSE-x11_opt"/>
+    <package name="aaa_base" replaces="patterns-gnome-gnome_basis_opt"/>
+    <ignore name="patterns-gnome-gnome_basis_opt"/>
+    <package name="aaa_base" replaces="patterns-gmome-gnome_admin"/>
+    <ignore name="patterns-gmome-gnome_admin"/>
+    <package name="aaa_base" replaces="patterns-gnome-gnome_multimedia_opt"/>
+    <ignore name="patterns-gnome-gnome_multimedia_opt"/>
+    <package name="aaa_base" replaces="patterns-gnome-gnome_imaging_opt"/>
+    <ignore name="patterns-gnome-gnome_imaging_opt"/>
+    <package name="aaa_base" replaces="patterns-gnome-gnome_office_opt"/>
+    <ignore name="patterns-gnome-gnome_office_opt"/>
+    <package name="aaa_base" replaces="patterns-base-apparmor_opt"/>
+    <ignore name="patterns-base-apparmor_opt"/>
+    <package name="aaa_base" replaces="patterns-base-enhanced_base_opt"/>
+    <ignore name="patterns-base-enhanced_base_opt"/>
+    <package name="aaa_base" replaces="patterns-base-update_test"/>
+    <ignore name="patterns-base-update_test"/>
+    <package name="aaa_base" replaces="patterns-fonts-fonts_opt"/>
+    <ignore name="patterns-fonts-fonts_opt"/>
+    <package name="aaa_base" replaces="patterns-desktop-imaging_opt"/>
+    <ignore name="patterns-desktop-imaging_opt"/>
+    <package name="aaa_base" replaces="patterns-kde-kde_utilities_opt"/>
+    <ignore name="patterns-kde-kde_utilities_opt"/>
+    <package name="aaa_base" replaces="patterns-desktop-multimedia_opt"/>
+    <ignore name="patterns-desktop-multimedia_opt"/>
+    <package name="aaa_base" replaces="patterns-openSUSE-non_oss_opt"/>
+    <ignore name="patterns-openSUSE-non_oss_opt"/>
+    <package name="aaa_base" replaces="patterns-office-office_opt"/>
+    <ignore name="patterns-office-office_opt"/>
+    <package name="aaa_base" replaces="patterns-base-x11_opt"/>
+    <ignore name="patterns-base-x11_opt"/>
+    <package name="aaa_base" replaces="make"/>
+    <ignore name="make"/>
+    <package name="aaa_base" replaces="netpbm"/>
+    <ignore name="netpbm"/>
+    <package name="aaa_base" replaces="p7zip"/>
+    <ignore name="p7zip"/>
+    <package name="aaa_base" replaces="busybox-static"/>
+    <ignore name="busybox-static"/>
+    <package name="aaa_base" replaces="inxi"/>
+    <ignore name="inxi"/>
+    <package name="aaa_base" replaces="sane-backends"/>
+    <ignore name="sane-backends"/>
+    <package name="branding-openSUSE"/>
+    <package name="gfxboot" arch="i686,x86_64"/>
+    <package name="aaa_base" replaces="glibc-32bit"/>
+    <ignore name="glibc-32bit"/>
+    <package name="aaa_base" replaces="libvdpau_r300"/>
+    <ignore name="libvdpau_r300"/>
+    <package name="aaa_base" replaces="libvdpau_radeonsi"/>
+    <ignore name="libvdpau_radeonsi"/>
+    <package name="aaa_base" replaces="libvdpau_r600"/>
+    <ignore name="libvdpau_r600"/>
+    <package name="aaa_base" replaces="pavucontrol"/>
+    <ignore name="pavucontrol"/>
+    <package name="aaa_base" replaces="libqmi-tools"/>
+    <ignore name="libqmi-tools"/>
+    <package name="aaa_base" replaces="python3-pip"/>
+    <ignore name="python3-pip"/>
+    <package name="aaa_base" replaces="multipath-tools-rbd"/>
+    <ignore name="multipath-tools-rbd"/>
+    <package name="aaa_base" replaces="xorg-x11-Xvnc"/>
+    <ignore name="xorg-x11-Xvnc"/>
+    <package name="aaa_base" replaces="cabextract"/>
+    <ignore name="cabextract"/>
+    <package name="aaa_base" replaces="sssd"/>
+    <ignore name="sssd"/>
+    <package name="aaa_base" replaces="db-utils"/>
+    <ignore name="db-utils"/>
+    <package name="aaa_base" replaces="dnsmasq"/>
+    <ignore name="dnsmasq"/>
+    <package name="aaa_base" replaces="fribidi"/>
+    <ignore name="fribidi"/>
+    <package name="aaa_base" replaces="ipmitool"/>
+    <ignore name="ipmitool"/>
+    <package name="aaa_base" replaces="irda"/>
+    <ignore name="irda"/>
+    <package name="aaa_base" replaces="lomoco"/>
+    <ignore name="lomoco"/>
+    <package name="aaa_base" replaces="mksh"/>
+    <ignore name="mksh"/>
+    <package name="aaa_base" replaces="xorg-x11"/>
+    <ignore name="xorg-x11"/>
+    <package name="aaa_base" replaces="xorg-x11-essentials"/>
+    <ignore name="xorg-x11-essentials"/>
+    <package name="aaa_base" replaces="xorg-x11-server-extra"/>
+    <ignore name="xorg-x11-server-extra"/>
+    <package name="xdm"/>
+    <package name="aaa_base" replaces="icewm"/>
+    <ignore name="icewm"/>
+    <package name="aaa_base" replaces="baekmuk-ttf-fonts"/>
+    <ignore name="baekmuk-ttf-fonts"/>
+    <package name="aaa_base" replaces="google-droid-fonts"/>
+    <ignore name="google-droid-fonts"/>
+    <package name="aaa_base" replaces="efont-unicode-bitmap-fonts"/>
+    <ignore name="efont-unicode-bitmap-fonts"/>
+    <package name="aaa_base" replaces="baekmuk-bitmap-fonts"/>
+    <ignore name="baekmuk-bitmap-fonts"/>
+    <package name="aaa_base" replaces="intlfonts-chinese-big-bitmap-fonts"/>
+    <ignore name="intlfonts-chinese-big-bitmap-fonts"/>
+    <package name="aaa_base" replaces="strace"/>
+    <ignore name="strace"/>
+    <package name="aaa_base" replaces="tcsh"/>
+    <ignore name="tcsh"/>
+    <package name="aaa_base" replaces="update-test-*"/>
+    <ignore name="update-test-*"/>
+    <package name="aaa_base" replaces="usbmuxd"/>
+    <ignore name="usbmuxd"/>
+    <package name="aaa_base" replaces="gnome-keyring-pam"/>
+    <ignore name="gnome-keyring-pam"/>
+    <package name="aaa_base" replaces="apparmor-docs"/>
+    <ignore name="apparmor-docs"/>
+    <package name="aaa_base" replaces="mutt-doc"/>
+    <ignore name="mutt-doc"/>
+    <package name="aaa_base" replaces="unar"/>
+    <ignore name="unar"/>
+    <package name="aaa_base" replaces="jing"/>
+    <ignore name="jing"/>
+    <package name="aaa_base" replaces="icedtea-web"/>
+    <ignore name="icedtea-web"/>
+    <package name="aaa_base" replaces="autofs"/>
+    <ignore name="autofs"/>
+    <package name="aaa_base" replaces="expect"/>
+    <ignore name="expect"/>
+    <package name="aaa_base" replaces="m4"/>
+    <ignore name="m4"/>
+    <package name="aaa_base" replaces="mutt"/>
+    <ignore name="mutt"/>
+    <package name="aaa_base" replaces="net-snmp"/>
+    <ignore name="net-snmp"/>
+    <package name="aaa_base" replaces="recode"/>
+    <ignore name="recode"/>
+    <package name="aaa_base" replaces="awesfx"/>
+    <ignore name="awesfx"/>
+    <package name="aaa_base" replaces="espeak"/>
+    <ignore name="espeak"/>
+    <package name="aaa_base" replaces="pam_mount"/>
+    <ignore name="pam_mount"/>
+    <package name="aaa_base" replaces="groff-full"/>
+    <ignore name="groff-full"/>
+    <package name="aaa_base" replaces="tuned"/>
+    <ignore name="tuned"/>
+    <package name="aaa_base" replaces="cups"/>
+    <ignore name="cups"/>
+    <package name="aaa_base" replaces="cups-client"/>
+    <ignore name="cups-client"/>
+    <package name="aaa_base" replaces="system-config-printer"/>
+    <ignore name="system-config-printer"/>
+    <package name="aaa_base" replaces="ghostscript"/>
+    <ignore name="ghostscript"/>
+    <package name="aaa_base" replaces="ghostscript-fonts-std"/>
+    <ignore name="ghostscript-fonts-std"/>
+    <package name="aaa_base" replaces="ghostscript-fonts-other"/>
+    <ignore name="ghostscript-fonts-other"/>
+    <package name="aaa_base" replaces="manufacturer-PPDs"/>
+    <ignore name="manufacturer-PPDs"/>
+    <package name="aaa_base" replaces="gutenprint"/>
+    <ignore name="gutenprint"/>
+    <package name="aaa_base" replaces="hplip-hpijs"/>
+    <ignore name="hplip-hpijs"/>
+    <package name="aaa_base" replaces="hplip"/>
+    <ignore name="hplip"/>
+    <package name="aaa_base" replaces="system-config-printer-applet"/>
+    <ignore name="system-config-printer-applet"/>
+    <package name="aaa_base" replaces="udev-configure-printer"/>
+    <ignore name="udev-configure-printer"/>
+    <package name="aaa_base" replaces="yast2-samba-client"/>
+    <ignore name="yast2-samba-client"/>
+    <package name="aaa_base" replaces="yast2-vpn"/>
+    <ignore name="yast2-vpn"/>
+    <package name="aaa_base" replaces="yast2-journal"/>
+    <ignore name="yast2-journal"/>
+    <package name="aaa_base" replaces="yast2-auth-client"/>
+    <ignore name="yast2-auth-client"/>
+    <package name="aaa_base" replaces="yast2-sudo"/>
+    <ignore name="yast2-sudo"/>
+    <package name="aaa_base" replaces="systemd-coredump"/>
+    <ignore name="systemd-coredump"/>
+    <package name="aaa_base" replaces="NetworkManager-vpnc-gnome"/>
+    <ignore name="NetworkManager-vpnc-gnome"/>
+    <package name="aaa_base" replaces="plasma-nm5-vpnc"/>
+    <ignore name="plasma-nm5-vpnc"/>
+    <package name="aaa_base" replaces="systemd-logger"/>
+    <ignore name="systemd-logger"/>
+    <package name="aaa_base" replaces="virtualbox-guest-tools"/>
+    <ignore name="virtualbox-guest-tools"/>
+    <package name="aaa_base" replaces="virtualbox-guest-x11"/>
+    <ignore name="virtualbox-guest-x11"/>
+    <package name="aaa_base" replaces="intel-gpu-tools"/>
+    <ignore name="intel-gpu-tools"/>
+    <package name="spice-vdagent"/>
+    <package name="aaa_base" replaces="open-vm-tools"/>
+    <ignore name="open-vm-tools"/>
+    <package name="aaa_base" replaces="usb_modeswitch"/>
+    <ignore name="usb_modeswitch"/>
+    <package name="patterns-yast-yast2_basis"/>
+    <namedCollection name="yast2_basis"/>
+    <package name="kernel-default"/>
+    <package name="kernel-firmware"/>
+    <package name="patterns-base-enhanced_base"/>
+    <namedCollection name="enhanced_base"/>
+    <package name="patterns-base-x11"/>
+    <namedCollection name="x11"/>
+    <namedCollection name="sw_management"/>
+    <package name="yast2-bootloader"/>
+    <package name="yast2-country"/>
+    <package name="yast2-hardware-detection"/>
+    <package name="yast2-network"/>
+    <package name="yast2-proxy"/>
+    <package name="yast2-storage-ng"/>
+    <package name="adaptec-firmware"/>
+    <package name="atmel-firmware"/>
+    <package name="b43-fwcutter"/>
+    <package name="bluez-firmware"/>
+    <package name="btrfsprogs"/>
+    <package name="crda"/>
+    <package name="cryptsetup"/>
+    <package name="dmidecode"/>
+    <package name="dosfstools"/>
+    <package name="e2fsprogs"/>
+    <package name="efibootmgr"/>
+    <package name="gtk2-branding-openSUSE"/>
+    <package name="insserv"/>
+    <package name="ipw-firmware"/>
+    <package name="iw"/>
+    <package name="jfsutils"/>
+    <package name="libatm1"/>
+    <package name="lsb-release"/>
+    <package name="lvm2"/>
+    <package name="memtest86+" arch="i686,x86_64"/>
+    <package name="mpt-firmware"/>
+    <package name="nano"/>
+    <package name="ntfs-3g"/>
+    <package name="open-iscsi"/>
+    <package name="pcmciautils"/>
+    <package name="pptp"/>
+    <package name="quota"/>
+    <package name="reiserfs"/>
+    <package name="rsync"/>
+    <package name="smartmontools"/>
+    <package name="smbios-utils-python" arch="i686,x86_64"/>
+    <package name="util-linux"/>
+    <package name="wireless-regdb"/>
+    <package name="wpa_supplicant"/>
+    <package name="xf86-video-ark"/>
+    <package name="xf86-video-ast"/>
+    <package name="xf86-video-ati"/>
+    <package name="xf86-video-chips"/>
+    <package name="xf86-video-cirrus"/>
+    <package name="xf86-video-fbdev"/>
+    <package name="xf86-video-glint"/>
+    <package name="xf86-video-i128"/>
+    <package name="xf86-video-mach64"/>
+    <package name="xf86-video-mga"/>
+    <package name="xf86-video-neomagic"/>
+    <package name="xf86-video-nouveau"/>
+    <package name="xf86-video-nv"/>
+    <package name="xf86-video-qxl"/>
+    <package name="xf86-video-r128"/>
+    <package name="xf86-video-savage"/>
+    <package name="xf86-video-siliconmotion" arch="i686,x86_64"/>
+    <package name="xf86-video-sis"/>
+    <package name="xf86-video-sisusb"/>
+    <package name="xf86-video-tdfx"/>
+    <package name="xf86-video-tga"/>
+    <package name="xf86-video-v4l"/>
+    <package name="xf86-video-vesa"/>
+    <package name="xf86-video-vmware" arch="i686,x86_64"/>
+    <package name="xf86-video-voodoo"/>
+    <package name="xfsdump"/>
+    <package name="xfsprogs"/>
+    <package name="xz"/>
+    <package name="yast2-trans-cs"/>
+    <package name="yast2-trans-da"/>
+    <package name="yast2-trans-de"/>
+    <package name="yast2-trans-en_GB"/>
+    <package name="yast2-trans-en_US"/>
+    <package name="yast2-trans-es"/>
+    <package name="yast2-trans-fr"/>
+    <package name="yast2-trans-hu"/>
+    <package name="yast2-trans-it"/>
+    <package name="yast2-trans-ja"/>
+    <package name="yast2-trans-pl"/>
+    <package name="yast2-trans-pt"/>
+    <package name="yast2-trans-pt_BR"/>
+    <package name="yast2-trans-ru"/>
+    <package name="yast2-trans-sv"/>
+    <package name="yast2-trans-zh_CN"/>
+    <package name="yast2-trans-zh_TW"/>
+    <package name="zd1211-firmware"/>
+    <package name="zip"/>
+    <package name="aaa_base" replaces="ntp"/>
+    <ignore name="ntp"/>
+
+    <!-- list-x11.sh -->
+    <package name="aaa_base" replaces="PackageKit"/>
+    <ignore name="PackageKit"/>
+    <package name="aaa_base" replaces="samba-libs"/>
+    <ignore name="samba-libs"/>
+    <package name="aaa_base" replaces="release-notes-openSUSE"/>
+    <ignore name="release-notes-openSUSE"/>
+    <package name="aaa_base" replaces="gnome-themes-accessibility"/>
+    <ignore name="gnome-themes-accessibility"/>
+    <package name="aaa_base" replaces="xlockmore"/>
+    <ignore name="xlockmore"/>
+    <package name="aaa_base" replaces="unzip-doc"/>
+    <ignore name="unzip-doc"/>
+    <package name="aaa_base" replaces="gtk2-immodule-inuktitut"/>
+    <ignore name="gtk2-immodule-inuktitut"/>
+    <package name="aaa_base" replaces="gtk2-immodule-thai"/>
+    <ignore name="gtk2-immodule-thai"/>
+    <package name="aaa_base" replaces="gtk2-immodule-vietnamese"/>
+    <ignore name="gtk2-immodule-vietnamese"/>
+    <package name="aaa_base" replaces="gtk2-lang"/>
+    <ignore name="gtk2-lang"/>
+    <package name="aaa_base" replaces="gtk3-immodule-inuktitut"/>
+    <ignore name="gtk3-immodule-inuktitut"/>
+    <package name="aaa_base" replaces="gtk3-immodule-thai"/>
+    <ignore name="gtk3-immodule-thai"/>
+    <package name="aaa_base" replaces="gtk3-immodule-vietnamese"/>
+    <ignore name="gtk3-immodule-vietnamese"/>
+    <package name="aaa_base" replaces="gtk3-lang"/>
+    <ignore name="gtk3-lang"/>
+    <package name="aaa_base" replaces="evince-lang"/>
+    <ignore name="evince-lang"/>
+    <package name="aaa_base" replaces="hexchat-lang"/>
+    <ignore name="hexchat-lang"/>
+    <package name="aaa_base" replaces="nano-lang"/>
+    <ignore name="nano-lang"/>
+    <package name="aaa_base" replaces="zenity-lang"/>
+    <ignore name="zenity-lang"/>
+    <package name="aaa_base" replaces="alsa"/>
+    <ignore name="alsa"/>
+    <package name="aaa_base" replaces="alsa-firmware"/>
+    <ignore name="alsa-firmware"/>
+    <package name="aaa_base" replaces="alsa-plugins"/>
+    <ignore name="alsa-plugins"/>
+    <package name="aaa_base" replaces="xscreensaver"/>
+    <ignore name="xscreensaver"/>
+    <package name="aaa_base" replaces="PackageKit-gstreamer-plugin"/>
+    <ignore name="PackageKit-gstreamer-plugin"/>
+    <package name="aaa_base" replaces="ImageMagick"/>
+    <ignore name="ImageMagick"/>
+    <package name="aaa_base" replaces="awesfx"/>
+    <ignore name="awesfx"/>
+    <package name="aaa_base" replaces="sbl"/>
+    <ignore name="sbl"/>
+    <package name="aaa_base" replaces="gnome-online-accounts"/>
+    <ignore name="gnome-online-accounts"/>
+    <package name="aaa_base" replaces="xorg-x11-fonts"/>
+    <ignore name="xorg-x11-fonts"/>
+    <package name="aaa_base" replaces="snapper"/>
+    <ignore name="snapper"/>
+    <package name="aaa_base" replaces="Mesa-libva"/>
+    <ignore name="Mesa-libva"/>
+    <package name="aaa_base" replaces="python-base"/>
+    <ignore name="python-base"/>
+    <package name="aaa_base" replaces="aspell-en"/>
+    <ignore name="aspell-en"/>
+    <package name="aaa_base" replaces="ModemManager"/>
+    <ignore name="ModemManager"/>
+    <package name="aaa_base" replaces="yast2-printer"/>
+    <ignore name="yast2-printer"/>
+    <package name="aaa_base" replaces="avahi"/>
+    <ignore name="avahi"/>
+    <package name="aaa_base" replaces="fprintd"/>
+    <ignore name="fprintd"/>
+    <package name="aaa_base" replaces="accountsservice"/>
+    <ignore name="accountsservice"/>
+    <package name="aaa_base" replaces="MozillaFirefox"/>
+    <ignore name="MozillaFirefox"/>
+    <package name="aaa_base" replaces="gcc8"/>
+    <ignore name="gcc8"/>
+    <package name="aaa_base" replaces="vim-data"/>
+    <ignore name="vim-data"/>
+    <package name="gparted"/>
+    <package name="midori"/>
+    <package name="aaa_base" replaces="cyrus-sasl"/>
+    <ignore name="cyrus-sasl"/>
+    <package name="aaa_base" replaces="deltarpm"/>
+    <ignore name="deltarpm"/>
+    <package name="patterns-xfce-xfce_basis"/>
+    <namedCollection name="xfce_basis"/>
+    <package name="evince"/>
+    <package name="evince-plugin-pdfdocument"/>
+    <package name="file-roller"/>
+    <package name="gparted"/>
+    <package name="hexchat"/>
+    <package name="leafpad"/>
+    <package name="lightdm"/>
+    <package name="lightdm-gtk-greeter"/>
+    <package name="photorec"/>
+    <package name="ristretto"/>
+    <package name="thunar"/>
+    <package name="thunar-volman"/>
+    <package name="xfce4-appfinder"/>
+    <package name="xfce4-mixer"/>
+    <package name="xfce4-notifyd"/>
+    <package name="xfce4-panel"/>
+    <package name="xfce4-panel-plugin-mixer"/>
+    <package name="xfce4-power-manager"/>
+    <package name="xfce4-session"/>
+    <package name="xfce4-settings"/>
+    <package name="xfconf"/>
+    <package name="xfdesktop"/>
+    <package name="xfwm4"/>
+    <package name="dbus-1-x11"/>
+    <package name="desktop-file-utils"/>
+    <package name="libgnomesu"/>
+    <package name="libxfce4ui-tools"/>
+    <package name="libyui-qt-pkg"/>
+    <package name="pinentry-gtk2"/>
+    <package name="shared-mime-info"/>
+    <package name="xdg-user-dirs-gtk"/>
+    <package name="xdg-utils"/>
+    <package name="NetworkManager-applet"/>
+    <package name="xfce4-panel-plugin-xkb"/>
+    <package name="xfce4-terminal"/>
+    <package name="yast2-control-center-qt"/>
+  </packages>
+  <packages type="bootstrap">
+    <package name="filesystem"/>
+    <package name="openSUSE-release"/>
+    <package name="openSUSE-release-livecd-x11"/>
+    <package name="branding-openSUSE"/>
+  </packages>
+  <repository type="rpm-md">
+    <source path="obsrepositories:/"/>
+  </repository>
+</image>

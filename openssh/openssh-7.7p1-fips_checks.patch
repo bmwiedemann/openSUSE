@@ -1,0 +1,471 @@
+# HG changeset patch
+# Parent  e9b69da9a0f8dca923f8fc2836b38fe6590c791a
+#
+# Simple implementation of FIPS 140-2 selfchecks. Use OpenSSL to generate and
+# verify checksums of binaries. Any hash iused in OpenSSH can be used (MD5 would
+# obviously be a poor choice, since OpenSSL would barf and abort immediately in
+# FIPS mode). SHA-2 seems to be a reasonable choice.
+#
+# The logic of the checks is as follows: decide whether FIPS mode is mandated
+# (either by checking /proc/sys/crypto/fips_enabled or envoroinment variable
+# SSH_FORCE_FIPS. In FIPS mode, checksums are required to match (inability to
+# retrieve pre-calculated hash is a fatal error). In non-FIPS mode the checks
+# still must be performed, unless the hashes are not installed. Thus if the hash
+# file is not found (or the hash matches), proceed in non-FIPS mode and abort
+# otherwise.
+
+Index: openssh-7.9p1/fips-check.c
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ openssh-7.9p1/fips-check.c	2019-03-12 11:42:19.299050200 +0100
+@@ -0,0 +1,34 @@
++#include "includes.h"
++#include <fcntl.h>
++#include <limits.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <sys/stat.h>
++#include <sys/types.h>
++#include <unistd.h>
++
++#include "digest.h"
++#include "fips.h"
++
++#include <openssl/err.h>
++
++#define PROC_NAME_LEN	64
++
++static const char *argv0;
++
++void
++print_help_exit(int ev)
++{
++	fprintf(stderr, "%s <-c|-w> <file> <checksum_file>\n", argv0);
++	fprintf(stderr, "	-c  verify hash of 'file' against hash in 'checksum_file'\n");
++	fprintf(stderr, "	-w  write hash of 'file' into 'checksum_file'\n");
++	exit(ev);
++}
++
++int
++main(int argc, char **argv)
++{
++    fips_ssh_init();
++	return 0;
++}
+Index: openssh-7.9p1/fips.c
+===================================================================
+--- openssh-7.9p1.orig/fips.c	2019-03-12 11:42:19.299050200 +0100
++++ openssh-7.9p1/fips.c	2019-03-12 11:43:02.363275819 +0100
+@@ -35,30 +35,293 @@
+ #include "log.h"
+ #include "xmalloc.h"
+ 
++#include <errno.h>
++#include <fcntl.h>
+ #include <string.h>
++#include <string.h>
++#include <sys/stat.h>
++#include <sys/types.h>
++#include <unistd.h>
+ #include <openssl/crypto.h>
++#include <openssl/err.h>
++#include <openssl/hmac.h>
+ 
+ static int fips_state = -1;
+ 
++/* calculates HMAC of contents of a file given by filename using the hash
++ * algorithm specified by FIPS_HMAC_EVP in fips.h and placing the result into
++ * newly allacated memory - remember to free it when not needed anymore */
+ static int
+-fips_check_required_env(void)
++hmac_file(const char *filename, u_char **hmac_out)
++{
++	int check = -1;
++	int fd;
++	struct stat fs;
++	void *hmap;
++	unsigned char *hmac;
++	unsigned char *hmac_rv = NULL;
++
++	hmac = xmalloc(FIPS_HMAC_LEN);
++
++	fd = open(filename, O_RDONLY);
++	if (-1 == fd)
++		goto bail_out;
++
++	if (-1 == fstat(fd, &fs))
++		goto bail_out;
++
++	hmap = mmap(NULL, fs.st_size, PROT_READ, MAP_SHARED, fd, 0);
++
++	if ((void *)(-1) != hmap) {
++		hmac_rv = HMAC(FIPS_HMAC_EVP(), FIPS_HMAC_KEY
++		    , strlen(FIPS_HMAC_KEY), hmap, fs.st_size, hmac, NULL);
++		check = CHECK_OK;
++		munmap(hmap, fs.st_size);
++	}
++	close(fd);
++
++bail_out:
++	if (hmac_rv) {
++		check = CHECK_OK;
++		*hmac_out = hmac;
++	} else {
++		check = CHECK_FAIL;
++		*hmac_out = NULL;
++		free(hmac);
++	}
++	return check;
++}
++
++/* find pathname of binary of process with PID pid. exe is buffer expected to
++ * be capable of holding at least max_pathlen characters
++ */
++static int
++get_executable_path(pid_t pid, char *exe, int max_pathlen)
++{
++	char exe_sl[PROC_EXE_PATH_LEN];
++	int n;
++	int rv = -1;
++
++	n = snprintf(exe_sl, sizeof(exe_sl), "/proc/%u/exe", pid);
++	if ((n <= 10) || (n >= max_pathlen)) {
++		fatal("error compiling filename of link to executable");
++	}
++
++	exe[0] = 0;
++	n = readlink(exe_sl, exe, max_pathlen);
++	/* the file doesn't need to exist - procfs might not be mounted in
++	 * chroot */
++	if (n == -1) {
++		rv = CHECK_MISSING;
++	} else {
++		if (n < max_pathlen) {
++			exe[n] = 0;
++			rv = CHECK_OK;
++		} else {
++			rv = CHECK_FAIL;
++		}
++	}
++	return rv;
++}
++
++/* Read HMAC from file chk, allocating enough memory to hold the HMAC and
++ * return it in *hmac.
++ * Remember to free() it when it's not needed anymore.
++ */
++static int
++read_hmac(const char *chk, u_char **hmac)
++{
++	int check = -1;
++	int fdh, n;
++	u_char *hmac_in;
++
++	*hmac = NULL;
++
++	fdh = open(chk, O_RDONLY);
++	if (-1 == fdh) {
++		switch (errno) {
++			case ENOENT:
++				check = CHECK_MISSING;
++				debug("fips: checksum file %s is missing\n", chk);
++				break;
++			default:
++				check = CHECK_FAIL;
++				debug("fips: ckecksum file %s not accessible\n", chk);
++				break;
++
++		}
++		goto bail_out;
++	}
++
++	hmac_in = xmalloc(FIPS_HMAC_LEN);
++
++	n = read(fdh, (void *)hmac_in, FIPS_HMAC_LEN);
++	if (FIPS_HMAC_LEN != n) {
++		debug("fips: unable to read whole checksum from checksum file\n");
++		free (hmac_in);
++		check = CHECK_FAIL;
++	} else {
++		check = CHECK_OK;
++		*hmac = hmac_in;
++	}
++bail_out:
++	return check;
++}
++
++static int
++fips_hmac_self(void)
++{
++	int check = -1;
++	u_char *hmac = NULL, *hmac_chk = NULL;
++	char *exe, *chk;
++
++	exe = xmalloc(PATH_MAX);
++	chk = xmalloc(PATH_MAX);
++
++	/* we will need to add the suffix and the null terminator */
++	check = get_executable_path(getpid(), exe
++		    , PATH_MAX - strlen(CHECKSUM_SUFFIX) - 1);
++	if (CHECK_OK != check)
++		goto cleanup;
++
++	strncpy(chk, exe, PATH_MAX);
++	strlcat(chk, CHECKSUM_SUFFIX, PATH_MAX);
++
++	check = read_hmac(chk, &hmac_chk);
++	if (CHECK_OK != check)
++		goto cleanup;
++
++	check = hmac_file(exe, &hmac);
++	if (CHECK_OK != check)
++		goto cleanup;
++
++	check = memcmp(hmac, hmac_chk, FIPS_HMAC_LEN);
++	if (0 == check) {
++		check = CHECK_OK;
++		debug("fips: checksum matches\n");
++	} else {
++		check = CHECK_FAIL;
++		debug("fips: checksum mismatch!\n");
++	}
++
++cleanup:
++	free(hmac);
++	free(hmac_chk);
++	free(chk);
++	free(exe);
++
++	return check;
++}
++
++static int
++fips_check_required_proc(void)
+ {
+ 	int fips_required = 0;
+-	char *env = getenv(SSH_FORCE_FIPS_ENV);
++	int fips_fd;
++	char fips_sys = 0;
+ 
+-	if (env) {
+-		errno = 0;
+-		fips_required = strtol(env, NULL, 10);
+-		if (errno) {
+-			debug("bogus value in the %s environment variable, ignoring\n"
+-			    , SSH_FORCE_FIPS_ENV);
+-			fips_required = 0;
+-		} else
+-			fips_required = 1;
++	struct stat dummy;
++	if (-1 == stat(FIPS_PROC_PATH, &dummy)) {
++		switch (errno) {
++			case ENOENT:
++			case ENOTDIR:
++				break;
++			default:
++				fatal("Check for system-wide FIPS mode is required and %s cannot"
++				    " be accessed for reason other than non-existence - aborting"
++				    , FIPS_PROC_PATH);
++				break;
++		}
++	} else {
++		if (-1 == (fips_fd = open(FIPS_PROC_PATH, O_RDONLY)))
++			fatal("Check for system-wide FIPS mode is required and %s cannot"
++			    " be opened for reading - aborting"
++			    , FIPS_PROC_PATH);
++		if (1 > read(fips_fd, &fips_sys, 1))
++			fatal("Check for system-wide FIPS mode is required and %s doesn't"
++			    " return at least one character - aborting"
++			    , FIPS_PROC_PATH);
++		close(fips_sys);
++		switch (fips_sys) {
++			case '0':
++			case '1':
++				fips_required = fips_sys - '0';
++				break;
++			default:
++				fatal("Bogus character %c found in %s - aborting"
++				    , fips_sys, FIPS_PROC_PATH);
++		}
+ 	}
+ 	return fips_required;
+ }
+ 
++static int
++fips_check_required_env(void)
++{
++	return (NULL != getenv(SSH_FORCE_FIPS_ENV));
++}
++
++static int
++fips_required(void)
++{
++	int fips_requests = 0;
++	fips_requests += fips_check_required_proc();
++	fips_requests += fips_check_required_env();
++	return fips_requests;
++}
++
++/* check whether FIPS mode is required and perform selfchecksum/selftest */
++void
++fips_ssh_init(void)
++{
++	int checksum;
++
++	checksum = fips_hmac_self();
++
++	if (fips_required()) {
++		switch (checksum) {
++			case CHECK_OK:
++				debug("fips: mandatory checksum ok");
++				break;
++			case CHECK_FAIL:
++				fatal("fips: mandatory checksum failed - aborting");
++				break;
++			case CHECK_MISSING:
++				fatal("fips: mandatory checksum data missing - aborting");
++				break;
++			default:
++				fatal("Fatal error: internal error at %s:%u"
++				    , __FILE__, __LINE__);
++				break;
++		}
++		fips_state = FIPS_mode_set(1);
++		if (1 != fips_state) {
++			ERR_load_crypto_strings();
++			u_long err = ERR_get_error();
++			error("fips: OpenSSL error %lx: %s"
++			    , err, ERR_error_string(err, NULL));
++			fatal("fips: unable to set OpenSSL into FIPS mode - aborting");
++		}
++	} else {
++		switch (checksum) {
++			case CHECK_OK:
++				debug("fips: checksum ok");
++				break;
++			case CHECK_FAIL:
++				fatal("fips: checksum failed - aborting");
++				break;
++			case CHECK_MISSING:
++				debug("fips: checksum data missing, but not required - continuing non-FIPS");
++				break;
++			default:
++				fatal("Fatal error: internal error at %s:%u",
++				    __FILE__, __LINE__);
++				break;
++		}
++	}
++	return;
++}
++
+ int
+ fips_mode(void)
+ {
+Index: openssh-7.9p1/fips.h
+===================================================================
+--- openssh-7.9p1.orig/fips.h	2019-03-12 11:42:13.819021490 +0100
++++ openssh-7.9p1/fips.h	2019-03-12 11:42:19.303050221 +0100
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2012 Petr Cerny.  All rights reserved.
++ * Copyright (c) 2012-2014 Petr Cerny.  All rights reserved.
+  *
+  * Redistribution and use in source and binary forms, with or without
+  * modification, are permitted provided that the following conditions
+@@ -27,6 +27,15 @@
+ #include "sshkey.h"
+ 
+ #define SSH_FORCE_FIPS_ENV	"SSH_FORCE_FIPS"
++#define FIPS_PROC_PATH		"/proc/sys/crypto/fips_enabled"
++
++#define PROC_EXE_PATH_LEN	64
++#define CHECKSUM_SUFFIX		".hmac"
++#define FIPS_HMAC_KEY		"HMAC_KEY:OpenSSH-FIPS@SLE"
++#define FIPS_HMAC_EVP		EVP_sha256
++#define FIPS_HMAC_LEN		32
++
++void	 fips_ssh_init(void);
+ 
+ typedef enum {
+ 	FIPS_FILTER_CIPHERS,
+@@ -34,6 +43,12 @@ typedef enum {
+ 	FIPS_FILTER_KEX_ALGS
+ } fips_filters;
+ 
++typedef enum {
++	CHECK_OK = 0,
++	CHECK_FAIL,
++	CHECK_MISSING
++} fips_checksum_status;
++
+ int	 fips_mode(void);
+ int	 fips_correct_dgst(int);
+ int	 fips_dgst_min(void);
+@@ -41,4 +56,3 @@ enum fp_type	 fips_correct_fp_type(enum
+ int	 fips_filter_crypto(char **, fips_filters);
+ 
+ #endif
+-
+Index: openssh-7.9p1/sftp-server.c
+===================================================================
+--- openssh-7.9p1.orig/sftp-server.c	2019-03-12 11:42:13.819021490 +0100
++++ openssh-7.9p1/sftp-server.c	2019-03-12 11:42:19.303050221 +0100
+@@ -51,6 +51,8 @@
+ #include "sftp.h"
+ #include "sftp-common.h"
+ 
++#include "fips.h"
++
+ /* Our verbosity */
+ static LogLevel log_level = SYSLOG_LEVEL_ERROR;
+ 
+@@ -1509,6 +1511,9 @@ sftp_server_main(int argc, char **argv,
+ 	extern char *optarg;
+ 	extern char *__progname;
+ 
++	/* initialize fips */
++	fips_ssh_init();
++
+ 	ssh_malloc_init();	/* must be called before any mallocs */
+ 	__progname = ssh_get_progname(argv[0]);
+ 	log_init(__progname, log_level, log_facility, log_stderr);
+Index: openssh-7.9p1/ssh.c
+===================================================================
+--- openssh-7.9p1.orig/ssh.c	2019-03-12 11:42:13.823021511 +0100
++++ openssh-7.9p1/ssh.c	2019-03-12 11:42:19.303050221 +0100
+@@ -113,6 +113,8 @@
+ #include "ssh-pkcs11.h"
+ #endif
+ 
++#include "fips.h"
++
+ extern char *__progname;
+ 
+ /* Saves a copy of argv for setproctitle emulation */
+@@ -593,6 +595,10 @@ main(int ac, char **av)
+ 	struct ssh_digest_ctx *md;
+ 	u_char conn_hash[SSH_DIGEST_MAX_LENGTH];
+ 
++    /* initialize fips - can go before ssh_malloc_init(), since that is a
++     * OpenBSD-only thing (as of OpenSSH 7.6p1) */
++	fips_ssh_init();
++
+ 	ssh_malloc_init();	/* must be called before any mallocs */
+ 	/* Ensure that fds 0, 1 and 2 are open or directed to /dev/null */
+ 	sanitise_stdfd();
+Index: openssh-7.9p1/sshd.c
+===================================================================
+--- openssh-7.9p1.orig/sshd.c	2019-03-12 11:42:13.823021511 +0100
++++ openssh-7.9p1/sshd.c	2019-03-12 11:42:19.303050221 +0100
+@@ -1485,6 +1485,10 @@ main(int ac, char **av)
+ 	Authctxt *authctxt;
+ 	struct connection_info *connection_info = NULL;
+ 
++    /* initialize fips - can go before ssh_malloc_init(), since that is a
++     * OpenBSD-only thing (as of OpenSSH 7.6p1) */
++	fips_ssh_init();
++
+ 	ssh_malloc_init();	/* must be called before any mallocs */
+ 
+ #ifdef HAVE_SECUREWARE

@@ -1,0 +1,32 @@
+From 4e19e813f328b0ca4031b7f694b4fa21eb8be890 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <stefan.raspl@de.ibm.com>
+Date: Mon, 11 Dec 2017 12:25:24 +0100
+Subject: [PATCH 25/43] tools/kvm_stat: add hint on '-f help' to man page
+
+The man page update for this new functionality was omitted.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit f3d11b0e8619bbb053d3e13f2271819fb01c1e2a)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat.txt b/tools/kvm/kvm_stat/kvm_stat.txt
+index e5cf836be8a1..e9e8e6b8a1be 100644
+--- a/tools/kvm/kvm_stat/kvm_stat.txt
++++ b/tools/kvm/kvm_stat/kvm_stat.txt
+@@ -86,7 +86,7 @@ OPTIONS
+ 
+ -f<fields>::
+ --fields=<fields>::
+-	fields to display (regex)
++	fields to display (regex), "-f help" for a list of available events
+ 
+ -h::
+ --help::
+-- 
+2.12.3
+

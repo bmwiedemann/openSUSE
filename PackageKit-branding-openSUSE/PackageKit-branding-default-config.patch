@@ -1,0 +1,13 @@
+--- a/PackageKit.conf	2014-10-21 21:16:35.698980297 +0200
++++ b/PackageKit.conf	2014-10-21 21:18:59.893478751 +0200
+@@ -16,6 +16,10 @@
+ 
+ # Shut down the daemon after this many seconds idle. 0 means don't shutdown.
+ #ShutdownTimeout=300
++#
++# for openSUSE, we want this shorter so it does not interfere with zypp/yast all the time
++# until boo#899755 is fixed (in fact it's a libzypp issue, NOT a PK issue)
++ShutdownTimeout=15
+ 
+ # Keep the packages after they have been downloaded
+ #KeepCache=false

@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon May 27 19:31:07 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.2
+  * RobotWebInterface: Fix login by using CSRF token
+  * server: Fix fetching rescue system information
+  * Expose server power state and reset options
+  * Properly encode non-scalar values in API requests
+
+-------------------------------------------------------------------
+Mon Mar  4 13:32:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.8.1:
+  * Fix few pep8 issues
+  * Support ssh pubkeys in rescue
+
+-------------------------------------------------------------------
+Sat Jun 23 13:39:17 UTC 2018 - mardnh@gmx.de
+
+- Initial package, version 0.8.0

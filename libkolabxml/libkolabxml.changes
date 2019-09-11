@@ -1,0 +1,278 @@
+-------------------------------------------------------------------
+Thu Apr 11 07:37:22 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Make sure libxerces-c-devel is installed before using
+  libkolabxml-devel.
+
+-------------------------------------------------------------------
+Tue Oct  3 06:36:40 UTC 2017 - fstrba@suse.com
+
+- Don't require gcc-java for the java bindings, since gcc-java will
+  be removed
+
+-------------------------------------------------------------------
+Thu Aug 17 12:13:06 UTC 2017 - tchvatal@suse.com
+
+- Drop patches to build against sle11:
+  * libkolabxml-0.8.3_fix_uuid_includes_SLE.patch
+  * libkolabxml-1.0.1_no-maybe-uninitialized.patch
+- Remove few sle11/old openSUSE conditions to make it more readable
+- Disable php on TW as php7 is not supported by the code and php5
+  is removed
+
+-------------------------------------------------------------------
+Mon Feb 13 08:53:00 UTC 2017 - jengelh@inai.de
+
+- RPM group fix; drop unnecessary use of %__ type macros
+
+-------------------------------------------------------------------
+Sat Feb 11 23:14:56 UTC 2017 - lbeltrame@kde.org
+
+- Add libboost_Date_time-devel and libboost_chrono-devel to 
+  requirements to make them explicit (implicitly required by 
+  libboost_thread)
+
+-------------------------------------------------------------------
+Wed Feb  8 18:49:49 UTC 2017 - wbauer@tmo.at
+
+- Add missing libboost-*-devel requirements to the devel package
+  to fix the build of dependent packages in Tumbleweed
+
+-------------------------------------------------------------------
+Wed Feb  1 12:56:50 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Wed Nov 23 17:57:39 UTC 2016 - wbauer@tmo.at
+
+- disable parallel build to hopefully fix random build failures
+
+-------------------------------------------------------------------
+Wed Nov 16 14:31:32 UTC 2016 - aj@ajaissle.de
+
+- New upstream release 1.1.6
+  + The created date is optional
+
+- New upstream release 1.1.5
+  + Support audio alarms without an attachment
+
+- New upstream release 1.1.4
+  + The tests require valid created dates
+
+- New upstream release 1.1.3
+  + The "created" property must be a UTC date-time
+
+-------------------------------------------------------------------
+Fri Jul 22 17:18:15 UTC 2016 - wbauer@tmo.at
+
+- Remove kdelibs4support-devel from the build requirements, it's
+  not needed
+
+-------------------------------------------------------------------
+Fri Jan  8 14:28:11 UTC 2016 - tittiatcoke@gmail.com
+
+- New upstream release 1.1.2
+  - Build fixes for the tests (Qt5 related)
+
+-------------------------------------------------------------------
+Fri Aug  7 09:07:10 UTC 2015 - tittiatcoke@gmail.com
+
+- New upstream release 1.1.1
+  - Qt5 support for the tests
+
+-------------------------------------------------------------------
+Mon Apr  6 14:04:04 UTC 2015 - aj@ajaissle.de
+
+- Add %bcond_with tests
+- libqt4-devel is only needed for the tests
+- Add %check section; only run %check when %{with tests} in on
+- Set minversion for some of the build requirements
+
+-------------------------------------------------------------------
+Wed Apr  1 16:59:03 UTC 2015 - aj@ajaissle.de
+
+- New upstream release 1.1.0
+- Drop patch (upstream inclusion):
+  - libkolabxml-1.0.3_make_version_attribute_not_a_fixed_value.patch
+
+-------------------------------------------------------------------
+Sat Mar 28 12:23:16 UTC 2015 - aj@ajaissle.de
+
+- Add libkolabxml-1.0.3_make_version_attribute_not_a_fixed_value.patch:
+  Instead of a fixed value, we only use a default value.
+  Fixes problems where objects created with version string '3.0dev'
+  can not be fetched/displayed.
+- Convert %with_java to %bcond_without java
+
+-------------------------------------------------------------------
+Mon Mar 23 08:08:25 UTC 2015 - schwab@suse.de
+
+- Allow building without mono bindings
+
+-------------------------------------------------------------------
+Wed Dec 10 00:24:50 UTC 2014 - aj@ajaissle.de
+
+- Reenable building for non-Factory openSUSE
+
+-------------------------------------------------------------------
+Sat Nov  8 19:01:25 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Revert the added Requires in devel subpackage from previous change:
+  if someone needs bindings explicitly, they can buildrequire them
+  explicitly
+
+-------------------------------------------------------------------
+Fri Nov  7 10:50:08 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 1.0.3
+- Cleanup with spec-cleaner
+- no-undefined disabled as php-bindings cant cope with it
+
+-------------------------------------------------------------------
+Tue Aug 26 11:17:36 UTC 2014 - aj@ajaissle.de
+
+- New upstream release 1.0.2
+
+- Dropped the following patches, as they're now included upstream:
+  - libkolabxml-1.0.1_xsd_type.patch
+  - libkolabxml-1.0.1_csharp_bindings.patch
+
+-------------------------------------------------------------------
+Mon Aug  4 13:31:17 UTC 2014 - aj@ajaissle.de
+
+- Added patch libkolabxml-1.0.1_xsd_type.patch
+  - Fix compatibility with xsd 4.0.0
+
+-------------------------------------------------------------------
+Mon Nov 25 09:58:33 UTC 2013 - aj@ajaissle.de
+
+- libkolabxml-1.0.1_no-maybe-uninitialized.patch
+  * Remove no-maybe-unititialized cxx flag from SLE builds (not supported)
+- Renamed csharp_bindings.diff to libkolabxml-1.0.1_csharp_bindings.patch
+- Renamed fix_uuid_includes_SLE.diff to libkolabxml-0.8.3_fix_uuid_includes_SLE.patch
+
+-------------------------------------------------------------------
+Thu Nov 21 13:16:57 UTC 2013 - aj@ajaissle.de
+
+- New upstream release 1.0.1
+- soname changed from 0 to 1
+
+-------------------------------------------------------------------
+Wed Nov 20 22:55:47 UTC 2013 - aj@ajaissle.de
+
+- New upstream release 0.8.5
+- csharp_bindings.diff: Fix csharp bindings
+
+-------------------------------------------------------------------
+Wed Nov 13 12:31:03 UTC 2013 - aj@ajaissle.de
+
+- Bindings require libkolabxml
+
+-------------------------------------------------------------------
+Sun Sep 15 19:29:24 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Fix build for Factory - make java subpackage owns %_libdir/java
+  directory
+
+-------------------------------------------------------------------
+Wed Jun 19 12:37:38 UTC 2013 - schwab@suse.de
+
+- Make mono bindings optional
+
+-------------------------------------------------------------------
+Sat Jun  8 21:38:31 UTC 2013 - aj@ajaissle.de
+
+- Cleaning up spec file to reduce prjconf settings
+
+-------------------------------------------------------------------
+Mon Apr 29 13:50:10 UTC 2013 - aj@ajaissle.de
+
+- Removed fix_php5_bindings.diff
+
+-------------------------------------------------------------------
+Wed Apr 24 07:50:24 UTC 2013 - aj@ajaissle.de
+
+- New upstream version 0.8.4
+  * Fixes an issue in the bindings generated (related to event vectors)
+- Disabled fix_php5_bindings.diff (fixed in 0.8.4) 
+
+-------------------------------------------------------------------
+Mon Apr 22 14:28:40 UTC 2013 - aj@ajaissle.de
+
+- Added fix_uuid_includes_SLE.diff
+- removed sed command to fix uuid includes
+- Patch only sles_version == 11
+
+-------------------------------------------------------------------
+Tue Mar 19 14:04:36 UTC 2013 - aj@ajaissle.de
+
+- Enable mono bindings for SLE 11 SP 2
+
+-------------------------------------------------------------------
+Tue Mar 19 12:45:39 UTC 2013 - aj@ajaissle.de
+
+- Use devel:tools:building when building SLE 11 SP2 (cmake, swig)
+- Removed cmake cxx flag -Wno-maybe-uninitialized
+- Fix php bindings for SLE 11 SP2
+
+-------------------------------------------------------------------
+Wed Mar 13 00:02:21 UTC 2013 - aj@ajaissle.de
+
+- Also include .pyo and .pyc files in python-kolabformat
+
+-------------------------------------------------------------------
+Fri Mar  1 15:11:24 UTC 2013 - aj@ajaissle.de
+
+- Updated spec fix SLE 11 SP2 build
+
+-------------------------------------------------------------------
+Wed Feb 27 08:45:25 UTC 2013 - aj@ajaissle.de
+
+- New upstream version 0.8.3
+  * adds capabilities to read/write a new XML format
+- Update fix_php5_bindings.diff
+
+-------------------------------------------------------------------
+Mon Jan 14 08:27:18 UTC 2013 - aj@ajaissle.de
+
+- Disabled php and mono bindings for SLES to fix the SLES build
+
+-------------------------------------------------------------------
+Thu Dec 20 00:16:20 UTC 2012 - aj@ajaissle.de
+
+- Added Patch: fix_php5_bindings.diff to fix php bindings
+  * Patch to hack src/php/CMakeList.cmake to find PHP5 on openSUSE
+
+-------------------------------------------------------------------
+Tue Nov 20 17:23:54 UTC 2012 - nico.kruber@gmail.com
+
+- Fix the SLES build (%make_install is not expanded on SLES)
+
+-------------------------------------------------------------------
+Thu Aug 16 07:57:37 UTC 2012 - toddrme2178@gmail.com
+
+- Update to 0.8.1
+  * no changelog
+- Java and Mono backends working and built now
+- Removed upstream patches
+
+-------------------------------------------------------------------
+Sun Jul 22 12:27:43 UTC 2012 - nico.kruber@gmail.com
+
+- set LIB_INSTALL_DIR correctly
+  (must be a relative path to the prefix)
+  -> fixes wrong paths in LibkolabxmlConfig.cmake
+- devel package requires libcurl-devel
+
+-------------------------------------------------------------------
+Sat Jul 21 08:30:11 UTC 2012 - toddrme2178@gmail.com
+
+- Add additional buildrequires
+
+-------------------------------------------------------------------
+Fri May  4 13:54:52 UTC 2012 - cgiboudeaux@gmx.com
+
+- Add libkolabxml 0.4.0
+
+

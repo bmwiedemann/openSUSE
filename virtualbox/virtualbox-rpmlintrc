@@ -1,0 +1,3 @@
+addFilter("incoherent-init-script-name vboxdrv")
+addFilter("incoherent-init-script-name vboxadd")
+addFilter("xorg-x11-driver-virtualbox-ose.* shlib-policy-missing-suffix")

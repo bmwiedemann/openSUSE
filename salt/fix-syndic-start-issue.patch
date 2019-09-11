@@ -1,0 +1,26 @@
+From 0b15fe1ecc3ed468714a5a8d84787ab23ac6144e Mon Sep 17 00:00:00 2001
+From: Mihai Dinca <mdinca@suse.de>
+Date: Thu, 2 May 2019 10:50:17 +0200
+Subject: [PATCH] Fix syndic start issue
+
+---
+ salt/utils/event.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/salt/utils/event.py b/salt/utils/event.py
+index d2700bd2a0..160cba9bde 100644
+--- a/salt/utils/event.py
++++ b/salt/utils/event.py
+@@ -879,7 +879,7 @@ class SaltEvent(object):
+         self.subscriber.callbacks.add(event_handler)
+         if not self.subscriber.reading:
+             # This will handle reconnects
+-            self.subscriber.read_async()
++            return self.subscriber.read_async()
+ 
+     def __del__(self):
+         # skip exceptions in destroy-- since destroy() doesn't cover interpreter
+-- 
+2.20.1
+
+

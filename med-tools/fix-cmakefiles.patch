@@ -1,0 +1,103 @@
+--- python/CMakeLists.txt.orig	2019-02-12 17:39:39.426939278 +0100
++++ python/CMakeLists.txt	2019-02-12 17:40:23.286941621 +0100
+@@ -36,7 +36,7 @@
+   ${PYTHON_LIBRARIES}
+   )
+ 
+-SET(_install_dir lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages/med)
++SET(_install_dir lib${LIB_SUFFIX}/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages/med)
+ 
+ # Ensure we will be able to run the Python tests from the build tree by outputing
+ # files into the package folder:
+--- src/CMakeLists.txt.orig	2019-02-12 17:28:50.670904631 +0100
++++ src/CMakeLists.txt	2019-02-12 19:09:44.989164422 +0100
+@@ -79,11 +79,11 @@
+   ADD_LIBRARY(medC SHARED ${medC_SOURCES})
+   SET_TARGET_PROPERTIES(medC PROPERTIES
+     VERSION   11.0.0
+-    SOVERSION 11.0.0)
++    SOVERSION 11)
+   TARGET_LINK_LIBRARIES(medC ${HDF5_LIBS} ${MPI_LIBS})
+   MED_SET_DEFINITIONS(medC NOGDI)
+   
+-  INSTALL(TARGETS medC EXPORT ${_export_group} DESTINATION lib)  
++  INSTALL(TARGETS medC EXPORT ${_export_group} DESTINATION lib${LIB_SUFFIX})  
+ ENDIF()
+ 
+ ######### Static Libraries ##########
+@@ -97,7 +97,7 @@
+   TARGET_LINK_LIBRARIES(medC_static ${HDF5_LIBS} ${MPI_LIBS})
+   MED_SET_DEFINITIONS(medC_static NOGDI)
+   
+-  INSTALL(TARGETS medC_static EXPORT ${_export_group} DESTINATION lib)
++  INSTALL(TARGETS medC_static EXPORT ${_export_group} DESTINATION lib${LIB_SUFFIX})
+ ENDIF()
+ 
+ ########################### Fortran stuff ###################################
+@@ -111,20 +111,20 @@
+     ADD_LIBRARY(medfwrap SHARED ${medfort_wrap_SOURCES})
+     SET_TARGET_PROPERTIES(medfwrap PROPERTIES
+       VERSION   11.0.0
+-      SOVERSION 11.0.0)
++      SOVERSION 11)
+     TARGET_LINK_LIBRARIES(medfwrap medC)
+-    INSTALL(TARGETS medfwrap EXPORT medfileTargetsF DESTINATION lib)
++    INSTALL(TARGETS medfwrap EXPORT medfileTargetsF DESTINATION lib${LIB_SUFFIX})
+ 
+     # Add Shared MED library
+     ADD_LIBRARY(med SHARED MEDiterators.c)
+     SET_TARGET_PROPERTIES(med PROPERTIES
+       VERSION   11.0.0
+-      SOVERSION 11.0.0)
++      SOVERSION 11)
+     TARGET_LINK_LIBRARIES(medfwrap medC)
+     TARGET_LINK_LIBRARIES(med medfwrap)    
+    
+     # Install only the resulting library:
+-    INSTALL(TARGETS med EXPORT medTargetsF DESTINATION lib)
++    INSTALL(TARGETS med EXPORT medTargetsF DESTINATION lib${LIB_SUFFIX})
+   ENDIF()
+ 
+   ######### Static Libraries ##########
+@@ -137,7 +137,7 @@
+     ADD_LIBRARY(medfwrap_static STATIC ${medfort_wrap_SOURCES})
+     SET_TARGET_PROPERTIES(medfwrap_static PROPERTIES OUTPUT_NAME medfwrap)
+     TARGET_LINK_LIBRARIES(medfwrap_static medC_static)
+-    INSTALL(TARGETS medfwrap_static EXPORT medfileTargetsF DESTINATION lib)
++    INSTALL(TARGETS medfwrap_static EXPORT medfileTargetsF DESTINATION lib${LIB_SUFFIX})
+     
+     # Add Static MED library
+     ADD_LIBRARY(med_static STATIC MEDiterators.c)
+@@ -145,7 +145,7 @@
+     TARGET_LINK_LIBRARIES(med_static medfwrap_static)
+ 
+     # Install only the resulting library:  
+-    INSTALL(TARGETS med_static EXPORT medfileTargetsF DESTINATION lib)
++    INSTALL(TARGETS med_static EXPORT medfileTargetsF DESTINATION lib${LIB_SUFFIX})
+   ENDIF()
+   
+ ENDIF(CMAKE_Fortran_COMPILER_WORKS)
+--- tools/medimport/CMakeLists.txt.orig	2019-02-12 17:51:49.514978269 +0100
++++ tools/medimport/CMakeLists.txt	2019-02-12 19:10:06.645165578 +0100
+@@ -53,10 +53,10 @@
+   ENDIF()
+   SET_TARGET_PROPERTIES(medimportengine PROPERTIES
+     VERSION   0.3.0
+-    SOVERSION 0.3.0)
++    SOVERSION 0)
+   TARGET_LINK_LIBRARIES(medimportengine medC)
+   SET_TARGET_PROPERTIES(medimportengine PROPERTIES OUTPUT_NAME medimport)
+-  INSTALL(TARGETS medimportengine DESTINATION lib)
++  INSTALL(TARGETS medimportengine DESTINATION lib${LIB_SUFFIX})
+   SET(_lib_to_link "medimportengine")
+ ENDIF()
+ 
+@@ -66,7 +66,7 @@
+   TARGET_LINK_LIBRARIES(medimportengine_static medC_static)
+   MED_SET_DEFINITIONS(medimportengine_static MED3_USESTATIC)
+   SET_TARGET_PROPERTIES(medimportengine_static PROPERTIES OUTPUT_NAME medimport)
+-  INSTALL(TARGETS medimportengine_static DESTINATION lib)
++  INSTALL(TARGETS medimportengine_static DESTINATION lib${LIB_SUFFIX})
+   # Give precendence to the shared object for the linking of 
+   # the executable medimport:
+   IF(NOT _lib_to_link)

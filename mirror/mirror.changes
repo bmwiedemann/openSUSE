@@ -1,0 +1,174 @@
+-------------------------------------------------------------------
+Wed Jun 27 11:07:55 UTC 2018 - tchvatal@suse.com
+
+- Make sure to install license using %license macro
+
+-------------------------------------------------------------------
+Wed Jun 27 07:57:34 UTC 2018 - zawel1@gmail.com
+
+- minor patch to remove warning: dump -> CORE::dump
+  * mirror-dump.patch
+
+-------------------------------------------------------------------
+Tue Jan 31 13:26:48 UTC 2017 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner, use sane description bsc#1022798
+- Refresh patches to use unified diff:
+  * dont-build-as-root.diff
+  * mirror-2.9.gzip.patch
+  * mirror-2.9.name_map-default.patch
+  * mirror-2.9.patch
+  * mirror-2.9.y2k-fix.patch
+  * mirror-exec-path.dif
+  * mirror-timelocal.patch
+  * mirror-2.9.ftp-ls-timeout.patch
+
+-------------------------------------------------------------------
+Wed Mar 27 09:14:59 CET 2013 - zawel1@gmail.com
+
+- mirror-timelocal.patch: timelocal.pl was long obsolete and was removed
+  in recent perl, it was substituted with simple call to Time::Local
+  (bnc#811955)
+
+-------------------------------------------------------------------
+Wed May  9 13:26:01 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-mirror
+  See the explanation added in the spreadsheet linked at
+  license.opensuse.org (SUSE-mirror is a new addition to that spreadsheet)
+
+-------------------------------------------------------------------
+Mon Dec  4 16:08:52 CET 2006 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:19 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Aug 20 20:07:33 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 28 16:44:46 CEST 2003 - ro@suse.de
+
+- install perl stuff to vendor location 
+
+-------------------------------------------------------------------
+Fri Jul 19 16:57:31 CEST 2002 - poeml@suse.de
+
+- mirror-master: 'exec ./mirror' -> 'exec mirror'
+
+-------------------------------------------------------------------
+Fri Mar 15 11:56:53 CET 2002 - ro@suse.de
+
+- switch default from compress to gzip
+- remove requires to compress 
+
+-------------------------------------------------------------------
+Tue Jul 31 09:58:07 CEST 2001 - adostal@suse.cz
+
+- convert gz to bz2 and dif to patch 
+
+-------------------------------------------------------------------
+Wed May  9 04:10:14 MEST 2001 - draht@suse.de
+
+- s/unallowed/illegal/
+  Language problem fixed in mirror-2.9.dif
+
+-------------------------------------------------------------------
+Mon Mar 12 11:34:04 MET 2001 - draht@suse.de
+
+- added y2k fix provided by Andreas Schwab against dateconv.pl,
+  mirror-2.9.y2k-fix.dif
+- added fix against timeouts in directory listings 
+  mirror-2.9.ftp-ls-timeout.dif
+- added change against ".." in pathnames provided from remote,
+  mirror-2.9.name_map-default.dif (against mirror.defaults).
+
+-------------------------------------------------------------------
+Thu Nov  9 09:18:02 CET 2000 - cihlar@suse.cz
+
+- clean up spec file
+- fixed file list
+
+-------------------------------------------------------------------
+Fri Jul 21 14:45:59 CEST 2000 - cihlar@suse.cz
+
+- added more documentation
+
+-------------------------------------------------------------------
+Wed May 17 11:08:27 CEST 2000 - cihlar@suse.cz
+
+- Group sorted 
+
+-------------------------------------------------------------------
+Wed Apr  5 15:54:59 CEST 2000 - cihlar@suse.cz
+
+- added BuildRoot
+- clean up spec file 
+
+-------------------------------------------------------------------
+Fri Jan 21 00:56:45 CET 2000 - ro@suse.de
+
+- manpages to /usr/share/man 
+
+-------------------------------------------------------------------
+Mon Dec  6 14:40:13 CET 1999 - ro@suse.de
+
+- update to 2.9 
+- config-file "mirror.defaults" resides in perl_sitelib now
+- re-added security patch
+- added requires compress
+
+-------------------------------------------------------------------
+Sun Nov  7 20:11:59 CET 1999 - ro@suse.de
+
+- removed ~ from deny-list 
+
+-------------------------------------------------------------------
+Thu Sep 30 13:17:43 CEST 1999 - bs@suse.de
+
+- applied security fix for german umlauts etc.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Oct 22 12:16:48 MEST 1998 - bs@suse.de
+
+- added package name to mail subject.
+
+-------------------------------------------------------------------
+Fri Oct 16 15:13:47 MEST 1998 - bs@suse.de
+
+- added ftp.pl lchat.pl lsparse.pl with some fixes to get passive ftp working.
+
+----------------------------------------------------------------------------
+Tue May 27 20:03:59 MEST 1997 - florian@suse.de
+
+- new version 2.8.f4
+- include chat2.pl, as perl5.004 does not
+
+
+----------------------------------------------------------------------
+Tue Mar 18 11:24:52 CET 1997 - bs@suse.de
+
+- echo how many files to get even if debug is disabled.
+
+----------------------------------------------------------------------
+Fri Oct 18 12:31:04 MET DST 1996 - bs@suse.de
+
+- printing how many files are left.
+- 'timezone-confusion-patch' by emoenke@gwdg.de
+
+----------------------------------------------------------------------
+Sun Aug 25 19:28:50 MET DST 1996 - florian@suse.de
+
+- added some known bug-fixes to mirror
+- made it work with perl5.003

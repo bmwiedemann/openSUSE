@@ -1,0 +1,777 @@
+-------------------------------------------------------------------
+Fri May 17 18:42:59 UTC 2019 - Meera Belur <mbelur@suse.com>
+
+- Update to version 3.141.0
+  + Bump version to a better approximation of Π
+  + Improved Test build targets
+  + fix os path in test for Windows
+  + use 'NUL' for /dev/null on Windows
+  + Update ctor docstrings to explain that a directory passed in is cloned. Fixes #6542
+  + Allow passing of service_args to Safari. Fixes #6459
+  + Remove element equals url
+  + Improved WebExtension support 
+
+-------------------------------------------------------------------
+Fri Sep 21 07:49:59 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to version 3.14.1:
+  + Fix ability to set timeout for urllib3 (#6286)
+  + get_cookie uses w3c endpoint when compliant
+  + Remove body from GET requests (#6250)
+  + Fix actions pause for fraction of a second (#6300)
+  + Fixed input pausing for some actions methods
+  + Capabilities can be set on Options classes
+  + WebElement rect method is now forward compatible for OSS
+    endpoints (#6355)
+  + Deprecation warnings now have a stacklevel of 2
+  + keep_alive can now be set on Webdriver init (#6316)
+  + isDisplayed atom is now used for all w3c compliant browser,
+    fixing issue with Safari 12
+- Ship license file
+
+-------------------------------------------------------------------
+Fri Aug  3 11:55:47 UTC 2018 - tchvatal@suse.com
+
+- Run the tests, taken from upstream git and issue filled upstream
+
+-------------------------------------------------------------------
+Fri Aug  3 08:44:01 UTC 2018 - idonmez@suse.com
+
+- Update to version 3.14.0
+  * [py] Fix doc of URL-related ExpectedCondition (#6236) 
+
+-------------------------------------------------------------------
+Sun Jul  1 19:18:04 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * be more specific for %{python_sitelib}/* in %files
+
+-------------------------------------------------------------------
+Sun Jul  1 17:46:04 UTC 2018 - arun@gmx.de
+
+- update to version 3.13.0:
+  * Add executing Chrome devtools command (#5989)
+  * fix incorrect w3c action encoding in python client (#6014)
+  * Implement context manager for WebDriver
+  * Stop sending "windowHandle" param in maximize_window command for
+    w3c
+
+-------------------------------------------------------------------
+Thu May 10 15:09:23 UTC 2018 - arun@gmx.de
+
+- update to version 3.12.0:
+  * no changelog available
+
+-------------------------------------------------------------------
+Sat Mar 24 18:51:28 UTC 2018 - arun@gmx.de
+
+- update to version 3.11.0:
+  * No changes just keeping python version in step with the rest of
+    the project.
+
+-------------------------------------------------------------------
+Mon Mar  5 16:30:50 UTC 2018 - arun@gmx.de
+
+- update to version 3.10.0:
+  * make tests to check clicking on disabled element work for w3c
+    compliant drivers (#5561)
+  * add docstring for InvalidElementStateException. Fixes #5520
+  * Deleting unused imports
+  * Making python specification in IDEA project more generic
+  * It should be possible to use a custom safaridriver executable to
+    run Selenium's test suite.
+
+-------------------------------------------------------------------
+Tue Feb  6 22:36:53 UTC 2018 - arun@gmx.de
+
+- update to version 3.9.0:
+  * Add docstrings to WebElement find methods (#5384)
+  * Additional data in unexpected alert error is now handled for w3c
+    drivers (#5416)
+  * Allow service_args to be passed into Firefox WebDriver (#5421)
+  * Fix bug introduced with response logging in 3.8.1 (#5362)
+
+-------------------------------------------------------------------
+Thu Jan 18 06:10:55 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 3.8.1:
+  * Fix bug when creating an Opera driver (#5266)
+  * Stop sending sessionId in w3c payload. (#4620)
+  * Fix issue with w3c actions releasing on element (#5180)
+  * A more descriptive log message is displayed if the port cannot be
+    connected (#2913)
+  * Initialize Alert object by calling alert.text (#1863)
+  * PhantomJS is now deprecated, please use either Chrome or Firefox
+    in headless mode
+  * Legacy Firefox driver: ensuring copy of profile dir, its
+    'extensions' subdir and 'user.js' file are writable. (#1466)
+
+- changes from version 3.8.0:
+  * Firefox options can now be imported from selenium.webdriver as
+    FirefoxOptions (#5120)
+  * Headless mode can now be set in Chrome Options using
+    `set_headless`
+  * Headless mode can now be set in Firefox Options using
+    `set_headless`
+  * Add the WebKitGTK WebDriver and options class (#4635)
+  * Browser options can now be passed to remote WebDriver via the
+    `options` parameter
+  * Browser option parameters are now standardized across drivers as
+    `options`. `firefox_options`, `chrome_options`, and `ie_options`
+    are now deprecated
+  * Added missing W3C Error Codes (#4556)
+  * Support has been removed for Python versions 2.6 and 3.3
+
+- changes from version 3.7.0:
+  * need to pass applicable environment variables to tox
+  * Fix active_element for w3c drivers (#3979)
+  * add support for minimize command
+  * add support for fullscreen command
+  * window rect commands should fail on firefox and remote (legacy)
+  * Fix python backward compatibility for window commands (#4937)
+  * Update docstrings to specify the type of path needed to install
+    firefox addons. (#4881)
+  * Update python chromeOptions key for capabilities (#4622)
+  * Fix python pause action implementation (#4795)
+
+-------------------------------------------------------------------
+Sun Oct  8 09:13:11 UTC 2017 - jengelh@inai.de
+
+- Remove future plans from description.
+
+-------------------------------------------------------------------
+Sun Oct  1 19:07:40 UTC 2017 - mimi.vx@gmail.com
+
+- Update to 3.6.0
+  * Fix package name in python webelement module (#4670)
+  * Fix python driver examples (#3872)
+  * No need to multiply pause by 1000
+  * Add pause to action chains
+  * only check for proxyType once
+  * lowercase proxy type for w3c payload in python #4574
+  * guarding against null return value from find_elements in python #4555
+  * remove unnecessary pytest marking, address flake8 issues
+  * allow IE WebDriver to accept IE Options
+  * add IE Options class
+  * convert OSS capabilities to W3C equivalent for W3C payload
+  * Add Safari to API docs
+  * Numerous test fixes
+  * Iterate over capabilities in a way to support py2.7 and py3
+  * Fix W3C switching to window by name.
+  * Support GeckoDriver addon install/uninstall commands  #4215.
+  * Move firefox_profile into moz:firefoxOptions.
+  * Filter non-W3C capability names out of alwaysMatch.
+  * Honor cmd line args passed to Service ctor (#4167)
+  * Add expected conditions based on URL to Python Expected Conditions #4160
+  * Add network emulation to Chrome Python bindings (#4011)
+  * add warning when saving incorrectly named screenshot (#4141)
+
+-------------------------------------------------------------------
+Wed May  3 16:38:33 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 3.4.1
+  * Add back the ability to set profile when using Firefox 45ESR. Fixes #3897
+- Update to version Selenium 3.4.0
+  * Correct usage of newSession around `firstMatch` and `alwaysMatch`
+  * Remove superfluous capabilities that are not needed
+  * Add expected condition that waits for all found elements to be visible (#3532)
+  * Allow methods wrapped by EventFiringWebDriver and EventFiringWebElement (#806)
+  * Dropping `javascriptEnabled` capability for real browsers
+  * Use W3C check from parent object instead of assuming from capabilities
+  * Bump example source distribution to match latest release.
+  * Replace TypeError with KeyError in remote webdriver error handler code (#3826)
+  * When testing Marionette use default capabilities in testing
+  * Conform to the api of urllib2 for adding header for a request (#3803)
+  * Add `text` key to alert#sendKeys parameters for W3C Endpoint
+  * Location once scrolled into view should use W3C executeScript endpoint not JSONWP
+  * Fixed the usage information in documentation of "save_screenshot". (#3804)
+  * Add Element Not Interactable exception
+  * Clean up imports in error handler
+  * flake8 cleanup
+- Update to version Selenium 3.3.3
+  * make w3c execute_script commands unique
+- Update to version Selenium 3.3.2
+  * Update window commands to use W3C End points
+  * Update Alert when in W3C mode to use W3C Endpoints
+  * Update to new W3C Execute Script end points
+  * Add setting/getting proxy details to Firefox Options
+  * Deprecate the use of browser profile when instantiating a session
+  * Update start session to handle the W3C New Session
+  * Add get/set window rect commands
+  * Add InvalidArgumentException
+  * When passing in `text` to send_keys, make sure we send a string not array
+  * Fix string decoding in remote connection (#3663)
+  * Fix indentation to satisfy PEP8
+  * Try use old way of setting page load timeout if new way fails. Fixes #3654
+  * fix file uploads for Firefox
+  * Run unit tests on Python 3.3, 3.4, and 3.5 (#3638)
+  * Fix indentation in double_click.
+  * Fix non-W3C page load timeout setting.
+- Update to version Selenium 3.3.1
+  * Fix encoding of basic auth header when using Python 3 Fixes #3622
+  * Add initial unit test suite
+  * Update W3C Timeout setting to be in line with the specification
+  * support.ui.Select class inherits from object (#3067)
+  * fix bug in proxy constructor that some properties are not proper set (#3459)
+  * Fix flake8 issues (#3628)
+- Update to version Selenium 3.3.0
+  ** Note ** If you are updating to this version, please also update GeckoDriver to v0.15.0
+  * Fix python HTTPS encoding for python driver (#3379)
+  * Allow Firefox preferences to be set directly in Options
+  * Fix shutdown and process termination (#3263)
+  * Preventing exception if log_path is none or empty. Fixes #3128
+  * Add the W3C capability to Firefox for accepting insecure certificates
+  * Initial implementation of Pointer Actions
+  * Only skip tests if driver name matches a directory name.
+  * Update calls that return a pure object with keys to look for 'value' key
+  * Initial W3C Actions support
+  * fix docs output directory
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Mon Mar  6 11:56:11 UTC 2017 - boris@steki.net
+
+- updated to latest official release 3.0.2
+
+
+-------------------------------------------------------------------
+Tue Sep 20 14:25:14 UTC 2016 - aplanas@suse.com
+
+- Workaround for finding binary firefox driver in X86_64 patform
+
+-------------------------------------------------------------------
+Mon Sep 12 14:26:01 UTC 2016 - aplanas@suse.com
+
+- Update to Selenium 2.53.0 (2.53.6 in Pypi)
+    * Adding Options object for use with Python FirefoxDriver
+    * Fixed improper usage of super in exceptions module
+    * create a temp file for cookies in phantomjs if not specified
+    * Pass in the executable that FirefoxBinary finds to the service
+      if there isnt one passed in as a kwarg or capability
+    * Applied some DRY and extracted out the keys_to_typing()
+    * Fix deselecting options in <select>
+- Changes from Selenium 2.52.0
+    * Fixing case where UnexpectedAlertException doesn't get the
+      alert_text in the error object
+    * Firefox: Actually use launch_browser timeout Fixes #1300
+- Changes from Selenium 2.51.1
+    * correcting bundling issue missing README.rst file
+- Changes from Selenium 2.51.0
+    * Firefox updates (see java changelog)
+
+-------------------------------------------------------------------
+Tue Feb  2 11:00:54 UTC 2016 - dmacvicar@suse.de
+
+- Update to Selenium 2.50.1
+    * Fixing error message handling. Fixes issue #1497
+    * Fixing error message handling. Fixes issue #1507
+    * Update webelement to handle W3C commands for size/location and rect
+    * rewrite click scrolling tests to match the Java ones
+- Changes from Selenium 2.50.0
+    * handle potential URLError from sending shutdown, set self.process to None after it's already been quit
+    * Add support for submit() with W3C compliant endpoint
+- Changes from Selenium 2.49.1
+    * Ensure you can close stream before attempting to close it.
+    * message response may cause json loads ValueError when it's not actually json
+      and just a string (like the message that occurs when firefox driver thinks
+      another element will receive the click)
+    * Cleanup some error handling when sniffing what protocol you are speaking
+- Changes from Selenium 2.49.0
+    * Have Firefox service write to a file instead of PIPE
+    * on osx for firefox, fallback to checking homebrew install, if the default isn't there
+    * Added Firefox path variable for string placeholder
+    * Update README to show Python 3.2+
+    * refactoring all the service classes to use a common one.
+    * Add Firefox specific command to switch context between Browser content and Browser chrome
+    * updating files after go copyright:update
+    * Use specificationLevel to know that we are speaking GeckoDriver
+    * Bug fixes: #1294, #1186
+- Changes from Selenium 2.48.0
+    * Update error pulling to match spec when we encounter a spec compliant browser.
+    * Disable tests that are not working with Marionette when running Marionette tests
+    * Add the ability to run python marionette tests
+    * Python 3 compatibility for remote Authorization
+    * changing casing of children finding tests
+- Changes from Selenium 2.47.3
+    * Bring back py 3 support
+- Changes from Selenium 2.47.2
+    * Fix running Edge driver locally on win10
+    * adding repr to WebDriver and WebElement
+- Changes from Selenium 2.47.1
+    * Fix the issue of deleting the profile when shutting down Firefox
+    * WebElement __eq__ compares against more types
+    * Issues fixed: 850
+- Changes from Selenium 2.47.0
+    * Add in support for when communicating with a Spec compliant browsers
+    * Initial support for Edge using EdgeDriver
+    * Issues fixed: 818
+- Changes Selenium 2.46.1
+    * Adding ability to make remote call for webelement screenshots in accordance to the W3C spec
+    * Adding api to authenticate HTTP Auth modal dialogs via driver.switch_to.alert (beta)
+    * Add rebeccapurple to Color Object
+    * Add element screenshot
+    * Add service handler and minimal update to driver to use service for Marionette
+    * Add the ability to start FirefoxDriver backed with Marionette via a capability
+    * support socket timeout for connections
+    * free_port checks if port is available on all interfaces
+    * Allow error handling to handle both current errors and w3c errors
+    * Update find_elements to match spec
+    * phantomjs: service: remove unused import of signal
+    * phantomjs: add port information to WebDriverException
+    * Issues fixed (Github): 478, 612, 734, 780
+
+-------------------------------------------------------------------
+Thu Jul 16 08:14:50 UTC 2015 - mcihar@suse.cz
+
+- Remove foreign architecture binaries to avoid cross architecture dependencies
+
+-------------------------------------------------------------------
+Thu Jul 16 08:04:26 UTC 2015 - mcihar@suse.cz
+
+- Remove ExclusiveArch as the package is moslty noarch, the only exception
+  being optional addon for Firefox.
+
+-------------------------------------------------------------------
+Thu Jul 16 07:57:32 UTC 2015 - mcihar@suse.cz
+
+- Update to 2.46.0:
+    * Firefox support up to 38
+    * BlackBerry browser support
+    * remove Presto-Opera support
+    * firefox extension extraction fixes 
+    * process management fixes with phantomjs
+    * Comparing remote web element for equality does not require a remote command
+    * Issues Fixed: (gcode) 8493, 8521, 8498, 8274, 8497, 5923
+    * Issues Fixed: (github) 401
+
+-------------------------------------------------------------------
+Thu Apr 23 09:13:15 UTC 2015 - mcihar@suse.cz
+
+- Update to 2.45.0:
+  * Firefox support up to 35, support for native events up to 34.
+  * Make Opera driver support also the new Blink based Opera
+  * README: Fix the Yahoo example
+  * WebElement docstring fixes
+  * Add debugger_address option to the ChromeDriver options list to optionally instruct ChromeDriver to wait for the target devtools instance to be started at a given host:ip
+  * Set default value for PhantomJS process reference
+  * Allow setting of FileDetector for send_keys
+  * Pass info to TimeoutException in WebDriverWait
+  * Issues Fixed: 8065, 8310, 8539
+
+-------------------------------------------------------------------
+Thu Sep 11 12:24:55 UTC 2014 - toddrme2178@gmail.com
+
+- Update to version 2.43
+  * Expand WebElement.get_attribute API docs
+  * firefox may be installed without admininstrator privileges
+    and therefore there may be no HKEY_LOCAL_MACHINE entry. 
+    Issue #7784
+  * UnexpectedAlertPresentException should contain the alert text 
+    in python too. Issue #7745
+  * don't mutate the global 'ignored exceptions', take a copy of 
+    the globally specified ones, change the global to be a tuple 
+    instead. Issue #7725
+  * raise exception when the firefox binary isn't actually found, 
+    which usually implies the upgrade failed (on windows) 
+    Issue #6092 ,#6847
+  * Fixing NameError: global name 'options' is not defined.
+  * Remove unused import subprocess.PIPE
+  * Redirect Firefox output to /dev/null by default 
+    Fixes Issue #7677
+  * More flexible management of http timeouts in Selenium RC python 
+    client
+  * Generate Python API docs for selenium.webdriver.chrome.options. 
+    Fixes issue #7471
+  * Use 127.0.0.1 as localhost name resolving might fail on some 
+    systems
+
+-------------------------------------------------------------------
+Wed Aug  6 09:22:55 UTC 2014 - toddrme2178@gmail.com
+
+- Update to version 2.42.1
+  * Fixed Py3 issues
+  * Make firefox_binary.py and firefox_profile.py not executable
+  * Make exceptions Python 3 compatible
+- Update to version 2.42
+  * Support for Firefox 29 Native Events
+  * "remote_url" and "remote_browser" parameters for "./go test_remote".
+  * missing __init__ in new android module
+  * issue #7304 Fix memory leak caused by __del__ in PhantomJS
+  * File upload using remotedriver on python3
+  * Updating xpi install to align with mozprofile
+  * command_executor should also support unicode strings as well.
+- Update to version 2.41
+  * Support for Firefox 28
+  * deprecating switch_to_* in favour of driver.switch_to.*
+- Update to version 2.40
+  * Support for Firefox 27
+  * Fixes related to http connection
+  * Fix for phantomjs running on windows #6736
+- Update to version 2.39
+  * Support for Firefox 26
+- Update to version 2.38.4
+  * keep-alive can't be used for phantomjs / IE, fix for that and tested for py3 :)
+- Update to version 2.38.3
+  * really supporting py3 :)
+- Update to version 2.38.2
+  * py3 support (once again)
+- Update to version 2.38.1
+  * fix packaging problem where firefox/webdriver_prefs.json was missing
+- Update to version 2.38
+  * Support for Firefox 25
+  * FirefoxProfile now using common webdriver.json instead of having our own copy in py
+  * Set proper 'Accept' request header so that Python bindings work with some old WebDriver implementations that reply 404 to requests with no 'Accept' set.
+  * handle redirect response explicitly (since switching to using keep-alive)
+  * phantomjs service needs to really kill the spawned process Issue #5921
+  * removing old api endpoints from command listing
+  * using keep-alive for remote connection
+  * adjusting phantomjs subprocess.Popen
+  * ActionsChains.send_keys should use <session>/keys endpoint Issue #6348
+  * fix TypeError in chrome_options.extensions for Python3.x
+  * Other Bugs Fixed: #6531, #6513, #4569, #6454
+
+-------------------------------------------------------------------
+Tue Nov 19 20:02:53 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 2.37.2
+  + fix regression added with unicode fix
+  + Bug fix #6360
+- Changes from 2.37.1
+  + fix find_elements on webelement using unicode locators and py 2.7
+- Changes from 2.37
+  + repackage with fix for Firefox native events on Linux
+  + fix issue with unicode By locators w/ python 2.7 #6430
+- Changes from 2.36
+  + Added Safari WebDriver. Fixes issue 5352.
+  + fix platform for safari caps
+  + Convert all offsets/coordinates/speeds into integers
+  + Fix drag and drop by offset behaviour
+  + Fix initialization of Proxy by capabilities when proxyType is set
+  + Enable SOCKS proxy support
+  + Validation of passed locator for find_element(s) methods #5690
+  + Adding support for /status, /sessions commands
+  + Doc fixes
+  + ability to set Chrome extensions by using base64 encoded strings #4013
+  + fix logic regarding Select.select_by_visible_text #3910
+  + Bugs fixed: #6165, #6231
+- Add CHANGES to documentation included in package
+- Use download Url as source
+
+-------------------------------------------------------------------
+Tue Aug 13 10:13:37 UTC 2013 - dmueller@suse.com
+
+- update to 2.35.0:
+  * Remove duplicate 'get screenshot as file' methods.  Add method 'get_screenshot_as_png'
+  * fixing UnicodeEncodeError on get attribute of webelement
+
+-------------------------------------------------------------------
+Thu Aug  8 20:41:58 UTC 2013 - dmueller@suse.com
+
+- update to 2.34.0:
+ * Corrected webdriverbackedselenium session handling.
+ * Corrected use of basestring for python 3.
+ * Support for Firefox 22
+ * Added support for logging from the browser
+ * corrected proxy handling on FirefoxProfile
+ * Corrected handling of chrome extensions. Fixes issue 5762
+ * getText() ignores elements in the <head>
+ * Adding both official and informal string representations to Color object.
+ * Replace distutils.dir_util by shutil
+ * Allow finding firefox binary at ProgramFiles(x86) on windows(64 bit)
+ *  Py3 compatible winreg import and content-type access
+
+-------------------------------------------------------------------
+Mon Apr 29 11:31:01 UTC 2013 - dmueller@suse.com
+
+- update to 2.32.0:
+  * Support for FF20 Native Events
+  * Allow easy FirefoxBinary subclassing
+
+-------------------------------------------------------------------
+Thu Feb 28 13:16:56 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 2.31.0:
+  * Support for FF19 native events
+  * web element equality is now in conformance with other language
+    bindings
+
+-------------------------------------------------------------------
+Tue Feb 19 20:33:36 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 2.30.0:
+  * Allow env to be specified for the chromedriver service.
+  * Allow log path to be specified for phantomjs driver service.
+  * Bug Fixes: 4608 4940 4974 5034 5075.
+
+-------------------------------------------------------------------
+Thu Jan 17 23:51:31 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 2.29.0:
+  * Allow subclassing of driver and have the ability to send_keys
+    Issue 4877, 5017
+  * Simplifying save_screenshot and allow phantomjs to take
+    screenshots
+- Removed LICENSE file from %doc because it was removed from upstream
+  source.
+
+-------------------------------------------------------------------
+Mon Dec 17 15:07:29 UTC 2012 - saschpe@suse.de
+
+- Remove 64bit Firefox blob on 32bit to avoid useless runtime
+  dependencies (again)
+
+-------------------------------------------------------------------
+Wed Dec 12 00:11:29 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.28.0:
+  * Upstream provides no changelog
+
+-------------------------------------------------------------------
+Thu Dec  6 00:34:32 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.27.0:
+  * Added support for phantomjs / ghostdriver
+
+-------------------------------------------------------------------
+Fri Nov  9 12:48:15 UTC 2012 - saschpe@suse.de
+
+- We're not in Factory, so we can safely install the binary extension
+  until this is solved otherwise (bnc#788988)
+
+-------------------------------------------------------------------
+Sat Nov  3 03:04:26 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.26:
+  * Added location_when_scrolled_into_view - Bug 4357
+
+-------------------------------------------------------------------
+Thu Jul 19 11:42:08 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.25.0:
+  * Jython 2.7 Support - Bug 3988
+  * EventFiringWebDriver added to Support module - Bug 2267
+  * Added IEDriverServer logging that can be accessed via desired
+    capabilities
+  * Fixed by data being passed into find_elements - bug 3735
+  * Removed deprecated ChromeDriver items around desiredcapabilites
+    in favour of chrome options
+  * Added default values for a number of action_chains calls
+- Aditional changes from 2.24:
+  * Removing the ctypes approach of invoking IEDriver, you will need
+    to download the IEDriverServer from
+    https://code.google.com/p/selenium/downloads/list
+- Aditional changes from 2.23:
+  * Support for FF13 native events
+
+-------------------------------------------------------------------
+Tue May 29 18:22:53 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.22.1:
+  - Catch an OSError exception when trying to get the EXIF data of
+    a touchy image.
+
+-------------------------------------------------------------------
+Wed May  9 05:05:09 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.21.3:
+  * Fix for File Upload to remote servers
+  * Better handling of typing in input=file. Bug 3831, 3736
+  * Better handling of unicode URLS Bug 3740
+
+-------------------------------------------------------------------
+Mon Apr 16 22:46:52 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.21.2:
+  * Fix typing to file input when not using Selenium Server. Bug 3736
+- Package set to noarch again, since it does not include binaries
+  anymore.
+-------------------------------------------------------------------
+Thu Apr 12 01:44:29 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.21.1:
+  * focusmanager.testmode messes with native events, removing it.
+- Aditional changes from 2.21:
+  * Local File upload capabilities for non-remote browser 
+  * Adding maximize_window api call
+  * Updating default firefox profile to set focusmanager.testmode to
+    true see https://bugzilla.mozilla.org/show_bug.cgi?id=704583
+  * bugs fixed: 3506, 3528, 3607
+
+-------------------------------------------------------------------
+Tue Apr 10 12:53:38 UTC 2012 - saschpe@suse.de
+
+- Don't install the binary Firefox extension until this is solved
+  with upstream
+
+-------------------------------------------------------------------
+Mon Apr  2 12:29:00 UTC 2012 - saschpe@suse.de
+
+- Use upstream tarball
+- Simplified macro usage
+- Remove unused Windows DLL files
+- The package is noarch, it contains binary Firefox modules for x86_64
+  and i586
+- Therefore add ExclusiveArch: %x86 x86_64
+
+-------------------------------------------------------------------
+Mon Feb 27 23:17:45 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.20.0:
+  * disable native events for FF on Mac by default
+  * fix webdriverwait to execute at least once when using 0 timeout
+  * Fixed Issue 3438
+
+-------------------------------------------------------------------
+Wed Feb  8 19:01:26 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.19.1:
+  - Sorry, no changelog atm.
+
+-------------------------------------------------------------------
+Sat Jan 28 18:28:23 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.18.1:
+  - Proxy capabilities passing.
+
+-------------------------------------------------------------------
+Tue Jan 17 01:40:09 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.27.0:
+  - Sorry, no changelog atm.
+
+-------------------------------------------------------------------
+Wed Jan  4 23:21:17 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.16.0:
+  - Sorry, no changelog atm.
+
+-------------------------------------------------------------------
+Thu Dec  8 12:06:22 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.15.0:
+  - Sorry, no changelog atm.
+
+-------------------------------------------------------------------
+Wed Nov 30 00:43:41 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.14.0:
+  - Fix for LD_PRELOAD being polluted by WebDriver
+  - Added Orientation API
+  - A fix for Error Handling
+
+-------------------------------------------------------------------
+Sat Nov 19 18:59:25 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.13.1:
+  - Sorry, no changelog atm.
+
+-------------------------------------------------------------------
+Fri Nov 18 17:22:00 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.13.0:
+  - Fixed switch_to_window so that it didnt crash Firefox Bug 2633
+  - Fixed Screenshot handling to work in all browsers. Bug 2829
+  - Force Firefox to the Foreground
+
+-------------------------------------------------------------------
+Fri Nov 11 02:02:09 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.12.1:
+  - Sorry, no changelog atm
+
+-------------------------------------------------------------------
+Sat Oct 29 11:06:17 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.11.1:
+  - Sorry, no changelog atm.
+
+-------------------------------------------------------------------
+Fri Oct 28 19:50:28 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.11.0:
+  - Sorry, no changelog atm.
+
+-------------------------------------------------------------------
+Fri Oct 28 00:56:38 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.10.0:
+  - "Choose which apps" dialog has been disabled;
+  - Bug Fixes
+.
+-------------------------------------------------------------------
+Thu Oct 20 22:29:29 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.9.0:
+  - Sorry, no changelog atm.
+
+-------------------------------------------------------------------
+Thu Oct  6 17:57:07 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.8.1:
+  * Actions updates
+  * Bug Fixes
+
+-------------------------------------------------------------------
+Mon Sep 26 17:28:09 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.7.0:
+  - Sorry, no changelog atm.
+
+-------------------------------------------------------------------
+Tue Sep 13 16:33:44 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.6.0:
+  - Documentation fixes.
+
+-------------------------------------------------------------------
+Tue Aug 23 23:17:02 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.5.0:
+  - Sorry, no changelog atm.
+
+-------------------------------------------------------------------
+Thu Aug 11 23:38:36 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.4.0:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Mon Aug  1 18:26:19 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.3.0:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Mon Jul 18 18:12:07 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.1.0:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Fri Jul  8 11:20:18 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 2.0.1:
+  - Sorry, no changelog.
+- Regenerate spec file with py2pack.
+
+-------------------------------------------------------------------
+Wed May 26 13:12:03 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.0.3;
+- Building as noarch for openSUSE >= 11.2;
+- Spec file cleaned with spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Mar  3 12:59:09 CET 2010 - boris@steki.net
+
+- Changed default installation path as x86_64 system was installing
+  libraries into /usr/lib/python2.6 which is wrong and is not pythons
+  default search path 
+
+-------------------------------------------------------------------
+Wed Sep 16 19:08:22 UTC 2009 - alexandre@exatati.com.br
+
+- Initial package (1.0.1) for openSUSE.

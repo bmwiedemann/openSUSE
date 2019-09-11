@@ -1,0 +1,360 @@
+-------------------------------------------------------------------
+Mon Feb 26 11:31:07 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 3.4.0 [boo#1082756]
+  * route/link: add accessor API for IPv6 flags
+  * Provide accessors for actions (rtnl_act).
+  * rule: Add support for l3mdev in FIB rules
+  * addr: add AF_VSOCK to translation table
+  * addr: Add support for AF_MPLS
+  * route: Add support for MPLS address family
+  * route: Add support for TTL propagation in MPLS routes
+  * route: Add support for lwtunnel and MPLS  encapsulations
+
+-------------------------------------------------------------------
+Wed Jun  7 14:55:00 UTC 2017 - jengelh@inai.de
+
+- Update to final release 3.3.0
+  * No changes
+
+-------------------------------------------------------------------
+Fri Mar 17 11:50:38 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.3.0~rc1
+  * sriov: fix crash in rtnl_link_sriov_parse_vflist
+  * sriov: avoid buffer overrun in rtnl_link_sriov_parse_vflist()
+  * use O_CLOEXEC
+  * lib/attr.c: check for valid length argument in nla_reserve()
+  * route: neigh: use NDA_MASTER for neigh->n_master if available
+  * xfrm: allow quering optional arguments from xfrmnl_sp_get_sec_ctx()
+- Drop nla-reverse.diff (included upstream)
+
+-------------------------------------------------------------------
+Wed Jan 18 23:26:00 UTC 2017 - jengelh@inai.de
+
+- Add nla-reserve.diff [boo#1020123]
+
+-------------------------------------------------------------------
+Mon Jan 16 17:46:53 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.2.29
+* nl-addr: avoid read-out-of-bound in nl_addr_fill_sockaddr()
+* lib: add utility function nl_strerror_l()
+* lib/route: allow override of message type during link change
+* lib/route: set IFLA_PROTINFO attribute in request message
+* lib/route: Add port state translation functions
+* lib/route: Extend Bridge Flags
+* lib/route: Allow override of IFLA_AF_SPEC nesting
+* lib/route: Support IFLA_BRIDGE_MODE
+* macvlan: add support for "source" mode
+* macvlan: adjust types and merge MACVLAN_HAS_MACCOUNT and
+  MACVLAN_HAS_MACDATA
+* vxlan: add support for additional VXLAN attributes
+* lib/route: SRIOV Parse, Read, Clone support
+* Add PPP support
+* route/act: add gact tc action
+* link: add support for IFLA_CARRIER_CHANGES, IFLA_PHYS_PORT_NAME,
+  IFLA_PHYS_SWITCH_ID, IFLA_GSO_MAX_SEGS and IFLA_GSO_MAX_SIZE
+
+-------------------------------------------------------------------
+Wed Aug 10 11:24:07 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.2.28
+* route/link: IFLA_VLAN_PROTOCOL added to vlan_put_attrs
+* route/vrf: add VRF support
+* route/link: add macvtap support
+* sit: add 6RD support
+* lib/route: add macsec support
+
+-------------------------------------------------------------------
+Tue Feb  2 11:32:01 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.2.27
+* link: add ifb device support
+* qdisc: add hfsc qdisc support
+* route/act: add skbedit action
+* New sublibraries: libnl-xfrm-3.0
+
+-------------------------------------------------------------------
+Wed Oct  8 14:13:30 UTC 2014 - olaf@aepfle.de
+
+- BuildRequire at least bison 2.4, version in SLE11 is too old
+
+-------------------------------------------------------------------
+Wed Jul 16 21:24:48 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.2.25
+* route: fix off-by-one in rtnl_act_parse()
+* act: fix policy range check
+* act: fix the logic of parsing actions
+* u32: prevent memcpy from NULL
+* attr: prevent garbage return value for NULL param
+* introduce ipip, ip6, gre, sit tunnel support
+* tc: add co_groups for tc qdisc and filter
+
+-------------------------------------------------------------------
+Fri Apr 25 14:35:55 UTC 2014 - dmueller@suse.com
+
+- remove python-devel dependency 
+
+-------------------------------------------------------------------
+Sun Mar  9 17:27:56 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.2.24
+* Add support for: ingress qdiscs, veth links, link network
+  namespaces, tc action (general), mirred tc action, u32 tc action,
+  fq_codel qdisc
+
+-------------------------------------------------------------------
+Tue Nov 26 14:05:28 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 3.2.23
+* Add macvlan and VXVLAN support
+
+-------------------------------------------------------------------
+Wed Jun  5 13:20:54 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 3.2.22
+* ct: add ICMPv6 type,code and ID
+* attr: Provide nla_is_nested() function
+* bridge: Support the new bridging attributes
+* bridge: Provide rtnl_link_bridge_alloc()
+* vlan: Provide rtnl_link_vlan_alloc()
+* bond: Provide rtnl_link_bond_alloc()
+* attr: Add nla_nest_cancel() to remove partially added nested
+  attributes
+- Remove 0001-Add-symbol-version-maps-to-libnl.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
+Thu Mar  7 19:59:56 UTC 2013 - jengelh@inai.de
+
+- Add preliminary symbol versioning for libnl
+  (0001-Add-symbol-version-maps-to-libnl.patch)
+
+-------------------------------------------------------------------
+Fri Jan 25 04:04:58 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 3.2.21
+* SocketCAN support
+* Add link carrier support
+
+-------------------------------------------------------------------
+Sun Nov 25 16:36:33 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 3.2.16
+* Optional hashtable backend for caches
+* Improved netlink expectations support
+* Extended AF_BRIDGE support for link and neighbour caches
+* Better thread safety in module registration operations
+
+-------------------------------------------------------------------
+Wed Nov 14 01:00:54 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 3.2.14
+* This release contains bugfixes and adds support for some new link
+  features.
+
+-------------------------------------------------------------------
+Tue Oct  9 01:03:54 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 3.2.13
+* More clean NL_AUTO_PORT and NL_AUTO_SEQ usage in nl_complete_msg
+* genl_ctrl_probe_by_name: fix checking of genlmsg_put() return value
+
+-------------------------------------------------------------------
+Fri Aug 31 01:55:51 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 3.2.12
+* Add new API to retrieve versioning information at runtime
+  suitable for python ctype.
+
+-------------------------------------------------------------------
+Tue Jun 19 13:35:16 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 3.2.11
+* add fwmark mask support
+* genl: add genlmsg_hdr(), genlmsg_user_hdr(), genlmsg_user_data(),
+  and genlmsg_user_datalen()
+* genl: Export genl_ops_resolve() and genl_mngt_resolve() in header
+* rtnl_link_(get|set)_weight is deprecated in libnl
+
+-------------------------------------------------------------------
+Fri May 11 09:21:49 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.2.9:
+* Fix return value of nl_recvmsgs()
+
+-------------------------------------------------------------------
+Sat May  5 22:03:19 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 3.2.8
+* Support plug qdisc - queue traffic until explicit release
+
+-------------------------------------------------------------------
+Wed Feb  8 22:34:09 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 3.2.7
+* link: fix regression in link message parser
+* nl_addr_cmp: handle prefix length during address comparison
+* avoid dangling co_major_cache reference to NL_AUTO_PROVIDE caches
+* dsmark: Add missing declarations for
+  rtnl_class_dsmark_(get|set)_bitmask
+* rtnl_link_bond_add: allow to allocate bond name in case NULL
+  is given
+* link: allow to add/get linkinfo of unknown type
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:44 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Tue Jan  3 13:23:24 UTC 2012 - adrian@suse.de
+
+- add dangling-co_major_cache-reference fix required by ntrack
+
+-------------------------------------------------------------------
+Sat Nov 19 20:44:32 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Nov 11 00:33:56 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 3.2.3
+* Add missing libnl-cli-3.0 pkgconfig file
+* Fix memory leaks durgin rtnl_addr object freeing
+
+-------------------------------------------------------------------
+Wed Sep 21 18:31:38 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 3.2.1
+* new API to create/enslave/release bonding devices
+
+-------------------------------------------------------------------
+Tue Sep 20 08:49:19 UTC 2011 - jengelh@medozas.de
+
+- Relax Requires in libnl3-devel
+
+-------------------------------------------------------------------
+Wed Sep 14 08:11:31 UTC 2011 - jengelh@medozas.de
+
+- Update to libnl-3.2
+
+-------------------------------------------------------------------
+Sat Apr 24 11:38:21 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Wed Dec 16 10:07:04 CET 2009 - jengelh@medozas.de
+
+- Add baselibs.conf as a source
+- Add baselib definitions for SPARC
+- Enable parallel building
+
+-------------------------------------------------------------------
+Fri Jun 12 15:30:06 CEST 2009 - coolo@novell.com
+
+- fix build with glibc 2.10
+
+-------------------------------------------------------------------
+Thu Feb  5 13:36:06 PST 2009 - bphilips@suse.de
+
+- baselibs.conf: create -32bit packages. Required to compile Intel 
+  WiMax tools.
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Nov 10 19:13:52 EST 2008 - jpr@novell.com
+
+- Add baselibs.conf (bnc#443023)
+
+-------------------------------------------------------------------
+Thu Oct  2 13:38:04 CDT 2008 - maw@suse.de
+
+- Install libraries in %_lib, not %{_libdir} (bnc#428433).
+
+-------------------------------------------------------------------
+Fri Feb  1 12:45:47 CET 2008 - coolo@suse.de
+
+- update to 1.1:
+  o patches went upstream
+  o Generic netlink support
+  o Route Addition/Deletion
+  o Fixed reference counting while objects stay in caches.
+  ... tons of other fixes 
+
+-------------------------------------------------------------------
+Fri Jan 25 08:15:02 CET 2008 - adrian@suse.de
+
+- fix changelog entries order
+
+-------------------------------------------------------------------
+Wed Oct  3 22:20:13 CEST 2007 - maw@suse.de
+
+- Apply libnl.route.metric-overflow.patch with -p1.
+
+-------------------------------------------------------------------
+Sat Aug 25 11:57:33 CEST 2007 - olh@suse.de
+
+- remove incomplete copies of kernel headers
+  linux/types.h were needed
+
+-------------------------------------------------------------------
+Fri Aug 24 17:26:02 CEST 2007 - olh@suse.de
+
+- include linux/types.h
+  do not redefine typedefs
+  use stddef.h offsetof
+  fix out of bounds access in route metric functions
+  fix incorrect char usage in nl_str2af
+  remove compiler warnings by checking vasprintf return value
+
+-------------------------------------------------------------------
+Wed Aug 22 15:26:31 CEST 2007 - dmueller@suse.de
+
+- fix accesses of free'd memory which crash NetworkManager-kde 
+
+-------------------------------------------------------------------
+Wed Aug 22 02:10:01 CEST 2007 - dmueller@suse.de
+
+- update to 1.0-pre6:
+  * fixes write after delete crashes
+  * fixes realloc() handling
+  * fixes format string warnings
+  * fixes invalid free in nl_addr_parse for AF_UNSPEC addresses
+  * fixes double nlmsg_free() in nl_recvmsgs() while receiving
+    a multipart message and the read was interrupted.
+
+-------------------------------------------------------------------
+Mon Feb 20 00:21:49 CET 2006 - ro@suse.de
+
+- fix build on ia64, ppc64, s390x 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 15 14:10:15 CET 2005 - yxu@suse.de
+
+- fixed conflicting type definition 
+
+-------------------------------------------------------------------
+Fri Nov  4 22:23:10 CET 2005 - rml@suse.de
+
+- Update to 1.0-pre5
+
+-------------------------------------------------------------------
+Mon Oct 31 21:12:24 CET 2005 - gekker@suse.de
+
+- Initial import into autobuild Version 1.0-pre3
+- Patch makefile
+

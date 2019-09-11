@@ -1,0 +1,9 @@
+Index: opensuse-haskell/_build/ghc-8.6.x/ghc-pantry-tmp/pantry-tmp-0.1.0.0/src/Pantry/Storage.hs
+===================================================================
+--- opensuse-haskell.orig/_build/ghc-8.6.x/ghc-pantry-tmp/pantry-tmp-0.1.0.0/src/Pantry/Storage.hs	2019-05-29 18:50:36.000000000 +0000
++++ opensuse-haskell/_build/ghc-8.6.x/ghc-pantry-tmp/pantry-tmp-0.1.0.0/src/Pantry/Storage.hs	2019-06-18 16:41:21.845050333 +0000
+@@ -1,3 +1,4 @@
++{-# LANGUAGE UndecidableInstances #-}
+ {-# LANGUAGE NamedFieldPuns #-}
+ {-# LANGUAGE NoImplicitPrelude #-}
+ {-# LANGUAGE BangPatterns #-}

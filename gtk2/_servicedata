@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://git.gnome.org/gtk+</param>
+              <param name="changesrevision">ed7d3e25f8b6debae6ccc8b50d1329155338cab8</param></service><service name="tar_scm">
+                <param name="url">https://gitlab.gnome.org/GNOME/gtk.git</param>
+              <param name="changesrevision">c505d3fcf8571876fa5767411bbe0229591ce104</param></service></servicedata>

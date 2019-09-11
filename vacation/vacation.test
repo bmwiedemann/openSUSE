@@ -1,0 +1,28 @@
+                        Testform für VACATION
+                        =====================
+
+Datum:      30.06.2003
+Version:    1.2.6.1
+Maintainer: werner@suse.de
+
+Voraussetzungen:
+================
+
+Folgende Pakete müssen installiert werden:
+
+1.  sendmail
+2.  einer der vi's
+
+Aufruf(e):
+========
+
+1.  man vacation
+2.  vacation
+3.  vacation -I
+
+Ergebnis(se):
+===========
+
+~/.forward, ~/.vacation.db und ~/.vacation.msg
+
+

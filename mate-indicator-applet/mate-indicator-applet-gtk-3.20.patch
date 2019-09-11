@@ -1,0 +1,12 @@
+diff -paur a/configure.ac b/configure.ac
+--- a/configure.ac	2018-02-02 17:07:46.000000000 +0300
++++ b/configure.ac	2018-03-10 02:49:08.392786150 +0300
+@@ -24,7 +24,7 @@ m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RU
+ # Dependencies 
+ ###########################
+ 
+-GTK_REQUIRED_VERSION=3.22.0
++GTK_REQUIRED_VERSION=3.20.0
+ PANEL_REQUIRED_VERSION=1.17.0
+ 
+ UBUNTU_INDICATOR_REQUIRED_VERSION=0.3.90

@@ -1,0 +1,920 @@
+-------------------------------------------------------------------
+Fri Jul 12 10:06:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.19.18
+  * Define SIP_NULLPTR as NULL (rather than 0)
+  * Updated the docs regarding sip5.
+  * Fixed warnings triggered by Python v3.8.
+  * Don't try and acquire the GIL if the interpreter is no longer there.
+
+-------------------------------------------------------------------
+Mon Jun  3 16:45:49 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.19.17. Check the ChangeLog file for the list of changes.
+
+-------------------------------------------------------------------
+Thu Apr 18 21:25:28 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 4.19.16
+  * Further fixes for diamond class hierarchies.
+  * Don't cast to a class that occurs more than once in a super-class hierarchy.
+  * Added support for the haiku platform.
+  * Updated the docs and roadmap for SIP v5.
+
+-------------------------------------------------------------------
+Wed Apr 17 15:22:28 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Package .dist-info directory.  The bugs with it have been fixed
+  and some packages require it in order to properly detect that
+  sip is installed.
+
+-------------------------------------------------------------------
+Sat Apr  6 14:12:54 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.19.15
+  * Fixed a code generation regression specific to PyQt4.
+  * Fixed the handling of duplicate classes in an MRO
+  * Fixed the handling of size_t as a template argument.
+Check https://www.riverbankcomputing.com/static/Downloads/sip/4.19.15/ChangeLog
+for the complete changelog
+- Drop fix_qt4_code_gen.patch. Merged upstream
+
+-------------------------------------------------------------------
+Thu Feb 21 15:13:17 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Add fix_qt4_code_gen.patch
+  Fixes python-qt4 building.  Should be in next upstream release.
+  See: http://python.6.x6.nabble.com/PyQt4-compilation-error-with-sip-4-19-14-convert-std-nullptr-t-to-int-in-initialization-td5248504.html
+  From: https://www.riverbankcomputing.com/hg/sip/rev/7bd4d19479ad
+
+-------------------------------------------------------------------
+Wed Feb 13 09:54:09 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Switch to a working location for the tarball
+
+-------------------------------------------------------------------
+Tue Feb 12 20:32:17 UTC 2019 - Mikhail Terekhov <termim@gmail.com>
+
+- Update to 4.19.14:
+  * The reference count displayed by sip.dump() now has the same
+    caveat as sys.getrefcount().
+  * Added SIP_NULLPTR to the C API.
+  * Added support for size_t.
+  * Added sipLong_AsSizeT() to the C API.
+  * Added the '=' format characters to sipBuildResult() and
+    sipParseResult().
+
+-------------------------------------------------------------------
+Sun Jan  6 02:06:41 UTC 2019 - wbauer@tmo.at
+
+- Build a private Qt4 module as well, that's needed by the latest
+  python-qt4 (boo#1119636)
+
+-------------------------------------------------------------------
+Wed Dec 19 19:54:05 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Use upstream-recommended %{_rpmconfigdir}/macros.d directory
+  for the rpm macros.
+
+-------------------------------------------------------------------
+Sun Oct 21 09:31:18 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add disable-strip.diff to fix the -debuginfo creation.
+- Update to 4.19.13:
+  * Build system fixes
+  * Removed support in the XML/API export for deprecated features
+  * Pass the fully qualified Python names of types for arguments and
+    results.
+  * Various fixes for the XML export
+  * Fixed a bug when arguments that were templates could lose their type
+    hints
+
+-------------------------------------------------------------------
+Mon Jul  2 16:52:01 UTC 2018 - christophe@krop.fr
+
+- Update to 4.19.12:
+  * Added the /ScopesStripped/ argument annotation.
+  * The members of traditional C/C++ enums are now also visible within the
+    scope of the enum itself. This means that members of scoped and unscoped
+    enums can be accessed in the same way from Python.
+  * Private copies of the sip module are now easier to configure and use.
+    SIP v5 will only support private copies.
+  * Added the -n option to the sip code generator to support private copies of
+    the sip module.
+  See https://www.riverbankcomputing.com/static/Downloads/sip/ChangeLog for
+  the complete changelog.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Apr 13 23:33:06 UTC 2018 - termim@gmail.com
+
+- Update to version v4.19.8
+  - Bug fixes.
+
+-------------------------------------------------------------------
+Fri Jan 26 08:33:38 UTC 2018 - aloisio@gmx.com
+
+- Update to version v4.19.7
+  * The %Docstring directive can now include automatically
+    generated signature descriptions using the "signature" option.
+  * typedefs can now have %Docstring directives.
+  * Bug fixes.
+  version v4.19.6
+  * Bug fixes.
+  version v4.19.5
+  * Bug fixes.
+  version v4.19.4
+  * Added support for C++11 scoped enums implemented as Python
+    enums.
+  * Added enableoverflowchecking() to the sip module.
+  * Added sipEnableOverflowChecking() to the C API.
+  * Added sipTypeIsScopedEnum() to the C API.
+  * Added sipConvertToBool() to the C API.
+  * Added sipConvertToEnum() to the C API.
+  * Deprecated sipCanConvertToEnum() in the C API.
+  * Added sipLong_AsChar(), sipLong_AsSignedChar() and
+    sipLong_AsUnsignedChar() to the C API.
+  * Added sipLong_AsShort() and sipLong_AsUnsignedShort() to the C
+    API.
+  * Added sipLong_AsInt() and sipLong_AsUnsignedInt() to the C API.
+  * Added sipLong_AsLong() and sipLong_AsUnsignedLong() to the C
+    API.
+  * Added sipLong_AsLongLong() and sipLong_AsUnsignedLongLong() to
+    the C API.
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Wed Nov 15 14:11:50 UTC 2017 - mimi.vx@gmail.com
+
+- fix have_python conditions
+
+-------------------------------------------------------------------
+Mon Aug 28 21:03:01 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 4.19.3
+  * Added support for type hints for properties.
+  * Added sipEventType and sipRegisterEventHandler() to the C API.
+  * Added sipInstanceDestroyed() to the C API.
+  * Added sipPrintObject() to the C API.
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Mon May 15 22:33:42 UTC 2017 - toddrme2178@gmail.com
+
+- Provide a basic api version macro
+
+-------------------------------------------------------------------
+Sat Apr  8 13:52:52 UTC 2017 - hpj@urpla.net
+
+- Update to 4.19.2
+  * siplib/siplib.c.in: Remove an unnecessary comment.
+  * siplib/siplib.c.in:
+    Fixed a crash when a user defined class uses sip.wrappertype as it's
+    meta-type but is not derived from sip.simplewrapper.
+
+-------------------------------------------------------------------
+Mon Apr  3 17:22:56 UTC 2017 - hpj@urpla.net
+
+- Fix requires_python3_sip_api macro
+
+-------------------------------------------------------------------
+Wed Mar 29 15:38:33 UTC 2017 - toddrme2178@gmail.com
+
+- Fix Provides macro.
+- Split largest part of docs into own subpackage to reduce package
+  size.
+
+-------------------------------------------------------------------
+Sat Mar 11 03:51:53 UTC 2017 - toddrme2178@gmail.com
+
+- Fix sip api macro.
+- Fix header location.
+- Compile and install .pyc files.
+
+-------------------------------------------------------------------
+Wed Mar  8 16:36:29 UTC 2017 - toddrme2178@gmail.com
+
+- spec file cleanups
+- better use of multipython macros
+- include more documentation
+
+-------------------------------------------------------------------
+Mon Mar  6 16:21:09 UTC 2017 - toddrme2178@gmail.com
+
+- Add shared data directory and corresponding package.
+
+-------------------------------------------------------------------
+Wed Mar  1 16:08:40 UTC 2017 - toddrme2178@gmail.com
+
+- Fix python library handling.
+
+-------------------------------------------------------------------
+Mon Feb 27 19:37:19 UTC 2017 - toddrme2178@gmail.com
+
+- Switch to single spec version.
+
+-------------------------------------------------------------------
+Thu Feb 16 18:48:11 UTC 2017 - termim@gmail.com
+
+- Update to 4.19.1
+  * Added the %PreMethodCode directive.
+  * Added sipEnableGC() to the C API.
+  * Added the -D command line option so that the generated code is
+    aware of Python debug builds.
+
+-------------------------------------------------------------------
+Tue Jan  3 19:07:05 UTC 2017 - termim@gmail.com
+
+- Update to 4.19
+  * added the assign() function to the sip module
+  * added support for the final keyword
+  * added the use_limited_api argument to the %Module directive
+  * added the %HideNamespace directive.
+
+-------------------------------------------------------------------
+Tue Jul 26 17:26:51 UTC 2016 - termim@gmail.com
+
+- Update to 4.18.1
+  * Bug fixes
+
+-------------------------------------------------------------------
+Mon Jul  4 05:09:07 UTC 2016 - hpj@urpla.net
+
+- removed build-compare.diff: it is the default since 4.18 anyway
+- disable-rpaths.diff refreshed
+
+-------------------------------------------------------------------
+Wed May 11 14:28:39 UTC 2016 - termim@gmail.com
+
+- Update to 4.18 This implements the automatic generation of PEP 484 type
+  hint files. The sip extension module is available as a wheel from PyPi.
+
+  * Added the /TypeHint/ argument, class, mapped type, function, typedef
+    and variable annotations. 
+  * Added the /TypeHintIn/ and /TypeHintOut/ argument, class, mapped type
+    and typedef annotations.
+  * Added the /TypeHintValue/ argument, class and mapped type annotations.
+  * Added the /NoTypeHint/ class, enum, function and variable annotations.
+  * Added the %ExportedTypeHintCode and %TypeHintCode directives.
+  * Added the -f command line option to treat warnings as errors.
+  * Added the -y command line option to generated PEP 484 compatible type
+    hint stub files.
+  * Deprecated the /DocType/ and /DocValue/ annotations.
+
+-------------------------------------------------------------------
+Fri Oct 30 17:57:26 UTC 2015 - termim@gmail.com
+
+- Update to 4.17.0
+  * This version adds support for PEP 465, PEP 492 and MSVC 2015.
+
+-------------------------------------------------------------------
+Mon Jul 20 18:04:24 UTC 2015 - termim@gmail.com
+
+- Update to 4.16.9:
+  * This is mainly a bug-fix release. 
+
+-------------------------------------------------------------------
+Sat Jun 13 22:22:47 UTC 2015 - termim@gmail.com
+
+- Update to 4.16.8:
+  * This is mainly a bug-fix release. 
+- Update to 4.16.7:
+  * This is a minor functional and bug-fix release. 
+- Update to 4.16.6:
+  * Added the /FileExtension/ class annotation.
+  * Installing into a virtual env should now work.
+  * Timestamps are no longer included in generated code. The -T command
+    line option is now ignored and deprecated. 
+  * The @file method of passing additional command line options is now
+    supported. The -z command line option is now deprecated. 
+
+-------------------------------------------------------------------
+Tue Dec 30 20:24:04 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.16.5:
+  * Minor functional and bug-fix release.
+  - Changes since 4.16.4:
+  * Added the /AbortOnException/ function annotation.
+  * Added the /DisallowNone/ function annotation.
+  * Added the /DisallowNone/ argument annotation.
+
+-------------------------------------------------------------------
+Sat Oct 11 17:01:01 UTC 2014 - termim@gmail.com
+
+- Update to 4.16.3
+  - This is a minor functional release including the implementation of
+    __qualname__ for class enums.
+  - run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jul 31 08:45:44 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 4.16.2
+  - Deprecated the %ConsolidatedModule directive as it won't be supported in
+    SIP v5.
+  - Bug fixes.
+
+-------------------------------------------------------------------
+Tue Jun 10 03:02:11 UTC 2014 - termim@gmail.com
+
+- Update to 4.16.1
+  - Bug fixes.
+
+-------------------------------------------------------------------
+Thu May 29 02:13:29 UTC 2014 - termim@gmail.com
+
+- Update to 4.16
+  - Added the /NoSetter/ variable annotation.
+  - Added the -B option to sip.
+  - Changed the handling of timelines (introducing a potential incompatibility)
+    so that later versions of wrapped libraries can be wrapped so long as they
+    are compatible with known versions.
+  - Added support for the 'no_receiver_check' argument to connect() in PyQt
+    v4.11.
+  - Added the --configuration option to configure.py.
+  - Added the --sysroot option to configure.py.
+  - Added the --target-py-version option to configure.py.
+  - Added the --no-tools option to configure.py.
+  - Added the --use-qmake option to configure.py.
+  - Bug fixes.
+
+-------------------------------------------------------------------
+Mon Mar 17 07:00:40 UTC 2014 - termim@gmail.com
+
+- Update to 4.15.5
+  - The use_arch argument of sipconfig.create_wrapper() can now specify a space
+    separated set of architectures.
+  - Bug fixes.
+
+-------------------------------------------------------------------
+Fri Jan 10 19:39:07 UTC 2014 - lbeltrame@kde.org
+
+- Fix SNAFU in preun scriptlet (missing spaces)
+
+-------------------------------------------------------------------
+Thu Jan  9 20:06:06 UTC 2014 - lbeltrame@kde.org
+
+- New upstream version 4.15.4:
+  - Fixed all the compiler warning messages when building the sip module.
+  - Fixed the parsing of C++ types involving multiple const and pointers.
+  - Added SIP_SSIZE_T_FORMAT to the C API.
+  - Moved the lexer and parser meta-source files to a separate directory to avoid
+  problems with make accidentaly regenerating them.
+  - Allow the pointers used to store the parsed results from Python
+  reimplementations to be NULL.
+  - Remove the __pycache__ directory when cleaning.
+
+-------------------------------------------------------------------
+Sun Oct 20 07:42:07 UTC 2013 - lbeltrame@kde.org
+
+- Use alternatives for /usr/bin/sip to prevent conflicts between
+  Python 3 and Python 2 python-sip-devel packages
+
+-------------------------------------------------------------------
+Thu Oct 17 12:41:50 UTC 2013 - toddrme2178@gmail.com
+
+- update to v4.15.3. This is a bug fix release for a regression 
+  that affects PyQtChart. 
+
+-------------------------------------------------------------------
+Thu Sep 19 10:37:30 UTC 2013 - toddrme2178@gmail.com
+
+- update to v4.15.2. This is a minor functional release that will 
+  be needed by PyQt v5.1. It also contains bug fixes needed by 
+  PyKDE4.
+
+-------------------------------------------------------------------
+Tue Sep 17 13:31:42 UTC 2013 - speilicke@suse.com
+
+- Revert sr#79987, moving /usr/bin/sip into python-sip-bin and requiring
+  that in python3-sip-devel (plus split provides) only causes trouble. It will
+  make python3-sip-devel depend forever on Python2 for absolutely no reason.
+  Both python-sip-devel and python3-sip-devel can happily provide /usr/bin/sip
+  since the binary is identical. You can have both installed in parallel and
+  remove either without breaking anything. (bnc#835161)
+
+-------------------------------------------------------------------
+Wed Sep 11 06:48:38 UTC 2013 - tittiatcoke@gmail.com
+
+- Build issues are resolved with the Python KDE bindings. Return
+  to version 4.15.1
+
+-------------------------------------------------------------------
+Fri Aug 30 14:30:52 UTC 2013 - tittiatcoke@gmail.com
+
+- Revert back to version 4,14,7 to prevent crashes in Plasma-desktop
+  (bko#323899).
+
+-------------------------------------------------------------------
+Tue Aug 27 03:29:18 UTC 2013 - termim@gmail.com
+-  update to 4.15.1. This fixes a regression in v4.15 related to the handling of hidden virtual methods. The regression does not affect PyQt.
+-  update to v4.15. This is a significant functional release and required by PyQt v5.0.1 and PyQt v4.10.3.
+    - Added the call_super_init argument to the %Module directive to specify that classes should support cooperative multi-inheritance.
+    - Added the %FinalisationCode directive.
+    - Added the /Mixin/ class annotation.
+    - Added the /NoScope/ enum annotation.
+    - Added sipConvertFromNewPyType() to the C API.
+    - Added sipConvertToArray() and sipConvertToTypedArray() to the C API.
+    - Added sipRegisterProxyResolver() to the C API.
+
+-------------------------------------------------------------------
+Wed Jun 19 07:19:09 UTC 2013 - dmueller@suse.com
+
+- update to 4.14.7: 
+  - The internal API version is increased to 10.0 requiring the regeneration of
+    all modules.
+  - Added the /Sequence/ function annotation.
+  - %ConvertFromTypeCode can now be specified for classes.
+  - Added sipEnableAutoconversion() to the C API.
+  - Added sipSetDestroyOnExit() to the C API.
+  - Bug fixes.
+
+-------------------------------------------------------------------
+Mon Apr 22 11:35:07 UTC 2013 - dmueller@suse.com
+
+- update to 4.14.6:
+  * Bug fix 
+
+-------------------------------------------------------------------
+Wed Mar 27 09:25:57 UTC 2013 - dmueller@suse.com
+
+- update to 4.14.5 (bnc#812130):
+  * Bug fixes (specifically for QGIS) 
+
+-------------------------------------------------------------------
+Thu Mar  7 02:56:25 UTC 2013 - mlin@suse.com
+
+- Update to 4.14.4
+  * bugfix release
+  * include a potential incompatibility in the use of the %VirtualErrorHandler directive.
+
+-------------------------------------------------------------------
+Tue Jan 29 08:05:15 UTC 2013 - dmueller@suse.com
+
+- update to 4.14.3:
+  - The /KeepReference/ argument annotation, when applied to factories, will
+    now keep the reference with the object created by the factory.
+  - Any object that supports the buffer protocol can now be passed when a
+    sip.voidptr is expected.
+
+-------------------------------------------------------------------
+Sun Dec  9 13:40:23 UTC 2012 - lbeltrame@kde.org
+
+- Update to 4.14.2:
+  - Added sip.setdestroyonexit().
+  - sip.voidptr() will now accept any object that implements the buffer 
+    protocol.
+
+-------------------------------------------------------------------
+Mon Oct 29 09:54:38 UTC 2012 - dmueller@suse.com
+
+- update to 4.14.1:
+  - SIP_PYBUFFER can now be used to define objects that implement the Python
+    buffer protocol.
+  - Added /Capsule/ typedef annotation.
+  - Added the 'z' format character to sipBuildResult().
+  - Added the 'z', '!' and '$' format characters to sipParseResult().
+  - The C prototype foo(void) is now accepted.
+  - sipdistutils.py will now include swig_opts if no sip_opts have been
+    defined.
+  - Bug fixes.
+
+-------------------------------------------------------------------
+Mon Oct  1 05:42:10 UTC 2012 - einar@heavensinferno.net
+
+- Update to latest upstream version:
+
+  - The internal API version is increased to 9.0 requiring the regeneration
+    of all modules.
+  - Added the %InstanceCode directive.
+  - Added the %VirtualErrorHandler directive.
+  - Added the default_VirtualErrorHandler argument to the %Module directive.
+  - Added the VirtualErrorHandler class annotation.
+  - Added the NoVirtualErrorHandler and VirtualErrorHandler function
+    annotations.
+  - The AllowNone and NoRelease mapped type annotations can now be used
+    with mapped type templates.
+  - SIP_PLATFORM_* and SIP_TIMELINE_* preprocessor symbols are generated
+    corresponding to the -t arguments passed on the command line.
+  - Deprecated sipTransferBreak().
+  - For Python v2.x unsigned short and unsigned char (when used as a byte)
+    are now converted to int, rather than long, objects.
+  - Added support for MSVC 2010 to the build system.
+- 
+
+-------------------------------------------------------------------
+Thu Jul  5 12:30:23 UTC 2012 - dmueller@suse.com
+
+- install api version as rpm macro
+
+-------------------------------------------------------------------
+Fri Jun 22 02:58:35 UTC 2012 - mlin@suse.com
+
+- Update to version 4.13.3
+  * The /NoRaisesPyException/ and /RaisesPyException/ function annotations can
+    now be applied to constructors.
+  * Added support for the Python v3.3 handling of Unicode.
+
+-------------------------------------------------------------------
+Tue Apr 10 20:38:21 UTC 2012 - asterios.dramis@gmail.com
+
+- Link against libpython. Fixes bnc#756282 and bnc#721280.
+- Remove SUSE_ASNEEDED=0 from spec file.
+
+-------------------------------------------------------------------
+Fri Mar 23 09:39:46 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0 or GPL-3.0 or SUSE-SIP
+  Use SUSE- proprietary extension until SIP license is accepted upstream at
+  spdx.org
+
+-------------------------------------------------------------------
+Mon Feb 20 13:10:49 CET 2012 - dmueller@suse.de
+
+ update to 4.13.2:
+ - A bug fix release. 
+
+-------------------------------------------------------------------
+Fri Dec 23 13:49:02 CET 2011 - dmueller@suse.de
+
+- update to 4.13.1:
+  - Deprecation warnings can no longer be disabled.
+  - Added the all_raise_py_exception argument to the %Module directive.
+  - Added the /NoRaisesPyException/ function annotation.
+  - Added the /PyName/ typedef annotation.
+  - Class templates now allow super-classes to be defined as template
+   arguments.
+ - Added support for 'public' preceding the name of a class in a super-class
+   list.
+ - Added support for 'protected' and 'private' preceding the name of a class
+   in a super-class list.  Any such super-class will be ignored.
+
+-------------------------------------------------------------------
+Thu Oct 27 16:55:43 UTC 2011 - Sascha.Manns@open-slx.de
+
+- Changelog from the Creators
+  - SIP v4.13 has been released. This is a minor feature release.
+    o added the %DefaultDocstringFormat directive
+    o added the format argument to the %Docstring directive
+    o %ConvertToSubClassCode can now cause a restart of the conversion 
+      process using a different requested type
+    o '*' and '&' are now supported as unary operators in expressions 
+      used in the values of default arguments
+    o the /Transfer/ annotation can now be used with the /Array/ 
+      annotation to prevent the freeing of the temporary array of 
+      pointers. 
+
+-------------------------------------------------------------------
+Wed Oct 26 20:18:57 UTC 2011 - Sascha.Manns@open-slx.de
+
+- Updated to 4.13
+  - last stable release 
+
+-------------------------------------------------------------------
+Mon Aug 29 18:41:49 UTC 2011 - termim@gmail.com
+
+- Add python-sip-bin package to avoid conflicts between python2 
+  and python3 versions
+
+-------------------------------------------------------------------
+Tue Aug 16 00:07:23 UTC 2011 - termim@gmail.com
+
+- Update to 4.12.4
+  - A bug fix release.
+
+-------------------------------------------------------------------
+Mon May 30 15:24:38 CEST 2011 - dmueller@suse.de
+
+- update to 4.12.3:
+  - A bug fix release.
+
+-------------------------------------------------------------------
+Mon May  2 18:22:42 CEST 2011 - dmueller@suse.de
+
+- update to 4.12.2:
+ * /KeepReference/ is now supported as a function annotation.
+ * Handwritten code in class templates no longer have the types 
+   substituted in lines that appear to contain C preprocessor directives.
+ * Added support for global inplace numeric operators.
+
+-------------------------------------------------------------------
+Tue Jan 25 11:56:23 CET 2011 - dmueller@suse.de
+
+- update to 4.12.1:
+  - Added support for the __getattribute__, __getattr__, __setattr__ and
+    __delattr__ methods.
+  - Added the /RaisesPyException/ function annotation.
+  - Added SIP_SSIZE_T as a predefined type.
+  - PyObject * can now be used as a synonym for SIP_PYOBJECT.
+  - Added sip.ispycreated() to the sip module.
+  - Added the --deployment-target flag to configure.py for MacOS/X.
+
+-------------------------------------------------------------------
+Mon Dec 27 14:00:10 CET 2010 - dmueller@suse.de
+
+- update to 4.12:
+  - Implemented the revised directive syntax for %Module.
+  - Deprecated %CModule, use %Module instead.
+  - Added the keyword_arguments argument to %Module to specify the level of
+    support for Python keyword arguments.
+  - Deprecated the -k flag to sip, use the keyword_arguments argument to
+    %Module instead.
+  - Added an automatic pseudo-%Timeline to allow the SIP version number to be
+    used in the %If directive.
+  - Changed the behavior of the /KeywordArgs/ annotation to specify the level
+    of support for Python keyword arguments.
+  - Deprecated the /NoKeywordArgs/ annotation, use /KeywordArgs="All"/ instead.
+  - Added the use_argument_names argument to %Module to provide the real names
+    of arguments to handwritten code.
+  - Module docstrings are now supported.
+  - Added %AutoPyName to automatically provide Python names.
+  - Added %Property to implement Python properties based on C/C++ getters and
+    setters.
+  - Added %Extract to allow arbitrary text to be embedded in specification
+    files and subsequently extracted.
+  - Deprecated %Doc and %ExportedDoc, use %Extract instead.
+  - Added the -X flag to sip to extract text defined with %Extract.
+  - Deprecated the -d flag to sip, use -X instead.
+  - Added /PyInt/ as an argument, function and typedef annotation to force
+    char types to be handled as Python integers rather that single character
+    strings.
+  - Added the L and M format characters to sipBuildResult(), sipCallMethod()
+    and sipParseResult().
+  - Added sipGetAddress().
+  - Added the -T flag to sip to suppress the timestamp in the header comments
+    of generated files.
+  - sip.voidptr now behaves like a Python memoryview object and supports
+    sub-script assignment.
+  - Added the --sip-module flag to configure.py to allow the name and
+    containing package of the sip module to be specified thereby allowing
+    packages to include a local copy of the sip module.
+
+-------------------------------------------------------------------
+Mon Oct 25 12:55:45 CEST 2010 - dmueller@suse.de
+
+- update to 4.11.2:
+  - /KeepReference/ can now be applied to global functions and static methods.
+  - %TypeCode can now be specified in a %MappedType directive.
+  - Mapped types for templates no longer require the template arguments to be
+    fully defined.
+  - Build system changes required by PyQt v4.8 and Qt v4.7.
+
+-------------------------------------------------------------------
+Fri Oct  1 14:57:01 UTC 2010 - einar@heavensinferno.net
+
+- update to 4.11.1:
+  - A bug fix release. 
+
+-------------------------------------------------------------------
+Mon Sep  6 07:51:48 UTC 2010 - coolo@novell.com
+
+- fix python linking for factory
+
+-------------------------------------------------------------------
+Wed Sep  1 10:42:55 CEST 2010 - dmueller@suse.de
+
+- update to 4.11:
+  - Added the %UnitPostIncludeCode directive.
+  - /KeepReference/ will now accept a key to track when the same object is
+    passed to more than one method.
+  - operator() and __call__() can now accept keyword arguments.
+  - Added support for Python v3.2.
+
+-------------------------------------------------------------------
+Mon Aug 16 22:54:32 CEST 2010 - dmueller@suse.de
+
+- update to 4.10.5:
+  - A bug fix release for Python v3 and Python v2.7.
+  - Use capsules when being built for Python v2.7 to work around an apparent
+    bug in the support for PyCObject.
+  - Added support for Q_SLOT, Q_SLOTS, Q_SIGNAL and Q_SIGNALS.
+  - Added the /__len__/ function annotation.
+
+-------------------------------------------------------------------
+Tue Jun  8 16:51:34 CEST 2010 - dmueller@suse.de
+
+- update to 4.10.2:
+  - A bug fix release.
+
+-------------------------------------------------------------------
+Wed May 19 19:49:19 UTC 2010 - cmorve69@yahoo.es
+
+- fix build-compare
+
+-------------------------------------------------------------------
+Fri Mar 26 18:49:41 CET 2010 - dmueller@suse.de
+
+- update to 4.10.1:
+  * Added the /NoCopy/ function and argument annotations.
+
+-------------------------------------------------------------------
+Fri Jan 15 10:11:19 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 4.10
+  * Added the sip.voidptr.ascapsule() method.
+  * Added the -P command line option to build modules with 
+    "protected" redefined to "public" if supported by the platform. 
+    This can result in significantly smaller modules.
+  * Added the -o command line option to automatically generate docstrings.
+  * Added the -k command line option and /KeywordArgs/ and /NoKeywordArgs/ 
+    function annotations to support keyword arguments.
+  * Added the /Default/ exception annotation.
+  * Added the /DocType/ argument, function, mapped type and variable annotations.
+  * Added the /DocValue/ argument annotation.
+  * Added the %Docstring directive to specify explicit docstrings for classes, 
+    functions and methods.
+  * Added sipError to %MethodCode to allow user errors to be distinguished 
+    from interpreter errors.
+  * Added sipBadCallableArg() to the C API.
+  * Added support for configuring and building outside of the source tree.
+
+-------------------------------------------------------------------
+Tue Nov 24 10:46:00 CET 2009 - hpj@urpla.net
+
+- update to 4.9.3:
+  * A bug fix release.
+
+-------------------------------------------------------------------
+Fri Nov 20 12:15:54 CET 2009 - dmueller@suse.de
+
+- update to 4.9.2:
+  * A bug fix release.
+
+-------------------------------------------------------------------
+Fri Nov 20 12:11:56 CET 2009 - dmueller@suse.de
+
+- add split-provides
+
+-------------------------------------------------------------------
+Sat Oct 24 12:26:45 CEST 2009 - dmueller@suse.de
+
+- update to 4.9.1:
+  * A bug fix release.
+
+-------------------------------------------------------------------
+Mon Sep 28 19:02:31 CEST 2009 - dmueller@suse.de
+
+- update to 4.9:
+  * support for __iter__ and __next__
+  * the %API directive
+  * the /API/ annotation
+  * sipIsAPIEnabled() has been added to the C API
+  * sip.getapi() and sip.setapi() have been added to the Python API
+  * sip.ispyowned() has been added to the Python API
+  * mapped types can now act as a namespace for enums and static methods
+  * the /Array/ annotation can now be applied to classes and mapped types
+  * the /NoArgParser/ annotation can now be applied to methods as well as functions
+  * the --arch flag was added to configure.py to specify which MacOS/X architectures are built
+  * SIP is now also licensed under the GPL v2 and v3.
+
+-------------------------------------------------------------------
+Mon Aug 31 12:55:45 UTC 2009 - beineri@opensuse.org
+
+- fix plasmoids requiring python-devel to work (part of bnc#535057)
+
+-------------------------------------------------------------------
+Wed Aug 05 00:46:55 CEST 2009 - hpj@urpla.net
+
+- Fixed a crash with sipFindType() when the search happens to land on an
+  unresolved external type.
+
+-------------------------------------------------------------------
+Mon Jul 30 03:55:01 CEST 2009 - hpj@urpla.net
+
+- update to 4.8.2:
+ - Fixed the '/' operator for Python v3 and future import for Python v2.
+ - Backported the /AllowNone/ class annotation from v4.9.
+
+-------------------------------------------------------------------
+Mon Jul 06 12:24:01 CEST 2009 - hpj@urpla.net
+
+- create a separated -devel package and include the nice documentation
+
+-------------------------------------------------------------------
+Wed Jun 17 11:37:39 CEST 2009 - dmueller@suse.de
+
+- update to 4.8.1:
+ - Added support for defining a private assignment operator to suppress the
+   possible generation of an assignment helper.
+
+-------------------------------------------------------------------
+Mon Jun  8 09:05:35 CEST 2009 - beineri@opensuse.org
+
+- update to 4.8 release:
+   * support for Python v3
+   * the ability to supply alternate super-types and meta-types
+     for wrapped objects
+   * documentation built using Sphinx
+
+-------------------------------------------------------------------
+Wed Jun  3 00:06:03 CEST 2009 - dmueller@suse.de
+
+- update to 20090601 snapshot fixing nested template handling
+
+-------------------------------------------------------------------
+Sun May 17 10:24:49 CEST 2009 - beineri@opensuse.org
+
+- update to 4.8 snapshot as of 20090430
+
+-------------------------------------------------------------------
+Fri Dec  5 10:55:50 CET 2008 - dmueller@suse.de
+
+- update to 4.7.9:
+  - Added the /Deprecated/ class and function annotation (based on a patch from
+    Lorenzo Berni).
+  - Templates now support instance variables and enums.
+  - A Python int object can now be used whenever an enum is expected without
+    needing to explicitly cast it using the enum's constructor.  The
+    /Constrained/ argument annotation can be used to suppress this behaviour.
+  - typedef type names are now used in string representations of types (e.g. in
+    the names of mapped types) to reflect what the programmer sees rather than
+    what the compiler sees.  The /NoTypeName/ typedef annotation can be used to
+    suppress this behaviour.
+  - The new handling of the typedef names was correctly using the real types for
+    virtual handler arguments but not the return values.
+
+-------------------------------------------------------------------
+Sun Aug 10 18:14:20 CEST 2008 - dmueller@suse.de
+
+- update to 4.7.7:
+  * C++ structs are now properly handled as a class with 
+   a default public  section
+  * sip.dump() now includes the objects first child wrapper
+
+-------------------------------------------------------------------
+Tue May 27 13:26:36 CEST 2008 - dmueller@suse.de
+
+- update to 4.7.6:
+  * generator fixes for being able to bind Qt 4.4
+
+-------------------------------------------------------------------
+Wed Feb 13 13:15:48 CET 2008 - dmueller@suse.de
+
+- update to 4.7.4:
+  * The build system handles the directory structure used by Leopard's Python
+    installation.
+  * Added support for /Transfer/ as a constructor ann
+
+-------------------------------------------------------------------
+Thu Dec 13 14:53:20 CET 2007 - dmueller@suse.de
+
+- update to 4.7.3:
+  * Added support for automatically generating missing complementary
+    comparision operators.  Note that this introduces a potential compatibility
+    problem - see the documentation for details.
+  * Added the SingleShot argument annotation.
+  * Added the TransferThis function annotation.
+
+-------------------------------------------------------------------
+Mon Oct  1 10:10:30 CEST 2007 - stbinner@suse.de
+
+- update to 4.7.1: minor bugfixes
+
+-------------------------------------------------------------------
+Fri Aug 17 15:53:13 CEST 2007 - dmueller@suse.de
+
+- remove conflict as it is now common base for qt 3.x
+  and qt 4.x (#300041)
+
+-------------------------------------------------------------------
+Sun Aug 12 13:32:48 CEST 2007 - dmueller@suse.de
+
+- %py_requires no longer has buildrequires
+
+-------------------------------------------------------------------
+Sat Aug 11 19:35:11 CEST 2007 - dmueller@suse.de
+
+- add conflict against python-qt 3.x versions
+
+-------------------------------------------------------------------
+Fri Aug  3 00:23:12 CEST 2007 - dmueller@suse.de
+
+- update to 4.7:
+  * Added %PickleCode to allow handwritten code to pickle a wrapped C++
+    instance or C structure.
+  * Added %CompositeModule to create modules that are composites of ordinary
+    modules.
+  * Added %ConsolidatedModule (and the -p command line option) to create
+    modules that contain all the wrapper code on behalf of ordinary modules.
+  * Added the dump() function to the sip module.
+  * Added sipTransferBreak() to the SIP API.
+  * Added support for /Transfer/ as a function annotation. 
+
+-------------------------------------------------------------------
+Wed Apr 11 12:05:27 CEST 2007 - dmueller@suse.de
+
+- update to 4.6:
+  * Added support for wchar_t.
+  * The -g command line option releases the GIL whenever a call is made to the
+  * wrapped library.
+  * Added the /HoldGIL/ annotation to explicitly retain the GIL when calling a
+    particular function in the wrapped library.
+  * Added sipFindClass() and sipFindNamedEnum() to the public API.
+  */TransferThis/ may be specified more than once.
+  * Added support for __truediv__ and __itruediv__.
+
+-------------------------------------------------------------------
+Fri Jan 26 17:39:25 CET 2007 - dmueller@suse.de
+
+- Initial package (4.5.2) 
+

@@ -1,0 +1,13 @@
+[Unit]
+Description=Freshclam virus definitions downloader
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/freshclam -d
+;User=vscan
+;Group=vscan
+;PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

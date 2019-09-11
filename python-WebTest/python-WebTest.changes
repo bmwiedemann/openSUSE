@@ -1,0 +1,295 @@
+-------------------------------------------------------------------
+Thu Feb 28 09:24:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.0.33:
+  * Fixed #210. Allow to reset select multiple with field.value = []
+  * Support for PYTHONOPTIMIZE=2, fix tests on PYTHONOPTIMIZE=1, 2
+  * Fixed #196. Fix deprecation warnings for collections to use collections.abc for Iterable on Python 3.
+
+-------------------------------------------------------------------
+Thu Feb  7 16:14:39 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 2.0.32 (2018-10-05)
+  + remove invalid email from setup.py
+
+- Update to 2.0.31 (2018-10-05)
+  + py33 is no longer supported. It may works but has been removed
+    from tox config
+  + Fixed #205: Use empty string as default value for submit and
+    button
+  + tests use pytest
+  + docs use the standard Pylons template on RTD
+
+- Update to 2.0.30 (2018-06-23)
+  + Add Email class for input fields with type "email".
+  + Documentation bearer token and JWT authorization
+
+- Update to 2.0.29 (2017-10-21)
+  + Bugfix: Preserve submit order for radio inputs.
+  + Fixed #186: avoid UnicodeDecodeError in linter with py2 when a
+    header contain non ascii chars
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:01 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Aug 10 11:02:46 UTC 2018 - tchvatal@suse.com
+
+- Drop not needed unittest2 dependency
+
+-------------------------------------------------------------------
+Tue Aug 15 16:23:29 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 2.0.28
+  * Fixed #185: Fix strict cookie policy
+  * Fixed #146: Improve fields value checking when enctype is
+    multipart
+  * Fixed #119: Assertion error should be raised when you have
+    non-string response header
+  * Bugfix: Allow to set an int value to form fields when enctype
+    is multipart
+  * Added py36 to tox.ini / .travis.yaml
+
+-------------------------------------------------------------------
+Wed May  3 16:31:46 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 2.0.27
+  * Bugfix: Allow to use set_cookie when HTTP_HOST is set
+  * Fix #177: resp.json now always decode body as utf8
+- Update to 2.0.26
+  * Added JWT auth support
+  * Always show response body when response status is invalid
+- Update to 2.0.25
+  * Fix #173: Do not omit file uploads without a file from post.
+- Update to 2.0.24
+  * Drop python 2.6 support. Newer versions may still work if you
+    use waitress < 1.0
+  * Remove bs4 warnings
+  * Docs improvments
+  * Tets are WebOb 1.7.x compatible
+- Implement singlespec version
+- Fix source URL.
+
+-------------------------------------------------------------------
+Thu Sep  1 10:15:53 UTC 2016 - tbechtold@suse.com
+
+- update 2.0.23:
+  - Create universal wheels.
+  -  Fix #160: Do not guess encoding if response's charset is set.
+  - PR #154 Allow Bearer auth
+  - PR #147,#148 Take care of REFERER when using form.submit(), .click() and
+  .clickbutton()
+  - PR #145 Allow to override content-type when using json methods
+  - nothing new release. just try to make wheel available on pypi
+  - fixed #131 prevent passing HTML parameters that conflict with Field kwargs
+  - fixed #135 Document that WSGIProxy2 is required for "using webtest with a real url"
+  - fixed #136 reset values of select multiple
+  - drop py32 support (still work but test dependencies fail)
+- Use tar.gz instead of zip archive
+- Use pypi.io as Source url
+
+-------------------------------------------------------------------
+Sun Mar 13 21:01:30 UTC 2016 - dmueller@suse.com
+
+- adding license
+
+-------------------------------------------------------------------
+Thu May 14 13:59:46 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 2.0.18:
+  * Avoid deprecation warning with py3.4
+- additional changes from version 2.0.17:
+  * Properly check for default cookiejar arguments [Julian Berman]
+  * Avoid raising encoding errors from debugapp (needed to use with
+    WSGIProxy2) [Laurence Rowe]
+- additional changes from version 2.0.16:
+  * Fixed #110. Forced values for Radio inputs are no longer
+    ignored by value property on get. [bayprogrammer]
+  * Added method TestApp.set_parser_features to change the
+    parser_features used by BeautifulSoup. [tomasmoreyra]
+  * Added app.set_cookie [luhn]
+- additional changes from version 2.0.15:
+  * Fixed #73. Python < 2.6.5 does not support unicode as keyword
+    arguments names. [Stepan Kolesnik]
+  * Fixed #84 Application cookies for localhost are no longer
+    ignored [gawel]
+  * Fixed #89 remove WSGIWarning: You are not supposed to send a
+    body in a DELETE request because we now have a good reason for
+    that. See http://bit.ly/1tb3yxW [gawel]
+  * Fixed #92 You can now override TestApp.JSONEncoder to use a
+    custom encoder [gawel]
+  * Fixed #93 Support basic authentication [gawel]
+  * Fixed #103 Broken "Edit me on GitHub" links in documentation
+    [gawel]
+  * Fixed #106 Make wrapping the app in the lint middleware
+    optional [dmlayton]
+  * Fixed #107 Explicit error message when WSGIProxy2 is not
+    installer [gawel]
+  * Fixed #108 cgi.parse_qsl is pending deprecation [gawel]
+- additional changes from version 2.0.14:
+  * Allow .select() on <select>s and <select multiple>s. [Markus
+    Bertheau]
+- additional changes from version 2.0.13:
+  * Allow selecting <select> options by text [Markus Bertheau]
+- additional changes from version 2.0.12:
+  * Ignore the value attribute of file inputs [Markus Bertheau]
+  * Allow selecting the form submit button by its value [Markus
+    Bertheau]
+- remove version limitation for nose
+- pass -q to test to avoid spamming the build log
+
+-------------------------------------------------------------------
+Mon Jan 13 14:01:30 UTC 2014 - dmueller@suse.com
+
+- update to 2.0.11:
+  * Depend on unittest2 only for Python versions lower than 2.7
+  * Add an optional parameter to TestApp, allowing the user to 
+  specify the parser used by BeautifulSoup
+
+-------------------------------------------------------------------
+Thu Oct 24 11:17:10 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Wed Sep 25 16:33:33 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 2.0.9
+  * Make sure Upload.content_type is not ignored
+    https://github.com/Pylons/webtest/pull/88
+
+-------------------------------------------------------------------
+Tue Sep 17 08:33:26 UTC 2013 - dmueller@suse.com
+
+- update to 2.0.7:
+  * Detect JSON if mimetype ends with +json, such as application/vnd.webtest+json
+  * Fixed #72. Use WSGIServer new api even if there waitress has backward compat.
+  * Fixed #50. Corrected default value for the delete params argument.
+  * Be sure to decode the content if it is gziped before returning it
+
+-------------------------------------------------------------------
+Mon Jun 10 13:29:16 UTC 2013 - dmueller@suse.com
+
+- update to 2.0.6:
+- fixed #64. cookiejar api has changed in python3.3 [gawel]
+- allow to use a fixed StopableWSGIServer [gawel]
+- Do not alter the BeautifulSoup object when parsing forms. [Georges
+- Remove first newline while parse textarea block, how modern browsers does.
+
+-------------------------------------------------------------------
+Mon Apr 29 13:01:57 UTC 2013 - dmueller@suse.com
+
+- Update to 2.0.5:
+ * Correctly handle <option> elements with no value attribute
+  [Marius Gedminas]
+  * Ignore socket.error following StopableWSGIServer.shutdown. [Laurence Rowe]
+  * <button> without type='submit' attribute is treated as Submit
+  control [Andrey Lebedev].
+  * Support for redirects having relative "Location" header [Andrey Lebedev]
+  * Treat strings in the WSGI environment as native strings, compliant with
+  PEP-3333. [wosc]
+  * Allow TestResponse.click() to match HTML content again. [ender672]
+  * Support secure cookies [Andrey Lebedev]
+  * Added Pasword field [diarmuidbourke]
+  * re-allow to use unknow field type. Like ``type="email"``. [gawel]
+  * Don't let BeautifulSoup use lxml. Fix GH-51 [kmike]
+  * added :meth:`webtest.response.TestResponse.maybe_follow` method [kmike]
+  * drop zc.buildout usage for development, now using only virtualenv
+  [Domen Kožar]
+  * Backward incompatibility : Removed the ``anchor`` argument of
+  :meth:`webtest.response.TestResponse.click` and the ``button`` argument of
+  :meth:`webtest.response.TestResponse.clickbutton`. It is for the greater good.
+  * Rewrote API documentation [Domen Kožar]
+  * Added `wsgiproxy` support to do HTTP request to an URL [gawel]
+  * Use BeautifulSoup4 to parse forms [gawel]
+  * Added `webtest.app.TestApp.patch_json` [gawel]
+  * Implement `webtest.app.TestApp.cookiejar` support and kindof keep
+  `webtest.app.TestApp.cookies` functionality.  `webtest.app.TestApp.cookies`
+  should be treated as read-only.
+  [Domen Kožar]
+  * Split Selenium integration into separate package webtest-selenium
+  * Split casperjs integration into separate package webtest-casperjs
+  * Test coverage improvements [harobed, cdevienne, arthru, Domen Kožar, gawel]
+  * Fully implement decoding of HTML entities
+
+-------------------------------------------------------------------
+Fri Jan 11 11:22:19 UTC 2013 - saschpe@suse.de
+
+- Disable testsuite on SLE_11_SP2 to fix the build (unittest module
+  lacks support)
+
+-------------------------------------------------------------------
+Thu Nov 22 15:13:50 UTC 2012 - saschpe@suse.de
+
+- Update to version 1.4.2:
+  + fix tests error due to CLRF in a tarball
+- Changes from version 1.4.1:
+  + add travis-ci
+  + migrate repository to https://github.com/Pylons/webtest
+  + Fix a typo in apps.py: selectedIndicies
+  + Preserve field order during parsing (support for deform and such)
+  + Allow equals sign in the cookie by spliting name-value-string pairs on the
+    first ‘=’ sign as per http://tools.ietf.org/html/rfc6265#section-5.2
+  + fix an error when you use AssertionError(response) with unicode chars in response
+- Build HTML documentaton
+- Run testsuite
+- Split of doc package
+
+-------------------------------------------------------------------
+Sat Sep 22 18:38:46 UTC 2012 - os-dev@jacraig.com
+
+- Update to 1.4.0:
+  * added webtest.ext - allow to use casperjs
+- Changes from 1.3.6:
+  * fix #42: Check uppercase method.
+  * fix #36: Radio can use forced value.
+  * fix #24: Include test fixtures.
+  * fix bug when trying to print a response which contain some unicode chars
+- Changes from 1.3.5:
+  * fix #39: Add PATCH to acceptable methods.
+- Removed dependency on python-nose and python-dtopt: these are only needed to
+  run tests.
+
+-------------------------------------------------------------------
+Wed Jun  6 21:17:27 UTC 2012 - os-dev@jacraig.com
+
+- Update to 1.3.4:
+  * fix `#33 <https://bitbucket.org/ianb/webtest/issue/33>`_ Remove
+    CaptureStdout. Do nothing and break pdb
+  * use OrderedDict to store fields in form. See
+    `#31 <https://bitbucket.org/ianb/webtest/issue/31>`_
+  * fix `#38 <https://bitbucket.org/ianb/webtest/issue/38>`_ Allow to post
+    falsey values.
+  * fix `#37 <https://bitbucket.org/ianb/webtest/issue/37>`_ Allow
+    Content-Length: 0 without Content-Type
+  * `fix #30 <https://bitbucket.org/ianb/webtest/issue/30>`_ bad link to
+    pyquery documentation
+  * Never catch NameError during iteration
+
+-------------------------------------------------------------------
+Tue Jan 31 13:49:10 UTC 2012 - saschpe@suse.de
+
+- Simplified macro usage
+- Run testsuite
+- Update to version 1.3.3:
+  * added post_json, put_json, delete_json
+  * fix #25 params dictionary of webtest.AppTest.post() does not support unicode values
+- Changes from version 1.3.2:
+  * improve showbrowser.
+  * print_stderr fail with unicode string on python2
+- Changes from version 1.3.1:
+  * Added .option()
+  * Full python3 compat
+
+-------------------------------------------------------------------
+Thu Sep  1 15:07:32 UTC 2011 - saschpe@suse.de
+
+- Don't run tests, fixes SLE build
+
+-------------------------------------------------------------------
+Thu Sep  1 14:41:12 UTC 2011 - saschpe@suse.de
+
+- Initial version
+

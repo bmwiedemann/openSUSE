@@ -1,0 +1,1016 @@
+-------------------------------------------------------------------
+Mon Jan  7 15:18:11 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.16.0:
+  Features
+  * Add a new config.h option of MBEDTLS_CHECK_PARAMS that enables validation of parameters in the API. This allows detection of obvious misuses of the API, such as passing NULL pointers. The API of existing functions hasn't changed, but requirements on parameters have been made more explicit in the documentation. See the corresponding API documentation for each function to see for which parameter values it is defined. This feature is disabled by default. See its API documentation in config.h for additional steps you have to take when enabling it.
+API Changes
+  * The following functions in the random generator modules have been deprecated and replaced as shown below. The new functions change the return type from void to int to allow returning error codes when using MBEDTLS_<MODULE>_ALT for the underlying AES or message digest primitive. Fixes #1798. mbedtls_ctr_drbg_update() -> mbedtls_ctr_drbg_update_ret() mbedtls_hmac_drbg_update() -> mbedtls_hmac_drbg_update_ret()
+  * Extend ECDH interface to enable alternative implementations.
+  * Deprecate error codes of the form MBEDTLS_ERR_xxx_INVALID_KEY_LENGTH for ARIA, CAMELLIA and Blowfish. These error codes will be replaced by the more generic per-module error codes MBEDTLS_ERR_xxx_BAD_INPUT_DATA.
+  *  Additional parameter validation checks have been added for the following modules - AES, ARIA, Blowfish, CAMELLIA, CCM, GCM, DHM, ECP, ECDSA, ECDH, ECJPAKE, SHA, Chacha20 and Poly1305, cipher, pk, RSA, and MPI. Where modules have had parameter validation added, existing parameter checks may have changed. Some modules, such as Chacha20 had existing parameter validation whereas other modules had little. This has now been changed so that the same level of validation is present in all modules, and that it is now optional with the MBEDTLS_CHECK_PARAMS flag which by default is off. That means that checks which were previously present by default will no longer be.
+  New deprecations
+  * Deprecate mbedtls_ctr_drbg_update() and mbedtls_hmac_drbg_update() in favor of functions that can return an error code.
+  Bugfix
+  * Fix for Clang, which was reporting a warning for the bignum.c inline assembly for AMD64 targets creating string literals greater than those permitted by the ISO C99 standard. Found by Aaron Jones. Fixes #482.
+  * Fix runtime error in mbedtls_platform_entropy_poll() when run through qemu user emulation. Reported and fix suggested by randombit. Fixes #1212.
+  * Fix an unsafe bounds check when restoring an SSL session from a ticket. This could lead to a buffer overflow, but only in case ticket authentication was broken. Reported and fix suggested by Guido Vranken in #659.
+  * Add explicit integer to enumeration type casts to example program programs/pkey/gen_key which previously led to compilation failure on some toolchains. Reported by phoenixmcallister. Fixes #2170.
+  * Clarify documentation of mbedtls_ssl_set_own_cert() regarding the absence of check for certificate/key matching. Reported by Attila Molnar, #507.
+  * Fix double initialization of ECC hardware that made some accelerators hang.
+
+-------------------------------------------------------------------
+Tue Dec 11 14:07:44 UTC 2018 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Library package version bumped to libmbedtls12
+
+-------------------------------------------------------------------
+Tue Dec 11 13:48:05 UTC 2018 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to version 2.14.1: [bsc#1118727, CVE-2018-19608]
+  Security
+   * Fix timing variations and memory access variations in RSA PKCS#1 v1.5
+     decryption that could lead to a Bleichenbacher-style padding oracle
+     attack. In TLS, this affects servers that accept ciphersuites based on
+     RSA decryption (i.e. ciphersuites whose name contains RSA but not
+     (EC)DH(E)). Discovered by Eyal Ronen (Weizmann Institute),  Robert Gillham
+     (University of Adelaide), Daniel Genkin (University of Michigan),
+     Adi Shamir (Weizmann Institute), David Wong (NCC Group), and Yuval Yarom
+     (University of Adelaide, Data61). The attack is described in more detail
+     in the paper available here: http://cat.eyalro.net/cat.pdf  CVE-2018-19608
+   * In mbedtls_mpi_write_binary(), don't leak the exact size of the number
+     via branching and memory access patterns. An attacker who could submit
+     a plaintext for RSA PKCS#1 v1.5 decryption but only observe the timing
+     of the decryption and not its result could nonetheless decrypt RSA
+     plaintexts and forge RSA signatures. Other asymmetric algorithms may
+     have been similarly vulnerable. Reported by Eyal Ronen, Robert Gillham,
+     Daniel Genkin, Adi Shamir, David Wong and Yuval Yarom.
+   * Wipe sensitive buffers on the stack in the CTR_DRBG and HMAC_DRBG
+     modules.
+  API Changes
+   * The new functions mbedtls_ctr_drbg_update_ret() and
+     mbedtls_hmac_drbg_update_ret() are similar to mbedtls_ctr_drbg_update()
+     and mbedtls_hmac_drbg_update() respectively, but the new functions
+     report errors whereas the old functions return void. We recommend that
+     applications use the new functions.
+
+- Version 2.14.0:
+  Security
+   * Fix overly strict DN comparison when looking for CRLs belonging to a
+     particular CA. This previously led to ignoring CRLs when the CRL's issuer
+     name and the CA's subject name differed in their string encoding (e.g.,
+     one using PrintableString and the other UTF8String) or in the choice of
+     upper and lower case. Reported by Henrik Andersson of Bosch GmbH in issue
+     #1784.
+   * Fix a flawed bounds check in server PSK hint parsing. In case the
+     incoming message buffer was placed within the first 64KiB of address
+     space and a PSK-(EC)DHE ciphersuite was used, this allowed an attacker
+     to trigger a memory access up to 64KiB beyond the incoming message buffer,
+     potentially leading to an application crash or information disclosure.
+   * Fix mbedtls_mpi_is_prime() to use more rounds of probabilistic testing. The
+     previous settings for the number of rounds made it practical for an
+     adversary to construct non-primes that would be erroneously accepted as
+     primes with high probability. This does not have an impact on the
+     security of TLS, but can matter in other contexts with numbers chosen
+     potentially by an adversary that should be prime and can be validated.
+     For example, the number of rounds was enough to securely generate RSA key
+     pairs or Diffie-Hellman parameters, but was insufficient to validate
+     Diffie-Hellman parameters properly.
+     See "Prime and Prejudice" by by Martin R. Albrecht and Jake Massimo and
+     Kenneth G. Paterson and Juraj Somorovsky.
+  Features
+   * Add support for temporarily suspending expensive ECC computations after
+     some configurable amount of operations. This is intended to be used in
+     constrained, single-threaded systems where ECC is time consuming and can
+     block other operations until they complete. This is disabled by default,
+     but can be enabled by MBEDTLS_ECP_RESTARTABLE at compile time and
+     configured by mbedtls_ecp_set_max_ops() at runtime. It applies to the new
+     xxx_restartable functions in ECP, ECDSA, PK and X.509 (CRL not supported
+     yet), and to existing functions in ECDH and SSL (currently only
+     implemented client-side, for ECDHE-ECDSA ciphersuites in TLS 1.2,
+     including client authentication).
+   * Add support for Arm CPU DSP extensions to accelerate asymmetric key
+     operations. On CPUs where the extensions are available, they can accelerate
+     MPI multiplications used in ECC and RSA cryptography. Contributed by
+     Aurelien Jarno.
+   * Extend RSASSA-PSS signature to allow a smaller salt size. Previously, PSS
+     signature always used a salt with the same length as the hash, and returned
+     an error if this was not possible. Now the salt size may be up to two bytes
+     shorter. This allows the library to support all hash and signature sizes
+     that comply with FIPS 186-4, including SHA-512 with a 1024-bit key.
+   * Add support for 128-bit keys in CTR_DRBG. Note that using keys shorter
+     than 256 bits limits the security of generated material to 128 bits.
+  API Changes
+   * Add a common error code of `MBEDTLS_ERR_PLATFORM_FEATURE_UNSUPPORTED` for
+     a feature that is not supported by underlying alternative
+     implementations implementing cryptographic primitives. This is useful for
+     hardware accelerators that don't implement all options or features.
+  New deprecations
+   * All module specific errors following the form
+     MBEDTLS_ERR_XXX_FEATURE_UNAVAILABLE that indicate a feature is not
+     supported are deprecated and are now replaced by the new equivalent
+     platform error.
+   * All module specific generic hardware acceleration errors following the
+     form MBEDTLS_ERR_XXX_HW_ACCEL_FAILED that are deprecated and are replaced
+     by the equivalent plaform error.
+   * Deprecate the function mbedtls_mpi_is_prime() in favor of
+     mbedtls_mpi_is_prime_ext() which allows specifying the number of
+     Miller-Rabin rounds.
+  Bugfix
+   * Fix wrong order of freeing in programs/ssl/ssl_server2 example
+     application leading to a memory leak in case both
+     MBEDTLS_MEMORY_BUFFER_ALLOC_C and MBEDTLS_MEMORY_BACKTRACE are set.
+     Fixes #2069.
+   * Fix a bug in the update function for SSL ticket keys which previously
+     invalidated keys of a lifetime of less than a 1s. Fixes #1968.
+   * Fix failure in hmac_drbg in the benchmark sample application, when
+     MBEDTLS_THREADING_C is defined. Found by TrinityTonic, #1095
+   * Fix a bug in the record decryption routine ssl_decrypt_buf()
+     which lead to accepting properly authenticated but improperly
+     padded records in case of CBC ciphersuites using Encrypt-then-MAC.
+   * Fix memory leak and freeing without initialization in the example
+     program programs/x509/cert_write. Fixes #1422.
+   * Ignore IV in mbedtls_cipher_set_iv() when the cipher mode is
+     MBEDTLS_MODE_ECB. Found by ezdevelop. Fixes #1091.
+   * Zeroize memory used for buffering or reassembling handshake messages
+     after use.
+   * Use `mbedtls_platform_zeroize()` instead of `memset()` for zeroization
+     of sensitive data in the example programs aescrypt2 and crypt_and_hash.
+   * Change the default string format used for various X.509 DN attributes to
+     UTF8String. Previously, the use of the PrintableString format led to
+     wildcards and non-ASCII characters being unusable in some DN attributes.
+     Reported by raprepo in #1860 and by kevinpt in #468. Fix contributed by
+     Thomas-Dee.
+   * Fix compilation failure for configurations which use compile time
+     replacements of standard calloc/free functions through the macros
+     MBEDTLS_PLATFORM_CALLOC_MACRO and MBEDTLS_PLATFORM_FREE_MACRO.
+     Reported by ole-de and ddhome2006. Fixes #882, #1642 and #1706.
+  Changes
+   * Removed support for Yotta as a build tool.
+   * Add tests for session resumption in DTLS.
+   * Close a test gap in (D)TLS between the client side and the server side:
+     test the handling of large packets and small packets on the client side
+     in the same way as on the server side.
+   * Change the dtls_client and dtls_server samples to work by default over
+     IPv6 and optionally by a build option over IPv4.
+   * Change the use of Windows threading to use Microsoft Visual C++ runtime
+     calls, rather than Win32 API calls directly. This is necessary to avoid
+     conflict with C runtime usage. Found and fixed by irwir.
+   * Remember the string format of X.509 DN attributes when replicating
+     X.509 DNs. Previously, DN attributes were always written in their default
+     string format (mostly PrintableString), which could lead to CRTs being
+     created which used PrintableStrings in the issuer field even though the
+     signing CA used UTF8Strings in its subject field; while X.509 compliant,
+     such CRTs were rejected in some applications, e.g. some versions of
+     Firefox, curl and GnuTLS. Reported in #1033 by Moschn. Fix contributed by
+     Thomas-Dee.
+   * Improve documentation of mbedtls_ssl_get_verify_result().
+     Fixes #517 reported by github-monoculture.
+   * Add MBEDTLS_MPI_GEN_PRIME_FLAG_LOW_ERR flag to mbedtls_mpi_gen_prime() and
+     use it to reduce error probability in RSA key generation to levels mandated
+     by FIPS-186-4.
+
+- Version 2.13.1
+  API Changes
+   * Extend the platform module with an abstraction mbedtls_platform_gmtime_r()
+     whose implementation should behave as a thread-safe version of gmtime().
+     This allows users to configure such an implementation at compile time when
+     the target system cannot be deduced automatically, by setting the option
+     MBEDTLS_PLATFORM_GMTIME_R_ALT. At this stage Mbed TLS is only able to
+     automatically select implementations for Windows and POSIX C libraries.
+  Bugfix
+   * Fix build failures on platforms where only gmtime() is available but
+     neither gmtime_r() nor gmtime_s() are present. Fixes #1907.
+
+- Version 2.13.0
+  Security
+   * Fix an issue in the X.509 module which could lead to a buffer overread
+     during certificate extensions parsing. In case of receiving malformed
+     input (extensions length field equal to 0), an illegal read of one byte
+     beyond the input buffer is made. Found and analyzed by Nathan Crandall.
+  Features
+   * Add support for fragmentation of outgoing DTLS handshake messages. This
+     is controlled by the maximum fragment length as set locally or negotiated
+     with the peer, as well as by a new per-connection MTU option, set using
+     mbedtls_ssl_set_mtu().
+   * Add support for auto-adjustment of MTU to a safe value during the
+     handshake when flights do not get through (RFC 6347, section 4.1.1.1,
+     last paragraph).
+   * Add support for packing multiple records within a single datagram,
+     enabled by default.
+   * Add support for buffering out-of-order handshake messages in DTLS.
+     The maximum amount of RAM used for this can be controlled by the
+     compile-time constant MBEDTLS_SSL_DTLS_MAX_BUFFERING defined
+     in mbedtls/config.h.
+  API Changes
+   * Add function mbedtls_ssl_set_datagram_packing() to configure
+     the use of datagram packing (enabled by default).
+  Bugfix
+   * Fix a potential memory leak in mbedtls_ssl_setup() function. An allocation
+     failure in the function could lead to other buffers being leaked.
+   * Fixes an issue with MBEDTLS_CHACHAPOLY_C which would not compile if
+     MBEDTLS_ARC4_C and MBEDTLS_CIPHER_NULL_CIPHER weren't also defined. #1890
+   * Fix a memory leak in ecp_mul_comb() if ecp_precompute_comb() fails.
+     Fix contributed by Espressif Systems.
+   * Add ecc extensions only if an ecc based ciphersuite is used.
+     This improves compliance to RFC 4492, and as a result, solves
+     interoperability issues with BouncyCastle. Raised by milenamil in #1157.
+   * Replace printf with mbedtls_printf in the ARIA module. Found by
+     TrinityTonic in #1908.
+   * Fix potential use-after-free in mbedtls_ssl_get_max_frag_len()
+     and mbedtls_ssl_get_record_expansion() after a session reset. Fixes #1941.
+   * Fix a bug that caused SSL/TLS clients to incorrectly abort the handshake
+     with TLS versions 1.1 and earlier when the server requested authentication
+     without providing a list of CAs. This was due to an overly strict bounds
+     check in parsing the CertificateRequest message,
+     introduced in Mbed TLS 2.12.0. Fixes #1954.
+   * Fix a miscalculation of the maximum record expansion in
+     mbedtls_ssl_get_record_expansion() in case of ChachaPoly ciphersuites,
+     or CBC ciphersuites in (D)TLS versions 1.1 or higher. Fixes #1913, #1914.
+   * Fix undefined shifts with negative values in certificates parsing
+     (found by Catena cyber using oss-fuzz)
+   * Fix memory leak and free without initialization in pk_encrypt
+     and pk_decrypt example programs. Reported by Brace Stout. Fixes #1128.
+   * Remove redundant else statement. Raised by irwir. Fixes #1776.
+  Changes
+   * Copy headers preserving timestamps when doing a "make install".
+     Contributed by xueruini.
+   * Allow the forward declaration of public structs. Contributed by Dawid
+     Drozd. Fixes #1215 raised by randombit.
+   * Improve compatibility with some alternative CCM implementations by using
+     CCM test vectors from RAM.
+   * Add support for buffering of out-of-order handshake messages.
+   * Add warnings to the documentation of the HKDF module to reduce the risk
+     of misusing the mbedtls_hkdf_extract() and mbedtls_hkdf_expand()
+     functions. Fixes #1775. Reported by Brian J. Murray.
+
+-------------------------------------------------------------------
+Thu Aug 23 07:22:18 UTC 2018 - mpluskal@suse.com
+
+- Update to version 2.12.0:
+  * Security
+    + Fixed a vulnerability in the TLS ciphersuites based on use of CBC and SHA-384 in DTLS/TLS 1.0 to 1.2, that allowed an active network attacker to partially recover the plaintext of messages under certains conditions by exploiting timing side-channels.
+    + Fixed a vulnerability in TLS ciphersuites based on CBC, in DTLS/TLS 1.0 to 1.2, that allowed a local attacker, with the ability to execute code on the local machine as well as to manipulate network packets, to partially recover the plaintext of messages under certain conditions by using a cache attack targetting an internal MD/SHA buffer.
+    + Added a counter-measure against a vulnerability in TLS ciphersuites based on CBC, in DTLS/TLS 1.0 to 1.2, that allowed a local attacker with the ability to execute code on the local machine as well as manipulate network packets, to partially recover the plaintext of messages certain conditions (see previous entry) by using a cache attack targeting the SSL input record buffer.
+  * Features
+    + Added new cryptographic primitives, the stream cipher Chacha20, one-time authenticator Poly1305 and AEAD construct Chacha20-Poly1305, as defined in RFC 7539. Contributed by Daniel King.
+    + Added support for the CHACHA20-POLY1305 ciphersuites from RFC 7905.
+    + Made the receive and transmit buffers independently configurable in size, for situations where the outgoing buffer can be fixed at a smaller size than the incoming buffer
+    + Added support for the AES based key wrapping modes defined by NIST SP 800-38F algorithms KW and KWP and by RFC's 3394 and 5649.
+    + Added platform support for the Haiku OS.
+  * Bugfix
+    + Fixed the key_app_writer example which was creating an invalid ASN.1 tag by writing an additional leading zero byte. Found by Aryeh R. #1257.
+    + Fixed a C++ compilation error, caused by a variable named new. Found and fixed by Hirotaka Niisato. #1783.
+    + Fixed the "no symbols" warning issued by ranlib when building on Mac OS X. Fix contributed by tabascoeye.
+    + Clarified documentation for mbedtls_ssl_write() to include 0 as a valid return value. Found by @davidwu2000. #839.
+    + Fixed a memory leak in mbedtls_x509_csr_parse(). Found and fixed by catenacyber, Philippe Antoine. #1623.
+    + Added length checks to some TLS parsing functions. Found and fixed by Philippe Antoine from Catena cyber. #1663.
+    + Remove unused headers included in x509.c. Found by Chris Hanson and fixed by Brendan Shanks. #992.
+    + Fixed compilation error when MBEDTLS_ARC4_C is disabled and MBEDTLS_CIPHER_NULL_CIPHER is enabled. Found by TrinityTonic in #1719.
+    + Fixed the inline assembly for the MPI multiply helper function for i386 and i386 with SSE2. Found by László Langó. #1550.
+    + Fixed the namespacing in header files. Remove the mbedtls namespacing in the #include in the header files. #857.
+    + Fixed a compiler warning of 'use before initialisation' in mbedtls_pk_parse_key(). Found by Martin Boye Petersen and fixed by Dawid Drozd.#1098.
+    + Fixed decryption of zero length messages (which contain all padding) when a CBC based ciphersuite was used together with Encrypt-then-MAC.
+    + Fixed the ssl_client2 example to send application data with 0-length content when the request_size argument is set to 0 as stated in the documentation. #1833.
+    + Corrected the documentation for mbedtls_ssl_get_session(). This API has deep copy of the session, and the peer certificate is not lost. #926.
+    + Fixed issues when building to the C99 standard, using -std=c99. Fixed by Nick Wilson.
+  * Changes
+    + Fails when receiving a TLS alert message with an invalid length, or invalid zero-length messages when using TLS 1.2. Contributed by Espressif Systems.
+    + Changed the default behaviour of mbedtls_hkdf_extract() to return an error when calling with a NULL salt and non-zero salt length. Contributed by Brian J Murray
+    + Change the shebang line in Perl scripts to look up perl in the PATH. Contributed by fbrosson.
+    + Allow overriding the time on Windows via the platform-time abstraction. Fixed by Nick Wilson.
+    + Use gmtime_r/gmtime_s for thread-safety. Fixed by Nick Wilson.
+
+-------------------------------------------------------------------
+Mon Jul  9 13:21:03 UTC 2018 - mpluskal@suse.com
+
+- Update to version 2.11.0:
+  * Features
+    + Added support for the XTS block cipher mode with AES (AES-XTS). Contributed by Aorimn in pull request #414.
+    + Implemented the HMAC-based extract-and-expand key derivation function (HKDF) per RFC 5869. Contributed by Thomas Fossati.
+    + For TLS servers, added support for offloading private key operations to an external cryptoprocessor. Private key operations can be asynchronous to allow non-blocking operation of the TLS server stack.
+    + Added support for ARIA cipher (RFC 5794) and associated TLS ciphersuites (RFC 6209). ARIA is disabled by default. To enable, see MBEDTLS_ARIA_C in config.h.
+    + Added support for the CCM* block cipher mode as defined in IEEE Std 802.15.4.
+    + Added an additional block mode, OFB (Output Feedback) per NIST SP 800-38a, to the AES module and cipher abstraction module.
+  * API Changes
+    + Mbed TLS 2.11.0 maintains source code compatibility with the last minor version, Mbed TLS 2.9.0, but extends the interface with additional capabilities. Mbed TLS 2.11.0 modifies the ABI and increases the SOVERSION.
+  * Bugfix
+    + Fixed the cert_write example to handle certificates signed with elliptic curves as well as RSA. Fixes #777 found by dbedev.
+    + Fixed the redefinition of _WIN32_WINNT, to avoid overriding a definition used by user applications. Found and fixed by Fabio Alessandrelli.
+    + Fixed compilation warnings with the IAR toolchain on 32-bit platforms. Reported by rahmanih in #683.
+    + Fixed an issue with MicroBlaze support in bn_mul.h which was causing the build to fail. Found by zv-io. Fixes #1651.
+    + Fixed braces in mbedtls_memory_buffer_alloc_status(). Found by sbranden in #552.
+    + Added the macro MBEDTLS_X509_MAX_FILE_PATH_LEN that enables the user to configure the maximum length of a file path that can be buffered when calling mbedtls_x509_crt_parse_path(). Fixes #492.
+    + Fixed redundant declaration of mbedtls_ssl_list_ciphersuites. Raised by TrinityTonic in #1359.
+- Changes for version 2.9.0:
+  + Security
+    + Fixed an issue in the X.509 module which could lead to a buffer overread during certificate validation. Additionally, the issue could also lead to unnecessary callback checks being made or to some validation checks to be omitted. The overread could be triggered remotely, while the other issues would require a non DER-compliant certificate to be correctly signed by a trusted CA, or a trusted CA with a non DER-compliant certificate. Found by luocm. Fixes #825.
+    + Fixed the buffer length assertion in the ssl_parse_certificate_request() function which could lead to an arbitrary overread of the message buffer. The overreads could be caused by receiving a malformed algorithms section which was too short. In builds with debug output, this overread data was output with the debug data.
+    + Fixed a client-side bug in the validation of the server's ciphersuite choice which could potentially lead to the client accepting a ciphersuite it didn't offer or a ciphersuite that could not be used with the TLS or DTLS version chosen by the server. This could lead to corruption of internal data structures for some configurations.
+  * Features
+    + Added an option of MBEDTLS_AES_FEWER_TABLES, to dynamically compute smaller AES tables during runtime, thereby reducing the RAM/ROM footprint by ~6KiB. Suggested and contributed by jkivilin.
+    + Added initial support for Curve448 (RFC 7748). So far only mbedtls_ecp_mul() and ECDH primitive functions (mbedtls_ecdh_gen_public(), mbedtls_ecdh_compute_shared()) are supported for now. Contributed by Nicholas Wilson.
+  * API Changes
+    + Mbed TLS 2.9.0 maintains source code and binary compatibility with the last minor version, Mbed TLS 2.8.0, but extends the interface with additional capabilities.
+    + Extended the API with the function of mbedtls_net_poll() to allow user applications to wait for a network context to become ready before reading or writing.
+    + Added the function mbedtls_ssl_check_pending() to the public API to allow a check for whether more more data is pending to be processed in the internal message buffers. This function is necessary to determine the underlying transport when event-driven IO is used.
+  * Bugfix
+    + Fixed a spurious uninitialized variable warning in cmac.c. Fix independently contributed by Brian J Murray and David Brown.
+    + Added missing dependencies in test suites that led to build failures in configurations that omit certain hashes or public-key algorithms. Fixes #1040.
+    + Fixed a C89 incompatibility issue in benchmark.c. Contributed by Brendan Shanks. Fixes #1353.
+    + Added missing dependencies for MBEDTLS_HAVE_TIME_DATE and MBEDTLS_VERSION_FEATURES in some test suites. Contributed by Deomid Ryabkov. Fixes #1299, #1475.
+    + Fixed the Makefile build process for building shared libraries on Mac OS X. Fixed by mnacamura.
+    + Fixed parsing of PKCS#8 encoded Elliptic Curve keys. Previously Mbed TLS was unable to parse keys which had only the optional parameters field of the ECPrivateKey structure. Found by Jethro Beekman, fixed in #1379.
+    + Added an optimisation to return the plaintext data more quickly on unpadded CBC decryption, as stated in the mbedtls_cipher_update() documentation. Contributed by Andy Leiserson.
+    + Fixed the overriding and ignoring of return values when parsing and writing to a file in the pk_sign program. Found by kevlut in #1142.
+    + Added restrictions to the usage of the error code MBEDTLS_ERR_SSL_WANT_READ to situations where data needs to be fetched from the underlying transport in order to make progress. Previously, this error code was also occasionally returned when unexpected messages were being discarded, ignoring that further messages could potentially already be pending to be processed in the internal buffers; these cases led to deadlocks when event-driven I/O was used. Found and reported by Hubert Mis in #772.
+    + Fixed buffer length assertions in the ssl_parse_certificate_request() function which led to a potential one byte overread of the message buffer.
+    + Fixed invalid buffer sizes being passed to zlib during record compression and decompression.
+    + Raised the soversion of libmbedcrypto to match the soversion of the maintained 2.7 branch. The soversion was increased in Mbed TLS version 2.7.1 to reflect breaking changes in that release, but the increment was missed in 2.8.0 and later releases outside of the 2.7 branch.
+
+-------------------------------------------------------------------
+Fri Apr  6 08:17:46 UTC 2018 - mpluskal@suse.com
+
+- Update to version 2.8.0:
+  * Security:
+    + Defend against Bellcore glitch attacks by verifying the results of RSA private key operations.
+    + Fix implementation of the truncated HMAC extension. The previous implementation allowed an offline 2^80 brute force attack on the HMAC key of a single, uninterrupted connection (with no resumption of the session).
+    + Reject CRLs containing unsupported critical extensions. Found by Falko Strenzke and Evangelos Karatsiolis.
+    + Fix a buffer overread in ssl_parse_server_key_exchange() that could cause a crash on invalid input.
+    + Fix a buffer overread in ssl_parse_server_psk_hint() that could cause a crash on invalid input.
+  * Features:
+    + Enable reading encrypted PEM files produced by software that uses PBKDF2-SHA2, such as OpenSSL 1.1. Submitted by Antonio Quartulli, OpenVPN Inc. Fixes #1339
+    + Support public keys encoded in PKCS#1 format. #1122
+  * New deprecations:
+    + Compression and crypto don't mix. We don't recommend using compression and cryptography, and have deprecated support for record compression (configuration option MBEDTLS_ZLIB_SUPPORT).
+  * Bugfix:
+    + Fix mbedtls_x509_crt_profile_suiteb, which used to reject all certificates with flag MBEDTLS_X509_BADCERT_BAD_PK even when the key type was correct. In the context of SSL, this resulted in handshake failure. Reported by daniel in the Mbed TLS forum. #1351
+    + Fix setting version TLSv1 as minimal version, even if TLS 1 is not enabled. Set MBEDTLS_SSL_MIN_MAJOR_VERSION and MBEDTLS_SSL_MIN_MINOR_VERSION instead of MBEDTLS_SSL_MAJOR_VERSION_3 and MBEDTLS_SSL_MINOR_VERSION_1. #664
+    + Fix compilation error on Mingw32 when _TRUNCATE is defined. Use _TRUNCATE only if __MINGW32__ is not defined. Fix suggested by Thomas Glanzmann and Nick Wilson on issue #355
+    + Fix memory allocation corner cases in memory_buffer_alloc.c module. Found by Guido Vranken. #639
+    + Don't accept an invalid tag when parsing X.509 subject alternative names in some circumstances.
+    + Fix a possible arithmetic overflow in ssl_parse_server_key_exchange() that could cause a key exchange to fail on valid data.
+    + Fix a possible arithmetic overflow in ssl_parse_server_psk_hint() that could cause a key exchange to fail on valid data.
+    + Fix a 1-byte heap buffer overflow (read-only) during private key parsing. Found through fuzz testing.
+  * Changes
+    + Fix tag lengths and value ranges in the documentation of CCM encryption. Contributed by Mathieu Briand.
+    + Fix a typo in a comment in ctr_drbg.c. Contributed by Paul Sokolovsky.
+    + Remove support for the library reference configuration for picocoin.
+    + MD functions deprecated in 2.7.0 are no longer inline, to provide a migration path for those depending on the library's ABI.
+    + Use (void) when defining functions with no parameters. Contributed by Joris Aerts. #678
+
+-------------------------------------------------------------------
+Thu Mar  8 09:32:12 UTC 2018 - mpluskal@suse.com
+
+- Use more cmake macros
+- Update spec file using spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 13 15:55:27 UTC 2018 - kbabioch@suse.com
+
+- Update to version 2.7.0:
+  - Security
+    * Fix a heap corruption issue in the implementation of the truncated HMAC
+      extension. When the truncated HMAC extension is enabled and CBC is used,
+      sending a malicious application packet could be used to selectively corrupt
+      6 bytes on the peer's heap, which could potentially lead to crash or remote
+      code execution. The issue could be triggered remotely from either side in
+      both TLS and DTLS. (CVE-2018-0488 boo#1080828)
+    * Fix a buffer overflow in RSA-PSS verification when the hash was too large
+      for the key size, which could potentially lead to crash or remote code
+      execution. Found by Seth Terashima, Qualcomm Product Security Initiative,
+      Qualcomm Technologies Inc. (CVE-2018-0487 boo#1080826)
+    * Fix buffer overflow in RSA-PSS verification when the unmasked data is all
+      zeros.
+    * Fix an unsafe bounds check in ssl_parse_client_psk_identity() when adding
+      64 KiB to the address of the SSL buffer and causing a wrap around.
+    * Fix a potential heap buffer overflow in mbedtls_ssl_write(). When the (by
+      default enabled) maximum fragment length extension is disabled in the
+      config and the application data buffer passed to mbedtls_ssl_write
+      is larger than the internal message buffer (16384 bytes by default), the
+      latter overflows.
+    * Add a provision to prevent compiler optimizations breaking the time
+      constancy of mbedtls_ssl_safer_memcmp().
+    * Ensure that buffers are cleared after use if they contain sensitive data.
+      Changes were introduced in multiple places in the library.
+    * Set PEM buffer to zero before freeing it, to avoid decoded private keys
+      being leaked to memory after release.
+    * Fix dhm_check_range() failing to detect trivial subgroups and potentially
+      leaking 1 bit of the private key. Reported by prashantkspatil.
+    * Make mbedtls_mpi_read_binary() constant-time with respect to the input
+      data. Previously, trailing zero bytes were detected and omitted for the
+      sake of saving memory, but potentially leading to slight timing
+      differences. Reported by Marco Macchetti, Kudelski Group.
+    * Wipe stack buffer temporarily holding EC private exponent
+      after keypair generation.
+    * Fix a potential heap buffer over-read in ALPN extension parsing
+      (server-side). Could result in application crash, but only if an ALPN
+      name larger than 16 bytes had been configured on the server.
+    * Change default choice of DHE parameters from untrustworthy RFC 5114
+      to RFC 3526 containing parameters generated in a nothing-up-my-sleeve
+      manner. 
+  - Features
+    * Add alternative implementation support for CCM and CMAC (MBEDTLS_CCM_ALT,
+      MBEDTLS_CMAC_ALT). Submitted by Steven Cooreman, Silicon Labs.
+    * Add support for alternative implementations of GCM, selected by the
+      configuration flag MBEDTLS_GCM_ALT.
+    * Add support for alternative implementations for ECDSA, controlled by new
+      configuration flags MBEDTLS_ECDSA_SIGN_ALT, MBEDTLS_ECDSA_VERIFY_ALT and
+      MBEDTLS_ECDSDA_GENKEY_AT in config.h.
+      The following functions from the ECDSA module can be replaced
+      with alternative implementation:
+      mbedtls_ecdsa_sign(), mbedtls_ecdsa_verify() and mbedtls_ecdsa_genkey().
+    * Add support for alternative implementation of ECDH, controlled by the
+      new configuration flags MBEDTLS_ECDH_COMPUTE_SHARED_ALT and
+      MBEDTLS_ECDH_GEN_PUBLIC_ALT in config.h.
+      The following functions from the ECDH module can be replaced
+      with an alternative implementation:
+      mbedtls_ecdh_gen_public() and mbedtls_ecdh_compute_shared().
+    * Add support for alternative implementation of ECJPAKE, controlled by
+      the new configuration flag MBEDTLS_ECJPAKE_ALT.
+    * Add mechanism to provide alternative implementation of the DHM module.
+  - API changes
+    * Extend RSA interface by multiple functions allowing structure-
+      independent setup and export of RSA contexts. Most notably,
+      mbedtls_rsa_import() and mbedtls_rsa_complete() are introduced for setting
+      up RSA contexts from partial key material and having them completed to the
+      needs of the implementation automatically. This allows to setup private RSA
+      contexts from keys consisting of N,D,E only, even if P,Q are needed for the
+      purpose or CRT and/or blinding.
+    * The configuration option MBEDTLS_RSA_ALT can be used to define alternative
+      implementations of the RSA interface declared in rsa.h.
+    * The following functions in the message digest modules (MD2, MD4, MD5,
+      SHA1, SHA256, SHA512) have been deprecated and replaced as shown below.
+      The new functions change the return type from void to int to allow
+      returning error codes when using MBEDTLS_<MODULE>_ALT.
+      mbedtls_<MODULE>_starts() -> mbedtls_<MODULE>_starts_ret()
+      mbedtls_<MODULE>_update() -> mbedtls_<MODULE>_update_ret()
+      mbedtls_<MODULE>_finish() -> mbedtls_<MODULE>_finish_ret()
+      mbedtls_<MODULE>_process() -> mbedtls_internal_<MODULE>_process()
+  - Deprecations
+    * Deprecate usage of RSA primitives with non-matching key-type
+      (e.g. signing with a public key).
+    * Direct manipulation of structure fields of RSA contexts is deprecated.
+      Users are advised to use the extended RSA API instead.
+    * Deprecate usage of message digest functions that return void
+      (mbedtls_<MODULE>_starts, mbedtls_<MODULE>_update,
+      mbedtls_<MODULE>_finish and mbedtls_<MODULE>_process where <MODULE> is
+      any of MD2, MD4, MD5, SHA1, SHA256, SHA512) in favor of functions
+      that can return an error code.
+    * Deprecate untrustworthy DHE parameters from RFC 5114. Superseded by
+      parameters from RFC 3526 or the newly added parameters from RFC 7919.
+    * Deprecate hex string DHE constants MBEDTLS_DHM_RFC3526_MODP_2048_P etc.
+      Supserseded by binary encoded constants MBEDTLS_DHM_RFC3526_MODP_2048_P_BIN
+      etc.
+    * Deprecate mbedtls_ssl_conf_dh_param() for setting default DHE parameters
+      from hex strings. Superseded by mbedtls_ssl_conf_dh_param_bin()
+      accepting DHM parameters in binary form, matching the new constants.
+  - Several bug fixes
+
+-------------------------------------------------------------------
+Mon Sep 11 21:03:15 UTC 2017 - fisiu@opensuse.org
+
+-  Update to version 2.6.0:
+  * Add the functions mbedtls_platform_setup() and mbedtls_platform_teardown()
+    and the context struct mbedtls_platform_context to perform
+    platform-specific setup and teardown operations. The macro
+    MBEDTLS_PLATFORM_SETUP_TEARDOWN_ALT allows the functions to be overridden
+    by the user in a platform_alt.h file. These new functions are required in
+    some embedded environments to provide a means of initialising underlying
+    cryptographic acceleration hardware.
+  * Reverted API/ABI breaking changes introduced in mbed TLS 2.5.1, to make the
+    API consistent with mbed TLS 2.5.0. Specifically removed the inline
+    qualifier from the functions mbedtls_aes_decrypt, mbedtls_aes_encrypt,
+    mbedtls_ssl_ciphersuite_uses_ec and mbedtls_ssl_ciphersuite_uses_psk. Found
+    by James Cowgill. #978
+  * Certificate verification functions now set flags to -1 in case the full
+    chain was not verified due to an internal error (including in the verify
+    callback) or chain length limitations.
+  * With authmode set to optional, the TLS handshake is now aborted if the
+    verification of the peer's certificate failed due to an overlong chain or
+    a fatal error in the verify callback.
+  * Fix authentication bypass in SSL/TLS: when authmode is set to optional,
+    mbedtls_ssl_get_verify_result() would incorrectly return 0 when the peer's
+    X.509 certificate chain had more than MBEDTLS_X509_MAX_INTERMEDIATE_CA
+    (default: 8) intermediates, even when it was not trusted. This could be
+    triggered remotely from either side. (With authmode set to 'required'
+    (the default), the handshake was correctly aborted).
+    Fix for CVE-2017-14032 and boo#1056544.
+  * Reliably wipe sensitive data after use in the AES example applications
+    programs/aes/aescrypt2 and programs/aes/crypt_and_hash.
+    Found by Laurent Simon.
+
+-------------------------------------------------------------------
+Mon Jul 10 14:17:59 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.5.1:
+  * Adds hardware acceleration support for the Elliptic Curve Point
+    module. This has involved exposing parts of the internal
+    interface to enable replacing the core functions and adding an
+    alternative, module level replacement to support for enabling
+    the extension of the interface.
+  * Adds a new configuration option to mbedtls_ssl_config() to
+    enable suppressing the CA list in Certificate Request messages.
+    The default behaviour has not changed, namely every configured
+    CA's name is included.
+  * Fixes an unlimited overread of heap-based buffers in
+    mbedtls_ssl_read(). The issue could only happen client-side
+    with renegotiation enabled. This could result in a Denial of
+    Service (such as crashing the application) or information leak.
+  * Adds exponent blinding to RSA private operations as a
+    countermeasure against side-channel attacks like the cache
+    attack described in https://arxiv.org/abs/1702.08719v2.
+  * Wipes stack buffers in RSA private key operations
+    (rsa_rsaes_pkcs1_v15_decrypt(), rsa_rsaes_oaep_decrypt()).
+  * Removes SHA-1 and RIPEMD-160 from the default hash algorithms
+    for certificate verification. SHA-1 can be turned back on with
+    a compile-time option if needed.
+  * Fixes offset in FALLBACK_SCSV parsing that caused TLS server to
+    fail to detect it sometimes. Reported by Hugo Leisink.
+  * Tighten parsing of RSA PKCS#1 v1.5 signatures, to avoid a
+    potential Bleichenbacher/BERserk-style attack.
+
+-------------------------------------------------------------------
+Sat Mar 11 15:50:12 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.4.2:
+  * Add checks to prevent signature forgeries for very large messages while
+    using RSA through the PK module in 64-bit systems. The issue was caused by
+    some data loss when casting a size_t to an unsigned int value in the
+    functions rsa_verify_wrap(), rsa_sign_wrap(), rsa_alt_sign_wrap() and
+    mbedtls_pk_sign(). Found by Jean-Philippe Aumasson.
+  * Fixed potential livelock during the parsing of a CRL in PEM format in
+    mbedtls_x509_crl_parse(). A string containing a CRL followed by trailing
+    characters after the footer could result in the execution of an infinite
+    loop. The issue can be triggered remotely. Found by Greg Zaverucha,
+    Microsoft.
+  * Removed MD5 from the allowed hash algorithms for CertificateRequest and
+    CertificateVerify messages, to prevent SLOTH attacks against TLS 1.2.
+    Introduced by interoperability fix for #513.
+  * Fixed a bug that caused freeing a buffer that was allocated on the stack,
+    when verifying the validity of a key on secp224k1. This could be
+    triggered remotely for example with a maliciously constructed certificate
+    and potentially could lead to remote code execution on some platforms.
+    Reported independently by rongsaws and Aleksandar Nikolic, Cisco Talos
+    team. #569 CVE-2017-2784 (boo#1029017)
+
+-------------------------------------------------------------------
+Sun Nov 13 18:18:58 UTC 2016 - mpluskal@suse.com
+
+- Update to version 2.4.0:
+  * Removes the MBEDTLS_SSL_AEAD_RANDOM_IV configuration option,
+    because it was not compliant with RFC-5116 and could lead to
+    session key recovery in very long TLS sessions.
+  * Fixes potential stack corruption in mbedtls_x509write_crt_der()
+    and mbedtls_x509write_csr_der() when the signature is copied to
+    the buffer without checking whether there is enough space in
+    the destination. The issue cannot be triggered remotely.
+  * Added support for CMAC for AES and 3DES and AES-CMAC-PRF-128,
+    as defined by NIST SP 800-38B, RFC-4493 and RFC-4615.
+  * Added hardware entropy self-test to verify that the hardware
+    entropy source is functioning correctly.
+  * Added a script to print build environment information for
+    diagnostic use in test scripts, which is also now called by
+    all.sh verification script.
+  * Added the macro MBEDTLS_X509_MAX_FILE_PATH_LEN that enables the
+    user to configure the maximum length of a file path that can be
+    buffered when calling mbedtls_x509_crt_parse_path().
+  * Added a configuration file config-no-entropy.h that configures
+    the subset of library features that do not require an entropy
+    source.
+  * Added the macro MBEDTLS_ENTROPY_MIN_HARDWARE in config.h. This
+    allows users to configure the minimum number of bytes for
+    entropy sources using the mbedtls_hardware_poll() function.
+  * Miscelanous bugfixes
+- Drop no longer needed mbedtls_fix522.patch
+
+-------------------------------------------------------------------
+Sat Aug 27 11:11:20 UTC 2016 - mpluskal@suse.com
+
+- Merge changes from home:X0F:HSF
+- Add mbedtls_fix522.patch which fixes building of dpendant
+  libraries
+
+-------------------------------------------------------------------
+Fri Aug 12 19:30:14 UTC 2016 - jengelh@inai.de
+
+- Update description
+
+-------------------------------------------------------------------
+Thu Aug 11 08:05:16 UTC 2016 - mpluskal@suse.com
+
+- Split shared libraries to subpackages
+
+-------------------------------------------------------------------
+Tue Aug  9 21:13:29 UTC 2016 - astieger@suse.com
+
+- update to 2.3.0:
+  * adding libmbedcrypto, libmbedx509
+  * headers moved to /usr/include/mbedtls
+  * remove compatibility symlink
+  * source compatibility header /usr/include/mbedtls/compat-1.3.h
+  * Use primary upstream license (Apache-2.0)
+
+-------------------------------------------------------------------
+Thu Jul 14 12:00:56 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.3.17 (boo#988956):
+	* Security
+    + Fix missing padding length check in 
+      mbedtls_rsa_rsaes_pkcs1_v15_decrypt required by PKCS1 v2.2
+    + Fix a potential integer underflow to buffer overread in 
+      mbedtls_rsa_rsaes_oaep_decrypt. It is not triggerable 
+      remotely in SSL/TLS.
+    + Fix potential integer overflow to buffer overflow in 
+      mbedtls_rsa_rsaes_pkcs1_v15_encrypt and 
+      mbedtls_rsa_rsaes_oaep_encrypt
+  * Bugfix
+    + Fix bug in mbedtls_mpi_add_mpi() that caused wrong results 
+      when the three arguments where the same (in-place doubling). 
+      Found and fixed by Janos Follath. #309
+    + Fix issue in Makefile that prevented building using armar.
+    + Fix issue that caused a hang up when generating RSA keys of 
+      odd bitlength
+    + Fix bug in mbedtls_rsa_rsaes_pkcs1_v15_encrypt that made 
+      null pointer dereference possible.
+    + Fix issue that caused a crash if invalid curves were passed 
+      to mbedtls_ssl_conf_curves. #373
+    * Changes
+      + On ARM platforms, when compiling with -O0 with GCC, Clang or 
+        armcc5, don't use the optimized assembly for bignum 
+        multiplication. This removes the need to pass 
+        -fomit-frame-pointer to avoid a build error with -O0.
+      + Disabled SSLv3 in the default configuration.
+      + Fix non-compliance server extension handling. Extensions for 
+        SSLv3 are now ignored, as required by RFC6101.
+
+-------------------------------------------------------------------
+Sun Jan 10 13:08:11 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.3.16
+  * Fixes a potential double free when 
+    mbedtls_asn1_store_named_data() fails to allocate memory. This 
+    was only used for certificate generation and was not 
+    triggerable remotely in SSL/TLS. boo#961290
+  * Disables by default MD5 handshake signatures in TLS 1.2 to 
+    prevent the  SLOTH (CVE-2015-7575) attack on TLS 1.2 server 
+    authentication (other attacks from the SLOTH paper do not apply
+    to any version of mbed TLS or PolarSSL). boo#961284
+  * Fixes an over-restrictive length limit in GCM.
+  * Fixes a bug in certificate validation that caused valid chains 
+    to be rejected when the first intermediate certificate has a 
+    pathLenConstraint equal to zero.
+  * Removed potential leak in mbedtls_rsa_rsassa_pkcs1_v15_sign()
+  * Added config.h option POLARSSL_SSL_ENABLE_MD5_SIGNATURES to 
+    control use of MD5-based signatures for TLS 1.2 handshake 
+    (disabled by default).
+
+-------------------------------------------------------------------
+Wed Nov 18 13:29:03 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.3.15
+  * Fix potential double free if ssl_set_psk() is called more than once and
+    some allocation fails. Cannot be forced remotely. Found by Guido Vranken,
+    Intelworks.
+  * Fix potential heap corruption on Windows when
+    x509_crt_parse_path() is passed a path longer than 2GB. Cannot be
+    triggered remotely. Found by Guido Vranken, Intelworks.
+  * Fix potential buffer overflow in some asn1_write_xxx() functions.
+    Cannot be triggered remotely unless you create X.509 certificates based
+    on untrusted input or write keys of untrusted origin. Found by Guido
+    Vranken, Intelworks.
+  * The X509 max_pathlen constraint was not enforced on intermediate
+    certificates. Found by Nicholas Wilson, fix and tests provided by
+    Janos Follath. #280 and #319
+  * Self-signed certificates were not excluded from pathlen counting,
+    resulting in some valid X.509 being incorrectly rejected. Found and fix
+    provided by Janos Follath. #319
+  * Fix bug causing some handshakes to fail due to some non-fatal alerts not
+    begin properly ignored. Found by mancha and Kasom Koht-arsa, #308
+  * Fix build error with configurations where ECDHE-PSK is the only key
+    exchange. Found and fix provided by Chris Hammond. #270
+  * Fix failures in MPI on Sparc(64) due to use of bad assembly code.
+    Found by Kurt Danielson. #292
+  * Fix typo in name of the extKeyUsage OID. Found by inestlerode, #314
+  * Fix bug in ASN.1 encoding of booleans that caused generated CA
+    certificates to be rejected by some applications, including OS X
+    Keychain. Found and fixed by Jonathan Leroy, Inikup.
+  * Fix "Destination buffer is too small" error in cert_write program.
+    Found and fixed by Jonathan Leroy, Inikup.
+
+-------------------------------------------------------------------
+Thu Oct  8 06:53:02 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.3.14
+  * Added fix for CVE-2015-5291 (boo#949380) to prevent heap corruption due to buffer
+    overflow of the hostname or session ticket. Found by Guido Vranken,
+    Intelworks.
+  * Fix stack buffer overflow in pkcs12 decryption (used by
+    mbedtls_pk_parse_key(file)() when the password is > 129 bytes. Found by
+    Guido Vranken, Intelworks. Not triggerable remotely.
+  * Fix potential buffer overflow in mbedtls_mpi_read_string().
+    Found by Guido Vranken, Intelworks. Not exploitable remotely in the context
+    of TLS, but might be in other uses. On 32 bit machines, requires reading a
+    string of close to or larger than 1GB to exploit; on 64 bit machines, would
+    require reading a string of close to or larger than 2^62 bytes.
+  * Fix potential random memory allocation in mbedtls_pem_read_buffer()
+    on crafted PEM input data. Found and fix provided by Guido Vranken,
+    Intelworks. Not triggerable remotely in TLS. Triggerable remotely if you
+    accept PEM data from an untrusted source.
+  * Fix potential double-free if ssl_set_psk() is called repeatedly on
+    the same ssl_context object and some memory allocations fail. Found by
+    Guido Vranken, Intelworks. Can not be forced remotely.
+  * Fix possible heap buffer overflow in base64_encode() when the input
+    buffer is 512MB or larger on 32-bit platforms. Found by Guido Vranken,
+    Intelworks. Found by Guido Vranken. Not trigerrable remotely in TLS.
+  * Fix potential heap buffer overflow in servers that perform client
+    authentication against a crafted CA cert. Cannot be triggered remotely
+    unless you allow third parties to pick trust CAs for client auth. Found by
+    Guido Vranken, Intelworks.
+  * Fix compile error in net.c with musl libc. Found and patch provided by
+    zhasha (#278).
+  * Fix macroization of 'inline' keywork when building as C++. (#279)
+  * Added checking of hostname length in ssl_set_hostname() to ensure domain
+    names are compliant with RFC 1035.
+- Changes for 1.3.13
+  * Fix possible client-side NULL pointer dereference (read) when the client
+    tries to continue the handshake after it failed (a misuse of the API).
+    (Found and patch provided by Fabian Foerg, Gotham Digital Science using afl-fuzz.)
+  * Add countermeasure against Lenstra's RSA-CRT attack for PKCS#1 v1.5
+    signatures. (Found by Florian Weimer, Red Hat.)
+    https://securityblog.redhat.com/2015/09/02/factoring-rsa-keys-with-tls-perfect-forward-secrecy/
+  * Setting SSL_MIN_DHM_BYTES in config.h had no effect (overriden in ssl.h)
+    (found by Fabio Solari) (#256)
+  * Fix bug in mbedtls_rsa_public() and mbedtls_rsa_private() that could
+    result trying to unlock an unlocked mutex on invalid input (found by
+    Fredrik Axelsson) (#257)
+  * Fix -Wshadow warnings (found by hnrkp) (#240)
+  * Fix unused function warning when using MBEDTLS_MDx_ALT or
+    MBEDTLS_SHAxxx_ALT (found by Henrik) (#239)
+  * Fix memory corruption in pkey programs (found by yankuncheng) (#210)
+  * Fix memory corruption on client with overlong PSK identity, around
+    SSL_MAX_CONTENT_LEN or higher - not triggerrable remotely (found by
+    Aleksandrs Saveljevs) (#238)
+  * Fix off-by-one error in parsing Supported Point Format extension that
+    caused some handshakes to fail.
+  * When verifying a certificate chain, if an intermediate certificate is
+    trusted, no later cert is checked. (suggested by hannes-landeholm)
+    (#220).
+- Changes for 1.3.12
+  * Increase the minimum size of Diffie-Hellman parameters accepted by the
+    client to 1024 bits, to protect against Logjam attack.
+  * Increase the size of default Diffie-Hellman parameters on the server to
+    2048 bits. This can be changed with ssl_set_dh_params().
+  * Fix thread-safety issue in SSL debug module (found by Edwin van Vliet).
+  * Some example programs were not built using make, not included in Visual
+    Studio projects (found by Kristian Bendiksen).
+  * Fix build error with CMake and pre-4.5 versions of GCC (found by Hugo
+    Leisink).
+  * Fix missing -static-ligcc when building shared libraries for Windows with
+    make.
+  * Fix compile error with armcc5 --gnu.
+  * Add SSL_MIN_DHM_BYTES configuration parameter in config.h to choose the
+    minimum size of Diffie-Hellman parameters accepted by the client.
+  * The PEM parser now accepts a trailing space at end of lines (#226).
+
+-------------------------------------------------------------------
+Wed Jul 29 10:16:37 UTC 2015 - dimstar@opensuse.org
+
+- Add baselibs.conf: build libmbedtls9-32bit, as needed by
+  libbzrtp0-32bit.
+
+-------------------------------------------------------------------
+Mon Jun 15 22:19:07 UTC 2015 - fisiu@opensuse.org
+
+- Update to 1.3.11:
+  * Remove bias in mpi_gen_prime (contributed by Pascal Junod).
+  * Remove potential sources of timing variations (some contributed by Pascal
+    Junod).
+  * Options POLARSSL_HAVE_INT8 and POLARSSL_HAVE_INT16 are deprecated.
+  * Enabling POLARSSL_NET_C without POLARSSL_HAVE_IPV6 is deprecated.
+  * compat-1.2.h and openssl.h are deprecated.
+  * ssl_set_own_cert() no longer calls pk_check_pair() since the performance
+    impact was bad for some users (this was introduced in 1.3.10).
+  * Move from SHA-1 to SHA-256 in example programs using signatures (suggested
+    by Thorsten Mühlfelder).
+  * Remove dependency on sscanf() in X.509 parsing modules.
+  * Fix compile errors with PLATFORM_NO_STD_FUNCTIONS.
+  * Fix bug in entropy.c when THREADING_C is also enabled that caused
+    entropy_free() to crash (thanks to Rafał Przywara).
+  * Fix memory leak when gcm_setkey() and ccm_setkey() are used more than once
+    on the same context.
+  * Fix bug in ssl_mail_client when password is longer that username (found by
+    Bruno Pape).
+  * Fix undefined behaviour (memcmp( NULL, NULL, 0 );) in X.509 modules
+    (detected by Clang's 3.6 UBSan).
+  * mpi_size() and mpi_msb() would segfault when called on an mpi that is
+    initialized but not set (found by pravic).
+  * Fix detection of support for getrandom() on Linux (reported by syzzer) by
+    doing it at runtime (using uname) rather that compile time.
+  * Fix handling of symlinks by "make install" (found by Gaël PORTAY).
+  * Fix potential NULL pointer dereference (not trigerrable remotely) when
+    ssl_write() is called before the handshake is finished (introduced in
+    1.3.10) (first reported by Martin Blumenstingl).
+  * Fix bug in pk_parse_key() that caused some valid private EC keys to be
+    rejected.
+  * Fix bug in Via Padlock support (found by Nikos Mavrogiannopoulos).
+  * Fix thread safety bug in RSA operations (found by Fredrik Axelsson).
+  * Fix hardclock() (only used in the benchmarking program) with some versions
+    of mingw64 (found by kxjhlele).
+  * Fix potential unintended sign extension in asn1_get_len() on 64-bit
+    platforms.
+  * Fix potential memory leak in ssl_set_psk() (found by Mansour Moufid).
+  * Fix compile error when POLARSSL_SSL_DISABLE_RENEGOTATION and
+    POLARSSL_SSL_SSESSION_TICKETS where both enabled in config.h (introduced in
+    1.3.10).
+  * Add missing extern "C" guard in aesni.h (reported by amir zamani).
+  * Add missing dependency on SHA-256 in some x509 programs (reported by
+    Gergely Budai).
+  * Fix bug related to ssl_set_curves(): the client didn't check that the curve
+    picked by the server was actually allowed.
+- Drop getrandom-syscall-fallback.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Apr  1 11:05:55 UTC 2015 - schwab@suse.de
+
+- getrandom-syscall-fallback.patch: Fall back to /dev/urandom if getrandom
+  syscall is not implemented.
+
+-------------------------------------------------------------------
+Fri Mar 27 16:59:55 UTC 2015 - mpluskal@suse.com
+
+- Update package categories
+
+-------------------------------------------------------------------
+Wed Mar 18 18:56:26 UTC 2015 - mpluskal@suse.com
+
+- Create symlink to ensure compatibility with polarssl
+
+-------------------------------------------------------------------
+Mon Mar 16 12:54:22 UTC 2015 - mpluskal@suse.com
+
+- Update provides/obsoletes
+
+-------------------------------------------------------------------
+Sun Mar 15 21:23:17 UTC 2015 - mpluskal@suse.com
+
+- Fix sed for includes
+
+-------------------------------------------------------------------
+Sun Mar 15 11:44:53 UTC 2015 - mpluskal@suse.com
+
+- Rename to mbedtls
+- Use cmake macro for building
+- Update to 1.3.10
+   * NULL pointer dereference in the buffer-based allocator when the buffer is
+     full and polarssl_free() is called (found by Mark Hasemeyer)
+     (only possible if POLARSSL_MEMORY_BUFFER_ALLOC_C is enabled, which it is
+     not by default).
+   * Fix remotely-triggerable uninitialised pointer dereference caused by
+     crafted X.509 certificate (TLS server is not affected if it doesn't ask for a
+     client certificate) (found using Codenomicon Defensics).
+   * Fix remotely-triggerable memory leak caused by crafted X.509 certificates
+     (TLS server is not affected if it doesn't ask for a client certificate)
+     (found using Codenomicon Defensics).
+   * Fix potential stack overflow while parsing crafted X.509 certificates
+     (TLS server is not affected if it doesn't ask for a client certificate)
+     (found using Codenomicon Defensics).
+   * Fix timing difference that could theoretically lead to a
+     Bleichenbacher-style attack in the RSA and RSA-PSK key exchanges
+     (reported by Sebastian Schinzel).
+   * Add support for FALLBACK_SCSV (draft-ietf-tls-downgrade-scsv).
+   * Add support for Extended Master Secret (draft-ietf-tls-session-hash).
+   * Add support for Encrypt-then-MAC (RFC 7366).
+   * Add function pk_check_pair() to test if public and private keys match.
+   * Add x509_crl_parse_der().
+   * Add compile-time option POLARSSL_X509_MAX_INTERMEDIATE_CA to limit the
+     length of an X.509 verification chain.
+   * Support for renegotiation can now be disabled at compile-time
+   * Support for 1/n-1 record splitting, a countermeasure against BEAST.
+   * Certificate selection based on signature hash, prefering SHA-1 over SHA-2
+     for pre-1.2 clients when multiple certificates are available.
+   * Add support for getrandom() syscall on recent Linux kernels with Glibc or
+     a compatible enough libc (eg uClibc).
+   * Add ssl_set_arc4_support() to make it easier to disable RC4 at runtime
+     while using the default ciphersuite list.
+   * Added new error codes and debug messages about selection of
+     ciphersuite/certificate.
+
+-------------------------------------------------------------------
+Tue Jan 20 19:33:12 UTC 2015 - fisiu@opensuse.org
+
+- Add polarssl-CVE-2015-1182.patch: Remote attack using crafted certificates:
+  fix boo#913903, CVE-2015-1182.
+
+-------------------------------------------------------------------
+Mon Nov  3 12:25:24 UTC 2014 - fisiu@opensuse.org
+
+- Update to 1.3.9, detailed changes available in ChangeLog file:
+  * Lowest common hash was selected from signature_algorithms extension in
+    TLS 1.2: fix boo#903672, CVE-2014-8627.
+  * Remotely-triggerable memory leak when parsing some X.509 certificates,
+    CVE-2014-8628.
+  * Remotely-triggerable memory leak when parsing crafted ClientHello,
+    CVE-2014-8628.
+  * Ciphersuites using SHA-256 or SHA-384 now require TLS 1.x.
+  * Ciphersuites using RSA-PSK key exchange now require TLS 1.x.
+  * POLARSSL_MPI_MAX_SIZE now defaults to 1024 in order to allow 8192 bits RSA
+    keys.
+  * X.509 certificates with more than one AttributeTypeAndValue per
+    RelativeDistinguishedName are not accepted any more.
+- Build with POLARSSL_THREADING_PTHREAD: fix boo#903671.
+
+-------------------------------------------------------------------
+Fri Aug 15 17:17:05 UTC 2014 - fisiu@opensuse.org
+
+- Update to 1.3.8, detailed changes available in ChangeLog file:
+  * Fix length checking for AEAD ciphersuites (found by Codenomicon).
+    It was possible to crash the server (and client) using crafted messages
+    when a GCM suite was chosen.
+  * Add CCM module and cipher mode to Cipher Layer
+  * Support for CCM and CCM_8 ciphersuites
+  * Support for parsing and verifying RSASSA-PSS signatures in the X.509
+    modules (certificates, CRLs and CSRs).
+  * Blowfish in the cipher layer now supports variable length keys.
+  * Add example config.h for PSK with CCM, optimized for low RAM usage.
+  * Optimize for RAM usage in example config.h for NSA Suite B profile.
+  * Add POLARSSL_REMOVE_ARC4_CIPHERSUITES to allow removing RC4 ciphersuites
+    from the default list (inactive by default).
+  * Add server-side enforcement of sent renegotiation requests
+    (ssl_set_renegotiation_enforced())
+  * Add SSL_CIPHERSUITES config.h flag to allow specifying a list of
+    ciphersuites to use and save some memory if the list is small.
+
+-------------------------------------------------------------------
+Sat Mar 29 14:01:16 UTC 2014 - fisiu@opensuse.org
+
+- Update to 1.3.5, detailed changes available in ChangeLog file:
+  * Elliptic Curve Cryptography module added
+  * Elliptic Curve Diffie Hellman module added
+  * Ephemeral Elliptic Curve Diffie Hellman support for SSL/TLS
+    (ECDHE-based ciphersuites)
+  * Ephemeral Elliptic Curve Digital Signature Algorithm support for SSL/TLS
+    (ECDSA-based ciphersuites)
+  * Ability to specify allowed ciphersuites based on the protocol version.
+  * PSK and DHE-PSK based ciphersuites added
+  * Memory allocation abstraction layer added
+  * Buffer-based memory allocator added (no malloc() / free() / HEAP usage)
+  * Threading abstraction layer added (dummy / pthread / alternate)
+  * Public Key abstraction layer added
+  * Parsing Elliptic Curve keys
+  * Parsing Elliptic Curve certificates
+  * Support for max_fragment_length extension (RFC 6066)
+  * Support for truncated_hmac extension (RFC 6066)
+  * Support for zeros-and-length (ANSI X.923) padding, one-and-zeros
+    (ISO/IEC 7816-4) padding and zero padding in the cipher layer
+  * Support for session tickets (RFC 5077)
+  * Certificate Request (CSR) generation with extensions (key_usage,
+    ns_cert_type)
+  * X509 Certificate writing with extensions (basic_constraints,
+    issuer_key_identifier, etc)
+  * Optional blinding for RSA, DHM and EC
+  * Support for multiple active certificate / key pairs in SSL servers for
+    the same host (Not to be confused with SNI!)
+
+-------------------------------------------------------------------
+Wed May 15 12:21:45 UTC 2013 - fisiu@opensuse.org
+
+- Update to 1.2.7:
+  * Ability to specify allowed ciphersuites based on the protocol
+    version.
+  * Default Blowfish keysize is now 128-bits
+  * Test suites made smaller to accommodate Raspberry Pi
+  * Fix for MPI assembly for ARM
+  * GCM adapted to support sizes > 2^29
+
+-------------------------------------------------------------------
+Sat Mar 16 16:03:03 UTC 2013 - fisiu@opensuse.org
+
+- Update to 1.2.6:
+  * Fixed memory leak in ssl_free() and ssl_reset()
+  * Corrected GCM counter incrementation to use only 32-bits
+    instead of 128-bits
+  * Fixed net_bind() for specified IP addresses on little endian
+    systems
+  * Fixed assembly code for ARM (Thumb and regular)
+  * Detailed information available in ChangeLog file.
+
+-------------------------------------------------------------------
+Fri Mar  8 13:38:43 UTC 2013 - fisiu@opensuse.org
+
+- Update to 1.2.5
+
+-------------------------------------------------------------------
+Sun Jan 29 14:29:51 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+
+-------------------------------------------------------------------
+Sat Jun 11 04:46:46 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to version 0.99.5
+
+-------------------------------------------------------------------
+Sun Apr 10 19:21:16 UTC 2011 - crrodriguez@opensuse.org
+
+- Initial version

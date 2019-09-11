@@ -1,0 +1,149 @@
+-------------------------------------------------------------------
+Mon Feb 26 11:27:55 UTC 2018 - jengelh@inai.de
+
+- Replace %__-type macro indirections. Do not ignore errors from
+  useradd. Remove Fedora definitions. Restore debug creation.
+  Compact grammar in description.
+
+-------------------------------------------------------------------
+Tue Feb 20 00:00:00 CET 2018 - dsterba@suse.cz
+
+- spec: update rpmlint, fix build
+
+-------------------------------------------------------------------
+Mon Dec  4 16:07:50 UTC 2017 - chris@computersalat.de
+
+- update to 1.5.4
+  * mount.davfs frequently reads /proc/mounts. This is necessary with
+    coda but not with fuse. When running two instances of mount.davfs
+    using fuse these reads may trigger a kernel bug and create a deadlock.
+  * when mount.davfs receives SIGTERM it stops reading from the fuse
+    device. In this case kernel fuse will make umount(8) hang forever.
+
+-------------------------------------------------------------------
+Fri Sep 11 14:22:23 UTC 2015 - meissner@suse.com
+
+- remove the setuid root permission files (bsc#907662)
+
+-------------------------------------------------------------------
+Fri Jul 17 10:07:06 UTC 2015 - jthumshirn@suse.com
+
+- Import of davfs2 to SLE12-SP1 from SLE11-SP4 (FATE#318116)
+
+-------------------------------------------------------------------
+Tue Nov 25 16:13:25 CET 2014 - draht@schaltsekun.de
+
+- upgrade to 1.5.2; changes include:
+  * fix for insecure use of system(). This is related to CVE-2014-4362.
+  * fixes for usage of symlinks for mountpoints and mtab
+  * improved cookie support
+  * neon 0.30 support
+  * memory leak fixes
+  * compiler options for hardened build.
+  * load the fuse kernel module automatically.
+  * new mount option grpid, trust_ca_cert and trust_server_cert.
+  * This list is not exhaustive. Please have a look at the ChangeLog
+    for a complete list.
+- obsoleted and removed from package:
+  * davfs2-fix-formats.patch
+  * davfs2-ne_v30.patch
+  * davfs2-DESTDIR.patch
+  * davfs2-fix_missing_exit_failure.patch
+
+-------------------------------------------------------------------
+
+Sun Dec 01 12:59:34 UTC 2013 - juergen@spitzmueller.org
+- Accept Neon 0.30 (davfs2-ne_v30.patch -- backported from davfs2 cvs:
+  http://cvs.savannah.gnu.org/viewvc/davfs2/configure.ac?root=davfs2&r1=1.11.4.1&r2=1.11.4.2)
+
+-------------------------------------------------------------------
+Fri Feb 15 17:41:17 UTC 2013 - conrad@quisquis.de
+- Specfile fixes for fedora + SLES
+
+-------------------------------------------------------------------
+Wed Feb 13 19:08:17 UTC 2013 - conrad@quisquis.de
+- Added missing file
+
+-------------------------------------------------------------------
+Wed Feb 13 18:51:17 UTC 2013 - conrad@quisquis.de
+- Added fix-formats patch to get rid of some warnings
+- Added upstream patch for broken symlinks
+
+-------------------------------------------------------------------
+Wed Feb 13 18:33:17 UTC 2013 - conrad@quisquis.de
+- Disabled OBS files service - apparently some savannah mirrors are broken
+
+-------------------------------------------------------------------
+Wed Feb 13 17:52:17 UTC 2013 - conrad@quisquis.de
+- Upgrade to 1.4.7
+- Added -pie/-fPIE compile flags
+- Fixed (hopefully) permissions handling
+
+-------------------------------------------------------------------
+Sat May 26 18:05:17 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+- User/group addition ought not to be fatal
+
+-------------------------------------------------------------------
+Mon Nov 29 22:20:37 UTC 2010 - pascal.bleser@opensuse.org
+
+- fix location of mount/umount helpers, bnc#640967
+
+- update to 1.4.6:
+  * bugfixes
+
+-------------------------------------------------------------------
+Mon Nov 30 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.4.5:
+  * option was added to silently refuse to connect when encountering suspicious server certificates
+  * several minor bugs were fixed
+
+- changes from 1.4.3:
+  * support for Neon 0.29 was added, which also allows for support for NTLM authentication
+  * an option was added to silently refuse connections with untrusted server certificates
+  * experimental support for the command line option "username" was added for use with pam_mount
+
+
+-------------------------------------------------------------------
+Mon Jun 22 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.4.1:
+  * experimental support was added for the non-standard method USERINFO, which allows this release to get information about available and used Web space from the server
+  * failed file upload attempts are now repeated at increasing time intervals
+  * if a davfs filesystem is unmounted at disconnect, local changes are cached and submitted at the next mount
+  * many other minor improvements and bugfixes were made
+
+
+-------------------------------------------------------------------
+Fri May 29 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- copied into filesystems repository in openSUSE Build Service, original in home:leo_eraly
+- fix license tag
+- added %%post script to create davfs2 group and user
+- moved to Savannah
+- some spec file tidying
+- update to 1.4.0
+
+
+-------------------------------------------------------------------
+Wed Jan 14 00:00:00 UTC 2009 - leo@unstable.be
+
+- Update to release
+- Added permissions file (fixes rpmlint error)
+
+
+-------------------------------------------------------------------
+Wed Dec  5 00:00:00 UTC 2007 - leo@unstable.be
+
+- Fixed Obsoletes and Provides to fix
+  https://bugzilla.novell.com/show_bug.cgi?id=332076
+
+
+-------------------------------------------------------------------
+Thu Jul 12 00:00:00 UTC 2007 - leo@unstable.be
+
+- Initial package. (based on dag's spec)
+

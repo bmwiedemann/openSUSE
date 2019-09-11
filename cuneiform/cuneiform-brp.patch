@@ -1,0 +1,37 @@
+Index: cuneiform-linux-1.1.0/cuneiform_src/Kern/rblock/sources/c/ltroots.c
+===================================================================
+--- cuneiform-linux-1.1.0.orig/cuneiform_src/Kern/rblock/sources/c/ltroots.c
++++ cuneiform-linux-1.1.0/cuneiform_src/Kern/rblock/sources/c/ltroots.c
+@@ -69,6 +69,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ 
+ # include <fcntl.h>
+ # include <stdio.h>
++# include <unistd.h>
+ /*# include <crtdbg.h>*/
+ #include <assert.h>
+ 
+Index: cuneiform-linux-1.1.0/cuneiform_src/Kern/ctb/src/ctb_oper.c
+===================================================================
+--- cuneiform-linux-1.1.0.orig/cuneiform_src/Kern/ctb/src/ctb_oper.c
++++ cuneiform-linux-1.1.0/cuneiform_src/Kern/ctb/src/ctb_oper.c
+@@ -60,6 +60,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ 
+ #define MAXPATH 256
+ #include<string.h>
++#include <ctype.h>
+ #include<sys/stat.h>
+ #include "ctb.h"
+ 
+Index: cuneiform-linux-1.1.0/cuneiform_src/Kern/rfrmt/sources/main/creatertf.cpp
+===================================================================
+--- cuneiform-linux-1.1.0.orig/cuneiform_src/Kern/rfrmt/sources/main/creatertf.cpp
++++ cuneiform-linux-1.1.0/cuneiform_src/Kern/rfrmt/sources/main/creatertf.cpp
+@@ -403,7 +403,7 @@ Bool ReadInternalFileRelease(FILE *in, C
+ 	CRtfChar*       pRtfChar;
+ 
+ 	int16_t  nc,ns,nw,nz,i;
+-	int16_t  tmp;
++	uint32_t  tmp;
+ 	uint32_t wtmp;
+ 	Rect16 RectFragm;
+ 	Rect16  SRect;

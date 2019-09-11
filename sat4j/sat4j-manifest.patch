@@ -1,0 +1,49 @@
+--- org.sat4j.pom-2.3.2/org.sat4j.csp/META-INF/MANIFEST.MF	2017-09-20 09:05:47.513887173 +0200
++++ org.sat4j.pom-2.3.2/org.sat4j.csp/META-INF/MANIFEST.MF	2017-09-20 09:16:38.860739366 +0200
+@@ -20,5 +20,4 @@
+ Implementation-Title: SAT4J
+ Implementation-Version: 9.9.9.token 
+ Implementation-Vendor: CRIL CNRS UMR 8188 - Universite d'Artois
+-Class-Path: org.sat4j.core.jar lib/js.jar lib/cspparserxml.jar
+ Bundle-RequiredExecutionEnvironment: J2SE-1.4
+--- org.sat4j.pom-2.3.2/org.sat4j.intervalorders/META-INF/MANIFEST.MF	2017-09-20 09:05:47.517887173 +0200
++++ org.sat4j.pom-2.3.2/org.sat4j.intervalorders/META-INF/MANIFEST.MF	2017-09-20 09:16:49.132739405 +0200
+@@ -7,4 +7,3 @@
+ Implementation-Title: SAT4J
+ Implementation-Version: 9.9.9.token 
+ Implementation-Vendor: CRIL CNRS UMR 8188 - Universite d'Artois
+-Class-Path: org.sat4j.core.jar org.sat4j.pb.jar
+\ No newline at end of file
+--- org.sat4j.pom-2.3.2/org.sat4j.maxsat/META-INF/MANIFEST.MF	2017-09-20 09:05:47.513887173 +0200
++++ org.sat4j.pom-2.3.2/org.sat4j.maxsat/META-INF/MANIFEST.MF	2017-09-20 09:16:31.380739338 +0200
+@@ -18,5 +18,4 @@
+ Implementation-Title: SAT4J
+ Implementation-Version: 2.0 
+ Implementation-Vendor: CRIL CNRS UMR 8188 - Universite d'Artois
+-Class-Path: org.sat4j.pb.jar lib/commons-cli.jar
+ Bundle-RequiredExecutionEnvironment: J2SE-1.5
+--- org.sat4j.pom-2.3.2/org.sat4j.pb/META-INF/MANIFEST.MF	2017-09-20 09:05:47.509887173 +0200
++++ org.sat4j.pom-2.3.2/org.sat4j.pb/META-INF/MANIFEST.MF	2017-09-20 09:17:04.052739461 +0200
+@@ -21,5 +21,4 @@
+ Implementation-Title: SAT4J
+ Implementation-Version: 9.9.9.token 
+ Implementation-Vendor: CRIL CNRS UMR 8188 - Universite d'Artois
+-Class-Path: org.sat4j.core.jar
+ Bundle-RequiredExecutionEnvironment: J2SE-1.5
+--- org.sat4j.pom-2.3.2/org.sat4j.sat/META-INF/MANIFEST.MF	2017-09-20 09:05:47.513887173 +0200
++++ org.sat4j.pom-2.3.2/org.sat4j.sat/META-INF/MANIFEST.MF	2017-09-20 09:16:13.548739271 +0200
+@@ -7,7 +7,6 @@
+ Implementation-Title: SAT4J
+ Implementation-Version: 9.9.9.token 
+ Implementation-Vendor: CRIL CNRS UMR 8188 - Universite d'Artois
+-Class-Path: org.sat4j.core.jar org.sat4j.pb.jar lib/commons-beanutils.jar lib/commons-cli.jar lib/commons-logging.jar
+ Export-Package: org.sat4j.sat;version="9.9.9.token"
+ Bundle-SymbolicName: org.sat4j.sat
+ Bundle-Version: 9.9.9.token
+--- org.sat4j.pom-2.3.2/org.sat4j.sudoku/META-INF/MANIFEST.MF	2017-09-20 09:05:47.509887173 +0200
++++ org.sat4j.pom-2.3.2/org.sat4j.sudoku/META-INF/MANIFEST.MF	2017-09-20 09:17:09.484739482 +0200
+@@ -7,4 +7,3 @@
+ Implementation-Title: SAT4J
+ Implementation-Version: 9.9.9.token 
+ Implementation-Vendor: CRIL CNRS UMR 8188 - Universite d'Artois
+-Class-Path: org.sat4j.core.jar lib/jlfgr-1_0.jar

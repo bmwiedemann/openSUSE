@@ -1,0 +1,42 @@
+Integrated into https://github.com/distropatches/nSnake
+
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Fri Jan 25 11:38:17 2019 +0100
+
+    Sort input file list
+    
+    so that nsnake builds in a reproducible way
+    in spite of indeterministic filesystem readdir order
+
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Fri Jan 25 11:37:06 2019 +0100
+
+    Use ChangeLog date instead of build date
+
+    in order to make builds reproducible.
+    See https://reproducible-builds.org/ for why this is good.
+
+Index: nSnake-3.0.1/Makefile
+===================================================================
+--- nSnake-3.0.1.orig/Makefile
++++ nSnake-3.0.1/Makefile
+@@ -39,7 +39,7 @@
+ # General Info
+ PACKAGE = nsnake
+ VERSION = 3.0.0
+-DATE    = $(shell date "+%b%Y")
++DATE    = $(shell date -u -r ChangeLog "+%b%Y")
+ 
+ # Install dirs
+ PREFIX      = /usr
+@@ -69,8 +69,8 @@ INCLUDESDIR = -I"src/" -I"deps/"
+ LIBSDIR     =
+ 
+ # All source files
+-CFILES   = $(shell find src -type f -name '*.c')
+-CXXFILES = $(shell find src -type f -name '*.cpp')
++CFILES   = $(sort $(shell find src -type f -name '*.c'))
++CXXFILES = $(sort $(shell find src -type f -name '*.cpp'))
+ OBJECTS  = $(CFILES:.c=.o) \
+            $(CXXFILES:.cpp=.o)
+ 

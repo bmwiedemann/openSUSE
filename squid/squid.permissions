@@ -1,0 +1,4 @@
+/var/cache/squid/		squid:root	750
+/var/log/squid/			squid:root	750
+#/usr/sbin/pinger		root:squid	4750
+#/usr/sbin/basic_pam_auth	root:shadow	2750

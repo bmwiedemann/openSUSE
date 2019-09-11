@@ -1,0 +1,24 @@
+--- a/VTK/ThirdParty/libharu/vtklibharu/CMakeLists.txt
++++ b/VTK/ThirdParty/libharu/vtklibharu/CMakeLists.txt
+@@ -125,6 +125,9 @@
+ endif(PNG_FOUND)
+ endif ()
+ 
++find_library(M_LIB m)
++set(ADDITIONAL_LIBRARIES ${ADDITIONAL_LIBRARIES} ${M_LIB})
++
+ # =======================================================================
+ # configure header files, add compiler flags
+ # =======================================================================
+
+--- a/VTK/ThirdParty/libharu/vtklibharu/src/CMakeLists.txt
++++ b/VTK/ThirdParty/libharu/vtklibharu/src/CMakeLists.txt
+@@ -102,7 +102,7 @@
+ endif(LIBHPDF_SHARED)
+ else ()
+   vtk_add_library(vtklibharu ${LIBHPDF_SRCS})
+-  target_link_libraries(vtklibharu PRIVATE ${vtkzlib_LIBRARIES} ${vtkpng_LIBRARIES})
++  target_link_libraries(vtklibharu PRIVATE ${vtkzlib_LIBRARIES} ${vtkpng_LIBRARIES} ${ADDITIONAL_LIBRARIES})
+   if (WIN32)
+     set_target_properties(vtklibharu
+       PROPERTIES

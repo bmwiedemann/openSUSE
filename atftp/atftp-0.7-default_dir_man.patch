@@ -1,0 +1,13 @@
+Index: atftpd.8
+===================================================================
+--- atftpd.8.orig
++++ atftpd.8
+@@ -210,7 +210,7 @@ Show summary of options.
+ .B path
+ This is the root directory used by the TFTP server. All requested
+ files from a TFTP client must reside in this directory. If not
+-specified, the directory defaults to /tftpboot. Since
++specified, the directory defaults to /srv/tftpboot. Since
+ atftpd run as the tftp user, the permission of the directory
+ must be set properly to allow file reading and writing.
+ 

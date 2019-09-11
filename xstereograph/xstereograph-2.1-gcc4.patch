@@ -1,0 +1,46 @@
+--- libsx-2.03/src/grabpix.c
++++ libsx-2.03/src/grabpix.c
+@@ -138,7 +138,7 @@
+    0x8f, 0x07, 0x77, 0x07, 0xfe, 0x0f, 0xfc, 0x1f, 0xf8, 0x3f, 0x00, 0x7f,
+    0x00, 0xfe, 0x00, 0x7c, 0x00, 0x38, 0x00, 0x10};
+ 
+-static void
++void
+ InitCursors()
+ {
+ Pixmap cursor,mask;
+@@ -155,7 +155,7 @@
+                    lens_x_hot,lens_y_hot);
+ }
+ 
+-static void 
++void 
+ SetupGC()
+ {
+     selectGCV.function = GXxor;
+@@ -165,7 +165,7 @@
+ 		       &selectGCV);
+ }  
+ 
+-static Window 
++Window 
+ FindWindow(x, y)
+      int x, y;	  
+ {
+@@ -187,14 +187,14 @@
+   return findW;
+ }
+ 
+-static void
++void
+ CreateRoot()
+ {
+   root = XtCreateWidget("root", rootWindowWidgetClass, toplevel, NULL, 0);
+   XtRealizeWidget(root);
+ }
+ 
+-static void
++void
+ StartRootPtrGrab()   
+ {
+   Window    rootR, childR, window;

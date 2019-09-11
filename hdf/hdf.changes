@@ -1,0 +1,260 @@
+-------------------------------------------------------------------
+Sat Mar 17 11:56:20 CET 2018 - ro@suse.de
+
+- add hdf-ppc64le.patch (bsc#1085754)
+  properly detect ppc64le as a little endian platform 
+
+-------------------------------------------------------------------
+Tue Nov 14 12:22:07 CET 2017 - kukuk@suse.de
+
+- hdf-4.2.11-tirpc.diff: compile and link against libtirpc, sunrpc
+  from glibc is deprecated and will be removed shortly.
+
+-------------------------------------------------------------------
+Thu Aug 31 13:35:50 UTC 2017 - badshah400@gmail.com
+
+- Add hdf-disable-fortestF.patch to disable fortestF that fails
+  on multiple platforms. Re-enable all other tests for all
+  platforms.
+
+-------------------------------------------------------------------
+Thu Aug 31 09:47:23 UTC 2017 - rbrown@suse.com
+
+- Disable tests for all architectures due to fortestF failures 
+
+-------------------------------------------------------------------
+Sun Jul 31 18:46:08 UTC 2016 - virtuousfox@gmail.com
+
+- Add 32bit x86_64 package to satisfy libnetcdf11-32bit
+
+-------------------------------------------------------------------
+Tue Jul 19 18:13:49 UTC 2016 - mpluskal@suse.com
+
+- Fix building for s390
+  * hdf-s390.patch
+- Disable tests for aarch64 and s390
+
+-------------------------------------------------------------------
+Mon Feb 15 13:33:09 UTC 2016 - mnowak@suse.com
+
+- remove CMAKE_USER_MAKE_RULES_OVERRIDE, not present on Factory
+
+-------------------------------------------------------------------
+Thu Oct 29 11:47:06 UTC 2015 - schwab@suse.de
+
+- hdf-aarch64.patch: add support for aarch64
+
+-------------------------------------------------------------------
+Mon Aug 24 08:12:11 UTC 2015 - toddrme2178@gmail.com
+
+- Currently the regular, openmpi, and mpivachi2 versions of the
+  library packages all provide the exact same libraries.  So any
+  package built against the -devel package will end up with an
+  "unresolvable" build error because there are multiple versions
+  of the library it can use. To avoid this, I have added generic
+  provides for the library package so packages can depend on the
+  version they really need, avoiding these build issues.
+
+-------------------------------------------------------------------
+Mon Jul 27 11:11:12 UTC 2015 - toddrme2178@gmail.com
+
+- Update subpackage groups
+- Make subpackage summaries and descriptions more consistent
+- Provide rpm macros for version identification
+- Spec file cleanups
+
+-------------------------------------------------------------------
+Thu Jul 23 15:31:59 UTC 2015 - toddrme2178@gmail.com
+
+- Remove unneeded files from includes to avoid conflicts with
+  other packages (such as glibc)
+- Add libdf library names needed by some packages that use this
+  library
+
+-------------------------------------------------------------------
+Wed Jul 22 12:09:42 UTC 2015 - toddrme2178@gmail.com
+
+- Make library dependencies of executables explicit to avoid
+  ambiguities.
+
+-------------------------------------------------------------------
+Mon Jul 20 09:00:22 UTC 2015 - toddrme2178@gmail.com
+
+- Switch to cmake-based build
+- Build shared libraries
+- Move static libraries to -devel-static
+- Build MPI version of libraries
+
+-------------------------------------------------------------------
+Wed Jul 15 13:48:07 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 4.2.11
+  * Bugfix release
+- Remove upstream-included hdf-nctest-nclong.patch and 
+  hdf-bitvect-array-bounds.patch
+- Rebase hdf-implict-decl.patch
+
+-------------------------------------------------------------------
+Wed Jul 15 08:43:53 UTC 2015 - toddrme2178@gmail.com
+
+- Fix source URL
+
+-------------------------------------------------------------------
+Thu Apr  3 12:31:36 UTC 2014 - rolf@rotkraut.de
+
+- hdf-nctest-nclong.patch: fix a buffer overflow in a test program
+- hdf-bitvect-array-bounds.patch: fix out of bounds array access
+- hdf-misc-test.patch: fix several flaws in test programs
+- hdf-strict-aliasing.patch: fix a strict-aliasing warning
+- Add "%check" in the spec file
+- Minor cleanup in the spec file
+
+-------------------------------------------------------------------
+Wed Mar  5 19:33:25 UTC 2014 - opensuse@dstoecker.de
+
+- update to 4.2.10
+
+-------------------------------------------------------------------
+Sun Feb 23 12:33:57 UTC 2014 - schwab@linux-m68k.org
+
+- use stable source URL
+- don't disable post-build-checks
+- hfd-ppc.patch: updated ppc patch
+- hdf-implict-decl.patch: fix implicit declarations
+- hdf-return-value.patch: fix undefined return values
+- hdf_hdf_util_he_file_c__fix_missing_sentinel.diff: use proper sentinel
+
+-------------------------------------------------------------------
+Tue Feb 11 09:33:02 UTC 2014 - opensuse@dstoecker.de
+
+- update to 4.2.9
+
+-------------------------------------------------------------------
+Thu Jun 12 2008 Otto Dassau <otto.dassau@gmx.de> 4.2r3-2
+
+- adapted for openSUSE BuildService
+
+-------------------------------------------------------------------
+Sun Mar  2 2008 Patrice Dumas <pertusus@free.fr> 4.2r3-2
+
+- don't ship an empty netcdf.h file. The related definitions are now
+  in hdf4_netcdf.h
+
+-------------------------------------------------------------------
+Tue Feb  5 2008 Orion Poplawski <orion@cora.nwra.com> 4.2.r3-1
+
+- Update to 4.2r3
+
+-------------------------------------------------------------------
+Tue Feb  5 2008 Orion Poplawski 4.2.r2-7
+
+- Add patch to add -lm to hdiff link
+
+-------------------------------------------------------------------
+Tue Feb  5 2008 Orion Poplawski 4.2.r2-6
+
+- Add patch for s390 support (bug #431511)
+
+-------------------------------------------------------------------
+Mon Jan  7 2008 Orion Poplawski 4.2.r2-5
+
+- Add patches for sparc support (bug #427639)
+
+-------------------------------------------------------------------
+Mon Oct 29 2007 Patrice Dumas 4.2r2-4
+
+- install the netcdf.h file that describes the netcdf2 hdf enabled
+  API
+
+-------------------------------------------------------------------
+Mon Oct 29 2007 Patrice Dumas 4.2r2-3
+
+- ship hdf enabled nc* utils as hnc*
+- add --disable-netcdf that replaces HAVE_NETCDF
+- keep include files timestamps, and have the same accross arches
+- fix multiarch difference in include files (#341491)
+
+-------------------------------------------------------------------
+Wed Oct 17 2007 Patrice Dumas 4.2r2-2
+
+- update to 4.2r2
+
+-------------------------------------------------------------------
+Fri Aug 24 2007 Orion Poplawski 4.2r1-15
+
+- Update license tag to BSD
+- Rebuild for BuildID
+
+-------------------------------------------------------------------
+Thu May 10 2007 Balint Cristian 4.2r1-14
+
+- Fix ppc64 too.
+
+-------------------------------------------------------------------
+Thu May 10 2007 Orion Poplawski 4.2r1-13
+
+- Remove netcdf-devel requires. (bug #239631)
+
+-------------------------------------------------------------------
+Fri Apr 20 2007 Orion Poplawski 4.2r1-12
+
+- Use 4.2r1-hrepack-p4.tar.gz for hrepack patch
+- Remove configure patch applied upstream
+- Use --disable-production configure flag to avoid stripping -g compile flag
+- Add patch to fix open file test when run under mock
+
+-------------------------------------------------------------------
+Tue Aug 29 2006 Orion Poplawski 4.2r1-11
+
+- Rebuild for FC6
+
+-------------------------------------------------------------------
+Thu Apr 20 2006 Orion Poplawski 4.2r1-10
+
+- Add Requires netcdf-devel for hdf-devel (bug #189337)
+
+-------------------------------------------------------------------
+Mon Feb 13 2006 Orion Poplawski 4.2r1-9
+
+- Rebuild for gcc/glibc changes
+
+-------------------------------------------------------------------
+Wed Feb  8 2006 Orion Poplawski 4.2r1-8
+
+- Compile with -DHAVE_NETCDF for gdl hdf/netcdf compatibility
+
+-------------------------------------------------------------------
+Thu Feb  2 2006 Orion Poplawski 4.2r1-7
+
+- Add patch to build on ppc
+
+-------------------------------------------------------------------
+Wed Dec 21 2005 Orion Poplawski 4.2r1-6
+
+- Rebuild
+
+-------------------------------------------------------------------
+Wed Oct 05 2005 Orion Poplawski 4.2r1-5
+
+- Add Requires: libjpeg-devel zlib-devel to -devel package
+
+-------------------------------------------------------------------
+Tue Aug 23 2005 Orion Poplawski 4.2r1-4
+
+- Use -fPIC
+- Fix project URL
+
+-------------------------------------------------------------------
+Fri Jul 29 2005 Orion Poplawski 4.2r1-3
+
+- Exclude ppc/ppc64 - HDF does not recognize it
+
+-------------------------------------------------------------------
+Wed Jul 20 2005 Orion Poplawski 4.2r1-2
+
+- Fix BuildRequires to have autoconf
+
+-------------------------------------------------------------------
+Fri Jul 15 2005 Orion Poplawski 4.2r1-1
+
+- inital package for Fedora Extras

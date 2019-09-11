@@ -1,0 +1,132 @@
+-------------------------------------------------------------------
+Mon May 13 07:57:02 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v4.1.0:
+  * Adds PRAGMA cipher_settings to query current database
+    codec settings
+  * Adds PRAGMA cipher_default_settings to query current
+    default SQLCipher options
+  * PRAGMA cipher_hmac_pgno is now deprecated
+  * PRAGMA cipher_hmac_salt_mask is now deprecated
+  * PRAGMA fast_kdf_iter is now deprecated
+  * Disable backup API for encrypted databases (this was
+    previously documented as not-working and non-supported,
+    but will now explicitly error out on initialization)
+  * Default page size for databases increased to 4096 bytes
+    (up from 1024)
+  * Default PBKDF2 iterations increased to 256,000 
+    (up from 64,000)
+  * Default KDF algorithm is now PBKDF2-HMAC-SHA512
+    (from PBKDF2-HMAC-SHA1)
+  * Default HMAC algorithm is now HMAC-SHA512 (from HMAC-SHA1)
+  * PRAGMA cipher is now disabled and no longer supported
+    (after multi-year deprecation)
+  * PRAGMA rekey_cipher is now disabled and no longer supported
+  * PRAGMA rekey_kdf_iter is now disabled and no longer
+    supported
+  * By default all memory allocated internally by SQLite before
+    the memory is wiped before it is freed
+  * PRAGMA cipher_memory_security: allows full memory wiping
+    to be disabled for performance when the feature is
+    not required
+  * PRAGMA cipher_kdf_algorithm, cipher_default_kdf_algorithm
+    to control KDF algorithm selection between PBKDF2-HMAC-SHA1,
+    PBKDF2-HMAC-SHA256 and PBKDF2-HMAC-SHA512
+  * PRAGMA cipher_hmac_algorithm, cipher_default_hmac_algorithm
+    to control HMAC algorithm selection between HMAC-SHA1,
+    HMAC-SHA256 and PBKDF2-HMAC-SHA512
+  * When compiled with readline support, PRAGMA key and rekey
+    lines will no longer be saved to history
+  * Adds second optional parameter to sqlcipher_export to specify
+    source database to support bidirectional exports
+  * PRAGMA cipher_plaintext_header_size and
+    cipher_default_plaintext_header_size: allocates a portion of
+    the database header which will not be encrypted to allow
+    identification as a SQLite database
+  * PRAGMA cipher_salt: retrieve or set the salt value for
+    the database 
+
+-------------------------------------------------------------------
+Thu Apr 19 07:15:15 UTC 2018 - mpluskal@suse.com
+
+- Cleanup with spec-cleaner
+- Rename tcl binding package
+- Adjust dependencies of tcl bindings
+
+-------------------------------------------------------------------
+Wed Apr 18 16:18:44 UTC 2018 - ecsos@opensuse.org
+
+- update to 3.4.2
+  - Merge upstream SQLite 3.20.1
+  - Text strings for SQLITE_ERROR and SQLITE_NOTADB changed to 
+    match upstream SQLite
+  - Remove static modifier for codec password functions
+  - Page alignment for mlock
+  - Fix segfault in sqlcipher_cipher_ctx_cmp during rekey operation
+  - Fix sqlcipher_export and cipher_migrate when tracing API in use
+  - Validate codec page size when setting
+  - Guard OpenSSL initialization and cleanup routines
+  - Allow additional linker options to be passed via command line 
+    for Windows platforms
+
+-------------------------------------------------------------------
+Sun Mar 26 10:26:50 UTC 2017 - ecsos@opensuse.org
+
+- update to 3.4.1
+  * Added support for OpenSSL 1.1.0
+  * Merged upstream SQLite 3.15.2
+
+-------------------------------------------------------------------
+Mon Apr 18 15:06:22 UTC 2016 - mpluskal@suse.com
+
+- Use pretty name for tarball
+
+-------------------------------------------------------------------
+Sun Apr 17 18:27:00 UTC 2016 - ecsos@opensuse.org
+
+- update to 3.4.0
+  - Added `PRAGMA cipher_provider_version`
+  - Merged upstream SQLite 3.11.0
+  - Deprecated `PRAGMA cipher` command
+
+-------------------------------------------------------------------
+Thu Feb  4 14:38:51 UTC 2016 - mpluskal@suse.com
+
+- Use optflags
+- Fix building of tcl support on SLE11
+
+-------------------------------------------------------------------
+Sun Dec 20 15:17:59 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Sat Jul 18 08:36:19 UTC 2015 - goedhart.martijn@gmail.com
+
+- Update to c01b94f (2015-07-13)
+
+-------------------------------------------------------------------
+Mon Oct 27 15:48:36 UTC 2014 - goedhart.martijn@gmail.com
+
+- Update to e7b8d1f (2014-09-30)
+
+-------------------------------------------------------------------
+Tue Jun 24 10:56:35 UTC 2014 - goedhart.martijn@gmail.com
+
+- Update to 9096584 (2014-04-23)
+
+-------------------------------------------------------------------
+Wed Dec 18 15:53:46 UTC 2013 - goedhart.martijn@gmail.com
+
+- Update to 8d0acdb (2013-12-06)
+
+-------------------------------------------------------------------
+Wed Dec 18 15:40:13 UTC 2013 - goedhart.martijn@gmail.com
+
+- Update to 8d0acdb (2013-12-06)
+
+-------------------------------------------------------------------
+Wed Dec 18 15:31:39 UTC 2013 - goedhart.martijn@gmail.com
+
+- Update to 8d0acdb (2013-12-06)
+

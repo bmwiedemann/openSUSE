@@ -1,0 +1,416 @@
+-------------------------------------------------------------------
+Tue Mar 26 07:03:44 UTC 2019 - olaf@aepfle.de
+
+- Use alsa API properly with xine-lib-alsa.patch. Consumers are
+  expected to use <alsa/asoundlib.h> instead of <asoundlib.h>.
+  This is in preparation of an change to pkgconfig(alsa) to
+  not pollute CFLAGS with -I/usr/include/alsa anymore (bsc#1130333)
+
+-------------------------------------------------------------------
+Fri Feb 22 12:00:57 UTC 2019 - olaf@aepfle.de
+
+- Package xineplug_post_tvtime also on arm32
+
+-------------------------------------------------------------------
+Sun Jan  6 10:51:20 UTC 2019 - schwab@suse.de
+
+- fix-non-x86-build.diff: remove
+
+-------------------------------------------------------------------
+Sat Dec 29 12:53:21 UTC 2018 - davejplater@gmail.com
+
+- Patched up crippled build with new perl, the perl scripts no
+  longer work.
+- Added xine-lib-nukefaadetc.patch for the same reason.
+- Build with libmpeg2.
+
+-------------------------------------------------------------------
+Sat Jun  2 23:32:45 UTC 2018 - bjorn.lie@gmail.com
+
+- Set to bcond_without gnome_vfs to bcond_with, no longer build
+  gnome-vfs support by default, gnome-vfs is deprecated upstream
+  for a long time.
+
+-------------------------------------------------------------------
+Sat Jan 27 11:36:15 UTC 2018 - davejplater@gmail.com
+
+- Rebase fix-non-x86-build.diff to fix arm build.
+
+-------------------------------------------------------------------
+Tue Jan 23 12:38:21 UTC 2018 - davejplater@gmail.com
+
+- Update to release 1.2.9 and add xine-lib-a52dec.patch.
+- Moved xineplug_decode_mad and xineplug_decode_a52 into the main
+  package as they are now unrestricted.
+- Enabled sdl and jack subpackages.
+- Upstream changes:
+ * Add LIBXINE_VERBOSITY environment var override.
+ * Add auto gapless switch. Play clips to their very end when that
+   is likely what the user wants.
+ * Add video single step feature.
+ * Add generic keyframe index feature.
+ * Add x32 (x86 32 on 64bit) support.
+ * Add some more debug logging.
+ * Join 4 network input plugins into a single file.
+ * Matroska fixes.
+ * Build fixes.
+ * Directx2 audio fixes.
+ * VAAPI fixes.
+ * XCB video fixes and optimizations.
+ * Return driver held video frames on shutdown properly.
+ * FAAD audio compatibility fixes.
+ * Fix VP9 playback.
+ * Fix post filtering crash.
+ * Make xml parser thread safe.
+ * More user configuration safety.
+ * Inline assembly fixes.
+ * Failed memory allocation safety fixes.
+ * Memory leak fixes.
+ * Debug and LOG build fixes.
+ * Again, lots of small fixes and optimizations.
+ * Better multiengine client safety.
+ * Hide yuv2rgb implementation details.
+ * Use a single libyuv2rgb copy in both engine and plugins.
+ * Minor ffmpeg optimization.
+ * Lift a few video engine handbrakes. Less CPU load, fewer frame
+   drops, faster seeking.
+ * Optimize audio engine.
+ * Optimize demux buffering system.
+ * Optimize metronom clock.
+ * Optimize port tickets.
+ * Optimize sse/mmx2 memcpy.
+ * Code simplification and cleanup.
+ * Update german translation. * Add LIBXINE_VERBOSITY environment var override.
+ * Add auto gapless switch. Play clips to their very end when that
+   is likely what the user wants.
+ * Add video single step feature.
+ * Add generic keyframe index feature.
+ * Add x32 (x86 32 on 64bit) support.
+ * Add some more debug logging.
+ * Join 4 network input plugins into a single file.
+ * Matroska fixes.
+ * Build fixes.
+ * Directx2 audio fixes.
+ * VAAPI fixes.
+ * XCB video fixes and optimizations.
+ * Return driver held video frames on shutdown properly.
+ * FAAD audio compatibility fixes.
+ * Fix VP9 playback.
+ * Fix post filtering crash.
+ * Make xml parser thread safe.
+ * More user configuration safety.
+ * Inline assembly fixes.
+ * Failed memory allocation safety fixes.
+ * Memory leak fixes.
+ * Debug and LOG build fixes.
+ * Again, lots of small fixes and optimizations.
+ * Better multiengine client safety.
+ * Hide yuv2rgb implementation details.
+ * Use a single libyuv2rgb copy in both engine and plugins.
+ * Minor ffmpeg optimization.
+ * Lift a few video engine handbrakes. Less CPU load, fewer frame
+   drops, faster seeking.
+ * Optimize audio engine.
+ * Optimize demux buffering system.
+ * Optimize metronom clock.
+ * Optimize port tickets.
+ * Optimize sse/mmx2 memcpy.
+ * Code simplification and cleanup.
+ * Update german translation.
+
+-------------------------------------------------------------------
+Mon Jan 22 15:36:18 UTC 2018 - crrodriguez@opensuse.org
+
+- Cleanup buildrequires so neither Mesa-devel nor xorg-x11-devel 
+  meta/mega packages are required anymore.
+
+-------------------------------------------------------------------
+Tue Aug 15 06:43:14 UTC 2017 - olaf@aepfle.de
+
+- Build unconditionally with modplug and pulseaudio
+
+-------------------------------------------------------------------
+Thu Jul  6 10:15:58 UTC 2017 - olaf@aepfle.de
+
+- Remove dependency to gcc5
+- Use simple bcond for ffmpeg
+
+-------------------------------------------------------------------
+Sun Apr  9 14:25:06 UTC 2017 - davejplater@gmail.com
+
+- Update to release 1.2.8
+- Remove patches fixed upstream:
+  xine-lib-crippled-ffmpeg3.0.patch, xine-lib-ffmpeg3.0.patch and
+  xine-lib-link-xcb.patch.
+- Removed precheckin_cripple_tarball.sh and integrated it into the
+  spec file.
+- Upstream changes:
+  * Add HEVC to QT demuxer.
+  * Add libOpenHEVC decoder.
+  * Add h.265/HEVC decoding to VAAPI.
+  * Detach VAAPI video out from ffmpeg.
+  * VAAPI fixes.
+  * Improved Matroska compatibility (TrueHD and PCM sound,
+    HDMV/Text subtitles).
+  * Add faad LATM support.
+  * Add faad preamp gain control and channel mixer.
+  * Update/fix internal libfaad.
+  * Integrate 6 basic plugins into libxine.
+  * ffmpeg fixes and optimizations.
+  * Use external libdvdnav by default.
+  * Optimize video out.
+  * AVFormat demuxer fixes.
+  * (XCB)XV video out fixes.
+  * Lots of small fixes and optimizations.
+  * Build fixes (newer automake, xcb, libdvdcss, dxr3, make dist,
+    32+64bit dual install, gcc 4.x with GNU ld 2.26 ...).
+  * Better C++ compatibility.
+  * Add support for avi WAVE_FORMAT_EXTENSIBLE.
+  * Add "Time Domain Audio Analyzer" Visualization Post Plugin.
+  * Add support for compressed HDMV PGS subtitles in Matroska.
+  * Add HW accelerated OSD for Raspberry Pi.
+  * Add simple deep color (9/10bit) support via ffmpeg.
+  * Join 15 video demuxers into a single multiplugin lib.
+  * Join 5 vdpau decoders into a single multiplugin lib.
+  * Join 3 raw video decoders into a single multiplugin lib.
+  * Make ffmpeg/postproc optional.
+  * Log individual items when loading multiplugin libs.
+  * Improved qt/mp4 edit list handling.
+  * Detect mp3 files with large id3v2 tags.
+  * Auto recover from temporary DVB signal loss.
+  * Fix demuxing low framerate mp4.
+  * DVB AAC sound compatibility fix.
+  * ffmpeg audio downmix level fix and optimization.
+  * ffmpeg multithreading fixes.
+  * ffmpeg compatibility fixes.
+  * BluRay subtitle fixes.
+  * Various small fixes.
+  * OpenGL(2) video out fixes and optimizations.
+  * Fix some issues with heavy stream seeking.
+  * Build fixes, including missing vcd libs and much less warnings.
+  * Code simplifications.
+
+-------------------------------------------------------------------
+Tue Mar 28 07:52:49 UTC 2017 - pgajdos@suse.com
+
+- fix build with ImageMagick 7
+  + xine-lib-ImageMagick7.patch
+
+-------------------------------------------------------------------
+Mon Aug  1 12:58:27 UTC 2016 - davejplater@gmail.com
+
+- Fixed build in Leap:42.2 by building with gcc5.
+- Removed conditinals for old openSUSE versions from spec file.
+- Modified pre checkin script to enable build with the ffmpeg libs
+  that are in the distribution.
+- Added xine-lib-crippled-ffmpeg3.0.patch to enable leap and above
+  to build with ffmpeg3.
+- Removed unused build flags.
+
+-------------------------------------------------------------------
+Sun Jul 24 15:48:08 UTC 2016 - olaf@aepfle.de
+
+- Accept any ffmpeg version in BuildRequires
+
+-------------------------------------------------------------------
+Mon Jul 18 13:47:07 UTC 2016 - dimstar@opensuse.org
+
+- Add xine-lib-link-xcb.patch: fix linking of libxcb. As our code
+  uses the functions, we must not rely on 3rd parties to hopefully
+  bring the right libraries to link.
+  https://bugs.xine-project.org/show_bug.cgi?id=573
+
+-------------------------------------------------------------------
+Fri Apr 15 12:18:02 UTC 2016 - dimstar@opensuse.org
+
+- Drop libsmbclient BuildRequires: requiring a library to build is
+  in any case wrong. It's the responsibility of a -devel package to
+  pull in the real libraries.
+
+-------------------------------------------------------------------
+Fri Feb 26 15:12:34 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Added xine-lib-ffmpeg3.0.patch to build against ffmpeg-3.0
+  libraries on PMBS.
+- Add pkgconfig(libva-glx) to BuildRequires because it's a separate
+  package for openSUSE > 13.2.
+
+-------------------------------------------------------------------
+Mon Sep 21 06:40:47 UTC 2015 - olaf@aepfle.de
+
+- Replace implicit Requires from old ffmpeg with BuildRequires to
+  fix build in packman
+
+-------------------------------------------------------------------
+Mon Feb  2 19:22:38 UTC 2015 - wbauer@tmo.at
+
+- update to 1.2.6
+  * Add libmmal video output plugin for Raspberry Pi.
+  * Add libmmal HW video decoder plugin for Raspberry Pi.
+  * Add overlay colormatrix support.
+  * Add "sqare monitor pixels" config option.
+  * Add VAAPI colormatrix and fullrange video support.
+  * Add "radeonhd" XV colormatrix support.
+  * Add Opus audio support.
+  * Update german translation.
+  * Optimize OpenGL2 video out.
+  * Optimize raw RGB video decoder.
+  * Fix multithread ffmpeg video decoding.
+  * Fix/optimize DVB subtitles.
+  * Fix external text subtitles.
+  * BSD build fixes.
+  * Clang build fixes.
+  * Build optimization fixes (aliasing).
+  * AVformat demux build fix.
+  * More safety on memory allocation failure.
+  * Fix detection of and compilation with libcaca 0.99 beta 19.
+- use the xz compressed tarball provided by upstream and change
+  precheckin_cripple_tarball.sh accordingly
+- should fix boo#913588
+
+-------------------------------------------------------------------
+Fri Apr 11 00:00:00 UTC 2014 - Manfred.Tremmel@iiv.de
+
+- update to 1.2.5
+  * Update german translation.
+  * Add bass downmix support to AC3 decoder.
+  * Add experimental YCgCo colorspace support.
+  * Add avformat demux plugin.
+    - Support for new formats and protocols.
+    - Proper rtsp support (with avformat+rtsp://, rtsp+tcp:// and rtsp+http:// mrls).
+    - by default native xine demux plugins are probed first.
+      This can be overridden in config, by selecting demuxer in mrl (#demux:avformat),
+      or by using "avformat+" mrl prefix.
+  * Add avio (libavformat) input plugin:
+    - Support for new protocols (https://, ftp://, sftp://, ...).
+    - Support for seekable http streams (with "avio+http://" mrl).
+    - By default native xine input plugins are used. This can be overridden in config or by using "avio+" mrl prefix.
+  * Recognise & use HEVC/H.265. (ffmpeg)
+  * Add support for HEVC/H.265 to the mpeg-ts demuxer.
+  * Add support for HEVC/H.265 and VP9 to the matroska demuxer.
+  * Add VP8/VP9 decoder using libvpx.
+  * Modernise Quicktime demuxer:
+    - Multiple user selectable audio traks.
+    - Support AC3, EAC3, vorbis, Purevoice audio.
+    - Support ISO fragment media files.
+    - More safety on broken files.
+    - Slightly faster.
+  * Recognise & use ADPCM G.726 and ATRAC3. (ffmpeg/libva)
+  * Build fixes.
+  * Fix HDMV subtitle channel.
+  * FFmpeg compatibility fixes.
+  * Some colour format conversion fixes.
+  * Fix RealVideo re-ordered PTS: pass through, let the decoder re-order it.
+  * Fix some problems with COOK audio.
+- from 1.2.4
+  * Some VAAPI plugin fixes (build, image size changes).
+  * ffmpeg multi-channel playback fixes:
+    - Handle channel configuration changes sooner.
+    - Generic layout if none provided; follow user changes.
+    - Defer opening output if nothing to play.
+    - Don't re-open with identical settings.
+    - Don't use the bits-per-sample value (may not match decoder output).
+  * ffmpeg video fixes:
+    - Default to square pixels, avoiding black bars & unnecessary scaling.
+    - Avoid CODEC_FLAG_EMU_EDGE (and some possible segfaults).
+    - Use MPEG2VIDEO.
+  * OpenGL2 output: don't render into invalid drawable.
+  * Fix a possible xine_play() hang related to display locking.
+  * FLV demuxer rewrite:
+    - Improved metadata parsing.
+    - PTS/DTS fixes.
+    - Large file support on 32-bit.
+    - Much improved seeking.
+    - Much optimisation.
+    - More codecs supported.
+  * audio_out speed control fixes.
+  * Optimised RGB→YUY2 conversion.
+  * Avoid a possible performance penalty where AVX-optimised memcpy is used.
+  * Add BD-J (BluRay Java) support with ARGB overlay capable video drivers (opengl2, vaapi, vdpau)
+  * Add support for theora 4:2:2 and 4:4:4 pixel formats
+- Removed xine-lib-missing-include-1.2.3.patch, the missing file is now included in the upstream tarball
+
+-------------------------------------------------------------------
+Wed Sep 11 13:19:26 UTC 2013 - pgajdos@suse.com
+
+- detect smbclient
+
+-------------------------------------------------------------------
+Wed May 29 22:36:00 UTC 2013 - Manfred.Tremmel@iiv.de
+
+- update to 1.2.3
+  * Add VAAPI HW decoding support
+  * Add OpenGL 2.0 output plugin
+  * Add crop support to XShm output plugins
+  * Add color matrix and full range support to OpenGL/Xv/XShm output plugins
+  * Add test image generator input plugin
+  * Add fast libjpeg based JPEG decoder
+  * Add max. Xv image size detection to Xv video output plugin
+  * Fix crash when trying to display too large jpeg image with Xv output plugin
+  * Fix possible crash when stopping playback with deinterlacing enabled
+  * Support large PAT in MPEG TS
+  * Handle EAC3 audio (via ffmpeg)
+
+-------------------------------------------------------------------
+Fri Mar  1 06:14:15 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Wed Jul 18 10:54:59 UTC 2012 - davejplater@gmail.com
+
+- Added xine-lib-theora.patch to add fourcc code to xine
+
+-------------------------------------------------------------------
+Thu Jun 21 07:58:03 UTC 2012 - adrian@suse.de
+
+- fix build for non-x86 architectures (disable deinterlace plugin)
+
+-------------------------------------------------------------------
+Mon Jun 18 11:20:29 UTC 2012 - lnussel@suse.de
+
+- don't include .la files in libxine-devel to avoid bogus libtool errors
+
+-------------------------------------------------------------------
+Thu Jun 14 20:20:01 UTC 2012 - coolo@suse.com
+
+- provide and obsolete xine-devel and xine-lib for backward compat
+
+-------------------------------------------------------------------
+Sun Jun 10 14:45:00 UTC 2012 - Manfred.Tremmel@iiv.de
+
+- update to 1.2.2
+  * Fix musepack decoder compilation if libmpcdec headers aren't available.
+  * Configure tests for xinerama & VideoCD support now soft-fail properly.
+  * The DVB plugin is working again.
+  * OpenGL OSD fix.
+  * YUV conversion MMX/SSE optimisations.
+  * YUV420 H.264 is playable now; YUVJ444P is correctly handled.
+  * Support FLAC in Matroska; support BMP.
+  * Various build fixes for Windows.
+
+-------------------------------------------------------------------
+Wed Jun 06 21:17:00 UTC 2012 - Manfred.Tremmel@iiv.de
+
+- updated crippled version, removed mad and a52dec
+
+-------------------------------------------------------------------
+Tue May 29 19:59:14 UTC 2012 - reddwarf@opensuse.org
+
+- Remove dependency from libxine-devel to libffmpeg-devel
+
+-------------------------------------------------------------------
+Sat Feb 04 19:40:00 UTC 2012 - Manfred.Tremmel@iiv.de
+
+- update to 1.2.1
+  * The "I'm at Tyneside LUG" release.
+  * Enable PulseAudio, JACK and VDPAU on the Hurd.
+  * Rewrite of VDPAU OSD handling.
+  * sndio plugin is now buildable.
+  * Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Jan 06 11:06:00 UTC 2012 - Manfred.Tremmel@iiv.de
+
+- first build of xine-lib-12 for packman
+

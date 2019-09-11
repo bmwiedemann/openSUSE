@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Fri Oct  5 12:09:34 UTC 2018 - lnussel@suse.de
+
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Oct  5 12:02:33 UTC 2018 - gatherer@rursee.net
+
+- fix perl decprecation defined on hash/array types (boo#1072060,
+  0004-fix-perl-deprecation-defined.diff)
+
+-------------------------------------------------------------------
+Fri Nov 29 14:35:37 UTC 2013 - lnussel@suse.de
+
+- fix tinyca not starting up (bnc#848907) and some deprecation warnings
+  0001-fix-paranthesis-use.diff
+  0002-fix-deprecation-warning.diff
+  0003-fix-compatibility-with-openssl-1.0.1.diff
+
+-------------------------------------------------------------------
+Tue Jul  5 08:55:19 UTC 2011 - lnussel@suse.de
+
+- move locales to system dir to avoid not owned directories
+
+-------------------------------------------------------------------
+Sat Jan 15 16:37:00 UTC 2011 - lnussel@suse.de
+
+- add support for Microsoft extendedKeyUsage attributes
+- fix combobox strings for extended key usage
+
+-------------------------------------------------------------------
+Sun Mar 16 16:52:51 CET 2008 - crrodriguez@suse.de
+
+- fix file-not-in-lang rpmlint warnings 
+
+-------------------------------------------------------------------
+Tue Jul  4 16:49:46 CEST 2006 - lnussel@suse.de
+
+- new version 0.7.4
+  * fix some crashes
+  * fix problems with umlauts
+  * fix crl handling with different openssl versions
+
+-------------------------------------------------------------------
+Wed Jan 25 21:48:19 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Aug 30 10:57:59 CEST 2005 - mmarek@suse.cz
+
+- Use the OO interface of Locale::gettext, which converts strings
+  into Perl's internal encoding, so that Gtk widgets are displayed
+  correctly (#95903).
+
+-------------------------------------------------------------------
+Mon Jul 11 10:39:32 CEST 2005 - lnussel@suse.de
+
+- update to tinyca2 version 0.7.0
+
+-------------------------------------------------------------------
+Wed Mar 16 16:01:39 CET 2005 - lnussel@suse.de
+
+- Use desktop file from package (fixes #72277)
+
+-------------------------------------------------------------------
+Mon Nov 29 17:42:40 CET 2004 - lnussel@suse.de
+
+- new version 0.6.6
+
+-------------------------------------------------------------------
+Fri Sep 24 14:12:03 CEST 2004 - mskibbe@suse.de
+
+- change desktop files 
+
+-------------------------------------------------------------------
+Thu Aug  5 16:26:32 CEST 2004 - lnussel@suse.de
+
+- new version 0.6.5
+
+-------------------------------------------------------------------
+Mon Jul 19 12:22:05 CEST 2004 - lnussel@suse.de
+
+- new version 0.6.4
+
+-------------------------------------------------------------------
+Fri Feb  6 14:18:06 CET 2004 - hmacht@suse.de
+
+- building as non-root (#norootforbuild)
+
+-------------------------------------------------------------------
+Thu Oct  9 16:52:57 CEST 2003 - lnussel@suse.de
+
+- new version 0.5.4
+
+-------------------------------------------------------------------
+Sun Sep  7 14:34:15 CEST 2003 - adrian@suse.de
+
+- add Categories
+
+-------------------------------------------------------------------
+Tue Sep  2 11:27:51 CEST 2003 - lnussel@suse.de
+
+- new version 0.5.2 allows renewal of certificates
+
+-------------------------------------------------------------------
+Wed Aug 27 10:51:55 CEST 2003 - lnussel@suse.de
+
+- new version 0.5.1
+
+-------------------------------------------------------------------
+Mon Aug 18 17:42:34 CEST 2003 - ro@suse.de
+
+- added update-desktop-files to neededforbuild 
+
+-------------------------------------------------------------------
+Mon Aug 18 15:53:10 CEST 2003 - lnussel@suse.de
+
+- new version 0.5.0: uses perl-Gtk instead of perl-Tk
+- add desktop file
+
+-------------------------------------------------------------------
+Thu Jul 24 11:57:04 CEST 2003 - lnussel@suse.de
+
+- initial package for version 0.4.9
+

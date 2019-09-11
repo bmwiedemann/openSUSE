@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Sun Jan 27 16:52:14 UTC 2019 - tobia@ledfan.be
+
+- Add Gtk2-Unique-Fix-crash.patch: Fix crash on starting
+  second instances
+
+-------------------------------------------------------------------
+Mon Jul  2 08:15:52 UTC 2018 - dimstar@opensuse.org
+
+- Add Gtk2-Unique-rt120115-Fix-crash.patch: Fix crash on starting
+  second instances (rt#120115, boo#1099774).
+
+-------------------------------------------------------------------
+Fri Jun 10 07:12:12 UTC 2011 - saigkill@opensuse.org
+
+- prepared for factory
+
+-------------------------------------------------------------------
+Mon May 23 12:18:33 UTC 2011 - saigkill@opensuse.org
+
+- fixed build for Factory through adding pkgconfig(unique-1.0) as BR
+
+-------------------------------------------------------------------
+Sun Mar  6 13:41:08 UTC 2011 - saigkill@opensuse.org
+
+- removed -devel Package and added Version Numbers in BuildRequires
+  and Requires.
+
+-------------------------------------------------------------------
+Sat Mar  5 20:06:22 UTC 2011 - saigkill@opensuse.org
+
+- first package for openSUSE
+

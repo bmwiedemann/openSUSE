@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a5ca87b..e3ff699 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -89,8 +89,6 @@ PACKAGES
+         glib-2.0
+ CUSTOM_VAPIS
+         vapi/config.vapi
+-OPTIONS
+-        --thread
+ )
+ 
+ include (GResource)

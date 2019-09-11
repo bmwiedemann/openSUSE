@@ -1,0 +1,12 @@
+# I2C bus access permissions for use with ddccontrol.
+# Tested on openSUSE 42.1 (Linux 4.1) and Debian 8 (Linux 3.16).
+
+
+# If we have any I2C device in the system, load the i2c-dev module so
+# we can access it from userspace.
+SUBSYSTEM=="i2c", ACTION=="add", RUN+="/sbin/modprobe -b i2c-dev"
+
+
+# Allow locally logged in users to access the I2C buses on
+# graphics cards.
+SUBSYSTEM=="i2c-dev", KERNEL=="i2c-[0-9]*", ATTRS{boot_vga}=="?*", ACTION=="add", TAG+="uaccess"

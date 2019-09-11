@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Thu Mar 28 10:10:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not require python-deepdiff, such package does not exist
+
+-------------------------------------------------------------------
+Tue Mar 19 15:41:31 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove runtime dependencies from the library:
+  * remove-app-dependency.patch
+- Add NOTICE to %license
+- Create sub-packages -doc, -doc-applications and -doc-samples
+
+-------------------------------------------------------------------
+Thu Nov  1 09:09:18 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix RAS syndrome. Expand "APIC".
+
+-------------------------------------------------------------------
+Wed Oct 31 12:19:17 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Version update to 0.4 release:
+  * Many various small fixes
+  * Better python3 compatibility
+- Remove merged acitoolkit-urlparse.patch
+
+-------------------------------------------------------------------
+Wed Oct 31 12:10:17 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix import error under py3:
+  * acitoolkit-urlparse.patch
+- Fix permissions on the LICENSE file
+- State group properly
+
+-------------------------------------------------------------------
+Tue Oct 30 10:55:38 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add remaining flask dependencies in order to be acceptable
+  in Tumbleweed
+
+-------------------------------------------------------------------
+Thu Oct 18 08:10:43 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Respect the package requirements specified in setup.py
+  * Adds many flask dep/requires
+- Run the tests
+
+-------------------------------------------------------------------
+Tue Oct 16 15:43:21 UTC 2018 - sma@suse.com
+
+- Changed the spec file to singlespec format. Also removed
+  duplicates in the RPM. And explicit set the permission of all
+  files.
+  
+-------------------------------------------------------------------
+Mon Oct 15 15:03:28 UTC 2018 - sma@suse.com
+
+- Corrected the spelling in .spec file: python-sqlalchemy should 
+  be python-SQLAlchemy.
+
+-------------------------------------------------------------------
+Wed Oct 10 15:33:53 UTC 2018 - sma@suse.com
+
+- License should be Apache-2.0 according to the LICENSE file
+  in the v0.3.2.tar.gz tarball. 
+
+-------------------------------------------------------------------
+Thu Dec 21 12:02:53 UTC 2017 - mmnelemane@suse.com
+
+- Fix Requires python-oslo.config
+
+-------------------------------------------------------------------
+Fri Aug 25 14:01:52 UTC 2017 - mmnelemane@suse.com
+
+- Initial packaging for ACI firmware 2.2.2 

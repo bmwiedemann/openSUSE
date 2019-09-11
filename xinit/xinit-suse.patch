@@ -1,0 +1,147 @@
+Index: xinit-1.4.0/startx.cpp
+===================================================================
+--- xinit-1.4.0.orig/startx.cpp	2018-03-10 02:46:03.000000000 +0100
++++ xinit-1.4.0/startx.cpp	2018-07-11 13:16:21.864694488 +0200
+@@ -50,10 +50,102 @@
+ userclientrc=$HOME/.xinitrc
+ sysclientrc=XINITDIR/xinitrc
+ 
++XCOMM
++XCOMM check for installed servers
++XCOMM
++
++#ifdef linux
++
++INSTALLED_SERVERS=`ls -1 /usr/bin/Xorg /usr/X11R6/bin/XFree86  /usr/X11R6/bin/Xorg* 2>/dev/null`
++
++
++if [ -z "$INSTALLED_SERVERS" ]; then
++
++       echo ""
++       echo "You did not install any X-Server \(e.g. Xorg\)!"
++       echo "Please install at least one server to start X."
++       echo "I'm aborting now."
++       exit 1
++fi
++
++
++XCOMM
++XCOMM perhaps a windowmanager is specified?
++XCOMM
++XCOMM
++XCOMM find wmlist utility, else take twm as default (always there :-))
++XCOMM
++type wmlist >/dev/null 2>&1 && WMLIST="`for i in $(wmlist); do echo $i; done | sort`"
++test -z "$WMLIST" && WMLIST="twm"
++
++test "$1" = "--" || { test -n "$1" && WANTEDWM=`basename "$1"` ; }
++
++XCOMM
++XCOMM User could have set a list of window manager in WINDOWMANAGERLIST.
++XCOMM go through wms and check if user specified a reachable one.
++XCOMM
++
++for WM in $WMLIST $WINDOWMANAGERLIST
++do
++    test "$WM" = "$WANTEDWM" && {
++XCOMM
++XCOMM       is it reachable via $PATH?
++XCOMM
++       type $WM >/dev/null 2>&1 || {
++
++           echo "`basename $0`: error: the requested window manager '$1' could not be found!"
++           echo "Window manager must be one of (currently installed window amangers):"
++           for i in $WMLIST; do echo $i; done
++           exit 1
++       }
++XCOMM
++XCOMM    OK, we got it, this will be the override for WINDOWMANAGER
++XCOMM
++       export WINDOWMANAGER=$WM
++       shift 1
++       break
++    }
++done
++
++unset WINDOWMANAGERLIST WMLIST WANTEDWM WM
++
++XCOMM
++XCOMM check symlink
++XCOMM
++
++if [ ! -L /usr/bin/X ]; then
++
++       echo ""
++       echo "There is no link /usr/bin/X to X server (/usr/bin/Xorg)!"
++       echo "Please link the files as mentioned above or install the X-Server again."
++       echo "I'm aborting now."
++       exit 1
++fi
++
++XCOMM
++XCOMM check if the Xorg file is an executable or an accidentally copied script or similar things
++XCOMM
++
++if [ ! -x /usr/bin/X ]; then
++
++       echo ""
++       echo "The file Xorg (binary of X-Server) doesn't seem to be a binary file."
++       echo "Please check it or / and install a new X-Server-binary."
++       echo "I'm aborting now."
++       exit 1
++fi
++
++#endif /* linux */
++
++XCOMM set $DISPLAYMANAGER_XSERVER $DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN
++. /etc/sysconfig/displaymanager
++
+ userserverrc=$HOME/.xserverrc
+ sysserverrc=XINITDIR/xserverrc
+ defaultclient=XTERM
++XCOMM set X Server accordingly (Xorg/Xgl)
+ defaultserver=XSERVER
++test -n "$DISPLAYMANAGER_XSERVER" && defaultserver=/usr/bin/$DISPLAYMANAGER_XSERVER
+ defaultclientargs=""
+ defaultserverargs=""
+ defaultdisplay=""
+@@ -312,6 +404,9 @@
+         fi
+     done
+ fi
++XCOMM handle TCP port 6000
++test "$DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN" != "yes" && \
++  serverargs="$serverargs -nolisten tcp"
+ 
+ #if defined(__APPLE__) || defined(__CYGWIN__)
+ eval XINIT \"$client\" $clientargs -- \"$server\" $display $serverargs
+@@ -320,6 +415,12 @@
+ #endif
+ retval=$?
+ 
++if [ "$retval" != 0 -a ! -u "/usr/bin/Xorg" ]; then
++	echo "-------------------------------------------------------------------------------------------"
++	echo "xinit failed. /usr/bin/Xorg is not setuid, maybe that's the reason?"
++	echo "If so either use a display manager (strongly recommended) or adjust /etc/permissions.local and run \"chkstat --system --set\" afterwards"
++fi
++
+ if [ x"$enable_xauth" = x1 ] ; then
+     if [ x"$removelist" != x ]; then
+         XAUTH remove $removelist
+Index: xinit-1.4.0/xinitrc.cpp
+===================================================================
+--- xinit-1.4.0.orig/xinitrc.cpp	2018-03-10 02:46:03.000000000 +0100
++++ xinit-1.4.0/xinitrc.cpp	2018-07-11 13:13:23.808686361 +0200
+@@ -48,8 +48,10 @@
+ 	unset f
+ fi
+ 
+-TWM &
++if [ -x /usr/X11R6/bin/fvwm -o -x /usr/bin/fvwm]; then
++    exec fvwm
++fi
+ XCLOCK -geometry 50x50-1+1 &
+ XTERM -geometry 80x50+494+51 &
+ XTERM -geometry 80x20+494-0 &
+-exec XTERM -geometry 80x66+0+0 -name login
++exec TWM

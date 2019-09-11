@@ -1,0 +1,31 @@
+From 2cbc403b422a699cd948ed6218fce28fa901f5fa Mon Sep 17 00:00:00 2001
+From: Mihai Dinca <mdinca@suse.de>
+Date: Thu, 13 Dec 2018 12:17:35 +0100
+Subject: [PATCH] Return the expected powerpc os arch (bsc#1117995)
+
+---
+ salt/utils/pkg/rpm.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/salt/utils/pkg/rpm.py b/salt/utils/pkg/rpm.py
+index bb8c3fb589..828b0cecda 100644
+--- a/salt/utils/pkg/rpm.py
++++ b/salt/utils/pkg/rpm.py
+@@ -53,8 +53,11 @@ def get_osarch():
+             stderr=subprocess.PIPE).communicate()[0]
+     else:
+         ret = ''.join(list(filter(None, platform.uname()[-2:]))[-1:])
+-
+-    return salt.utils.stringutils.to_str(ret).strip() or 'unknown'
++    ret = salt.utils.stringutils.to_str(ret).strip() or 'unknown'
++    ARCH_FIXES_MAPPING = {
++        "powerpc64le": "ppc64le"
++    }
++    return ARCH_FIXES_MAPPING.get(ret, ret)
+ 
+ 
+ def check_32(arch, osarch=None):
+-- 
+2.20.1
+
+

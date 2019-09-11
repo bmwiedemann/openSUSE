@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Thu Jul  4 12:02:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable tests that are tied to sphinx and got utterly exploded
+
+-------------------------------------------------------------------
+Fri Mar 29 10:50:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove release-testing tests as they are pointless for rpm package
+
+-------------------------------------------------------------------
+Sat Aug 11 12:01:52 UTC 2018 - tchvatal@suse.com
+
+- Drop the multibuild as the cycle is gone
+- Add patch to not rely on bundled stuff:
+  * invocations-no-bundled.patch
+- Add patch to fix tests on python3:
+  * invocations-py3.patch
+
+-------------------------------------------------------------------
+Sat Aug 11 10:01:08 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.4:
+  * Various py3 fixes
+  * pytest for testing
+- Use multibuild to run tests
+- Use github tag to get the tarball with tests
+
+-------------------------------------------------------------------
+Thu May 10 03:05:07 UTC 2018 - toddrme2178@gmail.com
+
+- Use license tag
+
+-------------------------------------------------------------------
+Wed Oct 18 16:38:40 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

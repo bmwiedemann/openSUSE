@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Wed Jun 12 15:07:49 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Thu Jun 21 20:28:16 UTC 2018 - rjschwei@suse.com
+
+- Support btrfs resize, handle ro setup in rootgrow (bsc#1097455, bsc#1098681)
+
+-------------------------------------------------------------------
+Wed Apr  4 11:41:23 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Wed Jan 24 17:15:46 UTC 2018 - rjschwei@suse.com
+
+- Split rootgrow and script and service into subpackage to retain
+  dependency chain for growpart
+
+-------------------------------------------------------------------
+Mon Jan 22 21:12:33 UTC 2018 - rjschwei@suse.com
+
+- Update to version 0.30 (bsc#1064755)
+  + improved error messages on failure.
+  + ignore sfdisk failure in 2.28.1 when due to reread failing
+   (LP: #1619285)
+  + Add service file to start growpart via systemd
+  + Add rootgrow script to wrap growpart
+
+-------------------------------------------------------------------
+Tue Sep 13 20:53:26 UTC 2016 - rjschwei@suse.com
+
+- Update to version 0.29 (bsc#998378)
+  + fix use of partx for newer util-linux versions (LP: #1587971)
+    [Lars Kellogg-Stedman]
+  + fix some issues in error path reporting
+  + capture output of 'partx --help' as older versions
+    do not support that flag, and send output to stderr.
+  + fix bug when growing partitions on disks > 2TB. (LP: #1259703)
+  + run partx only on block devices (not files)
+  + better --dry-run output for gpt disks, providing sgdisk command
+    line that would be used.
+  + support sfdisk >= 2.26, and support gpt partitions with sfdisk
+
+-------------------------------------------------------------------
+Tue Mar 18 20:34:46 UTC 2014 - rschweikert@suse.com
+
+- add patch licenseGPLv3.patch
+  + no license file included in upstream release
+    (https://bugs.launchpad.net/cloud-utils/+bug/1294338)
+  + GPL v3 applies to growpart script, that is all we are distributing
+    at the moment
+- fix the Group, don't shout
+
+-------------------------------------------------------------------
+Mon Mar 17 18:45:16 UTC 2014 - rschweikert@suse.com
+
+- include in SLE 12 (FATE #315990, #315991, and 316167)
+
+-------------------------------------------------------------------
+Mon Mar 17 17:54:09 UTC 2014 - rschweikert@suse.com
+
+- Initial build
+

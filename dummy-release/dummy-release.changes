@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Tue Mar 19 12:44:26 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- Require this-is-only-for-build-envs to avoid people using it for
+  live cds (bsc#1127605)
+
+-------------------------------------------------------------------
+Thu Aug 10 10:26:00 CEST 2017 - behlert@suse.de
+
+- update version, drop /etc/SuSE-release 
+
+-------------------------------------------------------------------
+Tue Jul 18 05:06:58 UTC 2017 - jimmy@boombatower.com
+
+- Replace Conflicts with otherproviders(distribution-release).
+
+-------------------------------------------------------------------
+Fri Apr 11 11:50:24 UTC 2014 - coolo@suse.com
+
+- also add an os-release
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Thu Oct 30 15:19:46 CET 2008 - ro@suse.de
+
+- provide distribution-release and conflict with the most common
+  other instances 
+
+-------------------------------------------------------------------
+Tue Sep 30 12:31:17 CEST 2008 - ro@suse.de
+
+- drop buildreq for skelcd-control-SLES 
+
+-------------------------------------------------------------------
+Fri Sep 19 14:42:25 CEST 2008 - ro@suse.de
+
+- dummy package containing /etc/SuSE-release 
+

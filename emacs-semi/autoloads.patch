@@ -1,0 +1,13 @@
+diff -ru semi-1.14.6.orig/SEMI-MK semi-1.14.6/SEMI-MK
+--- semi-1.14.6.orig/SEMI-MK	2000-11-24 13:32:57.000000000 +0100
++++ semi-1.14.6/SEMI-MK	2005-05-18 12:15:29.000000000 +0200
+@@ -72,7 +72,8 @@
+ 
+   (setq autoload-package-name "semi")
+   (add-to-list 'command-line-args-left ".")
+-  (batch-update-directory)
++  (setq generated-autoload-file "./auto-autoloads.el")
++  (update-autoload-files "." "semi" "./auto-autoloads.el" t)
+ 
+   (add-to-list 'command-line-args-left ".")
+   (Custom-make-dependencies)

@@ -1,0 +1,17 @@
+Index: PackageKit-1.1.7/contrib/cron/packagekit-background.cron
+===================================================================
+--- PackageKit-1.1.7.orig/contrib/cron/packagekit-background.cron
++++ PackageKit-1.1.7/contrib/cron/packagekit-background.cron
+@@ -28,8 +28,10 @@ else
+ fi
+ 
+ # wait a random amount of time to avoid hammering the servers
+-[ -z "$SLEEP_MAX" ] && SLEEP_MAX=$RANDOM
+-sleep $(( $RANDOM % $SLEEP_MAX + 1 ))
++# code disabled on openSUSE - cron.daily is not executed at a specific time of the day
++# https://bugzilla.opensuse.org/1071521
++#[ -z "$SLEEP_MAX" ] && SLEEP_MAX=$RANDOM
++#sleep $(( $RANDOM % $SLEEP_MAX + 1 ))
+ 
+ # do action
+ if [ "$CHECK_ONLY" = "yes" ]; then

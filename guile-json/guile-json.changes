@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Fri Aug 24 12:07:57 UTC 2018 - jbrielmaier@suse.de
+
+- bump to 1.2.0
+  changes since 1.0.1
+  - License only GPLv3+
+  - install .go file to %(libdir)/guile 
+- add guile as runtime dependency to avoid "compiling" when using
+  (json) for the first time
+- needs guile-devel to avoid build failure
+
+-------------------------------------------------------------------
+Tue May 29 06:10:36 UTC 2018 - jbrielmaier@suse.de
+
+- bump to 1.0.1
+  changes since 0.6.0
+  - now under GPLv3+ and LGPLv3+
+  - support 4-byte unicode characters
+  - fix smaller issues
+
+-------------------------------------------------------------------
+Mon May  7 12:06:45 UTC 2018 - sleep_walker@opensuse.org
+
+- add guile-json-rpmlintrc file to suppress failures
+
+-------------------------------------------------------------------
+Fri Mar  9 18:13:13 UTC 2018 - sleep_walker@opensuse.org
+
+- mov license file from %doc to %license
+
+-------------------------------------------------------------------
+Thu Feb 15 22:33:02 UTC 2018 - sleep_walker@opensuse.org
+
+- bump to 0.6.0
+  changes since 0.5.0
+  - Deprecate json macro in favor of scheme data types.
+
+-------------------------------------------------------------------
+Thu Feb 15 22:24:27 UTC 2018 - sleep_walker@opensuse.org
+
+- make package not noarch
+
+-------------------------------------------------------------------
+Fri Jul 22 08:45:13 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to 0.5.0
+   changes since 0.4.0:
+     * Allow converting simple alists to json
+       e.g.: (scm->json-string '((a . 1) (b . 2))))
+
+-------------------------------------------------------------------
+Sun Nov  8 21:22:50 UTC 2015 - astieger@suse.com
+
+- add source URLs, keyring and verify source signatures
+- license is LGPL-3.0+ as per code headers
+- package license file
+
+-------------------------------------------------------------------
+Fri Nov  6 20:22:19 UTC 2015 - sleep_walker@opensuse.org
+
+- fix RPM group
+- add tarball signature as RPM Source
+
+-------------------------------------------------------------------
+Fri Nov  6 12:30:47 UTC 2015 - sleep_walker@opensuse.org
+
+- require guile 2.0+ to prevent build failures
+
+-------------------------------------------------------------------
+Thu Nov  5 16:26:10 UTC 2015 - sleep_walker@opensuse.org
+
+- let there be guile-json
+

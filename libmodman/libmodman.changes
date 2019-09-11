@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Mon Mar  5 15:46:02 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group. Update summaries. Reorder file list to have
+  if/endif blocks per output file.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:35:39 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jul  5 19:48:40 UTC 2012 - dimstar@opensuse.org
+
+- Export CXXFLAGS="%{optflags}" in build section to be sure we get
+  proper debug info.
+
+-------------------------------------------------------------------
+Thu Sep  2 09:43:44 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.0.1:
+  + Now builds with Visual Studio.
+
+-------------------------------------------------------------------
+Thu Aug 19 22:20:47 UTC 2010 - dimstar@opensuse.org
+
+- Check for build_snapshot: the svn snapshot project contains
+  unversioned tarballs.
+
+------------------------------------------------------------------------
+Thu Aug 19 20:22:36 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 2.0.0
+  - New module interface using a single structure
+  - New way of loading builtin that does rely on dlopen()
+  - Fixed running test with linker flag --as-needed
+- Enable the test suite
+
+-------------------------------------------------------------------
+Tue Jul 20 07:22:10 UTC 2010 - dimstar@opensuse.org
+
+- Disable the test suite for this release. A known error with
+  as-needed makes it fail. Will be fixed in next release.
+
+-------------------------------------------------------------------
+Tue Jun 22 17:51:38 UTC 2010 - dimstar@opensuse.org
+
+- Initial work for mingw32 cross compilation support.
+
+-------------------------------------------------------------------
+Sun Jun 13 21:35:19 UTC 2010 - dimstar@opensuse.org
+
+- Initial package of libmodman 1.0.1, was split out of libproxy.
+

@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Tue Jul 23 01:14:08 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.16
+  * Fix issue with multiple y-axis datapoints
+  * make the theme parameter case insensitive.
+
+-------------------------------------------------------------------
+Mon Jun  3 18:58:49 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.15
+  * Fix for offline mode. 
+  * Fix for colorchange in qf.add_volume
+  * Fix scatter3d without categories. 
+  * Markers for categories.
+  * Categories with timeseries arrays.
+  * Shared axes in subplots
+  * Shared axes with no shape specified. 
+  * Support for offline_config
+  * Support for lists in heatmaps.
+  * opacity for bars
+- Fix jupyter dependencies.
+
+-------------------------------------------------------------------
+Mon Jun  3 18:31:35 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix jupyter dependencies.
+
+-------------------------------------------------------------------
+Tue Jan  8 19:30:01 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- initial version

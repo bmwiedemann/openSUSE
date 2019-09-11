@@ -1,0 +1,353 @@
+-------------------------------------------------------------------
+Wed Feb 21 09:53:30 UTC 2018 - meissner@suse.com
+
+- drop python2 support (needs to be replaced by python3 support)
+  (bsc#1081587)
+
+-------------------------------------------------------------------
+Tue Nov 14 10:25:45 UTC 2017 - meissner@suse.com
+
+- The license is GPL-2.0 (without + / or later)
+
+-------------------------------------------------------------------
+Tue Nov  7 14:27:25 UTC 2017 - vcizek@suse.com
+
+- Update to 111
+  * upstream provides no changelog
+- add ecryptfs-utils-openssl11.patch to support build with
+  OpenSSL 1.1 (bsc#1066937)
+
+-------------------------------------------------------------------
+Tue Nov  7 14:18:15 UTC 2017 - vcizek@suse.com
+
+- drop validate-mount-destination-fs-type.patch (upstream)
+
+-------------------------------------------------------------------
+Thu Mar  9 18:47:05 UTC 2017 - sfalken@opensuse.org
+
+- Edited %files section to clear unpackaged files builderror in
+  openSUSE:Factory
+
+-------------------------------------------------------------------
+Wed Jan 20 16:31:19 UTC 2016 - meissner@suse.com
+
+- validate-mount-destination-fs-type.patch: A local user could have
+  escalated privileges by mounting over special filesystems (bsc#962052
+  CVE-2016-1572)
+
+-------------------------------------------------------------------
+Sat Oct 17 08:13:38 UTC 2015 - mpluskal@suse.com
+
+- Update to 108
+  * This release does not have a changelog.
+
+-------------------------------------------------------------------
+Fri Oct  2 19:55:18 UTC 2015 - mpluskal@suse.com
+
+- Do not ship .la files
+
+-------------------------------------------------------------------
+Wed Sep 30 14:30:56 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Update autotool dependencies
+- Split library and devel packages
+- Use desktop file macros
+- Use fdupes to reduce duplicities
+
+-------------------------------------------------------------------
+Mon May 11 14:39:00 UTC 2015 - meissner@suse.com
+
+- updated to 106
+  - new passphrase wrapping method, including the salt to fix
+    CVE-2014-9687 / bsc#920160
+  - various bugfixes
+
+-------------------------------------------------------------------
+Thu Sep  4 13:13:07 UTC 2014 - darin@darins.net
+
+- update to 104
+  - lots of bugfixes, apparently from static code checking
+
+-------------------------------------------------------------------
+Fri Aug  8 10:56:20 UTC 2014 - fcrozat@suse.com
+
+- Drop ecryptfs-correct-desktop.patch and ensure
+  ecryptfs-mount-private.desktop is properly generated and
+  installed in a program specific location (ecryptfs-setup-private
+  will take care of creating the right symlink) and not in 
+  /usr/share/applications by default.
+- Add ecryptfs-mount-private.png (from Fedora)
+- Create tmpfiles.d to ensure ecryptfs module is autoloaded at
+  start.
+- Fix category on ecryptfs-setup-private.desktop.
+
+-------------------------------------------------------------------
+Thu Aug 15 19:41:04 UTC 2013 - darin@darins.net
+
+- fix %postun to not run pam-config on update (bnc#814098, bnc#834993)
+
+-------------------------------------------------------------------
+Mon Aug  5 18:41:01 UTC 2013 - darin@darins.net
+
+- update to 103
+- move -pie/-fpie into separate patch
+- update ecryptfs-setup-swap-SuSE.patch for systmd and fstab
+  without UUID lables
+- remove ecryptfs-utils.security.patch, fixed upstream 
+- add PreReq: permissions
+- removed unpackaged doc
+
+-------------------------------------------------------------------
+Wed Jul 11 11:48:24 UTC 2012 - meissner@suse.com
+
+- also supply MS_NODEV to avoid exposing device files
+  if someone got them on the encrypted media.
+
+-------------------------------------------------------------------
+Tue Jul 10 14:03:27 UTC 2012 - meissner@suse.com
+
+- point the desktop link to the right .desktop file
+- build mount.ecryptfs_private with -pie/-fpie
+
+-------------------------------------------------------------------
+Wed Jul  4 11:08:11 UTC 2012 - meissner@suse.com
+
+- hook pam_ecryptfs into pam session and auth bnc#755475
+
+-------------------------------------------------------------------
+Thu Jun 21 06:19:46 UTC 2012 - meissner@suse.com
+
+- added security improvements to mount.ecryptfs_private
+  and pam_ecryptfs (bnc#740110)
+
+-------------------------------------------------------------------
+Fri Apr  6 15:33:03 UTC 2012 - darin@darins.net
+
+- patch so ecryptfs-setup-swap executes boot.crypto 
+
+-------------------------------------------------------------------
+Wed Mar 28 14:47:13 UTC 2012 - meissner@suse.com
+
+- updated to 96
+  - bugfixes
+  - testsuite added
+  - ecryptfs-verify utility added
+  - write-read test utility
+- mark /sbin/mount.eccryptfs_private as setuidable (bnc#745584 , bnc#740110)
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:57 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Tue Sep 20 15:32:22 CEST 2011 - meissner@suse.de
+
+- Updated to 92
+  * Fix umask issue introduced by last security update
+  * some bugfixes
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Put make call in the right spot
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Thu Aug 11 17:25:21 CEST 2011 - meissner@suse.de
+
+- Updated to 90
+  Fixed several security issues:
+  * CVE-2011-1831 - Race condition when checking mountpoint during mount.
+  * CVE-2011-1832 - Race condition when checking mountpoint during unmount.
+  * CVE-2011-1833 - Race condition when checking source during mount.
+  * CVE-2011-1834 - Improper mtab handling allowing corruption due to resource
+    limits, signals, etc.
+  * CVE-2011-1835 - Key poisoning in ecryptfs-setup-private due to insecure temp
+    directory.
+  * CVE-2011-1836 - ecryptfs-recover-private mounts directly in /tmp
+  * CVE-2011-1837 - Predictable lock counter name and associated races.
+
+  New ecryptfs-find binary to find by inode.
+
+-------------------------------------------------------------------
+Mon Apr 18 17:06:50 CEST 2011 - meissner@suse.de
+
+- Updated to 87
+  * src/utils/ecryptfs-setup-private: update the Private.* selinux
+    contexts
+  * src/utils/ecryptfs-setup-private:
+    - add -p to mkdir, address noise for a non-error
+    - must insert keys during testing phase, since we remove keys on
+      unmount now, LP: #725862
+  * src/utils/ecryptfs_rewrap_passphrase.c: confirm passphrases in
+    interactive mode, LP: #667331
+- Updated to 86
+  * src/pam_ecryptfs/pam_ecryptfs.c:
+    - check if this file exists and ask the user for the wrapping passphrase
+      if it does
+    - eliminate both ecryptfs_pam_wrapping_independent_set() and
+      ecryptfs_pam_automount_set() and replace with a reusable
+      file_exists_dotecryptfs() function
+  * src/utils/mount.ecryptfs_private.c:
+    - support multiple, user configurable private directories by way of
+      a command line "alias" argument
+    - this "alias" references a configuration file by the name of:
+      $HOME/.ecryptfs/alias.conf, which is in an fstab(5) format,
+      as well as $HOME/.ecryptfs/alias.sig, in the same format as
+      Private.sig
+    - if no argument specified, the utility operates in legacy mode,
+      defaulting to "Private"
+    - rename variables, s/dev/src/ and s/mnt/dest/
+    - add a read_config() function
+    - add an alias char* to replace the #defined ECRYPTFS_PRIVATE_DIR
+    - this is half of the fix to LP: #615657
+  * doc/manpage/mount.ecryptfs_private.1: document these changes
+  * src/libecryptfs/main.c, src/utils/mount.ecryptfs_private.c:
+    - allow umount.ecryptfs_private to succeed when the key is no
+      longer in user keyring.
+- Updated to 85
+  * src/utils/ecryptfs-recover-private: clean sigs of invalid characters
+  * src/utils/mount.ecryptfs_private.c:
+    - fix bug LP: #313812, clear used keys on unmount
+    - add ecryptfs_unlink_sigs to the mount opts, so that unmounts from
+      umount.ecryptfs behave similarly
+    - use ecryptfs_remove_auth_tok_from_keyring() on the sig and sig_fnek
+  * src/utils/ecryptfs-migrate-home:
+    - support user databases outside of /etc/passwd, LP: #627506
+- Updated to 84
+  * src/desktop/ecryptfs-record-passphrase: fix typo, LP: #524139
+  * debian/rules, debian/control:
+    - disable the gpg key module, as it's not yet functional
+    - clean up unneeded build-deps
+    - also, not using opencryptoki either
+  * doc/manpage/ecryptfs.7: fix minor documentation bug, reported by
+    email by Jon 'maddog' Hall
+  * doc/manpage/ecryptfs-recover-private.1, doc/manpage/Makefile.am,
+    po/POTFILES.in, src/utils/ecryptfs-recover-private,
+    src/utils/Makefile.am: add a utility to simplify data recovery
+    of an encrypted private directory from a Live ISO, LP: #689969
+
+-------------------------------------------------------------------
+Sat Apr 10 15:39:27 UTC 2010 - aj@suse.de
+
+- Fix build with adding requires on mozilla-nss-devel and python-devel.
+- Fix package list.
+
+-------------------------------------------------------------------
+Thu Mar 18 13:33:43 CET 2010 - meissner@suse.de
+
+- Updated to 83
+  - lots of bugfixes
+  - improvements
+
+-------------------------------------------------------------------
+Sun Jan 31 22:03:16 UTC 2010 - jengelh@medozas.de
+
+- Package baselibs.conf
+
+-------------------------------------------------------------------
+Thu Jun 25 12:37:06 CEST 2009 - sbrabec@suse.cz
+
+- Supplement pam-32bit/pam-64bit in baselibs.conf (bnc#354164).
+
+-------------------------------------------------------------------
+Fri Oct 24 13:58:01 CEST 2008 - meissner@suse.de
+
+- Upgraded to version 61
+   - starts of filename encryption
+   - bugfixes
+
+-------------------------------------------------------------------
+Fri Sep 19 11:55:34 CEST 2008 - meissner@suse.de
+
+- Upgraded to version 58
+   - config file changes yet again
+   - some documentation fixes
+   - some TPM related fixes
+
+-------------------------------------------------------------------
+Sat Aug 23 10:45:52 CEST 2008 - meissner@suse.de
+
+- Upgraded to version 56
+   - more manpages
+   - changed configfile format
+
+-------------------------------------------------------------------
+Fri Jul 11 22:41:55 CEST 2008 - meissner@suse.de
+
+- Upgraded to version 50
+  - another manpage
+  - bugfixes
+  - fixed kernel netlink interface
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Apr  3 11:27:39 CEST 2008 - meissner@suse.de
+
+- Upgraded to version 41
+	- typo fixed in manpage
+- enabled TPM support (tspi)
+- enabled PKCS11 support
+
+-------------------------------------------------------------------
+Mon Feb 25 22:25:31 CET 2008 - meissner@suse.de
+
+- Upgraded to version 40
+  - more manpages
+  - some new features
+  - lots of bugfixes
+
+-------------------------------------------------------------------
+Fri Aug  3 10:51:14 CEST 2007 - meissner@suse.de
+
+- fixed pam module path for ia64 and s390x too.
+
+-------------------------------------------------------------------
+Sun Jul 29 11:28:25 CEST 2007 - meissner@suse.de
+
+- fixed pam module path
+
+-------------------------------------------------------------------
+Fri Jul 27 11:59:37 CEST 2007 - meissner@suse.de
+
+- uphgraded to version 18.
+	- TPM support (not yet enabled)
+	- added PAM module
+
+-------------------------------------------------------------------
+Tue Mar 20 15:21:00 CET 2007 - meissner@suse.de
+
+- build on IA64
+- fixed compiler warnings
+
+-------------------------------------------------------------------
+Tue Mar  6 14:20:50 CET 2007 - meissner@suse.de
+
+- fixed build on lib64
+
+-------------------------------------------------------------------
+Mon Mar  5 12:31:00 CET 2007 - meissner@suse.de
+
+- upgraded to version 10.
+  - unlisted enhancements and bugfixes.
+
+-------------------------------------------------------------------
+Thu Dec 14 16:17:01 CET 2006 - meissner@suse.de
+
+- use lib64 correctly.
+- fixed "is used uninitialized" warnings.
+
+-------------------------------------------------------------------
+Tue Dec  5 11:59:54 CET 2006 - meissner@suse.de
+
+- initial checkin of version 5.
+     - userland utilities to control ecryptfs filesystems

@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Tue Jan  8 23:06:06 UTC 2019 - Jonathan Brownell <jbrownell@suse.com>
+
+- Remove redundant /etc/alternatives files produced on Red Hat
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:35 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Jul  5 08:35:57 UTC 2017 - tbechtold@suse.com
+
+- convert to singlespec
+
+-------------------------------------------------------------------
+Wed May  6 17:54:26 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.4.0:
+  * no changelog available
+- shorten the summary to fix an rpmlint error
+- add python-ply and python-six as BuildRequires to ensure their
+  availability
+- remove python-decorator from Requires: unneeded
+- remove unwanted shebang in jsonpath.py
+- add jsonpath.py to the package files
+
+-------------------------------------------------------------------
+Fri Jul 25 06:54:37 UTC 2014 - dmueller@suse.com
+
+- require ply >= 3.4 (bnc#888809) 
+
+-------------------------------------------------------------------
+Tue Jan  7 15:14:09 UTC 2014 - speilicke@suse.com
+
+- Initial version
+

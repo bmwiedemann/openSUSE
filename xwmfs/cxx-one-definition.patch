@@ -1,0 +1,12 @@
+Index: xwmfs-0.83/src/main/Xwmfs.hxx
+===================================================================
+--- xwmfs-0.83.orig/src/main/Xwmfs.hxx
++++ xwmfs-0.83/src/main/Xwmfs.hxx
+@@ -3,6 +3,7 @@
+ 
+ // POSIX
+ #include <sys/select.h>
++#include <signal.h>
+ 
+ // C++
+ #include <map>

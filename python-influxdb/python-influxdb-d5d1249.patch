@@ -1,0 +1,838 @@
+diff --git a/.travis.yml b/.travis.yml
+index a1cf7b55..8c660b67 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -8,10 +8,12 @@ python:
+   - "pypy3"
+ 
+ env:
+-  - INFLUXDB_VER=1.2.4
+-  - INFLUXDB_VER=1.3.9
+-  - INFLUXDB_VER=1.4.2
+-  - INFLUXDB_VER=1.5.4
++  - INFLUXDB_VER=1.2.4  # 2017-05-08
++  - INFLUXDB_VER=1.3.9  # 2018-01-19
++  - INFLUXDB_VER=1.4.3  # 2018-01-30
++  - INFLUXDB_VER=1.5.4  # 2018-06-22
++  - INFLUXDB_VER=1.6.4  # 2018-10-24
++  - INFLUXDB_VER=1.7.4  # 2019-02-14
+ 
+ addons:
+   apt:
+@@ -20,7 +22,31 @@ addons:
+ 
+ matrix:
+   include:
+-    - python: 2.7
++    - python: 3.7
++      dist: xenial
++      sudo: true
++      env: INFLUXDB_VER=1.2.4
++    - python: 3.7
++      dist: xenial
++      sudo: true
++      env: INFLUXDB_VER=1.3.9
++    - python: 3.7
++      dist: xenial
++      sudo: true
++      env: INFLUXDB_VER=1.4.3
++    - python: 3.7
++      dist: xenial
++      sudo: true
++      env: INFLUXDB_VER=1.5.4
++    - python: 3.7
++      dist: xenial
++      sudo: true
++      env: INFLUXDB_VER=1.6.4
++    - python: 3.7
++      dist: xenial
++      sudo: true
++      env: INFLUXDB_VER=1.7.4
++    - python: 3.6
+       env: TOX_ENV=pep257
+     - python: 3.6
+       env: TOX_ENV=docs
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 035476ab..7f1503b5 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -7,8 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
+ ## [Unreleased]
+ 
+ ### Added
++- Add `get_list_continuous_queries`, `drop_continuous_query`, and `create_continuous_query` management methods for
++  continuous queries (#681 thx @lukaszdudek-silvair)
++- query() now accepts a bind_params argument for parameter binding (#678 thx @clslgrnc)
+ 
+ ### Changed
++- Add consistency param to InfluxDBClient.write_points (#643 thx @RonRothman)
++- Update test suite to add support for Python 3.7 and InfluxDB v1.6.4 and 1.7.4 (#692 thx @clslgrnc)
++- Update classifiers tuple to list in setup.py (#697 thx @Hanaasagi)
++- Update documentation for empty `delete_series` confusion
+ 
+ ### Removed
+ 
+diff --git a/CODEOWNERS b/CODEOWNERS
+new file mode 100644
+index 00000000..0acbd7c8
+--- /dev/null
++++ b/CODEOWNERS
+@@ -0,0 +1 @@
++* @aviau @xginn8 @sebito91
+diff --git a/README.rst b/README.rst
+index d4f9611c..026171b2 100644
+--- a/README.rst
++++ b/README.rst
+@@ -39,7 +39,7 @@ InfluxDB is an open-source distributed time series database, find more about Inf
+ InfluxDB pre v1.1.0 users
+ -------------------------
+ 
+-This module is tested with InfluxDB versions: v1.2.4, v1.3.9, v1.4.2, and v1.5.4.
++This module is tested with InfluxDB versions: v1.2.4, v1.3.9, v1.4.3, v1.5.4, v1.6.4, and 1.7.4.
+ 
+ Those users still on InfluxDB v0.8.x users may still use the legacy client by importing ``from influxdb.influxdb08 import InfluxDBClient``.
+ 
+@@ -59,7 +59,7 @@ On Debian/Ubuntu, you can install it with this command::
+ Dependencies
+ ------------
+ 
+-The influxdb-python distribution is supported and tested on Python 2.7, 3.5, 3.6, PyPy and PyPy3.
++The influxdb-python distribution is supported and tested on Python 2.7, 3.5, 3.6, 3.7, PyPy and PyPy3.
+ 
+ **Note:** Python <3.5 are currently untested. See ``.travis.yml``.
+ 
+diff --git a/docs/source/examples.rst b/docs/source/examples.rst
+index 2c85fbda..fdda62a9 100644
+--- a/docs/source/examples.rst
++++ b/docs/source/examples.rst
+@@ -25,3 +25,9 @@ Tutorials - SeriesHelper
+ 
+ .. literalinclude:: ../../examples/tutorial_serieshelper.py
+    :language: python
++
++Tutorials - UDP
++===============
++
++.. literalinclude:: ../../examples/tutorial_udp.py
++   :language: python
+diff --git a/examples/tutorial.py b/examples/tutorial.py
+index 4083bfc5..12cd49c1 100644
+--- a/examples/tutorial.py
++++ b/examples/tutorial.py
+@@ -13,7 +13,9 @@ def main(host='localhost', port=8086):
+     dbname = 'example'
+     dbuser = 'smly'
+     dbuser_password = 'my_secret_password'
+-    query = 'select value from cpu_load_short;'
++    query = 'select Float_value from cpu_load_short;'
++    query_where = 'select Int_value from cpu_load_short where host=$host;'
++    bind_params = {'host': 'server01'}
+     json_body = [
+         {
+             "measurement": "cpu_load_short",
+@@ -50,6 +52,11 @@ def main(host='localhost', port=8086):
+ 
+     print("Result: {0}".format(result))
+ 
++    print("Querying data: " + query_where)
++    result = client.query(query_where, bind_params=bind_params)
++
++    print("Result: {0}".format(result))
++
+     print("Switch user: " + user)
+     client.switch_user(user, password)
+ 
+diff --git a/examples/tutorial_udp.py b/examples/tutorial_udp.py
+new file mode 100644
+index 00000000..517ae858
+--- /dev/null
++++ b/examples/tutorial_udp.py
+@@ -0,0 +1,66 @@
++# -*- coding: utf-8 -*-
++"""Example for sending batch information to InfluxDB via UDP."""
++
++"""
++INFO: In order to use UDP, one should enable the UDP service from the
++`influxdb.conf` under section
++    [[udp]]
++        enabled = true
++        bind-address = ":8089" # port number for sending data via UDP
++        database = "udp1" # name of database to be stored
++    [[udp]]
++        enabled = true
++        bind-address = ":8090"
++        database = "udp2"
++"""
++
++
++import argparse
++
++from influxdb import InfluxDBClient
++
++
++def main(uport):
++    """Instantiate connection to the InfluxDB."""
++    # NOTE: structure of the UDP packet is different than that of information
++    #       sent via HTTP
++    json_body = {
++        "tags": {
++            "host": "server01",
++            "region": "us-west"
++        },
++        "time": "2009-11-10T23:00:00Z",
++        "points": [{
++            "measurement": "cpu_load_short",
++            "fields": {
++                "value": 0.64
++            }
++        },
++            {
++                "measurement": "cpu_load_short",
++                "fields": {
++                    "value": 0.67
++                }
++        }]
++    }
++
++    # make `use_udp` True and  add `udp_port` number from `influxdb.conf` file
++    # no need to mention the database name since it is already configured
++    client = InfluxDBClient(use_udp=True, udp_port=uport)
++
++    # Instead of `write_points` use `send_packet`
++    client.send_packet(json_body)
++
++
++def parse_args():
++    """Parse the args."""
++    parser = argparse.ArgumentParser(
++        description='example code to play with InfluxDB along with UDP Port')
++    parser.add_argument('--uport', type=int, required=True,
++                        help=' UDP port of InfluxDB')
++    return parser.parse_args()
++
++
++if __name__ == '__main__':
++    args = parse_args()
++    main(uport=args.uport)
+diff --git a/influxdb/_dataframe_client.py b/influxdb/_dataframe_client.py
+index 3b7a39db..1ce6e947 100644
+--- a/influxdb/_dataframe_client.py
++++ b/influxdb/_dataframe_client.py
+@@ -142,6 +142,7 @@ def write_points(self,
+     def query(self,
+               query,
+               params=None,
++              bind_params=None,
+               epoch=None,
+               expected_response_code=200,
+               database=None,
+@@ -153,8 +154,18 @@ def query(self,
+         """
+         Query data into a DataFrame.
+ 
++        .. danger::
++            In order to avoid injection vulnerabilities (similar to `SQL
++            injection <https://www.owasp.org/index.php/SQL_Injection>`_
++            vulnerabilities), do not directly include untrusted data into the
++            ``query`` parameter, use ``bind_params`` instead.
++
+         :param query: the actual query string
+         :param params: additional parameters for the request, defaults to {}
++        :param bind_params: bind parameters for the query:
++            any variable in the query written as ``'$var_name'`` will be
++            replaced with ``bind_params['var_name']``. Only works in the
++            ``WHERE`` clause and takes precedence over ``params['params']``
+         :param epoch: response timestamps to be in epoch format either 'h',
+             'm', 's', 'ms', 'u', or 'ns',defaults to `None` which is
+             RFC3339 UTC format with nanosecond precision
+@@ -172,6 +183,7 @@ def query(self,
+         :rtype: :class:`~.ResultSet`
+         """
+         query_args = dict(params=params,
++                          bind_params=bind_params,
+                           epoch=epoch,
+                           expected_response_code=expected_response_code,
+                           raise_errors=raise_errors,
+diff --git a/influxdb/client.py b/influxdb/client.py
+index 8f8b14ae..8ac557d3 100644
+--- a/influxdb/client.py
++++ b/influxdb/client.py
+@@ -345,6 +345,7 @@ def _read_chunked_response(response, raise_errors=True):
+     def query(self,
+               query,
+               params=None,
++              bind_params=None,
+               epoch=None,
+               expected_response_code=200,
+               database=None,
+@@ -354,6 +355,12 @@ def query(self,
+               method="GET"):
+         """Send a query to InfluxDB.
+ 
++        .. danger::
++            In order to avoid injection vulnerabilities (similar to `SQL
++            injection <https://www.owasp.org/index.php/SQL_Injection>`_
++            vulnerabilities), do not directly include untrusted data into the
++            ``query`` parameter, use ``bind_params`` instead.
++
+         :param query: the actual query string
+         :type query: str
+ 
+@@ -361,6 +368,12 @@ def query(self,
+             defaults to {}
+         :type params: dict
+ 
++        :param bind_params: bind parameters for the query:
++            any variable in the query written as ``'$var_name'`` will be
++            replaced with ``bind_params['var_name']``. Only works in the
++            ``WHERE`` clause and takes precedence over ``params['params']``
++        :type bind_params: dict
++
+         :param epoch: response timestamps to be in epoch format either 'h',
+             'm', 's', 'ms', 'u', or 'ns',defaults to `None` which is
+             RFC3339 UTC format with nanosecond precision
+@@ -394,6 +407,11 @@ def query(self,
+         if params is None:
+             params = {}
+ 
++        if bind_params is not None:
++            params_dict = json.loads(params.get('params', '{}'))
++            params_dict.update(bind_params)
++            params['params'] = json.dumps(params_dict)
++
+         params['q'] = query
+         params['db'] = database or self._database
+ 
+@@ -440,7 +458,8 @@ def write_points(self,
+                      retention_policy=None,
+                      tags=None,
+                      batch_size=None,
+-                     protocol='json'
++                     protocol='json',
++                     consistency=None
+                      ):
+         """Write to multiple time series names.
+ 
+@@ -468,6 +487,9 @@ def write_points(self,
+         :type batch_size: int
+         :param protocol: Protocol for writing data. Either 'line' or 'json'.
+         :type protocol: str
++        :param consistency: Consistency for the points.
++            One of {'any','one','quorum','all'}.
++        :type consistency: str
+         :returns: True, if the operation is successful
+         :rtype: bool
+ 
+@@ -480,14 +502,16 @@ def write_points(self,
+                                    time_precision=time_precision,
+                                    database=database,
+                                    retention_policy=retention_policy,
+-                                   tags=tags, protocol=protocol)
++                                   tags=tags, protocol=protocol,
++                                   consistency=consistency)
+             return True
+ 
+         return self._write_points(points=points,
+                                   time_precision=time_precision,
+                                   database=database,
+                                   retention_policy=retention_policy,
+-                                  tags=tags, protocol=protocol)
++                                  tags=tags, protocol=protocol,
++                                  consistency=consistency)
+ 
+     def ping(self):
+         """Check connectivity to InfluxDB.
+@@ -513,12 +537,16 @@ def _write_points(self,
+                       database,
+                       retention_policy,
+                       tags,
+-                      protocol='json'):
++                      protocol='json',
++                      consistency=None):
+         if time_precision not in ['n', 'u', 'ms', 's', 'm', 'h', None]:
+             raise ValueError(
+                 "Invalid time precision is given. "
+                 "(use 'n', 'u', 'ms', 's', 'm' or 'h')")
+ 
++        if consistency not in ['any', 'one', 'quorum', 'all', None]:
++            raise ValueError('Invalid consistency: {}'.format(consistency))
++
+         if protocol == 'json':
+             data = {
+                 'points': points
+@@ -533,6 +561,9 @@ def _write_points(self,
+             'db': database or self._database
+         }
+ 
++        if consistency is not None:
++            params['consistency'] = consistency
++
+         if time_precision is not None:
+             params['precision'] = time_precision
+ 
+@@ -809,7 +840,9 @@ def set_user_password(self, username, password):
+     def delete_series(self, database=None, measurement=None, tags=None):
+         """Delete series from a database.
+ 
+-        Series can be filtered by measurement and tags.
++        Series must be filtered by either measurement and tags.
++        This method cannot be used to delete all series, use
++        `drop_database` instead.
+ 
+         :param database: the database from which the series should be
+             deleted, defaults to client's current database
+@@ -908,6 +941,98 @@ def get_list_privileges(self, username):
+         text = "SHOW GRANTS FOR {0}".format(quote_ident(username))
+         return list(self.query(text).get_points())
+ 
++    def get_list_continuous_queries(self):
++        """Get the list of continuous queries in InfluxDB.
++
++        :return: all CQs in InfluxDB
++        :rtype: list of dictionaries
++
++        :Example:
++
++        ::
++
++            >> cqs = client.get_list_cqs()
++            >> cqs
++            [
++                {
++                    u'db1': []
++                },
++                {
++                    u'db2': [
++                        {
++                            u'name': u'vampire',
++                            u'query': u'CREATE CONTINUOUS QUERY vampire ON '
++                                       'mydb BEGIN SELECT count(dracula) INTO '
++                                       'mydb.autogen.all_of_them FROM '
++                                       'mydb.autogen.one GROUP BY time(5m) END'
++                        }
++                    ]
++                }
++            ]
++        """
++        query_string = "SHOW CONTINUOUS QUERIES"
++        return [{sk[0]: list(p)} for sk, p in self.query(query_string).items()]
++
++    def create_continuous_query(self, name, select, database=None,
++                                resample_opts=None):
++        r"""Create a continuous query for a database.
++
++        :param name: the name of continuous query to create
++        :type name: str
++        :param select: select statement for the continuous query
++        :type select: str
++        :param database: the database for which the continuous query is
++            created. Defaults to current client's database
++        :type database: str
++        :param resample_opts: resample options
++        :type resample_opts: str
++
++        :Example:
++
++        ::
++
++            >> select_clause = 'SELECT mean("value") INTO "cpu_mean" ' \
++            ...                 'FROM "cpu" GROUP BY time(1m)'
++            >> client.create_continuous_query(
++            ...     'cpu_mean', select_clause, 'db_name', 'EVERY 10s FOR 2m'
++            ... )
++            >> client.get_list_continuous_queries()
++            [
++                {
++                    'db_name': [
++                        {
++                            'name': 'cpu_mean',
++                            'query': 'CREATE CONTINUOUS QUERY "cpu_mean" '
++                                    'ON "db_name" '
++                                    'RESAMPLE EVERY 10s FOR 2m '
++                                    'BEGIN SELECT mean("value") '
++                                    'INTO "cpu_mean" FROM "cpu" '
++                                    'GROUP BY time(1m) END'
++                        }
++                    ]
++                }
++            ]
++        """
++        query_string = (
++            "CREATE CONTINUOUS QUERY {0} ON {1}{2} BEGIN {3} END"
++        ).format(quote_ident(name), quote_ident(database or self._database),
++                 ' RESAMPLE ' + resample_opts if resample_opts else '', select)
++        self.query(query_string)
++
++    def drop_continuous_query(self, name, database=None):
++        """Drop an existing continuous query for a database.
++
++        :param name: the name of continuous query to drop
++        :type name: str
++        :param database: the database for which the continuous query is
++            dropped. Defaults to current client's database
++        :type database: str
++        """
++        query_string = (
++            "DROP CONTINUOUS QUERY {0} ON {1}"
++        ).format(quote_ident(name), quote_ident(database or self._database))
++        self.query(query_string)
++
+     def send_packet(self, packet, protocol='json', time_precision=None):
+         """Send an UDP packet.
+ 
+diff --git a/influxdb/tests/client_test.py b/influxdb/tests/client_test.py
+index e27eef17..e4cc7e11 100644
+--- a/influxdb/tests/client_test.py
++++ b/influxdb/tests/client_test.py
+@@ -337,6 +337,23 @@ def test_write_points_with_precision(self):
+                 m.last_request.body,
+             )
+ 
++    def test_write_points_with_consistency(self):
++        """Test write points with consistency for TestInfluxDBClient object."""
++        with requests_mock.Mocker() as m:
++            m.register_uri(
++                requests_mock.POST,
++                'http://localhost:8086/write',
++                status_code=204
++            )
++
++            cli = InfluxDBClient(database='db')
++
++            cli.write_points(self.dummy_points, consistency='any')
++            self.assertEqual(
++                m.last_request.qs,
++                {'db': ['db'], 'consistency': ['any']}
++            )
++
+     def test_write_points_with_precision_udp(self):
+         """Test write points with precision for TestInfluxDBClient object."""
+         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+@@ -409,6 +426,15 @@ def test_write_points_bad_precision(self):
+                 time_precision='g'
+             )
+ 
++    def test_write_points_bad_consistency(self):
++        """Test write points w/bad consistency value."""
++        cli = InfluxDBClient()
++        with self.assertRaises(ValueError):
++            cli.write_points(
++                self.dummy_points,
++                consistency='boo'
++            )
++
+     @raises(Exception)
+     def test_write_points_with_precision_fails(self):
+         """Test write points w/precision fail for TestInfluxDBClient object."""
+@@ -1027,6 +1053,114 @@ def test_get_list_privileges_fails(self):
+         with _mocked_session(cli, 'get', 401):
+             cli.get_list_privileges('test')
+ 
++    def test_get_list_continuous_queries(self):
++        """Test getting a list of continuous queries."""
++        data = {
++            "results": [
++                {
++                    "statement_id": 0,
++                    "series": [
++                        {
++                            "name": "testdb01",
++                            "columns": ["name", "query"],
++                            "values": [["testname01", "testquery01"],
++                                       ["testname02", "testquery02"]]
++                        },
++                        {
++                            "name": "testdb02",
++                            "columns": ["name", "query"],
++                            "values": [["testname03", "testquery03"]]
++                        },
++                        {
++                            "name": "testdb03",
++                            "columns": ["name", "query"]
++                        }
++                    ]
++                }
++            ]
++        }
++
++        with _mocked_session(self.cli, 'get', 200, json.dumps(data)):
++            self.assertListEqual(
++                self.cli.get_list_continuous_queries(),
++                [
++                    {
++                        'testdb01': [
++                            {'name': 'testname01', 'query': 'testquery01'},
++                            {'name': 'testname02', 'query': 'testquery02'}
++                        ]
++                    },
++                    {
++                        'testdb02': [
++                            {'name': 'testname03', 'query': 'testquery03'}
++                        ]
++                    },
++                    {
++                        'testdb03': []
++                    }
++                ]
++            )
++
++    @raises(Exception)
++    def test_get_list_continuous_queries_fails(self):
++        """Test failing to get a list of continuous queries."""
++        with _mocked_session(self.cli, 'get', 400):
++            self.cli.get_list_continuous_queries()
++
++    def test_create_continuous_query(self):
++        """Test continuous query creation."""
++        data = {"results": [{}]}
++        with requests_mock.Mocker() as m:
++            m.register_uri(
++                requests_mock.GET,
++                "http://localhost:8086/query",
++                text=json.dumps(data)
++            )
++            query = 'SELECT count("value") INTO "6_months"."events" FROM ' \
++                    '"events" GROUP BY time(10m)'
++            self.cli.create_continuous_query('cq_name', query, 'db_name')
++            self.assertEqual(
++                m.last_request.qs['q'][0],
++                'create continuous query "cq_name" on "db_name" begin select '
++                'count("value") into "6_months"."events" from "events" group '
++                'by time(10m) end'
++            )
++            self.cli.create_continuous_query('cq_name', query, 'db_name',
++                                             'EVERY 10s FOR 2m')
++            self.assertEqual(
++                m.last_request.qs['q'][0],
++                'create continuous query "cq_name" on "db_name" resample '
++                'every 10s for 2m begin select count("value") into '
++                '"6_months"."events" from "events" group by time(10m) end'
++            )
++
++    @raises(Exception)
++    def test_create_continuous_query_fails(self):
++        """Test failing to create a continuous query."""
++        with _mocked_session(self.cli, 'get', 400):
++            self.cli.create_continuous_query('cq_name', 'select', 'db_name')
++
++    def test_drop_continuous_query(self):
++        """Test dropping a continuous query."""
++        data = {"results": [{}]}
++        with requests_mock.Mocker() as m:
++            m.register_uri(
++                requests_mock.GET,
++                "http://localhost:8086/query",
++                text=json.dumps(data)
++            )
++            self.cli.drop_continuous_query('cq_name', 'db_name')
++            self.assertEqual(
++                m.last_request.qs['q'][0],
++                'drop continuous query "cq_name" on "db_name"'
++            )
++
++    @raises(Exception)
++    def test_drop_continuous_query_fails(self):
++        """Test failing to drop a continuous query."""
++        with _mocked_session(self.cli, 'get', 400):
++            self.cli.drop_continuous_query('cq_name', 'db_name')
++
+     def test_invalid_port_fails(self):
+         """Test invalid port fail for TestInfluxDBClient object."""
+         with self.assertRaises(ValueError):
+diff --git a/influxdb/tests/dataframe_client_test.py b/influxdb/tests/dataframe_client_test.py
+index ad910a6d..cb380ac5 100644
+--- a/influxdb/tests/dataframe_client_test.py
++++ b/influxdb/tests/dataframe_client_test.py
+@@ -22,6 +22,7 @@
+     import pandas as pd
+     from pandas.util.testing import assert_frame_equal
+     from influxdb import DataFrameClient
++    import numpy
+ 
+ 
+ @skip_if_pypy
+@@ -396,10 +397,16 @@ def test_write_points_from_dataframe_with_numeric_precision(self):
+                                        ["2", 2, 2.2222222222222]],
+                                  index=[now, now + timedelta(hours=1)])
+ 
+-        expected_default_precision = (
+-            b'foo,hello=there 0=\"1\",1=1i,2=1.11111111111 0\n'
+-            b'foo,hello=there 0=\"2\",1=2i,2=2.22222222222 3600000000000\n'
+-        )
++        if numpy.lib.NumpyVersion(numpy.__version__) <= '1.13.3':
++            expected_default_precision = (
++                b'foo,hello=there 0=\"1\",1=1i,2=1.11111111111 0\n'
++                b'foo,hello=there 0=\"2\",1=2i,2=2.22222222222 3600000000000\n'
++            )
++        else:
++            expected_default_precision = (
++                b'foo,hello=there 0=\"1\",1=1i,2=1.1111111111111 0\n'
++                b'foo,hello=there 0=\"2\",1=2i,2=2.2222222222222 3600000000000\n'  # noqa E501 line too long
++            )
+ 
+         expected_specified_precision = (
+             b'foo,hello=there 0=\"1\",1=1i,2=1.1111 0\n'
+@@ -419,6 +426,9 @@ def test_write_points_from_dataframe_with_numeric_precision(self):
+             cli = DataFrameClient(database='db')
+             cli.write_points(dataframe, "foo", {"hello": "there"})
+ 
++            print(expected_default_precision)
++            print(m.last_request.body)
++
+             self.assertEqual(m.last_request.body, expected_default_precision)
+ 
+             cli = DataFrameClient(database='db')
+@@ -884,10 +894,11 @@ def test_multiquery_into_dataframe(self):
+         expected = [{'cpu_load_short': pd1}, {'cpu_load_short': pd2}]
+ 
+         cli = DataFrameClient('host', 8086, 'username', 'password', 'db')
+-        iql = "SELECT value FROM cpu_load_short WHERE region='us-west';"\
+-            "SELECT count(value) FROM cpu_load_short WHERE region='us-west'"
++        iql = "SELECT value FROM cpu_load_short WHERE region=$region;"\
++            "SELECT count(value) FROM cpu_load_short WHERE region=$region"
++        bind_params = {'region': 'us-west'}
+         with _mocked_session(cli, 'GET', 200, data):
+-            result = cli.query(iql)
++            result = cli.query(iql, bind_params=bind_params)
+             for r, e in zip(result, expected):
+                 for k in e:
+                     assert_frame_equal(e[k], r[k])
+diff --git a/influxdb/tests/server_tests/client_test_with_server.py b/influxdb/tests/server_tests/client_test_with_server.py
+index 4dbc1b75..fda3f720 100644
+--- a/influxdb/tests/server_tests/client_test_with_server.py
++++ b/influxdb/tests/server_tests/client_test_with_server.py
+@@ -440,7 +440,9 @@ def test_write_points_batch(self):
+                               batch_size=2)
+         time.sleep(5)
+         net_in = self.cli.query("SELECT value FROM network "
+-                                "WHERE direction='in'").raw
++                                "WHERE direction=$dir",
++                                bind_params={'dir': 'in'}
++                                ).raw
+         net_out = self.cli.query("SELECT value FROM network "
+                                  "WHERE direction='out'").raw
+         cpu = self.cli.query("SELECT value FROM cpu_usage").raw
+@@ -720,6 +722,36 @@ def test_drop_retention_policy(self):
+             rsp
+         )
+ 
++    def test_create_continuous_query(self):
++        """Test continuous query creation."""
++        self.cli.create_retention_policy('some_rp', '1d', 1)
++        query = 'select count("value") into "some_rp"."events" from ' \
++                '"events" group by time(10m)'
++        self.cli.create_continuous_query('test_cq', query, 'db')
++        cqs = self.cli.get_list_continuous_queries()
++        expected_cqs = [
++            {
++                'db': [
++                    {
++                        'name': 'test_cq',
++                        'query': 'CREATE CONTINUOUS QUERY test_cq ON db '
++                                 'BEGIN SELECT count(value) INTO '
++                                 'db.some_rp.events FROM db.autogen.events '
++                                 'GROUP BY time(10m) END'
++                    }
++                ]
++            }
++        ]
++        self.assertEqual(cqs, expected_cqs)
++
++    def test_drop_continuous_query(self):
++        """Test continuous query drop."""
++        self.test_create_continuous_query()
++        self.cli.drop_continuous_query('test_cq', 'db')
++        cqs = self.cli.get_list_continuous_queries()
++        expected_cqs = [{'db': []}]
++        self.assertEqual(cqs, expected_cqs)
++
+     def test_issue_143(self):
+         """Test for PR#143 from repo."""
+         pt = partial(point, 'a_series_name', timestamp='2015-03-30T16:16:37Z')
+diff --git a/setup.py b/setup.py
+index cd6e4e9b..d44875f6 100755
+--- a/setup.py
++++ b/setup.py
+@@ -42,7 +42,7 @@
+     tests_require=test_requires,
+     install_requires=requires,
+     extras_require={'test': test_requires},
+-    classifiers=(
++    classifiers=[
+         'Development Status :: 3 - Alpha',
+         'Intended Audience :: Developers',
+         'License :: OSI Approved :: MIT License',
+@@ -55,5 +55,5 @@
+         'Programming Language :: Python :: 3.6',
+         'Topic :: Software Development :: Libraries',
+         'Topic :: Software Development :: Libraries :: Python Modules',
+-    ),
++    ],
+ )
+diff --git a/tox.ini b/tox.ini
+index 2f9c212c..4a1921e2 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -1,21 +1,28 @@
+ [tox]
+-envlist = py27, py35, py36, pypy, pypy3, flake8, pep257, coverage, docs
++envlist = py27, py35, py36, py37, pypy, pypy3, flake8, pep257, coverage, docs
+ 
+ [testenv]
+ passenv = INFLUXDB_PYTHON_INFLUXD_PATH
+ setenv = INFLUXDB_PYTHON_SKIP_SERVER_TESTS=False
+ deps = -r{toxinidir}/requirements.txt
+        -r{toxinidir}/test-requirements.txt
+-       py27,py34,py35,py36: pandas==0.20.1
+-       py27,py34,py35,py36: numpy==1.13.3
++       py27: pandas==0.21.1
++       py27: numpy==1.13.3
++       py35: pandas==0.22.0
++       py35: numpy==1.14.6
++       py36: pandas==0.23.4
++       py36: numpy==1.15.4
++       py37: pandas==0.24.2
++       py37: numpy==1.16.2
+ # Only install pandas with non-pypy interpreters
++# Testing all combinations would be too expensive
+ commands = nosetests -v --with-doctest {posargs}
+ 
+ [testenv:flake8]
+ deps =
+   flake8
+   pep8-naming
+-commands = flake8 --ignore=W503,W504,W605,N802,F821 influxdb
++commands = flake8 influxdb
+ 
+ [testenv:pep257]
+ deps = pydocstyle
+@@ -26,19 +33,22 @@ deps = -r{toxinidir}/requirements.txt
+        -r{toxinidir}/test-requirements.txt
+        pandas
+        coverage
+-       numpy==1.13.3
++       numpy
+ commands = nosetests -v --with-coverage --cover-html --cover-package=influxdb
+ 
+ [testenv:docs]
+ deps = -r{toxinidir}/requirements.txt
+-       pandas==0.20.1
+-       numpy==1.13.3
+-       Sphinx==1.5.5
++       pandas==0.24.2
++       numpy==1.16.2
++       Sphinx==1.8.5
+        sphinx_rtd_theme
+ commands = sphinx-build -b html docs/source docs/build
+ 
+ [flake8]
+-ignore = N802,F821,E402
+-# E402: module level import not at top of file
++ignore = W503,W504,W605,N802,F821,E402
++# W503: Line break occurred before a binary operator
++# W504: Line break occurred after a binary operator
++# W605: invalid escape sequence
+ # N802: nosetests's setUp function
+ # F821: False positive in intluxdb/dataframe_client.py
++# E402: module level import not at top of file
+

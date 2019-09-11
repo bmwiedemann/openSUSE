@@ -1,0 +1,26 @@
+diff --git gasnet_tools.c gasnet_tools.c
+index 756c7ef..0883b2e 100644
+--- gasnet_tools.c
++++ gasnet_tools.c
+@@ -316,9 +316,6 @@ GASNETI_IDENT(gasnett_IdentString_ThreadModel, "$GASNetToolsThreadModel: " GASNE
+ 
+ GASNETI_IDENT(gasnett_IdentString_Config, "$GASNetToolsConfig: " GASNETT_CONFIG_STRING " $");
+ 
+-GASNETI_IDENT(gasnett_IdentString_BuildTimestamp, 
+-             "$GASNetBuildTimestamp: " __DATE__ " " __TIME__ " $");
+-
+ GASNETI_IDENT(gasnett_IdentString_BuildID, 
+              "$GASNetBuildId: " GASNETI_BUILD_ID " $");
+ GASNETI_IDENT(gasnett_IdentString_ConfigureArgs, 
+diff --git gasnet_trace.c gasnet_trace.c
+index 5d1225d..9c75cac 100644
+--- gasnet_trace.c
++++ gasnet_trace.c
+@@ -1063,7 +1063,6 @@ extern void gasneti_trace_init(int *pargc, char ***pargv) {
+   }
+ 
+   gasneti_tracestats_printf("GASNET_CONFIG_STRING: %s", GASNET_CONFIG_STRING);
+-  gasneti_tracestats_printf("GASNet build timestamp:   " __DATE__ " " __TIME__);
+   gasneti_tracestats_printf("GASNet configure args:    %s", GASNETI_CONFIGURE_ARGS);
+   gasneti_tracestats_printf("GASNet configure buildid: " GASNETI_BUILD_ID);
+   gasneti_tracestats_printf("GASNet system tuple:      " GASNETI_SYSTEM_TUPLE);

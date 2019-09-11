@@ -1,0 +1,172 @@
+-------------------------------------------------------------------
+Wed Aug 14 10:04:20 UTC 2019 - tchvatal@suse.com
+
+- Update to version 5.1.0~git20190420.22977b2:
+  * Switch to github service to collect all the CVE fixes as releases
+    are not really happening often
+  * bsc#1133384 CVE-2019-11498
+  * bsc#1141337 CVE-2019-1010315
+  * bsc#1141338 CVE-2019-1010318
+  * bsc#1141339 CVE-2019-1010317
+  * bsc#1141334 CVE-2019-1010319
+- Remove merged patches:
+  * CVE-2018-19840.patch
+  * CVE-2018-19841.patch
+  * CVE-2018-7253.patch
+  * CVE-2018-7254.patch
+  * wavpack-CVE-2018-6767.patch
+
+-------------------------------------------------------------------
+Mon Jan  7 19:29:45 CET 2019 - sbrabec@suse.com
+
+- Fix denial-of-service (resource exhaustion caused by an infinite
+  loop; bsc#1120930, CVE-2018-19840, CVE-2018-19840.patch).
+- Fix denial-of-service (out-of-bounds read and application crash;
+  bsc#1120929, CVE-2018-19841, CVE-2018-19841.patch).
+
+-------------------------------------------------------------------
+Tue Feb 20 08:48:07 UTC 2018 - kbabioch@suse.com
+
+- Added CVE-2018-7253.patch: Fixed a heap based buffer overread in
+  cli/dsdiff.c, which allowed remote attackers to cause DoS via
+  a specially crafted input file (CVE-2018-7253, bsc#1081692)
+
+- Added CVE-2018-7254.patch: Fixed a buffer overread in cli/caff.c,
+  which allowed remote attackers to cause DoS via a specially
+  crafted input file (CVE-2018-7254, bsc#1081693)
+
+-------------------------------------------------------------------
+Mon Feb 19 16:27:30 UTC 2018 - pmonrealgonzalez@suse.com
+
+- Security fix [bsc#1079746, CVE-2018-6767]
+  * Crafted wav file can trigger a stack buffer overflow when
+    parsing the file
+  * Added wavpack-CVE-2018-6767.patch
+
+-------------------------------------------------------------------
+Mon Nov 13 21:12:39 UTC 2017 - jengelh@inai.de
+
+- Compact description. Drop pointless --with-pic since no static
+  libs are built.
+
+-------------------------------------------------------------------
+Thu Nov  9 17:14:33 UTC 2017 - aavindraa@gmail.com
+
+- Update to version 5.1.0
+  * new: command-line tagging utility (wvtag)
+  * added: option to import ID3v2.3 tags from Sony DSF files
+  * fixed: fuzz test failures from AFL reported on SourceForge
+  * improved: DSD decimation filter (less HF rolloff & CPU use)
+  * fixed: non-byte audio depths (12-bit, 20-bit) not showing
+  * fixed: rare case of noise-shaping triggering a lossy mute
+  * fixed: recognize UTF-8 BOM when reading text files
+  * fixed: a few portability issues
+- Includes changes from 5.0.0:
+  * new: input formats (RF64, Wave64, and CAF)
+  * removed: support for legacy WavPack files (< 4.0)
+  * added: lossless DSD audio in Philips DSDIFF and Sony DSF files
+  * fixed: seeking in > 2GB WavPack files (new stream reader)
+  * fixed: accept > 4GB source audio files (all formats)
+  * improved: increase maximum samples from 2^32 to 2^40
+  * added: block checksums for robustness to corruption
+  * added: support for non-standard channel identities
+  * added: block decoder for streaming applications
+  * added: new pdf documentation
+- For other changes, see upstream:
+  * https://github.com/dbry/WavPack/blob/master/ChangeLog
+- cleanup with spec-cleaner
+- remove wavpack-fix_pkgconfig.patch, fixed upstream in:
+  * d440649aa113797a50e94285c8c037dc2ad7a5a9
+  * 779a2e62783acc6a46f75dd89359e95079ef708a
+  * 7846e95eb1c3fa97da41dfe96de532c2df5ad281
+- remove license.txt, use upstream copying file instead
+- Drop Requires, Provides and Obsoletes, as the SUSE versions they
+  were needed for are now EOL.
+
+-------------------------------------------------------------------
+Sat Jun 22 00:28:57 UTC 2013 - crrodriguez@opensuse.org
+
+- update to WavPack 4.70-beta (packaged as 4.60.99)
+* 4GB file support on 32-bit OS
+* memcpy() not always used correctly (Linux targets)
+* unsigned char issue (ARM targets)
+* use temporary files for safer overwriting
+
+
+-------------------------------------------------------------------
+Mon Feb 13 10:57:33 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Fri Nov 25 12:33:45 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Nov 25 12:33:27 UTC 2011 - coolo@suse.com
+
+- remove _service
+
+-------------------------------------------------------------------
+Sun Mar  6 21:12:12 UTC 2011 - reddwarf@opensuse.org
+
+- Add libwavpack1 to baselibs.conf
+
+-------------------------------------------------------------------
+Wed Dec  8 19:05:07 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Update to version 4.60.1
+ * fixed: filename specs in tag extractions failed in batch operations
+ * fixed: prevent creation of APEv2 tags > 1 MB (which we can't read)
+ * fixed: crash when decoding old WavPack files (pre version 4.0)
+ * added: man pages to build system and updated with newer options
+
+-------------------------------------------------------------------
+Fri Apr 30 08:57:13 CEST 2010 - meissner@suse.de
+
+- buildrequire pkgconfig
+
+-------------------------------------------------------------------
+Thu Sep  4 13:35:36 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 4.50.1:
+  * added dynamic noise shaping for improved hybrid quality
+  * added option to merge blocks of similar redundancy
+  * added ability to store and retrieve extra mode level
+  * improved bitrate calculation
+  * improved decoding of corrupt and nonconforming files
+  * added optimize storage of LossyWAV output files
+  * added transcoding API
+  * added metadata writing API
+  * added full Unicode support
+  * multichannel and 24-bit audio improvements
+  * portability and crash fixes
+
+-------------------------------------------------------------------
+Mon Aug 13 07:06:33 CEST 2007 - crrodriguez@suse.de
+
+- remove static libraries and useless libtool archive 
+
+-------------------------------------------------------------------
+Fri Jul 27 09:49:25 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 4.41.0:
+  * bug fixes
+  * improvements
+  * new features
+  * new optimization code
+  * for complete list of changes see ChangeLog
+- Split package according to shared library packaging policy.
+
+-------------------------------------------------------------------
+Thu Mar 29 11:20:58 CEST 2007 - sbrabec@suse.cz
+
+- "comparison is always false" warnings fix (David Bryant).
+
+-------------------------------------------------------------------
+Wed Mar 28 16:41:05 CEST 2007 - sbrabec@suse.cz
+
+- New SuSE package, version 4.40.0, based on work of Toni Graffy
+  <toni@links2linux.de>.
+

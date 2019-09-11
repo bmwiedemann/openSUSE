@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/bazelbuild/bazel-toolchains</param>
+              <param name="changesrevision">37419a124bdb9af2fec5b99a973d359b6b899b61</param></service></servicedata>

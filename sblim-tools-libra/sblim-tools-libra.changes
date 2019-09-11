@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Tue Mar 19 07:53:51 UTC 2013 - cfarrell@suse.com
+
+- license update: EPL-1.0
+  No indication of IPL or CPL licenses in the package
+
+-------------------------------------------------------------------
+Fri Mar  1 10:31:39 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Thu Jan 12 11:31:11 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Sun Nov 27 06:51:21 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Sep 15 08:37:39 UTC 2010 - kkaempf@novell.com
+
+- Fix RH/Fedora build
+
+-------------------------------------------------------------------
+Tue Feb  2 10:44:07 UTC 2010 - kkaempf@novell.com
+
+- Update to 1.0
+  * Change licensing from CPL to EPL
+  * maintenance release
+
+-------------------------------------------------------------------
+Wed Oct 22 16:17:36 CEST 2008 - mrueckert@suse.de
+
+- fix debug_packages_requires define
+
+-------------------------------------------------------------------
+Mon Aug 25 00:26:05 CEST 2008 - ro@suse.de
+
+- fix debug package requires
+
+-------------------------------------------------------------------
+Fri Aug  8 17:55:25 CEST 2008 - mmarek@suse.cz
+
+- don't use ./configure --docdir, needs too new autoconf
+
+-------------------------------------------------------------------
+Fri Aug  8 15:24:58 CEST 2008 - mmarek@suse.cz
+
+- packaged sblim-tools-libra-0.5.5 (fate#304337)
+

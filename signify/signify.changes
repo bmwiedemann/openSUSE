@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Thu Jul 25 15:27:50 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 26
+  * Provide a definition for the `__dead` marker when using GCC 4+
+    or Clang.
+  * Ensure that the prototype for `asprintf()` gets defined by
+    system headers.
+  * Silence (harmless) compiler warnings enabled in more recent
+    GCC/Clang releases when using `-Wall`.
+
+-------------------------------------------------------------------
+Wed May  8 19:44:28 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 25
+  * Updated to the latest upstream sources, the `-z` command line flag can
+    now be used to zero the timestamp when producing a signature.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sun Sep 23 10:22:02 UTC 2018 - AxelKoellhofer@web.de
+
+- updated to version 24
+  * Fixed memory corruption due to incorrect remapping of SHA-224, SHA-384,
+    and SHA-512-256 to incompatible counterparts in `compat.h`. Thanks to
+    Ori Bernstein for the bug report (#17) and Wolfgang Müller for submitting
+    the fix (#18).
+  * Bumped version of libbsd to 0.9.1 for bundling, which does not need
+    patching to work with Musl.
+
+-------------------------------------------------------------------
+Sun Dec 10 14:38:11 UTC 2017 - AxelKoellhofer@web.de
+
+- updated to version 23
+  * Fixed handling of the `errno` variable.
+
+-------------------------------------------------------------------
+Wed Aug 23 09:29:38 UTC 2017 - AxelKoellhofer@web.de
+
+- updated to version 22
+  * For systems using GNU libc 2.25 or newer, the version of `explicit_bzero()`
+    supplied by the C library is used by default instead of the bundled one.
+  * The bundled implementation of `explicit_bzero()` was changed, the old one
+    was likely to be inlined by the compiler.
+
+-------------------------------------------------------------------
+Mon Jun  5 21:25:06 UTC 2017 - AxelKoellhofer@web.de
+
+- initial package, version 21

@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Sat Apr 13 19:55:22 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20180102
+        * worked on tests
+
+-------------------------------------------------------------------
+Sun Oct  1 21:57:12 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~20170311
+	* worked on tests
+
+-------------------------------------------------------------------
+Wed Feb 15 19:02:54 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~20170107
+	* worked on tests
+
+-------------------------------------------------------------------
+Mon Jan  5 23:35:01 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150101
+	* 2015 update - minimal changes
+- update URL to the new github site
+- replace Source: field with fully defined URL
+- remove DL-URL comment
+- start using libcstring from OBS, not internal version
+
+-------------------------------------------------------------------
+Thu Aug 14 11:56:42 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to v0~20140105
+	* updated dependencies
+	* 2014 update
+
+-------------------------------------------------------------------
+Tue Jul 30 19:40:53 UTC 2013 - Greg.Freemyer@gmail.com
+
+- update to v0~20130609
+	* fix in .pc.in file
+	* updated dependencies
+	* 2013 update
+- change compression to gz to simplyfy download/convert step
+
+
+-------------------------------------------------------------------
+Wed Apr  3 22:32:00 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 0~20121224) for build.opensuse.org

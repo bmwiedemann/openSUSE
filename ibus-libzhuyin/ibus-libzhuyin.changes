@@ -1,0 +1,103 @@
+-------------------------------------------------------------------
+Tue Oct 23 08:21:32 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 1.8.92
+  * fixes easy symbol and user symbol
+  * update read method
+  * use model11.text.tar.gz
+  * translate input method name in ibus menu
+  * fixes cursor move
+  * fixes application shortcut issue
+  * fixes numpad issue
+
+-------------------------------------------------------------------
+Sun Oct  1 14:09:46 UTC 2017 - hillwood@opensuse.org
+
+- Update to 1.8.0
+  * fixes processCommit method.
+  * clean code.
+  * fixes a warning.
+- Use libpinyin 2.1.0
+- Remove invalid %post and %postun. 
+
+-------------------------------------------------------------------
+Sat Aug 26 14:19:53 UTC 2017 - jengelh@inai.de
+
+- Trim time-sensitive wording in summary.
+
+-------------------------------------------------------------------
+Tue Aug 22 07:53:19 UTC 2017 - hillwood@opensuse.org
+
+- Update to 1.7.91
+  * merge libzhuyin data.
+
+-------------------------------------------------------------------
+Tue Aug 22 03:18:50 UTC 2017 - hillwood@opensuse.org
+
+- Update to 1.7.10
+  * fix issue 31 - full width punctuation input with wrong symbol
+  * fix issue 32 - full/half width shortcut key switch with extra space output
+  * fix issue 33 - fixes full/half width symbol input problem
+
+-------------------------------------------------------------------
+Sat Sep 10 08:57:00 UTC 2016 - hillwood@opensuse.org
+
+- Update to 1.7.8
+  * fixes leak
+  * Fixes FallbackEditor
+  * fixes full punctuation in English mode
+  * use Shift-Space to toggle full English mode
+  * update class ZhuyinProperties
+  * update class ZhuyinConfig
+  * update main.py
+  * update setup UI
+  * combine two full/width modes into one mode
+  * fixes compile
+     
+
+-------------------------------------------------------------------
+Fri Dec 25 06:47:28 UTC 2015 - hillwood@linuxfans.org
+
+- Update to 1.7.6
+  * clean up getCursorRight method
+  * fixes getCursorRight and selectCandidate method
+  * fixes getCursorRight method
+  * fixes probe_section_start function
+  * fixes getCursorRight method
+  * fixes processSpace method
+  * fixes prepareCandidates method
+
+-------------------------------------------------------------------
+Wed Oct  8 14:21:37 UTC 2015 - hillwood@linuxfans.org
+
+- fix file list.
+
+-------------------------------------------------------------------
+Sun Aug 23 05:30:58 UTC 2015 - i@marguerite.su
+
+- update version 1.7.4
+  * add option - "Use Space Key to Show Candidates".
+  * add option - "Show Candidates After the Cursor".
+  * use zhuyin_valid_zhuyin_keys method.
+- changes in 1.7.1
+  * migrate setup dialog to python 3.x.
+  * support gnome-software.
+- drop ibus-libzhuyin-opencc-1_0_2-build.patch, upstreamed
+
+-------------------------------------------------------------------
+Wed Feb 25 06:57:23 UTC 2015 - hillwood@linuxfans.org
+
+- Use opencc 1.0.2
+  * add ibus-libzhuyin-opencc-1_0_2-build.patch
+
+-------------------------------------------------------------------
+Sun Nov  2 08:52:45 UTC 2014 - hillwood@linuxfans.org
+
+- Update to 1.6.99.20140929
+  * write updateLookupTableLabel method
+
+-------------------------------------------------------------------
+Sun Jul 13 14:28:09 UTC 2014 - i@marguerite.su
+
+- initial version 1.6.99.20140626
+

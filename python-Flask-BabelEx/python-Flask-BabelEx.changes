@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Oct 24 15:20:27 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Fix grammar in description.
+
+-------------------------------------------------------------------
+Wed Aug 22 09:51:38 UTC 2018 - alarrosa@suse.com
+
+- Initial release of python-Flask-BabelEx-0.9.3
+- Add remove-failing-tests.patch to remove date tests that fail

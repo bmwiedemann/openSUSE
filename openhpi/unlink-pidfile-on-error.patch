@@ -1,0 +1,12 @@
+Index: openhpi-3.8.0/openhpid/openhpid-posix.cpp
+===================================================================
+--- openhpi-3.8.0.orig/openhpid/openhpid-posix.cpp	2018-09-19 22:47:00.000000000 +0200
++++ openhpi-3.8.0/openhpid/openhpid-posix.cpp	2018-09-25 11:47:01.165511254 +0200
+@@ -439,6 +439,7 @@ int main(int argc, char *argv[])
+     INFO("Socket timeout(sec): %d.", sock_timeout);
+ 
+     if (oh_init()) { // Initialize OpenHPI
++	unlink(pidfile);
+         CRIT("There was an error initializing OpenHPI. Exiting.");
+         return 8;
+     }

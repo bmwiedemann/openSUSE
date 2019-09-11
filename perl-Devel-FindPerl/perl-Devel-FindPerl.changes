@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Thu Nov  8 06:16:01 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.015
+   see /usr/share/doc/packages/perl-Devel-FindPerl/Changes
+
+  0.015     2018-10-15 13:00:25+02:00 Europe/Amsterdam
+            Import splitpath before using it
+
+-------------------------------------------------------------------
+Tue Jun 16 08:28:16 UTC 2015 - coolo@suse.com
+
+- updated to 0.014
+   see /usr/share/doc/packages/perl-Devel-FindPerl/Changes
+
+  0.014     2015-06-15 23:53:25+02:00 Europe/Amsterdam
+            Properly quote exe_ext in regexp
+
+-------------------------------------------------------------------
+Mon Jun 15 08:37:08 UTC 2015 - coolo@suse.com
+
+- updated to 0.013
+   see /usr/share/doc/packages/perl-Devel-FindPerl/Changes
+
+  0.013     2015-06-14 19:50:03+02:00 Europe/Amsterdam
+            Skip taint test on portable perl
+            Various minor changes
+
+-------------------------------------------------------------------
+Mon Nov 25 07:38:03 UTC 2013 - coolo@suse.com
+
+- updated to 0.012
+         Minor fixes in tests
+         Fix other environmental variables in tainted mode.
+         Add a non-empty PATH, to make *bsd happy
+         Compare configuration case-insensitively, to make Windows happy
+         find_perl_interpreter now return an array
+         Always empty $ENV{PATH} before open2
+         Append executable extension to expected tainted path
+         Soften dependency on ExtUtils::Config
+         Rewrite tests not to depend on Capture::Tiny
+         Export perl_is_same
+         Handle tainting better
+
+-------------------------------------------------------------------
+Wed Jul 31 11:44:44 UTC 2013 - coolo@suse.com
+
+- initial package 0.006
+    * created by cpanspec 1.78.06
+

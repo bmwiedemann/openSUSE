@@ -1,0 +1,548 @@
+-------------------------------------------------------------------
+Tue May 21 13:05:05 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
+
+- add SUSE-Public-Domain licence as some parts of xz utils (liblzma,
+  xz, xzdec, lzmadec, documentation, translated messages, tests,
+  debug, extra directory) are in public domain licence [bsc#1135709]
+
+-------------------------------------------------------------------
+Fri Jun 15 11:11:38 UTC 2018 - astieger@suse.com
+
+- xz 5.2.4:
+  * liblzma:
+    - Allow 0 as memory usage limit instead of returning
+      LZMA_PROG_ERROR. Now 0 is treated as if 1 byte was specified,
+      which effectively is the same as 0.
+    - Use "noexcept" keyword instead of "throw()" in the public
+      headers when a C++11 (or newer standard) compiler is used.
+    - Added a portability fix for recent Intel C Compilers.
+  * xz:
+    - Fix "xz --list --robot missing_or_bad_file.xz" which would
+      try to print an unitialized string and thus produce garbage
+      output. Since the exit status is non-zero, most uses of such
+      a command won't try to interpret the garbage output.
+    - "xz --list foo.xz" could print "Internal error (bug)" in a
+      corner case where a specific memory usage limit had been set.
+
+-------------------------------------------------------------------
+Mon Mar 19 15:41:58 CET 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Mon Jul 10 10:50:01 UTC 2017 - jengelh@inai.de
+
+- % needs to be encoded in description; adjust weird indent there
+  as well. Expand LZMA in summaries.
+
+-------------------------------------------------------------------
+Fri Jun 30 18:25:33 UTC 2017 - olaf@aepfle.de
+
+- Really use the selfdefined CFLAGS during build to fix build
+
+-------------------------------------------------------------------
+Sun Jun 25 11:37:03 UTC 2017 - astieger@suse.com
+
+- fix CentOS/RHEL builds after clean-up
+
+-------------------------------------------------------------------
+Wed Jun 21 14:11:44 UTC 2017 - mpluskal@suse.com
+
+- Simplify spec file conditions
+- Clenup profiled building
+- Use full lists of files
+
+-------------------------------------------------------------------
+Tue Feb 21 09:03:18 UTC 2017 - adrian@suse.de
+
+- enable static package by default.
+  Needed for AppImageKit
+
+-------------------------------------------------------------------
+Sat Dec 31 22:17:33 UTC 2016 - astieger@suse.com
+
+- xz 5.2.3:
+  * xz: always close a file before trying to delete it to avoid
+    problems on some operating system and file system combinations.
+  * C99/C11 conformance fixes to liblzma. The issues affected at
+    least some builds using link-time optimizations.
+  * Fixed bugs in the rarely-used function lzma_index_dup().
+  * Use of external SHA-256 code is now disabled by default.
+    It can still be enabled by passing --enable-external-sha256
+  * Changed CPU core count detection to use sched_getaffinity() on
+    GNU/Linux and GNU/kFreeBSD.
+  * Fixes to the build-system
+
+-------------------------------------------------------------------
+Sun Mar 13 09:40:51 UTC 2016 - mpluskal@suse.com
+
+- Install xznew with correct permissions (boo#970842)
+
+-------------------------------------------------------------------
+Sun Feb 14 09:21:33 UTC 2016 - tchvatal@suse.com
+
+- Do not split out lang_package conditional, used in sle10 out of support
+
+-------------------------------------------------------------------
+Tue Nov 10 14:34:14 UTC 2015 - hpj@urpla.net
+
+- fix conversion: spell the missed parts correctly
+
+-------------------------------------------------------------------
+Sun Nov  8 13:09:53 UTC 2015 - hpj@urpla.net
+
+- add xznew{,.1}, converted from bznew
+
+-------------------------------------------------------------------
+Tue Sep 29 21:28:21 UTC 2015 - astieger@suse.com
+
+- xz 5.2.2:
+  * Omitted the use of pipe2() even if it is available to avoid
+    portability issues with some old Linux and glibc combinations
+  * Updated German translation
+  * Documented that threaded decompression is not implemented yet
+
+-------------------------------------------------------------------
+Fri Feb 27 18:48:48 UTC 2015 - astieger@suse.com
+
+- xz 5.2.1:
+  * Fixed a compression-ratio regression in fast mode of LZMA1 and
+    LZMA2.
+
+-------------------------------------------------------------------
+Wed Jan 21 11:21:32 UTC 2015 - rguenther@suse.com
+
+- Avoid running configure twice and using -fprofile-generate or
+  -fprofile-use for compiling configure tests when profiling.
+
+-----------------------------------------------------------------
+Thu Dec 25 20:23:28 UTC 2014 - andreas.stieger@gmx.de
+
+- xz 5.2.0:
+  * liblzma:
+    - Added support for multi-threaded compression
+    - Made the uses of lzma_allocator const correct.
+    - Added lzma_block_uncomp_encode() to create uncompressed
+      .xz Blocks using LZMA2 uncompressed chunks.
+    - Added support for LZMA_IGNORE_CHECK.
+    - A few speed optimizations were made.
+    - Added support for symbol versioning. It is enabled by default
+      on GNU/Linux, other GNU-based systems, and FreeBSD.
+  * xz:
+    - Fixed a race condition in the signal handling
+    - Multi-threaded decompression can be enabled with the
+      --threads (-T) option.
+    - New command line options in xz: --single-stream,
+      --block-size=SIZE, --block-list=SIZES,
+      --flush-timeout=TIMEOUT, and --ignore-check.
+    - xz -lvv now shows the minimum xz version that is required to
+       decompress the file. Currently it is 5.0.0 for all supported
+      .xz files except files with empty LZMA2 streams require 5.0.2.
+  * xzdiff and xzgrep now support .lzo files if lzop is installed.
+    The .tzo suffix is also recognized as a shorthand for .tar.lzo.
+
+-------------------------------------------------------------------
+Thu Dec 25 20:17:06 UTC 2014 - andreas.stieger@gmx.de
+
+- xz 5.0.8:
+  * Fixed an old bug in xzgrep that affected OpenBSD and probably
+    a few other operating systems too.
+  * Updated French and German translations.
+  * Minor build system update
+
+-------------------------------------------------------------------
+Fri Dec 19 09:43:36 UTC 2014 - meissner@suse.com
+
+- build with PIE support.
+
+-------------------------------------------------------------------
+Thu Dec 18 19:37:09 UTC 2014 - crrodriguez@opensuse.org
+
+- Build XZ with full RELRO. 
+
+-------------------------------------------------------------------
+Tue Sep 23 00:11:27 UTC 2014 - andreas.stieger@gmx.de
+
+- xz 5.0.7:
+  * Fix regressions introduced in 5.0.6:
+    - Fix building with non-GNU make.
+    - Fix invalid Libs.private value in liblzma.pc which broke
+      static linking against liblzma if the linker flags were
+      taken from pkg-config.
+- include changes from 5.0.6:
+  * xzgrep now exits with status 0 if at least one file matched.
+  * A few minor portability and build system fixes
+
+-------------------------------------------------------------------
+Sun Nov 24 16:25:53 UTC 2013 - andreas.stieger@gmx.de
+
+- add optional -static-devel library package, intended to publish pixz for
+  CentOS / RHEL, default off
+
+-------------------------------------------------------------------
+Wed Oct 16 08:53:16 UTC 2013 - mvyskocil@suse.com
+
+- Use gzipped archive to prevent a build cycle on older targets
+  * http://lists.opensuse.org/opensuse-buildservice/2013-10/msg00079.html
+- Add a signature and keyring file for source verification
+  * not enable in spec due bootstrapping issues
+
+-------------------------------------------------------------------
+Tue Jul 16 13:52:16 UTC 2013 - idonmez@suse.com
+
+- Update to version 5.0.5
+  * lzmadec and liblzma's lzma_alone_decoder(): Support decompressing
+    .lzma files that have less common settings in the headers
+    (dictionary size other than 2^n or 2^n + 2^(n-1), or uncompressed
+    size greater than 256 GiB).
+  * xz:
+    - Fixes and improvements to error handling.
+    - Various fixes to the man page.
+  * xzless: Fixed to work with "less" versions 448 and later
+  * xzgrep: Made -h an alias for --no-filename.
+
+-------------------------------------------------------------------
+Tue Jan 29 17:28:51 UTC 2013 - guillaume@opensuse.org
+
+- Disable profiling for aarch64 arch
+
+-------------------------------------------------------------------
+Tue Nov 27 11:10:13 UTC 2012 - sweet_f_a@gmx.de
+
+- Update to version 5.0.4
+  * liblzma:
+    - Fix lzma_index_init(). It could crash if memory allocation
+      failed.
+    - Fix the possibility of an incorrect LZMA_BUF_ERROR when a BCJ
+      filter is used and the application only provides exactly as
+      much output space as is the uncompressed size of the file.
+    - Fix a bug in doc/examples_old/xz_pipe_decompress.c. It didn't
+      check if the last call to lzma_code() really returned
+      LZMA_STREAM_END, which made the program think that truncated
+      files are valid.
+    - New example programs in doc/examples (old programs are now in
+      doc/examples_old). These have more comments and more detailed
+      error handling.
+  * Fix "xz -lvv foo.xz". It could crash on some corrupted files.
+  * Fix output of "xz --robot -lv" and "xz --robot -lvv" which
+    incorrectly printed the filename also in the "foo (x/x)" format.
+  * Fix exit status of "xzdiff foo.xz bar.xz".
+  * Fix exit status of "xzgrep foo binary_file".
+  * Fix portability to EBCDIC systems.
+  * Fix a configure issue on AIX with the XL C compiler. See INSTALL
+    for details.
+  * Update French, German, Italian, and Polish translations
+
+-------------------------------------------------------------------
+Sun Jul 29 17:52:57 UTC 2012 - jengelh@inai.de
+
+- Disable profiling on SPARC due to compiler bug [gcc #54121]
+
+-------------------------------------------------------------------
+Fri Jul  6 10:18:06 UTC 2012 - sweet_f_a@gmx.de
+
+- correct license "LGPL-2.1+ and GPL-2.0+" (bnc#770195)
+
+-------------------------------------------------------------------
+Sun Feb 12 23:37:44 UTC 2012 - crrodriguez@opensuse.org
+
+- Put libraries back in %{_libdir}, /usr merge project. 
+
+-------------------------------------------------------------------
+Sun Oct  9 15:25:02 UTC 2011 - sweet_f_a@gmx.de
+
+- rewrite last broken arm portability changes
+
+-------------------------------------------------------------------
+Fri Sep 30 20:31:59 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix build in armv5el doesnt like profiling 
+
+-------------------------------------------------------------------
+Tue Sep 27 13:05:34 UTC 2011 - sweet_f_a@gmx.de
+
+- minor fixes of last portability changes:
+  * decouple do_profiling and lang_package again
+  * don't define do_factory, just use lang_package instead
+  * simplify files section
+  * do_profiling for some more systems
+
+-------------------------------------------------------------------
+Mon Sep 26 15:59:51 UTC 2011 - coolo@suse.com
+
+- build on SLE_10
+
+-------------------------------------------------------------------
+Sat Sep 17 15:19:50 UTC 2011 - coolo@suse.com
+
+- remove _service, too fragile
+
+-------------------------------------------------------------------
+Fri Sep 16 16:37:32 UTC 2011 - jengelh@medozas.de
+
+- Add xz-devel to baselibs
+- Remove redundant sections
+
+-------------------------------------------------------------------
+Tue Jun 14 18:04:53 CEST 2011 - dmueller@suse.de
+
+- add recommends xz-lang
+
+-------------------------------------------------------------------
+Wed Jun  8 19:25:51 UTC 2011 - coolo@novell.com
+
+- Update to version 5.0.3
+    * liblzma fixes:
+
+        - A memory leak was fixed.
+
+        - lzma_stream_buffer_encode() no longer creates an empty .xz
+          Block if encoding an empty buffer. Such an empty Block with
+          LZMA2 data would trigger a bug in 5.0.1 and older (see the
+          first bullet point in 5.0.2 notes). When releasing 5.0.2,
+          I thought that no encoder creates this kind of files but
+          I was wrong.
+
+        - Validate function arguments better in a few functions. Most
+          importantly, specifying an unsupported integrity check to
+          lzma_stream_buffer_encode() no longer creates a corrupt .xz
+          file. Probably no application tries to do that, so this
+          shouldn't be a big problem in practice.
+
+        - Document that lzma_block_buffer_encode(),
+          lzma_easy_buffer_encode(), lzma_stream_encoder(), and
+          lzma_stream_buffer_encode() may return LZMA_UNSUPPORTED_CHECK.
+
+        - The return values of the _memusage() functions are now
+          documented better.
+
+    * Fix command name detection in xzgrep. xzegrep and xzfgrep now
+      correctly use egrep and fgrep instead of grep.
+
+    * French translation was added.
+
+-------------------------------------------------------------------
+Thu Apr  7 20:43:05 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to version 5.0.2
+    * LZMA2 decompressor now correctly accepts LZMA2 streams with no
+      uncompressed data. Previously it considered them corrupt. The
+      bug can affect applications that use raw LZMA2 streams. It is
+      very unlikely to affect .xz files because no compressor creates
+      .xz files with empty LZMA2 streams. (Empty .xz files are a
+      different thing than empty LZMA2 streams.)
+
+    * "xz --suffix=.foo filename.foo" now refuses to compress the
+      file due to it already having the suffix .foo. It was already
+      documented on the man page, but the code lacked the test.
+
+    * "xzgrep -l foo bar.xz" works now.
+
+    * Polish translation was added. 
+
+-------------------------------------------------------------------
+Fri Mar  4 17:54:21 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to version 5.0.1
+*  Fix --force on setuid/setgid/sticky and multi-hardlink files.
+*  Add alloc_size and malloc attributes to a few functions.
+*  Fix gzip and bzip2 support in xzdiff
+
+-------------------------------------------------------------------
+Tue Dec  7 18:47:04 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Use compiler profile information, makes xz marginally faster
+  (around 1-2 secs)
+
+-------------------------------------------------------------------
+Sat Oct 30 20:17:49 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Thu Oct 28 09:18:47 UTC 2010 - coolo@novell.com
+
+- adapt baselibs.conf
+
+-------------------------------------------------------------------
+Wed Oct 27 00:28:26 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Update to 5.0.0 final
+  * The major soname has been bumped to 5.0.0. liblzma API and ABI
+    are now stable.
+  * The memory usage limit is now disabled by default
+  * Added support for XZ_DEFAULTS environment variable
+  * The compression settings associated with the preset levels
+    have been changed,they are now less likely to make compression worse.
+  * Support for "xz --list" was added 
+
+-------------------------------------------------------------------
+Sat Apr 24 11:38:25 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Sat Dec 12 18:40:53 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Fri Sep  4 11:53:41 CEST 2009 - coolo@novell.com
+
+- update to 4.999.9beta
+  * only some polishment above the git snapshot I took
+
+-------------------------------------------------------------------
+Sun Aug 23 14:50:09 CEST 2009 - coolo@novell.com
+
+- borrow %check section from fedora spec
+
+-------------------------------------------------------------------
+Thu Aug 20 15:51:47 CEST 2009 - coolo@novell.com
+
+- update to latest git (5.0 still not released)
+ * a xz man page (bnc#505969)
+ * fix data corruption in LZ/LZMA2 encoder.
+ * major documentation update
+ * install lzdiff, lzgrep, and lzmore as symlinks
+ * make the default memory usage limit 40 % of RAM for both
+   compressing and decompressing.
+ * fixed a crash in liblzma
+ See git://ctrl.tukaani.org/xz.git for more
+
+-------------------------------------------------------------------
+Sun Jun  7 19:39:45 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries, see bnc#509945 for details 
+
+-------------------------------------------------------------------
+Sun Feb 22 18:37:26 CET 2009 - ro@suse.de
+
+- added baselibs.conf (for rpm-32bit) 
+
+-------------------------------------------------------------------
+Mon Feb 16 10:59:51 CET 2009 - coolo@suse.de
+
+- use bzip payload, so users are able to install new rpm on old systems
+
+-------------------------------------------------------------------
+Wed Feb 11 12:44:41 CET 2009 - coolo@suse.de
+
+- fix devel symlink
+
+-------------------------------------------------------------------
+Fri Feb  6 13:50:53 CET 2009 - schwab@suse.de
+
+- Update to xz-4.999.8beta.
+  See git://ctrl.tukaani.org/lzma-utils.git.
+
+-------------------------------------------------------------------
+Wed Jan  7 10:26:30 CET 2009 - schwab@suse.de
+
+- Update to xz-4.999.7beta.
+  See git://ctrl.tukaani.org/lzma-utils.git.
+- Rename to xz.
+
+-------------------------------------------------------------------
+Wed Jul 30 13:53:18 CEST 2008 - schwab@suse.de
+
+- Update to lzma-4.32.7.
+  * If "lzma -t" is run on a corrupt file or interrupted by a signal,
+    don't unlink /dev/null.
+
+  * Partial fix to race conditions where a signal could make lzma to
+    unlink both the source and destination files. Now it cannot lose
+    data anymore, but with bad luck an incomplete file may be left
+    on the disk.
+
+-------------------------------------------------------------------
+Wed May 14 22:04:25 CEST 2008 - schwab@suse.de
+
+- Update to lzma-4.32.6.
+  * Always use 32-bit integer to hold probability variables. Earlier,
+    these were 64-bit on 64-bit architectures, which hurt cache
+    efficiency in the CPU, and thus performance of LZMA. 32-bit
+    architectures are not affected by this change.
+  * Fix a theoretical data corruption bug in the LZMA encoder. It is
+    about overflowing a 32-bit integer, whose typical value stays below
+    five. I don't know if it is actually possible to construct to a file
+    that could make it overflow. Even if it were possible, it would "only"
+    make the output file corrupt so that it is 4 GiB too small; there
+    are no other security risks. Now the integer is 64-bit to be sure
+    it won't overflow.
+  * Add support for copying timestamps on operating systems that support
+    setting timestamps only by filename, not by file descriptor.
+  * Several portability fixes were made.
+
+-------------------------------------------------------------------
+Fri May  9 11:51:42 CEST 2008 - schwab@suse.de
+
+- Revert last changes.
+
+-------------------------------------------------------------------
+Tue May  6 22:36:09 CEST 2008 - bk@suse.de
+
+- ci removed #neededforbuild while mbuild converts to BuildRequires
+- bzip2 source to save space (not lzma, so it can be built in <11.0)
+
+-------------------------------------------------------------------
+Tue May  6 14:24:02 CEST 2008 - bk@suse.de
+
+- run the package-provided self-test by adding a call to 'make check'
+- use %configure instead of equivalent configure call with options
+- improved to allow building in SLES and non-SUSE repositories, eg:
+  - replace obsolete nostatic patch with check for static objects
+  - use more generic wildcards in the file list for manual pages
+
+-------------------------------------------------------------------
+Mon Feb  4 19:20:31 CET 2008 - schwab@suse.de
+
+- Fix installation.
+
+-------------------------------------------------------------------
+Mon Feb  4 13:32:06 CET 2008 - schwab@suse.de
+
+- Update to lzma-4.32.5.
+  * The percentage shown when --verbose is used, works again. Also some
+    typos were fixed from the messages printed by --verbose.
+  * Several small portability fixes were made.
+
+-------------------------------------------------------------------
+Fri Jan  4 07:12:26 CET 2008 - crrodriguez@suse.de
+
+- Version 4.32.4
+  * Ignore command line switch --format=alone. This way current scripts
+    can be written so that they will produce LZMA_Alone format files
+    even with the new command line tool once it is finishes along with
+    liblzma.
+  * The command line tool now tells if the user tries to decode files
+    in the new .lzma format. The message recommends upgrading to newer
+    LZMA Utils.
+  * Added some internal consistency checks to liblzmadec, so that it
+    doesn't crash if given lzmadec_stream whose initialization failed.
+    Some applications using zlib and libbzip2 don't check if
+    initialization was successful, and expect that error gets caught
+    safely later.
+- disable static libraries
+- remove liblzmadec.la that has empty dependency_libs
+- do not link utils statically
+
+-------------------------------------------------------------------
+Mon Dec  3 14:12:12 CET 2007 - dmueller@suse.de
+
+- update to 4.32.3:
+  * rare file content loss bugs fixed (did not check for error upon close())
+  * permissions copying fixed
+- testsuited switched partially to GPLv3
+- fix library package name
+
+-------------------------------------------------------------------
+Thu Oct 11 14:52:41 CEST 2007 - schwab@suse.de
+
+- Fix missing include.
+
+-------------------------------------------------------------------
+Wed Oct 10 14:56:31 CEST 2007 - schwab@suse.de
+
+- Initial version 4.32.0beta5.
+

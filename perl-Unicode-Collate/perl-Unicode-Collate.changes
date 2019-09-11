@@ -1,0 +1,283 @@
+-------------------------------------------------------------------
+Fri Apr 13 05:01:44 UTC 2018 - werner@suse.de
+
+- updated to 1.25
+   see /usr/share/doc/packages/perl-Unicode-Collate/Changes
+
+1.25  Wed Nov 22 20:48:48 2017
+    - Makefile.PL: [rt.cpan.org #123631] Switch Unicode::Collate to XSLoader
+
+1.24  Sun Nov 19 22:06:03 2017
+    - xs: [rt.cpan.org #123631] Switch Unicode::Collate to XSLoader
+
+1.23  Mon Nov 13 19:10:28 2017
+    - Now UCA_Version 36 (for Unicode 10.0.0) is supported.
+      * But the default UCA_Version is still 34.
+    - added nushu.t in t.
+
+1.22  Sat Nov 11 10:53:35 2017
+    - internal: someone suggests using 'exists' for checking the truth of
+      $collator->{mapping}{$variable} and $collator->{maxlength}{$variable},
+      where $variable may stand for codepoints whose mapping is not defined;
+      though such a problem was not reproduced on my environment.
+
+1.21  Sat Nov  4 10:49:19 2017
+    - mklocale: [rt.cpan.org #121664] . removed from @INC (take 2)
+    - DUCET is updated (for Unicode 9.0.0) as Collate/allkeys.txt.
+    - The default UCA_Version is 34.
+    - added tangut.t in t.
+    - Locale/*.pl and CJK/Korean.pm are updated.
+
+1.20  Fri Nov  3 11:50:21 2017
+    - XS: [rt.cpan.org #121664] . removed from @INC
+    - U::C::Locale newly supports locales: dsb, lkt.
+
+- Remove patch no-dot-inc.patch as now upstream
+
+-------------------------------------------------------------------
+Sun Sep 24 06:55:18 UTC 2017 - coolo@suse.com
+
+- add no-dot-inc.patch to compile with perl 5.26
+  (https://rt.cpan.org/Public/Bug/Display.html?id=121664)
+
+-------------------------------------------------------------------
+Sat Dec  3 07:23:47 UTC 2016 - coolo@suse.com
+
+- updated to 1.19
+   see /usr/share/doc/packages/perl-Unicode-Collate/Changes
+
+  1.19  Sat Dec  3 09:32:31 2016
+      - U::C::Locale newly supports locales: he, vo.
+      - locales updated to CLDR 24: az, haw.
+      - locale updated to CLDR 26: et.
+
+-------------------------------------------------------------------
+Fri Nov 11 07:29:54 UTC 2016 - coolo@suse.com
+
+- updated to 1.18
+   see /usr/share/doc/packages/perl-Unicode-Collate/Changes
+
+  1.18  Sat Nov  5 21:14:35 2016
+      - U::C::Locale newly supports locale: de_AT_phonebook.
+      - locales updated to CLDR 23: as, ca.
+      - removed locale fr (French) other than Canadian according to CLDR 1.9.0.
+  
+  1.17  Wed Oct 26 21:46:12 2016
+      - DUCET is updated (for Unicode 8.0.0) as Collate/allkeys.txt.
+        * Please notice that allkeys.txt will be overwritten if you have had
+          other allkeys.txt already.
+      - The default UCA_Version is 32.
+      - U+9FCD..U+9FD5 and U+2B820..U+2CEA1 are new CJK unified ideographs.
+      - Cyrillic contractions except SHORT I are removed from DUCET.
+        * modified locales: be, bs_Cyrl, kk, mk, sr, uk.
+        * removed locales: bg, ru.
+      - Locale/*.pl and CJK/Korean.pm are updated.
+  
+  1.16  Mon Oct 24 21:31:12 2016
+      - modified tests for the Cyrillic script before updating DUCET:
+        loc_be.t, loc_kk.t, loc_mncy.t, loc_ru.t, loc_uk.t.
+
+-------------------------------------------------------------------
+Sun Oct 23 06:33:00 UTC 2016 - coolo@suse.com
+
+- updated to 1.15
+   see /usr/share/doc/packages/perl-Unicode-Collate/Changes
+
+  1.15  Sat Oct 22 08:36:07 2016
+      - U::C::Locale newly supports locale: ug_Cyrl.
+        cf. [rt.cpan.org #117512]
+      - added loc_mncy.t, loc_ugcy.t in t.
+      - modified tests for the Cyrillic script: loc_be.t, loc_bg.t, loc_bscy.t,
+        loc_kk.t, loc_mk.t, loc_ru.t, loc_sr.t, loc_uk.t.
+
+-------------------------------------------------------------------
+Sun Jul 12 09:06:42 UTC 2015 - coolo@suse.com
+
+- updated to 1.14
+   see /usr/share/doc/packages/perl-Unicode-Collate/Changes
+
+  1.14  Sat Jul 11 13:20:03 2015
+      - [rt.cpan.org #105621]
+        mklocale fails because it creates Locale direcory without executable bit
+  
+  1.13  Sat Jul 11 12:13:50 2015
+      - something to remove 'use Unicode::Collate' from CJK/Korean.pm
+        cf. [rt.cpan.org #105791]
+
+-------------------------------------------------------------------
+Tue Apr 14 18:30:48 UTC 2015 - coolo@suse.com
+
+- updated to 1.12
+   see /usr/share/doc/packages/perl-Unicode-Collate/Changes
+
+  1.12  Mon Mar 16 20:21:15 2015
+      - XS: [rt.cpan.org #102663] IRIX 6.5 failures with Unicode::Collate
+        (porting: avoid non-zero values in the initializer of an array)
+  
+  1.11  Tue Feb 17 21:23:03 2015
+      - XS: [rt.cpan.org #102024] remove extranous const casting
+  
+  1.10  Thu Jan 15 21:37:58 2015
+      - XS: const &c [rt.cpan.org #101170] [PATCH]
+      - Makefile.PL: [rt.cpan.org #101500] [PATCH]
+  
+  1.09  Thu Dec 18 21:39:18 2014
+      - XS: a workaround for perl 5.6.x to handle noncharacters U+FFFF etc.
+        is abandoned. Perl 5.8.0 or later is recommended for handling these
+        noncharacters.
+  
+  1.08  Sat Dec  6 20:12:55 2014
+      - DUCET is updated (for Unicode 7.0.0) as Collate/allkeys.txt.
+      ! Please notice that allkeys.txt will be overwritten if you have had
+        other allkeys.txt already.
+      - The default UCA_Version is 30.
+      - *.pl and *.pm are updated so that they have same the version number.
+  
+  1.07  Tue May 27 23:18:23 2014
+      - XS: for the world without utf8n_to_uvuni().
+  
+  1.06  Tue May 27 21:11:09 2014
+      - 0.67's improved discontiguous contractions is invalidated by default
+        and is supported as a parameter 'long_contraction.'
+  
+  1.05  Sat May 24 16:30:42 2014
+      - XS: avoid unused expression 1; for no-op.
+        (see [rt.cpan.org #95866] compilation noise)
+  
+  1.04  Sat Dec  7 11:34:18 2013
+      - XS: a workaround for perl 5.6.x to handle U+FFFF correctly.
+        unpack_U() is implemented by using XS again as well as that in 1.02,
+        but now that is used only in the versions before perl 5.8.0.
+  
+  1.03  Sun Dec  1 21:45:46 2013
+      - XS: now unpack_U() uses unpack('U*') in pure perl.
+        avoid XS for the internal "utf8" encoding of perl.
+  
+  1.02  Sun Nov 10 18:39:37 2013
+      - POD: fix [rt.cpan.org #90170] about iso-8859-1 letters in pod.
+        E<> is used for the compatibility with perl 5.6.1 and possibly EBCDIC.
+      - 1.01 forgot to increase the version number of CJK/Korean.pm.
+      - modified tests: cjkrange.t, compatui.t, hangtype.t, illegal.t,
+        loc_ja.t, loc_ta.t, overcjk0.t, overcjk1.t, view.t in t.
+  
+  1.01  Sat Nov  2 19:00:38 2013
+      - DUCET is updated (for Unicode 6.3.0) as Collate/allkeys.txt.
+      ! Please notice that allkeys.txt will be overwritten if you have had
+        other allkeys.txt already.
+      - The default UCA_Version is 28.
+      - Locale/*.pl (except fr.pl) and CJK/Korean.pm are updated.
+      - modified tests: loc_es.t, loc_estr.t, rewrite.t, version.t in t.
+  
+  1.00  Sun Oct 27 13:22:17 2013
+      - When a subroutine by 'overrideOut' taking a out-of-range value and
+        returning undef, now the value is treated as if it were U+FFFD.
+        * 0.99 wrongly calculates implicit weights based on out-of-range values.
+      - Assertion using unpack 'U' is added. If not only pack('U') but also
+        unpack('U') of CORE:: don't work as expected, this module will die.
+  
+  0.99  Sun Sep  1 12:46:14 2013
+      - by default out-of-range values are treated as if it were U+FFFD
+        when UCA_Version >= 22.
+      - supported overriding out-of-range values (see 'overrideOut' in POD).
+      - modified tests: override.t, illegal.t in t.
+  
+  0.98  Sat Jun 15 19:44:06 2013
+      - typo (see [rt.cpan.org #85655] typo fixes)
+  
+  0.97  Sat Dec 22 14:25:50 2012
+      - bug fix: XS of 0.96 (if UCA_Version is 9 to 11) wrongly referred to
+        DUCET for completely ignorable characters, even though the collator
+        doesn't use DUCET.
+      - separated t/notable.t from t/test.t.
+  
+  0.96  Sat Dec 15 19:43:10 2012
+      - special noncharancter tailorings ('highestFFFF' and 'minimalFFFE')
+        * some locales are modified for 'highestFFFF': as, bn, fa, gu, hi, hy,
+          kn, kok, mr, or, sa, si, si_dict, ta, te, th, ur.
+      - U::C::Locale now allows 'entry' to add or override mappings.
+      - bug fix: using DUCET through XS wrongly prevented completely ignorable
+        characters from tailoring.
+      - modified tests: default.t, loc_as.t, loc_bn.t, loc_fa.t, loc_gu.t,
+        loc_hi.t, loc_hy.t, loc_kn.t, loc_kok.t, loc_mr.t, loc_or.t, loc_sa.t,
+        loc_si.t, loc_sidt.t, loc_ta.t, loc_te.t, loc_test.t, loc_th.t,
+        loc_ur.t, nonchar.t in t.
+  
+  0.95  Sat Dec  8 15:11:09 2012
+      - U::C::Locale newly supports locales: bs_Cyrl, ee.
+      - updated to CLDR 21: uk.
+      - updated to CLDR 22: th, to.
+      - added loc_bscy.t, loc_ee.t in t.
+      - modified tests: loc_th.t, loc_to.t, loc_uk.t in t.
+  
+  0.94  Fri Nov 23 18:45:53 2012
+      - U::C::Locale newly supports locale: zh__zhuyin.
+      - added Unicode::Collate::CJK::Zhuyin for zh__zhuyin.
+      - doc: added CAVEAT to CJK/Stroke.pm
+      - modified tests: loc_cjk.t, loc_cjkc.t in t.
+      - added cjk_zy.t, loc_zhzy.t in t.
+  
+  0.93  Sun Nov 18 18:13:42 2012
+      - DUCET is updated (for Unicode 6.2.0) as Collate/allkeys.txt.
+      ! Please notice that allkeys.txt will be overwritten if you have had
+        other allkeys.txt already.
+      - The default UCA_Version is 26.
+      - Locale/*.pl (except fr.pl) and CJK/Korean.pm are updated.
+      - modified tests: loc_es.t, loc_estr.t, version.t in t.
+  
+  0.92  Wed Nov 14 20:58:19 2012
+      - fix: index() etc. with preprocess/normalization should be always croaked.
+      - doc: referred to the latest UTS #10 and updated its section numbers.
+      - supported the identical level (see 'identical' in POD).
+      - Now UCA_Version 26 (for Unicode 6.2.0) is supported.
+        * But the default UCA_Version is still 24.
+      - added ident.t in t.
+      - modified tests: cjkrange.t, compatui.t, hangtype.t, index.t,
+        overcjk0.t, overcjk1.t, test.t, view.t in t.
+  
+  0.91  Sun Nov  4 17:00:20 2012
+      - XSUB: use PERL_NO_GET_CONTEXT (see perlguts)
+        (see [rt.cpan.org #80313])
+  
+  0.90  Sun Sep 23 10:42:26 2012
+      - perl 5.11.0 or later: Install to 'site' instead of 'perl'
+        (see [rt.cpan.org #79800])
+
+-------------------------------------------------------------------
+Mon May 21 18:35:39 UTC 2012 - coolo@suse.com
+
+- updated to 0.89
+    - avoid "use Test".
+    - DUCET is updated (for Unicode 6.1.0) as Collate/allkeys.txt.
+    ! Please notice that allkeys.txt will be overwritten if you have had
+      other allkeys.txt already.
+    - U+9FCC is a new CJK unified ideograph.
+    - The default UCA_Version is 24.
+    - Locale/*.pl (except fr.pl) and CJK/Korean.pm are updated.
+    - modified tests: cjkrange.t, compatui.t, hangtype.t, loc_cjkc.t,
+
+-------------------------------------------------------------------
+Tue Feb 14 07:57:49 UTC 2012 - coolo@suse.com
+
+- updated to 0.87
+    - Now Locale/*.pl files are searched in @INC. (see [RT#72666])
+    - added locale_version method to access the version number of Locale/*.pl.
+    - tailored compatibility ideographs as well as unified ideographs for
+      the locales: ja, ko, zh__big5han, zh__gb2312han, zh__pinyin, zh__stroke.
+    - added loc_cjkc.t in t.
+    - U::C::Locale newly supports locales: bn, sa.
+    - updated some locales to CLDR 2.0 : zh__pinyin, zh__stroke.
+      * supported compatibility decomposable characters and U+FDD0 indexes.
+      * updated CJK/Pinyin.pm and CJK/Stroke.pm.
+    - added loc_bn.t, loc_cjk.t, loc_sa.t in t.
+
+-------------------------------------------------------------------
+Fri Nov 18 12:55:20 UTC 2011 - coolo@suse.com
+
+- update to 0.84, see Changes
+
+-------------------------------------------------------------------
+Wed Oct  5 14:28:31 UTC 2011 - coolo@suse.com
+
+- initial package 0.78
+    * created by cpanspec 1.78.06
+

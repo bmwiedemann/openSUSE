@@ -1,0 +1,464 @@
+-------------------------------------------------------------------
+Tue Jul  9 19:17:17 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop rarian-scrollkeeper-compat BuildRequires and stop passing
+  --disable-scrollkeeper to configure: No longer needed nor used or
+  recognized.
+- Drop translation-update-upstream BuildRequires and macro: genius
+  is no longer in the t-u-u database, so no extra translations
+  available.
+- Update macros to current standard.
+- Drop conditional hicolor-icon-theme, shared-mime-info and
+  update-desktop-files BuildRequires and post(un) handling of
+  relevant macros as well as gtk3-tools, update-desktop-files and
+  shared-mime-info Requires(post(un)): No longer needed for any
+  current supported version of openSUSE.
+
+-------------------------------------------------------------------
+Wed Jun 13 02:48:28 UTC 2018 - luc14n0@linuxmail.org
+
+- Add hicolor-icon-theme, update-desktop-files and shared-mime-info
+  as BuildRequires and as Requires(post/postun) for right handling
+  of post(un) scriptlets for suse_version < 1330.
+
+-------------------------------------------------------------------
+Mon Jun 11 00:06:19 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 1.0.24:
+  + Add: A RungeKutta and a plane curve plotting examples.
+  + Updated translations.
+- Drop:
+  + BuildRoot tag: its standard value is already set by default.
+  + update-desktop-files BuildRequires and suse_update_desktop_\
+    file macro: they are no longer required.
+  + pkgconfig(vte) BuildRequires: this is not required anymore now
+    that Genius uses its own vte.
+- Add gio-2.0, gio-unix-2.0, gobject-2.0, pango and x11 pkgconfig
+  modules BuildRequires.
+- Update:
+  + '+' in GPL License tag to '-or-later' to comply with SPDX 3.0.
+  + Post(un) scriptlets to be ran in release versions < 1330.
+
+-------------------------------------------------------------------
+Sat Sep  9 23:52:40 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description, remove rhetoric questions from
+  description. Update package summaries.
+
+-------------------------------------------------------------------
+Thu Sep  7 04:47:08 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 1.0.23:
+  + Stop depending the build system on gnome-common.
+  + Help is now built as HTML and displayed in the browser,meaning
+    it actually works, links work, and it doesn't depend on any
+    particular desktop environment being installed. The HTML help
+    is also shown in the command line version when "manual" is run.
+  + New example for Duffing equation.
+  + New example on traces of the Peano function.
+  + Couple of fixes/improvements in the examples.
+  + Fix a crash on SurfacePlotDrawLines/Points.
+  + Updated translations.
+- Drop some %dir and %doc: no longer needed.
+
+-------------------------------------------------------------------
+Sat Jan 21 01:28:24 UTC 2017 - zaitor@opensuse.org
+
+- Replace scrollkeeper with rarian-scrollkeeper-compat
+  BuildRequires: scollkeeper is dead, let's at least use the proper
+  replacement.
+
+-------------------------------------------------------------------
+Mon Jan 16 14:07:40 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.0.22:
+  + Add a line plot version of the heat equation FDM animation.
+    example, and improve the surface plot version.
+  + Add argument principle example.
+  + Add two Mandelbrot set examples and a Newton's fractal example.
+  + Add examples for visualizing complex mappings.
+  + Add example vizualizations for Riemann and Darboux sums.
+  + Split the examples into submenus as there is now too many of
+    them.
+  + Add "filled" property to lines to allow drawing filled
+    polygons.
+  + Add LinePlotWaitForClick and LinePlotMouseLocation functions
+    for interactive programs (used for some of the above new
+    examples).
+  + LinePlotDrawPoints and LinePlotDrawLine accept a column vector
+    of complex nubmers.
+  + Fix possible infinite loop on parse on systems with newer flex.
+  + Fix setting of elements in transposed matrices (vectors).
+  + Fix doc string to ErrorFunction.
+  + Fix bad behavour upon double hitting "Run".
+  + Fix vte deprecations, require 0.26 now.
+  + Fix some strings and fixes to documentation.
+  + Fix segfault when trying to swap a protected id with swapwith.
+  + Fix StripZeroColumns behavior on a zero matrix.
+  + Fix Subfactorial, and let Subfactorial, Factorial,
+    DoubleFactorial apply over matrix.
+  + Fix some inverse trig functions with complex arguments.
+  + Other minor fixes including some crashes.
+
+-------------------------------------------------------------------
+Tue Jan 12 14:32:29 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.0.21:
+  + Add vibrating drumhead modes example, heat equation with
+    explicit FDM, improve the Laplace FDM example.
+  + Fix output of chopped floating point numbers, especially
+    chopped imaginary parts.
+  + Fix output of results as floats in pretty print.
+  + Fix SurfacePlotVariableNames to redraw when changing variable
+    names.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 12 08:19:07 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.0.20:
+  + Add more sizes of icons including SVG, and add Keywords to the
+    .desktop file.
+  + Documentation updates.
+  + Fix PeriodicExtension function.
+  + ErrorFunction (erf) is using MPFR for real values so it is far
+    more precise and faster.
+  + The Fourier series example is no longer using a hand coded
+    graph and hand computed series, so it can now be easily
+    modified to show series for different functions.
+  + Fix GCC 5 compilation.
+  + A couple of minor fixes in the plotting code including one
+    possible crasher.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 24 12:32:14 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.0.19:
+  + New menu: Examples. These are annotated programs that show some
+    mathematical concept. Generally taken from the classes I have
+    been teaching. They are installed under
+    prefix/share/genius/examples/ and are mostly using graphics so
+    only work in the graphical GNOME/GTK version
+  + New plotting functions: SurfacePlotDrawLine,
+    SurfacePlotDrawPoints, SurfacePlotClear, PlotWindowPresent.
+  + New rotation animation in the surface plot window.
+  + Fix string constants from compiled library starting with 'E'.
+  + A few fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 13 07:58:00 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.0.18:
+  + New general functions: KroneckerProduct (alias TensorProduct),
+    NewtonsMethod, HalleysMethod, LambertW, LambertWm1,
+    NonzeroColumns, NonzeroElements, DisplayVariables, PrintTable,
+    SetElement, SetVElement.
+  + New plotting functions: PlotCanvasFreeze/PlotCanvasThaw to
+    improve flicker if doing animations with genius, and
+    LinePlotDrawPoints function to draw just points without the
+    line. While plotting errors are no longer forced into a dialog,
+    and presence of errors is indicated in the graph window below
+    the graph.
+  + Allow setting color in LinePlotDrawLine with RGB vector. When
+    the vector building notation is done with floats and the final
+    number is within 2^-20 times the step size of the goal, assume
+    there were roundoff errors and still add it, just like for
+    loops, so something like 1.0:0.1:3.0 now works.
+  + Implement subsecond precision in wait function.
+  + Fix memory corruption error triggered in nested floating point
+    for loops with a floating point step.
+  + Few minor bug fixes and fix some more compile warnings in
+    gtkextra.
+  + Streamline the compiled file format (saves about 30kb).
+  + A few improvements to the documentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 27 04:37:32 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.17:
+  + Better precision for graphs especially when zoomed it a lot,
+    and make font smaller if needed.
+  + Line plots and parametric plots now allow "fit dependent axis"
+    automatically when y limits are unspecified. And this is the
+    default in the UI.
+  + Add export of graphs to PDF directly.
+  + Line plot step size is adaptive, also line plots now detect
+    jumps and do not draw a connecting line, try plotting UnitStep
+    for example.
+  + Use arrow keys to move around a line plot.
+  + left-right arrow keys rotate surface plot.
+  + All plots are now antialiased on the screen (due to GtkExtra
+    update and cairo usage).
+  + Update internal GtkExtra to 3.0.5, and forward port all our
+    changes/fixes (this gets us closer to supporting GTK+3 at some
+    point).
+  + Completion for "help on function" in the GUI.
+  + Fix FindRootBisection and FindRootMullersMethod.
+  + Factors is now a lot faster on very large numbers (as fast as
+    Factorize).
+  + Fix placement of labels on surface plots.
+  + A few small fixes and updates to the documentation.
+  + A few minor bugfixes.
+  + Update mersenne primes (new one is known).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Dec 17 23:11:16 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.16:
+  + Add SurfacePlotData and SurfacePlotDataGrid functions to draw
+    arbitrary surface data, to allow more complicated 3d plots and
+    3d plots from data.
+  + Add LinePlotDrawAxisLabels and SurfacePlotDrawLegends
+    parameters and add corresponding UI checkboxes 
+  + Add ExportPlot function to export the current contents of the
+    plot window to a file from GEL
+  + Surface plot now allows "fit dependent axis" automatically when
+    z limits are unspecified.  And this is the default in the UI
+  + Add sinc, BesselJ0, BesselJ1, BesselJn, BesselY0, BesselY1,
+    BesselYn functions
+  + Plot window slightly bigger (700x500 now) and there are wider
+    side margins in the lineplot (2D) version to make tick labels
+    always fit.
+  + In both 2D and 3D plots, tick labels now use scientific
+    notation when needed to avoid ugly labels
+  + In surface plot the gradient always shows only the range of the
+    function, so color is more useful when zoomed out.
+  + Simpler output when typing "help foo" when foo is neither
+    defined nor documented.
+  + When for/sum/prod loops are in terms of floating point numbers
+    and the final number is within 2^-20 times the step size of the
+    goal, assume there were roundoff errors and still execute the
+    body
+  + Handle wider matrices than 2^15 columns in expansion
+  + Fix flicker when plotting surfaces to allow animations with 3d
+    plots
+  + Fix possible uninitialized crash when reading badly formed
+    standard library (should never happen, but ...)
+  + Fix LinearRecursiveSequence and allow it to take vector for n
+  + Fix crash on uninitialized variables in conjugate transpose
+  + Fix crash on extreme zoom out or zoom in of a graph
+  + Fix derivatives of Im and Re
+  + Fix file chooser dialogs not starting in current directory
+  + Avoid double error about uninitialized variables
+  + Spelling fixes and documentation fixes
+  + Require MPFR at least 2.3.0
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 28 11:39:28 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.0.15:
+  + New functions CurrentTime, MacaulayRep, MacaulayLowerOperator,
+    MacaulayBound.
+  + Fix rational powers of negative numbers, and exact negative
+    rational powers.
+  + Fix zooming in graphs using the mouse when the functions take
+    long to run.
+  + Accept log instead of ln for symbolic derivative when used with
+    only one parameter.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  3 07:41:12 UTC 2011 - vuntz@opensuse.org
+
+- Add explicit shared-mime-info BuildRequires since we use the
+  %mime_database_* macros.
+
+-------------------------------------------------------------------
+Sun Jul 31 09:15:04 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.0.14:
+  + Fix some compilation warnings
+  + Fix a crasher
+  + Optimize and quantize the new pngs for a smaller file
+  + Updated translations.
+- Drop genius-fix-warnings.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Jul 29 08:36:37 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.0.13:
+  + Add ShuffleVector
+  + Add increment and swapwith operators
+  + Require gtk 2.18 and fix up some deprecated function usage
+  + Slightly more cache friendly matrix traversal
+  + Optimize Combinations, Permutations, SortVector,
+    IntegerQuotient
+  + Lots of tiny random optimizations
+  + Open help even if the URI api is broken
+  + Make pngs in the distribution smaller yet
+  + Make the compiled library slightly smaller
+  + Some more vector functions accept null properly
+  + Minor portability fixes
+  + Updated translations.
+- Add gnome-doc-utils-devel BuildRequires for new dependency.
+- Add genius-fix-warnings.patch: fix build warnings that make the
+  build fail.
+
+-------------------------------------------------------------------
+Thu Apr 28 12:57:23 CEST 2011 - vuntz@opensuse.org
+
+- Move to pkgconfig()-style BuildRequires:
+  + Old ones: gtk2-devel, gtksourceview-devel, vte-devel.
+  + New ones: glib-2.0, gtk+-2.0, gtksourceview-2.0, vte.
+
+-------------------------------------------------------------------
+Mon Feb 14 17:47:13 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sat Feb 12 17:27:12 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+  + %mime_database_post/postun because the package ships a mime
+    type definition.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+- Remove shared-mime-info Requires: if it's not there, then we
+  simply don't need to update the mime database.
+
+-------------------------------------------------------------------
+Thu Nov 25 18:54:06 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.0.12:
+  + Recently used files menu
+  + Only run ps2epsi on eps output if selected, it can be very slow
+    and I've realized it's not commonly needed
+  + Fix handling of comment at the end of file when running from
+    the IDE
+  + Fix handling of newlines in the lexer
+  + Fix CrossProduct
+  + Some self tests were missing in the distro
+  + Fix 64 bit build to be warning free
+  + Fix buld on Make 3.82
+  + Updated translations
+- Drop genius-make382.patch: fixed upstream. As a consequence, also
+  remove the autoreconf call in build.
+
+-------------------------------------------------------------------
+Sat Sep 11 22:02:15 UTC 2010 - dimstar@opensuse.org
+
+- Add genius-make382.patch: Fix build with make 3.82
+- Add autoreconf call in build section.
+
+-------------------------------------------------------------------
+Fri Sep 10 09:08:26 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.0.11:
+  + Build fix for some versions of ncurses
+  + Minor documentation updates.
+
+-------------------------------------------------------------------
+Thu Sep  9 10:33:47 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.0.10:
+  + Allow changing variable names for all plotting functions
+  + Add SlopefieldTicks, VectorfieldTicks, LinePlotVariableNames,
+    and SurfacePlotVariableNames, parameters
+  + Add AskButtons interactive function
+  + CHANGE: spelling fix: AuxiliaryUnitMatrix doesn't have two l's
+  + Support for setting legend on LinePlotDrawLine with a "legend"
+    parameter
+  + Allow comparisons (== and !=) with null, treating it as an
+    empty matrix
+  + Uses GIO instead of GnomeVFS
+  + Fix compilation without gtksourceview
+  + Fix some crashes in plotting code
+  + Allow slopefield solutions to leave plot window by a small
+    fudge factor.
+  + Fix zooming plots so that we can zoom by moving mouse in any
+    direction
+  + Fix compilation with newer sealed vte
+  + Fix up some typos in the documentation
+  + Updated translations.
+- Drop genius-sealed-vte.patch, fixed upstream.
+- Remove gnome-vfs2-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon Aug 30 17:24:58 CEST 2010 - vuntz@opensuse.org
+
+- Add genius-sealed-vte.patch to fix build with latest vte, which
+  seals the vte API.
+
+-------------------------------------------------------------------
+Wed May 12 21:14:28 UTC 2010 - dimstar@opensuse.org
+
+- PreRequire shared-mime-info
+- Do not package .omf files twice.
+
+-------------------------------------------------------------------
+Fri Dec 25 01:20:42 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.0.9:
+  + Fix matrix expansion. This also fixes AuxilliaryUnitMatrix and
+    JordanBlock.
+  + Fix several possible crashers.
+  + Fix a minor memory leak.
+
+-------------------------------------------------------------------
+Fri Nov 13 13:09:38 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.0.8:
+  + Buildfixes for Cygwin and parallel builds
+  + Check events before executing a command line, fixes a race
+    which results in display anomalies on new vte.
+  + Documentation updates
+  + Require GTK/GLib 2.12 and use the new tooltips API.
+
+-------------------------------------------------------------------
+Fri Jul 31 12:34:19 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.0.7:
+  + SYNTAX: Added a possibility to exactly specify which variables
+    are copied into a function's extra dictionary when it is being
+    returned. E.g. "`(x) [x0] = (x-x0)" will copy x0 from the
+    current context. This is a lot more efficient than the current
+    behaviour which tries to copy everything referenced.
+  + SYNTAX: Add "local" variables by specifying "local x,y,z" or
+    "local *" as the first statement in a function. Local
+    variables are not visible from higher contexts (functions
+    called within)
+  + CHANGE: all system parameters are now protected and cannot be
+    redefined using the "parameter" keyword
+  + Add UserVariables, UndefineAll, ProtectAll, and add Undefine as
+    an alias to undefine.
+  + Add trigonometric Fourier series related functions:
+    NumericalFourierSeriesFunction,
+    NumericalFourierSineSeriesFunction,
+    NumericalFourierCosineSeriesFunction, FourierSeriesFunction,
+    NumericalFourierSeriesCoefficients,
+    NumericalFourierSineSeriesCoefficients,
+    NumericalFourierCosineSeriesCoefficients, PeriodicExtension,
+    EvenPeriodicExtension, OddPeriodicExtension
+  + Fix changing floating point precision!
+  + Fix uninitialized variable in graphing
+  + Improve variable substitution for returned functions to be more
+    efficient. Slightly changes behaviour with respect to global
+    functions and variables used.
+  + Plot windows now not treated annoyingly as dialogs
+  + Fix compilation/decompilation of all function attributes.
+  + Parse/Evaluate with a syntax error at end of string no longer
+    terminate genius
+  + Updated Mersenne stuff for the newest data from mersenne.org
+    and fix MersennePrimeExponents
+  + Fix opening new files from the command line.
+  + Update the gel library to use the new language features.
+  + Various other minor fixes
+  + Translation updates.
+
+-------------------------------------------------------------------
+Sun Jun 14 09:30:14 CEST 2009 - vuntz@novell.com
+
+- Clean package for Contrib.
+

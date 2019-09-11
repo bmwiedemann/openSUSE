@@ -1,0 +1,65 @@
+Index: gnuradio-3.7.12.0/gr-uhd/gnuradio-uhd.pc.in
+===================================================================
+--- gnuradio-3.7.12.0.orig/gr-uhd/gnuradio-uhd.pc.in
++++ gnuradio-3.7.12.0/gr-uhd/gnuradio-uhd.pc.in
+@@ -7,5 +7,5 @@ Name: gnuradio-uhd
+ Description: GNU Radio blocks for UHD
+ Requires: gnuradio-runtime
+ Version: @LIBVER@
+-Libs: -L${libdir} -lgnuradio-uhd
++Libs: -L${libdir} -lgnuradio-uhd -lpthread
+ Cflags: -I${includedir}
+Index: gnuradio-3.7.12.0/gr-uhd/examples/c++/CMakeLists.txt
+===================================================================
+--- gnuradio-3.7.12.0.orig/gr-uhd/examples/c++/CMakeLists.txt
++++ gnuradio-3.7.12.0/gr-uhd/examples/c++/CMakeLists.txt
+@@ -31,6 +31,9 @@ include_directories(
+ link_directories(${UHD_LIBRARY_DIRS})
+ link_directories(${Boost_LIBRARY_DIRS})
+ 
++set(THREADS_PREFER_PTHREAD_FLAG ON)
++find_package(Threads REQUIRED)
++
+ ########################################################################
+ # Build executable
+ ########################################################################
+Index: gnuradio-3.7.12.0/volk/lib/CMakeLists.txt
+===================================================================
+--- gnuradio-3.7.12.0.orig/volk/lib/CMakeLists.txt
++++ gnuradio-3.7.12.0/volk/lib/CMakeLists.txt
+@@ -532,7 +532,7 @@ if(CMAKE_VERSION VERSION_GREATER "2.8.11
+ 
+     #Add dynamic library
+     add_library(volk SHARED $<TARGET_OBJECTS:volk_obj>)
+-    target_link_libraries(volk ${volk_libraries})
++    target_link_libraries(volk ${volk_libraries} "m")
+     target_include_directories(volk
+         PUBLIC ${PROJECT_BINARY_DIR}/include
+         PUBLIC ${PROJECT_SOURCE_DIR}/include
+@@ -574,7 +574,7 @@ if(CMAKE_VERSION VERSION_GREATER "2.8.11
+ else()
+     #create the volk runtime library
+     add_library(volk SHARED ${volk_sources})
+-    target_link_libraries(volk ${volk_libraries})
++    target_link_libraries(volk ${volk_libraries} "m")
+     include_directories(volk
+         PUBLIC ${PROJECT_BINARY_DIR}/include
+         PUBLIC ${PROJECT_SOURCE_DIR}/include
+Index: gnuradio-3.7.12.0/gnuradio-runtime/lib/pmt/CMakeLists.txt
+===================================================================
+--- gnuradio-3.7.12.0.orig/gnuradio-runtime/lib/pmt/CMakeLists.txt
++++ gnuradio-3.7.12.0/gnuradio-runtime/lib/pmt/CMakeLists.txt
+@@ -81,9 +81,13 @@ set(pmt_sources
+   ${CMAKE_CURRENT_SOURCE_DIR}/pmt_serialize.cc
+ )
+ 
++set(THREADS_PREFER_PTHREAD_FLAG ON)
++find_package(Threads REQUIRED)
++
+ list(APPEND gnuradio_pmt_libs
+     ${Boost_LIBRARIES}
+     ${LOG4CPP_LIBRARIES}
++    Threads::Threads
+ )
+ 
+ add_custom_target(pmt_generated

@@ -1,0 +1,40 @@
+From 46e37dd1c263e62e28336bea5c634a41a3d77c5b Mon Sep 17 00:00:00 2001
+From: Antonio Terceiro <terceiro@debian.org>
+Date: Sat, 11 Oct 2014 16:54:58 -0300
+Subject: [PATCH] bin/vagrant: silence warning about installer
+
+Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
+---
+ bin/vagrant | 16 ----------------
+ 1 file changed, 16 deletions(-)
+
+diff --git a/bin/vagrant b/bin/vagrant
+index 7372a726d..0e3a16c0f 100755
+--- a/bin/vagrant
++++ b/bin/vagrant
+@@ -143,22 +143,6 @@ begin
+   logger.debug("Creating Vagrant environment")
+   env = Vagrant::Environment.new(opts)
+ 
+-  # If we are running with the Windows Subsystem for Linux do
+-  # some extra setup to allow access to Vagrant managed machines
+-  # outside the subsystem
+-  if Vagrant::Util::Platform.wsl?
+-    recreate_env = Vagrant::Util::Platform.wsl_init(env, logger)
+-    if recreate_env
+-      logger.info("Re-creating Vagrant environment due to WSL modifications.")
+-      env = Vagrant::Environment.new(opts)
+-    end
+-  end
+-
+-  if !Vagrant.in_installer? && !Vagrant.very_quiet?
+-    # If we're not in the installer, warn.
+-    env.ui.warn(I18n.t("vagrant.general.not_in_installer") + "\n", prefix: false)
+-  end
+-
+   # Acceptable experimental flag values include:
+   #
+   # Unset  - Disables experimental features
+-- 
+2.19.1
+

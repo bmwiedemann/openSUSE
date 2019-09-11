@@ -1,0 +1,60 @@
+Description: Fix incompatible pointer type for eb_read_* functions
+Author: Kazuhiro Ito <kzhr@d1.dion.ne.jp>, Tatsuya Kinoshita <tats@debian.org>
+
+diff -urN eblook-1.6.1.orig/eblook.c eblook-1.6.1/eblook.c
+--- eblook-1.6.1.orig/eblook.c	2004-06-18 01:09:01.000000000 +0900
++++ eblook-1.6.1/eblook.c	2010-08-18 00:02:36.000000000 +0900
+@@ -1166,7 +1166,7 @@
+ {
+     static unsigned char buffer[MAX_BITMAP_SIZE];
+     EB_Position pos;
+-    int len;
++    ssize_t len;
+     int ret;
+     int i;
+     int j;
+@@ -1241,7 +1241,7 @@
+ {
+     static unsigned char buffer[MAX_BITMAP_SIZE];
+     EB_Position pos;
+-    int len;
++    ssize_t len;
+     int ret;
+     int i;
+     int j;
+@@ -3097,7 +3097,7 @@
+ {
+     EB_Error_Code error_code;
+     char buf[2048];
+-    int buflen;
++    ssize_t buflen;
+ 
+ #if MULTI_DEBUG
+     xprintf(">> seeking %d:%d\n", can->child_pos.page, can->child_pos.offset);
+@@ -3109,7 +3109,7 @@
+     error_code = eb_read_text(book, 0, &multi_candidate_hookset, NULL, 2047, buf, &buflen);
+ #if MULTI_DEBUG
+     xprintf(">> eb_read_text %s\n", eb_error_message(error_code));
+-    xprintf(">> buflen = %d\n", buflen);
++    xprintf(">> buflen = %ld\n", (long)buflen);
+     xprintf(">> ]\n");
+ #endif
+ 
+@@ -3168,7 +3168,7 @@
+     EB_Position pos0;
+ {
+     char buf[2048];
+-    int buflen;
++    ssize_t buflen;
+     struct multi_can *child, *ptail;
+     EB_Error_Code error_code = EB_SUCCESS;
+ 
+@@ -3191,7 +3191,7 @@
+ 	return 0;
+     }
+ #if MULTI_DEBUG
+-    xprintf(">> buflen = %d\n", buflen);
++    xprintf(">> buflen = %ld\n", (long)buflen);
+ #endif
+ 
+     tail->terminated = 1;

@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:12 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Mon Apr 23 09:13:38 UTC 2012 - pgajdos@suse.com
+
+- removed Vendor: tag
+
+-------------------------------------------------------------------
+Thu Apr 19 12:27:51 UTC 2012 - pgajdos@suse.com
+
+- OFL-1.1 license
+- added OFL.txt
+
+-------------------------------------------------------------------
+Sat Jan 28 16:05:26 UTC 2012 - toms@opensuse.org
+
+- Moved to M17N:fonts
+
+-------------------------------------------------------------------
+Fri Apr  8 08:09:49 UTC 2011 - toms@suse.de
+
+- Fixed spec file for openSUSE 11.4
+
+-------------------------------------------------------------------
+Tue Aug 17 13:28:17 UTC 2010 - toms@suse.de
+
+- First initial release 1.0.38
+

@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Fri Aug 11 16:33:20 UTC 2017 - tbechtold@suse.com
+
+- convert to singlespec
+
+-------------------------------------------------------------------
+Thu Oct  2 18:40:28 UTC 2014 - p.drouand@gmail.com
+
+- Use tarball from pypi as source
+
+-------------------------------------------------------------------
+Fri Sep 12 08:21:49 UTC 2014 - dmueller@suse.com
+
+- update to 2.0.1:
+  - #20: host tarball on PYPI
+  - #21: project migrated from google code to github
+  - #21: project migrated from SVN to GIT
+  - #22: pysendfile won't compile on python 3.4
+  - #23: add a Makefile
+  - #24: use of travis continuous integration
+  - #25: use tox for multiple python versions testing
+
+-------------------------------------------------------------------
+Sat Apr 13 10:11:29 UTC 2013 - toddrme2178@gmail.com
+
+- Remove pre_checkin.sh since the two packages are not the same
+
+-------------------------------------------------------------------
+Mon Jan 21 15:50:12 UTC 2013 - p.drouand@gmail.com
+
+- Add python3 support
+
+-------------------------------------------------------------------
+Thu Nov  8 11:35:29 UTC 2012 - saschpe@suse.de
+
+- Initial version
+

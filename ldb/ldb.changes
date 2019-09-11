@@ -1,0 +1,513 @@
+-------------------------------------------------------------------
+Tue Mar  5 16:30:16 UTC 2019 - David Mulder <dmulder@suse.com>
+
+- Update to 1.5.4
+  + Fix standalone build of ldb.
+  + C99 build fixes.
+  + CVE-2019-3824 out of bounds read in wildcard compare (bug#13773)
+- Update to 1.5.3
+  + Avoid inefficient one-level searches (bug#13762)
+  + The test api.py should not rely on order of entries in dict (bug#13772)
+
+-------------------------------------------------------------------
+Wed Feb  6 17:40:31 UTC 2019 - David Mulder <dmulder@suse.com>
+
+- Update to 1.5.2
+  + dirsync: Allow arbitrary length cookies (bug #13686)
+  + The build uses python3 by default: --extra-python would take
+    python2 now
+  + To build with python2 only use:
+    PYTHON=python2 ./configure
+    PYTHON=python2 make
+    PYTHON=python2 make install
+
+-------------------------------------------------------------------
+Mon Nov 12 17:33:03 UTC 2018 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 1.4.3
+  + Python: Ensure ldb.Dn can accept utf8 encoded unicode (bug 13616)
+
+-------------------------------------------------------------------
+Tue Sep 25 07:35:57 UTC 2018 - Samuel Cabrero <scabrero@suse.de>
+
+- Update license to LGPL-3.0
+
+-------------------------------------------------------------------
+Fri Aug 17 15:21:40 UTC 2018 - dmulder@suse.com
+
+- Update to 1.4.2
+  + Security fix for CVE-2018-1140 (NULL pointer de-reference, bug 13374)
+  + Fix memory leaks and missing error checks (bug 13459, 13471, 13475)
+- 1.4.1
+  + add some missing return value checks
+  + Fix several mem leaks in ldb_index ldb_search ldb_tdb (bug#13475)
+  + ldb_tdb: Use mem_ctx and so avoid leak onto long-term memory
+    on duplicated add. (bug#13471)
+  + ldb: Fix memory leak on module context (bug#13459)
+  + Refused build of Samba 4.8 with ldb 1.4 (bug #13519)
+  + Prevent similar issues in the future at configure time (bug #13519)
+- 1.4.0
+  + New LMDB backend (experimental)
+  + Comprehensive tests for index behaviour
+  + Enforce transactions for writes
+  + Enforce read lock use for all reads
+  + Fix memory leak in paged_results module.
+    We hold at most 10 outstanding paged result cookies
+    (bug #13362)
+  + Fix compiler warnings
+  + Python3 improvements
+  + Restore --disable-python build
+  + Fix for performance regression on one-level searches
+    (bug #13448)
+  + Samba's subtree_rename could fail to rename some entries
+    (bug #13452)
+
+-------------------------------------------------------------------
+Wed Aug 15 21:52:13 UTC 2018 - dmulder@suse.com
+
+- Add fix_ldb_mod_op_test.patch: Fix missing NULL terminator in
+  ldb_mod_op_test testsuite
+
+-------------------------------------------------------------------
+Tue Aug 14 20:35:30 UTC 2018 - dmulder@suse.com
+
+- Update to 1.3.5
+  + Security fix for CVE-2018-1140 (NULL pointer de-reference,
+    bug #13374).
+- 1.3.4
+  + Fix memory leaks and missing error checks (bug #13459, #13471,
+    #13475).
+  + Fix fallback to full scan (performance regression) on
+    one-level search (bug #13448).
+  + Fix read corruption (missing results) during writes,
+    particularly during a Samba subtree rename (bug #13452).
+
+-------------------------------------------------------------------
+Wed May 23 10:36:02 UTC 2018 - jmcdonough@suse.com
+
+- Update to 1.3.3
+  + Fix failure to upgrade to the GUID index DB format; (bso#13306).
+
+-------------------------------------------------------------------
+Fri Mar 16 19:09:53 UTC 2018 - jmcdonough@suse.com
+
+- Update to 1.3.2;
+  + Expose the SHOW_BINARY, ENABLE_TRACING and DONT_CREATE_DB flag
+    constants in the python api.
+  + Don't load LDB_MODULESDIR as a module file.
+  + Fix binary data in debug log (bug #13185).
+  + Intersect the index from SCOPE_ONELEVEL with the index for the
+    search expression (bso#13191)
+  + GUID Index support.
+
+-------------------------------------------------------------------
+Fri Feb  9 12:04:23 UTC 2018 - scabrero@suse.com
+
+- Update to 1.2.3; (bsc#1080545);
+  + Performance regression in DNS server with introduction of DNS wildcard;
+    (bso#13191);
+
+-------------------------------------------------------------------
+Mon Oct  2 12:18:30 UTC 2017 - jengelh@inai.de
+
+- Remove %if guards for blocks that do not affect the build result.
+  Fix RPM groups and summaries.
+  Drop very old SUSE support. Replace old RPM macros by new
+  constructs.
+
+-------------------------------------------------------------------
+Mon Sep 18 12:17:31 UTC 2017 - scabrero@suse.com
+
+- Update to 1.2.2
+  + Bug #13017: Add ldb_ldif_message_redacted_string() to allow debug
+                of redacted log messages, avoiding showing secret values
+
+  + Bug #13015: Allow re-index of newer databases with binary GUID TDB keys
+                (this officially removes support for re-index of the original
+                pack format 0, rather than simply segfaulting).
+  + Avoid memory allocation and so make modify of records in ldb_tdb faster
+
+-------------------------------------------------------------------
+Wed Jul 26 09:18:14 UTC 2017 - scabrero@suse.com
+
+- Update to 1.2.1
+  + Bug #12882: Do not install _ldb_text.py if we have system libldb
+  + Use libraries from build dir for testsuite
+  + Bug #12900: Fix index out of bound in ldb_msg_find_common_values
+
+-------------------------------------------------------------------
+Wed Jul  5 09:05:46 UTC 2017 - scabrero@suse.com
+
+- Update to 1.2.0
+  + handle one more LDB_FLAG_INTERNAL_DISABLE_SINGLE_VALUE_CHECK
+    case in ldb_tdb
+  + fix ldb_tdb locking (performance) problems
+  + fix ldb_tdb search inconsistencies by adding
+    read_[un]lock() hooks to the module stack
+    (bug #12858)
+  + add cmocka based tests for the locking issues
+  + ldb_version.h provides LDB_VERSION_{MAJOR,MINOR,RELEASE} defines
+  + protect ldb_modules.h from being used by Samba < 4.7
+    Note: that this release (as well as 1.1.30 and 1.1.31)
+    may cause problems for older applications, e.g. Samba
+    See https://bugzilla.samba.org/show_bug.cgi?id=12859
+
+-------------------------------------------------------------------
+Mon Jul  3 08:16:32 UTC 2017 - scabrero@suse.com
+
+- Update to 1.1.31
+  + let ldbdump parse the -i option
+  + don't allow the reveal_internals control for ldbedit
+  + only allow --show-binary for ldbsearch
+  + don't let ldbsearch create non-existing files
+  + fix ldb_tdb search inconsistencies
+  + add cmocka based tests
+  + provide an interface for improved indexing for callers
+    like Samba, which will allow much better performance.
+  + Makes ldb access to tdb:// databases use a private event context
+    rather than the global event context passed in by the caller.
+    This is because running other operations while locks are held
+    or a search is being conducted is not safe.
+  + Add efficient function to find duplicate values in ldb messages
+    (this makes large multi-valued attributes in ldb_tdb more efficient)
+- Add ldb-tests-do-not-override-lib-path.patch: Check if LD_LIBRARY_PATH
+  and LDB_MODULES_PATH environment variables are set before overriding
+  them.
+
+-------------------------------------------------------------------
+Tue Jan 24 17:44:38 UTC 2017 - ddiss@suse.com
+
+- Update to 1.1.29; (bsc#1032915).
+  + add support for LDB_CONTROL_RECALCULATE_RDN_OID on ldb_modify()
+  + Performance and memory consumption improvements
+
+-------------------------------------------------------------------
+Wed Sep 14 14:20:29 UTC 2016 - jmcdonough@suse.com
+
+- Update to 1.1.27
+  + performance improvements
+  + VLV control improvements
+
+-------------------------------------------------------------------
+Tue Mar 15 16:40:29 UTC 2016 - lmuelle@suse.com
+
+- Require talloc 2.1.6 at build-time; (bsc#954658).
+
+-------------------------------------------------------------------
+Tue Mar  8 12:49:48 UTC 2016 - dimstar@opensuse.org
+
+- Add ldb-python3.5-fix-soabi_name.patch: Do not change x86_64 to
+  x86-64 when building with python 3.5.
+
+-------------------------------------------------------------------
+Sun Feb 21 16:55:27 UTC 2016 - lmuelle@suse.com
+
+- Avoid a file collision for non SUSE build targets; (bsc#966174).
+
+-------------------------------------------------------------------
+Wed Feb 17 18:04:54 UTC 2016 - lmuelle@suse.com
+
+- Update to 1.1.26; (bsc#954658).
+  + let a timeout of -1 indicate no timeout for a given request
+  + fix memory leaks in pyldb ldb.search()
+  + build fixes
+  + improve pyldb ldb.search() help message
+  + add pyldb ldb.search_iterator() api
+  + add LDB_ATTR_FLAG_FORCE_BASE64_LDIF as optional argument
+    to ldb_schema_attribute_add()
+  + add client support for LDB_CONTROL_DIRSYNC_EX
+
+-------------------------------------------------------------------
+Fri Feb 12 17:13:00 UTC 2016 - lmuelle@suse.com
+
+- Provide python-ldb and python-ldb-devel; (bsc#966523).
+
+-------------------------------------------------------------------
+Wed Jan 27 13:35:11 UTC 2016 - lmuelle@suse.com
+
+- Update to 1.1.25; (bsc#954658).
+  + torture: test ldb_unpack_data_only_attr_list
+  + increment version due to added ldb_unpack_data_only_attr_list
+  + introduce ldb_unpack_data_withlist to unpack partial list of attributes
+
+-------------------------------------------------------------------
+Thu Dec 10 16:10:32 UTC 2015 - lmuelle@suse.com
+
+- Update to 1.1.24.
+  + fix LDAP \00 search expression attack DoS; CVE-2015-3223; (bso#11325)
+  + fix remote read memory exploit in LDB; CVE-2015-5330; (bso#11599)
+  + move ldb_(un)pack_data into ldb_module.h for testing
+  + fix installation of _ldb_text.py
+  + fix propagation of LDB errors through TDB
+  + fix bug triggered by having an empty message in database during search
+
+-------------------------------------------------------------------
+Wed Nov 11 17:53:45 UTC 2015 - lmuelle@suse.com
+
+- Update to 1.1.23; (bsc#954658).
+  + Test improvements
+  + Improved python3 bindings; (bsc#951911)
+  + Minor build fixes
+
+-------------------------------------------------------------------
+Fri Oct 30 13:15:15 UTC 2015 - lmuelle@suse.com
+
+- Add doxygen at build time to add the development documentation.
+- Disable rpath-install and silent-rules while configure.
+
+-------------------------------------------------------------------
+Thu Oct 22 20:52:14 UTC 2015 - lmuelle@suse.com
+
+- Rename pyldb to python-ldb.
+
+-------------------------------------------------------------------
+Mon Sep  7 21:55:16 UTC 2015 - lmuelle@suse.com
+
+- Move the ldb-cmdline library to the ldb-tools package as the packaged
+  binaries depend on it.
+
+-------------------------------------------------------------------
+Mon Sep  7 17:06:26 UTC 2015 - lmuelle@suse.com
+
+- Update the Samba Library Distribution Key file 'ldb.keyring'; (bso#945116).
+
+-------------------------------------------------------------------
+Wed Jul 22 07:37:48 UTC 2015 - lmuelle@suse.com
+
+- Update to 1.1.21; (bsc#939050).
+  + build fixes
+  + improved python bindings
+
+-------------------------------------------------------------------
+Sun Mar  1 13:35:05 UTC 2015 - lmuelle@suse.com
+
+- Update to 1.1.20.
+  + validate_ldb of String(Generalized-Time) does not accept millisecond
+    format ".000Z"; (bso#9810)
+  + fix logic in ldb_val_to_time()
+
+-------------------------------------------------------------------
+Tue Jan 13 14:57:29 UTC 2015 - lmuelle@suse.com
+
+- Update to 1.1.19.
+  + Allow to register extended match rules
+
+-------------------------------------------------------------------
+Sun Dec 21 20:23:19 UTC 2014 - lmuelle@suse.com
+
+- Update to 1.1.18.
+  + fixes for segfaults in pyldb
+  + documentation fixes
+  + build system improvements
+  + fix a typo in the comment, LDB_FLAGS_MOD_xxx -> LDB_FLAG_MOD_xxx
+  + Fix check for third_party
+  + make the successful ldb_transaction_start() message clearer
+  + ldb-samba: fix a memory leak in ldif_canonicalise_objectCategory()
+  + ldb-samba: Move pyldb-utils dependency to python_samba__ldb
+  + build: improve detection of srcdir
+
+-------------------------------------------------------------------
+Thu Nov  6 13:24:43 UTC 2014 - lmuelle@suse.com
+
+- Use the upstream tar ball, as signature verification is now able to handle
+  compressed archives.
+
+-------------------------------------------------------------------
+Tue Oct 28 14:41:43 UTC 2014 - lmuelle@suse.com
+
+- Remove dependency on gpg-offline as signature checking is implemented in the
+  source validator.
+
+-------------------------------------------------------------------
+Tue Sep 23 18:10:04 UTC 2014 - lmuelle@suse.com
+
+- BuildRequire docbook-xsl-stylesheets and libxslt to process the man pages.
+
+-------------------------------------------------------------------
+Fri May 23 15:39:36 UTC 2014 - lmuelle@suse.com
+
+- Require pkg-config from the devel sub packages and do not BuildRequire it
+  from libldb.
+
+-------------------------------------------------------------------
+Mon May  5 11:38:58 UTC 2014 - lmuelle@suse.com
+
+- Update to 1.1.17.
+  + pyldb: add some more helper functions for LdbDn
+  + pyldb: fix doc string for set_extended_component()
+  + pyldb: add some const to PyObject_FromLdbValue()
+  + Add a env variable to disable RTLD_DEEPBIND.
+  + ldb_ildap: Map some wrong username/password errors on to
+    LDB_ERR_INVALID_CREDENTIALS
+  + pass module init errors back to the caller
+  + Return LDB_ERR_INSUFFICIENT_ACCESS_RIGHTS rather than OPERATIONS_ERROR on
+    EACCES and EPERM
+  + Fix 1138330 Dereference null return value
+  + bad if test in ldb_comparison_fold()
+  + use of NULL pointer bugfix
+  + Fix CID 241329 Array compared against 0
+  + Fix CID 240798 Uninitialized pointer read
+  + rdn_name: reject 'distinguishedName' depending of the MOD flags
+  + Show the type of failing operation in default error message
+  + Do not build libldb-cmdline when using system ldb.
+  + ldb_map: Fix CID 1034791 Dereference null return value
+  + Fix a const warning
+
+-------------------------------------------------------------------
+Fri Dec  6 11:56:46 UTC 2013 - lmuelle@suse.com
+
+- Verify source tar ball gpg signature.
+
+-------------------------------------------------------------------
+Thu Aug 29 10:43:09 UTC 2013 - lmuelle@suse.com
+
+- Consolidate python files in independent pyldb subpackages.
+- Add pyldb to baselibs.conf.
+
+-------------------------------------------------------------------
+Tue Jul  2 10:31:06 UTC 2013 - lmuelle@suse.com
+
+- Update to 1.1.16.
+  + Bump version to allow a depencency on the substring crash fix.
+  + Cope with substring match with no chunks in ldb_filter_from_tree().
+  + Ensure not to segfault on a filter such as (mail=).
+  + Add missing dependency on replace for ldb.
+  + Add more data test data for one level test cases.
+  + Add tests for the python api.
+  + Add more tests related to onelevel search.
+  + Use strncmp instead of strcmp when comparing the val part.
+  + Make test output more readable.
+
+-------------------------------------------------------------------
+Wed Feb  6 10:50:24 UTC 2013 - lmuelle@suse.com
+
+- Update to 1.1.15.
+  + Ensure to decrement the transaction_active whenever we delete
+    a transaction.
+  + Move doxygen comments for ldb_connect to the right place.
+
+-------------------------------------------------------------------
+Sun Dec  2 16:56:45 UTC 2012 - lmuelle@suse.com
+
+- Update to 1.1.14.
+  + fixed callers for ldb_pack_data() and ldb_unpack_data()
+  + move ldb_pack.c into common
+  + Add ldbdump, based on tdbdump
+  + Remove no-longer-existing ltdb_unpack_data_free from ldb_tdb.h
+  + Change ltdb_unpack_data to take an ldb_context
+- Update to 1.1.13.
+  + Don't use "isprint" in ldb_binary_encode(); (bso#9147).
+
+-------------------------------------------------------------------
+Mon Sep  3 09:59:26 UTC 2012 - lmuelle@suse.com
+
+- Update to 1.1.12.
+  + Avoid printing secret attributes in ldb trace logs
+
+-------------------------------------------------------------------
+Thu Aug 30 16:03:16 UTC 2012 - lmuelle@suse.com
+
+- Update to 1.1.11.
+  + LDB:ldb_tdb.c - deny multi-valued attributes manipulation with doublets
+  + LDB:ldbsearch - add search filter tests
+  + LDB:ldbsearch - search filters do not only contain "="
+  + lib/ldb: Use tdb_parse_record and a callback rather than tdb_fetch()
+- BuildRequire tevent version >= 0.9.17.
+
+-------------------------------------------------------------------
+Thu Aug 16 09:46:57 UTC 2012 - lmuelle@suse.com
+
+- Remove superfluous ldb-tools rpmlintrc file.
+
+-------------------------------------------------------------------
+Thu Aug  9 18:06:08 UTC 2012 - lmuelle@suse.com
+
+- Update to 1.1.10.
+  + Enhancements and fixes to the s3 read, sesssetup, and server functions
+  + s3: Fix a crash in reply_lockingX_error
+  + s3:libsmb, smbd, and s4:libcli: add EXTENDED_SIGNATURE support in tcon
+  + s3:rpc_server: make usage of session_extract_session_key()
+  + s3:smb2_*: make use of SMBD_SMB2_*()
+  + s4 and libcli: enahncements and fixes
+
+-------------------------------------------------------------------
+Tue Aug  7 22:18:19 UTC 2012 - lmuelle@suse.com
+
+- Update to 1.1.9.
+  + Ensure rename target does not exist before deleting old record.
+  + Add parameter to avoid NULL format string flagged by -Werror=format.
+- Update to 1.1.8.
+  + Fixes for pyldb.
+  + Drop support for tdb_compat.
+- BuildRequire pytalloc-devel.
+
+-------------------------------------------------------------------
+Thu Jun 28 16:29:25 UTC 2012 - lmuelle@suse.com
+
+- Disable rpath while configure.
+
+-------------------------------------------------------------------
+Wed Jun 13 14:16:37 UTC 2012 - ddiss@suse.com
+
+- Tag GPL-3.0+ based on tdb license; (bnc#765270).
+
+-------------------------------------------------------------------
+Sun Jun  3 21:18:46 UTC 2012 - lmuelle@suse.com
+
+- Define library name and use it instead of libldb1.
+
+-------------------------------------------------------------------
+Sun Jun  3 14:03:09 UTC 2012 - lmuelle@suse.com
+
+- Add missing post, postun, and files part to the libldb1 package.
+
+-------------------------------------------------------------------
+Sat Jun  2 16:00:14 UTC 2012 - lmuelle@suse.com
+
+- Rename package to ldb and add an independent libldb1 subpackage.
+- Enhance and polish the package descriptions and summaries.
+
+-------------------------------------------------------------------
+Fri Jun  1 15:27:26 UTC 2012 - lmuelle@suse.com
+
+- BuildIgnore libtalloc to prevent a package conflict on Fedora systems.
+
+-------------------------------------------------------------------
+Fri Jun  1 14:59:53 UTC 2012 - lmuelle@suse.com
+
+- BuildRequire popt-devel.
+
+-------------------------------------------------------------------
+Thu May 31 22:22:49 UTC 2012 - lmuelle@suse.com
+
+- Define and use talloc, tdb, and tevent version macros.
+- Define python_sitearch if undefined.
+
+-------------------------------------------------------------------
+Thu May 31 13:46:42 UTC 2012 - lmuelle@suse.com
+
+- BuildRequire libtalloc-devel, libtdb-devel, and libtevent-devel.
+- Configure with bundled tdb2 library.
+
+-------------------------------------------------------------------
+Fri May 25 11:12:36 UTC 2012 - lmuelle@suse.com
+
+- Cleanup BuildRequires and spec file in general.
+
+-------------------------------------------------------------------
+Thu May 17 12:44:28 UTC 2012 - lmuelle@suse.com
+
+- BuildRequire libtalloc2-devel >= 2.0.7.
+
+-------------------------------------------------------------------
+Mon May 14 15:18:49 UTC 2012 - lmuelle@suse.com
+
+- BuildRequire libtalloc2-devel, libtdb1-devel, and libtevent0-devel.
+- Adjust license string.
+- Require libldb1 = %{version} from the devel package.
+
+-------------------------------------------------------------------
+Wed Sep  7 21:56:42 UTC 2011 - lars@samba.org
+
+- Initial independent libldb1 package.
+

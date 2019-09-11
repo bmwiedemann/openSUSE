@@ -1,0 +1,229 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:32:58 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Dec 14 13:02:48 UTC 2017 - dimstar@opensuse.org
+
+- Replace enchant-devel and gtk2-devel BuildRequires with their
+  pkgconfig() equivalents: pkgconfig(enchant) and
+  pkgconfig(gtk+-2.0).
+
+-------------------------------------------------------------------
+Tue Aug 15 08:10:54 UTC 2017 - zaitor@opensuse.org
+
+- Drop gtk-doc BuildRequires and pass --enable-gtk-doc=no to
+  configure, needed with gtk-doc 1.26 and newer, as gtkdoc-mktmpl
+  was dropped from it.
+
+-------------------------------------------------------------------
+Fri Mar  1 12:44:25 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Fri Jun 17 08:37:04 CEST 2011 - vuntz@opensuse.org
+
+- Stop using source service to download the tarball, as Factory
+  will move away from this.
+
+-------------------------------------------------------------------
+Tue May  3 12:17:43 UTC 2011 - dimstar@opensuse.org
+
+- bnc#691401: SLPP for gtkspell:
+  + Create new subpackage libgtkspell0 with gtkspell
+    Provides/Obsoletes for proper upgrade path.
+  + Move -lang Recommends to the lib-package.
+- Remove explicit Requires for gtk2-devel,g lib2-devel,
+  pango-devel, atk-devel and enchant-devel from the -devel package:
+  they will automatically be added the pkgconfig() way.
+- Clean spec file using spec-cleaner.
+
+-------------------------------------------------------------------
+Mon May  2 23:43:33 CEST 2011 - vuntz@opensuse.org
+
+- Remove now unneeded call to autoreconf.
+- Do not package .la files.
+
+-------------------------------------------------------------------
+Fri Apr 29 16:16:45 UTC 2011 - dimstar@opensuse.org
+
+- Update to 2.0.16:
+  + Additional and updated translations (see po/ChangeLog).
+  + sf#2431005: Language codes that contain "C" (e.g. "cs_CZ")
+    defaulted to "en"
+  + sf#2715972: Remove an extra comma at the end of the
+    GtkSpellError enum definition.
+  + sf#2526949: Sort languages list submenu.
+  + sf#2526959: Currently selected language appears with radio
+    button selection in Language selector sub-menu
+  + sf#2642198: Enchant Broker should be a singleton.
+  + sf#2875116 Support changing of the GtkTextBuffer in the
+    attached GtkTextView.
+- Use source services: download_url, recompress and set_version.
+- Drop gtkspell-locale.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Feb 22 18:58:32 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (bnc#673924).
+
+-------------------------------------------------------------------
+Tue Aug 31 09:58:42 UTC 2010 - aj@suse.de
+
+- Recommend instead of require lang package since it's not mandatory.
+
+-------------------------------------------------------------------
+Tue Feb 10 15:38:19 CET 2009 - pgajdos@suse.cz
+
+- removed redundant aspell-devel from BuildRequires [fate#305688]
+
+-------------------------------------------------------------------
+Tue Jan 13 18:19:18 CET 2009 - pgajdos@suse.cz
+
+- updated to version 2.0.15:
+  * Additional translations (see po/ChangeLog).
+  * Add missing G_BEGIN_DECLS/G_END_DECLS for C++ support
+  * Fix feature request #2101451 by removing the sub-menu
+    of the context menu as any other in-line spell checker does.
+  * Fix feature request #1523881, #1643622 and #2054637
+    by adding a Language selector sub-menu.
+  * Fix feature request #1362304 by fixing docs/Makefile.am
+    to install gtkspell.devhelp so that it shows in devhelp
+
+
+-------------------------------------------------------------------
+Mon Sep 29 19:44:45 CEST 2008 - pgajdos@suse.cz
+
+- fixed [bnc#389339]
+  * locale.patch
+
+-------------------------------------------------------------------
+Mon Aug 18 10:20:52 CEST 2008 - lmichnovic@suse.cz
+
+- update to version 2.0.14
+ * Additional translations (see po/ChangeLog).
+ * Changed bug reporting address at configure.ac:AC_INIT
+ * undo/redo in the calling application (Liviu Andronic)
+ * gtkspell_get_suggestions_menu() (Liviu Andronic)
+
+-------------------------------------------------------------------
+Tue Aug 12 16:32:34 CEST 2008 - lmichnovic@suse.cz
+
+- added intltool into BuildReq
+
+-------------------------------------------------------------------
+Tue Aug 12 16:01:36 CEST 2008 - lmichnovic@suse.cz
+
+- update to version 2.0.13
+ * Additional translations (see po/ChangeLog).
+ * Enchant support (support for pspell/aspell dropped) 
+- obsoletes *-enchant.patch *-gcc-err-fix.patch
+- version 2.0.12:
+ * Make debug, quiet and build_suggestion_menu static in
+   gtkspell.c to prevent exporting them.
+ * One additional translation (see po/ChangeLog).
+ * Move spell-checking library from Libs to Libs.private in
+   gtkspell-2.0.pc 
+ * Update autogen.sh to use intltool
+ * Fix warnings with -Wstrict-prototypes by Richard Laager
+
+
+-------------------------------------------------------------------
+Fri Feb  1 14:44:38 CET 2008 - lmichnovic@suse.cz
+
+- enabled enchant support in gtkspell (*-enchant.patch) 
+
+-------------------------------------------------------------------
+Wed Aug  8 00:20:57 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig/ in %post and %postun.
+
+-------------------------------------------------------------------
+Wed Feb  7 12:27:30 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552).
+
+-------------------------------------------------------------------
+Fri Jan 12 12:14:29 CET 2007 - sbrabec@suse.cz
+
+- More spec file cleanups.
+
+-------------------------------------------------------------------
+Mon Jan  8 13:43:58 CET 2007 - lmichnovic@suse.cz
+
+- changed prefix because GNOME moved to /usr
+
+-------------------------------------------------------------------
+Wed Dec 13 17:12:15 CST 2006 - maw@suse.de
+
+- Do some specfile cleanup.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:12 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep 19 09:50:53 CEST 2005 - pnemec@suse.cz
+
+- fix gcc 4.1 warning  
+
+-------------------------------------------------------------------
+Tue Aug  2 01:34:27 CEST 2005 - ro@suse.de
+
+- use gtk2-devel-packages in nfb 
+
+-------------------------------------------------------------------
+Tue May 31 10:42:51 CEST 2005 - ltinkl@suse.cz
+
+- update to 2.0.11
+
+-------------------------------------------------------------------
+Tue Apr 12 11:50:34 CEST 2005 - ltinkl@suse.cz
+
+- update to 2.0.10
+
+-------------------------------------------------------------------
+Wed Oct 27 12:55:47 CEST 2004 - ltinkl@suse.cz
+
+- update to version 2.0.8
+
+-------------------------------------------------------------------
+Sat Apr 24 16:58:21 CEST 2004 - sndirsch@suse.de
+
+- fixed neededforbuild (using x-devel-packages now)
+
+-------------------------------------------------------------------
+Wed Jan 28 10:50:57 CET 2004 - ltinkl@suse.cz
+
+- update to 2.0.5
+
+-------------------------------------------------------------------
+Sun Jan 11 10:06:44 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Dec  5 12:25:17 CET 2003 - ro@suse.de
+
+- fix typo in specfile (run_ldconfig on own line) 
+
+-------------------------------------------------------------------
+Tue Jul 22 07:50:07 CEST 2003 - hhetter@suse.de
+
+- really prefix to /opt/gnome 
+
+-------------------------------------------------------------------
+Mon Jul 14 15:42:30 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Fri Jun 06 00:26:32 CEST 2003 - ltinkl@suse.cz
+
+- initial version (2.0.4)
+

@@ -1,0 +1,91 @@
+--- pppd/main.c
++++ pppd/main.c
+@@ -1540,14 +1540,6 @@
+ 	int fd, pipefd[2];
+ 	char buf[1];
+ 
+-	/* make sure fds 0, 1, 2 are occupied (probably not necessary) */
+-	while ((fd = dup(fd_devnull)) >= 0) {
+-		if (fd > 2) {
+-			close(fd);
+-			break;
+-		}
+-	}
+-
+ 	if (pipe(pipefd) == -1)
+ 		pipefd[0] = pipefd[1] = -1;
+ 	pid = fork();
+@@ -1570,25 +1562,31 @@
+ 	tdb_close(pppdb);
+ #endif
+ 
+-	/* make sure infd, outfd and errfd won't get tromped on below */
+-	if (infd == 1 || infd == 2)
+-		infd = dup(infd);
+-	if (outfd == 0 || outfd == 2)
+-		outfd = dup(outfd);
+-	if (errfd == 0 || errfd == 1)
+-		errfd = dup(errfd);
+-
++        /* make sure fds 0, 1, 2 are occupied, so the duplicated  fds always > 2 */
++        while ((fd = dup(fd_devnull)) >= 0) {
++                if (fd > 2) {
++                        close(fd);
++                        break;
++                }
++        }
++
++        /* always copy fd's to avoid to use a already closed fd later */
++        {
++                int     fdi = infd, fdo = outfd;
++ 
++                infd = dup(infd);
++                outfd = dup(outfd);
++                if (errfd >= 0) {
++                        fd = errfd;
++                        errfd = dup(errfd);
++                        close(fd);
++                }
++                close(fdi);
++                close(fdo);
++        }
+ 	closelog();
+ 
+-	/* dup the in, out, err fds to 0, 1, 2 */
+-	if (infd != 0)
+-		dup2(infd, 0);
+-	if (outfd != 1)
+-		dup2(outfd, 1);
+-	if (errfd != 2)
+-		dup2(errfd, 2);
+-
+-	if (log_to_fd > 2)
++	if (log_to_fd > 0)
+ 		close(log_to_fd);
+ 	if (the_channel->close)
+ 		(*the_channel->close)();
+@@ -1596,12 +1594,18 @@
+ 		close(devfd);	/* some plugins don't have a close function */
+ 	close(fd_ppp);
+ 	close(fd_devnull);
+-	if (infd != 0)
+-		close(infd);
+-	if (outfd != 1)
+-		close(outfd);
+-	if (errfd != 2)
+-		close(errfd);
++
++	close(0);
++        dup2(infd, 0);
++        close(infd);
++        close(1);
++        dup2(outfd, 1);
++        close(outfd);
++        if (errfd >= 0) {
++                close(2);
++                dup2(errfd, 2);
++ 		close(errfd);
++	}
+ 
+ 	notify(fork_notifier, 0);
+ 	close(pipefd[0]);

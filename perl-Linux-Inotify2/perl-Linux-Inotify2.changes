@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Thu Nov  8 06:30:22 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.1
+   see /usr/share/doc/packages/perl-Linux-Inotify2/Changes
+
+  2.1  Fri Oct 26 03:16:03 CEST 2018
+  	- damn, left debugging code not caught by tests (reported by losyme).
+  
+  2.0  Thu Oct 25 03:19:08 CEST 2018
+  	- fix poll and read documentation w.r.t. errors - this changes the
+            documented API, but is how the module has always behaved.
+  	- mention https://lwn.net/Articles/605128/ in the docs.
+  	- new on_overflow callback, called for overflow events.
+          - new ->broadcast method that calls all watchers with some event.
+          - automatically broadcast overflow events to all watchers by default.
+  	- read now returns all events (except ignored ones), not just ones
+            it has registered watchers for (e.g. overflow events).
+  	- reduced dependencies (Mike Pomraning).
+          - add IN_EXCL_UNLINK flag.
+          - more efficient constant initialisation.
+
+-------------------------------------------------------------------
+Sat Nov 17 12:03:02 CET 2012 - ro@suse.de
+
+- fix check-build.sh to work with kernel > 3.0 
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:49 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Thu Jun 16 07:37:42 UTC 2011 - vcizek@novell.com
+
+- update to 1.22
+	- use a more useful definition of IN_xxx methods - any bits, not
+          a match. (pointed out by Anatoliy Grishayev).
+        - slightly reworked the documentation.
+
+-------------------------------------------------------------------
+Thu Mar 17 07:56:27 UTC 2011 - cfarrell@novell.com
+
+- license update: GPL+ or Artistic
+  See COPYING file. Same license as perl expands to GPL+ or Artistic
+
+-------------------------------------------------------------------
+Fri Dec 10 11:05:54 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:23 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Jan 25 16:19:08 CET 2010 - anicka@suse.cz
+
+- update to 1.21 
+ * fix a couple of typoes, as pointed out by Grant McLean.
+ * rely on common::sense for stricter namespace checking.
+ * include IN_DELETE_SELF in events that cancel watchers, as
+   the kernel seems to handle it this way only.
+ * require sys/inotify.h to be installed, remove the local
+   copy (patch by Adrian Bunk).
+ * update examples.
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Fri Nov 21 16:38:46 CET 2008 - ro@suse.de
+
+- update check-build.sh
+
+-------------------------------------------------------------------
+Tue Sep  4 01:04:12 CEST 2007 - ro@suse.de
+
+- remove buildrequires for certain kernel, does not
+  help in a build environment
+- added check-build.sh to require at least 2.6.17 on build host 
+
+-------------------------------------------------------------------
+Fri Feb 23 15:44:50 CET 2007 - tpatzig@suse.de
+
+- initial package build
+

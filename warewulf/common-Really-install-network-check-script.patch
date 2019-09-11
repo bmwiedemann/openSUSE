@@ -1,0 +1,30 @@
+From: Egbert Eich <eich@suse.com>
+Date: Tue Nov 27 21:22:04 2018 +0100
+Subject: common: Really install network check script
+Patch-mainline: Not yet
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: 0b8b8dadbec113ee32eb63933fca43aaa45d97b4
+References: 
+
+Make sure the network check script addded in:
+  6bf5579e106716fb408bdd2a33785d0ba8c16068
+  wwinit: Add check for properly configured network (#136)
+is really installed.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ cluster/libexec/wwinit/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+diff --git a/cluster/libexec/wwinit/Makefile.am b/cluster/libexec/wwinit/Makefile.am
+index d9f6596..6e3ffc7 100644
+--- a/cluster/libexec/wwinit/Makefile.am
++++ b/cluster/libexec/wwinit/Makefile.am
+@@ -1,6 +1,6 @@
+ wwinitdir = $(libexecdir)/warewulf/wwinit
+ 
+-dist_wwinit_SCRIPTS = 30-domain.init 40-authfiles.init 50-dhcp.init 50-nfsd.init 50-ntpd.init 50-ssh_keys.init 50-tftp.init 60-hostfile.init 90-bootstrap.init 91-vnfs.init
++dist_wwinit_SCRIPTS = 30-domain.init 40-authfiles.init 50-dhcp.init 50-network.init 50-nfsd.init 50-ntpd.init 50-ssh_keys.init 50-tftp.init 60-hostfile.init 90-bootstrap.init 91-vnfs.init
+ 
+ MAINTAINERCLEANFILES = Makefile.in
+ 

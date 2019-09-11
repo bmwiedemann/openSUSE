@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Mon Mar  3 13:32:58 CET 2014 - tiwai@suse.de
+
+- Run spec-cleaner
+- Remove obsoleted autoreq/autoprov tags
+
+-------------------------------------------------------------------
+Wed Jan 22 19:35:04 UTC 2014 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  No GPL-2.0 (onÃly) files in package
+
+-------------------------------------------------------------------
+Mon Dec 16 10:26:30 CET 2013 - tiwai@suse.de
+
+- Initial version 1.13: split from ladspa package
+- Patches carried from the original ladspa package:
+  alienwah-compile-fix.diff
+  alienwah.dif
+  alienwah-float_complex.diff
+

@@ -1,0 +1,10 @@
+/var/log/%{name}.log {
+    missingok
+    compress
+    notifempty
+    sharedscripts
+    create 0640 pgagent pgagent
+    nodateext
+    weekly
+    rotate 5
+}

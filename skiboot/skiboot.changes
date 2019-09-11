@@ -1,0 +1,211 @@
+-------------------------------------------------------------------
+Tue Jul 23 08:18:39 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix aligment error with gcc9.
+    - add errorlog-Prevent-alignment-error-buiding-with-gcc9.patch
+    - add hdata-vpd-fix-printing-char-0x00.patch
+    - add struct-p9_sbe_msg-doesn-t-need-to-be-packed.patch
+    - refresh libffs-fix-string-truncation.patch
+
+-------------------------------------------------------------------
+Wed Mar 13 17:31:30 UTC 2019 - michel normand <normand@linux.vnet.ibm.com>
+
+- version update to 6.2.2
+    - powercap: occ: Fix the powercapping range allowed for user
+    - astbmc: Enable IPMI HIOMAP for AMI platforms
+    - astbmc: Try IPMI HIOMAP for P8 (again)
+    - p8dtu: Enable HIOMAP support
+    - p8dtu: Configure BMC graphics
+    - ipmi-hiomap test case enhancements/fixes.
+    - libflash/ipmi-hiomap: Enforce message size for empty response
+    - libflash/ipmi-hiomap: Remove unused close handling
+    - libflash/ipmi-hiomap: Overhaul event handling
+    - libflash/ipmi-hiomap: Overhaul error handling
+    - libflash/ipmi-hiomap: Fix leak of msg in callback
+    - core/ipmi: Add ipmi sync messages to top of the list
+    - hw/bt: Introduce separate list for synchronous messages
+    - hw/bt: Fix message retry handler
+    - ipmi/power: Fix system reboot issue
+    - hw/bt: Add backend interface to disable ipmi message retry option
+    - qemu: bt device isn't always hanging off /
+    - hw/phb3/naples: Disable D-states
+
+-------------------------------------------------------------------
+Wed Feb 20 14:01:41 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- version update to 6.2.1
+  - skiboot 6.2.1 was released on Wednesday February 20th, 2019.
+    replaces skiboot-6.2 as current stable release in 6.2.x series.
+  - core/cpu: HID update race
+  - core/ipmi: Improve error message
+  - core/lock: Stop drop_my_locks() from always causing abort
+  - core/opal: Print PIR value in exit path, useful for debugging
+  - cpufeatures: Always advertise POWER8NVL as DD2
+  - firmware-versions: Add test case for parsing VERSION
+  - libflash/ecc: Fix compilation warning with gcc9
+    Fixes: https://github.com/open-power/skiboot/issues/218
+  - p9dsu: Fix p9dsu default variant
+  - p9dsu: Fix p9dsu slot tables
+  - for details refer to:
+    https://github.com/open-power/skiboot/commit/0647f2a
+
+-------------------------------------------------------------------
+Wed Feb 13 11:27:32 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim those %if..%endif guards that do not affect the build
+  result.
+- Use %make_install.
+
+-------------------------------------------------------------------
+Wed Feb 13 10:13:30 UTC 2019 - normand@linux.vnet.ibm.com
+
+- version update to 6.2
+  - skiboot v6.2 was released on Friday December 14th 2018.
+    It is the first release of skiboot 6.2,
+    which becomes the new stable release of skiboot.
+  - for details refer to:
+    https://github.com/open-power/skiboot/releases/tag/v6.2
+
+- remove hdata-i2c.c-fix-building-with-gcc8.patch now in 6.2
+- remove opal-prd-Fix-opal-prd-crash.patch now in 6.2
+
+-------------------------------------------------------------------
+Mon Feb 11 15:35:26 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix opal-prd crash when building with -pie (bsc#1124931).
+  - add opal-prd-Fix-opal-prd-crash.patch
+
+-------------------------------------------------------------------
+Wed Jan 30 09:18:58 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
+
+- skiboot.lid conflicts with qemu which is not allowed in backports so build
+  opal-firmware on OpenSUSE only (bsc#1123072).
+
+-------------------------------------------------------------------
+Thu Jan 24 21:43:04 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix build on Tumbleweed.
+  - add hdata-i2c.c-fix-building-with-gcc8.patch
+  - add libffs-fix-string-truncation.patch
+
+-------------------------------------------------------------------
+Mon Apr 23 06:36:42 UTC 2018 - normand@linux.vnet.ibm.com
+
+- Add few lines below about changes version 5.10
+
+-------------------------------------------------------------------
+Wed Apr 18 10:05:46 UTC 2018 - normand@linux.vnet.ibm.com
+
+- version update to 5.10
+  - skiboot v5.10 contains all bug fixes as of skiboot-5.9.8 and
+    skiboot-5.4.9. We do not forsee any further 5.9.x releases.
+  - Power9 support
+    Power saving -Secure and Trusted Boot
+    XIVE -PCI -PHB4 -CAPI -NVLINK2
+  - for details refer to:
+    https://github.com/open-power/skiboot/blob/master/doc/release-notes/skiboot-5.10.rst
+- remove increase_dpath_string.patch
+
+-------------------------------------------------------------------
+Sun Dec 17 16:39:21 UTC 2017 - normand@linux.vnet.ibm.com
+
+- version update to 5.9.6
+  - see https://github.com/open-power/skiboot/blob/master/doc/release-notes/skiboot-5.9.6.rst
+- add increase_dpath_string.patch
+
+-------------------------------------------------------------------
+Wed Apr 12 09:16:07 UTC 2017 - normand@linux.vnet.ibm.com
+
+- version update to 5.5.0
+  - see https://github.com/open-power/skiboot/blob/master/doc/release-notes/skiboot-5.5.0.rst
+- remove two patches now upstream:
+  0001-Make-links-target-reusable.patch
+  skiboot_gcc6_backtrace.patch
+
+-------------------------------------------------------------------
+Fri Jun 17 11:04:23 UTC 2016 - normand@linux.vnet.ibm.com
+
+- new skiboot_gcc6_backtrace.patch
+
+-------------------------------------------------------------------
+Tue Mar 29 12:38:37 UTC 2016 - dvaleev@suse.com
+
+- Reenable parallel build
+  0001-Make-links-target-reusable.patch (bsc#987201).
+
+-------------------------------------------------------------------
+Thu Mar 24 15:35:43 UTC 2016 - dvaleev@suse.com
+
+- Drop opal-prd.{service,socket}, use upstream one
+- Disable parallel builds
+  (see https://github.com/open-power/skiboot/issues/27, bsc#987201) 
+
+-------------------------------------------------------------------
+Tue Mar 22 14:08:23 UTC 2016 - jloeser@suse.com
+
+- version update to 5.2.0 (FATE#320438)
+  - see https://github.com/open-power/skiboot/blob/master/doc/release-notes/skiboot-5.2.0.txt
+
+-------------------------------------------------------------------
+Sat Jan 30 13:57:55 UTC 2016 - mpluskal@suse.com
+
+- Update to 5.1.13
+  * See https://github.com/open-power/skiboot/blob/master/doc/release-notes/skiboot-5.1.13.txt
+
+-------------------------------------------------------------------
+Sat Jan  2 10:08:58 UTC 2016 - mpluskal@suse.com
+
+- Update to 5.1.12
+  * opal-prd:
+    + Display an explict and obvious message if running on a 
+      system that does not support opal-prd, such as an IBM FSP 
+      based POWER system, where the FSP takes on the role of 
+      opal-prd.
+  * pflash:
+    + Fix a missing (C) header
+    + cherry-picked from master.
+  * General:
+    + Don't link with libgcc
+    + On some toolchains, we don't have libgcc available.
+  * POWER8 PHB (PCIe) specific:
+    + hw/phb3: Flush cache line after updating P/Q bits
+    + When doing an MSI EOI, we update the P and Q bits in the 
+      IVE.
+  * IBM FSP based machines:
+    + FSP: Give up PSI link on shutdown This clears up some 
+      erroneous SRCs (error logs) in some situations.
+    + Correctly report back Real Time Clock errors to host.
+
+-------------------------------------------------------------------
+Tue Oct 27 21:24:44 UTC 2015 - dvaleev@suse.com
+
+- Version update to 5.1.8
+  skiboot-5.1.8 is the 9th stable release of 5.1, it follows skiboot-5.1.7
+  (which was released October 13th, 2015).
+
+  Skiboot 5.1.8 contains all fixes from skiboot-5.1.7 and is a minor bug
+  fix release, with a single fix for recovery from a (rare) error.
+
+  Over skiboot-5.1.7, we have the following change:
+
+- opal/hmi: Fix a soft lockup issue on Hypervisor Maintenance Interrupt
+  for certain timebase errors.
+
+  We also introduce a timeout to handle the worst situation where all other
+  threads are badly stuck without setting a cleanup done bit. Under such
+  situation timeout will help to avoid soft lockups and report failure to
+  kernel.
+
+- Fix opal-prd.service file to include arguments 
+
+-------------------------------------------------------------------
+Tue Oct 20 12:01:19 UTC 2015 - dvaleev@suse.com
+
+- Add ppc64 architecture, drop i2c-tools.
+  i2c-dev.h is now shipped in linux-glibc-devel package 
+
+-------------------------------------------------------------------
+Mon Oct 12 15:12:52 UTC 2015 - dvaleev@suse.com
+
+- Initial version 5.1.6
+

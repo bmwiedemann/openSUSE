@@ -1,0 +1,31 @@
+From 960c6f4bf18a62c700a06d2171d9c2a94cdcd16c Mon Sep 17 00:00:00 2001
+From: Gaetan Nadon <memsize@videotron.ca>
+Date: Wed, 21 Aug 2013 15:45:06 -0400
+Subject: [PATCH] Fix ./configure error: "sysconfdir: command not found"
+
+There should be not brackets around sysconfdir.
+
+Note that the value is "${prefix}/etc" and can only be used
+later in Makefile.am.
+
+Signed-off-by: Gaetan Nadon <memsize@videotron.ca>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 52ffc01..0a8bede 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -47,7 +47,7 @@ AC_PROG_LN_S
+ AC_SUBST([rstartdir],[$libdir/X11/rstart])
+ 
+ # Define the root directory for config
+-AC_SUBST([configdir],[$(sysconfdir)/X11/rstart])
++AC_SUBST([configdir],[$sysconfdir/X11/rstart])
+ 
+ # Obtain compiler options from depedencies
+ PKG_CHECK_MODULES(RSTART, xproto)
+-- 
+1.8.4.5
+

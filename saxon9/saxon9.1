@@ -1,0 +1,25 @@
+.TH SAXON9 "1" "December 2012" "9.4" "User Commands"
+.SH NAME
+saxon9 \- Saxon XSLT 2.0 processor
+.SH SYNOPSIS
+.B saxon9
+[\fIoptions\fR] \fI-s:source-document -xsl:stylesheet \fR[ \fIparam=value\fR...]
+.SH DESCRIPTION
+saxon9 applies a given stylesheet to a given source XML document. 
+.SH OPTIONS
+See:
+.TP
+\fIhttp://www.saxonica.com/documentation/using-xsl/commandline.xml\fR
+.TP
+for command line usage.
+.SH FILES
+.B /etc/java/resolver/CatalogManager.properties
+.RS
+The central catalog manager configuration file used by \fBsaxon\fR
+for resolving XML entities and URIs if xml-commons-resolver is
+available.
+.SH "SEE ALSO"
+.BR saxon9q (1) ,
+.BR xsltproc (1) .
+.SH AUTHOR 
+Michael H. Kay <mike@saxonica.com>

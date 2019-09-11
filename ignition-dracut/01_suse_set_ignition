@@ -1,0 +1,5 @@
+#!/bin/sh
+exec tail -n +3 $0
+# On read-only systems /boot/writable provides a writeable
+# subvolume which also stores the Ignition flag file.
+set flagpath="/boot/writable"

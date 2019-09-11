@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://linuxtv.org/dtv-scan-tables.git</param>
+              <param name="changesrevision">59f4a9b1dfbd573bafe33d238a08da95e4f0263a</param></service></servicedata>

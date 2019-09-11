@@ -1,0 +1,62 @@
+From cad7da065e75dc1bc4be6c5ec13233f6be4a2540 Mon Sep 17 00:00:00 2001
+From: Gustavo Serra Scalet <gsscalet@gmail.com>
+Date: Tue, 2 Jun 2015 14:35:00 -0300
+Subject: [PATCH 04/15] PPC64: Add special instructions for PIC code setup
+
+In order to support to the following instruction described by ABI,
+dynasm needed to be updated:
+
+"""
+The following code might appear in a PIC code setup sequence to compute
+the distance from a function entry point to the TOC base:
+addis 2,12,.TOC.-func@ha
+addi 2,2,.TOC.-func@l
+"""
+
+Power Architecture 64-Bit ELF V2 ABI Specification, version 1.0, page 99
+Source: http://openpowerfoundation.org/technical/technical-resources/technical-specifications/
+---
+ dynasm/dasm_ppc.lua    |  2 ++
+ src/host/buildvm_asm.c | 10 ++++++++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/dynasm/dasm_ppc.lua b/dynasm/dasm_ppc.lua
+index b294d1063eed..4dc39da6a308 100644
+--- a/dynasm/dasm_ppc.lua
++++ b/dynasm/dasm_ppc.lua
+@@ -257,9 +257,11 @@ map_op = {
+   addic_3 =	"30000000RRI",
+   ["addic._3"] = "34000000RRI",
+   addi_3 =	"38000000RR0I",
++  addil_3 =	"38000000RR0J",
+   li_2 =	"38000000RI",
+   la_2 =	"38000000RD",
+   addis_3 =	"3c000000RR0I",
++  addisl_3 =	"3c000000RR0J",
+   lis_2 =	"3c000000RI",
+   lus_2 =	"3c000000RU",
+   bc_3 =	"40000000AAK",
+diff --git a/src/host/buildvm_asm.c b/src/host/buildvm_asm.c
+index 7b6c8b2dff2f..259ab9b6b094 100644
+--- a/src/host/buildvm_asm.c
++++ b/src/host/buildvm_asm.c
+@@ -143,6 +143,16 @@ static void emit_asm_wordreloc(BuildCtx *ctx, uint8_t *p, int n,
+   if ((ins >> 26) == 16) {
+     fprintf(ctx->fp, "\t%s %d, %d, " TOCPREFIX "%s\n",
+ 	    (ins & 1) ? "bcl" : "bc", (ins >> 21) & 31, (ins >> 16) & 31, sym);
++#if LJ_ARCH_PPC64
++  } else if ((ins >> 26) == 14) {
++    if (strcmp(sym, "TOC") < 0) {
++      fprintf(ctx->fp, "\taddi 2,2,%s\n", sym);
++    }
++  } else if ((ins >> 26) == 15) {
++    if (strcmp(sym, "TOC") < 0) {
++      fprintf(ctx->fp, "\taddis 2,12,%s\n", sym);
++    }
++#endif
+   } else if ((ins >> 26) == 18) {
+ #if LJ_ARCH_PPC64
+     char *suffix = strchr(sym, '@');
+-- 
+2.20.1
+

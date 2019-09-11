@@ -1,0 +1,3672 @@
+-------------------------------------------------------------------
+Sat Jul 20 11:26:28 UTC 2019 - chris@computersalat.de
+
+- Update to 6.0.20
+  https://community.otrs.com/release-notes-otrs-6-patch-level-20/
+- fix for boo#1141432
+  * (CVE-2019-13458, OSA-2019-12)
+    Information Disclosure
+    An attacker who is logged into OTRS as an agent user with
+    appropriate permissions can leverage OTRS tags in templates in
+    order to disclose hashed user passwords.
+- fix for boo#1141431
+  * (CVE-2019-13457, OSA-2019-11)
+    Information Disclosure
+    A customer user can use the search results to disclose information
+    from their “company” tickets (with the same CustomerID), even when
+    CustomerDisableCompanyTicketAccess setting is turned on.
+- fix for boo#1141430
+  * (CVE-2019-12746, OSA-2019-10)
+    Session ID Disclosure
+    A user logged into OTRS as an agent might unknowingly disclose
+    their session ID by sharing the link of an embedded ticket article
+    with third parties. This identifier can be then potentially abused
+    in order to impersonate the agent user.
+
+-------------------------------------------------------------------
+Sat Jun 29 10:55:31 UTC 2019 - chris@computersalat.de
+
+- Update to 6.0.19
+  https://community.otrs.com/release-notes-otrs-6-patch-level-19/
+- fix for boo#1137614
+  * (CVE-2019-12497, OSA-2019-09)
+    Information Disclosure
+    In the customer or external frontend, personal information of agents
+    can be disclosed like Name and mail address in external notes.
+- fix for boo#1137615
+  * (CVE-2019-12248, OSA-2019-08)
+    Loading External Image Resources
+    An attacker could send a malicious email to an OTRS system. If a
+    logged in agent user quotes it, the email could cause the browser
+    to load external image resources.
+- Update to 6.0.18
+  https://community.otrs.com/release-notes-otrs-6-patch-level-18/
+- fix for boo#1139406
+  * (CVE-2019-10066, OSA-2019-06)
+    Stored XSS
+    An attacker who is logged into OTRS as an agent with appropriate
+    permissions may create a carefully crafted calendar appointment
+    in order to cause execution of JavaScript in the context of OTRS.
+- fix for boo#1139406
+  * (CVE-2019-10067, OSA-2019-05)
+    Reflected and Stored XSS
+    An attacker who is logged into OTRS as an agent user with appropriate
+    permissions may manipulate the URL to cause execution of JavaScript
+    in the context of OTRS.
+- fix for boo#1139406
+  * (CVE-2019-9892, OSA-2019-04)
+    XXE Processing
+    An attacker who is logged into OTRS as an agent user with appropriate
+    permissions may try to import carefully crafted Report Statistics XML
+    that will result in reading of arbitrary files of OTRS filesystem.
+- Update to 6.0.17
+  https://community.otrs.com/release-notes-otrs-6-patch-level-17/
+- fix for boo#1129755
+  * (CVE-2019-9751, OSA-2019-02)
+    XSS
+    An attacker who is logged into OTRS as an admin user may manipulate
+    the URL to cause execution of JavaScript in the context of OTRS.
+- rebase otrs-perm_test.patch
+
+-------------------------------------------------------------------
+Sat Jun 22 22:33:42 UTC 2019 - chris@computersalat.de
+
+- fix changes file (chronological order)
+- update missing CVE for OSA-2018-10, OSA-2019-01
+
+-------------------------------------------------------------------
+Fri Feb 22 07:29:57 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Drop use of $FIRST_ARG in .spec
+
+  The use of $FIRST_ARG was probably required because of the
+  %service_* rpm macros were playing tricks with the shell positional
+  parameters. This is bad practice and error prones so let's assume
+  that no macros should do that anymore and hence it's safe to assume
+  that positional parameters remains unchanged after any rpm macro
+  call.
+
+-------------------------------------------------------------------
+Sat Feb  2 20:16:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Do not hide errors from useradd.
+- Remove pointless groupadd/useradd in %build (this always fails,
+  and the error is always ignored).
+- Replace %__-type macro indirections. Replace old $RPM_*
+  shell vars.
+- Trim redundant metadata from description.
+- Switch out strong PreReq by more lenient Requires(pre,post).
+
+-------------------------------------------------------------------
+Thu Jan 31 22:13:49 UTC 2019 - chris@computersalat.de
+
+- update rpmlintrc
+  * disable setBadness('permissions-unauthorized-file', 333)
+
+-------------------------------------------------------------------
+Tue Jan 29 15:16:30 UTC 2019 - chris@computersalat.de
+
+- Update to 6.0.16
+  https://community.otrs.com/release-notes-otrs-faq-6-patch-level-16/
+- fix for boo#1122560
+  * (CVE-2019-9752, OSA-2019-01)
+    Stored XSS
+    An attacker who is logged into OTRS as an agent or a customer user
+    may upload a carefully crafted resource in order to cause execution
+    of JavaScript in the context of OTRS.
+- Update to 6.0.15
+  https://community.otrs.com/release-notes-otrs-faq-6-patch-level-15/
+- fix typo in itsm.README
+- fix permissions
+  * add missing trailing /
+- rework rpmlintrc
+  * addFilter pem-certificate
+  * keep permissions-unauthorized-file for other DISTS than Factory
+
+-------------------------------------------------------------------
+Sat Dec  1 20:27:14 UTC 2018 - chris@computersalat.de
+
+- Update to 6.0.14
+  https://community.otrs.com/release-notes-otrs-faq-6-patch-level-14/
+- fix Url
+- update License: AGPL-3.0-only -> GPL-3.0-or-later
+- improve itsm-update.sh
+- rebase otrs-perm_test.patch
+- update
+  * UPGRADING.SUSE
+  * ZZZAuto.pm
+  * otrs.README.de
+  * otrs.README.en
+- remove SysVinit stuff and scripts
+  * otrs.init
+- rework permissions handling vor @OTRS_ROOT@/var/tmp
+
+-------------------------------------------------------------------
+Thu Nov 29 14:46:21 UTC 2018 - chris@computersalat.de
+
+- Update to 5.0.32
+  * https://community.otrs.com/release-notes-otrs-5s-patch-level-32/
+- fix for boo#1116004
+  * (CVE-2018-20800, OSA-2018-10)
+    Data loss during migration
+    Users updating to OTRS 6.0.13 (also patchlevel updates) or 5.0.31
+    (only major updates) will experience data loss in their agent
+    preferences table.
+- fix for boo#1115416
+  * (CVE-2018-19141, OSA-2018-09)
+    Privilege Escalation
+    An attacker who is logged into OTRS as an admin user may manipulate
+    the URL to cause execution of JavaScript in the context of OTRS.
+  * (CVE-2018-19143, OSA-2018-07)
+    Remote File Deletion
+    An attacker who is logged into OTRS as a user may manipulate the
+    submission form to cause deletion of arbitrary files that the
+    OTRS web server user has write access to.
+
+-------------------------------------------------------------------
+Wed Sep 26 13:33:59 UTC 2018 - chris@computersalat.de
+
+- Update to 5.0.30
+  * https://community.otrs.com/release-notes-otrs-5s-patch-level-30/
+  * https://community.otrs.com/release-notes-otrs-5s-patch-level-29/
+- fix for boo#1109822 (CVE-2018-16586, OSA-2018-05)
+  * Loading External Image or CSS Resources
+    An attacker could send a malicious email to an OTRS system. If a
+    logged in user opens it, the email could cause the browser to
+    load external image or CSS resources.
+- fix for boo#1109823 (CVE-2018-16587, OSA-2018-04)
+  * Remote File Deletion
+    An attacker could send a malicious email to an OTRS system. If a user
+    with admin permissions opens it, it causes deletions of arbitrary
+    files that the OTRS web server user has write access to.
+- fix for boo#1103800 (CVE-2018-14593, OSA-2018-03)
+  * Privilege Escalation
+    An attacker who is logged into OTRS as a user may escalate their
+    privileges by accessing a specially crafted URL.
+- improve itsm-update.sh
+- fix permissions file
+  * @OTRS_ROOT@/var/tmp -> @OTRS_ROOT@/var/tmp/
+
+-------------------------------------------------------------------
+Wed Jul 11 14:07:48 UTC 2018 - chris@computersalat.de
+
+- Update to 5.0.28
+  * Renamed 'OTRS Free' to '((OTRS)) Community Edition'.
+  * https://github.com/OTRS/otrs/blob/rel-5_0_28/CHANGES.md
+- improve itsm-update.sh
+- fix otrs.service
+  * remove otrs-scheduler.service from [Unit]After
+
+-------------------------------------------------------------------
+Wed Jan 24 13:43:12 UTC 2018 - chris@computersalat.de
+
+- fix wrong fillup_only call
+
+-------------------------------------------------------------------
+Thu Dec 28 23:03:52 UTC 2017 - chris@computersalat.de
+
+- Update to 5.0.26
+  * https://www.otrs.com/release-notes-otrs-5s-patch-level-26
+  * https://www.otrs.com/release-notes-otrsitsm-module-5s-patch-level-26/
+- remove obsolete
+  * otrs-scheduler.service
+  * otrs-scheduler.init
+
+-------------------------------------------------------------------
+Thu Dec 28 01:24:19 UTC 2017 - chris@computersalat.de
+
+- fix for boo#1073747 (CVE-2017-17476, OSA-2017-10)
+  * Session hijacking
+    An attacker can send a specially prepared email to an OTRS system.
+    If this system has cookie support disabled, and a logged in agent
+    clicks a link in this email, the session information could be
+    leaked to external systems, allowing the attacker to take over
+    the agent’s session.
+- Update to 4.0.28
+  * https://github.com/OTRS/otrs/blob/rel-4_0_28/CHANGES.md
+- improve itsm-update.sh
+
+-------------------------------------------------------------------
+Fri Dec  8 01:20:25 UTC 2017 - chris@computersalat.de
+
+- fix for boo#1071797 (CVE-2017-16921, OSA-2017-09)
+  * Remote code execution:
+    An attacker who is logged into OTRS as an agent can manipulate
+     form parameters and execute arbitrary shell commands with the
+     permissions of the OTRS or web server user.
+- fix for boo#1071799 (CVE-2017-16854, OSA-2017-08)
+  * Information Disclosure:
+    An attacker who is logged into OTRS as a customer can use the
+     ticket search form to disclose internal article information
+     of their customer tickets.
+- Update to 4.0.27
+  * https://github.com/OTRS/otrs/blob/rel-4_0_27/CHANGES.md 
+
+-------------------------------------------------------------------
+Thu Nov 23 13:52:23 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Nov 22 12:49:38 UTC 2017 - chris@computersalat.de
+
+- fix for boo#1069391 (CVE-2017-16664, OSA-2017-07)
+  * vulnerabilities discovered in the OTRS framework:
+    An attacker who is logged into OTRS as an agent can request special
+     URLs from OTRS which can lead to the execution of shell commands
+     with the permissions of the web server user.
+- Update to 4.0.26
+  * Improved handling of spell checker.
+  * https://github.com/OTRS/otrs/blob/rel-4_0_26/CHANGES.md 
+- improve itsm-update.sh
+  * only package latest packages (<10)
+- rebase patches
+  * otrs-httpd_conf.patch
+  * otrs-perm_test.patch
+- fix permissions (SLE 11)
+
+-------------------------------------------------------------------
+Sat Sep 30 21:42:39 UTC 2017 - chris@computersalat.de
+
+- improve itsm-update.sh to provide
+  * current and previous itsm packages
+  * exclude PreRelease packages (*x.y.9?.opm)
+- replace itsm tarball so generated
+
+-------------------------------------------------------------------
+Sun Sep 24 20:34:53 UTC 2017 - astieger@suse.com
+
+- fix and make universal itsm-update.sh
+- replace itsm tarball so generated
+
+-------------------------------------------------------------------
+Sat Sep 23 18:49:33 UTC 2017 - chris@computersalat.de
+
+- fix for boo#1059691 (CVE-2017-14635)
+  * Code Injection / Privilege Escalation OTRS
+- Update to 4.0.25
+  * Improved validation in statistic import and export.
+    see OSA-2017-04 (Code Injection / Privilege Escalation OTRS)
+  * for more info see https://www.otrs.com/release-notes-otrs-4-patch-level-25/
+
+-------------------------------------------------------------------
+Mon Jun 12 15:48:12 UTC 2017 - chris@computersalat.de
+
+- Update to 4.0.24
+  * for more info see https://www.otrs.com/release-notes-otrs-4-patch-level-24/
+- update UPGRADING.SUSE, otrs.README.??, ZZZAuto.pm
+- rework/rebase patches
+  * otrs-httpd_conf.patch
+  * otrs-perm_test.patch
+- add systemd service files and helper
+  * otrs.service, otrs.service.helper.sh
+  * otrs-scheduler.service
+- rework permissions
+  * add otrs.permissions file for var/tmp, cause 'otrs' and 'wwwrun'
+    are writing there
+
+-------------------------------------------------------------------
+Wed Jun  7 13:17:55 UTC 2017 - chris@computersalat.de
+
+- fix for boo#1043086
+  * Incorrect Access Control in OTRS
+- Update to 3.3.17 2017-06-06
+  * Improved SecureMode detection in Installer.
+     see OSA-2017-03 (CVE-2017-9324)
+  * Bug#12753 - Function "SystemDataGroupGet" has problems with empty
+     values in oracle.
+  * Bug#9941 - Articles with multi-byte characters that claim to be
+     UTF-8 will not display in the browser.
+  * Bug#7961 - customer search should not return results for internal
+     articles.
+     see OSA-2017-02
+  * Bug#12391 - Base64 encoded image does not display in article.
+  * Bug#12461 - Chrome can not display attached PDF files since 5.0.14.
+
+-------------------------------------------------------------------
+Wed Nov  2 23:06:38 UTC 2016 - chris@computersalat.de
+
+- fix for boo#1008017
+  * execution of JavaScript in OTRS context by opening malicious attachment
+- Update to 3.3.16
+  * Improved sandboxing of displayed attachments.
+     see OSA-2016-02 (CVE-2016-9139)
+  * Added package verification information to otrs.PackageManager.pl,
+    use bin/otrs.PackageManager.pl -a list -e (to show package verification
+    information) or bin/otrs.PackageManager.pl -a list -e -c
+    (to show package verification information deleting the cache before).
+  * Bug#11959 – 500 Can’t connect to www.otrs.com/product.xml:443.
+  * Bug#11870 – Missing quoting in Layout::AgentQueueListOption().
+  * Bug#11802 – Customer user can get access to all ticket data.
+- fix ZZZAuto.pm
+  * do not replace existing file (manually merge needed for ITSM)
+
+-------------------------------------------------------------------
+Sun Oct 30 00:25:41 UTC 2016 - chris@computersalat.de
+
+- fix itsm package
+  * version is 3.3.14
+- rebase otrs-3.3.15-perm_test.patch to otrs-perm_test.patch
+- merge otrs-httpd_conf-apache2_4.patch into otrs-httpd_conf.patch 
+
+-------------------------------------------------------------------
+Sat Oct 24 09:07:33 UTC 2015 - aj@ajaissle.de
+
+- Update to 3.3.15
+ * HTML emails not properly displayed (parts missing).
+ * Fixed a nasty JSON::XS crash on some platforms.
+ * Updated CPAN module Proc::Daemon to version 0.21.
+ * TransitionAction TicketLockSet typo, thanks to Torsten Thau (c.a.p.e. IT).
+ * auto reply with DynamicFields from webservice.
+ * Added option to package manager list action, to show deployment info of installed packages.
+ * Reply in process ticket on webrequest article  fills customer mail into "cc" instead of "to".
+
+- Changes 3.3.14
+ * Package installation/uninstallation leads to endless loop.
+ * Lang parameter not correctly validated.
+ * Search for multiple ticket numbers with GenericInterface.
+
+- Changes 3.3.13
+ * Updated translation files.
+ * Refresh bug on process client interface using ie8
+ * Adding email recipients via addressbook does not update customer information.
+ * Wrong column encoding in Kernel::System::Notification::NotificationGet().
+ * Generic Agent ticket actions can't be unselect.
+ * GI: Use of uninitialized value in string ne at AdminGenericInterfaceWebservice.pm.
+ * Reply in process ticket on webrequest article  fills customer mail into "cc" instead of "to".
+ * Download button for dashboard stats visible even if no permissions for AgentStats exist..
+ * Invalid utf-8 parameters not filtered sufficciently.
+ * DynamicField Filter in AgentDashboard accepts only one value.
+ * Can't select customer and/or public interface in AdminACL.
+ * Incorrect utf8 in ZZZAuto.pm (via SysConfig) also for hash keys.
+ * Added possibility to turn of SSL certificate validation.
+ * SLA can not be set over Free Fields Dialog.
+ * Not possible to change customer.
+ * Error from GenericInterface using SOAP and TicketGet operation.
+ * Fixed problem with missing TimeObject in GenericInterface/Event/Handler.pm.
+ * Updated CPAN module Crypt::PasswdMD5 to version 1.40 to fix problems with perl 5.20.
+
+- Changes 3.3.12
+ * Ticket owner is not shown regardless what is configured, thanks to Renee Bäcker.
+ * Adressbook search does not permit to add contacts via click.
+ * Wrong sortation of Ticket Overview settings.
+ * Missing translations in Dashboard and TicketOverview settings.
+ * Internal Server Error, instead of warning.
+ * Dashlet: Filter Attributes with more then one CustomerID doesn't work.
+ * SQL error with "0 oracle" for article body in Ticket Search.
+ * Incorrect utf8 in ZZZAuto.pm (via SysConfig).
+ * ProcessManagement: TransitionAction delete does not check if is used.
+ * GPG option 0xlong breaks decryption of emails.
+ * ORA-03113 Error after scheduler start.
+ * /etc/init.d/otrs running httpd is not detected on CentOS 7.
+ * Unable to change password in customer interface.
+ * Dynamic Field shown information in customer interface is not consistent with agent interface.
+ * Error: No Process configured! - Agent interface.
+ * Error while splitting ticket.
+ * ActivityDialogEntityID not working in ACLs from Process screens reducing States.
+
+- Rebased otrs-perm.patch as otrs-3.3.15-perm_test.patch
+- Added itsm-update.sh, a script to update the itsm source we use
+- Updated sources
+ * otrs.README.de
+ * otrs.README.en
+ * UPGRADING.SuSE -> UPGRADING.SUSE
+ * ZZZAuto.pm
+
+-------------------------------------------------------------------
+Mon Dec 29 11:06:45 UTC 2014 - chris@computersalat.de
+
+- fix for boo#910988 (CVE-2014-9324)
+- update to 3.3.11
+  fix for OSA-2014-06 (CVE-2014-9324)
+  * Updated translations, thanks to all translators.
+  * Bug#10904 – Upon entering CIC, search only returns hits during
+    the first search.
+  * Bug#10944 – Multiple selection in Tree Selection also affects
+    filtered elements.
+  * Follow-up fix for Bug#6284 – Problem with unicode characters
+    when using FastCGI.
+  * Bug#10830 – Textarea Limitation in Generic Agent.
+  * Bug#10920 – ProcessManagement: Deleting Activities from canvas
+    does not update process layout.
+  * Bug#10801 – Editor is extremely slow with large articles.
+  * Enhanced Permission Checks in GenericInterface Ticket Connector.
+  * Bug#10634 – ProcessManagement: Can not use an arbitrary email
+    address as a CustomerUser.
+  * Bug#10839 – ACL cannot set possible TicketType in
+    AgentTicketPhone and AgentTicketEmail.
+  * Bug#10776 – Medium and Large view don’t indicate active
+    filters.
+  * Bug#10808 – Set of pending time is not working at all in
+    Frontend::Agent::Ticket::ViewNote.
+  * Bug#10892 – TicketActionsPerTicket open multiple popups at
+    TicketOverview.
+  * Bug#10857 – JS added too often in AgentTicketOverviewSmall.
+  * Bug#10639 – Set of pending time/state not working properly
+    (process management).
+  * Bug#10893 – Missing log name partitions in Service Center.
+  * Bug#10879 – GenericInterfae: TicketSearch operation does not
+    take escalation parameters.
+  * Bug#10812 – SOAP Response is always in version SOAP 1.2.
+  * Bug#10083 – SMIME and Email address detection is case sensitive
+    (for the right part)..
+  * Bug#10826 – German – Translation Problem.
+  * Bug#10678 – Dates off by one on area diagram in dashboard widget.
+  * Bug#7369 – LinkQoute fails for some characters in hash or
+    parameter.
+  * Bug#8404 – Wrong sorting of responses dropdown in TicketZoom.
+  * Bug#8781 – 508 Compliance: In Ticket Overviews the title
+    attribute of large view link is incorrect.
+  * Bug#10669 – Maxlength validation of textarea dynamic fields does
+    not work correctly in IE.
+  * Bug#10471 – Missing translations for tooltips of
+    TicketOverviewSmall columns.
+  * Bug#10850 – Double-quoted special characters in title of dynamic
+    field sidebar output in TicketZoom.
+  * Bug#10805 – Open tickets in 3 days show right function but wrong
+    number.
+  * Bug#10845 – No date search if TimeInputFormat is Input.
+  * Bug#10706 – dashboard settings are lost by different user login.
+  * Bug#10577 – Service Center does not show MOD_PERL version on
+    Ubuntu 14.04.
+  * Bug#10679 – Texts in notification tags loose their empty lines
+    and spaces.
+
+-------------------------------------------------------------------
+Thu Nov 27 11:41:00 UTC 2014 - Led <ledest@gmail.com>
+
+- One more fix after fix bashisms in previous commit
+
+-------------------------------------------------------------------
+Sat Nov 08 06:04:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post script
+
+-------------------------------------------------------------------
+Tue Sep 30 21:08:46 UTC 2014 - chris@computersalat.de
+
+- fix changelog
+  * update 3.3.9 with 3.3.9 data
+  * add missing update info for OTRS::ITSM
+- update itsm-3.3.9 Source
+
+-------------------------------------------------------------------
+Tue Sep 30 06:21:51 UTC 2014 - alexandre@exatati.com.br
+
+- Update to 3.3.9:
+  https://github.com/OTRS/otrs/blob/rel-3_3_9/CHANGES.md
+  * Bug#10697 - Column name in CSV report of stats is lowercase.
+  * Bug#10652 - Process tickets without any articles create empty
+    lines in AgentTicketSearch CSV result file.
+  * Bug#10607 - SQL Box can change the database.
+  * Bug#10700 - Bugfix: TimeUnits not written if E-Mail is sent via
+    BulkAction.
+  * Bug#10699 - Cannot add new customer (company).
+  * Bug#10497 - CustomerUser secondary database access opens multitude
+    of database connections.
+  * Bug#9756 - Owner will be set after QueueMove screen AND undo.
+  * Bug#10606 - Dynamic fields in dashboard overview are empty.
+  * Updated Danish translation, thanks to Lars Jørgensen.
+  * Bug#10670 - It is possible to start the scheduler more than once.
+  * Bug#10515 - Problem with column filter sorting
+  * Bug#10598 - Field tags not parsed properly in auto response subject.
+  * Bug#10658 - Issue with multiple customer company backends.
+  * Bug#10622 - eMail address only with uppercases - wrong display.
+  * Bug#10596 - Manual Generic Agent Run doesn't show archived tickets
+    as affected.
+  * Bug#10601 - ExternalTicketNumberRecognition produces errors in log
+    file.
+  * Bug#9851 - Unlocking a ticket in the small view results in
+    AgentTicketZoom.
+  * Bug#10612 - Wrong Time in DashboardField "Changed", thanks to S7.
+  * Bug#10595 - Standard Replies are false sorted in Ticket Zoom
+    select box.
+  * Bug#10534 - Wildcard hacking the customer information center,
+    thanks to S7.
+  * Bug#10597 - Process list description column doesn't support line
+    breaks, thanks to S7.
+  * Bug#10586 - In Customer Portal no attachments are shown.
+  * Bug#6601 - Changing search options changes order of fields, thanks
+    to S7.
+  * Bug#10246 - ProcessManagement: ConditionLinking OR in a Transition
+    doesn't work.
+  * Bug#10559 - "Previous Owner" don't use the FirstnameLastnameOrder
+    configuration.
+  * Bug#10532 - PostMasterMailbox.pl hangs parsing mails.
+  * Bug#10578 - Service selection in GA Ticket Action allows multi
+    select.
+- update OTRS::ITSM to 3.3.9
+  * Bug#10330 – ITSM Impact field displayed with Key instead of Value.
+
+-------------------------------------------------------------------
+Tue Jul 29 16:26:59 UTC 2014 - chris@computersalat.de
+
+- update to 3.3.8
+  * Bug#10524 – Internal Dynamic Fields in Activity Dialog.
+  * Bug#10562 – Inconsistent displaying of “CustomerID” value.
+  * Bug#10508 – (Agent|Customer)TicketProcess javascript errors when
+     uploading attachments/having server errors.
+  * Bug#10521 – OutputFilterText AutoLink CVE.
+  * Bug#10430 – backup.pl doesn’t work with PostgreSQL unix sockets.
+  * Bug#5012 – Merging a watched ticket into another should “transfer”
+     the Watch status to the final ticket, thanks to Michiel Beijen!
+  * Bug#10544 – Upgrade to OTRS 3.3.7 breaks connection to external
+     customer user tables.
+  * Bug#10535 – ACLListGet() produces DB warning message.
+  * Bug#10163 – Subject shows only 30 characters.
+  * Bug#10519 – Opening and closing popups in ProcessManagement leads
+     to performance issues.
+  * Bug#10513 – Some SupportData Plugin Identifiers ends with ::.
+  * Bug#8494 – Possibility to split quotes in rich text editor.
+  * Bug#10491 – CIC not always accessible via TicketZoom.
+  * Bug#10427 – Bulk action locks tickets – cancel keeps them locked.
+- update OTRS::ITSM to 3.3.8
+  * Bug# 10558 – Slow CI search for classes with a large MaxCount on
+     a value and sub values.
+  * Bug# 10570 – Deleting ITSM Change search templates does not work.
+
+-------------------------------------------------------------------
+Mon Jun 30 21:32:11 UTC 2014 - jamesp@vicidial.com
+
+- add otrs-httpd_conf-apache2_4.patch to fix httpd.conf for apache 2.4
+  * Apache2 on OpenSuSE v.13.1 has the mod_access_compat.c module
+    statically compiled into the Apache2 core. This means it can't
+    be unloaded and the older pre-2.4 access directives must be 
+    used. Since it is not advised to mix pre and post 2.4 access
+    methods the configuration file had to be modified to look for 
+    this static module and load pre-2.4 directives if found on 
+    Apache 2.4. It should be forward compatible if the mod_access
+    compat.c module become dynamic in the future and is not loaded.
+
+-------------------------------------------------------------------
+Thu May 22 12:07:47 UTC 2014 - chris@computersalat.de
+
+- update to 3.3.7
+  * Fixed bug#10475 - otrs.RebuildFulltextIndex.pl - multiple output lines.
+  * Updated Japanese translation, thanks to Toshihiro Takehara.
+  * Updated Swedish translation, thanks to Peter Krantz.
+  * Added CPAN module Archive::Tar.
+  * Split otrs.checksum.pl functionality it is only able to work in compare mode.
+  * Extended package object to be able to generate an MD5Sum of all files within
+    a package.
+  * Extended email send capabilities to include custom X-Headers.
+  * Extended the OTRS services to be able to create a support bundle file.
+  * Fixed bug#9350 - Initial notes by ticket split not visible it the ticket zoom.
+  * Fixed bug#10501 - Support-Data Swap plugin reports KB instead of MB.
+  * Fixed bug#10458 - Can't use system registration with some OTRS-IDs.
+  * Fixed bug#10470 - Need FormID! error when embedding image when creating a
+    Process Ticket.
+  * Fixed bug#9876 - CaseSensitive option wrong in CustomerCompany.
+  * Removed OTRS Scheduler Service startup files in favor of Watchdog mode via
+    cron jobs.
+  * Fixed bug#10468 - Wrong regexp in Kernel/System/HTMLUtils.pm line 171.
+  * Fixed bug#10469 - Adding Links in AgentLinkObject not possible if no search
+    term was selected.
+  * Fixed bug#10428 - Event Notification ArticleSend Loop.
+  * Fixed bug#10441 - Eventbased notification - infinite loop.
+  * Fixed bug#10462 - Translation of static statistic widgets (Dashboard).
+  * Added OTRS Scheduler Watchdog mode.
+  * Fixed bug#10464 - Closing link delete screen in AgentTicketPhone reloads
+    page for temporary links.
+  * Fixed bug#10461 - Link to CustomerTicketProcess in Customer interface
+    displayed even though no process is available..
+  * Fixed bug#8253 - Missing hover texts for actions in German translation
+    of AgentTicketZoom.
+  * Fixed bug#10442 - Translation of states in statistic widgets (Dashboard).
+  * Fixed bug#10395 - E-mail header parsing bug.
+  * Fixed bug#10394 - rfc822 attachments name creating bug and validation
+    enhancement.
+  * Fixed bug#10449 - Safer commands to upgrade OTRS using PostgreSQL.
+  * Fixed bug#10402 - Transition or Transition Action popup a login page.
+  * Fixed bug#10446 - otrs.PostMasterMailbox.pl Unknown encoding
+    '3DISO-8859-2?=' at /usr/local/otrs/Kernel/System/Encode.pm line 367.
+  * Fixed bug#8207 - Wrong encoding in graphs.
+  * Fixed bug#10416 - Customer selection is not translated.
+  * Fixed bug#9098 - The system still consider the customer_ids, even after
+    field is empty on table customer_user.
+  * Fixed bug#10202 - Process Modules, Dynamic Fields, and ACLs with AJAX update.
+  * Fixed bug#10432 - ACLs not working correctly in CustomerTicketZoom
+    (Message Followup).
+  * Fixed bug#10436 - Error message in syslog about ACL then there is no ACL
+    defined.
+  * Fixed bug#10438 - Strange sorting of columns in Ticket Dashboard widgets.
+  * Fixed bug#10425 - Customer Information in AgentTicketZoom.
+  * Followup for bug#10340 - Dynamic field not visible in queue view screen
+    (AgentTicketOverviewSmall.dtl).
+  * Fixed bug#10406 - Ticket Templates Type "Create" will be not translated.
+  * Fixed bug#10378 - SessionID created with generic interface wont work using
+    it as Agent.
+  * Fixed bug#10399 - Columns Settings lost after search.
+  * Fixed bug#10431 - Fallback configuration for scheduler log is wrong.
+  * Fixed bug#10426 - Scheduler RegistrationUpdate task dies with PostgreSQL DB.
+  * Fixed bug#10362 - .procmailrc is reset with wrong permissions on
+    otrs.SetPermisssion.pl execution.
+  * Fixed bug#10350 - Events Ticket Calender: In case
+    TicketCalendarStartTime=TicketCalendarEndTime, displayed ticket event time
+    frame always 2 hours.
+  * Fixed bug#9970 - Existing sequences on oracle databases produces errors.
+  * Enhanced DiskSpacePatitions SupportDataCollector plugin to deal correctly
+    with multiple partitions with the same name.
+  * Followup for bug#10130 - Events Ticket Calendar not working.
+- update OTRS::ITSM to 3.3.7
+  * Bug# 10146 – ConfigItem search for Integer shows all CIs in results.
+  * Bug# 10487 – ACL Editor did not include Decision and ITSM field action.
+
+-------------------------------------------------------------------
+Thu Apr  3 22:00:49 UTC 2014 - chris@computersalat.de
+
+- fix for bnc#871758 (CVE-2014-2553)
+- update to 3.3.6
+   fix for OSA-2014-04 (CVE-2014-2553)
+   fix for OSA-2014-05 (CVE-2014-2554)
+  * Updated French translation, thanks to Guillaume Houdmon.
+  * Extended the OTRS system registration to optionally also send the
+    support assessment data along with the system registration data.
+    Support assessment data is improved and extended and can be
+    accessed in the new Service Center module of the admin area.
+  * Fixed bug#10405 - When using the search feature of the tree
+    selection overlay, one is not able to expand subtrees of matching
+    entries.
+  * Fixed bug#10340 - Dynamic field not visible in queue view screen
+    (AgentTicketOverviewSmall.dtl).
+  * Fixed bug#10400 - AgentTicketProccess will not use error messages
+    of dynamic field drivers.
+  * Fixed bug#10397 - DynamicField configuration in SysConfig
+    'DefaultOverviewColumns' causes JS error.
+  * Fixed bug#9592 - Ticket history overflows for dynamic field.
+  * Fixed bug#10368 - Ticket title isn't shown.
+  * Updated Japanese translation, thanks to Toshihiro Takehara..
+  * Fixed bug#10381 - AgentTicket*View has invalid SortBy options.
+  * Fixed bug#10383 - Missing 'DefaultColumns' SysConfig for
+    AgentTicketSearch view.
+  * Fixed bug#10384 - out-of-office information not displayed in
+    Ticket Zoom.
+  * Fixed bug#10379 - ACL Not Working.
+  * Fixed bug#10385 - Wrong Queue ID for Errors and FormUpdate in
+    AgentTicketActionCommon.
+  * Fixed bug#10369 - Ticket::Frontend::Quote does not work with
+    RichText Editor.
+  * Improved handling of cachekeys in Stats.pm to prevent cacheing
+    problems in the dashboard stats.
+  * Fixed bug#10334 - Deleting the attachment deletes the recepients
+    too.
+  * Fixed bug#10374 - OTRS does not protect against clickjacking.
+  * Fixed bug#10364 - Inline images displayed as attachment in SMIME
+    and PGP signed messages.
+  * Fixed bug#10251 - SMIME signing fail on mails with attachements.
+  * Fixed bug#10277 - Statistics per agent also shows invalid agents.
+  * Fixed bug#10318 - Dynamic Field: Multi Select does not allow
+    empty values.
+  * Fixed bug#10365 - Custom State types not working with
+    "otrs.PendingJobs.pl" any more.
+  * Fixed bug#10349 - System Email notification external not
+    highlighted correctly.
+  * Fixed bug#10361 - Incorrect handling of special characters in
+    DynamicFields.
+  * Fixed bug#10324 - Customer user field still marked as empty even
+    after providing data.
+  * Fixed bug#10019 - Tickets via "In line action bar" cannot be moved.
+  * Fixed bug#10283 - MouseOver on the Transitions does not show
+    transition actions.
+  * Fixed bug#10241 - ACL-Editor Bug..
+  * Fixed bug#10338 - Empty Content-ID causes strange result ->
+    HTML-tags are "corrupted".
+  * Fixed bug#9951 - Line breaks at the end of salutation templates
+    are not saved.
+  * Fixed bug#10275 - Problem with encoding in attachment.
+  * Fixed bug#10085 - Postmaster incorrectly decodes headers, causes
+    garbage in the database.
+  * Fixed bug#10336 - Problem with symlinked theme directories.
+  * Fixed bug#10328 - Error in AdminPostMasterFilter if the name of
+    DynamicField changed.
+  * Fixed bug#10264 - Description (espacially article description) in
+    processes are shown on improper place.
+  * Fixed bug#10244 - No mouseover popup for fields in ActivityDialogs.
+  * Fixed bug#10240 - Restricting process list by ACLs is only working
+    with UserID.
+  * Fixed bug#10299 - "Ouf of Office" shows inactive agents.
+  * Fixed bug#10321 - Applying Filters to tickets in Status View or
+    Queue View will log out session..
+  * Fixed bug#9600 - When a ticket is deleted by generic agent job,
+    No such TicketID error.
+  * Fixed bug#10057 - Advanced Search Window is Cramped and Confusing.
+  * Fixed bug#9675 - No use Ticket::Hook in AgentLinkObject.
+  * Updated Japanese translation, thanks to Norihiro Tanaka!
+  * Fixed bug#10300 - Special character in customer id cuts off string.
+  * Fixed bug#10309 - mails with an empty return-path header must not
+    trigger auto responses in OTRS.
+  * Fixed bug#10245 - Use of uninitialized value $Param{"Value2"} in
+    string.
+  * Fixed bug#10182 - Customer email suddenly treated by OTRS as
+    'email-internal'.
+  * Fixed bug#10285 - No use Ticket::Hook in CustomerTicketZoom.
+  * Fixed bug#9787 - Queue field doesn't appear in ProcessMgmt.
+  * Fixed bug#10222 - Customer search during ticket creation - OTRS
+    shows details also if no customer match the search.
+  * Fixed bug#10259 - GenericInterface: mapping key can't map from / to 0.
+- rebased perm patch
+- update httpd_conf patch
+
+-------------------------------------------------------------------
+Thu Mar  6 01:12:33 UTC 2014 - chris@computersalat.de
+
+- update to 3.3.5
+  * Improved HTML filter.
+  * Followup fix for bug#10116 - Random ordering of columns in "Small" ticket
+     lists.
+  * Re-implemented Process Management ProcessImport().
+  * Fixed bug#10258 - yellow color for UnreadArticles.
+  * Updated Japanese translation, thanks to Norihiro Tanaka!
+  * Updated Brazilian Portugese translation, thanks to Murilo Moreira de
+     Oliveira!
+  * Updated Polish translation, thanks to Wojciech Myrda.
+  * Fixed bug#6323 - Graph/Chart generation selects slice/background color
+     identical to text color.
+  * Added feature to download report data shown in dashboard stats as CSV and
+     PDF.
+  * Fixed bug#10248 - OTRS Portal - Overview of registered systems.
+  * Added browser check for IE10 in compatibility mode.
+  * Followup for bug#9011 - New value after value mapping can't be 0.
+  * Fixed bug#9673 - CustomerTicketMessage does not show loading icon for
+     dynamic fields.
+  * Fixed bug#10249 - Restore.pl bugs on Postgresql restore failed on DB.
+  * Fixed bug#7818 - Menu simplification is not working for item "responsible".
+  * Added new option "bin/otrs.LoaderCache.pl -o generate" to generate the
+     loader cache for all frontend modules. This can be useful in cluster setups.
+  * Fixed bug#10214 - Value "0" for DynamicsFields prevents TicketCreation.
+  * Fixed bug#10201 - Wrong column sort order in ticketoverview widget.
+  * Fixed bug#10195 - Folluw up notification shows old prio after prio change.
+  * Fixed bug#9303 - Body of new e-mail/phone ticket not inserting when creating
+     new ticket from customer creation.
+  * Fixed bug#10194 - CustomerTicketMessage parsing feild Dest in URI.
+  * Follow-up fix for bug#10110 - Stats list may show too few or too many stats.
+  * Fixed bug#10220 - Invalid Statistics not displayed in overview.
+  * Fixed bug#10218 - Header X-UA-Compatible in HeaderSmall.tt/HeaderSmall.dtl
+     not set.
+  * Fixed bug#10177 - Missing sources in tarball.
+  * Fixed bug#9616 - Too long activities and transitions are not displayed
+     correctly.
+  * Fixed bug#7440 - Ticket overviews don't show column headers for priority and
+     unread articles in small mode.
+  * Added process management canvas label spacer to avoid overlapping transition
+     labels.
+  * Fixed bug#10212 - My tickets & Company tickets in 3.3.4.
+  * Fixed bug#10211 - Dashbord: Widget DefaultColumns is not working.
+  * Fixed bug#10163 - subject shows only 30 characters.
+  * Fixed bug#10193 - Expired cookie bug in customer interface..
+  * Fixed bug#8729 - Oracle ignores NLS_DATE_FORMAT set in environment.
+  * Fixed bug#10207 - DynamicField Search-Function in CustomerFrontend is not
+     working.
+  * Fixed bug#9868 - Queues in popup box are not sorted by alphabetical order.
+  * Fixed bug#9678 - Locked tickets don't unlock when customer closes ticket.
+  * Fixed bug#8656 - Clicking the cancel button in the Add Web services screen
+     results in an error no matter what data was filled in.
+  * Fixed bug#10209 - When opening tree selection dialog, the search field
+     should get the focus.
+  * Fixed bug#10205 - GenericInterface: Mandatory TimeUnits can't be 0.
+  * Fixed bug#10196 - Ticket merge action does not notify the owner of the
+     existing ticket.
+  * Fixed bug#10130 - Events Ticket Calendar not working.
+  * Fixed bug#9692 - On PhoneOutbound articles, the FROM field shows Customer ID
+     instead Agent ID.
+  * Fixed bug#10147 - Cache may remain incorrectly in SearchProfile.
+  * Fixed bug#10189 - ProcessManagement: Use article subject if no ticket title
+     is set.
+  * Fixed bug#9654 - TicketUpdate operation doesn't work when authenticated as a
+     customer.
+  * Fixed bug#10137 - Generic interface TicketCreate operation doesn't work when
+     authenticated as a customer.
+  * Fixed bug#10176 - available columns selection in search result view is not
+     scrollable.
+  * Fixed bug#10120 - Management Dashboard: page reload erases stat graph
+     settings.
+  * Fixed bug#9276 - Auto-reply to ticket entered via Web interface is sent with
+     all lines concatenated to one
+  * Fixed bug#10179 - No LinkOption in CustomerNavigationBar.dtl.
+  * Fixed bug#10178 - Stat Permissions.
+  * Fixed bug#10188 - Inconsistency in graphical ACL editor.
+  * Fixed bug#10155 - backup.pl doesn't compress database dump on non-MySQL.
+  * Fixed bug#10106 - Sending Articles with ArticleSend() ignores ReplyTo.
+ - 3.3.4 2014-01-28
+  * Fixed bug#10172 - Can't create process tickets with disabled richtext.
+  * Fixed bug#10121 - QQMails break in OTRS.
+  * Fixed bug#10153 - Error shown in SysConfig when Setting PendingDiffTime to
+     30 Days.
+  * Fixed bug#10161 - Edit Stats - 500 internal Server Error.
+  * Fixed bug#10167 - Non-deterministic hash key construction in Stats.pm.
+  * Fixed bug#10158 - Missing quoting in State::StateGetStatesByType().
+  * Fixed bug#10048 - RPM upgrade breaks permissions on config files.
+  * Fixed bug#8969 - FAQ module Language files installation fails
+     (Kernel/Language permissions).
+  * Updated traditional Chinese translation.
+  * Updated Brazilian Portugese translation, thanks to Murilo Moreira de
+     Oliveira!
+  * Fixed bug#10145 - %A is not correctly substituted in Language::Time().
+  * Fixed bug#10079 - Cannot operate OTRS on IE7 because of JavaScript error.
+  * Fixed bug#10113 - Management dashboard setting doesn't show up when agent
+     only has RO on stats.
+  * Fixed bug#10088 - Error messages on recieving mailer daemons.
+  * Fixed bug#10011 - Management Dashboard: X-Axis element labels may overlap.
+  * Fixed bug#10012 - Management Dashboard: strings not translatable.
+  * Fixed bug#10140 - Unable to search using before/after in Date Dynamic Fields.
+  * Fixed bug#10008 - Customer user is automatically added to Cc at response for
+     email-internal in AgentTicketCompose.
+  * Added Hebrew translation file, thanks to Amir Elion!
+  * Fixed bug#9978 - Activity Dialog for Customer shows "No Process configured!".
+  * Fixed bug#10134 - Missing information on icon actions for SMIME certificates
+     and keys.
+  * Fixed bug#10116 - Random ordering of columns in "Small" ticket lists.
+  * Fixed bug#10094 - Former FAO OTRSACLExtensions not available in the ACL
+     Editor.
+  * Fixed bug#10099 - Missing challenge token checks on customer interface.
+  * Fixed bug#10110 - Stats list may show too few or too many stats.
+  * Fixed bug#10103 - ArticleTypeID is always undef in AgentTicketCompose
+  * Fixed bug#10080 - Bad group check in otrs-scheduler-linux.
+  * Fixed bug#10097 - $Param{NextState} is always undef in AgentTicketCompose.
+  * Updated Russian translation, thanks to Yuriy Kolesnikov.
+  * Fixed bug#10074 - Error if no queue matched in DashboardEventsTicketCalendar.
+  * Fixed bug#965 - Special character in customer id breaks Open Tickets in
+     AgentTicketZoom.
+  * Added functionality to disable access to tickets of other customers with the
+     same customer company in customer interface.
+  * Fixed bug#9702 - Wrong article type with external ticketnumber recognition
+     i.c.w. follow-up reject option.
+  * Fixed bug#9723 - TicketAccountedTime stat does not run on Oracle with many
+     tickets
+  * Fixed bug#10078 - Installer: error log after creating mysql database.
+  * Fixed bug#10056 - Installer fails when special characters in database user's
+     password.
+  * Fixed bug#10077 - regular expressions in postmaster filter return 1 if no
+     regex match.
+  * Updated Swedish translation, thanks to Andreas Berger.
+  * Fixed bug#10075 - Stats widgets permission group is hardcoded to "stats"
+  * Updated Russian translation, thanks to Andrey N. Burdin.
+  * Fixed bug#10070 - Wrong error message if Transition contains no transition
+     actions.
+  * Fixed bug#10058 - Owner and Responsible are mandatory if enabled.
+  * Fixed bug#7792 - Ticket-Action "Change Queue" is hardcoded and should be
+     called "Queue" only.
+  * Fixed bug#9109 - Printing ticket does not show the full subject line.
+  * Fixed bug#10064 - Translated fields loose sorting in Activity Dialog admin
+     screen.
+  * Fixed bug#10066 - Required field isn't marked in AgentTicketCustomer.
+  * Fixed bug#10059 - Service selection unavailable if customer selection is
+     possible.
+  * Fixed bug#10062 - Text label indent for locale RU - AgentÒicketViewCompose
+  * Fixed bug#10044 - PendingDiffTime removes 2013 (current year) when reaching
+     end of the year.
+  * Fixed bug#10049 - Transition names in path edit screen ordered by ID instead
+     of name.
+  * Fixed bug#10055 - Queue-Treeview not working correctly.
+  * Fixed bug#10061 - ArticleType dropdown in graphical ActivityDialog mask
+     loads with empty value
+  * Fixed bug#10060 - Field names are not translated in graphical process editor.
+- for further changes please see:
+  * https://github.com/OTRS/otrs/blob/rel-3_3_5/CHANGES.md
+- rebase patches
+  * httpd_config, removed obsolete stuff, added new
+  * perm
+
+-------------------------------------------------------------------
+Wed Feb 26 20:53:48 UTC 2014 - chris@computersalat.de
+
+- fix for bnc#866476 (CVE-2014-1695)
+- update to 3.2.15
+  (fix for OSA-2014-03, CVE-2014-1695)
+  * Improved HTML filter.
+  * Fixed bug#10207 - DynamicField Search-Function in CustomerFrontend is not
+     working.
+  * Followup for bug#9011 - New value after value mapping can't be 0.
+  * Fixed bug#10214 - Value "0" for DynamicsFields prevents TicketCreation.
+  * Fixed bug#9616 - Too long activities and transitions are not displayed
+     correctly.
+  * Fixed bug#10212 - My tickets & Company tickets in 3.3.4.
+  * Fixed bug#10205 - GenericInterface: Mandatory TimeUnits can't be 0.
+  * Fixed bug#10196 - Ticket merge action does not notify the owner of the
+     existing ticket.
+  * Fixed bug#9692 - On PhoneOutbound articles, the FROM field shows Customer
+     ID instead Agent ID.
+  * Fixed bug#10189 - ProcessManagement: Use article subject if no ticket title
+     is set.
+  * Fixed bug#9654 - TicketUpdate operation doesn't work when authenticated as
+     a customer.
+  * Fixed bug#10137 - Generic interface TicketCreate operation doesn't work
+     when authenticated as a customer.
+- 3.2.14
+  * Fixed bug#10172 - Can't create process tickets with disabled richtext.
+  * Fixed bug#10121 - QQMails break in OTRS.
+  * Fixed bug#10158 - Missing quoting in State::StateGetStatesByType().
+  * Fixed bug#8969 - FAQ module Language files installation fails
+     (Kernel/Language permissions).
+  * Fixed bug#9959 - & breaks ExpandCustomerName.
+  * Fixed bug#10099 - Missing challenge token checks on customer interface.
+  * Fixed bug#10103 - ArticleTypeID is always undef in AgentTicketCompose.
+  * Added functionality to disable access to tickets of other customers with
+     the same customer company in customer interface.
+  * Fixed bug#9650 - Special character in customer id breaks Open Tickets in
+     AgentTicketZoom.
+  * Fixed bug#9723 - TicketAccountedTime stat does not run on Oracle with many
+     tickets
+  * Fixed bug#10077 - regular expressions in postmaster filter return 1 if no
+     regex match.
+  * Fixed bug#10070 - Wrong error message if Transition contains no transition
+     actions.
+
+-------------------------------------------------------------------
+Wed Dec 11 11:39:07 UTC 2013 - chris@computersalat.de
+
+- update to 3.2.13
+  * Bug#9327 – Filter breaks “Select all” functionality.
+  * Bug#9999 – Timestamps in HistoricalValueGet return milliseconds on SQL
+    Server.
+  * Bug#10027 – Added old ticket information to ticket_history.
+  * Bug#7337 – AJAX Error on new Phone Ticket on IIS when using JSON::XS.
+  * Bug#8991 – Back-action does not work when search result returned just 1
+    ticket.
+  * Bug#9937 – Activity-Dialogs in wrong order.
+  * Bug#9954 – PGP Crypted and Signed emails could be wrongly parsed.
+  * Bug#9639 – TextArea validation message not translated.
+  * Bug#9944 – Search Template issue.
+  * Bug#9938 – ActivityDialog doesn’t show queues with move_into permissions.
+  * Bug#9940 – Fedora misses dependency on Sys::Syslog.
+  * Removed Patch/Workaround for CPAN MIME::Parser v5.503
+    (introduced in OTRS 3.2.2) replaced with another solution, as it was
+    causing problems with PGP.
+  * Bug#9916 – Error when updating CustomerUser Login on ForeignDB.
+  * Bug#9841 – Tabbing changes radio button of owner change selection.
+  * Bug#9867 – Validation errors are not shown correctly when replying to a
+    ticket in Customer Interface.
+  * Bug#9914 – Spellchecker ignores double wrong words.
+
+-------------------------------------------------------------------
+Wed Nov  6 21:00:17 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 3.2.12:
+  * Updated French translation, thanks to Olivier Sallou!
+  * Bug#9910 - Startup warnings/errors with Perl 5.18.1.
+  * Bug#9753 - META HTTP-EQUIV="Refresh" tag not stripped from HTML
+    email.
+  * Bug#9897 - process ticket 'fading away' -> Process is invalid.
+  * Bug#9749 - Using spell checker in rich text Editor strips HTML
+    formatting.
+  * Bug#4465 - Spell checker ispell ignores some characters such German
+    umlauts.
+  * Bug#9883 - Stats Overview is slow due Caching bug (object cache does
+    not work).
+  * Bug#9839 - Inline images not showing up when cookies are disabled.
+  * Moved process import functionality in the backend module
+    Kernel/System/ProcessManagement/DB/Process.pm.
+  * Bug#9669 - Accessibility: ticket submenu not expandable with the keyboard.
+  * Bug#9814 - Tickets without articles not shown correcly in medium view.
+  * Bug#9812 - Sysconfig descriptions for tooltips and placeholder values
+    of toolbar widgets are ignored.
+  * Bug#9391 - Incorrect permissions on .procmailrc.
+  * Bug#9796 - Misaligned Headers on Simple Stats.
+- Aditional changes from 3.2.11:
+  * Bug#9542 – Uninitialized value in AgentTicketForward.
+  * Bug#9765 – Dynamic Field values are completely removed if one entry
+    contains a dash.
+  * Bug#9764 – ACL, Queue will ignored with customerID.
+  * Bug#9762 – Queue View – S / M / L views – not saved after logout.
+  * Bug#9580 – Time fields in TicketGetResponse Ticket element do not
+    comply with xsd:DateTime format.
+  * Bug#9748 – ProcessManagement: Duplicate articles in a process-ticket
+    (TransitionAction).
+  * Bug#9759 – Installer Error DB – max key length is 767 bytes.
+  * Bug#9747 – Only first selected process displays the RichText editor.
+  * Bug#9688 – ORA-01839 error occurs at DynamicField in TicketSearch.
+  * Bug#9751 – TimeUnits are not accepted with a value of 0.
+  * Bug#9739 – Customer interface not working with MySQL 5.6.
+  * Bug#8489 – setting Tickets per page resets AgentTicketQueue.
+  * Bug#9732 – German translation file de.pm incomplete.
+  * Bug#9728 – Bulk action (send email) ignores reply-to address from
+    unknown customers.
+  * Bug#9661 – Useless code in DynamicField backend.
+  * Bug#9701 – Ticket overview Queue Sort Filter is missing.
+  * Bug#8173 – Dashboard Widget “Online” does not save state.
+  * Bug#9188 – AgentTicketEmail always loads a signature, even if no
+    queue is selected.
+  * Bug#9672 – Undecrypted HTML part displayed when viewing a
+    multipart/alternative PGP encrypted HTML mail.
+
+-------------------------------------------------------------------
+Wed Sep 18 12:06:19 UTC 2013 - chris@computersalat.de
+
+- update OTRS::ITSM to 3.2.9
+  * Bug#9637 - ITSM Overview shows error if agent has no permission to any
+    config item class.
+  * Bug#9621 - GeneralCatalog does not allow the number zero (0) as value
+    for a GeneralCatatalog ClassItem.
+  * Rollback changes for bug#9613. Due to a last minute problem with the
+    mentioned bug fix we had to revert and release a new version of OTRS ITSM! 
+- rebase otrs-perm patch
+  * fix spec (better fix cause than symptom)
+    remove exclude %{otrs_root}/%{name}/Kernel/System/Package.pm.orig
+
+-------------------------------------------------------------------
+Thu Sep  5 05:16:31 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 3.2.10:
+  * Bug#9617 - Event-based notifications are not sent for process-tickets.
+  * Bug#9666 - Installing an invalid package cause an server error on
+    package manager.
+  * Bug#8408 - No separator used in CSV files if UserCSVSeparator enabled
+    and not set.
+  * Bug#9635 - article_search not updated on ticket merges.
+  * Bug#9629 - ORA-936 error in AgentTicketSearch with some search clauses.
+  * Bug#9631 - BuildSelection() Selected does not work if value contains
+    strings that are HTML-escaped.
+  * Bug#9630 - Dynamic Fields of type Date can record wrong date when
+    TimeZoneSettings are used.
+  * Bug#9316 - Under nginx CustomerInformationCenter search returns Bad
+    Gateway.
+  * Bug#9610 - When email does not specify charset, content is not
+    displayed in IE10.
+  * Bug#9622 - Actions in Small ticket overview don't work when cookies
+    are turned off.
+  * Bug#9541 - Package manager cannot use https proxy.
+  * Fixed bug pull#[83](https://github.com/OTRS/otrs/pull/83) - Pagination
+    next page link, thanks to Renée Bäcker.
+  * Bug#9594 - No auro-reply sent with multiple From addresses in
+    AgentTicketPhone on PostgreSQL and Oracle.
+  * Bug#3434 - Validity of search time frame not checked by OTRS.
+  * Bug#5475 - Incorrectly limited ticket list queries in queue view.
+  * Bug#8667 - No error Message when tryiing to Merge Ticket with itself.
+  * Bug#6985 - SMTPTLS backend requires username and password.
+  * Bug#3434 - Validity of search time frame not checked by OTRS.
+  * Bug#9598 - Typo in vacation message for German locale.
+  * Bug#9595 - Incomplete page reload handling in merge and bounce.
+  * Bug#5307 - Tickets can be raised against an invalid Customer Company.
+  * Bug#9596 - On merge and bounce screens is confusing when fill or
+    not 'To', 'Subject' and 'Body' fields.
+  * Bug#9514 - Bulk action (send email) uses senders address instead of
+    customer id.
+  * Bug#9595 - Incomplete page reload handling in merge and bounce.
+  * Bug#9570 - AgentTicketSearch with exclamation mark emits invalid SQL
+  * Bug#3007 - CheckMXRecord and CheckEmailAddresses have no effect on
+    AgentTicketBounce.
+  * Bug#9512 - Database error for invalid date in AgentTicketSearch.
+  * Bug#4465 - Spell checker ispell ignores some characters such German
+    umlauts.
+  * Bug#8428 - Bad usability of multiple sender/recipient feature.
+  * Bug#9556 - Bounce and merge require notification recipient, subject
+    and body even if no notification is sent.
+  * Bug#9584 - No server side validation of To/Subject/Body in merge
+    mask.
+  * Bug#9578 - DynamicField sorting does not work on TicketSearch
+    results in Customer Interface.
+  * Bug#9579 - SOAP Serializer used in Kernel/GenericInterface/Transport/HTTP/SOAP.pm
+    does not correctly set namespace.
+  * Bug#9577 - Engine translate date to dado from english to pt_BR.
+  * Bug#7359 - Setting pending states via generic agent does not set
+    pending time.
+  * Bug#5920 - Search restriction for dates is not displayed in
+    customer interface.
+  * Bug#8380 - Middle name not displayed in AdminCustomerUser.
+  * Bug#9576 - GI TicketSearch Date and Date/Time dynamic fields are
+    ignored.
+  * Changed Dynamic Field SearchFieldParameterBuild() API, LayoutObject
+    is now optional.
+  * Bug#9573 - Date and DateTime dynamic fields not considered in
+    GenericAgent Jobs.
+
+-------------------------------------------------------------------
+Sat Jul 27 00:12:28 UTC 2013 - chris@computersalat.de
+
+- fix for bnc#828850 (CVE-2013-4717, CVE-2013-4718)
+- Update to 3.2.9
+  (fix for OSA-2013-05, CVE-2013-4717, CVE-2013-4718)
+   http://otrs.org/advisory/
+  * Bug#9561 - ACL restriction with CustomerID for DynamicFields at
+    new Ticket screen not working.
+  * Bug#8728 - Problem loading otrs-initial_insert.oracle.sql.
+  * Bug#9481 - Possible to select invalid services in SLA admin screen.
+  * Bug#9539 - Cannot send notification to a group of customers.
+  * Bug#8273 - Copying text in preview mode not possible.
+  * Bug#9557 - Cannot see quoted text in customer ticket zoom.
+  * Bug#9011 - GenericInterface: New value after value mapping can't be 0.
+  * Improved parameter quoting in various places.
+  * Bug#9104 - Group permission for customer subset overwrites
+    permissions for other customers.
+  * Bug#9434 - Activities are not translated.
+  * Bug#9261 - Ticket Inbound changes FROM in view.
+  * Bug#9540 - AgentTicketOwner doesn't activate PreviousOwner if new
+    owner is selected.
+  * Bug#9365 - AgentLinkObject screen does not provide a search
+    restriction for ticket type.
+  * Bug#9533 - Delete Inactive Process button not aligned.
+  * Bug#9504 - wrong status after answer via customer portal.
+  * Bug#9425 - Wrong created date for queue view.
+  * Follow-up fix for bug#[8880] - No inline image shown if HTML
+    email contains 'base' tag.
+  * Bug#8112 - Display issue in FROM column of AgentTicketZoom with
+    some agent names.
+  * Bug#9524 - Uninitialized value after step2 in TicketAccountedTime
+    stats.
+  * Bug#9511 - ProcessManagement: No SLA verification after Service
+    update.
+  * Bug#9513 - Frontend::ToolBarModule###11-CICSearchCustomerUser
+    does not use settings of Frontend::Agent::CustomerSearch.
+  * Bug#8719 - PasswordMin2Lower2UpperCharacters problem.
+- update OTRS::ITSM to 3.2.7
+  (fix for OSA-2013-05, CVE-2013-4717, CVE-2013-4718)
+- fix spec
+
+-------------------------------------------------------------------
+Tue Jun 18 22:22:50 UTC 2013 - chris@computersalat.de
+
+- Update to 3.2.8: 2013-06-18
+  (fix for OSA-2013-04, CVE-2013-4088)
+  * bug#9464 - Unique email address only checked during CustomerUserAdd, not
+    during Update.
+  * bug#9497 - AgentTicketSearch logs a Uninitialized error message in Oracle.
+  * bug#9451 - Possible to select invalid autoresponses for queues.
+  * bug#9516 - Field names for account signups in some languages are broken.
+  * bug#9501 - Missing values in GenericAgent ticket list for tickets without
+    articles.
+  * bug#9447 - Empty line at PDF search result with process tickets (0 article).
+  * bug#9409 - If HTTP_USER_AGENT isn't set, error on Layout.pm.
+  * bug#9454 - Use of uninitialized value error in AgentTicketForward.pm, undef
+    Next ticket state.
+  * bug#9493 - Use of uninitialized value error in AgentTicketPhone.pm on Ticket
+    Split action.
+  * bug#9503 - no connection header in soap responses.
+  * Improved permission checks in AgentTicketWatcher.
+  * bug#7143 - "SFTP." gets rewritten to "Shttp://FTP."
+  * bug#9488 - Use of uninitialized value at OutofOffice setting in
+    AgentPreferences.
+  * bug#9479 - ProcessManagement: Article and CustomerID should not be Hidden.
+  * bug#9491 - GenericAgent job update with dynamic fields sends Uninitialized
+    value error.
+  * bug#9456 - Empty 'Dropdown' dynamic field value of GenericAgent job wont get
+    used and stored.
+  * Follow-up fix for bug#9245 - Added translatable titles for transition
+    buttons.
+  * Updated Russian translation, thanks to Alexey Gluhov!
+  * bug#9245 - Improve user interaction on transitions.
+  * bug#9284 - Improve user experience of accordion widget.
+  * bug#9105 - Opening reply view crashes browsers on iPad 3.
+  * Fixed caching key and inquiry of dynamic field value in HistoryTicketGet
+    function (TE).
+  * Added a new parameter to disable default sorting of statistics.
+  * Added '-a reinstall-all' feature to bin/otrs.PackageManager.pl.
+  * bug#9476 - AgentTicketZoom: translation of "split" into german language.
+  * bug#9459 - Creating a new transition action coming from the transition path
+    view produces errors.
+  * bug#9458 - Double click on Transition opens error message.
+  * bug#9241 - Article ignored in article search index if body is almost empty.
+    The StaticDB fulltext search backend is now fully configurable.
+  * bug#9462 - Package Management page timeout due to HTTPS disabled on Proxy
+    connections.
+  * bug#9408 - A value of Dest inputed in CustomerTicketMessage isn't validated.
+  * bug#9418 - Incorrect decoding email subject and From token.
+  * bug#9448 - AgentTicketPhoneInbound/Outbound inserts Agent's personal email
+    address into article "from".
+  * bug#9445 - ProcessManagement: Error Message: Need ServiceID or Name!.
+  * bug#9439 - ProcessManagement: Customer field value is not remembered after
+    server error is detected.
+- Update to 3.2.7: 2013-05-21
+  * Updated Package Manager, that will ensure that packages to be installed
+    meet the quality standards of OTRS Group. This is to guarantee that your
+    package wasn’t modified, which may possibly harm your system or have an
+    influence on the stability and performance of it. All independent package
+    contributors will have to conduct a check of their Add-Ons by OTRS Group
+    in order to take full advantage of the OTRS package verification.
+  * bug#9387 - Error in a condition with dynamic fields in NotificationEvent.
+  * bug#9286 - Ticket::ChangeOwnerToEveryone isn't functional, After a AJAX
+    Load the setting is ignored.
+  * bug#7518 - Escalation Notify by not working properly (follow-up fix).
+  * bug#9410 - SessionID isn't added to URL when using ajax customer search
+    without cookies active.
+  * bug#9419 - Process Management: List of available dialog fields lists
+    Responsible even if feature is inactive.
+  * bug#9246 - ProcessManagement: TranstionAction error messages not sufficient
+    enough.
+  * bug#9345 - OTRS exceeds 998 character limit in References Line of E-Mail
+    Header.
+  * bug#7478 - Got an external answer to an internal mail.
+  * Improved permission checks in AgentTicketPhone.
+  * bug#9360 - DynamicField Names shown in CSV output.
+  * bug#8880 - No inline image shown if HTML email contains 'base' tag.
+  * bug#9374 - Add more functions to rich text editor.
+  * Fixed postmaster filter edit screen layout.
+  * bug#9358 - Date/Time DynamicFields are broken in CustomerInterface.
+  * bug#9384 - Problem with Method ServiceParentsGet of ServiceObject.
+  * bug#9371 - UserSalutation field in LDAP.pm fix.
+  * bug#8997 - Owner warnings translatable.
+  * bug#9375 - Extra colon at the end of recipient lists in forwarded message.
+  * Updated Polish translation file, thanks to ib.pl!
+  * bug#9040 - CustomerTicketPrint crashes when no attributes are configured to
+    be printed.
+  * Added UnitTest for case sensivity parameter of customer databases
+  * bug#9362 - cannot redirect to external url containing & caracter.
+  * bug#7856 - Statistics only use non archived tickets.
+  * bug#9072 - Reply to email-internal includes customer users email in Cc.
+    field.
+  * bug#9349 - SQL warnings on Oracle DB if more than 4k characters are sent
+    to the database.
+  * bug#9353 - Customer Ticket Zoom shows owner login name instead of full name.
+  * bug#8599 - Problem with "[]" characters in name of attachment file.
+- Update ITSM to 3.2.6
+  * Bug#9351 - Wrong LastScreenOverview in AgentITSMConfigItemSearch
+  * Bug#9352 - Missing LastScreenOverview in AgentITSMConfigItem (OverviewSmall)
+  * Bug#8961 - Get impact list in AgentTicketPhone before obtain SplitTicketParam. 
+  * remove packages30 support
+ - update ITSM to 3.2.5
+   (fix for OSA-2013-03, CVE-2013-3551)
+ - update ITSM to 3.2.4
+   (fix for OSA-2013-02, CVE-2013-2637)
+ - update ITSM to 3.2.3
+   (fix for OSA-2013-01, CVE-2013-2625)
+- rebase perm.patch
+- fix permission
+  * on DBUpdate otrs needs write acces to Kernel/Config/Files
+    attr(2775,wwwrun,www) dir {otrs_root}/{name}/Kernel/Config/Files
+
+-------------------------------------------------------------------
+Thu May  9 20:28:02 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 3.2.6:
+  - Bug#9310 - AgentTicketProcess has the same shortkey "o" as
+    AgentTicketQueue.
+  - Bug#9280 - Database upgrade procedure problems when upgrading
+    database to 3.2 that has been upgraded from 2.4 previously.
+  - Bug#9264 - Dynamic ticket text fields are displayed with value
+    "1" if enabled and displayed by default in ticket search screen.
+  - Bug#8960 - AgentTicketSearch.pm SearchProfile problem.
+  - Bug#9328 - Notification event does not work on process ticket.
+  - Fixed broken process import.
+  - Follow-up for bug#9215 - Process import always creates new
+    process. The overwrite optionwas removed again because of
+    logical problems.
+  - Added parameter "-t dbonly" to backup.pl to only backup the
+    database (if files are backed up otherwise).
+  - Bug#9302 - Process Management: Misleading description for
+    activities without dialogs.
+  - Bug#9182 - Customer Search Function -> If you go into a ticket
+    and go back you got not the search results.
+  - Bug#9297 - Customer information widget losing data.
+  - Bug#9244 - Process Management: Transitions on Activities does
+    not scale well.
+  - Bug#9287 - Process Management: strange placement of target point
+    for new transitions.
+  - Bug#9294 - Process Management: Activity hover window not
+    displayed properly if activity is very close to bottom canvas
+    border.
+  - Bug#9314 - Process Management: Unexpected redirection after
+    creating a new process.
+  - Bug#9312 - LinkObject permission check problem.
+
+-------------------------------------------------------------------
+Wed Apr 10 13:09:04 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 3.2.5:
+  (fix for OSA-2013-03, CVE-2013-3551)
+  * Bug#9313 - No such file or directory in otrs.SetPermission.pl.
+  * Bug#9306 - Auto Response fails when ticket is created from
+    Customer Interface and last name contains a comma.
+  * Bug#9308 - Impossible to create a new stats report with absolute
+    period.
+  * Bug#9307 - Packages not compatible with 3.2.4 listed as available
+    in Package Manager.
+  * Bug#9298 - version.pm not found on perl 5.8.x.
+  * Bug#9295 - Article dynamic field is not searchable.
+  * Bug#9288 - DynamicField Content overwrites TicketTitle for Links
+    from Dynamic Fields.
+
+-------------------------------------------------------------------
+Thu Apr  4 11:50:32 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 3.2.4:
+  (fix for OSA-2013-01, CVE-2013-2625)
+  - Security release, everyone is advised to update.
+    http://www.otrs.com/en/open-source/community-news/security-advisories/security-advisory-2013-01/
+  * Bug#9279 - Inaccurate German translation of ,,Priority Update''.
+  * Bug#9257 - No notifications to agents with out-of-office set
+    but period not reached.
+  * Bug#1689 - Allow bin/SetPermissions.sh to follow symlink for
+    OTRS_HOME.
+  * Bug#8981 - Tickets reopened via customer interface are locked
+    to invalid agents.
+  * Bug#9242 - ProcessManagement: TransitionAction TicketStateSet
+    does not allow to set a pending time.
+  * Bug#9247 - ProcessManagement: Transitions Actions always use
+    actual user permissions.
+  * Bug#9254 - No Sorting in Accordion for Activties, Activity Dialog,
+    Transitions and Transition Actions.
+  * Improved permission checks in LinkObject.
+  * Bug#9252 - Type of linking displayed wrong and also updated
+    wrong in transitions.
+  * Bug#9255 - Email is sent to customer, when agents email address
+    is similar but not identical.
+  * Bug#9215 - Process import always creates new process. Now there
+    is a new option "overwrite existing entities" for the process import.
+  * Bug#4716 - Logout page should use ProductName instead of 'OTRS'.
+  * Bug#9249 - Warning not to use internal articles in customer
+    frontend shown on agent interface also.
+  * Bug#9191 - When ticket types are restricted, first available
+    type is selected in AgentTicketActionCommon-based screens.
+
+-------------------------------------------------------------------
+Wed Mar 20 14:05:23 UTC 2013 - alexandre@exatati.com.br
+
+- Fix ITSM files permissions.
+
+-------------------------------------------------------------------
+Fri Mar 15 11:58:28 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 3.2.3:
+  * Bug#9221 - Got error log message when customer user take
+    activity dialog operation in customer interface.
+  * Bug#8727 - Webservices can be created with an invalid/incomplete
+    configuration.
+  * Bug#9214 - IE10: impossible to open links from rich text articles.
+  * Bug#9218 - Cannot use special characters in TicketHook.
+  * Bug#9056 - Unused SysConfig option Ticket::Frontend::CustomerInfoQueueMaxSize.
+  * Bug#8764 - Added @ARGV encoding to command line scripts.
+  * Bug#9189 - Executing DBUpdate-to-3.2.pl as root user leaves file
+    permissions on ZZZAuto.pm in incorrect state.
+  * Bug#9196 - ProcessManagement: Internal Server Error for "Ended"
+    process zoom in Customer Interface.
+  * Bug#9202 - ProcessManagement: ActivityDialog Admin GUI should
+    not let internal article types for Customer Interface.
+  * Bug#9193 - Process Management: (First) article filled in in
+    customer frontend causes "Need ArticleTypeID!" error.
+  * Follow-up fix for bug#8533 apache will not start on Fedora.
+  * Bug#9172 - Generic Interface does not work on IIS 7.0.
+  * Bug#8865 - Additional empty data column in statistics CSV-Output.
+  * Bug#4056 - Delete S/MIME Certificate via AdminSMIME does not
+    update CustomerUserPreferences.
+  * Bug#9128 - OTRS uses internal sub of Locale::Codes::Country
+    which causes trouble for Debian.
+  * Bug#9173 - ProcessManagement: Very right aligned activities
+    can't display assigned dialogs.
+  * Bug#9174 - Process Management: Save / Save and finish / Cancel
+    inside process diagram canvas.
+  * Bug#9155 - SMIME: DefaultSignKey not selected in AJAX refreshes.
+  * Bug#9164 - ProcessManagement: Default values of assigned
+    hidden activity dialogs not considered.
+  * Bug#7312 - otrs.SetPermissions.pl does not take scripts in
+    $OTRSHOME/Custom into account.
+  * Bug#7237 - Better Shortening Logic in Ascii2Html.
+  * Bug#9139 - Context sensitive search in CIC doesn't open
+    CIC search.
+  * Bug#9087 - ProcessManagement: AgentTicketProcess doesn't show
+    multi level queue structure.
+  * Follow-up fix for bug#9158 - ProcessManagement: Priority
+    field error message: Need Priority or PriorityID!.
+- Refresh otrs-perm.patch and otrs-httpd_conf.patch patches.
+- Remove obsolete *.pm from %files section.
+
+-------------------------------------------------------------------
+Thu Mar  7 23:10:56 UTC 2013 - chris@computersalat.de
+
+- update to 3.2.2
+  * fixed bug#9171 - ProcessManagement: AgentTicketProcess lists all state types.
+  * Follow-up fix for bug#4513 - Password and Username are added
+    automatically by the browser in AdminUser dialog.
+  * Updated Spanish translation, thanks to Enrique Matías Sánchez!
+  * Fixed bug#9157 - ProcessManagement: Activity labels not aligned well.
+  * Fixed bug#9156 - ProcessManagement: Transition Condition Fields cannot be removed correctly.
+  * Fixed bug#9160 - ProcessManagement: Path dialog looses data after editing transition actions.
+  * Fixed bug#9159 - ProcessManagement: Date fields are activated by default.
+  * Added display restriction for field "CustomerID" in Process Management Activity
+    Dialogs to only be shown as mandatory or not shown.
+  * Fixed bug#9150 - Process Management: CustomerUser field not indicated as required field.
+  * Fixed bug#9158 - ProcessManagement: Priority field error message: Need Priority or PriorityID!
+  * Fixed bug#9162 - Setting the start day of the week for the datepicker to Sunday does not work.
+  * Fixed bug#9127 - Problem with CustomerPanelOwnSelection.
+  * Added new Canadian French translation, thanks to Evans Bernier / CDE Solutions Informatique!
+  * Fixed bug#5492 - Need Template or TemplateFile Param error message after activating AgentInfo.
+  * Fixed bug#9138 - Unused X-OTRS-Info header in SysConfig.
+  * Fixed bug#9117 - CustomerUpdate history entry added even if customer user has not
+    been updated.
+  * Fixed bug#9006 - Labels and values are misaligned.
+  * Fixed bug#9132 - Button to create new ticket appears in Customer Interface although
+    ticket creation is disabled.
+  * Added Patch/Workaround for CPAN MIME::Parser v5.503 that prevent the trimming of empty
+    lines that lead to inconsistencies between signed and actual email contents
+  * Fixed bug#9146 - Signed SMIME mails with altered content shows a not clear message.
+  * Fixed bug#9145 - SMIME sign verification errors are not displayed in TicketZoom.
+  * Fixed bug#9140 - Postmaster Filter for empty subjects does not work.
+  * Fixed bug#8024 - WYSIWYG editor does not get correct language information.
+  * Fixed bug#9135 - Can't upgrade databases that have been changed from MyISAM > InnoDB.
+  * Fixed bug#9125 - AgentTicketSearch dialog does not expand when choosing more search criteria.
+  * Fixed bug#9118 - TicketDynamicFieldUpdate history entry added even if value has not
+    been updated.
+  * Fixed bug#9134 - Sidebar columns on some screens don't support more than one widget.
+  * Fixed bug#4662 - Unable to save article with '0' as only content.
+  * Fixed bug#9068 - ProcessManagement: Entity Names not shown in Deletion Dialogs.
+  * Fixed bug#9121 - Filenames with Unicode NFD are incorrectly reported as NFC by Main::DirectoryRead().
+  * Fixed bug#9126 - ProcessManagement: both article fields must be filled.
+  * Added bug#1197 - Feature enhancement: Link tickets at "Follow up".
+  * Fixed bug#9108 - Check for opened/closed tickets not working with Ticket::SubjectFormat = Right.
+  * Made Web Installer reload after writing Config.pm under PerlEx.
+  * Added restriction to TransitionAction TicketArticleCrete to do not allow the creation
+    email article types.
+  * Fixed bug#9112 - ProcessManagment: TransitionAction TicketActicleCreate should not
+    accept email type articles.
+  * Fixed bug#8839 - DateChecksum followup doesn't get correctly SystemID.
+  * Fixed bug#9111 - ProcessManagement: Empty Service or SLA causes an error.
+  * Fixed bug#9077 - Process Management: TicketType not available as field for activity.
+    dialogs.
+  * Updated Finnish translation, thanks to Niklas Lampén!
+  * Updated Italian translation, thanks to Massimo Bianchi!
+  * Updated Portugese (Brazilian) translation, thanks to Alexandre!
+  * Updated Russian translation, thanks to Vadim Goncharov!
+  * Added script otrs.MySQLInnoDBSwitch.pl to switch all database tables from MyISAM
+    to InnoDB on the fly.
+  * Added bin/otrs.ExecuteDatabaseXML.pl to directly execute Database DDL XML files on
+    the OTRS database.
+  * Fixed bug#9097 - ProcessManagement: Uninitialized value after Ticket is created if
+    notification event is triggered.
+  * Fixed bug#9101 - Not possible to create dropdown with autocomplete attribute.
+  * Fixed bug#9095 - ProcessManagement: Service field does not show default services.
+  * Fixed bug#9096 - All services list is shown instead of only default services.
+  * Fixed bug#9088 - ProcessManagement: Service field is not displayed in
+    AgentTicketProcess.
+  * Updated CPAN module MIME::Tools to version 5.503, keeping an OTRS patch in MIME::Words.
+  * Fixed bug#9092 - Problem running DBUpdate-to-3.2.mysql.sql on InnoDB.
+  * Fixed bug#9078 - Fields of type "email" loosing style format.
+  * Fixed bug#9090 - ProcessManagement popup dialogs cannot be saved by pressing Enter.
+  * Fixed bug#8470 - otrs.GenericAgent.pl reports: Can't open
+    '/opt/otrs/otrs_vemco/var/tmp/CacheFileStorable/DynamicField/f3b7e10730fb6c9cab5ae0e7f7e034f3'.
+  * Fixed bug#7678 - SecureMode does not do what it should.
+  * Fixed bug#5158 - Unsafe UTF8 handling in Encode module.
+  * Fixed bug#8959 - AgentTicketResponsible Responsible Changed not checked/forced.
+  * Fixed bug#9089 - Activities and transitions with HTML special characters are
+    not displayed correctly.
+  * Added new translation for Spanish (Colombia), thanks to John Edisson Ortiz Roman!
+  * Updated Finnish translation, thanks to Niklas Lampén!
+ - for mor info see
+   http://source.otrs.org/viewvc.cgi/otrs/CHANGES?revision=1.2715&view=markup
+- Update ITSM to 3.2.2
+  * Bug#8634 - Statistics for ChangeStates not working.
+  * Bug#7782 - Selected class-filter in AgentITSMConfigItem isn't stored
+    in session.
+  * Bug#7430 - Link option in AgentTicketPhone is only displayed if the
+    user has rights on AdminCustomerUser.
+  * Bug#7778 - ImportExport doesn't check for existence of mapping definition. 
+
+- update to 3.2.1
+  * Updated Dutch translation.
+  * Added test to check if there are problems with the MySQL storage engine used
+    in OTRS tables to bin/otrs.CheckModules.pl.
+  * Fixed bug#9082 - Process Management: Wrong popup redirect handling to Process Path
+    from TransitionAction.
+  * Fixed bug#9065 - Process Management: Service and SLA fields are always shown in
+    ActivityDialogs.
+  * Fixed bug#9054 - Link Object deletes all links under certain conditions.
+  * Fixed bug#9059 - Process Management: transition actions module field too short.
+  * Fixed bug#9066 - ProcessManagement: edit links not displayed in popups.
+  * Fixed an issue where default values would be used erroneously for ActivityDialog
+    fields where a value was already present.
+  * Fixed bug#9052 - Accordion is reset after submitting a popup.
+  * Fixed bug#9067 - New process ticket: state selection empty after AJAX reload.
+ - for mor info see
+   http://source.otrs.org/viewvc.cgi/otrs/CHANGES?revision=1.2652&view=markup
+- Update ITSM to 3.2.1
+  * Bug#7989 - Unnecessary hugh size of config item definition text area.
+
+- Fix License
+  * AGPL-3.0+ -> AGPL-3.0
+- rebase patches
+  * perm
+  * httpd_conf (+ remove version string from name)
+
+-------------------------------------------------------------------
+Tue Feb 19 16:42:56 UTC 2013 - chris@computersalat.de
+
+- update to 3.1.13
+ - http://www.otrs.com/en/open-source/community-news/releases-notes/
+    release-notes-otrs-help-desk-3113/
+ - http://source.otrs.org/viewvc.cgi/otrs/CHANGES?revision=1.2260.2.206&view=markup
+  * Fixed bug#9162 - Setting the start day of the week for the datepicker to
+    Sunday does not work.
+  * Fixed bug#9141 - Confused Columns in CustomerTicketSearch (ResultShort).
+  * Fixed bug#9146 - Signed SMIME mails with altered content shows a not clear
+    message.
+  * Fixed bug#9145 - SMIME sign verification errors are not displayed in TicketZoom.
+  * Fixed bug#9140 - Postmaster Filter for empty subjects does not work.
+  * Fixed bug#9121 - Filenames with Unicode NFD are incorrectly reported as NFC
+    by Main::DirectoryRead().
+  * Fixed bug#9108 - Check for opened/closed tickets not working with
+    Ticket::SubjectFormat = Right.
+  * Fixed bug#8839 - DateChecksum followup doesn't get correctly SystemID.
+  * Updated Russian translation, thanks to Vadim Goncharov!
+  * Fixed bug#9101 - Not possible to create dropdown with autocomplete attribute.
+  * Fixed bug#9096 - All services list is shown instead of only default services.
+  * Fixed bug#8470 - otrs.GenericAgent.pl reports: Can't open
+    '/opt/otrs/otrs_vemco/var/tmp/CacheFileStorable/DynamicField/f3b7e10730fb6c9cab5ae0e7f7e034f3'.
+  * Added new translation for Spanish (Colombia), thanks to John Edisson Ortiz Roman!
+  * Fixed bug#9054 - Link Object deletes all links under certain conditions.
+  * Fixed bug#8944 - do not backup the cache.
+  * Fixed bug#9057 - Generating a PDF with bin/otrs.GenerateStats.pl produces lots
+    of warnings.
+  * Fixed bug#8929 - Fix problems with empty ticket search results while
+    Ticket::Frontend::AgentTicketSearch###ExtendedSearchCondition is inactive.
+  * Fixed bug#9042 - Add X-Spam-Score to Ticket.xml.
+  * Fixed bug#9047 - HistoryTicketGet caches info on disk directly.
+  * Fixed bug#8923 - Alert message shown, if parent window is reloaded while
+    bulk action popup is open.
+  * Fixed bug#9030 - Wrong handling of Invalid YAML in Scheduler Tasks.
+  * Updated CKEditor to version 3.6.6.
+  * Updated Polish translation, thanks to Pawel @ ib.pl!
+  * Follow-up fix for bug#8805 - Cron missing as RPM dependency on RHEL.
+    Changed dependency on 'anacron' to 'vixie-cron' on RHEL5.
+  * Fixed bug#9020 - Generic Ticket Connector does not support attachments with
+    ContentType without charset.
+  * Fixed bug#8545 - Attachment download not possible if pop up of another action is open.
+  * Fixed bug#9009 - Empty Multiselect Dynamic Fields provokes an error.
+  * Fixed bug#8589 - Bulk-Action not possible for single ticket.
+  * Fixed bug#7198 - Broken repository selection width in Package Manager.
+  * Fixed bug#8457 - Error if accessing AgentTicketSearch from AgentTicketPhone in IE8.
+  * Fixed bug#8695 - Table head of Customer Ticket History does not resize on window resize.
+  * Fixed bug#8533 - Apache will not start if you use mod_perl on Fedora 16 or 17.
+  * Fixed bug#8974 - Event Based Notification does not populate REALNAME with
+    Customer User data. 
+
+-------------------------------------------------------------------
+Wed Dec 12 17:11:37 UTC 2012 - chris@computersalat.de
+
+- update to 3.1.12
+  * Fixed bug#8933 - ArticleStorageInit permission check problem.
+  * Fixed bug#8763 - Please add charset conversion for customer companies.
+  * Fixed bug#1970 - Email attachments of type .msg (Outlook-Message) are converted.
+  * Fixed bug#8955 - Init script might fail on SUSE.
+  * Fixed bug#8936 - Ticket close date is empty when ticket is created in closed state.
+  * Fixed bug#8937 - "$" should be escaped in interpolated strings when javascript is meant.
+  * Fixed bug#8919 - Customer interface search results: ticket can only be accessed
+    via ticket number and subject.
+  * Fixed bug#8850 - CustomerTicketOverview - MouseOver Age isn't always correct.
+  * Fixed bug#8868 - Event Based Notification problem saving 'text' Dynamic Fields.
+  * Fixed bug#8914 - Syntax error in hash loop in TicketGet operation.
+  * Fixed bug#8749 - CustomerFrontend: missing dynamicfield in search results.
+  * Fixed bug#8873 - Bad example of customization of "static" dynamic fields in
+    AgentTicketOverviewSmall.
+  * Fixed bug#8791 - IMAPTLS fails with some Microsoft Exchange servers.
+  * Fixed bug#8841 - Search for Dynamic Fields shows all tickets (on "enter" key pressed).
+  * Fixed bug#8861 - Ticket History overlaid calender choice function.
+  * Fixed bug#8862 - GI debugger GUI does not show SOAP XML tags correctly.
+  * Fixed bug#8566 - Cannot download attachment if filename has character #.
+  * Fixed bug#8833 - Article table in TicketZoom does not scroll correctly.
+  * Fixed bug#8673 - Richtext-Editor popups broken on Customer-Interface.
+  * Fixed bug#8859 - Package upgrade does not work if an installed testpackage
+    should be upgraded with a newer regular package.
+  * Fixed bug#8678 - 'WidgetAction Toggle' is always shown as 'Expanded' when nesting elements
+  * Fixed bug#8378 - Validation fails if the ID of the element contains a dot (.) or a
+    colon (:)
+  * Fixed bug#8847 - Inline PGP message description routine does not add any info, thanks
+    to IB Development Team.
+  * Fixed bug#8848 - AgentTicketEmail does not preserve PGP Signatures set if attachment
+    is added.
+  * Fixed bug#8149 - Wrong handling of subject when SubjectFormat=right.
+  * Updated Polish translation, thanks to Pawel!
+  * Fixed bug#8820 - Service rcotrs restart fails because a race condition happens.
+  * Fixed bug#8819 - Syntax error (stop crontab command) in SuSE rc script.
+  * Removed auto cleanup of expired sessions in CreateSessionID() to improve the scalability
+    of the hole system.
+  * Fixed bug#8667 - TicketSplit does not use QueueID of old Ticket for ACL Checking.
+  * Fixed bug#8780 - 508 Compliance: Text descriptions of "Responsible Tickets"
+    and "Locked Tickets" links are insufficient for screen reader users.
+  * Fixed bug#8812 - Encrypted email doesn't see properly in Outlook.
+  * Fixed bug#8214 - OTRS Init script on Red Hat fails to check scheduler.
+  * Fixed bug#8850 - Cron missing as RPM dependency on Red Hat Enterprise Linux.
+  * Fixed bug#7274 - Ticket QueueView sorts by priority on first page but subsequent
+    pages sort incorrectly by Age.
+  * Fixed bug#8792 - TriggerEscalationStopEvents logs as loglevel 'error'.
+  * Fixed bug#8743 - AgentTicketCompose.pm creates To, CC, BCC filelds without
+    spaces after comma.
+  * Fixed bug#8606 - Escalation notifications should not be sent to agents who
+    are set out-of-office.
+  * Fixed bug#8740 - backup.pl: insufficient handling of system() return values.
+  * Fixed bug#8622 - Storing a new GI Invoker or Operation with an existing name doesn't
+    complain anything.
+  * Fixed bug#8770 - AJAX Removes Default Options (follow-up fix).
+  * Improved caching for Services and Service Lists.
+- Update ITSM to 3.1.7
+ - News
+  * In AgentTicketZoom the service and the sla are now shown as links
+    to the service zoom / sla zoom screens.
+  * Updated Polish translation, thanks to Pawel!
+  * Added feature in bin/otrs.ITSMConfigItemDelete.pl script to delete
+    config items by class together with the deployment state.
+  * Added CustomerCompany field type that allows to link CI's with
+    Customer Companies registered in OTRS.
+  * Enhanced Import/Export screen to show a summary after importing.
+  * Added new optional sysconfig option to check if config item names
+    are unique.
+  * Added attachment support for ITSM config items. This will replace
+    the OTRS FeatureAddOn OTRSCIAttachment. Please uninstall this
+    FeatureAddon BEFORE you upgrade to OTRS::ITSM 3.1.7
+    (no attachment data will be lost)! 
+ - Bug Fixes
+  * Bug# 5928 - Print PDF: Newline not interpreted.
+  * Bug# 8723 - Setting the planned start and planned end time to the same value causes an error.
+  * Bug# 8785 - Poor performance of ServiceGet with many child services.
+  * Bug# 8626 - AgentTicketAddtlITSMField, Ticket states set to first state after reload.
+  * Bug# 8852 - No Impact and Criticality in CustomerTicketZoom.
+  * Bug# 7786 - Search by "type" not displaying correct results from page 2 on.
+  * Bug# 8804 - Reorder of workorders based on actual startime.
+  * Bug# 8686 - CI-Search can not handle > 1000 CIs per class
+  * Bug# 8863 - Problem with ChangeManagement DropDowns in Conditions Mask.
+  * Bug# 8834 - Broken changes created from template when no time offset.
+  * Bug# 8830 - CI version header should be clickable in all columns.
+  * Bug# 8613 - Wrong date if a workorder has been created from a template.
+  * Bug# 8881 - Searching for a config item number = 0 or a config item 
+    name = 0 (without wildcards) finds results where it should not.
+  * Bug# 8882 - Error message from ToolBarMyCAB.
+  * Bug# 8614 - Update agent notification doesn't contain agent name.
+  * Bug# 8615 - Notification not sent for ChangeStateUpdate to pending PIR.
+  * Bug# 7508 - Autocomplete uses milliseconds rather than seconds. 
+- rebase perm patch
+- fix changes file
+
+-------------------------------------------------------------------
+Thu Nov 22 12:10:49 UTC 2012 - chris@computersalat.de
+
+- fix for bnc#790729 (typo in ZZZAuto.pm)
+
+-------------------------------------------------------------------
+Thu Oct 25 18:53:53 UTC 2012 - alexandre@exatati.com.br
+
+- fix for bnc#791014 (CVE-2012-4751)
+- Update to 3.1.11:
+  ( fix for OSA-2012-03, http://otrs.org/advisory/)
+  - Fixed bug#8770 - AJAX Removes Default Options.
+  - Fixed bug#7135 - Queueview, Ticketwindow closing on Refresh.
+  - Fixed bug#7294 - Ticket search window closes on background
+    refresh of ticket queue.
+  - Fixed bug#8765 - Package Manager OS detection does not work.
+  - Improved HTML security filter to better find javascript source
+    URLs.
+  - Fixed bug#8575 - SSL protocol negotiation fails using SMTPTLS
+    with recent IO::Socket::SSL versions by upgrading TLS module to
+    0.20.
+  - Fixed bug#4475 - Extra double quote added to HTML links when
+    using http-link field.
+  - Improved caching of search results when the result set is empty.
+- Rebase otrs-perm.patch.
+
+-------------------------------------------------------------------
+Mon Sep 10 14:55:38 UTC 2012 - chris@computersalat.de
+
+- fix for bnc#778655 (CVE-2012-4600)
+- update to 3.1.10
+  (fix for OSA-2012-02, http://otrs.org/advisory/)
+  * Improved HTML security filter to detect tag nesting.
+  * Bug#8611 - Ticket count is wrong in QueueView.
+  * Bug#8698 - Layout.pm only looks at first entry from
+    HTTP_ACCEPT_LANGUAGE to determine language.
+  * Bug#8731 - LDAP group check returns wrong error. 
+- fix License: AGPL-3.0 -> AGPL-3.0+
+
+-------------------------------------------------------------------
+Wed Aug 22 17:40:22 UTC 2012 - chris@computersalat.de
+
+- fix for bnc#776966 (CVE-2012-2582)
+- update to 3.1.9
+  (fix for OSA-2012-01, http://otrs.org/advisory/)
+  * HTML mails will now be displayed in an HTML5 sandbox iframe. This
+    means that modern browsers will not execute plugins or JavaScript
+    on the content any more. Currently, this is supported by Chrome
+    and Safari, but IE10 and FF16 are also
+  * HTML mails will now be displayed in the restricted zone in IE.
+    This means that more restrictive security settings will apply,
+    such as blocking of JavaScript content by default.
+  * Bug#8360 Cannot search for tickets by dynamic fields via SOAP.
+  * Bug#8697 Time related restrictions in TicketSearch operator
+    (GenericInterface) not working.
+  * Bug#8685 - Cannot use address book / customer / spell check in
+    phone / email if cookies are disabled. (partly fixed)
+  * Bug#8682 - linking search conditions with && in Customersearch
+    is not working since Update from 3.1.1 to 3.1.7.
+  * Bug#8683 - Cannot create dynamic field if cookies are disabled.
+  * Bug#8672 - Search Profile can't have an ampersand in the name via
+    Toolbar module.
+  * Bug#8619 - The UPGRADING file has incorrect patchlevel upgrade
+    description.
+  * Bug#6882 - Dummy field set first child to the very right in edit
+    screen.
+  * Bug#8680 - Bulk action fails if cookies are disabled.
+- Update ITSM to 3.1.6
+  * HTML mails will now be displayed in an HTML5 sandbox iframe. This
+    means that modern browsers will not execute plugins or JavaScript
+    on the content any more. Currently, this is supported by Chrome
+    and Safari, but IE10 and FF16 are also
+  * HTML mails will now be displayed in the restricted zone in IE.
+    This means that more restrictive security settings will apply,
+    such as blocking of JavaScript content by default.
+  * Bug# 6329 - Type => 'Dummy' not shown in AgentITSMConfigItemZoom.
+- rebase perm patch
+
+-------------------------------------------------------------------
+Tue Aug  7 11:19:33 UTC 2012 - chris@computersalat.de
+
+- update to 3.1.8
+  * Updated Greek translation file, thanks to Maistros Stelios!
+  * Improved robustness of HTML security filter: Detect masked 
+    UTF-7 < and > signs.
+  * Added config option for ticket permission in the escalation view.
+  * Fixed bug#8675 - Kernel::GenericInterface::Mapping doesn't provide
+    a ConfigObject.
+  * Fixed bug#8660 - Duplicate DF X-Headers in PostMaster module.
+  * Fixed bug#8647 - otrs.GenerateStats.pl "-S" option does not
+    function.
+  * Fixed bug#8616 - Spell Checker does not work using IE9.
+  * Fixed bug#8568 - IMAPTLS - More than one email at one cron run will
+    not work.
+  * Added bug#8627 - bin/otrs.AddQueue2StdResponse.pl Script to add
+    standard responses to queues.
+    Thanks to Oliver Skippe @ CIPHRON GmbH.
+  * Fixed bug#8607 - otrs service fails in 3.1.7 on SUSE linux.
+  * Increased cache TTL of some core modules to improve performance.
+  * Fixed bug#8620 - Using a default queue in the customer interface
+    causes database error on PostgresSQL if ACLs are used.
+  * Fixed bug#8618 - Inform and Involved Agents select boxes can not
+    be resizable.
+  * Fixed bug#8558 - GenericInterface: response isn't valid UTF-8
+    content.
+  * Added bug#7039 - bin/otrs.AddService.pl script to add services
+    from the command line.
+  * Made display of pending time consistent with escalation time
+    display.
+  * Fixed bug#8230 - Invalid Challenge Token when creating ticket out
+    of hyperlinks.
+ - The detailed ChangeLog can be found at:
+    http://source.otrs.org/viewvc.cgi/otrs/CHANGES?revision=1.2260.2.95&view=markup
+- Update ITSM to 3.1.5:
+  * Bug# 8581 - No CI Table visible in AgentITSMConfigItem when too
+    many CI Classes are available.
+  * Bug# 8550 - Date and DateTime attributes only have hard-coded
+    values for 10 years past and future.
+  * Bug# 8602 - Criticality and Impact fields are empty in ticket
+    overview and ticket print
+  * Bug# 8176 - Due Date translation issue in xx_ITSMTicket.pm
+  * Bug# 8617 - ITSMConfigItemDelete fails with very large number of
+    versions.
+  * Bug# 8628 - Manually disabled ticket types from
+    ITSMIncidentProblemManagement package get enabled again on package
+    reinstall. 
+
+-------------------------------------------------------------------
+Tue Jun 26 13:15:09 UTC 2012 - chris@computersalat.de
+
+- update to 3.1.7
+    Bug#8593 - Wrong description for 'Agent Notifications' on Admin
+     interface.
+    Bug#8587 - Typo in French translation.
+    Bug#7879 - Broken Content-Type in forwarded attachments.
+    Bug#8583 - Unneeded complexity and performance degradation
+     creating Service Lists (Replacement for bug fix 7947).
+    Bug#8580 - SQL warnings for CustomerCompanyGet on some database
+     backends.
+    Bug#8251 - Defect handling of invalid Queues in AJAX refresh.
+    Bug#8574 - Perl special variable $/ is changed and never restored.
+    Bug#8337 - Parentheses in user last_name / first_name are not
+     sanitized (follow-up fix).
+    Bug#8575 - Assignment of users does not work for responsible or
+     owner permission in AgentTicketPhone.
+    Bug#7872 - "Created" date in Large view is actually Last Updated
+     date.
+    Bug#8457 - Paste on a newly created ckeditor instance does not
+     work on webkit based browsers.
+    Bug#8565 - Exportfile action from otrs.PackageManaget.pl is broken.
+    Bug#8458 - $OTRS_SCHEDULER -a start missing from /etc/init.d/otrs
+     after update.
+    Bug#8139 - SUSE RPM has no dependency on Date::Format perl module.
+    Bug#8544 - Hovering ticket title is still shortened.
+    Bug#8553 - Agent notifications can't be loaded from the database
+     in some scenarios.
+    Bug#8383 - Email address in 'To' field is lost after second
+     reload if address is not in customer database.
+    Bug#8549 - "Need User" warning in error log when creating a ticket
+     for a customer not in DB.
+    Bug#8546 - LinkObject Type is not translated in ticket zoom.
+    Bug#7533 - SQL error if body contains only a picture.
+    Bug#2626 - Default Service does not work for "unknown" customers.
+     You can use the new setting
+     "Ticket::Service::Default::UnknownCustomer" to specify if unknown
+     customers should also receive the default services.
+    Bug#8481 - Dynamic Fields lost after ticket move to another queue
+     (using quick move Dropdown). 
+ - The detailed ChangeLog can be found at:
+    http://source.otrs.org/viewvc.cgi/otrs/CHANGES?revision=1.2260.2.76&view=markup.
+- added missing optional deps (bin/otrs.CheckModules.pl)
+  * Recommends:
+     perl(Crypt::SSLeay)
+     perl(JSON::XS)
+     perl(Mail::IMAPClient)
+     perl(Net::SSL)
+  * Suggests:
+     perl(Net::LDAP)
+     perl(Text::CSV_XS)
+
+-------------------------------------------------------------------
+Tue Jun 19 15:14:56 UTC 2012 - chris@computersalat.de
+
+- fix permission (750,wwwrun,www) for module
+  * SystemMonitoring (bin/otrs.NagiosCheck.pl)
+  * Survey (bin/otrs.SurveyTriggerSendRequests.pl)
+
+-------------------------------------------------------------------
+Mon Jun 11 09:05:12 UTC 2012 - chris@computersalat.de
+
+- cleanup source, spec
+  * - remove 'permissions' stuff
+- fix changes file
+
+-------------------------------------------------------------------
+Tue Jun  5 16:07:59 UTC 2012 - chris@computersalat.de
+
+- update to 3.1.6
+  * Bug#8495 - Generic Agent TicketAction single value attributes
+     should not let multiple selection.
+  * Bug#8378 - Validation fails if the ID of the element contains a
+     dot (.) or a colon (:).
+  * Bug#7532 - 'Field is required' message should be removed in RTE if
+     content is added.
+  * Bug#8514 - Long words in description break rendering of SysConfig
+     items.
+  * Bug#8537 - DynamicField caching issue.
+  * Bug#8482 - Responsible of a ticket without responsible permission.
+  * Bug#8485 - CustomerUser validation fails in GI Ticket Operations
+     if there is no ValidID in the mapping.
+  * Bug#8529 - Fixed print to STDERR in ReferenceData.pm.
+  * Bug#8427 - Dynamic Field Type Multiselect not shown in Notification
+     (event).
+  * Bug#8189 - AgentTicketCompose: Pressing "Enter" will delete
+     Attachment.
+  * Bug#7844 - Escalation Event does not respect service calendar of
+     ticket/queue.
+  * Bug#8228 - Ticket::Frontend::AgentTicketNote###StateDefault
+     doesn't work.
+  * Bug#8519 - Kernel::System::TicketSearch->TicketSearch() doesn't
+     properly handle array references in SortBy parameter
+  * Bug#7519 - AJAX-reload of SMIME-fields did not work properly.
+  * Bug#8518 - Crypt on multiple recipients error replaces Crypt
+     selection.
+  * Bug#8164 - Internal articles are visible within customer ticket
+     overview.
+  * Bug#8506 - Customer email link won't open in popup as expected.
+  * Bug#7844 - Escalation Event does not respect service calendar of
+     ticket/queue.
+  * Bug#8498 - OpenSSL 1.0.0 does not get the stored SMIME
+     certificates when -CApath is used in the command.
+  * Bug#8337 - Parentheses in user last_name / first_name are not
+     sanitized.
+  * Bug#8467 - Reply to an e-mail address with ' not possible.
+  * Bug#8352 - Wrong substitution regex in HTMLUtils.pm->ToAscii.
+  * Bug#8401 - DynamicField Update doesn't update the
+     X-OTRS-DynamicField-XXX Fields in Postmaster Filters.
+  * Bug#5746 - Using PerlEx you have to restart IIS each time a setting
+    is changed in SysConfig.
+  * Bug#8452 - Dynamic Field Date/Time not working when server runs on
+     UTC.
+ - The detailed ChangeLog can be found at:
+    http://source.otrs.org/viewvc.cgi/otrs/CHANGES?revision=1.2260.2.47&view=markup.
+- Update ITSM to 3.1.4:
+  * Bug#8479 - Change and workorder notification records are not
+     deleted during module uninstallation.
+  * Bug#8484 - Can't create cache for Change Management Toolbar
+     Modules on win32 platform.
+  * Bug#8453 - Saved time in ITSMChangeManagement screens adds UTC
+     offset.
+  * Bug#8487 - Usage of event.stopPropagation() causes javascript
+     error in IE8.
+  * Bug#8488 - Change search should require at least one search
+     parameter.
+  * Bug#8507nbsp;- Font size is ignored for text if input is made in
+     certain order.
+  * Bug#8515 - Search icon shows the ticket search instead of the
+     change search when the current screen is the workorder zoom.
+  * Bug#8521 - Back-Link in Workorder-Zoom returns to the previous
+     page, but does not reload the page
+     (the page comes from the browser cache).
+  * Bug#8538 - AgentTicketZoom does not show "Review Required" Field.
+
+-------------------------------------------------------------------
+Wed May 16 21:00:51 UTC 2012 - chris@computersalat.de
+
+- fix itsm sources
+  * dos2unix INSTALL-3.1.ITSM
+  * readd packages30
+  * readd packages31/*3.1.{1,2}.opm
+- fix itsm deps
+- remove/disable permissions file stuff
+- exclude bin/otrs.SetPermissions.pl
+- fix perl deps
+  * use module names, not pkg names
+
+-------------------------------------------------------------------
+Wed May 16 16:22:36 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 3.1.5:
+  - Updated Hungarian translation, thanks to Csaba Nemeth!
+  - Added possibility to specify a cache type for selective cache
+    cleaning in bin/otrs.DeleteCache.
+  - Added possibility to define ACL rules by user role.
+  - Bug#8466 - On Win32 GenericInterface does not return results
+    properly.
+  - Bug#8465 - Can't create cache for web service debug log on Win32
+    platforms.
+  - Bug#7919 - Translation of ticket states in CSV Export of
+    CustomerTicketSearch.
+  - Bug#8461 - CustomerTicketSearch doesn't use ticket ACL rules.
+  - Bug#7877 - SMIME emails don't get parsed properly (follow-up
+    fix).
+  - Bug#8446 - Dynamic Field type TextArea missing > 3800 characters
+    validation.
+  - Bug#8447 - Checkbox Dynamic Field is incorrectly calculated in
+    statistics.
+  - Bug#8328 - Statistics ignores any restrictions on dynamic fields.
+  - Bug#8439 - AgentTicketForward: ticket not unlocked after selecting
+    a close state.
+  - Bug#7168 - Ticket Overview Control Row can only be one line high.
+  - Bug#8437 - Dynamic Field order duplicated when change the order
+    of a field.
+  - Bug#8409 - Deselecting 'select all' in queue view does not work.
+  - Bug#8424 - Ticket articles of large tickets cannot be opened.
+  - Bug#8415 - Setting Ticket::Responsible ignored by AgentTicketActionCommon.
+  - Bug#8288 - Autocomplete search results show up in Times font when
+    using Internet Explorer.
+  - Bug#8414 - ACL for AgentTicketCustomer in AgentTicketZoom doesn't
+    affect CustomerID link in ticket information.
+  - Updated CKEditor to version 3.6.3, fixing several bugs.
+  - Bug#8369 - Incorrect handling of Ticket ACL in AJAX Updates.
+- Update ITSM to 3.1.3:
+  - Added Portuguese translations for Portugal, thanks to Rui
+    Francisco!
+  - Small performance improvement when creating a change from a
+    template.
+  - Bug# 8261 - Bad performance when moving timeslot in
+    AgentITSMChangeTimeSlot.
+  - Bug# 8265 - Error in ITSM Incident Problem Management statistics.
+  - Bug# 8302 - CI class names are not translated in
+    AgentITSMConfigItemAdd.dtl
+  - Bug# 8303 - Wrong charset for cs_ITSMTicket.pm
+  - Bug# 8293 - Cannot delete change search profile.
+  - Bug# 8362 - Change-Delete menu link is visible for other
+    group members than itsm-change-manager.
+  - Bug# 8366 - Number of SQL statements could be decreased when
+    deleting a change.
+  - Bug# 8386 - Change Mangement Toolbar Modules could use caching
+    to reduce the number of SQL statements.
+  - Bug# 8396 - Dynamic Field creation problem on migrated framework.
+  - Bug# 8305 - Possible SQL injection problem in change search.
+
+-------------------------------------------------------------------
+Tue Apr 24 20:26:42 UTC 2012 - chris@computersalat.de
+
+- update to 3.1.4
+  * Bug#8284 - The text "Cc: (xx@mail.com) added database email!" is confusing.
+  * Bug#8392 - DynamicFieldAdd returns wrong value.
+  * Bug#8387 - UseSyncBackend configuration does not conform to OTRS style.
+  * Bug#8367 - Customer entry not marked as mandatory.
+  * Bug#8348 - Wrong pop-up close behavior when no URL is given and SessionUseCookie is set to No.
+  * Bug#8346 - Incoming phone calls trigger NewTicket notification, even for existing tickets.
+  * Bug#8353 - Small typo in print CSS.
+  * Bug#8370 - AgentTicketForward does not set pending date for pending states.
+  * Bug#8368 - Personal queues update is not reflected in UI.
+  * Bug#8363 - SOAP Transport can't send a value '0'.
+  * Bug#8356 - ACLs for DynamicFields does not work on AgentTicketSearch.
+  * Bug#8336 - otrs.ExportStatsToOPM.pl broken.
+  * Bug#8349 - Caching breaks Admin frontend.
+  * Bug#7877 - SMIME emails don't get parsed properly.
+  * Disabled error message in RemoveSessionID().
+  * Repaired broken cache handling in DynamicFieldList(). 
+ - The detailed ChangeLog can be found at:
+   http://source.otrs.org/viewvc.cgi/otrs/CHANGES?revision=1.2254&view=markup. 
+  * for more info please see release-notes
+    http://www.otrs.com/open-source/community-news/releases-notes/\
+     release-notes-otrs-help-desk-314/
+- rework permissions
+  * otrs_root/otrs/var/log (660,otrs,www,2775)
+  * otrs_root/otrs/bin (750,root,www,755)
+- rework README files
+  * add some usefull mysql info
+- fix init
+  * on 'start', start scheduler if not already running
+- add missing bin_files
+  * otrs.DeleteSessionIDs.pl, otrs.UnlockTickets.pl
+- fix sysconfig file
+  * do not use (hostname -f)
+
+-------------------------------------------------------------------
+Wed Apr  4 21:37:24 UTC 2012 - chris@computersalat.de
+
+- update to 3.1.3
+  * Bug#8343 - Configuration of additional modules can be lost during
+    upgrade.
+  * Renamed form id in AgentLinkObject.dtl to make sure it doesn't
+    interfere with wrong CSS.
+  * Bug#8333 - Type option '-' should not be available in
+    ActionTicketCommon screens.
+  * Bug#8331 - Unable to delete ticket with > 1000 articles on Oracle
+    database.
+  * Bug#8335 - Cache keys are not always properly constructed.
+  * Dynamic fields and associated values can now be deleted in the
+    admin area.
+  * Do not show the empty item in dynamic field search fields.
+  * Fixed an issue where DBUpdate-to-3.1.pl would die because of
+    certain free text or free time configuration settings.
+  * Bug#8334 migration fails if FreeTime fields are not in use.
+  * Bug#8320 - IMAP FLAGS (\Seen \Recent) are appended to article body
+    by upgrading bundled Net::IMAP::Simple to version 1.2030.
+  * Bug#8286 - Adressbook forgets selected entries.
+  * Bug#8297 - Selectbox for new owner causes ajax update on every
+    change made via keyboard.
+  * Bug#7545 - AgentTicketBounce lacks permission checks.
+ - The detailed ChangeLog can be found at:
+   http://source.otrs.org/viewvc.cgi/otrs/CHANGES?revision=1.2226&view=markup
+  * for more info please see release-notes
+    http://www.otrs.com/de/open-source/community-news/release-notes/\
+     release-notes-otrs-help-desk-313/
+- rebase perm patch
+- add permissions file
+
+-------------------------------------------------------------------
+Mon Mar 12 14:23:00 UTC 2012 - chris@computersalat.de
+
+- update to 3.1.2
+  * Bug#8282 - Dropdown and Multiselect Dynamic Fields without Possible values
+    causes errors with LayoutObject BuildSelection function.
+  * Bug#8277 - DynamicField values not deleted when ticket is deleted.
+  * Bug#8274 - Dynamic Fields ACLs does not work correctly at Ticket Split.
+  * Improved#7526 - Fixed handling of special characters (, ), &, - within statistics.
+  * Bug#8255 - TicketSearch in DynamicFields doesn't support ExtendedSearchCondition.
+  * Bug#8258 - DynamicField date value is reset to NULL.
+  * Bug#8214 - OTRS Init script on Red Hat / SUSE fails to check scheduler.
+  * Bug#8227 - LDAP user syncronisation doesn't work.
+  * Bug#8235 - Searching on DynamicFields, results are lost on next page.
+  * Bug#8252 - Small typo in German translation of AgentTicketZoom.
+  * Bug#8226 - Problem with Customized DynamicFields in TicketOverviewSmall.
+  * Bug#8233 - DB error migrating stats on Oracle.
+  * Bug#8224 - Admin Responses screen does not allow to filter responses.
+  * Bug#7652 - OpenSearch providers are served with wrong mime type. Follow-up fix.
+  * Bug#8140 - Shortcut for creating new e-mail ticket doesn't work. The hotkey
+    for "new email ticket" was changed from e to m to avoid a collision.
+  * Bug#8144 - Typo and improved logging in GenericAgent.pm.
+  * Bug#8183 - Canceling AgentTicketCompose on an unlocked ticket generates
+    ChallengeToken error.
+  * Bug#8219 - TicketCreate and TicketUpdate ticket operations in the
+    GenericInterface require a valid CustomerUser.
+  * Bug#8201 - Popup in browser always open on leftmost display when using
+    dual monitor setup.
+  * Bug#8202 - Kernel::System::JSON->Decode() dies when providing malformed JSON.
+  * Bug#8211 - Typos in Labels: DYNAMICFILED can cause internal server errors.
+  * Bug#7109 - Statistics error when PDF support is not active.
+ - The detailed ChangeLog can be found at:
+    http://source.otrs.org/viewvc.cgi/otrs/CHANGES?revision=1.2195&view=markup.
+  * for more info please see release-notes
+    http://www.otrs.com/de/open-source/community-news/release-notes/\
+     release-notes-otrs-help-desk-312/
+- fix post
+  * add if suse_version around a2enmod
+
+-------------------------------------------------------------------
+Tue Feb 28 15:36:39 UTC 2012 - chris@computersalat.de
+
+- update OTRS::ITSM to 3.1.2
+  * for more info please see
+    http://www.otrs.com/en/open-source/community-news/releases-notes/\
+     release-notes-otrs-itsm-312/
+- fix usermod (-d)
+- fix post (FIRST_ARG)
+
+-------------------------------------------------------------------
+Thu Feb 23 17:52:30 UTC 2012 - chris@computersalat.de
+
+- rework docs
+  * updated otrs.README files
+  * updated itsm.README files
+  * add UPGRADING.SuSE to doc
+  * fix docs destinations
+    - otrs/-itsm now has COPYING and needed README
+  * remove obsolete docs from doc
+- rpmlintrc
+  * addFilter('files-duplicate /srv/otrs/Kernel/Config.pm.dist')
+  * addFilter('files-duplicate /srv/otrs/Kernel/Config/GenericAgent.pm.dist')
+- fix itsm deps
+
+-------------------------------------------------------------------
+Mon Feb 20 16:49:46 UTC 2012 - chris@computersalat.de
+
+- add init scripts
+  * otrs, otrs-scheduler
+  * remove init patch
+- rework sysconfig file
+
+-------------------------------------------------------------------
+Tue Feb 14 17:08:56 UTC 2012 - chris@computersalat.de
+
+- update to 3.1.1
+  * Fixed bug#8199 - Linked tickets open only in tabs.
+  * Fixed bug#8148 - Wrong presentation of queue structure in
+    CustomerTicketMessage.
+  * Fixed bug#8137 - Issues with Owner list refresh when selecting
+    a new Owner.
+  * Fixed bug#8180 - bin/otrs.LoaderCache.pl exit code is wrong.
+  * for more info please see CHANGES file
+    http://www.otrs.com/de/open-source/community-news/release-notes/\
+     release-notes-otrs-help-desk-311/
+- update OTRS::ITSM to 3.1.1
+  * for more info please see
+    http://www.otrs.com/de/open-source/community-news/release-notes/\
+     release-notes-otrs-itsm-311/
+- rebase patches
+  * perm, httpd_conf patch
+- rework init patch
+- update ZZZAuto.pm to reflect new versions (ITSM)
+- update sysconfig file
+- remove INSTALL from doc
+
+-------------------------------------------------------------------
+Fri Dec  2 21:14:19 UTC 2011 - alexandre@exatati.com.br
+
+- Fix wrong tests in init script;
+- Fix permissions in bin to properly functioning of cron tasks;
+- Fix sysconfig variable for OTRS_CLEANUP;
+- Refresh all patches with -p0.
+
+-------------------------------------------------------------------
+Fri Nov 18 10:13:06 UTC 2011 - chris@computersalat.de
+
+- update to 3.0.11
+  o several OTRS bug fixes (http://bugs.otrs.org/)
+    for more info please see CHANGES file
+    http://otrs.org/releases/3.0.11/
+
+-------------------------------------------------------------------
+Fri Sep  2 14:25:50 UTC 2011 - chris@computersalat.de
+
+- update to 3.0.10
+  o several OTRS bug fixes (http://bugs.otrs.org/)
+    for more info please see CHANGES file
+    http://otrs.org/releases/3.0.10/
+- update OTRS::ITSM to 3.0.5
+  o for more info please see
+    http://lists.otrs.org/pipermail/itsm-announce/2011/subject.html
+- rpmlint:
+  * incorrect-fsf-address, http://www.fsf.org/about/contact/
+
+-------------------------------------------------------------------
+Sat Jul 16 18:33:39 UTC 2011 - chris@computersalat.de
+
+- fix fdupes
+  o not on Kernel dir, cause of config files
+
+-------------------------------------------------------------------
+Sat Jul  9 17:40:18 UTC 2011 - chris@computersalat.de
+
+- update to 3.0.9
+  o several OTRS bug fixes (http://bugs.otrs.org/)
+    for more info please see CHANGES file
+    http://otrs.org/releases/3.0.9/
+- update OTRS::ITSM to 3.0.4
+  o for more info please see
+    http://lists.otrs.org/pipermail/itsm-announce/2011/subject.html
+- rebase httpd_conf patch
+- fix rpmlint (Files listed twice)
+- update description (License: AGPL)
+
+-------------------------------------------------------------------
+Sun Jun 19 19:11:13 UTC 2011 - chris@computersalat.de
+
+- update to 3.0.8
+  o several OTRS bug fixes (http://bugs.otrs.org/)
+    for more info please see CHANGES file
+    http://otrs.org/releases/3.0.8/
+
+-------------------------------------------------------------------
+Sun May 22 16:47:15 UTC 2011 - chris@computersalat.de
+
+- update to 3.0.7
+  o several OTRS bug fixes (http://bugs.otrs.org/)
+    for more info please see CHANGES file
+- update OTRS::ITSM to 3.0.3
+  o for more info please see
+    http://lists.otrs.org/pipermail/itsm-announce/2011/subject.html
+- reworked init patch
+  o removed 2.4.7-init
+  o added 3.0.7-init
+- move /opt to /srv
+  o add 3.0.7-httpd_conf patch
+  o updated
+    - ZZZAuto.pm
+    - sysconfig.otrs
+    - itsm.README.{de,en}
+- spec mods
+  o add macro {otrs_root}
+  o macro usage
+  o wrong-file-end-of-line-encoding
+    INSTALL-3.0.ITSM
+- do not overwrite Kernel/Config.pm* on update
+- rework dir/file permissions
+  o remove sbits from var/{article,log}
+  o add 3.0.7-perm patch (no check_permission on /bin/)
+
+-------------------------------------------------------------------
+Sat May  7 10:28:02 UTC 2011 - chris@computersalat.de
+
+- update to 2.4.10
+  (fix for OSA-2011-01, http://otrs.org/advisory/OSA-2011-01-en/)
+  - 2011-03-23 Updated Brazilian Portugese translation, thanks to
+    Murilo Moreira de Oliveira!
+  - 2011-03-18 Added required settings for oracle databases in
+    apache2-httpd-new.include.conf.
+  - 2011-03-07 Fixed bug#6014 - Printed pdf tickets are not searchable.
+  - 2011-02-17 Fixed bug#6906 - Vendor URL points to Basename+URL
+    instead of URL.
+  - 2011-01-25 Event Based notification - respect "Include Attachments
+    to Notification".
+  - 2010-12-17 Fixed bug#6510 - Signature ID missing.
+  - 2010-12-14 Fixed bug#6532 - With multiple inline images, only
+    first one is preserved when replying.
+  - 2010-12-13 Fixed bug#6520 - backup.pl doesn't backup with strong
+    password.
+  - 2010-12-09 Fixed bug#6488 - otrs.ArticleStorageSwitch.pl creating
+    wrong files.
+  - 2010-12-09 Fixed bug#3984 - HTML Notifications - Links to
+    ticketsystem are not clickable.
+  - 2010-12-02 Fixed bug#6366 - gnupg signatures not working correct
+    for partly signed messages.
+  - 2010-11-29 Fixed bug#5981 - Warnings from TransfromDateSelection()
+    in AgentTicketMove.
+  - 2010-11-23 Fixed bug#6131 - Lack of warning for revoked and expired
+    PGP keys in email compose screens.
+  - 2010-11-04 Fixed bug#6211 - Wrong TicketFreeText-value in ticket
+    creation by using event notifications.
+  - 2010-11-02 Email.ticket: wrong signature is shown.
+  - 2010-10-26 Improved German translation, thanks to Stelios Gikas!
+  - 2010-10-13 Fixed some Perl "uninitialized value" warnings.
+  - 2010-10-12 Fixed bug#6087 - Search template name is broken if
+    & or ; is used.
+- update OTRS::ITSM to 2.1.3
+  - ENHANCEMENTS
+    * Added persian translation for Change Management, thanks to Masoud
+      Ramezani <masoud.ramezani@gmail.com>
+  - SELECTED BUG FIXES ( http://bugs.otrs.org/)
+    * Bug# 6908 - Uninstalling the Change Management module and
+      installing it again does not delete the cache.
+    * Bug# 6918 - Search for changes between 12.2. and 13.2. does not
+      find changes terminated for the 12.2. at 00:00.
+    * Bug# 6989 - Missing condition check while Workorder deletion if
+      condition is not valid.
+    * Bug# 7067 - Condition Edit screen does not store the number zero
+      0 for value fields.
+    * Bug# 7069 - Condition Operator "Less Than" recognizes equal
+      values as less than.
+    * Bug# 7068 - Can not use number zero 0 or numbers with a decimal
+      point in condition expressions with compare operator "less than"
+      or "greater than".
+    * Bug# 7070 - Can not use negative numbers in condition expressions
+      with compare operator "less than" or "greater than".
+    * Bug# 7131 - Limiting CI classes is not fully respected when
+      linking CIs.
+    * Bug# 7065 - !ConfigItemDelete function doesn't delete link
+      relations before deleting CIs.
+    * Bug# 7196 - Not possible to set the workorder agent to "empty"
+      in an action.
+
+-------------------------------------------------------------------
+Thu Mar  3 14:37:02 UTC 2011 - chris@computersalat.de
+
+- update OTRS::ITSM to Version 2.1.2
+ - ENHANCEMENTS
+   * Added persian translation for Change Management, thanks to
+     Masoud Ramezani <masoud.ramezani at gmail.com>
+ - BUG FIXES
+   * Bug# 6164 - Change and Workorder actual start time is not reset
+     when a template has been used.
+   * Bug# 6148 - Link of FreeText fields in Change Management not working.
+   * Bug# 6074 - Change print does not translate states in HTML output.
+   * Bug# 6534 - Calculated current incident state of a service is
+     not reset if a link to a CI is removed.
+   * Bug# 6571 - Conditions are executed before history entry is written.
+   * Bug# 6632 - Unittest shows error log message: Argument
+     "\x{35}\x{2c}..." isn't numeric in numeric eq (==).
+   * Bug# 6161 - Can't locate object method "EventHandlerInit" issues
+     on mod_perl environments.
+- cleanup spec
+  o removed (obsolete) version from header
+  o updated (c) 2011
+  o removed norootforbuild
+
+-------------------------------------------------------------------
+Tue Dec 14 07:33:46 UTC 2010 - chris@computersalat.de
+
+- update to 2.4.9
+  - 2010-09-30 Fixed bug#6016 - AgentTicketZoom is vunerable to XSS
+     attacks from HTML e-mails. (OSA-2010-03)
+  - 2010-09-22 Fixed bug#5903 - E-mail notification links don't
+     contain <a href... tags.
+  - 2010-09-29 Fixed bug#6030 - Event notifications get's fired
+     several times on event "TicketFreeTextUpdate".
+  - 2010-09-22 Fixed bug#5941 - Error in Apache log when no tickets
+     and/or customers in dashboard.
+  - 2010-09-14 Fixed bug#5541 - Dashboard Chart generates error in
+     webserver log.
+  - 2010-09-09 Fixed bug#5462 - 
+     Kernel::System::Ticket::TicketEscalationIndexBuild() does not
+     invalidate the cache.
+  - (2010/08/27) Fixed bug#5667 - Rich Text is not working in ipad.
+     It's not possible to add a note or close a ticket.
+  - (2010/08/25) Fixed bug#5266 - Ticket Zoom shows wrong html
+     content if there is no text but two html attachments in there.
+- update OTRS::ITSM to Version 2.1.1
+  o updated ZZZAuto.pm, README.{de,en}
+- License is AGPLv3
+
+-------------------------------------------------------------------
+Mon Dec 13 21:17:09 UTC 2010 - chris@computersalat.de
+
+- fix for bnc#640830
+  o OSA-2010-02
+- submit to openSUSE:11.3:Update:Test
+
+-------------------------------------------------------------------
+Fri Oct 22 09:17:54 UTC 2010 - nix@opensuse.org
+ 
+- Remove comparison of %suse_version against suse releases that are
+  no longer in maintenance.
+ 
+-------------------------------------------------------------------
+Wed Sep 29 13:05:12 UTC 2010 - nix@opensuse.org
+ 
+- update to version 2.4.8
+  - (2010/08/20) Fixed bug#5742 - Outgoing email link detection does not work properly.
+  - (2010/08/18) Fixed bug#5444 - TicketZoom mask vulnerable to XSS.
+  - (2010/08/09) Fixed bug#5698 - Ticket Assignment includes '(' character.
+  - (2010/07/20) Fixed bug#4483 - AgentTicketActions, set radio button when select
+     old/ new owner are selected, fix wrong javascript behavior.
+  - (2010/07/15) Fixed bug#5416 - AgentTicketMove does not support Pending Date.
+  - (2010/07/15) Fixed bug#5556 - Broken unicode chars in CustomerUser selections.
+  - (2010/07/14) Fixed bug#5132 - New owner validation always ask to set a owner.
+  - (2010/07/13) Fixed bug#5210 - LinkQuote consumes all CPU memory when processing a
+     large amount of data.
+  - (2010/07/13) Fixed bug#5550 - Broken linebreaks in textareas of Google Chrome.
+  - (2010/07/07) Fixed bug#5541 - Dashboard Chart generates error in webserver log.
+  - (2010/07/01) Fixed bug#5512 - Bulk Action No Access is displayed incorrectly.
+  - (2010/06/25) Updated Danish translation, thanks to Jesper Rønnov,
+     Faaborg-Midtfyn Kommune!
+  - (2010/06/24) Fixed bug#5445 - Reflected XSS vulnerability.
+  - (2010/06/16) Fixed bug#5488 - AutoPriorityIncrease runs into failures.
+  - (2010/06/16) Fixed bug#5478 - Web Installer has 'editable' license text.
+  - (2010/05/31) Fixed bug#5385 - Queue name is not used in signature on ticket
+     creation.
+  - (2010/05/28) Fixed bug#5235 - Link in response not shown as link.
+  - (2010/05/28) Added PNG version of data model in doc directory.
+  - (2010/05/28) Fixed bug#5395 - Function $LanguageObject->Time() can't process
+     seconds.
+  - (2010/05/25) Fixed bug#5397 - Response not converted to Ascii when Rich Text
+     Editor is disabled.
+  - (2010/05/24) Fixed bug#5383 - Fckeditor localization not working for some
+     languages such as Brazilian Portuguese.
+  - (2010/05/07) Fixed bug#5336 - Also set execute bit on scripts/tools.
+  - (2010/04/30) Make it possible to use a version argument with bin/opm.pl.
+  - (2010/04/21) Fixed bug#5266 - Ticket Zoom shows wrong html content if there
+     is no text but two html attachments in there.
+  - (2010/04/15) Fixed bug#5242 - Newlines are not displayed in html notification
+     mails on Lotus Notes
+  - (2010/04/14) Fixed bug#4999 - Cache for customer user is not refreshed when
+     a preference is updated.
+  - (2010/04/13) Fixed bug#5152 - responsible_user_id in ticket table is wrong in
+     otrs-database.dia.
+  - (2010/04/12) Fixed bug#5108 - The RSS date was not displayed correctly.
+  - (2010/04/12) Fixed bug#5112 - Redirecting to a valid screen after unsubscribing
+     from a ticket where the agent does not have permissions on the queue.
+  - (2010/04/06) Fixed bug#4986 - There is no activate/deactivate check for
+     Graphsize menu when the page loads in Stats Definition
+  - (2010/04/01) Fixed bug#4786 - AgentTicketCompose ONLY: Defining a next state,
+     then adding and attachment, resets the next state upon screen refresh.
+  - (2010/03/29) Improved handling of the StateType attribute of
+     StateGetStatesByType() in Kernel/System/State.pm.
+  - (2010/03/24) Fixed bug#5164 - Pending time not working if agent as an other
+     timezone.
+  - (2010/03/19) Fixed bug#5094 - Bulk pending date/time do not get applied to
+     tickets.
+  - (2010/03/18) Updated Ukrainian language translation, thanks to Belskii Artem!
+  - (2010/03/10) Fixed bug#4416 - Merge: whitespace before ticketnumber is not
+     removed.
+  - (2010/03/09) Fixed bug#5085 - Wrong colours codes in Stats::Graph::dclrs
+  - (2010/03/08) Fixed bug#5102 - Notification sent to OTRS instead of Customer
+  - (2010/03/04) Fixed bug#5044 - Missing translation in ticket history after
+     responsible update.
+  - (2010/03/02) Updated Czech translation, thanks to O2BS.com, s r.o. Jakub Hanus!
+  - (2010/02/26) Fixed bug#4137 - Follow ups to internal forwarded message marked
+     as customer reply.
+  - (2010/02/23) Updated pt_BR translation file, thanks to Fabricio Luiz Machado!
+  - (2010/02/22) Fixed bug#5020 - Framework version for stats export is outdated.
+  - (2010/02/18) Fixed bug#4969 - Event Based Notification: Body Match field
+     displays Subject Match value.
+  - (2010/02/16) Fixed bug#4967 - Can't locate object method "new" via package
+    error when using Perl 5.10.1.
+  - (2010/02/15) Fixed bug#4977 - mod_perl is not used in fedora with RPM.
+  - (2010/02/12) Fixed bug#4936 - Kernel::System::Main::FileWrite has race condition.
+  - (2010/02/11) Fixed bug#4442 - Customer search fails when there is a space
+     in the name.
+  - (2010/02/11) Fixed bug#4822 - No fulltext search with more then one word
+     for FAQ.
+  - (2010/02/10) Fixed bug#4889 - Inline images from Lotus Notes are not
+     displayed in ticket zoom.
+  - (2010/02/09) Fixed bug#4658 - Cannot delete attachment from AdminAttachment
+     interface
+- Recommend a few optional dependencies
+
+-------------------------------------------------------------------
+Thu Jun 10 13:58:12 UTC 2010 - chris@computersalat.de
+
+- update to Version 2.4.7
+  - (2010/02/04) Fixed SQL quoting issue (see also
+    http://otrs.org/advisory/OSA-2010-01-en/).
+  - (2010/02/03) Fixed bug#4937 - Accounted time per article is not
+    displayed in PDF print.
+  - (2010/02/03) Fixed bug#4848 - Issue with TicketOverView object 
+    (does not show all tickets when moving through list)
+  - (2010/02/02) Fixed issue with migrating Customer Queue
+    notifications to Event Based when upgrading OTRS 2.3 > 2.4.
+  - (2010/02/01) Fixed bug#4393 - AgentTicketQueue - Small view takes
+    long to load. -> New solution with own config option for each
+    view mode (S/M/L)
+     Admin -> SysConfig -> Ticket -> Frontend::Agent::TicketOverview.
+  - (2010/01/25) Fixed bug#4818 - Removed inline image of forwarded
+    message gets still included.
+  - (2010/01/20) Fixed bug#4780 - Adding groups to a CustomerUser
+    fails, adding CustomerUsers to a group works.
+  - (2010/01/20) Fixed bug#4486 - Some preferences displayed in
+    AdminUser are not correct.
+  - (2010/01/18) Fixed bug#4770 - Attachments are stripped/not
+    shown from outgoing emails in some scenarios with ms exchange.
+  - (2010/01/15) Fixed bug#4735 - TicketFreeTime search in Customer
+    frontend does not work as expected
+  - (2010/01/15) Fixed bug#4758 - Dashboard RSS feeds doesn't display
+    XML encoded entities correctly.
+  - (2010/01/13) Fixed bug#4754 - Multiple tickets with a huge
+    POP3 Mailbox - more then 2000 email in the box
+    ("Deep recursion on subroutine").
+  - (2010/01/13) Fixed bug#4713 - In ticket overview, after adding
+    view=30 - no tickets are visible.
+  - (2010/01/12) Upgrade of cpan Net::IMAP::Simple from 1.17 to 1.1910
+- removed obsolete nochown patch
+- fixed deps
+  o mysql > Recommends
+- rpmlint
+  o reworked init patch
+    - mysql > Should-Start
+    - added missing Short-Description
+  o spec
+    - wrong-file-end-of-line-encoding
+    - added BuildReq dos2unix
+  o rpmlintrc
+    - non-executable-script
+    - hidden-file-or-dir
+- update OTRS::ITSM to Version 2.0.2
+- updated SOURCES
+  o ZZZAuto.pm
+- fix update of ZZZAuto.pm
+  o remove noreplace
+
+-------------------------------------------------------------------
+Thu Jun 10 08:21:25 UTC 2010 - chris@computersalat.de
+
+- bnc#613158 - nothing provides perl-Msql-Mysql-modules
+  o fixed deps perl-Msql-Mysql-modules > perl-DBD-mysql
+
+-------------------------------------------------------------------
+Mon Feb  1 21:41:51 UTC 2010 - chris@computersalat.de
+
+- update to Version 2.4.6
+  o Bug# 4433 - When composing an email answer, StateDefault is
+    ignored but first available state is used.
+  o Bug# 4584 - Auto response did not use defined 'From' address,
+    but instead the queue address.
+  o Bug# 4551 - GenericAgent appends leading zeros to months for
+    dates in search criteria when TimeInputFormat is set to
+    "Input" when editing GenericAgent jobs.
+  o Bug# 4435 - In-line images in quoted replies break in some
+    scenarios like AgentTicketCompose and AgentTicketForward.
+  o Bug# 4486 - Language and Out-of-Office information displayed
+    in the admin interface for user management were not correct
+    (but in the user preferences this worked fine).
+  o Bug# 4482 - Owner update is possible without selecting a new owner.
+  o Bug# 4246 - Response Templates fail to populate when original
+    emails had <body> tags spanning more than one line, for
+    instance from Windows Mail clients.
+  o Bug# 4613 - Umlauts in notification messages and e-mail
+    answers were replaced with "?" when using ArticleStorageFS
+    config option as attachment storage backend.
+  o Bug# 4498 - Rich Text Editor places whitespace in front
+    of lines in plain text email body.
+  o Bug# 4128 - Signature line breaks are stripped in E-mail
+    ticket if the Rich Text Editor is disabled.
+  o Bug# 4319 - After upgrade to 2.4, when composing an answer
+    to old tickets the text 'No quotable message' appeared
+    instead of the old message text.
+  o Bug# 4464 - Spell checker (WYSIWYG + ispell) can't check
+    text if it contains http:// links.
+  o Bug# 4454 - scripts/restore.pl threw EncodeObject error
+    and failed to work.
+  o Bug# 4232 - Spell checker in Customer Interface gives
+    "AgentSpelling not registered" error message.
+  o Bug# 4704 - Package Manager: upload install fails with
+    "Message: Need ContentType!" when using Google Chrome browser.
+  o Bug# 4597 - Unnecessary slash in download links throws web
+    server errors when accessing some links in AgentTicketZoom
+    on Microsoft IIS webservers.
+  o Bug# 4361 - Umlauts in Dashboard do not display correctly
+    after refresh on a non-Unicode database.
+  o Bug# 4781 - LDAP auth with "umlaut" not possible with OTRS
+    in iso-8859-1 and utf-8 ldap directory, causing "No UserID
+    found"-messages when logging in.
+- update OTRS::ITSM to Version 1.3.2
+- updated SOURCES
+  o itsm.README.{en,de}
+  o ZZZAuto.pm
+- some spec fixes
+
+-------------------------------------------------------------------
+Thu Sep  3 21:40:05 CEST 2009 - chris@computersalat.de
+
+- cleanup spec
+  o removed #---------
+  o removed rel, pid
+  o fixed patch naming
+  o fixed user/group check -> getent
+  o fixed clean section
+  o fixed PreReq
+- rpmlint stuff
+  o added rpmlintrc
+    * non-etc-or-var-file-marked-as-conffile
+  o split up pkg
+    * added doc
+- reworked init patch
+  o no-reload-entry
+
+-------------------------------------------------------------------
+Sun Mar 15 20:09:19 UTC 2009 - chris@computersalat.de
+
+- Update to new Version 2.3.4
+  o a lot of fixes, please see CHANGES file
+  o itsm.README.de
+  o itsm.README.en
+- added OTRS::ITSM 1.2.3 modules
+  o added ZZZAuto.pm to be able to install ITSM modules via local repo
+    see itsm.README for more info
+  o added apache2 restart
+- new nochown patch
+- renamed otrs-init.diff to otrs-init.patch
+- apache2-httpd-new.include.conf is now installed as
+  /etc/apache2/conf.d/otrs.conf
+- some rpmlint stuff
+
+-------------------------------------------------------------------
+Thu Oct 16 12:33:13 CEST 2008 - ro@suse.de
+
+- drop needsrootforbuild 
+
+-------------------------------------------------------------------
+Fri Aug 29 00:06:10 CEST 2008 - cthiel@suse.de
+
+- fix init script
+
+-------------------------------------------------------------------
+Mon Mar 31 18:32:54 CEST 2008 - lmuelle@suse.de
+
+- Update to version 2.2.6.
+  + Bug #2650 - Mails isn't completely imported by PostmasterPOP3.pl
+  + Bug #2758 - non-latin filenames (e. g. koi8-r, utf8, cp1251) in emails are
+    not shown correctly.
+  + Bug #2462 - Permission is denied when trying to print ticket details from
+    customer panel (customer.pl).
+  + Bug #2541 - Added missing "Ticket unlock" link for ticket for the followin
+    actions 'Phone call', 'Merge', 'Move' and 'Forward'.
+  + Bug #1957 - Auto reply for new Phone-Tickets replies to non- Existing
+    addresses (if no email address is given in 'From' field).
+  + Bug #1975 - Cannot forward email with .eml files as attachment.
+  + Bug #2413 - Cannot write to BLOB column in table XML_STORAGE with DB2.
+  + Bug #2255 - SysConfig setting Ticket -> Frontend::Customer::Ticket::
+    ViewZoom -> Ticket::Frontend::CustomerTicketZoom###State has no effect
+    (only closed is shown any time).
+  + Bug #954  - Ticket split should link tickets automatically (origin to new
+    one).
+
+-------------------------------------------------------------------
+Mon Mar 31 18:15:04 CEST 2008 - lmuelle@suse.de
+
+- SOAP authentications allows to get remote access without valid SOAP
+  user; OSA-2008-01; CVE-2008-1515; [bnc#372382].
+
+-------------------------------------------------------------------
+Wed Jan 30 17:37:47 CET 2008 - lmuelle@suse.de
+
+- Update to version 2.2.5.
+  + Fixed bug# 2645 - SLA selection doesn't change when customer is
+    changed.
+  + Fixed bug# 2157 - Ticket merged note not translated.
+  + Fixed bug# 2392 - Charset problems with iso8859 and the
+    xml-caching mechanism.
+  + Implemented workaround for bug# 2227 - XMLHashSearch returns
+    no values on MS SQL in certain cases.
+  + Fixed bug# 2330 - Cron.sh start <OTRS_USER> does not work.
+  + Fixed bug# 977 - No agent notification for new ticket from
+    webinterface if CustomerGroupSupport is enabled.
+  + Fixed bug# 2621 - Wrong order of items (Subject,Service,SLA,Body
+    -> Service,SLA,Subject,Body) in Frontend AgentTicketPhone,
+    AgentTicketEmail and CustomerTicketMessage.
+  + Fixed bug# 1687 - Wrong "New message!" hint on queue with
+    "Customer State Notify" activated.
+  + Fixed bug# 2613 - Images are broken in Lite-Theme if OTRS do
+    not use the default Alias /otrs-web/.
+  + Fixed bug# 2609 - Temp files are not removed after process was
+    finished under windows.
+  + Fixed bug# 2601 - Only agents with rw permissions are shown in
+    inform agent selection of a note screen (note permission need to be
+    activated via SysConfig first). Now all agents with _note_
+    permissions are displayed.
+  + Fixed bug# 2600 - MS SQL: Fulltext search in ticket body with
+    mssql backend not possible (workaround, improved API for 2.3.x).
+  + Fixed bug# 1120 - TO recipients which were sometimes dropped
+    in a ticket reply.
+  + Fixed bug# 2589 - Ticket-title not shown in ticket list of
+    change customer, phone- and email ticket.
+  + Fixed bug# 1148 - Lost of attachments when spliting ticket.
+  + Fixed bug# 2295 - Added workaround for IE7. Tries to download
+    [ Attachments ] or [ Attachments <-> Responses ].
+  + Fixed bug# 2580 - Wrong quoating of semicolon if mssql is used.
+  + Fixed bug# 2539 - SMIME signing was broken for private keys that
+    have no passphrase and when openssl is unable to write to random
+    state file.
+  + Fixed bug# 2581 - Follow up not possible if "ticket#: xxxxxxx"
+    is copied from webinterface into new email subject.
+  + Fixed bug# 2479 - Unable to retrieve attachments bigger than
+    3MB (on Oracle DB). Changed default read size from 4 MB to 15 MB in
+    Kernel/System/DB/oracle.pm:
+  + Fixed bug# 1428 - Whitespaces remove from email subject
+    (notification and new tickets creation) if utf-8 is used
+    (specifically in Russian, Chinese  and Japanese).  The problem is a
+    bug in MIME::Tools/MIME::Words, for more info see CPAN-Bug# 5462:
+    http://rt.cpan.org/Public/Bug/Display.html?id=5462 As solution
+    Kernel/cpan-lib/MIME/Words.pm got patched. Note: Everybody who is
+    not using Kernel/cpan-lib/ need to wait till this bug is fixed in
+    official MIME::Tools/MIME::Words releases.
+  + Fixed bug# 2166 - Probem with HTML-mails sent by MS Outlook
+    2003 - "&#8211;" / long dash gets not decoded.
+  + Fixed bug# 2377 - Missing translation in
+    AdminCustomerUserService mask.
+  + Fixed bug# 2537 - Unable to set free time fields.
+  + Fixed bug# 2498 - A wrong sum of requests was shown in the
+    performance log.
+  + Fixed bug# 2482 - IntroUpgradePre in .opm files is not working
+    on upgradinging via online repository.
+- Update to version 2.2.4.
+  + Fixed bug# 2477 - Escalation time calculation (destination time of
+    escalation) is not working if host system is running in
+    summertime/wintertime mode (loops because system is changing system
+    time from 3:00 am to 2:00 am).
+  + Fixed bug# 2474 - Config option UserSyncLDAPAttibuteGroupsDefination
+    and UserSyncLDAPAttibuteRolesDefination is not working.
+  + Fixed small typo in scripts/database/otrs-initial_insert.xml, for
+    escalation notification text.
+  + Fixed bug# 2473 - Not able to update existing cache files of
+    customer user backend because of file permission problems (cache
+    files are created with 644). From now on cache files are created
+    with 664 permissions.
+  + Fixed bug# 2472 - Emails in utf8 are not sent correctly (problem
+    after upgrading Kernel/cpan-lib/MIME/*.pm).
+  + Fixed bug# 2446 - Subject is not quoted.
+  + Fixed bug# 2442 - Disappearing ticket free time checkboxes in
+    some ticket masks after mask reloads.
+  + Fixed bug# 2436 - Translation bug in the frontend function
+    BuildSelection().
+  + Fixed bug# 2289 - Compress with bzip2 dont works in backup.pl.
+  + Fixed bug# 2421 - If customer cache backend is used, sometimes
+    "Need Value" appears in the log file.
+  + Fixed bug# 1203 - Changed Redhat shm workaround to use a fixed
+    IPCKey per instance, but prevent clash with IPCKey of other instances.
+  + Fixed bug# 2263 - Problems with array refs and escaping
+  + Fixed bug# 2410 - $/ as given is currently unsupported at
+    Kernel/cpan-lib/MIME/Decoder/NBit.pm line 140. We updated the CPAN
+    module MIME-tools to version 5.423 to solve the problem.
+  + Fixed bug# 2404 - Wrong results if you use StatsTypeID as
+    TicketSearch attribute.
+  + Fixed bug# 2407 - Performance handicap because of a missing
+    'if'-attribute.
+  + Fixed bug# 2404 - Problems with the time extended feature in
+    stats module.
+  + Fixed bug# 2398 - Translate the stats output.
+  + Fixed bug# 2388 - Show the radio button of static stats files.
+  + Fixed bug# 2383 - IntroInstallPre in .opm files is not working
+    on installing via online repository.
+  + Fixed bug# 2380 - Ignore HTMLQuote param in Layout object
+    function _BuildSelectionOptionRefCreate.
+  + Fixed bug# 2375 - Possible race condition in generic agent
+    jobs (during processing jobs). Generic agent job attributes can get
+    lost.
+  + Fixed bug# 2276 - GenericAgent with SLA-Search fails, Service
+    and SLA options are missing.
+  + Fixed bug# 2360 - No Permission in customer panel after
+    selecting ticket. Reason is, sender type is customer and article
+    type is email-internal which is set via a postmaster filter.
+  + Fixed bug# 2346 - Emty entries are shown in the responsible
+    option list in TicketSearch mask.
+  + Fixed bug# 2321 - It's not possible to use ñ or ü in
+    description tag of .sopm file -> leading to perl syntax error!
+  + Fixed bug# 2291 - Only include/use PDF::API2 in
+    Kernel/Modules/AgentTicketSearch.pm and Kernel/Modules/AgentStats.pm
+    if needed, to increase performance.
+- Update to version 2.2.3.
+  + Fixed bug# 2285 - Typo in german translation
+    "Aktualisierungszeit".
+  + Fixed bug# 1203 - Redhat shm workaround should not relate to
+    real shm request.
+  + Fixed bug# 2265 - On IIS6, Package Manager is displaying a
+    error after installing a package (header not complete). But package got
+    installed corectly.
+  + Fixed bug# 2261 - False params in call of ServiceLookup() and
+    SLALookup() functions.
+  + Fixed reopened bug# 2142 - Ticket history entry was wrong if
+    service, sla or ticket type was changed.
+  + Fixed bug# 2193 - Postmaster module
+    Kernel::System::PostMaster::Filter::NewTicketReject is not working -
+    need Charset!
+  + Fixed bug# 2245 - Responsible / Owner Field not working for
+    all users in the Email-Ticket form.
+  + Fixed Ticket# 2007082842000477 - Problem with different customer
+    sources and use CacheTTL option (namespace of cache is not uniq).
+  + Fixed Ticket# 2007082842000413 - Ticket created over phone
+    ticket with state closed is shown in queue view like "My Queues (1)"
+    but no ticket is shown if I click on "My Queues (1)" (if
+    Kernel::System::Ticket::IndexAccelerator::StaticDB is used as
+    Ticket::IndexModule).
+  + Fixed bug# 2230 - OTRS on IIS - redirect/loop problem after
+    login.
+  + Fixed bug# 2229 - Return value of "ServiceLookup" is used
+    without quoting in SQL statements.
+  + Fixed bug# 2207 - translation failure in customer preferences
+    (QueueView refresh time).
+  + Fixed bug# 2214 - .opm Package can not handle &lt;, &gt; and
+    &amp; in .sopm files.
+  + Fixed bug# 2203 - OTRS will not create/verify correct pgp
+    signs if utf8 is used.
+  + Fixed bug# 2202 - Kernel::System::Email::SMTP is sending
+    "localhost.localdomain" in smtp hello, some server rejecting this
+    ("Host not found").
+  + Fixed bug# 2024 - Problem with agent authentication via LDAP
+    with ADS-Groups and content of DN like "Some\, Name".
+  + Fixed bug# 2094 and 2143 - 'Got no MainObject' warning in
+    Kernel/System/Crypt.pm
+  + Fixed bug# 2192 - Useless fragments of old escalation mechanism
+    produces errors.
+  + Fixed bug# 1908 - Removed duplicate history entry for ticket
+    subscribe action.
+  + Fixed bug# 1492 - Fixed typo in Kernel/Language.pm.
+  + Fixed bug# 2160 - 0 was ignored in database insert by package
+    building.
+  + Fixed bug# 2156 - External customer database is not working,
+    if it's configured the following error message appears
+    ("Got no MainObject in Kernel/System/DB.pm line 85").
+  + Fixed bug# 2155 - Std-Attachments are not usable in agent
+    ticket compose screen (no std attachments are shown in compose
+    screen).
+  + Fixed bug# 2118 - Fixed typo in german translation file (
+    Kernel/Language/de.pm).
+  + Fixed bug# 2117 - Fixed small typo in initial insert files.
+  + Fixed bug# 1999 - Service and SLA can not changed on an
+    existing ticket.
+  + Fixed bug# 2142 - If a service or a sla of a ticket was changed,
+    no ticket history entry was added.
+  + Fixed bug# 2135 - scripts/DBUpdate-to-2.2.2.sql contains wrong
+    SQL. Not the queue table needs to be changed, the ticket table would
+    be the right one.
+  + Fixed bug# 2134 - PDF print is creating damaged pdf files with
+    PDF::API2 0.56 or smaller.
+  + Fixed bug# 940 - After owners unlock ticket and a follow-up
+    arrives the system, all agents which selected the queue of this
+    ticket get and follow up message. In this follow up message the name
+    was always the current owner and not the recipient of the email
+    (which should be).
+  + Fixed bug# 2001 - New escalation times and the responsible are
+    not shown in any print views.
+- Update to version 2.2.2.
+  + Fixed bug# 2114 - Fixed the problems with the email object.
+  + Fixed bug# 2053 - If core "System::Permission" note is used,
+    not effect to the ticket note mask appears.
+  + Fixed bug# 2059 - config setting $Self->{'Database::Connect'}
+    is not overwriting default option used by driver.
+  + Fixed bug# 2105 - Notification after moving a ticket to my
+    queues is wrong -> ">OTRS_CUSTOMER_QUEUE<" got not replaced in
+    subject.  SQL files scripts/database/otrs-initial_insert.*.sql got
+    fixed.
+  + Fixed bug# 2029 - Selected responsible agent was not taken
+    over after creating a phone ticket.
+  + Fixed bug# 1946 - Setting of service, sla or type via email
+     X-OTRS-Service, X-OTRS-SLA or X-OTRS-Type header not possible.
+  + Fixed bug# 2097 - Sometimes problems with SMTP module and utf8
+    to send emails.
+  + Fixed bug# 2061 - UserSyncLDAPMap does not work properly after
+    upgrade to 2.2. The reason is, that we cleaned up this config option
+    and the new one from Kernel/Config/Defaults.pm need to be used. We
+    also added an check which log that an old config setting is used
+    (also an compat.  feature to still use the old option has been
+    added).
+  + Fixed bug# 2068 - Date problem with non en installations of
+    MSSQL server. Some date inserts or package installations failed.
+    Added database init connect option to mssql driver ("SET DATEFORMAT
+    ymd" / Kernel/System/DB/mssql.pm).
+  + Because of safety reason, generic agent jobs will not longer run
+    without min. one search attribute (admin interface and cmd). So if
+    you want to match all ticket, you need to add an * in the ticket
+    number.
+  + Fixed bug# 2021 - Errors in MSSQL post schema files.
+  + Fixed bug# 2025 - No upgrade PostgreSQL possible, added missing
+    lines in DBUpdate-to-2.2.postgresql.sql.
+  + Fixed Ticket#2007072342000148 - Old OTRS (< OTRS 2.2)
+    attachments are corrupt after upgrade if file backend is used.
+  + Updated portuguese translation, thanks Filipe Henriques and
+    Rui Pires!
+  + Updated norwegian translation, thanks to Fredrik Andersen!
+  + Updated hungarian translation, thanks to Aron Ujvari!
+  + Updated spanish translation, thanks to Carlos Oyarzabal!
+  + Fixed bug# 2016 - CustomerUserUpdate: Add a function to handle
+    empty values.
+  + Fixed bug# 2047 - Add MainObject to the needed object check.
+  + Fixed bug# 2045 - Notifications on reopen are not sent to
+    owner/responsible.
+  + Fixed bug# 2011 - Translation problems in stats module.
+- Update to version 2.2.1.
+  + Updated finnish translation, thanks to Mikko Hynninen!
+  + Fixed bug# 1998 - Error with the web installer if no utf8
+    database is selected.
+  + Disabled only show escalated tickets in queue view because
+    of already show escalation notifications.
+  + Updated portuguese translation, thanks Filipe Henriques!
+  + Fixed bug# 2000 - Typo in database update script
+    DBUpdate-to-2.1.mysql.sql.
+  + Reworked AdminCustomerUserService mask.
+  + Fixed wildcard handling in ServiceSerarch().
+  + Added option to log sql queries which take longer the 4 sek.
+    and can be enabled via Kernel/Config.pm (Database::SlowLog). For
+    more info see Kernel/Config/Defaults.pm.
+  + Fixed not working alter table to SET or DROP NULL and NOT
+    NULL via xml interface (Kernel/System/DB/postgresql.pm).
+  + Updated french translation, thanks to Yann Richard and Remi Seguy!
+  + Updated netherlands translation, thanks to Richard Hinkamp!
+  + Updated hungarian translation, thanks to Aron Ujvari!
+  + Updated russian translation, thanks to Andrey Feldman!
+  + Updated greek translation, thanks to Stelios Maistros!
+- Update to version 2.2.0 rc1.
+  + Fixed bug# 1941 - Ticket Escalation blocks QueueView even if
+    Agent has only read access.
+  + Fixed bug# 1951 - Changed default selection of 'valid' field in
+    AdminService and AdminSLA mask.
+  + Added feature (bug# 1949 an 1950) for customer ldap backend
+    for soft or hard die.
+  + Fixed bug# 1927 - It is possible to uninstall a required
+    package.
+- Update to version 2.2.0 beta4.
+  + Fixed bug in service and sla tables. Column comment was wrongly
+    defined as required field.
+  + Fixed bug# 1894 - otrs.addUser does not work
+  + Fixed bug# 1913 - Added missing columns first_response_time,
+    solution_time and rename column escalation_time to update_time for
+    table queue in DBUpdate-to-2.2.oracle.sql.
+  + Remove wrong item in check needed stuff section of SLAList()
+    function.
+  + Update german translation.
+  + Sync HTML style of admin masks. No functionality changed.
+  + Fixed double ContentType in ArticleAttachment() of attachment
+    backends (Kernel/System/Ticket/ArticleStorage(DB|FS).pm).
+  + Sync of all configurable frontend modules. No functionality
+    changed.
+  + Fixed bug# 1898 - Invalid services and slas was shown in agent
+    masks.
+  + Fixed bug# 1866 - Error while DB upgrade from 2.1.5 to 2.2.0
+    beta3.
+  + Ingresed width of html login tables from 270 to 280 because
+    of new language selection.
+  + Fixed bug# 1825 - SQL ticket_history INSERT syntax error in
+    HistoryAdd().
+  + Fixed bug# 1840 - Repeat escalation message when queue, SLA
+    Solution time is shown.
+- Update to version 2.2.0 beta3.
+  + Fixed bug# 1773 - DB-error in phone ticket if sla but no
+    service is selected.
+  + Fixed bug# 1035 - OTRS does not set encoding for the mysql
+    database connection (i.e. UTF-8).
+  + Fixed bug# 1778 - Config option Database::Connect should be
+    possible.
+  + Fixed bug# 1611 - Now the Statsmodule use the mirror db if
+    configured.
+  + Fixed bug# 1809 - Fixed typo in variable name (PrioritiesStrg ->
+    PriotitiesStrg).
+  + Fixed bug# 1670 - If no result the generation of pie graph throws
+    error.
+  + Fixed bug# 1769 - If I change the ticket SLA, the history is
+    not relfecting this change.
+  + Fixed bug# 1768 - If I change the ticket service, the history
+    is not relfecting this change.
+- Update to version 2.2.0 beta2.
+  + Fixed bug# 1448 - Apache::Registry in README.webserver wrong,
+    mod_perl2 is missing.
+  + Fixed bug# 1286 - apache configuration should use
+    <IfModule mod_perl.c>.
+  + Fixed bug# 1755 - Wrong permissions for some files.
+  + Fixed bug# 1757 - Cannot install postgres db - null value in
+    column "escalation_start_time" violates not-null constraint.
+  + Fixed bug# 1745 - Invalid SQL-statements in AgentTicketQueue
+    view.
+  + Fixed bug# 1741 - "PostmasterFollowUpStateClosed" buggy on
+    follow up actions.
+  + Updated bulgarian translation, thanks to Alex Kantchev!
+  + Fixed bug# 1748 - Session not allowed to be larger than 358400
+    Bytes using IPC. Change max session size from 350k to 2 MB.
+  + Fixed bug# 1744 - Unable to create xml_storage table in utf8
+    charset on mysql database.
+  + Fixed bug# 1739 - Unable to insert new SLA via admin-web after
+    upgrade to 2.2.0 beta1.
+- Update to version 2.2.0 beta1.
+  + Fixed not shown optional ticket free time option fields in
+    customer panel.
+  + Fixed bug# 1017 - script initial_insert.sql, ampersand and oracle.
+  + Fixed enhacement bug# 1668 - removed unnecessary dependency for
+    fetchmail from .srpms.
+  + Fixed bug# 1398 - Malformed UTF-8 charaters in Admin Backend -
+    System Log.
+  + Fixed bug-ticket# 2007020542000593 - Queue refresh "off"
+    can't be used on oracle database.
+  + Fixed Free Field output in AgentTicketForward and
+    AgentTicketPhoneOutbound.
+- Update to version 2.1.8.
+  + Fixed bug# 2134 - PDF print is creating damaged pdf files with
+    PDF::API2 0.56 or smaller.
+  + fixed bug# 2046 - german Umlauts not printed in PDFs if system
+    runs in utf-8 mode. The PDF::API2 corefonts (which are used as
+    default) doesn't support UTF-8. Changed the used fonts from
+    PDF::API2 corefonts to the DejaVu true type fonts. Add config
+    options to use other true type fonts.
+  + fixed bug# 1926 - package manager ignore PackageRequired tags
+    in OPM files.
+
+-------------------------------------------------------------------
+Mon Jun 11 00:22:22 CEST 2007 - ro@suse.de
+
+- remove requires for mysql-shared 
+
+-------------------------------------------------------------------
+Thu May 10 11:17:37 CEST 2007 - lmuelle@suse.de
+
+- Update to version 2.1.7.
+  + fixed bug# 1551 - decode_mimewords() in ArticleWriteAttachment()
+    dies due to utf-8
+  + updated Kernel/Language/pt_BR.pm translation file - Thanks
+    to Fabricio Luiz Machado!
+  + fixed bug# 1650 - crypt/sign bug in AgentTicketCompose screen
+  + fixed bug# 1659 - Uploading and Saving Pictures in MSSQL won't
+    work with bigger Files (~700KB)
+    ->MSSQL ONLY<- You also need to change some tables by using: ->MSSQL ONLY<-
+        ALTER TABLE web_upload_cache ALTER COLUMN content TEXT NOT NULL;
+        ALTER TABLE article_plain ALTER COLUMN body TEXT NOT NULL;
+        ALTER TABLE article_attachment ALTER COLUMN content TEXT NOT NULL;
+        ALTER TABLE article ALTER COLUMN a_body TEXT NOT NULL;
+        ALTER TABLE standard_response ALTER COLUMN text TEXT NOT NULL;
+        ALTER TABLE standard_attachment ALTER COLUMN content TEXT;
+        ALTER TABLE sessions ALTER COLUMN session_value TEXT;
+        ALTER TABLE xml_storage ALTER COLUMN xml_content_value TEXT;
+        ALTER TABLE package_repository ALTER COLUMN content TEXT NOT NULL;
+  + fixed upload cache problem in win32 with .pdf files
+  + fixed bug# 1228 - Apostrophe not valid in email address.
+  + fixed bug# 1442 and 1559 - ArticleFreeKey and ArticleFreeText
+    default selection does not work.
+  + fixed ticket# 2007031242000149 - session backend fails to insert
+    sessions bigger the 4k on oracle database backend
+  + fixed bug# 1671 - restore.pl fails with "Got no LogObject"
+  + fixed bug# 1115 - HTML error in NewTicket Customer's interface
+  + fixed bug# 1658 - Subqueues of Queues with brackets are not
+    shown in the QueueView
+  + added rpm packages for Fedora Core 4, 5 and 6 to auto build
+    service
+  + fixed ticket# 2007022342000586 - attachment problem with oracle
+    backend if utf-8 is used
+  + fixed database driver if 0 is used in begining of an xml insert
+- Changes of version 2.1.6.
+  + fixed bug #1504 - Ticket Creation fails with DB2 due to
+    character quoting issues
+  + fixed bug #1506 - Error creating Tickets in DB2 due to conflict
+    in string/numerical comparison
+  + fixed bug #1445 - OTRS is not encoding Umlauts correctly in
+    Organization email header
+  + fixed bug #1548 - submitting AgentTicketPhone or
+    AgentTicketEmail form without queueid leads to broken fields
+  + fixed bug #1581 - Garbled paths containing domain names
+  + updated Mail::Tools from 1.60 to 1.74 - fixed bug #1642 -
+    Cant get mails via PostmasterPop3.pl - Unrecognised line
+  + fixed bug #1545 - Wrong Variableusage in $Self->{PageShown}
+    (Kernel/Modules/AgentTicketMailbox.pm)
+  + fixed bug #1291 - Download link in SysConfig skips config
+    options -> now download link will be shown if no changes are done
+  + fixed bug #1097 - Disabling Bounce Feature via SysConfig does
+    not work properly
+  + fixed ticket #2007022242000293 hard line rewrap of body content
+    in frontend modules
+  + improved speed of SysConfig core module, added cache mechanism
+    (it's about 2 times faster)
+  + fixed ticket #2007022042000288 - error on creating postmaster
+    filter on oracle database
+  + fixed not working crypt/sign option in AgentTicketCompose mask
+  + fixed bug #980 - Use of uninitialized value in
+    Kernel/System/AuthSession/FS.pm
+  + changed unlock time reset mechanism, added unlock time reset
+    if a agent sends an external message to the customer (like escalation
+    reset mechanism)
+  + fixed bug in _XMLHashAddAutoIncrement() - function could not
+    return keys greater than '9'.
+  + fixed bug #1056 - UTF-8 mode of OTRS and German Umlaute within
+    agent's name
+  + fixed bug #1505 - UserSyncLDAPMap fails with LDAP.pm version
+    1.26 and up
+  + fixed ticket_watcher.user_id datatype, moved from BIGINT to
+    INTEGER
+  + fixed oracle driver for xml alter table actions
+  + improved _CryptedWithKey() - private key detection of
+    Kernel/System/Crypt/PGP.pm if more keys are used for crypted messages
+  + fixed ArticleFreeText output in CustomerTicketZoom mask
+  + fixed bug in agent- and customer-ticket print feature
+- Changes of version 2.1.5.
+  + fixed ignored ticket responible in phone ticket
+  + fixed DestinationTime() if calendar feature is used
+  + fixed not working freetime fields
+  + fixed not working time selection if time zone feature is used
+  + fixed not working email notification tags in auto response,
+    agent and customer email notifications
+  + fixed case sensitive of customer user login and agent user
+    login in Kernel/System/User.pm and Kernel/System/CustomerUser/DB.pm if
+    oracle or postgresql is used
+  + fixed quoting in user selection if + is used in UserLogin in
+    Kernel/Output/HTML/Standard/AdminCustomerUserForm.dtl
+  + fixed bug #1532 - utf8 charsetproblems in stats
+  + fixed bug #1446 - No "(Ticket unlock!)" link in
+    AgentTicketCompose
+  + fixed customer ldap auth if system is iso-8859 and ldap server
+    is running in utf-8
+  + fixed not working Kernel/System/DB/db2.pm (syntax error)
+- Changes of version 2.1.4.
+  + fixed not working free time selection in AgentTicketClose,
+    AgentTicketNote, AgentTicketOwner, AgentTicketPending, AgentTicketPriority
+    and AgentTicketResponsible
+  + added config param for shown my queues/custom queues
+    in preferences, default are shown all ro queues, see also
+    PreferencesGroups###CustomQueue under Frontend::Agent::Preferences
+  + fixed ldap sync of agents attributes - invalid agents
+    are not longer synced to valid if ldap auth was successfully, the
+    invalid agent will still be invalid
+  + fixed bug #1187 - Escalation Notifications sent to invalid agent
+  + improved link quote of long links in web interface
+  + fixed bug #962 - Broken attachments with cyrillic filenames
+  + fixed bug #1521 - Merge Feature
+  + fixed bug #1523 - update of FreetextValues 9-16 not working
+  + fixed bug #1524 - ticketFreeText Fields 9-16 not displayed
+    at CustomerTicketPrint and CustomerTicketZoom
+  + fixed bug #1359 - acl problem if '' is used in properties to match
+  + fixed bug #1031 - scripts/backup.pl fails in mysqldump with
+    encrypted database password
+  + fixed bug #1378 - Got no MainObject! in bin/otrs.getTicketThread
+  + fixed bug #1200 - not working TicketACL actions AgentTicketCompose,
+    AgentTicketBounce, AgentTicketForward and AgentTicketPhoneOutbound
+  + added log notice for switch to user admin feature
+  + fixed bug #1210 - wrong calculation of Kernel::System::Time
+    WorkingTime()
+  + added changes notice of generic agent jobs to log sub
+    system (to keep clear who changed the job)
+  + moved ticket number generator loop check from 1000 to 6000
+    (Kernel/System/Ticket/Number/*.pm)
+  + fixed not working faq lookup in compose answer and forward
+    screen
+  + fixed double quoted "$Quote{"Cc: (%s) added database email!""}
+    in compose answer screen (Kernel/Modules/AgentTicketCompose.pm)
+  + fixed bug #1498 - Typo in QuoteSingle, Kernel/System/DB/mssql.pm
+  + moved Quote() from Kernel/System/DB.pm to db backend modules
+    Kernel/System/DB/*.pm because of needed Quote() in xml processing
+  + improved handling if there are double customer users in
+    the database used by search result
+  + fixed PGP/SMIME bug - Can't call method "body" on an undefined
+    value at Kernel/System/EmailParser.pm line 382
+  + fixed bug #1395 - utf-8 - ArticleStorage FS - Attachments with
+    German Umlauts cant be downloaded
+  + added config option Ticket::PendingNotificationOnlyToOwner
+    to send reached reminder notifications of unlocked tickets only to ticket
+    owner
+  + fixed database driver detection/problem if a second database
+    connect with different driver is used (wrong sql will not longer be
+    generated) Note: old database driver files Kernel/System/DB/*.pm
+    not longer compatible
+  + added config option Ticket::ResponsibleAutoSet to set owner
+    automatically as responsible if no responsible is set (default is 1)
+
+-------------------------------------------------------------------
+Tue Apr 10 01:05:02 CEST 2007 - ro@suse.de
+
+- build as root for now 
+
+-------------------------------------------------------------------
+Tue Nov 21 18:41:31 CET 2006 - lmuelle@suse.de
+
+- Update to 2.1.3.
+ + removed not needed Reply-To of agent notifications
+ + fixed missing \n on csv output of customer ticket search
+ + fixed not working ticket free time option in phone ticket
+ + added missing access permission pre check to show ticket menu items or not
+ + fixed bug - not shown empty "-" selection of new onwer if on move if
+   Ticket::ChangeOwnerToEveryone is set
+ + update of Dansk language file, thanks to Mads N. Vestergaard
+ + update of Spanish language file, thanks to Jorge Becerra
+ + added AuthModule::HTTPBasicAuth::Replace and
+   Customer::AuthModule::HTTPBasicAuth::Replace config option to HTTPBasicAuth
+   modules to strip e. g. domains like example_domain\user from login down to
+   user
+ + added AuthModule::LDAP::UserLowerCase to allways convert usernames into
+   lower case letters
+ + added set auto time zone of agent/customer based on java script offset
+   feature on every login
+ + fixed not working all owner/responsible selection in phone view
+ + read out CustomerUserSearchListLimit correctly if LDAP customer backend is
+   in use
+ + fixed always shown responsible selection
+ + removed not needed default free text fields from phone outbound
+ + fixed agent can be customer follow up feature
+ + added possible - selection for next state in phone view outbount
+ + fixed LDAP problems "First bind failed! No password, did you mean noauth or
+   anonymous ?"
+ + fixed double agent notifications on ticket move to queue and also selected
+   owner
+
+-------------------------------------------------------------------
+Wed Oct 18 16:13:59 CEST 2006 - lmuelle@suse.de
+
+- Update to version 2.1.2.
+  + switched to md5 check sum for password in user_preference table
+  + fixed #1373 - RH RPM requires sendmail, but works with other MTAs
+  + fixed double agent notifications on follow up if agent is
+    owner and responible
+  + fixed bug #1311 - Apostrophes are incorrectly displayed under
+    IE 6 & IE7 but correctly displayed under Firefox 1.5.0.6  -=>
+    moved from $Text{} to $JSText{} for text translations in Java Script parts
+    to have a correct quoting
+  + fixed not shown follow up feature in customer panel if ticket
+     is closed
+  + added missing customer print feature
+  + fixed bug #1361 - Can't locate object method "ModGet" via
+    package "Kernel::System::Config"
+
+-------------------------------------------------------------------
+Tue Oct 17 16:43:50 CEST 2006 - lmuelle@suse.de
+
+- Update to version 2.1.1
+  + fixed bug #1213 - some errors not logger by LDAP backends
+  + fixed bug #1248 - Ticket Zoom - Article Thread - Color of auto
+    responses should be yellow
+  + fixed bug #1323 - 2.1 DBUpgrade issue with PostgreSQL - patch
+  + fixed bug #1333 - No reset of escalation time after follow-up
+  + fixed bug #1345 - Attached binary files uploaded and saved to
+    the FS are corrupted.
+  + add ticketfreetext-, ticketfreetime- and articlefreetext support
+    to pdf output
+  + improved stats export/import with an id-name wrapper
+  + fixed bug #1353/1354 changed autoreponse text
+  + add transparency to some images
+  + fixed bug #1358 - Customer History > All customer tickets.
+    returns an incorrect number of tickets
+  + fixed bug #1293 - Can't use an undefined value as a HASH
+    reference at /opt/otrs/bin/cgi-bin//../../Kernel/Modules/AgentTicketBulk.pm
+    line 194
+  + fixed bug #1356 - mssql driver bug - Stats module of OTRS 2.1
+    beta 2 - "Cant use string ("0")".
+  + fixed bug #1335 - removed "uninitialized value" warning in
+    NavBarTicketWatcher.pm
+  + fixed opm check do not install/upgrade packages if one file to
+    install already exists in an other package
+  + added "-a exportfile" feature to bin/opm.pl to export files
+    of a package into a defined directory e. g. "-d /path/to/"
+  + removed Re: from agent notification emails
+  + added change to remove 4 not needed empty spaces after folding
+    of email headers (sometimes 4 empty spaces in subject appear)
+  + updated pdf-logo to ((otrs))
+  + added DBUpdate-to-2.1.oracle.sql to get oracle databases up to
+    date
+  + fixed double sending of note notifications
+  + fixed link to email and phone after adding a new customer user
+  + added fix to removed leading and trailing spaces in search
+    fields of object linking
+  + moved Frontend::ImagePath variable
+   (/otrs-web/images/Standard/) from .dtl files to config option
+  + added examples how to use SOAP (bin/cgi-bin/rpc.pl and
+    scripts/rpc-example.pl)
+  + added mulit calendar / queue support - you can use different
+    time zones in different queues and each agent can select the own time zone
+    NOTE: table queue need to be modified - see scripts/DBUpdate-to-2.1.*.sql
+  + fixed bug #739 - in the login you can type something behind the
+    pass and it works / added password md5 support (required Crypt::PasswdMD5
+    from CPAN or from Kernel/cpan-lib/ - via "cvs update -d")
+  + fixed $Quote{""} bug in login page
+  + fixed bug #1284 - removed mysql dependence in
+    scripts/apache-perl-startup.pl and scripts/apache2-perl-startup.sql
+  + fixed bug #1282 - setting up a postgresql database fails
+  + added performance log feature in admin interface to monitor
+    your system page load performance over different times (1h, 3h, 9h, 1d, 2d,
+    3d) - its disabled per default
+  + removed Re: in subject auto response emails
+  + added PDF output support to AgentTicketPrint module
+  + fixed bug in pdf module - redesiged Table() to fix a lot of
+    infinite loops
+  + fixed bug in pdf module - special control characters produces
+    infinite loops
+  + added ldap attribute to groups/roles sync feature, so its
+    possible to use user attributes for permission handling
+  + fixed bug #1283 - test for modules executed in cronjobs
+  + added cmd option for bin/opm.pl to find package of file
+    e. g. bin/opm.pl -a file -p Kernel/System/FileA.pm
+  + added sleep in bin/PostMasterPOP3.pl after 10 (2 sec) and
+    25 (3 sec) emails on one stream (protect server against overload)
+  + added PDF output feature for stats module and ticket search results
+  + updated to cpan MIME::Tools 5.420
+  + changed ticket escalation method, escalation start will
+    be reseted after every "new" customer message and after agent
+    communication to customer
+  + added new link object functions and db table link_object changes
+  + added <OTRS_CUSTOMER_DATA_*> tags to auto responses
+  + added support of mssql database server (experimental)
+  + added new feature to sync ldap groups into otrs roles
+    (see more in Kernel/Config/Defaults.pm under UserSyncLDAPGroupsDefination
+    and UserSyncLDAPRolesDefination)
+  + new stats framework implemented :-)
+  + fixed bug #1258 - changed language description from Traditional Chinese
+    to Simplified Chinese
+  + fixed bug #1151 - Error when changing customer on ticket in
+  + improved performance of ticket search mask (in cases with
+    over 500 Agents and over 50 Groups) by adding GroupMemberInvolvedList()
+    and modify GroupMemberList(), GroupGroupMemberList(), GroupRoleMemberList()
+    and GroupUserRoleMemberList() at Kernel/System/Group.pm
+  + fixed bug #1132 - Wrong display of escalation time
+  + fixed bug #1151 - Error when changing customer on ticket in
+    TicketStatusView
+  + added ticket watcher feature, per default it's disabled
+  + fixed bug #1240 - Tickets not shown in "New messages" if
+    Auto Response "Reply" is active
+  + fixed bug #1206 - When no RELEASE file is available, no
+    product and version is displaied and strange messages apear in the
+    apache error log;  using standard values in this case now
+  + added public frontend module to serve local repository as
+    remote repository (accessable via IP authentication)
+  + fixed bug #1154 - Problem in displaying pending tickets
+    in agent mailbox
+  + improved postmaster follow up detection by scanning email
+    body, attachment and/or raw email (all is disabled by default)
+  + fixed bug #1023 - Comma in From field creates multiple emails
+    in webform.pl
+  + fixed IE problem with image-buttons
+    involved files: AdminSysConfigEdit.dtl and AdminSysConfig.pm
+  + fixed format bug in Package Manager - PackageView
+  + moved to read any language files located under
+    Kernel/Language/xx_*.pm at each request to have any translated words
+    e. g. for navigation bar available (Kernel/Language/xx_Custom.pm is
+    still used as latest source file)
+  + added config option to show ticket title in main header
+    of frontend (e. g. QueueView, ZoomView and Mailbox)
+  + moved from "otrs" to "otrs-x.x.x" directory in
+    tar.gz / tar.bz download format
+  + added article free text attrubutes
+  + moved from Kernel::Output::HTML::Generic to
+    Kernel::Output::HTML::Layout - all sub modules localted under
+    Kernel/Output/HTML/Layout*.pm will ne loaded automatically
+    at runtime
+  + improved ticket zoom to shown attachments with
+    html title about attachment info (name, size, ...)
+  + added use of current config values in admin sysconfig
+    fulltext search
+  + fixed some spelling mistakes for the English original in
+    language templates and language files
+  + added admin init (Kernel/Modules/AdminInit.pm) to init
+    config files .xml->.pm after a new setup (after inital root login)
+  + splited Kernel::Modules::AgentTicketPhone into
+    two modules Kernel::Modules::AgentTicketPhone and
+    Kernel::Modules::AgentTicketPhoneOutbound (phone calls for existing
+    tickets) also templates are renamed!
+  + cleanup for ticket event names (added compat mode):
+    TicketCreate, TicketDelete, TicketTitleUpdate, TicketUnlockTimeoutUpdate,
+    TicketEscalationStartUpdate, TicketQueueUpdate (MoveTicket),
+    TicketCustomerUpdate (SetCustomerData), TicketFreeTextUpdate
+    (TicketFreeTextSet), TicketFreeTimeUpdate (TicketFreeTimeSet),
+    TicketPendingTimeUpdate (TicketPendingTimeSet), TicketLockUpdate (LockSet),
+    TicketStateUpdate (StateSet), TicketOwnerUpdate (OwnerSet),
+    TicketResponsibleUpdate, TicketPriorityUpdate (PrioritySet), HistoryAdd,
+    HistoryDelete, TicketAccountTime, TicketMerge, ArticleCreate,
+    ArticleFreeTextUpdate (ArticleFreeTextSet), ArticleUpdate, ArticleSend,
+    ArticleBounce, ArticleAgentNotification, (SendAgentNotification),
+    ArticleCustomerNotification (SendCustomerNotification), ArticleAutoResponse
+    (SendAutoResponse), ArticleFlagSet
+  + added own X-OTRS-FollowUp-* header if Queue, State, Priority,
+    ...  should be changed with follow up emails (see: doc/X-OTRS-Headers.txt)
+  + reworked "config options" and "interface" of _all_ agent
+    ticket interfaces to get is clear
+  + replaced ticket config option "Ticket::ForceUnlockAfterMove"
+    with ticket event module "Ticket::EventModulePost###99-ForceUnlockOnMove"
+  + replaced ticket config option "Ticket::ForceNewStateAfterLock"
+    with ticket event module "Ticket::EventModulePost###99-ForceStateChangeOnLock"
+  + added "responsible" ticket feature!
+    (db update with scripts/DBUpdate-to-2.1.(mysql|postgres).sql)
+  + added persian translation (incl. TextDirection support)
+    - Thanks to Amir Shams Parsa!
+  + added default ticket event module to reset ticket owner
+    after move action (it's disable per default)
+  + added default next state in ticket forward
+  + added OTRS_Agent_* tags like OTRS_Agent_UserFirstname and
+    OTRS_Agent_UserLastname for salutation and signature templates
+  + added update and insert via admin sql box
+  + 'removed old compat files' Kernel/Config/Files/Ticket.pm
+    and Kernel/Config/Files/TicketPostMaster.pm
+  + added 8 more ticket free text fields
+    (db update with scripts/DBUpdate-to-2.1.(mysql|postgres).sql)
+  + added SendNoNotification option for MoveTicket(),
+    LockSet() and OwnerSet() in Kernel/System/Ticket.pm (used in
+    GenericAgent to do some admin stuff).
+  + added online repository access for bin/opm.pl
+  + added Delete and Spam config option to
+    Kernel/Config/Files/Ticket.xml for Ticket::Frontend::MenuModule
+  + added column type check in xml database defination
+  + added unit test system
+  + improved admin view of session management
+  + moved FAQ from framework to own application module
+    (can be installed over opm online repository now)
+  + moved otrs archive directory for download and in RPMs
+    from otrs to otrs-x.x.x
+  + added multi pre application module support, just
+    define it like:
+    $Self->{PreApplicationModule}->{AgentInfo} = 'Kernel::Modules::AgentInfo';
+  + fixed bug 1132 - Wrong display of escalation time
+  + added missing utf-8 encoding in agent and customer auth
+  + added missing utf-8 encoding customer user backend
+  + changed language description from Traditional Chinese to
+    Simplified Chinese (bug #1258)
+  + fixed bug 1151 - Error when changing customer on ticket in
+    TicketStatusView
+  + fixed bug #1240 - Tickets not shown in "New messages" if
+    Auto Response "Reply" is active
+  + fixed bug #1206 - When no RELEASE file is available, no
+    product and version is displaied and strange messages apear in the
+    apache error log;  using standard values in this case now
+  + fixed bug #1154 - Problem in displaying pending tickets
+    in agent mailbox
+  + fixed bug #1023 - Comma in From field creates multiple emails
+    in webform.pl
+  + added SUSE 10.x RPM support
+  + fixed bug #925 - Binary Attachments incorrectly utf-8
+    encoded in ticket replies
+  + fixed links to new phone/email ticket after a new
+    customer is created via Kernel/Modules/AdminCustomerUser.pm
+  + update of Portuguese language file  - Thanks to
+    Manuel Menezes de Sequeira)
+  + added Greek translation - Thanks to Stelios Maistros!
+  + fixed bug #991 - changed $Data{} to $QData{} in Ticket.xml
+    and Ticket.pm config files to solve problem when answering requests
+    that contain HTML tags
+  + updated Dutch language file - Thanks to Richard Hinkamp!
+  + added Slovak translation
+  + fixed/removed die in Kernel/System/AuthSession/FS.pm
+    -=> GetSessionIDData() - not wanted to die if nn SessionID is given
+  + added Danish translation - Thanks to Thorsten Rossner!
+  + updated Norwegian translation - Thanks to Knut Haugen
+  + fixed some spelling mistakes for the English original in
+    language templates and language files
+  + updated Brazilian Portuguese translation -Thanks to
+    Fabricio Luiz Machado!
+  + fixed missing translation after new ticket was created
+  + added long month translation for calendar popup
+  + changed Kernel/System/Spelling.pm to work with (a|i)spell
+    on Windows systems
+  + added <OTRS_TICKET_*> and <OTRS_CONFIG_*> support to
+    auto respons templates
+  + fixed/removed wrong config option
+    "Ticket::Frontend::QueueSortDefault", added own config option for
+    StatusView of tickets
+  + fixed bug #1047 forward fails if " is in From
+  + fixed ldap authentication if application charset is
+    e. g. iso-8859-1 and not utf-8
+  + fixed some spelling mistakes in
+    Kernel/Config/Files/Ticket.xml and Kernel/Config/Files/Framework.xml
+  + Added X-Spam-Level to config files to have the possibility
+     to filter for this header with PostMasterFilter
+  + fixed bug #1069 - Problem when the name of a GenericAgent
+    job was updated
+  + fixed PostMaster filter admin interface if wrong syntax
+    regexp is used (don't save invalid regexp because not email can be
+    received)
+  + added bin/CheckSum.pl and also ARCHIVE file to include
+    md5 sum archive of current distribution
+  + improved PostMaster if no article can be created
+  + fixed internal server error if in sysconfig search
+    * is used
+  + fixed "enter" submit bug in sysconfig (e. g. reset first
+    item in the edit site)
+  + fixed ArticleAttachmentIndex() - wrong index count in
+    fs lookup - attachment icons sometimes not shown
+  + added added missing class="button" in submit type="submit"
+    of .dtl templates
+  + fixed default note-type and default state-type in ticket
+    pending mask
+  + fixed stats/graph error message 'Can't call method "png"
+    on an undefined value at ...'
+  + fixed missing delete on time_accounting in
+    Kernel/System/Ticket/Article.pm if article got deleted
+  + improved die if xml is invalid in Kernel/System/XML.pm
+  + added compat config option for compose answer to
+    replace original sender with current customers email address
+  + updated French language file, thanks to Yann Richard
+  + fixed bug #1025 - ORA-01400: cannot insert NULL into ("OTRS"
+    ."CUSTOMER_USER"."COMMENTS"
+  + fixed bug #1018 - initial_insert.sql, oracle error ORA-01400:
+    cannot insert NULL into
+  + fixed std attachment feature (no attachment after
+    additional fiel upload) in agent ticket compose
+  + improved database Quote() for integer, also allow +|-
+    in integer
+  + fixed order of create attributes (TicketCreate(), TicketFreeTime(),
+    TicketFreeTime(), ArticleCreate(), ...) on customer ticket creation
+  + fixed bug #1010 - ORA-00972 Identifier is too long for oracle
+  + fixed bug #1011 - ORA-01408: such column list already indexed,
+    Oracle error
+  + fixed wrong follow up notification (to all agents)
+    via customer panel if ticket is already closed
+  + updated Dutch language file, thanks to Richard Hinkamp
+  + fixed not working -r option in scripts/backup.pl
+    (-r == removed backups older then -r days)
+  + remove leading and trailing spaces in ldap filter for
+    agent and customer authentication
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:12 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Dec  1 12:00:39 CET 2005 - lmuelle@suse.de
+
+- Update to 2.0.4; [#135006]; CVE-2005-3893, CVE-2005-3894, CVE-2005-3895.
+
+-------------------------------------------------------------------
+Wed Aug 31 02:31:07 CEST 2005 - lmuelle@suse.de
+
+- Add german translation of the README.SUSE.
+- Remove /opt/otrs/scripts/apache2-httpd.include.conf and install
+  /opt/otrs/scripts/apache2-httpd-new.include.conf to
+  /etc/apache2/conf.d/; bugs.otrs.org [#904].
+- Change OTRS_USED_WEBSERVER_RCSCRIPT default value to rcapache2.
+- Remove extra %post code for Apache 1 sysconfig settings.
+
+-------------------------------------------------------------------
+Tue Aug 23 23:29:57 CEST 2005 - lmuelle@suse.de
+
+- Update to 2.0.2.
+
+-------------------------------------------------------------------
+Mon Aug  1 17:51:03 CEST 2005 - cthiel@suse.de
+
+- update to 2.0.1-01
+
+-------------------------------------------------------------------
+Fri Jul 22 13:36:22 CEST 2005 - lmuelle@suse.de
+
+- Update to 2.0.0-beta6.
+
+-------------------------------------------------------------------
+Wed Dec  8 15:58:26 CET 2004 - lmuelle@suse.de
+
+- Replace all apache occurrences by apache2 and add information to the
+  README.SUSE to add "perl" to APACHE_MODULES; [#48857].
+
+-------------------------------------------------------------------
+Mon Dec  6 15:38:02 CET 2004 - lmuelle@suse.de
+
+- Ensure to allow HTTP access to /otrs by default; [#48906].
+- Use Apache 2 by default for OTRS_USED_WEBSERVER_RCSCRIPT; [#48904].
+- Ensure %preun returns with 0 even %stop_on_removal otrs not; [#48858].
+
+-------------------------------------------------------------------
+Wed Oct 27 13:58:43 CEST 2004 - lmuelle@suse.de
+
+- Update to version 1.3.2.
+
+-------------------------------------------------------------------
+Sat Sep 25 16:06:52 CEST 2004 - lmuelle@suse.de
+
+- Update to version 1.3.1.
+
+-------------------------------------------------------------------
+Fri Jul 23 12:57:21 CEST 2004 - ro@suse.de
+
+- do not send a mail on installation
+
+-------------------------------------------------------------------
+Wed Jul 14 11:08:05 CEST 2004 - lmuelle@suse.de
+
+- Update to version 1.2.4.
+- Add try-restart to the init script, stop_on_removal to preun and
+  restart_on_udpate to postun.
+
+-------------------------------------------------------------------
+Mon Jun 14 16:35:33 CEST 2004 - ro@suse.de
+
+- requires: replace mod_perl with apache2-mod_perl
+
+-------------------------------------------------------------------
+Fri Apr  2 15:54:39 CEST 2004 - lmuelle@suse.de
+
+- update to version 1.2.3
+
+-------------------------------------------------------------------
+Tue Mar 16 11:25:14 CET 2004 - lmuelle@suse.de
+
+- fix to paragraph 6 of the README
+
+-------------------------------------------------------------------
+Fri Mar  5 14:52:45 CET 2004 - lmuelle@suse.de
+
+- update to version 1.2.2
+- remove userdel from PreReq
+
+-------------------------------------------------------------------
+Thu Sep 18 16:10:01 CEST 2003 - poeml@suse.de
+
+- set permissions of files that need write access by both "otrs"
+  user and "apache" user to group "www" [#29824]
+- add a README, and send the mail to root only on first
+  installation [#27211]
+
+-------------------------------------------------------------------
+Mon Sep  1 19:06:54 CEST 2003 - mmj@suse.de
+
+- Add sysconfig metadata [#28913]
+
+-------------------------------------------------------------------
+Sun Jun 22 16:57:08 CEST 2003 - lmuelle@suse.de
+
+- finaly remove userdel in %postun
+- add sanity checks while adding apache include file to the apache sysconfig
+  file
+- replace requires apache by http_daemon
+
+-------------------------------------------------------------------
+Sat Jun 21 01:28:51 CEST 2003 - lmuelle@suse.de
+
+- update to version 1.1.1
+- add missing directories
+- use mktemp im %post; add /bin/mktemp to PreReq
+- use getent passwd otrs in %post
+- temporarily disable userdel in the %postun
+
+-------------------------------------------------------------------
+Tue Mar 18 13:07:47 CET 2003 - lmuelle@suse.de
+
+- change group ownership for most files to root, #25543
+- call hostname only if /etc/HOSTNAME exists and is greater than zero, #25495
+
+-------------------------------------------------------------------
+Tue Feb 18 15:20:07 CET 2003 - lmuelle@suse.de
+
+- add separate binaries to PreReq
+- add missing files and directories to %files section
+- add informational message on stdout if installed without YaST
+
+-------------------------------------------------------------------
+Tue Feb 18 12:28:53 CET 2003 - lmuelle@suse.de
+
+- add patch to fix permission settings
+- remove defattr from files section
+
+-------------------------------------------------------------------
+Mon Feb 17 15:10:49 CET 2003 - lmuelle@suse.de
+
+- check if ${RPM_BUILD_ROOT} is not / in %clean section
+
+-------------------------------------------------------------------
+Tue Feb 11 20:29:08 CET 2003 - lmuelle@suse.de
+
+- update to version 1.0.1
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Aug 20 10:31:53 CEST 2002 - mmj@suse.de
+
+- Correct PreReq
+
+-------------------------------------------------------------------
+Tue Aug  6 13:45:49 CEST 2002 - kukuk@suse.de
+
+- Fix Requires: perl-Syslog -> perl-Unix-Syslog
+
+-------------------------------------------------------------------
+Mon Aug  5 14:42:45 CEST 2002 - kukuk@suse.de
+
+- Remove perl-Digest-MD5/perl-MIME-Base64 from Requires, they are
+  now part of main perl package.
+
+-------------------------------------------------------------------
+Fri Jun 14 00:07:08 CEST 2002 - ro@suse.de
+
+- always use macros when calling insserv 
+
+-------------------------------------------------------------------
+Tue Mar 12 09:37:54 CET 2002 - kukuk@suse.de
+
+- Create the new user as system account in the free range 100-499
+
+-------------------------------------------------------------------
+Wed Feb 20 18:33:12 CET 2002 - uli@suse.de
+
+- initial package
+
+

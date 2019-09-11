@@ -1,0 +1,269 @@
+-------------------------------------------------------------------
+Tue Mar 12 15:18:41 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Add unfullscreen button.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 20 00:00:58 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Some small fixes, notably regarding the focus, and a security
+    for never starting in the final position, that’s for users. A
+    test infrastructure was also added, and various code
+    improvements.
+
+-------------------------------------------------------------------
+Sun Feb 17 21:15:59 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Taquin switched to Meson build system.
+  + New icon.
+  + The game board is now centered.
+  + A counter of moves in headerbar.
+  + Restart the current game now possible.
+  + Keeps your best score, so you can try to improve it.
+  + Updated translations.
+- Switch to meson build system, add meson BuildRequires and macros.
+- Add appstream-glib, vala and pkgconfig(gio-2.0) BuildRequires:
+  New dependencies.
+- Drop obsolete intltool and libxml2-tools BuildRequires.
+
+-------------------------------------------------------------------
+Tue Jan  8 12:41:07 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  + The application menu has been retired and replaced by an
+    hamburger menu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  7 17:51:37 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 15 23:23:59 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+- Drop:
+  + glib2_gsettings_schema_requires macro: it is no longer needed
+    since RPM file triggers (RPM 4.13, suse_version 1330).
+  + suse_update_desktop_file macro and update-desktop-files
+    BuildRequires: No longer needed.
+- Add fdupes BuildRequires and its macro for replacement of
+  duplicate files with links under the data directory.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:29:52 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct  2 01:07:58 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.1:
+  + Updated translations.
+- Drop %desktop_database_*, %icon_theme_cache_* and
+  %glib2_gsettings_schema_* post/postun macros: functionality now
+  covered by file triggers.
+
+-------------------------------------------------------------------
+Tue Sep 20 16:57:17 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + AppData fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 14 07:21:00 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 30 10:17:13 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 16 12:55:37 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.21.90:
+  + Update appdata.
+  + Simplify style-checker enabling code.
+  + Fix style-checker with new libgnome-games-support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May  9 20:06:00 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 14 16:33:49 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 22 09:50:11 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:32:39 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + The "valign” property of some buttons of the headerbar has been
+    set to “center”, to look better on some rare configurations.
+  + Bugs fixed: bgo#762466.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  1 10:39:05 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 17 12:14:28 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.90:
+  + Two cats have been replaced, for DFSG compatibility.
+  + Other changes include some metadata updates, and corrections
+    caused by recent GTK+.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 24 00:26:18 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.1:
+  + Adaptation to current CSS-nodes.
+  + Known issues:
+    - Narrow no-break space (U+202F) looks not rendered in some
+      locales.
+    - CSS-nodes will break again.
+
+-------------------------------------------------------------------
+Thu Nov 12 09:25:21 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Update CSS for uses with newer Gtk+.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 15 07:58:01 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 12 18:01:19 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 06:25:49 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 07:47:15 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Fix dragging the window after clicking the game view.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 09:18:53 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 18 08:42:15 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Print --version output on stdout.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 28 18:52:55 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 15 07:41:18 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + HighContrast icons removed (as the symbolic one is now used).
+  + Updated translations.
+- Remove HighContrast %icon_theme_cache_post(un) calls, as Symbolic
+  icons have replaced them.
+
+-------------------------------------------------------------------
+Mon Mar 23 16:08:26 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:43:04 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Add symbolic icon.
+  + Don’t crash on closing.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 02:18:29 UTC 2015 - mcatanzaro@gnome.org
+
+- Set license tag correctly to GPL-3.0+.
+
+-------------------------------------------------------------------
+Tue Mar  3 08:25:54 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91.1:
+  + Correct a weird bug that hides the app-menu.
+- Changes from version 3.15.90:
+  + Big code reorganisation, correcting some weird bugs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 17 09:24:47 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Images compression.
+  + Dbus activatable.
+  + Use CSS for radios' background images.
+  + Permissions of the tarball files fixed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan 24 10:35:05 UTC 2015 - badshah400@gmail.com
+
+- Update to version 3.15.4:
+  + Add sound.
+  + Better focus.
+  + Rework start-screen and animations.
+  + Better help.
+  + Updated translations.
+- Permissions for doc files fixed upstream, no longer need to be
+  fixed in specfile (bgo#742948).
+- Add pkgconfig(libcanberra-gtk3) >= 0.26 to BuildRequires.
+
+-------------------------------------------------------------------
+Sat Jan 10 09:37:27 UTC 2015 - badshah400@gmail.com
+
+- Initial package.
+

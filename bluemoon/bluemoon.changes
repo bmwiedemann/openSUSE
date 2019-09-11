@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Dec 22 22:47:10 UTC 2014 - nemysis@gmx.ch
+
+- Use for patches %{name}-version instead of %{name}-%{version}
+
+-------------------------------------------------------------------
+Sun Dec 21 15:28:39 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation
+

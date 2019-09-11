@@ -1,0 +1,4845 @@
+-------------------------------------------------------------------
+Tue Oct 16 16:46:48 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Wed Oct  3 09:59:03 UTC 2018 - lslezak@suse.cz
+
+- Use an exclusive lock when rotating the YaST logs to avoid race
+  conditions when several YaST processes run in paralell
+  (related to bsc#1094875)
+- 4.1.0
+
+-------------------------------------------------------------------
+Fri Sep 28 16:47:42 CEST 2018 - schubi@suse.de
+
+- Reduced risk of race condition between getenv and setenv while
+  logging (bsc#1103076)
+- 4.0.4
+
+-------------------------------------------------------------------
+Wed Aug 22 16:30:42 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Thu Jul 19 14:30:12 CEST 2018 - aschnell@suse.com
+
+- fixed detection of aarch64 during update by recognizing aarch64
+  in elf-arch (bsc#1099325)
+- recognise RISC-V in elf-arch
+- 4.0.3
+
+-------------------------------------------------------------------
+Tue Feb  6 16:16:58 UTC 2018 - mvidner@suse.com
+
+- glibc-2.27 compatibility: Removed an overly specific test case
+  for certain localized numbers (bsc#1079630)
+- 4.0.2
+
+-------------------------------------------------------------------
+Tue Nov 28 15:08:32 UTC 2017 - jreidinger@suse.com
+
+- add jemalloc dependency for y2base which is used only in old
+  testsuite and that workarounds problem with dynamic dlopening
+  of jemalloc in ruby (bsc#1068883)
+- 4.0.1
+
+-------------------------------------------------------------------
+Tue Oct 10 08:34:19 UTC 2017 - mvidner@suse.com
+
+- Fixed newly uncovered warnings: Wterminate, Wint-in-bool-context,
+  sys/sysmacros (bsc#982942, bsc#434048).
+- 4.0.0
+
+-------------------------------------------------------------------
+Wed Jan  4 09:16:02 UTC 2017 - jreidinger@suse.com
+
+- Dropped the YCP debugger in yast2-core-debugger not to confuse
+  people who want to use the Byebug based Ruby debugger
+  (bsc#1018038)
+- 3.2.2
+
+-------------------------------------------------------------------
+Tue Jan  3 15:14:22 UTC 2017 - jreidinger@suse.com
+
+- Allow more detailed error specification when loading namespace
+  to component system failed (bsc#932331)
+- 3.2.1
+
+-------------------------------------------------------------------
+Mon Nov  7 12:51:20 UTC 2016 - jreidinger@suse.com
+- ag_anyangent: Do not fail the parse when an Optional syntax meets
+  EOF, e.g. for a fstab without a trailing newline (bsc#429326#c11)
+- 3.2.0
+
+-------------------------------------------------------------------
+Tue Sep 20 13:33:01 UTC 2016 - jreidinger@suse.com
+
+- disable doc generation (FATE#320356)
+- remove unnecessary build dependency to speed up build
+  (bsc#999203)
+- 3.1.24
+
+-------------------------------------------------------------------
+Thu Jun  2 13:46:02 UTC 2016 - mvidner@suse.com
+
+- Optionally build with Clang instead of GCC (via bcond_with clang)
+- Fixed most of Clang warnings (bsc#982942)
+- 3.1.23
+
+-------------------------------------------------------------------
+Thu Mar  3 12:36:06 CET 2016 - gs@suse.de
+
+- Add missing newline to error messages (bsc#969236)
+- 3.1.22
+
+-------------------------------------------------------------------
+Tue Feb  2 15:15:39 UTC 2016 - mvidner@suse.com
+
+- Treat C/C++ warnings as errors but only via bcond_with werror.
+- 3.1.21
+
+-------------------------------------------------------------------
+Tue Feb  2 12:17:32 UTC 2016 - mvidner@suse.com
+
+- Treat C/C++ warnings as errors.
+- 3.1.20
+
+-------------------------------------------------------------------
+Tue Jan 19 10:08:56 UTC 2016 - jreidinger@suse.com
+
+- ag_ini: when multifile list contain glob, evaluate it in correct
+  root. (bnc#962566)
+- 3.1.19
+
+-------------------------------------------------------------------
+Tue Oct  6 14:44:02 UTC 2015 - mvidner@suse.com
+
+- In the signal handler, log the sender PID, and if present,
+  run /usr/lib/YaST2/bin/signal-postmortem (bsc#935686).
+- 3.1.18
+
+-------------------------------------------------------------------
+Wed May 13 19:56:50 CEST 2015 - besser82@fedoraproject.org
+
+- Fix more compilation warnings.
+
+-------------------------------------------------------------------
+Mon May 11 13:50:04 UTC 2015 - mvidner@suse.com
+
+- Fixed compilation warnings.
+
+-------------------------------------------------------------------
+Mon Mar 30 10:55:31 UTC 2015 - jreidinger@suse.com
+
+- Fix YCP symbol comparison with GCC 5 (thanks schubi for
+  performance measurement and mvidner for review) (boo#914255)
+- 3.1.17
+
+-------------------------------------------------------------------
+Tue Mar  3 14:49:39 UTC 2015 - mvidner@suse.com
+
+- Fixed compilation (but not tests) with GCC 5 (boo#914255).
+- 3.1.16
+
+-------------------------------------------------------------------
+Thu Jan 22 19:10:06 UTC 2015 - lslezak@suse.cz
+
+- skip empty environment variables when activating the locale
+  settings, fixes inconsistent locale setting when started
+  via "kdesu" with unchecked "Remember password" option
+  (boo#914081)
+- 3.1.15
+
+-------------------------------------------------------------------
+Tue Nov 25 09:59:49 UTC 2014 - mvidner@suse.com
+
+- ag_any: respect target root also when the file
+  does not exist in the original root (boo#903747).
+  If applied at installation time as a DUD, it fixes
+  "Internal error... in SaveModulesToLoad" during
+  an upgrade to oS 13.2.
+- 3.1.14
+
+-------------------------------------------------------------------
+Fri Oct 24 12:29:04 UTC 2014 - lslezak@suse.cz
+
+- yast2-core-devel: removed obsolete dependencies (flex, sysfsutils
+  and hwinfo-devel), "ycp/Scanner.h" include file made private
+  (not installed anymore)
+- 3.1.13
+
+-------------------------------------------------------------------
+Mon Oct 20 08:01:21 UTC 2014 - lslezak@suse.cz
+
+- Travis support: added .travis.yml, portability: added crypt vs
+  xcrypt detection, fixed order at base/src/Makefile.am
+
+-------------------------------------------------------------------
+Wed Oct  8 12:02:35 UTC 2014 - mvidner@suse.com
+
+- Fixed searching for programs in Y2DIR
+  (gh#yast/yast-ruby-bindings#107)
+- 3.1.12
+
+-------------------------------------------------------------------
+Wed Oct  8 07:55:04 UTC 2014 - mvidner@suse.com
+
+- Allow SCR.Read(.target.yast2, ...) on chroots (bnc#891053).
+
+-------------------------------------------------------------------
+Mon Sep  8 08:59:10 UTC 2014 - mvidner@suse.com
+
+- Enable buffering for parsing agent output (bnc#854809).
+- 3.1.11
+
+-------------------------------------------------------------------
+Tue Aug 26 08:03:08 UTC 2014 - mvidner@suse.com
+
+- Fixed another batch of compilation warnings.
+- 3.1.10
+
+-------------------------------------------------------------------
+Mon Aug 11 11:13:42 UTC 2014 - mvidner@suse.com
+
+- agent-any: stub "df" for testing.
+- 3.1.9
+
+-------------------------------------------------------------------
+Fri Aug  8 07:59:56 UTC 2014 - mvidner@suse.com
+
+- Pass SCR root path to stdio agents (bnc#879365).
+- If aborting on a SCRAgent::targetPath assertion, log it
+  (bnc#891053).
+- Fixed obvious compilation warnings.
+- 3.1.8
+
+-------------------------------------------------------------------
+Tue May  6 15:04:25 UTC 2014 - mvidner@suse.com
+
+- Do not mention YCP in signal handler (by tcech)
+- 3.1.7
+
+-------------------------------------------------------------------
+Mon Mar 17 12:52:24 UTC 2014 - jreidinger@suse.com
+
+- do not prefer executable programs over builtin components
+- 3.1.6
+
+-------------------------------------------------------------------
+Fri Dec 13 10:53:16 UTC 2013 - guillaume@opensuse.org
+
+- Fix ARM build:
+  * disable autodoc on qemu-arm only instead of all ARM builds
+  * Update file list to sed to disable autodoc
+
+-------------------------------------------------------------------
+Fri Nov  8 10:25:56 UTC 2013 - jreidinger@suse.com
+
+- removed obsolete .target.control.printer_reset, .target.smbmount,
+  .target.kill ( use .process.kill )
+- 3.1.5
+
+-------------------------------------------------------------------
+Mon Nov  4 15:26:11 UTC 2013 - jreidinger@suse.com
+
+- remove remote libraries support on installed system. It requires
+  yast2-core on installed system which forbits goal for SLE12 to
+  not have yast on target system. The last piece that use it was
+  adapted since perl-Bootloader-0.800 .
+- 3.1.4
+
+-------------------------------------------------------------------
+Wed Oct 23 11:32:20 UTC 2013 - lslezak@suse.cz
+
+- system-agent: handle chroot at more places
+
+-------------------------------------------------------------------
+Mon Oct 21 14:02:54 UTC 2013 - lslezak@suse.cz
+
+- generateYCPWrappers: check also for YCPNull to avoid segfault
+  when a parameter is missing (bnc#846467)
+
+-------------------------------------------------------------------
+Fri Oct 18 12:03:31 UTC 2013 - jreidinger@suse.com
+
+- Do not delete agent outside of component in WFM otherwise
+  installation segfault
+
+-------------------------------------------------------------------
+Thu Oct 17 14:16:09 UTC 2013 - jreidinger@suse.com
+
+- chdir("/") after chroot otherwise commands fail with unreachable
+  location after `cd ~`
+
+-------------------------------------------------------------------
+Tue Oct 15 09:24:53 UTC 2013 - jreidinger@suse.com
+
+- Dropped documentation generated by makebuildindocs, not include
+  in yast2-devtools. Parts of it are obsolete anyway (YCP, WFM),
+  ag_process and ag_system will get new tools.
+- 3.1.3
+
+-------------------------------------------------------------------
+Mon Oct 14 12:40:31 UTC 2013 - jreidinger@suse.com
+
+- minimal chroot: fixed System:: to actually chroot; hopefully
+  fixes bootloader setup at installation
+
+-------------------------------------------------------------------
+Wed Oct  2 14:56:39 UTC 2013 - jreidinger@suse.com
+
+- Adapt to incompatible changes in bison 3.0
+- 3.1.2
+
+-------------------------------------------------------------------
+Tue Oct  1 14:59:08 UTC 2013 - jreidinger@suse.com
+
+- port from opensuse 13.1: fixed a segfault at the end of 'scr'
+  program used during the installation, leading to /core file
+  (BNC#841623)
+- 3.1.1
+
+-------------------------------------------------------------------
+Wed Sep 25 14:16:30 UTC 2013 - jreidinger@suse.com
+
+- respect target root in: ag_any(for processes), system_agent
+
+-------------------------------------------------------------------
+Wed Sep 18 14:39:27 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Wed Sep 11 12:40:58 UTC 2013 - jreidinger@suse.com
+
+- respect target root in: ag_any, ag_ini, ag_modules, ag_resolver
+
+
+-------------------------------------------------------------------
+Wed Sep  4 14:24:39 UTC 2013 - mvidner@suse.com
+
+- Avoid automake warning:
+  'INCLUDES' is the old name for 'AM_CPPFLAGS'
+
+-------------------------------------------------------------------
+Tue Sep  3 13:28:44 UTC 2013 - jreidinger@suse.com
+
+- libscr: added "root" attribute to SCRAgent (FATE#314695). Agents
+  must be adapted to respect it instead of relying on chroot(2)
+  having been run.
+
+
+-------------------------------------------------------------------
+Wed Aug  7 07:46:14 UTC 2013 - dmajda@suse.cz
+
+- Do not lose comments before negative numbers in YCP parser
+  (gh#yast/ycp-killer#617).
+- 3.0.1
+
+-------------------------------------------------------------------
+Tue Jul 30 08:28:27 UTC 2013 - yast-devel@opensuse.org
+
+- version 3.0.0
+
+-------------------------------------------------------------------
+Tue Jul 16 08:40:03 UTC 2013 - mvidner@suse.com
+
+- XML: distinguish <call result="unused" ...> so that calls
+  involving parameters passed by reference have a less ugly Ruby
+  translation.
+- XML: added forgotten comment attributes to <locale>
+  (gh#yast/yast-core#39)
+- 2.24.12
+
+-------------------------------------------------------------------
+Sun Jul 14 20:17:56 UTC 2013 - mvidner@suse.com
+
+- Adapt to move of crypt_gensalt to libowcrypt (FATE#314945).
+- 2.24.11
+
+-------------------------------------------------------------------
+Fri Jul 12 08:46:23 UTC 2013 - mvidner@suse.com
+
+- factored out some common code in DejaGnu tests
+- 2.24.10
+
+-------------------------------------------------------------------
+Thu Jul 11 15:25:37 UTC 2013 - jreidinger@suse.com
+
+- Fix exporting comments in list elements (gh#yast/yast-core#36).
+- Fix exporting comments for function calls.
+- Fix printing paths containing UTF8 (gh#yast/yast-ruby-bindings#64).
+- Temporary disable tests that fails non-detereminic.
+- 2.24.9
+
+-------------------------------------------------------------------
+Thu Jul 11 09:15:38 UTC 2013 - mvidner@suse.com
+
+- Fixed tests that would always succeed on oS-12.3, with
+  "WARNING: could not find 'runtest'".
+- Ignore the language bindings in all tests.
+
+-------------------------------------------------------------------
+Tue Jul  9 17:00:37 UTC 2013 - jreidinger@suse.com
+
+- fix segfault during installation
+- 2.24.8
+
+-------------------------------------------------------------------
+Tue Jul  9 10:45:44 UTC 2013 - jreidinger@suse.com
+
+- Fix missing import in exported xml (gh#yast/y2r#41)
+- Fix exporting comments for methods without parameters
+  (gh#yast/yast-core#29)
+- 2.24.7
+
+-------------------------------------------------------------------
+Thu Jul  4 08:46:47 UTC 2013 - jreidinger@suse.com
+
+- Prevent invalid XML by filtering out vertical tab and form-feed in
+  xml output gh#yast/yast-core#25
+- Fixed "Non constant value in case statement" parse error for
+  `case -1:` with enabled comments parsing
+- 2.24.6
+
+-------------------------------------------------------------------
+Fri Jun 28 13:16:23 UTC 2013 - mvidner@suse.com
+
+- enabled ignoring language bindings (yast2-ruby-bindings,
+  yast2-perl-bindings, yast2-python-bindings) by setting the
+  environment variable Y2DISABLELANGUAGEPLUGINS
+  (gh#yast/yast-core#20)
+- 2.24.5
+
+-------------------------------------------------------------------
+Thu Jun 27 11:47:19 UTC 2013 - jreidinger@suse.com
+
+- Allow parsing and exporting comments and whitespaces to XML if 
+  Y2PARSECOMMENTS is set
+- 2.24.4
+
+-------------------------------------------------------------------
+Wed Jun 26 07:20:18 UTC 2013 - jreidinger@suse.com
+
+- YCP parser: fixed an endless loop for EOF in a string 
+  (gh#yast/yast-core#21)
+- 2.24.3
+
+-------------------------------------------------------------------
+Fri Jun 21 13:50:31 UTC 2013 - lslezak@suse.cz
+
+- y2base: handle interleaved -I and -M options, as used by
+  Makefiles of rubified modules.
+- 2.24.2
+
+-------------------------------------------------------------------
+Fri Jun 21 12:13:54 UTC 2013 - mvidner@suse.com
+
+- re-enabled tests of ag_background
+
+-------------------------------------------------------------------
+Fri Jun 21 07:50:17 UTC 2013 - jreidinger@suse.com
+
+- fixed the apparently harmless segfault when YaST finishing.
+- 2.24.1
+
+-------------------------------------------------------------------
+Mon Jun 10 12:06:08 UTC 2013 - lslezak@suse.cz
+
+- fixed YCP debugger client to make it run
+- 2.24.0
+
+-------------------------------------------------------------------
+Fri Jun  7 09:05:24 UTC 2013 - jreidinger@suse.com
+
+- made SymbolEntry::value, setValue virtual (ABI change)
+- added Y2WFMComponent::SetArgs, needed for non-YCP clients
+- various fixes in handling YCP System::* calls
+- do not strictly check types of arguments for System remote calls
+- fixed parser annnd all serializers to use C locale for float
+- fixed some memory leaks
+- various fixes to the XML serialization of YCP
+- Fixed function type matching to be contravariant for arguments 
+  (BNC#825263) (return type has always been covariant, correctly)
+  Interface expected to handle "any" argument will no longer accept
+  implementations handling only a specific subtype. Conversely,
+  interfaces expected to handle a "string" will also accept 
+  implementation handling "any".
+  Affects the "is" builtin; breaks *-bindings relying on the bug.
+
+-------------------------------------------------------------------
+Mon Oct  8 16:50:38 CEST 2012 - mvidner@suse.cz
+
+- Clarified how to return lists and maps from Perl (bnc#783846).
+- 2.23.6
+
+-------------------------------------------------------------------
+Wed Jul 11 14:55:26 CEST 2012 - mvidner@suse.cz
+
+- automake incompatibility: require 1.12, to produce parser.hh
+- agent-ini: if we cannot format a string, fail loudly (bnc#763386#c10)
+
+-------------------------------------------------------------------
+Wed Jul 11 12:07:52 CEST 2012 - fehr@suse.de
+
+- 2.23.5
+- added builtin list::reverse for YCP list
+
+-------------------------------------------------------------------
+Fri Jun 22 15:53:00 CEST 2012 - aschnell@suse.de
+
+- allow C++ log functions to be used in namespaces
+- 2.23.4
+
+-------------------------------------------------------------------
+Tue Jun 19 07:42:53 UTC 2012 - mfilka@suse.com
+
+- increase version 
+- added testcases
+- handling of escape sequences when quoting
+- enable quoting only for sysconfig files
+- 2.23.3
+
+-------------------------------------------------------------------
+Mon Jun 18 18:03:51 UTC 2012 - mfilka@suse.com
+
+- (un)quoting rewriten to C++ due to bnc#765519
+- 2.23.2 
+-------------------------------------------------------------------
+Mon Jun 18 17:53:23 CEST 2012 - aschnell@suse.de
+
+- fixed function name conflict in agent-ini (bnc#765519)
+- 2.23.2
+
+-------------------------------------------------------------------
+Wed Jun 13 13:38:17 CEST 2012 - aschnell@suse.de
+
+- fixed UTF-8 handling of several string builtins (bnc#755414)
+
+-------------------------------------------------------------------
+Tue Jun 12 13:53:23 CEST 2012 - aschnell@suse.de
+
+- removed blocxx usage (fate #313242)
+- improved efficiency of logging functions
+- 2.23.1
+
+-------------------------------------------------------------------
+Fri May  4 10:58:48 UTC 2012 - mfilka@suse.com
+
+- added support for shell like (un)quoting and (un)escaping of values 
+- 2.23.0
+
+-------------------------------------------------------------------
+Mon Mar 19 11:18:22 CET 2012 - aschnell@suse.de
+
+- fixed for gcc 4.7
+
+-------------------------------------------------------------------
+Fri Mar 16 14:40:00 CET 2012 - aschnell@suse.de
+
+- do not use xcrypt (removes bigcrypt) (fate #312617)
+- 2.22.5
+
+-------------------------------------------------------------------
+Wed Feb 22 14:59:37 CET 2012 - aschnell@suse.de
+
+- added tointeger builtin with explicite base qualification
+- 2.22.4
+
+-------------------------------------------------------------------
+Fri Feb  3 14:36:31 CET 2012 - mvidner@suse.cz
+
+- ini-agent: only change permissions of new files (bnc#743355)
+- 2.22.3
+
+-------------------------------------------------------------------
+Thu Jan  5 15:08:14 CET 2012 - mvidner@suse.cz
+
+- Relicensed agent-process from GPL-2.0 to GPL-2.0+
+  to match the rest of the package (bnc#728950).
+- 2.22.2
+
+-------------------------------------------------------------------
+Thu Jan  5 15:00:00 CET 2012 - mvidner@suse.cz
+
+- ini-agent: added Write(.section_private.SECTION, BOOLEAN)
+  (bnc#713661, CVE-2011-3177)
+- system agent: added  Write(.target.string, [filename, mode], content)
+- 2.22.1
+
+-------------------------------------------------------------------
+Fri Dec  2 11:49:56 UTC 2011 - lslezak@suse.cz
+
+- process-agent - fixed testuite (removed potential race condition)
+- 2.22.0
+
+-------------------------------------------------------------------
+Fri Nov 25 14:11:01 CET 2011 - mvidner@suse.cz
+
+- ini-agent: Fixed a test failure "wrong stderr for nonex"
+  (bnc#706705#c16)
+- process-agent: a badly designed test is less likely to fail now
+- 2.21.8
+
+-------------------------------------------------------------------
+Fri Nov 25 12:18:18 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Oct  4 11:03:46 CEST 2011 - mvidner@suse.cz
+
+- build fix for ARM (bnc#721846).
+- 2.21.7
+
+-------------------------------------------------------------------
+Thu Aug 18 12:40:23 CEST 2011 - mvidner@suse.cz
+
+- change blowfish id from 2a to 2y (bnc#700876 bnc#706705 CVE-2011-2483)
+  (thanks to Ludwig Nussel)
+- 2.21.6
+
+-------------------------------------------------------------------
+Fri Aug  5 13:16:34 CEST 2011 - mvidner@suse.cz
+
+- YCP Debugger added, by Stano Visnovsky.
+- 2.21.5
+
+-------------------------------------------------------------------
+Fri Jun 17 16:21:50 CEST 2011 - jsuchome@suse.cz
+
+- when if-condition evaluates to nil, use false instead (bnc#687236)
+- 2.21.4
+
+-------------------------------------------------------------------
+Thu Jun 02 09:58:11 CEST 2011 - aschnell@suse.de
+
+- added missing include statements
+- 2.21.3
+
+-------------------------------------------------------------------
+Fri May 27 17:17:14 CEST 2011 - mvidner@suse.cz
+
+- Fixed a garbled unbreakable space used as a thousand separator (bnc#683881).
+- 2.21.2
+
+-------------------------------------------------------------------
+Fri May 27 11:32:55 CEST 2011 - mvidner@suse.cz
+
+- Don't crash when adding to a nil list (bnc#694520).
+- A nil (type cast failure) in a list literal will not make the whole
+  list nil (bnc#694520).
+- 2.21.1
+
+-------------------------------------------------------------------
+Thu Mar 31 11:11:36 CEST 2011 - aschnell@suse.de
+
+- added sha256 and sha516 password encryption (fate #309705)
+- 2.21.0
+
+-------------------------------------------------------------------
+Tue Mar 15 15:51:48 UTC 2011 - coolo@novell.com
+
+- fix build with gcc 4.6
+
+-------------------------------------------------------------------
+Mon Jan  3 20:53:16 UTC 2011 - lslezak@suse.cz
+
+- fixed packaging in openSUSE-11.4 (perl files) 
+- 2.20.0
+
+-------------------------------------------------------------------
+Tue Aug 10 13:28:57 CEST 2010 - mvidner@suse.cz
+
+- Enable input buffering for YCP include files (bnc#629882).
+- 2.19.3
+
+-------------------------------------------------------------------
+Thu Mar 11 15:36:27 CET 2010 - mvidner@suse.cz
+
+- Fixed the regexpsub algorithm not to loop endlessly
+  if the source string contains \1 (bnc#552914).
+- 2.19.2
+
+-------------------------------------------------------------------
+Tue Mar  9 16:21:07 CET 2010 - mvidner@suse.cz
+
+- Fixed an ia64 crash in test_thread_log (a test case for bnc#565918).
+
+-------------------------------------------------------------------
+Mon Feb  1 16:01:46 CET 2010 - mvidner@suse.cz
+
+- Fixed a crash in LogTail by adding a mutex to the shared variable
+  (bnc#565918).
+- Re-enabled parts of liby2util-r testsuite.
+- 2.19.1
+
+-------------------------------------------------------------------
+Fri Dec 18 12:43:39 CET 2009 - aschnell@suse.de
+
+- allow Y2DIR to be a list of paths separated by ":"
+- 2.19.0
+
+-------------------------------------------------------------------
+Fri Aug 14 17:03:17 CEST 2009 - lslezak@suse.cz
+
+- don't generate autodocs on ARM (doesn't work in qemu-arm)
+  (by jansimon.moeller@opensuse.org)
+- 2.18.19
+
+-------------------------------------------------------------------
+Tue Aug 11 16:16:29 CEST 2009 - mvidner@suse.cz
+
+- ycp.pm: convert wide strings to byte strings,
+  to silence a warning when handling parsed XML (bnc#512536).
+- /var/log/YaST2/signal: do not make it executable
+- 2.18.18
+
+-------------------------------------------------------------------
+Mon Aug  3 10:04:21 CEST 2009 - lslezak@suse.cz
+
+- the DBus code has been moved to separate packages
+  (yast2-dbus-client and yast2-dbus-server) (bnc#431208)
+- 2.18.17
+
+-------------------------------------------------------------------
+Fri Jul 10 15:31:15 CEST 2009 - mvidner@suse.cz
+
+- Return DBus errors in most cases that used to y2error only (bnc#520616).
+- In BSV types, "" again means "string" (broken in previous version).
+- Log also the user when reporting a PolKit check result.
+- o.o.Y.modules.ModuleManager.Import fixed to return false on failure.
+- 2.18.16
+
+-------------------------------------------------------------------
+Thu Jul  2 17:02:39 CEST 2009 - mvidner@suse.cz
+
+- Enhanced DBus -> YCP value conversion by considering
+  also the expected YCP type.
+  Otherwise it is impossible to tell whether an empty array
+  should become an empty map or an empty list (bnc#516492).
+- Removed the dependency on dbus-1-x11
+  by calling dbus-daemon directly without dbus-launch.
+- 2.18.15
+
+-------------------------------------------------------------------
+Fri Jun 26 14:52:05 CEST 2009 - mvidner@suse.cz
+
+- yast_modules_dbus_server: return org.freedesktop.DBus.Error.UnknownMethod
+  for unknown methods
+- Disable --as-needed until this package is fixed.
+
+-------------------------------------------------------------------
+Fri Jun 19 14:14:13 CEST 2009 - mvidner@suse.cz
+
+- float::tolstring fixed to use the fixed notation
+- 2.18.14
+
+-------------------------------------------------------------------
+Thu Jun 18 16:59:49 CEST 2009 - lslezak@suse.cz
+
+- DBus service - fixed returning "any" values (bnc#513503),
+  return correct signatures in DBus introspection data, return the
+  values according to it (bnc#513571), added basic testuite
+
+-------------------------------------------------------------------
+Wed Jun 17 13:53:30 CEST 2009 - mvidner@suse.cz
+
+- DBusServerBase: exit properly if the connection got closed
+
+-------------------------------------------------------------------
+Mon Jun 15 17:24:03 CEST 2009 - lslezak@suse.cz
+
+- DBus service - fixed returning of nested values (e.g. list<map>),
+  removed extra check for map (bnc#512569)
+- 2.18.13
+
+-------------------------------------------------------------------
+Tue Jun  9 15:51:09 CEST 2009 - mvidner@suse.cz
+
+- Added 'string float::tolstring(float f, integer precision)' using the
+  current locale decimal separator (bnc#460094).
+- Fixed makefiles to work with "install" calls changed via
+  automake-1.11.
+- Fixed tons of warnings by explicitly initializing all members of
+  declaration_t.
+- 2.18.12
+
+-------------------------------------------------------------------
+Mon Jun  1 08:54:18 CEST 2009 - mvidner@suse.cz
+
+- Fixed char* constness for glibc-2.10.
+- 2.18.11
+
+-------------------------------------------------------------------
+Thu May 14 15:01:49 CEST 2009 - lslezak@suse.cz
+
+- DBus service - fixed DBus object to Yast name space conversion
+  in autoimport code ('/' -> '::'), replace all occurrences
+
+-------------------------------------------------------------------
+Thu May  7 15:46:48 CEST 2009 - mvidner@suse.cz
+
+- Y2ProgramComponent: close fds>2 before exec
+  to make external agents more robust (bnc#501758).
+
+-------------------------------------------------------------------
+Mon May  4 17:28:28 CEST 2009 - lslezak@suse.cz
+
+- SCR DBus service - fixed DBus object registration, fixed creating
+  the PolicyKit action ID
+- 2.18.10
+
+-------------------------------------------------------------------
+Mon Apr 27 15:51:11 CEST 2009 - mvidner@suse.cz
+
+- Resurrected logging in the signal handler, into
+  /var/log/YaST2/signal (or ./y2signal.log) (bnc#493152#c33).
+- Y2StdioComponent: exit only at EOF, not on parse error (bnc#498407).
+- 2.18.9
+
+-------------------------------------------------------------------
+Fri Apr 24 13:49:29 CEST 2009 - mvidner@suse.cz
+
+- agent-ini: do not truncate strings longer than 2048
+  while writing (bnc#492859)
+- 2.18.8
+
+-------------------------------------------------------------------
+Fri Apr 24 08:40:07 CEST 2009 - lslezak@suse.cz
+
+- DBus service - better handle "::" separators in name space
+  string - replace it by "/" in DBus object path and "." in
+  PolicyKit action ID string
+- 2.18.7
+
+-------------------------------------------------------------------
+Tue Apr 21 14:40:31 CEST 2009 - coolo@suse.de
+
+- avoid y2log in both signal handler and forked children (bnc#493152)
+
+-------------------------------------------------------------------
+Tue Apr 21 13:03:23 CEST 2009 - coolo@suse.de
+
+- another hot fix
+
+-------------------------------------------------------------------
+Mon Apr 20 20:36:56 CEST 2009 - coolo@suse.de
+
+- trying hot fix for bnc#493152 
+
+-------------------------------------------------------------------
+Mon Apr 20 09:50:37 CEST 2009 - jreidinger@suse.cz
+
+- add builtin list::swap for list 
+
+-------------------------------------------------------------------
+Fri Apr 17 13:17:28 CEST 2009 - juhliarik@suse.cz
+
+- added fix for problem with adding nil to list (bnc#216177) 
+
+-------------------------------------------------------------------
+Fri Apr 15 12:00:00 CEST 2009 - mvidner@suse.cz
+
+- DBus service:
+ * handle variants in replies
+ * don't crash on unsupported types
+ * fixed ModuleManager action IDs
+ * more examples
+
+-------------------------------------------------------------------
+Fri Apr 10 09:52:42 CEST 2009 - lslezak@suse.cz
+
+- Merged the Yast DBus service from /tmp/lslezak/core branch, the
+  service exports Yast name spaces on DBus. The SCR service has
+  been refactored - the common parts have been moved to liby2dbus.
+- Removed oboleted YCPMapIterators
+- 2.18.6
+
+-------------------------------------------------------------------
+Mon Apr  6 13:46:14 CEST 2009 - mvidner@suse.cz
+
+- Use /etc/modprobe.d/50-yast.conf instead of /etc/modprobe.conf
+  (bnc#485992).
+- Move /etc/modprobe.d/blacklist on update (bnc#485992).
+- Dropped ag_xauth (.xauth.key), superseded since 2005 by 
+  $XAUTHLOCALHOSTNAME (bnc#482223).
+- 2.18.5
+
+-------------------------------------------------------------------
+Thu Mar 26 08:26:56 CET 2009 - lslezak@suse.cz
+
+- .modprobe_blacklist agent: use /etc/modprobe.d/50-blacklist.conf
+  file instead of deprecated /etc/modprobe.d/blacklist (bnc#485992)
+
+-------------------------------------------------------------------
+Fri Mar  6 13:53:48 CET 2009 - mvidner@suse.cz
+
+- ag_background: re-disabled the testsuite, silly me.
+- 2.18.4
+
+-------------------------------------------------------------------
+Fri Mar  6 13:08:10 CET 2009 - lslezak@suse.cz
+
+- put backtrace begin and end markers to y2log when e.g.
+  y2error(-1, ...) is called
+
+-------------------------------------------------------------------
+Fri Mar  6 10:57:11 CET 2009 - mvidner@suse.cz
+
+- ag_background: re-enabled the testsuite (bnc#470645#c11),
+  with some expect magic (~bnc#475551)
+
+-------------------------------------------------------------------
+Wed Feb 25 14:49:33 CET 2009 - mvidner@suse.cz
+
+- Fixed tty_wrapper losing output: stdio was interrupted by SIGCHLD (bnc#470645).
+
+-------------------------------------------------------------------
+Sun Feb 01 03:14:16 CET 2009 - mvidner@suse.cz
+
+- dbus: fixed timeout handling to reduce latency (kkaempf)
+  http://lists.opensuse.org/yast-devel/2009-02/msg00004.html
+- dbus: code cleanup (kkaempf)
+- dbus: fixed resource leaks (aschnell, lslezak)
+
+-------------------------------------------------------------------
+Thu Jan 29 15:15:57 CET 2009 - aschnell@suse.de
+
+- added dbus client agent (required for bnc #464453)
+- 2.18.3
+
+-------------------------------------------------------------------
+Mon Jan 26 14:00:31 CET 2009 - mvidner@suse.cz
+
+- Fixed the D-Bus access policy (bnc#468390, CVE-2008-4311).
+- 2.18.2
+
+-------------------------------------------------------------------
+Thu Jan 08 19:01:01 CET 2009 - aschnell@suse.de
+
+- added namespace multiset with 1. some list function, 2. some new
+  functions and 3. extended testsuite
+- 2.18.1
+
+-------------------------------------------------------------------
+Wed Jan 07 15:17:23 CET 2009 - aschnell@suse.de
+
+- improved YCPList and YCPMap iterators
+
+-------------------------------------------------------------------
+Mon Jan  5 15:20:56 CET 2009 - visnov@suse.cz
+
+- match WFM component name and component creator instance 
+- improve main page for doxygen
+
+-------------------------------------------------------------------
+Mon Dec 22 13:16:02 CET 2008 - mvidner@suse.cz
+
+- Reverted r50800 which, in an attempt to fix another bug, encoded to
+  UTF-8 once too many, breaking i18n going thru Perl agents (bnc#448217).
+
+-------------------------------------------------------------------
+Sat Dec 20 10:45:55 CET 2008 - aschnell@suse.de
+
+- added tosymbol builtin (bnc #192389)
+- added isempty builtin for string, list and map
+- 2.18.0
+
+-------------------------------------------------------------------
+Thu Dec 11 15:06:31 CET 2008 - lslezak@suse.cz
+
+- tty_wrapper - fixed a deadlock in tty setting (set the terminal
+  properties _before_ starting the subprocess) (bnc#458025)
+- 2.17.25
+
+-------------------------------------------------------------------
+Tue Dec  9 13:20:49 CET 2008 - lslezak@suse.cz
+
+- SCR DBus service - check for the global permissions at first
+  (all method parameters are allowed) then for specific ones,
+  added .policy file with the default values (bnc#449794)
+- 2.17.24
+
+-------------------------------------------------------------------
+Thu Nov 27 15:22:59 CET 2008 - lslezak@suse.cz
+
+- tty_wrapper - disable LF to CRLF translation on the stdout stream
+  (bnc#444228)
+- 2.17.23
+
+-------------------------------------------------------------------
+Wed Nov 26 14:04:27 CET 2008 - visnov@suse.cz
+
+- added lsubstring builtin (bnc#446996)
+- 2.17.22
+
+-------------------------------------------------------------------
+Sun Nov  9 15:35:43 CET 2008 - lslezak@suse.cz
+
+- added 'tty_wrapper' binary to start a yast module in commandline
+  mode without a tty device (bnc#444228)
+- 2.17.21
+
+-------------------------------------------------------------------
+Mon Nov  3 11:55:50 CET 2008 - lslezak@suse.cz
+
+- fixed testing of the result of polkit_caller_new_from_dbus_name()
+  call which sometime sets the error object even when there is no
+  real error (bnc#439150)
+- 2.17.20
+
+-------------------------------------------------------------------
+Fri Oct 24 15:54:54 CEST 2008 - visnov@suse.cz
+
+- Also print diff when agent-process testsuite fails
+- 2.17.19 
+
+-------------------------------------------------------------------
+Tue Oct 14 16:38:26 CEST 2008 - mvidner@suse.cz
+
+- Avoid YCPNull reaching SCR agents to prevent crashes (bnc#406138).
+- Allow make check before make install again, after libycpvalues API
+  changed in 2.17.15.
+- 2.17.18
+
+-------------------------------------------------------------------
+Tue Oct 14 14:41:34 CEST 2008 - lslezak@suse.cz
+
+- use atomic type sig_atomic_t in signal handlers (bnc#434509)
+
+-------------------------------------------------------------------
+Sat Oct 11 12:30:03 CEST 2008 - mvidner@suse.cz
+
+- Handle EINTR in YCP scanner. Makes possible to toggle
+  debugging via SIGUSR1 to 'y2base stdio scr' (bnc#434253).
+- 2.17.17
+
+-------------------------------------------------------------------
+Tue Oct  7 14:27:00 CEST 2008 - visnov@suse.cz
+
+- change remove builtin behavior to saner one (bnc #396697)
+- more documentation updates
+- 2.17.16 
+
+-------------------------------------------------------------------
+Mon Sep 29 23:03:10 CEST 2008 - visnov@suse.cz
+
+- YCP values overview page added to docs
+
+-------------------------------------------------------------------
+Fri Sep 26 16:09:22 CEST 2008 - visnov@suse.cz
+
+- new builtins: list::difference, list::symmetric_difference,
+  list::intersection, list::union (aschnell, bnc #58844)
+- 2.17.15
+
+-------------------------------------------------------------------
+Fri Sep 26 12:17:35 CEST 2008 - visnov@suse.cz
+
+- allow clients to return exit code (bnc #350740)
+- clean up documentation in liby2
+- 2.17.14 
+
+-------------------------------------------------------------------
+Thu Sep 25 12:21:34 CEST 2008 - visnov@suse.cz
+
+- support SCR::RegisterAgent and SCR::UnregisterAgent in chroot 
+  (bnc #425472)
+- 2.17.13
+
+-------------------------------------------------------------------
+Wed Sep 17 15:49:42 CEST 2008 - visnov@suse.cz
+
+- Warn to log if using non-standard place for loading modules
+- 2.17.12
+
+-------------------------------------------------------------------
+Tue Sep  9 15:49:07 CEST 2008 - visnov@suse.cz
+
+- Added y2useritem and y2usernote builtins for user-level
+  action log (Fate #100386) 
+
+-------------------------------------------------------------------
+Tue Sep  9 11:39:07 CEST 2008 - locilka@suse.cz
+
+- Adjusted STDOUT in ycp.pm to use 'utf8'.
+
+-------------------------------------------------------------------
+Fri Sep  5 13:59:32 CEST 2008 - locilka@suse.cz
+
+- Added WFM::ClientExists function (needed for installation).
+- 2.17.10
+
+-------------------------------------------------------------------
+Wed Aug 27 12:13:27 CEST 2008 - locilka@suse.cz
+
+- Enabled getenv builtin.
+- 2.17.9
+
+-------------------------------------------------------------------
+Wed Aug 13 15:10:50 CEST 2008 - aschnell@suse.de
+
+- added tohexstring builtin with width parameter
+- 2.17.8
+
+-------------------------------------------------------------------
+Fri Aug  8 14:56:07 CEST 2008 - locilka@suse.cz
+
+- Re-added support to build libycp documentation in separate files
+  additionally to combined.xml (needed for overall documentation).
+
+-------------------------------------------------------------------
+Wed Jul 30 15:22:15 CEST 2008 - mvidner@suse.cz
+
+- Moved documentation around and adjusted it to conform with
+  http://en.opensuse.org/YaST/yastdoc
+- 2.17.7
+
+-------------------------------------------------------------------
+Fri Jul 25 10:34:30 CEST 2008 - aschnell@suse.de
+
+- fixed requires for yast2-core-devel
+- 2.17.6
+
+-------------------------------------------------------------------
+Thu Jul 24 09:16:13 CEST 2008 - mvidner@suse.cz
+
+- Better error message when an agent dies with errors (bnc#401706).
+
+-------------------------------------------------------------------
+Tue Jul 22 09:48:17 CEST 2008 - lslezak@suse.cz
+
+- added PolicyKit-devel and dbus-1-devel packages to
+  yast2-core-devel dependencies
+- fixed crash: prevent from multiple delete in SCR destructor
+- 2.17.5
+
+-------------------------------------------------------------------
+Mon Jul 21 17:33:05 CEST 2008 - lslezak@suse.cz
+
+- integrated DBus/PolicyKit support to SCR level (SCR can run
+  as a DBus service, set Y2DBUS=1 for using the DBus service from
+  a yast client, requires setting PolicyKit priviledges for users)
+  (fate#301960)
+- 2.17.4
+
+-------------------------------------------------------------------
+Fri Jul 18 11:50:33 CEST 2008 - mvidner@suse.cz
+
+- Use -std=gnu++0x instead of c++0x so that we do not lose gnu
+  extensions like typeof (fixes yast2-pkg-bindings build).
+- 2.17.3
+
+-------------------------------------------------------------------
+Thu Jul 17 14:20:14 CEST 2008 - mvidner@suse.cz
+
+- Check GCC version and use <unordered_map> to get rid of
+  <ext/hash_map> warnings. It needs yast2-devtools-2.17.2 but fails
+  gracefully.
+- 2.17.2
+
+-------------------------------------------------------------------
+Fri Jun 20 15:29:36 CEST 2008 - aschnell@suse.de
+
+- Added list::reduce builtin.
+- 2.17.1
+
+-------------------------------------------------------------------
+Fri Jun 13 10:10:07 CEST 2008 - aschnell@suse.de
+
+- Added float::abs, float::ceil, float::floor, float::trunc and 
+  float::pow.
+- 2.17.0
+
+-------------------------------------------------------------------
+Thu May 15 09:36:44 CEST 2008 - mvidner@suse.cz
+
+- Set YAST_IS_RUNNING to "instsys" also for the live-installer (bnc#389099).
+- 2.16.51
+
+-------------------------------------------------------------------
+Mon May  5 16:16:37 CEST 2008 - mvidner@suse.cz
+
+- Show search path when client is not found (bnc#342213).
+- 2.16.50
+
+-------------------------------------------------------------------
+Mon May  5 13:08:05 CEST 2008 - mvidner@suse.cz
+
+- Allow literal strings as arguments (bnc#382883):
+   Before:   y2base foo    '("\\t")' '("\"")' UI
+   Now also: y2base foo -S '(\t)'    '(")'    UI
+- 2.16.49
+
+-------------------------------------------------------------------
+Mon Apr 14 20:47:27 CEST 2008 - mvidner@suse.cz
+
+- If Y2DEBUGONCRASH is set, the crash handler will also print the
+  last few debugging log messages, even if Y2DEBUG is not set
+  (fate#302166).
+- 2.16.48
+
+-------------------------------------------------------------------
+Thu Apr 10 16:53:17 CEST 2008 - mvidner@suse.cz
+
+- New builtin: dpgettext ("animals", "/mnt/share/locale", "Giraffe")
+  (fate#2826, by juhliarik).
+- 2.16.47
+
+-------------------------------------------------------------------
+Wed Apr 09 11:16:34 CEST 2008 - aschnell@suse.de
+
+- added new builtin sublist
+- 2.16.46
+
+-------------------------------------------------------------------
+Tue Apr  8 18:14:44 CEST 2008 - mvidner@suse.cz
+
+- Compress (gzip) the rotated y2logs, in the background (fate#300637).
+- y2base: Added -I and -M options to add search paths for includes and
+  modules (fate#2306).
+- 2.16.45
+
+-------------------------------------------------------------------
+Sun Apr 06 13:34:20 CEST 2008 - aschnell@suse.de
+
+- added float builtins trunc and pow
+- 2.16.44
+
+-------------------------------------------------------------------
+Sun Apr  6 11:11:55 CEST 2008 - coolo@suse.de
+
+- compile with xcrypt 3
+- 2.16.43
+
+-------------------------------------------------------------------
+Thu Apr 03 20:54:56 CEST 2008 - aschnell@suse.de
+
+- extended toterm builtin
+- 2.16.42
+
+-------------------------------------------------------------------
+Fri Mar 28 17:22:19 CET 2008 - mvidner@suse.cz
+
+- Lazy SCR: to better suit the current naming scheme, to get .foo.bar
+  look for foo_bar.scr instead of foo.bar.scr
+- Lazy SCR: when sweeping, warn in the log
+- 2.16.41
+
+-------------------------------------------------------------------
+Wed Mar  5 09:58:00 CET 2008 - locilka@suse.cz
+
+- Extended .process agent with 'buffer_empty' function that returns
+  whether the stdout buffer is empty (needed for backup).
+- Adjusted and fixed process agent testsuite.
+- 2.16.40
+
+-------------------------------------------------------------------
+Tue Mar  4 13:30:39 CET 2008 - mvidner@suse.cz
+
+- Do not stop registering agents after UnregisterAgent (bnc#365116).
+- 2.16.39
+
+-------------------------------------------------------------------
+Mon Feb 25 18:08:53 CET 2008 - sh@suse.de
+
+- Package split: libyui and ycp-ui-bindings are now separate pkgs
+- V 2.16.38
+
+-------------------------------------------------------------------
+Thu Feb 21 07:26:08 CET 2008 - coolo@suse.de
+
+- support gtk
+- V 2.16.37
+
+-------------------------------------------------------------------
+Wed Feb 20 17:28:30 CET 2008 - coolo@suse.de
+
+- fix dummy UIs for test cases in yast modules
+
+-------------------------------------------------------------------
+Wed Feb 20 16:14:36 CET 2008 - lslezak@suse.cz
+
+- .process agent - fixed reading large stdout/stderr output (added
+   a testsuite), removed .buffer path (output reading is now part
+   of .running)
+
+-------------------------------------------------------------------
+Wed Feb 20 11:42:34 CET 2008 - sh@suse.de
+
+- Accept `opt(`immediate) for tree widget
+- V 2.16.36
+
+-------------------------------------------------------------------
+Wed Feb 20 11:38:25 CET 2008 - mvidner@suse.cz
+
+- If the log directory does not exist, create it.
+
+-------------------------------------------------------------------
+Wed Feb 20 08:26:32 CET 2008 - mvidner@suse.cz
+
+- Fixed linking of libpy2UI.
+
+-------------------------------------------------------------------
+Mon Feb 18 18:34:56 CET 2008 - sh@suse.de
+
+- Load plug-ins for "UI", "qt", "ncurses" from one single plug-in
+- Made core UI independent of YCP and liby2 (Y2Component...)
+- V 2.16.35
+
+-------------------------------------------------------------------
+Fri Feb 15 10:01:29 CET 2008 - lslezak@suse.cz
+
+- added new .process (agent-process) agent (obsoletes old
+  .background agent) - handles multiple subprocess, complete I/O
+  communication, tty support
+
+-------------------------------------------------------------------
+Wed Feb 13 19:24:07 CET 2008 - sh@suse.de
+
+- Made new UI logging thread-safe
+
+-------------------------------------------------------------------
+Tue Feb 12 19:24:16 CET 2008 - sh@suse.de
+
+- New utility class YCommandLine in libyui to retrieve
+  argc and argv from /proc/<pid>/cmdline
+- V 2.16.34
+
+-------------------------------------------------------------------
+Mon Feb 11 19:23:29 CET 2008 - sh@suse.de
+
+- Preliminary UI split: moved ycp-ui out of libyui
+- V 2.16.33
+
+-------------------------------------------------------------------
+Fri Feb  8 16:56:48 CET 2008 - sh@suse.de
+
+- Moved last YCPValue out of YUI
+- V 2.16.32
+
+-------------------------------------------------------------------
+Fri Feb  8 11:28:32 CET 2008 - mvidner@suse.cz
+
+- Endless recursion: not only log it, but also break it by returning
+  nil after 1001 call frames (setenv Y2RECURSIONLIMIT to change that).
+- 2.16.31
+
+-------------------------------------------------------------------
+Thu Feb  7 15:50:14 CET 2008 - sh@suse.de
+
+- Moved UI built-ins out to separate class YCP_UI
+- V 2.16.30
+
+-------------------------------------------------------------------
+Thu Feb  7 11:09:39 CET 2008 - mvidner@suse.cz
+
+- Make SCR registration lazy: to find .foo, open only foo.scr.
+  If that fails, only then scan all *.scr. (fate#302975)
+- Test ports using bash's /dev/tcp instead of netcat (bnc#264309).
+
+-------------------------------------------------------------------
+Wed Feb  6 14:19:47 CET 2008 - sh@suse.de
+
+- Moved macro recording and playing out of YUI class into new
+  YMacro class with static functions
+- V 2.16.29
+
+-------------------------------------------------------------------
+Fri Feb  1 14:48:52 CET 2008 - sh@suse.de
+
+- Moved UI event handling from YUI to YDialog
+- V 2.16.26
+
+-------------------------------------------------------------------
+Thu Jan 31 15:25:52 CET 2008 - sh@suse.de
+
+- Simplified and unified internal UI dialog handling
+- V 2.16.25
+
+-------------------------------------------------------------------
+Tue Jan 29 20:02:26 CET 2008 - sh@suse.de
+
+- YCP-less event handling in libyui core
+- V 2.16.24
+
+-------------------------------------------------------------------
+Fri Jan 25 19:56:35 CET 2008 - sh@suse.de
+
+- Improved UI syntax error handling: Open dialogs to inform the user
+
+-------------------------------------------------------------------
+Wed Jan 23 18:28:52 CET 2008 - sh@suse.de
+
+- V 2.16.23
+
+-------------------------------------------------------------------
+Tue Jan 22 15:42:25 CET 2008 - lslezak@suse.cz
+
+- ag_background - added .signal path for sending a specified signal
+  e.g. SCR::Execute(.background.signal, 10), posted by Kevin James
+
+-------------------------------------------------------------------
+Tue Jan 22 15:02:51 CET 2008 - sh@suse.de
+
+- Improved back trace legibility: Demangling C++ symbols
+
+-------------------------------------------------------------------
+Mon Jan 16 17:06:00 CET 2008 - tgoettlicher@suse.de
+
+- updated docu for BusyIndicator widget
+
+-------------------------------------------------------------------
+Tue Jan 16 15:32:31 CET 2008 - tgoettlicher@suse.de
+
+- fixed BusyIndicator example
+
+-------------------------------------------------------------------
+Wed Jan 16 14:14:24 CET 2008 - sh@suse.de
+
+- Infrastructure for new stream-based UI logging
+
+-------------------------------------------------------------------
+Tue Jan 15 14:22:31 CET 2008 - mvidner@suse.cz
+
+- Log the C backtrace when receiving a signal (FATE 302167).
+- reverted libpy2UI.so.3 to .so.2 as the plugin loader expects
+- 2.16.22
+
+-------------------------------------------------------------------
+Mon Jan 14 12:30:00 CET 2008 - tgoettlicher@suse.de
+
+- minor changes in BusyIndicator widget
+- V 2.16.21
+
+-------------------------------------------------------------------
+Thu Jan 10 17:10:00 CET 2008 - tgoettlicher@suse.de
+
+- added BusyIndicator widget (fate #302559)
+- V 2.16.20
+
+-------------------------------------------------------------------
+Thu Jan 10 09:48:14 CET 2008 - lslezak@suse.cz
+
+- added .modprobe_blacklist agent for parsing
+  /etc/modprobe.d/blacklist file (#330109)
+- V 2.16.19
+
+-------------------------------------------------------------------
+Wed Jan  9 14:52:29 CET 2008 - sh@suse.de
+
+- Fixed segfault upon shutting down UI
+  (observed mostly on single-CPU non-hyperthreading machines)
+- V 2.16.18
+
+-------------------------------------------------------------------
+Fri Dec 21 18:29:30 CET 2007 - coolo@suse.de
+
+- support `CurrentItem to the timezone selector
+- V 2.16.17
+
+-------------------------------------------------------------------
+Tue Dec 18 17:14:00 CET 2007 - coolo@suse.de
+
+- adding another optional widget: timezone selector
+- V 2.16.16
+
+-------------------------------------------------------------------
+Tue Dec 11 18:39:03 CET 2007 - sh@suse.de
+
+- Fixed bug #347634: Cannot pass empty string to editable ComboBox
+
+-------------------------------------------------------------------
+Tue Dec 11 18:22:22 CET 2007 - sh@suse.de
+
+- Fixed byproduct of fix for bug #346158 and bug #346165:
+  All YSimpleEvents returned strings now, even predefined IDs
+  `cancel, `timeout, `debugConsole; now returning correct IDs again
+
+-------------------------------------------------------------------
+Mon Dec 10 18:35:12 CET 2007 - sh@suse.de
+
+- Moved file and directory dialogs from YUI to YApplication:
+  - askForExistingDirectory(),
+  - askForExistingFile()
+  - askForSaveFile()
+- V 2.16.15
+
+
+-------------------------------------------------------------------
+Thu Dec  6 16:28:04 CET 2007 - sh@suse.de
+
+- Fixed bug #345819 (input fields too small):
+  Introduced bug compatibility mode for TextEntry widget;
+  when used with the old name `TextEntry(), `opt(`hstretch)
+  is automatically assumed; with the new name `InputField() it
+  behaves like specified.
+
+- V 2.16.14
+
+-------------------------------------------------------------------
+Wed Dec  5 14:42:32 CET 2007 - sh@suse.de
+
+- Fixed YMenuEvent( string ) handling:
+=> Fixed bug #346158: Hyperlinks don't work
+=> Fixed bug #346165: Wizard tree selection doesn't work
+
+- V 2.16.13
+
+-------------------------------------------------------------------
+Wed Dec  5 11:53:14 CET 2007 - sh@suse.de
+
+- Fixed bug #346139: CheckBoxFrame is inverted
+
+-------------------------------------------------------------------
+Mon Dec  3 11:42:01 CET 2007 - coolo@suse.de
+
+- continue supporting `Value for RadioButtonGroup (#345490) for now
+
+-------------------------------------------------------------------
+Fri Nov 30 17:15:47 CET 2007 - sh@suse.de
+
+- Removed YContainerWidget for good
+- Removed legacy YWidget::queryWidget() and YWidget::changeWidget()
+  methods
+- Dropped support for outdated property handling with old
+  YWidget::queryWidget() and YWidget::changeWidget() methods
+- Dropped support for outdated YWidget( YWidgetOpt ) constructors
+- Unified Y*WidgetFactory::create*Dialog() methods:
+  - Added pure virtual YWidgetFactory::createDialog( type, colorMode)
+  - Made YWidgetFactory::createMainDialog() and
+    YWidgetFactory::createPopupDialog() non-virtual
+- Moved special YInputField macro handling for passwords
+  to YMacroRecorder (don't record passwords in macros)
+- Removed unneeded YWidgetOpt fields
+- Catch exceptions in evaluateReplaceWidget
+  (more graceful error handling)
+- Added basic default button handling to YDialog, YPushButton
+- V 2.16.11
+
+-------------------------------------------------------------------
+Thu Nov 29 17:41:50 CET 2007 - locilka@suse.cz
+
+- Added some examples to UI::GetDisplayInfo() documentation.
+- Fixed examples for Image widget.
+
+-------------------------------------------------------------------
+Tue Nov 27 19:06:13 CET 2007 - sh@suse.de
+
+- Moved UI::WizardCommand() parsing to separate class
+- Added stubs to YWizard to make YCP-free derived classes possible
+- YWizard's internal YReplacePoint now has a string ID "contents",
+  no longer YCPSymbol `contents
+- V 2.16.10
+
+-------------------------------------------------------------------
+Mon Nov 26 17:55:30 CET 2007 - mvidner@suse.cz
+
+- Visibly report the failure to create the temporary directory (#343258).
+- 2.16.9
+
+-------------------------------------------------------------------
+Mon Nov 26 15:29:27 CET 2007 - mvidner@suse.cz
+
+- ElectricFence is not required since 2 years ago
+- 2.16.8
+
+-------------------------------------------------------------------
+Fri Nov 23 12:32:55 CET 2007 - sh@suse.de
+
+- Fixed bug #52673 : Deselect all items in SelectionBox
+- Fixed bug #230496: Exchange MenuButton items
+
+-------------------------------------------------------------------
+Fri Nov 23 11:38:55 CET 2007 - sh@suse.de
+
+- Allow selecting nothing in SelectionWidgets
+  - SelectionBox
+  - ComboBox
+  - MultiSelectionBox
+  - Tree
+  - Table
+
+   Use   UI::ChangeWidget(`myWidget, `CurrentItem, nil )
+
+-------------------------------------------------------------------
+Fri Nov 23 09:39:01 CET 2007 - mvidner@suse.cz
+
+- Dependencies: liby2util absorbed, blocxx renamed, cleaned up
+  ancient cruft.
+
+-------------------------------------------------------------------
+Thu Nov 22 21:13:34 CET 2007 - sh@suse.de
+
+- Moved UI setLanguage from YUI to YApplication
+
+-------------------------------------------------------------------
+Thu Nov 22 11:05:16 CET 2007 - locilka@suse.cz
+
+- Fixed XML documentation not to point to non-existent widgets.
+
+-------------------------------------------------------------------
+Tue Nov 20 17:57:44 CET 2007 - sh@suse.de
+
+- V 2.16.7
+- More graceful error handling in
+  - UI::ChangeWidget()
+  - UI::QueryWidget()
+- InputField widgets now use reasonable default width,
+  no longer grow to eat up as much width as available
+
+-------------------------------------------------------------------
+Fri Nov 16 16:37:12 CET 2007 - sh@suse.de
+
+- V 2.16.6
+- Merged mod-ui branch to trunk:
+  - Moved YCP code out of widget code
+    (still to be done for some non-widget classes)
+
+  - Clearer and consistent widget (C++) interfaces
+  - Reasonable support for creating YWidgets from C++
+  - Now using widget factories for better abstraction and handling
+
+  - Moved misc. YCP parsers out of widget classes to separate classes
+  - Item parsers (YSelectionBox, YComboBox, YTree, YTable, ...)
+    now more forgiving
+  - Individual table cells can now queried and set in YTable
+  - More informative error messages
+  - Error messages in log now report the YCP code location
+
+  - Renamed YTextEdit to YInputField (old name still valid)
+  - Renamed YTime     to YTimeField  (old name still valid)
+  - Renamed YDate     to YDateField  (old name still valid)
+
+  - Dropped YColoredLabel widget     (nowhere in use any more anyway)
+  - Dropped UI::CollectUserInput()   (nowhere in use)
+  - Dropped YImage from YCPByteBlock (nowhere in use any more)
+
+  - All YSelectionWidgets (YSelectionBox, YComboBox, YTree, YTable,
+    YMultiSelectionBox, YMenu) now support
+    UI::QueryWidget(`myWidget, `Items )   (returning an item list)
+
+  - Consistent icon support for YSelectionWidgets
+    (YSelectionBox, YComboBox, YTree, YTable, YMultiSelectionBox, YMenu)
+
+  Background and more details at
+
+  http://www.suse.de/~sh/y2-mod-ui.pdf
+  http://www.suse.de/~sh/y2-ui-arch-old.pdf
+  http://www.suse.de/~sh/y2-ui-arch-modular.pdf
+
+-------------------------------------------------------------------
+Wed Nov 14 13:50:23 CET 2007 - mvidner@suse.cz
+
+- Added missing parts of liby2util.rpm.
+- 2.16.5
+
+-------------------------------------------------------------------
+Tue Nov 13 16:06:26 CET 2007 - mvidner@suse.cz
+
+- Integrated the surviving parts of liby2util.rpm (F120312).
+- 2.16.4
+
+-------------------------------------------------------------------
+Fri Nov  9 16:04:19 CET 2007 - mvidner@suse.cz
+
+- Allow nil in UI::ChangeWidget again (#340523). Improved error
+  reporting for cases where it is rightly disallowed.
+- 2.16.3
+
+-------------------------------------------------------------------
+Fri Nov  2 14:03:37 CET 2007 - mvidner@suse.cz
+
+- Do not look for YCP scripts under the current working
+  directory, unless explicitly requested (#330965).
+- 2.16.2
+
+-------------------------------------------------------------------
+Thu Oct  4 15:03:52 CEST 2007 - mvidner@suse.cz
+
+- Distinguish "foo.ycp contains an error" from "foo.ycp not found"
+  (#330656).
+- 2.16.1
+
+-------------------------------------------------------------------
+Tue Oct  2 15:53:06 CEST 2007 - mvidner@suse.cz
+
+- Close unneeded file descriptors before execing another
+  program (#223602).
+- Fixed compilation errors with GCC 4.3 by adding missing includes.
+- 2.16.0
+
+-------------------------------------------------------------------
+Thu Sep 13 09:56:14 CEST 2007 - mvidner@suse.cz
+
+- UI::CollectUserInput: fixed crash introduced when namespacifying,
+  restricting to a subtree of a dialog works now (#307056).
+- 2.15.12
+
+-------------------------------------------------------------------
+Thu Sep  6 16:43:06 CEST 2007 - mvidner@suse.cz
+
+- Enabled iterating over all functions of a Y2Namespace, for
+  a more natural call syntax in yast2-python-bindings (#308213).
+- Do not log return value from clients (#248300).
+- 2.15.11
+
+-------------------------------------------------------------------
+Wed Sep  5 13:18:55 CEST 2007 - mvidner@suse.cz
+
+- Fixed missing return value in YSymbolEntry::toXml
+
+-------------------------------------------------------------------
+Mon Sep  3 13:41:33 CEST 2007 - juhliarik@suse.cz
+
+- Added new function getenv(), #305163
+- 2.15.10
+
+-------------------------------------------------------------------
+Tue Aug 21 15:57:24 CEST 2007 - mvidner@suse.cz
+
+- Fixed changing the value of table cells (#302042).
+- 2.15.9
+
+-------------------------------------------------------------------
+Mon Aug 13 22:14:05 CEST 2007 - coolo@suse.de
+
+- really fix the crash
+
+-------------------------------------------------------------------
+Mon Aug 13 18:15:53 CEST 2007 - coolo@suse.de
+
+- Fix endless recursion (#299826)
+
+-------------------------------------------------------------------
+Mon Aug 13 09:22:06 CEST 2007 - mvidner@suse.cz
+
+- Fixed the capitalization of UI::MakeScreenShot.
+- 2.15.8
+
+-------------------------------------------------------------------
+Fri Aug 10 17:38:17 CEST 2007 - mvidner@suse.cz
+
+- Finished integrating Feature #120292, UI as a namespace callable
+  from yast2-*-bindings.
+- 2.15.7
+
+-------------------------------------------------------------------
+Thu Aug  9 10:22:43 CEST 2007 - mvidner@suse.cz
+
+- The dummy Y2 component is instantiable but YUI is not, fixed the
+  namespace accordingly.
+- 2.15.6.4
+
+-------------------------------------------------------------------
+Wed Aug  8 16:59:33 CEST 2007 - mvidner@suse.cz
+
+- Make the dummy UI instantiable for testsuite purposes.
+- 2.15.6.3
+
+-------------------------------------------------------------------
+Mon Aug  6 15:16:00 CEST 2007 - mvidner@suse.cz
+
+- Increased the ag_background test suite timeout to prevent random
+  failures due to scheduling.
+- Disabled it.
+
+-------------------------------------------------------------------
+Mon Aug  6 13:48:45 CEST 2007 - mvidner@suse.cz
+
+- Converted the UI functions from YCP builtins to a YCP namespace, so
+  that they can be called from other language bindings.
+- 2.15.6.2
+
+-------------------------------------------------------------------
+Wed Jul 18 06:06:06 CEST 2007 - kkaempf@suse.de
+
+- ycpc can now output an XML representation of the parse tree
+  http://kkaempf.blogspot.com/2007/07/hackweek-aftermath.html
+
+-------------------------------------------------------------------
+Thu Jul 12 11:52:24 CEST 2007 - locilka@suse.cz
+
+- Fixed ag_background to always read the process exit status before
+  returning it (#285920).
+
+-------------------------------------------------------------------
+Mon Jun 25 18:10:49 CEST 2007 - mvidner@suse.cz
+
+- ag_background: added a test suite.
+- Recommend, not require, netcat (#264309).
+
+-------------------------------------------------------------------
+Thu Jun 21 17:37:27 CEST 2007 - adrian@suse.de
+
+- fix changelog entry order
+
+-------------------------------------------------------------------
+Thu May 24 11:56:41 CEST 2007 - stbinner@suse.de
+
+- add missing %run_ldconfig calls
+
+-------------------------------------------------------------------
+Fri Apr 13 17:38:58 CEST 2007 - sh@suse.de
+
+- Merged mod-ui branch changes (r37142:37462) back to trunk:
+  - Added infrastructure for UI plugins
+
+- V 2.15.6
+
+-------------------------------------------------------------------
+Fri Mar 30 11:00:02 CEST 2007 - mvidner@suse.cz
+
+- BuildRequire flex and bison explicitly.
+- yast2-core-devel: Require flex because of FlexLexer.h
+- 2.15.5
+
+-------------------------------------------------------------------
+Wed Mar 21 16:34:46 CET 2007 - kmachalkova@suse.cz
+
+- YWidget: warning instead of error in setKeyboardFocus (#255785)
+
+-------------------------------------------------------------------
+Fri Mar 16 16:21:00 CET 2007 - mvidner@suse.cz
+
+- Files referenced from /usr/share/doc/packages/yast2-core/libycp/index.html
+  were not installed due to a typo (#235111).
+
+-------------------------------------------------------------------
+Mon Feb 26 18:04:01 CET 2007 - mvidner@suse.cz
+
+- Fixed format string bugs in log messages (#246807).
+
+-------------------------------------------------------------------
+Fri Feb 23 13:12:41 CET 2007 - mvidner@suse.cz
+
+- Added SCR::RegisterNewAgents, for agents defined in add-ons (#245508).
+- 2.15.4
+
+-------------------------------------------------------------------
+Fri Feb 23 11:03:10 CET 2007 - mvidner@suse.cz
+
+- ag_ini: Log errors if the syntax description term contains invalid data,
+  for example if "params" is not a list or its items are not maps..
+
+-------------------------------------------------------------------
+Fri Feb 23 10:50:13 CET 2007 - mvidner@suse.cz
+
+- Signals: in addition to SEGV, catch also HUP, INT, QUIT, ILL, ABRT,
+  FPE, TERM, and log the fact (#238172).
+
+-------------------------------------------------------------------
+Tue Feb 13 16:22:05 CET 2007 - kmachalkova@suse.cz
+
+- Replaced '[x]' placeholder glyph (CheckMark) with 'x' to make it
+  distinct from ncurses checkbox (#244061)
+
+-------------------------------------------------------------------
+Thu Feb  8 10:17:13 CET 2007 - mvidner@suse.cz
+
+- SCR::RegisterAgent: fixed a bug in the declaration of this call.
+
+-------------------------------------------------------------------
+Thu Feb  1 15:52:46 CET 2007 - mvidner@suse.cz
+
+- libycp: clarified docs for iterator builtins ("in a new block"
+  instead of "in a new context", #236730)
+
+-------------------------------------------------------------------
+Mon Jan 29 13:16:50 CET 2007 - mvidner@suse.cz
+
+- ag_system: do not make yast exit when PID has 7 or more digits (#237481).
+
+-------------------------------------------------------------------
+Mon Jan 22 09:08:01 CET 2007 - mvidner@suse.cz
+
+- ag_modinfo: do not return numbers instead of strings. Fixes a crash
+  in "yast2 tv" when accessing 80211.ko (#224742).
+- 2.15.3
+
+-------------------------------------------------------------------
+Mon Jan 22 09:02:45 CET 2007 - mvidner@suse.cz
+
+- autodocs: reenabled liby2util.tag
+
+-------------------------------------------------------------------
+Fri Jan  5 20:57:57 CET 2007 - sh@suse.de
+
+- Added CheckBoxFrame widget for feature #5673
+- 2.15.2
+
+-------------------------------------------------------------------
+Tue Dec  5 10:54:41 CET 2006 - mvidner@suse.cz
+
+- ini-agent with repeat_names: do not merge sections with same name
+  when parsing. They can be accessed using .all. (#224414)
+
+-------------------------------------------------------------------
+Tue Dec  5 10:31:13 CET 2006 - kmachalkova@suse.cz
+
+- Added RunInTerminal UI builtin for running external programs from
+  ncurses UI (#148683, #221254, #222547)
+- 2.15.1
+
+-------------------------------------------------------------------
+Tue Dec  5 08:45:30 CET 2006 - mvidner@suse.cz
+
+- Do not abort if a nonterm is passed to `ReplacePoint or `*Squash
+  (#225815).
+- 2.15.0
+
+-------------------------------------------------------------------
+Tue Oct 31 16:50:39 CET 2006 - mvidner@suse.cz
+
+- ini-agent: use C locale when building regular expressions so that
+  A-Z works for Estonian (#177560).
+- 2.14.4
+
+-------------------------------------------------------------------
+Mon Oct 23 10:34:25 CEST 2006 - mvidner@suse.cz
+
+- Worked around building with doxygen 1.5.0 by not including
+  liby2util.tag.
+- 2.14.3
+
+-------------------------------------------------------------------
+Sun Oct  1 15:29:24 CEST 2006 - mvidner@suse.cz
+
+- Adapted for upcoming blocxx 2.x changes (by Michael Calmer).
+- 2.14.2
+
+-------------------------------------------------------------------
+Mon Sep 25 18:31:25 CEST 2006 - mvidner@suse.cz
+
+- Removed unneeded BuildRequires.
+- Call xsltproc with --nonet, via $(XSLTPROC_FLAGS).
+- Adjusted testsuite for the Missing import change.
+- 2.14.1
+
+-------------------------------------------------------------------
+Wed Sep 20 11:09:10 CEST 2006 - mvidner@suse.cz
+
+- libycp: Improved an error message to say "Missing import?".
+
+-------------------------------------------------------------------
+Tue Sep 19 17:46:43 CEST 2006 - mvidner@suse.cz
+
+- Reduced YCPValue from two pointers to one by removing the
+  superfluous "virtual" qualifiers. Heap reduced by 10%.
+- 2.14.0
+
+-------------------------------------------------------------------
+Tue Sep 19 15:46:58 CEST 2006 - lslezak@suse.cz
+
+- ag_background - added missing .open_output_err path handler
+
+-------------------------------------------------------------------
+Wed Sep 13 16:41:06 CEST 2006 - sh@suse.de
+
+- Applied patch from Ricardo Cruz <rpmcruz@clix.pt>
+  for new UI::Beep() built-in
+
+-------------------------------------------------------------------
+Fri Sep  8 16:45:29 CEST 2006 - mvidner@suse.de
+
+- ini-agent: let Dir(.) return ["section", "value"] for non-flat files.
+- Added some Doxygen comments.
+
+-------------------------------------------------------------------
+Tue Aug 22 13:01:28 CEST 2006 - lslezak@suse.cz
+
+- generateYCPWrappers - fixed crash when nil is passed as
+  an argument to YCP binding (#194435)
+- 2.13.30
+
+-------------------------------------------------------------------
+Mon Aug 21 16:15:33 CEST 2006 - mvidner@suse.cz
+
+- ycp.pm: added PathComponents to normalize nontrivial paths
+- 2.13.29
+
+-------------------------------------------------------------------
+Wed Aug  9 14:53:23 CEST 2006 - mvidner@suse.cz
+
+- agent-ini: fixed value_type and section_type with repeat_names (#191495).
+- libycp: added YCPValue::valuetype_str() for better debug messages.
+- 2.13.28
+
+-------------------------------------------------------------------
+Tue Aug  8 08:55:36 CEST 2006 - mvidner@suse.cz
+
+- Added ybcdump, a tool for understaning the *.ybc "bytecode".
+- 2.13.27
+
+-------------------------------------------------------------------
+Mon Aug  7 11:09:03 CEST 2006 - mvidner@suse.cz
+
+- ini-agent: use a space separator for join_multiline (#195914).
+- Fixed a crash when modifying a `Tree property on a non-existing
+  item (Ricardo Cruz).
+- 2.13.26
+
+-------------------------------------------------------------------
+Fri Aug  4 14:47:40 CEST 2006 - mvidner@suse.cz
+
+- Memory reduction: removed YCode members m_valid and m_kind to save
+  5% of heap.
+
+-------------------------------------------------------------------
+Wed Aug  2 15:16:19 CEST 2006 - mvidner@suse.cz
+
+- Include more variables in yast2-core.pc
+- 2.13.25
+
+-------------------------------------------------------------------
+Tue Aug  1 13:42:35 CEST 2006 - visnov@suse.cz
+
+- Fix POSIX make
+- 2.13.24
+
+-------------------------------------------------------------------
+Thu May 25 10:43:24 CEST 2006 - mvidner@suse.cz
+
+- Use [:alpha:] instead of A-Za-z to catch all ASCII letters even in
+  Estonian (#177560).
+- 2.13.23
+
+-------------------------------------------------------------------
+Tue May  2 16:19:15 CEST 2006 - lslezak@suse.cz
+
+- ag_background - use unlimited buffer size as default, do not
+  block the subprocess (#169648), update of the example
+- 2.13.22
+
+-------------------------------------------------------------------
+Tue Apr 25 18:31:58 CEST 2006 - mvidner@suse.cz
+
+- Print also the y2base arguments on the first log line (#169257).
+- 2.13.21
+
+-------------------------------------------------------------------
+Mon Apr  3 14:22:06 CEST 2006 - mvidner@suse.cz
+
+- Do not use a random path if an invalid one is given in Dir(.modinfo)
+  (#154171).
+- 2.13.20
+
+-------------------------------------------------------------------
+Thu Mar 23 12:06:37 CET 2006 - sh@suse.de
+
+- V 2.13.19
+- Enable starting up pkg selector in inst sources view: Use
+  `opt(`instSourcesMode)
+
+-------------------------------------------------------------------
+Fri Feb 24 14:36:28 CET 2006 - mvidner@suse.cz
+
+- ini agent docs: emphasized that writes are cached.
+
+-------------------------------------------------------------------
+Wed Feb 22 16:47:29 CET 2006 - sh@suse.de
+
+- V 2.13.18
+- Support for registration during installation:
+  Dump complete contents of a dialog with one single call
+  (new builtin UI::CollectUserInput() )
+
+-------------------------------------------------------------------
+Mon Jan 30 19:17:49 CET 2006 - sh@suse.de
+
+- V 2.13.17
+- Implemented (optional) PatternSelector widget (feature #129)
+
+-------------------------------------------------------------------
+Tue Jan 10 09:01:15 CET 2006 - visnov@suse.cz
+
+- display file name on failing import (#141566)
+
+-------------------------------------------------------------------
+Fri Jan  6 10:48:40 CET 2006 - mvidner@suse.cz
+
+- Ini agent: allow deleting files via .all, needed by slp-server.
+- V 2.13.16
+
+-------------------------------------------------------------------
+Wed Jan  4 19:30:30 CET 2006 - sh@suse.de
+
+- Add-on for feature #3476: left-handed mouse during installation
+  enable querying if user changed mouse to left-handed from the UI
+- V 2.13.15
+
+-------------------------------------------------------------------
+Tue Jan  3 14:32:30 CET 2006 - mvidner@suse.cz
+
+- UI: made `Value an alias for `CurrentButton (`RadioButtonGroup)
+  and `CurrentItem (`Table, `SelectionBox, `Tree). #23605.
+- V 2.13.14
+
+-------------------------------------------------------------------
+Mon Dec 19 17:33:47 CET 2005 - visnov@suse.cz
+
+- workaround ppc64 problems, don't like against ElectricFence
+- V 2.13.13
+
+-------------------------------------------------------------------
+Fri Dec 16 14:07:56 CET 2005 - visnov@suse.cz
+
+- remove obsolete code
+- join libraries
+- V 2.13.12
+
+-------------------------------------------------------------------
+Tue Dec 13 17:12:54 CET 2005 - mvidner@suse.cz
+
+- Added yast2-core.pc.in (new devtools don't provide a generic one).
+- Do not require hwinfo now that .probe is in yast2-hardware-detection.
+- V 2.13.11
+
+-------------------------------------------------------------------
+Mon Dec  5 10:35:50 CET 2005 - visnov@suse.cz
+
+- include <langinfo.h> for nl_langinfo()
+- V 2.13.10
+
+-------------------------------------------------------------------
+Thu Dec  1 09:44:06 CET 2005 - kkaempf@suse.de
+
+- include <libintl.h> for dngettext()
+
+-------------------------------------------------------------------
+Wed Nov 30 17:36:30 CET 2005 - kkaempf@suse.de
+
+- disallow references to 'any' (#97956)
+
+-------------------------------------------------------------------
+Tue Nov 29 17:13:20 CET 2005 - kkaempf@suse.de
+
+- make preference rule explicit in scanner.ll (for flex-2.5.31)
+- evaluate rhs before lhs in bracket assignment (#135858)
+- V 2.13.9
+
+-------------------------------------------------------------------
+Tue Nov 29 14:31:36 CET 2005 - visnov@suse.cz
+
+- implemented search () for string lookup, marked find ()
+  for strings as deprecated.
+- fix scanner for newer flex
+- don't crash on 'nil' as return value from filter/find (#120298)
+- in bracket assignment, allow to change the lhv in rh expression (#135858)
+- V 2.13.8
+
+-------------------------------------------------------------------
+Fri Nov 25 10:11:13 CET 2005 - kkaempf@suse.de
+
+- remove scanner.cc and parser.cc from .tar.bz2 in order to force
+  their re-generation during build.
+
+-------------------------------------------------------------------
+Thu Nov 24 18:08:12 CET 2005 - kkaempf@suse.de
+
+- fix 'tointeger' to match documentation. It now returns nil
+  instead of 0 on illegal (non-convertible) string values (#115560)
+
+-------------------------------------------------------------------
+Tue Nov 22 15:45:29 CET 2005 - kkaempf@suse.de
+
+- fix 'type-punned pointer' warnings in parser.yy
+- V 2.13.5
+
+-------------------------------------------------------------------
+Thu Oct 20 15:52:39 CEST 2005 - visnov@suse.cz
+
+- added missing import for Agent skeleton
+- V 2.13.4
+
+-------------------------------------------------------------------
+Wed Oct 12 08:34:36 CEST 2005 - visnov@suse.cz
+
+- really fix the system agent testsuite
+- V 2.13.3
+
+-------------------------------------------------------------------
+Mon Oct 10 15:44:14 CEST 2005 - visnov@suse.cz
+
+- install also string helpers
+- disable failing testsuite in system agent
+- V 2.13.2
+
+-------------------------------------------------------------------
+Wed Oct  5 10:37:41 CEST 2005 - visnov@suse.cz
+
+- fix build
+- V 2.13.1
+
+-------------------------------------------------------------------
+Thu Sep 29 13:28:43 CEST 2005 - visnov@suse.cz
+
+- Split .probe agent to another package
+- V 2.13.0
+
+-------------------------------------------------------------------
+Wed Sep 28 15:09:43 CEST 2005 - sh@suse.de
+
+- Added UI::QueryWidget(..., CurrentBranch ) for YTree
+
+-------------------------------------------------------------------
+Mon Sep 19 11:10:35 CEST 2005 - mvidner@suse.cz
+
+- For deprecated builtins, document what to use instead.
+
+-------------------------------------------------------------------
+Mon Sep 12 13:15:11 CEST 2005 - kkaempf@suse.de
+
+- ensure string reference does not go out of scope too early
+  (#116432)
+- V 2.12.27
+
+-------------------------------------------------------------------
+Fri Sep  9 15:45:13 CEST 2005 - sh@suse.de
+
+- (visnov) Fixed bug #115298: Install on x86_64 horribly slow
+  due to excessive memory requirements
+  Removed string hash in YCPString
+- V 2.12.26
+
+-------------------------------------------------------------------
+Tue Sep  6 13:47:48 CEST 2005 - kkaempf@suse.de
+
+- configure with AC_SYS_LARGEFILE (#115394)
+- put config.h in include chain of SystemAgent.cc
+
+-------------------------------------------------------------------
+Fri Aug 19 16:13:27 CEST 2005 - sh@suse.de
+
+- Added macro player support for the other event-releated UI builtins:
+  WaitForEvent(), WaitForEvent( timeout ), TimeoutUserInput()
+  to fix bug #98265: Macro player doesn't work
+- V 2.12.23
+
+-------------------------------------------------------------------
+Fri Aug 19 15:24:07 CEST 2005 - sh@suse.de
+
+- Reintroduced the UI layout engine's change reverted on 2005-08-04
+  by jsrain below now that the true cause of the problem is
+  established
+- V 2.12.22
+
+-------------------------------------------------------------------
+Tue Aug  9 15:20:53 CEST 2005 - kkaempf@suse.de
+
+- pass the UDI value in probing results. [#102575].
+
+-------------------------------------------------------------------
+Mon Aug  8 15:54:53 CEST 2005 - kkaempf@suse.de
+
+- hd_change_status() -> hd_change_config_status() to get the
+  unique_key <-> UDI mapping right in libhd [#102575].
+- 2.12.21
+
+-------------------------------------------------------------------
+Sat Aug  6 21:50:58 CEST 2005 - aj@suse.de
+
+- Add libxml2-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Thu Aug  4 13:11:13 CEST 2005 - jsrain@suse.cz
+
+- reverted changes in layout engine in order to display stretches
+  properly
+- 2.12.20
+
+-------------------------------------------------------------------
+Thu Jul 21 16:56:45 CEST 2005 - sh@suse.de
+
+- Restored correct HStretch() and VStretch() behaviour
+- V 2.12.19
+
+-------------------------------------------------------------------
+Thu Jul 21 14:33:49 CEST 2005 - mvidner@suse.cz
+
+- System agent: Check for fork failure (#97566).
+- 2.12.18
+
+-------------------------------------------------------------------
+Thu Jul 21 13:43:34 CEST 2005 - sh@suse.de
+
+- Added support `opt(`hvstretch) for alignment widgets for
+  backward compatibility with (buggy) old layout behaviour:
+  propagate child stretchability to alignment parent
+- V 2.12.17
+
+-------------------------------------------------------------------
+Mon Jul 11 17:25:16 CEST 2005 - sh@suse.de
+
+- Fixed bug #95722: No items in NCurses MultiSelectionBox
+- V 2.12.16
+
+-------------------------------------------------------------------
+Fri Jul  8 15:24:05 CEST 2005 - visnov@suse.cz
+
+- Log blocxx messages to YaST2 log
+- Fix Requires
+- V 2.12.15
+
+-------------------------------------------------------------------
+Wed Jul  6 13:54:10 CEST 2005 - kkaempf@suse.de
+
+- V 2.12.14
+- Allow multi string constants in _() locales
+
+-------------------------------------------------------------------
+Tue Jul  5 17:32:49 CEST 2005 - sh@suse.de
+
+- V 2.12.13
+- Support for background pixmaps in alignment widgets
+
+-------------------------------------------------------------------
+Tue Jul  5 11:30:25 CEST 2005 - sh@suse.de
+
+- New UI layout helper widgets: MinWidth, MinHeight, MinSize
+- Added klibc, klibc-devel, udev to neededforbuild (for hwinfo)
+- V 2.12.12
+
+-------------------------------------------------------------------
+Tue Jul  5 11:20:12 CEST 2005 - kkaempf@suse.de
+
+- hwinfo/libhd need hal and dbus for building
+
+-------------------------------------------------------------------
+Fri Jul  1 20:09:09 CEST 2005 - sh@suse.de
+
+- V 2.12.10
+- New layout helper widget: MarginBox
+- Improved geometry management for insufficient screen space
+- Fixed bug in Alignment widget - now no longer requiring a Squash
+  widget inside for proper alignment
+
+-------------------------------------------------------------------
+Tue Jun 21 11:05:51 CEST 2005 - visnov@suse.cz
+
+- use redirected System:: prefix also after the redirection
+- 2.12.9
+
+-------------------------------------------------------------------
+Tue Jun 14 12:36:56 CEST 2005 - visnov@suse.cz
+
+- libpy2wfm: fix missing dependency on libpy2program (schwab)
+- 2.12.8
+
+-------------------------------------------------------------------
+Tue Jun 14 10:46:25 CEST 2005 - visnov@suse.cz
+
+- added sysfsutils to NFB
+- 2.12.7
+
+-------------------------------------------------------------------
+Wed Jun  1 14:14:57 CEST 2005 - mlazar@suse.cz
+
+- libycp: added YCPExternal type for storing external data types
+
+-------------------------------------------------------------------
+Mon May 30 19:00:45 CEST 2005 - visnov@suse.cz
+
+- implemented chroot redirect of namespaces
+
+-------------------------------------------------------------------
+Mon May 23 09:17:14 CEST 2005 - visnov@suse.cz
+
+- 2.12.6
+
+-------------------------------------------------------------------
+Sun May 22 09:42:17 CEST 2005 - aj@suse.de
+
+- Fix for GCC4 friends conformance.
+
+-------------------------------------------------------------------
+Tue May  3 09:01:58 CEST 2005 - visnov@suse.cz
+
+- don't crash if include file does not enclose
+  the code in a block (#65486)
+
+-------------------------------------------------------------------
+Mon May  2 16:41:42 CEST 2005 - visnov@suse.cz
+
+- fix function parameter type check (#64627)
+- evaluate the code returned if not constant (#65815)
+- report unreachable code at the end of file (#66152)
+- don't assume there are always parameters (#72810)
+
+-------------------------------------------------------------------
+Mon May  2 15:42:24 CEST 2005 - visnov@suse.cz
+
+- 2.12.5
+
+-------------------------------------------------------------------
+Wed Apr 27 18:59:14 CEST 2005 - sh@suse.de
+
+- Added support for icons in YSelectionWidgets
+
+-------------------------------------------------------------------
+Thu Apr 21 16:48:05 CEST 2005 - sh@suse.de
+
+- Merged selection_widget_cleanups branch to trunk:
+  selection widgets can now replace list items
+  (SelectionBox, ComboBox, MultiSelectionBox, Tree)
+
+-------------------------------------------------------------------
+Tue Apr 19 17:23:02 CEST 2005 - visnov@suse.cz
+
+- implemented 'switch' statement
+
+-------------------------------------------------------------------
+Wed Apr 13 16:01:30 CEST 2005 - visnov@suse.cz
+
+- added libpthread for all YaST binaries (#76401)
+- 2.12.4
+
+-------------------------------------------------------------------
+Wed Apr  6 13:21:31 CEST 2005 - visnov@suse.cz
+
+- added virtual destructors to keep gcc4 happy
+
+-------------------------------------------------------------------
+Tue Apr  5 17:18:15 CEST 2005 - visnov@suse.cz
+
+- enable ElectricFence again without checking for 0 size allocs
+- fix support for perl-bindings
+- 2.12.3
+
+-------------------------------------------------------------------
+Mon Apr  4 18:43:39 CEST 2005 - visnov@suse.cz
+
+- temporarily disable ElectricFence to workaround glibc problem
+- another gcc4 fix (logged incorrect function name)
+
+-------------------------------------------------------------------
+Fri Apr  1 08:52:51 CEST 2005 - visnov@suse.cz
+
+- merged 9.3 branch
+- another gcc4 fix
+
+-------------------------------------------------------------------
+Thu Mar 31 10:47:00 CEST 2005 - coolo@suse.de
+
+- build better with gcc4
+
+-------------------------------------------------------------------
+Wed Mar 30 16:21:49 CEST 2005 - mvidner@suse.cz
+
+- ini agent: do not indent comments (#74698)
+- 2.12.1
+
+-------------------------------------------------------------------
+Wed Mar 16 10:15:35 CET 2005 - visnov@suse.cz
+
+- reduced UI logging
+- added YCP testsuites for is() also for build
+- 2.11.26
+
+-------------------------------------------------------------------
+Tue Mar 15 09:44:18 CET 2005 - locilka@suse.cz
+
+- Checked, fixed and added YCP builtins description and examples
+- Mark tolist() as deprecated
+
+-------------------------------------------------------------------
+Tue Mar  8 15:34:51 CET 2005 - locilka@suse.cz
+
+- Checked, fixed and added YCP builtins description and examples
+
+-------------------------------------------------------------------
+Fri Mar  4 21:18:59 CET 2005 - visnov@suse.cz
+
+- Fixed yast2-crash on parsing lan probe results
+- 2.11.25
+
+-------------------------------------------------------------------
+Thu Feb 24 10:03:56 CET 2005 - visnov@suse.cz
+
+- revert  YCP module import reporting change
+- 2.11.24
+
+-------------------------------------------------------------------
+Tue Feb 22 16:17:49 CET 2005 - mvidner@suse.cz
+
+- Added wireles card features to agent-probe (#65391).
+- When renumbering file descriptors, check whether we already have
+  the desired number (#64797).
+- 2.11.23
+
+-------------------------------------------------------------------
+Tue Feb 22 00:48:31 CET 2005 - ro@suse.de
+
+- added wireless-tools to nfb (for libhd)
+
+-------------------------------------------------------------------
+Mon Feb 21 15:46:46 CET 2005 - visnov@suse.cz
+
+- report YCP module import only when reading the bytecode
+
+-------------------------------------------------------------------
+Tue Feb 15 15:13:32 CET 2005 - arvin@suse.de
+
+- adapted agent-probe to new hwinfo
+
+-------------------------------------------------------------------
+Tue Feb 15 12:43:22 CET 2005 - sh@suse.de
+
+- PackageSelector now supports `opt(`summaryMode) to get installation
+  summary right away (-> Anas)
+- V 2.11.21
+
+-------------------------------------------------------------------
+Mon Feb  7 16:02:11 CET 2005 - lslezak@suse.cz
+
+- modules agent - use .YaST2save suffix for backup files (#50517)
+- 2.11.20
+
+-------------------------------------------------------------------
+Mon Jan 31 17:35:20 CET 2005 - sh@suse.de
+
+- V 2.11.19
+- Suppressing plain text passwords in recorded macros
+
+-------------------------------------------------------------------
+Tue Jan 11 19:18:32 CET 2005 - mvidner@suse.cz
+
+- Added .probe.dsl
+- 2.11.18
+
+-------------------------------------------------------------------
+Tue Jan 11 11:18:54 CET 2005 - visnov@suse.cz
+
+- remove fprintf calls, use logs instead
+- 2.11.17
+
+-------------------------------------------------------------------
+Tue Jan 04 10:32:32 CET 2005 - arvin@suse.de
+
+- fixed architecture detection (s390/s390x) during update (bug
+  #49313)
+
+-------------------------------------------------------------------
+Thu Dec  2 14:35:11 CET 2004 - mvidner@suse.cz
+
+- ini agent: do not merge external changes when repeat_names is
+  enabled (#42297)
+- ini agent: include file name in parse errors (#48777)
+
+-------------------------------------------------------------------
+Thu Nov 18 21:17:16 CET 2004 - kkaempf@suse.de
+
+- increase bison stack limit (#45509)
+- evaluate bracket default expression only if required (#48337)
+
+-------------------------------------------------------------------
+Wed Nov 17 12:22:53 CET 2004 - nashif@suse.de
+
+- Fixed nfb for docbook
+
+-------------------------------------------------------------------
+Fri Nov 12 15:37:39 CET 2004 - sh@suse.de
+
+- New debugging tools in UI:
+  - Widget property WidgetClass (all widgets)
+  - Widget property DebugLabel  (all widgets)
+
+-------------------------------------------------------------------
+Tue Nov  9 07:47:05 CET 2004 - visnov@suse.cz
+
+- don't allow variable declaration for functions and terms (#40441)
+- issue proper error when unable to create intermediate structures
+  on map/list/term assignment (#39236)
+- don't escape strings (#44461)
+- recoded testcases to UTF8
+- show warning on too many call frames (#40426)
+
+-------------------------------------------------------------------
+Mon Nov  8 17:13:20 CET 2004 - visnov@suse.cz
+
+- reintroduced YCP backtraces (#41841)
+- 2.11.13
+
+-------------------------------------------------------------------
+Mon Nov  8 12:58:22 CET 2004 - visnov@suse.cz
+
+- Don't crash on wrong nested import (#47357)
+- Cleanup parse error handling (return NULL always)
+- 2.11.12
+
+-------------------------------------------------------------------
+Fri Nov  5 09:59:18 CET 2004 - visnov@suse.cz
+
+- Show parameters for all function symbol entries (#47078)
+- Allow to set symbol entry global
+
+-------------------------------------------------------------------
+Thu Nov  4 15:03:36 CET 2004 - visnov@suse.cz
+
+- report file and line number for builtins (#43830)
+- report correct line number of wrong function calls (#47077)
+- don't crash on builtins without parameters when they require one
+- 2.11.11
+
+-------------------------------------------------------------------
+Wed Nov  3 18:01:15 CET 2004 - visnov@suse.cz
+
+- create libycpvalues library
+
+-------------------------------------------------------------------
+Wed Nov  3 17:02:45 CET 2004 - kkaempf@suse.de
+
+- warn about using uninitialized variables (#42648)
+
+-------------------------------------------------------------------
+Wed Nov  3 10:04:58 CET 2004 - visnov@suse.cz
+
+- Recognize wrong octal and hexa constants and report them (#47883)
+
+-------------------------------------------------------------------
+Wed Nov  3 09:26:59 CET 2004 - visnov@suse.cz
+
+- Always create a symbol table for modules (#42007)
+
+-------------------------------------------------------------------
+Tue Nov  2 17:48:52 CET 2004 - kkaempf@suse.de
+
+- Fix type ordering in detailedtype() further, 'any' has more
+  type information than '<unspec>' (#47853)
+
+-------------------------------------------------------------------
+Tue Nov  2 15:36:59 CET 2004 - kkaempf@suse.de
+
+- recognize select() in parser.
+- use identical type checking for bracket operator and select()
+  (#43612)
+- mark select() as deprecated.
+
+-------------------------------------------------------------------
+Tue Nov  2 13:55:18 CET 2004 - nashif@suse.de
+
+- Added new widgets: YDate / YTime
+
+-------------------------------------------------------------------
+Tue Nov  2 13:50:23 CET 2004 - kkaempf@suse.de
+
+- check for proper return statement in definition of non-void
+  functions (#40687)
+
+-------------------------------------------------------------------
+Tue Nov  2 10:47:09 CET 2004 - kkaempf@suse.de
+
+- use identical type checking for bracket operator and lookup()
+  (#44221)
+- mark lookup() as deprecated.
+
+-------------------------------------------------------------------
+Tue Nov  2 08:10:35 CET 2004 - visnov@suse.cz
+
+- Use shared representation for booleans and nils
+- consider only single digit arguments
+- 2.11.9
+
+-------------------------------------------------------------------
+Mon Nov  1 10:22:38 CET 2004 - mvidner@suse.cz
+
+- UI: added Date and Time widgets, qt only (nashif)
+- 2.11.8
+
+-------------------------------------------------------------------
+Fri Oct 29 14:32:44 CEST 2004 - mvidner@suse.cz
+
+- Added pkgconfig support.
+- 2.11.7
+
+-------------------------------------------------------------------
+Thu Oct 28 18:15:15 CEST 2004 - kkaempf@suse.de
+
+- 'any' has more type information than 'void' (#47659)
+- dont propagate any->any (regression found with above fix)
+
+-------------------------------------------------------------------
+Wed Oct 27 10:12:59 CEST 2004 - arvin@suse.de
+
+- removed has_apm from probe agent
+
+-------------------------------------------------------------------
+Wed Oct 27 09:57:38 CEST 2004 - lslezak@suse.cz
+
+- ag_modinfo: modinfo output was incorrectly parsed when it
+  contained more `:' chars
+
+-------------------------------------------------------------------
+Thu Oct 21 15:59:33 CEST 2004 - kkaempf@suse.de
+
+- improve type checking to always use the most detailed type
+  information available (#38375).
+
+-------------------------------------------------------------------
+Tue Oct 19 16:38:08 CEST 2004 - kkaempf@suse.de
+
+- is() now checks against the actual value, not the declared
+  type (#37146)
+
+-------------------------------------------------------------------
+Tue Oct 19 14:47:29 CEST 2004 - visnov@suse.de
+
+- Y2ScriptComponent removed
+
+-------------------------------------------------------------------
+Fri Oct 15 15:46:45 CEST 2004 - visnov@suse.de
+
+- Add back WFM headers
+- fix testsuite
+- 2.11.3
+
+-------------------------------------------------------------------
+Fri Oct 15 14:28:06 CEST 2004 - kkaempf@suse.de
+
+- add .probe.bluetooth (#47297)
+
+-------------------------------------------------------------------
+Fri Oct 15 09:06:15 CEST 2004 - visnov@suse.de
+
+- Move Pkg namespace to the pkg-bindings package
+- 2.11.1
+
+-------------------------------------------------------------------
+Thu Oct 14 17:36:09 CEST 2004 - kkaempf@suse.de
+
+- check format string (in sformat() or y2milestone()) against
+  number of actual arguments (#35822)
+
+-------------------------------------------------------------------
+Mon Oct 11 18:22:57 CEST 2004 - visnov@suse.cz
+
+- Make recursion lighter on memory (allocate stack
+  only when needed)
+
+-------------------------------------------------------------------
+Fri Oct  8 12:47:59 CEST 2004 - visnov@suse.cz
+
+- Split Pkg as a standalone component, don't link against it.
+
+-------------------------------------------------------------------
+Wed Oct  6 16:48:38 CEST 2004 - sh@suse.de
+
+- UI: Dropped support for hardcoded images "suseheader" and "yast2"
+  Use path names and/or the wizard instead!
+
+-------------------------------------------------------------------
+Wed Oct  6 16:36:48 CEST 2004 - visnov@suse.cz
+
+- Read whole u32 at once from bytecode to speed it up
+
+-------------------------------------------------------------------
+Tue Oct  5 17:15:13 CEST 2004 - visnov@suse.cz
+
+- Allow namespaces to be located in libraries, so we don't
+  need to link them (using Y2PluginComponent)
+
+-------------------------------------------------------------------
+Thu Sep 30 10:01:27 CEST 2004 - visnov@suse.cz
+
+- log non-existent directory in .target.dir as a milestone only (bug #45573)
+
+-------------------------------------------------------------------
+Thu Sep 23 18:21:23 CEST 2004 - arvin@suse.de
+
+- added Pkg::RpmChecksig function (bug #45647)
+
+-------------------------------------------------------------------
+Mon Sep 20 16:38:43 CEST 2004 - schwab@suse.de
+
+- Fix C++ syntax and format strings.
+
+-------------------------------------------------------------------
+Mon Sep 13 14:49:39 CEST 2004 - arvin@suse.de
+
+- don't use hd_base after freeing (bug #44855)
+
+-------------------------------------------------------------------
+Mon Sep 13 13:11:19 CEST 2004 - arvin@suse.de
+
+- fixed TargetInitDU for missing readonly key
+- 2.10.14
+
+-------------------------------------------------------------------
+Fri Sep 10 15:26:06 CEST 2004 - sh@suse.de
+
+- Implemented enhancement #44799: Log error for leftover dialogs
+- V 2.10.13
+
+-------------------------------------------------------------------
+Fri Sep 10 15:09:45 CEST 2004 - sh@suse.de
+
+- Improved `opt(`debugLayout) UI logging
+
+-------------------------------------------------------------------
+Fri Sep 10 12:16:55 CEST 2004 - ma@suse.de
+
+- Pass information about readonly mounted partitions in Pkg::TargetGetDU.
+
+-------------------------------------------------------------------
+Wed Sep  8 16:13:03 CEST 2004 - visnov@suse.cz
+
+- reverted the flex patch for now
+
+-------------------------------------------------------------------
+Tue Sep  7 10:41:47 CEST 2004 - visnov@suse.cz
+
+- support newer flex (patch by tcrhak)
+- 2.10.12
+
+-------------------------------------------------------------------
+Mon Sep  6 09:04:58 CEST 2004 - jsrain@suse.cz
+
+- Added Pkg::PkgMarkLicenseConfirmed() (#44145)
+- Changed  Pkg::PkgGetLicenseToConfirm() and
+  Pkg::PkgGetLicensesToConfirm() to return only unconfirmed
+  licenses (#44145)
+- 2.10.11
+
+-------------------------------------------------------------------
+Thu Sep  2 18:20:02 CEST 2004 - sh@suse.de
+
+- Added Pkg::PkgMediaCount()
+- V 2.10.10
+
+-------------------------------------------------------------------
+Wed Sep  1 18:22:15 CEST 2004 - sh@suse.de
+
+- Fixed bug #44579: YMultiProgressBar integer overflow
+- V 2.10.9
+
+-------------------------------------------------------------------
+Mon Aug 30 16:40:13 CEST 2004 - mvidner@suse.cz
+
+- substring: fixed an unlikely bug with offset signedness
+- bytecode: fixed m_release comparison in isVersionAtMost
+- updated builtin docs
+- 2.10.8
+
+-------------------------------------------------------------------
+Mon Aug 30 12:56:12 CEST 2004 - jsrain@suse.cz
+
+- added Pkg::PkgTaboo builtin (#43499)
+
+-------------------------------------------------------------------
+Wed Aug 18 15:41:45 CEST 2004 - visnov@suse.cz
+
+- support also bytecode from SLES9/9.1 (#43881)
+- 2.10.7
+
+-------------------------------------------------------------------
+Wed Aug 18 13:08:02 CEST 2004 - mvidner@suse.cz
+
+- ag_probe: parse carrier detection information from libhd (res_link)
+
+-------------------------------------------------------------------
+Mon Aug 16 18:38:07 CEST 2004 - visnov@suse.cz
+
+- return 'nil' if function pointer cannot be used instead of NULL (#42330)
+
+-------------------------------------------------------------------
+Mon Aug 16 18:14:53 CEST 2004 - visnov@suse.cz
+
+- fix is() for function pointers (#43848)
+
+-------------------------------------------------------------------
+Mon Aug 16 15:41:18 CEST 2004 - visnov@suse.cz
+
+- fix function pointers from perl-bindings (#43606)
+- 2.10.5
+
+-------------------------------------------------------------------
+Thu Aug 12 11:36:02 CEST 2004 - jsrain@suse.cz
+
+- added libpng to neededforbuild
+- 2.10.4
+
+-------------------------------------------------------------------
+Tue Aug  3 10:01:16 CEST 2004 - visnov@suse.cz
+
+- fix handling of 'import "Summary"' testcase in symbol tables
+- 2.10.3
+
+-------------------------------------------------------------------
+Mon Aug  2 12:41:29 CEST 2004 - visnov@suse.cz
+
+- better split of YCP interpreter and rest of YaST (use Y2Function only)
+- type of builtin parameters are checked at the end of all parameters
+- YCode::type () is cleaned up - now it always returns the type of the
+  code after its evaluation, determined as good as possible
+- split of function call and function call via function pointer (Bytecode change)
+- 2.10.2
+
+-------------------------------------------------------------------
+Fri Jul 16 18:55:53 CEST 2004 - sh@suse.de
+
+- YTree widget can now return `Item property
+- YTree widget can now return new `OpenItems property
+
+-------------------------------------------------------------------
+Wed Jun 23 11:32:09 CEST 2004 - visnov@suse.cz
+
+- allow YCP code to call overloaded functions in other namespaces
+- parser should not use ExecutionEnvironment for logging (#42088)
+- removed obsolete stuff (callbacks)
+
+-------------------------------------------------------------------
+Wed Jun 16 17:57:03 CEST 2004 - arvin@suse.de
+
+- set current directory to / for chrooted programs
+
+-------------------------------------------------------------------
+Thu May 27 10:41:36 CEST 2004 - visnov@suse.cz
+
+- do not reregister scrconf files on startup (#40833)
+- 2.9.94
+
+-------------------------------------------------------------------
+Tue May 25 11:32:15 CEST 2004 - arvin@suse.de
+
+- include data about requires, conflicts, provides and obsoletes
+  in Pkg::SelectionData (bug #37133)
+
+-------------------------------------------------------------------
+Fri May 21 12:34:31 CEST 2004 - mvidner@suse.cz
+
+- Host finder (ag_hostnames): ping longer to get more hosts (#40582)
+- 2.9.92
+
+-------------------------------------------------------------------
+Wed May 19 12:11:03 CEST 2004 - ma@suse.de
+
+- Adapt PKG interface to changes in packagemanger.
+- 2.9.91
+
+-------------------------------------------------------------------
+Thu May 13 15:56:48 CEST 2004 - arvin@suse.de
+
+- removed seg. fault when chrooted scr can't be created
+
+-------------------------------------------------------------------
+Mon May 10 09:23:40 CEST 2004 - visnov@suse.cz
+
+- fix number formattting (#39645)
+- 2.9.89
+
+-------------------------------------------------------------------
+Wed May 05 14:36:56 CEST 2004 - arvin@suse.de
+
+- added bus_hwcfg entry in probe-agent (bug #39456)
+
+-------------------------------------------------------------------
+Fri Apr 30 13:46:57 CEST 2004 - sh@suse.de
+
+- Added new widget DumbTab
+- V 2.9.87
+
+-------------------------------------------------------------------
+Fri Apr 30 11:24:38 CEST 2004 - mvidner@suse.cz
+
+- allowed to read YCPPathSearch search lists, so that Perl
+  can synchronize @INC (#39512)
+- 2.9.86
+
+-------------------------------------------------------------------
+Thu Apr 29 17:04:46 CEST 2004 - mvidner@suse.cz
+
+- publish some WFM headers so that Perl can know
+  when to destroy us (#39519)
+- 2.9.85
+
+-------------------------------------------------------------------
+Thu Apr 29 10:57:57 CEST 2004 - mvidner@suse.cz
+
+- added /y2update to YCPPathSearch::initialize (#38677)
+- 2.9.84
+
+-------------------------------------------------------------------
+Wed Apr 28 13:01:20 CEST 2004 - cschum@suse.de
+
+- Pkg::TargetProducts(): include base architecture for you_server.
+
+-------------------------------------------------------------------
+Tue Apr 27 12:12:24 CEST 2004 - visnov@suse.cz
+
+- 2.9.83
+
+-------------------------------------------------------------------
+Fri Apr 23 17:56:18 CEST 2004 - ma@suse.de
+
+- PKG: Avoid logging of YCP arguments on conversion to C++ datatypes.
+  YCPStrings may deote urls with cleartext passord inside. They should
+  not show up in the logfile.(#38897)
+
+-------------------------------------------------------------------
+Mon Apr 19 10:39:19 CEST 2004 - visnov@suse.cz
+
+- revert fix for #38568, it breaks yast2-backup
+- 2.9.82
+
+-------------------------------------------------------------------
+Fri Apr 16 15:38:41 CEST 2004 - visnov@suse.cz
+
+- 2.9.81
+
+-------------------------------------------------------------------
+Thu Apr 15 18:09:08 CEST 2004 - visnov@suse.cz
+
+- implemented QueryWidget ( `Items ) for `Table (#38909)
+
+-------------------------------------------------------------------
+Thu Apr 15 17:29:21 CEST 2004 - visnov@suse.cz
+
+- log also arguments when doing WFM::call (#39002)
+
+-------------------------------------------------------------------
+Thu Apr 15 15:08:21 CEST 2004 - mvidner@suse.cz
+
+- ensure that there's only one WFM (#37338)
+- 2.9.80
+
+-------------------------------------------------------------------
+Thu Apr 15 09:34:42 CEST 2004 - kkaempf@suse.de
+
+- improve error message for "... type>>" typos (#38967)
+
+-------------------------------------------------------------------
+Thu Apr 15 09:17:22 CEST 2004 - visnov@suse.cz
+
+- show nil warning even for builtins (#38568)
+- handle incorrect function redefinition gracefully (#37366)
+- use the common type for if/then/else unless it's void
+- accept block as a parameter for functions
+
+-------------------------------------------------------------------
+Wed Apr 14 13:18:43 CEST 2004 - visnov@suse.cz
+
+- fix recursion (#38596)
+
+-------------------------------------------------------------------
+Tue Apr 13 14:38:37 CEST 2004 - visnov@suse.cz
+
+- Document localization builtins (#38171)
+
+-------------------------------------------------------------------
+Tue Apr 13 12:19:10 CEST 2004 - mvidner@suse.cz
+
+- initialize stub UI when invoked from Perl (#37338)
+- 2.9.79
+
+-------------------------------------------------------------------
+Tue Apr  6 11:55:30 CEST 2004 - kkaempf@suse.de
+
+- check strings from hwinfo properly (#36080)
+- 2.9.78
+
+-------------------------------------------------------------------
+Tue Apr  6 08:09:42 CEST 2004 - visnov@suse.cz
+
+- Don't print superflous characters to stdout (#38327)
+
+-------------------------------------------------------------------
+Mon Apr  5 22:43:53 CEST 2004 - ma@suse.de
+
+- Send correct size of source packages to install
+  in callbacks.
+
+-------------------------------------------------------------------
+Mon Apr  5 21:49:56 CEST 2004 - ma@suse.de
+
+- Include source packages to install in disk usage
+  calculation. (#38257)
+- 2.9.76
+
+-------------------------------------------------------------------
+Fri Apr  2 22:09:36 CEST 2004 - msvec@suse.cz
+
+- fixed agent-probe to report correct requires (#37335)
+- 2.9.75
+
+-------------------------------------------------------------------
+Fri Apr  2 16:14:59 CEST 2004 - visnov@suse.cz
+
+- YaST is now GPL
+- 2.9.76
+
+-------------------------------------------------------------------
+Thu Apr  1 18:01:55 CEST 2004 - visnov@suse.cz
+
+- restore textdomain at the end of included file (#36989)
+
+-------------------------------------------------------------------
+Wed Mar 31 14:19:11 CEST 2004 - sh@suse.de
+
+- implemented UI::QueryWidget() for wizard
+
+-------------------------------------------------------------------
+Tue Mar 30 19:58:27 CEST 2004 - arvin@suse.de
+
+- fixed setting of YAST_IS_RUNNING (bug #37536)
+
+-------------------------------------------------------------------
+Tue Mar 30 17:18:52 CEST 2004 - sh@suse.de
+
+- Fixed bug #37534: MultiSelectionBox returns [nil] without item
+  IDs
+
+-------------------------------------------------------------------
+Tue Mar 30 16:51:24 CEST 2004 - sh@suse.de
+
+- added `opt(`treeEnabled) for wizard widget
+
+-------------------------------------------------------------------
+Tue Mar 30 13:45:04 CEST 2004 - kkaempf@suse.de
+
+- sync agent-probe with current hwinfo, add wlan, block, and tape
+  probing flags.
+
+-------------------------------------------------------------------
+Mon Mar 29 22:18:45 CEST 2004 - kkaempf@suse.de
+
+- improve checking if default of bracket operator is void (#36922)
+
+-------------------------------------------------------------------
+Mon Mar 29 20:31:12 CEST 2004 - arvin@suse.de
+
+- fixed uml detection
+
+-------------------------------------------------------------------
+Mon Mar 29 15:51:25 CEST 2004 - visnov@suse.cz
+
+- 2.9.70
+
+-------------------------------------------------------------------
+Mon Mar 29 14:37:13 CEST 2004 - visnov@suse.cz
+
+- properly initialize domain (#36711)
+
+-------------------------------------------------------------------
+Mon Mar 29 12:00:42 CEST 2004 - kkaempf@suse.de
+
+- improve checking if rhs in assignment is void (#36922)
+
+-------------------------------------------------------------------
+Fri Mar 26 19:27:12 CET 2004 - arvin@suse.de
+
+- added uml detection
+
+-------------------------------------------------------------------
+Fri Mar 26 18:08:43 CET 2004 - kkaempf@suse.de
+
+- enhance type information for 'is()' (#37146)
+
+-------------------------------------------------------------------
+Fri Mar 26 15:54:09 CET 2004 - visnov@suse.cz
+
+- 2.9.68
+
+-------------------------------------------------------------------
+Fri Mar 26 12:28:55 CET 2004 - visnov@suse.cz
+
+- handle closing of default SCR gracefully (#37050)
+- do not allow to pass 'nil' to Pkg (#37052)
+- show full function name for parameter mismatch (#36924)
+
+-------------------------------------------------------------------
+Thu Mar 25 14:59:28 CET 2004 - kkaempf@suse.de
+
+- warn if rhs of assignment is a void function (#36922)
+
+-------------------------------------------------------------------
+Thu Mar 25 13:05:34 CET 2004 - kkaempf@suse.de
+
+- treat empty block after 'if' properly (#36902)
+
+-------------------------------------------------------------------
+Wed Mar 24 15:41:19 CET 2004 - kkaempf@suse.de
+
+- treat _("") as "", don't call dgettext() (#36850)
+
+-------------------------------------------------------------------
+Wed Mar 24 15:32:29 CET 2004 - sh@suse.de
+
+- Fixed bug #36802: Combo box returns nil instead of ""
+
+-------------------------------------------------------------------
+Wed Mar 24 12:43:47 CET 2004 - visnov@suse.cz
+
+- empty void function produces just warning (#35536)
+
+-------------------------------------------------------------------
+Tue Mar 23 17:21:01 CET 2004 - visnov@suse.cz
+
+- allow repeated use of Pkg in ycpc (#35533)
+- close include files (#36747)
+
+-------------------------------------------------------------------
+Tue Mar 23 16:51:23 CET 2004 - sh@suse.de
+
+- Fixed blocker bug #36779: Segfault on UI::QueryWidget(ComboBox)
+
+-------------------------------------------------------------------
+Tue Mar 23 15:36:21 CET 2004 - kkaempf@suse.de
+
+- don't complain about bad cast if the to-be-casted expression
+  is already wrong (#36751)
+
+-------------------------------------------------------------------
+Tue Mar 23 14:48:44 CET 2004 - mvidner@suse.cz
+
+- check that external agents returned the correct type (#35363)
+- 2.9.66
+
+-------------------------------------------------------------------
+Tue Mar 23 11:33:13 CET 2004 - kkaempf@suse.de
+
+- check for function type in "<name> (...)" properly (#36246)
+
+-------------------------------------------------------------------
+Mon Mar 22 18:15:53 CET 2004 - cschum@suse.de
+
+- Repackage tarball
+- 2.9.65
+
+-------------------------------------------------------------------
+Mon Mar 22 16:56:46 CET 2004 - cschum@suse.de
+
+- Adapt to changes of PMYouServer in packagemanager.
+- 2.9.64
+
+-------------------------------------------------------------------
+Mon Mar 22 14:52:43 CET 2004 - visnov@suse.cz
+
+- 2.9.63
+
+-------------------------------------------------------------------
+Fri Mar 19 17:21:06 CET 2004 - kkaempf@suse.de
+
+- add "dgettext" and "dngettext" builtins to support easy
+  re-translation after language change.
+
+-------------------------------------------------------------------
+Fri Mar 19 14:57:00 CET 2004 - mvidner@suse.cz
+
+- added AGENT_LIBADD so that agents work from standalone Perl
+
+-------------------------------------------------------------------
+Thu Mar 18 20:29:56 CET 2004 - ma@suse.de
+
+- Let Pkg::CommitProvide Callback report progress, if package is
+  downloaded via ftp/http.
+- 2.9.62
+
+-------------------------------------------------------------------
+Wed Mar 17 13:51:41 CET 2004 - mvidner@suse.cz
+
+- include MemUsage.h unconditionally, let *it* (un)define D_MEMUSAGE
+
+-------------------------------------------------------------------
+Wed Mar 17 13:02:14 CET 2004 - visnov@suse.cz
+
+- don't pass YCPNull to UI builtins
+
+-------------------------------------------------------------------
+Tue Mar 16 23:57:59 CET 2004 - ma@suse.de
+
+- Added Pkg::CallbackStartDownload, Pkg::CallbackProgressDownload
+  and Pkg::CallbackDoneDownload. Triggered from y2pm when downloading
+  files via ftp/http.
+- 2.9.61
+
+-------------------------------------------------------------------
+Mon Mar 15 16:26:54 CET 2004 - visnov@suse.cz
+
+- 2.9.60
+
+-------------------------------------------------------------------
+Sun Mar 14 22:13:18 CET 2004 - kkaempf@suse.de
+
+- use Ustring for all strings
+- drop last pointer from linked lists
+- drop unused Type::setNocheck
+- delete m_parameterblock from YEBuiltin if not used
+
+-------------------------------------------------------------------
+Fri Mar 12 23:21:53 CET 2004 - sh@suse.de
+
+- Fixed non-const reference to const ref for all widget constructors
+
+-------------------------------------------------------------------
+Fri Mar 12 17:43:25 CET 2004 - kkaempf@suse.de
+
+- add <string> + <symbol> builtin (#35830)
+
+-------------------------------------------------------------------
+Fri Mar 12 12:20:54 CET 2004 - visnov@suse.cz
+
+- drop unneeded type info
+- 2.9.58
+
+-------------------------------------------------------------------
+Thu Mar 11 22:29:27 CET 2004 - ma@suse.de
+
+- Added: Pkg::PkgSolveCheckTargetOnly and Pkg::PkgGetFilelist
+
+-------------------------------------------------------------------
+Thu Mar 11 12:52:46 CET 2004 - visnov@suse.cz
+
+- don't load libpy2remote for "remote" component (#35536)
+
+-------------------------------------------------------------------
+Thu Mar 11 11:37:51 CET 2004 - kkaempf@suse.de
+
+- improve type determination of list and map constants (#35567)
+
+-------------------------------------------------------------------
+Wed Mar 10 17:36:14 CET 2004 - jsrain@suse.de
+
+- probe agent returns additional info for ccw devices
+- moved additional info for scsi devices to "detail" submap
+
+-------------------------------------------------------------------
+Wed Mar 10 15:26:28 CET 2004 - kkaempf@suse.de
+
+- fix whitespace handling in agent-resolver (#34888)
+- fix parameter check for Pkg::SetAdditionalLocales (#35609)
+
+-------------------------------------------------------------------
+Wed Mar 10 01:44:15 CET 2004 - sh@suse.de
+
+- V 2.9.57
+- Suppressed UI::WizardCommand() complaints if no wizard present
+
+-------------------------------------------------------------------
+Tue Mar  9 13:43:35 CET 2004 - visnov@suse.cz
+
+- save/restore argument list in WFM:Call (in doActualWork actually)
+
+-------------------------------------------------------------------
+Mon Mar  8 18:00:42 CET 2004 - kkaempf@suse.de
+
+- haskey() should accept any key (#35465)
+- 2.9.55
+
+-------------------------------------------------------------------
+Mon Mar  8 17:35:04 CET 2004 - jsrain@suse.de
+
+- probe agent returns additional info for SCSI discs
+- 2.9.54
+
+-------------------------------------------------------------------
+Sun Mar  7 12:07:24 CET 2004 - kkaempf@suse.de
+
+- use propagation information from Type::match in Type::canCast
+
+-------------------------------------------------------------------
+Sun Mar  7 12:07:09 CET 2004 - kkaempf@suse.de
+
+- add UI::WizardCommand (sh@suse.de)
+
+-------------------------------------------------------------------
+Fri Mar  5 15:58:20 CET 2004 - mvidner@suse.cz
+
+- enabled nested::namespaces in the scanner
+
+-------------------------------------------------------------------
+Thu Mar  4 21:07:24 CET 2004 - ma@suse.de
+
+- WFM: Added Pkg::PkgGetLicenseToConfirm and Pkg::PkgGetLicensesToConfirm
+- 2.9.52
+
+-------------------------------------------------------------------
+Thu Mar  4 00:42:27 CET 2004 - kkaempf@suse.de
+
+- implement stricter type checking for builtin functions and
+  bracket assignment
+- 2.9.51
+
+-------------------------------------------------------------------
+Wed Mar  3 23:11:23 CET 2004 - kkaempf@suse.de
+
+- support new hwinfo fields "sysfs_bus_id" and "hwaddr"
+- 2.9.50
+
+-------------------------------------------------------------------
+Tue Mar  2 11:20:28 CET 2004 - msvec@suse.cz
+
+- disabled part of the agents-perl testsute (byteblock)
+- 2.9.49
+
+-------------------------------------------------------------------
+Mon Mar  1 18:38:40 CET 2004 - sh@suse.de
+
+- Enable saving of screen shot name if recording macro
+
+-------------------------------------------------------------------
+Mon Mar  1 18:08:42 CET 2004 - mvidner@suse.cz
+
+- ycp.pm: implemented byteblocks
+- 2.9.47
+
+-------------------------------------------------------------------
+Mon Mar  1 12:39:53 CET 2004 - cschum@suse.de
+
+WFM: - Added Pkg::CallbackYouMessage, Pkg::CallbackYouError and
+       Pkg::CallbackYouLog.
+     - Renamed Pkg::YouGetPatches to Pkg::YouRetrievePatchInfo.
+     - Renamed Pkg::YouGetPackages to Pkg::YouRetrievePatches.
+     - Removed obsolete functions Pkg::YouAttachSource,
+       Pkg::YouDisconnect, Pkg::YouFinish, Pkg::YouFirstPatch,
+       Pkg::YouGetCurrentPatch, Pkg::YouInstallCurrentPatch and
+       Pkg::YouNextPatch.
+- 2.9.46
+
+-------------------------------------------------------------------
+Mon Mar  1 11:25:35 CET 2004 - kkaempf@suse.de
+
+- properly add all device resources to output list (#35190)
+
+-------------------------------------------------------------------
+Sat Feb 28 13:42:42 CET 2004 - kkaempf@suse.de
+
+- use 'new' to allocate char buffer for SymbolEntry, so it can
+  be safely 'delete'd
+- share type pointers instead of creating new ones.
+
+-------------------------------------------------------------------
+Sat Feb 28 11:42:42 CET 2004 - kkaempf@suse.de
+
+- improve usage of existing type information for builtin
+  functions
+- fix bytecode input to be upward compatible with previous
+  version
+- properly release unneeded memory
+- 2.9.44
+
+-------------------------------------------------------------------
+Fri Feb 27 16:43:07 CET 2004 - visnov@suse.cz
+
+- added openslp to neededforbuild
+
+-------------------------------------------------------------------
+Fri Feb 27 13:31:18 CET 2004 - visnov@suse.cz
+
+- ycodeptr branch merge:
+  - counted pointers for YCode and SymbolEntry
+  - allow to start bytecode clients
+  - initialization of namespaces now in Y2Namespace
+  - improved flex type matching
+
+-------------------------------------------------------------------
+Wed Feb 25 12:51:33 CET 2004 - ma@suse.de
+
+- Adapt to new Y2PM locale setting interface.
+- 2.9.43
+
+-------------------------------------------------------------------
+Mon Feb 23 14:45:29 CET 2004 - visnov@suse.cz
+
+- reinitialize preloaded namespaces before new parsing, not after the
+  last one
+
+-------------------------------------------------------------------
+Sun Feb 22 16:50:35 CET 2004 - kkaempf@suse.de
+
+- restore filename at end of parser, adapt testcases
+- 2.9.41
+
+-------------------------------------------------------------------
+Sun Feb 22 12:25:41 CET 2004 - kkaempf@suse.de
+
+- don't delete YConst code
+- 2.9.40
+
+-------------------------------------------------------------------
+Sat Feb 21 02:41:23 CET 2004 - ma@suse.de
+
+- Reimplemented counted pointer classes
+- 2.9.39
+
+-------------------------------------------------------------------
+Fri Feb 20 17:17:17 CET 2004 - visnov@suse.cz
+
+- correctly free code in YEBinary and YETriple
+- don't create a table entry for filename in block
+- free the code after optimizing it out
+
+-------------------------------------------------------------------
+Fri Feb 20 15:34:06 CET 2004 - arvin@suse.de
+
+- fix Pkg::SourceEditGet, Pkg::SourceEditSet and Pkg::SourceScan
+- fixed seg. fault with unresolved xref's
+
+-------------------------------------------------------------------
+Fri Feb 20 13:45:30 CET 2004 - visnov@suse.cz
+
+- more memory fixes:
+  allow YCPCode to free the code (used in system agent)
+  share textdomain (helps in reading bytecode)
+  delete parameter block for builtins
+- 2.9.37
+
+-------------------------------------------------------------------
+Thu Feb 19 18:14:32 CET 2004 - visnov@suse.cz
+
+- memory fixes:
+  lazy initialization of a symbol table
+  free function declarations/definitions in client calls
+
+-------------------------------------------------------------------
+Thu Feb 19 13:06:36 CET 2004 - mvidner@suse.cz
+
+- sort (`a, `b, l, ``( a<b ) )
+  now uses std::sort instead of bubblesort:
+  the comparison must be irreflexive (no "<=")
+- 2.9.36
+
+-------------------------------------------------------------------
+Wed Feb 18 17:40:45 CET 2004 - mvidner@suse.cz
+
+- added SCR::Error
+- 2.9.35
+
+-------------------------------------------------------------------
+Wed Feb 18 14:41:58 CET 2004 - visnov@suse.cz
+
+- drop unused md5 implementation
+- fix memory leak in reading bytecode header
+
+-------------------------------------------------------------------
+Tue Feb 17 18:14:57 CET 2004 - mvidner@suse.cz
+
+- fixed leaks:
+  parsed code in Y2WFMComponent::CallFunction and SCRAgent::readconf
+- reduced memory consumption a bit:
+  reduced SymbolTable size from 211 to 31
+  TableEntry::m_inner removed
+- count objects using MemUsage (liby2util).
+- 2.9.34
+
+-------------------------------------------------------------------
+Mon Feb 16 21:49:42 CET 2004 - kkaempf@suse.de
+
+- properly support indirect function calls via pointers (#34579)
+
+-------------------------------------------------------------------
+Mon Feb 16 18:17:08 CET 2004 - mvidner@suse.cz
+
+- don't segfault when agent output cannot be parsed (#34581)
+
+-------------------------------------------------------------------
+Mon Feb 16 16:18:44 CET 2004 - mvidner@suse.cz
+
+- ini agent: ignore_case is incompatible with multiple files
+- ycpc: re-add trailing newlines (should fix yast2-nis-client)
+- 2.9.32
+
+-------------------------------------------------------------------
+Fri Feb 13 22:55:44 CET 2004 - kkaempf@suse.de
+
+- replace module timestamps with import lists checking the
+  actually used signatures with the provided ones.
+- enhance parsetime and runtime error information with better
+  file/line tracking
+- enhance 'ycpc' with a dependency checker
+
+-------------------------------------------------------------------
+Fri Feb 13 12:15:45 CET 2004 - sh@suse.de
+
+- Late creation of UI: UI is only created when the first UI
+  builtin is actually used, so for command line YCP scripts
+  no UI is needed any longer and thus no X connection (for Qt)
+  or controlling tty (for NCurses)
+
+-------------------------------------------------------------------
+Thu Feb 12 15:59:09 CET 2004 - arvin@suse.de
+
+- moved program ycpc to main package
+
+-------------------------------------------------------------------
+Thu Feb 12 11:15:19 CET 2004 - arvin@suse.de
+
+- added some udev and sysfs info in probe agent (bug #34355)
+
+-------------------------------------------------------------------
+Tue Feb 10 21:14:26 CET 2004 - arvin@suse.de
+
+- include YWizard.h in yast2-core-devel
+
+-------------------------------------------------------------------
+Tue Feb 10 14:47:25 CET 2004 - visnov@suse.cz
+
+- fixed crash when trying to apply bracket operator to nil.
+
+-------------------------------------------------------------------
+Mon Feb  9 16:24:08 CET 2004 - visnov@suse.cz
+
+- Revert y2error -> y2warning for UI builtin without an instance.
+- ycpc now prints errors and warnings to stderr by default
+
+-------------------------------------------------------------------
+Mon Feb 09 14:34:36 CET 2004 - arvin@suse.de
+
+- fixed building on s390
+
+-------------------------------------------------------------------
+Fri Feb  6 18:46:00 CET 2004 - sh@suse.de
+
+- Re-enabled macro player with new interpreter
+
+-------------------------------------------------------------------
+Fri Feb  6 08:27:01 CET 2004 - visnov@suse.cz
+
+- Fix UI::changeWidget for terms in `Table
+
+-------------------------------------------------------------------
+Thu Feb  5 13:38:23 CET 2004 - msvec@suse.cz
+
+- log YCP file and line in dummy agent to limit testsuites output
+- 2.9.25
+
+-------------------------------------------------------------------
+Tue Feb  3 17:12:21 CET 2004 - visnov@suse.cz
+
+- Fix memory corruption on duplicate function parameters.
+- 2.9.24
+
+-------------------------------------------------------------------
+Tue Feb  3 15:06:49 CET 2004 - visnov@suse.cz
+
+- Fix UI::queryWidget for terms in `Table
+
+-------------------------------------------------------------------
+Tue Feb  3 14:09:56 CET 2004 - visnov@suse.cz
+
+- Fix some Pkg builtins
+
+-------------------------------------------------------------------
+Tue Feb  3 12:44:48 CET 2004 - visnov@suse.cz
+
+- Don't do fancy testsuite presentation
+
+-------------------------------------------------------------------
+Tue Feb  3 12:03:32 CET 2004 - gs@suse.de
+
+- make language change known in Y2WFMComponent::SetLanguage
+
+-------------------------------------------------------------------
+Tue Feb  3 10:34:17 CET 2004 - kkaempf@suse.de
+
+- Fix type for YEBuiltin (#34249)
+
+-------------------------------------------------------------------
+Tue Feb  3 07:58:12 CET 2004 - visnov@suse.cz
+
+- ycpc puts a new line at the end for -E (msvec@suse.cz)
+
+-------------------------------------------------------------------
+Mon Feb  2 16:28:17 CET 2004 - msvec@suse.cz
+
+- fixed resolver agent creation
+
+-------------------------------------------------------------------
+Fri Jan 30 16:37:48 CET 2004 - visnov@suse.cz
+
+- for lookup use the same code as for bracket
+- bytecode version change!
+
+-------------------------------------------------------------------
+Fri Jan 30 13:01:36 CET 2004 - visnov@suse.cz
+
+- implemented constant evaluation of terms (#34167)
+- bytecode change
+
+-------------------------------------------------------------------
+Thu Jan 29 18:09:18 CET 2004 - msvec@suse.cz
+
+- 2.9.23
+
+-------------------------------------------------------------------
+Thu Jan 29 18:07:41 CET 2004 - visnov@suse.cz
+
+- temporary fix bytecode testsuite for nonroot build
+- UI emits only warning not error if no handler is available
+
+-------------------------------------------------------------------
+Thu Jan 29 17:49:41 CET 2004 - mvidner@suse.cz
+
+- ini agent: make parent directories when writing files
+  (useful eg. for CA management)
+- fixed bugs revealed by -Woverloaded-virtual
+
+-------------------------------------------------------------------
+Thu Jan 29 13:17:35 CET 2004 - visnov@suse.cz
+
+- don't distribute bison-generated code
+
+-------------------------------------------------------------------
+Thu Jan 29 09:46:33 CET 2004 - mvidner@suse.cz
+
+- fixed YError::toString signature
+- libycp/testsuite runs again (added xfail)
+
+-------------------------------------------------------------------
+Wed Jan 28 10:56:52 CET 2004 - arvin@suse.de
+
+- fixed testsuite
+
+-------------------------------------------------------------------
+Wed Jan 28 05:53:43 CET 2004 - nashif@suse.de
+
+- Added builtin Pkg::PkgProperties to retrieve more data about
+  package location and source
+
+-------------------------------------------------------------------
+Tue Jan 27 18:46:39 CET 2004 - mvidner@suse.cz
+
+- moved agent-ypserv to yast2-nis-client
+  and agent-losetup to yast2-storage
+
+-------------------------------------------------------------------
+Tue Jan 27 18:09:09 CET 2004 - sh@suse.de
+
+- V 2.9.21
+- Consistent naming scheme in UI
+
+-------------------------------------------------------------------
+Tue Jan 27 14:05:40 CET 2004 - visnov@suse.cz
+
+- remove url parameter from Pkg::YouGetPatches
+
+-------------------------------------------------------------------
+Tue Jan 27 10:16:00 CET 2004 - kkaempf@suse.de
+
+- fix cast vs. bracket precedence (#34156)
+
+-------------------------------------------------------------------
+Tue Jan 27 09:21:28 CET 2004 - visnov@suse.cz
+
+- always bind textdomain (even in bytecode)
+- set textdomain codeset to UTF-8
+
+-------------------------------------------------------------------
+Mon Jan 26 15:02:50 CET 2004 - visnov@suse.cz
+
+- fix "return nil;" endless loop
+- 2.9.19
+
+-------------------------------------------------------------------
+Mon Jan 26 15:01:22 CET 2004 - mvidner@suse.cz
+
+- ycpc: progress to stderr, can parse stdin (ycpc -E -)
+
+-------------------------------------------------------------------
+Fri Jan 23 15:39:57 CET 2004 - msvec@suse.cz
+
+- added possibility to use a custom log.conf
+- 2.9.18
+
+-------------------------------------------------------------------
+Fri Jan 23 15:39:57 CET 2004 - visnov@suse.cz
+
+- this is "The New Interpreter" release
+
+-------------------------------------------------------------------
+Fri Jan 16 11:31:47 CET 2004 - arvin@suse.de
+
+- implemented stack for each ycp callback of packagemanager
+
+-------------------------------------------------------------------
+Thu Jan 15 16:54:50 CET 2004 - mvidner@suse.cz
+
+- agents-perl: added YaST::SCRAgent
+- agent-probe: return also SMBIOS info for .bios subpath (lslezak)
+- dropped WFM::GetClientName (arvin)
+- 2.9.17
+
+-------------------------------------------------------------------
+Thu Jan  8 12:56:44 CET 2004 - mvidner@suse.cz
+
+- ini agent: Read/Write (.all)
+- fixes for a nonstandard prefix
+- 2.9.16
+
+-------------------------------------------------------------------
+Thu Jan 08 10:41:43 CET 2004 - arvin@suse.de
+
+- adapted to bison 1.875
+
+-------------------------------------------------------------------
+Mon Jan  5 14:47:39 CET 2004 - visnov@suse.cz
+
+- ignore quotes in scr also for testsuites
+- 2.9.14
+
+-------------------------------------------------------------------
+Tue Dec 16 09:39:28 CET 2003 - mvidner@suse.cz
+
+- ini agent: allow multiple values for the same key
+- 2.9.13
+
+-------------------------------------------------------------------
+Mon Dec 15 12:33:48 CET 2003 - ma@suse.de
+
+- Removed outdated Pkg::SelectionsUpdateAll
+- 2.9.11
+
+-------------------------------------------------------------------
+Fri Dec 12 20:46:22 CET 2003 - msvec@suse.cz
+
+- adapted for the logging changes in liby2util
+- 2.9.12
+
+-------------------------------------------------------------------
+Fri Dec  5 09:12:50 CET 2003 - mvidner@suse.cz
+
+- ycp.pm: accept `Command(...) as well as Command(...)
+
+-------------------------------------------------------------------
+Thu Dec  4 16:56:04 CET 2003 - ma@suse.de
+
+- Added Pkg::SourceEdit/GetSourceEditSet for instsource editor.
+- 2.9.9
+
+-------------------------------------------------------------------
+Tue Dec  2 17:42:09 CET 2003 - visnov@suse.cz
+
+- fix function prototypes
+
+-------------------------------------------------------------------
+Tue Dec  2 15:58:51 CET 2003 - msvec@suse.cz
+
+- better logging in the dummy agent (needs newer testsuite)
+- migrated modules agent to use modprobe.conf (2.6 kernel)
+- 2.9.8
+
+-------------------------------------------------------------------
+Thu Nov 27 16:01:36 CET 2003 - visnov@suse.cz
+
+- ignore function prototypes
+- ignore variable references from NI
+
+-------------------------------------------------------------------
+Mon Nov 24 13:20:01 CET 2003 - ma@suse.de
+
+- Overworked Pkg::Source... functions. Removed internal InstSrc cache
+  and install order list (we've got an InstSrcManager for this).
+- 2.9.7
+
+-------------------------------------------------------------------
+Fri Nov 14 09:51:09 CET 2003 - visnov@suse.cz
+
+- allow map to specify its types like map<string,integer>
+- 2.9.6
+
+-------------------------------------------------------------------
+Thu Nov 13 13:51:49 CET 2003 - gs@suse.de
+
+- libyui: KeyEvent added
+
+-------------------------------------------------------------------
+Mon Nov 10 16:47:38 CET 2003 - visnov@suse.cz
+
+- allow block also specify a return type (ignored)
+- WFM::call () is now the same as WFM::CallFunction ()
+- fix mapmap () and maplist () if returning a map
+- 2.9.5
+
+-------------------------------------------------------------------
+Thu Nov  6 15:49:52 CET 2003 - mvidner@suse.cz
+
+- Using doxygen instead of kdoc.
+- 2.9.4
+
+-------------------------------------------------------------------
+Wed Oct 22 16:45:10 CEST 2003 - visnov@suse.cz
+
+- implemented mapmap and listmap accepting also $[] as a result
+  of the block.
+
+-------------------------------------------------------------------
+Wed Oct 22 10:36:10 CEST 2003 - visnov@suse.cz
+
+- workaround to allow quotes in scrfiles
+- 2.9.3
+
+-------------------------------------------------------------------
+Thu Oct 16 16:30:46 CEST 2003 - visnov@suse.cz
+
+- added support for typecast syntax and list<type> syntax
+  of typed lists.
+- 2.9.2
+
+-------------------------------------------------------------------
+Thu Oct 02 11:35:20 CEST 2003 - arvin@suse.de
+
+- fixed compiling of losetup agent
+
+-------------------------------------------------------------------
+Sun Sep 21 19:38:59 CEST 2003 - arvin@suse.de
+
+- extended MediaChange callback to support double sided media
+
+-------------------------------------------------------------------
+Fri Sep 19 15:43:08 CEST 2003 - ma@suse.de
+
+- If SourceStartCache(enabled==true) is requested, check InstSrcManager
+  to see whether sources are realy enabled. 'Change source of installation'
+  for example starts the InstSrcManager without autoenabling the sources.
+ (#29324)
+- 2.8.34
+
+-------------------------------------------------------------------
+Thu Sep 18 16:52:13 CEST 2003 - kkaempf@suse.de
+
+- pass "family" and "model" for .probe.cpu also on x86_64 (#31305)
+
+-------------------------------------------------------------------
+Wed Sep 17 17:30:16 CEST 2003 - arvin@suse.de
+
+- better return value of PkgUpdateAll
+
+-------------------------------------------------------------------
+Tue Sep 16 14:28:59 CEST 2003 - jsuchome@suse.cz
+
+- adapted ag_hostnames to return list of IP's (#30996)
+- 2.8.31
+
+-------------------------------------------------------------------
+Sun Sep 14 15:09:26 CEST 2003 - arvin@suse.de
+
+- implemented PkgReset function (bug #27970)
+
+-------------------------------------------------------------------
+Wed Sep 10 17:08:31 CEST 2003 - arvin@suse.de
+
+- fixed setting of YAST_IS_RUNNING (bug #30409)
+
+-------------------------------------------------------------------
+Wed Sep 10 16:43:34 CEST 2003 - ma@suse.de
+
+- Share PkgModule between multiple WFM interpreter instance.
+  (#29324)
+- 2.8.28
+
+-------------------------------------------------------------------
+Tue Sep  9 13:23:15 CEST 2003 - ma@suse.de
+
+- Fixed DoneProvide callback to send package name as third arg
+  on error (#29922)
+- 2.8.27
+
+-------------------------------------------------------------------
+Sun Sep  7 13:22:21 CEST 2003 - ma@suse.de
+
+- Fixed TargetInit and TargetFinish calls.
+  (#29679 as far as PKG module is affected)
+- 2.8.26
+
+-------------------------------------------------------------------
+Fri Sep  5 17:00:29 CEST 2003 - sh@suse.de
+
+- V 2.8.25
+- Fixed bug #30151: Enable starting pkg mgr in search mode
+  by default in the installed system
+
+-------------------------------------------------------------------
+Fri Sep  5 10:20:18 CEST 2003 - gs@suse.de
+
+- testsuite adapted (language.err)
+- 2.8.24
+
+-------------------------------------------------------------------
+Thu Sep  4 15:30:04 CEST 2003 - gs@suse.de
+
+- WFMInterpreter: get correct encoding in SetLanguage()
+- 2.8.23
+
+-------------------------------------------------------------------
+Fri Aug 29 01:45:25 CEST 2003 - ma@suse.de
+
+- Adapted PKG module to new packagemanager callbacks.
+- Introduced CallbackStartConvertDb, CallbackProgressConvertDb,
+  CallbackNotifyConvertDb, CallbackStopConvertDb. (#29484 as far as
+  PKG module is affected).
+- 2.8.22
+
+-------------------------------------------------------------------
+Mon Aug 25 16:26:38 CEST 2003 - kkeil@suse.de
+
+- new ISDN interface for agent-probe, data is now based on CDB
+
+-------------------------------------------------------------------
+Wed Aug 20 18:52:54 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Aug 18 17:48:56 CEST 2003 - arvin@suse.de
+
+- added ycp builtin findlastnotof
+
+-------------------------------------------------------------------
+Mon Aug 18 15:57:42 CEST 2003 - lslezak@suse.cz
+
+- fixes in ag_background (result command check, buffer size check,
+  log errors)
+- enhancements in libyui examples (gs@suse.de)
+- version 2.8.18
+
+-------------------------------------------------------------------
+Tue Aug 12 15:18:23 CEST 2003 - arvin@suse.de
+
+- added warnings about to libyui about wrong widget tree structure
+- fixed parsing of class tag in make_widget_doc
+- also handle release notes url here
+
+-------------------------------------------------------------------
+Wed Aug  6 12:59:15 CEST 2003 - gs@suse.de
+
+- V 2.8.16
+- WFM setLanguage() returns proposed encoding
+  (revert changes)
+
+-------------------------------------------------------------------
+Wed Aug  6 11:57:08 CEST 2003 - fehr@suse.de
+
+- added new ycp builtin regexppos
+- version 2.8.15
+
+-------------------------------------------------------------------
+Tue Aug 05 17:05:50 CEST 2003 - arvin@suse.de
+
+- fixed testsuite
+
+-------------------------------------------------------------------
+Tue Aug  5 13:13:41 CEST 2003 - gs@suse.de
+
+- V 2.8.13
+- libyui: YUI builtin SetKeyboard added
+
+-------------------------------------------------------------------
+Thu Jul 31 11:35:19 CEST 2003 - arvin@suse.de
+
+- support special plugins with several agents
+
+-------------------------------------------------------------------
+Wed Jul 30 09:15:36 CEST 2003 - arvin@suse.de
+
+- fixed build
+
+-------------------------------------------------------------------
+Tue Jul 29 19:49:59 CEST 2003 - sh@suse.de
+
+- V 2.8.11
+- Added support for embedded Perl interpreter as plugin
+  (requires new additional package yast2-perl-bindings)
+
+-------------------------------------------------------------------
+Tue Jul 29 16:43:30 CEST 2003 - arvin@suse.de
+
+- extended meaning of YAST_IS_RUNNING
+
+-------------------------------------------------------------------
+Tue Jul 29 13:24:08 CEST 2003 - cschum@suse.de
+
+- WFM: Added Pkg::YouDisconnect().
+
+-------------------------------------------------------------------
+Mon Jul 21 09:55:06 CEST 2003 - arvin@suse.de
+
+- handle new hwinfo-field unix_dev_name2 (bug #26121)
+
+-------------------------------------------------------------------
+Tue Jul 15 21:13:53 CEST 2003 - arvin@suse.de
+
+- fixed testsuite of wfm
+
+-------------------------------------------------------------------
+Tue Jul 15 17:28:36 CEST 2003 - sh@suse.de
+
+- V 2.8.7
+
+UI changes:
+
+- Lots of internal reworking
+- Completely reworked event handling
+- No more self-generated events during widget creation / ChangeWidget
+- Basic support for right-to-left languages like Arabic / Hebrew
+  (not perfect yet)
+- `id() now optional for UI builtins if ID type is symbol
+
+
+-------------------------------------------------------------------
+Tue Jul 15 11:59:50 CEST 2003 - gs@suse.de
+
+- 2.8.6
+- advanced event handling in libyui
+
+-------------------------------------------------------------------
+Tue Jul 15 10:21:48 CEST 2003 - mvidner@suse.cz
+
+- Moved ycp.pm to %perl_vendorlib.
+
+-------------------------------------------------------------------
+Thu Jul 10 15:27:48 CEST 2003 - mvidner@suse.cz
+
+- perl library:
+  * parse paths with quoted components
+  * consider also negative integers in ycp::Return
+
+-------------------------------------------------------------------
+Wed Jul  9 11:16:30 CEST 2003 - cschum@suse.de
+
+- WFM: Added Pkg::YouSetServer().
+
+-------------------------------------------------------------------
+Mon Jul  7 15:48:24 CEST 2003 - gs@suse.de
+
+- WFMInterpreter: call setlocale(LC_ALL, "") in constructor;
+  remove it in setLanguage() and changeToModuleLanguage()
+
+-------------------------------------------------------------------
+Fri Jul  4 16:24:11 CEST 2003 - msvec@suse.de
+
+- keep the include modules.conf.local at the end (#27681)
+- dropped unused modules paths
+- updated testsuite
+- 2.8.5
+
+-------------------------------------------------------------------
+Wed Jul  2 08:49:49 CEST 2003 - visnov@suse.de
+
+- return boolean value from client as exit code
+
+-------------------------------------------------------------------
+Fri Jun 27 12:38:06 CEST 2003 - msvec@suse.de
+
+- different fix for regexp*
+- 2.8.4
+
+-------------------------------------------------------------------
+Thu Jun 26 13:53:00 CEST 2003 - msvec@suse.de
+
+- fixed regexpsub behavior
+- 2.8.3
+
+-------------------------------------------------------------------
+Wed Jun 25 10:49:31 CEST 2003 - cschum@suse.de
+
+- Removed WFM builtin CallFile as it isn't needed anymore by YOU.
+
+-------------------------------------------------------------------
+Wed Jun 25 09:51:34 CEST 2003 - arvin@suse.de
+
+- correct C++ syntax in HwProbe.cc
+
+-------------------------------------------------------------------
+Tue Jun 24 11:34:22 CEST 2003 - cschum@suse.de
+
+- Removed classes ExternalProgram and ExternalDataSource from
+  liby2 as they duplicated the classes from liby2util.
+
+-------------------------------------------------------------------
+Tue Jun 24 11:29:21 CEST 2003 - cschum@suse.de
+
+- Added progress callback for execution of scripts by YOU.
+
+-------------------------------------------------------------------
+Tue Jun 10 12:03:24 CEST 2003 - arvin@suse.de
+
+- fixed file list for rpm v4
+
+-------------------------------------------------------------------
+Fri Jun  6 14:28:27 CEST 2003 - mvidner@suse.cz
+
+- libycp scanner: don't mistake an invalid token for EOF.
+
+-------------------------------------------------------------------
+Wed May 28 11:47:39 CEST 2003 - cschum@suse.de
+
+- Added WFM builtin CallFile needed by YOU.
+
+-------------------------------------------------------------------
+Tue Apr 22 14:24:28 CEST 2003 - arvin@suse.de
+
+- added ycp function lsort to sort lists of strings with
+  respect to the current locale (bug #23850)
+
+-------------------------------------------------------------------
+Fri Mar 28 13:34:57 CET 2003 - mvidner@suse.de
+
+- ag_hostnames: added scanning for RPC servers
+
+-------------------------------------------------------------------
+Fri Mar 28 12:16:33 CET 2003 - lslezak@suse.de
+
+- ag_background: limited input buffer size, added .buffer_size
+  subpath, updated documentation
+- 2.8.0
+
+-------------------------------------------------------------------
+Thu Mar 13 18:47:16 CET 2003 - kkaempf@suse.de
+
+- handle installation of source packages (#25318).
+- 2.7.34
+
+-------------------------------------------------------------------
+Tue Mar 11 10:07:56 CET 2003 - kkaempf@suse.de
+
+- fix parseycp syntax checker to detect trailing errors
+  after a successful parse. Also fixes detection and
+  handling of EOF in parser. (#24994)
+
+-------------------------------------------------------------------
+Sat Mar 08 21:55:04 CET 2003 - arvin@suse.de
+
+- handle wlan flag from hwinfo (bug #23491)
+
+-------------------------------------------------------------------
+Fri Mar 07 15:42:48 CET 2003 - arvin@suse.de
+
+- make string compare function locale unaware again as it leads
+  to strange results after changing the locale
+
+-------------------------------------------------------------------
+Fri Mar  7 10:43:34 CET 2003 - kkaempf@suse.de
+
+- close target logfile at shutdown (#24756)
+- 2.7.30
+
+-------------------------------------------------------------------
+Wed Mar  5 18:55:48 CET 2003 - kkaempf@suse.de
+
+- enhance provideDone and packageDone callbacks to return a
+  string in order to control retry/abort/ignore on package
+  errors (#23780)
+- 2.7.29
+
+-------------------------------------------------------------------
+Tue Mar 04 21:09:30 CET 2003 - arvin@suse.de
+
+- handle InstSrcDescr::content_flags (bug #21561)
+
+-------------------------------------------------------------------
+Tue Mar  4 17:59:07 CET 2003 - kkaempf@suse.de
+
+- use general state functions from packagemanager, not just
+  the package specific ones (part of #23616)
+
+-------------------------------------------------------------------
+Mon Mar  3 18:07:04 CET 2003 - kkaempf@suse.de
+
+- use packagemanager stati when handling selection, so upgrade
+  properly gets required and recommended selections too (#24371).
+
+-------------------------------------------------------------------
+Mon Mar  3 14:52:20 CET 2003 - cschum@suse.de
+
+- Allow installation sources for different products from same URL
+  (#24492).
+
+-------------------------------------------------------------------
+Fri Feb 28 16:46:33 CET 2003 - kkaempf@suse.de
+
+- make MediaChangeCallback global for all sources (part of #24201)
+
+-------------------------------------------------------------------
+Fri Feb 28 15:26:15 CET 2003 - sh@suse.de
+
+- Added optional "floppyDevice" parameter to YPackageSelector widget
+
+-------------------------------------------------------------------
+Fri Feb 28 13:43:49 CET 2003 - kkaempf@suse.de
+
+- don't treat nl_langinfo() as godsend, they're all lying anyway.
+  We return nl_langinfo as a propsed encoding only and set UTF-8
+  (#24383)
+
+-------------------------------------------------------------------
+Tue Feb 25 14:57:52 CET 2003 - arvin@suse.de
+
+- use locale dependent string compare (bug #23850)
+
+-------------------------------------------------------------------
+Tue Feb 25 09:45:55 CET 2003 - gs@suse.de
+
+- #include <assert.h> in YUIInterpreter_special_widgets.cc
+
+-------------------------------------------------------------------
+Mon Feb 24 17:28:42 CET 2003 - gs@suse.de
+
+- setLanguage: call nl_langinfo (bug #23348)
+
+-------------------------------------------------------------------
+Mon Feb 24 17:06:26 CET 2003 - kkaempf@suse.de
+
+- finally fix Pkg:: functions to act upon tag string
+  instead of package names.
+  This will make "yast2 -i <name-of-.so>" possible.
+
+-------------------------------------------------------------------
+Mon Feb 24 12:10:32 CET 2003 - arvin@suse.de
+
+- added command .bash_input to system agent
+
+-------------------------------------------------------------------
+Fri Feb 21 16:13:43 CET 2003 - kkaempf@suse.de
+
+- add Pkg::SelectionContent() function (#23589)
+  adpated testsuite accordingly.
+
+-------------------------------------------------------------------
+Thu Feb 20 15:56:00 CET 2003 - arvin@suse.de
+
+- resolver agent doesn't complain about empty lists (bug #23797)
+
+-------------------------------------------------------------------
+Thu Feb 20 11:03:13 CET 2003 - arvin@suse.de
+
+- added dsl modem (pppoe) detection to probe-agent (bug #23662)
+
+-------------------------------------------------------------------
+Wed Feb 19 14:38:58 CET 2003 - sh@suse.de
+
+- Fixed bug #23781: YCPthread problems during SuSEconfig
+
+-------------------------------------------------------------------
+Mon Feb 17 17:49:27 CET 2003 - gs@suse.de
+
+- don't call nl_langinfo in WMFInterpreter setLanguage
+  (encoding is not set correctly, bug #23348)
+
+-------------------------------------------------------------------
+Mon Feb 17 17:14:36 CET 2003 - sh@suse.de
+
+- Fixed bug #23599: Recode: unexpected small output buffer
+
+-------------------------------------------------------------------
+Thu Feb 13 13:17:31 CET 2003 - sh@suse.de
+
+- Reduced log severity for UI shortcut conflicts
+
+-------------------------------------------------------------------
+Wed Feb 12 16:04:19 CET 2003 - kkaempf@suse.de
+
+- add Pkg::TargetFileHasOwner() (#23555)
+
+-------------------------------------------------------------------
+Tue Feb 11 16:07:55 CET 2003 - sh@suse.de
+
+- New generic way to find widgets belonging to a dialog, excluding
+  sub-dialogs: YDialog::widgets()
+
+-------------------------------------------------------------------
+Fri Feb  7 13:07:35 CET 2003 - kkaempf@suse.de
+
+- call nl_langinfo() if no explicit encoding given (#23348)
+- V 2.7.12
+
+-------------------------------------------------------------------
+Mon Feb  3 18:09:11 CET 2003 - sh@suse.de
+
+- V 2.7.11
+- New UI builtin: SetFunctionKeys()
+
+-------------------------------------------------------------------
+Mon Jan 27 15:42:15 CET 2003 - arvin@suse.de
+
+- added rpm-devel, popt and popt-devel to neededforbuild
+
+-------------------------------------------------------------------
+Thu Jan 23 10:41:54 CET 2003 - mvidner@suse.de
+
+- Activate the debugger on receiving SIGUSR2.
+- 2.7.9
+
+-------------------------------------------------------------------
+Tue Jan 21 17:29:55 CET 2003 - arvin@suse.de
+
+- make it build with latest yast2-packagemanager
+
+-------------------------------------------------------------------
+Tue Jan 14 15:52:42 CET 2003 - arvin@suse.de
+
+- probe agent handles capability flags of libhd (bug #20068)
+
+-------------------------------------------------------------------
+Fri Dec 20 16:57:46 CET 2002 - arvin@suse.de
+
+- merged from 8.1 branch:
+  - set umask to 0022 in genericfronted.cc
+
+-------------------------------------------------------------------
+Thu Dec 19 13:43:33 CET 2002 - cschum@suse.de
+
+- Pkg:: interface
+  - Added ErrorDetails() function.
+  - Added YouFinish() function.
+  - Added callback handling for YOU progress.
+- 2.7.6
+
+-------------------------------------------------------------------
+Wed Dec 18 16:09:37 CET 2002 - mvidner@suse.de
+
+- perl library:
+ * Fixed parsing compounds containing a number starting with 0.
+ * Use the script base name as the log component instead of "perl".
+
+-------------------------------------------------------------------
+Mon Dec 02 15:31:50 CET 2002 - arvin@suse.de
+
+- consider all four environment variables `LANGUAGE', `LC_ALL',
+  `LC_MESSAGES' and `LANG' to get the language during startup
+  (bug #22008)
+
+-------------------------------------------------------------------
+Mon Dec 02 11:27:20 CET 2002 - arvin@suse.de
+
+- fixed linking (after drop of dumpto agent)
+
+-------------------------------------------------------------------
+Fri Nov 29 16:34:19 CET 2002 - sh@suse.de
+
+- Fixed bug/wish #13866: Delayed keyboard shortcut checking
+  New UI builtins PostponeShortcutCheck(), CheckShortcuts()
+
+-------------------------------------------------------------------
+Fri Nov 22 14:24:41 CET 2002 - msvec@suse.cz
+
+- system agent:
+    * background logging
+    * nice mode for written ycp values
+    * updated testsuite
+- modules agent:
+    * use paths for the modules specs
+- dumpto agent:
+    * drop (obsoleted by system agent)
+- runtime agent:
+    * drop (obsoleted by system agent)
+
+-------------------------------------------------------------------
+Wed Nov 20 17:38:06 CET 2002 - sh@suse.de
+
+- UI::MakeScreenShot() now takes a string argument
+
+-------------------------------------------------------------------
+Mon Nov 11 17:55:38 CET 2002 - sh@suse.de
+
+- New widget: IconButton
+
+-------------------------------------------------------------------
+Thu Nov 07 18:47:24 CET 2002 - arvin@suse.de
+
+- adaption of libycp for bison version 1.75
+
+-------------------------------------------------------------------
+Thu Nov  7 13:32:16 CET 2002 - sh@suse.de
+
+- Fixed bug #19389: Frame widget shows keyboard shortcuts, but
+  can't handle any
+
+-------------------------------------------------------------------
+Wed Nov  6 18:31:36 CET 2002 - sh@suse.de
+
+- New UI builtins:
+  - AskForExistingDirectory()
+  - AskForExistingFile()
+  - AskForSaveFileName()
+
+-------------------------------------------------------------------
+Wed Nov  6 09:06:36 CET 2002 - mvidner@suse.cz
+
+- Fixed recursive Dir in ini-agent flat mode (used for .sysconfig)
+  #21574
+
+-------------------------------------------------------------------
+Tue Oct 15 10:46:11 CEST 2002 - kkaempf@suse.de
+
+- fix 'sort' testcase
+- 2.6.53
+
+-------------------------------------------------------------------
+Mon Oct 14 13:02:42 CEST 2002 - kkaempf@suse.de
+
+- reduce debug log (#20854, mvidner@suse.cz)
+- 2.6.52
+
+-------------------------------------------------------------------
+Mon Oct 14 12:53:04 CEST 2002 - kkaempf@suse.de
+
+- when switching base selection, reset selections
+  and packages
+- RemoteComponent: check for null to avoid segfault (#20087, arvin)
+
+-------------------------------------------------------------------
+Wed Oct  9 18:24:24 CEST 2002 - kkaempf@suse.de
+
+- install product data in installation order.
+- 2.6.51
+
+-------------------------------------------------------------------
+Tue Oct  8 18:34:56 CEST 2002 - kkaempf@suse.de
+
+- add functions to display install time splitted across
+  multiple sources and multiple media within each source
+- 2.6.50
+
+-------------------------------------------------------------------
+Tue Oct 08 12:47:31 CEST 2002 - arvin@suse.de
+
+- use own version as suse version since suse version is not
+  present on united linux
+
+-------------------------------------------------------------------
+Mon Oct  7 20:18:55 CEST 2002 - kkaempf@suse.de
+
+- add Pkg:: function to set installation order (#20609)
+- add Pkg:: function to disable ram caching of source meta-data
+- 2.6.48
+
+-------------------------------------------------------------------
+Fri Sep 20 17:08:46 CEST 2002 - kkaempf@suse.de
+
+- provide full product data including base and dist product
+- 2.6.47
+
+-------------------------------------------------------------------
+Fri Sep 20 12:16:52 CEST 2002 - kkaempf@suse.de
+
+- add SourceChange callback
+- write selections conflicts to /var/log/YaST2/badselections
+- 2.6.46
+
+-------------------------------------------------------------------
+Thu Sep 19 20:37:36 CEST 2002 - kkaempf@suse.de
+
+- return partition size after package installation in DU check.
+- disable source (release media) before delete.
+- 2.6.45
+
+-------------------------------------------------------------------
+Wed Sep 18 18:23:29 CEST 2002 - kkaempf@suse.de
+
+- add Pkg:: functions for multiple source installation
+- 2.6.44
+
+-------------------------------------------------------------------
+Thu Sep 12 17:41:55 CEST 2002 - kkaempf@suse.de
+
+- drop "-" in product string
+- 2.6.43
+
+-------------------------------------------------------------------
+Wed Sep 11 20:39:42 CEST 2002 - kkaempf@suse.de
+
+- implement "PkgNeutral" to neutralize the status of
+  a package (#19475)
+- implement status save/restore (#19328)
+- fix abort during install (#18954)
+- 2.6.42
+
+-------------------------------------------------------------------
+Wed Sep 11 19:13:33 CEST 2002 - kkaempf@suse.de
+
+- copy product and selection data to target (#19324)
+- 2.6.41
+
+-------------------------------------------------------------------
+Wed Sep 11 13:00:13 CEST 2002 - kkaempf@suse.de
+
+- allow rewrite of url if cdrom device changed due
+  to ide-scsi (#19185)
+- 2.6.40
+
+-------------------------------------------------------------------
+Wed Sep 11 00:32:15 CEST 2002 - kkaempf@suse.de
+
+- correctly release sources
+- pass flag to solver to prefer installed packages in
+  case of conflict during update
+- products don't have a release, just a version
+- 2.6.39
+
+-------------------------------------------------------------------
+Tue Sep 10 15:53:55 CEST 2002 - arvin@suse.de
+
+- provide/obsolete yast2-lib64-compat (bug #19325)
+
+-------------------------------------------------------------------
+Mon Sep  9 19:27:54 CEST 2002 - kkaempf@suse.de
+
+- display all CDs, even those with no packages to install
+- handle uninstalled source packages
+- 2.6.37
+
+-------------------------------------------------------------------
+Mon Sep 09 16:11:26 CEST 2002 - arvin@suse.de
+
+- explicit set permissions of /etc/resolv.conf to 0644 (bug #19188)
+
+-------------------------------------------------------------------
+Mon Sep  9 14:03:32 CEST 2002 - kkaempf@suse.de
+
+- reduce logging
+- fix space calculation
+- 2.6.35
+
+-------------------------------------------------------------------
+Sun Sep  8 22:56:42 CEST 2002 - kkaempf@suse.de
+
+- add function to retrieve space calculation
+- 2.6.34
+
+-------------------------------------------------------------------
+Sun Sep  8 17:02:50 CEST 2002 - kkaempf@suse.de
+
+- add function to pass directories to space calculation in
+  package manager
+- 2.6.33
+
+-------------------------------------------------------------------
+Sat Sep  7 21:02:09 CEST 2002 - mvidner@suse.cz
+
+- agent-ini: section names  for multifile data were not translated
+  properly upon second Write (#19066).
+- 2.6.32
+
+-------------------------------------------------------------------
+Sat Sep  7 17:02:04 CEST 2002 - kkaempf@suse.de
+
+- add Pkg::PkgGroup to get group tag of a package
+
+-------------------------------------------------------------------
+Sat Sep  7 14:06:46 CEST 2002 - kkaempf@suse.de
+
+- include url to media change callback
+- report translated selection label
+- 2.6.31
+
+-------------------------------------------------------------------
+Fri Sep 06 16:46:07 CEST 2002 - arvin@suse.de
+
+- provide/obsolete more old packages
+
+-------------------------------------------------------------------
+Fri Sep  6 14:35:55 CEST 2002 - kkaempf@suse.de
+
+- fix update api, allow for deletion of old packages
+  return number of unknown packages
+- fix packager UI to show unknown packages
+- 2.6.29
+
+-------------------------------------------------------------------
+Thu Sep  5 21:33:11 CEST 2002 - kkaempf@suse.de
+
+- add Pkg:: functions for package backup
+  and rebuilddb progress
+- 2.6.28
+
+-------------------------------------------------------------------
+Wed Sep  4 14:55:37 CEST 2002 - kkaempf@suse.de
+
+- check for loops in selection requirements.
+- authorization checks for YOU.
+- 2.6.27
+
+-------------------------------------------------------------------
+Tue Sep  3 22:52:27 CEST 2002 - kkaempf@suse.de
+
+- enhanced callback handling for Pkg::
+- product data access functions
+- 2.6.26
+
+-------------------------------------------------------------------
+Tue Sep  3 16:48:12 CEST 2002 - mvidner@suse.cz
+
+- kdoc cleanup: better cross references and fixed some parsing issues.
+
+-------------------------------------------------------------------
+Fri Aug 30 12:30:08 CEST 2002 - mvidner@suse.cz
+
+- ag_hostnames: fixed ip to host name translation (#18638).
+- 2.6.25
+
+-------------------------------------------------------------------
+Thu Aug 29 15:29:28 CEST 2002 - sh@suse.de
+
+- New widget options for YPushButton: key_F1 .. key_F12
+- New widget option for YSelectionBox: immediate
+- New widget options for YPackageSelector: youMode, updateMode
+
+-------------------------------------------------------------------
+Thu Aug 29 12:04:59 CEST 2002 - arvin@suse.de
+
+- more fixes for initialization of logging
+
+-------------------------------------------------------------------
+Wed Aug 28 22:47:48 CEST 2002 - kkaempf@suse.de
+
+- more Pkg:: functions for media change via packagemanager
+  callbacks
+- 2.6.23
+
+-------------------------------------------------------------------
+Tue Aug 27 11:46:39 CEST 2002 - arvin@suse.de
+
+- added support for firewire controllers in probe agent
+  (bug #18379)
+- fixed initialization of logging
+
+-------------------------------------------------------------------
+Wed Aug 21 16:24:20 CEST 2002 - kkaempf@suse.de
+
+- furter connections to packagemanager
+- V 2.6.21
+
+-------------------------------------------------------------------
+Mon Aug 19 19:01:40 CEST 2002 - sh@suse.de
+
+- V 2.6.20
+- New package management in UI
+
+-------------------------------------------------------------------
+Fri Aug 16 15:43:56 CEST 2002 - arvin@suse.de
+
+- adaptions for libhd version 5.12
+
+-------------------------------------------------------------------
+Thu Aug 15 12:01:15 CEST 2002 - arvin@suse.de
+
+- added handling of hotplug entry to probe agent (bug #13571)
+
+-------------------------------------------------------------------
+Tue Aug 13 17:59:52 CEST 2002 - arvin@suse.de
+
+- fixed return value of regexpsub for case of no match
+
+-------------------------------------------------------------------
+Mon Aug 12 16:48:08 CEST 2002 - kkaempf@suse.de
+
+- add "vendor" and "name" keys to .probe.cpu map
+
+-------------------------------------------------------------------
+Fri Aug 09 14:49:35 CEST 2002 - arvin@suse.de
+
+- added support for dvb cards to probe agent
+
+-------------------------------------------------------------------
+Thu Aug 08 12:51:44 CEST 2002 - arvin@suse.de
+
+- fixed error logging for .string command of system agent and
+  added testsuite for that
+- redirect stdout and stderr to /dev/null for .bash_background
+  command of system agent (bug #17223)
+
+-------------------------------------------------------------------
+Wed Aug 07 19:28:50 CEST 2002 - arvin@suse.de
+
+- adaption for libhd changes
+
+-------------------------------------------------------------------
+Mon Aug 05 17:07:35 CEST 2002 - arvin@suse.de
+
+- fixed cpu and boot detection on S390
+
+-------------------------------------------------------------------
+Thu Aug 01 11:10:40 CEST 2002 - arvin@suse.de
+
+- fixes for VNC installation
+
+-------------------------------------------------------------------
+Mon Jul 29 16:35:19 CEST 2002 - arvin@suse.de
+
+- disable Qt/KDE's own malloc implementation (it's too late to
+  activated them from dlopen)
+
+-------------------------------------------------------------------
+Wed Jul 24 21:06:49 CEST 2002 - kkaempf@suse.de
+
+- Allow empty nameserver list in agent-resolver (#17178)
+
+-------------------------------------------------------------------
+Wed Jul 24 18:01:00 CEST 2002 - arvin@suse.de
+
+- Execute (.target.remove, ...) is now quiet (bug #17177)
+
+-------------------------------------------------------------------
+Wed Jul 24 14:58:06 CEST 2002 - arvin@suse.de
+
+- fixed error messages for Read (.target.yast2, ...) (bug #17170)
+- fixed model entry in Read (.probe.cpu) (bug #17166)
+
+-------------------------------------------------------------------
+Mon Jul 22 16:52:45 CEST 2002 - arvin@suse.de
+
+- implemented stat and lstat functions in agent-system
+
+-------------------------------------------------------------------
+Mon Jul 22 12:32:34 CEST 2002 - arvin@suse.de
+
+- agent-probe recognizes boot mechanism grub from hwinfo
+
+-------------------------------------------------------------------
+Wed Jul 17 16:07:43 CEST 2002 - arvin@suse.de
+
+- provide full directory structure
+- removed obsolete getyast2dir function from libycp
+
+-------------------------------------------------------------------
+Fri Jul 12 16:20:10 CEST 2002 - kkeil@suse.de
+
+- agent-probe: Additional fields for the ISDN database to
+  identify DSL support and supported protocols and architectures
+  of the driver.
+
+-------------------------------------------------------------------
+Mon Jul  8 16:20:15 CEST 2002 - mvidner@suse.cz
+
+- completed the Provides/Obsoletes list for the devel subpackage
+
+-------------------------------------------------------------------
+Thu Jul 04 13:05:44 CEST 2002 - arvin@suse.de
+
+- move non binary file from /usr/lib/YaST2 to /usr/share/YaST2
+
+-------------------------------------------------------------------
+Tue Jul  2 13:40:43 CEST 2002 - msvec@suse.cz
+
+- y2log dir is /var/log/YaST2 (#16712)
+
+-------------------------------------------------------------------
+Tue Jul 02 12:45:55 CEST 2002 - arvin@suse.de
+
+- only complain once if recode fails (bug #16773)
+
+-------------------------------------------------------------------
+Thu Jun 27 16:18:36 CEST 2002 - arvin@suse.de
+
+- the Read (.yast2, ...) of the system agent appends "data/" the
+  the filename
+- removed function Write (.yast2, ...) from system agent
+
+-------------------------------------------------------------------
+Tue Jun 25 12:12:23 CEST 2002 - kkaempf@suse.de
+
+- Evaluate keys in map constants (#16701).
+
+-------------------------------------------------------------------
+Sat Jun 22 01:37:40 CEST 2002 - arvin@suse.de
+
+- merged libycp, liby2, libyui, libscr, yast2-core-scr,
+  yast2-core-wfm, yast2-agent-any, yast2-agent-probe,
+  yast2-agent-ini, yast2-agent-modules, yast2-agent-system
+  and yast2-base into new package yast2-core
+

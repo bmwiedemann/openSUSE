@@ -1,0 +1,48 @@
+--- xselection.c
++++ xselection.c
+@@ -384,6 +384,7 @@
+ #ifndef XA_LENGTH
+ 	unsigned long XA_LENGTH = XInternAtom(dpy, "LENGTH", True);
+ #endif /* !XA_LENGTH */
++	Atom XA_TARGETS = XInternAtom(dpy, "TARGETS", True);
+ 
+ 	if (ptr_event->xselectionrequest.target == XA_LENGTH) {
+ 		unsigned int length;
+@@ -404,6 +405,37 @@
+ 
+ 		req_event = &(ptr_event->xselectionrequest);
+ 
++		notify_event.type      = SelectionNotify;
++		notify_event.display   = req_event->display;
++		notify_event.requestor = req_event->requestor;
++		notify_event.selection = req_event->selection;
++		notify_event.target    = req_event->target;
++		notify_event.time      = req_event->time;
++
++		if (req_event->property == None)
++			notify_event.property = req_event->target;
++		else
++			notify_event.property = req_event->property;
++
++		(void)XSendEvent(req_event->display, req_event->requestor,
++					False, 0, (XEvent *)&notify_event);
++		XFlush(dpy);
++		return;
++	}
++
++	if (ptr_event->xselectionrequest.target == XA_TARGETS) {
++
++		XChangeProperty(ptr_event->xselectionrequest.display,
++				ptr_event->xselectionrequest.requestor,
++				ptr_event->xselectionrequest.property,
++				ptr_event->xselectionrequest.target,
++				32, 
++				PropModeAppend, 
++				NULL,
++				0);
++
++		req_event = &(ptr_event->xselectionrequest);
++
+ 		notify_event.type      = SelectionNotify;
+ 		notify_event.display   = req_event->display;
+ 		notify_event.requestor = req_event->requestor;

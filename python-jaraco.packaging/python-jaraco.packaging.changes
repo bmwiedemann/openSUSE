@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Tue Feb 26 07:17:20 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add LICENSE
+- Remove bcond_with test, and skip two failing tests
+- Compile manually due to switch to pkgutil namespace technique
+- Add docs/*.rst to %doc
+- Update to v6.1
+  * Sphinx plugin now exposes ``package_url`` in HTML templates.
+- from 6.0
+  * Switch to pkgutil namespace technique for the ``jaraco`` namespace.
+- from 5.2
+  * Show command now also honors direct attributes on a Distribution instance.
+- from 5.1.1
+  * In Sphinx module, use universal newlines to avoid broken results on Windows.
+- from 5.1
+  * Added ``jaraco.packaging.make-tree`` utility for taking output from
+    pipdeptree and making a tree of it.
+- from 5.0
+  * Drop support for Python 2.6.
+  * Re-aligned to use pkg_resources-managed technique for
+    the jaraco namespace, all package of which must elect one
+    technique or another.
+
+-------------------------------------------------------------------
+Mon Nov 13 17:25:52 UTC 2017 - toddrme2178@gmail.com
+
+- Add namespace package that other jaraco packages can use.
+- Properly handle namespace package structure.
+  This guarantees the module is importable.
+
+-------------------------------------------------------------------
+Wed Jul  5 08:00:46 UTC 2017 - aloisio@gmx.com
+
+- Initial package (4.1)

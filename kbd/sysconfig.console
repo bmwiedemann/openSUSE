@@ -1,0 +1,49 @@
+## Path:        Hardware/Console
+## Description: Text console settings (see also Hardware/Keyboard)
+#
+
+## Type:	string
+## Default:	""
+#
+# Console settings.
+# Note: The KBD_TTY setting from Hardware/Keyboard (sysconfig/keyboard)
+# also applies for the settings here.
+#
+# Load this console font on bootup:
+# (/usr/share/kbd/consolefonts/)
+#
+CONSOLE_FONT=""
+
+## Type:	string
+## Default:	""
+#
+# Some fonts come without a unicode map.
+# (.psfu fonts supposedly have it, others often not.)
+# You can then specify the unicode mapping of your font 
+# explicitly. (/usr/share/kbd/unimaps/)
+# Normally not needed.
+#
+CONSOLE_UNICODEMAP=""
+
+## Type:	string
+## Default:	""
+#
+# Most programs output 8 bit characters, so you need a table to
+# translate those characters into unicode. That one can be specified
+# here. (/usr/share/kbd/consoletrans/)
+# (Note: If your console is in utf-8 mode you don't need this.)
+# If your code does not use a unicode mapping at all (because you
+# e.g. explicitly specified UNICODEMAP="none") you may circumvent
+# the translation via unicode, but load a map which directly maps
+# 8 bit output of your program to a font position.
+#
+CONSOLE_SCREENMAP=""
+
+## Type:	string
+## Default:	""
+#
+# for some fonts the console has to be initialized with CONSOLE_MAGIC.
+# CONSOLE_MAGIC can be empty or have the values "(B", ")B", "(K" or ")K".
+# Normally not needed (automatically handled by setfont).
+#
+CONSOLE_MAGIC=""

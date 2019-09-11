@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon Jan 28 09:25:27 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.6.0
+  * Introduce TPM2 support
+- Use %license tag for LICENSE
+
+-------------------------------------------------------------------
+Wed Jan 17 12:05:51 UTC 2018 - vcizek@suse.com
+
+- Update to version 0.6.0-dev1
+  * no upstream changelog
+  * fix build with openssl 1.1 (bsc#1074801)
+- fix rpm group
+
+-------------------------------------------------------------------
+Sat Mar 21 11:50:03 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.5.2
+  * No entry for this release
+- Update project home and download Urls
+- Add autoconf, automake and libtool build require; the tarball
+  comes from git and configure script has to be generated
+
+-------------------------------------------------------------------
+Tue Jan 14 14:51:14 UTC 2014 - meissner@suse.com
+
+- import 0.5.1
+  - software TPM driver library for hooking into QEMU
+

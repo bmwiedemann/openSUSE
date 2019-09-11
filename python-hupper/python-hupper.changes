@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Mon Aug  5 11:54:38 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.8.1
+  * Do not show the ``KeyboardInterrupt`` stacktrace when killing ``hupper``
+    while waiting for a reload.
+  * If the worker process crashes, ``hupper`` can be forced to reload the worker
+    by pressing the ``ENTER`` key in the terminal instead of waiting to change a
+    file.
+    See https://github.com/Pylons/hupper/pull/53
+  * On Python 3.5+ support recursive glob syntax in ``reloader.watch_files``.
+    See https://github.com/Pylons/hupper/pull/52
+
+-------------------------------------------------------------------
+Sun May 19 23:39:33 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Switch to wheel, which doesn't have the problematic
+  CC-noncomercial licensed documentation.
+
+-------------------------------------------------------------------
+Tue May  7 12:14:04 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.6.1
+  * lot of changes, see CHANGES.rst
+- remove -doc
+
+-------------------------------------------------------------------
+Tue Dec  4 13:07:06 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Jul 14 17:41:31 UTC 2017 - aloisio@gmx.com
+
+- Initial package (1.0)

@@ -1,0 +1,74 @@
+From: Matthias Gerstner <matthias.gerstner@suse.com>
+Date: 2017-06-26T10:53:24+0000
+
+- fix a locking issue of iptables-batch which can cause it to spuriously fail
+  when other programs modify the iptables rules in parallel (bnc#1045130).
+  This can especially affect SuSEfirewall2 during startup.
+
+---
+ iptables/iptables-batch.c |   21 +++++++++++++++++++++
+ iptables/xshared.c        |    8 +++++++-
+ 2 files changed, 28 insertions(+), 1 deletion(-)
+
+Index: iptables-1.6.2/iptables/iptables-batch.c
+===================================================================
+--- iptables-1.6.2.orig/iptables/iptables-batch.c
++++ iptables-1.6.2/iptables/iptables-batch.c
+@@ -403,6 +403,27 @@ main(int argc, char *argv[])
+ 	tables[3].name = "raw";
+ 	tables[3].handle = NULL;
+ 	current_table = &tables[0];
++	/*
++	 * We need to lock the complete batch processing against parallel
++	 * modification by other processes. Otherwise, we can end up with
++	 * EAGAIN errors.
++	 *
++	 * The do_command{4,6} function already locks itself, but the complete
++	 * call sequence needs to be locked until the commit is performed.
++	 *
++	 * Sadly, the xtables_lock() implementation is not very cooperative.
++	 * There is no unlock() equivalent. The lock file descriptor is smiply
++	 * left open until the process exits. Thus, we would have deadlocks
++	 * when calling do_command{4,6} the second time.
++	 *
++	 * To prevent this, part of this patch adds logic to avoid taking the
++	 * lock a second time in the same process in xtables_lock()
++	 */
++	const struct timeval wait_interval = {.tv_sec = 1};
++	if (!xtables_lock_or_exit(-1, &wait_interval)) {
++		fprintf(stderr, "failed to acquire the xtables lock\n");
++		exit(1);
++	}
+ 
+ 	while((r = getline(&iline, &llen, fp)) != -1)
+ 	{
+Index: iptables-1.6.2/iptables/xshared.c
+===================================================================
+--- iptables-1.6.2.orig/iptables/xshared.c
++++ iptables-1.6.2/iptables/xshared.c
+@@ -248,9 +248,13 @@ void xs_init_match(struct xtables_match
+ 
+ static int xtables_lock(int wait, struct timeval *wait_interval)
+ {
++	static bool already_locked = false;
+ 	struct timeval time_left, wait_time;
+ 	int fd, i = 0;
+ 
++	if (already_locked)
++		/* Avoid deadlocks, see iptables-batch.c */
++		return true;
+ 	time_left.tv_sec = wait;
+ 	time_left.tv_usec = 0;
+ 
+@@ -262,8 +266,10 @@ static int xtables_lock(int wait, struct
+ 	}
+ 
+ 	if (wait == -1) {
+-		if (flock(fd, LOCK_EX) == 0)
++		if (flock(fd, LOCK_EX) == 0) {
++			already_locked = true;
+ 			return fd;
++		}
+ 
+ 		fprintf(stderr, "Can't lock %s: %s\n", XT_LOCK_NAME,
+ 			strerror(errno));

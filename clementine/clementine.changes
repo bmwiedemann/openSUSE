@@ -1,0 +1,758 @@
+-------------------------------------------------------------------
+Sat Aug  3 07:02:03 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Added patch from git 0001-Fix-memory-leaks-6376.patch, this patch
+  replaces the tagreader section in:
+  delete_the_allocated_memory_in_respective_destructors.patch.
+
+-------------------------------------------------------------------
+Fri Jul 26 10:01:23 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Update to qt5 branch snapshot 1.3.1+git20190724
+- Removed incorporated patches:
+  0001-Improved-support-for-APEv2-tags.-6280.patch
+  0001-Prevent-UI-hang-during-device-scan.-6291.patch
+  0001-Fix-thread-safety-issues-when-initially-loading-devi.patch
+  0001-Handle-case-where-a-lister-adds-a-device-before-load.patch
+  0001-Fix-MoodbarPipeline-crash-on-gstreamer-error.patch
+  0001-Fix-potential-use-of-streamer-element-after-deletion.patch
+  0001-Free-decoder-bin-if-error-occurs-during-setup.patch
+  0001-Fix-several-gstreamer-object-leaks.patch
+  0001-Add-error-handling-path-for-async-song-loading.patch
+  0001-Fixes-for-APE-filetype.patch
+  0001-Simplify-some-statements.patch
+  0001-Set-non-zero-minimum-for-fade-times.patch
+  0001-Fix-a-number-of-potential-zero-value-field-values.patch
+  0001-Introduce-limit-for-number-of-tag-client-processes.patch
+  0001-Fix-crash-in-messagereply-6372.patch
+- Refreshed old patches
+- Added patch from git:
+  0001-Fix-memory-leaks-in-database.patch
+
+-------------------------------------------------------------------
+Thu Jul 25 13:04:21 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Recommend projectM-data for visualizations.
+
+-------------------------------------------------------------------
+Tue Jul 23 08:15:30 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Updated memory leak patch (boo#114144):
+  delete_the_allocated_memory_in_respective_destructors.patch
+- Fixed boo#1137785 with upstream patch from git:
+  0001-Fix-crash-in-messagereply-6372.patch
+- Added patch from git:
+  0001-Introduce-limit-for-number-of-tag-client-processes.patch
+
+-------------------------------------------------------------------
+Mon Jul 15 12:59:14 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Update to qt5 branch snapshot 1.3.1+git20190713.
+- Add patch for memory leaks from Jiri Slaby via boo#114144 :
+  delete_the_allocated_memory_in_respective_destructors.patch
+- Upstream changes:
+  *Fix blank window when restoring from systray (#6351)
+
+-------------------------------------------------------------------
+Fri Jul 12 09:27:13 UTC 2019 - Dave Plater <davejplater@gmail.com>
+- Update to qt5 branch snapshot 1.3.1+git20190609.
+- Verify boo#1103041 is fixed with:
+  0001-Fix-MoodbarPipeline-crash-on-gstreamer-error.patch
+- Remove incorporated patch:
+  0001-Fix-gst_buffer_unref-assertion-in-chromaprinter.patch
+
+-------------------------------------------------------------------
+Wed Jun  5 09:27:00 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Added patch from git 96a7e18a8d2be8d9f3223a6a6c81fbaac1179869 to
+  fix various Tag zero value issues:
+  0001-Fix-a-number-of-potential-zero-value-field-values.patch
+
+-------------------------------------------------------------------
+Fri May 24 07:05:52 UTC 2019 - plater <davejplater@gmail.com>
+
+- Build with -fsanitize=address.
+
+-------------------------------------------------------------------
+Wed May 22 10:03:04 UTC 2019 - plater <davejplater@gmail.com>
+
+- Update to qt5 branch snapshot 1.3.1+git20190423.
+- Added cherrypicked patches to bring qt5 branch to master's state:
+  0001-Fix-gst_buffer_unref-assertion-in-chromaprinter.patch
+  0001-Add-error-handling-path-for-async-song-loading.patch
+  0001-Fixes-for-APE-filetype.patch
+  0001-Simplify-some-statements.patch and
+  0001-Set-non-zero-minimum-for-fade-times.patch.
+- Upstream changes:
+  *Revert "Blacklist all NVidia drivers"
+  *setFirstSectionMovable() in playlistview.cpp
+
+-------------------------------------------------------------------
+Wed Mar 27 11:54:32 UTC 2019 - plater <davejplater@gmail.com>
+
+- Added use_system_qxtglobalshortcut.patch to improve kde
+  integration.
+_ Added cherrypicked patches to bring qt5 branch to master's state:
+  0001-Improved-support-for-APEv2-tags.-6280.patch,
+  0001-Prevent-UI-hang-during-device-scan.-6291.patch,
+  0001-Fix-thread-safety-issues-when-initially-loading-devi.patch,
+  0001-Handle-case-where-a-lister-adds-a-device-before-load.patch,
+  0001-Fix-MoodbarPipeline-crash-on-gstreamer-error.patch,
+  0001-Fix-potential-use-of-streamer-element-after-deletion.patch,
+  0001-Free-decoder-bin-if-error-occurs-during-setup.patch and
+  0001-Fix-several-gstreamer-object-leaks.patch.
+
+-------------------------------------------------------------------
+Sat Mar 16 09:20:03 UTC 2019 - plater <davejplater@gmail.com>
+
+- Update to git qt5 snapshot version 1.3.1+git20190213.
+- Removed incorporated patches: clementine-gcc7fix.patch and
+  clementine-gsd-dbus-shortcuts.patch.
+
+-------------------------------------------------------------------
+Sun Jan 13 16:13:20 UTC 2019 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update summary and description
+- Remove clementine-lastscope-size.patch, this bug is already fixed
+  upstream by me, and this patch does not apply cleanly.
+- Add clementine-gsd-dbus-shortcuts.patch to fix global shortcuts
+  using Gnome (GSD) D-Bus backend
+- Add needed alsa dependency
+- Remove unneeded libechonest dependency
+- Replace non-existent USE_BUILTIN_TAGLIB with USE_SYSTEM_TAGLIB
+  option
+- Remove unneeded taglib and SPMediaKeyTap directory
+
+-------------------------------------------------------------------
+Wed Dec  5 08:31:01 UTC 2018 - davejplater@gmail.com
+
+- Update to git qt5 snapshot version 1.3.1+git20181203, it fixes
+  build with libcryptopp7.
+- Clementine now uses qt5 to run.
+- Added clementine-hidden-systray-icon.patch, systray icon is
+  hidden at start up on some kf5 systems.
+
+-------------------------------------------------------------------
+Sun Dec  2 10:21:45 UTC 2018 - davejplater@gmail.com
+
+- Update to git qt5 snapshot version 1.3.1+git20181201
+
+-------------------------------------------------------------------
+Sat Nov  3 09:49:01 UTC 2018 - davejplater@gmail.com
+
+- Update to git qt5 snapshot version 1.3.1+git20181022
+- Removed incorporated patches: clementine-fix-sqlite.patch,
+  clementine-1.3.1-support-chromaprint-1.4.patch,
+  clementine-1.3.1-fix-library-clicks.patch, 6103.patch and
+  udisks2-support-for-devicemanager.patch.
+- Added patches from Fedora: clementine-lastscope-size.patch and
+  clementine-udisks-headers.patch.
+- Disable man page build for Leap:15 as it causes build failures.
+
+-------------------------------------------------------------------
+Mon Oct 29 12:10:39 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias and openSUSE-irrelevant wording from description.
+
+-------------------------------------------------------------------
+Sun Oct 28 19:56:58 UTC 2018 - Andrey Karepin <egdfree@opensuse.org>
+
+- added patch 6103.patch with fix track change hang
+
+-------------------------------------------------------------------
+Sat Dec  9 11:26:42 UTC 2017 - fabian@ritter-vogt.de
+
+- Do not build against Qt WebKit 4
+
+-------------------------------------------------------------------
+Tue Jul 25 12:44:14 UTC 2017 - tchvatal@suse.com
+
+- Do not recommend fluendo as mp3 is enabled out of the box now in gst
+- Remove if0 conditional that is never triggered
+
+-------------------------------------------------------------------
+Tue Jul 25 11:03:59 UTC 2017 - aloisio@gmx.com
+
+- Added clementine-1.3.1-support-chromaprint-1.4.patch to fix
+  build
+
+-------------------------------------------------------------------
+Mon Apr  3 14:08:04 UTC 2017 - davejplater@gmail.com
+
+- Fix gcc 7 build with clementine-gcc7fix.patch
+
+-------------------------------------------------------------------
+Wed Feb  1 10:27:40 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Mon Jul 11 13:31:02 UTC 2016 - davejplater@gmail.com
+
+- Fix factory build for x86_64 with clementine-moodbar-fpic.patch
+
+-------------------------------------------------------------------
+Fri Jun 24 15:15:24 UTC 2016 - sor.alexei@meowr.ru
+
+- Add clementine-1.3.1-fix-library-clicks.patch: fix a misbehaviour
+  while clicking on tree items, from upstream commit b85d09c by
+  Ivan Leontiev.
+
+-------------------------------------------------------------------
+Sun Jun 19 15:11:29 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added udisks2-support-for-devicemanager.patch from upstream
+
+-------------------------------------------------------------------
+Wed Apr 20 10:37:39 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.3.1:
+  * Fix ratings being deleted when upgrading from older versions.
+
+-------------------------------------------------------------------
+Sun Apr 17 21:43:20 UTC 2016 - olaf@aepfle.de
+
+- Remove unused ffmpeg-devel
+
+-------------------------------------------------------------------
+Sun Apr 17 13:34:42 UTC 2016 - sor.alexei@meowr.ru
+
+- Add clementine-fix-sqlite.patch (fix startup with default
+  SQLite 3.12+) from
+  https://github.com/clementine-player/Clementine/issues/5297#issuecomment-196211148
+- Add -fno-strict-aliasing to CXXFLAGS (strict-aliasing-punning).
+
+-------------------------------------------------------------------
+Sat Apr 16 12:08:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.3.0:
+  * VK.com support.
+  * Seafile support (server >= 4.4.1).
+  * Add Ampache compatibility (through Subsonic service).
+  * Add new analyser "Rainbow Dash".
+  * Answer to the ultimate question of life, the universe and
+    everything.
+  * Add "Psychedelic Colour" mode to all analysers.
+  * Add left click to fullsize cover on playing widget.
+  * Add m4b support for non-drm files.
+  * Ignore English articles for library sorting.
+  * Improve the organise dialog.
+  * Add an option to warn before closing a playlist tab.
+  * Add an option to disable the pause notification.
+  * Add options to hide some internet services.
+  * Add an option to disable inline song metadata editing.
+  * Add "details below" and "no details" now playing widget
+    options.
+  * Add "no song details" now playing widget option.
+  * Add icons to the extras menu.
+  * Add a source icon for CD tracks.
+  * Allow user to remove directories in the Files tab.
+  * Add ability to remove unavailable items from playlist.
+  * Add a button to the transcode dialog to add all files in a
+    directory.
+  * Make it impossible to collapse either side of the MainWindow
+    splitter.
+  * Add menu items for updating and doing a full rescan of
+    Google Drive.
+  * Increase Soundcloud cover image size.
+  * Add the ability to pause Spotify tracks.
+  * Add the ability to add or remove a Spotify track to a Spotify
+    playlist through context menu.
+  * Add Spotify tracks to Spotify playlists by drag and drop.
+  * Add ability to get a link to share Spotify playlists and songs.
+  * Improve handling of Spotify Top Tracks and compilations.
+  * Add playlist actions to Spotify songs.
+  * Add ability to automatically set podcast as listened after
+    successfully sending it to a device.
+  * Add ability to order podcasts by age.
+  * Allow user to download multiple podcasts at the same time.
+  * Add ability to cancel podcast downloads in progress.
+  * Allow user to hide listened podcast episodes.
+  * Huge improvement of the speed at startup.
+  * Improve performance of mass rating changes.
+  * Improve ripping performance.
+  * Persistent cache for pixmaps. Huge improvement of the
+    performance when scrolling the library for example.
+  * Add AppData file for Clementine (for GNOME and KDE Software
+    Centres).
+  * Add iPod-like behaviour to previous button.
+  * Add HipHop and Kuduro equalisers.
+  * Remember current playlist between restarts.
+  * IDv3 tag lyrics support.
+  * Scroll to last played track when switching playlists.
+  * Add stop after each song repeat mode.
+  * Sort discs numerically when using Group by disc.
+  * Add ability for sort by group and performer in the library view.
+  * Parse the year of a disc from musicbrainz.
+  * Add track intro mode.
+  * Add ability to add a search term with tab and space in the
+    smart playlist window.
+  * Add love/ban (Last.fm) global shortcuts.
+  * Add support for "original year" tags.
+  * Send album artist to Last.fm with liblastfm >= 1.0.0.
+  * Add sample rate selection.
+  * Add option to change the time step when seeking using the
+    keyboard.
+  * Playlist sort by album considers disc and track numbers.
+  * Add options for double clicking song in the playlist.
+  * Volume slider handles glow effect using system theme.
+  * Library view sort line themable.
+  * Show track durations in the CD ripper dialog.
+  * Add ability to read REM DISC tag from Cue sheet.
+  * Add ability to lock/unlock rating edit status.
+  * Add the support of trackNum elements in XSPF.
+  * Add "Smart Playlists" for Subsonic.
+  * Add lyrics from AZLyrics.
+  * Add lyrics from bollywoodlyrics.com.
+  * Add lyrics from hindilyrics.net.
+  * Add lyrics from lololyrics.com.
+  * Add lyrics from Musixmatch.
+  * Add lyrics from Tekstowo.pl.
+  * Fix crash when click on a SoundCloud entry in internet tab.
+  * Fix crash when marking podcast as listened.
+  * Fix crash after pressing OK in the device properties window.
+  * Fix stop after track which doesn't remove now playing.
+  * Fix play bleeding into next track after auto stop.
+  * Fix analyser framerate when mouseover play scrubber.
+  * Fix issues with buffers sent to analyser.
+  * Fix block analyser framerate.
+  * Fix divide-by-zero possibility with small buffers at end of
+    track.
+  * Fix divide-by-zero possibility in moodbar.
+  * Fix oversized album cover art.
+  * Clean cover art from /tmp.
+  * Fix the rendering of the little numbers in the boxes on queued
+    items in the playlist.
+  * Fix parsing of MusicBrainz data for discid.
+  * Fix random artifacting on nyanalyser on startup.
+  * Fix podcasts length issues (which caused issues with seeking
+    for example).
+  * Fix too small equaliser window size.
+  * Fix labels which don't inherit system text colours in the edit
+     tag dialog.
+  * Fix the mess of the queue manager after playlist re-sort.
+  * Fix for queue ordering issue in the playlist view when using
+    Ctrl+D to dequeue a track.
+  * Fix detection of parent-relative paths in playlist saving.
+  * Fix path seperators issue when reading playlists.
+  * Fix m3u parser issue when an artist's name has a hyphen.
+  * Fix bug with percents when fetch the Jamendo catalogue.
+  * Fix a little dropout when transition to next track.
+  * Fix broken RockRadio.com for premium users.
+  * Fix Subsonic login with + characters in the password.
+  * Fix accents issue in when save playlist in xspf format.
+  * Fix issues with some songs length thanks to Taglib. People with
+    Taglib installed on their system will have to wait a new
+    release of Taglib.
+  * Fix moodbars not generating correctly.
+  * Fix socket leak in moodbar.
+  * Fix memory leak in tagreader.
+  * Fix crash when trying to fingerprint but missing a plugin.
+  * Fix infinite scan with Subsonic when the library is empty.
+  * Fix performer tag for mpeg.
+  * Fix parsing issues with "innovative" datetime formats.
+  * Fix playback breaks in Spotify.
+  * Fix memory leaks.
+  * Fix crash when stopping song that is fading after pausing.
+  * Fix crash when trying to download a track but there is no
+    current one playing.
+  * Fix default spinner gif image which shows white pixels around
+    the image.
+  * Fix setting album artist tag for FLAC files if it already
+    exists.
+  * Fix crash when Clementine lists the albums on Ampache.
+  * Fix Last.fm scrobbling after seek.
+  * Fix metadata not processed properly for some streams (Akamai).
+  * Fix save state when the song was paused.
+  * Fix some issues in Boom and Turbine analysers.
+  * Fix song continuously rewinding when seeking using keyboard
+    arrow keys.
+  * Fix OSD re-posistioning which doesn't work on multiple monitors.
+  * Fix Sonogram state while paused.
+  * Fix crash when changing 'group by' while album covers are still
+    loading.
+  * Fix loss of valid data from an mp3 file when using the metadata
+    editor.
+  * Fix track slider twitching.
+  * Fix Di.fm stations stuck when try to play them without Internet.
+  * Make mood files hidden in NTFS.
+  * Fix time labels blinking when playing streams without known
+    duration.
+  * Fix tag fetcher which applies incorrect tags for songs without
+    any results.
+  * Fix Clementine getting stuck when transitioning from a local
+    track to a Spotify track with crossfade disabled.
+  * Fix previous track when playing a dynamic random mix.
+  * Fix fullscreen album covers for monitors in portrait mode.
+  * Don't scale down star icons by 1 pixel.
+  * Remove Ubuntu One support.
+  * Remove Discogs support.
+  * Remove GrooveShark support.
+  * Remove Radio GFM support.
+  * Update to GStreamer 1.x.
+  * Don't compile vreen with link-time optimisations.
+  * Use the system's sha2 library if it's available.
+  * Remove libindicate-qt.
+  * Remove internal copy of libechonest and add it as dependency.
+  * Use libcrypto++ instead of QCA.
+  * Update TagLib to 1.10.0.
+  * Follow freedesktop.org specifications for icons.
+  * Add a 128x128 version of the Clementine icon.
+  * Remove internal copy of chromaprint and add it as
+    dependency.
+  * Don't depend on libplist or usbmuxd.
+- Use built-in libmygpo-qt: Clementine needs currently
+  not released libmygpo-qt 1.0.9+.
+- Add sni-qt to recommendations.
+- Remove
+  clementine-1.2.2-dont-use-hacks-but-proper-sintax-for-non-wrapping-in-namespace.patch:
+  merged upstream.
+- Some spec cleanup.
+
+-------------------------------------------------------------------
+Sat Mar  5 12:21:51 UTC 2016 - davejplater@gmail.com
+
+- Added recommends for gstreamer-0_10-plugins--fluendo_mp3 to fix
+  missing plugins message. See boo#904155
+
+-------------------------------------------------------------------
+Sun Nov  2 18:12:19 UTC 2014 - BM-2cTD873dxoyND9nkERkefY9xMV8Vy2ga2w@bitmessage.ch
+
+- check for 1230 in spec-file and do not use cmake-rpm-macro for 12.3
+
+-------------------------------------------------------------------
+Wed Oct 15 18:34:40 UTC 2014 - seanpwatson@live.com
+
+- Update to 1.2.3
+  * Fix compilation with GCC 4.9
+  * Fix poor search performance with sqlite 3.8.
+- Dropped clementine-1.2.2-add-missing-header.patch:Fixed upstream
+- Dropped clementine-1.2.2-add-missing-include.patch:Fixed upstream
+
+-------------------------------------------------------------------
+Fri Mar 28 20:14:32 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added clementine-1.2.2-dont-use-hacks-but-proper-sintax-for-non-wrapping-in-namespace.patch,
+  fixes build with newer/stricter CMake
+- As per patch, re-enable DBus
+- Drop udisks BuildRequires, not needed
+
+-------------------------------------------------------------------
+Thu Mar 27 12:30:13 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 1.2.2:
+  * upstream moved homepage
+  * android remote support
+  * Rename SkyDrive to OneDrive.
+  * Don't include the user's IP address in the log (from the network remote
+    settings dialog).
+  * (Debian) Fix a bug with HTTPS logins to all cloud storage providers.
+  * (Mac OS X) Fix a bug in the workaround for a weird font issue on 10.9.
+  * (Mac OS X) Fix rendering of source icons on retina displays.
+  * (Android Remote) Don't advertise songs that aren't available.
+  * (Android Remote) Fix playing songs with special characters in filenames.
+- Cleanup with spec-cleaner
+- Remove support for < 12.3 codepaths
+- Remove unused patches:
+  * clementine-1.1.1-fixboostparseerror.patch
+  * clementine-desktop-fix.patch
+- Add patches for build from upstream:
+  * clementine-1.2.2-add-missing-header.patch
+  * clementine-1.2.2-add-missing-include.patch
+- Disable building with Werror, it is always bad idea to do so.
+- Add dependency over udisks as it is used by build
+- Use system projectM again as it seems to build fine.
+- Bug workaround: disable DBUS interface as it fails to build for
+  some non-aparent reason.
+
+-------------------------------------------------------------------
+Thu Nov 28 12:48:23 UTC 2013 - fisiu@opensuse.org
+
+- Update to 1.2.1:
+  * Fix library download in the network remote.
+  * Fix removing songs from playlist in the network remote.
+  * Fix login failures with box.com.
+  * Fix a typo that would prevent the Spotify downloader button from
+    ever being shown.
+
+-------------------------------------------------------------------
+Thu Oct 17 11:19:45 UTC 2013 - fisiu@opensuse.org
+
+- Update to 1.2.0:
+  * Add support for indexing and playing music from Box, Dropbox, Skydrive,
+    and Ubuntu One.
+  * Add support for Subsonic.
+  * Remote control support for Android.
+  * Add a Playlist tab to the sidebar.  Starred playlists are saved in here
+    when their tabs are closed.
+  * Add configurable blur & opacity to album art when used as a playlist
+    background.
+  * Support Opus where available.
+  * Support .mka and .oga file extensions.
+  * Parsing support for WPL playlists.
+  * Sort providers by user preference.
+  * Add year and bitrate to MPRIS2 messages.
+  * Add "not equals" operator to fields in the smart playlist wizard.
+  * Add an option to write ratings, play count and scores to files.
+  * Add options to show the rating and score on the OSD.
+  * Add support for POPM tags.
+  * Add support for FMPS tags in Ogg, FLAC, MP4 and ASF files.
+  * Compile the bundled Taglib with ASF, MP4 and Opus support.
+  * Make it possible to cancel cover searches.
+  * Add an option to resume playback on startup.
+  * Add support for Performer and Grouping tags.
+  * Add Radio GFM.
+  * Add an Apply button to the settings dialog.
+  * Make it possible to mark all episodes of a podcast as new/listened.
+  * Add an option for fading in/out on pause/unpause.
+  * Add stereo balance slider to the equalizer.
+  * Add a --restart-or-previous commandline flag.
+  * Allow files to be transcoded directly from the playlist.
+  * Export downloaded album covers
+  * Removed iDevice support - it doesn't work well with modern devices and
+    libgpod isn't being updated to support them.
+  * Many bugfixes
+- Drop sites.js and ultimate_providers.xml: fixed upstream.
+- Drop clementine-nowerror.patch: fixes upstream.
+- Drop Add-a-setting-for-disabling-moodbar-generation.patch: fixed upstream.
+- Drop clementine-libimobiledevice-fix.patch: iDevice support dropped upstream
+
+-------------------------------------------------------------------
+Wed Oct  2 08:40:37 UTC 2013 - speilicke@suse.com
+
+- Only apply clementine-libimobiledevice-fix.patch on 13.1 or later
+  to fix build
+
+-------------------------------------------------------------------
+Wed Jul 24 04:58:05 UTC 2013 - coolo@suse.com
+
+- port usage of libimobiledevice to new version (upstream killed
+  the feature in git though)
+
+-------------------------------------------------------------------
+Thu May  2 09:54:32 UTC 2013 - jslaby@suse.com
+
+- Add-a-setting-for-disabling-moodbar-generation.patch: Add a setting
+  for disabling moodbar generation. Fixes issue #3161 (bnc#818127)
+
+-------------------------------------------------------------------
+Sun Apr 28 09:15:24 UTC 2013 - davejplater@gmail.com
+
+- Fixed bnc#815434 with "-DCMAKE_BUILD_TYPE:STRING=Release" flag.
+- Fixed factory build with clementine-1.1.1-fixboostparseerror.patch
+  see also QTBUG-22829
+
+-------------------------------------------------------------------
+Thu Apr  4 09:33:36 UTC 2013 - davejplater@gmail.com
+
+- Fixed factory build with clementine-nowerror.patch
+
+-------------------------------------------------------------------
+Wed Feb  6 11:13:14 UTC 2013 - davejplater@gmail.com
+
+- Fix 12.1 build by requiring libproto-devel as well as
+  libproto-lite6
+- Require libtag1 >= 1.8 see bnc#779411
+
+-------------------------------------------------------------------
+Wed Jan  2 18:14:59 UTC 2013 - fisiu@opensuse.org
+
+- Fix polish lyrics parser.
+  http://code.google.com/p/clementine-player/issues/detail?id=3303
+
+-------------------------------------------------------------------
+Thu Dec  6 09:05:06 UTC 2012 - saschpe@suse.de
+
+- Update to version 1.1.1:
+  + Bundle Taglib 1.8 on older distros to enable Google Drive support
+    in Clementine.
+- Properly provide/obsolete clementine-kde
+- Drop support for openSUSE-11.4
+- Use the same desktop file categories as Amarok
+
+-------------------------------------------------------------------
+Mon Nov  5 21:12:02 UTC 2012 - fisiu@opensuse.org
+
+- Update to version 1.1.0:
+  + Podcast support with integration with gpodder.net.
+  + Add support for indexing and playing music from Google Drive.
+  + Add Soundcloud support.
+  + Add jazzradio.com support.
+  + Moodbar support.
+  + Many other changes and a lot of bug fixes, details available
+    in Changelog file.
+- Subpackage clementine-kde is obsolete: dropped plasma runner.
+
+-------------------------------------------------------------------
+Thu Oct  4 09:44:34 UTC 2012 - saschpe@suse.de
+
+- Add build requirement on freeglut-devel (GL/glu.h include missing)
+
+-------------------------------------------------------------------
+Mon Sep 17 13:10:04 UTC 2012 - davejplater@gmail.com
+
+- Update to 17/09/2012 git head to fix bnc#779411
+- For upstream changes see :
+  /usr/share/doc/packages/clementine/Changelog
+
+-------------------------------------------------------------------
+Thu May  3 11:23:59 UTC 2012 - davejplater@gmail.com
+
+- Added libprotobuf-lite6 to 12.1 build to fix builds for Tumbleweed.
+
+-------------------------------------------------------------------
+Mon Apr 30 05:06:15 UTC 2012 - davejplater@gmail.com
+
+- Update to 26/04/2012 git head to fix factory build
+- Upstream added clementine-tagreader
+
+-------------------------------------------------------------------
+Sun Apr  8 16:45:45 UTC 2012 - davejplater@gmail.com
+
+- Fixed libcdio, changed build dependency to pkgconfig(libcdio)
+
+-------------------------------------------------------------------
+Sun Feb  5 13:33:47 UTC 2012 - seiler@b1-systems.de
+
+- modified source patch to an dynamical download link
+- resubmitted package with gzip compressed sources instead of bzip2
+
+-------------------------------------------------------------------
+Thu Feb  2 20:43:37 UTC 2012 - seiler@b1-systems.de
+
+- changed fftw devel dependency to pkgconfig dependency
+
+-------------------------------------------------------------------
+Wed Feb  1 11:39:30 UTC 2012 - seiler@b1-systems.de
+
+- updadet to version 1.0.1
+- added another dependency
+- modified file section to /usr/lib/ instead of /usr/lib64
+
+-------------------------------------------------------------------
+Tue Jan 24 09:02:49 UTC 2012 - saschpe@suse.de
+
+- Use BuildRequires: libcdio-devel instead of pkgconfig() to avoid
+  "Have choice..."
+
+-------------------------------------------------------------------
+Mon Jan  2 23:35:58 UTC 2012 - fisiu@opensuse.org
+
+- Build with plasma search support, add -kde subpackage.
+
+-------------------------------------------------------------------
+Sun Jan  1 23:43:52 UTC 2012 - fisiu@opensuse.org
+
+- Use pkgconfig() instead -devel in BuildRequires.
+
+-------------------------------------------------------------------
+Fri Dec 30 17:04:52 UTC 2011 - fisiu@opensuse.org
+
+- Update to 1.0.0:
+  + Add audio CD support.
+  + Add Amazon as an alternate provider for album cover art.
+  + Add a global search feature.
+  + Add Spotify support.
+  + Add Grooveshark support.
+  + Add Digitally Imported (di.fm) and Sky.fm radio stations.
+  + Many other changes and a lot of bug fixes, details available
+    in Changelog file.
+
+-------------------------------------------------------------------
+Wed Sep  7 14:26:27 UTC 2011 - davejplater@gmail.com
+
+- Merged KDE:Extra build with mmaps build and added libnotify and
+  libQtWebKit to the build for extra functionality.
+
+-------------------------------------------------------------------
+Wed Aug 17 13:58:47 UTC 2011 - saschpe@suse.de
+
+- Added BuildRequires:
+  * gstreamer-0_10-plugins-base-devel to fix build on openSUSE:12.1
+  * libcdio-devel to enable Audio CD support
+
+-------------------------------------------------------------------
+Wed Aug 17 12:19:46 UTC 2011 - saschpe@suse.de
+
+- Update to 0.7.3:
+  * Translation updates
+  * Drag'n'drop improvements
+  * Fixed Last.fm authentication
+  * Several fixed issues
+
+-------------------------------------------------------------------
+Thu May 26 19:50:38 UTC 2011 - davejplater@gmail.com
+
+- Added post and postun to update desktop database
+
+-------------------------------------------------------------------
+Wed May 25 00:55:30 UTC 2011 - davejplater@gmail.com
+
+- Removed gnutls from BuildRequires due to gloox license problems.
+  see bnc#695820
+
+-------------------------------------------------------------------
+Thu May 19 21:00:36 UTC 2011 - davejplater@gmail.com
+
+- Added man page and BuildRequires: hicolor-icon-theme to own the
+  icon directories.
+
+-------------------------------------------------------------------
+Sat Apr  2 16:43:54 UTC 2011 - fisiu@opensuse.org
+
+- Update to 0.7.1, bugfix release.
+- Added gnutls to BuildRequires.
+
+-------------------------------------------------------------------
+Tue Mar 29 22:30:20 UTC 2011 - fisiu@opensuse.org
+
+- Update to 0.7:
+  + brand new edit tag dialog
+  + support for MusicBrainz tagging
+  + support for CUE sheets
+
+-------------------------------------------------------------------
+Sat Dec 11 18:56:21 UTC 2010 - bitshuffler@opensuse.org
+
+- Update to 0.6.
+
+-------------------------------------------------------------------
+Thu Nov 11 19:11:04 UTC 2010 - bitshuffler@opensuse.org
+
+- Enable MTP and iPod support.
+
+-------------------------------------------------------------------
+Sun Oct  3 10:15:04 UTC 2010 - bitshuffler@opensuse.org
+
+- Update to 0.5.3.
+
+-------------------------------------------------------------------
+Sat Sep 25 19:41:33 UTC 2010 - bitshuffler@opensuse.org
+
+- Update to 0.5.1.
+
+-------------------------------------------------------------------
+Mon Sep 20 21:38:41 UTC 2010 - bitshuffler@opensuse.org
+
+- Update to 0.5.
+
+-------------------------------------------------------------------
+Sat Jul 10 17:18:20 UTC 2010 - bitshuffler@opensuse.org
+
+- Update to 0.4.2.
+
+-------------------------------------------------------------------
+Tue May 18 13:11:12 UTC 2010 - bitshuffler@opensuse.org
+
+- Updated to 0.3.
+
+-------------------------------------------------------------------
+Fri Mar 26 08:51:28 UTC 2010 - bitshuffler@opensuse.org
+
+- Updated to 0.2.
+
+-------------------------------------------------------------------
+Mon Mar  1 17:22:08 UTC 2010 - bitshuffler@opensuse.org
+
+- Initial package.
+

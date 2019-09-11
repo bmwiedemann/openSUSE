@@ -1,0 +1,152 @@
+-------------------------------------------------------------------
+Thu Aug  8 17:59:59 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Apply backup_pgsql.patch, forgotten before...
+
+-------------------------------------------------------------------
+Wed Aug  7 19:22:05 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add a couple of patches from debian/upstream
+  rsnapshot-lvm-undef.patch
+  remove-dead-external-css-link.patch
+  rsnapreport_rsync_output.patch
+
+-------------------------------------------------------------------
+Mon Jun 11 12:23:21 UTC 2018 - mpluskal@suse.com
+
+- Modernise spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jul  5 23:55:50 UTC 2016 - Greg.Freemyer@gmail.com
+
+- Add the docs subfolder to %doc
+
+-------------------------------------------------------------------
+Tue Dec 22 23:21:04 UTC 2015 - nico.kruber@gmail.com
+
+- Update to 1.4.2
+  * Fix double 8 bit shift bug introduced with github issue #65.
+    Refs github issues #102, #103, #114, #118
+    (bnc#987643)
+
+-------------------------------------------------------------------
+Fri Oct  2 18:38:17 UTC 2015 - hpj@urpla.net
+
+- add logrotate config and dependency for /var/log/rsnapshot
+
+-------------------------------------------------------------------
+Mon Sep 21 09:21:47 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.4.1
+  * Capture rsync's output right (Github issue 102)
+- Changes for 1.4.0
+  * Tidy the code with perltidy
+  * Fix --rsh command line option
+  * The --rsh option of rsync got errornously quoted (Debian Bug #743310)
+  *  Define traps to unmount LVM parts after fail If you use LVM 
+    snapshots and rsnapshot fails, rsnapshot will unmount and 
+    remove the snapshot, too.
+  * cd to home before executing a command
+  * if($use_lazy_deletes): remove lockfile in any case
+  * Bail on failing cmd_(pre|post)exec If one of those commands 
+    fails, rsnapshot will exit with exit code != 0
+  * Capture output from rsync and print/log if level is >=4
+  * Print rsnpashot's PID when logging to syslog, instead of the 
+    logger's PID.
+  * make script uses pod2man instead of /usr/bin/pod2man
+  * rsnapshot-diff: Fixed removed files reported as addition (+ mark)
+  * Introduction of backup_exec resource for running unix commands
+    interspersed with backup and backup_script jobs.
+  * check for SIGPIPE, mainly in case cron fails when trying to mail
+    (this is probably why rsnapshot dies mysteriously if it outputs when
+    called by cron on a system which does not have mail working).
+  * add test case for -t showing --link-dest when there is only one snapshot
+  * if gnu_cp_al fails, test out a simple cp -al command before suggesting
+    that the cp does not support -al.
+  * When snapshot_root does not exist, check existence of parent directories.
+  * include_conf `command` now strips backticks before execution (bug fix
+    based on suggestion from David Osborn).
+  * Ignore extraneous output from lvremove command.  (patch by Tim Connors)
+  * Update current maintainer status in Authors section of man page.
+    (David Cantrell stepped down between 1.3.0 and 1.3.1.)
+  * Remove some old (1.1.x -> 1.2.0) upgrade notices from man page.
+  * Allow linux_lvm_cmd_* in config file to have options also.
+  * Allow `backticks with options` in include_conf.
+  * Fix inaccurate omission of --link-dest in test-mode output
+  * rsnapshot-diff: Add -s option to show size of each file.
+- Drop no longer needed patches 
+  * rsnapshot-1.3.1-perl5.18.patch
+  * rsnapshot-1.3.1-no_usr_local.patch
+
+-------------------------------------------------------------------
+Sun Apr 12 12:33:07 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Cleanup spec file with spec-cleaner
+- Update dependencies
+
+-------------------------------------------------------------------
+Sun Dec 28 05:31:18 UTC 2014 - bwiedemann@suse.com
+
+- use explicit pathes for logger and ssh
+  as autodetection at build-time goes wrong
+
+-------------------------------------------------------------------
+Thu Jul 25 13:28:52 UTC 2013 - tchvatal@suse.com
+
+- Split test phase to check one.
+- Remove useless clean phase.
+- Silence some rpmlint macros.
+
+-------------------------------------------------------------------
+Wed Jun 26 22:45:40 UTC 2013 - Greg.Freemyer@gmail.com
+
+- Add a patch to correct syntax needed by perl 5.18:
+    rsnapshot-1.3.1-perl5.18.patch
+- Get rid of changelog entries form specfile
+
+-------------------------------------------------------------------
+Thu Apr 16 02:00:14 CEST 2009 - ro@suse.de
+
+- buildfix: refresh patches 
+
+-------------------------------------------------------------------
+Mon Sep  8 14:35:07 CEST 2008 - hvogel@suse.de
+
+- Update to 1.3.1
+  * Fix help message mixup in lines between -c and -t
+  * Allow named pipe as logfile
+  * Include rsnapshot-copy script
+  * Allow `backticks` in include_conf.
+  * hopefully fix bug with link_dest not being used on second and
+    later backups when you have link_dest 1 and sync_first 1
+  * Added stop_on_stale_lockfile
+  * Added multi-line config options
+  * The 'interval' config option is now called 'retain'
+
+-------------------------------------------------------------------
+Thu Aug 16 23:39:00 CET 2007 - guru@unixtech.be
+
+- added call to make test
+- now requires perl-lchown
+- changed sync_first configuration to default (0) instead of 1: http://www.linux-club.de/ftopic78019.html
+
+-------------------------------------------------------------------
+Wed May 23 09:57:38 CEST 2007 - mskibbe@suse.de
+
+- fix path to binary in man and info pages 
+
+-------------------------------------------------------------------
+Mon Jan 15 08:36:25 CET 2007 - mskibbe@suse.de
+
+- update to version 1.3.0 which
+  o fix some bugs
+  o includes some new and updated man-pages
+  o includes more examples
+  o Change "Perhaps this is not GNU cp?" error message
+
+-------------------------------------------------------------------
+Fri Jul  7 09:19:54 CEST 2006 - mskibbe@suse.de
+
+- create package 
+

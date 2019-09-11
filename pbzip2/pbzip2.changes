@@ -1,0 +1,177 @@
+-------------------------------------------------------------------
+Wed Mar 14 08:40:45 UTC 2018 - mpluskal@suse.com
+
+- Modernize spec file with spec-cleaner
+- Drop rpm macro
+
+-------------------------------------------------------------------
+Sun Jul  3 15:21:59 UTC 2016 - mpluskal@suse.com
+
+- Simplify building
+- Use both optflags and default CXXFLAGS
+
+-------------------------------------------------------------------
+Sat Feb 20 14:23:18 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.1.13
+  * Bugfix release
+- Drop no longer needed pbzip2-makefile.patch
+
+-------------------------------------------------------------------
+Thu Mar 12 08:28:33 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Remove pbzip2-fix_printf_format.patch
+- Update to 1.1.12
+  * for complete list of changes see provided ChangeLog
+
+-------------------------------------------------------------------
+Thu Nov 03 08:28:13 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.1.6:
+  * fixed bug - deadlock due to unsynchronized broadcasts (bug #876686)
+  * prevent deletion of input files on error (bug #874543)
+  * document how to compress/decompress from standard input (bug #820525)
+  * added more detailed kernel error messages (bug #874605)
+  * error-handling fixes for multi-archive scenarios (bug #883782)
+- use original upstream format archive .gz instead of .bz2 to avoid any
+  potential chicken/egg (requires bzip2 to uncompress the pbzip2 sources)
+
+-------------------------------------------------------------------
+Thu Jul 21 01:14:35 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.1.5:
+  * SECURITY FIX: fixes excessive output permissions while compress/decompress
+    is in progress; it now emulates the same behaviour as bzip2
+
+-------------------------------------------------------------------
+Wed Apr 27 22:06:59 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.1.4:
+  * fixes a hang on decompress with --ignore-trailing-garbage=1 when producer
+    is interrupted on trailing garbage
+  * adds an example to help for decompression piped to tar
+  * fixes a typo in the Trailing Garbage printed message
+
+-------------------------------------------------------------------
+Tue Mar 29 00:05:13 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.1.3:
+  * fixes a hang on decompress with --ignore-trailing-garbage=1 when using more
+    than 2 CPUs
+  * the default extension on decompress of .tbz2 has been changed to .tar for
+    bzip2 compatibility
+  * trailing garbage errors will now be printed even when in quiet mode
+
+-------------------------------------------------------------------
+Sat Feb 19 23:02:36 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.1.2:
+  * modifies Consumer_decompress throttling to prevent potential 
+    deadlock/infinite loops in certain situations
+  * fixes a deadlock bug and performance issue when consumer is working with 
+    long bzip2 sequences
+  * fixes a bug which caused a hang while decompressing a prematurely truncated 
+    bzip2 stream
+  * fixes a hang on decompression of some truncated archives
+  * adds --ignore-trailing-garbage for non-standard archives such as gentoo 
+    packages
+- reformatted changes file
+
+-------------------------------------------------------------------
+Mon Dec 20 18:45:09 UTC 2010 - pascal.bleser@opensuse.org
+
+- reverting to upstream release, changed version to 1.1.0+0 to be newer than 
+  1.1.0_git...
+- add patches:
+  * pbzip2-makefile.patch: adds support for BINDIR, MANDIR, DESTDIR and 
+    OPTFLAGS
+  * pbzip2-fix_printf_format.patch: fix the many printf format errors in debug 
+    and error reporting statements
+  * pbzip2-fix_unused_result.patch: fix not using the result value of fwrite()
+- replace macros.pbzip2 with macros.pbzip2.in and a placeholder to inject the 
+  build time value of %{_bindir}
+- add symbolic links to the manpage for pbunzip2 and pbzcat too, thanks to 
+  darix for pointing this out
+- changed compression of upstream tarball from xz to bzip2 in order to build on 
+  older openSUSE and SLE releases
+
+-------------------------------------------------------------------
+Thu Dec  9 23:26:46 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- add an rpm macro file to overload %__bzip2 definition 
+
+-------------------------------------------------------------------
+Thu Dec  9 23:07:53 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Update to git snapshot, only difference is that Build
+  is now using autotools. 
+
+-------------------------------------------------------------------
+Tue Apr 20 00:00:47 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.1.1:
+  * improves the decompression performance of long bzip2 streams of large 
+    single-stream bzip2 blocks
+  * pbzip2 should now decompress files created with bzip2 at least as quickly 
+    as bzip2, or slightly faster
+  * handles decompression of long bzip2 streams incrementally instead of 
+    loading whole streams in memory at once
+
+-------------------------------------------------------------------
+Mon Mar 15 17:25:44 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.1.0:
+  * adds support for multi-threaded decompression using STDIN/pipes and 
+    throttling compression to prevent memory exhaustion with slow output pipe
+  * fixes a bug that did not allow command line parameters to be used when 
+    compressing data from STDIN
+  * contains major improvements to protection of shared variables, error and 
+    signal handling, and program termination
+  * many more minor enhancements and bugfixes
+
+-------------------------------------------------------------------
+Tue Jan 13 00:00:00 UTC 2009 - guru@unixtech.be
+
+- update to 1.0.5:
+  * this release properly complains about trying to read or write compressed
+    data to the terminal, and exits
+  * fixes the CPU detection crash
+
+
+-------------------------------------------------------------------
+Mon Dec 22 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 1.0.4:
+  * support was added for using pbzip2 with tar and for all remaining bzip2
+    command line options, so pbzip2 can be used as a drop-in replacement for
+    bzip2
+  * a bug was fixed that would cause pbzip2 to crash if detection of the
+    number of processors failed
+
+
+-------------------------------------------------------------------
+Sat Nov  1 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 1.0.3:
+  * the ability to compress, decompress, and test data using stdin and pipes
+    is now supported
+  * support was added to directly decompress files without using threads when
+    files are small, the system only has 1 CPU, or if the .bz2 file contains 1
+    bzip2 stream
+  * can now compress 0 byte files like bzip2
+  * support for pbzcat symlink to automatically specify a decompression mode
+    to stdout, just like bzcat, is now included
+
+
+-------------------------------------------------------------------
+Thu Jul 26 00:00:00 UTC 2007 - guru@unixtech.be
+
+- update to 1.0.2
+
+-------------------------------------------------------------------
+Thu May 31 00:00:00 UTC 2007 - guru@unixtech.be
+
+- initial submission into openSUSE Build Service
+
+

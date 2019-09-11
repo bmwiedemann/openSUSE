@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Sun Oct 11 08:53:48 UTC 2015 - coolo@suse.com
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-HTML-Scrubber/Changes
+
+  0.15      2015-10-10 15:01:31+01:00 Europe/London
+      - Minor spelling check avoidance tweaks
+      - Enforce comments to be well formed, to resolve potential security issue
+        described in JVN53973084
+
+-------------------------------------------------------------------
+Tue Apr 14 20:36:49 UTC 2015 - coolo@suse.com
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-HTML-Scrubber/Changes
+
+  0.14      2015-04-02 17:20:41+01:00 Europe/London
+      - Travis integration  (thanks to mrcaron)
+      - Fix some packaging/dist-zilla issues (thanks to mrcaron)
+      - check for definedness before calling ->parse (github #3 leejo)
+      - Removed the link to HTML::Sanitizer  (github #4 avereha)
+      - Removed circular reference (github #5 avereha)
+      - Fixed up dependancies from dzil bundles
+      - Enforced minimum perl version of 5.8
+- remove unmaintained perl-HTML-Scrubber-test_more-version.patch
+
+-------------------------------------------------------------------
+Tue Nov 26 07:35:19 UTC 2013 - coolo@suse.com
+
+- updated to 0.11
+    - RT3008 Changed examples to be XSS free
+    - RT19063, RT25477 fixed handling of self closing tags,
+      for example '<hr />'
+    - * attribute rule can be a regexp
+    - callbacks in rules to check or adjust attributes with
+      custom code (RT15747)
+
+-------------------------------------------------------------------
+Mon Aug 15 11:37:57 UTC 2011 - lars@linux-schulserver.de
+
+- fix build on older Distributions by using up to date Test::More 
+  from verndorlib directory 
+  ( perl-HTML-Scrubber-test_more-version.patch )
+
+-------------------------------------------------------------------
+Sat Apr  2 19:32:11 UTC 2011 - coolo@novell.com
+
+- update to 0.09
+  - Basic conversion to Dist::Zilla/git
+  - Tidies to keep Perl::Critic happier
+  - Removed use of naked filehandles
+  - Reworked tests to not use predicable temp file name
+  - Collapsed duplicate code to a single version
+  - Various documentation tweaks
+  - Change of maintainer as PODMASTER cannot be contacted
+
+-------------------------------------------------------------------
+Fri Feb  4 23:15:37 UTC 2011 - chris@computersalat.de
+
+- rpmlint
+  o wrong-file-end-of-line-encoding
+
+-------------------------------------------------------------------
+Wed Dec  1 15:49:03 UTC 2010 - coolo@novell.com
+
+* recreated by cpanspec 1.78.03
+
+-------------------------------------------------------------------
+Wed Dec  1 15:43:51 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:10 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Fri Feb 26 14:03:09 UTC 2010 - lnussel@suse.de
+
+- spec file cleanup
+
+-------------------------------------------------------------------
+Fri Sep 14 00:00:00 UTC 2007 - jfunk@funktronics.ca
+
+- Initial release
+

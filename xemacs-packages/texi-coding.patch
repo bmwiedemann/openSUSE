@@ -1,0 +1,129 @@
+Index: packages/xemacs-packages/ecb/ecb.texi
+===================================================================
+--- packages/xemacs-packages/ecb/ecb.texi.orig
++++ packages/xemacs-packages/ecb/ecb.texi
+@@ -1,4 +1,4 @@
+-\input texinfo   @c -*-texinfo-*-
++\input texinfo   @c -*- mode: texinfo; coding: iso-8859-1; -*-
+ 
+ @c Copyright (C) 2000 - 2003 Jesper Nordenberg,
+ @c                           Klaus Berndl,
+@@ -1380,7 +1380,7 @@ the value of @code{case-fold-search}.
+ 
+ Tip: The @code{ecb-minor-mode} offers you in the @code{ecb-mode-map}
+ (customizable via @code{ecb-key-map}) some keys for selecting every window
+-of the ecb-frame. This makes window-selection a child큦 play. For
++of the ecb-frame. This makes window-selection a child's play. For
+ example you can jump into the method-window by hitting @kbd{C-c . gm}.
+ 
+ @node Personal keybindings, Using popup-menus, Incremental search, Using the keyboard
+@@ -1556,7 +1556,7 @@ of the current ECB-layout there are two
+ @item If the function is contained in
+ @code{ecb-layout-always-operate-in-edit-window} the right edit-window
+ is selected (depends on the value of the option
+-@code{ecb-mouse-click-destination}) and does then it큦 job.
++@code{ecb-mouse-click-destination}) and does then it's job.
+ 
+ @item Otherwise the behavior depends on the value of the option
+ @code{ecb-advice-window-functions-signal-error}.
+@@ -1599,7 +1599,7 @@ If called in the compile window there ar
+ If the function is contained in
+ @code{ecb-layout-always-operate-in-edit-window} the right edit-window
+ is selected (depends on the value of the option
+-@code{ecb-mouse-click-destination}) and then it does it큦 job.
++@code{ecb-mouse-click-destination}) and then it does it's job.
+ 
+ @item
+ Otherwise the behavior depends on the value of the option
+@@ -7071,7 +7071,7 @@ the ECB-frame they behave all exactly li
+ 
+ But please read also the following:
+ 
+-Normally all packages should work correct with ECB and it큦 adviced
++Normally all packages should work correct with ECB and it's adviced
+ functions but if there occur problems with a package cause of some of
+ these adviced functions ECB offers the following fall-back solution:
+ 
+@@ -8019,7 +8019,7 @@ GNU Emacs 20.X the basic face-settings c
+ customizing the face @code{ecb-default-highlight-face}!
+ 
+ @item ecb-directories-general-face:
+-Basic face for the ECB directories buffer. It큦 recommended to define
++Basic face for the ECB directories buffer. It's recommended to define
+ here the font-family, the font-size, the basic color etc.
+ 
+ @item ecb-directory-face:
+@@ -8034,7 +8034,7 @@ Define face used for highlighting curren
+ buffer.
+ 
+ @item ecb-history-general-face:
+-Basic face for the ECB history buffer. It큦 recommended to define here
++Basic face for the ECB history buffer. It's recommended to define here
+ the font-family, the font-size, the basic color etc.
+ 
+ @item ecb-method-face:
+@@ -8042,7 +8042,7 @@ Define face used for highlighting curren
+ the methods buffer.
+ 
+ @item ecb-methods-general-face:
+-Basic face for the ECB methods buffer. It큦 recommended to define here
++Basic face for the ECB methods buffer. It's recommended to define here
+ the font-family, the font-size, the basic color etc.
+ 
+ @item ecb-method-non-semantic-face:
+@@ -8064,7 +8064,7 @@ buffer.
+ Define a face for displaying sources in the directories buffer.
+ 
+ @item ecb-sources-general-face:
+-Basic face for the ECB sources buffer. It큦 recommended to define here
++Basic face for the ECB sources buffer. It's recommended to define here
+ the font-family, the font-size, the basic color etc.
+ 
+ @item ecb-source-read-only-face
+@@ -8713,7 +8713,7 @@ This command creates a problem-report bu
+ get a menu ``Mail'' (dependent on the mail-package used, the menu can
+ have a different name) with commands to send the problem report. But
+ for this the variable @code{mail-user-agent} must be configured right for
+-your system. If you can큧 get working this mechanism you can simply
++your system. If you can't get working this mechanism you can simply
+ copy the whole problem-report buffer after filling it out and sending
+ it with your standard mail-client to
+ @email{ecb-list@@lists.sourceforge.net}!
+@@ -9004,7 +9004,7 @@ There are two basic faces:
+ @item @code{ecb-default-general-face}:
+ Basic face for displaying an ECB-tree-buffer.
+ 
+-It큦 recommended to define the font-family, the font-size, the basic
++It's recommended to define the font-family, the font-size, the basic
+ color etc. with this face.
+ 
+ In GNU Emacs 21.X all faces (even the face
+@@ -11640,7 +11640,7 @@ very well under all circumstances!
+ @subsubsection Package calendar.el
+ 
+ @cindex calendar package
+-With activated ECB @code{calendar} does not shrink it큦 window to the small
++With activated ECB @code{calendar} does not shrink it's window to the small
+ size but splits the window equally. But if you add this to your
+ @file{.emacs} it works:
+ 
+Index: packages/xemacs-packages/edit-utils/tempo.texi
+===================================================================
+--- packages/xemacs-packages/edit-utils/tempo.texi.orig
++++ packages/xemacs-packages/edit-utils/tempo.texi
+@@ -1,4 +1,4 @@
+-\input texinfo        @c -*-texinfo-*-
++\input texinfo        @c -*- mode: texinfo; coding: iso-8859-1; -*-
+ @c %**start of header
+ @setfilename tempo.info
+ @settitle Tempo manual
+Index: packages/xemacs-packages/hm--html-menus/hm--html-mode.texi
+===================================================================
+--- packages/xemacs-packages/hm--html-menus/hm--html-mode.texi.orig
++++ packages/xemacs-packages/hm--html-menus/hm--html-mode.texi
+@@ -1,4 +1,4 @@
+-\input texinfo   @c -*-texinfo-*-
++\input texinfo   @c -*- mode: texinfo; coding: iso-8859-1; -*-
+ @comment %**start of header (This is for running Texinfo on a region.)
+ @setfilename hm--html-mode.info
+ @settitle HM HTML Mode

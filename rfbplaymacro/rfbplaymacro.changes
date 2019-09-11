@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Fri May 09 17:05:57 CEST 2008 - mfabian@suse.de
+
+- bnc#388222: update to 0.2.2
+  • src/rfbplaymacro.c (connect_to_server): Use protocol 3.3.
+  • src/rfbplaymacro.c: Made more tolerant of bad input files, and
+    of servers requesting passwords when none has been specified.
+  • test.rfm: New file, created by Ralf Mueller.
+  • README: Updated.
+  • src/rfbplaymacro.c (main): Accept 'password' in the input file.
+    Spotted by Ralf Mueller.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:10 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 10 20:26:45 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Mon Jun 16 09:40:25 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Tue Jul  9 15:20:16 CEST 2002 - uli@suse.de
+
+- update -> 0.2.0 (VNC authentication support)
+
+-------------------------------------------------------------------
+Wed Apr 17 16:20:30 CEST 2002 - uli@suse.de
+
+- initial package
+
+

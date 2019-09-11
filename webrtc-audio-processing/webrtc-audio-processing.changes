@@ -1,0 +1,103 @@
+-------------------------------------------------------------------
+Thu Jan 12 08:32:04 UTC 2017 - olaf@aepfle.de
+
+- Add baselibs.conf for gstreamer-plugins-bad-32bit
+
+-------------------------------------------------------------------
+Sat Jun 25 10:39:08 UTC 2016 - oholecek@suse.com
+
+- Remove webrtc-aarch64.patch, no longer needed
+- Adapt the rest of webrtc- patches to new arch naming 
+
+-------------------------------------------------------------------
+Thu Jun 23 13:31:14 UTC 2016 - oholecek@suse.com
+
+- Remove unneeded explicit version dependency for automake
+
+-------------------------------------------------------------------
+Wed Jun 22 11:55:11 UTC 2016 - oholecek@suse.com
+
+- Update to 0.3
+  * build: enforce linking with --no-undefined, add explicit -lpthread
+  * build: Make sure files with SSE2 code are compiled with -msse2 
+- Remove no-undefined.patch
+- Remove webrtc-audio-processing-0.2-x86_msse2.patch
+-------------------------------------------------------------------
+Mon Jun 20 13:02:06 UTC 2016 - oholecek@suse.com
+
+- Add no-undefined.patch patch
+  https://cgit.freedesktop.org/pulseaudio/webrtc-audio-processing/patch/?id=d58164e4d87854233564b59e76259b72e21507f6
+- Add big_endian_support_2.patch  https://bugs.freedesktop.org/show_bug.cgi?id=95738
+- Adapt webrtc-audio-processing-0.2-x86_msse2.patch to new version
+- Adapt big_endian_support.patch to new version
+
+-------------------------------------------------------------------
+Mon May 30 09:00:51 UTC 2016 - oholecek@suse.com
+
+- Add webrtc-audio-processing-0.2-x86_msse2.patch patch fixing 386 build
+  https://lists.freedesktop.org/archives/pulseaudio-discuss/2016-May/026294.html
+- Add big_endian_support.patch
+  https://bugs.freedesktop.org/show_bug.cgi?id=95738
+- New automake version dependency >= 1.5
+
+-------------------------------------------------------------------
+Thu May 26 21:19:28 UTC 2016 - oholecek@suse.com
+
+- Update to 0.2: 
+  Contains API breaking changes.
+
+  Upstream changes include:
+  * Rewritten AGC and voice activity detection
+  * Intelligibility enhancer
+  * Extended AEC filter
+  * Beamformer
+  * Transient suppressor
+  * ARM, NEON and MIPS optimisations (MIPS optimisations are not hooked up)
+
+  API changes:
+  * We no longer include a top-level audio_processing.h. The webrtc tree format
+    is used, so use webrtc/modules/audio_processing/include/audio_processing.h
+  * The top-level module_common_types.h has also been moved to
+    webrtc/modules/interface/module_common_types.h
+  * C++11 support is now required while compiling client code
+  * AudioProcessing::Create() does not take any arguments any more
+  * AudioProcessing::Destroy() is gone, use standard C++ "delete" instead
+  * Stream parameters are now configured via StreamConfig and ProcessingConfig
+    rather than set_sample_rate(), set_num_channels(), etc.
+  * AudioFrame field names have changed
+  * Use config API for newer audio processing options
+  * Use ProcessReverseStream() instead of AnalyzeReverseStream(), particularly
+    when using the intelligibility enhancer
+  * GainControl::set_analog_level_limits() is broken. The AGC implementation
+    hard codes 0-255 as the volume range
+
+  Other notes:
+  * The new audio processing parameters are not all tested, and a few are not
+    enabled upstream (in Chromium) either
+  * The rewritten AGC appears to be less sensitive, and it might make sense to
+    initialise the capture volume to something reasonable (33% or 50%, for
+    example) to make sure there is sufficient energy in the stream to trigger
+    the AGC mechanism 
+- Adapted all 3 arch patches
+
+-------------------------------------------------------------------
+Thu Mar  7 13:51:31 UTC 2013 - idonmez@suse.com
+
+- Add patch webrtc-aarch64.patch from algraf to add aarch64 support
+
+-------------------------------------------------------------------
+Wed Dec 19 10:39:23 CET 2012 - ro@suse.de
+
+- add s390 and s390x to known platforms 
+  by adding webrtc-s390x.patch
+
+-------------------------------------------------------------------
+Tue Jul  3 15:00:06 UTC 2012 - dvaleev@suse.com
+
+- add ppc64 to known platforms 
+
+-------------------------------------------------------------------
+Tue May 15 10:40:38 CET 2012 - pascal.bleser@opensuse.org
+
+- initial version (0.1)
+

@@ -1,0 +1,190 @@
+-------------------------------------------------------------------
+Fri Mar 15 07:51:26 UTC 2019 - josef.moellers@suse.com
+
+- Upgrade to version 1.5.0:
+  * Added i2c-bus and spi-bus support
+  * New "-T" option: "Annotate output .dts with input source file
+    and line"
+  * Added YAML output format
+  * Record source positions
+  * Use inttypes.h macros for printing.
+  * Fix some minor bugs which may lead to SIGSEGV.
+  * Adjusted source URL to working path
+  [bug#1128943, use-tx-as-the-type-specifier-instead-of-zx.patch]
+
+-------------------------------------------------------------------
+Thu Dec 13 10:55:22 UTC 2018 - josef.moellers@suse.com
+
+- Upgrade to version 1.4.7:
+  * checks.c: Overlay fragments are a special case
+  * checks.c: added handling of various busses (eg PCI, simple,
+    i2c, SPI)
+  * checks.c: added some plausibility and syntax checks mainly
+    for device proerties.
+  * dtc.c: annotate .dts with input source location
+  * some code restructuring, cosmetic changes.
+  * decumentation cleanup and update
+  * some more tests added.
+
+-------------------------------------------------------------------
+Sun Mar 12 09:39:47 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.4.4:
+  * fdtput: Remove star from value_len documentation
+  * fdtget: Use @return to document the return value
+  * tests: Make realloc_fdt() really allocate *fdt
+  * libfdt: overlay: Check the value of the right variable
+  * dtc: Simplify asm_emit_string() implementation
+  * libfdt: Change names of sparse helper macros
+  * Fix assorted sparse warnings
+  * Clean up gcc attributes
+  * dtc: Don't abuse struct fdt_reserve_entry
+- Refresh patches
+- Make building more verbose
+- Run tests
+
+-------------------------------------------------------------------
+Fri Mar  3 12:01:08 UTC 2017 - jloeser@suse.com
+
+- version update to 1.4.3
+  * Add printf format attributes
+  * Correct some broken printf() like format mismatches
+  * libfdt: Add fdt_setprop_empty()
+  * libfdt: Remove undefined behaviour setting empty properties
+  * Print output filename as part of warning messages
+  * dtc: Use streq() in preference to strcmp()
+  * checks: Add Warning for stricter node name character checking
+  * checks: Add Warning for stricter property name character checking
+  * dtc: pos parameter to srcpos_string() can't be NULL
+  * livetree.c: Fix memory leak
+
+-------------------------------------------------------------------
+Mon Feb  6 14:00:11 UTC 2017 - jloeser@suse.com
+
+- version update to 1.4.2
+  * including patches up to git commit 3b9c9709
+  * Fix NULL pointer use in dtlabel + dtref case
+  * fdtdump: check fdt if not in scanning mode
+  * Fix memory leak in character literal parsing
+  * Don't always generate __symbols__ for plugins
+  * Plugin and fixup support
+  * fix fdt_stringlist_search()
+  * fix fdt_stringlist_count()
+  * improve tests
+  * minor bugfixes/typos
+  * including symbols in version.lds
+  * no changelog available
+
+- modified patches:
+  * use-tx-as-the-type-specifier-instead-of-zx.patch
+
+-------------------------------------------------------------------
+Sat Dec 12 16:30:13 UTC 2015 - mpluskal@suse.com
+
+- Obsolete old devel package as well
+
+-------------------------------------------------------------------
+Sat Dec  5 10:22:44 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Dont include soname version in devel package name
+
+-------------------------------------------------------------------
+Mon Nov  9 17:28:39 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.4.1
+  * No changelog available
+- Use download Url as source
+- Use original project page as home page
+
+-------------------------------------------------------------------
+Fri Mar  7 01:29:13 CET 2014 - ro@suse.de
+
+- add use-tx-as-the-type-specifier-instead-of-zx.patch
+  taken from fedora to fix build on s390 
+
+-------------------------------------------------------------------
+Tue Jul  9 09:26:13 UTC 2013 - dmueller@suse.com
+
+- update to 1.4.0 (bnc#826457):
+- dtc-check.patch, dtc-flattree.patch: Remove
+
+-------------------------------------------------------------------
+Wed Jun 19 06:58:23 UTC 2013 - dmueller@suse.com
+
+- rename ftdump to dtc-ftdump to avoid conflict with ft2demos 
+
+-------------------------------------------------------------------
+Tue Jun 18 00:58:27 UTC 2013 - afaerber@suse.de
+
+- Recent Git versions of dtc install libfdt_env.h, so that
+  QEMU 1.6.0 will require this file. Install it for compatibility.
+
+-------------------------------------------------------------------
+Thu May 24 12:00:09 UTC 2013 - afaerber@suse.de
+
+- Use %makeinstall in place of %make_install, for SLE_11_SP2
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+- Implement baselibs config
+
+-------------------------------------------------------------------
+Fri Jul  1 17:02:06 UTC 2011 - k0da@opensuse.org
+
+- libfdt1 subpackage
+   libfdt1-devel
+
+- dtc 1.3.0 update
+   dtc: Add code to make diffing trees easier
+   dtc: Extend and better test dtbs_equal utility programs
+   dtc: Audit and fix valgrind errors
+   Assorted cleanups and extensions for ftdump
+   Fix dtc bugs for 64-bit compile
+
+- fix URL as mntioned site is no longer available
+
+-------------------------------------------------------------------
+Sat Feb  6 18:28:44 UTC 2010 - jengelh@medozas.de
+
+- disable failing `make check` on SPARC
+
+-------------------------------------------------------------------
+Thu Jan 24 19:01:10 CET 2008 - olh@suse.de
+
+- update to 1.1.0 final
+  clearify license issues, run testsuite
+
+-------------------------------------------------------------------
+Fri Aug 10 23:09:22 CEST 2007 - olh@suse.de
+
+- update to 1.0.0 final
+  - first official release
+
+-------------------------------------------------------------------
+Mon Jun 18 18:14:47 CEST 2007 - olh@suse.de
+
+- update to current state
+      dtc: Fix recognition of whitespace characters
+      Implement the -R option and add a -S option.
+      Add -o <output file> to the usage message.
+      Fix reserve map output for asm format.
+      Assemble the blob in memory before writing it out.
+      Fix the -S to modify the totalsize properly.
+      dtc: parse NOP in dtb input
+
+-------------------------------------------------------------------
+Thu Mar 29 07:31:31 CEST 2007 - olh@suse.de
+
+- add flex and bison to buildrequires
+  fix endian bug in ftdump, add C style includes
+
+-------------------------------------------------------------------
+Fri Mar 23 23:33:01 CET 2007 - olh@suse.de
+
+- initial package to build PS3 kernel
+

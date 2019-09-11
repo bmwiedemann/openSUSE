@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Sun Sep 10 06:05:51 UTC 2017 - jweberhofer@weberhofer.at
+
+- Fixed Group
+
+-------------------------------------------------------------------
+Sun Sep  3 06:23:21 UTC 2017 - jweberhofer@weberhofer.at
+
+- Removed php7-pear-Net_LDAP2-2.2.0-package.xml.patch
+- Cleaned up spec
+
+-------------------------------------------------------------------
+Thu Aug 17 09:31:37 UTC 2017 - ecsos@opensuse.org
+
+- renamed package to php7-pear_Net_LDAP2
+
+-------------------------------------------------------------------
+Mon Jan 11 10:52:09 UTC 2016 - aj@ajaissle.de
+
+- Updated spec
+- Updated dependencies
+- Added php5-pear-Net_LDAP2-2.2.0-package.xml.patch to allow
+  installing with php5-pear < 1.10.1
+
+-------------------------------------------------------------------
+Sat Jan  9 16:14:46 UTC 2016 - ecsos@opensuse.org
+
+- update to 2.2.0
+  * Fix bug #20969: Fatal error with PEAR 1.10.0 / constructor 
+    visiblity
+  * Add support for PHP 7
+  * Improve unit tests
+
+-------------------------------------------------------------------
+Sat Mar  1 19:18:22 UTC 2014 - lars@linux-schulserver.de
+
+- update to 2.1.0
+  * New feature: Filter::matches() can do simple filtering on entry 
+    sets (supported: equals, contain, begin, end, any; NOT, AND, OR. 
+    Filtering is simple based on regexp, no schema checks and 
+    matchRules yet!)
+  * Fixed minor bugs in Filter, LDAP and Entry class
+  * Util::split_attribute_string(): Added support for extended 
+    match operators from filters
+  * Util::split_attribute_string(): Added support for 
+    delimeter retrieval
+- provide php-pear-Net_LDAP2
+
+-------------------------------------------------------------------
+Fri Feb  1 11:11:32 UTC 2013 - aj@ajaissle.de
+
+- New upstream release 2.0.12
+  * inmproved performance with large search results
+  * Fixed some minor issues with Net_LDAP2_Filter and Net_LDAP2->dnExists()
+  * Added NOT filter to Net_LDAP2_Filter::create() so negating is more easily now
+
+-------------------------------------------------------------------
+Mon Feb 13 10:53:31 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Mon Feb  7 15:38:50 UTC 2011 - lang@b1-systems.de
+
+- Added license file
+
+-------------------------------------------------------------------
+Mon Jan 31 09:08:32 UTC 2011 - lang@b1-systems.de
+
+- LGPLv3 license
+
+-------------------------------------------------------------------
+Wed Jan 26 13:32:09 UTC 2011 - lang@b1-systems.de
+
+- add dependency on php pecl module ldap as stated in pear
+
+-------------------------------------------------------------------
+Wed Jan 26 12:42:44 UTC 2011 - lang@b1-systems.de
+
+- packaged with php-macros and a template spec
+

@@ -1,0 +1,14 @@
+Index: kdecore/localization/klocale_kde.cpp
+===================================================================
+--- kdecore/localization/klocale_kde.cpp.orig
++++ kdecore/localization/klocale_kde.cpp
+@@ -319,6 +319,9 @@ void KLocalePrivate::initMainCatalogs()
+         m_catalogNames.append(KCatalogName(QString::fromLatin1("kdeqt")));
+         m_catalogNames.append(KCatalogName(QString::fromLatin1("solid_qt")));
+         m_catalogNames.append(KCatalogName(QString::fromLatin1("kdecalendarsystems")));
++        m_catalogNames.append(KCatalogName(QString::fromLatin1("desktop_translations")));
++        m_catalogNames.append(KCatalogName(QString::fromLatin1("kde4-openSUSE")));
++        m_catalogNames.append(KCatalogName(QString::fromLatin1("kde4-SLE")));
+         m_numberOfSysCatalogs = m_catalogNames.size() - numberOfCatalogs;
+ 
+         updateCatalogs(); // evaluate this for all languages

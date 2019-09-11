@@ -1,0 +1,13 @@
+Index: ruby/Makefile.am
+===================================================================
+--- ruby/Makefile.am.orig
++++ ruby/Makefile.am
+@@ -12,7 +12,7 @@ TESTS = test
+ endif
+ endif
+ 
+-CFLAGS += -Wno-strict-prototypes -Wno-missing-prototypes
++AM_CFLAGS = -Wno-strict-prototypes -Wno-missing-prototypes
+ 
+ caca_la_CPPFLAGS = -I$(top_srcdir)/caca -I../caca $(RUBY_CFLAGS)
+ caca_la_SOURCES = caca.c \

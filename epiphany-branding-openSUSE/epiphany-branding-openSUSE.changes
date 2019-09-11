@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:25:05 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Dec  5 10:05:23 UTC 2016 - dimstar@opensuse.org
+
+- Rebase opensuse-bookmarks.patch for epiphany 3.23.2.
+
+-------------------------------------------------------------------
+Mon Dec  5 10:05:22 UTC 2016 - fcrozat@suse.com
+
+- Fix is_opensuse macro usage.
+
+-------------------------------------------------------------------
+Mon May  9 21:08:30 UTC 2016 - zaitor@opensuse.org
+
+- Rebase opensuse-bookmarks.patch to fit with what epiphany now
+  ships in the stable release.
+
+-------------------------------------------------------------------
+Mon May  2 11:59:23 UTC 2016 - zaitor@opensuse.org
+
+- Drop epiphany-branding-SLED subpackage:
+  + Remove sled-bookmarks.patch, pre_checkin.sh,
+    epiphany-branding-SLED.changes, epiphany-branding.changes.in
+    and epiphany-branding-SLED.spec.
+  + Clean epiphany-branding-openSUSE.spec for all references to the
+    previous package.
+
+-------------------------------------------------------------------
+Fri Feb 12 16:16:03 UTC 2016 - dimstar@opensuse.org
+
+- Patch tagging: use valid tags.
+
+-------------------------------------------------------------------
+Sat Jan 22 18:30:00 UTC 2016 - dimstar@opensuse.org
+
+- Make build not rely on lsb and opensuse-release (no constant
+  rebuild in Tumbleweed):
+  + Drop lsb/lsb-release BuildRequires.
+  + Drop opensuse-release BuildRequires.
+  + Use %{suse_version} in build section to inject proper values
+    into branding.conf. On Tumbleweed we no longer use the snapshot
+    version (which is anyway useless) but simply inject
+    'Tumbleweed'. We currently detect openSUSE 13.1, 13.2,
+    Leap 42.1, SLE12 and Tumbleweed systems. All others will have
+    'SUSE/undef' in the browsers user agent string.
+
+-------------------------------------------------------------------
+Mon Oct 12 15:23:23 UTC 2015 - zaitor@opensuse.org
+
+- Bump version to 42.1, to prepare for next version of openSUSE.
+
+-------------------------------------------------------------------
+Thu Apr  3 23:13:23 UTC 2014 - dimstar@opensuse.org
+
+- Bump version to 13.2, to prepare for next version of openSUSE.
+
+-------------------------------------------------------------------
+Sun Jan 19 19:46:33 UTC 2014 - dimstar@opensuse.org
+
+- Rebase opensuse-bookmarks.patch and sled-bookmarks.patch for
+  Epiphany 3.11.3.
+
+-------------------------------------------------------------------
+Mon Dec 23 15:09:29 UTC 2013 - dimstar@opensuse.org
+
+- Rebase opensuse-bookmarks.patch and sled-bookmarks.patch for
+  Epiphany 3.11.2.
+- Update COPYING based on latest published GPL-2.0 text:
+  http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt.
+
+-------------------------------------------------------------------
+Sun Sep  8 07:14:25 UTC 2013 - zaitor@opensuse.org
+
+- Bump version to 13.1, to prepare for next version of openSUSE.
+
+-------------------------------------------------------------------
+Sat Sep  7 21:47:22 UTC 2013 - dimstar@opensuse.org
+
+- Rebase opensuse-bookmarks.patch and sled-bookmarks.patch against
+  epiphany 3.9.90.
+
+-------------------------------------------------------------------
+Wed May 23 07:43:47 UTC 2012 - vuntz@opensuse.org
+
+- Bump version to 12.2, to prepare for next version of openSUSE.
+
+-------------------------------------------------------------------
+Wed May  2 19:54:49 UTC 2012 - dimstar@opensuse.org
+
+- Add "GNOME Shell extensions" (https://extensions.gnome.org) to
+  openSUSE bookmarks.
+
+-------------------------------------------------------------------
+Thu Oct 13 12:50:53 UTC 2011 - vuntz@opensuse.org
+
+- Remove %{release} from the epiphany versioned Requires, to not
+  have to rebuild this package each time epiphany rebuilds to keep
+  it installable.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Wed Jul  6 16:27:30 CEST 2011 - vuntz@opensuse.org
+
+- Bump version to 12.1.
+- Add a Requires for epiphany, since the branding package is
+  useless without it.
+- Update summary and description.
+- Add Url tag.
+
+-------------------------------------------------------------------
+Sun Jan  9 23:11:01 CET 2011 - vuntz@opensuse.org
+
+- Update the Planet bookmark to point to Planet openSUSE.
+
+-------------------------------------------------------------------
+Fri Oct  8 11:42:42 CEST 2010 - vuntz@opensuse.org
+
+- Bump version to 11.4.
+
+-------------------------------------------------------------------
+Fri Jan 15 03:58:43 CET 2010 - vuntz@opensuse.org
+
+- Merge openSUSE and SLED branding packaging, and generate the
+  packages from the same sources.
+- Change version to 11.3.
+- Add COPYING file.
+- Add branding.conf.in: with a recent epiphany, we can change the
+  user agent with a simple file.
+- Add BuildRequires on lsb-release and suse-release to get the
+  version of the distribution, to put in the user agent.
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Thu Aug 13 14:55:52 CEST 2009 - vuntz@novell.com
+
+- Respin opensuse-bookmarks.patch to apply to latest epiphany.
+
+-------------------------------------------------------------------
+Mon Aug  3 23:10:28 CEST 2009 - vuntz@novell.com
+
+- Update for epiphany webkit change: the user agent isn't set here
+  anymore (it's set in gconf2-branding).
+- Bump version to 11.2.
+
+-------------------------------------------------------------------
+Tue Nov  4 13:48:43 CET 2008 - vuntz@novell.com
+
+- Bump version to 11.1. Part of bnc#440849.
+
+-------------------------------------------------------------------
+Mon Oct  6 15:56:53 CEST 2008 - sbrabec@suse.cz
+
+- Conflict with other branding providers (FATE#304881).
+
+-------------------------------------------------------------------
+Thu Sep 11 02:18:59 CEST 2008 - vuntz@novell.com
+
+- Add more openSUSE bookmarks.
+- Clean up spec file.
+
+-------------------------------------------------------------------
+Tue Jul 29 16:00:03 CEST 2008 - vuntz@novell.com
+
+- New package.
+- Add openSUSE documentation bookmark. (fate#305003)
+

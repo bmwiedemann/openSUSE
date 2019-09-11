@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Wed Aug  7 10:35:21 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Add missing licenses to spec file
+
+-------------------------------------------------------------------
+Mon Aug  5 06:38:16 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to 0.3.2
+  * Fix heap overflow in `ip_reass` on big packet input
+
+-------------------------------------------------------------------
+Thu Aug  1 13:47:48 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to 0.3.1
+  * Fix use-after-free
+
+-------------------------------------------------------------------
+Fri Mar 29 07:29:04 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to 0.3.0
+  * QMP-like JSON API for exposing node ports (--api-socket)
+
+-------------------------------------------------------------------
+Wed Mar 20 09:49:55 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Change _service to use releases instead of git commit references
+
+-------------------------------------------------------------------
+Mon Mar 18 18:23:51 UTC 2019 - Oliver Bengs <appleonkel@opensuse.org>
+
+- Update to 0.3.0-beta1
+  * Support protecting 127.0.0.1 on the host (--disable-host-loopback)
+  * Support specifying CIDR like 10.0.2.0/24 (--cidr)
+  * Fix CVE-2019-6778
+  * Synced with QEMU upstream
+
+-------------------------------------------------------------------
+Wed Oct 17 09:15:55 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Introduce slirp4netns in version 0.1 to support rootless Podman:
+  slirp4netns provides user-mode networking ("slirp") for unprivileged network
+  namespaces. A common use-case of slirp4netns is to enable network access for
+  rootless container engines such as Podman.

@@ -1,0 +1,11 @@
+diff -ru gnugo-3.7.2.orig/interface/gnugo.el gnugo-3.7.2/interface/gnugo.el
+--- gnugo-3.7.2.orig/interface/gnugo.el	2005-01-20 00:25:34.000000000 +0100
++++ gnugo-3.7.2/interface/gnugo.el	2005-01-31 20:41:14.713505572 +0100
+@@ -2115,6 +2115,7 @@
+             ("F"        . gnugo-display-final-score)
+             ;; mouse
+             ([(down-mouse-1)] . gnugo-mouse-move)
++	    ([(down-mouse-2)] . gnugo-mouse-move)
+             ([(down-mouse-3)] . gnugo-mouse-pass))))
+ 
+ (unless (get 'help :gnugo-gtp-command-spec)

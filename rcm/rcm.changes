@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Sun Jul 15 18:04:02 UTC 2018 - develop7@develop7.info
+
+- drop source service
+- rcm 1.3.3
+  * Feature: Expand ~ in DOTFILES_DIR hooks (Eric Collins).
+- rcm 1.3.2
+  * BUGFIX: Use =, not ==, in test(1) (Florian Tham).
+  * BUGFIX: Directories with spaces in rcup(1) (Florian Tham).
+  * BUGFIX: Fallback the LOGNAME from whoami (AJ Villalobos, Mike Burns).
+  * BUGFIX: Fix cd for paths beginning with hyphen (-) (Christian Höltje).
+  * Feature: Expand ~ in DOTFILES_DIR (Rebecca Meritz).
+  * Documentation improvements (Alan Yee, Eric Collins, Florian Tham, kajisha,
+	    Matthew Horan, maxice8, Mike Burns, Rebecca Meritz, Scott Stevenson,
+	    Tyson Gach, Yota Toyama).
+
+-------------------------------------------------------------------
+Wed Mar 21 05:41:55 UTC 2018 - develop7@develop7.info
+
+- modernized spec with spec-cleaner 
+
+-------------------------------------------------------------------
+Fri Jan 27 12:42:41 UTC 2017 - develop7@develop7.info
+
+- introduced package documentation, including LICENSE
+
+-------------------------------------------------------------------
+Fri Jan 20 16:42:09 UTC 2017 - develop7@develop7.info
+
+- disable source service per Factory requirement
+
+-------------------------------------------------------------------
+Sat Jan  7 21:40:36 UTC 2017 - develop7@develop7.info
+
+- Release 1.3.1
+  * BUGFIX: Handle dotfile names with spaces in them (Eric Collins, Mike
+      Burns).
+  * BUGFIX: Relative exclude globs now work (Eric Collins, Mike Burns).
+  * BUGFIX: Use $LOGNAME instead of $USER for compatibility (Mike
+      Burns).
+  * BUGFIX: rcdn(1) stops at DEST_DIR (Kyle Cook, Mike Burns).
+  * BUGFIX: Symlink existing files, even when identical (Graham
+      Bennett).
+  * BUGFIX: Sort hooks by filename before execution instead of
+     arbitrary order (David Alexander).
+  * Documentation improvements (Nick Novitski, Ben
+      Stephens, Casey Rodarmor).
+
+-------------------------------------------------------------------
+Sun Dec 13 18:18:29 UTC 2015 - develop7@develop7.info
+
+- Release 1.3.0
+  * BUGFIX: Control whether hooks should run in rcdn(1) with the -K and -k
+    flags (Ben Turrubiates, Christopher Koch, Mike Burns, Mikkel Fahnøe
+    Jørgensen).
+  * Massive documentation fixes and updates (Christopher Koch, David Alexander,
+    Jason Daniel Augustine Gilliland, Martin Frost, Melissa Xie, Mike Burns,
+    Scott Stevenson, Jarkko Kniivilä, Blake Williams, Carl van Tonder, Teo
+    Ljungberg, Zach Latta, Devraj Mehta, Vlad GURDIGA, Joe Ferris).
+  * Host-specific files take priority, then tags, then default (Christian
+    Höltje).
+  * Run hooks in the directory in which they are located (Jarkko Kniivilä).
+  * Generate a minimal standalone rcup(1) script with the -g flag (Mike Burns).
+  * Support rc files without leading dots via the -U and -u flags in lsrc(1),
+    rcup(1), and rcdn(1), and the UNDOTTED setting in rcrc(5) (Christopher
+    Koch).
+  * Improved Solaris support (Jarkko Kniivilä).
+  * Override `SYMLINK_DIRS` or -S with -s (Mike Burns).
+  * Show usage information when given bad arguments (Mike Burns).
+- Make use of download_files source service
+
+-------------------------------------------------------------------
+Sun May 11 12:11:12 UTC 2014 - develop7@develop7.info
+
+- release 1.2.3
+  * BUGFIX: Allow files with the same prefix name in the same 
+    directory (Javier López).
+  * BUGFIX: Pick up hooks that are executable by the user or by the 
+    group, instead of only files that are 777 (Christian Höltje).
+  * Allow running mkrc on a relative file and preserve the 
+    path (Pablo Olmos de Aguilera Corradini).
+  * A flag (-B), and a variable for rcrc(5) (HOSTNAME), for changing the 
+    hostname as rcm sees it. This is highly recommended under OS X (Mike 
+    Burns).
+  * Transfer copyright to thoughtbot, under the same license (Mike Burns).
+
+-------------------------------------------------------------------
+Sat Mar 29 13:01:27 UTC 2014 - develop7@develop7.info
+
+- release 1.2.2
+  * removed rcm-1.2.1-fix-rpmlint-perm-warn.patch since fix had 
+    landed upstream
+
+-------------------------------------------------------------------
+Mon Mar 24 21:44:22 UTC 2014 - develop7@develop7.info
+
+- fixed rpmlint warning with rcm-1.2.1-fix-rpmlint-perm-warn.patch
+
+-------------------------------------------------------------------
+Fri Mar 21 05:55:56 UTC 2014 - develop7@develop7.info
+
+- release 1.2.1
+
+-------------------------------------------------------------------
+Fri Feb 14 05:46:38 UTC 2014 - develop7@develop7.info
+
+- rcm 1.2.0 release
+

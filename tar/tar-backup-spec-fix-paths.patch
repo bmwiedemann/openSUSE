@@ -1,0 +1,25 @@
+Index: tar-1.29/scripts/backup-specs
+===================================================================
+--- tar-1.29.orig/scripts/backup-specs
++++ tar-1.29/scripts/backup-specs
+@@ -6,17 +6,17 @@
+ ADMINISTRATOR="root@localhost"
+ 
+ # (Optional) Path to tar binary.
+-TAR=/bin/tar
++TAR=/usr/bin/tar
+ 
+ # (Optional) Path to rsh binary or its equivalent. You may wish to
+ # set it to ssh as shown in the example below, to improve security.
+ # In this case you will have to use public key authentication.
+-RSH=/usr/local/bin/ssh
++RSH=/usr/bin/ssh
+ 
+ # (Optional) Path to rsh binary on remote mashines. This will be
+ # passed via --rsh-command option to the remote invocation of
+ # tar
+-RSH_COMMAND=/usr/local/bin/ssh
++RSH_COMMAND=/usr/bin/ssh
+ 
+ # Name of temporary file to hold volume numbers.  This needs to be accessible
+ # by all the machines which have filesystems to be dumped.

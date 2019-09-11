@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Oct  3 08:16:54 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Sun Dec 25 16:25:29 UTC 2011 - coolo@suse.de
+
+- initial package 0.006
+    * created by cpanspec 1.78.06
+

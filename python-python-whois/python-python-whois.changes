@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Fri May  3 18:03:51 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.7.1:
+ * no changelog available
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:12 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Apr 29 17:34:24 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 0.7.0:
+ * support for .lu, cz
+ * fix for .eu
+
+-------------------------------------------------------------------
+Wed Mar 21 19:34:15 UTC 2018 - sebix+novell.com@sebix.at
+
+- update typo version 0.6.9:
+ * fix .me
+- update typo version 0.6.8:
+ * support for .cat, .ie, .space, .nz
+ * dealing with multiple dates improved
+ * fixes for Python 3
+
+-------------------------------------------------------------------
+Thu Dec  7 13:52:18 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package for version 0.6.7

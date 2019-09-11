@@ -1,0 +1,16 @@
+# This rpmlintrc file filters false positives rpmlint warning messages
+# for Relax-and-Recover (rear).
+# rear contains systemd unit files in /usr/share/rear/skel/
+# that are not meant to be used in the running system.
+# They are used to build the rear recovery system ISO image:
+addFilter("rear.* W: systemd-service-without-service_del_preun ")
+addFilter("rear.* W: systemd-service-without-service_del_postun ")
+addFilter("rear.* W: systemd-service-without-service_add_pre ")
+addFilter("rear.* W: systemd-service-without-service_add_post ")
+# There is config(noreplace) for all files in /usr/share/rear/
+# to avoid that RPM package update overwrites user edited files
+# because rear is meant to be adapted and enhanced by the user
+# according to his particular disaster recovery needs
+# (see http://en.opensuse.org/SDB:Disaster_Recovery):
+addFilter("rear.* W: non-etc-or-var-file-marked-as-conffile /usr/share/rear/")
+

@@ -1,0 +1,76 @@
+From 46ad87218f0be4a4b7e292a1c8b5d5dbce48ae63 Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Fri, 16 Mar 2018 11:10:35 +0100
+Subject: [PATCH] Fix configuration of aliased plugins
+
+Normally Maven tries to look up plugin configuration using plugin
+coordinates taken from plugin descriptor.  This works with pure Maven
+as plugin descriptor always matches <plugin> reference in POM.
+However in XMvn they can differ when plugin artifact is resolved
+throug artifact alias, so XMvn should force use of coordinates
+specified in <plugin> in POM.
+---
+ .../aether/XMvnMojoExecutionConfigurator.java      | 51 ++++++++++++++++++++++
+ 1 file changed, 51 insertions(+)
+ create mode 100644 xmvn-connector-aether/src/main/java/org/fedoraproject/xmvn/connector/aether/XMvnMojoExecutionConfigurator.java
+
+diff --git a/xmvn-connector-aether/src/main/java/org/fedoraproject/xmvn/connector/aether/XMvnMojoExecutionConfigurator.java b/xmvn-connector-aether/src/main/java/org/fedoraproject/xmvn/connector/aether/XMvnMojoExecutionConfigurator.java
+new file mode 100644
+index 00000000..72e38b37
+--- /dev/null
++++ b/xmvn-connector-aether/src/main/java/org/fedoraproject/xmvn/connector/aether/XMvnMojoExecutionConfigurator.java
+@@ -0,0 +1,51 @@
++/*-
++ * Copyright (c) 2018 Red Hat, Inc.
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++package org.fedoraproject.xmvn.connector.aether;
++
++import org.apache.maven.lifecycle.MojoExecutionConfigurator;
++import org.apache.maven.lifecycle.internal.DefaultMojoExecutionConfigurator;
++import org.apache.maven.plugin.MojoExecution;
++import org.apache.maven.plugin.descriptor.PluginDescriptor;
++import org.apache.maven.project.MavenProject;
++import org.codehaus.plexus.component.annotations.Component;
++
++/**
++ * @author Mikolaj Izdebski
++ */
++@Component( role = MojoExecutionConfigurator.class )
++public class XMvnMojoExecutionConfigurator
++    extends DefaultMojoExecutionConfigurator
++{
++    @Override
++    public void configure( MavenProject project, MojoExecution execution, boolean allowPluginLevelConfig )
++    {
++        PluginDescriptor originalPluginDescriptor = execution.getMojoDescriptor().getPluginDescriptor();
++
++        PluginDescriptor aliasedPluginDescriptor = originalPluginDescriptor.clone();
++        aliasedPluginDescriptor.setGroupId( execution.getPlugin().getGroupId() );
++        aliasedPluginDescriptor.setArtifactId( execution.getPlugin().getArtifactId() );
++
++        try
++        {
++            execution.getMojoDescriptor().setPluginDescriptor( aliasedPluginDescriptor );
++            super.configure( project, execution, allowPluginLevelConfig );
++        }
++        finally
++        {
++            execution.getMojoDescriptor().setPluginDescriptor( originalPluginDescriptor );
++        }
++    }
++}
+-- 
+2.14.3
+

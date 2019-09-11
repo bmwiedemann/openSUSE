@@ -1,0 +1,350 @@
+-------------------------------------------------------------------
+Mon Jun 10 13:59:24 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to fix release 0.35.2 ... just fixing the test suite.
+
+-------------------------------------------------------------------
+Sat Jun  8 08:58:56 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace fix_OpenSSL111c.patch with proper new release 0.35.1
+  (there is really not much more in it).
+
+-------------------------------------------------------------------
+Fri Jun  7 22:21:23 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add fix_OpenSSL111c.patch patch to ensure compatibility with
+  OpenSSL 1.1.1c. gl#m2crypto/m2crypto#258
+
+-------------------------------------------------------------------
+Thu Jun  6 12:27:35 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Upgrade to 0.34.0
+- no upstream changelog
+
+-------------------------------------------------------------------
+Fri Apr 26 16:48:44 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 0.33.0:
+  - eb4525c - Stop pretending to support Python 3.4.
+  - 6a89548 - Fix use of urlunsplit (25 hours ago)
+  - 0a5a356 - tests/test_ssl: use -ciphercuites for TLS1.3 cipher in
+        openssl1.1
+  - 8a0a3e3 - There are apparently multiword CPP variables. Taking that
+        into account.
+- Remove
+  0001-tests-test_ssl-use-ciphercuites-for-TLS1.3-cipher-in.patch
+  as it included in the latest release.
+
+-------------------------------------------------------------------
+Thu Mar  7 14:14:45 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Fix for compatibility with OpenSSL 1.1.0h by adding the patch
+  0001-tests-test_ssl-use-ciphercuites-for-TLS1.3-cipher-in.patch
+
+-------------------------------------------------------------------
+Tue Mar  5 09:01:46 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.32.0:
+    * 471582f - setup.py: use ${CPP} as path to cpp <Duncan Macleod>
+    * efb1580 - Bump pipeline OpenSSL from 1.1.0i to 1.1.0j 
+    * 35bb71b - Stub wchar_t helpers and ignore unused WCHAR defs 
+    * effc7be - Add type comment to setup.py  <Matěj Cepl>
+
+-------------------------------------------------------------------
+Wed Dec  5 14:30:23 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Whoops! Here -devel dependency certainly should stay
+
+-------------------------------------------------------------------
+Tue Dec  4 12:50:42 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Nov  9 15:20:09 CET 2018 - mcepl@suse.com
+
+- Update to 0.31.0 released tarball:
+    * Compatibility with OpenSSL 1.1.1 (partly workaround, maybe
+      requires further investigation)
+    * Fixes for Windows builds
+    * Fixes of installs on AWS Lambda
+    * Fixes of Mac OS X related failures
+    * Fix Python 2.6 compatibility issues
+
+-------------------------------------------------------------------
+Tue Nov  6 17:26:23 CET 2018 - mcepl@suse.com
+
+- pre-release of 0.31.0 tarball
+- add openssl-1_1_1-compat.patch to fix OpenSSL 1.1.1 compatibility.
+
+-------------------------------------------------------------------
+Mon Sep 24 15:14:14 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Update to 0.30.1:
+    * Various small typos (Windows builds, Fix SSL.Connection.__del__)
+    * The project is now Linux-distribution agnostic
+    * Replace all old-style classes with the new ones (it shouldn't
+      cause any problems, but feel free to file an issue, if it does)
+    * Do not by-pass a potential transfer decoding in m2urllib2
+    * Update M2Crypto.six with 1.11.0 and replace our local workarounds
+      with new functions.
+    * SSLv3 just removed.
+    * Don't support Python 2.6 on Windows anymore. Windows users don't
+      have python as a system package, so they are usually more likely
+      to upgrade anyway.
+
+-------------------------------------------------------------------
+Fri Feb 23 17:38:27 UTC 2018 - michael@stroeder.com
+
+- Update to 0.29.0 (Fixes of some small bugs)
+
+-------------------------------------------------------------------
+Tue Feb 20 11:14:52 UTC 2018 - tchvatal@suse.com
+
+- Require python-xml that is used by some parts of M2crypto
+
+-------------------------------------------------------------------
+Fri Feb  9 22:30:59 UTC 2018 - michael@stroeder.com
+
+- Update to 0.28.2:
+  * Fix ppc builds
+
+-------------------------------------------------------------------
+Fri Feb  9 09:56:10 UTC 2018 - tchvatal@suse.com
+
+- Enable tests, fix docu install phase
+
+-------------------------------------------------------------------
+Thu Feb  8 18:57:19 UTC 2018 - michael@stroeder.com
+
+- Removed obsolete patches fix-build-python3.diff
+  and fix-openssl-include-path.diff
+- Update to 0.28.1
+  * compability with Python 3
+  * building on Mac OS X should be now more reliable and automagic
+  * Fix licence in metadata: it is MIT, not BSD
+  * Fix and add tests for SWIG/_aes.i module
+  * Bundle-in unittest2 for Python 2.6
+  * Remove all PGP modules
+
+-------------------------------------------------------------------
+Wed Nov  8 18:13:06 UTC 2017 - jmatejek@suse.com
+
+- use generic way to require python-typing now that python3 provides it
+
+-------------------------------------------------------------------
+Wed Oct 25 20:07:14 UTC 2017 - michael@stroeder.com
+
+- License set to MIT
+
+-------------------------------------------------------------------
+Fri Oct 20 13:51:00 UTC 2017 - alarrosa@suse.com
+
+- Remove unnecessary fdupes call 
+
+-------------------------------------------------------------------
+Wed Oct 18 07:13:58 UTC 2017 - alarrosa@suse.com
+
+- Update to 0.27.0
+  * Fix licence: it is MIT, not BSD
+  * At least minimal support of SNI in httpslib.
+  * Small bugfixes and cleanups.
+  * More effort to make build system more robust.
+  * Restore m2.rsa_set_e() and m2.rsa_set_n().
+  * Make sure that every exceptional return throws and exception and viceversa.
+- Add patch fix-build-python3.diff to let it build with python3
+- Add patch fix-openssl-include-path.diff to fix openssl include path
+  (the code already includes the openssl/ part)
+- Create a new package python-M2Crypto-doc for documentation since rpmlint
+  was complaining around 75% of the package was documentation.
+
+-------------------------------------------------------------------
+Tue Sep 26 12:32:25 UTC 2017 - michael@stroeder.com
+
+- Update to 0.26.4 with fix for OpenSSL 1.1.0 and LibreSSL
+
+-------------------------------------------------------------------
+Fri Sep 22 19:22:13 UTC 2017 - michael@stroeder.com
+
+- Update to 0.26.3 with fix for a syntax error
+
+-------------------------------------------------------------------
+Thu Sep 21 06:42:10 UTC 2017 - michael@stroeder.com
+
+- Update to 0.26.2
+  * compatibility with OpenSSL 1.1.0
+
+-------------------------------------------------------------------
+Mon Jun 19 21:47:35 UTC 2017 - sebix+novell.com@sebix.at
+
+- only require python3-typing if necessary
+
+-------------------------------------------------------------------
+Sat May  6 03:33:01 UTC 2017 - toddrme2178@gmail.com
+
+- It doesn't look like python3-m2crypto ever existed, so don't
+  provide it.
+
+-------------------------------------------------------------------
+Thu Apr 27 15:56:24 UTC 2017 - alarrosa@suse.com
+
+- Add python-typing as a dependency 
+
+-------------------------------------------------------------------
+Wed Apr 26 15:50:39 UTC 2017 - alarrosa@suse.com
+
+- Provide python-m2crypto in the python2 package
+
+-------------------------------------------------------------------
+Tue Apr 18 21:03:56 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.26.0
+  * No changelog provided
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Mon Sep 12 10:53:53 UTC 2016 - dmueller@suse.com
+
+- use pypi.io as Source URL
+
+-------------------------------------------------------------------
+Fri Jul 22 14:06:42 UTC 2016 - michael@stroeder.com
+
+- update to 0.25.1
+- set new dependency on package python-typing
+
+-------------------------------------------------------------------
+Fri Jun  3 13:05:13 UTC 2016 - jweberhofer@weberhofer.at
+
+- update to 0.24.0 (bsc#1001377)
+  * No changelog provided
+- README is no longer included
+- Removed obsolete python-M2Crypto-SWIG-3.0.5.patch
+
+-------------------------------------------------------------------
+Mon Dec  7 13:29:40 UTC 2015 - opensuse@dstoecker.de
+
+- fix SSLv2 link error for 13.2 and Leap 42.1 (M2Crypto-0.22.5-SSLv2_link_error.patch) (bsc#969731)
+
+-------------------------------------------------------------------
+Sat Dec  5 20:42:42 UTC 2015 - opensuse@dstoecker.de
+
+- update to 0.22.5, fix URL
+- drop python-M2Crypto-SWIG-3.0.5.patch (functionality included upstream)
+
+-------------------------------------------------------------------
+Thu Nov 26 09:35:28 UTC 2015 - hpj@urpla.net
+
+- SLE12 requires swig3 for a successful build, too 
+
+-------------------------------------------------------------------
+Tue Nov 17 17:54:49 UTC 2015 - hpj@urpla.net
+
+- fix build for openSUSE Leap 42.1 (requires swig3)
+
+-------------------------------------------------------------------
+Tue Feb 24 11:35:42 UTC 2015 - dimstar@opensuse.org
+
+- Add python-M2Crypto-SWIG-3.0.5.patch: Fix generation of M2Crypto
+  module when using SWIG 3.0.5.
+- Manually install _m2crypto shadow file: setup.py misses it.
+  (boo#917759, boo#917815).
+
+-------------------------------------------------------------------
+Thu Apr 17 19:49:12 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.22.3
+  * No changelog provided
+- Demos are no longer included
+
+-------------------------------------------------------------------
+Thu Oct 24 11:08:11 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Fri Sep 13 14:52:08 UTC 2013 - jmatejek@suse.com
+
+- fixed %fdupes creating dangling symlinks (bnc#835687)
+
+-------------------------------------------------------------------
+Fri Apr  5 13:41:54 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Mon Jan 14 15:01:41 UTC 2013 - saschpe@suse.de
+
+- Add requirement on python-pyOpenSSL, thinner than M2Crypto
+
+-------------------------------------------------------------------
+Wed Oct 31 13:09:21 UTC 2012 - saschpe@suse.de
+
+- Narrow the scops of fdupes (see bnc#784670)
+
+-------------------------------------------------------------------
+Tue Jan 24 13:49:57 UTC 2012 - bwiedemann@suse.com
+
+- fix Obsoletes
+
+-------------------------------------------------------------------
+Tue Dec 13 13:16:21 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Sep 22 09:18:45 UTC 2011 - saschpe@suse.de
+
+- Use SPDX style license
+- Require python-distribute instead of python-setuptools
+- Don't package testsuite
+
+-------------------------------------------------------------------
+Tue May 31 08:18:39 UTC 2011 - saschpe@suse.de
+
+- Renamed to python-M2Crypto to match PyPI upstream name
+  * Added Provides/Obsoletes for python-m2crypto
+- Fixed wrong-EOL, executable bit for docs rpmlint warnings
+
+-------------------------------------------------------------------
+Mon Apr 18 09:05:48 UTC 2011 - saschpe@suse.de
+
+- Update to 0.21.1
+  - Support OpenSSL 1.0. Thanks to Miloslav Trmac for figuring out
+    how to fix test_smime.py
+  - Rename m2.engine_init to engine_init_error so that ENGINE_init
+    and ENGINE_finish can be exposed, thanks to Erlo
+  - 0.20 started releasing Python locks even around some operations
+    that interacted with the Python runtime, potentially causing
+    crashes and other weirdness, fix by Miloslav Trmac
+  - Make httpslib.ProxyHTTPSConnection work with Python 2.3
+- Removed patches that are now upstream
+- Removed authors from spec
+
+-------------------------------------------------------------------
+Tue Apr 20 08:46:03 UTC 2010 - lnussel@suse.de
+
+- add some upstream patches to fix openssl 1.0 build
+
+-------------------------------------------------------------------
+Tue Mar 30 14:09:38 CEST 2010 - matejcik@suse.cz
+
+- update to 0.20.2
+  * PGP subpackage is deprecated
+  * m2urllib now closes sockets properly
+  * port is now integer in ProxyHTTPSConnection
+  * many bugfixes
+  * test coverage up to 80%
+- enabled test suite in %check phase
+  (requires python-setuptools and openssl binary to run)
+
+-------------------------------------------------------------------
+Fri Feb 27 10:21:12 CET 2009 - jblunck@suse.de
+
+- Update to M2Crypto 0.19.1.
+
+-------------------------------------------------------------------
+Tue Jan 13 20:20:39 CET 2009 - matejcik@suse.cz
+
+- package taken from devel:languages:python in OBS
+

@@ -1,0 +1,13 @@
+Index: agate-sql-0.5.4/tests/test_agatesql.py
+===================================================================
+--- agate-sql-0.5.4.orig/tests/test_agatesql.py	2019-03-16 17:22:33.000000000 +0100
++++ agate-sql-0.5.4/tests/test_agatesql.py	2019-04-17 13:38:17.158819021 +0200
+@@ -149,7 +149,7 @@ class TestSQL(agate.AgateTestCase):
+ );''')  # noqa
+ 
+     def test_to_sql_create_statement_with_dialects(self):
+-        for dialect in ['crate', 'mssql', 'mysql', 'postgresql', 'sqlite']:
++        for dialect in ['mssql', 'mysql', 'postgresql', 'sqlite']:
+             self.table.to_sql_create_statement('test_table', dialect=dialect)
+ 
+     def test_to_sql_create_statement_zero_width(self):

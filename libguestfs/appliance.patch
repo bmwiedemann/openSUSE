@@ -1,0 +1,14 @@
+Index: libguestfs-1.38.0/appliance/init
+===================================================================
+--- libguestfs-1.38.0.orig/appliance/init
++++ libguestfs-1.38.0/appliance/init
+@@ -234,7 +234,8 @@ else
+     echo "Note: The contents of / (root) are the rescue appliance."
+     if ! test -d "/sysroot/dev"; then
+         echo "You have to mount the guest’s partitions under /sysroot"
+-        echo "before you can examine them."
++        echo "before you can examine them. A helper script for that exists:"
++        echo "mount-rootfs-and-chroot.sh /dev/sda2"
+     else
+         echo "Use 'cd /sysroot' or 'chroot /sysroot' to see guest filesystems."
+     fi

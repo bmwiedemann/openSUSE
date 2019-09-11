@@ -1,0 +1,43 @@
+Index: pycparser-release_v2.14/setup.py
+===================================================================
+--- pycparser-release_v2.14.orig/setup.py
++++ pycparser-release_v2.14/setup.py
+@@ -1,11 +1,11 @@
+ import os, sys
+ try:
+     from setuptools import setup
+-    from setuptools.command.install import install as _install
++    from setuptools.command.build import build as _build
+     from setuptools.command.sdist import sdist as _sdist
+ except ImportError:
+     from distutils.core import setup
+-    from distutils.command.install import install as _install
++    from distutils.command.build import build as _build
+     from distutils.command.sdist import sdist as _sdist
+ 
+ 
+@@ -18,10 +18,10 @@ def _run_build_tables(dir):
+                cwd=os.path.join(dir, 'pycparser'))
+ 
+ 
+-class install(_install):
++class build(_build):
+     def run(self):
+-        _install.run(self)
+-        self.execute(_run_build_tables, (self.install_lib,),
++        _build.run(self)
++        self.execute(_run_build_tables, (self.build_lib,),
+                      msg="Build the lexing/parsing tables")
+ 
+ 
+@@ -60,7 +60,7 @@ setup(
+         'Programming Language :: Python :: 3.6',
+     ],
+     python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*",
+-    packages=['pycparser', 'pycparser.ply'],
+-    package_data={'pycparser': ['*.cfg']},
+-    cmdclass={'install': install, 'sdist': sdist},
++    packages=['pycparser', 'pycparser.ply', 'utils.fake_libc_include'],
++    package_data={'pycparser': ['*.cfg'], 'utils.fake_libc_include': ['*.h', 'xcb/*']},
++    cmdclass={'build': build, 'sdist': sdist},
+ )

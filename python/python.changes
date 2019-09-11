@@ -1,0 +1,1581 @@
+-------------------------------------------------------------------
+Fri Jul 19 11:19:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip test_urllib2_localnet that randomly fails in OBS
+
+-------------------------------------------------------------------
+Wed May 29 08:58:16 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+-  Set _lto_cflags to nil as it will prevent to propage LTO
+   for Python modules that are built in a separate package.
+
+-------------------------------------------------------------------
+Mon Oct 29 13:21:20 UTC 2018 - Vítězslav Čížek <vcizek@suse.com>
+
+- Enable all the tests in %check
+- Add more patches to successfully build with openssl 1.1.1
+  (bsc#1113755)
+  * openssl-111-middlebox-compat.patch
+  * openssl-111-ssl_options.patch
+
+-------------------------------------------------------------------
+Fri Oct 26 10:48:44 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch openssl-111.patch to work with openssl-1.1.1
+
+-------------------------------------------------------------------
+Tue Sep 25 22:01:08 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Apply "CVE-2018-1000802-shutil_use_subprocess_no_spawn.patch" which
+  converts shutil._call_external_zip to use subprocess rather than
+  distutils.spawn. [bsc#1109663, CVE-2018-1000802]
+
+-------------------------------------------------------------------
+Mon May 21 18:41:43 UTC 2018 - michael@stroeder.com
+
+- update to 2.7.15
+  * dozens of bugfixes, see NEWS for details
+- removed obsolete patches:
+  * python-ncurses-6.0-accessors.patch
+  * python-fix-shebang.patch
+  * gcc8-miscompilation-fix.patch
+- add patch from upstream:
+  * do-not-use-non-ascii-in-test_ssl.patch
+
+-------------------------------------------------------------------
+Mon Nov 20 16:11:48 UTC 2017 - jmatejek@suse.com
+
+- update to 2.7.14
+  * dozens of bugfixes, see NEWS for details
+  * fixed possible integer overflow in PyString_DecodeEscape (CVE-2017-1000158, bsc#1068664)
+  * fixed segfaults with dict mutated during search
+  * fixed possible free-after-use problems with buffer objects with custom indexing
+  * fixed urllib.splithost to correctly parse fragments (bpo-30500)
+- drop upstreamed python-2.7.13-overflow_check.patch
+- drop unneeded python-2.7.12-makeopcode.patch
+- drop upstreamed 0001-2.7-bpo-30714-ALPN-changes-for-OpenSSL-1.1.0f-3094.patch
+
+-------------------------------------------------------------------
+Thu Sep 14 14:12:38 UTC 2017 - vcizek@suse.com
+
+- Fix test broken with OpenSSL 1.1 (bsc#1042670)
+  * add 0001-2.7-bpo-30714-ALPN-changes-for-OpenSSL-1.1.0f-3094.patch
+
+-------------------------------------------------------------------
+Mon Aug 28 13:28:46 UTC 2017 - jmatejek@suse.com
+
+- drop SUSE_ASNEEDED=0 as it is not needed anymore
+
+-------------------------------------------------------------------
+Thu Aug 17 08:58:02 CEST 2017 - kukuk@suse.de
+
+- Add libnsl-devel build requires for glibc obsoleting libnsl
+
+-------------------------------------------------------------------
+Tue Jan  3 16:59:24 UTC 2017 - jmatejek@suse.com
+
+- update to 2.7.13
+  * dozens of bugfixes, see NEWS for details
+  * updated cipher lists for openssl wrapper, support openssl >= 1.1.0
+  * properly fix HTTPoxy (CVE-2016-1000110)
+  * profile-opt build now applies PGO to modules as well
+- update python-2.7.10-overflow_check.patch
+  with python-2.7.13-overflow_check.patch, incorporating upstream changes
+- add "-fwrapv" to optflags explicitly because upstream code still
+  relies on it in many places
+
+-------------------------------------------------------------------
+Fri Dec  2 15:35:29 UTC 2016 - jmatejek@suse.com
+
+- provide python2-* symbols, for support of new packages built as
+  python2-foo
+
+-------------------------------------------------------------------
+Thu Jun 30 09:23:05 UTC 2016 - jmatejek@suse.com
+
+- update to 2.7.12
+  * dozens of bugfixes, see NEWS for details
+  * fixes multiple security issues:
+    CVE-2016-0772 TLS stripping attack on smtplib (bsc#984751)
+    CVE-2016-5636 zipimporter heap overflow (bsc#985177)
+    CVE-2016-5699 httplib header injection (bsc#985348)
+      (this one is actually fixed since 2.7.10)
+
+-------------------------------------------------------------------
+Mon Sep 14 15:03:30 UTC 2015 - jmatejek@suse.com
+
+- implement python-strict-tls-checks subpackage
+  * when present, Python will perform TLS certificate checking by default.
+    it is possible to remove the package to turn off the checks
+    for compatibility with legacy scripts.
+  * as discussed in fate#318300
+  * this is not built for openSUSE, but retained here in case we want
+    to build the package for a SLE system
+
+-------------------------------------------------------------------
+Wed Sep  9 12:18:20 UTC 2015 - dimstar@opensuse.org
+
+- Add python-ncurses-6.0-accessors.patch: Fix build with
+  NCurses 6.0 and OPAQUE_WINDOW set to 1.
+
+-------------------------------------------------------------------
+Sun May 24 14:36:10 UTC 2015 - michael@stroeder.com
+
+- update to 2.7.10
+- removed obsolete python-2.7-urllib2-localnet-ssl.patch
+
+-------------------------------------------------------------------
+Thu May 14 13:27:09 UTC 2015 - jmatejek@suse.com
+
+- for SLE 12 SP1, disable SSL verification-by-default for backwards
+  compatibility (python-2.7.9-sles-disable-verification-by-default.patch)
+
+-------------------------------------------------------------------
+Wed Feb 25 16:31:37 UTC 2015 - jmatejek@suse.com
+
+- python-2.7.9-ssl_ca_path.patch - reintroduce support for CA directory path
+
+-------------------------------------------------------------------
+Fri Dec 12 17:11:51 UTC 2014 - jmatejek@suse.com
+
+- update to 2.7.9
+
+-------------------------------------------------------------------
+Sat Oct 18 20:05:00 UTC 2014 - crrodriguez@opensuse.org
+
+- Only pkgconfig(x11) is required for build,not xorg-x11-devel.
+
+-------------------------------------------------------------------
+Tue Sep 30 15:27:40 UTC 2014 - jmatejek@suse.com
+
+- update to 2.7.8
+  * bugfix-only release, dozens of bugs fixed
+
+-------------------------------------------------------------------
+Fri Jun 20 13:46:22 UTC 2014 - jmatejek@suse.com
+
+- update to 2.7.7
+  * bugfix-only release, over a hundred bugs fixed
+
+-------------------------------------------------------------------
+Fri Mar 14 20:26:03 UTC 2014 - andreas.stieger@gmx.de
+
+- Fix build with SQLite 3.8.4 [bnc#867887], fixing SQLite tests,
+  adding python-2.7.6-sqlite-3.8.4-tests.patch
+
+-------------------------------------------------------------------
+Thu Nov 21 15:54:55 UTC 2013 - jmatejek@suse.com
+
+- update to 2.7.6
+
+-------------------------------------------------------------------
+Thu Sep 19 17:40:05 UTC 2013 - crrodriguez@opensuse.org
+
+- build with -DOPENSSL_LOAD_CONF so python honours 
+ the system's openSSL configuration if any, allowing it to
+ benefit from openssl ENGINE functionality.
+
+-------------------------------------------------------------------
+Mon Aug 26 13:55:35 UTC 2013 - lnussel@suse.de
+
+- update python-2.7.3-ssl_ca_path.patch patch to load default verify locations
+  if no ca_certs file is specified (bnc#827982, bnc#836739)
+
+-------------------------------------------------------------------
+Fri Aug 16 11:25:49 UTC 2013 - jmatejek@suse.com
+
+- handle NULL bytes in certain fields of SSL certificates
+  (CVE-2013-4238, bnc#834601)
+
+-------------------------------------------------------------------
+Tue Jul  9 07:55:50 UTC 2013 - jengelh@inai.de
+
+- Add python-bsddb6.diff to support building against libdb-6.0
+
+-------------------------------------------------------------------
+Wed Jun  5 15:19:14 UTC 2013 - schwab@suse.de
+
+- Reenable testsuite on arm
+
+-------------------------------------------------------------------
+Thu May 30 16:40:16 UTC 2013 - jmatejek@suse.com
+
+- switch to xz archive
+
+-------------------------------------------------------------------
+Tue May 28 08:42:49 UTC 2013 - speilicke@suse.com
+
+- Update to version 2.7.5:
+  + bugfix-only release
+  + fixes several important regressions introduced in 2.7.4
+  + Issue #15535: Fixed regression in the pickling of named tuples by
+    removing the __dict__ property introduced in 2.7.4.
+  + Issue #17857: Prevent build failures with pre-3.5.0 versions of sqlite3,
+    such as was shipped with Centos 5 and Mac OS X 10.4.
+  + Issue #17703: Fix a regression where an illegal use of Py_DECREF() after
+    interpreter finalization can cause a crash.
+  + Issue #16447: Fixed potential segmentation fault when setting __name__ on a
+    class.
+  + Issue #17610: Don't rely on non-standard behavior of the C qsort() function. 12 
+  See http://hg.python.org/cpython/file/ab05e7dd2788/Misc/NEWS for more
+
+-------------------------------------------------------------------
+Thu May  9 16:14:07 UTC 2013 - jmatejek@suse.com
+
+- update to 2.7.4
+  * bugfix-only release
+
+-------------------------------------------------------------------
+Fri Apr  5 13:33:33 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Mon Feb 25 17:24:52 UTC 2013 - jmatejek@suse.com
+
+- fix pythonstart failing on $HOME-less users (bnc#804978)
+
+-------------------------------------------------------------------
+Sun Aug 12 11:46:22 UTC 2012 - idonmez@suse.com
+
+- python & python-base Release numbers can differ, take that into
+  account. See bnc#766778 comment 12.
+
+-------------------------------------------------------------------
+Tue Jun 26 11:54:22 UTC 2012 - dvaleev@suse.com
+
+- Fix failing test_dbm on ppc64
+
+-------------------------------------------------------------------
+Thu May 17 17:49:31 UTC 2012 - jfunk@funktronics.ca
+
+- Support directory-based certificate stores with the ca_certs parameter of SSL
+  functions [bnc#761501]
+
+-------------------------------------------------------------------
+Tue May 15 14:17:43 UTC 2012 - jmatejek@suse.com
+
+- enabled some tests
+
+-------------------------------------------------------------------
+Thu Dec  8 13:30:29 UTC 2011 - jmatejek@suse.com
+
+- %python_version now correctly refers to %tarversion
+
+-------------------------------------------------------------------
+Thu Dec 01 09:21:32 UTC 2011 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Run spec-cleaner
+  * Remove outdated %clean section, AutoReqProv and authors from descr.
+- Fix license to Python-2.0 (also SPDX style)
+
+-------------------------------------------------------------------
+Wed Nov 30 09:52:31 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Sep 16 16:21:44 UTC 2011 - jmatejek@suse.com
+
+- dropped newslist.py from demos because of bad license
+  (bnc#718009)
+
+-------------------------------------------------------------------
+Mon Jul 11 01:59:56 CEST 2011 - ro@suse.de
+
+- update to 2.7.2:
+  * Bug fix only release, see
+  http://hg.python.org/cpython/raw-file/eb3c9b74884c/Misc/NEWS
+  for details
+- introduce a pre_checkin.sh file that synchronizes
+  patches between python and python-base
+- rediff patches for 2.7.2
+- replace kernel3 patch with the upstream solution
+
+-------------------------------------------------------------------
+Tue May 24 14:30:10 UTC 2011 - jmatejek@novell.com
+
+- updated to 2.7.1
+    * bugfix-only release
+
+-------------------------------------------------------------------
+Wed May  4 14:18:08 UTC 2011 - jmatejek@novell.com
+
+- added "fix-parallel-make" patch to python main package as well,
+  because build process is the same
+
+-------------------------------------------------------------------
+Thu Feb 17 17:37:09 CET 2011 - pth@suse.de
+
+- Prefix DATE and TIME with PY_BUILD_ and COMPILER with PYTHON_ as
+  to not break external code (bnc#673071).
+
+-------------------------------------------------------------------
+Tue Aug 31 02:51:56 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Provide "fake" build enviroment information
+* build date replaced by source tarball modify date
+* compiler string replaced by "GCC"
+* This is intended to avoid republishing the packages
+  over and over again. 
+
+-------------------------------------------------------------------
+Thu Aug 26 11:42:44 UTC 2010 - jmatejek@novell.com
+
+- update to 2.7
+  * see changes in python-base.changes
+- cleaned up the spec and patches
+
+-------------------------------------------------------------------
+Fri Jul  2 13:57:02 UTC 2010 - jengelh@medozas.de
+
+- add patch from http://bugs.python.org/issue6029
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Apr  7 20:36:11 CEST 2010 - matejcik@suse.cz
+
+- update to 2.6.5
+
+-------------------------------------------------------------------
+Wed Feb  3 16:07:54 UTC 2010 - jengelh@medozas.de
+
+- exclude dl.so from SPARC64 (not built like on x86_64)
+
+-------------------------------------------------------------------
+Fri Jan 29 15:44:28 CET 2010 - matejcik@suse.cz
+
+- enabled ipv6 in configure (bnc#572673)
+
+-------------------------------------------------------------------
+Wed Dec 23 08:36:32 UTC 2009 - aj@suse.de
+
+- Apply patches with fuzz=0
+
+-------------------------------------------------------------------
+Wed Dec  2 18:40:21 UTC 2009 - coolo@novell.com
+
+- update patch again
+
+-------------------------------------------------------------------
+Wed Nov  4 19:04:16 CET 2009 - matejcik@suse.cz
+
+- readline shouldn't append space after completion (bnc#551715,
+  python bug 5833)
+
+-------------------------------------------------------------------
+Tue Nov  3 19:13:42 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Tue Sep  8 16:11:33 CEST 2009 - max@suse.de
+
+- removed blt from BuildRequires so that it can be dropped.
+
+-------------------------------------------------------------------
+Fri Sep  4 20:15:43 CEST 2009 - matejcik@suse.cz
+
+- added patch for potential SSL hangup during handshake (bnc#525295)
+
+-------------------------------------------------------------------
+Wed Jul 29 17:25:33 CEST 2009 - matejcik@suse.cz
+
+- renamed multilib patch to reflect the changes
+
+-------------------------------------------------------------------
+Thu Jul 16 10:11:27 CEST 2009 - coolo@novell.com
+
+- disable as-needed to fix build
+
+-------------------------------------------------------------------
+Mon Apr 27 15:19:45 CEST 2009 - matejcik@suse.cz
+
+- update to 2.6.2
+  * bugfix-only release for 2.6 series
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Dec 15 17:10:17 CET 2008 - matejcik@suse.cz
+
+- reenabled bsddb module, so that dependent packages can build
+  ( bnc#441088 )
+
+-------------------------------------------------------------------
+Thu Oct  9 18:57:43 CEST 2008 - matejcik@suse.cz
+
+- update to 2.6 (version name is 2.6.0 to prevent upgrade problems)
+- don't run the whole test suite, only run tests for
+  newly built modules
+- provide %name = 2.6
+
+-------------------------------------------------------------------
+Fri Sep 19 20:10:33 CEST 2008 - matejcik@suse.cz
+
+- moved testsuite to %check section
+- update to 2.6rc2, removing the last remaining security patch
+- included fix for socket.ssl() behavior regression, fixing
+  bnc#426563
+
+-------------------------------------------------------------------
+Tue Sep 16 18:09:49 CEST 2008 - matejcik@suse.cz
+
+- moved python-xml to subpackage of python-base
+- moved dbm.so to gdbm subpackage
+- moved ssl.py and sqlite3 module to this
+
+-------------------------------------------------------------------
+Mon Sep 15 18:34:06 CEST 2008 - matejcik@suse.cz
+
+- update to 2.6rc1 - bugfix-only pre-stable release
+
+-------------------------------------------------------------------
+Fri Sep 12 14:44:55 CEST 2008 - matejcik@suse.cz
+
+- split package, as per fate#305065
+- moved python-devel to be a subpackage of python-base
+- minor fixes & packaging cleanups
+
+-------------------------------------------------------------------
+Wed Sep 10 16:31:29 CEST 2008 - matejcik@suse.cz
+
+- fixed misapplied ssl-compat patch (caused segfaults when
+  opening SSL connections, bnc#425138 )
+
+-------------------------------------------------------------------
+Wed Sep  3 17:17:06 CEST 2008 - matejcik@suse.cz
+
+- updated to 2.6beta3 from BETA dist, summary of changes follows:
+  * patches update/cleanup
+  * removed failing tests (test_unicode, test_urllib2), those will
+    be reworked later to not fail
+  * fixed ncurses/panel.h include
+  * removed most security fixes, as they are already included in
+    this version
+  * removed imageop/rgbimg
+    (reasons: they only work in 32bit environment anyway, are
+    deprecated by upstream and have inherent security problems)
+  * fixed pythonstart script to trim history after 10000 lines
+    (bnc#399190)
+- 2.6beta3 is mostly stable release of the 2.6 series,
+  package will be updated to 2.6 final as soon as it comes out
+  (in the beginning of October)
+
+-------------------------------------------------------------------
+Wed Jul 30 20:35:02 CEST 2008 - matejcik@suse.cz
+
+- security fixes for issues mentioned in bnc#406051:
+  * CVE-2008-2315 - multiple integer overflows in basic types
+  * CVE-2008-2316 - partial hashing of huge data with hashlib
+  * CVE-2008-3142 - multiple buffer oveflows in unicode processing
+  * CVE-2008-3144 - possible integer over/underflow in mysnprintf
+  * buffer overflows in expandtabs() method (afaik no CVE assigned)
+- also mentioned CVE-2008-3143 is already fixed in python 2.5.2
+
+-------------------------------------------------------------------
+Mon Jun 30 15:38:17 CEST 2008 - schwab@suse.de
+
+- Work around autoheader bug.
+
+-------------------------------------------------------------------
+Fri Jun 13 10:07:02 CEST 2008 - schwab@suse.de
+
+- Fix configure script.
+
+-------------------------------------------------------------------
+Thu Apr 24 19:37:14 CEST 2008 - matejcik@suse.cz
+
+- proper path for html documentation from python-doc,
+  help text mentioning python-doc package in pydoc
+  (bnc#380942)
+
+-------------------------------------------------------------------
+Wed Apr 16 21:20:07 CEST 2008 - matejcik@suse.cz
+
+- PyString_FromStringAndSize now checks size parameter
+  (bnc#379534, CVE-2008-1721)
+
+-------------------------------------------------------------------
+Tue Apr 15 09:14:29 CEST 2008 - adrian@suse.de
+
+- disable DNS lookup test when running in build service.
+  The XEN build hosts have no network.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Apr  7 13:59:29 CEST 2008 - schwab@suse.de
+
+- Limit virtual memory to avoid spurious testsuite failures.
+
+-------------------------------------------------------------------
+Mon Mar 10 18:18:43 CET 2008 - matejcik@suse.cz
+
+- bnc#367853 turned out to be invalid, upstream is already on to
+  the real problem
+- forcing -fwrapv to compiler flags until upstream has a solution
+
+-------------------------------------------------------------------
+Wed Feb 27 18:08:58 CET 2008 - matejcik@suse.cz
+
+- update to 2.5.2
+  - bugfix-only release, over 100 bugs fixed
+- removed hppa patch (already included)
+- disabled test_str until gcc issue bnc#367853 is resolved
+
+-------------------------------------------------------------------
+Tue Nov 13 17:32:06 CET 2007 - matejcik@suse.cz
+
+- patched a bug in sqlite module that would cause segfault on
+  call to executescript()
+  -> TODO return and improve the patch
+
+-------------------------------------------------------------------
+Mon Sep  3 17:57:43 CEST 2007 - matejcik@suse.cz
+
+- replaced fdupes oneliner with %fdupes macro
+- added /usr/bin/python2 symlink (#307097)
+- obsoletes python-elementtree and python-sqlite (#301182)
+  (obsoletes, but doesn't provide - the modules that obsolete those
+  packages are renamed and dependent packages need to be changed)
+
+-------------------------------------------------------------------
+Fri Aug 24 16:42:12 CEST 2007 - bg@suse.de
+
+- fix build on hppa
+
+-------------------------------------------------------------------
+Fri Aug  3 15:25:32 CEST 2007 - jmatejek@suse.cz
+
+- replaced duplicate files with hardlinks
+
+-------------------------------------------------------------------
+Fri Jul 27 14:51:03 CEST 2007 - jmatejek@suse.cz
+
+- removed emacs python-mode and dependency on emacs
+
+-------------------------------------------------------------------
+Fri Jun  8 16:33:09 CEST 2007 - jmatejek@suse.cz
+
+- revisited & explained failing tests
+- applied EINTR recovery patch (#278622)
+- experimental replacement of shebang strings,
+  removing dependency on /usr/bin/env
+
+-------------------------------------------------------------------
+Thu May 24 18:47:20 CEST 2007 - jmatejek@suse.cz
+
+- update to 2.5.1
+    - bugfix only release, over 150 bugs fixed
+    - fixes off-by-one memory leak in _localemodule.c
+      (#276889, CVE-2007-2052)
+- unnecessary patches removed, minor build cleanup
+- warns when attempting to use https proxy (#214983)
+
+-------------------------------------------------------------------
+Tue May 22 01:13:28 CEST 2007 - ro@suse.de
+
+- make setup.py accept db-4.5 
+
+-------------------------------------------------------------------
+Thu Mar 29 13:32:08 CEST 2007 - aj@suse.de
+
+- Add ncurses-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Sat Mar 24 18:16:08 CET 2007 - aj@suse.de
+
+- Add libbz2-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Fri Mar 23 15:10:09 CET 2007 - rguenther@suse.de
+
+- add gdbm-devel BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan  8 19:27:06 CET 2007 - cthiel@suse.de
+
+- fix sqlite3 support (#228733)
+
+-------------------------------------------------------------------
+Tue Sep 19 18:20:07 CEST 2006 - jmatejek@suse.cz
+
+- update to 2.5 final, going into STABLE dist
+- issue with lib/python/config is not caused by dirs patch
+
+-------------------------------------------------------------------
+Wed Sep 13 19:07:35 CEST 2006 - jmatejek@suse.cz
+
+- update to 2.5c2
+  - 2.5 final is expected next week
+- removed testfiles.tar.bz2 from package due to copyright issues
+  (see #204867). Reminder: enable urlfetch or put it back (or both,
+  using Nosource)
+
+-------------------------------------------------------------------
+Tue Sep  5 13:51:48 CEST 2006 - jmatejek@suse.cz
+
+- update to 2.5c1
+- many new features, see http://www.python.org/dev/peps/pep-0356/
+- 64bit indices issue will require changes of modules, see
+  http://www.python.org/dev/peps/pep-0353/ for transition guidelines
+- non-backwards-compatible changes, see
+  http://docs.python.org/dev/whatsnew/section-other.html
+  (this link is expected to die, so just search for "what's new in 2.5")
+- open issues in build process:
+  - sed'ing out /usr/local/bin/python from files causes build to fail
+    if not filtered by grep (see %prep section) - might be a bug in sed
+  - 2.3.3-dirs patch + --enable-shared + --libdir breaks build,
+    because "-L/usr/lib*/python2.5/config" is added instead of "-L."
+    Workaround in 2.5c1-dirs-fix, should be replaced soon
+  - test_file fails in autobuild, but is OK when building manually
+  - test_nis fails in autobuild, probably due to a misconfiguration
+    on autobuild servers
+  - it might be good to create python-sqlite3 subpackage
+
+-------------------------------------------------------------------
+Mon Apr 24 20:08:30 CEST 2006 - jmatejek@suse.cz
+
+- update to 2.4.3
+  - no big changes, bugfix-only release (about 50 bugs fixed)
+
+-------------------------------------------------------------------
+Wed Mar 15 17:51:29 CET 2006 - jmatejek@suse.cz
+
+- moved -doc and -doc-pdf into separate noarch specfile
+
+-------------------------------------------------------------------
+Mon Feb 27 18:05:56 CET 2006 - jmatejek@suse.cz
+
+- implemented /usr/local path schemes for bug #149809
+  - python now recognizes packages in /usr/local/lib/python2.4
+  - distutils install by default into /usr/local/lib/python2.4/site-packages
+  - on 64bit systems that is of course lib64
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:52 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 13:25:08 CET 2006 - kukuk@suse.de
+
+- Add gmp-devel to nfb
+
+-------------------------------------------------------------------
+Mon Nov 28 19:10:03 CET 2005 - jmatejek@suse.cz
+
+- reenabled optimization on ppc64
+
+-------------------------------------------------------------------
+Fri Nov 11 16:59:11 CET 2005 - nadvornik@suse.cz
+
+- fixed another bug in canonicalize patch [#133267]
+
+-------------------------------------------------------------------
+Wed Oct  5 15:53:01 CEST 2005 - jmatejek@suse.cz
+
+- update to 2.4.2
+- additional fixes to canonicalize patch, restored interactive mode
+
+-------------------------------------------------------------------
+Mon Sep 26 15:40:20 CEST 2005 - jmatejek@suse.cz
+
+- replaced the previous patch with a new one
+    - it now tries to use canonical_file_name(), falling back to realpath()
+      and eventually readlink
+    - canonical_file_name() branch now sets the buffer length
+
+-------------------------------------------------------------------
+Fri Sep 23 16:29:19 CEST 2005 - jmatejek@suse.cz
+
+- fixed to build with gcc's new buffer overflow checking
+    - added patch from https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=169046
+
+-------------------------------------------------------------------
+Fri Apr 22 17:04:38 CEST 2005 - schwab@suse.de
+
+- Always enable SSL bug workarounds.
+
+-------------------------------------------------------------------
+Tue Apr  5 16:58:27 CEST 2005 - mcihar@suse.cz
+
+- update to 2.4.1
+
+-------------------------------------------------------------------
+Thu Mar 24 16:15:25 CET 2005 - uli@suse.de
+
+- fixed to build on ARM
+
+-------------------------------------------------------------------
+Tue Mar  1 19:16:46 CET 2005 - mcihar@suse.cz
+
+- skip some test on ia64 for now
+
+-------------------------------------------------------------------
+Tue Feb  8 16:43:56 CET 2005 - mcihar@suse.cz
+
+- mark configuration files as %config
+
+-------------------------------------------------------------------
+Tue Feb 01 14:16:43 CET 2005 - mcihar@suse.cz
+
+- fix vulnerability in SimpleXMLRPCServer (bug #50321, CAN-2005-0089)
+
+-------------------------------------------------------------------
+Tue Dec 28 16:43:47 CET 2004 - mcihar@suse.cz
+
+- disable bsddb tests, it fails probably on all 64-bit
+
+-------------------------------------------------------------------
+Thu Dec 23 13:46:21 CET 2004 - mcihar@suse.cz
+
+- make lib64 installation also work on others than x86_64
+
+-------------------------------------------------------------------
+Mon Dec 20 17:51:29 CET 2004 - mcihar@suse.de
+
+- fixed build on ppc64
+    - update multiarch patch
+    - do not test bsddb internals
+    - remove optimalisation from flags, it breaks at least math
+
+-------------------------------------------------------------------
+Mon Dec 20 14:22:15 CET 2004 - mcihar@suse.cz
+
+- added extra files needed for some tests (codecmaps and unicode normalisation)
+- enabled bsddb tests
+- reenabled test_shelve, as it works now
+
+-------------------------------------------------------------------
+Thu Dec 16 17:13:04 CET 2004 - mcihar@suse.cz
+
+- update db 4.3 patch
+- fix bdist_rpm when spec file generates more than one rpm
+
+-------------------------------------------------------------------
+Tue Dec 14 08:13:09 CET 2004 - bg@suse.de
+
+- disable tests for hppa
+
+-------------------------------------------------------------------
+Mon Dec 06 12:30:59 CET 2004 - mcihar@suse.cz
+
+- fix bsddb module for current bsddb
+- improved readline detection
+
+-------------------------------------------------------------------
+Fri Dec 03 17:37:48 CET 2004 - mcihar@suse.cz
+
+- updated documentation to 2.4
+
+-------------------------------------------------------------------
+Wed Dec 01 18:07:17 CET 2004 - mcihar@suse.cz
+
+- don't use wctype functions from glibc, it breaks at some situations
+- enable tests during compilation, removing currently known failures
+
+-------------------------------------------------------------------
+Tue Nov 30 14:32:27 CET 2004 - mcihar@suse.cz
+
+- update to 2.4 final
+
+-------------------------------------------------------------------
+Wed Nov 24 18:30:23 CET 2004 - mcihar@suse.cz
+
+- yet another ignore list update, ignore man and locale dirs
+
+-------------------------------------------------------------------
+Wed Nov 24 15:15:46 CET 2004 - mcihar@suse.cz
+
+- ignore /etc and avoid infinite loop while generating directory list
+
+-------------------------------------------------------------------
+Wed Nov 24 12:43:07 CET 2004 - mcihar@suse.cz
+
+- ignore one more directories in file list generating
+- handle correctly headers path in file list generating
+- handle extra_dir in file list generating
+- use same way as mandrake to support lib64, at least it's a bit cleaner
+  solution than we had, so we now also have sys.lib
+- audioop is now enabled on 64-bit
+
+-------------------------------------------------------------------
+Tue Nov 23 16:25:15 CET 2004 - mcihar@suse.cz
+
+- updated to 2.4c1 (2.4 release candidate 1)
+- dropped python-mpz package as it was dropped by upstream
+- completely rewritten and much simplified rpm file list generation, if you
+  have problems with new version, please drop me a note
+- install also /etc/profile.d/python.csh
+
+-------------------------------------------------------------------
+Tue Aug 24 16:22:05 CEST 2004 - mcihar@suse.cz
+
+- updated README.SUSE
+- added startup script, which enables saving of history and completion
+  for interactive usage
+
+-------------------------------------------------------------------
+Thu May 27 15:25:20 CEST 2004 - mcihar@suse.cz
+
+- update to 2.3.4 final (no changes from rc 1)
+
+-------------------------------------------------------------------
+Wed May 19 17:11:10 CEST 2004 - mcihar@suse.cz
+
+- update to 2.3.4 release candidate 1 (obsoletes some patches taken from cvs)
+- forcing of large file support is not needed (for quite a long time)
+- updated README.SUSE
+
+-------------------------------------------------------------------
+Tue Mar 16 15:24:49 CET 2004 - mcihar@suse.cz
+
+- included some fixes from cvs:
+    - fix possible segfault in bsddb
+    - urllib2 supports non-anonymous ftp and absolute paths
+    - fixed GC problems in PyWeakref_NewRef
+
+-------------------------------------------------------------------
+Thu Mar 11 18:36:16 CET 2004 - mcihar@suse.cz
+
+- fix readline with utf-8 (bug #34302)
+
+-------------------------------------------------------------------
+Wed Mar 03 15:47:22 CET 2004 - mcihar@suse.cz
+
+- obsoletes python21
+
+-------------------------------------------------------------------
+Thu Feb 26 17:13:43 CET 2004 - mcihar@suse.cz
+
+- all subpackages depend on current python version
+
+-------------------------------------------------------------------
+Thu Feb 19 13:11:04 CET 2004 - mcihar@suse.cz
+
+- fix Lib/email/Charset.py for use in some locales
+- fix format string in zipimport module
+- use system readline
+- add more IPV6 socket options
+- use sed instead of perl for replacing
+- include LICENSE
+
+-------------------------------------------------------------------
+Sat Jan 10 11:26:35 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Jan 05 11:24:09 CET 2004 - mcihar@suse.cz
+
+- updated to 2.3.3 (final)
+- call %{run_ldconfig} in post and postun
+- libpython.2.3.so symlink moved to devel package (bug #33779)
+
+-------------------------------------------------------------------
+Fri Dec 12 14:33:36 CET 2003 - mcihar@suse.cz
+
+- updated to 2.3.3 (release candidate 1)
+
+-------------------------------------------------------------------
+Tue Nov 18 12:41:20 CET 2003 - mcihar@suse.cz
+
+- use wchar_t functions from libc, this reduces size of interpreter
+
+-------------------------------------------------------------------
+Mon Oct 27 13:19:52 CET 2003 - kukuk@suse.de
+
+- Remove useless Requires
+- Remove not used packages from neededforbuild
+
+-------------------------------------------------------------------
+Fri Oct 03 14:59:55 CEST 2003 - mcihar@suse.cz
+
+- updated to 2.3.2
+  - A bug in autoconf that broke building on HP/UX systems is fixed.
+  - A bug in the Python configure script that meant os.fsync() was
+    never available is fixed.
+
+-------------------------------------------------------------------
+Thu Oct 02 16:03:05 CEST 2003 - mcihar@suse.cz
+
+- force use of directories passed to configure script (-dirs.patch), bug #31947
+
+-------------------------------------------------------------------
+Mon Sep 29 13:57:18 CEST 2003 - mcihar@suse.cz
+
+- updated to 2.3.1, most of changes were alredy included in -cvs.patch
+- not so verbose untaring
+
+-------------------------------------------------------------------
+Thu Sep 11 14:31:48 CEST 2003 - mcihar@suse.cz
+
+- included fixes from cvs (branch release23-maint), this fixes some
+  memory leaks and other bugs (-cvs.patch)
+- nicer output from pydoc (-pydoc.patch)
+- cleaned up configure parameters
+- compiling with -Wall
+
+-------------------------------------------------------------------
+Wed Sep 10 18:39:00 CEST 2003 - mcihar@suse.cz
+
+- build as shared
+
+-------------------------------------------------------------------
+Wed Sep 03 11:48:07 CEST 2003 - mcihar@suse.cz
+
+- python now obsoletes python-nothreads (bug #29907)
+
+-------------------------------------------------------------------
+Thu Aug 14 13:23:50 CEST 2003 - mcihar@suse.cz
+
+- fixed symlinks to configuration files
+- cleaned up spec file
+
+-------------------------------------------------------------------
+Wed Aug 06 18:03:22 CEST 2003 - mcihar@suse.cz
+
+- updated lib64 patch
+
+-------------------------------------------------------------------
+Tue Aug 05 13:17:20 CEST 2003 - mcihar@suse.cz
+
+- updated to final 2.3, some highlights:
+    * Python 2.3 is about 20-30% faster than Python 2.2.3
+    * Brand new IDLE
+    * Some new or upgraded built-ins, includes better support for
+      unicode, new bool type...
+    * Lots of upgraded or new modules and packages.
+    * PYTHONINSPECT variabale that can cause python to behave as it
+      was executed with -i parameter.
+
+-------------------------------------------------------------------
+Tue Jul 29 01:46:23 CEST 2003 - ro@suse.de
+
+- added tk-devel to neededforbuild 
+
+-------------------------------------------------------------------
+Thu Jun 26 22:57:28 CEST 2003 - mcihar@suse.cz
+
+- updated to cvs snapshot, mostly because of finally correct DESTDIR
+  support, to avoid buildroot leftovers
+
+-------------------------------------------------------------------
+Tue Jun 24 12:32:23 CEST 2003 - mcihar@suse.cz
+
+- better excluding site-packages from generated dirlist
+
+-------------------------------------------------------------------
+Tue Jun 17 15:37:51 CEST 2003 - mcihar@suse.cz
+
+- ignore site-packages and share directories for filelists
+- include install dir if not site-packages in filelists
+
+-------------------------------------------------------------------
+Tue Jun 17 10:20:09 CEST 2003 - mcihar@suse.cz
+
+- better handle mutliple level of install directories when
+  generating %dir entries
+
+-------------------------------------------------------------------
+Mon Jun 16 17:25:08 CEST 2003 - mcihar@suse.cz
+
+- one more distutils patch update:
+    * fix generating of dirs in chrooted installs for install_data
+    * don't include directory for install_scripts
+
+-------------------------------------------------------------------
+Mon Jun 16 15:55:20 CEST 2003 - mcihar@suse.cz
+
+- updated patch to work around problems with self defined get_outputs
+
+-------------------------------------------------------------------
+Mon Jun 16 12:29:31 CEST 2003 - mcihar@suse.cz
+
+- modified distutils to allow generating complete file list for rpm
+  (including directories with %dir macro), to use this use
+  --record-rpm= instead of --record=
+
+-------------------------------------------------------------------
+Thu Jun 05 09:23:32 CEST 2003 - mcihar@suse.cz
+
+- move documentation where it was in 2.2 versions
+- fixed permissions for some scripts in devel package
+
+-------------------------------------------------------------------
+Thu May 29 14:22:08 CEST 2003 - mcihar@suse.cz
+
+- cleaned up specfile
+- make executable only files that should be
+
+-------------------------------------------------------------------
+Mon May 19 19:01:43 CEST 2003 - mcihar@suse.cz
+
+- removed .cvsignore files
+
+-------------------------------------------------------------------
+Tue Apr 29 13:26:02 CEST 2003 - mcihar@suse.cz
+
+- updated lib64 patch
+
+-------------------------------------------------------------------
+Mon Apr 28 11:25:11 CEST 2003 - mcihar@suse.cz
+
+- updated to 2.3b1, some highlights:
+    - sum() builtin, adds a sequence of numbers, beats reduce().
+    - csv module, reads comma-separated-value files (and more).
+    - timeit module, times code snippets.
+    - os.walk(), a generator slated to replace os.path.walk().
+    - platform module, by Marc-Andre Lemburg, returns detailed platform
+      information.
+
+-------------------------------------------------------------------
+Thu Apr 10 14:52:48 CEST 2003 - mcihar@suse.cz
+
+- added DEFS to config/Makefile as it was in 2.2
+
+-------------------------------------------------------------------
+Wed Apr 02 14:50:29 CEST 2003 - mcihar@suse.cz
+
+- updated lib64 patch
+- fixed list of built modules for 64-bit arches
+
+-------------------------------------------------------------------
+Tue Apr 01 17:57:56 CEST 2003 - mcihar@suse.cz
+
+- updated to python 2.3 alpha 2
+    - updated many builtins and modules
+    - new modules: bsddb, bz2, datetime, logging, optparse, sets,
+                   textwrap, zipimport,
+    - some general things have changed:
+        - Hex/oct literals prefixed with a minus sign were handled
+          inconsistently.
+        - Package index and metadata for distutils.
+        - Encoding declarations - you can put a comment of the form
+          "# -*- coding:  -*-" in the first or second line of a Python
+          source file to indicate the encoding (e.g. utf-8).
+        - Import from zipfiles.
+    - see Misc/NEWS in documentation or python website -
+      http://python.org/2.3/highlights.html for more details
+- moved distutils into -devel package
+- cleaned up specfile
+
+-------------------------------------------------------------------
+Tue Apr 01 12:27:06 CEST 2003 - mcihar@suse.cz
+
+- removed RPM_BUILD_ROOT leftovers (bug #25963)
+
+-------------------------------------------------------------------
+Thu Mar  6 12:05:53 CET 2003 - kukuk@suse.de
+
+- Provide/Obsolete python-tkinter
+
+-------------------------------------------------------------------
+Tue Jan 28 17:51:45 CET 2003 - mcihar@suse.cz
+
+- idle symlink corrected for lib64
+- fixed LIBDEST path for distutils, closes #22322
+
+-------------------------------------------------------------------
+Fri Jan 10 13:39:51 CET 2003 - mcihar@suse.cz
+
+- fixed distutils for lib64
+
+-------------------------------------------------------------------
+Wed Dec 18 13:45:15 CET 2002 - mcihar@suse.cz
+
+- improved blt detection for tkinter
+- build with detected version of tix
+- enabled SIGFPE catching
+- enabled signal module
+- enabled C++ support
+
+-------------------------------------------------------------------
+Fri Nov 29 16:16:57 CET 2002 - mcihar@suse.cz
+
+- enabled ipv6 support
+- no apache is needed for building
+- python-nothreads is not built anymore as is seems that mod_python
+  works correctly woth python 2.2.2 and threads
+- Makefile also copied to config directory in rpm
+
+-------------------------------------------------------------------
+Wed Nov 27 10:59:03 CET 2002 - adrian@suse.de
+
+- Makefile.pre* to config directory
+  (following the official spec file change)
+
+-------------------------------------------------------------------
+Fri Nov 08 11:06:39 CET 2002 - mcihar@suse.cz
+
+- fixed bad source number for suse-start-python-mode.el
+
+-------------------------------------------------------------------
+Thu Nov 07 11:37:34 CET 2002 - mcihar@suse.cz
+
+- fixed %files section for idle on lib64 arches
+
+-------------------------------------------------------------------
+Wed Nov 06 10:35:50 CET 2002 - mcihar@suse.cz
+
+- included python-mode.el for emacs
+- idle moved from demos to separate package
+- merged tk and tkinter
+
+-------------------------------------------------------------------
+Wed Oct 30 14:54:31 CET 2002 - mcihar@suse.cz
+
+- removed not needed l2h and tetex from neededforbuild
+
+-------------------------------------------------------------------
+Wed Oct 30 11:31:44 CET 2002 - ro@suse.de
+
+- changed neededforbuild <l2h> to <latex2html>
+
+-------------------------------------------------------------------
+Wed Oct 23 14:36:10 CEST 2002 - mcihar@suse.cz
+
+- updated to 2.2.2 (bugfix release)
+- moved python-korean into separate source package
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Sep 10 13:52:26 CEST 2002 - kukuk@suse.de
+
+- Add provides for correct update
+
+-------------------------------------------------------------------
+Thu Sep  5 12:14:45 CEST 2002 - ro@suse.de
+
+- remove l2h from neededforbuild (apparently no longer used) 
+
+-------------------------------------------------------------------
+Thu Aug 15 00:45:41 CEST 2002 - ro@suse.de
+
+- no fpectl.so on alpha 
+
+-------------------------------------------------------------------
+Tue Aug 13 12:45:33 CEST 2002 - uli@suse.de
+
+- rediffed lib64 patch
+
+-------------------------------------------------------------------
+Thu Aug  8 07:57:25 CEST 2002 - vinil@suse.de
+
+- new version 2.2.1
+- new version of Korean codes 2.0.5
+  and splitted to standalone package 'python-korean'
+- get rid of Makefile.pre.in
+- clean part added to spec
+
+-------------------------------------------------------------------
+Sun Jul 28 09:27:46 CEST 2002 - kukuk@suse.de
+
+- removed termcap and tetex from neededforbuild (not used)
+
+-------------------------------------------------------------------
+Fri Jul 26 22:03:54 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Tue Jun 11 11:48:13 CEST 2002 - meissner@suse.de
+
+- add ppc64 to list of 64bit archs that don't compile 3 of the plugins.
+
+-------------------------------------------------------------------
+Tue Jun  4 17:06:04 CEST 2002 - stepan@suse.de
+
+- change more locations of lib to %{_lib} on platforms 
+  that need it. 
+- change Makefile to use install -d instead of mkdir
+  to solve trouble when installing in buildroots.
+
+-------------------------------------------------------------------
+Mon Jun  3 13:21:07 CEST 2002 - stepan@suse.de
+
+- Change config/Makefile and config/Makefile.pre.in 
+  to use %_lib instead of lib (fixes i.e. zope)
+
+-------------------------------------------------------------------
+Fri May 17 15:08:18 CEST 2002 - sf@suse.de
+
+- changed site.py to detect the correct location (is needed at least for 
+  postresql to build
+- it still needs to be corrected, as only 64-bit excutable shlibs
+  have to reside in */lib64
+
+-------------------------------------------------------------------
+Wed May 15 12:01:45 CEST 2002 - coolo@suse.de
+
+- fixing file list for s390x
+
+-------------------------------------------------------------------
+Tue May 14 23:50:05 CEST 2002 - ro@suse.de
+
+- use libdir
+- try to get this working with lib64
+
+-------------------------------------------------------------------
+Mon May  6 17:12:49 CEST 2002 - schwab@suse.de
+
+- Build python library with -fPIC, for inclusion in shared library.
+
+-------------------------------------------------------------------
+Wed Apr 17 15:48:52 CEST 2002 - schwab@suse.de
+
+- Fix detection of readline library (use -lncurses instead of -ltermcap).
+
+-------------------------------------------------------------------
+Sat Mar 23 17:21:32 CET 2002 - ro@suse.de
+
+- changed neededforbuild <l2h> to <l2h l2h-pngicons>
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:09 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Wed Jan  9 19:34:47 CET 2002 - rvasice@suse.cz
+
+- used correct Makefile.pre.in
+
+-------------------------------------------------------------------
+Wed Jan  9 14:49:59 CET 2002 - rvasice@suse.cz
+
+- added Makefile.pre.in to enable build other python packages
+
+-------------------------------------------------------------------
+Mon Jan  7 08:51:27 CET 2002 - rvasice@suse.cz
+
+- update to version 2.2
+- recreated modules list
+
+-------------------------------------------------------------------
+Mon Dec 17 12:55:39 CET 2001 - ro@suse.de
+
+- fixed for gmp-4.x 
+
+-------------------------------------------------------------------
+Mon Sep  3 13:48:04 CEST 2001 - rvasice@suse.cz
+
+- added patch for Large File Support
+
+-------------------------------------------------------------------
+Mon Aug 27 10:26:55 CEST 2001 - rvasice@suse.cz
+
+- removed conflicting file /etc/susehelp.d/pythonhtml.conf from
+  subpackage python-doc
+
+-------------------------------------------------------------------
+Fri Aug 17 14:41:48 CEST 2001 - schwab@suse.de
+
+- Compile python library with -fPIC to allow inclusion in shared
+  libraries.
+- Fix configure check for rl_completion_matches.
+- Replace use of config.guess by %ifarch.
+
+-------------------------------------------------------------------
+Mon Aug 13 12:51:39 CEST 2001 - ro@suse.de
+
+- added regex module (needed for yodl)
+- filelist probably needs re-check 
+
+-------------------------------------------------------------------
+Mon Jul 30 11:34:35 CEST 2001 - rvasice@suse.cz
+
+- fix /usr/local path
+
+-------------------------------------------------------------------
+Fri Jul 27 16:23:47 CEST 2001 - rvasice@suse.cz
+
+- update to version 2.1.1
+
+-------------------------------------------------------------------
+Tue May  8 02:15:19 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Fri Apr 13 20:27:17 CEST 2001 - kukuk@suse.de
+
+- fix build with new readline library
+
+-------------------------------------------------------------------
+Wed Apr 11 14:30:16 CEST 2001 - utuerk@suse.de
+
+- added pythonhtml.conf for susehelp
+
+-------------------------------------------------------------------
+Fri Feb 23 16:24:25 CET 2001 - ro@suse.de
+
+- changed neededforbuild <apache> to <apache apache-devel>
+
+-------------------------------------------------------------------
+Fri Feb 23 00:10:25 CET 2001 - ro@suse.de
+
+- added readline/readline-devel to neededforbuild (split from bash)
+
+-------------------------------------------------------------------
+Mon Jan 22 16:25:53 CET 2001 - kukuk@suse.de
+
+- Use -fPIC
+
+-------------------------------------------------------------------
+Tue Jan 16 19:26:08 CET 2001 - schwab@suse.de
+
+- Compile python library with -fpic so that it can be included in a
+  shared library (for mod_python).
+
+-------------------------------------------------------------------
+Mon Jan 15 13:00:09 CET 2001 - mt@suse.de
+
+- added uc-kr codec, thanks to Hwang, SangJin <violiet@susekorea.net>
+
+-------------------------------------------------------------------
+Sun Dec 31 18:55:09 CET 2000 - schwab@suse.de
+
+- Fix filelist for ia64.
+
+-------------------------------------------------------------------
+Mon Dec 18 17:18:37 CET 2000 - mt@suse.de
+
+- added sub-package python-nothreads for mod_python apache-module
+- added Obsoletes for old 8.3 packages names
+
+-------------------------------------------------------------------
+Wed Dec  6 18:04:55 CET 2000 - mt@suse.de
+
+- cleaned up pythons tk dependencies
+
+-------------------------------------------------------------------
+Thu Nov 30 01:41:16 CET 2000 - ro@suse.de
+
+- fixed tix-link 
+
+-------------------------------------------------------------------
+Wed Nov 29 17:26:54 CET 2000 - ro@suse.de
+
+- changed neededforbuild <tcld> to <tcl-devel>
+
+-------------------------------------------------------------------
+Mon Nov 27 10:17:40 CET 2000 - mt@suse.de
+
+- changed libnetpb to libnetpbm in neededforbuild
+- changed file-list in python-devel
+
+-------------------------------------------------------------------
+Thu Nov 23 09:39:10 CET 2000 - mt@suse.de
+
+- added openssl-devel to neededforbuild
+
+-------------------------------------------------------------------
+Wed Nov 22 10:11:15 CET 2000 - mt@suse.de
+
+- removed site-packages from Setup.in patch
+- python-64bit.patch should be used on all 64bit platforms
+
+-------------------------------------------------------------------
+Sun Nov 19 18:31:21 CET 2000 - mt@suse.de
+
+- updated to BeOpen-Python-2.0
+
+-------------------------------------------------------------------
+Fri Oct 27 14:34:14 CEST 2000 - kukuk@suse.de
+
+- Use long filenames
+- Fix some paths
+- Include <db3/db_185.h>
+
+-------------------------------------------------------------------
+Thu Jul  6 01:14:30 CEST 2000 - mt@suse.de
+
+- added anydbm (whichdb.py) patch from www.tummy.com
+
+-------------------------------------------------------------------
+Sat May 27 11:30:28 CEST 2000 - kukuk@suse.de
+
+- Use libtk8.3.so and libtcl8.3.so
+
+-------------------------------------------------------------------
+Thu May  4 18:32:34 CEST 2000 - kukuk@suse.de
+
+- Fix filelist for new doc dir
+
+-------------------------------------------------------------------
+Mon Mar 13 23:52:19 CET 2000 - ro@suse.de
+
+- fixed filelist for alpha 
+
+-------------------------------------------------------------------
+Wed Mar  1 18:17:20 CET 2000 - werner@suse.de
+
+- Fix config.guess selection
+
+-------------------------------------------------------------------
+Wed Feb 16 15:13:47 CET 2000 - uli@suse.de
+
+- passing MANDIR to "make install libinstall" (seems like it gets
+  lost somewhere)
+
+-------------------------------------------------------------------
+Wed Feb 16 00:25:30 CET 2000 - ro@suse.de
+
+- man to /usr/share using macro 
+
+-------------------------------------------------------------------
+Tue Feb 15 20:43:25 CET 2000 - mt@suse.de
+
+- stripped the python binary
+
+-------------------------------------------------------------------
+Mon Oct 11 17:40:31 MEST 1999 - max@suse.de
+
+- ready for the new Tcl/Tk packages
+
+-------------------------------------------------------------------
+Mon Sep 27 16:31:01 CEST 1999 - bs@suse.de
+
+- fixed requirements for sub packages
+
+-------------------------------------------------------------------
+Mon Sep 20 18:25:03 CEST 1999 - ro@suse.de
+
+- added python_image_lib as requires to pyth_tk and as provides to pyth_tkl
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Jun  7 14:27:02 MEST 1999 - mt@suse.de
+
+- disabled pyth_dvi module in spec-file
+
+-------------------------------------------------------------------
+Wed May 26 12:27:24 MEST 1999 - ro@suse.de
+
+- added libpng to neededforbuild
+
+-------------------------------------------------------------------
+Wed May 26 12:06:13 MEST 1999 - ro@suse.de
+
+- added blt to neededforbuild
+
+-------------------------------------------------------------------
+Tue May 25 16:00:31 MEST 1999 - mt@suse.de
+
+- new version 1.5.2
+- splited into sub-packages: pyth_doc, pyth_ps, pyth_pdf,
+  pyth_dvi, pyth_dmo, pyth_tk, pyth_tkl, pyth_cur, pythgdbm
+  to have better base-package compatibility to andrich.net.
+
+-------------------------------------------------------------------
+Thu Mar 18 01:13:02 MET 1999 - ro@suse.de
+
+- don't set POSIXLY_CORRECT for second patch
+
+-------------------------------------------------------------------
+Mon Jan 18 23:55:16 MET 1999 - ro@suse.de
+
+- added automake to neededforbuild
+- alpha-fix: don't mix up dec-osf with linux-alpha
+
+-------------------------------------------------------------------
+Tue Dec  1 23:50:20 MET 1998 - mt@suse.de
+
+- removed TkInter into a separate package - pyth_tk - to make it
+  possible to replace it with a PIL based TkInter (Python Imaging
+  Lib) and better package dependecies (not each app needs TkInter)
+- removed Makefile.Linux - all build is done from spec file now
+- more /usr/local path fixes
+
+-------------------------------------------------------------------
+Fri Nov  6 15:37:40 MET 1998 - ro@suse.de
+
+- added automake to neededforbuild
+- configure with threads
+
+-------------------------------------------------------------------
+Thu Nov  5 09:53:54 MET 1998 - ro@suse.de
+
+- use db_185.h only for glibc-2.1
+
+-------------------------------------------------------------------
+Wed Sep 23 12:15:47 MEST 1998 - ro@suse.de
+
+- two hacks to compile for glibc:
+  Modules/bsddbmodule.c include db_185.h for glibc
+  Modules/mpzmodule.c   gmp-mparam.h dont exist for glibc / use define
+
+-------------------------------------------------------------------
+Sun Aug 23 13:15:31 MEST 1998 - ke@suse.de
+
+- Compress PostScript docu.
+
+-------------------------------------------------------------------
+Mon Aug 17 12:47:42 MEST 1998 - mt@suse.de
+
+- linked readline- and curses-modules with ncurses
+
+-------------------------------------------------------------------
+Fri Aug  7 21:47:11 MEST 1998 - mt@suse.de
+
+- python modules - file permissions changed (-x)
+
+-------------------------------------------------------------------
+Sat Jul 11 12:57:01 MEST 1998 - bs@suse.de
+
+- fixed neededforbuild
+
+-------------------------------------------------------------------
+Thu Jul  9 00:29:05 MEST 1998 - mt@suse.de
+
+- new revision 1.5.1
+- docu in a separate package (pyth_doc)
+- Tkinter uses tk8.0/tcl8.0 now
+- first attempt to make it "alpha ready" (spec- & dif-file)
+
+-------------------------------------------------------------------
+Mon Mar  2 18:38:49 MET 1998 - ro@suse.de
+
+- fixed dependency to /usr/local/bin/python
+
+-------------------------------------------------------------------
+Mon Feb  9 17:28:57 MET 1998 - ro@suse.de
+
+- added some in neededforbuild
+
+-------------------------------------------------------------------
+Wed Feb  4 19:27:08 CET 1998 - mt@suse.de
+
+- new Version 1.5 with more features, html documentation and new modules
+
+-------------------------------------------------------------------
+Mon Sep 15 14:57:42 CEST 1997 - mt@suse.de
+
+- added support for readline and (shared) modules: tkinter, dbm, gdbm,
+  syslog, ncurses, ... - see /usr/lib/python1.4/config/Setup for details
+
+-------------------------------------------------------------------
+Thu Jun  5 17:57:42 CEST 1997 - mt@suse.de
+
+- new Version 1.4
+- a symlink (python -> python1.4) will be used instead of a hardlink
+

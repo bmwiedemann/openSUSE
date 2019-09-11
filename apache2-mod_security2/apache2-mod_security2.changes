@@ -1,0 +1,341 @@
+-------------------------------------------------------------------
+Fri Dec 29 00:09:38 UTC 2017 - jengelh@inai.de
+
+- Trim advertisement and filler wording from descriptions.
+
+-------------------------------------------------------------------
+Wed Dec 20 09:13:49 UTC 2017 - pgajdos@suse.com
+
+- fix build for SLE_11_SP4: BuildRoot and %deffattr have to be
+  present
+
+-------------------------------------------------------------------
+Mon Oct  2 11:02:58 UTC 2017 - kstreitova@suse.com
+
+- update to 2.9.2
+  * release notes
+    https://github.com/SpiderLabs/ModSecurity/releases/tag/v2.9.2
+  * refresh apache2-mod_security2-no_rpath.diff
+  * remove apache2-mod_security2-lua-5.3.patch that was applied
+    upstream
+- remove outdated html pages and diagram (they can be accessed
+  online at https://github.com/SpiderLabs/ModSecurity/wiki)
+  * Reference-Manual.html.bz2
+  * ModSecurity-Frequently-Asked-Questions-FAQ.html.bz2
+  * modsecurity_diagram_apache_request_cycle.jpg
+- don't pack the whole doc directory as it contains also Makefiles
+  or doxygen configuration files
+- disable mlogc as we don't pack it and it also can't be built for
+  curl <=7.34
+- add basic and regression test suite (but disabled for now)
+  * add apache2-mod_security2_tests_conf.patch for apache2
+    configuration file used for tests that was trying to load
+    mpm_worker_module (it's static for our apache2 package)
+  * add "BuildRequires: perl-libwww-perl" needed for the test suite
+
+-------------------------------------------------------------------
+Wed Jun 21 10:16:28 UTC 2017 - dimstar@opensuse.org
+
+- Update modsecurity-fixes.patch: additionally include netdb.h in
+  order to have gethostbyname defined.
+
+-------------------------------------------------------------------
+Thu Mar 23 15:14:11 UTC 2017 - kstreitova@suse.com
+
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jul 29 06:42:19 UTC 2015 - pgajdos@suse.com
+
+- fix build for lua 5.3
+  + apache2-mod_security2-lua-5.3.patch
+
+-------------------------------------------------------------------
+Thu Jul 16 07:22:02 UTC 2015 - pgajdos@suse.com
+
+- Requries: %{apache_suse_maintenance_mmn}
+  This will pull this module to the update (in released distribution)
+  when apache maintainer thinks it is good (due api/abi changes).
+
+-------------------------------------------------------------------
+Mon Mar  2 14:46:15 UTC 2015 - tchvatal@suse.com
+
+- Remove useless comment lines/whitespace
+
+-------------------------------------------------------------------
+Tue Feb 24 04:23:11 UTC 2015 - crrodriguez@opensuse.org
+
+- spec, build: Respect optflags
+- spec: buildrequire pkgconfig
+- modsecurity-fixes.patch: mod_security fails at:
+  * building with optflags enabled due to undefined behaviour
+    and implicit declarations.
+  * It abuses it apr_allocator api, creating one allocator
+    per request and then destroying it, flooding the system
+    with mmap() , munmap requests, this is particularly nasty
+    with threaded mpms. it should instead use the allocator
+    from the request pool.
+
+-------------------------------------------------------------------
+Sat Feb 14 17:51:49 UTC 2015 - thomas.worm@sicsec.de
+
+- Raised to version 2.9.0
+- Updated patch: apache2-mod_security2-no_rpath.diff
+  (adapted lines)
+
+-------------------------------------------------------------------
+Mon Nov  3 09:41:02 UTC 2014 - pgajdos@suse.com
+
+- call spec-cleaner
+- use apache rpm macros
+
+-------------------------------------------------------------------
+Wed Aug 27 17:30:25 CEST 2014 - draht@suse.de
+
+- Portability: provide /etc/apache2/mod_security2.d/empty.conf
+  to avoid a non-match of the file-glob in the Include statement
+  from /etc/apache2/conf.d/mod_security2.conf . This restores
+  the Include back from the IncludeOptional, which is not portable.
+- Source URL set to (expanded)
+  https://www.modsecurity.org/tarball/2.8.0/modsecurity-2.8.0.tar.gz
+
+-------------------------------------------------------------------
+Mon Aug 25 19:33:11 UTC 2014 - thomas.worm@sicsec.de
+
+- Fixed spec file to work with older distribution versions.
+  Before openSuSE 13.1 aclocal doesn't work, instead autoreconf
+  has to be called.
+
+-------------------------------------------------------------------
+Mon Jul  7 14:06:19 CEST 2014 - draht@suse.de
+
+- last changelog does not say that 
+  apache2-mod_security2-libtool-fix.diff was obsoleted.
+
+-------------------------------------------------------------------
+Mon Jun 16 19:04:00 CEST 2014 - draht@suse.de
+
+- BuildRequires: libtool missing
+
+-------------------------------------------------------------------
+Mon Jun 16 18:17:26 CEST 2014 - draht@suse.de
+
+- apache2-mod_security2-libtool-fix.diff: initialize libtool.
+
+-------------------------------------------------------------------
+Mon Jun 16 17:31:34 CEST 2014 - draht@suse.de
+
+- apache2-mod_security2-no_rpath.diff: avoid the usage of -rpath
+  in autoconf m4 macros. Obsoletes patch
+  modsecurity-apache_2.8.0-build_fix_pcre.diff
+- use automake for build, add autoconf and automake to
+  BuildRequires:. This fix is combined with [bnc#876878].
+- turn on --enable-htaccess-config
+- use %{?_smp_mflags} for build
+
+-------------------------------------------------------------------
+Thu Jun 12 12:33:49 CEST 2014 - draht@suse.de
+
+- OWASP rule set. [bnc#876878]
+  new in 2.8.0 (more complete changelog to add to last changelog):
+  * Connection limits (SecConnReadStateLimit/SecConnWriteStateLimit)
+    now support white and suspicious list
+  * New variables: FULL_REQUEST and FULL_REQUEST_LENGTH
+  * GPLv2 replaced by Apache License v2
+  * rules are not part of the source tarball any longer, but
+    maintaned upstream externally, and included in this package.
+  * documentation was externalized to a wiki. Package contains
+    the FAQ and the reference manual in html form.
+  * renamed the term "Encryption" in directives that actually refer
+    to hashes. See CHANGES file for more details.
+  * byte conversion issues on s390x when logging fixed.
+  * many small issues fixed that were discovered by a Coverity scanner
+  * updated reference manual
+  * wrong time calculation when logging for some timezones fixed.
+  * replaced time-measuring mechanism with finer granularity for
+    measured request/answer phases. (Stopwatch remains for compat.)
+  * cookie parser memory leak fix
+  * parsing of quoted strings in multipart Content-Disposition
+    headers fixed.
+
+-------------------------------------------------------------------
+Thu May  1 05:06:15 UTC 2014 - thomas.worm@sicsec.de
+
+- Raised to version 2.8.0. 
+- updated patches:
+  * modsecurity-apache_2.8.0-build_fix_pcre.diff
+    -> modsecurity-apache_2.7.7-build_fix_pcre.diff
+
+-------------------------------------------------------------------
+Sat Jan 25 17:43:33 UTC 2014 - thomas.worm@sicsec.de
+
+ - Raised to version 2.7.7.
+ - modified patches:
+  * modsecurity-apache_2.7.5-build_fix_pcre.diff,
+    renamed to modsecurity-apache_2.7.7-build_fix_pcre.diff.
+
+-------------------------------------------------------------------
+Thu Jan 23 13:06:09 UTC 2014 - aj@ajaissle.de
+
+- Use correct source Url
+
+-------------------------------------------------------------------
+Fri Aug  2 14:18:39 CEST 2013 - draht@suse.de
+
+- complete overhaul of this package, with update to 2.7.5.
+- ruleset update to 2.2.8-0-g0f07cbb.
+- new configuration framework private to mod_security2:
+  /etc/apache2/conf.d/mod_security2.conf loads
+  /usr/share/apache2-mod_security2/rules/modsecurity_crs_10_setup.conf,
+  then /etc/apache2/mod_security2.d/*.conf , as set up based on
+  advice in /etc/apache2/conf.d/mod_security2.conf
+  Your configuration starting point is
+  /etc/apache2/conf.d/mod_security2.conf
+- !!! Please note that mod_unique_id is needed for mod_security2 to run!
+- modsecurity-apache_2.7.5-build_fix_pcre.diff changes erroneaous
+  linker parameter, preventing rpath in shared object.
+- fixes contained for the following bugs:
+  * CVE-2009-5031, CVE-2012-2751 [bnc#768293] request parameter handling
+  * [bnc#768293] multi-part bypass, minor threat
+  * CVE-2013-1915 [bnc#813190] XML external entity vulnerability
+  * CVE-2012-4528 [bnc#789393] rule bypass
+  * CVE-2013-2765 [bnc#822664] null pointer dereference crash
+- new from 2.5.9 to 2.7.5, only major changes:
+  * GPLv2 replaced by Apache License v2
+  * rules are not part of the source tarball any longer, but
+    maintaned upstream externally, and included in this package.
+  * documentation was externalized to a wiki. Package contains
+    the FAQ and the reference manual in html form.
+  * renamed the term "Encryption" in directives that actually refer
+    to hashes. See CHANGES file for more details.
+  * new directive SecXmlExternalEntity, default off
+  * byte conversion issues on s390x when logging fixed.
+  * many small issues fixed that were discovered by a Coverity scanner
+  * updated reference manual
+  * wrong time calculation when logging for some timezones fixed.
+  * replaced time-measuring mechanism with finer granularity for
+    measured request/answer phases. (Stopwatch remains for compat.)
+  * cookie parser memory leak fix
+  * parsing of quoted strings in multipart Content-Disposition
+    headers fixed.
+  * SDBM deadlock fix
+  * @rsub memory leak fix
+  * cookie separator code improvements
+  * build failure fixes
+  * compile time option --enable-htaccess-config (set)
+
+-------------------------------------------------------------------
+Mon Aug 27 11:43:47 UTC 2012 - cfarrell@suse.com
+
+- license update: Apache-2.0 and GPL-2.0
+  Many of the files in the rules/ subdirectory are GPL-2.0 licensed
+
+-------------------------------------------------------------------
+Mon Aug  6 20:59:45 UTC 2012 - crrodriguez@opensuse.org
+
+- Update to version 2.6.7, fixes build in apache 2.4
+- Update spec file macros. 
+
+-------------------------------------------------------------------
+Sat Sep 17 11:20:39 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Jul  6 04:33:49 CEST 2011 - draht@suse.de
+
+- update to version 2.6.1-rc1 for submission to SLE11-SP2 (fate#309433):
+  - SecUnicodeCodePage and SecUnicodeMapFile directives added
+  - fixed bug: SecRequestBodyLimit was truncating the real request 
+    body
+  additional fixes from 2.6.0:
+  - buffering filter problems fixed
+  - memory leak fix when using MATCHED_VAR_NAMES
+  - SecWriteStateLimit added against slow DoS
+  additional fixes from 2.6.0 release candidates:
+  - optimizations
+  - bug in logging code fixed
+  - cleanup
+  - google safe browsing support
+
+-------------------------------------------------------------------
+Thu May 14 18:05:26 CEST 2009 - mrueckert@suse.de
+
+- update to version 2.5.9
+  - Fixed parsing multipart content with a missing part header name
+    which would crash Apache.  Discovered by "Internet Security
+    Auditors" (isecauditors.com).
+  - Added ability to specify the config script directly using
+    --with-apr and --with-apu.
+  - Added macro expansion for append/prepend action.
+  - Fixed race condition in concurrent updates of persistent
+    counters.  Updates are now atomic.
+  - Cleaned up build, adding an option for verbose configure output
+    and making the mlogc build more portable.
+- additional changes from 2.5.8
+  - Fixed PDF XSS issue where a non-GET request for a PDF file
+    would crash the Apache httpd process.  Discovered by Steve
+    Grubb at Red Hat.
+  - Removed an invalid "Internal error: Issuing "%s" for
+    unspecified error." message that was logged when denying with
+    nolog/noauditlog set and causing the request to be audited.
+- additional changes from 2.5.7
+  - Fixed XML DTD/Schema validation which will now fail after
+    request body processing errors, even if the XML parser returns
+    a document tree.
+  - Added ctl:forceRequestBodyVariable=on|off which, when enabled,
+    will force the REQUEST_BODY variable to be set when a request
+    body processor is not set.  Previously the REQUEST_BODY target
+    was only populated by the URLENCODED request body processor.
+  - Integrated mlogc source.
+  - Fixed logging the hostname in the error_log which was logging
+    the request hostname instead of the Apache resolved hostname.
+  - Allow for disabling request body limit checks in phase:1.
+  - Added transformations for processing parity for legacy
+    protocols ported to HTTP(S): t:parityEven7bit, t:parityOdd7bit,
+    t:parityZero7bit
+  - Added t:cssDecode transformation to decode CSS escapes.
+  - Now log XML parsing/validation warnings and errors to be in the
+    debug log at levels 3 and 4, respectivly.
+- build and package mlogc
+- remove --with-apxs from the configure args as it breaks the build
+  configure now finds our apxs2
+
+-------------------------------------------------------------------
+Fri Jan 23 16:56:55 CET 2009 - skh@suse.de
+
+- fix broken config [bnc#457200]
+
+-------------------------------------------------------------------
+Mon Sep 15 14:05:05 CEST 2008 - skh@suse.de
+
+- update to version 2.5.6
+- initial submit to FACTORY
+
+-------------------------------------------------------------------
+Mon May 12 05:25:07 CEST 2008 - jg@internetx.de
+
+-update to 2.1.7
+
+-------------------------------------------------------------------
+Thu Feb 3 05:44:12 CEST 2008 - jg@internetx.de
+
+-update to 2.1.6
+
+-------------------------------------------------------------------
+Wed Aug  8 05:36:42 CEST 2007 - mrueckert@suse.de
+
+- update to 2.1.2
+
+-------------------------------------------------------------------
+Mon Apr 16 10:34:05 CEST 2007 - mrueckert@suse.de
+
+- update to 2.1.1
+- switched to perl based patching instead of cmdline params for make
+
+-------------------------------------------------------------------
+Fri Sep 22 08:31:51 CEST 2006 - poeml@suse.de
+
+- fix build (./install was vanished)
+

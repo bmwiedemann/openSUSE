@@ -1,0 +1,71 @@
+Index: openssl-1.0.2j/crypto/fips/fips_rsagtest.c
+===================================================================
+--- openssl-1.0.2j.orig/crypto/fips/fips_rsagtest.c	2017-05-04 20:57:44.099237241 +0200
++++ openssl-1.0.2j/crypto/fips/fips_rsagtest.c	2017-05-04 20:58:13.159687179 +0200
+@@ -585,7 +585,7 @@ int rsa_PrimeGen(FILE *out, FILE *in)
+ 				do_bn_print_name(out, "p", rsa->p);
+ 				do_bn_print_name(out, "q", rsa->q);
+ 				do_bn_print_name(out, "n", rsa->n);
+-				do_bn_print_name(out, "d", rsa->d);
++				do_bn_print_name_pad(out, "d", rsa->d, mod);
+ 				FIPS_rsa_free(rsa);
+ 				rsa = NULL;
+ 				}
+Index: openssl-1.0.2j/crypto/fips/fips_utl.h
+===================================================================
+--- openssl-1.0.2j.orig/crypto/fips/fips_utl.h	2017-05-04 20:57:44.099237241 +0200
++++ openssl-1.0.2j/crypto/fips/fips_utl.h	2017-05-04 20:57:44.131237737 +0200
+@@ -74,7 +74,9 @@ int hex2bin(const char *in, unsigned cha
+ unsigned char *hex2bin_m(const char *in, long *plen);
+ int do_hex2bn(BIGNUM **pr, const char *in);
+ int do_bn_print(FILE *out, const BIGNUM *bn);
++int do_bn_print_pad(FILE *out, const BIGNUM *bn, int padbits);
+ int do_bn_print_name(FILE *out, const char *name, const BIGNUM *bn);
++int do_bn_print_name_pad(FILE *out, const char *name, const BIGNUM *bn, int padbits);
+ int parse_line(char **pkw, char **pval, char *linebuf, char *olinebuf);
+ int parse_line2(char **pkw, char **pval, char *linebuf, char *olinebuf, int eol);
+ BIGNUM *hex2bn(const char *in);
+@@ -291,6 +293,43 @@ int do_bn_print_name(FILE *out, const ch
+ 	if (!r)
+ 		return 0;
+ 	fputs(RESP_EOL, out);
++	return 1;
++	}
++
++int do_bn_print_pad(FILE *out, const BIGNUM *bn, int padbits)
++	{
++	int len, i;
++	unsigned char *tmp;
++	len = BN_num_bytes(bn);
++	if (len == 0)
++		{
++		fputs("00", out);
++		return 1;
++		}
++
++	tmp = OPENSSL_malloc(len);
++	if (!tmp)
++		{
++		fprintf(stderr, "Memory allocation error\n");
++		return 0;
++		}
++	BN_bn2bin(bn, tmp);
++	for (i = 0; i < padbits/BN_BYTES - len; i++)
++		fprintf(out, "%02x", 0);
++	for (i = 0; i < len; i++)
++		fprintf(out, "%02x", tmp[i]);
++	OPENSSL_free(tmp);
++	return 1;
++	}
++
++int do_bn_print_name_pad(FILE *out, const char *name, const BIGNUM *bn, int padbits)
++	{
++	int r;
++	fprintf(out, "%s = ", name);
++	r = do_bn_print_pad(out, bn, padbits);
++	if (!r)
++		return 0;
++	fputs(RESP_EOL, out);
+ 	return 1;
+ 	}
+ 

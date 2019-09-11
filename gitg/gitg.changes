@@ -1,0 +1,704 @@
+-------------------------------------------------------------------
+Thu Jul 25 12:29:25 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Support repository being null.
+  + Allow copying file names.
+- Drop gitg-repository-being-null.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jun 26 01:27:17 UTC 2019 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Add gitg-repository-being-null.patch: Support repository being
+  null (boo#1137583, gl#GNOME/gitg#213).
+
+-------------------------------------------------------------------
+Tue Jun 18 21:10:05 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gitg-port-to-gtksourceview4.patch: Port to gtksourceview4.
+  Following this patch, replace pkgconfig(gtksourceview-3.0) with
+  pkgconfig(gtksourceview-4) BuildRequires.
+
+-------------------------------------------------------------------
+Fri May 24 13:26:30 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Detect links in commit messages.
+  + Push action with http/ssh support.
+  + Fix time sort mode.
+  + Add push support.
+  + Add typeahead find feature.
+  + Respect system fonts.
+  + Update submodules at clone.
+  + Add body to patch.
+  + Shorcut to open preferences.
+  + Honor GIT_DIR env.
+  + Update menus for AppMenu removal.
+  + Bump libgit2 to 0.27.
+  + Use Unicode typography in user-visible strings.
+  + Fix shared library paths in typelib files.
+  + Migrate from Intltool to Gettext.
+  + Meson polish.
+  + Removed autotools.
+  + Fixes in documentation.
+  + Fixed several deprecations.
+  + Misc fixes.
+- Drop upstream fixed patches:
+  + gitg-Bump-libgit2-glib-dependency.patch.
+  + gitg-Various-meson-build-fixes.patch.
+- Add pkgconfig(libdazzle-1.0) BuildRequires: New dependency.
+- Drop intltool BuildRequires: No longer needed, nor used.
+
+-------------------------------------------------------------------
+Sun Feb 10 14:18:48 UTC 2019 - bjorn.lie@gmail.com
+
+- Fix build with new translations-update-upstream.
+
+-------------------------------------------------------------------
+Tue Jan 22 14:34:33 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gitg-typelib-dependencies.patch: Change the way we add
+  library dependencies to .typelibs. openSUSE requires a full
+  library name, incl. version.
+
+-------------------------------------------------------------------
+Fri Jan  4 23:26:56 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Meson improvements.
+  + Fix parsing title and body for message commit.
+  + Search repositories ignoring case.
+  + Added standalone mode.
+  + Allow to config patience algorithm.
+  + GUI improvements.
+  + Removed autotools buildsystem.
+  + Fixed mac compilation.
+  + Misc fixes.
+- Changes from version 3.30.0:
+  + Detect dark theme from its background color.
+  + Buildsystem meson added.
+  + Added flatpak deployments.
+  + Updated translations.
+  + Misc fixes.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+- Add gitg-Bump-libgit2-glib-dependency.patch: Fix build with new
+  libgit2-glib, following this drop pkgconfig(libgit2-glib-1.0)
+  BuildConflicts: No longer needed nor valid.
+- Add gitg-Various-meson-build-fixes.patch: Various meson build
+  fixes needed, all taken from upstream.
+- Drop post(un) handling of glib2_gsettings_schema_post(un) and
+  glib2_gsettings_schema_requires, no longer needed.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:31:43 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:26:32 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Aug  9 17:43:13 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + Misc fixes.
+  + Updated translations.
+- Update pkgconfig(libgit2-glib-1.0) BuildRequires and
+  BuildConflicts to versions 0.26.0 and 0.27.0.
+- Drop post(un) handling of desktop_database_post(un) and
+  icon_theme_cache_post(un), no longer needed. Also drop obsolete
+  clean section.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Sat May  6 19:58:37 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.0:
+  + Misc fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 16 17:21:28 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.90:
+  + Fix for libgit2-glib api change.
+  + Do not duplicate the fds.
+
+-------------------------------------------------------------------
+Tue Nov 29 10:48:43 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.23.0:
+  + Fix size calculation if there is no old pixbuf.
+  + Fix side-by-side alignment in the case of a single image.
+  + Show dash activity menu if shell does not show app menu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 18 16:01:04 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 12 21:17:17 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Show dash activity menu if shell does not show app menu.
+  + Use same callbacks instance during remote connection life
+    cycle.
+
+-------------------------------------------------------------------
+Sat Aug 27 16:58:44 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Add context menu to open files from the diff.
+  + Better support for bare and empty repositories.
+  + Add support for ssh short form remote urls.
+  + Improved selection toggling for incremental staging.
+  + Disable use of gravatar by default for privacy.
+- Stop passing V=1 to make, we do debugging locally, no need to
+  clutter build-logs.
+
+-------------------------------------------------------------------
+Sat Aug 27 16:49:49 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Set primary selection to selected commit SHA1.
+  + Scrollable commit message in diff view.
+  + Incremental loading on large repositories.
+  + Faster switching of large repositories.
+  + Create global git config if it does not exist yet.
+  + Remember opened projects regardless of gnome privacy settings.
+
+-------------------------------------------------------------------
+Wed Jun 22 18:45:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Disable burger menu in dash.
+  + Set primary selection to selected commit SHA1.
+  + Reduce hot area for action bar to mitigate horizontal scrolling
+    issue.
+  + Show the complete message, not only the subject.
+  + Misc fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 08:13:29 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Misc fixes.
+  + Updated translations.
+- Add BuildConflicts: pkgconfig(libgit2-glib-1.0) to match
+  configure.
+
+-------------------------------------------------------------------
+Fri Feb  5 10:36:35 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.6:
+  + Make use of shortcut window optional.
+  + Make it build again on osx and windows.
+
+-------------------------------------------------------------------
+Wed Jan 27 09:22:14 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.5:
+  + Improved Windows installer graphics.
+  + Add context menu on Windows.
+  + Provide shortcuts window.
+  + Rework dash view.
+  + Do not hang on highlighting commit message.
+- Add pkgconfig(libxml-2.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Sat Jan  9 01:13:57 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.4:
+  + Changes:
+    - Add OSX bundle generator.
+    - Add syntax highlighting support on diffs.
+    - Show untracked content on stage.
+  + Bugs fixed:
+    - Fix OSX paths.
+    - Missing includes.
+
+-------------------------------------------------------------------
+Wed Dec 23 19:57:03 UTC 2015 - damjanovic.ivo@gmail.com
+
+- Update to version 3.19.3:
+  + Changes:
+    - Add script to create windows installer.
+    - Add support for commit.template config setting.
+    - Dim default avatar image.
+  + Bugs fixed:
+    - Add icon to the windows binary.
+    - Handle console on windows.
+
+-------------------------------------------------------------------
+Wed Dec 23 14:15:36 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.19.2:
+  + Changes:
+    - Support for Windows and OSX.
+    - Add platform specific styles.
+  + Bugs fixed:
+    - Fix dark style of diff-stat widget.
+    - Fix selectable button visibilities.
+
+-------------------------------------------------------------------
+Mon Dec 21 20:40:11 UTC 2015 - damjanovic.ivo@gmail.com
+
+- Update to version 3.19.1:
+  + Rework diff view to use GtkSourceView instead of Webkit.
+  + Initial support of dark theme.
+  + Better support on OSX.
+  + Improved commit selection.
+- Drop pkgconfig(webkit2gtk-4.0) BuildRequires: no longer needed
+  after the move to GtkSourceView.
+- Add pkgconfig(libsoup-2.4) BuildRequires: new dependency, as the
+  code no longer relies on WebKit2.
+
+-------------------------------------------------------------------
+Tue Sep 22 07:19:52 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Changes:
+    - Also accept bare repositories when adding from dash.
+    - Add support for creating binary patch.
+    - Move global author details action to app menu.
+    - Add expanders to ref list.
+    - Add preference to sort references by last activity.
+    - Collapse tags in ref side bar by default.
+    - Add monitoring .git for changes and automatic refresh.
+    - Show repository directory in dash.
+    - Add setting to wrap lines in the diff view.
+    - Do not use selection mode for commit list.
+    - Add checkout branch action.
+    - Rework notifications.
+    - Add basic merging support.
+  + Bugs fixed:
+    - Add repository name in author dialog title.
+    - Higify a bit the author details dialog.
+    - Higify the preference dialog.
+    - Add scanning of folders for git repositories.
+    - Disable selection of line numbers in diff view.
+    - Directly show when trying to commit without staged changes.
+- Switch back to proper released tarballs, as the issues with
+  WebKit linking are now fixed.
+- Remove the build_from_vcs traces.
+
+-------------------------------------------------------------------
+Wed Sep  2 12:01:27 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.1:
+  + Changes:
+    - Make use of gravatar service optional (preference).
+    - Stage/unstage all selected items when pressing Enter.
+    - Add command line arguments to modify default history
+      activity selection (--all, --branches, --remotes, --tags).
+    - Add deleting of untracked files.
+    - Improvements to the dash/overview UX.
+    - Improvements to collapse/uncollapse behavior of diff view.
+  + Bugs fixed:
+    - Get icons at correct size in diff view.
+    - Small UI polish.
+    - Fixed authentication for cloning.
+    - Only use animations of gtk_enable_animations is set.
+    - Fix collation errors for python diffs.
+    - Fix race conditions in repository loading.
+- Add hack to replace WebKit2-3.0 reference in distributed
+  Gitg-1.0.gir file with WebKit2-4.0.
+
+-------------------------------------------------------------------
+Sun Aug 16 18:39:44 UTC 2015 - dimstar@opensuse.org
+
+- Add typelib-1_0-Peas-1_0 and typelib-1_0-PeasGtk-1_0 Requires: as
+  those dependencies are inside an elf binary, we do not yet have
+  a scanner to detect them (boo#929581).
+
+-------------------------------------------------------------------
+Mon May 04 04:35:30 UTC 2015 - opensuse-packaging@opensuse.org
+
+- Update to version 3.16.1:
+  + sidebar: remove deprecated property.
+  + configure: Include passed in cflags for threading support
+    check.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 24 08:42:10 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 10:09:54 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.2:
+  + Show committer date in commit info.
+  + Deep extend diff settings to preserve defaults.
+  + Show committer in diff when differs from author.
+  + Select row when going into selection mode.
+  + Do not use null repository in remote manager.
+  + Provide a symbolic variant of the app icon.
+  + Make links in commit messages clickable.
+  + Add gitg config to ignore certain submodules.
+  + Updated translations.
+- Switch build_from_vcs to 1 and use a tagged snapshot from git:
+  the released tarball was prepared using webkit2gtk-3.0.
+
+-------------------------------------------------------------------
+Tue Feb 10 11:17:07 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.1:
+  + Updated translations.
+- Switch build_from_vcs to 0 and use the released tarball again.
+
+-------------------------------------------------------------------
+Fri Feb  6 10:04:43 UTC 2015 - dimstar@opensuse.org
+
+- Fix version tag: it is 3.14.1+git, not 3.4.1+git.
+
+-------------------------------------------------------------------
+Thu Feb 05 13:30:19 UTC 2015 - dimstar@opensuse.org
+
+- Update to version v3.14.1+1422055285:
+  + Improve search.
+  + Do not ignore submodules for checking index.
+  + Bump libgit2-glib to 0.22.0.
+  + Fix api breaks from libgit2-glib.
+  + Updated translations.
+- Drop gitg-Show-correct-header-bars-buttons.patch: fixed upstream.
+- Introduce build_from_vcs defines, currently set to 1, to easily
+  switch between git snapshots and released tarballs. Based on this
+  condition, add gnome-common BuildRequires and call to autogen.sh.
+- Add pkgconfig(libsecret-1) BuildRequires: new dependency.
+- Drop hack to fixup .gir file: no longer needed.
+
+-------------------------------------------------------------------
+Wed Jan 28 23:53:58 UTC 2015 - zaitor@opensuse.org
+
+- Add gitg-Show-correct-header-bars-buttons.patch: Show the correct
+  header bars buttons depending on the state.
+
+-------------------------------------------------------------------
+Wed Dec 10 20:35:07 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.1:
+  + Fix building with vala 0.27.
+  + Fix warning when unbinding property.
+  + Change emblem-system-symbolic to open-menu-symbolic.
+  + Add gdesktop-enums-3.0.vapi to EXTRA_DIST.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 24 15:54:57 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Fix building with vala 0.25.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 23 20:29:49 UTC 2014 - dimstar@opensuse.org
+
+- Replace pkgconfig(webkit2gtk-3.0) BuildRequires with
+  pkgconfig(webkit2gtk-4.0): build against the new WebKit2 API
+  version.
+- Add hack to replace WebKit2-3.0 reference in distributed
+  Gitg-1.0.gir file with WebKit2-4.0.
+
+-------------------------------------------------------------------
+Wed Aug 20 11:10:38 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.91:
+  + Bug fix: Open repositories by clicking in the repository
+    overview.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 20 08:26:02 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Features:
+    - Synchronize with gnome release schedule and versioning.
+    - Allow ignoring of whitespace in diff view.
+    - Make tab size configurable in diff view.
+    - Added option to show diff per word instead of per line.
+    - Add discard of changes in commit view.
+    - Multiple selection mode for commit view.
+    - Add selection mode for dash overview.
+    - Added Create Branch.
+    - Added Create Tag.
+    - Added Create Patch.
+  + Bug fixes:.
+    - Apply history lane collapse settings.
+    - Restore selection on reload.
+    - Better default column widths in history view.
+    - Do not unnecesarily update diff view.
+    - Prevent double reload of activities.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 11 16:37:27 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.3.3:
+  + Features:
+    - Further polishing of the UI.
+    - Highlight trailing whitespaces in diffs.
+    - Allow to remove repositories from the overview.
+    - Show similarity (i.e. renames) in diffs.
+  + Bug fixes:
+    - Fix large memory leak when opening multiple repositories.
+    - Fix remaining diff stat items in commit dialog.
+    - Restore selection when staging.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 10 09:35:46 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.3.2:
+  + Various small build issues, parallel install, man pages,
+    desktop files (bgo#721656, bgo#721658).
+  + Corrected required versions of dependencies.
+  + Do not rely on external gsettings schemas to exist.
+  + Improved runtime libgit2 thread support detection.
+  + Fix handling of mailto: uris.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan  6 19:27:16 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.3.1:
+  + This is the first release of a major rewrite of gitg. We have
+    since moved from C to Vala to implement gitg, easing
+    development. More importantly, gitg is now using libgit2
+    (instead of calling out to git) which vastly improves gitg's
+    quality. The interface has also had a significant overhaul,
+    conforming to the latest GNOME 3 apps interface development
+    guidelines.
+  + Known regressions:
+    - Push, pull branch.
+    - Create/rename/delete branch.
+    - Create/rename/delete tag.
+    - Basic remote branch management.
+- Add new BuildRequires to satisfy the new build system:
+  + pkgconfig(gee-0.8), pkgconfig(gobject-introspection-1.0),
+    pkgconfig(gtkspell3-3.0), pkgconfig(json-glib-1.0),
+    pkgconfig(libgit2-glib-1.0), pkgconfig(libpeas-1.0),
+    pkgconfig(libpeas-gtk-1.0), pkgconfig(pygobject-3.0,
+    pkgconfig(webkit2gtk-3.0 and vala.
+- Drop git-core requires: gitg no longer interacts with git
+  directly, but interfaces thourgh libgit2-glib.
+- Drop gitg-fix-includes.patch: no longer applicable after the port
+  to Vala.
+- Split new subpackages, as per packaging standards and require the
+  new subpackages from the -devel package:
+  + libgitg-ext-1_0-0 (Shared library for extensions).
+  + typelib-1_0-Gitg_1_0.
+  + typelib-1_0-GitgExt-1_0.
+  + python3-GitgExt.
+
+-------------------------------------------------------------------
+Mon Sep 16 09:23:53 UTC 2013 - mvyskocil@suse.com
+
+- Add gitg-fix-includes.patch: add missing includes to fix build
+  with gtksourceview 3.9.x.
+
+-------------------------------------------------------------------
+Sat Apr  6 16:35:05 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.2.7:
+  + Fix crash at startup.
+
+-------------------------------------------------------------------
+Fri Mar 29 08:39:27 UTC 2013 - vuntz@opensuse.org
+
+- Update to version 0.2.6:
+  + build: Don't tie -Wall -Werror to maintainer mode
+  + Add missing includes for newer gtksourceview
+  + g_thread_init is deprecated in glib 2.31
+
+-------------------------------------------------------------------
+Thu Jan  5 11:31:29 UTC 2012 - vuntz@opensuse.org
+
+- Pass --disable-maintainer-mode to configure instead of changing
+  CFLAGS to fix the build.
+
+-------------------------------------------------------------------
+Thu Dec  1 23:54:30 UTC 2011 - dimstar@opensuse.org
+
+- Inject -Wno-error=deprecated-declarations into CFLAGS, in order
+  to allow building despite the deprecated functions being used.
+
+-------------------------------------------------------------------
+Wed Oct  5 13:27:56 UTC 2011 - vuntz@opensuse.org
+
+- Build and package the glade catalog (bnc#689575):
+  + Add pkgconfig(gladeui-2.0) BuildRequires.
+  + Pass --enable-glade-catalog to configure.
+  + Create glade-catalog-gitg subpackage.
+
+-------------------------------------------------------------------
+Fri Sep  2 08:32:32 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.2.5:
+  + Features:
+    - Allow redirection of stderr to stdout in shell/runner/io
+    - Added debugging of runner commands
+    - Better argument parsing (pass first argument to git log)
+    - Run commit-msg hook when commiting
+    - Improved format patch name mimicking git
+    - Added pre-commit and post-commit hook execution
+    - Use a checkbutton to switch the blame mode
+    - Change the single line (un)stage to use a pixbuf renderer
+  + Bug fixes:
+    - Fix segvs in arguments and environment parsing in GitgCommand
+    - Set working directory, GIT_DIR and GIT_INDEX_FILE when
+      running hooks
+    - Fixed arguments passed to log for first arg
+    - gitg.desktop.in.in: Remove deprecated Encoding key from
+      .desktop file
+    - Fix parsing changed file lines with spaces in filename
+    - Improved autogen.sh
+    - Do not alter selection when commiting through icons
+    - Code cleanup in gitg-commit-view
+    - Do not use GtkMisc as it is getting deprecated.
+    - preferences dialog: fix expand issues.
+    - Use GtkBox instead of Gtk[HV]Box
+
+-------------------------------------------------------------------
+Tue Jul 26 00:32:57 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.2.4:
+  + Features:
+    - Blame mode
+    - Show avatars
+    - Added shortcut for Commit
+    - Unstage/stage with double click
+    - Add a Delete File menu item to the unstage menu
+  + Bug fixes:
+    - Fix diff line renderer sizing issues
+    - Do not show null in Author of Committer labels
+    - Fix possible NULL deref
+    - Fix race condition in the line parser
+    - Fix path rendering offset issue
+    - Fix build on OpenBSD
+
+-------------------------------------------------------------------
+Fri Jul 22 09:07:15 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.2.3:
+  + Features:
+    - Use ustar format for distcheck
+  + Bug fixes:
+    - Use GLADE_CATALOG_DIR instead of GLADE_CATALOGDIR.
+    - Fix spinner in repository dialog.
+    - No longer use Gtk[HV]Box as it is deprecated.
+    - Fix repository dialog.
+    - Remove and reattach model while loading repository.
+    - Fix ENABLE_DEBUG use in Makefile.am.
+    - Fix --disable-debug.
+- Remove ChangeLog from the files list: the file is empty.
+
+-------------------------------------------------------------------
+Thu Apr 28 14:41:30 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.2.2:
+  + Added glade catalog file
+  + Disable auto-utf8 for repository loading
+- Changes from version 0.2.1:
+  + Improved debugging
+  + Add UTF8 as the first candidate encoding
+  + Adjust to GtkSourceView API break
+- Changes from version 0.2.0:
+  + Port gitg to gtk+ 3
+- Changes from version 1.0.0:
+  + Port gitg to gsettings
+  + Added gitg-config test tool
+  + Fix icon sizes
+  + Fixed getting/setting global git configuration
+  + Explicit linking in tools and tests
+- Replace gtk2-devel BuildRequires with pkgconfig(gtk+-3.0) and
+  gtksourceview-2.0-devel with pkgconfig(gtksourceview-3.0).
+- Remove gconf2-devel BuildRequires.
+- Add pkgconfig(gsettings-desktop-schemas) BuildRequires.
+- Replace GConf2 schemas handling with GSettings schemas handling,
+  with %glib2_gsettings_schema_* macros.
+- Drop gitg-build-fixes.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Feb 14 17:51:19 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sat Feb 12 17:46:57 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Fri Jan  7 18:20:36 CET 2011 - vuntz@opensuse.org
+
+- Update to version 0.0.8:
+  + Features:
+    - Added preference to ignore external diff tool
+    - Improved GitgRunner/GitgCommand/GitgShell
+    - Added a menu to create a new branch
+    - Per line staging needs Ctrl
+    - Add committer info
+    - Added stat to revision details panel
+    - Added gitg-revision-details-panel
+    - Added 'changes' panel
+    - Move the backend part of gitg into a libgitg library.
+    - Improved staging/unstaging
+    - Added 'edit' context menu item for stage/unstage list
+    - Improve hash search performance
+    - Add --no-color to some git commands
+    - Make gitg compile with Gtk+ 3.0 if available.
+    - Allow creating a tag without a message.
+  + Bug fixes:
+    - Fixed parsing diff from stash
+    - Do not crash when hiding region header with no next line
+    - Ellipsize long subjects in revision view
+    - Don't show repository missing error when launching without
+      arguments
+    - Always override format patch export
+    - Better handling of command line args and repository paths
+    - Handle sensitivity correctly
+    - Rewrite gitg_ref_get_localname to return a const result
+    - Use remote pushes for push branch menu
+    - Ellipsize parent commit message at end
+    - Use GtkCellRendererSpinner
+    - Portability: replace PATH_MAX sized array with dynamic
+      strings
+    - Use flag G_SPAWN_CHILD_INHERITS_STDIN when input is not
+      provided
+    - Fix building with GSEAL enabled
+    - Cleaned up preferences dialog (bgo#620284)
+    - Make format patch override existing files properly
+      (bgo#620463)
+    - Improved charset conversion (bgo#623466)
+    - Use GBinding
+- Drop gitg-fix-warning.patch: fixed upstream.
+- Add gitg-build-fixes.patch to fix various other warnings.
+- Add libgitg-1_0-0 and libgitg-devel subpackages for the new
+  library.
+- Pass --disable-static to configure, and remove .la files in %install.
+
+-------------------------------------------------------------------
+Thu Apr  1 20:06:27 CEST 2010 - vuntz@opensuse.org
+
+- Clean package from home:decriptor, to push it in Factory.
+

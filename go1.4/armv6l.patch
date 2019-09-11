@@ -1,0 +1,11 @@
+--- a/src/runtime/os_linux.h	2015-09-23 06:37:38.000000000 +0200
++++ b/src/runtime/os_linux.h	2018-03-25 12:07:58.098617526 +0200
+@@ -16,7 +16,7 @@ void runtime·setitimer(int32, Itimerval
+ 
+ enum {
+ 	SS_DISABLE = 2,
+-	NSIG = 65,
++	NSIG = 64,
+ 	SI_USER = 0,
+ 	SIG_SETMASK = 2,
+ 	RLIMIT_AS = 9,

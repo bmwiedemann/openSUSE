@@ -1,0 +1,41 @@
+---
+ locale.c |   21 ++++++++++++++++-----
+ 1 file changed, 16 insertions(+), 5 deletions(-)
+
+--- locale.c
++++ locale.c	2018-09-20 08:14:41.307485537 +0000
+@@ -55,6 +55,7 @@ extern int dump_translatable_strings, du
+ 
+ /* The current locale when the program begins */
+ static char *default_locale;
++static char fallback[128];
+ 
+ /* The current domain for textdomain(3). */
+ static char *default_domain;
+@@ -339,11 +340,21 @@ get_locale_var (var)
+   if (locale == 0 || *locale == 0)
+     locale = lang;
+   if (locale == 0 || *locale == 0)
+-#if 0
+-    locale = default_locale;	/* system-dependent; not really portable.  should it be "C"? */
+-#else
+-    locale = "";
+-#endif
++    {
++      char *ptr;
++      if (default_locale && *default_locale && (ptr = strstr(default_locale, var)) && (ptr = strchr(ptr, '=')) && ++ptr)
++	{
++	  memset (fallback, 0,   sizeof(fallback));
++	  strncpy(fallback, ptr, sizeof(fallback)-1);
++	      
++	  if ((ptr = strchr(fallback, ';')))
++	    *ptr = '\0';
++	      
++	  locale = fallback;
++	}
++      else
++	locale = default_locale;	/* system-dependent; not really portable.  should it be "C"? */
++    }
+   return (locale);
+ }
+ 

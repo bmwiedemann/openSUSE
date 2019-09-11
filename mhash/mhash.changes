@@ -1,0 +1,207 @@
+-------------------------------------------------------------------
+Thu Feb 26 21:13:22 UTC 2015 - mpluskal@suse.com
+
+- Move part of documentation to devel package
+
+-------------------------------------------------------------------
+Thu Feb 26 20:27:25 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Refresh dependencies
+- Move libraries to libmhash2 to comply with shlip policies
+- Use url for source
+
+-------------------------------------------------------------------
+Sat Jan 12 19:18:55 UTC 2013 - coolo@suse.com
+
+- remove suse_update_config
+
+-------------------------------------------------------------------
+Wed Nov 16 08:20:48 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Mon Jan 18 12:49:51 UTC 2010 - coolo@novell.com
+
+- take patch from sourceforge.net tracker to fix test suite
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:30 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Fri Mar  6 15:08:42 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries 
+- run make check
+
+-------------------------------------------------------------------
+Mon Jan 19 13:59:56 CET 2009 - prusnak@suse.cz
+
+- updated to 0.9.9.9
+  * Added patch for sigbus error on unaligned data,
+    when doing rapid copies
+
+-------------------------------------------------------------------
+Mon Aug 13 01:50:15 CEST 2007 - crrodriguez@suse.de
+
+- missing glibc-devel dependency on -devel package
+
+-------------------------------------------------------------------
+Thu Apr  5 10:55:47 CEST 2007 - prusnak@suse.cz
+
+- update do 0.9.9
+  * fixed sigbus error on unaligned data
+  * fixed Haval endian problem
+  * polished some memory leaks
+  * fixed symbol clashes
+
+-------------------------------------------------------------------
+Wed Jan  3 15:52:42 CET 2007 - prusnak@suse.cz
+
+- update to 0.9.7.1
+  * better handling of endian issues
+  * eliminated redundant code
+- drop obsolete patches:
+  * mhash-0.9.4a-comparison.diff
+  * mhash-0.9.4a-include.diff
+  * mhash-0.9.4a-uninitialized.diff
+  * mhash-0.9.4a-stdfns.diff
+
+-------------------------------------------------------------------
+Tue Apr 18 15:12:18 CEST 2006 - ro@suse.de
+
+- use stdfns.c from 0.9.6 to fix bigendian platforms
+
+-------------------------------------------------------------------
+Fri Jan 27 02:12:59 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 15:49:53 CET 2006 - mjancar@suse.cz
+
+- fix missing = in comparison (#145503)
+
+-------------------------------------------------------------------
+Sun Jan 15 18:35:53 CET 2006 - aj@suse.de
+
+- Fix warnings about uninitialized variables.
+- Package mutils/mincludes.h since it's used by <mhash.h>.
+
+-------------------------------------------------------------------
+Wed Jan 11 14:14:39 CET 2006 - mjancar@suse.cz
+
+- update to 0.9.4a
+
+-------------------------------------------------------------------
+Sun Dec 11 23:47:56 CET 2005 - ro@suse.de
+
+- install mhash_config.h since include files are pretty broken
+  by using autoconf-HAVE_.. values globally visible
+
+-------------------------------------------------------------------
+Fri Dec  9 20:02:17 CET 2005 - mjancar@suse.cz
+
+- update to 0.9.3
+
+-------------------------------------------------------------------
+Fri Sep 23 01:12:15 CEST 2005 - ro@suse.de
+
+- fix implicit declarations
+
+-------------------------------------------------------------------
+Mon Feb  7 20:31:28 CET 2005 - mjancar@suse.cz
+
+- update to 0.9.2
+
+-------------------------------------------------------------------
+Fri Aug 06 18:30:40 CEST 2004 - mjancar@suse.cz
+
+- update to 0.9.1
+
+-------------------------------------------------------------------
+Thu Jan 22 00:56:43 CET 2004 - ro@suse.de
+
+- fix build (remove commented line from configure.in)
+
+-------------------------------------------------------------------
+Sun Jan 11 10:21:46 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Thu Jul 31 20:04:38 CEST 2003 - mjancar@suse.cz
+
+- use %run_ldconfig
+
+-------------------------------------------------------------------
+Wed Jun 11 11:37:18 CEST 2003 - mjancar@suse.cz
+
+- enable static library
+
+-------------------------------------------------------------------
+Tue Jun 10 15:48:43 CEST 2003 - mjancar@suse.cz
+
+- update to 0.8.18
+
+-------------------------------------------------------------------
+Mon Feb 17 11:52:59 CET 2003 - vbobek@suse.cz
+
+- updated to version 0.8.17
+  * Corrected the HEX key mode. Refuses to convert hex strings longer
+  than the given key size.
+  * Corrected some memory leaks in keygen_s2k.
+  * Corrected wrong use of sizeof in hmac_test.
+
+-------------------------------------------------------------------
+Fri Sep  6 17:51:59 CEST 2002 - jg@suse.de
+
+- using -fPIC to compile libmhash
+
+-------------------------------------------------------------------
+Fri Aug 30 15:56:39 CEST 2002 - pmladek@suse.cz
+
+- fixed dependency of the devel subpackage on the main package (used %version)
+- fixed file list of the devel subpackage (removed duplicities with the main
+  package)
+
+-------------------------------------------------------------------
+Thu Aug 15 17:04:04 CEST 2002 - mge@suse.de
+
+-  updated to 0.8.16
+
+-------------------------------------------------------------------
+Fri Jan 18 11:16:47 CET 2002 - pmladek@suse.cz
+
+- upadted to version 0.8.13:
+	* added ADLER32 algorithm
+	* added SHA-256 from libnettle
+	* some new functions
+	* some bug fixes
+- used libtoolize --force, aclocal, autoconf
+- fixed documetation
+
+-------------------------------------------------------------------
+Fri Jan 11 15:10:35 CET 2002 - pmladek@suse.cz
+
+- devel package created
+- used macro %{_libdir} to fix for lib64
+
+-------------------------------------------------------------------
+Thu May 24 10:53:48 CEST 2001 - pmladek@suse.cz
+
+- fixed include files on ia64
+
+-------------------------------------------------------------------
+Tue Mar 27 16:02:17 CEST 2001 - pmladek@suse.cz
+
+- new package
+- bziped sources

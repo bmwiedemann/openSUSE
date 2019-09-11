@@ -1,0 +1,145 @@
+-------------------------------------------------------------------
+Sun Sep 20 15:39:23 UTC 2015 - coolo@suse.com
+
+- updated to 0.60
+   see /usr/share/doc/packages/perl-CHI/Changes
+
+  0.60  Jun 7, 2015
+  
+  * Fixes
+    - Switch JSON backends from JSON.pm to JSON::MaybeXS - https://github.com/jonswar/perl-chi/pull/20 (Karen Etheridge)
+
+-------------------------------------------------------------------
+Fri Apr 24 16:13:34 UTC 2015 - coolo@suse.com
+
+- fix requires to Time::Duration
+
+-------------------------------------------------------------------
+Mon Apr 13 18:21:06 UTC 2015 - coolo@suse.com
+
+- updated to 0.59
+   see /usr/share/doc/packages/perl-CHI/Changes
+
+-------------------------------------------------------------------
+Wed Jul 24 07:48:33 UTC 2013 - coolo@suse.com
+
+- updated to 0.58
+ * Fixes
+    - Fix busted packaging
+ 
+ 0.57  July 21, 2013
+ 
+ * Implementation
+   - Use Moo instead of Moose for object system.  This should be fully compatible
+     with existing code, including Moose drivers or other extensions.  This
+     reduces the startup time and memory overhead.
+ 
+ * Fixes
+   - Fix the loading of additional roles or traits (jrouzierinverse)
+
+-------------------------------------------------------------------
+Wed May 15 15:26:45 UTC 2013 - coolo@suse.com
+
+- updated to 0.56
+ * Fixes
+   - Mention testing_driver_class in CHI/Driver/Development.pm - RT #78921 (Nigel Horne)
+ 
+ * Tests
+   - Add test_multiple_processes for testing drivers under concurrent writes - RT #79132 (Nigel Horne)
+ 
+ * Docs
+   - Mention that driver tests are responsible for their own cleanup - RT #79100 (Nigel Horne)
+   - Various spelling fixes thanks to Pod::Spell
+ 
+ * Improvements
+   - Compute derived/aggregate stats in CHI::Stats::parse_stats_logs
+ 
+ * Fixes
+   - Eliminate "=for html" POD entries, which were mangling metacpan.org output (Pedro Melo)
+ 
+ ** Incompatible Changes **
+   - ** Switch CHI::Stats format to JSON for easier generation and parsing
+ 
+ * Improvements
+   - Measure time elapsed in get, set, and compute; record in logs and stats. Only
+     measure when debug logging or stats are enabled.
+   - compute() now handles list or scalar caller context
+   - The driver parameter now accepts full classes prefixed by '+', as is standard.
+     driver_class is still accepted for backward compatibility but no longer documented.
+ 
+ * Fixes
+   - compute() no longer modifies passed-in options hashref
+   - Fix get_multi_* with partially empty l1 cache - perl-chi/pull/12 (Mike Cartmell)
+   - Fix get_keys when file_extension set on CHI::Driver::File - RT #76489 (Vitaliy Tokarev)
+   - Have set_multi call store_multi underneath as documented in Development.pod - RT
+     #76621 (Oliver Paukstadt)
+   - Minor POD fixes (Alessandro Ghedini)
+
+-------------------------------------------------------------------
+Mon Mar 12 14:44:54 UTC 2012 - tabraham@novell.com
+
+- updated to 0.52
+  - Subclasses inherit configuration from their parents unless they
+    also call config()
+  - Fix Config test to not require memcached
+
+- changes from 0.51
+  - add CHI->config() to register storage types, and set core and
+    per-namespace defaults
+  - fix new test_max_key_length test to work on drivers that do not
+    support get_keys
+
+-------------------------------------------------------------------
+Wed Feb 15 16:04:33 UTC 2012 - tabraham@novell.com
+
+- updated to 0.50
+  - Clarify busy_lock doc, add obj_ref doc (perlover)
+
+  - Override set() rather than set_object() in Role/HasSubcaches.pm 
+    so that keys are not double-transformed when set in l1 or mirror 
+    caches. This is simpler and should be more robust.
+
+  - Remove htdocs which were accidentally added into dist
+
+-------------------------------------------------------------------
+Tue Oct 25 17:08:27 UTC 2011 - tabraham@novell.com
+
+- updated to 0.49
+  - go back to generating version numbers for all sub-modules again
+
+- updated to 0.48
+  - disregard default expires_at and expires_in if either are provided
+    RT #67970 (spjw)
+
+-------------------------------------------------------------------
+Fri Apr 29 07:53:48 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.47
+  * Improvements
+    - Allow compute() to take get options - expire_if and busy_lock
+    - Add atomic operations: add, append, replace (alpha)
+
+-------------------------------------------------------------------
+Wed Apr 27 18:39:43 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.46
+  - Only generate version numbers for .pm files with documentation, to reduce inter-version churn
+  - Add expires_on_backend parameter
+
+-------------------------------------------------------------------
+Sun Apr  3 14:50:29 UTC 2011 - coolo@novell.com
+
+- updated to 0.44
+* Fixes
+  - Remove more unnecessary packages from CPAN index
+  - Put parens around qw in various places to fix for perl 5.13+
+* Improvements
+  - Add compress_threshold parameter
+  - Improve accuracy of benchmarks (nothingmuch)
+- for more see Changes
+-------------------------------------------------------------------
+Fri Jan 14 11:30:23 UTC 2011 - coolo@novell.com
+
+- initial package 0.36
+  * created by cpanspec 1.78.03
+

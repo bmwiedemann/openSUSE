@@ -1,0 +1,25 @@
+Index: biosdevname-0.6.1/biosdevname.rules.in
+===================================================================
+--- biosdevname-0.6.1.orig/biosdevname.rules.in	2015-01-22 13:18:19.275616067 +0100
++++ biosdevname-0.6.1/biosdevname.rules.in	2015-01-22 13:59:10.967655045 +0100
+@@ -4,6 +4,9 @@
+ ATTR{type}!="1",  GOTO="netdevicename_end"
+ ENV{DEVTYPE}=="?*", GOTO="netdevicename_end"
+ 
++# whitelist all Dell systems
++ATTR{[dmi/id]sys_vendor}=="Dell*", ENV{UDEV_BIOSDEVNAME}="1"
++
+ # kernel command line "biosdevname={0|1}" can turn off/on biosdevname
+ IMPORT{cmdline}="biosdevname"
+ ENV{biosdevname}=="?*", ENV{UDEV_BIOSDEVNAME}="$env{biosdevname}"
+@@ -12,8 +15,8 @@
+ ENV{UDEV_BIOSDEVNAME}=="0", GOTO="netdevicename_end"
+ ENV{UDEV_BIOSDEVNAME}=="1", GOTO="netdevicename_start"
+ 
+-# uncomment the next line for biosdevname to be off by default
+-# GOTO="netdevicename_end"
++# comment the next line for biosdevname to be on by default
++GOTO="netdevicename_end"
+ 
+ LABEL="netdevicename_start"
+ 

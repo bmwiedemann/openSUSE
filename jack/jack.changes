@@ -1,0 +1,878 @@
+-------------------------------------------------------------------
+Wed Jul 24 08:44:05 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Disable link time optimization to fix crash see boo#1141762
+
+-------------------------------------------------------------------
+Mon Apr 15 12:56:04 UTC 2019 - plater <davejplater@gmail.com>
+
+- Added 0001-Make-jack_control-python2-3-compatible.patch from git
+  to fix boo#1132458.
+
+-------------------------------------------------------------------
+Thu Sep 20 13:11:42 UTC 2018 - davejplater@gmail.com
+
+- Remove unnecessary requires for libjack0 and remove obsolete
+  comments.
+- Use %license on "COPYING"
+
+-------------------------------------------------------------------
+Tue Sep 18 16:23:25 UTC 2018 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Add upstream patch to fix return value check of mmap() (boo#1108981):
+  fix-mmap-return-value-check.patch
+
+-------------------------------------------------------------------
+Thu Sep 13 11:49:18 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update the waf code to the 2.0 series in order to work under
+  python3.7 taken from upstream git:
+  * jack-waf2.patch
+
+-------------------------------------------------------------------
+Sun Jan  7 10:15:05 UTC 2018 - davejplater@gmail.com
+
+- Build with _smp_mflags
+
+-------------------------------------------------------------------
+Fri Jan  5 08:25:42 UTC 2018 - davejplater@gmail.com
+
+- Split off libjacknet0 and libjackserver0 into subpackages.
+
+-------------------------------------------------------------------
+Thu Jan  4 13:18:58 UTC 2018 - davejplater@gmail.com
+
+- Update to version 1.9.12 and use python3 instead of python2 for
+  the build.
+- Removed jack-sparcv9.diff and jack-ppc64-long.patch, the file
+  that is patched - linux/cycles.h no longer exists.
+- Removed reproducible.patch, gcc6-fixes.diff and jack-fixgcc7.patch
+  they are all now upstream.
+- Upstream changes:
+  *Various corrections in NetJack2 code.
+  *Partial buffers can now be transmitted with libjacknet API.
+  *Including S24_LE/BE formats to linux ALSA driver.
+  *More robust shared memory allocator.
+  *Correct CoreAudio devices aggregation code.
+  *Waf and wscripts improvement and update.
+  *New JackProxyDriver.
+  *Various fixes in JACK MIDI code.
+  *Fix return value of SetTimebaseCallback().
+  *Correct netmanager latency reporting.
+  *Implement new jack_port_rename and JackPortRenameCallback API.
+  *Fix CPU hogging of the midi_thread().
+  *Release audio devices when alsa_driver_new fails.
+  *String management fix.
+  *Correct JackDriver::Open : call to fGraphManager->SetBufferSize
+   has to use current fEngineControl->fBufferSize value.
+  *Use ARM neon intrinsics for AudioBufferMixdown.
+  *Fix Netjack alignment.
+  *Various wscript improvements and cleanup.
+  *Fix initialization of several class variables.
+  *Heap-allocate client matrix in topo sort.
+  *Add a toggle command to transport utility, to allow toggling
+   between play and stop state.
+  *Avoid side effects from parsing of "version" option in jackd.
+  *Allow firewire device be selected via -d.
+  *Add ARM-NEON acceleration for all non-dithering sample
+   conversion functions.
+  *Add jack_simdtest utility.
+  *Use Linux futex as JackSynchro.
+  *Add autoclose option to jack_load.
+  *Fix build with gcc-7.
+  *Show hint when DBus device reservation fails.
+  *Add support for internal session files.
+
+-------------------------------------------------------------------
+Wed Jul 19 10:08:33 UTC 2017 - davejplater@gmail.com
+
+- Modify jack-fixgcc7.patch in line with upstream.
+
+-------------------------------------------------------------------
+Sun Apr  2 11:26:15 UTC 2017 - davejplater@gmail.com
+
+- Fix gcc7 build failure with jack-fixgcc7.patch, sent to github
+  jack2 issue#253
+
+-------------------------------------------------------------------
+Fri Apr 15 14:33:40 CEST 2016 - tiwai@suse.de
+
+- Fix the build failure with gcc6:
+  gcc6-fixes.diff
+
+-------------------------------------------------------------------
+Sun Mar 20 11:02:37 UTC 2016 - davejplater@gmail.com
+
+- Use pkgconfig buildrequires and cleanup spec.
+- BuildIgnore libiec61883 to allow Leap42 and earlier build again.
+
+-------------------------------------------------------------------
+Fri Mar 18 15:10:59 UTC 2016 - bwiedemann@suse.com
+
+- Add reproducible.patch to fix build-compare
+
+-------------------------------------------------------------------
+Tue May 26 09:43:10 UTC 2015 - jkeil@suse.com
+
+- Added libjack-devel to baselibs.conf
+
+-------------------------------------------------------------------
+Mon May 25 20:21:23 UTC 2015 - plinnell@opensuse.org
+
+- Enable 32bit build in baselibs.conf
+
+-------------------------------------------------------------------
+Sat Mar  7 10:12:05 UTC 2015 - mpluskal@suse.com
+
+- Replace celt with opus
+  * remove jack-celt-build-fix.diff
+
+-------------------------------------------------------------------
+Sun Sep 21 13:24:43 UTC 2014 - davejplater@gmail.com
+
+- Update to release 1.9.10
+- Removed patches jack-wafdocbuild.patch and aarch64.patch as they
+  are now in upstream.
+- Upstream changes:
+   * Correct JackPortAudioDriver::Open : special case for ASIO drivers.
+   * Correct JackEngine::NotifyGraphReorder : graph-order callback now notified after port latencies update.
+   * netjack/opus: don't re-init en/decoders.
+   * Use string ids in the alsa device list.
+   * controlapi: fix double free on master switch.
+   * netjack1/netone opus support.
+   * netjack1/2 Opus: use only 2bytes for encoded-length.
+   * wscript: add header defines and libs for example-clients/netsource.
+   * fix duplicate prog.includes.
+   * More robust channel mapping handling in JackCoreAudioDriver.
+   * Add opus support to NetJack2.
+   * jack_control: fix epr command.
+   * Update JackCoreAudioDriver and JackCoreAudioAdapter with more recent API.
+   * Devin Anderson patch for Jack/CoreMIDI duplicated messages.
+   * Fix in ALSA adapter.
+   * Fix alsa driver parameter order.
+   * Control API: Enforce driver/internal parameter order.
+   * Extend jack_control to have parameter reset commands.
+   * Align buffers to 32 byte boundaries to allow AVX processing.
+   * New jack_get_cycle_times() implementation from Fons Adriennsen.
+   * Update waf.
+   * [firewire] Introduce UpdateLatencies() in FFADO backend.
+   * [firewire] Allow FFADO backend to change the buffer size.
+   * Rework JackMessageBuffer.
+   * POST_PACKED_STRUCTURE used for jack_latency_range_t type.
+   * Remove JACK_32_64 flag, so POST_PACKED_STRUCTURE now always used.
+   * Improve libjacknet master mode.
+   * In control API, UNIX like sigset_t replaced by more abstract jackctl_sigmask_t * opaque struct.
+   * Check server API callback from notification thread.
+   * Use a time-out in notification channel write function.
+   * Fix lock management in JackEngine.
+   * A bit more robust JackMessageBuffer implementation (in progress).
+   * Rename JackProcessSync in JackPosixProcessSync.
+   * Fix NetJack2 initialisation bug.
+   * Improve ShutDown in NetManager.
+   * Correct ShutDown in JackInternalClient and JackLibClient.
+   * Implement shutdown for in server clients.
+   * Better time-out management in NetJack2.
+   * More robust server/client protocol.
+   * Factorize code the server/client request in JackRequestDecoder class.
+   * Cleanup drivers and internals loading code.
+   * jackctl_driver_params_parse API moved in public control.h.
+   * More general drivers/internals loading model on Windows.
+   * Fix library symbols export issue.
+   * Adrian Knoth fix in midiseq.c.
+
+-------------------------------------------------------------------
+Fri May  2 09:10:30 CEST 2014 - ohering@suse.de
+
+- Enable firewire only for 12.1+ due to lack of libffado-devel
+
+-------------------------------------------------------------------
+Tue Jun 11 22:52:31 UTC 2013 - dmueller@suse.com
+
+- add aarch64.patch 
+
+-------------------------------------------------------------------
+Thu Jun  6 09:29:16 UTC 2013 - cdenicolo@suse.com
+
+- license update:  GPL-2.0+ and LGPL-2.1+
+  jack server is licensed under GPL-2.0+
+
+-------------------------------------------------------------------
+Thu Mar 28 10:15:43 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Mon Feb  4 12:32:11 UTC 2013 - davejplater@gmail.com
+
+- Update to release 1.9.9.5 for bnc#801442
+- Removed patches: jack-uc_regs.patch, jack-segfault.patch they are
+  incorporated.
+- Doxygen build doesn't work created jack-wafdocbuild.patch.
+- Upstream changes :
+  *Adrian Knoth fix in midiseq.c.
+  *Fix library symbols export issue.
+  *Cleanup drivers and internals loading code.
+  *jackctl_driver_params_parse API moved in public control.h.
+  *Factorize code the server/client request in JackRequestDecoder class.
+  *More robust server/client protocol.
+  *Better time-out management in NetJack2.
+  *Improve ShutDown in NetManager.
+  *Correct ShutDown in JackInternalClient and JackLibClient.
+  *Fix NetJack2 initialisation bug. Add EndTime function.
+  *Rename JackProcessSync in JackPosixProcessSync.
+  *A bit more robust JackMessageBuffer implementation.
+  *Check server API callback from notification thread.
+  *Use a time-out in notification channel write function.
+  *Fix lock management in JackEngine.
+  *In control API, UNIX like sigset_t replaced by more abstract jackctl_sigmask_t * opaque struct.
+  *Improve libjacknet master mode.
+  *Remove JACK_32_64 flag, so POST_PACKED_STRUCTURE now always used. POST_PACKED_STRUCTURE used for jack_latency_range_t type.
+  *Rework JackMessageBuffer.
+  *[firewire] Introduce UpdateLatencies() in FFADO backend.
+  *[firewire] Allow FFADO backend to change the buffer size.
+  *Update waf.
+  *New jack_get_cycle_times() implementation from Fons Adriennsen.
+  *Align buffers to 32 byte boundaries to allow AVX processing.
+  *Extend jack_control to have parameter reset commands.
+  *Fix alsa driver parameter order.
+  *Control API: Enforce driver/internal parameter order.
+  *Fix in ALSA adapter.
+  *Devin Anderson patch for Jack/CoreMIDI duplicated messages.
+  *Change framework installation hierarchy for OSX Mountain Lion.
+  *Update JackCoreAudioDriver and JackCoreAudioAdapter with more recent API.
+  *jack_control: fix epr command.
+  *Add opus support to NetJack2.
+  *More robust channel mapping handling in JackCoreAudioDriver.
+  *netjack1/netone opus support. controlapi: fix double free on master switch.
+  *Use string ids in the alsa device list. netjack/opus: don't re-init en/decoders.
+  *Correct JackPortAudioDriver::Open : special case for ASIO drivers.
+  *waf: configure option for enforcing autostart method
+  *ALSA devices reservation fixes.
+
+
+-------------------------------------------------------------------
+Wed Jun 27 15:23:00 UTC 2012 - dvaleev@suse.com
+
+- fix R_PPC64_ADDR32 fff85e94858 for symbol `' out of range
+- fix jack_connect segfault
+
+-------------------------------------------------------------------
+Tue Apr 10 16:05:10 UTC 2012 - klaussfreire@gmail.com
+
+- Disable parallel build to limit resource usage and prevent hung 
+  build hosts.
+
+-------------------------------------------------------------------
+Sun Feb 26 09:21:56 UTC 2012 - davejplater@gmail.com
+
+- Update to version 1.9.8
+- Remade jack-celt-build-fix.diff
+- Upstream changes :
+- Merge newer-midi branch (Devin Anderson redesign of the
+  MIDI drivers: alsarawmidi, ffado, coremidi and winmme).
+- Correction in jackdmp.cpp: notify_server_stop should be done
+  after server destruction.
+- Correct driver lifetime management.
+- Add XRun detection in PortAudio driver.
+- CELT code for NetJack2.
+- Merge branch switch-master-port-registration-notifications:
+  correct driver port registration.
+- Libjacknet in progress.
+- Correct MIDI in NetJack2.
+- Correct OSX real-time thread setup.
+- Correct rd_acquire in dbus code.
+- Correct NetJack2 connection handling.
+- SaveConnections/RestoreConnections in NetDriver and JackAudioDriver.
+- Special version of jack_attach_shm/jack_release_shm on client
+  side for POSIX shared memory, to solve a memory leak issue.
+- Another round of code improvements to handle completely
+  buggy Digidesign CoreAudio user-land driver.
+- Special CATCH_CLOSE_EXCEPTION_RETURN to handle Close API calls.
+- Add JACK_NETJACK_PORT and JACK_NETJACK_MULTICAST environment
+  variables for NetJack2.
+- NetJack2 now only send data on network only is ports are connected
+  both sides.
+- Fix for "starting two instances of same app in parallel does not
+  work" bug.
+- Enable explicit channel mapping in CoreAudio driver.
+- New JackTimedDriver class to be used by JackDummyDriver,
+  JackNetDriver and JackNetOneDriver classes.
+- More robust code in synchronization primitives and JackMessageBuffer.
+- More robust Control API implementation.
+- Add jackctl_driver_get_type in Control API.
+- Singleton behaviour for JackCoreMidiDriver and JackWinMMEDriver.
+- John Emmas patch for DSP CPU computation.
+- John Emmas Windows server launching patch.
+- Fix jack_set_port_name API.
+- Enable local access in NetJack2 code.
+- Dynamic port management in JACK/CoreMidi bridge.
+
+-------------------------------------------------------------------
+Mon Feb 13 21:10:32 UTC 2012 - dvaleev@suse.com
+
+- ppc64 doesn't have uc_regs
+
+-------------------------------------------------------------------
+Tue Oct 18 21:32:34 UTC 2011 - adrian@suse.de
+
+- drop jack-CAS.diff patch to fix non ia32/x86_64/ppc build,
+  seems to be fixed upstream similar
+
+-------------------------------------------------------------------
+Wed Sep  7 15:13:42 UTC 2011 - davejplater@gmail.com
+
+- Enabled dbus support requested on multimedia list
+- Disabled engine profiling
+
+-------------------------------------------------------------------
+Tue Sep  6 17:07:34 UTC 2011 - davejplater@gmail.com
+
+- Removed malfunctioning services
+
+-------------------------------------------------------------------
+Thu May 19 14:39:07 UTC 2011 - davejplater@gmail.com
+
+- Update to version 1.9.7
+- Upstream changes :
+ *Sync JackAlsaDriver::alsa_driver_check_card_type with JACK1 backend.
+ *Improve backend error handling: fatal error returned by Read/Write
+  now cause a Process failure (so a thread exit for blocking backends).
+ *Recoverable ones (XRuns..) are now treated internally in ALSA and
+  FFADO backends.
+ *In jackdmp.cpp, jackctl_setup_signals moved before jackctl_server_start.
+ *Correct dummy driver.
+ *Adrian Knoth jack_lsp patch.
+ *Remove JackPortIsActive flag.
+ *New latency API implementation.
+ *ComputeTotalLatencies now a client/server call.
+ *Add latent test client for latency API.
+ *Also print playback and capture latency in jack_lsp.
+ *jack_client_has_session_callback implementation.
+ *Check requested buffer size and limit to 1..8192  avoids weird
+  behaviour caused by jack_bufsize foobar.
+ *jack_port_type_get_buffer_size implementation.
+ *Stop using alloca and allocate buffer on the heap for alsa_io.
+ *Rename jdelay to jack_iodelay as per Fons' request.
+ *Call buffer size callback in activate (actually this is done on
+  client side in the RT thread Init method).
+ *Add jack_midi_dump client. Synchronize net JACK1 with JACK1 version.
+ *Synchronize jack_connect/jack_disconnect with JACK1 version.
+ *Correct JackNetMaster::SetBufferSize.
+ *Use jack_default_audio_sample_t instead of float consistently,
+  fix ticket #201. -X now allows to add several slave backends, add -I
+  to load several internal clients.
+ *Rework internal slave driver management, JackServerGlobals now
+  handle same parameters as jackdmp.
+ *Correct JackEngine::NotifyGraphReorder, update JackDebugClient
+  with latest API.
+ *Devin Anderson server-ctl-proposal branch merged on trunk: improved
+  control API, slave backend reworked.
+ *Implement renaming in JackDriver::Open to avoid name collision.
+ *Correct alsa_driver_restart (thanks Devin Anderson).
+ *Correction of jack_connect/jack_disconnect: use of jack_activate
+  and volatile keyword for thread shared variable.
+ *Correction of JackNetOneDriver for latest CELT API.
+ *Synchronize JackWeakAPI.cpp with new APIs.
+
+-------------------------------------------------------------------
+Fri Dec 10 15:37:29 UTC 2010 - davejplater@gmail.com
+
+- Added jack-celt-build-fix.diff to fix jack build with celt-0.9.1
+
+-------------------------------------------------------------------
+Tue Nov  9 22:25:30 UTC 2010 - davejplater@gmail.com
+
+- Update to version 1.9.6
+- Upstream changes :
+  *Improve JackCoreAudioDriver and JackCoreAudioAdapter : when no
+   devices are described, takes default input and output and
+   aggregate them.
+  *Correct JackGraphManager::DeactivatePort.
+  *Correct JackMachServerChannel::Execute : keep running even in
+   error cases.
+  *Raise JACK_PROTOCOL_VERSION number. Arnold Krille firewire patch.
+  *Fix some file header to have library side code use LGPL.
+  *ffado-portname-sync.patch from ticket #163 applied.
+  *Remove call to exit in library code.
+  *Make jack_connect/jack_disconnect wait for effective port
+   connection/disconnection.
+  *Add tests to validate intclient.h API.
+  *On Linux, inter-process synchronization primitive switched to
+   POSIX semaphore.
+  *In JackCoreAudioDriver, move code called in MeasureCallback to be
+   called once in IO thread.
+  *David Garcia Garzon netone patch.
+  *Fix from Fernando Lopez-Lezcano for compilation on fc13.
+  *Fix JackPosixSemaphore::TimedWait : same behavior as
+   JackPosixSemaphore::Wait regarding EINTR.
+  *David Garcia Garzon unused_pkt_buf_field_jack2 netone patch.
+  *Arnold Krille firewire snooping patch.
+  *Jan Engelhardt patch for get_cycles on SPARC.
+  *Adrian Knoth hurd.patch, kfreebsd-fix.patch and
+   alpha_ia64-sigsegv.patch from ticket 177.
+  *Adrian Knoth fix for linux cycle.h (ticket 188).
+  *In JackCoreAudioDriver, fix an issue when no value is given for
+   input.
+
+-------------------------------------------------------------------
+Wed Jul  7 08:11:30 UTC 2010 - davejplater@gmail.com
+
+- Enable ffado firewire support
+
+-------------------------------------------------------------------
+Wed Jul  7 00:18:17 UTC 2010 - jengelh@medozas.de
+
+- Provide missing functions to enable SPARC compilation
+
+-------------------------------------------------------------------
+Tue Jul  6 22:02:03 UTC 2010 - jengelh@medozas.de
+
+- Build fix: make sure $RPM_OPT_FLAGS is in CFLAGS (SPARC _needs_
+  its -march=ultrasparc from prjconf to make atomic ops available)
+- Strip remaining CFLAGS since they are the same as in prjconf
+
+-------------------------------------------------------------------
+Thu Apr 29 14:26:54 CEST 2010 - ro@suse.de
+
+- use _smp_mflags instead of -j'percent'{jobs}
+
+-------------------------------------------------------------------
+Tue Apr  6 08:32:53 UTC 2010 - davejplater@gmail.com
+
+- Update to jack-1.9.5 which now has support for distributing audio
+  processing across a network.
+- Removed jack-shmat-check-fix.diff.
+
+-------------------------------------------------------------------
+Fri Feb 19 11:47:42 UTC 2010 - coolo@novell.com
+
+- remove libfreebob dependency
+
+-------------------------------------------------------------------
+Wed Feb 17 11:54:21 CET 2010 - tiwai@suse.de
+
+- minor spec file clean-ups
+
+-------------------------------------------------------------------
+Tue Feb  9 10:55:12 UTC 2010 - edogawa@aon.at
+
+- update to 0.118.0
+- don't use gcc4 patch and all that autotool stuff before ./configure
+- fixed dependencies (missing versions)
+
+-------------------------------------------------------------------
+Fri Dec 18 23:25:37 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Tue Sep 22 16:15:07 CEST 2009 - tiwai@suse.de
+
+- fix minor strdup memory leaks (bnc#539096)
+
+-------------------------------------------------------------------
+Sun Jun 21 10:31:11 CEST 2009 - coolo@novell.com
+
+- fix requires of devel package (libjack requires libsamplerate now)
+
+-------------------------------------------------------------------
+Fri Jun 19 17:19:12 CEST 2009 - tiwai@suse.de
+
+- add libsndfile and libsamplerate to buildrequires to support
+  netjack driver
+
+-------------------------------------------------------------------
+Fri Jun 19 17:11:06 CEST 2009 - tiwai@suse.de
+
+- fix mismatching pclose() (bnc#514072)
+
+-------------------------------------------------------------------
+Mon Apr 20 12:54:31 CEST 2009 - tiwai@suse.de
+
+- updated to version 0.116.2:
+  * Stable version update since 0.109.2: quite lots of fixes and
+    updates.  See
+    http://jackaudio.org/node/20
+    http://jackaudio.org/node/21
+    http://jackaudio.org/node/22
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Dec  4 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Oct 13 13:10:18 CEST 2008 - tiwai@suse.de
+
+- Fix the compile warnings regarding the check of shmat() return
+  value (bnc#434725)
+
+-------------------------------------------------------------------
+Tue Apr 29 12:02:08 CEST 2008 - tiwai@suse.de
+
+- add --disable-static explicitly to fix build with new autoconf
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Jan 31 11:28:52 CET 2008 - tiwai@suse.de
+
+- deprecate run_ldconfig
+- updated to version 0.109.2:
+  * fix use of popen() to work on systems that reset PATH
+  * USX2Y driver updates
+  * revert name of ALSA audio backend to "alsa_pcm"
+  * add disgusting kludge so that "ALSA:...." port names continue
+    to work
+
+-------------------------------------------------------------------
+Mon Jan 28 11:32:17 CET 2008 - tiwai@suse.de
+
+- rename packages to follow the shlib packaging policy (to avoid
+  conflict with packman).
+
+-------------------------------------------------------------------
+Tue Jan 15 12:09:35 CET 2008 - tiwai@suse.de
+
+- updated to version 0.109.9:
+  * API changes:
+  * add jack_thread_wait API
+  * remove port_(un)lock functions
+  * add new time APIs
+  * add port aliases
+  * add new client registration callback
+  * add port connect callback
+  * ALSA: fix for use of snd_pcm_link
+  * ALSA: hardware jack-midi support
+  * ALSA: fix for enabling big-endian 16bit format discovery
+  * FreeBoB: fix deallocation segfault
+  * FireWire: add 'firewire' backend for use with FFADO
+  * OSS: add support for proper triggering in OSS driver when in
+    full duplex mode
+  * ALSA: fix illegal use of ALSA API
+  * OSS: disable software mixing and samplerate conversions on
+    OSS 4.x
+  * CoreAudio: fix sample rate management
+  * add JACK_PROMISCUOUS_SERVER handling
+  * make /dev/shm the default tmpdir
+  * add -Z flag to cancel zombification on timeout
+  * add per-port update total latency
+  * increment default watchdog timeout to 10sec
+- remove obsolete README.SuSE
+
+-------------------------------------------------------------------
+Wed Oct 31 15:02:04 CET 2007 - tiwai@suse.de
+
+- don't build with POSIX SHM (#337972)
+
+-------------------------------------------------------------------
+Mon Apr 16 14:36:11 CEST 2007 - tiwai@suse.de
+
+- remove md5_loc.h with RSA license which is incopmatile with
+  GPL (#264837)
+
+-------------------------------------------------------------------
+Tue Apr 10 19:10:01 CEST 2007 - tiwai@suse.de
+
+- fix post and postun for libjack.
+
+-------------------------------------------------------------------
+Tue Apr  3 14:44:07 CEST 2007 - tiwai@suse.de
+
+- split to libjack and jack-freebob sub packages to reduce
+  library dependencies.
+
+-------------------------------------------------------------------
+Tue Mar 27 12:31:44 CEST 2007 - tiwai@suse.de
+
+- added freebob support.
+
+-------------------------------------------------------------------
+Mon Mar 26 17:34:17 CEST 2007 - tiwai@suse.de
+
+- updated to version 0.103.0:
+  * Fixed broken --disable-freebob config option.
+  * Jack now reads the global config file.
+  * Fix for jack_midiseq.
+  * For for HPET code to use 32-bit reads on all platforms,
+    for atomicity reasons.
+  * Directly accessing Jack port internal structure is forbidden.
+  * Minor fixes for midi support.
+  * Fix for freebob driver crash.
+  * Fix for alsa usb interleave_skip handling.
+  * Fix for memory leak in ringbuffer.
+  * Fix for shutdown segfault fix.
+
+-------------------------------------------------------------------
+Tue Jan  9 12:41:53 CET 2007 - tiwai@suse.de
+
+- use /dev/shm as the default tmp dir (#231072)
+
+-------------------------------------------------------------------
+Thu Oct 12 17:40:57 CEST 2006 - tiwai@suse.de
+
+- updated to version 0.102.20:
+    * Make "alsa" the default backend when both it and "freebob" are
+      present.
+    * JACK MIDI patch -- Experimental!
+    * allow use of h/w devices that only support big-endian formats.
+    * jack_lsp now has a -L flag to show "total latency" values
+    * ALSA driver no longer requires access to a control device
+    * jack_lsp -t shows port type
+    * jackd will exit if -R is used but realtime is unavailable
+    * halve JACK_THREAD_STACK_TOUCH to 500000
+    * increase default --port-max option from 128 to 256
+    * Many bug fixes
+- fix compilation of usx2y.c
+
+-------------------------------------------------------------------
+Wed Sep 20 17:54:28 CEST 2006 - tiwai@suse.de
+
+- updated to version 0.101.1:
+  * Freebob backend support
+  * Mactel platform fixes
+  * Unplug support of USB soundcard
+  * dynsmid option
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:45 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 12 18:24:53 CET 2005 - tiwai@suse.de
+
+- disable the arch optimization (#138070).
+
+-------------------------------------------------------------------
+Sun Nov 13 16:24:49 CET 2005 - schwab@suse.de
+
+- Fix use of atomic builtins.
+
+-------------------------------------------------------------------
+Wed Oct 12 19:54:25 CEST 2005 - tiwai@suse.de
+
+- removed glib* from neededfobuild.
+
+-------------------------------------------------------------------
+Wed Oct  5 14:46:56 CEST 2005 - tiwai@suse.de
+
+- added flac and flac-devel to neededforbuild (required by the new
+  libsndfile).
+
+-------------------------------------------------------------------
+Tue Oct  4 15:15:24 CEST 2005 - tiwai@suse.de
+
+- updated to version 0.100.0.
+
+-------------------------------------------------------------------
+Thu Mar 31 16:48:51 CEST 2005 - coolo@suse.de
+
+- avoid ancient compiler options no longer supported by gcc4
+
+-------------------------------------------------------------------
+Thu Jan 27 12:04:55 CET 2005 - tiwai@suse.de
+
+- Fix README.SuSE, removed README.SuSE_de (bug #50106)
+
+-------------------------------------------------------------------
+Tue Nov  9 11:39:10 CET 2004 - tiwai@suse.de
+
+- updated to version 0.99.0.
+- moved manpage to the main package (bug #47723).
+
+-------------------------------------------------------------------
+Thu Sep 23 15:42:33 CEST 2004 - tiwai@suse.de
+
+- fixed segfault by signal.
+- fixed segfault when no shm access is available.
+- use different socket files for each pid (bug #45816).
+
+-------------------------------------------------------------------
+Thu Aug 12 12:24:36 CEST 2004 - ro@suse.de
+
+- added libpng to neededforbuild (for doxygen)
+
+-------------------------------------------------------------------
+Fri Aug  6 11:31:43 CEST 2004 - adrian@suse.de
+
+- revert linking of libjack against libreadline and libncurses.
+  it was introduced due to a broken configure check and is only
+  needed for one example binary
+
+-------------------------------------------------------------------
+Thu Aug  5 18:35:39 CEST 2004 - tiwai@suse.de
+
+- updated to 0.98.1 with NPTL fixes.
+- regenerated the last ppc patch for the newer version.
+
+-------------------------------------------------------------------
+Sun Mar  7 12:01:51 CET 2004 - meissner@suse.de
+
+- Do not use the strange exception handler construct on ppc/linux,
+  it does not work on Linux and breaks ppc64.
+
+-------------------------------------------------------------------
+Mon Feb 16 19:22:42 CET 2004 - tiwai@suse.de
+
+- build as non-root.
+
+-------------------------------------------------------------------
+Wed Jan 14 19:22:55 CET 2004 - tiwai@suse.de
+
+- updated to version 0.94.0.
+
+-------------------------------------------------------------------
+Tue Nov 18 12:13:30 CET 2003 - tiwai@suse.de
+
+- updated to version 0.90.0.
+
+-------------------------------------------------------------------
+Thu Aug 28 15:34:48 CEST 2003 - tiwai@suse.de
+
+- better fix (define explicitly the value) for the last one.
+- fixed the remaining bug of half-duplex mode.
+- fixed the build on s390.
+
+-------------------------------------------------------------------
+Thu Aug 28 14:46:05 CEST 2003 - tiwai@suse.de
+
+- fixed the definition of UINT32_MAX for C++.
+
+-------------------------------------------------------------------
+Wed Aug 27 15:12:26 CEST 2003 - tiwai@suse.de
+
+- use C99 style ints.
+- fixed the transport bug.
+- fixed the bug of alsa driver in half-duplex mode.
+
+-------------------------------------------------------------------
+Mon Aug 25 16:00:04 CEST 2003 - tiwai@suse.de
+
+- updated to 0.79.0.
+  patches have been integrated.
+
+-------------------------------------------------------------------
+Fri Aug 15 15:58:09 CEST 2003 - tiwai@suse.de
+
+- fixed the occasional crash with ALSA plug layer.
+- support asymmetric pcm streams.
+
+-------------------------------------------------------------------
+Mon Aug 11 17:16:50 CEST 2003 - tiwai@suse.de
+
+- updated to version 0.75.0.
+
+-------------------------------------------------------------------
+Tue Jul 22 20:26:20 CEST 2003 - tiwai@suse.de
+
+- updated to version 0.74.1.
+
+-------------------------------------------------------------------
+Wed Jul  2 16:18:18 CEST 2003 - tiwai@suse.de
+
+- updated to version 0.72.4.
+
+-------------------------------------------------------------------
+Thu Jun 12 07:45:13 CEST 2003 - kukuk@suse.de
+
+- Add docdir to filelist
+
+-------------------------------------------------------------------
+Wed May 28 15:04:24 CEST 2003 - ro@suse.de
+
+- add man-pages and .la files to devel filelist
+
+-------------------------------------------------------------------
+Tue Apr  1 13:42:29 CEST 2003 - tiwai@suse.de
+
+- updated to ver.0.66.3.
+
+-------------------------------------------------------------------
+Tue Mar 11 17:36:46 CET 2003 - tiwai@suse.de
+
+- added README.SuSE and README.SuSE_de to explain the real-time
+  mode of jack.
+
+-------------------------------------------------------------------
+Thu Feb 13 10:08:39 CET 2003 - pthomas@suse.de
+
+- Compile with all usefull warn options.
+- Fix all places where the compiler warns, including
+  disabling ununsed static functions by '#if 0'.
+
+-------------------------------------------------------------------
+Mon Feb 10 17:40:21 CET 2003 - tiwai@suse.de
+
+- updated to version 0.50.0.
+  all patches have been integrated to the mainstream.
+
+-------------------------------------------------------------------
+Fri Jan 17 15:37:31 CET 2003 - tiwai@suse.de
+
+- updated to ver.0.44.0.
+- added *.la file to the devel package.
+- removed double document files.
+- removed plugins from provides.
+
+-------------------------------------------------------------------
+Tue Jan 14 12:31:53 CET 2003 - nadvornik@suse.cz
+
+- fixed multi-line string literals
+
+-------------------------------------------------------------------
+Thu Nov 28 19:45:42 CET 2002 - aj@suse.de
+
+- Add gcc-c++ to needforbuild since the package needs a C++ preprocessor.
+
+-------------------------------------------------------------------
+Tue Nov 26 13:00:26 CET 2002 - tiwai@suse.de
+
+- updated ver.0.40.1.
+  libsndfile patch was removed.
+- added %run_ldconfig.
+
+-------------------------------------------------------------------
+Wed Aug  7 18:33:34 CEST 2002 - tiwai@suse.de
+
+- jack ver.0.37.2.  including minor bug fixes for alsa.
+
+-------------------------------------------------------------------
+Wed Jun 26 12:40:43 CEST 2002 - tiwai@suse.de
+
+- fixed an example client for the new libsndfile.
+
+-------------------------------------------------------------------
+Tue Jun 25 13:06:37 CEST 2002 - tiwai@suse.de
+
+- updated to version 0.34.0.  (cvs 2002.06.25)
+- added doxygen to neededtobuild to generate references.
+
+-------------------------------------------------------------------
+Tue Apr 16 17:25:57 CEST 2002 - tiwai@suse.de
+
+- updated to version 0.26.1.
+- fixed build on non-intel architectures again.
+
+-------------------------------------------------------------------
+Thu Apr 11 11:21:50 CEST 2002 - tiwai@suse.de
+
+- fixed build on non-intel architectures.
+- fixed compile warnings with gcc3.1.
+
+-------------------------------------------------------------------
+Wed Apr 10 15:28:16 CEST 2002 - tiwai@suse.de
+
+- initial version: cvs at 2002.04.10.
+

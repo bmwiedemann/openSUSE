@@ -1,0 +1,217 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:56:10 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Sep  5 13:33:26 UTC 2018 - dmueller@suse.com
+
+- update to 0.9.3:
+  * Improve handling of :module: in wsme documenters
+  * Change flask restful module name
+  * fix a typo in documentation
+  * Fix (some) tests for modern flask and pep8
+
+-------------------------------------------------------------------
+Fri Aug 25 15:19:25 UTC 2017 - jengelh@inai.de
+
+- Trim sensationalist wording.
+
+-------------------------------------------------------------------
+Fri Aug 25 12:18:37 UTC 2017 - tbechtold@suse.com
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Thu Aug 24 14:44:34 UTC 2017 - tbechtold@suse.com
+
+- update to 0.9.2:
+  * Remove white space between print ()
+  * Fix: Sphinx extension on Python3
+  * Fix the setup.cfg metadata
+  * Print exceptions raised from from_param methods
+  * Fix pep8 issues and switch to py35 in tox.ini
+  * [doc] Complete doc requirements
+  * Add the 0.8.0 changes list
+  * wsattr.__set__() catchs TypeError
+  * Fix jenkins failure
+  * Port test_cornice to Python 3
+  * Change the repositories from stackforge to openstack
+  * Update .gitreview for new namespace
+- convert to singlespec
+
+-------------------------------------------------------------------
+Wed Sep  9 07:12:25 UTC 2015 - tbechtold@suse.com
+
+- update to 0.8.0:
+  * Return 400, if the query string is not a dict
+  * rest: return 415 when content-type is invalid
+  * json: raise ValueError invalid list or dict
+  * Fixes exception path with the datatype is a Object
+  * Update README formatting for release tools
+  * Set up dependencies for cross-tests
+
+-------------------------------------------------------------------
+Mon Jun  1 13:35:06 UTC 2015 - tbechtold@suse.com
+
+- update to 0.7.0:
+  * Ensure UserType objects are converted to basetype
+  * Convert built-in types when passed as strings
+  * Multiple protocol accept or content-type matching
+  * Raise an InvalidInput if you get a ValueError from JSON data
+  * Remove unsupported python versions from setup.cfg
+  * Clean up setup.py and add requirements.txt
+  * Add full MIT license
+  * Fix i18n when formatting exception
+  * Cleanup up logging
+  * Make it possible to use the Response to return a non-default return type
+  * several fixes for SOAP protocol
+- Update Requires and BuildRequires according to requirements.txt
+
+-------------------------------------------------------------------
+Thu Jan  8 13:26:01 UTC 2015 - tbechtold@suse.com
+
+- Update to version 0.6.4:
+  * Include tests in the source distribution (so pecan can download and run them
+  * Disable universal wheels
+  * Fix passing Dict/Array based UserType as params
+  * Document next version changes
+  * Allow non-auto-registered complex type
+  * Make the flask adapter working with flask.ext.restful
+  * Avoid Sphinx 1.3x in the tests
+  * Doc: status= -> status_code=
+  * Minor documentation edits
+  * Fix tox configuration
+  * Add support for manually specifying supported content types in @wsmeexpose
+  * Fix broken sphinx tests
+  * fix errors/warnings in tests
+  * Use APIPATH_MAXLEN from the right module
+
+-------------------------------------------------------------------
+Mon Sep 15 04:56:46 UTC 2014 - tbechtold@suse.com
+
+- Update to version 0.6.1:
+  * one more update for 0.6.1 change list
+  * Fix error: variable 'kw' referenced before assignment
+  * Fix pep8 errors
+  * Update change list for 0.6.1 release
+  * Fix default handling for zero values
+  * Fixing spelling mistakes
+  * A proper check of UuidType
+  * pecan: cleanup, use global vars and staticmethod
+  * args_from_args() to work with an instance of UserType
+
+-------------------------------------------------------------------
+Thu Feb  6 16:16:01 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.6:
+  + Add 'readonly' parameter to wsattr
+  + Fix typos in documents and comments
+  + Support dynamic types
+  + Support building wheels (PEP-427)
+  + Fix a typo in the types documentation
+  + Add IntegerType and some classes for validation
+  + Use assertRaises() for negative tests
+  + Remove the duplicated error message from Enum
+  + Drop description from 403 flask test case
+  + Fix SyntaxWarning under Python 3
+- New dependency on python-ipaddr
+
+-------------------------------------------------------------------
+Tue Oct 22 14:12:14 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.5b6:
+  + Add improved support for HTTP response codes in cornice apps.
+  + Handle mandatory attributes
+  + Fix error code returned when None is used in an Enum
+  + Handle list and dict for body type in REST protocol
+  + Fix Sphinx for Python 3
+  + Add custom error code to ClientSideError
+  + Return a ClientSideError if unable to convert data
+  + Validate body when using Pecan
+- BuildRequire setuptools instead of distribute after upstream merge
+
+-------------------------------------------------------------------
+Wed Sep 18 14:54:07 UTC 2013 - speilicke@suse.com
+
+- (Build)Require python-ordereddict on SP3
+
+-------------------------------------------------------------------
+Tue Sep 17 18:51:10 UTC 2013 - dmueller@suse.com
+
+- update to 0.5b5:
+  * More packaging fixes.
+  * Allow non-default status code return with the pecan adapter
+  * Fix returning objects with object attributes set to None on rest-json
+  * Allow error details to be set on the Response object (experimental !).
+  * Fix: Content-Type header is not set anymore when the return type is None
+    on the pecan adapter.
+  * Use pbr instead of d2to1 (Julien Danjou).
+  * six >= 1.4.0 support (Julien Danjou).
+- Drop six-14-support.diff: Merged upstream
+
+-------------------------------------------------------------------
+Mon Sep  2 16:29:37 UTC 2013 - dmueller@suse.com
+
+- add six-14-support.diff:
+  * Add support for Six 1.4+
+
+-------------------------------------------------------------------
+Mon Apr 29 11:27:37 UTC 2013 - dmueller@suse.com
+
+- update to 0.5b2: 
+  * Changed the way datas of complex types are stored. In previous
+  versions, an attribute was added to the type for each attribute,
+  its name being the attribute name prefixed with ‘_’.
+  Starting with this version, a single attribute _wsme_dataholder
+  is added to the instance.
+  * Add a special type ‘HostRequest’ that allow a function to 
+  ask for the host framework request object in its arguments.
+  * Pecan adapter: Debug mode (which returns the exception 
+  tracebacks to the client) can be enabled by the pecan 
+  application configuration.
+  * Fix: the cornice adapter was not usable.
+  * Fix: Submodules of wsmeext were missing in the packages.
+  * Fix: The demo app was still depending on the WSME-Soap package (which has been merged into WSME in 0.5b1).
+  * Fix: A function with only on ‘body’ parameter would fail when being called.
+  * Fix: Missing arguments were poorly reported by the frameworks adapters.
+
+-------------------------------------------------------------------
+Fri Feb 22 12:40:02 UTC 2013 - saschpe@suse.de
+
+- Update to version 0.5b1: 
+  + Introduce a new kind of adapters that rely on the framework routing.
+    Adapters are provided for Pecan, TurboGears and cornice.
+  + Reorganised the rest protocol implementation to ease the implementation
+    of adapters that rely only on the host framework routing system.
+  + The default rest @expose decorator does not wrap the decorated function
+    anymore. If needed to expose a same function several times, a parameter
+    multiple_expose=True has been introduced.
+  + Remove the wsme.release module
+  + Fix == operator on ArrayType
+  + Adapted the wsme.sphinxext module to work with the function exposed
+    by the wsme.pecan adapter.
+  + Allow promotion of int to float on float attributes (Doug Hellman)
+  + Add a samples_slot option to the .. autotype directive to choose where
+    the data samples whould be inserted
+  + Add sample() to ArrayType and DictType
+  + New syntax for object arrays as GET parameters, without brackets.
+    Ex: ?o.f1=a&o.f1=b&o.f2=c&o.f2=d is an array of two objects:
+    [{‘f1’: ‘a’, ‘f2’: ‘c’]}, {‘f1’: ‘b’, ‘f2’: ‘d’]}.
+  + @signature (and its @wsexpose frontends) has a new parameter: ignore_extra_args.
+  + Fix boolean as input type support in the soap implementation
+  + Fix empty/nil strings distinction in soap
+  + Improved unittests code coverage.
+  + Ported the soap implementation to python 3.
+  + Moved non-core features (adapters, sphinx extension) to the wsmeext module.
+  + Change the GET parameter name for passing the request body as a parameter
+    is now from ‘body’ to ‘__body__’
+  + The soap, extdirect and sqlalchemy packages have been merged into the
+    main package.
+  + Changed the documentation theme to “Cloud”.
+
+-------------------------------------------------------------------
+Wed Jan 16 13:22:39 UTC 2013 - saschpe@suse.de
+
+- Initial version
+

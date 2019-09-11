@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon Jun 17 06:43:31 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v0.4.1:
+  - create_directory: do not redeclare variable buf
+  - fuse-overlayfs: accept option "dev"
+  - fuse-overlayfs: add check to readdir for the node parent
+  - fuse-overlayfs: add cleanup for layers
+  - fuse-overlayfs: drop usage of static arrays for paths
+  - fuse-overlayfs: refactor some xattrs common code
+  - fuse-overlayfs: start using GCC autocleanup
+  - fuse-overlayfs: use cleanup function for initializing node
+  - fuse-overlays: fix interaction of unlink(2) with readdir(2)
+  - main: add missing debug messages
+  - main: do the unlink only after we created the temporary file
+  - main: fix a fd leak
+  - main: ignore EINVAL when copying xattrs
+  - setattr: use fd from fi->fh for ftruncate() whenever possible
+
+-------------------------------------------------------------------
+Thu Mar 28 20:38:29 UTC 2019 - Flavio Castelli <fcastelli@suse.com>
+
+- Create initial package for version 0.3

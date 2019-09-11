@@ -1,0 +1,207 @@
+-------------------------------------------------------------------
+Mon Mar  4 13:32:47 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Add high-resolution icon.
+  + Bugs fixed: glgo#GNOME/hitori#6, glgo#GNOME/hitori!16,
+    glgo#GNOME/hitori!17, glgo#GNOME/hitori!19.
+  + Updated translations.
+- Add itstool BuildRequires: New dependency.
+- Add fdupes BuildRequires and macro, remove duplicate files.
+
+-------------------------------------------------------------------
+Wed Feb 20 17:27:33 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.0:
+  + Migrated to Meson.
+  + Bugs fixed:
+    - Retire app menu.
+    - Migrate to Meson.
+    - Use G_DECLARE_FINAL_TYPE() to declare type.
+    - snap: Add snap build configuration.
+    - Port README to Markdown.
+    - docs: Reformat NEWS to be valid Markdown.
+  + Updated translations.
+- Switch to meson build system, add meson BuildRequires and macros.
+- Stop handling icon_theme_cache_post(un),
+  desktop_database_post(un) and glib2_gsettings_schema_post(un) in
+  post(un) and drop glib2_gsettings_schema_requires.
+- Drop yelp-tools and hicolor-icon-theme BuildRequires: No longer
+  needed.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:33:28 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Oct  5 11:48:29 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.22.4:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May 12 10:36:11 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.22.3:
+  + Minor rendering improvements (bgo#732776).
+  + Add flatpak manifests for nightly builds.
+  + Drop use of deprecated GTK+ API (no dependency change).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  6 10:28:53 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.22.2:
+  + Add more build-time checks (this adds an optional build-time
+    dependency on desktop-file-validate).
+  + Updated translations.
+- Add explicit desktop-file-utils BuildRequires, it is already
+  pulled in for us, but since upstream now checks for it, we should
+  list it.
+
+-------------------------------------------------------------------
+Tue Feb 14 19:06:14 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Port from intltool to gettext (this drops the intltool
+    dependency).
+  + Add various build-time checks (this adds an optional build-time
+    dependency on xmllint).
+  + Updated translations.
+- Drop intltool BuildRequires following upstreams port.
+
+-------------------------------------------------------------------
+Tue Sep 20 15:44:11 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.0:
+  + Various AppData fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 20:19:42 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Various AppData fixes.
+  + Fix a GTK+ warning about styling with newer GTK+ versions.
+  + Updated translations.
+- Drop hitori-old-icon-name.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Dec 23 14:07:25 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.19.1:
+  + Rename icon, desktop and appdata files to use
+    ‘org.gnome.Hitori’ prefix.
+  + Remove dependency on gnome-common in favour of autoconf-archive
+    (or m4-common).
+- Add hitori-old-icon-name.patch: Fix references to old icon names.
+
+-------------------------------------------------------------------
+Tue Nov 24 09:40:28 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.2:
+  + Fix build error with Clang.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May  2 20:19:38 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.1:
+  + Updated symbolic icon.
+
+-------------------------------------------------------------------
+Tue Apr 14 16:03:58 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.0:
+  + Port to GResource for UI and CSS.
+  + Minor menu tweaks.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  5 01:31:17 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.14.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 16 10:38:28 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2.1:
+  + Revert string freeze break.
+
+-------------------------------------------------------------------
+Sun Dec 14 08:00:55 UTC 2014 - badshah400@gmail.com
+
+- Update to version 3.14.2:
+  + data: Add <summary> element to the AppData file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 13 19:41:29 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 22 08:45:32 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0.1:
+  + Re-release: autoreconf with up-to-date appstream-glib; fixes
+    install location for hitori.appdata.xml.
+
+-------------------------------------------------------------------
+Mon Sep 22 08:21:49 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 16 23:45:13 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.92:
+  + Minor UI and translation updates.
+  + Minor build system updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 19 07:37:30 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Follow guidelines for including license info in help.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 25 21:29:23 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + Updated translations.
+- Add glib_schema macros, as we now install a schema.xml - file.
+
+-------------------------------------------------------------------
+Wed Jul  9 18:20:18 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.4.5:
+  + Minor fixes to the board rendering and timer.
+- Changes from version 0.4.4:
+  + Fix various small memory leaks.
+  + Fix behaviour of the redo stack.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun May  4 15:45:47 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.4.3:
+  + Updated translations.
+- Changes from version 0.4.2:
+  + Add an AppData file.
+  + Updated translations.
+- Changes from version 0.4.1:
+  + Fix timer pausing on winning a game.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  6 21:53:48 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 0.4.0.
+

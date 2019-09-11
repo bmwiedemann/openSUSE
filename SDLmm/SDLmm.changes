@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Thu Jan  8 11:04:11 UTC 2015 - jengelh@inai.de
+
+- Improve package summary and description. Drop --with-pic which
+  is enabled implicitly anyway.
+
+-------------------------------------------------------------------
+Mon Nov 11 04:19:24 UTC 2013 - jengelh@inai.de
+
+- Set RPM groups to the same values as on the main SDL packages
+
+-------------------------------------------------------------------
+Tue Nov 15 13:11:00 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Sep 17 10:24:52 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Fri Sep 16 18:26:52 UTC 2011 - jengelh@medozas.de
+
+- Add libSDLmm-devel to baselibs
+- Remove redundant tags
+
+-------------------------------------------------------------------
+Sat Jul  2 14:54:23 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+
+-------------------------------------------------------------------
+Wed Jan 27 02:46:29 CET 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Wed Oct  7 14:52:45 CEST 2009 - prusnak@suse.cz
+
+- fix provides and obsoletes [bnc#544957]
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Wed May 20 17:22:16 CEST 2009 - prusnak@suse.cz
+
+- follow Shared Library Policy
+
+-------------------------------------------------------------------
+Sat Jul  5 18:10:32 CEST 2008 - crrodriguez@suse.de
+
+- remove unusable static libraries
+- cleanup buildRequires and -devel package dependencies
+
+-------------------------------------------------------------------
+Sun Jul 22 19:02:02 CEST 2007 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Fri Mar  2 12:40:00 CET 2007 - prusnak@suse.cz
+
+- cleaned spec file
+
+-------------------------------------------------------------------
+Mon Oct 16 01:15:47 CEST 2006 - schwab@suse.de
+
+- Use install-exec-hook instead of install-hook.
+
+-------------------------------------------------------------------
+Wed Sep 13 14:59:33 CEST 2006 - nadvornik@suse.cz
+
+- fixed Requires of devel subpackage [#192736]
+- moved .la file to devel subpackage
+
+-------------------------------------------------------------------
+Fri Jan 27 10:50:05 CET 2006 - nadvornik@suse.cz
+
+- fixed BuildRequires and Requires of devel subpackage
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov  2 10:15:02 CET 2004 - pth@suse.de
+
+- Get rid of acconfig.h
+- Call autoreconf from spec
+- Fix quoting in sdlmm.m4
+
+-------------------------------------------------------------------
+Sat Jan 10 17:09:17 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue May 28 13:03:23 CEST 2002 - nadvornik@suse.cz
+
+- fixed rpath for lib64 in sdlmm-config
+
+-------------------------------------------------------------------
+Fri May 10 15:46:01 CEST 2002 - ro@suse.de
+
+- libdir fixed
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:09 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Tue Jan 22 18:23:53 CET 2002 - ro@suse.de
+
+- changed neededforbuild <kdelibs-artsd> to <kdelibs3-artsd>
+
+-------------------------------------------------------------------
+Mon Nov 26 11:39:07 CET 2001 - nadvornik@suse.cz
+
+- new package, version 0.1.8
+

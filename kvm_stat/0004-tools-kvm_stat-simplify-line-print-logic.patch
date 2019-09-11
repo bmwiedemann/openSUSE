@@ -1,0 +1,83 @@
+From 78c117092b5a4a9d3eb8c3127774caed2569eb14 Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Date: Wed, 7 Jun 2017 21:08:29 +0200
+Subject: [PATCH 04/43] tools/kvm_stat: simplify line print logic
+
+Simplify line print logic for header and data lines in interactive mode
+as previously suggested by Radim.
+While at it, add a space between the first two columns to avoid the
+total bleeding into the event name.
+Furthermore, for column 'Current', differentiate between no events being
+reported (empty 'Current' column) vs the case where events were reported
+but the average was rounded down to zero ('0' in 'Current column), for
+the folks who appreciate the difference.
+Finally: Only skip events which were not reported at all yet, instead of
+events that don't have a value in the current interval.
+Considered using constants for the field widths in the format strings.
+However, that would make things a bit more complicated, and considering
+that there are only two places where output happens, I figured it isn't
+worth the trouble.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 5a7d11f8dc59ddb36e89dca42a2526ea25914def)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 26 +++++++-------------------
+ 1 file changed, 7 insertions(+), 19 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index d600d2c304e3..3d40809a3ff2 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -887,8 +887,6 @@ class Stats(object):
+                 self.values[key] = (newval, newdelta)
+         return self.values
+ 
+-LABEL_WIDTH = 40
+-NUMBER_WIDTH = 10
+ DELAY_INITIAL = 0.25
+ DELAY_REGULAR = 3.0
+ MAX_GUEST_NAME_LEN = 48
+@@ -970,13 +968,8 @@ class Tui(object):
+             if len(regex) > MAX_REGEX_LEN:
+                 regex = regex[:MAX_REGEX_LEN] + '...'
+             self.screen.addstr(1, 17, 'regex filter: {0}'.format(regex))
+-        self.screen.addstr(2, 1, 'Event')
+-        self.screen.addstr(2, 1 + LABEL_WIDTH + NUMBER_WIDTH -
+-                           len('Total'), 'Total')
+-        self.screen.addstr(2, 1 + LABEL_WIDTH + NUMBER_WIDTH + 7 -
+-                           len('%Total'), '%Total')
+-        self.screen.addstr(2, 1 + LABEL_WIDTH + NUMBER_WIDTH + 7 + 8 -
+-                           len('Current'), 'Current')
++        self.screen.addstr(2, 1, '%-40s %10s%7s %7s' %
++                           ('Event', 'Total', '%Total', 'Current'))
+         self.screen.addstr(4, 1, 'Collecting data...')
+         self.screen.refresh()
+ 
+@@ -1001,16 +994,11 @@ class Tui(object):
+             values = stats[key]
+             if not values[0] and not values[1]:
+                 break
+-            col = 1
+-            self.screen.addstr(row, col, key)
+-            col += LABEL_WIDTH
+-            self.screen.addstr(row, col, '%10d' % (values[0],))
+-            col += NUMBER_WIDTH
+-            self.screen.addstr(row, col, '%7.1f' % (values[0] * 100 / total,))
+-            col += 7
+-            if values[1] is not None:
+-                self.screen.addstr(row, col, '%8d' %
+-                                   round(values[1] / sleeptime))
++            if values[0] is not None:
++                cur = int(round(values[1] / sleeptime)) if values[1] else ''
++                self.screen.addstr(row, 1, '%-40s %10d%7.1f %7s' %
++                                   (key, values[0], values[0] * 100 / total,
++                                    cur))
+             row += 1
+         self.screen.refresh()
+ 
+-- 
+2.12.3
+

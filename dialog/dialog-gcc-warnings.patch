@@ -1,0 +1,43 @@
+Index: dialog-1.3-20160209/dialog.h
+===================================================================
+--- dialog-1.3-20160209.orig/dialog.h
++++ dialog-1.3-20160209/dialog.h
+@@ -43,6 +43,23 @@
+ #include <string.h>
+ #include <signal.h>	/* fork() etc. */
+ #include <math.h>	/* sqrt() */
++#include <sys/ioctl.h>	/* struct winsize */
++
++#ifndef GCC_NORETURN
++#if defined(__GNUC__)
++#define GCC_NORETURN	__attribute__((noreturn))
++#else
++#define GCC_NORETURN /*nothing*/
++#endif
++#endif
++
++#ifndef GCC_UNUSED
++#if defined(__GNUC__)
++#define GCC_UNUSED	__attribute__((unused))
++#else
++#define GCC_UNUSED /*nothing*/
++#endif
++#endif
+ 
+ /* header conflict with Solaris xpg4 versus <sys/regset.h> */
+ #if defined(ERR) && (ERR == 13)
+@@ -99,14 +116,6 @@
+ #define GCC_PRINTFLIKE(fmt,var) /*nothing*/
+ #endif
+ 
+-#ifndef GCC_NORETURN
+-#define GCC_NORETURN /*nothing*/
+-#endif
+-
+-#ifndef GCC_UNUSED
+-#define GCC_UNUSED /*nothing*/
+-#endif
+-
+ #ifndef HAVE_WGET_WCH
+ #undef USE_WIDE_CURSES
+ #endif

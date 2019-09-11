@@ -1,0 +1,307 @@
+From e5582ec970aa61006167e70d2fb5bdd5bcfc8254 Mon Sep 17 00:00:00 2001
+From: Mike Gorse <mgorse@suse.com>
+Date: Thu, 22 Oct 2015 15:51:08 -0500
+Subject: [PATCH] gpk-update-viewer: offer to install signatures if needed
+
+https://bugzilla.gnome.org/show_bug.cgi?id=756991
+---
+diff -urp gnome-packagekit-3.21.91.orig/src/gpk-update-viewer.c gnome-packagekit-3.21.91/src/gpk-update-viewer.c
+--- gnome-packagekit-3.21.91.orig/src/gpk-update-viewer.c	2016-08-25 03:30:50.000000000 -0500
++++ gnome-packagekit-3.21.91/src/gpk-update-viewer.c	2016-09-07 15:30:15.846880448 -0500
+@@ -60,6 +60,7 @@ static	GCancellable		*cancellable = NULL
+ static	GSettings		*settings = NULL;
+ static	GPtrArray		*update_array = NULL;
+ static	GtkBuilder		*builder = NULL;
++static	GtkBuilder		*builder_signature = NULL;
+ static	GtkTreeStore		*array_store_updates = NULL;
+ static	GtkTextBuffer		*text_buffer = NULL;
+ static	PkControl		*control = NULL;
+@@ -71,6 +72,10 @@ static	GtkWidget		*info_mobile_label = N
+ static	GtkApplication		*application = NULL;
+ static	PkBitfield		 roles = 0;
+ static	gboolean		 have_available_distro_upgrades = FALSE;
++static GtkWindow *current_window = NULL;
++static PkResults *last_results;
++static gboolean need_signature_for_distro = FALSE;
++static gboolean need_signature_for_update = FALSE;
+ 
+ enum {
+ 	GPK_UPDATES_COLUMN_TEXT,
+@@ -2264,6 +2269,168 @@ gpk_update_viewer_packages_to_ids (GPtrA
+ }
+ 
+ static void
++gpk_update_viewer_get_distro_upgrades_cb (PkClient *client, GAsyncResult *res, gpointer user_data);
++
++static void
++gpk_update_viewer_install_signatures_ready_cb (GObject *source_object, GAsyncResult *res, gpointer data)
++{
++	PkResults *results = NULL;
++	GError *error = NULL;
++	PkExitEnum exit_enum;
++
++	/* get the results */
++	results = pk_client_generic_finish (PK_CLIENT(task), res, &error);
++	if (results == NULL) {
++		/* TRANSLATORS: the PackageKit request did not complete, and it did not send an error */
++		gpk_update_viewer_error_dialog (_("Could not get updates"), NULL, error->message);
++		g_error_free (error);
++		return;
++	}
++
++	/* get exit code */
++	exit_enum = pk_results_get_exit_code (results);
++
++	/* need untrusted */
++	if (exit_enum != PK_EXIT_ENUM_SUCCESS) {
++		PkError *error_code = NULL;
++		error_code = pk_results_get_error_code (results);
++		/* TODO: convert the PkErrorEnum to a PK_CLIENT_ERROR_* enum */
++		g_set_error (&error,
++			     PK_CLIENT_ERROR,
++			     PK_CLIENT_ERROR_FAILED, "failed to install signature: %s", pk_error_get_details (error_code));
++		g_object_unref (error_code);
++		return;
++	}
++
++	/* now try the action again */
++	if (need_signature_for_update)
++		gpk_update_viewer_get_new_update_array ();
++
++	if (need_signature_for_distro)
++		pk_client_get_distro_upgrades_async (PK_CLIENT(task), cancellable,
++						     (PkProgressCallback) gpk_update_viewer_progress_cb, NULL,
++						     (GAsyncReadyCallback) gpk_update_viewer_get_distro_upgrades_cb, NULL);
++
++	need_signature_for_distro = FALSE;
++	need_signature_for_update = FALSE;
++	g_object_unref (results);
++}
++
++static void
++gpk_update_viewer_install_signatures (PkResults *results)
++{
++	PkRepoSignatureRequired *item;
++	PkSigTypeEnum type;
++	GError *error = NULL;
++	gchar *key_id = NULL;
++	gchar *package_id = NULL;
++	GPtrArray *array = NULL;
++
++	/* get results */
++	array = pk_results_get_repo_signature_required_array (results);
++	if (array == NULL || array->len == 0) {
++		g_set_error (&error,
++			     PK_CLIENT_ERROR,
++			     PK_CLIENT_ERROR_FAILED, "no signatures to install");
++		return;
++	}
++
++	/* did we get more than result? */
++	if (array->len > 1) {
++		/* TODO: support more than one signature */
++		g_set_error (&error,
++			     PK_CLIENT_ERROR,
++			     PK_CLIENT_ERROR_FAILED, "more than one signature to install");
++		g_ptr_array_unref (array);
++		return;
++	}
++
++	/* get first item of data */
++	item = g_ptr_array_index (array, 0);
++	g_object_get (item,
++		      "type", &type,
++		      "key-id", &key_id,
++		      "package-id", &package_id,
++		      NULL);
++
++	/* do new async method */
++	pk_client_install_signature_async (PK_CLIENT(task), type, key_id, package_id,
++					   cancellable, (PkProgressCallback) gpk_update_viewer_progress_cb, NULL,
++                                           gpk_update_viewer_install_signatures_ready_cb, NULL);
++
++	g_free (key_id);
++	g_free (package_id);
++	g_ptr_array_unref (array);
++}
++
++static void
++gpk_update_viewer_key_question (PkResults *results)
++{
++	GPtrArray *array;
++	GtkWidget *widget;
++	gchar *printable = NULL;
++	gchar *package_id = NULL;
++	gchar *repository_name = NULL;
++	gchar *key_url = NULL;
++	gchar *key_userid = NULL;
++	gchar *key_id = NULL;
++	PkRepoSignatureRequired *item;
++  const gchar *help_id;
++	GtkWindow *main_window;
++
++	/* get data */
++	array = pk_results_get_repo_signature_required_array (results);
++	if (array->len != 1) {
++		g_warning ("array length %i, aborting", array->len);
++		goto out;
++	}
++
++	/* only one item supported */
++	item = g_ptr_array_index (array, 0);
++	g_object_get (item,
++		      "package-id", &package_id,
++		      "repository-name", &repository_name,
++		      "key-url", &key_url,
++		      "key-userid", &key_userid,
++		      "key-id", &key_id,
++		      NULL);
++
++	/* show correct text */
++	widget = GTK_WIDGET (gtk_builder_get_object (builder_signature, "label_name"));
++	gtk_label_set_label (GTK_LABEL (widget), repository_name);
++	widget = GTK_WIDGET (gtk_builder_get_object (builder_signature, "label_url"));
++	gtk_label_set_label (GTK_LABEL (widget), key_url);
++	widget = GTK_WIDGET (gtk_builder_get_object (builder_signature, "label_user"));
++	gtk_label_set_label (GTK_LABEL (widget), key_userid);
++	widget = GTK_WIDGET (gtk_builder_get_object (builder_signature, "label_id"));
++	gtk_label_set_label (GTK_LABEL (widget), key_id);
++
++	printable = pk_package_id_to_printable (package_id);
++	widget = GTK_WIDGET (gtk_builder_get_object (builder_signature, "label_package"));
++	gtk_label_set_label (GTK_LABEL (widget), printable);
++
++	/* show window */
++	current_window = GTK_WINDOW(gtk_builder_get_object (builder_signature, "dialog_gpg"));
++	main_window = GTK_WINDOW(gtk_builder_get_object (builder, "dialog_updates"));
++	gtk_window_set_transient_for (current_window, main_window);
++		gtk_window_set_modal (current_window, TRUE);
++	/* this is a modal popup, so don't show a window title */
++	gtk_window_set_title (current_window, "");
++	help_id = "gpg-signature";
++	last_results = g_object_ref (results);
++	gtk_widget_show (GTK_WIDGET (current_window));
++
++out:
++	g_free (printable);
++	g_free (package_id);
++	g_free (repository_name);
++	g_free (key_url);
++	g_free (key_userid);
++	g_free (key_id);
++	g_ptr_array_unref (array);
++}
++
++static void
+ gpk_update_viewer_get_updates_cb (PkClient *client, GAsyncResult *res, gpointer user_data)
+ {
+ 	g_autoptr(PkResults) results = NULL;
+@@ -2283,6 +2450,7 @@ gpk_update_viewer_get_updates_cb (PkClie
+ 	g_autoptr(PkError) error_code = NULL;
+ 	GtkWindow *window;
+ 	PkInfoEnum info;
++	PkExitEnum exit_enum;
+ 
+ 	/* get the results */
+ 	results = pk_client_generic_finish (client, res, &error);
+@@ -2292,6 +2460,14 @@ gpk_update_viewer_get_updates_cb (PkClie
+ 		return;
+ 	}
+ 
++	exit_enum = pk_results_get_exit_code(results);
++	if (exit_enum == PK_EXIT_ENUM_KEY_REQUIRED) {
++		need_signature_for_update = TRUE;
++		if (!need_signature_for_distro)
++			gpk_update_viewer_key_question (results);
++		return;
++	}
++
+ 	/* check error code */
+ 	error_code = pk_results_get_error_code (results);
+ 	if (error_code != NULL) {
+@@ -2644,6 +2820,7 @@ gpk_update_viewer_get_distro_upgrades_cb
+ 	GtkWidget *widget;
+ 	g_autoptr(PkError) error_code = NULL;
+ 	GtkWindow *window;
++	PkExitEnum exit_enum;
+ 
+ 	/* get the results */
+ 	results = pk_client_generic_finish (client, res, &error);
+@@ -2653,6 +2830,14 @@ gpk_update_viewer_get_distro_upgrades_cb
+ 		return;
+ 	}
+ 
++	exit_enum = pk_results_get_exit_code(results);
++	if (exit_enum == PK_EXIT_ENUM_KEY_REQUIRED) {
++		need_signature_for_distro = TRUE;
++		if (!need_signature_for_update)
++			gpk_update_viewer_key_question (results);
++		return;
++	}
++
+ 	/* check error code */
+ 	error_code = pk_results_get_error_code (results);
+ 	if (error_code != NULL) {
+@@ -2736,6 +2921,53 @@ gpk_update_viewer_activate_cb (GtkApplic
+ }
+ 
+ static void
++gpk_update_viewer_button_decline_cb (GtkWidget *widget, gpointer data)
++{
++	gtk_widget_hide (GTK_WIDGET(current_window));
++	current_window = NULL;
++}
++
++static void
++gpk_update_viewer_button_accept_cb (GtkWidget *widget, gpointer data)
++{
++	gtk_widget_hide (GTK_WIDGET(current_window));
++	current_window = NULL;
++	gpk_update_viewer_install_signatures (last_results);
++	g_object_unref (last_results);
++}
++
++static void
++gpk_update_viewer_setup_dialog_signature ()
++{
++	GtkWidget *widget;
++	guint retval;
++	GError *error = NULL;
++
++	/* get UI */
++	builder_signature = gtk_builder_new ();
++	retval = gtk_builder_add_from_file (builder_signature, PKGDATADIR "/gpk-signature.ui", &error);
++	if (retval == 0) {
++		g_warning ("failed to load ui: %s", error->message);
++		g_error_free (error);
++		return;
++	}
++
++	/* connect up default actions */
++	widget = GTK_WIDGET (gtk_builder_get_object (builder_signature, "dialog_gpg"));
++	g_signal_connect (widget, "delete_event", G_CALLBACK (gpk_update_viewer_button_decline_cb), task);
++
++	/* set icon name */
++	widget = GTK_WIDGET (gtk_builder_get_object (builder_signature, "dialog_gpg"));
++	gtk_window_set_icon_name (GTK_WINDOW(widget), GPK_ICON_SOFTWARE_INSTALLER);
++
++	/* connect up buttons */
++	widget = GTK_WIDGET (gtk_builder_get_object (builder_signature, "button_yes"));
++	g_signal_connect (widget, "clicked", G_CALLBACK (gpk_update_viewer_button_accept_cb), NULL);
++	widget = GTK_WIDGET (gtk_builder_get_object (builder_signature, "button_no"));
++	g_signal_connect (widget, "clicked", G_CALLBACK (gpk_update_viewer_button_decline_cb), NULL);
++}
++
++static void
+ gpk_update_viewer_application_startup_cb (GtkApplication *_application, gpointer user_data)
+ {
+ 	GtkWidget *main_window;
+@@ -2786,6 +3018,8 @@ gpk_update_viewer_application_startup_cb
+ 		return;
+ 	}
+ 
++	gpk_update_viewer_setup_dialog_signature ();
++
+ 	main_window = GTK_WIDGET(gtk_builder_get_object (builder, "dialog_updates"));
+ 	gtk_window_set_icon_name (GTK_WINDOW(main_window), GPK_ICON_SOFTWARE_UPDATE);
+ 	gtk_application_add_window (application, GTK_WINDOW(main_window));

@@ -1,0 +1,37 @@
+Author: Adam Majer <amajer@suse.de>
+Date: Thu Mar 23 11:56:00 CET 2017
+Summary: Set package name to SUSE package name
+
+This is done so things are installed in right places with correct names.
+
+Index: mariadb-connector-odbc-3.1.1-ga-src/CMakeLists.txt
+===================================================================
+--- mariadb-connector-odbc-3.1.1-ga-src.orig/CMakeLists.txt
++++ mariadb-connector-odbc-3.1.1-ga-src/CMakeLists.txt
+@@ -16,7 +16,7 @@
+ #   or write to the Free Software Foundation, Inc., 
+ #   51 Franklin St., Fifth Floor, Boston, MA 02110, USA
+ # *************************************************************************************/
+-PROJECT(mariadb_connector_odbc C)
++PROJECT(mariadb-connector-odbc C)
+ 
+ cmake_minimum_required(VERSION 2.8)
+ 
+@@ -313,7 +313,7 @@ IF(WIN32)
+ ENDIF()
+ 
+ 
+-SET(CPACK_PACKAGE_NAME "mariadb_connector_odbc")
++SET(CPACK_PACKAGE_NAME "mariadb-connector-odbc")
+ IF(WIN32)
+   ADD_SUBDIRECTORY(wininstall)
+ ELSE()
+@@ -337,7 +337,7 @@ ELSE()
+           ${CMAKE_SOURCE_DIR}/COPYING
+           ${CMAKE_SOURCE_DIR}/README
+           DESTINATION
+-          ./share/doc/${CPACK_PACKAGE_NAME}/
++          ./share/doc/packages/${CPACK_PACKAGE_NAME}/
+           COMPONENT Documentation)
+ ENDIF()
+ 

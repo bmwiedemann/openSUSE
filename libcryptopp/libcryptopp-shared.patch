@@ -1,0 +1,33 @@
+Index: cryptopp-CRYPTOPP_8_2_0/GNUmakefile
+===================================================================
+--- cryptopp-CRYPTOPP_8_2_0.orig/GNUmakefile	2019-07-20 10:55:12.852313936 +0200
++++ cryptopp-CRYPTOPP_8_2_0/GNUmakefile	2019-07-20 11:15:12.773950685 +0200
+@@ -174,7 +174,7 @@ ifeq ($(DATADIR),)
+ DATADIR := $(PREFIX)/share
+ endif
+ ifeq ($(LIBDIR),)
+-LIBDIR := $(PREFIX)/lib
++LIBDIR := $(PREFIX)/$(LIB)
+ endif
+ ifeq ($(BINDIR),)
+ BINDIR := $(PREFIX)/bin
+@@ -1009,7 +1009,7 @@ SOLIB_COMPAT_SUFFIX=.$(LIB_MAJOR)
+ ifneq ($(IS_LINUX)$(IS_HURD),00)
+ # Linux uses full version suffix for shared library
+ SOLIB_VERSION_SUFFIX=.$(LIB_MAJOR).$(LIB_MINOR).$(LIB_PATCH)
+-SOLIB_FLAGS=-Wl,-soname,libcryptopp.so$(SOLIB_COMPAT_SUFFIX)
++SOLIB_FLAGS=-Wl,-soname,libcryptopp.so$(SOLIB_VERSION_SUFFIX)
+ endif
+ # Solaris uses -Wl,-h
+ ifeq ($(IS_SUN),1)
+@@ -1302,8 +1302,8 @@ endif
+ libcryptopp.dylib: $(LIBOBJS)
+ 	$(CXX) -dynamiclib -o $@ $(strip $(CXXFLAGS)) -install_name "$@" -current_version "$(LIB_MAJOR).$(LIB_MINOR).$(LIB_PATCH)" -compatibility_version "$(LIB_MAJOR).$(LIB_MINOR)" -headerpad_max_install_names $(LDFLAGS) $(LIBOBJS)
+ 
+-cryptest.exe:libcryptopp.a $(TESTOBJS)
+-	$(CXX) -o $@ $(strip $(CXXFLAGS)) $(TESTOBJS) ./libcryptopp.a $(LDFLAGS) $(LDLIBS)
++cryptest.exe: libcryptopp.so$(SOLIB_VERSION_SUFFIX) $(TESTOBJS)
++	$(CXX) -o $@ $(strip $(CXXFLAGS)) $(TESTOBJS) -L. -lcryptopp $(LDFLAGS) $(LDLIBS)
+ 
+ # Makes it faster to test changes
+ nolib: $(OBJS)

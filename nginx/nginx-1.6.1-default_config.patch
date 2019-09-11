@@ -1,0 +1,117 @@
+--- conf/nginx.conf.orig	2018-03-28 11:56:48.834012377 +0200
++++ conf/nginx.conf	2018-03-28 13:16:09.978372767 +0200
+@@ -1,16 +1,28 @@
+ 
+-#user  nobody;
++#user  nginx;
+ worker_processes  1;
+ 
+-#error_log  logs/error.log;
+-#error_log  logs/error.log  notice;
+-#error_log  logs/error.log  info;
++# load_module #LIBDIR#/nginx/modules/ngx_http_fancyindex_module.so;
++# load_module #LIBDIR#/nginx/modules/ngx_http_geoip_module.so;
++# load_module #LIBDIR#/nginx/modules/ngx_http_headers_more_filter_module.so;
++# load_module #LIBDIR#/nginx/modules/ngx_http_image_filter_module.so;
++# load_module #LIBDIR#/nginx/modules/ngx_http_perl_module.so;
++# load_module #LIBDIR#/nginx/modules/ngx_http_xslt_filter_module.so;
++# load_module #LIBDIR#/nginx/modules/ngx_mail_module.so;
++# load_module #LIBDIR#/nginx/modules/ngx_rtmp_module.so;
++# load_module #LIBDIR#/nginx/modules/ngx_stream_geoip_module.so;
++# load_module #LIBDIR#/nginx/modules/ngx_stream_module.so;
++
++#error_log  /var/log/nginx/error.log;
++#error_log  /var/log/nginx/error.log  notice;
++#error_log  /var/log/nginx/error.log  info;
+ 
+-#pid        logs/nginx.pid;
++#pid        /var/run/nginx.pid;
+ 
+ 
+ events {
+     worker_connections  1024;
++    use epoll;
+ }
+ 
+ 
+@@ -22,7 +34,7 @@
+     #                  '$status $body_bytes_sent "$http_referer" '
+     #                  '"$http_user_agent" "$http_x_forwarded_for"';
+ 
+-    #access_log  logs/access.log  main;
++    #access_log  /var/log/nginx/access.log  main;
+ 
+     sendfile        on;
+     #tcp_nopush     on;
+@@ -32,16 +44,18 @@
+ 
+     #gzip  on;
+ 
++    include conf.d/*.conf;
++
+     server {
+         listen       80;
+         server_name  localhost;
+ 
+         #charset koi8-r;
+ 
+-        #access_log  logs/host.access.log  main;
++        #access_log  /var/log/nginx/host.access.log  main;
+ 
+         location / {
+-            root   html;
++            root   /srv/www/htdocs/;
+             index  index.html index.htm;
+         }
+ 
+@@ -51,7 +65,7 @@
+         #
+         error_page   500 502 503 504  /50x.html;
+         location = /50x.html {
+-            root   html;
++            root   /srv/www/htdocs/;
+         }
+ 
+         # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+@@ -63,7 +77,7 @@
+         # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+         #
+         #location ~ \.php$ {
+-        #    root           html;
++        #    root           /srv/www/htdocs/;
+         #    fastcgi_pass   127.0.0.1:9000;
+         #    fastcgi_index  index.php;
+         #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+@@ -87,7 +101,7 @@
+     #    server_name  somename  alias  another.alias;
+ 
+     #    location / {
+-    #        root   html;
++    #        root   /srv/www/htdocs/;
+     #        index  index.html index.htm;
+     #    }
+     #}
+@@ -101,6 +115,10 @@
+ 
+     #    ssl_certificate      cert.pem;
+     #    ssl_certificate_key  cert.key;
++    
++    #    Allow TLS version 1.2 only, which is a recommended default these days
++    #    by international information security standards.
++    #    ssl_protocols        TLSv1.2;
+ 
+     #    ssl_session_cache    shared:SSL:1m;
+     #    ssl_session_timeout  5m;
+@@ -109,9 +127,11 @@
+     #    ssl_prefer_server_ciphers  on;
+ 
+     #    location / {
+-    #        root   html;
++    #        root   /srv/www/htdocs/;
+     #        index  index.html index.htm;
+     #    }
+     #}
+ 
++    include vhosts.d/*.conf;
++
+ }

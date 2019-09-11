@@ -1,0 +1,268 @@
+-------------------------------------------------------------------
+Thu Jun 13 06:39:36 UTC 2019 - josef.moellers@suse.com
+
+- Prevent division by zero by first checking if uncompressed size
+  is 0. This may happen with directories which have a compressed
+  and uncompressed size of 0.
+  [bsc#1129403, bsc1129403-prevent-division-by-zero.patch]
+
+-------------------------------------------------------------------
+Thu Oct  4 08:14:00 UTC 2018 - josef.moellers@suse.com
+
+- Remove any "../" components from pathnames of extracted files.
+  [bsc#1110687, CVE-2018-17828, CVE-2018-17828.patch]
+
+-------------------------------------------------------------------
+Fri Sep  7 11:51:45 UTC 2018 - josef.moellers@suse.com
+
+- Avoid memory leak from __zzip_parse_root_directory().
+  Free allocated structure if its address is not passed back.
+  [bsc#1107424, CVE-2018-16548, CVE-2018-16548.patch]
+
+-------------------------------------------------------------------
+Mon Mar 19 13:57:10 UTC 2018 - josef.moellers@suse.com
+
+- Check if data from End of central directory record makes sense.
+  Especially the Offset of start of central directory must not
+  a) be negative or
+  b) point behind the end-of-file.
+- Check if compressed size in Central directory file header
+  makes sense, i.e. the file's data does not extend beyond the
+  end of the file.
+  [bsc#1084517, CVE-2018-7726, CVE-2018-7726.patch,
+   bsc#1084519, CVE-2018-7725, CVE-2018-7725.patch]
+
+-------------------------------------------------------------------
+Sat Mar 17 18:53:19 UTC 2018 - avindra@opensuse.org
+
+- Update to 0.13.69:
+  * fix a number of CVEs reported with special *.zip PoC files
+  * completing some doc strings while checking the new man-pages to
+    look good
+  * update refs to point to github instead of sf.net
+  * man-pages are generated with new dbk2man.py - docbook xmlto is
+    optional now
+  * a zip-program is still required for testing, but some errors
+    are gone when not present
+- run spec-cleaner
+- don't ship Windows only file, README.MSVC6
+
+-------------------------------------------------------------------
+Mon Feb 19 12:55:26 UTC 2018 - adam.majer@suse.de
+
+- Drop BR: fdupes since it does nothing.
+
+-------------------------------------------------------------------
+Mon Feb 19 11:30:47 UTC 2018 - jengelh@inai.de
+
+- Fix RPM groups. Remove ineffective --with-pic.
+  Trim redundancies from description.
+  Do not let fdupes run across partitions.
+
+-------------------------------------------------------------------
+Sun Feb 18 03:25:53 UTC 2018 - avindra@opensuse.org
+
+- Update to 0.13.68:
+  * fix a number of CVEs reported with special *.zip files
+  * minor doc updates referencing GitHub instead of sf.net
+- drop CVE-2018-6381.patch
+  * merged in a803559fa9194be895422ba3684cf6309b6bb598
+- drop CVE-2018-6484.patch
+  * merged in 0c0c9256b0903f664bca25dd8d924211f81e01d3
+- drop CVE-2018-6540.patch
+  * merged in 15b8c969df962a444dfa07b3d5bd4b27dc0dbba7
+- drop CVE-2018-6542.patch
+  * merged in 938011cd60f5a8a2a16a49e5f317aca640cf4110
+
+-------------------------------------------------------------------
+Wed Feb 14 13:36:43 UTC 2018 - josef.moellers@suse.com
+
+- Changed %license to %doc in SPEC file.
+
+-------------------------------------------------------------------
+Mon Feb 12 16:14:31 UTC 2018 - josef.moellers@suse.com
+
+- If the size of the central directory is too big, reject
+  the file.
+  Then, if loading the ZIP file fails, display an error message.
+  [CVE-2018-6542.patch, CVE-2018-6542, bsc#1079094]
+
+-------------------------------------------------------------------
+Tue Feb  6 14:55:03 UTC 2018 - josef.moellers@suse.com
+
+- If an extension block is too small to hold an extension,
+  do not use the information therein.
+- If the End of central directory record (EOCD) contains an
+  Offset of start of central directory which is beyond the end of
+  the file, reject the file.
+  [CVE-2018-6540, bsc#1079096, CVE-2018-6540.patch]
+
+-------------------------------------------------------------------
+Fri Feb  2 09:31:49 UTC 2018 - josef.moellers@suse.com
+
+- Reject the ZIP file and report it as corrupt if the size of the
+  central directory and/or the offset of start of central directory
+  point beyond the end of the ZIP file.
+  [CVE-2018-6484, boo#1078701, CVE-2018-6484.patch]
+
+-------------------------------------------------------------------
+Thu Feb  1 10:49:56 UTC 2018 - josef.moellers@suse.com
+
+- If a file is uncompressed, compressed and uncompressed sizes
+  should be identical.
+  [CVE-2018-6381, bsc#1078497, CVE-2018-6381.patch]
+
+-------------------------------------------------------------------
+Tue Jan 23 20:18:19 UTC 2018 - tchvatal@suse.com
+
+- Drop tests as they fail completely anyway, not finding lib needing
+  zip command, this should allow us to kill python dependency
+- Also drop docs subdir avoiding python dependency for it
+  * The generated xmls were used for mans too but we shipped those
+    only in devel pkg and as such we will live without them
+
+-------------------------------------------------------------------
+Tue Jan 23 20:03:01 UTC 2018 - tchvatal@suse.com
+
+- Version update to 0.13.67:
+  * Various fixes found by fuzzing
+  * Merged bellow patches
+- Remove merged patches:
+  * zziplib-CVE-2017-5974.patch
+  * zziplib-CVE-2017-5975.patch
+  * zziplib-CVE-2017-5976.patch
+  * zziplib-CVE-2017-5978.patch
+  * zziplib-CVE-2017-5979.patch
+  * zziplib-CVE-2017-5981.patch
+- Switch to github tarball as upstream seem no longer pull it to
+  sourceforge
+- Remove no longer applying patch zziplib-unzipcat-NULL-name.patch
+  * The sourcecode was quite changed for this to work this way
+    anymore, lets hope this is fixed too
+
+-------------------------------------------------------------------
+Wed Nov  1 12:37:02 UTC 2017 - mpluskal@suse.com
+
+- Packaking changes:
+  * Depend on python2 explicitly
+  * Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Mar 23 13:32:03 UTC 2017 - josef.moellers@suse.com
+
+- Several bugs fixed:
+  * heap-based buffer overflows
+    (bsc#1024517, CVE-2017-5974, zziplib-CVE-2017-5974.patch)
+  * check if "relative offset of local header" in "central
+    directory header" really points to a local header
+    (ZZIP_FILE_HEADER_MAGIC)
+    (bsc#1024528, CVE-2017-5975, zziplib-CVE-2017-5975.patch)
+  * protect against bad formatted data in extra blocks
+    (bsc#1024531, CVE-2017-5976, zziplib-CVE-2017-5976.patch)
+  * NULL pointer dereference in main (unzzipcat-mem.c)
+    (bsc#1024532, bsc#1024536, CVE-2017-5975,
+    zziplib-CVE-2017-5975.patch) 
+  * protect against huge values of "extra field length"
+    in local file header and central file header
+    (bsc#1024533, CVE-2017-5978, zziplib-CVE-2017-5978.patch)
+  * clear ZZIP_ENTRY record before use.
+    (bsc#1024534, bsc#1024535, CVE-2017-5979, CVE-2017-5977,
+    zziplib-CVE-2017-5979.patch)
+  * prevent unzzipcat.c from trying to print a NULL name
+    (bsc#1024537, zziplib-unzipcat-NULL-name.patch)
+  * Replace assert() by going to error exit.
+    (bsc#1034539, CVE-2017-5981, zziplib-CVE-2017-5981.patch)
+
+-------------------------------------------------------------------
+Sat Mar 16 21:37:21 UTC 2013 - schwab@linux-m68k.org
+
+- zziplib-largefile.patch: Enable largefile support
+- Enable debug information
+
+-------------------------------------------------------------------
+Sat Dec 15 18:36:24 UTC 2012 - p.drouand@gmail.com
+
+- Update to 0.13.62 version:
+	* configure.ac: fallback to libtool -export-dynamic unless being sure to
+      use gnu-ld --export-dynamic. The darwin case is a bit special here 
+	  as the c-compiler and linker might be from different worlds.
+    * Makefile.am: allow nonstaic build
+    * wrap fd.open like in the Fedora patch
+- Remove the package name on summary
+- Add dos2unix as build dependencie to fix a wrong file encoding
+
+-------------------------------------------------------------------
+Sat Nov 19 15:38:23 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Sep 16 16:02:33 UTC 2011 - jengelh@medozas.de
+
+- Implement shlib policy/packaging for package, add baselibs.conf
+  and resolve redundant constructs
+
+-------------------------------------------------------------------
+Sat Apr 30 15:22:39 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix build with gcc 4.6
+
+-------------------------------------------------------------------
+Mon Feb 15 16:43:03 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.13.58:
+  + Some bugs fixed, see ChangeLog
+
+-------------------------------------------------------------------
+Mon Jul 27 16:24:06 CEST 2009 - coolo@novell.com
+
+- update to version 0.13.56 - fixes many smaller issues
+ (see Changelog)
+
+-------------------------------------------------------------------
+Wed Jun 17 10:05:23 CEST 2009 - coolo@novell.com
+
+- fix build with automake 1.11
+
+-------------------------------------------------------------------
+Mon Jan 26 20:39:14 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files 
+
+-------------------------------------------------------------------
+Fri Oct 24 12:32:13 CEST 2008 - wgottwalt@suse.de
+
+- removed ./msvc7/pkzip.exe and ./msvc8/zip.exe to avoid license
+  problems
+
+-------------------------------------------------------------------
+Wed Aug 15 05:35:45 CEST 2007 - crrodriguez@suse.de
+
+- update to version 0.13.49 fixes #260734 buffer overflow
+ due to wrong usage of strcpy()
+
+-------------------------------------------------------------------
+Thu Mar 29 20:59:38 CEST 2007 - dmueller@suse.de
+
+- adjust buildrequires 
+
+-------------------------------------------------------------------
+Mon Dec  4 15:10:35 CET 2006 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Tue Oct  3 11:24:24 CEST 2006 - aj@suse.de
+
+- Fix build.
+
+-------------------------------------------------------------------
+Fri Aug 18 08:15:46 CEST 2006 - aj@suse.de
+
+- Fix build.
+
+-------------------------------------------------------------------
+Mon May 22 13:53:45 CEST 2006 - wgottwalt@suse.de
+
+- initial release
+- still problems with the "make check" build option

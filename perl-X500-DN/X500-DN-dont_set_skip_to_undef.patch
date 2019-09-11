@@ -1,0 +1,13 @@
+Index: X500-DN-0.29/DN.pm
+===================================================================
+--- X500-DN-0.29.orig/DN.pm	2013-06-19 15:59:14.041089488 +0200
++++ X500-DN-0.29/DN.pm	2013-06-19 15:59:26.211457683 +0200
+@@ -43,7 +43,7 @@ Digit: /[0-9]/
+ #$::RD_HINT = 1;
+ 
+ local $::RD_AUTOACTION = q{ $item[1] };
+-local $Parse::RecDescent::skip = undef;
++local $Parse::RecDescent::skip = '';
+ my $parser = new Parse::RecDescent ($rfc2253_grammar) or die "Bad RFC 2253 grammar!\n";
+ 
+ sub new

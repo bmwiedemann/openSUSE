@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Wed Dec  5 01:04:11 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from descriptions.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:50 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Apr  1 11:09:27 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Wed Aug 31 07:57:56 UTC 2016 - aplanas@suse.com
+
+- User https schema for Source URL 
+
+-------------------------------------------------------------------
+Tue Aug 30 12:53:11 UTC 2016 - tbechtold@suse.com
+
+- Use pypi.io as Source url
+
+-------------------------------------------------------------------
+Tue Aug 30 11:47:56 UTC 2016 - tbechtold@suse.com
+
+update to version 1.0.0
+  * Add trove classifiers specifying Python 3 support.
+  * Release 1.0.0.
+  * Add a tox.ini for testing with.
+  * Add a .travis.yml.
+  * Handle import cycles.
+  * Support universal wheels
+
+-------------------------------------------------------------------
+Fri Mar  7 11:01:35 UTC 2014 - speilicke@suse.com
+
+- Add 'tests' build conditional
+
+-------------------------------------------------------------------
+Mon Nov 25 13:49:08 UTC 2013 - speilicke@suse.com
+
+- Drop nose buildrequires, use testtools directly
+
+-------------------------------------------------------------------
+Mon Apr 29 11:49:58 UTC 2013 - dmueller@suse.com
+
+- update to 0.0.3:
+  * Fix support with older testtools 
+
+-------------------------------------------------------------------
+Mon Jan 14 13:24:03 UTC 2013 - saschpe@suse.de
+
+- Run testsuite
+- Add documentation
+- Use SPDX style license (MIT)
+
+-------------------------------------------------------------------
+Mon Jan 14 12:41:11 UTC 2013 - dmueller@suse.com
+
+- Initial package (0.0.2)
+

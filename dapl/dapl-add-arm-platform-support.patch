@@ -1,0 +1,39 @@
+diff -upr dapl-2.1.10.orig/dapl/udapl/linux/dapl_osd.h dapl-2.1.10/dapl/udapl/linux/dapl_osd.h
+--- dapl/udapl/linux/dapl_osd.h	2018-05-24 13:31:37.000000000 +0200
++++ dapl/udapl/linux/dapl_osd.h	2018-05-24 14:03:08.040508060 +0200
+@@ -51,7 +51,7 @@
+ 
+ #if !defined (__i386__) && !defined (__ia64__) && !defined(__x86_64__) && \
+     !defined(__PPC__) && !defined(__PPC64__) && !defined(__s390x__) && \
+-    !defined(__aarch64__) && !defined(__s390__)
++    !defined(__aarch64__) && !defined(__arm__) && !defined(__s390__)
+ #error UNDEFINED ARCH
+ #endif
+ 
+@@ -215,7 +215,7 @@ dapl_os_atomic_inc (
+ 	: "=&r" (tmp), "+m" (v)
+ 	: "b" (v)
+ 	: "cc");
+-#elif defined(__aarch64__)
++#elif defined(__aarch64__) || defined(__arm__)
+     __atomic_fetch_add(v, 1, __ATOMIC_ACQ_REL);
+ #else  /* !__ia64__ */
+     __asm__ __volatile__ (
+@@ -261,7 +261,7 @@ dapl_os_atomic_dec (
+ 	: "=&r" (tmp), "+m" (v)
+ 	: "b" (v)
+ 	: "cc");
+-#elif defined(__aarch64__)
++#elif defined(__aarch64__) || defined(__arm__)
+     __atomic_fetch_add(v, -1, __ATOMIC_ACQ_REL);
+ #else  /* !__ia64__ */
+     __asm__ __volatile__ (
+@@ -327,7 +327,7 @@ dapl_os_atomic_assign (
+         : "=&r" (current_value), "=m" (*v)
+         : "r" (v), "r" (match_value), "r" (new_value), "m" (*v)
+         : "cc", "memory");
+-#elif defined(__aarch64__)
++#elif defined(__aarch64__) || defined(__arm__)
+     current_value = match_value;
+     __atomic_compare_exchange_n(v, &current_value, new_value, 1,
+ 				__ATOMIC_ACQ_REL, __ATOMIC_RELAXED);

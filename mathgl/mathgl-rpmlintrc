@@ -1,0 +1,2 @@
+# Example binaries not accompanied by man pages
+addFilter("mathgl-examples.* no-manual-page-for-binary")

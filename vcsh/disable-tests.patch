@@ -1,0 +1,20 @@
+*** Makefile.orig	2017-04-22 11:57:26.913255845 -0500
+--- Makefile	2017-04-22 11:59:03.728409381 -0500
+***************
+*** 37,44 ****
+  	rmdir -p --ignore-fail-on-non-empty $(DESTDIR)$(ZSHDIR)
+  
+  test:
+! 	@if which git   > /dev/null; then :    ; else echo "'git' not found, exiting..."         ; exit 1; fi
+! 	@if which prove > /dev/null; then prove; else echo "'prove' not found; not running tests";         fi
+  
+  moo:
+  	@which cowsay >/dev/null 2>&1 && cowsay "I hope you're happy now..."
+--- 37,43 ----
+  	rmdir -p --ignore-fail-on-non-empty $(DESTDIR)$(ZSHDIR)
+  
+  test:
+! 	echo "Skipping tests"
+  
+  moo:
+  	@which cowsay >/dev/null 2>&1 && cowsay "I hope you're happy now..."

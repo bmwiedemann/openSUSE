@@ -1,0 +1,35 @@
+From a2dc74cd0e4891037b97b6a782de80458675e4f0 Mon Sep 17 00:00:00 2001
+From: Bruce Stephens <bruce.stephens@isode.com>
+Date: Wed, 9 Jan 2019 16:21:20 +0000
+Subject: [PATCH] Don't assume that tribool has an implicit bool conversion
+
+In boost 1.68.0 the conversion is implicit, but in 1.69.0 it's
+explicit and we must explicitly call it.
+
+Change-Id: I24eb78be7510c89b88342d28c539cad4977f99fd
+---
+ Swiften/Network/PlatformNATTraversalWorker.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Swiften/Network/PlatformNATTraversalWorker.cpp b/Swiften/Network/PlatformNATTraversalWorker.cpp
+index af1204914f..041ad2defb 100644
+--- a/Swiften/Network/PlatformNATTraversalWorker.cpp
++++ b/Swiften/Network/PlatformNATTraversalWorker.cpp
+@@ -157,7 +157,7 @@ NATTraversalInterface* PlatformNATTraversalWorker::getNATTraversalInterface() co
+         miniUPnPInterface = new MiniUPnPInterface();
+         miniUPnPSupported = miniUPnPInterface->isAvailable();
+     }
+-    SWIFT_LOG(debug) << "UPnP NAT traversal supported: " << miniUPnPSupported << std::endl;
++    SWIFT_LOG(debug) << "UPnP NAT traversal supported: " << static_cast<bool>(miniUPnPSupported) << std::endl;
+     if (miniUPnPSupported) {
+         return miniUPnPInterface;
+     }
+@@ -168,7 +168,7 @@ NATTraversalInterface* PlatformNATTraversalWorker::getNATTraversalInterface() co
+         natPMPInterface = new NATPMPInterface();
+         natPMPSupported = natPMPInterface->isAvailable();
+     }
+-    SWIFT_LOG(debug) << "NAT-PMP NAT traversal supported: " << natPMPSupported << std::endl;
++    SWIFT_LOG(debug) << "NAT-PMP NAT traversal supported: " << static_cast<bool>(natPMPSupported) << std::endl;
+     if (natPMPSupported) {
+         return natPMPInterface;
+     }

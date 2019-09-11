@@ -1,0 +1,13 @@
+Index: libappindicator-12.10.1+bzr20170215/src/Makefile.am
+===================================================================
+--- libappindicator-12.10.1+bzr20170215.orig/src/Makefile.am
++++ libappindicator-12.10.1+bzr20170215/src/Makefile.am
+@@ -76,7 +76,7 @@ libappindicator_la_LDFLAGS = \
+ libappindicator_la_CFLAGS = \
+ 	$(LIBRARY_CFLAGS) \
+ 	$(COVERAGE_CFLAGS) \
+-	-Wall -Werror -Wno-error=deprecated-declarations \
++	-Wall -Wno-error=deprecated-declarations \
+ 	-DG_LOG_DOMAIN=\"libappindicator\"
+ 
+ libappindicator_la_LIBADD = \

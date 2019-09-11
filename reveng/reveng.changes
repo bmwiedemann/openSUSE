@@ -1,0 +1,130 @@
+-------------------------------------------------------------------
+Mon May  6 17:56:07 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.0
+  * Much faster brute force search for generator polynomials if
+    the most compact difference between right-aligned arguments is
+    not more than twice the specified WIDTH.
+
+-------------------------------------------------------------------
+Sat Apr 20 19:31:47 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.3
+  * Added algorithm CRC-32/CD-ROM-EDC from the CRC Catalogue.
+  * Model class of CRC-16/ARC, CRC-16/GSM changed to 'attested'.
+  * Error message advises that a positive -P may also precede -s.
+
+-------------------------------------------------------------------
+Wed Mar  6 09:18:21 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Use HTTP instead of HTTPS in the Source URL.
+
+-------------------------------------------------------------------
+Tue Mar  5 23:16:15 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.2
+  * Added algorithm CRC-8/MIFARE-MAD from the CRC Catalogue.
+
+-------------------------------------------------------------------
+Mon Feb 18 15:11:27 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Build with preset models for x86_64 and ix86
+- Add patches:
+  * reveng-obey-cflags.patch
+  * reveng-dont-strip.patch
+  * reveng-x86_64.patch
+  * reveng-presets_i386.patch
+
+-------------------------------------------------------------------
+Fri Feb 15 14:20:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure description is neutral and adheres to trademark
+  guidelines.
+
+-------------------------------------------------------------------
+Fri Jan 11 22:16:52 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.6.1
+  * mnovel() clears the model's class flags.
+  version 1.6.0
+  * Added 2 new algorithms, CRC-8/NRSC-5, CRC-16/NRSC-5, from the
+    CRC Catalogue.
+  * Renamed 31 algorithms; added 24 aliases to the old names.
+  * Added 10 other aliases.
+  * Added class descriptors to models[].
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Fri Jul 27 13:54:14 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.5.3
+  * Added algorithm CRC-24/OS-9 from the CRC Catalogue.
+  * Optimised prev()
+  * Optimised definition of struct malias.
+  * Renamed NOFORCE to ALWPCK.
+
+-------------------------------------------------------------------
+Wed Jun 21 10:18:05 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.5.2
+  * Added 3 new algorithms, CRC-8/BLUETOOTH, CRC-17/CAN-FD,
+    CRC-21/CAN-FD, from the CRC Catalogue.
+
+- Update to version 1.5.1
+  * Added 8 new algorithms, CRC-3/GSM, CRC-6/GSM, CRC-8/GSM-A,
+    CRC-8/GSM-B, CRC-10/GSM, CRC-12/GSM, CRC-14/GSM, CRC-16/GSM,
+    from the CRC Catalogue.
+  * -G is ignored if a generator polynomial is specified, so that
+    it serves as a general fast-run switch.  The brute force
+    search pass is then allowed to return results on the
+    polynomial.
+  * Revised calculation of residue for crossed-endian algorithms.
+
+- Update to version 1.5.0
+  * Added algorithm CRC-64/GO-ISO and 2 new aliases,
+    CRC-64/ECMA-182, CRC-64/GO-ECMA, from the CRC Catalogue.
+  * Added a residue field to Williams model output records.
+  * Added -G switch to skip the brute force search pass.
+
+-------------------------------------------------------------------
+Sun Jul 31 19:40:48 UTC 2016 - mardnh@gmx.de
+
+- Update to version 1.4.4
+  * Added 5 new algorithms, CRC-8/AUTOSAR, CRC-8/OPENSAFETY,
+    CRC-16/OPENSAFETY-A, CRC-16/OPENSAFETY-B and CRC-32/AUTOSAR
+    from the CRC Catalogue.
+  * Added a build option to verify the order of the preset and
+    alias tables at compile time.
+
+- Update to version 1.4.3
+  * Added algorithm CRC-16/CMS from the CRC Catalogue.
+
+- Update to version 1.4.2
+  * Added algorithm CRC-16/PROFIBUS from the CRC Catalogue.
+
+- Update to version 1.4.1a
+  * Fixed a regression that caused the Windows release to crash
+    on older systems.
+
+- Update to version 1.4.1
+  * -P sets the Width value just like -k.
+  * pcmp() quickly returns when the comparands are identical.
+  * Added resources for the Windows executable.
+
+- Update to version 1.4.0
+  * Added 11 new algorithms, CRC-4/INTERLAKEN, CRC-7/UMTS,
+    CRC-8/LTE, CRC-8/SAE-J1850, CRC-11/UMTS, CRC-16/LJ1200,
+    CRC-24/BLE, CRC-24/INTERLAKEN, CRC-24/LTE-A, CRC-24/LTE-B,
+    CRC-30/CDMA, and 4 new aliases, CRC-12/UMTS, CRC-16/LTE,
+    CRC-16/UMTS, CRC-32/INTERLAKEN, from the CRC Catalogue.
+  * Eliminated string comparison when testing if a model name is
+    an alias.
+  * Split off presets into preset.c.
+  * Eliminated bogus calls to bsearch() in preset.c.
+
+-------------------------------------------------------------------
+Wed Feb 10 08:22:53 UTC 2016 - mardnh@gmx.de
+
+- initial package
+

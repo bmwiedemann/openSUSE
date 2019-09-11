@@ -1,0 +1,7 @@
+[Unit]
+Description=Update spamassassin
+ConditionACPower=true
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/timed-sa-update

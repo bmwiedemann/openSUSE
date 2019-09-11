@@ -1,0 +1,206 @@
+-------------------------------------------------------------------
+Thu Jun 30 23:06:12 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.7.1:
+  + New features:
+    - When generating statistics, they can be grouped per dates.
+    - Export to GCstar Viewer generates a collection that loads
+      faster in image mode (requires GCstar Viewer 2.10 or above).
+  + User interface changes:
+    - Display totals for numeric fields when the list is displayed
+      in detailed mode.
+  + Bugs fixed:
+    - User added fields were not shown in the panel below the list.
+    - When exporting to HTML, it was sometimes not possible to
+      select fields with the templates that support that.
+    - Bugs fixed in some website plugins: Bedetheque, GameSpot,
+      IMDb, jeuxvideo.com, jeuxvideo.fr, MobyGames.
+  + Updated translations.
+- Rebase gcstar-fix-desktop.patch.
+
+-------------------------------------------------------------------
+Sun Sep 16 12:03:59 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.7.0:
+  + User interface changes:
+    - All the settings for the current type of list can be changed
+      directly below the list.
+    - It's now possible to define default values for the fields
+      when adding a new item to a collection.
+    - New menu to show/hide menu, tool and status bars.
+    - Slight animations have been added in image mode.
+    - A popup is displayed in image mode to show a summary of the
+      item.
+  + Bugs fixed:
+    - When saving an item which date is the current one.
+    - The list of saved searches in toolbar was not reset when
+      displaying all collection items.
+    - Ranges were not handled correctly when searching.
+    - With collections of video games, the units field was not
+      hidden if user chose to hide file size.
+    - In image mode, some items were not displayed correctly when
+      grouping.
+    - Fixed some website plugins.
+  + Updated translations.
+- Drop hack to kill backupfiles previously found in tarball. Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Mon Oct  3 07:40:29 UTC 2011 - vuntz@opensuse.org
+
+- Add explicit shared-mime-info BuildRequires since we use the
+  %mime_database_* macros.
+
+-------------------------------------------------------------------
+Thu Jul 21 09:32:38 CEST 2011 - vuntz@opensuse.org
+
+- Drop perl(Switch) BuildRequires and Requires, as its usage was
+  removed.
+- Add perl() Recommends for optional features: Archive::Zip, GD,
+  GD::Graph::area, GD::Graph::bars, GD::Graph::pie, GD::Text.
+
+-------------------------------------------------------------------
+Fri Jul 15 20:27:38 CEST 2011 - malcolmlewis@opensuse.org
+
+- Update to version 1.6.2:
+  + Option added for sorting items while in image views.
+  + Amazon book plugins now use the Amazon Web Service, for more
+    reliable plugin operation.
+  + New plugin for batch importing with a barcode scanner. It can
+    be used with GCstar Scanner for Android or any barcode scanner
+    acting like a keyboard.
+  + Film collection: Country field is now a list box, allowing
+    multiple countries.
+  + New plugins to fetch information from websites:
+    - Books: Douban (ZH) provided by BW.
+    - Movies: Douban (ZH) provided by BW.
+    - Music: Douban (ZH) provided by BW.
+  + Various bug fixes:
+    - Set focus to the title field automatically after adding an
+      item.
+    - Correctly handle foreign characters in external filenames
+      under Windows.
+    - Correctly sort numeric fields used for grouping in image
+      lists.
+    - It was not possible to delete a unique item in image mode.
+    - Fixed bug with image caching.
+    - HTTP return code 302 managed correctly.
+    - Removed use of Switch.pm as it is deprecated.
+    - Bug fixed in some website plugins: Alapage, Allocine,
+      Bedetheque, Bol, Comic Book DB, CSFD.cz, IMDb,
+      jeuxvideo.com, jeuxvideo.fr, Moby Games, The Movie DB.
+- Update spec file License field from GPLv2 to GPL-2.0 to
+  conform with spdx.org identifier.
+
+-------------------------------------------------------------------
+Tue May 31 09:46:02 CEST 2011 - vuntz@opensuse.org
+
+- Add perl(Switch) BuildRequires and Requires, as the Switch module
+  got split out of the main perl package.
+
+-------------------------------------------------------------------
+Sat Feb 12 17:21:09 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+  + %mime_database_post/postun because the package ships a mime
+    type definition.
+- Remove shared-mime-info Requires: if it's not there, then we
+  simply don't need to update the mime database.
+
+-------------------------------------------------------------------
+Thu Sep  2 12:41:15 CEST 2010 - vuntz@opensuse.org
+
+- Improve summary.
+- Do not ship a modified version of gcstar.desktop. Instead, add
+  gcstar-fix-desktop.patch to fix the desktop file the way we want.
+- Manually install gcstar icon to hicolor, and also install it as
+  the icon for the application/x-gcstar mime type. This means we
+  don't need to call xdg-icon-resource in %post (which is bad since
+  it creates files).
+- Use update-mime-database in %post and %postun. This means we
+  don't need to call xdg-mime in %post.
+- Add shared-mime-info Requires(post) and Requires(postun).
+- Remove xdg-utils BuildRequires and Requires(post).
+- Add calls to %icon_theme_cache_post and %icon_theme_cache_postun.
+
+-------------------------------------------------------------------
+Fri Aug 27 00:19:47 UTC 2010 - badshah400@gmail.com
+
+- Update to version 1.6.1:
+  + New features:
+    - CSV plugin now allows you to select which field to use to
+      search for internet results
+    - Graphs generated from statistics are smoothed, to eliminate
+      sharp lines
+  + Default collections changes:
+    - New default collections:
+      . TV shows (series) collection model. Useful for tracking dvd
+        collections of tv shows.
+      . Computer Software collection
+      . Video games collection: New fields: Region, Serial Number.
+  + New plugins to fetch information from websites:
+    - TV shows (series):
+      . Thetvdb
+      . Themoviedb
+  + Bugs fixed:
+    - Removal of more than 9 items from a collection at a time
+    - Crash when trying to create a cached image from a missing
+      picture, or when image does not exist
+    - Some characters were incorrectly encoded in read only views
+    - Add option in collection read only views for fields to
+      "collapse" and hide when they have no content
+    - Fixed problem at startup when some items were hidden in the
+      toolbar.
+    - The "View modules" menu was not working anymore.
+    - Add play toolbar button for tv episodes collections.
+    - Item window was not properly re-constructed after changing
+      collections.
+    - Dependency on Sort::Naturally removed.
+    - Date::Calc module was not shown as an optional dependency
+      while it is needed for statistics.
+- Change perl-* dependencies to perl(*).
+- Remove perl(Sort:Naturally) BuildRequires and Requires: it is no
+  longer required.
+- Change Name in .desktop entry to GCstar from "GCstar Collections
+  Manager" (to avoid duplication with generic name)
+
+-------------------------------------------------------------------
+Thu Aug 19 21:20:08 UTC 2010 - badshah400@gmail.com
+
+- modify spec file to fix RPMLINT warning
+- remove gtk2 from requires and buildrequires (should be 
+  automatically) pulled in by perl-gtk2
+- add requires xdg-utils for %post scriptlets
+- corrected version tag to GPLv2 in spec file
+
+-------------------------------------------------------------------
+Wed Aug 18 08:57:40 UTC 2010 - badshah400@gmail.com
+
+- Include man files corectly
+- Use custom .desktop file (inherited from upstream) to conform
+  to openSUSE guidelines
+
+-------------------------------------------------------------------
+Sun Aug 15 13:51:02 UTC 2010 - badshah400@gmail.com
+
+- Use upstream provided .desktop and .xml files
+
+-------------------------------------------------------------------
+Sat Aug 14 09:26:24 UTC 2010 - badshah400@gmail.com
+
+- spec file cleanup
+
+-------------------------------------------------------------------
+Sat Aug  7 05:28:07 UTC 2010 - badshah400@gmail.com
+
+- Updated to upstream version 1.6.0
+
+-------------------------------------------------------------------
+Mon Aug  2 00:01:57 UTC 2010 - badshah400@gmail.com
+
+- Initial package following openSUSE Packaging Guidelines
+

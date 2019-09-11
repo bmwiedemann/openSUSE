@@ -1,0 +1,421 @@
+-------------------------------------------------------------------
+Sun Jan  7 23:33:01 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.2.15:
+  + Use streambuffers not streams when testing fdstream and gstream
+    with char16_t and char32_t character types.
+  + Update documentation.
+- Pass --docdir to configure to correct the documentation's
+  destination folder.
+
+-------------------------------------------------------------------
+Fri Nov 25 14:05:49 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.2.14.1:
+  + Explicitly qualify malloc() as being within the std namespace.
+  + Do not document the Cgu::Thread::FutureHelper and
+    Cgu::Thread::TaskManagerHelper2 namespaces.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Fri Nov 25 11:35:53 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.2.14:
+  + Provide Cgu::AsyncChannel.
+  + Remove the 'noexcept' specifier for Cgu::Thread::Cond::wait()
+    and Cgu::Thread::Cond::timed_wait(): any cancellation
+    pseudo-exception is inconsistent with this specifier.
+  + Provide TaskManager::get_max_tasks() method with documentation
+    on rate limiting.
+  + Zero initialise the character buffer in Reassembler class.
+  + Adjust configuration macros to enable use of Cgu::Extension
+    with guile-2.2.
+  + Increase coverage of io_watch tests.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Sun May 15 17:39:12 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.2.13:
+  + Use glib's unix fd implementation for io_watch where glib
+    >= 2.36 is installed, unless otherwise chosen during
+    configuration.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Sun Nov  1 13:39:35 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.2.12
+  + Simplify Cgu::Application::add() method.
+  + Minor implementation improvement for
+    Cgu::Thread::parallel_transform* functions.
+  + Permit return value optimisation when returning thread object
+    on starting new thread.
+  + Update libtool to version 2.4.6.
+  + Documentation fix for doxygen-1.8.9.
+  + Update code comments.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Tue Apr  7 20:49:37 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.2.11:
+  + Provide a mutex for calls to make-fresh-user-modules to deal
+    with guile thread safety issues.
+  + Improve efficiency of scheme to C++ list translators for long
+    lists.
+  + Update libtool to version 2.4.4.
+  + Update code comments.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Fri Dec  5 12:47:54 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.2.10:
+  + Permit Cgu::Thread::parallel_for_each(),
+    Cgu::Thread::parallel_for_each_partial(),
+    Cgu::Thread::parallel_transform() and
+    Cgu::Thread::parallel_transform_partial() to take const source
+    iterators.
+  + Provide Cgu::IntIter class to enable for loops to be more
+    easily implemented with the parallel algorithms.
+  + With gcc >= 4.8 or clang >= 3.4, implement callback classes
+    using std::tuple (this enables Callback::make() and
+    Callback::make_ref() to take up to 10 bound arguments, avoids
+    a lot of code duplication and makes for a cleaner
+    implementation).
+  + Preallocate vectors in translator functions which return
+    std::vector.
+  + Correct information about clang compatibility.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Thu Oct 16 12:48:01 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.2.9:
+  + Provide AsyncQueue::move_pop_basic(),
+    AsyncQueueDispatch::move_pop_basic(),
+    AsyncQueueDispatch::move_pop_dispatch_basic() and
+    AsyncQueueDispatch::move_pop_timed_dispatch_basic() methods.
+  + Prevent new GTK+-3.14 deprecation warnings interfering with
+    tests.
+  + Update build system to automake-1.14.1.
+  + Update build system to gettext-0.18.2.
+  + Update tests.
+  + Add comments about strict aliasing with character set
+    conversion functions.
+  + Update documentation, including to cover C++14.
+
+-------------------------------------------------------------------
+Sat Aug  9 11:03:12 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.2.8:
+  + Correct testing of minimum values in
+    Extension::real_to_double() and
+    Extension::list_to_vector_double().
+  + Deal properly with unexpected out-of-memory conditions in
+    executing Extension::exec() and Extension::exec_shared().
+  + Minor code refactoring in EmitterArg::connect() and
+    SafeEmitterArg::connect().
+  + Update documentation.
+- Changes from version 2.2.7:
+  + Provide a new Extension::exec_shared() function.
+  + Throw a C++ exception if a translator throws a native guile
+    exception, simplify exception handling code and make the
+    translation of guile exceptions to text more meaningful.
+  + Block asyncs when executing a scheme to C++ translator where
+    guile supports it.
+  + Avoid constructing a SafeEmitterArg object with untracked
+    io_watches.
+  + Deal internally with any exceptions in
+    cgu_winbase_delete_event().
+  + Update documentation.
+- Changes from version 2.2.6:
+  + Provide Cgu::Callback::to_unique(), Cgu::Callback::to_functor()
+    and Cgu::Callback::to_safe_functor() functions.
+  + Make minor adjustments to handling of C++ exceptions in
+    Cgu::Extension::exec().
+  + Fix Cgu::Application tests for API breakage in GTK+-3.12.0.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Sun Feb  2 23:16:46 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.2.5.1:
+  + Deal correctly with a thrown guile exception which has a key
+    but no other arguments, and a scheme extension file which does
+    not throw but evaluates to a null list (extension.h).
+  + Adjust timing of TaskManager releaser tests
+    (tests/test_task_manager.cpp).
+- Changes from version 2.2.5:
+  + Provide support for guile extensions.
+  + TaskManager::make_task_packaged_compose() methods, which will
+    pass a std::future object for a task running on a TaskManager
+    object asynchronously (task_manager.h, task_manager.tpp;
+    tests/test_task_manager.cpp).
+  + Minor code refactoring and test improvements (parallel.h,
+    task_manager.tpp; tests/test_task_manager.cpp).
+  + Update code comments (async_queue.h, task_manager.h,
+    task_manager.tpp).
+  + Update documentation (task_manager.h).
+- Add guile-devel BuildRequires to build the new guile extensions.
+
+-------------------------------------------------------------------
+Sat Dec  7 13:50:11 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.2.4:
+  + Provide a TaskManager::make_task_packaged() method, which will
+    return a std::future object for a task running on a TaskManager
+    object.
+  + Provide the expected result where TaskManager::add_task() is
+    called concurrently with TaskManager::stop_all() in
+    wait_for_running stop mode.
+  + Guarantee strong exception safety of 
+    AsyncQueue::push(value_type&&) and (task_manager.cpp).
+  + Guarantee strong exception safety of
+    AsyncQueue::push(value_type&&) and
+    AsyncQueueDispatch::push(value_type&&) for std::list container
+    specialization.
+  + Stop deprecation warnings with GTK+-3.10 in tests.
+  + Updated documentation.
+
+-------------------------------------------------------------------
+Sat Sep 21 07:58:35 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.2.3:
+  + Revise implementation of parallel_transform() functions and add
+    parallel_for_each_partial() and parallel_transform_partial()
+    functions returning position iterators.
+  + Provide a specialization of AsyncQueue and AsyncQueueDispatch
+    for std::list containers which has push() and emplace() members
+    which do not allocate within the mutex.
+  + Improve scalability of TaskManager objects by starting new
+    threads and adding to the task queue outside the mutex.
+  + As the 2.2 series of c++-gtk-utils has minimum requirements of
+    gcc >= 4.6 and clang >= 3.2, make non-throwing functions
+    >'noexcept' where this does not affect ABI.
+  + Really delete copy constructor and assignment operator of
+    Thread::RWLock::WriterTrackLock.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Sun Aug 18 00:09:25 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.2.2:
+  + Add parallel_for_each() and parallel_transform() functions for
+    TaskManager objects.
+  + Provide a move constructor and move assignment operator for
+    MainWidgetBase, PipeFifo and ScopedHandle classes.
+  + Really delete fdstream's copy constructor and assignment
+    operator.
+  + Do not deprecate the version of Future::make() taking a
+    function pointer and no arguments - it is equivalent to a
+    callable object.
+  + Add documentation on using the library with Qt.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Thu Jul  4 18:03:34 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.2.1:
+  + Provide a Thread::TaskManager::IncHandle class, and deprecate
+    the use of TaskManager::set_max_threads.
+  + Make the TaskManager::add_task() overload taking callable
+    objects fully exception safe.
+  + Issue a g_critical warning if a Thread::TaskManger task expires
+    with an exception, there is no 'fail' callback and the thrown
+    object is not Thread::Exit.
+  + Replace AC_CONFIG_HEADER macro with AC_CONFIG_HEADERS when
+    configuring.
+  + Update build system to automake-1.13.3.
+  + Upgrade doxygen configuration files to doxygen-1.8.4.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Sat Jun 22 11:15:50 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.2.0:
+  + Un-deprecate the overloads of EmitterArg::connect() taking a
+    Callback::FunctorArg object. This was not intended.
+  + Update git links following sourceforge repository changes.
+  + Update unit tests.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Thu May 23 10:55:17 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.1.0:
+  + Bump version to version 2.1.0 in the 2.2 series of
+    c++-gtk-utils.
+  + Provide a generic callable object interface for
+    Callback::post(), start_iowatch(), start_timeout(),
+    Emitter::connect(), Future::fail(), Future::when(),
+    Notifer::connect(), SafeEmitter::connect(),
+    TaskManager::add_task(), TaskManager::make_task_when(),
+    TaskManager::make_task_when_full(),
+    TaskManager::make_task_compose() and Thread::start();
+    deprecate the starting of tasks using Thread::Future and
+    Thread::TaskManager except by callable objects.
+  + Make move construction of AsyncQueue and AsyncQueueDispatch
+    objects strongly exception safe (async_queue.h).
+  + Remove the --with-auto-ptr option.
+  + Simplify emitter/releaser implementation now lambdas and range-for
+    are available in gcc-4.6 and above (emitter.h, emitter.cpp).
+  + No longer document the deprecated Callback::make_val() functions.
+  + Remove redundant Callback::Callback_function class.
+  + Update build system to automake-1.13.1.
+  + Stop clang++ mismatched-tags and unused-private-field warnings.
+  + Cause bootstrap scripts to build translation files.
+  + Make other documentation changes.
+- Change soname 2_0-0 defines to 2_2-0: this results in a renamed
+  package, according to the shared library packaging policy.
+
+-------------------------------------------------------------------
+Wed Mar 20 19:56:05 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.0.16:
+  + Allow the Callback::lambda() factory function to be passed
+    callable objects which are lvalues (callback.h).
+  + Deal with document format breakage from doxygen markup changes.
+  + Update documentation.
+- Changes from version 2.0.15:
+  + Make global static Notifier objects safe.
+  + Avoid use of GObject-style casts in inline functions and
+    function templates to enable user code defining
+    G_DISABLE_CAST_CHECKS to be more easily compliant with the
+    one-definition rule.
+  + Remove some other unnecessary GObject-style casts, where the
+    object concerned is created in the function where the cast is
+    carried out.
+  + Avoid deprecation warning for g_type_init() with glib>=2.36
+  + Provide a --without-gtk configuration option, to enable the
+    library to be compiled without classes which require GTK+
+    support.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Mon Jan 14 21:36:26 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.0.14:
+  + Add a Cgu::Thread::Taskmanager::change_max_threads() method
+  + Generalise the Cgu::Thread::Future and Cgu::Thread::TaskManager
+    methods which take a function object so as to take the object
+    via a template parameter rather than via a std::function
+    object, and deduce return types automatically in the
+    Cgu::Thread::Taskmanger::make_task_*() and
+    Cgu::Thread::make_future() methods.
+  + Make efficiency improvement when executing 'when' and 'fail'
+    callback in a Cgu::Thread::TaskManager object and callback in a
+    Cgu::Thread::Future object.
+  + Add test to Cgu::Thread::TaskManager unit tests
+  + Update documentation.
+
+-------------------------------------------------------------------
+Sun Dec  2 18:43:46 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.0.13:
+  + Provide TaskManager::make_task_result(),
+    TaskManager::make_task_when(),
+    TaskManager::make_task_when_full() and
+    TaskManager::make_task_compose() convenience wrapper methods
+    for target functions which return a value, for easier task
+    composition.
+  + Don't use static member function of local struct for callback
+    function.
+  + Make explicit move operations where relevant.
+  + Update unit tests.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Sun Oct  7 16:28:31 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 2.0.12:
+  + Provide a Cgu::Thread::TaskManager thread pool class for
+    multiple task to thread mapping and task_manager.
+  + Suppress deprecated warnings for g_thread_init(), 
+    GStaticRecMutex and GtkTable with glib-2.34/gtk+-3.6.
+  + Replace the sourceforge SVN repository with a sourceforge
+    git respository.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Sun Sep 16 13:32:04 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.0.11:
+  + Add move_pop() methods to AsyncQueue and AsyncQueueDispatch
+    classes, and move_pop_dispatch() and move_pop_timed_dispatch()
+    methods to the AsyncQueueDispatch class.
+  + Add move_get() method to AsyncResult class.
+  + Add move_get() method to Thread::Future class.
+  + Make AsyncResult::get() truly cancellation safe
+  + Carry out locking in the AsyncResult destructor.
+  + Make Thread::Future::get() cancellation safe.
+  + Make sure Thread::Future::get() does not hang if a call to
+    Thread::Future::run() by another thread threw.
+  + Merge c++11 branch with trunk in SVN.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Sun Jul 22 10:39:36 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 2.0.10:
+  + Enable Callback objects created with Cgu::Callback::lambda() to
+    be constructed for mutable lambda objects.
+  + Update build system to libtool-2.4.2, automake-1.12.1 and
+    autoconf-2.69.
+  + Update doxygen configuration file for doxygen-1.8.1.1.
+  + Update unit test.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Mon Jun 11 18:10:17 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.0.9:
+  + Provide a new Callback::lambda() factory function for more
+    convenient construction of callback objects from C++11 lambda
+    expressions.
+  + Provide for unblocking of threads waiting on an
+    AsyncQueueDispatch object where it acquires items from a move
+    assignment.
+  + Update unit tests.
+  + Update documentation.
+
+-------------------------------------------------------------------
+Sun May 20 14:52:02 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.0.8:
+  + Provide new Cgu::AsyncResult class.
+  + Provide copy constructors, assignment operators and swap
+    methodsfor Cgu::AsyncQueue and Cgu::AsyncQueueDispatch classes.
+  + Provide size() method for Cgu::AsyncQueue and
+    Cgu::AsyncQueueDispatch classes.
+  + Add default constructor for Cgu::Thread::JoinableHandle class.
+  + Add gcc-4.7 to the list of compilers requiring use of the
+    -std=c++0x flag.
+  + Update other documentation.
+
+-------------------------------------------------------------------
+Thu Apr 12 12:40:12 UTC 2012 - malcolmlewis@opensuse.org
+
+- Update to version 2.0.7:
+  + Fix compilation with gcc-4.7.
+  + Provide unit test for Future asynchronous functions.
+  + Avoid types deprecated in gtk+-3.4 in the Application unit
+    test, when compiled against gtk+-3.4.
+  + Update FSF address in relevant copyright notices.
+  + Update documentation.
+- Drop c++-gtk-utils-fix-incorrect-fsf-address.patch: fixed
+  upstream.
+- Drop c++-gtk-utils-gcc47.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Mar 17 21:19:38 UTC 2012 - dimstar@opensuse.org
+
+- Add c++-gtk-utils-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Sat Feb  4 03:17:21 UTC 2012 - malcolmlewis@opensuse.org
+
+- Initial build.
+- Add c++-gtk-utils-fix-incorrect-fsf-address.patch: Fix incorrect
+  FSF address (sf#3484267).

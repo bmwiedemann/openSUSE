@@ -1,0 +1,19 @@
+diff --git a/dub.json b/dub.json
+index 5d6716b..0b55f04 100644
+--- a/dub.json
++++ b/dub.json
+@@ -16,6 +16,7 @@
+     },
+     "buildTypes": {
+         "release": {
++            "dflags": ["-defaultlib=:libphobos2.so"]
+         },
+         "debug": {
+             "debugVersions": ["GC"],
+@@ -51,4 +52,4 @@
+             "versions": ["StdLoggerDisableTrace"]
+         }
+     ]
+-}
+\ No newline at end of file
++}

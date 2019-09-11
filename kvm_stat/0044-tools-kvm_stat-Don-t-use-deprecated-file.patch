@@ -1,0 +1,46 @@
+From 3af37d11f6e171ae471c128f35a35faae68cc992 Mon Sep 17 00:00:00 2001
+From: Cole Robinson <crobinso@redhat.com>
+Date: Fri, 23 Mar 2018 18:07:17 -0400
+Subject: [PATCH] tools/kvm_stat: Don't use deprecated file()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+$ python3 tools/kvm/kvm_stat/kvm_stat
+Traceback (most recent call last):
+  File "tools/kvm/kvm_stat/kvm_stat", line 1668, in <module>
+    main()
+  File "tools/kvm/kvm_stat/kvm_stat", line 1639, in main
+    assign_globals()
+  File "tools/kvm/kvm_stat/kvm_stat", line 1618, in assign_globals
+    for line in file('/proc/mounts'):
+NameError: name 'file' is not defined
+
+open() is the python3 way, and works on python2.6+
+
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+Reviewed-and-tested-by: Stefan Raspl <stefan.raspl@linux.vnet.ibm.com>
+Signed-off-by: Radim Krčmář <rkrcmar@redhat.com>
+(cherry picked from commit 0866c31bf32fbd05dd25b6ed4976fa9134773227)
+[BR: BSC#1116822]
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 2a95389d2864..04737c1a382d 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1618,7 +1618,7 @@ def assign_globals():
+     global PATH_DEBUGFS_TRACING
+ 
+     debugfs = ''
+-    for line in file('/proc/mounts'):
++    for line in open('/proc/mounts'):
+         if line.split(' ')[0] == 'debugfs':
+             debugfs = line.split(' ')[1]
+             break
+-- 
+2.19.1
+

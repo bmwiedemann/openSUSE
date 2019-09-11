@@ -1,0 +1,1241 @@
+-------------------------------------------------------------------
+Fri Mar  8 12:14:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Use newer meson features to fix a build warning.
+  + Fix build with Exiv2 0.27.
+  + Updated translations.
+- Drop Fix-build-with-Exiv2-027.patch: Fixed upstream.
+- Update URL to gitlab home. Old URL is no longer available.
+
+-------------------------------------------------------------------
+Fri Jan 18 10:03:39 UTC 2019 - bjorn.lie@gmail.com
+
+- Add Fix-build-with-Exiv2-027.patch: Fix build with Exiv2 0.27
+  (glgo#GNOME/gnome-color-manager!1).
+
+-------------------------------------------------------------------
+Sat Sep  8 10:34:01 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Updated translations.
+- Remove lang package from recommended packages as it already
+  supplements main package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Mon Mar 12 15:32:09 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Fix the build system to be more standard conformant.
+  + Updated translations.
+- Drop 0001-build-Set-PKGDATADIR-to-gnome-color-manager.patch and
+  gnome-color-manager-meson.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:27:39 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jan 29 19:48:52 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Add 0001-build-Set-PKGDATADIR-to-gnome-color-manager.patch:
+  data files where looked up in the wrong directory
+
+-------------------------------------------------------------------
+Mon Sep 11 13:02:01 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 15 13:50:56 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.90:
+  + Switch to meson build system.
+  + Updated translations.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+- Add gnome-color-manager-meson.patch: fix build system not to
+  hardcode directory names (like libexec).
+
+-------------------------------------------------------------------
+Thu Mar 23 13:11:50 UTC 2017 - zaitor@opensuse.org
+
+- Replace shared-color-profiles with colord-color-profiles
+  Requires: shared-color-profiles is obsolete, and
+  colord-color-profiles provides the profiles now.
+
+-------------------------------------------------------------------
+Mon Mar 20 20:37:51 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 11 20:35:13 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.92:
+  + Updated translations.
+- Drop intltool BuildRequires: no longer required.
+
+-------------------------------------------------------------------
+Mon Nov  7 09:58:28 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 12 13:41:24 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 15:20:41 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 13 16:25:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Fixes for man pages.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 29 09:08:14 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 15 18:04:42 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Update the UI files to adhere to the GNOME 3 UI guidelines.
+  + Use the new-style app-ids for flatpak support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 15 22:50:23 CEST 2016 - hpj@suse.com
+
+- Update to GNOME 3.20 -- Fate#318572.
+
+-------------------------------------------------------------------
+Mon Mar 21 14:38:02 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 10:24:06 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.90:
+  + Add a missing tag to the AppData file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 21 11:53:06 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 19 19:34:08 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 11:56:17 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 10:03:36 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 08:44:40 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 16 15:15:02 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Switch the profile viewer application to use a headerbar to
+    match other GNOME3 applications.
+
+-------------------------------------------------------------------
+Tue Jan 20 05:28:51 UTC 2015 - badshah400@gmail.com
+
+- Update to version 3.15.4:
+  + Bug fixed: Remove NoDisplay=true from the gcm-viewer desktop
+    file.
+  + Updated translations.
+- Add HardwareSettings to gcm-viewer.desktop to avoid brp-desktop
+  error.
+
+-------------------------------------------------------------------
+Tue Nov 11 21:28:53 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 12 11:19:29 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Prevent a crash when profiling a printer.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 10:26:44 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 11 11:49:30 UTC 2014 - dimstar@opensuse.org
+
+- Recommend instead of Require PackageKit: We only recommend
+  PackageKit - knowing that some features are not available if not
+  present. For managed setups, this does not matter, as the user is
+  not supposed to be bothered with such things anyway (bnc#895997).
+
+-------------------------------------------------------------------
+Mon Aug 18 16:40:36 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + New Features:
+    - Roughly shape test window to instrument (extra clearance).
+    - Use APPSTREAM_XML to validate AppData from libappstream-glib.
+  + Bugfix:
+    - Add <project_license> to the AppData file.
+    - Coherent display kind enum ordering.
+    - Do not lock every time we sample in gcm-picker.
+    - Port to vte-2.91 API.
+  + Updated translations.
+- Replace pkgconfig(vte-2.90) BuildRequires with
+  pkgconfig(vte-2.91), following upstreams port to vte-2.91.
+
+-------------------------------------------------------------------
+Sat Jul 12 22:47:16 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.1:
+  + New Feature: Use CdTransform to convert the sample image.
+  + Bugfix:
+    - Fix gcm_utils_image_convert() to not crash for large images.
+    - Fix several critical warnings when using gcm-viewer.
+    - Speed up deleting profiles by an order of magnitude.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul  8 15:55:42 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.3:
+  + Bugfixes:
+    - Add <project_license> to the AppData file.
+    - Coherent display kind enum ordering.
+    - Roughly shape test window to calibration instrument.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 12:35:48 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Apr 12 05:50:38 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Bugfixes:
+    - Actually show the gcm-viewer preview when changing profiles.
+    - Fix several critical warnings when using gcm-viewer.
+    - Speed up deleting profiles by an order of magnitude.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 11:08:37 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 17 11:42:18 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Roughly shape test window to instrument.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  3 11:07:38 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5:
+  + Fix a potential crash if dispcal started giving unexpected
+    data.
+  + Prevent a crash in gcm-viewer when the ICC profile cannot be
+    loaded.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 17 19:06:06 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Translate the AppData file.
+  + Add some new 16:9 screenshots.
+  + Bugfixes:
+    - ColorChecker is one word.
+    - Correct the approximate timings in the calibration dialog.
+    - Default to quick calibration, should be more than enough.
+    - Don't depend on software we are not using.
+    - Generate display profiles with a perceptual rendering intent.
+    - Laptops can have different display types too.
+    - Make gcm-picker look like a GNOME 3 application.
+    - Make it work with dispcal using stderr.
+    - Remove the 3D hull functionality.
+    - Support more display types.
+  + Updated translations.
+- Drop pkgconfig(gnome-desktop-3.0), pkgconfig(x11) and
+  pkgconfig(xrandr) BuildRequires: with the removal of 3D hull
+  functionality, those are no longer required.
+
+-------------------------------------------------------------------
+Mon Oct 14 11:06:11 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Use the new AppData screenshots.
+  + Fix grammar in the AppData description.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 24 09:30:39 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 13 15:46:41 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.92:
+  + New Features:
+    - Add an AppData description for gcm-viewer.
+    - Use the new cd_icc_get_response() provided in colord 0.1.34.
+    - Use the new cd_icc_get_vcgt() in colord 0.1.34.
+  + Bugfix:
+    - Disable GCM_DATA path prefixing for colord provided image
+      paths.
+    - Do not use a predictable name when saving the PLY temp file.
+    - Do not use g_spawn_command_line_sync() when spawning
+      executables.
+    - gcm_calibrate_is_livecd() should be linux-only.
+    - GtkStock is deprecated.
+    - Kelvin is not a graded scale.
+    - Make wrapping sensible when showing details about profiles.
+    - Tweak a few of the descriptions to reflect reality.
+    - Use CdIcc to load and save ICC profiles.
+    - Use g_ascii_dtostr() to avoid writing locale-specific floats
+      in PLY files.
+    - We need at least clutter 1.12 to properly build with mash.
+  + Updated translations.
+- Stop passing --disable-scrollkeeper to %configure, not needed
+  anymore.
+
+-------------------------------------------------------------------
+Mon May 13 09:55:10 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2:
+  + gcm_calibrate_is_livecd() should be linux-only.
+  + Use g_ascii_dtostr() to avoid writing locale-specific floats.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 15 17:34:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Make wrapping sensible when showing details about profiles.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 26 10:43:36 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 18 18:39:08 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + New Features:
+    - Add some translations for the GAMUT metadata tags.
+    - Inhibit the screensaver and user switching when calibrating.
+  + Bugfix:
+    - Do not use gtk_image_set_from_file() as we want to see the
+      error if it fails.
+    - Ignore the OPENICC_automatic_generated metadata key.
+    - Set the transient and modal values before showing the
+      window.
+    - Show the entire filename with path in gcm-viewer.
+    - Switch the profile viewer to be a dialog window.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  5 19:30:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + New Features:
+    - Get the ICC profile pre-cooked MD5 value if it is available.
+    - Show the profile problems in the viewer application.
+    - Use the new sensor metadata to avoid duplicating data tables.
+  + Bugfixes:
+    - Add a missing metadata title to the profile viewer.
+    - Add a 'Show details' button for already-installed profiles.
+    - Correct sheet/minutes counts in the calibration dailog.
+    - Do not use deprecated symbols from colord.
+    - Don't use the deprecated INCLUDES in Makefile.am.
+    - Remove gcm-dump-profile, it's no longer used.
+    - Remove the device figures now we depend on a version of
+      colord that installs them
+    - Remove the native calibration code
+    - Remove the obsolete docs
+    - Use cd_client_find_profile_by_property_sync() where available
+    - Use the UTF-8 '…' rather than '...' in UI code
+  + Updated translations.
+- Add pkgconfig(colord) BuildRequires: new versioned, verified
+  dependency.
+
+-------------------------------------------------------------------
+Thu Jan 10 16:00:50 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Bug fixes:
+    - Better initial orientation for the Lab hull
+    - Calculate the profile whitepoint using the profile transform
+    - Default to normal calibration
+    - Detect Ubuntu casper based livecd's as well
+    - For dispread skip instrument recalibration for the ColorMunki
+    - For the ColorMunki use high resolution measurement mode
+    - Get the ICC profile pre-cooked MD5 value if it is available
+    - Honour precision for dispcal
+    - Large default window size, to prevent mid operation automatic
+      resizing
+    - Move gcm-calibrate to lower right of the screen
+    - Show temperature page for more devices
+    - Use a 0.8 instead of 1.2 sized test window for Argyll
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 25 15:43:25 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 24 14:11:15 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Do not use deprecated clutter API
+  + Remove -Werror by default for development builds
+  + Use Yelp tools insted of gnome-doc-utils
+  + Updated translations.
+- Replace gnome-doc-utils-devel BuildRequires with yelp-tools,
+  following upstream.
+
+-------------------------------------------------------------------
+Wed Jun 27 08:40:23 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + Add some checks to prevent gcm-picker crashing
+  + Change display profiles to single gamma
+  + Don't emit a two critical warnings when calibrating a printer
+  + Don't hardcode the AdobeRGB profile
+  + Ensure the print profile mode is set in the calibration dialog
+  + Fix up tooltip strings
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 15 13:09:54 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.1:
+  + New Features:
+    - Explain how to use the ICC profiles on other systems
+    - Set the 'remote-profile-hash' sensor option when calibration
+      has completed
+    - When using a LiveCD, have a button the user can click on to
+      show the icc profile
+  + Bugfixes:
+    - Allow the user to select a CIE file when looking for chart
+      values
+    - Don't ask the user to choose a CIE reference when one cannot
+      exist
+    - Remove gcm-calibrate-helper as it's now unused
+    - Use CdSampleWindow from libcolord-gtk rather than our own
+      copy
+  + Updated translations.
+- Replace pkgconfig(colord) BuildRequires with
+  pkgconfig(colord-gtk), following upstreams change.
+
+-------------------------------------------------------------------
+Mon May 14 11:03:02 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.2:
+  + New Features:
+    - Show the actual ICC profile after calibration if the user is
+      using a LiveCD
+  + Bugfix:
+    - Hide the target whitepoint selection screen if the sensor is
+      a colorimeter
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:26:30 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + New Features:
+    - Add an environment variable of ENABLE_COLORHUG=1 for
+      ArgyllCMS V1.3.6
+  + Bugfix:
+    - Optimize printer target patch count for ColorMunki &
+      A4/Letter paper
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 14 14:45:11 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.91:
+  + New Features:
+    - Compile the GtkBuilder files as a GResources to speed up
+      startup
+    - Show the calibration progress bar level for new versions of
+      Argyllcms
+  + Bugfix:
+    - Allow the calibration to ask more than one interaction
+      question
+    - Correctly restore the calibration status panel after asking
+      the user a question
+    - Detect a sample misread from argyllcms and try to recover
+    - Do not show a critical warning if we re-try a failed
+      calibration
+    - Don't assume dispcal is /usr/bin/dispcal
+    - Ensure the user can quit if the calibration fails
+    - Ensure the VTE is flushed when the spawned program exits
+    - Fix a critial warning when setting the brightness
+    - Replace use of deprecated clutter api
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  7 12:39:48 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.5:
+  + New Features:
+    - Add ACCURACY_x to the list of translated metadata keys
+    - Add CONNECTION_type to the list of translated metadata keys
+    - Add SCREEN_surface to the list of translated metadata keys
+    - Add support for MAPPING_device_id
+    - Include the sensor type in the profile metadata
+    - Save the internal panel brightness in the ICC profile
+  + Bugfix:
+    - Correctly spawn profiles with spaces in the filename when
+      using gcm-import
+    - Do not show blank metadata in the profile viewer
+    - Do not use deprecated clutter API
+    - Ensure the sensor is unlocked after failing to get a sample
+      in gcm-picker
+    - Limit display profiles to Single shaper matrix, to keep
+      greyscale neutral
+    - Make the profile metadata accept regular expressions and add
+      the OSD_x keys
+    - Remove the final vestiges of gcm-session
+    - Set the reference kind when calibrating a camera device
+    - Show the profile title as the gcm-viewer window title
+    - Smaller/faster display calibration target sets
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Mon Jan 23 15:56:45 UTC 2012 - vuntz@opensuse.org
+
+- Add argyllcms Requires: calibration requires argyllcms to work.
+
+-------------------------------------------------------------------
+Tue Dec 20 10:27:35 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.3:
+  + Merge changes from version 3.2.1.
+  + New Features:
+    - Add an ICC profile metadata blacklist
+    - Add a ColorHug attach image and customised calibration
+      message
+    - Get the primaries when calibrating the screen
+    - Prefix some profile titles with 'Colorspace' or 'Test
+      Profile'
+    - Show a progress bar on the calibration action page
+    - Split out the display characterization and add a helper
+      program to test it
+  + Bugfix:
+    - Add accessible descriptions to the next/prev buttons in
+      gcm-viewer
+    - Add the the mnemonic-widget property to labels in the profile
+      viewer
+    - Before converting a .ti1 file into a .ti3 file load the
+      display calibration
+    - Connect to GSD to change the brightness, not GPM
+    - Fix compile with newer versions of clutter
+    - Force the CIE 1931 diagram to be square
+    - Initialize error pointer for gdk_pixbuf_new_from_file_at_size
+    - Move the brightness and inhibit functionality to the
+      calibration module
+    - Normalize the ti3 calibration values
+    - Ship some pregenerated ti1 files
+    - Show an interaction dialog for native samples
+    - Sort the standard and test profiles lower in the profile
+      viewer
+    - Update colorimeter artwork
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Add pkgconfig(gnome-desktop-3.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Mon Oct 17 17:59:47 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.1:
+  + New Features:
+    - Add a calibrate attach image for the 'i1 Display 3' sensor
+      device
+    - Show an error if we can't open the file passed to
+      gcm-viewer --file
+    - Speed up the profile viewer loading when scanning a large
+      number of profiles
+  + Bugfix:
+    - Do not send 'space' when argyllcms asks the user to press any
+      key
+    - Do not use g_application_release() manually
+    - Don't use the deprecated g_format_size_for_display()
+    - Don't use deprecated pango_cairo_font_map_create_context()
+    - Ensure we always set a calibration image if one exists
+    - Fix a crash when calibrating
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 26 19:29:01 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Bugfix:
+    - Fix some user visible messages not showing up in PO files
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 08:12:55 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.92:
+  + Bugfix:
+    - Ensure the calibration dialog can be set modal
+    - Escape profile titles that have markup in the titles
+    - Ignore inaccessable profiles from other user accounts
+    - Remove the GLSL demo file, it's moved to colord-playground
+    - Update the man pages to reflect reality
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  5 14:39:16 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.91:
+  + Bugfix:
+    - Set the calibration wizard to the summary page when finished
+    - Ensure the 2nd stage calibration has the larger calibration
+      square
+
+-------------------------------------------------------------------
+Thu Sep  1 14:15:31 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90:
+  + New Features:
+    - Add a --file argument to gcm-viewer to show files
+    - Allow the profile title to be changed in gcm-calibrate
+    - Ask the user for the target whitepoint when creating a
+      profile
+    - Make importing color profiles sexy
+    - Move the help files to gnome-user-docs
+    - Remove gcm-session, it's not required anymore
+    - Use cd_client_import_profile_sync() when generating profiles
+  + Bugfix:
+    - Allow writing dictionary items of longer then 512 bytes
+    - Correctly use plural forms in the calibration wizard.
+      (bgo#654247)
+    - Do not build with G_DISABLE_DEPRECATED for our future sanity
+    - Fix a crash in gcm-picker when a color sensor is plugged in
+    - Fix a critical warning in gcm-picker when CUPS printers are
+      installed
+    - Fix linking with -Wl,--as-needed
+    - Fix the profile list sorting when the user has virtual
+      profiles from CUPS
+    - Make the clutter and mash dependency non-automagic
+    - Remove the GetProfilesForDevice() DBus method call
+  + Updated translations.
+- Drop gnome-color-manager-as_needed.patch: fixed upstream.
+- Remove gnome-common BuildRequires, and call to gnome-autogen.sh:
+  those were needed for the above patch.
+
+-------------------------------------------------------------------
+Fri Jun 17 00:08:29 CEST 2011 - vuntz@opensuse.org
+
+- Add colord Requires as the daemon is needed at runtime.
+
+-------------------------------------------------------------------
+Tue Jun 14 09:37:41 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.2:
+  + Notes:
+    - The preferences panel has been moved to gnome-control-center.
+    - The device and profile registration module has been moved to
+      gnome-settings-daemon and the gcm-session process is now
+      optional.
+  + New Features:
+    - Save extra metadata in the ICC profile after calibration
+    - Translate the metadata key names in the profile viewer
+  + Removed features
+    - Remove all the rendering intent and default properties
+    - Remove support for non-native drivers in the color picker
+    - Remove the device registration functionality
+    - Remove the GSettings schema
+    - Remove the notification for out of date devices
+    - Remove the preferences panel and create a calibration wizard
+    - Remove the profile store functionality
+    - Remove the sensor plug action and sound
+    - Remove the vendor and model quirk fixups
+    - Remove the 'Working Spaces' tab from gcm-prefs
+    - Remove the X11 xrandr-output output property
+  + Bugfix:
+    - Do not reload when colord appears on the bus
+    - Don't crash when we click on a PPD virtual profile
+    - Don't show profiles without filenames in gcm-viewer
+  + Updated translations.
+- Add gnome-color-manager-as_needed.patch: Fix build with
+  -Wl,--as-needed. As the patch touches Makefile.am, add
+  gnome-common BuildRequires and call gnome-autogen.sh.
+- Drop libcolor-glib1 and -devel subpackages. This has been split
+  out to colord. Add Obsoletes for the packages from the main
+  package (without a Provides as they are not provided).
+- Remove the glib schema handling: there's no schema anymore.
+- Drop no longer needed BuildRequires: cups-devel, i2c-tools,
+  sane-backends(-devel), polkit.
+- Drop no longer needed pkgconfig()-style buildRequires:
+  gnome-settings-daemon, gudev-1.0, libgnome-control-center,
+  libnotify, libusb-1.0.
+
+-------------------------------------------------------------------
+Tue May 17 18:26:02 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.1:
+  + Notes:
+    - This is the first unstable release for GNOME 3.1.
+    - Lots of code has been moved from gnome-color-manager into
+      colord, and this means that colord is now a dependency of
+      gnome-color-manager.
+  + New Features:
+    - Add a 3D gamut hull to the profile viewer
+    - Add a metadata tab to gcm-viewer to display all the color
+      geek information
+    - Add media whitepoint and color temperature data to gcm-picker
+    - Add named color profile support to gcm-viewer
+    - Add the profile version number to the information viewer tab
+  + Removed features that are now provided by colord
+- Drop fix-i2c-include.patch: no longer required.
+- Add pkgconfig(colord) BuildRequires.
+
+-------------------------------------------------------------------
+Tue Apr  5 09:17:12 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Use /org/gnome as starting path for schemas
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 17:36:16 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.92:
+  + Add priority for gnome-settings-daemon plugin schema
+  + Remove the gtk-doc support
+  + Use plugindir from gnome-settings-daemon pkg-config file
+- Changes from version 2.91.90:
+  + Do not ask the user whether to strip the alpha channel during
+    calibration.
+  + Fix a critical warning when installing the shared-color-targets
+    data.
+  + huey: remove the dark current values before scaling for the
+    calibration matrix.
+  + huey: the CY7C63001 is paired with a 6.00Mhz crystal and it
+    takes 6 clock cycles to process a 16bit inc with carry check.
+  + huey: when reading SENSOR_MEASURE_RGB, READ_GREEN and
+    READ_BLUE, the data value is 32 bits in size.
+  + Use gcm-calculate-fudge to calculate a more accurate value of
+    HUEY_XYZ_POST_MULTIPLY_SCALE_FACTOR.
+  + Updated translations.
+- Changes from version 2.91.5:
+  + Fix GTK3 API break
+  + GUdev now requires us to set G_UDEV_API_IS_SUBJECT_TO_CHANGE to
+    be able to build.
+- Changes from version 2.91.3:
+  + New Features:
+    - Set 'ICC meta Tag for Monitor Profiles' data for future use.
+  + Bugfix:
+    - Do not create auto-profiles for XRandR devices without EDID
+      data.
+    - Don't segfault if cmsCreateRGBProfile fails. Fixes rh#653419.
+    - Never show the 'Fine tuning' section in the control center,
+      it invalidates the profiles.
+    - Remove the display tab in the color panel
+- Changes from version 2.91.2:
+  + New Features:
+    - bgo#632052: Add defines and an attach image for the DTP94
+      colorimeter.
+    - Add functionality for a virtual profile to be generated from
+      the EDID data.
+    - Add gcm_profile_get_data() and gcm_profile_set_data() which
+      can be used with the DICT tag.
+    - Add gcm_profile_guess_and_add_vcgt() to emulate a VCGT from
+      an ICC profile.
+    - Add the color temperature into the profie viewer details.
+    - At login automatically generate an ICC profile from the EDID
+      and add it to each display device.
+    - Show the color XYZ values in gcm-dump-profile
+  + Bugfix:
+   - Add and remove profiles from gcm-viewer as they are added and
+     removed from the store.
+   - Add the X-GNOME-Settings-Panel category so the control center
+     panel is not in 'Other'.
+   - Add whitepoint, rXYZ, and VCGT functionality to
+     GcmCalibrateNative.
+   - Apply some smoothing to the generated VCGT curves.
+   - Do not keep adding the auto-EDID profile if the user
+     explicitly removes it from the GUI.
+   - Do the request to PackageKit async, to avoid a 200ms lag in
+     the GUI at startup.
+   - Ensure we cancel the PackageKit DBus query if the panel is
+     unloaded.
+   - Ensure we write the colorspace back into the raw profile if we
+     generated it.
+   - If a profile is deleted, ensure it is removed from the control
+     center panel listbox.
+   - If the profile viewer was set modal over the preferences
+     dialog, then don't show a link back to the control center.
+   - Install a schema file to launch gcm-apply by default in new
+     versions of gnome-settings-daemon.
+   - Migrate away from EggDebug and use the builtin GLib logging
+     framework.
+   - Port to libnotify 0.7.0.
+   - Port to the new GtkApplication API.
+   - Read the rXYZ, gXYZ and bXYZ tags to get the profile primaries
+     before using a transform fallback.
+   - Remove deprecated Encoding key from .desktop file.
+   - Remove GcmXYZ and use proper boxed GTypes for the color
+     structures.
+   - Remove the device-specific labels on the first panel page.
+   - Remove the loading GtkInfoBox as it just makes the UI resize
+     at startup.
+   - Reorganize the first pane to stack the devices above the
+     profiles.
+   - Set all the 'Since: ' version numbers to the correct versions.
+   - Set COLOR_MEASUREMENT_DEVICE to get the correct ACL when
+     argyllcms is not installed.
+   - Use the correct icon in the profile viewer when using GNOME
+     Shell.
+- Changes from version 2.91.1:
+  + New Features:
+    - Add a gnome-settings-daemon module to fix some hard to fix
+      bugs.
+    - Add a QPcard 202 reference image
+    - Add two more example images to the viewer
+    - Add another example image to the viewer
+    - Add a reverse-engineered driver to talk to the HUEY colorimeter
+    - Add the start of a reverse engineerered ColorMunki driver
+    - Add a simple command gcm-ddc-util to be able to send custom
+      DDC packets to a monitor in userspace.
+    - Add a simple parser that can parse the output of the Beagle
+      USB capture device.
+    - Add a status property to GcmSensor to help GUI applications.
+    - Add a udev prober that makes DDC/CI i2c devices available for
+      the user to use.
+    - Add GcmCalibrateNative so we can do a calibration without
+      argyllcms.
+    - Add gcm-dump-to-values to discover new values in the register
+      space.
+    - Add GcmSampleWindow so we can measure known colors in
+      gcm-picker.
+    - Add GcmUsb, a simple object to integrate libusb-1 with the
+      GLib event loop.
+    - Add support for 100% gray colorspaces.
+    - Allow the user to flick between different images in the
+      profile viewer.
+    - Drop GcmXserver, GcmScreen and libgnomedesktop3 and make the
+      X11 code faster and cleaner.
+    - Make gcm-parse-huey be able to parse argyll -D9 traces.
+    - Make gcm-picker work with native sensor devices too.
+    - Split off a library, libcolor-glib for internal use.
+  + Bugfix:
+    - Do not crash if gcm_libusb_pollfd_remove_all() is called
+      without assigning a device.
+    - Do not install the low-level unitilies, and move them to
+      'tools'.
+    - Do not try to apply devices that are not connected.
+    - Ensure clicking 'Reset' actually resets the device and saves
+      settings.
+    - Ensure EDID strings are printable, and ignore totally junk
+      strings.
+    - Ensure we can compile with vte3.
+    - Fix a crash in gcm-picker if we compiled without VTE support.
+    - Get rid of the 'Color Profiles' section header to reduce
+      panel clutter.
+    - Include the time in the calibration basename as we can
+      calibrate more than once per day.
+    - Rename the softproof intent to 'Print Preview'.
+    - Show the correct copyright notice when a profile has used
+      markup in the description.
+- Add fix-i2c-include.patch: fix incorrect i2c header include.
+- Replace pkgconfig() BuildRequires for GNOME 3 port and other
+  updates:
+  + Old: gtk+-2.0, lcms, libcanberra-gtk, vte.
+  + New: gtk+-3.0, lcms2, libcanberra-gtk3, vte-2.0.
+- Remove now unneeded pkgconfig() BuildRequires: dbus-glib-1,
+  gconf-2.0, gnome-desktop-2.0, unique-1.0, xxf86vm.
+- Add gcc-c++, i2c-tools, pkgconfig(exiv2),
+  pkgconfig(gnome-settings-daemon), pkgconfig(libexif),
+  pkgconfig(libgnome-control-center), pkgconfig(libusb-1.0)
+  BuildRequires.
+- Replace GConf2 schemas handling with GSettings schemas handling,
+  with %glib2_gsettings_schema_* macros.
+- Create -devel and libcolor-glib1 subpackages.
+- Remove deprecated configure options --enable-hardware-detection
+  and --disable-schemas-install, and pass --disable-static.
+- Fix category for gcm-prefs.desktop for it to appear in the right
+  GNOME control center category: instead of replacing categories,
+  just add some to make our checks happy.
+
+-------------------------------------------------------------------
+Sun Feb 13 14:20:08 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Dec 14 15:09:28 CET 2010 - vuntz@opensuse.org
+
+- Own /usr/share/gnome and /usr/share/gnome/help to fix build.
+
+-------------------------------------------------------------------
+Mon Sep 27 17:31:22 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Fix compile on newer GTK2 versions where GDK_DISPLAY() is
+    deprecated
+  + Show the correct copyright notice when a profile has used
+    markup in the description
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 18 15:47:59 CEST 2010 - aj@suse.de
+
+- Change sane-backends BuildRequires to sane-backends-devel on 11.4
+  and later, after the devel split.
+
+-------------------------------------------------------------------
+Fri Sep 17 09:36:50 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.92:
+  + Don't prompt the user to calibrate the device again if we are
+    re-using the GcmCalibrate instance
+  + Ensure we disconnect the VTE signals when done with
+    GcmCalibrateArgyll
+  + Lower VTE dep and #ifdef the deprecated methods
+  + Only disable deprecated code for --enable-strict builds
+  + Put the executable name in argv[0] for argyll commands,
+    otherwise option processing breaks
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 11 00:54:42 CEST 2010 - vuntz@opensuse.org
+
+- Make gcm-prefs.desktop appear where it should in the menu, by
+  replacing the categories: X-GNOME-SystemSettings needs to be
+  removed, and we want HardwareSettings instead.
+
+-------------------------------------------------------------------
+Wed Sep  8 00:06:11 CEST 2010 - vuntz@opensuse.org
+
+- Remove libgphoto2-devel BuildRequires: this was there only as a
+  workaround for bnc#592143.
+- Change old-style BuildRequires to pkgconfig() style
+  BuildRequires:
+  + old-style: dbus-1-glib-devel, gconf2-devel,
+    gnome-desktop-devel, gtk2-devel, libcanberra-devel,
+    libgudev-1_0-devel, liblcms-devel, libnotify-devel,
+    libunique-devel, vte-devel
+  + new-style: dbus-glib-1, gconf-2.0, glib-2.0, gnome-desktop-2.0,
+    gtk+-2.0, gudev-1.0, lcms, libcanberra-gtk, libnotify,
+    unique-1.0, vte, x11, xrandr, xxf86vm.
+- This will make it easier to switch to GNOME 3 libraries.
+
+-------------------------------------------------------------------
+Tue Aug 31 19:17:16 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.91:
+  + Use a new application icon.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug  7 00:45:45 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.6:
+  + Use vte_terminal_fork_command_full() as
+    vte_terminal_fork_command() is deprecated
+  + Include the trailing colon in translated strings. Fixes #619967
+  + Clean up the temporary file created by cupsGetPPD2(). Fixes
+    rh#582202
+- Changes from version 2.30.2:
+  + Do not connect to sane in gcm-apply, we only need XRandR
+    devices. Fixes rh#585723
+  + Do not crash when the schema is invalid and GConf reports an
+    error
+  + Only connect to SANE and CUPS when the device lists are needed.
+    Fixes rh#590465
+  + Get the profile permissions from GIO rather than hardcoding a
+    hack
+  + At login do not attempt to remove previously set X atoms, which
+    speeds up gcm-apply by 750ms
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 14 15:20:03 CEST 2010 - vuntz@opensuse.org
+
+- Add HardwareSettings category to gcm-prefs.desktop, instead of
+  wrong Monitor and X-SuSE-ControlCenter-LookAndFeel.
+
+-------------------------------------------------------------------
+Fri Jun  4 17:03:23 CEST 2010 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Thu Apr 29 14:24:05 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1:
+  + Do not explode when viewing the details of a CMYK profile
+  + Make gcm-fix-profile open the profile from memory, as then we
+    can catch common access permission errors
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 29 12:56:40 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + New Features:
+    - Add a 'created' and 'modified' key to each device in the
+      config file
+    - Add a DBus method GetDevices() and relax the checks in
+      GetProfilesForDevice() to also take a device ID
+    - Add an entry to the FAQ to explain the difference between
+      calibration and characterization
+    - Add a notification when devices with profiles need
+      recalibrating
+    - Add CMP DT 003 target image
+    - Add images of the Colorimtre HCFR
+    - Add images of the i1 Pro
+    - Add info regarding high precision for display profiling
+    - Allow the user to choose the calibration precision using an
+      interactive dialog
+    - Convert the .tiff files to .jpeg if we are creating a print
+      profile
+    - Do not rely on usb.ids, but instead encode the colorimeter
+      type in the udev rules
+    - Emit ::changed on the public DBus interface when devices are
+      added or removed
+    - For laptops, use the DMI data to contruct the calibration
+      filename
+    - Make sure the profile comboboxes are alphabetically sorted
+    - Show each device setting when we use gcm-inspect --dump
+    - Use libsane to get our scanners, which means remote devices
+      are now supported
+    - When devices are connected and disconnected, do not remove
+      then add them, just change the state
+  + Bugfix:
+    - Check and correct TIFF image files with alpha channels before
+      using them in argyllcms. Fixes rh#569564
+    - Correct terminology in help file
+    - Correct use of calibrate/profile and replace device by
+      instrument
+    - Do not crash attempting to add cups printers without PPD file
+    - Do not crash the DBus service if a device does not have a
+      profile set and it is included in a query
+    - Do not crash when GetProfileForWindow() succeeds in finding a
+      window
+    - Do not use ACL_MANAGE, udev is already doing this for us
+    - Fix "cast increases required alignment of target type" [ia64]
+    - Fix up some translatable messages. Fixes bgo#612111
+    - Fix wrong word in data/gnome-color-manager.schemas.in. Fixes
+      bgo#612105
+    - If there are any lcms warnings in gcm-fix-profile, do not
+      attempt to re-save the profile
+    - Make gcm-install-system-wide a little more paranoid from
+      users that might want to be horrible
+    - Parse the EDID more carefully to not overwrite the model with
+      junk for an invalid entry.
+    - Prevent a segfault if ppdOpenFile() fails for whatever reason
+    - Update profiling precision wording
+    - Use the model name for the SANE id, the 'name' attribute
+      depends on the USB port used
+    - Warn if GConf is not set correctly when setting up the dialog
+  + Updated translations.
+- Add libnotify-devel, sane-backends BuildRequires.
+
+-------------------------------------------------------------------
+Mon Mar  1 22:27:43 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.4:
+  + New Features:
+    - Add a thumbnail image of the ColorCheckerDC
+    - Add ColorCheckerSG thumbnail
+    - Add LaserSoftDCPro thumbnail
+    - Add printer profiling support using argyllcms and GtkPrint
+    - Add some device type icons
+    - Add support for sending calibration images to print shops
+    - Add four more target thumbnails
+    - Allow UDEV and CUPS coldplug to be done multi-threaded
+    - Allow virtual devices to be added to the device list
+    - bgo#609444: Automatically use the EXIF data if available from
+      TIFF files when calibrating devices.
+    - Conform to ICC Profiles in X Specification 0.3
+    - Detect printers by connecting to CUPS rather than scraping
+      the HPLIP properties
+    - Enable half-height targets for the ColorMunki, and double the
+      patch counts for this hardware
+    - Make users do the legwork when there is an unrecognised
+      colorimeter
+    - Play sounds using libcanberra when user interaction is
+      required
+    - Properly support projectors in the UI, and in the argyllcms
+      wrapper
+    - Remove GCM_HARDWARE_DETECTION as we're now shipping our own
+      udev rules
+    - Save the device colorspace in the config file so we can set
+      profiles when not connected
+    - Set a tooltip explaining why the calibrate button is
+      insensitive
+    - Set per-user xsane global and device settings when we have
+      assigned a scanner profile
+    - bgo#610287: Show a GtkInfoBar warning if the profile has no
+      vcgt table
+    - Support other types of reference file other than IT8
+    - Three FAQ entries out of five suggested filled in
+    - Update Help Preferences Text
+  + Bugfix:
+    - bgo#610288: Add an 'All files' option on the file choosers.
+    - bgo#610771: Add AC_PROG_RANLIB to configure.
+    - bgo#566414: Add a list of colorimeters as we'll need this if
+      argyllcms is not installed.
+    - Ask for the chart type first before we ask for calibration
+      files
+    - Capitalization fix for 'More Information' button
+    - Correct help Intro and Usage (Paul Finnigan)
+    - Do low quality calibration when using targets with a low
+      number of patches
+    - Do not allow devices to be assigned profiles in different
+      colorspaces from native
+    - bgo#610846: Do not make the display calibration button
+      sensitive (with tooltip) if we are using < XRandR 1.3 drivers
+    - Do not show the display as 'default' even when using the
+      binary blob
+    - Don't add Cups-PDF devices to the device list
+    - bgo#566275: Ensure ~/.color/icc exists at startup
+    - Ensure we set ID_MODEL_FROM_DATABASE and
+      ID_VENDOR_FROM_DATABASE even if we're using old versions of
+      argyllcms
+    - Fix segfault when the profile has no description
+    - Have scanin compensate for perspective distortion
+    - HIG string and capitalization fixes
+    - Only require the device to be present if it is a display type
+    - Read the ti2 file for the calibration model if we are
+      analysing existing targets
+    - Replace ColorCheckerSG with a newly processed one
+    - Replace colprof -aS with -aG
+    - Set the colorspace on unconnected devices to avoid getting no
+      profiles in the list
+    - rh#566606: Show a label in the device section when the user
+      is using a xrandr-fallback driver.
+    - Support colorimeter devices that need to change mode in the
+      middle of the calibration
+    - bgo#610285: Use GFile internally so we can support importing
+      profiles from gvfs mount points.
+- BuildRequire libcanberra-devel, cups-devel  and libtiff-devel.
+
+-------------------------------------------------------------------
+Sat Feb 13 16:54:06 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.3:
+  + New Features:
+    - Enable the rendering intent and default colorspace UI
+      elements
+    - Show whether the ICC profile has a VCGT tag in the UI
+    - Filter out non RGB and CMYK color space profiles from the
+      combo-boxes using a heuristic
+    - Add a new DBus method GetProfileForWindow which can return a
+      profile for a supplied XID
+    - Add some new text and tooltips to the prefs dialog
+    - Add per-user OSX ICC profiles at startup
+    - Add OSX and Windows ICC profiles if they exist from mounted
+      volumes. Fixes bgo#607390
+    - Add a device profile entry of 'Other profile...' to be able
+      to easily import a profile. Fixes bgo#607389
+    - Add a precision GConf variable to control the time a
+      calibration takes. Fixes bgo#605558
+    - Screenscrape the Argyll output to better support other
+      hardware devices. Fixes bgo#605558
+    - Do not show the 'Fine tuning' expander by default, and have configuration in GConf
+  + Bugfix:
+    - Zero out GErrors after freeing. Fixes crash
+    - Add gnome-desktop path as fallback for pci.ids
+    - Do not generate an error if a display profile does not have
+      CLUT data
+    - Add gcm-fix-profile to load and then re-save existing
+      profiles using lcms
+    - Fix compile when using an ld that defaults to --as-needed
+    - Do not allow the colorspace combobox to be zero sized. Fixes
+      bgo#606484
+    - Make gcm-prefs a normal dialog rather than a modal dialog
+    - Only scan ICC locations with hfs partition types for OSX and
+      msdos/NTFS types for Windows
+    - Make gcm-prefs startup a few hundred ms quicker by not
+      loading the list of screens
+    - Cache gnome_rr_screen_new and take 0.7 seconds off the start
+      time
+    - Don't resize the window on startup. Fixes bgo#607391
+    - Update the Free Software Foundation address
+
+-------------------------------------------------------------------
+Sat Feb 13 16:25:15 CET 2010 - vuntz@opensuse.org
+
+- Cleanup packaging.
+
+-------------------------------------------------------------------
+Wed Jan 20 21:47:22 UTC 2010 - lmedinas@opensuse.org
+
+- Initial package
+

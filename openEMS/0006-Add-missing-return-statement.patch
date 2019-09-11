@@ -1,0 +1,61 @@
+From e7f120d9e07d9ab61545853cf52c9b7e87164c44 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 27 Dec 2017 08:38:08 +0100
+Subject: [PATCH 6/6] Add missing return statement
+
+---
+ FDTD/excitation.cpp | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/FDTD/excitation.cpp b/FDTD/excitation.cpp
+index 4e1ba8543a1b..69240aa8add2 100644
+--- a/FDTD/excitation.cpp
++++ b/FDTD/excitation.cpp
+@@ -60,6 +60,8 @@ bool Excitation::SetupGaussianPulse(double f0, double fc)
+ 	m_fc = fc;
+ 	m_f_max = f0+fc;
+ 	m_SignalPeriod = 0;
++
++	return true;
+ }
+ 
+ bool Excitation::SetupSinusoidal(double f0)
+@@ -68,6 +70,8 @@ bool Excitation::SetupSinusoidal(double f0)
+ 	m_f0 = f0;
+ 	m_f_max = f0;
+ 	m_SignalPeriod = 1/f0;
++
++	return true;
+ }
+ 
+ bool Excitation::SetupDiracPulse(double fmax)
+@@ -75,6 +79,8 @@ bool Excitation::SetupDiracPulse(double fmax)
+ 	m_Excit_Type = Excitation::DiracPulse;
+ 	m_SignalPeriod = 0;
+ 	m_f_max = fmax;
++
++	return true;
+ }
+ 
+ bool Excitation::SetupStepExcite(double fmax)
+@@ -82,6 +88,8 @@ bool Excitation::SetupStepExcite(double fmax)
+ 	m_Excit_Type = Excitation::Step;
+ 	m_SignalPeriod = 0;
+ 	m_f_max = fmax;
++
++	return true;
+ }
+ 
+ bool Excitation::SetupCustomExcite(string str, double f0, double fmax)
+@@ -91,6 +99,8 @@ bool Excitation::SetupCustomExcite(string str, double f0, double fmax)
+ 	m_f0 = f0;
+ 	m_SignalPeriod = 0;
+ 	m_f_max = fmax;
++
++	return true;
+ }
+ 
+ bool Excitation::buildExcitationSignal(unsigned int maxTS)
+-- 
+2.15.1
+

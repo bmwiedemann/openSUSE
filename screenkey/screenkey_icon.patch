@@ -1,0 +1,14 @@
+diff -urEbwB screenkey-screenkey-0.9/data/screenkey.desktop screenkey-screenkey-0.9.new/data/screenkey.desktop
+--- screenkey-screenkey-0.9/data/screenkey.desktop	2016-05-16 00:34:47.000000000 +0200
++++ screenkey-screenkey-0.9.new/data/screenkey.desktop	2018-11-29 13:52:31.934539127 +0100
+@@ -2,7 +2,8 @@
+ Version=1.0
+ Type=Application
+ Name=Screenkey
++GenericName=Screenkey
+ Comment=Screencast your keys
+ Exec=screenkey
+-Icon=preferences-desktop-keyboard-shortcuts
+-Categories=Utility;
++Icon=accessories-calculator
++Categories=AudioVideo;AudioVideoEditing;

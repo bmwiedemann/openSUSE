@@ -1,0 +1,29 @@
+PATCH-P1-FIX-FEATURE: Enhance wsrep.cnf (galera configuration file)
+
+wsrep_on option defines whether or not wsrep replication is enabled. 
+It's set to OFF by default since MariaDB 10.1 but we want to mention 
+this option explicitly in galera configuration file in order to bring
+it to the user's attention.
+ 
+Set the location of the wsrep library (wsrep_provider option).
+
+Maintainer: Kristyna Streitova <kstreitova@suse.cz>
+
+
+Index: mariadb-10.2.16/support-files/wsrep.cnf.sh
+===================================================================
+--- mariadb-10.2.16.orig/support-files/wsrep.cnf.sh
++++ mariadb-10.2.16/support-files/wsrep.cnf.sh
+@@ -31,10 +31,10 @@ bind-address=0.0.0.0
+ ##
+ 
+ # Enable wsrep
+-wsrep_on=1
++wsrep_on=OFF
+ 
+ # Full path to wsrep provider library or 'none'
+-wsrep_provider=none
++wsrep_provider=%{_libdir}/galera/libgalera_smm.so
+ 
+ # Provider specific configuration options
+ #wsrep_provider_options=

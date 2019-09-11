@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Fri Apr  5 12:29:20 UTC 2013 - idonmez@suse.com
+
+- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Nov 23 12:49:42 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Nov 19 16:42:38 CET 2008 - prusnak@suse.cz
+
+- fix wrong delete usage (delete.patch) [bnc#445507]
+
+-------------------------------------------------------------------
+Sat Jul  5 04:30:43 CEST 2008 - crrodriguez@suse.de
+
+- disable static libraries
+
+-------------------------------------------------------------------
+Tue Apr 17 19:02:38 CEST 2007 - prusnak@suse.cz
+
+- updated spec file to reflect expat package split
+
+-------------------------------------------------------------------
+Wed Jan  3 16:17:48 CET 2007 - prusnak@suse.cz
+
+- update to 1.0.3
+  * added dyn:evaluate() EXSLT function to evaluate strings as XPath expressions
+  * fixed segfault when stylesheet import fails
+  * user-defined scheme URIs no more encoded
+
+-------------------------------------------------------------------
+Thu Oct  5 15:38:24 CEST 2006 - cthiel@suse.de
+
+- don't require libstdc++-devel
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:18 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Aug  3 12:46:21 CEST 2005 - mjancar@suse.cz
+
+- update to 1.0.2
+- add expat gcc and libstdc++-devel fo Requires
+
+-------------------------------------------------------------------
+Tue Feb 10 17:38:22 CET 2004 - tcrhak@suse.cz
+
+- fix to build on 64 bit archs
+
+-------------------------------------------------------------------
+Thu Feb 05 18:00:59 CET 2004 - tcrhak@suse.cz
+
+- update to version 1.0.1
+
+-------------------------------------------------------------------
+Sat Jan 10 16:28:55 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Fri Jul 25 13:23:57 CEST 2003 - tcrhak@suse.cz
+
+- update to version 0.98
+
+-------------------------------------------------------------------
+Mon Jun  2 10:15:57 CEST 2003 - ro@suse.de
+
+- install man-page correctly and add to filelist 
+
+-------------------------------------------------------------------
+Thu Jan 09 15:12:41 CET 2003 - tcrhak@suse.cz
+
+- link with libexpat
+
+-------------------------------------------------------------------
+Thu Jan 02 13:13:08 CET 2003 - tcrhak@suse.cz
+
+- use type XML_Error instead of int in parser.cpp
+- fixed permissions of directory with README
+  (malfixed earlier)
+
+-------------------------------------------------------------------
+Thu Dec 19 11:35:36 CET 2002 - tcrhak@suse.cz
+
+- update to version 0.96
+
+-------------------------------------------------------------------
+Tue Apr  2 13:09:35 CEST 2002 - tcrhak@suse.cz
+
+- build with new automake/autoconf
+- fixed permissions of README
+
+-------------------------------------------------------------------
+Mon Feb 11 16:12:10 CET 2002 - tcrhak@suse.cz
+
+- update to 0.82
+- used %{_libdir} and %{_lib} macros
+
+-------------------------------------------------------------------
+Tue Jan 29 20:08:59 CET 2002 - schwab@suse.de
+
+- Link against libsupc++ and libgcc_eh if they exist, until libtool is
+  fixed.
+
+-------------------------------------------------------------------
+Tue Jun 26 13:46:45 CEST 2001 - adostal@suse.cz
+
+- fix to compile on ia64 
+
+-------------------------------------------------------------------
+Fri Jun 15 15:34:24 CEST 2001 - adostal@suse.cz
+
+- upgrade to 0.60 
+
+-------------------------------------------------------------------
+Thu Jun 14 16:48:32 CEST 2001 - adostal@suse.cz
+
+- upgrade to 0.52 and fix for new autoconf  
+
+-------------------------------------------------------------------
+Fri Apr 20 09:56:18 CEST 2001 - cihlar@suse.cz
+
+- fixed call of suse_update_config
+- fixed to compile on s390
+
+-------------------------------------------------------------------
+Wed Mar 21 14:14:51 CET 2001 - schwab@suse.de
+
+- Set CXXFLAGS to $RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Mon Mar 12 12:48:50 CET 2001 - cihlar@suse.cz
+
+- update to version 0.51
+
+-------------------------------------------------------------------
+Thu Jan  4 15:26:23 CET 2001 - cihlar@suse.cz
+
+- removed expat sources, using package expat
+
+-------------------------------------------------------------------
+Wed Nov 15 11:56:53 CET 2000 - cihlar@suse.cz
+
+- renamed sablotd -> sablot-devel
+- fixed to compile
+
+-------------------------------------------------------------------
+Mon Sep 18 09:56:34 CEST 2000 - cihlar@suse.cz
+
+- package created
+

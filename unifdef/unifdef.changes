@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Fri Dec  4 09:58:25 UTC 2015 - sweet_f_a@gmx.de
+
+- Update to 2.11:
+  * bug fixes
+  * add support for additional #if/#elif operators
+  * improve portability to Windows
+
+-------------------------------------------------------------------
+Tue Feb 25 13:45:59 UTC 2014 - sweet_f_a@gmx.de
+
+- Update to 2.10:
+  * fix a bug in the -f option's support for #undef directives
+  * improve portability to Windows
+
+-------------------------------------------------------------------
+Mon Jun 10 12:04:41 CEST 2013 - pth@suse.de
+
+- Update to 2.9:
+  * further debugging improvements
+  * improve indirect macro definitions
+  * Note in the debug output when a macro value is updated.
+  * Do not change a macro from defined to undefined.
+  * Recursive definitions no longer cause a loop.
+  * support for simple macro value indirection
+
+
+-------------------------------------------------------------------
+Mon May  6 22:19:29 UTC 2013 - sweet_f_a@gmx.de
+
+- update to 2.8:
+  * read #define and #undef preprocessor directives from auxiliary
+    header-like files given with the -f command line option.
+  * you can use -f instead of or in addition to the -D and -U options
+  * test suite fixes
+- remove unifdef-2.7-tests-fix-multimissing.sh.patch
+- fix broken (out-commented) rpm description text
+
+-------------------------------------------------------------------
+Tue Apr  2 09:47:34 UTC 2013 - sweet_f_a@gmx.de
+
+- update to 2.7:
+  * process multiple files with one invocation
+  * include filenames on #line directives when appropriate.
+  * experimental support for Windows, feedback from Windows
+    developers is welcome
+  * various bug fixes
+- add unifdef-2.7-tests-fix-multimissing.sh.patch
+ 
+-------------------------------------------------------------------
+Mon Jan 16 16:02:21 UTC 2012 - sweet_f_a@gmx.de
+
+- update to 2.6 using the latest fork of the original NetBSD
+  project
+- license changed to BSD-2-Clause
+
+-------------------------------------------------------------------
+Fri Dec  2 15:49:37 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Feb 16 23:50:39 CET 2007 - pth@suse.de
+
+- Redo cleanup patch to get unifdef working again.
+
+-------------------------------------------------------------------
+Fri Sep 29 12:52:57 CEST 2006 - pth@suse.de
+
+- Remove nasm from BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Nov  7 12:39:59 CET 2005 - pth@suse.de
+
+- Fix defattr
+
+-------------------------------------------------------------------
+Sat Nov  5 12:45:16 CET 2005 - dmueller@suse.de
+
+- fix filelist 
+
+-------------------------------------------------------------------
+Wed Nov  2 21:36:10 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Fri Jan  7 13:16:52 CET 2005 - pth@suse.de
+
+- Initial package creation
+- clean up the code.
+- autoconfiscate the package

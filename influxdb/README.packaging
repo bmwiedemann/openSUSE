@@ -1,0 +1,22 @@
+All deps have to be vendored. The source tarball is obtained as the following:
+
+1. Install godep (skip if already installed)
+
+# osc getbinaries devel:languages:go golang-github-golang-dep $distribution $arch
+# rpm -Uvh binaries/golang-github-golang-dep*rpm
+
+2. Obtain influxdb source codes
+
+# mkdir ~/go/src/github.com/influxdata
+# cd ~/go/src/github.com/influxdata
+# git clone --branch v1.7.4 https://github.com/influxdata/influxdb.git influxdb-1.7.4
+
+3. Obtain vendor dependencies
+
+# cd influxdb-1.7.4
+# dep ensure -vendor-only
+
+4. Create archive
+
+# cd ..
+# tar -Jcf influxdb-1.7.4.tar.xz --exclude-vcs influxdb-1.7.4

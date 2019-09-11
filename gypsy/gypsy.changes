@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Sat Oct 14 22:33:48 UTC 2017 - jengelh@inai.de
+
+- Update package description for gypsy-devel.
+  Rectify RPM groups.
+
+-------------------------------------------------------------------
+Thu Oct 12 11:29:13 UTC 2017 - mpluskal@suse.com
+
+- Run autoreconf call to silence configure warnings
+- Cleanup spec file a bit
+- Make building more verbose
+
+-------------------------------------------------------------------
+Wed Oct 11 23:55:54 UTC 2017 - jayvdb@gmail.com
+
+- Add -Wno-format-security to workaround compilation error on Fedora.
+- Use %make_install instead of %makeinstall
+
+-------------------------------------------------------------------
+Wed Mar  2 18:41:06 UTC 2016 - dimstar@opensuse.org
+
+- Strip "-Werror" out of CFLAGS as set by configure (using sed).
+  gypsy is old, unmaintained and when building against modern
+  technology results in having build warnings (unused / deprecated
+  functions). Fixing the code is not worth the effort, as gypsy
+  should be removed.
+
+-------------------------------------------------------------------
+Mon Jun  2 21:47:29 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add baselibs.conf, needed for libQt5Positioning5-32bit
+
+-------------------------------------------------------------------
+Thu Apr 18 09:31:24 UTC 2013 - dimstar@opensuse.org
+
+- Add gypsy-g_type_init.patch: fix build with recent glib versions:
+  g_type_init is deprecated and implicit.
+
+-------------------------------------------------------------------
+Tue Oct 23 08:33:07 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.9:
+  + Add a whitelist for what files Gypsy is allowed to open
+    (CVE-2011-0523).
+  + Add client side bindings.
+  + Add a new Discovery interface.
+  + Add a no autoterminate option to daemon.
+  + Add a debugging system.
+  + Many different bug fixes and build fixes.
+- Add pkgconfig(gudev-1.0) BuildRequires: new dependency upstream.
+- Remove gypsy-0.8-gcc46.patch, gypsy-CVE-2011-0523.patch,
+  gypsy-CVE-2011-0524.patch: all fixed upstream.
+- Remove gnome-common BuildRequires and call to gnome-autogen.sh:
+  those were only needed for one of the patches above.
+
+-------------------------------------------------------------------
+Mon Jul  9 16:54:26 CEST 2012 - vuntz@opensuse.org
+
+- Add gypsy-CVE-2011-0523.patch: add config file to restrict the
+  files that can be read. Fix CVE-2011-0523 and bnc#666839.
+- Add gypsy-CVE-2011-0524.patch: use snprintf() to avoid buffer
+  overflows. Fix CVE-2011-0524 and bnc#666839.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh for
+  gypsy-CVE-2011-0523.patch, since it touches the build system.
+
+-------------------------------------------------------------------
+Wed May  4 11:13:13 UTC 2011 - idoenmez@novell.com
+
+- Add gypsy-0.8-gcc46.patch: mark variable as unused to fix gcc 4.6
+  compilation 
+
+-------------------------------------------------------------------
+Fri Aug 13 09:50:11 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.8:
+  + Add support for dumping NMEA debug to stdout
+  + Fix overeager Garmin device detection
+  + Add support for named pipes and FIFOs
+  + Fix incorrect use of TCIOFLUSH
+  + Add support for setting baud rate on serial devices
+  + Log if we are passed an unknown option key
+  + Only open TTY devices read-write
+  + Support RMC sentences for NMEA < 2.3
+  + Add support for the N810's GPS
+
+-------------------------------------------------------------------
+Fri Aug  7 03:00:48 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.7:
+  + Support auto-start on the system bus
+  + Add Garmin->NMEA converter
+  + Fix client unreffing
+  + Migrate source to git
+- Drop gypsy-dbus-send_destination.patch: not needed anymore.
+
+-------------------------------------------------------------------
+Thu Jul 30 04:40:56 CEST 2009 - vuntz@novell.com
+
+- Use libexecdir instead of libdir.
+
+-------------------------------------------------------------------
+Wed Jun 17 17:26:35 CEST 2009 - vuntz@novell.com
+
+- Initial package.
+

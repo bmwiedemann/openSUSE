@@ -1,0 +1,21 @@
+## Path:		System/Kernel
+## Description:		Compcache settings
+## Type:                integer
+## Default:             0
+#
+# Total size to be used by compcache in kB
+# for all compressed RAM swap (ramzswap) devices.
+# 0 means to use the default size (25% of system RAM).
+# a negative value means to disable compcache.
+#
+COMPCACHE_SIZE_KB="0"
+
+## Type:		integer
+## Default:		1
+#
+# Number of compressed RAM swap (ramzswap) devices to create by compcache.
+# The devices are named as /dev/ramzswapX where X starts from 0.
+# 0 means to use the default number (number of processor cores).
+#
+COMPCACHE_NUM_DEVICES="1"
+

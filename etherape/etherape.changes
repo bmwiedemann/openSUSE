@@ -1,0 +1,188 @@
+-------------------------------------------------------------------
+Mon Jul  1 11:37:17 UTC 2019 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 0.9.18:
+  * EtherApe now is a pure GTK 3 application.
+- Changes from version 0.9.17:
+  * Replaced gnome-canvas with canvas supplied by GooCanvas.
+
+-------------------------------------------------------------------
+Fri May 18 17:10:51 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.9.17:
+  * EtherApe now requires Gtk 2.24.
+  * Fixed a bug making libglade load gnome2 libraries.
+  * Sometimes node/links windows were freezing.
+- Changes from version 0.9.16:
+  * Require only gnome-canvas, not gnome-ui.
+  * Migrate from deprecated gnome-doc-utils to yelp-tools.
+  * Updated translations.
+- Following upstream changes:
+  * Drop scrollkeeper, pkgconfig(gnome-doc-utils) and
+    pkgconfig(libgnomeui-2.0) BuildRequires.
+  * Add yelp-tools, pkgconfig(glib-2.0), pkgconfig(popt) and
+    pkgconfig(libgnomecanvas-2.0) BuildRequires.
+  * Drop usage of sed to fix doc/C/etherape.xml, file no longer
+    exists.
+  * No longer pass --disable-scrollkeeper to configure, not needed.
+- Rebase etherape-0.9.12-desktop.patch.
+- Add conditional for desktop_database_post(un) post(un) handling,
+  no longer needed on modern releases of openSUSE.
+
+-------------------------------------------------------------------
+Thu Mar 23 14:53:20 UTC 2017 - jengelh@inai.de
+
+- Remove --with-pic, this is only for static libs
+  (and there are _none at all_).
+
+-------------------------------------------------------------------
+Sun Mar  5 08:57:39 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.9.15 (boo#1028009):
+  * fixed incorrect WLAN control frames decoding
+  * fix UTF-8 encoding of several files, thanks to StrPt.
+  * read system services file instead of EtherApe one, thanks to
+    Zev Weiss.
+  * fix race condition on exit, thanks to Zev Weiss
+  * central ring option, thanks to Zev Weiss
+  * tweaks to preference windows to better work with tiling
+    managers, thanks to Zev Weiss.
+  * static background image (Glenn Feunteun)
+  * arrange nodes in 'columns' (David Goldfarb)
+- Changes for version 0.9.14:
+  * fixed incorrect WLAN control frames decoding
+  * fix UTF-8 encoding of several files, thanks to StrPt.
+  * read system services file instead of EtherApe one, thanks to
+    Zev Weiss.
+  * fix race condition on exit, thanks to Zev Weiss
+  * central ring option, thanks to Zev Weiss
+  * tweaks to preference windows to better work with tiling
+    managers, thanks to Zev Weiss.
+  * static background image (Glenn Feunteun)
+  * arrange nodes in 'columns' (David Goldfarb)
+- Packaging changes:
+  * Run spec-cleaner
+  * Add desktop file scriplets and corresponding dependencies
+  * Split lang subpackage
+
+-------------------------------------------------------------------
+Thu Dec 26 22:22:15 UTC 2013 - dimstar@opensuse.org
+
+- Own %{_datadir}/omf: we don't want to rely on scrollkeeper (or
+  rarian-scrollkeeper-compat) being installed and owning the
+  directory. And as such, we have to declare ownership (so that it
+  gets correctly removed on uninstall, if nothing relies on it
+  anymore).
+
+-------------------------------------------------------------------
+Wed Dec 18 15:12:50 UTC 2013 - meissner@suse.com
+
+- updated to 0.9.13
+  Central node option, useful for displaying routers or proxies.
+  Translations and documentation updates, plus some fixes.
+  Changes summary:
+  * Optional central node, based on work of Javier Fernandez-Sanguino Peña.
+  * re-enabled full-screen mode, thanks to nrvale0
+  * Updated spanish translation, thanks to Javier Fernandez-Sanguino Peña.
+  * Added German translation, and fixed typos, thanks to Chris Leick.
+  * Updated documentation. 
+
+-------------------------------------------------------------------
+Sun Sep 29 21:23:05 UTC 2013 - zaitor@opensuse.org
+
+- Add scrollkeeper BuildRequires, needed now due to changes made in
+  gnome-doc-utils-devel.
+
+-------------------------------------------------------------------
+Mon Sep 19 16:53:31 CEST 2011 - meissner@suse.de
+
+- updated to 0.9.12
+  * fixed a RPC remote denial of service
+- updated to 0.9.11
+  * EtherApe now can save a snapshot with all known nodes and relevant
+    informations to an XML file. With option --final-export, a dump is
+    automatically generated when a capture file is fully replayed.
+    Additionally, option --signal-export enables SIGUSR1 handling, to 
+    dump on signal.
+ 
+  * EtherApe used to have two links for connection, one for each traffic
+    direction. With this release, only one link is needed, gaining more
+    complete statistics and better resource usage.
+ 
+  * EtherApe config file is now ~/.config/etherape, instead of the older,
+    deprecated, ~/.gnome2/Etherape. Migration is automatic.
+    Filter expression is now saved.
+ 
+  * The old, deprecated, direct resolver was removed. Name resolution is now
+    only done with the full fledged threaded resolver.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Tue Feb  8 13:02:50 CET 2011 - meissner@suse.de
+
+- removed unnecessary patch
+
+-------------------------------------------------------------------
+Mon Feb  7 17:39:01 CET 2011 - meissner@suse.de
+
+- updated to 0.9.10
+  * IPV6 support, thanks to David Flamand.
+  * new statistic: average packet size.
+  * added option --min-delay, to complement --max-delay when
+    replaying from file. With this option you can replay a capture
+    in slow-motion.
+  * tweaked default service file, adding some common ports.
+  * added check for invalid proto-color mappings (debian bug 566226).
+  * removed bogus double assignement. Thanks to "johndoe123321".
+
+-------------------------------------------------------------------
+Fri Jan 14 00:03:26 UTC 2011 - malcolmlewis@opensuse.org
+
+- Fix spec file trailing \ to enable building 
+
+-------------------------------------------------------------------
+Tue Jan  4 17:55:42 UTC 2011 - malcolmlewis@opensuse.org
+
+- Update desktop patch
+- Add optflags to fix gcc warning
+- Disable scrollkeeper
+- Spec file tidy up 
+
+-------------------------------------------------------------------
+Sun Feb 28 17:49:56 UTC 2010 - bitshuffler@opensuse.org
+
+- updated to 0.9.9
+- enabled parallel building
+
+-------------------------------------------------------------------
+Mon Nov 16 14:58:12 CET 2009 - meissner@suse.de
+
+- mark desktop file as needing kdesu root wrapper. bnc#550613
+
+-------------------------------------------------------------------
+Sun Feb 24 17:14:29 CET 2008 - crrodriguez@suse.de
+
+-  use find_lang macro
+-  link "as-needed" to eliminate a large amount of unused direct dependencies
+
+-------------------------------------------------------------------
+Thu Jul 26 16:53:12 CEST 2007 - prusnak@suse.cz
+
+- changed libpcap to libpcap-devel in BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 17 13:37:59 CEST 2006 - meissner@suse.de
+
+- etherape 0.9.7
+	- bugfixes
+
+-------------------------------------------------------------------
+Wed Jun 28 00:22:56 CEST 2006 - meissner@suse.de
+
+- network traffic analysis and display ether-ape 0.9.6.
+

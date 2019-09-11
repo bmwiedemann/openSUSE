@@ -1,0 +1,191 @@
+-------------------------------------------------------------------
+Mon Apr 15 08:26:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace find -exec rm by just -delete.
+- Trim BSH 2.x changelog from description, and trim "In other
+  words" description repetition. Trim leftover filler wording
+  from description.
+
+-------------------------------------------------------------------
+Thu Feb  7 07:17:36 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against javacc and glassfish-servlet-api instead of
+  javacc3 and servlet4
+
+-------------------------------------------------------------------
+Thu Nov  1 12:44:36 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against an old system asm, but use the few shaded
+  files source files distributed in the tarball.
+- Removed patches:
+  * bsh2-ClassGeneratorUtil.patch
+  * bsh2-asm.patch
+    - not needed after the above change
+- Modified patch:
+  * beanshell-2.0b6-target.patch
+    - fix source level to correspond to the target
+
+-------------------------------------------------------------------
+Thu Oct 18 03:03:38 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Use the pom.xml file from the sources to generate maven provides
+
+-------------------------------------------------------------------
+Wed May 16 07:29:15 UTC 2018 - fstrba@suse.com
+
+- Modified patch:
+  * beanshell-2.0b6-target.patch
+    + Build with source and target 8 to prepare for a possible
+      removal of 1.6 compatibility
+
+-------------------------------------------------------------------
+Wed Sep 20 09:11:09 UTC 2017 - fstrba@suse.com
+
+- Build with whatever is the default java-devel provider
+- Modified patch:
+  * beanshell-2.0b6-target.patch
+    + specify target and source consistently
+    + fix classpath issue with javadoc generation
+- Added patch:
+  * beanshell-2.0b6-getpeer.patch
+    + fix build with jdk9
+	+ access the inacessible APIs by reflection
+
+-------------------------------------------------------------------
+Thu Sep  7 17:25:40 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * beanshell-2.0b6-target.patch
+    - Force java target level to 1.6
+- Force java source and target levels to 1.6 in order to allow
+  building with jdk9
+- Force building with java-1_8_0-openjdk-devel since javadoc errors
+  are fatal in jdk9
+
+-------------------------------------------------------------------
+Fri May 19 08:45:20 UTC 2017 - mpluskal@suse.com
+
+- Update package dependencies 
+
+-------------------------------------------------------------------
+Wed Mar 16 17:21:37 UTC 2016 - bwiedemann@suse.com
+
+- Add reproducible.patch to fix build-compare
+
+-------------------------------------------------------------------
+Tue Feb 23 17:36:36 UTC 2016 - tchvatal@suse.com
+
+- Version update to 2.0b6 bnc#967593 CVE-2016-2510
+  * Upstream developement moved to github
+  * No obvious changelog apart from the above
+- Refreshed/updated patches:
+  * bsh-2.0b5-docs.patch
+  * bsh2-ClassGeneratorUtil.patch
+  * bsh2-asm.patch
+  * bsh2-fix-tests.patch
+- Delete needless patch:
+  * bsh2-standard-script-api.patch
+- Update version in .pom files
+
+-------------------------------------------------------------------
+Tue Mar 24 11:11:46 UTC 2015 - tchvatal@suse.com
+
+- Fix the pom's to not require network and thus pass parser validation
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:04 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Tue Jul  8 08:41:24 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner.
+- Fix few rpmlint complaints
+- Kill src package as nothing seem to depend on it and it is pointless.
+
+-------------------------------------------------------------------
+Tue Jul  8 08:34:26 UTC 2014 - tchvatal@suse.com
+
+- Change the bytecode stuff.
+
+-------------------------------------------------------------------
+Thu May 15 15:39:22 UTC 2014 - darin@darins.net
+
+- disable bytecode check on sle_11
+- disable post-build-check on SLE_11 due to FHS 2.2 errors
+
+-------------------------------------------------------------------
+Thu Feb  6 13:49:20 UTC 2014 - fcrozat@suse.com
+
+- Fix license tag to SPL-1.0 or LGPL-2.0+ (bnc#862426)
+- Encure License.txt is part of main package (bnc#862426)
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:35 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Wed Aug 28 13:22:44 UTC 2013 - mvyskocil@suse.com
+
+- use add_maven_depmap from javapackages-tools
+- unversioned javadoc dir
+
+-------------------------------------------------------------------
+Thu Jul 25 11:13:39 UTC 2013 - tchvatal@suse.com
+
+- Fix build on factory with new rpm.
+
+-------------------------------------------------------------------
+Fri Mar 11 09:37:31 UTC 2011 - mvyskocil@suse.cz
+
+- Fix build of documentation, remove xalan-j2 dependency
+  * add bsh-2.0b5-docs.patch
+
+-------------------------------------------------------------------
+Mon Aug  9 09:40:21 UTC 2010 - mvyskocil@suse.cz
+
+- Add a new bsh2-src subpackage, which will be used for build of jedit
+  bnc#629375
+
+-------------------------------------------------------------------
+Wed Nov 25 07:48:04 UTC 2009 - mvyskocil@suse.cz
+
+- Updated to bsh-2.0b5
+  * Merged with bsh2-2.0-0.b5.1.jpp5.src.rpm
+- Do not use a bundled javax.script API
+- Obsoleted patches:
+  * bsh2-build.patch
+  * bsh2-crosslink.patch
+  * bsh2-java14compat.patch
+  * bsh2-java15.patch
+  * bsh2-jedit.patch
+  * bsh2-readline.patch
+
+-------------------------------------------------------------------
+Wed Mar 25 15:10:00 CET 2009 - mvyskocil@suse.cz
+
+- added xalan-j2 and ant-trax to BR for documentation build 
+
+-------------------------------------------------------------------
+Fri Mar 30 10:58:23 CEST 2007 - aj@suse.de
+
+- Add unzip to BuildRequires.
+
+-------------------------------------------------------------------
+Mon Sep 25 15:16:21 CEST 2006 - skh@suse.de
+
+- don't use icecream
+- use source="1.4" and target="1.4" for build with java 1.5
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:57 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct 17 14:04:02 CEST 2005 - jsmeix@suse.de
+
+- Current version 2.0 from JPackage.org
+

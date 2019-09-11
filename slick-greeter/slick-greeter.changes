@@ -1,0 +1,184 @@
+-------------------------------------------------------------------
+Mon Jul  8 02:53:58 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.2.5:
+  * Packaging: Fix Debian build (#122)
+  * remove mlockall (#127)
+  * Remove slick-greeter-1.2.4-FTBFS-vala-0.43.patch -- Fix Upstream FTBFS with vala 0.43 (#131)
+  * Fixed default session for manual user entry. (#129) 
+
+-------------------------------------------------------------------
+Mon May 27 13:16:31 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- fix tumbleweed build
+  * add slick-greeter-1.2.4-FTBFS-vala-0.43.patch
+
+-------------------------------------------------------------------
+Fri Dec 14 12:54:01 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.2.4:
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Nov 30 17:46:42 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.2.3:
+  * background.vala: Fix build with vala 0.42 (no default value
+    allowed when using custom getter).
+  * Update translations.
+- Remove slick-greeter-fix-vala-0.42.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Oct 25 12:16:46 UTC 2018 - sor.alexei@meowr.ru
+
+- Add slick-greeter-fix-vala-0.42.patch: Fix build with Vala 0.42
+  (no default value allowed when using custom getter,
+   commit ed52e2b).
+- Add slick-greeter-gtk-3.20.patch: Restore GTK+ 3.20 support.
+
+-------------------------------------------------------------------
+Tue Jun 26 17:30:24 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.2.2:
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat May 26 10:16:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.2.1:
+   * Fix background if the image file is not readable.
+   * Update translations.
+
+-------------------------------------------------------------------
+Thu May 10 13:43:54 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.2.0:
+  * Add support for numlockx - updated README.
+  * slick-greeter.vala: Clear the AT_SPI_BUS property on the root
+    window on exit, so the user session components won't fail to
+    connect.
+  * greeter: Avoid expensive Python calls when it isn't needed.
+  * Silence GTK+ 3.22 warnings relating to deprecation in Gdk.Screen.
+  * Add an option to show GUI on a specific monitor.
+  * Fix HiDPI auto-detection.
+
+-------------------------------------------------------------------
+Fri Dec 29 18:52:22 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.1.4:
+  * Fix build with vala >= 0.39.
+
+-------------------------------------------------------------------
+Fri Dec  1 22:12:44 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.1.3:
+  * main-window: Calculate the really needed screen size properly.
+
+-------------------------------------------------------------------
+Fri Nov 24 20:58:01 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.1.2:
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Nov 18 00:00:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.1.1:
+  * Settings: Reset config keys to default if not in config file.
+
+-------------------------------------------------------------------
+Sat Nov  4 10:10:46 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.1.0:
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Oct 28 19:57:36 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.9:
+  * Remove a broken symlink.
+  * Session detection: Add support for more DE/WM.
+  * Add tooltips to applets.
+  * Add support for numlockx.
+  * Rename background-logo -> other-monitors-logo.
+  * Other monitors logo: Use full opacity.
+  * Make panel indicators optional.
+  * Fix compilation warnings.
+  * Remove idle_timeout.
+  * Add a GNOME 3.26 X.org session and an Ubuntu X.org equivalent
+    session.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Jun 21 16:11:48 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.8:
+  * Kill onboard and orca on session startup.
+
+-------------------------------------------------------------------
+Fri Jun 16 07:42:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.7:
+  * Badges: Don't hardcode any logic related to badge names.
+  * Badges: Prefer SVG over PNG.
+  * badges: Convert some badges to svg.
+  * Describe options in the README and the man page.
+  * badges: more svg converts.
+  * Add plasma to the list of default sessions.
+  * A11y: Fix HighContrast option.
+  * Remove condescending comment in the code.
+  * Explicitly set the keyboard layout.
+  * Increase onscreen keyboard height.
+  * Make error text bold and yellow.
+
+-------------------------------------------------------------------
+Fri Jun  9 07:16:28 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.6 (changes since 1.0.4):
+  * backgrounds: Fix determination of what to display as a
+    background.
+  * Fix prompt display in GTK+ 3.20 or newer.
+  * Background: If no user background is set/used, fallback to the
+    system background.
+
+-------------------------------------------------------------------
+Wed May 24 14:40:01 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.4:
+  * Handle errors from liblightdm.
+  * dash-entry.vala: Improve position of the hint text draw in the
+    password entry box - it should be more centred now instead of
+    in the upper left corner.
+  * prompt-box.vala: Remove custom allocation code - everything
+    works correctly without it. With it, entries are often under-
+    or over- allocated, with the result being the active user's
+    password entry sometimes does not have enough room to be visible.
+  * background: Don't realize() this immediately - only start the
+    image gathering thread during initialisation. Wait for the main
+    window to be realised before passing its cairo surface to the
+    background object and drawing the background for the first time.
+  * slick-greeter.vala: Disconnect the event filter when the main
+    window is destroyed, otherwise we can continue to receive
+    events on the filter when we no longer have a backing GdkWindow
+    to act upon (causing a segfault).
+
+-------------------------------------------------------------------
+Sat May 20 10:10:42 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.3:
+  * Add greeter icon support for budgie-desktop.
+  * Remove some Unity elements from the man page.
+  * Add missing man pages.
+
+-------------------------------------------------------------------
+Sun May 14 16:04:41 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.2:
+  * Fix session validation (gh#linuxmint/slick-greeter#25).
+  * Session validation: Refactor in case the variable is null.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed May  4 17:44:11 UTC 2017 - sor.alexei@meowr.ru
+
+- Initial package.

@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Fri Mar 20 20:13:17 UTC 2015 - coolo@suse.com
+
+- updated to version 1.0.5
+ * [feature] Support for :nullify_blank option when configuring a virtus module (lucasmazza)
+
+-------------------------------------------------------------------
+Tue Feb 10 18:41:52 UTC 2015 - coolo@suse.com
+
+- updated to version 1.0.4
+
+-------------------------------------------------------------------
+Thu Dec 18 13:35:35 UTC 2014 - tboerger@suse.com
+
+- Initial packaging of 1.0.3
+

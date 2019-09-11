@@ -1,0 +1,366 @@
+-------------------------------------------------------------------
+Sat Jun 15 17:44:37 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.66:
+  + Added API call, babl_space_get_rgb_luminance.
+  + Make most SIMD code-paths optional again on i686.
+
+-------------------------------------------------------------------
+Sun May 26 14:51:50 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.64:
+  + Support for Hygon Dhyana, and Y~aA formats for symmetric
+    completeness.
+  + Code consistency, gitlab CI, autotools and meson build
+    improvements.
+
+-------------------------------------------------------------------
+Wed Mar 20 20:30:14 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.62:
+  + Initial CMYK spaces with lcms2 based ICC support, much room for
+    optimization.
+  + Improved custom space support for palette formats.
+  + scRGB space, works like sRGB but always with linear TRCs.
+  + Model introspection API permitting low overhead checks whether
+    a format/model is RGB, CMYK type of alpha and similar.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:21 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.1.60:
+  + Improved thread safety, acceleration for R'G'B'A u8 ->
+    cairo-ARGB32 conversion.
+
+-------------------------------------------------------------------
+Wed Oct 24 05:49:25 UTC 2018 - sean@suspend.net
+
+- Update to version 0.1.58:
+  + Preserve color of transparent pixels in conversion to
+    premultiplied alpha.
+  + Added single precision code-paths for faster fallback/reference
+    conversions.
+  + New BABL_ICC_INTENT_PERFORMANCE bitflag for combing with intent
+    as bitflags.
+
+-------------------------------------------------------------------
+Thu Aug 30 09:52:07 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
+
+- Update license to LGPL-3.0-or-later AND GPL-3.0-or-later per the
+  feedback from legal.
+
+-------------------------------------------------------------------
+Thu Aug 23 20:43:59 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.1.56:
+  + Improvements to the caching of profiled conversion chains
+    between invocations by ignoring unknown bits in cache file and
+    remember which conversions yielded reference fishes.
+- Changes from version 0.1.54:
+  + Export babl_space_get_icc, babl_space_get,
+    babl_model_with_space, babl_space_with_trc,
+    babl_format_get_encoding, babl_model_is, SSE2 versions of YA
+    float and Y float to CIE L float.
+
+-------------------------------------------------------------------
+Thu Jul  5 11:11:29 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.1.52:
+  + Concurrency fixes and fixes to handling of 0/1 entry palettes.
+  + Do not pre-equalize XYZ conversion matrices for sRGB.
+  + Internal clean-ups.
+  + Pre-define ACES2065-1 and ACEScg BablSpaces.
+  + Add R~G~B~ set of spaces, which for all BablSpaces mean use
+    sRGB TRC.
+
+-------------------------------------------------------------------
+Mon May 21 00:47:05 UTC 2018 - plinnell@opensuse.org
+
+- Update to version 0.1.50:
+  + Improvements to speed and precision of indexed code.
+  + Improvements to mesonbuild.
+
+-------------------------------------------------------------------
+Wed May 16 18:21:48 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.1.48:
+  + Fix u8 <-> double conversions for chroma, SSE2 version of RGBA
+    float to CIE L / Lab.
+  + Build with -Ofast by default.
+
+-------------------------------------------------------------------
+Tue May  8 18:39:15 UTC 2018 - bjorn.lie@gmail.com
+
+- Add baselibs.conf, build 32-bit support.
+
+-------------------------------------------------------------------
+Wed Apr 18 21:00:11 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.1.46:
+  + Added extensions with more coverage for u32, half and other
+    utilit fast paths.
+  + Improving fast path coverage.
+
+-------------------------------------------------------------------
+Wed Mar  7 23:37:29 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.1.44:
+  + Fix bug in custom primaries/ICC fast paths, improve meson
+    build.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:23:25 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jan 26 18:41:35 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.1.42:
+  + Fully initialize fishes when loading from cache.
+
+-------------------------------------------------------------------
+Mon Jan 22 00:54:18 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 0.1.40:
+  + Added:
+    - Format "CIE XYZ alpha" color model and formats;
+    - Meson build; being tested in parallel with automake.
+  + New API babl_process_rows for reduced overhead in some
+    scenarios; though bigger gains seen also for regular
+    babl_process with reimplemented branch-free dispatch, and
+    faster cbrt.
+  + Improved reference conversions for formats skipping some of
+    models components.
+  + Fixed gamma handling in indexed/palettized formats and improved
+    gamma precision consistenct in sse2 conversions.
+
+-------------------------------------------------------------------
+Sun Dec 31 01:49:35 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups. Drop comment about author extraction (not used
+  for specfiles in general anymore).
+
+-------------------------------------------------------------------
+Thu Dec 28 09:33:28 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.1.38:
+  + Added format "CIE L float", a couple of protections against
+    division by 0.0.
+- Changes from version 0.1.36:
+  + Optimized customized primary aware code paths for CIE
+    Lab<->RGB conversions, improved accuracy of gamma
+    approximations.
+  + New API babl_format_exists() for checking validity of babl
+    format name, crash proofing of cache handling and use of
+    environment variables.
+
+-------------------------------------------------------------------
+Sun Nov  5 20:45:52 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 0.1.34:
+  + Brown paper bag release
+  + Fix indexed / custom primaries conflict
+  + Re-export a symbol used by old GEGL/GIMPs
+- Changes from version 0.1.32:
+  + Added custom primaries and TRC support through ICC parsing
+  + Improved float<->half performance
+  + Rewrite of all conversions functions to adhere to new signature
+
+-------------------------------------------------------------------
+Thu Aug 24 10:44:54 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.1.30:
+  + Thread stability for palette modes, stricter alpha
+    preservation, now cross-compilable on android.
+
+-------------------------------------------------------------------
+Tue Jul  4 10:29:34 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.1.28:
+  + Fast paths for Lav <-> Lch, release triggered by pending GIMP
+    release.
+
+-------------------------------------------------------------------
+Thu May 18 21:24:44 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.1.26:
+  + Build and install HCY color space, platform independences fixes
+    to fish cache.
+
+-------------------------------------------------------------------
+Sun Feb  5 22:02:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.1.24:
+  + Improvements to profile cache persistance, fast paths that
+    improve actual GIMP use on various precisions, use single
+    precision constants for some more of CIE computions.
+
+-------------------------------------------------------------------
+Wed Jan 11 11:39:11 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.1.22:
+  + Added cache of profiled conversions, added HCY color model,
+    some precision and performance updated for fast paths.
+- Changes from version 0.1.20:
+  + Fix run-time errors, leaks, and race conditions. Add
+    conditional fast paths.
+
+-------------------------------------------------------------------
+Tue Jun 21 18:00:38 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.1.18:
+  + Bugfix: take alpha threshold in consideration when processing
+    floats in SSE2.
+
+-------------------------------------------------------------------
+Fri Apr 15 17:03:45 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Fri Mar 11 12:26:19 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.1.16:
+  + Improvements to half float reference, SIMD, and fast-paths, and
+    CIE float fast paths; cleanups of fast path extensions.
+
+-------------------------------------------------------------------
+Thu Nov 26 03:30:16 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.1.14:
+  + sRGB precision tuning
+  + Stability fixes
+  + Locale fix for setting error tolerance.
+
+-------------------------------------------------------------------
+Wed Feb 11 12:34:27 UTC 2015 - zaitor@opensuse.org
+
+- Drop vala, libtool and gobject-introspection-devel BuildRequires,
+  they are no longer needed.
+- Due to above changes, no longer define build_vala, stop passing
+  autogen.sh to configure, nor --enable-introspection or
+  --without-vala.
+- Drop typelib-1_0-Babl-0_1 Requires from devel package, it no
+  longer exists.
+
+-------------------------------------------------------------------
+Sat Feb  7 17:57:15 UTC 2015 - sfalken@opensuse.org
+
+- Update to version 0.1.12:
+  + optimizations for floating point conversions, HSV and HSL
+    color models
+  + removal of dead code
+  + fixed CIE Lab conversions
+- Patches Dropped:
+  + babl-fix-gir-build.patch
+  + babl-fix-gir.patch
++ Modified .spec to remove typelib package and gir-related %files
+  entries.  Package no longer provides them. 
+
+-------------------------------------------------------------------
+Tue Apr  3 08:16:25 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.1.10:
+  + LUT based speedups for gamma correction / uncorrection.
+- Changes from version 0.1.8:
+  + Added support for indexed/pallette based formats.
+  + Constified API.
+- Pass --enable-introspection to configure to make sure we build
+  introspection support.
+- Add babl-fix-gir-build.patch: this fixes the build of
+  introspection (as well as the generated data).
+- Since the build of vala bindings is broken, temporarily disable
+  it with a build_vala macro that helps us pass --without-vala to
+  configure.
+
+-------------------------------------------------------------------
+Tue Jan 10 16:46:07 UTC 2012 - dimstar@opensuse.org
+
+- Add babl-fix-gir.patch: Fix building of the .gir and .typelib
+  files.
+- Add vala and gobject-introspection BuildRequires to build the
+  introspection and vala support.
+- Create typelib-1_0-Babl-0_1 subpackage for typelib.
+- Add typelib-1_0-Babl-0_1 Requires to -devel package.
+- Add libtool BuildRequires and call to autogen.sh as the patch
+  babl-fix-gir.patch touches the build system.
+
+-------------------------------------------------------------------
+Sun Nov 20 12:49:10 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.1.6:
+  + Build improvements
+  + Remove blatantly wrong conversions from extensions
+  + Made it possible to distinguish format_n formats from others
+  + Improvements to vala/gobject introspection support.
+
+-------------------------------------------------------------------
+Sat Sep 17 16:30:09 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Sat Apr 16 20:44:50 UTC 2011 - mrdocs@opensuse.org
+
+- Update to version 0.1.4: 
+  + many build and autotool fixes
+  + Add experimental introspection support - disabled by default
+  + Add code to handle N-components.
+
+-------------------------------------------------------------------
+Mon May  3 06:15:36 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Fri Jan 15 15:23:06 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.2:
+  + Made babl mostly threadsafe (sufficient for GIMP/GEGLs needs).
+  + Streamlined core functionality, reducing number of function
+    calls and removing overeager instrumentation.
+- Drop babl-fix-install.patch: fixed upstream. The autoreconf call
+  can also be removed.
+- Rename libbabl-0_0-0 to libbabl-0_1-0, following soname change.
+  This also means we can remove the Provides/Obsoletes for
+  babl-0_0.
+
+-------------------------------------------------------------------
+Fri May 22 14:30:48 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.1.0:
+  + Support for RGBA representation in the frequency domain
+  + Un-pre-multiply close-to-zero alpha values to complete black
+    instead of slightly brighter than black
+  + Add a BABL_ALPHA_THRESHOLD constantto the API
+  + Do a complete overhaul of the babl API
+  + Do some changes to increase portability of the library.
+- Drop babl-undefined.patch: fixed upstream.
+- Add babl-fix-install.patch to fix the build.
+- Remove babl-0_0 package and make libbabl-0_0-0 provide/obsolete
+  it.
+- COPYING.lesser doesn't exist anymore. The package is LGPLv3+
+  only (no more GPL).
+
+-------------------------------------------------------------------
+Mon Dec 15 19:16:10 CET 2008 - sbrabec@suse.cz
+
+- Fixed undefined operation (bnc#449633).
+
+-------------------------------------------------------------------
+Wed Oct 22 09:32:55 CDT 2008 - maw@suse.de
+
+- Make debug packages require a specific %{version}-%{release}.
+
+-------------------------------------------------------------------
+Mon Sep  8 13:44:15 CEST 2008 - dmueller@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Jul 21 14:16:57 CEST 2008 - sbrabec@suse.cz
+
+- New SuSE package.
+

@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Mon May 20 11:51:08 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.1.4
+  * Add needs_ssh to the connection module to fix a backwards
+    incompatible change
+
+-------------------------------------------------------------------
+Thu Apr 25 09:25:33 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.1.2
+  * Try a few different executables (not only python) to check for
+    a working one, in order of preference, starting with python3 and
+    ultimately falling back to the connection interpreter
+  * Fix an issue with remote Python interpreters that might not be
+    python, like in distros that use python3 or similar.
+  * Allow to specify --context to kubernetes connections
+  * When a remote exception happens using the JsonModuleExecute,
+    include both stderr and stdout.
+  * Create other connection backends aside from ssh and local:
+    kubernetes, podman, docker, and openshift.
+  * Adds new remote function/module execution model for non-native
+    (for execnet) backends, so that modules will work in backends
+    like kubernetes.
+  * Create a helper (remoto.connection.get()) for retrieving connection
+    backends based on strings
+  * Increase the test coverage.
+  * Allow using localhost, 127.0.0.1, and 127.0.1.1 to detect local
+    connections (before the full hostname was required, as returned by
+    socket.gethostname())
+  * No longer require creating logging loggers to pass in to connection
+    classes, it will create a basic one when undefined.
+- turn the test suite on
+
+-------------------------------------------------------------------
+Fri Feb  8 13:36:12 UTC 2019 - ncutler@suse.com
+
+- spec: fix tarball URL 
+- use official upstream release tarball
+
+-------------------------------------------------------------------
+Fri Feb  8 11:50:54 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- spec: python3-ify
+- as of https://github.com/ceph/ceph/pull/26262 this package is a
+  runtime dependency of Ceph
+- update to 0.0.35:
+  + see changelog at https://github.com/alfredodeza/remoto/blob/master/CHANGELOG.rst
+
+-------------------------------------------------------------------
+Sun Feb 21 19:47:42 UTC 2016 - astieger@suse.com
+
+- update to 0.0.27:
+  + (releases (0.0.23..27) fix various issues related to stdout/err
+  + package a license file (boo#967555)
+
+-------------------------------------------------------------------
+Thu Jan 28 12:11:42 UTC 2016 - ncutler@suse.com
+
+- spec file
+  + set Group: to Development/Languages/Python
+  + set Source0: to the full URL
+
+-------------------------------------------------------------------
+Thu Jan 28 11:10:11 UTC 2016 - ncutler@suse.com
+
+- Use tarball from pypi.python.org instead of rolling our own from git
+- spec file
+  + simplify setup
+  + remove references to non-existent doc files
+
+-------------------------------------------------------------------
+Fri Oct 31 16:53:32 UTC 2014 - osynge@suse.com
+
+- Updated to 0.0.23
+  + Create a better detection mechanism for remote ``sudo`` needs
+  + Do not override remote environment variables to set the ``$PATH``
+  + Fix unneeded ssh connection when using FQDN hosts
+  + Output the exact same order of remote ``stdout`` and ``stderr``
+
+-------------------------------------------------------------------
+Mon Jul 21 14:05:47 UTC 2014 - osynge@suse.com
+
+- Updated to 0.0.19
+  + add some imports to init so that they are easier to use
+  + make vendor libraries optional
+
+-------------------------------------------------------------------
+Mon Jul  7 12:30:01 UTC 2014 - osynge@suse.com
+
+- Removed embeded python-execnet.
+- Removed unneeded dependendcies and build dependencies.
+- Replaced summary and description.
+- Removed unneeded build enviroment variables.
+
+-------------------------------------------------------------------
+Fri Jul  4 19:19:56 UTC 2014 - osynge@suse.com
+
+- First packaging based upon ceph-deploy-1.5.7

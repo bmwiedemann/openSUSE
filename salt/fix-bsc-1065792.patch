@@ -1,0 +1,25 @@
+From 30a4053231cf67f486ca1f430dce563f7247d963 Mon Sep 17 00:00:00 2001
+From: Bo Maryniuk <bo@suse.de>
+Date: Thu, 14 Dec 2017 16:21:40 +0100
+Subject: [PATCH] Fix bsc#1065792
+
+---
+ salt/states/service.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/salt/states/service.py b/salt/states/service.py
+index c5bf3f2d54..a5ec426ec4 100644
+--- a/salt/states/service.py
++++ b/salt/states/service.py
+@@ -80,6 +80,7 @@ def __virtual__():
+     Only make these states available if a service provider has been detected or
+     assigned for this minion
+     '''
++    __salt__._load_all()
+     if 'service.start' in __salt__:
+         return __virtualname__
+     else:
+-- 
+2.13.7
+
+

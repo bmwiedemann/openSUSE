@@ -1,0 +1,143 @@
+-------------------------------------------------------------------
+Sat Jun 22 15:44:21 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- update to 0.3.0
+  * Stable release of 0.2.90
+  * Fixed build issues
+  * Translation updates
+- replace ed with sed
+
+-------------------------------------------------------------------
+Tue Mar  5 17:16:12 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- update to version 0.2.90
+  * GTK3 Port
+  * Resume playback after replacing queue (bxo#9100)
+  * Translation updates
+
+-------------------------------------------------------------------
+Tue Oct  3 08:04:21 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description. Remove redundant %clean section.
+
+-------------------------------------------------------------------
+Mon Dec 26 12:23:54 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 0.2.3
+  - fix ambiguity between GLib.Timeout and Gtk.Timeout (bxo#11062)
+  - use AC_CONFIG_HEADERS in configure.in.in (bxo#11063)
+  - unlock mutex in connect instead of connect_thread, otherwise
+    we'd try to unlock an unlocked mutex (bxo#10366)
+  - translation updates
+- do not package ChangeLog file, NEWS is enough
+
+-------------------------------------------------------------------
+Tue Apr  3 12:13:07 UTC 2012 - gber@opensuse.org
+
+- specfile cleanup
+- split off -lang subpackage
+
+-------------------------------------------------------------------
+Sun Oct 23 19:28:23 UTC 2011 - gber@opensuse.org
+
+- update to version 0.2.2
+  - add status-icon to hide Xfmpc and keep it running in the
+    background
+  - add a Shortcuts dialog to show existing shortcuts
+  - tweak visual aspects
+  - fix misc bugs
+
+-------------------------------------------------------------------
+Fri Feb 18 00:22:52 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+
+-------------------------------------------------------------------
+Thu Feb  3 19:56:00 UTC 2011 - gber@opensuse.org
+
+- update to version 0.2.1
+  - support for consume and single modes
+  - set Xfmpc window title to what is currently playing in mpd
+  - port to libxfce4ui
+  - port to automake 1.11
+  - Remove dependency on xfce4-vala
+  - bugfixes
+
+-------------------------------------------------------------------
+Wed Dec 29 20:29:14 UTC 2010 - gber@opensuse.org
+
+- corrected group
+- corrected license
+- imporved summary, description
+- added missing build dependencies
+- remove unsupported locales
+
+-------------------------------------------------------------------
+Wed Nov 11 15:44:58 CET 2009 - prusnak@suse.cz
+
+- updated to 0.2.0
+
+-------------------------------------------------------------------
+Fri Apr  3 13:18:08 CEST 2009 - prusnak@suse.cz
+
+- updated to 0.1.0
+  * 0.1.0
+    - Preferences dialog for the MPD server and the appearance
+    - An about dialog
+    - Display the song position in the playlist
+    - The database browser shows filenames already in the playlist in bold
+    - A statusbar with the number of songs and total time of the playlist
+    - A Replace item in the database browser context menu
+    - A Browse item in the database browser (search results) and the playlist
+      context menus to go to the directory of a song
+    - An information item in the playlist context menu
+    - Fix misc bugs
+    - New translations: Swedish, Turkish, Portuguese, Czech, Basque, Italian,
+      Spanish, Catalan
+  * 0.0.7
+    - Add a search entry in the database browser
+    - Add a right click menu in the database browser to add the selected songs
+    - Add a right click menu in the playlist to remove the selected songs
+    - Fix misc bugs
+    - New translations: Finnish, Indonesian, Japanese, Ukrainian
+  * 0.0.6
+    - New button that displays a context menu
+    - Possibility to switch repeat and random in the context menu
+    - Reload the database view on changes (mpc update)
+    - Fix misc bugs
+  * 0.0.5
+    - Add Clear Playlist and Refresh Database buttons
+    - Clean up XfmpcInterface, move GtkWindow code to main.c
+    - Fix misc bugs
+
+-------------------------------------------------------------------
+Wed Apr  2 15:20:26 CEST 2008 - prusnak@suse.cz
+
+- updated to 0.0.4
+  * 0.0.4
+    - Add a database browser with the ability to add songs
+    - Add behaviors in the filter entry of the playlist
+    - Be more efficient with playlist refreshes
+    - Fix misc bugs
+  * 0.0.3
+    - New widget XfmpcExtendedInterface which displays notebook pages
+      selectable through a combo box
+    - New widget XfmpcPlaylist with a filter entry
+    - Save the state of the window (sticky window, size)
+    - Installs a desktop file entry
+    - Emit signals on changes instead of setting a bitfield inside
+      XfmpcMpdclient
+  * 0.0.2
+    - Keybindings (Ctrl+B/P/S/F/V) to go backwards, play/pause, stop,
+      go forwards, and open the volume slider
+    - A cleaner interface to libmpd, with status handling
+    - A GObjectified XfmpcMpdclient
+    - A GObject XfmpcPreferences interface, so far it remembers the
+      last position of the XfmpcInterface
+
+-------------------------------------------------------------------
+Sun Jan 20 19:25:23 CET 2008 - bwalle@suse.de
+
+- initial package
+
+-------------------------------------------------------------------

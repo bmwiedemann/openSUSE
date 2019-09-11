@@ -1,0 +1,548 @@
+-------------------------------------------------------------------
+Wed Jul 10 13:17:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove merged patches:
+  * 0001-Fix-sizeof-call-in-faad2.patch
+  * 0002-Allow-any-avcodec-to-be-detected-by-configure.patch
+  * 0003-Fix-AVCODEC_HEADER-macro-replacement.patch
+  * 0005-ffmpeg4-conversion-fixing-the-erroring-ones-only.patch
+
+-------------------------------------------------------------------
+Wed Jul 10 13:17:27 UTC 2019 - tchvatal@suse.com
+
+- Update to version 1.2.4+git20180804.fff99cd:
+  * Should be LIBAVCODEC_LIBS rather than AVCODEC_LIBS in both configure.ac and plugis/ffmpeg/Makfile/am
+  * ffmpeg4 conversion fixing the erroring ones only
+  * Ignore prepared patches in git checkout
+  * Fix AVCODEC_HEADER macro replacement
+  * Allow any avcodec to be detected by configure
+  * Fix sizeof call in faad2
+
+-------------------------------------------------------------------
+Wed Jun 13 09:01:47 UTC 2018 - tchvatal@suse.com
+
+- Update to version 1.2.4+git20180207.666c35c:
+  * remove generated file that got committed somehow
+  * cleanup - remove all the .cvsignore files
+  * remove another .cvsignore file
+  * remove typo
+  * add a bunch more generated files to ignore
+  * more files added
+  * add more files
+  * switch to .gitignore from .cvsignore
+  * remove m4/avcodec.m4, not needed with changes to configure.ac
+  * don't need avcodec.m4 with changes to configure.ac
+- Remove merged patches:
+  * libquicktime-1.2.4-integer_overflow.patch
+  * libquicktime-1.2.4-multiple_vulnerabilities.patch
+- Remove all local patches:
+  * libquicktime-faad2.patch
+  * libquicktime-1.2.4-ffmpeg2.patch
+  * libquicktime-1.2.4-ffmpeg29.patch
+  * libquicktime-1.2.4-ffmpeg4.patch
+- Readd patches to be rebased from the git:
+  * 0001-Fix-sizeof-call-in-faad2.patch
+  * 0002-Allow-any-avcodec-to-be-detected-by-configure.patch
+  * 0003-Fix-AVCODEC_HEADER-macro-replacement.patch
+  * 0005-ffmpeg4-conversion-fixing-the-erroring-ones-only.patch
+
+-------------------------------------------------------------------
+Wed Jun 13 09:01:11 UTC 2018 - tchvatal@suse.com
+
+- Switch to Git snapshots as upstream moved to git, use _service
+
+-------------------------------------------------------------------
+Mon Jun 11 08:50:38 UTC 2018 - tchvatal@suse.com
+
+- Remove redone patch:
+  * libquicktime-ffmpeg3.patch
+- Add patch to work with ffmpeg4:
+  * libquicktime-1.2.4-ffmpeg2.patch
+  * libquicktime-1.2.4-ffmpeg29.patch
+  * libquicktime-1.2.4-ffmpeg4.patch
+
+-------------------------------------------------------------------
+Fri May  4 14:03:47 UTC 2018 - olaf@aepfle.de
+
+- Use ffmpeg3 versions of pkgconfig(libav*)
+
+-------------------------------------------------------------------
+Sat Apr 21 12:56:48 UTC 2018 - jengelh@inai.de
+
+- Explicitly request ffmpeg 3.x for building
+
+-------------------------------------------------------------------
+Tue Nov 28 21:14:37 UTC 2017 - zaitor@opensuse.org
+
+- Add %%{name} Requires to orig-addon sub-package, installing the
+  addon-package does not make sense without the main package.
+
+-------------------------------------------------------------------
+Fri Nov  3 22:16:06 UTC 2017 - zaitor@opensuse.org
+
+- Drop gtk2-devel BuildRequires and pass --without-gtk to
+  configure, no longer build gtk2 support.
+- Following the above, stop using sed to remove
+  GTK_DISABLE_DEPRECATED from configure.ac, no longer needed.
+- Add explicit pkgconfig(libpng) BuildRequries, previously pulled
+  in by the gtk2-devel BuildRequries.
+
+-------------------------------------------------------------------
+Fri Aug 25 06:10:58 UTC 2017 - olaf@aepfle.de
+
+- Enable lame unconditionally
+- Remove ffmpeg conditional because it is always present
+
+-------------------------------------------------------------------
+Tue Jul  4 10:28:44 UTC 2017 - kstreitova@suse.com
+
+- adjust libquicktime-1.2.4-integer_overflow.patch to prevent
+  endless loop when there are less than 256 bytes to read
+  [bsc#1022805] CVE-2016-2399
+
+-------------------------------------------------------------------
+Fri Jun 23 21:58:19 UTC 2017 - kstreitova@suse.com
+
+- add libquicktime-1.2.4-multiple_vulnerabilities.patch to fix the
+  following security issues:
+  * CVE-2017-9122 [bsc#1044077]
+  * CVE-2017-9123 [bsc#1044009]
+  * CVE-2017-9124 [bsc#1044008]
+  * CVE-2017-9125 [bsc#1044122]
+  * CVE-2017-9126 [bsc#1044006]
+  * CVE-2017-9127 [bsc#1044002]
+  * CVE-2017-9128 [bsc#1044000] 
+
+-------------------------------------------------------------------
+Sat Feb 25 21:11:11 UTC 2017 - zaitor@opensuse.org
+
+- Move unversioned so files to previously not built main package.
+- Following this, split out a new sub-package
+  libquicktime-orig-addon, built depending on macro BUILD_ORIG.
+- Split out a new lang subpackage.
+- Stop providing/obsoleting libquicktime last available in openSUSE
+  11.4.
+
+-------------------------------------------------------------------
+Thu Feb 16 18:56:46 UTC 2017 - jengelh@inai.de
+
+- Rename %soname to %sover to better reflect its use.
+  Correct RPM group.
+
+-------------------------------------------------------------------
+Tue Feb 14 11:11:34 UTC 2017 - kstreitova@suse.com
+
+- add libquicktime-1.2.4-integer_overflow.patch to fix integer
+  overflow in the quicktime_read_pascal function in libquicktime
+  1.2.4 and earlier that allows remote attackers to cause a denial
+  of service or possibly have other unspecified impact via a crafted
+  hdlr MP4 atom [bsc#1022805] CVE-2016-2399 
+
+-------------------------------------------------------------------
+Mon Jul 25 12:44:39 UTC 2016 - olaf@aepfle.de
+
+- Convert buildconditionals for faac, faad, lame and x264
+
+-------------------------------------------------------------------
+Wed Feb 17 13:26:59 UTC 2016 - olaf@aepfle.de
+
+- Remove usage of some deprecated names to fix compile with ffmpeg3
+  libquicktime-ffmpeg3.patch
+- Fix compiler warning about incorrect memset args
+  libquicktime-faad2.patch
+
+-------------------------------------------------------------------
+Fri Dec 11 11:04:37 UTC 2015 - tchvatal@suse.com
+
+- Use ffmpeg even in OBS with reduced scope of course
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Sep 22 08:47:31 UTC 2015 - olaf@aepfle.de
+
+- Use pkgconfig for ffmpeg BuildRequires
+
+-------------------------------------------------------------------
+Mon Feb 23 10:03:51 UTC 2015 - avvissu@yandex.ru
+
+- Update to cvs20150223:
+- Remove all patches (fixed in upstream):
+  * libquicktime-1.2.2-dont_disable_deprecated.patch
+  * libquicktime-libpng16.patch 
+
+-------------------------------------------------------------------
+Fri Oct  3 17:26:11 UTC 2014 - crrodriguez@opensuse.org
+
+- Add baselibs.conf as Source. 
+
+-------------------------------------------------------------------
+Wed Oct  1 20:28:01 UTC 2014 - crrodriguez@opensuse.org
+
+- Cleanup buildRequires, do not use xorg-x11-devel. 
+
+-------------------------------------------------------------------
+Wed May 28 05:56:42 UTC 2014 - crrodriguez@opensuse.org
+
+- disable timestamps in doxygen, make build-compare happy 
+
+-------------------------------------------------------------------
+Mon Mar 18 12:56:46 UTC 2013 - pgajdos@suse.com
+
+- builds also with libpng16
+  * libpng16.patch
+
+-------------------------------------------------------------------
+Fri Mar 30 00:03:18 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.2.4:
+  * upgrades for newer ffmpeg versions
+  * 10 bit DNxHD support
+  * limited support for edit lists in the public API
+  * several fixes
+
+-------------------------------------------------------------------
+Fri Mar  2 15:07:56 UTC 2012 - reddwarf@opensuse.org
+
+- Compile against newest ffmpeg
+
+-------------------------------------------------------------------
+Tue Feb 28 11:54:28 UTC 2012 - puzel@suse.com
+
+- BuildRequire xorg-x11-devel to build lqtplay 
+
+-------------------------------------------------------------------
+Fri Jul 22 08:50:13 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.2.3:
+  * fixes compilation with newer versions of gtk, ffmpeg, and x264
+  * some contributed patches were applied as well
+
+-------------------------------------------------------------------
+Sun Jun 26 02:14:50 UTC 2011 - davejplater@gmail.com
+
+- Removed services
+
+-------------------------------------------------------------------
+Fri Jun 24 23:27:44 UTC 2011 - davejplater@gmail.com
+
+- Replace old COPYING file with new one with correct FSF address.
+
+-------------------------------------------------------------------
+Sat Jun 18 22:41:06 UTC 2011 - reddwarf@opensuse.org
+
+- changed BuildRequires libffmpeg-devel to libffmpeg_oldabi-devel.
+  Original fix from Manfred.Tremmel.
+
+-------------------------------------------------------------------
+Wed May 18 22:53:13 UTC 2011 - reddwarf@opensuse.org
+
+- fix baselibs.conf
+- allow GTK deprectaed functions
+
+-------------------------------------------------------------------
+Thu Apr 28 19:27:12 UTC 2011 - reddwarf@opensuse.org
+
+- rebased on Packman package. Now it will be shared between both
+  repositories.
+
+-------------------------------------------------------------------
+Fri Apr 14 13:38:21 UTC 2011 - toddrme2178@gmail.com
+  
+- added 32bit compatibility libraries
+
+-------------------------------------------------------------------
+Thu Feb  3 17:46:12 UTC 2011 - davejplater@gmail.com
+
+- Update to version 1.2.2
+- This fixes compilation errors with newer gtk versions and a
+  crash in the plugin registry. 
+
+-------------------------------------------------------------------
+Sun Dec  5 14:59:20 UTC 2010 - puzel@novell.com
+
+- update to libquicktime-1.2.1 
+  - fix compilation errors with newer x264 versions
+
+-------------------------------------------------------------------
+Thu Dec  2 08:56:58 UTC 2010 - puzel@novell.com
+
+- update to libquicktime-1.2.0
+  - reading and writing of compressed packets for lots of
+    codecs
+  - cleanup of internals, enhancements, bugfixes
+- drop libquicktime-jpeg7.patch (in upstream)
+- clean up specfile
+
+-------------------------------------------------------------------
+Wed Nov  3 16:29:57 UTC 2010 - puzel@novell.com
+
+- add libquicktime-jpeg7.patch (bnc#647859)
+  - patch by Martin Wilck
+
+-------------------------------------------------------------------
+Fri Feb 26 11:40:10 UTC 2010 - puzel@novell.com
+
+- update to libquicktime-1.1.5 
+  - encoding of AC3 and H.264 in AVI and some minor fixes
+
+-------------------------------------------------------------------
+Fri Jan  8 07:53:04 UTC 2010 - puzel@novell.com
+
+- update to libquicktime-1.1.4 
+  - fix avi decoding (broken in 1.1.3)
+
+-------------------------------------------------------------------
+Tue Jul 14 13:18:20 CEST 2009 - puzel@novell.com
+
+- update to libquicktime-1.1.3
+  - fix a crash in the v308 codec
+
+-------------------------------------------------------------------
+Thu Jun 18 11:25:24 CEST 2009 - puzel@novell.com
+
+- update to libquicktime-1.1.2
+  - dirac video en-/decoding
+  - several fixes
+- add dirac-devel to BR
+
+-------------------------------------------------------------------
+Fri Mar  6 13:49:11 CET 2009 - puzel@suse.cz
+
+- update to libquicktime-1.1.1
+  * read/write support for timecode tracks
+  * support for newer versions of ffmpeg and x264
+  * several bugfixes and cleanups
+- fix some rpmlint warnings
+
+-------------------------------------------------------------------
+Thu Jan 22 02:29:27 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files 
+
+-------------------------------------------------------------------
+Thu Jul 17 12:41:45 CEST 2008 - puzel@suse.cz
+
+- specfile fixes
+  * use configure macro
+  * fix htmldir location
+  * use %fdupes only on suse > 10.2
+
+-------------------------------------------------------------------
+Tue Jul 15 11:06:56 CEST 2008 - puzel@suse.cz
+
+- update to 1.0.3
+  * dnxhd decoding support
+  * double precision audio I/O 
+  * bugfixes
+- add doxygen to BuildRequires
+- license changed to LGPL v2 or later
+- use RPM_OPT_FLAGS
+- minor .spec fixes
+
+-------------------------------------------------------------------
+Tue Apr 15 20:33:39 CEST 2008 - pcerny@suse.cz
+
+- update to 1.0.2
+  * removing libquicktime-1.0.0-arrayoverflow.patch
+    (merged in upstream)
+
+-------------------------------------------------------------------
+Fri Jul 27 21:33:05 CEST 2007 - maw@suse.de
+
+- Add dont-disable-deprecated.patch
+- Use %fdupes.
+
+-------------------------------------------------------------------
+Sat May 12 15:27:41 CEST 2007 - olh@suse.de
+
+- remove unneded Requires libraw1394-devel
+
+-------------------------------------------------------------------
+Wed May  9 17:26:02 CEST 2007 - pcerny@suse.cz
+
+- minor .spec file changes (%suse_update_config)
+
+-------------------------------------------------------------------
+Fri May  4 13:50:27 CEST 2007 - pcerny@suse.cz
+
+- update to 1.0.0 which is considered final wrt functionality
+- .spec file cleanup
+- fixed #218037
+
+-------------------------------------------------------------------
+Tue Oct 10 12:48:04 CEST 2006 - pnemec@suse.cz
+
+- updated to 0.9.10
+  Read/Write support for: DVCPRO50 video, OpenDML AVIs, mp4/m4a files 
+	and Quicktime 7 lpcm audio
+  H.264 encoding using x264.
+  Improved compatibility with players: Quicktime 7, WMP, Divx player
+  see http://libquicktime.sourceforge.net/ for detailed changelog
+- minor changes in patch -mjpeg_def_huffman.diff and legal.diff
+
+-------------------------------------------------------------------
+Fri Feb 10 18:09:49 CET 2006 - bk@suse.de
+
+- fix optimisation (used P4 insns!) and force using RPM_OPT_FLAGS
+- fix firewire support (libdv-devel was splitted from libdv)
+- remove the forced backout of MMX instructions (obsolete)
+- don't include unused libquicktime-cflags.diff
+
+-------------------------------------------------------------------
+Sat Feb  4 18:17:26 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Sun Jan 29 17:43:52 CET 2006 - aj@suse.de
+
+- Fix BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 15 20:25:24 CEST 2005 - jw@suse.de
+
+- added support for mjpeg files without 
+  huffman tables.
+
+-------------------------------------------------------------------
+Fri Jul 29 17:10:46 CEST 2005 - kraxel@suse.de
+
+- fix -devel package dependencies.
+
+-------------------------------------------------------------------
+Fri Jul 29 14:17:38 CEST 2005 - kraxel@suse.de
+
+- add backward compatibility symlink to the new include file location.
+
+-------------------------------------------------------------------
+Thu Jul 28 13:30:51 CEST 2005 - kraxel@suse.de
+
+- update to 0.9.7.
+
+-------------------------------------------------------------------
+Mon Apr 18 18:57:01 CEST 2005 - ro@suse.de
+
+- make it build with gcc-4 
+
+-------------------------------------------------------------------
+Thu Jan 13 17:35:57 CET 2005 - kraxel@suse.de
+
+- update to 0.9.4.
+
+-------------------------------------------------------------------
+Tue Aug 17 17:58:26 CEST 2004 - kraxel@suse.de
+
+- update to 0.9.3.
+
+-------------------------------------------------------------------
+Thu Apr 22 20:57:40 CEST 2004 - kraxel@suse.de
+
+- fix compiler warnings.
+
+-------------------------------------------------------------------
+Wed Feb 11 14:22:06 CET 2004 - kraxel@suse.de
+
+- update to version 0.9.2.
+
+-------------------------------------------------------------------
+Sat Jan 10 12:14:13 CET 2004 - adrian@suse.de
+
+- add %run_dconfig
+- -devel package requires glibc-devel now
+
+-------------------------------------------------------------------
+Fri Jul 25 16:02:37 CEST 2003 - kraxel@suse.de
+
+- more cflags fixes, also builds on ppc now ...
+
+-------------------------------------------------------------------
+Wed Jul 23 16:14:28 CEST 2003 - kraxel@suse.de
+
+- play with cflags to make thing build on all archs.
+
+-------------------------------------------------------------------
+Mon Jun 16 14:28:41 CEST 2003 - kukuk@suse.de
+
+- More filelist fixes
+
+-------------------------------------------------------------------
+Thu Jun 12 10:25:15 CEST 2003 - kukuk@suse.de
+
+- Add missing directory to filelist
+- *.la file should be mode 644 
+
+-------------------------------------------------------------------
+Fri May 16 01:27:37 CEST 2003 - ro@suse.de
+
+- fix build with current libtool 
+
+-------------------------------------------------------------------
+Mon Aug 12 10:20:59 CEST 2002 - kraxel@suse.de
+
+- fixed Requires: for the -devel package.
+
+-------------------------------------------------------------------
+Wed Jul 31 12:22:01 CEST 2002 - kraxel@suse.de
+
+- fixed plugin path lookup for lib64.
+
+-------------------------------------------------------------------
+Fri Jul 26 22:13:10 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Mon Jul 15 15:40:57 CEST 2002 - kraxel@suse.de
+
+- fixed permission issues with fix-libtool script.
+
+-------------------------------------------------------------------
+Wed Jul 10 17:21:42 CEST 2002 - uli@suse.de
+
+- forgot to re-enable %clean section
+
+-------------------------------------------------------------------
+Wed Jul 10 15:19:10 CEST 2002 - uli@suse.de
+
+- replace "SDL SDL-devel" with "SDL-devel-packages" in neededforbuild
+  (fixes libdv detection)
+- fixed MMX detection, then disabled it :) (no runtime detection)
+- added DISTRIBUTABLE flag to facilitate full-featured rebuild
+
+-------------------------------------------------------------------
+Thu Jun 27 15:20:32 CEST 2002 - kraxel@suse.de
+
+- fixed neededforbuild.
+
+-------------------------------------------------------------------
+Mon Jun 24 17:21:55 CEST 2002 - kraxel@suse.de
+
+- updated to version 0.9.1
+
+-------------------------------------------------------------------
+Mon Jun 24 16:00:58 CEST 2002 - ro@suse.de
+
+- run full autoreconf to also get shared lib on x86_64 
+
+-------------------------------------------------------------------
+Fri Jun 21 14:54:08 CEST 2002 - ro@suse.de
+
+- run libtoolize to build also on archs that are
+  younger than a decade 
+
+-------------------------------------------------------------------
+Thu Jun 20 12:02:46 CEST 2002 - kraxel@suse.de
+
+- fixed build problems by using $RPM_OPT_FLAGS
+- disabled divx codec (divx/mpeg4 is patent minefield, sorry folks ...).
+
+-------------------------------------------------------------------
+Mon Jun 17 15:49:17 CEST 2002 - kraxel@suse.de
+
+- initial release.
+

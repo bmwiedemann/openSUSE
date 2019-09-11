@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Tue Dec  4 11:21:32 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Compact description. Use multi-argument find -exec.
+
+-------------------------------------------------------------------
+Thu Nov 29 12:16:22 UTC 2018 - mvetter@suse.com
+
+- Update to 0.9:
+  * Ctrl+Ctrl detection now works correctly in more scenarios.
+  * Ctrl++ (and similar sequences with repeated characters) are now shown as Ctrl+”+” for improved readability.
+  * Shift+Backspace is now recognized and shown correctly.
+  * Several multimedia keys are now supported. If “FontAwesome” is installed, the correct symbol is also displayed instead of a text abbreviation.
+  * Visualization of whitespace characters can now be controlled.
+  * Repeated key sequences are now abbreviated with a repeat count if above the specified threshold (3 by default).
+- For full ChangeLog since 0.2 see:
+  https://www.thregr.org/~wavexx/software/screenkey/NEWS.html
+- Run spec-cleaner
+- Remove screenkey-fix-popup.patch: upstreamed
+- Update screenkey_icon.patch
+- Adjust URL, Source and Group
+- Add proper requirements
+
+------------------------------------------------------------------
+Thu Oct  4 17:38:11 UTC 2012 - gregkh@opensuse.org
+
+- fix python-xlib dependancy
+- added patch to fix popup not working properly (from upstream)
+- cleaned up the spec file a bit
+- fixed license to be GPLv3+
+
+------------------------------------------------------------------
+Mon Oct  1 20:41:05 UTC 2012 - gregkh@opensuse.org
+
+- fixed spec file and got things working for 0.2 release
+
+------------------------------------------------------------------
+* Tue Jun 11 2010 - William Witt <william@witt-family.net>
+- modify icon
+- used gnomesu instead of gksu
+
+------------------------------------------------------------------
+* Tue Jun 08 2010 - William Witt <william@witt-family.net>
+- add to OBS
+
+------------------------------------------------------------------
+* Tue Jun 08 2010 - Ivan Makfinsky <ivan.makfinsky@endosys.com>
+- Initial Build
+

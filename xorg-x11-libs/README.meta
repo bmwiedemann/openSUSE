@@ -1,0 +1,4 @@
+This package is a metapackage, created for compatibility.
+
+The X.Org libraries now are all split following the shared library packaging
+policy, and all have their own devel package.

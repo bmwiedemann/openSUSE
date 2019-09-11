@@ -1,0 +1,31 @@
+diff --git a/Makefile b/Makefile
+index 1e1129f..33fe491 100644
+--- a/Makefile
++++ b/Makefile
+@@ -30,7 +30,7 @@ SRC_BENCH = src/bench.c
+ SRC_GENKAT = src/genkat.c
+ OBJ = $(SRC:.c=.o)
+ 
+-CFLAGS += -std=c89 -O3 -Wall -g -Iinclude -Isrc
++CFLAGS += $(OPTFLAGS) -Iinclude -Isrc
+ 
+ ifeq ($(NO_THREADS), 1)
+ CFLAGS += -DARGON2_NO_THREADS
+@@ -41,16 +41,12 @@ endif
+ CI_CFLAGS := $(CFLAGS) -Werror=declaration-after-statement -D_FORTIFY_SOURCE=2 \
+ 				-Wextra -Wno-type-limits -Werror -coverage -DTEST_LARGE_RAM
+ 
+-OPTTARGET ?= native
+-OPTTEST := $(shell $(CC) -Iinclude -Isrc -march=$(OPTTARGET) src/opt.c -c \
+-			-o /dev/null 2>/dev/null; echo $$?)
+ # Detect compatible platform
+ ifneq ($(OPTTEST), 0)
+ $(info Building without optimizations)
+ 	SRC += src/ref.c
+ else
+-$(info Building with optimizations for $(OPTTARGET))
+-	CFLAGS += -march=$(OPTTARGET)
++$(info Building with optimizations)
+ 	SRC += src/opt.c
+ endif
+ 

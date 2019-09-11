@@ -1,0 +1,39 @@
+Index: gas/config/tc-avr-nesc.h
+===================================================================
+--- gas/config/tc-avr-nesc.h.orig	2016-02-01 09:58:37.419903606 +0100
++++ gas/config/tc-avr-nesc.h	2016-02-01 09:58:39.631928732 +0100
+@@ -143,8 +143,12 @@ extern long md_pcrel_from_section (struc
+    would print `12 34 56 78'.  The default value is 4.  */
+ #define LISTING_WORD_SIZE 2
+ 
+-/* AVR port uses `$' as a logical line separator.  */
+-#define LEX_DOLLAR 0
++/* AVR port uses `$' as a logical line separator and doesn't
++   allow it in symbols. We allow it in the middle of symbols.
++   We also hack get_symbol_end to disallow it at the end of a symbol. */
++#define LEX_DOLLAR 1
++#define TC_EOL_IN_INSN(PTR)   (*(PTR) == '$' && is_part_of_name((PTR)[-1]) && is_part_of_name((PTR)[1]))
++#define TC_FORBID_DOLLAR_AT_END
+ 
+ /* An `.lcomm' directive with no explicit alignment parameter will
+    use this macro to set P2VAR to the alignment that a request for
+Index: gas/expr.c
+===================================================================
+--- gas/expr.c.orig	2016-02-01 09:58:35.743884569 +0100
++++ gas/expr.c	2016-02-01 09:58:39.631928732 +0100
+@@ -2342,6 +2342,15 @@ get_symbol_name (char ** ilp_return)
+ 	;
+       if (is_name_ender (c))
+ 	c = *input_line_pointer++;
++#ifdef TC_FORBID_DOLLAR_AT_END
++      /* This is for the Atmel AVR platforms. We want to allow $ in symbols
++	 but also as a line separator. Yucky. */
++      if (input_line_pointer[-2] == '$')
++	{
++	  input_line_pointer--;
++	  c = '$';
++	}
++#endif
+     }
+   else if (c == '"')
+     {

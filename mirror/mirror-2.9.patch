@@ -1,0 +1,132 @@
+Index: do_unlinks.pl
+===================================================================
+--- do_unlinks.pl.orig
++++ do_unlinks.pl
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl -s
++#!/usr/bin/perl -s
+ #
+ #
+ #
+Index: makefile
+===================================================================
+--- makefile.orig
++++ makefile
+@@ -65,25 +65,26 @@ PLMODE = 644
+ # mode to install executables
+ EXMODE = 755
+ # group to own all the files
+-GRP = gnu
++GRP = root
+ # directory to install .pl (perl library) files
+ PLDIR = /usr/local/perl5/lib/perl5
+ # directory to install public executables
+-BINDIR = /usr/local/sbin
++BINDIR = /usr/bin
+ # directory to install man pages
+-MANDIR = /usr/local/man/man1
++MANDIR = /usr/share/man/man1
+ 
+ install:
+-	install -m $(PLMODE) -g $(GRP) lchat.pl $(PLDIR)
+-	install -m $(PLMODE) -g $(GRP) dateconv.pl $(PLDIR)
+-	install -m $(PLMODE) -g $(GRP) ftp.pl $(PLDIR)
+-	install -m $(PLMODE) -g $(GRP) lsparse.pl $(PLDIR)
+-	install -m $(EXMODE) -g $(GRP) mirror.pl $(BINDIR)/mirror
+-	install -m $(EXMODE) -g $(GRP) do_unlinks.pl $(BINDIR)/do_unlinks
+-	install -m $(EXMODE) -g $(GRP) pkgs_to_mmin.pl $(BINDIR)/pkgs_to_mmin
+-	install -m $(EXMODE) -g $(GRP) mm.pl $(BINDIR)/mirror-master
+-	install -m $(PLMODE) -g $(GRP) mirror.man $(MANDIR)/mirror.1
+-	install -m $(PLMODE) -g $(GRP) mm.man $(MANDIR)/mirror-master.1
++	install -m $(PLMODE) -g $(GRP) lchat.pl $(DESTDIR)$(PLDIR)
++	install -m $(PLMODE) -g $(GRP) dateconv.pl $(DESTDIR)$(PLDIR)
++	install -m $(PLMODE) -g $(GRP) ftp.pl $(DESTDIR)$(PLDIR)/lftp.pl
++	install -m $(PLMODE) -g $(GRP) lsparse.pl $(DESTDIR)$(PLDIR)
++	install -m $(PLMODE) -g $(GRP) mirror.defaults $(DESTDIR)$(PLDIR)
++	install -m $(EXMODE) -g $(GRP) mirror.pl $(DESTDIR)$(BINDIR)/mirror
++	install -m $(EXMODE) -g $(GRP) do_unlinks.pl $(DESTDIR)$(BINDIR)/do_unlinks
++	install -m $(EXMODE) -g $(GRP) pkgs_to_mmin.pl $(DESTDIR)$(BINDIR)/pkgs_to_mmin
++	install -m $(EXMODE) -g $(GRP) mm.pl $(DESTDIR)$(BINDIR)/mirror-master
++	install -m $(PLMODE) -g $(GRP) mirror.man $(DESTDIR)$(MANDIR)/mirror.1
++	install -m $(PLMODE) -g $(GRP) mm.man $(DESTDIR)$(MANDIR)/mirror-master.1
+ 
+ # directory to install .pl (perl library) files for rperl
+ RPLDIR = /usr/local/rperl5/lib/perl5
+Index: mirror.defaults
+===================================================================
+--- mirror.defaults.orig
++++ mirror.defaults
+@@ -11,12 +11,12 @@ package=defaults
+ 	# The LOCAL hostname - if not the same as `hostname`
+ 	# (I advertise the name sunsite.org.uk but the machine is
+ 	#  really swallow.sunsite.org.uk.)
+-	hostname=sunsite.org.uk
++	 # hostname=sunsite.org.uk
+ 	# Keep all local_dirs relative to here
+-	local_dir=/public/
++	 # local_dir=/public/
+ 	# The local_dir must exist FIRST
+ 	#local_dir_check=true
+-	remote_password=wizards@sunsite.org.uk
++	 # remote_password=wizards@sunsite.org.uk
+ 	mail_to=
+ 	# Don't mirror file modes.  Set all dirs/files to these
+ 	dir_mode=0755
+@@ -49,11 +49,16 @@ package=defaults
+ 	# Don't delete own mirror log, .notar or .cache files (incl in subdirs)
+ #       delete_excl=(^|/)\.(mirror|notar|cache)$
+ 	# Ignore any local readme and .mirror files
+-	local_ignore=README.doc.ic|(^|/)\.(mirror|notar)$
++	# local_ignore=README.doc.ic|(^|/)\.(mirror|notar)$
++	local_ignore=(^|/)\.(mirror|notar)$
+ 	# Automatically delete local copies of files that the
+ 	# remote site has zapped
+ 	do_deletes=true
++
++# max % of files that will be deleted, otherwise just report them via email
+ 	max_delete_files=50%
++	# the same for directories...
+ 	max_delete_dirs=50%
++
+ 	timeout=300
+ 	#failed_gets_excl=\:\ Permission denied\.$
+Index: mirror.pl
+===================================================================
+--- mirror.pl.orig
++++ mirror.pl
+@@ -163,8 +163,8 @@ $sum_prog = &find_prog( 'sum' );
+ 
+ # SPECIAL NOTE: This is eval'd, so DONT put double-quotes (") in it.
+ # You can get local variables to appear as in the second example:
+-$mail_subject = '-s \'mirror update\'';
+-# $mail_subject = ' -s \'mirror update of $package\'';
++# $mail_subject = '-s \'mirror update\'';
++$mail_subject = ' -s \'mirror update of $package\'';
+ 
+ # When scanning the local directory, how often to prod the remote
+ # system to keep the connection alive
+@@ -183,7 +183,7 @@ $win_getcwd = 'Win32::GetCwd';
+ 	
+ # Make sure that your PERLLIB environment variable can get you
+ # all these or that they are installed.
+-require 'ftp.pl';
++require 'lftp.pl';
+ require 'lsparse.pl';
+ require 'dateconv.pl';
+ 
+@@ -2332,6 +2332,15 @@ sub compare_dirs
+ 			next;
+ 		}
+ 
++		# important security check - marc@suse.de
++		# we don't use an allow list but an deny list because otherwise
++		# we will get problems with umlaute and other stuff. And the
++		# hole is very small anyway.
++		if ( $src_path =~ m/[\\\n;&<>#\`!\$\*\|]/ || $src_path =~ m/\.\./) {
++			print STDERR "Error: source filename contains illegal characters: \"$src_path\"\n";
++			next;
++		}
++
+ 		# Just create any needed directories (the timestamps
+ 		# should be ignored)
+ 		if( $src_type[ $srci ] eq 'd' ){

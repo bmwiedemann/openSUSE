@@ -1,0 +1,4 @@
+---
+post_prep:
+ sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
+license: (Artistic-1.0 or GPL-1.0+) and GPL-2.0

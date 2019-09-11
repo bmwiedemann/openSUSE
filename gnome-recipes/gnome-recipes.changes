@@ -1,0 +1,261 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:29:25 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sun Jan 28 09:50:42 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gnome-recipes-nb-translations.patch: Update Norwegian Bokmål
+  translations.
+- Minor spec cleanup, use autosetup macro, pass explicit
+  autoar=yes, gspell=yes and canberra=yes to meson, ensure we build
+  the features we want.
+
+-------------------------------------------------------------------
+Sun Nov 12 02:39:46 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.0.2:
+  + Fixes:
+    - A serious bug in version 2.0.0, which could cause all
+      ingredients to lose their amounts when editing a recipe.
+    - An issue where ingredients without amount would always get
+      displayed with an errant '1' as amount.
+  + Allow recipes to have long names.
+  + New recipes: Tzatziki, Soy Chicken, Rice Maize Apple Cake.
+  + Updated translations.
+- Replace pkgconfig(gio-2.0) with glib2-devel BuildRequires:
+  pkgconfig(*) glib-2.0 and gmodule-export-2.0 are native
+  dependencies, but glib-2.0 is not listed in meson.build as
+  dependency and gmodule-export-2.0 is but not used. And since 
+  gio-2.0, gio-unix-2.0, gmodule-2.0 and gobject-2.0 are being used
+  but not listed in meson.build is better to use glib2-devel.
+
+-------------------------------------------------------------------
+Mon Oct 30 13:28:26 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 2.0.0:
+  + Unit conversion support has landed. There are new settings,
+    volume-unit and weight-unit, which can be set to 'locale'
+    (the default), 'metric' or 'imperial' to control how units are
+    displayed. We are also formatting numbers in a human-friendly
+    way and separate them into multiple units where appropriate.
+  + Support for sharing shopping lists to the Todoist mobile app.
+  + Updated translations.
+- Add pkgconfig(goa-1.0) and pkgconfig(rest-0.7) BuildRequires: new
+  dependencies for todoist integration.
+- Drop gnome-recipes-fix-meson-options.patch: Fixed upstream.
+- Drop glib2_gsettings_schema_, icon_theme_cache_ and
+  desktop_database_ post/postun handling: this is now achieved by
+  file triggers.
+
+-------------------------------------------------------------------
+Wed Oct 25 01:48:48 UTC 2017 - malcolmlewis@opensuse.org
+
+- Add gnome-recipes-fix-meson-options.patch: Change default to
+  value in meson_options.txt for meson build >= 0.43.0.
+- Change rpm group to Productivity/Other.
+
+-------------------------------------------------------------------
+Fri Jul 28 21:50:40 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.6.2:
+  + No NEWS, or ChangeLog provided from upstream.
+
+-------------------------------------------------------------------
+Thu Jun 22 20:17:36 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.4.6:
+  + No NEWS, or ChangeLog provided from upstream.
+- Drop gnome-recipes-fix-build-without-git.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue May 23 13:12:24 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.4.4:
+  + No NEWS, or ChangeLog provided from upstream.
+- Switch to meson buildsystem:
+  + Add meson BuildRequires and macros, remove autotools macros.
+- Add itstool and pkgconfig(libsoup-2.4) BuildRequires: New
+  dependencies.
+- Add gnome-recipes-fix-build-without-git.patch: Fix build, git
+  should not be needed.
+
+-------------------------------------------------------------------
+Mon Mar 20 12:29:43 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.0.0:
+  + Add and edit your own recipes.
+  + Share recipes with your friends.
+  + Export and print shopping lists.
+  + Adjust quantities based on the number of servings.
+  + Mark recipes to cook later or add them to your favorites.
+  + Add notes to recipes.
+  + Hands-free cooking instruction mode.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 21:43:05 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.22.0:
+  + Add a way to go from shopping to cooking.
+  + Confirm quitting with unsaved changes.
+  + Confirm ending cooking mode with running timers.
+  + Store ancillary data in GSettings.
+  + Match Chef names when searching.
+  + Add --verbose and --version commandline options.
+  + Make dialogs non-maximizable on OS X.
+  + Use a more traditional menubar on OS X.
+  + Bug and memory leak fixes.
+  + Updated translations.
+- Add %glib2_gsettings_schema_{post,postun} to the respective
+  scriptlets to handle the new schema.
+
+-------------------------------------------------------------------
+Tue Mar 14 21:24:47 UTC 2017 - dimstar@opensuse.org
+
+- Add fdupes buildrequires and call over _datadir: eliminiate
+  duplicate files.
+
+-------------------------------------------------------------------
+Sun Mar  5 00:42:44 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.20.0:
+  + Save exported recipes to a file if sending mail fails.
+  + Export all recipes to a file, from the app menu.
+  + Dialogs now follow platform conventions for header bars.
+  + Adapt to dark theme in some places.
+  + Miscellaneous improvements on OS X.
+  + Updated translations.
+- Remove pkgconfig(appstream-glib) BuildRequires, no longer
+  required.
+
+-------------------------------------------------------------------
+Mon Feb 27 21:09:58 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.18.0:
+  + A minor update, focusing on polish and performance.
+  + Improve the UI for search by spiciness.
+  + Speed up listing of recipes.
+  + Add a “What's New” dialog.
+  + New contributed recipes.
+  + Updated translations.
+- Add pkgconfig(appstream-glib) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Sat Feb 25 22:18:47 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.16.0:
+  + This release brings mainly polish and robustness and crash
+    fixes.
+  + Introduce meson build support.
+  + Be more robust with incomplete data.
+  + Stylistic fixes to cooking mode.
+  + Improve the behavior of timers in cooking mode.
+  + Add categories for all recipes and new recipes.
+  + Show more details for recipes.
+  + More contributed recipes.
+
+-------------------------------------------------------------------
+Mon Feb 20 22:26:20 UTC 2017 - firebird20@gmail.com
+
+- Update to version 0.14.2:
+  + A quick follow-up release to fix some issues with 0.14.0.
+  + Fix problems with string extraction for translation.
+  + Mark some forgotten strings as translatable.
+  + Make notes in recipes translatable.
+  + Add a missing file, cuisine.css.in.
+  + Some stylistic improvements to contributed recipes.
+  + Several minor bug fixes.
+  + More contributed recipes.
+- Changes from version 0.14.0:
+  + This release changes the name of the binary and filesystem
+    locations from 'recipes' to 'gnome-recipes'.
+  + We are now using the email portal to send email, falling back
+    to using a mailto: url if the portal is not available.
+  + The fullscreen cooking mode has been refined.
+  + Timers play a sound when they expire.
+  + Edit and recontribute your contributed recipes.
+  + More contributed recipes.
+- Added pkgconfig(libcanberra0) BuildRequires: New dependencies.
+- Rename package from recipes to gnome-recipes, following upstream.
+  As the old package never made it out of any devel project space,
+  we do not provide/obsolete the old names.
+
+-------------------------------------------------------------------
+Sun Feb 12 10:28:38 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.12.0:
+  + Recipes can be shared by email.
+  + GNOME recipes has a mailing list, recipes-list@gnome.org.
+  + The shopping list view has been refined.
+  + Shopping lists can be shared by email as well.
+
+-------------------------------------------------------------------
+Wed Feb  8 14:49:03 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.10.0:
+  + This release focuses on completing the feature set for the 3.24
+    release.
+  + A new fullscreen cooking mode has been added.
+  + Images can be viewed in fullscreen.
+  + The user interface for adding notes has been refined.
+  + Recipes can be searched for by their spiciness.
+  + More contributed recipes.
+
+-------------------------------------------------------------------
+Sat Jan 21 16:24:32 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.8.0:
+  + This release focuses on completing and polishing existing
+    features.
+  + Multiple recipes can be exported an imported in one batch.
+  + Deletion of recipes can be undone.
+  + We inhibit screen blanking and suspend while a recipe is
+    cooked.
+  + There is a printable shopping list.
+  + The ingredients page has been dropped for now.
+  + Problems with exporting in a flatpak sandbox have been
+    resolved.
+
+-------------------------------------------------------------------
+Tue Jan 10 21:28:50 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.6.0:
+  + This release focuses on localization. All included content
+    should be properly translatable now, including recipe and chef
+    descriptions and ingredients.
+  + Recipe instructions can link to other recipes.
+  + Recipe instructions can include links that switch to a
+    particular image.
+  + All recipe lists are now populated incrementally.
+  + Recipe tiles look nicer now.
+  + We show a 'built with GNOME Builder' logo in the About dialog.
+  + The About dialog gained a 'System' tab.
+- Changes from version 0.4.2:
+  + This is a minor update that makes it possible to build without
+    some of the dependencies, which helps for building on other
+    platforms, such as OS X.
+- Changes from version 0.4.0:
+  + Support multiple ingredients lists per recipe.
+  + Use 2 column layout for the edit page.
+  + Use the new image viewer for editing as well.
+  + Editing ingredients lists is much better.
+  + Only allow editing your own recipes.
+  + Move notes to the details page.
+  + Allow markup (links) in chef descriptions.
+  + Add spell checking in many places.
+  + Updated translations.
+- Add pkgconfig(json-glib-1.0) and pkgconfig(gspell-1)
+  BuildRequires: New dependencies.
+
+-------------------------------------------------------------------
+Tue Dec 20 11:23:27 UTC 2016 - badshah400@gmail.com
+
+- Spec file cleanups.
+
+-------------------------------------------------------------------
+Mon Dec 19 20:51:31 UTC 2016 - badshah400@gmail.com
+
+- Initial package.
+

@@ -1,0 +1,195 @@
+From 02cdcb383b938a3e17ea2bf63a14682473dc8d5b Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 17 Mar 2018 23:25:56 +0100
+Subject: [PATCH] Use Xauthority for Xwayland authorization
+
+Currently Xwayland only looks at the uid of the application connecting to it.
+Using Xauthority gives more flexibility here, by having a token which can be
+passed around.
+
+Not only does this allow to grant only certain applications the right to
+connect to the display (e.g. su user xterm) while keeping other applications
+outside, this allows also
+starting applications as other users again
+---
+ CMakeLists.txt   |   1 +
+ xwl/xwayland.cpp | 103 ++++++++++++++++++++++++++++++++++++++++++++++-
+ xwl/xwayland.h   |   3 ++
+ 3 files changed, 105 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ec780a9d5..1a5a72698 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -594,6 +594,7 @@ set(kwin_XLIB_LIBS
+     ${X11_X11_LIB}
+     ${X11_ICE_LIB}
+     ${X11_SM_LIB}
++    ${X11_Xau_LIB}
+ )
+ 
+ set(kwin_XCB_LIBS
+diff --git a/xwl/xwayland.cpp b/xwl/xwayland.cpp
+index a521f27c0..2cc8d398c 100644
+--- a/xwl/xwayland.cpp
++++ b/xwl/xwayland.cpp
+@@ -48,6 +48,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include <sys/socket.h>
+ #include <iostream>
+ 
++#include <X11/Xauth.h>
++
+ static void readDisplay(int pipe)
+ {
+     QFile readPipe;
+@@ -105,8 +107,84 @@ Xwayland::~Xwayland()
+     s_self = nullptr;
+ }
+ 
++static QByteArray getRandomData(qint64 bytes)
++{
++    QFile random(QStringLiteral("/dev/urandom"));
++    if (!random.open(QIODevice::ReadOnly))
++        return {};
++
++    QByteArray data;
++    data.resize(bytes);
++    while (bytes) {
++        auto bytesRead = random.read(data.data() + data.size() - bytes, bytes);
++        if (bytesRead == -1)
++            return {};
++
++        bytes -= bytesRead;
++    }
++
++    return data;
++}
++
++static bool addCookieToFile(QString filename, QString &hostname)
++{
++    QByteArray cookie = getRandomData(16);
++    char *displayNumber = getenv("DISPLAY");
++
++    if(displayNumber == nullptr || displayNumber[0] == '\0' || cookie.count() != 16) {
++        return false;
++    }
++
++    FILE *authFp = fopen(qPrintable(filename), "wb");
++    if (authFp == nullptr) {
++        return false;
++    }
++
++    char localhost[HOST_NAME_MAX + 1] = "";
++    if (gethostname(localhost, HOST_NAME_MAX) < 0) {
++        strcpy(localhost, "localhost");
++    }
++
++    hostname = QString::fromUtf8(localhost);
++
++    Xauth auth = {};
++    char cookieName[] = "MIT-MAGIC-COOKIE-1";
++
++    auth.family = FamilyLocal;
++    auth.address = localhost;
++    auth.address_length = strlen(auth.address);
++    auth.number = displayNumber + 1;
++    auth.number_length = strlen(auth.number);
++    auth.name = cookieName;
++    auth.name_length = sizeof(cookieName) - 1;
++    auth.data = cookie.data();
++    auth.data_length = cookie.count();
++
++    if (XauWriteAuth(authFp, &auth) == 0) {
++        fclose(authFp);
++        return false;
++    }
++
++    auth.family = FamilyWild;
++    bool success = XauWriteAuth(authFp, &auth) != 0 && fflush(authFp) != EOF;
++
++    fclose(authFp);
++
++    return success;
++}
++
+ void Xwayland::init()
+ {
++    QString dir = QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation);
++    if (!dir.isEmpty()) {
++        m_xwaylandAuthority.setFileTemplate(dir + QStringLiteral("/xauth_XXXXXX"));
++        m_xwaylandAuthority.open();
++    }
++
++    if (m_xwaylandAuthority.fileName().isEmpty()) {
++        std::cerr << "Warning: Could not create a Xauthority file for Xwayland." << std::endl;
++    }
++
+     int pipeFds[2];
+     if (pipe(pipeFds) != 0) {
+         std::cerr << "FATAL ERROR failed to create pipe to start Xwayland " << std::endl;
+@@ -148,11 +226,15 @@ void Xwayland::init()
+     env.insert("WAYLAND_SOCKET", QByteArray::number(wlfd));
+     env.insert("EGL_PLATFORM", QByteArrayLiteral("DRM"));
+     m_xwaylandProcess->setProcessEnvironment(env);
+-    m_xwaylandProcess->setArguments({QStringLiteral("-displayfd"),
++    QStringList args{QStringLiteral("-displayfd"),
+                            QString::number(pipeFds[1]),
+                            QStringLiteral("-rootless"),
+                            QStringLiteral("-wm"),
+-                           QString::number(fd)});
++                           QString::number(fd)};
++    if (!m_xwaylandAuthority.fileName().isEmpty()) {
++        args << QStringLiteral("-auth") << m_xwaylandAuthority.fileName();
++    }
++    m_xwaylandProcess->setArguments(args);
+     m_xwaylandFailConnection = connect(m_xwaylandProcess, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::error), this,
+         [this] (QProcess::ProcessError error) {
+             if (error == QProcess::FailedToStart) {
+@@ -184,6 +266,23 @@ void Xwayland::prepareDestroy()
+ 
+ void Xwayland::createX11Connection()
+ {
++    if (!m_xwaylandAuthority.fileName().isEmpty()) {
++        QString hostname;
++        if (addCookieToFile(m_xwaylandAuthority.fileName(), hostname)) {
++            setenv("XAUTHORITY", qPrintable(m_xwaylandAuthority.fileName()), 1);
++            setenv("XAUTHLOCALHOSTNAME", qPrintable(hostname), 1);
++            auto env = m_app->processStartupEnvironment();
++            env.insert(QStringLiteral("XAUTHORITY"), m_xwaylandAuthority.fileName());
++            env.insert(QStringLiteral("XAUTHLOCALHOSTNAME"), hostname);
++            m_app->setProcessStartupEnvironment(env);
++        }
++        else {
++            std::cerr << "Could not generate Xauthority entry" << std::endl;
++            // We can't authenticate using it so the server must not see any entries either
++            m_xwaylandAuthority.resize(0);
++        }
++    }
++
+     int screenNumber = 0;
+     xcb_connection_t *c = nullptr;
+     if (m_xcbConnectionFd == -1) {
+diff --git a/xwl/xwayland.h b/xwl/xwayland.h
+index 2ee1e607f..a8b89242b 100644
+--- a/xwl/xwayland.h
++++ b/xwl/xwayland.h
+@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include "xwayland_interface.h"
+ 
+ #include <xcb/xproto.h>
++#include <QTemporaryFile>
+ 
+ class QProcess;
+ 
+@@ -72,6 +73,8 @@ private:
+     const xcb_query_extension_reply_t *m_xfixes = nullptr;
+     DataBridge *m_dataBridge = nullptr;
+ 
++    QTemporaryFile m_xwaylandAuthority;
++
+     ApplicationWaylandAbstract *m_app;
+ };
+ 
+-- 
+2.20.1
+

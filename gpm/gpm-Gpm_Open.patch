@@ -1,0 +1,15 @@
+Index: src/lib/liblow.c
+===================================================================
+--- src/lib/liblow.c.orig	2009-02-09 10:58:53.000000000 +0100
++++ src/lib/liblow.c	2010-09-08 16:42:15.667355974 +0200
+@@ -255,6 +255,10 @@ int Gpm_Open(Gpm_Connect *conn, int flag
+          if (tty == NULL) {
+             gpm_report(GPM_PR_ERR,"checking tty name failed");
+             goto err;
++         }
++         if (consolename == NULL) {
++            gpm_report(GPM_PR_ERR,"consolename not set");
++            goto err;
+          }   
+           
+          conn->vc=atoi(&tty[strlen(consolename)-1]);

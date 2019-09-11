@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Thu Mar 28 20:54:59 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.24.0
+  * Support new_version_pg for PG10
+  * Option to skip CYCLE sequences in action sequence
+  * Output per-database perfdata for pgbouncer pool checks
+  * German message translations
+  * Consider only client backends in query_time and friends
+- Use github Source URL
+
+-------------------------------------------------------------------
+Wed Mar 21 10:43:56 UTC 2018 - lars@linux-schulserver.de
+
+- Update to 2.23.0:
+  + added support for PostgreSQL 10
+  + Change table_size to use pg_table_size() on 9.0+
+  + Connection errors are now always critical, not unknown
+  + New action replication_slots checking if logical or physical 
+    replication slots have accumulated too much data
+  + Multiple same_schema improvements
+  + Add Spanish message translations
+  + Allow a wrapper function to run wal_files and archive_ready 
+    actions as non-superuser
+  + Add some defensive casting to the bloat query
+  + Invoke psql with option -X
+  + check_txn_idle: Don't fail when query contains 'disabled' word
+  + check_txn_idle: Use state_change instead of query_start.
+  + check_hot_standby_delay: Correct extra space in perfdata
+  + Remove \r from psql output as it can confuse some regexes
+  + Sort failed jobs in check_pgagent_jobs for stable output
+- run spec cleaner
+- use %%license for newer distributions
+
+-------------------------------------------------------------------
+Sat Mar 18 01:38:02 UTC 2017 - aj@ajaissle.de
+
+- Update to 2.22.0
+
+-------------------------------------------------------------------
+Sat Mar 18 00:13:50 UTC 2017 - aj@ajaissle.de
+
+- BuildRequire perl-macros to fix SLE_11_SP4 build
+
+-------------------------------------------------------------------
+Wed Jul 30 22:37:22 UTC 2014 - lars@linux-schulserver.de
+
+- rename subpackage to monitoring-plugins-postgres
+
+-------------------------------------------------------------------
+Tue Oct 29 11:12:46 UTC 2013 - lars@linux-schulserver.de
+
+- update to 2.21.0
+- remove perl-macros dependency
+- add check_postgres.pl man page (and script to generate it 
+  from source)
+
+-------------------------------------------------------------------
+Fri Aug  9 19:54:52 UTC 2013 - darin@darins.net
+
+- update to 2.20.1
+- removed perl-marcro from .spec 
+
+-------------------------------------------------------------------
+Thu Jul 12 18:57:47 UTC 2012 - darin@darins.net
+
+- added a sample nagios/check_mk command definition file 
+
+-------------------------------------------------------------------
+Tue Jul 10 16:39:09 UTC 2012 - darin@darins.net
+
+- update to version 2.19.0 
+- cleaned up .spec
+- fixed License
+
+-------------------------------------------------------------------
+Mon Feb 21 08:21:03 UTC 2011 - lars@linux-schulserver.de
+
+- initial version 2.16.0
+- disabled make test as this breaks the build currently
+- create a special nagios package containing just the symlinks

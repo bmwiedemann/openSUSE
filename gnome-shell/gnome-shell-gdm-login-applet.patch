@@ -1,0 +1,192 @@
+Index: gnome-shell-3.26.0/js/js-resources.gresource.xml
+===================================================================
+--- gnome-shell-3.26.0.orig/js/js-resources.gresource.xml
++++ gnome-shell-3.26.0/js/js-resources.gresource.xml
+@@ -34,6 +34,7 @@
+ 
+     <file>portalHelper/main.js</file>
+ 
++    <file>ui/aboutMenu.js</file>
+     <file>ui/accessDialog.js</file>
+     <file>ui/altTab.js</file>
+     <file>ui/animation.js</file>
+Index: gnome-shell-3.26.0/js/ui/aboutMenu.js
+===================================================================
+--- /dev/null
++++ gnome-shell-3.26.0/js/ui/aboutMenu.js
+@@ -0,0 +1,150 @@
++// -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
++
++const GLib = imports.gi.GLib;
++const Gio = imports.gi.Gio;
++const Lang = imports.lang;
++const Clutter = imports.gi.Clutter;
++const St = imports.gi.St;
++const DBus = imports.gi.DBus;
++
++const PanelMenu = imports.ui.panelMenu;
++
++const AboutMenuButton = new Lang.Class({
++    Name: 'AboutMenuButton',
++    Extends: PanelMenu.Button,
++    _init: function() {
++        this._hostname = null;
++        this._updateHostnameId = 0;
++        this._ticket = 1;
++
++        let hbox;
++        let vbox;
++        let menuAlignment = 0.25;
++
++        if (Clutter.get_default_text_direction() == Clutter.TextDirection.RTL)
++            menuAlignment = 1.0 - menuAlignment;
++        this.parent(menuAlignment, 'About Me');
++
++        this.about_hbox = new St.BoxLayout({ style_class: 'panel-status-menu-box' });
++        this.hostname_label = new St.Label({y_align: Clutter.ActorAlign.CENTER});
++        this.about_hbox.add_child(this.hostname_label);
++
++        this.actor.add_child(this.about_hbox);
++        hbox = new St.BoxLayout({ name: 'aboutArea' });
++        this.menu.box.add_child(hbox);
++
++        vbox = new St.BoxLayout({vertical: true});
++        hbox.add(vbox);
++
++        ///// Section: read '/etc/os-release' to get pretty name
++        //
++        // Note: previously this is defaulted to 'SUSE Linux Enterprise', now
++        // let's use a "safer" option.
++        let sysinfo_text = 'SUSE Linux';
++        try {
++            let success, contents, tag;
++            let _os_release = Gio.File.new_for_path('/etc/os-release');
++            [success, contents, tag] = _os_release.load_contents(null);
++
++            let osReleaseContentStr = contents.toString();
++            let prettyNameReg = /^PRETTY_NAME="(.+)"/;
++            let match = null;
++            for (let line of osReleaseContentStr.split('\n')) {
++                match = prettyNameReg.exec(line);
++                if (match) {
++                    sysinfo_text = match[1];
++                }
++            }
++        }
++        catch (e) {
++            // NOTE soft fail, 'sysinfo_text' is the default
++            warn('ERROR: fail to read /etc/os-release');
++        }
++
++        this._sysinfo = new St.Label({ text: sysinfo_text, can_focus: true });
++        vbox.add(this._sysinfo);
++        this.actor.hide();
++
++        this._updateHostnameId = GLib.timeout_add(GLib.PRIORITY_DEFAULT,
++                                                  this._ticket,
++                                                  Lang.bind(this, function() {
++                                                      if (this._ticket < 60*60)
++                                                          this._ticket *= 2;
++                                                      this._updateHostnameId = 0;
++                                                      this._updateHostname();
++                                                      return false;
++                                                  }));
++
++        return;
++    },
++
++    _updateHostname: function(){
++        let hostname_text = get_hostname();
++
++        if ((this._hostname == null) || (this._hostname != hostname_text)) {
++            this._ticket = 1;
++            this._hostname = hostname_text;
++            this.hostname_label.set_text(this._hostname);
++            this.actor.show();
++        }
++        this._updateHostnameId = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT,
++                                                  this._ticket,
++                                                  Lang.bind(this, function() {
++                                                      if (this._ticket < 60*60)
++                                                          this._ticket *= 2;
++                                                      this._updateHostnameId = 0;
++                                                      this._updateHostname();
++                                                      return false;
++                                                  }));
++    },
++
++    _destroy: function() {
++        this._ticket = 1;
++        if (this._updateHostnameId) {
++            GLib.source_remove (this._updateHostnameId);
++            this._updateHostnameId = 0;
++        }
++    },
++
++});
++
++function get_hostname() {
++    let hostname;
++    let interface_name = [GLib.Variant.new_string('org.freedesktop.hostname1'),
++            GLib.Variant.new_string('Hostname')];
++
++    let call = {
++        bus_name: 'org.freedesktop.hostname1',
++        object_path: '/org/freedesktop/hostname1',
++        interface_name: 'org.freedesktop.DBus.Properties',
++        method_name: 'Get',
++        parameters: GLib.Variant.new_tuple(interface_name, 2),
++        reply_type: null,
++        flags: Gio.DBusCallFlags.NONE,
++        timeout_msec: -1,
++        cancellable: null,
++    };
++
++    try {
++        let dbusConnection = Gio.bus_get_sync(DBus.BusType.SYSTEM, null);
++
++        let message = dbusConnection.call_sync(
++            call.bus_name,
++            call.object_path,
++            call.interface_name,
++            call.method_name,
++            call.parameters,
++            call.reply_type,
++            call.flags,
++            call.timeout_msec,
++            call.cancellable
++        );
++
++        hostname = message.get_child_value(0).get_variant().get_string()[0];
++
++    } catch(e) {
++        hostname = 'localhost';
++    }
++
++    return hostname;
++}
+Index: gnome-shell-3.26.0/js/ui/panel.js
+===================================================================
+--- gnome-shell-3.26.0.orig/js/ui/panel.js
++++ gnome-shell-3.26.0/js/ui/panel.js
+@@ -758,6 +758,7 @@ var AggregateMenu = new Lang.Class({
+ });
+ 
+ const PANEL_ITEM_IMPLEMENTATIONS = {
++    'aboutMenu': imports.ui.aboutMenu.AboutMenuButton,
+     'activities': ActivitiesButton,
+     'aggregateMenu': AggregateMenu,
+     'appMenu': AppMenuButton,
+Index: gnome-shell-3.26.0/js/ui/sessionMode.js
+===================================================================
+--- gnome-shell-3.26.0.orig/js/ui/sessionMode.js
++++ gnome-shell-3.26.0/js/ui/sessionMode.js
+@@ -47,7 +47,7 @@ const _modes = {
+         unlockDialog: imports.gdm.loginDialog.LoginDialog,
+         components: ['polkitAgent'],
+         panel: {
+-            left: [],
++            left: ['aboutMenu'],
+             center: ['dateMenu'],
+             right: ['a11yGreeter', 'keyboard', 'aggregateMenu'],
+         },

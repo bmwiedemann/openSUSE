@@ -1,0 +1,1750 @@
+-------------------------------------------------------------------
+Mon Feb 13 09:09:31 UTC 2017 - michael@stroeder.com
+
+- vievwc 1.1.26, including one security fix:
+  * CVE-2017-5938 escape nav_data name to avoid XSS attack
+    (boo#1024393)
+
+-------------------------------------------------------------------
+Sun Dec 18 14:38:28 UTC 2016 - astieger@suse.com
+
+- vievwc 1.1.25:
+  * fix _rev2optrev assertion on long input
+- license is BSD-2-Clause, package LICENSE text
+
+-------------------------------------------------------------------
+Fri May 20 20:32:45 UTC 2016 - adaugherity@tamu.edu
+
+- Update viewvc.conf for Apache 2.4 syntax. 
+
+-------------------------------------------------------------------
+Wed Mar 23 13:18:53 UTC 2016 - astieger@suse.com
+
+- viewvc 1.1.24:
+  * fix minor bug in human_readable boolean calculation
+  * allow hr_funout option to apply to unidiff diffs, too
+  * fix infinite loop in rcsparse
+  * fix iso8601 timezone offset handling
+  * add support for renamed roots
+  * fix minor buglet in viewvc-install error message
+
+-------------------------------------------------------------------
+Wed Apr  8 03:36:20 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.1.23
+  * fix annotate bug triggered by files with trailing blank lines
+    (issue #533)
+  * fix markup display of files with trailing blank lines (issue #533)
+  * add support for root-relative svnauthz access files (issue #535)
+  * fix cvsdb MySQL-python argument conversion error (issue #539)
+  * fix double-escaping of revision links (issue #541)
+  * fix bug that prevented mod_python 3.4+ deployment (issue #540)
+- Drop redundant dependencies
+  * pkgconfig(python)
+  * pkgconfig(python-2.7)
+  * pkgconfig(python2)
+
+-------------------------------------------------------------------
+Sat Mar  8 19:25:56 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 1.1.22:
+  * minor directory sorting logic fix (re: show_subdir_lastmod)
+  * fix display of show_subdir_lastmod details
+  * pay attention to chardet's detection confidence
+  * linkify line numbers in markup/annotate view
+- some spec file cleaning
+
+-------------------------------------------------------------------
+Mon Sep 16 09:50:44 UTC 2013 - dmueller@suse.com
+
+- update to 1.1.21:
+  * restore compatibility with Python 2.6.x
+
+-------------------------------------------------------------------
+Thu Apr 25 11:51:43 UTC 2013 - dmueller@suse.com
+
+- update to 1.1.20:
+  * fix tab-to-space handling regression in markup view
+  * fix regression in root lookup handling (issue #526)
+
+-------------------------------------------------------------------
+Tue Apr 23 09:51:32 UTC 2013 - dmueller@suse.com
+
+- update to 1.1.19:
+  * improve root lookup performance (issue #523)
+  * new 'max_filesize_kbytes' config option and handling (issue #524)
+  * tarball generation improvements:
+    - preserve Subversion symlinks in generated tarballs (issue #487)
+    - reduce memory usage of tarball generation logic
+    - fix double compression of generated tarballs (issue #525)
+  * file content handling improvements:
+    - expanded support for encoding detection and transcoding (issue #11)
+    - fix tab-to-space conversion bugs in markup, annotate, and diff views
+    - fix handling of trailing whitespace in diff view
+  * add support for timestamp display in ISO8601 format (issue #46)
+  * fix exception raised by BDB-backed SVN repositories (issue #519)
+  * hide revision-less files when rcsparse is in use
+  * include branchpoints in branch views using rcsparse (issue #347)
+  * miscellaneous cvsdb improvements:
+    - add --port option to make-database (issue #521)
+    - explicitly name columns in queries (issue #522)
+    - update MySQL syntax to avoid discontinued "TYPE=" terms
+
+-------------------------------------------------------------------
+Fri Oct 26 09:25:45 UTC 2012 - dmueller@suse.com
+
+- update to 1.1.17 (bnc#787072):
+  * fix exception caused by uninitialized variable usage (issue #516)
+  * security fix: escape "extra" diff info to avoid XSS attack (issue #515)
+  * add 'binary_mime_types' configuration option and handling (issue #510)
+  * fix 'select for diffs' persistence across log pages (issue #512)
+  * remove lock status and filesize check on directories in remote SVN views
+  * fix bogus 'Annotation of' page title for non-annotated view (issue #514)
+
+-------------------------------------------------------------------
+Mon Jun 25 11:46:02 UTC 2012 - dmueller@suse.com
+
+- update to 1.1.15 (bnc#768680):
+  * security fix: complete authz support for remote SVN views (CVE-2012-3356)
+  * security fix: log msg leak in SVN revision view with unreadable copy source (CVE-2012-3357)
+  * fix several instances of incorrect information in remote SVN views
+  * increase performance of some revision metadata lookups in remote SVN views
+  * fix RSS feed regression introduced in 1.1.14
+  * fix annotation of svn files with non-URI-safe paths
+  * handle file:/// Subversion rootpaths as local roots
+  * fix bug caused by trying to case-normalize anon usernames
+  * speed up log handling by reusing tokenization results
+  * add support for custom review log markup rules
+  * fix svndbadmin failure on deleted paths under Subversion 1.7
+  * fix annotation of files in svn roots with non-URI-safe paths
+  * fix stray annotation warning in markup display of images
+  * more gracefully handle attempts to display binary content
+  * fix path display in patch and certain diff views
+  * fix broken cvsdb glob searching
+  * allow svn revision specifiers to have leading r's
+  * allow environmental override of configuration location
+  * fix exception HTML-escaping non-string data under WSGI
+  * add links to root logs from roots view
+  * use Pygments lexer-guessing functionality
+
+-------------------------------------------------------------------
+Fri Aug 12 22:29:56 CEST 2011 - dmueller@suse.de
+
+- add supplements for apache2/subversion-server
+
+-------------------------------------------------------------------
+Tue May 17 23:39:16 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.1.11 (bnc#694785):
+  * security fix: remove user-reachable override of cvsdb row limit
+  * fix broken standalone.py -c and -d options handling
+  * add --help option to standalone.py
+  * fix stack trace when asked to checkout a directory (issue #478)
+  * improve memory usage and speed of revision log markup (issue #477)
+  * fix broken annotation view in CVS keyword-bearing files (issue #479)
+  * warn users when query results are incomplete (issue #443)
+  * avoid parsing errors on RCS newphrases in the admin section (issue #483)
+  * make rlog parsing code more robust in certain error cases (issue #444)
+
+-------------------------------------------------------------------
+Tue Mar 15 22:17:29 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.1.10:
+  * 1.1.9 shipped with a stack-trace-causing bug in the Subversion revision
+    info gathering logic
+
+-------------------------------------------------------------------
+Sat Feb 19 00:42:56 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.1.9:
+  * vcauth universal access determinations (issue #425)
+  * rework svn revision info cache for performance
+  * make revision log "extra pages" count configurable
+  * fix Subversion 1.4.x revision log compatibility code regression
+  * display sanitized error when authzfile is malformed
+  * handle file:/// Subversion rootpaths as local roots (issue #446)
+  * restore markup of URLs in file contents (issue #455)
+  * optionally display last-committed metadata in roots view (issue #457)
+
+-------------------------------------------------------------------
+Thu Dec  2 22:43:14 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.1.8:
+  * fix slowness triggered by allow_compress=1 configuration (issue #467)
+  * yield more useful error on directory markup/annotate request (issue #472)
+
+-------------------------------------------------------------------
+Sat Sep 11 18:55:54 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.1.7:
+  * maintenance release that includes all the bugfixes and enhancements made
+    thus far to the 1.1.x line
+  * adds a few features:
+    + FastCGI deployment support
+    + Basic authentication in the standalone server
+    + Subversion revision property display
+
+-------------------------------------------------------------------
+Sun Jun  6 20:44:55 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.1.6:
+  * fixes a regression introduced in 1.1.5
+  * corrects some bits of the RSS feed support
+  * introduces rudimentary support for WSGI-based deployments
+
+-------------------------------------------------------------------
+Tue Apr  6 21:51:20 CEST 2010 - dmueller@suse.de
+
+- fix buglink patch again (kde#233525)
+
+-------------------------------------------------------------------
+Tue Mar 30 09:10:12 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.1.5 (bnc#592932):
+  * security fix: escape user-provided search_re input to avoid XSS attack
+
+-------------------------------------------------------------------
+Thu Mar 11 11:06:14 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.1.4 (bnc#587357):
+ * security fix: escape user-provided query form input to avoid XSS attack
+ * fix standalone.py failure (when per-root options aren't used) (issue #445)
+ * fix annotate failure caused by ignored svn_config_dir (issue #447)
+
+-------------------------------------------------------------------
+Mon Jan 18 23:05:21 CET 2010 - dmueller@suse.de
+
+- rediff buglink.patch
+
+-------------------------------------------------------------------
+Thu Dec 31 15:18:25 CET 2009 - dmueller@suse.de
+
+- update to 1.1.3 (bnc#570605):
+  * security fix: add root listing support of per-root authz config
+  * security fix: query.py requires 'forbidden' authorizer (or none) in config
+  * fix URL-ification of truncated log messages (issue #3)
+  * fix regexp input validation (issue #426, #427, #440)
+  * add support for configurable tab-to-spaces conversion
+  * fix not-a-sequence error in diff view
+  * allow viewvc-install to work when templates-contrib is absent
+  * minor template improvements/corrections
+  * expose revision metadata in diff view (issue #431)
+  * markup file/directory item property URLs and email addresses (issue #434)
+  * make ViewVC cross copies in Subversion history by default
+  * fix bug that caused standalone.py failure under Python 1.5.2 (issue #442)
+  * fix support for per-vhost overrides of authorizer parameters (issue #411)
+  * fix root name identification in query.py interface
+
+-------------------------------------------------------------------
+Tue Aug 11 20:13:28 CEST 2009 - poeml@suse.de
+
+- update to 1.1.2:
+  * security fix: validate the 'view' parameter to avoid XSS attack
+  * security fix: avoid printing illegal parameter names and values
+  * add optional support for character encoding detection (issue #400)
+  * fix username case handling in svnauthz module (issue #419)
+  * fix cvsdbadmin/svnadmin rebuild error on missing repos (issue #420)
+  * don't drop leading blank lines from colorized file contents (issue #422)
+  * add file.ezt template logic for optionally hiding binary file contents
+- update to 1.1.1:
+  * fix broken query form (missing required template variables) (issue #416)
+  * fix bug in cvsdb which caused rebuild operations to lose data (issue #417)
+  * fix cvsdb purge/rebuild repos lookup to error on missing repos
+  * fix misleading file contents view page title
+- forward-ported the buglink patch (viewvc-buglink.patch) to 1.1.2
+
+-------------------------------------------------------------------
+Tue May 26 12:53:33 CEST 2009 - poeml@novell.com
+
+- update viewvc-buglink.patch, where the configuration object (cfg) is an
+  attribute of the DiffSource class
+
+-------------------------------------------------------------------
+Tue May 26 11:14:22 CEST 2009 - poeml@suse.de
+
+- fix viewvc-buglink.patch (a variable name was missing an
+  underscore)
+- merge with openSUSE:Factory package (broken link)
+
+-------------------------------------------------------------------
+Wed May 13 20:43:19 CEST 2009 - pascal.bleser@opensuse.org
+
+- marked package as BuildArch:noarch
+
+- update to 1.1.0:
+  * extensible path-based authorization with Subversion authz support
+  * Subversion versioned properties display
+  * unified markup and annotation views
+  * hassle-free Pygments-based syntax highlighting
+  * support for full content diffs
+  * many bugfixes and additional enhancements
+
+-------------------------------------------------------------------
+Wed Jan 14 14:12:27 CET 2009 - olh@suse.de
+
+- update viewvc to 1.0.7
+  * fix regression in the 'as text' download view (issue #373)
+  * security fix: ignore arbitrary user-provided MIME types (issue #354)
+  * fix bug in regexp search filter when used with sticky tag (issue #346)
+  * fix bug in handling of certain 'co' output (issue #348)
+  * fix regexp search filter template bug
+  * fix annotate code syntax error
+  * fix mod_python import cycle (issue #369)
+
+-------------------------------------------------------------------
+Fri Feb 29 14:24:18 CET 2008 - olh@suse.de
+
+- update viewvc to 1.0.5
+  * omit commits of all-forbidden files from query results
+  * disallow direct URL navigation to hidden CVSROOT folder
+  * strip forbidden paths from revision view
+  * don't traverse log history thru forbidden locations
+  * honor forbiddenness via diff view path parameters
+  * new 'forbiddenre' regexp-based path authorization feature
+  * fix root name conflict resolution inconsistencies (issue #287)
+  * fix an oversight in the CVS 1.12.9 loginfo-handler support
+  * fix RSS feed content type to be more specific (issue #306)
+  * fix entity escaping problems in RSS feed data (issue #238)
+  * fix bug in tarball generation for remote Subversion repositories
+  * fix query interface file-count-limiting logic
+  * fix query results plus/minus count to ignore forbidden files
+  * fix blame error caused by 'svn' unable to create runtime config dir
+
+-------------------------------------------------------------------
+Fri Aug  3 10:24:08 CEST 2007 - poeml@suse.de
+
+- fix path of /srv/viewvc/bin/mod_python/viewvc.py, renaming it to
+  myviewvc.py to load under newer mod_python without import cycle
+
+-------------------------------------------------------------------
+Wed Jul 25 10:35:31 CEST 2007 - olh@suse.de
+
+- rename subversion.viewvc.conf to viewvc.conf
+
+-------------------------------------------------------------------
+Wed Jul 25 10:26:11 CEST 2007 - olh@suse.de
+
+- fix viewvc.py path in apache config file
+  handle also /viewcvs URL with a rewrite rule
+
+-------------------------------------------------------------------
+Wed Jul 25 10:23:40 CEST 2007 - olh@suse.de
+
+- update viewvc to 1.0.4
+  * fix some markup bugs in query views (issue #266)
+  * fix loginfo-handler's support for CVS 1.12.9 (issues #151, #257)
+  * make viewvc-install able to run from an arbitrary location
+  * update viewvc-install's output for readability
+  * fix bug writing commits to non-MyISAM databases (issue #262)
+  * allow long paths in generated tarballs (issue #12)
+  * fix bug interpreting EZT substitute patterns
+  * fix broken markup view disablement
+  * fix broken directory view link generation in directory log view
+  * fix broke query result links for Subversion deleted items (issue #296)
+  * fix some output XHTML validation buglets
+  * fix database query cache staleness problems (issue #180)
+
+-------------------------------------------------------------------
+Sat Apr 28 14:04:24 CEST 2007 - olh@suse.de
+
+- move cvs2svn and viewvc to separate specfile
+
+-------------------------------------------------------------------
+Sat Apr 28 11:18:16 CEST 2007 - olh@suse.de
+
+- add sysconfig settings for remote access (247372)
+
+-------------------------------------------------------------------
+Sat Apr 28 10:46:47 CEST 2007 - olh@suse.de
+
+- add an example to host svn on / to subversion.conf  (179404)
+
+-------------------------------------------------------------------
+Thu Mar 29 21:56:44 CEST 2007 - olh@suse.de
+
+- add /usr/share/emacs to filelist
+
+-------------------------------------------------------------------
+Sun Feb 25 16:48:11 CET 2007 - olh@suse.de
+
+- update viewvc to 1.0.3
+  * fix bug in path shown for Subversion deleted-under-copy items (issue #265)
+  * minor documentation fixes
+  * fix annotate assertions on uncanonicalized #include paths (issue #208)
+  * make RSS URL method match the method used to generate it (issue #245)
+  * fix Subversion annotation to run non-interactively, preventing hangs
+  * fix bug in custom syntax highlighter fallback logic
+  * fix bug in PHP CGI hack to avoid force-cgi-redirect errors
+- update cvs2svn to 1.5.1
+  New features:
+  * Support multiproject conversions (each gets its own trunk, tags, branches).
+  * New --options option to allow run-time options to be defined via a file.
+  * --co, --cvs, and --sort options to specify the paths to executables.
+  * Add new --fallback-encoding option.
+  Bugs fixed:
+  * Add missing import in cvs2svn_lib/process.py.
+  * Fix issue #86: Support multiple project roots per repository.
+  * Fix issue #104: Allow path to "sort" executable to be specified.
+  * Fix issue #8: Allow multiple --encoding options.
+  * Fix issue #109: Improve handling of fallback encodings.
+  Improvements and output changes:
+  * Further reduce conversion time and temporary space requirements.
+  Miscellaneous:
+  * Deprecate the --dump-only option (it is now implied by --dumpfile).
+
+-------------------------------------------------------------------
+Sat Feb 24 21:55:39 CET 2007 - olh@suse.de
+
+- Version 1.4.3
+  User-visible-changes:
+   - Client:
+     * fixed: crash using automatic auth protocols with Neon 0.26 (r22440, -61)
+     * fixed: svn_load_dirs.pl cannot import file names containing '@' (r22203)
+     * fixed: error when committing replaced directories (r22991, -8)
+     * fixed: inability to change file perms due to existing file perms (r23018)
+     * include newest version of svn-graph.pl (r22969)
+     * install a manpage for svnsync (r21403)
+     * translation updates for all languages
+     * dramatically speed up commit of wc-to-wc copy (r21471)
+     * fixed: support 'svn co URL@{DATE}' (issue #2602)
+     * fixed: cannot access repositories with spaces via svn:// (issue #2612)
+     * fixed: passing full URL in some DAV requests, breaking proxies (r21526)
+     * fixed: history-tracing can fail for renamed directories (issue #2600)
+     * fixed: crash if interrupted while opening a working copy (r21792)
+     * fixed: 'svn merge' should notify about conflicted files (issue #2584)
+     * fixed: 'svn revert' should notify about prop-only reverts (issue #2517)
+     * fixed: 'svn status -u' not showing props changed on wc root (issue #2533)
+     * fixed: 'svn status -u' fails in a read-only working copy (r21904, -19)
+     * fixed: 'svn up' failing with checksum mismatch error (issue #2618)
+     * fixed: 'svnsync sync' copying missing implicit revprops (issue #2613)
+     * fixed: svnsync unable to synchronise copies of URL-unsafe paths (r22092)
+     * svnshell tool: support "setrev head" (r20992)
+     * include newest version of svnmerge.py
+   - Server:
+     * fixed: incorrectly reporting authz circular dependencies (issue #2684)
+     * fixed: potential filesystem memory leak in commit finalisation (r22729)
+     * FSFS: improve detection of disk write errors (r21346)
+     * FSFS: prevent API violation from corrupting repository (issue #2467)
+     * improved error checking when running hook scripts, etc (r21483)
+     * mailer.py: new commit_url option links to web page for a commit (r21333)
+   - Client and Server:
+     * fixed: potential string corruption when resizing string buffers (r22689)
+     * translation updates for Korean, Spanish, Italian, Simplified Chinese,
+           and Japanese (fixing issues #2649 and #2681)
+ Developer-visible-changes:
+ * update (experimental) ra_serf repository access module for DAV (r22872)
+ * fixed: svn_{ra,repos}_replay() doesn't send checksums (r22346, -51, -52)
+ * fixed: error when calling svn_repos_replay2() with a txn root (r22609)
+ * support current CVS versions of libtool (post-1.5.22) (r22120)
+ * javahl bindings:
+     - fixed: auth cache is created in the current directory (r22780)
+     - fixed: SVNAdmin's setLog() method always fails (r22387)
+     - fixed: target dependency order in generated build scripts (r22209)
+     - compile Java bytecode for Java 1.2 VM (r21765, -7, r21814)
+     - fixed: crash if using 1.4.x bindings with older libraries (r21316, -429)
+     - fixed: crash when empty destination path passed to checkout (r21770)
+ * SWIG/perl bindings:
+     - fixed: ra_do_{update,switch,status} work with Perl delta editors (r22311)
+     - fixed: memory leak when calling methods on a Perl commit editor (r22332)
+     - fixed: ra_replay works with Perl delta editors (r20666)
+ * SWIG/python bindings:
+     - fixed: crash when using an apr_hash_t typemap (issue #2606)
+
+-------------------------------------------------------------------
+Thu Jan 25 13:21:33 CET 2007 - olh@suse.de
+
+- add svnmerge.py to subversion-tools (236700)
+
+-------------------------------------------------------------------
+Sun Oct 29 13:00:18 CET 2006 - meissner@suse.de
+
+- use RPM_OPT_FLAGS also for C++
+
+-------------------------------------------------------------------
+Thu Sep 28 00:33:39 CEST 2006 - ro@suse.de
+
+- use source=1.4 for java compilation 
+
+-------------------------------------------------------------------
+Mon Sep 25 10:55:08 CEST 2006 - olh@suse.de
+
+- update cvs2svn to 1.4.0
+  New features:
+  * Support multicomponent --trunk, --tags, and --branches paths (issue #7).
+  * New --auto-props option allows file properties to be set via file.
+  * --force-branch and --force-tag options now accept regular expressions.
+  * Add --symbol-default option.
+  * Support multiple, ordered --encoding options.
+  Bugs fixed:
+  * Fix issue #93: Tags with forbidden characters converted to branches.
+  * Fix issue #102: Branch file, deleted in CVS, is present in SVN.
+  Improvements and output changes:
+  * Print informative warning message if a required program is missing.
+  * Output an error if any CVS filenames contain control characters.
+  * Clean up temporary files even for pass-by-pass conversions.
+  * Improve handling of commit dependencies and multibranch commits.
+  * Implemented issue #50 (performance change).
+  * Reduced the amount of temporary disk space needed during the conversion.
+  Miscellaneous:
+  * cvs2svn now requires Python version 2.2 or later.
+  * cvs2svn has been broken up into many smaller python modules for clarity.
+
+-------------------------------------------------------------------
+Sat Sep 23 08:59:32 CEST 2006 - olh@suse.de
+
+- force javac 1.4 bytecode
+
+-------------------------------------------------------------------
+Thu Sep 21 11:05:30 CEST 2006 - olh@suse.de
+
+- rename viewcvs to viewvc, with no upgrade path for config files
+- use the official viewvc-1.0.1 to get rid of the -dev string
+  add patches for https and path handling from 1.0.x branch
+
+-------------------------------------------------------------------
+Thu Sep 21 10:41:30 CEST 2006 - olh@suse.de
+
+- fix build when java is unavailable
+
+-------------------------------------------------------------------
+Thu Sep 21 09:44:04 CEST 2006 - olh@suse.de
+
+- update cvs2svn filelist for python 2.5
+
+-------------------------------------------------------------------
+Fri Sep 15 08:07:14 CEST 2006 - poeml@suse.de
+
+- remove unused pcre-devel and redundant libapr-util1-devel from
+  BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 13 17:22:58 CEST 2006 - olh@suse.de
+
+- Version 1.4.0 
+  User-visible-changes:
+  - Client:
+    * new 'svnsync' commandline tool for repository replication
+    * numerous working copy improvements (WARNING! upgrades to new format!):
+      - improved performance when detecting modified files (r18628 -56)
+      - new property storage is faster and uses less disk space (r17583)
+      - internal wcprops take up less space (r19433 -37)
+      - large file commit speedups (r17861 -73 18867 -918 -29 -44 -45 -48 -49)
+      - reduce memory usage for large working copies (r19183 -538)
+      - increased working copy stability with merge, copy and move:
+            (fixes issues #845, #1516, #1553, #2135, #2144, #2148)
+    * new switches added:
+      - 'svn blame --force' (issue #2509)
+      - 'svn diff/merge -c/--change' (r17054 -6 -68 18568 -741)
+      - 'svn diff --summarize' (issue #2015)
+      - 'svn merge/blame -x' (r18716 -20) (r18602 -857)
+    * 'svn log' now supports peg revisions (issue #2287)
+    * 'svn export' now creates intermediate directories if needed (r20030)
+    * use switch/relocate when svn:externals updated (issue #2209)
+    * internal diff can ignore whitespace and eol style changes (issue #2121)
+    * conflict markers now match the file's eol style (issue #1325)
+    * new svn2cl, svn-viewdiff and svn-resolve contrib scripts
+    * numerous improvements to svnmerge.py, vc-svn and psvn
+    * translation updates for all languages
+    * fixed: 'svn ls' slow over ra_dav (issue #2151)
+    * fixed: 'svn import' not handling eol-style correctly (issue #2433)
+    * fixed: 'svn blame' should default operative rev range to peg rev (r18400)
+    * fixed: 'svn blame' ignores eol-style (issue #2431)
+    * fixed: 'svn checkout' should default operative rev to peg rev (r18422)
+    * fixed: 'svn diff' supports all eol styles (r17624 -8 -61 18195 -392)
+    * fixed: 'svn diff' multi-target memory leak (r17518)
+    * fixed: 'svn merge' showing wrong status with external diff3 (issue #1914)
+    * fixed: 'svn merge' not merging added dir into deleted dir (issue #2515)
+    * fixed: 'svn rm' of non-existent item should fail (issue #2440)
+    * fixed: 'svn status' should skip unversioned files (issue #2030)
+    * fixed: 'svn status' shows added and conflicted files as added (r20382)
+    * fixed: 'svn switch --relocate' may set wrong repos root (r17031)
+    * fixed: 'svn switch --relocate' memory leak (r19535)
+    * fixed: 'svn switch --relocate' not caching passwords (issue #2360)
+    * fixed: 'svn info' not showing locks sometimes (r19777)
+    * fixed: incorrect merge of add of binary file already in WC (issue #2403)
+    * fixed: possible dataloss if editing immediately after merge (r20609 -12)
+    * fixed: lots of diff wc<->repos bugs
+    * fixed: unfriendly error message on propget on nonexistent path (r19399)
+    * fixed: spurious revert report after manual conflict removal (issue #2517)
+    * fixed: don't allow -rPREV on schedule add path (issue #2315)
+    * fixed: keywords with dollar signs cause badness (issue #1780)
+    * fixed: really revert file with locally modified keywords (issue #1663)
+    * fixed: deleting schedule add file leaves working props file (issue #2419)
+    * fixed: svn:needs-lock and read-only-ness not always in sync (issue #2306)
+    * fixed: post-commit error output not sent to the client (issue #443)
+    * fixed: not locked error on commit of switched path (issue #2353)
+    * fixed: svn_apply_autoprops.py should trim whitespace from props (r20790)
+    * fixed: show locking notifications in local path style (r20927)
+    * fixed: encoding error on error messages from invalid options (r20883)
+
+  - Server:
+    * support for new 'svnsync' repository mirroring utility
+    * support for BDB 4.4, including automatic recovery (issue #2449)
+    * new contrib hook scripts:
+      - enforcer
+      - detect-merge-conflict.sh
+      - case-insensitive.py
+    * new tools script svn-backup-dumps.py
+    * new tools hook script log-police.py
+    * svnserve improvements:
+      - new option --pid-file (r17836)
+      - allow the password database to be read-only (r16840)
+    * mod_dav_svn improvements:
+      - fixed: error conversion crash (r19516)
+      - fixed: unfriendly error when locking already locked path (issue #2275)
+      - fixed: xml escaping bugs (r19760 -85 -86)
+    * authorization improvements:
+      - new mod_dontdothat apache module (r19531)
+      - new mod_authz_svn directive AuthzSVNNoAuthWhenAnonymousAllowed (r18680)
+      - error out when authz rules contain unexpected characters (r19471)
+    * lots of improvements to mailer.py and commit-email.pl
+    * FSFS back-end performance improvements (r17125 19119 -456 -58 -59)
+    * fixed: 'svnadmin verify' output not in native encoding (issue #1997)
+    * fixed: uuid file in FSFS could be destroyed on write error (issue #2193)
+    * fixed: FSFS path encoding bug (r17774)
+    * fixed: don't crash on corrupt repositories (r17625)
+    * fixed: expect error output from hook scripts in native encoding (r17101)
+    * fixed: catch errors starting hook scripts (r16891 17041 -81)
+    * fixed: svnserve and authz can cause broken WCs (issue #2566)
+    * fixed: the default hook script templates should be vanilla sh (r20796)
+
+  - Both:
+    * delta compression improvements:
+       - new delta encoding reduces size (r18363 -94 -66 -78 -98 -99 -457 -950)
+       - xdelta algorithm speed improvements (r18986, 19047)
+    * don't bail on invalid locale (r19445)
+    * improve speed of non-verbose svn ls (r17067 -71)
+    * fixed: delta combiner reading past EOF (r17743)
+
+Developer-visible-changes:
+* require APR >= 0.9.7 to improve error detection for FSFS repos (r19915)
+* require zlib, for svndiff1 delta encoding (r18363)
+* support SWIG 1.3.29 (r19968)
+* support autoconf 2.60-dev (r19919 20632 -36)
+* numerous improvements to gen-make.py build system, especially on win32
+* new public APIs:
+  - keyword and eol translation helpers and generic streams (see svn_subst.h)
+  - new generic stream helpers (see svn_io.h)
+  - authentication providers made available to other clients (see svn_auth.h)
+  - svn_cmdline_setup_auth_baton
+  - svn_dso_initialize, svn_dso_load
+  - svn_client_diff_summarize and svn_client_diff_summarize_peg
+  - svn_client_list
+  - svn_config_has_section
+  - svn_txdelta_compose_windows and svn_txdelta_apply_instructions
+  - svn_txdelta_stream_create
+  - svn_diff_file_options_create and svn_diff_file_options_parse
+  - svn_err_best_message
+  - svn_compat_wrap_commit_callback
+  - svn_uuid_generate
+  - svn_user_get_name and svn_user_get_homedir
+  - svn_io_get_dir_filenames
+  - svn_ra_reparent
+  - svn_ra_replay
+  - svn_wc_revision_status
+  - several rev'd APIs, see doxygen docs
+* flush stdout after each status/notification line (r19476 -656)
+* new (experimental) ra_serf repository access module for pipelined DAV
+* .svn/entries use a less verbose non-xml format (r19420)
+* make recursive 'svn ls' streamy (issue #1809)
+* remove svn-config script
+* empty-file and README.txt removed from WC admin areas (r17181 -268 -364)
+* replace cmdline client XML DTDs with RNG schemas (r16379 -80 -93 -571 17248)
+* fixed: log --limit against old svnserve leaves unusable session (r19638)
+* fixed: blame of WORKING revision shouldn't give BASE (r19558)
+* fixed: svn_client_copy and _move should fail if target exists (issue #2188)
+* fixed: svn_io_file_rename and readonlyness on Windows and UNIX (r17366 -69)
+* fixed: ra_dav memory leak when reusing session (issue #2247)
+* fixed: various problems with --enable-dso and global pools (r20996, r20999)
+* SWIG bindings:
+    - SWIG/python bindings:
+      - new support for svn_client_info (r19413)
+    - SWIG/perl bindings:
+      - new support for svn_client_info (r18758)
+      - minor corrections to SVN::Fs (r19312)
+* javahl bindings:
+    - APIs to get version info for the native libraries  (r17604 -07)
+    - API for path validation (r18989, r19079)
+    - C++/Java code refactoring, cleanup, and consolidation
+    - fixed: handle possible errors from date/time conversions (r17213)
+    - fixed: SVNClient username/password JVM crash on null input (r19803 -13)
+    - fixed: specify default UUID load action (r18030)
+
+-------------------------------------------------------------------
+Sun Jul 23 08:41:55 CEST 2006 - olh@suse.de
+
+- tolerate neon 0.24.4 and 0.26.*
+
+-------------------------------------------------------------------
+Wed Jul 19 14:54:43 CEST 2006 - olh@suse.de
+
+- quick fix to try also an ipv4 connect if ipv6 fails (#193350)
+
+-------------------------------------------------------------------
+Sat Jul 15 19:09:43 CEST 2006 - olh@suse.de
+
+- update cvs2svn to 1.3.1
+- update viewcvs to 1.0.x branch
+  * fix exception on log page when use_pagesize is enabled
+  * fix an XHTML validation bug in the footer template (issue #239)
+  * fix handling of single-component CVS revision numbers (issue #237)
+  * fix bug in download-as-text URL link generation (issue #241)
+  * fix query.cgi bug, missing 'rss_href' template data item (issue #249)
+  * no longer omit empty Subversion directories from tarballs (issue #250)
+- update to 1.3.2 (#181701)
+  User-visible-changes:
+  - Client:
+    * fixed: crash in svn st -u on missing subdirs (r19348, -73, issue #2551)
+    * svn_load_dirs.pl symlink support (issue #2478)
+    * fixed: svn_load_dirs.pl trying to import .svn and _svn dirs (r18549)
+    * fixed: leaving stray WC locks on cancellation (r18893)
+
+  - Server:
+    * fixed: memory leak in mod_dav_svn when listing large dirs (r19528)
+    * fixed: svnserve protocol error in lock, causing client hang (issue #2548)
+    * fixed: mod_dav_svn crash on valid request (r19520)
+    * mailer.py: add Content-Transfer-Encoding header (r19319)
+    * mailer.py: fixed: named substitutions incorrectly ignored (r18114, -681)
+    * fixed: authz requires read access for root for writes (issue #2486)
+
+-------------------------------------------------------------------
+Mon Jun 12 11:47:11 CEST 2006 - poeml@suse.de
+
+- fix build on SUSE Linux 9.3 to 10.1 and SLES9
+- remove X11 libs from BuildRequires -- they don't seem to be
+  required at all
+
+-------------------------------------------------------------------
+Sun Jun 11 00:07:47 CEST 2006 - olh@suse.de
+
+- update subversion.viewcvs.conf
+  viewcvs was renamed to viewvc, all files were renamed
+
+-------------------------------------------------------------------
+Mon May  8 18:49:21 CEST 2006 - olh@suse.de
+
+- update viewcvs to final release version 1.0.0
+- update to 1.3.1
+  User-visible-changes:
+  - Client:
+    * fixed: segfault moving unversioned files (issue #2436)
+    * fixed: verbose list broken over ra_dav (issue #2442)
+    * fixed: 'svn ci -m path_name' not requiring '--force-log' (r17956)
+    * fixed: crash on mixed-case https URL scheme (r18042)
+    * fixed: crash in status with ignored directories (r18291)
+    * fixed: strip peg rev from default checkout directory (r18416)
+    * fixed: diff crash with non-recursive checkout (r17231, 18539, -41)
+    * fixed: 'svn ls' URL encoding bug with locks (r18665, -68)
+    * fixed: unlock circumvents lock token check (r18691, -94)
+    * fixed: repos-to-repos copy crash (r18451)
+    * fixed: 'svnmerge' utility improvements (r18811)
+
+  - Server:
+    * fixed: set svn:date at the end of commit in fsfs (r18078)
+    * fixed: don't wait for hook script background jobs (r18146)
+    * fixed: mod_dav_svn should log the whole error chain (r18211)
+    * fixed: uncomment section headers in repos config files (r18247, -50)
+    * fixed: log scalability issues with many paths (r18395, -404)
+    * fixed: better path input validation in mod_dav_svn (r18660)
+    * fixed: assert in copy in fsfs and bdb (issue #2398)
+
+  Developer-visible-changes:
+   * fixed: missing #include (r18065)
+   * fixed: error leaks (18196, -249)
+   * python bindings: libsvn_swig_py link problem on Solaris 10 (r17910)
+   * python bindings: pool lifetime bug (r17992)
+   * python bindings: memory leak (r18230)
+   * python bindings: race condition during application pool initialization (r18721)
+
+-------------------------------------------------------------------
+Wed Apr 12 14:28:27 CEST 2006 - olh@suse.de
+
+- add svn_load_dirs.pl to subversion-tools package
+
+-------------------------------------------------------------------
+Tue Apr  4 21:10:36 CEST 2006 - olh@suse.de
+
+- add svn-config to subversion-devel package (#163289)
+
+-------------------------------------------------------------------
+Fri Mar 10 14:08:07 CET 2006 - poeml@suse.de
+
+- fix instructions in README.SuSE
+
+-------------------------------------------------------------------
+Sun Mar  5 16:32:34 CET 2006 - olh@suse.de
+
+- pass prefix=/usr to cvs2svn install (#149809)
+- update viewcvs to todays status
+  Improve error reporting when svn blame fails.
+  Fix mismatch between config.py and config file for php
+  Allow CVS roots to be specified as root_parent directories
+  Rename the "Project Root" drop down box to "Repository" in the default templates.
+  Fix issue 204, 'Invalid "Repository Listing" location'
+  Make EZT library support python iterators
+  Add rudimentary support for intraline diffs.
+  Implement trac-style unified diffs
+  Fix HTML escaping in new unified diff view
+  Fix issue #205 "Illegal id tags in tempates"
+  Call update() with the proper argument.
+  Avoid creating references to undefined "vc_idiff_" class.
+  Fixup <br> tags (to <br />).
+  Finish issue #212 -- XHTMLify the highlight integration.
+  Finish issue #210.  Handle requests for [rootname]-root.tar.gz
+  Finish issue #174 -- markup view of HEAD shows HEAD metadata
+  Finish issue #178 -- remove references to symbolic revisions in instructions for Subversion diffs.
+  Use <em> instead of <i>, <strong> instead of <b>.
+  Fix a bug which caused 404's for revision views of the default repository when root_as_url_component is disabled.
+  Restore highlight "line-number-start" option.
+  set 'commits.log' template var instead of 'commits.desc'
+  Make vhost configuration work under mod_python.
+
+-------------------------------------------------------------------
+Mon Feb 27 15:40:05 CET 2006 - olh@suse.de
+
+- fix viewcvs buglink patch 
+
+-------------------------------------------------------------------
+Mon Feb 27 10:48:44 CET 2006 - olh@suse.de
+
+- update viewcvs to todays status
+  correct subversion.viewcvs.conf defaults for mod_python
+  fix the python exceptions in viewcvs
+
+-------------------------------------------------------------------
+Sun Feb 26 22:42:45 CET 2006 - olh@suse.de
+
+- add build dependency handling for swig bindings
+
+-------------------------------------------------------------------
+Thu Feb 23 11:11:04 CET 2006 - olh@suse.de
+
+- update viewcvs to todays status
+  remove Requires: swig (#153013)
+  Require libapr-util1-devel libapr1-devel python-devel openldap2-devel
+  cvs2svn requires svnadmin from subversion
+
+-------------------------------------------------------------------
+Sun Jan 29 22:30:44 CET 2006 - olh@suse.de
+
+- update viewcvs to todays status
+  update cvs2svn to current svn status
+  update viewcvs bugurl patch
+  build with -fstack-protector
+  disable java on ppc
+
+-------------------------------------------------------------------
+Mon Jan 23 20:37:35 CET 2006 - olh@suse.de
+
+- update de and nb po files for subversion
+  update viewcvs to todays status
+  update cvs2svn to current svn status
+
+-------------------------------------------------------------------
+Mon Jan  9 23:16:28 CET 2006 - olh@suse.de
+
+- fix CFLAGS usage in specfile
+  update viewcvs to todays status
+  update cvs2svn to current svn status
+
+-------------------------------------------------------------------
+Mon Jan  2 19:49:56 CET 2006 - dmueller@suse.de
+
+- build against apache 2.2.x 
+
+-------------------------------------------------------------------
+Sun Jan  1 12:55:53 CET 2006 - olh@suse.de
+
+- update viewcvs to todays status
+- update to 1.3.0
+  User-visible-changes:
+  - Client:
+    * 'svn ls -v' now shows remote locks (issue #2291)
+    * 'svn status' speedup (r15061, r15103)
+    * 'svn blame' speedup on files with long history (issue #1970)
+    * 'svnversion' now assumes default argument of '.' (r14892)
+    * support for neon 0.25.x, which fixes http:// control-c bug (issue #2297)
+    * support for more ISO-8601 date formats, compatible with GNU date (r14428)
+    * support for single-digit date components (r15459)
+    * working copy size with empty propfiles reduced (r16855, see releasenotes)
+    * new switches added:
+       - 'svn blame --xml [--incremental]' (r14690)
+       - 'svn status --xml [--incremental]'  (issue #2069)
+       - 'svn info --xml [--incremental]'
+       - 'svn add/import --no-ignore'  (issue #2105)
+       - 'svnlook tree --full-paths'  (r13976)
+       - 'svnlook diff --diff-copy-from'  (r14855)
+       - 'svnlook changed --copy-info' (r16681)
+    * fixed: 'svn copy wc URL' might include deleted items (issue #2153)
+    * fixed: 'svn copy wc wc' allows cross-repository copies (issue #2404)
+    * fixed: 'svn up/merge' major property-merging bugs (issue #2035)
+    * fixed: 'svn merge' insisting on write access to '.' (issue #2411)
+    * fixed: 'svn merge' cross-device move problems (r16293, -329, -330)
+    * fixed: 'svn diff' outputs headers in wrong encoding (issue #1533)
+    * fixed: 'svn proplist/add/cat' dies on unversioned items (issue #2030)
+    * fixed: 'svn add' not honoring svn:ignore property (issue #2243)
+    * fixed: 'svn log -rN:M --limit X' error over http:// (issue #2396)
+    * fixed: 'svn switch --relocate' failure on 'deleted' dir (r16673)
+    * fixed: 'svn info' not always showing repos lock (issue #2276)
+    * fixed: 'svn info' might show lock on wrong path (r16626)
+    * fixed: 'svnlook' chokes on logs with inconsistent newlines (r14573)
+    * fixed: 'svnlook propget --revprop -t' failure (r15203)
+    * fixed: 'svnversion' wrongly traverses into externals (r15161)
+    * fixed: incorrect URI encoding passed to svn+ssh:// (issue #2406)
+    * fixed: properly handle filenames containing '@' (issue #2317)
+    * fixed: '--non-interactive' now suppresses launch of $EDITOR (r15277)
+    * fixed: conflict markers not in current encoding (r14621)
+    * fixed: commands ignoring extraneous -m or -F switches (issue #2285)
+    * fixed: poor error-checking when using revprops (r15542)
+    * fixed: stack-smashing bugs (r15948, r16037)
+    * fixed: incorrect parsing of mod_dav_svn XML responses (r17589)
+    * translation updates for all languages
+
+  - Server:
+    * svnserve improvements:
+       - can now restrict read/write access by path (see releasenotes)
+       - undeprecation of the --read-only (-R) option (r17614)
+    * mod_dav_svn improvements:
+       - 'SVNListParentPath on' shows all repositories in web browser (r16158)
+       - ability to log high-level client operations (see releasenotes)
+       - sets svn:mime-type on autoversioning commits (r14359)
+    * 'svn log' performance improvement (r14722)
+    * fixed: fs history algorithm might return wrong objects (issue #1970)
+    * fixed: repos deadlock when hooks output too much (issue #2078)
+    * fixed: mod_dav_svn displays errors with sensitive paths (r14792)
+    * fixed: anonymous reader could create empty commits (issue #2388)
+    * fixed: possible segfault to callers of trace_node_locations() (r16188)
+    * fixed: BDB-style locking actions on FSFS repositories (r16295, r16297)
+    * fixed: numerous bugs running BDB commands on FSFS (issue #2361, r16388)
+    * fixed: svndumpfilter incorrectly remapping dropped revs (issue #1911)
+
+  - Both:
+    * faster multiple (un)locks in a single svn:// request (issue #2264)
+    * the Subversion Book is no longer bundled (r17466)
+
+  Developer-visible-changes:
+  * working copy is now storing repos_root as separate field (issue #960)
+  * keywords are now stored in an internal hash (issue #890)
+  * client status APIs now makes more server-side info available (r16344)
+  * new public APIs:  
+     - new transfer progress callback for DAV (r15948)
+     - svn_ra_initialize(), svn_client_open_ra_session()
+     - svn_fs_closest_copy(), svn_fs_type()
+     - several rev'd APIs, see doxygen docs
+  * SWIG bindings: No more compile-time or runtime SWIG dependencies
+    - SWIG/python bindings:
+       - automatic memory management: APIs no longer require pool arguments!
+       - improved stability, as shown by our new testsuite
+       - better error messages
+    - SWIG/ruby bindings:
+       - complete API coverage!
+       - automatic memory management
+       - greatly expanded test suite
+    - SWIG/perl bindings:
+       - new accessors for svn_lock_t, svn_fs_access_t
+       - a number of bugfixes
+  * javahl bindings:
+    - add streamy API for fetching file contents (r15584) 
+    - fixed: let tests run before bindings are installed (issue #2040)
+    - fixed: lock command not raising errors properly (issue #2394)
+    - fixed: ignored errors from svn_client_blame2() (r16434)
+
+-------------------------------------------------------------------
+Wed Dec 21 09:29:13 CET 2005 - olh@suse.de
+
+- update svn to current svn-1.3.x branch
+  update cvs2svn to current svn status
+  update viewcvs to todays status
+
+-------------------------------------------------------------------
+Fri Dec  9 17:56:13 CET 2005 - olh@suse.de
+
+- update svn to current svn-1.3.x branch
+  update cvs2svn to current svn status
+  update viewcvs to todays status, adapt a few path names
+  remove libapr0 from nfb, comes from apache2-devel-packages
+  update svndiff script to pass more options to svn
+
+-------------------------------------------------------------------
+Sat Dec  3 15:46:06 CET 2005 - olh@suse.de
+
+- clear LD_RUN_PATH in perl bindings
+  allow building with older distributions, requires swig > 1.3.21
+
+-------------------------------------------------------------------
+Sat Dec  3 11:30:59 CET 2005 - olh@suse.de
+
+- update svn to current svn-1.3.x branch
+  update cvs2svn to current svn status
+  update svndiff script to take $rev and r$rev as arguments
+
+-------------------------------------------------------------------
+Fri Nov 25 08:54:06 CET 2005 - olh@suse.de
+
+- update svn to current svn-1.3.x branch
+  update cvs2svn to current svn status
+  update viewcvs to todays status, it is now viewvc
+
+-------------------------------------------------------------------
+Tue Nov  8 20:50:42 CET 2005 - olh@suse.de
+
+- update svngrep to ignore quilt metadata
+
+-------------------------------------------------------------------
+Tue Nov  8 20:10:20 CET 2005 - olh@suse.de
+
+- update svn to current svn-1.3.x branch
+  update cvs2svn to current svn status
+  update viewcvs to todays status
+
+-------------------------------------------------------------------
+Tue Nov  8 19:40:29 CET 2005 - olh@suse.de
+
+- remove old extra po and pt_BR locale files
+
+-------------------------------------------------------------------
+Sun Oct 30 08:27:27 CET 2005 - olh@suse.de
+
+- update to 1.3.0rc2
+  update cvs2svn to current svn status
+  build bindings parallel
+
+-------------------------------------------------------------------
+Fri Oct 28 19:37:39 CEST 2005 - olh@suse.de
+
+- update to 1.3.0rc1
+
+-------------------------------------------------------------------
+Thu Oct 27 20:29:11 CEST 2005 - olh@suse.de
+
+- move subversion-doc to a noarch package
+  update cvs2svn to current svn status
+  update viewcvs to todays status
+
+-------------------------------------------------------------------
+Wed Sep 21 11:10:33 CEST 2005 - olh@suse.de
+
+- cvs2svn requires /usr/bin/co  (#118017)
+
+-------------------------------------------------------------------
+Fri Aug 26 17:03:07 CEST 2005 - olh@suse.de
+
+- update viewcvs, more permission fixes
+- update svnbook
+- update po and pt_BR locale file
+- update to 1.2.3
+ User-visible-changes:
+  - Client:
+    * fixed: 'svn status -u' fails against pre-1.2 mod_dav_svn (r15359, r15423)
+    * fixed: 'svn export' segfault (r15516)
+    * fixed: 'svn merge' memory leak (r15233)
+    * fixed: horrible rename-tracing performance against 1.0 servers (r15315)
+    * fixed: 'svn cat' over file:// -- small leak  (r15253)
+    * fixed: crash with "svn lock" and authentication (r15703)
+    * improvements to 'svnmerge' utility (r14008,-458,-587,-632, r15329,-340)
+    * translation updates for French, German, Polish, Norwegian, Swedish,
+      Korean
+  - Server:
+    * fixed: mod_authz_svn being overly restrictive (r15463)
+    * fixed: fsfs directory caching bug (r15705, r15742)
+
+  - Both:
+    * fixed: crash when >50 options passed to any commandline app (r15251)
+    * fixed: memory leak in character translation handle caching (r15379,-398)
+
+ Developer-visible-changes:
+  * fixed: crash when calling svn_client_(un)lock with no targets (r15734)
+  * missing #include in SWIG bindings (r15683)
+  * javahl bindings:
+      - fixed: JNI library loading bug (r15552)
+      - fixed: JNI stack-name cut and paste error (r15337)
+      - fixed: crash when revisions have no dates (r15737)
+  * perl bindings:
+      - now compatible with SWIG 1.3.25 (r15248)
+      - allow SVN::Pool to be used as pool parameter (r15450)
+      - make SVN::Delta::Editor friendlier for debugging (r15609)
+      - fixed: wrap svn_ra_stat properly (r15713)
+      - fixed: bug in SVN::Core::Stream's read function (r15698, r15700)
+  * ruby bindings:
+      - now compatible with SWIG 1.3.25 (r14980, r15361)
+
+-------------------------------------------------------------------
+Fri Aug 19 11:24:41 CEST 2005 - olh@suse.de
+
+- hide SVN_VIEWCVS_MODPYTHON section in IfModule mod_python.c
+  update viewcvs, more permission fixes
+  update svnbook
+
+-------------------------------------------------------------------
+Tue Aug  2 15:45:53 CEST 2005 - olh@suse.de
+
+- provide libsvnjavahl-1.so in main svn package, for subclipse
+- update svnbook
+
+-------------------------------------------------------------------
+Tue Jul 12 20:32:51 CEST 2005 - olh@suse.de
+
+- remove --silent from libtool calls
+  all object files are compiled with the same CFLAGS
+  -fpie cant be used for shared objects, pass -fno-pie to libtool
+  as a quick hack
+- update svnbook
+
+-------------------------------------------------------------------
+Tue Jul 12 11:27:41 CEST 2005 - poeml@suse.de
+
+- double check that all repository access schemes are compiled 
+
+-------------------------------------------------------------------
+Sun Jul  3 20:34:33 CEST 2005 - olh@suse.de
+
+- update svnbook
+- build with expat instead of libxml2 (#94606)
+- update buildrequires for subversion-devel
+- update to 1.2.1
+ User-visible-changes:
+  - Client:
+    * fixed: 'svn lock' on switched file locks wrong thing (issue #2307)
+    * fixed: 'svn (un)lock' errors on multiple targets (r14736, 14775)
+    * fixed: 'svn (un)lock' problems with URI-unsafe names (issue #2314)
+    * fixed: 'svn (un)lock' not caching authentication (r15088)
+    * fixed: 'svn unlock' loses executable bit (r14859, r14923, r14939)
+    * fixed: 'svn unlock URL' segfault (r14893)
+    * fixed: 'svn commit' failure on XML-unsafe locked paths (issue #2335)
+    * fixed:  recursive directory copy bug (issue #2343)
+    * fixed:  don't initialize RA library in 'svnversion' (r14755)
+    * various translation updates for localized client messages
+  - Server:
+    * fixed: 'svn log' performance regression, general (r14116, 14772, 14759)
+    * fixed: 'svn log -v' performance regression, FSFS-specific (r15016)
+    * fixed: mod_dav_svn bug sets content-type incorrectly (r15046)
+ Developer-visible-changes:
+ * fixed:  OBOE with 'limit' parameter of svn_repos_get_logs3(). (r15119)
+ * perl bindings:  
+      - accessors for svn_lock_t (r15082)
+      - call utf_initialize, adjust global pool usage (r15076, r15080,
+                                                       r15081, r15117)
+
+-------------------------------------------------------------------
+Thu Jun 16 21:29:40 CEST 2005 - olh@suse.de
+
+- update svnbook, add -fpie to CFLAGS, -pie to LDFLAGS
+
+-------------------------------------------------------------------
+Thu May 26 17:50:46 CEST 2005 - olh@suse.de
+
+- Fix svn-push, which was segfaulting all the time
+
+-------------------------------------------------------------------
+Thu May 26 16:39:27 CEST 2005 - olh@suse.de
+
+- add simple svndiff to operate on a single commit, update svnbook
+
+-------------------------------------------------------------------
+Mon May 23 20:43:03 CEST 2005 - olh@suse.de
+
+- switch to 1.2.0 tag, add cvs2svn faq, update svnbook
+
+-------------------------------------------------------------------
+Sat May 21 19:09:42 CEST 2005 - olh@suse.de
+
+- update to 1.2.0
+ User-visible-changes:
+  - Client:
+    * add peg-rev syntax to co/blame/cat/ls/pget/plist/export (issue #1093)
+    * 'svn info' now works on URLs (r13123, 13144)
+    * 'svn* --version' now shows available repository back-ends (r13761)
+    * new fixed-length keywords (for placement in binary files) (issue #2095)
+    * performance improvements:
+       - 'svn status' does much less disk parsing (r11677, 11704)
+       - 'svn st -u' no longer asks server to generate textdeltas (issue #2259)
+       - 'svn revert -R' doing much less work (r13883)
+       - utf8<->native conversions are faster now (issue #2016)
+    * new switches added:
+       - 'svn log --limit N'               - show only first N log messages
+       - 'svn info --revision'             - show info on older object (r13265)
+       - 'svn list --xml'                  - output listing in XML
+       - 'svn propset --force'             - allow unusual propsets (#2065)
+       - 'svn diff --force'                - show diffs on binary files (#2099)
+       - 'svn co/up/st --ignore-externals' - skip over externals (#2189)
+       - 'svn export --non-recursive'      - don't export subdirs (issue #2228)
+       - 'svnversion --help'               - show help (r13128)
+    * fixed: 'svn merge' fails to add symlinks or expand keywords (issue #2064)
+    * fixed: 'svn merge --dry-run' shows spurious 'skip' messages (issue #1943)
+    * fixed: 'svn merge' file-not-found' error (issue #1673)
+    * fixed: 'svn merge' of propchanges into deleted file (issue #2132)
+    * fixed: 'svn merge' on implicit target with space (r13010)
+    * fixed: 'svn merge/diff URL URL' can cause httpd timeout (issue #2048)
+    * fixed: 'svn switch/update' failure might corrupt wc (issue #1825)
+    * fixed: 'svn up' should rm before add, helps case-insensitivity (r12616)
+    * fixed: 'svn up -rX' causes file to be unrestorable (issue #2250)
+    * fixed: 'svn copy wc wc' should keep .svn/ hidden (issue #1739)
+    * fixed: 'svn copy wc wc' of deleted=true doesn't delete (issue #2101)
+    * fixed: 'svn copy' shouldn't copy into schedule-delete area (issue #2020)
+    * fixed: 'svn copy dir dir' infinite recursion (issue #2224)
+    * fixed: 'svn log' throws error on unversioned target (issue #1551)
+    * fixed: 'svn log' in r0 working copy shows r1 log msg (issue #1950) 
+    * fixed: 'svn export' bugs on deleted dirs or nonexistents (#2226, r13226) 
+    * fixed: 'svn export' on single file from working copy (issue #1708)
+    * fixed: 'svn import' creating an empty revision (r14293)
+    * fixed: 'svn commit' ignores --encoding when editing externally (#2244)
+    * fixed: 'svn commit' log message lost if utf8-conversion failure (r13230)
+    * fixed: 'svn diff' output encoding bug (r11461)
+    * fixed: 'svn diff' showing prop-diffs on repos root dir (r13381-2)
+    * fixed: 'svn diff' label reversal (issue #2033)
+    * fixed: 'svn propget' prints extra newline in --strict mode (r14505)
+    * fixed: 'svn propset' should skip unversioned files (#2030)
+    * fixed: 'svn rm URL1 URL2 URL3...' huge memory usage (issue #2218)
+    * fixed: 'svn mkdir' cleanup after failure (r11883)
+    * fixed: 'svn status -u' crash in non-recursive wc's (issue #2122)
+    * fixed: 'svn revert' should skip unversioned items (issues #2030, 2133)
+    * fixed: 'svn revert' should suggest --recursive (issue #2114)
+    * fixed: 'svn add/import' better detects invalid paths (issue #1954)
+    * fixed: 'svn cleanup' should repair timestamps (r12012)
+    * fixed: 'svn cat -rBASE' contacts repository (issue #1361)
+    * fixed: fuzzily escape control-characters when sending over dav (#2147)
+    * fixed: prevent client from manipulating svn:wc:* properties (r12523)
+    * fixed: xml-escaping bugs over dav (r11090)
+    * fixed: store symlinks as utf8, always work in non-utf8 locale (r11358-9)
+    * fixed: bug in special-file detranslation (r11441)
+    * fixed: show paths in local-style where we weren't (issue #1538)
+    * fixed: detect invalid propnames better (issue #1832)
+    * fixed: entire error stack not being printed (issue #1822)
+    * fixed: improper utf8 conversion of revision strings (issue #1999)
+    * fixed: use-commit-times timestamp bug (r12906)
+    * fixed: don't comment out section-names in default config file (r11771)
+    * more support for user-cancellation (r13083-4, 13086)
+    * improved error messages (r12920, 11392, 11599, 11913, #2154, #2214)
+
+   - Server:
+    * mod_dav_svn autoversioning feature now complete (see release notes)
+    * 'svnadmin create' now creates FSFS repositories by default (r13624)
+    * new pre/post-revprop hook argument to describe propchange (r12162)
+    * mod_authz_svn groups can now contain other groups (issue #2085)
+    * 'svnadmin recover' now creates default svnserve passwd file (r11589)
+    * increase default BDB cache size in DB_CONFIG (r13030)
+    * new switches added:
+       - 'svnlook diff --no-diff-added'        - suppress added files (#2180)
+       - 'svnlook propget/proplist --revprop'  - show revision props (#2181)
+       - 'svnadmin load --use-pre-commit-hook'  
+         'svnadmin load --use-post-commit-hook'- invoke hooks when loading
+    * fixed: FSFS race condition on posix platforms (issue #2265)
+    * fixed: change FSFS revprops atomically and safely (issue #2193)
+    * fixed: FSFS should verify checksums (issue #2253)
+    * fixed: 'svnadmin create' should clean up when it fails (r13200)
+    * fixed: 'svnadmin load' compatibility on pre-0.14 dumpfiles (r12075)
+    * fixed: 'svnadmin load' crashes on contentful rev 0 (issue #1674)
+    * fixed: 'svnadmin dump' should write in console encoding (issue #1997)
+    * fixed: check for null-streams in dump/load code (r10510)
+    * fixed: hook script ignored when symlink is broken (issue #1700)
+    * fixed: hook script may inherit server's stdin stream (r12155)
+    * fixed: potential svnserve segfault (r13199)
+    * fixed: svnserve handling mutually-exclusive options (issue #2251)
+    * fixed: mod_authz_svn should log errors to httpd errorlog (issue #2182)
+    * fixed: 'svnadmin hotcopy' failed to copy format files (r14678, r14683)
+
+   - Both:
+    * new 'locking' feature (issue #1478, see release notes for details):
+        - new: 'svn lock/unlock', 'svnadmin lslocks/rmlocks', 'svnlook lock'
+        - new: 'svn:needs-lock' property to enable communication         
+        - 'svn st [-u]' shows local or remote lock overview
+        - 'svn info wc | URL'  shows local or remote lock details
+        - 'svn commit' sends locks, 'svn up' removes stale locks
+        - new hook scripts: pre-lock, pre-unlock, post-lock, post-unlock
+    * speedups for 'svn blame' and other commands (see xdelta in release notes)
+    * fixed: make both svnserve and svn:// urls work with IPv6 (r13235-6)
+
+-------------------------------------------------------------------
+Sun May  1 22:34:54 CEST 2005 - olh@suse.de
+
+- add a simple svngrep script to simplify grep -r in repositories
+
+-------------------------------------------------------------------
+Sun May  1 21:20:05 CEST 2005 - olh@suse.de
+
+- rcsvnserve had a hardcoded requirement for userid/groupid svn
+  this is now tuneable via a sysconfig variable
+
+-------------------------------------------------------------------
+Sun May  1 20:58:13 CEST 2005 - olh@suse.de
+
+- update to docbook-xsl-1.68.1.tar.gz
+- update to 1.1.4
+  User-visible-changes:
+   - Client:
+     * fixed: 'svn merge' can cause broken working copy (issue #2222)
+     * fixed: 'svn commit' fails when schedule-delete dir has local mod (r11980)
+     * fixed: 'svn st -u nonexistent_file' segfault (issue #2127)
+     * fixed: 'svn cp wc wc' utf8 conversion error (r13111)
+     * fixed: confusing error message about "wc not locked" (issue #2174)
+   - Server:
+     * fixed: nasty (though unusual) performance bug in FSFS commits (r13222-3)
+     * fixed: FSFS memory leak when auto-merging large tree (r13193)
+     * fixed: FSFS memory leak in 'svnadmin hotcopy' (r13218, 13465, 13468)
+     * fixed: FSFS segfault when encountering empty data reps (r13683)
+     * fixed: two dataloss bugs in svndumpfilter (r12630, r12636)
+     * fixed: wasteful memory usage in svndumpfilter (r12637, r12640)
+     * fixed: mod_dav_svn segfaults when client sends bogus paths (issue #2199)
+ 
+-------------------------------------------------------------------
+Wed Apr 20 00:50:25 CEST 2005 - ro@suse.de
+
+- accept swig 1.3.24
+
+-------------------------------------------------------------------
+Tue Mar 29 12:36:08 CEST 2005 - poeml@suse.de
+
+- subversion-doc apache configuration: fix invalid mixing of +/-
+  with non-+/- syntax in Options directive
+
+-------------------------------------------------------------------
+Fri Mar  4 19:52:50 CET 2005 - olh@suse.de
+
+- restore old java checks
+
+-------------------------------------------------------------------
+Thu Mar  3 15:26:40 CET 2005 - olh@suse.de
+
+- update cvs2svn to version 1.2.1, rev r1422
+  * Fix cvs2svn's dumpfile output to work after Subversion's r12645.
+  will also improve conversion speed
+
+-------------------------------------------------------------------
+Wed Feb 23 15:14:50 CET 2005 - olh@suse.de
+
+- build swig-pl without make -jN to avoid broken dependencies
+
+-------------------------------------------------------------------
+Tue Feb 22 17:43:51 CET 2005 - ro@suse.de
+
+- search also for "other" java on a biarch platform 
+
+-------------------------------------------------------------------
+Sat Feb 19 20:15:10 CET 2005 - olh@suse.de
+
+- use lib macro to find java package
+
+-------------------------------------------------------------------
+Wed Feb 16 16:08:19 CET 2005 - schwab@suse.de
+
+- Don't override $EDITOR.
+
+-------------------------------------------------------------------
+Tue Feb 15 13:24:21 CET 2005 - uli@suse.de
+
+- cope with jpackage-compliant IBMJava2 (fixes s390*)
+
+-------------------------------------------------------------------
+Sun Jan 23 12:31:43 CET 2005 - olh@suse.de
+
+- set docroot=/viewcvs-docroot in viewcvs.conf
+  handle SVN_VIEWCVS_MODPYTHON in apache2 subversion.viewcvs.conf
+
+-------------------------------------------------------------------
+Mon Jan 17 07:56:19 CET 2005 - olh@suse.de
+
+- update to 1.1.3
+- update viewcvs and cvs2svn to current cvs/svn status
+
+-------------------------------------------------------------------
+Sat Jan  8 12:02:01 CET 2005 - olh@suse.de
+
+- update viewcvs, includes the DESTDIR patch
+
+-------------------------------------------------------------------
+Fri Jan  7 12:23:05 CET 2005 - olh@suse.de
+
+- build java bindings
+
+-------------------------------------------------------------------
+Thu Jan  6 17:10:00 CET 2005 - olh@suse.de
+
+- update to 1.1.2
+  drop subversion-keywords_on_add.patch
+  http://svnbook.red-bean.com/svnbook-1.1/ch07s02.html#svn-ch-7-sect-2.4
+- add 2 security patches for viewcvs
+  subversion.viewcvs.forbidden-hide_cvsroot_CAN-2004-0915.patch (#48989)
+  subversion.viewcvs.escapeurl_CAN-2004-1062.patch (#49086)
+- update to docbook-xsl-1.67.2.tar.gz
+- update viewcvs and cvs2svn to current cvs/svn status
+- rename subversion-cvs2svn to cvs2svn
+- rename subversion-viewcvs to viewcvs
+
+-------------------------------------------------------------------
+Thu Oct 14 13:45:15 CEST 2004 - olh@suse.de
+
+- update to 1.0.9
+  User-visible-changes:
+  - Server:
+    * fixed: 'svn ls' HTTP performance regression
+    * fixed: 'svn log -v' hiding too much info on 'empty' revisions.
+
+-------------------------------------------------------------------
+Thu Oct 14 02:02:31 CEST 2004 - ro@suse.de
+
+- added libgcrypt, libgpg-error to neededforbuild
+
+-------------------------------------------------------------------
+Fri Sep 24 20:37:45 CEST 2004 - olh@suse.de
+
+- update to 1.0.8
+  CAN-2004-0749: mod_authz_svn fails to protect metadata (#45610)
+  Version 1.0.8
+  User-visible-changes:
+  * fixed: mod_authz_svn path and log-message metadata leaks.
+  Version 1.0.7
+  User-visible-changes:
+  * fixed: 'svn st -u' crash (r10841)
+  * fixed: potential repos corruption; ensure stdin/out/err always open
+  * fixed: allow propnames containing ":" to be fetched via http://
+  * fixed: allow user to interrupt between authentication prompts
+  * fixed: work around +t directory-creation bug in APR
+  * various small fixes to Book
+  Developer-visible changes:
+  * fix library dependencies for bindings
+  * perl bindings: various fixes
+
+-------------------------------------------------------------------
+Wed Sep  1 15:44:39 CEST 2004 - olh@suse.de
+
+- add psvn.el
+
+-------------------------------------------------------------------
+Fri Aug 27 14:39:07 CEST 2004 - olh@suse.de
+
+- update cvs2svn to 1.0.0 status, rev 1368
+  update viewcvs to todays status
+
+-------------------------------------------------------------------
+Mon Aug  9 17:48:30 CEST 2004 - olh@suse.de
+
+- update cvs2svn to 1.0rc4 status, rev 1322
+  update viewcvs to todays status
+  update to docbook-xsl-1.65.1.tar.gz
+
+-------------------------------------------------------------------
+Tue Aug  3 10:37:26 CEST 2004 - olh@suse.de
+
+- build perl bindings, allow make -jN
+
+-------------------------------------------------------------------
+Thu Jul 29 13:51:51 CEST 2004 - poeml@suse.de
+
+- fix path in README.SuSE
+- fix fillup of /etc/sysconfig/svnserve
+
+-------------------------------------------------------------------
+Tue Jul 27 12:05:44 CEST 2004 - olh@suse.de
+
+- update to rev 10424 from 1.0.x branch, 1.0.6 status
+
+-------------------------------------------------------------------
+Tue Jul  6 16:52:28 CEST 2004 - poeml@suse.de
+
+- add subversion.viewcvs-buglink.patch from James Henstridge, plus
+  re.I modifier to match case insensitively
+
+-------------------------------------------------------------------
+Tue Jul  6 14:17:03 CEST 2004 - poeml@suse.de
+
+- update cvs2svn to r1214
+- update viewcvs to current CVS snapshot
+
+-------------------------------------------------------------------
+Mon Jul  5 15:18:56 CEST 2004 - poeml@suse.de
+
+- fix "select for diff" in viewcvs (patch by Heinrich
+  Stamerjohanns)
+
+-------------------------------------------------------------------
+Mon Jun 14 12:50:38 CEST 2004 - olh@suse.de
+
+- update to rev 9955 from 1.0.x branch, 1.0.5 status
+
+-------------------------------------------------------------------
+Mon May 10 18:11:54 CEST 2004 - olh@suse.de
+
+- remove Requires: -<release> (#40278)
+
+-------------------------------------------------------------------
+Sun May  9 17:11:30 CEST 2004 - olh@suse.de
+
+- add subversion-1.0.1-exploit-old_timestamp_format.patch (#39774)
+
+-------------------------------------------------------------------
+Mon Apr 19 23:19:44 CEST 2004 - olh@suse.de
+
+- update to rev 9429 from 1.0.x branch, 1.0.2 status
+
+-------------------------------------------------------------------
+Mon Mar  8 11:56:00 CET 2004 - olh@suse.de
+
+- update to rev 8925 from 1.0.x brancht, almost 1.0.1 status
+
+-------------------------------------------------------------------
+Thu Mar  4 15:37:59 CET 2004 - poeml@suse.de
+
+- add patch for ViewCVS 
+  http://cvs.sourceforge.net/viewcvs.py/viewcvs/viewcvs/lib/ezt.py?r1=1.22&r2=1.23
+
+-------------------------------------------------------------------
+Mon Mar  1 20:06:51 CET 2004 - olh@suse.de
+
+- update to rev 8871 from 1.0.x branch
+
+-------------------------------------------------------------------
+Sun Feb 22 10:04:58 CET 2004 - olh@suse.de
+
+- update to 0.99.0 (1.0.0-beta1), from 1.0.x branch, rev 8806
+
+-------------------------------------------------------------------
+Sat Jan 24 18:32:37 CET 2004 - olh@suse.de
+
+- update to 0.37.0 from 1.0-stabilization branch
+  allow swig 1.3.21
+
+-------------------------------------------------------------------
+Mon Sep  8 12:22:58 CEST 2003 - poeml@suse.de
+
+- subversion-viewcvs: explicitely allow access to the
+  /srv/viewcvs/www/cgi directory, because we can not take it for
+  granted that apache2 allows it by default [#29729]
+
+-------------------------------------------------------------------
+Fri Aug 29 23:45:46 CEST 2003 - poeml@suse.de
+
+- README.SuSE: add documentation on file permissions; fold in
+  feedback from Heinrich Stamerjohanns
+
+-------------------------------------------------------------------
+Fri Aug 29 18:30:13 CEST 2003 - mcihar@suse.cz
+
+- subversion-cvs2svn requires python
+
+-------------------------------------------------------------------
+Wed Aug 27 10:43:47 CEST 2003 - olh@suse.de
+
+- do not install the book.pdf
+
+-------------------------------------------------------------------
+Mon Aug 18 13:21:04 CEST 2003 - olh@suse.de
+
+- update to 0.27.0, revision 6740
+  update viewcvs to todays cvs status
+
+-------------------------------------------------------------------
+Sun Aug 10 20:38:08 CEST 2003 - olh@suse.de
+
+- update to pre 0.27, revision 6695
+
+-------------------------------------------------------------------
+Sun Aug 10 19:56:27 CEST 2003 - olh@suse.de
+
+- add rcsvnserve
+  update hook template, svnlook is in /usr/bin
+  update viewcvs to todays cvs status
+
+-------------------------------------------------------------------
+Wed Jul 30 05:20:40 CEST 2003 - poeml@suse.de
+
+- get CFLAGS from apxs, so they match the ones that apr and apache2
+  were built with
+- "make external-install local-install" targets instead of make
+  install, to work avoid hard coded pulling of the revision number
+  from the svn working copy in the revision-install target
+
+-------------------------------------------------------------------
+Fri Jul 25 11:33:25 CEST 2003 - olh@suse.de
+
+- update to 0.26.0, revision 6576
+
+-------------------------------------------------------------------
+Sun Jul 20 18:12:02 CEST 2003 - olh@suse.de
+
+- split packages subversion-doc and subversion-viewcvs
+  use SVN_DOC instead of SVN_DOCU
+  use SVN_VIEWCVS to enable the scriptalias
+
+-------------------------------------------------------------------
+Sat Jul 12 13:15:11 CEST 2003 - olh@suse.de
+
+- update to 0.25.0, revision 6456
+  use SVN_DOCU to provide html documentation via apache2
+
+-------------------------------------------------------------------
+Sat Jul  5 00:17:13 CEST 2003 - olh@suse.de
+
+- add subversion-python_bytecode-path-pr1131.patch 
+  do not compile in RPM_BUILD_ROOT, use builddir instead
+
+-------------------------------------------------------------------
+Tue Jun 17 16:38:45 CEST 2003 - olh@suse.de
+
+- update to 0.24.1 final, revision 6254
+  update svnbook.red-bean.com/book.pdf
+
+-------------------------------------------------------------------
+Tue Jun 17 08:33:20 CEST 2003 - kukuk@suse.de
+
+- Add missing directory to filelist
+
+-------------------------------------------------------------------
+Mon May 19 17:03:50 CEST 2003 - olh@suse.de
+
+- update to 0.23.0 final, revision 5981
+  add subversion-infopages.patch
+
+-------------------------------------------------------------------
+Sat May 10 12:19:22 CEST 2003 - olh@suse.de
+
+- update to 0.22.1 final, revision 5877
+  use apache-2.0.45 apr
+
+-------------------------------------------------------------------
+Fri May  2 15:58:30 CEST 2003 - olh@suse.de
+
+- update to 0.22.0 , revision 5780
+  build with newer apr
+
+-------------------------------------------------------------------
+Fri Apr 11 01:02:07 CEST 2003 - ro@suse.de
+
+- fix deprecated head/tail calling syntax (-1) 
+
+-------------------------------------------------------------------
+Wed Mar 19 21:32:02 CET 2003 - olh@suse.de
+
+- update to 0.19.1 , revision 5394
+
+-------------------------------------------------------------------
+Sun Mar 16 13:49:42 CET 2003 - olh@suse.de
+
+- update to 0.19.1 , revision 5349
+  update book.pdf
+
+-------------------------------------------------------------------
+Tue Feb 18 13:49:41 CET 2003 - poeml@suse.de
+
+- python might live below /usr/lib64
+
+-------------------------------------------------------------------
+Thu Feb 13 13:34:39 CET 2003 - olh@suse.de
+
+- update to 0.17.1 , revision 4877
+  finally a working cvs2svn version, use the cvs2svn-mmacek branch
+
+-------------------------------------------------------------------
+Mon Feb 10 17:35:44 CET 2003 - poeml@suse.de
+
+- remove hints about SuSEconfig, it's not needed. Add README.SuSE
+  about server configuration
+- drop /etc/apache2/modules/subversion, it is no longer needed
+- MPM specific links to mod_dav_svn.so are no longer needed
+- server requires apache2, and a Require on apr is no longer valid
+
+-------------------------------------------------------------------
+Mon Feb 10 17:05:31 CET 2003 - olh@suse.de
+
+- split packages cvs2svn and tools
+
+-------------------------------------------------------------------
+Thu Feb  6 12:53:06 CET 2003 - olh@suse.de
+
+- add hint about SuSEconfig run in subversion.conf example
+
+-------------------------------------------------------------------
+Sun Feb  2 17:20:00 CET 2003 - olh@suse.de
+
+- add subversion-0.17.1-editor.diff
+      subversion-0.17.1-keywords_on_add.diff
+
+-------------------------------------------------------------------
+Tue Jan 28 16:16:39 CET 2003 - olh@suse.de
+
+- add subversion book.pdf from the website
+  add svnserve and svnversion
+  remove outdated info docu
+  build and add html documentation
+  new apache2 config file format, extend example in subversion.conf
+
+-------------------------------------------------------------------
+Wed Jan 22 11:46:10 CET 2003 - olh@suse.de
+
+- update to 0.17.1 , revision 4508
+
+-------------------------------------------------------------------
+Tue Jan 21 16:17:24 CET 2003 - olh@suse.de
+
+- update to 0.17.0 , revision 4474
+
+-------------------------------------------------------------------
+Thu Dec  5 01:41:58 CET 2002 - poeml@suse.de
+
+- update to 0.16.0 , revision 3987
+- use macro <apache2-devel-packages> in #neededforbuild
+- get rid of hardcoded MPM names
+
+-------------------------------------------------------------------
+Wed Dec  4 12:40:15 CET 2002 - olh@suse.de
+
+- update to 0.15.0 , revision 3985
+
+-------------------------------------------------------------------
+Mon Nov 11 23:49:54 CET 2002 - ro@suse.de
+
+- changed neededforbuild <xshared> to <x-devel-packages>
+- changed neededforbuild <xdevel> to <>
+
+-------------------------------------------------------------------
+Sun Oct 13 23:04:56 CEST 2002 - olh@suse.de
+
+- update to 0.14.3 , revision 3360
+  add subversion configfiles for apache2
+
+-------------------------------------------------------------------
+Sat Oct 12 14:25:22 CEST 2002 - olh@suse.de
+
+- update to 0.14.3 , revision 3353
+  add more dir path to file list, add more docu
+  apxs is in /usr/sbin
+
+-------------------------------------------------------------------
+Thu Sep 19 13:55:04 CEST 2002 - olh@suse.de
+
+- update to 0.14.3 , revision 3188
+  use python-imaging instead of python-tkinter
+
+-------------------------------------------------------------------
+Sat Aug 31 13:02:30 CEST 2002 - poeml@suse.de
+
+- update to last release 0.14.2 (svn update was broken when
+  repositories contained renames)
+
+-------------------------------------------------------------------
+Tue Aug 27 12:57:47 CEST 2002 - poeml@suse.de
+
+- use apxs2, building a common mod_dav_svn.so for all three MPMs
+- don't let apxs add an entry for mod_dav_svn.so into httpd.conf
+
+-------------------------------------------------------------------
+Sun Aug 11 18:31:34 CEST 2002 - olh@suse.de
+
+- update to 0.14.1, rev 2935, build html docs
+
+-------------------------------------------------------------------
+Thu Aug  1 14:26:44 CEST 2002 - olh@suse.de
+
+- update to 2840, add svnadmin and svnlock
+
+-------------------------------------------------------------------
+Tue Jul 30 08:34:32 CEST 2002 - olh@suse.de
+
+- remove apr, use apache2 instead, update to 2787
+
+-------------------------------------------------------------------
+Fri Jul 26 02:50:18 CEST 2002 - olh@suse.de
+
+- initial SuSE release with version 0.14.0.2720
+  built with apr_20020725163531 and apr-util-20020725
+
+

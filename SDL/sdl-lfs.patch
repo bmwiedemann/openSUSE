@@ -1,0 +1,22 @@
+--- configure.in.orig
++++ configure.in
+@@ -56,6 +56,8 @@ fi
+ dnl Check for tools
+ AC_PROG_LIBTOOL
+ AC_PROG_CC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ AC_PROG_CXX
+ AC_PROG_INSTALL
+ AC_PROG_MAKE_SET
+--- Makefile.in.orig
++++ Makefile.in
+@@ -21,7 +21,7 @@ distfile = $(distdir).tar.gz
+ SHELL	= @SHELL@
+ CC      = @CC@
+ INCLUDE = @INCLUDE@
+-CFLAGS  = @BUILD_CFLAGS@
++CFLAGS  = @BUILD_CFLAGS@ -include include/SDL_config.h
+ EXTRA_CFLAGS = @EXTRA_CFLAGS@
+ LDFLAGS = @BUILD_LDFLAGS@
+ EXTRA_LDFLAGS = @EXTRA_LDFLAGS@

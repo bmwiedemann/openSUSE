@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Wed Jul 12 14:51:26 UTC 2017 - meissner@suse.com
+
+- Change the signing to use openssl sha256/sha512 directly, to
+  avoid fipscheck / hmaccalc.
+
+-------------------------------------------------------------------
+Sat Jul  8 14:04:41 UTC 2017 - bwiedemann@suse.com
+
+- Add reproduciblesort.patch to always link .o files in the same order and
+- Add reproducibledate.patch to not add current time to man-pages to fix build-compare
+
+-------------------------------------------------------------------
+Thu Jun 29 08:13:54 UTC 2017 - meissner@suse.com
+
+- libkcapi-use-external-fipshmac.patch: use external fipshmac,
+  our chroots / vm builds do not necessarily have the right kernel.
+
+-------------------------------------------------------------------
+Wed Jun 28 08:03:30 UTC 2017 - jengelh@inai.de
+
+- Compact descriptions a bit
+- Remove libkcapi provide/requires
+- Use %_libdir throughout and avoid /lib
+
+-------------------------------------------------------------------
+Thu Dec 22 14:03:43 UTC 2016 - abergmann@suse.com
+
+- Initial release 0.13.0.
+
+  A library and tools to access the kernel crypto api.
+
+  FATE#323554 bsc#1045948

@@ -1,0 +1,21 @@
+From: Petr Tesarik <ptesarik@suse.cz>
+Subject: enably snappy support
+Patch-mainline: never, configurable default
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.cz>
+
+---
+ CFLAGS.extra  |    2 +-
+ LDFLAGS.extra |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+--- a/CFLAGS.extra
++++ b/CFLAGS.extra
+@@ -1 +1 @@
+--DLZO
++-DLZO -DSNAPPY
+--- a/LDFLAGS.extra
++++ b/LDFLAGS.extra
+@@ -1 +1 @@
+--llzo2
++-llzo2 -lsnappy

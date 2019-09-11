@@ -1,0 +1,23 @@
+Add +k and +l channel modes to the default locks, so empty channels'
+protection is properly restored across Services reboots.
+
+Signed-off-By: Jan Engelhardt <jengelh@inai.de>
+---
+ modules/chanserv/register.c |    4 ----
+ 1 file changed, 4 deletions(-)
+
+Index: atheme-services-7.0.2/modules/chanserv/register.c
+===================================================================
+--- atheme-services-7.0.2.orig/modules/chanserv/register.c
++++ atheme-services-7.0.2/modules/chanserv/register.c
+@@ -142,10 +142,6 @@ static void cs_cmd_register(sourceinfo_t
+ 	mc->registered = CURRTIME;
+ 	mc->used = CURRTIME;
+ 	mc->mlock_on |= (CMODE_NOEXT | CMODE_TOPIC);
+-	if (c->limit == 0)
+-		mc->mlock_off |= CMODE_LIMIT;
+-	if (c->key == NULL)
+-		mc->mlock_off |= CMODE_KEY;
+ 	mc->flags |= config_options.defcflags;
+ 
+ 	chanacs_add(mc, entity(si->smu), custom_founder_check(), CURRTIME, entity(si->smu));

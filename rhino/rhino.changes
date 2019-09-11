@@ -1,0 +1,164 @@
+-------------------------------------------------------------------
+Sat Mar  2 13:08:27 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against jline1, a compatibility package
+
+-------------------------------------------------------------------
+Tue Feb 12 11:06:56 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Do not buildrequire jline, since it is only runtime dependency
+- Do not run ant with -v and -d options during the product build
+
+-------------------------------------------------------------------
+Sun Nov 18 16:32:33 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Actually use the rhino-js.pom file in the source package.
+- Add "org.mozilla:rhino" alias, since the later 1.7.x versions
+  are distributed as such
+
+-------------------------------------------------------------------
+Tue Oct  3 06:51:14 UTC 2017 - fstrba@suse.com
+
+- Don't require java-1_5_0-gcj-compat-devel, since it is bound to
+  go
+- Require java-devel >= 1.6
+- Specify java source and target level 6 to allow buiding with jdk9
+
+-------------------------------------------------------------------
+Fri Sep 15 05:49:47 UTC 2017 - fstrba@suse.com
+
+- Make build with the new version of java-1_5_0-gcj-compat, where
+  javac is not just a simple link to gcj, but a wrapper script that
+  runs Eclipse Compiler for Java(tm)
+- Make buildable with different versions of OpenJDK
+
+-------------------------------------------------------------------
+Fri Jun  9 09:59:36 UTC 2017 - tchvatal@suse.com
+
+- Drop maven depmap so we can actually bootstrap
+
+-------------------------------------------------------------------
+Fri May 19 11:19:44 UTC 2017 - dziolkowski@suse.com
+
+- New build dependency: javapackages-local
+- spec cleaned using spec-cleaner
+
+-------------------------------------------------------------------
+Fri Feb 10 16:18:53 UTC 2017 - dimstar@opensuse.org
+
+- Revert back to using gcj: it is going to stay around for a while
+  longer and it helps avoiding bootstrap cycles.
+
+-------------------------------------------------------------------
+Thu Jan  5 16:23:24 UTC 2017 - tchvatal@suse.com
+
+- Build with java not gcj as it gets deprecated
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:19 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:18 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Fri Aug 23 11:17:16 UTC 2013 - mvyskocil@suse.com
+
+- disable javadoc build
+- use add_maven_depmap from new javapackages-tools
+- workaround xbean.jar definition problem
+
+-------------------------------------------------------------------
+Mon Jan  7 12:18:22 UTC 2013 - mvyskocil@suse.com
+
+- remove xerces-j2-bootstrap depenency (bnc#789163)
+
+-------------------------------------------------------------------
+Mon Jun 18 13:23:15 UTC 2012 - mvyskocil@suse.cz
+
+- ignore jdk7 as well 
+
+-------------------------------------------------------------------
+Tue Jan 17 12:56:04 UTC 2012 - cfarrell@suse.com
+
+- license update: MPL-1.1 or GPL-2.0+
+  the code is dual licensed under a choice of MPL-1.1 or GPL-2.0+
+
+-------------------------------------------------------------------
+Mon Jan 16 15:47:09 UTC 2012 - mvyskocil@suse.cz
+
+- update to rhino 1_7R3 (bugfix release)
+- fix bnc#739502 - rhino-dojo.patch adds Sun proprietary code to rhino 1.7
+
+-------------------------------------------------------------------
+Thu Dec 15 13:50:34 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Mon Mar 14 12:43:48 UTC 2011 - mvyskocil@suse.cz
+
+- ignore openjdk for build 
+
+-------------------------------------------------------------------
+Mon Nov  8 12:08:13 UTC 2010 - mvyskocil@suse.cz
+
+- build ignore xml-commons-jaxp-1.3-apis
+
+-------------------------------------------------------------------
+Thu Sep  2 12:35:23 UTC 2010 - mvyskocil@suse.cz
+
+- ignore antlr(-java) to reduce build cycles
+
+-------------------------------------------------------------------
+Wed Nov 18 12:06:17 UTC 2009 - mvyskocil@suse.cz
+
+- fixed bnc#554532 - rhino does not work at all
+  * Update to 1_7R2, return back the examples
+  * merged with rhino-1.7-1.r2.8.jpp6.src.rpm
+
+-------------------------------------------------------------------
+Thu Nov 13 09:42:42 CET 2008 - mvyskocil@suse.cz
+
+- fixed bnc#444259 - rhino contains conflicting class in rhino-examples.jar
+  - don't build and install a rhino-examples.jar
+
+-------------------------------------------------------------------
+Thu Oct 16 09:01:30 CEST 2008 - mvyskocil@suse.cz
+
+- Use xerces-j2-bootstrap to prevent another build cycle
+- Added a xerces-j2 and non-bootstrap xml-commons* packages to BuildIgnore
+
+-------------------------------------------------------------------
+Wed Oct  1 09:58:16 CEST 2008 - adrian@suse.de
+
+- Use xmlbeans-mini, instead of xmlbeans in BuildRequires to 
+  get rid of all the new build cycles
+
+-------------------------------------------------------------------
+Mon Sep  8 14:14:08 CEST 2008 - mvyskocil@suse.cz
+
+- Removed a src.zip - contains a non-free source codes.
+
+-------------------------------------------------------------------
+Fri Sep  5 17:13:50 CEST 2008 - mvyskocil@suse.cz
+
+- Fixed a build with gcj (to prevent of a build cycles with build of openjdk6) 
+
+-------------------------------------------------------------------
+Fri Sep  5 14:42:26 CEST 2008 - mvyskocil@suse.cz
+
+- Update to 1.7 (from jpackage 1.7, due some license issues in source tarball )
+- Add a doc from Mozilla's CVS
+- Removed a patches:
+  - rhino-dojo patch contains part with permissive licnse
+  - rhino-build patch is not necessary for java 5+
+
+-------------------------------------------------------------------
+Tue Sep  2 15:24:37 CEST 2008 - mvyskocil@suse.cz
+
+- Initial packaging of rhino 1.6 (based on Jpackage 1.7) 
+

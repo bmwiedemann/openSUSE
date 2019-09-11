@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Mon Apr 30 22:19:09 UTC 2018 - jengelh@inai.de
+
+- Update summaries.
+
+-------------------------------------------------------------------
+Sat Mar 12 20:59:15 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.0.0
+* No changelog was provided
+- Drop cudd-automake.diff (applied upstream)
+
+-------------------------------------------------------------------
+Sat Oct 11 18:24:41 UTC 2014 - jengelh@inai.de
+
+- Use source URLs. Drop dist-xz from cudd-automake.diff patch
+  (it's not needed for our build).
+
+-------------------------------------------------------------------
+Tue Apr 16 04:06:33 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 2.5.0) for build.opensuse.org

@@ -1,0 +1,451 @@
+From 66dbffd38377abeb64144990421e52293613840a Mon Sep 17 00:00:00 2001
+From: "Richard W.M. Jones" <rjones@redhat.com>
+Date: Thu, 15 Feb 2018 15:55:35 +0000
+Subject: [PATCH 1/3] Introduce a wrapper around xmlParseURI.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+We only use xmlParseURI to parse our own "homebrew" URIs, for example
+the ones used by guestfish --add or virt-v2v.  Unfortunately
+xmlParseURI cannot handle URIs with spaces or other non-RFC-compliant
+characters so simple commands like these fail:
+
+  $ guestfish -a 'ssh://example.com/virtual machine.img'
+  guestfish: --add: could not parse URI 'ssh://example.com/virtual machine.img'
+
+  $ guestfish -a 'ssh://example.com/バーチャルマシン.img'
+  guestfish: --add: could not parse URI 'ssh://example.com/バーチャルマシン.img'
+
+This is a usability problem.  However since these are not expected to
+be generic RFC-compliant URIs we can perform the required
+percent-escaping ourselves instead of demanding that the user does
+this.
+
+Note that the wrapper function should not be used on real URLs or
+libvirt URLs.
+---
+ common/mlxml/Makefile.am     |   1 +
+ common/mlxml/xml-c.c         |  45 +++++++++--
+ common/mlxml/xml.ml          |   1 +
+ common/mlxml/xml.mli         |   4 +
+ common/options/uri.c         |   5 +-
+ common/utils/Makefile.am     |   2 +
+ common/utils/libxml2-utils.c | 178 +++++++++++++++++++++++++++++++++++++++++++
+ common/utils/libxml2-utils.h |  27 +++++++
+ v2v/input_vmx.ml             |   8 +-
+ v2v/virt-v2v.pod             |   5 +-
+ 10 files changed, 258 insertions(+), 18 deletions(-)
+ create mode 100644 common/utils/libxml2-utils.c
+ create mode 100644 common/utils/libxml2-utils.h
+
+diff --git a/common/mlxml/Makefile.am b/common/mlxml/Makefile.am
+index 083c7a64b..739b58ae4 100644
+--- a/common/mlxml/Makefile.am
++++ b/common/mlxml/Makefile.am
+@@ -53,6 +53,7 @@ libmlxml_a_CPPFLAGS = \
+ 	-I. \
+ 	-I$(top_builddir) \
+ 	-I$(top_srcdir)/gnulib/lib -I$(top_builddir)/gnulib/lib \
++	-I$(top_srcdir)/common/utils -I$(top_builddir)/common/utils \
+ 	-I$(shell $(OCAMLC) -where)
+ libmlxml_a_CFLAGS = \
+ 	$(WARN_CFLAGS) $(WERROR_CFLAGS) \
+diff --git a/common/mlxml/xml-c.c b/common/mlxml/xml-c.c
+index 3ebecb25e..6dcdb5ccb 100644
+--- a/common/mlxml/xml-c.c
++++ b/common/mlxml/xml-c.c
+@@ -27,17 +27,21 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
++#include <errno.h>
+ 
+ #include <caml/alloc.h>
+ #include <caml/custom.h>
+ #include <caml/fail.h>
+ #include <caml/memory.h>
+ #include <caml/mlvalues.h>
++#include <caml/unixsupport.h>
+ 
+ #include <libxml/xpath.h>
+ #include <libxml/xpathInternals.h>
+ #include <libxml/uri.h>
+ 
++#include "libxml2-utils.h"
++
+ #pragma GCC diagnostic ignored "-Wmissing-prototypes"
+ 
+ /* xmlDocPtr type */
+@@ -426,16 +430,11 @@ mllib_xml_doc_get_root_element (value docv)
+   }
+ }
+ 
+-value
+-mllib_xml_parse_uri (value strv)
++static value
++Val_uri (xmlURIPtr uri)
+ {
+-  CAMLparam1 (strv);
++  CAMLparam0 ();
+   CAMLlocal3 (rv, sv, ov);
+-  xmlURIPtr uri;
+-
+-  uri = xmlParseURI (String_val (strv));
+-  if (uri == NULL)
+-    caml_invalid_argument ("parse_uri: unable to parse URI");
+ 
+   rv = caml_alloc_tuple (9);
+ 
+@@ -514,7 +513,37 @@ mllib_xml_parse_uri (value strv)
+   else ov = Val_int (0);
+   Store_field (rv, 8, ov);
+ 
++  CAMLreturn (rv);
++}
++
++value
++mllib_xml_parse_uri (value strv)
++{
++  CAMLparam1 (strv);
++  CAMLlocal1 (rv);
++  xmlURIPtr uri;
++
++  uri = xmlParseURI (String_val (strv));
++  if (uri == NULL)
++    caml_invalid_argument ("parse_uri: unable to parse URI");
++
++  rv = Val_uri (uri);
+   xmlFreeURI (uri);
++  CAMLreturn (rv);
++}
+ 
++value
++mllib_xml_parse_nonstandard_uri (value strv)
++{
++  CAMLparam1 (strv);
++  CAMLlocal1 (rv);
++  xmlURIPtr uri;
++
++  uri = guestfs_int_parse_nonstandard_uri (String_val (strv));
++  if (uri == NULL)
++    unix_error (errno, (char *) "Xml.parse_uri", strv);
++
++  rv = Val_uri (uri);
++  xmlFreeURI (uri);
+   CAMLreturn (rv);
+ }
+diff --git a/common/mlxml/xml.ml b/common/mlxml/xml.ml
+index 5b5c09c00..faeea35ee 100644
+--- a/common/mlxml/xml.ml
++++ b/common/mlxml/xml.ml
+@@ -162,3 +162,4 @@ type uri = {
+ }
+ 
+ external parse_uri : string -> uri = "mllib_xml_parse_uri"
++external parse_nonstandard_uri : string -> uri = "mllib_xml_parse_nonstandard_uri"
+diff --git a/common/mlxml/xml.mli b/common/mlxml/xml.mli
+index f561bd673..73c2fdd4b 100644
+--- a/common/mlxml/xml.mli
++++ b/common/mlxml/xml.mli
+@@ -115,3 +115,7 @@ val parse_uri : string -> uri
+     Note this is different from the {!URI} module which is specialized
+     for parsing the [-a] parameter on the command line.  This function
+     exposes the full [xmlParseURI] interface. *)
++
++val parse_nonstandard_uri : string -> uri
++(** Similar to {!parse_uri} but only for use with our non-standard
++    URIs.  See [guestfs_int_parse_nonstandard_uri] in [common/utils]. *)
+diff --git a/common/options/uri.c b/common/options/uri.c
+index ac36bccb2..88a5f0560 100644
+--- a/common/options/uri.c
++++ b/common/options/uri.c
+@@ -38,6 +38,7 @@
+ 
+ #include "guestfs.h"
+ #include "guestfs-utils.h"
++#include "libxml2-utils.h"
+ #include "uri.h"
+ 
+ static int is_uri (const char *arg);
+@@ -114,9 +115,9 @@ parse (const char *arg, char **path_ret, char **protocol_ret,
+   CLEANUP_FREE char *socket = NULL;
+   char *path;
+ 
+-  uri = xmlParseURI (arg);
++  uri = guestfs_int_parse_nonstandard_uri (arg);
+   if (!uri) {
+-    fprintf (stderr, _("%s: --add: could not parse URI ‘%s’\n"),
++    fprintf (stderr, _("%s: --add: could not parse URI ‘%s’: %m\n"),
+              getprogname (), arg);
+     return -1;
+   }
+diff --git a/common/utils/Makefile.am b/common/utils/Makefile.am
+index 143e2c141..1fa98f992 100644
+--- a/common/utils/Makefile.am
++++ b/common/utils/Makefile.am
+@@ -26,6 +26,8 @@ libutils_la_SOURCES = \
+ 	gnulib-cleanups.c \
+ 	guestfs-utils.h \
+ 	libxml2-cleanups.c \
++	libxml2-utils.c \
++	libxml2-utils.h \
+ 	utils.c
+ libutils_la_CPPFLAGS = \
+ 	-DGUESTFS_WARN_DEPRECATED=1 \
+diff --git a/common/utils/libxml2-utils.c b/common/utils/libxml2-utils.c
+new file mode 100644
+index 000000000..8a05aa5b1
+--- /dev/null
++++ b/common/utils/libxml2-utils.c
+@@ -0,0 +1,178 @@
++/* libguestfs
++ * Copyright (C) 2017 Red Hat Inc.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
++ */
++
++/**
++ * Utility functions using libxml2.
++ *
++ * These functions these I<must not> call internal library functions
++ * such as C<safe_*>, C<error> or C<perrorf>, or any C<guestfs_int_*>.
++ */
++
++#include <config.h>
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <errno.h>
++#include <locale.h>
++#include <langinfo.h>
++#include <iconv.h>
++
++#include <libxml/uri.h>
++
++#include "c-ctype.h"
++
++/* NB: MUST NOT include "guestfs-internal.h". */
++#include "guestfs.h"
++#include "guestfs-utils.h"
++#include "libxml2-utils.h"
++
++static char *local_string_to_utf8 (/* const */ char *input);
++
++/**
++ * This is a wrapper around C<xmlParseURI>.  That function cannot
++ * handle spaces and some non-ASCII characters found in URIs.  This
++ * wrapper URI-encodes those before calling C<xmlParseURI> and returns
++ * the URI structure.
++ *
++ * This function should B<only> be called for the URIs that libguestfs
++ * has invented, for things like guestfish I<--add> and virt-v2v.
++ *
++ * For real URIs or libvirt URIs this may cause corruption in corner
++ * cases.  (See L<https://news.ycombinator.com/item?id=11673058>
++ * describing some of the complexity involved in dealing with real
++ * URI).
++ *
++ * On error, returns C<NULL> and sets C<errno> appropriately.
++ *
++ * Caller must call C<xmlFreeURI> on the returned structure or use the
++ * C<CLEANUP_XMLFREEURI> cleanup macro.
++ */
++xmlURIPtr
++guestfs_int_parse_nonstandard_uri (const char *arg)
++{
++  CLEANUP_FREE char *uri = NULL;
++  CLEANUP_FREE char *escaped_uri = NULL;
++  static const char hexdigit[] = "0123456789abcdef";
++  size_t i, j, len;
++  xmlURIPtr ret;
++
++  /* Convert the string to UTF-8. */
++  uri = local_string_to_utf8 ((char *) arg);
++  if (uri == NULL)
++    return NULL;
++
++  /* Since we know the URI is in well-formed UTF-8 we can iterate over
++   * the bytes to do the escaping.  The output of this will never be
++   * more than 3 times larger (each byte might be rewritten as ‘%XX’).
++   */
++  len = strlen (uri);
++  escaped_uri = malloc (3*len + 1);
++  if (escaped_uri == NULL)
++    return NULL;
++
++  for (i = j = 0; i < strlen (uri); ++i) {
++    /* See RFC 3986 appendix A.  Note this leaves existing %-encoded
++     * escapes alone.
++     */
++    if (c_isalnum (uri[i]) ||
++        strchr ("%-._~:/?#[]@!$&'()*+,;=", uri[i]) != NULL)
++      escaped_uri[j++] = uri[i];
++    else {
++      escaped_uri[j++] = '%';
++      escaped_uri[j++] = hexdigit [(((unsigned char) uri[i]) >> 4) & 0xf];
++      escaped_uri[j++] = hexdigit [((unsigned char) uri[i]) & 0xf];
++    }
++  }
++  escaped_uri[j++] = '\0';
++
++  /* libxml2 xmlParseURI does not reliably set errno, so it's likely
++   * best to ignore whatever errno is returned and overwrite it with
++   * EINVAL.
++   */
++  ret = xmlParseURI (escaped_uri);
++  if (ret == NULL) {
++    errno = EINVAL;
++    return NULL;
++  }
++
++  return ret;
++}
++
++/* Would be const, but the interface to iconv is not const-correct on
++ * all platforms.  The input string is not touched.
++ */
++static char *
++local_string_to_utf8 (/* const */ char *input)
++{
++  iconv_t ic;
++  size_t len, inlen, outlen, outalloc, r, prev;
++  int err;
++  char *out, *inp, *outp;
++
++  /* Convert from input locale to UTF-8. */
++  ic = iconv_open ("UTF-8", nl_langinfo (CODESET));
++  if (ic == (iconv_t) -1)
++    return NULL;
++
++  len = strlen (input);
++  outalloc = len;               /* Initial guess. */
++
++ again:
++  inlen = len;
++  outlen = outalloc;
++  out = malloc (outlen + 1);
++  if (out == NULL) {
++    err = errno;
++    iconv_close (ic);
++    errno = err;
++    return NULL;
++  }
++  inp = input;
++  outp = out;
++
++  r = iconv (ic, (ICONV_CONST char **) &inp, &inlen, &outp, &outlen);
++  if (r == (size_t) -1) {
++    if (errno == E2BIG) {
++      err = errno;
++      prev = outalloc;
++      /* Try again with a larger output buffer. */
++      free (out);
++      outalloc *= 2;
++      if (outalloc < prev) {
++        iconv_close (ic);
++        errno = err;
++        return NULL;
++      }
++      goto again;
++    }
++    else {
++      /* Else some other conversion failure, eg. EILSEQ, EINVAL. */
++      err = errno;
++      iconv_close (ic);
++      free (out);
++      errno = err;
++      return NULL;
++    }
++  }
++
++  *outp = '\0';
++  iconv_close (ic);
++
++  return out;
++}
+diff --git a/common/utils/libxml2-utils.h b/common/utils/libxml2-utils.h
+new file mode 100644
+index 000000000..d9916ea58
+--- /dev/null
++++ b/common/utils/libxml2-utils.h
+@@ -0,0 +1,27 @@
++/* libguestfs
++ * Copyright (C) 2017 Red Hat Inc.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
++ */
++
++#ifndef GUESTFS_LIBXML2_UTILS_H_
++#define GUESTFS_LIBXML2_UTILS_H_
++
++#include <libxml/uri.h>
++
++/* libxml2-utils.c */
++extern xmlURIPtr guestfs_int_parse_nonstandard_uri (const char *uri);
++
++#endif /* GUESTFS_LIBXML2_UTILS_H_ */
+diff --git a/v2v/input_vmx.ml b/v2v/input_vmx.ml
+index a8b33f66f..b97fac700 100644
+--- a/v2v/input_vmx.ml
++++ b/v2v/input_vmx.ml
+@@ -38,11 +38,11 @@ type vmx_source =
+ let vmx_source_of_arg input_transport arg =
+   match input_transport, arg with
+   | None, arg -> File arg
+-  | Some `SSH, arg ->
++  | Some `SSH, uri ->
+      let uri =
+-       try Xml.parse_uri arg
+-       with Invalid_argument _ ->
+-         error (f_"remote vmx ‘%s’ could not be parsed as a URI") arg in
++       try Xml.parse_nonstandard_uri uri
++       with exn ->
++         error (f_"could not parse URI: %s") (Printexc.to_string exn) in
+      if uri.Xml.uri_scheme <> None && uri.Xml.uri_scheme <> Some "ssh" then
+        error (f_"vmx URI start with ‘ssh://...’");
+      if uri.Xml.uri_server = None then
+diff --git a/v2v/virt-v2v.pod b/v2v/virt-v2v.pod
+index e30cc03fb..c67b67e48 100644
+--- a/v2v/virt-v2v.pod
++++ b/v2v/virt-v2v.pod
+@@ -1458,10 +1458,7 @@ authorized_keys.
+ When using the SSH input transport you must specify a remote
+ C<ssh://...> URI pointing to the VMX file.  A typical URI looks like:
+ 
+- ssh://root@esxi.example.com/vmfs/volumes/datastore1/my%20guest/my%20guest.vmx
+-
+-Any space must be escaped with C<%20> and other non-ASCII characters
+-may also need to be URI-escaped.
++ ssh://root@esxi.example.com/vmfs/volumes/datastore1/my guest/my guest.vmx
+ 
+ The username is not required if it is the same as your local username.
+ 
+-- 
+2.16.1
+

@@ -1,0 +1,19 @@
+<service name="verify_file">
+  <summary>Verify a file</summary>
+  <description>The service verfies a file against a given checksum to detect file changes.</description>
+  <parameter name="verifier">
+    <description>Used Verification</description>
+    <allowedvalue>sha256</allowedvalue>
+    <allowedvalue>sha1</allowedvalue>
+    <allowedvalue>md5</allowedvalue>
+  </parameter>
+  <parameter name="checksum">
+    <description>Used check sum to compare with</description>
+    <required/>
+  </parameter>
+  <parameter name="file">
+    <description>File that should be verified</description>
+    <required/>
+  </parameter>
+</service>
+

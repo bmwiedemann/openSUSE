@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:50:47 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu May 11 01:24:08 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+- Fix source URL.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:09:23 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Fri Jan 11 15:35:24 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Sat Mar 10 16:44:54 UTC 2012 - saschpe@gmx.de
+
+- Initial version
+

@@ -1,0 +1,34 @@
+From 41570aeb99a581dbe69afc3dda742dc4273190bb Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Date: Sun, 25 Jun 2017 21:34:14 +0200
+Subject: [PATCH 16/43] tools/kvm_stat: fix error on interactive command 'g'
+
+Fix an instance where print_all_gnames() is called without the mandatory
+argument, resulting in a stack trace.
+To reproduce, simply press 'g' in interactive mode.
+
+Signed-off-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 61f381bb7e1a8e9250aa32b3963a7a5c4b92cbf5)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index b219bfd9781c..d6bc0b1ff15b 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1198,7 +1198,7 @@ class Tui(object):
+                                'This might limit the shown data to the trace '
+                                'statistics.')
+             self.screen.addstr(5, 0, msg)
+-            self.print_all_gnames()
++            self.print_all_gnames(7)
+             curses.echo()
+             self.screen.addstr(3, 0, "Guest [ENTER or guest]: ")
+             gname = self.screen.getstr()
+-- 
+2.12.3
+

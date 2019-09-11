@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Tue Jul  2 12:10:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.5.1:
+  * Fix compatibility with pytest 5.x (#751)
+
+-------------------------------------------------------------------
+Mon Jun 17 12:07:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.5.0:
+  * Run tests in the same order as Django (#223)
+  * Use verbosity=0 with disabled migrations (#729, #730)
+  * django_db_setup: warn instead of crash with teardown errors (#726)
+  * tests: fix test_sqlite_database_renamed (#739, #741)
+  * tests/conftest.py: move import of db_helpers (#737)
+  * Cleanup/improve coverage, mainly with tests (#706)
+  * Slightly revisit unittest handling (#740)
+
+-------------------------------------------------------------------
+Wed Feb 27 13:33:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.4.8:
+  * Various test fixes only
+
+-------------------------------------------------------------------
+Sun Feb 24 01:48:37 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add docs/ and AUTHORS to %doc
+- Update to v3.4.7
+  * Fix disabling/handling of unittest methods with pytest 4.2+
+- from 3.4.6
+  * django_find_project: add cwd as fallback always
+  * Enable tests for Django 2.2 and add classifier
+- from 3.4.5
+  * Use request.config instead of pytest.config
+  * fixture 'admin_user' handle "email" username_field
+  * Minor doc fixes
+- Add 'six' as explicit build dependency
+
+-------------------------------------------------------------------
+Mon Dec 10 15:17:57 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Version update to 3.4.4:
+  * Many many changes to list properly
+- Drop obsolete patch python-pytest-django-dependency.patch
+
+-------------------------------------------------------------------
+Thu Oct 12 14:06:41 UTC 2017 - jengelh@inai.de
+
+- Improve write style of description.
+
+-------------------------------------------------------------------
+Wed Aug 23 14:48:12 UTC 2017 - t.gruner@katodev.de
+
+- Change spec-file for multi-python build 
+
+-------------------------------------------------------------------
+Wed Feb 22 18:33:31 CET 2017 - sbrabec@suse.com
+
+- Relax fixed dependency on an old version of python-setuptools_scm
+  (python-pytest-django-dependency.patch,
+  suggested by michal@cihar.com).
+
+-------------------------------------------------------------------
+Mon Dec  5 22:34:03 UTC 2016 - buschmann23@opensuse.org
+
+- Update to 3.1.2
+  + Bug fixes
+    * Auto clearing of mail.outbox has been re-introduced to not break
+      functionality in 3.x.x release. This means that Compatibility
+      issues mentioned in the 3.1.0 release are no longer present.
+
+- Update to 3.1.1
+  + Bug fixes
+    * Workaround –pdb interaction with Django TestCase. The issue
+      is caused by Django TestCase not implementing TestCase.debug()
+      properly but was brought to attention with recent changes in
+      pytest 3.0.2.
+
+- Update to 3.1.0
+  + Features
+    * Added new function scoped fixture mailoutbox that gives access
+      to djangos mail.outbox. The will clean/empty the mail.outbox
+      to assure that no old mails are still in the outbox.
+    * If django.contrib.sites is in your INSTALLED_APPS, Site cache
+      will be cleared for each test to avoid hitting the cache and
+      cause wrong Site object to be returned by Site.objects.get_current().
+  + Compatibility
+    * IMPORTANT: the internal autouse fixture _django_clear_outbox has
+      been removed. If you have relied on this to get an empty outbox
+      for your test, you should change tests to use the mailoutbox
+      fixture instead. See documentation of mailoutbox fixture for usage.
+      If you try to access mail.outbox directly, AssertionError will be raised.
+
+- Update to 3.0.0
+  + Bug fixes
+    * Fix error when Django happens to be imported before
+      pytest-django runs. Thanks to Will Harris for the bug report.
+  + Features
+    * Added a new option --migrations to negate a default usage of
+      --nomigrations.
+    * The previously internal pytest-django fixture that handles
+      database creation and setup has been refactored, refined and
+      made a public API.
+  + Compoatibility
+    * Official for the pytest 3.0.0 (2.9.2 release should work too,
+      though). The documentation is updated to mention pytest instead
+      of py.test.
+    * Django versions 1.4, 1.5 and 1.6 is no longer supported. The
+      supported versions are now 1.7 and forward. Django master is
+      supported as of 2016-08-21.
+    * pytest-django no longer supports Python 2.6.
+    * Specifying the DJANGO_TEST_LIVE_SERVER_ADDRESS environment
+      variable is no longer supported. Use DJANGO_LIVE_TEST_SERVER_ADDRESS
+      instead.
+    * Ensuring accidental database access is now stricter than before.
+      Previously database access was prevented on the cursor level. To
+      be safer and prevent more cases, it is now prevented at the
+      connection level. If you previously had tests which interacted
+      with the databases without a database cursor, you will need to
+      mark them with the pytest.mark.django_db() marker or request
+      the db fixture.
+    * The previously undocumented internal fixtures _django_db_setup,
+      _django_cursor_wrapper have been removed in favour of the new
+      public fixtures. If you previously relied on these internal
+      fixtures, you must update your code.
+
+-------------------------------------------------------------------
+Mon Nov  9 12:56:30 UTC 2015 - mcihar@suse.cz
+
+- Install license
+
+-------------------------------------------------------------------
+Mon Nov  9 10:59:03 UTC 2015 - mcihar@suse.cz
+
+- Initial packaging
+

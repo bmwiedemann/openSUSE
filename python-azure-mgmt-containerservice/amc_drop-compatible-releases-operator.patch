@@ -1,0 +1,12 @@
+diff -Nru azure-mgmt-containerservice-4.4.0.orig/setup.py azure-mgmt-containerservice-4.4.0/setup.py
+--- azure-mgmt-containerservice-4.4.0.orig/setup.py	2019-01-10 01:00:38.000000000 +0100
++++ azure-mgmt-containerservice-4.4.0/setup.py	2019-03-25 15:29:32.559233641 +0100
+@@ -79,7 +79,7 @@
+     install_requires=[
+         'msrest>=0.5.0',
+         'msrestazure>=0.4.32,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     extras_require={
+         ":python_version<'3.0'": ['azure-mgmt-nspkg'],

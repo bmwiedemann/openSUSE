@@ -1,0 +1,376 @@
+-------------------------------------------------------------------
+Thu Jul 18 12:39:42 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.23.0:
+  * Update translations
+  * make "highlighting things under mouse pointer" configurable
+  * Ensure proper translation of the about dialog title
+  * Make translatable the copyright info in about dialog
+  * Upgrade the manual to docbook 5.0
+  * warning: Value stored to 'screen_number' is never read
+  * Use gresources for about_DATA, uimanager_DATA & builder_DATA
+  * Retain copied selection when changing tabs 
+- remove patch:
+  * mate-terminal-gtk-3.20.patch: we don't support gtk3.20 anymore
+- build require gtk >= 3.22 and glib >= 2.50
+
+-------------------------------------------------------------------
+Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.22.1:
+  * Show confirmation dialogue if there are multiple open tabs on
+    closing.
+  * about: Update copyright.
+  * Explicitly enable bright bold to match new VTE versions.
+  * help: Update copyright.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * term-screen: Avoid deprecated
+    gtk_style_context_get_background_color.
+  * terminal-screen: Avoid deprecated vte_terminal_spawn_sync.
+  * terminal-window: Avoid deprecated vte_terminal_copy_clipboard.
+  * terminal-app: Avoid gtk_dialog_add_buttons with stock ids.
+  * terminal-profile: Fix memory leaks.
+  * terminal-screen: Avoid deprecated "g_settings_list_schemas".
+  * terminal-window: Fix warnings with menu popup.
+  * terminal-window: Replace deprecated gtk_menu_popup.
+  * Avoid deprecated GtkStock.
+  * Remove unused files in help dir.
+  * Remove generated files.
+  * Add update-authors.pl which helps to update terminal.about.
+  * Drop umtp suport.
+  * Help - Window title when MATE Terminal is started for first
+    time.
+  * Help - alternative text for tabbed window picture.
+  * Help - TERM=xterm-256color.
+  * eggsmclient: Avoid deprecated g_type_class_add_private.
+  * src/terminal-screen.c: Set TERM to 'xterm-256color' (instead of
+    just 'xterm').
+  * Move appdata to the metainfo/ directory.
+  * Update translations.
+- Rebase mate-terminal-gtk-3.20.patch.
+
+-------------------------------------------------------------------
+Mon Dec 24 15:02:12 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.2:
+  * Disable deprecation warnings for distcheck.
+  * Use make functions for HELP_LINGUAS.
+  * Replace -Dokumentationsprojekt with Documentation Project.
+  * Update translations.
+
+-------------------------------------------------------------------
+Mon Jun 18 21:00:15 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * terminal-window: Fix Session dbus daemon saturated.
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Require GTK+ 3.22, GLib 2.50 and VTE 0.46.
+  * Avoid deprecated gdk_screen_get_monitor_,
+    gdk_screen_get_width/height(), gdk_screen_make_display_name(),
+    gdk_screen_get_number(), gdk_display_get_screen() functions.
+  * terminal-util: Avoid deprecated gtk_show_uri().
+  * Spelling: Whitespace removed, in the terminal, Ctrl.
+  * Add Solarized themes from gnome-terminal.
+  * An implementation of WidthOfScreen and HeightOfScreen.
+  * Add the ability to switch tabs using [ctrl+tab] and
+    [ctrl+shift+tab].
+  * Allow remapping "search" keyboard shortcuts.
+  * Support background images with VTE3.
+  * find-dialog.ui: Fix keyboard selection.
+  * Add a "select all" keyboard shortcut:
+    [control] + [shift] + [A].
+  * screen: Stop setting TERM and COLORTERM environment variables.
+  * schema: Fix the summary and description of some keys.
+  * Remove "..." from Find keyboard shortcut.
+  * profile-editor: Properly initialise the first palette colour.
+  * terminal-screen.c: Drop unused variables.
+  * Fix build warnings: ignoring return value of 'chdir'.
+  * Add the gsettings key to enable middle click on a tab.
+  * Make indent more uniform in a few files.
+  * Fix a possible crash when handling a D-Bus method call.
+  * Update translations.
+- Add mate-terminal-gtk-3.20.patch: Restore GLib 2.48, GTK+ 3.20
+  and VTE 0.44 support.
+
+-------------------------------------------------------------------
+Wed Nov  8 17:56:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.2:
+  * Avoid deprecated vte_terminal_search_get_gregex.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun May  7 20:20:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.1:
+  * Fix: Double click with right button causes Xorg to crash
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Add the ability to close tabs with middle mouse button.
+
+-------------------------------------------------------------------
+Wed Feb  8 14:23:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.16.2:
+  * Bring back exit confirmation when there's a process running.
+  * Fix a possible crash on window closing.
+  * Fix various issues with drag-n-drop of tabs.
+  * Encodings and keybindings dialogues: Fix the expand of content
+    on a window resize.
+  * Find, profile manager, profile prefs dialogues: Fix runtime
+    warnings about a transient parent.
+  * Attach popup menus to their parent widgets (useful on Wayland).
+  * Force the X11 backend.
+
+-------------------------------------------------------------------
+Mon Oct 10 20:32:20 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.1:
+  * Fix a crash after detaching a tab and then changing its title.
+  * Fix window positioning when using the --geometry option.
+  * Update translations.
+- Remove mate-terminal-geometry-positioning.patch: merged upstream.
+
+-------------------------------------------------------------------
+Thu Sep 22 13:20:07 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Move to GTK+3, require GTK+ 3.14 and VTE 0.38 (API 2.91).
+  * Drop GTK+2 code and --with-gtk build option.
+  * Use GtkAboutDialog instead of MateAboutDialog.
+  * Copy dconf and gsettings helpers from libmate-desktop and drop
+    dependency on libmate-desktop.
+  * React on WM change only on X11.
+  * Fix lots of GTK+ deprecations.
+  * Some more fixes and cleanups.
+  * Update translations.
+- Add mate-terminal-geometry-positioning.patch: Add back --geometry
+  positioning support.
+
+-------------------------------------------------------------------
+Sun Aug 14 11:23:16 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.1:
+  * man: Add missing description for the -x / --execute command
+    line option.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * Compile dingu regexes with MULTILINE option description and in
+    the manpage.
+  * Some more fixes and cleanups.
+  * Update translations.
+  * Add Changelog generation.
+
+-------------------------------------------------------------------
+Tue Mar 10 23:12:09 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.2:
+  * Fix incorrect ordering of COLS and ROWS in command-line option.
+  * GTK+3.20: Fix window sizes.
+  * Remove debug callbacks for deprecated size-request signal.
+  * screen: Compile dingu regexes with MULTILINE option.
+
+-------------------------------------------------------------------
+Mon Feb 22 13:43:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.1:
+  * GTK+3: Add style class mate-terminal.
+
+-------------------------------------------------------------------
+Mon Jan 25 19:56:45 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0:
+  * Gtk3: Fix several deprecations.
+  * General: some code clean up.
+
+-------------------------------------------------------------------
+Fri Jan 22 12:34:23 UTC 2016 - sor.alexei@meowr.ru
+
+- Fix gschemas compilation in %post.
+
+-------------------------------------------------------------------
+Fri Dec  4 14:06:09 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.1:
+  * Switch to VTE 2.91 for Gtk3.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0.
+
+-------------------------------------------------------------------
+Wed Oct 14 06:17:24 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0:
+  * Fix --tab option that has been broken in 1.10.0.
+  * Retrieve strings directly from gschema (requires intltool
+    0.50.1).
+  * Enable silent rules by default.
+  * Some cleanups.
+
+-------------------------------------------------------------------
+Sat Jul 11 16:38:00 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to version 1.10.1:
+  * Several help fixes.
+  * Fix size of profile-preferences window in Gtk3 version with a
+    default.
+
+-------------------------------------------------------------------
+Sun May 10 11:53:19 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.0 (changes since 1.9.1):
+  * [mate-terminal.wrapper] Support double quoted commands.
+  * Correct indentation.
+  * Update translations.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Thu Jan 22 17:28:20 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.1 (unstable)
+  * Bug fixes release
+
+-------------------------------------------------------------------
+Thu Dec 11 14:47:08 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.0 (unstable)
+  + Add dependency on libmate-desktop to use common functions
+- Add make requirement on pkgconfig(mate-desktop-2.0); new dependency
+
+-------------------------------------------------------------------
+Fri Oct  3 14:17:04 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.1
+  + Fixed opening new terminal in a tab
+  + Added colon to PATHCHARS_CLASS for URL detection
+
+-------------------------------------------------------------------
+Wed Mar  5 12:57:00 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Thu Feb 20 13:07:57 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.90 (unstable)
+  + add GTK3 support
+  + add previous/next profile keyboard shortcuts and menu items
+  + add cursor blink preference
+- Remove pkgconfig(mate-doc-utils) and scrollkeeper require; upstream
+  drop support
+- Add yelp-tools and gladeui require; new dependencies
+
+-------------------------------------------------------------------
+Mon Jan  6 16:37:31 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.6.2
+  + ay_to_strv: Prevent dereferencing a NULL pointer.
+    clang static analysis shows that ay_to_strv is
+    called with argc set to NULL. This can cause
+    ay_to_strv to dereference the pointer in a
+    failure situation.
+  + Add previous/next profile keyboard shortcuts, menu items
+  + Update paste sensitivity whenever clipboard changes
+    Closes #17 (https://github.com/mate-desktop/mate-terminal/issues/17)
+    (originally reported and fixed here: 
+    https://bugzilla.gnome.org/show_bug.cgi?id=600876)
+  + Various fixes from master (some only in my master PR)
+  + Make autofoo happy
+  + Fix Sun GNOME Documentation Team references
+  + Remove open-terminal caja extension
+    This was putin it's own package but never removed from mate-terminal.
+  + Remove obsolete libmateui references
+  + More general fix for #18: actually test if the the font content is empty
+  + Add wrapper install
+    Closes #9 (https://github.com/mate-desktop/mate-terminal/issues/9)
+
+-------------------------------------------------------------------
+Thu Oct 10 11:55:38 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  COPYING and majority of source code files state this is GPL-3.0+, not
+  GPL-2.0+
+
+-------------------------------------------------------------------
+Sat Oct  5 13:14:29 UTC 2013 - p.drouand@gmail.com
+
+- Call update-desktop-database for mate-terminal.desktop
+
+-------------------------------------------------------------------
+Fri Apr 12 15:41:49 UTC 2013 - p.drouand@gmail.com
+
+- Add "Requires: gsettings-backend-dconf"; it's needed to save settings
+  changes by user
+
+-------------------------------------------------------------------
+Wed Apr 10 13:59:21 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.1
+  + fix crashing on start with proxy set, properly set all proxy env vars
+- Replace "Requires: %{name}-lang" with "Recommends: %{name}-lang
+
+-------------------------------------------------------------------
+Thu Apr  4 00:34:51 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.0
+  + update translations
+
+-------------------------------------------------------------------
+Sat Mar 23 14:43:30 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5.1
+  + fix dconf minimum versions
+  + rename 'Terminal' to 'MATE Terminal' in desktop file
+    show the terminal in all DEs
+  + free gchar** after use
+  + remove unused function from terminal-gsettings
+  + add manpage
+    migrated from debian/gnome-terminal-2.30.2 manpage
+- Remove mate-terminal-1.5.0-fix_compiler_warnings.patch; merged on upstream
+  release
+
+-------------------------------------------------------------------
+Thu Jan 24 21:49:44 UTC 2013 - nmo.marques@gmail.com
+
+- Update to version 1.5.0
+  + migrate to gsettings
+  + fix incorrect FSF address
+  + update mate-terminal.desktop
+- Add mate-terminal-1.5.0-fix_compiler_warnings.patch; fix several
+  compiler warnings and build issues; upstream
+
+-------------------------------------------------------------------
+Sun Sep  9 00:55:17 UTC 2012 - nmo.marques@gmail.com
+
+- add mate-terminal-1.4.0-tweak_schema_defaults.patch - change
+  terminal defaults to something more cozy... hopefuly?!.
+- add dependency to 'ubuntu-font-family' due to customizations
+
+-------------------------------------------------------------------
+Sat Sep  8 22:30:14 UTC 2012 - nmo.marques@gmail.com
+
+- initial package from release 1.4.0
+

@@ -1,0 +1,37 @@
+Index: lsof_4.91_src/tests/LTlib.c
+===================================================================
+--- lsof_4.91_src.orig/tests/LTlib.c
++++ lsof_4.91_src/tests/LTlib.c
+@@ -231,26 +231,32 @@ _PROTOTYPE(static X2DEV_T x2dev,(char *x
+  */
+ 
+ #if	!defined(major_S)
++#include <sys/sysmacros.h>
+ #define	major_S		major
+ #endif	/* defined(major_S) */
+ 
+ #if	!defined(minor_S)
++#include <sys/sysmacros.h>
+ #define	minor_S		minor
+ #endif	/* defined(minor_S) */
+ 
+ #if	!defined(unit_S)
++#include <sys/sysmacros.h>
+ #define	unit_S(x)	0
+ #endif	/* defined(unit_S) */
+ 
+ #if	!defined(major_X)
++#include <sys/sysmacros.h>
+ #define	major_X(dp, em)	major(x2dev(dp, em))
+ #endif	/* defined(major_X) */
+ 
+ #if	!defined(minor_X)
++#include <sys/sysmacros.h>
+ #define	minor_X(dp, em)	minor(x2dev(dp, em))
+ #endif	/* defined(minor_X) */
+ 
+ #if	!defined(unit_X)
++#include <sys/sysmacros.h>
+ #define	unit_X(dp, em)	0
+ #endif	/* defined(unit_X) */
+ 

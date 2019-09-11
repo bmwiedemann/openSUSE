@@ -1,0 +1,28 @@
+Adjust libvirtd sysconfig file to conform to SUSE standards
+
+Index: libvirt-5.6.0/src/remote/libvirtd.sysconf
+===================================================================
+--- libvirt-5.6.0.orig/src/remote/libvirtd.sysconf
++++ libvirt-5.6.0/src/remote/libvirtd.sysconf
+@@ -1,13 +1,18 @@
++## Path: System/Virtualization/libvirt
+ # Customizations for the libvirtd.service systemd unit
+ 
+-# Listen for TCP/IP connections. This is not required if using systemd
+-# socket activation.
+-# NB. must setup TLS/SSL keys prior to using this
++## Type: string
++## Default: --listen
++# Arguments to pass to libvirtd. Not required if using systemd socket activation.
+ #LIBVIRTD_ARGS="--listen"
+ 
++## Type: string
++## Default: none
+ # Override Kerberos service keytab for SASL/GSSAPI
+ #KRB5_KTNAME=/etc/libvirt/krb5.tab
+ 
++## Type: string
++## Default: none
+ # Override the QEMU/SDL default audio driver probing when
+ # starting virtual machines using SDL graphics
+ #

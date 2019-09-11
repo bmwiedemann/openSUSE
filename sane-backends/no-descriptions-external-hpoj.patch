@@ -1,0 +1,10 @@
+--- doc/Makefile.am.orig	2010-04-05 15:18:05.000000000 +0200
++++ doc/Makefile.am	2010-05-07 12:38:51.000000000 +0200
+@@ -202,7 +202,6 @@ DESC_EXT_FILES = descriptions-external/b
+   descriptions-external/hp3770.desc \
+   descriptions-external/hp8200.desc \
+   descriptions-external/hpaio.desc \
+-  descriptions-external/hpoj.desc \
+   descriptions-external/kodak-twain.desc \
+   descriptions-external/lhii.desc \
+   descriptions-external/mustek_a3p1.desc \

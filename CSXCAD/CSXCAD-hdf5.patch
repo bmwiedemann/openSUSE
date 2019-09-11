@@ -1,0 +1,13 @@
+Index: CSXCAD-0.6.1/CMakeLists.txt
+===================================================================
+--- CSXCAD-0.6.1.orig/CMakeLists.txt
++++ CSXCAD-0.6.1/CMakeLists.txt
+@@ -90,7 +90,7 @@ INCLUDE_DIRECTORIES( ${fparser_INCLUDE_D
+ find_package(TinyXML REQUIRED)
+ ADD_DEFINITIONS(  -DTIXML_USE_STL )
+ 
+-find_package(HDF5 1.8 COMPONENTS C HL REQUIRED)
++find_package(HDF5 1.8 COMPONENTS CXX HL REQUIRED)
+ INCLUDE_DIRECTORIES (${HDF5_INCLUDE_DIRS})
+ link_directories(${HDF5_LIBRARY_DIRS})
+ # hdf5 compat

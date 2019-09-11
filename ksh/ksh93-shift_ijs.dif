@@ -1,0 +1,429 @@
+--- src/cmd/ksh93/edit/edit.c
++++ src/cmd/ksh93/edit/edit.c	2007-12-20 17:50:28.000000000 +0000
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include	<ast.h>
++#include	<ast_wchar.h>
+ #include	<errno.h>
+ #include	<ccode.h>
+ #include	"FEATURE/options"
+@@ -57,8 +58,20 @@ static char KILL_LINE[20] = { ESC, '[',
+ 
+ 
+ #if SHOPT_MULTIBYTE
+-#   define is_cntrl(c)	((c<=STRIP) && iscntrl(c))
+-#   define is_print(c)	((c&~STRIP) || isprint(c))
++# if _hdr_wctype
++#   include <wctype.h>
++#   define is_print(c)  iswprint((c))
++#   define is_cntrl(c)  iswcntrl((c))
++# else
++#   define is_cntrl(c)	(((c)<=STRIP) && iscntrl((c)))
++#   define is_print(c)	(((c)&~STRIP) || isprint((c)))
++# endif
++# if !_lib_iswcntrl && !defined(iswcntrl)
++#   define iswcntrl(c)  (((c)<=STRIP) && iscntrl((c)))
++# endif
++# if !_lib_iswprint && !defined(iswprint)
++#   define iswprint(c)  (((c)&~STRIP) || isprint((c)))
++# endif
+ #else
+ #   define is_cntrl(c)	iscntrl(c)
+ #   define is_print(c)	isprint(c)
+--- src/cmd/ksh93/edit/emacs.c
++++ src/cmd/ksh93/edit/emacs.c	2007-12-20 17:50:28.000000000 +0000
+@@ -62,6 +62,7 @@ One line screen editor for any program
+  */
+ 
+ #include	<ast.h>
++#include	<ast_wchar.h>
+ #include	"FEATURE/cmds"
+ #if KSHELL
+ #   include	"defs.h"
+@@ -84,6 +85,9 @@ One line screen editor for any program
+ 
+ 
+ #if SHOPT_MULTIBYTE
++#   if _hdr_wctype
++#	include <wctype.h>
++#   endif 
+ #   define gencpy(a,b)	ed_gencpy(a,b)
+ #   define genncpy(a,b,n)	ed_genncpy(a,b,n)
+ #   define genlen(str)	ed_genlen(str)
+@@ -1563,11 +1567,19 @@ static void setcursor(register Emacs_t *
+ #if SHOPT_MULTIBYTE
+ static int print(register int c)
+ {
++#if _lib_iswprint || defined(iswprint)
++	return(iswprint(c));
++#else
+ 	return((c&~STRIP)==0 && isprint(c));
++#endif
+ }
+ 
+ static int _isword(register int c)
+ {
++#if _lib_iswalnum || defined(iswalnum)
++	return(iswalnum(c) || (c == '_'));
++#else
+ 	return((c&~STRIP) || isalnum(c) || c=='_');
++#endif
+ }
+ #endif /* SHOPT_MULTIBYTE */
+--- src/cmd/ksh93/edit/vi.c
++++ src/cmd/ksh93/edit/vi.c	2007-12-20 17:50:28.000000000 +0000
+@@ -28,6 +28,8 @@
+  *		cbosgd!pds
+ -*/
+ 
++#include <ast.h>
++#include <ast_wchar.h>
+ 
+ #if KSHELL
+ #   include	"defs.h"
+@@ -65,10 +67,19 @@
+ #   define gencpy(a,b)	ed_gencpy(a,b)
+ #   define genncpy(a,b,n)	ed_genncpy(a,b,n)
+ #   define genlen(str)	ed_genlen(str)
+-#   define digit(c)	((c&~STRIP)==0 && isdigit(c))
+-#   define is_print(c)	((c&~STRIP) || isprint(c))
++#   if _hdr_wctype
++#	include <wctype.h>
++#	define digit(c)     	iswdigit((c))
++#	define is_print(c)	iswprint((c))
++#   else
++#	define digit(c)     	(((c)&~STRIP)==0 && isdigit((c)))
++#	define is_print(c)	(((c)&~STRIP) || isprint((c)))
++#   endif
++#   if !_lib_iswdigit && !defined(iswdigit)
++#	define iswdigit(c)	(((c)&~STRIP)==0 && isdigit((c)))
++#   endif
+ #   if !_lib_iswprint && !defined(iswprint)
+-#	define iswprint(c)	((c&~0177) || isprint(c))
++#	define iswprint(c)	(((c)&~STRIP) || isprint((c)))
+ #   endif
+     static int _isalph(int);
+     static int _ismetach(int);
+--- src/cmd/ksh93/sh/io.c
++++ src/cmd/ksh93/sh/io.c	2010-06-28 14:09:09.000000000 +0000
+@@ -1536,6 +1536,7 @@ static int io_heredoc(Shell_t *shp,regis
+ 		if(traceon)
+ 			sfprintf(sfstderr,"< %s\n",name);
+ 		sfputr(outfile,name,'\n');
++		off = 0;
+ 	}
+ 	else
+ 	{
+--- src/cmd/ksh93/sh/macro.c
++++ src/cmd/ksh93/sh/macro.c	2013-03-19 17:16:46.062074381 +0100
+@@ -54,6 +54,7 @@
+ #if SHOPT_MULTIBYTE
+ #   undef isascii
+ #   define isacii(c)	((c)<=UCHAR_MAX)
++#   include	<lc.h>
+ #else
+ #   define mbchar(p)       (*(unsigned char*)p++)
+ #endif /* SHOPT_MULTIBYTE */
+@@ -2026,6 +2027,11 @@ static void comsubst(Mac_t *mp,register
+ 	struct _mac_		savemac;
+ 	int			savtop = stktell(stkp);
+ 	char			lastc=0, *savptr = stkfreeze(stkp,0);
++#if SHOPT_MULTIBYTE
++	const Lc_t		*lc=lcinfo(LC_CTYPE)->lc;
++	wchar_t			lastw=0;
++#endif /* SHOPT_MULTIBYTE */
++	ssize_t			len;
+ 	int			was_history = sh_isstate(SH_HISTORY);
+ 	int			was_verbose = sh_isstate(SH_VERBOSE);
+ 	int			was_interactive = sh_isstate(SH_INTERACTIVE);
+@@ -2127,7 +2133,7 @@ static void comsubst(Mac_t *mp,register
+ 					num = lseek(fd, (off_t)0, SEEK_CUR);
+ 				goto out_offset;
+ 			}
+-			if(!(sp=mp->shp->sftable[fd]))
++			if(!(sp=mp->shp->sftable[fd]) || (sffileno(sp)!=fd &&!(sfset(sp,0,0)&SF_STRING)))
+ 				sp = sfnew(NIL(Sfio_t*),(char*)malloc(IOBSIZE+1),IOBSIZE,fd,SF_READ|SF_MALLOC);
+ 			type = 3;
+ 		}
+@@ -2209,17 +2215,36 @@ static void comsubst(Mac_t *mp,register
+ 		}
+ 		else if(lastc)
+ 		{
+-			mac_copy(mp,&lastc,1);
++			char mb[8];
++			mb[0] = lastc;
++			len = 1;
++#if SHOPT_MULTIBYTE
++			if(lastw)
++				len = mbconv(mb, lastw);
++			lastw = 0;
++#endif /* SHOPT_MULTIBYTE */
+ 			lastc = 0;
++			mac_copy(mp,mb,len);
+ 		}
+ 		newlines = nextnewlines;
+ 		if(++c < bufsize)
+ 			str[c] = 0;
+ 		else
+ 		{
+-			ssize_t len = 1;
++			len = 1;
+ 
+ 			/* can't write past buffer so save last character */
++#if SHOPT_MULTIBYTE
++			if ((lc->flags & LC_utf8)==0 && (len = mbsize(str))>1)
++			{
++				len = mb2wc(lastw,str,len);
++				if (len < 0)
++				{
++					lastw = 0;
++					len = 1;
++				}
++			}
++#endif /* SHOPT_MULTIBYTE */
+ 			c -= len;
+ 			lastc = str[c];
+ 			str[c] = 0;
+@@ -2240,8 +2265,16 @@ static void comsubst(Mac_t *mp,register
+ 	}
+ 	if(lastc)
+ 	{
+-		mac_copy(mp,&lastc,1);
++		char mb[8];
++		mb[0] = lastc;
++		len = 1;
++#if SHOPT_MULTIBYTE
++		if(lastw)
++			len = mbconv(mb, lastw);
++		lastw = 0;
++#endif /* SHOPT_MULTIBYTE */
+ 		lastc = 0;
++		mac_copy(mp,mb,len);
+ 	}
+ 	sfclose(sp);
+ 	return;
+@@ -2340,13 +2373,13 @@ static void mac_copy(register Mac_t *mp,
+ 		if(mp->pattern)
+ 		{
+ 			char *sp = "&|()";
+-			while(c = *sp++)
++			while((c = *sp++))
+ 			{
+ 				if(state[c]==0)
+ 					state[c] = S_EPAT;
+ 			}
+ 			sp = "*?[{";
+-			while(c = *sp++)
++			while((c = *sp++))
+ 			{
+ 				if(state[c]==0)
+ 					state[c] = S_PAT;
+--- src/cmd/ksh93/sh/string.c
++++ src/cmd/ksh93/sh/string.c	2007-12-20 17:51:07.000000000 +0000
+@@ -37,7 +37,7 @@
+ #endif
+ 
+ #if !_lib_iswprint && !defined(iswprint)
+-#   define iswprint(c)		(((c)&~0377) || isprint(c))
++#   define iswprint(c)		(((c)&~STRIP) || isprint(c))
+ #endif
+ 
+ 
+@@ -245,7 +245,7 @@ void	sh_trim(register char *sp)
+ 	if(sp)
+ 	{
+ 		dp = sp;
+-		while(c= *sp)
++		while((c = *sp))
+ 		{
+ #if SHOPT_MULTIBYTE
+ 			int len;
+--- src/cmd/ksh93/tests/sjis.sh
++++ src/cmd/ksh93/tests/sjis.sh	2011-05-20 15:11:29.000000000 +0000
+@@ -0,0 +1,77 @@
++########################################################################
++#                                                                      #
++#   Copyright (c) 2007 SuSE Linux Products GmbH, Nuernberg, Germany    #
++#                                                                      #
++#   This library is free software; you can redistribute it and/or      #
++#   modify it under the terms of the GNU Lesser General Public         #
++#   License as published by the Free Software Foundation;              #
++#   version 2.1 of the License.                                        #
++#                                                                      #
++#   This library is distributed in the hope that it will be useful,    #
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of     #
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the      #
++#   GNU Lesser General Public License at                               #
++#   http://www.gnu.org/licenses/lgpl-2.1.html for more details         #
++#                                                                      #
++#   Author: Werner Fink <werner@suse.de>                               #
++#                                                                      #
++########################################################################
++
++#
++# Byte ranges for Shift-JIS encoding (hexadecimal):
++# First byte:   81-9F, E0-EF
++# Second byte:  40-7E, 80-FC
++#
++# Now test out some multi byte characters which
++# include 7bit aka ASCII bytes with 0x81 0x{40-7E}
++#
++
++typeset -i chr=0
++typeset -i err=0
++typeset printf=$(type -p printf 2>/dev/null)
++
++unset LC_ALL
++unset LC_CTYPE
++export LANG=ja_JP.SJIS
++
++for second in $(seq 64 126); do
++    let chr++
++    second=$(printf '%x' ${second})
++    mbchar="$(printf "\x81\x${second}")"
++    if test -z "${mbchar}" ; then
++	let err++		# ERROR in builtin printf
++	echo ' builtin printf with \\x81\\x'${second} failed as result is empty
++	continue
++    fi
++    if test -x "${printf}" ; then
++	if test $(${printf} "\x81\x${second}") != ${mbchar} ; then
++	    let err++		# ERROR in builtin printf
++	    echo -n ' \\x81\\x'${second} 'failed with '
++	    echo -n $(${printf} "\x81\x${second}") '!= '
++	    echo ${mbchar}
++	    continue
++	fi
++    fi
++    uq=$(echo ${mbchar})
++    dq=$(echo "${mbchar}")
++    test "$uq" != "$dq" && let err+=1
++    test ${#uq} -ne 1 -o ${#dq} -ne 1 && let err+=1
++done
++
++if test $err -ne 0 ; then
++    : err_exit
++    : err_exit
++    print -u2 -n "\t"
++    print -u2 -r ${0##*/}[$LINENO]: "Shift-JIS encoding failed"
++fi
++
++LANG=POSIX
++typeset -r utf8_euro_char1=$'\u[20ac]'
++typeset -r utf8_euro_char2=$'\342\202\254'
++(( (${#utf8_euro_char1} == 1) && (${#utf8_euro_char2} == 1) )) || export LC_ALL='en_US.UTF-8'
++if [[ "$(printf '\u[20ac]')" != $'\342\202\254' ]] ; then
++    : err_exit
++    print -u2 -n "\t"
++    print -u2 -r ${0##*/}[$LINENO]: "Locale overrride failed."
++fi
++exit $err
+--- src/lib/libast/comp/setlocale.c
++++ src/lib/libast/comp/setlocale.c	2007-12-20 17:50:28.000000000 +0000
+@@ -32,6 +32,7 @@
+ 
+ #include "lclib.h"
+ 
++#include <ast.h>
+ #include <ast_wchar.h>
+ #include <ctype.h>
+ #include <mc.h>
+--- src/lib/libast/comp/wc.c
++++ src/lib/libast/comp/wc.c	2007-12-20 17:50:28.000000000 +0000
+@@ -26,6 +26,7 @@
+  */
+ 
+ #include <ast.h>
++#include <ast_wchar.h>
+ #include <wchar.h>
+ 
+ #define STUB	1
+--- src/lib/libast/features/wchar
++++ src/lib/libast/features/wchar	2007-12-20 17:50:28.000000000 +0000
+@@ -8,7 +8,8 @@ cat{
+ 	#define _AST_WCHAR_H	1
+ }end
+ 
+-lib	mbstowcs,wctomb,wcrtomb,wcslen,wcstombs,wcwidth stdlib.h stdio.h wchar.h
++lib	mbstowcs,wctomb,wcrtomb,wcslen,wcstombs,wcscpy,wcwidth stdlib.h stdio.h wchar.h wctype.h
++lib	iswprint,iswalpha,iswalnum,iswdigit,iswcntrl stdlib.h stdio.h ctype.h wctype.h
+ lib	towlower,towupper stdlib.h stdio.h wchar.h
+ typ	mbstate_t stdlib.h stdio.h wchar.h
+ nxt	wchar
+@@ -68,6 +69,12 @@ cat <<!
+ 	#undef	putwc
+ 	#undef	putwchar
+ 	#undef	ungetwc
++	#undef	fwprintf
++	#undef	swprintf
++	#undef	vfwprintf
++	#undef	vswprintf
++	#undef	vwprintf
++	#undef	wprintf
+ 
+ 	#define fgetwc		_ast_fgetwc
+ 	#define fgetws		_ast_fgetws
+@@ -118,6 +125,12 @@ cat <<!
+ 	#if !_lib_wcstombs
+ 	extern size_t		wcstombs(char*, const wchar_t*, size_t);
+ 	#endif
++	#if !_lib_wcscpy
++	extern wchar_t		*wcscpy(wchar_t*t, const wchar_t*);
++	#endif
++	#if !_lib_wcwidth
++	extern int		int wcwidth(wchar_t c);
++	#endif
+ 
+ 	extern int		fwprintf(FILE*, const wchar_t*, ...);
+ 	extern int		fwscanf(FILE*, const wchar_t*, ...);
+--- src/lib/libast/include/ast.h
++++ src/lib/libast/include/ast.h	2010-08-17 15:09:21.000000000 +0000
+@@ -185,8 +185,6 @@ typedef struct
+ #define mbwide()	(mbmax()>1)
+ 
+ #define mb2wc(w,p,n)	(*ast.mb_towc)(&w,(char*)p,n)
+-#define mbchar(p)	(mbwide()?((ast.tmp_int=(*ast.mb_towc)(&ast.tmp_wchar,(char*)(p),mbmax()))>0?((p+=ast.tmp_int),ast.tmp_wchar):(p+=ast.mb_sync+1,ast.tmp_int)):(*(unsigned char*)(p++)))
+-#define mbnchar(p,n)	(mbwide()?((ast.tmp_int=(*ast.mb_towc)(&ast.tmp_wchar,(char*)(p),n))>0?((p+=ast.tmp_int),ast.tmp_wchar):(p+=ast.mb_sync+1,ast.tmp_int)):(*(unsigned char*)(p++)))
+ #define mbinit()	(mbwide()?(*ast.mb_towc)((wchar_t*)0,(char*)0,mbmax()):0)
+ #define mbsize(p)	(mbwide()?(*ast.mb_len)((char*)(p),mbmax()):((p),1))
+ #define mbnsize(p,n)	(mbwide()?(*ast.mb_len)((char*)(p),n):((p),1))
+@@ -195,6 +193,17 @@ typedef struct
+ #define mbxfrm(t,f,n)	(mbcoll()?(*ast.mb_xfrm)((char*)(t),(char*)(f),n):0)
+ #define mbalpha(w)	(ast.mb_alpha?(*ast.mb_alpha)(w):isalpha((w)&0xff))
+ 
++#define mbchar(p)	(mbwide() ? \
++				(((ast.tmp_int=(*ast.mb_towc)(&ast.tmp_wchar,(char*)(p),mbmax()))>0) ? \
++					({p+=ast.tmp_int;ast.tmp_wchar;}) : \
++					({ast.tmp_int=*(unsigned char*)p;p+=ast.mb_sync+1;ast.tmp_int;})) : \
++				(*(unsigned char*)(p++)))
++#define mbnchar(p,n)	(mbwide() ? \
++				(((ast.tmp_int=(*ast.mb_towc)(&ast.tmp_wchar,(char*)(p),n))>0) ? \
++					({p+=ast.tmp_int;ast.tmp_wchar;}) : \
++					({ast.tmp_int=*(unsigned char*)p;p+=ast.mb_sync+1;ast.tmp_int;})) : \
++				(*(unsigned char*)(p++)))
++
+ /*
+  * common macros
+  */
+--- src/lib/libast/regex/reglib.h
++++ src/lib/libast/regex/reglib.h	2007-12-20 17:50:28.000000000 +0000
+@@ -57,6 +57,7 @@ typedef struct regsubop_s
+ 	char		re_rhs[1];	/* substitution rhs		*/
+ 
+ #include <ast.h>
++#include <ast_wchar.h>
+ #include <cdt.h>
+ #include <stk.h>
+ 
+--- src/lib/libcmd/Mamfile
++++ src/lib/libcmd/Mamfile	2013-02-05 15:11:03.153953100 +0000
+@@ -509,7 +509,7 @@ make cat.o
+ prev cat.c
+ meta cat.o %.c>%.o cat.c cat
+ prev cat.c
+-exec - ${CC} ${mam_cc_FLAGS} ${CCFLAGS} -I. -I${PACKAGE_ast_INCLUDE} -DERROR_CATALOG=\""libcmd"\" -DUSAGE_LICENSE=\""[-author?Glenn Fowler <gsf@research.att.com>][-author?David Korn <dgk@research.att.com>][-copyright?Copyright (c) 1992-2012 AT&T Intellectual Property][-license?http://www.eclipse.org/org/documents/epl-v10.html][--catalog?libcmd]"\" -D_BLD_cmd -D_PACKAGE_ast -c cat.c
++exec - ${CC} ${mam_cc_FLAGS} ${CCFLAGS} -I. -I${PACKAGE_ast_INCLUDE} -DERROR_CATALOG=\""libcmd"\" -DUSAGE_LICENSE=\""[-author?Glenn Fowler <gsf@research.att.com>][-author?David Korn <dgk@research.att.com>][-copyright?Copyright (c) 1992-2012 AT&T Intellectual Property][-license?http://www.eclipse.org/org/documents/epl-v10.html][--catalog?libcmd]"\" -D_BLD_cmd -D_PACKAGE_ast -DSHOPT_MULTIBYTE -c cat.c
+ done cat.o generated
+ make chgrp.o
+ prev chgrp.c

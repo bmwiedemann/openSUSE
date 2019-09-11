@@ -1,0 +1,66 @@
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Subject: Set XAUTHLOCALHOSTNAME to allow hostname changes
+
+Our libxcb is patched to retry with $XAUTHLOCALHOSTNAME as hostname if the
+Xauthority entry for the current hostname does not work.
+There's a stale PR to do something similar (FamilyWild using libXau) upstream:
+https://github.com/sddm/sddm/pull/863
+FamilyWild is not a complete solution either, only when using a temporary
+Xauthority file for each session separately.
+
+Index: sddm-0.18.0/src/helper/Backend.cpp
+===================================================================
+--- sddm-0.18.0.orig/src/helper/Backend.cpp
++++ sddm-0.18.0/src/helper/Backend.cpp
+@@ -27,6 +27,7 @@
+ #include "UserSession.h"
+ 
+ #include <QtCore/QProcessEnvironment>
++#include <QtNetwork/QHostInfo>
+ 
+ #include <pwd.h>
+ 
+@@ -69,6 +70,7 @@ namespace SDDM {
+                         .arg(QString::fromLocal8Bit(pw->pw_dir))
+                         .arg(mainConfig.X11.UserAuthFile.get());
+                 env.insert(QStringLiteral("XAUTHORITY"), value);
++                env.insert(QStringLiteral("XAUTHLOCALHOSTNAME"), QHostInfo::localHostName());
+             }
+             // TODO: I'm fairly sure this shouldn't be done for PAM sessions, investigate!
+             m_app->session()->setProcessEnvironment(env);
+Index: sddm-0.18.0/src/daemon/Display.cpp
+===================================================================
+--- sddm-0.18.0.orig/src/daemon/Display.cpp
++++ sddm-0.18.0/src/daemon/Display.cpp
+@@ -316,8 +316,10 @@ namespace SDDM {
+ 
+         QProcessEnvironment env;
+         env.insert(QStringLiteral("PATH"), mainConfig.Users.DefaultPath.get());
+-        if (session.xdgSessionType() == QLatin1String("x11"))
++        if (session.xdgSessionType() == QLatin1String("x11")) {
+             env.insert(QStringLiteral("DISPLAY"), name());
++            env.insert(QStringLiteral("XAUTHLOCALHOSTNAME"), daemonApp->hostName());
++        }
+         env.insert(QStringLiteral("XDG_SEAT_PATH"), daemonApp->displayManager()->seatPath(seat()->name()));
+         env.insert(QStringLiteral("XDG_SESSION_PATH"), daemonApp->displayManager()->sessionPath(QStringLiteral("Session%1").arg(daemonApp->newSessionId())));
+         env.insert(QStringLiteral("DESKTOP_SESSION"), session.desktopSession());
+Index: sddm-0.18.0/src/daemon/Greeter.cpp
+===================================================================
+--- sddm-0.18.0.orig/src/daemon/Greeter.cpp
++++ sddm-0.18.0/src/daemon/Greeter.cpp
+@@ -114,6 +114,7 @@ namespace SDDM {
+             // set process environment
+             QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+             env.insert(QStringLiteral("DISPLAY"), m_display->name());
++            env.insert(QStringLiteral("XAUTHLOCALHOSTNAME"), daemonApp->hostName());
+             env.insert(QStringLiteral("XAUTHORITY"), m_authPath);
+             env.insert(QStringLiteral("XCURSOR_THEME"), xcursorTheme);
+             env.insert(QStringLiteral("QT_IM_MODULE"), mainConfig.InputMethod.get());
+@@ -175,6 +176,7 @@ namespace SDDM {
+             env.insert(QStringLiteral("PATH"), mainConfig.Users.DefaultPath.get());
+             env.insert(QStringLiteral("DISPLAY"), m_display->name());
+             env.insert(QStringLiteral("XAUTHORITY"), m_authPath);
++            env.insert(QStringLiteral("XAUTHLOCALHOSTNAME"), daemonApp->hostName());
+             env.insert(QStringLiteral("XCURSOR_THEME"), xcursorTheme);
+             env.insert(QStringLiteral("XDG_SEAT"), m_display->seat()->name());
+             env.insert(QStringLiteral("XDG_SEAT_PATH"), daemonApp->displayManager()->seatPath(m_display->seat()->name()));

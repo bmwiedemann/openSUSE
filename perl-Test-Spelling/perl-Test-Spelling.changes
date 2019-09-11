@@ -1,0 +1,139 @@
+-------------------------------------------------------------------
+Wed May 29 05:38:26 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.25
+   see /usr/share/doc/packages/perl-Test-Spelling/Changes
+
+  0.25      2019-05-28
+    - Re-worded the documentation.
+    - Ordered documented function in alphabetical order.
+    - Fixed up the synopsis.
+    - Put function usage examples directly below the function name; this
+      makes it easier to get clickable links for functions in metacpan
+    - Documented get_pod_parser
+    - Moved hunspell up to the preferred checker
+
+-------------------------------------------------------------------
+Sat May 25 05:31:02 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.24
+   see /usr/share/doc/packages/perl-Test-Spelling/Changes
+
+  0.24      2019-05-24
+    - Fixup the prereqs some
+    - Revert the unicode support added in the last release as it caused
+      some test breakage
+
+-------------------------------------------------------------------
+Wed May 22 05:27:48 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.23
+   see /usr/share/doc/packages/perl-Test-Spelling/Changes
+
+  0.23      2019-05-21
+    - Fixed some documentation errors (Mohammad S Anwar)
+    - Added unicode support (Kivanc Yazan, GH PR#10)
+    - Bump Perl prereq to 5.8 now that we support unicode
+    - Don't inherit from Exporter (Olivier Mengué, GH PR#9)
+    - Bump Exporter prereq to 5.57
+
+-------------------------------------------------------------------
+Thu Apr 25 05:31:43 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.22
+   see /usr/share/doc/packages/perl-Test-Spelling/Changes
+
+  0.22      2019-04-24
+    - Zero-code-change release encompassing everything from 0.21
+    - Resolves RT#120425 . in @INC should no longer be an issue
+  
+  0.21      2019-04-19 (TRIAL)
+    - Removed the POD spelling test from /t as it's now in /xt
+    - Forego usage of inc::Module::Install for EU::MM
+    - List out all prereqs individually; provide cpanfile
+    - Use dzil to build the dist
+    - Convert the README to markdown
+    - Add a LICENSE file
+    - Clean up the Changes log
+
+-------------------------------------------------------------------
+Tue Oct  3 08:22:01 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Sat Feb  7 07:21:44 UTC 2015 - coolo@suse.com
+
+- updated to 0.20
+        - Add a sorted list of your most commonly misspelled words to
+          the end of all_pod_files_spelling_ok to aid stopword list creation
+          and bulk correction. (Kent Fredric)
+
+-------------------------------------------------------------------
+Tue Jun  4 15:08:59 UTC 2013 - coolo@suse.com
+
+- updated to 0.19
+         - for more consistent results avoid using the user's local aspell
+           dictionary [rt.cpan.org #56483] (Karen Etheridge)
+ 
+         - Work around Pod::Spell limitations (David Golden)
+         - Improve case handling (David Golden)
+         - Improve test failure reporting (Karen Etheridge)
+         - Include more useful info in Test-Spelling's own test
+             suite (Shawn Moore)
+ 
+         - Use IPC::Run3 instead of IPC::Open3
+             Quoth IPC::Open3:
+                 If you try to read from the child's stdout writer
+                 and their stderr writer, you'll have problems with
+                 blocking ... This is very dangerous, as you may
+                 block forever.
+             Also the code is nicely shorter. (Randy Stauner)
+ 
+         - Allow use of a custom POD parser rather than Pod::Spell
+           using set_pod_parser (Thomas Sibley)
+
+-------------------------------------------------------------------
+Mon Dec 19 16:22:38 UTC 2011 - coolo@suse.de
+
+- update to 0.15
+     - Begin adding actual tests
+       (Hilariously, adding the suggested t/pod-spell.t to this
+       dist to test itself found a typo: "stopwards")
+     - Fix an error when using add_stopwords("constant", "strings")
+       [rt.cpan.org #68471] (reported by Nicholas Bamber)
+     - Make alternatives checking more robust by reading the spellchecker's
+       STDERR
+     - Best Practical has taken over maintainership of this module
+     - Try various spellcheck programs instead of hardcoding the ancient
+       `spell` [rt.cpan.org #56483] (reported by Lars Dɪᴇᴄᴋᴏᴡ, et al)
+     - Remove temporary files more aggressively [rt.cpan.org #41586]
+       (reported by Tokuhiro Matsuno)
+     - fixed by not creating them at all :) instead we now use IPC::Open3
+     - Remove suggestion to use broken `aspell -l` [rt.cpan.org #28967]
+       (reported by David Hand)
+     - Add set_pod_file_filter for skipping translations, etc.
+     - Skip tests in all_pod_files_spelling_ok if there is no working
+       spellchecker
+     - Provide a has_working_spellchecker so you can skip your own tests if
+       there's no working spellchecker
+     - Switch to Module::Install
+     - Rewrite and modernize a lot of the documentation
+     - Decruftify code, such as by using Exporter and lexical filehandles
+     - Support .plx files (you're welcome Schwern)
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:44 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:15 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Fri Aug 27 00:08:38 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.11)
+

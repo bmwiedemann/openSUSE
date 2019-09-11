@@ -1,0 +1,20 @@
+commit 583a115a94c239ce6dd1eaf1661bc6c5621aa125
+Author: David Faure <faure@kde.org>
+Date:   Tue Jul 23 13:02:34 2019 +0200
+
+    Fix compilation with Qt 5.13 (missing include)
+    
+    (cherry picked from commit 0c5430697bdcf41a45046107b28014e40c49a11a)
+
+diff --git a/sheets/plugins/calendar/CalendarToolWidget.cpp b/sheets/plugins/calendar/CalendarToolWidget.cpp
+index b10b23022a2..0c5eeb68cf3 100644
+--- a/sheets/plugins/calendar/CalendarToolWidget.cpp
++++ b/sheets/plugins/calendar/CalendarToolWidget.cpp
+@@ -30,6 +30,7 @@
+ #include <kdatepicker.h>
+ 
+ #include <QPushButton>
++#include <QDate>
+ 
+ namespace Calligra
+ {

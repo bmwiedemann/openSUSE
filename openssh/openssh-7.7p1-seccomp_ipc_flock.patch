@@ -1,0 +1,41 @@
+# HG changeset patch
+# Parent  9d38b7292619a6d5faf554b1a88888fdfa535de7
+Patch from IBM enabling the use of OpenCryptoki, submitted upstreams:
+
+From: Eduardo Barretto <ebarretto@linux.vnet.ibm.com>
+To: openssh-unix-dev@mindrot.org
+Subject: [PATCH 1/3] Allow flock and ipc syscall for s390 architecture
+Date: Tue,  9 May 2017 14:27:13 -0300
+
+In order to use the OpenSSL-ibmpkcs11 engine it is needed to allow flock
+and ipc calls, because this engine calls OpenCryptoki (a PKCS#11
+implementation) which calls the libraries that will communicate with the
+crypto cards. OpenCryptoki makes use of flock and ipc and, as of now,
+this is only need on s390 architecture.
+
+Signed-off-by: Eduardo Barretto <ebarretto@linux.vnet.ibm.com>
+
+Index: openssh-7.9p1/sandbox-seccomp-filter.c
+===================================================================
+--- openssh-7.9p1.orig/sandbox-seccomp-filter.c
++++ openssh-7.9p1/sandbox-seccomp-filter.c
+@@ -175,6 +175,9 @@ static const struct sock_filter preauth_
+ #ifdef __NR_geteuid32
+ 	SC_ALLOW(__NR_geteuid32),
+ #endif
++#if defined(__NR_flock) && defined(__s390__)
++	SC_ALLOW(__NR_flock),
++#endif
+ #ifdef __NR_getpgid
+ 	SC_ALLOW(__NR_getpgid),
+ #endif
+@@ -193,6 +196,9 @@ static const struct sock_filter preauth_
+ #ifdef __NR_getuid32
+ 	SC_ALLOW(__NR_getuid32),
+ #endif
++#if defined(__NR_ipc) && defined(__s390__)
++	SC_ALLOW(__NR_ipc),
++#endif
+ #ifdef __NR_madvise
+ 	SC_ALLOW(__NR_madvise),
+ #endif

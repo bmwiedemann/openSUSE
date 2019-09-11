@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Tue Jun  4 17:14:43 UTC 2013 - coolo@suse.com
+
+- updated to 0.14
+   fixed   POD error
+
+-------------------------------------------------------------------
+Fri Nov 18 12:50:34 UTC 2011 - coolo@suse.com
+
+- update to 0.13
+    error, with (hopefully!) proper error message when trying to
+    follow XML axes from a litteral, see 
+      http://stackoverflow.com/questions/7761509/xpath-expression-to-access-parent-or-sibling-using-htmltreebuilderxpath-modul
+
+-------------------------------------------------------------------
+Tue Nov 30 19:21:01 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Aug  4 12:56:04 UTC 2010 - chris@computersalat.de
+
+- initial package 0.12
+  * created by cpanspec 1.78
+

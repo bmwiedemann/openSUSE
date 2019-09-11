@@ -1,0 +1,20 @@
+--- proximity.py.orig	2010-06-06 17:22:25.454729310 -0600
++++ proximity.py	2010-06-06 17:23:04.963753212 -0600
+@@ -1257,7 +1257,7 @@
+         if filename.endswith('.conf'):
+             try:
+ 		# add every valid .conf file to the array of configs
+-                config = ConfigObj(os.path.join(conf_dir,filename),{'create_empty':False,'file_error':True,'configspec':conf_specs})
++                config = ConfigObj(os.path.join(conf_dir,filename),**{'create_empty':False,'file_error':True,'configspec':conf_specs})
+                 # first validate it
+                 config.validate(vdt, copy=True)
+                 # rewrite it in a secure manner
+@@ -1271,7 +1271,7 @@
+ 
+     # no previous configuration could be found so let's create a new one
+     if new_config:
+-        config = ConfigObj(os.path.join(conf_dir, _('standard') + '.conf'),{'create_empty':True,'file_error':False,'configspec':conf_specs})
++        config = ConfigObj(os.path.join(conf_dir, _('standard') + '.conf'),**{'create_empty':True,'file_error':False,'configspec':conf_specs})
+         # next line fixes a problem with creating empty strings in default values for configobj
+         config['device_mac'] = ''
+         config.validate(vdt, copy=True)

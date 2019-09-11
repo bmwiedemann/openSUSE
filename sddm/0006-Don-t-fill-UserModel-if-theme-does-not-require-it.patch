@@ -1,0 +1,177 @@
+From 2dcff84bfe21c8e1c7976797c3f22b91b45f0695 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 21 Apr 2018 17:40:56 +0200
+Subject: [PATCH 6/6] Don't fill UserModel if theme does not require it
+
+Certain themes switch to a username input field if there are too many users
+to show. In those cases we don't need to provide a complete user model.
+The last logged in user is still added (if available) to keep the index
+and data valid.
+
+To tell sddm that a theme does not need a full user model, theme.conf has to
+set "General/needsFullUserModel=false".
+
+Fixes #479
+---
+ src/greeter/GreeterApp.cpp | 11 ++++++++++-
+ src/greeter/UserModel.cpp  | 49 ++++++++++++++++++++++++++++++++++------------
+ src/greeter/UserModel.h    |  4 +++-
+ 3 files changed, 49 insertions(+), 15 deletions(-)
+
+diff --git a/src/greeter/GreeterApp.cpp b/src/greeter/GreeterApp.cpp
+index 1230efa..a9d785c 100644
+--- a/src/greeter/GreeterApp.cpp
++++ b/src/greeter/GreeterApp.cpp
+@@ -60,7 +60,6 @@ namespace SDDM {
+ 
+         // Create models
+         m_sessionModel = new SessionModel();
+-        m_userModel = new UserModel();
+         m_keyboard = new KeyboardModel();
+     }
+ 
+@@ -111,6 +110,16 @@ namespace SDDM {
+         else
+             m_themeConfig = new ThemeConfig(configFile);
+ 
++        const bool themeNeedsAllUsers = m_themeConfig->value(QStringLiteral("needsFullUserModel"), true).toBool();
++        if(m_userModel && themeNeedsAllUsers && !m_userModel->containsAllUsers()) {
++            // The theme needs all users, but the current user model doesn't have them -> recreate
++            m_userModel->deleteLater();
++            m_userModel = nullptr;
++        }
++
++        if (!m_userModel)
++            m_userModel = new UserModel(themeNeedsAllUsers, nullptr);
++
+         // Set default icon theme from greeter theme
+         if (m_themeConfig->contains(QStringLiteral("iconTheme")))
+             QIcon::setThemeName(m_themeConfig->value(QStringLiteral("iconTheme")).toString());
+diff --git a/src/greeter/UserModel.cpp b/src/greeter/UserModel.cpp
+index f6f4f95..fdf2b7e 100644
+--- a/src/greeter/UserModel.cpp
++++ b/src/greeter/UserModel.cpp
+@@ -33,13 +33,25 @@
+ namespace SDDM {
+     class User {
+     public:
++        User(const struct passwd *data, const QString icon) :
++            name(QString::fromLocal8Bit(data->pw_name)),
++            realName(QString::fromLocal8Bit(data->pw_gecos).split(QLatin1Char(',')).first()),
++            homeDir(QString::fromLocal8Bit(data->pw_dir)),
++            uid(data->pw_uid),
++            gid(data->pw_gid),
++            // if shadow is used pw_passwd will be 'x' nevertheless, so this
++            // will always be true
++            needsPassword(strcmp(data->pw_passwd, "") != 0),
++            icon(icon)
++        {}
++
+         QString name;
+         QString realName;
+         QString homeDir;
+-        QString icon;
+-        bool needsPassword { false };
+         int uid { 0 };
+         int gid { 0 };
++        bool needsPassword { false };
++        QString icon;
+     };
+ 
+     typedef std::shared_ptr<User> UserPtr;
+@@ -48,9 +60,10 @@ namespace SDDM {
+     public:
+         int lastIndex { 0 };
+         QList<UserPtr> users;
++        bool containsAllUsers { true };
+     };
+ 
+-    UserModel::UserModel(QObject *parent) : QAbstractListModel(parent), d(new UserModelPrivate()) {
++    UserModel::UserModel(bool needAllUsers, QObject *parent) : QAbstractListModel(parent), d(new UserModelPrivate()) {
+         const QString facesDir = mainConfig.Theme.FacesDir.get();
+         const QString themeDir = mainConfig.Theme.ThemeDir.get();
+         const QString currentTheme = mainConfig.Theme.Current.get();
+@@ -59,6 +72,8 @@ namespace SDDM {
+         const QString iconURI = QStringLiteral("file://%1").arg(
+                 QFile::exists(themeDefaultFace) ? themeDefaultFace : defaultFace);
+ 
++        bool lastUserFound = false;
++
+         struct passwd *current_pw;
+         while ((current_pw = getpwent()) != nullptr) {
+ 
+@@ -78,19 +93,23 @@ namespace SDDM {
+                 continue;
+ 
+             // create user
+-            UserPtr user { new User() };
+-            user->name = QString::fromLocal8Bit(current_pw->pw_name);
+-            user->realName = QString::fromLocal8Bit(current_pw->pw_gecos).split(QLatin1Char(',')).first();
+-            user->homeDir = QString::fromLocal8Bit(current_pw->pw_dir);
+-            user->uid = int(current_pw->pw_uid);
+-            user->gid = int(current_pw->pw_gid);
+-            // if shadow is used pw_passwd will be 'x' nevertheless, so this
+-            // will always be true
+-            user->needsPassword = strcmp(current_pw->pw_passwd, "") != 0;
+-            user->icon = iconURI;
++            UserPtr user { new User(current_pw, iconURI) };
+ 
+             // add user
+             d->users << user;
++
++            if (user->name == lastUser())
++                lastUserFound = true;
++
++            if (!needAllUsers && d->users.count() > mainConfig.Theme.DisableAvatarsThreshold.get()) {
++                struct passwd *lastUserData;
++                // If the theme doesn't require that all users are present, try to add the data for lastUser at least
++                if(!lastUserFound && (lastUserData = getpwnam(qPrintable(lastUser()))))
++                    d->users << UserPtr(new User(lastUserData, themeDefaultFace));
++
++                d->containsAllUsers = false;
++                break;
++            }
+         }
+ 
+         endpwent();
+@@ -182,4 +201,8 @@ namespace SDDM {
+     int UserModel::disableAvatarsThreshold() const {
+         return mainConfig.Theme.DisableAvatarsThreshold.get();
+     }
++
++    bool UserModel::containsAllUsers() const {
++        return d->containsAllUsers;
++    }
+ }
+diff --git a/src/greeter/UserModel.h b/src/greeter/UserModel.h
+index 1bbf77e..b63cf9a 100644
+--- a/src/greeter/UserModel.h
++++ b/src/greeter/UserModel.h
+@@ -34,6 +34,7 @@ namespace SDDM {
+         Q_PROPERTY(QString lastUser READ lastUser CONSTANT)
+         Q_PROPERTY(int count READ rowCount CONSTANT)
+         Q_PROPERTY(int disableAvatarsThreshold READ disableAvatarsThreshold CONSTANT)
++        Q_PROPERTY(bool containsAllUsers READ containsAllUsers CONSTANT)
+     public:
+         enum UserRoles {
+             NameRole = Qt::UserRole + 1,
+@@ -43,7 +44,7 @@ namespace SDDM {
+             NeedsPasswordRole
+         };
+ 
+-        UserModel(QObject *parent = 0);
++        UserModel(bool needAllUsers, QObject *parent = 0);
+         ~UserModel();
+ 
+         QHash<int, QByteArray> roleNames() const override;
+@@ -55,6 +56,7 @@ namespace SDDM {
+         QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+ 
+         int disableAvatarsThreshold() const;
++        bool containsAllUsers() const;
+     private:
+         UserModelPrivate *d { nullptr };
+     };
+-- 
+2.16.2
+

@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Sat Feb 17 12:37:02 UTC 2018 - aloisio@gmx.com
+
+- Update to version 2.28 (no upstream changelog)
+  * Added support for bpaste.net
+
+-------------------------------------------------------------------
+Sat Apr 16 14:38:43 UTC 2016 - mpluskal@suse.com
+
+- Update to 2.27
+- Recommend xclip
+
+-------------------------------------------------------------------
+Fri Jan  8 11:35:02 UTC 2016 - tchvatal@suse.com
+
+- Version update to 2.26:
+  * Various tweaks for the services to support more syntax/etc.
+- Remove no-longer needed patches:
+  * wgetpaste-2.25-pinwand.patch
+  * wgetpaste-2.25-pinwand-raw.patch
+
+-------------------------------------------------------------------
+Mon Nov 24 13:35:27 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 2.25
+  * Various fixes around bpaste service
+- Remove defaults as they are not needed now.
+- Apply pinnwand patches for bpaste:
+  * wgetpaste-2.25-pinwand.patch
+  * wgetpaste-2.25-pinwand-raw.patch
+
+-------------------------------------------------------------------
+Thu Jul 25 12:20:13 UTC 2013 - tchvatal@suse.com
+
+- Fix build on obs, here the fail was not triggered :-/
+
+-------------------------------------------------------------------
+Thu Jul 25 12:08:02 UTC 2013 - tchvatal@suse.com
+
+- Initial commit. Nice tool to be used with various pastebins.
+  Similar to susepaste but used on more distros.
+

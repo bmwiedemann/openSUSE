@@ -1,0 +1,151 @@
+-------------------------------------------------------------------
+Fri Jun 14 16:48:52 UTC 2019 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to Unidecode 1.1.0:
+  * Add more Latin letter variants in U+1F1xx page
+  * Make it possible to use the Unidecode command-line utility via
+    "python -m unidecode" (thanks to Jon Dufresne)
+  * General clean up of code and documentation
+    (thanks to Jon Dufresne)
+
+-------------------------------------------------------------------
+Thu Dec  6 14:30:29 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Run correct fdupes call
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:35 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Nov 19 19:48:35 UTC 2018 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to Unidecode 1.0.23:
+  * Improve transliteration of Hebrew letters
+    (thanks to Alon Bar-Lev)
+  * Add transliterations for the phonetic block U+1D00 - U+1D7F
+    (thanks to Oscar Laurent)
+  * Transliterate SI "micro" prefix as "u" instead of "micro" in
+    the U+33xx block.
+  * Add U+33DE SQUARE V OVER M and U+33DF SQUARE A OVER M.
+  * Drop support for Python 2.6 and 3.3 (thanks to Jon Dufresne)
+- spec cleanup: fix license to GPL-2.0-or-later
+- mark the LICENSE file as %license instead of %doc
+- add the README to the documentation
+
+-------------------------------------------------------------------
+Sat Jan  6 21:26:05 UTC 2018 - benoit.monin@gmx.fr
+
+- update to Unidecode 1.0.22:
+  * Move to semantic version numbering, no longer following version
+    numbers from the original Perl module. This fixes an issue with
+    setuptools (>= 8) and others expecting major.minor.patch format
+    (https://github.com/avian2/unidecode/issues/13)
+  * Add transliterations for currency signs U+20B0 through U+20BF
+    (thanks to Mike Swanson)
+  * Surround transliterations of vulgar fractions with spaces to
+    avoid incorrect combinations with adjacent numerals
+    (thanks to Jeffrey Gerard)
+
+-------------------------------------------------------------------
+Wed Jun 28 18:15:36 UTC 2017 - benoit.monin@gmx.fr
+
+- update to Unidecode 0.04.21:
+  * Add U+2116 NUMERO SIGN (thanks to Alan Davidson)
+  * Add U+05BE HEBREW PUNCTUATION MAQAF (thanks to Micha Moskovic)
+
+-------------------------------------------------------------------
+Thu Apr  6 16:10:57 UTC 2017 - alarrosa@suse.com
+
+- Use singlespec macros
+
+-------------------------------------------------------------------
+Tue Jan 10 20:00:08 UTC 2017 - benoit.monin@gmx.fr
+
+- update to Unidecode 0.04.20:
+  * Fixed transliteration of circled Latin letters and numbers
+    (thanks to Krzysztof Jurewicz)
+  * Add square unit symbols
+  * Add Latin variants in U+20xx and U+21xx pages
+  * Fix U+02B1 MODIFIER LETTER SMALL H WITH HOOK
+  * Fix U+205F MEDIUM MATHEMATICAL SPACE
+  * Add "DIGIT ... COMMA" and "PARANTHESIZED LATIN CAPITAL LETTER"
+    in U+1F1xx page
+  * Add missing vulgar fractions and a/c, a/s, c/o, c/u symbols
+  * Add universal Wheel release (thanks to Adam Chainz)
+- change source url to pythonhosted.org
+
+-------------------------------------------------------------------
+Fri Jan 22 19:02:19 UTC 2016 - benoit.monin@gmx.fr
+
+- update to Unidecode 0.04.19:
+  * Add unidecode_expect_ascii() and unidecode_expect_nonascii()
+    functions for performance critical applications.
+
+-------------------------------------------------------------------
+Tue Nov 10 13:26:52 UTC 2015 - mpluskal@suse.com
+
+- Install License and ChangeLog
+
+-------------------------------------------------------------------
+Sun Jun 14 08:42:34 UTC 2015 - benoit.monin@gmx.fr
+
+- update to Unidecode 0.04.18:
+  * Add a command line utility. (thanks to Andrew Udvare)
+  * Use setuptools for packaging.
+- add new build dependency: python-setuptools
+- add and use update-alternatives for unidecode binary
+- set a UTF-8 locale to run the tests: they fail without it
+
+-------------------------------------------------------------------
+Sat Dec 20 13:02:04 UTC 2014 - benoit.monin@gmx.fr
+
+- update to Unidecode 0.04.17
+  * Add some missing Latin letter variants used by popular "Unicode
+    text converter" tools.
+  * Issue a warning if a surrogate character is encountered in
+    input.
+  * Corrected module import which might cause unidecode() to raise
+    AttributeError on some systems.
+- add %check section
+
+-------------------------------------------------------------------
+Mon May 12 17:50:09 UTC 2014 - benoit.monin@gmx.fr
+
+- update to Unidecode 0.04.16
+  * Corrected ChangeLog.
+- changes from 0.04.15
+  * Fixed transliteration of Chinese character "Yi".
+  * Transliterate Euro sign as "EUR".
+
+-------------------------------------------------------------------
+Fri Dec 27 17:20:40 UTC 2013 - benoit.monin@gmx.fr
+
+- remove useless CFLAGS="%{optflags}"
+
+-------------------------------------------------------------------
+Fri Sep 20 20:48:57 UTC 2013 - benoit.monin@gmx.fr
+
+- update to Unidecode 0.04.14
+  * Revert transliteration for Latin characters with umlauts back
+    to language-neutral, unaccented characters.
+  * Added transliterations for circled numbers, letters and
+    ordinals.
+  * Minor fixes to rarely used punctuation characters.
+
+-------------------------------------------------------------------
+Sat Jun  8 16:54:21 UTC 2013 - benoit.monin@gmx.fr
+
+- update to Unidecode 0.04.13
+
+-------------------------------------------------------------------
+Thu Mar 28 19:57:11 UTC 2013 - benoit.monin@gmx.fr
+
+- call fdupes to fix a warning from rpmlint
+
+-------------------------------------------------------------------
+Wed Mar 27 20:28:53 UTC 2013 - benoit.monin@gmx.fr
+
+- initial package with version 0.04.12
+

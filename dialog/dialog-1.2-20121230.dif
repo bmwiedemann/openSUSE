@@ -1,0 +1,15 @@
+Index: util.c
+===================================================================
+--- util.c.orig
++++ util.c
+@@ -2176,8 +2176,10 @@ dlg_move_window(WINDOW *win, int height,
+ #ifdef HAVE_COLOR
+ 	    if (p->shadow != 0) {
+ 		if (dialog_state.use_shadow) {
++		    (void) wresize(p->shadow, height, width);
+ 		    (void) mvwin(p->shadow, y + SHADOW_ROWS, x + SHADOW_COLS);
+ 		} else {
++		    delwin(p->shadow);
+ 		    p->shadow = 0;
+ 		}
+ 	    }

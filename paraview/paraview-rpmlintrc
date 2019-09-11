@@ -1,0 +1,10 @@
+# paraview has *.so symbolic links to other files
+# and these are mistaken by rpmlint to be devel files
+addFilter("devel-file-in-non-devel-package")
+
+# Upstream doesn't supply manpages, so no go here
+addFilter("no-manual-page-for-binary")
+
+# The hidden .plugin file is really needed
+addFilter("hidden-file-or-dir .*/usr/lib64/paraview/.plugins")
+addFilter("hidden-file-or-dir .*/usr/lib64/paraview*/.plugins")

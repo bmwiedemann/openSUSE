@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Mon Feb 19 11:24:28 UTC 2018 - aloisio@gmx.com
+
+- Update to version 1.0.5
+  * limit the file cache to 50 elements and age of 10 minutes to
+    avoid endless grow of internal cache
+  * allow reproducable builds
+  * fixed crash in parsing ls output for modules which need to
+    handle ls-like output
+  * fix urar module when external rar/unrar tool crashed
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Dec 22 07:45:39 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.0.4:
+  * fixed zip module to correctly read archives with a lot of
+    files or very large files
+- Use pkgconfig() style requires
+
+-------------------------------------------------------------------
+Wed Nov 11 19:00:21 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.0.3
+  * fixed zlib assert triggered for some Huffman encodings
+  * added rar v5 in extfs urar (which is also renamed to uextrar to avoid
+    collision with internal rar module)
+  * some configure script improvements have been done for fuse and liblzma
+    dependencies
+
+-------------------------------------------------------------------
+Sun May 17 20:26:53 UTC 2015 - jengelh@inai.de
+
+- Improve summary and description. -devel subpackage should require
+  same-version shared library. Drop --with-pic, because it is
+  implicit for shared libraries (and we do not build static).
+  Use short Sourceforge download URLs.
+
+-------------------------------------------------------------------
+Tue May 12 08:47:12 UTC 2015 - mpluskal@suse.com
+
+- Update licensing information
+
+-------------------------------------------------------------------
+Fri May  8 08:05:28 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.0.2
+- Add gpg signature
+- Clenup spec file with spec-cleaner
+- Drop avfs-1.0.0.dif as it fails to apply to current release
+
+-------------------------------------------------------------------
+Tue May  8 12:15:54 UTC 2012 - werner@suse.de
+
+- First initial package for mounting tar and other bells and whistles 
+

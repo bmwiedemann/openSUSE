@@ -1,0 +1,86 @@
+# -*- spec -*-
+# Helper macros for creating manifold Asterisk sound packages
+# written by Jan Engelhardt <jengelh@inai.de>
+# released under CC0 1.0 Universal
+
+
+%asterisk_sounds_dir %_datadir/asterisk/sounds
+
+#
+# -l code		ISO 639-1/-3 language code
+# -L name		Descriptive language name (no U+0020 spaces allowed)
+# -f code		Per-format extension
+# -F name		Descriptive format text
+#
+%asterisk_snd_generic(l:f:L:F:) %{expand: \
+%%package %{-l*}-%{-f*} \
+Summary:	Asterisk PBX sound files - %{-L*}, %{-F*} \
+Group:		Productivity/Telephony/Servers \
+\
+%%description %{-l*}-%{-f*} \
+Asterisk includes a set of standard sound files in various formats. \
+This package contains the core part of that collection in \
+%{-L*} in %{-F*} coding. \
+\
+%%files %{-l*}-%{-f*} -f asterisk-sounds-%{-l*}-%{-f*}.files \
+%%defattr(-,root,root) \
+}
+
+%asterisk_snd_alaw(l:L:)    %{expand:%%asterisk_snd_generic %{-l:-l %{-l*}} %{-L:-L %{-L*}} -f alaw    -F 8 kHz A-law}
+%asterisk_snd_g722(l:L:)    %{expand:%%asterisk_snd_generic %{-l:-l %{-l*}} %{-L:-L %{-L*}} -f g722    -F G.722}
+%asterisk_snd_g729(l:L:)    %{expand:%%asterisk_snd_generic %{-l:-l %{-l*}} %{-L:-L %{-L*}} -f g729    -F G.729}
+%asterisk_snd_gsm(l:L:)     %{expand:%%asterisk_snd_generic %{-l:-l %{-l*}} %{-L:-L %{-L*}} -f gsm     -F GSM}
+%asterisk_snd_siren7(l:L:)  %{expand:%%asterisk_snd_generic %{-l:-l %{-l*}} %{-L:-L %{-L*}} -f siren7  -F Siren7}
+%asterisk_snd_siren14(l:L:) %{expand:%%asterisk_snd_generic %{-l:-l %{-l*}} %{-L:-L %{-L*}} -f siren14 -F Siren14}
+%asterisk_snd_sln16(l:L:)   %{expand:%%asterisk_snd_generic %{-l:-l %{-l*}} %{-L:-L %{-L*}} -f sln16   -F 16 kHz LPCM}
+%asterisk_snd_ulaw(l:L:)    %{expand:%%asterisk_snd_generic %{-l:-l %{-l*}} %{-L:-L %{-L*}} -f ulaw    -F 8 kHz µ-law}
+%asterisk_snd_wav(l:L:)     %{expand:%%asterisk_snd_generic %{-l:-l %{-l*}} %{-L:-L %{-L*}} -f wav     -F 8 kHz LPCM}
+
+%asterisk_lng_en(f:)    %{expand:%%asterisk_snd_%{-f*} -l en    -L English (US)}
+%asterisk_lng_en_AU(f:) %{expand:%%asterisk_snd_%{-f*} -l en_AU -L English (Australian)}
+%asterisk_lng_en_GB(f:) %{expand:%%asterisk_snd_%{-f*} -l en_GB -L English (British)}
+%asterisk_lng_en_NZ(f:) %{expand:%%asterisk_snd_%{-f*} -l en_NZ -L English (New Zealand)}
+%asterisk_lng_es(f:)    %{expand:%%asterisk_snd_%{-f*} -l es    -L Spanish}
+%asterisk_lng_fr(f:)    %{expand:%%asterisk_snd_%{-f*} -l fr    -L French}
+%asterisk_lng_it(f:)    %{expand:%%asterisk_snd_%{-f*} -l it    -L Italian}
+%asterisk_lng_ja(f:)    %{expand:%%asterisk_snd_%{-f*} -l ja    -L Japanese}
+%asterisk_lng_ru(f:)    %{expand:%%asterisk_snd_%{-f*} -l ru    -L Russian}
+%asterisk_lng_sv(f:)    %{expand:%%asterisk_snd_%{-f*} -l sv    -L Swedish}
+
+%asterisk_sound_package(Z) %{expand:%(
+	for i in %*; do
+		lang="${i%%%%-*}"
+		fmt="${i##*-}"
+		echo "%%asterisk_lng_$lang -f $fmt"
+	done
+)}
+
+%asterisk_collect_sndfiles(Z) \
+>"%_builddir/asterisk-sounds-xallpkg.files"; \
+for pkg in %*; do \
+	lang="${pkg%%%%-*}"; \
+	ext="${pkg##*-}"; \
+	pushd "%buildroot/"; \
+	find "./%asterisk_sounds_dir/$lang" -type f -iname "*.$ext" >"%_builddir/asterisk-sounds-xthispkg.files"; \
+	cat "%_builddir/asterisk-sounds-xthispkg.files" >>"%_builddir/asterisk-sounds-xallpkg.files"; \
+	perl -pe 's{^\./+}{%%lang('$lang') /}g' <"%_builddir/asterisk-sounds-xthispkg.files" >"%_builddir/asterisk-sounds-$pkg.files"; \
+	perl -pe 's{^\./*(/.*)/.+$}{%%lang('$lang') %%dir $1}g;' <"%_builddir/asterisk-sounds-xthispkg.files" | sort -u >>"%_builddir/asterisk-sounds-$pkg.files"; \
+	echo "%%lang($lang) %%dir %_datadir/asterisk" >>"%_builddir/asterisk-sounds-$pkg.files"; \
+	echo "%%lang($lang) %%dir %asterisk_sounds_dir" >>"%_builddir/asterisk-sounds-$pkg.files"; \
+	echo "%%lang($lang) %%dir %asterisk_sounds_dir/$lang" >>"%_builddir/asterisk-sounds-$pkg.files"; \
+	popd; \
+done; \
+sort "%_builddir/asterisk-sounds-xallpkg.files" >"%_builddir/asterisk-sounds-xallpkg-sorted.files"; \
+pushd "%buildroot"; \
+find "./%asterisk_sounds_dir" -type f | sort >"%_builddir/asterisk-sounds-xallraw-sorted.files"; \
+popd; \
+comm -23 "%_builddir/asterisk-sounds-xallraw-sorted.files" \\\
+	"%_builddir/asterisk-sounds-xallpkg-sorted.files" \\\
+	>"%_builddir/asterisk-sounds-xrest1.files"; \
+perl -ne 's{^\./*(/.*)/.+$}{%%dir $1}g;' \\\
+	<"%_builddir/asterisk-sounds-xrest1.files" \\\
+	>"%_builddir/asterisk-sounds-xrest2.dirs"; \
+perl -pe 's{^\./+}{/}g;' <"%_builddir/asterisk-sounds-xrest1.files" | \\\
+	sort -u >"%_builddir/asterisk-sounds-xrest2.files"; \
+cat "%_builddir/asterisk-sounds-xrest2".{files,dirs} \\\
+	>>"%_builddir/asterisk-sounds-xrest.files";

@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:28:19 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Oct  4 09:50:46 UTC 2014 - dimstar@opensuse.org
+
+- Add gnome-gmail-notifier-automake.patch: Fix build with
+  automake 1.14.
+
+-------------------------------------------------------------------
+Fri Mar  1 14:06:26 UTC 2013 - dimstar@opensuse.org
+
+- Port to GStreamer 1.0:
+  + Add gnome-gmail-notifier-gstreamer-1.0.patch: Actual port.
+  + Add gnome-common BuildRequires and call to autogen.sh and as
+    above patch touches the build system.
+  + Replace gstreamer-0_10-plugins-good, gstreamer-0_10-utils and
+    pkgconfig(gstreamer-0.10) BuildRequires with gstreamer-utils,
+    gstreamer-plugins-good and pkgconfig(gstreamer-1.0).
+
+-------------------------------------------------------------------
+Mon Feb 13 10:47:05 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Thu Dec  1 23:32:11 UTC 2011 - dimstar@opensuse.org
+
+- Add gnome-gmail-notifier-glib-2.31.patch: Fix build with glib
+  2.31.
+
+-------------------------------------------------------------------
+Thu May 19 19:30:11 UTC 2011 - dimstar@opensuse.org
+
+- Add gnome-gmail-notifier-libnotify-0.7.patch: fix build with
+  libnotify 0.7.
+
+-------------------------------------------------------------------
+Sat Feb 12 18:22:18 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+
+-------------------------------------------------------------------
+Wed Dec  8 13:00:24 CET 2010 - vuntz@opensuse.org
+
+- Add explicit pkgconfig(libxml-2.0) BuildRequires.
+- Fix license to be GPLv2+ (instead of GPLv2).
+- Split lang subpackage.
+- Improve description.
+
+-------------------------------------------------------------------
+Sun Oct 31 04:49:57 UTC 2010 - nmo.marques@gmail.com
+
+- Initial packaging from sources (version 0.10.1).
+

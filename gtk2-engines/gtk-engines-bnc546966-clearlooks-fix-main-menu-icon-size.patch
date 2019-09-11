@@ -1,0 +1,18 @@
+diff --git a/themes/Clearlooks/gtk-2.0/gtkrc b/themes/Clearlooks/gtk-2.0/gtkrc
+index 7c41554..7750557 100644
+--- a/themes/Clearlooks/gtk-2.0/gtkrc
++++ b/themes/Clearlooks/gtk-2.0/gtkrc
+@@ -422,3 +422,13 @@ widget_class "*<EelEditableLabel>" style "fg_is_text_color_workaround"
+ 
+ # See the documentation of the style.
+ widget_class "EShellWindow.GtkVBox.BonoboDock.BonoboDockBand.BonoboDockItem*" style "evo_new_button_workaround"
++
++style "theme-panel-button" {
++    xthickness = 0
++    ythickness = 0
++}
++
++widget "*slab-main-menu-panel-button-bottom*" style "theme-panel-button"
++widget "*slab-main-menu-panel-button-top*" style "theme-panel-button"
++widget "*slab-main-menu-panel-button-left*" style "theme-panel-button"
++widget "*slab-main-menu-panel-button-right*" style "theme-panel-button"

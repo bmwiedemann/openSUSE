@@ -1,0 +1,52 @@
+Index: hydrogen-1.0.0-beta1/src/cli/main.cpp
+===================================================================
+--- hydrogen-1.0.0-beta1.orig/src/cli/main.cpp	2019-04-07 14:12:50.730941725 +0200
++++ hydrogen-1.0.0-beta1/src/cli/main.cpp	2019-04-07 14:13:01.875398756 +0200
+@@ -432,7 +432,7 @@ int main(int argc, char *argv[])
+ /* Show some information */
+ void showInfo()
+ {
+-	cout << "\nHydrogen " + get_version() + " [" + __DATE__ + "]  [http://www.hydrogen-music.org]" << endl;
++	cout << "\nHydrogen " + get_version() + " [" +   + "]  [http://www.hydrogen-music.org]" << endl;
+ 	cout << "Copyright 2002-2008 Alessandro Cominu" << endl;
+ 
+ 	if ( Object::count_active() ) {
+Index: hydrogen-1.0.0-beta1/src/gui/src/AboutDialog.cpp
+===================================================================
+--- hydrogen-1.0.0-beta1.orig/src/gui/src/AboutDialog.cpp	2019-04-07 14:12:50.730941725 +0200
++++ hydrogen-1.0.0-beta1/src/gui/src/AboutDialog.cpp	2019-04-07 14:13:01.875398756 +0200
+@@ -42,7 +42,7 @@ AboutDialog::AboutDialog(QWidget* parent
+ 	move( 240, 100 );
+ 
+ 	QString about;
+-	about += QString("<center><b>Hydrogen Drum Machine %1 [%2] </b><br>").arg( H2Core::get_version().c_str() ).arg( __DATE__ );
++	about += QString("<center><b>Hydrogen Drum Machine %1 [%2] </b><br>").arg( H2Core::get_version().c_str() ).arg( NULL );
+ 	about += tr( "<b>Website</b><br>" );
+ 	about += "http://www.hydrogen-music.org<br><br>";
+ 	about += tr( "<b>Project page</b><br>");
+Index: hydrogen-1.0.0-beta1/src/gui/src/SplashScreen.cpp
+===================================================================
+--- hydrogen-1.0.0-beta1.orig/src/gui/src/SplashScreen.cpp	2019-04-07 14:12:50.730941725 +0200
++++ hydrogen-1.0.0-beta1/src/gui/src/SplashScreen.cpp	2019-04-07 14:13:01.875398756 +0200
+@@ -51,7 +51,7 @@ SplashScreen::SplashScreen()
+ 	p.setFont( font );
+ 	p.setPen( QColor( 20, 20, 20 ) );
+ 
+-	QString version = QString( "v%1 (%2)" ).arg( H2Core::get_version().c_str() ).arg( __DATE__ );
++	QString version = QString( "v%1 (%2)" ).arg( H2Core::get_version().c_str() ).arg( NULL );
+ 	p.drawText( 5, 5, width - 10, 40, Qt::AlignRight | Qt::AlignTop, version );
+ 
+ 	p.end();
+Index: hydrogen-1.0.0-beta1/src/gui/src/main.cpp
+===================================================================
+--- hydrogen-1.0.0-beta1.orig/src/gui/src/main.cpp	2019-04-07 14:12:50.730941725 +0200
++++ hydrogen-1.0.0-beta1/src/gui/src/main.cpp	2019-04-07 14:18:14.288222255 +0200
+@@ -149,7 +149,7 @@ int main(int argc, char *argv[])
+ 		
+ 		QCommandLineParser parser;
+ 		
+-		QString aboutText = QString( "\nHydrogen " ) + QString::fromStdString( H2Core::get_version() )  + QString( " [" ) + QString::fromStdString( __DATE__ ) + QString( "]  [http://www.hydrogen-music.org]" ) + 
++		QString aboutText = QString( "\nHydrogen " ) + QString::fromStdString( H2Core::get_version() )  + QString( " [" ) + QString::fromStdString( "" ) + QString( "]  [http://www.hydrogen-music.org]" ) +
+ 		QString( "\nCopyright 2002-2008 Alessandro Cominu\nCopyright 2008-2018 The hydrogen development team" ) + 
+ 		QString( "\nHydrogen comes with ABSOLUTELY NO WARRANTY\nThis is free software, and you are welcome to redistribute it under certain conditions. See the file COPYING for details.\n" );
+ 		

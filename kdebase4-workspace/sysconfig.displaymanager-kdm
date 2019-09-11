@@ -1,0 +1,21 @@
+## Path:	Desktop/Display manager
+## Description: settings to generate a proper displaymanager config
+## Config:      kdm
+
+## Type:        string
+## Default:
+#
+# Defines extra Server Arguments given to the kdm display manager when
+# starting a local display. Useful to override e.g. the -dpi setting.
+#
+DISPLAYMANAGER_KDM_LOCALARGS=""
+
+## Type:	yesno
+## Default:	yes
+#
+# Allow local access of the user root to your display manager. Note
+# that root can never login if DISPLAYMANAGER_SHUTDOWN is "auto" and
+# System/Security/Permissions/PERMISSION_SECURITY is "paranoid".
+# This settings currently works only with KDM.
+#
+DISPLAYMANAGER_ROOT_LOGIN_LOCAL="yes"

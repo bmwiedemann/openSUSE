@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Mon Apr 29 20:58:26 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable python2 builds.
+  This requires xarray, which requires python3 now.
+
+-------------------------------------------------------------------
+Mon Apr 22 19:26:50 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.7.0
+  + New features:
+    * Simplified Panel-based dashboard using new Param features; now only 48 lines with fewer new concepts (#707)
+    * Added pandas ExtensionArray and Dask support for storing homogeneous ragged arrays (#687)
+    * Added SpatialPointsFrame and updated census, osm-1billion, and osm examples to use it (#702, #706, #708)
+    * Expanded 8_Geography.ipynb to document other geo-related functions
+    * Added Dask support for trimesh rendering, though computing the mesh initially still requires vertices and simplicies to fit into memory (#696)
+    * Add zero-copy rendering of row-oriented line coordinates, using a new axis argument (#694)
+  + Bugfixes and compatibility:
+    * Added lnglat_to_meters to geo module; new code should import it from there (#708)
+
+-------------------------------------------------------------------
+Wed Feb 13 18:34:28 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.6.9
+  + New features:
+    * Replaced outdated 536-line Bokeh dashboard.py with 71-line Panel+HoloViews dashboard.ipynb (#676)
+    * Allow aggregating xarray objects (in addition to Pandas and Dask DataFrames) (#675)
+    * Create WMTS tiles from Datashader data (#636)
+    * Added various geographic utility functions (ndvi, slope, aspect, hillshade, mean, bump map, Perlin noise) (#661)
+    * Made OpenSky data public (#691)
+  + Bugfixes and compatibility:
+    * Fix array bounds error on line glyph (#683)
+    * Fixed the span argument to tf.shade (#680)
+    * Fixed composite.add (for use in spreading) to clip colors rather than overflow (#689)
+    * Fixed gerrymandering shape file (#688)
+    * Updated to match Bokeh (#656), Dask (#681, #667), Pandas/Numpy (#697)
+- Remove upstream included python-datashader-dask-api-change-fix.patch
+
+-------------------------------------------------------------------
+Thu Nov 22 12:52:29 UTC 2018 - Enno Gotthold <egotthold@suse.com>
+
+- Added patch to fix broken test_dask tests.
+  * python-datashader-dask-api-change-fix.patch
+  Upstream URL: https://github.com/pyviz/datashader/pull/667
+
+-------------------------------------------------------------------
+Fri Oct 26 19:49:29 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.6.8
+  + New features:
+    * Added Strange Attractors example (#632)
+    * Major speedup: optimized dask datashape detection (#634)
+  + Bugfixes and compatibility:
+    * Silenced inappropriate warnings (#631)
+    * Fixed various other bugs, including #644
+    * Added handling for zero data and zero range (#612, #648)
+- Switch to pypi sources
+
+-------------------------------------------------------------------
+Mon Aug 13 15:53:23 UTC 2018 - toddrme2178@gmail.com
+
+- Fix dependencies.
+
+-------------------------------------------------------------------
+Fri Jul 20 15:09:30 UTC 2018 - mcepl@suse.com
+
+- Rebuilt with the new numba
+
+-------------------------------------------------------------------
+Thu Jul 19 13:26:46 UTC 2018 - mcepl@suse.com
+
+- Update to 0.6.7:
+    - Supports dask >= 0.18.
+    - InteractiveImage is now deprecated; please use the Datashader
+      support in HoloViews instead.
+    - Updated installation and example instructions to use new
+      datashader command.
+    - Ensured transparent (not black) image is returned when there is no
+      data to plot (thanks to Nick Xie)
+    - Simplified getting-started example (thanks to David Jones)
+
+-------------------------------------------------------------------
+Thu Jun  7 20:30:20 UTC 2018 - jengelh@inai.de
+
+- Fix some grammar issues.
+
+-------------------------------------------------------------------
+Thu May  3 14:07:08 UTC 2018 - toddrme2178@gmail.com
+
+- Use %license tag
+
+-------------------------------------------------------------------
+Thu Mar  1 18:28:58 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.6.5
+  + New features:
+    - Trimesh support: Rendering of irregular triangular meshes
+      using Canvas.trimesh() (see user guide) (#525,#552)
+    - Added a new website at datashader.org, with new Getting
+      Started pages and an extensive User Guide, with about 50%
+      new material not previously in example notebooks. Built
+      entirely from Jupyter notebooks, which can be run in the
+      examples/ directory. Website is now complete except for
+      sections on points (see the nyc_taxi example in the
+      meantime).
+    - Canvas.raster() now accepts xarray Dataset types, not just
+      DataArrays, with the specific DataArray selectable from the
+      Dataset using the column= argument of a supplied
+      aggregation function.
+    - tf.Images() now displays anything with an HTML
+      representation, to allow laying out Pandas dataframes
+      alongside datashader output.
+  + Bugfixes and compatibility:
+    - Changed Raster API to match other glyph types:
+      > Now accepts a reduction function via an agg= argument
+        like Canvas.line(), Canvas.points(), etc. The previous
+        downsample_method is still accepted for this release, but
+        is now deprecated.
+      > upsample_method is now interpolate, accepting linear=True
+        or linear=False; the previous spelling is now deprecated.
+      > The layer= argument previously accepted a 1-based integer
+        index, which was confusing given the standard Python
+        0-based indexing elsewhere. Changed to accept an xarray
+        coordinate, which can be a 1-based index if that's what is
+        defined on the array, but also works with arbitrary
+        floating-point coordinates (e.g. for a depth parameter in
+        an image stack).
+      > Now auto-ranges in x and y when not given explicit ranges,
+        instead of raising an error.
+    - Fixed various bugs, including one generating incorrect output
+      in Canvas.raster(agg='mode')
+
+-------------------------------------------------------------------
+Fri Oct 20 16:14:29 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

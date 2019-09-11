@@ -1,0 +1,16 @@
+Index: discount-2.2.4/Makefile.in
+===================================================================
+--- discount-2.2.4.orig/Makefile.in
++++ discount-2.2.4/Makefile.in
+@@ -125,9 +125,9 @@ test:	$(PGMS) $(TESTFRAMEWORK) verify
+ branch: tools/branch.c config.h
+ 	$(CC) -o branch tools/branch.c
+ cols:   tools/cols.c config.h
+-	$(CC) -o cols tools/cols.c
++	$(CC) $(CFLAGS) -o cols tools/cols.c
+ echo:   tools/echo.c config.h
+-	$(CC) -o echo tools/echo.c
++	$(CC) $(CFLAGS) -o echo tools/echo.c
+ 	
+ clean:
+ 	rm -f $(PGMS) $(TESTFRAMEWORK) $(SAMPLE_PGMS) *.o

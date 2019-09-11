@@ -1,0 +1,13 @@
+Index: src/extra/gd/gd.h
+===================================================================
+--- src/extra/gd/gd.h.orig	2002-12-05 21:09:11.000000000 +0100
++++ src/extra/gd/gd.h	2009-12-21 19:28:54.000000000 +0100
+@@ -20,6 +20,8 @@ extern "C" {
+  * fitness for a particular purpose, with respect to this code and accompanying
+  * documentation. */
+ 
++#include <stdlib.h>
++
+ /* stdio is needed for file I/O. */
+ #include <stdio.h>
+ #include <gd_io.h>

@@ -1,0 +1,34 @@
+Index: ptlib-2.10.10/configure
+===================================================================
+--- ptlib-2.10.10.orig/configure
++++ ptlib-2.10.10/configure
+@@ -4670,6 +4670,12 @@ rm -f core conftest.err conftest.$ac_obj
+ 	MACHTYPE=s390
+ 	;;
+ 
++   aarch64)
++	MACHTYPE=aarch64
++	P_64BIT=1
++        LIB64=1
++	;;
++
+    * )
+ 	MACHTYPE=$target_cpu
+ 	{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: \"CPU $target_cpu not recognized - proceed with caution!\"" >&5
+Index: ptlib-2.10.10/configure.ac
+===================================================================
+--- ptlib-2.10.10.orig/configure.ac
++++ ptlib-2.10.10/configure.ac
+@@ -345,6 +345,12 @@ case "$target_cpu" in
+ 	MACHTYPE=s390
+ 	;;
+ 
++   aarch64)
++	MACHTYPE=aarch64
++	P_64BIT=1
++        LIB64=1
++	;;
++
+    * )
+ 	MACHTYPE=$target_cpu
+ 	AC_MSG_WARN("CPU $target_cpu not recognized - proceed with caution!")

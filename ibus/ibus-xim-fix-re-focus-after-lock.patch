@@ -1,0 +1,16 @@
+---
+ client/x11/main.c |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- a/client/x11/main.c
++++ b/client/x11/main.c
+@@ -421,6 +421,9 @@ xim_set_ic_focus (XIMS xims, IMChangeFoc
+                                            GINT_TO_POINTER ((gint) call_data->icid));
+     g_return_val_if_fail (x11ic != NULL, 0);
+ 
++    /* make sure that focus has been already out */
++    ibus_input_context_focus_out (x11ic->context);
++
+     ibus_input_context_focus_in (x11ic->context);
+     _xim_set_cursor_location (x11ic);
+ 

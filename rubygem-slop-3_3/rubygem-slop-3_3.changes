@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Wed Feb 13 21:10:25 UTC 2013 - coolo@suse.com
+
+- updated to version 3.3.3
+  * Ensure autocreate arguments are not created as options (#77)
+  * Ensure options are not swallowed when using short options with argument
+    included (#74)
+
+-------------------------------------------------------------------
+Thu Jun 28 11:59:13 UTC 2012 - coolo@suse.com
+
+- initial split for 3.3
+

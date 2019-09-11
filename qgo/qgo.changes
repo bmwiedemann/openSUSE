@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Tue Jun 21 15:54:40 UTC 2016 - i@marguerite.su
+
+- add patch: qgo-2.0.0-gcc6.patch
+  * fix boo#985098
+  * fix gcc6 narrowing conversion from int to char inside {}
+  * fix gcc6 cannot convert bool to GameData in return
+
+-------------------------------------------------------------------
+Sat Mar 14 00:06:02 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.0.0
+  * No changelog available
+- Remove obsolete patchs
+  * qgo-1.5.4-gcc4.3.diff
+  * qgo-1.5.4-desktop.diff
+- Move to qt4; follow upstream changes
+  * Replace qt3-devel require with pkgconfig(QtCore)
+  * Remove qt3 require
+- Update project Url
+- Use download Url as source
+- TODO and COPYING don't exit anymore; do not perform %doc on them
+- README has been renamed to README.md
+- Copy AUTHORS and COPYING into package doc directory
+
+-------------------------------------------------------------------
+Tue Mar 27 14:46:20 UTC 2012 - jengelh@medozas.de
+
+- Build in parallel with %_smp_mflags
+- Strip redundant sections/tags from specfile
+
+-------------------------------------------------------------------
+Fri Mar  5 12:33:29 UTC 2010 - coolo@novell.com
+
+- fix build with gcc 4.5
+
+-------------------------------------------------------------------
+Tue Mar 10 18:57:32 CET 2009 - anicka@suse.cz
+
+- install correct desktop file (bnc#483231)
+
+-------------------------------------------------------------------
+Fri Nov 16 11:00:28 CET 2007 - anicka@suse.cz
+
+- fix deprecated headers 
+
+-------------------------------------------------------------------
+Mon Jun 18 23:33:46 CEST 2007 - ltinkl@suse.cz
+
+- update to 1.5.4:
+    * fixed : mark issue with teaching games
+    * added : blind go
+    * added : 2 new translations (latin and simplified chinese)
+    * changed : added 'SGF' (uppercase) as file suffix
+
+-------------------------------------------------------------------
+Tue Jan 16 11:36:52 CET 2007 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Thu Jan 11 14:33:29 CET 2007 - ltinkl@suse.cz
+
+- update to 1.5.3
+  * fixed : 9x9 grid display
+  * changed : 'remember last dir' set by default
+  * changed : made ugly 2D stones available
+  * added : IGS 'nmatch' range now in the preferences
+
+-------------------------------------------------------------------
+Mon Oct  9 13:19:35 CEST 2006 - ltinkl@suse.cz
+
+- update to 1.5.2
+
+-------------------------------------------------------------------
+Sat Sep  9 23:36:46 CEST 2006 - anicka@suse.de
+
+- use proper lib (/usr/lib/qt3/lib64 on biarch) 
+
+-------------------------------------------------------------------
+Wed Aug 30 14:21:08 CEST 2006 - ltinkl@suse.cz
+
+- initial release (1.5.1)
+

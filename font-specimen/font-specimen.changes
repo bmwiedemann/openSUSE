@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Wed May  8 16:37:22 UTC 2019 - olaf@aepfle.de
+
+- Install pkgconfig into libdir instead of datadir
+
+-------------------------------------------------------------------
+Mon Dec  4 18:35:39 UTC 2017 - crrodriguez@opensuse.org
+
+- Remove unused requires in -devel package, including wrong
+  freetype-devel, if it was required, it would be freetype2-devel.
+
+-------------------------------------------------------------------
+Mon Feb  2 14:30:27 UTC 2015 - pgajdos@suse.com
+
+- update to 20150202
+  * do not treat unsuccessful LcdFilter setting
+    as a fatal error
+
+-------------------------------------------------------------------
+Tue Dec  2 16:03:03 UTC 2014 - pgajdos@suse.com
+
+- update to 20141202
+  * fix bgr layout
+  * fix vertical layouts
+  * add *.pc file
+
+-------------------------------------------------------------------
+Mon Dec  1 18:08:30 UTC 2014 - pgajdos@suse.com
+
+- update to 20141201
+  * correct color rendering
+
+-------------------------------------------------------------------
+Sat Nov 29 18:16:53 UTC 2014 - pgajdos@suse.com
+
+- update to 20141129
+  * half way to correct color rendering
+  * fix error handling
+  * other minor fixes
+
+-------------------------------------------------------------------
+Thu Nov 13 11:41:58 UTC 2014 - pgajdos@suse.com
+
+- update to 20141113
+  * monochrome fonts: black absorbs gray color 
+    on the pixel, not vice versa
+
+-------------------------------------------------------------------
+Fri Nov  7 09:23:51 UTC 2014 - pgajdos@suse.com
+
+- initial version 20140711
+

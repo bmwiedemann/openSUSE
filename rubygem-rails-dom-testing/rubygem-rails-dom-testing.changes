@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Tue May 23 10:13:43 UTC 2017 - coolo@suse.com
+
+- updated to version 2.0.3
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Dec 28 05:37:21 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.2
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Jun  2 04:32:36 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.1
+  no changelog found
+
+-------------------------------------------------------------------
+Mon May  9 04:45:08 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.0
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Aug 15 04:32:36 UTC 2015 - coolo@suse.com
+
+- updated to version 1.0.7
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Mar 18 15:38:28 UTC 2015 - coolo@suse.com
+
+- updated to version 1.0.6
+  ## Deprecation warnings when upgrading to Rails 4.2:
+  
+  Nokogiri is slightly more strict about the format of css selectors than the previous implementation. That's why you have warnings like:
+  
+  ```
+  DEPRECATION WARNING: The assertion was not run because of an invalid css selector.
+  ```
+  
+  Check the 4.2 release notes [section on `assert_select`](http://edgeguides.rubyonrails.org/4_2_release_notes.html#assert-select) for help.
+ 
+-------------------------------------------------------------------
+Wed Jan 28 13:09:10 UTC 2015 - adrian@suse.de
+
+- initial package
+

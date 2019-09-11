@@ -1,0 +1,11 @@
+--- src/cddb.c
++++ src/cddb.c
+@@ -1052,7 +1052,7 @@
+     }
+ 	   
+     query->query_matches = 0;
+-    while(!cddb_read_line(sock, inbuffer, 256)) {
++    while(query->query_matches < MAX_INEXACT_MATCHES && !cddb_read_line(sock, inbuffer, 256)) {
+       slashed = 0;
+       if(strchr(inbuffer, '/') != NULL && parse_disc_artist) {
+ 	index = 0;

@@ -1,0 +1,20 @@
+--- MAKEDEV	1999-06-10 11:15:11.000000000 +0200
++++ MAKEDEV	2003-08-14 11:34:08.000000000 +0200
+@@ -973,7 +973,7 @@
+ 	dac960)
+ 		[ -d rd ] || {
+ 			mkdir rd
+-			chown root.root rd
++			chown root:root rd
+ 			chmod 755 rd
+ 		}
+ 		for ctr in 0 1 2 3 4 5 6 7
+@@ -996,7 +996,7 @@
+ 	ida)
+ 		[ -d ida ] || {
+ 			mkdir ida
+-			chown root.root ida
++			chown root:root ida
+ 			chmod 755 ida
+ 		}
+ 		for ctr in 0 1 2 # 3 4 5 6 7

@@ -1,0 +1,16 @@
+Choose first running interface, rather than first "up" interface (Redhat #1403025).
+Submitted by:  Robert Scheck <robert@fedoraproject.org>
+
+Index: iftop-1.0pre4/options.c
+===================================================================
+--- iftop-1.0pre4.orig/options.c
++++ iftop-1.0pre4/options.c
+@@ -103,7 +103,7 @@ static char *get_first_interface(void) {
+     while(nameindex[j].if_index != 0) {
+         if (strcmp(nameindex[j].if_name, "lo") != 0 && !is_bad_interface_name(nameindex[j].if_name)) {
+             strncpy(ifr.ifr_name, nameindex[j].if_name, sizeof(ifr.ifr_name));
+-            if ((s == -1) || (ioctl(s, SIOCGIFFLAGS, &ifr) == -1) || (ifr.ifr_flags & IFF_UP)) {
++            if ((s == -1) || (ioctl(s, SIOCGIFFLAGS, &ifr) == -1) || (ifr.ifr_flags & IFF_RUNNING)) {
+                 i = xstrdup(nameindex[j].if_name);
+                 break;
+             }

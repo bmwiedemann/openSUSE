@@ -1,0 +1,26 @@
+From: toddrme2178@gmail.com
+Date: 2014-09-09 04:45:00 +0000
+Subject: Remove windows-specific function
+Upstream: openSUSE Fix
+References: 
+    http://lists.opensuse.org/opensuse-packaging/2014-09/msg00004.html
+    http://lists.opensuse.org/opensuse-packaging/2014-09/msg00005.html
+
+__declspec(thread) is a windows-specific function that is causing
+spurious compiler warnings.  These warnings can be safely ignored,
+but are being falsely flagged as serious problems that cause the
+build to fail.  Since this is windows-specific, it can be 
+safely removed.
+
+
+--- a/numpy/core/setup_common.py
++++ b/numpy/core/setup_common.py
+@@ -168,7 +168,7 @@ OPTIONAL_FUNCTION_ATTRIBUTES = [('__attr
+                                 ]
+ 
+ # variable attributes tested via "int %s a" % attribute
+-OPTIONAL_VARIABLE_ATTRIBUTES = ["__thread", "__declspec(thread)"]
++OPTIONAL_VARIABLE_ATTRIBUTES = ["__thread"]
+ 
+ # Subset of OPTIONAL_STDFUNCS which may already have HAVE_* defined by Python.h
+ OPTIONAL_STDFUNCS_MAYBE = [

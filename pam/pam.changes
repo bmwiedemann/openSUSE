@@ -1,0 +1,1572 @@
+-------------------------------------------------------------------
+Thu May  2 23:55:30 CEST 2019 - sbrabec@suse.com
+
+- Add virtual symbols for login.defs compatibility (bsc#1121197).
+- Add login.defs safety check pam-login_defs-check.sh
+  (bsc#1121197).
+
+-------------------------------------------------------------------
+Thu Nov 15 15:41:08 UTC 2018 - josef.moellers@suse.com
+
+- When comparing an incoming IP address with an entry in
+  access.conf that only specified a single host (ie no netmask),
+  the incoming IP address was used rather than the IP address from
+  access.conf, effectively comparing the incoming address with
+  itself.  (Also fixed a small typo while I was at it)
+  {bsc#1115640, use-correct-IP-address.patch, CVE-2018-17953]
+
+-------------------------------------------------------------------
+Mon Oct 22 07:42:19 UTC 2018 - josef.moellers@suse.com
+
+- Upgrade to 1.3.1
+  * pam_motd: add support for a motd.d directory
+  * pam_umask: Fix documentation to align with order of loading umask
+  * pam_get_user.3: Fix missing word in documentation
+  * pam_tally2 --reset: avoid creating a missing tallylog file
+  * pam_mkhomedir: Allow creating parent of homedir under /
+  * access.conf.5: Add note about spaces around ':'
+  * pam.8: Workaround formatting problem
+  * pam_unix: Check return value of malloc used for setcred data
+  * pam_cracklib: Drop unused prompt macros
+  * pam_tty_audit: Support matching users by uid range
+  * pam_access: support parsing files in /etc/security/access.d/*.conf
+  * pam_localuser: Correct documentation
+  * pam_issue: Fix no prompting in parse escape codes mode
+  * Unification and cleanup of syslog log levels
+  Also: removed nproc limit, referred to systemd instead.
+  Patch5 (pam-fix-config-order-in-manpage.patch) not needed any more.
+  [bsc#1112508, pam-fix-config-order-in-manpage.patch]
+
+-------------------------------------------------------------------
+Fri Aug 24 09:35:18 UTC 2018 - psimons@suse.com
+
+- Add libdb as build-time dependency to enable pam_userdb module.
+  This module is useful for implementing virtual user support for
+  vsftpd and possibly other daemons, too. [bsc#929711, fate#322538]
+
+-------------------------------------------------------------------
+Fri Jul 13 15:48:58 CEST 2018 - sbrabec@suse.com
+
+- Install empty directory /etc/security/namespace.d for
+  pam_namespace.so iscript.
+
+-------------------------------------------------------------------
+Thu May  3 07:08:50 UTC 2018 - josef.moellers@suse.com
+
+- pam_umask.8 needed to be patched as well.
+  [bsc#1089884, pam-fix-config-order-in-manpage.patch]
+
+-------------------------------------------------------------------
+Wed May  2 12:32:40 UTC 2018 - josef.moellers@suse.com
+
+- Changed order of configuration files to reflect actual code.
+  [bsc#1089884, pam-fix-config-order-in-manpage.patch]
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:42 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Thu Oct 12 08:55:29 UTC 2017 - schwab@suse.de
+
+- Prerequire group(shadow), user(root)
+
+-------------------------------------------------------------------
+Fri Jan 27 10:35:29 UTC 2017 - josef.moellers@suse.com
+
+- Allow symbolic hostnames in access.conf file.
+  [pam-hostnames-in-access_conf.patch, boo#1019866]
+
+-------------------------------------------------------------------
+Thu Dec  8 12:41:05 UTC 2016 - josef.moellers@suse.com
+
+- Increased nproc limits for non-privileged users to 4069/16384.
+  Removed limits for "root".
+  [pam-limit-nproc.patch, bsc#1012494, bsc#1013706]
+
+-------------------------------------------------------------------
+Sun Jul 31 11:08:19 UTC 2016 - develop7@develop7.info
+
+- pam-limit-nproc.patch: increased process limit to help 
+  Chrome/Chromuim users with really lots of tabs. New limit gets 
+  closer to UserTasksMax parameter in logind.conf
+
+-------------------------------------------------------------------
+Thu Jul 28 14:29:09 CEST 2016 - kukuk@suse.de
+
+- Add doc directory to filelist.
+
+-------------------------------------------------------------------
+Mon May  2 10:44:38 CEST 2016 - kukuk@suse.de
+
+- Remove obsolete README.pam_tally [bsc#977973]
+
+-------------------------------------------------------------------
+Thu Apr 28 13:51:59 CEST 2016 - kukuk@suse.de
+
+- Update Linux-PAM to version 1.3.0
+- Rediff encryption_method_nis.diff
+- Link pam_unix against libtirpc and external libnsl to enable
+  IPv6 support.
+
+-------------------------------------------------------------------
+Thu Apr 14 14:06:18 CEST 2016 - kukuk@suse.de
+
+- Add /sbin/unix2_chkpwd (moved from pam-modules)
+
+-------------------------------------------------------------------
+Mon Apr 11 15:09:04 CEST 2016 - kukuk@suse.de
+
+- Remove (since accepted upstream):
+  - 0001-Remove-YP-dependencies-from-pam_access-they-were-nev.patch
+  - 0002-Remove-enable-static-modules-option-and-support-from.patch
+  - 0003-fix-nis-checks.patch
+  - 0004-PAM_EXTERN-isn-t-needed-anymore-but-don-t-remove-it-.patch
+  - 0005-Use-TI-RPC-functions-if-we-compile-and-link-against-.patch
+
+-------------------------------------------------------------------
+Fri Apr  1 15:32:37 CEST 2016 - kukuk@suse.de
+
+- Add 0005-Use-TI-RPC-functions-if-we-compile-and-link-against-.patch
+  - Replace IPv4 only functions
+
+-------------------------------------------------------------------
+Fri Apr  1 10:37:58 CEST 2016 - kukuk@suse.de
+
+- Fix typo in common-account.pamd [bnc#959439]
+
+-------------------------------------------------------------------
+Tue Mar 29 14:25:02 CEST 2016 - kukuk@suse.de
+
+- Add 0004-PAM_EXTERN-isn-t-needed-anymore-but-don-t-remove-it-.patch
+  - readd PAM_EXTERN for external PAM modules
+
+-------------------------------------------------------------------
+Wed Mar 23 11:21:16 CET 2016 - kukuk@suse.de
+
+- Add 0001-Remove-YP-dependencies-from-pam_access-they-were-nev.patch
+- Add 0002-Remove-enable-static-modules-option-and-support-from.patch
+- Add 0003-fix-nis-checks.patch
+
+-------------------------------------------------------------------
+Sat Jul 25 16:03:33 UTC 2015 - joschibrauchle@gmx.de
+
+- Add folder /etc/security/limits.d as mentioned in 'man pam_limits'
+
+-------------------------------------------------------------------
+Fri Jun 26 09:39:42 CEST 2015 - kukuk@suse.de
+
+- Update to version 1.2.1
+  - security update for CVE-2015-3238
+
+-------------------------------------------------------------------
+Mon Apr 27 17:14:40 CEST 2015 - kukuk@suse.de
+
+- Update to version 1.2.0
+  - obsoletes Linux-PAM-git-20150109.diff
+
+-------------------------------------------------------------------
+Fri Jan  9 15:37:28 CET 2015 - kukuk@suse.de
+
+- Re-add lost patch encryption_method_nis.diff [bnc#906660]
+
+-------------------------------------------------------------------
+Fri Jan  9 14:53:50 CET 2015 - kukuk@suse.de
+
+- Update to current git:
+  - Linux-PAM-git-20150109.diff replaces Linux-PAM-git-20140127.diff
+  - obsoletes pam_loginuid-log_write_errors.diff
+  - obsoletes pam_xauth-sigpipe.diff
+  - obsoletes bug-870433_pam_timestamp-fix-directory-traversal.patch
+
+-------------------------------------------------------------------
+Fri Jan  9 11:10:45 UTC 2015 - bwiedemann@suse.com
+
+- increase process limit to 1200 to help chromium users with many tabs
+
+-------------------------------------------------------------------
+Tue May  6 14:31:36 UTC 2014 - bwiedemann@suse.com
+
+- limit number of processes to 700 to harden against fork-bombs
+  Add pam-limit-nproc.patch
+
+-------------------------------------------------------------------
+Wed Apr  9 16:02:17 UTC 2014 - ckornacker@suse.com
+
+- Fix CVE-2014-2583: pam_timestamp path injection (bnc#870433)
+  bug-870433_pam_timestamp-fix-directory-traversal.patch
+
+-------------------------------------------------------------------
+Tue Apr  1 15:35:56 UTC 2014 - ckornacker@suse.com
+
+- adding sclp_line0/ttysclp0 to /etc/securetty on s390 (bnc#869664)
+
+-------------------------------------------------------------------
+Mon Jan 27 17:05:11 CET 2014 - kukuk@suse.de
+
+- Add pam_loginuid-log_write_errors.diff: log significant loginuid
+  write errors
+- pam_xauth-sigpipe.diff: avoid potential SIGPIPE when writing to
+  xauth process
+
+-------------------------------------------------------------------
+Mon Jan 27 15:14:34 CET 2014 - kukuk@suse.de
+
+- Update to current git (Linux-PAM-git-20140127.diff), which 
+  obsoletes pam_loginuid-part1.diff, pam_loginuid-part2.diff and
+  Linux-PAM-git-20140109.diff.
+  - Fix gratuitous use of strdup and x_strdup
+  - pam_xauth: log fatal errors preventing xauth process execution
+  - pam_loginuid: cleanup loginuid buffer initialization
+  - libpam_misc: fix an inconsistency in handling memory allocation errors
+  - pam_limits: fix utmp->ut_user handling
+  - pam_mkhomedir: check and create home directory for the same user
+  - pam_limits: detect and ignore stale utmp entries
+- Disable pam_userdb (remove db-devel from build requires)
+
+-------------------------------------------------------------------
+Fri Jan 10 10:56:24 UTC 2014 - kukuk@suse.com
+
+- Add pam_loginuid-part1.diff: Ignore missing /proc/self/loginuid
+- Add pam_loginuid-part2.diff: Workaround to run pam_loginuid inside lxc
+
+-------------------------------------------------------------------
+Thu Jan  9 17:31:27 CET 2014 - kukuk@suse.de
+
+- Update to current git (Linux-PAM-git-20140109.diff, which
+  replaces pam_unix.diff and encryption_method_nis.diff)
+  - pam_access: fix debug level logging
+  - pam_warn: log flags passed to the module
+  - pam_securetty: check return value of fgets
+  - pam_lastlog: fix format string
+  - pam_loginuid: If the correct loginuid is already set, skip writing it
+
+-------------------------------------------------------------------
+Fri Nov 29 20:25:32 UTC 2013 - schwab@linux-m68k.org
+
+- common-session.pamd: add missing newline
+
+-------------------------------------------------------------------
+Thu Nov 28 12:00:09 CET 2013 - kukuk@suse.de
+
+- Remove libtrpc support to solve dependency/build cycles, plain
+  glibc is enough for now.
+
+-------------------------------------------------------------------
+Tue Nov 12 13:08:44 CET 2013 - kukuk@suse.de
+
+- Add encryption_method_nis.diff:
+  - implement pam_unix2 functionality to use another hash for
+    NIS passwords.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:01:35 CET 2013 - kukuk@suse.de
+
+- Add pam_unix.diff:
+  - fix if /etc/login.defs uses DES
+  - ask always for old password if a NIS password will be changed
+
+-------------------------------------------------------------------
+Sat Sep 28 09:26:21 UTC 2013 - mc@suse.com
+
+- fix manpages links (bnc#842872) [fix-man-links.dif]
+
+-------------------------------------------------------------------
+Fri Sep 20 21:42:54 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Explicitly add pam_systemd.so to list of modules in 
+  common-session.pamd (bnc#812462)
+
+-------------------------------------------------------------------
+Fri Sep 20 09:43:38 CEST 2013 - kukuk@suse.de
+
+- Update to official release 1.1.8 (1.1.7 + git-20130916.diff)
+- Remove needless pam_tally-deprecated.diff patch
+
+-------------------------------------------------------------------
+Mon Sep 16 11:54:15 CEST 2013 - kukuk@suse.de
+
+- Replace fix-compiler-warnings.diff with current git snapshot
+  (git-20130916.diff) for pam_unix.so:
+  - fix glibc warnings
+  - fix syntax error in SELinux code
+  - fix crash at login
+
+-------------------------------------------------------------------
+Thu Sep 12 10:05:53 CEST 2013 - kukuk@suse.de
+
+- Remove pam_unix-login.defs.diff, not needed anymore 
+
+-------------------------------------------------------------------
+Thu Sep 12 09:47:52 CEST 2013 - kukuk@suse.de
+
+- Update to version 1.1.7 (bugfix release)
+  - Drop missing-DESTDIR.diff and pam-fix-includes.patch
+  - fix-compiler-warnings.diff: fix unchecked setuid return code
+
+-------------------------------------------------------------------
+Tue Aug  6 10:30:13 CEST 2013 - mc@suse.de
+
+- adding hvc0-hvc7 to /etc/securetty on s390 (bnc#718516)
+
+-------------------------------------------------------------------
+Mon May 27 12:26:53 CEST 2013 - kukuk@suse.de
+
+- Fix typo in common-password [bnc#821526]
+
+-------------------------------------------------------------------
+Fri Apr 26 10:25:06 UTC 2013 - mmeister@suse.com
+
+- Added libtool as BuildRequire, and autoreconf -i option to fix 
+  build with new automake
+
+-------------------------------------------------------------------
+Tue Feb  5 17:28:25 CET 2013 - kukuk@suse.de
+
+- Update pam_unix-login.defs.diff patch to the final upstream
+  version.
+
+-------------------------------------------------------------------
+Tue Feb  5 14:09:06 CET 2013 - kukuk@suse.de
+
+- Adjust URL
+- Add set_permission macro and PreReq
+- Read default encryption method from /etc/login.defs
+  (pam_unix-login.defs.diff)
+
+-------------------------------------------------------------------
+Fri Jan 25 13:49:36 UTC 2013 - kukuk@suse.com
+
+- Remove deprecated pam_tally.so module, it's too buggy and can
+  destroy config and log files.
+
+-------------------------------------------------------------------
+Mon Nov 12 14:42:53 CET 2012 - kukuk@suse.de
+
+- Sync common-*.pamd config with pam-config (use pam_unix.so as
+  default).
+
+-------------------------------------------------------------------
+Wed Sep 19 14:20:54 CEST 2012 - kukuk@suse.de
+
+- Fix building in Factory (add patch missing-DESTDIR.diff)
+
+-------------------------------------------------------------------
+Fri Sep 14 10:55:31 CEST 2012 - kukuk@suse.de
+
+- Update to Linux-PAM 1.1.6
+  - Update translations
+  - pam_cracklib: Add more checks for weak passwords
+  - pam_lastlog: Never lock out root
+  - Lot of bug fixes and smaller enhancements
+
+-------------------------------------------------------------------
+Thu Jun 21 11:59:52 UTC 2012 - aj@suse.de
+
+- Include correct headers for getrlimit (add patch pam-fix-includes.patch).
+
+-------------------------------------------------------------------
+Mon Apr 23 15:30:02 UTC 2012 - jengelh@medozas.de
+
+- Update homepage URL in specfile
+
+-------------------------------------------------------------------
+Sat Mar  3 15:16:42 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 1.1.5
+* pam_env: Fix CVE-2011-3148: correctly count leading whitespace
+  when parsing environment file in pam_env
+* Fix CVE-2011-3149: when overflowing, exit with PAM_BUF_ERR in
+  pam_env
+* pam_access: Add hostname resolution cache
+
+-------------------------------------------------------------------
+Tue Oct 25 14:24:27 CEST 2011 - mc@suse.de
+
+- pam_tally2: remove invalid options from manpage (bnc#726071)
+- fix possible overflow and DOS in pam_env (bnc#724480)
+  CVE-2011-3148, CVE-2011-3149
+
+-------------------------------------------------------------------
+Mon Jun 27 15:29:11 CEST 2011 - kukuk@suse.de
+
+- Update to version 1.1.4
+  * pam_securetty: Honour console= kernel option, add noconsole option
+  * pam_limits: Add %group syntax, drop change_uid option, add set_all option
+  * Lot of small bug fixes
+  * Add support for libtirpc
+- Build against libtirpc
+
+-------------------------------------------------------------------
+Thu May 26 09:37:34 UTC 2011 - cfarrell@novell.com
+
+- license update: GPL-2.0+ or BSD-3-Clause
+  Updating to spdx.org/licenses syntax as legal-auto for some reason did
+  not accept the previous spec file license
+
+-------------------------------------------------------------------
+Wed May 25 16:15:30 CEST 2011 - kukuk@suse.de
+
+- Remove libxcrypt-devel from BuildRequires
+
+-------------------------------------------------------------------
+Wed Feb 23 12:45:03 UTC 2011 - vcizek@novell.com
+
+- bnc#673826 rework
+  * manpage is left intact, as it was 
+  * correct parsing of "quiet" option
+
+-------------------------------------------------------------------
+
+Wed Feb 23 10:00:22 UTC 2011 - vcizek@novell.com
+
+- fix for bnc#673826 (pam_listfile)
+  * removed unnecessary logging when listfile is missing and quiet
+option is specified
+  * manpage is also updated, to reflect that all option
+require values
+
+-------------------------------------------------------------------
+Thu Oct 28 16:23:49 CEST 2010 - kukuk@suse.de
+
+- Update to Linux-PAM 1.1.3
+  - fixes CVE-2010-3853, CVE-2010-3431, CVE-2010-3430
+  - pam_unix: Add minlen option, change default from 6 to 0
+
+-------------------------------------------------------------------
+Tue Aug 31 13:38:23 CEST 2010 - kukuk@suse.de
+
+- Update to Linux-PAM 1.1.2
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Mon May 10 14:22:18 CEST 2010 - kukuk@suse.de
+
+- Update to current CVS version (pam_rootok: Add support for 
+  chauthtok and acct_mgmt, [bnc#533249])
+
+-------------------------------------------------------------------
+Thu Mar 11 13:25:46 CET 2010 - kukuk@suse.de
+
+- Install correct documentation
+
+-------------------------------------------------------------------
+Wed Dec 16 15:22:39 CET 2009 - kukuk@suse.de
+
+- Update to Linux-PAM 1.1.1 (bug fix release)
+
+-------------------------------------------------------------------
+Sat Dec 12 18:36:43 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Wed Dec  9 10:50:22 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Fri Jun 26 14:46:21 CEST 2009 - kukuk@suse.de
+
+- Add fixes from CVS
+
+-------------------------------------------------------------------
+Wed Jun 24 09:52:29 CEST 2009 - kukuk@suse.de
+
+- Update to final version 1.1.0 (spelling fixes)
+
+-------------------------------------------------------------------
+Tue May  5 16:07:00 CEST 2009 - kukuk@suse.de
+
+- Update to version 1.0.92:
+  * Update translations
+  * pam_succeed_if: Use provided username
+  * pam_mkhomedir: Fix handling of options
+
+-------------------------------------------------------------------
+Fri Apr  3 21:43:48 CEST 2009 - rguenther@suse.de
+
+- Remove cracklib-dict-full and pwdutils BuildRequires again.
+
+-------------------------------------------------------------------
+Fri Mar 27 11:41:23 CET 2009 - kukuk@suse.de
+
+- Update to version 1.0.91 aka 1.1 Beta2:
+  * Changes in the behavior of the password stack. Results of 
+    PRELIM_CHECK are not used for the final run.
+  * Redefine LOCAL keyword of pam_access configuration file
+  * Add support for try_first_pass and use_first_pass to 
+    pam_cracklib
+  * New password quality tests in pam_cracklib
+  * Add support for passing PAM_AUTHTOK to stdin of helpers from 
+    pam_exec
+  * New options for pam_lastlog to show last failed login attempt and
+    to disable lastlog update
+  * New pam_pwhistory module to store last used passwords
+  * New pam_tally2 module similar to pam_tally with wordsize independent
+    tally data format, obsoletes pam_tally
+  * Make libpam not log missing module if its type is prepended with '-'
+  * New pam_timestamp module for authentication based on recent successful
+    login.
+  * Add blowfish support to pam_unix.
+  * Add support for user specific environment file to pam_env.
+  * Add pam_get_authtok to libpam as Linux-PAM extension.
+
+-------------------------------------------------------------------
+Wed Feb 11 01:20:15 CET 2009 - ro@suse.de
+
+- use sr@latin instead of sr@Latn
+
+-------------------------------------------------------------------
+Thu Feb  5 17:01:56 CET 2009 - kukuk@suse.de
+
+- Log failures of setrlimit in pam_limits [bnc#448314]
+- Fix using of requisite in password stack [bnc#470337]
+
+-------------------------------------------------------------------
+Tue Jan 20 12:21:08 CET 2009 - kukuk@suse.de
+
+- Regenerate documentation [bnc#448314]
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Dec  4 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Nov 27 15:56:51 CET 2008 - mc@suse.de
+
+- enhance the man page for limits.conf (bnc#448314) 
+
+-------------------------------------------------------------------
+Mon Nov 24 17:21:19 CET 2008 - kukuk@suse.de
+
+- pam_time: fix parsing if '|' is used [bdo#326407]
+
+-------------------------------------------------------------------
+Wed Nov 19 11:13:31 CET 2008 - kukuk@suse.de
+
+- pam_xauth: update last patch
+- pam_pwhistory: add missing type option
+
+-------------------------------------------------------------------
+Tue Nov  4 13:42:03 CET 2008 - mc@suse.de
+
+- pam_xauth: put XAUTHLOCALHOSTNAME into new enviroment
+  (bnc#441314) 
+
+-------------------------------------------------------------------
+Fri Oct 17 14:02:31 CEST 2008 - kukuk@suse.de
+
+- Add pam_tally2
+- Regenerate Documentation
+
+-------------------------------------------------------------------
+Sat Oct 11 17:06:49 CEST 2008 - kukuk@suse.de
+
+- Enhance pam_lastlog with status output
+- Add pam_pwhistory as tech preview
+
+-------------------------------------------------------------------
+Fri Sep 26 13:44:21 CEST 2008 - kukuk@suse.de
+
+- pam_tally: fix fd leak
+- pam_mail: fix "quiet" option
+
+-------------------------------------------------------------------
+Fri Aug 29 15:17:50 CEST 2008 - kukuk@suse.de
+
+- Update to version 1.0.2 (fix SELinux regression)
+- enhance pam_tally [FATE#303753]
+- Backport fixes from CVS
+
+-------------------------------------------------------------------
+Wed Aug 20 14:59:30 CEST 2008 - prusnak@suse.cz
+
+- enabled SELinux support [Fate#303662]
+
+-------------------------------------------------------------------
+Wed Apr 16 13:24:22 CEST 2008 - kukuk@suse.de
+
+- Update to version 1.0.1:
+  - Fixes regression in pam_set_item().
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Apr  4 14:41:44 CEST 2008 - kukuk@suse.de
+
+- Remove devfs lines from securetty [bnc#372241]
+
+-------------------------------------------------------------------
+Thu Apr  3 15:18:11 CEST 2008 - kukuk@suse.de
+
+- Update to version 1.0.0:
+  - Official first "stable" release
+  - bug fixes
+  - translation updates
+
+-------------------------------------------------------------------
+Fri Feb 15 10:55:26 CET 2008 - kukuk@suse.de
+
+- Update to version 0.99.10.0:
+  - New substack directive in config file syntax
+  - New module pam_tty_audit.so for enabling and disabling tty
+    auditing
+  - New PAM items PAM_XDISPLAY and PAM_XAUTHDATA
+  - Improved functionality of pam_namespace.so module (method flags,
+    namespace.d configuration directory, new options).
+  - Finaly removed deprecated pam_rhosts_auth module.
+
+-------------------------------------------------------------------
+Wed Oct 10 15:13:33 CEST 2007 - kukuk@suse.de
+
+- Update to version 0.99.9.0:
+  - misc_conv no longer blocks SIGINT; applications that don't want
+    user-interruptable prompts should block SIGINT themselves
+  - Merge fixes from Debian
+  - Fix parser for pam_group and pam_time
+
+-------------------------------------------------------------------
+Wed Jul 18 12:00:07 CEST 2007 - kukuk@suse.de
+
+- Update to version 0.99.8.1:
+  - Fix regression in pam_audit
+
+-------------------------------------------------------------------
+Fri Jul  6 11:38:42 CEST 2007 - kukuk@suse.de
+
+- Update to version 0.99.8.0:
+  - Add translations for ar, ca, da, ru, sv and zu.
+  - Update hungarian translation.
+  - Add support for limits.d directory to pam_limits.
+  - Add minclass option to pam_cracklib
+  - Add new group syntax to pam_access
+
+-------------------------------------------------------------------
+Thu Apr 19 15:30:46 CEST 2007 - mc@suse.de
+
+- move the documentation into a seperate package (pam-doc)
+  [partly fixes Bug #265733]
+
+-------------------------------------------------------------------
+Mon Mar 26 15:48:13 CEST 2007 - rguenther@suse.de
+
+- add flex and bison BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 24 11:27:16 CET 2007 - mc@suse.de
+
+- add %verify_permissions for /sbin/unix_chkpwd
+  [#237625] 
+
+-------------------------------------------------------------------
+Tue Jan 23 13:19:51 CET 2007 - kukuk@suse.de
+
+- Update to Version 0.99.7.1 (security fix)
+
+-------------------------------------------------------------------
+Wed Jan 17 14:13:14 CET 2007 - kukuk@suse.de
+
+- Update to Version 0.99.7.0
+  * Add manual page for pam_unix.so.
+  * Add pam_faildelay module to set pam_fail_delay() value.
+  * Fix possible seg.fault in libpam/pam_set_data().
+  * Cleanup of configure options.
+  * Update hungarian translation, fix german translation.
+
+-------------------------------------------------------------------
+Wed Jan 17 14:00:03 CET 2007 - lnussel@suse.de
+
+- install unix_chkpwd setuid root instead of setgid shadow (#216816)
+
+-------------------------------------------------------------------
+Tue Oct 24 14:26:51 CEST 2006 - kukuk@suse.de
+
+- pam_unix.so/unix_chkpwd: teach about blowfish [#213929]
+- pam_namespace.so: Fix two possible buffer overflow
+- link against libxcrypt
+
+-------------------------------------------------------------------
+Sat Oct  7 11:46:56 CEST 2006 - kukuk@suse.de
+
+- Update hungarian translation [#210091]
+
+-------------------------------------------------------------------
+Tue Sep 19 18:25:25 CEST 2006 - kukuk@suse.de
+
+- Don't remove pam_unix.so
+- Use cracklib again (goes lost with one of the last cleanups)
+
+-------------------------------------------------------------------
+Thu Sep 14 16:11:36 CEST 2006 - kukuk@suse.de
+
+- Add pam_umask.so to common-session [Fate#3621]
+
+-------------------------------------------------------------------
+Wed Sep  6 16:37:33 CEST 2006 - kukuk@suse.de
+
+- Update to Linux-PAM 0.99.6.3 (merges all patches)
+
+-------------------------------------------------------------------
+Wed Aug 30 17:14:22 CEST 2006 - kukuk@suse.de
+
+- Update to Linux-PAM 0.99.6.2 (incorporate last change)
+- Add pam_loginuid and fixes from CVS [Fate#300486]
+
+-------------------------------------------------------------------
+Wed Aug 23 19:11:41 CEST 2006 - kukuk@suse.de
+
+- Fix seg.fault in pam_cracklib if retyped password is empty
+
+-------------------------------------------------------------------
+Tue Aug 22 21:53:40 CEST 2006 - kukuk@suse.de
+
+- Remove use_first_pass from pam_unix2.so in password section
+
+-------------------------------------------------------------------
+Fri Aug 11 03:26:56 CEST 2006 - kukuk@suse.de
+
+- Update to Linux-PAM 0.99.6.1 (big documentation update)
+
+-------------------------------------------------------------------
+Fri Jul 28 11:30:28 CEST 2006 - kukuk@suse.de
+
+- Add missing namespace.init script
+
+-------------------------------------------------------------------
+Thu Jul 27 17:12:24 CEST 2006 - kukuk@suse.de
+
+- Reenable audit subsystem [Fate#300486]
+
+-------------------------------------------------------------------
+Wed Jun 28 13:07:15 CEST 2006 - kukuk@suse.de
+
+- Update to Linux-PAM 0.99.5.0 (more manual pages, three new PAM
+  modules: pam_keyinit, pam_namespace, pam_rhosts)
+
+-------------------------------------------------------------------
+Mon Jun 12 11:49:20 CEST 2006 - kukuk@suse.de
+
+- Update to current CVS (lot of new manual pages and docu)
+
+-------------------------------------------------------------------
+Tue May 30 15:28:21 CEST 2006 - kukuk@suse.de
+
+- Update to Linux-PAM 0.99.4.0 (merge all patches and translations)
+
+-------------------------------------------------------------------
+Wed May 24 10:54:25 CEST 2006 - kukuk@suse.de
+
+- Fix problems found by Coverity
+
+-------------------------------------------------------------------
+Wed May 17 14:46:04 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Fri May  5 15:16:29 CEST 2006 - kukuk@suse.de
+
+- Fix pam_tally LFS support [#172492]
+
+-------------------------------------------------------------------
+Fri Apr 21 13:48:17 CEST 2006 - kukuk@suse.de
+
+- Update fr.po and pl.po
+
+-------------------------------------------------------------------
+Tue Apr 11 14:56:37 CEST 2006 - kukuk@suse.de
+
+- Update km.po
+
+-------------------------------------------------------------------
+Tue Apr  4 14:24:11 CEST 2006 - kukuk@suse.de
+
+- Remove obsolete pam-laus from the system
+
+-------------------------------------------------------------------
+Mon Mar 27 14:20:56 CEST 2006 - kukuk@suse.de
+
+- Update translations for pt, pl, fr, fi and cs
+- Add translation for uk
+
+-------------------------------------------------------------------
+Tue Mar 21 14:06:00 CET 2006 - kukuk@suse.de
+
+- Update hu.po
+
+-------------------------------------------------------------------
+Tue Mar 21 12:40:11 CET 2006 - kukuk@suse.de
+
+- Add translation for tr
+
+-------------------------------------------------------------------
+Mon Mar 13 11:47:07 CET 2006 - kukuk@suse.de
+
+- Fix order of NULL checks in pam_get_user
+- Fix comment in pam_lastlog for translators to be visible in
+  pot file
+- Docu update, remove pam_selinux docu
+
+-------------------------------------------------------------------
+Thu Mar  2 16:49:10 CET 2006 - kukuk@suse.de
+
+- Update km translation
+
+-------------------------------------------------------------------
+Thu Feb 23 13:21:22 CET 2006 - kukuk@suse.de
+
+- pam_lastlog: 
+  - Initialize correct struct member [SF#1427401]
+  - Mark strftime fmt string for translation [SF#1428269]
+
+-------------------------------------------------------------------
+Sun Feb 19 09:15:42 CET 2006 - kukuk@suse.de
+
+- Update more manual pages
+
+-------------------------------------------------------------------
+Sat Feb 18 12:45:19 CET 2006 - ro@suse.de
+
+- really disable audit if header file not present 
+
+-------------------------------------------------------------------
+Tue Feb 14 13:29:42 CET 2006 - kukuk@suse.de
+
+- Update fi.po
+- Add km.po 
+- Update pl.po
+
+-------------------------------------------------------------------
+Mon Feb 13 09:38:56 CET 2006 - kukuk@suse.de
+
+- Update with better manual pages
+
+-------------------------------------------------------------------
+Thu Feb  9 16:07:27 CET 2006 - kukuk@suse.de
+
+- Add translation for nl, update pt translation
+
+-------------------------------------------------------------------
+Fri Jan 27 14:03:06 CET 2006 - kukuk@suse.de
+
+- Move devel manual pages to -devel package
+- Mark PAM config files as noreplace
+- Mark /etc/securetty as noreplace
+- Run ldconfig
+- Fix libdb/ndbm compat detection with gdbm
+- Adjust german translation
+- Add all services to pam_listfile
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:44 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 22:34:02 CET 2006 - kukuk@suse.de
+
+- Update to Linux-PAM 0.99.3.0 release candiate tar balls
+  (new translations)
+
+-------------------------------------------------------------------
+Mon Jan  9 18:04:53 CET 2006 - kukuk@suse.de
+
+- Fix NULL handling for LSB-pam test suite [#141240]
+
+-------------------------------------------------------------------
+Sun Jan  8 13:04:19 CET 2006 - kukuk@suse.de
+
+- Fix usage of PAM_AUTHTOK_RECOVER_ERR vs. PAM_AUTHTOK_RECOVERY_ERR
+
+-------------------------------------------------------------------
+Fri Jan  6 12:34:57 CET 2006 - kukuk@suse.de
+
+- NULL is allowed as thirs argument for pam_get_item [#141240]
+
+-------------------------------------------------------------------
+Wed Dec 21 10:29:02 CET 2005 - kukuk@suse.de
+
+- Add fixes from CVS
+
+-------------------------------------------------------------------
+Thu Dec 15 17:18:35 CET 2005 - kukuk@suse.de
+
+- Fix pam_lastlog: don't report error on first login
+
+-------------------------------------------------------------------
+Tue Dec 13 09:19:12 CET 2005 - kukuk@suse.de
+
+- Update to 0.99.2.1
+
+-------------------------------------------------------------------
+Fri Dec  9 09:41:05 CET 2005 - kukuk@suse.de
+
+- Add /etc/environment to avoid warnings in syslog
+
+-------------------------------------------------------------------
+Mon Dec  5 12:36:47 CET 2005 - kukuk@suse.de
+
+- disable SELinux
+
+-------------------------------------------------------------------
+Wed Nov 23 17:42:10 CET 2005 - kukuk@suse.de
+
+- Update getlogin() fix to final one
+
+-------------------------------------------------------------------
+Mon Nov 21 18:15:05 CET 2005 - kukuk@suse.de
+
+- Fix PAM getlogin() implementation
+
+-------------------------------------------------------------------
+Mon Nov 21 16:37:57 CET 2005 - kukuk@suse.de
+
+- Update to official 0.99.2.0 release
+
+-------------------------------------------------------------------
+Tue Nov  8 08:49:30 CET 2005 - kukuk@suse.de
+
+- Update to new snapshot
+
+-------------------------------------------------------------------
+Mon Oct 10 18:15:20 CEST 2005 - kukuk@suse.de
+
+- Enable original pam_wheel module
+
+-------------------------------------------------------------------
+Tue Sep 27 10:56:58 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS
+- Compile libpam_misc with -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Mon Sep 19 15:31:34 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS
+- Fix compiling of pammodutil with -fPIC
+
+-------------------------------------------------------------------
+Sun Sep 18 15:29:37 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS
+
+-------------------------------------------------------------------
+Tue Aug 23 16:27:50 CEST 2005 - kukuk@suse.de
+
+- Update to new snapshot (Major version is back to 0)
+
+-------------------------------------------------------------------
+Fri Aug 19 16:24:54 CEST 2005 - kukuk@suse.de
+
+- Update to Linux-PAM 0.99.0.3 snapshot
+
+-------------------------------------------------------------------
+Mon Jul 11 15:48:19 CEST 2005 - kukuk@suse.de
+
+- Add pam_umask
+
+-------------------------------------------------------------------
+Mon Jul  4 11:13:21 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS snapshot
+
+-------------------------------------------------------------------
+Thu Jun 23 10:28:43 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS snapshot
+- Add pam_loginuid
+
+-------------------------------------------------------------------
+Thu Jun  9 12:01:49 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS snapshot
+
+-------------------------------------------------------------------
+Mon Jun  6 17:55:33 CEST 2005 - kukuk@suse.de
+
+- Don't reset priority [#81690]
+- Fix creating of symlinks
+
+-------------------------------------------------------------------
+Fri May 20 13:18:43 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS snapshot
+- Real fix for [#82687] (don't include kernel header files)
+
+-------------------------------------------------------------------
+Thu May 12 16:37:07 CEST 2005 - schubi@suse.de
+
+- Bug 82687 - pam_client.h redefines __u8 and __u32 
+
+-------------------------------------------------------------------
+Fri Apr 29 11:18:16 CEST 2005 - kukuk@suse.de
+
+- Apply lot of fixes from CVS (including SELinux support)
+
+-------------------------------------------------------------------
+Fri Apr  1 09:41:16 CEST 2005 - kukuk@suse.de
+
+- Update to final 0.79 release
+
+-------------------------------------------------------------------
+Mon Mar 14 10:01:07 CET 2005 - kukuk@suse.de
+
+- Apply patch for pam_xauth to preserve DISPLAY variable [#66885]
+
+-------------------------------------------------------------------
+Mon Jan 24 16:02:11 CET 2005 - kukuk@suse.de
+
+- Compile with large file support
+
+-------------------------------------------------------------------
+Mon Jan 24 11:30:27 CET 2005 - schubi@suse.de
+
+- Made patch of latest CVS tree
+- Removed patch pam_handler.diff ( included in CVS now ) 
+- moved Linux-PAM-0.78.dif to pam_group_time.diff
+
+-------------------------------------------------------------------
+Wed Jan  5 13:09:18 CET 2005 - kukuk@suse.de
+
+- Fix seg.fault, if a PAM config line is incomplete
+
+-------------------------------------------------------------------
+Thu Nov 18 14:58:43 CET 2004 - kukuk@suse.de
+
+- Update to final 0.78
+
+-------------------------------------------------------------------
+Mon Nov  8 17:09:53 CET 2004 - kukuk@suse.de
+
+- Add pam_env.so to common-auth
+- Add pam_limit.so to common-session
+
+-------------------------------------------------------------------
+Wed Oct 13 15:11:59 CEST 2004 - kukuk@suse.de
+
+- Update to 0.78-Beta1
+
+-------------------------------------------------------------------
+Wed Sep 22 16:40:26 CEST 2004 - kukuk@suse.de
+
+- Create pam.d/common-{auth,account,password,session} and include
+  them in pam.d/other
+- Update to current CVS version of upcoming 0.78 release
+
+-------------------------------------------------------------------
+Mon Aug 23 16:44:40 CEST 2004 - kukuk@suse.de
+
+- Update "code cleanup" patch
+- Disable reading of /etc/environment in pam_env.so per default
+
+-------------------------------------------------------------------
+Thu Aug 19 16:55:24 CEST 2004 - kukuk@suse.de
+
+- Reenable a "fixed" version of "code cleanup" patch
+- Use pam_wheel from pam-modules package
+
+-------------------------------------------------------------------
+Wed Aug 18 17:06:33 CEST 2004 - kukuk@suse.de
+
+- Disable "code cleanup" patch (no more comments about security
+  fixes)
+
+-------------------------------------------------------------------
+Fri Aug 13 15:40:31 CEST 2004 - kukuk@suse.de
+
+- Apply big "code cleanup" patch [Bug #39673]
+
+-------------------------------------------------------------------
+Fri Mar 12 14:32:27 CET 2004 - kukuk@suse.de
+
+- pam_wheel: Use original getlogin again, PAM internal does not
+  work without application help [Bug #35682]
+
+-------------------------------------------------------------------
+Sun Jan 18 12:11:37 CET 2004 - meissner@suse.de
+
+- We no longer have pam in the buildsystem, so we 
+  need some buildroot magic flags for the dlopen tests.
+
+-------------------------------------------------------------------
+Thu Jan 15 23:19:55 CET 2004 - kukuk@suse.de
+
+- Cleanup neededforbuild
+
+-------------------------------------------------------------------
+Fri Dec  5 11:32:57 CET 2003 - kukuk@suse.de
+
+- Add manual pages from SLES8
+
+-------------------------------------------------------------------
+Fri Nov 28 09:21:01 CET 2003 - kukuk@suse.de
+
+- Fix installing manual pages of modules
+- Remove pthread check (db is now linked against pthread)
+
+-------------------------------------------------------------------
+Thu Nov 27 09:13:46 CET 2003 - kukuk@suse.de
+
+- Merge with current CVS
+- Apply bug fixes from bugtracking system
+- Build as normal user
+
+-------------------------------------------------------------------
+Fri Nov 21 14:41:41 CET 2003 - kukuk@suse.de
+
+- Compile with noexecstack
+
+-------------------------------------------------------------------
+Thu Nov  6 12:12:15 CET 2003 - kukuk@suse.de
+
+- Fix pam_securetty CVS patch
+
+-------------------------------------------------------------------
+Wed Oct 29 13:47:02 CET 2003 - kukuk@suse.de
+
+- Sync with current CVS version
+
+-------------------------------------------------------------------
+Thu Oct  2 18:37:19 CEST 2003 - kukuk@suse.de
+
+- Add patch to implement "include" statement in pamd files
+
+-------------------------------------------------------------------
+Wed Sep 10 14:36:51 CEST 2003 - uli@suse.de
+
+- added ttyS1 (VT220) to securetty on s390* (bug #29239)
+
+-------------------------------------------------------------------
+Mon Jul 28 15:35:32 CEST 2003 - kukuk@suse.de
+
+- Apply lot of fixes for various problems
+
+-------------------------------------------------------------------
+Tue Jun 10 12:08:56 CEST 2003 - kukuk@suse.de
+
+- Fix getlogin handling in pam_wheel.so
+
+-------------------------------------------------------------------
+Tue May 27 16:26:00 CEST 2003 - ro@suse.de
+
+- added cracklib-devel to neededforbuild 
+
+-------------------------------------------------------------------
+Thu Feb 13 14:56:05 CET 2003 - kukuk@suse.de
+
+- Update pam_localuser and pam_xauth.
+
+-------------------------------------------------------------------
+Wed Nov 13 14:51:23 CET 2002 - kukuk@suse.de
+
+- Update to Linux-PAM 0.77 (minor bug fixes and enhancemants)
+
+-------------------------------------------------------------------
+Mon Nov 11 11:26:13 CET 2002 - ro@suse.de
+
+- changed neededforbuild <sp> to <opensp>
+
+-------------------------------------------------------------------
+Sat Sep 14 18:12:49 CEST 2002 - ro@suse.de
+
+- changed securetty / use extra file 
+
+-------------------------------------------------------------------
+Fri Sep 13 18:21:35 CEST 2002 - bk@suse.de
+
+- 390: standard console (4,64)/ttyS0 ->only ttyS0 in /etc/securetty
+
+-------------------------------------------------------------------
+Tue Aug 27 17:23:30 CEST 2002 - kukuk@suse.de
+
+- Call password checking helper from pam_unix.so whenever the
+  passwd field is invalid.
+
+-------------------------------------------------------------------
+Sat Aug 24 14:41:43 CEST 2002 - kukuk@suse.de
+
+- Don't build ps and pdf documentation
+
+-------------------------------------------------------------------
+Fri Aug  9 10:26:37 CEST 2002 - kukuk@suse.de
+
+- pam-devel requires pam [Bug #17543]
+
+-------------------------------------------------------------------
+Wed Jul 17 21:48:22 CEST 2002 - kukuk@suse.de
+
+- Remove explicit requires
+
+-------------------------------------------------------------------
+Wed Jul 10 10:14:17 CEST 2002 - kukuk@suse.de
+
+- Update to Linux-PAM 0.76
+- Remove reentrant patch for original PAM modules (needs to be
+  rewritten for new PAM version)
+- Add docu in PDF format
+
+-------------------------------------------------------------------
+Thu Jul  4 11:07:23 CEST 2002 - kukuk@suse.de
+
+- Fix build on different partitions
+
+-------------------------------------------------------------------
+Tue Apr 16 14:50:19 CEST 2002 - mmj@suse.de
+
+- Fix to not own /usr/shar/man/man3
+
+-------------------------------------------------------------------
+Wed Mar 13 10:44:20 CET 2002 - kukuk@suse.de
+
+- Add /usr/include/security to pam-devel filelist
+
+-------------------------------------------------------------------
+Mon Feb 11 22:46:43 CET 2002 - ro@suse.de
+
+- tar option for bz2 is "j" 
+
+-------------------------------------------------------------------
+Fri Jan 25 18:55:26 CET 2002 - kukuk@suse.de
+
+- Fix last pam_securetty patch
+
+-------------------------------------------------------------------
+Thu Jan 24 20:11:37 CET 2002 - kukuk@suse.de
+
+- Use reentrant getpwnam functions for most modules
+- Fix unresolved symbols in pam_access and pam_userdb
+
+-------------------------------------------------------------------
+Sun Jan 20 22:06:39 CET 2002 - kukuk@suse.de
+
+- libpam_misc: Don't handle Ctrl-D as error.
+
+-------------------------------------------------------------------
+Wed Jan 16 12:21:30 CET 2002 - kukuk@suse.de
+
+- Remove SuSEconfig.pam
+- Update pam_localuser and pam_xauth
+- Add new READMEs about blowfish and cracklib
+
+-------------------------------------------------------------------
+Mon Nov 12 13:33:09 CET 2001 - kukuk@suse.de
+
+- Remove pam_unix.so (is part of pam-modules)
+
+-------------------------------------------------------------------
+Fri Nov  9 10:42:02 CET 2001 - kukuk@suse.de
+
+- Move extra PAM modules to separate package
+- Require pam-modules package
+
+-------------------------------------------------------------------
+Fri Aug 24 14:55:04 CEST 2001 - kukuk@suse.de
+
+- Move susehelp config file to susehelp package
+
+-------------------------------------------------------------------
+Mon Aug 13 15:51:57 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <sp_libs> to <sp-devel>
+
+-------------------------------------------------------------------
+Tue Aug  7 17:48:40 CEST 2001 - kukuk@suse.de
+
+- Fixes wrong symlink handling of pam_homecheck [Bug #3905]
+
+-------------------------------------------------------------------
+Wed Jul 11 18:10:11 CEST 2001 - kukuk@suse.de
+
+- Sync pam_homecheck and pam_unix2 fixes from 7.2
+- Always ask for the old password if it is expired
+
+-------------------------------------------------------------------
+Sat May  5 20:18:35 CEST 2001 - kukuk@suse.de
+
+- Cleanup Patches, make tar archive from extra pam modules
+
+-------------------------------------------------------------------
+Fri May  4 16:51:07 CEST 2001 - kukuk@suse.de
+
+- Use LOG_NOTICE for trace option [Bug #7673]
+
+-------------------------------------------------------------------
+Thu Apr 12 17:45:55 CEST 2001 - kukuk@suse.de
+
+- Linux-PAM: link pam_access against libnsl
+- Add pam.conf for susehelp/pam html docu
+
+-------------------------------------------------------------------
+Tue Apr 10 17:39:50 CEST 2001 - kukuk@suse.de
+
+- Linux-PAM: Update to version 0.75
+
+-------------------------------------------------------------------
+Tue Apr  3 15:08:27 CEST 2001 - kukuk@suse.de
+
+- Linux-PAM: link libpam_misc against libpam [Bug #6890]
+
+-------------------------------------------------------------------
+Thu Mar  8 15:38:22 CET 2001 - kukuk@suse.de
+
+- Linux-PAM: Fix manual pages (.so reference)
+- pam_pwcheck: fix Makefile
+
+-------------------------------------------------------------------
+Tue Mar  6 12:16:58 CET 2001 - kukuk@suse.de
+
+- Update for Linux-PAM 0.74
+- Drop pwdb subpackage
+
+-------------------------------------------------------------------
+Tue Feb 13 14:17:13 CET 2001 - kukuk@suse.de
+
+- pam_unix2: Create temp files with permission 0600
+
+-------------------------------------------------------------------
+Tue Feb  6 01:34:06 CET 2001 - ro@suse.de
+
+- pam_issue.c: include time.h to make it compile 
+
+-------------------------------------------------------------------
+Fri Jan  5 22:51:44 CET 2001 - kukuk@suse.de
+
+- Don't print error message about failed initialization from
+  pam_limits with kernel 2.2 [Bug #5198]
+
+-------------------------------------------------------------------
+Thu Jan  4 17:15:44 CET 2001 - kukuk@suse.de
+
+- Adjust docu for pam_limits
+
+-------------------------------------------------------------------
+Sun Dec 17 13:22:11 CET 2000 - kukuk@suse.de
+
+- Adjust docu for pam_pwcheck
+
+-------------------------------------------------------------------
+Thu Dec  7 15:23:37 CET 2000 - kukuk@suse.de
+
+- Add fix for pam_limits from 0.73
+
+-------------------------------------------------------------------
+Thu Oct 26 16:36:09 CEST 2000 - kukuk@suse.de
+
+- Add db-devel to need for build
+
+-------------------------------------------------------------------
+Fri Oct 20 12:03:07 CEST 2000 - kukuk@suse.de
+
+- Don't link PAM modules against old libpam library 
+
+-------------------------------------------------------------------
+Wed Oct 18 11:53:34 CEST 2000 - kukuk@suse.de
+
+- Create new "devel" subpackage 
+
+-------------------------------------------------------------------
+Thu Oct 12 15:16:55 CEST 2000 - kukuk@suse.de
+
+- Add SuSEconfig.pam
+
+-------------------------------------------------------------------
+Tue Oct  3 15:05:00 CEST 2000 - kukuk@suse.de
+
+- Fix problems with new gcc and glibc 2.2 header files 
+
+-------------------------------------------------------------------
+Wed Sep 13 13:12:08 CEST 2000 - kukuk@suse.de
+
+- Fix problem with passwords longer then PASS_MAX_LEN
+
+-------------------------------------------------------------------
+Wed Sep  6 16:01:50 CEST 2000 - kukuk@suse.de
+
+- Add missing PAM modules to filelist
+- Fix seg.fault in pam_pwcheck [BUG #3894]
+- Clean spec file
+
+-------------------------------------------------------------------
+Fri Jun 23 12:40:40 CEST 2000 - kukuk@suse.de
+
+- Lot of bug fixes in pam_unix2 and pam_pwcheck
+- compress postscript docu
+
+-------------------------------------------------------------------
+Mon May 15 10:57:16 CEST 2000 - kukuk@suse.de
+
+- Move docu to /usr/share/doc/pam
+- Fix some bugs in pam_unix2 and pam_pwcheck
+
+-------------------------------------------------------------------
+Tue Apr 25 16:32:56 CEST 2000 - kukuk@suse.de
+
+- Add pam_homecheck Module
+
+-------------------------------------------------------------------
+Tue Apr 25 14:17:10 CEST 2000 - kukuk@suse.de
+
+- Add devfs devices to /etc/securetty
+
+-------------------------------------------------------------------
+Wed Mar  1 17:35:27 CET 2000 - kukuk@suse.de
+
+- Fix handling of changing passwords to empty one
+
+-------------------------------------------------------------------
+Tue Feb 22 18:00:48 CET 2000 - kukuk@suse.de
+
+- Set correct attr for unix_chkpwd and pwdb_chkpwd
+
+-------------------------------------------------------------------
+Tue Feb 15 17:47:50 CET 2000 - kukuk@suse.de
+
+- Update pam_pwcheck
+- Update pam_unix2
+
+-------------------------------------------------------------------
+Mon Feb  7 17:55:42 CET 2000 - kukuk@suse.de
+
+- pwdb: Update to 0.61 
+
+-------------------------------------------------------------------
+Thu Jan 27 16:54:03 CET 2000 - kukuk@suse.de
+
+- Add config files and README for md5 passwords
+- Update pam_pwcheck
+- Update pam_unix2
+
+-------------------------------------------------------------------
+Thu Jan 13 18:22:10 CET 2000 - kukuk@suse.de
+
+- Update pam_unix2
+- New: pam_pwcheck
+- Update to Linux-PAM 0.72
+
+-------------------------------------------------------------------
+Wed Oct 13 16:48:51 MEST 1999 - kukuk@suse.de
+
+- pam_pwdb: Add security fixes from RedHat 
+
+-------------------------------------------------------------------
+Mon Oct 11 20:34:18 MEST 1999 - kukuk@suse.de
+
+- Update to Linux-PAM 0.70
+- Update to pwdb-0.60
+- Fix more pam_unix2 shadow bugs
+
+-------------------------------------------------------------------
+Fri Oct  8 17:20:11 MEST 1999 - kukuk@suse.de
+
+- Add more PAM fixes
+- Implement Password changing request (sp_lstchg == 0)
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Sat Sep 11 17:38:50 MEST 1999 - kukuk@suse.de
+
+- Add pam_wheel to file list
+- pam_wheel: Minor fixes 
+- pam_unix2: root is allowed to change passwords with wrong
+             password aging information
+
+-------------------------------------------------------------------
+Mon Aug 30 10:16:43 MEST 1999 - kukuk@suse.de
+
+- pam_unix2: Fix typo 
+
+-------------------------------------------------------------------
+Thu Aug 19 16:05:09 MEST 1999 - kukuk@suse.de
+
+- Linux-PAM: Update to version 0.69
+
+-------------------------------------------------------------------
+Fri Jul 16 12:35:14 MEST 1999 - kukuk@suse.de
+
+- pam_unix2: Root is allowed to use the old password again.
+
+-------------------------------------------------------------------
+Tue Jul 13 11:09:41 MEST 1999 - kukuk@suse.de
+
+- pam_unix2: Allow root to set an empty password.
+
+-------------------------------------------------------------------
+Sat Jul 10 18:41:00 MEST 1999 - kukuk@suse.de
+
+- Add HP-UX password aging to pam_unix2. 
+
+-------------------------------------------------------------------
+Wed Jul  7 17:45:04 MEST 1999 - kukuk@suse.de
+
+- Don't install .cvsignore files
+- Make sure, /etc/shadow has the correct rights
+
+-------------------------------------------------------------------
+Tue Jul  6 10:14:08 MEST 1999 - kukuk@suse.de
+
+- Update to Linux-PAM 0.68
+
+-------------------------------------------------------------------
+Wed Jun 30 18:46:26 MEST 1999 - kukuk@suse.de
+
+- pam_unix2: more bug fixes
+
+-------------------------------------------------------------------
+Tue Jun 29 10:57:18 MEST 1999 - kukuk@suse.de
+
+- pam_unix2: Fix "inactive" password
+
+-------------------------------------------------------------------
+Mon Jun 28 13:59:18 MEST 1999 - kukuk@suse.de
+
+- pam_warn: Add missing functions 
+- other.pamd: Update
+- Add more doku
+
+-------------------------------------------------------------------
+Thu Jun 24 14:24:54 MEST 1999 - kukuk@suse.de
+
+- Add securetty config file
+- Fix Debian pam_env patch
+
+-------------------------------------------------------------------
+Mon Jun 21 10:10:35 MEST 1999 - kukuk@suse.de
+
+- Update to Linux-PAM 0.67
+- Add Debian pam_env patch 
+
+-------------------------------------------------------------------
+Thu Jun 17 15:59:30 MEST 1999 - kukuk@suse.de
+
+- pam_ftp malloc (core dump) fix 
+
+-------------------------------------------------------------------
+Tue Jun 15 18:57:03 MEST 1999 - kukuk@suse.de
+
+- pam_unix2 fixes 
+
+-------------------------------------------------------------------
+Mon Jun  7 11:34:48 MEST 1999 - kukuk@suse.de
+
+- First PAM package: pam 0.66, pwdb 0.57 and pam_unix2 

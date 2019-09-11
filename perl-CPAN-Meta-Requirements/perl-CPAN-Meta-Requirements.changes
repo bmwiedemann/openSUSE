@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Sun Dec 13 09:31:20 UTC 2015 - coolo@suse.com
+
+- updated to 2.140
+   see /usr/share/doc/packages/perl-CPAN-Meta-Requirements/Changes
+
+  2.140     2015-12-12 16:17:15-05:00 America/New_York
+  
+      - no changes from 2.139
+  
+  2.139     2015-12-11 12:42:44-05:00 America/New_York (TRIAL RELEASE)
+  
+      - expanded dist.ini from author bundle to individual plugins
+  
+  2.138     2015-07-13 22:32:37-04:00 America/New_York (TRIAL RELEASE)
+  
+      - repackage with fixed tests
+  
+  2.137     2015-07-09 09:53:32-04:00 America/New_York (TRIAL RELEASE)
+  
+      - much better error messages, explaining what conflicted and how
+  
+  2.136     2015-06-08 21:35:27-06:00 America/Denver (TRIAL RELEASE)
+  
+      [FIXED]
+  
+      - On Perls before 5.8.1, pad 1-part and 2-part literal v-strings
+        to avoid old version.pm bugs with v-strings less than 3 characters
+  
+      - Protect internal _isa_version from non-refs that pass
+        ->isa('version')
+  
+  2.135     2015-05-19 13:15:35-04:00 America/New_York (TRIAL RELEASE)
+  
+      [TESTING]
+  
+      - Skips impossible tests on Perls earlier than 5.8.0 (before
+        v-string magic).
+  
+  2.134     2015-04-18 13:20:56+02:00 Europe/Berlin (TRIAL RELEASE)
+  
+      [ADDED]
+  
+      - Added method for getting structured requirements
+
+-------------------------------------------------------------------
+Thu Apr 16 21:26:17 UTC 2015 - coolo@suse.com
+
+- updated to 2.133
+   see /usr/share/doc/packages/perl-CPAN-Meta-Requirements/Changes
+
+  2.133     2015-02-22 06:35:34-05:00 America/New_York
+  
+      [FIXED]
+  
+      - In fixing preservation of "0.00", some Module => 0 optimizations were
+        lost; this restores those optimizations
+  
+  2.132     2015-01-22 17:09:19-05:00 America/New_York
+  
+      [FIXED]
+  
+      - Precision of version requirement "0.00" is preserved when merging
+        requirements.
+  
+  2.131     2014-12-23 15:04:19-05:00 America/New_York
+  
+      [ENHANCEMENTS]
+  
+      - Merging Module => 0 into requirements is now optimized
+  
+      [PREREQS]
+  
+      - Scalar::Utils removed as a prerequisite
+  
+  2.130     2014-11-19 23:25:46-05:00 America/New_York
+  
+      [ADDED]
+  
+      - from_string_hash can take optional constructor arguments
+  
+      [CHANGED]
+  
+      - bad_version_hook callback gets module name as well as version string
+  
+      - undefined/empty versions given to from_string_hash or
+        add_string_requirement now carp and are coerced to "0" instead of
+        being fatal.  This is more consistent with how the other requirement
+        functions work.
+  
+  2.129     2014-11-13 16:28:45-05:00 America/New_York
+  
+      [FIXED]
+  
+      - from_string_hash can now accept v-strings as hash values
+  
+  2.128     2014-09-06 00:04:22-04:00 America/New_York
+  
+      [FIXED]
+  
+      - Throws an error at compile time if neither version nor
+        the ExtUtils::MakeMaker bootstrap are available
+  
+  2.127     2014-09-04 22:17:44-04:00 America/New_York
+  
+      [FIXED]
+  
+      - Works around limitations in version::vpp detecting v-string magic
+  
+      [PREREQS]
+  
+      - Requires version.pm 0.88 in metadata, but code should work with any
+        version of version.pm
+  
+      - Adds support for forthcoming ExtUtils::MakeMaker bootstrap version.pm
+        for Perls older than 5.10.0
+  
+  2.126     2014-07-30 16:26:29-04:00 America/New_York
+  
+      [FIXED]
+  
+      - Fixed compatibility with version.pm 0.77
+  
+      [DOCUMENTED]
+  
+      - Minor documentation fixes
+  
+      [CHANGED]
+  
+      - Modernized distribution meta files
+
+-------------------------------------------------------------------
+Fri Dec  6 15:53:15 UTC 2013 - coolo@suse.com
+
+- readd the fake provides - removing them was wrong
+
+-------------------------------------------------------------------
+Tue Nov 26 17:45:11 UTC 2013 - coolo@suse.com
+
+- more fake provides
+
+-------------------------------------------------------------------
+Fri Oct  4 09:15:20 UTC 2013 - coolo@suse.com
+
+- updated to 2.125
+  [FIXED]
+    - updated Makefile.PL logic to support PERL_NO_HIGHLANDER
+    - Better fix than 2.123.  On old perls, rather than install into
+      'core', we continue to install into the proper 'site' library,
+      but force UNINST=1 when necessary to remove stale copies
+      from ExtUtils::MakeMaker
+    - On Perls prior to v5.12, CPAN::Meta::Requirements will be installed
+      into the 'core' library path to avoid an older version bundled with
+      ExtUtils::MakeMaker and installed there taking precedence.
+
+-------------------------------------------------------------------
+Tue Jun 11 19:01:54 UTC 2013 - coolo@suse.com
+
+- rebuild for fixed perl macros
+
+-------------------------------------------------------------------
+Mon Jun  3 11:56:55 UTC 2013 - coolo@suse.com
+
+- add workaround for mismatch between rpm and perl version logic
+
+-------------------------------------------------------------------
+Thu May 31 13:00:13 UTC 2012 - coolo@suse.com
+
+- initial package 2.122
+    * created by cpanspec 1.78.06
+

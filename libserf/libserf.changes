@@ -1,0 +1,386 @@
+-------------------------------------------------------------------
+Tue Sep 18 08:18:49 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use %license for license install
+
+-------------------------------------------------------------------
+Wed Nov  8 17:52:52 UTC 2017 - astieger@suse.com
+
+- Add libserf-python3.patch and libserf-python3-2.patch to fix
+  building with python3
+
+-------------------------------------------------------------------
+Fri Apr 21 15:07:16 UTC 2017 - astieger@suse.com
+
+- do not check with time-dependent failures bsc#1035395 bsc#1031549
+
+-------------------------------------------------------------------
+Thu Sep  1 12:37:28 UTC 2016 - astieger@suse.com
+
+- Apache Serf 1.3.9:
+  * serf is now Apache Software Foundation project
+  * fix various build issues
+  * resolve a bucket (aka "memory") leak when a request bucket is
+    destroyed before it is morphed into an aggregate bucket
+  * reset state variables when resetting connection
+  * fix types of passed, but unused batons
+  * fix some usages of the openssl BIO api
+  * improve handling of bad data in the response state line
+  * support more overrides via SCons arguments
+  * adapt to OpenSSL 1.1.x api
+- drop upstream patches:
+    libserf-1.3.x-fix-comment-style.patch
+    libserf-1.3.x-fix-deflate-buckets-test.patch
+
+-------------------------------------------------------------------
+Thu Oct 23 19:46:37 UTC 2014 - andreas.stieger@gmx.de
+
+- enable running test suite:
+  * add libserf-1.3.x-fix-comment-style.patch to fix compile error
+  * add libserf-1.3.x-fix-deflate-buckets-test.patch to fix crash
+
+-------------------------------------------------------------------
+Wed Oct 22 18:24:36 UTC 2014 - andreas.stieger@gmx.de
+
+- Serf 1.3.8
+  This release fixes a problem with handling very large gzip-
+  encoded HTTP responses and disables SSLv2 and SSLv3.
+  * CRC calculation error for gzipped http reponses > 4GB.
+  * SSPI CredHandle not freed when APR pool is destroyed.
+  * Disable SSLv2 and SSLv3 as both or broken [boo#901968]
+- disable running tests due to memory leak in test fixture
+
+-------------------------------------------------------------------
+Mon Aug 11 16:07:48 UTC 2014 - andreas.stieger@gmx.de
+
+- Serf 1.3.7
+  Serf may not provide the full value for fields contained in X.509
+  certificates.  Allowing for clients to potentially improperly
+  accept certificates. 
+  * Handle NUL bytes in fields of an X.509 certificate.
+    [bnc#890510] [CVE-2014-3504]
+
+-------------------------------------------------------------------
+Mon Jun  9 18:07:29 UTC 2014 - andreas.stieger@gmx.de
+
+- Serf 1.3.6 [bnc#881902]
+  This release fixes an instability introduced in serf 1.3.5
+  * Revert r2319 from serf 1.3.5: this change was making serf call
+    handle_response multiple times in case of an error response,
+    leading to unexpected behavior.
+
+-------------------------------------------------------------------
+Sun Apr 27 22:02:02 UTC 2014 - andreas.stieger@gmx.de
+
+- Serf 1.3.5 [bnc#875382]
+  This release fixes a crash during SSL tunnel setup, fixes
+  Negotiate/Kerberos authentication in some specific scenario's and
+  brings some other small changes.
+  * Fix issue: no reverse lookup during Negotiate authentication for
+    proxies.
+  * Fix a crash caused by incorrect reuse of the ssltunnel CONNECT
+    request
+  * Cancel request if response parsing failed + authn callback set
+  * Update the expired certificates in the test suite.
+
+-------------------------------------------------------------------
+Sun Feb  9 10:57:25 UTC 2014 - andreas.stieger@gmx.de
+
+- Serf 1.3.4
+  This release fixes a race condition during OpenSSL initialisation
+  and two ssl tunnel setup failures
+  * Endless loop during ssl tunnel setup with Negotiate authn
+  * Can't setup ssl tunnel which sends Connection close header
+  * race condition when initializing OpenSSL from multiple threads
+  * Incorrect pkg-config file when GSSAPI isn't configured
+
+-------------------------------------------------------------------
+Mon Dec  9 23:04:30 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.3.3
+  This is a small patch release containing a fix to solve a problem
+  connecting to multi-homed servers (e.g. ipv4/ipv6) and some
+  improvements in the use of error codes during ssl certificate
+  validation and  handling of timed out connections.
+  * Try more addresses of multihomed servers
+  * Handle X509_V_ERR_UNABLE_TO_VERIFY_LEAF_SIGNATURE correctly
+  * Return APR_TIMEUP from poll() to enable detecting connection
+    timeouts
+
+-------------------------------------------------------------------
+Fri Oct  4 20:45:19 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.3.2
+- bugs fixed:
+  * HTTP headers should be treated case-insensitively
+  * Compilation breaks with Codewarrior compiler
+  * Fix crash during cleanup of SSL buckets in apr_terminate()
+  * Fix host header when url contains a username or password
+  * Handle authentication for responses to HEAD requests
+  * Improve serf_get: add option to add request headers, allow url 
+    with query, allow HEAD requests
+  * Improve RFC conformance: don't expect body for certain responses
+  * Do not invoke progress callback when no data was received
+  * And more test suite fixes and build warning cleanups
+- SCons-related fixes:
+  * Fix build when GSSAPI not in default include path
+  - Use both MAJOR and MINOR version for the shared library name
+   Fix the .pc file when installing serf in a non-default LIBDIR
+- drop serf-1.3.x-shlibver-soname.patch, committed upstream
+
+-------------------------------------------------------------------
+Fri Sep 27 23:05:02 UTC 2013 - andreas.stieger@gmx.de
+
+- adjust library package name, SONAME and SHLIBVER to match future
+  releases and make maintenance easier
+  serf-1.3.x-shlibver-soname.patch [bnc#842941]
+
+-------------------------------------------------------------------
+Thu Aug 15 19:53:09 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.3.1
+- bug fixes:
+  * endless loop if server doesn't accept Negotiate authentication.
+  * ssl/tls renegotiation fails
+  * error with ssl tunnel over proxy with KeepAlive off and
+    Basic authentication.
+  * Fixed bugs with authentication
+  * build system changes ( already covered by patches below )
+- packaging changes:
+  * remove make and libtool build requirements
+  * removed scons patches, committed upstream:
+    libserf-1.3.x-gssapi-libs.patch
+    libserf-1.3.x-libdir.patch
+    libserf-1.3.x-scons-check-exit.patch
+    libserf-1.3.x-soname.patch
+
+-------------------------------------------------------------------
+Sat Aug 10 18:43:17 UTC 2013 - andreas.stieger@gmx.de
+
+- update libserf-1.3.x-soname.patch to move shared library version
+  link generation into scons
+
+-------------------------------------------------------------------
+Tue Jul 30 22:38:55 UTC 2013 - andreas.stieger@gmx.de
+
+- run tests for 12.2 and later only
+
+-------------------------------------------------------------------
+Sun Jul 28 14:54:40 UTC 2013 - andreas.stieger@gmx.de
+
+- update libserf-1.3.x-soname.patch to add SHLIBVERSION to make
+  scons add a SONAME instead of a global linker flag. This is only
+  effective with scons >= 2.3
+- fix running of regression/unit test suite:
+  * add libserf-1.3.x-scons-check-exit.patch to return a non-zero
+    exist status upon check failures
+  * call scons check with CFLAGS
+
+-------------------------------------------------------------------
+Fri Jul 26 22:10:36 UTC 2013 - andreas.stieger@gmx.de
+
+- update libserf-1.3.x-gssapi-libs.patch with upstream commit,
+  mark as committed upstream
+
+-------------------------------------------------------------------
+Wed Jul 24 22:58:56 UTC 2013 - andreas.stieger@gmx.de
+
+- update Serf 1.3.0
+- improvements: 
+  * Improved Basic and Digest authentication:
+    + remember credentials on a per-server basis
+    + properly manage authentication realms
+    + continue functioning when a server sets KeepAlive: off
+  * Improved 2617 compliance: always use strongest authentication
+  * SSL connection performance improvements
+- fixed issues:
+  * use PATH rather than URI within an ssltunnel
+  * improved error reporting from the underlying socket
+  * Fixed bugs with proxy authentication and SSL tunneling through a proxy
+  * Fixed bugs the response parser
+- build system changes
+  * Switch to the SCons build system
+  * retire serfmake, serf.mak, autotools
+- Huge expansion of the test suite
+- packaging changes:
+  * use scons
+  * drop libserf-1.2.1-configure.in-add-gssapi.patch targeting old
+    build scripts
+  * add libserf-1.3.x-libdir.patch to fix hardcoded libdir
+  * add libserf-1.3.x-soname.patch to add soname
+  * add libserf-1.3.x-gssapi-libs.patch for libs in pkgconfig file
+
+-------------------------------------------------------------------
+Tue Jun  4 06:22:02 UTC 2013 - andreas.stieger@gmx.de
+
+- update to Serf 1.2.1
+  * Fix issue 95: add gssapi switches to configure
+  * Fix issue 97: skip mmap bucket if APR_HAS_MMAP is undefined
+  * Fix issue 102: digest authentication failures
+  * Improve error return values in SSPI authentication
+  * Ensure serf-1.pc is constructed by serfmake
+  * Optimize SPNego authentication processing
+  * Reject certs that application does not like
+  * Fix possible endless loop in serf_linebuf_fetch()
+- replace libserf-1.2.0-configure.in-add-gssapi.patch (committed 
+  upstream) with libserf-1.2.1-configure.in-add-gssapi.patch
+  (still changes required as patch was changed upstream)
+
+-------------------------------------------------------------------
+Sat Feb 23 11:01:38 UTC 2013 - andreas.stieger@gmx.de
+
+- update to Serf 1.2.0
+  This release contains many robustness fixes, especially around flaky
+  and problematic connections.
+  * Fixed issue 94: Serf can enter an infinite loop when server aborts conn.
+  * Fixed issue 91: Serf doesn't handle an incoming 408 Timeout Request
+  * Fixed issue 80: Serf is not handling Negotiate authentication correctly
+  * Fixed issue 77: Endless loop if server doesn't accept Negotiate authn
+  * Fixed issue 93: cleanup-after-fork interferes with parent
+  * Fixed most of issue 89: Support REAL SPNEGO authentication
+  * Enable Negotiate/Kerberos support for proxy servers.
+  * Return error when C-L, chunked, gzip encoded response bodies where
+    truncated (due to aborted connection)
+  * Add a logging mechanism that can be enabled at compile-time.
+  * Don't lookup server address if a proxy was configured.
+  * Fix an off-by-one in buffer sizing
+  * Disable SSL compression by default + API to enable it
+  * New serf_connection_get_latency() for estimated network latency
+  * New error code and RFC compliance for the HTTPS tunnel
+  * Handle EINTR when a user suspends and then backgrounds the app
+  * Minor fixes and test suite improvements.
+- add libserf-1.2.0-configure.in-add-gssapi.patch to support gssapi
+  with configure
+- make requirement for apr >= 1.3.0 explicit
+
+----------------------------------------------------------------
+Thu Oct  4 21:45:29 UTC 2012 - andreas.stieger@gmx.de
+
+- update to Serf 1.1.1
+  This patch release contains fixes for some important connection
+  stability issues.
+  * ensure requeued requests are correctly handled. This fixes:
+    - infinite loop with multiple connection resets or SIGPIPE errors
+    - "connection" hang where we would not re-queue requests that are held after
+      we re-connect
+  * test_all goes in an endless loop
+  * Fix memory leak when conn. is closed explicitly/due to pool cleanups
+  * Add new error codes for the SSL bucket
+
+-------------------------------------------------------------------
+Thu Jun  7 20:54:34 UTC 2012 - andreas.stieger@gmx.de
+
+- update to upstream Serf 1.1.0
+  New: serf_bucket_request_set_CL() for C-L based, non-chunked requests
+  New: serf_ssl_server_cert_chain_callback_set() for full-chain validation
+
+-------------------------------------------------------------------
+Tue Mar 20 20:07:43 UTC 2012 - andreas.stieger@gmx.de
+
+- update to upstream 1.0.3 (1.0.2 was not released)
+- changes in Serf 1.0.3:
+  Map more OpenSSL errors into SERF_SSL_CERT_UNKNOWNCA 
+
+-------------------------------------------------------------------
+Thu Mar 15 07:26:35 UTC 2012 - andreas.stieger@gmx.de
+
+- move headers into /usr/include/serf-1 to match what subversion 
+  configure script expects
+
+-------------------------------------------------------------------
+Thu Feb 23 21:51:49 UTC 2012 - andreas.stieger@gmx.de
+
+- update to upstream 1.0.1
+- license is Apache-2.0
+- changes in Serf 1.0.1:
+  * FreeBSD fixes in the test suite
+  * Minor build fixes
+- changes Serf 1.0.0:
+  * Fixed issue 38: enable builds using non-GNU make
+  * Fixed issue 49: support SSL tunnels for HTTPS via a proxy
+  * Fixed issue 56: allow Subject Alternative Name, and enable SNI
+  * Fixed issue 61: include order dependencies
+  * Fixed issue 66: improved error reporting when creating install dirs
+  * Fixed issue 71: handle ECONNREFUSED on Windows
+  * Fixed issue 79: destroy the APR allocator, if we create one
+  * Fixed issue 81: build failed on APR 0.9.x
+  * Major performance improvements and bug fixes for SSL buckets/handling
+  * Add a new "iovec" bucket type (r1434)
+  * Minimize network packet writes based on ra_serf analysis
+  * Fix out of order issue with multiple priority requests
+  * Work around broken WSAPoll() impl on Windows introduced in APR 1.4.0
+  * Fix 100% CPU usage with many pipelined requests
+  * Corrected contents of build/serf.def; it now includes bucket types
+  * Removed "snapshot" feature from buckets
+  * Various improvements to the test system
+  * Various memory leak fixes
+
+-------------------------------------------------------------------
+Tue Jan 31 10:42:34 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+
+-------------------------------------------------------------------
+Fri Jul 29 13:10:31 UTC 2011 - andreas.stieger@gmx.de
+
+- update to upstream 0.7.2
+- changes in 0.7.2:
+  * Actually disable Nagle when creating a connection (r1441).
+  * Return error when app asks for HTTPS over proxy connection (r1433).
+- changes in 0.7.1
+  Fix memory leak when using SSL (r1408, r1416).
+  Fix build for blank apr-util directory (r1421).
+- changes in 0.7.0
+  Fix double free abort when destroying request buckets.
+  Fix test server in unit test framework to avoid random test failures.
+  Allow older Serf programs which don't use the new authn framework to still
+    handle authn without forcing them to switch to the new framework. (r1401)
+  Remove the SERF_DECLARE macros, preferring a .DEF file for Windows
+  Barrier buckets now pass read_iovec to their wrapped bucket.
+  Fix HTTP header parsing to allow for empty header values.
+- changes in 0.6.1
+  Generally: this release fixes problems with the 0.4.0 packaging.
+  Small compilation fix in outgoing.c for Windows builds.
+- changes in 0.4.0
+  [NOTE: this release misstated itself as 0.5.0; use a later release instead]
+  Provide authn framework, supporting Basic, Digest, Kerberos (SSPI, GSS),
+    along with proxy authn using Basic or Digest
+  Added experimental listener framework, along with test_server.c
+  Improvements and fixes to SSL support, including connection setup changes
+  Experimental support for unrequested, arriving ("async") responses
+  Experimental BWTP support using the async arrival feature
+  Headers are combined on read (not write), to ease certian classes of parsing
+  Experimental feature on aggregate buckets for a callback-on-empty
+  Fix the bucket allocator for when APR is using its pool debugging features
+  Proxy support in the serf_get testing utility
+  Fix to include the port number in the Host header
+  serf_get propagates errors from the response, instead of aborting (Issue 52)
+  Added serf_lib_version() for runtime version tests
+- changes in 0.3.1
+  Fix loss of error on request->setup() callback. (Issue 47)
+  Support APR 2.x. (Issue 48)
+  Fixed slowdown in aggregate bucket with millions of child buckets.
+  Avoid hang in apr_pollset_poll() by unclosed connections after fork().
+
+-------------------------------------------------------------------
+Sun Apr 11 14:26:54 CEST 2010 - dmueller@suse.de
+
+- fix dependencies of libserf-devel package
+
+-------------------------------------------------------------------
+Sun Apr 11 14:26:03 CEST 2010 - dmueller@suse.de
+
+- created .changes:
+  * Sun Jun 21 2009 Pascal Bleser <pascal.bleser@opensuse.org> 0.3.0
+  - update to 0.3.0:
+    * fix small race condition in OpenSSL initialization (Issue 39)
+    * handle content streams larger than 4GB on 32-bit OSes (Issue 41)
+    * fix conn close segfault by explicitly closing conn when pool is destroyed
+    * expose the depth of the SSL certificate so the validator can use that info
+    * fix socket address family issue when opening a connection to a proxy
+    * provide new API to take snapshots of buckets
+    * implement snapshot API for simple and aggregate buckets
+
+  * Mon Aug  4 2008 Pascal Bleser <guru@unixtech.be> 0.2.0
+  - new package

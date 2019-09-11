@@ -1,0 +1,19 @@
+--- configure.in.orig	2012-07-11 11:23:42.000000000 +0300
++++ configure.in	2013-03-23 00:05:48.438634078 +0200
+@@ -25,7 +25,7 @@
+ AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
+ 
+ # Specify a configuration file
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ dnl Initialize libtool
+ AM_PROG_LIBTOOL
+@@ -35,7 +35,6 @@
+ 
+ # Checks for programs.
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_PROG_INSTALL
+ AC_CHECK_FUNCS([gettimeofday])
+ AC_CHECK_FUNCS([modf])

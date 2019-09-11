@@ -1,0 +1,703 @@
+-------------------------------------------------------------------
+Fri Nov 30 13:21:44 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  * Always initialize head of simple linked list (bsc#1098697)
+  * stat(2) on binary does not see subvol dev
+
+-------------------------------------------------------------------
+Wed Nov 14 07:44:55 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  to handle sub volumes of the btrFS (bsc#1112780) 
+
+-------------------------------------------------------------------
+Mon Nov  5 07:48:25 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch 0002-Use-new-statx-2-system-call-to-avoid-hangs-on-NFS.patch
+  to support older systems with statx kernel support 
+
+-------------------------------------------------------------------
+Fri Nov  2 13:37:49 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  to respect autofs as well as afs file system 
+- Add patch 0002-Use-new-statx-2-system-call-to-avoid-hangs-on-NFS.patch
+  to use statx(2) system call since kernel 4.12. Now it is possible
+  to avoid sync with remote file servers as well as trigger autofs
+  mounts due stat(x) calls.
+
+-------------------------------------------------------------------
+Tue Oct 23 10:10:12 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Support also btrFS entries in mountinfo, that is use stat(2) to
+  determine the device of the mounted subvolume (bsc#1098697, bsc#1112780) 
+
+-------------------------------------------------------------------
+Mon Oct 22 10:52:10 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 23.2
+  * misc: Command names increased from 16 to 64 characters
+  * buildsys: signals.c depends on signames.h !16
+  * docs: Fix fuser.1 groff errors Debian #900225
+  * killall: look at all namespaces by default
+  * killall: Fix -INT option parsing #11
+  * killall: ignore -n 0 #15
+  * killall: another crack at fixing getopt #12 #13
+  * peekfd: Attach to all threads option !15
+  * pslog: Define PATH_MAX if required Debian:#905797
+- Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+- Remove patches now upstream solved
+  * psmisc-23.0-killall-signals.patch
+  * psmisc-23.0-killall.patch
+- Modify and rename patch psmisc-23.0.dif which now becomes psmisc-v23.2.dif
+
+-------------------------------------------------------------------
+Mon Sep 17 12:08:31 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Add COPYING to file list as otherwise a required fix does not
+  reach anything
+
+-------------------------------------------------------------------
+Fri Jun 22 16:33:00 UTC 2018 - werner@suse.de
+
+- Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  to make fuser option -m <block_device> work even with mountinfo
+  (bsc#1098697)
+
+-------------------------------------------------------------------
+Thu May 17 10:32:53 UTC 2018 - werner@suse.de
+
+- Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  to let fuser -m also work for private mounts as well (boo#1093665)
+
+-------------------------------------------------------------------
+Fri Oct 13 07:10:39 UTC 2017 - werner@suse.de
+
+- Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  to run even on older kernels missing mnt_id tag in fdinfo 
+
+-------------------------------------------------------------------
+Mon Sep 18 10:17:52 UTC 2017 - werner@suse.de
+
+- Add patch psmisc-23.0-killall-signals.patch to fix boo#1058990
+  by prior scanning for signal names in the arguments of killall 
+
+-------------------------------------------------------------------
+Thu Jul  6 13:59:36 UTC 2017 - werner@suse.de
+
+- Update patch
+  0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch 
+
+-------------------------------------------------------------------
+Wed Jul  5 13:24:01 UTC 2017 - werner@suse.de
+
+- Remove patches
+  * psmisc-22.21-lessnfs.patch
+  * psmisc-22.21-mntpt.patch
+  * psmisc-23.0-net.patch
+- Add patch
+  0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  from https://gitlab.com/bitstreamout/psmisc/tree/mountinfo
+  which is a heavily rework fuser used on NFS
+  * Use mountinfo to be able to use the mount identity
+    which allows to distinguish different mounts with the
+    same device number as it happens with NFS shares.
+  * Smaller cleanup as support of chroot environments
+    and older systems.
+  * Add support for name_to_handle_at() system call to
+    get the real mount ID for each file
+- Use test suite of psmisc in %check rpm section
+
+-------------------------------------------------------------------
+Wed Jun 28 13:11:49 UTC 2017 - werner@suse.de
+
+- Add patch psmisc-23.0-net.patch to reenable network support
+  broken to my own upstream commit 
+
+-------------------------------------------------------------------
+Wed Jun 28 10:00:16 UTC 2017 - werner@suse.de
+
+- Add patch psmisc-23.0-killall.patch to remove left over debug
+  output in killall utility (boo#1046237) 
+
+-------------------------------------------------------------------
+Tue Jun 20 15:06:43 UTC 2017 - werner@suse.de
+
+- Update to version 23.0
+  * killall: Fix process age race condition !11 Debian #822861
+  * killall: only use scope of current namespace by default
+  * killall: better parsing of command names
+  * pstree: add cgroup namespaces !10
+  * peekfd: Help give long options too !5
+  * killall: correctly report when 32+ procs match !8
+  * prtat: Remove duplicate options in man page !3 Debian #846387
+  * pslog: New program to check what logs are open merge !1
+  * fuser: increase path length for octal escaping SF [#37]
+  * Make usage of linked lists of devices found in
+    /proc/self/mountinfo optional
+  * Make timeout() in timeout.c work with shared mmap to
+    reduce the load due write/read the stat buffers
+  * Add list_sort() to lists.h to be able to sort lists
+  * fuser: Fixed typo for  -M flag. Debian #740275
+  * pstree: by default doesn't show threadnames, use -t to show
+    as it disables compaction. SF [#33] Debian #815902
+  * pstree: Removed need for PATH_MAX Debian #750405
+  * pstree: ignores disappeared processes. SF [#34]
+  * killall: -o and -y work with -r flags. SF [#64]
+  * m4/gettext.m4: Upgrade to gettext-0.19.4.
+  * m4/iconv.m4: Upgrade to gettext-0.19.4.
+  * m4/lib-ld.m4: Upgrade to gettext-0.19.4.
+  * m4/lib-link.m4: Upgrade to gettext-0.19.4.
+  * m4/lib-prefix.m4: Upgrade to gettext-0.19.4.
+  * m4/nls.m4: Upgrade to gettext-0.19.4.
+  * m4/po.m4: Upgrade to gettext-0.19.4.
+  * m4/progtest.m4: Upgrade to gettext-0.19.4.
+  * configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.19.4.
+- Make it build, that is create a po/POTFILES.in
+- Remove obsolete patches
+  * psmisc-22.21-boo908063.patch
+  * psmisc-22.12-tigetstr.patch
+  * psmisc-22.21-upstream.patch
+  * psmisc-git-3638cc55b4d08851faba46635d737b24d016665b.patch
+- Rename patch psmisc-22.21.dif which becomes psmisc-23.0.dif
+- Make /bin/fuser a symblic link of /usr/bin/fuser (boo#1029973)
+- Last revision was 78
+
+-------------------------------------------------------------------
+Tue Jun 20 14:00:36 UTC 2017 - werner@suse.de
+
+- Modify psmisc-22.21.dif to enforce the usage of `m' flag in
+  sscanf() instead of `a' for allocation. Also avoid to small
+  buffers and include sys/sysmacros.h for makedev macro.
+- Add the patch psmisc-22.21-lessnfs.patch to support device
+  files of mount points as well (boo#1044638)
+- Add the patch psmisc-22.21-mntpt.patch to do strinfg comparision
+  only for NFS shares
+
+-------------------------------------------------------------------
+Thu May 21 13:39:34 UTC 2015 - schwab@suse.de
+
+- Replace negative list %nopeek with positive list %have_peekfd
+
+-------------------------------------------------------------------
+Tue Mar 24 11:58:08 UTC 2015 - werner@suse.de
+
+- Add patch psmisc-22.21-boo908063.patch to avoid to close files
+  which are never open (boo#908063) 
+
+-------------------------------------------------------------------
+Fri Apr 25 00:59:39 CEST 2014 - ro@suse.de
+
+- add patch to fix fuser -M option active all the time (bnc#874983)
+  psmisc-git-3638cc55b4d08851faba46635d737b24d016665b.patch
+
+-------------------------------------------------------------------
+Mon Mar 24 16:01:51 UTC 2014 - werner@suse.de
+
+- Update to version 22.21
+  * Missing comma in fuser(1) added Debian #702391
+  * pstree uses COLUMN env variable Debian #717017
+  * pstree shows proper thread names SF Bug#57
+  * pstree shows namespace options SF Patch#30
+  * killall.1 minor fixes SF Bug#59
+  * peekfd for m68k SF Patch#31
+  * Fixing some derefefed pointers SF Patch#32
+  * Minor typos in man pages SF Bug#61 Bug#60
+  * fuser -m and -M flags work either way Debian #606178
+- Remove patch
+  psmisc-22.20-pstree.patch as now part of upstream
+  peekfd-m68k.patch as now part of upstream
+- Port the patches
+  psmisc-22.20-upstream.patch which becomes psmisc-22.21-upstream.patch
+  psmisc-22.20.dif which becomes psmisc-22.21.dif
+  psmisc-22.12-pstree.patch which becomes psmisc-22.21-pstree.patch
+
+-------------------------------------------------------------------
+Wed Oct 23 14:35:46 UTC 2013 - p.drouand@gmail.com
+
+- Remove %fillup_prereq %insserv_prereq PreReq; package provides
+  neither sysconfigfile or sysvinit script
+- Use %lang_package instead of define a lang subpackage manually
+- Use %configure instead of ./configure
+- Don't define CC and CXX flags manually
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Wed Oct  9 12:33:26 UTC 2013 - schwab@suse.de
+
+- peekfd-m68k.patch: Port peekfd to m68k
+
+-------------------------------------------------------------------
+Sat Feb  9 12:46:46 UTC 2013 - schwab@suse.de
+
+- peekfd hasn't been ported to aarch64 yet
+
+-------------------------------------------------------------------
+Tue Dec 18 17:16:02 UTC 2012 - werner@suse.de
+
+- Update to version 22.20 + upstream patch 
+  * Make usage of linked lists of devices found in
+    /proc/self/mountinfo optional
+  * Make timeout() in timeout.c work with shared mmap to
+    reduce the load due write/read the stat buffers
+  * Add list_sort() to lists.h to be able to sort lists
+  * pstree sorts properly on names Debian #682014
+  * fuser -m regresion fixed SF #3559232, thanks to hanpt
+  * pstree finds orphaned processes SF#3537508
+  * fuser finds unix sockets again SF #3502649
+  * pstree finds pid 0 stops looping Debian #687829
+  * killall with no args exits again SF #3536526
+  * Added AC_CANONICAL_TARGET for target_os Debian #673485
+  * sed doesn't have [0-9]+ replace with [0-9][0-9]*
+  * assert in killall triggered for small lifetimes Debian #628617
+  * killall MAX_NAMES off by one Debian #677428
+  * Removed remaining parts of pidof
+  * fuser uses correct timeout_stat define Debian #661723
+  * fuser is not compiled on hurd-i386 Debian #673485
+  * No TEXTRELS in src/lists built as PIE on x86
+  * Fake pstree root for kernels with hidepid turned on
+  * More fixes for Cygwin SF Patch #3511920
+  * pstree can show PGIDs SF Patch #3471056
+- This should fix the bug reported by Madhu
+
+-------------------------------------------------------------------
+Tue Mar 13 15:26:37 UTC 2012 - werner@suse.de
+
+- Submit ASCII null fix in pstree upsrtream
+- Submit support for static background process for stat system call
+  upstream
+- Rebuild package with upstream patches
+
+-------------------------------------------------------------------
+Mon Feb 27 17:43:46 UTC 2012 - werner@suse.de
+
+- Update to version 22.16
+  * Use strncpy for COMM_LEN and make it 18 characters to cover
+    brackets in name.
+  * don't change COMM_LEN, it breaks matching long commands
+    Debian #661145
+  * Enable some harden AM_CFLAGS by default, use configure option
+    --disable-harden-flags to not use it.
+  * Use ENOENT not EBADE for FreeBSD Debian #631566
+  * Fix prstat typos
+  * Stop zombies by using waitpid Ubuntu #876387 by Peter Holik, SF#3429674
+  * Fixed minor older/younger typo in killall.1 thanks to Maikel Linke
+  * Correct defines for timeout in configure.ac
+
+-------------------------------------------------------------------
+Thu Dec  1 15:57:50 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Oct 11 15:36:40 UTC 2011 - werner@suse.de
+
+- Use __builtin___strcpy_ instead of __builtin___strcpy_chk to avoid
+  trouble with char path[0] tag in struct handle (bnc#723304)
+
+-------------------------------------------------------------------
+Fri Oct  7 14:08:31 UTC 2011 - werner@suse.de
+
+- Make main fuser process more robust against broken pipe and check
+  for helper process within a SIGCHLD handler
+
+-------------------------------------------------------------------
+Wed Oct  5 09:47:38 UTC 2011 - werner@suse.de
+
+- Handle internal size of structure stat by including config.h
+  to avoid size missmatch during copy result back (bnc#720882)
+
+-------------------------------------------------------------------
+Mon Oct  3 10:56:19 UTC 2011 - mmarek@suse.cz
+
+- Fix segfault in pstree, patch by Tetsuo Handa (bnc#718915).
+
+-------------------------------------------------------------------
+Wed Sep 28 10:43:03 UTC 2011 - coolo@suse.com
+
+- back out the timeout patch, it breaks fuser on i586 completely
+  (bnc#720882)
+
+-------------------------------------------------------------------
+Mon Sep 12 14:28:38 UTC 2011 - werner@suse.de
+
+- Update to pre version 22.15
+  + Really apply patch for SF#31110178 RH#651794
+  + Conditionally use fork before stat calls
+  + Patch from Corrina Vinschen for compiling on cygwin
+  + Remove doubled content in src/lists.h
+  + Add another 2 for thread brackets in pstree.c
+- Change fork before stat calls to be in best case a second process
+  using two pipes for bidirectional communication with main.
+
+-------------------------------------------------------------------
+Tue Jun 21 15:56:45 CEST 2011 - werner@suse.de
+
+- Update to version 22.14:
+  + Fix file descriptor as weel as memory leaks in fuser
+  + Strip @ symbol from file names read from /proc/net/unix
+  + Above 2 changes close openSuSE bugs #536209, #529520, and #417841
+    and provided by Werner Fink
+  + Applied patch from Werner Fink to avoid stat(2) on NFS mounts
+  + Zeros process group memory - Patch by jgorig SF#3152925 RH#666213
+  + fuser -m -s flags work - Patch by jgorig SF#31110178 RH#651794
+  + fuser silent if /proc/swaps not available SF#3072134
+  + ppc 64 support for peekfd by jgorig SF#3166444
+  + jiffies now ULL in killall SF#3138538
+  + pstree can show parents of a process. Patch supplied by Curtis
+    Hawthorne SF#3135157
+  + killall creates right size buffer instead of MAX_PATH Debian #623425
+  + check for /proc/$$/stat not /proc/self/stat which is not available
+    on hurd platforms. Same Debian bug as above
+  + fuser understands IPv6 addresses, removed comment in fuser.1 that it
+    doesn't Debian #609904
+  + fuser -k only returns 0 if you kill something.
+  + fuser doesn't complain if /proc/#/fd disappears SF#3310990
+
+-------------------------------------------------------------------
+Tue Feb  8 17:43:57 CET 2011 - werner@suse.de
+
+- Now use /proc/self/mountinfo to minimize the needs of running
+  stat(2) system calls.  The remaining stat(2) system calls are
+  wrapped by an timeout function.
+
+-------------------------------------------------------------------
+Fri Oct 15 12:36:16 CEST 2010 - werner@suse.de
+
+- Add fix from upstream for a crash in peekfd
+
+-------------------------------------------------------------------
+Sun Sep 19 10:36:02 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 22.13:
+  + configure patch for x86_64 properly applied sf#3029302.
+  + patch configure so pt_regs isn't used on SuperH. deb#588986
+  + Fixed configure.ac so only mipsel not mips compiles peekfd
+- Remove part of psmisc-22.12.dif that is upstream.
+- Remove AutoReqProv: it's default now.
+
+-------------------------------------------------------------------
+Tue Jul 13 18:47:35 CEST 2010 - werner@suse.de
+
+- Update to psmisc-22.12
+  * In fuser, switched the ipv6 and ipv4 checks around Debian #581604
+  * peekfd configure patch for x86_64 SF#2986027
+  * peekfd works with ARM and MIPS thanks to patch by Arnaud Patard
+  * peekfd off-by-one patch applied SF#1948351
+  * pstree -a doesn't segfault on grsec kernels Debian #588152
+  * Another attempted at killall -SIGNAME Debian #573924
+  * fuser -k -m ... won't kill itself Debian #562767
+  * fuser -NAME fixed SF #2924691, Debian #563388, Gentoo #297423
+  * Added locale.h include for killall on non NLS SF #2922163
+  * Reversed normal file fuser -k check Debian #563387
+  * short option l returned in fuser Debian #539087
+  * long options terminated with 0s Debian #551833
+  * fuser only kills normal processes, patch thanks to Erik Li SF# 2892724
+  * New fuser -M if you REALLY want mount points, patch thanks to
+    Jeremie LE HEN SF#2899709
+  * Fixed killall options for VTALRM and ILL Debian #559011
+  * pstree -a does not compact threads Debian #525632
+  * new program prtstat which prints contents of /proc/<pid>/stat 
+    Debian #281706
+  * killall restricts by date. Thanks to George Danchev Debian #544657
+  * long options terminated in pstree too to stop segfault
+  * Re-worked fuser getopt again so -KILL options work Gentoo #297423
+  * Fix off-by-one overflow in pstree SF# 2832375
+  * Applied patch from Kari Hautio for lazy umount'ed filesystems SF#2545632
+  * Applied patch from Anonymous SF submitter to fix killall -l
+    Fixes SF#2002570
+  * fuser will print mounts,nfs exports and swaps with -v Debian #356655
+    and SF#533958
+  * pstree and fuser have long options Debian #517412
+  * Fixed pstree -a off-by-one error in buffer, Debian #536243
+  * Changed configure.ac to not use CXX SF# 2789801
+
+-------------------------------------------------------------------
+Tue Jul  6 06:30:24 UTC 2010 - bg@novell.com
+
+- peekfd is not available on hppa
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Thu Mar  4 02:24:15 CET 2010 - ro@suse.de
+
+- fix overflow crash in pstree: add 2 to COMM_LEN for {...}
+  brackets for threads
+
+-------------------------------------------------------------------
+Sun Dec  6 15:07:16 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+- do not package peekfd on SPARC (it is not built)
+
+-------------------------------------------------------------------
+Mon Oct 12 17:15:37 CEST 2009 - werner@suse.de
+
+- Detect current cwd to be able to compare local files (bnc#540927)
+
+-------------------------------------------------------------------
+Fri Oct  9 18:58:25 CEST 2009 - werner@suse.de
+
+- Yet an other fix for NFS based file detection in fuser
+
+-------------------------------------------------------------------
+Fri Oct  9 08:20:29 UTC 2009 - aj@suse.de
+
+- fix pstree -a crash (bnc#545265) with patch backported from 22.8
+  by Björn Voigt <bjoern@cs.tu-berlin.de>.
+
+-------------------------------------------------------------------
+Thu Sep 10 10:21:09 CEST 2009 - werner@suse.de
+
+- For future use fix fd leak reported by  David Binderman (bnc#536209)
+
+-------------------------------------------------------------------
+Mon Aug 10 11:27:07 CEST 2009 - werner@suse.de
+
+- Close file descriptor leak (bnc#529520)
+
+-------------------------------------------------------------------
+Fri Jul 10 19:28:53 UTC 2009 - jansimon.moeller@opensuse.org
+
+- Add ARM to nopeek
+
+-------------------------------------------------------------------
+Mon May 25 13:43:53 CEST 2009 - werner@suse.de
+
+- Remove oldfuser from file list
+
+-------------------------------------------------------------------
+Mon May 11 14:04:09 CEST 2009 - werner@suse.de
+
+- Update to psmisc-22.7
+  * Updated Polish, Russian, Swedish and Indonesian PO files
+  * Changed fuser.1 so signal is SIGNAL to reduce confusion about wether
+    or not it is a parameter Debian #517413
+  * fuser.1 references pkill(1) Debian #517414
+  * Added Chinese (traditional) PO file
+  * Updated Russian PO file
+  * Clarified -m and -c for fuser Debian #467289
+  * Patch from Arnaud Giersch to fix udp ports in fuser Debian #502208
+  * pstree man page mentions -Z may not be available Debian #478327
+  * pstree handles UTF-8 lengths much better Debian #413503
+  * killall says no process found when process not found Debian #500097
+  * pstree makes a bigger buffer for -al flags Debian #352603
+  * Dynamically reallocate buffer for fuser patch from Don Armstrong
+  * Updated Indonesian PO file
+  * peekfd off by one problem in fds Debian #460530
+  * Patch from Marcus Watts for better comm handling in pstree
+  * Updated Hungarian po file
+  * Updated French and German po files
+  * Fuser -m detects more open sockets SF patch #1728412 Thnks marienz
+  * Updated Italian, Chinese simplified, Dutch, Swedish and Polish po files
+  * Removed old fuser
+- Adapt our patches
+
+-------------------------------------------------------------------
+Fri Mar 27 16:56:24 CET 2009 - werner@suse.de
+
+- nfs4fuser: do not match on shadow mounts
+- resolve some memory leaks in fuser
+
+-------------------------------------------------------------------
+Thu Mar 12 10:23:12 CET 2009 - werner@suse.de
+
+- nfs4fuser: be able to detect the root file system (bnc#464295)
+
+-------------------------------------------------------------------
+Wed Mar 11 14:24:06 CET 2009 - werner@suse.de
+
+- nfs4fuser: make sure not to stumble on short named mount points
+  to avoid to terminate processes on wrong mount points
+
+-------------------------------------------------------------------
+Thu Oct  9 16:35:51 CEST 2008 - werner@suse.de
+
+- Make compiler happy: Don't compare pointer with zero (bnc#432986)
+
+-------------------------------------------------------------------
+Wed Oct  1 16:39:27 CEST 2008 - werner@suse.de
+
+- Avoid stat(2) for all network based file systems (bnc#409011)
+
+-------------------------------------------------------------------
+Tue Sep 23 15:30:58 CEST 2008 - werner@suse.de
+
+- Enhance NFS patch for fuser (bug #409011)
+
+-------------------------------------------------------------------
+Mon Sep  1 15:10:43 CEST 2008 - werner@suse.de
+
+- Do not leak on /proc/net/unix (bnc#417841)
+- Read /proc/net/unix and /proc/mounts only once
+
+-------------------------------------------------------------------
+Fri Aug 22 17:12:24 CEST 2008 - prusnak@suse.cz
+
+- enabled SELinux support [Fate#303662]
+
+-------------------------------------------------------------------
+Thu Aug  7 15:12:14 CEST 2008 - werner@suse.de
+
+- Refine NFS patch
+- Add option -w for killing only procs with write access
+
+-------------------------------------------------------------------
+Fri May 16 17:19:31 CEST 2008 - werner@suse.de
+
+- Add a warning about fusers option -m due NFS locks
+- Strip @ symbol from file names read from /proc/net/unix
+
+-------------------------------------------------------------------
+Wed Dec 19 18:46:56 CET 2007 - werner@suse.de
+
+- Enhance NFS patch for fuser (bug #346776)
+
+-------------------------------------------------------------------
+Fri Dec 14 14:18:03 CET 2007 - werner@suse.de
+
+- Update to psmisc-22.6
+  * killall.1 mentions you can use -SIGxxx as well as just -XXX for
+    signal Debian #431082
+  * Added support for PPC architecture for peekfd
+  * Updated the Chinese simplified po file
+  * Added support for x86_64 architecture for peekfd
+  * Added Chinese simplified po file
+  * Updated Dutch, Vietnamese, Polish and Italian translations
+  * Patch for peekfd from Benno Schulenberg
+  * Fixed up NLS for fuser, patch from Benno Schulenberg
+  * killall asks for Signal (procname) if not SIGTERM
+
+-------------------------------------------------------------------
+Thu Oct  4 23:40:19 CEST 2007 - bg@suse.de
+
+- Disable peekfd on hppa
+
+-------------------------------------------------------------------
+Thu Apr 26 17:02:11 CEST 2007 - werner@suse.de
+
+- Args, peekfd is ix86 specific, disable on other architectures
+
+-------------------------------------------------------------------
+Thu Apr 26 15:36:37 CEST 2007 - werner@suse.de
+
+- Update to psmisc-22.5
+  * fuser tcp works on 64bit
+  * Added new tool peekfd
+  * killall uses /proc/<pid>/exe if inode comparision fails
+  * fuser correctly parses remote tcp ports
+- Patched fuser to avoid to be locked on stalled NFS (bug #166912)
+
+-------------------------------------------------------------------
+Thu Mar 29 12:24:57 CEST 2007 - rguenther@suse.de
+
+- Add ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep 15 11:37:34 CEST 2006 - werner@suse.de
+
+- Update to psmisc version 22.3 which includes the previous fixes
+
+-------------------------------------------------------------------
+Wed Feb  8 11:51:52 CET 2006 - max@suse.de
+
+- Fix exit code of fuser in silent mode [#148563].
+
+-------------------------------------------------------------------
+Fri Jan 27 13:50:20 CET 2006 - mmj@suse.de
+
+- Fix finding AF_UNIX sockets [#142342]
+- Fix minor nits with net_*
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:51 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:14 CET 2006 - mmj@suse.de
+
+- Update to psmisc-22.1 including:
+  * Updated PO files
+  * fuser signals eg -INT work better
+  * removed space out of fuser man page for -signal
+  * fuser -s flag works
+  * fix grep lines in Makefile for i386 arches
+
+-------------------------------------------------------------------
+Fri Dec 16 13:33:48 CET 2005 - mmj@suse.de
+
+- update to psmisc-21.9 including:
+  * Fixed install-exec-hook so only symlink pstree.x11 if file does
+    not exist already.
+  * buffer overflow in killall scanf removed
+  * Fixed segfault in pstree -a
+  * fuser can not use IPv6, for things like uClibc
+  * configure has --disable-ipv6 for above
+  * fuser finds unix sockets
+  * fixed print_matches to only print unmatched objects if -a is
+    specified and to output the header for -v
+  * fixed argument parsing to handle groups like -av again
+
+-------------------------------------------------------------------
+Fri Dec  9 09:59:36 CET 2005 - ro@suse.de
+
+- disable selinux
+
+-------------------------------------------------------------------
+Tue Nov  8 09:26:15 CET 2005 - mmj@suse.de
+
+- add patch to fix print_matches and commandline arguments parsing
+
+-------------------------------------------------------------------
+Sun Nov  6 17:54:33 CET 2005 - mmj@suse.de
+
+- fuser returns 1 if no match found like before [#132180]
+
+-------------------------------------------------------------------
+Tue Nov  1 10:19:32 CET 2005 - mmj@suse.de
+
+- Update to psmisc-21.7
+
+-------------------------------------------------------------------
+Mon Aug  8 11:18:07 CEST 2005 - meissner@suse.de
+
+- fixed buffer overflow in -k failure case with pids >= 10000
+
+-------------------------------------------------------------------
+Mon Aug 16 11:39:28 CEST 2004 - garloff@suse.de
+
+- Update to psmisc-21.5:
+  * bugs fixed: UTF-8 line truncation (SF#757164), ss_family 
+    (SF#845292), docu (fuser, ...)
+  * POSIX compat: -m option, ignore -f, fuser output, case
+    insensitive options for -I.
+  * Cleanups: dev_t and ino_t usage, automake update
+  * pstree -A(SCII) flag
+- Rediff patches.
+
+-------------------------------------------------------------------
+Tue Jul 20 09:55:28 CEST 2004 - schwab@suse.de
+
+- Use autoreconf.
+
+-------------------------------------------------------------------
+Sun Apr  4 20:05:18 CEST 2004 - kukuk@suse.de
+
+- Add split alias [Bug #38279]
+
+-------------------------------------------------------------------
+Sun Feb 15 01:55:14 CET 2004 - stepan@suse.de
+
+- update to v21.4
+
+-------------------------------------------------------------------
+Sat Feb 14 16:47:09 CET 2004 - kukuk@suse.de
+
+- Split from ps package
+

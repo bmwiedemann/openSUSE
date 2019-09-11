@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Thu Dec  6 16:26:44 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.52
+   see /usr/share/doc/packages/perl-Test-WWW-Mechanize/Changes
+
+  1.52    Wed Dec  5 10:00:56 CST 2018
+  ------------------------------------
+  [ENHANCEMENTS]
+  click_ok() method can now take a button with X/Y coordinates.
+  Thanks to GitHub user @marderh.  (GH #45)
+  
+  Added the ability to modify the HTML that the html_tidy_ok() validates.
+  See the content_for_validation() method. (GH #61)
+  
+  Add a set of methods for existence of IDs: id_exists(), id_exists_ok(),
+  ids_exist_ok(), lacks_id_ok() and lacks_ids_ok(). (GH #48)
+  
+  Add button_exists(), button_exists_ok() and lacks_button_ok()
+  methods.  (GH #50)
+  
+  [FIXES]
+  Clarified warnings to make it clear that certain modules are
+  optional. Thanks, Matthew Chae.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:00:00 UTC 2018 - coolo@suse.com
+
+- updated to 1.50
+   see /usr/share/doc/packages/perl-Test-WWW-Mechanize/Changes
+
+-------------------------------------------------------------------
+Fri Dec 30 07:24:17 UTC 2016 - coolo@suse.com
+
+- updated to 1.48
+   see /usr/share/doc/packages/perl-Test-WWW-Mechanize/Changes
+
+  1.48 Thu Dec 29 22:45:29 CST 2016
+  ------------------------------------
+  [FIXES]
+  The linting method html_lint_ok() was not calling the HTML::Lint API
+  correctly, so may have missed some HTML errors at the end of a page.
+  This also applies to get, post, etc if you have the autolint argument on.
+
+-------------------------------------------------------------------
+Mon Aug  1 06:01:30 UTC 2016 - coolo@suse.com
+
+- updated to 1.46
+   see /usr/share/doc/packages/perl-Test-WWW-Mechanize/Changes
+
+-------------------------------------------------------------------
+Tue Jun  4 15:15:46 UTC 2013 - coolo@suse.com
+
+- updated to 1.44
+  If you want to use the autolint functionality, you'll have to have
+  HTML::Lint 2.20.
+  
+  [FIXES]
+  Custom lint objects don't get reset before they get used, making
+  autolint with a custom lint object practically useless.
+  https://github.com/petdance/test-www-mechanize/issues/25
+  
+  [ENHANCEMENTS]
+  Added a $mech->autolint() method so you can turn autolinting on and off
+  in mid-program.  Thanks, Mike O'Regan.
+  
+  New functions $mech->scrape_text_by_id() and $mech->scrape_text_by_attr()
+  let you extract text from your pages.  Convenience function
+  $mech->scraped_id_is() makes it easy to scrape and compare in one
+  function.
+  
+      <h1 id="pagetitle">My Awesome Page!</h1>
+  
+      # Verify that HTML is there with:
+      $mech->scraped_id_is( 'pagetitle', 'My Awesome Page!' );
+  
+  [FIXES]
+  $mech->has_tag() now handles nested tags more sensibly.  This fixes
+  Google Code ticket #1.
+  
+  
+  [INTERNALS]
+  Explicitly requires Test::Simple 0.94 or higher.
+  
+  Brought over t/TestServer.pm from WWW::Mechanize which fixes a number
+
+-------------------------------------------------------------------
+Fri Feb 10 12:23:14 UTC 2012 - coolo@suse.com
+
+- initial package 1.38
+  * created by cpanspec 1.78.03
+

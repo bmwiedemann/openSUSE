@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Fri Jun 21 05:27:42 UTC 2019 - Stephan Kulow <coolo@please-enter-an-email-address>
+
+- updated to 0.59
+   see /usr/share/doc/packages/perl-Proc-ProcessTable/Changes
+
+  0.59 2019-06-20
+    * works again on AIX
+    * fixed mswin32 stuff, hope it works now
+    * reogranized code and started to use newest version ExtUtils::MakeMaker
+
+-------------------------------------------------------------------
+Sun Jun 16 05:23:51 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.58
+   see /usr/share/doc/packages/perl-Proc-ProcessTable/Changes
+
+-------------------------------------------------------------------
+Fri Feb  8 06:24:36 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.56
+   see /usr/share/doc/packages/perl-Proc-ProcessTable/Changes
+
+  0.56 2019-02-07
+    * Testing support for mswin32
+    * minor fix for FreeBSD
+
+-------------------------------------------------------------------
+Wed Feb  7 17:10:15 UTC 2018 - coolo@suse.com
+
+- updated to 0.55
+   see /usr/share/doc/packages/perl-Proc-ProcessTable/Changes
+
+-------------------------------------------------------------------
+Thu Aug 27 08:59:31 UTC 2015 - coolo@suse.com
+
+- updated to 0.53
+   see /usr/share/doc/packages/perl-Proc-ProcessTable/Changes
+
+-------------------------------------------------------------------
+Mon Aug 24 09:05:05 UTC 2015 - coolo@suse.com
+
+- updated to 0.52
+   see /usr/share/doc/packages/perl-Proc-ProcessTable/Changes
+
+  0.52 2015-08-23
+    * Incorporated mainly bugfixes (see github repor for details);
+      OS affected: NetBSD, cygwin, AIX, bsdi, Linux 
+    * Added test for another odd command name ([])
+    * Added some scripts for process tracking. Still in beta-phase.
+
+-------------------------------------------------------------------
+Tue Apr 14 17:27:13 UTC 2015 - coolo@suse.com
+
+- updated to 0.51
+   see /usr/share/doc/packages/perl-Proc-ProcessTable/Changes
+
+  0.50
+    - Added hint file for gnukfreebsd.
+  0.51
+    - Fixed #65347 (installation hangs on AIX), patch from Rainer Tammer; Fixed
+    #99163 (segfault from canonicalize_file_name), pulled patch from Borislav
+    Nikolov.
+
+-------------------------------------------------------------------
+Fri Mar 14 09:45:58 UTC 2014 - cfarrell@suse.com
+
+- license update: (Artistic-1.0 or GPL-1.0+) and GPL-2.0
+  os/cygwin.c is under the Cygwin license (GPL-2.0)
+
+-------------------------------------------------------------------
+Fri Mar 14 06:33:32 UTC 2014 - coolo@suse.com
+
+- updated to 0.50
+   -Initial release by new maintainer jswartz, identical to 0.45 except for meta
+         files and README
+ 0.47 16 Feb. 2013
+   -Initial releas by new maintainer jwb. Incorporated meta file updates from
+   Jonathan Swartz <swartz@pobox.com>. Closed a bunch of bugs: Patch from
+   Christian Boitel <christian.boitel@gmail.com> (fixes #51470); added
+   suggestion from Opera Wang <Opera.Wang@synopsys.com> (fixes #51470 even
+   more); patches from Michael Schilli (MSCHILLI) (fix #41397, #46861 and
+   #58236), work on perl w/o threads; pulled commits from Slaven Rezić
+   <SREZIC@cpan.org>, use kvm implementation for FreeBSD >= 6.0 (closes #68405
+   and #16978); fixed bug #69397, fh not closed; fixed RT #72862, unsafe use of
+   /tmp; added tests;
+ 
+ 0.48
+   -Pulled commits from Chris Williams <chris@bingosnet.co.uk>, fixes build
+   errors on NetBSD and OpenBSD. Fixed #72862 (byte order tag in cache file), 
+   applied patch to fix #67224 (cygwin PID_ORPHANED) by <rurban at x-ray.at>.
+   Pulled FreeBSD patches from Slaven Rezić <SREZIC@cpan.org>; 
+   Pulled from David Zaebst <zaebst@gmail.com>): Fixes to stay accurate on
+   machines with many cpus (#82175), to include system time into calculations
+   (#80391) and others (#81312, #82175 and #80391) and to fix unknown process
+   states for debian kernels #71976. Tried to get it compiling under
+   MidnightBSD.
+ 0.49
+   -Fixed #61946 (odd process names), solution by Bernd Kallies. Fixed #48445, patch from
+   Guillaume Rousse. Pulled fixes from Opera Wang. Fixed typos discovered by
+   Salvatore Bonaccorso, David Steinbrunner and HMBRAND. Fixed #89117, patch
+   from yyang. Got it (hopefully) running under kfreebsd.
+- changed license to perl as written in the META, I couldn't find any GPL 2 file
+
+-------------------------------------------------------------------
+Wed Feb 27 06:24:52 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Mon Mar 12 14:04:29 UTC 2012 - Sascha.Manns@open-slx.de
+
+- pacified rpmlint 
+
+-------------------------------------------------------------------
+Wed Nov 16 09:16:01 UTC 2011 - coolo@suse.com
+
+- regenerate with cpanspec
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:41 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Jul 25 19:41:51 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sun Jun 28 00:41:41 CEST 2009 - chris@computersalat.de
+
+- initial pkg 0.45
+

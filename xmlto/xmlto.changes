@@ -1,0 +1,191 @@
+-------------------------------------------------------------------
+Mon Mar 18 15:42:45 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Suggest instead of recommend texlive: most users are not
+  interested in texlive specific tooling- unless they install
+  texlive. xmlto is also useful without the texlice stack. So
+  instead of recommending (and this installing by default)
+  textlive, we switch to suggesting it.
+
+-------------------------------------------------------------------
+Wed Mar  6 09:45:26 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Simplify spec file
+
+-------------------------------------------------------------------
+Tue Mar 13 16:50:16 UTC 2018 - avindra@opensuse.org
+
+- update to 0.0.28:
+  - fix broken temp files removal
+  - do not detect links browser as elinks
+- includes 0.0.27:
+  - remove several bashisms in scripts
+  - new option --profile for preprocessing documents with
+    profiling stylesheet
+  - fix several potential crashes in xmlif
+- cleanup with spec-cleaner
+- switch urls to new fedora upstream
+- patches:
+  * rebase xmlto-xsltopts.patch
+  * format xmlto-codecleanup.patch for -p1
+  * format xmlto-nonvoid.patch for -p1
+  * drop xmlto-overflow.patch (xmlif.c is regenerated anyway)
+  * drop xmlto-lynx-empty-file.patch (obsolete)
+  * renumber patches
+
+-------------------------------------------------------------------
+Sun Oct 19 21:19:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix shebang of xmlto
+
+-------------------------------------------------------------------
+Wed Jun 11 08:24:10 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 0.0.26:
+  - --searchpath option no longer produces warning
+    about local builtin used outside the function
+    (debian #652974)
+  - fix build with automake 1.13+
+  - fix noextensions option recognition
+  - handle used css list in epub format
+- Rename SUSE readme to xmlto-README.SUSE to fix capitalization
+- Rebase xmlto-xsltopts.patch to apply to latest release.
+
+-------------------------------------------------------------------
+Thu Dec  6 07:21:10 UTC 2012 - pascal.bleser@opensuse.org
+
+- fixed xsltproc buildrequires and requires for other versions
+- more consistent spec file
+
+-------------------------------------------------------------------
+Wed Dec  5 23:17:29 UTC 2012 - pascal.bleser@opensuse.org
+
+- add explicit requires for libxslt-tools or libxslt1 in order to
+  fix "have choice" in several repos
+
+-------------------------------------------------------------------
+Wed Apr 18 16:47:31 UTC 2012 - chris@computersalat.de
+
+- update to 0.0.25
+ - 2011-11-28  Ondrej Vasik <ovasik@redhat.com>
+  * configure.in: detect grep location
+  * xmlto.in: use (fop/fop1).extensions parameter based on real
+    fop version
+ - 2011-07-14  Ondrej Vasik <ovasik@redhat.com>
+  * format/docbook/epub: initial experimental support for
+    docbook to epub conversion
+  * configure.in: detect zip location
+  * xmlto.in: provide detected zip location to epub convertor
+ - 2011-07-07  Ondrej Vasik <ovasik@redhat.com>
+  * README: Improve the readme file, create online manual
+    pages on project wiki
+  * xmlto.in: use backend extensions by default, provide
+    --noextensions to disable this
+  * doc/xmlto.xml: mention --noextensions option in documentation
+ - 2011-03-03  Ondrej Vasik <ovasik@redhat.com>
+  * format/{docbook,xhtml}/txt: show the text-web-browser
+    converting command in verbose mode
+ - 2010-07-13  Ondrej Vasik <ovasik@redhat.com>
+  * format/fo/{ps,dvi,pdf}: workaround passivetex limitation
+    for chapters titles starting with L (rhbz#526273)
+- rebase patches (xmlto-overflow.patch, xmlto-xsltopts.patch).
+
+-------------------------------------------------------------------
+Wed Oct 19 14:01:53 UTC 2011 - idonmez@suse.com
+
+- Add xmlto-lynx-empty-file.patch to fix problems with lynx on
+  empty files, upstream commit 57
+
+-------------------------------------------------------------------
+Wed Jun  8 09:42:34 CEST 2011 - ke@suse.de
+
+- Install missing %doc files such as COPYING; bnc#695072.
+
+-------------------------------------------------------------------
+Wed May 18 16:27:04 UTC 2011 - giecrilj@stegny.2a.pl
+
+- Recommends texlive (bnc#688032)
+
+-------------------------------------------------------------------
+Sat Dec 19 18:20:07 CET 2009 - jengelh@medozas.de
+
+- Enable parallel build
+
+-------------------------------------------------------------------
+Wed Dec 16 15:46:37 CET 2009 - ke@suse.de
+
+- Update to version 0.0.23; reported by Andreas Schwab.
+- Drop obsolete patch.
+- Rebuild old patches.
+
+-------------------------------------------------------------------
+Tue Apr 28 19:50:22 CEST 2009 - pth@suse.de
+
+- Fix comiler warnings.
+- BuildRequire flex and remove xmlif.c to get it regenerated.
+
+-------------------------------------------------------------------
+Tue Sep  9 09:48:19 CEST 2008 - ke@suse.de
+
+- Improve README.SUSE; bnc#67190.
+
+-------------------------------------------------------------------
+Mon Mar 17 11:33:29 2008 - werner@suse.de
+
+- Use texlive-xmltex instead of passivetex
+
+-------------------------------------------------------------------
+Fri Dec 14 13:24:44 CET 2007 - ke@suse.de
+
+- Require libxslt again.
+
+-------------------------------------------------------------------
+Wed Dec 12 16:21:14 CET 2007 - ke@suse.de
+
+- Cleanup spec file.
+- Apply xmlto-0.0.18-xsltopts.diff to provide a command line switch for
+  specifying the HTML output encoding; see # 197484 (thanks to Thomas
+  Schraitle).
+
+-------------------------------------------------------------------
+Mon Aug 28 11:37:03 CEST 2006 - ke@suse.de
+
+- Fix find argument sequence; reported by Marcus Rueckert [#201749].
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:15 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 29 03:04:28 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Wed Jul  6 13:33:54 CEST 2005 - ke@suse.de
+
+- xmlto-0.0.18-overflow.patch: Include more *.h to avoid potential
+  buffer overflows.
+
+-------------------------------------------------------------------
+Thu Mar  3 12:01:19 CET 2005 - ke@suse.de
+
+- Add README.SuSE to address issues producing PDF output; [# 67190].
+
+-------------------------------------------------------------------
+Wed Oct 13 13:47:26 CEST 2004 - ke@suse.de
+
+- Add libgpg-error and libgcrypt to neededforbuild.
+
+-------------------------------------------------------------------
+Wed May 19 02:12:06 CEST 2004 - ro@suse.de
+
+- added return to non-void function (main)
+
+-------------------------------------------------------------------
+Tue Feb 24 13:18:09 CET 2004 - ke@suse.de
+
+- New package: version 0.0.18.  Proposed by Richard Bos [# 34918].
+
+

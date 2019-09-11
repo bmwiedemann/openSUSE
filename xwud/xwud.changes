@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Thu Apr  5 10:38:42 UTC 2018 - sndirsch@suse.com
+
+- Update to version 1.0.5
+  * autogen.sh changes
+  * configure: Drop AM_MAINTAINER_MODE
+  * Mark Error() argument as const char *
+  * Print which option was in error along with usage message
+  * Add -version option to print program version
+
+-------------------------------------------------------------------
+Sat Apr 14 15:43:20 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.4:
+  + Replace malloc(strlen) + strcpy() with strdup().
+  + Man page fixes.
+  + Build system fixes.
+- Add pkgconfig(xproto) BuildRequires: new upstream dependency.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xwud from xorg-x11. Initial version: 1.0.3.
+

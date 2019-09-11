@@ -1,0 +1,13 @@
+Index: python/Makefile.am
+===================================================================
+--- python/Makefile.am.orig	2009-05-12 08:29:34.000000000 +0200
++++ python/Makefile.am	2010-07-21 15:22:21.000000000 +0200
+@@ -24,7 +24,7 @@ EXTRA_DIST = 			\
+ 	libxslt-python-api.xml	\
+ 	$(DOCS)
+ 
+-libxsltmod_la_LDFLAGS =  $(WIN32_EXTRA_LDFLAGS) -module -avoid-version
++libxsltmod_la_LDFLAGS =  $(WIN32_EXTRA_LDFLAGS) $(mylibs) -module -avoid-version
+ 
+ if WITH_PYTHON
+ mylibs = \

@@ -1,0 +1,146 @@
+diff -u ../eblook-1.6.1.orig/codeconv.c ../eblook-1.6.1/codeconv.c
+--- ../eblook-1.6.1.orig/codeconv.c	2003-03-08 23:29:47.000000000 +0900
++++ ../eblook-1.6.1/codeconv.c	2010-08-15 08:33:21.218750000 +0900
+@@ -564,7 +564,7 @@
+ char *
+ xfgets(str, size, fp)
+      char *str;
+-     int size;
++     size_t size;
+      FILE *fp;
+ {
+     char *ibuf, *ibuf0;
+@@ -595,7 +595,7 @@
+     ibuf[ilen]=0;
+     ilen=strlen(ibuf);
+ 
+-    status = current_to_euc(&ibuf,&ilen,&str,(size_t *)&size);
++    status = current_to_euc(&ibuf,&ilen,&str,&size);
+     str0[size0-size]=0;
+ #ifndef HAVE_ALLOCA
+     free(ibuf0);
+@@ -652,7 +652,6 @@
+      char **in_buf, **out_buf;
+      size_t *in_len,*out_len;
+ {
+-    static int output_left = -1;
+     int c1, c2;
+     size_t count = 0;
+ 
+@@ -661,6 +660,7 @@
+         size_t ret;
+         if (cur_to_euc == (iconv_t) -1)
+ 	    return CODECONV_ERROR;
++        iconv(cur_to_euc,NULL,NULL,NULL,NULL);
+         ret = iconv(cur_to_euc,in_buf,in_len,out_buf,out_len);
+ 	if (ret != ((size_t)-1)) 
+ 	    ret = iconv(cur_to_euc, NULL, in_len, out_buf, out_len);
+@@ -675,17 +675,6 @@
+     }
+ #endif /* HAVE_ICONV */
+ 
+-    if (output_left >= 0) {
+-        if (*out_len > 0) {
+-	    *((*in_buf)++) = output_left;
+-	    (*out_len)--;
+-	    count++;
+-	    output_left = -1;
+-	} else {
+-  	    /* Output Buffer Overflow */
+-	    return CODECONV_BUFFER_OVERFLOW;
+-	}
+-    }
+     if (conv_mode == IO_SJIS) {
+         while(*in_len>0) {
+ 	    if (*out_len<=0) break;
+@@ -724,10 +713,8 @@
+ 	    *((*out_buf)++) = c1 | 0x80;
+ 	    (*out_len)--;
+ 	    count++;
+-	    if (*out_len <= 0) {
+-	        output_left = c2;
++	    if (*out_len <= 0)
+ 		return CODECONV_BUFFER_OVERFLOW;
+-	    }
+ 	    *((*out_buf)++) = c2;
+ 	    (*out_len)--;
+ 	    count++;
+@@ -761,7 +748,6 @@
+      char **in_buf, **out_buf;
+      size_t *in_len,*out_len;
+ {
+-    static int output_left = -1;
+     int c1, c2;
+     size_t count = 0;
+ 
+@@ -770,6 +756,7 @@
+         size_t ret;
+         if (euc_to_cur == (iconv_t) -1)
+ 	    return CODECONV_ERROR;
++        iconv(euc_to_cur,NULL,NULL,NULL,NULL);
+         ret = iconv(euc_to_cur,in_buf,in_len,out_buf,out_len);
+         if (ret != ((size_t)-1))
+ 	    ret = iconv(euc_to_cur,NULL,in_len,out_buf,out_len);
+@@ -784,17 +771,6 @@
+     }
+ #endif /* HAVE_ICONV */
+ 
+-    if (output_left >= 0) {
+-        if (*out_len > 0) {
+-	    *((*in_buf)++) = output_left;
+-	    (*out_len)--;
+-	    count++;
+-	    output_left = -1;
+-	} else {
+-  	    /* Output Buffer Overflow */
+-	    return CODECONV_BUFFER_OVERFLOW;
+-	}
+-    }
+     if (conv_mode == IO_SJIS) {
+         while(*in_len>0) {
+ 	    if (*out_len<=0) break;
+@@ -829,10 +805,8 @@
+ 	    *((*out_buf)++) = c1;
+ 	    (*out_len)--;
+ 	    count++;
+-	    if (*out_len <= 0) {
+-	        output_left = c2;
++	    if (*out_len <= 0)
+ 		return CODECONV_BUFFER_OVERFLOW;
+-	    }
+ 	    *((*out_buf)++) = c2;
+ 	    (*out_len)--;
+ 	    count++;
+diff -u ../eblook-1.6.1.orig/codeconv.h ../eblook-1.6.1/codeconv.h
+--- ../eblook-1.6.1.orig/codeconv.h	2003-03-08 23:29:47.000000000 +0900
++++ ../eblook-1.6.1/codeconv.h	2010-08-14 18:44:09.390625000 +0900
+@@ -50,7 +50,7 @@
+ extern int xprintf PROTO((const char *fmt, ...));
+ extern int xfputs PROTO((const char *str, FILE *fp));
+ extern int xputs PROTO((const char *str));
+-extern char *xfgets PROTO((char *str, int size, FILE *fp));
++extern char *xfgets PROTO((char *str, size_t size, FILE *fp));
+ 
+ extern char *euc_to_jis PROTO((char *jis, const char *euc, int len));
+ extern char *jis_to_euc PROTO((char *euc, const char *jis, int len));
+diff -u ../eblook-1.6.1.orig/eblook.c ../eblook-1.6.1/eblook.c
+--- ../eblook-1.6.1.orig/eblook.c	2004-06-18 01:09:01.000000000 +0900
++++ ../eblook-1.6.1/eblook.c	2010-08-14 18:50:40.406250000 +0900
+@@ -133,7 +133,7 @@
+ int pclose_pager (FILE *);
+ #endif
+ 
+-char *read_command (char *, int, FILE *);
++char *read_command (char *, size_t, FILE *);
+ int excute_command (char *);
+ int parse_command_line (char *, char *[]);
+ #ifdef USE_READLINE
+@@ -650,7 +650,7 @@
+ char *
+ read_command (command_line, size, stream)
+      char *command_line;
+-     int size;
++     size_t size;
+      FILE *stream;
+ {
+   char *p;

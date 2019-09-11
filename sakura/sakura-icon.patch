@@ -1,0 +1,39 @@
+Index: sakura-3.6.0/CMakeLists.txt
+===================================================================
+--- sakura-3.6.0.orig/CMakeLists.txt
++++ sakura-3.6.0/CMakeLists.txt
+@@ -53,7 +53,7 @@ ADD_SUBDIRECTORY (po)
+ 
+ INSTALL (TARGETS sakura RUNTIME DESTINATION bin)	
+ INSTALL (FILES sakura.desktop DESTINATION share/applications)
+-INSTALL (FILES terminal-tango.svg DESTINATION share/pixmaps)
++INSTALL (FILES sakura.png DESTINATION share/pixmaps)
+ IF (POD2MAN)	
+ 	INSTALL (FILES ${sakura_BINARY_DIR}/sakura.1 DESTINATION share/man/man1)	
+ ENDIF (POD2MAN)
+Index: sakura-3.6.0/sakura.desktop
+===================================================================
+--- sakura-3.6.0.orig/sakura.desktop
++++ sakura-3.6.0/sakura.desktop
+@@ -92,7 +92,7 @@ Comment[zh_CN]=使用命令行
+ Comment[zh_TW]=使用指令列
+ TryExec=sakura
+ Exec=sakura
+-Icon=terminal-tango
++Icon=sakura.png
+ Type=Application
+ Categories=GTK;Utility;TerminalEmulator;System;
+ StartupNotify=true
+Index: sakura-3.6.0/src/sakura.c
+===================================================================
+--- sakura-3.6.0.orig/src/sakura.c
++++ sakura-3.6.0/src/sakura.c
+@@ -342,7 +342,7 @@ struct terminal {
+ };
+ 
+ 
+-#define ICON_FILE "terminal-tango.svg"
++#define ICON_FILE "sakura.svg"
+ #define SCROLL_LINES 4096
+ #define DEFAULT_SCROLL_LINES 4096
+ #define HTTP_REGEXP "(ftp|http)s?://[^ \t\n\b()<>{}«»\\[\\]\'\"]+[^.]"

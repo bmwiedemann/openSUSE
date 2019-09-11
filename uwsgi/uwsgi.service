@@ -1,0 +1,14 @@
+[Unit]
+Description=Application Container Server for Networked/Clustered Web Applications
+Documentation=https://uwsgi-docs.readthedocs.io/en/latest/
+
+[Service]
+ExecStart=/usr/sbin/uwsgi --autoload --ini /etc/uwsgi/uwsgi.ini
+Restart=always
+Type=notify
+NotifyAccess=all
+KillSignal=SIGINT
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

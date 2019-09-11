@@ -1,0 +1,903 @@
+-------------------------------------------------------------------
+Thu May  9 08:50:56 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh bug fix version V6.21.00 - 20190508
+  *. Abort history loading on words and lines too long
+     https://bugzilla.redhat.com/show_bug.cgi?id=1598502
+  * Introduce GetCmdChar() to avoid open coding array access.
+  * make closem() not close sockets so as not to affect nss_ldap.
+     tcsh never creates sockets so that's ok (Miloslav Trmac)
+  * Make rmstar work with aliased rm
+  * convert match() from recursive to backtracking.
+  * Handle 8 bit characters in bindkey (Werner Fink)
+  * Look for tgetent in libtinfo as well (Werner Fink)
+  * Don't play pointer tricks that are undefined in modern c (Brooks Davis)
+  * Fix out of bounds read (Brooks Davis)
+  * Fix type of read in prompt confirmation (eg. rmstar) (David Kaspar)
+  * Delay arginp parsing
+- Drop patches now upstream
+  * tcsh-6.20-ptr-update.patch
+  * tcsh-6.20-rmstar.patch
+  * tcsh-6.20.00-8bit-cmdkeys.patch
+  * tcsh-6.20.00-postcmd.patch
+  * tcsh-closem.patch
+- Port patches
+  * tcsh-6.15.00-pipe.dif
+  * tcsh-6.16.00-norm-cmd.dif
+  * tcsh-6.17.06-dspmbyte.dif
+  * tcsh-6.18.03-catalogs.dif
+  * tcsh-6.18.03-colorls.dif
+  * tcsh-6.18.03-history-file-locking.patch
+  * tcsh-6.18.03-history-merge.dif
+  * tcsh-6.19.00-history-file-locking-order.patch
+  * tcsh-6.20.00-avoid-dotlock-for-fcntl.patch
+- Rename patch tcsh-6.20.00.dif which now becomes tcsh-6.21.00.dif
+
+-------------------------------------------------------------------
+Tue Apr  9 07:26:37 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch tcsh-6.20.00-postcmd.patch as workaround for bsc#1129112 
+- Modify tcsh-6.20.00.dif to fix sed syntax for test case lexical.at
+
+-------------------------------------------------------------------
+Wed Jul 19 10:25:40 UTC 2017 - werner@suse.de
+
+- Add patch tcsh-6.20.00-avoid-dotlock-for-fcntl.patch as we are
+  using fcntl's F_SETLKW patches for locking therefore avoid dot
+  file locking without holding a file descriptor as otherwise we
+  migth not be able to open the history file after a crash or if
+  a killall had been used during reboot.
+
+-------------------------------------------------------------------
+Fri Jun 16 07:54:55 UTC 2017 - werner@suse.de
+
+- Add patch tcsh-closem.patch to fix a long standing misbehaviour
+  of upstram tcsh whic his that it close sockets which do not
+  belong to it (bsc#1028864)
+
+-------------------------------------------------------------------
+Fri Apr 28 08:11:47 UTC 2017 - werner@suse.de
+
+- Add patch tcsh-6.20.00-8bit-cmdkeys.patch
+  Do not convert current used control bytes into wide characters 
+- Extend bindkey.tcsh with 8-bit controls key escape sequences
+
+-------------------------------------------------------------------
+Thu Jan 19 12:20:06 UTC 2017 - werner@suse.de
+
+- Remove -L option on screen call dues API change, now we depend
+  on environment variables only.
+
+-------------------------------------------------------------------
+Wed Dec  7 15:29:56 UTC 2016 - werner@suse.de
+
+- Add patch tcsh-6.20-ptr-update.patch from mailing list to correct
+  updating pointers to a reallocated buffer of of linked list elements 
+- Remove --hash-size options as there is no any change in the final
+  binary nor library anymore
+
+-------------------------------------------------------------------
+Thu Dec  1 11:53:40 UTC 2016 - werner@suse.de
+
+- Add patch tcsh-6.20-rmstar.patch from mailing list to restore
+  the correct behaviour of `rm *' if rmstar is set
+
+-------------------------------------------------------------------
+Fri Nov 25 08:41:32 UTC 2016 - werner@suse.de
+
+- Update to tcsh bug fix version V6.20.00 - 20161124
+  * Don't resize the screen if it did not change size.
+  * restore file description when cleaning up after eval:
+        repeat 99 time
+  * PR/572: Fix $SHLVL issue when exec'ing subshells.
+  * PR/403: Fix backquote expansion for multi-byte character sets.
+  * Fix drawing issu with multi-line prompt (Kensuke Iwahashi/David Kaspar)
+  * always send prusage to stdout.
+  * PR/526: Fix double \\ printing from previous fix in history expansion.
+  * Android updates from Corinna Vinschen
+  * PR/526: Quote backslashes properly so they can be preserved in ``
+     expansions
+  * Fix memory leak for paraml
+  * Add notempty and ask values for the noclobber setting (Martin Tournoij)
+  * more correct $wordchars for vimode (Luke Mewburn)
+  * expose VImode in $vimode (Luke Mewburn)
+  * display what the compiled in editor is in bindkey -d (Luke Mewburn)
+  * run-fg-editor improvements and documentation (Luke Mewburn)
+  * Fix parsing of 'if (cond)then' (Fridolin Pokorny)
+  * PR/437: Fix handling of invalid unicode characters.
+  * PR/451: Fix error messages containing %c to be always '%c'
+- Rename patch tcsh-6.18.03.dif which becomes tcsh-6.20.00.dif now
+- Drop patch union-wait.patch as now upstream
+- Modify patches
+    tcsh-6.15.00-pipe.dif
+    tcsh-6.17.06-dspmbyte.dif
+    tcsh-6.18.03-colorls.dif
+    tcsh-6.18.03-history-file-locking.patch
+    tcsh-6.19.00-history-file-locking-order.patch
+
+-------------------------------------------------------------------
+Fri Aug 12 14:52:34 UTC 2016 - werner@suse.de
+
+- Add patch tcsh-6.19.00-history-file-locking-order.patch
+  Make a copy of the file descriptor of the history file to be
+  able not only to lock but also unlock this file (bsc#992577) 
+
+-------------------------------------------------------------------
+Mon Apr  4 09:00:35 UTC 2016 - schwab@suse.de
+
+- union-wait.patch: don't define BSDWAIT on glibc, future versions will
+  remove support for union wait.
+
+-------------------------------------------------------------------
+Wed Mar 30 11:38:25 UTC 2016 - werner@suse.de
+
+- Update to tcsh bug fix version V6.19
+  * Mainly a bug fix release (after 3 years) with few new features:
+    1. new cdtohome variable
+    2. locking in history files
+    3. history speedups.
+
+-------------------------------------------------------------------
+Mon May 11 14:45:17 UTC 2015 - werner@suse.de
+
+- Update tcsh to patch level 6.18.05 - 20150510
+ * fix reseting when interrupted inside an eval "eval sleep 10^C"
+   (paulo.cesar.pereira.de.andrade)
+ * rename handle_intr -> handle_interrupt as originally intended.
+   fix input tests that need stdin on a tty
+
+-------------------------------------------------------------------
+Tue May  5 10:16:14 UTC 2015 - werner@suse.de
+
+- Update tcsh to patch level 6.18.04 - 20150504
+  * revert fix echo "\1", it is incorrect.
+  * revert fix to PR/437, breaks short strings.
+
+-------------------------------------------------------------------
+Mon May  4 10:16:14 UTC 2015 - werner@suse.de
+
+- Update tcsh to patch level 6.18.03 - 20150503
+  * PR/437: Nakajima Akira: Fix segmentation fault reading input files
+  * PR/291: Print job status messages to stderr.
+  * Fridolin Pokorny NUL in `` does not mean EOF.
+  * Pavel Raiskup fix hang with:
+        while (1)
+           ( date & ; wait )
+        end
+  * Add cdtohome special variable (Martin Tournoij)
+  * Fix root prompt char for windows (Corinna Vinschen)
+  * For "next" completion matches only consider exact matches of the
+    previous word (Jamie Landeg-Jones)
+  * Fix echo "\1" for echo_style=both where the first character was
+    not processed properly (Gary Duzan)
+- Remove patches now upstream
+  * tcsh-6.18.01-blk_buf.patch
+  * tcsh-6.18.01-metakey.patch
+- Rename patches
+  tcsh-6.17.03-colorls.dif becomes tcsh-6.18.03-colorls.dif
+  tcsh-6.17.10-catalogs.dif becomes tcsh-6.18.03-catalogs.dif
+  tcsh-6.18.00-history-file-locking.patch becomes tcsh-6.18.03-history-file-locking.patch
+  tcsh-6.18.01-history-merge.dif becomes tcsh-6.18.03-history-merge.dif
+  tcsh-6.18.00.dif becomes tcsh-6.18.03.dif
+
+-------------------------------------------------------------------
+Fri Jan 30 13:15:39 UTC 2015 - werner@suse.de
+
+- Enable tcsh checks but be aware that this can not be done in parallel
+- Backup tcsh-6.15.00-blanks.dif away before update a working copy
+
+-------------------------------------------------------------------
+Thu Jan 15 14:18:41 UTC 2015 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner to order header data
+- Use %lang_package macro to remove redundant stuff
+- Drop unused patch tcsh-6.15.00-blanks.dif
+- Run make with more threads
+- Move the commented check to check section to silence rpmlint
+
+-------------------------------------------------------------------
+Tue Jan 13 17:03:12 UTC 2015 - werner@suse.de
+
+- Add patch tcsh-6.18.00-history-file-locking.patch for bsc#901076
+  Cluster switch does not started completely packages on other node
+- Modified patch  tcsh-6.18.01-history-merge.dif to fit with former
+
+-------------------------------------------------------------------
+Tue Oct 15 17:05:54 UTC 2013 - werner@suse.de
+
+- Add patch tcsh-6.18.01-history-merge.dif which is a backport of
+  the patch from Stanislav Tokos (bnc#844752)
+
+-------------------------------------------------------------------
+Tue Aug  6 12:37:27 UTC 2013 - werner@suse.de
+
+- Update to tcsh bug fix version V6.18.01 
+- Remove patch tcsh-6.18.01.patch as not required anymore
+- Add patch tcsh-6.18.01-metakey.patch to make meta key work
+
+-------------------------------------------------------------------
+Thu May 10 08:00:39 UTC 2012 - werner@suse.de
+
+- Fix tcsh segfaults in bb_cleanup() (bnc#761353) 
+
+-------------------------------------------------------------------
+Fri Feb 24 14:46:45 UTC 2012 - werner@suse.de
+
+- Update tcsh to patch level 6.18.01 - 20120214
+ * fix interruptible wait again
+ * ignore bogus compiler overflow message
+ * cleanup ifdefs in utmp code, and provide default array entries
+ * Ignore #machine entries in host.defs
+ * Detect missing ) in gethost.c (Corinna Vinschen)
+
+-------------------------------------------------------------------
+Mon Jan 16 10:30:08 UTC 2012 - werner@suse.de
+
+- Update to tcsh final version V6.18.00
+ * remove unused variables.
+ * Make gethost use definitions for x __x__ and __x automatically.
+ * More utmp fixes
+
+-------------------------------------------------------------------
+Tue Jan 10 17:35:26 UTC 2012 - werner@suse.de
+
+- Update to tcsh minor version V6.17.10
+ * Add more FreeBSD/NetBSD machines
+ * Add portability wrapper for gencat
+ * Fix warning for write in SYSMALLOC systems.
+ * revert gencat handling to pre-cygwin fixes (without the env settings)
+ * remove stray endutent()
+ * Remove - from gencat
+ * Provide support for malloc_usable_size() so that linux works again
+   without SYSMALLOC
+ * Add support for FreeBSD's utmpx.
+ * Fix debian bug #645238: tcsh segfaults when prompt includes %j and
+   there are more than 10 jobs.
+ * PR/155: Default $anyerror to set for backward compatibility
+ * PR/149: Don't print -1 in %j (Vojtech Vitek)
+ * handle -- on chdir commands as the end of options processing so that
+   they can process a directory like -x without resorting to ./-x
+   (Andrew Stevenson)
+ * Handle write(2) returning ENOENT from SoFS, thanks ++HAL (Robert Byrnes)
+ * PR/38: Null check for jobs (Kurt Miller)
+ * Fix spelling correction correcting ./foo -> ../foo2 (jean-luc leger)
+ * PR/120: string0 in filetest does not have enough space.
+
+-------------------------------------------------------------------
+Fri Nov 18 13:26:08 UTC 2011 - werner@suse.de
+
+- Increase size of hash table for runtime linker a lot 
+
+-------------------------------------------------------------------
+Thu Nov 17 08:44:05 UTC 2011 - werner@suse.de
+
+- Split off tcsh-lang as its own package
+- Make language catalogs work that is use tcsh instead of tcsh.cat
+  as this is the system default 
+
+-------------------------------------------------------------------
+Wed Nov 16 14:21:12 UTC 2011 - werner@suse.de
+
+- Update to tcsh minor version V6.17.06
+  * PR/110: Add $anyerror to select behavior. Default to the new one.
+  * Don't try to spell commands that are correct (Rouben Rostamian)
+    [./tcsh -f; set path=($path 2); mkdir foo2; cd foo2; touch foo;
+     chmod +x foo; set correct=cmd; ./foo -> ../foo]
+  * Don't push the syntax struct on the cleanup stack, because on foo;bar
+    if foo fails, we will free bar prematurely (Ben Miller)
+  * Avoid infinite loop while trying to print the pid of a dying process
+    to a closed file (Bob Arendt)
+  * Handle completion of ${ variables (Anthony Mallet)
+  * Add --disable-nls-catalogs (Corinna Vinschen)
+  * convert message catalogs to UTF-8 (Werner Fink)
+  * check that the NLS path works before setting $NLSPATH.
+  * use SYSMALLOC for GLIBC (Werner Fink)
+  * use mallinfo for SYSMALLOC (Corinna Vinschen)
+  * Use mkstemp() if there for here docs (Werner Fink)
+  * Fix handling of errors and exit values in builtins (Werner Fink)
+  * Better pty name detection (Werner Fink)
+  * Enable NLS catalogs on Cygwin (Corinna Vinschen)
+  * NLSPATH handling fixes (Corinna Vinschen)
+  * Avoid infrequent exit when tcsh cd's into a non-existent directory
+    https://bugzilla.novell.com/show_bug.cgi?id=293395 (Werner Fink)
+  * Don't try to spell check full path binaries that are correct because
+    they can cause hangs when other nfs partitions are hung. (Werner Fink)
+  * Avoid nested interrupts when exiting causing history writing to fail
+    https://bugzilla.novell.com/show_bug.cgi?id=331627 (Werner Fink)
+  * Instead of giving an error or ignoring lines with missing eol at eof,
+    process them.
+  * Avoid leaking fd's in mail check (Werner Fink)
+  * Recognize i686 (Corinna Vinschen)
+  * Avoid double slashes in cdpath (Corinna Vinschen)
+  * PR/102: Complain on input files with missing trailing \n
+  * PR/104: If atime == mtime we don't have new mail.
+  * PR/113: Don't allow illegal variable names to be set.
+  * PR/112: don't set $REMOTEHOST on the local machine.
+  * Add AUTOSET_KANJI which works around the Shift-JIS encoding that
+    translates unshifted 7 bit ASCII (Werner Fink)
+  * Handle mb{r,}towc() returning 0 by setting the return value to NUL
+    (Jean-Luc Leger)
+  * PR/109: make wait interruptible (Vojtech Vitek)
+  * resource limit fixes: signed vs. unsigned, megabyte issue, doc issues
+    (Robert Byrnes)
+  * Don't echo history while history -L or history -M
+  * Check for EOS before ** from Greg Dionne
+  * Don't fork in backeval from Bryan Mason
+  * Better globstar support from Greg Dionne
+  * Error out when processing the last incomplete line instead of silently
+    ignoring it (Anders Kaseorg)
+  * Fix SEGV from echo ``
+  * Better fixes for histchars and promptchars (nargs)
+
+-------------------------------------------------------------------
+Wed Nov 16 11:12:23 UTC 2011 - werner@suse.de
+
+- Use libtinfo if available otherwise libncurses (required due
+  bnc #729226)
+
+-------------------------------------------------------------------
+Mon Feb 28 14:59:52 CET 2011 - werner@suse.de
+
+- Add key support for screen terminal emluator
+
+-------------------------------------------------------------------
+Mon Feb  7 12:45:48 UTC 2011 - werner@suse.de
+
+- Renew some patches to make it build 
+
+-------------------------------------------------------------------
+Tue Dec 14 18:20:38 CET 2010 - werner@suse.de
+
+- Update to tcsh minor version V6.17.02
+  * PR/79: nargs: Better handling for promptchars.
+  * PR/97: Add parseoctal to retain compatibility with previous versions (Jim
+    Zajkowski)
+  * PR/84: Performance fixes for large history merges (add
+    hashtable (Ted Anderson)
+  * Don't kill "hup" background jobs when a child of the shell exits.
+    From Debian.
+  * Ignore \r\n in the command line options for OS's that don't strip
+    these from #!; from Debian
+  * Callers of rt_mbtowc don't grok -2 as a return. Return -1 for now.
+    (Corinna Vinschen)
+  * set autoexpand; set histchars="";\n<tab> crash. From Debian
+  * unset verbose while we are reading the history file to avoid echoing
+    to the terminal. (Jeffrey Bastian)
+  * globstar addition, Enhance addition, euid, euser, gid variables
+    (Greg Dionne)
+  * Make 'e' in vi mode work like 'b' - use wordchars (Alistair Crooks)
+  * Make tcsh work on systems where sizeof(wchar_t) == 2 (Corinna Vinschen)
+  * Change internal expression calculations to long long so that we can
+    deal with > 32 bit time, inodes, uids, file sizes etc.
+  * Don't print 'Exit X' when printexitvalue is set in `` expressions
+    (Jeff Bastian)
+  * Add more LS_COLORS vars (M.H. Anderson)
+  * Manual page fixes (Alan R. S. Bueno)
+  * Remove history in loops bug from the documentation (Holger Weiss)
+  * Add autorehash (Holger Weiss)
+  * Add history.at (Ted Anderson)
+  * Better NLSPATH handling (Norm Jacobs)
+  * Fix hostname building from utmp (Cyrus Rahman)
+  * Handle pending signals before flush so that the the history file does
+    not get truncated.  (Ted Anderson)
+  * Fix AsciiOnly setting that broke 8 bit input. (Juergen Keil)
+  * remember to closedir in mailchk (from Werner Fink, reported by
+    David Binderman)
+- Add workaround for Shift-JIS endcoding that translates unshifted
+  7 bit ASCII (bnc#655306)
+
+-------------------------------------------------------------------
+Fri Jun 11 16:41:34 CEST 2010 - werner@suse.de
+
+- Avoid crash due own malloc due buggy nss implementation of glibc
+
+-------------------------------------------------------------------
+Wed Mar 17 12:58:44 CET 2010 - werner@suse.de
+
+- Add Forms Data Format (.fdf) for acroread and co (bnc#573202)
+
+-------------------------------------------------------------------
+Mon Mar  8 01:42:26 CET 2010 - ro@suse.de
+
+- fix tcsh-6.16.00-history.dif to apply 
+
+-------------------------------------------------------------------
+Mon Feb 15 16:42:56 CET 2010 - werner@suse.de
+
+- Increase BUFSIZE to 8kB resulting in INBUFSIZE of 16kB (fate#308882)
+
+-------------------------------------------------------------------
+Mon Feb 15 13:58:45 CET 2010 - werner@suse.de
+
+- Update to tcsh version V6.17.00
+ * Fix dataroot autoconf issue.
+ * Fix directory stuff for unit tests.
+ * Fix small bug in history in loops.
+ * Provide newer config.{guess,sub}
+ * Fix gcc 4 warnings.
+ * Fix memory trashing bug introduced in 10.
+ * add missing sigemptyset in goodbye()
+ * restore behavior where a[n-] never prints an error.
+ * always save the whole command, not just the first 80 chars of it.
+ * fix short2str/short2qstr length adjustment in wide chars
+   (Vitezslav Crhonek)
+ * set histfile=/tmp/history.temp; set savehist=(100 merge);
+   alias precmd history -S. After that justpr is not restored
+   and commands don't execute. (Andriy Gapon)
+ * Fix "as" $ modifier from corrupting memory.
+   set t=demfonsftraftionf; echo $t:as/f//
+ * Make $% work with environment variable (Ron Johnston)
+ * Add autoexpand=onlyhistory (Don Estabrook, m66)
+ * Add history in loops (Laurence Darby, m48)
+ * Add missing colorls "rs" variable (Shlomi Fish, m70)
+ * Fix pts detection issue (Ruslan Ermilov)
+
+-------------------------------------------------------------------
+Mon Dec  7 11:23:30 CET 2009 - meissner@suse.de
+
+- fixed patch fuzz in a minimalistic way.
+
+-------------------------------------------------------------------
+Wed Dec  2 17:24:05 CET 2009 - werner@suse.de
+
+- Remove left over in old patch to re-enable message on suppended
+  jobs at exit/logout
+  
+-------------------------------------------------------------------
+Fri Aug 14 10:29:22 CEST 2009 - werner@suse.de
+
+- After mailbox counting close directory (bnc#530779)
+
+-------------------------------------------------------------------
+Tue Jun 23 11:18:55 CEST 2009 - werner@suse.de
+
+- Add four unknown colorls variables (rs, ca, hl, and cl) used
+  by dircolors but not by the tcsh ls-F builtin (bnc#494406)
+
+-------------------------------------------------------------------
+Tue Mar 31 15:44:38 CEST 2009 - werner@suse.de
+
+- Also enable patch for bnc#472866
+
+-------------------------------------------------------------------
+Wed Mar 25 12:23:46 CET 2009 - werner@suse.de
+
+- Update to tcsh version V6.16.00
+- Add patch to avoid endless loop due incorrect tty process group
+  (bnc#472866)
+
+-------------------------------------------------------------------
+Wed Jan 21 15:00:49 CET 2009 - werner@suse.de
+
+- Reenable Alt-BackSpace for delete word in XTerm in UTF-8 mode
+
+-------------------------------------------------------------------
+Wed Nov 26 18:30:26 CET 2008 - werner@suse.de
+
+- For commands with full execution path bypass correction algorithm
+  if the command is found (bnc#444992)
+
+-------------------------------------------------------------------
+Wed Nov  5 15:32:16 CET 2008 - werner@suse.de
+
+- Disable patch for bnc#437295 as it cause trouble (bnc#441654)
+  and the gcc of openSuSE 11.1 seems to be safe
+
+-------------------------------------------------------------------
+Tue Oct 21 17:10:32 CEST 2008 - werner@suse.de
+
+- Command line expansion: Allow not only "compress" for co<TAB>
+  but any other command starting with "co" (bnc#437295)
+
+-------------------------------------------------------------------
+Wed Oct  8 14:32:23 CEST 2008 - werner@suse.de
+
+- Make code of last change unambiguous
+
+-------------------------------------------------------------------
+Mon Oct  6 16:09:36 CEST 2008 - werner@suse.de
+
+- Avoid blanks at the beginning of command lists (bnc#431661)
+
+-------------------------------------------------------------------
+Fri Jun 13 17:20:19 CEST 2008 - werner@suse.de
+
+- Add complete rule for local executables ./*
+
+-------------------------------------------------------------------
+Thu Dec 20 12:53:13 CET 2007 - werner@suse.de
+
+- Oops ... also apply the patch for bug ##331627 (bug #349577)
+
+-------------------------------------------------------------------
+Mon Oct 15 12:11:06 CEST 2007 - werner@suse.de
+
+- Improve bug fix (bug #331627)
+
+-------------------------------------------------------------------
+Fri Oct 12 18:18:11 CEST 2007 - werner@suse.de
+
+- Fix save history bug: do not jump out from handler for pending
+  signals like for SIGHUP, just run the handler up to its end and
+  ignore any error happen to be interrupted (bug #331627)
+
+-------------------------------------------------------------------
+Tue Aug 28 12:16:59 CEST 2007 - werner@suse.de
+
+- Correct boolean expression for normalize-command (bug #304903)
+
+-------------------------------------------------------------------
+Mon Jul 23 16:26:34 CEST 2007 - werner@suse.de
+
+- Add workaround to avoid run onto already cleaned stack pointer
+  after an error (bug #293395)
+
+-------------------------------------------------------------------
+Thu Jul 19 12:21:34 CEST 2007 - werner@suse.de
+
+- Small correction in bindkey.tcsh: for urxvt, mlterm, and konsole 
+
+-------------------------------------------------------------------
+Mon Jul 16 14:41:03 CEST 2007 - werner@suse.de
+
+- Update to tcsh version V6.15.00
+  * fix extension eating windows code
+  * fix loop in %R history expansion
+  * sched +X source file disables interrupts (Mike Sullivan)
+  * One off copying macro buffers
+  * Avoid infinite loops in :ga modifiers when the LHS is a
+    substring of the RHS.
+- Update bindkey.tcsh to fit current xterm and others (bug #262330)
+
+-------------------------------------------------------------------
+Thu Mar 29 12:08:23 CEST 2007 - rguenther@suse.de
+
+- Add ncurses-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon Feb 26 16:06:05 CET 2007 - werner@suse.de
+
+- Expand local ./files for manual pages even for tcsh (#248865)
+
+-------------------------------------------------------------------
+Wed Aug 16 20:29:28 CEST 2006 - aj@suse.de
+
+- Remove unneeded BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jun 21 12:24:13 CEST 2006 - werner@suse.de
+
+- Do not overwrite memory by not initialized Char array (#186669)
+
+-------------------------------------------------------------------
+Wed Apr 26 13:43:13 CEST 2006 - werner@suse.de
+
+- Fix typo in compelete macro for the command man
+
+-------------------------------------------------------------------
+Tue Apr 25 14:55:43 CEST 2006 - werner@suse.de
+
+- Add new LS_COLORS variables to avoid error message (bug #168601)
+
+-------------------------------------------------------------------
+Mon Apr 10 14:59:51 CEST 2006 - werner@suse.de
+
+- Tcsh completion: expand also for sections of posix manual pages
+  and include section 0 into search scheme (bug #160782)
+
+-------------------------------------------------------------------
+Thu Mar 23 16:18:31 CET 2006 - werner@suse.de
+
+- Source the users ~/.cshrc and ~/.login in the traditional order,
+  nevertheless the system wide /etc/csh.cshrc and /etc/csh.login
+  will be sourced in the natual order (bug #160278)
+  
+-------------------------------------------------------------------
+Mon Feb  6 19:46:00 CET 2006 - werner@suse.de
+
+- Make $< operator work even when fed by pipe (bug #147724)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 25 14:15:10 CEST 2005 - werner@suse.de
+
+- Switch order of sourcing csh.login csh.cshrc, now csh.login
+  comes first to provide all exported environment variables.
+
+-------------------------------------------------------------------
+Thu Aug 18 14:22:17 CEST 2005 - werner@suse.de
+
+- Update to tcsh 6.14.00, the wide character version (bug #104108).
+
+-------------------------------------------------------------------
+Mon May 23 17:18:18 CEST 2005 - werner@suse.de
+
+- Make mh handling more smarter
+
+-------------------------------------------------------------------
+Fri Apr  1 16:22:25 CEST 2005 - werner@suse.de
+
+- Gcc4 does not allow function prototype declaration within other
+  function prototype declaration even if the internals are static.
+
+-------------------------------------------------------------------
+Fri Oct  8 12:17:35 CEST 2004 - werner@suse.de
+
+- Make fcntl call with O_LARGEFILE portable (bug #46977)
+ 
+-------------------------------------------------------------------
+Thu May 27 19:01:13 CEST 2004 - ro@suse.de
+
+- fix sigpause call (force use of sysv flavour)
+
+-------------------------------------------------------------------
+Fri Apr  2 12:01:49 CEST 2004 - mls@suse.de
+
+- fix utf-8 expansion, ls-F, prompt handling
+
+-------------------------------------------------------------------
+Mon Mar 29 23:06:42 CEST 2004 - mls@suse.de
+
+- fix utf-8 handling (really fixes #29983, #35486)
+
+-------------------------------------------------------------------
+Tue Mar 16 19:14:09 CET 2004 - werner@suse.de
+
+- Do not forget the patch for bug #29983 even if not used
+- Accept chinese in dspmbyte and map this on euc
+
+-------------------------------------------------------------------
+Wed Mar 10 18:20:30 CET 2004 - werner@suse.de
+
+- Disable multibyte ix due problems on long lines (bug #35486)
+- Simplify mv/cp complete
+
+-------------------------------------------------------------------
+Thu Mar  4 17:58:34 CET 2004 - werner@suse.de
+
+- Fix mv/cp complete bug (#35339)
+
+-------------------------------------------------------------------
+Fri Feb 20 18:08:39 CET 2004 - werner@suse.de
+
+- Add simple workaround for multibyte command lines (bug #29983)
+
+-------------------------------------------------------------------
+Wed Jan 28 13:48:49 CET 2004 - werner@suse.de
+
+- Fix bug #34126: add runtime detection as fallback
+
+-------------------------------------------------------------------
+Sat Jan 10 18:14:08 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Fri Sep 19 13:37:38 CEST 2003 - werner@suse.de
+
+- Fix the fix for bug #29956: use a ringbuffer to avoid trouble
+  with recursive calls of UTF-8 convertes messges (bug #31335)
+
+-------------------------------------------------------------------
+Thu Sep  4 15:56:43 UTC 2003 - werner@suse.de
+
+- Corruption of cursor position is currently not fixable.
+  fix some other bugs.
+
+-------------------------------------------------------------------
+Wed Sep  3 23:32:44 CEST 2003 - mfabian@suse.de
+
+- Bugzilla #29956: convert all message catalogs to UTF-8 and
+  convert the strings returned by catgets from UTF-8 into the
+  encoding of the current locale.
+- move Ukrainian message catalog into uk_UA subdirectory
+  instead of ru_UA.koi8u.
+
+-------------------------------------------------------------------
+Fri Jul 18 14:18:20 CEST 2003 - werner@suse.de
+
+- Fix multi byte initialization (bug #27793)
+- Enable multi byte unset on LANG change
+- Fix signess/unsigness mixtures
+
+-------------------------------------------------------------------
+Fri May 23 10:34:12 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Wed May 14 14:42:37 CEST 2003 - werner@suse.de
+
+- Move pointer adress handling from int to intptr_t
+
+-------------------------------------------------------------------
+Thu Apr 17 16:03:01 CEST 2003 - werner@suse.de
+
+- Fix multibyte initialization
+
+-------------------------------------------------------------------
+Mon Feb 17 16:07:31 CET 2003 - werner@suse.de
+
+- Fix bug #23681: don't reset full command line if an error occurs
+
+-------------------------------------------------------------------
+Mon Nov 11 14:14:55 CET 2002 - ro@suse.de
+
+- use x-devel-packages in neededforbuild 
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Wed Aug  7 16:33:49 CEST 2002 - werner@suse.de
+
+- Fix bindkey.tcsh for xterm and add some more keys (bug #15002)
+
+-------------------------------------------------------------------
+Tue Jul 30 17:15:31 CEST 2002 - werner@suse.de
+
+- Update to 6.12.00
+- Fix codesets of message cats
+
+-------------------------------------------------------------------
+Fri Jul 19 17:21:57 MEST 2002 - mls@suse.de
+
+- fix bindkey.tcsh to make it work with an unset $TERM variable
+
+-------------------------------------------------------------------
+Wed Mar 20 11:25:43 CET 2002 - werner@suse.de
+
+- Fix bug # 15143: Unreadable /etc/printcap due paranoid SysAdmins
+  should not stop tcsh.
+
+-------------------------------------------------------------------
+Wed Dec 12 16:49:39 CET 2001 - werner@suse.de
+
+- Revisit some complete expansion (mainly for mv, cp, make, and
+  man), sed error scanners should work for all languages.
+
+-------------------------------------------------------------------
+Thu Sep  6 19:04:12 CEST 2001 - werner@suse.de
+
+- Update to 6.11.00 due
+  * correct large file support
+  * Avoid core-dumping on very long $HOME variable
+  * Don't call qsort(3) with 0 items
+  * Fix redrawing in the recognize case
+  * MAXHOSTNAMELEN needs to be 256 (instead of 255)
+  * Big5 multibyte support
+  * Fix rmstar not to corrupt memory on off
+
+-------------------------------------------------------------------
+Wed May 16 17:11:39 CEST 2001 - werner@suse.de
+
+- Force large file support
+
+-------------------------------------------------------------------
+Wed May  9 16:32:00 CEST 2001 - cstein@suse.de
+
+- Corrected German spellings in nls/german/set6
+
+-------------------------------------------------------------------
+Wed Mar  7 12:42:17 CET 2001 - werner@suse.de
+
+- We use xmkmf therefore we need a full X environment at build
+
+-------------------------------------------------------------------
+Fri Feb  9 14:17:24 CET 2001 - werner@suse.de
+
+- Don't use the authors (endless looping) security temp file
+  change but the mkstemp() function.
+
+-------------------------------------------------------------------
+Fri Feb  2 01:18:57 CET 2001 - mfabian@suse.de
+
+- update to version 6.10.00
+  (because the new version has  support for display and editing of
+  multibyte characters)
+- add patch to enable multibyte character editing
+- patch to glob.c removed (included upstream)
+- patch to sh.dir.c removed (included upstream)
+- patch to tw.color.c removed (incuded upstream)
+- last hunk of patch to tw.h removed (included upstream)
+- bzip2 sources
+
+-------------------------------------------------------------------
+Fri Dec 15 12:27:39 CET 2000 - werner@suse.de
+
+- Add missed hash for a comment.
+
+-------------------------------------------------------------------
+Wed Nov 22 18:43:38 CET 2000 - werner@suse.de
+
+- Make /etc/profile.d/bindkey.tcsh knowing about TERM kvt and gnome
+
+-------------------------------------------------------------------
+Fri Nov 17 12:39:34 CET 2000 - kukuk@suse.de
+
+- fix neededforbuild: textutil -> textutils
+
+-------------------------------------------------------------------
+Thu Nov  2 14:06:08 CET 2000 - werner@suse.de
+
+	- Use mkstemp for opening tmp files for `<<' redirects
+	- Use TMPDIR variable for location of tmp files
+	- Set group tag in spec
+
+-------------------------------------------------------------------
+Wed May 24 20:00:34 CEST 2000 - uli@suse.de
+
+- moved docs to %{_docdir}
+
+-------------------------------------------------------------------
+Wed Jan 26 21:20:26 CET 2000 - werner@suse.de
+
+	- New version 6.09.00
+	- /usr/man -> /usr/share/man
+	- Fix usage of catopen (MCLoadBySet isn't that what is used
+	  internally within glibc, set it to MCLoadBySet)
+	- Avoid crahs due coloured ls-F
+	- Correct setpath NLS message
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+----------------------------------------------------------------
+Mon Jun 28 23:26:12 CEST 1999 - werner@suse.de
+ 
+	- Source key binding and completion code from
+	  /etc/csh.cshrc out into /etc/profile.d/bindkey.tcsh and
+	  /etc/profile.d/complete.tcsh
+	- No newgrp builtin because its equivalent to exec newgrp
+
+----------------------------------------------------------------
+Wed Jun 16 00:05:15 MEST 1999 - ro@suse.de
+
+- create localedirs before make install 
+
+----------------------------------------------------------------
+Fri Jun 11 23:38:17 CEST 1999 - werner@suse.de
+	- New version
+----------------------------------------------------------------
+Fri Mar 12 14:21:46 MET 1999
+	- Fix SIGSEGV caused different sizes of FILSIZ and BUFSIZE
+	- New version
+	- Restore missed MAXNAMLEN
+	- Make it alpha compile
+----------------------------------------------------------------
+Thu Dec  3 15:41:07 MET 1998 - werner@suse.de
+	- Fix SIGSEGV with SYSMALOC
+	  * alloc n+1 not n chunks
+	  * set freed pointer to (ptr_t)NULL
+----------------------------------------------------------------
+Wed Sep 16 16:32:13 MET DST 1998 - werner@suse.de
+	- Stupid error fixed
+
+----------------------------------------------------------------
+Tue Sep 15 17:34:46 MET DST 1998 - werner@suse.de
+	- Security fix
+	- Avoid I/O trouble, use POSIX
+
+----------------------------------------------------------------
+Wed Oct 22 18:07:30 MET DST 1997 - werner@suse.de
+	- Updatet FAQ.tcsh
+	- Better installation: remove old files before linking
+
+----------------------------------------------------------------
+Sat Nov 16 10:29:43 CET 1996 - bs@suse.de
+
+added FAQ.tcsh
+
+
+----------------------------------------------------------------
+Thu Nov 14 15:16:00 CET 1996 - werner@suse.de
+
+  - Neue Version 6.07.02 mit einigen Fixes

@@ -1,0 +1,208 @@
+-------------------------------------------------------------------
+Thu May  2 07:47:06 UTC 2019 - mvetter@suse.com
+
+- Update to 4.2.2:
+  * This is a minor release that fixes broken prompt due to PR #373.
+
+-------------------------------------------------------------------
+Thu May  2 06:32:10 UTC 2019 - mvetter@suse.com
+
+- Update to 4.2.1:
+  * This is a minor release with a single fix on top of v4.2 to
+    address a packaging problem.
+
+-------------------------------------------------------------------
+Tue Apr 30 05:48:26 UTC 2019 - mvetter@suse.com
+
+- Update to 4.2
+  * Disabled appending tags from page on update
+  * Improved Windows color support using colorama (optional dep)
+  * New format option to show only title and tag
+  * Python 3.4 is EOL, support discontinued
+  * Several fixes and code refactor
+
+-------------------------------------------------------------------
+Tue Apr  2 08:01:13 UTC 2019 - pgajdos@suse.com
+
+- version update to 4.1
+  * Import firefox-exported json
+  * Fix auto-import for firefox
+  * Fix write to GNU Screen paste buffer
+  * Some CVE fixes
+  * Show records in pages with option `-p` (works with `-n`, default 10)
+  * Enhanced clipboard support: `xclip`, tmux, GNU Screen, Termux
+  * Prompt key `O` works with search results along with GUI browser toggling
+  * Search by taglist id with prompt key `g`
+  * Multiple fixes
+  * Set number of search results per page (default 10)
+  * Retrieve description and tags from page, if available
+  * Visit cached version on Wayback Machine
+  * Export works with all search options now
+  * Changed user agent to Firefox on Ubuntu
+  * Several dependencies made _required_ for installation
+  * Import complete folder hierarchy as tags during auto-import
+  * Merge tags on import even if bookmark URL exists
+  * Orgfile import/export
+  * Show bookmarks to be deleted before deletion
+  * Merge tags during import if bookmark exists
+  * Escape regex metacharacters in regex input
+- run testsuite
+- do not install bukuserver for now (due missing dependencies)
+
+-------------------------------------------------------------------
+Wed Mar 28 08:22:28 UTC 2018 - aloisio@gmx.com
+
+- Update to version 3.7
+  * Exclude keywords in search (keyword filtering)
+  * Search and filter by tags
+  * Order search results by number of keyword matches
+  * Copy URL to clipboard
+  * Prompt shortcut 'O' to override text browsers
+  version 3.6
+  * Skip bookmark addition if edit is aborted
+  * Use urllib3 for handling http connections everywhere
+
+-------------------------------------------------------------------
+Fri Nov 10 06:15:26 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.5
+  * Buku now has its own user agent
+  * Search works with field filters
+  * Edit the last record with -w=-1 (useful when adding bookmark
+    from GUI)
+  * Support for Chromium browser
+  * Get default Firefox profile name from profiles.ini
+  * Bash scriptlet to autogen records for testing
+  * Some optimization in add record and suggest tags
+  * A fresh utility Pinku to import Pinboard bookmarks to Buku
+
+-------------------------------------------------------------------
+Mon Sep 18 08:05:12 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.4
+  * Export bookmarks (including specific tags) to Buku DB file
+    using --export
+  * Option --import can merge Buku DB files now, option --merge is
+    retired
+  * Option --suggest now works at prompt as well
+  * Auto-import issue when Firefox is not installed fixed
+
+-------------------------------------------------------------------
+Mon Sep 11 06:42:27 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.3.1
+  * Auto-import (--ai) bookmarks from Firefox and Google Chrome
+  * Support custom colors (--colors)
+  * Search multiple tags (with exclusion)
+  * Timestamp (YYYYMonDD) tag in auto-imported bookmarks
+  * Enable browser output for text browsers
+  * Generate documentation in RTD using Sphinx
+    (http://buku.readthedocs.io)
+  * Integrated flake8 and pylint in Travis CI
+  * Integrated PackageCore to auto-generate packages in Travis CI
+
+-------------------------------------------------------------------
+Thu Aug  3 13:07:36 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.2
+  * Option `--suggest` to list and choose similar tags when
+    adding a bookmark
+  * Ask for a unique tag when importing bookmarks
+  * Ignore non-generic URLs when importing browser exported
+    bookmarks
+
+-------------------------------------------------------------------
+Tue Jul 11 06:05:20 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.1
+  * Handle negative indices (like tail) with option -p
+  * Support browsing bookmarks from prompt (key o)
+  * Add program search keywords to history
+  * Support XDG_DATA_HOME and HOME as env vars on all platforms
+
+-------------------------------------------------------------------
+Thu Jun 29 17:10:58 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.0
+  * Edit bookmarks in EDITOR at prompt
+  * Import folder names as tags from browser html (thanks
+    @mohammadKhalifa)
+  * Append, overwrite, delete tags at prompt using >>, >, <<
+    (familiar, eh? ;))
+  * Negative indices with `--print` (like `tail`)
+  * Update in EDITOR along with `--immutable`
+  * Request HTTP HEAD for immutable records
+  * Interface revamp (title on top in bold, colour changes...)
+  * Per-level colourful logs in colour mode
+  * Changes in program OPTIONS
+    + `-t` stands for tag search (earlier `--title`)
+    + `-r` stands for regex search (earlier `--replace`)
+  * Lots of new automated test cases (thanks @rachmadaniHaryono)
+  * REST APIs for server-side apps (thanks @kishore-narendran)
+  * Document, notify behaviour when not invoked from tty (thanks
+    @The-Compiler)
+  * Fix Firefox tab-opening issues on Windows (thanks
+    @dertuxmalwieder)
+
+- Renamed package to python-buku
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Sat Mar  4 12:58:57 UTC 2017 - jengelh@inai.de
+
+- Ensure NPOV of description
+
+-------------------------------------------------------------------
+Thu Feb 23 07:21:44 UTC 2017 - aloisio@gmx.com
+
+- Update to version 2.9
+  * New option `-write` to compose and edit bookmarks in text 
+    editor
+  * Support positional arguments as search keywords
+  * New option `--oa` to search and open results directly in 
+    browser
+  * Autodetect Markdown mode by file extension during export, 
+    import
+  * Shortened options:
+    + `--nc` replaces `--nocolor`
+    + `--np` replaces `--noprompt`
+    + `-V` replaces `--upstream`
+  * Option `--markdown` removed as the mode is autodetected now
+  version 2.8
+  * Multithreaded full DB refresh with delayed writes
+  * Customize number of threads for full DB refresh (default 4)
+  * Support search and update search results in a go
+  * Support shortened URL expansion
+  * Support multiple bookmarks with `--open`
+  * Support `--nocolor` (for scripting, Windows users)
+  * Support https_proxy with `--upstream` and `--shorten`
+  * Remove trailing `/` from search tokens (like Google search)
+  * Support `--version` to show program version
+  * Fixed #109: Missing + when shortening URL
+  * Performance optimizations, few module dependency removals
+  version 2.7
+  * Continuous search at (redesigned) prompt
+  * urllib3 for all HTTP operations
+  * Use HTTP HEAD method for pdf and txt mime types
+  * Add user agent (Firefox 50 on Ubuntu)
+  * Support URL shortening
+  * List bookmarks by tag index in tag list
+  * Show tag usage count in tag list
+  * Store tags in lowercase (use undocumented option 
+    `--fixtags` to fix old tags)
+  * Support environment variable *https_proxy*
+  * Support option `--immutable` to pin titles
+  * Keyword `immutable` to search (`-S`) pinned titles
+  * Show index in Json output
+  * New key *q* to quit prompt
+  * Support deflate compression
+  * Add option `--tacit` to reduce verbosity of some operations
+  * **Removed** option `--st`, only `--stag` to search tags
+  * Support custom DB file location (for library, not exposed 
+    to user)
+
+-------------------------------------------------------------------
+Sat Nov  5 21:05:21 UTC 2016 - aloisio@gmx.com
+
+- Initial package (version 2.6)
+

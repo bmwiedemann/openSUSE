@@ -1,0 +1,214 @@
+From 0fd1e40e7149dd1a33f9a4497fa4e31c78ddfba7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?C=C3=A9dric=20Bosdonnat?= <cbosdonnat@suse.com>
+Date: Thu, 18 Oct 2018 13:32:59 +0200
+Subject: [PATCH] Add virt.all_capabilities
+
+In order to get all possible capabilities from a host, the user has to
+call virt.capabilities, and then loop over the guests and domains
+before calling virt.domain_capabilities for each of them.
+
+This commit embeds all this logic to get them all in a single
+virt.all_capabilities call.
+---
+ salt/modules/virt.py            | 107 +++++++++++++++++++++++---------
+ tests/unit/modules/test_virt.py |  56 +++++++++++++++++
+ 2 files changed, 134 insertions(+), 29 deletions(-)
+
+diff --git a/salt/modules/virt.py b/salt/modules/virt.py
+index b45c5f522d..0921122a8a 100644
+--- a/salt/modules/virt.py
++++ b/salt/modules/virt.py
+@@ -4094,37 +4094,10 @@ def _parse_caps_loader(node):
+     return result
+ 
+ 
+-def domain_capabilities(emulator=None, arch=None, machine=None, domain=None, **kwargs):
++def _parse_domain_caps(caps):
+     '''
+-    Return the domain capabilities given an emulator, architecture, machine or virtualization type.
+-
+-    .. versionadded:: 2019.2.0
+-
+-    :param emulator: return the capabilities for the given emulator binary
+-    :param arch: return the capabilities for the given CPU architecture
+-    :param machine: return the capabilities for the given emulated machine type
+-    :param domain: return the capabilities for the given virtualization type.
+-    :param connection: libvirt connection URI, overriding defaults
+-    :param username: username to connect with, overriding defaults
+-    :param password: password to connect with, overriding defaults
+-
+-    The list of the possible emulator, arch, machine and domain can be found in
+-    the host capabilities output.
+-
+-    If none of the parameters is provided the libvirt default domain capabilities
+-    will be returned.
+-
+-    CLI Example:
+-
+-    .. code-block:: bash
+-
+-        salt '*' virt.domain_capabilities arch='x86_64' domain='kvm'
+-
++    Parse the XML document of domain capabilities into a structure.
+     '''
+-    conn = __get_conn(**kwargs)
+-    caps = ElementTree.fromstring(conn.getDomainCapabilities(emulator, arch, machine, domain, 0))
+-    conn.close()
+-
+     result = {
+         'emulator': caps.find('path').text if caps.find('path') is not None else None,
+         'domain': caps.find('domain').text if caps.find('domain') is not None else None,
+@@ -4164,6 +4137,82 @@ def domain_capabilities(emulator=None, arch=None, machine=None, domain=None, **k
+     return result
+ 
+ 
++def domain_capabilities(emulator=None, arch=None, machine=None, domain=None, **kwargs):
++    '''
++    Return the domain capabilities given an emulator, architecture, machine or virtualization type.
++
++    .. versionadded:: Fluorine
++
++    :param emulator: return the capabilities for the given emulator binary
++    :param arch: return the capabilities for the given CPU architecture
++    :param machine: return the capabilities for the given emulated machine type
++    :param domain: return the capabilities for the given virtualization type.
++    :param connection: libvirt connection URI, overriding defaults
++    :param username: username to connect with, overriding defaults
++    :param password: password to connect with, overriding defaults
++
++    The list of the possible emulator, arch, machine and domain can be found in
++    the host capabilities output.
++
++    If none of the parameters is provided, the libvirt default one is returned.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt '*' virt.domain_capabilities arch='x86_64' domain='kvm'
++
++    '''
++    conn = __get_conn(**kwargs)
++    result = []
++    try:
++        caps = ElementTree.fromstring(conn.getDomainCapabilities(emulator, arch, machine, domain, 0))
++        result = _parse_domain_caps(caps)
++    finally:
++        conn.close()
++
++    return result
++
++
++def all_capabilities(**kwargs):
++    '''
++    Return the host and domain capabilities in a single call.
++
++    .. versionadded:: Neon
++
++    :param connection: libvirt connection URI, overriding defaults
++    :param username: username to connect with, overriding defaults
++    :param password: password to connect with, overriding defaults
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt '*' virt.all_capabilities
++
++    '''
++    conn = __get_conn(**kwargs)
++    result = {}
++    try:
++        host_caps = ElementTree.fromstring(conn.getCapabilities())
++        domains = [[(guest.get('arch', {}).get('name', None), key)
++                    for key in guest.get('arch', {}).get('domains', {}).keys()]
++                   for guest in [_parse_caps_guest(guest) for guest in host_caps.findall('guest')]]
++        flattened = [pair for item in (x for x in domains) for pair in item]
++        result = {
++                'host': {
++                    'host': _parse_caps_host(host_caps.find('host')),
++                    'guests': [_parse_caps_guest(guest) for guest in host_caps.findall('guest')]
++                },
++                'domains': [_parse_domain_caps(ElementTree.fromstring(
++                                conn.getDomainCapabilities(None, arch, None, domain)))
++                            for (arch, domain) in flattened]}
++    finally:
++        conn.close()
++
++    return result
++
++
+ def cpu_baseline(full=False, migratable=False, out='libvirt', **kwargs):
+     '''
+     Return the optimal 'custom' CPU baseline config for VM's on this minion
+diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
+index 3a69adece1..bd34962a6a 100644
+--- a/tests/unit/modules/test_virt.py
++++ b/tests/unit/modules/test_virt.py
+@@ -2204,6 +2204,62 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+ 
+         self.assertEqual(expected, caps)
+ 
++    def test_all_capabilities(self):
++        '''
++        Test the virt.domain_capabilities default output
++        '''
++        domainXml = '''
++<domainCapabilities>
++  <path>/usr/bin/qemu-system-x86_64</path>
++  <domain>kvm</domain>
++  <machine>virt-2.12</machine>
++  <arch>x86_64</arch>
++  <vcpu max='255'/>
++  <iothreads supported='yes'/>
++</domainCapabilities>
++        '''
++        hostXml = '''
++<capabilities>
++  <host>
++    <uuid>44454c4c-3400-105a-8033-b3c04f4b344a</uuid>
++    <cpu>
++      <arch>x86_64</arch>
++      <model>Nehalem</model>
++      <vendor>Intel</vendor>
++      <microcode version='25'/>
++      <topology sockets='1' cores='4' threads='2'/>
++    </cpu>
++  </host>
++  <guest>
++    <os_type>hvm</os_type>
++    <arch name='x86_64'>
++      <wordsize>64</wordsize>
++      <emulator>/usr/bin/qemu-system-x86_64</emulator>
++      <machine maxCpus='255'>pc-i440fx-2.6</machine>
++      <machine canonical='pc-i440fx-2.6' maxCpus='255'>pc</machine>
++      <machine maxCpus='255'>pc-0.12</machine>
++      <domain type='qemu'/>
++      <domain type='kvm'>
++        <emulator>/usr/bin/qemu-kvm</emulator>
++        <machine maxCpus='255'>pc-i440fx-2.6</machine>
++        <machine canonical='pc-i440fx-2.6' maxCpus='255'>pc</machine>
++        <machine maxCpus='255'>pc-0.12</machine>
++      </domain>
++    </arch>
++  </guest>
++</capabilities>
++        '''
++
++        # pylint: disable=no-member
++        self.mock_conn.getCapabilities.return_value = hostXml
++        self.mock_conn.getDomainCapabilities.side_effect = [
++                domainXml, domainXml.replace('<domain>kvm', '<domain>qemu')]
++        # pylint: enable=no-member
++
++        caps = virt.all_capabilities()
++        self.assertEqual('44454c4c-3400-105a-8033-b3c04f4b344a', caps['host']['host']['uuid'])
++        self.assertEqual(set(['qemu', 'kvm']), set([domainCaps['domain'] for domainCaps in caps['domains']]))
++
+     def test_network_tag(self):
+         '''
+         Test virt._get_net_xml() with VLAN tag
+-- 
+2.20.1
+
+

@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Wed Apr  3 07:25:15 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.2.3
+   see /usr/share/doc/packages/perl-Pod-Readme/Changes
+
+  v1.2.3    2018-10-31 22:56:42+00:00 Europe/London
+    [Bug Fixes]
+    - Increased minimum version of Type::Tiny to 1.000000.
+  
+  v1.2.2    2018-10-31 22:41:45+00:00 Europe/London
+    [Documentation]
+    - Updated POD with regard to format types (Mohammad S Anwar).
+  
+    - Fixed typos in Changes.
+  
+    [Bug Fixes]
+    - Added explicit requirements for Pod::Simple as well as recommended
+      modules.
+  
+    [Toolchain]
+    - Remove explicit core dependencies from prereqs list.
+  
+    - Updated list of contributors in distribution metadata. (Apologies
+      if anyone was omitted.)
+  
+  v1.2.1    2018-10-30 18:23:48+00:00 Europe/London
+    [Documentation]
+    - Added note about Github Flavoured Markdown (GFM) support
+      to Changes for v1.2.0.
+  
+    [Other]
+    - Restore license to "Perl_5" that was inadvertently changed
+      in the conversion to use Dist::Zilla, GH#25.
+  
+  v1.2.0    2018-10-29 19:24:01+00:00 Europe/London
+    [Bug Fixes]
+    - Specify minimum version of List::Util, GH#22.
+  
+    [Enhancements]
+    - Added "md" as an alias for "markdown" in pod2readme.
+  
+    - Added "github" or "gfm" for Github Flavored Markdown in
+      pod2readme, GH#15.
+  
+    [Incompatabilities]
+    - Removed DistZilla type from Pod::Readme::Types, as it was not
+      necessary.
+  
+    [Toolchain]
+    - Remove use of Module::Install, fixes GH#21.
+  
+    - Use Dist::Zilla to build the distribution.
+
+-------------------------------------------------------------------
+Tue Oct  3 07:54:57 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Thu Apr 16 05:36:17 UTC 2015 - coolo@suse.com
+
+- updated to 1.1.2
+   see /usr/share/doc/packages/perl-Pod-Readme/Changes
+
+-------------------------------------------------------------------
+Fri Mar 14 21:05:29 UTC 2014 - chris@computersalat.de
+
+- fix for bnc#851647
+  * /usr/bin/pod2readme not executable
+
+-------------------------------------------------------------------
+Fri Mar  4 16:05:45 UTC 2011 - chris@computersalat.de
+
+- update to version 0.11
+  - Recognise the =encoding directive, rather than dying when it's
+    encountered.
+    TODO: actually take heed of it.
+    Thanks to Ivan Bessarabov for bringing this to my attention!
+- 0.10  2010-05-19
+  - David Precious <davidp@preshweb.co.uk> taking over maintainership
+  - Apply POD fix patch from RT #38328, thanks to David A. Desrosiers
+- recreated by cpanspec 1.78.03
+  - fix deps
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:34 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Jul 25 19:41:42 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sat Jun 27 21:27:25 CEST 2009 - chris@computersalat.de
+
+- initial pkg 0.09
+

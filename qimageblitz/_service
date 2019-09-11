@@ -1,0 +1,14 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="scm">svn</param>
+    <param name="url">svn://anonsvn.kde.org/home/kde/trunk/kdesupport/qimageblitz</param>
+    <param name="filename">qimageblitz</param>
+    <param name="versionformat">0.0.6+svn%r</param>
+    <param name="revision">1515099</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

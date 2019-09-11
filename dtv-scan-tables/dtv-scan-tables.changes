@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Wed Oct 17 07:29:08 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20180927:
+  * Complete UK update Includes some retunes, additional HD mux and Local mux.
+  * all current German DVB-T2 muxes (#47)
+  * Update pl-Rzeszow
+
+-------------------------------------------------------------------
+Mon Jun  4 15:20:41 UTC 2018 - mpluskal@suse.com
+
+- Update to version 20180510:
+  * dtv-scan-tables: dvb-t/es-Zaragoza
+  * Remove Anik F1 107.3W
+  * Synchronize orbital position naming in filenames
+  * Drop Agila 2 146.0E
+  * Update Amazonas 3 61.0W
+  * Rename ABS1 to ABS2
+  * Rename Atlantic Bird 3 to Eutelsat5
+  * Remove Atlantic Bird 1
+  * dtv-scan-tables - dvb-s - update and rename the config file for Atlantic-Bird-3-5.0W - Ku Band
+  * Add another initial transponder for Ziggo/Netherlands. Ziggo and UPC had merged, but the initial UPC transponder is still the correct one for former UPC customers. See also https://gathering.tweakers.net/forum/list_message/31632914#31632914
+  * Create es-Huelva
+  * Create at-CNI file
+  * Update fr-All
+
+-------------------------------------------------------------------
+Thu Apr 12 11:06:57 UTC 2018 - mpluskal@suse.com
+
+- Update to version 20180103:
+  * dtv-scan-tables: update all Finnish Digita DVB-T2 transponders
+  * Intelsat34-55.5W: update definitions from Vivo streaming
+  * scan-tables: add scan file for Shostka, Ukraine
+  * dvb-t/at-All: update channels for DVB-T2
+  * dtv-scan-tables: Elisa cable-tv (PKS+Riihimäki)
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Oct 19 09:12:16 UTC 2017 - mpluskal@suse.com
+
+- Update to version 20171003:
+  * Add scan file for EWCom Goms DVB-C
+  * scan-tables: add initial table for Mountain View, California
+  * scan-tables: add initial table for San Jose, California
+  * Intelsat34-55.5W: add a Ku-Band transponder
+  * isdb-t: update existing files with newer channels
+  * isdb-t: add new Brazilian cities
+  * isdb-t: Delete some wrong channel lists
+
+-------------------------------------------------------------------
+Mon Jul 10 08:13:31 UTC 2017 - mpluskal@suse.com
+
+- Update to version 20170530:
+  * dtv-scan-tables - dvb-t - add file for France Paris Eiffel Tower DVB-T transmitters
+  * Update au-Adelaide
+  * Update au-Newcastle
+
+-------------------------------------------------------------------
+Mon Apr 24 21:15:39 UTC 2017 - mpluskal@suse.com
+
+- Update to version 20170419:
+  * Add a new list for USA/CAN
+  * Fix Ukraine, Kyiv
+  * Update dvb-t/ua-Kyiv with new transponders and corrections
+  * dvb-scan-tables: updated Digita frequencies for Finland
+  * dtv-scan-tables: add new channels to dvb-t/de-Bayern
+
+-------------------------------------------------------------------
+Sun Mar  5 12:08:39 UTC 2017 - mpluskal@suse.com
+
+- Update to version 20170203:
+  * Initial DVB-T2 scan data file for ke-Nairobi (Nairobi, Kenya)
+
+-------------------------------------------------------------------
+Sun Jan 08 17:03:23 UTC 2017 - mpluskal@suse.com
+
+- Update to version 20161227:
+  * Add scan file for fi-kaisa
+  * dvb-t/es-Asturias: whitespace fixes
+  * Create pl-Krosno_Sucha_Góra
+  * Create pl-Warszawa
+  * UPC Česká republika - value adjustment for FEC
+  * Rename pl-Krosno_Sucha_Gora with only ASCII characters
+  * renaming NTSC file because it doesnt actually use 8VSV, updating channel listings, add channel numbers
+  * ca-ON-Toronto: adding scan file for Toronto, Canada, added channel numbers
+  * DVB-T2 for ug-All, Kampala
+  * DVB-T2 channels with Russia channel range and Vladivostok
+- Update _service file to generate changelog as well
+- Small spec file cleanup
+- Send to Leap (boo#1018436)
+
+-------------------------------------------------------------------
+Wed Oct 28 19:54:20 UTC 2015 - seife+obs@b1-systems.com
+
+- fix build against Leap in vdr project
+
+-------------------------------------------------------------------
+Tue Apr  7 20:05:20 UTC 2015 - jslaby@suse.com
+
+- update to 20150208
+  * updated scan files
+- use their makefile
+- install v5 dvb files (in a subpackage)
+
+-------------------------------------------------------------------
+Sun Mar 30 18:39:56 UTC 2014 - seife+obs@b1-systems.com
+
+- add BuildRoot: to allow build on SLES11
+
+-------------------------------------------------------------------
+Mon May 20 12:35:18 UTC 2013 - jslaby@suse.com
+
+- update to 20130412
+  * updated scan files
+  * added license files (drop our copy)
+
+-------------------------------------------------------------------
+Thu Jan 17 09:52:26 UTC 2013 - jslaby@suse.com
+
+- new package
+

@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Jun  4 18:20:57 UTC 2013 - coolo@suse.com
+
+- updated to 1.03
+ * release 1.03 -- modernise the distribution
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:15 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Aug 20 09:17:15 UTC 2010 - chris@computersalat.de
+
+- initial package 1.02
+  * created by cpanspec 1.78
+

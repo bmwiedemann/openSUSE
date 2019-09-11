@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Sat Jun  9 22:19:22 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to 1.1.6:
+  * No changelog provided.
+- Clean with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon Jun 15 15:03:02 UTC 2015 - schwab@suse.de
+
+- invalid-define.patch: Remove invalid definition of internal identifier
+
+-------------------------------------------------------------------
+Tue Apr 21 14:37:53 UTC 2015 - mpluskal@suse.com
+
+- Remove fedora dependencies
+- Use pkgconfig() style dependencies
+
+-------------------------------------------------------------------
+Sat Aug 24 23:26:10 UTC 2013 - prusnak@opensuse.org
+
+- updated to 1.1.5
+
+-------------------------------------------------------------------
+Fri Mar 16 16:12:42 UTC 2012 - prusnak@opensuse.org
+
+- spec cleanup
+- added libs.patch to add missing libraries to linker (m, readline)
+
+-------------------------------------------------------------------
+Wed Sep 14 11:34:17 UTC 2011 - lazy.kent@opensuse.org
+
+- Initial package created - 1.1.3.
+- Patch to fix build problem with '--as-needed' linker option
+  (lp#803170) from Debian project.
+

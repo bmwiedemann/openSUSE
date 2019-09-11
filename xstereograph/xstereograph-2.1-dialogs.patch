@@ -1,0 +1,15 @@
+--- libsx-2.03/src/libsx.c
++++ libsx-2.03/src/libsx.c
+@@ -86,10 +86,10 @@
+ 
+   if (language==NULL) language=getenv("LANG");
+ 
+-  sprintf(locale_file, "/usr/share/libsx/dialogs.%c%c", 
++  sprintf(locale_file, "/usr/share/libsx/dialogs.%c%c", 
+        language[0], language[1]);
+   fd = fopen(locale_file, "r");
+-  if (fd==NULL) { locale_file[25] = 'e'; locale_file[26] = 'n'; }
++  if (fd==NULL) { locale_file[31] = 'e'; locale_file[32] = 'n'; }
+   fd = fopen(locale_file, "r");
+   if (fd==NULL)
+     fprintf(stderr, "Cannot open dialogs %s !!", locale_file);

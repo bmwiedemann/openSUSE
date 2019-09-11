@@ -1,0 +1,13 @@
+<services>
+	<service name="tar_scm" mode="localonly">
+		
+		
+		
+		
+	<param name="url">http://code.google.com/p/libgooglepinyin/</param><param name="versionprefix">0.1.2</param><param name="scm">hg</param></service>
+	<service name="recompress" mode="localonly">
+		<param name="file">*.tar</param>
+		<param name="compression">bz2</param>
+	</service>
+	<service name="set_version" mode="localonly"/>
+</services>

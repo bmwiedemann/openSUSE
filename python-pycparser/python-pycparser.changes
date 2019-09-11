@@ -1,0 +1,148 @@
+-------------------------------------------------------------------
+Wed Jan  9 21:51:00 UTC 2019 - Jonathan Brownell <jbrownell@suse.com>
+
+- Restrict pattern matching to real files (not symlinks) during packaging
+  of fake_libc_include to avoid build errors on Red Hat platforms.
+  * fix-lexer-build.patch
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:59 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Sep 24 16:27:58 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.19
+  - PR #277: Fix parsing of floating point literals
+  - PR #254: Add support for parsing empty structs
+  - PR #240: Fix enum formatting in generated C code (also #216)
+  - PR #222: Add support for #pragma in struct declarations
+- Rebase fix-lexer-build.patch
+
+-------------------------------------------------------------------
+Wed Jul 12 05:50:39 UTC 2017 - tbechtold@suse.com
+
+- update to 2.18:
+  - PR #161 & #184: Update bundled PLY version to 3.10
+  - PR #158: Add support for the __int128 type.
+  - PR #169: Handle more tricky TYPEID in declarators.
+  - PR #178: Add columns to the coord of each node
+
+-------------------------------------------------------------------
+Fri Mar 24 17:09:01 UTC 2017 - jmatejek@suse.com
+
+- sort out duplicate rpmlintrc
+
+-------------------------------------------------------------------
+Thu Mar 16 16:15:40 UTC 2017 - jmatejek@suse.com
+
+- update to 2.17
+  - PR #121: Update bundled PLY version to 3.8
+  - Issue #117: Fix parsing of extra semi-colons inside structure declarations.
+  - PR #109: Update c_generator to add {} around nested named initializers.
+  - PR #101: Added support for parsing pragmas into the AST.
+  - Additional fake headers and typedefs, manifest fixes (#97, #106, #111).
+  - Testing with Python 3.5 instead of 3.3 now (3.4 and 3.5 are the 3.x versions
+    tested).
+  - PR #145: More complete support for offsetof()
+  - Issue #116: Fix line numbers recorded for empty and compound statements.
+  - Minor performance improvement to the invalid string literal regex.
+- drop upstreamed 0002-Add-missing-typedef-sa_family_t-from-sys-socket.h.patch
+- move source url to pypi
+
+-------------------------------------------------------------------
+Thu Dec  8 16:40:11 UTC 2016 - jmatejek@suse.com
+
+- update for multipython build
+- move fake_libc to site-packages, where it can be found by pkg_resources
+  * this also prevents file conflict between python2 and python3
+- fix-lexer-build.patch: fix build process to better generate parser/lexer
+  files
+
+-------------------------------------------------------------------
+Sat Jan 16 14:31:31 UTC 2016 - p.drouand@gmail.com
+
+- Add python-pycparser-rpmlintrc to sources
+
+-------------------------------------------------------------------
+Thu Jan  7 20:52:41 UTC 2016 - mvyskocil@opensuse.org
+
+- Tag added patch better
+
+-------------------------------------------------------------------
+Mon Nov 30 12:56:14 UTC 2015 - mvyskocil@opensuse.org
+
+- Update to version 2.14
+  * Added CParser parameter to specify output directory for generated parsing
+    tables (#84).
+  * Removed lcc's cpp and its license from the distribution. Using lcc's cpp
+    is no longer recommended, now that Clang has binary builds available for
+    Windows.
+  2.13:
+  * Added support for offsetof() the way gcc implements it (special builtin
+    that takes a type as an argument).
+  * Added faked va_* macros (these are expected to come from stdarg.h)
+  * Added a bunch more fake headers and typedefs to support parsing C projects
+    like Git and SQLite without modifications to pycparser.
+  * Added support for empty initializer lists (#79).
+- Package fake_libc_include
+  * switch to github release as pypi tarball don't contains all files
+- Add 0002-Add-missing-typedef-sa_family_t-from-sys-socket.h.patch
+  * upstream patch enhancing the fake_libc_include
+
+-------------------------------------------------------------------
+Mon May 11 14:59:40 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 2.12:
+  * This is a fix release for 2.11; the memory optimization with
+    __slots__ on Coord and AST nodes didn't take weakrefs into
+    account, which broke cffi and its many dependents (issue #76).
+    Fixed by adding __weakref__ to __slots__.
+- additional changes from version 2.11:
+  * Add support for C99 6.5.3.7 p7 - qualifiers within array
+    dimensions in function declarations. Started with issue #21
+    (reported with initial patch by Robin Martinjak).
+  * Issue #27: bug in handling of unified wstring literals.
+  * Issue #28: fix coord reporting for 'for' loops.
+  * Added ``examples/using_gcc_E_libc.py`` to demonstrate how ``gcc
+    -E`` can be used instead of ``cpp`` for preprocessing.
+  * Pull request #64: support keywords like const, volatile,
+    restrict and static in dimensions in array declarations.
+  * Reduce memory usage of AST nodes (issue #72).
+  * Parsing order of nested pointer declarations fixed (issue #68).
+- update project URL
+- fix end of line encoding of LICENSE
+
+-------------------------------------------------------------------
+Mon Aug 12 08:45:29 UTC 2013 - speilicke@suse.com
+
+- Update to version 2.10:
+  - A number of improvements in the handling of typedef-name ambiguities,
+    contributed by Sye van der Veen in GitHub issue #1:
+    * Allow shadowing of types by identifiers in inner scopes.
+    * Allow struct field names to reside in a separate namespace and have
+      the same names as types.
+    * Allow duplicate typedefs in some cases to mimic real compiler behavior.
+  - c_generator error for ExprList in expression context.
+  - Assume default int type for functions whose argument or return types were
+    not specified.
+  - Relax the lexer a bit w.r.t. some integer suffixes and $ in identifier names
+    (which is supported by some other compilers).
+- Package LICENSE
+
+-------------------------------------------------------------------
+Sat Apr 13 10:11:29 UTC 2013 - toddrme2178@gmail.com
+
+- Remove pre_checkin.sh since the two packages are not the same
+
+-------------------------------------------------------------------
+Wed Feb 27 15:22:33 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Sun Feb 10 09:48:07 UTC 2013 - saschpe@suse.de
+
+- Initial version
+

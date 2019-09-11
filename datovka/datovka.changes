@@ -1,0 +1,440 @@
+-------------------------------------------------------------------
+Tue May 28 07:13:58 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- Update to 4.13.1
+  * Fixes crashes during account synchronization.
+
+-------------------------------------------------------------------
+Wed Apr 17 10:18:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.13.0 bsc#1104620:
+  * Account renaming now possible
+  * Special format downloading now alloved to "spisova sluzba"
+- Rebase patch datovka-fix-pro.patch
+
+-------------------------------------------------------------------
+Wed Jan 16 11:38:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.12.0 bsc#1104620:
+  * Bigger attachments allowed (50MB)
+  * HiDPI icons
+  * Minor fixes
+
+-------------------------------------------------------------------
+Tue Oct 23 08:12:36 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use %license macros
+
+-------------------------------------------------------------------
+Thu Sep 13 08:17:12 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Version update to 4.11.0:
+  * Few feature enhancements in mesage composing
+
+-------------------------------------------------------------------
+Fri Aug 17 12:06:37 UTC 2018 - tchvatal@suse.com
+
+- Update datovka-fix-pro.patch to contain fix for Leap 42.3 build
+
+-------------------------------------------------------------------
+Mon Aug 13 07:02:51 UTC 2018 - tchvatal@suse.com
+
+- Update to 4.10.3 bsc#1104620:
+  * Added classes based on Qt types encapsulating various ISDS data types and
+    structures. Sharing this code with mobile application.
+  * Added per-account locking of communication contexts.
+  * Modified database interface to accommodate new data types.
+  * Explicitly specifying tab order for most windows and dialogues. It is also
+    possible (on Windows and Linux) to cycle through actions in top tool bar.
+  * Asking users for confirmation before deleting tags which are still assigned
+    to some messages.
+  * Added tooltip description of message state value in sent message list.
+  * Added button to view account password when editing account credentials and
+    PIN (master password) is enabled.
+  * Added DigiCert Global Root G2 certificate.
+  * Improved keyboard-based control of main and other dialogue windows. All
+    important elements should be navigable only by keyboard (on Windows and
+    Linux).
+  * Fixed a problem with wrong conversion of obtained ISDS error statuses into
+    readable text. This may have caused the programme to crash.
+  * Fixed scaling of some icon-based control elements when using enlarged fonts
+    on Windows.
+  * Fixed message list sorting and filtering according to assigned tags.
+  * Displaying busy cursor when switching between entries in account list.
+  * New version notification can be blocked on Windows in runtime by setting
+    specific registry values. It can also be blocked at compile time
+    by using a configuration option when running qmake.
+  * Extended resource information for the generated Windows executable.
+  * Fixed project file include paths in order not to interfere with user-defined
+    compiler flags.
+  * Fixed problem with unpredictable construction order of global object
+    instances.
+  * Added missing conversion strings to some unknown message types.
+  * Fixed issue causing the application to crash on macOS when switching
+    between accounts and when having some text in the message filter field.
+  * Fixed issue causing the application to crash on macOS when updating
+    information about messages without a valid delivery time.
+  * Re-enabled logging of transferred message on Windows data when setting
+    debug verbosity to 3.
+  * Code shared with mobile application has been placed into separate
+    directory.
+- Rebase patch datovka-fix-pro.patch
+
+-------------------------------------------------------------------
+Wed Jan 17 18:09:12 UTC 2018 - tchvatal@suse.com
+
+- Update to 4.10.1:
+  * Few small fixes
+  * MSI installer tweaks
+- Refresh patch datovka-fix-pro.patch
+
+-------------------------------------------------------------------
+Fri Dec  1 10:20:26 UTC 2017 - tchvatal@suse.com
+
+- Version update to 4.10.0:
+  * Can now encrypt passwords via master password
+  * Better support for screen readers
+
+-------------------------------------------------------------------
+Sun Oct 22 13:23:32 UTC 2017 - jslaby@suse.com
+
+- Update Version update to 4.9.3
+  * Fixed a problem when message list was not updated after account
+    synchronisation when a message was selected.
+  * Fixed a bug when database location may have been saved even though the
+    databases reside in default location. This problem was visible especially
+    on Windows.
+
+- Update Version update to 4.9.2
+  * Changed tag dialogue to contain two views when editing tag assignment.
+  * Using the prefix 'ODZ_' for sent and 'DDZ_' for received data messages
+    when uploading them into records management service.
+  * Default documentation location can be changed when running qmake using the
+    TEXT_FILES_INST_DIR variable.
+  * Full-text data-box search does not block the search dialogue.
+  * Full-text data-box search can be interrupted and restarted again without
+    closing the dialogue.
+  * Separated core and GUI code. Removed models from database interface.
+  * Added new CLI option '--get-msg-ids'.
+  * Command-line application without GUI can be built separately. This
+    executable is going to be distributed in Windows packages together with
+    the GUI application.
+
+- Update Version update to 4.9.1
+  * Added experimental support for new data-box and user types that are going
+    to be introduced into the ISDS production environment and which are
+    already present in the ISDS testing environment.
+    Version 0.10.7 of libisds is required to build the application.
+  * Updated building scripts for the Windows application to automatically pull
+    Qt dependencies into the package.
+  * Fixed issue when records management data have not been erased from message
+    model after the service has been deactivated.
+  * Fixed issues with records management logo not being displayed in message
+    list immediately after the service has been set up.
+  * Alphabetically sorting nodes of records management hierarchy.
+  * Sub-nodes of matching element are also displayed when filtering hierarchy
+    of records management service.
+  * Removed inactive mojeid-datovka code from the sources.
+
+-------------------------------------------------------------------
+Wed Jul 19 12:32:51 UTC 2017 - jengelh@inai.de
+
+- Remove odd backslashes from description.
+
+-------------------------------------------------------------------
+Wed Jul 19 11:21:13 UTC 2017 - jslaby@suse.com
+
+- Version update to 4.9.0:
+  * Added API and support for sending messages into records management
+    services.
+  * Removed explicit clear buttons from filter fields.
+  * Fixed problems with remembering location of saved attachment files.
+  * Directory structure can be created when exporting correspondence overview.
+  * Line height of account list and message table has been adjusted to be the
+    same.
+  * Fixed confusion between the terms of delivery (dodani) and acceptance
+    (doruceni) in Czech localisation.
+  * Process of exporting multiple selected messages can be aborted by clicking
+    Cancel button.
+  * Tags can be stored into HTML correspondence overview.
+  * HTML correspondence overview now contains both delivery and acceptance
+    times.
+  * Fixed problems with sending messages from accounts that cannot search for
+    data boxes.
+  * Fixed tag ordering. Tag sorting is now locale-aware. 
+- disable -Wdate-time -- unrecognized e.g. with gcc 4.8
+
+-------------------------------------------------------------------
+Tue May 23 07:31:09 UTC 2017 - jslaby@suse.com
+
+- Version update to 4.8.1:
+  * Fixed problem with disappearing splitters on application start.
+- add checksum to sources, so that OBS can check consistency
+
+-------------------------------------------------------------------
+Thu Mar 30 13:19:38 UTC 2017 - tchvatal@suse.com
+
+- Version update to 4.8.0:
+  * Added full-text data box search which is now the default method to search
+    for data boxes.
+  * Fixed problems with placing the main application window when starting the
+    application on a smaller screen than it has been closed before.
+  * Refactoring of code related to message imports and exports.
+  * Reduced the amount of code in main application window.
+
+-------------------------------------------------------------------
+Tue Mar 28 10:36:31 UTC 2017 - tchvatal@suse.com
+
+- Drop dejavu dependency as it is now using fontconfig and not hardcoded
+  paths in the code
+
+-------------------------------------------------------------------
+Wed Mar  8 13:19:45 UTC 2017 - tchvatal@suse.com
+
+- Fix license to be GPL-3.0+ as per COPYING file
+
+-------------------------------------------------------------------
+Thu Feb 16 16:17:11 UTC 2017 - mpluskal@suse.com
+
+- Use qmake macros
+
+-------------------------------------------------------------------
+Wed Feb 15 10:10:37 UTC 2017 - jslaby@suse.com
+
+- Version update to 4.7.1:
+ * User is notified about existent files when storing all attachments.
+ * Added forward message action.
+ * Fixed problem in which the main window was placed slightly off-screen when
+   run for the first time.
+ * When composing messages, attachment files can be rearranged using drag and
+   drop actions.
+ * Fixed bug. Message model is updated after tags have been edited.
+ * Fixes errors in application localisation.
+
+-------------------------------------------------------------------
+Wed Oct 19 20:43:02 UTC 2016 - tchvatal@suse.com
+
+- Version update to 4.7.0:
+  * openssl 1.1.0 support
+  * Various small fixes
+
+-------------------------------------------------------------------
+Mon Oct 10 08:22:08 UTC 2016 - jslaby@suse.com
+
+- Version update to 4.6.1:
+  * Message envelope can be exported to a PDF file along with other message
+    attachments.
+  * Fixed issue when the sending of a new message lasted too long. In such case
+    the application could occasionally crash.
+  * Patched bundled libisds to fix wrong sender identification. This fix
+    affects only Windows and OS X users. Linux users should update to latest
+    libisds version (0.10.4).
+  * Fixed version string shown in notification dialogue.
+
+-------------------------------------------------------------------
+Sat May 14 12:18:01 UTC 2016 - tchvatal@suse.com
+
+- Version update to 4.6.0:
+  * Added support for tags. These can be locally assigned to the messages.
+  * Message information are shown in separate window when double-clicking the
+    message in message list or when hitting the Return/Enter key.
+  * When composing a message, the recipient can be added to the recipient list
+    by double clicking it in the recently-used recipient list.
+  * Information about personal delivery are shown in message description field.
+  * Fixed problem where account entry has not been updated after message
+    deletion.
+  * Fixed encoding issue when exporting correspondence overview in HTML.
+  * Fixed a bug causing the create message button not to activate when first
+    account was created.
+
+-------------------------------------------------------------------
+Fri Apr  1 09:20:07 UTC 2016 - mpluskal@suse.com
+
+- Update to 4.5.3
+  * Fixed problems with HOTP authorisation on Windows. There have 
+    been problems with the bundled libisds. MinGW does not handle 
+    POSIX extensions of printf formatting strings properly. Patch 
+    for libisds has been added.
+  * Fixed a non-working PRAGMA statement when asking for a database 
+    integrity check.
+  * The --version command-line argument now also prints the version 
+    of libraries which Datovka depends on.
+  * Automatic background downloads didn't cause the deactivation of 
+    download buttons that could still be triggered. Triggering those 
+    buttons in this situation could cause the application to crash.
+  * Adding new account caused the account tree to collapse. This has 
+    been fixed.
+- Changes for 4.5.2
+  * NLS of bundled libisds (OS X, Windows) has been disabled.
+  * The logging of libisds actions has been restricted on Windows 
+    because there are discrepancies from standard-defined behaviour 
+    of some functions on Windows.
+  * Improved behaviour when message download fails. The error 
+    dialogue is only shown when an explicit message download fails. 
+  * A message in the notification area appears when the download 
+    has been triggered by downloading message list. This should 
+    reduce the amount of error dialogues generated.
+  * Improved behaviour when downloading messages on accounts with 
+    restricted privileges. Received messages are not automatically 
+    downloaded when the user has no privileges to do that.
+- Changes for 4.5.1
+  * Fixed bug in action logging causing the application to crash 
+    occasionally.
+  * Fixed bug where message line was not deleted when deleting from 
+    ISDS failed.
+  * New account model internals.
+- Build with optflags
+- Use macros for desktop file and icon handling
+
+-------------------------------------------------------------------
+Tue Feb 16 18:29:42 UTC 2016 - tchvatal@suse.com
+
+- Version update to 4.5.0:
+  * various backend updates
+  * various bugs fixed
+  * qt 5.3 required now
+- Rebase patch:
+  * datovka-fix-pro.patch
+
+-------------------------------------------------------------------
+Tue Jan  5 09:30:36 UTC 2016 - tchvatal@suse.com
+
+- Version update to 4.4.3:
+  * Various bugfixes. See ChangeLog file
+  * Fixed broken expired password swap
+
+-------------------------------------------------------------------
+Mon Oct 12 12:31:58 UTC 2015 - tchvatal@suse.com
+
+- Version update to 4.4.0:
+  * Various bugfixes all around. See ChangeLog file
+
+-------------------------------------------------------------------
+Sat Sep  5 07:11:33 UTC 2015 - tchvatal@suse.com
+
+- Version bump 4.3.1:
+  * Few small bugfixes see ChangeLog for details
+- Refresh patch datovka-fix-pro.patch
+
+-------------------------------------------------------------------
+Wed Jun  3 10:11:36 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 4.3.0:
+  * No obvious changelog apart from mentioning bugfixes
+
+-------------------------------------------------------------------
+Tue Mar 31 17:02:09 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 4.2.0:
+  * Various bugfixes
+  * Resending messages/etc
+- Obsoleted patch:
+  * 0001-no-check-new-versions.patch
+
+-------------------------------------------------------------------
+Tue Feb 24 12:44:21 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 4.1.2:
+  * Various bugfixes
+- Add patch to not ask about new version availabilty:
+  * 0001-no-check-new-versions.patch
+- Refreshed patch:
+  * datovka-fix-pro.patch
+
+-------------------------------------------------------------------
+Mon Feb  2 13:50:12 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 4.1:
+  * Complete rewrite under qt5
+  * Should provide same usability, reffer to homepage for more info
+- Various cleanups
+- Add patch to fix building with respecting cflags/etc:
+  * datovka-fix-pro.patch
+
+-------------------------------------------------------------------
+Mon Sep 15 14:30:05 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 3.1:
+  * Detect better file suffixes
+  * work with sqlalchemy 0.9
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Oct 24 10:50:44 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Jul 16 13:44:15 UTC 2013 - tchvatal@suse.com
+
+- Format spec file was run and it was not changelogged.
+
+-------------------------------------------------------------------
+Fri Jan 25 20:26:33 UTC 2013 - tchvatal@suse.com
+
+- Upstream moves the tarball all around, just not track it.
+
+-------------------------------------------------------------------
+Wed Jan 23 15:14:51 UTC 2013 - tchvatal@suse.com
+
+- Forgot to own datadir.
+
+-------------------------------------------------------------------
+Wed Jan 23 14:20:44 UTC 2013 - tchvatal@suse.com
+
+- Sort out desktop file for SLE.
+
+-------------------------------------------------------------------
+Wed Jan 23 14:09:36 UTC 2013 - tchvatal@suse.com
+
+- Fix various rpmlint warnings to make it happy. 
+
+-------------------------------------------------------------------
+Wed Jan 23 13:02:10 UTC 2013 - tchvatal@suse.com
+
+- Add build_root and python stuff to theoretically build on sle.
+
+-------------------------------------------------------------------
+Wed Jan 23 10:56:08 UTC 2013 - tchvatal@suse.com
+
+- Add more runtime deps to be on safe side here.
+
+-------------------------------------------------------------------
+Mon Jan 21 11:11:02 UTC 2013 - tchvatal@suse.com
+
+- Fix download url as upstream decided to move it.
+
+-------------------------------------------------------------------
+Fri Jan 18 16:58:20 UTC 2013 - tchvatal@suse.com
+
+- Add py_requires macro.
+
+-------------------------------------------------------------------
+Mon Jan  7 11:54:38 UTC 2013 - tchvatal@suse.com
+
+- Version bump to 3.0.3.
+
+-------------------------------------------------------------------
+Thu Dec 20 14:11:11 UTC 2012 - tchvatal@suse.com
+
+- Version bump to 3.0.2. Raise dslib dep. Remove dejavu hack.
+
+-------------------------------------------------------------------
+Fri Nov 30 09:41:51 UTC 2012 - tchvatal@suse.com
+
+- Version bump to 2.1.1. Raise dslib dep.
+
+-------------------------------------------------------------------
+Thu Apr 26 11:02:15 UTC 2012 - tchvatal@suse.com
+
+- Bump to version 2.0.2. Depend on newer python-dslib.
+
+-------------------------------------------------------------------
+Wed Dec 07 12:31:20 UTC 2011 - tchvatal@suse.com
+
+- Remove _service, clean phase, add some docs
+
+-------------------------------------------------------------------
+Tue Dec 06 14:30:30 UTC 2011 - tchvatal@suse.com
+
+- Initial commit of datovka.

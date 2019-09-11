@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Sat Nov 14 11:21:43 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 20150908
+* Improvements to the build system and fixing a bug in the tests.
+
+-------------------------------------------------------------------
+Sat Oct 11 22:36:03 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 20140914
+* No changelog was provided
+
+-------------------------------------------------------------------
+Wed Feb  5 02:30:26 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 20130416
+* performance improvements for small matrices (say, 64×64)
+
+-------------------------------------------------------------------
+Thu Nov 29 18:47:42 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 0.0.20120613
+* support for reading and writing 1-bit PNG images
+* much improved performance for 4<e≤8
+
+-------------------------------------------------------------------
+Sun Feb 26 13:41:20 UTC 2012 - scorot@free.fr
+
+- fix build for SLE-11 
+
+-------------------------------------------------------------------
+Sun Nov 20 08:02:54 UTC 2011 - werner.ho@gmx.de
+
+- new version 20111004
+
+-------------------------------------------------------------------
+Tue Sep 27 22:16:42 UTC 2011 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

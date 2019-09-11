@@ -1,0 +1,72 @@
+---
+ app-defaults/Fig  |   32 ++++++++++++++++++++++++++++++--
+ src/w_menuentry.c |    2 +-
+ 2 files changed, 31 insertions(+), 3 deletions(-)
+
+--- app-defaults/Fig.in
++++ app-defaults/Fig.in	2016-09-22 08:33:16.879768102 +0000
+@@ -14,6 +14,7 @@ Fig.version:			3.2.6
+ ! with xfig continually resizing itself
+ 
+ Fig*AllowShellResize:		false
++Fig.inches:			false
+ 
+ ! Image editor - can edit imported image
+ Fig.image_editor:		xdg-open
+@@ -167,8 +168,13 @@ Fig.internalborderwidth:	1
+ 
+ !if on monochrome server, or no Fig-color app-defaults file
+ !  This background resource shows between the buttons like a border
+-	Fig*mode_panel.background:	black
++	Fig*mode_panel.background:	gray67
+ 	Fig*mode_panel.foreground:	black
++        Fig*mode_panel*topShadow:	white
++	Fig*mode_panel*bottomShadow:	gray17
++	Fig*mode_panel*topShadowPixel:	white
++	Fig*mode_panel*bottomShadowPixel:   gray17
++
+ 
+ ! Specify a private Compose key database file.  If this resource contains a "/"
+ ! then the wired-in name of the xfig global directory won't be prefixed to it.
+@@ -661,7 +667,29 @@ Fig*sideruler.background:		gray95
+ 
+ Fig*FigList*background:			gray95
+ Fig*List*background:			gray95
+-Fig*Scrollbar.background:		gray80
++Fig*Scrollbar.background:		gray77
++
++Fig*Scrollbar.foreground:		gray37
++Fig*ScrollbarBackground:		gray67
++Fig*ScrollbarForeground:		gray37
++
++Fig*horizontal.shadowWidth:		2
++Fig*horizontal.topShadowPixel:		gray95
++Fig*horizontal.bottomShadowPixel:	gray37
++Fig*horizontal.topShadow:		gray95
++Fig*horizontal.bottomShadow:		gray37
++
++Fig*Scrollbar.shadowWidth:		2
++Fig*Scrollbar.topShadow:		gray95
++Fig*Scrollbar.bottomShadow:		gray37
++Fig*Scrollbar.topShadowPixel:		gray95
++Fig*Scrollbar.bottomShadowPixel:	gray37
++
++Fig*stdColor.shadowWidth:		2
++Fig*stdColor.topShadow:			gray95
++Fig*stdColor.bottomShadow:		gray37
++Fig*stdColor.topShadowPixel:		gray95
++Fig*stdColor.bottomShadowPixel:		gray37
+ 
+ Fig*Label.background:			gray80
+ Fig*ind_box.background:			gray80
+--- src/w_menuentry.c
++++ src/w_menuentry.c	2016-09-22 08:34:54.249950001 +0000
+@@ -172,7 +172,7 @@ Redisplay(Widget w, XEvent *event, Regio
+ 	gc = entry->sme_bsb.norm_gray_gc;
+     }
+ 
+-    if (entry->sme_bsb.label != NULL) {
++    if (entry->sme_bsb.label != /* NULL */ XtName((Widget)(entry))) {
+ 	int x_loc = entry->sme_bsb.left_margin;
+ 	int len = strlen(entry->sme_bsb.label);
+ 	char * label = entry->sme_bsb.label;

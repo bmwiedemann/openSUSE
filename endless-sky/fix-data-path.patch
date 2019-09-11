@@ -1,0 +1,44 @@
+diff -Nur endless-sky-0.8.7/endless-sky.6 endless-sky-0.8.7-new/endless-sky.6
+--- endless-sky-0.8.7/endless-sky.6	2015-11-12 05:09:37.000000000 +0100
++++ endless-sky-0.8.7-new/endless-sky.6	2015-12-06 13:47:29.705465040 +0100
+@@ -17,7 +17,7 @@
+ 
+ For a manual and other information, visit https://endless\-sky.github.io
+ 
+-When run from the command line, if a resource directory is not specified, the program will check to see if the current directory contains directories named "data" and "images" and files named "keys.txt" and "credits.txt"; if so it will read resources from the current directory. Otherwise it will use /usr/local/share/games/endless\-sky if it exists, or /usr/share/games/endless\-sky/ otherwise.
++When run from the command line, if a resource directory is not specified, the program will check to see if the current directory contains directories named "data" and "images" and files named "keys.txt" and "credits.txt"; if so it will read resources from the current directory. Otherwise it will use /usr/local/share/endless\-sky if it exists, or /usr/share/endless\-sky/ otherwise.
+ 
+ .SH OPTIONS
+ .IP \fB\-h,\ \-\-help
+diff -Nur endless-sky-0.8.7/SConstruct endless-sky-0.8.7-new/SConstruct
+--- endless-sky-0.8.7/SConstruct	2015-11-12 05:09:37.000000000 +0100
++++ endless-sky-0.8.7-new/SConstruct	2015-12-06 13:47:29.704465040 +0100
+@@ -81,11 +81,11 @@
+ 			RecursiveInstall(env, os.path.join(target, name), node.abspath)
+ 		else:
+ 			env.Install(target, node)
+-RecursiveInstall(env, "$DESTDIR$PREFIX/share/games/endless-sky/data", "data")
+-RecursiveInstall(env, "$DESTDIR$PREFIX/share/games/endless-sky/images", "images")
+-RecursiveInstall(env, "$DESTDIR$PREFIX/share/games/endless-sky/sounds", "sounds")
+-env.Install("$DESTDIR$PREFIX/share/games/endless-sky", "credits.txt")
+-env.Install("$DESTDIR$PREFIX/share/games/endless-sky", "keys.txt")
++RecursiveInstall(env, "$DESTDIR$PREFIX/share/endless-sky/data", "data")
++RecursiveInstall(env, "$DESTDIR$PREFIX/share/endless-sky/images", "images")
++RecursiveInstall(env, "$DESTDIR$PREFIX/share/endless-sky/sounds", "sounds")
++env.Install("$DESTDIR$PREFIX/share/endless-sky", "credits.txt")
++env.Install("$DESTDIR$PREFIX/share/endless-sky", "keys.txt")
+ 
+ # Make the word "install" in the command line do an installation.
+ env.Alias("install", "$DESTDIR$PREFIX")
+diff -Nur endless-sky-0.8.7/source/Files.cpp endless-sky-0.8.7-new/source/Files.cpp
+--- endless-sky-0.8.7/source/Files.cpp	2015-11-12 05:09:37.000000000 +0100
++++ endless-sky-0.8.7-new/source/Files.cpp	2015-12-06 13:47:27.656465101 +0100
+@@ -108,7 +108,7 @@
+ 	// the executable, but are under the same prefix (/usr or /usr/local).
+ 	static const string LOCAL_PATH = "/usr/local/";
+ 	static const string STANDARD_PATH = "/usr/";
+-	static const string RESOURCE_PATH = "share/games/endless-sky/";
++	static const string RESOURCE_PATH = "share/endless-sky/";
+ 	if(!resources.compare(0, LOCAL_PATH.length(), LOCAL_PATH))
+ 		resources = LOCAL_PATH + RESOURCE_PATH;
+ 	else if(!resources.compare(0, STANDARD_PATH.length(), STANDARD_PATH))

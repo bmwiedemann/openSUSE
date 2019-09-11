@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenLDAP Server Daemon
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/lib/openldap/start
+
+[Install]
+WantedBy=multi-user.target
+

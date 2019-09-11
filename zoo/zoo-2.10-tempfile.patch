@@ -1,0 +1,26 @@
+Index: zoopack.c
+===================================================================
+--- zoopack.c.orig	1991-07-11 21:08:04.000000000 +0200
++++ zoopack.c	2009-11-24 19:46:08.530710000 +0100
+@@ -171,8 +171,19 @@ if (!curr_dir) {
+ } else {
+    strcpy (temp_file, xes);
+ }
+-mktemp (temp_file);                    /* ... and make unique */
+-new_file = zoocreate (temp_file);
++
++/* make unique name */
++/* my god, this coding style sucks */
++new_file = NOFILE;
++{
++  int fd;
++
++  if ((fd = mkstemp(temp_file)) >= 0) {
++    new_file = zoocreate (temp_file);
++    close(fd);
++  }
++}
++
+ if (new_file == NOFILE)
+    prterror ('f', "Could not create temporary file %s.\n", temp_file);
+ 

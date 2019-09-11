@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Fri May  8 08:40:33 UTC 2015 - coolo@suse.com
+
+- updated to 0.25
+   see /usr/share/doc/packages/perl-Test-CPAN-Meta/Changes
+
+  0.25    2015-05-06
+          - POD fixes (by Olivier Mengué (DOLMEN)).
+          - removed Test::CPAN::Meta from the recommends list, as CPAN.pm tries
+            to install it first. (RT#104023 Steve Hay (SHAY)).
+
+-------------------------------------------------------------------
+Mon Apr 13 18:33:51 UTC 2015 - coolo@suse.com
+
+- updated to 0.24
+   see /usr/share/doc/packages/perl-Test-CPAN-Meta/Changes
+
+-------------------------------------------------------------------
+Tue Jun  4 14:58:02 UTC 2013 - coolo@suse.com
+
+- updated to 0.23
+       - updated INSTALL instructions.
+       - added minimum perl version (5.006).
+       - reworked Makefile.PL for clarity.
+       - implemented Perl::Critic suggestions.
+       - added meta_yaml_ok test and example.
+       - several Version.pm updates, including new() parameter name change:
+         'yaml' is now 'data'.
+       - RT#76609: further spelling fix. (Florian Schlichting).
+       - removed DSLIP info.
+       - RT#76609: spelling fix. (Florian Schlichting & Gregor Herrmann).
+       - RT#74317: imported url validation from CPAN::Meta (Alex Hartmaier).
+       - RT#66692: updated license type (Paul Howarth).
+       - updates to examples.
+
+-------------------------------------------------------------------
+Sat Apr 30 15:25:11 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.18
+  - documentation clean up
+
+-------------------------------------------------------------------
+Fri Jan 21 20:32:55 UTC 2011 - coolo@novell.com
+
+- initial package 0.17
+  * created by cpanspec 1.78.03
+

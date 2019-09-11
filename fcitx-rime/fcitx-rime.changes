@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Sat Dec  2 05:47:02 UTC 2017 - i@marguerite.su
+
+- update version 0.3.2
+  * [rime] add paging callback
+
+-------------------------------------------------------------------
+Mon Jun  9 05:02:01 UTC 2014 - i@marguerite.su
+
+- update version 0.3.1
+  * Fix github issues fcitx/fcitx-rime#14
+
+-------------------------------------------------------------------
+Mon Nov 18 10:12:59 UTC 2013 - i@marguerite.su
+
+- update version 0.3.0
+  * compatibility for rime 1.0 release. 
+
+-------------------------------------------------------------------
+Sat Jul 13 09:29:26 UTC 2013 - i@marguerite.su
+
+- update version 0.2.2
+  * Fix Issue 11
+  * Fix Issue 12
+  * Update icon artwork
+  * Add License
+- remove patch: fcitx-rime-0.2.1-Caplocks_never_response_second_request.patch
+  * got upstreamed
+
+-------------------------------------------------------------------
+Fri Jul  5 18:49:29 UTC 2013 - i@marguerite.su
+
+- add patch: fcitx-rime-0.2.1-Caplocks_never_response_second_request.patch
+  * Phenomenon: When inputing Chinese, users hit Capslock to enter
+    Capital letters, then fcitx-rime will enter ASCII mode. But
+    the second or further Capslock won't change ASCII mode back
+    to Chinese pinyin mode unless users hit Shift.
+  * Cause: Rime reads bitmask FcitxKeyState_CapsLock to detect 
+    whether CapsLock is on, but fcitx-rime frontend didn't 
+    provide such use.
+
+-------------------------------------------------------------------
+Sat Jun 22 06:49:00 UTC 2013 - i@marguerite.su
+
+- update version 0.2.1
+  * fixes some bug and add some manual syncing feature, 
+    and implement redeploy properly
+
+-------------------------------------------------------------------
+Fri Feb  1 17:06:07 UTC 2013 - i@marguerite.su
+
+- explicitly requires: brise.
+  it is librime's data file, without it, fcitx-rime is a skeleton.
+
+-------------------------------------------------------------------
+Sat Jan 26 18:52:47 UTC 2013 - i@marguerite.su
+
+- update version 0.2.0
+  * re-deploy support
+
+-------------------------------------------------------------------
+Thu Oct 11 19:28:06 UTC 2012 - i@marguerite.su
+
+- update version 0.1.2
+  * build with librime 0.9.4
+
+-------------------------------------------------------------------
+Sat Sep 15 21:30:34 UTC 2012 - i@marguerite.su
+
+- update version 0.1.1
+  * brise path fix. thanks to Marguerite Su.
+
+-------------------------------------------------------------------
+Mon Aug 13 21:56:06 UTC 2012 - i@marguerite.su
+
+- update source to include COPYING, fix #bnc775644
+
+-------------------------------------------------------------------
+Wed Jul 25 11:48:05 UTC 2012 - i@marguerite.su
+
+- auto detect brise.
+
+-------------------------------------------------------------------
+Mon Jul 23 18:21:07 UTC 2012 - jzheng@suse.com
+
+- add fcitx-rime-paralled-build.patch to enable parallel build
+- remove LIB_INSTALL_DIR to clear the unused variable warning
+
+-------------------------------------------------------------------
+Sat Jul 21 21:56:20 UTC 2012 - i@marguerite.su
+
+- initial version 0.1.0
+

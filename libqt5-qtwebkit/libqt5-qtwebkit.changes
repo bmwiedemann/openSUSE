@@ -1,0 +1,600 @@
+-------------------------------------------------------------------
+Thu Jul  4 13:46:33 UTC 2019 - wbauer@tmo.at
+
+- Don't modify the pkgconfig files, they have been fixed upstream
+  and the sed commands actually break them now
+
+-------------------------------------------------------------------
+Mon Jul  1 19:39:50 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Fix for pkgconfig error
+- Drop Leap 42.x support
+
+-------------------------------------------------------------------
+Sat Jun 29 23:58:02 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- New upstream release
+- Drop patches
+  * fix-build-with-cmake-3.10.diff
+  * fix-gles-detection.patch
+  * fix-nullptr-crash-in-QWebPage-selectedHtml-when-selectedRange.patch
+  * fix-nullTerminatedWCharToString-loses-last-character.patch
+  * fix_armv6.patch
+  * qt5webkit-symver.patch
+  * run-adjustViewSize-after-relayout.patch
+  * Trigger-layout-after-resizing-the-FrameView.patch
+  * webkit-fix-WTF-StringImpl-copyChars-segfaults-with-gcc7.patch
+
+-------------------------------------------------------------------
+Wed May 15 13:39:28 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1135212).
+
+-------------------------------------------------------------------
+Mon Dec  3 11:58:12 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix armv6 build:
+  * fix_armv6.patch
+
+-------------------------------------------------------------------
+Sun Jun 17 19:05:15 UTC 2018 - mlin@suse.com
+
+- Add -fpermissive to workaround build error with gcc8
+
+-------------------------------------------------------------------
+Fri Mar  9 17:54:22 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Set minimum amount of RAM in _constraints to 8 GiB for aarch64,
+  use the default value of 6 GiB for armv7/armv6
+
+-------------------------------------------------------------------
+Thu Mar  1 13:54:27 UTC 2018 - wbauer@tmo.at
+
+- Add upstream patches to fix broken layout of plain-text mails in
+  Trojita (boo#1083451):
+  * Trigger-layout-after-resizing-the-FrameView.patch
+  * run-adjustViewSize-after-relayout.patch
+
+-------------------------------------------------------------------
+Fri Feb 23 08:23:52 UTC 2018 - mlin@suse.com
+
+- Re-ordering patches
+- Add fix-nullptr-crash-in-QWebPage-selectedHtml-when-selectedRange.patch
+  * Fix crash in QWebPage::selectedHtml() when selectedRange is nullptr
+- Add fix-nullTerminatedWCharToString-loses-last-character.patch
+  * Fix nullTerminatedWCharToString loses last character of input string
+
+-------------------------------------------------------------------
+Thu Feb 15 07:52:57 UTC 2018 - fabian@ritter-vogt.de
+
+- Use gcc-7 on 42.3 to fix mismatch with the optflags
+
+-------------------------------------------------------------------
+Wed Dec 20 10:12:41 UTC 2017 - mlin@suse.com
+
+- Add patch to fix build failure with CMake 3.10
+  * fix-build-with-cmake-3.10.diff
+- Use Gstreamer for audio/video support optional
+
+-------------------------------------------------------------------
+Tue Dec 12 12:58:44 UTC 2017 - fvogt@suse.com
+
+- Add patch to keep the same private symbol version scheme:
+  * tell-the-truth-about-private-api.patch
+- Add patch to fix detection of OpenGL ES 2.0 with Qt >= 5.8:
+  * fix-gles-detection.patch
+- Add patch to enable symbol versioning for libQt5WebKit.so.5 as well:
+  * qt5webkit-symver.patch
+
+-------------------------------------------------------------------
+Tue Dec 12 11:49:08 UTC 2017 - mlin@suse.com
+
+- Ported to Konstantin Tokarev's <annulen@yandex.ru> QtWebKit fork
+  version 5.212.0 Alpha 2 (FATE#323918, bsc#1050469)
+  * Based on WebKitGTK 2.12 (uses CMake instead of QMake)
+  * Newer WebKit base
+  * Improved support for web standards
+  * Many bugfixes and patched security holes inherited from upstream WebKit
+  * For more details please see:
+    https://github.com/annulen/webkit/releases/tag/qtwebkit-5.212.0-alpha
+    and
+    https://github.com/annulen/webkit/releases/tag/qtwebkit-5.212.0-alpha2
+- Drop unneeded patches
+  * 03_hide_std_symbols.diff
+  * 04_enable_debug_information.diff
+  * 05-fix-linker-errors.diff
+  * 7dac8c2d5f743563df76c2347c6ad394b6779ffc.patch
+  * fix-build-icu59.patch
+  * no-Werror-rpath.diff
+  * reduce-link-optimization.diff
+  * workaround-gcc7-crash.patch
+- Set minimum amount of RAM in _constraints to 10 GiB for x86_64
+- Add patch to always enable X11 target build:
+  * enable_x11_target_always.patch
+- Add patch to work around gcc7-related crash:
+  * webkit-fix-WTF-StringImpl-copyChars-segfaults-with-gcc7.patch
+- Corrected License tag. QtWebKit is just LGPL-2.1+ and does not follow Qt's
+  commercial-inspired licensing scheme of (L)GPLv3-only.
+
+-------------------------------------------------------------------
+Fri Dec  8 23:15:03 UTC 2017 - christophe@krop.fr
+
+- Update the license tag (boo#967696)
+
+-------------------------------------------------------------------
+Wed Nov 15 11:41:56 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 4
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Mon Oct  9 16:17:46 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 1
+- For more information visit:
+    https://blog.qt.io/blog/2017/10/09/qt-5-10-beta-released/
+
+-------------------------------------------------------------------
+Wed Jul  5 17:11:50 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to workaround crash if compiled with GCC7:
+  * workaround-gcc7-crash.patch
+- Set minimum amount of RAM in _constraints to 8 GiB
+
+-------------------------------------------------------------------
+Thu Jun  1 07:45:36 UTC 2017 - jengelh@inai.de
+
+- Update descriptions.
+- Use find -exec option with "+" strategy.
+
+-------------------------------------------------------------------
+Wed May 31 07:05:32 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 final
+
+-------------------------------------------------------------------
+Wed May 24 19:16:41 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 RC:
+  * For more details please see: 
+    http://lists.qt-project.org/pipermail/announce/2017-May/000115.html
+    and https://wiki.qt.io/New_Features_in_Qt_5.9
+
+-------------------------------------------------------------------
+Wed May 10 17:36:58 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to fix build with ICU4C >= 59:
+  * fix-build-icu59.patch
+
+-------------------------------------------------------------------
+Wed Dec 14 16:06:03 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * For more details please see:
+    https://blog.qt.io/blog/2016/12/14/qt-5-7-1-released/
+    and https://www.qt.io/qt5-7/
+
+-------------------------------------------------------------------
+Sat Sep 24 18:39:11 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * For more details please see:
+    https://www.qt.io/qt5-7/
+
+-------------------------------------------------------------------
+Wed Jun  8 14:15:24 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * For more details please see:
+    http://blog.qt.io/blog/2016/06/08/qt-5-6-1-released/
+
+-------------------------------------------------------------------
+Fri Mar 18 19:03:35 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    http://blog.qt.io/blog/2016/03/16/qt-5-6-released/
+    and https://wiki.qt.io/New_Features_in_Qt_5.6
+- Swap link-qtcore.patch with 7dac8c2d5f743563df76c2347c6ad394b6779ffc.patch
+- Added 05-fix-linker-errors.diff: Explicitly link pthread, before
+  it was pulled in via external deps
+
+-------------------------------------------------------------------
+Wed Oct 21 15:37:25 UTC 2015 - normand@linux.vnet.ibm.com
+
+- _constraints adding ppc64le constraint of memory and disk space
+
+-------------------------------------------------------------------
+Fri Oct 16 20:22:42 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1
+  * For more details please see:
+    http://blog.qt.io/blog/2015/10/15/qt-5-5-1-released/
+
+-------------------------------------------------------------------
+Sun Aug 16 08:32:11 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    http://blog.qt.io/blog/2015/07/01/qt-5-5-released/
+    and https://wiki.qt.io/New_Features_in_Qt_5.5
+- Added link-qtcore.patch
+
+-------------------------------------------------------------------
+Wed Jun  3 22:56:37 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.2
+  * Bugfix release, for more details please see:
+    http://blog.qt.io/blog/2015/06/02/qt-5-4-2-released/
+- Drop fix-building-with-glib-2.43+.patch and fix-g++5.0-build.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Tue Mar 24 14:55:51 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Add patches from upstream:
+  fix-building-with-glib-2.43+.patch (QTBUG-44714) and
+  fix-g++5.0-build.patch (QTBUG-44829)
+
+-------------------------------------------------------------------
+Tue Mar 17 13:15:09 UTC 2015 - jslaby@suse.com
+
+- kill QMAKE_PRL_BUILD_DIR from prl
+
+-------------------------------------------------------------------
+Tue Feb 24 16:10:34 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.1
+  * For more details please see:
+    http://blog.qt.io/blog/2015/02/24/qt-5-4-1-released/
+- Add minimal requires on other Qt5 libraries, as well the one from
+  this source package
+- Added libqt5-qtwebkit-rpmlintrc due to shlib-fixed-dependency
+- Split the imports into separate package
+
+-------------------------------------------------------------------
+Fri Jan 16 20:29:27 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Reenable Qt5WebChannel integration
+
+-------------------------------------------------------------------
+Fri Dec 19 08:42:14 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Comment out Qt5WebChannel BuildRequires for now
+
+-------------------------------------------------------------------
+Wed Dec 10 11:00:15 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4 Final
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/12/10/qt-5-4-released/
+    and http://qt-project.org/wiki/New-Features-in-Qt-5.4
+
+-------------------------------------------------------------------
+Thu Nov 27 15:58:51 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4 RC
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/11/27/qt-5-4-release-candidate-available/
+    and http://qt-project.org/wiki/New-Features-in-Qt-5.4
+- Drop ppc64le-support.patch, merged upstream
+- Add pkgconfig(Qt5Location) and pkgconfig(Qt5WebChannel) BuildRequires
+- Explicitly pass production_build to qmake
+- Install licenses
+
+-------------------------------------------------------------------
+Thu Oct 23 08:21:35 UTC 2014 - dmueller@suse.com
+
+- reduce memory requirements for arm - there is no 7GB of RAM 
+
+-------------------------------------------------------------------
+Thu Sep 25 00:04:10 CEST 2014 - ro@suse.de
+
+- use -g1 on s390/s390x as well as on the other architectures
+
+-------------------------------------------------------------------
+Tue Sep 16 11:27:57 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2 final
+  * No changes since previous snapshot
+  * Use official tars
+
+-------------------------------------------------------------------
+Thu Sep  4 20:37:34 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2~git20140904 (rd8bc98b):
+  * Tip of the bugfix 5.3.2 branch:
+    * Fix key identifier for comma key ("Separator")
+    * Fix fallback conversion of recognized objects
+    * Fix regression in QQuickWebView's transparent backgound
+    * Fix crash in DeviceOrientationController when
+      !HAVE(QTSENSORS)
+    * Fix case in documentation of qobjectbridge bindings
+    * Do not add QStyle padding on top of default padding
+    * [WK2] Update text upon item selection for menu lists
+    * Do not use title as the primary text of dragged or
+      copied links
+    * Show placeholder text when focused
+    * Do not override padding in textfields
+    * Avoid crash when hidePopup is called multiple times
+    * Added support for appending an escaped SegmentedString to
+      another.
+    * QWebPage crashes on drag without QWidget view
+    * Crash during exception unwinding
+    * Bad cast from CSSInitialValue to CSSValueList
+    * use after free in WebCore::DocumentOrderedMap::remove /
+      WebCore::TreeScope::removeElementById
+    * define DOUBLE_CONVERSION_CORRECT_DOUBLE_OPERATIONS on HPPA
+    * Actually load icc.prf for the Intel compiler
+    * Prevent interpreting URL parameter for Qt plugins
+      as content URLs.
+    * Fix android build error about already defined struct.
+    * Fix SpeculateCellOperand ASSERT failure in DFG for
+      32-bit builds.
+    * QtWebKitWidgets should not depend directly on QtQuick
+    * QWebHitTestResult::element() should return
+      the inner element
+    * Specify location of CMake tests
+    * Fix WebView crash when using gcc 4.9.
+    * Fix debug builds of qtwebkit on linux-icc
+    * Qt5WebKitWidgets should keep private dependencies private
+    * Prevent crashes when the QWebView gets reparented.
+    * Fix build with gcc 4.4
+    * Add qtxmlpatters to sync.profile
+    * GraphicsContext for Qt: add
+      popTransparencyLayerInternal method.
+    * Bump version
+- Reduce general constraints to 4GB, and leave 7GB only for s390x
+- Enable qtlocation integration
+
+-------------------------------------------------------------------
+Fri Aug 15 12:31:30 CEST 2014 - behlert@suse.de
+
+- _constraints modified: building requires 7GB on some platforms 
+  (e.g. s390x)
+
+-------------------------------------------------------------------
+Mon Jul 21 15:01:29 UTC 2014 - mlin@suse.com
+
+- Workaround ppc64le build failures due to OOM issue, hardcoded -j4
+  jobs, found/fixed by Dinar Valeev(dvaleev@suse.com)
+
+-------------------------------------------------------------------
+Wed Jun 25 10:38:08 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1
+  * Bugfix release, for more details please see:
+    http://blog.qt.digia.com/blog/2014/06/25/qt-5-3-1-released/
+
+-------------------------------------------------------------------
+Mon Jun  2 20:13:43 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add baselibs.conf
+- Make private headers noarch
+
+-------------------------------------------------------------------
+Sun Jun  1 02:07:52 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Drop libudev BuildRequires, it's loaded on runtime
+  (change made in commit 36321b9aaeedef1232d464d3dd7d03f39b7f7f37)
+
+-------------------------------------------------------------------
+Tue May 27 09:50:25 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Build with pkgconfig(libudev), not pkgconfig(udev)
+
+-------------------------------------------------------------------
+Mon May 19 23:42:53 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0 final
+  * Minor bugfixes over previous RC
+
+-------------------------------------------------------------------
+Thu May  8 18:25:56 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0 RC
+  * For more details, please see
+  http://blog.qt.digia.com/blog/2014/05/08/qt-5-3-release-candidate-available/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.3
+
+-------------------------------------------------------------------
+Wed Apr 23 22:33:20 UTC 2014 - dmueller@suse.com
+
+- fix build for aarch64 
+
+-------------------------------------------------------------------
+Fri Apr  4 08:27:37 UTC 2014 - fcrozat@suse.com
+
+- Build with gstreamer 1.0 API for SLE12 also.
+
+-------------------------------------------------------------------
+Wed Apr  2 17:40:27 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Build with gstreamer 1.0 API for 13.2 and newer
+
+-------------------------------------------------------------------
+Tue Mar 25 11:44:16 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0 beta
+  * New feature release, please see
+  http://blog.qt.digia.com/blog/2014/03/25/qt-5-3-beta-released/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.3
+- Drop aarch64-support.patch, dont-pollute-prl-and-pc-files.patch
+  and fix-no-jit-build.patch: merged upstream
+
+-------------------------------------------------------------------
+Wed Feb 26 22:40:56 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added dont-pollute-prl-and-pc-files.patch from upstream - fixes
+  issue where private dependencies (such as e.g. gstreamer) where
+  marked as public
+- As per patch, remove all external/private Requires of devel
+  subpackages
+
+-------------------------------------------------------------------
+Wed Feb  5 17:07:24 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.1:
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/02/05/qt-5-2-1-released/
+- Remove libtool archives from packages
+- Change aarch64-support.patch to upstream version (merged for 5.3)
+
+-------------------------------------------------------------------
+Tue Dec 17 01:23:02 UTC 2013 - uweigand@de.ibm.com
+
+- Add ppc64le-support.patch: Support powerpc64le-linux.
+
+-------------------------------------------------------------------
+Mon Dec 16 23:19:32 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Make libqt5 BuildRequires packages naming consistent:
+  use libqt5-$upstreammodulename-(devel, private-headers-devel)
+- Remove ancient provides/obsoletes
+- Create libqt5-qtwebkit-devel libqt5-qtwebkitprivate-headers-devel
+  packages
+
+-------------------------------------------------------------------
+Thu Dec 12 13:42:39 UTC 2013 - hrvoje.senjan@gmail.com
+- Update to 5.2.0 final:
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2013/12/12/qt-5-2-released-the-best-qt-yet/
+    http://qt-project.org/qt5/qt52
+    http://qt.digia.com/Product/Whats-New/Qt-52/
+
+-------------------------------------------------------------------
+Fri Nov 29 13:42:39 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 rc1
+  * New feature release, please see
+  http://blog.qt.digia.com/blog/2013/11/29/qt-5-2-release-candidate-1-available/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.2
+- Drop pkgconfig(Qt5Multimedia) BuildRequires: Qt5Multimedia is used
+  only if gstreamer is not used
+
+-------------------------------------------------------------------
+Thu Nov 28 16:41:03 CET 2013 - ro@suse.de
+
+- fix-no-jit-build.patch:
+  fix build on ppc and s390 by disabling JIT
+
+-------------------------------------------------------------------
+Fri Nov 15 22:58:32 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Adjust 04_enable_debug_information.diff for more memory saving
+- Remove libQt5Script-devel from both devel package Requires and
+  BuildRequires, not needed
+
+-------------------------------------------------------------------
+Wed Oct 23 17:11:55 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 beta1
+  * New feature release, please see
+  http://blog.qt.digia.com/blog/2013/10/23/qt-5-2-beta-available/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.2
+- Droped bison3.patch, included in this release
+
+-------------------------------------------------------------------
+Fri Oct 18 12:16:15 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added 03_hide_std_symbols.diff, 04_enable_debug_information.diff,
+  aarch64-support.patch and reduce-link-optimization.diff -- those
+  resolve linking/build failures on arm/aarch64
+
+-------------------------------------------------------------------
+Wed Oct 16 18:02:52 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Change constrains, so it requires 5Gb of memory, instead of 4Gb
+  physical memory
+
+-------------------------------------------------------------------
+Fri Oct  4 20:08:51 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Drop the memory check from the spec, we are utilizing _constraints
+  for that. Also reduce the processor constraint to 4.
+
+-------------------------------------------------------------------
+Tue Oct  1 19:16:58 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added bison3.patch, fixes build with bison3
+- Postpone gstreamer 1.0 support for 13.2
+
+-------------------------------------------------------------------
+Thu Aug 29 21:14:24 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 5.1.1:
+  * Bugfix release, please see
+  http://blog.qt.digia.com/blog/2013/08/28/qt-5-1-1-released/
+  http://qt.gitorious.org/qt/qtwebkit/blobs/release/dist/changes-5.1.1
+  and http://qt-project.org/wiki/Qt511KnownIssues for known issues
+- Small spec cleanup
+
+-------------------------------------------------------------------
+Sat Aug  3 07:27:57 UTC 2013 - tittiatcoke@gmail.com
+
+- Adjust package naming according to openSUSE standards
+
+-------------------------------------------------------------------
+Sun Jul  7 07:23:51 UTC 2013 - stephan.binner@basyskom.com
+
+- update to Qt 5.1 release
+
+-------------------------------------------------------------------
+Tue Jun 18 20:00:00 UTC 2013 - stephan.binner@basyskom.com
+
+- update to Qt 5.1 RC 1
+
+-------------------------------------------------------------------
+Mon May 20 20:00:00 UTC 2013 - stephan.binner@basyskom.com
+
+- update to Qt 5.1 Beta 1
+
+-------------------------------------------------------------------
+Tue Apr  9 20:00:00 UTC 2013 - stephan.binner@basyskom.com
+
+- update to Qt 5.1 Alpha 1
+
+-------------------------------------------------------------------
+Wed Jan 30 19:00:00 UTC 2013 - stephan.binner@basyskom.com
+
+- update to Qt 5.0.1
+
+-------------------------------------------------------------------
+Wed Dec 19 20:40:40 UTC 2012 - stephan.binner@basyskom.com
+
+- update to Qt 5.0 release
+
+-------------------------------------------------------------------
+Thu Dec 13 10:50:52 UTC 2012 - stephan.binner@basyskom.com
+
+- update to Qt 5.0 Release Candidate 2
+
+-------------------------------------------------------------------
+Thu Dec  6 19:54:17 UTC 2012 - stephan.binner@basyskom.com
+
+- update to Qt 5.0 Release Candidate 1
+
+-------------------------------------------------------------------
+Thu Nov 15 12:14:39 UTC 2012 - stephan.binner@basyskom.com
+
+- update to Qt 5.0 Beta 2
+
+-------------------------------------------------------------------
+Thu Aug 30 11:31:45 UTC 2012 - stephan.binner@basyskom.com
+
+- update to Qt 5.0 Beta 1 release
+
+-------------------------------------------------------------------
+Thu May 24 15:29:20 UTC 2012 - stephan.binner@basyskom.com
+
+- update to newer Alpha snapshot / Beta candidate
+
+-------------------------------------------------------------------
+Fri Apr 13 13:22:38 UTC 2012 - stephan.binner@basyskom.com
+
+- rework package splitting for Qt 5 modularization
+
+-------------------------------------------------------------------
+Thu Apr  5 09:56:15 UTC 2012 - dmueller@suse.com
+
+- Initial packaging (Qt 5.0 Alpha)

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+test x"$INPUT_METHOD" = x"ibus" || exit 0
+
+# GNOME starts ibus by itself
+case "$WINDOWMANAGER" in
+    *gnome*)
+	exit 0;;
+esac
+
+# sleep for a little while to avoid duplicate startup
+# sleep 2
+
+ibus-daemon --xim -d
+exit 0

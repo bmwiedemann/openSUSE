@@ -1,0 +1,7 @@
+# crontab for sysstat
+
+# Activity reports every 10 minutes everyday
+*/10 * * * * root [ -x /usr/lib/sa/sa1 ] && exec /usr/lib/sa/sa1 -S ALL 1 1
+
+# Update reports every 6 hours
+55 5,11,17,23 * * *     root [ -x /usr/lib/sa/sa2 ] && exec /usr/lib/sa/sa2 -A

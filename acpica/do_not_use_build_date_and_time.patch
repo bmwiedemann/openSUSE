@@ -1,0 +1,183 @@
+diff -ur acpica-unix-20190215.orig/source/compiler/asloptions.c acpica-unix-20190215/source/compiler/asloptions.c
+--- acpica-unix-20190215.orig/source/compiler/asloptions.c	2019-03-13 20:33:47.883014329 +0100
++++ acpica-unix-20190215/source/compiler/asloptions.c	2019-03-13 20:48:23.856699517 +0100
+@@ -870,12 +870,6 @@
+             AslGbl_NoErrors = TRUE;
+             break;
+ 
+-        case 'd':
+-
+-            printf (ACPI_COMMON_SIGNON (ASL_COMPILER_NAME));
+-            printf (ACPI_COMMON_BUILD_TIME);
+-            exit (0);
+-
+         case 'e':
+ 
+             /* Disable all warning/remark messages (errors only) */
+diff -ur acpica-unix-20190215.orig/source/include/acapps.h acpica-unix-20190215/source/include/acapps.h
+--- acpica-unix-20190215.orig/source/include/acapps.h	2019-03-13 20:33:47.895014190 +0100
++++ acpica-unix-20190215/source/include/acapps.h	2019-03-13 20:49:02.100265324 +0100
+@@ -188,9 +188,6 @@
+     Prefix, ACPICA_COPYRIGHT, \
+     Prefix
+ 
+-#define ACPI_COMMON_BUILD_TIME \
+-    "Build date/time: %s %s\n", __DATE__, __TIME__
+-
+ /* Macros for usage messages */
+ 
+ #define ACPI_USAGE_HEADER(Usage) \
+diff -ur acpica-unix-20190215.orig/source/tools/acpibin/abmain.c acpica-unix-20190215/source/tools/acpibin/abmain.c
+--- acpica-unix-20190215.orig/source/tools/acpibin/abmain.c	2019-03-13 20:33:47.899014144 +0100
++++ acpica-unix-20190215/source/tools/acpibin/abmain.c	2019-03-13 20:50:02.779578343 +0100
+@@ -191,7 +191,6 @@
+     ACPI_OPTION ("-s <File>",               "Update checksum for binary AML file");
+     ACPI_OPTION ("-t",                      "Terse mode");
+     ACPI_OPTION ("-v",                      "Display version information");
+-    ACPI_OPTION ("-vd",                     "Display build date and time");
+ }
+ 
+ 
+@@ -298,11 +297,6 @@
+ 
+             return (1);
+ 
+-        case 'd':
+-
+-            printf (ACPI_COMMON_BUILD_TIME);
+-            return (1);
+-
+         default:
+ 
+             printf ("Unknown option: -v%s\n", AcpiGbl_Optarg);
+diff -ur acpica-unix-20190215.orig/source/tools/acpidump/apmain.c acpica-unix-20190215/source/tools/acpidump/apmain.c
+--- acpica-unix-20190215.orig/source/tools/acpidump/apmain.c	2019-03-13 20:33:47.899014144 +0100
++++ acpica-unix-20190215/source/tools/acpidump/apmain.c	2019-03-13 20:50:41.199143577 +0100
+@@ -379,12 +379,6 @@
+             fprintf (stderr, ACPI_COMMON_SIGNON (AP_UTILITY_NAME));
+             return (1);
+ 
+-        case 'd':
+-
+-            fprintf (stderr, ACPI_COMMON_SIGNON (AP_UTILITY_NAME));
+-            printf (ACPI_COMMON_BUILD_TIME);
+-            return (1);
+-
+         default:
+ 
+             printf ("Unknown option: -v%s\n", AcpiGbl_Optarg);
+diff -ur acpica-unix-20190215.orig/source/tools/acpiexec/aemain.c acpica-unix-20190215/source/tools/acpiexec/aemain.c
+--- acpica-unix-20190215.orig/source/tools/acpiexec/aemain.c	2019-03-13 20:33:47.899014144 +0100
++++ acpica-unix-20190215/source/tools/acpiexec/aemain.c	2019-03-13 20:51:39.286483527 +0100
+@@ -281,7 +281,6 @@
+ 
+     ACPI_OPTION ("-v",                  "Display version information");
+     ACPI_OPTION ("-va",                 "Display verbose dump of any memory leaks");
+-    ACPI_OPTION ("-vd",                 "Display build date and time");
+     ACPI_OPTION ("-vh",                 "Verbose exception handler output");
+     ACPI_OPTION ("-vi",                 "Verbose initialization output");
+     ACPI_OPTION ("-vr",                 "Verbose region handler output");
+@@ -547,11 +546,6 @@
+             AcpiGbl_VerboseLeakDump = TRUE;
+             break;
+ 
+-        case 'd':
+-
+-            printf (ACPI_COMMON_BUILD_TIME);
+-            return (1);
+-
+         case 'h':
+ 
+             AcpiGbl_VerboseHandlers = TRUE;
+diff -ur acpica-unix-20190215.orig/source/tools/acpihelp/ahmain.c acpica-unix-20190215/source/tools/acpihelp/ahmain.c
+--- acpica-unix-20190215.orig/source/tools/acpihelp/ahmain.c	2019-03-13 20:33:47.899014144 +0100
++++ acpica-unix-20190215/source/tools/acpihelp/ahmain.c	2019-03-13 20:52:25.197957319 +0100
+@@ -187,7 +187,6 @@
+     ACPI_USAGE_HEADER ("acpihelp <options> [Name/Prefix | HexValue]");
+     ACPI_OPTION ("-h",                      "Display help");
+     ACPI_OPTION ("-v",                      "Display version information");
+-    ACPI_OPTION ("-vd",                     "Display build date and time");
+ 
+     ACPI_USAGE_TEXT ("\nAML Names and Encodings (ACPI Machine Language):\n");
+     ACPI_OPTION ("-a [Name/Prefix | *]",    "Display both ASL operator and AML opcode name(s)");
+@@ -317,11 +316,6 @@
+ 
+             return (1);
+ 
+-        case 'd':
+-
+-            printf (ACPI_COMMON_BUILD_TIME);
+-            return (1);
+-
+         default:
+ 
+             printf ("Unknown option: -v%s\n", AcpiGbl_Optarg);
+diff -ur acpica-unix-20190215.orig/source/tools/acpinames/anmain.c acpica-unix-20190215/source/tools/acpinames/anmain.c
+--- acpica-unix-20190215.orig/source/tools/acpinames/anmain.c	2019-03-13 20:33:47.899014144 +0100
++++ acpica-unix-20190215/source/tools/acpinames/anmain.c	2019-03-13 20:53:20.097316161 +0100
+@@ -203,7 +203,6 @@
+     ACPI_OPTION ("-?",                  "Display this message");
+     ACPI_OPTION ("-l",                  "Load namespace only, no display");
+     ACPI_OPTION ("-v",                  "Display version information");
+-    ACPI_OPTION ("-vd",                 "Display build date and time");
+     ACPI_OPTION ("-x <DebugLevel>",     "Debug output level");
+ }
+ 
+@@ -270,11 +269,6 @@
+ 
+             exit (0);
+ 
+-        case 'd':
+-
+-            printf (ACPI_COMMON_BUILD_TIME);
+-            return (0);
+-
+         default:
+ 
+             printf ("Unknown option: -v%s\n", AcpiGbl_Optarg);
+diff -ur acpica-unix-20190215.orig/source/tools/acpisrc/asmain.c acpica-unix-20190215/source/tools/acpisrc/asmain.c
+--- acpica-unix-20190215.orig/source/tools/acpisrc/asmain.c	2019-03-13 20:33:47.899014144 +0100
++++ acpica-unix-20190215/source/tools/acpisrc/asmain.c	2019-03-13 20:54:05.928781292 +0100
+@@ -374,7 +374,6 @@
+     ACPI_OPTION ("-s",          "Generate source statistics only");
+     ACPI_OPTION ("-v",          "Display version information");
+     ACPI_OPTION ("-vb",         "Verbose mode");
+-    ACPI_OPTION ("-vd",         "Display build date and time");
+     ACPI_OPTION ("-y",          "Suppress file overwrite prompts");
+ }
+ 
+@@ -479,11 +478,6 @@
+             Gbl_VerboseMode = TRUE;
+             break;
+ 
+-        case 'd':
+-
+-            printf (ACPI_COMMON_BUILD_TIME);
+-            return (0);
+-
+         default:
+ 
+             printf ("Unknown option: -v%s\n", AcpiGbl_Optarg);
+diff -ur acpica-unix-20190215.orig/source/tools/acpixtract/axmain.c acpica-unix-20190215/source/tools/acpixtract/axmain.c
+--- acpica-unix-20190215.orig/source/tools/acpixtract/axmain.c	2019-03-13 20:33:47.899014144 +0100
++++ acpica-unix-20190215/source/tools/acpixtract/axmain.c	2019-03-13 20:54:41.452367029 +0100
+@@ -181,7 +181,6 @@
+     ACPI_OPTION ("-m",                  "Extract multiple DSDT/SSDTs to a single file");
+     ACPI_OPTION ("-s <signature>",      "Extract all tables with <signature>");
+     ACPI_OPTION ("-v",                  "Display version information");
+-    ACPI_OPTION ("-vd",                 "Display build date and time");
+ 
+     ACPI_USAGE_TEXT ("\nExtract binary ACPI tables from text acpidump output\n");
+     ACPI_USAGE_TEXT ("Default invocation extracts the DSDT and all SSDTs\n");
+@@ -259,11 +258,6 @@
+ 
+             exit (0);
+ 
+-        case 'd':
+-
+-            printf (ACPI_COMMON_BUILD_TIME);
+-            return (0);
+-
+         default:
+ 
+             printf ("Unknown option: -v%s\n", AcpiGbl_Optarg);

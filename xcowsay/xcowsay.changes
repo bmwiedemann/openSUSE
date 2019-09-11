@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Mon Apr 15 08:12:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Fri Apr 12 07:58:22 UTC 2019 - wnereiz@fsf.member.org
+
+- Bump version to 1.4
+- Re-add xcowfortune because fortune is still and will be continue supported
+
+-------------------------------------------------------------------
+Sat Nov 25 02:46:53 UTC 2017 - wnereiz@fsf.member.org
+
+- Remove xcowfortune ("remove_xcowfortune.patch") because fortune will be dropped.
+- Add xcowsay.svg and xcowsay.desktop
+
+-------------------------------------------------------------------
+Fri Jan  1 04:28:24 UTC 2016 - wnereiz@fsf.member.org
+
+- Init the xcowsay spec file 
+

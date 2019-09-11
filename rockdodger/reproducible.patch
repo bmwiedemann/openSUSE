@@ -1,0 +1,13 @@
+Index: root/osc/openSUSE:Factory/rockdodger/rockdodger-1.0.2/Makefile
+===================================================================
+--- rockdodger-1.0.2/Makefile
++++ rockdodger-1.0.2/Makefile
+@@ -39,7 +39,7 @@ localstatedir = $(prefix)/var
+ gamesdir = $(localstatedir)/games
+ 
+ NEWD=$(PACKAGENAME)-$(VERSION)
+-COMPILEDATE=$(shell date '+%Y-%m-%d')
++COMPILEDATE=$(shell date --date=@$${SOURCE_DATE_EPOCH:-$$(date +%s)} '+%Y-%m-%d')
+ TARPKGNAME=$(NEWD).pkg.tgz
+ OPTIONS=-DVERSION=\"$(VERSION)\" -DCOMPILEDATE=\"$(COMPILEDATE)\" -Wall `$(SDL_CONFIG) --cflags`
+ EXENAME=rockdodger

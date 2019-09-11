@@ -1,0 +1,29 @@
+--- a/metamail/uue.c
++++ b/metamail/uue.c
+@@ -33,7 +33,7 @@ FILE *outfp;
+ }
+ 
+ int
+-getline (buf, size, fp)
++my_getline (buf, size, fp)
+ char *buf;
+ int size;
+ FILE *fp;
+@@ -73,7 +73,7 @@ int *ctptr;
+     char buf[63];
+ 
+     while (1) {
+-	if (getline (buf, sizeof buf, infp) < 0) {
++	if (my_getline (buf, sizeof buf, infp) < 0) {
+ 	    fprintf (stderr, "Premature EOF!\n");
+ 	    return;
+ 	}
+@@ -85,7 +85,7 @@ int *ctptr;
+ 	}
+     }	
+     while (1) {
+-	if (getline (buf, sizeof buf, infp) < 0) {
++	if (my_getline (buf, sizeof buf, infp) < 0) {
+ 	    fprintf (stderr, "Premature EOF!\n");
+ 	    return;
+ 	}

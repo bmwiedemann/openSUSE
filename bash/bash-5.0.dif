@@ -1,0 +1,240 @@
+---
+ Makefile.in        |    2 +-
+ config-top.h       |   16 ++++++++++------
+ doc/Makefile.in    |    2 +-
+ doc/bash.1         |    7 +++++--
+ general.h          |    3 +++
+ parse.y            |    2 +-
+ shell.c            |    6 +++++-
+ support/man2html.c |    1 +
+ support/rlvers.sh  |    6 +++---
+ support/shobj-conf |    5 +++--
+ tests/glob.tests   |    4 ++--
+ tests/run-intl     |    2 +-
+ tests/run-read     |    2 +-
+ 13 files changed, 37 insertions(+), 21 deletions(-)
+
+--- Makefile.in
++++ Makefile.in	2018-11-29 08:14:06.638693338 +0000
+@@ -456,7 +456,7 @@ SOURCES	 = $(CSOURCES) $(HSOURCES) $(BUI
+ # headers in top-level source directory that get installed by install-headers
+ INSTALLED_HEADERS = shell.h bashjmp.h command.h syntax.h general.h error.h \
+ 		    variables.h array.h assoc.h arrayfunc.h quit.h dispose_cmd.h \
+-		    make_cmd.h subst.h sig.h externs.h builtins.h \
++		    make_cmd.h subst.h sig.h externs.h builtins.h bashline.h \
+ 		    bashtypes.h xmalloc.h config-top.h config-bot.h \
+ 		    bashintl.h bashansi.h bashjmp.h alias.h hashlib.h \
+ 		    conftypes.h unwind_prot.h jobs.h siglist.h
+--- config-top.h
++++ config-top.h	2018-11-29 08:14:06.638693338 +0000
+@@ -60,10 +60,14 @@
+    due to EPIPE. */
+ /* #define DONT_REPORT_BROKEN_PIPE_WRITE_ERRORS */
+ 
++#ifndef _PATH_DEFPATH
++# include <paths.h>
++#endif
++
+ /* The default value of the PATH variable. */
+ #ifndef DEFAULT_PATH_VALUE
+ #define DEFAULT_PATH_VALUE \
+-  "/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:."
++  "/usr/local/bin:" _PATH_DEFPATH ":."
+ #endif
+ 
+ /* If you want to unconditionally set a value for PATH in every restricted
+@@ -74,7 +78,7 @@
+    the Posix.2 confstr () function, or CS_PATH define are not present. */
+ #ifndef STANDARD_UTILS_PATH
+ #define STANDARD_UTILS_PATH \
+-  "/bin:/usr/bin:/sbin:/usr/sbin:/etc:/usr/etc"
++  _PATH_STDPATH
+ #endif
+ 
+ /* Default primary and secondary prompt strings. */
+@@ -91,20 +95,20 @@
+ #define DEFAULT_BASHRC "~/.bashrc"
+ 
+ /* System-wide .bashrc file for interactive shells. */
+-/* #define SYS_BASHRC "/etc/bash.bashrc" */
++#define SYS_BASHRC "/etc/bash.bashrc"
+ 
+ /* System-wide .bash_logout for login shells. */
+-/* #define SYS_BASH_LOGOUT "/etc/bash.bash_logout" */
++#define SYS_BASH_LOGOUT "/etc/bash.bash_logout"
+ 
+ /* Define this to make non-interactive shells begun with argv[0][0] == '-'
+    run the startup files when not in posix mode. */
+-/* #define NON_INTERACTIVE_LOGIN_SHELLS */
++#define NON_INTERACTIVE_LOGIN_SHELLS
+ 
+ /* Define this if you want bash to try to check whether it's being run by
+    sshd and source the .bashrc if so (like the rshd behavior).  This checks
+    for the presence of SSH_CLIENT or SSH2_CLIENT in the initial environment,
+    which can be fooled under certain not-uncommon circumstances. */
+-/* #define SSH_SOURCE_BASHRC */
++#define SSH_SOURCE_BASHRC
+ 
+ /* Define if you want the case-capitalizing operators (~[~]) and the
+    `capcase' variable attribute (declare -c). */
+--- doc/Makefile.in
++++ doc/Makefile.in	2018-11-29 08:14:06.638693338 +0000
+@@ -154,7 +154,7 @@ BASHREF_FILES = $(srcdir)/bashref.texi $
+ #	$(RM) $@
+ #	-${TEXI2PDF} $<
+ 
+-all: ps info dvi text html $(MAN2HTML)
++all: info html $(MAN2HTML)
+ nodvi: ps info text html
+ everything: all pdf
+ 
+--- doc/bash.1
++++ doc/bash.1	2018-11-29 08:14:06.638693338 +0000
+@@ -5443,8 +5443,8 @@ file (the \fIinputrc\fP file).
+ The name of this file is taken from the value of the
+ .SM
+ .B INPUTRC
+-variable.  If that variable is unset, the default is
+-.IR ~/.inputrc .
++environment variable. If that variable is unset, readline will read both
++.IR /etc/inputrc " and " ~/.inputrc .
+ When a program which uses the readline library starts up, the
+ initialization file is read, and the key bindings and variables
+ are set.
+@@ -10922,6 +10922,9 @@ The individual login shell cleanup file,
+ .TP
+ .FN ~/.inputrc
+ Individual \fIreadline\fP initialization file
++.TP
++.FN /etc/inputrc
++System \fBreadline\fP initialization file
+ .PD
+ .SH AUTHORS
+ Brian Fox, Free Software Foundation
+--- general.h
++++ general.h	2018-11-29 08:14:06.638693338 +0000
+@@ -21,10 +21,13 @@
+ #if !defined (_GENERAL_H_)
+ #define _GENERAL_H_
+ 
++#include <time.h>
++#include <sys/types.h>
+ #include "stdc.h"
+ 
+ #include "bashtypes.h"
+ #include "chartypes.h"
++#include "bashline.h"
+ 
+ #if defined (HAVE_SYS_RESOURCE_H) && defined (RLIMTYPE)
+ #  if defined (HAVE_SYS_TIME_H)
+--- parse.y
++++ parse.y	2018-11-29 08:14:06.638693338 +0000
+@@ -1456,7 +1456,7 @@ input_file_descriptor ()
+ 
+ #if defined (READLINE)
+ char *current_readline_prompt = (char *)NULL;
+-char *current_readline_line = (char *)NULL;
++unsigned char *current_readline_line = (unsigned char *)NULL;
+ int current_readline_line_index = 0;
+ 
+ static int
+--- shell.c
++++ shell.c	2018-11-29 08:14:06.638693338 +0000
+@@ -45,6 +45,7 @@
+ #if defined (HAVE_UNISTD_H)
+ #  include <sys/types.h>
+ #  include <unistd.h>
++#  include <grp.h>
+ #endif
+ 
+ #include "bashintl.h"
+@@ -497,7 +498,7 @@ main (argc, argv, env)
+   if (dump_translatable_strings)
+     read_but_dont_execute = 1;
+ 
+-  if (running_setuid && privileged_mode == 0)
++  if (running_setuid && privileged_mode == 0 /* && act_like_sh == 0 */)
+     disable_priv_mode ();
+ 
+   /* Need to get the argument to a -c option processed in the
+@@ -1294,6 +1295,9 @@ disable_priv_mode ()
+ {
+   int e;
+ 
++  if (!current_user.user_name)
++    get_current_user_info();
++  initgroups (current_user.user_name, current_user.gid);
+   if (setuid (current_user.uid) < 0)
+     {
+       e = errno;
+--- support/man2html.c
++++ support/man2html.c	2018-11-29 08:14:06.638693338 +0000
+@@ -78,6 +78,7 @@
+ #include <time.h>
+ #include <sys/time.h>
+ #include <errno.h>
++#include <unistd.h>
+ 
+ #define NULL_TERMINATED(n) ((n) + 1)
+ 
+--- support/rlvers.sh
++++ support/rlvers.sh	2018-11-29 08:14:06.638693338 +0000
+@@ -27,10 +27,10 @@ TDIR=$TMPDIR/rlvers
+ 
+ # defaults
+ CC=cc
+-RL_LIBDIR=/usr/local/lib
+-RL_INCDIR=/usr/local/include
++RL_LIBDIR=/lib
++RL_INCDIR=/usr/include
+ 
+-TERMCAP_LIB="-ltermcap"
++echo 'int main () { return 0; }' | gcc -ltinfo -o /dev/null -xc - > /dev/null 2>&1 && TERMCAP_LIB="-ltinfo" || TERMCAP_LIB="-lncurses"
+ 
+ # cannot rely on the presence of getopts
+ while [ $# -gt 0 ]; do
+--- support/shobj-conf
++++ support/shobj-conf	2018-11-29 08:14:06.642693263 +0000
+@@ -126,10 +126,11 @@ sunos5*|solaris2*)
+ linux*-*|gnu*-*|k*bsd*-gnu-*|freebsd*-gentoo)
+ 	SHOBJ_CFLAGS=-fPIC
+ 	SHOBJ_LD='${CC}'
+-	SHOBJ_LDFLAGS='-shared -Wl,-soname,$@'
++	SHOBJ_LDFLAGS='-shared'
+ 
+-	SHLIB_XLDFLAGS='-Wl,-rpath,$(libdir) -Wl,-soname,`basename $@ $(SHLIB_MINOR)`'
++	SHLIB_XLDFLAGS='-Wl,-rpath-link,$(libdir) -Wl,-soname,`basename $@ $(SHLIB_MINOR)`'
+ 	SHLIB_LIBVERSION='$(SHLIB_LIBSUFF).$(SHLIB_MAJOR)$(SHLIB_MINOR)'
++	echo 'int main () { return 0; }' | gcc -ltinfo -o /dev/null -xc - > /dev/null 2>&1 && SHLIB_LIBS=-ltinfo || SHLIB_LIBS=-lncurses
+ 	;;
+ 
+ freebsd2*)
+--- tests/glob.tests
++++ tests/glob.tests	2018-11-29 08:14:06.642693263 +0000
+@@ -15,8 +15,8 @@ ${THIS_SH} ./glob3.sub
+ 
+ MYDIR=$PWD	# save where we are
+ 
+-TESTDIR=$TMPDIR/glob-test-$$
+-mkdir $TESTDIR
++TESTDIR=${TMPDIR:=/tmp}/glob-test-$$
++mkdir -p $TESTDIR
+ builtin cd $TESTDIR || { echo $0: cannot cd to $TESTDIR >&2 ; exit 1; }
+ rm -rf *
+ 
+--- tests/run-intl
++++ tests/run-intl	2018-11-29 08:14:06.642693263 +0000
+@@ -5,4 +5,4 @@ echo "warning: some of these tests will
+ echo "warning: locales installed on your system." >&2
+ 
+ ${THIS_SH} ./intl.tests > ${BASH_TSTOUT}
+-diff $AFLAG ${BASH_TSTOUT} intl.right && rm -f ${BASH_TSTOUT}
++diff -w $AFLAG ${BASH_TSTOUT} intl.right && rm -f ${BASH_TSTOUT}
+--- tests/run-read
++++ tests/run-read	2018-11-29 08:14:06.642693263 +0000
+@@ -1,4 +1,4 @@
+ echo "warning: please do not consider output differing only in the amount of" >&2
+ echo "warning: white space to be an error." >&2
+ ${THIS_SH} ./read.tests > ${BASH_TSTOUT} 2>&1
+-diff ${BASH_TSTOUT} read.right && rm -f ${BASH_TSTOUT}
++diff -w ${BASH_TSTOUT} read.right && rm -f ${BASH_TSTOUT}

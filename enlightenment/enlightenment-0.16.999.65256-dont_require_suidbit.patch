@@ -1,0 +1,21 @@
+Index: src/bin/e_sys_main.c
+===================================================================
+--- src/bin/e_sys_main.c.orig
++++ src/bin/e_sys_main.c
+@@ -131,6 +131,7 @@ main(int argc,
+         printf("ERROR: MEMBER OF MORE THAN 65536 GROUPS\n");
+         exit(3);
+      }
++   /*
+    if (setuid(0) != 0)
+      {
+         printf("ERROR: UNABLE TO ASSUME ROOT PRIVILEGES\n");
+@@ -141,6 +142,8 @@ main(int argc,
+         printf("ERROR: UNABLE TO ASSUME ROOT GROUP PRIVILEGES\n");
+         exit(7);
+      }
++   */
++   eina_init();
+ 
+    if (!auth_action_ok(action, gid, gl, gn, egid))
+      {

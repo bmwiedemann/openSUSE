@@ -1,0 +1,372 @@
+-------------------------------------------------------------------
+Sat Jul 27 17:01:39 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update version to 1.0.115:
+  * See /usr/share/doc/packages/debootstrap/changelog
+
+-------------------------------------------------------------------
+Wed Jun 28 13:38:35 UTC 2017 - sor.alexei@meowr.ru
+
+- Update version to 1.0.97 (changes since 1.0.90):
+  * Avoid the "type" shell command (deb#860545).
+  * Add (Ubuntu) bionic as a symlink to gutsy.
+  * scripts/gutsy: Incorporate changes from Ubuntu:
+    + Synch from scripts/sid.
+    + Fix debootstrap --variant=fakechroot failure because 
+      initscripts is no longer part of the base system.
+  * Use force_md5 for breezy, dapper and edgy (deb#659360,
+    deb#676373). Now you can create Ubuntu breezy/dapper/edgy chroot.
+  * Change repository URI for old Ubuntu releases (deb#676370, 
+    deb#839073).
+    Archived Ubuntu releases are at old-releases.ubuntu.com/ubuntu
+  * Set correct keyring and default mirror for old debian releases.
+    Now you can fetch popato/woody/sarge/etch/lenny/squeeze if you 
+    want (deb#891404, deb#600647, deb#792729).
+  * Avoid pre-exist directory causes failure (deb#864734).
+  * Split common code from scripts/sid to scripts/debian-common and
+    share it between distributions (deb#798562).
+  * Don't let host PATH leak into the target commands. It works on
+    chroots that have different PATH like Arch Linux and Fedora
+    (deb#718632, deb#770658, deb#890418).
+  * Escape spaces to fix debootstrap on path contains space fails
+    (deb#586158, deb#762431).
+  * Add warning if file specified via --keyring does not exist
+    (deb#754318, deb#775474).
+  * Avoid unnecessary keyring warning with --second-stage option
+    (deb#734324).
+  * Output warning if falling back to sha1 (deb#775444).
+  * Prevent unintended removal with --print-debs option
+    (deb#833525).
+  * Add scripts for Kali Linux (deb#798564).
+  * Improve manpage description for --{unpack,make}-tarball options
+    (deb#563647).
+  * Fix multiple components usage for --foreign/--second-stage
+    (deb#806780).
+  * Try to auto-detect proxy if available
+    (e.g. squid-deb-proxy-client) (deb#732628).
+  * Handle existing /dev (deb#872577).
+  * Create /dev/console as same as previous (deb#872059).
+  * Do not ignore HTTPS mirror setting (deb#893954).
+  * Improve manpage "what is calls a Debian base system" (deb#872948).
+  * Improve the error message when download fails (deb#866401).
+  * Use wget --non-verbose option instead of --quiet.
+  * Improve error message on Release signed by unknown key
+    (deb#698677).
+  * Add a --cache-dir feature (deb#844118)
+    It is enabled by default and uses /var/cache/apt/archives as a
+    default value.
+  * Use arch-test if installed to check whether second stage is
+    possible (deb#826709).
+  * Fix boostrapping libvirt LXC containers (deb#890419).
+  * Use "command -v apt-config" to check for apt-config's presence
+    (deb#895466).
+  * Drop default value for the --cache-dir parameter.
+  * Forbid the usage of non-empty directories with --print-debs and
+    --make-tarball.
+  * Do not use HTTPS for the Kali bootstrap script.
+- Add a missing wget depenendency.
+
+-------------------------------------------------------------------
+Wed Jun 28 13:38:35 UTC 2017 - mchandras@suse.de
+
+- Version bump to 1.0.90
+  * Add (Ubuntu) artful as a symlink to gutsy.
+  * Improve /dev/ptmx handling (deb#817236)
+  * Add autopkgtest support to test various scenarios.
+  * Uniformize COMPONENTS/USE_COMPONENTS handling.
+  * Strip the arch-qualifier (deb#836525)
+  * Default to split /usr again, as merged-/usr breaks dpkg-shlibdeps (deb#844221)
+  * remove scratchbox2 support (deb#796189)
+  * Reword split_inline_sig (deb#842591)
+  * Add support for downloading and validating InRelease files, by splitting
+    up detached signature from signed data.
+  * Switch default mirror to deb.debian.org.
+  * Add (Ubuntu) zesty as a symlink to gutsy.
+  * Add jessie-kfreebsd to merged-/usr blacklist.
+  * No longer Build-Depend on makedev. The code using it was already
+    removed in debootstrap 1.0.82.
+  * Do not use `tar -k` for older releases which might have file
+    conflicts between the packages to be installed. (deb#838388)
+  * Error out when seeing short options. (deb#548880)
+  * Add oldoldstable -> sid script symlink. (deb#792734)
+  * Add buster -> sid and bullseye -> sid script symlinks.
+  * Only unpack and configure the base system when there are actually
+    packages to install. (deb#825034)
+  * debootstrap.8: Use stretch instead of wheezy in examples.
+  * Enable merged-/usr by default. (deb#839046)
+  * Add support for xz-compressed Packages indices. (deb#837649)
+  * functions: Validate that the requested suite is listed in the
+    Release file's Suite or Codename field. (deb#837075)
+  * Add support for merged-/usr, enabled by a new --merged-usr option (deb#810301)
+    Feign install of dpkg in second stage. This avoids problems when
+    using dpkg-deb together with busybox' tar. (deb#837185)
+  * Excise all devices.tar.gz code. (deb#830869)
+  * Add (Ubuntu) yakkety as a symlink to gutsy.
+  * scripts/gutsy: Support kfreebsd & hurd arches on Ubuntu targets (deb#818748)
+- Remove obsolete devices.tar.gz file
+
+-------------------------------------------------------------------
+Sat Mar  5 13:50:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 1.0.79 (changes since 1.0.75):
+  * Stop creating useless device nodes (deb#571136).
+  * Fix permissions on device nodes (deb#812811, deb#813124).
+  * Use HTTPS for Vcs-* URLs, and link to cgit rather than gitweb.
+  * Split setup_devices in setup_devices (which now only deals with
+    static device nodes) and setup_dynamic_devices, and move the
+    calls to setup_devices from the beginning of the second stage to
+    the end of the first stage.
+    setup_dynamic_devices mounts the appropriate filesystems which
+    provide dynamic device nodes for the architectures which need
+    one in debootstrap (kfreebsd and hurd).
+  * hurd: move setting up dev and servers firmlink to setup_proc
+    stage. Also firmlink proc there (deb#768102).
+
+-------------------------------------------------------------------
+Mon Nov 23 20:34:07 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.0.75 (changes since 1.0.73):
+  * Add (Ubuntu) xenial as a symlink to gutsy.
+  * Stop cleaning KEEP_DEBOOTSTRAP_DIR twice (deb#804415).
+  * Add Tanglu support (deb#771687). At the moment, the following
+    extra suites are recognised:
+    - aequorea
+    - bartholomea
+    - chromodoris
+    - dasyatis
+
+-------------------------------------------------------------------
+Sat Oct 31 10:21:56 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.0.73:
+  * Generate a deburis file with (package, version, uri) tuples,
+    similar to the existing debpaths.
+
+-------------------------------------------------------------------
+Wed Aug  5 05:22:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.0.72 (changes since 1.0.70):
+  * Adjust sed call to render it more portable (missing ';'),
+    making it work with FreeBSD sed.
+  * Add (Ubuntu) wily as a symlink to gutsy.
+  * Fix resolve_deps and setup_available to work in the --foreign
+    case.
+
+-------------------------------------------------------------------
+Sun Jun 14 19:20:21 UTC 2015 - sleep_walker@suse.cz
+
+- bump to 1.0.70
+  * Use tr instead of (missing in d-i) xargs (Closes:
+      #785693). Thanks, Julian Schauder!
+
+  * Make sure to deduplicate package list in download_release to
+      avoid issues while counting downloaded packages. The failure
+      path could lead to printing some strange integer (Closes:
+      #709751, #768445, #785276, #774752).  This was reported to
+      mostly happen whenever --no-resolve-deps is used.
+      
+  * Add support for --force-check-gpg so that one can
+      programmatically make sure keyring checks are used and that
+      no fallback to an https mirror happens (Closes: #661501,
+      #733179, #775454).  * Switch default mirror from
+      ftp.us.debian.org to the new, official http redirector
+      service: httpredir.debian.org
+  * Make it possible to override the MAKEDEV variable (Closes: #734743).
+      Thanks, Wookey!
+
+  * Update Standards to 3.9.6 (checked)
+  * Support the jessie-kfreebsd suite, by using the same script as
+      jessie (a symlink to sid) (Closes: #784927).
+
+-------------------------------------------------------------------
+Sat Mar 21 09:12:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.0.67 (changes since 1.0.65):
+  * Support reproducible builds: specify a modification time on the
+    tar side, and add the -n option to gzip
+  * Update setup_apt_sources to look at USE_COMPONENTS if COMPONENTS
+    is empty, fixing the empty sources.list bug with foreign
+    architectures.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Mon Nov 24 09:11:43 UTC 2014 - sleep_walker@suse.cz
+
+- bump to 1.0.65
+  * Add support for stretch.
+  * Add (Ubuntu) vivid as a symlink to gutsy.
+  * Move set -e out of shebang line. Closes: #762713
+  * Fix reporting of package version in retrieval and validation steps
+    to cope with epochs.
+  * Fix "possibly the package $pkg is at fault" warnings to account for
+    changed error output in dpkg 1.17.2.
+
+-------------------------------------------------------------------
+Mon Jun  2 12:06:31 UTC 2014 - thomasbechtold@jpberlin.de
+
+- update to 1.0.60
+* Add (Ubuntu) utopic as a symlink to gutsy.
+* Sync deb support with latest dpkg-deb (deb#739136):
+  - Add uncompressed data.tar deb member support.
+  - Add uncompressed and xz control.tar deb member support.
+
+-------------------------------------------------------------------
+Sun Apr 20 06:29:38 UTC 2014 - thomasbechtold@jpberlin.de
+
+- update to 1.0.59
+* scripts/gutsy: Make the fake initctl pass through "initctl version"
+  calls, used by such things as invoke-rc.d to figure out whether it's
+  running under Upstart (lp#1182540).
+* scripts/sid, scripts/gutsy: Add a policy-rc.d, matching that in
+  debian-installer-utils.  This is the primary way to disable daemon
+  startup.
+* Add (Ubuntu) trusty as a symlink to gutsy.
+* When deboostrapping Debian, and the debian-archive-keyring is not
+  available, switch the default mirror to a https url. This way at
+  least the CA level of security is available even for users who
+  have no way to check gpg keys in the WoT. The https mirror is
+  currently https://mirrors.kernel.org/debian.
+* Avoid writing https urls into sources.list, as apt does not support https.
+* Install base-passwd and base-files in two calls rather than one to
+  avoid problems with home-built media with different ordering in
+  Packages.  Thanks to Jo Shields for pointing this out and providing
+  the workaround (deb#601670, lp#1001131)
+* pkgdetails_perl: Only interpret percentages following whitespace, to
+  cope with GNU wget outputting the local file name (which may contain "%"
+  due to URL-encoding) after it finishes the download (lp#1172101).
+* Install apt-transport-https if installing from an HTTPS mirror
+  (lp#1135163).  It may still be necessary to copy certificates into
+  place, but there's at least a reasonable chance that somebody installing
+  from HTTPS may want to keep using it, and we have to install
+  apt-transport-https at this point otherwise they won't be able to do
+  that end-to-end.
+* Install ca-certificates as well as apt-transport-https for HTTPS
+  installations.  This makes it possible to copy certificates that were
+  built into the installer to /usr/local/share/ca-certificates/ and thus
+  have them continue to be trusted after installation.
+
+-------------------------------------------------------------------
+Sat May 18 04:47:14 UTC 2013 - frank.lichtenheld@sophos.com
+
+- update to 1.0.51
+* Add (Ubuntu) saucy as a symlink to gutsy (deb#706989).
+* Clarify location of pkgdetails.c in error message (deb#708771).
+* Resolve mount point symlinks relative to the target chroot before
+  unmounting them (deb#702861, deb#703037, deb#704744).
+
+-------------------------------------------------------------------
+Fri May 17 20:58:30 UTC 2013 - frank.lichtenheld@sophos.com
+
+- update to 1.0.50
+* Report package version information on package retrieve and validation.
+  deb#697675
+
+-------------------------------------------------------------------
+Sun May  5 20:18:17 UTC 2013 - frank.lichtenheld@sophos.com
+
+- update to 1.0.49
+* Add support for jessie. deb#706788
+
+-------------------------------------------------------------------
+Fri Apr  5 20:18:04 UTC 2013 - frank.lichtenheld@sophos.com
+
+- update to 1.0.48
+* Disable InRelease support.  gpgv won't give us back the signed data, and
+  full gpg is not available inside d-i (deb#703889).
+* Move extract_release_components to after signature verification.
+
+-------------------------------------------------------------------
+Tue Mar 26 22:05:11 UTC 2013 - frank.lichtenheld@sophos.com
+
+- update to 1.0.47
+* Properly decrypt the InRelease file when downloading from an archive
+  where InRelease is used. This longstanding bug was masked by former
+  APT behaviour and was revealed only with recent APT versions
+  deb#703146
+* Add Requires on gpg2
+
+-------------------------------------------------------------------
+Mon Nov  5 21:15:30 UTC 2012 - frank.lichtenheld@sophos.com
+
+- update to 1.0.43
+* Add (Ubuntu) raring as a symlink to gutsy.
+
+-------------------------------------------------------------------
+Fri Jul  6 19:46:00 UTC 2012 - frank.lichtenheld@sophos.com
+
+- update to 1.0.42
+* Downgrade the absence of an InRelease file from a warning to an info
+  message. lp#1017398
+
+-------------------------------------------------------------------
+Sun Jun 24 16:11:52 UTC 2012 - frank.lichtenheld@sophos.com
+
+- update to 1.0.41
+* Add support for InRelease files. deb#638682
+
+-------------------------------------------------------------------
+Thu May  3 19:06:28 UTC 2012 - frank.lichtenheld@sophos.com
+
+- Prepare for factory submission
+* Remove _service and add source file
+* Line-wrap description
+
+-------------------------------------------------------------------
+Sat Apr 28 17:07:00 UTC 2012 - frank.lichtenheld@sophos.com
+
+- update to 1.0.40
+
+-------------------------------------------------------------------
+Tue Mar 13 21:21:09 UTC 2012 - frank.lichtenheld@sophos.com
+
+- update to 1.0.39
+
+-------------------------------------------------------------------
+Fri Nov 25 21:46:23 UTC 2011 - frank.lichtenheld@sophos.com
+
+- update to 1.0.38
+
+-------------------------------------------------------------------
+Mon Oct 24 21:20:04 UTC 2011 - frank.lichtenheld@sophos.com
+
+- update to 1.0.37
+
+-------------------------------------------------------------------
+Tue Sep 20 12:53:03 UTC 2011 - frank.lichtenheld@sophos.com
+
+- update to 1.0.36
+
+-------------------------------------------------------------------
+Fri Aug 12 19:52:00 UTC 2011 - flichtenheld@astaro.com
+
+- update to 1.0.35
+
+-------------------------------------------------------------------
+Fri Jul 29 18:26:55 UTC 2011 - flichtenheld@astaro.com
+
+- update to 1.0.34
+
+-------------------------------------------------------------------
+Thu Jun  2 10:56:08 UTC 2011 - flichtenheld@astaro.com
+
+- update to 1.0.32
+
+-------------------------------------------------------------------
+Tue Mar 22 21:09:26 UTC 2011 - flichtenheld@astaro.com
+
+- update to 1.0.29
+
+-------------------------------------------------------------------
+Tue Feb 22 18:57:34 UTC 2011 - flichtenheld@astaro.com
+
+- update to 1.0.28
+
+-------------------------------------------------------------------
+Mon Feb 14 23:23:28 UTC 2011 - flichtenheld@astaro.com
+
+- update to 1.0.27
+
+-------------------------------------------------------------------
+Sat Jan 15 00:00:00 UTC 2011 - flichtenheld@astaro.com
+
+- initial packaging

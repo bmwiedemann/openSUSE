@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Wed Oct  4 07:49:17 UTC 2017 - fstrba@suse.com
+
+- Removed a jflex-lex-scan.patch again, so that bot is happy
+
+-------------------------------------------------------------------
+Tue Oct  3 17:31:18 UTC 2017 - fstrba@suse.com
+
+- Don't BuildRequire java-1_5_0-gcj-compat-devel, since it will be
+  soon gone; BuildRequire java-devel
+- Build with java source and target level 1.6 to allow building
+  with jdk9
+- Sync the bootstrap and non-bootstrap spec files using the
+  jpackage-bootstrap-prepare.sh script and clean spec file
+
+-------------------------------------------------------------------
+Mon Dec  2 12:44:19 UTC 2013 - mvyskocil@suse.com
+
+- conflict the non-bootstrap variant with the bootstrap variant
+
+-------------------------------------------------------------------
+Thu Nov 14 12:31:24 UTC 2013 - mvyskocil@suse.com
+
+- Fix build with junit 4
+  * jflex-junit4.patch
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:00 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Mon Aug 26 12:18:15 UTC 2013 - mvyskocil@suse.com
+
+- don't build tests when bootstrapping 
+- properly synchronized both spec files
+- drop antlr-bootstrap dependency, it's pointless withouth javadoc
+
+-------------------------------------------------------------------
+Fri Aug 23 09:06:21 UTC 2013 - mvyskocil@suse.com
+
+- don't build javadoc 
+
+-------------------------------------------------------------------
+Thu Feb 17 00:59:58 CET 2011 - mvyskocil@suse.cz
+
+- fix build with antlr-bootstrap
+
+-------------------------------------------------------------------
+Thu May 21 17:11:33 CEST 2009 - mvyskocil@suse.cz
+
+- Removed a jflex-lex-scan.patch 
+
+-------------------------------------------------------------------
+Tue May  5 09:35:07 CEST 2009 - mvyskocil@suse.cz
+
+- Update to 1.4.3 (bugfix release)
+- Build using java-1_5_0-gcj to allow openjdk bootstrap
+- Recreated jflex-lex-scan.patch
+
+-------------------------------------------------------------------
+Wed Apr 29 16:16:14 CEST 2009 - mvyskocil@suse.cz
+
+- Initial packaging of jflex-bootstrap 1.4.2 in SUSE (from jpp5)
+

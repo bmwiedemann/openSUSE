@@ -1,0 +1,48 @@
+From: Max Mitschke <max.mitschke@msufcu.org>
+Date: 2019-05-22 22:10:34 -0400
+References: 
+Upstream: never
+Subject: Use system-provided tinyxml2 library instead of bundled library
+---
+
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2018-12-31 15:42:41.000000000 -0500
++++ b/CMakeLists.txt	2019-05-22 21:00:13.301474451 -0400
+@@ -328,6 +328,8 @@
+ OPTION(BUILD_ENET "Set when you want to build apps with enet UDP networking support" ON)
+ OPTION(BUILD_CLSOCKET "Set when you want to build apps with enet TCP networking support" ON)
+ 
++include(FindPkgConfig)
++pkg_check_modules(tinyxml2 REQUIRED tinyxml2)
+ 
+ IF(BUILD_PYBULLET)
+ 	FIND_PACKAGE(PythonLibs)
+diff -Naur a/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt b/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt
+--- a/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt	2018-12-31 15:42:41.000000000 -0500
++++ b/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt	2019-05-22 21:14:35.432401242 -0400
+@@ -1,8 +1,8 @@
+ INCLUDE_DIRECTORIES(
++	${tinyxml2_INCLUDE_DIRS}
+ 	${BULLET_PHYSICS_SOURCE_DIR}/src
+ 	${BULLET_PHYSICS_SOURCE_DIR}/Extras/Serialize/BulletFileLoader
+ 	${BULLET_PHYSICS_SOURCE_DIR}/Extras/Serialize/BulletWorldImporter
+-	${BULLET_PHYSICS_SOURCE_DIR}/examples/ThirdPartyLibs/tinyxml2
+ )
+ 
+ ADD_LIBRARY(
+@@ -11,14 +11,13 @@
+ 	btBulletXmlWorldImporter.h
+ 	string_split.cpp
+ 	string_split.h
+-	${BULLET_PHYSICS_SOURCE_DIR}/examples/ThirdPartyLibs/tinyxml2/tinyxml2.cpp
+ )
+ 
+ SET_TARGET_PROPERTIES(BulletXmlWorldImporter  PROPERTIES VERSION ${BULLET_VERSION})
+ SET_TARGET_PROPERTIES(BulletXmlWorldImporter PROPERTIES SOVERSION ${BULLET_VERSION})
+ 
+ IF (BUILD_SHARED_LIBS)
+-	TARGET_LINK_LIBRARIES(BulletXmlWorldImporter BulletWorldImporter BulletDynamics BulletCollision BulletFileLoader LinearMath)
++	TARGET_LINK_LIBRARIES(BulletXmlWorldImporter BulletWorldImporter BulletDynamics BulletCollision BulletFileLoader LinearMath ${tinyxml2_LIBRARIES})
+ ENDIF (BUILD_SHARED_LIBS)
+ 
+ IF (INSTALL_EXTRA_LIBS)

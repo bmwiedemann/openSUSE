@@ -1,0 +1,60 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Sergio Durigan Junior <sergiodj@redhat.com>
+Date: Wed, 12 Sep 2018 00:02:17 -0400
+Subject: gdb-rhbz795424-bitpos-arrayview.patch
+
+;; This patch is needed to compile GDB after -Werror=narrowing has
+;; been enabled by default.
+;; Author: Sergio Durigan Junior.
+
+diff --git a/gdb/common/array-view.h b/gdb/common/array-view.h
+--- a/gdb/common/array-view.h
++++ b/gdb/common/array-view.h
+@@ -85,7 +85,7 @@ public:
+   using value_type = T;
+   using reference = T &;
+   using const_reference = const T &;
+-  using size_type = size_t;
++  using size_type = ULONGEST;
+ 
+   /* Default construction creates an empty view.  */
+   constexpr array_view () noexcept
+@@ -114,7 +114,7 @@ public:
+      count.  */
+   template<typename U,
+ 	   typename = Requires<DecayedConvertible<U>>>
+-  constexpr array_view (U *array, size_t size) noexcept
++  constexpr array_view (U *array, ULONGEST size) noexcept
+     : m_array (array), m_size (size)
+   {}
+ 
+@@ -128,7 +128,7 @@ public:
+   {}
+ 
+   /* Create an array view from an array.  */
+-  template<typename U, size_t Size,
++  template<typename U, ULONGEST Size,
+ 	   typename = Requires<DecayedConvertible<U>>>
+   constexpr array_view (U (&array)[Size]) noexcept
+     : m_array (array), m_size (Size)
+@@ -161,9 +161,9 @@ public:
+   /*constexpr14*/ T *end () noexcept { return m_array + m_size; }
+   constexpr const T *end () const noexcept { return m_array + m_size; }
+ 
+-  /*constexpr14*/ reference operator[] (size_t index) noexcept
++  /*constexpr14*/ reference operator[] (ULONGEST index) noexcept
+   { return m_array[index]; }
+-  constexpr const_reference operator[] (size_t index) const noexcept
++  constexpr const_reference operator[] (ULONGEST index) const noexcept
+   { return m_array[index]; }
+ 
+   constexpr size_type size () const noexcept { return m_size; }
+@@ -196,7 +196,7 @@ operator== (const gdb::array_view<T> &lhs, const gdb::array_view<T> &rhs)
+   if (lhs.size () != rhs.size ())
+     return false;
+ 
+-  for (size_t i = 0; i < lhs.size (); i++)
++  for (ULONGEST i = 0; i < lhs.size (); i++)
+     if (!(lhs[i] == rhs[i]))
+       return false;
+ 

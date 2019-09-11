@@ -1,0 +1,32 @@
+Index: abimap-0.3.0/setup.py
+===================================================================
+--- abimap-0.3.0.orig/setup.py	2018-08-03 17:00:27.000000000 +0200
++++ abimap-0.3.0/setup.py	2018-08-03 17:51:50.673376523 +0200
+@@ -25,7 +25,7 @@ requirements = []
+ 
+ setup_requirements = ['pytest-runner']
+ 
+-test_requirements = ['pytest', 'pyyaml', 'pytest-cov', 'pytest-console-scripts']
++test_requirements = ['pytest', 'pyyaml', 'pytest-cov']
+ 
+ version = get_version()
+ 
+Index: abimap-0.3.0/tests/test_script.py
+===================================================================
+--- abimap-0.3.0.orig/tests/test_script.py	2018-08-03 17:00:27.000000000 +0200
++++ abimap-0.3.0/tests/test_script.py	2018-08-03 17:51:50.673376523 +0200
+@@ -2,6 +2,7 @@
+ 
+ """Test running as a command line script"""
+ 
++import pytest
+ from conftest import cd
+ 
+ 
+@@ -58,5 +59,6 @@ def run_script(testcases, datadir, scrip
+             caplog.clear()
+ 
+ 
++@pytest.mark.skip("script_runner not available")
+ def test_main(testcases, datadir, script_runner, capsys, caplog):
+     run_script(testcases, datadir, script_runner, capsys, caplog, "abimap")

@@ -1,0 +1,74 @@
+commit dfa4e356197a42f339fd873acd90944d7c8b896c
+Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+Date:   Thu May 18 11:20:20 2017 +0200
+
+    Add armv6 and armv7 support
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+
+diff --git common/compatibility.h common/compatibility.h
+index b187938ae0af..5e8a7f35afb5 100644
+--- common/compatibility.h
++++ common/compatibility.h
+@@ -59,6 +59,8 @@
+ #       define ARCH_ppc64
+ #   elif defined(__PPC__)
+ #       define ARCH_ppc
++#   elif defined(__ARM_ARCH_7A__)
++#       define ARCH_arm7
+ #   elif defined(__aarch64__)
+ #       define ARCH_arm64
+ #   elif defined(__arm__)
+@@ -98,7 +100,7 @@
+ #define U16H_FMT    "0x%04x"
+ #define U8H_FMT     "0x%02x"
+ 
+-#if defined(ARCH_x86) || defined(ARCH_ppc) || defined(UEFI_BUILD) || defined(ARCH_arm6l) || defined(ARCH_s390)
++#if defined(ARCH_x86) || defined(ARCH_ppc) || defined(UEFI_BUILD) || defined(ARCH_arm6l) || defined(ARCH_s390) || defined(ARCH_arm7)
+ #   if defined(__MINGW32__) || defined(__MINGW64__)
+ #       include <inttypes.h>
+ #       define U64D_FMT    "0x%" PRId64
+diff --git mtcr_ul/packets_common.h mtcr_ul/packets_common.h
+index 68a08d0589ae..7974c12cb743 100644
+--- mtcr_ul/packets_common.h
++++ mtcr_ul/packets_common.h
+@@ -148,6 +148,8 @@
+ #       define ARCH_ppc64
+ #   elif defined(__PPC__)
+ #       define ARCH_ppc
++#   elif defined(__ARM_ARCH_7A__)
++#       define ARCH_arm7
+ #   elif defined(__aarch64__)
+ #       define ARCH_arm64
+ #   elif defined(__arm__)
+@@ -169,7 +171,7 @@
+ /* define macros for print fields */
+ //#if defined (ARCH_ia64) || defined(ARCH_x86_64) || defined(ARCH_ppc64) || defined(__MINGW64__) || defined(ARCH_s390x)
+ /*
+- #if !defined(UEFI_BUILD) && (defined (ARCH_ia64) || defined(ARCH_x86_64) || defined(ARCH_ppc64) || defined(__MINGW64__) || defined(ARCH_s390x))
++ #if !defined(UEFI_BUILD) && (defined (ARCH_ia64) || defined(ARCH_x86_64) || defined(ARCH_ppc64) || defined(__MINGW64__) || defined(ARCH_s390x) || defined(ARCH_arm7))
+  #   define U64H_FMT "0x%016lx"
+  #   define U64D_FMT "%lu"
+  #   define U32H_FMT "0x%08x"
+diff --git tools_layouts/adb_to_c_utils.h tools_layouts/adb_to_c_utils.h
+index 0a5cee5fec54..bff7c458915e 100644
+--- tools_layouts/adb_to_c_utils.h
++++ tools_layouts/adb_to_c_utils.h
+@@ -133,6 +133,8 @@ extern "C" {
+ #       define ARCH_ppc64
+ #   elif defined(__PPC__)
+ #       define ARCH_ppc
++#   elif defined(__ARM_ARCH_7A__)
++#       define ARCH_arm7
+ #   elif defined(__aarch64__)
+ #       define ARCH_arm64
+ #   elif defined(__arm__)
+@@ -173,7 +175,7 @@ extern "C" {
+ #define U16H_FMT    "0x%04x"
+ #define U8H_FMT     "0x%02x"
+ 
+-#if defined(ARCH_x86) || defined(ARCH_ppc) || defined(UEFI_BUILD) || defined(ARCH_arm6l) || defined(ARCH_s390)
++#if defined(ARCH_x86) || defined(ARCH_ppc) || defined(UEFI_BUILD) || defined(ARCH_arm6l) || defined(ARCH_arm7) || defined(ARCH_s390)
+ #   if defined(__MINGW32__) || defined(__MINGW64__)
+ #       include <inttypes.h>
+ #       define U64D_FMT    "0x%" PRId64

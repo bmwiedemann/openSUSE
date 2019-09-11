@@ -1,0 +1,44 @@
+From dd408ae373b06ee46e178401ab28ecb62b9d2f06 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 29 Jul 2019 17:01:50 +0200
+Subject: [PATCH] Determine CLANG resources dir at runtime
+
+When the resources dir is determined at compile time, it also includes
+the full version (e.g. /usr/lib64/clang/8.0.0/include/opencl-c.h). If
+clang gets a minor version update later (e.g. from 8.0.0 to 8.0.1), pocl
+will still add the obsolete path for the header lookup.
+
+Determine the path at runtime instead. LLVM 9.0 adds a static method
+llvm::driver::Driver::GetResourcesPath(...) which can be used, LLVM 8.0
+and older have to use a dummy Driver instance.
+
+Fixes #747.
+---
+ lib/CL/pocl_llvm_build.cc | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/lib/CL/pocl_llvm_build.cc b/lib/CL/pocl_llvm_build.cc
+index f0b897f4..00a6fb26 100644
+--- a/lib/CL/pocl_llvm_build.cc
++++ b/lib/CL/pocl_llvm_build.cc
+@@ -438,7 +438,16 @@ int pocl_llvm_build_program(cl_program program,
+   po.Includes.push_back(BuiltinRenamesH);
+ #ifndef LLVM_OLDER_THAN_4_0
+   // Use Clang's opencl-c.h header.
+-  po.Includes.push_back(CLANG_RESOURCE_DIR "/include/opencl-c.h");
++  {
++#if (!defined(LLVM_OLDER_THAN_8_0)) && (!defined(LLVM_8_0))
++      std::string ClangResourcesDir = driver::Driver::GetResourcesPath(CLANG);
++#else
++      DiagnosticsEngine Diags{new DiagnosticIDs, new DiagnosticOptions};
++      driver::Driver TheDriver(CLANG, "", Diags);
++      std::string ClangResourcesDir = TheDriver.ResourceDir;
++#endif
++      po.Includes.push_back(ClangResourcesDir + "/include/opencl-c.h");
++  }
+ #endif
+   po.Includes.push_back(KernelH);
+   clang::TargetOptions &ta = pocl_build.getTargetOpts();
+-- 
+2.22.0
+

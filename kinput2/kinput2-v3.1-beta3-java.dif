@@ -1,0 +1,15 @@
+diff -ru kinput2-v3.1-beta2.orig/lib/imlib/imconv.c kinput2-v3.1-beta2/lib/imlib/imconv.c
+--- kinput2-v3.1-beta2.orig/lib/imlib/imconv.c	Fri Jul  6 10:32:52 2001
++++ kinput2-v3.1-beta2/lib/imlib/imconv.c	Tue Oct 30 12:49:02 2001
+@@ -18,8 +18,8 @@
+  * Author:  Makoto Ishisone, Software Research Associates, Inc., Japan
+  */
+ 
+-#define COMMIT_SYNC
+-#define STATUS_SYNC
++/* #define COMMIT_SYNC */
++/* #define STATUS_SYNC */
+ #include "im.h"
+ #include "ConvMgr.h"
+ #include "OverConv.h"
+Only in kinput2-v3.1-beta2/lib/imlib: imconv.c.~1~

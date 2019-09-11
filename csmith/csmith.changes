@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Thu Jun 29 08:46:18 UTC 2017 - mliska@suse.cz
+
+- Remove patch time-non-i386-target.patch.
+
+-------------------------------------------------------------------
+Fri Jun 23 07:15:27 UTC 2017 - mliska@suse.cz
+
+- Remove old tarball.
+
+-------------------------------------------------------------------
+Fri Jun 23 07:14:01 UTC 2017 - mliska@suse.cz
+
+- Update to 2.3.0.
+
+-------------------------------------------------------------------
+Wed Mar 15 12:56:38 UTC 2017 - dimstar@opensuse.org
+
+- Explcitly BuildRequire m4: the makefiles actually explcitly call
+  m4.
+
+-------------------------------------------------------------------
+Mon Oct 24 11:32:57 UTC 2016 - mliska@suse.cz
+
+- Remove csmith-devel and libcsmith0 packages
+- Include header files in the main package
+
+-------------------------------------------------------------------
+Sun Oct 16 20:31:05 UTC 2016 - jengelh@inai.de
+
+- Trim irrelevant parts from description
+- Implement shared library guidelines
+
+-------------------------------------------------------------------
+Mon Oct  3 09:11:08 UTC 2016 - mliska@suse.cz
+
+- Initial version 2.2.0.
+

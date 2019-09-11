@@ -1,0 +1,2 @@
+addFilter("pem-certificate .*/site-packages/distributed/tests/.*\.pem")
+addFilter("explicit-lib-dependency .*-tblib")

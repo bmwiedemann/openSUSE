@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon May  8 15:30:44 UTC 2017 - rpm@fthiessen.de
+
+- Fixed user and group for Factory
+
+-------------------------------------------------------------------
+Thu Mar 30 11:20:28 UTC 2017 - meissner@suse.com
+
+- prerequire useradd and groupadd
+
+-------------------------------------------------------------------
+Sat Jun 20 08:51:01 UTC 2015 - dimstar@opensuse.org
+
+- Force GNU inline semantics, fixes build with GCC5.
+
+-------------------------------------------------------------------
+Thu Oct 23 20:17:43 UTC 2014 - nemysis@gmx.ch
+
+- Change descriptions for patches
+
+-------------------------------------------------------------------
+Wed Oct 22 18:01:48 UTC 2014 - nemysis@gmx.ch
+
+- Remove not needed #%attr
+
+-------------------------------------------------------------------
+Wed Oct 22 17:36:03 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation
+

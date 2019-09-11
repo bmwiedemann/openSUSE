@@ -1,0 +1,30 @@
+# HG changeset patch
+# Parent  5034ae16f6a5c9c7151d931dc1cce2a541fe010e
+Allow the stat() syscall for OpenSSL re-seed patch
+(which causes OpenSSL use stat() on some file)
+
+bnc#912436
+
+diff --git a/openssh-7.7p1/sandbox-seccomp-filter.c b/openssh-7.7p1/sandbox-seccomp-filter.c
+--- openssh-7.7p1/sandbox-seccomp-filter.c
++++ openssh-7.7p1/sandbox-seccomp-filter.c
+@@ -224,16 +224,19 @@ static const struct sock_filter preauth_
+ 	SC_ALLOW(__NR_select),
+ #endif
+ #ifdef __NR_shutdown
+ 	SC_ALLOW(__NR_shutdown),
+ #endif
+ #ifdef __NR_sigprocmask
+ 	SC_ALLOW(__NR_sigprocmask),
+ #endif
++#ifdef __NR_stat
++	SC_ALLOW(__NR_stat),
++#endif
+ #ifdef __NR_time
+ 	SC_ALLOW(__NR_time),
+ #endif
+ #ifdef __NR_write
+ 	SC_ALLOW(__NR_write),
+ #endif
+ #ifdef __NR_socketcall
+ 	SC_ALLOW_ARG(__NR_socketcall, 0, SYS_SHUTDOWN),

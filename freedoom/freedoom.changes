@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Mon Jan  1 07:50:41 UTC 2018 - avindra@opensuse.org
+
+- Update to new upstream release 0.11.3:
+  * allows building from source using deutex 5.0
+
+-------------------------------------------------------------------
+Tue Jul  4 13:25:28 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.11 (2017-02-16)
+  * Lots of new music.
+  * New levels, including C1M1 kicking off Phase 1.
+  * Aquatex: over 200 new textures for mappers to use.
+  * New intermission screens.
+  * Some new weapon sprites: new pistol, new pickups.
+  * New medkit and armor pickup sprites.
+- Update to new upstream release 0.11.1 (2017-02-22)
+  * 1% armor bonus pickups are recolored from red to green.
+  * New textures compatible with TNT: Evilution
+  * New pain bringer and pain lord sprites, replacing old concept
+    art-derived ones.
+  * A few map errors are fixed, including misaligned textures,
+    leftover Boom specials, and it should no longer be possible
+    to get stuck between a rock and a tree in Phase 1 C1M1.
+  * Brand new Phase 1 C3M1, replacing an old Doom-inspired level.
+  * Widescreen statusbar for ZDoom was removed. This created
+    incompatibility with some mods.
+  * Fixed intermission text after using the secret exit in
+    Phase 2 MAP31, where obituary texts were incorrectly
+    displayed instead.
+- Update to new upstream release 0.11.2 (2017-03-15)
+  * Missing multiplayer starts have been added to several levels.
+    No map should be lacking anymore.
+  * A few mapping errors were repaired by changing sector heights.
+  * Par times for Phase 1 have been added.
+
+-------------------------------------------------------------------
+Tue Jul 26 10:46:36 UTC 2016 - jengelh@inai.de
+
+- Update description for dropped recommendation.
+
+-------------------------------------------------------------------
+Sat May 07 17:46:35 UTC 2016 - mailaender@opensuse.org
+
+- Drop recommends for a Doom engine
+
+-------------------------------------------------------------------
+Sat Mar 26 08:01:04 UTC 2016 - mailaender@opensuse.org
+
+- Update to new upstream release 0.10.1
+  * Brand new status bar.
+  * New sprites for the serpent and orb monster.
+  * New HUD graphics for the single- and double-barrel shotguns, missile launcher, and SKAG.
+  * New pain sounds for many monsters and the player.
+  * New maps in Phase 1 and Phase 2.
+  * New file names no longer conflict with Doom's
+  * FreeDM and Phase 1 have grown out of the shadows of the project and have seen rapid advances.
+  * New text font to replace the old one in all menus, in-game text, and status-bar HUD.
+  * New zombie, shotgun zombie, and assault tripod sprites by a skilled pixel artist.
+  * New sounds for the dark soldier.
+  * More complete support for Final Doom mods, adding many more textures missing to support mods for both TNT: Evilution and The Plutonia Experiment.
+
+-------------------------------------------------------------------
+Fri Jan  3 02:53:54 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.8
+* Ultimate Freedoom's episode 4 is now the Cacoward-winning Double
+  Impact. Many maps have been updated, and a few sprites and sounds
+  have been upgraded as well.
+- Remove signature verification as sig files are no longer provided
+
+-------------------------------------------------------------------
+Wed May  1 05:55:10 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 0.8~beta1
+* Various map, sprite and texture updates
+- Package freedoom-ultimate as well
+- Do not hard-require prboom; freedoom works with any engine
+- Signature verification
+- Wrap description at 70 cols
+
+-------------------------------------------------------------------
+Tue May  3 17:55:24 UTC 2011 - claes.backstrom@opensuse.org
+
+- updated to 0.7
+
+-------------------------------------------------------------------
+Mon Feb 15 14:29:51 CET 2010 - prusnak@suse.cz
+
+- updated to 0.6.4
+
+-------------------------------------------------------------------
+Tue Jul  1 23:05:52 CEST 2008 - claes.backstrom@fsfe.org
+
+- New upstream version 0.6.2
+
+-------------------------------------------------------------------
+Thu Nov 22 00:03:00 CET 2007 - claes.backstrom@fsfe.org
+
+- Initial package built from Fedora package (0.5-4)
+

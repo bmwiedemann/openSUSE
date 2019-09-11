@@ -1,0 +1,367 @@
+-------------------------------------------------------------------
+Tue Apr 30 12:31:54 UTC 2019 - josef.moellers@suse.com
+
+- Upgrade to upstream version 2.7.5
+  * Obsoletes 6 patches:
+    + ppc64-diag.bug-1072708_fix_service_scripts.patch
+    + ppc64-diag.bug-1072708_create_diag_disk_path.patch
+    + ppc64-diag.bug-1072708_increase_buffer_for_vpd.patch
+    + ppc64-diag.bug-1072708_remove_timestamp.patch
+    + ppc64-diag.bug-1072708_create_diag_disk_log_directory.patch
+    + bsc1113097-run_diag_encl-exit-gracefully.patch
+  * rather that just fail, give more concise
+    error messages in configure script
+  * use bison rather than yacc
+  * probe for indicators on running platform
+  * usysattn, usysfault and usysident: add -P option to limit the
+    operations to only the platform indicators excluding the
+    enclosures.
+  [jsc:SLE-6081]
+
+-------------------------------------------------------------------
+Tue Jan 22 08:24:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop pointless _service file
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jan 18 14:07:53 UTC 2019 - josef.moellers@suse.com
+
+- If a system does not have any enclosures, let the daily cron
+  script "run_diag_encl"exit gracefully to prevent bogus
+  error messages in root's mailbox.
+  [bsc#1113097, bsc1113097-run_diag_encl-exit-gracefully.patch]
+
+-------------------------------------------------------------------
+Mon Dec 18 08:55:48 UTC 2017 - jloeser@suse.com
+
+- fix 'diag_encl -d' call (bsc#1072708)
+
+- added patches:
+  * ppc64-diag.bug-1072708_create_diag_disk_log_directory.patch
+  * ppc64-diag.bug-1072708_create_diag_disk_path.patch
+  * ppc64-diag.bug-1072708_fix_service_scripts.patch
+  * ppc64-diag.bug-1072708_increase_buffer_for_vpd.patch
+  * ppc64-diag.bug-1072708_remove_timestamp.patch
+
+-------------------------------------------------------------------
+Fri Oct 20 09:43:36 UTC 2017 - jloeser@suse.com
+
+- version update to 2.7.4 (fate#322225, fate#326429)
+
+- modified patches:
+  * ppc64-diag.varunused.patch
+
+- removed patches:
+  * ppc64-diag.opal_errd.patch
+  * ppc64-diag.rtas_errd.patch
+
+-------------------------------------------------------------------
+Wed Sep  6 11:34:03 UTC 2017 - jloeser@suse.com
+
+- add missing references for SLE merge:
+  * bsc#931001
+
+-------------------------------------------------------------------
+Wed Mar  1 16:33:06 UTC 2017 - jloeser@suse.com
+
+- version update to 2.7.3 (fate#321444)
+  - LED support for Marvell HDD
+  - Added support to parse new drc-index device tree property
+  - ela: remove support on PowerVM LPAR
+
+- modified patches:
+  * ppc64-diag.varunused.patch
+
+-------------------------------------------------------------------
+Wed Oct 19 07:48:42 UTC 2016 - jloeser@suse.com
+
+- version update to 2.7.2
+  - Added slider enclosure diagnostics support
+  - Added support for eSEL parsing
+
+- modified patches:
+  * ppc64-diag.opal_errd.patch
+
+-------------------------------------------------------------------
+Mon May  9 10:25:34 UTC 2016 - dvaleev@suse.com
+
+- Update to 2.7.1 (bsc#979032)
+  - Fixed endianess issues in diagnostics code 
+
+-------------------------------------------------------------------
+Tue Mar 22 15:31:40 UTC 2016 - jloeser@suse.com
+
+- version update to 2.7.0 (FATE#319557)
+  - Move from EPL to the GNU GPL license
+  - LED support on FSP based PowerNV platform
+  - Few minor bugs fixes
+
+- removed patches:
+  * ppc64-diag.bug-945385_create_dump_directory_on_startup.patch
+  * ppc64-diag.tmpraces.patch
+
+- modified patches:
+  * ppc64-diag.opal_errd.patch
+  * ppc64-diag.rtas_errd.patch
+  * ppc64-diag.varunused.patch
+
+-------------------------------------------------------------------
+Wed Sep 16 16:48:35 UTC 2015 - jloeser@suse.com
+
+- create /var/log/dump directory on startup (bsc#945385)
+
+- added patches:
+  * ppc64-diag.bug-945385_create_dump_directory_on_startup.patch
+
+-------------------------------------------------------------------
+Thu Jul 23 11:45:16 UTC 2015 - jloeser@suse.com
+
+- version update to 2.6.9 (FATE#318007)
+  - see Changelog under ppc64-diag-2.6.9/ppc64-diag.spec
+
+- modified patches:
+  * ppc64-diag.varunused.patch
+  * ppc64-diag.rtas_errd.patch
+  * ppc64-diag.opal_errd.patch
+  * ppc64-diag.tmpraces.patch
+
+- removed patches:
+  * ppc64-diag.add_ncurses_include_path.patch
+  * ppc64-diag.rtas_errd-LE-fixes-for-extract_platdump.patch
+  * ppc64-diag-tmpraces.patch 
+
+-------------------------------------------------------------------
+Mon Jun  8 20:10:27 UTC 2015 - dvlaeev@suse.com
+
+- Update to 2.6.8
+- Cpu and memory hotplugging support for PowerKVM guest 
+- Various fixes to opal-dump-parse tool 
+- Few LE related fixes 
+- Several security fixes across tools
+- Drop upstreamed patches 
+   ppc64-diag.opal-dump-parse-Add-printk-log-in-the-list-of-dump-s.patch
+   ppc64-diag.rtas_errd-Fix-PRRN-Event-handling-on-LE.patch
+
+-------------------------------------------------------------------
+Fri Sep 26 09:20:31 UTC 2014 - stefan.fent@suse.com
+
+- fix bsc #898480 ppc64-diag: fixes for LE support
+- patches added:
+  - ppc64-diag.opal-dump-parse-Add-printk-log-in-the-list-of-dump-s.patch
+  - ppc64-diag.rtas_errd-Fix-PRRN-Event-handling-on-LE.patch
+  - ppc64-diag.rtas_errd-LE-fixes-for-extract_platdump.patch 
+
+-------------------------------------------------------------------
+Tue Sep  9 11:44:11 UTC 2014 - dvlaeev@suse.com
+
+- Fix download service 
+
+-------------------------------------------------------------------
+Mon Sep  8 11:11:06 UTC 2014 - jloeser@suse.com
+
+- version update to 2.6.7 (BNC#894846)
+  no upstream changelog provided 
+
+- modified patches:
+  * ppc64-diag-tmpraces.patch
+  * ppc64-diag.add_ncurses_include_path.patch
+  * ppc64-diag.opal_errd.patch
+  * ppc64-diag.rtas_errd.patch
+  * ppc64-diag.varunused.patch
+-------------------------------------------------------------------
+Tue Jul 22 12:22:13 UTC 2014 - dvlaeev@suse.com
+
+- Fix download URL once again 
+
+-------------------------------------------------------------------
+Tue Jul 22 11:50:30 UTC 2014 - meissner@suse.com
+
+- Also run the systemd %post snippets within chroots, otherwise
+  we will enable the service (as we always install in chroots).
+  bnc#882450
+- the %service snippets take argument lists.
+
+-------------------------------------------------------------------
+Fri Jul 18 13:32:25 UTC 2014 - jsegitz@suse.com
+
+- updated ppc64-diag-tmpraces.patch to include proper permissions
+  (bnc#882667, CVE-2014-4039)
+- added missing pclose and fclose in default path of get_dt_status()
+
+-------------------------------------------------------------------
+Mon Jun 23 13:47:37 UTC 2014 - jloeser@suse.com
+
+- fix /tmp race (BNC#882667, CVE-2014-4038) 
+
+- added patches:
+  * ppc64-diag-tmpraces.patch
+-------------------------------------------------------------------
+Fri May 23 13:47:29 UTC 2014 - dvlaeev@suse.com
+
+- Fix Source url 
+
+-------------------------------------------------------------------
+Fri May 23 07:59:45 UTC 2014 - jsegitz@novell.com
+
+- added necessary macros for systemd files
+
+-------------------------------------------------------------------
+Fri May  2 15:37:03 UTC 2014 - jloeser@suse.com
+
+- version update to 2.6.6 (BNC#875775)
+  * No upstream changelog provided
+  * need to add include/ncurses path for menu.h in lpd/lp_diag.c 
+
+- added patches:
+  * ppc64-diag.add_ncurses_include_path.patch
+-------------------------------------------------------------------
+Fri Mar 28 11:41:49 UTC 2014 - jloeser@suse.com
+
+- remove ppc64.stop_service.patch (already fixed by
+  ppc64.opal_errd.patch)
+
+-------------------------------------------------------------------
+Tue Mar 25 13:28:10 UTC 2014 - jloeser@suse.com
+
+- version update to 2.6.4 (BNC#869845)
+  new opal error daemon added
+  No upstream changelog provided 
+- add opal_errd.service file
+- add ppc64-diag.opal_errd.patch: fix opal_errd init script
+- fix rtas_errd init script: $pid to correct pid file
+  (init scripts might be obsolete due to systemd)
+
+-------------------------------------------------------------------
+Mon Mar 10 12:41:50 UTC 2014 - jloeser@suse.com
+
+- version update to 2.6.3 (BNC#867346, FATE#315459)
+  No upstream changelog provided
+
+-------------------------------------------------------------------
+Fri Jan 17 10:47:35 UTC 2014 - dvlaeev@suse.com
+
+- drop ppc64-diag.unistd.patch 
+
+-------------------------------------------------------------------
+Fri Jan 10 17:44:52 UTC 2014 - jloeser@suse.com
+
+- version update to 2.6.2 (FATE#315459) 
+  - Minor bug fix in diag_encl and encl_led
+
+- drop ppc64-diag.makefile.patch
+
+-------------------------------------------------------------------
+Tue Dec 10 19:27:30 UTC 2013 - dvaleev@suse.com
+
+- enable ppc64le 
+
+-------------------------------------------------------------------
+Sun Feb 24 16:46:41 UTC 2013 - dvaleev@suse.com
+
+- Update to 2.6.1:
+  * Add Handler to handle PRRN RTAS notification
+  * Drop upstreamed ppc64-diag.unistd.patch
+  * Update package desription 
+
+-------------------------------------------------------------------
+Wed Dec 19 11:54:00 UTC 2012 - dvaleev@suse.com
+
+- update to 2.6.0:
+  * Added Light Path Diagnostics code. (moved from powerpc-utils)
+  * Introduced new options to diag_encl command (Jim).
+  * Added bluehawk enclosure diagnostics support (Jim).
+  * Introduced new command "encl_led" to modify identify/fault 
+     indicators for SCSI enclosures (Jim).
+
+- update ppc64-diag.rtas_errd.patch to not have references to 
+  /var/lock/subsys
+
+- add ncurses-devel and libvpd2-devel to BuildRequires 
+
+-------------------------------------------------------------------
+Thu Dec  6 17:30:26 UTC 2012 - dvaleev@suse.com
+
+- update to 2.5.0
+  No upstream changelog provided 
+- add systemd service for rtas_errd
+
+-------------------------------------------------------------------
+Thu Jun 14 10:10:28 UTC 2012 - cfarrell@suse.com
+
+- license update: EPL-1.0
+  SPDX format (http://www.spdx.org/licenses)
+
+-------------------------------------------------------------------
+Tue Apr 24 12:13:09 UTC 2012 - dvaleev@suse.com
+
+- Change upstream Url
+- fix build with gcc 4.7
+- update to 2.4.3
+  - Added message catalogs for the ipr, ixgb, lpfc, and qla2xxx 
+    drivers
+  - Removed obsolete ppc64_diag_servagent script
+
+-------------------------------------------------------------------
+Wed Nov  2 21:11:06 UTC 2011 - dvaleev@suse.com
+
+- update to 2.4.2 
+  - Minor modifications to GPFS catalog files 
+    and syslog_to_svclog.cpp
+  - Added gpfs files to the catalog, updated ppc64-diag-setup 
+    notification commands
+  - Changed Makefiles and rules.mk to build for the default 
+    architecture rather than -m32
+  - Added ELA code to the package, made changes to the rules.mk 
+    and minor changes to the spec file
+  - Bug fix adding in support for -e and -l, so that root users can
+    be notified of serviceable events. Addresses bug #26192
+  - Added SIGCHLD handler to clean up servicelog notification 
+    scripts
+  - Removed all absolute path references, specifically 
+    to /sbin/lsvpd and lsvpd
+
+-------------------------------------------------------------------
+Fri Jan 16 14:03:19 CET 2009 - olh@suse.de
+
+- fix Supplements string, it cant contain a comma, use * instead
+  (bnc#456695)
+
+-------------------------------------------------------------------
+Mon Dec  8 14:42:16 CET 2008 - olh@suse.de
+
+- do not autoinstall on Cell blades
+- add prereq aaa_base to runlevel script in post install
+- do not abort on errors
+
+-------------------------------------------------------------------
+Fri Dec  5 09:49:03 CET 2008 - olh@suse.de
+
+- update Supplements to match only pSeries and Cell blades
+
+-------------------------------------------------------------------
+Fri Dec  5 08:53:30 CET 2008 - olh@suse.de
+
+- add PreReq libservicelog to get servicelog.db (bnc#417532,bnc#449382)
+
+-------------------------------------------------------------------
+Mon Oct 27 09:05:50 CET 2008 - olh@suse.de
+
+- use supplements instead of Enhances
+
+-------------------------------------------------------------------
+Mon Oct 27 09:03:44 CET 2008 - olh@suse.de
+
+- register with servicelog during first install or first boot (bnc#417532)
+
+-------------------------------------------------------------------
+Fri Sep 26 13:22:29 CEST 2008 - olh@suse.de
+
+- add tage Enhances: kernel-ppc64
+- make sure package gets selected/installed on a 64bit system
+
+-------------------------------------------------------------------
+Wed Sep 10 13:51:49 CEST 2008 - olh@suse.de
+
+- new ppc64-diag 2.3.1 package (bnc#417532)
+

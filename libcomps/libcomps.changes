@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Sun Mar 31 14:53:26 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 0.1.11
+  + Fix missing braces
+  + Fix UAF in comps_objmrtree_unite function
+- Drop merged patches
+  * 0001-Fix-Missing-braces.patch
+  * 0002-Fix-UAF-in-comps_objmrtree_unite-function.patch
+  * libcomps-0.1.7-Add-zlib-as-an-explicit-dependency.patch
+
+-------------------------------------------------------------------
+Thu Feb  7 15:45:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update RPM groups
+
+-------------------------------------------------------------------
+Sun Feb  3 19:07:56 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 0.1.9
+  + Fix memory leaks
+  + Remove unused code
+- Backport fix for logic error
+  * Patch: 0001-Fix-Missing-braces.patch
+- Backport fix for CVE-2019-3817 (boo#1122841)
+  * Patch: 0002-Fix-UAF-in-comps_objmrtree_unite-function.patch
+- Drop Python 2 subpackage
+- Adjust changes entries to use full author identities
+
+-------------------------------------------------------------------
+Sun Sep 17 19:12:56 UTC 2017 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop environment.pickle from doc to make build reproducible
+
+-------------------------------------------------------------------
+Sun Aug 13 19:12:57 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 0.1.8
+
+-------------------------------------------------------------------
+Mon Feb  1 06:43:39 UTC 2016 - Neal Gompa <ngompa13@gmail.com>
+
+- Initial packaging of libcomps based on Mageia packaging
+

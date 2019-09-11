@@ -1,0 +1,893 @@
+-------------------------------------------------------------------
+Fri Apr 19 10:32:11 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add gcc9-fix-warnings.patch (bsc#1121268).
+
+-------------------------------------------------------------------
+Mon Apr 15 09:24:07 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-opensuse-signed.efi, the openSUSE shim-15+git47 binary
+ (bsc#1113225)
+
+-------------------------------------------------------------------
+Fri Apr 12 08:50:49 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Disable AArch64 build (FATE#325971)
+  + AArch64 machines don't use UEFI CA, at least for now.
+
+-------------------------------------------------------------------
+Thu Apr 11 15:52:47 UTC 2019 - jsegitz@suse.com
+
+- Updated shim signature: signature-sles.x86_64.asc (bsc#1120026)
+
+-------------------------------------------------------------------
+Thu Feb 14 17:03:00 UTC 2019 - rw@suse.com
+
+- Fix conditions for '/usr/share/efi'-move  (FATE#326960)
+
+-------------------------------------------------------------------
+Mon Jan 28 03:18:53 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Amend shim.spec to remove $RPM_BUILD_ROOT
+
+-------------------------------------------------------------------
+Thu Jan 17 17:12:14 UTC 2019 - rw@suse.com
+
+- Move 'efi'-executables to '/usr/share/efi'  (FATE#326960)
+  (preparing the move to 'noarch' for this package)
+
+-------------------------------------------------------------------
+Mon Jan 14 09:48:59 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update shim-install to handle the partitioned MD devices
+  (bsc#1119762, bsc#1119763) 
+
+-------------------------------------------------------------------
+Thu Dec 20 04:13:00 UTC 2018 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 15+git47 (bsc#1120026, FATE#325971)
+  + git commit: b3e4d1f7555aabbf5d54de5ea7cd7e839e7bd83d
+- Retire the old openSUSE 4096 bit certificate
+  + Those programs are already out of maintenance. 
+- Add shim-always-mirror-mok-variables.patch to mirror MOK
+  variables correctly
+- Add shim-correct-license-in-headers.patch to correct the license
+  declaration
+- Refresh patches:
+  + shim-arch-independent-names.patch
+  + shim-change-debug-file-path.patch
+  + shim-bsc1092000-fallback-menu.patch
+  + shim-opensuse-cert-prompt.patch
+- Drop upstreamed patches:
+  + shim-bsc1088585-handle-mok-allocations-better.patch
+  + shim-httpboot-amend-device-path.patch
+  + shim-httpboot-include-console.h.patch
+  + shim-only-os-name.patch
+  + shim-remove-cryptpem.patch
+
+-------------------------------------------------------------------
+Wed Dec  5 10:28:00 UTC 2018 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update shim-install to specify the target for grub2-install and
+  change the boot efi file name according to the architecture
+  (bsc#1118363, FATE#325971)
+
+-------------------------------------------------------------------
+Tue Aug 21 07:36:36 UTC 2018 - glin@suse.com
+
+- Enable AArch64 build (FATE#325971)
+  + Also add the aarch64 signature files and rename the x86_64
+    signature files
+
+-------------------------------------------------------------------
+Tue May 29 06:41:59 UTC 2018 - glin@suse.com
+
+- Add shim-bsc1092000-fallback-menu.patch to show a menu before
+  system reset ((bsc#1092000))
+
+-------------------------------------------------------------------
+Tue Apr 10 03:45:39 UTC 2018 - glin@suse.com
+
+- Add shim-bsc1088585-handle-mok-allocations-better.patch to avoid
+  double-freeing after enrolling a key from the disk (bsc#1088585)
+  + Also refresh shim-opensuse-cert-prompt.patch due to the change
+    in MokManager.c
+
+-------------------------------------------------------------------
+Tue Apr  3 08:37:55 UTC 2018 - glin@suse.com
+
+- Install the certificates with a shim suffix to avoid conflicting
+  with other packages (bsc#1087847)
+
+-------------------------------------------------------------------
+Fri Mar 23 04:47:35 UTC 2018 - glin@suse.com
+
+- Add the missing leading backlash to the DEFAULT_LOADER
+  (bsc#1086589)
+
+-------------------------------------------------------------------
+Fri Jan  5 08:41:42 UTC 2018 - glin@suse.com
+
+- Add shim-httpboot-amend-device-path.patch to amend the device
+  path matching rule for httpboot (bsc#1065370)
+
+-------------------------------------------------------------------
+Thu Jan  4 08:17:44 UTC 2018 - glin@suse.com
+
+- Update to 14 (bsc#1054712)
+- Adjust make commands in spec
+- Drop upstreamed fixes
+  + shim-add-fallback-verbose-print.patch
+  + shim-back-to-openssl-1.0.2e.patch
+  + shim-fallback-workaround-masked-ami-variables.patch
+  + shim-fix-fallback-double-free.patch
+  + shim-fix-httpboot-crash.patch
+  + shim-fix-openssl-flags.patch
+  + shim-more-tpm-measurement.patch
+- Add shim-httpboot-include-console.h.patch to include console.h
+  in httpboot.c to avoid build failure
+- Add shim-remove-cryptpem.patch to replace functions in CryptPem.c
+  with the null function
+- Update SUSE/openSUSE specific patches
+  + shim-only-os-name.patch
+  + shim-arch-independent-names.patch
+  + shim-change-debug-file-path.patch
+  + shim-opensuse-cert-prompt.patch
+
+-------------------------------------------------------------------
+Fri Dec 29 18:41:12 UTC 2017 - ngompa13@gmail.com
+
+- Fix debuginfo + debugsource subpackage generation for RPM 4.14
+- Set the RPM groups correctly for debug{info,source} subpackages
+- Drop deprecated and out of date Authors information in description
+
+-------------------------------------------------------------------
+Wed Sep 13 04:13:21 UTC 2017 - glin@suse.com
+
+- Add shim-back-to-openssl-1.0.2e.patch to avoid rejecting some
+  legit certificates (bsc#1054712)
+- Add the stderr mask back while compiling MokManager.efi since the
+  warnings in Cryptlib is back after reverting the openssl commits.
+
+-------------------------------------------------------------------
+Tue Aug 29 08:44:25 UTC 2017 - glin@suse.com
+
+- Add shim-add-fallback-verbose-print.patch to print the debug
+  messages in fallback.efi dynamically
+- Refresh shim-fallback-workaround-masked-ami-variables.patch
+- Add shim-more-tpm-measurement.patch to measure more components
+  and support TPM better
+
+-------------------------------------------------------------------
+Wed Aug 23 10:28:44 UTC 2017 - glin@suse.com
+
+- Add upstream fixes
+  + shim-fix-httpboot-crash.patch
+  + shim-fix-openssl-flags.patch
+  + shim-fix-fallback-double-free.patch
+  + shim-fallback-workaround-masked-ami-variables.patch
+- Remove the stderr mask while compiling MokManager.efi since the
+  warnings in Cryptlib were fixed.
+
+-------------------------------------------------------------------
+Tue Aug 22 04:51:08 UTC 2017 - glin@suse.com
+
+- Add shim-arch-independent-names.patch to use the Arch-independent
+  names. (bsc#1054712)
+- Refresh shim-change-debug-file-path.patch
+- Disable shim-opensuse-cert-prompt.patch automatically in SLE
+- Diable AArch64 until we have a real user and aarch64 signature
+
+-------------------------------------------------------------------
+Fri Jul 14 16:40:52 UTC 2017 - bwiedemann@suse.com
+
+- Make build reproducible by avoiding race between find and cp
+
+-------------------------------------------------------------------
+Thu Jun 22 03:26:00 UTC 2017 - glin@suse.com
+
+- Update to 12
+- Rename the result EFI images due to the upstream name change
+  + shimx64 -> shim
+  + mmx64 -> MokManager
+  + fbx64 -> fallback
+- Refresh patches:
+  + shim-only-os-name.patch
+  + shim-change-debug-file-path.patch
+  + shim-opensuse-cert-prompt.patch
+- Drop upstreamed patches:
+  + shim-httpboot-support.patch
+  + shim-bsc973496-mokmanager-no-append-write.patch
+  + shim-bsc991885-fix-sig-length.patch
+  + shim-update-openssl-1.0.2g.patch
+  + shim-update-openssl-1.0.2h.patch
+
+-------------------------------------------------------------------
+Tue May 23 03:44:48 UTC 2017 - glin@suse.com
+
+- Add the build flag to enable HTTPBoot
+
+-------------------------------------------------------------------
+Wed Mar 22 10:54:41 UTC 2017 - mchang@suse.com
+
+- shim-install: add option --suse-enable-tpm (fate#315831)
+
+-------------------------------------------------------------------
+Fri Jan 13 09:21:49 UTC 2017 - mchang@suse.com
+
+- Support %posttrans with marcos provided by update-bootloader-rpm-macros
+  package (bsc#997317)
+
+-------------------------------------------------------------------
+Fri Nov 18 09:23:01 UTC 2016 - glin@suse.com
+
+- Add SIGNATURE_UPDATE.txt to state the steps to update
+  signature-*.asc
+- Update the comment of strip_signature.sh
+
+-------------------------------------------------------------------
+Wed Sep 21 09:55:40 UTC 2016 - mchang@suse.com
+
+- shim-install :
+  * add option --no-nvram (bsc#999818)
+  * improve removable media and fallback mode handling
+
+-------------------------------------------------------------------
+Fri Aug 19 06:46:59 UTC 2016 - mchang@suse.com
+
+- shim-install : fix regression of password prompt (bsc#993764) 
+
+-------------------------------------------------------------------
+Fri Aug  5 02:53:54 UTC 2016 - glin@suse.com
+
+- Add shim-bsc991885-fix-sig-length.patch to fix the signature
+  length passed to Authenticode (bsc#991885)
+
+-------------------------------------------------------------------
+Wed Aug  3 09:10:25 UTC 2016 - glin@suse.com
+
+- Update shim-bsc973496-mokmanager-no-append-write.patch to try
+  append write first 
+
+-------------------------------------------------------------------
+Tue Aug  2 02:59:46 UTC 2016 - glin@suse.com
+
+- Add shim-update-openssl-1.0.2h.patch to update openssl to 1.0.2h
+- Bump the requirement of gnu-efi due to the HTTPBoot support
+
+-------------------------------------------------------------------
+Mon Aug  1 09:01:59 UTC 2016 - glin@suse.com
+
+- Add shim-httpboot-support.patch to support HTTPBoot
+- Add shim-update-openssl-1.0.2g.patch to update openssl to 1.0.2g
+  and Cryptlib to 5e2318dd37a51948aaf845c7d920b11f47cdcfe6
+- Drop patches since they are merged into
+  shim-update-openssl-1.0.2g.patch
+  + shim-update-openssl-1.0.2d.patch
+  + shim-gcc5.patch
+  + shim-bsc950569-fix-cryptlib-va-functions.patch
+  + shim-fix-aarch64.patch
+- Refresh shim-change-debug-file-path.patch
+- Add shim-bsc973496-mokmanager-no-append-write.patch to work
+  around the firmware that doesn't support APPEND_WRITE (bsc973496)
+- shim-install : remove '\n' from the help message (bsc#991188)
+- shim-install : print a message if there is no valid EFI partition
+  (bsc#991187)
+
+-------------------------------------------------------------------
+Mon May  9 11:20:56 UTC 2016 - rw@suse.com
+
+- shim-install : support simple MD RAID1 target devices (FATE#314829)
+
+-------------------------------------------------------------------
+Wed May  4 10:40:52 UTC 2016 - agraf@suse.com
+
+- Add shim-fix-aarch64.patch to fix compilation on AArch64 (bsc#978438)
+
+-------------------------------------------------------------------
+Wed Mar  9 07:15:52 UTC 2016 - mchang@suse.com
+
+- shim-install : fix typing ESC can escape to parent config which is
+  in command mode and cannot return back (bsc#966701) 
+- shim-install : fix no which command for JeOS (bsc#968264)
+
+-------------------------------------------------------------------
+Thu Dec  3 10:26:14 UTC 2015 - jsegitz@novell.com
+
+- acquired updated signature from Microsoft
+
+-------------------------------------------------------------------
+Mon Nov  9 08:22:43 UTC 2015 - glin@suse.com
+
+- Add shim-bsc950569-fix-cryptlib-va-functions.patch to fix the
+  definition of va functions to avoid the potential crash
+  (bsc#950569)
+- Update shim-opensuse-cert-prompt.patch to avoid setting NULL to
+  MokListRT (bsc#950801)
+- Drop shim-fix-mokmanager-sections.patch as we are using the
+  newer binutils now
+- Refresh shim-change-debug-file-path.patch
+
+-------------------------------------------------------------------
+Thu Oct  8 06:49:43 UTC 2015 - jsegitz@novell.com
+
+- acquired updated signature from Microsoft
+
+-------------------------------------------------------------------
+Tue Sep 15 05:03:10 UTC 2015 - mchang@suse.com
+
+- shim-install : set default GRUB_DISTRIBUTOR from /etc/os-release
+  if it is empty or not set by user (bsc#942519)
+
+-------------------------------------------------------------------
+Thu Jul 16 06:49:01 UTC 2015 - glin@suse.com
+
+- Add shim-update-openssl-1.0.2d.patch to update openssl to 1.0.2d
+- Refresh shim-gcc5.patch and add it back since we really need it
+- Add shim-change-debug-file-path.patch to change the debug file
+  path in shim.efi
+  + also add the debuginfo and debugsource subpackages
+- Drop shim-fix-gnu-efi-30w.patch which is not necessary anymore
+
+-------------------------------------------------------------------
+Mon Jul  6 09:06:02 UTC 2015 - glin@suse.com
+
+- Update to 0.9
+- Refresh patches
+  + shim-fix-gnu-efi-30w.patch
+  + shim-fix-mokmanager-sections.patch
+  + shim-opensuse-cert-prompt.patch
+- Drop upstreamed patches
+  + shim-bsc920515-fix-fallback-buffer-length.patch
+  + shim-mokx-support.patch
+  + shim-update-cryptlib.patch
+- Drop shim-bsc919675-uninstall-shim-protocols.patch since
+  upstream fixed the bug in another way.
+- Drop shim-gcc5.patch which was fixed in another way
+
+-------------------------------------------------------------------
+Wed Apr  8 07:10:39 UTC 2015 - glin@suse.com
+
+- Fix tags in the spec file
+
+-------------------------------------------------------------------
+Tue Apr  7 07:42:06 UTC 2015 - glin@suse.com
+
+- Add shim-update-cryptlib.patch to update Cryptlib to r16559 and
+  openssl to 0.9.8zf
+- Add shim-bsc919675-uninstall-shim-protocols.patch to uninstall
+  the shim protocols at Exit (bsc#919675)
+- Add shim-bsc920515-fix-fallback-buffer-length.patch to adjust
+  the buffer size for the boot options (bsc#920515) 
+- Refresh shim-opensuse-cert-prompt.patch
+
+-------------------------------------------------------------------
+Thu Apr  2 16:31:28 UTC 2015 - crrodriguez@opensuse.org
+
+- shim-gcc5.patch: shim needs -std=gnu89 to build with GCC5 
+
+-------------------------------------------------------------------
+Tue Feb 17 06:02:34 UTC 2015 - mchang@suse.com
+
+- shim-install : fix cryptodisk installation (boo#917427)
+
+-------------------------------------------------------------------
+Tue Nov 11 04:26:00 UTC 2014 - glin@suse.com
+
+- Add shim-fix-mokmanager-sections.patch to fix the objcopy
+  parameters for the EFI files
+
+-------------------------------------------------------------------
+Tue Oct 28 04:00:51 UTC 2014 - glin@suse.com
+
+- Update to 0.8
+- Add shim-fix-gnu-efi-30w.patch to adapt the change in
+  gnu-efi-3.0w
+- Merge shim-signed-unsigned-compares.patch,
+  shim-mokmanager-support-sha-family.patch and
+  shim-bnc863205-mokmanager-fix-hash-delete.patch into
+  shim-mokx-support.patch
+- Refresh shim-opensuse-cert-prompt.patch
+- Drop upstreamed patches: shim-update-openssl-0.9.8zb.patch,
+  bug-889332_shim-overflow.patch, and bug-889332_shim-mok-oob.patch
+- Enable aarch64
+
+-------------------------------------------------------------------
+Mon Oct 13 13:09:14 UTC 2014 - jsegitz@novell.com
+
+- Fixed buffer overflow and OOB access in shim trusted code path
+  (bnc#889332, CVE-2014-3675, CVE-2014-3676, CVE-2014-3677)
+  * added bug-889332_shim-mok-oob.patch, bug-889332_shim-overflow.patch
+- Added new certificate by Microsoft
+
+-------------------------------------------------------------------
+Wed Sep  3 12:32:25 UTC 2014 - lnussel@suse.de
+
+- re-introduce build failure if shim_enforce_ms_signature is defined. That way
+  a project like openSUSE:Factory can decide whether or not shim needs a valid
+  MS signature.
+
+-------------------------------------------------------------------
+Tue Aug 19 04:38:36 UTC 2014 - glin@suse.com
+
+- Add shim-update-openssl-0.9.8zb.patch to update openssl to
+  0.9.8zb
+
+-------------------------------------------------------------------
+Tue Aug 12 14:19:36 UTC 2014 - jsegitz@suse.com
+
+- updated shim to new version (OpenSSL 0.9.8za) and requested a new
+  certificate from Microsoft. Removed
+  * shim-allow-fallback-use-system-loadimage.patch
+  * shim-bnc872503-check-key-encoding.patch
+  * shim-bnc877003-fetch-from-the-same-device.patch
+  * shim-correct-user_insecure-usage.patch
+  * shim-fallback-avoid-duplicate-bootorder.patch
+  * shim-fallback-improve-entries-creation.patch
+  * shim-fix-dhcpv4-path-generation.patch
+  * shim-fix-uninitialized-variable.patch
+  * shim-fix-verify-mok.patch
+  * shim-get-variable-check.patch
+  * shim-improve-error-messages.patch
+  * shim-mokmanager-delete-bs-var-right.patch
+  * shim-mokmanager-handle-keystroke-error.patch
+  * shim-remove-unused-variables.patch
+  since they're included in upstream and rebased the remaining onces.
+  Added shim-signed-unsigned-compares.patch to fix some compiler
+  warnings
+
+-------------------------------------------------------------------
+Tue Aug 12 09:18:42 UTC 2014 - glin@suse.com
+
+- Keep shim-devel.efi for the devel project
+
+-------------------------------------------------------------------
+Fri Aug  8 11:18:36 UTC 2014 - lnussel@suse.de
+
+- don't fail the build if the UEFI signing service signature can't
+  be attached anymore. This way shim can still pass through staging
+  projects. We will verify the correct signature for release builds
+  using openQA instead.
+
+-------------------------------------------------------------------
+Mon Aug  4 07:53:22 UTC 2014 - mchang@suse.com
+
+- shim-install: fix GRUB shows broken letters at boot by calling
+  grub2-install to initialize /boot/grub2 directory with files 
+  needed by grub.cfg (bnc#889765) 
+
+-------------------------------------------------------------------
+Wed May 28 04:13:33 UTC 2014 - glin@suse.com
+
+- Add shim-remove-unused-variables.patch to remove the unused
+  variables
+- Add shim-bnc872503-check-key-encoding.patch to check the encoding
+  of the keys (bnc#872503)
+- Add shim-bnc877003-fetch-from-the-same-device.patch to fetch the
+  netboot image from the same device (bnc#877003)
+- Refresh shim-opensuse-cert-prompt.patch
+
+-------------------------------------------------------------------
+Wed May 14 09:39:02 UTC 2014 - glin@suse.com
+
+- Use --reinit instead of --refresh in %post to update the files
+  in /boot
+
+-------------------------------------------------------------------
+Tue Apr 29 07:38:11 UTC 2014 - mchang@suse.com
+
+- shim-install: fix boot partition and rollback support kluge
+  (bnc#875385) 
+
+-------------------------------------------------------------------
+Thu Apr 10 08:20:20 UTC 2014 - glin@suse.com
+
+- Replace shim-mokmanager-support-sha1.patch with
+  shim-mokmanager-support-sha-family.patch to support the SHA
+  family
+
+-------------------------------------------------------------------
+Mon Apr  7 09:32:21 UTC 2014 - glin@suse.com
+
+- Add shim-mokmanager-support-sha1.patch to support SHA1 hashes in
+  MOK
+
+-------------------------------------------------------------------
+Mon Mar 31 11:57:13 UTC 2014 - mchang@suse.com
+
+- snapper rollback support (fate#317062)
+  - refresh shim-install
+
+-------------------------------------------------------------------
+Thu Mar 13 02:32:15 UTC 2014 - glin@suse.com
+
+- Insert the right signature (bnc#867974)
+
+-------------------------------------------------------------------
+Mon Mar 10 07:56:44 UTC 2014 - glin@suse.com
+
+- Add shim-fix-uninitialized-variable.patch to fix the use of
+  uninitialzed variables in lib 
+
+-------------------------------------------------------------------
+Fri Mar  7 09:09:12 UTC 2014 - glin@suse.com
+
+- Add shim-mokmanager-delete-bs-var-right.patch to delete the BS+NV
+  variables the right way
+- Update shim-opensuse-cert-prompt.patch to delete openSUSE_Verify
+  correctly
+
+-------------------------------------------------------------------
+Thu Mar  6 07:37:57 UTC 2014 - glin@suse.com
+
+- Add shim-fallback-avoid-duplicate-bootorder.patch to fix the
+  duplicate entries in BootOrder
+- Add shim-allow-fallback-use-system-loadimage.patch to handle the
+  shim protocol properly to keep only one protocol entity
+- Refresh shim-opensuse-cert-prompt.patch
+
+-------------------------------------------------------------------
+Thu Mar  6 03:53:49 UTC 2014 - mchang@suse.com
+
+- shim-install: fix the $prefix to use grub2-mkrelpath for paths
+  on btrfs subvolume (bnc#866690).
+
+-------------------------------------------------------------------
+Tue Mar  4 04:19:05 UTC 2014 - glin@suse.com
+
+- FATE#315002: Update shim-install to install shim.efi as the EFI
+  default bootloader when none exists in \EFI\boot.
+
+-------------------------------------------------------------------
+Thu Feb 27 09:46:49 UTC 2014 - fcrozat@suse.com
+
+- Update signature-sles.asc: shim signed by UEFI signing service,
+  based on code from "Thu Feb 20 11:57:01 UTC 2014"
+
+-------------------------------------------------------------------
+Fri Feb 21 08:45:46 UTC 2014 - glin@suse.com
+
+- Add shim-opensuse-cert-prompt.patch to show the prompt to ask
+  whether the user trusts the openSUSE certificate or not
+
+-------------------------------------------------------------------
+Thu Feb 20 11:57:01 UTC 2014 - lnussel@suse.de
+
+- allow package to carry multiple signatures
+- check correct certificate is embedded
+
+-------------------------------------------------------------------
+Thu Feb 20 10:06:47 UTC 2014 - lnussel@suse.de
+
+- always clean up generated files that embed certificates
+  (shim_cert.h shim.cer shim.crt) to make sure next build loop
+  rebuilds them properly
+
+-------------------------------------------------------------------
+Mon Feb 17 09:58:56 UTC 2014 - glin@suse.com
+
+- Add shim-bnc863205-mokmanager-fix-hash-delete.patch to fix the
+  hash deletion operation to avoid ruining the whole list
+  (bnc#863205)
+
+-------------------------------------------------------------------
+Tue Feb 11 06:30:02 UTC 2014 - glin@suse.com
+
+- Update shim-mokx-support.patch to support the resetting of MOK
+  blacklist
+- Add shim-get-variable-check.patch to fix the variable checking
+  in get_variable_attr
+- Add shim-fallback-improve-entries-creation.patch to improve the
+  boot entry pathes and avoid generating the boot entries that
+  are already there
+- Update SUSE certificate
+- Update attach_signature.sh, show_hash.sh, strip_signature.sh,
+  extract_signature.sh and show_signatures.sh to remove the
+  creation of the temporary nss database
+- Add shim-only-os-name.patch: remove the kernel version of the
+  build server
+- Match the the prefix of the project name properly by escaping the 
+  percent sign.
+
+-------------------------------------------------------------------
+Wed Jan 22 13:45:44 UTC 2014 - lnussel@suse.de
+
+- enable signature assertion also in SUSE: hierarchy
+
+-------------------------------------------------------------------
+Fri Dec  6 06:44:43 UTC 2013 - glin@suse.com
+
+- Add shim-mokmanager-handle-keystroke-error.patch to handle the
+  error status from ReadKeyStroke to avoid unexpected keys
+
+-------------------------------------------------------------------
+Thu Dec  5 02:05:13 UTC 2013 - glin@suse.com
+
+- Update to 0.7
+- Add upstream patches:
+  + shim-fix-verify-mok.patch
+  + shim-improve-error-messages.patch
+  + shim-correct-user_insecure-usage.patch
+  + shim-fix-dhcpv4-path-generation.patch
+- Add shim-mokx-support.patch to support the MOK blacklist
+  (Fate#316531)
+- Drop upstreamed patches
+  + shim-fix-pointer-casting.patch
+  + shim-merge-lf-loader-code.patch
+  + shim-fix-simple-file-selector.patch
+  + shim-mokmanager-support-crypt-hash-method.patch
+  + shim-bnc804631-fix-broken-bootpath.patch
+  + shim-bnc798043-no-doulbe-separators.patch
+  + shim-bnc807760-change-pxe-2nd-loader-name.patch
+  + shim-bnc808106-correct-certcount.patch
+  + shim-mokmanager-ui-revamp.patch
+  + shim-netboot-fixes.patch
+  + shim-mokmanager-disable-gfx-console.patch
+- Drop shim-suse-build.patch: it's not necessary anymore
+- Drop shim-bnc841426-silence-shim-protocols.patch: shim is not
+  verbose by default
+
+-------------------------------------------------------------------
+Thu Oct 31 09:11:18 UTC 2013 - fcrozat@suse.com
+
+- Update microsoft.asc: shim signed by UEFI signing service, based
+  on code from "Tue Oct  1 04:29:29 UTC 2013".
+
+-------------------------------------------------------------------
+Tue Oct  1 04:29:29 UTC 2013 - glin@suse.com
+
+- Add shim-netboot-fixes.patch to include upstream netboot fixes
+- Add shim-mokmanager-disable-gfx-console.patch to disable the
+  graphics console to avoid system hang on some machines
+- Add shim-bnc841426-silence-shim-protocols.patch to silence the
+  shim protocols (bnc#841426)
+
+-------------------------------------------------------------------
+Wed Sep 25 07:17:54 UTC 2013 - glin@suse.com
+
+- Create boot.csv in ESP for fallback.efi to restore the boot entry
+
+-------------------------------------------------------------------
+Tue Sep 17 10:53:50 CEST 2013 - fcrozat@suse.com
+
+- Update microsoft.asc: shim signed by UEFI signing service, based
+  on code from "Fri Sep  6 13:57:36 UTC 2013".
+- Improve extract_signature.sh to work on current path.
+
+-------------------------------------------------------------------
+Fri Sep  6 13:57:36 UTC 2013 - lnussel@suse.de
+
+- set timestamp of PE file to time of the binary the signature was
+  made for.
+- make sure cert.o get's rebuilt for each target
+
+-------------------------------------------------------------------
+Fri Sep  6 11:48:14 CEST 2013 - fcrozat@suse.com
+
+- Update microsoft.asc: shim signed by UEFI signing service, based
+  on code from "Wed Aug 28 15:54:38 UTC 2013"
+
+-------------------------------------------------------------------
+Wed Aug 28 15:54:38 UTC 2013 - lnussel@suse.de
+
+- always build a shim that embeds the distro's certificate (e.g.
+  shim-opensuse.efi). If the package is built in the devel project
+  additionally shim-devel.efi is created. That allows us to either
+  load grub2/kernel signed by the distro or signed by the devel
+  project, depending on use case. Also shim-$distro.efi from the
+  devel project can be used to request additional signatures.
+
+-------------------------------------------------------------------
+Wed Aug 28 07:16:51 UTC 2013 - lnussel@suse.de
+
+- also include old openSUSE 4096 bit certificate to be able to still
+  boot kernels signed with that key.
+- add show_signatures script
+
+-------------------------------------------------------------------
+Tue Aug 27 06:41:03 UTC 2013 - lnussel@suse.de
+
+- replace the 4096 bit openSUSE UEFI CA certificate with new a
+  standard compliant 2048 bit one.
+
+-------------------------------------------------------------------
+Tue Aug 20 11:48:25 UTC 2013 - lnussel@suse.de
+
+- fix shell syntax error
+
+-------------------------------------------------------------------
+Wed Aug  7 15:51:36 UTC 2013 - lnussel@suse.de
+
+- don't include binary in the sources. Instead package the raw
+  signature and attach it during build (bnc#813448).
+
+-------------------------------------------------------------------
+Tue Jul 30 07:36:28 UTC 2013 - glin@suse.com
+
+- Update shim-mokmanager-ui-revamp.patch to include fixes for
+  MokManager
+  + reboot the system after clearing MOK password
+  + fetch more info from X509 name
+  + check the suffix of the key file
+
+-------------------------------------------------------------------
+Tue Jul 23 03:55:05 UTC 2013 - glin@suse.com
+
+- Update to 0.4
+- Rebase patches
+  + shim-suse-build.patch
+  + shim-mokmanager-support-crypt-hash-method.patch
+  + shim-bnc804631-fix-broken-bootpath.patch
+  + shim-bnc798043-no-doulbe-separators.patch
+  + shim-bnc807760-change-pxe-2nd-loader-name.patch
+  + shim-bnc808106-correct-certcount.patch 
+  + shim-mokmanager-ui-revamp.patch
+- Add patches
+  + shim-merge-lf-loader-code.patch: merge the Linux Foundation
+    loader UI code
+  + shim-fix-pointer-casting.patch: fix a casting issue and the
+    size of an empty vendor cert
+  + shim-fix-simple-file-selector.patch: fix the buffer allocation
+    in the simple file selector
+- Remove upstreamed patches
+  + shim-support-mok-delete.patch
+  + shim-reboot-after-changes.patch
+  + shim-clear-queued-key.patch
+  + shim-local-key-sign-mokmanager.patch
+  + shim-get-2nd-stage-loader.patch
+  + shim-fix-loadoptions.patch
+- Remove unused patch: shim-mokmanager-new-pw-hash.patch and
+  shim-keep-unsigned-mokmanager.patch
+- Install the vendor certificate to /etc/uefi/certs
+
+-------------------------------------------------------------------
+Wed May  8 06:40:12 UTC 2013 - glin@suse.com
+
+- Add shim-mokmanager-ui-revamp.patch to update the MokManager UI
+
+-------------------------------------------------------------------
+Wed Apr  3 03:54:22 UTC 2013 - glin@suse.com
+
+- Call update-bootloader in %post to update *.efi in \efi\opensuse
+  (bnc#813079) 
+
+-------------------------------------------------------------------
+Fri Mar  8 06:53:47 UTC 2013 - glin@suse.com
+
+- Add shim-bnc807760-change-pxe-2nd-loader-name.patch to change the
+  PXE 2nd stage loader name (bnc#807760)
+- Add shim-bnc808106-correct-certcount.patch to correct the
+  certificate count of the signature list (bnc#808106)
+
+-------------------------------------------------------------------
+Fri Mar  1 10:07:55 UTC 2013 - glin@suse.com
+
+- Add shim-bnc798043-no-doulbe-separators.patch to remove double
+  seperators from the bootpath (bnc#798043#c4)
+
+-------------------------------------------------------------------
+Thu Feb 28 08:57:48 UTC 2013 - lnussel@suse.de
+
+- sign shim also with openSUSE certificate
+
+-------------------------------------------------------------------
+Wed Feb 27 15:52:53 CET 2013 - mls@suse.de
+
+- identify project, export certificate as DER file
+- don't create an unused extra keypair
+
+-------------------------------------------------------------------
+Thu Feb 21 10:08:12 UTC 2013 - glin@suse.com
+
+- Add shim-bnc804631-fix-broken-bootpath.patch to fix the broken
+  bootpath generated in generate_path(). (bnc#804631)
+
+-------------------------------------------------------------------
+Mon Feb 11 12:15:25 UTC 2013 - fcrozat@suse.com
+
+- Update with shim signed by UEFI signing service, based on code
+  from "Thu Feb  7 06:56:19 UTC 2013".
+
+-------------------------------------------------------------------
+Thu Feb  7 13:54:06 UTC 2013 - lnussel@suse.de
+
+- prepare for having a signed shim from the UEFI signing service
+
+-------------------------------------------------------------------
+Thu Feb  7 06:56:19 UTC 2013 - glin@suse.com
+
+- Sign shim-opensuse.efi and MokManager.efi with the openSUSE cert
+- Add shim-keep-unsigned-mokmanager.patch to keep the unsigned
+  MokManager and sign it later.
+
+-------------------------------------------------------------------
+Wed Feb  6 06:35:45 UTC 2013 - mchang@suse.com
+
+- Add shim-install utility
+- Add Recommends to grub2-efi 
+
+-------------------------------------------------------------------
+Wed Jan 30 09:00:31 UTC 2013 - glin@suse.com
+
+- Add shim-mokmanager-support-crypt-hash-method.patch to support
+  password hash from /etc/shadow (FATE#314506)
+
+-------------------------------------------------------------------
+Tue Jan 29 03:20:48 UTC 2013 - glin@suse.com
+
+- Embed openSUSE-UEFI-CA-Certificate.crt in shim
+- Rename shim-unsigned.efi to shim-opensuse.efi.
+
+-------------------------------------------------------------------
+Fri Jan 18 10:06:13 UTC 2013 - glin@suse.com
+
+- Update shim-mokmanager-new-pw-hash.patch to extend the password
+  hash format
+- Rename shim.efi as shim-unsigned.efi
+
+-------------------------------------------------------------------
+Wed Jan 16 08:01:55 UTC 2013 - glin@suse.com
+
+- Merge patches for FATE#314506
+  + Add shim-support-mok-delete.patch to add support for deleting
+    specific keys
+  + Add shim-mokmanager-new-pw-hash.patch to support the new
+    password hash.
+- Drop shim-correct-mok-size.patch which is included in
+  shim-support-mok-delete.patch
+- Merge shim-remove-debug-code.patch and
+  shim-local-sign-mokmanager.patch into
+  shim-local-key-sign-mokmanager.patch
+- Install COPYRIGHT
+
+-------------------------------------------------------------------
+Tue Jan 15 03:17:53 UTC 2013 - glin@suse.com
+
+- Add shim-fix-loadoptions.patch to adopt the UEFI shell style
+  LoadOptions (bnc#798043)
+- Drop shim-check-pk-kek.patch since upstream rejected the patch
+  due to violation of SPEC.
+- Install EFI binaries to /usr/lib64/efi
+
+-------------------------------------------------------------------
+Wed Dec 26 07:05:02 UTC 2012 - glin@suse.com
+
+- Update shim-reboot-after-changes.patch to avoid rebooting the
+  system after enrolling keys/hashes from the file system
+- Add shim-correct-mok-size.patch to correct the size of MOK
+- Add shim-clear-queued-key.patch to clear the queued key and show
+  the menu properly
+
+-------------------------------------------------------------------
+Wed Dec 12 15:16:18 UTC 2012 - fcrozat@suse.com
+
+- Remove shim-rpmlintrc, it wasn't fixing the error, hide error
+  stdout to prevent post build check to get triggered by cast
+  warnings in openSSL code
+- Add shim-remove-debug-code.patch: remove debug code
+
+-------------------------------------------------------------------
+Wed Dec 12 04:01:52 UTC 2012 - glin@suse.com
+
+- Add shim-rpmlintrc to filter 64bit portability errors
+
+-------------------------------------------------------------------
+Tue Dec 11 07:36:32 UTC 2012 - glin@suse.com
+
+- Add shim-local-sign-mokmanager.patch to create a local certicate
+  to sign MokManager
+- Add shim-get-2nd-stage-loader.patch to get the second stage
+  loader path from the load options
+- Add shim-check-pk-kek.patch to verify EFI images with PK and KEK
+- Add shim-reboot-after-changes.patch to reboot the system after
+  enrolling or erasing keys
+- Install the EFI images to /usr/lib64/shim instead of the EFI
+  partition
+- Update the mail address of the author
+
+-------------------------------------------------------------------
+Fri Nov  2 08:19:37 UTC 2012 - glin@suse.com
+
+- Add new package shim 0.2 (FATE#314484)
+  + It's in fact git 2fd180a92 since there is no tag for 0.2
+

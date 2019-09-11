@@ -1,0 +1,19 @@
+Changes in the SUSE package
+===========================
+
+ - Emacs is the default editing mode, can still be overwritten to vi mode via
+   command line or configuration file
+ - added the Crash Whitepaper from
+   http://people.redhat.com/anderson/.crash_whitepaper/
+ - fix for LKCD header (SLES9 has another header format than SLES10) in IA64
+
+
+SIAL
+====
+
+To use the SIAL extension, install crash-sial and load it with "extend sial.so"
+in crash. If you want to have the sial extension automatically loaded at
+startup, add this command to your ~/.crashrc configuration file.
+
+Place custom scripts in /usr/share/sial/crash (system wide) or ~/.sial (per
+user).

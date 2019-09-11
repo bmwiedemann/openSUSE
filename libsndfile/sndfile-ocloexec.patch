@@ -1,0 +1,16 @@
+---
+ src/file_io.c |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- a/src/file_io.c
++++ b/src/file_io.c
+@@ -570,6 +570,9 @@ psf_open_fd (PSF_FILE * pfile)
+ 				return - SFE_BAD_OPEN_MODE ;
+ 				break ;
+ 		} ;
++#ifdef O_CLOEXEC
++        oflag |= O_CLOEXEC;
++#endif
+ 
+ 	if (mode == 0)
+ 		fd = open (pfile->path.c, oflag) ;

@@ -1,0 +1,308 @@
+-------------------------------------------------------------------
+Thu May 30 21:54:45 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Major changes in build
+  * Add patch (fix-meson-build.patch) to fix meson and start to use it for Tumbleweed 
+    (upstream is heading this way)
+  * Switch to ldc as d-compiler for Tumbleweed. ldc have better architectures support
+    than dmd and its easier just to support one.
+  * Start to use gtkd in repos for Tumbleweed so we don't need to staticly link it to tilix
+  * Make tilix build on Leap 42.3
+
+-------------------------------------------------------------------
+Tue May 28 20:12:26 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 1.9.3
+  * This issue fixes a problem with the session sidebar getting out of sync
+    after having deleted a session.
+
+-------------------------------------------------------------------
+Sun Mar 17 15:42:12 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 1.9.0 
+  * This is a very minor release that fixes the app menu for Gnome 3.32,
+    updates the icon and adds preferences to the gnome-shell menu item 
+	similar to Gnome Terminal.
+- Add comment in spec for for patch: gnome-ssh-agent.patch
+- Refresh patch: gnome-ssh-agent.patch
+
+-------------------------------------------------------------------
+Mon Jan 14 09:49:39 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Refresh patch due to previous updates:
+  * fix-ldc-link.patch
+
+-------------------------------------------------------------------
+Mon Jan  7 20:18:41 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 1.8.9
+  * A very small release to update localizations and address an issue
+    in GtkD where the version number was not updated correctly.
+
+-------------------------------------------------------------------
+Sat Jan  5 18:27:03 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 1.8.7
+  * Added ability to assign shortcuts to profiles
+  * Included app menu options in hamburger menu in preparation to conform to GNOME HIG changes
+  * Mitigated memory leak with sidebar
+  * Fixed minor color issues with Solarized schemes
+  * Fixed issue with decoding strings that didn't need it (thanks to Chris Billington)
+  * Fixed issue with blurry text when background image was set on scaled display
+  * Fixed issue with scaling badge when using font scaling
+  * Added ability to include statuses (readonly, silence and input-sync enabled) to terminal title
+  * Updated to use GTKD 3.84
+  * Updated app data thanks to Bilal Elmoussaoui
+  * Fixed issue with drag window remaining visible thanks to Jocelyn Turcotte
+  * Tilix icon updated to reflect new GNOME design thanks to Sergey Bugaev
+  * Fixed problem with unsafe paste dialog when command has excessive length thanks to Bilal Elmoussaoui
+- Ran spec-cleaner
+
+-------------------------------------------------------------------
+Fri Dec  7 16:47:47 UTC 2018 - Richard Brown <rbrown@suse.com>
+
+- Require libvted to solve "vte config is invalid" errors
+
+-------------------------------------------------------------------
+Thu Nov 22 12:51:14 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build with ldc where dmd is not supported
+- Add patch to fix build with ldc:
+  * fix-ldc-link.patch
+
+-------------------------------------------------------------------
+Wed Sep 26 19:49:16 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Revert to use dmd d-compiler for Tumbleweed to make it build again. 
+
+-------------------------------------------------------------------
+Tue Aug 28 21:01:37 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to 1.8.5
+  * This release is just to fix a bug that prevents the tilix preferences from 
+	working on GTK releases earlier then 3.22, no other changes have been made.
+
+-------------------------------------------------------------------
+Sun Aug 19 21:50:51 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 1.8.3
+  * Added the ability to customize the badge font and size
+  * Fixed an issue with loading URLs with a hash character
+  * Fixed an issue where tilix could get stuck in mazimized mode when a
+    background terminal closes behind the scenes
+  * Added an indicator on the tab to show when new output is detected, only works
+    with VTE alternate-screen patch
+  * Can now use Tab key when customizing shortcuts
+  * Re-worked notifications so each terminal has it's own notification rather then one
+    global one for tilix
+  * Updated to use GtkD 3.8.3
+  * Added experimental support for process monitoring where the currently running 
+    process can be used in the terminal title. Requires enabling a setting in Dconf 
+	prefs, may cause segfaults
+  * Various other bug fixes
+
+-------------------------------------------------------------------
+Sat Jul 28 12:55:51 UTC 2018 - matthias.eliasson@gmail.com
+
+- Start using ldc d-compiler with autotools for Tumbleweed now it is in the repo.
+- Start using gtkd dependency from repo instead of included gtkd archive for Tumbleweed.
+- Add licenses for x11 and icons included in tilix.
+
+-------------------------------------------------------------------
+Sat May 26 22:12:26 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 1.8.1
+  * Added support for toggling a margin line (https://gnunn1.github.io/tilix-web/manual/margin)
+  * Added new shortcut for auto-oriented splitting, thanks to @henvo
+  * When tabs are on the left or right they are now displayed vertically to fix space issues (gh#gnunn1/tilix#1395)
+  * Fixed a memory leak when closing sessions (gh#gnunn1/tilix#1409)
+  * Improved color matching logic for matching themes (gh#gnunn1/tilix#1400)
+- Drop patch: fix-i586-build.patch
+  * This is fixed upstream
+- Drop patch: fix-build-with-latest-dmd.patch
+  * This is fixed upstream
+
+-------------------------------------------------------------------
+Sun May 13 19:54:38 UTC 2018 - matthias.eliasson@gmail.com
+
+- Added patch: fix-i586-build.patch
+  * This to resolve build issues for i586 Tumbleweed.
+- Added patch: fix-build-with-latest-dmd.patch
+  * Some changes to dmd-2.080.0 made the builds fail. 
+    This patch correct it.
+
+-------------------------------------------------------------------
+Tue May  1 17:38:59 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 1.7.9
+  * Badges for all! As of VTE 0.52 a Tilix specific VTE patch for
+    badge support is no longer required
+  * Support for new VTE 0.52 features (gh#gnunn1/tilix#1233)
+  * New shortcuts to quickly cycle through previous command prompts.
+    Requires VTE be compiled with Tilix alternate screen patch 
+    (gh#gnunn1/tilix#1369)
+  * Profiles in preferences has been re-worked so dialog uses less 
+    vertical space
+  * New GtkD 3.8.2 used which fixes a segmentation fault when
+    casting objects from a null object
+  * Unsafe paste dialog uses a scrollwindow now when more then 6 
+    lines of text (gh#gnunn1/tilix#1386)
+  * A new token ${activeTerminalTitle} has been added to provide 
+    more flexibility for session titles
+  * Triggers and custom hyperlinks now support using the tilix 
+    tokens (gh#gnunn1/tilix#1316)
+  * Custom hyperlinks are loaded before the default hyperlinks so 
+    users can override default behavior
+
+-------------------------------------------------------------------
+Sat Apr 14 15:49:14 UTC 2018 - matthias.eliasson@gmail.com
+
+- Add patch: dynamic-link.patch: link against shared library
+- Use %license macro
+
+-------------------------------------------------------------------
+Wed Mar 14 15:10:49 UTC 2018 - michele.bologna@suse.com
+
+- Update to 1.7.7
+- Added patch: gnome-ssh-agent.patch
+  * Solves the problem with GNOME keyring and ssh-agent:
+  https://github.com/gnunn1/tilix/issues/870#issuecomment-291849303
+
+-------------------------------------------------------------------
+Sat Jan 13 23:38:20 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 1.7.5
+  * Fixed segfault with input synchronization occurring after a period of time (gh#gnunn1/tilix#1228)
+  * Passwords and bookmarks now respect input synchronization (gh#gnunn1/tilix#1236)
+  * Fix problem with Copy as HTML not checking VTE version (gh#gnunn1/tilix#1235)
+- Update copyright year
+- Remove patch: tilix-fix-1.7.3-build-on-32bits.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Mon Jan  1 22:43:08 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 1.7.3
+  * This release improves the stability of Tilix plus fixes a few minor issues. 
+    The only new feature is being able to copy terminal output as HTML.
+- Update version of build dependency gtkd to 3.7.3
+- Remove patch: tilix-fix-1.7.1-build-on-32bits.patch (fixed upstream)
+- Add patch: tilix-fix-1.7.3-build-on-32bits.patch
+- Should now build on i586 arch
+
+-------------------------------------------------------------------
+Thu Dec 21 19:28:29 UTC 2017 - mimi.vx@gmail.com
+
+- remove unnneded post/postun sections 
+
+-------------------------------------------------------------------
+Fri Dec  1 22:16:16 UTC 2017 - matthias.eliasson@gmail.com
+
+- Fix so tilix runs correctly 
+
+-------------------------------------------------------------------
+Wed Nov 22 20:51:13 UTC 2017 - matthias.eliasson@gmail.com
+
+- Add tilix-fix-1.7.1-build-on-32bits.patch to fix builds on i586 
+
+-------------------------------------------------------------------
+Wed Nov 22 20:41:41 UTC 2017 - matthias.eliasson@gmail.com
+
+- Update to version 1.7.1
+  *  This release fixes a single issue with 1.7.0 where the default for the overlay scrollbar was set to false.
+- Run spec-cleaner
+- Remove buildignore for gcc-PIE not needed anymore.
+- Bump version of build dependency gtkd to 3.6.6 
+
+-------------------------------------------------------------------
+Sun Jul 23 00:05:50 UTC 2017 - matthias.eliasson@gmail.com
+
+- Remove _service and add the specific source files
+
+-------------------------------------------------------------------
+Sun Jul 23 00:51:50 CEST 2017 - matthias.eliasson@gmail.com
+
+- bump version to 1.6.4
+  * Dim option now dims the fonts and does not alter the background. The dim color option has been removed
+  * Added option to disable saving/restoring window state between invocations
+  * Added option to disable overlay scrollbar in favor of separate scrollbar widget
+  * Fixed problem with selecting non-existent bookmark causing a crash
+  * Enabled customizing keyboard shortcut for toggling local input synchronization
+  * Added abilitiy to specify window style from command line
+  * Added menu option to open CWD in file browser (i.e. Nautilus, etc)
+  * Fixed issue where opening a custom link could only be done once
+- bump version of build dependency gtkd to 3.6.5
+- spec-cleaner
+- add buildignore gcc-PIE to make this build for now are waiting for some fixes upstream:
+  https://github.com/dlang/phobos/pull/5586
+  
+-------------------------------------------------------------------
+Fri Apr 28 19:17:50 UTC 2017 - matthias.eliasson@gmail.com
+
+- bump version to 1.5.6
+  * Added the ability to specify custom hyperlinks and triggers globally as well as in profiles
+  * Triggers now support executing a process and passing the output of the process to the terminal
+  * Fixed issue for CentOS and RHEL 7.x where it would not run on GTK 3.14
+  * Sidebar now ensures active session is shown when opening
+  * Removed the option to disable animation in quake mode, was causing other issues
+  * Fixed New Window options Split Down and Split Right
+  * Fixed various focus issues
+  * Added option to bookmarks to automatically insert line feed
+  * Fixed Wayland issue where dragging and dropping a terminal on the desktop did not create a new window like it does in X11
+
+-------------------------------------------------------------------
+Mon Mar 27 16:54:58 UTC 2017 - vinadoros@outlook.com
+
+- Upstream rename from terminix to tilix
+- bump version to 1.5.4
+  * Detaching terminal in Wayland by dropping it on desktop now works identically to X11
+  * Fixed issue with outdated LDC libraries on Fedora, this should allow COPR to work again
+  * Fixed issue with close dialog and long process names resulting in excessively wide dialog box
+  * Removed animation hint feature from quake mode as it was causing focus issues
+  * Fixed crash when loading multiple sessions from file
+
+-------------------------------------------------------------------
+Wed Mar  8 20:30:15 UTC 2017 - matthias.eliasson@gmail.com
+
+- bump version to 1.5.2
+  * Removed Timeout from terminal to fix segfault with visual bell
+  * Fixed Nautilus plugin where it was crashing Nautilus for some users thanks to @bil-elmoussaoui
+  * Variables used in application title now resolve correctly.
+  * Fix version number
+
+-------------------------------------------------------------------
+Tue Feb 21 09:09:42 UTC 2017 - kkaempf@suse.com
+
+- bump version to 1.5.0
+  * Added initial support for bookmarks
+  * Re-worked terminal menu to include bookmark and password options,
+    some lesser used options moved to a sub-menu
+  * Added a new feature to raise a notification if activity is
+    detected after a specified period of silence
+  * Search button now toggles depending if focused terminal has
+    search open
+  * Improved performance when using background images
+  * Added new Window Appearance preference
+  * Improved title editors in preferences to show available variables
+  * Re-worked -e option to fix some bugs, should work better across
+    more permutations
+  * Many bug fixes
+
+- update GtkD to 3.5.1
+
+-------------------------------------------------------------------
+Mon Jan 16 19:38:28 UTC 2017 - matthias.eliasson@gmail.com
+
+- bump version to 1.4.2
+- add man page to files section
+
+-------------------------------------------------------------------
+Mon Dec 26 14:42:05 UTC 2016 - matthias.eliasson@gmail.com
+
+- bump version 1.4.0
+- remove desktop.patch since this have been fixed upstream.
+- Modified %files section to include all files for package
+
+-------------------------------------------------------------------
+Fri May  6 08:55:25 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging of version 0.59.0

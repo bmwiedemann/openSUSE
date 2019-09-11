@@ -1,0 +1,155 @@
+Index: gnome-photos-3.30.1/src/photos-dlna-renderers-dialog.c
+===================================================================
+--- gnome-photos-3.30.1.orig/src/photos-dlna-renderers-dialog.c
++++ gnome-photos-3.30.1/src/photos-dlna-renderers-dialog.c
+@@ -191,6 +191,28 @@ photos_dlna_renderers_dialog_add_rendere
+   label = gtk_label_new (NULL);
+   gtk_label_set_text (GTK_LABEL (label), name);
+   gtk_container_add (GTK_CONTAINER (row_grid), label);
++  gtk_widget_show_all (row);
++}
++
++
++static void
++photos_dlna_renderers_dialog_renderer_found (PhotosDlnaRenderersManager *manager,
++                                              GParamSpec *pspec,
++                                              gpointer user_data)
++{
++  GList *renderers;
++  PhotosDlnaRenderersDialog *self = PHOTOS_DLNA_RENDERERS_DIALOG (user_data);
++
++  renderers = photos_dlna_renderers_manager_dup_renderers (manager);
++
++  while (renderers != NULL)
++    {
++      PhotosDlnaRenderer *renderer = PHOTOS_DLNA_RENDERER (renderers->data);
++
++      photos_dlna_renderers_dialog_add_renderer (self, renderer);
++      renderers = g_list_delete_link (renderers, renderers);
++      g_object_unref (renderer);
++    }
+ }
+ 
+ 
+@@ -198,7 +220,6 @@ static void
+ photos_dlna_renderers_dialog_init (PhotosDlnaRenderersDialog *self)
+ {
+   GApplication *app;
+-  GList *renderers;
+   PhotosSearchContextState *state;
+ 
+   app = g_application_get_default ();
+@@ -213,18 +234,9 @@ photos_dlna_renderers_dialog_init (Photo
+ 
+   gtk_list_box_set_header_func (self->listbox, photos_utils_list_box_header_func, NULL, NULL);
+ 
+-  renderers = photos_dlna_renderers_manager_dup_renderers (self->renderers_mngr);
+-
+-  while (renderers != NULL)
+-    {
+-      PhotosDlnaRenderer *renderer = PHOTOS_DLNA_RENDERER (renderers->data);
+-
+-      photos_dlna_renderers_dialog_add_renderer (self, renderer);
+-      renderers = g_list_delete_link (renderers, renderers);
+-      g_object_unref (renderer);
+-    }
+-
+   g_signal_connect (self, "response", G_CALLBACK (gtk_widget_destroy), NULL);
++  g_signal_connect (self->renderers_mngr, "renderer-found",
++                    G_CALLBACK (photos_dlna_renderers_dialog_renderer_found), self);
+ }
+ 
+ 
+Index: gnome-photos-3.30.1/src/photos-main-toolbar.c
+===================================================================
+--- gnome-photos-3.30.1.orig/src/photos-main-toolbar.c
++++ gnome-photos-3.30.1/src/photos-main-toolbar.c
+@@ -539,8 +539,6 @@ photos_main_toolbar_populate_for_preview
+   GApplication *app;
+   PhotosBaseItem *item;
+   gboolean favorite;
+-  gboolean remote_display_available;
+-  GAction *remote_display_action;
+ 
+   gtk_header_bar_set_show_close_button (GTK_HEADER_BAR (self->header_bar), TRUE);
+ 
+@@ -575,13 +573,6 @@ photos_main_toolbar_populate_for_preview
+   favorite = photos_base_item_is_favorite (item);
+   photos_main_toolbar_favorite_button_update (self, favorite);
+ 
+-  /* Disable the remote-display-current action if the dLeyna services are not
+-   * available */
+-  app = g_application_get_default ();
+-  remote_display_action = g_action_map_lookup_action (G_ACTION_MAP (app), "remote-display-current");
+-  remote_display_available = photos_dlna_renderers_manager_is_available ();
+-  g_simple_action_set_enabled (G_SIMPLE_ACTION (remote_display_action), remote_display_available);
+-
+   g_signal_connect_object (self->item_mngr,
+                            "active-changed",
+                            G_CALLBACK (photos_main_toolbar_item_active_changed),
+Index: gnome-photos-3.30.1/src/photos-main.c
+===================================================================
+--- gnome-photos-3.30.1.orig/src/photos-main.c
++++ gnome-photos-3.30.1/src/photos-main.c
+@@ -49,7 +49,6 @@ main (gint argc, gchar *argv[])
+ 
+   {
+     g_autoptr (GApplication) app = NULL;
+-    g_autoptr (PhotosRemoteDisplayManager) remote_display_mngr = NULL;
+ 
+     photos_debug_init ();
+ 
+@@ -57,7 +56,6 @@ main (gint argc, gchar *argv[])
+     if (g_getenv ("GNOME_PHOTOS_PERSIST") != NULL)
+       g_application_hold (app);
+ 
+-    remote_display_mngr = photos_remote_display_manager_dup_singleton ();
+     exit_status = g_application_run (app, argc, argv);
+   }
+ 
+Index: gnome-photos-3.30.1/src/photos-remote-display-manager.c
+===================================================================
+--- gnome-photos-3.30.1.orig/src/photos-remote-display-manager.c
++++ gnome-photos-3.30.1/src/photos-remote-display-manager.c
+@@ -30,7 +30,6 @@
+ struct _PhotosRemoteDisplayManager
+ {
+   GObject parent_instance;
+-  PhotosDlnaRenderersManager *renderers_mngr;
+   PhotosDlnaRenderer *renderer;
+ };
+ 
+@@ -90,7 +89,6 @@ photos_remote_display_manager_dispose (G
+ {
+   PhotosRemoteDisplayManager *self = PHOTOS_REMOTE_DISPLAY_MANAGER (object);
+ 
+-  g_clear_object (&self->renderers_mngr);
+   g_clear_object (&self->renderer);
+ 
+   G_OBJECT_CLASS (photos_remote_display_manager_parent_class)->dispose (object);
+@@ -116,25 +114,8 @@ photos_remote_display_manager_constructo
+ 
+ 
+ static void
+-photos_remote_display_manager_renderer_lost_cb (PhotosRemoteDisplayManager *self,
+-                                                PhotosDlnaRenderer *renderer,
+-                                                gpointer user_data)
+-{
+-  if (renderer == self->renderer)
+-    photos_remote_display_manager_stop (self);
+-}
+-
+-
+-static void
+ photos_remote_display_manager_init (PhotosRemoteDisplayManager *self)
+ {
+-  /* Keep a connection to the renderers manager alive to keep the list of
+-   * renderers up-to-date */
+-  self->renderers_mngr = photos_dlna_renderers_manager_dup_singleton ();
+-
+-  g_signal_connect_object (self->renderers_mngr, "renderer-lost",
+-                           G_CALLBACK (photos_remote_display_manager_renderer_lost_cb), self,
+-                           G_CONNECT_SWAPPED);
+ }
+ 
+ 

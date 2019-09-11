@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Thu Feb 14 14:48:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.2:
+  * Use pkgutil instead of pkg_resources
+  * Cleanup readme
+- Execute testsuite
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:14 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Nov  8 19:03:31 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * add LICENSE to %doc
+
+- update to version 1.1:
+  * DOC use official Travis badge
+  * Test and document all modern Python versions
+  * Include license file in the source code and distribute it
+  * Enable pip cache in Travis CI
+  * Use pkg_resources to keep the package zip-safe
+
+-------------------------------------------------------------------
+Sun Oct 22 18:51:55 UTC 2017 - arun@gmx.de
+
+- initial package

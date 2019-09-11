@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Sun Mar 19 11:31:10 UTC 2017 - afaerber@suse.de
+
+- Drop deprecated --enable-ioutil and --enable-oocd_trace options
+- Sort and complement configure options
+- Add back tarball signature
+
+-------------------------------------------------------------------
+Fri Mar 17 19:35:03 UTC 2017 - afaerber@suse.de
+
+- Update specfile for new libjaylink dependency
+
+-------------------------------------------------------------------
+Thu Mar 16 10:19:05 UTC 2017 - opensuse@dstoecker.de
+
+- update to 0.10.0
+ * many updates: have a look in the log file
+   /usr/share/doc/packages/openocd/NEWS
+
+-------------------------------------------------------------------
+Thu Jun 11 19:28:51 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.9.0:
+  * jtag/drivers/stlink: fix SRST issue with stlink-v1
+  * nrf51: refine and extend known devices table
+  * server: avoid the tcl server crashing when there is no target
+  * manual: fix usb_blaster_pin command syntax and description
+  * manual: reorder flash driver info
+  * manual: remove the lists of config files
+- point the source URL to sourceforge
+- add source archive signature and author keyring
+- add missing install_info_prereq as post and preun requires
+- remove -n from %setup: unnecessary
+- call %udev_rules_update instead of udevadm directly in post
+  and postun: fix local build
+- call %install_info_delete in preun, not postun:
+  fix scriptlet failed warning
+
+-------------------------------------------------------------------
+Sat Apr 25 09:24:47 UTC 2015 - afaerber@suse.de
+
+- Update to v0.9.0-rc1
+* Drop fix-jim_cmdproc.patch (fixed upstream)
+* Drop commented-out use of ./bootstrap script that doesn't exist
+- Reorder adapter config options by configure.ac order
+* Fix misspelled config option arm-jtag-ew -> armjtagew
+- Explicitly enable usb-blaster-2, usbprog
+- Explicitly enable parport for x86 and bcm2835gpio for ARM
+
+-------------------------------------------------------------------
+Mon Oct  6 08:14:16 UTC 2014 - matwey.kornilov@gmail.com
+
+- Use libusb-compat instead of libusb0
+
+-------------------------------------------------------------------
+Tue May 13 18:11:26 UTC 2014 - ralf@rdoering.net
+
+- Update to openOCD 0.8 instead of git
+- Build with external jimtcl only for factory, use included 
+  jimtcl for openSUSE 13.1 and older
+- make it build with included jimtcl, so it builds for 
+  openSUSE 12.3 and 13.1
+
+-------------------------------------------------------------------
+Sat May 10 07:10:46 UTC 2014 - matwey.kornilov@gmail.com
+
+- Use spec_cleaner
+
+-------------------------------------------------------------------
+Sat Apr 26 12:54:40 UTC 2014 - matwey.kornilov@gmail.com
+
+- Drop not needed comments
+
+-------------------------------------------------------------------
+Sat Apr 19 18:14:09 UTC 2014 - matwey.kornilov@gmail.com
+
+- Provide COPYING file with the license.
+
+-------------------------------------------------------------------
+Thu Apr 10 09:50:44 UTC 2014 - matwey.kornilov@gmail.com
+
+- Drop url from source, as we use disabled-run _service
+
+-------------------------------------------------------------------
+Wed Apr  9 15:45:51 UTC 2014 - matwey.kornilov@gmail.com
+
+- openocd.udev has been renamed to 99-openocd.rules
+
+-------------------------------------------------------------------
+Sun Mar 23 07:19:46 UTC 2014 - matwey.kornilov@gmail.com
+
+- Add fix-jim_cmdproc.patch: jimtcl 0.75 has backward incompatibility
+- Update to recent version
+
+-------------------------------------------------------------------
+Thu Mar 13 16:17:40 UTC 2014 - matwey.kornilov@gmail.com
+
+- add copyright handler to spec file
+
+-------------------------------------------------------------------
+Mon Jan 27 08:49:15 UTC 2014 - matwey.kornilov@gmail.com
+
+- remove Atmel SAMD20-XPRO patches
+
+-------------------------------------------------------------------
+Fri Dec 13 15:33:09 UTC 2013 - matwey.kornilov@gmail.com
+
+- add Atmel SAMD20-XPRO patches
+
+-------------------------------------------------------------------
+Fri Jul 12 16:14:48 UTC 2013 - prusnak@opensuse.org
+
+- created package based on Fedora package (version 0.7.0)
+

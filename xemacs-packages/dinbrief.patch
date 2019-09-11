@@ -1,0 +1,310 @@
+Index: packages/xemacs-packages/auctex/latex.el
+===================================================================
+--- packages/xemacs-packages/auctex/latex.el.orig
++++ packages/xemacs-packages/auctex/latex.el
+@@ -1554,6 +1554,7 @@ ELSE as an argument list."
+ 					   ",")))))
+     (if (zerop (length style))
+ 	(setq style LaTeX-default-style))
++    (TeX-run-style-hooks style)
+     (if (not (zerop (length options)))
+ 	(insert LaTeX-optop options LaTeX-optcl))
+     (insert TeX-grop style TeX-grcl))
+Index: packages/xemacs-packages/auctex/etc/dinbrief.el
+===================================================================
+--- packages/xemacs-packages/auctex/style/dinbrief.el.orig
++++ packages/xemacs-packages/auctex/style/dinbrief.el
+@@ -2,6 +2,9 @@
+ 
+ ;; Contributed by Werner Fink <tex@itap.physik.uni-stuttgart.de>
+ ;; Please direct comments to him.
++;;
++;; Change to new dinbrief.sty -- Werner Fink <werner@suse.de>
++;;                               ... yes, we are identical
+ 
+ ;;; Commentary:
+ 
+@@ -14,80 +17,120 @@
+ (TeX-add-style-hook "dinbrief"
+  (function
+   (lambda ()
++    (add-hook 'LaTeX-document-style-hook
++     'LaTeX-style-dinbrief)
+     (LaTeX-add-environments
+-     '("letter" LaTeX-recipient-hook))
++     '("letter" LaTeX-recipient-hook)
++     "dinquote")
+     (TeX-add-symbols
+-     '("Absender" "Absender: ")
+-     '("Postvermerk" "Postvermerk: ")
+-     '("Datum" "Datum: ")
+-     '("Betreff" "Betreff: ")
+-     '("Behandlungsvermerk" "Behandlungsvermerk: ")
+-     '("Verteiler" "Verteiler: ")
+-     "makelabel" "Retourlabel"
+-     '("Anlagen" "Anlagen: ")
+-     '("Fenster" "Fenster \(ja/nein\): ")
+-     '("Retouradresse" "Retouradresse: ")
++     '("address" "Absender: ")
++     '("postremark" "Postvermerk: ")
++     '("date" "Datum: ")
++     '("subject" "Betreff: ")
++     '("handling" "Behandlungsvermerk: ")
++     '("cc" "Verteiler: ")
++     '("place" "Heutiger Ort: ")
++     "makelabels"
++     "nowindowrules"
++     "windowrules"
++     "nowindowtics"
++     "windowtics"
++     "disabledraftstandard"
++     "enabledraftstandard"
++     "centeraddress"
++     "normaladdress"
++     '("encl" "Anlagen: ")
++     '("backaddress" "Retouradresse: ")
+      '("signature" "Unterschrift: ")
+      '("opening" "Anrede: ")
+-     '("closing" "Schlu\"s: ")))))
++     '("closing" "Schluss: ")))))
++
++(if (string-match "XEmacs" emacs-version)
++    (defun TeX-deactivate-mark () (zmacs-deactivate-region))
++  (defun TeX-deactivate-mark () (deactivate-mark)))
++
++(defmacro din-insert (&rest args)
++  "Insert text ignoring active markers."
++  `(progn (if (TeX-mark-active) (TeX-deactivate-mark))
++     (insert ,@args)))
++
++(defun LaTeX-style-dinbrief ()
++  "Insert some useful packages for writing german letters."
++  (if (equal LaTeX-version "2e")
++    (save-excursion
++      (goto-char (point-min)) ; insert before \begin{document}
++      (if (re-search-forward ".begin.document." (point-max) t)
++          (beginning-of-line 1))
++      (open-line 2)
++      (indent-relative-maybe)
++	(din-insert TeX-esc "usepackage"
++		LaTeX-optop "latin1" LaTeX-optcl
++		TeX-grop "inputenc" TeX-grcl)
++	(newline-and-indent)
++	(din-insert TeX-esc "usepackage"
++		LaTeX-optop "T1" LaTeX-optcl
++		TeX-grop "fontenc" TeX-grcl)
++	(newline-and-indent)
++	(din-insert TeX-esc "usepackage"
++		TeX-grop "ngerman" TeX-grcl)
++	(newline-and-indent)
++	(din-insert TeX-esc "usepackage"
++		TeX-grop "umlaut" TeX-grcl)
++	(TeX-run-style-hooks "inputenc")
++	(TeX-run-style-hooks "fontenc")
++	(TeX-run-style-hooks "ngerman")
++	(TeX-run-style-hooks "umlaut"))))
+ 
+ (defun LaTeX-recipient-hook (environment)
+   "Insert ENVIRONMENT and prompt for recipient and address."
+-  (let ((sender (read-input "Absender: " (user-full-name)))
+-	(recipient (read-input "Empf\"anger: "))
+-	(address (read-input "Anschrift: "))
+-	(postvermerk (read-input "Postvermerk: "))
+-	(date (read-input "Datum: " (LaTeX-today)))
+-	(betreff (read-input "Betreff: "))
+-	(vermerk (read-input "Behandlungsvermerk: "))
+-	(verteil (read-input "Verteiler: "))
+-	(anlage (read-input "Anlagen: "))
+-	(opening (read-input "Anrede: "))
+-	(closing (read-input "Schlu\"s: "))
+-	(fenster (read-input "Fenster \(ja/nein\): "))
+-	(signature (read-input "Unterschrift: "))
++  (let (
++	(sender (LaTeX-sender))
++	(recipient (read-string "Empfänger: "))
++	(address (LaTeX-recipient))
++	(date (read-string "Datum: " (LaTeX-today)))
++	(postremark (read-string "Postvermerk: "))
++	(fenster (read-string "Fenster \(ja/nein\): "))
++	(vermerk (read-string "Behandlungsvermerk: "))
++	(verteil (read-string "Verteiler: "))
++	(betreff (read-string "Betreff: "))
++	(opening (read-string "Anrede: "))
++	(closing (read-string "Schluss: "))
++	(signature (read-string "Unterschrift: "))
++	(anlage (read-string "Anlagen: "))
+ 	)
+ 
+-    (if (not (zerop (length sender)))
+-	(progn
+-	  (insert TeX-esc "Absender" TeX-grop sender TeX-grcl)
+-	  (newline-and-indent)))
+-    (if (not (zerop (length postvermerk)))
+-	(progn
+-	  (insert TeX-esc "Postvermerk" TeX-grop postvermerk TeX-grcl)
+-	  (newline-and-indent)))
+-    (if (not (zerop (length betreff)))
+-	(progn
+-	  (insert TeX-esc "Betreff" TeX-grop betreff TeX-grcl)
+-	  (newline-and-indent)))
+-    (if (not (zerop (length vermerk)))
+-	(progn
+-	  (insert TeX-esc "Behandlungsvermerk" TeX-grop vermerk TeX-grcl)
+-	  (newline-and-indent)))
+-    (if (not (zerop (length verteil)))
+-	(progn
+-	  (insert TeX-esc "Verteiler" TeX-grop verteil TeX-grcl)
+-	  (newline-and-indent)))
+-    (if (not (zerop (length anlage)))
+-	(progn
+-	  (insert TeX-esc "Anlagen" TeX-grop anlage TeX-grcl)
+-	  (newline-and-indent)))
+     (if (string= fenster "ja")
+ 	(progn
+-	  (insert TeX-esc "Fenster")
+-	  (let ((retouradr (read-input "Retouradresse: " (user-full-name))))
++	  (din-insert TeX-esc "enabledraftstandard")
++	  (newline-and-indent)
++	  (din-insert TeX-esc "centeraddress")
++	  (newline-and-indent)
++	  (din-insert TeX-esc "nowindowrules")
++	  (newline-and-indent)
++	  (din-insert TeX-esc "windowtics")
++	  (newline-and-indent)
++	  (let ((retouradr (read-string "Retouradresse: " sender)))
+ 	    (newline-and-indent)
+ 	  (if (not (zerop (length retouradr)))
+ 	      (progn
+-		(insert TeX-esc "Retouradresse" TeX-grop retouradr TeX-grcl)
+-		(newline-and-indent))))))
++		(if (TeX-mark-active) (TeX-deactivate-mark))
++		(din-insert TeX-esc "backaddress" TeX-grop retouradr TeX-grcl)
++		(newline-and-indent)))))
++      (din-insert TeX-esc "enabledraftstandard")
++      (newline-and-indent)
++      (din-insert TeX-esc "centeraddress")
++      (newline-and-indent)
++      (din-insert TeX-esc "nowindowrules")
++      (newline-and-indent)
++      (din-insert TeX-esc "windowtics"))
++      (newline-and-indent)
+     (if (not (zerop (length signature)))
+ 	(progn
+-	  (insert TeX-esc "signature" TeX-grop signature TeX-grcl)
++	  (din-insert TeX-esc "signature" TeX-grop signature TeX-grcl)
+ 	  (newline-and-indent)))
+     (if (not (zerop (length date)))
+ 	(progn
+-	  (insert TeX-esc "Datum" TeX-grop date TeX-grcl)
++	  (din-insert TeX-esc "date" TeX-grop date TeX-grcl)
+ 	  (newline-and-indent)))
+     (newline-and-indent)
+ 
+@@ -112,9 +155,32 @@
+ 		      (progn
+ 			(newline)
+ 			(indent-to addr-column))))))))
+-      (insert "\n")
++      (din-insert "\n")
+       (indent-to indentation))
+-    (insert TeX-esc "opening"
++    (if (not (zerop (length postremark)))
++	(progn
++	  (din-insert TeX-esc "postremark" TeX-grop postremark TeX-grcl)
++	  (newline-and-indent)))
++    (if (not (zerop (length betreff)))
++	(progn
++	  (din-insert TeX-esc "subject" TeX-grop)
++	    (if (equal LaTeX-version "2e")
++	      (din-insert TeX-esc "textbf" TeX-grop betreff TeX-grcl TeX-grcl)
++	      (din-insert betreff TeX-grcl))
++	  (newline-and-indent)))
++    (if (not (zerop (length vermerk)))
++	(progn
++	  (din-insert TeX-esc "handling" TeX-grop vermerk TeX-grcl)
++	  (newline-and-indent)))
++    (if (not (zerop (length verteil)))
++	(progn
++	  (din-insert TeX-esc "cc" TeX-grop verteil TeX-grcl)
++	  (newline-and-indent)))
++    (if (not (zerop (length anlage)))
++	(progn
++	  (din-insert TeX-esc "encl" TeX-grop anlage TeX-grcl)
++	  (newline-and-indent)))
++    (din-insert TeX-esc "opening"
+ 	    TeX-grop
+ 	    (if (zerop (length opening))
+ 		(concat TeX-esc " ")
+@@ -123,7 +189,7 @@
+ 
+     (indent-relative-maybe)
+     (save-excursion
+-      (insert "\n" TeX-esc "closing"
++      (din-insert "\n" TeX-esc "closing"
+ 	      TeX-grop
+ 	      (if (zerop (length closing))
+ 		  (concat TeX-esc " ")
+@@ -131,6 +197,47 @@
+ 	      TeX-grcl "\n")
+       (indent-relative-maybe))))
+ 
++(defun LaTeX-sender nil
++  "Read and writes the senders address"
++  (interactive)
++  (let ((name (read-string "Absender: " (user-full-name)))
++	(str  (read-string "Meine Strasse:  "))
++	(ort  (read-string "Mein Wohnort:  ")))
++    (if (not (zerop (length name)))
++	(progn
++	  (goto-char (point-min)) ; insert before \end{document}
++	  (if (re-search-forward ".end.document." (point-max) t)
++	     (beginning-of-line 1))
++	  (previous-line 1)
++	  (din-insert TeX-esc "address" TeX-grop name)
++	  (if (not (zerop (length str)))
++	      (progn
++		(din-insert " " TeX-esc TeX-esc)
++		(newline-and-indent)
++		(din-insert str)))
++	  (if (not (zerop (length ort)))
++	      (progn
++		(din-insert " " TeX-esc "par")
++		(newline-and-indent)
++		(din-insert ort)))
++	  (din-insert TeX-grcl)
++	  (newline-and-indent)
++	  (concat name ", " str ", " ort)))))
++
++(defun LaTeX-recipient nil
++  "Read and returns the recipient address"
++  (interactive)
++  (let ((str  (read-string "Wohnhaft in Strasse:  "))
++	(ort  (read-string "Aus der Ortschaft:  ")))
++    (if (not (zerop (length str)))
++	(if (not (zerop (length ort)))
++	    (concat str " " TeX-esc TeX-esc " " ort)
++	  str)
++      (if (not (zerop (length ort)))
++	  ort))
++    )
++)
++
+ (defun LaTeX-today nil
+   "Return a string representing todays date according to flavor."
+   (interactive)
+@@ -152,12 +259,13 @@
+      ctime-string)
+     (let ((year (substring ctime-string (match-beginning 3) (match-end 3)))
+ 	  (month (substring ctime-string (match-beginning 1) (match-end 1)))
+-	  (day (substring ctime-string (match-beginning 2) (match-end 2))))
++	  (day (substring ctime-string (match-beginning 2) (match-end 2)))
++	  (place (read-string "Heutiger Ort: ")))
+       (if (assoc month month-alist)
+ 	  (progn
+ 	    (setq month (cdr (assoc month month-alist)))
+ 	    (if (> 2 (length day))
+ 		(setq day (concat "0" day)))))
+-      (format "Stuttgart, den %s. %s %s" day month year))))
++      (format "%s, den %s. %s %s" place day month year))))
+ 
+ ;;; dinbrief.el ends here

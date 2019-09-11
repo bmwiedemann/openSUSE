@@ -1,0 +1,560 @@
+-------------------------------------------------------------------
+Wed Nov  7 18:15:56 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update gnome_defaults: evince.desktop has been renamed to
+  org.gnome.Evince.desktop with GNOME 3.30.
+
+-------------------------------------------------------------------
+Fri Jun 29 01:56:41 UTC 2018 - qkzhu@suse.com
+
+- Recommend sound-theme-freedesktop by both openSUSE and SLE.
+  (bsc#1097595)
+
+-------------------------------------------------------------------
+Thu May  3 02:48:12 UTC 2018 - yfjiang@suse.com
+
+- Update .gschema.override.in: referring the implementation of
+  bsc#1077332, fully enable gnome-software notification which is
+  now used on both leap15 and sle15 to replace the legacy g-s-d
+  notification method (boo#1090042).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:26:42 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Dec 22 08:20:44 UTC 2017 - dimstar@opensuse.org
+
+- Update .gschema.override.in: evolution.desktop has been renamed
+  to org.gnome.Evolution.desktop (for GNOME 3.28).
+
+-------------------------------------------------------------------
+Wed Dec 20 07:48:17 UTC 2017 - dimstar@opensuse.org
+
+- Revert "Update .gschema.override.in: evolution.desktop has been
+  renamed to org.gnome.Evolution.desktop.": This will only be valid
+  with GNOME 3.28.
+
+-------------------------------------------------------------------
+Tue Dec 19 12:49:42 UTC 2017 - dimstar@opensuse.org
+
+- Use variable flavor instead of BUILD_FLAVOR: obs is only
+  replacing the first occurence.
+
+-------------------------------------------------------------------
+Fri Dec 15 12:21:18 UTC 2017 - dimstar@opensuse.org
+
+- Rename base package to glib2-branding and add SLE and openSUSE as
+  multibuild flavors. There is no other difference to the previous
+  glib2-branding-{openSUSE,SLE} packages.
+- Drop pre_checkin.sh: no longer needed with multibuild.
+
+-------------------------------------------------------------------
+Wed Dec 13 02:26:08 UTC 2017 - xwang@suse.com
+
+-  Update .gschema.override.in to show application menu on title
+   bar in sle-classic session (bgo#746592 bsc#1070090).
+
+-------------------------------------------------------------------
+Mon Oct 23 11:24:38 UTC 2017 - dimstar@opensuse.org
+
+- Update .gschema.override.in: evolution.desktop has been renamed
+  to org.gnome.Evolution.desktop.
+
+-------------------------------------------------------------------
+Fri Oct 20 10:38:04 UTC 2017 - fcrozat@suse.com
+
+- Update SLE version to 15.
+- Remove post/postun scripts, no longer needed with file triggers.
+- Update favorites applications on SLE15, we switched to pidgin and
+  gnome-photos.
+
+-------------------------------------------------------------------
+Tue Jul 18 09:28:26 UTC 2017 - yfjiang@suse.com
+
+- Update .gschema.override.in to set small icon size on Desktop and
+  nautilus in Leap, which is consistent with SLE (bsc#1043604).
+
+-------------------------------------------------------------------
+Wed Oct 19 12:59:20 UTC 2016 - dimstar@opensuse.org
+
+- Enable freedesktop sound theme by default (boo#1004919):
+  + Set org.gnome.desktop.sound/theme-name to 'freedesktop' for
+    openSUSE.
+  + Recommend sound-theme-freedesktop by gio-branding-openSUSE.
+- Introdue @@IF_LEAP@@ logic into the .gschema.override.in file:
+  IF_LEAP is true if building for 'openSUSE' and sle_version is set
+  in prjconf. Apply IF_LEAP to the GNOME Software update
+  notifications.
+
+-------------------------------------------------------------------
+Wed Sep  7 09:52:24 UTC 2016 - zaitor@opensuse.org
+
+- Once again disable GNOME Software update notifications (automatic
+  download of patches; openSUSE relies on gnome-settings-daemon's
+  internal update plugin for update notifications) (boo#997572).
+
+-------------------------------------------------------------------
+Thu Jul 14 08:42:04 UTC 2016 - dimstar@opensuse.org
+
+- Do not attempt to build -openSUSE on SLE and -SLE on openSUSE:
+  trick the .spec file to ExclusiveArch: %nil in this case.
+
+-------------------------------------------------------------------
+Fri Jul  1 06:05:41 UTC 2016 - fezhang@suse.com
+
+- Make gnome-settings-daemon housekeeping plugin ignore /boot/efi
+  [bsc#919217].
+  Summary from bsc#919217:
+  "On a default UEFI installation, /boot/efi is created with a size
+  of 156MB. It will cause gnome-settings-daemon to popup a warning,
+  if logged as root (not 100% sure when logged as a regular user)
+  that a partition has less than than 1GB of free space.
+  /boot/efi should be added to default schema
+  org.gnome.settings-daemon.plugin.housekeeping ignore-paths"
+
+-------------------------------------------------------------------
+Wed Jun 29 09:35:28 UTC 2016 - fcrozat@suse.com
+
+- Resync with glib2-branding-SLE and simplify specfile.
+- Replaces Requires by Recommends on wallpaper-branding-openSUSE:
+  gio-branding-openSUSE is required by glib2, which is causing
+  openSUSE wallpaper as hard dependency on non-graphical install.
+  (boo#993969).
+
+-------------------------------------------------------------------
+Mon Jun 20 13:08:25 UTC 2016 - fcrozat@suse.com
+
+- Add some settings from SLE12 SP2, not enabled when building on
+  openSUSE (default zoom on nautilus).
+- Update favorite applications default to use new names from
+  upstream, prevent writing some defaults to dconf (partially fixes
+  bsc#979947).
+
+-------------------------------------------------------------------
+Tue Mar 15 14:43:15 UTC 2016 - fcrozat@suse.com
+
+- Fix KeySym assigned for Help, XF86Help doesn't exist anymore.
+
+-------------------------------------------------------------------
+Sat Feb 13 00:54:27 UTC 2016 - zaitor@opensuse.org
+
+- Drop org.gnome.settings-daemon.plugins.media-keys/toggle-mute
+  since we dropped the patch making this needed.
+
+-------------------------------------------------------------------
+Tue Nov 10 19:25:31 UTC 2015 - badshah400@gmail.com
+
+- The touchpad schemas migrated to org.gnome.desktop.peripherals
+  from org.gnome.settings-daemon.peripherals, adapt tap-to-click
+  setting accordingly (boo#954526).
+- The "disable-while-typing" key no longer exists, remove it
+  accordingly.
+
+-------------------------------------------------------------------
+Mon Oct 12 14:43:05 UTC 2015 - zaitor@opensuse.org
+
+- Bump version to 42.1, to prepare for next version of openSUSE.
+
+-------------------------------------------------------------------
+Sat Sep 19 10:21:32 UTC 2015 - dimstar@opensuse.org
+
+- Drop org.gnome.settings-daemon.plugins.power/button-power
+  override: this settings has been removed in GNOME 3.17.92.
+
+-------------------------------------------------------------------
+Thu Feb 26 20:54:28 UTC 2015 - dimstar@opensuse.org
+
+- Drop org.gnome.eog.ui/external-editor reference: EOG 3.15 no
+  longer supports this.
+
+-------------------------------------------------------------------
+Mon Nov  3 13:40:38 UTC 2014 - badshah400@gmail.com
+
+- Gedit desktop file got renamed to org.gnome.gedit.desktop,
+  update gnome_defaults.conf accordingly (boo#904010).
+
+-------------------------------------------------------------------
+Wed Oct  8 14:05:42 UTC 2014 - badshah400@gmail.com
+
+- Replace rhythmbox by gnome-music in favourite applications
+  (see
+  http://lists.opensuse.org/opensuse-gnome/2014-10/msg00013.html )
+- Remove alternative-status-menu as default enabled extension: we
+  do not install it by default any more.
+
+-------------------------------------------------------------------
+Sat Aug 23 16:04:22 UTC 2014 - zaitor@opensuse.org
+
+- Bump version to 13.2, to prepare for next version of openSUSE.
+
+-------------------------------------------------------------------
+Fri Aug 22 21:41:04 UTC 2014 - dimstar@opensuse.org
+
+- Replace nautilus.desktop in gnome_defaults.conf with
+  org.gnome.Nautilus.desktop, following upstreams renaming of the
+  .desktop file in GNOME 3.14.
+
+-------------------------------------------------------------------
+Thu Jul  3 15:09:07 UTC 2014 - fcrozat@suse.com
+
+- Merge SLE12 specific changes (not enabled on openSUSE):
+  + Enable back audible-bell on SLE12 [bnc#871584]
+  + Change Favorites on gnome-shell:
+    * Remove rhythmbox
+    * Replace Libreoffice Writer with Libreoffice Start Center
+    * Add Yelp
+  + Change the default action of pressing power button to
+    'shutdown'.
+  + Lock the screensaver after 300 seconds.
+
+-------------------------------------------------------------------
+Mon Nov 11 20:19:41 UTC 2013 - dimstar@opensuse.org
+
+- Update gnome_defaults: nautilus-folder-handlder has been dropped
+  a while ago and the functionality merged into nautilus directly.
+  This never really caused any issue, as nautilus was one of the
+  few .desktop files registering a inode/directory MimeType. Since
+  GNOME 3.10, baobab does that as well, resulting in situations
+  where baobab can be prefered (the Mime handling is
+  pseudo-random). (bnc#849914).
+- Add %mime_database_post//%mime_database_postun macros to post
+  and postun, to ensure installation triggers updating the mime
+  database.
+
+-------------------------------------------------------------------
+Sun Sep 22 12:51:13 UTC 2013 - dimstar@opensuse.org
+
+- Set the same background for the lockscreen by default as we use
+  as regular background.
+
+-------------------------------------------------------------------
+Sun Sep  8 07:39:30 UTC 2013 - zaitor@opensuse.org
+
+- Bump version to 13.1, to prepare for next version of openSUSE. 
+
+-------------------------------------------------------------------
+Mon Mar 25 21:51:24 UTC 2013 - dimstar@opensuse.org
+
+- Drop org.gnome.settings-daemon.plugins.power/sleep-display-ac
+  setting: it's no longer known by GNOME 3.8.
+
+-------------------------------------------------------------------
+Thu Feb 14 02:11:18 UTC 2013 - badshah400@gmail.com
+
+- Replace banshee with rhythmbox in the list of favourite apps
+  shown in the gnome-shell dash.
+
+-------------------------------------------------------------------
+Sun Jan 13 10:58:19 UTC 2013 - dimstar@opensuse.org
+
+- Update gnome_defaults.conf: no longer instruct to start
+  SuSEconfig, but instruct to run suse-update-mime-defaults
+  (bnc#796169).
+
+-------------------------------------------------------------------
+Wed Jan  9 14:00:12 UTC 2013 - aj@suse.de
+
+- Update version number to 12.3.
+
+-------------------------------------------------------------------
+Mon Nov 12 17:56:36 UTC 2012 - dimstar@opensuse.org
+
+- No longer set
+  org.gnome.settings-daemon.plugins.updates/auto-update-type: this
+  setting was removed from the schema during GNOME 3.6 development.
+  (gnome-settings-daemon commit 7cd4aad).
+
+-------------------------------------------------------------------
+Wed Jul  4 00:41:23 UTC 2012 - badshah400@gmail.com
+
+- Change GSettings default for tap-to-click settings:
+  + Set org.gnome.settings-daemon.peripherals.touchpad/tap-to-click
+    to true to enable tap-to-click by default (see
+    (bnc#554884, fate#310811, also recent discussion at
+     http://lists.opensuse.org/opensuse-factory/2012-06/msg01087.html)
+  + Also change
+    org.gnome.settings-daemon.peripherals.touchpad/disable-while-typing
+    to true to prevent accidental tap-cliking while the user is
+    typing.
+
+-------------------------------------------------------------------
+Fri Jun  8 08:12:48 CEST 2012 - vuntz@opensuse.org
+
+- Remove gdm-branding-openSUSE Requires from gio-branding-openSUSE:
+  this results in gdm getting installed for everyone, including
+  non-GNOME users. Instead, rely on the fact that gdm will not
+  break if the logo defined in our GSettings default doesn't exist.
+
+-------------------------------------------------------------------
+Mon Jun 4 22:14:12 UTC 2012 - rbrownccb@opensuse.org
+
+- Change GSettings default:
+  + Change org.gnome.login-screen/logo to new gdm banner artwork.
+- For openSUSE, add Requires for gdm-branding-openSUSE
+
+-------------------------------------------------------------------
+Fri May 25 15:22:22 UTC 2012 - vuntz@opensuse.org
+
+- Change GSettings default:
+  + Change org.gnome.shell/enabled-extensions to new id of the
+    alternative-status-menu extension.
+
+-------------------------------------------------------------------
+Wed May 23 07:49:05 UTC 2012 - vuntz@opensuse.org
+
+- Bump version to 12.2, to prepare for next version of openSUSE.
+
+-------------------------------------------------------------------
+Fri Mar  9 11:33:43 UTC 2012 - vuntz@opensuse.org
+
+- Change GSettings default:
+  + Disable audible bell
+    (org.gnome.desktop.wm.preferences/audible-bell): it's more
+    annoying than useful.
+  + Add comments to help people who want to change the window
+    manager theme.
+
+-------------------------------------------------------------------
+Wed Dec 21 17:44:55 UTC 2011 - vuntz@opensuse.org
+
+- Change GSettings default:
+  + Stop changing epiphany homepage
+    (org.gnome.Epiphany/homepage-url): there's no such setting
+    anymore.
+
+-------------------------------------------------------------------
+Wed Nov  9 14:32:44 UTC 2011 - vuntz@opensuse.org
+
+- Change GSettings default:
+  + Set org.gnome.settings-daemon.plugins.updates/auto-update-type
+    to 'none' as automatically installing security updates pops out
+    a polkit dialog with no context for the user. See discussion in
+    bnc#729218.
+
+-------------------------------------------------------------------
+Fri Oct 28 13:18:32 UTC 2011 - malcolmlewis@opensuse.org
+
+- Change GSettings default: add alt-status-menu to be enabled by
+  default (org.gnome.shell/enabled-extensions).
+
+-------------------------------------------------------------------
+Thu Oct 13 12:56:24 UTC 2011 - vuntz@opensuse.org
+
+- Remove %{release} from the glib2 versioned Requires, to not have
+  to rebuild this package each time glib2 rebuilds to keep it
+  installable.
+
+-------------------------------------------------------------------
+Wed Oct 12 16:29:41 UTC 2011 - gber@opensuse.org
+
+- Adapt Xfce default applications, mousepad was replaced by
+  leafpad, xarchiver and parole are no longer installed by default.
+
+-------------------------------------------------------------------
+Wed Oct  5 12:27:03 UTC 2011 - vuntz@opensuse.org
+
+- Change GSettings default: add gnome-documents to the favorite
+  apps in gnome-shell (org.gnome.shell/favorite-apps). This is
+  consistent with what upstream does.
+
+-------------------------------------------------------------------
+Tue Oct  4 15:52:20 UTC 2011 - vuntz@opensuse.org
+
+- Change GSettings default:
+  + Set org.gnome.settings-daemon.plugins.media-keys/toggle-mute to
+    false, porting an old default we had in gconf2-branding.
+  + Add a comment about org.gnome.login-screen/logo so that people
+    know it can be set. Leave it unset for now since it doesn't
+    look that good.
+
+-------------------------------------------------------------------
+Thu Sep 22 16:10:38 UTC 2011 - vuntz@opensuse.org
+
+- For openSUSE, change BuildRequires and Requires for
+  desktop-data-openSUSE to wallpaper-branding-openSUSE since the
+  wallpaper moved there. Also, do not version the Requires, since
+  the filename for the default wallpaper is not versioned.
+
+-------------------------------------------------------------------
+Thu Sep 22 12:46:41 UTC 2011 - vuntz@opensuse.org
+
+- Change GSettings default:
+  - Stop setting org.gnome.power-manager/notify-idle-sleep: we
+    don't have the patch that introduces this key anymore right
+    now, and leaving the override produces lots of warnings. See
+    bnc#708182.
+- Bump dependency on desktop-data-openSUSE to 12.1 now that
+  desktop-data-openSUSE got a version bump.
+
+-------------------------------------------------------------------
+Wed Sep  7 22:17:49 UTC 2011 - kirill.kirillov@gmail.com
+
+- Add brasero as default application for iso files (fix
+  bnc#650400)
+
+-------------------------------------------------------------------
+Tue Aug 30 16:42:39 CEST 2011 - vuntz@opensuse.org
+
+- Change GSettings default:
+  + Stop changing org.gnome.nautilus.preference/preview-sound: this
+    is now gone with nautilus 3.1.90.
+
+-------------------------------------------------------------------
+Thu Jul  7 11:35:18 CEST 2011 - vuntz@opensuse.org
+
+- Change GSettings default:
+  + org.gnome.shell/favorite-apps: set to [ 'firefox.desktop',
+    'evolution.desktop', 'empathy.desktop', 'banshee.desktop',
+    'shotwell.desktop', 'writer.desktop', 'nautilus.desktop' ]
+  + this enables us to drop default-applications.patch from
+    gnome-shell.
+  + fix bnc#689610.
+
+-------------------------------------------------------------------
+Wed Jul  6 22:51:42 CEST 2011 - vuntz@opensuse.org
+
+- Change GSettings defaults:
+  + org.freedesktop.Tracker.Miner.Files/index-removable-devices:
+    set to false (so we can remove
+    tracker-removeable-media-off.patch from the tracker package)
+  + org.gnome.eog.ui/external-editor: set to gimp.desktop, since we
+    want to use GIMP as default there.
+
+-------------------------------------------------------------------
+Wed Jul  6 22:09:05 CEST 2011 - vuntz@opensuse.org
+
+- Rework the package to only build the openSUSE branding package,
+  or the SLE branding packages, but not all of them at once. Use a
+  %build_for_openSUSE define for that, which is used to also define
+  a %build_for_SLE helper.
+- Create gio-branding-{openSUSE,SLED,SLES} subpackages, and do not
+  create glib2-branding-{openSUSE,SLED,SLES} subpackages anymore:
+  the data we add here is related only to gio, not to the whole
+  glib.
+- The gio-branding-{openSUSE,SLED,SLES} subpackage have appropriate
+  Provides/Obsoletes for glib2-branding-{openSUSE,SLED,SLES}, to
+  enable smooth upgrades.
+- Update glib2-branding-openSUSE-gnome_defaults.conf to define
+  default handlers for URI schemes (after migration of this
+  settings from gconf to the MIME system):
+  + Add firefox.desktop as default handler for
+    x-scheme-handler/{http,https,ftp}
+  + Add evolution.desktop as default handler for
+    x-scheme-handler/mailto
+  + Add yelp.desktop as default handler for all MIME types it
+    handles (ie, the help-related URI schemes)
+- Add default values for GSettings schemas:
+  + Add glib2-branding.gschema.override.in file. This file is
+    populated with default values based on the old gconf2-branding
+    package.
+  + Process glib2-branding.gschema.override.in in %install to
+    correctly define the wallpaper, and remove
+    openSUSE/SLE-specific defaults.
+  + Change glib2 BuildRequires to glib2-devel, since we need the
+    %glib2_gsettings_schema_* macros.
+  + Create post/postun scripts for all packages, using the
+    %glib2_gsettings_schema_post(un) macros.
+  + This fixes bnc#676301 and bnc#687780.
+- Add Requires for desktop-data-{openSUSE,SLED} to
+  gio-branding-{openSUSE,SLED,SLES} to make sure the wallpaper is
+  installed.
+- Bump version to 12.1.
+- Update summary and description.
+- Add Url tag.
+
+-------------------------------------------------------------------
+Fri Jan 14 15:07:05 UTC 2011 - gber@opensuse.org
+
+- added defaults for the XFCE and LXDE desktops
+
+-------------------------------------------------------------------
+Thu Jan 13 15:36:30 CET 2011 - vuntz@opensuse.org
+
+- Update glib2-branding-openSUSE-gnome_defaults.conf:
+  MozillaFirefox.desktop has been renamed to firefox.desktop.
+
+-------------------------------------------------------------------
+Fri Oct  8 11:45:36 CEST 2010 - vuntz@opensuse.org
+
+- Bump version to 11.4.
+
+-------------------------------------------------------------------
+Thu Jul 22 13:27:04 CEST 2010 - vuntz@opensuse.org
+
+- Add glib2 and glib2-branding-upstream BuildRequires, so we can
+  get the right version of glib2, which is needed to provide the
+  right version of glib2-branding.
+- Bump version to 11.3.
+- Change the order of the packageand() in Supplements to fix
+  rpmlint warnings.
+
+-------------------------------------------------------------------
+Mon May 25 18:05:31 CEST 2009 - vuntz@novell.com
+
+- Merge change from SLED: Prefer LinDVD for DVD and mpeg video
+  playback and prefer flashplayer for its mimetypes, when installed
+  (bnc#473050)
+
+-------------------------------------------------------------------
+Tue Feb 17 10:41:23 CST 2009 - gburt@suse.de
+
+- moonlight-media-player was renamed to moonshine (bnc#466649)
+
+-------------------------------------------------------------------
+Thu Jan 15 15:19:42 CST 2009 - gburt@suse.de
+
+- Prefer moonlight-media-player for WM mimetypes (bnc#466649)
+
+-------------------------------------------------------------------
+Wed Nov 12 11:53:02 CET 2008 - vuntz@novell.com
+
+- Force impress.desktop for application/vnd.sun.xml.impress and
+  application/vnd.oasis.opendocument.presentation since evince can
+  also read them. Should fix bnc#439586.
+
+-------------------------------------------------------------------
+Tue Nov  4 15:31:12 CET 2008 - sbrabec@suse.cz
+
+- Create SLES and SLED clones of the package (bnc#438887).
+
+-------------------------------------------------------------------
+Mon Oct  6 16:36:22 CEST 2008 - sbrabec@suse.cz
+
+- Conflict with other branding providers (FATE#304881).
+
+-------------------------------------------------------------------
+Fri Jul 25 14:05:37 CEST 2008 - sbrabec@suse.cz
+
+- nautilus-folder-handler added to gnome-defaults.conf (bnc#410728)
+
+-------------------------------------------------------------------
+Fri Jul 18 13:31:01 EDT 2008 - jpr@novell.com
+
+- Use banshee-1.desktop instead of banshee.desktop (bnc#406741)
+
+-------------------------------------------------------------------
+Mon May  5 14:48:22 CEST 2008 - sbrabec@suse.cz
+
+- Prefer eog over evince for image/tiff (bnc#346517).
+
+-------------------------------------------------------------------
+Wed Apr 30 12:05:29 CEST 2008 - sbrabec@suse.cz
+
+- Prefer gedit over writer for text/plain (bnc#382168).
+
+-------------------------------------------------------------------
+Mon Apr 14 19:14:37 CEST 2008 - sbrabec@suse.cz
+
+- Use packageand form of branding supplement and removed self
+  conflict.
+
+-------------------------------------------------------------------
+Wed Apr  9 13:55:41 CEST 2008 - sbrabec@suse.cz
+
+- Split gnome_defaults.conf to a separate branding-style package,
+  so branding vendors can easily change default applications.
+- Prefer both software installers over file-roller in
+  gnome_defaults.conf (bnc#377979, fate#302267).
+

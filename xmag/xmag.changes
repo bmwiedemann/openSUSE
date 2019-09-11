@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Fri Apr 24 15:03:47 UTC 2015 - sndirsch@suse.com
+
+- Update to version 1.0.6:
+  * config: Add missing AC_CONFIG_SRCDIR
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Fix typos & wording issues in source comments
+  * Convert sprintf to snprintf
+  * Delete trailing whitespace from *.[ch] files
+
+-------------------------------------------------------------------
+Thu Feb  6 10:12:23 UTC 2014 - sndirsch@suse.com
+
+- fixed license to X11 in specfile 
+
+-------------------------------------------------------------------
+Fri Jan 18 21:48:26 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.5:
+  + Use lrint() from math library if available.
+  + Remove obsolete ISC support.
+  + man: remove trailing spaces and tabs.
+  + config:
+    - Move man pages into their own directory
+    - Replace deprecated AM_CONFIG_HEADER with AC_CONFIG_HEADERS.
+    - Replace deprecated AC_HELP_STRING with AS_HELP_STRING.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xmag from xorg-x11. Initial version: 1.0.4.
+

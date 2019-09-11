@@ -1,0 +1,33 @@
+--- src/openwbem/adapter/Converter.cpp
++++ src/openwbem/adapter/Converter.cpp	2007/11/02 12:28:09
+@@ -114,7 +114,7 @@ static void _to_openwbem_scalar(
+ 
+         case CHAR16:
+             //value.set(Pegasus::Char16(*((char16*)field)));
+-            value.set(CIMValue(OpenWBEM::String((*((char16*)field))))); 
++            value.set(CIMValue(OpenWBEM::Char16(UInt16((*((char16*)field)).code())).toString())); 
+             break;
+ 
+         case STRING:
+--- src/openwbem/adapter/OpenWBEM_Adapter.cpp
++++ src/openwbem/adapter/OpenWBEM_Adapter.cpp	2007/11/02 12:07:26
+@@ -393,6 +393,10 @@ void OpenWBEM_Adapter::modifyInstance(
+ 
+     Ref<Instance> ci_d(ci); 
+ 
++    // Create model.
++    Instance* model = clone(ci);
++    Ref<Instance> model_d(model);
++
+     // marks propertied mentioned in property list as non-null. 
+     if (Converter::de_nullify_properties(propertyList, ci) != 0)
+     {
+@@ -400,7 +404,7 @@ void OpenWBEM_Adapter::modifyInstance(
+     }
+ 
+     // Invoke the provider
+-    Modify_Instance_Status status = _provider->modify_instance(ci); 
++    Modify_Instance_Status status = _provider->modify_instance(model, ci); 
+     _check(status); 
+ }
+ 

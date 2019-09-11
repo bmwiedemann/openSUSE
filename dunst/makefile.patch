@@ -1,0 +1,50 @@
+Index: dunst-1.4.0/Makefile
+===================================================================
+--- dunst-1.4.0.orig/Makefile
++++ dunst-1.4.0/Makefile
+@@ -8,30 +8,7 @@ ifneq ($(wildcard ./.git/),)
+ VERSION := $(shell ${GIT} describe --tags)
+ endif
+ 
+-ifeq (,${SYSTEMD})
+-# Check for systemctl to avoid discrepancies on systems, where
+-# systemd is installed, but systemd.pc is in another package
+-systemctl := $(shell command -v ${SYSTEMCTL} >/dev/null && echo systemctl)
+-ifeq (systemctl,${systemctl})
+ SYSTEMD := 1
+-else
+-SYSTEMD := 0
+-endif
+-endif
+-
+-SERVICEDIR_DBUS ?= $(shell $(PKG_CONFIG) dbus-1 --variable=session_bus_services_dir)
+-SERVICEDIR_DBUS := ${SERVICEDIR_DBUS}
+-ifeq (,${SERVICEDIR_DBUS})
+-$(error "Failed to query $(PKG_CONFIG) for package 'dbus-1'!")
+-endif
+-
+-ifneq (0,${SYSTEMD})
+-SERVICEDIR_SYSTEMD ?= $(shell $(PKG_CONFIG) systemd --variable=systemduserunitdir)
+-SERVICEDIR_SYSTEMD := ${SERVICEDIR_SYSTEMD}
+-ifeq (,${SERVICEDIR_SYSTEMD})
+-$(error "Failed to query $(PKG_CONFIG) for package 'systemd'!")
+-endif
+-endif
+ 
+ LIBS := $(shell $(PKG_CONFIG) --libs   ${pkg_config_packs})
+ INCS := $(shell $(PKG_CONFIG) --cflags ${pkg_config_packs})
+@@ -165,11 +142,12 @@ install-doc:
+ 
+ install-service: install-service-dbus
+ install-service-dbus: service-dbus
+-	install -Dm644 org.knopwob.dunst.service ${DESTDIR}${SERVICEDIR_DBUS}/org.knopwob.dunst.service
++	mkdir -p ${DESTDIR}${PREFIX}/share/dbus-1/services/
++	install -m644 org.knopwob.dunst.service ${DESTDIR}${PREFIX}/share/dbus-1/services
+ ifneq (0,${SYSTEMD})
+ install-service: install-service-systemd
+ install-service-systemd: service-systemd
+-	install -Dm644 dunst.systemd.service ${DESTDIR}${SERVICEDIR_SYSTEMD}/dunst.service
++	install -Dm644 dunst.systemd.service ${DESTDIR}${PREFIX}/lib/systemd/user/dunst.service
+ endif
+ 
+ uninstall: uninstall-service

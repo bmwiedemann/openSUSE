@@ -1,0 +1,12 @@
+Index: google-perftools-1.8/src/base/elf_mem_image.h
+===================================================================
+--- google-perftools-1.8.orig/src/base/elf_mem_image.h
++++ google-perftools-1.8/src/base/elf_mem_image.h
+@@ -46,6 +46,7 @@
+ 
+ #define HAVE_ELF_MEM_IMAGE 1
+ 
++#include <cstddef>
+ #include <stdlib.h>
+ #include <link.h>  // for ElfW
+ 

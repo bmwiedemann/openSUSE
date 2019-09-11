@@ -1,0 +1,95 @@
+Index: pesign-113/util/Makefile
+===================================================================
+--- pesign-113.orig/util/Makefile
++++ pesign-113/util/Makefile
+@@ -7,7 +7,7 @@ include $(TOPDIR)/Make.efirules
+ include $(TOPDIR)/Make.defaults
+ 
+ FORMAT=efi-app-$(HOSTARCH)
+-LDFLAGS = -nostdlib -T $(LIBDIR)/gnuefi/elf_$(HOSTARCH)_efi.lds -shared -Bsymbolic $(LIBDIR)/gnuefi/crt0-efi-$(HOSTARCH).o -L$(LIBDIR)
++LDFLAGS = -nostdlib -T $(LIBDIR)/elf_$(HOSTARCH)_efi.lds -shared -Bsymbolic $(LIBDIR)/crt0-efi-$(HOSTARCH).o -L$(LIBDIR)
+ LIBS=-lefi -lgnuefi $(shell $(CC) -print-libgcc-file-name)
+ CCLDFLAGS =
+ BUILDFLAGS = -I/usr/include/efi/ -I/usr/include/efi/$(HOSTARCH)/ -I/usr/include/efi/protocol -fpic -fshort-wchar -fno-reorder-functions -fno-strict-aliasing -fno-merge-constants -mno-red-zone -Wimplicit-function-declaration
+@@ -20,8 +20,8 @@ clean :
+ 	@rm -rfv *.o *.a *.so .*.d $(TARGETS)
+ 
+ install :
+-	$(INSTALL) -d -m 755 $(INSTALLROOT)/boot/efi/EFI/redhat/
+-	$(INSTALL) -m 755 *.efi $(INSTALLROOT)/boot/efi/EFI/redhat/
++	$(INSTALL) -d -m 755 $(INSTALLROOT)/boot/efi/EFI/SuSE/
++	$(INSTALL) -m 755 *.efi $(INSTALLROOT)/boot/efi/EFI/SuSE/
+ 
+ install_systemd:
+ 
+Index: pesign-113/src/pesign.sysvinit.in
+===================================================================
+--- pesign-113.orig/src/pesign.sysvinit.in
++++ pesign-113/src/pesign.sysvinit.in
+@@ -6,16 +6,19 @@
+ # processname: /usr/bin/pesign
+ # pidfile: /var/run/pesign.pid
+ ### BEGIN INIT INFO 
+-# Provides: pesign
+-# Default-Start:
+-# Default-Stop:
++# Provides:          pesign
++# Should-Start:      $remote_fs
++# Should-Stop:       $remote_fs
++# Required-Start:
++# Required-Stop:
++# Default-Start:     2 3 5
+ # Short-Description: The pesign PE signing daemon
+ # Description: The pesign PE signing daemon
+ ### END INIT INFO
+ 
+-. /etc/init.d/functions
+ [ -f /usr/bin/pesign ] || exit 1
+ 
++PESIGN_PIDFILE=/var/run/pesign.pid
+ RETVAL=0
+ 
+ start(){
+@@ -23,7 +26,7 @@ start(){
+     mkdir /var/run/pesign 2>/dev/null &&
+         chown pesign:pesign /var/run/pesign &&
+         chmod 0770 /var/run/pesign
+-    daemon /usr/bin/pesign --daemonize
++    startproc -f -p "$PESIGN_PIDFILE" /usr/bin/pesign --daemonize
+     RETVAL=$?
+     echo
+     touch /var/lock/subsys/pesign
+@@ -32,7 +35,7 @@ start(){
+ 
+ stop(){
+     echo -n "Stopping pesign: "
+-    killproc -p /var/run/pesign.pid pesignd
++    killproc -p /run/pesign.pid pesignd
+     RETVAL=$?
+     echo
+     rm -f /var/lock/subsys/pesign
+Index: pesign-113/Make.defaults
+===================================================================
+--- pesign-113.orig/Make.defaults
++++ pesign-113/Make.defaults
+@@ -61,7 +61,7 @@ CPPFLAGS ?=
+ RANLIBFLAGS	:= $(if $(filter $(CC),gcc),-D)
+ ARFLAGS := $(if $(filter $(CC),gcc),-Dcvqs)$(if $(filter $(CC),clang),-cqvs)
+ 
+-LDLIBS	= $(foreach lib,$(LIBS),-l$(lib)) $(call pkg-config-ldlibs)
++LDLIBS	= -lpthread $(foreach lib,$(LIBS),-l$(lib)) $(call pkg-config-ldlibs)
+ 
+ ifeq ($(ARCH),ia64)
+   efi_cflags += -mfixed-range=f32-f127
+Index: pesign-113/Makefile
+===================================================================
+--- pesign-113.orig/Makefile
++++ pesign-113/Makefile
+@@ -11,7 +11,6 @@ SUBDIRS := include libdpe src
+ 
+ install :
+ 	$(INSTALL) -d -m 755 $(INSTALLROOT)$(docdir)/pesign-$(VERSION)/
+-	$(INSTALL) -pm 644 COPYING $(INSTALLROOT)$(docdir)/pesign-$(VERSION)/
+ 	@set -e ; for x in $(SUBDIRS) ; do \
+ 		$(MAKE) -C $$x $@ ; \
+ 	done

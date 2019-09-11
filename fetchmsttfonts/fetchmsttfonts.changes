@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Fri Aug 11 15:21:20 UTC 2017 - 9@cirno.systems
+
+- Remove unnecessary BuildRequires
+- Refactor download script
+  * Use sf.net automatic mirror selection
+  * Remove proxy settings code as it is already applied as part of
+    openSUSE’s default /etc/profile.sh
+  * Fix some issues pointed out by shellcheck
+
+-------------------------------------------------------------------
+Thu Dec 10 22:19:05 UTC 2015 - astieger@suse.com
+
+- verify md5 and sha1 checksums (sourced from upstream),
+  SHA-512 checksums (generated locally) boo#958651
+- no longer download the Andale file twice
+- update license text for new FSF address
+
+-------------------------------------------------------------------
+Mon May 11 08:56:22 UTC 2015 - meissner@suse.com
+
+- remove voxel from server list (gone) bsc#930338
+
+-------------------------------------------------------------------
+Sat Nov 15 05:36:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in fetchmsttfonts.sh script
+
+-------------------------------------------------------------------
+Wed Sep 19 13:18:51 UTC 2012 - meissner@suse.com
+
+- /etc/sysconfig/proxy could be missing bnc#777151
+
+-------------------------------------------------------------------
+Fri Dec  9 11:04:26 CET 2011 - meissner@suse.de
+
+- post (and display) EULA.html to text as post-install message.
+
+-------------------------------------------------------------------
+Wed Oct 19 10:57:37 CEST 2011 - jdelvare@suse.de
+
+- Drop references to legacy package agfa-fonts.
+- Properly reference all files and directories so that they are
+  deleted on package removal.
+
+-------------------------------------------------------------------
+Mon Aug  8 15:32:16 CEST 2011 - meissner@suse.de
+
+- Add COPYING file bnc#656777
+
+-------------------------------------------------------------------
+Wed Mar  9 14:05:38 CET 2011 - meissner@suse.de
+
+- 11.4 submission
+
+-------------------------------------------------------------------
+Tue Jul 13 10:39:12 CEST 2010 - dmueller@suse.de
+
+- submission for 11.3 (bnc#621540)
+
+-------------------------------------------------------------------
+Fri Jun 18 16:02:17 CEST 2010 - dmueller@suse.de
+
+- bump version to 11.3 
+
+-------------------------------------------------------------------
+Tue Oct 13 17:05:00 CEST 2009 - meissner@suse.de
+
+- fixed to use new sourceforge download URLs. bnc#533112, bnc#546461
+
+-------------------------------------------------------------------
+Wed Jan 28 14:48:13 CET 2009 - meissner@suse.de
+
+- %ghost the font files so they get removed on -e
+- run font-config on %postun (for removal), buildrequire it and
+  freetype2 for it.
+
+-------------------------------------------------------------------
+Wed Dec 17 11:43:50 CET 2008 - meissner@suse.de
+
+- exit 0 when we are running non-chrooted (oS 11.1 bug in some
+  installation methods) bnc#456795
+
+-------------------------------------------------------------------
+Fri Dec  5 16:36:21 CET 2008 - meissner@suse.de
+
+- require coreutils (for /usr/bin/id) and fonts-config
+  for minimal builds. bnc#456795
+
+-------------------------------------------------------------------
+Mon Dec  1 01:23:37 CET 2008 - ro@suse.de
+
+- insert newline after macro to help macro expansion ...
+
+-------------------------------------------------------------------
+Sun Nov 30 18:49:07 CET 2008 - coolo@suse.de
+
+- according to my test case, it works if there is no provides/obsoletes
+  to the old name
+
+-------------------------------------------------------------------
+Fri Nov 28 16:05:37 CET 2008 - meissner@suse.de
+
+- reviewed and adjusted server list. Some servers no longer
+  carried the fonts.
+
+-------------------------------------------------------------------
+Fri Nov 28 14:59:58 CET 2008 - dmueller@suse.de
+
+- update for 11.1
+  * add eula to package
+
+-------------------------------------------------------------------
+Tue Jun 24 17:54:33 CEST 2008 - meissner@suse.de
+
+- initial package
+	 - included fetchmsttfonts.sh script from 10.3
+

@@ -1,0 +1,318 @@
+--- a/tests/run.py
++++ b/tests/run.py
+@@ -17,6 +17,7 @@ from __future__ import print_function
+ import os
+ import sys
+ import warnings
++import unittest
+ 
+ # only find tests in this directory
+ if os.path.dirname(__file__):
+@@ -30,12 +31,6 @@ warnings.filterwarnings("error", module=
+                         category=DeprecationWarning)
+ 
+ 
+-try:
+-    import nose
+-except ImportError:
+-    print('nose is required to run the Pygments test suite')
+-    sys.exit(1)
+-
+ # make sure the current source is first on sys.path
+ sys.path.insert(0, '..')
+ 
+@@ -55,4 +50,4 @@ else:
+     print('Pygments test suite running (Python %s)...' % sys.version.split()[0],
+           file=sys.stderr)
+ 
+-nose.main()
++unittest.main()
+--- a/tests/support.py
++++ b/tests/support.py
+@@ -5,7 +5,7 @@ Support for Pygments tests
+ 
+ import os
+ 
+-from nose import SkipTest
++from unittest import SkipTest
+ 
+ 
+ def location(mod_name):
+--- a/tests/test_cmdline.py
++++ b/tests/test_cmdline.py
+@@ -16,11 +16,10 @@ import sys
+ import tempfile
+ import unittest
+ 
+-import support
++from . import support
+ from pygments import cmdline, highlight
+ from pygments.util import BytesIO, StringIO
+ 
+-
+ TESTFILE, TESTDIR = support.location(__file__)
+ TESTCODE = '''\
+ def func(args):
+@@ -46,7 +45,7 @@ def run_cmdline(*args, **kwds):
+     new_stdin.write(kwds.get('stdin', ''))
+     new_stdin.seek(0, 0)
+     try:
+-        ret = cmdline.main(['pygmentize'] + list(args))
++        ret = cmdline.main(['./pygmentize'] + list(args))
+     finally:
+         sys.stdin = saved_stdin
+         sys.stdout = saved_stdout
+@@ -111,8 +110,8 @@ class CmdLineTest(unittest.TestCase):
+                 os.unlink(name)
+ 
+     def test_load_from_file(self):
+-        lexer_file = os.path.join(TESTDIR, 'support', 'python_lexer.py')
+-        formatter_file = os.path.join(TESTDIR, 'support', 'html_formatter.py')
++        lexer_file = os.path.join('tests', 'support', 'python_lexer.py')
++        formatter_file = os.path.join('tests', 'support', 'html_formatter.py')
+ 
+         # By default, use CustomLexer
+         o = self.check_success('-l', lexer_file, '-f', 'html',
+@@ -143,7 +142,7 @@ class CmdLineTest(unittest.TestCase):
+ 
+     def test_h_opt(self):
+         o = self.check_success('-h')
+-        self.assertTrue('Usage:' in o)
++        self.assertIn('Usage:', o)
+ 
+     def test_L_opt(self):
+         o = self.check_success('-L')
+@@ -157,37 +156,37 @@ class CmdLineTest(unittest.TestCase):
+         filename = TESTFILE
+         o = self.check_success('-Ofull=1,linenos=true,foo=bar',
+                                '-fhtml', filename)
+-        self.assertTrue('<html' in o)
+-        self.assertTrue('class="linenos"' in o)
++        self.assertIn('<html', o)
++        self.assertIn('class="linenos"', o)
+ 
+         # "foobar" is invalid for a bool option
+         e = self.check_failure('-Ostripnl=foobar', TESTFILE)
+-        self.assertTrue('Error: Invalid value' in e)
++        self.assertIn('Error: Invalid value', e)
+         e = self.check_failure('-Ostripnl=foobar', '-lpy')
+-        self.assertTrue('Error: Invalid value' in e)
++        self.assertIn('Error: Invalid value', e)
+ 
+     def test_P_opt(self):
+         filename = TESTFILE
+         o = self.check_success('-Pfull', '-Ptitle=foo, bar=baz=,',
+                                '-fhtml', filename)
+-        self.assertTrue('<title>foo, bar=baz=,</title>' in o)
++        self.assertIn('<title>foo, bar=baz=,</title>', o)
+ 
+     def test_F_opt(self):
+         filename = TESTFILE
+         o = self.check_success('-Fhighlight:tokentype=Name.Blubb,'
+                                'names=TESTFILE filename',
+                                '-fhtml', filename)
+-        self.assertTrue('<span class="n n-Blubb' in o)
++        self.assertIn('<span class="n n-Blubb', o)
+ 
+     def test_H_opt(self):
+         o = self.check_success('-H', 'formatter', 'html')
+-        self.assertTrue('HTML' in o)
++        self.assertIn('HTML', o)
+         o = self.check_success('-H', 'lexer', 'python')
+-        self.assertTrue('Python' in o)
++        self.assertIn('Python', o)
+         o = self.check_success('-H', 'filter', 'raiseonerror')
+-        self.assertTrue('raiseonerror', o)
++        self.assertIn('raiseonerror', o)
+         e = self.check_failure('-H', 'lexer', 'foobar')
+-        self.assertTrue('not found' in e)
++        self.assertIn('not found', e)
+ 
+     def test_S_opt(self):
+         o = self.check_success('-S', 'default', '-f', 'html', '-O', 'linenos=1')
+@@ -196,11 +195,11 @@ class CmdLineTest(unittest.TestCase):
+             # every line is for a token class
+             parts = line.split()
+             self.assertTrue(parts[0].startswith('.'))
+-            self.assertTrue(parts[1] == '{')
++            self.assertEqual(parts[1], '{')
+             if parts[0] != '.hll':
+-                self.assertTrue(parts[-4] == '}')
+-                self.assertTrue(parts[-3] == '/*')
+-                self.assertTrue(parts[-1] == '*/')
++                self.assertEqual(parts[-4], '}')
++                self.assertEqual(parts[-3], '/*')
++                self.assertEqual(parts[-1], '*/')
+         self.check_failure('-S', 'default', '-f', 'foobar')
+ 
+     def test_N_opt(self):
+@@ -228,68 +227,68 @@ class CmdLineTest(unittest.TestCase):
+             self.check_failure(*opts, code=2)
+ 
+     def test_errors(self):
++        empty_file = os.path.join('tests', 'support', 'empty.py')
++
+         # input file not found
+         e = self.check_failure('-lpython', 'nonexistent.py')
+-        self.assertTrue('Error: cannot read infile' in e)
+-        self.assertTrue('nonexistent.py' in e)
++        self.assertIn('Error: cannot read infile', e)
++        self.assertIn('nonexistent.py', e)
+ 
+         # lexer not found
+         e = self.check_failure('-lfooo', TESTFILE)
+-        self.assertTrue('Error: no lexer for alias' in e)
++        self.assertIn('Error: no lexer for alias', e)
+ 
+         # cannot load .py file without load_from_file flag
+         e = self.check_failure('-l', 'nonexistent.py', TESTFILE)
+-        self.assertTrue('Error: no lexer for alias' in e)
++        self.assertIn('Error: no lexer for alias', e)
+ 
+         # lexer file is missing/unreadable
+         e = self.check_failure('-l', 'nonexistent.py',
+                                '-x', TESTFILE)
+-        self.assertTrue('Error: cannot read' in e)
++        self.assertIn('Error: cannot read', e)
+ 
+         # lexer file is malformed
+-        e = self.check_failure('-l', 'support/empty.py',
+-                               '-x', TESTFILE)
+-        self.assertTrue('Error: no valid CustomLexer class found' in e)
++        e = self.check_failure('-l', empty_file, '-x', TESTFILE)
++        self.assertIn('Error: no valid CustomLexer class found', e)
+ 
+         # formatter not found
+         e = self.check_failure('-lpython', '-ffoo', TESTFILE)
+-        self.assertTrue('Error: no formatter found for name' in e)
++        self.assertIn('Error: no formatter found for name', e)
+ 
+         # formatter for outfile not found
+         e = self.check_failure('-ofoo.foo', TESTFILE)
+-        self.assertTrue('Error: no formatter found for file name' in e)
++        self.assertIn('Error: no formatter found for file name', e)
+ 
+         # cannot load .py file without load_from_file flag
+         e = self.check_failure('-f', 'nonexistent.py', TESTFILE)
+-        self.assertTrue('Error: no formatter found for name' in e)
++        self.assertIn('Error: no formatter found for name', e)
+ 
+         # formatter file is missing/unreadable
+         e = self.check_failure('-f', 'nonexistent.py',
+                                '-x', TESTFILE)
+-        self.assertTrue('Error: cannot read' in e)
++        self.assertIn('Error: cannot read', e)
+ 
+         # formatter file is malformed
+-        e = self.check_failure('-f', 'support/empty.py',
+-                               '-x', TESTFILE)
+-        self.assertTrue('Error: no valid CustomFormatter class found' in e)
++        e = self.check_failure('-f', empty_file, '-x', TESTFILE)
++        self.assertIn('Error: no valid CustomFormatter class found', e)
+ 
+         # output file not writable
+         e = self.check_failure('-o', os.path.join('nonexistent', 'dir', 'out.html'),
+                                '-lpython', TESTFILE)
+-        self.assertTrue('Error: cannot open outfile' in e)
+-        self.assertTrue('out.html' in e)
++        self.assertIn('Error: cannot open outfile', e)
++        self.assertIn('out.html', e)
+ 
+         # unknown filter
+         e = self.check_failure('-F', 'foo', TESTFILE)
+-        self.assertTrue('Error: filter \'foo\' not found' in e)
++        self.assertIn('Error: filter \'foo\' not found', e)
+ 
+     def test_exception(self):
+         cmdline.highlight = None  # override callable to provoke TypeError
+         try:
+             # unexpected exception while highlighting
+             e = self.check_failure('-lpython', TESTFILE)
+-            self.assertTrue('*** Error while highlighting:' in e)
+-            self.assertTrue('TypeError' in e)
++            self.assertIn('*** Error while highlighting:', e)
++            self.assertIn('TypeError', e)
+ 
+             # same with -v: should reraise the exception
+             try:
+--- /dev/null
++++ b/tests/__init__.py
+@@ -0,0 +1 @@
++
+--- a/tests/test_basic_api.py
++++ b/tests/test_basic_api.py
+@@ -18,7 +18,7 @@ from pygments.lexer import RegexLexer
+ from pygments.formatters.img import FontNotFound
+ from pygments.util import text_type, StringIO, BytesIO, xrange, ClassNotFound
+ 
+-import support
++from . import support
+ 
+ TESTFILE, TESTDIR = support.location(__file__)
+ 
+--- a/tests/test_examplefiles.py
++++ b/tests/test_examplefiles.py
+@@ -18,7 +18,7 @@ from pygments.lexers import get_lexer_fo
+ from pygments.token import Error
+ from pygments.util import ClassNotFound
+ 
+-import support
++from . import support
+ 
+ STORE_OUTPUT = False
+ 
+--- a/tests/test_html_formatter.py
++++ b/tests/test_html_formatter.py
+@@ -21,7 +21,7 @@ from pygments.lexers import PythonLexer
+ from pygments.formatters import HtmlFormatter, NullFormatter
+ from pygments.formatters.html import escape_html
+ 
+-import support
++from . import support
+ 
+ TESTFILE, TESTDIR = support.location(__file__)
+ 
+--- a/tests/test_irc_formatter.py
++++ b/tests/test_irc_formatter.py
+@@ -16,7 +16,7 @@ from pygments.util import StringIO
+ from pygments.lexers import PythonLexer
+ from pygments.formatters import IRCFormatter
+ 
+-import support
++from . import support
+ 
+ tokensource = list(PythonLexer().get_tokens("lambda x: 123"))
+ 
+--- a/tests/test_latex_formatter.py
++++ b/tests/test_latex_formatter.py
+@@ -16,7 +16,7 @@ import tempfile
+ from pygments.formatters import LatexFormatter
+ from pygments.lexers import PythonLexer
+ 
+-import support
++from . import support
+ 
+ TESTFILE, TESTDIR = support.location(__file__)
+ 
+--- a/tests/test_rtf_formatter.py
++++ b/tests/test_rtf_formatter.py
+@@ -8,7 +8,7 @@
+ """
+ 
+ import unittest
+-from string_asserts import StringTests
++from .string_asserts import StringTests
+ 
+ from pygments.util import StringIO
+ from pygments.formatters import RtfFormatter
+--- a/tests/test_string_asserts.py
++++ b/tests/test_string_asserts.py
+@@ -8,7 +8,7 @@
+ """
+ 
+ import unittest
+-from string_asserts import StringTests
++from .string_asserts import StringTests
+ 
+ class TestStringTests(StringTests, unittest.TestCase):
+ 

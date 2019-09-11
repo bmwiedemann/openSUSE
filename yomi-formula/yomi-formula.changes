@@ -1,0 +1,172 @@
+-------------------------------------------------------------------
+Wed Aug 07 15:32:14 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1565191883.64eabeb:
+  * devices.wipe: clean disk information
+  * pillar: add to MicroOS the new subvols
+  * pillar: fix services for MicroOS
+  * partitioned: ignore flags that contains type=
+  * partitioned: wipefs the new partition
+
+-------------------------------------------------------------------
+Mon Aug 05 15:08:03 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1565017592.7207cea:
+  * documentation: add a note about the pillar top.sls
+
+-------------------------------------------------------------------
+Wed Jul 31 13:14:12 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1564577012.3d7decf:
+  * _default_target: fix systemctl call
+  * documentation: add top.sls creation
+
+-------------------------------------------------------------------
+Mon Jul 29 14:15:36 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Change Requires to Requires(pre) for Salt packages, to guarantee
+  ordering of installation and the presence of the 'salt' group.
+
+-------------------------------------------------------------------
+Mon Jul 29 13:52:23 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Require salt-master for non SLE/Leap 15.1 nor Tumbleweed
+
+-------------------------------------------------------------------
+Fri Jul 26 14:16:26 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Remove the top.sls provided as an example from Yomi
+
+-------------------------------------------------------------------
+Fri Jul 26 12:38:45 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1564144697.5bce6e9:
+  * pillar: add user certificate as example
+
+-------------------------------------------------------------------
+Fri Jul 26 12:09:32 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1564140669.8074699:
+  * chroot: freeze and unfreeze packages
+  * salt-minion: fix unless condition
+  * users: support cerfificates
+  * pillar: parametrize the device type
+  * pillar: remove extra user
+  * pillar: set US as default keryboard layout
+  * pillar: add a Kubic pillar
+  * Split documentation about Kubic
+  * Document boot parameters master and minion_id
+  * _default_target: add config option to set target
+  * README: fix references to installer.sls
+
+-------------------------------------------------------------------
+Wed Jun 19 14:10:18 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560951712.33b7ae5:
+  * control_plane: use the first interface IP
+  * Fix macros.log call
+  * use-case-as-a-kubic-worker: fix monitor path
+
+-------------------------------------------------------------------
+Wed Jun 19 12:32:21 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560947494.0b6189a:
+  * network: fix dhcp config path
+
+-------------------------------------------------------------------
+Wed Jun 19 12:19:19 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560946703.1c4d880:
+  * Add use-case-deploying-kubic-from-scratch document
+
+-------------------------------------------------------------------
+Tue Jun 18 12:06:07 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560859479.b7d8fe1:
+  * network: configure network to accept hostanames
+  * Document --adv-addr in kubicctl
+
+-------------------------------------------------------------------
+Mon Jun 17 12:42:45 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560775166.35e3299:
+  * network: use the same ifcfg config file from YaST
+  * Add advanced configuration section
+  * Add use-case-as-a-kubic-worker documentation
+
+-------------------------------------------------------------------
+Fri Jun 14 15:40:18 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560526707.be4ae81:
+  * top: use generic glob
+
+-------------------------------------------------------------------
+Fri Jun 14 09:36:43 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560504884.48ef883:
+  * yomi: move all the states to a new ns
+
+-------------------------------------------------------------------
+Thu Jun 13 13:37:37 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Move to /usr/share/salt-formulas
+- Add example configuration files
+
+-------------------------------------------------------------------
+Wed Jun 12 12:12:33 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560256453.82ef153:
+  * mark: mark successful installations
+  * firstboot: add systemd-firstboot support
+  * network: configure all interfaces
+  * fstab: use the not_change attribute
+  * Support salt-minion installation
+  * Unify YAML boolean syntax
+  * network: replace network detection algorithm
+  * README: document services section
+  * services: use systemctl to find service status
+  * microos: enable crio and kubelet services
+  * services: add enabled / disabled states
+  * microos: add Kubic patterns
+  * devices: deduce the net name in order
+  * network: add basic network configuration
+  * software: support minimal installation
+  * MicroOS: add extra bootloader data
+  * MicroOS: add RO option for root subvolume
+  * MicroOS: fix size typo
+  * software: support pattern detection
+  * fstab: support non-default options
+  * post_install: use the btrfs.properties state
+  * MicroOS: Add new patterns in software section
+  * bootloader: Call grub2-set-default
+  * bootloader: Run grub2_mkconfig after configuration change
+  * bootloader: Add kernel and disable_os_prober features
+  * software: do not jump into inner states
+  * post_install: do not jump into inner states
+  * Rename states to use underscore
+  * device.umount: fix variable name
+  * MicroOS: use patterns instead of packages
+  * MicroOS: Add a pillar to deploy MicroOS
+  * LVM: Refactor LVM definition
+  * pillar: parametrize all the pillars
+  * devices.filter: rename to filter_ and create an alias
+
+-------------------------------------------------------------------
+Thu Mar 28 10:13:21 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1553705260.c137d0e:
+  * partmod: move partition logic to the module
+  * Extract unit parser from partitioned
+  * partition: introduce `id` attribute
+  * partitioned: move partitioned.devices to devices.filter
+  * partition: simplify fs_type look out
+  * partitioned: rename aligment to initial_gap
+  * README.md: Remove extra dot
+  * README.md: Comment about UEFI and secure boot.
+  * README.md: Add some notes about monitor.
+  * README.md: Add installation instructions.
+
+--------------------------------------------------------------------
+Mon Feb 25 10:38:16 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add initial version of Salt Yomi formula 

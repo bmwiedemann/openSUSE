@@ -1,0 +1,72 @@
+Index: mono-uia/UIAutomationBridge/AssemblyInfo.cs.in
+===================================================================
+--- mono-uia.orig/UIAutomationBridge/AssemblyInfo.cs.in	2012-01-24 19:29:28.000000000 +0000
++++ mono-uia/UIAutomationBridge/AssemblyInfo.cs.in	2012-01-24 19:29:43.000000000 +0000
+@@ -50,5 +50,3 @@
+ [assembly: CompilationRelaxations (CompilationRelaxations.NoStringInterning)]
+ [assembly: Debuggable (DebuggableAttribute.DebuggingModes.IgnoreSymbolStoreSequencePoints)]
+ [assembly: RuntimeCompatibility (WrapNonExceptionThrows = true)]
+-[assembly: PermissionSet (SecurityAction.RequestMinimum, Name = "FullTrust")]
+-[assembly: SecurityPermission (SecurityAction.RequestMinimum, SkipVerification = true)]
+Index: mono-uia/UIAutomationClient/AssemblyInfo.cs.in
+===================================================================
+--- mono-uia.orig/UIAutomationClient/AssemblyInfo.cs.in	2012-01-24 19:29:28.000000000 +0000
++++ mono-uia/UIAutomationClient/AssemblyInfo.cs.in	2012-01-24 19:29:50.000000000 +0000
+@@ -49,8 +49,6 @@
+ [assembly: CompilationRelaxations (CompilationRelaxations.NoStringInterning)]
+ [assembly: Debuggable (DebuggableAttribute.DebuggingModes.IgnoreSymbolStoreSequencePoints)]
+ [assembly: RuntimeCompatibility (WrapNonExceptionThrows = true)]
+-[assembly: PermissionSet (SecurityAction.RequestMinimum, Name = "FullTrust")]
+ 
+ [assembly: InternalsVisibleTo ("UiaDbusSource, PublicKey=00240000048000009400000006020000002400005253413100040000110000004bb98b1af6c1df0df8c02c380e116b7a7f0c8c827aecfccddc6e29b7c754cd608b49dfcef4df9699ad182e50f66afa4e68dabc7b6aeeec0aa4719a5f8e0aae8c193080a706adc3443a8356b1f254142034995532ac176398e12a30f6a74a119a89ac47672c9ae24d7e90de686557166e3b873cd707884431a0451d9d6f7fe795")]
+ [assembly: InternalsVisibleTo ("AtspiUiaSource, PublicKey=00240000048000009400000006020000002400005253413100040000110000004bb98b1af6c1df0df8c02c380e116b7a7f0c8c827aecfccddc6e29b7c754cd608b49dfcef4df9699ad182e50f66afa4e68dabc7b6aeeec0aa4719a5f8e0aae8c193080a706adc3443a8356b1f254142034995532ac176398e12a30f6a74a119a89ac47672c9ae24d7e90de686557166e3b873cd707884431a0451d9d6f7fe795")]
+-[assembly: SecurityPermission (SecurityAction.RequestMinimum, SkipVerification = true)]
+Index: mono-uia/UIAutomationProvider/AssemblyInfo.cs.in
+===================================================================
+--- mono-uia.orig/UIAutomationProvider/AssemblyInfo.cs.in	2012-01-24 19:29:28.000000000 +0000
++++ mono-uia/UIAutomationProvider/AssemblyInfo.cs.in	2012-01-24 19:29:55.000000000 +0000
+@@ -50,8 +50,6 @@
+ [assembly: CompilationRelaxations (CompilationRelaxations.NoStringInterning)]
+ [assembly: Debuggable (DebuggableAttribute.DebuggingModes.IgnoreSymbolStoreSequencePoints)]
+ [assembly: RuntimeCompatibility (WrapNonExceptionThrows = true)]
+-[assembly: PermissionSet (SecurityAction.RequestMinimum, Name = "FullTrust")]
+-[assembly: SecurityPermission (SecurityAction.RequestMinimum, SkipVerification = true)]
+ 
+ [assembly: InternalsVisibleTo("UIAutomationWinforms, PublicKey=00240000048000009400000006020000002400005253413100040000110000004bb98b1af6c1df0df8c02c380e116b7a7f0c8c827aecfccddc6e29b7c754cd608b49dfcef4df9699ad182e50f66afa4e68dabc7b6aeeec0aa4719a5f8e0aae8c193080a706adc3443a8356b1f254142034995532ac176398e12a30f6a74a119a89ac47672c9ae24d7e90de686557166e3b873cd707884431a0451d9d6f7fe795")]
+ [assembly: InternalsVisibleTo("UiaAtkBridge, PublicKey=00240000048000009400000006020000002400005253413100040000110000004bb98b1af6c1df0df8c02c380e116b7a7f0c8c827aecfccddc6e29b7c754cd608b49dfcef4df9699ad182e50f66afa4e68dabc7b6aeeec0aa4719a5f8e0aae8c193080a706adc3443a8356b1f254142034995532ac176398e12a30f6a74a119a89ac47672c9ae24d7e90de686557166e3b873cd707884431a0451d9d6f7fe795")]
+Index: mono-uia/UIAutomationSource/AssemblyInfo.cs.in
+===================================================================
+--- mono-uia.orig/UIAutomationSource/AssemblyInfo.cs.in	2012-01-24 19:29:28.000000000 +0000
++++ mono-uia/UIAutomationSource/AssemblyInfo.cs.in	2012-01-24 19:29:58.000000000 +0000
+@@ -50,5 +50,3 @@
+ [assembly: CompilationRelaxations (CompilationRelaxations.NoStringInterning)]
+ [assembly: Debuggable (DebuggableAttribute.DebuggingModes.IgnoreSymbolStoreSequencePoints)]
+ [assembly: RuntimeCompatibility (WrapNonExceptionThrows = true)]
+-[assembly: PermissionSet (SecurityAction.RequestMinimum, Name = "FullTrust")]
+-[assembly: SecurityPermission (SecurityAction.RequestMinimum, SkipVerification = true)]
+Index: mono-uia/UIAutomationTypes/AssemblyInfo.cs.in
+===================================================================
+--- mono-uia.orig/UIAutomationTypes/AssemblyInfo.cs.in	2012-01-24 19:29:28.000000000 +0000
++++ mono-uia/UIAutomationTypes/AssemblyInfo.cs.in	2012-01-24 19:30:04.000000000 +0000
+@@ -50,8 +50,6 @@
+ [assembly: CompilationRelaxations (CompilationRelaxations.NoStringInterning)]
+ [assembly: Debuggable (DebuggableAttribute.DebuggingModes.IgnoreSymbolStoreSequencePoints)]
+ [assembly: RuntimeCompatibility (WrapNonExceptionThrows = true)]
+-[assembly: PermissionSet (SecurityAction.RequestMinimum, Name = "FullTrust")]
+-[assembly: SecurityPermission (SecurityAction.RequestMinimum, SkipVerification = true)]
+ [assembly: InternalsVisibleTo("UIAutomationWinforms, PublicKey=00240000048000009400000006020000002400005253413100040000110000004bb98b1af6c1df0df8c02c380e116b7a7f0c8c827aecfccddc6e29b7c754cd608b49dfcef4df9699ad182e50f66afa4e68dabc7b6aeeec0aa4719a5f8e0aae8c193080a706adc3443a8356b1f254142034995532ac176398e12a30f6a74a119a89ac47672c9ae24d7e90de686557166e3b873cd707884431a0451d9d6f7fe795")]
+ [assembly: InternalsVisibleTo("UiaAtkBridge, PublicKey=00240000048000009400000006020000002400005253413100040000110000004bb98b1af6c1df0df8c02c380e116b7a7f0c8c827aecfccddc6e29b7c754cd608b49dfcef4df9699ad182e50f66afa4e68dabc7b6aeeec0aa4719a5f8e0aae8c193080a706adc3443a8356b1f254142034995532ac176398e12a30f6a74a119a89ac47672c9ae24d7e90de686557166e3b873cd707884431a0451d9d6f7fe795")]
+ [assembly: InternalsVisibleTo("UIAutomationWinformsTests, PublicKey=00240000048000009400000006020000002400005253413100040000110000004bb98b1af6c1df0df8c02c380e116b7a7f0c8c827aecfccddc6e29b7c754cd608b49dfcef4df9699ad182e50f66afa4e68dabc7b6aeeec0aa4719a5f8e0aae8c193080a706adc3443a8356b1f254142034995532ac176398e12a30f6a74a119a89ac47672c9ae24d7e90de686557166e3b873cd707884431a0451d9d6f7fe795")]
+Index: mono-uia/WindowsBase/AssemblyInfo.cs.in
+===================================================================
+--- mono-uia.orig/WindowsBase/AssemblyInfo.cs.in	2012-01-24 19:29:28.000000000 +0000
++++ mono-uia/WindowsBase/AssemblyInfo.cs.in	2012-01-24 19:30:09.000000000 +0000
+@@ -60,8 +60,6 @@
+ [assembly: RuntimeCompatibility (WrapNonExceptionThrows = true)]
+ [assembly: Dependency ("System,", LoadHint.Always)]
+ [assembly: SecurityCritical]
+-[assembly: PermissionSet (SecurityAction.RequestMinimum, Name = "FullTrust")]
+-[assembly: SecurityPermission (SecurityAction.RequestMinimum, SkipVerification = true)]
+ 
+ //[assembly: XmlnsPrefixAttribute ("http://schemas.microsoft.com/xps/2005/06", "metro")]
+ //[assembly: XmlnsPrefixAttribute ("http://schemas.microsoft.com/netfx/2007/xaml/presentation", "wpf")]

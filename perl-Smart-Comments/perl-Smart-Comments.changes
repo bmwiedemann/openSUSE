@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Sun Oct 25 10:15:58 UTC 2015 - coolo@suse.com
+
+- updated to 1.06
+   see /usr/share/doc/packages/perl-Smart-Comments/Changes
+
+-------------------------------------------------------------------
+Sat Jul 27 11:57:46 UTC 2013 - coolo@suse.com
+
+- updated to 1.000005
+    - Fixed typo in docs
+    - Fixed bad assumption (nolongdouble) in t/while_num.t
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:18 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Fri Jan 14 11:32:59 UTC 2011 - coolo@novell.com
+
+- initial package 1.0.4
+  * created by cpanspec 1.78.03
+

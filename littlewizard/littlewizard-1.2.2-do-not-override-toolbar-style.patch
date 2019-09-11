@@ -1,0 +1,12 @@
+Index: src/interface.cc
+===================================================================
+--- src/interface.cc.orig
++++ src/interface.cc
+@@ -141,7 +141,6 @@ void create_interface ()
+ 	GtkWidget *toolbar1 = gtk_toolbar_new ();
+ 	gtk_widget_show (toolbar1);
+ 	gtk_box_pack_start (GTK_BOX (vbox1), toolbar1, FALSE, FALSE, 0);
+-	gtk_toolbar_set_style (GTK_TOOLBAR (toolbar1), GTK_TOOLBAR_BOTH);
+ 
+ 	GtkWidget *tbnew = (GtkWidget*) gtk_tool_button_new_from_stock ("gtk-new");
+ 	gtk_widget_show (tbnew);

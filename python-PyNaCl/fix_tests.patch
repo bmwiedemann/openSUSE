@@ -1,0 +1,71 @@
+From 3479eaed36a32c6bd91331573a450a5bf099bdd5 Mon Sep 17 00:00:00 2001
+From: Alex Gaynor <alex.gaynor@gmail.com>
+Date: Mon, 1 Jul 2019 00:11:38 -0400
+Subject: [PATCH] Fixed tests for change in pytest repr (#546)
+
+* Fixed tests for change in pytest repr
+
+* Fixed tests for change in pytest repr
+
+* Fixed tests for change in pytest repr
+
+* Fixed tests for change in pytest repr
+---
+ tests/test_box.py        | 2 +-
+ tests/test_sealed_box.py | 2 +-
+ tests/test_secret.py     | 2 +-
+ tests/test_signing.py    | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_box.py b/tests/test_box.py
+index d547ac27..46f3b793 100644
+--- a/tests/test_box.py
++++ b/tests/test_box.py
+@@ -268,7 +268,7 @@ def test_box_wrong_length():
+ def check_type_error(expected, f, *args):
+     with pytest.raises(TypeError) as e:
+         f(*args)
+-    assert expected in str(e)
++    assert expected in str(e.value)
+ 
+ 
+ def test_wrong_types():
+diff --git a/tests/test_sealed_box.py b/tests/test_sealed_box.py
+index f7ba15c3..49ea2324 100644
+--- a/tests/test_sealed_box.py
++++ b/tests/test_sealed_box.py
+@@ -110,7 +110,7 @@ def test_sealed_box_decryption(privalice, pubalice, plaintext, encrypted):
+ def check_type_error(expected, f, *args):
+     with pytest.raises(TypeError) as e:
+         f(*args)
+-    assert expected in str(e)
++    assert expected in str(e.value)
+ 
+ 
+ def test_wrong_types():
+diff --git a/tests/test_secret.py b/tests/test_secret.py
+index 3b52459a..73987fcb 100644
+--- a/tests/test_secret.py
++++ b/tests/test_secret.py
+@@ -142,7 +142,7 @@ def test_secret_box_wrong_lengths():
+ def check_type_error(expected, f, *args):
+     with pytest.raises(TypeError) as e:
+         f(*args)
+-    assert expected in str(e)
++    assert expected in str(e.value)
+ 
+ 
+ def test_wrong_types():
+diff --git a/tests/test_signing.py b/tests/test_signing.py
+index 4304afb9..3e2cf359 100644
+--- a/tests/test_signing.py
++++ b/tests/test_signing.py
+@@ -219,7 +219,7 @@ def test_key_conversion(self):
+ def check_type_error(expected, f, *args):
+     with pytest.raises(TypeError) as e:
+         f(*args)
+-    assert expected in str(e)
++    assert expected in str(e.value)
+ 
+ 
+ def test_wrong_types():

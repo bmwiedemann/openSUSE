@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Mon Dec 18 23:42:47 UTC 2017 - jason.record@suse.com
+
+- Updated spec file with spec-cleaner suggestions
+- Now owns sca configuration, web and library directories
+
+-------------------------------------------------------------------
+Mon May 12 21:26:35 UTC 2014 - jrecord@suse.com
+
+- Moved reportfull.php to sca-appliance-broker and sca-appliance-agent
+- Fixed connection error
+- Fixed build errors for common directory
+- Moved to mysqli so db-*php have been replaced (bnc#876918)
+- Removed missing SR number field, only displays when SR found
+
+-------------------------------------------------------------------
+Fri May  2 16:32:35 UTC 2014 - jrecord@suse.com
+
+- Changed PHP from requires to recommends, PHP available on web module
+
+-------------------------------------------------------------------
+Mon Apr 21 18:16:51 UTC 2014 - jrecord@suse.com
+
+- Report overview matches scatool
+
+-------------------------------------------------------------------
+Wed Mar 26 22:31:59 UTC 2014 - jrecord@suse.com
+
+- Updated Requires to more generic strings
+
+-------------------------------------------------------------------
+Tue Mar 18 22:17:43 UTC 2014 - jrecord@suse.com
+
+- Removed config file status for db-config.php and web-config.php
+
+-------------------------------------------------------------------
+Thu Mar 13 16:44:52 UTC 2014 - jrecord@suse.com
+
+- Change to System/Monitoring spec Group
+
+-------------------------------------------------------------------
+Tue Feb 11 22:19:42 UTC 2014 - jrecord@suse.com
+
+- Added requires apache2-mod_php5
+
+-------------------------------------------------------------------
+Fri Jan 31 19:29:22 UTC 2014 - jrecord@suse.com
+
+- changed reportfull.php info table width
+- changed supportconfig run date order
+- added web-config.php for use by login.php
+- added supportconfig run date to reportfull.php
+
+-------------------------------------------------------------------
+Wed Jan 22 07:08:16 MST 2014 jrecord@suse.com
+
+- Commented out debug statements to avoid xss
+
+-------------------------------------------------------------------
+Thu Jan 16 07:08:16 MST 2014 jrecord@suse.com
+
+- Clean up unused variable
+- Cleaned up spec file
+- Added pattern link to login screen
+- Fixed pattern report identifier link
+- Changed Internal to SRView
+- Archive File links of file:// are not supported for hyper links
+
+-------------------------------------------------------------------
+Thu Jan 02 07:08:16 MST 2014 jrecord@suse.com
+
+- initialized
+

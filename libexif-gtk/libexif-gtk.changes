@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Fri May 30 14:57:59 UTC 2014 - opensuse@dstoecker.de
+
+- fix description to be UTF-8
+
+-------------------------------------------------------------------
+Sat Mar  9 12:26:25 UTC 2013 - meissner@suse.com
+
+- updated to 0.4.0 final
+  * New translations: de, pl
+  * Updated translations: es, fr, ru
+  * Bug fixes: #1643242: added libexif-gtk-uninstalled.pc file
+  * Proper setting of gettext parameters
+  * libexif-gtk made compatible for both gtk2 (min version: 2.4) and gtk3
+  * added --with-gtk3 option in configure.ac (default is gtk2)
+  * encoding of source files set to utf-8
+  * encoding of ru translation file set to utf-8
+  * fixed internationalisation bugs in gtk-options.c & configure.ac
+  * fixed bugs linked to gtk_notebook_remove_page action
+  * Bug fixes: #2014281: fix display of GPSLatitude and GPSLatitudeRef names
+  * fixed crash when viewing an enumerated tag with an unsupported value
+  * fixed problem with handling the Flash tag in big-endian images
+  * fixed thumbnail save function to actually save
+
+-------------------------------------------------------------------
+Fri Apr 16 11:18:48 CEST 2010 - meissner@suse.de
+
+- updated to 0.3.6cvs2
+  - minor fixes
+  - translation updates
+  - adjusted to new libexif ABIs
+- libexif-gtk4 is now libexif-gtk5
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:27 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Jan 26 21:40:01 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files 
+
+-------------------------------------------------------------------
+Wed Jul  9 17:45:34 CEST 2008 - sbrabec@suse.cz
+
+- Added patch to get rid references to deprecated
+  exif_tag_get_name() (fixes GPS Latitude).
+- Split package according to shared library packaging policy.
+
+-------------------------------------------------------------------
+Tue Feb 27 22:57:44 CET 2007 - dmueller@suse.de
+
+- adjust BuildRequires: libexif -> libexif-devel 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:18 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jul 30 14:33:55 CEST 2004 - meissner@suse.de
+
+- Included patch so it works with libexif 0.6.*
+
+-------------------------------------------------------------------
+Fri Apr 23 07:37:05 CEST 2004 - meissner@suse.de
+
+- undeprecate, so it compiles.
+
+-------------------------------------------------------------------
+Sat Jan 10 18:24:33 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue May 13 12:25:39 CEST 2003 - meissner@suse.de
+
+- Updated to current CVS.
+- Package translations too.
+
+-------------------------------------------------------------------
+Thu Jan 16 01:13:36 CET 2003 - ro@suse.de
+
+- use gtk2-devel-packages in neededforbuild 
+
+-------------------------------------------------------------------
+Wed Jan  8 16:30:25 CET 2003 - meissner@suse.de
+
+- Updated to 0.3.3 (bugfixes mostly).
+
+-------------------------------------------------------------------
+Mon Nov 18 13:23:22 CET 2002 - meissner@suse.de
+
+- Upgraded to 0.3.2 in preparation of gphoto2-2.1.1.
+
+-------------------------------------------------------------------
+Mon Nov 11 23:49:54 CET 2002 - ro@suse.de
+
+- changed neededforbuild <xshared> to <x-devel-packages>
+- changed neededforbuild <xdevel> to <>
+
+-------------------------------------------------------------------
+Wed Jul 24 13:24:52 CEST 2002 - meissner@suse.de
+
+- Upgraded to 0.3.1, disabled static libraries.
+
+-------------------------------------------------------------------
+Thu Feb  7 16:49:20 CET 2002 - meissner@suse.de
+
+- Added xshared to needed_for_build.
+
+-------------------------------------------------------------------
+Tue Feb  5 12:55:17 CET 2002 - meissner@suse.de
+
+- GTK widgets for browsing EXIF information. Used by gphoto/gtkam.
+

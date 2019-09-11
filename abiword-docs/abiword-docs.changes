@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Fri Jan  6 17:27:29 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.0.2:
+  + Documentation updated for abiword 3.0.2.
+
+-------------------------------------------------------------------
+Wed Jan 28 16:35:22 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.0.1:
+  + Documentation updated for abiword 3.0.1.
+
+-------------------------------------------------------------------
+Tue Jul 22 12:09:30 UTC 2014 - fstrba@suse.com
+
+- Fix build breakages on openSUSE:Factory
+  * Gdk-ERROR **: error: XDG_RUNTIME_DIR not set in the environment
+  * working around by "export XDG_RUNTIME_DIR=/tmp"
+
+-------------------------------------------------------------------
+Wed May 28 11:43:32 UTC 2014 - fstrba@suse.com
+
+- Upgrade to upstream version 3.0.0
+  * rebuild against libabiword-3_0-devel
+  * correspond to abiword 3.0.0
+
+-------------------------------------------------------------------
+Sat Sep 17 10:41:35 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Aug 10 19:54:13 UTC 2011 - dimstar@opensuse.org
+
+- Add ghostscript-fonts-std BuildRequires. We need a good font set
+  to have useful results from the conversation.
+
+-------------------------------------------------------------------
+Tue Jul 27 22:34:50 UTC 2010 - andrea@opensuse.org
+
+- Update to version 2.8.6:
+  + documentation updated for abiword 2.8.6.
+
+-------------------------------------------------------------------
+Sun Feb 14 13:43:35 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.8.2:
+  + documentation updated for abiword 2.8.2.
+
+-------------------------------------------------------------------
+Sun Dec  6 00:05:39 CET 2009 - vuntz@opensuse.org
+
+- Initial package; it used to live inside the abiword package.
+

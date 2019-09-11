@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Tue Jul 16 15:30:21 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.5.0:
+  * Handle SIGHUP for clean shutdown (#31)
+  * Handle SIGTERM for clean shutdown (#29)
+
+-------------------------------------------------------------------
+Thu Dec 20 22:08:07 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Restore proper grammar in description again.
+
+-------------------------------------------------------------------
+Fri Aug 17 14:42:46 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.2.4:
+  * Install to libexec & autostart (#24)
+
+-------------------------------------------------------------------
+Sat Jun  9 22:44:39 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.2.3:
+  * Remove CMake build system
+  * Remove unused gettext domain
+  * RDNN
+  * Update README.md
+  * Add Meson build system
+  * Remove unused make dist (#17)
+  * Remove bzrignore (#16)
+  * Remove static modifier from consts (#15)
+  * Create .gitignore (#12)
+  * Create CODE_OF_CONDUCT.md (#11)
+  * Update bug report message (#10)
+  * Create COPYING (#9)
+  * Update and rename INSTALL to README.md (#7)
+  * move gschema to data dir (#8)
+  * Remove executable bit from files
+  * unmark INSTALL instructions as executable
+
+-------------------------------------------------------------------
+Fri Jun  8 22:30:29 UTC 2018 - avvissu@yandex.by
+
+- Switch to git from bzr
+- Switch to meson
+- Add COPYING and README.md files
+- Remove obsolete macros
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Tue Jun 13 14:40:05 UTC 2017 - jengelh@inai.de
+
+- Fix grammar of description.
+
+-------------------------------------------------------------------
+Sun Sep 18 13:10:33 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.2.2
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sun Jun 15 13:54:23 UTC 2014 - mailaender@opensuse.org
+
+- update to 0.2.1
+
+-------------------------------------------------------------------
+Fri Sep 13 23:25:04 UTC 2013 - petracvv@cloverleaf-linux.org
+
+- Added libgee_compile.patch
+	* Fixes compile issue with newer libgee due to
+	  a naming convention change
+
+-------------------------------------------------------------------
+Mon Sep  9 02:57:00 UTC 2013 - petracvv@cloverleaf-linux.org
+
+- Initial packaging (version 0.2.1) for build.opensuse.org

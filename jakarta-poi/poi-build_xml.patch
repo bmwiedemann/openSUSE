@@ -1,0 +1,37 @@
+--- build.xml
++++ build.xml
+@@ -241,7 +241,7 @@
+                 <pathelement location="${junit.jar1.dir}"/>
+          </path>
+     <target name="test-main" depends="compile-main,-test-main-check" unless="main.test.notRequired">
+-        <junit printsummary="yes" showoutput="true" filtertrace="no" fork="no"
++        <junit printsummary="yes" showoutput="true" filtertrace="no" fork="yes"
+             haltonfailure="${halt.on.test.failure}" failureproperty="main.test.failed">
+             <classpath refid="test.classpath"/>
+             <sysproperty key="HSSF.testdata.path" value="${main.src.test}/org/apache/poi/hssf/data"/>
+@@ -303,7 +303,7 @@
+     </target>
+ 
+     <target name="test-scratchpad" depends="compile-scratchpad,-test-scratchpad-check" unless="scratchpad.test.notRequired">
+-        <junit printsummary="yes" fork="no" haltonfailure="${halt.on.test.failure}">
++        <junit printsummary="yes" fork="yes" haltonfailure="${halt.on.test.failure}">
+             <classpath>
+                 <path refid="scratchpad.classpath"/>
+                 <pathelement location="${main.output.dir}"/>
+@@ -314,6 +314,7 @@
+             <sysproperty key="HSSF.testdata.path" value="${scratchpad.src.test}/org/apache/poi/hssf/data"/>
+             <sysproperty key="HPSF.testdata.path" value="${scratchpad.src.test}/org/apache/poi/hpsf/data"/>
+             <sysproperty key="HDF.testdata.path" value="${scratchpad.src.test}/org/apache/poi/hdf/data"/>
++            <sysproperty key="HWPF.testdata.path" value="${scratchpad.src.test}/org/apache/poi/hwpf/data"/>
+             <sysproperty key="java.awt.headless" value="true"/>
+             <formatter type="xml"/>
+             <batchtest todir="${scratchpad.reports.test}">
+@@ -339,7 +340,7 @@
+     </target>
+ 
+     <target name="test-contrib" depends="compile-contrib,-test-contrib-check" unless="contrib.test.notRequired">
+-        <junit printsummary="yes" fork="no" haltonfailure="${halt.on.test.failure}">
++        <junit printsummary="yes" fork="yes" haltonfailure="${halt.on.test.failure}">
+             <classpath>
+                 <path refid="contrib.classpath"/>
+                 <pathelement location="${main.output.dir}"/>

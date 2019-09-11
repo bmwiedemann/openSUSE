@@ -1,0 +1,46 @@
+Description: Make generate-id() return identifiers in a deterministic way
+ generate-id() used to return identifiers based on the memory address of
+ the node object. This unfortunately prevents documentation to be built
+ reproducily. Instead, we now increment a static counter and store its
+ value in the node _private on the first invocation of generate-id().
+Author: Jérémy Bobbio <lunar@debian.org>
+
+Index: libxslt-1.1.29/libxslt/functions.c
+===================================================================
+--- libxslt-1.1.29.orig/libxslt/functions.c
++++ libxslt-1.1.29/libxslt/functions.c
+@@ -661,10 +661,10 @@ xsltFormatNumberFunction(xmlXPathParserC
+  */
+ void
+ xsltGenerateIdFunction(xmlXPathParserContextPtr ctxt, int nargs){
+-    static char base_address;
++    static unsigned long next_id = 1;
+     xmlNodePtr cur = NULL;
+     xmlXPathObjectPtr obj = NULL;
+-    long val;
++    unsigned long val;
+     xmlChar str[30];
+ 
+     if (nargs == 0) {
+@@ -702,12 +702,16 @@ xsltGenerateIdFunction(xmlXPathParserCon
+     if (obj)
+         xmlXPathFreeObject(obj);
+ 
+-    val = (long)((char *)cur - (char *)&base_address);
+-    if (val >= 0) {
+-      snprintf((char *)str, sizeof(str), "idp%ld", val);
+-    } else {
+-      snprintf((char *)str, sizeof(str), "idm%ld", -val);
++    if (cur->_private == NULL) {
++        cur->_private = xmlMalloc(sizeof (unsigned long));
++        if (cur->_private == NULL) {
++            xmlGenericError(xmlGenericErrorContext, "malloc failed !\n");
++        }
++        *((unsigned long *)cur->_private) = next_id++;
+     }
++    val = *((unsigned long *)cur->_private);
++
++    sprintf((char *)str, "id%lu", val);
+     valuePush(ctxt, xmlXPathNewString(str));
+ }
+ 

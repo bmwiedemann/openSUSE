@@ -1,0 +1,304 @@
+-------------------------------------------------------------------
+Mon May 27 06:27:54 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Enable openmpi2 on ppc64
+
+-------------------------------------------------------------------
+Tue Apr 23 07:43:07 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Fix bad INCLUDE path in module (bsc#1132949)
+
+-------------------------------------------------------------------
+Mon Apr  1 05:20:04 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add add-gen-p5-chip-pci-id-to-ini-file.patch:
+  - Adds support for Broadcom 57500 adapters (bsc#1125651)
+
+-------------------------------------------------------------------
+Thu Feb 14 06:53:05 UTC 2019 - nmoreychaisemartin@suse.com
+
+- Update to openmpi 2.1.6 (bsc#1094689)
+  - Many bug fixes. See NEWS for a complete list
+
+-------------------------------------------------------------------
+Tue Nov 27 10:53:24 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to make package build reproducible
+  (boo#1047218, boo#1041090, boo#1084909)
+
+-------------------------------------------------------------------
+Sun Nov 18 14:23:29 UTC 2018 - eich@suse.com
+
+- Add macro _hpc_openmpi_modules for modules support (bsc#1116458).
+
+-------------------------------------------------------------------
+Mon Oct 15 07:48:00 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to openmpi 2.1.5 (fate#326157)
+  - Many bug fixes. See NEWS for a complete list
+- Drop openmpi2-add-HCAs-to-mca-ini.patch as it was
+  merged upstream.
+
+-------------------------------------------------------------------
+Mon Sep 10 12:15:41 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Remove bashism in preun scriptlet
+
+-------------------------------------------------------------------
+Wed Sep  5 06:53:23 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Fix handling of mpi-selector during updates (bsc#1098653)
+
+-------------------------------------------------------------------
+Sun Aug 19 09:24:10 UTC 2018 - eich@suse.com
+
+- macros.hpc-openmpi2:
+  replace %%compiler_family by %%hpc_compiler_family
+
+-------------------------------------------------------------------
+Thu Jun  7 13:06:01 UTC 2018 - jjolly@suse.com
+
+- Updated openmpi2-add-HCAs-to-mca-ini.patch
+  * Adds Broadcom BCM57414 NetXtreme-E RDMA Ethernet Controller (bsc#1094689)
+
+-------------------------------------------------------------------
+Fri May 18 13:38:38 UTC 2018 - jjolly@suse.com
+
+- Added openmpi2-add-HCAs-to-mca-ini.patch
+  * Adds necessary parameters for QLogic Corp. FastLinQ QL41000 (bsc#1092257) 
+
+-------------------------------------------------------------------
+Wed May  2 18:20:59 UTC 2018 - eich@suse.com
+
+- Create missing docs master package (bsc#1091714)
+
+-------------------------------------------------------------------
+Tue Mar 27 06:39:04 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to openmpi 2.1.3
+  - Update internal PMIx version to 1.2.5.
+  - Fix a problem with ompi_info reporting using param option.
+  - Correct PMPI_Aint_{add|diff} to be functions (not subroutines)
+    in the Fortran mpi_f08 module.
+  - Fix a problem when doing MPI I/O using data types with large
+    extents in conjunction with MPI_TYPE_CREATE_SUBARRAY.  Thanks to
+  - Fix a problem when opening many files using MPI_FILE_OPEN.
+  - Fix a problem with debuggers failing to attach to a running job.
+  - Fix a problem when using madvise and the OpenIB BTL.
+  - Fix a problem in the Vader BTL that resulted in failures of
+    IMB under certain circumstances.
+  - Fix a problem preventing Open MPI from working under Cygwin.
+  - Reduce some verbosity being emitted by the USNIC BTL under certain
+    circumstances.
+  - Fix a problem with misdirection of SIGKILL.
+  - Replace use of posix_memalign with malloc for small allocations.
+  - Fix a problem with Open MPI's out of band TCP network for file descriptors
+    greater than 32767.
+  - Plug a memory leak in MPI_Mem_free().
+- Drop btl-vader-change-the-way-fast-boxes-are-used.patch as it
+  merged upstream.
+- Add fix-rdma-component-selection.patch to fix bad rdma component selection
+  which can cause stall when running on multiple IB nodes (bsc#1087031)
+
+-------------------------------------------------------------------
+Mon Mar 26 11:30:52 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Enable --enable-mpirun-prefix-by-default (bsc#1086821)
+
+-------------------------------------------------------------------
+Fri Feb  9 11:43:30 UTC 2018 - cgoll@suse.com
+
+- Fix summary in module files (bnc#1080259)
+
+-------------------------------------------------------------------
+Tue Jan 30 20:12:31 UTC 2018 - eich@suse.com
+
+- Use macro in mpivars.(c)sh to be independent of changes to the module
+  setup for the compiler (boo#1078364).
+
+-------------------------------------------------------------------
+Wed Jan 17 09:55:44 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Switch from gcc6 to gcc7 as additional compiler flavor for HPC on SLES.
+- Fix library package requires - use HPC macro (boo#1074890)
+- Fix rpm macro file.
+- Only build openmpi2-config for the standard flavor
+
+-------------------------------------------------------------------
+Thu Dec  7 10:58:31 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add btl-vader-change-the-way-fast-boxes-are-used.patch to
+  fix a SEGV on i386 systems
+
+-------------------------------------------------------------------
+Fri Oct 13 12:39:09 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Fix pre/post install call to ldconfig
+
+-------------------------------------------------------------------
+Tue Oct 10 13:15:22 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add a ringdisabled flag to allow building only the standard flavor
+  so not all flavors are pulled into staging rings
+- Fix baselibs.conf generation (wrong directory and name)
+
+-------------------------------------------------------------------
+Fri Oct  6 13:56:53 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add conflicts between the macros-devel packages
+
+-------------------------------------------------------------------
+Mon Sep 25 09:56:27 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Convert to multibuild.
+- Move all the doc to the docs RPM
+- Add HPC build using environment modules (FATE#321711).
+- Resync spec with openmpi and openmpi3
+
+-------------------------------------------------------------------
+Mon Sep 25 09:21:25 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to OpenMPI 2.1.2
+  * Many bug fixes. See NEWS
+- Fix VERSION file during build so that ompi_info reports good infos
+
+-------------------------------------------------------------------
+Tue Sep 19 14:36:31 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Remove --disable-mca-dso
+  Related bug was due to openmpi/*.so wrongly packaged as devel
+
+-------------------------------------------------------------------
+Fri Sep 15 13:39:33 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Reenable fortan08 bindings as gcc >= 5 is now the default
+- Remove devel-headers configure option (reserved for MPI plugins developers)
+
+-------------------------------------------------------------------
+Tue Sep 12 16:12:29 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to 2.1.1.186.9a3ac9803c
+- Drop openmpi-pmix-configure-ac.patch as it was merged upstream
+
+-------------------------------------------------------------------
+Wed Sep  6 12:09:30 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to 2.1.1.176.7aa585d4ff (2.1.2rc3)
+  * Too many bug fixes to list. See NEWS
+  * ppc64be support was dropped
+- Drop btl-vader-work-around-ob1-pending-fragment-bug.patch and
+  pml-ob1-do-not-access-fragment-after-calling-btl-rget.patch as
+  they were merged upstream.
+- Package NEWS file
+- Add openmpi-pmix-configure-ac.patch to fix
+  a compilation issue on Leap 42.3/SLE12 SP3
+
+-------------------------------------------------------------------
+Tue Sep  5 16:04:49 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update _service to allow auto updates from github
+
+-------------------------------------------------------------------
+Sun Aug 13 11:17:00 UTC 2017 - schwab@linux-m68k.org
+
+- Enable ucx only on supported platforms
+
+-------------------------------------------------------------------
+Wed Jul 19 15:18:49 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Fix module file name
+
+-------------------------------------------------------------------
+Wed Jul 12 08:02:32 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add pml-ob1-do-not-access-fragment-after-calling-btl-rget.patch and
+  btl-vader-work-around-ob1-pending-fragment-bug.patch
+  to fix upstream bug https://github.com/open-mpi/ompi/issues/3821
+  which causes openmpi2 to fail the IMB test suite
+
+-------------------------------------------------------------------
+Tue Jul 11 09:44:34 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Do not require openucx libs for suse_version < 1320
+
+-------------------------------------------------------------------
+Fri Jul  7 07:59:13 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Cleanup upstream spec file
+- Disable rpath in configure
+
+-------------------------------------------------------------------
+Thu Jun 29 07:59:20 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Build with openucx support when it is available
+- Buid plugins as part of the MPI library. Fixes:
+  * Missing shmem support
+  * Missing Requires in RPM
+- Build with libfabric support on x86
+
+-------------------------------------------------------------------
+Wed Jun 28 06:31:04 UTC 2017 - jengelh@inai.de
+
+- Trim filler wording from description
+- Replace uses of old $RPM_ variables, remove redundant %clean
+  section, abolish %__-type macro indirection,
+  remove excess piping to xargs
+- Add missing %_smp_mflags.
+
+-------------------------------------------------------------------
+Thu Jun 15 12:06:33 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add support for openmpi2 over PSM2 and libfabric
+- Reference baselibs.conf and openmpi2-rpmlintrc in spec
+- Add _service to fetch from upstream github repo
+
+-------------------------------------------------------------------
+Thu Jun  8 11:39:44 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Remove version dependencies to libibumad and libibverbs
+
+-------------------------------------------------------------------
+Wed May 31 12:30:39 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Fix module file paths
+
+-------------------------------------------------------------------
+Tue May 30 14:21:28 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add openmpi2-config package which contains runtime configuration
+  files for OpenMPI 1 and/or 2
+
+-------------------------------------------------------------------
+Wed May 17 09:17:16 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to OpenMPI 2.1.1
+  * Fix a problem with one of Open MPI's fifo data structures which led to
+    hangs in a make check test.
+  * Add missing MPI_AINT_ADD/MPI_AINT_DIFF function definitions to mpif.h.
+  * Fix the error return from MPI_WIN_LOCK when rank argument is invalid.
+  * Fix a problem with mpirun/orterun when started under a debugger.
+  * Add configury option to disable use of CMA by the vader BTL.
+  * Add configury check for MPI_DOUBLE_COMPLEX datatype support.
+  * Fix memory allocated by MPI_WIN_ALLOCATE_SHARED to
+    be 64 byte aligned.
+  * Update MPI_WTICK man page to reflect possibly higher
+    resolution than 10e-6.
+  * Add missing MPI_T_PVAR_SESSION_NULL definition to mpi.h
+    include file.
+  * Enhance the Open MPI spec file to install modulefile in /opt
+    if installed in a non-default location.
+  * Fix a problem with conflicting PMI symbols when linking statically.
+  * S390/S390x support
+- Drop openmpi2-ia32-fix-atomic.patch openmpi2-s390.patch as they are now
+  fixed/supported upstream.
+
+-------------------------------------------------------------------
+Tue May  2 15:45:26 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add testsuite package
+
+-------------------------------------------------------------------
+Mon Apr 24 18:22:22 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Initial packaging of OpenMPI 2.1.0
+

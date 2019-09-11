@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:56:12 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Jul  9 14:17:04 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0.4.8
+  * No changelog provided by upstream
+
+-------------------------------------------------------------------
+Wed Dec 20 12:45:17 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.4.6
+- Convert to singlespec
+- Enable tests
+
+-------------------------------------------------------------------
+Mon May  5 09:44:58 UTC 2014 - mcihar@suse.cz
+
+- Initial packaging, needed for SOAPpy update
+

@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Sat May 18 08:46:27 UTC 2019 - plater <davejplater@gmail.com>
+
+- Removed fix-library-directory.patch and replaced with modified
+  patch from git 0001-configurable-library-directory.patch.
+- Removed unneeded build conditonals for phonon and vlc.
+
+-------------------------------------------------------------------
+Tue May  7 14:09:33 UTC 2019 - plater <davejplater@gmail.com>
+
+-  Fix vlc plugin build with 0001-vlc-phonon-plugins-update.patch
+- Add 0001-pkg_check_lib-fix.patch from git.
+
+-------------------------------------------------------------------
+Sun May  5 18:57:07 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove %if..%endif guards that do not affect the build result.
+
+-------------------------------------------------------------------
+Thu May  2 16:03:44 UTC 2019 - plater <davejplater@gmail.com>
+
+- Update to 0.8.2.pre61qt5 git snapshot to build with qt5
+- Rebased fix-library-directory.patch
+
+-------------------------------------------------------------------
+Fri Apr 15 13:04:59 UTC 2016 - rpm@fthiessen.de
+
+- Updated to 0.8.2:
+  * Chinese translation
+  * Fix: tags encoding doesn't apply to playlist
+  * Other minor bug fixes and improvements
+
+-------------------------------------------------------------------
+Sat Jan 30 06:05:17 UTC 2016 - rpm@fthiessen.de
+
+- Updated to 0.8.1:
+  * Fixed phonon plugin
+  * Added Spanish, Ukrainian and Lithuanian translations
+  * Setting tags encoding
+  * Fixed vlc plugin
+  * Some other fixes and improvements
+- Build phonon plugin
+- Removed upstream fixed fix-upstream-desktop.patch,
+  fix-upstream-gstreamer-encoding-error.patch and
+  fix-upstream-handle-flags.patch
+- Renamed fix-libsuffix.patch to fix-library-directory.patch
+  and rebased it.
+
+-------------------------------------------------------------------
+Thu Nov  5 18:37:19 UTC 2015 - rpm@fthiessen.de
+
+- Added fix-libsuffix.patch to install plugins in lib64 on x86_64.
+
+-------------------------------------------------------------------
+Wed Oct 28 03:18:15 UTC 2015 - rpm@fthiessen.de
+
+- Split taglib and gstreamer plugins into subpackages
+
+-------------------------------------------------------------------
+Tue Oct 27 21:49:05 UTC 2015 - rpm@fthiessen.de
+
+- Wrote own spec file, replaced obs-service.
+- Update to version 0.8
+  * Added fix-upstream-desktop.patch to get rid of warning about
+    invalid tags in .desktop file.
+  * Added fix-upstream-gstreamer-encoding-error.patch
+  * Added fix-upstream-handle-flags.patch to make qmake recognize
+    optimization flags, so we can pass out RPM_OPT_FLAGS to it.
+  * Added fix-upstream-gstreamer-encoding-error.patch:
+    Fixes encoding with gstreamer, fixed upstream in git a2fc81a
+    Can be removed next upstream release.
+

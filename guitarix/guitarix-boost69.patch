@@ -1,0 +1,20 @@
+From: Dave Plater <davejplater@gmail.com>
+Date: 2019-03-20
+Subject: change in boost_headers
+References: release 0.37.3
+Upstream: https://sourceforge.net/p/guitarix/patches/10/
+
+boost/core/noncopyable.hpp needs to be specifically included.
+
+Index: src/headers/engine.h
+===================================================================
+--- src/headers/engine.h.orig	2018-07-22 06:24:50.000000000 +0200
++++ src/headers/engine.h	2019-03-20 12:32:43.354195818 +0200
+@@ -39,6 +39,7 @@
+ #include <sys/stat.h>
+ #include <boost/format.hpp>
+ #include <boost/thread/mutex.hpp>
++#include <boost/core/noncopyable.hpp>
+ #include <glibmm/i18n.h>     // NOLINT
+ #include <glibmm/optioncontext.h>   // NOLINT
+ #include <glibmm/dispatcher.h>

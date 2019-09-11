@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Fri Oct 12 14:40:04 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use new %lang_package -r semantics.
+
+-------------------------------------------------------------------
+Tue Aug 21 07:14:58 UTC 2018 - kbabioch@suse.com
+
+- Update to 3.2.2:
+  - Security release for CVE-2018-14447: Out-of-bounds reads in trim_whitespace
+    in lexer.l
+- Removed xz as build requirement
+- Removed -lang recommendation from main package
+
+-------------------------------------------------------------------
+Mon Aug  6 16:29:11 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description. Trim redundancies and
+  future goals from description.
+
+-------------------------------------------------------------------
+Thu Aug  2 09:36:08 UTC 2018 - kbabioch@suse.com
+
+- Initial packaging of version 3.2.1:

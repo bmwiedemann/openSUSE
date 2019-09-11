@@ -1,0 +1,82 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -91,10 +91,10 @@ AC_SUBST(WITH_DOC_SUBPACKAGE)
+ 
+ 
+ 
+-# libm for use in mpi.c
+-AC_CHECK_LIB(m, main, LIBM="-lm")
+-AC_CHECK_HEADER(math.h)
+-AC_SUBST(LIBM)
++# LibTomMath
++AC_CHECK_LIB(tommath, mp_exptmod, LIBTOMMATH_LIBS="-ltommath")
++AC_CHECK_HEADER(tommath.h)
++AC_SUBST(LIBTOMMATH_LIBS)
+ 
+ 
+ 
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,6 +1,4 @@
+ 
+-SUBDIRS = mpi
+-
+ lib_LTLIBRARIES = libmeanwhile.la
+ 
+ mwinclude_HEADERS = \
+@@ -54,7 +52,9 @@ libmeanwhile_la_SOURCES = \
+ 	mw_debug.c \
+ 	mw_util.c
+ 
+-libmeanwhile_la_LIBADD = $(GLIB_LIBS) mpi/libmpi.la
++libmeanwhile_la_LIBADD = \
++	$(GLIB_LIBS) \
++	$(LIBTOMMATH_LIBS)
+ 
+ AM_CPPFLAGS = \
+ 	-DG_LOG_DOMAIN=\"@PACKAGE@\"
+--- a/src/cipher.c
++++ b/src/cipher.c
+@@ -21,7 +21,7 @@
+ #include <stdlib.h>
+ #include <time.h>
+ 
+-#include "mpi/mpi.h"
++#include <tommath.h>
+ 
+ #include "mw_channel.h"
+ #include "mw_cipher.h"
+@@ -29,6 +29,16 @@
+ #include "mw_session.h"
+ 
+ 
++#define mw_mp_int                        mp_int
++#define mw_mp_init(a)                    mp_init(a)
++#define mw_mp_clear(a)                   mp_clear(a)
++#define mw_mp_to_unsigned_bin(a, b)      mp_to_unsigned_bin(a, b)
++#define mw_mp_read_unsigned_bin(a, b, c) mp_read_unsigned_bin(a, b, c)
++#define mw_mp_unsigned_bin_size(a)       mp_unsigned_bin_size(a)
++#define mw_mp_exptmod(a, b, c, d)        mp_exptmod(a, b, c, d)
++#define mw_mp_set_int(a, b)              mp_set_int(a, b)
++
++
+ struct mwMpi {
+   mw_mp_int i;
+ };
+Only in a/src: mpi
+--- a/src/mw_cipher.h
++++ b/src/mw_cipher.h
+@@ -239,10 +239,10 @@ void mwDecrypt(const guchar *key, gsize
+   outside of a channel (eg. session authentication). These are
+   wrapping a full multiple-precision integer math library, but most of
+   the functionality there-of is not exposed. Currently, the math is
+-  provided by a copy of the public domain libmpi.
++  provided by the public domain LibTomMath.
+ 
+-  for more information on the used MPI Library, visit
+-  http://www.cs.dartmouth.edu/~sting/mpi/
++  for more information on the used LibTomMath Library, visit
++  https://www.libtom.net/LibTomMath/
+ */
+ /* @{ */
+ 

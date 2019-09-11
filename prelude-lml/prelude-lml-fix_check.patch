@@ -1,0 +1,510 @@
+From: Thomas Andrejak <thomas.andrejak@gmail.com>
+Date: 2017-10-04 07:00:00 +0100
+References: http://prelude-siem.org/issues/872
+Upstream: submitted
+Subject: Fix make check
+
+diff -Nru src/file-server.c src/file-server.c
+--- ./src/file-server.c	2016-09-15 08:49:20.170000884 +0200
++++ ./src/file-server.c	2017-01-28 18:18:06.634761198 +0100
+@@ -346,6 +346,9 @@
+         ssize_t ret;
+         struct stat st;
+ 
++	if ( config.dry_run )
++		return 0;
++
+         if ( fstat(fileno(monitor->metadata_fd), &st) < 0 ) {
+                 prelude_log(PRELUDE_LOG_WARN, "fstat failed : %s.\n", strerror(errno));
+                 return -1;
+@@ -416,6 +419,9 @@
+         off_t offset = 0, available = 65535;
+         unsigned char msum[METADATA_SIZE], *sumptr = msum;
+ 
++	if ( config.dry_run )
++		return 0;
++
+         filename = lml_log_source_get_name(monitor->source);
+ 
+         ret = file_metadata_read(monitor, &offset, &sumptr);
+@@ -477,6 +483,9 @@
+         int fd;
+         char file[PATH_MAX], path[PATH_MAX], *ptr;
+ 
++	if ( config.dry_run )
++		return 0;
++
+         strncpy(file, lml_log_source_get_name(monitor->source), sizeof(file));
+ 
+         while ( (ptr = strchr(file, '/')) )
+diff -Nru src/prelude-lml.c src/prelude-lml.c
+--- ./src/prelude-lml.c	2016-09-15 08:49:20.171000884 +0200
++++ ./src/prelude-lml.c	2017-01-28 18:19:25.373006781 +0100
+@@ -361,6 +361,7 @@
+         ev_timer evt;
+         struct timeval end;
+         struct sigaction action;
++	const char *env;
+ 
+         /*
+          * Initialize libev.
+@@ -389,7 +390,11 @@
+         if ( ret < 0 )
+                 return ret;
+ 
+-        ret = log_plugins_init(LOG_PLUGIN_DIR, lml_root_optlist);
++	env = getenv("PRELUDE_LML_PLUGIN_DIR");
++	if ( !env )
++		env = LOG_PLUGIN_DIR;
++
++        ret = log_plugins_init(env, lml_root_optlist);
+         if (ret < 0)
+                 return ret;
+ 
+diff -Nru src/regex.c src/regex.c
+--- ./src/regex.c	2016-09-15 08:49:20.172000884 +0200
++++ ./src/regex.c	2017-01-28 18:17:45.931222693 +0100
+@@ -156,16 +156,20 @@
+         FILE *fd;
+         size_t len;
+         char buf[1024];
+-        const char *errptr;
++        const char *errptr, *env;
+         int line = 0, erroff;
+         regex_table_item_t *rt;
+         pcre_extra *regex_regex_extra = NULL;
+         char *regex, *options, *source, *plugin;
+         pcre *regex_regex = NULL, *source_regex = NULL;
+ 
+-        fd = fopen(REGEX_CONF, "r");
++	env = getenv("PRELUDE_LML_REGEX_CONF");
++	if ( !env )
++		env = REGEX_CONF;
++
++        fd = fopen(env, "r");
+         if ( ! fd ) {
+-                prelude_log(PRELUDE_LOG_ERR, "couldn't open config file %s.\n", REGEX_CONF);
++                prelude_log(PRELUDE_LOG_ERR, "couldn't open config file %s.\n", env);
+                 return -1;
+         }
+ 
+diff -Nru tests/Makefile.in tests/Makefile.in
+--- ./tests/Makefile.in	2016-09-15 09:03:00.925000884 +0200
++++ ./tests/Makefile.in	2017-01-28 18:22:00.268558881 +0100
+@@ -1362,7 +1362,10 @@
+ 	cd $(top_srcdir)/prelude-lml && make
+ 
+ check-am:
+-	$(srcdir)/loggrep.py $(top_srcdir)/plugins/pcre/ruleset/*.rules | $(top_srcdir)/src/prelude-lml --quiet --dry-run --metadata=nowrite,head --batch-mode --no-resolve --pcre --dump-unmatched --config $(srcdir)/prelude-lml.conf 2>&1 | $(GREP) -Fvf $(srcdir)/ignored
++	rm -rf plugins && mkdir plugins
++	cp $(top_srcdir)/plugins/*/.libs/*.so plugins
++	./loggrep.py regex.test | PRELUDE_LML_PLUGIN_DIR=plugins PRELUDE_LML_REGEX_CONF=plugins.rules $(top_srcdir)/src/prelude-lml --quiet --dry-run --metadata=nowrite,head --batch-mode --no-resolve --pcre --dump-unmatched --config $(srcdir)/prelude-lml.conf 2>&1 | $(GREP) -Fvf $(srcdir)/ignored
++	rm -rf plugins
+ 
+ -include $(top_srcdir)/git.mk
+ 
+diff -Nru tests/plugins.rules tests/plugins.rules
+--- ./tests/plugins.rules	1970-01-01 01:00:00.000000000 +0100
++++ ./tests/plugins.rules	2017-01-28 18:20:24.857682680 +0100
+@@ -0,0 +1 @@
++  * 		Pcre		-			*
+diff -Nru tests/prelude-lml.conf tests/prelude-lml.conf
+--- ./tests/prelude-lml.conf	2016-09-15 08:49:20.172000884 +0200
++++ ./tests/prelude-lml.conf	2017-01-28 18:20:30.037567378 +0100
+@@ -3,51 +3,5 @@
+ prefix-regex = "^(?P<timestamp>.{15}) (?P<hostname>\S+) (?:(?P<process>\S+?)(?:\[(?P<pid>[0-9]+)\])?: )?"
+ file = -
+ 
+-[format=apache]
+-time-format = "%d/%b/%Y:%H:%M:%S"
+-prefix-regex = "(?P<hostname>\S+) \S+ \S+ \[(?P<timestamp>.{20}) [+-].{4}\] "
+-file = -
+-
+-[format=apache-error]
+-#[Sat Mar 12 22:56:12 2005] [error] [client 127.0.0.1]
+-time-format = "%a %b %d %H:%M:%S %Y"
+-prefix-regex = "^\[(?P<timestamp>.{24})\]"
+-file = -
+-
+-[format=checkpoint]
+-time-format = "%d%b%Y %H:%M:%S"
+-prefix-regex = "^(?P<timestamp>.{20})"
+-file = -
+-
+-[format=squid]
+-#2005/11/28 06:00:44|
+-time-format = "%Y/%m/%d %H:%M:%S"
+-prefix-regex = "^(?P<timestamp>.{19})\| "
+-file = -
+-
+-[format=honeyd]
+-#2006-08-18-12:21:12.1239
+-time-format = "%Y-%m-%d-%H:%M:%S"
+-prefix-regex = "^(?P<timestamp>.{19})\."
+-file = -
+-
+-[format=honeytrap]
+-#[2007-05-26 16:48:09]
+-time-format = "%Y-%m-%d %H:%M:%S"
+-prefix-regex = "^\[(?P<timestamp>.{19})\]"
+-file = -
+-
+-[format=kojoney]
+-#2007/04/12 21:57 CEST
+-time-format = "%Y/%m/%d %H:%M"
+-prefix-regex = "^(?P<timestamp>.{16}) "
+-file = -
+-
+-[format=rishi]
+-#2007-05-20 12:49:57,644
+-time-format = "%Y-%m-%d %H:%M:%S"
+-prefix-regex = "^(?P<timestamp>.{19}),"
+-file = -
+-
+ [Pcre]
+-ruleset=../plugins/pcre/ruleset/pcre.rules
++ruleset=./regex.test
+diff -Nru tests/regex.test tests/regex.test
+--- ./tests/regex.test	1970-01-01 01:00:00.000000000 +0100
++++ ./tests/regex.test	2017-01-28 18:20:17.921837067 +0100
+@@ -0,0 +1,340 @@
++#FULLNAME: SSH
++#VERSION: 1.0
++#DESCRIPTION: SSH, is a cryptographic (encrypted) network protocol to allow remote login and other network services to operate securely over an unsecured network.
++
++#####
++#
++# Copyright (C) 2002,2004 Nicolas Delon <nicolas@prelude-siem.org>
++# Copyright (C) 2005 G Ramon Gomez <gene at gomezbrothers dot com>
++# All Rights Reserved
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 2, or (at your option)
++# any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License along
++# with this program; if not, write to the Free Software Foundation, Inc.,
++# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
++#
++#####
++
++###################
++# Logging succeed #
++###################
++
++#LOG:Dec  8 14:45:17 itguxweb1 sshd[32112]: Accepted publickey for root from 12.34.56.78 port 56634 ssh2
++regex=for root from|user root; \
++ id=1907; \
++ assessment.impact.type=admin; \
++ assessment.impact.severity=medium; \
++ silent; chained
++
++#LOG:Dec  8 14:45:17 itguxweb1 sshd[32112]: Accepted publickey for root from 12.34.56.78 port 56634 ssh2
++#LOG:Jan 14 03:30:44 mail sshd[20298]: Accepted publickey for root from fec0:0:201::3 port 63018 ssh2
++#LOG:Jan 14 03:30:44 mail sshd[20298]: Accepted publickey for john from fec0:0:201::3 port 63018 ssh2
++#LOG:Dec 10 10:33:19 itguxweb2 sshd[29738]: Accepted password for ekwong from 12.34.56.78 port 39852 ssh2
++regex=Accepted (\S+) for (\S+) from (\S+) port (\d+); \
++ classification.text=Remote Login; \
++ optgoto=1907; \
++ id=1908; \
++ revision=3; \
++ analyzer(0).name=sshd; \
++ analyzer(0).manufacturer=OpenSSH; \
++ analyzer(0).class=Authentication; \
++ assessment.impact.severity=low; \
++ assessment.impact.completion=succeeded; \
++ assessment.impact.type=user; \
++ assessment.impact.description=User $2 logged in from $3 port $4 using the $1 method; \
++ source(0).node.address(0).address=$3; \
++ source(0).service.port=$4; \
++ source(0).service.iana_protocol_name=tcp; \
++ source(0).service.iana_protocol_number=6; \
++ target(0).service.port=22; \
++ target(0).service.name=ssh; \
++ target(0).service.iana_protocol_name=tcp; \
++ target(0).service.iana_protocol_number=6; \
++ target(0).user.category=os-device; \
++ target(0).user.user_id(0).type=target-user; \
++ target(0).user.user_id(0).name=$2; \
++ additional_data(0).type=string; \
++ additional_data(0).meaning=Authentication method; \
++ additional_data(0).data=$1; \
++ last;
++
++
++################
++# Login failed #
++################
++
++#LOG:Dec  9 16:00:35 itguxweb2 sshd[24541]: Failed password for root from 12.34.56.78 port 1806
++#LOG:Dec  9 21:29:56 devel5 sshd[17554]: Failed password for akarade from 12.34.56.78 port 4214
++regex=Failed (\S+) for (\S+) from (\S+) port (\d+); \
++ optgoto=1907; \
++ classification.text=Remote Login; \
++ id=1902; \
++ revision=3; \
++ analyzer(0).name=sshd; \
++ analyzer(0).manufacturer=OpenSSH; \
++ analyzer(0).class=Authentication; \
++ assessment.impact.severity=medium; \
++ assessment.impact.completion=failed; \
++ assessment.impact.type=user; \
++ assessment.impact.description=Someone tried to login as $2 from $3 port $4 using the $1 method; \
++ source(0).node.address(0).address=$3; \
++ source(0).service.port=$4; \
++ source(0).service.iana_protocol_name=tcp; \
++ source(0).service.iana_protocol_number=6; \
++ target(0).service.port=22; \
++ target(0).service.name=ssh; \
++ target(0).service.iana_protocol_name=tcp; \
++ target(0).service.iana_protocol_number=6; \
++ target(0).user.category=os-device; \
++ target(0).user.user_id(0).type=target-user; \
++ target(0).user.user_id(0).name=$2; \
++ additional_data(0).type=string; \
++ additional_data(0).meaning=Authentication method; \
++ additional_data(0).data=$1; \
++ last
++
++
++##############################################
++# Invalid (not existing) user tried to login #
++##############################################
++
++#LOG:Jan 20 14:10:02 blah sshd[25443]: Invalid user admin from 213.201.222.134
++regex=(Illegal|Invalid) user (\S+) from (\S+); \
++ classification.text=User login failed with an invalid user; \
++ id=1904; \
++ revision=2; \
++ analyzer(0).name=sshd; \
++ analyzer(0).manufacturer=OpenSSH; \
++ analyzer(0).class=Authentication; \
++ assessment.impact.severity=medium; \
++ assessment.impact.completion=failed; \
++ assessment.impact.type=user; \
++ assessment.impact.description=Someone tried to login with the invalid user "$2" from $3; \
++ source(0).node.address(0).address=$3; \
++ source(0).service.iana_protocol_name=tcp; \
++ source(0).service.iana_protocol_number=6; \
++ target(0).service.port=22; \
++ target(0).service.name=ssh; \
++ target(0).service.iana_protocol_name=tcp; \
++ target(0).service.iana_protocol_number=6; \
++ target(0).user.category=os-device; \
++ target(0).user.user_id(0).type=target-user; \
++ target(0).user.user_id(0).name=$2; \
++ last
++
++##################################################################################
++# User listed in DenyGroups or DenyUsers (sshd_config directives) tried to login #
++##################################################################################
++
++#LOG:Jan  6 22:50:24 localhost sshd[15489]: User nobody not allowed because none of user's groups are listed in AllowGroups
++regex=User (\S+) not allowed because (.*)listed in (\w+); \
++ classification.text=User login failed with a denied user; \
++ id=1905; \
++ revision=3; \
++ analyzer(0).name=sshd; \
++ analyzer(0).manufacturer=OpenSSH; \
++ analyzer(0).class=Authentication; \
++ assessment.impact.severity=medium; \
++ assessment.impact.completion=failed; \
++ assessment.impact.type=user; \
++ assessment.impact.description=User $1 failed to login because $2 listed in $3; \
++ source(0).service.iana_protocol_name=tcp; \
++ source(0).service.iana_protocol_number=6; \
++ target(0).service.port=22; \
++ target(0).service.name=ssh; \
++ target(0).service.iana_protocol_name=tcp; \
++ target(0).service.iana_protocol_number=6; \
++ target(0).user.category=os-device; \
++ target(0).user.user_id(0).type=target-user; \
++ target(0).user.user_id(0).name=$1; \
++ additional_data(0).type=string; \
++ additional_data(0).meaning=ACL; \
++ additional_data(0).data=$3; \
++ additional_data(1).type=string; \
++ additional_data(1).meaning=Failure reason; \
++ additional_data(1).data=$2 listed in $3; \
++ last
++
++##################################################################
++# Sshd did not receive the identification string from the client #
++# (maybe a ssh server recognition)                               #
++##################################################################
++
++#LOG:Jun 10 09:51:57 server sshd[9100]: Did not receive identification string from 1.2.3.4
++regex=Did not receive identification string from (\S+); \
++ classification.text=Server recognition; \
++ id=1906; \
++ revision=2; \
++ analyzer(0).name=sshd; \
++ analyzer(0).manufacturer=OpenSSH; \
++ analyzer(0).class=Authentication; \
++ assessment.impact.severity=medium; \
++ assessment.impact.completion=failed; \
++ assessment.impact.type=recon; \
++ assessment.impact.description=$1 is probably making a server recognition; \
++ source(0).node.address(0).address=$1; \
++ source(0).service.iana_protocol_name=tcp; \
++ source(0).service.iana_protocol_number=6; \
++ target(0).service.port=22; \
++ target(0).service.name=ssh; \
++ target(0).service.iana_protocol_name=tcp; \
++ target(0).service.iana_protocol_number=6; \
++ additional_data(0).type=string; \
++ additional_data(0).meaning=Failure reason; \
++ additional_data(0).data=Did not receive identification string; \
++ last
++
++#########################################################################
++# Forbidden root login                                                  #
++# (directive PermitRootLogin and keyword "no" or "forced-commands-only" #
++# of the sshd_config file)                                              #
++#########################################################################
++
++#LOG:Jan  5 01:31:41 www sshd[1643]: ROOT LOGIN REFUSED FROM 1.2.3.4
++regex=ROOT LOGIN REFUSED FROM (\S+); \
++ classification.text=Admin login; \
++ id=1909; \
++ revision=2; \
++ analyzer(0).name=sshd; \
++ analyzer(0).manufacturer=OpenSSH; \
++ analyzer(0).class=Authentication; \
++ assessment.impact.severity=medium; \
++ assessment.impact.completion=failed; \
++ assessment.impact.type=admin; \
++ assessment.impact.description=Root tried to login while it is forbidden; \
++ source(0).node.address(0).address=$1; \
++ source(0).service.iana_protocol_name=tcp; \
++ source(0).service.iana_protocol_number=6; \
++ target(0).service.port=22; \
++ target(0).service.name=ssh; \
++ target(0).service.iana_protocol_name=tcp; \
++ target(0).service.iana_protocol_number=6; \
++ target(0).user.category=os-device; \
++ target(0).user.user_id(0).type=target-user; \
++ target(0).user.user_id(0).name=root; \
++ last
++
++
++# Re: Generic Message Exchange Authentication For SSH
++#               <draft-ietf-secsh-auth-kbdinteract-06.txt>
++#LOG:Jan 14 08:19:21 ras sshd[22774]: input_userauth_request: invalid user remote-mail
++regex=input_userauth_request: (illegal|invalid) user (\S+); \
++ classification.text=Invalid user in authentication request; \
++ id=1910; \
++ revision=3; \
++ analyzer(0).name=sshd; \
++ analyzer(0).manufacturer=OpenSSH; \
++ analyzer(0).class=Authentication; \
++ assessment.impact.severity=medium; \
++ assessment.impact.completion=failed; \
++ assessment.impact.type=user; \
++ assessment.impact.description=General purpose authentication request was blocked. Reason: invalid user $2; \
++ source(0).service.iana_protocol_name=tcp; \
++ source(0).service.iana_protocol_number=6; \
++ target(0).service.port=22; \
++ target(0).service.name=ssh; \
++ target(0).service.iana_protocol_name=tcp; \
++ target(0).service.iana_protocol_number=6; \
++ target(0).user.category=os-device; \
++ target(0).user.user_id(0).type=target-user; \
++ target(0).user.user_id(0).name=$2; \
++ additional_data(0).type=string; \
++ additional_data(0).meaning=Failure reason; \
++ additional_data(0).data=$1 user; \
++ last
++
++# Re: Generic Message Exchange Authentication For SSH
++#               <draft-ietf-secsh-auth-kbdinteract-06.txt>
++# This rule catches several other combinations that can be output by
++# input_userauth_request() in auth2.c
++#LOG:Jan 14 08:19:21 ras sshd[22774]: input_userauth_request: invalid user remote-mail
++regex=input_userauth_request: (.+); \
++ classification.text=Invalid user in authentication request; \
++ id=1911; \
++ revision=2; \
++ analyzer(0).name=sshd; \
++ analyzer(0).manufacturer=OpenSSH; \
++ analyzer(0).class=Authentication; \
++ assessment.impact.severity=medium; \
++ assessment.impact.completion=failed; \
++ assessment.impact.type=user; \
++ assessment.impact.description=General purpose authentication request was blocked. Reason: $1; \
++ source(0).service.iana_protocol_name=tcp; \
++ source(0).service.iana_protocol_number=6; \
++ target(0).service.port=22; \
++ target(0).service.name=ssh; \
++ target(0).service.iana_protocol_name=tcp; \
++ target(0).service.iana_protocol_number=6; \
++ target(0).user.category=os-device; \
++ last
++
++#LOG:Dec  9 18:48:29 itguxweb2 sshd[29536]: Failed password for illegal user ROOT from 12.34.56.78 port 2886
++#LOG:Jan 14 08:19:21 ras sshd[22774]: Failed none for invalid user remote-mail from 192.168.1.22 port 65407 ssh2
++#LOG:Jan 14 11:29:17 ras sshd[18163]: Failed publickey for invalid user fred from fec0:0:201::3 port 62788 ssh2
++#LOG:Jan 14 11:29:17 ras sshd[18163]: Failed publickey for invalid user fred from 1.2.3.4 port 62788 ssh2
++#LOG:Jan 14 11:29:17 ras sshd[18163]: Failed publickey for invalid user fred from hostname port 62788 ssh2
++regex=Failed (\S+) for (illegal|invalid) user (\S+) from (\S+) port (\d+); \
++ classification.text=Remote Login; \
++ optgoto=1907; \
++ id=1912; \
++ revision=3; \
++ analyzer(0).name=sshd; \
++ analyzer(0).manufacturer=OpenSSH; \
++ analyzer(0).class=Authentication; \
++ assessment.impact.severity=medium; \
++ assessment.impact.completion=failed; \
++ assessment.impact.type=admin; \
++ assessment.impact.description=Someone tried to login as $3 from $4 port $5 using the $1 method; \
++ source(0).node.address(0).address=$4; \
++ source(0).service.port=$5; \
++ source(0).service.iana_protocol_name=tcp; \
++ source(0).service.iana_protocol_number=6; \
++ target(0).service.port=22; \
++ target(0).service.name=ssh; \
++ target(0).service.iana_protocol_name=tcp; \
++ target(0).service.iana_protocol_number=6; \
++ target(0).user.category=os-device; \
++ target(0).user.user_id(0).type=target-user; \
++ target(0).user.user_id(0).name=$3; \
++ additional_data(0).type=string; \
++ additional_data(0).meaning=Authentication method; \
++ additional_data(0).data=$1; \
++ additional_data(1).type=string; \
++ additional_data(1).meaning=Failure reason; \
++ additional_data(1).data=$2 user; \
++ last
++
++#LOG:Oct  2 14:40:05 suse-9.2 sshd[18725]: error: PAM: Authentication failure for root from unknown.anywhere.net
++#LOG:Oct  2 14:46:52 suse-9.2 sshd[18804]: error: PAM: Authentication failure for foobar from unknown.anywhere.net
++regex=error: PAM: Authentication failure for (\S+) from (\S+); \
++ classification.text=Remote Login; \
++ optgoto=1907; \
++ id=1914; \
++ revision=2; \
++ analyzer(0).name=sshd; \
++ analyzer(0).manufacturer=OpenSSH; \
++ analyzer(0).class=Authentication; \
++ assessment.impact.severity=medium; \
++ assessment.impact.completion=failed; \
++ assessment.impact.type=user; \
++ assessment.impact.description=Someone tried to login as $1 from $2; \
++ source(0).node.name=$2; \
++ source(0).service.iana_protocol_name=tcp; \
++ source(0).service.iana_protocol_number=6; \
++ target(0).service.port=22; \
++ target(0).service.name=ssh; \
++ target(0).service.iana_protocol_name=tcp; \
++ target(0).service.iana_protocol_number=6; \
++ target(0).user.category=os-device; \
++ target(0).user.user_id(0).type=target-user; \
++ target(0).user.user_id(0).name=$1; \
++ last

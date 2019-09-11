@@ -1,0 +1,46 @@
+Index: django-threadedcomments-1.2/threadedcomments/tests.py
+===================================================================
+--- django-threadedcomments-1.2.orig/threadedcomments/tests.py
++++ django-threadedcomments-1.2/threadedcomments/tests.py
+@@ -1,6 +1,7 @@
+ from unittest import TestCase, expectedFailure
+ 
+ from django.conf import settings
++from django.contrib.contenttypes.models import ContentType
+ from django.contrib.sites.models import Site
+ from django.core.management import call_command
+ from django.template import Context
+@@ -183,16 +184,18 @@ class HierarchyTest(TransactionTestCase)
+         self.assertEqual(self.EXPECTED_HTML_FULL, sanitize_html(output))
+ 
+     def test_last_child_properly_created(self):
++        ct = ContentType.objects.get_for_model(Site)
+         Comment = comments.get_model()
+-        new_child_comment = Comment(comment="Comment 8", site_id=1, content_type_id=7, object_pk=1, parent_id=1)
++        new_child_comment = Comment(comment="Comment 8", site_id=1, content_type=ct, object_pk=1, parent_id=1)
+         new_child_comment.save()
+         comment = Comment.objects.get(pk=1)
+         self.assertEqual(comment.last_child, new_child_comment)
+ 
+     def test_last_child_doesnt_delete_parent(self):
++        ct = ContentType.objects.get_for_model(Site)
+         Comment = comments.get_model()
+         comment = Comment.objects.get(pk=1)
+-        new_child_comment = Comment(comment="Comment 9", site_id=1, content_type_id=7, object_pk=1, parent_id=comment.id)
++        new_child_comment = Comment(comment="Comment 9", site_id=1, content_type=ct, object_pk=1, parent_id=comment.id)
+         new_child_comment.save()
+         new_child_comment.delete()
+         comment = Comment.objects.get(pk=1)
+@@ -205,10 +208,11 @@ class HierarchyTest(TransactionTestCase)
+         self.assertEqual(None, c.last_child)
+ 
+     def test_last_child_repointed_correctly_on_delete(self):
++        ct = ContentType.objects.get_for_model(Site)
+         Comment = comments.get_model()
+         comment = Comment.objects.get(pk=1)
+         last_child = comment.last_child
+-        new_child_comment = Comment(comment="Comment 9", site_id=1, content_type_id=7, object_pk=1, parent_id=comment.id)
++        new_child_comment = Comment(comment="Comment 9", site_id=1, content_type=ct, object_pk=1, parent_id=comment.id)
+ 
+         new_child_comment.save()
+         comment = Comment.objects.get(pk=1)

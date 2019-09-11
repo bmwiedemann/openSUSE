@@ -1,0 +1,596 @@
+-------------------------------------------------------------------
+Tue May 28 05:36:02 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary
+
+-------------------------------------------------------------------
+Wed May 22 09:29:13 UTC 2019 - trenn@suse.de
+
+- Update to version 20190509
+  Includes a fix that breaks VirtualBox
+  https://github.com/acpica/acpica/issues/462
+
+-------------------------------------------------------------------
+Mon Apr  8 14:28:59 UTC 2019 - trenn@suse.de
+
+- Update to version 20190405
+iASL: Implemented an enhanced multiple file compilation that combines 
+named objects from all input files to a single namespace. With this 
+feature, any unresolved external declarations as well as duplicate named 
+object declarations can be detected during compilation rather than 
+generating errors much later at runtime. The following commands are 
+examples that utilize this feature:
+    iasl dsdt.asl ssdt.asl
+    iasl dsdt.asl ssdt1.asl ssdt2.asl
+    iasl dsdt.asl ssdt*.asl
+- Adjusted patch:
+M acpica-no-compiletime.patch
+
+-------------------------------------------------------------------
+Wed Mar 13 19:56:38 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20190215 
+  Support for ACPI specification version 6.3:
+  * Add PCC operation region support for the AML interpreter. This adds PCC
+    operation region support in the AML interpreter and a default handler for
+    acpiexec. The change also renames the PCC region address space keyword to
+    PlatformCommChannel.
+  * Support for new predefined methods _NBS, _NCH, _NIC, _NIH, and _NIG.
+    These methods provide OSPM with health information and device boot
+    status.
+  * PDTT: Add TriggerOrder to the PCC Identifier structure. The field value
+    defines if the trigger needs to be invoked by OSPM before or at the end
+    of kernel crash dump processing/handling operation.
+  * SRAT: Add Generic Affinity Structure subtable. This subtable in the SRAT
+    is used for describing devices such as heterogeneous processors,
+    accelerators, GPUs, and IO devices with integrated compute or DMA
+    engines.
+  * MADT: Add support for statistical profiling in GICC. Statistical
+    profiling extension (SPE) is an architecture-specific feature for ARM.
+  * MADT: Add online capable flag. If this bit is set, system hardware
+    supports enabling this processor during OS runtime.
+  * New Error Disconnect Recover Notification value. There are a number of
+    scenarios where system Firmware in collaboration with hardware may
+    disconnect one or more devices from the rest of the system for purposes
+    of error containment. Firmware can use this new notification value to
+    alert OSPM of such a removal.
+  * PPTT: New additional fields in Processor Structure Flags. These flags
+    provide more information about processor topology.
+  * NFIT/Disassembler: Change a field name from "Address Range" to "Region
+    Type".
+  * HMAT updates: make several existing fields to be reserved as well as
+    rename subtable 0 to "memory proximity domain attributes".
+  * GTDT: Add support for new GTDT Revision 3. This revision adds information
+    for the EL2 timer.
+  * iASL: Update the HMAT example template for new fields.
+  * iASL: Add support for the new revision of the GTDT (Rev 3).
+  ACPICA kernel-resident subsystem:
+  * AML Parser: fix the main AML parse loop to correctly skip erroneous
+    extended opcodes. AML opcodes come in two lengths: 1-byte opcodes and 2-
+    byte extended opcodes. If an error occurs during an AML table load, the
+    AML parser will continue loading the table by skipping the offending
+    opcode. This implements a "load table at any cost" philosophy.
+  iASL Compiler/Disassembler and Tools:
+  * iASL: Add checks for illegal object references, such as a reference
+    outside of method to an object within a method. Such an object is only
+    temporary.
+  * iASL: Emit error for creation of a zero-length operation region. Such a
+    region is rather pointless. If encountered, a runtime error is also
+    implemented in the interpeter.
+  * Debugger: Fix a possible fault with the "test objects" command.
+  * iASL: Makefile: support parent directory filenames containing embedded
+    spaces.
+  * iASL: Update the TPM2 template to revision 4.
+  * iASL: Add the ability to report specific warnings or remarks as errors.
+  * Disassembler: Disassemble OEMx tables as actual AML byte code.
+    Previously, these tables were treated as "unknown table".
+  * iASL: Add definition and disassembly for TPM2 revision 3.
+  * iASL: Add support for TPM2 rev 3 compilation.
+- Refresh patches
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jul  2 13:51:16 UTC 2018 - trenn@suse.de
+
+- Update to 20180629
+  Added changelog from mainline, installed into documentation path
+
+-------------------------------------------------------------------
+Sat May 26 09:31:58 UTC 2018 - aloisio@gmx.com
+
+- Update to version 20180508
+  ACPICA kernel-resident subsystem:
+  * Completed the new (recently deployed) package resolution
+    mechanism for the Load and LoadTable ASL/AML operators. This
+    fixes a regression that was introduced in version 20180209
+    that could result in an AE_AML_INTERNAL exception during the
+    loading of a dynamic ACPI/AML table (SSDT) that contains
+    package objects.
+  iASL Compiler/Disassembler and Tools:
+  * AcpiDump and AcpiXtract: Implemented support for ACPI tables
+    larger than 1 MB. This change allows for table offsets within
+    the acpidump file to be up to 8 characters. These changes are
+    backwards compatible with existing acpidump files.
+  version 20180427
+  ACPICA kernel-resident subsystem:
+  * Debugger: Added support for Package objects in the "Test
+    Objects" command. This command walks the entire namespace and
+    evaluates all named data objects (Integers, Strings, Buffers,
+    and now Packages).
+  * Improved error messages for the namespace root node.
+    Originally, the root was referred to by the confusing string
+    "\___". This has been replaced by "Namespace Root" for
+    clarification.
+  * Fixed a potential infinite loop in the AcpiRsDumpByteList
+    function. Colin Ian King <colin.king@canonical.com>.
+  iASL Compiler/Disassembler and Tools:
+  * iASL: Implemented support to detect and flag illegal forward
+    references. For compatibility with other ACPI implementations,
+    these references are now illegal at the root level of the DSDT
+    or SSDTs. Forward references have always been illegal within
+    control methods. This change should not affect existing
+    ASL/AML code because of the fact that these references
+    have always been illegal in the other ACPI implementation.
+  * iASL: Added error messages for the case where a table OEM ID
+    and OEM TABLE ID strings are longer than the ACPI-defined length.
+    Previously, these strings were simply silently truncated.
+  * iASL: Enhanced the -tc option (which creates an AML hex file
+    in C, suitable for import into a firmware project):
+    1) Create a unique name for the table, to simplify use of
+       multiple SSDTs.
+    2) Add a protection #ifdef in the file, similar to a .h
+       header file. With assistance from Sami Mujawar,
+       sami.mujawar@arm.com and Evan Lloyd, evan.lloyd@arm.com
+  * AcpiExec: Added a new option, -df, to disable the local
+    fault handler. This is useful during debugging, where it may
+    be desired to drop into a debugger on a fault.
+
+-------------------------------------------------------------------
+Wed Apr 18 13:56:47 UTC 2018 - josef.moellers@suse.com
+
+- Upgrade to latest version 20180313
+- Update patches:
+  * acpica-no-compiletime.patch
+  * do_not_use_build_date_and_time.patch
+
+-------------------------------------------------------------------
+Fri Jan 12 17:46:18 UTC 2018 - trenn@suse.de
+
+- Update to latest version 20180105
+D    revert_62ca7996_build_date_and_time.patch
+D    revert_cdd3c612d4230bbb_build_date_and_time.patch
+A    do_not_use_build_date_and_time.patch
+- pass --jobs from build service to make for much faster building
+
+-------------------------------------------------------------------
+Fri Jan 12 10:06:04 UTC 2018 - josef.moellers@suse.com
+
+- Changed shebang path in wmidump_add_she_bang.patch
+  to /usr/bin/python3
+  [bsc#1075687,wmidump_add_she_bang.patch]
+
+-------------------------------------------------------------------
+Thu Dec  7 10:57:17 UTC 2017 - dimstar@opensuse.org
+
+- Escape the usage of %{VERSION} when calling out to rpm.
+
+-------------------------------------------------------------------
+Tue Jun 13 11:56:36 UTC 2017 - trenn@suse.de
+
+- Update to version 20170531.
+
+-------------------------------------------------------------------
+Wed Jan 25 15:35:03 UTC 2017 - trenn@suse.de
+
+- Update to version 20170119 (fate#322313).
+
+-------------------------------------------------------------------
+Thu Jan  5 16:51:25 UTC 2017 - trenn@suse.de
+
+- Update to version 20161117 (fate#322313).
+- __DATE__ __TIME__ macros added again mainline, revert them to avoid
+  constant build service rebuilding
+*Add revert_62ca7996_build_date_and_time.patch
+*Add revert_cdd3c612d4230bbb_build_date_and_time.patch
+
+-------------------------------------------------------------------
+Fri Sep 16 16:06:19 UTC 2016 - dmueller@suse.com
+
+- enable build for ARM (needed for ovmf nowadays)
+
+-------------------------------------------------------------------
+Mon Apr 25 13:29:06 UTC 2016 - trenn@suse.de
+
+- Update to version 20160422
+
+-------------------------------------------------------------------
+Sun Dec  6 15:47:00 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 20151124
+  * Fixed a possible regression for a previous update to FADT handling. The 
+    FADT no longer has a fixed table ID, causing some issues with code that 
+    was hardwired to a specific ID. Lv Zheng.
+  * Fixed a problem where the method auto-serialization could interfere with 
+    the current SyncLevel. This change makes the auto-serialization support 
+    transparent to the SyncLevel support and management.
+  * Removed support for the _SUB predefined name in AcpiGetObjectInfo. This 
+    interface is intended for early access to the namespace during the 
+    initial namespace device discovery walk. The _SUB method has been seen to 
+    access operation regions in some cases, causing errors because the 
+    operation regions are not fully initialized.
+  * AML Debugger: Fixed some issues with the terminate/quit/exit commands 
+    that can cause faults.
+  * AML Debugger: Add thread ID support so that single-step mode only applies 
+  * to the AML Debugger thread. This prevents runtime errors within some 
+    kernels.
+  * Eliminated extraneous warnings from AcpiGetSleepTypeData. Since the _Sx 
+    methods that are invoked by this interface are optional, removed warnings 
+    emitted for the case where one or more of these methods do not exist. 
+    ACPICA BZ 1208.
+  * Made a major pass through the entire ACPICA source code base to 
+    standardize formatting that has diverged a bit over time. There are no 
+    functional changes, but this will of course cause quite a few code 
+    differences from the previous ACPICA release.
+  * Example Code and Data Size: These are the sizes for the OS-independent 
+    acpica.lib produced by the Microsoft Visual C++ 9.0 32-bit compiler. The 
+    debug version of the code includes the debug output trace mechanism and 
+    has a much larger code and data size.
+  * iASL/acpiexec/acpixtract/disassembler: Added support to allow multiple 
+    definition blocks within a single ASL file and the resulting AML file. 
+    Support for this type of file was also added to the various tools that 
+    use binary AML files: acpiexec, acpixtract, and the AML disassembler. The 
+    example code below shows two definition blocks within the same file:
+
+    DefinitionBlock ("dsdt.aml", "DSDT", 2, "Intel", "Template", 
+0x12345678)
+    {
+    }
+    DefinitionBlock ("", "SSDT", 2, "Intel", "Template", 0xABCDEF01)
+    {
+    }
+
+  * iASL: Enhanced typechecking for the Name() operator. All expressions for 
+    the value of the named object must be reduced/folded to a single constant 
+    at compile time, as per the ACPI specification (the AML definition of 
+    Name()).
+  * iASL: Fixed some code indentation issues for the -ic and -ia options (C 
+    and assembly headers). Now all emitted code correctly begins in column 1.
+  * iASL: Added an error message for an attempt to open a Scope() on an 
+    object defined in an SSDT. The DSDT is always loaded into the namespace 
+    first, so any attempt to open a Scope on an SSDT object will fail at 
+    runtime.
+- Remove acpica_remove_date_macro.patch; fixed on upstream release
+
+-------------------------------------------------------------------
+Wed Nov  4 16:49:28 UTC 2015 - jslaby@suse.com
+
+- add support for kernel 4.3+ (boo#953599)
+
+-------------------------------------------------------------------
+Sun Aug 16 13:11:48 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 20150717
+- Use download Url as source
+- Remove depreciated AUTHORS section
+
+-------------------------------------------------------------------
+Tue Jun 30 10:00:37 UTC 2015 - dimstar@opensuse.org
+
+- Fix the logic to ignore errors when applying
+  acpica_remove_date_macro.patch: Kernel 4.1 has the patch, but we
+  do want to keep it around for projects building against older
+  kernels.
+
+-------------------------------------------------------------------
+Fri Apr 24 08:58:34 UTC 2015 - trenn@suse.de
+
+- Update to acpica version 20150410
+
+- Do not generate acpitools tarball from external kernel repo, but
+  use kernel-source package inside the build service.
+*Added acpica_remove_date_macro.patch
+  -> This patch got mainline in kernel version 4.0 and can be removed
+  again at some point of time.
+
+-------------------------------------------------------------------
+Mon Feb  2 23:43:34 UTC 2015 - schwab@suse.de
+
+- Enable on aarch64
+
+-------------------------------------------------------------------
+Wed Jul 30 16:58:47 UTC 2014 - trenn@suse.de
+
+- Update to version 20140724
+
+-------------------------------------------------------------------
+Fri Mar 28 20:46:25 CET 2014 - lchiquitto@suse.de
+
+- Include generate_acpi-tools_tarball.sh in the package's source.
+
+-------------------------------------------------------------------
+Wed Mar 12 13:27:13 UTC 2014 - trenn@suse.de
+
+- Add acpi-tools tarball from kernel sources: tools/power/acpi
+  Use latest acpidump from there instead of acpica included one.
+  This fixes acpidump on latest kernels.
+- Add script for easier retrieving of acpi-tools tarball from kernel sources.
+
+-------------------------------------------------------------------
+Tue Mar 11 13:42:30 UTC 2014 - trenn@suse.de
+
+- Update to version 20140214
+- Replace $RPM_OPT_FLAGS with %{optflags} as suggested by tcech@suse.cz
+
+-------------------------------------------------------------------
+Fri Mar  7 15:31:16 CET 2014 - ro@suse.de
+
+- set HOST for make to not blindly set the hostname
+  as compiler definition 
+
+-------------------------------------------------------------------
+Wed Jan 15 09:47:26 UTC 2014 - trenn@suse.de
+
+- Update to version 20140114
+  Drop acpica-add_missing_examples_makefile.patch
+  -> already included mainlaine.
+
+-------------------------------------------------------------------
+Thu Dec 19 08:27:31 UTC 2013 - trenn@suse.de
+
+- Update to version 20131218
+  Add acpica-add_missing_examples_makefile.patch: They forgot to add a file
+  to the tarball. This patch adds it from git repo.
+  Drop acpica-fix_dots_in_path_for_p_option.patch: This patch is included
+  in the newly provided version tarball already.
+
+-------------------------------------------------------------------
+Fri Dec 13 11:12:18 UTC 2013 - trenn@suse.de
+
+- Update to version 20131115
+- Explicitly add commit 04d10e3c1f41a776cbed96dce2326ee649b9a0f0 to fix
+  bnc#855050:
+  acpica-fix_dots_in_path_for_p_option.patch
+
+-------------------------------------------------------------------
+Fri Aug 23 19:06:36 UTC 2013 - trenn@suse.de
+
+- Update to version 20130823
+- remove already integrated patch:
+  dmar-buf10.patch
+
+-------------------------------------------------------------------
+Tue Jul  9 19:29:34 UTC 2013 - trenn@suse.de
+
+- Fix Source3 vs Source4 typo (acpi_validate was broken)
+
+-------------------------------------------------------------------
+Fri May 24 13:27:25 UTC 2013 - trenn@suse.de
+
+- Update to version 20130517
+    - remove acpidump tarball, it is now included in acpica main project
+
+-------------------------------------------------------------------
+Fri May 17 10:11:01 UTC 2013 - trenn@suse.de
+
+- Update to version 20130418
+  - remove already integreated patches:
+     acpica_make_CFLAGS_overridable
+     bob_noop.patch
+  - Add fix for DMAR table parsing issue:
+    https://bugs.acpica.org/show_bug.cgi?id=999
+
+-------------------------------------------------------------------
+Mon Jan 28 13:20:36 UTC 2013 - trenn@suse.de
+
+- Add wmidump/wmixtract tools for easy WMI (or other) GUID parsing
+
+-------------------------------------------------------------------
+Wed Jan 23 16:12:38 UTC 2013 - trenn@suse.de
+
+- Fix tiny bug in acpi_validate which wrongly adds the file which
+  is to be compiled additionally to the external reference tables
+  list
+
+-------------------------------------------------------------------
+Wed Jan 23 11:07:28 UTC 2013 - trenn@suse.de
+
+- Make use of -in (Ignore NoOp opcodes/operators)
+  to avoid false positive errors during compliation/disassembling
+
+-------------------------------------------------------------------
+Tue Jan 15 12:55:46 UTC 2013 - trenn@suse.de
+
+- Update to version 20121018
+  -> remove some patches that got integrated
+  -> Add one patch (bob_noop.patch) which will get integrated
+     mainline: Stop and bail out when max error (200) count is reached.
+     Introduce -in compile/disassemble option.
+
+-------------------------------------------------------------------
+Wed Jan  9 01:05:33 UTC 2013 - trenn@suse.de
+
+- Add acpi_validate script for easy disassembling and re-compilation
+  of local ACPI tables or of an already existing acpidump file
+
+-------------------------------------------------------------------
+Wed Nov  7 10:27:54 UTC 2012 - trenn@suse.de
+
+- Update to latest version 20121018.
+  -> one patch got accepted mainline -> removed.
+
+-------------------------------------------------------------------
+Wed Sep 19 10:56:44 UTC 2012 - trenn@suse.de
+
+- Update to latest version 20120913
+- Add acpi_genl from http://www.lesswatts.org/projects/acpi/utilities.php
+  Can be used to check for ACPI events via netlink (since /proc/acpi/events is
+  is deprecated)
+- Adjust to new Makefile layout
+
+-------------------------------------------------------------------
+Sun May 20 10:06:24 UTC 2012 - trenn@suse.de
+
+- Update to latest version 20120518
+
+-------------------------------------------------------------------
+Tue Jan  3 11:02:28 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0
+  You added ec_access.c with a GPL-2.0 (only) license. Now the spec file
+  has to be updated to reflect this
+
+-------------------------------------------------------------------
+Wed Dec 21 09:51:55 UTC 2011 - aj@suse.de
+
+- Clarify license, it's GPL-2.0+ (bnc#711299).
+
+-------------------------------------------------------------------
+Thu Nov 24 16:33:44 UTC 2011 - trenn@suse.de
+
+- ACPICA version 20111123 released with full ACPI 5.0 support
+  Detailed changelog can be found here:
+  http://acpica.org/download/changes.txt
+
+-------------------------------------------------------------------
+Wed Jun 29 19:40:28 UTC 2011 - trenn@suse.de
+
+- Fix build for 32 bit
+
+-------------------------------------------------------------------
+Mon Jun 27 11:55:35 UTC 2011 - trenn@suse.de
+
+- Update to version 20110623
+- Fixed some "set but not used" errors and a link order issue
+  and sent patches upstream.
+- Set "-Wno-unused-result" for some compilations -> too many
+  offenders to fix that all up.
+
+-------------------------------------------------------------------
+Mon Jun 20 15:38:14 UTC 2011 - idonmez@novell.com
+
+- Add acpica-unix-const.patch: fix const correctness issue in 
+  AslCompilererror, http://www.acpica.org/bugzilla/show_bug.cgi?id=923
+
+-------------------------------------------------------------------
+Wed Apr 27 09:32:02 UTC 2011 - idoenmez@novell.com
+
+- Add acpica-unix-20110316-gcc46.patch: fix compilation with gcc 4.6 
+
+-------------------------------------------------------------------
+Sun Apr 17 03:37:25 UTC 2011 - crrodriguez@opensuse.org
+
+- Disable both build dates in this package and in
+  the files it generates as it both trigger either unneeded
+  republish of itself or other bigger packages like virtualbox
+- Provides: iasl too. 
+
+-------------------------------------------------------------------
+Wed Mar 30 16:15:29 UTC 2011 - trenn@suse.de
+
+- Exchange selfmade patch with mainline one to fix build
+
+-------------------------------------------------------------------
+Wed Mar 30 15:50:47 UTC 2011 - trenn@suse.de
+
+- Updated to acpica version 20110316
+  Changes are listed in /usr/share/doc/packages/acpica/changes.txt
+- Fixed dynamic acpi table extract via acpidump/acpixtract
+  by reverting acpica commit baab09e6857a427944068c5e599ea2ffb84f765b
+- Fixed compile issue and submitted it mainline
+
+-------------------------------------------------------------------
+Thu Feb 24 15:31:07 UTC 2011 - trenn@novell.com
+
+- Add possibility to see changes via new -s param: -r [ -s sleep ]
+
+-------------------------------------------------------------------
+Fri Jan 14 15:01:06 UTC 2011 - trenn@novell.com
+
+- Remove stale acpidump patches 
+
+-------------------------------------------------------------------
+Fri Jan 14 10:51:30 UTC 2011 - trenn@novell.com
+
+- Get latest acpidump tool from Len's acpi pmtools:
+  * Also dump dynamically loaded SSDTs
+- Build against its own headers instead of acpica headers
+  -> unfortunately acpidump is still not part of acpica and
+  adjusting things ourselves is too much overhead.
+
+  
+
+-------------------------------------------------------------------
+Thu Jan 13 14:46:00 UTC 2011 - trenn@novell.com
+
+- Update to version 20110112
+  Changes are listed in /usr/share/doc/packages/acpica/changes.txt
+
+-------------------------------------------------------------------
+Tue Oct 26 20:37:10 UTC 2010 - trenn@novell.com
+
+- Update to version 20100806
+- Added ec_access executable to be able to debug the Embedded
+  Controller together with CONFIG_ACPI_EC_DEBUGFS kernel .config
+  option
+
+-------------------------------------------------------------------
+Sat Aug  7 06:39:44 UTC 2010 - trenn@novell.com
+
+- Update to version 20100806
+  For details, see the changes.txt file in the package
+  changes.txt can now be found in
+  /usr/share/doc/packages/acpica/changes.txt
+
+-------------------------------------------------------------------
+Sun Jul  4 18:31:49 UTC 2010 - trenn@novell.com
+
+- Update to version 20100702
+  For details, see acpica-unix-20100702/changes.txt
+
+-------------------------------------------------------------------
+Thu Apr 29 12:05:18 UTC 2010 - trenn@novell.com
+
+- Update to version 20100428
+
+-------------------------------------------------------------------
+Mon Mar  8 13:56:19 UTC 2010 - trenn@novell.com
+
+- Avoid (when compiling AML):
+  DSDT.dsl 10307:   Name (_ADR, Zero)
+  Error    4080 -                ^ Invalid object type for reserved name,
+                                 must be (Integer)
+
+-------------------------------------------------------------------
+Fri Mar  5 12:22:59 UTC 2010 - trenn@novell.com
+
+- Updated to version 20100304
+  Some ACPI 4.0 enhancements and a lot bug fixes and other
+  enhancements. See changes.txt in the sources for details
+
+-------------------------------------------------------------------
+Wed Oct 14 11:13:29 CEST 2009 - trenn@suse.de
+
+- Updated to version 20091013
+  Includes a bug fix to correctly disassmeble Unisys ES7000 tables
+
+-------------------------------------------------------------------
+Wed Aug 26 21:47:35 CEST 2009 - meissner@suse.de
+
+- as-needed fix no longer necessary
+
+-------------------------------------------------------------------
+Fri Jul 31 10:59:44 CEST 2009 - trenn@suse.de
+
+- Update to acpica version 20090730
+  The ACPI 4.0 implementation for ACPICA is complete with this release.
+
+-------------------------------------------------------------------
+Fri Jun 19 10:35:46 CEST 2009 - coolo@novell.com
+
+- disable as-needed for this package as it fails to build with it
+
+-------------------------------------------------------------------
+Wed Apr  8 15:06:17 CEST 2009 - trenn@suse.de
+
+- Initial check-in: Version 20090320
+

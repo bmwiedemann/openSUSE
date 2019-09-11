@@ -1,0 +1,13 @@
+Index: virt-viewer-6.0/src/virt-viewer-app.c
+===================================================================
+--- virt-viewer-6.0.orig/src/virt-viewer-app.c
++++ virt-viewer-6.0/src/virt-viewer-app.c
+@@ -627,7 +627,7 @@ virt_viewer_app_open_tunnel_ssh(const ch
+     else
+         g_string_append_printf(cat, "UNIX-CONNECT:%s", unixsock);
+ 
+-    g_string_append(cat, "; else nc ");
++    g_string_append(cat, "; else netcat ");
+     if (port)
+         g_string_append_printf(cat, "%s %s", host, port);
+     else

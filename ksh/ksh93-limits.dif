@@ -1,0 +1,122 @@
+--- src/lib/libast/comp/conf.sh
++++ src/lib/libast/comp/conf.sh	2010-08-17 15:45:16.000000000 +0000
+@@ -143,7 +143,7 @@ main()
+ 	return 1;
+ #else
+ 	_ast_intmax_t		s = 0x7fffffffffffffffLL;
+-	unsigned _ast_intmax_t	u = 0xffffffffffffffffLL;
++	unsigned _ast_intmax_t	u = 0xffffffffffffffffULL;
+ 
+ 	return 0;
+ #endif
+@@ -801,7 +801,11 @@ defined() # list-file
+ 			cat <<!
+ ${head}
+ #include <sys/types.h>
++#include <sys/uio.h>
+ #include <limits.h>
++#if defined(__linux__)
++#include <linux/limits.h>
++#endif
+ #include <unistd.h>$systeminfo$headers
+ ${tail}
+ #undef conf
+@@ -829,7 +833,11 @@ unsigned int conf[] = {
+ 		cat <<!
+ ${head}
+ #include <sys/types.h>
++#include <sys/uio.h>
+ #include <limits.h>
++#if defined(__linux__)
++#include <linux/limits.h>
++#endif
+ #include <unistd.h>$systeminfo$headers
+ ${tail}
+ #undef conf
+@@ -870,7 +878,11 @@ done
+ 	cat <<!
+ ${head}
+ #include <sys/types.h>
++#include <sys/uio.h>
+ #include <limits.h>
++#if defined(__linux__)
++#include <linux/limits.h>
++#endif
+ #include <unistd.h>$systeminfo$headers
+ ${tail}
+ #undef conf
+@@ -1048,7 +1060,7 @@ do	eval name=\"'$'CONF_name_$key\"
+ 	case $flags in
+ 	*[Ll]*)	d=
+ 		case ${conf_name} in
+-		LONG_MAX|SSIZE_MAX)
++		LONG_MAX|UINT_MAX|INT_MAX|SHRT_MAX|SSIZE_MAX|WORD_BIT|LONG_BIT|PTHREAD_*)
+ 			x=
+ 			;;
+ 		*)	eval x='$'CONF_const_${conf_name}
+@@ -1108,7 +1120,11 @@ do	eval name=\"'$'CONF_name_$key\"
+ ${head}
+ #include <stdio.h>
+ #include <sys/types.h>
++#include <sys/uio.h>
+ #include <limits.h>
++#if defined(__linux__)
++#include <linux/limits.h>
++#endif
+ #include <unistd.h>$systeminfo$headers
+ ${tail}
+ int
+@@ -1123,7 +1139,11 @@ main()
+ ${head}
+ #include <stdio.h>
+ #include <sys/types.h>
++#include <sys/uio.h>
+ #include <limits.h>
++#if defined(__linux__)
++#include <linux/limits.h>
++#endif
+ #include <unistd.h>$systeminfo$headers
+ ${tail}
+ ${script}
+@@ -1270,7 +1290,11 @@ printf("#endif\n");
+ 				*)	cat > $tmp.c <<!
+ ${head}
+ #include <sys/types.h>
++#include <sys/uio.h>
+ #include <limits.h>
++#if defined(__linux__)
++#include <linux/limits.h>
++#endif
+ #include <unistd.h>$systeminfo$headers
+ ${tail}
+ ${script}
+@@ -1349,7 +1373,7 @@ ${script}
+ 		*[lLuU])
+ 			case $LL_suffix in
+ 			??)	case $conf_limit in
+-				*[!lL][lL]|*[!lL][lL][uU])
++				*[0-9a-fA-F][lL]|*[0-9a-fA-F][uU][lL])
+ 					conf_limit=${conf_limit}L
+ 					;;
+ 				esac
+@@ -1384,7 +1408,7 @@ ${script}
+ 		*[lLuU])
+ 			case $LL_suffix in
+ 			??)	case $conf_minmax in
+-				*[!lL][lL]|*[!lL][lL][uU])
++				*[0-9a-fA-F][lL]|*[0-9a-fA-F][uU][lL])
+ 					conf_minmax=${conf_minmax}L
+ 					;;
+ 				esac
+@@ -1561,7 +1585,11 @@ esac
+ cat <<!
+ ${head}
+ #include <sys/types.h>
++#include <sys/uio.h>
+ #include <limits.h>
++#if defined(__linux__)
++#include <linux/limits.h>
++#endif
+ #include <unistd.h>$systeminfo$headers
+ ${tail}
+ #include "${base}.h"

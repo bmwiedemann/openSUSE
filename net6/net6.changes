@@ -1,0 +1,163 @@
+-------------------------------------------------------------------
+Thu Apr 23 18:10:24 UTC 2015 - zaitor@opensuse.org
+
+- Add net6-gnutls30.patch: Fix build with gnutls30, patch taken
+  from Arch linux.
+
+-------------------------------------------------------------------
+Wed May 23 15:16:31 UTC 2012 - vuntz@opensuse.org
+
+- Move to pkgconfig()-style BuildRequires:
+  + Old ones: libgnutls-devel, libsigc++2-devel.
+  + New ones: gnutls, sigc++-2.0.
+
+-------------------------------------------------------------------
+Mon May 21 11:35:09 UTC 2012 - badshah400@gmail.com
+
+- Use libgnutls-devel BuildRequires instead of gnutls-devel for
+  openSUSE > 12.1: gnutls-devel has been removed from Factory.
+
+-------------------------------------------------------------------
+Mon Nov  7 00:05:31 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 1.3.14:
+  + Ensure that overflows on the user ID assigned to each
+    connection do not yield one that is already in use.
+    [CVE-2011-4093]
+  + Do not leak information about logged-in users. [CVE-2011-4091]
+  + Fix build failures with GnuTLS 3.0 and above
+  + Updated translations
+- Drop net6-gnutls-3.0.3.patch and net6-gnutls-3.0.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed Sep 28 08:09:23 UTC 2011 - vuntz@opensuse.org
+
+- Add net6-gnutls-3.0.3.patch: fix build with gnutls 3.0.3.
+
+-------------------------------------------------------------------
+Mon Sep  5 17:16:36 UTC 2011 - vuntz@opensuse.org
+
+- Add net6-gnutls-3.0.patch: fix build with gnutls 3.0.
+
+-------------------------------------------------------------------
+Tue Apr 26 16:22:22 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.3.13:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec 24 12:13:25 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.3.12:
+  + Allow non-blocking sockets on *nix.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec  8 09:38:36 CET 2009 - dimstar@opensuse.org
+
+- Update to version 1.3.11:
+  + Fix possible TLS lockup on Windows
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 25 17:42:45 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 1.3.10:
+  + Ensure compatibility with GnuTLS >= 2.7.x by relying on
+    pkg-config.
+  + Set SO_REUSEADDR on server sockets to ensure fast server
+    restarts
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jan  4 19:01:32 EST 2009 - mboman@suse.de
+
+- Update to version 1.3.9:
+  + Try to open both IPv6 and IPv4 listening sockets in case IPv6 sockets
+    do not accept IPv4 connections
+
+-------------------------------------------------------------------
+Fri Sep 12 07:53:30 CDT 2008 - maw@suse.de
+
+- Update to version 1.3.8:
+  + Misc. fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May 16 04:57:50 CEST 2008 - crrodriguez@suse.de
+
+- do not package unusable static libraries (there is 
+  no static gnutls) 
+
+-------------------------------------------------------------------
+Thu Apr  3 06:58:38 CEST 2008 - hpj@suse.de
+
+- Upgrade to version 1.3.6:
+
+  * Translation updates.
+
+-------------------------------------------------------------------
+Tue Aug  7 23:41:40 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig/ in %post and %postun.
+
+-------------------------------------------------------------------
+Fri Aug  3 20:27:40 CEST 2007 - maw@suse.de
+
+- Update to version 1.3.5:
+  + compilation and bug fixes.
+
+-------------------------------------------------------------------
+Tue Jan 30 16:11:56 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Sun Oct 29 11:14:52 CET 2006 - meissner@suse.de
+
+- use RPM_OPT_FLAGS for CXXFLAGS too.
+
+-------------------------------------------------------------------
+Tue Sep 26 17:01:49 CEST 2006 - wstephenson@suse.de
+
+- Update to version 1.3.1
+  * Support encrypted communication via gnutls
+  * Work over unix domain sockets
+  * Detect dropped clients
+  * IPv6 fixes
+
+-------------------------------------------------------------------
+Fri Sep 15 22:11:11 CEST 2006 - jhargadon@suse.de
+
+- applied a patch to fix compiler warnings in src/error.cpp for
+  bug 204415.
+
+-------------------------------------------------------------------
+Sat Feb 25 13:28:51 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:34 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 17:15:16 CET 2006 - lmichnovic@suse.cz
+
+- Update to version 1.2.2 [#144674]
+
+-------------------------------------------------------------------
+Wed Jan 18 14:20:22 CET 2006 - lmichnovic@suse.cz
+
+- Updated to version 1.2.1 
+
+-------------------------------------------------------------------
+Fri Nov  4 23:50:50 CET 2005 - gekker@suse.de
+
+- Initial import into autobuild, version 1.1.0
+

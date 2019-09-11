@@ -1,0 +1,1690 @@
+-------------------------------------------------------------------
+Tue Jul 23 13:52:05 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Wed Jul 10 06:28:36 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- add 0001-fix-build-after-y2038-changes-in-glibc.patch
+
+-------------------------------------------------------------------
+Tue Jun 11 12:31:25 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Fri Feb 22 07:10:51 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Drop use of $FIRST_ARG in .spec
+
+  The use of $FIRST_ARG was probably required because of the
+  %service_* rpm macros were playing tricks with the shell positional
+  parameters. This is bad practice and error prones so let's assume
+  that no macros should do that anymore and hence it's safe to assume
+  that positional parameters remains unchanged after any rpm macro
+  call.
+
+-------------------------------------------------------------------
+Wed Jan 23 23:03:22 UTC 2019 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- libidn should not be used anymore, switch to libidn2
+
+-------------------------------------------------------------------
+Mon Oct 22 08:29:46 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions. / Replace description with
+  new upstream description.
+- Do not hide failures from user/group additions.
+- Replace old $RPM_* shell vars by macros.
+
+-------------------------------------------------------------------
+Sun Oct 21 22:17:10 UTC 2018 - sean@suspend.net
+
+- Updated to dnsmasq 2.80
+  * Add support for RFC 4039 DHCP rapid commit
+  * Alter the default for dnssec-check-unsigned
+  * Fix DHCP when --no-ping and --dhcp-sequential-ip are set
+  * Allow zone transfer in authoritative mode if auth-peer is specified
+  * FIx missing fatal errors with some malformed options
+  * Fix crash on startup with a --synth-domain which has no prefix
+
+-------------------------------------------------------------------
+Fri Oct 19 15:01:00 UTC 2018 - cgoll@suse.com
+
+- enabled lua scripting interface (FATE#327143).
+
+-------------------------------------------------------------------
+Wed Aug 29 16:22:13 UTC 2018 - dmueller@suse.com
+
+- add missing prereq on the group to be created (bsc#1106446)
+
+-------------------------------------------------------------------
+Mon Jul 16 10:15:54 CEST 2018 - kukuk@suse.de
+
+- Don't require systemd explicit, fix spec file to handle both
+  cases correct. In containers we don't have systemd.
+- Adjust pre/post install for transactional updates.
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Mon Dec  4 13:39:32 UTC 2017 - idonmez@suse.com
+
+- Update keyring 
+
+-------------------------------------------------------------------
+Fri Dec  1 14:50:09 UTC 2017 - cbosdonnat@suse.com
+
+- Get rid of python dependency due to examples. (fate#323526)
+
+-------------------------------------------------------------------
+Mon Oct  2 14:09:59 UTC 2017 - max@suse.com
+
+- Security update to version 2.78:
+  * bsc#1060354, CVE-2017-14491: 2 byte heap based overflow.
+  * bsc#1060355, CVE-2017-14492: heap based overflow.
+  * bsc#1060360, CVE-2017-14493: stack based overflow.
+  * bsc#1060361, CVE-2017-14494: DHCP - info leak.
+  * bsc#1060362, CVE-2017-14495: DNS - OOM DoS.
+  * bsc#1060364, CVE-2017-14496: DNS - DoS Integer underflow.
+  * Fix DHCP relaying, broken in 2.76 and 2.77.
+  * For other changes, see
+    http://www.thekelleys.org.uk/dnsmasq/CHANGELOG
+- Obsoleted patches:
+  * Fix-crash-introduced-in-2675f2061525bc954be14988d643.patch
+  * Handle-binding-upstream-servers-to-an-interface.patch
+
+-------------------------------------------------------------------
+Tue Sep 12 08:29:59 UTC 2017 - tchvatal@suse.com
+
+- Fix /srv/tftpboot permissions wrt bsc#940608
+
+-------------------------------------------------------------------
+Fri Aug 18 11:16:03 UTC 2017 - dmueller@suse.com
+
+- reload system dbus to pick up policy change on install (bsc#1054429)
+
+-------------------------------------------------------------------
+Wed Jan  4 17:29:37 UTC 2017 - martin.wilck@suse.com
+
+- Handle binding upstream servers to an interface if interface
+  is destroyed and recreated (boo#1018160) 
+  Added two patches from upstream:
+  * added Handle-binding-upstream-servers-to-an-interface.patch
+  * added Fix-crash-introduced-in-2675f2061525bc954be14988d643.patch
+
+-------------------------------------------------------------------
+Wed Aug  3 13:46:06 UTC 2016 - max@suse.com
+
+- Update to 2.76:
+
+  * Include 0.0.0.0/8 in DNS rebind checks.
+  * Enhance --add-subnet to allow arbitrary subnet addresses.
+  * Respect the --no-resolv flag in inotify code. Fixes bug
+    which caused dnsmasq to fail to start if a resolv-file
+    was a dangling symbolic link, even of --no-resolv set.
+  * Fix crash when an A or AAAA record is defined locally,
+    in a hosts file, and an upstream server sends a reply
+    that the same name is empty (CVE-2015-8899, bsc#983273).
+  * Fix failure to correctly calculate cache-size when reading a
+    hosts-file fails.
+  * Fix wrong answer to simple name query when --domain-needed
+    set, but no upstream servers configured.
+  * Return REFUSED when running out of forwarding table slots,
+    not SERVFAIL.
+  * Add --max-port configuration.
+  * Add --script-arp and two new functions for the dhcp-script.
+  * Extend --add-mac to allow a new encoding of the MAC address
+    as base64, by configurting --add-mac=base64
+  * Add --add-cpe-id option.
+
+  * Don't crash with divide-by-zero if an IPv6 dhcp-range is
+    declared as a whole /64.
+    (ie xx::0 to xx::ffff:ffff:ffff:ffff)
+  * Add support for a TTL parameter in --host-record and --cname.
+  * Add --dhcp-ttl option.
+  * Add --tftp-mtu option.
+  * Check return-code of inet_pton() when parsing dhcp-option.
+  * Fix wrong value for EDNS UDP packet size when using
+    --servers-file to define upstream DNS servers.
+  * Add dhcp_release6 to contrib/lease-tools.
+
+-------------------------------------------------------------------
+Thu Jun 16 12:39:18 UTC 2016 - max@suse.com
+
+- dnsmasq-groups.patch: Initialize the supplementary groups of the
+  dnsmasq user (bsc#859298).
+
+-------------------------------------------------------------------
+Tue Feb  2 21:34:39 UTC 2016 - mpluskal@suse.com
+
+- Add gpg signature
+
+-------------------------------------------------------------------
+Mon Aug 24 18:10:01 UTC 2015 - stefan.bruens@rwth-aachen.de
+
+- spec file cleanup, get rid of redifinition warnings
+
+-------------------------------------------------------------------
+Tue Aug 11 01:41:02 UTC 2015 - stefan.bruens@rwth-aachen.de
+
+- Update to 2.75, announce message:
+    Fix reversion on 2.74 which caused 100% CPU use when a 
+    dhcp-script is configured. Thanks to Adrian Davey for
+    reporting the bug and testing the fix.
+
+- Update to 2.74, announce message:
+    Fix reversion in 2.73 where --conf-file would attempt to
+    read the default file, rather than no file.
+
+    Fix inotify code to handle dangling symlinks better and
+    not SEGV in some circumstances.
+
+    DNSSEC fix. In the case of a signed CNAME generated by a
+    wildcard which pointed to an unsigned domain, the wrong
+    status would be logged, and some necessary checks omitted.
+
+- Update to 2.73, announce message:
+    Fix crash at startup when an empty suffix is supplied to
+    --conf-dir, also trivial memory leak. Thanks to
+    Tomas Hozza for spotting this.
+
+    Remove floor of 4096 on advertised EDNS0 packet size when
+    DNSSEC in use, the original rationale for this has long gone.
+    Thanks to Anders Kaseorg for spotting this.
+
+    Use inotify for checking on updates to /etc/resolv.conf and
+    friends under Linux. This fixes race conditions when the files are
+    updated rapidly and saves CPU by noy polling. To build
+    a binary that runs on old Linux kernels without inotify,
+    use make COPTS=-DNO_INOTIFY
+
+    Fix breakage of --domain=<domain>,<subnet>,local - only reverse
+    queries were intercepted. THis appears to have been broken
+    since 2.69. Thanks to Josh Stone for finding the bug.
+
+    Eliminate IPv6 privacy addresses and deprecated addresses from
+    the answers given by --interface-name. Note that reverse queries
+    (ie looking for names, given addresses) are not affected.
+    Thanks to Michael Gorbach for the suggestion.
+
+    Fix crash in DNSSEC code with long RRs. Thanks to Marco Davids
+    for the bug report.
+
+    Add --ignore-address option. Ignore replies to A-record
+    queries which include the specified address. No error is
+    generated, dnsmasq simply continues to listen for another
+    reply. This is useful to defeat blocking strategies which
+    rely on quickly supplying a forged answer to a DNS
+    request for certain domains, before the correct answer can
+    arrive. Thanks to Glen Huang for the patch.
+
+    Revisit the part of DNSSEC validation which determines if an
+    unsigned answer is legit, or is in some part of the DNS
+    tree which should be signed. Dnsmasq now works from the
+    DNS root downward looking for the limit of signed
+    delegations, rather than working bottom up. This is
+    both more correct, and less likely to trip over broken
+    nameservers in the unsigned parts of the DNS tree
+    which don't respond well to DNSSEC queries.
+
+    Add --log-queries=extra option, which makes logs easier
+    to search automatically.
+
+    Add --min-cache-ttl option. I've resisted this for a long
+    time, on the grounds that disbelieving TTLs is never a
+    good idea, but I've been persuaded that there are
+    sometimes reasons to do it. (Step forward, GFW).
+    To avoid misuse, there's a hard limit on the TTL
+    floor of one hour. Thansk to RinSatsuki for the patch.
+
+    Cope with multiple interfaces with the same link-local
+    address. (IPv6 addresses are scoped, so this is allowed.)
+    Thanks to Cory Benfield for help with this.
+
+    Add --dhcp-hostsdir. This allows addition of new host
+    configurations to a running dnsmasq instance much more
+    cheaply than having dnsmasq re-read all its existing
+    configuration each time.
+
+    Don't reply to DHCPv6 SOLICIT messages if we're not
+    configured to do stateful DHCPv6. Thanks to Win King Wan
+    for the patch.
+
+    Fix broken DNSSEC validation of ECDSA signatures.
+
+    Add --dnssec-timestamp option, which provides an automatic
+    way to detect when the system time becomes valid after
+    boot on systems without an RTC, whilst allowing DNS
+    queries before the clock is valid so that NTP can run.
+    Thanks to Kevin Darbyshire-Bryant for developing this idea.
+
+    Add --tftp-no-fail option. Thanks to Stefan Tomanek for
+    the patch.
+
+    Fix crash caused by looking up servers.bind, CHAOS text
+    record, when more than about five --servers= lines are
+    in the dnsmasq config. This causes memory corruption
+    which causes a crash later. Thanks to Matt Coddington for
+    sterling work chasing this down.
+
+    Fix crash on receipt of certain malformed DNS requests.
+    Thanks to Nick Sampanis for spotting the problem.
+    Note that this is could allow the dnsmasq process's
+    memory to be read by an attacker under certain
+    circumstances, so it has a CVE, CVE-2015-3294
+
+    Fix crash in authoritative DNS code, if a .arpa zone
+    is declared as authoritative, and then a PTR query which
+    is not to be treated as authoritative arrived. Normally,
+    directly declaring .arpa zone as authoritative is not
+    done, so this crash wouldn't be seen. Instead the
+    relevant .arpa zone should be specified as a subnet
+    in the auth-zone declaration. Thanks to Johnny S. Lee
+    for the bugreport and initial patch.
+
+    Fix authoritative DNS code to correctly reply to NS
+    and SOA queries for .arpa zones for which we are
+    declared authoritative by means of a subnet in auth-zone.
+    Previously we provided correct answers to PTR queries
+    in such zones (including NS and SOA) but not direct
+    NS and SOA queries. Thanks to Johnny S. Lee for
+     pointing out the problem.
+
+    Fix logging of DHCPREPLY which should be suppressed
+    by quiet-dhcp6. Thanks to J. Pablo Abonia for
+    spotting the problem.
+
+    Try and handle net connections with broken fragmentation
+    that lose large UDP packets. If a server times out,
+    reduce the maximum UDP packet size field in the EDNS0
+    header to 1280 bytes. If it then answers, make that
+    change permanent.
+
+    Check IPv4-mapped IPv6 addresses when --stop-rebind
+    is active. Thanks to Jordan Milne for spotting this.
+
+    Allow DHCPv4 options T1 and T2 to be set using --dhcp-option.
+    Thanks to Kevin Benton for patches and work on this.
+
+    Fix code for DHCPCONFIRM DHCPv6 messages to confirm addresses
+    in the correct subnet, even of not in dynamic address
+    allocation range. Thanks to Steve Hirsch for spotting
+    the problem.
+
+    Add AddDhcpLease and DeleteDhcpLease DBus methods. Thanks
+    to Nicolas Cavallari for the patch.
+
+    Allow configuration of router advertisements without the
+    "on-link" bit set. Thanks to Neil Jerram for the patch.
+
+    Extend --bridge-interface to DHCPv6 and router
+    advertisements. Thanks to Neil Jerram for the patch.
+
+-------------------------------------------------------------------
+Wed Jun 17 01:45:33 UTC 2015 - crrodriguez@opensuse.org
+
+- dnsmasq.service: Order Before=nss-lookup.target  and 
+  Wants=nss-lookup.target as this service may provide
+  name resolution even for the localhost.
+
+-------------------------------------------------------------------
+Mon Apr 20 12:14:54 UTC 2015 - abergmann@suse.com
+
+- Move trust-anchors.conf into /etc/dnsmasq.d to be AppArmor conform.
+  (bnc#908137)
+
+-------------------------------------------------------------------
+Tue Jan  6 09:58:25 UTC 2015 - jslaby@suse.com
+
+- The change from Wed Dec 24 messed group w/ user IDs. Switch them
+  back and be more careful w/ what is changed.
+
+-------------------------------------------------------------------
+Mon Dec 29 09:37:54 UTC 2014 - dimstar@opensuse.org
+
+- Fix symlink of rcFOO to /usr/sbin/service, resolving a dangling
+  symlink lint warning (and remove the same from rpmlintrc).
+
+-------------------------------------------------------------------
+Thu Dec 25 06:32:18 UTC 2014 - nemysis@gmx.ch
+
+- Remove from spec group_and_isc.patch, forgotten in previous commit
+
+-------------------------------------------------------------------
+Wed Dec 24 22:29:52 UTC 2014 - nemysis@gmx.ch
+
+- Update to 2.72, announce message:
+
+    Add ra-advrouter mode, for RFC-3775 mobile IPv6 support.
+
+    Add support for "ipsets" in *BSD, using pf. Thanks to
+    Sven Falempim for the patch.
+
+    Fix race condition which could lock up dnsmasq when an
+    interface goes down and up rapidly. Thanks to Conrad
+    Kostecki for helping to chase this down.
+
+    Add DBus methods SetFilterWin2KOption and SetBogusPrivOption
+    Thanks to the Smoothwall project for the patch.
+
+    Fix failure to build against Nettle-3.0. Thanks to Steven
+    Barth for spotting this and finding the fix.
+
+    When assigning existing DHCP leases to intefaces by comparing
+    networks, handle the case that two or more interfaces have the
+    same network part, but different prefix lengths (favour the
+    longer prefix length.) Thanks to Lung-Pin Chang for the
+    patch.
+
+    Add a mode which detects and removes DNS forwarding loops, ie
+    a query sent to an upstream server returns as a new query to
+    dnsmasq, and would therefore be forwarded again, resulting in
+    a query which loops many times before being dropped. Upstream
+    servers which loop back are disabled and this event is logged.
+    Thanks to Smoothwall for their sponsorship of this feature.
+
+    Extend --conf-dir to allow filtering of files. So
+    --conf-dir=/etc/dnsmasq.d,\*.conf
+    will load all the files in /etc/dnsmasq.d which end in .conf
+
+    Fix bug when resulted in NXDOMAIN answers instead of NODATA in
+    some circumstances.
+
+    Fix bug which caused dnsmasq to become unresponsive if it
+    failed to send packets due to a network interface disappearing.
+    Thanks to Niels Peen for spotting this.
+
+    Fix problem with --local-service option on big-endian platforms
+    Thanks to Richard Genoud for the patch.
+
+
+- Add dnsmasq-rpmlintrc, for false positive scripts and symlink
+- Add BuildRequires for dos2unix
+- Use sed instead of simple patch group_and_isc.patch
+
+
+-------------------------------------------------------------------
+Sun Nov  9 09:30:07 UTC 2014 - seife+obs@b1-systems.com
+
+- fix logging, PrivateDevices=yes kills it (bnc#902511, bnc#904537)
+
+-------------------------------------------------------------------
+Tue Aug 26 14:05:14 CEST 2014 - dsterba@suse.cz
+
+- enable DNSSEC
+  - require libnettle
+  - package trust-anchors.conf
+- spec fixes:
+  - define HAVE_ flags on commandline, otherwise 'dnsmasq --version'
+    will not correctly reflect the feature status
+
+-------------------------------------------------------------------
+Fri Aug 22 07:08:36 UTC 2014 - meissner@suse.com
+
+- actually build with relro and pie. (bnc#893057)
+
+-------------------------------------------------------------------
+Wed Aug  6 06:48:20 UTC 2014 - vwallfahrer@suse.com
+
+- Removed Suse and all other OS/Distribution related subdirs from 
+  contrib, so only the rest gets packaged. The subdirs are not 
+  necessary anymore (bnc#889028).  
+
+-------------------------------------------------------------------
+Tue Aug  5 08:19:42 UTC 2014 - vwallfahrer@suse.com
+
+- Removed README.SUSE file, it was to confusing and not necessary (bnc#889972). 
+  Information is already present in the upstream documentation.
+- Split up vendor-files.tar.bz2 into single files
+- Comply with systemd packaging guidlines  
+
+-------------------------------------------------------------------
+Thu Jun 12 08:15:29 UTC 2014 - cdenicolo@suse.com
+
+- license update: GPL-2.0 or GPL-3.0
+  correct license is dual GPL-2.0 or GPL-3.0; please add COPYING-v3-file to
+  RPM.
+
+-------------------------------------------------------------------
+Wed Jun 11 15:27:24 UTC 2014 - dmueller@suse.com
+
+- update to 2.71:
+    Subtle change to error handling to help DNSSEC validation 
+    when servers fail to provide NODATA answers for 
+    non-existent DS records.
+
+    Tweak code which removes DNSSEC records from answers when
+    not required. Fixes broken answers when additional section
+    has real records in it. Thanks to Marco Davids for the bug 
+    report.
+
+    Fix DNSSEC validation of ANY queries. Thanks to Marco Davids
+    for spotting that too.
+
+    Fix total DNS failure and 100% CPU use if cachesize set to zero,
+    regression introduced in 2.69. Thanks to James Hunt and
+    the Ubuntu crowd for assistance in fixing this.
+
+
+    Fix crash, introduced in 2.69, on TCP request when dnsmasq
+    compiled with DNSSEC support, but running without DNSSEC
+    enabled. Thanks to Manish Sing for spotting that one.
+
+    Fix regression which broke ipset functionality. Thanks to 
+    Wang Jian for the bug report.
+
+
+    Implement dynamic interface discovery on *BSD. This allows
+    the contructor: syntax to be used in dhcp-range for DHCPv6
+    on the BSD platform. Thanks to Matthias Andree for
+    valuable research on how to implement this.
+
+    Fix infinite loop associated with some --bogus-nxdomain
+    configs. Thanks fogobogo for the bug report.
+
+    Fix missing RA RDNS option with configuration like
+    --dhcp-option=option6:23,[::] Thanks to Tsachi Kimeldorfer
+    for spotting the problem.
+
+    Add [fd00::] and [fe80::] as special addresses in DHCPv6
+    options, analogous to [::]. [fd00::] is replaced with the
+    actual ULA of the interface on the machine running
+    dnsmasq, [fe80::] with the link-local address. 
+    Thanks to Tsachi Kimeldorfer for championing this.
+
+    DNSSEC validation and caching. Dnsmasq needs to be
+    compiled with this enabled, with 
+    
+    make dnsmasq COPTS=-DHAVE_DNSSEC
+    
+    this add dependencies on the nettle crypto library and the 
+    gmp maths library. It's possible to have these linked
+    statically with
+    
+    make dnsmasq COPTS='-DHAVE_DNSSEC -DHAVE_DNSSEC_STATIC'
+    
+    which bloats the dnsmasq binary, but saves the size of 
+    the shared libraries which are much bigger.
+
+    To enable, DNSSEC, you will need a set of
+    trust-anchors. Now that the TLDs are signed, this can be
+    the keys for the root zone, and for convenience they are
+    included in trust-anchors.conf in the dnsmasq
+    distribution. You should of course check that these are
+    legitimate and up-to-date. So, adding
+    
+    conf-file=/path/to/trust-anchors.conf
+    dnssec
+
+    to your config is all thats needed to get things
+    working. The upstream nameservers have to be DNSSEC-capable
+    too, of course. Many ISP nameservers aren't, but the
+    Google public nameservers (8.8.8.8 and 8.8.4.4) are.
+    When DNSSEC is configured, dnsmasq validates any queries 
+    for domains which are signed. Query results which are 
+    bogus are replaced with SERVFAIL replies, and results 
+    which are correctly signed have the AD bit set. In 
+    addition, and just as importantly, dnsmasq supplies 
+    correct DNSSEC information to clients which are doing 
+    their own validation, and caches DNSKEY, DS and RRSIG
+    records, which significantly improve the performance of 
+    downstream validators. Setting --log-queries will show 
+    DNSSEC in action.
+
+    If a domain is returned from an upstream nameserver without 
+    DNSSEC signature, dnsmasq by default trusts this. This 
+    means that for unsigned zone (still the majority) there 
+    is effectively no cost for having DNSSEC enabled. Of course
+    this allows an attacker to replace a signed record with a 
+    false unsigned record. This is addressed by the 
+    --dnssec-check-unsigned flag, which instructs dnsmasq
+    to prove that an unsigned record is legitimate, by finding  
+    a secure proof that the zone containing the record is not
+    signed. Doing this has costs (typically one or two extra
+    upstream queries). It also has a nasty failure mode if
+    dnsmasq's upstream nameservers are not DNSSEC capable. 
+    Without --dnssec-check-unsigned using such an upstream
+    server will simply result in not queries being validated; 
+    with --dnssec-check-unsigned enabled and a 
+    DNSSEC-ignorant upstream server, _all_ queries will fail.
+
+    Note that DNSSEC requires that the local time is valid and 
+    accurate, if not then DNSSEC validation will fail. NTP 
+    should be running. This presents a problem for routers
+    without a battery-backed clock. To set the time needs NTP 
+    to do DNS lookups, but lookups will fail until NTP has run.
+    To address this, there's a flag, --dnssec-no-timecheck 
+    which disables the time checks (only) in DNSSEC. When dnsmasq
+    is started and the clock is not synced, this flag should
+    be used. As soon as the clock is synced, SIGHUP dnsmasq. 
+    The SIGHUP clears the cache of partially-validated data and
+    resets the no-timecheck flag, so that all DNSSEC checks 
+    henceforward will be complete.
+    
+    The development of DNSSEC in dnsmasq was started by 
+    Giovanni Bajo, to whom huge thanks are owed. It has been
+    supported by Comcast, whose techfund grant has allowed for 
+    an invaluable period of full-time work to get it to 
+    a workable state.
+
+    Add --rev-server. Thanks to Dave Taht for suggesting this.
+    
+    Add --servers-file. Allows dynamic update of upstream servers 
+    full access to configuration. 
+
+    Add --local-service. Accept DNS queries only from hosts 
+    whose address is on a local subnet, ie a subnet for which 
+    an interface exists on the server. This option
+    only has effect if there are no --interface --except-interface,
+    --listen-address or --auth-server options. It is intended 
+    to be set as a default on installation, to allow
+    unconfigured installations to be useful but also safe from 
+    being used for DNS amplification attacks.
+
+    Fix crashes in cache_get_cname_target() when dangling CNAMEs
+    encountered. Thanks to Andy and the rt-n56u project for
+    find this and helping to chase it down.
+
+    Fix wrong RCODE in authoritative DNS replies to PTR queries. The
+    correct answer was included, but the RCODE was set to NXDOMAIN.
+    Thanks to Craig McQueen for spotting this.
+
+    Make statistics available as DNS queries in the .bind TLD as 
+    well as logging them.
+
+
+    Use random addresses for DHCPv6 temporary address
+    allocations, instead of algorithmically determined stable
+    addresses.
+
+    Fix bug which meant that the DHCPv6 DUID was not available
+    in DHCP script runs during the lifetime of the dnsmasq
+    process which created the DUID de-novo. Once the DUID was
+    created and stored in the lease file and dnsmasq
+    restarted, this bug disappeared.
+
+    Fix bug introduced in 2.67 which could result in erroneous
+    NXDOMAIN returns to CNAME queries.
+
+    Fix build failures on MacOS X and openBSD.
+
+    Allow subnet specifications in --auth-zone to be interface 
+    names as well as address literals. This makes it possible
+    to configure authoritative DNS when local address ranges
+    are dynamic and works much better than the previous
+    work-around which exempted contructed DHCP ranges from the
+    IP address filtering. As a consequence, that work-around
+    is removed. Under certain circumstances, this change wil
+    break existing configuration: if you're relying on the
+    contructed-range exception, you need to change --auth-zone
+    to specify the same interface as is used to construct your
+    DHCP ranges, probably with a trailing "/6" like this: 
+    --auth-zone=example.com,eth0/6 to limit the addresses to
+    IPv6 addresses of eth0.
+
+    Fix problems when advertising deleted IPv6 prefixes. If
+    the prefix is deleted (rather than replaced), it doesn't
+    get advertised with zero preferred time. Thanks to Tsachi
+    for the bug report. 
+
+    Fix segfault with some locally configured CNAMEs. Thanks
+    to Andrew Childs for spotting the problem.
+
+    Fix memory leak on re-reading /etc/hosts and friends,
+    introduced in 2.67.
+
+    Check the arrival interface of incoming DNS and TFTP
+    requests via IPv6, even in --bind-interfaces mode. This
+    isn't possible for IPv4 and can generate scary warnings,
+    but as it's always possible for IPv6 (the API always
+    exists) then we should do it always. 
+    
+    Tweak the rules on prefix-lengths in --dhcp-range for
+    IPv6. The new rule is that the specified prefix length
+    must be larger than or equal to the prefix length of the
+    corresponding address on the local interface. 
+
+
+    Fix crash if upstream server returns SERVFAIL when
+    --conntrack in use. Thanks to Giacomo Tazzari for finding
+    this and supplying the patch. 
+
+    Repair regression in 2.64. That release stopped sending
+    lease-time information in the reply to DHCPINFORM
+    requests, on the correct grounds that it was a standards
+    violation. However, this broke the dnsmasq-specific
+    dhcp_lease_time utility. Now, DHCPINFORM returns
+    lease-time only if it's specifically requested
+    (maintaining standards) and the dhcp_lease_time utility
+    has been taught to ask for it (restoring functionality). 
+
+    Fix --dhcp-match, --dhcp-vendorclass and --dhcp-userclass
+    to work with BOOTP and well as DHCP. Thanks to Peter
+    Korsgaard for spotting the problem. 
+
+    Add --synth-domain. Thanks to Vishvananda Ishaya for
+    suggesting this.
+
+    Fix failure to compile ipset.c if old kernel headers are
+    in use. Thanks to Eugene Rudoy for pointing this out.
+
+    Handle IPv4 interface-address labels in Linux. These are
+    often used to emulate the old IP-alias addresses. Before,
+    using --interface=eth0 would service all the addresses of
+    eth0, including ones configured as aliases, which appear
+    in ifconfig as eth0:0. Now, only addresses with the label
+    eth0 are active. This is not backwards compatible: if you
+    want to continue to bind the aliases too, you need to add
+    eg. --interface=eth0:0 to the config. 
+
+    Fix "failed to set SO_BINDTODEVICE on DHCP socket: Socket 
+    operation on non-socket" error on startup with
+    configurations which have exactly one --interface option
+    and do RA but _not_ DHCPv6. Thanks to Trever Adams for the
+    bug report.
+
+    Generalise --interface-name to cope with IPv6 addresses
+    and multiple addresses per interface per address family.
+
+    Fix option parsing for --dhcp-host, which was generating a
+    spurious error when all seven possible items were
+    included. Thanks to Zhiqiang Wang for the bug report.
+
+    Remove restriction on prefix-length in --auth-zone. Thanks
+    to Toke Hoiland-Jorgensen for suggesting this.
+
+    Log when the maximum number of concurrent DNS queries is
+    reached. Thanks to Marcelo Salhab Brogliato for the patch.
+
+    If wildcards are used in --interface, don't assume that 
+    there will only ever be one available interface for DHCP
+    just because there is one at start-up. More may appear, so
+    we can't use SO_BINDTODEVICE. Thanks to Natrio for the bug
+    report. 
+
+    Increase timeout/number of retries in TFTP to accomodate
+    AudioCodes Voice Gateways doing streaming writes to flash.
+    Thanks to Damian Kaczkowski for spotting the problem.
+
+    Fix crash with empty DHCP string options when adding zero
+    terminator. Thanks to Patrick McLean for the bug report.
+
+    Allow hostnames to start with a number, as allowed in
+    RFC-1123. Thanks to Kyle Mestery for the patch. 
+
+    Fixes to DHCP FQDN option handling: don't terminate FQDN
+    if domain not known and allow a FQDN option with blank
+    name to request that a FQDN option is returned in the
+    reply. Thanks to Roy Marples for the patch.
+
+    Make --clear-on-reload apply to setting upstream servers
+    via DBus too.
+
+    When the address which triggered the construction of an
+    advertised IPv6 prefix disappears, continue to advertise 
+    the prefix for up to 2 hours, with the preferred lifetime
+    set to zero. This satisfies RFC 6204 4.3 L-13 and makes
+    things work better if a prefix disappears without being
+    deprecated first. Thanks to Uwe Schindler for persuasively
+    arguing for this.
+
+    Fix MAC address enumeration on *BSD. Thanks to Brad Smith
+    for the bug report.
+
+    Support RFC-4242 information-refresh-time options in the 
+    reply to DHCPv6 information-request. The lease time of the
+    smallest valid dhcp-range is sent. Thanks to Uwe Schindler 
+    for suggesting this.
+
+    Make --listen-address higher priority than --except-interface
+    in all circumstances. Thanks to Thomas Hood for the bugreport.
+
+    Provide independent control over which interfaces get TFTP 
+    service. If enable-tftp is given a list of interfaces, then TFTP 
+    is provided on those. Without the list, the previous behaviour
+    (provide TFTP to the same interfaces we provide DHCP to) 
+    is retained. Thanks to Lonnie Abelbeck for the suggestion.
+
+    Add --dhcp-relay config option. Many thanks to vtsl.net
+    for sponsoring this development.
+
+    Fix crash with empty tag: in --dhcp-range. Thanks to
+    Kaspar Schleiser for the bug report.
+
+    Add "baseline" and "bloatcheck" makefile targets, for 
+    revealing size changes during development. Thanks to
+    Vladislav Grishenko for the patch. 
+
+    Cope with DHCPv6 clients which send REQUESTs without
+    address options - treat them as SOLICIT with rapid commit.
+
+    Support identification of clients by MAC address in
+    DHCPv6. When using a relay, the relay must support RFC
+    6939 for this to work. It always works for directly
+    connected clients. Thanks to Vladislav Grishenko
+    for prompting this feature.
+    
+    Remove the rule for constructed DHCP ranges that the local
+    address must be either the first or last address in the
+    range. This was originally to avoid SLAAC addresses, but
+    we now explicitly autoconfig and privacy addresses instead.  
+
+    Update Polish translation. Thanks to Jan Psota.
+
+    Fix problem in DHCPv6 vendorclass/userclass matching
+    code. Thanks to Tanguy Bouzeloc for the patch.
+
+    Update Spanish transalation. Thanks to Vicente Soriano.
+
+    Add --ra-param option. Thanks to Vladislav Grishenko for
+    inspiration on this.
+
+    Add --add-subnet configuration, to tell upstream DNS
+    servers where the original client is. Thanks to DNSthingy
+    for sponsoring this feature.
+
+    Add --quiet-dhcp, --quiet-dhcp6 and --quiet-ra. Thanks to
+    Kevin Darbyshire-Bryant for the initial patch.
+
+    Allow A/AAAA records created by --interface-name to be the
+    target of --cname. Thanks to Hadmut Danisch for the
+    suggestion. 
+
+    Avoid treating a --dhcp-host which has an IPv6 address
+    as eligable for use with DHCPv4 on the grounds that it has
+    no address, and vice-versa. Thanks to Yury Konovalov for
+    spotting the problem.
+
+    Do a better job caching dangling CNAMEs. Thanks to Yves
+    Dorfsman for spotting the problem.
+
+
+    Add the ability to act as an authoritative DNS
+    server. Dnsmasq can now answer queries from the wider 'net
+    with local data, as long as the correct NS records are set
+    up. Only local data is provided, to avoid creating an open
+    DNS relay. Zone transfer is supported, to allow secondary
+    servers to be configured.
+
+    Add "constructed DHCP ranges" for DHCPv6. This is intended
+    for IPv6 routers which get prefixes dynamically via prefix
+    delegation. With suitable configuration, stateful DHCPv6
+    and RA can happen automatically as prefixes are delegated
+    and then deprecated, without having  to re-write the
+    dnsmasq configuration file or restart the daemon. Thanks to
+    Steven Barth for extensive testing and development work on
+    this idea.
+
+    Fix crash on startup on Solaris 11. Regression probably
+    introduced in 2.61.  Thanks to Geoff Johnstone for the
+    patch.
+
+    Add code to make behaviour for TCP DNS requests that same
+    as for UDP requests, when a request arrives for an allowed 
+    address, but via a banned interface. This change is only
+    active on Linux, since the relevant API is missing (AFAIK)
+    on other platforms. Many thanks to Tomas Hozza for
+    spotting the problem, and doing invaluable discovery of
+    the obscure and undocumented API required for the solution.
+
+    Don't send the default DHCP option advertising dnsmasq as
+    the local DNS server if dnsmasq is configured to not act
+    as DNS server, or it's configured to a non-standard port.
+
+    Add DNSMASQ_CIRCUIT_ID, DNSMASQ_SUBCRIBER_ID,
+    DNSMASQ_REMOTE_ID variables to the environment of the
+    lease-change script (and the corresponding Lua). These hold
+    information inserted into the DHCP request by a DHCP relay
+    agent. Thanks to Lakefield Communications for providing a
+    bounty for this addition.
+
+    Fixed crash, introduced in 2.64, whilst handling DHCPv6
+    information-requests with some common configurations.
+    Thanks to Robert M. Albrecht for the bug report and 
+    chasing the problem.
+
+    Add --ipset option. Thanks to Jason A. Donenfeld for the 
+    patch.
+
+    Don't erroneously reject some option names in --dhcp-match
+    options. Thanks to Benedikt Hochstrasser for the bug report.
+    
+    Allow a trailing '*' wildcard in all interface-name
+    configurations. Thanks to Christian Parpart for the patch.
+
+    Handle the situation where libc headers define
+    SO_REUSEPORT, but the kernel in use doesn't, to cope with
+    the introduction of this option to Linux. Thanks to Rich
+    Felker for the bug report.
+
+    Update Polish translation. Thanks to Jan Psota.
+
+    Fix crash if the configured DHCP lease limit is
+    reached. Regression occurred in 2.61. Thanks to Tsachi for
+    the bug report. 
+    
+    Update the French translation. Thanks to Gildas le Nadan.
+
+-------------------------------------------------------------------
+Wed Mar 26 16:56:34 UTC 2014 - crrodriguez@opensuse.org
+
+- dnsmasq.service: Set PrivateDevices=yes so we run in a 
+  separate namespace with the bare minimum device nodes isolated
+  from the host.
+
+-------------------------------------------------------------------
+Mon Apr 22 11:34:35 UTC 2013 - meissner@suse.com
+
+- reintroduced /sbin/rcdnsmasq as /sbin/service link.
+
+-------------------------------------------------------------------
+Sat Apr 20 05:54:35 UTC 2013 - crrodriguez@opensuse.org
+
+- Do not order after syslog.target which it is neither 
+  required not recommended and currently no longer even exists.
+
+-------------------------------------------------------------------
+Sat Apr 13 16:04:18 UTC 2013 - coolo@suse.com
+
+- sync /srv/tftpboot directory attributes with atftp package
+
+-------------------------------------------------------------------
+Wed Apr  3 23:09:10 UTC 2013 - crrodriguez@opensuse.org
+
+- remove all sysvinit support 
+
+-------------------------------------------------------------------
+Tue Mar 12 18:09:40 UTC 2013 - vuntz@suse.com
+
+- Create a utils subpackage to include DHCP lease management utils
+  (that are living in contrib/wrt):
+  + Explicitly build them in %build and install the files in
+    %install.
+  + Summary and description of the new subpackage are taken from
+    Fedora.
+
+-------------------------------------------------------------------
+Fri Feb 22 12:53:03 UTC 2013 - rmilasan@suse.com
+
+- Install dnsmasq.service accordingly (/usr/lib/systemd for 12.3
+  and up or /lib/systemd for older versions).
+
+-------------------------------------------------------------------
+Fri Dec 14 15:32:27 UTC 2012 - toganm@opensuse.org
+
+- Update to version 2.65. For other changes relating to other
+  versions in between please see the  CHANGELOG
+
+  *  Fix regression which broke forwarding orgf queries sent via
+    TCP which are not for A and AAAA and which were directed to
+    non-default servers. Thanks to Niax for the bug reportst.
+
+    Fix failure to build with DHCP support excluded. Thanks to 
+    Gustavo Zacarias for the patch.
+    
+    Fix nasty regression in 27.64 which completely broke cacheing.
+
+- renamed group_and_isc.diff to group_and_isc.patch rebasinp to -p1
+  level as outlined in the documentation at
+  http://en.opensuse.org/openSUSE:Packaging_Patches_guidelines
+
+-------------------------------------------------------------------
+Thu Oct  4 07:32:36 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0
+  Most of the source code files give a choice of either GPL-2.0 or GPL-3.0
+  (not GPL-2.0+). The website states that the COPYING file in the
+  distribution is the official license - in this case it is GPL-2.0. This
+  is consistent with what Fedora state about the package. Accordingly, I^d
+  be ok with License: GPL-2.0 or License: (GPL-2.0 or GPL-3.0) but not
+  License: GPL-2.0+
+
+-------------------------------------------------------------------
+Sun Jun 24 03:51:58 UTC 2012 - crrodriguez@opensuse.org
+
+- Update to version 2.62, misc bugfixes 
+- Fix CFLAGS/LDFLAGS usage
+- fix the small cache size problem in a different way by tweaking
+  the build config instead.
+
+-------------------------------------------------------------------
+Sat Jun 23 03:53:32 UTC 2012 - crrodriguez@opensuse.org
+
+- The default cache size is way too small (150 entries) use a sane
+  default of 2000 as used in *WRT embeeded routers which is still
+  very conservative for a desktop/server machine.
+- use async logging
+
+-------------------------------------------------------------------
+Sun Apr 29 19:16:43 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 2.61:
+  * add ra-names, ra-stateless and slaac keywords for DHCPv6: dnsmasq can now
+    synthesise AAAA records for dual-stack hosts which get IPv6 addresses via
+    SLAAC; it is also now possible to use SLAAC and stateless DHCPv6, and to
+    tell clients to use SLAAC addresses as well as DHCP ones
+  * add --dhcp-duid to allow DUID-EN uids to be used
+  * explicity send DHCPv6 replies to the correct port, instead of relying on
+    clients to send requests with the correct source address, since at least
+    one client in the wild gets this wrong
+  * send a preference value of 255 in DHCPv6 replies when --dhcp-authoritative
+    is in effect: his tells clients not to wait around for other DHCP servers
+  * better logging of DHCPv6 options
+  * add --host-record
+  * invoke the DHCP script with action "tftp" when a TFTP file transfer
+    completes: the size of the file, address to which it was sent and complete
+    pathname are supplied; note that version 2.60 introduced some script
+    incompatibilties associated with DHCPv6, and this is a further change; to
+    be safe, scripts should ignore unknown actions, and if not IPv6-aware,
+    should exit if the environment variable DNSMASQ_IAID is set; the use-case
+    for this is to track netboot/install
+  * update contrib/port-forward/dnsmasq-portforward to reflect the above
+  * set the environment variable DNSMASQ_LOG_DHCP when running the script id
+    --log-dhcp is in effect, so that script can taylor their logging verbosity
+  * arrange that addresses specified with --listen-address work even if there
+    is no interface carrying the address; this is chiefly useful for IPv4
+    loopback addresses, where any address in 127.0.0.0/8 is a valid loopback
+    address, but normally only 127.0.0.1 appears on the lo interface
+  * fix crash, introduced in 2.60, when a DHCPINFORM is received from a network
+    which has no valid dhcp-range
+  * add a new DHCP lease time keyword, "deprecated" for --dhcp-range: this is
+    only valid for IPv6, and sets the preffered lease time for both DHCP and RA
+    to zero; the effect is that clients can continue to use the address for
+    existing connections, but new connections will use other addresses, if they
+    exist; this makes hitless renumbering at least possible
+  * fix bug in address6_available() which caused DHCPv6 lease aquistion to fail
+    if more than one dhcp-range in use
+  * provide RDNSS and DNSSL data in router advertisements, using the settings
+    provided for DHCP options option6:domain-search and option6:dns-server
+  * don't cache data from non-recursive nameservers, since it may erroneously
+    look like a valid CNAME to a non-exitant name
+  * call SO_BINDTODEVICE on the DHCP socket(s) when doing DHCP on exacly one
+    interface and --bind-interfaces is set; this makes the OpenStack use-case
+    of one dnsmasq per virtual interface work
+  * give correct from-cache answers to explict CNAME queries
+  * add --tftp-lowercase option
+  * ensure that the DBus DhcpLeaseUpdated events are generated when a lease
+    goes through INIT_REBOOT state, even if the dhcp-script is not in use
+
+-------------------------------------------------------------------
+Tue Mar  6 10:13:09 CET 2012 - ug@suse.de
+
+- some dhcp fixes
+- Add Lua integration
+- Set TOS on DHCP sockets
+- Improve start-up speed when reading large hosts files
+- Fix problem if dnsmasq is started without the stdin
+- Allow the TFP server or boot server in --pxe-service
+- Support DHCPv6. Support is there for the sort of things
+  the existing v4 server does, including tags, options, 
+  static addresses and relay support
+- Support IPv6 router advertisements
+- Fix long-standing wrinkle with --localise-queries that
+  could result in wrong answers when DNS packets arrive
+  via an interface other than the expected one
+- 2.60
+
+-------------------------------------------------------------------
+Wed Feb  8 16:56:35 CET 2012 - ug@suse.de
+
+- added correct group for tftp
+  (bnc#738905)
+
+-------------------------------------------------------------------
+Mon Feb  6 22:25:05 UTC 2012 - crrodriguez@opensuse.org
+
+- Use systemd macros correctly 
+- build with PIE and full RELRO.
+
+-------------------------------------------------------------------
+Thu Jan 19 04:22:44 UTC 2012 - crrodriguez@opensuse.org
+
+- --enable-dbus must be explicit in systemd unit
+- default user is provided in config file or takes defaults on 
+  group_and_isc.diff
+
+-------------------------------------------------------------------
+Wed Jan 18 21:34:25 UTC 2012 - crrodriguez@opensuse.org
+
+- dnsmasq has dbus support, use it for systemd service. 
+
+-------------------------------------------------------------------
+Fri Nov 25 13:14:41 CET 2011 - ug@suse.de
+
+- removed systemd config for pre-12.1
+
+-------------------------------------------------------------------
+Thu Nov 24 20:45:37 UTC 2011 - crrodriguez@opensuse.org
+
+- Must be of type forking and change uid to dnsmasq 
+
+-------------------------------------------------------------------
+Thu Nov 24 20:19:11 UTC 2011 - crrodriguez@opensuse.org
+
+- Add systemd startup script 
+
+-------------------------------------------------------------------
+Thu Oct 20 15:58:50 CEST 2011 - ug@suse.de
+
+- dnsmasq still announced itself as 2.59-RC1
+  no other code changes than just the correct version string
+
+-------------------------------------------------------------------
+Tue Oct 18 23:13:12 CEST 2011 - ug@suse.de
+
+- fixed binding to IPv6 link-local addresses
+  (regression from 2.58)
+- 2.59
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Aug 26 21:12:04 CEST 2011 - ug@suse.de
+
+- Support scope-ids in IPv6 addresses of nameservers from
+  /etc/resolv.conf and in --server options
+- Fix bug which resulted in truncated files and timeouts for
+  some TFTP transfers
+- Allow the TFTP-server address in --dhcp-boot to be a
+  domain-name which is looked up in /etc/hosts
+- Tweak the behaviour of --domain-needed
+- Add support for Linux conntrack connection marking
+- Don't return NXDOMAIN to an AAAA query if we have CNAME
+  which points to an A record only
+- logging fixes
+- many DHCP fixes and features (see Changelog)
+- update to 2.58 
+
+-------------------------------------------------------------------
+Wed Mar  2 09:52:12 CET 2011 - ug@suse.de
+
+- Add IPv6 support to the TFTP server
+- Log DNS queries at level LOG_INFO
+- Add --add-mac option
+- some logging fixes
+- Don't complain about strings longer than 
+  255 characters in txt records
+- extended the --domain option
+- Never cache DNS replies which have the 'cd' bit set
+- Add --proxy-dnssec flag
+- Allow a filename of "-" for --conf-file
+- some smaller bugfixes
+- update to 2.57
+
+-------------------------------------------------------------------
+Tue Jun  8 09:31:21 CEST 2010 - ug@suse.de
+
+* Fix crash when /etc/ethers is in use.
+* Fix crash in netlink_multicast().
+* Allow the empty domain "." in dhcp domain-search (119)
+  options.
+* 2.55 (there was no 2.54)
+
+-------------------------------------------------------------------
+Mon Jun  7 11:47:58 CEST 2010 - ug@suse.de
+
+* Fixed bug which caused bad things to happen if a
+  resolv.conf file which exists is subsequently removed
+* Rationalised the DHCP tag system
+* Added --tag-if to allow boolean operations on tags
+* Add broadcast/unicast information to DHCP logging
+* Allow --dhcp-broadcast to be unconditional
+* Fixed incorrect behaviour with NOT <tag> conditionals in
+  dhcp-options
+* If we send vendor-class encapsulated options based on the
+  vendor-class supplied by the client, and no explicit
+  vendor-class option is given, echo back the vendor-class
+  from the client.
+* Fix bug which stopped dnsmasq from matching both a
+  circuitid and a remoteid
+* Add --dhcp-proxy
+* Added interface:<iface name> part to dhcp-range
+* and a lot more ... checke the CHANGELOG in the package
+
+* 2.53
+
+-------------------------------------------------------------------
+Mon Jan 25 09:31:02 CET 2010 - ug@suse.de
+
+* adds support for RFC 3925 vendor identifying vendor
+  options.
+
+* has some minor enhancements to the PXE subsystem and external 
+  hooks for tracking DHCP leases. 
+
+* 2.52
+
+-------------------------------------------------------------------
+Fri Nov 20 16:07:32 CET 2009 - ug@suse.de
+
+* Add support for internationalised DNS.
+
+* Add two more environment variables for lease-change scripts:
+  First, DNSMASQ_SUPPLIED_HOSTNAME; this is set to the hostname
+  supplied by a client, even if the actual hostname used is
+  over-ridden by dhcp-host or dhcp-ignore-names directives.
+  Also DNSMASQ_RELAY_ADDRESS which gives the address of 
+  a DHCP relay, if used.
+
+* Fix regression which broke echo of relay-agent
+  options. Thanks to Michael Rack for spotting this.
+
+* Don't treat option 67 as being interchangeable with
+  dhcp-boot parameters if it's specified as
+  dhcp-option-force.
+
+* Make the code to call scripts on lease-change compile-time
+  optional. It can be switched off by editing src/config.h
+  or building with "make COPTS=-DNO_SCRIPT".
+
+* Make the TFTP server cope with filenames from Windows/DOS
+  which use '\' as pathname separator. Thanks to Ralf for
+  the patch.
+
+* Warn if an IP address is duplicated in /etc/ethers.
+
+* Teach --conf-dir to take an option list of file suffices
+  which will be ignored when scanning the directory. Useful
+  for backup files etc. Thanks to Helmut Hullen for the
+  suggestion. 
+
+* Add new DHCP option named tftpserver-address
+
+* Don't do any PXE processing, even for clients with the 
+  correct vendorclass, unless at least one pxe-prompt or 
+  pxe-service option is given.
+
+* Limit the blocksize used for TFTP transfers to a value
+  which avoids packet fragmentation, based on the MTU of the
+  local interface. Many netboot ROMs can't cope with
+  fragmented packets.
+
+* Honour dhcp-ignore configuration for PXE and proxy-PXE 
+  requests.
+
+* 2.51
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:13 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Tue Sep  1 10:30:14 CEST 2009 - ug@suse.de
+
+- Fix security problem which allowed any host permitted to
+  do TFTP to possibly compromise dnsmasq by remote buffer
+  overflow when TFTP enabled.
+- version 2.50
+
+-------------------------------------------------------------------
+Tue Jun 16 10:57:25 CEST 2009 - ug@suse.de
+
+- Fix regression in 2.48 which disables the lease-change
+  script
+- version 2.49
+
+-------------------------------------------------------------------
+Fri Jun  5 10:29:10 CEST 2009 - ug@suse.de
+
+-Fixed bug which broke binding of servers to physical
+ interfaces when interface names were longer than four
+ characters.
+- Fixed netlink code
+- Don't read included configuration files more than once
+- Mark log messages from the various subsystems in dnsmasq
+- Fix possible infinite DHCP protocol loop when an IP
+  address nailed to a hostname
+- Allow --addn-hosts to take a directory
+- Support --bridge-interface on all platforms
+- Added support for advanced PXE functions
+- Improvements to DHCP logging
+- Added --test command-line switch
+- version 2.48
+
+-------------------------------------------------------------------
+Mon Mar 16 09:57:55 CET 2009 - ug@suse.de
+
+- dbus documentation added
+
+-------------------------------------------------------------------
+Tue Mar 10 16:24:17 CET 2009 - ug@suse.de
+
+- Enable dbus support by jnelson
+
+-------------------------------------------------------------------
+Fri Feb  6 10:09:35 CET 2009 - ug@suse.de
+
+- Handle duplicate address detection on IPv6 more
+  intelligently
+- Add DBus introspection
+- Update Dbus configuration file
+- Support arbitrarily encapsulated DHCP options
+- dhcp-option = encap:175, 190, "iscsi-client0"
+- dhcp-option = encap:175, 191, "iscsi-client0-secret"
+- Enhance --dhcp-match to allow testing of the contents of a
+  client-sent option, as well as its presence
+- No longer complain about blank lines in
+  /etc/ethers
+- Fix binding of servers to physical devices
+- Reply to DHCPINFORM requests even when the supplied ciaddr
+  doesn't fall in any dhcp-range
+- Allow the source address of an alias to be a range
+- version 2.47
+
+-------------------------------------------------------------------
+Tue Nov 11 13:57:17 CET 2008 - kukuk@suse.de
+
+- Add /usr/sbin/useradd to PreReq
+
+-------------------------------------------------------------------
+Sat Sep 13 00:51:49 CEST 2008 - mrueckert@suse.de
+
+- fix manpage.diff to actually apply
+- mark files below /etc as config
+- do not install README.SUSE in %install as %doc will clean the 
+  directory anyway.
+
+-------------------------------------------------------------------
+Fri Sep 12 15:10:55 CEST 2008 - ug@suse.de
+
+- user dnsmasq moved to group nogroup (bnc#401648)
+- added README.SUSE
+- added warning to init script when /etc/ppp is in use
+  since it's not readable anymore
+
+-------------------------------------------------------------------
+Tue Aug 19 10:41:48 CEST 2008 - ug@suse.de
+
+- init script fixed
+
+-------------------------------------------------------------------
+Mon Aug 11 16:32:03 CEST 2008 - ug@suse.de
+
+- Fix  crash when unknown client attempts to renew a DHCP
+  lease, problem introduced in version 2.43. Thanks to
+  Carlos Carvalho for help chasing this down.
+
+- Fix potential crash when a host which doesn't have a lease
+  does DHCPINFORM. Again introduced in 2.43. This bug has
+  never been reported in the wild.
+
+- Fix crash in netlink code introduced in 2.43. Thanks to
+  Jean Wolter for finding this.
+
+- Change implementation of min_port to work even if min-port
+  as large.
+- 2.4.45
+
+-------------------------------------------------------------------
+Mon Jul 14 09:45:15 CEST 2008 - ug@suse.de
+
+- This release fixes the DNS spoofing vulnerabilities announced in
+  CERT VU#800113. It adds source port randomization for communication with
+  upstream nameservers and replaces the C library PRNG with stronger code. It
+  makes failure to drop root privileges a hard error (previous versions would
+  log the error and continue, running as root.) Other changes include an
+  update to avoid triggering Linux kernel messages about an out-of-date
+  capabilities ABI, support for NAPTR records, and RFC 5107
+  server-id-override. 
+- 2.43
+
+-------------------------------------------------------------------
+Thu Jun 19 16:42:54 CEST 2008 - ug@suse.de
+
+- running as user dnsmasq now (bnc#401643)
+
+-------------------------------------------------------------------
+Thu Jun  5 15:33:40 CEST 2008 - ug@suse.de
+
+* Add --dhcp-alternate-port option. Thanks to Jan Psota for
+  the suggestion.
+* Updated Polish translations - thank to Jan Psota.
+* Provide --dhcp-bridge on all BSD variants.
+* Define _LARGEFILE_SOURCE which removes an arbitrary 2GB
+  limit on logfiles. Thanks to Paul Chambers for spotting 
+  the problem.
+* Fix RFC3046 agent-id echo code, broken for many
+  releases. Thanks to Jeremy Laine for spotting the problem
+  and providing a patch.
+* Add --dhcp-scriptuser option.	    
+* Support new capability interface on suitable Linux 
+  kernels, removes "legacy support in use" messages. Thanks 
+  to Jorge Bastos for pointing this out. 
+* Fix subtle bug in cache code which could cause dnsmasq to
+  lock spinning CPU in rare circumstances. Thanks to Alex
+  Chekholko for bug reports and help debugging. 
+* Support netascii transfer mode for TFTP.
+- 2.42
+
+-------------------------------------------------------------------
+Wed Feb 13 09:54:14 CET 2008 - ug@suse.de
+
+- Allow the DNS function to be completely disabled, by
+  setting the port to zero "--port=0"
+- Fix a bug where NXDOMAIN could be returned for a query
+  even if the name's value was known for a different query
+  type.
+- Fixed possible crash bug in DBus IPv6 code
+- Add --dhcp-no-override option
+- Add --tftp-port-range option
+- Add --stop-dns-rebind option
+- Added --all-servers option
+- Add --dhcp-optsfile option
+- Fixed broken --alias functionality
+- Add --dhcp-match flag
+- Added --dhcp-broadcast, to force broadcast replies
+- multiple bugs fixed
+- 2.41
+
+-------------------------------------------------------------------
+Fri Jan  4 06:32:08 CET 2008 - crrodriguez@suse.de
+
+- bzip tarball
+- use find_lang macro. 
+
+-------------------------------------------------------------------
+Thu Dec  6 17:21:05 CET 2007 - ug@suse.de
+
+- version 2.40
+- Fix handling of fully-qualified names in --dhcp-host
+- Fixed error in manpage
+- Fixed misaligned memory access which caused problems on
+  Blackfin CPUs
+- lots of new options (see changelog for details)
+
+-------------------------------------------------------------------
+Wed May  2 10:17:37 CEST 2007 - ug@suse.de
+
+- version 2.39
+- names like "localhost." in /etc/hosts with trailing period
+  are treated as fully-qualified.
+- Tolerate and ignore spaces around commas in the
+  configuration file in all circumstances
+- /a is no longer a valid escape in quoted strings.
+- Added symbolic DHCP option names
+- Overhauled the log code
+- --log-facility can now take a file-name
+- Added --log-dhcp flag
+- Added 127.0.0.0/8 and 169.254.0.0/16 to the address
+  ranges affected by --bogus-priv
+- Fixed failure of TFTP server with --listen-address
+- Added --dhcp-circuitid and --dhcp-remoteid for RFC3046
+- Added --dhcp-subscrid for RFC3993 subscriber-id relay
+- Corrected garbage-collection
+- Allow absolute paths for TFTP transfers even when
+  --tftp-root is set, as long as the path matches the root
+- Updated translations
+- Added --interface-name option
+
+-------------------------------------------------------------------
+Thu Mar 15 16:00:11 CET 2007 - ug@suse.de
+
+- SuSEFirewall service files fixed and enhanced
+
+-------------------------------------------------------------------
+Tue Mar  6 11:55:37 CET 2007 - ug@suse.de
+
+- SuSEFirewall service file added
+
+-------------------------------------------------------------------
+Tue Feb 13 09:33:37 CET 2007 - ug@suse.de
+
+- version 2.38
+
+ Don't send length zero DHCP option 43 and cope with
+ encapsulated options whose total length exceeds 255 octets
+ by splitting them into multiple option 43 pieces.
+
+ Avoid queries being retried forever when --strict-order is
+ set and an upstream server returns a SERVFAIL
+ error. Thanks to Johannes Stezenbach for spotting this.
+
+ Fix BOOTP support, broken in version 2.37.
+
+ Add example dhcp-options for Etherboot.
+
+ Add \e (for ASCII ESCape) to the set of valid escapes
+ in config-file strings.
+
+ Added --dhcp-option-force flag and examples in the
+ configuration file which use this to control PXELinux.
+
+ Added --tftp-no-blocksize option.
+
+ Set netid tag "bootp" when BOOTP (rather than DHCP) is in
+ use. This makes it easy to customise which options are
+ sent to BOOTP clients. (BOOTP allows only 64 octets for
+ options, so it can be necessary to trim things.)
+
+ Fix rare hang in cache code, a 2.37 regression. This
+ probably needs an infinite DHCP lease and some bad luck to
+ trigger. Thanks to Detlef Reichelt for bug reports and
+ testing.
+
+-------------------------------------------------------------------
+Mon Feb  5 16:29:39 CET 2007 - ug@suse.de
+
+ Add better support for RFC-2855 DHCP-over-firewire and RFC
+-4390 DHCP-over-InfiniBand. A good suggestion from Karl Svec.
+
+ Some efficiency tweaks to the cache code for very large
+ /etc/hosts files. Should improve reverse (address->name)
+ lookups and garbage collection. Thanks to Jan 'RedBully'
+ Seiffert for input on this.
+
+ Fix regression in 2.36 which made bogus-nxdomain
+ and DNS caching unreliable. Thanks to Dennis DeDonatis
+ and Jan Seiffert for bug reports.
+
+ Make DHCP encapsulated vendor-class options sane. Be
+ warned that some conceivable existing configurations
+ using these may break, but they work in a much
+ simpler and more logical way now. Prepending
+ "vendor:<client-id>" to an option encapsulates it
+ in option 43, and the option is sent only if the
+ client-supplied vendor-class substring-matches with
+ the given client-id. Thanks to Dennis DeDonatis for
+ help with this.
+
+ Apply patch from Jan Seiffert to tidy up tftp.c
+
+ Add support for overloading the filename and servername
+ fields in DHCP packet. This gives extra option-space when
+ these fields are not being used or with a modern client
+ which supports moving them into options.
+
+ Added a LIMITS section to the man-page, with guidance on
+ maximum numbers of clients, file sizes and tuning.
+
+- version 2.37
+
+-------------------------------------------------------------------
+Mon Jan 22 15:20:06 CET 2007 - ug@suse.de
+
+- version 2.36
+
+-------------------------------------------------------------------
+Mon Oct 30 09:28:53 CET 2006 - ug@suse.de
+
+- version 2.35
+- better performance on parsing huge /etc/hosts files
+
+-------------------------------------------------------------------
+Tue Oct 17 09:14:10 CEST 2006 - ug@suse.de
+
+- version 2.34
+- Tweak network-determination code
+- Improve handling of high DNS loads
+- Fixed intermittent infinite loop when re-reading
+  /etc/ethers after SIGHUP
+- Provide extra information to the lease-change script
+- Run the lease change script as root
+- Add contrib/port-forward/* which is a script to set up
+  port-forwards using the DHCP lease-change script
+- Fix unaligned access problem
+- Fixed problem with DHCPRELEASE
+- Updated French translation
+- Upgraded the name hash function in the DNS cache
+- Added --clear-on-reload flag
+- Treat a nameserver address of 0.0.0.0 as "nothing"
+- Added Webmin module in contrib/webmin
+
+-------------------------------------------------------------------
+Fri Aug 11 10:17:41 CEST 2006 - ug@suse.de
+
+- init-script more LSB conform
+  patch by Matthias Andree
+
+-------------------------------------------------------------------
+Mon Aug  7 09:10:16 CEST 2006 - ug@suse.de
+
+- version 2.33
+- Provide extra information to lease-change script
+- Fix breakage with some DHCP relay implementations
+- compilation warning fixes
+- minor DNS and DHCP fixes and enhancements
+
+-------------------------------------------------------------------
+Mon Jun 12 13:49:39 CEST 2006 - ug@suse.de
+
+- version 2.32
+
+-------------------------------------------------------------------
+Wed May 17 13:51:37 CEST 2006 - ug@suse.de
+
+- version 2.31
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:31 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 14:45:47 CET 2006 - ug@suse.de
+
+- Fixed crash when attempting to send a DHCP NAK to a host
+  which believes it has a lease on an unknown network.
+  That bug was invented in 2.25
+- version 2.26
+
+-------------------------------------------------------------------
+Mon Jan 16 12:29:50 CET 2006 - ug@suse.de
+
+- moved dnsmasq.no to dnsmasq.np
+  see bug #42748
+
+-------------------------------------------------------------------
+Mon Jan 16 10:15:13 CET 2006 - ug@suse.de
+
+- version update to 2.25
+
+-------------------------------------------------------------------
+Mon Nov 28 11:57:20 CET 2005 - ug@suse.de
+
+- version update to 2.24
+
+-------------------------------------------------------------------
+Mon Oct 17 14:41:02 CEST 2005 - ug@suse.de
+
+- "-fno-strict-aliasing" now
+
+-------------------------------------------------------------------
+Wed Oct 12 17:02:29 CEST 2005 - ug@suse.de
+
+- version update to 2.23
+
+-------------------------------------------------------------------
+Wed Aug 24 10:26:55 CEST 2005 - ug@suse.de
+
+- Fix DNS query forwarding for empty queries and forward
+  queries even when the recursion-desired bit is clear.
+  This allows "dig +trace" to work
+  Bug #106717
+
+-------------------------------------------------------------------
+Fri Aug  5 10:38:00 CEST 2005 - cthiel@suse.de
+
+- update to version 2.22
+
+-------------------------------------------------------------------
+Wed Apr 13 14:04:44 CEST 2005 - mls@suse.de
+
+- fix slp registration
+
+-------------------------------------------------------------------
+Mon Jan 24 10:56:13 CET 2005 - ug@suse.de
+
+- version update from 2.19 to 2.20
+- Allow more than one instance of dnsmasq to run on a
+  machine, each providing DHCP service on a different
+  interface
+- Protect against overlong names and overlong
+  labels in configuration and from DHCP.
+- Fix interesting corner case in CNAME handling. This occurs
+  when a CNAME has a target which "shadowed" by a name in
+  /etc/hosts or from DHCP
+- Added support for SRV records
+- Fixed sign confusion in the vendor-id matching code
+- Added the ability to match the netid tag in a
+  dhcp-range
+- Added preference values for MX records
+- Added the --localise-queries option.
+
+
+-------------------------------------------------------------------
+Fri Jan 21 10:33:00 CET 2005 - ug@suse.de
+
+- version update to 2.19
+- minor fixes in IPV6 and DHCP Code
+
+-------------------------------------------------------------------
+Fri Nov 26 13:53:00 CET 2004 - ug@suse.de
+
+- version update to 2.18
+- lots of DHCP fixes
+- some IPV6 fixes
+
+-------------------------------------------------------------------
+Fri Nov 19 15:50:11 CET 2004 - ug@suse.de
+
+- SLP support via /etc/slp.reg.d/dnsmasq.reg file added
+
+-------------------------------------------------------------------
+Fri Aug 20 10:52:05 CEST 2004 - ug@suse.de
+
+- version update from 2.11 to 2.13
+- Added extra checks to ensure that DHCP created DNS entries
+  cannot generate multiple DNS address->name entries.
+- Don't set the the filterwin2k option in the example config
+  file and add warnings that is breaks Kerberos.
+- Log types of incoming queries as well as source and domain.
+- Log NODATA replies generated as a result of the filterwin2k 
+  option. 
+
+-------------------------------------------------------------------
+Mon Aug  9 12:12:24 CEST 2004 - ug@suse.de
+
+- version update from 2.8 to 2.11 
+
+-------------------------------------------------------------------
+Tue Jun  1 17:09:51 CEST 2004 - ug@suse.de
+
+- chgrp to "dialout" and not to "dip"
+- backward compatibility turned off
+
+-------------------------------------------------------------------
+Mon May 24 17:28:52 CEST 2004 - ug@suse.de
+
+- added to distribution 
+

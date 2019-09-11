@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Fri Jun  8 13:06:39 UTC 2018 - mardnh@gmx.de
+
+- Update to versoin 1.1.4
+  * This release is primarily a bug-fix release for Windows
+    platforms, but it also adds support for building on Android.
+  * The main change in this release is a fix for the IPC transport
+    on Windows, which was subject to crashing if the remote peer
+    breaks messages into smaller pieces.
+    As some other SP implementations do this to avoid data copies,
+    this fix is very important.
+  * A fix for leaking handles on Windows is included.
+  * Support for compilation on Android using the NDK and the
+    bundled cmake and toolchain file from Android is now present.
+
+-------------------------------------------------------------------
+Fri Jun  1 19:39:08 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.1.3
+  * CMake exported target, easing inclusion in larger projects
+    (see demos/CMakeLists.txt for an example)
+  * Windows no longer uses a single fixed TCP port for eventfd
+    (this should improve reliability)
+  * Fix for an assertion failure in efd_unsignal
+  * The ABI version is separate from the library version now.
+  * Fixed a crash when calling nn_term without first opening a
+    socket.
+  * Fix for building Windows tests on case-sensitive file systems.
+  * CI/CD improvements: switch to CircleCI, and use CodeCov for
+    coverage analysis.
+
+-------------------------------------------------------------------
+Tue Nov  7 15:19:02 UTC 2017 - mardnh@gmx.de
+
+- update to version 1.1.2
+  This is a bug fix release for 1.1.0.
+  Two main issues are resolved:
+  * nanomsg no longer wakes up every 100 msec even when no I/O is
+    pending
+  * Some users noticed that nanomsg was performing wakeups
+    regardless of whether I/O was available or not.
+    This had a detrimental effect on power usage.
+  * In some circumstances an outstanding accept() operation that
+    got aborted (for example due to the socket closing) could wind
+    up crashing the application.
+    This was a race, and it is closed now.
+
+-------------------------------------------------------------------
+Fri Oct 20 13:36:53 UTC 2017 - mardnh@gmx.de
+
+- update to version 1.1.0
+  * This release is primarily a bug fix release for nanomsg, and
+    rolls up a number of stability improvements, particularly for
+    the inproc transport.
+  * A port to support Windows Subsystem for Linux is provided as well.
+  * There are no changes to the ABI.
+
+-------------------------------------------------------------------
+Fri Apr 28 20:38:53 UTC 2017 - jengelh@inai.de
+
+- Rename archive to have correct extension.
+- Add strict.diff
+
+-------------------------------------------------------------------
+Fri Apr 28 20:09:13 UTC 2017 - jengelh@inai.de
+
+- Update descriptions
+
+-------------------------------------------------------------------
+Thu Apr 13 20:42:50 UTC 2017 - mardnh@gmx.de
+
+- update to version 1.0.0 (tagged release)
+- specfile cleanup
+
+-------------------------------------------------------------------
+Mon Mar 28 12:59:37 UTC 2016 - mardnh@gmx.de
+
+- update to version 0.8+git.1454566536.8f873b4
+
+-------------------------------------------------------------------
+Tue May 27 18:40:25 UTC 2014 - dmacvicar@suse.de
+
+- initial package for 0.3+git.1400232496.c00be36
+
+

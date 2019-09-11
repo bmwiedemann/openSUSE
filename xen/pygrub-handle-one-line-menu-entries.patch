@@ -1,0 +1,59 @@
+References: bsc#978413
+
+The parsing code can't handle a single line menu entry.
+For example: menuentry 'halt' { halt }
+Force it to fall through where it will handle the closing brace.
+Also change warning to debug to cut down on verbose output.
+
+Index: xen-4.7.0-testing/tools/pygrub/src/GrubConf.py
+===================================================================
+--- xen-4.7.0-testing.orig/tools/pygrub/src/GrubConf.py
++++ xen-4.7.0-testing/tools/pygrub/src/GrubConf.py
+@@ -147,7 +147,7 @@ class GrubImage(_GrubImage):
+             else:
+                 logging.info("Ignored image directive %s" %(com,))
+         else:
+-            logging.warning("Unknown image directive %s" %(com,))
++            logging.debug("Unknown image directive %s" %(com,))
+ 
+         # now put the line in the list of lines
+         if replace is None:
+@@ -302,7 +302,7 @@ class GrubConfigFile(_GrubConfigFile):
+                 else:
+                     logging.info("Ignored directive %s" %(com,))
+             else:
+-                logging.warning("Unknown directive %s" %(com,))
++                logging.debug("Unknown directive %s" %(com,))
+                 
+         if img:
+             self.add_image(GrubImage(title, img))
+@@ -336,7 +336,7 @@ class Grub2Image(_GrubImage):
+         elif com.startswith('set:'):
+             pass
+         else:
+-            logging.warning("Unknown image directive %s" %(com,))
++            logging.debug("Unknown image directive %s" %(com,))
+ 
+         # now put the line in the list of lines
+         if replace is None:
+@@ -401,7 +401,10 @@ class Grub2ConfigFile(_GrubConfigFile):
+                     raise RuntimeError, "syntax error: cannot nest menuentry (%d %s)" % (len(img),img)
+                 img = []
+                 title = title_match.group(1)
+-                continue
++                if not l.endswith('}'):
++                    continue
++                # One line menuentry, Ex. menuentry 'halt' { halt }
++                l = '}'
+ 
+             if l.startswith("submenu"):
+                 menu_level += 1
+@@ -440,7 +443,7 @@ class Grub2ConfigFile(_GrubConfigFile):
+             elif com.startswith('set:'):
+                 pass
+             else:
+-                logging.warning("Unknown directive %s" %(com,))
++                logging.debug("Unknown directive %s" %(com,))
+             
+         if img is not None:
+             raise RuntimeError, "syntax error: end of file with open menuentry(%d %s)" % (len(img),img)

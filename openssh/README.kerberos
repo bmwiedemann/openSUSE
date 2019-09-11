@@ -1,0 +1,18 @@
+This version of the Kerbros/GSSAPI support avoids DNS lookups
+for Kerberos-related names. These DNS lookups were problematic
+for dialup users because they would lead to excessive delays
+if DNS was not reachable.
+
+If you do use Kerberos, please make sure you edit the server and
+client configuration files as follows:
+
+/etc/ssh/sshd_config:
+
+	GSSAPIAuthentication yes
+	GSSAPICleanupCredentials yes
+	
+/etc/ssh/ssh_config:
+	Host *
+	    ... lots of other options ...
+	    GSSAPIAuthentication yes
+	    GSSAPIDelegateCredentials yes

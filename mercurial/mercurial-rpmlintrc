@@ -1,0 +1,2 @@
+addFilter("python-naming-policy-not-applied")
+addFilter("non-conffile-in-etc /etc/bash_completion.d/mercurial.sh")

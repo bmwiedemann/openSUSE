@@ -1,0 +1,15 @@
+--- ./src/lib/libast/vmalloc/malloc.c.orig	2014-11-19 11:51:06.992595039 +0000
++++ ./src/lib/libast/vmalloc/malloc.c	2014-11-19 12:00:22.713076989 +0000
+@@ -1070,12 +1070,8 @@ extern Void_t*	F1(_ast_valloc, size_t,n)
+ 
+ #if !_UWIN
+ 
+-#if !_malloc_hook
+-
+ #include	<malloc.h>
+ 
+-#endif
+-
+ typedef struct mallinfo Mallinfo_t;
+ typedef struct mstats Mstats_t;
+ 

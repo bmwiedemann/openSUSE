@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Wed May  1 13:05:37 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Don't just repeat the software name in the summary.
+
+-------------------------------------------------------------------
+Tue Apr 30 13:55:38 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of maven-enforcer 1.4.1

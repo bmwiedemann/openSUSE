@@ -1,0 +1,151 @@
+-------------------------------------------------------------------
+Thu Aug  9 22:28:01 UTC 2018 - rpm@fthiessen.de
+
+- Update to 0.20
+  * keep track of domain in 0D isl_multi_pw_aff and
+    isl_multi_union_pw_aff
+  * add isl_aff_eval and isl_pw_aff_eval
+  * add fixed-size rectangular box hull
+
+-------------------------------------------------------------------
+Wed Mar  7 14:56:29 UTC 2018 - rguenther@suse.com
+
+- Update to 0.19
+  * minor improvements to coalescing
+  * minor improvement to parametric integer programming
+  * try harder to avoid large coefficients in scheduler
+  * support kill accesses in dependence analysis
+  * drop deprecated isl_int
+  * drop deprecated band forests
+  * drop deprecated functions
+
+-------------------------------------------------------------------
+Wed Jan 31 12:50:45 UTC 2018 - jengelh@inai.de
+
+- Set shared library RPM group. Use %make_install.
+
+-------------------------------------------------------------------
+Mon Jan 29 14:43:34 UTC 2018 - msrb@suse.com
+
+- Include pkgconfig files in isl-devel package.
+- Do not build static libraries (instead of deleting them after).
+
+-------------------------------------------------------------------
+Tue Jan 31 14:05:40 UTC 2017 - rguenther@suse.com
+
+- Update to 0.18
+  * improve elimination of redundant existentially quantified variables
+  * improve coalescing
+  * improve parametric integer programming
+  * preserve isolate option in isl_schedule_node_band_split
+  * print AST nodes in YAML format
+  * minor improvements to Python bindings
+- Inherits update to 0.17.1
+  * fix bug in coalescing treatment
+- Inherits update to 0.17
+  * optionally combine SCCs incrementally in scheduler
+  * optionally maximize coincidence in scheduler
+  * optionally avoid loop coalescing in scheduler
+  * fix handling of nested integer divisions
+  * optionally detect min/max expressions during AST generation
+  * minor AST generator improvements
+  * simplify stride constraints
+  * improve support for expansions in schedule trees
+
+-------------------------------------------------------------------
+Sun Feb  7 09:08:25 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.16.1
+  * fix bug in simplification
+- Changes for 0.16
+  * add 32 bit integer optimization for IMath
+  * minor AST generator improvements
+  * add isl_union_flow_get_full_{may,must}_dependence
+  * minor improvements to Python bindings
+  * minor improvements to set and map printing
+
+-------------------------------------------------------------------
+Sun Jan 31 20:54:43 UTC 2016 - mpluskal@suse.com
+
+- Use url for source
+- Cleanup spec file with spec-cleaner
+- Make building more verbose
+
+-------------------------------------------------------------------
+Thu Dec  3 09:03:32 UTC 2015 - rguenther@suse.com
+
+- Update to ISL version 0.15
+  * improve coalescing
+  * add isl_union_access_info_compute_flow
+  * add mark nodes in AST
+  * add isl_union_pw_aff and isl_multi_union_pw_aff
+  * add schedule trees
+  * deprecate band forests
+  * deprecate separation_class AST generation option
+  * introduce isl_bool and isl_stat types
+- Removes no longer needed isl-0.14-fixes.patch.
+
+-------------------------------------------------------------------
+Thu Dec  4 09:23:01 UTC 2014 - rguenther@suse.com
+
+- Update to ISL version 0.14
+  * support IMath as an optional replacement for GMP
+  * minor AST generator improvements
+- Inherits changes from ISL version 0.13
+  * deprecate isl_int
+  * improved support for multi piecewise quasi-affine expressions
+  * allow the user to impose a bound on the number of low-level operations
+  * add isl_id_to_ast_expr and isl_id_to_pw_aff
+  * add isl_schedule_constraints
+  * hide internal structure of isl_vec
+  * remove support for piplib
+- Add isl-0.14-fixes.patch to fix function returning without value.
+
+-------------------------------------------------------------------
+Thu Feb 13 12:19:28 UTC 2014 - rguenther@suse.com
+
+- Update to ISL version 0.12.2
+  * isl_int has been replaced by isl_val
+  * some of the old functions are still available in isl/deprecated/*.h
+  but they will be removed in the future
+  * The functions isl_pw_qpolynomial_eval, isl_union_pw_qpolynomial_eval,
+  isl_pw_qpolynomial_fold_eval and isl_union_pw_qpolynomial_fold_eval have
+  been changed to return an isl_val instead of an isl_qpolynomial
+- Remove obsolete config-guess-sub-update.diff patch
+
+-------------------------------------------------------------------
+Mon Jun 24 10:31:25 UTC 2013 - rguenther@suse.com
+
+- Update to ISL version 0.12
+  * adds isl_val abstraction
+
+-------------------------------------------------------------------
+Thu Feb  7 18:41:54 UTC 2013 - dmueller@suse.com
+
+- Add config-guess-sub-update.diff:
+  * Update config.guess/sub for aarch64
+
+-------------------------------------------------------------------
+Mon Dec 17 13:20:59 UTC 2012 - rguenther@suse.com
+
+- Update to ISL version 0.11.1
+  * fixes endianess issue
+  * now comes with a LICENSE file
+
+-------------------------------------------------------------------
+Tue Dec  4 15:37:14 UTC 2012 - rguenther@suse.com
+
+- Update to ISL version 0.11 
+  * license change to MIT
+  * add support for code generation
+
+-------------------------------------------------------------------
+Thu Sep 27 09:13:25 UTC 2012 - idonmez@suse.com
+
+- Add baselibs.conf, needed by cloog-isl-32bit 
+
+-------------------------------------------------------------------
+Thu Jun 21 14:45:08 UTC 2012 - rguenther@suse.com
+
+- ISL 0.10
+

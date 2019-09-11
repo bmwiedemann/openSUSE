@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Thu Apr  5 10:40:38 UTC 2018 - sndirsch@suse.com
+
+- Update to version 1.0.5
+  * autogen.sh changes
+  * config: Add missing AC_CONFIG_SRCDIR
+  * configure: Drop AM_MAINTAINER_MODE
+  * Combine usage message array into single string
+  * Print which option was in error along with usage message
+  * Add -version option to print program version
+  * Make polygon info const - moves 22k from .data to .rodata
+  * Convert icoFatal() to be a varargs function
+  * Add -version to synopsis in man page
+  * Fix more sign-compare warnings
+
+-------------------------------------------------------------------
+Sat Jan 19 09:44:03 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.4:
+  + Fix some 64-bit vs. 32-bit conversion errors.
+  + Mark a couple parameters as unused to silence compiler warnings
+  + Add const qualifiers to fix gcc -Wwrite-strings warnings.
+  + Replace local checks for gcc with _X_NORETURN from
+    xproto 7.0.17.
+  + config: 
+    - Move man pages into their own directory.
+    - Replace deprecated AM_CONFIG_HEADER with AC_CONFIG_HEADERS.
+- Replace pkgconfig(xorg-macros) with pkgconfig(xproto)
+  BuildRequires, since this is what configure checks for now.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split ico from xorg-x11. Initial version: 1.0.3.
+

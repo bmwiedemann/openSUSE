@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Tue Oct  3 07:28:41 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Thu Jul 21 05:28:55 UTC 2016 - coolo@suse.com
+
+- updated to 0.006
+   see /usr/share/doc/packages/perl-IRI/Changes
+
+  0.006  2016-07-19
+  
+   - (Update) Fix regular expression use of quantifiers (#8 from Karl
+     Williamson).
+
+-------------------------------------------------------------------
+Tue Apr 19 16:04:56 UTC 2016 - opensuse@dstoecker.de
+
+- update to version 0.0005
+ - (Addition) Add ability to lazily parse IRI components.
+ - (Addition) Add cpanfile, with Module::Install deps (#5 from Alberto
+   Simões).
+ - (Addition) Added Try::Tiny to list of build requirements (github issue
+   #3).
+ - (Update) Improve performance of IRI component parsing.
+ - (Update) Update POD coverage test to ignore private attributes (#6 from
+   Alberto Simões).
+ - (Update) Updated required version of Type::Tiny to 0.008 to support use
+   of InstanceOf (#7 from Alexandr Ciornii).
+
+-------------------------------------------------------------------
+Wed Mar 25 14:11:51 UTC 2015 - coolo@suse.com
+
+- initial package 0.004
+    * created by cpanspec 1.78.08
+- add fix-package.diff to get perl(IRI) from rpm
+

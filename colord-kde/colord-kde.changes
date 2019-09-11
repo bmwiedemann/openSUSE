@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Sun Oct 23 06:20:25 UTC 2016 - wbauer@tmo.at
+
+- Update to version 0.5.0
+  * ported to KF5
+- Drop upstreamed colord-cmake34.patch
+- Add -lang sub package
+
+-------------------------------------------------------------------
+Wed Feb 24 13:03:36 UTC 2016 - cgiboudeaux@gmx.com
+
+- Add colord-cmake34.patch. Include files containing the
+  functions used by the build system.
+
+-------------------------------------------------------------------
+Tue Jul 16 15:05:42 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Downgrade gnome-color-manager to Suggests, instead of Recommends
+
+-------------------------------------------------------------------
+Thu May  2 11:44:03 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 0.3.0
+  * New translations
+  * Fix setting an ICC profile while KDE SC is starting
+  * Fix setting the ICC_PROFILE X atom that applications like Krita, 
+    digikam, gimp use
+  * Add a mimetype handler to handle ICC profile files
+  * Handle the talk with colord using auto generated classes from XML 
+    interface
+  * Improved support for colord 0.8
+  * Improved information about why the calibration button is disabled
+  * Moved the code that scans and parse ICC profiles to a thread so we 
+    don’t block the main KDED process
+- Added liblcms2-devel BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 20 17:23:54 UTC 2012 - nico.kruber@gmail.com
+
+- Fix the SLES build (%make_install is not expanded on SLES)
+
+-------------------------------------------------------------------
+Tue May 22 04:44:51 UTC 2012 - mlin@suse.com
+
+- initial import from version 0.2.0 
+

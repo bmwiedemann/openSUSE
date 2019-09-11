@@ -1,0 +1,13 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="filename">bcc</param>
+    <param name="versionformat">@PARENT_TAG@+git%at.%h</param>
+    <param name="url">https://github.com/iovisor/bcc.git</param>
+    <param name="scm">git</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

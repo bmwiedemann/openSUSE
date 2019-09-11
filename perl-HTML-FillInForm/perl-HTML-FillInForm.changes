@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Thu Aug 27 13:19:06 UTC 2015 - hsk@imb-jena.de
+
+- add CGI to Requires:, BuildRequires:, as that module is not in
+  perl core since perl 5.22
+- rt-100926.patch: patch from rt.cpan.org, #100926 / github, pr #9,
+  to avoid security warning
+
+-------------------------------------------------------------------
+Tue Apr 14 19:51:24 UTC 2015 - coolo@suse.com
+
+- updated to 2.21
+   see /usr/share/doc/packages/perl-HTML-FillInForm/Changes
+
+  2.21 - August 14th, 2014
+  
+    - Declare CGI.pm as a testing dependency (RT #98012, thanks to Martin McGrath)
+
+-------------------------------------------------------------------
+Fri Oct  4 09:11:11 UTC 2013 - coolo@suse.com
+
+- updated to 2.20
+ - Updated to support HTML5 (RT #75933, thanks to charsbar)
+
+-------------------------------------------------------------------
+Mon Jun 10 12:12:33 UTC 2013 - coolo@suse.com
+
+- updated to 2.11
+  * Updated tests so that they pass with Perl 5.18 (Mark Stosberg)
+
+-------------------------------------------------------------------
+Tue Aug 30 01:34:15 UTC 2011 - vcizek@suse.com
+
+- update to 2.1
+  * Fixed disable_fields option (#52667 Dirk Braun, Goro Fuji)
+  * Add an option to clear absent checkboxes (#44101 Alex Kapranoff)
+  * Fix incorrectly multiple escaped data in list context
+  (#34081 Miika Pekkarinen)
+  * Allow FIF to process the new <input> field  types (URL, email, and number) 
+  as defined in the HTML5 draft and already implemented by the iPhone.
+  * (Michael Fisher)
+  * Allow alternate parsing class (Mark Stosberg) mark 
+  invalid fields (Sam Tregar)
+- licence correction
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:48 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:08 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Oct  8 09:23:04 CEST 2007 - anicka@suse.cz
+
+- update to 2.00
+ * Allow passing an arrayref of hashrefs through fdat
+ * Several new shortcuts
+ * Add support for ID attribute on form tags
+ * Added 'disable_fields' method
+ * Support IE down-level revealed HTML comments
+ * hash is not reset before each() is called
+ * bugfixes
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:44 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan  3 14:43:08 CET 2006 - anicka@suse.cz
+
+- update to 1.06 
+
+-------------------------------------------------------------------
+Wed Sep 28 22:11:43 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Jul 29 20:18:55 CEST 2005 - mjancar@suse.cz
+
+- update to 1.05
+
+-------------------------------------------------------------------
+Thu Aug 19 12:14:19 CEST 2004 - mjancar@suse.cz
+
+- update to 1.04
+
+-------------------------------------------------------------------
+Thu Feb 26 16:05:57 CET 2004 - mjancar@suse.cz
+
+- update to 1.03
+
+-------------------------------------------------------------------
+Fri Aug 22 14:49:16 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Thu Jul 17 16:40:52 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Fri Jun 13 14:04:55 CEST 2003 - mjancar@suse.cz
+
+- update to 1.02
+- fix filelist
+
+-------------------------------------------------------------------
+Tue May 20 12:40:38 CEST 2003 - mjancar@suse.cz
+
+- remove unpackaged files
+
+-------------------------------------------------------------------
+Fri Dec 20 14:32:07 CET 2002 - prehak@suse.cz
+
+- updated to version 1.00
+
+-------------------------------------------------------------------
+Wed Jul 10 20:24:19 CEST 2002 - prehak@suse.cz
+
+- updated to version 0.29
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Fri Jan 18 13:25:42 CET 2002 - rvasice@suse.cz
+
+- update to version 0.23
+
+-------------------------------------------------------------------
+Tue Aug 14 15:25:18 CEST 2001 - rvasice@suse.cz
+
+- update to version 0.18
+- bzip sources
+
+-------------------------------------------------------------------
+Mon Apr  9 08:07:12 CEST 2001 - cihlar@suse.cz
+
+- initial version 0.11
+

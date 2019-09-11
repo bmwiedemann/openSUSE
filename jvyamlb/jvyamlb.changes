@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Sep 19 09:52:43 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: build with java source and target 1.6
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:08 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Tue Mar 23 11:20:58 UTC 2010 - mvyskocil@suse.cz
+
+- Initial SUSE packaging
+  jvyamlb-0.2.5-4.fc13.src.rpm
+

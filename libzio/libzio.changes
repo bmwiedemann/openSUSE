@@ -1,0 +1,237 @@
+-------------------------------------------------------------------
+Thu Feb 22 15:10:40 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Tue Jan  9 12:54:36 UTC 2018 - werner@suse.de
+
+- Version 1.06: Add changes from Jerrell Watts which has kindly
+  provided his changes for lzma/xz support with large I/O buffers
+
+-------------------------------------------------------------------
+Thu Jun 29 11:53:07 UTC 2017 - werner@suse.de
+
+- Push to version 1.05
+  * Avoid that writer of fopencookie(3) will return less than
+    the initial buffer size.
+  * Make sure that MIN macro is defined if used.
+  * Some minor changes as well.
+
+-------------------------------------------------------------------
+Tue Feb 28 10:07:43 UTC 2017 - werner@suse.de
+
+- Push version to 1.04
+  * Add patch from Andreas Schwab to fix problem with missing
+   declaration of pthread_sigmask(2)
+- Delete pthread-sigmask.patch as now upstream 
+
+-------------------------------------------------------------------
+Tue Feb 28 09:07:36 UTC 2017 - schwab@linux-m68k.org
+
+- Add pthread-sigmask.patch to include <signal.h> as required
+  by pthread_sigmask
+
+-------------------------------------------------------------------
+Mon Feb 27 15:48:10 UTC 2017 - werner@suse.de
+
+- Use -D_DEFAULT_SOURCE
+
+-------------------------------------------------------------------
+Thu Feb 19 21:52:33 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.02
+  * Fixed version: handle fseek() correct for bzip2 and lzma/xz
+- Spec file cleanup
+- Remove libzio-1.00.dif; fixed on upstream release
+
+-------------------------------------------------------------------
+Tue Apr 16 07:55:53 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Tue Feb 26 16:41:39 UTC 2013 - werner@suse.de
+
+- Add patch libzio-1.00.dif: fix seeking cookie functions (related
+  to bnc#805149) that is handle fseek() correct for bzip2 and lzma/xz
+
+-------------------------------------------------------------------
+Mon Jan  7 21:32:08 UTC 2013 - jengelh@inai.de
+
+- Specify a BuildRoot, which is mandatory for old RPM (like SLE)
+
+-------------------------------------------------------------------
+Fri Oct 19 19:24:04 CEST 2012 - ro@suse.de
+
+- provide and obsolete old package name 
+
+-------------------------------------------------------------------
+Fri Oct 12 15:28:21 UTC 2012 - jengelh@inai.de
+
+- Adjust baselibs.conf to include libzio1
+
+-------------------------------------------------------------------
+Fri Oct  5 07:49:23 UTC 2012 - werner@suse.de
+
+- Strange policy causes new package libzio1
+
+-------------------------------------------------------------------
+Thu Oct  4 13:06:40 UTC 2012 - werner@suse.de
+
+- Correct autoconf part of the manual page 
+
+-------------------------------------------------------------------
+Sun Jan 29 21:32:24 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Sun Dec 13 16:46:51 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+- add baselibs.conf as a source
+- add baselibs for SPARC
+
+-------------------------------------------------------------------
+Wed Jun 17 13:09:43 CEST 2009 - werner@suse.de
+
+- Use noweak version of libzio
+
+-------------------------------------------------------------------
+Mon Feb 23 16:01:17 CET 2009 - werner@suse.de
+
+- Add fseek(3) support for bzip and LZW files
+
+-------------------------------------------------------------------
+Mon Feb 23 11:05:37 CET 2009 - schwab@suse.de
+
+- Fix namespace violations.
+
+-------------------------------------------------------------------
+
+Fri Feb 13 14:05:11 CET 2009 - werner@suse.de
+
+- Use liblzma from xz package if available
+- Detect if funopen(3) can be used if no fopencookie(3) found
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Nov 11 16:54:24 CET 2008 - ro@suse.de
+
+- SLE-11 uses PPC64 instead of PPC, adapt baselibs.conf 
+
+-------------------------------------------------------------------
+Thu Oct 16 14:39:11 CEST 2008 - werner@suse.de
+
+- Better documentation
+
+-------------------------------------------------------------------
+Wed Sep 24 17:51:53 CEST 2008 - werner@suse.de
+
+- Be able to detect -lzma suffix
+
+-------------------------------------------------------------------
+Wed Sep 24 14:10:08 CEST 2008 - werner@suse.de
+
+- Add support for lzma using liblzmadec
+
+-------------------------------------------------------------------
+Mon Jul 21 13:46:39 CEST 2008 - werner@suse.de
+
+- Make it build
+
+-------------------------------------------------------------------
+Thu Jul 17 12:43:52 CEST 2008 - werner@suse.de
+
+- Add some more comments what can be done with streams created
+  by fzopen and fdzopen and what can not be done.
+
+-------------------------------------------------------------------
+Mon Apr 21 15:31:27 CEST 2008 - werner@suse.de
+
+- Make BZ2_bzdopen() and gzdopen() weak symbols
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Feb 13 19:03:27 CET 2008 - werner@suse.de
+
+- Export only fzopen() and fdzopen()
+
+-------------------------------------------------------------------
+Fri Dec  7 17:42:49 CET 2007 - werner@suse.de
+
+- Add support for streams on file descriptors
+
+-------------------------------------------------------------------
+Mon Mar 26 11:23:15 CEST 2007 - rguenther@suse.de
+
+- Split off libzio-devel.
+
+-------------------------------------------------------------------
+Sat Mar 24 12:16:43 CET 2007 - aj@suse.de
+
+- Add libbz2-devel to BuildRequirs.
+
+-------------------------------------------------------------------
+Wed Dec 20 14:08:59 CET 2006 - werner@suse.de
+
+- Better weak symbol handling even for -ansi -pedantic
+
+-------------------------------------------------------------------
+Fri Dec 15 10:44:07 CET 2006 - werner@suse.de
+
+- Can not use sigmask() macro in ia64 because its definition is
+  for sigset_t array only but not for single ulong
+
+-------------------------------------------------------------------
+Tue Dec 12 18:36:35 CET 2006 - werner@suse.de
+
+- Add support for the old LZW (.Z) format
+
+-------------------------------------------------------------------
+Wed Jun 21 17:07:10 CEST 2006 - werner@suse.de
+
+- Remove self provide
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:50 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Apr 21 17:27:24 CEST 2004 - werner@suse.de
+
+- Add missed _libdir usage
+
+-------------------------------------------------------------------
+Wed Apr 21 15:31:19 CEST 2004 - werner@suse.de
+
+- Provide shared lib for linkage
+
+-------------------------------------------------------------------
+Wed Apr 21 11:52:16 CEST 2004 - werner@suse.de
+
+- Add magic detection of standard unix compress
+
+-------------------------------------------------------------------
+Tue Apr 20 17:24:55 CEST 2004 - werner@suse.de
+
+- Initial version 0.1 of libzio, the wrapper library to zlib/libbz2
+
+-------------------------------------------------------------------

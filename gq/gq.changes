@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Wed Nov 30 20:13:20 UTC 2011 - dimstar@opensuse.org
+
+- Add gq-glib-2.31.patch: Fix build with glib 2.31.
+
+-------------------------------------------------------------------
+Mon Sep  5 12:07:06 UTC 2011 - vuntz@opensuse.org
+
+- Add libgcrypt-devel BuildRequires: it has been forgotten for some
+  reason.
+- Drop gq-1.2.3-ia64.diff: the patch never made it upstream, and is
+  actually only useful if we turn on debugging. Instead, pass
+  --disable-debugging to configure.
+- Add gq-fix-linking.patch: fix linking issue, taken from git.
+- Add call to autoreconf for above patch.
+
+-------------------------------------------------------------------
+Sat Feb 12 18:58:14 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %mime_database_post/postun because the package ships a mime
+    type definition.
+
+-------------------------------------------------------------------
+Wed Dec 23 11:48:28 CET 2009 - vuntz@opensuse.org
+
+- Change gnome-keyring-devel BuildRequires to
+  libgnome-keyring-devel on 11.3 and later, following the module
+  split upstream.
+- Remove AutoReqProv: it's default now.
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Wed Aug  5 15:59:04 CEST 2009 - dominique-obs@leuenberger.net
+
+- Remove --with-kerberos-prefix from configure. Newest krb5
+  packages do no longer provide the expected libdes425.
+
+-------------------------------------------------------------------
+Fri Mar 21 01:02:23 CET 2008 - jpr@suse.de
+
+- Resurrect gq (bnc #9512)
+

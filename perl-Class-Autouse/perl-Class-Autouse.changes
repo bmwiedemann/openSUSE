@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Tue Oct  3 08:11:43 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+- fix license (actually 1+)
+
+-------------------------------------------------------------------
+Wed Feb 27 06:21:54 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Mon Feb  6 10:07:21 UTC 2012 - vcizek@suse.com
+
+- update to 2.01
+	- Removing the use of "defined @array" deprecated in 5.16
+
+-------------------------------------------------------------------
+Fri Nov 18 11:10:13 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Jan 19 15:52:38 UTC 2011 - vcizek@novell.com
+
+- update to 2.00
+	- Switching to a production release
+	- Upgrading to Module::Install::DSL 1.00
+	- Bumping minimum version of Perl to 5.006
+	- Fixing indenting, style and layout issues.
+	- Added debugging entries to all the new code.
+	- Removed on use of _load_ancestors that was not needed
+	- Updating copyright a couple of times :/
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:33 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:28 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Fri Dec 14 17:11:45 CET 2007 - anicka@suse.cz
+
+- update to 1.29 
+  * Debugging change in 1.25 regressed an undocumented 5.6-related
+    bug first fixed in 1.20.
+  * Expands the can hook to also hook isa
+  * Added t/05_base.t to try and chase down base.pm bug
+  * Documenting ->autouse(@classes)
+  * Tidying up the POD a little to refer to features
+    in an order much more relevant to the reader.
+  * Catch and rethrow all error when autoloading during a ->can.
+  * Debugging can now only be done at compile time, and thus is
+    optimised out. The :debug flag is removed and instead you need
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:31 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 28 22:09:25 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Jul 29 17:46:04 CEST 2005 - cthiel@suse.de
+
+- update to version 1.18
+
+-------------------------------------------------------------------
+Tue May 31 02:15:53 CEST 2005 - ro@suse.de
+
+- created package, version 1.17 
+

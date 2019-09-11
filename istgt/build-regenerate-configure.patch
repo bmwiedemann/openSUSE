@@ -1,0 +1,71 @@
+From 705f4cf32632ef2ed70be1b50a8ed843416f71ee Mon Sep 17 00:00:00 2001
+From: David Disseldorp <ddiss@suse.de>
+Date: Sun, 2 Feb 2014 23:17:46 +0100
+Subject: [PATCH 10/12] build: regenerate configure
+
+---
+ configure | 25 +++++++++++++++++++++++--
+ 1 file changed, 23 insertions(+), 2 deletions(-)
+
+diff --git configure configure
+index 83d3838..ca61eed 100755
+--- configure
++++ configure
+@@ -693,6 +693,7 @@ SHELL'
+ ac_subst_files=''
+ ac_user_opts='
+ enable_option_checking
++with_unitdir
+ enable_largefile
+ with_configdir
+ with_mediadir
+@@ -1333,6 +1334,9 @@ Optional Features:
+ Optional Packages:
+   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
++  --with-unitdir=UNITDIR_PATH
++                          Generate and install a systemd services file in
++                          provided dir
+   --with-configdir=DIR    (default PREFIX/etc/istgt)
+   --with-mediadir=DIR     (default /var/istgt)
+   --with-rcdir=DIR        (default PREFIX/etc/rc.d)
+@@ -3304,6 +3308,16 @@ if test "$CC" = "clang" && test "$ac_test_CFLAGS" != "set"; then
+   CFLAGS="-g -O3"
+ fi
+ 
++# systemd unit directory
++
++# Check whether --with-unitdir was given.
++if test "${with_unitdir+set}" = set; then :
++  withval=$with_unitdir;
++else
++  with_unitdir=no
++fi
++
++
+ # host OS related
+ vboxinc="/usr/local/src/virtualbox/*/include"
+ vboxlib="/usr/local/lib/virtualbox"
+@@ -3389,10 +3403,17 @@ case "$host_os" in
+ 	    vboxinc=$tmp
+ 	fi
+ 	vboxlib="/usr/lib/virtualbox"
+-	rctemplate="istgt_linux.sh.in"
++	if test "x$with_unitdir" != xno -a -d "$with_unitdir"; then
++		rctemplate="istgt.service.in"
+ 
+-	rcdir='/etc/init.d'
++		rcdir=$with_unitdir
+ 
++	else
++		rctemplate="istgt_linux.sh.in"
++
++		rcdir='/etc/init.d'
++
++	fi
+ 
+ $as_echo "#define _GNU_SOURCE 1" >>confdefs.h
+ 
+-- 
+2.1.2
+

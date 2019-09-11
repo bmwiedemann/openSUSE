@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Mon Oct  3 22:50:55 UTC 2016 - Greg.Freemyer@gmail.com
+
+- update to v1-1.5
+- update Source field.  Upstream change.
+- update Group field
+
+-------------------------------------------------------------------
+Thu Aug  4 23:42:51 UTC 2016 - Greg.Freemyer@gmail.com
+
+- change Requires: python-dateutil to python-python-dateutil
+
+-------------------------------------------------------------------
+Fri Jul 29 22:08:09 UTC 2016 - Greg.Freemyer@gmail.com
+
+- initial package v1-1.4
+

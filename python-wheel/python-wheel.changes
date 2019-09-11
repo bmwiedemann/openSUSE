@@ -1,0 +1,245 @@
+-------------------------------------------------------------------
+Mon Jun 17 10:35:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to mulitbuild to avoid dep on pytest by default
+  (As pytest needs wheel to build itself)
+
+-------------------------------------------------------------------
+Fri Jun 14 08:59:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Reduce build requires and recommends to what is really needed
+  (hint: almost nothing)
+
+-------------------------------------------------------------------
+Wed May 15 20:46:24 UTC 2019 - Jonathan Harker <jharker@suse.com>
+
+- Update to 0.33.4:
+  * Fixed wheel build failures on some systems due to all attributes being preserved
+
+-------------------------------------------------------------------
+Fri Mar  1 09:36:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.33.1:
+  * Fixed the ``--build-number`` option for ``wheel pack`` not being applied
+
+-------------------------------------------------------------------
+Thu Feb 14 11:29:38 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove build dependency on pytest-cov
+- update to version 0.33.0
+  * Added the `--build-number` option to the `wheel pack` command
+  * Fixed bad shebangs sneaking into wheels
+  * Fixed documentation issue with `wheel pack` erroneously being
+    called `wheel repack`
+  * Fixed filenames with "bad" characters (like commas) not being
+    quoted in `RECORD` (PR by Paul Moore)
+  * Sort requirements extras to ensure deterministic builds
+
+-------------------------------------------------------------------
+Fri Nov 23 08:01:20 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop not really needed %license -> %doc fallback
+
+-------------------------------------------------------------------
+Thu Nov 22 21:53:15 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.32.3:
+  * Fixed compatibility with Python 2.7.0 – 2.7.3
+  * Fixed handling of direct URL requirements with markers (PR by
+    Benoit Pierre)
+
+-------------------------------------------------------------------
+Tue Oct 30 01:56:50 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.32.2:
+  * Fixed build number appearing in the ".dist-info" directory name
+  * Made wheel file name parsing more permissive
+  * Fixed wrong Python tag in wheels converted from eggs (PR by John
+    T. Wodder II)
+
+-------------------------------------------------------------------
+Fri Oct 12 03:12:04 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * remove sed/rm command for files that are not in the tar ball anymore
+  * CHANGES.rst -> docs/news.rst
+
+- update to version 0.32.1:
+  * Fixed "AttributeError: 'Requirement' object has no attribute
+    'url'" on setuptools/pkg_resources versions older than 18.8 (PR by
+    Benoit Pierre)
+  * Fixed "AttributeError: 'module' object has no attribute
+    'algorithms_available'" on Python < 2.7.9 (PR by Benoit Pierre)
+  * Fixed permissions on the generated ".dist-info/RECORD" file
+
+- changes from version 0.32.0:
+  * Removed wheel signing and verifying features
+  * Removed the "wheel install" and "wheel installscripts" commands
+  * Added the "wheel pack" command
+  * Allowed multiple license files to be specified using the
+    "license_files" option
+  * Deprecated the "license_file" option
+  * Eliminated duplicate lines from generated requirements in
+    ".dist-info/METADATA" (thanks to Wim Glenn for the contribution)
+  * Fixed handling of direct URL specifiers in requirements (PR by
+    Benoit Pierre)
+  * Fixed canonicalization of extras (PR by Benoit Pierre)
+  * Warn when the deprecated "[wheel]" section is used in "setup.cfg"
+    (PR by Jon Dufresne)
+
+-------------------------------------------------------------------
+Tue May 22 15:43:04 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * removed python-devel python-jsonschema
+
+- update to version 0.31.1:
+  * Fixed arch as "None" when converting eggs to wheels
+
+- changes from version 0.31.0:
+  * Fixed displaying of errors on Python 3
+  * Fixed single digit versions in wheel files not being properly
+    recognized
+  * Fixed wrong character encodings being used (instead of UTF-8) to
+    read and write "RECORD" (this sometimes crashed bdist_wheel too)
+  * Enabled Zip64 support in wheels by default
+  * Metadata-Version is now 2.1
+  * Dropped DESCRIPTION.rst and metadata.json from the list of
+    generated files
+  * Dropped support for the non-standard, undocumented
+    "provides-extra" and "requires-dist" keywords in setup.cfg
+    metadata
+  * Deprecated all wheel signing and signature verification commands
+  * Removed the (already defunct) "tool" extras from setup.py
+
+-------------------------------------------------------------------
+Mon Nov 27 13:00:03 UTC 2017 - idonmez@suse.com
+
+- Fix homepage
+- Resync the upstream tarball 
+
+-------------------------------------------------------------------
+Sat Oct 14 21:17:28 UTC 2017 - t.gruner@katodev.de
+
+-  update to 0.30.0
+
+-------------------------------------------------------------------
+Fri Aug 11 14:12:36 UTC 2017 - sebix+novell.com@sebix.at
+
+- require python-setuptools (fixes boo#1037032)
+
+-------------------------------------------------------------------
+Thu Jul 20 08:20:17 UTC 2017 - sebix+novell.com@sebix.at
+
+- convert to singlespec
+
+-------------------------------------------------------------------
+Mon May  9 22:31:35 UTC 2016 - hpj@urpla.net
+
+- update to 0.29.0:
+  * Fix compression type of files in archive (Issue #155, Pull Request #62,
+  thanks Xavier Fernandez)
+
+- update to 0.28.0:
+  * Fix file modes in archive (Issue #154)
+
+- update to 0.27.0:
+  * Support forcing a platform tag using `--plat-name` on pure-Python wheels, as
+    well as nonstandard platform tags on non-pure wheels (Pull Request #60, Issue
+    #144, thanks Andrés Díaz)
+  * Add SOABI tags to platform-specific wheels built for Python 2.X (Pull Request
+    #55, Issue #63, Issue #101)
+  * Support reproducible wheel files, wheels that can be rebuilt and will hash to
+    the same values as previous builds (Pull Request #52, Issue #143, thanks
+    Barry Warsaw)
+  * Support for changes in keyring >= 8.0 (Pull Request #61, thanks Jason R.
+    Coombs)
+  * Use the file context manager when checking if dependency_links.txt is empty,
+    fixes problems building wheels under PyPy on Windows  (Issue #150, thanks
+    Cosimo Lupo)
+  * Don't attempt to (recursively) create a build directory ending with `..`
+    (invalid on all platforms, but code was only executed on Windows) (Issue #91)
+  * Added the PyPA Code of Conduct (Pull Request #56)
+
+- fix dependencies
+
+-------------------------------------------------------------------
+Wed Oct 21 13:50:55 UTC 2015 - hpj@urpla.net
+
+- actually, _really_ test this module: 
+  call py.test directly with appropriate PYTHONPATH
+
+-------------------------------------------------------------------
+Tue Sep 29 08:01:25 UTC 2015 - tbechtold@suse.com
+
+- update to 0.26.0:
+  * Fix multiple entrypoint comparison failure on Python 3 (Issue #148)
+  * Add Python 3.5 to tox configuration
+  * Deterministic (sorted) metadata
+  * Fix tagging for Python 3.5 compatibility
+  * Support py2-none-'arch' and py3-none-'arch' tags
+  * Treat data-only wheels as pure
+  * Write to temporary file and rename when using wheel install --force
+
+-------------------------------------------------------------------
+Wed Apr  1 21:04:26 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.24.0:
+  * The python tag used for pure-python packages is now .pyN (major
+    version only). This change actually occurred in 0.23.0 when the
+    --python-tag option was added, but was not explicitly mentioned
+    in the changelog then.
+  * wininst2wheel and egg2wheel removed. Use "wheel convert
+    [archive]" instead.
+  * Wheel now supports setuptools style conditional requirements via
+    the extras_require={} syntax. Separate 'extra' names from
+    conditions using the : character. Wheel's own setup.py does
+    this. (The empty-string extra is the same as install_requires.)
+    These conditional requirements should work the same whether the
+    package is installed by wheel or by setup.py.
+- additional changes from 0.23.0:
+  * Compatibiltiy tag flags added to the bdist_wheel command
+  * sdist should include files necessary for tests
+  * 'wheel convert' can now also convert unpacked eggs to wheel
+  * Rename pydist.json to metadata.json to avoid stepping on the PEP
+  * The --skip-scripts option has been removed, and not generating
+    scripts is now the default. The option was a temporary approach
+    until installers could generate scripts themselves. That is now
+    the case with pip 1.5 and later. Note that using pip 1.4 to
+    install a wheel without scripts will leave the installation
+    without entry-point wrappers. The "wheel install-scripts"
+    command can be used to generate the scripts in such cases.
+  * Thank you contributors
+- removed wininst2wheel and egg2wheel:
+  they are not in 0.24.0 anymore
+
+-------------------------------------------------------------------
+Mon Feb 10 14:46:04 UTC 2014 - speilicke@suse.com
+
+- Fix update-alternatives usage
+
+-------------------------------------------------------------------
+Tue Sep 17 08:42:34 UTC 2013 - dmueller@suse.com
+
+- update to 0.22.0:
+- Include entry_points.txt, scripts a.k.a. commands, in experimental
+  pydist.json
+- Improved test_requires parsing
+- Python 2.6 fixes, "wheel version" command courtesy pombredanne
+
+-------------------------------------------------------------------
+Tue Sep 10 12:02:00 UTC 2013 - toddrme2178@gmail.com
+
+- Add BuildRequires:  python-argparse for SLE
+
+-------------------------------------------------------------------
+Tue Aug 13 12:36:12 UTC 2013 - speilicke@suse.com
+
+- Use upstream tarball
+
+-------------------------------------------------------------------
+Mon Aug 12 09:31:37 UTC 2013 - speilicke@suse.com
+
+- Initial version
+

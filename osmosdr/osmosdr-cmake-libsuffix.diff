@@ -1,0 +1,20 @@
+diff --git a/software/libosmosdr/CMakeLists.txt b/software/libosmosdr/CMakeLists.txt
+index 60f43d8..f51793c 100644
+--- a/software/libosmosdr/CMakeLists.txt
++++ b/software/libosmosdr/CMakeLists.txt
+@@ -124,7 +124,7 @@ ENDIF(CMAKE_CROSSCOMPILING)
+ 
+ set(prefix ${CMAKE_INSTALL_PREFIX})
+ set(exec_prefix \${prefix})
+-set(libdir \${exec_prefix}/lib)
++set(libdir \${exec_prefix}/lib${LIB_SUFFIX})
+ set(includedir \${prefix}/include)
+ 
+ CONFIGURE_FILE(
+@@ -134,5 +134,5 @@ CONFIGURE_FILE(
+ 
+ INSTALL(
+     FILES ${CMAKE_CURRENT_BINARY_DIR}/libosmosdr.pc
+-    DESTINATION lib/pkgconfig
++    DESTINATION lib${LIB_SUFFIX}/pkgconfig
+ )

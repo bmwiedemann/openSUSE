@@ -1,0 +1,127 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -49,6 +49,16 @@ if test x$gtk_check_pass = xyes ; then
+ fi
+ 
+ dnl ###########################################################################
++dnl Check for GTK version - 3.22
++dnl ###########################################################################
++
++PKG_CHECK_MODULES(GTK_3_22_0, gtk+-3.0 >= 3.22.0 , gtk_check_pass=yes, gtk_check_pass=no)
++if test x$gtk_check_pass = xyes ; then
++  AM_VALAFLAGS="$AM_VALAFLAGS -D HAVE_GTK_3_22_0"
++  AC_SUBST([AM_VALAFLAGS])
++fi
++
++dnl ###########################################################################
+ dnl Hack for vala >= 0.39
+ dnl ###########################################################################
+ 
+--- a/src/main-window.vala
++++ b/src/main-window.vala
+@@ -220,7 +220,11 @@ public class MainWindow : Gtk.Window
+     private void monitors_changed_cb (Gdk.Screen screen)
+     {
+         Gdk.Display display = screen.get_display();
++#if HAVE_GTK_3_22_0
+         Gdk.Monitor primary = display.get_primary_monitor();
++#else
++        int primary = screen.get_primary_monitor();
++#endif
+         Gdk.Rectangle geometry;
+ 
+         window_size_x = 0;
+@@ -228,10 +232,17 @@ public class MainWindow : Gtk.Window
+         monitors = new List<Monitor> ();
+         primary_monitor = null;
+ 
++#if HAVE_GTK_3_22_0
+         for (var i = 0; i < display.get_n_monitors (); i++)
+         {
+             Gdk.Monitor monitor = display.get_monitor(i);
+             geometry = monitor.get_geometry ();
++#else
++        for (var i = 0; i < screen.get_n_monitors(); i++)
++        {
++            int monitor = i;
++            screen.get_monitor_geometry(monitor, out geometry);
++#endif
+             debug ("Monitor %d is %dx%d pixels at %d,%d", i, geometry.width, geometry.height, geometry.x, geometry.y);
+ 
+             if (window_size_x < geometry.x + geometry.width)
+@@ -247,7 +258,11 @@ public class MainWindow : Gtk.Window
+             if (monitor_is_unique_position (display, i))
+             {
+                 var greeter_monitor = new Monitor (geometry.x, geometry.y, geometry.width, geometry.height);
++#if HAVE_GTK_3_22_0
+                 var plug_name = monitor.get_model();
++#else
++                var plug_name = screen.get_monitor_plug_name(monitor);
++#endif
+                 monitors.append (greeter_monitor);
+ 
+                 if (plug_name == only_on_monitor)
+@@ -276,16 +291,27 @@ public class MainWindow : Gtk.Window
+     private bool monitor_is_unique_position (Gdk.Display display, int n)
+     {
+         Gdk.Rectangle g0;
++#if HAVE_GTK_3_22_0
+         Gdk.Monitor mon0;
+         mon0 = display.get_monitor(n);
+         g0 = mon0.get_geometry ();
+ 
+         for (var i = n + 1; i < display.get_n_monitors (); i++)
++#else
++        Gdk.Screen screen = display.get_default_screen();
++        screen.get_monitor_geometry(n, out g0);
++
++        for (var i = n + 1; i < screen.get_n_monitors(); i++)
++#endif
+         {
+             Gdk.Rectangle g1;
++#if HAVE_GTK_3_22_0
+             Gdk.Monitor mon1;
+             mon1 = display.get_monitor(i);
+             g1 = mon1.get_geometry();
++#else
++            screen.get_monitor_geometry(i, out g1);
++#endif
+ 
+             if (g0.x == g1.x && g0.y == g1.y)
+                 return false;
+--- a/src/menubar.vala
++++ b/src/menubar.vala
+@@ -540,9 +540,15 @@ public class MenuBar : Gtk.MenuBar
+ 
+             /* Put keyboard at the bottom of the screen */
+             var display = get_display ();
++#if HAVE_GTK_3_22_0
+             var monitor = display.get_monitor_at_window (get_window ());
++            var geom = monitor.get_geometry();
++#else
++            var screen = display.get_default_screen();
++            var monitor = screen.get_monitor_at_window(get_window ());
+             Gdk.Rectangle geom;
+-            geom = monitor.get_geometry ();
++            screen.get_monitor_geometry(monitor, out geom);
++#endif
+             keyboard_window.move (geom.x, geom.y + geom.height - 250);
+             keyboard_window.resize (geom.width, 250);
+         }
+--- a/src/slick-greeter.vala
++++ b/src/slick-greeter.vala
+@@ -224,8 +224,14 @@ public class SlickGreeter
+     {
+         /* Explicitly set the right scale before closing window */
+         var display = Gdk.Display.get_default();
++#if HAVE_GTK_3_22_0
+         var monitor = display.get_primary_monitor();
+         var scale = monitor.get_scale_factor ();
++#else
++        var screen = display.get_default_screen();
++        var monitor = screen.get_primary_monitor();
++        var scale = screen.get_monitor_scale_factor(monitor);
++#endif
+         background_surface.set_device_scale (scale, scale);
+ 
+         /* Paint our background onto the root window before we close our own window */

@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Mon Feb 18 12:58:38 UTC 2019 - andy@onthewings.net
+
+- Fix install section for ocaml-dune 1.7.1.
+
+-------------------------------------------------------------------
+Tue Feb  5 18:22:44 UTC 2019 - andy@onthewings.net
+
+- Use OCaml-LGPL-linking-exception in License.
+- Update dune build command. 
+
+-------------------------------------------------------------------
+Mon Jun 11 09:13:37 UTC 2018 - andy@onthewings.net
+
+- Package the .dune files produced by latest dune. 
+
+-------------------------------------------------------------------
+Mon Apr 23 02:03:38 UTC 2018 - andy@onthewings.net
+
+- Remove dependency on opam by doing a cp instead of "jbuilder
+  install" in %install.
+
+-------------------------------------------------------------------
+Tue Apr 17 09:10:01 UTC 2018 - andy@onthewings.net
+
+- Update to upstream release 1.7.3.
+  * Build system was switched to dune(jbuilder).
+  * Remove dependency on bytes package.
+  * Deprecate all Re_* modules. Re_x is now available as Re.X.
+  * Deprecate all re.x sub libraries. Those are all available as Re.X.
+  * Make all function in Re.Str tail recursive. 
+- Fix license.
+
+-------------------------------------------------------------------
+Tue Jul 25 13:04:54 UTC 2017 - ohering@suse.de
+
+- Use Group: Development/Languages/OCaml
+
+-------------------------------------------------------------------
+Mon Jul 17 20:24:18 UTC 2017 - ohering@suse.de
+
+- Update to version 1.7.1.20161019.bb3ef4b
+
+-------------------------------------------------------------------
+Mon Jul 17 12:48:58 UTC 2017 - ohering@suse.de
+
+- Wrap specfile conditionals to fix quilt setup
+
+-------------------------------------------------------------------
+Mon Jun 20 06:35:04 UTC 2016 - ohering@suse.de
+
+- Initial version 1.6.1.20160618.b46ae88
+

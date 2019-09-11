@@ -1,0 +1,2 @@
+addFilter("script-without-shebang")
+addFilter("non-conffile-in-etc /etc/netdata/node.d/.*.md")

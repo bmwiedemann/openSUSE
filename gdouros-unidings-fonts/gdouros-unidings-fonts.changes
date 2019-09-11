@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Tue Aug  1 09:13:24 UTC 2017 - aloisio@gmx.com
+
+- Update to version 9.17
+
+-------------------------------------------------------------------
+Mon Apr 10 15:50:26 UTC 2017 - aloisio@gmx.com
+
+- Renamed package to gdouros-unidings-fonts for consistency
+- Update to version 8.17
+- Switched tarball to original (versioned) archive
+- Added README-SUSE as separate source
+- Updated homepage URL
+
+-------------------------------------------------------------------
+Sun Jan 17 13:27:20 UTC 2016 - aloisio@gmx.com
+
+- Update to version 8.00
+  * added pdf documentation
+  * replaced README file with a note from the website
+
+-------------------------------------------------------------------
+Tue Jan 21 10:16:27 UTC 2014 - pgajdos@suse.com
+
+- updated to 7.12
+  * no upstream changelog
+  * leaving README from 6.05 version, as provided docx can't be 
+    displayed at least with LO writer of mine
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:34 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Fri Apr 27 15:35:40 UTC 2012 - pgajdos@suse.com
+
+- SUSE-Permissive license (README)
+
+-------------------------------------------------------------------
+Fri Jul  1 16:59:18 COT 2011 - bachinchi@gmail.com
+
+- Initial package for Unidings Font

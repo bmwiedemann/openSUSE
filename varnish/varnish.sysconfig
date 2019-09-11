@@ -1,0 +1,25 @@
+## Path:        Network/WWW/Varnishd
+## Description: start parameters for varnishd.
+## Type:        string
+## Default:     "-f /etc/varnish/vcl.conf -T127.0.0.1:6082 -s file,/var/cache/varnish"
+## Config:      varnishd
+#
+# start parameters for varnishd.
+# 
+# see man 1 varnishd for more
+#
+# You might want to keep "/var/cache/varnish" when using the file backend.
+#
+VARNISHD_PARAMS="-j unix,user=varnish -f /etc/varnish/vcl.conf -T:6082 -s file,/var/cache/varnish,1M"
+
+## Path:	Network/WWW/Varnishd
+## Description:	Start parameters for varnishlog
+## Type:	string
+## Default:	"-a -w /var/log/varnish.log"
+## Config:	varnishd
+#
+# start parameters for varnishlog/varnishncsa
+#
+# see man 1 varnishlog for more
+#
+VARNISHLOG_PARAMS="-a -w /var/log/varnish/varnish.log"

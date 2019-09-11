@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Sat Aug 10 14:36:31 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.15.0
+  * Drop support for Python 2. Please pin to ~= 0.14.0 if you
+    support Python 2.
+  * Drop support for Python 3.5, meaning the minimum supported
+    version is Python 3.6.1.
+  * Switch events to be dataclass based, otherwise the API is
+    consistent.
+  * Add type hints throughout and support PEP 561 via a py.typed
+    file. This should allow projects that use wsproto to type
+    check their usage of wsproto.
+  * Bugfix prevent the test folder being installed as a package
+    called test.
+  * Explicitly require Host header in handshake.
+  * Drop wsaccel support and utilise the aiohttp/@willmcgugan
+    masking method. wsaccel is unmaintained and this new maksing
+    method is almost as quick.
+
+- Disable python2 build
+
+-------------------------------------------------------------------
+Fri May 31 05:16:10 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.14.1
+  * Loosen the h11 requirement to >= 0.8.1 as wsproto is
+    compatible with 0.9 onwards.
+  * Stop installing a "test" package on installation.
+
+-------------------------------------------------------------------
+Tue Apr  9 15:09:15 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.14.0
+  * bugfix release, see CHANGELOG.rst
+  0.13.0
+  * many changes in connection management, see CHANGELOG.rst 
+
+-------------------------------------------------------------------
+Tue Dec  4 21:08:16 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.12.0
+  * Support h11 ~0.8.1.
+  * Support Python 3.7.
+  * Make the close-handshake more explicit, by sending a close
+    frame on reciept of a close frame.
+  * Bugfix fix deflate after a non-compressable message.
+  * Bugfix connection header acceptance, by accepting Connection
+    header values that are comma separated lists.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:11 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Feb 25 16:36:25 UTC 2018 - aloisio@gmx.com
+
+- Initial package (0.11.0)

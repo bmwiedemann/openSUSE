@@ -1,0 +1,22 @@
+From a7a28da41076d031c01790c3b4fb14e7b97efaf6 Mon Sep 17 00:00:00 2001
+From: Sebastian Wagner <sebix@sebix.at>
+Date: Thu, 13 Oct 2016 22:31:28 +0200
+Subject: [PATCH] Add test suite to setup.py
+
+Allows running the tests with `python setup.py test`
+
+Signed-off-by: Sebastian Wagner <sebix@sebix.at>
+---
+ setup.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/setup.py b/setup.py
+index 8b306e13..02211848 100755
+--- a/setup.py
++++ b/setup.py
+@@ -54,4 +54,5 @@ def publish():
+         'Programming Language :: Python :: 3.4',
+         'Topic :: Terminals :: Terminal Emulators/X Terminals',
+     ],
++    test_suite='test_clint',
+ )

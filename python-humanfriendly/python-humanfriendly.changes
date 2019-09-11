@@ -1,0 +1,237 @@
+-------------------------------------------------------------------
+Fri Mar 29 10:46:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Simplify the multibuild conditioning and name creation
+
+-------------------------------------------------------------------
+Tue Mar 12 16:03:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.18:
+  * Added humanfriendly.text.generate_slug() function.
+  * Fixed "invalid escape sequence" DeprecationWarning (pointed out by Python >= 3.6).
+
+-------------------------------------------------------------------
+Thu Jan 31 11:32:14 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.17:
+  * compatibility with python 3.7
+
+-------------------------------------------------------------------
+Wed Aug 29 08:22:29 UTC 2018 - tchvatal@suse.com
+
+- Move the Name declaration above lua code to work on Leap 42.3
+
+-------------------------------------------------------------------
+Fri Aug 17 13:50:03 UTC 2018 - tchvatal@suse.com
+
+- Update to 4.16.1:
+  * Added humanfriendly.text.compact_empty_lines() function.
+  * Enable optional html_to_ansi(data[, callback]) argument.
+  * Added a code sample and screenshot to the HTMLConverter documentation.
+  * Emit vertical whitespace for block tags like <div>, <p> and <pre> and post-process the generated output in __call__() to compact empty lines.
+  * Don’t pre-process preformatted text using the user defined text callback.
+  * Improve robustness against malformed HTML (previously an IndexError would be raised when a closing </a> tag was encountered without a corresponding opening <a> tag).
+  * Emit an ANSI reset code when HTMLConverter.close() is called and a style is still active (improves robustness against malformed HTML).
+  * Support for 24-bit (RGB) terminal colors. Works by accepting a tuple or list with three integers representing an RGB (red, green, blue) color.
+  * Support for italic text rendering on the terminal.
+  * Make format_timespan() accept datetime.timedelta objects (fixes #27).
+  * Add license key to setup.py script (pointed out to me in coloredlogs pull request #53).
+  * Added the Timer.sleep() method to sleep “no more than” the given number of seconds.
+  * Added the format_rst_table() function to render RST (reStructuredText) tables.
+- Enable and make sure tests are run
+
+-------------------------------------------------------------------
+Tue Aug 14 09:04:56 UTC 2018 - ms@suse.com
+
+- Submission to SUSE:SLE-12-SP3:Update:PubClouds
+    
+  This commit tracks the submission for fate#326575
+  and bsc#1103542
+
+-------------------------------------------------------------------
+Thu Feb  8 21:59:46 UTC 2018 - adrian.glaubitz@suse.com
+
+- Update to version 4.8
+  * Add coerce_pattern() function
+  * Improve code consistency
+- From version 4.7
+  * Support background colors and 256 color mode
+  * Tests for output(), message() and warning()
+- From version 4.6
+  * Support for bright terminal colors
+- From version 4.5
+  * Extend byte ranges, add RAM output to command line
+- From version 4.4.2
+  * Reduce clock source sensitivity* (MacOS on Travis CI)
+  * Fix `Double requirement given' error
+  * Try to fix Python 2.6 tests on Travis CI
+  * Change Sphinx documentation theme
+  * Bump copyright
+  * Try to enable MacOS builds on Travis CI
+  * Fix ImportError exception on Windows
+- From version 4.4.1
+  * Include docs to sdist
+  * PEP-8 fail
+  * Change cli test from 1.05 mm to 1.05 km
+  * Another correction to test_cli
+  * Corrected CLI format_length test
+  * Aim for more CLI coverage
+  * Add CLI tests for format-byte
+  * Added size test cases
+  * Size 1z is now valid
+- From version 4.4
+  * Add touch() to __all__
+  * Make touch() create intermediate directories
+  * Add humanfriendly.testing.touch() function
+- From version 4.3
+  * Don't log duplicate output in run_cli()
+- From version 4.2
+  * Reconfigure logging in run_cli()
+- From version 4.1
+  * Always log stderr as well in run_cli()
+- From version 4.0
+  * Improve humanfriendly.testing.run_cli() (backwards incompatible)
+- From version 3.8
+  * Make it easy to mock the $HOME directory
+- From version 3.7
+  * Customizable skipping of tests
+  * Added .pyc to .gitignore
+  * Added Exa, Zetta & Yotta prefixes and tests
+  * Added -S --format-bytes option to use powers of 1024 rather than 1000 from command line.
+- From version 3.6.1
+  * Improve robustness of Patched{Attribute,Item}
+- From version 3.6
+  * Make retry limit configurable
+  * Refactor makefile and Travis CI configuration
+- From version 3.5
+  * Bug fix for TestCase.assertRaises()
+  * Enhance TestCase.assertRaises()
+- From version 3.4.1
+  * Bug fix for Python 3 syntax incompatibility
+- From version 3.4
+  * Promote command line test function to public API
+- From version 3.3
+  * Add humanfriendly.testing module (unittest helpers)
+  * Add humanfriendly.text.random_string() function
+  * Define humanfriendly.text.__all__
+  * Reorder functions in humanfriendly.text alphabetically
+- From version 3.2
+  * Auto-encode terminal output to avoid encoding errors
+  * Remove unused import
+- From version 3.1
+  * Improve usage message parsing and rendering
+- From version 3.0
+  * Add Python 3.6 to tested versions
+  * Silence flake8 complaints
+  * Add min, mins tests
+  * Support min, mins abbreviations for minutes
+- From version 2.4
+  * Restore Python 3 compatibility
+  * Make usage() and show_pager() more user friendly
+  * Remove redundant :py: prefixes in docstrings
+  * Improve docstrings in setup.py
+- From version 2.3.2
+  * Bug fix: Don't hard code conditional dependencies in wheels
+- From version 2.3.1
+  * Fix parse_usage() tripping up on commas in option labels
+  * Break test suite to reproduce parse_usage() bug
+- From version 2.3
+  * Switch to monotonic clock for timers
+  * Bump copyright
+  * Minor improvements to setup script
+  * Improve intersphinx references
+  * s/readthedocs.org/readthedocs.io/g
+- From version 2.2.1
+  * Fix timers being awkward as context managers
+  * Reproduce timers being awkward as context managers
+  * Minor improvements to reStructuredText in docstrings
+- From version 2.2
+  * Fix parse_date() choking on Unicode strings
+  * Reproduce parse_date() bug in test suite
+  * Fix flake8 warning
+  * Only use readline hints in prompts when stdin is tty
+
+-------------------------------------------------------------------
+Wed Sep  6 16:36:13 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+- Update to version 4.4.1
+  * No changelog
+
+-------------------------------------------------------------------
+Mon Oct 10 19:21:56 UTC 2016 - mardnh@gmx.de
+
+- Update to version 2.1
+  * Release 2.1: Support for sanitizing terminal output
+  * Support for sanitizing terminal output
+  * Merge #12: Update README.rst for new unit behaviour
+  * Update README.rst for new unit behaviour
+  * Release 2.0: Proper support for IEEE 1541 definitions of units? (fixes #4, merges #8 and #9)
+  * Proper support for IEEE 1541 definitions of units?
+  * Merge #9: Add note about IEEE 1541 definitions of units
+  * Merge #8: Allow correct behavior of 'parse_size' and 'format_size'
+  * Stop clearing coverage data on Travis CI :-)
+  * Release 1.44.9 (fixes #10 and #11)
+  * Restore Python 2.6 compatibility (#10 and #11)
+  * Resolve timespan formatting issues (#10 and #11)
+  * Reproduce timespan formatting issues reported in #10 and #11
+  * Refactor makefile, switch to py.test, wheel support, etc.
+  * Release 1.44.8 (fixes #7)
+  * Don't test tags on Travis CI
+  * Fix issue #7
+  * Reproduce issue #7 in test suite
+  * Minor improvements to setup script
+  * Add note about IEEE 1541 definitions of units
+  * Added unit tests
+  * Implemented correct handling of prefixes based on IEEE 1540
+- Fix source url
+- Minor specfile cleanup
+
+-------------------------------------------------------------------
+Wed Jun  1 20:56:09 UTC 2016 - okurz@suse.com
+
+- Update to official release 1.44.7
+
+Minor improvements to usage message reformatting
+
+Remove undocumented .strip() from join_lines()
+Why I noticed this: It has the potential to eat significant white
+space in usage messages that are marked up in reStructuredText syntax.
+
+Why I decided to change it: The behavior isn't documented and on
+second thought I wouldn't expect a function called join_lines()
+to strip any and all leading/trailing white space.
+
+Improve usage message parsing algorithm (also add a proper test)
+Refer to test_parse_usage_tricky() for an example of a usage message that
+is now parsed correctly but would previously confuse the dumb "parsing"
+algorithm in parse_usage().
+
+Make usage message parsing a bit more strict
+Admittedly this needs a lot more love to make it more robust but
+I lack the time to implement this at the moment. Some day soon! :-)
+
+Unbreak conditional importlib dependency*
+* https://travis-ci.org/xolox/python-humanfriendly/builds/110585766
+
+  Kind of strange that everything worked fine locally. Then again,
+  I've never used wheel compatible conditional dependencies before
+  so of course my first attempt was bound to fail in same way :-s.
+
+Make conditional importlib dependency compatible with wheels*
+While running tox tests of another project of mine that uses the
+humanfriendly package I noticed a traceback when importing the
+humanfriendly package (because importlib was missing). After some
+digging I found that tox uses pip to install packages and pip converts
+source distributions to wheel distributions before/during installation,
+thereby dropping the conditional importlib dependency.
+
+Fix non-fatal log format error in prompt_for_choice()
+
+Add humanfriendly.sphinx module
+
+-------------------------------------------------------------------
+Mon Jan 25 09:08:00 UTC 2016 - okurz@suse.de
+
+- initial package
+

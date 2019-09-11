@@ -1,0 +1,1702 @@
+-------------------------------------------------------------------
+Wed Apr 10 08:37:00 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Updated application icon in help.
+  + Stop using old icon name.
+  + Fixed quit keyboard shortcut.
+  + Updated translations.
+- Drop gsm-fix-broken-icons.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Mar 11 17:12:50 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+- Add gsm-fix-broken-icons.patch: Fix broken icons.
+
+-------------------------------------------------------------------
+Tue Mar  5 09:17:25 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Fixed issue with system icon change.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 20 14:05:37 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Updated application icon.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 17 07:09:28 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Removed appmenu.
+  + Use delayed g_settings write.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  4 12:20:29 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Fix req#663737 - build with translation-update-upstream
+  version 20181128
+
+-------------------------------------------------------------------
+Fri Jan  4 21:48:33 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.3:
+  + Removed appmenu.
+  + Use delayed g_settings write.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  7 18:24:13 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  * Updated translations.
+- Remove lang package from recommended packages as it already
+  supplements main package.
+
+-------------------------------------------------------------------
+Mon Aug 13 19:34:09 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  3 18:41:03 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.90:
+  + Coding style fixes.
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 18 23:59:45 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.3:
+  + Ship app icon (glgo#GNOME/gnome-system-monitor#80).
+  + Fixed crash caused by regex error (bgo#796168).
+  + Migrate to meson.
+  + Updated bugzilla references to gitlab.
+  + Use short process name for process dialog title.
+- Add meson BuildRequires and corresponding macros following
+  upstreams port. Also pass wnck=false and systemd=true to meson,
+  ensure we build the features we want (currently following
+  upstream defaults).
+
+-------------------------------------------------------------------
+Wed May  9 15:55:41 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.2:
+  + End process dialog box title expands to full length of process
+    title (bgo#788066).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr  9 21:39:00 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1:
+  + Fixed bytes to bits conversion (bgo#795051).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:18:31 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Tue Mar 13 07:58:05 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  6 10:51:10 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:29:50 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sun Feb 18 19:53:43 UTC 2018 - bjorn.lie@gmail.com
+
+- Do minor spec cleaning, use autosetup and make_build macros.
+- Drop update-desktop-files BuildRequires and stop using
+  suse_update_desktop_file, and no longer inject docpath to desktop
+  file: No longer needed.
+
+-------------------------------------------------------------------
+Fri Feb  9 23:54:11 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.90:
+  + Fixed bugs:
+    - Translation rules fixes (bgo#790570).
+    - Scroll process table to selected row (bgo#792574).
+    - Theme-based background color for charts (bgo#792360).
+    - Multipe token entry for search (bgo#789905).
+    - Use a scrolledwindow for resources (bgo#778697).
+    - Better alignment for network stats. Style the kill
+      confirmation as destructive action. And redraw loadgraph
+      background on theme change (bgo#789603).
+  + Updated translations.
+- Update Url tag to https://wiki.gnome.org/Apps/SystemMonitor:
+  it's the current System Monitor's web page.
+- Drop pkgconfig(dbus-glib-1) BuildRequires: it's no longer needed/
+  used anymore.
+- Add pkgconfig(glib-2.0) BuildRequires then avoiding implicit
+  dependency.
+
+-------------------------------------------------------------------
+Wed Feb  7 11:29:48 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.2:
+  + bgo#788922: fix inaccurate CPU% values in the Processes table.
+  + bgo#786944: gettext migration
+  + bgo#790146: install appdata to the new location
+  + Updated translations.
+- Drop intlool BuildRequires: no longer needed, since upstream
+  migrated to gettext.
+- Drop glib2_gsettings_schema_requires,
+  desktop_database_post/postun and
+  glib2_gsettings_schema_post/postun handling: the functionality is
+  covered by RPM file triggers now.
+- Drop gsm-fix-inaccurate-cpu-values.patch,
+  gnome-system-monitor-nb-translation.patch and
+  gsm-bsc1020294-add-resources-scrollbar.patch: fixed upstream.
+- Add polkit-devel BuildRequires: needed for the its translation
+  instructions.
+
+-------------------------------------------------------------------
+Tue Feb  6 14:18:38 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop obsolete lsb-release Requires.
+
+-------------------------------------------------------------------
+Mon Nov 27 19:21:42 UTC 2017 - zaitor@opensuse.org
+
+- Add gnome-system-monitor-nb-translation.patch: Update Norwegian
+  bokmål translations.
+
+-------------------------------------------------------------------
+Mon Nov 20 20:07:43 UTC 2017 - mgorse@suse.com
+
+- Add gsm-fix-inaccurate-cpu-values.patch: fix inaccurate %CPU
+  values in the Processes table (bgo#788922).
+
+-------------------------------------------------------------------
+Tue Oct  3 01:14:02 UTC 2017 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Mon Sep 11 21:46:11 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + Wnck build error fixed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  6 23:12:33 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 21 21:10:42 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + Updated translations.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Wed Aug  9 12:29:35 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.90:
+  + Added option to monitor process disk usage.
+  + Fixed build failure (bgo#783993).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 20 11:47:10 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.3:
+  + Fixed several memory leaks.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 23 10:32:31 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.2:
+  + Bugs fixed: bgo#780574, bgo#780644, bgo#779812, bgo#776653,
+    bgo#781508, bgo#776430.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 21 09:55:02 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 17 12:47:40 UTC 2017 - dimstar@opensuse.org
+
+- Run spec-cleaner:
+  + Add pkgconfig BuildRequires.
+  + Use %make_install instead of %makeinstall.
+  + Add %defattr(-,root,root) to the -lang package.
+
+-------------------------------------------------------------------
+Fri Mar 17 12:34:52 UTC 2017 - jengelh@inai.de
+
+- Use %_smp_mflags for parallel build and limit fdupes to not work
+  across common partitions. Replace old-age $RPM_* by %-macros.
+
+-------------------------------------------------------------------
+Tue Mar 14 18:57:08 UTC 2017 - mgorse@suse.com
+
+- Add gsm-bsc1020294-add-resources-scrollbar.patch: add a
+  scrollbar to the resources tab (bsc#1020294, bgo#778697).
+
+-------------------------------------------------------------------
+Tue Mar 14 08:46:11 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.92:
+  + Updated translations.
+- Drop gnome-system-monitor-linking.patch, gnome-common
+  Buildrequires and call to autoreconf: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Feb 28 10:39:19 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.91:
+  + Smooth chart setting should only affect cpu chart.
+  + bgo#778776 fixed broken wnck option.
+  + Updated translations.
+- Add gnome-system-monitor-linking.patch: Fix build with
+  -Wl,--as-needed.
+- Add gnome-common Buildrequires and call to autoreconf, as above
+  patch touches the build system.
+
+-------------------------------------------------------------------
+Sun Feb 19 15:47:03 UTC 2017 - zaitor@opensuse.org
+
+- Drop pkgconfig(libwnck-3.0) BuildRequires and no longer pass
+  --enable-wnck to configure, it currently leads to segfaults
+  (bgo#778776).
+- Drop obsolete clean section.
+
+-------------------------------------------------------------------
+Wed Feb 15 09:25:56 UTC 2017 - zaitor@opensuse.org
+
+- Add explicit pkgconfig(giomm-2.4), pkgconfig(glibmm-2.4)
+  BuildRequires and version them, following what configure looks
+  for.
+
+-------------------------------------------------------------------
+Wed Feb 15 09:25:55 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.90:
+  + Add option to disable smooth (curves) graph (bgo#778470).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 22 12:24:29 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.23.2:
+  + Use real widget types, eliminate downcasting.
+  + Remove deprecated GtkAlignments.
+  + Use relative positions to the labels to attach the net pickers.
+  + Port to Gio::Settings.
+  + Fixed menu popup problems.
+  + Cgroup reform (bgo#773016).
+  + Simplified resource view structure.
+  + Use unicode in translatable strings.
+  + Do not use deprecated calls.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 11 10:16:56 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 18:21:26 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 14 07:19:22 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 29 22:03:12 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Fixed several memory leaks (bgo#770116).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 15 19:35:50 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Fixed default column width (bgo#768063).
+  + Reordered process context menu and ask for confirmation on
+    stop (bgo#769680).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 21 11:36:49 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.3:
+  + Added padding to 'used' column progress bar (bgo#764266).
+  + Properly normalize CPU resource graph (bgo#748999).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 15 22:56:25 CEST 2016 - hpj@suse.com
+
+- Update to GNOME 3.20 -- Fate#318572.
+
+-------------------------------------------------------------------
+Tue Apr 12 12:28:51 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Marked as non-removable for GNOME.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 22 14:37:48 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:34:42 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  1 11:12:41 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + Save window size properly (bgo#762231).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 13:12:53 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.90:
+  + Added missing tag to Appdata Files.
+  + bgo#761124: Fixed padding issue on the Processes tab.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 19 19:07:43 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.4:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Dec 20 22:26:43 UTC 2015 - damjanovic.ivo@gmail.com
+
+- Updated version to 3.19.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 10 07:55:48 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 23 07:45:16 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0.1:
+  + Empty space above the process list (bgo#755204).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 06:40:33 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 07:49:38 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 09:10:32 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.91:
+  + Use sysinfo to get number of CPUs.
+  + Set the application icon name.
+  + Work under wayland even with wnck (bgo#753972).
+  + Updated translations.
+- Add pkgconfig(gdk-x11-3.0) BuildRequires: new, explicit verified
+  dependency.
+
+-------------------------------------------------------------------
+Tue Aug 18 08:50:50 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Fix build with c++11 (bgo#753121).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug  6 08:58:11 UTC 2015 - dimstar@opensuse.org
+
+- Own %{_datadir}/polkit-1/actions instead of having to depend on
+  a full polikit installation for building.
+
+-------------------------------------------------------------------
+Tue Jul 21 10:40:58 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + Bugs fixed: bgo#749560, bgo#749645.
+  + Updated translations.
+- Replace dbus-1-glib-devel, libgtop-devel, librsvg-devel and
+  libxml2-devel BuildRequires for their pkgconfig() equivalents.
+
+-------------------------------------------------------------------
+Fri Jun 26 08:49:38 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 20:16:07 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:50:41 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Fixed lsof regex error modal dialogs (bgo#746208).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 12:35:15 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 28 15:46:43 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.15.4:
+  + Fixed freebsd crasher caused by PID 0 (bgo#742070).
+
+-------------------------------------------------------------------
+Wed Dec 17 20:24:57 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.3:
+  + Fixed bogus assignment (bgo#738110).
+  + Use traditional titlebars on non-gnome (bgo#741044).
+  + Don't set titlebar when using headerbar as toolbar
+    (bgo#741234).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 18 18:07:29 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 13 19:33:54 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.1:
+  + Bugs fixed:
+    - bgo#737098: polkit console auth agent freezing xsession.
+    - bgo#738467: Some icons are enormously large.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 22 17:56:05 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 16 10:46:48 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  1 22:41:11 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + Do not use deprecated treeview API.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 18 20:38:11 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 21 20:58:10 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + Bugs fixed: bgo#732942, bgo#733343, bgo#732981.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 12 18:13:45 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.3:
+  + Added additional desktop keywords.
+- Changes from version 3.13.2:
+  + Port to GtkActionBar, CSS cleanup (bgo#729747).
+- Changes from version 3.13.1:
+  + CPU Graph shows weird graph (bgo#728644).
+  + Use a popover for gear menu (bgo#727828).
+  + process list doesn't update (bgo#728075).
+  + Drop gnome-icon-theme dependency (bgo#729019).
+  + Use headerbar in dialogs.
+  + Simplified search in the open files fialog.
+  + Updated translations.
+- Drop gnome-icon-theme-devel BuildRequires and gnome-icon-theme
+  Requires: no longer required after the merging of the themes into
+  Awaita theme, which in turn is a dependency to GTK+ 3.0.
+- Add pkgconfig(gtk+-3.0) BuildRequires: explcitly require the
+  minimal version.
+
+-------------------------------------------------------------------
+Wed Jul  2 16:28:59 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Bugs fixed: CPU Graph shows weird graph (bgo#728644).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 14 20:35:39 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Bugs fixed: process list doesn't update (bgo#728075).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 25 12:53:15 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 14:21:51 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Bugs fixed: bgo#711381, bgo#724482.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 17 21:42:34 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + New feature: Shiny new Mallard help.
+  + Processes list should be completely idle if window not mapped
+    (bgo#309839).
+  + Updated translations.
+- Pass --enable-wnck and --enable-systemd, in order to ensure we
+  build with wnck and systemd support.
+- Remove conditional check for obsolete versions of openSUSE and
+  stop passing --disable-scrollkeeper to configure, no longer
+  needed nor recognized.
+
+-------------------------------------------------------------------
+Tue Feb  4 17:34:05 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5:
+  + List of fixed bugs
+    - Code cleanups, minor optimizations.
+    - Fixed url and screenshots in appdata.
+    - Ask polkit password only once when killing multiple
+      processes.
+    - Updated FSF's address.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 14 08:25:04 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + load-graph.cpp: Draw the background explicitly (bgo#720560).
+  + Fix the size of the buttons in the headerbar (bgo#721706).
+  + Fix headerbar item positions (bgo#721734).
+
+-------------------------------------------------------------------
+Mon Dec 16 22:14:22 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Bugs fixed: bgo#719504, bgo#719589, bgo#720091, bgo#720105.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 20 16:30:39 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + bgo#712518: update intervals aren't loaded into prefs dialog.
+  + bgo#712360: procman_pkexec free result of g_strdup_printf.
+  + bgo#708657: Add desktop-file-validate to distcheck.
+  + bgo#711366: Keyboard focus is impractical during Process
+    searching.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov 11 22:49:35 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.2 (bnc#849913):
+  + bgo#711366: Keyboard focus is impractical during Process
+    Searching.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 14 21:08:39 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Bugs fixed:
+    - Appdata xml translated strings not being merged.
+    - Problem with appdata xml screenshot field.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 21:11:33 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 16 21:47:27 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.92:
+  + Bugs fixed: bgo#673120, bgo#706845.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 20 06:57:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Bugs fixed: bgo#649398, bgo#705210, bgo#705271, bgo#674405,
+    bgo#347886, bgo#509787, bgo#681405, bgo#414492, bgo#524830,
+    bgo#705429, bgo#705456, bgo#703240, bgo#705753, bgo#685946,
+    bgo#705970, bgo#705989, bgo#705088, bgo#611735, bgo#706267.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 30 07:08:53 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.5:
+  + Bugs fixed: bgo#531097, bgo#704215, bgo#704378, bgo#704467,
+    bgo#674405.
+  + Updated translations.
+- Remove language handling for obsolete openSUSE releases.
+
+-------------------------------------------------------------------
+Tue May 28 06:45:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.2:
+  + Added command line option to show application version
+    (bgo#698875).
+  + Fixed policykit dialog wording for kill and renice
+    (bgo#698659).
+  + Moved y axis scales to the right (bgo#561533).
+  + Do not start the network chart from 0 if the value is not 0
+    (bgo#626846).
+  + Fixed segfault when changing viewmode with a process selected
+    (bgo#700552).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 14 20:52:54 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2.1:
+  + bgo#700305: Reverted the fix for bgo#92724 until finding a
+    stable solution without causing crash on startup.
+
+-------------------------------------------------------------------
+Mon May 13 18:39:27 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2:
+  + bgo#92724:  Preserve tree scroll position at top/bottom when
+    new processes are added.
+  + bgo#485139: Refresh the process list icons on icon theme
+    change.
+  + bgo#695891: Added menu quit keyboard shortcut (accel
+    Primary-q).
+  + bgo#696274: Check for logind, not for systemd.
+  + bgo#699095: Focus the Processes tree on startup.
+  + Updated translations.
+- Drop pkgconfig(libsystemd-daemon) BuildRequires: no longer
+  required.
+
+-------------------------------------------------------------------
+Tue Mar 26 10:17:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 19 09:43:11 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.7.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 18 20:28:22 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.90:
+  + Migrated checkbox based settings to gsettings bindings instead
+    of custom callback for save and load.
+  + Minor performance optimizations.
+  + Bugs fixed: bgo#674064, bgo#692518, bgo#520853, bgo#431660,
+    bgo#142026, bgo#662264, bgo#693630.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  4 22:34:59 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + Fixed incorrect CPU usage chart values with multiple cores
+    (values summed up even without using stacked area chart)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 15 18:14:58 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + Ported to GtkApplication, added application menu
+  + Added policykit support for privileges for killing/renicing
+    other users' processes
+  + Bugs fixed: bgo#683761, bgo#684669, bgo#674396, bgo#683762,
+    bgo#683634, bgo#351087, bgo#656365, bgo#681585, bgo#605571,
+    bgo#673120, bgo#684536, bgo#684537, bgo#687512, bgo#686812,
+    bgo#635939, bgo#649908, bgo#685294, bgo#683671, bgo#606579,
+    bgo#672515
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 15 19:41:28 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Bugs fixed: bgo#605571, bgo#656365, bgo#673120, bgo#683762.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 24 19:57:23 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 23:33:35 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 21 08:07:29 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90.1:
+  + Port to new documentation infrastructure
+  + Updated translations.
+- Replace gnome-doc-utils-devel BuildRequires with yelp-tools,
+  following upstreams change to the new documentation
+  infrastructure.
+
+-------------------------------------------------------------------
+Tue Aug  7 09:15:29 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Bugs fixed: bgo#663736, bgo#671036, bgo#681271
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:19:04 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + Bugs fixed: bgo#672741, bgo#673146.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr  2 16:52:27 UTC 2012 - jhernandez@emergya.es
+
+- Enable systemd support only for openSUSE >= 12.2. On earlier
+  versions, don't use libsystemd-daemon/libsystemd-login
+  pkgconfig() BuildRequires since systemd is too old there.
+
+-------------------------------------------------------------------
+Tue Mar 27 06:23:50 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Bug fixed: bgo#668574.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:47:25 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.92:
+  + Bug fixed: bgo#672302.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  6 08:35:39 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 24 07:03:42 UTC 2012 - vuntz@opensuse.org
+
+- Add pkgconfig(libsystemd-daemon) and pkgconfig(libsystemd-login)
+  BuildRequires to build systemd support. Note that not booting
+  with systemd will be handled fine.
+
+-------------------------------------------------------------------
+Tue Feb 21 07:53:04 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.90:
+  + Collapse kthreadd part of the process tree (bgo#667830)
+  + Implement case-insensitive instant search by process name
+    (bgo#668052)
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Tue Jan 17 08:13:37 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.4:
+  + Added Process Properties dialog (bgo#543347).
+  + CPU usage line colors can be set for more than the first 4 CPUs
+    (bgo#632188).
+  + Optional support for systemd (unit, session, seat, owner) in
+    process view
+  + Improved sorting (bgo#507108, bgo#557122).
+  + Fix crash (bgo#662463).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 20 11:28:19 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.3:
+  + More Control Group support improvements
+  + More concise CPU list display
+  + Add Priority column to the process table to show user-friendly
+    nice values
+  + Add priority selection submenu with preset priority items
+  + Add command line flags for each tab to display it on startup
+  + Add 32-bit or 64-bit to the release label
+  + Bugs fixed: bgo#619979, bgo#629571, bgo#131803, bgo#131802,
+    bgo#664926, bgo#665783.
+  + Updated translations.
+- Add pkgconfig(gmodule-2.0) BuildRequires: new explicit
+  dependency.
+
+-------------------------------------------------------------------
+Fri Nov 25 09:19:43 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.2.1:
+  + Fix build issue caused by include in lsof.cpp
+- Changes from version 3.3.2:
+  + Experimental support for cgroups
+  + Ship with git-generated ChangeLog
+  + Network load default colors improved for the colorblind
+  + Remove status bar
+  + Remember window position
+  + Reduce number of default columns in processes view
+  + Bugs fixed: bgo#649398, bgo#649842, bgo#652584, bgo#652602,
+    bgo#654888, bgo#656840, bgo#656841, bgo#661269, bgo#130719,
+    bgo#663569, bgo#646393, bgo#616794, bgo#576863, bgo#468495,
+    bgo#506035, bgo#343861, bgo#305883, bgo#553315, bgo#528149,
+    bgo#496436.
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Tue Oct 18 06:37:38 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 26 11:28:45 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 30 16:47:09 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90:
+  + Updated translations.
+- Changes from version 3.1.4:
+  + Added Help button to preferences dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul  5 08:12:39 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.3:
+  + Show cpu speed for ppc64 processors.
+  + Added system info support for OpenBSD.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 14 09:30:30 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.2:
+  + Correct bad status tip wording when hovering over View->My
+    Processes.
+  + Fix to remember custom column ordering.
+  + Added ability to navigate tabs using Alt-N.
+  + Make change priority button respect button-images setting.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 17 18:33:06 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.1.1:
+  + Fixed 32-bit build
+  + Updated translation
+- Changes from version 3.1.1:
+  + Fixed maximum nice value to read 19 instead of 20.
+  + Fixed network totals overflow on 32-bit machines.
+  + Added SI prefix tera to network counter.
+  + Reworded "Solaris mode" label.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr  5 15:16:32 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Fix crash for systems with more than 4 logical CPUs.
+  + Pass parent window to About dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 28 13:48:29 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.3:
+  + Change setting's id and path to org.gnome.gnome-system-monitor
+    & /org/gnome/gnome-system-monitor, respectively
+  + Updated translations.
+- Changes from version 2.91.2:
+  + Fix release path.
+  + Fix a GSettings key.
+  + Updated translations.
+- Change old-style buildRequires to new pkgconfig() / gnome3 ones:
+  gtkmm2-devel, gtk2-devel, libwnck-devel, to gtkmm-3.0,
+  libwnck-3.0.
+- Replace /usr/bin/lsb_release Requires with lsb-release (which is
+  a package).
+- Replace GConf2 schemas handling with GSettings schemas handling,
+  with %glib2_gsettings_schema_* macros.
+- Drop gconf2-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Mar 11 14:43:14 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.1:
+  + Autotools configuration update.
+  + Minor fix to preference dialog.
+  + Updated translations.
+- Changes from version 2.91.0:
+  + Ported to GTK+ 3.
+  + Ported from GConf to GSettings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 14 18:24:34 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sun Feb 13 12:51:18 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+- Remove 2.x references in summaries and descriptions.
+
+-------------------------------------------------------------------
+Tue Dec 14 15:07:28 CET 2010 - vuntz@opensuse.org
+
+- Own /usr/share/gnome and /usr/share/gnome/help to fix build.
+
+-------------------------------------------------------------------
+Tue Sep 28 13:29:13 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.28.2:
+  + Remove use of deprecated GTK+ API.
+  + Fix build with -DGSEAL_ENABLE.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May 28 00:45:03 CEST 2010 - vuntz@opensuse.org
+
+- Drop gnome-system-monitor-fate302198.diff and
+  gnome-system-monitor-fate304741.diff: those patches were not
+  accepted upstream. One depends on HAL (which we don't want) and
+  provides an UI that is suboptimal to list the hardware; the other
+  one is specific to thinkpads and doesn't bring enough benefits to
+  be kept.
+- Drop hal-devel and hwinfo-devel BuildRequires.
+- Remove autoreconf call, and remove non-existing --enable-pcrecpp
+  configure option.
+
+-------------------------------------------------------------------
+Tue Mar 30 19:45:52 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.28.1:
+  + Updated translations.
+- Remove en@shaw translations on 11.2 and earlier.
+
+-------------------------------------------------------------------
+Tue Sep 22 17:57:04 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  4 21:11:00 CEST 2009 - vuntz@novell.com
+
+- Do not package omf files twice.
+
+-------------------------------------------------------------------
+Wed Jul 22 12:12:39 CEST 2009 - coolo@novell.com
+
+- do not require lsb but the binary needed (in lsb-release on 11.2)
+
+-------------------------------------------------------------------
+Mon Jul 20 11:31:41 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.4:
+  + NetBSD sysinfo support.
+- Changes from version 2.27.3:
+  + Fixed a small memory leak.
+  + No more deprecated GTK+ symbols.
+  + Network speed can be also displayed in bits.
+- Drop gnome-system-monitor-bgo566962-leaks.diff: fixed upstream.
+- Respin gnome-system-monitor-fate302198.diff.
+
+-------------------------------------------------------------------
+Sat May 23 14:04:26 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 12 14:23:41 CEST 2009 - vuntz@novell.com
+
+- Correctly tag patches.
+
+-------------------------------------------------------------------
+Tue Apr 14 15:45:46 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.1:
+  + Small bugfix about hiding pseudo filesystems.
+
+-------------------------------------------------------------------
+Mon Apr  6 11:43:09 CEST 2009 - vuntz@novell.com
+
+- Respin gnome-system-monitor-fate304741.diff that doesn't apply
+  with new patch package.
+
+-------------------------------------------------------------------
+Mon Mar 16 22:51:41 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  6 16:52:07 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0:
+  + Fixed potential segfault with broken icon themes (bgo#573030).
+
+-------------------------------------------------------------------
+Tue Feb 17 01:00:30 CET 2009 - mboman@suse.de
+
+- Update to version 2.25.91:
+  + A few bugfixes
+  + Faster startup (spaws lsb_release only when needed)
+- Remove docbook-xsl-stylesheets, glib2-devel, gnome-common,
+  gnome-vfs2-devel, libglade2-devel, perl-XML-Parser, scrollkeeper
+  from BuildRequires
+- Add dbus-1-glib-devel to BuildRequires
+
+-------------------------------------------------------------------
+Tue Feb  3 11:29:10 EST 2009 - hfiguiere@suse.de
+
+- Update gnome-system-monitor-fate302198.diff to fix slow startup.
+  (bnc#447370)
+
+-------------------------------------------------------------------
+Sun Feb  1 17:37:47 EST 2009 - mboman@suse.de
+
+- Update to version 2.24.4:
+  + Fixed license: system-monitor is GPL-2
+  + Fixed small memory leak
+- Updated gnome-system-monitor-bgo566962-leaks.diff. Partly fixed
+  upstream
+
+-------------------------------------------------------------------
+Fri Jan 23 05:52:51 CET 2009 - vuntz@novell.com
+
+- Requires lsb (change was done by Magnus Boman, iirc).
+
+-------------------------------------------------------------------
+Wed Jan  7 18:50:23 EST 2009 - hfiguiere@suse.de
+
+- Add gnome-system-monitor-bgo566962-leaks.diff
+  * Fix memory leaks (bgo#566962)
+
+-------------------------------------------------------------------
+Tue Oct 21 19:52:17 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.1:
+  + Translation updates 
+
+-------------------------------------------------------------------
+Tue Sep 23 18:56:47 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.0:
+  + Translation updates 
+
+-------------------------------------------------------------------
+Fri Sep 12 01:58:54 EDT 2008 - hfiguiere@suse.de
+
+- Add gnome-system-monitor-fate304741.diff
+  * FATE#304741: add a thinkpad ACPI tab. (only on thinkpad)
+
+-------------------------------------------------------------------
+Tue Sep  9 10:24:04 EDT 2008 - hfiguiere@suse.de
+
+- Add gnome-system-monitor-fate302198.diff
+  * FATE 302198: add a hardware tab in g-s-m.
+  * new requirements: hal and hwinfo.
+  * call autoreconf in the spec.
+
+-------------------------------------------------------------------
+Tue Sep 01 23:25:58 CEST 2008 - mboman@novell.com
+
+- Update to version 2.23.91:
+  + Fixed bgo#549383 – network assertion in the resource tab.
+
+-------------------------------------------------------------------
+Tue Aug 26 23:25:58 CEST 2008 - mboman@novell.com
+
+- Update to version 2.23.90:
+  + Fixed truncated process names.
+
+-------------------------------------------------------------------
+Tue Aug 05 23:25:58 CEST 2008 - captain.magnus@opensuse.org
+
+- Update to version 2.23.6:
+ + Don't segfault in the disk list when icon cannot be retried from gvfs.
+ + Fixed network speed when there are pseudo-devices with no address.
+
+-------------------------------------------------------------------
+Wed Jun 25 23:25:58 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.3:
+  + New option to start with the system tab
+  + Port to gio
+  + Misc new features
+  + Bug fixes
+- Drop the following upstreamed patches:
+  gnome-system-monitor-sysinfo.patch and
+  gnome-system-monitor-performance.patch.
+
+-------------------------------------------------------------------
+Fri May  9 01:07:50 CEST 2008 - jpr@suse.de
+
+- Update to version 2.22.1
+* lsof: don't crash on invalid regex (#524162).
+* graphs: fixed the time scale (#521394).
+- Add gnome-system-monitor-performance.patch to Fix performance on
+  certain video cards (bnc #374934)		     
+
+-------------------------------------------------------------------
+Fri Mar 14 05:43:07 CET 2008 - maw@suse.de
+
+- Update to version 2.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 13 16:58:01 CET 2008 - sbrabec@suse.cz
+
+- Custom look'n'feel gconf keys moved to gconf2-branding-openSUSE.
+
+-------------------------------------------------------------------
+Wed Mar  5 00:47:14 CET 2008 - maw@suse.de
+
+- Update to version 2.21.92:
+  + Dropped dependency on pcrecpp (and thus drop pcre-devel from
+    BuildRequires)
+  + Improved network Y-scale in the Resources tab
+  + Enabled transparent theming
+  + All graphs CPU colors are stored in gconf /cpu_color{n} keys
+  + Non-blocking lsb_release call : may improve startup time
+  + A bunch of cleanups / c++-ification.
+
+-------------------------------------------------------------------
+Fri Feb  1 18:28:56 CET 2008 - maw@suse.de
+
+- Update to version 2.21.5:
+  + Use more stock menu entries
+  + New color pickers in the resources tab
+  + Many graph improvements
+  + The network graph now shows a sensible Y-scale
+  + The process list can now be manually refreshed
+  + Fixed kernel process' tooltips.
+
+-------------------------------------------------------------------
+Thu Dec 20 19:07:43 CEST 2007 - jpr@suse.de
+
+- Update to version 2.21.4
+  * 'Arguments' column is now correctly escaped for markup 
+    (bgo #498569)
+  * Graph improvements
+  * Performance improvement in the process list
+  * Removed space to the left of process name (bgo #307762)
+  * Requires GTK+ >= 2.12.
+  * Documentation update
+  * Displays N/A when memory stats are not available. Memory stats 
+    are not available for processes like kernel ones or if the user
+    can't access the  memory stats (which happens on linux sysctl
+    kernel.maps_protect = 1) (bgo #487105)
+  * A few cleanups replacing overcomplicated treeview usage by 
+    gtk_tree_view_column_set_cell_data_func.
+  * Fixed liststore usage in the disk list.
+  * Updated translations.
+- Improve BuildRequires, removing gnutls-devel and 
+  libgnomeprintui-devel
+
+-------------------------------------------------------------------
+Wed Sep 19 14:07:43 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.20.0:
+  * minor fixes
+  * updated translations
+
+-------------------------------------------------------------------
+Fri Aug 31 17:49:28 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.91.1:
+  + Build fix
+  + Fixed logo mis-rendering in the system info tab (b.g.o
+    #405739).
+
+-------------------------------------------------------------------
+Thu Aug 30 23:10:06 CEST 2007 - sreeves@suse.de
+
+- fix for #253997
+
+-------------------------------------------------------------------
+Tue Aug  7 21:42:14 CEST 2007 - maw@suse.de
+
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Thu Aug  2 18:49:55 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.6:
+  + Bugs (bugzilla.gnome.org) fixed: #459598, #460511, #455826,
+    #450545, #367016, #399069, and #451932
+- Use %fdupes.
+
+-------------------------------------------------------------------
+Fri Jul 27 10:27:28 CEST 2007 - sbrabec@suse.cz
+
+- Reverted libgtop-2_0-7-devel to libgtop-devel.
+
+-------------------------------------------------------------------
+Tue Jul 10 17:30:45 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.4
+* Fixed hostname in the sysinfo tab.
+* Big cleanup of the process list code.
+* Reworded and fixed the process dependency tree.
+* Fixed crash on startup with dependencies+myprocesses.
+* pcre is back for good.
+* Use regex in the default icon table. This results in more icons :)
+* Every process now has a default icon.
+* Simplified lsof code with regex.
+* Lots of stuff git-log doesn't remember.
+- From the project's official changelog:
+* Some GTKmm :)
+- Also from the project's official changelog: 
+* Disable pcrecpp by default. You really want to enable this
+  (Your humble packager has no comment on the above, but has indeed
+  enabled it.)
+- Buildrequire libgtop-2_0-7-devel instead of libgtop-devel; also
+  buildrequire pcre-devel.
+
+-------------------------------------------------------------------
+Fri Apr 27 12:32:12 CEST 2007 - sbrabec@suse.cz
+
+- Do not call meinproc (#227624).
+
+-------------------------------------------------------------------
+Wed Apr 11 18:43:51 CDT 2007 - maw@suse.de
+
+- Update to version 2.18.1
+- Minor code cleanups
+- Improved startup time
+- Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr  4 16:02:56 CDT 2007 - maw@suse.de
+
+- Update to version 2.18.0
+- Cleaned up .desktop files
+- b.g.o 413919, 412953, and 409427.
+
+-------------------------------------------------------------------
+Wed Mar 28 19:28:14 CEST 2007 - jhargadon@suse.de
+
+- added intltoolize to the specfile (#258379) 
+
+-------------------------------------------------------------------
+Tue Mar 27 14:27:27 CEST 2007 - sbrabec@suse.cz
+
+- Build on all products (call glib-gettextize, require gcc-c++).
+
+-------------------------------------------------------------------
+Fri Mar  9 12:12:02 CST 2007 - maw@suse.de
+
+- Update to version 2.17.91
+- * Bézier curves by Lucas Mazzardo Veloso.
+* Moved to gnome-doc-utils by Paroz.
+* No longer depends ton libgnome.
+* Fixed bugs #374090, #352507, #328287 and #402013
+
+
+New in 2.17.6 - 22 January 2007
+* Dropped libgnomeui dependency.
+* GNOME logo enhanced by Luca Cavalli.
+* Various code improvements.
+
+New in 2.17.5 - 8 January 2007
+* More C++
+* Tuned the behaviour of smooth refresh.
+* A few code improvments.
+
+New in 2.17.4.2 - 19 December 2006
+* Fixed build with strict C++ compilers.
+
+New in 2.17.4.1 - 18 December 2006
+* Fixed POTFILES.in. Sorry :/
+
+New in 2.17.4 - 17 December 2006
+* 100% C++.
+* Disabled libsexy because it is buggy and unmaintained.
+* Fixed build on solaris.
+
+New in 2.17.3 - 4 December 2006
+* Renamed the Arguments column as "Command Line".
+* Fixed gconf schema.
+* Use lsb_release when available to get distro information.
+* Disabled the process blacklist.
+* More C++ :)
+
+New in 2.17.2 - 5 november 2006
+* This is the first 2.17.x release.
+* New lsof feature. Temporarily requires pcre, see #367827.
+* New SysInfo tab from OpenSuse. Artwork by Baptiste Mille-Mathias.
+* Some code cleanups.
+* Fixed sensitivity of the View menu.
+* New features have been developed in C++, old C code will be soon compiled
+  as C++.
+
+
+-------------------------------------------------------------------
+Mon Dec 18 19:46:38 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Tue Oct  3 18:19:48 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.1
+- Fixed locales dir initialization
+- Fixed memory maps for 64bits kernel running a 32bits system-monitor
+- Fixed gksu password prompt
+- Fixed a small memory leak
+-  Fixed schema 
+
+-------------------------------------------------------------------
+Thu Aug 31 01:10:11 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.92
+- Fixed LoadGraph overlay
+- Fixed tiny leak
+- Fixed font and alignment of various columns 
+
+-------------------------------------------------------------------
+Wed Aug 23 21:56:42 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.91
+- Renamed Devices tab as File Systems.
+- Updated translations.
+- Fixed segfault is libselinux not installed.
+- The disks list is now correctly updated.
+- Double-click in disks list opens the corresponding volume.
+- debug messages are displayed on command line if
+  GNOME_SYSTEM_MONITOR_DEBUG is defined.
+- No more compile dependency on libselinux.
+- Process arguments with line feeds are now escaped.
+- Displays scale on graphs.
+- Can use libsexy to display process arguments.
+- New memory column : displays estimated memory usage.
+- Fixed a couple of small leaks. 
+
+-------------------------------------------------------------------
+Thu Jul 20 06:31:32 CEST 2006 - jpr@suse.de
+
+- Call aclocal to fix build after altering configure.in in %prep
+
+-------------------------------------------------------------------
+Tue Jun  6 22:06:02 CEST 2006 - jimmyk@suse.de
+
+- Modify existing gnome-system-monitor-sysinfo.patch to properly parse
+  /proc/cpuinfo on ppc architecture and avoid crashing, BNC #179031.
+
+-------------------------------------------------------------------
+Mon May 22 17:34:32 CEST 2006 - jpr@suse.de
+
+- don't display the VERSION info from /etc/SuSE-release, its confusing
+(#177632)
+
+-------------------------------------------------------------------
+Mon May  1 14:54:38 CEST 2006 - jpr@suse.de
+
+- Remember the devices page if its the last used (#171137
+
+-------------------------------------------------------------------
+Wed Mar 29 18:14:35 CEST 2006 - jpr@suse.de
+
+- Fix page numbers to reflect prepended page (fixes #161815, #157490)
+
+-------------------------------------------------------------------
+Tue Mar 28 19:40:53 CEST 2006 - joeshaw@suse.de
+
+- Add a patch to show the "Resident" field by default, not the
+  "Virtual memory" field.  Fixes half of bnc #157022.
+
+-------------------------------------------------------------------
+Fri Mar 24 17:55:44 CET 2006 - jimmyk@suse.de
+
+- Fix for BNC #158516.
+
+-------------------------------------------------------------------
+Mon Mar 13 21:51:28 CET 2006 - rml@suse.de
+
+- Update gnome-system-monitor-sysinfo.patch to not display the
+  distribution release if there is no such release (e.g., on SUSE
+  Linux) 
+
+-------------------------------------------------------------------
+Thu Mar  2 17:53:41 CET 2006 - sbrabec@suse.cz
+
+- Added support for gnome-patch-translation.
+
+-------------------------------------------------------------------
+Tue Feb 28 15:25:33 CET 2006 - sbrabec@suse.cz
+
+- Use kdelibs3-doc in BuildRequires for meinproc (#153635#c14).
+
+-------------------------------------------------------------------
+Mon Feb 27 21:07:48 CET 2006 - jimmyk@suse.de
+
+- added system info tab (BNC #67255)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:52 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov 30 22:58:40 CET 2005 - gekker@suse.de
+
+- Update to version 2.12.2
+
+-------------------------------------------------------------------
+Thu Oct 13 18:46:33 CEST 2005 - gekker@suse.de
+
+- Update to version 2.12.1
+
+-------------------------------------------------------------------
+Tue Sep  6 02:01:20 CEST 2005 - gekker@suse.de
+
+- Update to version 2.12.0 (GNOME 2.12) 
+
+-------------------------------------------------------------------
+Tue Aug 23 18:04:34 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.92
+
+-------------------------------------------------------------------
+Mon Aug  8 13:58:42 CEST 2005 - rodrigo@suse.de
+
+- Update to 2.11.91
+
+-------------------------------------------------------------------
+Tue Aug  2 19:16:57 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.90 
+
+-------------------------------------------------------------------
+Fri Jul 22 23:04:59 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.5 
+
+-------------------------------------------------------------------
+Mon Jun 20 23:02:29 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.3 
+
+-------------------------------------------------------------------
+Wed Mar 16 07:39:33 CET 2005 - clahey@suse.de
+
+- Remove patch to remove icon.
+- Add patch to fix menu name.
+
+-------------------------------------------------------------------
+Wed Mar  9 22:10:58 CET 2005 - gekker@suse.de
+
+- Update to version 2.10.0 (GNOME 2.10). 
+
+-------------------------------------------------------------------
+Thu Mar  3 19:30:43 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.92
+- Removed dependency on libgnomesu 
+
+-------------------------------------------------------------------
+Fri Feb 11 04:07:11 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.91 
+
+-------------------------------------------------------------------
+Fri Feb  4 10:05:49 CET 2005 - hhetter@suse.de
+
+- updated to version 2.9.90
+
+-------------------------------------------------------------------
+Thu Nov 25 02:18:28 CET 2004 - ro@suse.de
+
+- added suse_update_desktop_file
+
+-------------------------------------------------------------------
+Fri Nov 19 16:51:58 CET 2004 - ro@suse.de
+
+- update to 2.8.0 (makes it build with recent gtk2)
+
+-------------------------------------------------------------------
+Tue Nov  2 17:25:35 CET 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Fri Aug 27 02:51:05 CEST 2004 - clahey@suse.de
+
+- Cache gnome-system-monitor help and show gnome-system-monitor in khelpcenter.
+
+-------------------------------------------------------------------
+Fri Apr 30 09:00:36 CEST 2004 - hhetter@suse.de
+
+- updated to 2.6.0 [GNOME2.6] 
+- added #neededforbuild perl-XML-Parser
+
+-------------------------------------------------------------------
+Wed Mar 17 11:16:37 CET 2004 - sbrabec@suse.cz
+
+- Fixed scrollkeeper calling conventions (#36215).
+
+-------------------------------------------------------------------
+Wed Mar 10 10:38:23 CET 2004 - sbrabec@suse.cz
+
+- Fixed gconf schemas installation (#33114).
+
+-------------------------------------------------------------------
+Fri Feb 20 15:49:16 CET 2004 - sbrabec@suse.cz
+
+- Fixed names of GNOME2 packages.
+
+-------------------------------------------------------------------
+Thu Feb 12 11:18:26 CET 2004 - hhetter@suse.de
+
+- gconf schema (de-)installation in %post and %postun 
+
+-------------------------------------------------------------------
+Sat Jan 10 18:17:32 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Sep 29 14:30:34 CEST 2003 - hhetter@suse.de
+
+- updated to version 2.4.0 [GNOME2.4] 
+
+-------------------------------------------------------------------
+Mon Jul 14 16:18:02 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Mon Jun 30 14:40:39 CEST 2003 - sbrabec@suse.cz
+
+- Provide and obsolete procman.
+
+-------------------------------------------------------------------
+Thu Jun 26 17:42:02 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.0.5.
+- Updated neededforbuild.
+- Use %find_lang.
+
+-------------------------------------------------------------------
+Mon Feb 10 10:44:30 CET 2003 - hhetter@suse.de
+
+- updated to version 2.0.4 [GNOME 2.2.0] 
+
+-------------------------------------------------------------------
+Tue Jan 14 16:37:44 CET 2003 - ro@suse.de
+
+- added expat to neededforbuild 
+
+-------------------------------------------------------------------
+Tue Oct 01 16:12:26 CEST 2002 - sbrabec@suse.cz
+
+- Added new package.
+

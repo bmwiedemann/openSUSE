@@ -1,0 +1,326 @@
+-------------------------------------------------------------------
+Wed Jun 12 09:47:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Always disable the sphinx module as it causes trouble whenever
+  we update Sphinx (like now to 2.0)
+
+-------------------------------------------------------------------
+Tue Nov 20 09:11:16 UTC 2018 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.4.9
+  * PHP7:
+    + Fix to build with upcoming PHP 7.3 release, which changes array_init()
+      to not return a value instead of always returning the constant SUCCESS.
+      We were checking this return value but no longer do.
+
+- Update to 1.4.8
+  * Perl:
+    + Wrap new STEM_SOME_FULL_POS constant.
+    + Add STEM_ALL_Z to qpstem export tag and POD docs.
+    + Fix Perl bindings documentation typos.
+  * Python:
+    + Fix RST formatting warning during build.
+  * Python3:
+    + Fix RST formatting warning during build.
+
+-------------------------------------------------------------------
+Thu Jul 26 14:03:27 UTC 2018 - alarrosa@suse.com
+
+- Update to 1.4.7
+  * see http://xapian.org/docs/xapian-bindings-1.4.7/NEWS
+
+-------------------------------------------------------------------
+Tue Jul  3 09:25:26 UTC 2018 - alarrosa@suse.com
+
+- Update to 1.4.6
+  * see http://xapian.org/docs/xapian-bindings-1.4.6/NEWS
+
+-------------------------------------------------------------------
+Thu Dec 14 10:47:34 UTC 2017 - alarrosa@suse.com
+
+- Update to 1.4.5
+  * see http://xapian.org/docs/xapian-bindings-1.4.5/NEWS
+
+-------------------------------------------------------------------
+Mon Sep 11 15:55:18 UTC 2017 - alarrosa@suse.com
+
+- Create a new php7-xapian package in Tumbleweed instead of using php5
+  which will be removed soon (boo#1058105)
+- Add fix-php7-directory.patch to install xapian.php to the right directory.
+- Disable creation of php bindings by default due to
+  https://trac.xapian.org/wiki/FAQ/PHP%20Bindings%20Package
+- To build the php bindings locally, use :
+  * osc build --with=php
+  or download the src.rpm file and use:
+  * rpmbuild --rebuild xapian-bindings-1.4.4-0.src.rpm -D "with_php 1"
+
+-------------------------------------------------------------------
+Fri Jun 30 15:56:06 UTC 2017 - alarrosa@suse.com
+
+- Update to 1.4.4
+  * see http://xapian.org/docs/xapian-bindings-1.4.4/NEWS
+- Rebase do-not-use-sphinx.diff
+
+-------------------------------------------------------------------
+Fri Jun 30 15:00:17 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from descriptions.
+- %packages need not be %if guarded (only their %files),
+  so trim that too.
+
+-------------------------------------------------------------------
+Mon Jun 26 10:00:17 UTC 2017 - tbechtold@suse.com
+
+- add Provides for python2-xapian
+
+-------------------------------------------------------------------
+Wed Feb  1 09:48:05 UTC 2017 - alarrosa@suse.com
+
+- Update to 1.4.3 
+  * see http://xapian.org/docs/xapian-bindings-1.4.3/NEWS
+- xapian-bindings 1.4.3 requires Python >= 2.6
+- Update to 1.4.2
+  * see http://xapian.org/docs/xapian-bindings-1.4.2/NEWS
+- Added BuildRequire python3-Sphinx
+- Drop automake.patch, which is not needed anymore
+- Added do-not-use-sphinx.diff to remove the need of python3-Sphinx 
+  on distributions that don't have it
+
+-------------------------------------------------------------------
+Tue Nov 22 13:15:37 UTC 2016 - bosim@opensuse.org
+
+- Python3 support
+- Added automake patch for building with python3 (github PR 126)
+
+-------------------------------------------------------------------
+Fri Nov 11 10:10:28 UTC 2016 - alarrosa@suse.com
+
+- Update to 1.4.1
+  * see http://xapian.org/docs/xapian-bindings-1.4.1/NEWS
+- Specify in BuildRequires that php >= 5.5 is needed .
+
+-------------------------------------------------------------------
+Sat Jul  9 06:29:24 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to 1.4.0
+  * see http://xapian.org/docs/xapian-bindings-1.4.0/NEWS
+  
+- Drop patch replaced-swig-zend-error-noreturn-flag.patch
+
+-------------------------------------------------------------------
+Wed Apr 13 07:09:20 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to 1.2.23
+  * see http://xapian.org/docs/xapian-bindings-1.2.23/NEWS
+
+-------------------------------------------------------------------
+Tue Jul 21 12:25:15 UTC 2015 - jengelh@inai.de
+
+- Remove unnecessary buildrequire on update-alternatives:
+  there are no scriptlets that make use of it.
+  Drop %clean, it too is unnecessary for OBS.
+
+-------------------------------------------------------------------
+Thu May 21 09:19:17 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to 1.2.21
+  * see http://xapian.org/docs/xapian-bindings-1.2.21/NEWS
+
+-------------------------------------------------------------------
+Thu Apr  2 10:41:05 UTC 2015 - dmueller@suse.com
+
+- make building of csharp bindings optional for architectures
+  that do not provide mono
+
+-------------------------------------------------------------------
+Thu Mar 12 07:33:29 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.2.20
+  * See http://xapian.org/docs/xapian-bindings-1.2.20/NEWS 
+
+-------------------------------------------------------------------
+Thu Feb 19 16:44:48 UTC 2015 - mpluskal@suse.com
+
+- Tiny spec file cleanups
+- Enable tests during build
+- Add gpg signature
+
+-------------------------------------------------------------------
+Tue Oct 21 12:24:10 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to version 1.2.19
+  ? http://xapian.org/docs/xapian-bindings-1.2.19/NEWS
+
+-------------------------------------------------------------------
+Wed Jan 29 22:21:26 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to version 1.2.17
+  * http://svn.xapian.org/*checkout*/tags/1.2.17/xapian-bindings/NEWS
+
+-------------------------------------------------------------------
+Wed Dec 18 13:29:26 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to version 1.2.16
+  * http://svn.xapian.org/*checkout*/tags/1.2.16/xapian-bindings/NEWS
+-------------------------------------------------------------------
+Thu May 30 17:39:26 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to version 1.2.15
+  * http://svn.xapian.org/*checkout*/tags/1.2.15/xapian-bindings/NEWS
+
+-------------------------------------------------------------------
+Tue Dec 25 06:55:45 UTC 2012 - mlin@suse.com
+
+- Added patch (replaced-swig-zend-error-noreturn-flag.patch)  that 
+  is replacing the -DSWIG_ZEND_ERROR_NORETURN=zend_error_noreturn 
+  flag to workaround a PHP bug on some platforms/architectures by 
+  compiling with -DSWIG_ZEND_ERROR_NORETURN=zend_error, for example 
+  no-return-in-nonvoid-function issue
+
+-------------------------------------------------------------------
+Fri Dec 21 10:24:58 UTC 2012 - mlin@suse.com
+
+- Update to version 1.2.12
+  * No changes since 1.2.11 except to bump the version - this release 
+    was made to fix an incorrect library version information update 
+    in xapian-core 1.2.11.
+ Perl:
+  * In generated C++ code, pass 0 instead of NULL for non-pointer 
+    parameter to av_fetch() (spotted due to GCC 4.7 warning).
+ PHP:
+  * Fix "make check" to work for PHP when building from a release 
+    tarball with srcdir != builddir.
+  * Work around "undefined symbol: zend_error_noreturn" error.
+ CSharp:
+  * Use -keyfile and -keycontainer options to the C# compiler, 
+    because it warns us to do this instead of setting them in 
+    AssemblyInfo.cs.
+  * Use diff's -c option when comparing the files SWIG generated 
+    against those we were expecting to get as the output should be 
+    easier to understand.
+  * Sort both the lists of expected and of found SWIG-generated 
+    sources with Perl, to avoid problems with locale-specific sort 
+    orders.
+ Java-SWIG:
+  * Remove now superfluous old check that SWIG generated at least the 
+    sources we want - we now check it generated *exactly* the sources 
+    we want.
+  * Use diff's -c option when comparing the files SWIG generated against 
+    those we were expecting to get as the output should be easier to 
+    understand.
+  * Sort both the lists of expected and of found SWIG-generated sources 
+    with Perl, to avoid problems with locale-specific sort orders.
+  * See http://svn.xapian.org/*checkout*/tags/1.2.12/xapian-bindings/NEWS
+
+-------------------------------------------------------------------
+Thu Dec 29 11:33:52 CET 2011 - dmueller@suse.de
+
+- update to 1.2.8:
+  * Wrap user-subclassable functor objects by allowing the user to pass a
+    Lua function where the functor object would be passed in the C++ API.
+  * Fix "PHP Notice:  Undefined variable: r in xapian.php".  (Fixes bug#576)
+  * The PHP bindings will now work again with a version of PHP built with ZTS
+    enabled (which is the default on Microsoft Windows).  This was broken by
+    the changes to support subclassing in PHP in the version of SWIG used since
+    1.2.6.
+  * Add a module docstring.  (Fixes bug #573)
+  * The python testsuite now checks for object leaks during each testcase.
+  * In test_matchingterms_iter, run the code we're testing for leaks twice, and
+    only check for leaks the second time to avoid falsely reporting a leak when
+    some cached value gets initialised under Python 2.5.
+  * Wrap optional prefix parameter to Database::allterms.
+
+-------------------------------------------------------------------
+Wed Sep 21 16:47:44 UTC 2011 - coolo@suse.com
+
+- remove %debug_package macro
+
+-------------------------------------------------------------------
+Tue Sep 13 09:29:40 UTC 2011 - prusnak@opensuse.org
+
+- updated to 1.2.7
+  
+  General:
+  * Add missing wrappers for Database::has_positions() and
+    TermIterator::positionlist_count(), and correct the return type of
+    Database::get_doclength() from double to Xapian::termcount.
+
+  CSharp:
+  * Fix iterator ++ and -- so that the reference to the object 
+    isn't released prematurely, which was causing an occasional 
+    crash if the garbage collection happened at just the wrong moment,
+  * Add test coverage for QueryParser.ParseQuery() with flags argument.
+  * Wrap Query::MatchAll and Query::MatchNothing. (ticket#158)
+
+  Java:
+  * SmokeTest.java: Fix == comparisons with strings to use equals().
+  * Add test that string passing is zero byte safe.
+  * Fix MyExpandDecider.accept() to really check the passed parameter.
+
+  Java-SWIG:
+  * Put the SWIG-generated Java bindings in package org.xapian.
+  * Wrap Query::MatchAll and Query::MatchNothing. (ticket#158)
+  * SmokeTest.java: Fix == comparisons with literal strings to 
+    use equals()
+  * Add test that string passing is zero byte safe.
+  * Fix MyExpandDecider.accept() to really check the passed parameter.
+  * Fix the compile JNI code to have a .jnilib extension on Mac OS X.
+  * Create an HTML documentation page based on java/README.
+  * Copy java examples from the hand-coded JNI ones.
+  * docs/examples/SimpleIndex.java: Update to use commit() rather 
+    than flush().
+  * Wrap Query::MatchAll and Query::MatchNothing. (ticket#158)
+  * Check that exactly the sources we expect are generated, and add 
+    some sources which were missing from the list.
+
+  Perl:
+  * Wrap MatchAll and MatchNothing for Perl (as 
+    Search::Xapian::Query::MatchAll and 
+    Search::Xapian::Query::MatchNothing).  (ticket#158)
+  * perl/t/termgenerator.t: Test TermIterator::index_text() with 
+    two arguments.
+  * perl/t/symbol-test.t: Fix to work when built against an installed
+    xapian-core.  (ticket#558)
+
+  PHP:
+  * Wrap MatchAll and MatchNothing for PHP as XapianQuery::MatchAll() and
+    XapianQuery::MatchNothing(). (ticket#158)
+
+  Ruby:
+  * Wrap MatchAll and MatchNothing for Ruby.  (ticket#158)
+
+-------------------------------------------------------------------
+Thu Jan 20 14:16:20 UTC 2011 - alex@rosedu.org
+
+- updated to 1.2.5
+
+-------------------------------------------------------------------
+Thu Jan 20 14:16:20 UTC 2011 - prusnak@opensuse.org
+
+- updated to 1.2.4
+
+-------------------------------------------------------------------
+Tue Nov 20 17:14:48 CET 2007 - mrueckert@suse.de
+
+- updated java build requires
+
+-------------------------------------------------------------------
+Tue Nov 20 13:59:09 CET 2007 - mrueckert@suse.de
+
+- fixed filelist
+
+-------------------------------------------------------------------
+Mon Nov 19 22:16:52 CET 2007 - mrueckert@suse.de
+
+- update to version 1.0.4
+
+-------------------------------------------------------------------
+Sun Jun 24 11:49:46 CEST 2007 - mrueckert@suse.de
+
+- update to version 1.0.1
+
+-------------------------------------------------------------------
+Sat Nov 11 05:45:59 CET 2006 - mrueckert@suse.de
+
+- initial package of version 0.9.9
+

@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Thu Aug 23 09:48:00 UTC 2018 - tchvatal@suse.com
+
+- Switch to singlespec
+- Version update to 0.9.8:
+  * Support py3
+
+-------------------------------------------------------------------
+Tue May  5 08:59:16 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.9.4:
+  * Get handlers from class object using getattr() for possible
+    inheritance (Cécile Tonglet)
+  * Fix 'check-pypy' by removing use of nonexistant target.
+    (masklinn)
+  * Use namedtuple for authorship tuple in
+    Commit.{author,committer}.(masklinn)
+- additional changes from version 0.9.3:
+  * Remove unused and untested helper single_plural, invert_dict,
+    invert_dictset, defines_to_dict and binary_stream.
+    (Jelmer Vernooij)
+  * Install NEWS and README files.
+- point the source URL to pypi
+- pass -n to setup macro: source archive is now named fastimport
+- remove documentation: not provided anymore by upstream
+
+-------------------------------------------------------------------
+Mon Jul  2 07:37:20 UTC 2012 - saschpe@suse.de
+
+- Only SLE-11 needs %pyrequires and there it is not noarch
+- Explicit dependency on Python >= 2.4 isn't needed, %py_requires does that
+  for SLE-11 (>2.6) and a more recent RPM does it automatically
+
+-------------------------------------------------------------------
+Wed Jun 27 11:26:03 UTC 2012 - jengelh@inai.de
+
+- Initial package (0.9.2) for build.opensuse.org

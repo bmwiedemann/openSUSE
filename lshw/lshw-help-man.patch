@@ -1,0 +1,43 @@
+From 33951733bb800321780444a178b969c212c65875 Mon Sep 17 00:00:00 2001
+From: Seeteena Thoufeek <s1seetee@linux.vnet.ibm.com>
+Date: Wed, 12 Jul 2017 11:00:43 +0530
+Subject: [PATCH] Update help message and man page
+
+lshw -dump option displays output on stdout as well as stores SQLite
+format data into a file. Lets update man page and help message to
+reflect this.
+
+Signed-off-by: Seeteena Thoufeek <s1seetee@linux.vnet.ibm.com>
+[Updated description - Vasant]
+Signed-off-by: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
+---
+ src/lshw.1  | 2 +-
+ src/lshw.cc | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/lshw.1 b/src/lshw.1
+index 43239da..79c3619 100644
+--- a/src/lshw.1
++++ b/src/lshw.1
+@@ -53,7 +53,7 @@ Outputs the device tree showing hardware paths, very much like the output of HP-
+ Outputs the device list showing bus information, detailing SCSI, USB, IDE and PCI addresses.
+ .TP
+ \fB-dump \fIfilename\fB\fR
+-Dump collected information into a file (SQLite database).
++Display output and dump collected information into a file (SQLite database).
+ .TP
+ \fB-class \fIclass\fB\fR
+ Only show the given class of hardware. \fIclass\fR can be found using \fBlshw -short\fR or \fBlshw -businfo\fR\&.
+diff --git a/src/lshw.cc b/src/lshw.cc
+index 5fc8ade..219a008 100644
+--- a/src/lshw.cc
++++ b/src/lshw.cc
+@@ -35,7 +35,7 @@ void usage(const char *progname)
+     fprintf(stderr, _("\t-X              use graphical interface\n"));
+   fprintf(stderr, _("\noptions can be\n"));
+ #ifdef SQLITE
+-  fprintf(stderr, _("\t-dump OUTFILE   save hardware tree to a file\n"));
++  fprintf(stderr, _("\t-dump filename  displays output and dump collected information into a file (SQLite database)\n"));
+ #endif
+   fprintf(stderr, _("\t-class CLASS    only show a certain class of hardware\n"));
+   fprintf(stderr, _("\t-C CLASS        same as '-class CLASS'\n"));

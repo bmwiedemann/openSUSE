@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:36:55 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat May 10 08:59:26 UTC 2014 - lazy.kent@opensuse.org
+
+- Add baselibs.conf as a source to build -32bit packages.
+
+-------------------------------------------------------------------
+Fri Apr  6 16:00:03 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.3.18:
+  + Added missing Result Type constant (*CurrentUri and
+    *EventOrigin)
+  + Now async functions fail instead of lingering indefinitely if
+    Zeitgeist isn't available
+
+-------------------------------------------------------------------
+Wed Mar 21 07:46:36 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.3.16:
+  + Update the list of MIME-type mappings.
+
+-------------------------------------------------------------------
+Wed Feb 15 09:29:45 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.3.14:
+  + Added new zeitgeist_log_get_default, zeitgeist_log_get_version
+    and zeitgeist_index_search_with_relevancies methods
+  + Updated ontology and mimetype mapping
+  + Added new origin property to ZeitgeistEvent and current_uri
+    property to ZeitgeistSubject
+  + Make sure Zeitgeist is restarted after it disappears from the
+    bus and a ZeitgeistLog method is called
+
+-------------------------------------------------------------------
+Thu Sep  8 16:43:47 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.3.12:
+  + Fix leaks.
+  + Fix unpacking of a gvariant in ZeitgeistDataSourceRegistry.
+
+-------------------------------------------------------------------
+Thu May  5 09:46:31 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.3.10:
+  + Reference count fix.
+  + Documentation fixes.
+- Changes from version 0.3.8:
+  + Correctly handle get/set for ZeitgeistLog:connected property.
+  + Update the zeitgeist-1.0.vapi.
+- Changes from version 0.3.6:
+  + Relicense under LGPLv2.1+.
+- Changes from version 0.3.4:
+  + Add new method zeitgeist_data_source_to_variant_full()
+  + Remove the gio module: the same functionality has been
+    implemented in zeitgeist-datahub.
+  + Various bug fixes.
+- Change License tag from LGPLv3 to LGPLv2.1+: libzeitgeist got
+  relicensed.
+- Drop --disable-module configure flag: there is no GIO module
+  anymore.
+
+-------------------------------------------------------------------
+Tue Apr 26 23:13:23 CEST 2011 - vuntz@opensuse.org
+
+- Improve summaries and descriptions.
+- Remove unneeded gtk-doc BuildRequires.
+- Replace zeitgeist Requires with a Recommends, and move it to
+  libzeitgeist-1_0-1.
+
+-------------------------------------------------------------------
+Wed Jan 12 14:31:38 CST 2011 - federico@novell.com
+
+- Split off a libzeitgeist-1_0-1 package for library versioning.
+
+-------------------------------------------------------------------
+Wed Jan 12 14:04:57 CST 2011 - federico@novell.com
+
+- Split off a -devel package to keep rpmlint happy.
+
+-------------------------------------------------------------------
+Tue Jan 11 16:17:56 CST 2011 - federico@novell.com
+
+- Initial packaging of libzeitgeist-0.3.2.tar.gz.  This is not split
+  into a library and a devel package, because I just want to get
+  something working.

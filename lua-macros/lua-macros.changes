@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue Jul 11 08:24:18 UTC 2017 - tchvatal@suse.com
+
+- Add lua_incdir macro to declare the lua includedir
+
+-------------------------------------------------------------------
+Mon Jul 10 11:26:37 UTC 2017 - tchvatal@suse.com
+
+- Split out from main lua packages to keep just one version for all

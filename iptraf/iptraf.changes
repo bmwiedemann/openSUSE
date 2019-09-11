@@ -1,0 +1,263 @@
+-------------------------------------------------------------------
+Wed Aug 12 11:56:36 UTC 2015 - jslaby@suse.com
+
+- add build-use-wide-version-of-lpanel-when-needed.patch (bnc#940207)
+
+-------------------------------------------------------------------
+Wed Sep 18 20:41:58 UTC 2013 - andreas.stieger@gmx.de
+
+- fix "Floating point exception" in tcplog_flowrate_msg(), adds
+  iptraf-ng-1.1.4-fix-Floating-point-exception-in-tcplog_flowra.patch
+  from Fedora [bnc#841156]
+
+-------------------------------------------------------------------
+Wed Aug  7 15:25:54 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.1.4
+* update all rates not only the visible ones
+* add 802.1ad / 802.1ah / QinQ ethertypes
+- Removed 0001-build-prefer-ncurses6-and-wide.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
+Thu Mar 28 19:45:48 UTC 2013 - jengelh@inai.de
+
+- Update to new git snapshot 1.1.3.1+git49
+* remove TokenRing and ISDN support
+* 802.1ad and QinQ VLAN handling
+* restore functionality of iptraf -B (bnc#812080)
+- Remove iptraf-ng-1.1.3.1-kernel-v3.5-kill-off-token-ring-support.patch
+  (merged upstream)
+- Add 0001-build-prefer-ncurses6-and-wide.patch
+- Depend on 3.1 headers (source uses ETH_P_QINQ1)
+
+-------------------------------------------------------------------
+Sun Oct  7 13:53:53 UTC 2012 - andreas.stieger@gmx.de
+
+- iptraf-ng-1.1.3.1-kernel-v3.5-kill-off-token-ring-support.patch
+  to remove TokenRing support which was removed in Linux 3.5
+- move to pristine upstream tarball
+
+-------------------------------------------------------------------
+Thu May 31 11:48:35 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.1.3.1
+* support SIT tunnels
+* fix checksumming for odd-sized IPv4 packets
+- iptraf-1.0.2-segfault.patch rendered obsolete by commit b3eec3f
+
+-------------------------------------------------------------------
+Thu May 10 03:53:20 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.1.2
+* New RFC1071-based IP checksum implementation
+* Various fixes for IPv6 port statistics and byte counting,
+  interfaces with long names, PPP handling
+* Make capturing on TUN interfaces work
+* Support GRE tunnels
+
+-------------------------------------------------------------------
+Thu Dec 15 11:15:30 UTC 2011 - puzel@suse.com
+
+- install /var/lib/iptraf-ng directory (bnc#736900)
+- fix executing rvnamed daemon (bnc#737032)
+ - add fix-calling-rvnamed.patch
+
+-------------------------------------------------------------------
+Fri Dec  2 16:22:57 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Sep  1 12:17:42 UTC 2011 - vcizek@suse.com
+
+- fixed segfault caused by off-by-one allocation error (bnc#711726) 
+
+-------------------------------------------------------------------
+Wed Apr 20 23:31:06 UTC 2011 - jengelh@medozas.de
+
+- Name the binary package iptraf-ng
+
+-------------------------------------------------------------------
+Mon Apr  4 11:15:56 UTC 2011 - jengelh@medozas.de
+
+- Run spec-beautifier
+
+-------------------------------------------------------------------
+Mon Apr  4 10:39:37 UTC 2011 - puzel@novell.com
+
+- switch to iptraf-ng (thanks jengelh@medozas.de) 
+- drop all patches (merged upstream)
+
+-------------------------------------------------------------------
+Sun Feb 14 00:04:52 CET 2010 - rguenther@suse.de
+
+- fix harmless buffer-overflow to fix build with GCC 4.5
+
+-------------------------------------------------------------------
+Wed Nov 11 15:12:11 CET 2009 - puzel@suse.cz
+
+- iptraf-3.0.0-fix-promisc-crash.patch (bnc#548485) 
+
+-------------------------------------------------------------------
+Mon Oct  6 15:20:54 CEST 2008 - prusnak@suse.cz
+
+- fixed wrong comparison of file descriptor (fd.patch) [bnc#431904]
+
+-------------------------------------------------------------------
+Thu Apr 10 11:30:48 CEST 2008 - prusnak@suse.cz
+
+- alter package after ncurses packaging change
+
+-------------------------------------------------------------------
+Thu Mar 29 17:47:08 CEST 2007 - rguenther@suse.de
+
+- add ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 28 11:34:15 CET 2006 - prusnak@suse.cz
+
+- fixed line drawing in console (lines.patch) [#223678]
+
+-------------------------------------------------------------------
+Wed Aug 30 10:45:23 CEST 2006 - lmichnovic@suse.cz
+
+- fixed uninitialized variable (uninitialized.patch) [#197715]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:40 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Nov 24 10:09:10 CET 2005 - pnemec@suse.cz
+
+- fix strict aliasing errors.
+- added patch -strict-aliasing.patch
+
+-------------------------------------------------------------------
+Wed Nov 23 16:43:54 CET 2005 - pnemec@suse.cz
+
+- updated to new version 3.0.0
+- fixed headers and support/Makefile to build
+
+-------------------------------------------------------------------
+Thu Sep  8 17:30:25 CEST 2005 - pnemec@suse.cz
+
+- fixed file permisions bug [#114849]
+
+-------------------------------------------------------------------
+Mon Aug 29 14:03:15 CEST 2005 - postadal@suse.cz
+
+- added support for ni, br, tap, dummy and vmnet devices
+  [#105545] (dev.diff)
+
+-------------------------------------------------------------------
+Fri Jun 17 16:38:36 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS in support/ too.
+
+-------------------------------------------------------------------
+Mon Jun 13 15:20:48 CEST 2005 - kukuk@suse.de
+
+- Avoid using kernel headers if there are glibc variants
+
+-------------------------------------------------------------------
+Wed Apr 13 09:55:07 CEST 2005 - arvin@suse.de
+
+- added support for modem device
+
+-------------------------------------------------------------------
+Tue Jan 18 15:37:04 CET 2005 - postadal@suse.cz
+
+- added support for dsl device [#49721, #49882]
+
+-------------------------------------------------------------------
+Thu Sep 30 17:25:50 CEST 2004 - postadal@suse.cz
+
+- allow normal user use iptraf if the s-bit is set [#46231] (euid-fix.diff)
+
+-------------------------------------------------------------------
+Fri Sep  3 11:36:35 CEST 2004 - kukuk@suse.de
+
+- Fix compiling with new glibc headers
+
+-------------------------------------------------------------------
+Tue Apr 20 14:55:19 CEST 2004 - postadal@suse.cz
+
+- set iptraf and rvnamed permission to 0755
+
+-------------------------------------------------------------------
+Sat Jan 10 21:46:29 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Jan 13 14:29:36 CET 2003 - postadal@suse.cz
+
+- updated to version 2.7.0
+  * added support for Token Ring, sbni long-range modem, Free s/WAN IPSec
+    logical, DVB (sm2*, sm3*, penta*), wireless LAN (wlan*, wvlan*) interfaces
+  * a lot of fixes
+
+-------------------------------------------------------------------
+Mon Dec 17 08:03:19 CET 2001 - cihlar@suse.cz
+
+- added /var/run/iptraf to package
+- fixed man pages
+
+-------------------------------------------------------------------
+Thu Nov 29 15:29:06 CET 2001 - cihlar@suse.cz
+
+- update to version 2.5.0:
+  * many fixes and improvements
+
+-------------------------------------------------------------------
+Wed Jul  4 08:37:29 CEST 2001 - cihlar@suse.cz
+
+- update to version 2.4.0
+- added BuildRoot
+- clean up spec file
+
+-------------------------------------------------------------------
+Thu Jan  4 10:27:34 MET 2001 - ray@suse.de
+
+- update to version 2.3.1
+
+-------------------------------------------------------------------
+Tue Feb 15 12:17:48 CET 2000 - aj@suse.de
+
+- Fix CFLAGS.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Aug 25 16:38:18 MEST 1999 - uli@suse.de
+
+- added CFLAGS for PPC
+
+-------------------------------------------------------------------
+Thu Jan 21 01:19:02 MET 1999 - ro@suse.de
+
+- no m486 on alpha
+
+-------------------------------------------------------------------
+Mon Sep 14 12:30:42 MEST 1998 - ro@suse.de
+
+- added directory /var/iptraf to filelist
+
+-------------------------------------------------------------------
+Thu Aug 20 11:11:27 MEST 1998 - ro@suse.de
+
+- fixed src/dirs.h (adapted to initial changes in Makefile)
+- and adapted the README.rvnamed
+
+-------------------------------------------------------------------
+Sat Jun 20 14:13:36 MEST 1998 - ray@suse.de
+
+- new package
+
+

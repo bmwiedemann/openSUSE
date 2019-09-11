@@ -1,0 +1,100 @@
+---
+ src/u_fonts.c    |   42 +++++++++++++++++++++++++++++++++++++++++-
+ src/u_fonts.h    |    2 ++
+ src/w_drawprim.c |   16 ++++++++++++++++
+ 3 files changed, 59 insertions(+), 1 deletion(-)
+
+--- src/u_fonts.c
++++ src/u_fonts.c	2018-05-07 07:26:22.753355835 +0000
+@@ -21,7 +21,9 @@
+ 
+ /* X11 font names */
+ 
+-struct _xfstruct x_fontinfo[NUM_FONTS] = {
++struct _xfstruct x_fontinfo[NUM_FONTS];
++
++struct _xfstruct x_adobe_fontinfo[NUM_FONTS] = {
+     {"-*-times-medium-r-normal--", (struct xfont*) NULL},
+     {"-*-times-medium-i-normal--", (struct xfont*) NULL},
+     {"-*-times-bold-r-normal--", (struct xfont*) NULL},
+@@ -59,6 +61,44 @@ struct _xfstruct x_fontinfo[NUM_FONTS] =
+     {"-*-itc zapf dingbats-*-*-*--", (struct xfont*) NULL},
+ };
+ 
++struct _xfstruct x_urw_fontinfo[NUM_FONTS] = {
++    {"-URW-*Nimbus Roman No9 L-medium-r-normal--", (struct xfont*) NULL},	/* Times-Roman */
++    {"-URW-*Nimbus Roman No9 L-medium-i-normal--", (struct xfont*) NULL},	/* Times-Italic */
++    {"-URW-*Nimbus Roman No9 L-bold-r-normal--", (struct xfont*) NULL},		/* Times-Bold */
++    {"-URW-*Nimbus Roman No9 L-bold-i-normal--", (struct xfont*) NULL},		/* Times-BoldItalic */
++    {"-URW-*Gothic L-medium-r-normal--", (struct xfont*) NULL},			/* AvantGarde-Book */
++    {"-URW-*Gothic L-medium-o-normal--", (struct xfont*) NULL},			/* AvantGarde-BookOblique */
++    {"-URW-*Gothic L-*bold-r-normal--", (struct xfont*) NULL},			/* AvantGarde-Demi */
++    {"-URW-*Gothic L-*bold-o-normal--", (struct xfont*) NULL},			/* AvantGarde-DemiOblique */
++    {"-URW-*Bookman L-medium-r-normal--", (struct xfont*) NULL},		/* Bookman-Light */
++    {"-URW-*Bookman L-medium-i-normal--", (struct xfont*) NULL},		/* Bookman-LightItalic */
++    {"-URW-*Bookman L-*bold-r-normal--", (struct xfont*) NULL},			/* Bookman-Demi */
++    {"-URW-*Bookman L-*bold-i-normal--", (struct xfont*) NULL},			/* Bookman-DemiItalic */
++    {"-URW-*Nimbus Mono L-medium-r-normal--", (struct xfont*) NULL},		/* Courier */
++    {"-URW-*Nimbus Mono L-medium-o-normal--", (struct xfont*) NULL},		/* Courier-Oblique */
++    {"-URW-*Nimbus Mono L-bold-r-normal--", (struct xfont*) NULL},		/* Courier-Bold */
++    {"-URW-*Nimbus Mono L-bold-o-normal--", (struct xfont*) NULL},		/* Courier-BoldOblique */
++    {"-URW-*Nimbus Sans L-medium-r-normal--", (struct xfont*) NULL},		/* Helvetica */
++    {"-URW-*Nimbus Sans L-medium-o-normal--", (struct xfont*) NULL},		/* Helvetica-Oblique */
++    {"-URW-*Nimbus Sans L-bold-r-normal--", (struct xfont*) NULL},		/* Helvetica-Bold */
++    {"-URW-*Nimbus Sans L-bold-o-normal--", (struct xfont*) NULL},		/* Helvetica-BoldOblique */
++    {"-URW-*Nimbus Sans L-medium-r-condensed--", (struct xfont*) NULL},		/* Helvetica-Narrow */
++    {"-URW-*Nimbus Sans L-medium-o-condensed--", (struct xfont*) NULL},		/* Helvetica-Narrow-Oblique */
++    {"-URW-*Nimbus Sans L-bold-r-condensed--", (struct xfont*) NULL},		/* Helvetica-Narrow-Bold */
++    {"-URW-*Nimbus Sans L-bold-o-condensed--", (struct xfont*) NULL},		/* Helvetica-Narrow-BoldOblique */
++    {"-URW-*Century Schoolbook L-medium-r-normal--", (struct xfont*) NULL},	/* NewCenturySchlbk-Roman */
++    {"-URW-*Century Schoolbook L-medium-i-normal--", (struct xfont*) NULL},	/* NewCenturySchlbk-Italic */
++    {"-URW-*Century Schoolbook L-bold-r-normal--", (struct xfont*) NULL},	/* NewCenturySchlbk-Bold */
++    {"-URW-*Century Schoolbook L-bold-i-normal--", (struct xfont*) NULL},	/* NewCenturySchlbk-BoldItalic */
++    {"-URW-*Palladio L-medium-r-normal--", (struct xfont*) NULL},		/* Palatino-Roman */
++    {"-URW-*Palladio L-medium-i-normal--", (struct xfont*) NULL},		/* Palatino-Italic */
++    {"-URW-*Palladio L-bold-r-normal--", (struct xfont*) NULL},			/* Palatino-Bold */
++    {"-URW-*Palladio L-bold-i-normal--", (struct xfont*) NULL},			/* Palatino-BoldItalic */
++    {"-URW-*Standard Symbols L-medium-r-normal--", (struct xfont*) NULL},	/* Symbol */
++    {"-URW-*Chancery L-medium-i-normal--", (struct xfont*) NULL},		/* ZapfChancery-MediumItalic */
++    {"-URW-*Dingbats-medium-r-normal--", (struct xfont*) NULL},			/* ZapfDingbats */
++};
++
+ /* Use the following font names for any font that doesn't exist in the table above.
+  * These come with the Open Group X distribution so they should be a common set.
+  *
+--- src/u_fonts.h
++++ src/u_fonts.h	2018-05-07 07:26:22.757355761 +0000
+@@ -60,6 +60,8 @@ extern int		psfontnum(char *font);
+ extern int		latexfontnum(char *font);
+ 
+ extern struct _xfstruct	x_fontinfo[], x_backup_fontinfo[];
++extern struct _xfstruct	x_urw_fontinfo[];
++extern struct _xfstruct	x_adobe_fontinfo[];
+ extern struct _fstruct	ps_fontinfo[];
+ extern struct _fstruct	latex_fontinfo[];
+ 
+--- src/w_drawprim.c
++++ src/w_drawprim.c	2018-05-07 07:26:22.757355761 +0000
+@@ -120,6 +120,22 @@ void init_font(void)
+ 		appres.buttonFont, appres.normalFont);
+ 	button_font = XLoadQueryFont(tool_d, appres.normalFont);
+     }
++
++    /*
++     * Check for URW fonts, if not found use Adobe fonts
++     */
++    strcpy(template,x_urw_fontinfo[0].template);
++    strcat(template,"0-0-*-*-*-*-");
++    if (strstr(template,"ymbol") == NULL && strstr(template,"ingbats") == NULL)
++	strcat(template,"ISO8859-*");
++    else
++	strcat(template,"*-*");
++    if ((fontlist = XListFonts(tool_d, template, 1, &count)) == (char**)0)
++	memcpy(&x_fontinfo, &x_adobe_fontinfo, sizeof(struct _xfstruct) * NUM_FONTS);
++    else
++	memcpy(&x_fontinfo, &x_urw_fontinfo, sizeof(struct _xfstruct) * NUM_FONTS);
++    XFreeFontNames(fontlist); 
++
+     /*
+      * Now initialize the font structure for the X fonts corresponding to the
+      * Postscript fonts for the canvas.	 OpenWindows can use any LaserWriter

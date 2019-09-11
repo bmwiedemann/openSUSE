@@ -1,0 +1,17 @@
+--- flatfile/Makefile.in
++++ flatfile/Makefile.in
+@@ -95,10 +95,10 @@
+ 	strip $(ALL)
+ 
+ install: all
+-	$(INSTALL) -d $(bindir)
+-	$(INSTALL) -d $(libdir)
+-	$(INSTALL) -s $(TARGETS) $(libdir)
+-	$(INSTALL) -s $(PROGRAMS:%=%$(EXEEXT)) $(bindir)
++	$(INSTALL) -d $(DESTDIR)$(bindir)
++	$(INSTALL) -d $(DESTDIR)$(libdir)
++	$(INSTALL) $(TARGETS) $(DESTDIR)$(libdir)
++	$(INSTALL) $(PROGRAMS:%=%$(EXEEXT)) $(DESTDIR)$(bindir)
+ 
+ .SUFFIXES:
+ .SUFFIXES: .c .cpp .lo .o .obj

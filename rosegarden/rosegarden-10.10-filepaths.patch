@@ -1,0 +1,28 @@
+Index: src/gui/widgets/FileDialog.cpp
+===================================================================
+--- src/gui/widgets/FileDialog.cpp.orig	2017-04-19 15:39:16.000000000 +0200
++++ src/gui/widgets/FileDialog.cpp	2017-04-21 18:31:36.613889673 +0200
+@@ -56,8 +56,8 @@ FileDialog::FileDialog(QWidget *parent,
+ #else
+     QString home = QDesktopServices::storageLocation(QDesktopServices::HomeLocation);
+ #endif
+-    QString examples = home + "/.local/share/rosegarden/examples";
+-    QString templates = home + "/.local/share/rosegarden/templates";
++    QString examples = "/usr/share/rosegarden/examples";
++    QString templates = "/usr/share/rosegarden/templates";
+     QString rosegarden = home + "/rosegarden";
+ 
+     RG_DEBUG  << "FileDialog::FileDialog(...)"
+Index: src/gui/studio/BankEditorDialog.cpp
+===================================================================
+--- src/gui/studio/BankEditorDialog.cpp.orig	2017-04-19 15:39:14.000000000 +0200
++++ src/gui/studio/BankEditorDialog.cpp	2017-04-21 18:31:36.613889673 +0200
+@@ -1553,7 +1553,7 @@ BankEditorDialog::slotImport()
+ #else
+     QString home = QUrl::fromLocalFile(QDesktopServices::storageLocation(QDesktopServices::HomeLocation)).path();
+ #endif
+-    QString deviceDir = home + "/.local/share/rosegarden/library";
++    QString deviceDir = "/usr/share/rosegarden/library";
+ 
+     QString url_str = FileDialog::getOpenFileName(this, tr("Import Banks from Device in File"), deviceDir,
+                       tr("Rosegarden Device files") + " (*.rgd *.RGD)" + ";;" +

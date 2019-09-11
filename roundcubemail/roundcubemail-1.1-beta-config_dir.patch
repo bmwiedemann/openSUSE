@@ -1,0 +1,12 @@
+diff -Naur roundcubemail-1.3.4.orig/program/include/iniset.php roundcubemail-1.3.4/program/include/iniset.php
+--- roundcubemail-1.3.4.orig/program/include/iniset.php	2018-01-14 14:00:51.000000000 +0100
++++ roundcubemail-1.3.4/program/include/iniset.php	2018-02-04 23:47:34.217834831 +0100
+@@ -29,7 +29,7 @@
+ }
+ 
+ if (!defined('RCMAIL_CONFIG_DIR')) {
+-    define('RCMAIL_CONFIG_DIR', INSTALL_PATH . 'config');
++    define('RCMAIL_CONFIG_DIR', '/etc/roundcubemail');
+ }
+ 
+ if (!defined('RCUBE_LOCALIZATION_DIR')) {

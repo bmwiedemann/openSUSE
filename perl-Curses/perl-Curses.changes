@@ -1,0 +1,240 @@
+-------------------------------------------------------------------
+Wed Sep 12 13:42:05 UTC 2018 - pmonrealgonzalez@suse.com
+
+- updated to 1.36 (Released August 14, 2016)
+   Fix the GNU Hurd thing from 1.35 by including the hints file in the
+   manifest.
+
+ New in 1.35 (Released July 11, 2016)
+   Added hints file for GNU Hurd ($OSNAME == 'gnu').  From Pino Toscano.
+
+ New in 1.34 (Released April 2, 2016)
+   Several bugs fixed in demo programs (which also function as the
+   documentation) for forms and menus and comments added explaining need to
+   keep Perl variables around to avoid invalid memory references.
+
+ New in 1.33 (Released October 3, 2015)
+   Package contains META files.
+
+- Cleaned with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Feb  6 13:13:01 UTC 2015 - coolo@suse.com
+
+- updated to 1.32
+   Makefile.PL: if /usr/include/ncurses/ncurses.h exists, use Ncurses regardless
+   of what the $guess_cfg table says for the OS at hand.  This fixes the former
+   hybrid approach which didn't work for a Solaris 11 system that has both
+   Ncurses and BSD curses.
+ 
+   Typographical error in documentation fixed.
+ 
+ New in 1.31 (Released April 26, 2014)
+ 
+   Fix compile failure with some Curses libraries, introduced in
+   1.29 - undefined KEY_CODE_YES.
+ 
+   Fix documentation: wide character functions exist back to Perl 5.6,
+   not 5.16.
+ 
+ New in 1.30 (Released April 19, 2014)
+ 
+   Fix build failure: Use older substitutes if Perl is too old to have
+   the 'utf8_to_uvchr_buf' function they use; don't include the wide character
+   functions if Perl is even too old to have the substitutes.  Broken in 1.29.
+ 
+   Fix "constant not provided by your vendor" message when you refer to a
+   function that does not exist in the Curses module.
+ 
+   Minor fixes to documentation of new wide character functions.
+ 
+   Fix warning about extra argument to c_setmevent .
+ 
+   Fix documentation for "not defined in your Curses library" errors.
+   (broken in 1.28).
+ 
+   Fix demo programs' recognition of "not defined in your Curses library"
+   errors (broken in 1.28).
+ 
+ New in 1.29 (Released April 6, 2014)
+ 
+   Add an alternate set of functions (getchar, ungetchar, getstring,
+   instring, addstring, insstring) providing a more Perl-like interface,
+   converting from and to Perl strings (instead of passing data to the C
+   library verbatim) and using wide character functions if available in the
+   underlying curses library.
+ 
+   Written by Edgar Fu201337, Mathematisches Institut der Uni Bonn,
+   <ef@math.uni-bonn.de>
+
+-------------------------------------------------------------------
+Fri Nov 18 13:37:20 UTC 2011 - coolo@suse.com
+
+- use original tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:03 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:38 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:31:37 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Tue Feb  9 11:39:25 UTC 2010 - coolo@novell.com
+
+- update to 1.28
+ *  Disable Curses::Var::STORE.  It doesn't work (doesn't even compile) with
+    newer Ncurses (due to updates to make Ncurses reentrant).  One can
+    re-enable it by defining ALLOW_VARS_STORE in c-config.h.
+
+ * Improve "not provided by your vendor" message.
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Feb 23 16:22:52 CET 2009 - anicka@suse.cz
+
+- update to 1.27 
+ * Extraneous .i and .s files in 1.26 removed.  'make clean' cleans
+   all .i and .s too.
+ * 'gen' directory is replaced by gen.tar file, so CPAN doesn't
+    index the stuff in there.  That directory is stuff for developing
+    the Curses package, not stuff for users.
+ * newterm() is available and putwin() and getwin() work in newer
+   Perl (with PerlIO). We now use PerlIO_findFile().
+
+-------------------------------------------------------------------
+Wed Sep 10 18:02:10 CEST 2008 - anicka@suse.cz
+
+- update to 1.24 
+ * Export KEY_RESIZE, KEY_EVENT.
+ * For Netbsd, allow both Netbsd and BSD guesses via CURSES_LIBTYPE,
+   and default to Ncurses.
+ * Add guess capability for Dragonfly.
+
+-------------------------------------------------------------------
+Mon Mar 10 15:22:27 CET 2008 - anicka@suse.cz
+
+- update to 1.23
+  * Fix crash of Makefile.PL on Windows.
+  * Don't undefine 'bool' macro in c-darwin hints file.
+  * Fix missing comment delimiter.
+
+-------------------------------------------------------------------
+Mon Nov 19 11:37:35 CET 2007 - anicka@suse.cz
+
+- update to 1.19
+- add -lpanel and -lmenu
+  * Use Ncursesw (Ncurses with wide character functions) instead of
+    Ncurses if available.
+  * Change all sv_isa() to sv_derived_from() so you can use 
+    subclasses.
+  * bugfixes, test fixes
+
+-------------------------------------------------------------------
+Thu Mar 29 14:13:11 CEST 2007 - rguenther@suse.de
+
+- add ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Sat Mar 10 21:58:05 CET 2007 - mmarek@suse.cz
+
+- link with ncursesw.so to make UTF8 output work
+
+-------------------------------------------------------------------
+Fri Jul 14 10:27:44 CEST 2006 - anicka@suse.cz
+
+- update to 1.14
+  * Make demo.form work on 64 bit machine.
+  * Add some narration to Makefile.PL to help with diagnosis.
+  * Move undef of 'instr' from individual hint files to Curses.c 
+    and add explanation.
+  * Some kind of build fix to get panels, forms, and menu functions 
+    to build.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug  1 13:24:42 CEST 2005 - cthiel@suse.de
+
+- update to version 1.12 
+
+-------------------------------------------------------------------
+Sat Jan 10 17:45:12 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 14:25:53 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Tue Jul 15 14:09:43 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Tue May 20 12:39:36 CEST 2003 - mjancar@suse.cz
+
+- remove unpackaged files
+
+-------------------------------------------------------------------
+Fri Aug  9 17:16:35 MEST 2002 - mls@suse.de
+
+- use sv_isa instead of Perl_sv_isa for threaded perl
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Fri Aug  3 15:23:14 CEST 2001 - rvasice@suse.cz
+
+- update to version 1.06
+- spec file cleanup
+
+-------------------------------------------------------------------
+Tue Nov 14 09:00:43 CET 2000 - cihlar@suse.cz
+
+- clean up spec file
+
+-------------------------------------------------------------------
+Thu Nov  2 17:47:35 CET 2000 - grimmer@suse.de
+
+- renamed from perl_cur to perl-Curses
+- spec file cleanups
+
+-------------------------------------------------------------------
+Tue Aug 22 09:37:30 CEST 2000 - cihlar@suse.cz
+
+- update to version 1.05
+- added BuildRoot
+- bzipped sources
+
+-------------------------------------------------------------------
+Thu Jan 20 12:18:59 CET 2000 - ro@suse.de
+
+- use macro for mandir 
+
+-------------------------------------------------------------------
+Mon Nov  8 17:39:06 CET 1999 - choeger@suse.de
+
+- first version
+

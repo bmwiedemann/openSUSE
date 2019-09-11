@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Fri Nov  2 17:28:31 UTC 2018 - trenn@suse.de
+
+- Fix build for Leap 42.3 (include missing header file)
+A fix_missing_include.patch
+- Fix build for i586
+A fix_long_int_i586_issue.patch
+- Remove thermal-conf.xml as done mainline and add it to the docs
+  directory. This is an example only.
+
+-------------------------------------------------------------------
+Mon Oct  1 08:13:40 UTC 2018 - egotthold@suse.com
+
+- Update to "Release 1.8"
+  * Support of KBL-G with discrete GPU
+  * Fast removal of any cooling action which was applied once
+    temperature is normal
+  * Android support
+  * Add Hot trip point, which when reached just calls "suspend"
+  * Adding new tag "DependsOn" which enable/disable trip based on some other trip
+  * Polling interval can be configured via thermal xml config
+  * Per trip PID control
+  * Simplify RAPL cooling device
+
+- Update to "Release 1.7.2"
+  * Workwround for platform with invalid thermal table
+  * Error printing for RAPL constraint sysfs read on failure
+  * thermal-conf.xml.auto  can be read from /etc/thermald, which allows user to
+    modify generated thermal-conf.xml from /var/run/thermald and copy to
+    /etc/termald
+
+-------------------------------------------------------------------
+Wed Dec 13 14:55:43 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.7.1:
+  * Removed dptfxtract binary as there is an issue in packaging
+    this with GPL source for distributions
+- Changes for version 1.7.0:
+  * Add GeminiLake
+  * Add dptfxtract tool, which converts DPTF tables to thermald
+    tables using best effort
+  * Changes to accommodate dptfxtract tool conversions
+  * Better facility to configure fan controls
+  * PID control optimization
+  * Fix powerlimit write errors because of bad FW settings of power
+    limits
+  * More restrictive compile options and warnings as errors
+  * Improve logging
+  * Android build fixes
+
+-------------------------------------------------------------------
+Mon Mar 27 14:00:09 UTC 2017 - fvogt@suse.com
+
+- Use the correct file for installation as module list (boo#1028596)
+- Update to version 1.6:
+  * Add Kabylake and missing Broadwell CPU model
+  * Removed deprecated modules
+  * Added passive trip between critical and max, to allow fan to take control first
+  * Fixed clash when multiple zones and trips controlling same cdev
+
+-------------------------------------------------------------------
+Wed Jan 11 08:18:17 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.5.4:
+  * Use Processor thermal device in lieu of CPU zone when present
+  * Haswell/Skylake PCH sensor
+  * Fix regression in LCD/Backlight path
+- Packaging cleanup:
+  - Run spec-cleaner
+  - Use pretty name for downloaded archive
+  - Drop not needed service
+  - Remove fedora conditionals
+
+-------------------------------------------------------------------
+Tue Mar 29 11:17:35 UTC 2016 - dvaleev@suse.com
+
+- Set exclusivearch to intel architectures 
+
+-------------------------------------------------------------------
+Tue Mar  8 13:26:49 UTC 2016 - fvogt@suse.com
+
+- Disable installation of upstart file
+
+-------------------------------------------------------------------
+Mon Mar  7 09:53:57 UTC 2016 - fvogt@suse.com
+
+- Remove implicit %configure parameters
+
+-------------------------------------------------------------------
+Mon Mar  7 08:17:11 UTC 2016 - fvogt@suse.com
+
+- Change URL from GitHub to the official page
+
+-------------------------------------------------------------------
+Sun Mar  6 21:31:00 CET 2016 - bosim@opensuse.org
+
+- Upgraded to upstream version 1.5.3
+
+-------------------------------------------------------------------
+Fri Nov  6 10:27:55 UTC 2015 - fvogt@suse.com
+
+- Disable _service and run manually
+
+-------------------------------------------------------------------
+Tue Nov  3 10:19:29 UTC 2015 - fvogt@suse.com
+
+- Initial commit
+- Branch from home:assmannst, fix various small issues
+

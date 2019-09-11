@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Sun May  6 08:27:29 UTC 2018 - mvetter@suse.com
+
+- Update to 0.6.1:
+  new features:
+  * sndio backend
+  bug fixes:
+  * Fix fftw_complex usage, drastically improving visualization
+  * better cleanup and exiting
+  * added a check to see if pulseaudio is running
+  * fixed bug preventing color in noncurses mode from working
+  * Fix build errors and warnings if not using ncurses
+  * Generally improved fifo input and raw output
+
+-------------------------------------------------------------------
+Mon Aug 28 13:02:45 UTC 2017 - mvetter@suse.com
+
+- Update to 0.6.0:
+  * Autosens of low values (dynamic range)
+  * Removed config parameter 'overshoot'
+  * Removed config parameter 'mode'
+  * New config parameter 'waves'
+  * Changed config parameter 'style' to 'channels' (was either 'mono' or 'stereo' anyway)
+  * Parameters 'integral' and 'gravity' are now in percentage
+
+-------------------------------------------------------------------
+Fri Aug 18 20:43:54 UTC 2017 - mvetter@suse.com
+
+- Update to 0.5.0:
+  new features:
+  * gradient
+  bugfixes:
+  * memory leak
+  * increased config reload speed
+  * raw output not goint to /dev/stdout
+
+-------------------------------------------------------------------
+Thu Apr 27 15:04:00 UTC 2017 - mvetter@suse.com
+
+- Update to 0.4.3:
+  new features:
+  * support for more colors in ncurses output.
+  bugfixes:
+  * fixed bug where sensing of low values was done even when no sound
+  * fixed bug in raw output bit format check
+  * add a check for too many bars >200
+- Remove because contained in new version:
+  * cava-remove-nested-functions.patch
+  * cava-font.patch
+
+-------------------------------------------------------------------
+Tue Mar 28 22:59:34 UTC 2017 - mvetter@suse.com
+
+- Add cava-font.patch:
+  Install cava.psf to have nice output on TTYs.
+
+-------------------------------------------------------------------
+Tue Mar 28 21:06:56 UTC 2017 - mvetter@suse.com
+
+- Add cava-remove-nested-functions.patch:
+  Remove nested functions to prevent OBS executable stack warning.
+
+-------------------------------------------------------------------
+Wed Mar 22 15:13:10 UTC 2017 - mvetter@suse.com
+
+- Get rid of unnecessary passing of prefix
+
+-------------------------------------------------------------------
+Thu Mar 16 19:51:21 UTC 2017 - mvetter@suse.com
+
+- It needs libiniparser from version 4 onwards
+
+-------------------------------------------------------------------
+Thu Mar 16 19:32:49 UTC 2017 - mvetter@suse.com
+
+- Update to 0.4.2:
+  * added auto pulseaudio source mode 
+  * pulsaudio is now default
+  * cava is now cavamp
+  * pushing 'r' now reloads audio
+  * Added console title
+  * added pulseadio support
+  * added confg script
+  * removed commanline argumets
+  * added optional config path
+  * added autosens feature
+  * added setting of bar width, bar spacing and frequency bandwidth to config file.
+  * autodetection of alsa loopback interface
+- Use proper group
+- Update description
+
+-------------------------------------------------------------------
+Tue Jul 28 08:38:11 UTC 2015 - mvetter@suse.com
+
+- Honor optflags
+
+-------------------------------------------------------------------
+Tue Jul 28 07:38:47 UTC 2015 - mvetter@suse.com
+
+- Creating initial package for version 0.3.2
+

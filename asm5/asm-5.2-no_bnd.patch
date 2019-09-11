@@ -1,0 +1,525 @@
+--- asm-5.2/archive/asm-all.xml	2012-05-13 16:05:25.000000000 +0200
++++ asm-5.2/archive/asm-all.xml	2018-06-13 11:14:52.138371718 +0200
+@@ -1,47 +1,28 @@
+-<!--
+- ! ASM: a very small and fast Java bytecode manipulation framework
+- ! Copyright (c) 2000-2011 INRIA, France Telecom
+- ! All rights reserved.
+- !
+- ! Redistribution and use in source and binary forms, with or without
+- ! modification, are permitted provided that the following conditions
+- ! are met:
+- ! 1. Redistributions of source code must retain the above copyright
+- !    notice, this list of conditions and the following disclaimer.
+- ! 2. Redistributions in binary form must reproduce the above copyright
+- !    notice, this list of conditions and the following disclaimer in the
+- !    documentation and/or other materials provided with the distribution.
+- ! 3. Neither the name of the copyright holders nor the names of its
+- !    contributors may be used to endorse or promote products derived from
+- !    this software without specific prior written permission.
+- !
+- ! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+- ! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- ! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- ! ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+- ! LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+- ! CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+- ! SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+- ! INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+- ! CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+- ! ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+- ! THE POSSIBILITY OF SUCH DAMAGE.
+--->
+-
+ <project name="asm-all" default="dist">
+   
+   <target name="dist" depends="build-jar,build-snapshot"/>
+ 
+   <target name="build-jar">
+     <mkdir dir="${out.dist.lib}/all"/>
+-    <taskdef resource="aQute/bnd/ant/taskdef.properties" classpath="${config}/biz.aQute.bnd.jar"/>
+-    <bnd
+-            classpath="${out.build}"
+-            eclipse="true"
+-            failok="false"
+-            exceptions="true"
+-            files="archive/asm-all.bnd"
+-            output="${out.dist.lib}/all/${ant.project.name}-${product.artifact}.jar"/>
++    <jar jarfile="${out.dist.lib}/all/${ant.project.name}-${product.artifact}.jar"
++         basedir="${out.build}">
++      <include name="org/objectweb/asm/**/*.class"/>
++      <exclude name="org/objectweb/asm/optimizer/*.class"/>
++      <manifest>
++        <attribute name="Implementation-Title" value="ASM all classes"/>
++        <attribute name="Implementation-Version" value="${product.artifact}"/> 
++        <attribute name="Implementation-Vendor" value="France Telecom R&amp;D"/>
++
++        <attribute name="Bundle-ManifestVersion" value="2"/>
++        <attribute name="Bundle-Name"      value="ASM all classes"/>
++        <attribute name="Bundle-Vendor"    value="France Telecom R&amp;D"/>
++        <attribute name="Bundle-Version"   value="${product.artifact}"/>
++        <attribute name="Bundle-DocURL"    value="http://asm.objectweb.org"/>
++        <attribute name="Bundle-SymbolicName" value="org.objectweb.asm.all"/>
++        <attribute name="Export-Package" value="org.objectweb.asm;version=${product.artifact},org.objectweb.asm.signature;version=${product.artifact},org.objectweb.asm.commons;version=${product.artifact},org.objectweb.asm.tree;version=${product.artifact},org.objectweb.asm.tree.analysis;version=${product.artifact},org.objectweb.asm.util;version=${product.artifact},org.objectweb.asm.xml;version=${product.artifact}"/>
++        <attribute name="Bundle-RequiredExecutionEnvironment" value="J2SE-1.3"/>
++      </manifest>
++    </jar>
+ 
+     <copy file="${archive}/asm-all.pom" toFile="${out.dist.lib}/all/${ant.project.name}-${product.artifact}.pom"/>
+     <replace file="${out.dist.lib}/all/${ant.project.name}-${product.artifact}.pom" token="@product.name@" value="${ant.project.name}"/>
+--- asm-5.2/archive/asm-analysis.xml	2012-05-13 16:05:25.000000000 +0200
++++ asm-5.2/archive/asm-analysis.xml	2018-06-13 11:14:52.138371718 +0200
+@@ -1,46 +1,17 @@
+-<!--
+- ! ASM: a very small and fast Java bytecode manipulation framework
+- ! Copyright (c) 2000-2011 INRIA, France Telecom
+- ! All rights reserved.
+- !
+- ! Redistribution and use in source and binary forms, with or without
+- ! modification, are permitted provided that the following conditions
+- ! are met:
+- ! 1. Redistributions of source code must retain the above copyright
+- !    notice, this list of conditions and the following disclaimer.
+- ! 2. Redistributions in binary form must reproduce the above copyright
+- !    notice, this list of conditions and the following disclaimer in the
+- !    documentation and/or other materials provided with the distribution.
+- ! 3. Neither the name of the copyright holders nor the names of its
+- !    contributors may be used to endorse or promote products derived from
+- !    this software without specific prior written permission.
+- !
+- ! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+- ! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- ! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- ! ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+- ! LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+- ! CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+- ! SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+- ! INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+- ! CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+- ! ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+- ! THE POSSIBILITY OF SUCH DAMAGE.
+--->
+-
+ <project name="asm-analysis" default="dist">
+ 
+   <target name="dist" depends="build-jar,build-snapshot"/>
+ 
+   <target name="build-jar">
+-    <taskdef resource="aQute/bnd/ant/taskdef.properties" classpath="${config}/biz.aQute.bnd.jar"/>
+-    <bnd
+-            classpath="${out.build}"
+-            eclipse="true"
+-            failok="false"
+-            exceptions="true"
+-            files="archive/asm-analysis.bnd"
+-            output="${out.dist.lib}/${ant.project.name}-${product.artifact}.jar"/>
++    <jar jarfile="${out.dist.lib}/${ant.project.name}-${product.artifact}.jar"
++         basedir="${out.build}">
++      <include name="org/objectweb/asm/tree/analysis/*.class"/>
++      <manifest>
++        <attribute name="Implementation-Title" value="ASM static code analysis framework"/>
++        <attribute name="Implementation-Version" value="${product.artifact}"/> 
++        <attribute name="Implementation-Vendor" value="France Telecom R&amp;D"/>
++      </manifest>
++    </jar>
+ 
+     <copy file="${archive}/asm-analysis.pom" toFile="${out.dist.lib}/${ant.project.name}-${product.artifact}.pom"/>
+     <replace file="${out.dist.lib}/${ant.project.name}-${product.artifact}.pom" token="@product.name@" value="${ant.project.name}"/>
+--- asm-5.2/archive/asm-commons.xml	2012-05-13 16:05:25.000000000 +0200
++++ asm-5.2/archive/asm-commons.xml	2018-06-13 11:14:52.138371718 +0200
+@@ -1,46 +1,17 @@
+-<!--
+- ! ASM: a very small and fast Java bytecode manipulation framework
+- ! Copyright (c) 2000-2011 INRIA, France Telecom
+- ! All rights reserved.
+- !
+- ! Redistribution and use in source and binary forms, with or without
+- ! modification, are permitted provided that the following conditions
+- ! are met:
+- ! 1. Redistributions of source code must retain the above copyright
+- !    notice, this list of conditions and the following disclaimer.
+- ! 2. Redistributions in binary form must reproduce the above copyright
+- !    notice, this list of conditions and the following disclaimer in the
+- !    documentation and/or other materials provided with the distribution.
+- ! 3. Neither the name of the copyright holders nor the names of its
+- !    contributors may be used to endorse or promote products derived from
+- !    this software without specific prior written permission.
+- !
+- ! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+- ! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- ! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- ! ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+- ! LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+- ! CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+- ! SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+- ! INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+- ! CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+- ! ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+- ! THE POSSIBILITY OF SUCH DAMAGE.
+--->
+-
+ <project name="asm-commons" default="dist">
+ 
+   <target name="dist" depends="build-jar,build-snapshot"/>
+ 
+   <target name="build-jar">
+-    <taskdef resource="aQute/bnd/ant/taskdef.properties" classpath="${config}/biz.aQute.bnd.jar"/>
+-    <bnd
+-            classpath="${out.build}"
+-            eclipse="true"
+-            failok="false"
+-            exceptions="true"
+-            files="archive/asm-commons.bnd"
+-            output="${out.dist.lib}/${ant.project.name}-${product.artifact}.jar"/>
++    <jar jarfile="${out.dist.lib}/${ant.project.name}-${product.artifact}.jar"
++         basedir="${out.build}">
++      <include name="org/objectweb/asm/commons/*.class"/>
++      <manifest>
++        <attribute name="Implementation-Title" value="ASM commons"/>
++        <attribute name="Implementation-Version" value="${product.artifact}"/> 
++        <attribute name="Implementation-Vendor" value="France Telecom R&amp;D"/>
++      </manifest>
++    </jar>
+ 
+     <copy file="${archive}/asm-commons.pom" toFile="${out.dist.lib}/${ant.project.name}-${product.artifact}.pom"/>
+     <replace file="${out.dist.lib}/${ant.project.name}-${product.artifact}.pom" token="@product.name@" value="${ant.project.name}"/>
+--- asm-5.2/archive/asm-debug-all.xml	2012-05-13 16:05:25.000000000 +0200
++++ asm-5.2/archive/asm-debug-all.xml	2018-06-13 11:14:52.138371718 +0200
+@@ -1,47 +1,28 @@
+-<!--
+- ! ASM: a very small and fast Java bytecode manipulation framework
+- ! Copyright (c) 2000-2011 INRIA, France Telecom
+- ! All rights reserved.
+- !
+- ! Redistribution and use in source and binary forms, with or without
+- ! modification, are permitted provided that the following conditions
+- ! are met:
+- ! 1. Redistributions of source code must retain the above copyright
+- !    notice, this list of conditions and the following disclaimer.
+- ! 2. Redistributions in binary form must reproduce the above copyright
+- !    notice, this list of conditions and the following disclaimer in the
+- !    documentation and/or other materials provided with the distribution.
+- ! 3. Neither the name of the copyright holders nor the names of its
+- !    contributors may be used to endorse or promote products derived from
+- !    this software without specific prior written permission.
+- !
+- ! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+- ! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- ! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- ! ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+- ! LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+- ! CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+- ! SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+- ! INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+- ! CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+- ! ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+- ! THE POSSIBILITY OF SUCH DAMAGE.
+--->
+-
+ <project name="asm-debug-all" default="dist">
+   
+   <target name="dist" depends="build-jar,build-snapshot"/>
+ 
+   <target name="build-jar">
+     <mkdir dir="${out.dist.lib}/all"/>
+-    <taskdef resource="aQute/bnd/ant/taskdef.properties" classpath="${config}/biz.aQute.bnd.jar"/>
+-    <bnd
+-      classpath="${out.build}/tmp"
+-      eclipse="true"
+-      failok="false"
+-      exceptions="true"
+-      files="archive/asm-debug-all.bnd"
+-      output="${out.dist.lib}/all/${ant.project.name}-${product.artifact}.jar"/>
++    <jar jarfile="${out.dist.lib}/all/${ant.project.name}-${product.artifact}.jar"
++         basedir="${out.build}/tmp">
++      <include name="org/objectweb/asm/**/*.class"/>
++      <exclude name="org/objectweb/asm/optimizer/*.class"/>
++      <manifest>
++        <attribute name="Implementation-Title" value="ASM all classes with debug info"/>
++        <attribute name="Implementation-Version" value="${product.artifact}"/> 
++        <attribute name="Implementation-Vendor" value="France Telecom R&amp;D"/>
++
++        <attribute name="Bundle-ManifestVersion" value="2"/>
++        <attribute name="Bundle-Name"      value="ASM all classes with debug info"/>
++        <attribute name="Bundle-Vendor"    value="France Telecom R&amp;D"/>
++        <attribute name="Bundle-Version"   value="${product.artifact}"/>
++        <attribute name="Bundle-DocURL"    value="http://asm.objectweb.org"/>
++        <attribute name="Bundle-SymbolicName" value="org.objectweb.asm.all"/>
++        <attribute name="Export-Package" value="org.objectweb.asm;version=${product.artifact},org.objectweb.asm.signature;version=${product.artifact},org.objectweb.asm.commons;version=${product.artifact},org.objectweb.asm.tree;version=${product.artifact},org.objectweb.asm.tree.analysis;version=${product.artifact},org.objectweb.asm.util;version=${product.artifact},org.objectweb.asm.xml;version=${product.artifact}"/>
++        <attribute name="Bundle-RequiredExecutionEnvironment" value="J2SE-1.3"/>
++      </manifest>
++    </jar>
+ 
+     <copy file="${archive}/asm-debug-all.pom" toFile="${out.dist.lib}/all/${ant.project.name}-${product.artifact}.pom"/>
+     <replace file="${out.dist.lib}/all/${ant.project.name}-${product.artifact}.pom" token="@product.name@" value="${ant.project.name}"/>
+--- asm-5.2/archive/asm-parent.xml	2012-05-13 14:41:31.000000000 +0200
++++ asm-5.2/archive/asm-parent.xml	2018-06-13 11:14:52.138371718 +0200
+@@ -1,33 +1,3 @@
+-<!--
+- ! ASM: a very small and fast Java bytecode manipulation framework
+- ! Copyright (c) 2000-2011 INRIA, France Telecom
+- ! All rights reserved.
+- !
+- ! Redistribution and use in source and binary forms, with or without
+- ! modification, are permitted provided that the following conditions
+- ! are met:
+- ! 1. Redistributions of source code must retain the above copyright
+- !    notice, this list of conditions and the following disclaimer.
+- ! 2. Redistributions in binary form must reproduce the above copyright
+- !    notice, this list of conditions and the following disclaimer in the
+- !    documentation and/or other materials provided with the distribution.
+- ! 3. Neither the name of the copyright holders nor the names of its
+- !    contributors may be used to endorse or promote products derived from
+- !    this software without specific prior written permission.
+- !
+- ! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+- ! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- ! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- ! ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+- ! LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+- ! CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+- ! SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+- ! INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+- ! CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+- ! ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+- ! THE POSSIBILITY OF SUCH DAMAGE.
+--->
+-
+ <project name="asm-parent" default="dist">
+   
+   <target name="dist" depends="build-jar,build-snapshot"/>
+--- asm-5.2/archive/asm-tree.xml	2012-05-13 16:05:25.000000000 +0200
++++ asm-5.2/archive/asm-tree.xml	2018-06-13 11:14:52.138371718 +0200
+@@ -1,46 +1,17 @@
+-<!--
+- ! ASM: a very small and fast Java bytecode manipulation framework
+- ! Copyright (c) 2000-2011 INRIA, France Telecom
+- ! All rights reserved.
+- !
+- ! Redistribution and use in source and binary forms, with or without
+- ! modification, are permitted provided that the following conditions
+- ! are met:
+- ! 1. Redistributions of source code must retain the above copyright
+- !    notice, this list of conditions and the following disclaimer.
+- ! 2. Redistributions in binary form must reproduce the above copyright
+- !    notice, this list of conditions and the following disclaimer in the
+- !    documentation and/or other materials provided with the distribution.
+- ! 3. Neither the name of the copyright holders nor the names of its
+- !    contributors may be used to endorse or promote products derived from
+- !    this software without specific prior written permission.
+- !
+- ! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+- ! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- ! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- ! ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+- ! LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+- ! CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+- ! SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+- ! INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+- ! CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+- ! ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+- ! THE POSSIBILITY OF SUCH DAMAGE.
+--->
+-
+ <project name="asm-tree" default="dist">
+ 
+   <target name="dist" depends="build-jar,build-snapshot"/>
+ 
+   <target name="build-jar">
+-    <taskdef resource="aQute/bnd/ant/taskdef.properties" classpath="${config}/biz.aQute.bnd.jar"/>
+-    <bnd
+-            classpath="${out.build}"
+-            eclipse="true"
+-            failok="false"
+-            exceptions="true"
+-            files="archive/asm-tree.bnd"
+-            output="${out.dist.lib}/${ant.project.name}-${product.artifact}.jar"/>
++    <jar jarfile="${out.dist.lib}/${ant.project.name}-${product.artifact}.jar"
++         basedir="${out.build}">
++      <include name="org/objectweb/asm/tree/*.class"/>
++      <manifest>
++        <attribute name="Implementation-Title" value="ASM Tree class visitor"/>
++        <attribute name="Implementation-Version" value="${product.artifact}"/> 
++        <attribute name="Implementation-Vendor" value="France Telecom R&amp;D"/>
++      </manifest>
++    </jar>
+ 
+     <copy file="${archive}/asm-tree.pom" toFile="${out.dist.lib}/${ant.project.name}-${product.artifact}.pom"/>
+     <replace file="${out.dist.lib}/${ant.project.name}-${product.artifact}.pom" token="@product.name@" value="${ant.project.name}"/>
+--- asm-5.2/archive/asm-util.xml	2012-05-13 16:05:25.000000000 +0200
++++ asm-5.2/archive/asm-util.xml	2018-06-13 11:14:52.138371718 +0200
+@@ -1,46 +1,17 @@
+-<!--
+- ! ASM: a very small and fast Java bytecode manipulation framework
+- ! Copyright (c) 2000-2011 INRIA, France Telecom
+- ! All rights reserved.
+- !
+- ! Redistribution and use in source and binary forms, with or without
+- ! modification, are permitted provided that the following conditions
+- ! are met:
+- ! 1. Redistributions of source code must retain the above copyright
+- !    notice, this list of conditions and the following disclaimer.
+- ! 2. Redistributions in binary form must reproduce the above copyright
+- !    notice, this list of conditions and the following disclaimer in the
+- !    documentation and/or other materials provided with the distribution.
+- ! 3. Neither the name of the copyright holders nor the names of its
+- !    contributors may be used to endorse or promote products derived from
+- !    this software without specific prior written permission.
+- !
+- ! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+- ! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- ! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- ! ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+- ! LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+- ! CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+- ! SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+- ! INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+- ! CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+- ! ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+- ! THE POSSIBILITY OF SUCH DAMAGE.
+--->
+-
+ <project name="asm-util" default="dist">
+ 
+   <target name="dist" depends="build-jar,build-snapshot"/>
+ 
+   <target name="build-jar">
+-    <taskdef resource="aQute/bnd/ant/taskdef.properties" classpath="${config}/biz.aQute.bnd.jar"/>
+-    <bnd
+-            classpath="${out.build}"
+-            eclipse="true"
+-            failok="false"
+-            exceptions="true"
+-            files="archive/asm-util.bnd"
+-            output="${out.dist.lib}/${ant.project.name}-${product.artifact}.jar"/>
++    <jar jarfile="${out.dist.lib}/${ant.project.name}-${product.artifact}.jar"
++         basedir="${out.build}">
++      <include name="org/objectweb/asm/util/**/*.class"/>
++      <manifest>
++        <attribute name="Implementation-Title" value="ASM Utilities"/>
++        <attribute name="Implementation-Version" value="${product.artifact}"/> 
++        <attribute name="Implementation-Vendor" value="France Telecom R&amp;D"/>
++      </manifest>
++    </jar>
+ 
+     <copy file="${archive}/asm-util.pom" toFile="${out.dist.lib}/${ant.project.name}-${product.artifact}.pom"/>
+     <replace file="${out.dist.lib}/${ant.project.name}-${product.artifact}.pom" token="@product.name@" value="${ant.project.name}"/>
+--- asm-5.2/archive/asm.xml	2012-05-13 16:05:25.000000000 +0200
++++ asm-5.2/archive/asm.xml	2018-06-13 11:14:52.138371718 +0200
+@@ -1,46 +1,18 @@
+-<!--
+- ! ASM: a very small and fast Java bytecode manipulation framework
+- ! Copyright (c) 2000-2011 INRIA, France Telecom
+- ! All rights reserved.
+- !
+- ! Redistribution and use in source and binary forms, with or without
+- ! modification, are permitted provided that the following conditions
+- ! are met:
+- ! 1. Redistributions of source code must retain the above copyright
+- !    notice, this list of conditions and the following disclaimer.
+- ! 2. Redistributions in binary form must reproduce the above copyright
+- !    notice, this list of conditions and the following disclaimer in the
+- !    documentation and/or other materials provided with the distribution.
+- ! 3. Neither the name of the copyright holders nor the names of its
+- !    contributors may be used to endorse or promote products derived from
+- !    this software without specific prior written permission.
+- !
+- ! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+- ! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- ! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- ! ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+- ! LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+- ! CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+- ! SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+- ! INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+- ! CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+- ! ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+- ! THE POSSIBILITY OF SUCH DAMAGE.
+--->
+-
+ <project name="asm" default="dist">
+   
+   <target name="dist" depends="build-jar,build-snapshot"/>
+ 
+   <target name="build-jar">
+-    <taskdef resource="aQute/bnd/ant/taskdef.properties" classpath="${config}/biz.aQute.bnd.jar"/>
+-    <bnd
+-            classpath="${out.build}"
+-            eclipse="true"
+-            failok="false"
+-            exceptions="true"
+-            files="archive/asm.bnd"
+-            output="${out.dist.lib}/${ant.project.name}-${product.artifact}.jar"/>
++    <jar jarfile="${out.dist.lib}/${ant.project.name}-${product.artifact}.jar"
++         basedir="${out.build}">
++      <include name="org/objectweb/asm/*.class"/>
++      <include name="org/objectweb/asm/signature/*.class"/>
++      <manifest>
++        <attribute name="Implementation-Title" value="ASM"/>
++        <attribute name="Implementation-Version" value="${product.artifact}"/> 
++        <attribute name="Implementation-Vendor" value="France Telecom R&amp;D"/>
++      </manifest>
++    </jar>
+ 
+     <copy file="${archive}/asm.pom" toFile="${out.dist.lib}/${ant.project.name}-${product.artifact}.pom"/>
+     <replace file="${out.dist.lib}/${ant.project.name}-${product.artifact}.pom" token="@product.name@" value="${ant.project.name}"/>
+--- asm-5.2/archive/asm-xml.xml	2012-05-13 16:05:25.000000000 +0200
++++ asm-5.2/archive/asm-xml.xml	2018-06-13 11:14:52.138371718 +0200
+@@ -1,46 +1,19 @@
+-<!--
+- ! ASM: a very small and fast Java bytecode manipulation framework
+- ! Copyright (c) 2000-2011 INRIA, France Telecom
+- ! All rights reserved.
+- !
+- ! Redistribution and use in source and binary forms, with or without
+- ! modification, are permitted provided that the following conditions
+- ! are met:
+- ! 1. Redistributions of source code must retain the above copyright
+- !    notice, this list of conditions and the following disclaimer.
+- ! 2. Redistributions in binary form must reproduce the above copyright
+- !    notice, this list of conditions and the following disclaimer in the
+- !    documentation and/or other materials provided with the distribution.
+- ! 3. Neither the name of the copyright holders nor the names of its
+- !    contributors may be used to endorse or promote products derived from
+- !    this software without specific prior written permission.
+- !
+- ! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+- ! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- ! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- ! ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+- ! LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+- ! CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+- ! SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+- ! INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+- ! CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+- ! ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+- ! THE POSSIBILITY OF SUCH DAMAGE.
+--->
+-
+ <project name="asm-xml" default="dist">
+ 
+   <target name="dist" depends="build-jar,build-snapshot"/>
+ 
+   <target name="build-jar">
+-    <taskdef resource="aQute/bnd/ant/taskdef.properties" classpath="${config}/biz.aQute.bnd.jar"/>
+-    <bnd
+-            classpath="${out.build}"
+-            eclipse="true"
+-            failok="false"
+-            exceptions="true"
+-            files="archive/asm-xml.bnd"
+-            output="${out.dist.lib}/${ant.project.name}-${product.artifact}.jar"/>
++    <jar jarfile="${out.dist.lib}/${ant.project.name}-${product.artifact}.jar"
++         basedir="${out.build}">
++      <include name="org/objectweb/asm/xml/*.class"/>
++      <manifest>
++        <attribute name="Implementation-Title" value="ASM XML classes"/>
++        <attribute name="Implementation-Version" value="${product.artifact}"/> 
++        <attribute name="Implementation-Vendor" value="Eugene Kuleshov"/>
++        <attribute name="Class-path" value="asm-${product.artifact}.jar asm-util-${product.artifact}.jar asm-attrs-${product.artifact}.jar"/>
++        <attribute name="Main-class" value="org.objectweb.asm.xml.Processor"/>
++      </manifest>
++    </jar>
+ 
+     <copy file="${archive}/asm-xml.pom" toFile="${out.dist.lib}/${ant.project.name}-${product.artifact}.pom"/>
+     <replace file="${out.dist.lib}/${ant.project.name}-${product.artifact}.pom" token="@product.name@" value="${ant.project.name}"/>

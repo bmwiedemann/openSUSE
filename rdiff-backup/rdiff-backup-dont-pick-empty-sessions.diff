@@ -1,0 +1,30 @@
+Subject: Don't pick empty sessions
+From: Hans-Peter Jansen <hpj@urpla.net>
+
+Without this patch, rdiff-backup will also take empty sessions
+(in other words: sessions without any diffs/changes) for operations
+like --remove-older-than xB into account, which defeats the purpose
+of limiting the number of backups in the first place. In fact, for 
+being asked to keep the last 20 backups, it has removed _all_ usable
+backups for me as those changes were done a while back..
+
+Since restore selection is not limited to an exact time argument,
+this change doesn't result in additional restore issues. Having said
+this, be careful in providing the restore timestamp: e.g. supplying 
+the wrong year will happily apply all intermediate diffs after that
+date (been there, done that, waited 36 hours :| ).. The good news is:
+it finally succeeded, and the VM was still usable.
+
+Index: b/rdiff_backup/restore.py
+===================================================================
+--- a/rdiff_backup/restore.py
++++ b/rdiff_backup/restore.py
+@@ -148,8 +148,6 @@ class MirrorStruct:
+ 		else: d = {cls._mirror_time: None}
+ 		if not rp or not rp.index: rp = Globals.rbdir.append("increments")
+ 		for inc in get_inclist(rp): d[inc.getinctime()] = None
+-		for inc in get_inclist(Globals.rbdir.append("mirror_metadata")):
+-			d[inc.getinctime()] = None
+ 		return_list = d.keys()
+ 		return_list.sort()
+ 		return return_list

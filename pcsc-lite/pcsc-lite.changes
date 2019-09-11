@@ -1,0 +1,1046 @@
+-------------------------------------------------------------------
+Fri Apr 26 11:17:53 UTC 2019 - mvetter@suse.com
+
+- bsc#1130588: Require shadow instead of old pwdutils
+
+-------------------------------------------------------------------
+Tue Apr  2 08:28:59 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Updated to version 1.8.25
+  * Fix a socket issue when pcscd is used inside LXC container
+  * pcsc-spy: always provide a total time of execution
+  * Fix resource leak if SCardEstablishContext() fails
+  * Fix realloc(3) error handling (possible memory leak)
+  * Remove usage of function chmod(2) to use fchmod(2) (fix race condition)
+
+-------------------------------------------------------------------
+Sat Feb  2 11:16:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Sat Oct 13 21:03:54 UTC 2018 - wr@rosenauer.org
+
+- Updated to version 1.8.24
+  * SCardGetStatusChange(): Fix a rare race condition
+  * SCardReleaseContext(): do not release a lock owned by another context
+  * SCardReconnect(): suspend card auto power off
+  * Allow "=" in serial driver filenames
+  * Add the thread id in the pcscd log lines
+  * pcsc-spy: correctly handle incomplete log file
+  * Simclist: avoid to divide by zero in list_findpos()
+  * Some other minor improvements
+
+-------------------------------------------------------------------
+Mon Sep  3 14:49:29 UTC 2018 - wr@rosenauer.org
+
+- extended sysconfig template to include
+  PCSCLITE_FILTER_IGNORE_READER_NAMES env variable which is used
+  by pcscd to ignore certain readers
+  (patch by Eric Garreau)
+
+-------------------------------------------------------------------
+Fri Mar  2 20:42:09 CET 2018 - sbrabec@suse.com
+
+- Use python3 (bsc#1082129, pcsc-lite-python3.patch).
+
+-------------------------------------------------------------------
+Mon Jan  1 11:11:20 UTC 2018 - wr@rosenauer.org
+
+- Updated to version 1.8.23
+  * use libsystemd instead sd-daemon.{c,h}
+  * spy: add support SCardStatus() with NULL pcbAtrLen
+  * Some other minor improvements
+- remove --auto-exit from service start even if we have
+  socket activation in place
+  (using it as a lightweight approach to unconditional service
+  enablement (reference boo#1063983 and to help workaround boo#1063985)
+
+-------------------------------------------------------------------
+Mon Dec 11 13:37:09 UTC 2017 - dimstar@opensuse.org
+
+- Rename local defines USER/GROUP to PKG_USER/PKG_GROUP: the
+  variable GROUP (call caps) has been claimed by RPM 4.14.
+
+-------------------------------------------------------------------
+Thu Nov 23 13:52:37 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Sat Jun 17 20:52:24 UTC 2017 - wr@rosenauer.org
+
+- Updated to version 1.8.22
+  * SCardCancel() was broken in 1.8.21. The call was blocking.
+  * Enable use of info level logging for pcscd using -i/--info
+
+-------------------------------------------------------------------
+Mon May 22 05:46:15 UTC 2017 - wr@rosenauer.org
+
+- Updated to version 1.8.21
+  * SCardCancel():
+    - fix a race condition bug
+    - fix a possible use after free
+    - improve Doxygen documentation
+  * SCardGetStatusChange(): fix a race condition when a reader is removed
+  * SCardDisconnect(): fix status update for SCARD_UNPOWER_CARD
+  * pcsc_stringify_error(): use Thread-local storage
+  * pcsc_stringify_error() now returns a const char *
+  * SCardControl() may return SCARD_E_INSUFFICIENT_BUFFER when
+    pbRecvBuffer is not big enough to receive the card response.
+  * Fix compilation error with GCC 4.9
+  * UnitaryTests: add support of Python 3
+  * pcsc-spy: add support of Python 3
+  * Some other minor improvements
+
+-------------------------------------------------------------------
+Fri Dec 30 18:26:46 UTC 2016 - wr@rosenauer.org
+
+- Updated to version 1.8.20
+  * Fix a crash and potential security issue in pcscd (bsc#1017902,
+    CVE-2016-10109, CWE-415, CWE-416)
+
+-------------------------------------------------------------------
+Fri Dec  9 15:22:14 UTC 2016 - wr@rosenauer.org
+
+- Updated to version 1.8.19:
+  * SCardGetStatusChange(): Fix a (rare) race condition
+  * Doxygen updates
+  * pcsc-spy:
+     - fix display of execution time
+     - log the thread number in the results
+  * Some other minor improvements
+
+-------------------------------------------------------------------
+Thu Sep  8 10:38:46 UTC 2016 - tchvatal@suse.com
+
+- Version update to 1.8.18:
+  * SCardDisconnect(): much faster with SCARD_UNPOWER_CARD
+  * SCardConnect(): Fix a possible duplicated hCard context
+  * Fix compilation on FreeBSD
+  * Fix compilation on Solaris
+  * Some other minor improvements
+
+-------------------------------------------------------------------
+Thu Sep  8 10:36:07 UTC 2016 - tchvatal@suse.com
+
+- Obsolete the conditionals for sle11 as it does not build there and
+  ends unresolvable anyway
+- Remove the presets magic after discussion with standa as new macros
+  actually work around this correctly
+
+-------------------------------------------------------------------
+Mon May 30 06:34:15 UTC 2016 - wr@rosenauer.org
+
+- Updated to version 1.8.17
+  * Fix SCardEndTransaction() issue with a SCARD_SHARE_EXCLUSIVE connection
+  * Fix an issue when used with systemd (problem in signal handler)
+  * SCardGetAttrib(): set pcbAttrLen when buffer is too small
+  * Some other minor improvements
+
+-------------------------------------------------------------------
+Mon Mar 21 12:00:03 UTC 2016 - wr@rosenauer.org
+
+- Updated to version 1.8.16
+  * SCardCancel() was not correctly handled
+    When a SCardGetStatusChange() was cancelled then a next PC/SC
+    call after the SCardGetStatusChange() may fail with a strange
+    error code if the event waited in SCardGetStatusChange() occurs.
+  * Doxygen: fix different documentation issues
+  * SCARD_SCOPE_GLOBAL is now defined in a public header (even if
+    never used)
+  * Enable Trace and Profile features using compiler flags and
+    without modifying the source code
+  * Some other minor improvements and bug corrections
+
+-------------------------------------------------------------------
+Sat Dec 26 12:30:27 UTC 2015 - wr@rosenauer.org
+
+- Updated to version 1.8.15
+  * Add support of remove and/or customize PC/SC reader names using
+    PCSCLITE_FILTER_IGNORE_READER_NAMES and
+    PCSCLITE_FILTER_EXTEND_READER_NAMES
+  * Some other minor improvements and bug corrections
+
+-------------------------------------------------------------------
+Thu Oct  1 18:23:03 CEST 2015 - sbrabec@suse.com
+
+- Don't enable polkit for 13.1 and SLE12. There are no policy
+  defaults defined yet (bsc#941721#c7).
+
+-------------------------------------------------------------------
+Wed Aug  5 14:00:49 UTC 2015 - wr@rosenauer.org
+
+- Updated to version 1.8.14
+  * Threading: lock the PC/SC context in a safe way
+  * Threading: lock the card context in a safe way
+  * SCardGetStatusChange(): fix card movement rare bug
+  * Use asprintf(3) instead of strlcat(3) and strlcpy(3)
+  * Allow to use pcscd in a remote session (polkit issue)
+  * Some other minor improvements and bug corrections
+
+-------------------------------------------------------------------
+Tue Mar 10 08:41:26 UTC 2015 - tchvatal@suse.com
+
+- Cleanup with the spec-cleaner
+- Reduce some conditionals
+- Fix few rpmlint warnings
+- Add Requires on libpcs1 for main package wrt bnc#782368
+
+-------------------------------------------------------------------
+Fri Nov 14 09:18:56 UTC 2014 - dimstar@opensuse.org
+
+- No longer perform gpg validation; osc source_validator does it
+  implicit:
+  + Drop gpg-offline BuildRequires.
+  + No longer execute gpg_verify.
+
+-------------------------------------------------------------------
+Sat Nov  8 10:06:29 UTC 2014 - wr@rosenauer.org
+
+- Updated to version 1.8.13
+  * fix a systemd + libudev hotplug bug introduced in version 1.8.12
+    The list of readers was not (yet) available just after the start
+    of pcscd
+  * Make the license more 3-clause BSD like
+  * Fix a rare race condition in the (non default) libusb hotplug
+  * Some other minor improvements and bug corrections
+- use a few more conditionals for recent systemd changes
+
+-------------------------------------------------------------------
+Thu Oct 30 20:54:55 CET 2014 - sbrabec@suse.cz
+
+- Fix systemd integration and socket activation (boo#900115):
+  * fix quoting in systemd-service.patch
+  * add missing systemd service preset
+- Drop obsolete upgrade protection in %pre.
+
+-------------------------------------------------------------------
+Wed Oct 29 21:00:59 UTC 2014 - wr@rosenauer.org
+
+- fixed sysconfig fillup
+
+-------------------------------------------------------------------
+Wed Sep 24 14:20:37 UTC 2014 - wr@rosenauer.org
+
+- Updated to version 1.8.12
+  * make hotplug using libudev (default) more robust
+  * add ReiserFS file system support (for configuration files)
+  * add musl libC support (increase the thread stack)
+  * Some other minor improvements and bug corrections
+
+-------------------------------------------------------------------
+Mon Aug 18 13:18:18 UTC 2014 - fcrozat@suse.com
+
+- Add obsoletes/provides to baselibs.conf.
+
+-------------------------------------------------------------------
+Fri May 23 09:18:33 UTC 2014 - wr@rosenauer.org
+
+- BuildRequire gcc explicitely (bnc#879608)
+- enable polkit for 13.2 and above
+
+-------------------------------------------------------------------
+Tue Apr 22 13:55:53 UTC 2014 - wr@rosenauer.org
+
+- removed rc script from 13.1 and above
+- do not use polkit for now
+
+-------------------------------------------------------------------
+Sat Feb 15 20:52:47 UTC 2014 - wr@rosenauer.org
+
+- Updated to version 1.8.11
+  * Add polkit support. See doc/README.polkit
+  * /etc/reader.conf: CHANNELID and DEVICENAME are both optional but
+    not at the same time
+  * Some other minor improvements and bug corrections
+
+-------------------------------------------------------------------
+Sun Dec  1 18:23:59 UTC 2013 - wr@rosenauer.org
+
+- remove dependency on sysvinit(syslog) starting with 13.1
+
+-------------------------------------------------------------------
+Sun Oct 20 16:38:24 UTC 2013 - wr@rosenauer.org
+
+- Updated to version 1.8.10
+  This version is a bug fix for the version 1.8.9:
+  new symbol log_msg was exported by the client library libpcsclite.so.1.
+  This symbol is NOT part of the WinSCard API and should not be
+  exported. It was a bug and needed to be fixed soon to avoid problems
+  in PC/SC applications (like symbol conflict).
+
+-------------------------------------------------------------------
+Fri Oct 18 10:20:10 UTC 2013 - wr@rosenauer.org
+
+- Updated to version 1.8.9
+  * SCardEndTransaction(): Return an error if is called with no
+    corresponding SCardBeginTransaction()
+  * SCardGetAttrib(): Add support of SCARD_ATTR_DEVICE_SYSTEM_NAME
+  * SCardGetAttrib(): Fix bug in SCARD_ATTR_DEVICE_FRIENDLY_NAME
+  * SCardBeginTransaction() was not correctly releasing a mutex when
+    the hCard handle was invalidated. The problem was that
+    SCardGetStatusChange() was blocked because SCardBeginTransaction()
+    had not released the context mutex.
+  * PCSC/reader.h: Use C99 flexible array member
+    The structures PIN_MODIFY_STRUCTURE and PIN_VERIFY_STRUCTURE now
+    use a C99 flexible array member when available for abData field.
+    uint8_t abData[];
+  * Add support of --reader-name-no-serial and --reader-name-no-interface
+    It is now possible to NOT add the USB serial number of the reader
+    using --reader-name-no-serial
+    It is now possible to NOT add the CCID interface name of the reader
+    using --reader-name-no-interface
+  * Add support of serialconfdir pkg-config variable
+    It is now possible to use pkg-config to get the directory used by
+    pcscd to fetch serial drivers configurations.
+    $ pkg-config libpcsclite --variable=serialconfdir
+    /etc/reader.conf.d
+  * pcsc-spy: Try to display the thread in the order they appear in the log
+  * pcsc-spy: Add SCARD_ATTR_DEVICE_SYSTEM_NAME
+  * Check the Info.plist file is (a minimum) correct
+  * Update PROTOCOL_VERSION_MINOR from 2 to 3
+    We broke the API between version 1.8.3 and 1.8.4 by changing the
+    value of MAX_READERNAME. This change should have been made before
+    releasing version 1.8.4 to make mix of versions clearly non working
+    instead of failing with strange errors.
+  * hotplug_libudev.c: Fix a memory leak in case of error
+  * Fix OpenBSD 5.2 compilation regarding dlopen
+  * correctly manage thread safe multi-slot readers
+  * Do not use pthread_atfork() any more (fix problem on FreeBSD)
+  * fix memory leaks.
+    This was not really a problem unless you embedd pcscd in another
+    process and do init/deinit pcscd without exiting the process (as
+    maybe used on Android or iOS).
+  * pcscd.8 manpage: add documentation for --max-thread,
+    --max-card-handle-per-thread, --max-card-handle-per-reader,
+    --force-reader-polling, --error, --critical and --color
+  * Some other minor improvements and bug corrections
+
+-------------------------------------------------------------------
+Wed Jan 16 18:05:38 UTC 2013 - wr@rosenauer.org
+
+- Updated to version 1.8.8
+  * /etc/reader.conf: handle FRIENDLYNAME with no " delimiters
+    (serial readers)
+  * Info.plist: Correctly handle reader names containing & (USB readers)
+
+-------------------------------------------------------------------
+Wed Jan  9 19:20:31 CET 2013 - sbrabec@suse.cz
+
+- Verify GPG signature.
+- Fixes for SLE10.
+
+-------------------------------------------------------------------
+Mon Jan  7 19:44:56 CET 2013 - sbrabec@suse.cz
+
+- Fix path to nologin in useradd (bnc#796242).
+
+-------------------------------------------------------------------
+Fri Nov 30 08:34:00 UTC 2012 - wr@rosenauer.org
+
+- Updated to version 1.8.7
+  * Fix a problem when a reader is unplugged (and the reader is
+    still in use)
+
+-------------------------------------------------------------------
+Thu Nov 15 08:44:18 UTC 2012 - aj@suse.de
+
+- Fix useradd/groupadd invocation: -o is useless without -u and newer
+  versions of pwdutils/shadowutils fail on this now.
+
+-------------------------------------------------------------------
+Fri Aug 31 16:17:47 UTC 2012 - wr@rosenauer.org
+
+- Updated to version 1.8.6
+  * Fix a problem when only serial drivers are used
+    (no hotplug/USB driver)
+  * increase log buffer size from 160 to 2048. Some "long" log
+    lines where truncated.
+  * Fix redirection of stdin, stdout and stderr to /dev/null when
+    pcscd is started as a daemon (default)
+  * Some other minor improvements and bug corrections
+
+-------------------------------------------------------------------
+Sat Aug  4 16:02:37 UTC 2012 - wr@rosenauer.org
+
+- Updated to version 1.8.5
+  * Fix crash when a reader is unplugged while pcscd is in the
+    middle of a PC/SC function
+  * SCardBeginTransaction(): fix a bug introduced in version 1.8.4
+    related to sharing
+  * Some other minor improvements and bug corrections
+
+-------------------------------------------------------------------
+Fri Jun 29 06:54:29 UTC 2012 - wr@rosenauer.org
+
+- Updated to version 1.8.4
+  * Add [ and ] in the list of accepted characters for a reader
+    name
+  * truncates the reader name if it is too long instead of
+    rejecting the reader
+  * The restriction to have to call SCardEstablishContext() in each
+    thread has been removed. Threads could now share a PC/SC
+    context.
+  * Update IFDHandler API Doxygen regarding the "libusb-1.0" naming
+    scheme
+  * Some other minor improvements and bug corrections
+
+-------------------------------------------------------------------
+Fri Mar 30 17:54:49 UTC 2012 - wr@rosenauer.org
+
+- Updated to version 1.8.3
+  * ignore directories and hidden (.*) files when parsing a
+    configuration directory (like /etc/reader.conf.d/)
+  * fix a bug in PC/SC spy tool when loading of the real library
+    fails
+  * add
+      PCSCv2_PART10_PROPERTY_dwMaxAPDUDataSize,
+      PCSCv2_PART10_PROPERTY_wIdVendor,
+      PCSCv2_PART10_PROPERTY_wIdProduct
+    from PC/SC v2 part 10 release 2.02.09
+  * Some other minor improvements and bug corrections
+
+-------------------------------------------------------------------
+Thu Jan 19 12:38:48 UTC 2012 - wr@rosenauer.org
+
+- Updated to version 1.8.2
+  * rename pcsc-spy.py to pcsc-spy
+  * pcsc-spy.1 manpage
+  * fix a bug with a multi-slot reader
+  * Info.plist parser: avoid a buffer read overflow in &amp;
+    management
+- moved internal changelogs to devel package
+
+-------------------------------------------------------------------
+Wed Dec  7 19:34:17 CET 2011 - sbrabec@suse.cz
+
+- Move libpcsclite.so file to the main package (bnc#732911).
+
+-------------------------------------------------------------------
+Fri Nov 25 19:54:19 UTC 2011 - wr@rosenauer.org
+
+- Updated to version 1.8.1
+  * added missing files in source archive
+
+-------------------------------------------------------------------
+Sat Nov 19 18:25:31 UTC 2011 - wr@rosenauer.org
+
+- Updated to version 1.8.0:
+  * PC/SC spy tool
+  * Support systemd socket activation (the auto start of pcscd
+    from the library has been removed. Use systemd instead)
+  * SCardGetStatusChange(): check all the readers are already known
+    and return SCARD_E_UNKNOWN_READER if a reader name is not
+    present.
+  * SCardEstablishContext(): Invalidate all the handles in the son
+    after a fork
+  * Add define of FEATURE_EXECUTE_PACE from PCSC v2 Part 10
+    Amendment 1 2011-06-03
+  * Fix some memory leaks repoted by Coverity
+  * Some other minor improvements and bug corrections
+- enabled usage of systemd init for 12.1 and newer
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Aug 22 08:27:55 UTC 2011 - bruno@ioda-net.ch
+
+- Readd if structure to support older versions like evergreen & SLES 11
+
+-------------------------------------------------------------------
+Sun Aug 21 12:48:11 UTC 2011 - bruno@ioda-net.ch
+
+- Fixed runlevel, hal, and /var/lock/subsys
+
+-------------------------------------------------------------------
+Thu Jun 23 17:10:58 UTC 2011 - wr@rosenauer.org
+
+- Updated to version 1.7.4
+  * fix regression in 1.7.3: T=1 cards were not working
+
+-------------------------------------------------------------------
+Wed Jun 22 09:55:51 UTC 2011 - wr@rosenauer.org
+
+- Updated to version 1.7.3:
+  * hotplug libudev: support libudev >= 171
+  * hotplug libusb: Fix a memory leak
+  * pcscd: exit immediately in case of SIGTERM
+    (Closes Debian bug #620305 "pcscd slows down shutdown/restart")
+  * Send logs to stdout instead of stderr
+  * Add command line option -T, --color: force use of colored logs
+  * Define g_rgSCardT?Pci as const structures to be more Windows like
+  * log at level PCSC_LOG_DEBUG instead of PCSC_LOG_ERROR to avoid
+    filling the system log file
+  * Remove the deprecated define FEATURE_MCT_READERDIRECT
+    (replaced by FEATURE_MCT_READER_DIRECT)
+  * some other minor improvements and bug corrections
+
+-------------------------------------------------------------------
+Fri Jun 10 09:49:04 UTC 2011 - wr@rosenauer.org
+
+- allow the automatic power off feature
+
+-------------------------------------------------------------------
+Wed May 18 06:42:02 UTC 2011 - wr@rosenauer.org
+
+- cleanup spec file and requires
+- moved libpcsclite1.so back to devel package
+
+-------------------------------------------------------------------
+Tue May  3 20:15:49 UTC 2011 - wr@rosenauer.org
+
+- make startup more robust by checking status files (bnc#686674)
+
+-------------------------------------------------------------------
+Mon May  2 22:26:56 UTC 2011 - wr@rosenauer.org
+
+- disable auto power off/on feature
+
+-------------------------------------------------------------------
+Tue Apr  5 09:37:24 UTC 2011 - wr@rosenauer.org
+
+- Updated to version 1.7.2:
+  * use libudev only on Linux and libusb elsewhere
+  * Try to use a (CCID) class driver if a specific driver fails
+    to use the reader.
+  * add support of multi-interfaces readers with libusb
+  * fix a problem with a multi-slots reader
+  * some other minor improvements and bug corrections
+- cosmetic changes to init script output
+
+-------------------------------------------------------------------
+Mon Mar  7 14:44:11 UTC 2011 - coolo@novell.com
+
+- fix syslog not being present in runlevel 4
+
+-------------------------------------------------------------------
+Mon Jan 10 19:36:08 CET 2011 - sbrabec@suse.cz
+
+- Updated to version 1.6.6:
+  * code and behavior improvements
+  * many fixes
+  * uses libusb-1.0
+  * two security fixes (bnc#609317, CVE-2010-0407,
+    bnc#661000, CVE-2010-4531)
+  * for more see ChangeLog
+- Disabled HAL support.
+- Create dedicated UID and GID "scard".
+
+-------------------------------------------------------------------
+Tue Dec 15 01:39:25 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Thu Aug  6 18:38:30 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 1.5.3:
+  * add the reader interface name if provided by the device
+  * SCardTransmit(): return SCARD_E_UNSUPPORTED_FEATURE if
+    SCARD_PROTOCOL_RAW is requested by unsupported
+  * SCardConnect() and SCardReconnect(): set dwActiveProtocol to
+    SCARD_PROTOCOL_UNDEFINED if SCARD_SHARE_DIRECT is used (conform
+    to MSDN).
+  * SCardControl(): correctly check for buffer overflow.
+  * SCardGetStatusChange() works again.
+  * detect buffer overflows if pcscd if used by a rogue client
+  * force access rights on /var/run/pcscd to be sure it can be used
+    by a libpcsclite client without privileges
+  * create the PCSCLITE_EVENTS_DIR directory with the sticky bit so
+    only root or the owner of the event files can remove them
+  * if RFAddReader() fails with the libhal scheme then we try with
+    the (old) libusb scheme.
+  * give a higher priority to a specific driver over the CCID Class
+    driver.
+  * some other minor improvements and bug corrections
+- Fixed baselibs.conf.
+
+-------------------------------------------------------------------
+Thu Jun  4 14:28:02 CEST 2009 - sbrabec@suse.cz
+
+- Fixed permissions of /var/run/pcscd (bnc#466211).
+
+-------------------------------------------------------------------
+Wed May 27 17:17:37 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 1.5.3:
+  * SCardEstablishContext(): check we do not reuse an already
+    allocated hContext
+  * pcsclite.h: add missing SCARD_E_* and SCARD_W_* return code.
+  * reader.h: add PIN_PROPERTIES_STRUCTURE structure and
+    FEATURE_IFD_PIN_PROPERTIES
+  * remove powermgt_macosx.c since it is using APSL version 1.1
+    instead of the BSD-like licence (bnc#474818)
+  * avoid a possible crash due to a race condition
+  * change default log level from PCSC_LOG_INFO to PCSC_LOG_ERROR
+  * CardDisconnect(): call RFUnlockAllSharing() instead of
+    RFUnlockSharing() to release all nested locks. Visible in
+    OpenSC "pkcs11-tool -I".
+  * some other minor improvements and bug corrections
+- Fixed possible overflows (bnc#499734).
+
+-------------------------------------------------------------------
+Thu Apr  9 16:01:54 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 1.5.2:
+  * SCardGetStatusChange(): return if the state of the reader
+    changed since the previous call
+  * SCardCancel() now works as expected
+  * log TxBuffer and RxBuffer if the SCardControl() command failed
+  * add a mutex to avoid a race condition 
+  * SCardGetStatusChange() may not return if the reader was removed
+  * some other minor improvements and bug corrections
+- Start daemon by default (bnc#466430).
+- Ensure that Apple Public Source License Version 1.1 does not
+  apply (bnc#474818).
+
+-------------------------------------------------------------------
+Tue Feb  3 13:41:22 CET 2009 - sbrabec@suse.cz
+
+- Updated to version 1.5.1:
+  * Fixed extended APDU of more than 2048 bytes
+  * some other minor improvements and bug corrections
+  * correctly handle up to PCSCLITE_MAX_READERS_CONTEXTS
+  * SCardGetStatusChange() behavior change
+  * SCardStatus(): support of SCARD_AUTOALLOCATE
+  * SCardGetStatusChange() now uses asynchronous events
+  * more and/or better documentation
+  * SCardTransmit(): correctly pass the pioRecvPci parameter
+  * SCardConnect() and SCardReconnect(): correct a race condition
+  * pcscd logs the command name sent by the application
+  * some other minor improvements and bug corrections
+- Split according to shared library packaging rules
+  (bnc#466430#c5).
+- Removed obsolete udev rules.
+- Install init script based on upstream one (bnc#467255).
+- Removed upgrade protection for <= SLE9.
+
+-------------------------------------------------------------------
+Tue Jan  6 19:22:06 CET 2009 - sbrabec@suse.cz
+
+- Do not call autoreconf for SLE10.
+
+-------------------------------------------------------------------
+Wed Sep 10 14:54:11 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 1.4.102:
+  * pcscd -v now displays enabled features 
+  * add support of SCARD_AUTOALLOCATE in SCardListReaders(),
+    SCardListReaderGroups() and SCardGetAttrib
+  * add SCardFreeMemory()
+  * try to use the reader polling thread also for the other slots
+    on a multi-slots reader
+  * solve a possible crash with SCardCancel() in multithreading
+    environment
+  * SCardConnect(), SCardReconnect(): do not check the parameter
+    dwPreferredProtocols if dwShareMode == SCARD_SHARE_DIRECT
+  * better support of driver termination (when pcscd exits)
+  * kill the driver polling thread only if the driver supports it.
+  * support for fork(). Handles are now invalid in the child
+    process.
+  * SCardStatus() returns SCARD_W_REMOVED_CARD instead of
+    SCARD_W_RESET_CARD when a card has been removed and inserted
+  * some other minor improvements and bug corrections
+
+-------------------------------------------------------------------
+Fri Aug 22 08:13:07 CEST 2008 - lnussel@suse.de
+
+- remove resmgr from BuildRequires
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Apr  3 14:33:58 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 1.4.100:
+  * add libhal support to avoid polling the USB bus.
+  * improve performances.
+  * SCardListReaders(): returns SCARD_E_NO_READERS_AVAILABLE when
+    no reader are available.
+  * add support of TAG_IFD_POLLING_THREAD to use an asynchronous
+    card movements detection instead of an active polling.
+  * CardCheckDaemonAvailability(): lower the priority of the log
+    message in case of "PCSC Not Running" or "PCSC restarted" so
+    that nothing is logged by default.
+  * default log level is PCSC_LOG_CRITICAL+1 so that NO log is sent
+    to stderr by default.
+  * Document more details about deviceName argument of
+    IFDHCreateChannelByName()
+  * add support of mix 32/64 bits platforms.
+  * increase MAX_READERNAME from 52 to 100
+  * default ipcdir is /var/run/pcscd instead of /var/run so the
+    directory can be shared locally between 32/64 bits systems on
+    chroots
+  * display time delta between two lines of logs when printed to
+    stderr
+  * return EXIT_SUCCESS (instead of EXIT_SUCCESS) if parsing
+    /etc/reader.conf fails.
+  * performance improvement when powering a card after insertion
+  * some other minor improvements and bug corrections
+  * do not call a Log function in a signal handler and do hotplug
+    synchronously.
+  * some other minor improvements and bug corrections
+
+-------------------------------------------------------------------
+Tue Nov  6 11:03:21 CET 2007 - sbrabec@suse.cz
+
+- Added necessary udev rule (#337666).
+
+-------------------------------------------------------------------
+Wed Aug  1 15:45:23 CEST 2007 - sbrabec@suse.cz
+
+- Applied Jacob Berkman's patch for 32-64-bit interoperability.
+
+-------------------------------------------------------------------
+Thu Jul 26 17:08:01 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 1.4.3:
+  * see ChangeLog for complete list of changes
+
+-------------------------------------------------------------------
+Wed May 16 21:32:29 CEST 2007 - olh@suse.de
+
+- Buildrequires libusb -> libusb-devel
+
+-------------------------------------------------------------------
+Mon Mar  5 17:32:11 CET 2007 - pgajdos@suse.cz
+
+- fixed 'warning: array subscript is above array bounds' (#239174)
+
+-------------------------------------------------------------------
+Tue Feb 13 14:08:53 CET 2007 - sbrabec@suse.cz
+
+- Updated to version 1.3.3:
+  * Added -H --hotplug argument.
+  * Added support for IFD_GENERATE_HOTPLUG bit in driver Info.plist
+    ifdCapabilities.
+  * SCardConnect() & SCardDisconnect(): Wait until any transaction
+    finishes before going on.
+  * Removed tools installifd and formaticc.
+  * SCardControl(): do not limit cbSendLength to MAX_BUFFER_SIZE.
+  * implement SCardIsValidContext() PC/SC call.
+  * Other API changes and improvements.
+- Spec file cleanup.
+- Moved testpcsc to /usr/sbin.
+
+-------------------------------------------------------------------
+Wed Jan 17 14:44:29 CET 2007 - sbrabec@suse.cz
+
+- pcsclite.so moved to the main package (#235773).
+
+-------------------------------------------------------------------
+Tue Sep 19 14:59:27 CEST 2006 - anosek@suse.cz
+
+- update to version 1.3.2
+  * add support of extended APDU in the standard configuration
+    and in a backward compatible way: pcscd 1.3.2 can be used
+    with libpcsclite <= 1.3.2
+  * define MAX_BUFFER_SIZE_EXTENDED as the maximal size allowed
+    for a extended APDU (64KB)
+  * LPCTSTR and LPTSTR types are deprecated.
+    Use LPCSTR and LPSTR instead
+  * Dual licence src/error.c so it can be used bu OpenSC. It is now
+    BSD-like, see the COPYING file and GNU Lesser General
+    Licence 2.1 or (at your option) any later version
+  * document that the 4 bytes field value in PCSC_TLV_STRUCTURE is
+    always in big endian as documented in PCSC v2 part 10 ch 2.2
+    page 2. You can use ntohl() to convert the value.
+  * some other minor improvements and bug corrections
+- fixed compiler warning: subscript out of range [#204770]
+  (overflow.patch)
+
+-------------------------------------------------------------------
+Fri Aug 11 22:34:15 CEST 2006 - stark@suse.de
+
+- update to version 1.3.1
+  * use fprintf(stderr,) instead of syslog(3) to log messages from 
+    libpcsclite
+  * use PCSCLITE_DEBUG to activate the debug messages in libpcsclite
+  * add the reader serial number in the reader name only if
+    ADD_SERIAL_NUMBER is defined
+
+-------------------------------------------------------------------
+Thu Apr  6 19:27:51 CEST 2006 - mjancar@suse.cz
+
+- remove powermgt_macosx.c from the package (#161324)
+
+-------------------------------------------------------------------
+Mon Mar 13 16:45:20 CET 2006 - mjancar@suse.cz
+
+- mount /proc/bus/usb in initscript anyway (#146979)
+
+-------------------------------------------------------------------
+Tue Feb  7 09:46:55 CET 2006 - mjancar@suse.cz
+
+- start after kbd instead of mounting usbfs ourselfs (#146979)
+
+-------------------------------------------------------------------
+Mon Feb  6 18:53:04 CET 2006 - mjancar@suse.cz
+
+- mount /proc/bus/usb in initscript (#146979)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:21 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan  3 08:59:37 CET 2006 - mjancar@suse.cz
+
+- move drivers to separate source packages
+- branch devel subpackage
+
+-------------------------------------------------------------------
+Mon Jan  2 07:29:48 CET 2006 - stark@suse.de
+
+- removed obsolete hotplug stuff for cyberjack
+- Updated pcsc-lite to version 1.2.9-beta9
+- Updated CCID driver to 0.9.4
+- Updated GemPC driver to 1.0.0
+- package pkgconfig files to be able to build drivers outside 
+  the package
+
+-------------------------------------------------------------------
+Tue Dec 20 16:08:24 CET 2005 - ro@suse.de
+
+- removed unpackaged man-page symlinks 
+
+-------------------------------------------------------------------
+Tue Nov 29 11:59:15 CET 2005 - ro@suse.de
+
+- remove keeper from nfb (unused) 
+
+-------------------------------------------------------------------
+Mon Oct 10 13:02:47 CEST 2005 - stark@suse.de
+
+- Updated towitoko driver to 2.0.7 and install USB bundle
+
+-------------------------------------------------------------------
+Wed Sep 21 22:17:12 CEST 2005 - stark@suse.de
+
+- Repackaged CCID as bundle for USB usage (#116497)
+
+-------------------------------------------------------------------
+Tue Sep 20 06:24:30 CEST 2005 - stark@suse.de
+
+- handle old reader.conf in upgrade case
+- compile with -fno-strict-aliasing
+- fixed missing return in ctapi-cyberjack
+
+-------------------------------------------------------------------
+Sat Sep 17 11:46:52 CEST 2005 - stark@suse.de
+
+- Updated pcsc-lite to version 1.2.9beta8 (#116497)
+  * use /etc/reader.conf.d/
+  * adapted init script to create /etc/reader.conf
+- Updated cyberjack driver to version 2.0.9
+  * use rpath for cyberjack tools
+- Updated ccid driver to version 0.9.3 (#116497)
+- Use RPM_OPT_FLAGS everywhere
+- Fixed serious compiler warnings
+
+-------------------------------------------------------------------
+Mon Sep  5 15:25:59 CEST 2005 - skh@suse.de
+
+- fix off-by-one error in hotplug_libusb.c [#112964]
+
+-------------------------------------------------------------------
+Mon Aug 29 15:35:33 CEST 2005 - skh@suse.de
+
+- Remove unnecessary files from pcsc-acr38 again [#112927]
+
+-------------------------------------------------------------------
+Mon Aug 29 14:33:44 CEST 2005 - skh@suse.de
+
+- package ACR38 driver in correct bundle format [#112927]
+- remove orphaned /var/run/pcscd.pub when necessary [#112928]
+- update ACR38u driver to version 100705 to fix crash when reader
+  is plugged in [#112964]
+
+-------------------------------------------------------------------
+Tue Aug 16 14:15:41 CEST 2005 - skh@suse.de
+
+- Updated ACR38u driver to version 100703
+
+-------------------------------------------------------------------
+Tue Jul 26 17:47:53 CEST 2005 - okir@suse.de
+
+- Added ACR38u driver
+
+-------------------------------------------------------------------
+Tue Jul 26 13:29:37 CEST 2005 - okir@suse.de
+
+- Updated description in init script (#79287)
+
+-------------------------------------------------------------------
+Thu Jun 16 17:12:15 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS in 1 more driver
+- added includes to avoid implict declaration of memcpy and similar.
+
+-------------------------------------------------------------------
+Mon Apr 18 18:12:49 CEST 2005 - ro@suse.de
+
+- make it build with gcc-4 
+
+-------------------------------------------------------------------
+Thu Mar 17 12:45:39 CET 2005 - okir@suse.de
+
+- Disable support for extended-apdus, it eats 32MB of memory (#73629)
+
+-------------------------------------------------------------------
+Thu Mar 10 11:49:25 CET 2005 - okir@suse.de
+
+- Fix default search location for USB bundles
+
+-------------------------------------------------------------------
+Fri Jan 21 15:11:43 CET 2005 - okir@suse.de
+
+- Updated to latest upstream version
+- Updated several drivers
+- Added CCID driver
+- Provide a more informative readers.conf file (#42620)
+
+-------------------------------------------------------------------
+Thu Jan 20 12:46:44 CET 2005 - ro@suse.de
+
+- drop subpackage gpr400 
+
+-------------------------------------------------------------------
+Wed Apr 28 18:20:35 CEST 2004 - ro@suse.de
+
+- compile formaticc with no-strict-aliasing
+- fix unused return type in musclecard.c
+
+-------------------------------------------------------------------
+Wed Mar 31 09:18:42 CEST 2004 - okir@suse.de
+
+- Properly install testpcsc, formaticc (#37625)
+- Build towitoko driver with --enable-win32-com
+
+-------------------------------------------------------------------
+Thu Mar 18 13:41:02 CET 2004 - okir@suse.de
+
+- cyberjack apps installed in /bin should be executable (#36409)
+
+-------------------------------------------------------------------
+Sat Jan 10 18:16:21 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Aug  5 14:53:48 CEST 2003 - mge@suse.de
+
+- merge ctapi-cyberjack into pcsc-lite: two additional
+  packages are created: ctapi-cyberjack and pcsc-cyberjack
+
+-------------------------------------------------------------------
+Thu Jun 26 01:17:52 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+- added directories to filelist
+
+-------------------------------------------------------------------
+Fri Nov 29 15:49:25 CET 2002 - okir@suse.de
+
+- added -fPIC when building eToken driver
+
+-------------------------------------------------------------------
+Fri Nov 29 10:14:46 CET 2002 - okir@suse.de
+
+- Updated to latest upstream version
+- Included driver for Aladdin eToken PRO
+- More GNU auto#*@! headaches
+- Various minor fixes
+
+-------------------------------------------------------------------
+Wed Aug 28 12:37:15 CEST 2002 - okir@suse.de
+
+- Moved shared objects to /usr/lib64 on ppc64/s390x (#18421)
+
+-------------------------------------------------------------------
+Mon Aug  5 14:27:44 CEST 2002 - olh@suse.de
+
+- fix initscript, Should-start: setserial hotplug
+
+-------------------------------------------------------------------
+Fri Aug  2 09:38:11 CEST 2002 - okir@suse.de
+
+- added PreReq for insserv_and_fillup
+
+-------------------------------------------------------------------
+Wed Jul 31 17:46:00 CEST 2002 - okir@suse.de
+
+- fixed build problem on s390x (force aclocal.m4 regen)
+
+-------------------------------------------------------------------
+Wed Jun 26 01:56:16 CEST 2002 - ro@suse.de
+
+- use -fPIC when building a shared lib 
+
+-------------------------------------------------------------------
+Wed Jun 12 13:26:14 CEST 2002 - okir@suse.de
+
+- fix for bug #15051 (hey, it's a palindrome bug:):
+  missing %doc DRIVERS file; misc silly binaries moved
+  out of /usr/bin
+
+-------------------------------------------------------------------
+Tue Apr 30 14:45:30 CEST 2002 - okir@suse.de
+
+- Fixed build problem introduced by previous patch
+
+-------------------------------------------------------------------
+Tue Apr 30 09:41:09 CEST 2002 - okir@suse.de
+
+- updated to latest upstream version
+- added drivers for these readers: Towitoko, Schlumberger Reflex 6x,
+  Gemplus GPR 400, GemPlus GemPC 410/430
+
+-------------------------------------------------------------------
+Tue Apr  9 01:37:41 CEST 2002 - ro@suse.de
+
+- fixed for latest automake/autoconf 
+
+-------------------------------------------------------------------
+Wed Feb 13 08:13:59 CET 2002 - stark@suse.de
+
+- spec-file cleanup
+- LSB compliant init-script 
+
+-------------------------------------------------------------------
+Mon Jan 14 12:54:01 CET 2002 - ro@suse.de
+
+- removed START_PCSCD 
+
+-------------------------------------------------------------------
+Wed Nov 14 08:49:11 CET 2001 - ro@suse.de
+
+- call aclocal
+
+-------------------------------------------------------------------
+Sun Aug 26 02:28:00 MET 2001 - mge@suse.de
+
+- updated to 1.0.0Beta
+- fixed /etc/init.d/pcscd status-handling (bug #9069)
+
+-------------------------------------------------------------------
+Thu Jun  7 02:27:01 CEST 2001 - ro@suse.de
+
+- fix broken Makefile.am 
+
+-------------------------------------------------------------------
+Mon Apr 23 00:32:27 MEST 2001 - mge@suse.de
+
+- update to 0.9.1
+
+-------------------------------------------------------------------
+Thu Apr 19 00:18:46 CEST 2001 - mge@suse.de
+
+- created package 
+

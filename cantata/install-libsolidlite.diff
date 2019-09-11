@@ -1,0 +1,11 @@
+--- 3rdparty/solid-lite/CMakeLists.txt.orig	2017-08-01 00:15:09.325243508 +0200
++++ 3rdparty/solid-lite/CMakeLists.txt	2017-08-01 00:15:09.357242950 +0200
+@@ -300,6 +300,8 @@
+    target_link_libraries(solidlite ${WCECOMPAT_LIBRARIES})
+ endif()
+ 
++install(TARGETS solidlite DESTINATION ${LIB_INSTALL_DIR})
++
+ # set_target_properties(solidlite PROPERTIES
+ #    VERSION ${GENERIC_LIB_VERSION}
+ #    SOVERSION ${GENERIC_LIB_SOVERSION}

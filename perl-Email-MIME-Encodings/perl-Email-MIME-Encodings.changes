@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Tue Nov 26 14:46:20 UTC 2013 - coolo@suse.com
+
+- updated to 1.315
+      repackage to update repository and bug tracker
+      add a third argument to encode/decode/codec to allow a fallback
+      codec
+
+-------------------------------------------------------------------
+Wed Dec  1 15:43:18 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Dec 10 13:30:39 UTC 2009 - chris@computersalat.de
+
+- cleanup spec
+  * added header
+- fixed Build deps
+  * added perl-macros
+  * added Test::Pod::Coverage
+  * added Test::Pod
+
+-------------------------------------------------------------------
+Wed Dec  9 12:50:51 UTC 2009 - bitshuffler #suse@irc.freenode.org
+
+- Initial RPM
+

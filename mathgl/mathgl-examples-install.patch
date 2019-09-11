@@ -1,0 +1,79 @@
+Index: mathgl-2.4.1/examples/CMakeLists.txt
+===================================================================
+--- mathgl-2.4.1.orig/examples/CMakeLists.txt
++++ mathgl-2.4.1/examples/CMakeLists.txt
+@@ -4,6 +4,10 @@ file(COPY ${CMAKE_SOURCE_DIR}/examples/s
+ file(COPY ${CMAKE_SOURCE_DIR}/examples/wnd_samples.cpp DESTINATION ${CMAKE_BINARY_DIR}/examples)
+ add_executable(mgl_example wnd_samples.cpp full_test.cpp samples.cpp)
+ target_link_libraries(mgl_example mgl-static ${getopt_lib-static})
++install(
++	TARGETS mgl_example
++	RUNTIME DESTINATION bin
++)
+ if(CMAKE_BUILD_TYPE STREQUAL "Debug" AND CMAKE_COMPILER_IS_GNUCXX AND enable-lcov)
+ 	setup_target_for_coverage(
+ 	    NAME mgl_coverage
+@@ -16,17 +20,29 @@ if(MGL_HAVE_FLTK)
+ 	include_directories(${FLTK_INCLUDE_DIR})
+ 	add_executable(mgl_fltk_example wnd_samples.cpp fltk_example.cpp)
+ 	target_link_libraries(mgl_fltk_example mgl-fltk)
++	install(
++		TARGETS mgl_fltk_example
++		RUNTIME DESTINATION bin
++	)
+ endif(MGL_HAVE_FLTK)
+ 
+ if(MGL_HAVE_GLUT)
+ 	add_executable(mgl_glut_example wnd_samples.cpp glut_example.cpp)
+ 	target_link_libraries(mgl_glut_example mgl-glut)
++	install(
++		TARGETS mgl_glut_example
++		RUNTIME DESTINATION bin
++	)
+ endif(MGL_HAVE_GLUT)
+ 
+ if(MGL_HAVE_WX)
+ 	include(${wxWidgets_USE_FILE})
+ 	add_executable(mgl_wx_example wnd_samples.cpp wx_example.cpp)
+ 	target_link_libraries(mgl_wx_example mgl-wx)
++	install(
++		TARGETS mgl_wx_example
++		RUNTIME DESTINATION bin
++	)
+ endif(MGL_HAVE_WX)
+ 
+ if(QT_ENABLED)
+@@ -25,17 +41,33 @@ if(QT_ENABLED)
+ 	if(enable-qt5)
+ 		include(../scripts/qt5.cmake)
+ 		target_link_libraries(mgl_qt_example mgl-qt5)
++		install(
++			TARGETS mgl_qt_example
++			RUNTIME DESTINATION bin
++		)
+ 	else(enable-qt5)
+ 		include(../scripts/qt4.cmake)
+ 		target_link_libraries(mgl_qt_example mgl-qt4)
++		install(
++			TARGETS mgl_qt_example
++			RUNTIME DESTINATION bin
++		)
+ 	endif(enable-qt5)
+ 	
+ 	if(MGL_HAVE_OPENGL)
+ 		add_executable(mgl_qgl_example wnd_samples.cpp qgl_example.cpp)
+ 		if(enable-qt5)
+ 			target_link_libraries(mgl_qgl_example mgl ${MGL_QT5_LIBS})
++			install(
++				TARGETS mgl_qgl_example
++				RUNTIME DESTINATION bin
++			)
+ 		else(enable-qt5)
+ 			target_link_libraries(mgl_qgl_example mgl ${MGL_QT4_LIBS})
++			install(
++				TARGETS mgl_qgl_example
++				RUNTIME DESTINATION bin
++			)
+ 		endif(enable-qt5)
+ 	endif(MGL_HAVE_OPENGL)
+ endif(QT_ENABLED)

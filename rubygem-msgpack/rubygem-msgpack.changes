@@ -1,0 +1,162 @@
+-------------------------------------------------------------------
+Thu Aug 15 17:59:29 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.3.1
+
+  * Fix timestamp ext type bug about timestamps with seconds larger than 32bit int (after 2106-02-07 06:28:16 UTC)
+
+-------------------------------------------------------------------
+Mon Jul  8 08:32:18 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.3.0
+
+  * Add timestamp ext type (id:-1) support
+
+-------------------------------------------------------------------
+Sun May  5 09:35:27 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.2.10
+ see installed ChangeLog
+
+  2019-04-19 version 1.2.10:
+  
+  * Optimze MessagePack.unpack not to copy source string
+
+-------------------------------------------------------------------
+Thu Mar 14 10:59:24 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.2.9
+ see installed ChangeLog
+
+  2019-03-13 version 1.2.9:
+  
+  * Hotfix release only for JRuby: 1.2.8-java was built incorrectly
+  
+  2019-03-11 version 1.2.8:
+  
+  * Fix a regression that MessagePack#unpack raises error if IO is assigned as the (only) argument
+  * Improve compatibility that MessagePack#pack returns nil if IO is assigned as 2nd argument
+
+-------------------------------------------------------------------
+Sat Mar  2 15:26:59 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.2.7
+ see installed ChangeLog
+
+  2019-03-01 version 1.2.7:
+  
+  * Add Packer#write_bin and Packer#write_bin_header methods
+
+-------------------------------------------------------------------
+Mon Jan 14 13:47:18 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.2.6
+ see installed ChangeLog
+
+  2019-01-08 verison 1.2.6:
+  
+  * Update Ruby version 2.6 dependency (especially for Windows environment)
+  * (version 1.2.4 and 1.2.5 were also releases for updated Ruby versions)
+
+-------------------------------------------------------------------
+Mon Jan 14 08:59:24 UTC 2019 - mschnitzer@suse.com
+
+- updated to version 1.2.6
+
+  * Update Ruby version 2.6 dependency (especially for Windows environment)
+  * (version 1.2.4 and 1.2.5 were also releases for updated Ruby versions)
+
+-------------------------------------------------------------------
+Sat Mar  3 05:30:35 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.2.4
+ see installed ChangeLog
+
+-------------------------------------------------------------------
+Fri Mar  2 05:30:01 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.2.3
+ see installed ChangeLog
+
+  2018-03-02 version 1.2.3:
+  
+  * Add Ruby 2.5.0 binary in gem releases for Windows
+
+-------------------------------------------------------------------
+Thu Feb  8 06:13:39 UTC 2018 - coolo@suse.com
+
+- updated to version 1.2.2
+ see installed ChangeLog
+
+  2018-01-11 version 1.2.2:
+  
+  * Fix bug to occur SEGV occasionally (depends on GC timing) when exttype is used
+  * Fix bug to encode an ext type with wrong type id if superclass is also registered as ext type 
+  
+  2017-12-08 version 1.2.1:
+  
+  * Hotfix release only for JRuby: 1.2.0-java was built in incorrect way
+
+-------------------------------------------------------------------
+Thu Dec 14 14:24:14 UTC 2017 - coolo@suse.com
+
+- updated to version 1.2.0
+ see installed ChangeLog
+
+  2017-12-07 version 1.2.0:
+  
+  * Add MessagePack::Factory#dump and MessagePack::Factory#load as convenient methods
+    like MessagePack.dump and MessagePack.load
+  * Fix bug to accept MessagePack::Factory#register_type after #freeze
+
+-------------------------------------------------------------------
+Tue Feb 28 05:42:22 UTC 2017 - coolo@suse.com
+
+- updated to version 1.1.0
+ see installed ChangeLog
+
+  2017-02-28 version 1.1.0:
+  
+  * Fix the extention type handling to accept modules in addition to classes
+
+-------------------------------------------------------------------
+Thu Jan 26 05:37:33 UTC 2017 - coolo@suse.com
+
+- updated to version 1.0.3
+ see installed ChangeLog
+
+  2017-01-24 version 1.0.3:
+  
+  * Support Ruby 2.4
+
+-------------------------------------------------------------------
+Thu Nov 24 17:31:44 UTC 2016 - wolfgang.engel@suse.com
+
+- Adding rpmlintrc filter
+
+-------------------------------------------------------------------
+Wed Oct 19 04:37:43 UTC 2016 - coolo@suse.com
+
+- updated to version 1.0.2
+ see installed ChangeLog
+
+  2016-10-17 version 1.0.2:
+  
+  * Bump version up to release newer version to fix broken gem release for JRuby
+
+-------------------------------------------------------------------
+Mon Oct 17 04:35:50 UTC 2016 - coolo@suse.com
+
+- updated to version 1.0.1
+ see installed ChangeLog
+
+  2016-10-17 version 1.0.1:
+  
+  * Fix a bug to crash at packer when ext type is registered for superclass of packed object
+  * Fix JRuby implementation about inconsistent API of Unpacker constructor
+
+-------------------------------------------------------------------
+Wed Sep 21 13:46:45 UTC 2016 - wolfgang.engel@suse.com
+
+- Initial package
+

@@ -1,0 +1,13 @@
+Index: lib/Makefile.am
+===================================================================
+--- lib/Makefile.am.orig
++++ lib/Makefile.am
+@@ -27,6 +27,8 @@ libmhash_la_SOURCES = $(FRAMEWORK) $(KEY
+ 
+ libmhash_la_LDFLAGS = -version-info 2:1
+ 
++libmhash_la_CFLAGS = -fPIC
++
+ EXTRA_DIST = libmhash.sym
+ 
+ dist-hook:

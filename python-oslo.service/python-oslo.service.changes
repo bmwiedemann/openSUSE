@@ -1,0 +1,370 @@
+-------------------------------------------------------------------
+Mon Apr  8 11:46:55 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.38.0
+  - Bump oslo.utils lower constraint to 3.40.2
+  - Add better timer APIs to ThreadGroup
+  - Update mailinglist from dev to discuss
+  - Use template for lower-constraints
+  - Stop asserting on Eventlet internals
+  - import zuul job settings from project-config
+  - Use SleepFixture in looping call test suite
+  - Always build universal wheels
+  - Update reno for stable/rocky
+  - Add stop_on_exception to TG timers
+  - add python 3.6 unit test job
+  - Avoid eventlet_backdoor listing on same port
+  - Skips signal handling on Windows
+  - add lib-forward-testing-python3 test job
+  - Fix stop of loopingcall
+  - Ensure connection is active in graceful shutdown tests
+  - Deprecate the ThreadGroup.cancel() API
+  - Use eventletutils Event class
+  - Limit monotonic to py2
+  - Update oslo.service to require yappi 1.0 or newer
+  - Update hacking version
+  - Fixture to mock loopingcall wait()
+  - Clean up .gitignore references to personal tools
+  - Use eventlet Event for loopingcall events
+  - Actually test child SIGHUP signal
+  - Profile Oslo Service processes
+  - Document the threadgroup module
+  - Restore correct signal handling in Python3
+  - add python 3.7 unit test job
+
+-------------------------------------------------------------------
+Wed Feb  6 14:58:36 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.31.8
+  - Stop asserting on Eventlet internals
+  - Use eventlet Event for loopingcall events
+  - Restore correct signal handling in Python3
+  - Maintain private interface for loopingcall._ThreadingEvent
+  - Fix stop of loopingcall
+
+-------------------------------------------------------------------
+Wed Nov 28 23:51:29 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.31.5
+  - Update UPPER_CONSTRAINTS_FILE for stable/rocky
+  - Add Python 3.5 jobs
+  - Update .gitreview for stable/rocky
+  - import zuul job settings from project-config
+  - Skips signal handling on Windows
+
+-------------------------------------------------------------------
+Sat Sep  1 09:01:29 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.31.3
+  - Update reno for stable/queens
+  - Imported Translations from Zanata
+  - Revert "Revert "Permit aborting loopingcall while sleeping""
+  - Add release notes link to README
+  - Convert oslo.service to using stestr
+  - Add test dependency on requests
+  - Remove unnecessary pyNN testenv
+  - Fix oslo.service ProcessLauncher fails to call stop
+  - Python 3: Fix non-deterministic test
+  - Remove stale pip-missing-reqs tox test
+  - [ThreadGroup] Don't remove timer when stop timers
+  - Update links in README
+  - Trivial: Update pypi url to new url
+  - Fixup certificates and skip failing test
+  - Remove moxstubout
+  - Remove eventlet cap
+  - tox.ini: Use python3.5 in py35 environment
+  - set default python to python3
+  - fix tox python3 overrides
+  - Python 3: Fix eventlet wakeup after signal
+  - Make lower-constraints job voting
+  - move doc8 test to pep8 job
+  - Updated from global requirements
+  - add lower-constraints job
+
+-------------------------------------------------------------------
+Fri Feb 23 13:28:03 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Mon Jan 15 12:00:15 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.29.0
+  - Remove -U from pip install
+  - change periodic_task to catch all exceptions including BaseException
+  - Update reno for stable/pike
+  - Maintain shared memory after fork in Python >=3.7
+  - Remove setting of version/release from releasenotes
+  - Imported Translations from Zanata
+  - Revert "Permit aborting loopingcall while sleeping"
+  - Permit aborting loopingcall while sleeping
+  - Fix bandit scan and make it voting
+  - Updated from global requirements
+  - Avoid tox_install.sh for constraints support
+
+-------------------------------------------------------------------
+Mon Aug  7 13:54:10 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.25.0
+  - rearrange existing documentation to fit the new standard layout
+  - Remove references to Python 3.4
+  - Remove log translations
+  - Fix some reST field lists in docstrings
+  - Remove duplicated register_opts call
+  - switch from oslosphinx to openstackdocstheme
+  - Update URLs in documents according to document migration
+  - Fix race condition with fast threads
+  - [Fix gate]Update test requirement
+  - Add min_interval to BackOffLoopingCall
+  - pbr.version.VersionInfo needs package name (oslo.xyz and not oslo_xyz)
+  - Update reno for stable/ocata
+  - Updated from global requirements
+  - Use Sphinx 1.5 warning-is-error
+
+-------------------------------------------------------------------
+Mon Feb 13 09:48:15 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.19.0:
+  - Update .coveragerc after the removal of respective directory
+  - Replace 'MagicMock' with 'Mock'
+  - Delete python bytecode file
+  - Imported Translations from Zanata
+  - Add Constraints support
+  - Add reno for release notes management
+  - Stay alive on double SIGHUP
+  - Show team and repo badges on README
+  - Changed the home-page link
+  - Enable release notes translation
+  - Add FixedIntervalWithTimeoutLoopingCall
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Tue Oct  4 11:08:35 UTC 2016 - dmueller@suse.com
+
+- switch to stable/newton
+
+-------------------------------------------------------------------
+Tue Aug 30 16:17:54 UTC 2016 - tbechtold@suse.com
+
+- update to version 1.16.0
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Aug 10 12:18:33 UTC 2016 - tbechtold@suse.com
+
+- update to 1.14.0:
+  * Updated from global requirements
+  * Fix parameters of assertEqual are misplaced
+  * Imported Translations from Zanata
+
+-------------------------------------------------------------------
+Fri Jun  3 13:20:49 UTC 2016 - tbechtold@suse.com
+
+- use renderspec source service
+- update spec from upstream
+
+-------------------------------------------------------------------
+Tue May 31 13:49:31 UTC 2016 - slunkad@suse.com
+
+- update to 1.11.0
+  * Trivial: ignore openstack/common in flake8 exclude list
+- 1.10.0
+  * [Trivial] Remove executable privilege of doc/source/conf.py
+- 1.9.0
+  * Updated from global requirements
+  * Offer mutate_config_files
+  * Make _spawn_service more flexible
+  * Remove direct dependency on babel
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Fix argument type for _sd_notify() on python3
+  * Use a timeutils.StopWatch for cancel timing
+  * Add ability to cancel Threads and ThreadGroups
+  * Exception: message need '_' function
+  * Fix Heartbeats stop when time is changed
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Apr  1 10:36:15 UTC 2016 - tbechtold@suse.com
+
+- update to 1.8.0:
+  * Updated from global requirements
+  * Update .gitreview for stable/mitaka
+
+-------------------------------------------------------------------
+Thu Mar  3 14:22:10 UTC 2016 - tbechtold@suse.com
+
+- update to 1.7.0:
+  * Updated from global requirements
+  * Correct some help text
+  * Fix typo in help text
+  * wsgi: decrease the default number of greenthreads in pool
+  * Updated from global requirements
+  * Updated from global requirements
+  * Allow the backdoor to serve from a local unix domain socket
+  * Updated from global requirements
+  * Use requests in TestWSGIServerWithSSL instead of raw socket client
+  * Updated from global requirements
+  * Updated from global requirements
+  * Fix misspelling and rewrite sentence
+  * Add a more useful/detailed frame dumping function
+  * Updated from global requirements
+  * Update translation setup
+  * Fix race condition on handling signals
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Fix artificial service.wait()
+  * Graceful shutdown added to ServiceLauncher
+  * Fix test execution on CentOS 7
+  * Updated from global requirements
+  * Fix some inconsistency in docstrings
+  * Refactoring of tests/eventlet_service.py
+  * Updated from global requirements
+  * Remove argument ServiceLauncher.wait() method
+  * fix a couple of assert issues
+  * Run sslutils and wsgi tests for python3
+  * Updated from global requirements
+  * Updated from global requirements
+  * Fix a race condition in signal handlers
+  * Enable py3 mock.patch of RuntimeError
+  * Delete python bytecode before every test run
+  * Trival: Remove 'MANIFEST.in'
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Wed Dec  9 15:52:45 UTC 2015 - dmueller@suse.com
+
+- update to 1.1.0:
+  * Avoid warning when time taken is close to zero
+  * Update the _i18n.py file and fix the domain value
+  * Add Bandit to tox for security static analysis
+  * Code refactoring of ThreadGroup::stop_timers()
+  * Updated from global requirements
+  * Add functionality for creating Unix domain WSGI servers
+  * Use reflection.get_class_name() from oslo.utils
+  * Remove Python 2.6 classifier
+  * Remove openstack-common.conf
+  * cleanup tox.ini
+  * Change "started child" messages to DEBUG
+  * Support for SSL protocol and cipher controls
+  * Default value of graceful_shutdown_timeout is set to 60sec
+  * Updated from global requirements
+  * Logger name argument was added into wsgi.Server constructor
+  * Avoid the dual-naming confusion
+  * Forbid launching services with 0 or negative number of workers
+
+-------------------------------------------------------------------
+Thu Nov 19 18:25:51 UTC 2015 - bwiedemann@suse.com
+
+- update to 0.12.0:
+  * Document graceful_shutdown_timeout config option
+  * Remove py26 env from test list
+  * Added config option graceful_shutdown_timeout
+  * Add docstring for LoopingCallBase._start()
+  * Add doc8 to py27 tox env and fix raised issues
+  * Document termination of children on SIGHUP
+
+-------------------------------------------------------------------
+Mon Oct 19 07:21:49 UTC 2015 - dmueller@suse.com
+
+- update to 0.10.0:
+  * RetryDecorator should not log warnings/errors for expected exceptions
+  * Termination children on SIGHUP added
+  * Fix coverage configuration and execution
+  * Add register_opts function to sslutils
+  * Move the common thread manipulating routine to a shared routine
+  * Update log string to correctly denote what it waits on
+  * Cleanup thread on thread done callback
+  * Move 'history' -> release notes section
+  * Add unit tests for sslutils
+  * Expand README and clean up intro to sphinx docs
+  * Add shields.io version/downloads links/badges into README.rst
+  * add auto-generated docs for config options
+  * Change ignore-errors to ignore_errors
+  * Fix the home-page value in setup.cfg
+  * WSGI module was corrected
+  * Updated from global requirements
+  * ThreadGroup's stop didn't recognise the current thread correctly
+  * doing monkey_patch for unittest
+
+-------------------------------------------------------------------
+Thu Sep  3 19:33:04 UTC 2015 - tbechtold@suse.com
+
+- update to 0.9.0:
+  * Handling corner cases in dynamic looping call
+  * Change DEBUG log in loopingcall to TRACE level log
+  * Updated from global requirements
+  * Added wsgi functionality
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Fri Aug 21 11:52:51 UTC 2015 - tbechtold@suse.com
+
+- update to 0.7.0:
+  * Updated from global requirements
+  * Update "Signal handling" section of usage docs
+  * Use oslo_utils reflection to get 'f' callable name
+  * Updated from global requirements
+  * Prefix the 'safe_wrapper' function to be '_safe_wrapper'
+  * Setup translations
+  * Check that sighup is supported before accessing signal.SIGHUP
+  * Use contextlib.closing instead of try ... finally: sock.close
+  * Avoid using the global lockutils semaphore collection
+  * Updated from global requirements
+  * Added newline at end of file
+  * Added class SignalHandler
+  * Updated from global requirements
+  * Activate pep8 check that _ is imported
+  * Denote what happens when no exceptions are passed in
+  * Allow LoopingCall to continue on exception in callee
+- adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Wed Jul 29 10:44:00 UTC 2015 - tbechtold@suse.com
+
+- Unify spec file. Use fedora compatible files macros
+
+-------------------------------------------------------------------
+Tue Jul 28 12:42:16 UTC 2015 - tbechtold@suse.com
+
+- update to 0.5.0:
+  * Updated from global requirements
+  * Add oslo_debug_helper to tox.ini
+  * Add usage documentation for oslo_service.service module
+- update Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Mon Jul 20 21:57:55 UTC 2015 - dmueller@suse.com
+
+- update to 0.4.0:
+  * Updated from global requirements
+  * Move backdoor-related tests from test_service
+  * Add mock to test_requirements
+  * Remove usage of mox in test_eventlet_backdoor
+  * Copy RetryDecorator from oslo.vmware
+  * Increase test coverage of systemd
+  * Ensure we set the event and wait on the timer in the test
+  * Make it easier to use the eventlet backdoor locally
+  * Track created thread and disallow more than one start being active
+  * Documentation on the use of the oslo-config-generator
+  * Add greenlet to requirements
+  * Add tox target to find missing requirements
+  * Enforce H405 check
+  * Enforce H301 check
+  * Return timer after adding it to internal list
+  * Updated from global requirements
+  * Have all the looping calls share a common run loop
+  * Move service abstract base class check to launch_service methods
+  * Fix a typo in a comment
+  * Updated from global requirements
+  * Use a signal name->sigval and sigval->signal name mapping
+
+-------------------------------------------------------------------
+Wed Jun 17 19:46:47 UTC 2015 - tbechtold@suse.com
+
+- Initial packaging
+

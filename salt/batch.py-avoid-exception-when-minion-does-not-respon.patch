@@ -1,0 +1,42 @@
+From 50377852ca989ffa141fcf32d5ca57d120b455b8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jos=C3=A9=20Guilherme=20Vanz?= <jvanz@jvanz.com>
+Date: Tue, 21 May 2019 16:13:18 -0300
+Subject: [PATCH] batch.py: avoid exception when minion does not respond
+ (bsc#1135507)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+We have several issues reporting that salt is throwing exception when
+the minion does not respond. This change avoid the exception adding a
+default data to the minion when it fails to respond. This patch based
+on the patch suggested by @roskens.
+
+Issues #46876 #48509 #50238
+bsc#1135507
+
+Signed-off-by: José Guilherme Vanz <jguilhermevanz@suse.com>
+---
+ salt/cli/batch.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/salt/cli/batch.py b/salt/cli/batch.py
+index ce239215cb..1623fc5be8 100644
+--- a/salt/cli/batch.py
++++ b/salt/cli/batch.py
+@@ -315,6 +315,11 @@ class Batch(object):
+                     if self.opts.get('failhard') and data['ret']['retcode'] > 0:
+                         failhard = True
+ 
++                # avoid an exception if the minion does not respond.
++                if data.get("failed") is True:
++                    log.debug('Minion %s failed to respond: data=%s', minion, data)
++                    data = {'ret': 'Minion did not return. [Failed]', 'retcode': salt.defaults.exitcodes.EX_GENERIC}
++
+                 if self.opts.get('raw'):
+                     ret[minion] = data
+                     yield data
+-- 
+2.21.0
+
+

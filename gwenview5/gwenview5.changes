@@ -1,0 +1,792 @@
+-------------------------------------------------------------------
+Fri Aug  9 08:30:13 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- No code change since 19.07.90
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:47 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- No code changes since 19.07.80
+
+-------------------------------------------------------------------
+Tue Jul 23 11:58:55 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:33 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- No code changes since 19.04.2
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:51 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- Changes since 19.04.1:
+  * Fix build with exiv2-0.27.1
+
+-------------------------------------------------------------------
+Fri May 10 05:37:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- No code changes since 19.04.0
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:53 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- Changes since 19.03.90:
+  * Add HiDPI support for thumbnails
+- Dropped patches, now upstream:
+  * 0001-Add-HiDPI-support-for-thumbnails.patch
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:38 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * HiDPI Support for Gwenview (kde#373178)
+  * Fix -Wreturn-type warning for jpeg version check
+- Add upstream patch for HiDPI support in thumbnails (kde#373178):
+  * 0001-Add-HiDPI-support-for-thumbnails.patch
+
+-------------------------------------------------------------------
+Wed Mar 27 06:40:56 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Fix compilation in some systems
+  * Touch support for Gwenview
+  * Deprecated--
+  * Remove deprecated method
+  * [MainWindow] Navigate through mouse forward/back buttons
+  * Compile tests files with enabled exceptions, required for exiv2 0.27
+  * Allow Gwenview to be able to open .kra (Krita) files
+  * Set the same image mime types in all desktop files
+  * Add mime types for raw image formats to desktop file
+  * Create shortcut to focus navigator bar
+  * Use semantically correct restoration icon
+  * Use user-trash icon for Trash action (kde#391078)
+  * Port to new connect api
+  * Use Ctrl+i to trigger a name filter, which matches Dolphin (kde#386531)
+  * Ignore files
+  * Const'ify, add const'ref found by clazy
+  * Bump max thumbnail size to 512px
+  * Compile more files with enabled exceptions, required for exiv2 0.27
+  * Use forward declaration for Exiv2::Image, port to std::unique_ptr
+  * Use FlowLayout for Crop toolbar
+  * Fix mem leak found by asan
+  * [ThumbnailView] Fix mouse buttons handling
+- Dropped patches, now upstream:
+  * 0001-Compile-more-files-with-enabled-exceptions-required-.patch
+  * 0002-Use-forward-declaration-for-Exiv2-Image-port-to-std-.patch
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:12 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * No code changes since 18.12.2
+
+-------------------------------------------------------------------
+Sat Feb 09 08:24:53 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * No code changes since 18.12.1
+
+-------------------------------------------------------------------
+Fri Feb  1 15:22:28 UTC 2019 - wbauer@tmo.at
+
+- Update build requirements
+
+-------------------------------------------------------------------
+Fri Jan 11 05:41:56 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * No code changes since 18.12.0
+
+-------------------------------------------------------------------
+Sat Dec 29 23:52:42 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with Exiv2 0.27
+  Add 0001-Compile-more-files-with-enabled-exceptions-required-.patch
+  Add 0002-Use-forward-declaration-for-Exiv2-Image-port-to-std-.patch
+
+-------------------------------------------------------------------
+Fri Dec 14 06:08:55 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * Make FindExiv2.cmake work with exiv 0.27.
+
+-------------------------------------------------------------------
+Mon Dec 03 20:55:47 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * No code changes since 18.11.80
+
+-------------------------------------------------------------------
+Tue Nov 20 06:21:55 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:56:40 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:29 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * No code changes since 18.08.2
+
+-------------------------------------------------------------------
+Thu Oct 11 20:06:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * Fix orientation when saving/transforming JPEG images
+  * Set file name on print job (kde#332207)
+
+-------------------------------------------------------------------
+Thu Sep 06 18:42:51 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * Fix Crop tool Aspect ratio sometimes randomly preselected
+  * Improve keyboard handling for focused buttons in Crop and Reduce Red Eye tools
+  * Fix Advanced settings crop toolbar sometimes cut off
+  * Keep the width of the crop spinboxes fixed to avoid wiggling
+
+-------------------------------------------------------------------
+Thu Aug 16 22:01:18 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * Fix video controls volume slider not vertically centered sometimes (kde#390929)
+  * Disable setImageData for dragging of unmodified images
+  * Make sure, a newly saved image is selected in ContextManager
+  * Keep crop handles inside selection rectangle
+  * Remove crosshair cursor from crop tool
+  * Fix crosshair cursor not showing in red eye reduction tool (kde#321933)
+  * Propagate unused mouse press events in edit tools
+  * Reactivate size slider in Red Eye Reduction tool
+  * Propagate unused mouse wheel events in edit tools
+  * Fix image smoothing sometimes not getting applied (kde#396736)
+
+-------------------------------------------------------------------
+Sat Jul 28 22:49:44 UTC 2018 - wbauer@tmo.at
+
+- Build with gcc7 on Leap 42.3, it doesn't compile with 4.8 anymore
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:29 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Fri Jul 13 04:49:48 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * Fix external application menu occasionally slowing down startup (kde#395925)
+  * Fix issues with cursors and unwanted actions when right-clicking
+  * Reset zoom cursor more reliably
+  * Fix QFileDialog::selectUrl() setting initial directory
+  * Enable AutoErrorHandling for rename job (kde#395890)
+
+-------------------------------------------------------------------
+Fri Jun 08 05:06:36 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * Fix share menu not showing the first time it is used
+  * Watch for installation of kipi-plugins only when needed
+  * Update thumbnail de-/select hover button on selection change (kde#394406)
+  * Update paste action on current directory and selection changes (kde#276255)
+  * Cleanup code for finishing undo/redo of image operations
+  * Enable redo for undone image operations
+  * Disable View mode shortcuts outside of View mode
+
+-------------------------------------------------------------------
+Fri May 11 05:17:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * Fix custom folder icons using an absolute path entry (kde#315983)
+  * Fix "Save As" in failed-save message box
+  * Remove duplicate overwrite confirmation dialog
+  * Fix duplicate and markup displaying failed-save message box (kde#393170)
+  * Fix View Mode session restore (kde#393176)
+  * Update view offset in higher zoom levels after image size changed
+  * Center image after edit operation changed size
+  * Fix reloading of SVG images (kde#359736)
+
+-------------------------------------------------------------------
+Wed Apr 18 07:48:40 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * Update view offset in higher zoom levels after image size changed
+  * Center image after edit operation changed size
+  * Fix reloading of SVG images (kde#359736)
+  * Adapt PlaceTreeModelTest autotest to KIO change
+  * Fix shortcut config changes sometimes not updating until restart (kde#389331)
+  * Fix thumbnail update after undo (kde#356998)
+  * Fix thumbnail bar update after editing a viewed image
+
+-------------------------------------------------------------------
+Fri Apr 06 07:08:48 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar 08 23:51:05 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * Enlarge small SVGs too (kde#364822)
+  * Fix URL Navigator margins
+  * Hide fullscreen thumbnailbar when on-canvas image tools are in use
+  * Remove symbolic icons in favor of standard icons
+  * Fix thumbnail bar in View resetting to OFF when quitting in fullscreen
+  * Fix background color for image view toolbar (crop/red-eye)
+  * Update filename in fullscreen view on rename (kde#390332)
+  * Add icons for context and sidebar menu
+  * Improve thumbnail tooltip animation (kde#245091)
+  * Save config when opening the config dialog (kde#390331)
+
+-------------------------------------------------------------------
+Wed Feb 07 08:47:23 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * Resize top bar in fullscreen view mode on toggling sidebar (kde#387784)
+  * Disable auto saving window size in fullscreen mode
+
+-------------------------------------------------------------------
+Thu Jan 11 23:40:56 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * Fix failing PlaceTreeModelTest autotest (kde#387824)
+  * Respect custom filename for Copy/Move/Link To operations (kde#388144)
+  * Fix displaying RW2 files with shared-mime-info 1.9
+  * Fix expanding of baloo URLs in folders sidebar tree view
+  * Revert changes caused by mistake from previous commit
+  * Fixed places side panel for baloo urls
+  * Update titlebar after image modification (kde#345980)
+  * Correct margin for left sidebar (kde#381535)
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:02 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * Update selection after renaming a file (kde#249001)
+  * appdata: update doc URL, more https
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:35 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * General HiDPI enablement for Gwenview's importer
+  * Initial focus to thumbnails in browse mode (kde#312631)
+  * Indicate that Gwenview can open Targa images
+  * Persist path for "Copy/Move/Link To" to config file
+
+-------------------------------------------------------------------
+Mon Nov 20 06:58:55 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Remove stray todo from gvpart.desktop
+  * Try to keep ContextManager in sync with viewed files in MainWindow (kde#355493, kde#275807, kde#326190, kde#306835)
+  * Make CFitsio optional
+  * Update move/copy/link dialog window's title to reflect selected files
+  * Fix zoom slider toolbuttons not disabling properly
+  * Scroll wheel and touchpad zoom in smaller increments (kde#307637)
+  * Add option to show file in File Manager
+  * Apply full screen color scheme also to window decoration
+  * Remove references to Android and KStars from CMake
+  * Fix build with cfitsio
+  * Add FITS format support
+  * Add ccache support
+  * Always show image rotation buttons in Image Operations sidebar when other operations are available (kde#354149)
+  * Give Gwenview's Save As dialog a proper title: "Save Image" (kde#348221)
+  * Fix CMake CMP0048 warning about project() without VERSION
+  * Add .arcconfig
+  * Replaced calls to the deprecated function KJobUiDelegate *ui().
+  * Look at to use gwenview without install it
+
+-------------------------------------------------------------------
+Thu Nov 09 23:10:50 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * Fix padding of "Fit Width" button (kde#385035)
+
+-------------------------------------------------------------------
+Tue Oct 17 00:31:16 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * Fix icon colors of inline context buttons also in full screen mode
+  * Use standard QToolButtons so that their icons use the right colors (kde#383059)
+  * Gwenview: suppressed unused interface variables compiler warnings.
+  * Fix Gwenview Importer doesn't use date/time from EXIF
+  * Reduce hyper-sensitive touchpad scroll-zoom speed (kde#378584)
+  * Add 16:9 crop preset to Gwenview (kde#364007)
+
+-------------------------------------------------------------------
+Thu Sep 07 07:01:22 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * Remember paths for Copy-To and Move-To (kde#362474)
+
+-------------------------------------------------------------------
+Sat Aug 12 10:36:48 UTC 2017 - jengelh@inai.de
+
+- Make description neutral.
+
+-------------------------------------------------------------------
+Fri Aug 11 22:44:58 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+  * Fix assert with Qt debug builds (kde#382542)
+  * thumbnailprovider: downgrade missing size info debug from warning, kio doesn't store size info so it spams a lot
+  * Use Q_DECL_OVERRIDE
+  * Add toolbar menu entries
+  * Port more deprecated functions and fix warnings
+  * Support Apple OS X' image/x-icns
+  * Fix part loading under kpartloader
+  * Set organization domain to kde.org.
+  * Do not set application data twice. It ends up in desktop file name being org.kde.org.kde.gwenview.
+  * Add Fit to width
+
+-------------------------------------------------------------------
+Sat Aug  5 18:16:49 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 22:59:03 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:41 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * Fix Enter and Escape keys in tool dialogs (crop, red eye) (kde#313806)
+  * Fixed persistence of "Show Status Bar" action status
+  * Add keyboard shortcut for statusbar toggling option
+  * Re-enable all tests
+  * Fix crop region size (kde#340459)
+  * Re-enable importertest
+  * Avoid data loss when importing pictures (kde#379615)
+- Drop upstreamed patches:
+  * fix-importer.patch
+
+-------------------------------------------------------------------
+Wed May 17 20:35:41 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * History (recentfolders) not working / folder never created (kde#379177)
+  * Correctly load the translations
+
+-------------------------------------------------------------------
+Thu May 11 13:34:26 UTC 2017 - wbauer@tmo.at
+
+- Add fix-importer.patch to make the importer work and not cause
+  data loss if "Delete" is chosen after the import (kde#379615)
+- Provides/Obsoletes gwenview instead of Conflicts
+
+-------------------------------------------------------------------
+Sun Apr 16 10:44:47 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * Do not set application data twice. It ends up in desktop file name being org.kde.org.kde.gwenview.
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:16 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * None
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:12 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar  9 12:34:37 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * Fix wrong action name for setDefaultShortcut() (kde#355313)
+
+
+-------------------------------------------------------------------
+Thu Feb  9 06:43:02 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 08:50:33 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Tue Dec 13 19:30:55 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Sat Dec  3 16:03:38 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:19:23 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+- Dropped patches:
+   + fix-multiple-arguments.diff
+
+-------------------------------------------------------------------
+Wed Nov  9 06:10:04 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Tue Oct 11 20:46:51 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Thu Sep 29 07:31:32 UTC 2016 - alarrosa@suse.com
+
+- Added a require for kdelibs4support since that package provides
+  qimageioplugins services for jpeg, png, gif and other image formats
+  and gwenview5 can't be used without it (boo#1001276).
+
+-------------------------------------------------------------------
+Wed Sep 28 15:17:34 UTC 2016 - alarrosa@suse.com
+
+- Added QUrl::AssumeLocalFile to fix-multiple-arguments.diff to
+  mimic the patch accepted upstream
+
+-------------------------------------------------------------------
+Wed Sep 28 10:36:41 UTC 2016 - alarrosa@suse.com
+
+- Add fix-multiple-arguments.diff to fix handling of multiple local
+  file arguments in the command line (boo#1001276)
+
+-------------------------------------------------------------------
+Fri Sep  9 08:06:19 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Fri Aug 12 10:03:34 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Aug  8 14:36:00 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.08-rc.php
+
+
+-------------------------------------------------------------------
+Thu Jul  7 23:23:16 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+
+-------------------------------------------------------------------
+Fri Jun 10 17:47:48 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Sat May  7 10:12:06 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+
+-------------------------------------------------------------------
+Sun Apr 17 05:51:48 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Mon Apr 11 06:32:07 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+
+-------------------------------------------------------------------
+Sun Mar 13 15:35:12 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.3
+   * KDE Applications 15.12.3
+   * https://www.kde.org/announcements/announce-applications-15.12.3.php
+   * boo#970855
+
+
+-------------------------------------------------------------------
+Sat Feb 13 08:02:01 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.2
+   * KDE Applications 15.12.2
+   * https://www.kde.org/announcements/announce-applications-15.12.2.php
+   * boo#966605
+
+
+-------------------------------------------------------------------
+Sat Jan  9 18:10:59 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.1
+   * KDE Applications 15.12.1
+   * https://www.kde.org/announcements/announce-applications-15.12.1.php
+   * boo#961265
+
+
+-------------------------------------------------------------------
+Sun Dec 13 13:02:06 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.0
+   * KDE Applications 15.12.0
+   * https://www.kde.org/announcements/announce-applications-15.12.0.php
+   * boo#958887
+
+
+-------------------------------------------------------------------
+Tue Nov 10 19:54:23 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.3
+   * KDE Applications 15.08.3
+   * https://www.kde.org/announcements/announce-applications-15.08.3.php
+   * boo#954531
+
+
+-------------------------------------------------------------------
+Sun Oct 18 16:49:30 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Let gwenview5 be installable
+
+-------------------------------------------------------------------
+Sun Oct 11 13:16:45 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.2
+   * KDE Applications 15.08.2
+   * https://www.kde.org/announcements/announce-applications-15.08.2.php
+
+
+-------------------------------------------------------------------
+Sun Sep 13 18:58:13 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.1
+   * KDE Applications 15.08.1
+   * https://www.kde.org/announcements/announce-applications-15.08.1.php
+
+
+-------------------------------------------------------------------
+Sat Aug 22 19:13:52 UTC 2015 - cgiboudeaux@gmx.com
+
+- Initial package for Gwenview.
+

@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Tue Oct 14 10:21:10 UTC 2014 - coolo@suse.com
+
+- updated to version 2.0.0
+ - Gem has been refactored into multiple framework-specific gems.
+ - All methods of use except the `ci:setup:*` Rake tasks.
+
+-------------------------------------------------------------------
+Mon Oct 13 05:47:32 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Sun Oct 12 09:46:57 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Sun May 18 09:04:36 UTC 2014 - coolo@suse.com
+
+- updated to version 1.9.2
+ - GH #119: add timestamp attribute (Shawn Zhu)
+ - GH #118: yank rubyforge guts (Shawn Zhu)
+ - GH #115: README doc additions (Piotr Kuczynski)
+
+-------------------------------------------------------------------
+Sun Jan  5 14:39:41 UTC 2014 - coolo@suse.com
+
+- updated to version 1.9.1
+ - GH #111: Add MIT license in gemspec (Dave Golombek)
+ - GH #84: Fix for filename too long on ecryptfs (Gintaras Sakalauskas)
+ - Upgrade RSpec, Cucumber and Spinach deps and fix deprecations
+ - Get Travis build green again for 1.9.3, 2.0.0 and JRuby
+
+-------------------------------------------------------------------
+Wed Jul  3 12:58:41 UTC 2013 - coolo@suse.com
+
+- updated to version 1.9.0
+ - Merge PR #102 (thanks docwhat)
+ - Drop 1.8 support from travis/build scripts
+
+-------------------------------------------------------------------
+Sun Feb  3 19:25:44 UTC 2013 - coolo@suse.com
+
+- updated to version 1.8.4
+  - Fixing LoadError for rspec/version for apps that use rspec-rails (thanks
+    Dmitry Frenkel)
+
+-------------------------------------------------------------------
+Fri Dec  7 09:03:15 UTC 2012 - coolo@suse.com
+
+- updated to version 1.8.3
+ - Update test-unit dependency to '> 2.4.9' (thanks Troy Dawson)
+ - Add spinach documentation
+
+-------------------------------------------------------------------
+Wed Dec  5 13:11:50 UTC 2012 - coolo@suse.com
+
+- updated to version 1.8.2
+ - #80: Handle rspec-core 2.10.0 #format_backtrace regression and fix
+ - Manifest and gemspec for 1.8.0 was missing spinach files. Fixes #79.
+
+-------------------------------------------------------------------
+Sat Dec  1 13:39:20 UTC 2012 - coolo@suse.com
+
+- updated to version 1.8.0
+ - Add support for Spinach -- pull request #67 from spraints/spinach
+ - Merge pull request #62 from citrusmoose/master
+ - Merge pull request #76 from pivotal-leopold/master
+ - Merge pull request #78 from Marketcircle/minitest-errors
+ - Merge pull request #56 from orianthi/master
+
+-------------------------------------------------------------------
+Fri Oct 12 09:42:42 UTC 2012 - coolo@suse.com
+
+- updated to version 1.7.3
+ - Don't extend RSpec BaseFormatter but instead delegate via method_missing for
+   better forward-compatibility
+
+-------------------------------------------------------------------
+Tue Sep 11 07:16:41 UTC 2012 - coolo@suse.com
+
+- updated to version 1.7.2
+  * #73: do not search ancestors when checking Test::Unit.const_defined? (Sean Walbran)
+  * #68: make sure @suite is not nil (Patrick Cheng)
+
+-------------------------------------------------------------------
+Mon Aug 27 19:47:34 UTC 2012 - coolo@suse.com
+
+- updated to version 1.7.1
+  * #58: Use const_defined? for checking a constant is defined (Kouhei Sutou)
+  * #70: Initialize delegate IO for non-tee methods
+  * #55: Accommodate 1.8.7 which requires std streams to be subclasses of IO
+  * #52: Mark skipped tests as skipped instead of failure
+  * #51: Allow for constants to include "Omission" or :Omission (1.8 vs. 1.9).
+
+-------------------------------------------------------------------
+Wed Feb 29 15:01:20 UTC 2012 - saschpe@suse.de
+
+- Update to version 1.7.0:
+  * #49: fix nil to_xs with CI_CAPTURE=off (thanks Sean Walbran)
+  * #47: Fix regression - don't pull test/unit in unnecessarily
+
+-------------------------------------------------------------------
+Mon Feb 13 10:54:46 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Thu Oct 20 19:32:52 UTC 2011 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Remove outdated stuff
+  * Added RPM group for base package
+
+-------------------------------------------------------------------
+Wed Jul 27 14:17:18 UTC 2011 - fcastelli@novell.com
+
+- Update to verion 1.6.5
+- Force usage of rubygem-build-2_1
+
+-------------------------------------------------------------------
+Mon Feb 21 10:59:36 UTC 2011 - fcastelli@novell.com
+
+- Fixed rdoc issue
+
+-------------------------------------------------------------------
+Wed Feb 16 16:03:57 UTC 2011 - fcastelli@novell.com
+
+- Packaged version 1.6.4
+

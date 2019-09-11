@@ -1,0 +1,134 @@
+From 37a4d0dbeb9a92b959edfb9b1aceba4eaacf9f78 Mon Sep 17 00:00:00 2001
+From: Alex Panov <thealexpanov@gmail.com>
+Date: Sun, 15 May 2016 23:36:18 -0400
+Subject: [PATCH] Add boolean matchers
+
+---
+ README.rst                                         |  5 ++++
+ src/hamcrest/library/__init__.py                   |  3 ++
+ src/hamcrest/library/bool/__init__.py              |  1 +
+ src/hamcrest/library/bool/bool_comparison.py       | 22 ++++++++++++++
+ tests/hamcrest_unit_test/bool/__init__.py          |  0
+ .../bool/bool_comparison_test.py                   | 34 ++++++++++++++++++++++
+ 6 files changed, 65 insertions(+)
+ create mode 100644 src/hamcrest/library/bool/__init__.py
+ create mode 100644 src/hamcrest/library/bool/bool_comparison.py
+ create mode 100644 tests/hamcrest_unit_test/bool/__init__.py
+ create mode 100644 tests/hamcrest_unit_test/bool/bool_comparison_test.py
+
+diff --git a/README.rst b/README.rst
+index 8ef46bb..d2200f8 100644
+--- a/README.rst
++++ b/README.rst
+@@ -148,6 +148,11 @@ PyHamcrest comes with a library of useful matchers:
+   * ``greater_than``, ``greater_than_or_equal_to``, ``less_than``,
+     ``less_than_or_equal_to`` - match numeric ordering
+ 
++* Boolean
++
++  * ``is_true`` - verify the value is True
++  * ``is_false`` - verify the value is False
++
+ * Text
+ 
+   * ``contains_string`` - match part of a string
+diff --git a/src/hamcrest/library/__init__.py b/src/hamcrest/library/__init__.py
+index a5a7963..55dfcda 100644
+--- a/src/hamcrest/library/__init__.py
++++ b/src/hamcrest/library/__init__.py
+@@ -7,6 +7,7 @@ from hamcrest.library.integration import *
+ from hamcrest.library.number import *
+ from hamcrest.library.object import *
+ from hamcrest.library.text import *
++from hamcrest.library.bool import *
+ 
+ __author__ = "Jon Reid"
+ __copyright__ = "Copyright 2011 hamcrest.org"
+@@ -41,4 +42,6 @@ __all__ = [
+     'ends_with',
+     'starts_with',
+     'string_contains_in_order',
++    'is_true',
++    'is_false'
+ ]
+diff --git a/src/hamcrest/library/bool/__init__.py b/src/hamcrest/library/bool/__init__.py
+new file mode 100644
+index 0000000..7cf13a3
+--- /dev/null
++++ b/src/hamcrest/library/bool/__init__.py
+@@ -0,0 +1 @@
++from .bool_comparison import is_true, is_false
+diff --git a/src/hamcrest/library/bool/bool_comparison.py b/src/hamcrest/library/bool/bool_comparison.py
+new file mode 100644
+index 0000000..af7e1b6
+--- /dev/null
++++ b/src/hamcrest/library/bool/bool_comparison.py
+@@ -0,0 +1,22 @@
++from hamcrest.core.base_matcher import BaseMatcher
++
++
++class IsABool(BaseMatcher):
++    def __init__(self, boolean_value):
++        self.boolean_value = boolean_value
++
++    def describe_to(self, description):
++        description.append_text(str(self.boolean_value))
++
++    def _matches(self, item):
++        if not isinstance(item, bool):
++            return False
++        return item == self.boolean_value
++
++
++def is_true():
++    return IsABool(True)
++
++
++def is_false():
++    return IsABool(False)
+diff --git a/tests/hamcrest_unit_test/bool/__init__.py b/tests/hamcrest_unit_test/bool/__init__.py
+new file mode 100644
+index 0000000..e69de29
+diff --git a/tests/hamcrest_unit_test/bool/bool_comparison_test.py b/tests/hamcrest_unit_test/bool/bool_comparison_test.py
+new file mode 100644
+index 0000000..e865365
+--- /dev/null
++++ b/tests/hamcrest_unit_test/bool/bool_comparison_test.py
+@@ -0,0 +1,34 @@
++from hamcrest import assert_that, equal_to
++from hamcrest.core.string_description import StringDescription
++from hamcrest.library.bool import is_false, is_true
++from hamcrest_unit_test.matcher_test import MatcherTest
++
++
++class BoolComparisonTest(MatcherTest):
++    def test_true_is_true(self):
++        self.assert_matches('Is True', is_true(), True)
++
++    def test_false_is_not_true(self):
++        self.assert_does_not_match('False', is_true(), False)
++
++    def test_false_is_false(self):
++        self.assert_matches('False', is_false(), False)
++
++    def test_true_is_not_false(self):
++        self.assert_does_not_match('True', is_false(), True)
++
++    def test_number_is_not_true(self):
++        self.assert_does_not_match('True', is_true(), 1)
++
++    def test_number_is_not_false(self):
++        self.assert_does_not_match('False', is_false(), 1)
++
++    def test_is_true_description(self):
++        description = StringDescription()
++        is_true().describe_to(description)
++        assert_that(str(description), equal_to('True'))
++
++    def test_is_false_description(self):
++        description = StringDescription()
++        is_false().describe_to(description)
++        assert_that(str(description), equal_to('False'))
+-- 
+2.9.3
+

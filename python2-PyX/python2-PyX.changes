@@ -1,0 +1,124 @@
+-------------------------------------------------------------------
+Thu Sep  7 17:53:27 UTC 2017 - toddrme2178@gmail.com
+
+- Rename to python2-PyX to comply with python packaging guidelines
+  and to allow python-PyX to be singlespec
+- Use more modern macros.
+
+-------------------------------------------------------------------
+Sun Jul 27 06:23:21 UTC 2014 - badshah400@gmail.com
+
+- Update to version 0.12.1:
+  - Lots of changes since previously packaged version, see
+    /usr/share/doc/packages/python-pyx/CHANGES for a full list
+- Packaging changes:
+  - Remove spurious executable permissions and shebangs wherever
+    needed to avoid rpmlint warnings
+  - No longer use deprecated "--record-rpm"; use %{python_sitelib}
+    instead
+  - Drop patches that no longer apply
+    + python-pyx-no_root-0.8.1.patch
+    + PyX-0.9-pyxrcdir.patch (no more /etc/pyxrc file)
+  - Specfile cleanups
+    + Remove empty %clean section
+    + Use full source URL for Source tag
+    + License tag updated to spdx norms
+    + export CFLAGS="$RPM_OPT_FLAGS" no more required
+    + No longer required to run sed over installed files
+    + List of Authors removed, see packaged AUTHORS file instead.
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:40 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Aug 12 20:02:48 CEST 2009 - matejcik@suse.cz
+
+- build as noarch on newer distros
+
+-------------------------------------------------------------------
+Fri Apr  4 18:00:48 CEST 2008 - matejcik@suse.cz
+
+- update to 0.10
+  * support for parallel/central projection 3D plotting
+  * new styles, examples, bugfixes
+
+-------------------------------------------------------------------
+Thu Aug 30 20:03:51 CEST 2007 - jmatejek@suse.cz
+
+- added 'pyxrcdir' variable to config, import works again
+  (#305304)
+
+-------------------------------------------------------------------
+Fri Apr 20 16:46:11 CEST 2007 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Thu Oct 19 16:17:28 CEST 2006 - jmatejek@suse.cz
+
+- update to 0.9
+- new set of deformers
+- many new examples
+- module for handling Type1 fonts
+- support for transparency in PDF output
+
+-------------------------------------------------------------------
+Tue Feb 28 16:46:03 CET 2006 - jmatejek@suse.cz
+
+- updated to reflect python changes due to #149809
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:51 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct 19 14:41:00 CEST 2005 - matejcik@suse.cz
+
+- update to 0.8.1
+- fixed no-root patch for new version
+
+-------------------------------------------------------------------
+Wed Mar 16 19:16:28 CET 2005 - mcihar@suse.cz
+
+- mark config file as config
+
+-------------------------------------------------------------------
+Thu Feb 10 16:35:46 CET 2005 - mcihar@suse.cz
+
+- update to 0.7.1
+
+-------------------------------------------------------------------
+Wed Aug 04 16:18:16 CEST 2004 - mcihar@suse.cz
+
+- update to 0.6.3
+- use %py_requires
+
+-------------------------------------------------------------------
+Fri Jan 30 17:23:53 CET 2004 - mcihar@suse.cz
+
+- update to 0.5.1
+
+-------------------------------------------------------------------
+Thu Oct 30 16:16:27 CET 2003 - mcihar@suse.cz
+
+- updated to 0.4.1
+- no root for build
+
+-------------------------------------------------------------------
+Mon Jun 16 16:49:23 CEST 2003 - mcihar@suse.cz
+
+- use record-rpm
+
+-------------------------------------------------------------------
+Mon May 12 12:39:05 CEST 2003 - mcihar@suse.cz
+
+- use versioned dependency on python
+
+-------------------------------------------------------------------
+Tue May 06 13:17:57 CEST 2003 - mcihar@suse.cz
+
+- initial version
+

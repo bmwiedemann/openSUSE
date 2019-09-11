@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Sat May 25 13:01:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1.7:
+  * Distribute license
+
+-------------------------------------------------------------------
+Sat May 25 09:50:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1.6:
+  * In submission, avoid an error on non-integer durations.
+    A new function, get_submission_status, abstracts the API endpoint for monitoring submissions using the (new) result from the submit function.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:53 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Apr 21 17:48:00 UTC 2017 - alarrosa@suse.com
+
+- Use singlespec macros
+- Update to 1.1.5: 
+  * Fix compatibility with Python 3 in the submit function.
+    Errors in submit are now also handled correctly.
+
+-------------------------------------------------------------------
+Wed Jan 18 12:24:31 UTC 2017 - alarrosa@suse.com
+
+- Initial package release
+ 
+  1.1.4
+    Fix an error on versions of the `fpcalc` tool that report the duration as a
+    fractional number.
+  
+  1.1.3
+    Accept `bytearray` objects in addition to other bytes-like types.
+  
+  1.1.2
+    Fix a possible crash on Unicode text in Python 2 in a non-Unicode locale.
+    Look for version "1" of the Chromaprint shared library file.
+  
+  1.1.1
+    Fix a possible setup error on Python 3 (thanks to Simon Chopin).
+  
+  1.1.0
+    Include ``fpcalc.py`` script in source distributions.
+    Add Python 3 support (thanks to Igor Tsarev).
+  
+  1.0.0
+    Include ``fpcalc.py``, a script mimicking the ``fpcalc`` program from the
+    Chromaprint package.
+    Handle a ``UnicodeDecodeError`` raised when using the ``fpcalc`` backend on
+    Windows with Unicode filenames.
+    Standard error output from ``fpcalc`` is suppressed.
+  
+  0.7
+    Properly encode Unicode parameters (resolves a ``UnicodeEncodeError``
+    in fingerprint submission).
+    Parse all recordings for each Acoustid lookup result.
+  
+  0.6
+    Add a new function, ``fingerprint_file``, that automatically selects a
+    backend for fingerprinting a single file.
+  
+  0.5
+    Fix response parsing when recording has no artists or title.
+    Fix compatibility with Python < 2.7.
+    Add specific ``NoBackendError`` exception.
+  
+  0.4
+    Fingerprinting can now fall back to using the ``fpcalc`` command-line tool
+    instead of the Chromaprint dynamic library so the library can be used with
+    the binary distributions (thanks to Lukas Lalinsky).
+    Fingerprint submission (thanks to Alastair Porter).
+    Data chunks can now be buffers as well as bytestrings (fixes compatibility
+    with pymad).
+  
+  0.3
+    Configurable API base URL.
+    Result parser now generates all results instead of returning just one.
+  

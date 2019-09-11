@@ -1,0 +1,380 @@
+-------------------------------------------------------------------
+Thu Oct 18 07:45:17 UTC 2018 - qzheng@suse.com
+
+- Add 0007-set-the-output-chunk-to-the-amount-of-frames.patch to
+  set the output chunk to the amount of frames we pulled so that 
+  the next module in the chain has the correct frame count ( 
+  boo#1111586, CVE-2018-17095 ).
+
+-------------------------------------------------------------------
+Thu Mar  9 10:37:05 UTC 2017 - alarrosa@suse.com
+
+- Add 0001-Always-check-the-number-of-coefficients.patch to put in code
+  an assert that was removed when building the code for a release
+  which checks the number of coeficients in WAVE.cpp .
+- Add 0002-Check-for-multiplication-overflow-in-MSADPCM-decodeS.patch
+  to check for a multiplication overflow in MSADPCM.cpp .
+- Add 0003-Check-for-multiplication-overflow-in-sfconvert.patch to
+  check that a multiplication doesn't overflow when calculating a
+  buffer size and reduce it if necessary.
+- Add 0004-clamp-index-values-to-fix-index-overflow-in-IMA.cpp.patch
+  to clamp index values to fix an index overflow in IMA.cpp .
+- Add 0005-Actually-fail-when-error-occurs-in-parseFormat.patch
+  so when there's an unsupported number of bits per sample or an invalid
+  number of samples per block, don't only print an error message using
+  the error handler, but actually stop parsing the file.
+- Add 0006-Check-for-division-by-zero-in-BlockCodec-runPull.patch to
+  check for division by zero in BlockCodec::runPull
+- These patches fix boo#1026978 (CVE-2017-6837, CVE-2017-6838,
+  CVE-2017-6839), boo#1026979 (CVE-2017-6827),
+  boo#1026980 (CVE-2017-6828), boo#1026981 (CVE-2017-6829),
+  boo#1026982 (CVE-2017-6830), boo#1026983 (CVE-2017-6831),
+  boo#1026984 (CVE-2017-6832), boo#1026985 (CVE-2017-6833),
+  boo#1026986 (CVE-2017-6834), boo#1026987 (CVE-2017-6836),
+  boo#1026988 (CVE-2017-6835).
+
+-------------------------------------------------------------------
+Fri Jan 29 12:20:40 UTC 2016 - rguenther@suse.com
+
+- Add audiofile-gcc6.patch to fix compile errors with GCC 6.
+
+-------------------------------------------------------------------
+Thu Oct 22 16:40:50 CEST 2015 - sbrabec@suse.com
+
+- Fix overflow when changing both number of channels and sample
+  format (bsc#949399, CVE-2015-7747,
+  audiofile-CVE-2015-7747.patch).
+
+-------------------------------------------------------------------
+Thu Aug 14 15:42:17 UTC 2014 - fcrozat@suse.com
+
+- Add Obsoletes audiofiles-32bit to baselibs.conf
+
+-------------------------------------------------------------------
+Tue Mar 25 11:25:25 UTC 2014 - avvissu@yandex.ru
+
+- Fix unresolvable dependencies for SLE11:
+  + add RPM conditional tests for sles_version 
+- Fix compilation error on SLE11: permission denied:
+  + add $DESTDIR to make install 
+
+-------------------------------------------------------------------
+Thu Mar  7 11:05:21 UTC 2013 - reddwarf@opensuse.org
+
+- Update to version 0.3.6:
+  + Implement FLAC and ALAC encoding and decoding.
+  + Update license to LGPL 2.1.
+- Remove audiofile-0.3.5-without_examples.patch
+- Add pkgconfig(flac) BuildRequires
+
+-------------------------------------------------------------------
+Wed Feb 20 15:40:52 UTC 2013 - reddwarf@opensuse.org
+
+- Update to version 0.3.5:
+  + Implement IMA ADPCM encoding and decoding for AIFF-C, CAF, and WAVE files.
+  + Implement Microsoft ADPCM encoding for WAVE files.
+  + Fix calculation of IRCAM frame size.
+  + Record marker comments in WAVE files.
+  + Improve validation of compressed audio formats.
+  + Add support for building without documentation.
+- Add audiofile-0.3.5-without_examples.patch
+- Remove audiofile-remove-unused-variables.patch
+- Remove Obsoletes: audiofile-64bit
+
+-------------------------------------------------------------------
+Fri Feb  1 18:51:38 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Fri May 11 14:55:46 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.3.4:
+  + Use hidden visibility for internal symbols.
+  + Add support for Sample Vision format.
+  + Update license for extended-precision floating-point conversion
+    routines.
+
+-------------------------------------------------------------------
+Tue Jan 17 08:52:59 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.3.3:
+  + Update library's soname version.
+  + Link against libm.
+- Drop audiofile-add-lm-linker.patch: fixed upstream.
+- Rebase audiofile-remove-unused-variables.patch.
+- Remove call to autoreconf: it was only there for
+  audiofile-add-lm-linker.patch.
+- Move man pages from libaudiofile0 subpackage to audiofile
+  subpackage, where the binaries live.
+- Rename libaudiofile0 subpackage to libaudiofile1, following
+  upstream soversion change.
+
+-------------------------------------------------------------------
+Wed Nov 30 08:19:50 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.3.2:
+  + Fix initialization of byte order in Creative Voice File format.
+  + Fix calculation of frame count in NIST SPHERE sound files.
+  + Remove duplicate definition of AFvirtualfile.
+  + Don't treat compiler warnings as errors by default.
+- Clean spec file using spec-cleaner.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:42 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Tue Sep 20 08:23:59 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Fix a typo in %_smp_mflags
+- Implement shlib policy
+
+-------------------------------------------------------------------
+Mon Sep 19 17:32:53 UTC 2011 - appleonkel@opensuse.org
+
+- Update to version 0.3.1:
+  + Support u-law and A-law compression in Core Audio Format files
+  + Add support for Creative Voice File format 
+  + Define AFframecount and AFfileoffset as 64-bit signed integers
+  + Add support for extensible WAVE format
+- Added audiofile-remove-unused-variables.patch for -Werror
+- Added audiofile-add-lm-linker.patch to fix build error
+- Drop audiofile-oldstyle.patch, fixed by upstream in a different way.
+- Split documentation of the library into doc package
+- Removed Obsoletes/Provides audiofil, seems outdated
+
+-------------------------------------------------------------------
+Mon May 10 09:04:22 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.2.7:
+  + Fix decoding of multi-channel ADPCM WAVE files.
+  + Reduce unshared data in library.
+  + Fix handling of audio files with more than 2^24 frames.
+  + Add support for writing double-precision floating-point WAVE
+    files.
+  + Add support for reading certain uncompressed AIFF-C files
+    created by Mac OS X.
+  + Write fact chunk in floating-point WAVE files.
+- Drop bnc_463220.patch, fixed by upstream in a different way.
+- Drop audiofile-0.2.6.patch, audiofile-m4_quote_fix.diff and
+  audiofile-fiximplicit.patch.
+
+-------------------------------------------------------------------
+Sat Apr 24 10:10:26 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Thu Dec 17 22:14:20 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Tue Oct 27 13:14:58 CET 2009 - meissner@suse.de
+
+- fixed implicit functions
+
+-------------------------------------------------------------------
+Sun Feb 22 06:20:57 CET 2009 - mboman@suse.de
+
+- Don't use -fno-strict-aliasing for build. Not needed
+- Remove CFLAGS, CXXFLAGS and FFLAGS since it only contains
+  $RPM_OPT_FLAGS which is default
+
+-------------------------------------------------------------------
+Tue Jan 20 20:28:15 CET 2009 - mauro@suse.de
+
+- Added bnc_463220.patch to fix bnc#463220
+  + Correct buffer size.
+
+-------------------------------------------------------------------
+Tue Jan 20 20:22:02 IST 2009 - msuman@suse.de
+
+- Clean up the spec file to use proper RPM macros
+- Continue to provide the "la" files for SUSE releases <= 11.1 
+
+-------------------------------------------------------------------
+Tue Jan 13 15:48:09 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files
+- run make check 
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Sep  6 11:22:18 CEST 2006 - anosek@suse.cz
+
+- fixed warning: old-style function definition
+  [#203121] (oldstyle.patch)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:31 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep 16 22:44:36 CEST 2005 - meissner@suse.de
+
+- fixed some implicits.
+
+-------------------------------------------------------------------
+Mon Apr 11 17:01:16 CEST 2005 - sbrabec@suse.cz
+
+- Splitted devel subpackage (#59204).
+
+-------------------------------------------------------------------
+Mon Nov 22 19:32:37 CET 2004 - gekker@suse.de
+
+- Update to version 0.2.6 
+
+-------------------------------------------------------------------
+Wed Aug 25 13:24:39 CEST 2004 - kukuk@suse.de
+
+- Avoid /bin/sh as PreRequires 
+
+-------------------------------------------------------------------
+Mon Apr 19 12:05:31 CEST 2004 - ro@suse.de
+
+- fix "control reaches end of non-void function" warnings
+
+-------------------------------------------------------------------
+Thu Mar 18 18:08:25 CET 2004 - sbrabec@suse.cz
+
+- Do not package makefiles to documentation (#36305).
+
+-------------------------------------------------------------------
+Thu Feb 19 12:55:21 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 0.2.5.
+
+-------------------------------------------------------------------
+Fri Jan 16 17:36:12 CET 2004 - pth@suse.de
+
+- Fix quoting in audiofile.m4
+
+-------------------------------------------------------------------
+Sat Jan 10 20:44:19 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Sat Jul 27 14:07:41 CEST 2002 - kukuk@suse.de
+
+- Provide audiofile-devel [Bug #17262]
+
+-------------------------------------------------------------------
+Wed Feb  6 14:20:00 CET 2002 - coolo@suse.de
+
+- use %_libdir
+
+-------------------------------------------------------------------
+Sat Feb  2 19:10:43 CET 2002 - adrian@suse.de
+
+- add libaudiofile.so and libaudiofile.la to file list
+  (this makes the -fPIC obsolete and arts can play again .way :)
+
+-------------------------------------------------------------------
+Sun Jan 27 17:12:24 CET 2002 - schwab@suse.de
+
+- Build with -fPIC so that it can be included in a shared library.
+
+-------------------------------------------------------------------
+Thu Jan 24 08:43:16 CET 2002 - hhetter@suse.de
+
+- fixed filelist 
+
+-------------------------------------------------------------------
+Wed Jan  9 11:56:46 CET 2002 - hhetter@suse.de
+
+- updated to version 0.2.3
+	* 24-bit audio processing bug fix for little-endian systems
+	* new IRCAM file format support
+	* new support for floating point data in AIFF-C and WAVE
+	  file format
+	* improved support for compressed data in AIFF-C, WAVE and
+	  NeXT formats
+	* code cleanup for 64-bit system
+	* pkgconfig file for GNOME 2.0 platform compatibility
+	* IMA and MS ADPCM format support
+	* AF_QUERYTYPE_COMPRESSION support
+- bz2 sources
+
+-------------------------------------------------------------------
+Sat Mar  3 20:20:19 MET 2001 - egger@suse.de
+
+- Updated to version 0.2.1.
+- Cleaned up specfile. 
+
+-------------------------------------------------------------------
+Thu Nov  9 16:15:55 CET 2000 - ro@suse.de
+
+- fixed obsoletes/provides 
+
+-------------------------------------------------------------------
+Wed Nov  1 01:21:05 MET 2000 - egger@suse.de
+
+- Updated specfile to new long packagenames.
+- Reworked specfile.
+- Probably needs some more work; I'm taking care of that. 
+
+-------------------------------------------------------------------
+Wed Apr 26 00:42:16 CEST 2000 - ro@suse.de
+
+- fixed suse update config call 
+
+-------------------------------------------------------------------
+Fri Apr  7 16:12:38 CEST 2000 - bk@suse.de
+
+- added suse update config marco
+
+-------------------------------------------------------------------
+Thu Sep 23 17:40:39 MEST 1999 - ke@suse.de
+
+- update: version 0.1.9.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Sep  9 12:15:28 CEST 1999 - bs@suse.de
+
+- fixed call of Check at the end of %install section
+
+-------------------------------------------------------------------
+Mon Mar  1 19:51:28 MET 1999 - ke@suse.de
+
+- update 0.1.6 (pre).
+
+-------------------------------------------------------------------
+Mon Feb 15 17:51:29 MET 1999 - ke@suse.de
+
+- update (same version number...); from GNOME mirror.
+
+-------------------------------------------------------------------
+Sat Jan  9 15:07:40 MET 1999 - ke@suse.de
+
+- initial package: version 0.1.5
+

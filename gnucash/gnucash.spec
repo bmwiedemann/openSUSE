@@ -1,0 +1,176 @@
+#
+# spec file for package gnucash
+#
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+#
+
+
+%define __builder ninja
+Name:           gnucash
+Version:        3.5
+Release:        0
+Summary:        Personal Finance Manager
+License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
+Group:          Productivity/Office/Finance
+URL:            http://www.gnucash.org/
+Source:         https://github.com/Gnucash/gnucash/releases/download/%{version}/%{name}-%{version}.tar.bz2
+Source1:        %{name}-rpmlintrc
+## Cpan-warning patch must always be applied.
+# PATCH-FIX-UPSTREAM gnucash-cpan-warning.patch -- Add a warning about the danger of using gnc-fq-update to update the perl modules used by GnuCash.
+Patch0:         gnucash-cpan-warning.patch
+BuildRequires:  cmake >= 3.0
+BuildRequires:  doxygen
+BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  gmock >= 1.8.0
+BuildRequires:  gtest >= 1.8.0
+BuildRequires:  guile-devel >= 2.0.0
+BuildRequires:  libboost_date_time-devel >= 1.54.0
+BuildRequires:  libboost_filesystem-devel >= 1.54.0
+BuildRequires:  libboost_headers-devel >= 1.54.0
+BuildRequires:  libboost_locale-devel >= 1.54.0
+BuildRequires:  libboost_regex-devel >= 1.54.0
+BuildRequires:  libboost_system-devel >= 1.54.0
+BuildRequires:  libdbi-drivers-dbd-sqlite3
+BuildRequires:  makeinfo
+BuildRequires:  ninja
+BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
+BuildRequires:  xsltproc
+BuildRequires:  pkgconfig(aqbanking) >= 4.0.0
+BuildRequires:  pkgconfig(dbi) >= 0.8.3
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.40
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.40
+BuildRequires:  pkgconfig(gnome-keyring-1) >= 0.6
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.40
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.40
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10.0
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(gwengui-gtk3)
+%endif
+BuildRequires:  pkgconfig(gwenhywfar) >= 3.99.20
+BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(icu-uc)
+BuildRequires:  pkgconfig(ktoblzcheck)
+BuildRequires:  pkgconfig(libglade-2.0)
+BuildRequires:  pkgconfig(libofx) >= 0.9.0
+BuildRequires:  pkgconfig(libsecret-1) >= 0.18
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.0
+BuildRequires:  pkgconfig(libxslt)
+BuildRequires:  pkgconfig(webkit2gtk-4.0)
+Recommends:     %{name}-docs
+Recommends:     %{name}-lang
+# For translation of currency names
+Recommends:     iso-codes
+Recommends:     python3-gnucash = %{version}
+# Optional perl modules for online price retrieval
+Recommends:     perl(Date::Manip)
+Recommends:     perl(Finance::Quote)
+
+%description
+GnuCash is a personal finance manager. A check book-like register GUI
+allows you to enter and track bank accounts, stocks, income, and even
+currency trades.
+
+Feature Highlights:
+
+ * Double-Entry Accounting;
+ * Stock/Bond/Mutual Fund Accounts;
+ * Small-Business Accounting;
+ * Reports, Graphs;
+ * QIF/OFX/HBCI Import, Transaction Matching;
+ * Scheduled Transactions;
+ * Financial Calculations.
+
+%package -n python3-gnucash
+Summary:        Python bindings for GnuCash
+Group:          Development/Libraries/Python
+Requires:       %{name} = %{version}
+
+%description -n python3-gnucash
+This package provides the Python 3 bindings for development of GnuCash,
+a personal finance manager.
+
+%package devel
+Summary:        Development files for GnuCash
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
+
+%description devel
+This package provides all the necessary files for development of GnuCash,
+a personal finance manager.
+
+%lang_package
+
+%prep
+%autosetup -p1
+
+%build
+%define _lto_cflags %{nil}
+%cmake \
+    -DCMAKE_SKIP_RPATH=OFF \
+    -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+    -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
+    -DGMOCK_ROOT=%{_includedir}/gmock \
+    -DGTEST_ROOT=%{_includedir}/gtest \
+    -DWITH_PYTHON=ON \
+    -DCOMPILE_GSCHEMAS=OFF
+%make_jobs
+
+%install
+%cmake_install
+%find_lang %{name} %{?no_lang_C}
+%fdupes %{buildroot}%{_libdir}
+%fdupes %{buildroot}%{_datadir}
+# Remove MS-Windows-related files and auto-installed LICENSE file
+rm %{buildroot}%{_docdir}/%{name}/README*win32-bin.txt
+rm %{buildroot}%{_docdir}/%{name}/LICENSE
+
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
+%files
+%license LICENSE
+%{_bindir}/gnc-fq-*
+%{_bindir}/gnucash
+%{_bindir}/gnucash-valgrind
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/gnucash.appdata.xml
+%{_datadir}/applications/*.desktop
+%{_datadir}/glib-2.0/schemas/org.gnucash.*.xml
+%{_datadir}/gnucash/
+%{_datadir}/icons/hicolor/*/apps/gnucash-icon.png
+%{_datadir}/icons/hicolor/scalable/apps/gnucash-icon.svg
+%doc %{_docdir}/%{name}
+%{_libdir}/*.so
+%{_libdir}/gnucash
+%{_mandir}/man?/*%{?ext_man}
+%dir %{_sysconfdir}/gnucash
+%config %{_sysconfdir}/gnucash/environment
+%exclude %{_datadir}/gnucash/python
+
+%files -n python3-gnucash
+%{_datadir}/gnucash/python
+%dir %{python3_sitearch}/gnucash
+%{python3_sitearch}/gnucash
+
+%files devel
+%doc ChangeLog README
+%{_includedir}/gnucash/
+
+%files lang -f %{name}.lang
+
+%changelog

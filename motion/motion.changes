@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Tue Feb 12 18:08:38 UTC 2019 - bjorn.lie@gmail.com
+
+- No longer force ffmpeg 3 versions of pkgconfig(libav*).
+
+-------------------------------------------------------------------
+Mon Jan 14 23:05:51 UTC 2019 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to 4.2.1
+  Fixes:
+  - Stream rate calculations
+  - Static library linking
+  - Eliminate updates to movie_passthrough via webcontrol
+  - Thread locking for movie_passthrough
+  - NULL terminator for EXIF
+  - Revised logging messages
+  - Guide update for mobile 
+
+-------------------------------------------------------------------
+Thu Nov  8 08:41:26 UTC 2018 - olaf@aepfle.de
+
+- Use ffmpeg3 versions of pkgconfig(libav*)
+
+-------------------------------------------------------------------
+Thu Jul 12 10:03:40 UTC 2018 - meissner@suse.com
+
+- explicitly require ffmpeg3-devel , as we currently
+  do not build against ffmpeg4.
+
+-------------------------------------------------------------------
+Wed Mar  7 10:05:53 UTC 2018 - mvetter@suse.com
+
+- Update to 4.1.1:
+  https://motion-project.github.io/motion_news.html
+
+  Fixes:
+  - Build on musl based systems
+  - jpeg decompression error processing
+  - image saving when using highres option
+  - filename for debug movie correction
+
+-------------------------------------------------------------------
+Fri Nov 24 16:33:16 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Fri Nov 24 11:00:57 UTC 2017 - olaf@aepfle.de
+
+- Use pkgconfig to refer to ffmpeg because ffmpeg-devel does not exist
+- Use pkgconfig to refer to webp
+- Remove unused zlib
+
+-------------------------------------------------------------------
+Wed Nov 15 13:44:27 UTC 2017 - meissner@suse.com
+
+- Merged things from packman.
+  - Use an own motion user, in group video
+  - sysconfig script for options in systemd service
+
+-------------------------------------------------------------------
+Tue Nov 14 16:55:34 UTC 2017 - meissner@suse.com
+
+- updated to 4.1 from github site.
+  https://github.com/Motion-Project/motion/wiki/News
+
+  - New or revised configuration options:
+    - flip_axis (mirrors the image)
+    - mask_privacy (blocks out areas of image)
+    - netcam_highres (dual stream processing)
+    - on_camera_found (script execution)
+    - substream_port (low resolution output stream)
+    - webcontrol_parms (Control what parameters are included on webcontrol)
+    - ffmpeg_timelapse renamed to timelapse_interval
+    - ffmpeg_timelapse_mode renamed to timelapse_mode
+    - timelapse_fps (fps for the resulting video)
+    - timelapse_codec (container/codec for timelapse)
+    - sdl_threadnr removed
+  - Revised functionality
+    - Removed v4l1 functionality
+    - Added support for RTMP and additional v4l2 palette options
+    - Added support for network cameras on macOSX
+    - Added additional conversion specifiers
+    - Added flood control for Motion log
+    - Revised INF/DBG message logging
+    - Log IP of failed authentication attempts
+  - Fixes
+    - Movie playback issues
+    - ffmpeg 3.1 warnings
+    - v4l2 mjpg image corruptions
+    - various other bug fixes/refactoring
+  - Known Issues:
+    - Recovery for sqlite from watchdog time out (#521)
+    - Timing on images for round-robin devices (#363)
+    - Unresponsive thread killing (#366)
+  - Updates to documentation
+    - Additional building instructions
+    - Links to configuration options at top of documentation
+    - Multiple rewrites for configuration options
+  - Updates to required libraries
+    - Added requirement for libavdevice
+    - Removed requirement for libsdl
+    - Removed requirement for libv4l
+
+-------------------------------------------------------------------
+Thu Dec  8 21:56:22 UTC 2011 - oliver.bengs@opensuse.org
+
+- imported from fedora specfile
+- some cleanups

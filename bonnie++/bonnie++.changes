@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Fri Mar 24 17:02:08 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.97.3:
+  * man page fixes
+  * fixed symlink test
+  * CSS fix for bon_csv2html
+
+-------------------------------------------------------------------
+Sun Nov 13 18:49:19 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.97.2
+  * make it build with GCC-6
+  * fix some Debian bugs.
+- Drop needed patch bonnie++-1.96-minmax.patch
+
+-------------------------------------------------------------------
+Sun Jun 19 08:09:29 UTC 2016 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use configure and make install
+- Add patches (both from Fedora):
+  * bonnie++-1.96-minmax.patch (building with gcc6 - boo#985139)
+  * bonnie++-1.96-makefile.patch (fixes installation using make)
+
+-------------------------------------------------------------------
+Fri Oct 17 17:45:32 CEST 2014 - dsterba@suse.cz
+
+- replace tarball with the upstream version
+
+-------------------------------------------------------------------
+Thu Jul 31 08:59:39 UTC 2014 - alarrosa@suse.com
+
+- Two small fixes to the spec file. Sources now is an url to
+  the upstream package and removed a provides statement which is
+  not needed since it's implicit (both noticed by dimstar)
+
+-------------------------------------------------------------------
+Wed Jul 30 13:47:07 CEST 2014 - dsterba@suse.cz
+
+- upgraded source to version 1.97
+  * fixed a bunch of bugs including bad CSV output.
+
+-------------------------------------------------------------------
+Wed Oct 12 09:31:01 UTC 2011 - tabraham@novell.com
+
+- upgraded source to version 1.96
+
+-------------------------------------------------------------------
+Sat Sep 17 20:28:01 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Feb 11 09:55:24 CET 2009 - xxiao@suse.de
+
+- fix bnc#442857 with right C++ delete 
+
+-------------------------------------------------------------------
+Mon Feb  9 14:06:16 CET 2009 - yxu@suse.de
+
+- upgraded source to version 1.03d, bnc#414150 
+
+-------------------------------------------------------------------
+Mon Dec  3 01:48:17 CET 2007 - ro@suse.de
+
+- fix build with gcc-4.3 
+
+-------------------------------------------------------------------
+Fri May 26 23:12:23 CEST 2006 - schwab@suse.de
+
+- Use RPM_OPT_FLAGS.
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:43 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct  5 12:43:58 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Tue Dec 18 14:22:18 CET 2001 - ro@suse.de
+
+- added <gpp,libgpp> to neededforbuild 
+- cleaned up install locations
+
+-------------------------------------------------------------------
+Tue Dec 18 12:33:40 CET 2001 - ories@suse.de
+
+- initial package
+- replaced getc/putc with getc_unlocked/putc_unlocked 
+

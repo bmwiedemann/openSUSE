@@ -1,0 +1,26 @@
+From e16092236c07f2ae78b29e8c58c6b37d160146a4 Mon Sep 17 00:00:00 2001
+From: David Disseldorp <ddiss@suse.de>
+Date: Mon, 12 May 2014 14:45:18 +0200
+Subject: [PATCH 11/12] etc: use bindir instead of sbindir in init scripts
+
+Signed-off-by: David Disseldorp <ddiss@suse.de>
+---
+ etc/istgt_linux.sh.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git etc/istgt_linux.sh.in etc/istgt_linux.sh.in
+index ffc746a..252c2b0 100644
+--- etc/istgt_linux.sh.in
++++ etc/istgt_linux.sh.in
+@@ -23,7 +23,7 @@ name="istgt"
+ 
+ required_files="${istgt_config}"
+ pidfile="${istgt_pidfile}"
+-command="%%SBINDIR%%/istgt"
++command="%%BINDIR%%/istgt"
+ command_args="-c ${istgt_config} ${istgt_flags}"
+ 
+ case "$1" in
+-- 
+2.1.2
+

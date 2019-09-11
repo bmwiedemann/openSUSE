@@ -1,0 +1,44 @@
+Index: b/compress.c
+===================================================================
+--- a/compress.c
++++ b/compress.c
+@@ -86,6 +86,10 @@ write_data (int fd, void *buf, size_t le
+ 	      exit(EXIT_FAILURE);
+ 	    }
+ 	}
++      else if (!next && here + len >= end_of_entries)
++	{
++	  end_of_entries = here + len;
++	}
+     }
+ 
+   return write (fd, buf, len);
+Index: b/jartool.c
+===================================================================
+--- a/jartool.c
++++ b/jartool.c
+@@ -1273,15 +1273,18 @@ int add_file_to_jar(int jfd, int ffd, co
+     compress_file(ffd, jfd, ze, existing);
+   } else {
+     /* If we are not writing the last entry, make space for it. */
+-    if (existing && existing->next_entry)
++    if (existing) 
+       {
+-	if (ze->usize > existing->usize)
++	if (existing->next_entry) 
+ 	  {
+-	    if (shift_down (jfd, existing->next_entry->offset,
+-			    ze->usize - existing->usize, existing->next_entry))
++	    if (ze->usize > existing->usize) 
+ 	      {
+-		fprintf (stderr, "%s: %s\n", progname, strerror (errno));
+-		return 1;
++		if (shift_down (jfd, existing->next_entry->offset,
++				ze->usize - existing->usize, existing->next_entry))
++		  {
++		    fprintf (stderr, "%s: %s\n", progname, strerror (errno));
++		    return 1;
++		  }
+ 	      }
+ 	  }
+       }

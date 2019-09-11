@@ -1,0 +1,53 @@
+From 952ce8410406537e388a41e873941bbc427fd4d1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Fri, 12 Dec 2014 15:45:33 +0100
+Subject: [PATCH 2/6] Remove CPAN rpaths
+
+---
+ src/perl/LogImport/Makefile.PL | 2 +-
+ src/perl/MMV/Makefile.PL       | 2 +-
+ src/perl/PMDA/Makefile.PL      | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/perl/LogImport/Makefile.PL b/src/perl/LogImport/Makefile.PL
+index a254f5ad501f..2ec42f51a4eb 100644
+--- a/src/perl/LogImport/Makefile.PL
++++ b/src/perl/LogImport/Makefile.PL
+@@ -15,7 +15,7 @@ if ($ENV{TARGET_OS} eq "mingw") {
+ else {
+     $ldfrom = "LogImport.o",
+     $inc = "-I$ENV{PCP_TOPDIR}/src/include/pcp -I/usr/include/pcp";
+-    $libs = ["-L$ENV{PCP_TOPDIR}/src/libpcp/src -L$ENV{PCP_TOPDIR}/src/libpcp_import/src -lpcp_import -lpcp"];
++    $libs = ["-lpcp_import -lpcp"];
+ }
+ if ($ENV{TARGET_OS} eq "darwin") {
+     # standard ones, minus -arch ppc
+diff --git a/src/perl/MMV/Makefile.PL b/src/perl/MMV/Makefile.PL
+index 7a6787deda4a..1e4cea0317d4 100644
+--- a/src/perl/MMV/Makefile.PL
++++ b/src/perl/MMV/Makefile.PL
+@@ -15,7 +15,7 @@ if ($ENV{TARGET_OS} eq "mingw") {
+ else {
+     $ldfrom = "MMV.o";
+     $inc = "-I$ENV{PCP_TOPDIR}/src/include/pcp -I/usr/include/pcp";
+-    $libs = ["-L$ENV{PCP_TOPDIR}/src/libpcp_mmv/src -L$ENV{PCP_TOPDIR}/src/libpcp/src -lpcp_mmv -lpcp"];
++    $libs = ["-lpcp_mmv -lpcp"];
+ }
+ if ($ENV{TARGET_OS} eq "darwin") {
+     # standard ones, minus -arch ppc
+diff --git a/src/perl/PMDA/Makefile.PL b/src/perl/PMDA/Makefile.PL
+index d5c44615a651..e2260c4b5397 100644
+--- a/src/perl/PMDA/Makefile.PL
++++ b/src/perl/PMDA/Makefile.PL
+@@ -15,7 +15,7 @@ if ($ENV{TARGET_OS} eq "mingw") {
+ else {
+     $ldfrom = "local.o PMDA.o";
+     $inc = "-I$ENV{PCP_TOPDIR}/src/include/pcp -I/usr/include/pcp";
+-    $libs = ["-L$ENV{PCP_TOPDIR}/src/libpcp_pmda/src -L$ENV{PCP_TOPDIR}/src/libpcp/src -lpcp_pmda -lpcp"];
++    $libs = ["-lpcp_pmda -lpcp"];
+ }
+ if ($ENV{TARGET_OS} eq "darwin") {
+     # standard ones, minus -arch ppc
+-- 
+2.18.0
+

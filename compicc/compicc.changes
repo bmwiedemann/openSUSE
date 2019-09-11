@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Sat Jan 28 12:00:00 UTC 2017 - ku.b@gmx.de
+
+- fix docu file names from markdownification
+
+-------------------------------------------------------------------
+Sat Dec 10 15:13:14 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.8.10:
+  * Use Oyranos to clear and move profiles.
+  * Handle Oyranos DB cache.
+  * Improve debug output.
+  * Reduce updates.
+
+-------------------------------------------------------------------
+Mon Jul 18 12:50:52 UTC 2016 - schwab@suse.de
+
+- pic-flag.patch: always compile shared objects with -fPIC
+
+-------------------------------------------------------------------
+Fri Nov 13 09:02:23 UTC 2015 - sor.alexei@meowr.ru
+
+- Restore needed gcc-c++ dependency.
+
+-------------------------------------------------------------------
+Mon Nov  9 11:48:58 UTC 2015 - sor.alexei@meowr.ru
+
+- Fix dependencies.
+- Remove not working plugin enabling.
+- Spec cleanup.
+- Remove "_disable_ld_no_undefined 1".
+- Recommend ccsm instead of depending on it.
+
+-------------------------------------------------------------------
+Mon May 11 12:00:00 UTC 2014 - ku.b@gmx.de
+
+- update to 0.8.9 release
+  * update spec requirements
+  * support 30-bit visual without region profiles
+
+-------------------------------------------------------------------
+Sun May 10 12:00:00 UTC 2014 - ku.b@gmx.de
+
+- update to 0.8.8 release
+  * integrate build patches from Petr
+  * remove references to unused fltk tests
+
+-------------------------------------------------------------------
+Wed Sep 11 10:54:12 UTC 2013 - pgajdos@suse.com
+
+- fixed build, added:
+  * no-striptopt.patch
+  * strdup.patch
+  * xcm-is-present.patch
+
+-------------------------------------------------------------------
+Tue Dec 22 12:00:00 UTC 2012 - ku.b@gmx.de
+
+- update to 0.8.7 release
+  * [core]: add ICM attribute to _ICC_COLOR_DESKTOP
+  * [core]: remove obsolete client message
+  * [core]: describe our _ICC_COLOR_DESKTOP attributes
+  * [core]: observe more XRandR events
+
+-------------------------------------------------------------------
+Tue Dec 20 12:00:00 UTC 2012 - ku.b@gmx.de
+
+- mark |ICM| attribute in _ICC_COLOR_DESKTOP atom
+
+-------------------------------------------------------------------
+Fri Nov 02 12:00:00 UTC 2012 - ku.b@gmx.de
+
+- 0.8.6 release
+- update to Oyranos 0.9
+- bug fixes
+
+-------------------------------------------------------------------
+Tue Jun 07 12:00:01 UTC 2012 - ku.b@gmx.de
+
+- fix spec file Url and Vendor information
+
+-------------------------------------------------------------------
+Tue Jun 07 12:00:00 UTC 2012 - ku.b@gmx.de
+
+- add license to spec file
+
+-------------------------------------------------------------------
+Wed Jun 06 12:00:00 UTC 2012 - ku.b@gmx.de
+
+- use spdx license format BSD-3-Clause
+
+-------------------------------------------------------------------
+Tue Mar 13 12:00:00 UTC 2012 - ku.b@gmx.de - 0.8.5
+
+- required ccsm, as we need to switch CompICC off and on during profiling
+
+-------------------------------------------------------------------
+Wed Feb 27 12:00:00 UTC 2012 - ku.b@gmx.de
+
+- Update to 0.8.5
+
+-------------------------------------------------------------------
+Wed Dec 15 12:00:00 UTC 2011 - ku.b@gmx.de
+
+- recommend < 0.9 dependency for compizconfig-settings-manager
+- buildrequire libtool
+
+-------------------------------------------------------------------
+Wed Nov 16 12:00:00 UTC 2011 - ku.b@gmx.de
+
+- handle dependencies (forwarded request 91721 from bekun)
+- recover commit changelog
+
+-------------------------------------------------------------------
+Fri Nov 11 12:00:00 UTC 2011 - ku.b@gmx.de
+
+- recommend basic oyranos-monitor command line tools
+
+-------------------------------------------------------------------
+Wed Nov 09 12:00:00 UTC 2011 - ku.b@gmx.de
+
+- require compiz < 0.9 for API break in 0.9
+
+-------------------------------------------------------------------
+Mon Oct 01 12:00:00 UTC 2011 - ku.b@gmx.de
+
+- build against compiz-0.8
+
+-------------------------------------------------------------------
+Thu May 01 12:00:00 UTC 2011 - ku.b@gmx.de
+
+- Update to 0.8.4 release
+
+-------------------------------------------------------------------
+Thu Aug 10 12:00:00 UTC 2010 - ku.b@gmx.de
+
+- initial packaging 0.8.3

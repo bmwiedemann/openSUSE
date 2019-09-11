@@ -1,0 +1,303 @@
+-------------------------------------------------------------------
+Thu Apr  4 08:55:57 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to sort zip file list
+  to make package build reproducible (boo#1041090)
+
+-------------------------------------------------------------------
+Sat Jun 24 14:21:57 UTC 2017 - mailaender@opensuse.org
+
+- Remove upstreamed appdata.patch
+- Replace system-miniupnpc.diff with system-miniupnpc.patch
+- Update to version 3.2.3
+  * Fix: Rescale body points if players have different armour levels when transferring units (d0934ff3ad, #4554)
+  * Fix: Occasional crash when entering host game menu (03d494d366, #4567, #4564, #4546, #4361 and others)
+  * Fix: Game freeze on clicking on start game in menu (382077800b, #4566)
+  * Fix: Never put scavengers on human teams by accident (a691778a5f, #4563)
+  * Add: We now support higher than 8x MSAA, if supported by driver - do not show 8x if not supported (33057c24ed)
+  * Change: Optimizing graphics rendering (92b50b7665, c1f697f28a, a70920985e, 486dd8e9c0)
+  * Change: Increase default resolution to 1024x720 rather than 640x480 (9b0fa9e79a)
+  * Fix: Avoiding some techniques to hopefully run with more drivers (8a2ff4499d, 4134f82d22, 871fa31c80)
+  * Fix: Fix clipped letters (9c04d4ad6b)
+  * Fix: Fix text rendering blend mode, makes progress bar more readable (0bfd217940, #4569)
+  * Fix: Still/moving helicopter/VTOL animations were reversed (fb9bea5e0a, #4489)
+  * Fix: Prevent structure turret stretching again (f79286dc13, #4537)
+  * Change: Lots of initial campaign ported to Javascript. Discuss these changes in our new porting forum here: viewforum.php?f=51
+  * Add: donateObject() works on structures. findResearch() works on other players (839e0b0f5c)
+  * Add: New function hackDoNotSave(global name) to prevent variable from being put in savegames (ff57dc5733)
+  * Add: Add setHealth(object, health %) to set a game object's health (62a7c96168)
+- Changes from 3.2.2
+  * Change: Improved debug menu (e89e162540, 550f6eb01e)
+  * Change: Improved handling of multiplayer map/mod downloads (4b73c266fd)
+  * Fix: Fixed super heavy-gunner dependency (#4490, 116ac5c679)
+  * Fix: Do not crash on invalid research orders (c6e9dfcf65)
+  * Fix: Do not enter an infinite loop on loading invalid stored templates (a394991dd1)
+  * Change: Fixed functionality graphics rewritten to use programmable shaders
+  * Fix: Make water tiles visible even when just the water surface is visible (4e6d245b75, #4504)
+  * Change: New animation system (af9c9137d2)
+  * Fix: Alpha campaign cyborg production (bc3db59f5f, #4515)
+  * Fix: Disappearing commander designs in beta and gamma campaigns (df4e1e378c, #4458)
+  * Fix: Do not desynch when NullBot VTOLs rearm (216827c96f, #4464)
+
+-------------------------------------------------------------------
+Wed Mar 15 10:47:46 UTC 2017 - sfalken@opensuse.org
+
+- Edited %files to clear unpackaged files builderror in
+  openSUSE:Factory
+
+-------------------------------------------------------------------
+Sun Jul 31 19:39:43 UTC 2016 - jengelh@inai.de
+
+- Add system-miniupnpc.diff
+
+-------------------------------------------------------------------
+Sun Jul 31 19:31:56 UTC 2016 - jengelh@inai.de
+
+- Update License field
+
+-------------------------------------------------------------------
+Sat Jul 30 15:32:37 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 3.2.1 (see ChangeLog)
+
+-------------------------------------------------------------------
+Fri Jul 29 07:07:26 UTC 2016 - mailaender@opensuse.org
+
+- Update to 3.2.0 (see ChangeLog)
+
+-------------------------------------------------------------------
+Mon Apr 11 18:47:57 UTC 2016 - kieltux@gmail.com
+
+- Set BuildArch: noarch for warzone2100-data
+
+-------------------------------------------------------------------
+Mon Apr 11 17:12:05 UTC 2016 - kieltux@gmail.com
+
+- Update to 3.1.5
+  + Campaign loading & offworld transport missions should be 
+    working again.
+  + Loading games with teams & alliances now works again.
+  + Starting games in alliance mode now always works.
+  + Order of 'go to transport' now works again.
+  + Template checks & error messages.
+
+-------------------------------------------------------------------
+Sun Jan 31 14:31:24 UTC 2016 - kieltux@gmail.com
+
+- Update to 3.1.3
+  + Ping only displayed for multiplayer games.
+  + Rank display removed for now.
+  + Better placement of IP dialog.
+  + Remove hack to support some old systems that breaks with
+    GLEW 1.12.
+  + Change --savegame command line option into two new options
+    that actually work.
+  + Crash in campaign.
+  + Update included miniUPNP to version 1.219.
+  + 'kill' command for SP games.
+  + 'Assigned to Commander' voice over issue.
+  + Fix assert failure when Nexus AI tries to build a sensor 
+    tower.
+  + Check if received templates are valid when received.
+  + Many potential issues found with static analysis tools
+    closed.
+  + Updated translations:
+    Chinese, German, French, Hungarian.
+- Removed fix-glew.patch (fixed upstream: Remove hack to support
+    some old systems that breaks with GLEW 1.12).    
+
+-------------------------------------------------------------------
+Fri Feb  6 09:21:36 UTC 2015 - mimi.vx@gmail.com
+
+- add fix-glew.patch from archlinux 
+- Update to 3.1.2 
+  + Too many changes since version 3.1.1 to list, see installed
+    ChangeLog file instead
+    (/usr/share/doc/packages/warzone2100/ChangeLog)
+
+-------------------------------------------------------------------
+Thu Oct 23 16:51:01 UTC 2014 - kieltux@gmail.com
+
+- Added optional movie package: warzone2100-movies
+
+-------------------------------------------------------------------
+Tue Oct 21 07:14:59 UTC 2014 - kieltux@gmail.com
+
+- Update to version 3.1.1:
+  + Too many changes since version 3.1.0 to list, see installed
+    ChangeLog file instead
+    (/usr/share/doc/packages/warzone2100/ChangeLog)
+
+-------------------------------------------------------------------
+Mon Jun 24 09:04:09 UTC 2013 - joop.boonen@opensuse.org
+
+- Reformated the spec file to make it more readable 
+
+-------------------------------------------------------------------
+Fri Feb 15 05:15:11 UTC 2013 - badshah400@gmail.com
+
+- Update to version 3.1.0:
+  + Too many changes since version 2.3.9 to list, see installed
+    ChangeLog file instead
+    (/usr/share/doc/packages/warzone2100/ChangeLog)
+- Drop warzone-link-vorbis.patch: incorporated upstream; also drop
+  automake BuildRequires since this was required by patch
+- Use pkgconfig based BuildRequires wherever possible
+- New BuildRequires added:
+  + pkgconfig(fribidi)
+  + pkgconfig(glew)
+  + pkgconfig(QtCore)
+  + pkgconfig(QtGui).
+
+-------------------------------------------------------------------
+Wed Dec 26 11:11:21 UTC 2012 - joop.boonen@opensuse.org
+
+- openal-devel is now called openal-soft-devel 
+
+-------------------------------------------------------------------
+Fri Mar 23 19:54:25 UTC 2012 - jengelh@medozas.de
+
+- Parallel build with %_smp_mflags; strip redundant spec sections
+
+-------------------------------------------------------------------
+Sun Nov 20 18:12:47 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 2.3.9:
+  + General
+    - Change: Show damage on all buildings
+    - Change: Use Ctrl-V instead of Tab to paste in edit boxes
+    - Change: Mouse wheel scrolling in research and build menus
+    - Fix: Make units follow their orders better
+    - Fix: Make sure files in sequences.wz override included ones,
+      so localized videos are always used
+    - Fix: Maps can never override game data
+    - Fix: Make mod savegames work properly
+    - Fix: Prevent VTOLs from getting stuck on buildings
+  + UI
+    - Fix: Properly update player colours in the map preview
+  + Multiplayer
+    - Change: Some AI improvements from master
+  + Updated translations.
+- Add warzone-link-vorbis.patch: Also link against libvorbis, not
+  only libvorbisfile.
+
+-------------------------------------------------------------------
+Wed Feb  2 21:05:14 UTC 2011 - freespacer@gmx.de
+
+- update to version 2.3.7
+  * General:
+    * Fix: Make construction, production and research independent of framerate and number of parallel tasks
+    * Fix: Changing droid settings now works, even if selecting more than 100 droids
+    * Fix: Reset construction speed upgrades between games
+    * Fix: Don't gain experience by shooting your own buildings/units
+    * Fix: Don't truncate usernames at the first unicode character
+    * Fix: Correct delivery point placement for cyborg factories and repair facilities
+  * Multiplayer:
+    * Change: Retire the current AI top model template with heavy laser in favour of two new ones. First is armed with seraph missiles, the second with both seraph missiles and gauss cannon on a dragon body
+    * Fix: Prevent clients from getting confused when trying to leave the game setup screen by pressing the Escape key
+  * MP Balance
+    * Mg damage to cyborgs up 10%, to tracks down 10%, and to bunkers down 5%
+    * Cannon damage to buildings and hardpoints up 10% and to bunkers up 25%
+  * UI:
+    * Change: Show a savegame's timestamp tooltip in the current locale
+    * Change: Show distances and speeds in terms of tiles
+    * Fix: Improve UI responsiveness under low framerates
+    * Fix: Prevent some key presses from being ignored
+    * Fix: Don't show health bars over empty terrain, when set to always display energy bars
+  * Translations:
+    * Updated: Italian
+    * Updated: Turkish
+    * Updated: Brazilian
+    * Updated: Polish
+    * Updated: Spanish
+    * Updated: Russian
+- included update from version 2.3.6
+  * General:
+    * Fix: Prevent memory corruption in the scripting code
+    * Fix: Don't crash in the unit design screen when using unicode strings
+    * Fix: Don't ignore armor
+    * Fix: Do not activate a radar detector before it has been completely built
+    * Fix: Clear a droid's order queue when it gets new orders
+    * Fix: Make rearming pads actually repair units
+    * Fix: Projectiles going through terrain due to bad terrain height calculations, terrain shading
+    * Fix: Prevent possible crash with multi-turret units
+  * Multiplayer:
+    * Fix: Make power generator output in multiplayer not depend on the game difficulty setting
+    * Fix: Make sure not to give to many trucks to another player
+    * Fix: Don't crash when players click the "ready" button too often
+  * NTW mod:
+    * Fix: Graphics
+  * Translations:
+    * New: Turkish
+    * Updated: French, Polish, Romanian, Spanish
+    * Updated: Italian
+    * Updated: German
+    * Updated: Korean
+    * Updated: Polish
+
+-------------------------------------------------------------------
+Tue Oct 19 03:23:24 UTC 2010 - highwaystar.ru@gmail.com
+
+- updated to version 2.3.5, maintance release
+- see ChangeLog  
+
+-------------------------------------------------------------------
+Wed Jun 30 01:40:41 UTC 2010 - highwaystar.ru@gmail.com
+
+- updated to version 2.3.1a, bugfix release 
+
+-------------------------------------------------------------------
+Mon Apr 26 14:05:52 CEST 2010 - prusnak@suse.cz
+
+- split off data subpackage
+
+-------------------------------------------------------------------
+Mon Apr 26 05:42:39 UTC 2010 - highwaystar.ru@gmail.com
+
+- update to 2.3.0
+- fixed build for openSUSE 11.1
+
+-------------------------------------------------------------------
+Mon Dec  7 15:03:26 UTC 2009 - randybb@gmail.com
+
+- update to 2.2.4
+- patch (warzone2100-2.1.1-nonvoid.patch) removed, no longer necessary
+
+-------------------------------------------------------------------
+Sat Apr 11 13:58:32 CEST 2009 - claes.backstrom@fsfe.org
+
+- Removed --disable-mp3 from configure as it is not valid anymore.
+- Updated to 2.1.3
+    * Fixed issue that prevented information about enemy research to be shared between hosts
+    * Fixed crashes in netlog code, path-finding, pregame chat, and burning scavengers
+    * Players no longer drop from game after too much data has been sent, usually happens in long games
+    * New map 4c-Urban-Chaos and water tiles on little egypt map fixed
+- Updated to 2.1.2
+    * A fix for the crash that happens when a 7th player joins a game.
+    * Several other fixes for several other crashes.
+
+-------------------------------------------------------------------
+Mon Feb 23 19:24:50 CET 2009 - prusnak@suse.cz
+
+- updated to 2.1.1
+
+-------------------------------------------------------------------
+Wed Oct 29 22:42:37 CET 2008 - claes.backstrom@fsfe.org
+
+- Install desktop icon
+
+-------------------------------------------------------------------
+Tue Oct 28 22:21:26 CET 2008 - claes.backstrom@fsfe.org
+
+- updated to 2.1 beta 5
+
+-------------------------------------------------------------------
+Mon Jul 28 13:15:46 CEST 2008 - prusnak@suse.cz
+
+- updated to 2.1 beta4 from home:wstephenson project
+
+-------------------------------------------------------------------
+Mon Dec 31 16:47:01 CET 2007 - claes.backstrom@fsfe.org
+
+- initial package built from Fedora package (2.0.10-2)
+

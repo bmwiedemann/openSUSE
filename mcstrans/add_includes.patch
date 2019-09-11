@@ -1,0 +1,12 @@
+Index: mcstrans-2.7/src/mcstransd.c
+===================================================================
+--- mcstrans-2.7.orig/src/mcstransd.c
++++ mcstrans-2.7/src/mcstransd.c
+@@ -14,6 +14,7 @@
+ #include <sys/socket.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
++#include <sys/uio.h>
+ #include <fcntl.h>
+ #include <sys/uio.h>
+ #include <sys/un.h>

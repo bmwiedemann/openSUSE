@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Tue Mar 19 23:22:48 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Explicitly BuildRequire: libboost_system-devel, required since Boost 1.69
+
+-------------------------------------------------------------------
+Tue Oct 30 04:00:13 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.4.1
+  * Snapping cursors to signal edges
+  * New command-line switches, see manpage
+  * Converting analog channels to digital/logic channels
+  * Theme support
+  * UI improvements
+  * Protocol decoder annotations can be exported
+  * Improved channel name auto-mapping
+  * Performance and memory usage improvements
+  * Huge amount of fixes
+  See https://www.sigrok.org/blog/pulseview-041-released for details
+
+-------------------------------------------------------------------
+Tue Jun 13 20:52:15 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Update to version 0.4.0
+  * Add the concepts of sessions and views to PulseView:
+    - Sessions represent individual files/device instances.
+      Each session is represented as a tab in PulseView.
+    - Views are different data representations of one specific session.
+      For example, different views of a session can have different zoom levels,
+      can be scrolled to different positions, etc. etc.
+      Each view is a dock window within the respective session's tab.
+    - The view docks can be repositioned, resized and extracted out into their
+      own individual windows.
+  * Add support for saving analog data to .sr files.
+  * Lots of fixes and improvements
+
+-------------------------------------------------------------------
+Thu Feb  2 11:46:14 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sat Oct 22 21:26:57 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Add org.sigrok.Pulseview.appdata.xml
+- Install desktop file and icons for pulseview, register pulseview
+  as handler for application/x-sigrok-dump mimetype
+
+-------------------------------------------------------------------
+Tue Oct 11 23:29:37 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Add -fext-numeric-literals compiler flag as workaround for
+  boo#1004168
+
+-------------------------------------------------------------------
+Sat Jan 30 12:31:29 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Update to version 0.3.0
+  * Support for vertical scaling of analog or logic traces
+  * A "Save selection range as..." feature
+  * Some settings now survive a restart (last open/save directory
+    location, window size/position, last used device)
+  * Pinch-zoom support, always-zoom-to-fit support,
+    "sticky scrolling" support, etc.
+  * Trace group support (for dragging multiple traces around as a
+    group)
+  * ...and many, many more GUI and usability improvements...
+
+-------------------------------------------------------------------
+Fri Sep 25 02:22:01 UTC 2015 - stefan.bruens@rwth-aachen.de
+
+- Track GIT version
+
+-------------------------------------------------------------------
+Sun Aug  3 09:42:33 UTC 2014 - dmitry_r@opensuse.org
+
+- Remove redefined cmake macros
+
+-------------------------------------------------------------------
+Mon Jun  2 18:56:20 UTC 2014 - bugs@vdm-design.de
+
+- Sync .spec with the one from rmax
+
+-------------------------------------------------------------------
+Fri May 30 10:47:19 UTC 2014 - bugs@vdm-design.de
+
+- Update to version 0.2.0
+  * Support for protocol decoding (via libsigrokdecode) has been added, including support for annotation rows, multiple decoders in the same GUI window, support for stacking protocol decoders (e.g. I²C -> RTC8564, UART -> MIDI, or SPI -> SDcard) and lots more.
+  * Support for loading and saving sigrok session (*.sr) files has been added.
+  * Initial support for analog data sources (specifically oscilloscopes, e.g. the Rigol DS1052E) has been added. 
+
+-------------------------------------------------------------------
+Tue Jan 29 13:37:36 UTC 2013 - max@suse.com
+
+- Upstream adopted pulseview-pthread.patch
+- Disable -Werror to fix build.
+
+-------------------------------------------------------------------
+Thu Jan 17 12:15:26 UTC 2013 - max@suse.com
+
+- Explicitly link against libpthread (pulseview-pthread.patch).
+
+-------------------------------------------------------------------
+Wed Jan 16 17:20:39 UTC 2013 - max@suse.com
+
+- Initial build from git snapshot.
+

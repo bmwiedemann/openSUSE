@@ -1,0 +1,242 @@
+-------------------------------------------------------------------
+Sat Aug  3 15:12:10 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.7.4:
+  * This release restores Python 2.7 compatibility for the 0.7 branch.
+
+- changes from version 0.7.3:
+  * This is a patch release that fixes a break due to changes in
+    pandas 0.25. It is otherwise identical to v0.7.0. It fixes issues
+    missed in v0.7.2.
+
+- changes from version 0.7.2:
+  * This is a patch release that fixes a break due to changes in
+    pandas 0.25. It is otherwise identical to v0.7.0. It fixes issues
+    missed in v0.7.1.
+
+- changes from version 0.7.1:
+  * This is a patch release that fixes a break due to changes in
+    pandas 0.25. It is otherwise identical to v0.7.0.
+
+-------------------------------------------------------------------
+Sun Sep 16 16:03:09 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * remove devel from noarch
+  * be more specific in %files section
+
+- update to version 0.7.0:
+  * Highlights include:
+    + Immediate deprecation of Google finance and Morningstar for
+      historical price data, as these API endpoints are no longer
+      supported by their respective providers. Alternate methods are
+      welcome via pull requests, as PDR would like to restore these
+      features.
+    + Removal of EDGAR, which was deprecated in v0.6.0.
+  * Enhancements
+    + A new data connector for data provided by `Alpha Vantage
+      <https://www.alphavantage.co/documentation>`__ was introduced to
+      obtain Foreign Exchange (FX) data.  (:issue:`389`)
+    + A new data connector for data provided by `Alpha Vantage
+      <https://www.alphavantage.co/documentation>`__ was introduced to
+      obtain historical time series data.  (:issue:`389`)
+    + A new data connector for data provided by `Alpha Vantage
+      <https://www.alphavantage.co/documentation>`__ was introduced to
+      obtain sector performance data, accessed through the top-level
+      function "get_sector_performance_av".  (:issue:`389`)
+    + A new data connector for data provided by `Alpha Vantage
+      <https://www.alphavantage.co/documentation>`__ was introduced to
+      obtain real-time Batch Stock Quotes through the top-level
+      function "get_quote_av".  (:issue:`389`)
+    + MOEX data connector now supports multiple symbols in
+      constructor.  (:issue:`562`)
+  * Backwards incompatible API changes
+    + Deprecation of Google finance daily reader.  Google retired the
+      remaining financial data end point in June 2018.  It is not
+      possible to reliably retrieve historical price data without this
+      endpoint. The Google daily reader will raise an
+      `ImmediateDeprecationError` when called.
+    + Deprecation of Morningstar daily reader. Morningstar ended
+      support for the historical price data endpoint in July 2018. It
+      is not possible to retrieve historical price data without this
+      endpoint. The Morningstar daily reader will raise an
+      `ImmediateDeprecationError` when called.
+    + When requesting multiple symbols from a DailyReader (ex: google,
+      yahoo, IEX) a MultiIndex DataFrame is now returned.  Previously
+      Panel or dict of DataFrames were returned. (:issue:`297`).
+  * Bug Fixes
+    + Added support for passing the API KEY to QuandlReader either
+      directly or by setting the environmental variable QUANDL_API_KEY
+      (:issue:`485`).
+    + Added support for optionally passing a custom base_url to the
+      EnigmaReader (:issue:`499`).
+    + Fix Yahoo! price data (:issue:`498`).
+    + Added back support for Yahoo! price, dividends, and splits data
+      for stocks and currency pairs (:issue:`487`).
+    + Add `is_list_like` to compatibility layer to avoid failure on
+      pandas >= 0.23 (:issue:`520`).
+    + Fixed Yahoo! time offset (:issue:`487`).
+    + Fix Yahoo! quote reader (:issue: `540`).
+    + Remove import of deprecated `tm.get_data_path` (:issue: `566`)
+    + Allow full usage of stooq url parameters.
+    + Removed unused requests-file and requests-ftp dependencies.
+    + Fix Yahoo! actions issue where the default reporting adjusts
+      dividends. The unadjusted dividends may lack precision due to
+      accumulated numerical error when converting adjustedto the
+      original dividend amount. (:issue: `495`)
+
+-------------------------------------------------------------------
+Thu Jun  7 20:51:06 UTC 2018 - jengelh@inai.de
+
+- Repeal time-sensitive wording from description.
+
+-------------------------------------------------------------------
+Thu May  3 14:07:08 UTC 2018 - toddrme2178@gmail.com
+
+- Use %license tag
+
+-------------------------------------------------------------------
+Mon Feb 19 17:32:11 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * update required version for panda
+  * require warpt (from setup.py)
+  * require versioneer
+
+- update to version 0.6.0:
+  * warning
+    + Yahoo!, Google Options, Google Quotes and EDGAR have been
+      immediately deprecated.
+  * note
+    + Google finance is still functioning for historical price data,
+      although there are frequent reports of failures.  Failure is
+      frequently encountered when bulk downloading historical price
+      data.
+  * Highlights include:
+    + Immediate deprecation of Yahoo!, Google Options and Quotes and
+      EDGAR. The end points behind these APIs have radically changed
+      and the existing readers require complete rewrites. In the case
+      of most Yahoo! data the endpoints have been removed.  PDR would
+      like to restore these features, and pull requests are welcome.
+    + A new connector for Tiingo was introduced.  Tiingo provides
+      historical end-of-day data for a large set of equities, ETFs and
+      mutual funds. Free registration is required to get an API key
+      (:issue:`478`).
+    + A new connector for Robinhood was introduced.  This provides up
+      to 1 year of historical end-of-day data. It also provides near
+      real-time quotes.  (:issue:`477`).
+    + A new connector for Morningstar Open, High, Low, Close and
+      Volume was introduced (:issue:`467`)
+    + A new connector for IEX daily price data was introduced
+      (:issue:`465`).
+    + A new connector for IEX the majority of the IEX API was
+      introduced (:issue:`446`).
+    + A new data connector for stock index data provided by Stooq was
+      introduced (:issue:`447`).
+    + A new data connector for data provided by the Bank of Canada was
+      introduced (:issue:`440`).
+  * Enhancements
+    + A new data connector for data provided by the `Bank of Canada
+      <https://www.bankofcanada.ca/rates/>`__ was introduced.
+      (:issue:`440`)
+    + A new data connector for stock index data provided by `Stooq
+      <https://stooq.com>`__ was introduced. (:issue:`447`)
+    + A new connector for IEX the majority of the `IEX API
+      <https://iextrading.com/developer/docs/>`__ was introduced
+      (:issue:`446`).
+    + A new connector for `IEX daily price data
+      <https://iextrading.com/developer/docs/>`__ was introduced
+      (:issue:`465`).
+    + A new data connector for stock pricing data provided by
+      `Morningstar <http://www.morningstar.com>`__ was
+      introduced. (:issue:`467`)
+    + A new data connector for stock pricing data provided by
+      `Robinhood <https://www.robinhood.com>`__ was
+      introduced. (:issue:`477`)
+    + A new data connector for stock pricing data provided by `Tiingo
+      <https://api.tiingo.com/docs>`__ was introduced. (:issue:`478`)
+  * Backwards incompatible API changes
+    + Deprecation of Yahoo readers.  Yahoo! retired the financial data
+      end points in late 2017.  It is not possible to reliably
+      retrieve data from Yahoo! without these endpoints. The Yahoo!
+      readers have been immediately deprecated and will raise an
+      `ImmediateDeprecationError` when called.
+    + Deprecation of EDGAR readers. EDGAR substantially altered their
+      API. The EDGAR readers have been immediately deprecated and will
+      raise an `ImmediateDeprecationError` when called.
+    + Google finance data will raise an `UnstableAPIWarning` when
+      first called.  Google has also altered their API in a way that
+      makes reading data unreliable.  It many call it works.  However
+      it also regularly fails, especially when used for bulk
+      downloading. Google may be removed in the future.
+  * Bug Fixes
+    + `freq` parameter was added to the WorldBank connector to address
+      a limitation (:issue:`198`, :issue:`449`).
+    + The Enigma data connector was updated to the latest API
+      (:issue:`380`).
+    + The Google finance endpoint was updated to the latest value
+      (:issue:`404`).
+    + Tne end point for FRED was updated to the latest values
+      (:issue:`436`).
+    + Tne end point for WorldBank was updated to the latest values
+      (:issue:`456`).
+  * Other Changes
+    + The minimum tested pandas version was increased to 0.19.2
+      (:issue:`441`).
+    + Added versioneer to simplifying release (:issue:`442`).
+    + Added doctr to automatically build docs for gh-pages
+      (:issue:`459`).
+
+-------------------------------------------------------------------
+Fri Aug 18 22:20:34 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 0.5.0
+  + Enhancements
+    * DataReader now supports Quandl, see here (GH361).
+  + Backwards incompatible API changes
+    * Removed Oanda as it became subscription only (GH296).
+  + Bug Fixes
+    * web sessions are closed properly at the end of use (GH355)
+    * Handle commas in large price quotes (GH345)
+    * Test suite fixes for test_get_options_data (GH352)
+    * Test suite fixes for test_wdi_download (GH350)
+    * avoid monkey patching requests.Session (GH301)
+    * get_data_yahoo() now treats 'null' strings as missing values (GH342)
+
+-------------------------------------------------------------------
+Thu May 18 00:05:24 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Fix source URL
+- Update to version 0.4.0
+  + Enhancements
+    * Compat with pandas 0.20.1 (:issue:`304`, :issue:`320`)
+    * Switched test framework to use ``pytest`` (:issue:`310`, :issue:`312`)
+  + Backwards incompatible API changes
+    * Support has been dropped for Python 2.6 and 3.4 (:issue:`313`)
+    * Support has been dropped for `pandas` versions before 0.17.0 (:issue:`313`)
+- Update to version 0.3.0
+  + New features
+    * ``DataReader`` now supports dividend only pulls from Yahoo! Finance, see :ref:`here<remote_data.yahoo>` (:issue:`138`).
+    * ``DataReader`` now supports downloading mutual fund prices from the Thrift Savings Plan, see :ref:`here<remote_data.tsp>` (:issue:`157`).
+    * ``DataReader`` now supports Google options data source, see :ref:`here<remote_data.google_options>` (:issue:`148`).
+    * ``DataReader`` now supports Google quotes, see :ref:`here<remote_data.google_quotes>` (:issue:`188`).
+    * ``DataReader`` now supports Enigma dataset.  see :ref:`here<remote_data.enigma>` (:issue:`245`).
+    * ``DataReader`` now supports downloading a full list of NASDAQ listed symbols.  see :ref:`here<remote_data.nasdaq_symbols>` (:issue:`254`).
+  + Other enhancements
+    * Eurostat reader now supports larger data returned from API via zip format. (:issue:`205`)
+    * Added support for Python 3.6.
+    * Added support for pandas 19.2
+  + Bug Fixes
+    * Fixed bug that caused ``DataReader`` to fail if company name has a comma. (:issue:`85`).
+    * Fixed bug in ``YahooOptions`` caused as a result of change in yahoo website format. (:issue:`244`).
+
+-------------------------------------------------------------------
+Tue Feb  2 19:12:25 UTC 2016 - toddrme2178@gmail.com
+
+- Initial version
+

@@ -1,0 +1,136 @@
+#!/bin/bash
+#############################################################
+# Name:        Supportconfig Plugin for libvirt
+# Description: Gathers important troubleshooting information
+#              about libvirt
+# Author:      Jim Fehlig <jfehlig@suse.com>
+#############################################################
+
+RCFILE="/usr/lib/supportconfig/resources/scplugin.rc"
+
+LIBVIRTD_CONF_FILES="/etc/libvirt/libvirtd.conf /etc/libvirt/virtlockd.conf /etc/libvirt/virtlogd.conf"
+VM_CONF_FILES=""
+LIBVIRTD_LOG_FILES="$(find -L /var/log/libvirt/ -name libvirtd.log -type f | sort)"
+
+
+if [ -s $RCFILE ]; then
+    if ! source $RCFILE; then
+        echo "ERROR: Initializing resource file: $RCFILE" >&2
+        exit 1
+    fi
+fi
+
+rpm_installed() {
+    thisrpm="$1"
+
+    if rpm -q "$thisrpm" >/dev/null 2>&1; then
+	return 0
+    fi
+    return 1
+}
+
+rpm_verify() {
+    thisrpm="$1"
+    local ret=0
+
+    echo
+    echo "#==[ Validating RPM ]=================================#"
+    if rpm -q "$thisrpm" >/dev/null 2>&1; then
+        echo "# rpm -V $thisrpm"
+
+        if rpm -V "$thisrpm"; then
+            echo "Status: Passed"
+        else
+            echo "Status: WARNING"
+        fi
+    else
+        echo "package $thisrpm is not installed"
+	ret=1
+    fi
+    echo
+    return $ret
+}
+
+if rpm_installed libvirt-daemon-xen; then
+    LIBVIRTD_CONF_FILES="$LIBVIRTD_CONF_FILES /etc/libvirt/libxl.conf /etc/libvirt/libxl-lockd.conf /etc/libvirt/libxl-sanlock.conf"
+    test -d /etc/libvirt/libxl && VM_CONF_FILES="$VM_CONF_FILES $(find -L /etc/libvirt/libxl/ -type f | sort)"
+    test -d /var/log/libvirt/libxl && LIBVIRTD_LOG_FILES="$LIBVIRTD_LOG_FILES $(find -L /var/log/libvirt/libxl/ -type f | sort)"
+fi
+
+if rpm_installed libvirt-daemon-qemu; then
+    LIBVIRTD_CONF_FILES="$LIBVIRTD_CONF_FILES /etc/libvirt/qemu.conf /etc/libvirt/qemu-lockd.conf /etc/libvirt/qemu-sanlock.conf"
+    test -d /etc/libvirt/qemu && VM_CONF_FILES="$VM_CONF_FILES $(find -L /etc/libvirt/qemu/ -type f | sort)"
+    test -d /var/log/libvirt/qemu && LIBVIRTD_LOG_FILES="$LIBVIRTD_LOG_FILES $(find -L /var/log/libvirt/qemu/ -type f | sort)"
+fi
+
+if rpm_installed libvirt-daemon-lxc; then
+    LIBVIRTD_CONF_FILES="$LIBVIRTD_CONF_FILES /etc/libvirt/lxc.conf"
+    test -d /etc/libvirt/lxc && VM_CONF_FILES="$VM_CONF_FILES $(find -L /etc/libvirt/lxc/ -type f | sort)"
+    test -d /var/log/libvirt/lxc && LIBVIRTD_LOG_FILES="$LIBVIRTD_LOG_FILES $(find -L /var/log/libvirt/lxc/ -type f | sort)"
+fi
+
+if rpm_installed libvirt-admin; then
+    LIBVIRTD_CONF_FILES="$LIBVIRTD_CONF_FILES /etc/libvirt/libvirt-admin.conf"
+fi
+
+if ! rpm_verify libvirt-daemon; then
+    echo "Skipped"
+    exit 0
+fi
+
+if systemctl is-enabled libvirtd.service 2>&1 > /dev/null; then
+    plugin_command "virsh version"
+    plugin_command "virsh capabilities"
+    plugin_command "virsh domcapabilities"
+    plugin_command "virsh nodeinfo"
+    plugin_command "virsh nodedev-list"
+    # print all known domains on default URI
+    plugin_command "virsh list --all"
+    echo
+    # dump configuration info of active domains on default URI
+    for DOM in $(virsh list --name)
+    do
+        plugin_command "virsh dumpxml $DOM"
+	plugin_command "virsh vcpuinfo $DOM"
+	plugin_command "virsh dominfo $DOM"
+	plugin_command "virsh domjobinfo $DOM"
+	plugin_command "virsh dommemstat $DOM"
+	plugin_command "virsh snapshot-list $DOM"
+	echo
+    done
+    # dump configuration info of inactive domains on default URI
+    for DOM in $(virsh list --name --inactive)
+    do
+        plugin_command "virsh dumpxml $DOM"
+	plugin_command "virsh snapshot-list $DOM"
+	echo
+    done
+    # for LXC domains we have to explicitly specify the URI
+    if rpm_installed libvirt-daemon-lxc; then
+        for DOM in $(virsh -c lxc:/// list --name --all); do
+            plugin_command "virsh -c lxc:/// dumpxml $DOM"
+	    plugin_command "virsh -c lxc:/// dominfo $DOM"
+	    echo
+        done
+    fi
+
+    # dump active networks, interfaces and storage pools
+    plugin_command "virsh net-list"
+    plugin_command "virsh iface-list"
+    plugin_command "virsh pool-list"
+fi
+
+# dump libvirtd-related conf files
+pconf_files "$LIBVIRTD_CONF_FILES"
+
+# dump VM-related conf files
+pconf_files "$VM_CONF_FILES"
+
+# dump hook conf files
+test -d /etc/libvirt/hooks && FILES="$(find -L /etc/libvirt/hooks/ -type f | sort)"
+pconf_files "$FILES"
+
+# dump all log files
+plog_files 0 "$LIBVIRTD_LOG_FILES"
+
+echo "Done"

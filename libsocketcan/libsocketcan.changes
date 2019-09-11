@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Mon Aug 11 01:26:37 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.0.10
+* libsocketcan: Fix return value for get{set}_link() function
+- Remove 0001-build-avoid-expansion-of-commented-macros.patch,
+  0002-build-fix-bracket-imbalance.patch (merged upstream)
+
+-------------------------------------------------------------------
+Tue Dec 24 18:29:42 UTC 2013 - jengelh@inai.de
+
+- Change summary of package to read SocketCAN
+
+-------------------------------------------------------------------
+Sun Dec 30 07:06:29 UTC 2012 - jengelh@inai.de
+
+- Initial package (version 0.0.9) for build.opensuse.org

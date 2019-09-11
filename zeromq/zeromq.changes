@@ -1,0 +1,447 @@
+-------------------------------------------------------------------
+Tue Jul  9 07:35:29 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- New upstream version 4.3.2:
+  * CVE-2019-13132: a remote, unauthenticated client connecting to a
+    libzmq application, running with a socket listening with CURVE
+    encryption/authentication enabled, may cause a stack overflow and
+    overwrite the stack with arbitrary data, due to a buffer overflow in
+    the library. Users running public servers with the above configuration
+    are highly encouraged to upgrade as soon as possible, as there are no
+    known mitigations. (bsc#1140255)
+  * New DRAFT (see NEWS for 4.2.0) zmq_socket_monitor_versioned API that supports
+    a versioned monitoring events protocol as a parameter. Passing 1 results in
+    the same behaviour as zmq_socket_monitor.
+  * New DRAFT (see NEWS for 4.2.0) zmq_socket_monitor_pipes_stats that triggers
+    a new ZMQ_EVENT_PIPES_STATS to be delivered via zmq_socket_monitor_versioned
+    v2 API, which contains the current status of all the queues owned by the
+    monitored socket. See doc/zmq_socket_monitor_versioned.txt for details.
+  * New DRAFT (see NEWS for 4.2.0) zmq_poller_fd that returns the FD of a thread
+    safe socket.
+  * New DRAFT (see NEWS for 4.2.0) socket options:
+        ZMQ_XPUB_MANUAL_LAST_VALUE is similar to ZMQ_XPUB_MANUAL but allows to avoid
+        duplicates when using last value caching.
+        ZMQ_SOCKS_USERNAME and ZMQ_SOCKS_PASSWORD that implement SOCKS5 proxy
+        authentication.
+- For complete set of changes, see
+  https://github.com/zeromq/libzmq/releases/tag/v4.3.2
+
+-------------------------------------------------------------------
+Mon Jan 14 10:11:47 UTC 2019 - adam.majer@suse.de
+
+- New upstream version 4.3.1:
+  * CVE-2019-6250: A vulnerability has been found that would allow
+    attackers to direct a peer to jump to and execute from an address
+    indicated by the attacker. (bsc#1121717)
+  * fixed race condition in ZMQ_PUSH when quickly disconnecting and
+    reconnecting causes last part of multi-part message to get
+    "stuck" and resent by mistake to the new socket.
+
+For complete set of changes, see,
+https://github.com/zeromq/libzmq/releases/tag/v4.3.1
+https://github.com/zeromq/libzmq/releases/tag/v4.3.0
+
+-------------------------------------------------------------------
+Tue Jul 10 11:54:56 UTC 2018 - dimstar@opensuse.org
+
+- Add baselibs.conf: build libzmq5-32bit, as it is a required
+  dependency to libavfilter7-32bit (i.e ffmpeg 4).
+
+-------------------------------------------------------------------
+Mon Mar 26 08:29:09 UTC 2018 - adam.majer@suse.de
+
+- New upstream version 4.2.5:
+  * fix backward-incompatible change in the NULL auth
+    mechanism that slipped in 4.2.3 and made connections
+    with a ZAP domain set on a socket but without a working
+    ZAP handler fail. See ZMQ_ZAP_ENFORCE_DOMAIN
+  * clarify in zmq_close manpage that the operation will
+    complete asynchronously.
+
+-------------------------------------------------------------------
+Thu Mar 22 07:07:58 UTC 2018 - adam.majer@suse.de
+
+- New upstream version 4.2.4
+  * New DRAFT (see NEWS for 4.2.0) socket options:
+    - ZMQ_LOOPBACK_FASTPATH to enable faster TCP loopback on Windows
+    - ZMQ_METADATA to set application-specific metadata on a socket
+    See doc/zmq_setsockopt.txt and doc/zmq_getsockopt.txt for details.
+  * New DRAFT (see NEWS for 4.2.0) context options:
+    - ZMQ_ZERO_COPY_RECV to disable zero-copy receive to save memory
+    at the expense of slower performance
+    See doc/zmq_ctx_set.txt and doc/zmq_ctx_get.txt for details.
+  * New DRAFT API zmq_stopwatch_intermediate which returns the time
+    elapsed without stopping the stopwatch.
+  * TIPC: support addressing TIPC Port Identity addresses.
+  * fix ZMQ_DISH over UDP triggers errno_assert() after watermark
+  * fix ZMQ_PUB crash when due to high volume of subscribe and
+    unsubscribe messages, an unmatched unsubscribe message is
+    received in certain conditions
+  * see NEWS and ChangeLog for additional details
+- install licenses correctly and update SPDX license to version 3
+
+-------------------------------------------------------------------
+Thu Dec 14 08:00:12 UTC 2017 - adam.majer@suse.de
+
+- New upstream version 4.2.3
+   * API change: previously ZMQ_POLLOUT on a ZMQ_ROUTER socket
+     returned always true due to how the type works. When
+     ZMQ_ROUTER_MANDATORY is set, sending fails when the peer is
+     not available, but ZMQ_POLLOUT always returns true anyway,
+     which does not make sense. Now when ZMQ_ROUTER_MANDATORY is
+     set, ZMQ_POLLOUT on a ZMQ_ROUTER will return true only if
+     at least one peer is available.
+     Given ZMQ_POLLOUT with ZMQ_ROUTER was not usable at all
+     previously, we do not consider this a breakage warranting a
+     major or minor version increase.
+   * ZMQ_IDENTITY has been renamed to ZMQ_ROUTING_ID and
+     ZMQ_CONNECT_RID has been renamed to ZMQ_CONNTECT_ROUTING_ID
+     to disambiguate. ZMQ_IDENTITY and ZMQ_CONNECT_RID are still
+     available to keep backward compatibility, and will be
+     removed in a future release after further advance notice.
+   * DRAFT API change: zmq_poller_wait, zmq_poller_wait_all and
+     zmq_poller_poll have been changed to be inline with other
+     existing APIs that have a timeout to return EAGAIN instead
+     of ETIMEDOUT as the errno value.
+   * Existing non-DRAFT socket types ZMQ_REP/REQ, ZMQ_ROUTER/DEALER
+     and ZMQPUB/SUB, that were previously declared deprecated, have
+     been reinstated as stable and supported
+   * Curve: all remaining traces of debug output to console are now
+     removed, and new DRAFT events are available to properly debug
+     CURVE, PLAIN, GSSAPI and ZAP events and failures.
+   * for compelete changelog see
+     https://github.com/zeromq/libzmq/releases/tag/v4.2.3
+- drop remove_werror.patch: can now be disabled at configure time,
+  if needed.
+
+-------------------------------------------------------------------
+Thu Jun  1 11:25:58 UTC 2017 - adam.majer@suse.de
+
+- remove_werror.patch: don't use -Werror in compiler flags
+- disable silent compilation flags
+
+-------------------------------------------------------------------
+Tue Mar 21 14:30:10 UTC 2017 - adam.majer@suse.de
+
+- New upstream version 4.2.2
+   * fix SO_NOSIGPIPE and connection closing by peer race condition
+   * fix IPv4-in-IPv6 mapped addresses parsing error
+   * zmq_z85_decode did validate its input. The function has been
+   fixed to correctly follow RFC32 and return NULL if the input is
+   invalid.
+   * for complete changelog see
+   https://github.com/zeromq/libzmq/releases/tag/v4.2.2
+
+-------------------------------------------------------------------
+Fri Feb  3 17:06:33 UTC 2017 - jengelh@inai.de
+
+- Compact the descriptions.
+
+-------------------------------------------------------------------
+Sat Dec 31 23:53:21 UTC 2016 - adam.majer@suse.de
+
+- New upstream version 4.2.1
+   * Bugfix release. For complete changelog see
+     https://github.com/zeromq/libzmq/releases/tag/v4.2.1
+
+-------------------------------------------------------------------
+Sat Nov  5 08:06:42 UTC 2016 - mvyskocil@opensuse.org
+
+- New upstream version 4.2.0 
+   * For Pieter. Thanks for making all of this possible.
+   * This release introduces new APIs, but it is ABI compatible with
+     libzmq 4.1.2 and up.
+   * Fixed alignment problem on arm and sparc, need to rebuild
+     against 4.2.0
+   * New Context option ZMQ_MAX_MSGSZ
+   * New Socket options:
+     - ZMQ_HANDSHAKE_IVL
+     - ZMQ_SOCKS_PROXY
+     - ZMQ_XPUB_NODROP
+     - ZMQ_BLOCKY
+     - ZMQ_XPUB_MANUAL
+     - ZMQ_XPUB_WELCOME_MSG
+     - ZMQ_STREAM_NOTIFY
+     - ZMQ_INVERT_MATCHING
+     - ZMQ_HEARTBEAT_IVL
+     - ZMQ_HEARTBEAT_TTL
+     - ZMQ_HEARTBEAT_TIMEOUT
+     ....
+    * see NEWS for all changes
+- Packaging
+   * add --with-libsodium to link against libsodium and not internal
+     tweetnacl
+   * remove disable-silent-rules
+   * add --enable-curve to build curve_keygen tool
+     https://github.com/zeromq/libzmq/pull/2195
+   * add libunwind to build dependencies
+
+-------------------------------------------------------------------
+Wed Jun 29 12:28:33 UTC 2016 - jengelh@inai.de
+
+- Remove useless --with-pic, it's only for (non-built) static libs
+
+-------------------------------------------------------------------
+Tue Jun 28 15:30:44 UTC 2016 - dmueller@suse.com
+
+- skip testsuite on qemu-linux-user
+
+-------------------------------------------------------------------
+Fri Jun 17 12:41:46 UTC 2016 - adam.majer@suse.de
+
+- New upstream version 4.1.5
+  * Fixed #1806 - uninitialised read in curve getsockopt.
+  * Fixed #1807 - build broken with GCC 6.
+  * Fixed #1831 - potential assertion failure with latest libsodium.
+  * Fixed #1850 - detection issues with tweetnacl/libsodium.
+  * Fixed #1877 - Avoid terminating connections prematurely
+  * fixes some IPv6 related issues
+- Removed 3ad076.patch, upstreamed
+
+-------------------------------------------------------------------
+Mon May 30 10:02:29 UTC 2016 - adam.majer@suse.de
+
+- Added patch 3ad076.patch
+  * based on https://github.com/zeromq/zeromq4-1/commit/3ad076.patch
+  * refreshed and removed NEWS section
+  * fixes unbinding when IPv6 is available
+- Add '--disable-dependency-tracking' since we are not rebuilding
+- Re-enable concurrent check target, but fall back to sequential on
+  failure. This allows quick test building, while allows 
+  sequential unit test run. Run tests 3x before 'official' failure as
+  some are a little flaky (upstream acknowledges this)
+
+-------------------------------------------------------------------
+Mon May 30 09:23:12 UTC 2016 - adam.majer@suse.de
+
+- Append test_log in build output if there are failures
+
+-------------------------------------------------------------------
+Mon May 30 08:42:24 UTC 2016 - adam.majer@suse.de
+
+- Update to 4.1.4
+  * fixed build failure with latest libsodium
+  * handle IPv6 link local addresses
+  * fixed assertion failure in msg.cpp:390 on STREAM sockets
+  * fixed assertion failure in tcp.cpp after network reconnect
+  * fixed socket monitor hang
+- Remove libsodium-init.patch - upstreamed
+- Run %check rule sequentially to prevent assert failures
+
+-------------------------------------------------------------------
+Thu Nov  5 09:36:36 UTC 2015 - idonmez@suse.com
+
+- Add libsodium-init.patch to handle sodium_init() error.
+
+-------------------------------------------------------------------
+Tue Oct  6 11:26:39 UTC 2015 - idonmez@suse.com
+
+- Re-enable %check 
+
+-------------------------------------------------------------------
+Mon Sep 28 14:27:30 UTC 2015 - stephan.barth@suse.com
+
+- update to version 4.1.3.
+  Changes from upstream:
+  * Fixed #1532 - getsockopt ZMQ_RCVMORE now resets all bits instead of only
+    32
+  * Fixed #1445 - zmq::socket_base_t::connect fails on tcp ipv6 address
+
+-------------------------------------------------------------------
+Tue Sep 22 13:26:21 UTC 2015 - tampakrap@opensuse.org
+
+- Fix the conditionals on the previous commit
+
+-------------------------------------------------------------------
+Tue Sep 22 12:48:38 UTC 2015 - tampakrap@opensuse.org
+
+- Conditionally use the pkgconfig style, to support SLE11
+
+-------------------------------------------------------------------
+Tue Jul 14 08:36:14 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 4.1.2 bnc#937912:
+  * Added explicit reference to static link exception in every source file.
+  * Bumped ABI version to 5:0:0 since 4.1.x changed the ABI.
+  * Fixed STDINT event interface macros to work with CZMQ 3.0.
+  * Fixed installation of man pages when BUILD_DOC is not set.
+  * Fixed #1428 - regression on single-socket proxies.
+
+-------------------------------------------------------------------
+Tue Jun 16 06:03:45 UTC 2015 - mvyskocil@opensuse.org
+
+- Add pkgconfig(libsodium) as mandatory build dependency 
+- Change libuuid-devel to pkgconfig style
+
+-------------------------------------------------------------------
+Mon Jun  8 09:11:11 UTC 2015 - mvyskocil@opensuse.org
+
+- Build depends on openpgm-devel 
+
+-------------------------------------------------------------------
+Sun Jun  7 16:53:26 UTC 2015 - mvyskocil@opensuse.org
+
+- Update to 4.1.1, bugfix release
+- drop unecessary
+  zeromq_4.0.5_avoid_curve_test_hang_on_ppc64.patch
+
+-------------------------------------------------------------------
+Wed Jan 28 14:26:13 UTC 2015 - normand@linux.vnet.ibm.com
+
+- Add a zeromq_4.0.5_avoid_curve_test_hang_on_ppc64.patch
+  to avoid curve test to hang for ppc ppc64 ppc64le architectures
+  related bug ref: bnc#912460
+  This is a set of commits grab from zeromq4-x git tree
+  from https://github.com/zeromq/zeromq4-x.git
+    Merge pull request #101 from hintjens/master
+    Problem: issue #1273, protocol downgrade attack
+    Merge pull request #100 from hintjens/master
+    Problem: zmq_ctx_term has insane behavior by default
+  * Also fixes bnc#931978 CVE-2014-9721
+
+-------------------------------------------------------------------
+Fri Nov 28 11:40:21 UTC 2014 - tchvatal@suse.com
+
+- Split the curve-keygen binary to separate subpkg bnc#907584
+  * Add conflicts to new supackage
+
+-------------------------------------------------------------------
+Thu Nov 13 08:16:06 UTC 2014 - tchvatal@suse.com
+
+- Gracely continue when checks fail
+
+-------------------------------------------------------------------
+Thu Oct 16 08:40:27 UTC 2014 - tchvatal@suse.com
+
+- Remove sle11 support, not really needed for us here
+- Add libsodium dep for testsuite where possible
+- Version bump to 4.0.5 fixes bnc#898917 CVE-2014-7202 and
+  CVE-2014-7203: 
+  * Fixed #1191; CURVE mechanism does not verify short term nonces.
+  * Fixed #1190; stream_engine is vulnerable to downgrade attacks.
+  * Fixed #1088; assertion failure for WSAENOTSOCK on Windows.
+  * Fixed #1015; race condition while connecting inproc sockets.
+  * Fixed #994; bump so library number to 4.0.0
+  * Fixed #939, assertion failed: !more (fq.cpp:99) after many ZAP requests.
+  * Fixed #872; lost first part of message over inproc://.
+  * Fixed #797, keep-alive on Windows.
+
+-------------------------------------------------------------------
+Mon May 12 09:23:17 UTC 2014 - tchvatal@suse.com
+
+- Cleanup to remove SLE10 and older mentions
+- Remove other distros from rules as we don't build for them anyway.
+- Cleanup with spec-cleaner.
+- Enable tests.
+
+-------------------------------------------------------------------
+Thu Mar 27 13:42:35 UTC 2014 - speilicke@suse.com
+
+- Move to 'download_files' source service which is in better shap
+  and easier to use
+
+-------------------------------------------------------------------
+Thu Mar 27 13:36:48 UTC 2014 - mvyskocil@opensuse.org
+
+- Update to 4.0.4 
+  For details see /usr/share/doc/packages/zeromq-devel/NEWS
+- Moved most of docs to devel package to reduce a size of libmq3
+
+-------------------------------------------------------------------
+Fri Dec 13 07:09:00 UTC 2013 - bahid@emc.com
+
+- Update to version 4.0.3
+  For details see /usr/share/doc/packages/libzmq3/NEWS
+
+-------------------------------------------------------------------
+Sat Sep 21 15:16:59 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 3.2.4
+  For details see /usr/share/doc/packages/libzmq3/NEWS
+
+-------------------------------------------------------------------
+Fri Nov 23 14:53:09 UTC 2012 - mrueckert@suse.de
+
+- Update to version 3.2.2
+  For details see /usr/share/doc/packages/libzmq3/NEWS
+
+-------------------------------------------------------------------
+Sat Jan 28 21:36:20 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+
+-------------------------------------------------------------------
+Wed Sep 28 07:04:21 UTC 2011 - saschpe@gmx.de
+
+- Fixed license to LGPL-3.0+ (SPDX style)
+
+-------------------------------------------------------------------
+Wed Aug 24 14:17:26 UTC 2011 - mrueckert@suse.de
+
+- make sure the compiler commandlines are shown (V=1)
+- make it build on sle11 again. we dont have pkg-config provides
+  there
+
+-------------------------------------------------------------------
+Fri Aug 19 12:28:04 UTC 2011 - saschpe@suse.de
+
+- Use %makeinstall marcro instead of %make_install to fix build
+  on Mandriva and Fedora
+
+-------------------------------------------------------------------
+Fri Aug 19 12:07:40 UTC 2011 - saschpe@suse.de
+
+- Add libuuid-devel to RedHat BuildRequires to fix build
+
+-------------------------------------------------------------------
+Fri Aug 19 10:50:02 UTC 2011 - saschpe@suse.de
+
+- Update to version 2.1.7:
+  * Fixed issue 188, assert when closing socket that had unread multipart
+    data still on it (affected PULL, SUB, ROUTER, and DEALER sockets).
+  * Fixed issue 191, message atomicity issue with PUB sockets (an old issue).
+  * Fixed issue 199 (affected ROUTER/XREP sockets, an old issue).
+  * Fixed issue 206, assertion failure in zmq.cpp:223, affected all sockets
+    (bug was introduced in 2.1.6 as part of message validity checking).
+  * Fixed issue 211, REP socket asserted if sent malformed envelope (old issue
+    due to abuse of assertions for error checking).
+  * Fixed issue 212, reconnect failing after resume from sleep on Windows
+    (due to not handling WSAENETDOWN).
+  * Properly handle WSAENETUNREACH on Windows (e.g. if client connects
+    before server binds).
+  * Fixed memory leak with threads on Windows.
+- Changes from previous releases:
+  * See https://raw.github.com/zeromq/zeromq2-1/master/NEWS
+- Run spec-cleaner, added proper spec license header, shorter file lists
+- Split out documentation package
+
+-------------------------------------------------------------------
+Wed Dec  1 15:24:02 UTC 2010 - mrueckert@suse.de
+
+- update to version 2.0.10
+  * Upgrade OpenPGM to 2.1.28~dfsg (Martin Lucina)
+  * Added a ZMQ_VERSION macro to zmq.h for compile-time API version
+    detection (Martin Sustrik, Gonzalo Diethelm, Martin Lucina)
+  * Fix memory leak under Windows (Taras Shpot)
+  * Makefile.am: Add missing files to distribution, improve
+    maintainer-clean (Martin Lucina)
+  * Add support for RHEL6 in the spec file (Sebastian Otaegui)
+  * configure.in: Do not patch libtool rpath handling (Martin Lucina)
+  * Fixing the Red Hat packaging (Martin Sustrik)
+  * zmq_msg_move called on uninitialised message in xrep_t::xrecv
+    -- fixed (Max Wolf)
+  * crash when closing an ypipe -- fixed (Dhammika Pathirana)
+  * REQ socket can die when reply is delivered on wrong unerlying
+    connection -- fixed (Martin Sustrik)
+  * if TSC jumps backwards (in case of migration to a
+    different CPU core) latency peak may occur -- fixed
+    (Martin Sustrik)
+  * values of RATE, RECOVERY_IVL and SWAP options are checked for
+    negative values (Martin Sustrik)
+- added provides for libzmq-devel
+
+-------------------------------------------------------------------
+Mon Sep  6 15:31:23 UTC 2010 - mrueckert@suse.de
+
+- initial package
+

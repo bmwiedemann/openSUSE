@@ -1,0 +1,178 @@
+From 107c5c374636951b560d9e00447de2cbb51cbf4d Mon Sep 17 00:00:00 2001
+From: David Disseldorp <ddiss@suse.de>
+Date: Tue, 26 Mar 2013 17:51:10 +0100
+Subject: [PATCH 02/12] disk: support 0 len read and write CBDs
+
+---
+ src/istgt_lu_disk.c | 78 ++++++++++++++++++++++++++++-------------------------
+ 1 file changed, 42 insertions(+), 36 deletions(-)
+
+diff --git src/istgt_lu_disk.c src/istgt_lu_disk.c
+index 78df581..9b58da3 100644
+--- src/istgt_lu_disk.c
++++ src/istgt_lu_disk.c
+@@ -6115,12 +6115,6 @@ istgt_lu_disk_execute(CONN_Ptr conn, ISTGT_LU_CMD_Ptr lu_cmd)
+ 				}
+ 			}
+ 
+-			if (lu_cmd->R_bit == 0) {
+-				ISTGT_ERRLOG("R_bit == 0\n");
+-				lu_cmd->status = ISTGT_SCSI_STATUS_CHECK_CONDITION;
+-				return -1;
+-			}
+-
+ 			dpo = BGET8(&cdb[1], 4);
+ 			fua = BGET8(&cdb[1], 3);
+ 			fua_nv = BGET8(&cdb[1], 1);
+@@ -6129,6 +6123,13 @@ istgt_lu_disk_execute(CONN_Ptr conn, ISTGT_LU_CMD_Ptr lu_cmd)
+ 			ISTGT_TRACELOG(ISTGT_TRACE_SCSI,
+ 			    "READ_10(lba %"PRIu64", len %u blocks)\n",
+ 			    lba, transfer_len);
++
++			if ((lu_cmd->R_bit == 0) && (transfer_len > 0)) {
++				ISTGT_ERRLOG("R_bit == 0\n");
++				lu_cmd->status = ISTGT_SCSI_STATUS_CHECK_CONDITION;
++				return -1;
++			}
++
+ 			rc = istgt_lu_disk_lbread(spec, conn, lu_cmd, lba, transfer_len);
+ 			if (rc < 0) {
+ 				ISTGT_ERRLOG("lu_disk_lbread() failed\n");
+@@ -6151,12 +6152,6 @@ istgt_lu_disk_execute(CONN_Ptr conn, ISTGT_LU_CMD_Ptr lu_cmd)
+ 				}
+ 			}
+ 
+-			if (lu_cmd->R_bit == 0) {
+-				ISTGT_ERRLOG("R_bit == 0\n");
+-				lu_cmd->status = ISTGT_SCSI_STATUS_CHECK_CONDITION;
+-				return -1;
+-			}
+-
+ 			dpo = BGET8(&cdb[1], 4);
+ 			fua = BGET8(&cdb[1], 3);
+ 			fua_nv = BGET8(&cdb[1], 1);
+@@ -6165,6 +6160,13 @@ istgt_lu_disk_execute(CONN_Ptr conn, ISTGT_LU_CMD_Ptr lu_cmd)
+ 			ISTGT_TRACELOG(ISTGT_TRACE_SCSI,
+ 			    "READ_12(lba %"PRIu64", len %u blocks)\n",
+ 			    lba, transfer_len);
++
++			if ((lu_cmd->R_bit == 0) && (transfer_len > 0)) {
++				ISTGT_ERRLOG("R_bit == 0\n");
++				lu_cmd->status = ISTGT_SCSI_STATUS_CHECK_CONDITION;
++				return -1;
++			}
++
+ 			rc = istgt_lu_disk_lbread(spec, conn, lu_cmd, lba, transfer_len);
+ 			if (rc < 0) {
+ 				ISTGT_ERRLOG("lu_disk_lbread() failed\n");
+@@ -6187,12 +6189,6 @@ istgt_lu_disk_execute(CONN_Ptr conn, ISTGT_LU_CMD_Ptr lu_cmd)
+ 				}
+ 			}
+ 
+-			if (lu_cmd->R_bit == 0) {
+-				ISTGT_ERRLOG("R_bit == 0\n");
+-				lu_cmd->status = ISTGT_SCSI_STATUS_CHECK_CONDITION;
+-				return -1;
+-			}
+-
+ 			dpo = BGET8(&cdb[1], 4);
+ 			fua = BGET8(&cdb[1], 3);
+ 			fua_nv = BGET8(&cdb[1], 1);
+@@ -6201,6 +6197,13 @@ istgt_lu_disk_execute(CONN_Ptr conn, ISTGT_LU_CMD_Ptr lu_cmd)
+ 			ISTGT_TRACELOG(ISTGT_TRACE_SCSI,
+ 			    "READ_16(lba %"PRIu64", len %u blocks)\n",
+ 			    lba, transfer_len);
++
++			if ((lu_cmd->R_bit == 0) && (transfer_len > 0)) {
++				ISTGT_ERRLOG("R_bit == 0\n");
++				lu_cmd->status = ISTGT_SCSI_STATUS_CHECK_CONDITION;
++				return -1;
++			}
++
+ 			rc = istgt_lu_disk_lbread(spec, conn, lu_cmd, lba, transfer_len);
+ 			if (rc < 0) {
+ 				ISTGT_ERRLOG("lu_disk_lbread() failed\n");
+@@ -6258,12 +6261,6 @@ istgt_lu_disk_execute(CONN_Ptr conn, ISTGT_LU_CMD_Ptr lu_cmd)
+ 				}
+ 			}
+ 
+-			if (lu_cmd->W_bit == 0) {
+-				ISTGT_ERRLOG("W_bit == 0\n");
+-				lu_cmd->status = ISTGT_SCSI_STATUS_CHECK_CONDITION;
+-				return -1;
+-			}
+-
+ 			dpo = BGET8(&cdb[1], 4);
+ 			fua = BGET8(&cdb[1], 3);
+ 			fua_nv = BGET8(&cdb[1], 1);
+@@ -6272,6 +6269,13 @@ istgt_lu_disk_execute(CONN_Ptr conn, ISTGT_LU_CMD_Ptr lu_cmd)
+ 			ISTGT_TRACELOG(ISTGT_TRACE_SCSI,
+ 			    "WRITE_10(lba %"PRIu64", len %u blocks)\n",
+ 			    lba, transfer_len);
++
++			if ((lu_cmd->W_bit == 0) && (transfer_len > 0)) {
++				ISTGT_ERRLOG("W_bit == 0\n");
++				lu_cmd->status = ISTGT_SCSI_STATUS_CHECK_CONDITION;
++				return -1;
++			}
++
+ 			rc = istgt_lu_disk_lbwrite(spec, conn, lu_cmd, lba, transfer_len);
+ 			if (rc < 0) {
+ 				ISTGT_ERRLOG("lu_disk_lbwrite() failed\n");
+@@ -6295,12 +6299,6 @@ istgt_lu_disk_execute(CONN_Ptr conn, ISTGT_LU_CMD_Ptr lu_cmd)
+ 				}
+ 			}
+ 
+-			if (lu_cmd->W_bit == 0) {
+-				ISTGT_ERRLOG("W_bit == 0\n");
+-				lu_cmd->status = ISTGT_SCSI_STATUS_CHECK_CONDITION;
+-				return -1;
+-			}
+-
+ 			dpo = BGET8(&cdb[1], 4);
+ 			fua = BGET8(&cdb[1], 3);
+ 			fua_nv = BGET8(&cdb[1], 1);
+@@ -6309,6 +6307,13 @@ istgt_lu_disk_execute(CONN_Ptr conn, ISTGT_LU_CMD_Ptr lu_cmd)
+ 			ISTGT_TRACELOG(ISTGT_TRACE_SCSI,
+ 			    "WRITE_12(lba %"PRIu64", len %u blocks)\n",
+ 			    lba, transfer_len);
++
++			if ((lu_cmd->W_bit == 0) && (transfer_len > 0)) {
++				ISTGT_ERRLOG("W_bit == 0\n");
++				lu_cmd->status = ISTGT_SCSI_STATUS_CHECK_CONDITION;
++				return -1;
++			}
++
+ 			rc = istgt_lu_disk_lbwrite(spec, conn, lu_cmd, lba, transfer_len);
+ 			if (rc < 0) {
+ 				ISTGT_ERRLOG("lu_disk_lbwrite() failed\n");
+@@ -6332,12 +6337,6 @@ istgt_lu_disk_execute(CONN_Ptr conn, ISTGT_LU_CMD_Ptr lu_cmd)
+ 				}
+ 			}
+ 
+-			if (lu_cmd->W_bit == 0) {
+-				ISTGT_ERRLOG("W_bit == 0\n");
+-				lu_cmd->status = ISTGT_SCSI_STATUS_CHECK_CONDITION;
+-				return -1;
+-			}
+-
+ 			dpo = BGET8(&cdb[1], 4);
+ 			fua = BGET8(&cdb[1], 3);
+ 			fua_nv = BGET8(&cdb[1], 1);
+@@ -6346,6 +6345,13 @@ istgt_lu_disk_execute(CONN_Ptr conn, ISTGT_LU_CMD_Ptr lu_cmd)
+ 			ISTGT_TRACELOG(ISTGT_TRACE_SCSI,
+ 			    "WRITE_16(lba %"PRIu64", len %u blocks)\n",
+ 			    lba, transfer_len);
++
++			if ((lu_cmd->W_bit == 0) && (transfer_len > 0)) {
++				ISTGT_ERRLOG("W_bit == 0\n");
++				lu_cmd->status = ISTGT_SCSI_STATUS_CHECK_CONDITION;
++				return -1;
++			}
++
+ 			rc = istgt_lu_disk_lbwrite(spec, conn, lu_cmd, lba, transfer_len);
+ 			if (rc < 0) {
+ 				ISTGT_ERRLOG("lu_disk_lbwrite() failed\n");
+-- 
+2.1.2
+

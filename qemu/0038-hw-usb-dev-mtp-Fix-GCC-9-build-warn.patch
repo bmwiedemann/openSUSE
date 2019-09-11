@@ -1,0 +1,42 @@
+From: Alistair Francis <Alistair.Francis@wdc.com>
+Date: Sat, 4 May 2019 07:58:55 -0600
+Subject: hw/usb/dev-mtp: Fix GCC 9 build warning
+
+Fix this warning with GCC 9 on Fedora 30:
+hw/usb/dev-mtp.c:1715:36: error: taking address of packed member of 'struct <anonymous>' may result in an unaligned pointer value [-Werror=address-of-packed-member]
+ 1715 |                             dataset->filename);
+      |                             ~~~~~~~^~~~~~~~~~
+
+Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/usb/dev-mtp.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
+index 99548b012d..8233beacab 100644
+--- a/hw/usb/dev-mtp.c
++++ b/hw/usb/dev-mtp.c
+@@ -1711,9 +1711,22 @@ static void usb_mtp_write_metadata(MTPState *s, uint64_t dlen)
+     assert(!s->write_pending);
+     assert(p != NULL);
+ 
++/*
++ * We are about to access a packed struct. We are confident that the pointer
++ * address won't be unaligned, so we ignore GCC warnings.
++ */
++#if defined(CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE) && QEMU_GNUC_PREREQ(9, 0)
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Waddress-of-packed-member"
++#endif
++
+     filename = utf16_to_str(MIN(dataset->length, filename_chars),
+                             dataset->filename);
+ 
++#if defined(CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE) && QEMU_GNUC_PREREQ(9, 0)
++#pragma GCC diagnostic pop
++#endif
++
+     if (strchr(filename, '/')) {
+         usb_mtp_queue_result(s, RES_PARAMETER_NOT_SUPPORTED, d->trans,
+                              0, 0, 0, 0);

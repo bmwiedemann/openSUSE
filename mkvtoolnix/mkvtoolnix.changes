@@ -1,0 +1,2299 @@
+-------------------------------------------------------------------
+Wed Jun 26 13:22:47 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 35.0.0
+  New features and enhancements:
+  * mkvmerge: JSON identification: the "codec name" track
+    property will be output as `codec_name`. The JSON schema has
+    been bumped to v12 for this change.
+  * MKVToolNix GUI: job queue: added a new type of action to
+    execute after job completion: deleting source files for of
+    multiplexer jobs. As this is a destructive operation, the
+    action is disabled by default. Implements #869 and #2570.
+  Bug fixes:
+  * mkvmerge: the "codec name" track property wasn't copied from
+    Matroska files. Fixes #2566.
+  * MKVToolNix GUI: multiplexer: Windows: clearing the
+    destination file name will reset the tab name to
+    "\<No destination file\>" again. Fixes #2571.
+  * MKVToolNix GUI: multiplexer: the file types were not
+    re-translated if the UI language was changed. Fixes #2572.
+
+-------------------------------------------------------------------
+Fri Jun  7 09:56:50 UTC 2019 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 34.0.0:
+  * mkvmerge: bugfix: all subtitle frames are now treated as key
+    frames in order to fix wrong data in source files.
+   bugfix: AV1: fixed frame timestamp calculation when reading
+    bitstreams that lack timing information from IVF files.
+   bugfix: Matroska reader: fixed an infinite loop that could
+    happen with large video frames and applied timestamp files
+    due to too much data being buffered at the wrong time.
+
+-------------------------------------------------------------------
+Tue Apr 16 09:41:48 UTC 2019 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 33.1.0:
+  * Build with stack protection
+- Update to version 33.0.0:
+  * mkvinfo: bugfix: when using the `--size` option, mkvinfo will
+   now report the correctly if an element has an unknown size.
+  * MKVToolNix GUI: bugfix: info tool: clusters with an unknown
+   size will now be read and displayed correctly.
+  bugfix: multiplexer: if a destination file names ends with a
+   number in parenthesis (e.g. a year such as "(2017)"), that
+   number will not be stripped anymore during the process of
+   ensuring the destination file name is unique. Only those suffixes
+   added automatically in prior attempts to make the file name
+   unique will be removed.
+- Update to version 32.0.0:
+  * mkvinfo: new feature: when sizes are output the size of the
+   element's data portion is output in addition to the element's
+   total size.
+  * MKVToolNix GUI: new feature: info tool: the element's data
+   portion is shown as an extra column.
+  new feature: multiplexer: added column "Delay" to the track list
+   containing the additional delay to apply during multiplexing.
+  bugfix: the portable mode wasn't detected correctly when the
+   current working directory the GUI was started from wasn't the
+   directory the GUI's executable file was located it.
+  bugfix: multiplexer: using button to change the current
+   destination directory to one of the recently used ones did not
+   update the file name according to the "make file name unique"
+   setting.
+  bugfix: multiplexer: the function "set destination file name from
+   selected file's name" will now only change the destination file's
+   name but not its path.
+  * all: fixed handling of Unicode code points > U+FFFF.
+- Update to version 31.0.0:
+  * all programs: New Feature: added a new option
+   `--abort-on-warnings` that will cause the program to abort after
+   it has emitted the first warning, similar to how it aborts after
+   the first error.
+  * mkvmerge, mkvextract: New Feature: when closing files that were
+   opened for writing, cached data will not be flushed to storage
+   automatically anymore. A new option was added to both programs
+   (`--flush-on-close`) that re-enables flushing for people who are
+   affected by data loss.
+   The reason is that automatic flushing causes long delays in
+   processing queues when the output by mkvmerge/mkvextract isn't
+   the final product but just an intermediate result to be
+   processed further.
+  Bugfix: AVI reader: using DV type 1 AVIs will now result in an
+   unsupported file type being reported instead of crashing mkvmerge
+  Bugfix: HEVC: the height of interlaced streams will now be set
+   correctly to the height of the full frame instead of the height of
+   a single interlaced field.
+  Bugfix: MP4 reader: edit lists consisting solely of elements that
+   mkvmerge doesn't support (such as dwells) are simply ignored.
+   Before no data was read for such tracks at all.
+  Bugfix: text subtitles: entries with an explicit duration of 0ms
+   will now be handled correctly: the 0ms duration will be stored
+   in Matroska instead of the difference between the current and
+   the following entry.
+  * MKVToolNix GUI: New Feature: multiplexer: the dialog previewing
+   different character sets for text subtitles will now keep the
+   position of the displayed text when switching between character
+   sets.
+  Bugfix: multiplexer, chapter editor: fixed drag & drop handling
+   with Qt 5.12.0 and newer.
+  Bugfix: multiplexer: the GUI did not clean up temporary files
+   created when running `mkvmerge`.
+
+-------------------------------------------------------------------
+Tue Mar 19 10:18:54 UTC 2019 - plater <davejplater@gmail.com>
+
+- Fix Factory build by changing rubygem-rake build requirement to
+  rubygem(rake) and adding libboost_system build dependency again,
+  fixes boo#1129626
+
+-------------------------------------------------------------------
+Mon Jan 14 11:31:04 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop libboost_system dependency as it is not needed
+
+-------------------------------------------------------------------
+Sat Jan 12 17:43:06 UTC 2019 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 30.1.0:
+  * MKVToolNix GUI: bugfix: chapter editor: when opening a
+   Matroska/WebM file that doesn't contain chapters and later
+   saving chapters back to them, the editor was truncating the file
+   down to a couple of KB in size.
+- Update to version 30.0.0:
+  * MKVToolNix GUI: New Feature: multiplexer: a new button was
+   added next to the "destination file" controls. Clicking it
+   shows a menu with the ten most recently used output
+   directories. Selecting one of them will change the destination
+   file to the selected directory keeping the file name.
+  New Feature: The ten most recently used values for the "relative
+   output directory" and "fixed output directory" settings are now
+   saved. The corresponding settings have been changed into combo
+   boxes allowing quick access to those recent values.
+  New Feature: The predefined split sizes and durations can now be
+   customized in the preferences.
+  New Feature: chapter editor: added an option in the "Chapter
+   editor" menu for appending chapters from an existing file to the
+   currently open editor tab.
+  New Feature: Added an action in the context menu for copying the
+   selected entry and all of its children to another open editor tab.
+  Bugfix: removing a file added as an "additional part" will no
+   longer cause a crash.
+  * mkvextract: New Feature: WAV extractor: mkvextract will now
+   write W64 files instead of WAV files if the file name extension
+   is `.w64` or if the final file size is bigger than 4 GB, the
+   file size limit for WAV files.
+  * mkvmerge: Bugfix: all files opened for writing will now be
+   flushed once before they're closed. This ensures the operating
+   system actually writes all cached data to disk preventing data
+   loss in certain situations such as power outages or buggy drivers
+   in combination with suspending the computer.
+  Bugfix: AAC: under certain conditions 8 channel audio files were
+   taken for 7 channel ones.
+- Update to version 29.0.0:
+  * MKVToolNix GUI: New Feature: added an option in the preferences
+   for disabling automatic scaling for high DPI displays.
+  New Feature: The GUI will now prevent the system from going to
+   sleep while the job queue is running.
+  * mkvmerge: Bugfix: chapter generation: the start timestamps of
+   chapters generated in intervals was wrong for files whose
+   smallest video timestamp was bigger than 0.
+  Bugfix: MP4 reader: fixed handling of atoms whose size exceeds the
+   parent atom's size.
+  Bugfix: the chapter name template will now also be used when
+   reading Ogg-style chapter files with empty chapter names.
+  * mkvextract: Bugfix: AAC: mkvextract will now write the program
+   config element (PCE) before the first AAC raw data packet if the
+   PCE is present in the `AudioSpecificConfig` structure in the
+   `Codec Private` Matroska element. The  PCE carries vital
+   information about the number of channels and is required in
+   certain cases.
+  * mkvpropedit, MKVToolNix GUI's header editor: Bugfix: in
+   situations when a one-byte space must be covered by a new EBML
+   void element the following element must be moved up instead.
+   If that moved element is a cluster, the corresponding cue
+   entries will now be updated to reflect the cluster's new
+   position.
+
+-------------------------------------------------------------------
+Tue Oct 30 14:07:04 UTC 2018 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 28.2.0
+  * mkvmerge, mkvinfo, mkvextract, mkvpropedit, MKVToolNix GUI's info
+   tool & chapter editor: fixed a case of memory being accessed after
+   it had been freed earlier. This can be triggered by specially
+   crafted Matroska files and lead to arbitrary code execution. The
+   vulnerability was reported as Cisco TALOS 2018-0694 on 2018-10-25
+   (CVE-2018-4022). Fixes boo#1113709.
+- Update to version 28.1.0
+  * mkvmerge: bugfix: AV1 parser: fixed an error in the sequence
+   header parser if neither the `reduced_still_picture_header` nor
+   the `frame_id_numbers_present_flag` is set.
+  bugfix: AV1 parser: when creating the `av1C` structure for the
+   Codec Private element the sequence header OBU wasn't copied
+   completely: its common data (type field & OBU size among others)
+   was missing.
+  bugfix: Matroska reader, AV1: mkvmerge will try to re-create the
+   `av1C` data stored in Codec Private when reading AV1 from
+   Matroska or WebM files created by mkvmerge v28.0.0.
+  * MKVToolNix GUI: bugfix info tool: the tool will no longer stop
+   scanning elements when an EBML Void element is found after the
+   first Cluster element.
+- Update to version 28.0.0
+  * mkvmerge: New feature: AV1 parser: updated the code for the
+   finalized AV1 bitstream specification.
+  New feature: AV1 packetizer: updated the code for the finalized
+   AV1-in-Matroska & WebM mapping specification.
+  New feature: AV1 support: the `--engage enable_av1` option has
+   been removed again.
+  New feature: MP4 reader: added support for AV1.
+  New feature: DTS: implemented dialog normalization gain removal
+   for extension substreams.
+  New feature: VP9: mkvmerge will now create codec private data
+   according to the VP9 codec mapping described in the WebM
+   specifications.
+  bugfix: JSON identification: fixed a bug when removing invalid
+   UTF-8 data from strings before they're output as JSON.
+  bugfix: MP4/QuickTime reader: fixed handling of PCM audio with
+   FourCC `in24`.
+  bugfix: MPEG transport stream reader, teletext subtitles: the
+   decision whether or not to keep frames around in order to
+   potentially merge them with the following frame is made sooner.
+   That avoids problems if there are large gaps between teletext
+   subtitle frames which could lead to frames being interleaved
+   too late.
+  * mkvmerge, mkvextract: New feature: simple text subtitles:
+   added a workaround for simple text subtitle tracks that don't
+   contain a duration.
+  * mkvextract: New feature: added support for extracting AV1 to IVF.
+  New feature: IVF extractor (AV1, VP8, VP9): precise values will
+   be used for the frame rate numerator & denominator header fields
+   for certain well-known values of the track's default duration.
+  * MKVToolNix GUI: New feature: automatic scaling for high DPI
+   displays is activated if the GUI is compiled with Qt ≥ 5.6.0.
+  New feature: added a menu item ("Help" → "System information") for
+   displaying information about the system MKVToolNix is running on
+   in order to make debugging easier.
+  New feature: multiplexer, header editor: the user can enter a list
+   of predefined track names in the preferences. She can later select
+   from them in "track name" combo box.
+  * mkvextract: bugfix: IVF extractor (AV1, VP8, VP8): the frame rate
+   header fields weren't clamped to 16 bits properly causing wrong
+   frame rates to be written in certain situations.
+  * mkvpropedit, MKVToolNix GUI's header editor: bugfix: fixed file
+   corruption when a one-byte space must be covered with a new EBML
+   void element but all surrounding elements have a "size length"
+   field that's eight bytes long already.
+
+-------------------------------------------------------------------
+Thu Oct 18 08:08:54 UTC 2018 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 27.0.0:
+  * mkvmerge: New feature: chapters: the timestamps of chapters
+   read from containers or from chapter files can be adjusted
+   (multiplication and addition) with the new
+   `--chapter-sync` option or using the special track ID `-2`
+   for the existing `--sync` option.
+  Bugfix: AC-3: dialog normalization gain removal was corrupting
+   E-AC-3 frames irreversibly by writing checksums in places where
+   they didn't belong. Additionally only the first E-AC-3 frame in
+   a Matroska was processed but not additional dependent frames in
+   the same block.
+  * MKVToolNix GUI: New feature: multiplexer: adjusted & added
+   controls for mkvmerge's new feature of being able to adjust
+   chapter timestamps.
+  New feature: multiplexer: the GUI can now ask for confirmation
+   when the user is about to create a file that won't contain
+   audio tracks. It does this by default if at least one source
+   file contains an audio track.
+  Bugfix: fixed a leak of Windows font resources leading to a
+   general slowdown and subsequent crash.
+- Update to version 26.0.0:
+  * mkvmerge: New feature: chapter generation: if the name template
+   given by `--generate-chapters-name-template` is empty, no names
+   will be generated for the chapter atoms.
+  New feature: chapters: chapter names generated from MPLS files
+   will now use the name template if one is set via
+   `--generate-chapters-name-template`.
+  New feature: mkvmerge will no longer abort with an error message
+   if no audio, video and subtitle tracks should be multiplexed.
+   This allows copying of chapters from non-chapter source files.
+  Bugfix: Matroska reader: fixed wrong timestamps when appending
+   Matroska files where the second Matroska file's first timestamp
+   is bigger than 0.
+  Bugfix: MP4 reader: fixed division by zero errors during file
+   identification if the timescale is 0 in the `MVHD` atom.
+  Bugfix: Windows Television DVR files are now recognized as an
+   unsupported file type. This prevents mis-detection as MPEG-2
+   with an accompanying flood of error messages.
+  * MKVToolNix GUI: New feature: the font size in the tool
+   selector on the left will scale with the font size the
+   user selects in the preferences.
+  New feature: the GUI will no longer automatically resize the
+   columns in tree and list views to match the content size.
+   Instead it remembers and restores the widths set by the user.
+  New feature: multiplexer: the chapter name template will now be
+   set automatically to the name template in the preferences'
+   "chapter editor" section. Additionally the option
+   `--generate-chapters-name-template …` will be passed to
+   mkvmerge in situations when mkvmerge will generate chapters.
+  New feature: chapter editor: if the chapter name template is empty,
+   chapters will be generated without names.
+  New feature: chapter editor: added an option to remove all chapter
+   names to the "additional modifications" dialog.
+  Bugfix: info tool: under certain circumstances "cues" were shown at
+   the wrong level (inside the previous master element instead of on
+   lvel 1).
+  Bugfix: job queue: fixed invalid memory handling and consequent
+   crashes when using the "edit in corresponding tool & remove from
+   job queue" option if one of the files in that job contained
+   attached files.
+
+-------------------------------------------------------------------
+Wed Aug  8 22:52:50 UTC 2018 - rpm@fthiessen.de
+
+- Update to 25.0.0:
+  * mkvextract: New feature: VobSub extraction: empty SPU packets
+    will now be dropped during extraction as other tools such as
+    MP4Box cannot handle them correctly.
+   Bugfix: fixed a crash when mkvextract with a non-Matroska file as
+    the source file.
+  * MKVToolNix GUI: New feature:: multiplexer: added options to only
+    enable tracks of certain types by default.
+   New feature: multiplexer: added an option to enable dialog
+    normalization gain removal by default for all audio tracks for
+    which the operation is supported.
+   New feature: multiplexer: when deriving track languages from the
+    file names is active and the file name contains the usual
+    season/episode pattern, then only the part after the
+    season/episode pattern will be used for detecting the language.
+   New feature: multiplexer: the regular expression used for deriving
+    track languages from the file names can now be customized in
+    the preferences.
+   New feature: multiplexer: the user can now customize the list of
+    track languages the GUI recognizes in file names. This list
+    defaults to a handful of common languages instead of the full
+    list of supported languages.
+   Bugfix: multiplexer: when scanning playlists, all playlists were
+    offered for selection regardless of the value of the "minimum
+    playlist duration" setting.
+   Bugfix: multiplexer: deriving track languages from file names:
+    the regular sub-expressions for ISO 639-1 codes could match
+    on empty strings, too, causing matches in wrong places and hence
+    no language being recognized in certain situations.
+   Bugfix: header editor: fixed a crash when saving the file fails
+    (e.g. because it isn't writable).
+   Bugfix: header editor: the editor was wrongfully claiming that
+    mandatory elements with default values cannot be removed in
+    the "status" text.
+   Bugfix: preferences: on macOS & Linux the setting "enable copying
+    tracks by their type" wasn't restored on program start.
+   Bugfix: the central area is now scrollable, allowing the GUI to be
+    resized to almost arbitrary sizes.
+   Bugfix: multiplexer: the "copy file title to destination file name"
+    functionality will now replace everything in the destination file
+    name up to the last period instead of only up to the first period.
+  * mkvmerge: New feature: SRT/ASS/SSA text subtitles: for files for
+    which no encoding has been specified, mkvmerge will try UTF-8
+    first before falling back to the system's default encoding.
+   New feature: SRT/ASS/SSA/WebVTT text subtitles: a warning is now
+    emitted if invalid 8-bit characters are encountered outside valid
+    multi-byte UTF-8 sequences.
+   New Feature: Matroska & MPEG transport stream readers: the encoding
+    of text subtitles read from Matroska files can now be changed
+    with the '--sub-charset' parameter.
+   New feature: MP4 reader: improved the detection of edit lists
+    consisting of two identical entries, each spanning the file's
+    duration as given in the movie header atom. The second entry is
+    ignored in such cases.
+   New feature: JSON identification: the "display unit" video track
+    property is now reported as `display_unit`. The JSON schema has
+    been bumped to v11 for this change.
+   New feature: AVC/h.264: empty NALUs will now be removed.
+   New feature: input: format detection uses file-extension to improve
+    performance and to give preference when several formats match.
+   New feature: AV1: added support for reading AV1 video from
+    Open Bitstream Unit files.
+   New feature: AV1: adjusted the code for the AV1 bitstream format
+    changes made up to 2018-05-02 (git revision d14e878).
+   New feature: MP4 reader: if a track has an edit list with two
+    identical entries, each spanning the file's duration as given in
+    the movie header atom, then the second entry will now be ignored.
+    Improves the handling of files with bogus data.
+   Bugfix: AVC/h.264 and HEVC: fixed file identification failing
+    for certain elementary streams due to internal buffers not
+    being cleared properly.
+   Bugfix: MLP code: fixed various issues preventing MLP from being
+    parsed correctly.
+   Bugfix: TrueHD/MLP packetizer; dialog volume normalization removal
+    isn't attempted if the track is an MLP track as the operation is
+    only supported for TrueHD, not MLP.
+   Bugfix: MPEG TS reader: when reading MPLS mkvmerge will now
+    compare the MPLS's start and end timestamps against the transport
+    stream's PTS instead of its DTS. Otherwise the first key frame of
+    a video track might be dropped if it isn't the first in
+    presentation order.
+   Bugfix: JSON identification: mkvmerge will ensure that all strings
+    passed to the JSON output modules are valid UTF-8 encoded strings
+    by replacing invalid bytes with placeholder characters. This avoids
+    the JSON library throwing an exception and mkvmerge
+    aborting on such data.
+   Bugfix: audio packetizers: mkvmerge will now keep discard
+    padding values if they're present for packets read
+    from Matroska files.
+   Bugfix:  Ogg Opus reader: packet timestamps aren't calculated by
+    summing up the duration of all packets starting with
+    timestamp 0 anymore. Instead the algorithm is based on the Ogg page's
+    granule position and which packet number is currently timestamped
+    (special handling for the first and last packets in the stream).
+   Bugfix: E-AC-3 parser: fixed determining the number of channels for
+    streams that contain an AC-3 core with dependent E-AC-3 frames.
+   Bugfix:  Matroska reader: fixed mkvmerge buffering the whole file if a
+    video track is multiplexed that consists of only one or a few frames.
+   Bugfix: the "display unit" video track property will now be kept if
+    it is set in the source file.
+   Bugfix:  MP3 packetizer: removed a memory leak growing linearly with the
+    track's size.
+   Bugfix: VobSub packetizer: whenever a VobSub packet doesn't contain a
+    duration on the container level, mkvmerge will now set it from
+    the duration in the SPU packets. Before it was accidentally setting
+    the SPU-level duration to 0 instead.
+   Bugfix:  track statistics tags: if writing the `Date` element is
+    deactivated via `--no-date`, the `_STATISTICS_WRITING_DATE_UTC`
+    isn't written either anymore.
+   Bugfix: removed several small, constant-size memory leaks.
+
+-------------------------------------------------------------------
+Mon Apr  9 07:58:38 UTC 2018 - rpm@fthiessen.de
+- Update to 22.0.0:
+  * mkvmerge: New feature: AC-3, DTS, TrueHD: added an option for
+    removing/minimizing the dialog normalization gain for all
+    supported types of the mentioned codecs.
+   New feature: AV1: added support for reading AV1 video from IVF,
+    WebM and Matroska files.
+   New feature: FLAC: mkvmerge can now ignore ID3 tags in FLAC
+    files which would otherwise prevent mkvmerge from detecting the
+    file type.
+   Bugfix: MP4 reader: fixed reading the ESDS audio header atom if
+    it is located inside a "wave" atom inside the "stsd" atom.
+   Bugfix: MP4 reader: AAC audio tracks signalling eight channels
+    in the track headers but only seven in the codec-specific
+    configuration will be treated as having eight channels.
+   Bugfix: MPEG TS reader: fixed wrong handling of the continuity
+    counter for TS packets that signal that TS payload is present
+    but where the adaptation field spans the whole TS packet.
+   Bugfix: the 'document type version' and 'document type read version'
+    header fields are now set depending on which elements are
+    actually written, not on which features are active.
+   Bugfix: the 'document type version' header field is now set
+    to 4 correctly if any of the version 4 Matroska elements
+    is written.
+  * mkvinfo: New Feature: the size and positions of frames
+    within "SimpleBlock" and "BlockGroup" elements are now shown
+    the same way they're  shown for other elements.
+   Bugfix: summary mode: the file positions reported for frames in
+    `BlockGroup` elements did not take the bytes used for
+    information such as timestamp, track number flags or lace sizes
+    into account. They were therefore too low.
+  * mkvpropedit, MKVToolNix GUI header editor: the
+    'document type version' and 'document type read version' header
+    fields are now updated if elements written by the changes require
+    higher version numbers.
+   Bugfix: mandatory elements can now be deleted if there's a default
+    value for them in the specifications.
+  * MKVToolNix GUI: multiplexer: added options for deriving the
+    track languages from the file name by searching for
+    ISO 639-1/639-2 language codes or language names enclosed in
+    non-word, non-space characters.
+   Bugfix: info tool: implemented reading all elements in the file
+    after the first cluster. Only top-level elements are shown;
+    child elements are only loaded on demand.
+   Bugfix: info tool: added a context menu with the option to show a
+    hex dump of the element with the bytes making up the EBML ID and
+    the size portion highlighted in different colors.
+    In-depth highlighting is done for the data in `SimpleBlock`
+    and `Block` elements.
+   Bugfix: chapter editor: added an option to remove all end
+    timestamps to the "additional modifications" dialog.
+- Update to 21.0.0:
+  * mkvinfo: the GUI portion has been removed. mkvinfo is now a pure
+     command-line program again.
+  * mkvmerge: New feature: track statistics tags: the `TagDefault`
+    element will not be written anymore as it was always set to the
+    default value `1` anyway.
+   New feature: JSON files can now contain C++-style line comments
+    outside of strings. Such comments, even though not part of the
+    official JSON specifications, are now ignored when reading JSON
+    files.
+   Bugfix: Appending files with additional parts at the same time
+    was broken if more than one additional part was appended.
+   Bugfix: FLV reader: a single invalid AAC frame was written for
+    AAC audio tracks with codec initialization data longer than five
+    bytes.
+   Bugfix: FLV reader: timestamps will be normalized down to 0.
+   Bugfix: MP4 reader: if an AAC track doesn't contain an
+    AAC-specific decoder configuration in the ESDS portion,
+    then a default decoder configuration will be generated based on
+    the track's header data instead of skipping the track.
+   Bugfix: MP4 reader: fixed reading HEVC/h.265 video tracks if
+    they're stored as Annex B byte streams inside MP4.
+   Bugfix: Ogg Opus reader: mkvmerge will now emit a warning
+    instead of aborting when it encounters an Ogg Opus page with
+    no data in the packet.
+   Bugfix: Matroska parser: fixed a segmentation fault that
+    occurred whenever the first level 1 element after resyncing
+    after an error in the file structure isn't a cluster.
+   Bugfix: fixed a crash during file type detection for
+    attachments if MKVToolNix is installed in a path with
+    non-ASCII characters (e.g. German Umlauts).
+  * MKVToolNix GUI: New Feature: chapter editor: opening a
+    Matroska file without chapters in it will now open the file
+    in an empty chapter editor instead of showing an error message.
+   New Feature: an "info" tool has been added, replacing the
+    functionality of mkvinfo's GUI. The functionality is not on
+    par yet but will be for release v22.
+   Bugfix: MKVToolNix GUI: Bugfix: multiplexer: the subtitle
+    character set can now be set for appended subtitle files, too.
+   Bugfix: MKVToolNix GUI: multiplexer: when appending, all tracks
+    appended to disabled tracks will start out disabled, too.
+  * mkvinfo: the `--hex-positions` parameter did nothing in summary mode.
+   Bugfix: mkvinfo: Windows: line endings will be written as `\r\n`
+    again instead of just `\n`.
+  * mkvpropedit: Bugfix: adding track statistics tags: for tracks
+    with content encoding (compression) mkvpropedit is now
+    accounting the uncompressed number of bytes, not the encoded
+    (compressed) number of bytes.
+
+-------------------------------------------------------------------
+Sun Jan 21 23:21:58 UTC 2018 - rpm@fthiessen.de
+
+- Update to 20.0.0:
+  * Feature removal: several deprecated features have been removed:
+   mkvmerge: the deprecated options `--identify-verbose`,
+    `--identify-for-gui`, `--identify-for-mmg` and
+    `--identification-format verbose-text`
+   all command line tools: support for the deprecated, old,
+    proprietary format used for option files
+   all command line tools: support for passing command line
+    options via the deprecated environment variables
+    `MKVTOOLNIX_OPTIONS`, `MKVEXTRACT_OPTIONS`, `MKVINFO_OPTIONS`,
+    `MKVMERGE_OPTIONS` and `MKVPROPEDIT_OPTIONS`
+  * mkvmerge: AVC/h.264 packetizer (framed): access unit delimiter
+    NALUs will now be removed.
+   bugfix: AVC/h.264 parser: when fixing the bitstream timing
+    information mkvmerge will now use exact representations of
+    the desired field duration if possible.
+   bugfix: AVC/h.264 parser: mkvmerge no longer assumes that
+    encountering sequence parameter set or picture parameter set
+    NALUs signal the start of a new frame.
+   bugfix: AVC/h.264 packetizer (framed): when mkvmerge is told
+    to fix the bitstream timing information, it will now update
+    all SPS NALUs, not just the ones in the AVCC.
+   bugfix: MPEG TS reader: TS packet payloads will only be
+    treated as PES packets if the payload actually starts with
+    a PES start code. The prior behavior led to wrong timestamps
+    and potentially broken frame data.
+   bugfix: MPEG TS reader: mkvmerge will now drop incomplete PES
+    packets as soon as an error is detected in the transport
+    stream instead of passing the incomplete frame to the
+    packetizer. An error is assumed either if the
+    `transport_error_indicator` flag is set or if the value of
+    the `continuity_counter` header field doesn't match the
+    expected value.
+   bugfix: Opus: when re-muxing Opus from Matroska mkvmerge will
+    now write "block duration" elements for all block groups
+    where a "discard padding" is set, too.
+   bugfix: SRT reader: mkvmerge can now handle SRT files with
+    timestamps without decimal places.
+   bugfix: read buffer I/O class: the class could get out of sync
+    regarding the file position of the underlying file I/O class
+    causing wrong data to be returned on subsequent read
+    operations. One result was that trying to identifying MPLS
+    files that refer to very short M2TS files caused mkvmerge
+    to segfault.
+   bugfix: multiplexer core: if there's a gap in audio timestamps,
+    a new block group/lace will be started for the first frame
+    after each gap. Before the fix the frame after the gap was
+    often stored in the previous block group causing the gap to
+    be in the wrong place: at the end of that block group.
+  * mkvextract: bugfix: AVC/h.264: if two consecutive IDR frames
+    with the same `idr_pic_id` parameter and no access unit
+    delimiters are found between them, mkvextract will insert an
+    access unit delimiter in order to signal the start of a new
+    access unit.
+  * MKVToolNix GUI: bugfix: update check dialog: Markdown links will
+    now be converted to clickable links.
+
+-------------------------------------------------------------------
+Mon Dec 25 18:43:33 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 19.0.0
+  * mkvmerge: splitting by duration, by timestamps or by
+    timestamp-based parts: mkvmerge will now consider the first
+    key frame within 1ms of the requested value to be eligible
+    for splitting.
+  * mkvmerge: fixed reading text files encoded in UTF-16 order
+    UTF-32 that have different forms of line endings (new lines,
+    carriage returns or a mix of both).
+  * MKVToolNix GUI: multiplexer: once a "subtitle/chapter
+    character set" was set for a track it couldn't be changed
+    back to the empty entry (= auto-detection) anymore.
+
+-------------------------------------------------------------------
+Tue Dec 12 15:11:02 UTC 2017 - rpm@fthiessen.de
+
+-Update to 18.0.0:
+  * mkvmerge: bugfix: AAC ADTS parser: fixed interpretation of the
+    `channel_configuration` header element for ADTS files that do
+    not contain a program configuration element: value 7 means
+    7.1 channels.
+   bugfix: Matroska identification: the `date_local` and
+    `date_utc` attributes will only be output if the identified
+    Matroska file actually contains the "date" header field.
+   bugfix: WebVTT: mkvmerge did not recognize timestamp lines if
+    the hours components were absent.
+   enhancement: AVC & HEVC ES parsers: performance improvements
+    by copying much less memory around.
+   enhancement: tags: reintroduced a workaround for non-compliant
+    files with tags that do not contain the mandatory `SimpleTag`
+    element. This workaround was removed during code refactoring
+    in release v15.0.0.
+  * mkvpropedit: bugfix: GUI's header editor: the `date` header
+    field won't be added automatically anymore whenever the
+    segment info section is edited and the `date` element is
+    either deleted or not present in the first place.
+  * GUI: multiplexer: the "AAC is SBR/HE-AAC/AAC+" checkbox in
+    the "audio properties" section will be disabled if the
+    functionality is not implemented for the selected track's
+    codec & container.
+   enhancement: multiplexer: the "reduce to core" checkbox in
+    the "audio properties" section will be disabled if the
+    functionality is not implemented for the selected track's
+    codec.
+
+-------------------------------------------------------------------
+Wed Nov  8 13:50:41 UTC 2017 - rpm@fthiessen.de
+
+- Update to 17.0.0:
+  * The word "timecode" has been changed to "timestamp" everywhere.
+   This affects program output (including mkvinfo's), GUI controls,
+   command line parameters (e.g. `mkvmerge --timestamp-scale …`) and
+   file formats.
+   All programs remain backwards compatible insofar as they still
+   accept "timecode" in all those places.
+  * mkvextract's command line interface has been changed to allow
+   extraction of multiple items at the same time.
+  * mkvmerge: New feature: AC-3: during identification regular AC-3
+    and E-AC-3 tracks will now be identified differently for most
+    container formats (exception: AVI, Real Media, Ogg/OGM).
+    The codec will be reported as `AC-3` for regular AC-3 and as
+    `E-AC-3` for E-AC-3 tracks instead of the combined `AC-3/E-AC-3`.
+   bugfix: AAC ADTS parser: mkvmerge will now parse the
+    `program_config_element` if it is located at the start of an AAC
+    frame in order to determine the actual number of channels.
+    This overrides invalid channel configurations in the ADTS headers.
+   bugfix: fixed AC-3 being misdetected as encrypted MPEG program
+    streams under certain conditions.
+   bugfix: Dirac: under certain conditions (e.g. only muxing a single
+    Dirac track without any other tracks) mkvmerge was always setting
+    the pixel width & height to 123. The frame rate was wrong, too.
+   bugfix: E-AC-3 in Matroska: if AC-3 cores and their corresponding
+    E-AC-3 extension are located in two different Matroska blocks,
+    then mkvmerge will now re-assemble them into a single block and
+    only use the first block's timestamp.
+   bugfix: SRT reader: fixed calculating the duration of entries
+    starting with at a negative timestamp.
+   bugfix: VC-1: under certain conditions (e.g. only muxing a single
+    VC-1 track without any other tracks) mkvmerge was always setting
+    the pixel width & height to 123. The frame rate was wrong, too.
+   bugfix: command line options: an error message will be output if
+    the single-value-form of the `--sync` option is used and it
+    isn't a number (e.g. `--sync 0:asd`).
+  * mkvpropedit, GUI's header editor: bugfix: both programs will now
+    show proper error messages instead of crashing when certain
+    kinds of data corruption is found when reading a file.
+- Update to 16.0.0:
+  * mkvmerge: New feature MP4 reader: added support for Vorbis.
+   bugfix: AAC reader: mkvmerge will now emit an error message for
+    AAC files whose header fields imply a sampling frequency
+    or number of channels of 0.
+   bugfix: AVC/h.264 ES parser: fixed the calculation of reference
+    information for P and B frames. This also fixes some P frames
+    being marked as B frames and vice versa.
+   bugfix: AVC/h.264 ES parser: only non-key frames that have the
+    NALU header field `nal_ref_idc` set to 0 will be marked as
+    "discardable" in `SimpleBlock` elements. Other half of the
+    fix for #2047.
+   bugfix: HEVC/h.265: the generation of the HEVCC structure
+    stored in `CodecPrivate` was wrong in two places:
+    1. the position of the number of sub-layers was swapped with
+    reserved bits and 2. the VPS/SPS/PPS/SEI lists did not start
+    with a reserved 1 bit.
+   bugfix: output: the `doc type version` will be set at least
+    to 2 if certain elements are written (`CodecState`,
+    `CueCodecState`, `FlagInterlaced`).
+   bugfix: output: the track header attributes `MinCache` and
+    `MaxCache` will not be written anymore.
+   bugfix: Matroska reader: the "key" and "discardable" flags of
+    SimpleBlock elements will be kept as they are.
+   bugfix: Matroska reader: if present in the file,
+    the "white colour coordinate x" track header attribute was
+    written to both "white colour coordinate x" and
+    "white colour coordinate y" in the output file.
+   bugfix: Opus output: mkvmerge will now put all frames with
+    discard padding into their own block group.
+  * MKVToolNix GUI: Bugfix: header editor: removed the check for
+    external modification when saving the file.
+   bugfix: job queue: fixed calculation of total progress when
+    automatic removal of completed is enabled.
+
+-------------------------------------------------------------------
+Thu Aug 31 19:10:10 UTC 2017 - rpm@fthiessen.de
+
+- Update to 15.0.0:
+  * Requires libebml >= 1.3.5
+  * Dropped disable-update-check.patch (upstream now provides
+    configure option for disabling the update check).
+  * mkvmerge, mkvpropedit, GUI's header and chapter editors: the
+    programs will no longer add most missing Matroska elements that
+    are mandatory but have a default value in the Matroska
+    specification (e.g. the `TagLanguage` element with a value of
+    `und` if it isn't present in its `SimpleTag` parent).
+  * mkvmerge: the option `--colour-matrix` has been renamed to
+    `--colour-matrix-coefficients` in order to match the
+    specification more closely. The old option name will
+    continue to be recognized as well.
+  * all: bugfix: selecting the program's language (e.g. via the
+    `--ui-language`command-line option or via the GUI's
+    preferences) did not work on Linux & Unix if the `LANGUAGE`
+    environment variable was set and didn't include the desired
+    language. 
+  * MKVToolNix GUI: new feature: multiplex tool: added a new entry
+    to the "source files" context menu labeled "Set destination
+    file name from selected file's name". It will force the GUI
+    to consider the selected file to be the reference for
+    automatically setting the file name, no matter which file was
+    originally added as the first file. It will also force setting
+    the destination file name once if automatic destination file
+    name generation is turned off in the preferences.
+   new feature: multiplex tool: added an option in the preferences
+    on "Multiplexer" → "Output" labeled "Only use the first source
+    file that contains a video track". If enabled, only source
+    files containing video tracks will be used for setting the
+    destination file name. Other files that are added are ignore.
+   new feature: header editor: added support for editing the video
+    colour attributes.
+   new feature: header editor: added support for the "video
+    projection" track header attributes.
+   new feature: job queue: selected jobs can now be move up and
+    down by pressing the `Ctrl+Up` and `Ctrl+Down` keys.
+    Additionally, push buttons to move them up & down are shown
+    if the corresponding option is enabled in the preferences.
+   bugfix: removed the keyboard shortcuts for switching between
+    the different tools (e.g. `Ctrl+Alt+1` for the multiplexer).
+    They overlapped with basic functionality on keyboards that
+    use an `AltGr` key, e.g. German ones, where `AltGr+7` emits
+    `{`. As `AltGr+key` is implemented as `Ctrl+Alt+key` under the
+    hood, this means that `AltGr+7` is really `Ctrl+Alt+7` which
+    the GUI now took to mean "switch to the job queue" instead of
+    "insert `{`".
+   bugfix: header editor: after saving the file the GUI wasn't
+    updating its internal file modification timestamp. That lead
+    to the GUI wrongfully claiming that the file had been
+    modified externally when the user wanted to save the file
+    once more, requiring a reload of the file losing all
+    modifications made since saving the first time.
+  * mkvmerge: new feature: added support for the
+    "video projection" track header attributes.
+   bugfix: DTS handling: some source files provide timestamps for
+    audio tracks only once every `n` audio frames.
+    In such situations mkvmerge was buffering too much data
+    resulting in a single gap in the timestamps of one frame
+    duration after frame number `n - 1` (the second audio
+    timestamp read from the source file was used one output
+    frame too early).
+  * mkvinfo: new feature: added support for the
+    "video projection" track header attributes.
+   bugfix: fixed a null pointer dereference if an `EbmlBinary`
+    element's data pointer is a null pointer.
+  * mkvpropedit: new feature: added support for editing the
+    video colour attributes.
+   new feature: added support for the "video projection"
+    track header attributes.
+
+-------------------------------------------------------------------
+Fri Aug 25 10:17:55 UTC 2017 - rpm@fthiessen.de
+
+- Split boost-devel BuildRequires for Tumbleweed
+- Update to version 14.0.0
+  * mkvmerge, mkvpropedit, MKVToolNix GUI (chapter editor):
+   new feature: added support for chapters in WebM files that is
+    spec-compliant by removing all tag elements not supported
+    by the WebM spec.
+  * translations: added a Romanian translation of the programs.
+  * mkvmerge: bugfix: AVC/h.264 and HEVC/h.265 parser: fixed wrong
+    frame order & timestamp calculation in certain situations when
+    SPS (sequence parameter sets) or PPS (picture parameter sets)
+    change mid-stream.
+   bugfix: MPEG-1/-2 video: the "remove stuffing bytes" feature
+    introduced in v5.8.0 was broken. In a lot of situations it
+    did not detect the end of a slice correctly and removed 0 bytes
+    that were actually part of the slice structure. Often there
+    were no visual problems as decoders were able to ignore such
+    errors, but in other cases there are visual artifacts upon
+    decoding. As detecting the slice end properly requires parsing
+    the whole slice structure, this feature has been removed again.
+   bugfix: MPEG PS reader: fixed mkvmerge trying to handle an "end"
+    code the same way as a "program stream map" code.
+   bugfix: MPEG TS reader: mkvmerge won't emit warnings if the
+    system's `iconv` library doesn't support the ISO 6937
+    character set.
+   bugfix: when appending fails the error message details (e.g.
+    "the number of channels differs: 1 and 2") were often not output.
+   new feature: AAC: implemented support for AAC with 960 samples per
+    frame.
+   new feature: identification: if the encoding/character set of a
+    text subtitle track is known (e.g. because a byte order mark is
+    present in the file), then it will be output during
+    identification as the `encoding` property.
+   new feature: WAV reader: added support for Wave64 files.
+  * MKVToolNix GUI: bugfix: multiplex tool: implemented a workaround
+    for a crash that could occur during drag & drop if at least one
+    of the columns is hidden.
+   bugifx: multiplex tool: appended tracks can no longer be enabled
+    (selected for multiplexing) if the track they're going to be
+    appended to is not enabled.
+   bugifx: multiplex tool: if the GUI is set to ensure unique output
+    file names, it will now verify that right before starting to
+    multiplex/adding the job to the queue, too.
+   bugifx: fixed the total progress reverting to 0% instead of
+    staying at 100% when all jobs have finished. This was introduced
+    by the attempt at fixing the computation of the value of total
+    progress bar for multiple jobs running.
+   new feature: multiplexer: if the encoding/character set of a
+    subtitle track cannot be changed, the GUI will deactivate the
+    "subtitle character set" drop-down box and ignore changes to it
+    when multiple tracks are selected. Additionally, if the track's
+    encoding is known and cannot be changed (e.g. due to a
+    byte order mark in the file), that encoding will be selected in
+    the drop-down box automatically. Both changes signal to the user
+    that she doesn't have to take care of the encoding herself.
+   new feature: chapter editor: added a function to the "additional
+    modifications" dialog for calculating and setting the end
+    timestamps.
+   new feature: changed the shortcuts for switching between the
+    various tools from `Alt+number` (e.g. `Alt+1` for the multiplexer
+    tool) to `Ctrl+Alt+number` in order to avoid clashing with
+    Windows' input method for arbitrary characters (pressing and
+    holding `Alt` and typing the codepoint on the number pad).
+   new feature: added a "Window" menu and entries with shortcuts for
+    selecting the next (`Ctrl+F6`) respectively previous tab
+    (`Ctrl+Shift+F6`) in the current tool.
+
+-------------------------------------------------------------------
+Thu Jul 13 14:48:50 UTC 2017 - rpm@fthiessen.de
+
+- Update to version 13.0.0
+  * mkvmerge: new feature: MPEG TS reader: information about
+    multiple programs will be output as container properties during
+    verbose/JSON identification.
+   bugfix: MP4 reader: MPEG-1/2 video read from MP4 files was written
+    with an invalid codec ID (e.g. `V_MPEG7`) in certain cases.
+   bugfix: MPEG PS reader: made the file type detection less strict
+    so that garbage at the start of the file doesn't prevent detection.
+   bugfix: MPEG PS reader: (E-)AC-3 tracks were not detected if the very
+    first packet for that track didn't contain a full (E-)AC-3 frame.
+   bugfix: MPEG TS reader: fixed mkvmerge not detecting all tracks in
+    MPEG transport streams containing multiple programs.
+   bugfix: MPEG TS reader: fixed track content being broken for some
+    tracks read from MPEG transport streams containing multiple programs.
+   bugfix: JSON identification: the `stream_id` and `sub_stream_id`
+    track properties were output as hexadecimal strings instead
+    of unsigned integers. As the `ts_pid` track property was only
+    used for MPEG transport streams, its value is now output as
+    `stream_id` instead, and the `ts_pid` property has been removed.
+    The JSON schema version has been bumped to 8 due to this change.
+   bugfix: fixed a crash when appending video tracks where one track
+    has a CodecPrivate member and the other one doesn't.
+   bugfix: track statistics tags: the `NUMBER_OF_BYTES` tag
+    is supposed to contain the number of bytes in a track before any
+    of the content encoding schemes such as lossless compression
+    is applied; however, mkvmerge was wrongfully using the number of
+    bytes after the schemes had been applied.
+   bugfix: CLPI & MPLS parsers: MPLS and CLPI files with version
+    number `0300` as used on Ultra HD Blu-ray Discs are
+    now accepted as well.
+  * MKVToolNix GUI: new feature: multiplex tool: added a column
+    "program" to the tracks list. Certain container types such
+    as MPEG transport streams can contain multiple programs.
+    The new column will contain the service name (think TV station
+    names such as "arte HD") for such streams.
+   bugfix: fixed computation of value of total progress bar for
+    multiple jobs running.
+   bugfix: multiplexer, adding new attachments: when the GUI checks
+    if there's an attachment with the same name it will now
+    disregard disabled attached files.
+   new feature: multiplex tool: the dialog asking the user what to
+    do with dropped files (add to current settings, add to new
+    settings etc.) now remembers the previous decision and defaults
+    to it the next time it's shown.
+   new feature: tabs can now be closed by pressing the middle mouse
+    button.
+  * mkvpropedit: bugfix: fixed a crash when the selector used
+    for `--tags` is invalid.
+
+-------------------------------------------------------------------
+Tue Jun  6 17:34:10 UTC 2017 - olaf@aepfle.de
+
+- Adjust usage of gccN-c++ for Leap42 and SLE12
+
+-------------------------------------------------------------------
+Tue May 30 14:10:55 UTC 2017 - rpm@fthiessen.de
+
+- Update to version 12.0.0
+  * MKVToolNix GUI: new feature: the key combination
+    Ctrl+Shift+Space will now toggle the selection of the current
+    item in all tree views where multiple selections are allowed.
+   new feature: chapter editor: added the extension `*.cue`
+    to the "open chapter file" dialog.
+   bugfix:preferences → job actions, type "play audio file":
+    the GUI will no longer clear the audio file name input if the
+    user aborts the audio file selection dialog.
+   bugfix: multiplexer tool: the "show command line" dialog will no
+    longer include the mkvmerge executable's location as the first
+    argument for the two "MKVToolNix option files" escape modes.
+   bugfix: header editor: empty track language elements are now
+    treated the same as those set to invalid ISO 639-2 codes:
+    as if they were set to `und` = "undetermined".
+   new feature: watch jobs: the user can now have the GUI execute
+    an action once as soon as the current job or the whole queue
+    finishes. The actions are the same ones that can be configured
+    to be run automatically after job or queue completion.
+   new feature: implemented several built-in actions that can be
+    executed either on special events or once via the "watch jobs"
+    tool. These are: playing an audio file; hibernating, sleeping
+    and shutting down the computer.
+   new feature: multiplex tool: added a new option for what to do
+    after starting to multiplex/adding to the job queue:
+    "close current settings" will close the current multiplex
+    settings without opening new ones.
+  * mkvmerge: New feature: cue sheet parser: if the cue sheet
+    contains a non-empty `TITLE` entry and if no other segment title
+    has been set yet, then the segment title will be set to the
+    cue sheet's `TITLE` value.
+   new feature: added an option `--no-date` that prevents the "date"
+    field from being written to the segment information headers.
+   new feature: FLAC reader: added support for handling embedded
+    pictures as attachments.
+   new feature: MP4 reader: Added support for parsing the "COLR"
+    atom and including its values as track headers.
+   bugfix: HEVC/h.265 parser: fixed the superfluous copying of the
+    'bitstream_restriction_flag' and its dependent flags in the
+    VUI parameters of the sequence parameter sets if the timing
+    information is present, too.
+   bugfix: MPEG TS reader, AAC parser: the MPEG TS reader will now
+    force the AAC parser to use the multiplex mode that the MPEG TS
+    reader has detected. This prevents the AAC packetizer from
+    mis-detecting it in its own attempt to identify the mode.
+   bugfix: MPEG TS reader: valid MPEG transport streams that start
+    with an h.264/h.265 start code were not recognized as a
+    supported file type.
+   bugfix: MPEG TS reader: fixed a potential read access from
+    invalid memory addresses in the code parsing the program
+    map table (PMT).
+   bugfix: MPEG TS reader: if packets are encountered that belong
+    to a PID not listed in the program map table (PMT), mkvmerge
+    will attempt to determine their type and codec from the content.
+    This supported content types are AAC (ADTS only) and AC-3.
+   bugfix: MP4 reader: fixed finding and parsing the `colr` atom if
+    there are more than one video extension atoms and the `colr` atom
+    is not the first one.
+   bugfix: MP4 reader: the `nclx` colour type of the `colr` atom is
+    now recognized, too.
+   bugfix: AAC parser: fixed mis-detection of certain data as valid
+    ADTS AAC headers resulting in memory allocation failures.
+   bugfix: AVC/h.264 parser: mkvmerge will now ignore bogus timing
+    information in the sequence parameter sets.
+   bugfix: AVC/h.264 & HEVC/h.265 parsers: all trailing zero bytes
+    will now be removed from NALUs.
+   bugfix: HEVC/h.265 parser: fixed copying the
+    `bitstream_restriction_flag` and all dependent fields in the VUI
+    parameters of the sequence parameter sets.
+   bugfix: HEVC/h.265 parser: fixed the calculation of the number of
+    parameter set arrays in the HEVCC data structure stored in
+    CodecPrivate.
+  * mkvpropedit: bugfix: header editor: added support for editing the
+    "date" segment information field.
+
+-------------------------------------------------------------------
+Tue Mar 28 21:07:32 UTC 2017 - rpm@fthiessen.de
+
+- Update to new release 10.0.0
+  * mkvmerge: new feature AVC/h.264 and HEVC/h.265 parser: mkvmerge
+    will now drop all frames before the first key frame as they
+    cannot be decoded properly anyway.
+   new feature HEVC/h.265 parser: added a workaround for invalid
+    values for the "default display window" in the VUI parameters
+    of sequence parameter sets.
+   bugfix MP4 reader: fixed track offsets being wrong in certain
+    situations regarding the presence or absence of edit lists
+    ('elst' atoms) & composition timestamps ('ctts' atoms).
+   bugfix MP4 reader: offsets in "ctts" are now always treated
+    as signed integers, even with version 0 atoms.
+   bugfix Matroska reader: fixed handling BlockGroups and
+    SimpleBlocks with negative timestamps.
+   bugfix MP3 packetizer: the MP3 packetizer will no longer drop
+    timestamps from source containers if they go backwards.
+    This keeps A/V in sync for files where the source was in sync
+    even though their timestamps aren't monotonic increasing.
+   bugfix AVC/h.264 parser: mkvmerge will now drop timestamps
+    from the source container if no frame is emitted for that
+    timestamp.
+   bugfix HEVC/h.265 parser: mkvmerge will now drop timestamps
+    from the source container if no frame is emitted for that
+    timestamp.
+  * mkvinfo: the timestamps of SimpleBlocks with negative
+   timestamps are now shown correctly.
+  * mkvextract: SSA/ASS: fixed extraction when the "Format"
+   line in the "[Events]" section contains less fields than the
+   default for SSA/ASS would indicate.
+
+-------------------------------------------------------------------
+Mon Feb 20 14:43:20 UTC 2017 - rpm@fthiessen.de
+
+- Update to new release 9.9.0
+  * mkvmerge: AC-3 handling: some source files provide timestamps
+    for audio tracks only once every n audio frames. In such
+    situations mkvmerge was buffering too much data resulting in
+    a single gap in the timestamps of one frame duration after frame
+    number n - 1 (the second audio timestamp read from the source
+    file was used one output frame too early).
+   bugfix MP4 reader: mkvmerge was only reading a small part of MP4
+    DASH files where the first "moov" "mdat" atoms occur before the
+    first "moof" atom.
+   bugfix MP4 reader: edit list ("edts" atoms) that are part of the
+    "moof" atoms used in MP4 DASH files weren't parsed. Instead the
+    edit lists from the main track headers inside the "moov" atom
+    were used.
+   bugfix MP4 reader: when an MP4 DASH file contained both normal
+    chunk offset table in their regular "moov" atoms, a
+    sample-to-chunk table ("stsc" atom) whose last entry had a
+    "samples per chunk" count greater than 1 and DASH "trun" atoms,
+    then mkvmerge was calculating wrong positions the frame content.
+   bugfix MP4 reader: mkvmerge couldn't deal with the key frame index
+    table having duplicate entries. The result was that only key
+    frames up to and including the first duplicate entry were marked
+    as key frames in the output file. All other frames weren't, even
+    though some of them were referenced from the key frame table
+    after the first duplicate entry.
+   bufix MP4 reader: when an MP4 file contained more than one copy of
+    the "moov" atom (the track headers etc.), mkvmerge was parsing
+    them all adding tracks multiple times.
+   bugfix MP4 reader: fixed an integer overflow during the timestamp
+    calculation leading to files with wrong timestamps. Such files
+    could not be played back properly by most players.
+   bugfix MPEG TS reader: if the PMT lists a DVBSUB track, mkvmerge
+    will now recognize it without having to find a packet for it
+    within the probed range.
+   bugfix splitting by parts (both the "timestamps" and the "frames"
+    variants): fixed the calculation of track statistics tags. When
+    calculating the duration the skipped portions weren't taken into
+    account leading to a too-high duration. As a consequence the BPS
+    tag (bits per second) was wrong, too.
+   bugfix reading files with DVB/HDMV TextSV subtitle tracks with
+    invalid CodecPrivate caused mkvmerge to abort with an error
+    from boost::format about the format string not having enough
+    arguments.
+   bugfix: fixed misdetection of certain AC-3 files as MP3 files
+    which led to an error message that
+    "the demultiplexer could not be initialized".
+   bugfix: fixed huge memory consumption when appending big Matroska
+    files with sparse tracks (e.g. forced subtitle tracks).
+    The Matroska reader will now queue at most 128 MB of data.
+   bugfix MP4 reader: the timestamps of all multiplexed tracks will
+    now be 0-based properly.
+   bugfix MP4 reader: the DTS-to-PTS offsets given by the "ctts"
+    atoms are now applied for all tracks containing a "ctts" atom,
+    not just h.264 & h.265 tracks.
+  * Some new features and enhancements
+- Now required for man pages:
+  libxslt-tools, docbook-xsl-stylesheets  and po4a
+
+-------------------------------------------------------------------
+Fri Jan 27 14:54:40 UTC 2017 - rpm@fthiessen.de
+
+- Update to new release 9.8.0
+  * mkvmerge: MP4 reader: when an MP4 file contained fewer entries
+   for timestamps than frames (which they never should), mkvmerge
+   would use 0 as the timestamp for all the other frames. This
+   resulted in effects such as the last frame of an output file
+   having a timestamp of 0 and in split files having a much longer
+   duration than they should have. Fixes #1847.
+  bug fix: the MPEG transport stream reader was using an outdated
+   format for the "CodecPrivate" element for HDMV TextST subtitles.
+   This has been updated to the current format which only contains
+   the "dialog style element". Existing Matroska files using this
+   outdated scheme can be fixed by running them through mkvmerge.
+  bug fix: files smaller than 4 bytes were wrongly identified as
+   MPEG transport streams.
+  bug fix: if a codec delay is set for a track in the input file,
+   it is kept. Fixes #1849. bug fix: fixed that the error message
+   "not enough space on disk" was shown twice on some operating systems.
+  teletext subtitle bug fix: fixed the handling of DVB teletext subtitles
+   signaled with data unit ID 0x02 and that contain pages from multiple magazines.
+  bug fix: when using --track-order without specifying all tracks,
+   the track numbers could end up in a way the user did not expect.
+   Now mkvmerge will always assign track numbers for those tracks
+   that are listed in --track-order first. The other tracks are
+   assigned numbers afterwards. Fixes the second part of #1832.
+  bug fix: when reading Matroska files the movie title was always
+   taken from the first Matroska source file, even if that file
+   didn't have a title set. Fixes one part of #1832.
+  MP4: fixed detection of MP3 audio when the object type ID in the
+   ESDS signals MP2 and the track headers have invalid values for
+   number of channels or sampling frequency. Fixes #1844.
+  The command line option "--check-for-updates" has been removed.
+  * GUI: the cache cleanup process that's run automatically when
+   the GUI starts no longer blocks file identification until it
+   is finished. Additionally the process will only be run once
+   per release of MKVToolNix. Fixes #1860.
+  certain failures during file identification that can be
+   traced to broken installations won't be stored in the cache
+   anymore. Without this fix the GUI would still use the cached
+   failed identification result even though the underlying
+   might have already been fixed. 
+  multiplexer: changing default values in the preferences (e.g. the
+   default track language to set) did not affect files whose
+   identification results had already been cached.
+  multiplex tool bug fix: under certain circumstances the GUI was
+   creating invalid JSON files when starting to multiplex resulting
+   in an error message ("JSON option files must contain a JSON
+   array consisting solely of JSON strings").
+  re-worked the startup code not to use lock files when trying to
+   open a socket for communicating with an already-running instance.
+   This aims to prevent situations with stale lock files not being
+   cleaned up and the GUI not starting anymore as a result.
+   This might fix or prevent issues like #1805.
+  * A lot of new features and enhancements, please refer to NEWS.md
+- Rebased disable-update-check.patch
+- spec file cleanup
+- Adjusted BuildRequires
+  * Since 9.7.1 QT >= 5.3 is required
+  * Since 9.7.1 a c++ compiler with some c++14 features is required
+    e.g. gcc >= 4.9 or clang >= 3.4
+
+-------------------------------------------------------------------
+Wed Nov 30 18:05:23 UTC 2016 - rpm@fthiessen.de
+
+- Update to new release 9.6.0
+  * mkvmerge: bug fix: mkvmerge was entering endless loops under
+     certain conditions when appending files.
+    MPLS parser bug fix: fixed reading the "in" & "out"
+     timestamps for "play items". This bug resulted in mkvmerge
+     not reading the correct range from the referenced M2TS file
+     under certain rare circumstances.
+  * MKVToolNix GUI: job output tool bug fix: the button for
+     acknowledging warnings & errors wasn't properly disabled when
+     the user used outside methods of acknowledging them
+  * mkvextract: VobSub bug fix: mkvextract will add a "langidx"
+    line to the .idx file upon extraction.
+  * mkvmerge & mkvextract: added support for HDMV TextST subtitles.
+
+-------------------------------------------------------------------
+Thu Oct 27 13:29:56 UTC 2016 - rpm@fthiessen.de
+
+- Update to new release 9.5.0
+  * mkvmerge: bug fix: The Ogg/OGM reader did not recognize Opus
+     files with comment headers anymore.
+    WAV reader bug fix: the track properties (channels, samplerate)
+     for DTS and AC-3 in WAV will now be derived from the decoded
+     bitstream headers instead of the WAV file header as the latter
+     is often incorrect.
+    WAV reader bug fix: fixed detection and merging of DTS in WAV
+     that uses the 14-bytes-in-16-bytes packing method.
+    MPEG transport stream reader bug fix: fixed mis-detection of
+     certain h.264 files as MPEG transport streams.
+    MPEG transport stream reader bug fix: fixed the handling of
+     Blu-ray PCM audio with an odd number of channels by removing
+     their alignment bytes.
+    h.264 elementary stream handling bug fix: if mkvmerge ever
+     encounters changing SPS or PPS NALUs (ones where their ID has
+     been encountered before with different settings) in the h.264
+     then it will prepend all following key frames with all
+     currently active SPS and PPS NALUs. This enables playback from
+     arbitrary key frames even if they require other SPS or PPS
+     settings than the ones stored in the AVCC in CodecPrivate.
+    VobSub handling bug fix: mkvmerge and mkvextract will now
+     update the duration stored in the SPU bitsream with the
+     duration from the container level if it differs at least 1ms.
+  * mkvprpedit, MKVToolNix GUI: Added support for "field order"
+     video track header element.
+- Use GPG signature for verification.
+
+-------------------------------------------------------------------
+Fri Sep 16 15:36:19 UTC 2016 - rpm@fthiessen.de
+
+- Update to new release 9.4.2:
+  * mkvmerge: bug fix: using very large --sync values with certain
+     container formats was causing mkvmerge to abort muxing.
+    bug fix: fixed an invalid memory access (use after free)
+     during global destruction phase.
+    bug fix: HEVC parser: fixed three invalid memory accesses.
+    bug fix: MP4 reader: fixed an invalid memory access
+    bug fix: AAC reader: fixed mkvmerge throwing an uncaught
+     exception due to the sample rate being 0.
+    bug fix: MP4 reader: an error message will be printed
+     instead of an uncaught exception when an invalid atom chunk
+     size is encountered during resync.
+    bug fix: AVC & HEVC readers: the readers will now refuse to
+     handle files where the detected pixel width or height is
+     equal to or less than 0.
+
+-------------------------------------------------------------------
+Thu Sep  1 15:36:44 UTC 2016 - rpm@fthiessen.de
+
+- Update to new upstream release 9.4.0:
+  * MKVToolNix GUI: merge tool bug fix: the automatic adjustments
+     to the output file name based on the track types selected for
+     muxing and the mechanism for keeping output file names unique
+     had been broken since release v9.3.0.
+    chapter editor bug fix: overly long chapter names don't cause
+     the GUI's window to become overly wide anymore.
+  * mkvmerge: bug fix: mkvmerge does no longer emit a warning if no
+     comment header packet is found when reading tracks from
+     Ogg/OGM files.
+    bug fix: VP8 in Ogg: fixed dropping the first frame and the
+     timestamp calculation.
+    bug fix: when appending files mkvmerge wasn't starting clusters
+     on video key frame anymore for the first and all following
+     appended files.
+    DTS bug fix: if present mkvmerge will use an XLL extension's
+     sample rate information as the sample rate to put into
+     the track headers.
+  * mkvpropedit: bug fix: mkvpropedit will no longer say that it's
+     writing the changes if only attachment changes are specified
+     and none of the specified attachments can be found.
+  * Some enhancements, please refer to the changelog within the
+    package.
+
+-------------------------------------------------------------------
+Fri Jul 15 13:45:45 UTC 2016 - rpm@fthiessen.de
+
+- Update to new upstream release 9.3.1:
+  * libebml >= 1.3.4 and libmatroska >= 1.4.5 are now required
+  * A lot of bugfixes and new features, new mkv elements are
+    supported, for a list of all changes, please refer to the
+    changelog provided by the package.
+
+-------------------------------------------------------------------
+Tue May 31 11:16:42 UTC 2016 - rpm@fthiessen.de
+
+- Update to new upstream release 9.2.0:
+* mkvmerge: bug fix: the "interval" chapter generation mode was
+   always creating one chapter too many.
+  bug fix: if a certain number of chapters had been generated with
+   --generate-chapters then mkvmerge wasn't replacing the void
+   placerholder with the actual chapters.
+  bug fix: fixed detection of (E-)AC-3 in MPEG TS files with
+   unusual stream types (e.g. 0x87) but with (E-)AC-3 PMT
+   descriptors.
+* mkvmerge, mkvextract: bug fix: fixed handling of Big Endian PCM
+   with a bit depth other than 16, 32 or 64 bits/sample. Other
+   formats were using the Little Endian codec ID, but their content
+   was actually not byte-swapped to match it. Now those other bit
+  depths are byte-swapped to Little Endian, too.
+* MKVToolNix GUI: merge tool bug fix: the track column "default
+   track in output" wasn't taking into account if the track had its
+   "default track" flag set to "no" in the source file. This would
+   result in the column showing "yes" in certain situations even
+   though mkvmerge would assign "no".
+* Some other improvements, some enhancements and other bugfixes,
+   please refer to the changelog file provides with the package.
+
+-------------------------------------------------------------------
+Mon Apr 25 17:38:18 UTC 2016 - rpm@fthiessen.de
+
+- Update to new upstream release 9.1.0:
+* mkvmerge: bug fix: AVC/h.264: fixed handling of interlaced frames
+   with bottom field first.
+  bug fix: mkvmerge will no longer abort reading a Matroska file
+   with a structural error right before the first cluster.
+  bug fix: the "text_subtitles" property of the JSON/verbose
+   identification modes was always set to true for all subtitle
+   tracks, even for those that aren't text subtitles (VobSub, PG).
+  bug fix: the language code signaled in the MPEG TS PMT is taken
+   into account when selecting the character encoding to use
+   during decoding of the teletext subtitles, not just the
+   "national character set" stored in the teletext page headers.
+* MKVToolNix GUI: bug fix: Fixed huge memory consumption in the
+   JSON library by updating said JSON library.
+  bug fix: In merge-tool: when adding playlists the GUI won't ask
+   the user whether or not to scan if there's only a single
+   playlist in that directory.
+
+-------------------------------------------------------------------
+Mon Mar 28 23:06:54 UTC 2016 - rpm@fthiessen.de
+
+- Update to new upstream release 9.0.1:
+* mkvmerge: bug fix: regression in v9.0.0: the text subtitle
+   packetizer was wrongfully assuming an encoding of UTF-8 if none
+   was given instead of assuming the system's encoding. Fixes #1639.
+  bug fix: if too many chapters had been generated with
+   --generate-chapters then mkvmerge created a bogus entry in the
+   meta seek element and did not actually write the chapters to the
+   file.
+  bug fix: the DTS packetizer was setting the number of
+   channels wrong sometimes when reducing to the DTS core. It was
+   using the number of channels including the extensions instead of
+   the channels of the core only.
+
+-------------------------------------------------------------------
+Mon Mar 28 10:22:11 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 9.0.0
+* mkvmerge: bug fix: fixed two more issues in the conversion of
+  teletext subtitles to SRT subtitles.
+* mkvmerge: MP4/QuickTime reader: audio tracks with the FourCC
+  "lpcm" are muxed as A_PCM/INT/LIT instead of A_QUICKTIME.
+* mkvmerge: bug fix: MP4/QuickTime reader: audio tracks can contain
+  two instances of certain header fields in the STSD atom;
+  mkvmerge now uses the v2 structure over v0, if present.
+* mkvextract: new feature: implemented the extraction of Big
+  Endian PCM (codec ID A_PCM/INT/BIG) to WAV files. The content will
+  be byte-swapped into Little Endian PCM in the process.
+* mkvmerge: enhancement: Big Endian PCM tracks will now be
+  byte-swapped into Little Endian PCM, and the codec ID
+  A_PCM/INT/LIT will be used, as many players do not support BE PCM
+  inside MKVs.
+
+-------------------------------------------------------------------
+Mon Feb 22 18:27:27 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 8.9.0
+* gui: the default font size adjustment has been. Deactivated for
+  the time being as it causes problems on high DPI Displays.
+* gui: ampersands in file names were shown as keyboard shortcuts
+  in tab titles in various tools
+* gui: add ability (menu entry) for removing chapters from an
+  existing Matroska file.
+* Polish translation provided
+
+-------------------------------------------------------------------
+Sun Jan 10 13:48:52 UTC 2016 - rpm@fthiessen.de
+
+- Update to upstream release 8.8.0:
+  * MKVToolNix GUI: bug fix: when using one of the
+     "select all tracks (of type…)" actions the "properties" column
+     didn’t show the selection.
+    bug fix: the paths used in the variables and the executable are
+     converted to the platforms native path separators.
+  * mkvmerge: bug fix: fixed a mis-detection of an MPEG-2 video
+     elementary stream as a TrueHD file which then caused a
+     segmentation fault.
+    bug fix: Matroska attachments with the same name, size and MIME
+     type were not output during file identification.
+    bug fix: fixed TrueHD detection both as raw streams as well as
+     inside other contains if the stream does not start with a
+     TrueHD sync frame.
+  * Some GUI enhancements and new features, see full changelog:
+    https://bunkus.org/videotools/mkvtoolnix/doc/ChangeLog
+- some spec file cleanup
+
+-------------------------------------------------------------------
+Thu Jan  7 16:01:00 UTC 2016 - rpm@fthiessen.de
+
+- Update to upstream release 8.7.0:
+  * all: reversion of a change: several ISO 639-2 codes of languages
+      that are very old and not spoken anymore have been re-added
+      due to feedback from users who did have a use for such codes.
+     reversion of a change: all of the tools will write a byte-order
+      mark (BOM) to text files encoded any of the UTF-* schemes again.
+  * mkvmerge: bug fix: fixed the key frame detection for VP9 video
+      tracks.
+     bug fix: chapters were output as both "chapters" and
+      "track_tags" in JSON identification mode.
+     bug fix: AAC with low sampling frequencies was sometimes 
+      mis-detected with the wrong profile preventing appending it
+      to other AAC tracks.
+     bug fix: the progress calculation was sometimes outputting
+      negative numbers when appending Matroska files whose timestamps
+      don’t start at 0.
+     bug fix: fixed the decisions whether or not to write the last
+      frame of a track as a BlockGroup or a SimpleBlock and whether
+      or not to write a block duration for that frame.
+     bug fix: the Matroska reader now uses TrueHD-specific code
+      when reading Matroska files. This can fix things like wrong
+      frame type flags.
+  * MKVToolNix GUI: bug fix: relative file names given on the
+      command line were interpreted as being relative to the user’s
+      home directory.
+     bug fix: the "split mode" drop-down box got reset to
+      "do not split" each time the preferences dialog was closed
+      with the "OK" button
+  * And a lot more enhancements and bugfixes, see full changelog:
+    https://bunkus.org/videotools/mkvtoolnix/doc/ChangeLog
+
+-------------------------------------------------------------------
+Sat Dec  5 15:47:20 UTC 2015 - rpm@fthiessen.de
+
+- Update to upstream release 8.6.1:
+ * all: MKVToolNix now requires gcc 4.8.0 or later or clang 3.4 or
+    later for compilation.
+   change: none of the tools will write a byte-order mark (BOM) to
+   text files encoded any of the UTF-* schemes anymore.
+ * mkvmerge: bug fix: the VC-1 handlig code was duplicating the
+    first sequence headers with each mux.
+   enhancement: added JSON as an output format for file type
+    identification.
+   bug fix: fixed two issues causing mkvmerge to write invalid data
+    when updating track headers.
+   bug fix: the change to do a deeper file analysis if no seek head
+    was found was causing huge increases in file type detection time
+    as popular tools like x264 don’t write seek heads. The way
+    elements at the end are searched has been changed to only scan
+    the last 5 MB of the file instead of iterating over every
+    level 1 element from the beginning of the file.
+ * MKVToolNix GUI: bug fix: the options for linking to the
+    next/previous segment UID were wrong.
+   bug fix: the program changes its working directory to the
+    user’s profile/home directory on startup allowing the removal of
+    its installation folder even if a program started by the GUI
+    (e.g. a web browser) is still running.
+   bug fix: in certain situations the modified file would not contain
+    a seek head before the first cluster anymore resulting in most
+    players not finding elements such as attachments or the index
+    located at the end of the file anymore.
+ * Some other enhancements and bugfixes, see full changelog:
+   https://bunkus.org/videotools/mkvtoolnix/doc/ChangeLog
+- Split package into commandline- (base) and gui-package,
+  reduces overhead when installing on a headless system.
+- Replaced sed in prep with disable-update-check.patch to disable
+  update check on startup (not needed with a package system).
+- Added mkvtoolnix-use-system-boost.patch from fedora to fix includes
+  when building against boost from system.
+
+-------------------------------------------------------------------
+Thu Nov  5 22:41:02 UTC 2015 - rpm@fthiessen.de
+
+- Update to upstream release 8.5.2:
+ * mkvmerge: bug fix: fixed an endless loop when updating track
+    headers caused by the fix for "Re-rendering track headers.
+   bug fix: mkvmerge no longer creates a "next segment UID" field
+    in the last file when splitting and segment linking is active.
+   bug fix: fixed the values of the "previous/next segment UID"
+    elements when splitting by parts with segment linking enabled.
+ * MKVToolNix GUI: bug fix: the file/track columns aren't resized
+    to fit their content when expanding/collapsing tree node
+    anymore. Such expansion also happened when moving entries with
+    the "move up/down" buttons.
+
+-------------------------------------------------------------------
+Thu Oct 22 11:47:36 UTC 2015 - rpm@fthiessen.de
+
+- Update to upstream release 8.5.1 (security update):
+* build system: libEBML v1.3.3 and libMatroska v1.4.4 are now
+   required due to important fixes for invalid memory accesses in
+   those two releases. The copies included in the MKVToolNix source
+   code have been updated to those releases as well.
+* MKVToolNix GUI: bug fix: the "save file" dialogs did not have
+   the currently entered file name pre-selected anymore.
+   bug fix: fixed a crash when loading corrupted
+   job settings.
+   bug fix (Linux): the function "open folder" was
+   inserting a superfluous leading slash in the directory name.
+* mkvmerge: bug fix: updating the track headers wasn't working in
+   some rare cases (corresponding error message "Re-rendering track
+   headers: data_size != 0 not implemented yet").
+- Disable default setting for checking for updates (nonsense on a
+  package system)
+-------------------------------------------------------------------
+Sun Oct 18 00:02:36 UTC 2015 - rpm@fthiessen.de
+
+- Updated to version 8.5.0:
+* Modified .spec to also install translated manpages.
+* A lot of small bugfixes and enhancements.
+* MKVToolNix GUI: merge tool bug fix: the cropping parameters were
+   not converted into parameters for mkvmerge at all.
+* mkvmerge: enhancement: the verbose identification for MP4 files
+   will now derive basic audio parameters of MP3 and AC3 tracks
+   from the bitstream instead of relying on the values in the
+   track headers.
+   bug fix: PCM tracks: if the number of samples per
+   packet varies then no default duration will be written.
+* all: several ISO 639-2 codes of languages that are very old and
+   not spoken anymore have been removed.
+   new feature: added a Catalan translation of
+   the man pages.
+
+-------------------------------------------------------------------
+Tue Sep 22 13:56:09 UTC 2015 - rpm@fthiessen.de
+
+- Updated to version 8.4.0:
+* MMG has been removed.
+* Dropped wxWidgets dependencies (new gui uses QT).
+* A lot of bugfixes and enhancements of the gui and mkvmerge
+  (see https://bunkus.org/videotools/mkvtoolnix/doc/ChangeLog).
+* mkvmerge: bug fix: calculating of delay for audio garbage data
+  got fixed.
+* all: bug fix: parsing of strings containing negative values or
+  timecodes was broken on 32-but architectures.
+* mkvmerge: bug fix: number of channels and the sample rate
+  reported for DTS in MPEG streams was 0.
+
+-------------------------------------------------------------------
+Sun Aug 16 23:39:31 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 8.3.0
+* many small GUI bug fixes and improvements
+* mkvmerge: bug fix: fixed handling of MPEG transport streams
+  where all PATs and PMTs have CRC errors.
+* mkvmerge: bug fix: the MPEG-1/2 video code was causing an
+  illegal memory access under certain conditions.
+* mkvmerge: bug fix: fixed recognition of (E)AC3 audio tracks
+  using a FourCC of "ec-3"
+* mkvmerge: bug fix: fixed codec identification for MP2 audio read
+  from MPEG PS/TS.
+* mkvmerge: bug fix: fixed key frame designation for video tracks
+  in MP4 DASH files.
+
+-------------------------------------------------------------------
+Wed Aug  5 08:36:57 UTC 2015 - rpm@fthiessen.de
+
+- Update to version 8.2.0:
+* Fix mkvmerge codec identification for MP2 audio.
+  A LOT more bugfixes especially in the GUI. See ChangeLog:
+  https://bunkus.org/videotools/mkvtoolnix/doc/ChangeLog
+
+-------------------------------------------------------------------
+Fri May 29 13:22:09 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 7.9.0:
+* Fix build with boost 1.58.0.
+* build system: configure will now check for Qt by default.
+* A couple of important bugs have been fixed, e.g. a very old bug
+  in handling MPEG-1/2 video preventing the detection of such
+  tracks; if --sync was used at the same time as --default-duration
+  then --sync was ignored; mkvinfo’s exit codes were wrong (this
+  may trip up frontends using mkvinfo!); handling of E-AC3 in MPEG
+  transport stream in certain situations.
+
+-------------------------------------------------------------------
+Sat Mar 28 22:06:54 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 7.8.0
+* mkvmerge: Fixed recognition of E-AC3 audio tracks in MPEG TS
+  streams if they use the type ID 0xa1 (and the same for DTS tracks
+  stored with type ID 0xa2).
+* mkvmerge: new feature: mkvmerge will now recognize TrueHD tracks
+  inside MPEG transport streams that contain an AC3 core as
+  consisting of two tracks.
+* mkvmerge: new feature: mkvmerge will now recognize TrueHD+AC3
+  files as consisting of two tracks.
+
+-------------------------------------------------------------------
+Tue Feb 10 17:17:56 UTC 2015 - opensuse@sukimashita.com
+
+- Update to new upstream release 7.6.0
+* all programs: bug fix: Since release 7.0.0 the wrong exit code 
+  was used when warnings were finished (0 instead of 1).
+* mkvmerge: bug fix: Appending chapters with the same chapter UID
+  was dropping all sub-chapters from the one of the two merged
+  chapters. Now the sub-chapters are merged recursively as well.
+* mkvmerge: bug fix: The wrong Codec ID was written when reading
+  PCM tracks from Matroska files in Big Endian byte order.
+* all: new feature: added a Serbian (Latin) translation of the
+  programs by Danko (see AUTHORS).
+* mkvmerge: bug fix: If splitting was active and AC3 tracks read
+  from Matroska files were shorter than a split point then the
+  following output file would contain an AC3 packet with the
+  timecode of 00:00:00 somewhere in the middle.
+* mmg: bug fix: If a chapter track from a Matroska file is
+  selected then the »language« drop-down box is disabled.
+* mmg: bug fix: When scanning for play lists the window presenting
+  the results listed some properties in an unescaped way (e.g.
+  »\s« instead of spaces).
+* mmg: bug fix: When adding MPLS files mmg was only offering to
+  scan for more playlists if there were at least two additional
+  MPLS files present. This has been fixed to one MPLS file (in
+  addition to the one just added).
+
+-------------------------------------------------------------------
+Sun Feb  1 17:24:56 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 7.5.0
+* mkvmerge: Fixed reading MPEG transport streams in which
+  all PATs and/or PMTs have CRC errors.
+* mkvmerge: Implemented support for MP4 DASH files.
+* mkvmerge: Implemented reading MPEG-H p2/HEVC video
+  tracks from MP4 files.
+* mkvmerge: Implemented support for AAC in LOAS/LATM multiplex if
+  read from MPEG transport streams or raw LOAS/LATM AAC files.
+* mkvmerge: Added support for recognizing H.265/HEVC video tracks
+  in MPEG transport streams.
+
+-------------------------------------------------------------------
+Sat Dec 13 08:18:22 UTC 2014 - coolo@suse.com
+
+- update to upstream release 7.4.0
+* Implements support for PCM in MPEG program (.vob – DVDs) and 
+  transport streams (.ts, .m2ts – Blu-rays, television broadcasts) 
+  as well as for teletext subtitles in MPEG tranport streams. 
+  Apart from that a lot of work has gone into the new GUI.
+* Bugfixes for muxing HEVC or teletext subtitles
+
+-------------------------------------------------------------------
+Sun Oct  5 21:53:44 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 7.2.0
+* Fixed calculating AC3 delay from garbage data when reading AC3
+  from AVIs.
+* SSA/ASS files with sections after "[Events]" in their
+  CodecPrivate are now handled correctly.
+* Fixed handling certain edit list types in MP4 files that are used
+  for positive track delays.
+- Drop extra %attr, default permissions are already good
+- Switch to wxWidgets 3 for building
+
+-------------------------------------------------------------------
+Wed Aug  6 07:15:49 UTC 2014 - jengelh@inai.de
+
+- Update to ne wupstream release 7.1.0
+* mkvextract: bug fix: Fixed a crash when opening damaged/invalid
+  Matroska files in all extraction modes.
+* mkvmerge: bug fix: Fixed wrong default duration for PCM audio
+  tracks if the source file provides timecodes for that track.
+* mkvmerge: bug fix: track statistics tags are not written for
+  WebM files anymore as the WebM specification doesn't allow tags.
+* Fixed file seeking code for "seek relative to end of file" case.
+
+-------------------------------------------------------------------
+Fri Jul 11 16:19:01 UTC 2014 - reddwarf@opensuse.org
+
+- Update to 7.0.0
+  * mkvmkerge will now write certain track-specific statistics (such as bit rate) as tags.
+
+-------------------------------------------------------------------
+Mon Apr 21 10:31:34 UTC 2014 - i@marguerite.su
+
+- update version 6.9.1
+  * mkvmerge: bug fix: fixed huge memory usage when probing files
+   (it was reading the whole file into memory for that).
+
+-------------------------------------------------------------------
+Tue Mar  4 15:55:55 UTC 2014 - reddwarf@opensuse.org
+
+- Update to 6.8.0
+  * Add support for h.265/HEVC video
+
+-------------------------------------------------------------------
+Thu Jan  9 16:10:48 UTC 2014 - reddwarf@opensuse.org
+
+- Update to 6.7.0
+  * Tons of bug fixes all over the place
+  * Reading from an MPLS playlist file is now done as if the second
+    and following files referenced in that playlist had been appended
+    to the first file from that playlist
+  * A couple of enhancements.
+  * Ruby 1.9.x is now required for building
+
+-------------------------------------------------------------------
+Mon Dec  2 17:41:30 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 6.6.0
+  * mmg: new feature: implemented drag & drop in the chapter
+  * mmg: bug fix: fixed an assertion in wxLogMessage() due to wrong
+    format string/argument data types caused by changes in wxWidgets
+    3.0.0. See Debian bug #730273.
+  * mkvmerge: bug fix: improved resilience against MP4 files with
+    obviously wrong entries in the 'sample size table' (STSZ) atom.
+  * mkvmerge: bug fix: improved VC1 frame type detection so that it
+    works even for streams without entry points.
+  * mkvinfo: bug fix: at most the lower 32bits of the track numbers
+    and track UIDs elements were output, even if the element in the
+    file used more bits. Fixes #935.
+  * mkvmerge: bug fix: fixed accessing invalid memory in the memory
+    handling core routines. May be triggered by the code to remove
+    filler NALUs introduced in v6.5.0. Fixes #931.
+  * mmg: bug fix: fixed the tracks list box on the input tab being
+    invisible/0 pixels high with wxWidgets 2.9.x/3.x.
+  * all: integrated the Portuguese translation. Although the
+    translation files themselves had been added back in 6.3.0 that
+    translation wasn't available for selection due to forgetfulness on
+    my part.
+  * mkvmerge: bug fix: The file detection code in the MPEG
+    elementary stream reader had a logic error. Fixes #928. In
+    practice this logic error didn't have any consequence.
+
+-------------------------------------------------------------------
+Sat Nov  2 19:43:53 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 6.5.0
+  * Opus support has been finalized both in muxing and extraction
+  * Support for the VP9 video codec has been added
+  * A German translation for the man pages has been added
+  * configure can detect Boost installed in multiarch directories
+  * Several bugs have been fixed here and there
+
+-------------------------------------------------------------------
+Mon Jul  1 16:31:05 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 6.3.0
+* MPEG programs streams with broken PES structures are now handled
+  better.
+* WAV extraction and FLV reading has been fixed for certain
+  edge cases.
+* --fix-bitsteam-timing-information has been fixed for framed
+  AVC/h.264 sources.
+* Using --default-duration while appending AVC/h.264 tracks has
+  been fixed.
+* A Portuguese translation has been added.
+
+-------------------------------------------------------------------
+Mon May  6 10:22:02 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 6.2.0
+  * Memory usage has been reduced severely
+
+-------------------------------------------------------------------
+Sun Mar 31 17:57:37 UTC 2013 - schwab@suse.de
+
+- Override boost library directory to handle all lib64 platforms
+
+-------------------------------------------------------------------
+Sun Mar 24 14:30:03 UTC 2013 - reddwarf@opensuse.org
+
+- Use external libebml and libmatroska versions
+- The minimum gcc version is 4.7
+
+-------------------------------------------------------------------
+Mon Mar 18 17:57:54 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 6.1.0
+  * Support for Blu-ray playlists (MPLS files)
+  * A couple of bugfixes
+  * New reader for the FlashVideo file format (.flv -- yes, for those YouTube videos)
+  * Splitting by frame/field numbers
+  * Splitting by chapter numbers,
+  * Splitting into parts by frame/field numbers
+  * Reading VobSubs from MP4 files
+  * Save additional command line options as default options in mmg
+  * Header removal compression has been turned off by default in both mkvmerge and mmg
+
+-------------------------------------------------------------------
+Tue Jan  8 15:33:18 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 5.9.0
+  + Fixes several bugs
+  + Writes the newly introduced elements "cue duration" and "cue
+    relative position" which provide more detailed information for
+    seeking
+- Use internal versions of libebml and libmatroska until the needed
+  versions are released
+
+-------------------------------------------------------------------
+Mon Sep  3 20:01:09 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 5.8.0
+  + Adds a couple of new features
+  + Fixes a few bugs; most prominently mmg not displaying mkvmerge's last couple of messages.
+
+-------------------------------------------------------------------
+Tue Jul 10 10:05:24 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 5.7.0
+  + Fixed the excessive CPU usage during muxing
+
+-------------------------------------------------------------------
+Sun May 27 17:49:10 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 5.6.0
+  + It fixes a couple of important issues with the new "--split
+    parts:" functionality
+  + Other bugs were fixed as well
+  + A Polish translation of the programs has been added
+  + A Spanish translation of mmg's guide has been added
+
+-------------------------------------------------------------------
+Wed May 16 21:01:52 UTC 2012 - reddwarf@opensuse.org
+
+- Now rake broke. Going back to drake.
+
+-------------------------------------------------------------------
+Thu Apr 26 19:28:50 UTC 2012 - reddwarf@opensuse.org
+
+- Use system version of rake instead of the included drake. Fixes
+  build in Factory/12.2.
+
+-------------------------------------------------------------------
+Sun Apr  8 19:18:50 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 5.5.0
+  * Tag, chapter and segment info XML files supporting more of the
+    Matroska spec.
+  * A new mode for "--split" has been implemented that let's you
+    keep certain ranges and discard others without the need for
+    temporary files or multiple muxing passes.
+- Remove support for openSUSE < 11.4.
+- Stop using obsoleted %suse_update_desktop_file.
+
+-------------------------------------------------------------------
+Sat Mar 10 22:57:54 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 5.4.0
+  * The AVC/h.264 timecode assignment code has been completely
+    rewritten. Users do not have to specify the default
+    duration/FPS for such tracks anymore safe for the rarest cases.
+  * Tons of bug fixes.
+  * Improvements regarding file type recognition.
+  * Complete re-write of the (E)AC3 parsing code.
+
+-------------------------------------------------------------------
+Mon Mar  5 10:53:43 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 5.3.0
+  * Fix DTS handling.
+  * Fix (E)AC3 detection.
+  * Fix invalid memory access with certain broken files.
+  * mkvmerge's verbose identification mode has been extended with
+    a couple more fields.
+  * mkvmerge can treat several separate input files as if they
+    were concatenated into a single large file.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:50:23 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sun Dec 18 19:55:28 UTC 2011 - reddwarf@opensuse.org
+
+- Update to 5.2.0
+  - Fixes a lot of smaller issues.
+  - Performance enhancements.
+
+-------------------------------------------------------------------
+Tue Nov 29 22:27:05 UTC 2011 - reddwarf@opensuse.org
+
+- Update to 5.1.0
+  - Lot of small bug fixes.
+  - Greatly improves support for MPEG transport streams.
+
+-------------------------------------------------------------------
+Sun Oct 16 09:37:57 UTC 2011 - reddwarf@opensuse.org
+
+- Update to 5.0.1
+  - Implemented support for yet another way of storing EAC3 and DTS
+    in MPEG transport streams.
+  - bug fix: Track information was not reset when opening more than
+    one file in the GUI.
+  - bug fix: The PGS subtitle output module was not outputting any
+    packet in certain cases due to uninitialized variables.
+  - bug fix: Fixed mkvmerge not finding any track in TS streams
+    whose first PMT packet could not be parsed (e.g. invalid CRC).
+  - bug fix: Fixed detection of TS streams that only contain one
+    PAT or PMT packet within the first few KB but no others within
+    the first 10 MB.
+
+-------------------------------------------------------------------
+Mon Sep 26 23:35:31 UTC 2011 - reddwarf@opensuse.org
+
+- Update to 5.0.0
+  - Lot of small bug fixes.
+  - Support for MPEG transport streams.
+- Remove mkvtoolnix-4.9.1-shared_libs.patch. A better fix was
+  applied upstream.
+- Use pkgconfig(XX) BuildRequires when available.
+- Remove obsoleted BuildRoot and %clean sections.
+
+-------------------------------------------------------------------
+Sat Jul 23 11:08:15 UTC 2011 - reddwarf@opensuse.org
+
+- Update to 4.9.1
+  - It's mostly a bug fix release with few new features.
+- Stop source service usage: Factory is moving to a slightly
+  different approch to verify source authenticity. Consequently,
+  specify a full URL as Source.
+
+-------------------------------------------------------------------
+Thu Mar 10 18:07:20 UTC 2011 - reddwarf@opensuse.org
+
+- Update to 4.6.0
+  - It contains a couple of bug fixes as well as a few new
+    features.
+  - New translation available, Turkish.
+
+-------------------------------------------------------------------
+Tue Feb  1 19:02:52 UTC 2011 - reddwarf@opensuse.org
+
+- Update to 4.5.0
+  - It contains a lot of bug fixes as well as a couple of new
+    features and a few enhancements
+
+-------------------------------------------------------------------
+Mon Jan 17 18:21:45 UTC 2011 - reddwarf@opensuse.org
+
+- Fix pre-11.4 build broken in previous commit
+- Use new icons/MIME/desktop macros in >= 11.4
+
+-------------------------------------------------------------------
+Wed Dec 29 15:01:24 CET 2010 - sbrabec@suse.cz
+
+- Compile with wxWidgets (STL variant).
+
+-------------------------------------------------------------------
+Wed Nov 10 22:42:59 UTC 2010 - reddwarf@opensuse.org
+
+- Own nl and zh_CN man dirs in >11.2
+
+-------------------------------------------------------------------
+Tue Nov  2 10:04:07 UTC 2010 - reddwarf@opensuse.org
+
+- Update to 4.4.0
+  - It contains a lot of bug fixes and a few enhancements but no
+    major new features
+- Drop mkvtoolnix-4.3.0-aliasing.patch
+- Update mkvtoolnix-4.4.0-guide_install.patch
+
+-------------------------------------------------------------------
+Sun Sep  5 17:49:35 UTC 2010 - reddwarf@opensuse.org
+
+- Update to 4.3.0
+  - It contains a lot of bug fixes and a few enhancements but no
+    major new features
+- mkvmerge-gui symlink is not available anymore, use mmg instead
+
+-------------------------------------------------------------------
+Thu Jul 29 17:03:12 UTC 2010 - reddwarf@opensuse.org
+
+- Update to 4.2.0
+  - It contains a lot of bug fixes and a few enhancements but no
+    major new features
+- Revert last commit since broke openSUSE 11.1 build
+
+-------------------------------------------------------------------
+Sun Jul 11 13:18:59 UTC 2010 - jengelh@medozas.de
+
+- Rerun autoreconf to retrieve ax_boost_base.m4 where libdir
+  detection is fixed
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Sat Jul  3 21:49:34 UTC 2010 - cmorve69@yahoo.es
+
+- Update to 4.1.1
+  - Fix serious bug introduced in v4.1.0. If causes mkvmerge to
+    crash with default option in various circumstances, especially
+    when handling MPEG-4 part 2 video tracks.
+
+-------------------------------------------------------------------
+Thu Jul  1 15:35:34 UTC 2010 - cmorve69@yahoo.es
+
+- Update to 4.1.0
+  - A couple of bug fixes and enhancements especially in
+    combination with WebM.
+  - Full support for PGS/SUP subtitles.
+  - New and improved translations.
+
+-------------------------------------------------------------------
+Sat Jun  5 20:35:11 UTC 2010 - cmorve69@yahoo.es
+
+- Update to 4.0.0
+  - Full support for the WebM variant of the Matroska container
+    format, VP8 video tracks, the IVF container format
+  - Several important bug fixes and a few new features
+  - New translations
+
+-------------------------------------------------------------------
+Fri Mar 26 17:20:08 UTC 2010 - cmorve69@yahoo.es
+
+- Update to version 3.3.0:
+  Several important bug fixes and a few new features.
+
+-------------------------------------------------------------------
+Sat Feb 13 10:19:58 UTC 2010 - cmorve69@yahoo.es
+
+- Update to version 3.2.0:
+  The usual mix of bug fixes and smaller enhancements.
+
+-------------------------------------------------------------------
+Fri Jan 22 16:31:50 UTC 2010 - cmorve69@yahoo.es
+
+- Update to version 3.1.0:
+  The usual mix of bug fixes and smaller enhancements.
+
+-------------------------------------------------------------------
+Mon Jan 11 11:30:27 UTC 2010 - per@osbeck.com
+
+- Add patch to fix synch issues with theora 1.1
+
+-------------------------------------------------------------------
+Sun Dec 13 10:26:00 UTC 2009 - cmorve69@yahoo.es
+
+- Update to version 3.0.0:
+  + Fix for mkvpropedit and mmg: editing headers of files created
+    by HandBrake would cause crashes and/or corrupted files after
+    saving.
+
+-------------------------------------------------------------------
+Fri Dec  4 21:12:37 UTC 2009 - cmorve69@yahoo.es
+
+- Remove dates from binaries so builds are reproducible
+
+-------------------------------------------------------------------
+Thu Nov 26 18:31:11 UTC 2009 - cmorve69@yahoo.es
+
+- Update to version 2.9.9:
+  + bug fixes (see ChangeLog)
+  + added a new program 'mkvpropedit'
+
+-------------------------------------------------------------------
+Sat Aug 22 02:20:14 UTC 2009 - cmorve69@yahoo.es
+
+- Remove unneeded scriptlets
+
+-------------------------------------------------------------------
+Fri Aug 21 14:29:28 CEST 2009 - cmorve69@yahoo.es
+
+- Update to version 2.9.8:
+  + bug fixes (see ChangeLog)
+  + speed-ups for large files
+
+-------------------------------------------------------------------
+Thu Jul  2 15:55:27 CEST 2009 - seife@suse.de
+
+- update to v2.9.7:
+  mostly bug fixes and two prominent changes to mmg:
+  - chapters and tags are now handled in the same way that tracks
+    are: they can be checked individually, and properties like
+    charset can be set for each entry
+  - it is now possible to change the list of "common" languages
+    that appear at the top of language drop down boxes
+
+-------------------------------------------------------------------
+Sun Jun  7 21:44:17 CEST 2009 - seife@suse.de
+
+- update to v2.9.5:
+  The usual mix of bug fixes, new features and smaller
+  enhancements. Also some of the command line options have been
+  renamed (check the ChangeLog for details). The old versions are
+  still working for the time being, and users of mmg aren't
+  affected by this change anyway.
+
+-------------------------------------------------------------------
+Mon May 11 09:13:22 CEST 2009 - seife@suse.de
+
+- update to v2.8.0:
+  - a lot of smaller and larger bug fixes (see ChangeLog)
+  - new translation to simplified Chinese
+
+-------------------------------------------------------------------
+Mon Apr 20 09:57:00 CEST 2009 - seife@suse.de
+
+- update to v2.7.0
+  - support for more audio formats
+  - localization fixes
+  - various bugfixes in mmg and mkvmerge, see ChangeLog
+
+-------------------------------------------------------------------
+Wed Mar 25 11:56:59 CET 2009 - seife@suse.de
+
+- update to v2.6.0:
+  - add a header editor for existing Matroska files
+  - add japanese translation
+  - a couple of fixes daeling with charset and translation issues
+
+-------------------------------------------------------------------
+Tue Mar 17 09:57:07 CET 2009 - seife@suse.de
+
+- update to v2.5.3:
+  - localization fixes
+  - mkvmerge segfault fix
+  - mkvmerge attachment bugfix
+
+-------------------------------------------------------------------
+Thu Mar  5 13:21:50 CET 2009 - seife@suse.de
+
+- update to v2.5.2:
+  - fix locale detection
+  - fixes for wxWidgets 2.8.0
+  - mkvinfo's GUI is now translatable
+  - some mmg bug fixes
+
+-------------------------------------------------------------------
+Mon Feb 23 11:10:02 CET 2009 - seife@suse.de
+
+- update to v2.5.1:
+  - made most of the programs translatable
+  bug fixes in mkvextract:
+  - time code extraction
+  bug fixes in mmg:
+  - possible crash in the chapter editor
+  - another crash fixed
+  bug fixes in mkvmerge:
+  - AAC file detection fix
+
+-------------------------------------------------------------------
+Sun Jan 18 19:18:12 CET 2009 - seife@suse.de
+
+- update to v2.4.2:
+  bug fixes in mkvmerge:
+  - subtitles in multiple subtitle files could have wrong timestamp
+  - OGM files were reported as having arbitrary display size
+  - hanlding of matroska files containing attachments was faulty
+  - the parser for the simple chapter format could not handle more
+    than 100 chapters
+  - crash when using "--engage native_mpeg4" (segfault) fixed
+  bug fixes in mmg:
+  - the commands "Save command line" and "Create option file" did
+    not work correctly.
+  for other enhancements, please see ChangeLog
+
+-------------------------------------------------------------------
+Fri Dec  5 16:32:07 CET 2008 - seife@suse.de
+
+- update to v2.4.1:
+  - lots of mmg and mkvmerge bugfixes, please see ChangeLog
+  mkvmerge new features:
+  - add support fro reading SRT and SSA/ASS subtitles from AVI
+
+-------------------------------------------------------------------
+Mon Oct 13 08:53:59 CEST 2008 - seife@suse.de
+
+- update to v2.4.0
+  - lots of mmg and mkvmerge bugfixes, please see ChangeLog
+  mkvmerge new features:
+  - add support for Dirac video tracks
+  - add support for muxing VC1 video tracks from MPEG PS or raw
+    VC1 elementary streams
+  - add support for 7.1 channel EAC3 files
+  mkvextract new features:
+  - support for extracting Theora video tracks into Ogg files
+  - handle SimpleBlocks for timecode extraction
+
+-------------------------------------------------------------------
+Tue Sep 16 20:08:06 CEST 2008 - seife@suse.de
+
+- update to v2.3.9
+  - lots of stuff, please see the ChangeLog file
+  - lots of bugfixes in mkvmerge
+  - switched from PCRE to Boost's RE library
+  mkvmerge new features:
+  - support for DTS-HD
+  - improved support for WAV-files greater than 4G
+  - improved error messages
+  - support for OGG kate subtitles
+  - support for PCM tracks with floating point numbers
+  - support for Vorbis in AVI
+
+-------------------------------------------------------------------
+Sun Aug 31 00:12:05 CEST 2008 - seife@suse.de
+
+- add libexpat-devel to buildrequires
+- add %debug_package for buildservice build
+
+-------------------------------------------------------------------
+Thu Mar  6 22:58:59 CET 2008 - seife@suse.de
+
+- fix buildservice build (missing pcre-devel buildrequires)
+
+-------------------------------------------------------------------
+Wed Mar  5 16:56:32 CET 2008 - seife@suse.de
+
+- update to v2.2.0
+  - lots of stuff, please see the ChangeLog file
+  - most notable, some major bug fixes (lots of crashes should be
+    gone) and some new features
+- gcc-4.3 fixes incorporated upstream
+- remove unneeded build dependencies
+
+-------------------------------------------------------------------
+Fri Oct 26 12:28:11 CEST 2007 - seife@suse.de
+
+- update to v2.1.0
+  - lots of stuff, please see the ChangeLog file
+  - most notable, support for EAC3 and AVC tracks
+  - a few memleaks fixed in mkvmerge
+- fix build with gcc43
+
+-------------------------------------------------------------------
+Thu Oct 11 16:39:38 CEST 2007 - sbrabec@suse.cz
+
+- Removed bogus dependency on mDNSResponder.
+
+-------------------------------------------------------------------
+Sun May 27 00:07:56 CEST 2007 - ro@suse.de
+
+- added libmatroska-devel to buildreq 
+
+-------------------------------------------------------------------
+Thu Feb 22 21:11:55 CET 2007 - seife@suse.de
+
+- update to v2.0.2
+ - lots of stuff, please see the ChangeLog file
+ - mkvmerge-gui is now called "mmg" as in the upstream version
+
+-------------------------------------------------------------------
+Tue Nov  7 16:27:42 CET 2006 - seife@suse.de
+
+- update to v1.7.0
+ - mkvmerge: Added support for MIME type detection via libmagic
+ - mkvmerge: bug fix: Theora headers were not handled correctly
+ - mkvmerge: bug fix: WavPack reader was broken on 64bit systems
+ - mkvmerge: bug fix: Theora timecode handling was broken
+ - mmg: 'adjust timecodes' function accepts timecodes like
+   'XXXXXunit' with 'unit' being 'ms', 'us', 'ns' or 's'.
+ - mkvmerge: bug fix: Quicktime/MP4 reader: Added support for
+   version 1 media headers ('mdhd' atom) with 64bit fields. Fixed
+   the duration of the last packet passed downstream. Fixed overflow
+   issues during re-scaling from the Quicktime/MP4's time scale to
+   nano seconds used by mkvmerge.
+ - mkvmerge: add support for the "Delay:" feature and for negative
+   timecodes in VobSub IDX files.
+ - mmg: bug fix: Re-added Chinese to the list of popular languages
+ - mkvmerge: bug fix: The last change to the ISO 639 language
+   handling broke the VobSub reader so that it reported the wrong
+   language codes. This also caused mmg to not display the correct
+   language after adding a VobSub file.
+
+-------------------------------------------------------------------
+Wed May 24 21:40:52 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:20 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Dec 22 20:35:53 CET 2005 - seife@suse.de
+
+- version update to 1.6.5
+
+-------------------------------------------------------------------
+Wed Nov 23 11:53:10 CET 2005 - seife@suse.de
+
+- added -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Mon Nov 21 19:44:25 CET 2005 - seife@suse.de
+
+- version update to 1.6.0
+
+-------------------------------------------------------------------
+Sun Sep 25 23:33:07 CEST 2005 - seife@suse.de
+
+- version update to 1.5.6
+
+-------------------------------------------------------------------
+Fri Aug 26 12:07:33 CEST 2005 - seife@suse.de
+
+- version update to 1.5.5
+
+-------------------------------------------------------------------
+Tue Jul  5 13:49:40 CEST 2005 - seife@suse.de
+
+- version update to 1.5.0
+
+-------------------------------------------------------------------
+Sun Apr 17 10:30:09 CEST 2005 - seife@suse.de
+
+- version update to 1.4.2
+
+-------------------------------------------------------------------
+Tue Mar  1 16:20:28 CET 2005 - seife@suse.de
+
+- version update to 1.4.0
+
+-------------------------------------------------------------------
+Mon Feb  7 09:40:16 CET 2005 - seife@suse.de
+
+- version update to 1.0.2
+
+-------------------------------------------------------------------
+Wed Dec 22 18:17:52 CET 2004 - seife@suse.de
+
+- version update to 1.0.1
+
+-------------------------------------------------------------------
+Thu Nov 18 14:02:40 CET 2004 - seife@suse.de
+
+- version update to 1.0
+
+-------------------------------------------------------------------
+Tue Oct 26 20:03:31 CEST 2004 - seife@suse.de
+
+- version update to 0.9.7
+
+-------------------------------------------------------------------
+Mon Sep 13 17:52:14 CEST 2004 - seife@suse.de
+
+- renamed mmg to mkvmerge-gui (conflict with mupad)
+  Made main window resizeable for high resolution displays.
+
+-------------------------------------------------------------------
+Wed Sep  1 23:59:41 CEST 2004 - seife@suse.de
+
+- initial submission
+

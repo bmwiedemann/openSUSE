@@ -1,0 +1,4 @@
+# The linking against full paths underneath /usr/lib64/lxd/ is intentional, as
+# our shared libraries are internal and aren't meant to be used outside LXD.
+# This error only appears in old SLE versions.
+addFilter ("^lxd.* E: invalid-filepath-dependency .* /usr/lib(32|64)?/lxd/")

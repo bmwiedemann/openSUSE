@@ -1,0 +1,811 @@
+-------------------------------------------------------------------
+Thu Dec 20 16:31:25 CET 2018 - mcepl@suse.com
+
+- Add mailman-update-cfg to avoid user mailman writing to
+  /usr/lib directories (compiled Python files).
+
+-------------------------------------------------------------------
+Tue Dec 11 10:58:06 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use multi-argument find -exec.
+- Set bash as build shell due to occurrence of "=~".
+
+-------------------------------------------------------------------
+Fri Dec  7 11:40:02 CET 2018 - mcepl@suse.com
+
+- Add systemd timers to be used instead of cron. (boo#1115446)
+- Rewrite whole package to use systemd services instead of SysV
+  init. (boo#1116022)
+- Lots and lots of cleanup to minimize rpmlint warnings
+  (remainings are either false positives or they don't make
+  much sense)
+
+-------------------------------------------------------------------
+Wed Aug 22 19:42:39 UTC 2018 - bwiedemann@suse.com
+
+- Add reproducible.patch to use fixed build date in mailman-config
+  to make package build reproducible (boo#1047218)
+
+-------------------------------------------------------------------
+Thu Aug  9 13:57:24 UTC 2018 - mcepl@suse.com
+
+- Restore generation of /etc/mailman/mailman.cgi-gid (bsc#1095112)
+
+-------------------------------------------------------------------
+Thu Jul 26 07:00:37 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- update to 2.1.29:
+  * Fixed the listinfo and admin overview pages that were broken 
+
+-------------------------------------------------------------------
+Tue Jul 24 05:52:51 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- update to 2.1.28:
+  * A content spoofing vulnerability with invalid list name messages in
+    the web UI has been fixed.  CVE-2018-13796 bsc#1101288
+  * It is now possible to edit HTML and text templates via the web admin
+    UI in a supported language other than the list's preferred_language.
+  * The Japanese translation has been updated
+  * The German translation has been updated
+  * The Esperanto translation has been updated
+  * The BLOCK_SPAMHAUS_LISTED_DBL_SUBSCRIBE feature added in 2.1.27 was
+    not working.  This is fixed.
+  * Escaping of HTML entities for the web UI is now done more selectively.
+
+-------------------------------------------------------------------
+Wed Jun 27 06:15:05 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- update to 2.1.27 bsc#1099510:
+  * Existing protections against malicious listowners injecting evil
+    scripts into listinfo pages have had a few more checks added.
+    JVN#00846677/JPCERT#97432283/CVE-2018-0618
+  * A few more error messages have had their values HTML escaped.
+    JVN#00846677/JPCERT#97432283/CVE-2018-0618
+  * The hash generated when SUBSCRIBE_FORM_SECRET is set could have been
+    the same as one generated at the same time for a different list and
+    IP address.  While this is not thought to be exploitable in any way,
+    the generation has been changed to avoid this.
+  * An option has been added to bin/add_members to issue invitations
+    instead of immediately adding members.
+  * A new BLOCK_SPAMHAUS_LISTED_IP_SUBSCRIBE setting has been added to
+    enable blocking web subscribes from IPv4 addresses listed in Spamhaus
+    SBL, CSS or XBL.  It will work with IPv6 addresses if Python's
+    py2-ipaddress module is installed.  The module can be installed via pip
+    if not included in your Python.
+  * Mailman has a new 'security' log and logs
+    authentication failures to the various web CGI functions.  The logged
+    data include the remote IP and can be used to automate blocking of IPs
+    with something like fail2ban.  Since Mailman 2.1.14, these have returned
+    an http 401 status and the information should be logged by the web
+    server, but this new log makes that more convenient.  Also, the
+    'mischief' log entries for 'hostile listname' noe include the remote IP
+    if available.
+  * admin notices of (un)subscribes now may give
+    the source of the action.  This consists of a %(whence)s replacement
+    that has been added to the admin(un)subscribeack.txt templates.  Thanks
+    to Yasuhito FUTATSUKI for updating the non-English templates and help
+    with internationalizing the reasons.
+  * there is a new
+    BLOCK_SPAMHAUS_LISTED_DBL_SUBSCRIBE setting to enable blocking web
+    subscribes for addresses in domains listed in the Spamhaus DBL.
+  * i18n & Bugfixes
+  * for further details see NEWS
+
+-------------------------------------------------------------------
+Mon Mar 19 09:20:57 UTC 2018 - tchvatal@suse.com
+
+- Fix install prefix for some of the files
+- Install license file
+
+-------------------------------------------------------------------
+Fri Mar 16 10:07:38 UTC 2018 - tchvatal@suse.com
+
+- Sort out with spec-cleaner
+- Use direct paths in post scriptlets and properly state their deps
+- Do not attempt user creation during build, fails anyway
+- Use proper user creation code in scriptlets
+
+-------------------------------------------------------------------
+Thu Mar 15 14:22:32 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- update to 2.1.26
+  * An XSS vulnerability in the user options CGI could allow a crafted
+    URL to execute arbitrary javascript in a user's browser.  A
+    related issue could expose information on a user's options page
+    without requiring login. (CVE-2018-5950) bsc#1077358
+   * Google reCAPTCHA v2
+   * New bin/mailman-config command to display various information
+     about this Mailman version and how it was configured.
+   * bug fixes, i18n updates
+   * for further details see NEWS
+
+- updato to 2.1.25
+  * The admindb held subscriptions listing now includes the date of the
+    most recent request from the address.
+  * bug fixes, i18n updates
+  * for further details see NEWS
+
+- update to 2.1.24
+  * bug fixes, i18n updates
+  * for further details see NEWS
+- Rename and refresh patch:
+  * mailman-2.1.2-list_lists.patch to mailman-2.1.26-list_lists.patch
+
+-------------------------------------------------------------------
+Mon Nov 27 17:16:32 UTC 2017 - dmueller@suse.com
+
+- remove distributable flag (which is always true):
+  drops SuSEconfig.mailman-SuSE, mailman-SuSE.patch, mailman-SuSE2.patch
+
+-------------------------------------------------------------------
+Thu Nov 23 13:43:14 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Thu Jun 29 14:42:32 UTC 2017 - dimstar@opensuse.org
+
+- Fix pre script for usage with more recent postfix versions.
+
+-------------------------------------------------------------------
+Mon Mar 20 17:47:56 CET 2017 - kukuk@suse.de
+
+- Require system user wwwrun
+
+-------------------------------------------------------------------
+Mon Feb 20 10:43:51 CET 2017 - kukuk@suse.de
+
+- Require fillup and insserv if we call them
+
+-------------------------------------------------------------------
+Mon Aug 29 10:57:00 UTC 2016 - hsk17@mail.de
+
+- update to 2.1.23
+  * CSRF protection in user options page (CVE-2016-6893)
+  * header_filter_rules matching: headers and patterns are all
+    decoded to unicode
+  * another possible REMOVE_DKIM_HEADERS setting
+  * SMTPDirect.py can now do SASL authentication and STARTTLS
+  * bug fixes, i18n updates
+  * for further details see NEWS
+
+-------------------------------------------------------------------
+Mon Apr 18 09:14:00 UTC 2016 - hsk@imb-jena.de
+
+- update to 2.1.22
+  * bug fixes, i18n updates; for details see NEWS
+
+-------------------------------------------------------------------
+Tue Mar 29 13:50:00 UTC 2016 - hsk@imb-jena.de
+
+- updated mailman-apache2.conf to support "require" syntax of recent
+  apache httpd
+
+-------------------------------------------------------------------
+Mon Feb 29 12:50:00 UTC 2016 - hsk@imb-jena.de
+
+- update to 2.1.21
+  * new dmarc_none_moderation_action list setting
+  * new feature to automatically turn on moderation for single list
+    members (spam prevention)
+  * new mm_cfg.py setting GLOBAL_BAN_LIST
+  * translation updates and bug fixes
+  * for more details see NEWS and Mailman/Defaults.py
+- mailman-2.1.4-dirmode.patch: adjusted to 2.1.21
+
+-------------------------------------------------------------------
+Wed Feb  3 09:15:45 UTC 2016 - mpluskal@suse.com
+
+- Use url for source
+- Add gpg signature
+
+-------------------------------------------------------------------
+Tue Mar 31 18:50:00 UTC 2015 - hsk@imb-jena.de
+
+- update to 2.1.20 bsc#925502
+  * fix for CVE-2015-2775 (path traversal vulnerability)
+  * new Address Change sub-section in the web admin Membership
+    Management section
+  * translation updates and bug fixes
+
+-------------------------------------------------------------------
+Mon Mar  2 13:50:00 UTC 2015 - hsk@imb-jena.de
+
+- update to 2.1.19
+  * backports from 2.2 development branch
+    - new list attribute 'subscribe_auto_approval'
+    - added 'automate' option to bin/newlist
+    - processing of Topics regular expressions has changed
+    - added real name display to the web roster, controlled by new
+      ROSTER_DISPLAY_REALNAME setting
+    - bug fixes
+  * new list attribute dmarc_wrapped_message_text and
+      DEFAULT_DMARC_WRAPPED_MESSAGE_TEXT setting
+  * new list attribute equivalent_domains and DEFAULT_EQUIVALENT_DOMAINS
+      setting
+  * new WEB_HEAD_ADD setting
+  * new DEFAULT_SUBSCRIBE_OR_INVITE setting
+  * new list attribute bounce_notify_owner_on_bounce_increment and
+      DEFAULT_BOUNCE_NOTIFY_OWNER_ON_BOUNCE_INCREMENT setting
+  * log files, request.pck files and heldmsg-* files are no longer created
+      world readable
+  * i18n updates
+  * bug fixes
+
+-------------------------------------------------------------------
+Fri Oct 17 10:34:00 UTC 2014 - hsk@imb-jena.de
+
+- update to 2.1.18
+  * mailman now requires dnspython
+  * new dmarc_moderation_action feature and corresponging list and default
+      settings
+  * bug fixes
+
+-------------------------------------------------------------------
+Fri Feb 14 18:47:44 UTC 2014 - jmatejek@suse.com
+
+- rename README.SuSE
+- update to 2.1.17
+    * option to strip/keep non-standard headers in anonymous lists
+    * option to make membership checks on mail-news gateway
+    * UI improvements for admin interface
+    * digest_size_threshold = 0 now means that *no* digest is sent
+      based on size
+    * option to CSRF-protect subscription form
+    * admins can add members with mail delivery disabled
+    * configurable name of master lock
+    * updated translations
+- updated list_lists patch because upstream list_lists now has
+  an argument -p / --public-archive that does the same as SUSE-specific
+  argument -u / --public-archives. Both spellings are supported
+  and are synonymous.
+
+-------------------------------------------------------------------
+Tue Feb 11 10:44:52 UTC 2014 - dmueller@suse.com
+
+- do not abort post script if postalias fails 
+
+-------------------------------------------------------------------
+Wed Oct 24 15:05:16 UTC 2012 - jmatejek@suse.com
+
+- update to 2.1.15 bsc#997205
+    * fixes CVE-2011-0707 - patch dropped
+    * better CSRF protection CVE 2016-7123
+    * better e-mail address validation
+    * password reminder button
+    * new config options
+    * updated translations
+- dropped mailman-python24 patch as we no longer care
+  about python2.4
+- replaced %run_permissions in spec
+
+-------------------------------------------------------------------
+Tue Oct  2 13:10:52 UTC 2012 - jmatejek@suse.com
+
+- removed SuSEconfig dependency
+  * SuSEconfig.mailman is moved to a new location, and works
+    pretty much the same way as before. which may or may not
+    be a good thing, perhaps this functionality should be
+    removed completely
+
+-------------------------------------------------------------------
+Fri Mar  2 23:40:05 UTC 2012 - opensuse@cboltz.de
+
+- add "su mailman mailman" to logrotate config (bnc#750259)
+
+-------------------------------------------------------------------
+Wed Apr 20 14:30:24 UTC 2011 - jmatejek@novell.com
+
+- fixed bug where it is impossible to edit archives (updated
+  patch 2.1.14-editarch.patch)
+
+-------------------------------------------------------------------
+Wed Feb 23 19:42:27 CET 2011 - matejcik@suse.cz
+
+- fixed a XSS vulnerability in confirm.py (CVE-2011-0707, bnc#671745)
+
+-------------------------------------------------------------------
+Mon Nov 15 10:46:32 CET 2010 - dmueller@suse.de
+
+- update to 2.1.14:
+ - Two potential XSS vulnerabilities have been identified and fixed.
+ - Various i18n updates
+ - A new feature for controlling the addition/replacement of the Sender:
+   header in outgoing mail has been implemented.  This allows a list owner
+   to set include_sender_header on the list's General Options page in the
+   admin GUI.  The default for this setting is Yes which preserves the prior
+   behavior of removing any pre-existing Sender: and setting it to the
+   list's -bounces address.  Setting this to No stops Mailman from adding or
+   modifying the Sender: at all.
+ - long list of bug fixes and enhancements, see included NEWS for details
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:30 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Sun Nov 30 17:28:50 CET 2008 - rommel@suse.de
+
+- the previous 'fix' of removing Mailman's own version of email was a bit crude
+  and broke Mailman in several places (bug #448530)
+  I replaced it with the upstream fix to 'configure' by Barry Warshaw
+  (see http://bazaar.launchpad.net/~barry/mailman/py26/changes)
+
+-------------------------------------------------------------------
+Wed Nov 12 09:05:26 CET 2008 - rommel@suse.de
+
+- added fix to work around md5/sha deprecation warning when hashlib is available
+  (mailman-python-26-deprecation-md5-sha.diff)
+- removed group writable bit from /usr/lib/mailman/Mailman/
+- removing Mailman's own version of email when building against >= Python 2.6
+
+-------------------------------------------------------------------
+Tue Aug 26 16:43:00 CEST 2008 - rommel@suse.de
+
+- version update to 2.1.11 (security fixes and small, but compatible enhancements)
+- removed outdated (>4y) extra FAQ
+- updated README.SuSE
+- reworked (internally used) category patch + added referenced mm-text.png
+
+-------------------------------------------------------------------
+Fri Mar 30 01:43:38 CEST 2007 - ro@suse.de
+
+- added pwdutils to buildreq 
+
+-------------------------------------------------------------------
+Fri Oct 20 18:32:59 CEST 2006 - lmuelle@suse.de
+
+- ensure not to quote None if set in /etc/sysconfig/mailman:MAILMAN_MTA
+
+-------------------------------------------------------------------
+Thu Oct 12 16:00:21 CEST 2006 - rommel@suse.de
+
+- upgrade to Mailman 2.1.9 which 
+  + fixes some security issues (CVE-2006-2941, CVE-2006-3636, CVE-2006-2191)
+  + adds support for languages "Arabic" and "Vietnamese"
+  + makes the queue handling more robust
+  + makes the handling of header/footers more robust 
+
+-------------------------------------------------------------------
+Fri Jun 23 10:30:01 CEST 2006 - poeml@suse.de
+
+- add more info about adding "MAILMAN" to the apache server flags to 
+  README.SuSE and /etc/apache2/conf.d/mailman.conf
+
+-------------------------------------------------------------------
+Fri Jun 16 11:24:59 CEST 2006 - rommel@suse.de
+
+- update to version 2.1.8 which btw obsoletes these patches:
+  mailman-2.1.4-mktime_overflowerror.patch
+  mailman-2.1.4-cleanarch.patch
+  mailman-2.1.7-patch-20060114.txt
+- fixed an error in the comments of sysconfig.mailman
+  (MAILMAN_SMTPPORT is relevant for MAILMAN_SMTPHOST, not MAILMAN_DEFAULT_EMAIL_HOST)
+
+-------------------------------------------------------------------
+Thu Mar 16 17:59:50 CET 2006 - rommel@suse.de
+
+- applied a bugfix collection for Mailman 2.1.7 from
+  http://sourceforge.net/tracker/index.php?func=detail&aid=1405790&group_id=103&atid=300103
+- reworked the handling of the alias db file (using the %ghost tag)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:09 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 14:19:04 CET 2006 - rommel@suse.de
+
+- fixed cleanarch [bug #144675]
+- reworked mailman-2.1.4-mktime_overflowerror.patch [bug #143390]
+- removed python-xml from Requires: (was introduced by obsolete patch)
+
+-------------------------------------------------------------------
+Mon Jan  9 16:23:53 CET 2006 - rommel@suse.de
+
+- update to version 2.1.7 (rediff of mailman-wrapper.patch,
+  mailman-python24.patch, mailman-2.1.5-no_extra_asian.dif)
+
+-------------------------------------------------------------------
+Thu Aug 11 17:35:34 CEST 2005 - lnussel@suse.de
+
+- fix permission handling (#66315)
+
+-------------------------------------------------------------------
+Tue Jul 12 18:38:53 CEST 2005 - rommel@suse.de
+
+- fixed check_perms [bug #76172] 
+- added support for logrotate [bug #94379]
+
+-------------------------------------------------------------------
+Sun Jul  3 01:24:55 CEST 2005 - dmueller@suse.de
+
+- update to Mailman 2.1.6, rediff and remove patches
+  which are already included upstream 
+
+-------------------------------------------------------------------
+Wed Jun 15 13:48:26 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS and PIE support for C binaries (CGI bins mostly)
+
+-------------------------------------------------------------------
+Wed Feb 16 16:35:39 CET 2005 - rommel@suse.de
+
+- added mailman-2.1.5-dirtraversal.patch [bug #50563, CAN-2005-0202] 
+
+-------------------------------------------------------------------
+Mon Feb 14 02:28:58 CET 2005 - ro@suse.de
+
+- should not need explicit importing of japanese and korean
+  any more with current python, remove it 
+
+-------------------------------------------------------------------
+Thu Feb 10 02:23:02 CET 2005 - ro@suse.de
+
+- remove python-korean and python-japanese (pkgs dropped) 
+
+-------------------------------------------------------------------
+Mon Feb  7 11:24:37 CET 2005 - rommel@suse.de
+
+- added python-xml to requires [bug #50100]
+- fixed permissions on default error log file [bug #48208]
+- fixed possible data loss situation while updating [bug #48209]
+
+-------------------------------------------------------------------
+Sat Jan 15 21:14:31 CET 2005 - schwab@suse.de
+
+- Use <owner>:<group> in permissions file.
+
+-------------------------------------------------------------------
+Fri Jan 14 14:22:37 CET 2005 - rommel@suse.de
+
+- added hints in README.SuSE on how to activate the web interface [bug #43292]
+- added documentation tree from admin/www and debian's man pages [bug #37394]
+- added sysconfig support for SMTPPORT [bug #49551]
+
+-------------------------------------------------------------------
+Wed Jan 12 14:47:18 CET 2005 - rommel@suse.de
+
+- added mailman-weak-password.diff [bug #49468, CAN-2004-1144]
+- added mailman-CAN-2004-1177.patch [bug #49468, CAN-2004-1177]
+- added mailman-2.1.4-avoid-headerfolding-python21.diff [bug #45355] 
+- reworked undistributable mailman patch (archive fallback path)
+
+-------------------------------------------------------------------
+Wed Dec 15 17:03:15 CET 2004 - ro@suse.de
+
+- another permissions fix 
+
+-------------------------------------------------------------------
+Fri Dec  3 16:13:53 CET 2004 - ro@suse.de
+
+- package according to permissions 
+
+-------------------------------------------------------------------
+Wed Nov 10 19:29:54 CET 2004 - rommel@suse.de
+
+- reworked start script (bug #42652) 
+
+-------------------------------------------------------------------
+Thu Sep 16 23:13:07 CEST 2004 - mmj@suse.de
+
+- Include latest and greatest FAQ [#38461]
+
+-------------------------------------------------------------------
+Thu Sep  2 09:54:38 CEST 2004 - mmj@suse.de
+
+- Remove mail to root telling him to RTFM [#44365]
+
+-------------------------------------------------------------------
+Mon Aug 30 15:42:37 CEST 2004 - ro@suse.de
+
+- remove apache1 traces
+
+-------------------------------------------------------------------
+Sat Aug  7 16:05:34 CEST 2004 - rommel@suse.de
+
+- update to version 2.1.5
+- fix of start script (bug #42652)
+
+-------------------------------------------------------------------
+Tue Jun 22 01:08:43 CEST 2004 - ro@suse.de
+
+- fix filelist 
+
+-------------------------------------------------------------------
+Sun Jun 20 13:49:22 CEST 2004 - rommel@suse.de
+
+- relocating mm_cfg.py doesn't work, switched back to old behauviour (won't fix
+  bug #41344)
+- re-generating aliases in %post section (important for update)
+
+-------------------------------------------------------------------
+Thu Jun  3 12:38:32 CEST 2004 - rommel@suse.de
+
+- fixed bug introduced by relocation of config files (bug #41344)
+- updating mailing list aliases on install or update (important for
+  autogenerated aliases)
+- updated README.SuSE to reflect recent changes
+
+-------------------------------------------------------------------
+Fri May  7 18:18:21 CEST 2004 - rommel@suse.de
+
+- new configuration directory /etc/mailman
+- moved mm_cfg.py to /etc/mailman (bug #38868)
+- precompiled stuff in /usr/lib/mailman/bin (bug #38868)
+- added support for https per default (bug #38460)
+- added patch agains overflow in ArchRunner
+  (Request ID 938301 on http://sourceforge.net/projects/mailman/)
+- added glue patch for Scrubber
+  (Request ID 891491 on http://sourceforge.net/projects/mailman/)
+
+-------------------------------------------------------------------
+Thu Mar 25 17:53:35 CET 2004 - rommel@suse.de
+
+- added python-japanese and python-korean to Prereq (bug #36214)
+
+-------------------------------------------------------------------
+Wed Mar  3 18:20:03 CET 2004 - rommel@suse.de
+
+- fixed traceback in options page (bug #35267)
+- fixed german messages file (bug #35109)
+
+-------------------------------------------------------------------
+Wed Feb 18 17:27:08 CET 2004 - rommel@suse.de
+
+- fixed some bugs concerning the wrapper gid files
+  (/etc/mailman.*-gid) (see bugs #34614 #34382)
+
+-------------------------------------------------------------------
+Thu Feb 12 21:06:51 CET 2004 - rommel@suse.de
+
+- removing stale lockfiles on start (bug #34016)
+- fixed a typo in SuSEconfig.mailman (bug #34015)
+- fixed Defaults.py to work around upgrade problem (bug #33793)
+- fixed permissions in /usr/lib/mailman (bug #33792)
+- added support for virtual hosts through SuSEconfig.mailman (feature request)
+- added a hint to crontab where the master crontab is (feature request)
+- added a patch for more options to list_lists (feature request)
+- fixed a permission problem caused by editarch
+
+-------------------------------------------------------------------
+Thu Jan 15 19:06:33 CET 2004 - rommel@suse.de
+
+- upgrade to version 2.1.4 (includes fix for latest XSS vulnerability)
+- added link for better Sendmail interoperability
+- added "--with-python-lib" to configure to work around hard coded /usr/lib
+  manifestations
+
+-------------------------------------------------------------------
+Tue Dec 16 15:30:49 CET 2003 - rommel@suse.de
+
+- added fix against XSS vulnerability (bug #32187)
+- avoiding copies of mailman icons in /srv/www/icon;
+  using the IMAGE_LOGOS config switch and an apache/apache2 config instead
+  (bug #32496)
+- added missing contrib directory to /usr/share/doc/packages/mailman/
+- changed ownership of /var/lib/mailman to 2755 so pam ssh doesn't complain 
+
+-------------------------------------------------------------------
+Tue Nov 25 11:53:14 CET 2003 - rommel@suse.de
+
+- added missing calls "stop" on uninstall and "try-restart" on update (bug #29047)
+- added w3m as requirement (bug #32706)
+- not marking mm_cfg.pyc as config (bug #32851)
+- added apache2 config (bug #33187)
+
+-------------------------------------------------------------------
+Sat Nov  1 16:21:02 CET 2003 - adrian@suse.de
+
+- update to version 2.1.3
+
+-------------------------------------------------------------------
+Thu Aug 21 22:40:50 CEST 2003 - mmj@suse.de
+
+- The fix below from mcihar@suse.cz was a little to rough, since
+  mailman broke without it's own copy of email. So include email
+  in the installation, but keep korean and japanese disabled.
+
+-------------------------------------------------------------------
+Thu Aug 14 17:30:57 CEST 2003 - rommel@suse.de
+
+- added activation metadata in sysconfig templates
+
+-------------------------------------------------------------------
+Mon Aug 11 17:18:48 CEST 2003 - mcihar@suse.cz
+
+- don't include in mailman package python modules we also ship (korean,
+  japanese, email)
+- notify user about running 'SuSEconfig --module mailman' if not in YaST
+
+-------------------------------------------------------------------
+Mon Aug 11 15:04:57 CEST 2003 - rommel@suse.de
+
+- bug-fix update to version 2.1.2
+- removed now-obsolete mailman-destdir.patch
+- linkage of /etc/aliases.d/mailman to /var/lib/mailman/data/aliases
+  has been dropped (unmaintainable)
+- fixed mailmanctl to not freeze YaST2 [Bug #26990]
+- fixed mail gid auto detection in SuSEconfig.mailman [Bug #27369]
+- fixed Defaults.py to not reference build host [Bug #26988]
+
+-------------------------------------------------------------------
+Tue Aug  5 18:36:57 CEST 2003 - ro@suse.de
+
+- don't leave buildroot traces in installed files 
+
+-------------------------------------------------------------------
+Fri Jun 13 11:59:33 CEST 2003 - kukuk@suse.de
+
+- Fix filelist
+
+-------------------------------------------------------------------
+Mon May 12 15:13:04 CEST 2003 - rommel@suse.de
+
+- added DISTRIBUTABLE to be able to build the version used interally
+
+-------------------------------------------------------------------
+Mon Mar 17 17:47:05 CET 2003 - kukuk@suse.de
+
+- Don't enable mailman per default, does not work without correct
+  configuration
+
+-------------------------------------------------------------------
+Mon Mar 10 11:33:51 CET 2003 - rommel@suse.de
+
+- test for presence of /usr/sbin/postalias (reported by Eberhard Moenkeberg)
+- added RPM Summary [Bug #24810]
+- added Description to rcmailman (shows in runlevel editor)
+
+-------------------------------------------------------------------
+Thu Mar  6 17:49:16 CET 2003 - kukuk@suse.de
+
+- Add openssl PreRequires [Bug #24785]
+
+-------------------------------------------------------------------
+Mon Feb 10 14:40:14 CET 2003 - rommel@suse.de
+
+- update to version 2.1.1 which obsoletes both mailman-xss.patch and
+  mailman-syncmember.patch and fixes the rmlist bug
+- added the config attribute to the alias file generated by mailman
+  so it does not get lost on package removal
+- added MAILMAN_LINK_ALIASES variable to the sysconfig stuff so one
+  can create links in /etc/aliases.d that point to
+  /var/lib/mailman/data/aliases* independent on the value of MAILMAN_MTA 
+
+-------------------------------------------------------------------
+Sat Feb  1 16:33:28 CET 2003 - rommel@suse.de
+
+- fixed the start script to not freeze the runlevel editor on service start
+- added metadata to sysconfig.apache-mailman
+
+-------------------------------------------------------------------
+Thu Jan 30 17:33:27 CET 2003 - rommel@suse.de
+
+- added missing metadata to sysconfig file
+- added official patch against cross-site-scripting (XSS) vulnerability
+
+-------------------------------------------------------------------
+Wed Jan 29 17:04:02 CET 2003 - rommel@suse.de
+
+- update to version 2.1
+- new start script
+- new README.SuSE
+- added SuSEconfig script that generates the wrapper gid files
+  (/etc/mailman.*-gid) and provides an easy way to generate mm_cfg.py
+  (Mailman's site configuration file)    
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Fri Aug 30 11:03:44 CEST 2002 - vinil@suse.cz
+
+- enhanced PreRequires
+- fixed default hostname in SuSEconfig (bug #17696)
+- defaults set for Postfix MTA (Sendmail made optional)
+
+-------------------------------------------------------------------
+Mon Aug 12 14:37:59 CEST 2002 - vinil@suse.de
+
+- new version: 2.0.13
+
+-------------------------------------------------------------------
+Fri Aug  2 11:09:46 CEST 2002 - ro@suse.de
+
+- adapted server root 
+
+-------------------------------------------------------------------
+Thu Jul 11 15:07:19 CEST 2002 - vinil@suse.cz
+
+- new version: 2.0.12
+- own user and group 'mailman'
+- use /etc/aliases.d/mailman instead of /etc/aliases
+- paragraph about creating ML added into README.SuSE
+
+-------------------------------------------------------------------
+Mon Jun  3 14:39:36 CEST 2002 - ro@suse.de
+
+- fix build on lib64 
+- added openssl to neededforbuild
+
+-------------------------------------------------------------------
+Thu Jan 31 11:35:06 CET 2002 - vinil@suse.cz
+
+- README.SuSE typo fixed
+
+-------------------------------------------------------------------
+Thu Jan 24 15:21:45 CET 2002 - vinil@suse.cz
+
+- add rcscript, that moves crontab entry in /etc/cron.d/ and out
+
+-------------------------------------------------------------------
+Thu Jan 17 00:54:43 CET 2002 - ro@suse.de
+
+- adapted for /etc/sysconfig/apache 
+
+-------------------------------------------------------------------
+Wed Jan 16 11:41:30 CET 2002 - vinil@suse.cz
+
+- installation is able to handle old /var/spool/mailman, now
+- /var/lib/mailman/Mailman/mm_cfg.py* is %config(noreplace)
+
+-------------------------------------------------------------------
+Tue Dec 11 13:28:32 CET 2001 - vinil@suse.cz
+
+- update to 2.0.8
+- web frontend prepared for apache
+- patch for configuratable cgi-gid and mail-gid
+- taking care about /etc/aliases now
+
+-------------------------------------------------------------------
+Sun Aug 19 20:47:27 CEST 2001 - iboernig@suse.de
+
+- update to new stable version 2.0.6 
+
+-------------------------------------------------------------------
+Sun Aug 19 20:13:03 CEST 2001 - iboernig@suse.de
+
+- fixed bug in specfile (Bug #9519) Apache GID is now nogroup again. 
+
+Wed Apr 25 16:17:13 CEST 2001 - iboernig@suse.de
+
+- changed mailgid to "daemon". It should work now with sendmail. 
+  Postfix users have to change default_privs 
+
+-------------------------------------------------------------------
+Fri Mar 16 14:51:15 CET 2001 - iboernig@suse.de
+
+- updated to version 2.0.3, includes minor security fix
+
+-------------------------------------------------------------------
+Fri Jan  5 10:55:21 CET 2001 - iboernig@suse.de
+
+- bugfix: move crontab entry to /etc/cron.d/mailman
+- notify user in %post-section
+- created README.SuSE
+
+-------------------------------------------------------------------
+Thu Dec 28 11:57:36 CET 2000 - choeger@suse.de
+
+- bugfix: --prefix=$RPM_BUILD_ROOT does NOT work, because then
+          /var/tmp/mailman-* would be compiled into some .c files
+          changed Makefiles to allow DESTDIR=/path
+- create crontab entries in postinstall
+- use gid of nogroup also for mail-wrapper
+
+-------------------------------------------------------------------
+Thu Nov 30 10:59:18 CET 2000 - iboernig@suse.de
+
+- changed default user.group to mdom.mdom
+
+-------------------------------------------------------------------
+Wed Nov 29 19:34:22 CET 2000 - iboernig@suse.de
+
+- initial version
+

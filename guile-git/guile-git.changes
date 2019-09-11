@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Wed Jan 30 10:25:21 UTC 2019 - jbrielmaier@suse.de
+
+- upate to 0.2.0:
+   * New Functionality 
+    ** Add (git submodule) module 
+   * Bug fixes
+    ** Fix experience in REPL
+    ** Correctly export ~repository-working-directory~
+  For more details see /usr/share/doc/packages/guile-git/NEWS
+- package NEWS file
+
+-------------------------------------------------------------------
+Tue Dec 11 21:43:19 UTC 2018 - jbrielmaier@suse.de
+
+- add libgit2-devel as run time dependency to avoid 
+  "/usr/lib64/libgit2", message: "file not found" error
+
+-------------------------------------------------------------------
+Mon Sep 17 14:16:09 UTC 2018 - <jbrielmaier@suse.de>
+
+- remove needless _service and tar file 
+
+-------------------------------------------------------------------
+Fri Sep 14 08:03:54 UTC 2018 - jbrielmaier@suse.de
+
+- bump to 0.1.0:
+  - support remote-ls
+  - support repository-close
+  - small fixes
+- switch from git service to release tarball
+- order build requires alphabetical
+- install info files
+- COPYING now as license 
+
+-------------------------------------------------------------------
+Sat Mar 10 09:48:08 UTC 2018 - jengelh@inai.de
+
+- Update description.
+
+-------------------------------------------------------------------
+Fri Mar  9 18:34:17 UTC 2018 - sleep_walker@opensuse.org
+
+- make package compatibile with guile-2.0+
+- make _service localonly
+
+-------------------------------------------------------------------
+Tue Jan 23 16:32:11 UTC 2018 - jbrielmaier@suse.com
+
+- Initial version built from commit 951a32c

@@ -1,0 +1,208 @@
+-------------------------------------------------------------------
+Mon Sep 11 18:26:44 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups and compact package descriptions.
+
+-------------------------------------------------------------------
+Thu Jul 27 20:11:21 UTC 2017 - badshah400@gmail.com
+
+- Update to version 3.7.5:
+  * Added a caret line frame as an alternative visual for
+    highlighting the caret line.
+  * Added "Reverse Selected Lines" feature.
+  * SciTE adds "Select All Bookmarks" command.
+  * SciTE adds a save.path.suggestion setting to suggest a file
+    name when saving an unnamed buffer.
+  * Updated case conversion and character categories to Unicode 9.
+  * The Baan lexer recognizes numeric literals in a more compliant
+    manner including hexadecimal numbers and exponentials.
+  * The Bash lexer recognizes strings in lists in more cases. Bug
+    #1944.
+  * The Fortran lexer recognizes a preprocessor line after a line
+    continuation &. Bug #1935.
+  * The Fortran folder can fold comments. Bug #1936.
+  * The PowerShell lexer recognizes escaped quotes in strings. Bug
+    #1929.
+  * The Python lexer recognizes identifiers more accurately when
+    they include non-ASCII characters.
+  * The Python folder treats comments at the end of the file as
+    separate from the preceding structure.
+  * The YAML lexer recognizes comments in more situations and
+    styles a "..." line like a "---" line. Bug #1931.
+  * Update scroll bar when annotations added, removed, or
+    visibility changed. Feature #1187.
+  * Canceling modes with the Esc key preserves a rectangular
+    selection. Bug #1940.
+  * Builds are made with a sorted list of lexers to be more
+    reproducible. Bug #1946.
+  * SciTE examines at most 1 MB of a file to automatically
+    determine indentation for indent.auto to avoid a lengthy pause
+    when loading very large files.
+  * SciTE user interface uses lighter colours and fewer 3D
+    elements to match current desktop environments.
+  * SciTE sets buffer dirty and shows message when file deleted if
+    load.on.activate on.
+  * SciTE on Windows Find strip Find button works in incremental
+    no-close mode. Bug #1926. 
+- Drop reproducible.patch: fixed upstream.
+- Rebase scintilla-shared.patch for update; make it work with -p1
+  for use with quilt.
+
+-------------------------------------------------------------------
+Sat May 20 21:12:39 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to have constant link-order
+  and make build fully reproducible
+
+-------------------------------------------------------------------
+Tue Jul 12 17:06:20 UTC 2016 - tchvatal@suse.com
+
+- Version update to 3.6.6:
+  * Various small bugfixes
+- Remove support for older distros that are marked as dead
+- Update shared patch to set properly cflags:
+  * scintilla-shared.patch
+
+-------------------------------------------------------------------
+Sun Apr 10 09:38:49 UTC 2016 - mpluskal@suse.com
+
+- Update to 3.6.4
+  * avoids some folding bugs by automatically unfolding and 
+    improves clipboard robustness on Win32.
+
+-------------------------------------------------------------------
+Sat Jan 30 09:09:56 UTC 2016 - mpluskal@suse.com
+
+- Update to 3.6.3
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Nov 20 10:13:00 UTC 2015 - mpluskal@suse.com
+
+- Update to 3.6.2
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon Mar 23 00:07:55 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.5.4
+  * No changelog available
+- Build with gtk3 support for openSUSE > 13.1
+- Bump so version to 3
+- Add glib2-devel require; new upstream dependency
+- Update scintilla-shared.patch
+- Remove redundant %clean section
+- Enable parallel building with %{?_smp_mflags}
+
+-------------------------------------------------------------------
+Mon Mar 26 14:25:08 UTC 2012 - cfarrell@suse.com
+
+- license update: MIT
+  License is closely related to the MIT license. Use SPDX format
+
+-------------------------------------------------------------------
+Sun Nov 27 06:56:48 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Oct 17 20:33:30 CEST 2011 - mhrusecky@suse.cz
+
+- updated to the version 2.29
+
+-------------------------------------------------------------------
+Wed Nov 11 17:30:56 CET 2009 - mhrusecky@suse.cz
+
+- making sure that no include can be included twice
+
+-------------------------------------------------------------------
+Tue Nov 10 22:26:20 CET 2009 - mhrusecky@suse.cz
+
+- commenting out fdupes on non-SuSE distro
+
+-------------------------------------------------------------------
+Fri Oct 30 19:29:42 CET 2009 - mhrusecky@suse.cz
+
+- packaging even src headers (MySQL Workbench need them)
+
+-------------------------------------------------------------------
+Fri Oct 30 10:17:02 CET 2009 - mhrusecky@suse.cz
+
+- moving headers to the scintilla directory
+
+-------------------------------------------------------------------
+Sun Oct 25 10:27:53 CET 2009 - mhrusecky@suse.cz
+
+- updated to version 2.01
+  - 2.01 changes
+    - Fix to positioning rectangular paste when viewing line ends.
+    - Don't insert new lines and indentation for line ends at end of
+      rectangular paste.
+    - When not in additional selection typing mode, cutting a 
+      rectangular selection removes all of the selected text.
+    - Rectangular selections are copied to the clipboard in document
+      order, not in the order of selection.
+    - SCI_SETCURRENTPOS and SCI_SETANCHOR work in rectangular mode.
+    - On GTK+, drag and drop to a later position in the document now
+      drops at the position.
+    - Fix bug where missing property did not use default value.
+  - 2.0 changes
+    - Multiple pieces of text can be selected simultaneously by holding
+      control whil dragging the mouse. Typing, backspace and delete may
+      affect all selections together.
+    - Virtual space allows selecting beyond the last character on a line.
+    - SciTE on GTK+ path bar is now optional and defaults to off.
+    - MagikSF lexer recognises numbers correctly.
+    - Folding of Python comments and blank lines improved. Bug #210240.
+    - Bug fixed where background colour of last character in document
+      leaked past that character.
+    - Crash fixed when adding marker beyond last line in document. 
+      Bug #2830307.
+    - Resource leak fixed in SciTE for Windows when printing fails.
+      Bug #2816524.
+    - Bug fixed on Windows where the system caret was destroyed during
+      destruction when another window was using the system caret.
+      Bug #2830223.
+    - Bug fixed where indentation guides were drawn over text when the
+      indentation used a style with a different space width to the 
+      default style.
+    - SciTE bug fixed where box comment added a bare line feed rather 
+      than the chosen line end. Bug #2818104.
+    - Reverted fix that led to wrapping whole document when displaying 
+      the first line of the document.
+    - Export to LaTeX in SciTE fixed to work in more cases and not use 
+      as much space. Bug #1286548.
+    - Bug fixed where EN_CHANGE notification was sent when performing a 
+      paste operation in a read-only document. Bug #2825485.
+    - Refactored code so that Scintilla exposes less of its internal
+      implementation and uses the C++ standard library for some basic
+      collections. Projects that linked to Scintilla's SString or PropSet
+      classes should copy this code from a previous version of Scintilla
+      or from SciTE. 
+
+-------------------------------------------------------------------
+Tue Jul 28 15:20:19 CEST 2009 - mhrusecky@suse.cz
+
+- updated to version 1.79
+  - Scintilla reports memory exhaustion instead of crashing.
+  - for more details see http://www.scintilla.org/ScintillaHistory.html
+
+-------------------------------------------------------------------
+Tue Jun  2 14:55:11 CEST 2009 - mhrusecky@suse.cz
+
+- updated to version 1.78
+  - allows annotation lines to be displayed beneath each document line and to
+    display a margin with different text for each document line
+  - for more details see http://www.scintilla.org/ScintillaHistory.html
+- not packaging static libraries anymore
+
+-------------------------------------------------------------------
+Tue Feb 17 18:58:15  CET 2009 - mhrusecky@suse.cz
+
+- forgotten macro expanded - fixed -devel dependencies
+
+-------------------------------------------------------------------
+Mon Dec 19 20:59:24  CET 2008 - mhrusecky@suse.cz
+
+- New Package (Version 1.77)
+

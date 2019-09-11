@@ -1,0 +1,30 @@
+From: Luc Chouinard <lchouinard@lchouinard-desktop.englab.juniper.net>
+Date: Thu Jun 19 12:28:40 2014 -0700
+Subject: Support for ARM64
+References: FATE#320844
+Patch-mainline: yes
+Git-commit: 5391d3dd0e6710c22ec5801f99a6788a2e4b132a
+
+Acked-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ extensions/eppic/applications/crash/eppic.c |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- a/extensions/eppic/applications/crash/eppic.c
++++ b/extensions/eppic/applications/crash/eppic.c
+@@ -1033,10 +1033,14 @@ _init() /* Register the command set. */
+ #ifdef PPC64
+ #define EPPIC_ABI  ABI_PPC64
+ #else
++#ifdef ARM64
++#define EPPIC_ABI  ABI_ARM64
++#else
+ #error eppic: Unkown ABI 
+ #endif
+ #endif
+ #endif
++#endif
+ #endif
+ #endif
+ #endif

@@ -1,0 +1,17 @@
+--- pentaho-libxml-1.1.3/build.properties	2009-11-17 15:20:48.000000000 +0000
++++ pentaho-libxml-1.1.3/build.properties	2009-11-17 15:20:57.000000000 +0000
+@@ -1,4 +1,4 @@
+-project.revision=TRUNK-SNAPSHOT
++project.revision=1.1.3
+ ivy.artifact.group=pentaho-library
+ ivy.artifact.id=libxml
+ impl.title=LibXml
+@@ -6,4 +6,6 @@
+ src.dir=${basedir}/source
+ dependency.libbase.revision=1.1.3
+ dependency.libloader.revision=1.1.3
+-testsrc.dir=${basedir}/test
+\ No newline at end of file
++testsrc.dir=${basedir}/test
++antcontrib.available=true
++build.cache.dir=lib

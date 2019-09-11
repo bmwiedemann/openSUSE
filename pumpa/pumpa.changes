@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Wed Aug  9 12:36:34 UTC 2017 - pgajdos@suse.com
+
+- turn off spell checking [bsc#1052963]
+
+-------------------------------------------------------------------
+Wed May 10 15:05:13 UTC 2017 - jengelh@inai.de
+
+- Drop redundant mentions from description.
+
+-------------------------------------------------------------------
+Tue May  9 16:45:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.9.3:
+  * Change from SpellCheckUnderline to WaveUnderline.
+  * Fix a bug related to libtidy version compatibility (deb#834031).
+  * Add an option to set font_size manually in pumpa.conf.
+  * Update German translation.
+
+-------------------------------------------------------------------
+Mon Jun 20 07:29:30 UTC 2016 - tchvatal@suse.com
+
+- Switch to libtidy-devel to avoid unresolvable on factory
+
+-------------------------------------------------------------------
+Sun Jan 31 11:12:26 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.9.2:
+  * User profile and avatar image editing.
+  * Shares are now visualised with a recycling icon.
+  * Fix bug where a shared object might be seen as already liked.
+  * Fix bug where certain authors were seen as being followed even
+    though they weren't.
+  * Add Finnish language.
+- Add tarball signing.
+
+-------------------------------------------------------------------
+Fri May 22 19:00:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.9.1:
+  * Auto-link urls only if we are not using Markdown-mode.
+  * Now has an optional character count for people cross-posting to
+    character limited instances.
+  * Multiple context tabs can now be opened.
+  * Now presents an option to abort or ignore when confronted with
+    an SSL cert error.
+  * Add Russian translation.
+
+-------------------------------------------------------------------
+Mon Oct 20 12:17:15 UTC 2014 - sor.alexei@meowr.ru
+
+- Add .desktop database update.
+- Minor spec cleanup.
+
+-------------------------------------------------------------------
+Mon Aug 25 17:05:31 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 0.9
+  * Support for editing posts and comments (in HTML only)
+  * Better display of deleted posts
+  * Be better about showing comments in temporal order
+  * Complete @-tagging with display name instead of nick name
+  * More aggressive about reloading inbox to better get missing
+    replies
+  * Fixed UTF-8 bug introduced in v0.8.4
+  * Fixed bug where image upload consistently fails after an
+    aborted upload
+  * Fixed download manager memory leaks
+  * Fixed bug where copy by Ctrl-C didn't work in text widgets
+  * Various minor bug fixes
+
+-------------------------------------------------------------------
+Mon Jun 9 05:32:54 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 0.8.4
+  * Avatar-menu with new auto-minimise feature that automatically
+    collapses posts of e.g. noisy users :-)
+  * To/Cc now editable on replies
+  * Inline HTML now allowed using libtidy (this feature is disabled
+    if libtidy isn't installed)
+  * Updated German, Spanish, Italian and Na'vi translations
+  * Various bug fixes
+
+-------------------------------------------------------------------
+Thu Apr 22 17:54:13 UTC 2014 - sor.alexei@meowr.ru
+
+- Migration to Qt5.
+
+-------------------------------------------------------------------
+Thu Apr 3 13:47:55 UTC 2014 - sor.alexei@meowr.ru
+
+- Initial package.

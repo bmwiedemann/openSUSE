@@ -1,0 +1,28 @@
+From dfd513c3538874110b7ba9971ffb010e70481ddf Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 1 Mar 2019 21:45:46 +0100
+Subject: [PATCH 6/6] wscript: install bash completion to
+ /usr/share/bash-completion
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ wscript | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/wscript b/wscript
+index ed09076..b133ffd 100644
+--- a/wscript
++++ b/wscript
+@@ -51,7 +51,8 @@ def build(bld):
+     bld.install_as('${BINDIR}/hamster', "src/hamster-cli", chmod = 0755)
+ 
+ 
+-    bld.install_files('${SYSCONFDIR}/bash_completion.d','src/hamster.bash')
++    bld.install_files('${PREFIX}/share/bash-completion/completions',
++                      'src/hamster.bash')
+ 
+ 
+     # set correct flags in defs.py
+-- 
+2.20.1
+

@@ -1,0 +1,69 @@
+From 0e014103612e740588db517e705c77d64d456e84 Mon Sep 17 00:00:00 2001
+From: Marc Hartmayer <mhartmay@linux.vnet.ibm.com>
+Date: Tue, 9 Jan 2018 13:27:03 +0100
+Subject: [PATCH 34/43] tools/kvm_stat: use a more pythonic way to iterate over
+ dictionaries
+
+If it's clear that the values of a dictionary will be used then use
+the '.items()' method.
+
+Signed-off-by: Marc Hartmayer <mhartmay@linux.vnet.ibm.com>
+Tested-by: Stefan Raspl <raspl@linux.vnet.ibm.com>
+[Include fix for logging mode by Stefan Raspl]
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 0eb578009a1d530a11846d7c4733a5db04730884)
+[FL: FATE#325017]
+Signed-off-by: Fei Li <fli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index ee1297226145..a82015f08d75 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1087,9 +1087,10 @@ class Tui(object):
+         self.screen.clrtobot()
+         stats = self.stats.get(self._display_guests)
+         total = 0.
+-        for key in stats.keys():
++        for key, values in stats.items():
+             if key.find('(') is -1:
+-                total += stats[key].value
++                total += values.value
++
+         if self._sorting == SORT_DEFAULT:
+             def sortkey((_k, v)):
+                 # sort by (delta value, overall value)
+@@ -1379,8 +1380,7 @@ def batch(stats):
+         s = stats.get()
+         time.sleep(1)
+         s = stats.get()
+-        for key in sorted(s.keys()):
+-            values = s[key]
++        for key, values in sorted(s.items()):
+             print('%-42s%10d%10d' % (key, values.value, values.delta))
+     except KeyboardInterrupt:
+         pass
+@@ -1391,14 +1391,14 @@ def log(stats):
+     keys = sorted(stats.get().keys())
+ 
+     def banner():
+-        for k in keys:
+-            print(k, end=' ')
++        for key in keys:
++            print(key, end=' ')
+         print()
+ 
+     def statline():
+         s = stats.get()
+-        for k in keys:
+-            print(' %9d' % s[k].delta, end=' ')
++        for key in keys:
++            print(' %9d' % s[key].delta, end=' ')
+         print()
+     line = 0
+     banner_repeat = 20
+-- 
+2.12.3
+

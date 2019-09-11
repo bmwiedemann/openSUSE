@@ -1,0 +1,643 @@
+-------------------------------------------------------------------
+Fri Mar 16 14:23:41 UTC 2018 - fcrozat@suse.com
+
+- Rewrite description and summary to be more accurate with current
+  package features set.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:37:27 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Aug 15 13:45:01 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.8.6:
+  + Port to meson.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+- Add appstream-glib-devel BuildRequires: needed in order to have
+  the gettext its rules for appdata.xml/metainfo.xml available.
+
+-------------------------------------------------------------------
+Thu Jun 22 18:39:51 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.8.5:
+  + Add AppData to make it show up as a Files extension in
+    Software.
+  + Fix crash when fast-content-type is unavailable.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 14 17:57:30 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.8.4:
+  + Fix build with GCC 6.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 13 11:49:58 UTC 2016 - tyang@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Mon Mar 21 15:04:54 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.8.3:
+  + Fix handling of files in Recent or in the Trash.
+  + Fix help messages in some locales.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 10:32:19 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.8.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 24 13:46:34 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Fix warnings when no mail client is installed.
+  + Remove support for ancient evolution versions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 26 10:33:18 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 20 16:22:41 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Remove all plugins, we will only handle sending through e-mail
+    clients for the foreseeable future.
+- Drop and obsolete subpackages: plugin-evolution, plugin-pidgin,
+  plugin-upnp and devel.
+- Cleanup install section: remove all hacks there were: no longer
+  needed.
+- Add pkgconfig(gobject-introspection-1.0), pkgconfig(glib-2.0) and
+  pkgconfig(gio-2.0) BuildRequires: verified dependencies.
+- Remove fdupes, pkgconfig(dbus-glib-1),
+  pkgconfig(gtk+-3.0), pkgconfig(gupnp-1.0),
+  pkgconfig(libebook-1.2) and pkgconfig(libnautilus-extension)
+  BuildRequires: no longer needed.
+- Drop nautilus requires: not needed.
+
+-------------------------------------------------------------------
+Wed Dec 19 09:59:20 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Drop leftover libedataserverui dependency.
+- Drop pkgconfig(libedataserverui-3.0) BuildRequires: no longer
+  needed.
+
+-------------------------------------------------------------------
+Tue Sep 25 09:51:23 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 18 13:03:20 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + Adapt to Evolution-Data-Server API changes.
+
+-------------------------------------------------------------------
+Mon May 14 11:48:11 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.0.3:
+  + Fix mailer command generation
+  + Treat icedove as a variant of Thunderbird
+  + Plenty of evolution-data-server related bug fixes
+
+-------------------------------------------------------------------
+Wed Mar 21 17:12:20 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.0.2:
+  + Update for ancient API change.
+  + Fix getting default mailer for GNOME 3.0.
+  + Port to newest e-d-s using GSettings.
+  + Add --xid command-line option.
+  + Documentation fixes.
+  + Updated translations.
+- Add pkgconfig(libedataserverui-3.0) BuildRequires: new upstream
+  dependency.
+
+-------------------------------------------------------------------
+Mon Sep 26 10:37:06 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.0.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 26 07:57:16 CEST 2011 - vuntz@opensuse.org
+
+- Remove explicit Requires for glib2-devel and gtk2-devel in devel
+  subpackage: they will automatically be added the pkgconfig() way.
+- Remove evolution-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Apr  8 13:48:38 UTC 2011 - aj@opensuse.org
+
+- Change lang package Requires to Recommends since it is not
+  mandatory at runtime.
+
+-------------------------------------------------------------------
+Tue Apr  5 08:34:20 UTC 2011 - fcrozat@novell.com
+
+- Do not remove libnstbluetooth at build time: it is no longer
+  generated.
+
+-------------------------------------------------------------------
+Mon Apr  4 16:50:50 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Fix schema path
+  + Updated translations.
+- Changes from version 2.90.0:
+  + Port to GTK+ 3.x and GSettings
+  + Remove Bluetooth plugin, now in gnome-bluetooth itself
+  + Remove Empathy plugin, now in empathy itself
+  + Fix handling of shadowed mounts in the removable drives plugin
+  + Never unload plugins, to avoid crashes
+  + Fix mailto: command for Thunderbird
+  + Make the last select medium's widget grab focus on startup
+- Switch BuildRequires to use pkgconfig() variant:
+  + Old ones: libgupnp-av-devel, nautilus-devel
+  + New ones: gupnp-1.0, libnautilus-extension
+- Add pkgconfig(gtk+-3.0) and pkgconfig(libebook-1.2)
+  BuildRequires.
+- Remove extensions shipped by gnome-bluetooth and nautilus
+- Define with_pidgin, to easily enable/disable pidgin support. If
+  enabled, use pkgconfig(dbus-glib-1) BuildRequires
+
+-------------------------------------------------------------------
+Tue Sep 28 19:06:10 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Remove obsolete call to gconftool-2 on installation
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 13 18:00:45 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.90:
+  + Show the contextual menu for non-local files
+  + Fix command-line help glitch
+
+-------------------------------------------------------------------
+Fri Aug 27 16:42:55 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.7:
+  + Remove never_unload struct member for plugins, they are never
+    unloaded now
+  + Fix a few memory leaks when sending files
+
+-------------------------------------------------------------------
+Fri Aug  6 11:17:08 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.6:
+  + Remove plugin to send files from Evolution,
+    it's now builtin to Evolution
+  + Remove Empathy plugin, now in Empathy
+  + Remove Bluetooth plugin, now in gnome-bluetooth
+  + Port to GSettings
+- Changes from version 2.28.5:
+  + Fix GSEAL compilation
+  + Make the last selected medium's widget grab focus
+  + Fix thunderbird's mailto command
+  + Fix crashers when unloading plugins
+  + Fix handling of shadowed mounts in the "Removable device"
+    section
+- Update packaging to handle GSettings schemas instead of gconf
+  schemas.
+
+-------------------------------------------------------------------
+Fri Jun  4 17:29:30 CEST 2010 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Fri May 14 18:50:28 CEST 2010 - vuntz@opensuse.org
+
+- Remove gnome-bluetooth-devel BuildRequires: it's not needed to
+  build the bluetooth plugin, and it was creating a build loop
+  between gnome-bluetooth and nautilus-sendto.
+- Explicitly list plugins that should be in the main package.
+
+-------------------------------------------------------------------
+Mon Mar 29 21:11:48 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.28.4:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 23 14:37:10 UTC 2010 - dimstar@opensuse.org
+
+- Remove en@shaw local on openSUSE <= 11.2.
+
+-------------------------------------------------------------------
+Mon Mar 15 22:21:21 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.28.3:
+  + Fix undefined references when linking plugins
+  + Fix possible crasher in Bluetooth plugin
+  + Respect the "gtk-button-images" setting
+  + Fix keyboard selection in mail plugin.
+
+-------------------------------------------------------------------
+Sun Dec  6 03:03:08 CET 2009 - vuntz@opensuse.org
+
+- The empathy plugin has been moved to empathy now, so:
+  + remove the empathy-devel BuildRequires
+  + remove the plugin-empathy subpackage
+- Add glib2-devel and gtk2-devel Requires to devel package.
+
+-------------------------------------------------------------------
+Tue Dec  1 13:58:53 CET 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.2:
+  + Fix build and distcheck problems
+- Changes from version 2.28.1:
+  + Add API documentation for out-of-tree plugins
+  + Remove need for the pidgin plugin, use the D-Bus pidgin API
+  + Add support for Anjal and Seamonkey mail clients
+  + Fix Balsa support
+  + Fix Thunderbird support for some cases
+  + Update man page
+  + Remove build requirement on gajim
+- Created a -devel package.
+
+-------------------------------------------------------------------
+Wed Sep 23 13:47:58 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Fix command-line for Claws and Sylpheed
+  ! Fix icons for the nautilus-burn plugin
+  ! Fix Thunderbird's command-line arguments
+  ! Update UPNP plugin for gupnp 0.13
+
+-------------------------------------------------------------------
+Thu Sep  3 09:18:08 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.1.7:
+  + Port to newer Empathy API
+  + Enable nautilus-burn plugin by default
+- Split the upnp plugin in a plugin-upnp package, for people who
+  might want to have minimal dependencies.
+
+-------------------------------------------------------------------
+Thu Jul 30 18:50:04 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 1.1.6:
+  + Bug fixes:
+    - Fix problems with long plugin descriptions
+    - Add "claws" as a Sylpheed variant
+    - Update for new Empathy file transfer API
+    - Only display users that can receive files in the
+      Empathy plugin
+  + Other changes:
+    - Port to GtkBuilder
+    - Disable evolution plugin for newer versions of Evolution
+- Drop nautilus-sendto-evolution.patch and remove gnome-common
+  BuildRequires, which was added for the patch.
+- Add libgupnp-av-devel BuildRequires to activate the upnp plugin.
+
+-------------------------------------------------------------------
+Mon May 18 04:25:59 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.1.5:
+  + Fix the plugins not getting translated properly
+  + Remove mention of "Evolution" in the mail plugin
+- Add nautilus-sendto-evolution.patch to remove the evolution
+  plugin, which isn't needed with evolution 2.27 (it will move to
+  evolution).
+- Add gnome-common BuildRequires and use gnome-autogen.sh because
+  of this patch.
+
+-------------------------------------------------------------------
+Thu Apr 30 11:55:33 CEST 2009 - vuntz@novell.com
+
+- Do not explicitly package the gconf schemas: it's already
+  packaged via the file list created with the gconf macros.
+
+-------------------------------------------------------------------
+Tue Apr 21 18:28:21 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.1.4.1:
+  + Fix infinite loop in the Pidgin plugin
+
+-------------------------------------------------------------------
+Sun Apr 19 19:29:36 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.1.4:
+  + Fix crash in the Pidgin plugin when the file system is full
+  + Pidgin plugin cleanups
+  + Remove Gaim plugin
+
+-------------------------------------------------------------------
+Wed Apr  8 20:35:05 CEST 2009 - vuntz@novell.com
+
+- Split a few plugins into their own packages to fix dependency
+  issues: plugin-empathy, plugin-evolution, plugin-pidgin.
+  Fix bnc#487059.
+
+-------------------------------------------------------------------
+Sat Apr  4 14:51:40 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.1.3:
+  + Use new EmpathyContactSelector and update for latest Empathy
+- Drop nautilus-sendto-abuild-error.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Mar 21 23:14:16 CET 2009 - mboman@suse.de
+
+- Build against gnome-bluetooth-devel instead of libgnomebt-devel
+
+-------------------------------------------------------------------
+Fri Feb 27 23:38:39 CET 2009 - mboman@suse.de
+
+- Update to version 1.1.2:
+  + New features:
+    * Add an evolution plugin to allow sending arbitrary
+      attachments through nautilus-sendto
+    * Add a "Removable devices" plugin
+    * Enable the "burn" plugin by default
+  + Bug fixes:
+    * Remove the separate mailer plugins, and use the default
+      GNOME mailer instead
+    * Fix no plugins being able to send files (oops)
+    * Be more lax when checking whether a device supports ObexFTP,
+      also check for the File Transfer profile, and update the
+      profiles if a supported on doesn't appear
+    * Make it possible for plugins to support sending directories
+    * Support the "Pecan" Pidgin MSN plugin
+    * Fix a few memory leaks
+- Remove AutoReqProv since it's default
+- Don't use autoreconf -f -i
+- Replace evolution-data-server-devel with evolution-devel, needed
+  for evo plugin
+- Remove BuildRequires gnome-common
+
+-------------------------------------------------------------------
+Wed Feb 11 22:55:39 CET 2009 - vuntz@novell.com
+
+- Remove non-upstream translations: they'll get out-of-date.
+
+-------------------------------------------------------------------
+Sun Feb 08 15:25:27 EST 2009 - mboman@suse.de
+
+- Add nautilus-sendto-abuild-error.patch to make it build with
+  latest empathy
+
+-------------------------------------------------------------------
+Mon Jan 12 15:25:27 EST 2009 - mauro@suse.de 
+
+- Translations update. 
+
+-------------------------------------------------------------------
+Sun Jan 11 08:34:42 EST 2009 - mboman@suse.de
+
+- Update to version 1.1.1:
+  + Add plugin to allow sending files to UPNP Media Servers
+  + Add plugin to allow sending files through Empathy
+  + Add plugin to send files to be burnt through nautilus-cd-burner
+  + Allow sending remote files when GVFS FUSE is available
+  + Stop (null) showing up in the contact entry (Evolution)
+  + Try to avoid the wrong contact being selected when using
+    Enter to validate the selection (Evolution)
+  + Use "Alias" instead of "Name" so Bluetooth addresses only
+    show up when the Name isn't available (Bluetooth)
+  + Show an icon for Bluetooth devices (Bluetooth)
+  + Remember last used Bluetooth device (Bluetooth)
+  + Sort the contacts alphabetically (Pidgin)
+- Remove nautilus-sendto-default-backends.patch. Code changed
+- Remove nautilus-sendto-invalid-arguments.patch. Not needed with new bluez
+
+-------------------------------------------------------------------
+Sat Dec  6 09:44:12 CET 2008 - mauro@suse.de
+
+- Translation update. 
+
+-------------------------------------------------------------------
+Fri Oct  3 10:43:19 WST 2008 - mboman@suse.de
+
+- Update to version 1.1.0:
+  + Port to Bluetooth plugin to BlueZ 4.x API
+
+-------------------------------------------------------------------
+Sun Aug 31 19:18:40 CEST 2008 - mboman@novell.com
+
+- Updated to version 1.0.1:
+  + Fix e-mail selection in the Evolution plugin when a
+    single contact has multiple addresses
+  + Fix sending from nautilus when the path contains an
+    ampersand
+  + Fix sending e-mails using evolution after having auto-
+    completed the user address
+  + Get buddy list changes instantly in the Pidgin plugin
+  + Force loading the Pidgin plugin on startup
+  + Fix the mnemonic for "Send to" not working
+  + Make it impossible to send files packed in an archive
+    if the archive has no names
+  + Fix "Send to..." label
+  + Nicer icons all around
+  + Fix sending e-mails with Evolution when entering
+    "Surname, Name <address>" manually
+  + Enable the Thunderbird plugin by default, and
+    fix sending attachments
+  + Translation updates
++ Removed nautilus-sendto-uppdercase.patch. Fixed upstream
++ Removed nautilus-sendto-cs.patch. Translations changed upstream.
++ Remove thunderbird specifics from nautilus-sendto-default-backends.patch
+  since it figures it out automatically now.
+
+-------------------------------------------------------------------
+Tue May 27 19:18:40 CEST 2008 - rodrigo@suse.de
+
+- Added nautilus-sendto-invalid-arguments.patch to fix wrong
+  arguments being passed to bluetooth-send (bnc#391820) 
+
+-------------------------------------------------------------------
+Mon Apr 21 23:51:43 CEST 2008 - sreeves@suse.de
+
+- Rebase nautilus-sendto-icon.patch
+    Add nautilus-sendto-uppdercase.patch to fix BGO #529281
+    Remove rest of nautilus-sendto-icon.patch as already upstream.
+
+-------------------------------------------------------------------
+Wed Feb 20 17:28:24 CET 2008 - maw@suse.de
+
+- Update to version 0.13.2:
+  + Fix a crasher when launching bluetooth-sendto
+  + Add a nice icon to the UI.
+
+-------------------------------------------------------------------
+Fri Feb  1 20:03:51 CET 2008 - jpr@suse.de
+
+- Update to 0.13.1
+        * Remove unused gnome-vfs includes, fixes build with newer 
+          nautilus
+        * Fix a crash in the main code when the status label was 
+	  being cleared
+        * Fix loading the Pidgin plugin
+        * Show ICQ/AIM and Bonjour buddies in the Pidgin plugin
+        * Fix conflicting mnemonics in the main UI
+        * Fix installation with the new gio-based Nautilus
+        * Pass the full name of the contact to Evolution when it's
+	  available
+        * Allow running nautilus-sendto uninstalled
+        * Fix a crash in the Thunderbird plugin when 
+	  gtk_entry_get_text returns NULL
+        * Fix application name in the man page
+        * Fix possible crashes when no Bluetooth adapters are 
+	  available
+        * Fix GAIM/Pidgin not starting up when the home directory 
+	  is read-only
+        * Some UI love to bring it closer to the HIG
+        * Add Pidgin/libpurple support
+        * Fix a typo that might make DiscoverDevices not work
+	  (Bluetooth)
+        * Don't resolve Bluetooth device names, DiscoverDevices
+	  already does that for us
+- Remove nautilus-sendto-0.10-pidgin.patch, pidgin support is 
+  upstream  
+- Remove nautilus-sendto-0.10-wrong-error.patch, this is upstream
+- Rename nautilus-sendto-0.7-thunderbird.patch to
+  nautilus-sendto-default-backends.patch as balsa is enabled now too
+
+-------------------------------------------------------------------
+Thu Oct 25 16:53:35 CEST 2007 - jpr@suse.de
+
+- Use libgnomebt-devel instead of gnome-bluetooth-devel
+
+-------------------------------------------------------------------
+Mon Sep 10 12:32:48 CEST 2007 - sbrabec@suse.cz
+
+- Use theme icon "document-send" (GNOME#321179#c18).
+
+-------------------------------------------------------------------
+Fri Aug 10 15:19:01 CEST 2007 - coolo@suse.de
+
+- put Version before the use of %version
+
+-------------------------------------------------------------------
+Tue Aug  7 23:44:25 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Tue Jun 12 01:28:20 CEST 2007 - ro@suse.de
+
+- update to 0.10
+  * Fix compilation of the gajim and thunderbird plugins
+  * Fix loading the nautilus extension
+- update to 0.9
+  * Search the Sylpheed-claws binary harder
+  * Use D-Bus and bluez-utils for the bluetooth plugin,
+    remove compile-time dependency on gnome-bluetooth
+  * Show an error when no plugins can be found on startup
+  * Cleanup run-time dependencies
+- update to 0.8
+  * Fix build error in gaim2
+  * Solved evolution Bug #348941 Evolution Autocompletion not offered
+    for all Address Books. Thanks Øystein Gisnås, Karsten Bräckelmann
+  * Added man page
+  * Nautilus-sendto remember the last selected medium used to send
+    files . Thanks Colin Leroy and Bastien Nocera
+  * Some bug fixes more.
+- addded fc patchkit (including pidgin patch)
+
+-------------------------------------------------------------------
+Mon Dec 18 18:32:45 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Sat Oct 14 18:31:12 CEST 2006 - danw@suse.de
+
+- Remove dead patches
+
+-------------------------------------------------------------------
+Tue Sep 26 18:36:09 CEST 2006 - jhargadon@suse.de
+
+- update to version 0.7
+- Added support for gajim
+- Added support for sylpheed-claws
+- Added initial support for thunderbird. Thunderbird don't support
+  attachment by command line atm. 
+- Added initial support for Balsa. Balsa don't support attachment
+  by command line atm.
+- Many bugfixes
+- Now nautilus sendto compile evolution plugin if evolution is
+  available
+- Force the dependencies to gnome2.13-14
+- Many translations
+
+-------------------------------------------------------------------
+Wed Apr 12 17:21:07 CEST 2006 - sbrabec@suse.cz
+
+- Simplified BuildRequires.
+- Applied patches from GNOME Bugzilla (no plugin crash, no family
+  name crash, plugin init fail crash - #165527).
+- Removed obsolete .la files and scriptlets.
+- Improved directory ownership.
+
+-------------------------------------------------------------------
+Thu Feb  2 16:18:10 CET 2006 - sbrabec@suse.cz
+
+- Fixed conflict in Swedish translation.
+
+-------------------------------------------------------------------
+Wed Feb  1 14:29:05 CET 2006 - sbrabec@suse.cz
+
+- Fixed po files to follow string change.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:34 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec  9 20:50:16 CET 2005 - jpr@suse.de
+
+- Fix build for libbtcl api change
+
+-------------------------------------------------------------------
+Thu Nov 10 18:04:11 CET 2005 - sbrabec@suse.cz
+
+- Build with gnome-bluetooth support.
+
+-------------------------------------------------------------------
+Wed Aug  3 08:49:18 CEST 2005 - gekker@suse.de
+
+- Update to version 0.4
+- Remove upstreamed patch 
+
+-------------------------------------------------------------------
+Mon Aug  1 14:35:07 CEST 2005 - ro@suse.de
+
+- added gaim-devel to nfb 
+
+-------------------------------------------------------------------
+Wed May 18 15:02:21 CEST 2005 - sbrabec@suse.cz
+
+- Added icon (#60055).
+
+-------------------------------------------------------------------
+Sat Jan 29 19:44:51 CET 2005 - meissner@suse.de
+
+- RPM_OPT_FLAGS2 -> RPM_OPT_FLAGS -fno-strict-aliasing.
+
+-------------------------------------------------------------------
+Wed Jan 26 00:07:00 CET 2005 - gekker@suse.de
+
+- Initial package submission 
+

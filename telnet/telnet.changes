@@ -1,0 +1,221 @@
+-------------------------------------------------------------------
+Fri Jul 26 10:54:10 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Tue May 29 14:04:29 UTC 2018 - kstreitova@suse.com
+
+- add telnet.target that incorporates telnet.socket and
+  telnet@.service. Adjust systemd service_* macros parameters and
+  use this target instead of telnet@.service for stop/restart cases
+  where telnet@.service cannot be used but telnet.target can
+  [bsc#1093174]
+
+-------------------------------------------------------------------
+Fri Jun 16 11:05:56 UTC 2017 - aliouliaki@suse.com
+
+- Removed xinetd service
+- Added telnet@.service and telnet.socket
+- Cleanup of telnet.spec 
+
+-------------------------------------------------------------------
+Thu Feb  2 15:12:48 UTC 2017 - dimstar@opensuse.org
+
+- Switch to ncurses6: use ncurses6-config to find the correct
+  CFLAGS and libraries.
+
+-------------------------------------------------------------------
+Wed Oct 15 12:25:31 UTC 2014 - kstreitova@suse.com
+
+- added telnet-bsd-1.2-fix-infinite-loop.patch that fixes the
+  generating an infinite loop (bnc#898481)
+
+-------------------------------------------------------------------
+Mon Oct  6 09:06:29 UTC 2014 - kstreitova@suse.com
+
+- url was repaired 
+
+-------------------------------------------------------------------
+Fri Oct  3 18:26:38 UTC 2014 - kstreitova@suse.com
+
+- spec-cleaner used for cleaning the specfile up
+- "export NO_BRP_STRIP_DEBUG=true" removed from specfile
+
+-------------------------------------------------------------------
+Fri Apr  5 10:33:01 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Mon Jan  2 23:44:46 UTC 2012 - andreas.stieger@gmx.de
+
+- removed telnet-bsd-1.2-tinfo.patch
+  Replacing -lncurses with -ltinfo doesn't seem to be required and
+  it actually breaks builds
+- refresh telnet-bsd-1.2-suppress_hostname.patch
+- remove makros from patch names
+- use makros for configure, make and make install 
+
+-------------------------------------------------------------------
+Thu Nov 24 11:06:45 UTC 2011 - vcizek@suse.com
+
+- added -ltinfo instead of -lncurses
+
+-------------------------------------------------------------------
+Thu Jun 30 09:29:53 UTC 2011 - vcizek@novell.com
+
+- exit cleanly, when hostalias cannot be resolved (bnc#700229) 
+- made manpage more clear about the -b option
+
+-------------------------------------------------------------------
+Wed Sep 30 13:29:18 UTC 2009 - crrodriguez@opensuse.org
+
+- telnet-server does require xinetd 
+
+-------------------------------------------------------------------
+Fri May 22 14:18:35 CEST 2009 - crrodriguez@suse.de
+
+- do not use gethostbyname(3) but getaddrinfo(3) patch by Ulrich Drepper. 
+
+-------------------------------------------------------------------
+Sat Aug 30 20:13:23 CEST 2008 - cthiel@suse.de
+
+- fix build with latests ncurses
+
+-------------------------------------------------------------------
+Wed Apr  9 12:02:40 CEST 2008 - jsrain@suse.cz
+
+- fixed description for ports information for SuSEfirewall
+  (bnc #373969)
+
+-------------------------------------------------------------------
+Mon Jan  7 11:33:21 CET 2008 - mskibbe@suse.de
+
+- Bug 351197 - several packages use wrong dir for SuSEfirewall2
+  services files
+
+-------------------------------------------------------------------
+Thu Mar 29 13:22:24 CEST 2007 - dmueller@suse.de
+
+- add ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Fri Mar  2 13:22:34 CET 2007 - mskibbe@suse.de
+
+- telnet-server : Support for FATE #300687: Ports for SuSEfirewall
+  added via packages (#250570)
+
+-------------------------------------------------------------------
+Mon Dec  4 10:09:24 CET 2006 - mskibbe@suse.de
+
+- fix Bug #224847(telnet man page does not mention DEFAULT for
+  .telnetrc)
+
+-------------------------------------------------------------------
+Fri May 19 13:55:02 CEST 2006 - kssingvo@suse.de
+
+- added option -H to suppress hostname (bugzilla#175376)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:03 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jun 16 10:14:20 CEST 2005 - mmj@suse.de
+
+- Compile with -fpie, link with -pie
+
+-------------------------------------------------------------------
+Thu Jun  2 10:24:48 CEST 2005 - kukuk@suse.de
+
+- Update to version 1.2 (-fpie/-pie support, latest security fixes)
+
+-------------------------------------------------------------------
+Tue Apr  5 08:12:10 CEST 2005 - mmj@suse.de
+
+- execl(..., 0) -> execl(..., NULL)
+
+-------------------------------------------------------------------
+Fri Jun 11 17:17:41 CEST 2004 - mmj@suse.de
+
+- Apply patch to avoid deadlock [#41864]
+
+-------------------------------------------------------------------
+Wed Feb 25 15:56:05 CET 2004 - schwab@suse.de
+
+- Make sure _POSIX_VDISABLE is properly defined.
+
+-------------------------------------------------------------------
+Sat Feb 14 15:00:48 CET 2004 - kukuk@suse.de
+
+- Update to telnet-bsd 1.1:
+  - Fix -L option
+  - Fix missing prototypes
+  - Merge all patches
+
+-------------------------------------------------------------------
+Thu Oct 16 11:52:26 CEST 2003 - mmj@suse.de
+
+- Don't build as root
+
+-------------------------------------------------------------------
+Tue May 13 10:32:01 CEST 2003 - mmj@suse.de
+
+- Use %defattr
+
+-------------------------------------------------------------------
+Fri Mar  7 15:46:35 CET 2003 - ro@suse.de
+
+- remove empty server_args line in xinetd config file 
+
+-------------------------------------------------------------------
+Fri Jan 24 12:16:51 CET 2003 - mmj@suse.de
+
+- Dont use permission 755 for the xinetd file
+
+-------------------------------------------------------------------
+Fri Jan 24 11:41:26 CET 2003 - mmj@suse.de
+
+- Add xinetd configuration file
+
+-------------------------------------------------------------------
+Wed Dec  4 15:56:17 CET 2002 - mmj@suse.de
+
+- Fix one version of strcpy, gotten from the OpenBSD tree
+
+-------------------------------------------------------------------
+Wed Feb 13 16:58:55 MET 2002 - mmj@suse.de
+
+- Increased the temporary buffer size in telnet to fix problem
+  with long hostnames when telnetting to a Solaris box.
+
+-------------------------------------------------------------------
+Tue Aug 14 13:54:53 CEST 2001 - kukuk@suse.de
+
+- Add more fixes for possible security problems
+
+-------------------------------------------------------------------
+Fri Jul 27 11:09:03 CEST 2001 - kukuk@suse.de
+
+- Add fix for possible problems with buffer overruns
+
+-------------------------------------------------------------------
+Mon Apr  2 09:48:04 CEST 2001 - kukuk@suse.de
+
+- Add Obsolete for nkitserv
+
+-------------------------------------------------------------------
+Thu Mar 22 18:51:02 CET 2001 - ro@suse.de
+
+- added split-aliases as provides
+
+-------------------------------------------------------------------
+Tue Mar 13 16:29:27 CET 2001 - kukuk@suse.de
+
+- Initial package, split from nkitb
+

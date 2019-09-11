@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Tue Aug 14 07:35:56 UTC 2018 - edigiacinto@suse.com
+
+- Add prctl syscall codes for ppc64le and aarch64 
+- Full test suite now runs only on travis 
+
+-------------------------------------------------------------------
+Tue Aug  7 13:35:15 UTC 2018 - edigiacinto@suse.com
+
+- Disable experimental shared tests by default
+
+-------------------------------------------------------------------
+Tue Aug  7 12:50:09 UTC 2018 - edigiacinto@suse.com
+
+- Add Experimental Mojo::IOLoop::ReadWriteProcess::Shared::* for IPC (Lock, Memory, Sempahores) 
+- Add possibility to turn off channels only 
+- Fix incorrect handling of return in case internal_pipes is disabled 
+- Provide alternative exit status computation for exotic arches/setup 
+
+-------------------------------------------------------------------
+Tue Mar 27 08:34:15 UTC 2018 - edigiacinto@suse.com
+
+- updated to 0.20
+ 
+  0.20 2018-03-26T13:32:58Z
+
+   - Add preliminar CGroup support
+   - Add also interface to unshare() syscall
+   - Add mocked test, still needs to be documented in POD  
+
+-------------------------------------------------------------------
+Mon Feb 26 09:20:31 UTC 2018 - edigiacinto@suse.com
+
+- updated to 0.19
+
+  0.19 2018-02-22T13:41:50Z
+ 
+     - Minor bugfixes to Session
+     - Make session constructor fixed
+ 
+  0.18 2018-02-21T12:01:07Z
+ 
+     - Guard stop() from possible race conditions
+     - Fix typo in Session, it caused orphan processes to not be resolved correctly
+ 
+  0.17 2018-02-20T14:01:59Z
+ 
+     - Fix minor issue in tests, stabilize serialize test and events
+     - Reset session and subreaper bit on forked child process
+  
+-------------------------------------------------------------------
+Mon Feb 19 13:54:50 UTC 2018 - edigiacinto@suse.com
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-Mojo-IOLoop-ReadWriteProcess/Changes
+
+  0.16 2018-02-19T13:32:54Z
+
+     - Fix minor issue in event test that made them unstable
+
+  0.15 2018-02-19T10:13:22Z
+
+     - Fix skipping subreaper tests on unsupported platforms
+     - Reset session before invoking child callback
+
+  0.14 2018-02-18T21:08:17Z
+
+     - Fix race condition in Mojo::IOLoop::ReadWriteProcess::Queue
+
+  0.13 2018-02-17T19:34:51Z
+     - Move subreaper and subprocess logics to Mojo::IOLoop::ReadWriteProcess::Session
+     - Use Mojo::IOLoop::ReadWriteProcess::Session as global collector handler
+
+  0.12 2018-02-16T12:53:26Z
+
+     - Enhance tests
+     - Add experimental subreaper and subprocess support
+
+-------------------------------------------------------------------
+Mon Feb 12 10:28:46 UTC 2018 - coolo@suse.com
+
+- updated to 0.11
+   see /usr/share/doc/packages/perl-Mojo-IOLoop-ReadWriteProcess/Changes
+
+  0.11 2018-02-12T09:32:05Z
+  
+      - update cpanfile requirements (requires Module::Build now)
+      - update POD
+
+-------------------------------------------------------------------
+Mon Feb 12 07:56:52 UTC 2018 - coolo@suse.com
+
+- initial package 0.10
+ * created by cpanspec 1.78.08

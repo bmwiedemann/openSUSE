@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Fri Feb  6 13:13:01 UTC 2015 - coolo@suse.com
+
+- updated to 0.11
+  - drop the dep on List::MoreUtils (haarg, #8)
+
+-------------------------------------------------------------------
+Sun Feb  9 13:33:36 UTC 2014 - coolo@suse.com
+
+- updated to 0.10
+   - we need Module::Runtime 0.009 for module_notional_filename (nnutter, #6)
+
+-------------------------------------------------------------------
+Wed Jul 24 07:28:05 UTC 2013 - coolo@suse.com
+
+- updated to 0.09
+  - support Perl 5.6.x (Toby Inkster)
+
+-------------------------------------------------------------------
+Tue Jul 16 12:10:57 UTC 2013 - coolo@suse.com
+
+- updated to 0.08
+   - remove Test::Warnings dep                                                                                                                                                                                                           
+   - instead of silently ignoring conflicts that do not compile, issue a                                                                                                                                                                 
+     conflict warning. (RT#75486, Karen Etheridge)                                                                                                                                                                                       
+   - make the runtime conflict warnings optional, since i'm not sure how                                                                                                                                                                 
+     stable of an idea this really is                                                                                                                                                                                                    
+   - use Exporter instead of Sub::Exporter                                                                                                                                                                                               
+   - require 5.8.1, clean up a few things and add a few more tests                                                                                                                                                                       
+   - fix an issue with certain other perls                                                                                                                                                                                               
+   - add runtime conflict warnings   
+
+-------------------------------------------------------------------
+Thu Mar 21 15:10:07 UTC 2013 - lars@linux-schulserver.de
+
+- remove perl-Dist-CheckConflicts-old_Test-More.patch - handle the 
+  problem with old distributions in %%prep now
+
+-------------------------------------------------------------------
+Sat Jun  4 18:31:39 UTC 2011 - lars@linux-schulserver.de
+
+- fix build on distributions with old Test::More module
+  ( perl-Dist-CheckConflicts-old_Test-More.patch )
+
+-------------------------------------------------------------------
+Fri Apr 22 15:19:37 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.02
+    * created by cpanspec 1.78.04
+

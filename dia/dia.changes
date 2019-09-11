@@ -1,0 +1,789 @@
+-------------------------------------------------------------------
+Tue Mar 20 16:22:09 UTC 2018 - mimi.vx@gmail.com
+
+- spec-cleaned
+- drop support for python plugin - depends on obsolete python-gtk package
+- fix buildrequires
+- enable png support
+
+-------------------------------------------------------------------
+Tue Feb 21 10:57:57 UTC 2017 - badshah400@gmail.com
+
+- Avoid double inclusion of the contents of the directory
+  %{_docdir}/%{name}, by removing it from the file-list for
+  main package.
+
+-------------------------------------------------------------------
+Fri Feb 10 11:14:17 UTC 2017 - badshah400@gmail.com
+
+- Make sure to own %{_docdir}/%{name} and lower directories
+  individually by using %doc/%dir wherever appropriate.
+
+-------------------------------------------------------------------
+Fri Feb  3 13:51:06 UTC 2017 - badshah400@gmail.com
+
+- Fix building with rpm >= 4.13 by explicitly listing %{_docdir}
+  files installed by make. Package the non-C lang documentation
+  in the %{name}-lang package. The examples for all non-C locales
+  are simply symlinks to the C locale example, so these need to
+  be installed as part of the main package itself.
+- Move man for fr locale into lang package (instead of main
+  package).
+
+-------------------------------------------------------------------
+Sat Jan 21 01:14:12 UTC 2017 - zaitor@opensuse.org
+
+- Drop scrollkeeper BuildRequires: No longer needed.
+- Stop packaging INSTALL in docs.
+
+-------------------------------------------------------------------
+Tue May 19 00:52:07 UTC 2015 - mgorse@suse.com
+
+- Build docs in the right place: pass --docdir=%{_docdir}/%{name}
+  to configure (boo#931168).
+
+-------------------------------------------------------------------
+Thu Apr  9 11:36:48 UTC 2015 - dimstar@opensuse.org
+
+- Add dia-intltool-0.51.patch: Fix installation of translations
+  using intltool 0.51.
+
+-------------------------------------------------------------------
+Sun Oct 19 10:44:44 UTC 2014 - dimstar@opensuse.org
+
+- Add dia.appdata.xml: allow DIA to show up as an application in
+  gnome-software (installation will abort when upstream ships the
+  file).
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Sep 17 23:44:48 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.97.3:
+  + Fix double free with some SVG rendering (regression from Dia
+    0.97.2).
+  + Fixes to cope better with updated versions of Dia's
+    dependencies:
+    - don't crash at start-up with ABI breaking GLib 2-36.
+    - don't assert in cairo 1.12 with invalid arc parameters.
+    - avoid kerning problems (character overlap) for all Pango
+      versions.
+    - fix image files to be loadable by libpng16.
+  + Backport fixes for some seldom crashes and other annoyances.
+  + Updated translations.
+- Drop upstream fixed patches:
+  + dia-glib-2.31.patch.
+  + dia-glib-2.35.patch.
+  + dia-swig-2x.patch.
+  + dia-use-recommended-freetype-include.patch.
+
+-------------------------------------------------------------------
+Wed Feb 26 21:43:05 UTC 2014 - mgorse@suse.com
+
+- Remove libgnomeui support. Libgnomeui is deprecated, and session
+  management does not appear to be working well anyhow with GNOME 3.
+- Remove help files from GNOME directories
+- Add dia-enable-html-doc.patch -- always build html docs, as they
+  are needed for online help. Ie, don't require --with-hardbooks.
+
+-------------------------------------------------------------------
+Sat Dec 14 18:25:30 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added dia-use-recommended-freetype-include.patch: Freetype
+  upstream recommends using their macros together with ft2build
+  include. Positive sideeffect is that this patch makes it build
+  with both freetype2 2.5.1, and older versions (bgo#720573).
+
+-------------------------------------------------------------------
+Sat Aug 24 19:20:09 UTC 2013 - dimstar@opensuse.org
+
+- Add dia-glib-2.35.patch: GLib drop support for adding interfaces
+  after class_init.
+
+-------------------------------------------------------------------
+Sat Jan 19 17:19:48 UTC 2013 - dimstar@opensuse.org
+
+- Only run fdupes on %{_datadir} (where the duplicates are) and
+  make hardlinks.
+
+-------------------------------------------------------------------
+Tue Sep 25 17:35:23 CEST 2012 - sbrabec@suse.cz
+
+- Add dia-libemf-64bit.patch: Fix 64-bit build with libEMF, which
+  is now available on all platforms (bgo#675495).
+
+-------------------------------------------------------------------
+Wed Aug 15 09:38:09 UTC 2012 - dimstar@opensuse.org
+
+- No longer move sr@Latn to sr@latin.
+
+-------------------------------------------------------------------
+Wed Jan  4 09:47:29 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.97.2:
+  + More colors for SADT.
+  + Various bug fixes, including:
+    - crashes
+    - fixes to SVG, PNG and Xfig exports
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Drop dia-python-acinclude.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Dec  1 21:09:34 UTC 2011 - dimstar@opensuse.org
+
+- Add dia-glib-2.31.patch: Fix build with glib 2.31.
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:54 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Thu May 26 09:06:36 UTC 2011 - idonmez@novell.com
+
+- Add dia-swig-2x.patch: fix compilation with swig 2.x
+
+-------------------------------------------------------------------
+Sat Feb 12 17:10:52 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Sun Jan 24 21:02:39 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.97.1:
+  + The full list of fixed bugs can be browsed at:
+    http://bugzilla.gnome.org/buglist.cgi?product=dia&target_milestone=0.97.1
+  + Cannot open or save files or paths with localized characters
+  + CVE-2008-5984: Untrusted search path vulnerability in the
+    Python plugin
+  + Broken documentation XML file
+  + Consumes more and more memory over time
+  + Tools short cuts (e.g. F2, M) don't work after exiting text
+    edit mode by pressing Esc
+  + Use xdg-open instead of gnome-open
+  + Use diagtkrc from the config dir instead of current dir
+  + Fix build warnings
+  + Building of cairo plug-in fails with DEBUG_CAIRO defined in
+    diacairo.h
+  + Cairo PNG export doesn't paint the background correctly
+  + Wrongly translated string exit dialog
+  + Selection Inverse, Remove, Union... (all broken)
+  + Integrated UI Crash - with zero zoom
+  + Crash with help menu entries
+  + Shape export crashes with missing symbol
+    gtk_signal_disconnect_by_data
+  + Crash upon canseling(closing) object editing
+  + Parenting information not exposed to the python API
+  + Crash when closing database table object after adding an
+    attribute (win32)
+  + Dia entering an endless loop with cairo print/display
+    rendering/png export
+  + Export and Printing shows none-existing lines
+  + Make libemf support properly optional
+  + Bashisms in configure
+  + SVG color codes are incorrect
+  + Call to text_set_cursor will cause Segmentation Fault
+  + Memory leak
+  + Shape export icon creation fails without libart renderer
+  + '&' character disappears during SVG and Dia Shape export
+  + Exporting a document to png without --size crashes dia
+  + Outline blanking issue with e.g. Hash symbol
+  + Updated translations.
+- Drop dia-xdg-open.patch: fixed upstream.
+- Drop dia-diagtkrc.patch: fixed upstream.
+- Drop dia-build-errors.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon May 25 02:18:10 CEST 2009 - vuntz@novell.com
+
+- Keep samples subdirectory for the documentation.
+
+-------------------------------------------------------------------
+Wed May  6 00:42:20 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.97:
+  + Many build fixes.
+  + Updated translations.
+  + Improved rendering with cairo (PS, PDF, SVG, PNG, EMF) and also
+    default print through Gtk+/cairo support.
+  + Simple Find & Replace for diagram objects names
+  + Dedicated text editing mode finally allows to use 'Del' while
+    editing text and/or for whole object removal
+  + Custom lines plug-in
+  + Shapes can now have sub-shapes that can be scaled or not when
+    the main shape is scaled.  Also, it is now possible to specify
+    that shapes are created with their stated sizes.
+  + Much decreased start-up time and memory usage by delay loading
+    custom shapes.
+  + Rotated text by "Standard - Outline" object (based on cairo)
+  + Overhaul of the DXF plug-in (import and export)
+  + With the help of libEMF dia now can write EMF on Linux(x86),
+    too.
+  + New database table relation shapes
+  + A huge step forward regarding properties of grouped objects
+    bgo#60331
+  + Antialiased rendering done with cairo if the plug-in is loaded
+  + Improvements on arrow bounding box calculations
+  + The "UML - Class" dialog fits again 800x600 screen again
+  + There is an optional 'integrated' UI for people otherwise
+    loosing their toolbox ;)
+  + Experimental stand-alone bindings with the help of SWIG/C++
+- Rename dia-0.92.2-callbrowser.patch to dia-xdg-open.patch, and
+  update the patch to use xdg-open.
+- Respin dia-0.92.2-no-strict-aliasing.patch.
+- Replace dia-create-user-files.patch with dia-diagtkrc.patch. This
+  last one is simpler and doesn't do things we don't want it to do.
+- Drop dia-group-props-size.patch: doesn't seem to be needed
+  anymore.
+- Drop dia-64bit-clean.patch: fixed upstream.
+- Drop dia-help.patch: the use of --enable-gnome is enough for
+  this.
+- Drop dia-0.96-pre3-docs.patch: fixed upstream.
+- Add dia-build-errors.patch to fix compilation warnings.
+- Remove unneeded BuildRequires: docbook-toys, libgnomeprint-devel
+- Add BuildRequires: libEMF-devel (only for ix86), swig.
+- Remove workaround for bnc#186174: I don't see how it could still
+  be needed.
+- Remove --with-gnomeprint from configure: this doesn't exist
+  anymore.
+- Pass --with-swig to configure.
+- Pass --disable-static to configure and remove .la files.
+- Do not add the GNOME category to the desktop file: it's already
+  there.
+- Add a workaround for bgo#581537: rename the en help to C.
+- Reorganize file list a bit.
+
+-------------------------------------------------------------------
+Fri May  1 03:26:28 CEST 2009 - vuntz@novell.com
+
+- Remove AutoReqProv: it's default now.
+- Remove checks for old versions of openSUSE.
+
+-------------------------------------------------------------------
+Fri Apr  3 11:38:44 CEST 2009 - vuntz@novell.com
+
+- Remove python-numeric Requires: there's no reference to it
+  anywhere in the code, so it wasn't needed.
+
+-------------------------------------------------------------------
+Fri Mar 27 23:41:28 CET 2009 - vuntz@novell.com
+
+- Add dia-remove-datetime.patch to be more build-compare friendly.
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Sat Jan 31 20:45:36 CET 2009 - vuntz@novell.com
+
+- Use sr@latin instead of sr@Latn.
+
+-------------------------------------------------------------------
+Thu Mar  6 19:00:53 CET 2008 - maw@suse.de
+
+- Fix the build when against newer versions of intltool.
+
+-------------------------------------------------------------------
+Fri Feb 29 16:05:16 CET 2008 - rodrigo@suse.de
+
+- Upstream, tag and rename (where appropriate) patches
+
+-------------------------------------------------------------------
+Wed Oct 31 16:30:00 MDT 2007 - btimothy@suse.de
+
+- Force xmldocs.make and doc/Makefile.am to use GNOME
+  configuration for help files (BNC #157798).
+- Fix en language help file XML parsing (BGO #404535).
+
+-------------------------------------------------------------------
+Thu Aug 16 22:42:30 CEST 2007 - jpr@suse.de
+
+- Update to 0.96.1
+  * Empty initial lines in shapes crashes Dia (BGO #421250).
+  * several Python fixes, including a Doxygen import filter.
+  * Text-line rendering in SVG export.
+  * Keyboard shortcuts for tools now use shift-alt.
+  * Improvement in autogaps for some objects.
+  * .desktop file now has current version.
+  * Change in zoom levels in menus.
+  * Check that windows are within bounds before opening.
+  * Various compilation-time improvements.
+  * UML class improvements on comment and wrapped underlined names.
+  * Text rendering is now based on the TextLine objects
+  * Visio VXD files can now be imported and exported
+  * Renderer API change:  Added function draw_text_line. 
+  * Object API change: can_parent replaced by flags field.
+  * Dia menus now based on GtkAction framework.
+  * A number of new keyboard shortcuts.
+  * Layer visibility is now undoable.
+  * New sheets for Business Process Modelling
+  * The initial diagram will now be filled with opened diagram if
+    unchanged, like Gnumeric.
+  * Pasted objects now no longer land on top of each other.
+  * Fix of bug BGO #339562 (page margins restriction), BGO #338336 
+    ("query" in umloperation_offsets), and BGO #334771 (ungroup 
+    crashes)
+- Improved SVG export (#283773)
+- Remove upstreamed patches
+-------------------------------------------------------------------
+Thu Aug  9 19:21:24 CEST 2007 - maw@suse.de
+
+- Fix the -lang subpackage.
+
+-------------------------------------------------------------------
+Tue Aug  7 20:38:01 CEST 2007 - mauro@suse.de
+
+- Split out a -lang subpackage
+
+-------------------------------------------------------------------
+Fri Jul 27 19:50:50 CEST 2007 - maw@suse.de
+
+- Add %fdupes stuff
+
+-------------------------------------------------------------------
+Mon Jan 22 15:38:58 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+- Enabled GNOME print support.
+
+-------------------------------------------------------------------
+Tue Nov 14 15:36:28 CET 2006 - sbrabec@suse.cz
+
+- Re-enabled use of gnome-patch-translation.
+
+-------------------------------------------------------------------
+Sun Nov 12 17:52:56 CET 2006 - stbinner@suse.de
+
+- don't duplicate GenericName content within Name in .desktop file
+
+-------------------------------------------------------------------
+Fri Nov  3 15:57:11 CET 2006 - sbrabec@suse.cz
+
+- Fixed python 2.5 related crash (#217495, backport Andreas Hanke).
+
+-------------------------------------------------------------------
+Fri Oct 13 04:21:24 CEST 2006 - danw@suse.de
+
+- Remove dead patches
+
+-------------------------------------------------------------------
+Sat Sep 30 12:47:40 CEST 2006 - aj@suse.de
+
+- Cleanup BuildRequires.
+- Build C++ with RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Fri Sep 29 00:37:39 CEST 2006 - jhargadon@suse.de
+
+- update to version 0.95
+- Update of Gane/Sarson sheets
+- Fix of configure check for xgettext
+- Fix of font placement in xfig import
+- Three security holes in the XFig importer fixed after review
+- Made children of objects not be magnetic to their parents.
+- new or improved plugins written in Python
+- many bug fixes 
+
+-------------------------------------------------------------------
+Wed Aug 16 11:59:26 CEST 2006 - cthiel@suse.de
+
+- buildrequire python-gtk-devel instead of python-gtk
+
+-------------------------------------------------------------------
+Fri Aug 11 21:01:22 CEST 2006 - cthiel@suse.de
+
+- remove dia-0.94-pygtk-hack.patch, since python-gtk has been fixed in the
+  meanwhile
+
+-------------------------------------------------------------------
+Sun Aug  6 14:28:05 CEST 2006 - cthiel@suse.de
+
+- fixed build by adding dia-0.94-pygtk-hack.patch to hack around an
+  unfavorable configure check
+
+-------------------------------------------------------------------
+Mon Jun 19 14:18:05 CEST 2006 - sbrabec@suse.cz
+
+- Worked around failing msgmerge (#186174).
+
+-------------------------------------------------------------------
+Tue May 23 18:15:45 CEST 2006 - sbrabec@suse.cz
+
+- Fixed more format string vulnerabilities (CVE-2006-2453,
+  #173867).
+
+-------------------------------------------------------------------
+Wed May 17 13:05:29 CEST 2006 - sbrabec@suse.cz
+
+- Fixed message format string vulnerability (CVE-2006-2480,
+  #173867).
+
+-------------------------------------------------------------------
+Thu Mar 30 17:26:12 CEST 2006 - sbrabec@suse.cz
+
+- Fixed XFig import buffer overflows (#162074).
+  http://mail.gnome.org/archives/dia-list/2006-March/msg00149.html
+
+-------------------------------------------------------------------
+Fri Feb 24 13:55:29 CET 2006 - sbrabec@suse.cz
+
+- Improved Categories.
+
+-------------------------------------------------------------------
+Wed Feb 15 09:05:41 CET 2006 - stbinner@suse.de
+
+- fix %suse_update_desktop and add .desktop file GenericName entry
+
+-------------------------------------------------------------------
+Wed Feb  1 17:19:38 CET 2006 - sbrabec@suse.cz
+
+- Use translation compendium gnome-patch-translation.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 11 14:02:57 CET 2006 - sbrabec@suse.cz
+
+- Removed libpixman from neededforbuild.
+
+-------------------------------------------------------------------
+Tue Dec 20 15:02:49 CET 2005 - ro@suse.de
+
+- add /opt/gnome/share/gnome/help/dia/C to filelist 
+
+-------------------------------------------------------------------
+Tue Oct  4 17:46:27 CEST 2005 - sbrabec@suse.cz
+
+- Fixed SVG import arbitary python code execution
+  (#120091, CAN-2005-2966).
+
+-------------------------------------------------------------------
+Thu Aug 18 01:25:44 CEST 2005 - sreeves@suse.de
+
+- Patch to fix bugzilla.novell.com defect#6341 - "popup of group
+  properties is too small"
+
+-------------------------------------------------------------------
+Fri Jun 10 18:20:48 CEST 2005 - sbrabec@suse.cz
+
+- Updated cairo patch from Hans Breuer.
+  http://bugzilla.gnome.org/show_bug.cgi?id=307144
+
+-------------------------------------------------------------------
+Fri Jun  3 14:09:29 CEST 2005 - ro@suse.de
+
+- fix build with new cairo using cairo-api-update script 
+
+-------------------------------------------------------------------
+Wed May 11 14:11:53 CEST 2005 - uli@suse.de
+
+- fixed to build (glitz* missing in neededforbuild)
+
+-------------------------------------------------------------------
+Fri Apr  8 15:15:50 CEST 2005 - sbrabec@suse.cz
+
+- Fixed GCC 4 related problems.
+
+-------------------------------------------------------------------
+Mon Feb 21 14:50:31 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.94.
+
+-------------------------------------------------------------------
+Wed Oct 27 11:12:01 CEST 2004 - mmj@suse.de
+
+- locale rename no to nb
+
+-------------------------------------------------------------------
+Mon Aug 23 00:31:47 CEST 2004 - ro@suse.de
+
+- adapt filelist (help is installed below pkgdatadir)
+
+-------------------------------------------------------------------
+Fri Aug 20 16:25:51 CEST 2004 - shprasad@suse.de
+
+- Fixes bug #60814
+  Remove the default gnome-menu style. It will display
+  'Help -> Manual' and clicking on it will bring the help
+  window. 
+
+-------------------------------------------------------------------
+Thu Jul 22 08:28:46 CEST 2004 - kimmidi@suse.de
+
+- Fixes bugs #60003 and #61815 on ximian bugzilla.
+
+-------------------------------------------------------------------
+Fri Jul 16 11:51:28 CEST 2004 - kimmidi@suse.de
+
+- Correct the -p option for patch6 and patch7 in dia.spec
+
+-------------------------------------------------------------------
+Thu Jul 15 07:31:02 CEST 2004 - kimmidi@suse.de
+
+- Fixes bugs #60814 and #60816 on ximian bugzilla.
+
+-------------------------------------------------------------------
+Mon Jun 28 06:44:12 CEST 2004 - kimmidi@suse.de
+
+- Fixes bugs #59101, #59230, #59097 and #59548 on ximian bugzilla.
+
+-------------------------------------------------------------------
+Mon May 31 16:58:35 CEST 2004 - sbrabec@suse.cz
+
+- Fixed crash on IA64 (#41339).
+  http://bugzilla.gnome.org/show_bug.cgi?id=143448
+
+-------------------------------------------------------------------
+Fri May 14 01:38:26 CEST 2004 - ro@suse.de
+
+- use -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Mon Feb 23 10:51:00 CET 2004 - adrian@suse.de
+
+- fix multiple menu entries
+
+-------------------------------------------------------------------
+Thu Jan  8 14:25:07 CET 2004 - ro@suse.de
+
+- fix build with current freetype 
+- fix build with lib64
+
+-------------------------------------------------------------------
+Sun Nov  9 15:49:39 CET 2003 - mmj@suse.de
+
+- Update to dia-0.92.2
+
+-------------------------------------------------------------------
+Mon Oct 27 18:21:45 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 0.92.
+- Enabled python, xslt and GNOME support.
+
+-------------------------------------------------------------------
+Thu Oct 16 11:29:40 CEST 2003 - mmj@suse.de
+
+- Don't build as root
+
+-------------------------------------------------------------------
+Wed Sep 10 13:31:26 CEST 2003 - mmj@suse.de
+
+- Bug [#30080] brought to my attention we don't package the docu-
+  mentation.
+- Use call-browser instead of netscape [#30080]
+
+-------------------------------------------------------------------
+Mon Sep  1 11:48:41 CEST 2003 - mmj@suse.de
+
+- Disable buggy xslt plugin [#29690]
+
+-------------------------------------------------------------------
+Sat Aug 16 16:00:52 CEST 2003 - adrian@suse.de
+
+- add Categories
+
+-------------------------------------------------------------------
+Thu Jul 24 04:01:57 CEST 2003 - hhetter@suse.de
+
+- %_lib fixes 
+
+-------------------------------------------------------------------
+Tue Jul 22 02:32:21 CEST 2003 - hhetter@suse.de
+
+- prefix to /opt/gnome
+- remove former prefix clash fixes 
+- use gnome-filesystem
+
+-------------------------------------------------------------------
+Wed Jun 18 15:31:27 CEST 2003 - sbrabec@suse.cz
+
+- Desktop file prefix clash fix.
+
+-------------------------------------------------------------------
+Wed Mar 26 16:50:01 CET 2003 - mmj@suse.de
+
+- Update to 0.91, which switches to GNOME2
+
+-------------------------------------------------------------------
+Fri Mar  7 22:47:51 CET 2003 - mmj@suse.de
+
+- Add patch to avoid strlen(0); [#24620]
+
+-------------------------------------------------------------------
+Wed Jan  8 16:10:39 CET 2003 - ro@suse.de
+
+- fixed configure
+
+-------------------------------------------------------------------
+Wed Nov  6 16:00:28 CET 2002 - uli@suse.de
+
+- fixed segfault on x86-64 and other 64 bit systems
+
+-------------------------------------------------------------------
+Thu Oct 24 15:39:14 CEST 2002 - hhetter@suse.de
+
+- applied patch from CVS (no longer translate font
+  strings) (Bug Id #20676) 
+
+-------------------------------------------------------------------
+Fri Sep 27 14:34:19 CEST 2002 - ro@suse.de
+
+- Added alsa alsa-devel to neededforbuild (esound)
+
+-------------------------------------------------------------------
+Thu Aug  8 18:16:00 CEST 2002 - mfabian@suse.de
+
+- update to 0.90
+- add configure option --enable-freetype
+  using this option, fonts will be embedded in the PostScript
+  ouput and all scalable fonts installed can be used.
+  This works nicely for most European languages.
+  Unfortunately it doesn't work for CJK. Japanese can be displayed
+  on screen but printing doesn't work (but Japanese printing
+  stopped working without "--enable-freetype" as well).
+
+-------------------------------------------------------------------
+Tue Jul  2 10:28:07 CEST 2002 - meissner@suse.de
+
+- auto* rerun, some automake related fixes.
+
+-------------------------------------------------------------------
+Thu Mar 21 16:22:51 CET 2002 - mfabian@suse.de
+
+- fix for bugzilla #15026 (dia crashes for LANG=de_DE@euro)
+  use fallback fonts which certainly work with gdk_fontset_load
+  if some fonts cannot be found to avoid crashing.
+  (I made iso8859-15 fonts usable with 'dia' available in the
+  ghostscript-fonts-std package, i.e. 'dia' will not crash anymore
+  for de_DE@euro even without this fallback font fix. Nevertheless
+  it is a safer to have valid fallback fonts as well).
+- include test file for de_DE@euro font-test-german-euro.dia
+
+-------------------------------------------------------------------
+Sat Mar  2 02:34:42 CET 2002 - mfabian@suse.de
+
+- fix for bugzilla #13267 and #14015
+  (International fonts are broken (can't write in czech)):
+- use the URW Type1 fonts as the preferred fonts for display on X11
+  as these are very similar to the fonts used for printing
+  (identical when our Ghostscript is used). Leaving in the bitmap 
+  fonts as fallbacks doesn't hurt.
+- add Requires: ghostscript-fonts-std
+- use gdk_fontset_load instead of gdk_font_load always *exept*
+  for the "fontspecific" fonts (i.e. "Symbol" and "Dingbats").
+- Add support for the Japanese fonts
+  Ryumin-Light-EUC-H and GothicBBB-Medium-EUC-H
+- don't reencode the "Dingbats" font and the Japanese fonts either
+  when generating .eps
+
+-------------------------------------------------------------------
+Thu Feb 21 10:59:03 CET 2002 - hhetter@suse.de
+
+- dia-fonts.dif: Dia maintains a static font list with
+  nearly only Bitmap-Fonts. It does internal AA via libart
+  and requests the fonts in sizes that our X-Server doesn't
+  provide because the :unscaled flag is set on bitmap fonts. 
+  The patch reorganizes Dia's font list to actually scaleable
+  ones and fonts where scaling makes sense.
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:05 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Thu Jun 14 23:23:44 MEST 2001 - egger@suse.de
+
+- Updated to version 0.88.1.
+- General specfile cleanup. 
+
+-------------------------------------------------------------------
+Tue May  8 23:14:47 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Wed Mar 21 01:56:27 CET 2001 - ro@suse.de
+
+- added esound-devel 
+
+-------------------------------------------------------------------
+Sun Feb 25 18:28:47 MET 2001 - egger@suse.de
+
+- Remove unnecessary dependencies from #neededforbuild,
+  especially imlib-config. 
+
+-------------------------------------------------------------------
+Tue Jan 30 23:35:00 CET 2001 - ro@suse.de
+
+- changed neededforbuild <imlibcfe> to <imlib-config>
+
+-------------------------------------------------------------------
+Wed Nov  1 01:21:05 MET 2000 - egger@suse.de
+
+- Updated specfile to new long packagenames.
+- Reworked specfile.
+- Probably needs some more work; I'm taking care of that. 
+
+-------------------------------------------------------------------
+Tue Aug  8 11:58:33 CEST 2000 - grimmer@suse.de
+
+- update to 0.86
+- moved man page to %{_mandir}/man1
+- added some more docu (doc/*)
+
+-------------------------------------------------------------------
+Wed May 24 14:05:34 CEST 2000 - egger@suse.de
+
+- update to 0.85
+
+-------------------------------------------------------------------
+Tue Feb 29 12:41:46 MET 2000 - grimmer@suse.de
+
+- update to 0.84
+- use BUILD_ROOT and strip binary during installation
+
+-------------------------------------------------------------------
+Wed Jan 26 17:52:05 MET 2000 - grimmer@suse.de
+
+- update to 0.83
+- use version macro in spec file
+
+-------------------------------------------------------------------
+Tue Jan  4 10:06:44 MET 2000 - grimmer@suse.de
+
+- update to 0.82
+- reworked package descriptions
+- added NLS support
+- added missing files to file list
+
+-------------------------------------------------------------------
+Thu Nov 11 15:59:30 MET 1999 - ray@suse.de
+
+- new package dia version 0.81
+

@@ -1,0 +1,24 @@
+Subject: Change kdesu settings
+From: Lubos Lunak
+Bug: 216796, 404521
+Relates: kdelibs3/kdesu-settings.diff , kdebase4-runtime/kdesu-remember-keep-password.diff
+Patch-upstream: never
+
+Change kdesu(d) password keeping timeout only to 5 minutes and enable
+it by default (to match kdesu using sudo in 10.3 behaviour).
+
+Update: Change the timeout back to 2 hours (bnc#404521).
+
+Index: kdesu/defaults.h
+===================================================================
+--- kdesu/defaults.h.orig
++++ kdesu/defaults.h
+@@ -15,7 +15,7 @@ namespace KDESu {
+ 
+ const int defTimeout = 120*60;
+ const int defEchoMode = 0;
+-const bool defKeep = false;
++const bool defKeep = true;
+ 
+ }
+ 

@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Fri Nov 17 13:03:10 UTC 2017 - astieger@suse.com
+
+- logstalgia 1.0.9:
+  * Fix config change not being detected in some cases
+- includes changes from 1.0.8:
+  * Performance improvements
+  * Change unsuccessful response code direction to match ball
+  * Add --screen option
+  * Add --window-position XxY option
+  * Add --frameless option
+  * Add --title option (mclang)
+  * Add --detect-changes option to automatically reload config file
+  * Add --display-fields FIELDS to set fields shown mousing over a request
+  * Can now specify path separators, max path depth and min abbreviation depth
+  * Reload config (F5)
+  * Save config (Ctrl+S) with updated display settings
+  * Fix queued log entries not being deleted when seeking using the timeline
+  * Make --hide-url-prefix apply to https URLs
+  * Counter no longer overflows at 100000000.
+  * Now requires SDL 2 to build (deprecated SDL 1.2 support removed)
+
+-------------------------------------------------------------------
+Sat Jul 15 10:21:06 UTC 2017 - astieger@suse.com
+
+- logstalgia 1.0.7:
+ * Added window frame toggle (F11).
+ * Fixed crash when taking a screenshot with an odd resolution.
+ * Handle exception when user defined regular expression is invalid.
+ * Fixed --hide-url-prefix not working
+
+-------------------------------------------------------------------
+Wed Feb  1 14:54:24 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Thu Nov 27 17:10:12 UTC 2014 - andreas.stieger@gmx.de
+
+- Licence is GPL-3.0+
+
+-------------------------------------------------------------------
+Wed Nov 26 19:54:56 UTC 2014 - andreas.stieger@gmx.de
+
+- logstalgia 1.0.6
+  + Display invalid requests as having the path '???'.
+- includes changes from 1.0.5:
+  + Performance improvements.
+  + Multi-monitor support using SDL 2.0.
+  + Can now specify the attribute to match the group regex (-g)
+    against.
+  + When using --sync, now catches back up after resuming from pause.
+  + Added --pitch-speed option (control how fast balls travel).
+  + Made default group matches case-insensitive
+  + Display tokens in multi-paddle modes
+  + Added window resizing and a full-screen toggle (alt-enter).
+  + Take screenshots (F12).
+  + Summarizer component content is now sorted.
+  + IPv6 addresses now anonymized by default as well (last 64 bits).
+  + New dependencies on libpng, GLEW.
+  + Now requires GLM and Boost header-only libraries to build.
+- includes changes from 1.0.4:
+  + Changed type of log entry timestamp to time_t.
+  + Stopped directly linking PNG/JPG libraries.
+- drop logstalgia-1.0.0-nonvoid.patch
+- reformat spec file to current standard
+- update dependencies
+- update source URL
+
+-------------------------------------------------------------------
+Mon May 30 13:03:52 UTC 2011 - prusnak@opensuse.org
+
+- updated to 1.0.3
+
+-------------------------------------------------------------------
+Fri Nov 26 12:51:46 UTC 2010 - prusnak@opensuse.org
+
+- cleanup spec file
+- use system-wide freefont
+
+-------------------------------------------------------------------
+Sat Oct  2 22:06:48 UTC 2010 - xnull@opensuse.org
+
+- initial release, version 1.0.0
+

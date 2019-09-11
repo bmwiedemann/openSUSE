@@ -1,0 +1,662 @@
+-------------------------------------------------------------------
+Wed Apr 24 18:27:34 UTC 2019 - ohering@suse.de
+
+- Disable LTO (bsc#1133269)
+
+-------------------------------------------------------------------
+Mon Jul  2 12:29:28 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Tag license files with %license, not %doc
+- Backport patch to fix build on aarch64: 'AArch64 GOT fixed' 
+  https://github.com/ocaml/ocaml/pull/1330:
+  * ocaml-fix_aarch64_build.patch
+
+-------------------------------------------------------------------
+Tue Apr 24 14:26:24 UTC 2018 - kstreitova@suse.com
+
+- update ocaml-4.05.0-CVE-2018-9838.patch that causes "undefined
+  reference to `caml_umul_overflow`" build failure. Replace this
+  function that is not available in ocaml 4.05 (added in ocaml
+  4.06) with the present caml_ba_multov() that is basically the
+  same [bnc#1088591] [CVE-2018-9838]
+
+-------------------------------------------------------------------
+Fri Apr 13 14:08:55 UTC 2018 - kstreitova@suse.com
+
+- add ocaml-4.05.0-CVE-2018-9838.patch to fix integer overflows
+  when unmarshaling a bigarray. Malicious or corrupted marshaled
+  data can result in a bigarray with impossibly large dimensions
+  that cause overflow when computing the in-memory size of the
+  bigarray. Disaster ensues when the data is read in a too small
+  memory area [bnc#1088591] [CVE-2018-9838]
+
+-------------------------------------------------------------------
+Wed Apr  4 09:20:09 UTC 2018 - kstreitova@suse.com
+
+- run spec-cleaner
+- update URL to www.ocaml.org
+- the language is officially called OCaml and not Objective Caml,
+  rename it in summaries and descriptions
+- tweak summaries and descriptions
+- remove definition of %{_rpmconfigdir} macro - it should be
+  defined on all distros by default now
+
+-------------------------------------------------------------------
+Wed Apr  4 06:57:00 UTC 2018 - ohering@suse.de
+
+- Remove info and html documentation because it is not as free
+  as it should be. Drop ocaml-docs package. (bsc#1080640)
+- adjust ocaml-3.09-emacs_localcompile.patch and
+  ocaml-3.08.3-gcc4.patch for autosetup
+
+-------------------------------------------------------------------
+Thu Aug 10 14:49:59 UTC 2017 - ohering@suse.de
+
+- Provide ocaml(ocaml_base_version) for camlp4
+
+-------------------------------------------------------------------
+Tue Jul 25 13:04:54 UTC 2017 - ohering@suse.de
+
+- Use Group: Development/Languages/OCaml
+
+-------------------------------------------------------------------
+Mon Jul 17 20:24:18 UTC 2017 - ohering@suse.de
+
+- update version 4.05.0
+  * http://caml.inria.fr/pub/distrib/ocaml-4.05/notes/Changes
+- build with -no-cplugins (CVE-2017-9772)
+
+-------------------------------------------------------------------
+Mon Jul 17 10:48:58 UTC 2017 - ohering@suse.de
+
+- Remove autodeps for pre openSUSE 12.1 releases
+
+-------------------------------------------------------------------
+Tue Jun  6 19:21:06 UTC 2017 - ohering@suse.de
+
+- Clear _find_debuginfo_dwz_opts to avoid file conflicts due
+  to identical contents in .dwz sections
+
+-------------------------------------------------------------------
+Wed May 31 10:46:48 UTC 2017 - ohering@suse.de
+
+- Install libasmrun_pic to fix build with gcc7
+
+-------------------------------------------------------------------
+Thu Jun 30 06:11:26 UTC 2016 - ohering@suse.de
+
+- Correct .TH macro creation in ocamldoc (ocaml#7281)
+  ocamldoc-man-th.patch
+
+-------------------------------------------------------------------
+Thu Jun 16 14:26:17 UTC 2016 - ohering@suse.de
+
+- Install ocamltags in emacs site-lisp, do not add a shebang anymore
+
+-------------------------------------------------------------------
+Mon Jun 13 14:02:36 UTC 2016 - ohering@suse.de
+
+- Provide various macros to unify oasis ocaml setup.ml $cmd usage
+
+-------------------------------------------------------------------
+Tue Jun  7 11:11:04 UTC 2016 - ohering@suse.de
+
+- ocaml-compiler-libs requires ncurses-devel for some bytecode
+  compilation
+
+-------------------------------------------------------------------
+Fri May 27 16:32:01 UTC 2016 - ohering@suse.de
+
+- Add Provides/Requires for ocamlfind() from META files
+
+-------------------------------------------------------------------
+Wed May 18 21:44:47 UTC 2016 - ohering@suse.de
+
+- update version 4.03.0 (fate#320836)
+  * http://caml.inria.fr/pub/distrib/ocaml-4.03/notes/Changes
+  drop ocaml-ppc64.patch
+  drop ocaml-ppc64le.patch 
+  drop ocaml-arch-rlimit-stacksize.patch
+  drop ocaml-4.02.3-bufferoverflow_infoleak.patch
+
+-------------------------------------------------------------------
+Wed May  4 13:49:38 UTC 2016 - kstreitova@suse.com
+
+- add ocaml-4.02.3-bufferoverflow_infoleak.patch to prevent buffer
+  overflow and information leak [bsc#977990], [CVE-2015-8869]
+- use spec-cleaner to clean the specfile
+
+-------------------------------------------------------------------
+Wed Nov 11 09:58:32 UTC 2015 - ohering@suse.de
+
+- Increase rlimit stack size on ppc64
+  ocaml-arch-rlimit-stacksize.patch
+
+-------------------------------------------------------------------
+Tue Nov 10 10:18:47 UTC 2015 - ohering@suse.de
+
+- Add hardcoded Provides for pre 12.1 repos
+
+-------------------------------------------------------------------
+Wed Sep 16 06:12:49 UTC 2015 - ohering@suse.de
+
+- update version 4.02.3
+  * http://caml.inria.fr/pub/distrib/ocaml-4.02/notes/Changes
+
+-------------------------------------------------------------------
+Tue Aug  4 08:05:33 UTC 2015 - kstreitova@suse.com
+
+- use spec-cleaner 
+
+-------------------------------------------------------------------
+Tue Jun 23 08:50:31 UTC 2015 - ohering@suse.de
+
+- update version 4.02.2
+  * http://caml.inria.fr/pub/distrib/ocaml-4.02/notes/Changes
+
+-------------------------------------------------------------------
+Thu Oct 23 10:49:37 UTC 2014 - ohering@suse.de
+
+- Recognize macros provided by prjconf to disable ocamlopt and
+  run testsuite
+
+-------------------------------------------------------------------
+Thu Oct 23 10:47:28 UTC 2014 - ohering@suse.de
+
+- New subpackage ocaml-rpm-macros
+
+-------------------------------------------------------------------
+Wed Oct 22 14:42:09 UTC 2014 - ohering@suse.de
+
+- update version 4.02.1
+  * http://caml.inria.fr/pub/distrib/ocaml-4.02/notes/Changes
+
+-------------------------------------------------------------------
+Mon Oct 20 09:39:25 UTC 2014 - ohering@suse.de
+
+- Update ppc64/ppc64le patch (bnc#901836)
+
+-------------------------------------------------------------------
+Wed Oct  8 10:14:20 UTC 2014 - ohering@suse.de
+
+- update version 4.02.0
+  * http://caml.inria.fr/pub/distrib/ocaml-4.02/notes/Changes
+  drop ocaml-rpath.patch, can be done with make args
+  drop ocaml-yacc-Use-mkstemp-instead-of-mktemp.patch, upstream
+  drop unused postscript docs
+- Removed Camlp4 and Labltk from the distribution, now available as
+  third-party software.
+
+-------------------------------------------------------------------
+Wed Aug 27 09:30:55 CEST 2014 - ohering@suse.de
+
+- Require as/gcc for ocamlopt (bnc#891177)
+
+-------------------------------------------------------------------
+Thu May  1 20:06:12 UTC 2014 - dvaleev@suse.com
+
+- Enable opt for ppc64le (ocaml-ppc64le.patch) 
+
+-------------------------------------------------------------------
+Sat Feb  1 09:33:43 CET 2014 - ohering@suse.de
+
+- Disable opt on aarch64
+
+-------------------------------------------------------------------
+Thu Jan 30 11:49:10 CET 2014 - ohering@suse.de
+
+- Provide ocaml(ocaml.opt)==version if available
+
+-------------------------------------------------------------------
+Fri Dec  6 20:41:25 UTC 2013 - matz@suse.de
+
+- Disable opt on ppc64le (ocaml-ppc64.patch doesn't support ELVv2)
+
+-------------------------------------------------------------------
+Thu Sep 19 12:01:09 CEST 2013 - ohering@suse.de
+
+- update version 4.01.0
+  * http://caml.inria.fr/pub/distrib/ocaml-4.01/notes/Changes
+  add ocaml-yacc-Use-mkstemp-instead-of-mktemp.patch
+  rename obsolete ocaml-rpmoptflags.patch to
+  ocaml-configure-Allow-user-defined-C-compiler-flags.patch
+  remove obsolete ocaml-tcl86.patch
+  remove obsolete ocaml-3.08.3.patch
+
+-------------------------------------------------------------------
+Tue Sep 10 15:37:04 UTC 2013 - guillaume@opensuse.org
+
+- Fix ARM build
+
+-------------------------------------------------------------------
+Thu Aug  1 15:31:39 UTC 2013 - max@suse.com
+
+- Added ocaml-tcl86.patch to fix build with Tcl 8.6.
+
+-------------------------------------------------------------------
+Mon Jun  3 09:23:34 CEST 2013 - ohering@suse.de
+
+- Recompress with xz
+
+-------------------------------------------------------------------
+Fri Mar 22 13:52:52 UTC 2013 - dvaleev@suse.com
+
+- refresh ocaml-ppc64.patch
+- increase stack size for ppc64 
+- package back *cmxs files for ppc
+
+-------------------------------------------------------------------
+Thu Feb 21 17:53:47 CET 2013 - ohering@suse.de
+
+- add hard requires ocaml-compiler-libs in ocaml-camlp4 in
+  versions before 12.1 due to lack of autorequires in old rpm
+
+-------------------------------------------------------------------
+Thu Feb 21 15:07:04 CET 2013 - ohering@suse.de
+
+- disable opt on ia64
+
+-------------------------------------------------------------------
+Fri Feb 15 12:10:35 UTC 2013 - i@marguerite.su
+
+- update version 4.00.1
+  * http://caml.inria.fr/pub/distrib/ocaml-4.00/notes/Changes
+- remove ocaml-3.04-info.patch, upstream fixed.
+- remove arm-add-type-directive.patch, upstream fixed.
+
+-------------------------------------------------------------------
+Mon Jan 14 10:07:21 CET 2013 - ohering@suse.de
+
+- change Requires: version-release to just Requires: version
+
+-------------------------------------------------------------------
+Wed Jan  2 17:06:58 CET 2013 - ohering@suse.de
+
+- update specfile to handle disabled do_opt variable
+
+-------------------------------------------------------------------
+Wed Jun 27 10:51:13 UTC 2012 - dvaleev@suse.com
+
+- refresh ppc64 patch
+- Link dllthreads.so with -lpthread so that pthread_atfork
+  is included statically. 
+
+-------------------------------------------------------------------
+Thu May 10 07:46:01 UTC 2012 - cfarrell@suse.com
+
+- license update: QPL-1.0 and SUSE-LGPL-2.0-with-linking-exception
+  Use SPDX format (http://www.spdx.org/licenses). Where there is no
+  suitable shortname available on spdx.org check the spreadsheet linked at
+  license.opensuse.org
+
+-------------------------------------------------------------------
+Tue Jan 31 10:53:26 UTC 2012 - dvaleev@suse.com
+
+- *.cmxs doesn't built for ppc 
+
+-------------------------------------------------------------------
+Mon Dec 19 09:55:25 UTC 2011 - coolo@suse.com
+
+- fix Source references to contain original upstream
+
+-------------------------------------------------------------------
+Mon Nov 14 00:21:40 CET 2011 - dmueller@suse.de
+
+- add add .type directive for code symbols (needed on arm)
+
+-------------------------------------------------------------------
+Tue Nov  8 12:40:17 UTC 2011 - dvaleev@suse.com
+
+- enable ppc64 build 
+
+-------------------------------------------------------------------
+Thu Sep 15 13:10:33 UTC 2011 - ampsaltis@gmail.com
+
+- Explicitly require the ocaml-runtime package in the ocaml package 
+
+-------------------------------------------------------------------
+Thu Sep 15 01:34:36 UTC 2011 - ampsaltis@gmail.com
+
+- The ocaml package does not provide the runtime any more.
+
+-------------------------------------------------------------------
+Fri Jul 22 00:23:13 UTC 2011 - ampsaltis@gmail.com
+
+- Unremove code block regarding removing -fomit-frame-pointer within RPM_OPT_FLAGS for ix86 architectures
+
+-------------------------------------------------------------------
+Thu Jul 21 21:22:02 UTC 2011 - ampsaltis@gmail.com
+
+- Enable optimizations (Fedora does this)
+- More cleanup done
+
+-------------------------------------------------------------------
+Thu Jul 21 15:24:38 UTC 2011 - ampsaltis@gmail.com
+
+- Clean up spec file
+- Remove ocaml-3.12-fix-size-directive.patch
+
+-------------------------------------------------------------------
+Tue Jul  5 14:36:05 UTC 2011 - ampsaltis@gmail.com
+
+- New upstream version 3.12.1, providing many bugfixes. 
+- ocaml-3.12-fix-size-directive.patch is no longer needed.
+
+-------------------------------------------------------------------
+Sun Jun 19 03:48:56 UTC 2011 - ampsaltis@gmail.com
+
+- Add compiler library packages
+
+-------------------------------------------------------------------
+Sun Jun 19 01:01:42 UTC 2011 - ampsaltis@gmail.com
+
+- Obsolete old "camlp4" package 
+
+-------------------------------------------------------------------
+Fri Jun 17 03:25:15 UTC 2011 - ampsaltis@gmail.com
+
+- Split (and rename) camlp4 package.  Add provide for consistency.
+- Decomment some stuff.
+ 
+-------------------------------------------------------------------
+Fri May 27 21:57:20 UTC 2011 - ampsaltis@gmail.com
+
+- Make the spec work with older versions of RPM
+- Split some parts of packages for devel-ness
+
+-------------------------------------------------------------------
+Tue May 24 07:54:53 UTC 2011 - coolo@novell.com
+
+- add provides required by the rpm-4.9 auto provides
+
+-------------------------------------------------------------------
+Mon May 23 11:43:49 UTC 2011 - coolo@novell.com
+
+- fix for last change to also include interpreter
+
+-------------------------------------------------------------------
+Sat May 21 13:51:04 CEST 2011 - jslaby@suse.de
+
+- fix build with rpm 4.9.0
+
+-------------------------------------------------------------------
+Wed Apr 27 10:02:51 UTC 2011 - vcizek@novell.com
+
+- license correction to GPLv2 and QPL 
+- removed author from spec
+
+-------------------------------------------------------------------
+Tue Apr 26 11:43:56 UTC 2011 - idoenmez@novell.com
+
+- Add ocaml-3.12-fix-size-directive.patch:
+  incorrect .size directives generated for x86-32 and x86-64 
+
+-------------------------------------------------------------------
+Tue Aug 24 17:52:02 CEST 2010 - anicka@suse.cz
+
+- update to 3.12.0 
+ * While fixing PR#4824, also corrected a gaping hole in the type checker,
+   which allowed instantiating separately object parameters and instance
+   variables in an interface. This hole was here since the beginning of
+   ocaml, and as a result many programs using object inheritance in a non
+   trivial way will need to be corrected. You can look at lablgtk2 for an
+   example.
+ * new language features, bugfixes
+
+-------------------------------------------------------------------
+Mon Jan 11 16:19:39 CET 2010 - vuntz@opensuse.org
+
+- Remove unneeded gtk-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Dec 11 11:15:55 CET 2009 - anicka@suse.cz
+
+- update to 1.11.1
+ * bug fixes
+ * Improved wording of various error messages
+ * Support for 64-bit mode in Solaris/x86 (PR#4670).
+
+-------------------------------------------------------------------
+Tue Jun  9 16:14:04 CEST 2009 - coolo@novell.com
+
+- filter out fomit-frame-pointer from rpm_opt_flags to fix build
+
+-------------------------------------------------------------------
+Tue Feb 17 16:15:23 CET 2009 - anicka@suse.cz
+
+- update to 1.11.0
+ * major relase with many changes, language enhancements and bugfixes
+ * backward incompatible changes: 
+   * Revised -output-obj: the output name
+     must now be provided; its extension must be one of .o/.obj,
+     .so/.dll, or .c for the bytecode compiler. The compilers can 
+     now produce a shared library (with all the needed -ccopts/-ccobjs
+     options) directly.
+  * programs linked with camlp4lib.cma now also need dynlink.cma
+- remove type_punning and tk8.5 patches (not needed anymore)
+- drop ppc64 patch 
+- use %fdupes macro to reduce size of the package
+
+-------------------------------------------------------------------
+Thu Jul 24 17:51:37 CEST 2008 - anicka@suse.cz
+
+- fix loading caml-mode in emacs (bnc#411232) 
+
+-------------------------------------------------------------------
+Thu Jul 10 10:20:11 CEST 2008 - olh@suse.de
+
+- build also on ppc64 (fate#304103)
+
+-------------------------------------------------------------------
+Wed Apr  9 15:35:20 CEST 2008 - anicka@suse.cz
+
+- update to 3.10.2
+ * PR#1217 (partial) Typo in ocamldep man page
+ * PR#3952 (partial) ocamlopt: allocation problems on ARM
+ * PR#4339 (continued) ocamlopt: problems on HPPA
+ * PR#4455 str.mli not installed under Windows
+ * PR#4473 crash when accessing float array with polymorphic method
+ * PR#4480 runtime would not compile without gcc extensions
+ * PR#4481 wrong typing of exceptions with object arguments
+ * PR#4490 typo in error message
+ * Random crash on 32-bit when major_heap_increment >= 2^22
+ * Big performance bug in Weak hashtables
+ * Small bugs in the make-package-macosx script
+ * Bug in typing of polymorphic variants (reported on caml-list)
+
+-------------------------------------------------------------------
+Mon Apr  7 11:54:06 CEST 2008 - anicka@suse.cz
+
+- fix build for tk 8.5 
+
+-------------------------------------------------------------------
+Mon Mar 10 14:41:05 CET 2008 - anicka@suse.cz
+
+- update to 3.10.1 
+ - made configure script work on PlayStation 3
+ - ARM port: brought up-to-date for Debian 4.0 (Etch)
+ - many other small changes and bugfixes in camlp4, ocamlbuild, labltk,
+   emacs files,
+ - Added virtual instance variables in classes "val virtual v : t"
+ * Changed the behaviour of instance variable overriding; the new
+   definition replaces the old one, rather than creating a new
+   variable.
+ - ocamlbuild: compilation manager for OCaml applications and libraries.
+   See draft documentation at http://gallium.inria.fr/~pouillar/
+ * Camlp4: heavily revised implementation, new API.
+ - Faster type-checking of functor applications.
+ - Referencing an interface compiled with -rectypes from a module
+     not compiled with -rectypes is now an error.
+ - Revised the "fragile matching" warning.
+ - Print a stack backtrace on an uncaught exception.
+   (Compile and link with ocamlopt -g; execute with OCAMLRUNPARAM=b.)
+   Supported on Intel/AMD in 32 and 64 bits, PPC in 32 and 64 bits.
+ - Stack overflow detection on MS Windows 32 bits (courtesy O. Andrieu).
+ - Stack overflow detection on MacOS X PPC and Intel.
+ - Intel/AMD 64 bits: generate position-independent code by default.
+ - Fixed bug involving -for-pack and missing .cmx files (PR#4124).
+ - Fixed bug causing duplication of literals  (PR#4152).
+ - C/Caml interface functions take "char const *" arguments
+   instead of "char *" when appropriate.
+ - Faster string comparisons (fast case if strings are ==).
+
+-------------------------------------------------------------------
+Wed Nov 28 18:25:00 CET 2007 - ro@suse.de
+
+- added -O0 to optflags for now on x86 (#343760) 
+
+-------------------------------------------------------------------
+Sun Nov  4 14:37:03 CET 2007 - ro@suse.de
+
+- updated rpmlintrc 
+
+-------------------------------------------------------------------
+Fri Jun 15 11:30:26 CEST 2007 - ro@suse.de
+
+- clean up specfile a bit (thanks to dirk stoecker) 
+
+-------------------------------------------------------------------
+Wed May 16 16:17:21 CEST 2007 - ro@suse.de
+
+- split up package similar to f-e
+- update to 3.09.3
+  * featurelist
+  - ocamldoc: name resolution in cross-referencing {!name}: if name is not
+    found, then it is searched in the parent module/class, and in the parent
+    of the parent, and so on until it is found.
+  - ocamldoc: new option -short-functors to use a short form to display
+    functors in html generator PR#4017
+  - ocamlprof: added "-version" option
+  - ported to MacOS X on Intel PR#3985
+  - configure: added support for GNU Hurd PR#3991
+  - otherlibs/labltk: browser uses menu bars instead of menu buttons
+  - Introduction of private row types, for abstracting the row in object
+    and variant types.
+  - configure: find X11 config in some 64-bit Linux distribs
+  - ocamldoc: (**/**) can be canceled with another (**/**) PR#3665
+  - graphics: added resize_window
+  - graphics: check for invalid arguments to drawing primitives PR#3595
+  - ocamlbrowser: use windows subsystem on mingw
+  * disruptive changes
+  * Revised implementation of the -pack option (packing of several compilation
+    units into one).  The .cmx files that are to be packed with
+    "ocamlopt -pack -o P.cmx" must be compiled with "ocamlopt -for-pack P".
+    In exchange for this additional constraint, ocamlopt -pack is now
+    available on all platforms (no need for binutils).
+  * Fixed wrong evaluation order for arguments to certain inlined functions.
+
+-------------------------------------------------------------------
+Thu Mar 29 12:19:25 CEST 2007 - rguenther@suse.de
+
+- add emacs site-lisp directories
+
+-------------------------------------------------------------------
+Fri Mar 23 15:08:43 CET 2007 - rguenther@suse.de
+
+- add gdbm-devel and ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Thu Aug 17 17:37:00 CEST 2006 - cthiel@suse.de
+
+- fix build with X.Org 7.1
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:54 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu May 12 02:45:17 CEST 2005 - ro@suse.de
+
+- update to 3.08.3
+- reduce register pressure in bng_ia32.c (thanks to matz)
+
+-------------------------------------------------------------------
+Tue Sep 14 13:17:32 CEST 2004 - jj@suse.de
+
+- version update (done by pthomas)
+
+-------------------------------------------------------------------
+Wed Apr 28 02:00:57 CEST 2004 - ro@suse.de
+
+- added -fno-strict-aliasing also to native build
+
+-------------------------------------------------------------------
+Mon Apr 19 09:47:24 CEST 2004 - mmj@suse.de
+
+- declare void functions as such
+
+-------------------------------------------------------------------
+Sat Jan 10 14:37:55 CET 2004 - adrian@suse.de
+
+- use x-devel-packages
+
+-------------------------------------------------------------------
+Sat Jun 21 03:09:20 CEST 2003 - mmj@suse.de
+
+- Own all dirs
+
+-------------------------------------------------------------------
+Wed May 21 15:06:44 CEST 2003 - coolo@suse.de
+
+- fix man page installation
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Apr  7 09:29:36 CEST 2003 - mmj@suse.de
+
+- head -1 is head -n 1 with the new coreutils
+
+-------------------------------------------------------------------
+Tue Feb 11 07:39:20 CET 2003 - mmj@suse.de
+
+- Use %install_info macro [#23440]
+
+-------------------------------------------------------------------
+Tue Sep 17 16:55:25 CEST 2002 - uli@suse.de
+
+- update -> 3.0.6 (needed for mldonkey)
+
+-------------------------------------------------------------------
+Mon Jun 17 15:47:23 CEST 2002 - meissner@suse.de
+
+- copy over config.* from libtool repository and other ppc64 fixes.
+
+-------------------------------------------------------------------
+Tue May 28 00:03:55 CEST 2002 - ro@suse.de
+
+- fix installation in camlp4 directory (bindir was without
+  buildroot prefix) 
+
+-------------------------------------------------------------------
+Fri May 24 17:48:23 CEST 2002 - mmj@suse.de
+
+- Disabling build of optional architecture specific stuff on plat-
+  forms where ocaml does not procide the necessary asm parts.
+
+-------------------------------------------------------------------
+Wed May 15 14:12:27 CEST 2002 - schwab@suse.de
+
+- Fix neededforbuild.
+
+-------------------------------------------------------------------
+Mon May 13 15:27:18 CEST 2002 - mmj@suse.de
+
+- Update to 3.04, maily bugfix release
+
+-------------------------------------------------------------------
+Tue Jan 15 13:24:12 CET 2002 - schwab@suse.de
+
+- Fix for ia64.
+
+-------------------------------------------------------------------
+Thu Aug 16 14:24:01 CEST 2001 - grimmer@suse.de
+
+- initial SuSE package (version 3.02), added to be able to build
+  package "unison"
+- spec file derived from Mandrake Linux source RPM (thanks, pixel!)
+

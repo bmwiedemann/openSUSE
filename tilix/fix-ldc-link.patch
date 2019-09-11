@@ -1,0 +1,18 @@
+--- tilix-1.8.9.orig/dub.json	2019-01-14 10:49:05.564369862 +0100
++++ tilix-1.8.9/dub.json	2019-01-14 10:49:11.196411361 +0100
+@@ -4,7 +4,7 @@
+     "copyright": "Copyright © 2016, Gerald Nunn",
+     "authors": ["Gerald Nunn"],
+     "mainSourceFile": "source/app.d",
+-    "dflags-ldc": ["-disable-linker-strip-dead","-link-defaultlib-shared=false"],
++    "dflags-ldc": ["-disable-linker-strip-dead"],
+     "dependencies": {
+         "gtk-d:gtkd": {
+             "version": "3.8.5"
+@@ -50,4 +50,4 @@
+             "versions": ["StdLoggerDisableTrace"]
+         }
+     ]
+-}
+\ Pas de fin de ligne à la fin du fichier
++}

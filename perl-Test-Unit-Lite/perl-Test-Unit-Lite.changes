@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Tue Jun  4 15:14:48 UTC 2013 - coolo@suse.com
+
+- updated to 0.1202
+ * RT #81879: hash key randomization after 5.17.5
+
+-------------------------------------------------------------------
+Mon May 28 13:40:49 UTC 2012 - coolo@suse.com
+
+- updated to 0.1201
+* Repackaged with newer Module::Builder.
+
+-------------------------------------------------------------------
+Fri Apr  1 17:10:23 UTC 2011 - coolo@novell.com
+
+- update to 0.12
+* Method "list_tests" returns methods from own class and base classes.
+* Method "tear_down" is called if "set_up" failed too.
+* Code was slightly reformatted.
+* New type of test status "failure" is set if the test unit fails.
+* Old type of test status "error" is set if error was occured in "set_up" or
+  "tear_down" method.
+* Error on "set_up" or "tear_down" doesn't stop whole test runner.
+* Fix for tainted mode.
+* Stringify eval error explicity in case that exception object doesn't
+  support "eq" operator.
+* Does not use Symbol::stash sub.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:37 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:16 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:39:09 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Oct 26 00:00:00 UTC 2008 - gerrit.beine@gmx.de
+
+- first release 0.1002
+
+

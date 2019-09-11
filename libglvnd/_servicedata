@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/NVIDIA/libglvnd.git</param>
+              <param name="changesrevision">d850cdde46dd0633405e758fbee49119e384b639</param></service></servicedata>

@@ -1,0 +1,199 @@
+-------------------------------------------------------------------
+Sun Jan 20 20:35:14 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.10
+  * BATIK-906: Should never use Error to report runtime errors
+  * BATIK-1123: Missing import of ImportInfo class
+  * BATIK-1125: Rasterizer fails with base64 embedded png
+  * BATIK-1140: Show line numbers on exception
+  * BATIK-1142: Remove e.printStackTrace for BridgeException in
+    SVGAbstractTranscoder
+  * BATIK-1157: Wrong value for default JPEG quality in
+    documentation
+  * BATIK-1170: Incorrect ColorConvertOp alpha handling breaks
+    masking
+  * BATIK-1196: Run batik tests from junit
+  * BATIK-1197: Make jython and rhino optional
+  * BATIK-1198: TIFF transcoder looks for invalid class name for its
+    WriteAdapter
+  * BATIK-1200: ImagingOpException: Unable to transform src image
+  * BATIK-1204: Remove hashtable
+  * BATIK-1212: Show real error on URL failure
+  * BATIK-1216: Compile error on Java 10
+  * BATIK-1222: Only call DOMImplementation in deserialization
+- Split the css-jar into a separate package
+- Install maven pom files.
+- Added patches:
+  * 0001-Fix-imageio-codec-lookup.patch
+    + PNG transcoder looks for invalid class name for its
+      WriteAdapter
+  * xmlgraphics-batik-nolinksinjavadoc.patch
+    + Fix javadoc generation by not loading URL links.
+- Modified patch:
+  * xmlgraphics-batik-manifests.patch
+    + Add Bundle-SymbolicName and Bundle-Version manifest entries
+    + Add targets for jar files produced by maven build and not
+      produced by the ant one. Produce them when target jars is
+      called.
+
+-------------------------------------------------------------------
+Wed Nov  7 20:47:58 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend on a particular xml-commons-apis provider.
+
+-------------------------------------------------------------------
+Wed Jul 11 10:21:58 UTC 2018 - fstrba@suse.com
+
+- Added patch:
+  * xmlgraphics-batik-securitymanager.patch
+    + Fix build with jdk11
+    + Replace use of SecurityManager::checkSystemClipboardAccess
+      by check for AWTPermission("accessClipboard")
+- Run fdupes on relevant directories
+
+-------------------------------------------------------------------
+Fri May 19 15:45:22 UTC 2017 - tchvatal@suse.com
+
+- Version update to batik 1.9:
+  * No obvious upstream changelog
+- Refresh patch xmlgraphics-batik-manifests.patch
+- Refresh patch xmlgraphics-batik-policy.patch
+
+-------------------------------------------------------------------
+Fri May 19 11:09:42 UTC 2017 - vsistek@suse.com
+
+- Add BuildRequires: javapackages-local (for maven conversions) 
+
+-------------------------------------------------------------------
+Mon Mar 20 15:16:57 UTC 2017 - sknorr@suse.com
+
+- Needed as a dependency for FOP 2.1 (FATE#322405)
+
+-------------------------------------------------------------------
+Fri Mar  4 14:05:13 UTC 2016 - fvogt@suse.com
+
+- Update to batik-1.8:
+    batik-src-1.7.zip -> batik-src-1.8.tar.gz
+- Update xmlgraphics-batik-manifests.patch
+- Refresh xmlgraphics-batik-policy.patch
+
+-------------------------------------------------------------------
+Mon Dec  8 13:03:34 UTC 2014 - tchvatal@suse.com
+
+- spec-cleanify
+
+-------------------------------------------------------------------
+Fri Dec  5 12:39:52 UTC 2014 - p.drouand@gmail.com
+
+- Use javapackages-tools instead of java-devel
+
+-------------------------------------------------------------------
+Fri Jun 27 11:17:48 UTC 2014 - tchvatal@suse.com
+
+- Specify targets to build on sle11.
+
+-------------------------------------------------------------------
+Thu Sep 12 19:08:45 UTC 2013 - tchvatal@suse.com
+
+- Kill javadoc to remove unresolvables.
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:29 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Fri Apr  5 09:00:58 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Wed Nov  3 08:56:40 UTC 2010 - mvyskocil@suse.cz
+
+- merge with xmlgraphics-batik-1.7-5.jpp5.src.rpm
+
+-------------------------------------------------------------------
+Tue Mar 30 11:20:58 UTC 2010 - mvyskocil@suse.cz
+
+- enable batik-all.jar to ensure swingx (-> netbeans) build
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:07 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Aug 31 15:08:12 CEST 2009 - ro@suse.de
+
+- fix archive compression 
+
+-------------------------------------------------------------------
+Wed May 15 08:33:00 CET 2008 - toms@suse.de
+
+- Fixed errors in build by correction build.xml.patch:
+  Replaced target="1.5" with target="1.4"
+- Cleaned up SPEC file a bit
+
+-------------------------------------------------------------------
+Wed Mar  5 12:05:40 CET 2008 - toms@suse.de
+
+- Fixed BuildRequires 
+
+-------------------------------------------------------------------
+Fri Feb 29 09:20:30 CET 2008 - toms@suse.de
+
+- Removed from samples/tests/spec/fonts/ directory due to license issues:
+  fontAltGlyph.svg, fontAltGlyph3.svg, fontChoice.svg, fontDecorations.svg,
+  fontGlyphChoice.svg, fontGlyphsBoth.svg, fontGlyphsChildSVG.svg,
+  fontGlyphsD.svg, fontKerning.svg, fontStyling.svg and
+  samples/tests/spec/scripting/textcontent/missing-glpyh.svg
+
+-------------------------------------------------------------------
+Tue Jan 29 15:13:23 CET 2008 - toms@suse.de
+
+- Added additional source and created subpackage -javadoc
+
+-------------------------------------------------------------------
+Mon Jan 28 08:33:41 CET 2008 - toms@suse.de
+
+- Reorganised installation directory: Installed all jar files under
+  %{_javadir} and created link from %{_datadir}/%{name}
+- Corrected *sh.in files
+
+-------------------------------------------------------------------
+Wed Aug 29 14:54:05 CEST 2007 - toms@suse.de
+
+- Removed samples/tests/spec/scripting/textcontent/missing-glpyh.svg
+  due to license issues
+
+-------------------------------------------------------------------
+Tue Aug 21 13:35:07 CEST 2007 - toms@suse.de
+
+- Updated to version 1.7
+  Removed samples/fonts directory 
+
+-------------------------------------------------------------------
+Wed May 23 16:42:59 CEST 2007 - toms@suse.de
+
+- Corrected sh files (missing #), improved SPEC file
+
+-------------------------------------------------------------------
+Fri Mar 30 14:49:53 CEST 2007 - toms@suse.de
+
+- Removed samples subdirectory
+
+-------------------------------------------------------------------
+Fri Mar 30 11:01:57 CEST 2007 - toms@suse.de
+
+- Added unzip to BuildRequires
+
+-------------------------------------------------------------------
+Thu Mar 29 16:37:26 CEST 2007 - toms@suse.de
+
+- Corrected *-sh files 
+
+-------------------------------------------------------------------
+Thu Mar 29 15:38:02 CEST 2007 - toms@suse.de
+
+- First inital version of 1.6
+

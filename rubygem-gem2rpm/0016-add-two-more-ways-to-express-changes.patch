@@ -1,0 +1,39 @@
+From 814a7133ce8ab7271cf0bf31ad6d4de94fec8863 Mon Sep 17 00:00:00 2001
+From: Stephan Kulow <coolo@suse.de>
+Date: Wed, 11 Feb 2015 02:05:31 +0100
+Subject: [PATCH 16/32] add two more ways to express changes
+
+---
+ templates/gem_packages.spec.erb | 2 ++
+ templates/opensuse.spec.erb     | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/templates/gem_packages.spec.erb b/templates/gem_packages.spec.erb
+index b772d02..0cd92e2 100644
+--- a/templates/gem_packages.spec.erb
++++ b/templates/gem_packages.spec.erb
+@@ -129,6 +129,8 @@ Usually in RDoc and RI formats.
+         license-mit
+         mit-license
+         changelog
++        news
++        release_notes
+         readme
+        ).each { |file|
+       bpath = path.downcase.gsub(%r{\.rdoc$}, '').gsub(%r{\.txt$}, '').gsub(%r{\.md$}, '')
+diff --git a/templates/opensuse.spec.erb b/templates/opensuse.spec.erb
+index 8d14e38..b1251c5 100644
+--- a/templates/opensuse.spec.erb
++++ b/templates/opensuse.spec.erb
+@@ -119,6 +119,8 @@ PreReq:         update-alternatives
+         license-mit
+         mit-license
+         changelog
++        news
++        release_notes
+         readme
+        ).each { |file|
+       bpath = path.downcase.gsub(%r{\.rdoc$}, '').gsub(%r{\.txt$}, '').gsub(%r{\.md$}, '')
+-- 
+2.20.1
+

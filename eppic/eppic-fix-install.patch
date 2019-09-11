@@ -1,0 +1,23 @@
+From: Petr Tesarik <ptesarik@suse.cz>
+Subject: Fix the 'install' target
+Patch-mainline: no
+
+There is no directory called 'scripts', so the action for the 'install'
+target runs into an endless loop.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.cz>
+
+---
+ libeppic/Makefile |    1 -
+ 1 file changed, 1 deletion(-)
+
+--- a/libeppic/Makefile
++++ b/libeppic/Makefile
+@@ -59,7 +59,6 @@ headers:
+ 	install -m 644 $(HFILES) $(ROOT)/usr/include
+ 
+ install: headers exports
+-	(cd scripts ; $(MAKE) install )
+ 
+ baseops.o: mkbaseop.c
+ 	$(CC) $(CFLAGS) -o mkbaseop mkbaseop.c

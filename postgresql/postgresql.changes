@@ -1,0 +1,206 @@
+-------------------------------------------------------------------
+Fri Feb 22 07:46:53 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Drop use of $FIRST_ARG in .spec
+
+  The use of $FIRST_ARG was probably required because of the
+  %service_* rpm macros were playing tricks with the shell positional
+  parameters. This is bad practice and error prones so let's assume
+  that no macros should do that anymore and hence it's safe to assume
+  that positional parameters remains unchanged after any rpm macro
+  call.
+
+-------------------------------------------------------------------
+Tue Feb 19 16:05:22 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Change the persmissions for /var/run/postgresql to 1775, so that
+  the directory can only be used by users in the postgres group
+  (bsc#1123886).
+
+-------------------------------------------------------------------
+Thu Jan 31 13:23:56 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Move bash profile out of /var/lib to allow transactional updates
+  (bsc#1100397).
+- Use /run/postgresql instead of /var/run/postgresql in %ghost and
+  postgresql-tmpfiles.conf to avoid rpmlint warnings and errors.
+
+-------------------------------------------------------------------
+Fri Nov 30 13:14:40 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- add /var/run/postgresql to the filelist. as %ghost for systemd
+  systems and directly for non systemd systems
+
+-------------------------------------------------------------------
+Fri Nov 30 11:05:00 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix the unexpanded macro in the description of server-devel
+
+-------------------------------------------------------------------
+Thu Nov 15 14:34:28 UTC 2018 - Reinhard Max <max@suse.com>
+
+- Also bump the default package to 11.
+
+-------------------------------------------------------------------
+Wed Nov  7 16:57:50 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- add server-devel and llvmjit package file sections
+
+-------------------------------------------------------------------
+Thu Oct 25 13:14:25 UTC 2018 - Reinhard Max <max@suse.com>
+
+- Add the new subpackages server-devel and llvmjit that were
+  introduced with postgresql11.
+
+-------------------------------------------------------------------
+Mon Jul  2 17:08:32 UTC 2018 - mrueckert@suse.de
+
+- bump to 11
+
+-------------------------------------------------------------------
+Mon Apr 30 13:26:49 UTC 2018 - dimstar@opensuse.org
+
+- Require update-alternatives by postgresql: one of the main
+  scripts in use is install-alternatives, which calls u-a.
+
+-------------------------------------------------------------------
+Fri Feb  2 10:03:33 UTC 2018 - max@suse.com
+
+- Put POSTGRES_LANG into LC_ALL instead of LANG to retain the
+  previous behaviour of that variable (boo#1077027).
+
+-------------------------------------------------------------------
+Wed Jan 17 16:48:57 UTC 2018 - max@suse.com
+
+- postgresql-script: /etc/sysconfig/language is deprecated, use the
+  locale that was inherited from systemd instead for initializing
+  a new database instance (boo#1074988).
+
+-------------------------------------------------------------------
+Wed Dec 13 18:10:54 UTC 2017 - mrueckert@suse.de
+
+- add provides for all the pkgconfig() provides you also find in
+  the postgresqlXY-devel packages. then we automatically will pull
+  postgresql-devel which in turn will pull our default
+  postgresqlXY-devel package. (boo#1071971)
+
+-------------------------------------------------------------------
+Wed Dec  6 10:32:06 UTC 2017 - bruno@ioda-net.ch
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Fri Nov 24 11:24:09 UTC 2017 - mrueckert@suse.de
+
+- instead of hardcoding version 10, just check if the prio is
+  smaller than 80.
+
+-------------------------------------------------------------------
+Thu Nov 23 17:05:21 UTC 2017 - mrueckert@suse.de
+
+- simplify the postgresql-install-alternatives to only require the
+  pg version and go from there.
+
+  supported calls of the script are:
+  /usr/share/postgresql/install-alternatives postgresqlXY
+  /usr/share/postgresql/install-alternatives XY
+
+  where XY can currently be: 92 93 94 95 96 10
+
+-------------------------------------------------------------------
+Wed Nov 22 13:03:42 UTC 2017 - max@suse.com
+
+- CVE-2017-14798, bsc#1062722: Fix LPE via postgres init script.
+  This only affected SysV-init based systems (i.e. SLE11).
+
+-------------------------------------------------------------------
+Tue Nov 14 08:52:46 UTC 2017 - max@suse.com
+
+- postgresql-test was missing a %files section.
+
+-------------------------------------------------------------------
+Fri Nov  3 12:55:14 UTC 2017 - max@suse.com
+
+- Move the start/stop script to /usr/share/postgresql
+- Add a script for handling update-alternatives as subpackages
+  get installed/uninstalled, so that the implementation packages
+  don't have to repeat the logic (postgresql-install-alternatives).
+- Add the postgresql-test subpackage.
+- Fix some dependencies.
+- Save the enabled and running state when upgrading from the
+  obsolete postgresql-init package.
+
+-------------------------------------------------------------------
+Fri Oct  6 14:33:54 UTC 2017 - mrueckert@suse.de
+
+- properly guard the systemd macro in %pre server so it wont be
+  used on sle11
+- add Requires(pre) so we have groupadd/useradd available
+
+-------------------------------------------------------------------
+Thu Sep 21 07:59:26 UTC 2017 - max@suse.com
+
+- Refine the dependencies between the "dummy" packages and the
+  actual implementation of PostgreSQL. The dummy packages now
+  require an arbitrary implementation and recommend the default
+  version.
+- Move the contents of postgresql-init to the server package.
+
+-------------------------------------------------------------------
+Thu Aug  3 23:06:39 UTC 2017 - mrueckert@suse.de
+
+- bump to 10
+
+-------------------------------------------------------------------
+Wed Jun 28 09:35:46 UTC 2017 - max@suse.com
+
+- Bump version and defaultpackage to 9.6 in SLE12 (bsc#1046324).
+
+-------------------------------------------------------------------
+Sun Oct 30 06:17:24 UTC 2016 - 13ilya@gmail.com
+
+- Bump version and defaultpackage to 9.6 in Factory.
+
+-------------------------------------------------------------------
+Mon Sep 28 15:04:31 UTC 2015 - max@suse.com
+
+- Move ~postgres/.bash_profile to postgresql-server to avoid a
+  file conflict between the versioned server packages.
+
+-------------------------------------------------------------------
+Mon Aug 17 00:25:13 CEST 2015 - ro@suse.de
+
+- Bump version and defaultpackage to 9.4. in SLE (bnc#941886)
+
+-------------------------------------------------------------------
+Wed Feb 18 15:28:45 UTC 2015 - max@suse.com
+
+- Bump version and defaultpackage to 9.4 in Factory.
+
+-------------------------------------------------------------------
+Tue Sep 17 11:44:19 UTC 2013 - max@suse.com
+
+- Bump version and defaultpackage to 9.3.
+
+-------------------------------------------------------------------
+Wed Jan  9 09:55:11 UTC 2013 - max@suse.com
+
+- Change license string to PostgreSQL.
+
+-------------------------------------------------------------------
+Fri Oct  5 17:28:22 UTC 2012 - max@suse.com
+
+- Make all dummy packages noarch.
+
+-------------------------------------------------------------------
+Thu Oct  4 14:51:58 UTC 2012 - max@suse.com
+
+- Make PostgreSQL 9.2 the default.
+
+-------------------------------------------------------------------
+Mon Oct  1 14:13:18 UTC 2012 - max@suse.com
+
+- Reduce the postgresql packages with unversioned names to dummy
+  packages that require the respective versioned package names.
+

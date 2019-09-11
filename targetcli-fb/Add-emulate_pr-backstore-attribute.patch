@@ -1,0 +1,29 @@
+From fa71860b0d819a691683c1fdcb70c255653b5851 Mon Sep 17 00:00:00 2001
+From: David Disseldorp <ddiss@suse.de>
+Date: Tue, 15 Jan 2019 12:04:49 +0100
+Subject: [PATCH] Add emulate_pr backstore attribute
+
+Added to the kernel via b49d6f7885306ee636d5c1af52170f3069ccf5f7, the
+emulate_pr attribute can be used to disable support for SCSI-2
+(RESERVE/RELEASE) and Persistent Reservations.
+
+Signed-off-by: David Disseldorp <ddiss@suse.de>
+---
+ targetcli/ui_backstore.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/targetcli/ui_backstore.py b/targetcli/ui_backstore.py
+index efa532f..cc2cf2b 100644
+--- a/targetcli/ui_backstore.py
++++ b/targetcli/ui_backstore.py
+@@ -670,6 +670,7 @@ class UIStorageObject(UIRTSLibNode):
+         'emulate_tpws': ('number', 'If set to 1, enable Thin Provisioning Write Same.'),
+         'emulate_ua_intlck_ctrl': ('number', 'If set to 1, enable Unit Attention Interlock.'),
+         'emulate_write_cache': ('number', 'If set to 1, turn on Write Cache Enable.'),
++        'emulate_pr': ('number', 'If set to 1, enable SCSI Reservations.'),
+         'enforce_pr_isids': ('number', 'If set to 1, enforce persistent reservation ISIDs.'),
+         'force_pr_aptpl': ('number', 'If set to 1, force SPC-3 PR Activate Persistence across Target Power Loss operation.'),
+         'fabric_max_sectors': ('number', 'Maximum number of sectors the fabric can transfer at once.'),
+-- 
+2.16.4
+

@@ -1,0 +1,484 @@
+-------------------------------------------------------------------
+Tue Apr  2 14:24:18 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Re-enabled musicbrainz, as both perl(MusicBrainz::DiscID) and
+  perl(WebService::MusicBrainz) are accepted into Factory now.
+  Note that abcde uses both MusicBrainz and CDDB by default.
+  Build without MusicBrainz can be made by setting
+  %_without_musibrainz 1 in prjconf.
+
+-------------------------------------------------------------------
+Wed Mar  6 17:21:44 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Added dependency on WebService::MusicBrainz 
+
+-------------------------------------------------------------------
+Tue Feb 19 19:54:08 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 2.9.3 
+  * Replace non-portable sed code for generating offset list with some
+    simple awk instead. Should now work on FreeBSD again.
+  * Deal with bizarre cdda2wav behaviour when doing cdtext lookup - it
+    writes the track information to *stdin*. Closes Issue #89:
+    https://abcde.einval.com/bugzilla/show_bug.cgi?id=89
+  * Add a warning in abcde.conf about mayb needing to install recode before
+    using it in mungefilename()
+- Clean with spec-cleaner
+- Drop fix-makefile-version-2.9.2.patch which is fixed upstream
+
+-------------------------------------------------------------------
+Sat Aug 11 21:29:11 UTC 2018 - jengelh@inai.de
+
+- Replace summary line with an actual summary. Fix broken
+  sentence grammar in description.
+
+-------------------------------------------------------------------
+Wed Aug  8 23:03:08 UTC 2018 - rpm@fthiessen.de
+
+- Added use-cddbmethod.patch needed as factory does not provide
+  perl(MusicBrainz::DiscID)
+- Added fix-makefile-version-2.9.2.patch
+- Added keyring for verification
+- Update to 2.9.2:
+ * Fix up lookup code to deal with spaces etc. in directory names
+ * Cope with "stub" releases in Musicbrainz
+ * Always call glyrc with LC_ALL=C. Thanks to Andreas Vögele for the
+   report and the suggested fix.
+ * Add a link to the CDDB data format in the abcde man page.
+ * More fixups of track number padding. Thanks to John Straw for the
+   patch.
+ * Allow for embedding of  album art downloaded by the getalbumart
+   function. Currently this is available for flac (using metaflac),
+   mp3 (using eyed3), m4a (using AtomicParsley) and
+   WavPack aka wv (using wvtag).
+ * Use md5 rather than md5sum under macOS.
+ * Support added for encoding with
+   Audio Interchange File Format (AIFF). 
+ * Allow selection of either cddb or musicbrainz from the command line
+ * Allow for embedding with do_embedalbumart() for single track
+   encodes when OUTPUTFORMAT and ONETRACKOUTPUTFORMAT are different.
+ * Experimental support for embedding albumart with ogg files.
+ * Massive rework of CD lookup code so support multiple sources
+   better. Thanks to Gabriel Rosenkoetter for his initial idea in this
+   area, and to Tomasz Goliński on irc for initial inspiration on how
+   this should work better.
+   There are now 3 different options for CD lookup: cddb, musicbrainz and
+   cdtext. They can all be listed in a comma-separated list for
+   CDDBMETHOD and the code will now call all of them in the sequence
+   listed. All the results will be combined into one list at the end for
+   the user to select, just like would have previously worked for one
+   source only.
+ * Fix Musicbrainz ID calculation in makeids()
+ * Fix abcde.mkcue() when handling the --wholedisk option. Thanks to
+   Nino Burini for the patch.
+ * Add more comprehensive examples for filename munging in the example
+   config file.
+ * Add a more better fix for the year lookup problem in
+   abcde-musicbrainz-tool
+ * Redirect stderr on "which" calls to clear up error noise on some
+   systems.
+ * Add Irix support.
+ * Rework abcde-musicbrainz-tool to work with WebService::MusicBrainz
+   Also added a specific dependency on version 1.0.4 or newer, so
+   abcde-musicbrainz-tool will abort if the version found is too old.
+   Since tweaked to deal with multi-artist albums and tracks more
+   completely.
+ * Add resume support in do_getalbumart()
+ * Fix getopts setup for "P". Thanks to Alan W. Kerr for reporting this.
+ * Major set of code cleanups to fix up lots of warnings found with
+   shellcheck, and a few other style issues:
+   + Lots of quoting fixes
+   + Use $( instead of `
+   + Stop using -o and -a syntax with if [ - use || or && instead
+   + Wrap and shorten some very long lines
+ * Wrap some output messages so they fit on a standard width console
+ * Factor out repeated code and make page() more useful
+ * Add version check before resuming from an old ripping run
+- Dropped abcde-quote.patch 
+
+-------------------------------------------------------------------
+Fri Aug 18 07:13:56 UTC 2017 - aloisio@gmx.com
+
+- Update to version 2.8.1
+  * Fix silly error introduced in abcde-musicbrainz-tool when
+    fixing bug 30. Thanks to Thomas Klausner for the bug/patch.
+    Closes Issue 52:
+    https://abcde.einval.com/bugzilla/show_bug.cgi?id=52
+  version 2.8:
+   * Make fdkaac the default for m4a encoding. Faac can still be
+     selected for m4a encding via ~/.abcde.conf file but best not
+     to :).
+   * Split user-definable mungefilename function into
+     mungetrackname, mungeartistname, and mungealbumname, each of
+     which default to mungefilename Thanks to Gerald Turner for the
+     patch and enhancement request. This closes Issue 39:
+     https://abcde.einval.com/bugzilla/show_bug.cgi?id=39
+   * FAQs: Clarify the exit from multi-result CDDB search.
+   * Fix to allow multiple output formats when aac fallback is
+     triggered. Thanks to Birk Bremer for the bug report.
+     This closes Issue 35:
+     https://abcde.einval.com/bugzilla/show_bug.cgi?id=35
+   * Fix for some erroneous error and status logging. Thanks to
+     Christian Wasem for the bug report and fix. This closes Issue
+     32: https://abcde.einval.com/bugzilla/show_bug.cgi?id=32
+   * Add support for trying multiple CD lookup services in
+     order. Thanks to Gabriel Rosenkoetter for the patch. Closes
+     Issue 42: https://abcde.einval.com/bugzilla/show_bug.cgi?id=42
+   * Add Recommends on glyrc and imagemagick in Debian
+     packaging. Closes Debian Bug #827626
+   * Fix up handling of the first few sectors when reading
+     from a whole-CD flac file or using cdparanoia in one-track
+     mode. Thanks to Matthias König for the patch. Closes Issue
+     44: https://abcde.einval.com/bugzilla/show_bug.cgi?id=44
+   * Tweak the fix in musicbrainz for handling sketchy returned
+     data some more. Hopefully closes Issue 30:
+     https://abcde.einval.com/bugzilla/show_bug.cgi?id=30
+   * Re-enable some commented out cdparanoia/debug code in
+     do_discid. Closes Issue 14:
+     https://abcde.einval.com/bugzilla/show_bug.cgi?id=14
+   * Add "-a" to lots of grep calls in case of "binary" looking
+     data, e.g. non-ascii text in track titles!
+     Closes Issue 24:
+     https://abcde.einval.com/bugzilla/show_bug.cgi?id=24
+   * Add "-L" to default curl options, to follow redirects if
+     needed. Closes Issue 40:
+     https://abcde.einval.com/bugzilla/show_bug.cgi?id=40
+     Thanks to Gabriel Rosenkoetter for the patch.
+   * Switch default from "cddb" to "musicbrainz" for track lookup
+     Closes Debian Bug #842178
+
+-------------------------------------------------------------------
+Mon Apr 25 11:43:45 UTC 2016 - p.drouand@gmail.com
+
+- Update to version 2.7.2
+  * When using musicbrainz, don't assume that there will be release
+    events attached to a particular CD release. Bug fix for the addition
+    of year information support in 2.7.1.
+  * Support for output to the Matroska container (mka). Encoder
+    is FFmpeg (or avconv). Typical conf file syntax would be:
+
+     MKAENCODERSYNTAX=ffmpeg
+     FFMPEG=ffmpeg
+     FFMPEGENCOPTS="-c:a ac3 -b:a 448k"
+     OUTPUTTYPE="mka"
+  * Add id3tag mp3 tagger as this is the tagger available to
+    OpenBSD users.
+  * Allow for cddb response 500. This closes Issue 26:
+    http://abcde.einval.com/bugzilla/show_bug.cgi?id=26
+  * Fix for 'expansion of $REDIR' bug on MacOSX. This closes Issue 22:
+    http://abcde.einval.com/bugzilla/show_bug.cgi?id=22
+  * Makefile adjusted to allow the sample abcde.conf file to be
+    installed by default to /etc rather than $(prefix)/etc.
+    https://bugs.archlinux.org/task/46671
+  * Allow getalbumart to correctly place cover image when single
+    track is selected. This closes Issue 25:
+    http://abcde.einval.com/bugzilla/show_bug.cgi?id=25
+- Update abcde-quote.patch
+- Set BuildArch as noarch; the package doesn't contain any binary
+
+-------------------------------------------------------------------
+Mon Jan  4 08:24:13 UTC 2016 - adrian@suse.de
+
+- add recommends to eyeD3, abcde is using it by default since 2.7
+
+-------------------------------------------------------------------
+Mon Oct 26 22:44:31 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.7.1
+  * Rebuild of the abcde Makefile.
+    http://abcde.einval.com/bugzilla/show_bug.cgi?id=4 
+  * Fix incorrect use of 'break'.
+    http://abcde.einval.com/bugzilla/show_bug.cgi?id=6
+  * Make older versions of id3 happy when 'Genre' field is empty.
+    http://abcde.einval.com/bugzilla/show_bug.cgi?id=8
+  * Add YEAR and GENRE variables to do_getalbumart().
+    http://abcde.einval.com/bugzilla/show_bug.cgi?id=9
+  * Support added for encoding to True Audio using tta while still
+    supporting the older ttaenc. Tagging is with mid3v2.
+  * Support added for encoding to MPEG-1 Audio Layer II (mp2)
+    with either twolame or FFmpeg / avconv. Tagging with mid3v2.
+  * Encoding to WavPack with FFmpeg. Some slight changes to WavPack
+    syntax with backward compatibility built in for abcde 2.7. 
+  * Encoding to m4a container with FFmpeg or avconv. This allows
+    for alac encoding with FFmpeg's reverse engineered alac encoder.
+  * AAC encoding with fhgaacenc via Wine. Tagging is provided
+    by AtomicParsley which has been added back to abcde :). This
+    allows encoding with HE-AAC v2, unavailable with qaac.
+  * Support added for AAC encoding with qaac via Wine. This
+    also allows for Apple Lossless Audio Coding (alac) using
+    either qaac or refalac. This closes Issue 142.
+  * Grab year information too when using musicbrainz.
+    http://abcde.einval.com/bugzilla/show_bug.cgi?id=10
+- Changes from version 2.7
+  * Rewrite of abcde's mungefilename function.
+    This closes Issues 72 and 135.
+  * TRACKTOTAL now written to flac and ogg files.
+    This resolves Issue 76.
+  * Support added for the downloading of album art.
+    Detailed documentation added to the abcde FAQ document
+    although the sane defaults in place will guarantee a good
+    experience even for those who do not read documentation!
+    This closes Issue 33.
+  * Support added for ripping with the GNU Compact Disc 
+    Input and Control library (libcdio) as requested by
+    both gentoo and NixOS. The utility used is cd-paranoia
+    and can best be called from a conf file as follows:
+
+     CDROMREADERSYNTAX=libcdio       
+     CD_PARANOIA=cd-paranoia  
+     CDPARANOIAOPTS="--never-skip=40 --verbose"
+
+    with the CD_PARANOIA variable giving the correct path 
+    to cd-paranoia.
+  * Fix for encoding with bladeenc and usepipes.
+  * Fix for broken ripping with dagrab. Closes Issue 140.
+  * Fix for diskutil selecting wrong disk on OS X. 
+    closes Issue 139.
+  * Added some error checking and documentation for
+    the abcde-musicbrainz-tool. Closes issue 138.
+  * New variables for m4a/aac encoding options to be 
+    manipulated in a users ~/.abcde.conf file:
+     1. FAACENCOPTS for faac encoding options
+     2. NEROAACENCOPTS for neroAacEnc options
+     3. FDKAACENCOPTS for fdkaacenc options
+    Note that these options replace the now obsolete AACENCOPTS.
+  * Check added for neroAacTag when encoding with neroAacEnc.
+  * Several additions to usepipes with the following encoders 
+    being added:
+      1. mp3enc: mp3
+      2. speexenc: Speex
+      3. mpcenc: Musepack SV8
+      4. wavpack: WavPack
+      5. faac: aac
+      6. neroAacEnc: aac
+      7. fdkaac: aac
+    The cd ripper cdda2wav (icedax) has also been added.
+  * Ripping and encoding with 'usepipes' fixed. This fix
+    closes Issue 46.
+  * Suggested encoding options for mp3enc added to the sample
+    abcde.conf. Last release of mp3enc in 1998 but it still
+    works flawlessly with a modern abcde!
+  * Suggested encoding options for l3enc added to the sample
+    abcde.conf. Congratulations to abcde which in 2015 still 
+    works with l3enc which saw its final release in 1997!
+  * Fix for -o option use with options and multiple outputs.
+    This allows for commandline options such as the following:
+          abcde -o 'flac:-8,mp3:-b 320' 
+    This closes Issue 136.
+  * Support added for ReplayGain with WavPack encoding.
+  * Fix for MusePack to allow the use of the SV8 ReplayGain 
+    application 'mpcgain'.
+  * Monkey's Audio (ape) encoding added. Tagging is with
+    Robert Muth's apetag.
+  * Simplify Opus tagging.This closes Issue 133.
+  * Allow 'clean' when OUTPUTTYPE=wav, broken for some time.
+    This closes Issue 94.
+  * Clarification that CDDBLOCALRECURSIVE=y is required for 
+    local CDDB search. This partially resolves Issue 121.
+  * AtomicParsley removed from debian/control, WavPack added.
+  * Details of abcde's handling of faac compiled with and 
+    without mp4v2 added as a new entry to FAQs.
+  * Fix to allow display of the 'date' meta tag generated
+    by eyeD3 in vlc, Audacious and friends.
+    This closes Issue 126.
+  * Fix for flac floating point error. closes Issue 113.
+  * Formalised 3 methods of mp3 tagging using ID3TAGV:
+      1.id3v2.4 using eyeD3 (set in abcde as the default)
+      2.id3v2.3 using id3v2
+      3.id3v1 using id3
+    Fixes issue 101.
+  * Support for WavPack added. Closes issue 123.
+  * Fix for mp3 encoding with different versions of eyeD3.
+  * Major AAC encoding cleanup, including addition of the fdkaac encoder. 
+- Update patch abcde_2.6-quote.patch > abcde-quote.patch
+
+-------------------------------------------------------------------
+Sat Jan 24 16:48:09 UTC 2015 - sweet_f_a@gmx.de
+
+- re-add man pages, last update accidentally removed them 
+
+-------------------------------------------------------------------
+Sat Dec 13 18:30:54 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 2.6
+  + Fix finding $CDROM on OS X. Closes issue 71.
+  + USEID3 and USEID3V2 variables are unused now, so remove them. 
+    Closes issue 73.
+  + Clean up movement to eyeD3, remove id3v2 remnants. Closes issue 74.
+  + Fix infinite loop if cddb fails. Closes: #687038 in Debian
+  + Switch from Musepack SV7 to SV8.
+  + Allow aac encoding with neroAacEnc. Closes issue 8.
+  + Allow opus encoding with opusenc. Closes issue 70.
+  + Fix typo: s/CUEWAVEFILE/CUEWAVFILE/ so that abcde.mkcue should now
+    produce working cue files. Closes issue 78.
+  + Remove no-op -q option. Closes issue 106. 
+  + Fix issue 112: perl encoding pragma deprecation.
+  + Fix option parsing for multiple output formats. Closes issue 115.
+  + Fix eyeD3 tagging for cddb entries without year. Closes issue 107
+  + Add mention of CD-TEXT support in the man page. Closes issue 102.
+  + Make Y/N prompting more consistent. Closes issue 95
+  + Remove the no-op -B option. Closes: #426531 in Debian
+  + Document the need to escape parentheses in tag comments.
+    Closes: #256941 in Debian.
+  + Concatenate option steps on -t/-T option. Closes: #391294 in Debian
+  + Try to use bsd-mailx where possible to force UTF-8 for cddb-tool mail
+    submissions. If not possible, attempt to force UTF-8 via the
+    environment and fall back to mail instead. Closes: #756289 in Debian,
+    issue 111.
+- Make cd-discid live in it's own package
+- Update Urls and dowload sources
+- Refresh the old abcde_2.3.99.6-quote.patch to abcde_2.6-quote.patch
+
+-------------------------------------------------------------------
+Wed Oct  5 14:50:20 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Sat Sep 17 10:41:09 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Thu Feb 10 12:34:16 UTC 2011 - tschmidt@novell.com
+
+- added recommends id3v2
+
+-------------------------------------------------------------------
+Fri Oct 31 10:39:00 CET 2008 - coolo@suse.de
+
+- apply patch from bnc#419800 to fix
+  "abcde quotes some variables incorrectly"
+
+-------------------------------------------------------------------
+Tue Nov 27 14:12:11 CET 2007 - coolo@suse.de
+
+- update to 2.3.99.6: tons of debian bug reports fixed, e.g.
+  * Default to UNICODE (UTF8) tags and comments (Closes: #282332).
+    - Added CDDBPROTO option in config file (Closes: #349951)
+  * Added a missing "INDEX 01" entry for CUE sheet creation.
+  * Avoid completing the encoding of files if we aborted previously.
+  * Embed the CUE sheet if we have a cuesheet file and we have a single FLAC
+    file, even if we are not tagging. This way we can use the file as a source
+    even if it is not tagged/named properly.
+  * Fails to quote filenames properly (Closes: #355296)
+
+-------------------------------------------------------------------
+Thu Sep  7 11:08:40 CEST 2006 - coolo@suse.de
+
+- update to 2.3.3:
+  * Rips done in a single track were getting tagged as Various. Corrected.
+  * Possibly eliminated some bashisms from using a variable as a variable
+    (Closes: #324399). Thanks to A Costa.
+  * MKCUE needs to be passed some $CDROM as an option, or otherwise it will
+    not read the CDROM, in case is not /dev/cdrom.
+  * Also, make the CUEREADER a bit more general, since we might be using other
+    CUE extractors.
+  * Defining the tracknumber now resets the first track if given a number
+    different than 1 (that is: abcde -T 1 2-10 creates songs 1 to 9).
+  * Modified the FAQ to reflect the changes on Marillat's repo
+    (Closes: #315724).
+  * Should be "space" safe: works properly when the working directory contains
+    a space (Closes: #147493).
+  * Repared the CD query for the discid code. When failing to read a disc,
+    actually report that there might be no disc in the drive.
+  * Right now, walk over the different encoders we Depends: on in Debian and
+    use the one available: if a user has a FLAC encoder, abcde will no install
+    vorbis-tools, so it will fail to run out of the box (Closes: #321216)
+  * Added CUE support. Still experimental...
+  * Added FLAC on Ogg. Still not activated, since we cannot get comments added
+    as a post-process action.
+  * Applied patches from Fedora Core (Credit goes to Nils Philippsen
+    <nphilipp@redhat.com>)
+  * Added a post_read() function to be executed before ejecting the CD.
+  * Typos reported by A Costa corrected (Closes: #311463)
+  * Problem with abcde being run in a directory with files containing only
+    numbers solved (Closes: #313628).
+  * vorbiscomment uses now "-R" (Closes: #303566).
+  * "-t" and "-T" use the first track as a starter for the track list.
+    (Closes: #305749).
+  * Added CDPARANOIACDROMBUS option to define -d in case of using IDE and SCSI
+    in case of using ide-scsi emulation layer (Closes: #290768).
+  * Define metaflac in abcde.conf (Closes: #303555)
+  * Double quotation added to solve parsing * as a wildcard (Closes: #302904).
+    Thanks to Christian Grigis for the patch. Also (Closes: #268088).
+  * CDPARANOIAOUTPUT missed some quotes.
+  * Removed some useless lines.
+  * If BATCH is used with ONETRACK, disable BATCH.
+  * Small typos with CDROM comparisons.
+  * Logic for CDROM variable improved.
+  * Changed the way we call flac, to adapt to the new times:
+    --import-vc-from= to --import-tags-from.
+  * DOSPLAYLIST was not included in the list of options.
+  * Options passed to the encoder by using <-o ogg:"-b 192"> are now
+    supported. One can modify the way abcde encodes just for the current CD.
+  * Unfortunatelly I forgot to add the starting number for tags in Ogg. For
+    MP3 is a bit more difficult, since it needs changing the X/YY code.
+  * Also, the order of the tags in metaflac is important for the utf8 names.
+    Thanks to Frederik Juul Christiani (Closes: #297482)
+  * Added CDROMID in the .conf file, for reader programs that need it
+    (Closes: #297005)
+  * Added a check for cdparanoia when encountering data-only CDs.
+  * Use the default while erasing an existing playlist (Closes: #288835).
+  * Does not destroy track information when a track contains "=" in the name
+    (Closes: #290709).
+  * Quotes missing when evaluating a value (Closes: #284018).
+  * Spotted and solved a problem with the way the data tracks were detected
+    (Closes: #282647).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:05 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov  2 13:44:24 CET 2005 - coolo@suse.de
+
+- make CDROM != /dev/cdrom work
+
+-------------------------------------------------------------------
+Fri Jan 21 10:45:21 CET 2005 - coolo@suse.de
+
+- update to 2.2.0
+
+-------------------------------------------------------------------
+Thu Aug  5 09:41:51 CEST 2004 - coolo@suse.de
+
+- update to 2.1.19
+
+-------------------------------------------------------------------
+Fri Oct 31 09:18:18 CET 2003 - coolo@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Oct 13 13:31:20 CEST 2003 - coolo@suse.de
+
+- update to 2.1.6
+
+-------------------------------------------------------------------
+Fri Aug 15 09:47:06 CEST 2003 - coolo@suse.de
+
+- sent patch yesterday, today new version
+
+-------------------------------------------------------------------
+Wed Aug 13 08:58:16 CEST 2003 - coolo@suse.de
+
+- update to 2.1.4
+- apply diff to avoid -1 syntax to tail,head,nice
+
+-------------------------------------------------------------------
+Tue Apr 22 09:02:49 CEST 2003 - coolo@suse.de
+
+- update to 2.1.2
+
+-------------------------------------------------------------------
+Thu Apr 10 16:07:21 CEST 2003 - coolo@suse.de
+
+- updated to 2.1.1
+
+-------------------------------------------------------------------
+Sun Aug  4 19:21:22 CEST 2002 - coolo@suse.de
+
+- Initial package
+

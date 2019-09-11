@@ -1,0 +1,325 @@
+-------------------------------------------------------------------
+Thu May  2 14:22:58 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Fix initialisation of encrypted password store (bsc#1133597,
+  alpine-pinepw.patch).
+
+-------------------------------------------------------------------
+Thu Nov  8 08:46:18 UTC 2018 - Michal Svec <msvec@suse.com>
+
+- updated upstream URL
+
+-------------------------------------------------------------------
+Mon Jul  3 23:12:05 UTC 2017 - jengelh@inai.de
+
+- imap is bundled with alpine since a while, so there is no need
+  for imap-devel anymore (whose removal is planned for
+  openSUSE:Factory).
+
+-------------------------------------------------------------------
+Tue Mar 21 21:21:06 UTC 2017 - opensuse@dstoecker.de
+
+- add chappa patch to add own rules (chappa-rules.patch)
+- add chappa patch to change from header (chappa-fromheader.patch)
+- add chappa patch to better justify paragraphs (chappa-fillpara.patch)
+- drop empty lint.diff
+
+-------------------------------------------------------------------
+Tue Mar 21 15:31:10 UTC 2017 - max@suse.com
+
+- New version 2.21:
+  * New SHORTSUBJECT, SHORTSUBJKEY and SHORTSUBJKEYINIT token for
+    index format
+  * New SMARTTIME24 token for index screen.
+  * Added support for RFC 2971 - IMAP ID extension.
+  * SMIME: Upgrade the default signature digest from SHA-1 to
+    SHA-256.
+  * SMIME: Turn off automatic signing and encrypting of a message
+    when bouncing.
+  * The complete change list can be viewed by pressing "R"
+    in the Alpine main menu.
+- Updated "Chappa" patches to the latest version.
+- Obsolete patches:
+  * alpine-no-add-needed.patch
+  * chappa-ignoresize.patch
+  * chappa-unixnullbug.patch
+  * pico-stripwhitespace.diff
+  * pine-nonvoid-function.patch
+
+-------------------------------------------------------------------
+Mon Apr  4 14:18:00 CEST 2016 - kukuk@suse.de
+
+- Remove BuildRequires for libgssglue (via libgssapi provides),
+  unused since krb5_gssapi is used.
+
+-------------------------------------------------------------------
+Fri Mar  4 17:53:58 UTC 2016 - olaf@aepfle.de
+
+- Remove timestamp from binary
+  alpine-timestamp.patch
+
+-------------------------------------------------------------------
+Wed Mar 25 16:59:29 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.20
+* Upgrade UW-IMAP to Panda IMAP from github.com/jonabbey/panda-imap
+* S/MIME: Add screen to manage certificates.
+* S/MIME: Signatures are validated using the user's certificates
+  instead of the ones included in the message. Behavior can be
+  disabled by disabling the option "Validate Using Certificate
+  Store Only" which is enabled by default.
+* S/MIME: add the sender certificate to the list of certificates
+  in encrypted messages to make it possible for the sender to
+  decrypt the message they sent.
+* S/MIME: Forwarding a message will include the signed part as part
+  of the text and not as a multipart message, just as the reply
+  command does.
+* Add support to selective expunge through a subcommand of the
+  select-apply commands.
+* Pico: New subcommand of the search command, allows to reverse the
+  direction of search.
+* Add /tls1, /tls1_1, /tls1_2 and /dtls1 to the definition of a
+  server to use different ways to connect using ssl, for example
+  {server.com/tls1} will attempt to connect to server.com at the
+  ssl imap port (port 993) and establish a connection using TLSv1.
+  These flags can be used in conjunction with the /ssl flag, the
+  ssl flag is redundant. Conversely, however, the /ssl flag does
+  not imply any of these flags; the /ssl flag means SSLv3 or, if
+  not available, SSLv2 in the SSL port.
+* Alpine does not attempt to automatically reopen a collection that
+  was not opened due to cancellation by the user. Instead, the user
+  must try to open it explicitly.
+* Experimental: Write the content-type of a message in lowercase,
+  as some non-compliant servers do not understand uppercase
+  content-type.
+* Opening a folder updates recent count in maildrops (this
+  already works for other types of folders)
+* Pico: Justification works without need of a predefined quote
+  string. This allows justification of blocks of text that are
+  indented with spaces.
+* Decode the name of attachment names, so they can be written as
+  part of the description of the part.
+* Replace tabs by spaces in From and Subject fields to control for
+  size in screen of these fields. Change only in index screen
+  display.
+- Drop alpine-month_name-utf8.patch (solved differently upstream),
+  drop alpine-mime-type-workaround.patch (merged upstream)
+- Add lint.diff to workaround new source code problems
+
+-------------------------------------------------------------------
+Mon Mar  3 11:54:13 UTC 2014 - jengelh@inai.de
+
+- The pico and pilot standalone programs have version numbers of
+  their own; expose these in the .spec file
+
+-------------------------------------------------------------------
+Wed Jan 22 11:43:51 UTC 2014 - max@suse.com
+
+- Add alpine-mime-type-workaround.patch:
+  Send mime type in lowercase to work around MUAs that can't cope
+  with upper case mime type strings in the Content-Type header
+  such as the webmailer of GMX.  This is a backport from the
+  current development release and will become obsolete with the
+  next version upgrade.
+
+-------------------------------------------------------------------
+Mon Sep  2 14:07:32 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.11
+* Increase encryption of S/MIME encrypted messages.
+* Pico: Improvements in justification of paragraphs: lines that
+  begin with a quote string, followed by a space were considered
+  individual paragraphs, now they are considered part of a paragraph.
+* Unix Alpine: Allow local .pinerc file to be a symbolic link.
+* Experimental extended support of recognition of UTF-8 in urls
+* Added recognition of ws and wss URIs.
+* Add ability to color folder names, directory names, and text in
+  the FOLDER SCREEN.
+* Add the ability to color any token used in the display of the
+  INDEX SCREEN.
+* New option preserve-original-fields that adds the ability to
+  preserve To: and Cc: fields when replying to a message, as
+  specified by original sender.
+* Added Quota subcommands for printing, forwarding, saving, etc. 
+- Refresh from homepage (and save as unified): chappa-*.patch
+- Refresh for -p1: operation-may-be-undefined-warning.diff,
+  fix-implicit.patch, alpine-gcc44.diff
+- Drop quilt-patches/alpine-2.00-as_needed.patch (merged upstream)
+
+-------------------------------------------------------------------
+Wed May 22 20:37:21 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.10
+* Quota report for IMAP folders that support it
+  (press the "@" command in the index screen of such folder).
+* Search a folder for the content of any header with the ";"
+  command.
+* Foreign characters are decoded correctly in IMAP folders.
+* Recognition of proper mime type for docx, xlsx, and pptx files.
+* When composing a message, Alpine will create a new thread when
+  the subject is erased.
+- Uncompress patches, since quilt does not like working with them
+- Remove because merged upstream: chappa-filterflagbug.patch(.gz),
+  chappa-nlinfobug.patch(.gz), chappa-replacebug.patch(.gz),
+  chappa-searchheader.patch(.gz), chappa-streamlock.patch(.gz)
+- Rediff to clear fuzz: alpine-no-add-needed.patch,
+  pine-nonvoid-function.patch
+- Remove because no longer applies and total lack of description
+  as per Patch Guidelines:
+  alpine-no-add-needed.patch
+
+-------------------------------------------------------------------
+Wed May 22 12:10:17 UTC 2013 - jengelh@inai.de
+
+- Remove old SUSE definitions
+
+-------------------------------------------------------------------
+Fri Jul 27 08:43:05 UTC 2012 - aj@suse.de
+
+- Include sys/resource.h for getrlimit.
+
+-------------------------------------------------------------------
+Wed Feb  8 11:36:12 UTC 2012 - puzel@suse.com
+
+- clean up spec file 
+
+-------------------------------------------------------------------
+Mon Oct 17 08:45:32 UTC 2011 - max@suse.com
+
+- Fix two instances of premature closedir() and a potential buffer
+  overflow in the maildir handler (alpine-maildir-closedir.patch).
+
+-------------------------------------------------------------------
+Tue Oct 11 13:10:14 UTC 2011 - max@suse.com
+
+- Fix and extend operation-may-be-undefined-warning.diff
+  (bnc#558841)
+- Overhaul RPM summary and description.
+- Month names containing non-ASCII characters were rendered
+  incorrectly in non-UTF8 locales (bnc#597744).
+
+-------------------------------------------------------------------
+Mon Oct 10 13:40:24 UTC 2011 - max@suse.com
+
+- Explicitly set the ssl prefix dir to fix build on ARM.
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:39 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sat Sep 17 10:55:07 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Sat Sep  3 18:53:17 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix build with no-add-needed 
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:05 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Jul 29 17:05:08 CEST 2009 - max@suse.de
+
+- Included the latest bugfix-patches from Eduardo Chappa:
+- replacebug: Fix a bug in Pico which makes it not update the
+  screen.
+- unixnullbug: Fix a bug that makes Alpine crash when opening a
+  unix type folder.
+- streamlock: Fix a bug that makes Alpine crash when suspending it.
+- filterflagbug: Fix a bug in Alpine that makes it not to set a
+  flag in a filtered message (bnc#342075).
+- nlinfobug: Fix a bug in Pico and Pilot that makes them crash
+  for bad locale information.
+- unverified: Fix a bug that makes Alpine not to give a warning
+  if the Newsgroup header is present
+
+-------------------------------------------------------------------
+Sat Jun 20 14:11:40 CEST 2009 - cmorve69@yahoo.es
+
+- fixed build with --as-needed
+
+-------------------------------------------------------------------
+Tue Jun  2 12:06:56 CEST 2009 - coolo@suse.de
+
+- fix compilation with gcc44
+
+-------------------------------------------------------------------
+Wed Oct 15 09:33:07 CEST 2008 - max@suse.de
+
+- lzma is no longer needed for building.
+
+-------------------------------------------------------------------
+Thu Oct  9 10:39:50 CEST 2008 - meissner@suse.de
+
+- added unistd.h for prototypes
+
+-------------------------------------------------------------------
+Mon Sep 29 17:23:42 CEST 2008 - max@suse.de
+
+- Update to version 2.00 and the related Chappa patches.
+- Changes include:
+  *  Experimental S/MIME support added in UNIX versions of Alpine
+  *  Enhance address completion in the composer (TAB command)
+  *  Add line wrapping when displaying PRE formatted sections of
+     HTML
+  *  Fix a crash when using tab-completion for selecting a Save
+     filename
+  *  Fix viewing, printing, exporting, replying, and bouncing of
+     message digests.
+  *  The Unknown Character Set option did not work correctly
+     interpreting unknown characters in message headers
+  *  Crash when TABing to next folder, the next folder with new
+     mail is a POP folder, and there is a more than 10 minute
+     pause between typing the TAB and typing the Yes
+- For more details, see:
+  http://www.washington.edu/alpine/changes/1.10-to-2.00.html
+
+-------------------------------------------------------------------
+Sat Apr 26 14:18:40 CEST 2008 - coolo@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Fri Apr 25 14:40:15 CEST 2008 - bk@suse.de
+
+- Update to alpine-1.10 and update fixes suggested for this version
+
+-------------------------------------------------------------------
+Fri Jan 11 17:04:18 CET 2008 - bk@suse.de
+
+- Update to alpine-1.00 and apply fixes suggested for this version 
+
+-------------------------------------------------------------------
+Tue Sep 25 13:05:20 CEST 2007 - bk@suse.de
+
+- Use only select patches from Eduardo (fixes crash in mail reader)
+
+-------------------------------------------------------------------
+Wed Sep 19 14:32:24 CEST 2007 - bk@suse.de
+
+- Remove files with unclear license from packaged sources (#308533)
+- Add small bug fix: Postponed messages which were labelled as UTF-8 
+- Spec file cleanup: Comments improved, obsoleted some warning flags
+
+-------------------------------------------------------------------
+Tue Sep  4 17:15:02 CEST 2007 - bk@suse.de
+
+- Update to final prerelease 0.9999 with updates from Eduardo Chappa
+
+-------------------------------------------------------------------
+Thu Aug  9 12:42:41 CEST 2007 - bk@suse.de
+
+- add a number of critcally needed fixes for some crashes (and more)
+
+-------------------------------------------------------------------
+Thu Aug  2 18:14:38 CEST 2007 - bk@suse.de
+
+- initial version 0.999 + assorted feature patches and some fixes 
+

@@ -1,0 +1,130 @@
+# Macros for building OpenStack RPMs.
+#
+# Copyright: (c) 2012 SUSE Linux Products GmbH
+
+# python specific macros to be compatible with other distros to share OpenStack
+# upstream packaging
+%python2_sitelib %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
+%python2_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")
+
+# Cleanup unnecessary files, avoid usage of 'git' to generate timestamps and
+# do not use intersphinx module as it requires internet access:
+%openstack_cleanup_prep() \
+find . -name "*.placeholder" -delete -print \
+find . -name "*.git*" -delete -print \
+sed -i -e "s|html_last_updated_fmt = .*|html_last_updated_fmt = '%{version}'|" doc/source/conf.py || : \
+sed -i -e "s|'sphinx.ext.intersphinx',\\?||" doc/source/conf.py || : \
+sed -i -e "/^\\[testenv\\]/ a\\sitepackages = True" tox.ini \
+# We don't want the build to fail in man-page builds \
+sed -i -e "s|warnerrors = .*||" setup.cfg \
+# We use obs-service-git_tarballs, thus we don't need to depend on python-setuptools-git: \
+sed -i -e "s|'setuptools[-_]git.*'||" setup.py \
+%nil
+
+# If you only want to build man-pages, this macro is better than
+# 'setup.py build_sphinx': it's slow and will generate errors. Instead,
+# directly call sphinx-build on a copy of the man pages sources (to
+# avoid having other docs to build)
+%openstack_sphinx_build_manpages_only() \
+mkdir doc/source-man \
+cp -a doc/source/{conf.py,man} doc/source-man/ \
+sphinx-build -b man doc/source-man/ doc/build/man/ \
+rm -r doc/source-man doc/build/man/.doctrees \
+%nil
+
+# Create given user with given group (to be used as %pre scriptlet for
+# openstack related daemons). Also migrates away from openstack- prefixed
+# users/group if it exists
+# Optional:
+#   -u userid to pick
+#   -g groupid to pick
+#   -s shell to pick
+# Example: openstack_pre_user_group_create keystone keystone
+
+%openstack_pre_user_group_create(u:g:s:) \
+    # Migrate away from old openstack- prefix \
+    oldu=$(getent passwd openstack-%1 |cut -d: -f3) || : \
+    [ -n "$oldu" ] && { \
+        oldu="-o -u $oldu"   \
+        userdel openstack-%1  \
+    } \
+    getent group %2 >/dev/null || { \
+        # Migrate away from old openstack- prefix \
+        oldg=$(getent group openstack-%2 |cut -d: -f3) || : \
+        [ -n "$oldg" ] && oldg="-o -g $oldg" \
+        [ -n "$oldg" ] && groupdel openstack-%2 || : \
+        [ -z "$oldg" ] && oldg="%{-g:-g %{-g*}}" \
+        groupadd -r %2 $oldg \
+    } \
+    [ -z "$oldu" ] && oldu="%{-u:-u %{-u*}}" \
+    getent passwd %1 >/dev/null || { \
+        useradd -r -g %2 $oldu -d %{_localstatedir}/lib/%1 %{-s:-s %{-s*}}%{!-s: -s /sbin/nologin} -c "OpenStack %1 Daemon" %1 \
+    } \
+%nil
+
+# Installing init scripts is always done the same way. Arguments:
+#  1) daemon name (lowercase, e.g. 'api' for 'nova-api')
+#
+# Flags:
+#  -d Description
+#  -s Should-Start/Stop LSB header content (optional, e.g 'rabbitmq-server postgresql')
+%openstack_init_script_install(:d:s:) \
+%define desc %{-d*}%{!-d:OpenStack} (%1) \
+%define should %{-s*}%{!-s: } \
+mkdir -p %{buildroot}%{_sbindir} \
+tmp=$(mktemp) \
+cat /etc/init.d/openstack-skeleton | sed -e "s/__COMPONENT__/%{component}/g" -e "s/__DAEMON__/%1/g" -e "s/__DESC__/%desc/g" > $tmp \
+sed -i -e "s/__SHOULD__/%should/" $tmp \
+install -D -m 755 $tmp %{buildroot}%{_initddir}/openstack-%{component}-%1 \
+ln -s ../..%{_initddir}/openstack-%{component}-%1 %{buildroot}%{_sbindir}/rcopenstack-%{component}-%1 \
+%nil
+
+
+%openstack_test_package_buildroot_dir %{buildroot}%{_localstatedir}/lib/%{name}-test
+
+# Installing a test package is always done the same way:
+%openstack_test_package_install() \
+install -d -m 755 %{openstack_test_package_buildroot_dir} \
+# Some packages differ here, try to install as much as possible: \
+cp -av \\\
+       README.md README.rst PKG-INFO .testr.conf .*tests bin \\\
+       etc examples manage.py openstack_dashboard run_tests.* \\\
+       setup.cfg setup.py smoketests static test tests tools \\\
+       tox.ini \\\
+   %{openstack_test_package_buildroot_dir} || : \
+rm -rf %{openstack_test_package_buildroot_dir}/%{component} \
+ln -s %{python_sitelib}/%{component} %{openstack_test_package_buildroot_dir}/%{component} \
+%nil
+
+
+# To generate self-signed certificates to be used in (demo) setups 
+# with Apache2, you can use the following set of macros:
+
+#NOTE: This one can't really be used in practice, the "build" script doesn't know this
+#      macro, it would have to be put into the PrjConf, which doesn't seem worth it:
+%openstack_apache_ssl_cert_requires() \
+Requires(post): apache2-utils \
+Requires(post): openssl \
+Requires(post): sysconfig \
+%nil
+
+%openstack_apache_ssl_cert_install() \
+install -d %{buildroot}%{_sysconfdir}/apache2/ssl.{crt,csr,key} \
+install -d %{buildroot}/srv/www/htdocs \
+touch %{buildroot}%{_sysconfdir}/apache2/ssl.key/%{name}-{ca,server}.key \
+touch %{buildroot}%{_sysconfdir}/apache2/ssl.csr/%{name}-server.csr \
+touch %{buildroot}%{_sysconfdir}/apache2/ssl.crt/%{name}-{ca,server}.crt \
+%nil
+
+#TODO: Parameterize so that one can set a custom domain, etc.
+%openstack_apache_ssl_cert_post() \
+if [ ! -s %{_sysconfdir}/apache2/ssl.csr/%{name}-server.csr ] ; then \
+    (umask 377 ; /usr/bin/gensslcert -C %{name} -n %{name}.example.com) \
+fi \
+%nil
+
+%openstack_apache_ssl_cert_files() \
+%ghost %{_sysconfdir}/apache2/ssl.key/%{name}-*.key \
+%ghost %{_sysconfdir}/apache2/ssl.csr/%{name}-server.csr \
+%ghost %{_sysconfdir}/apache2/ssl.crt/%{name}-*.crt \
+%nil

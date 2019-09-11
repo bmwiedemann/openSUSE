@@ -1,0 +1,1525 @@
+-------------------------------------------------------------------
+Tue May 14 11:15:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.44.14:
+  + Fix glgo#GNOME/librsvg#425: Don't fail parsing if the system's
+    locale is broken.
+  + Fix glgo#GNOME/librsvg#438, glgo#GNOME/librsvg#443: Don't
+    create intermediate raster surfaces unless absolutely needed.
+    This was causing blurred output for SVGs from Inkscape and
+    Illustrator, since they include an "enable-background" property
+    even when there are no filters in use.
+  + Fix glgo#GNOME/librsvg#443: Fix blurry output when
+    enable-background is used without filters.
+  + Fix glgo#GNOME/librsvg#455: Fix rounding error on i386.
+  + Check for Cairo errors when constructing paths.
+
+-------------------------------------------------------------------
+Sat Feb 16 11:44:35 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.44.13:
+  + Updated compilation docs for Debian.
+  + Fix glgo#GNOME/librsvg#415: Register RsvgHandleFlags and the
+    RsvgError enum values in a thread-safe fashion.
+
+-------------------------------------------------------------------
+Mon Jan 21 18:41:47 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.44.12:
+  + At build time, you can now pass $CARGO and $RUSTC environment
+    variables if you need to override the default Rust toolchain.
+    Please see COMPILING.md for details.
+  + Fix glgo#GNOME/librsvg#405: In the gdk-pixbuf loader, don't
+    crash the write() function doesn't receive a GError.
+  + Fix glgo#GNOME/librsvg#398: Detect circular references in
+    gradients.
+
+-------------------------------------------------------------------
+Sat Dec 29 21:22:19 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.44.11:
+  + Fix crash when a linear RGB filter is followed by an SRGB
+    filter.
+  + Fix stack overflow when freeing thousands of sibling elements.
+  + feMorphology was crashing with a negative scaling
+    transformation.
+  + Fix positioning of adjacent <tspan> elements.
+
+-------------------------------------------------------------------
+Tue Dec 11 20:04:12 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.44.10:
+  + Don't crash if there is no rsvg_handle_write() before
+    rsvg_handle_close().
+  + Avoid undefined behavior when casting opaque pointers.
+  + Added g_warning()s to ensure the API is called in the correct
+    sequence.
+
+-------------------------------------------------------------------
+Wed Nov 14 09:37:23 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.44.9:
+  + rsvg-convert was positioning extracted elements incorrectly
+    when using the -w/-h options together with --export-id.
+  + Mis-rendering in small arc segments.
+  + Rendering of gradients for horizontal/vertical stroked lines
+    with gradientUnits="userSpaceOnUse".
+  + Fix a couple of memory leaks in the error paths of the
+    GdkPixbuf loader.
+
+-------------------------------------------------------------------
+Thu Oct 25 09:52:00 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.44.8:
+  + Don't drop spaces around <tspan> elements.
+  + rsvg-convert now uses pixel units for SVG output, instead of
+    points.
+  + Tweaks to have the test suite pass on i386 and non-x86_64
+    platforms.
+  + With RSVG_LOG=1, librsvg will now report when SVGs have
+    references to nonexistent elements, to aid debugging (for
+    example, in an xlink:href attribute).
+  + Allow reference tests with a small difference to pass without
+    breaking the build.
+
+-------------------------------------------------------------------
+Tue Oct  9 20:59:02 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.44.7:
+  + Correctly match the systemLanguage attribute with the user's
+    locale.
+  + Parse xml:lang correctly.
+  + Don't modify the caller's cairo_t state during rendering.
+  + Don't panic if we get a "data:" URI with empty data.
+  + Don't panic on getting a very large "order" for
+    feConvolveMatrix.
+  + Bugs fixed: glgo#GNOME/librsvg#256, glgo#GNOME/librsvg#320,
+    glgo#GNOME/librsvg#334, glgo#GNOME/librsvg#349,
+    glgo#GNOME/librsvg#352.
+
+-------------------------------------------------------------------
+Fri Sep 28 09:33:19 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.44.6:
+  + Fix 32-bit builds.
+- Changes from version 2.44.5:
+  + Fix rsvg_handle_get_dimensions_sub() no longer panics if passed
+    a nonexistent fragment identifier.
+  + CSS processing code is now in Rust, although it still calls
+    libcroco to do the parsing.
+  + Bugs fixed: glgo#GNOME/librsvg#343, glgo#GNOME/librsvg#346,
+    glgo#GNOME/librsvg#347, glgo#GNOME/librsvg#348,
+    glgo#GNOME/librsvg#349.
+
+-------------------------------------------------------------------
+Tue Sep 25 09:33:10 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.44.4:
+  + Cleanups and refactoring.
+  + Bugs fixed: glgo#GNOME/librsvg#341, glgo#GNOME/librsvg#342,
+    glgo#GNOME/librsvg#344, glgo#GNOME/librsvg#345.
+- Changes from version 2.44.3:
+  + Fix building when srcdir != builddir.
+  + Fixes from fuzz testing: don't panic when the feConvolveMatrix
+    kernel is not set; fix upper bounds in filter pixel getters.
+  + Updates to the CI infrastructure and the build documentation.
+  + Bugs fixed: glgo#GNOME/librsvg#339, glgo#GNOME/librsvg#335,
+    glgo#GNOME/librsvg#337, glgo#GNOME/librsvg#338,
+    glgo#GNOME/librsvg#340.
+
+-------------------------------------------------------------------
+Wed Sep  5 14:47:12 UTC 2018 - luc14n0@linuxmail.org
+
+- Append Apache-2.0 and MIT licenses to main package's and
+  librsvg-2-2 subpackage's License tags to comply with Rust crates,
+  static linked against LibRSVG, licenses.
+
+-------------------------------------------------------------------
+Fri Aug 31 18:00:28 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.44.2:
+  + Don't leak all the elements at the toplevel
+    (glgo#GNOME/librsvg#325).
+  + Make masking work on big-endian (glgo#GNOME/librsvg#328).
+  + Fix library ordering so -Wl,--as-needed works.
+
+-------------------------------------------------------------------
+Wed Aug 29 12:01:18 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.44.1:
+  + Don't panic if trying to render a non-empty SVG with no
+    elements (glgo#GNOME/librsvg#324).
+  + All the elements were being leaked at the toplevel
+    (glgo#GNOME/librsvg#325).
+
+-------------------------------------------------------------------
+Thu Aug 23 21:41:25 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.44.0:
+  + Librsvg now has minimal logging for debugging by setting the
+    RSVG_LOG environment variable. See CONTRIBUTING.md for details.
+  + Speed improvements for Gaussian blur, SRGB conversions, and
+    various filters.
+  + Fix glgo#GNOME/librsvg#264: The letter-spacing property now
+    supports "normal" in addition to lengths.
+  + Fix glgo#GNOME/librsvg#318: The font-weight property was being
+    parsed incorrectly.
+  + Fix glgo#GNOME/librsvg#323: Don't use 100% "forever" with
+    malicious SVGs that cause an exponential number of elements to
+    be instanced through the <use> element. We limit the number of
+    <use> instances now.
+  + Fix glgo#GNOME/librsvg#293: Don't panic when masking an empty
+    group.
+  + Fix glgo#GNOME/librsvg#319: Parse single font-family correctly.
+  + Cleanups for the internal representation of elliptical arcs in
+    paths.
+
+-------------------------------------------------------------------
+Thu Aug 23 07:35:34 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.43.4:
+  + This is an early release to test the effects of threading in
+    librsvg.
+  + The lighting and Gaussian blur filters are now parallelized
+    with Rayon; they will use all available cores.
+
+-------------------------------------------------------------------
+Thu Aug 23 07:35:33 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.43.3:
+  + Tentative fix: Don't panic if rendering to a non-image Cairo
+    surface (glgo#GNOME/librsvg#309).
+  + Couple of optimizations.
+
+-------------------------------------------------------------------
+Thu Aug 23 07:35:32 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.43.2:
+  + All the filter effects have been ported to Rust.
+  + We now require Rust 1.26.
+  + We now include Rust debug information even in release builds,
+    to make it easier to obtain stack traces.
+  + Fix glgo#GNOME/librsvg#310: Respect DPI in the font-size
+    property.
+  + Fix: draw the circle/ellipse elements with the same orientation
+    as the SVG 1.1 test suite; this is relevant for
+    stroke-dasharray.
+  + Refactoring of the drawing code and font sizes.
+  + New filters in Rust: feConvolveMatrix, feColorMatrix,
+    feMorphology, feDisplacementMap, feGaussianBlur,
+    feDistantLight, feSpotLight, fePointLight, feTile.
+  + Updated Rust dependencies.
+
+-------------------------------------------------------------------
+Thu Aug 23 07:35:31 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.43.1:
+  + Test fonts should now work with --enable-installed-tests
+    (glgo#GNOME/librsvg#259).
+  + Don't panic when trying to filter an empty group
+    (glgo#GNOME/librsvg#277).
+  + Don't panic if we try to clip an empty group
+    (glgo#GNOME/librsvg#292).
+  + Fix the feOffset filter's coordinate parsing.
+  + Fix linearization of SRGB data in the feComposite filter.
+  + Fix CSS cascading in filters.
+  + Fix, don't render filters if they are in error.
+  + Fixed a couple of memory leaks in the test suite.
+  + Filters now support FillPaint and StrokePaint for input.
+  + Filters now support the color-interpolation-filters property.
+  + The feImage, feBlend, feComponentTransfer filters are now in
+    Rust.
+  + The feOffset filter now supports fractional offsets.
+  + The drawing context code is now in Rust.
+  + All the style property parsers have been moved to
+    rust-cssparser.
+
+-------------------------------------------------------------------
+Thu Aug 23 07:35:30 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.43.0:
+  + Fixes:
+    - feDistantLight and feSpotLight now work again
+      (glgo#GNOME/librsvg#241).
+    - feComposite is fixed not to overwrite the source image in
+      some cases; this fixes drop shadows generated from Inkscape
+      (glgo#GNOME/librsvg#282).
+  + Rust implementation:
+    - Text, tspan and tref elements;
+    - Basic styling infrastructure;
+    - Internals of the drawing infrastructure and bounding-box
+      computation;
+    - Element creation from the parsing stage;
+    - Clipping and Masking.
+  + The feComposite filter now operates in linear RGB space, for
+    better spec compliance (glgo#GNOME/librsvg#275).
+  + Filters now compute their bounds to floating-point values,
+    instead of clipping them to integers.
+  + Text rendering improvements.
+
+-------------------------------------------------------------------
+Thu Aug 23 07:35:28 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.42.7:
+  + Fix a denial-of-service condition from exponential explosion of
+    rendered elements, through nested use of SVG "use" elements in
+    malicious SVGs. This is similar to the XML "billion laughs
+    attack" but for SVG instancing (glgo#GNOME/librsvg#323).
+
+-------------------------------------------------------------------
+Tue Aug  7 23:00:18 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.42.6:
+  + Fix drop-shadows generated from Inkscape; we were overwriting
+    a surface inadvertently (glgo#GNOME/librsvg#282).
+  + Fix confusion between feSpotLight and feDistantLight
+    (glgo#GNOME/librsvg#241).
+  + Don't panic if we try to clip with an empty region
+    (glgo#GNOME/librsvg#292).
+  + Fix out-of-tree builds and tests.
+  + Compilation can now use a RUST_TARGET variable to override the
+    host triplet when cross-compiling. See COMPILING.md for
+    details.
+
+-------------------------------------------------------------------
+Sat Jun  2 15:05:50 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.42.5:
+  + Don't render filter primitives that have invalid attributes.
+    This was causing a crash in feColorMatrix
+    (glgo#GNOME/librsvg#266).
+  + rsvg_handle_render_cairo() will now refuse to render if the
+    cairo_t passed to it is in an error state. Fixes a panic in the
+    cairo-dock program (glgo#GNOME/librsvg#276).
+  + The test suite now writes test artifacts to tests/output
+    instead of /tmp (glgo#GNOME/librsvg#206).
+
+-------------------------------------------------------------------
+Mon May  7 22:47:07 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.42.4:
+  + Fixes:
+    - Elements with systemLanguage attributes without variants now
+      work better.
+    - Possible crash on invalid gradient references.
+    - Negative values are catched in stroke-dasharray properties
+      instead of leaving the cairo_t in an error state
+      (glgo#GNOME/librsvg#227).
+    - Empty transform attribute now correctly yields an identity
+      transform (glgo#GNOME/librsvg#228).
+  + Make robust against patterns and gradients with no children.
+  + Lots of code cleanups and refactorings.
+  + Code moved to Rust: low-level path and PangoLayout drawing,
+    "switch" element.
+
+-------------------------------------------------------------------
+Mon Mar  5 18:13:07 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 2.42.3:
+  + glgo#GNOME/librsvg#205: The configure script now checks for
+    Rust 1.20.0. Previously this minimum requirement was not
+    well-defined.
+  + glgo#GNOME/librsvg#204: New feature: If an SVG has an <a> link
+    element, we now generate the corresponding link when
+    outputting to a Cairo PDF surface.  If you use rsvg-convert(1)
+    with PDF output, <a> links in the SVG will work in the PDF.
+  + glgo#GNOME/librsvg#108: New feature: support font-size:larger
+    and font-size:smaller relative sizes.
+  + New feature: rsvg-convert now supports SOURCE_DATE_EPOCH to
+    generate reproducible output for PDFs.
+  + glgo#GNOME/librsvg#197: New requirement: We now require
+    Freetype2 2.9.0, which fixes font rendering bugs. The test
+    reference PNGs have been regenerated with this version.
+  + glgo#GNOME/librsvg#91: Fix rendering of masks and clips when
+    the initial transformation has a translation component.
+  + glgo#GNOME/librsvg#112: Fix: apply style attributes for all SVG
+    elements, not just for the toplevel one.
+  + glgo#GNOME/librsvg#161: Fix the marker angle for the last
+    vertex of closed paths.
+  + glgo#GNOME/librsvg#198: Fix: Make rsvg_pixbuf_from_file() and
+    its derived functions work again.  Now we have tests for the
+    whole public API.
+  + glgo#GNOME/librsvg#143: Minor optimizations for Gaussian blurs.
+  + glgo#GNOME/librsvg#201: Minor speedups in the code to parse SVG
+    attributes.
+  + glgo#GNOME/librsvg#178: Fix some tests that failed on 32-bit
+    machines.
+  + In addtion to --enable-debug/--disable-debug to control the
+    Rust compilation, now you can use an environment variable
+    LIBRSVG_DEBUG=yes / LIBRSVG_DEBUG=no if you wish.
+  + Code moved to Rust: SVG paint servers, SVG attribute parsing.
+  + We now use a Cargo workspace internally, to move more things to
+    Rust.
+- Add pkgconfig(freetype2) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:36:14 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Feb  2 09:16:12 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.42.2:
+  + Don't crash when feConvolveMatrix doesn't specify orderx/ordery
+    attributes (glgo#librsvg#193).
+  + Parse stroke-dasharray property correctly. This code is in Rust
+    now; yay! (glgo#librsvg#136).
+  + Don't render markers if they are zero-sized, per the spec.
+  + Performance: eliminate a bunch of string copies during parsing.
+  + Update rust-cssparser to 0.23.
+
+-------------------------------------------------------------------
+Tue Jan 23 21:41:14 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.42.1:
+  + Parse the transform attribute in a faster/simpler way. We now
+    use rust-cssparser instead of lalrpop.  This is especially
+    noticeable on SVGs with lots of "transform" attributes
+    (glgo#librsvg#182).
+  + Don't crash when setting a gradient on a zero-sized object
+    (glgo#librsvg#187).
+  + Inherit attributes in the <svg> element properly
+    (glgo#librsvg#181).
+  + rsvg-convert - fix error reporting when reading from stdin
+    (glgo#librsvg#160).
+  + Fix detection of image type in "data:" URIs when they don't
+    specify a MIME type (glgo#librsvg#152).
+  + More stringent parsing of path data; better tests
+    (glgo#librsvg#133).
+  + Fix typos and links in the .md files.
+
+-------------------------------------------------------------------
+Tue Jan  9 22:43:13 UTC 2018 - zaitor@opensuse.org
+
+- Update to version 2.42.0:
+  + Fix a memory leak in rsvg_handle_new_from_file().
+  + Optimize the xml:space normalization function.
+  + Fix a runtime warning in the feMergeNode code
+    (glgo#GNOME/librsvg#179).
+  + Clarify documentation about the rsvg_*_sub() APIs
+    (glgo#GNOME/librsvg#175).
+  + Stylistic fixes from cargo-clippy.
+  + Port the Pango glue code to Rust.
+  + New ARCHITECTURE.md with a description of librsvg's internals.
+- Clean up spec, use autosetup macro.
+
+-------------------------------------------------------------------
+Wed Dec 27 20:55:24 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.41.2:
+  + Bug fixes:
+    - Mis-use of libxml2 (bgo#787895).
+    - Allow masks and clips to reuse a node being drawn
+      (bgo#761175).
+  + Fixes:
+    - xml:space normalization, per the spec.
+    - Bugs from Coverity runs.
+    - Loading files one byte at a time.
+    - Some memory leaks.
+  + Don't access the file system when deciding whether to load a
+    remote file with a UNC path for a paint server (i.e. don't try
+    to load it at all).
+  + Add:
+    - Support for cross-compilation of the Rust code.
+    - Verbosity to Cargo.
+  + Markers now have the correct default size per the SVG spec.
+  + Don't render elements that establish a viewport if their
+    viewBox size is 0, per the spec.
+  + SVG elements ported to Rust: image, clipPath, mask, character
+    data in elements.
+  + Reference documentation now have an overview of the library and
+    is DocBook 5.1.
+  + Expanded the test suite.
+  + Lots of internal refactoring.
+- Changes from version 2.41.0:
+  + The big news is that parts of librsvg are now implemented in
+    the Rust programming language, instead of C. The public API
+    remains identical. Rust should provide us with memory safety
+    and nicer built-in abstractions for the code, as well as an
+    easier way to do unit tests.
+  + Added an "--enable-debug" option to configure.ac - this will
+    tell the Rust compiler to generate debugging code, instead of
+    working in release mode. Note that you must still pass CFLAGS
+    by hand by the regular means for the C code.
+  + The path data parser now handles boolean values in Arc elements
+    correctly.
+  + Radial gradients now adjust the focus point correctly to be
+    within the gradient's radius.
+  + Stroke width normalization is now conformant to the spec.
+  + Viewport-relative length normalization is now conformant to the
+    spec.
+  + Added some of the official SVG 1.1 test files to our test
+    suite. Fixed a little bunch of conformance bugs.
+  + Code that has been converted to Rust:  marker orientations and
+    rendering, path data parser, path building, length
+    normalization, gradient inheritance, bounding boxes with affine
+    transformations.
+  + Added tests/README.md with instructions on how to run the test
+    suite and update it.
+  + rsvg-test can now skip files or directories that start with
+    "ignore".
+  + Fixes:
+    - feImage filters when they reference SVG nodes.
+    - eComponentTransferFunction when there are duplicated feFuncX.
+      elements.
+    - Conformance bugs in gradient inheritance.
+    - A few minor issues.
+  + Fixed bugs: bgo#763386, bgo#603550, bgo#776297, bgo#761871,
+    bgo#686953.
+- Changes from version 2.41.1:
+  + The feConvolveMatrix filter primitive now is working.
+  + Pattern specifications can now have a fallback color, per the
+    spec - https://www.w3.org/TR/SVG/painting.html#SpecifyingPaint
+  + Tests now use a very basic form of reproducible font rendering.
+    This means that "make check" should pass even if you have a
+    custom Fontconfig setup.
+    - A few cases of uninitialized struct fields.
+  + Per the spec, we now don't render elements which have invalid
+    attributes.
+  + Don't crash in filters when one of them yields an invalid
+    surface for an intermediate result.
+  + Added a bunch of new test cases for the new features and the
+    code converted to Rust.
+  + cairo-rs 0.2.0 and lalrpop 0.13.1 are now required.
+  + Fixes:
+    - Recursive fallbacks in gradients.
+    - Division by zero in feTile filter when the input surface is
+      empty.
+    - parsing of "azimuth", "elevation", "limitingConeAngle" for
+      filter effects.
+  + Fixed bugs: bgo#621088, bgo#587721, bgo#776932, bgo#777155,
+    bgo#776297, bgo#777834, bgo#634324, bgo#783835, bgo#779489,
+    bgo#782098, bgo#777833, bgo#786372, bgo#634514, bgo#785276,
+    bgo#778666.
+- Update Url to https://wiki.gnome.org/Projects/LibRsvg: current
+  LibRsvg project's web page.
+- Add BuildRequires for the following new dependencies that
+  upstream's rust implementation brought: cargo, rust and rust-std.
+- Add pkgconfig(cairo-png) BuildRequires: it was already being
+  pulled with pkgconfig(cairo) and used, since they live in the
+  same devel package.
+- Add gio-unix-2.0 and gthread-2.0 pkgconfig BuildRequires: they
+  were already being pulled with pkgconfig(glib-2.0) and used,
+  since they all live in glib2-devel package.
+- Adopt the use of %make_build rather than raw make command and
+  switch %makeinstall by the preferred %make_install macros,
+  following the best practices.
+- Remove obsoleted %clean section since RPM does this job now and
+  replace old macro for number of jobs control with %make_build
+  following best practices.
+- Change rsvg-thumbnailer subpackage group to
+  Productivity/Graphics/Other as this is a better fit for it.
+- Export -Wl,-z,noexecstack LDFLAG to avoid executable-stack
+  issues. It's only a temporary flag until upstream give feedback
+  (glgo#GNOME/librsvg#177).
+
+-------------------------------------------------------------------
+Wed Dec 27 13:03:12 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups, drop redundant %clean section,
+  update summaries.
+
+-------------------------------------------------------------------
+Sat Dec 16 16:38:47 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 2.40.20:
+  + Allow masks and clips to reuse a node being drawn (bgo#761175).
+  + Don't access the file system when deciding whether to load a
+    remote file with a UNC path for a paint server (i.e. don't try
+    to load it at all).
+  + Fix generation of Vala bindings when compiling in read-only
+    source directories.
+
+-------------------------------------------------------------------
+Thu Oct  5 10:10:19 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 2.40.19:
+  + Fix the <switch> element; it wasn't working at all.
+  + Fix loading when rsvg_handle_write() is called one byte at a
+    time.
+  + Backported the test suite machinery from the master branch.
+  + Bugs fixed: bgo#587721, bgo#621088, bgo#634324, bgo#634514,
+    bgo#777155, bgo#777833, bgo#782098, bgo#785276, bgo#786372,
+    bgo#787895.
+- Add pkgconfig(fontconfig) and pkgconfig(pangoft2) BuildRequires:
+  new dependencies verified by configure.
+
+-------------------------------------------------------------------
+Thu Jul 20 09:00:14 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.40.18 (boo#1049607, CVE-2017-11464):
+  + Fix division-by-zero in the Gaussian blur code (bgo#783835,
+    boo#1049607, CVE-2017-11464).
+  + Fix other cases of division-by-zero on fuzzed SVG files.
+  + Don't crash on invalid transformation matrices.
+  + Support Visual Studio 2017; generate .pc files for Meson on
+    Windows.
+
+-------------------------------------------------------------------
+Mon Apr 10 07:06:52 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.40.17:
+  + bgo#778666: Use our own thumbnailer specification file, so
+    gnome-desktop-thumbnailer can generate thumbnails outside of
+    the calling process.
+  + Removed some redundant code.
+  + Windows build fixes.
+- Split out new sub-package rsvg-thumbnailer (noarch).
+
+-------------------------------------------------------------------
+Thu Jun  9 08:47:24 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.40.16:
+  + Support for building the introspection files under MSVC.
+  + Make the zooming options in rsvg-convert(1) work again for
+    scaling the resulting image (bgo#760262).
+  + Wikipedia generates equations as SVGs and renders them, but
+    uses fill="currentColor". Since we don't let caller specify a
+    starting state for CSS, we need to start with opaque black as
+    the default current color (bgo#764808).
+  + Added documentation for how to replace the deprecated
+    rsvg_handle_set_size_callback().
+- Drop librsvg-Fix-rsvg-convert.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Apr 18 11:18:56 UTC 2016 - zaitor@opensuse.org
+
+- Add librsvg-Fix-rsvg-convert.patch: Actually scale the image if
+  required, regression fix from upstream git (bgo#760262).
+
+-------------------------------------------------------------------
+Fri Apr 15 21:47:01 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Sat Apr  2 09:58:17 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.40.15:
+  + Librsvg now uses the Contributor Covenant Code of Conduct,
+    version 1.4, to which all contributors and maintainers are
+    expected to abide. Please see the code_of_conduct.md file for
+    details.
+  + Fixed builds on Visual Studio pre-2012.
+  + Fixed bgo#759084: Don't crash when filters don't actually
+    exist.
+  + Updated our autogen.sh to use modern autotools.
+  + Fixed bgo#761728: Memory leak in the PrimitiveComponentTransfer
+    filter.
+
+-------------------------------------------------------------------
+Fri Jan  8 19:20:06 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.40.13:
+  + Fixed the Windows build.
+  + Added basic support for the "baseline-shift" attribute in text
+    objects (bgo#340047).
+  + Fixed some duplicate logic when rendering paths (bgo#749415).
+  + Rewrote the markers engine (bgo#685906, bgo#760180).
+
+-------------------------------------------------------------------
+Wed Dec  2 09:54:39 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.40.12:
+  + Refactoring of the test harness to use Glib's gtest
+    infrastructure, instead of using home-grown machinery.  Tests
+    can simply be put as SVG files in the tests/subdirectories; it
+    is not necessary to list them explicitly in some text file.
+  + Gzipped SVGs now work if read from streams.
+  + References to objects/filters/URIs/etc. are now handled lazily.
+    Also, there is a general-purpose cycle detector so malformed
+    SVGs don't cause infinite loops.
+  + Removed parsing of Adobe blend modes; they were not
+    implemented, anyway.
+  + Bugs fixed: bgo#700911, bgo#630732, bgo#677068.
+
+-------------------------------------------------------------------
+Thu Oct  8 07:25:58 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.40.11:
+  + Add project files for building on Visual Studio (bgo#753555).
+  + Added an "--export-id" option to rsvg-convert(1). This lets you
+    select a single object to export, for example, to pick out a
+    group from a multi-part drawing.  Note that this is mostly
+    useful for PNG output right now; for SVG output we don't
+    preserve many attributes which could be useful in the extracted
+    version.  Doing this properly requires an internal "output to
+    SVG" backend instead of just telling Cairo to render to SVG.
+
+-------------------------------------------------------------------
+Sun Aug  9 10:43:43 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.40.10:
+  + bgo#748608: Memory leak when Gaussian-blurring.
+  + bgo#739329: Font-family attributes with singly-quoted names
+    were not handled correctly, yielding incorrect fonts.
+  + bgo#476507: Path start/end markers didn't have the correct
+    angle if the path was a curve with coincident control points.
+  + bgo#688689: Support font-style="normal" within a non-normal
+    styled text block.
+  + Fixed builddir != srcdir.
+  + Remove a bunch of deprecated GTK+ calls.
+
+-------------------------------------------------------------------
+Fri May 15 10:46:09 UTC 2015 - dimstar@opensuse.org
+
+- Remove reference to gtk2-engine-svg from baselibs.conf: this
+  subpackage hasn't been built since Oct 22 2013.
+
+-------------------------------------------------------------------
+Fri Mar 27 09:22:06 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.40.9:
+  + bgo#738367: V/v/H/h commands in path elements were not working.
+  + bgo#605875: Gaussian-blurred objects were sometimes missing.
+  + bgo#710163: Use _wfullpath() on Windows when canonicalizing
+    filenames.
+
+-------------------------------------------------------------------
+Fri Feb 27 17:37:38 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.40.8 (boo#916784):
+  + Bugs fixed from fuzz testing: bgo#744688 - possible double
+    g_free() when processing stroke-dasharray.
+  + Optimize rendering of polylines, lines, rectangles, circles,
+    and ellipses.  These should be marginally faster, marginally
+    more precise, and should put less pressure on the memory
+    allocator.
+
+-------------------------------------------------------------------
+Mon Feb 16 15:41:43 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.40.7:
+  + Fixed unfiled bug from fuzz testing, where the convolution
+    filter had an integer multiplication overflow.
+  + Fix build of rsvg-convert on Windows.
+  + Fix a bunch of compiler warnings.
+  + Bugs fixed from fuzz testing: bgo#703102, bgo#738050,
+    bgo#738169, bgo#744270, bgo#744299.
+
+-------------------------------------------------------------------
+Wed Dec  3 14:18:39 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.40.6:
+  + MinGW build fixes.
+  + Fix path data number parsing.
+  + Fix build with newer libtool.
+
+-------------------------------------------------------------------
+Mon Oct 13 20:27:02 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.40.5:
+  + bgo#736825: handle: Call close() after write() even on write
+    error.
+  + bgo#735836: rsvg-convert: Fix argument processing.
+
+-------------------------------------------------------------------
+Sun Sep 14 17:20:12 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to version 2.40.4:
+  + rsvg-convert: Handle gzip compressed input (bgo#735836).
+
+-------------------------------------------------------------------
+Sat Aug 23 13:52:53 UTC 2014 - dimstar@opensuse.org
+
+- BuildIgnore adwaita-icon-theme: Avoid cycle: we do not require
+  the adwaita-icon-theme to be present. libgtk-3.0 requires this
+  for end users.
+
+-------------------------------------------------------------------
+Mon Aug 18 20:10:02 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.40.3:
+  + Bugs fixed: bgo#731182, bgo#710310, bgo#721354.
+
+-------------------------------------------------------------------
+Tue Mar 18 09:21:41 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.40.2:
+  + Bugs fixed: bgo#710163, bgo#719552.
+
+-------------------------------------------------------------------
+Tue Nov 19 20:27:06 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.40.1:
+  + Build fixes.
+  + Crash fixes.
+
+-------------------------------------------------------------------
+Tue Oct 22 14:56:37 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.40.0:
+  + Add support for parsing rgba() colours and improve colour
+    parsing.
+  + Rsvg-filter: Fix memory leak.
+  + Remove support for GTK+2 along with the old theme engine.
+  + Require at least version 3.2 of GTK+.
+  + Remove support for old versions of gdk-pixbuf.
+  + Add eps support to rsvg-convert.
+- Drop pkgconfig(gtk+-2.0) BuildRequires, no longer needed nor
+  supported.
+- Remove gtk2-engine-svg subpackage, no longer built.
+
+-------------------------------------------------------------------
+Sat Sep 14 15:51:00 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.39.0:
+  + Don't load resources from the net (bgo#691708, CVE-2013-1881).
+- The restrictiveness is being correctly addressed by GTK+ 3.9.11;
+  we prefer to have the more secure librsvg variant in 13.1.
+
+-------------------------------------------------------------------
+Wed Aug 21 11:52:14 UTC 2013 - zaitor@opensuse.org
+
+- Downgrade to version 2.37.0:
+  + We can not use librsvg version 2.39.0 as it is too restrictive
+    (bgo#706428).
+
+-------------------------------------------------------------------
+Fri Aug 16 14:19:21 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.39.0:
+  + Don't load resources from the net (bgo#691708, CVE-2013-1881).
+
+-------------------------------------------------------------------
+Thu Jan 10 19:13:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.37.0:
+  + Bump pango requirement to 1.32.6.
+  + Mark pixbuf loader as threadsafe.
+
+-------------------------------------------------------------------
+Tue Oct 16 07:15:43 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.36.4:
+  + Build fixes.
+
+-------------------------------------------------------------------
+Sun Sep  2 14:59:03 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.36.3:
+  + Build fixes.
+
+-------------------------------------------------------------------
+Sun Aug 19 22:02:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.36.2:
+  + GObject introspection fixes (bgo#677674).
+  + Added Vala bindings (bgo#677676).
+  + Deprecate including headers apart from rsvg.h directly.
+  + Build fixes (bgo#677661).
+- Add vala BuildRequires: needed for the new vala bindings.
+- Pass --enable-vala to configure.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:00:07 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.36.1:
+  + Bugs fixed: bgo#672725, bgo#672791, bgo#672885, bgo#673748.
+- Add pkgconfig(gmodule-2.0) BuildRequire: new dependency upstream.
+
+-------------------------------------------------------------------
+Mon Mar 26 14:37:31 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.36.0:
+  + Bugs fixed: bgo#669563, bgo#672414, bgo#672792, bgo#672725.
+- Drop librsvg-gdk-pixbuf-query-loaders-64.patch: fixed upstream,
+  by checking for both gdk-pixbuf-query-loaders-64 and
+  gdk-pixbuf-query-loaders.
+- Remove automake BuildRequires: it was only needed for above
+  patch.
+- Remove hack in %install to not install data files for an old
+  non-working GTK+ 3 theme: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Feb 25 10:23:05 UTC 2012 - vuntz@opensuse.org
+
+- Remove librsvg:/usr/bin/rsvg Provides from rsvg-view: the
+  /usr/bin/rsvg tool doesn't exist anymore.
+
+-------------------------------------------------------------------
+Wed Feb  8 11:09:51 UTC 2012 - vuntz@opensuse.org
+
+- Really build introspection support:
+  + Pass --enable-introspection to configure.
+  + Add typelib-1_0-Rsvg-2_0 subpackage.
+  + Add typelib-1_0-Rsvg-2_0 Requires to devel subpackage.
+- Stop passing non-existing --with-svgz option to configure.
+- Change group of librsvg-2-2 from Development/Libraries/C and C++
+  to System/Libraries.
+
+-------------------------------------------------------------------
+Tue Feb  7 11:17:28 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.35.2:
+  + Bug fixes.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Add gobject-introspection-devel BuildRequires to build
+  introspection support: somehow, we never did that earlier.
+- Drop env-paths.diff: the script that was patched got dropped.
+- Remove definition of gtk3-engine-svg subpackage: the gtk+ 3 theme
+  engine got removed.
+- Remove build_gtk3_support macro and always build with GTK+ 3
+  support now that it's all fine.
+- Add hack in %install to not install data files for an old
+  non-working GTK+ 3 theme.
+
+-------------------------------------------------------------------
+Tue Dec 20 09:43:35 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.35.1:
+  + Support basic vertical writing (bgo#664533).
+  + Bugs fixed: bgo#664684, bgo#665905, bgo#665824.
+  + Several misc. code changes.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Add explicit pkgconfig(pangocairo) BuildRequires: it was missing
+  before.
+- Fix license of subpackages: all the code is LGPL-2.0+, except
+  some tests that are not shipped in subpackages. The overall
+  license of the source package is "LGPL-2.0+ ; GPL-2.0+".
+
+-------------------------------------------------------------------
+Thu Dec  1 10:27:17 UTC 2011 - coolo@suse.com
+
+- Add automake BuildRequires to avoid implicit dependency.
+
+-------------------------------------------------------------------
+Mon Nov 14 22:33:17 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 2.35.0:
+  + Update libxml2 dependency to 2.7.0
+  + Make GIO and libcroco hard requirements
+  + Use attributes for deprecations instead of defines
+  + Many memory leaks plugged
+  + Bugs fixed: bgo#621636, bgo#630112, bgo#624820, bgo#624835,
+    bgo#581108, bgo#614157, bgo#630733, bgo#473862, bgo#590788,
+    bgo#626559, bgo#663049, bgo#663049.
+- Drop no longer needed pkgconfig() BuildRequires following
+  upstream changes: fontconfig, freetype2,, libgsf-1, pangoft2.
+- Rebase librsvg-gdk-pixbuf-query-loaders-64.patch.
+
+-------------------------------------------------------------------
+Tue Sep  6 23:01:11 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.34.1:
+  + Store node type separately in RsvgNode (bgo#658014,
+    CVE-2011-3146)
+  + cairo: reduce cost of measuring bounding boxes
+  + Use "const" instead G_CONST_RETURN (bgo#652213)
+  + Call xmlFreeParserCtxt after using the context (bgo#655472)
+
+-------------------------------------------------------------------
+Mon Apr  4 12:54:31 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.34.0:
+  + Allow building rsvg-view with gtk 3
+  + Bugs fixed: bgo#629392, bgo#626802, bgo#641586, bgo#640336,
+    bgo#635214, fdo#30071, bgo#629412, bgo#630714.
+
+-------------------------------------------------------------------
+Mon Nov 15 11:36:38 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.32.1:
+  + fdo#30071: Make sure the surfaces own their pixels
+  + bgo#630714: Remove stray comma from enum
+  + bgo#629412: Dist testcase input file.
+
+-------------------------------------------------------------------
+Mon Oct 11 21:24:08 CEST 2010 - vuntz@opensuse.org
+
+- Add a Provides for librsvg to librsvg-2-2 in baselibs.conf, like
+  in the .spec file.
+- Add missing Requires for gdk-pixbuf-query-loaders to
+  gdk-pixbuf-loader-rsvg in baselibs.conf.
+- Add gtk2-engine-svg to baselibs.conf, since we want theme engines
+  to be bi-arch too.
+
+-------------------------------------------------------------------
+Mon Oct  4 11:54:03 CEST 2010 - vuntz@opensuse.org
+
+- Fix librsvg-2-2 Provides/Obsoletes to work: they were using
+  %{name} instead of %{version} for the version. Fix bnc#642068.
+
+-------------------------------------------------------------------
+Mon Sep 27 08:16:51 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Disable gtk3 build since it's currently broken.
+- Drop librsvg-gdk-pixbuf-render-gtk3.patch and
+  librsvg-gdkkeysym-compat.patch: those patches are only needed for
+  gtk3 support, and the gtk3 support will be enabled upstream when
+  they will get fixed.
+- Add build_gtk3_support define in .spec, to easily add back the
+  gtk3 support to the package. Right now, this means we lose the
+  gtk3-engine-svg subpackage.
+
+-------------------------------------------------------------------
+Sat Sep 18 17:12:53 CEST 2010 - vuntz@opensuse.org
+
+- Add librsvg-gdkkeysym-compat.patch to fix build with recent
+  versions of GTK+.
+
+-------------------------------------------------------------------
+Fri Sep 10 00:06:06 CEST 2010 - vuntz@opensuse.org
+
+- Add librsvg-gdk-pixbuf-render-gtk3.patch to fix build with
+  GTK+ 3: the pixbuf renderer was using API that got removed. The
+  patch is correct, but suboptimal, so it's still sitting in
+  bugzilla. However, since we're not using this GTK+ engine by
+  default, it's okay to use it.
+
+-------------------------------------------------------------------
+Fri Jul 23 09:26:51 CEST 2010 - vuntz@opensuse.org
+
+- Make devel package Require librsvg-2-2 instead of librsvg.
+
+-------------------------------------------------------------------
+Wed Jul 21 15:06:21 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.0:
+  + bgo#337979: text size not rendered correctly
+  + bgo#545158: Segfault or bad rendering when displaying a SVG
+                file
+  + bgo#614556: Background pixbuf in filter process should not be
+                created if it's not needed.
+  + bgo#616018: cairo-freetype font rendering code should be
+                removed.
+  + bgo#620130: Decode base64 inplace
+  + bgo#620238: crashes rending a trivial file
+  + bgo#620592: Use correct free func
+  + bgo#620649: Simplify code by using g_clear_error
+  + bgo#620693: presentation attributes in svg element are ignored
+  + bgo#620822: Build fails with make -jx"
+  + bgo#621699: make librsvg gio friendly
+  + bgo#622790: use standalone gdk-pixbuf
+  + bgo#623383: crash on rsvg-gobject.c:141, in instance_dispose
+                function
+- Add librsvg-gdk-pixbuf-query-loaders-64.patch to fix the build on
+  x86_64, since gdk-pixbuf-query-loaders is renamed to
+  gdk-pixbuf-query-loaders-64 there.
+- Remove coreutils PreReq.
+- Change gtk2-devel, libcroco-devel, libgsf-devel BuildRequires to
+  pkgconfig() BuildRequires: cairo, fontconfig, freetype2,
+  gdk-pixbuf-2.0, glib-2.0, gio-2.0, gtk+-2.0, libcroco-0.6,
+  libgsf-1, libxml-2.0, pangoft2.
+- Add pkgconfig(gtk+-3.0) BuildRequires.
+- Remove the cairo-devel, libcroco-devel, glib2-devel, gtk2-devel,
+  libgsf-devel Requires in devel package: pkgconfig() Requires will
+  automatically get added now.
+- Version the Provides/Obsoletes of librsvg2 and librsvg2-devel in
+  librsvg-2-2 and librsvg-devel to avoid rpmlint warning.
+- Split the gdk-pixbuf loader in a gdk-pixbuf-loader-rsvg
+  subpackage (that gets installed automatically when gdk-pixbuf is
+  installed thanks to a Supplements).
+- Create a librsvg-2-2 subpackage that provides/obsoletes librsvg
+  (since the main package is empty), and follow the shared library
+  policy.
+- Create gtk2-engine-svg and gtk3-engine-svg subpackages,
+  containing the svg-based theme engines.
+
+-------------------------------------------------------------------
+Sat May  8 18:53:22 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.26.3:
+  + bgo#143300: wrong bounding box when importing SVG
+  + bgo#403274: text in thumbnail too large
+  + bgo#404976: Unicode decomposed chars are not rendered well
+  + bgo#524690: text alignment incorrect with text-anchor:end
+  + bgo#545158: Segfault or bad rendering when displaying a SVG
+    file
+  + bgo#563933: corrupted rendering of a card in 'Paris' aisleriot
+    card theme
+  + bgo#564527: rsvg_handle_get_dimensions_sub weird behaviour
+  + bgo#564544: shape-rendering crispEdges property is antialiasing
+    line elements
+  + bgo#566433: Could not read a valid svg file (inkspace read it)
+  + bgo#579286: This SVG-File crashes nautilus/rsvg-view
+  + bgo#581491: rsvg rendering is broken when encounters a 0px
+    styled <text>
+  + bgo#589612: EOG error when loading a large SVG
+  + bgo#592207: Object cannot be rendered with more than 1 CSS {}
+    rule
+  + bgo#597873: glib-mkenums cannot be invoked when GLib is
+    uninstalled.
+  + bgo#597988: incorrect pkgconfig file let's others fail to
+    detect librsvg
+  + bgo#598151: Incorrect rendering of svg file
+  + bgo#608575: Hang on particular SVG input
+  + bgo#612951: SVG not rendered if header contains width or height
+    in percentage
+  + bgo#614123: librsvg builds tests even if tests are not run
+  + bgo#614555: should remove unused rsvg_filter_adobe_blend
+    function
+  + bgo#614566: Needless G_OBJECT macro should be removed.
+  + bgo#614606: !important is not respected
+  + bgo#614643: does not handle comma separated CSS selector
+    without libcroco
+  + bgo#614703: Need tests for get_dimensions.
+  + bgo#614704: css style doesn't override presentation attributes
+  + bgo#614730: Rendering not disabled for 0 sized objects
+  + bgo#614866: tests for CSS handling
+  + bgo#615490: rsvg-view should scale image size by default if the
+    image has huge canvas.
+  + bgo#615699: rsvg-view should show zoom ratio.
+  + bgo#615701: class directive in svg element is not used at all
+  + bgo#615715: .class#id type selector is not supported.
+  + bgo#616187: rsvg-view crashes when open a svg image
+  + bgo#616835: Fix linking with pedantic linkers
+  + bgo#617163: !important directive support without libcroco.
+
+-------------------------------------------------------------------
+Tue Mar 30 11:58:42 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.26.2:
+  + Enable silent build by default
+  + Use GDK_DRAWABLE() instead of non-existing GTK_DRAWABLE()
+  + Fix compiler warnings
+- Update to version 2.26.1:
+  + Remove some deprecated gtk+/gdk functions and bump gtk+
+    requirement
+  + Fix linking with pedantic linkers
+  + Make librsvg compile with -DGSEAL_ENABLED
+  + Drop mozilla plugin
+
+-------------------------------------------------------------------
+Fri Mar 26 13:17:24 CET 2010 - vuntz@opensuse.org
+
+- Stop building the mozilla plugin: browsers now do support svg, so
+  it's useless.
+- Remove librsvg-plugin subpackage.
+- Drop librsvg-xulrunner191.patch and remove
+  mozilla-xulrunner-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sat Dec 19 12:15:26 CET 2009 - jengelh@medozas.de
+
+- Add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Wed Sep  2 22:10:26 CEST 2009 - dimstar@opensuse.org
+
+- Add librsvg-xulrunner191.patch to enable building against
+  xulrunner 1.9.1.
+
+-------------------------------------------------------------------
+Mon Mar 16 18:35:09 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0:
+  + Command-line tools can't handle UTF-8 encoded filenames
+    (bgo#557036)
+  + Background color setting feature in rsvg_convert program
+    (bgo#556969)
+  + Gdmgreeter segfault due to libxml2 API/ABI change (bgo#549087)
+  + Plug mem leak (bgo#552919)
+  + Stop crash due to recursive references (bgo#518640)
+  + Don't use deprecated glib symbols
+  + Stray Makefile variables (bgo#558039)
+  + -I flag-ordering problem breaks build if system already has lib
+    installed (bgo#558040)
+  + Add rsvg_handle_get_dimensions_sub() (bgo#555682)
+  + Add version check macro (bgo#564226)
+  + Indicate in the .pc file whether svgz and css support is
+    available (bgo#564616)
+  + Add function to check whether the SVG document contains an
+    element by ID (bgo#567070)
+  + Do not allocate RsvgState in rsvg_new_image() (bgo#557082)
+  + Plug mem leak (bgo#562546)
+  + Clean up GLib and GTK+ includes (bgo#563789)
+  + librsvg can not render text-decoration=underline text
+    (bgo#566365)
+  + Don't use deprecated gdk_pixbuf_unref (bgo#570938)
+  + "const static" should be "static const" (bgo#570656)
+  + Better error messages (bgo#567307)
+  + Crashes on some architectures because of wrong zero check on
+    doubles (bgo#565371)
+  + Filter nodes are leaked (bgo#475851)
+  + Plug mem leaks (bgo#444444)
+  + Fails to parse SVG with parameter entities (bgo#567311)
+
+-------------------------------------------------------------------
+Sat Feb 28 02:38:08 CET 2009 - vuntz@novell.com
+
+- Remove BuildRequires: docbook-toys, gtk-doc
+- Remove Requires of devel package: libbz2-devel, libart_lgpl-devel
+- Remove --with-html-dir configure flag that breaks the doc
+  install, and non-existing --without-gimp flag.
+- Move rsvg binary to librsvg package.
+- Remove autoreconf call.
+- Use makeinstall.
+
+-------------------------------------------------------------------
+Sat Jan 31 15:29:26 CET 2009 - vuntz@novell.com
+
+- Remove unneeded BuildRequires: docbook-toys,
+  libgnomeprintui-devel, update-desktop-files, xmlcharent
+- Remove Requires for the devel package: popt-devel, rsvg-view
+- Do not have rsvg-view supplement gnome-session: we don't need it
+  by default on GNOME
+- Remove checks for old versions of openSUSE
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Nov 25 17:22:26 CET 2008 - sbrabec@suse.cz
+
+- Supplement gtk2-32bit/gtk2-64bit in baselibs.conf (bnc#354164).
+
+-------------------------------------------------------------------
+Fri Oct  3 18:57:41 WST 2008 - mboman@suse.de
+
+- Update to version 2.22.3:
+  + Make librsvg buildable on windows without freetype dependency
+  + Fix build and tests
+  + Fix the handling of the stroke-dashoffset property
+  + Bad rendering for some wacko SVG path data
+  + Fix some arcs not being well drawn in SVG path
+  + Fix various crashes
+  + Set license field of GdkPixBufFormat in the SVG loader
+  + Migrate use of GMemChunk to GSlice
+  + If an ID is not found, return an error and/or do not render whole SVG
+
+-------------------------------------------------------------------
+Tue Jul 22 10:10:10 CEST 2008 - coolo@suse.de
+
+- switch to xulrunner190 to avoid java dependency for gnome
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Mar 14 03:50:17 CET 2008 - maw@suse.de
+
+- Update to version 2.22.2:
+  + Bug fixed: bgo#520261.
+
+-------------------------------------------------------------------
+Tue Mar  4 19:02:20 CET 2008 - maw@suse.de
+
+- Update to version 2.22.1:
+  + Text rendering fixes, especially for non-ASCII text
+  + Better cairo integratino
+  + Use GIO
+  + Use GtkPrint.
+
+-------------------------------------------------------------------
+Fri Feb 15 19:44:53 CET 2008 - dmueller@suse.de
+
+- split off rsvg-view (20kb), removes 6.2MB from the KDE CD
+
+-------------------------------------------------------------------
+Tue Jan 29 19:44:48 CET 2008 - maw@suse.de
+
+- Remove libtool archives.
+
+-------------------------------------------------------------------
+Tue Jan 29 16:23:48 CET 2008 - rodrigo@suse.de
+
+- Update to version 2.20.0:
+  * Fixed memory leaks and segfaults 
+
+-------------------------------------------------------------------
+Mon Sep 10 18:00:28 CEST 2007 - maw@suse.de
+
+- Update to version 2.18.2
+- librsvg-64bit-warning.patch was necessary due to a typo in
+  2.18.1; that typo was removed in 2.18.2, and therefore the patch
+  has been too.
+
+-------------------------------------------------------------------
+Thu Aug 30 23:10:58 CEST 2007 - maw@suse.de
+
+- Update to version 2.18.1:
+  + Basic support for SVG 1.1's text-rendering and shape-rendering
+    properties (bugzilla.gnome.org #464599)
+- M-x replace-string RET %run_ldconfig RET /sbin/ldconfig RET
+- Add librsvg-64bit-warning.patch.
+
+-------------------------------------------------------------------
+Thu Aug  2 02:03:16 CEST 2007 - mauro@suse.de
+
+- Updated to 2.18.0 
+- Bugfixes for #412682, #418823, #401115, #444462, #452823, #448327,
+  #444462, #444443, #435129, #409030, #375649, #421697, #421710, 
+  #427031, #407230, #402246, #402107, #393297, #388545.
+
+-------------------------------------------------------------------
+Mon Jul 16 14:41:30 CEST 2007 - dmueller@suse.de
+
+- move deprecated rsvg command into -devel subpackage.
+  scripts that break should use rsvg-convert instead
+
+-------------------------------------------------------------------
+Sat Mar 17 11:57:06 CET 2007 - aj@suse.de
+
+- Require python for rsvg command (#242072).
+
+-------------------------------------------------------------------
+Mon Feb 19 12:47:49 CST 2007 - maw@suse.de
+
+- Update to version 2.16.1
+- Remove librsvg-xulrunner.patch which is now upstream.
+
+-------------------------------------------------------------------
+Sun Feb 18 18:11:55 CET 2007 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Tue Feb 13 11:50:51 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552#c17).
+
+-------------------------------------------------------------------
+Tue Jan  9 18:04:54 CET 2007 - sbrabec@suse.cz
+
+- Patched to build plugin with xulrunner.
+
+-------------------------------------------------------------------
+Tue Jan  9 17:43:09 CET 2007 - maw@suse.de
+
+- Fix a typo
+- (Temporarily) remove the plugin subpackage.
+
+-------------------------------------------------------------------
+Tue Jan  9 17:42:57 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Thu Dec 28 18:27:05 CET 2006 - jhargadon@suse.de
+
+- removed unused libtool archives (#223654) 
+
+-------------------------------------------------------------------
+Fri Oct 13 22:39:39 CEST 2006 - danw@suse.de
+
+- Remove dead patch
+
+-------------------------------------------------------------------
+Fri Sep 15 12:58:38 CEST 2006 - sbrabec@suse.cz
+
+- Removed mDNSResponder-lib from Requires - should be implicit.
+
+-------------------------------------------------------------------
+Thu Sep 14 18:04:25 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.0
+- librsvg.def: Make export symbols work on OSX
+- rsvg-private.h: Some preparation work for color normalization
+- Bug 344116: Committed patch from Kouhei Sutou that makes librsvg
+  use Pango-Cairo instead of PangoFT2+rendering text as a path.
+- rsvg-base.c (rsvg_handle_write_impl): Have libxml2 replace entities
+  for us. This fixes a bug where style definitions don't get properly
+  expanded, but causes a (2.15.x-only feature) regression when importing
+  external ENTITIES.
+
+-------------------------------------------------------------------
+Wed Aug 23 17:02:15 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.90
+- Bug 348329 make gnome-print dependency optional
+- Don't leak PangoFt2 fonts (bug 344235)
+- Document _render_sub better (bug 346964) 
+
+-------------------------------------------------------------------
+Tue Aug 15 00:12:46 CEST 2006 - ro@suse.de
+
+- use wildcard in filelist for gtk2 version 
+
+-------------------------------------------------------------------
+Fri Jul 28 12:11:06 CEST 2006 - ro@suse.de
+
+- include rsvg.devhelp2 in filelist 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:25 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Oct 13 21:49:18 CEST 2005 - gekker@suse.de
+
+- Update to version 2.12.7
+- Fix use of uninitialized variables
+
+-------------------------------------------------------------------
+Fri Sep 16 16:40:17 CEST 2005 - rodrigo@suse.de
+
+- Update to version 2.12.0
+
+-------------------------------------------------------------------
+Mon Sep  5 20:41:40 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.1 (GNOME 2.12) 
+
+-------------------------------------------------------------------
+Fri Aug 12 12:12:43 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements (#104295).
+
+-------------------------------------------------------------------
+Wed Jun  1 19:04:26 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements.
+
+-------------------------------------------------------------------
+Sun Feb  6 05:05:37 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.5
+
+-------------------------------------------------------------------
+Wed Jan 19 02:42:56 CET 2005 - ro@suse.de
+
+- fixed filelist 
+
+-------------------------------------------------------------------
+Wed Dec 22 22:01:53 CET 2004 - gekker@suse.de
+
+- Update to version 2.8.1
+- Make *.svg and *.devhelp install 
+
+-------------------------------------------------------------------
+Tue May 04 14:39:32 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.6.5 (GNOME 2.6).
+
+-------------------------------------------------------------------
+Mon Mar 15 14:40:26 CET 2004 - sbrabec@suse.cz
+
+- FHS 2.3 fix (mandir, infodir, #35821).
+
+-------------------------------------------------------------------
+Wed Mar 10 10:53:13 CET 2004 - sbrabec@suse.cz
+
+- Fixed %postun.
+- Fixed doc build.
+
+-------------------------------------------------------------------
+Sat Jan 10 17:50:39 CET 2004 - adrian@suse.de
+
+- add %defattr and %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Oct 20 15:57:46 CEST 2003 - sbrabec@suse.cz
+
+- Do not build SVG plug-in (moved to gimp2 package).
+
+-------------------------------------------------------------------
+Wed Oct 08 14:32:22 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.4.0 (GNOME 2.4).
+
+-------------------------------------------------------------------
+Tue Aug 26 17:28:07 CEST 2003 - sbrabec@suse.cz
+
+- Added Provides/Obsoletes for old name.
+
+-------------------------------------------------------------------
+Tue Aug 19 15:22:00 CEST 2003 - sbrabec@suse.cz
+
+- Package renamed (librsvg2 -> librsvg).
+
+-------------------------------------------------------------------
+Sun Jul 27 23:21:01 CEST 2003 - hhetter@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Mon Jul 14 16:16:28 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Wed Jul 09 16:36:49 CEST 2003 - sbrabec@suse.cz
+
+- Branched gimp2-svg (to simplify dependences).
+
+-------------------------------------------------------------------
+Wed Jun 25 15:54:17 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.2.5.
+- Updated neededforbuild.
+- Turned on GIMP plugin, libgsf and SVGZ support.
+
+-------------------------------------------------------------------
+Wed Feb 12 12:19:31 CET 2003 - hhetter@suse.de
+
+- install the rsvg loader at the default gdk-pixbuf-loader
+  module location 
+- updated to version 2.2.3 to critical bugs with SVG themes
+-------------------------------------------------------------------
+Thu Jan 30 10:18:06 CET 2003 - hhetter@suse.de
+
+- force running of SuSEconfig.gtk to register the
+  librsvg gdk-pixbuf loader 
+
+-------------------------------------------------------------------
+Tue Jan 28 09:39:25 CET 2003 - hhetter@suse.de
+
+- updated to version 2.2.1
+- update filelist
+- include gdk-pixbuf loaders 
+
+-------------------------------------------------------------------
+Mon Nov 11 23:49:53 CET 2002 - ro@suse.de
+
+- changed neededforbuild <xf86 xdevel> to <x-devel-packages>
+
+-------------------------------------------------------------------
+Tue Oct 22 15:36:05 CEST 2002 - hhetter@suse.de
+
+- remove wrong docdir 
+- use correct kde datadir
+
+-------------------------------------------------------------------
+Fri Sep 27 14:35:50 CEST 2002 - ro@suse.de
+
+- Added alsa alsa-devel to neededforbuild (esound)
+
+-------------------------------------------------------------------
+Tue Aug 13 01:37:38 CEST 2002 - ro@suse.de
+
+- removed control-center from neededforbuild 
+
+-------------------------------------------------------------------
+Tue Jul 23 14:37:05 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.1
+	* trashcan rendering problems fixed
+
+-------------------------------------------------------------------
+Tue Jul 23 08:08:30 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.0 
+
+-------------------------------------------------------------------
+Wed May 15 15:44:20 CEST 2002 - ro@suse.de
+
+- use libdir 
+
+-------------------------------------------------------------------
+Mon Apr 15 14:18:04 CEST 2002 - hhetter@suse.de
+
+- update to version 1.1.6 [gnome desktop beta3] 
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:05 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Thu Jan 24 14:47:49 CET 2002 - hhetter@suse.de
+
+- initial SuSE package for GNOME 2.0 platform 
+

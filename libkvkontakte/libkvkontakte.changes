@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Thu Aug 31 11:52:28 UTC 2017 - wbauer@tmo.at
+
+- Update to Qt5/KF5-based version 5.0.0:
+  * Bugfixes
+- Drop cmake_fix.patch, merged upstream
+
+-------------------------------------------------------------------
+Mon Oct  5 21:23:50 UTC 2015 - asterios.dramis@gmail.com
+
+- Update to version 4.12.0:
+  NEW FEATURES:
+  * Add new class VkApi to manage authentication
+  OTHER CHANGES:
+  * Relicensed all the code to LGPLv2.1+
+  * Use method account.getAppPermissions instead of deprecated
+    method getUserSettings
+  * Add enum AppPermissions::Value for application permissions, to
+    replace string lists
+  * VkontakteJob: Do not pass empty auth token to VK API
+  * autotests: Request only necessary VK app permissions in each
+    unit test
+  * autotests: Prefer QList::at(0) over QList::first() to avoid
+    deep copying
+- Added a patch (cmake_fix.patch) to fix cmake error about
+  LINK_INTERFACE_LIBRARIES properties and policy CMP0022.
+
+-------------------------------------------------------------------
+Tue May 26 11:50:21 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to version 4.11.0
+  Bugfixes:
+     - DigiKam crash when vkontakte plugin failed to upload images
+       (bko#345358)
+
+  OTHER CHANGES:
+     - Deprecate class GetVariableJob, please use UserInfoJob 
+       instead
+     - Add unit tests for UserInfoJob and UserInfoFullJob
+     - Add unit tests for job classes working with photo albums
+     - NotesListJob: Fix setting of user ID with current 
+       VK API version
+     - Add unit tests for job classes working with notes
+     - Follow VK API changes (renamed methods to 
+       database.get[...]ById)
+     - Deprecate unused classes GetInfoJob and GroupListJob
+     - VkontakteJobs: Make more members private
+     - Retry HTTP request after a delay on error "Too many requests 
+       per second"
+     - Rewrite HTTP multipart request using QHttpMultiPart
+     - UserInfoJob: Use VK API method users.get instead of getProfiles
+     - Use vk.com instead of vkontakte.ru everywhere
+
+- Drop the separate COPYING* files as that upstream now includes
+  the correct licensing files
+
+-------------------------------------------------------------------
+Thu Nov 24 19:53:08 UTC 2011 - asterios.dramis@gmail.com
+
+- Changed License to GPL-2.0+ since some files compiled in the lib are GPL
+  (bnc#730195).
+- Added GPL and LGPL license copies.
+
+-------------------------------------------------------------------
+Sun Oct 16 11:57:31 UTC 2011 - asterios.dramis@gmail.com
+
+- Initial release (version 1.0.0).

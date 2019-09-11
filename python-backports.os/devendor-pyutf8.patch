@@ -1,0 +1,83 @@
+diff -ur backports.os-0.1.1-orig/setup.py backports.os-0.1.1/setup.py
+--- backports.os-0.1.1-orig/setup.py	2017-09-18 03:33:53.000000000 +0700
++++ backports.os-0.1.1/setup.py	2019-04-03 16:45:31.527323311 +0700
+@@ -11,6 +11,7 @@
+ # Backward-compatibility dependencies for Python 2
+ _python2_requires = [
+     'future',  # For backport of surrogateescape
++    'pyutf8 >= 0.1.1',  # De-vendor
+ ] if sys.version_info < (3,) else []
+ 
+ 
+diff -ur backports.os-0.1.1-orig/src/backports/os.py backports.os-0.1.1/src/backports/os.py
+--- backports.os-0.1.1-orig/src/backports/os.py	2017-09-21 01:39:07.000000000 +0700
++++ backports.os-0.1.1/src/backports/os.py	2019-04-03 16:48:25.460954708 +0700
+@@ -19,67 +19,7 @@
+     from future.utils.surrogateescape import register_surrogateescape
+     register_surrogateescape()
+ 
+-
+-# XXX backport: This invalid_utf8_indexes() helper is shamelessly copied from
+-# Bob Ippolito's pyutf8 package (pyutf8/ref.py), in order to help support the
+-# Python 2 UTF-8 decoding hack in fsdecode() below.
+-#
+-# URL: https://github.com/etrepum/pyutf8/blob/master/pyutf8/ref.py
+-#
+-def _invalid_utf8_indexes(bytes):
+-    skips = []
+-    i = 0
+-    len_bytes = len(bytes)
+-    while i < len_bytes:
+-        c1 = bytes[i]
+-        if c1 < 0x80:
+-            # U+0000 - U+007F - 7 bits
+-            i += 1
+-            continue
+-        try:
+-            c2 = bytes[i + 1]
+-            if ((c1 & 0xE0 == 0xC0) and (c2 & 0xC0 == 0x80)):
+-                # U+0080 - U+07FF - 11 bits
+-                c = (((c1 & 0x1F) << 6) |
+-                     (c2 & 0x3F))
+-                if c < 0x80:
+-                    # Overlong encoding
+-                    skips.extend([i, i + 1])
+-                i += 2
+-                continue
+-            c3 = bytes[i + 2]
+-            if ((c1 & 0xF0 == 0xE0) and
+-                (c2 & 0xC0 == 0x80) and
+-                (c3 & 0xC0 == 0x80)):
+-                # U+0800 - U+FFFF - 16 bits
+-                c = (((((c1 & 0x0F) << 6) |
+-                       (c2 & 0x3F)) << 6) |
+-                     (c3 & 0x3f))
+-                if ((c < 0x800) or (0xD800 <= c <= 0xDFFF)):
+-                    # Overlong encoding or surrogate.
+-                    skips.extend([i, i + 1, i + 2])
+-                i += 3
+-                continue
+-            c4 = bytes[i + 3]
+-            if ((c1 & 0xF8 == 0xF0) and
+-                (c2 & 0xC0 == 0x80) and
+-                (c3 & 0xC0 == 0x80) and
+-                (c4 & 0xC0 == 0x80)):
+-                # U+10000 - U+10FFFF - 21 bits
+-                c = (((((((c1 & 0x0F) << 6) |
+-                         (c2 & 0x3F)) << 6) |
+-                       (c3 & 0x3F)) << 6) |
+-                     (c4 & 0x3F))
+-                if (c < 0x10000) or (c > 0x10FFFF):
+-                    # Overlong encoding or invalid code point.
+-                    skips.extend([i, i + 1, i + 2, i + 3])
+-                i += 4
+-                continue
+-        except IndexError:
+-            pass
+-        skips.append(i)
+-        i += 1
+-    return skips
++from pyutf8.ref import invalid_utf8_indexes as _invalid_utf8_indexes
+ 
+ 
+ # XXX backport: Another helper to support the Python 2 UTF-8 decoding hack.

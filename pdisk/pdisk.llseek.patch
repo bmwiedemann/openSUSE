@@ -1,0 +1,30 @@
+gcc -o pdisk pdisk.o dump.o partition_map.o bitfield.o convert.o deblock_media.o file_media.o errors.o hfs_misc.o io.o media.o pathname.o util.o validate.o
+file_media.o(.text+0xfc): In function `compute_block_size':
+/home/olaf/src/pdisk/pdisk/file_media.c:183: warning: the `llseek' function may be dangerous; use `lseek64' instead.
+gcc -o cvt_pt cvt_pt.o partition_map.o bitfield.o convert.o deblock_media.o file_media.o errors.o hfs_misc.o io.o media.o pathname.o util.o
+file_media.o(.text+0xfc): In function `compute_block_size':
+/home/olaf/src/pdisk/pdisk/file_media.c:183: warning: the `llseek' function may be dangerous; use `lseek64' instead.
+
+
+ file_media.c |    6 ------
+ 1 files changed, 6 deletions(-)
+
+Index: pdisk/file_media.c
+===================================================================
+--- pdisk.orig/file_media.c
++++ pdisk/file_media.c
+@@ -57,14 +57,8 @@
+ /*
+  * Defines
+  */
+-#ifdef __linux__
+-#define LOFF_MAX 9223372036854775807LL
+-extern __loff_t llseek __P ((int __fd, __loff_t __offset, int __whence));
+-#else
+-#define loff_t long
+ #define llseek lseek
+ #define LOFF_MAX LONG_MAX
+-#endif
+ 
+ 
+ /*

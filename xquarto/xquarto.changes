@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Wed Feb  8 17:46:27 CET 2017 - kukuk@suse.de
+
+- Move from /usr/games to /usr/bin (as done for the rest 4 years ago)
+
+-------------------------------------------------------------------
+Thu Jun 18 20:04:38 UTC 2015 - crrodriguez@opensuse.org
+
+- Remove xorg-x11-devel from buildrequires, use the individual
+  required libraries instead.
+
+-------------------------------------------------------------------
+Tue Oct 14 08:10:29 UTC 2014 - jengelh@inai.de
+
+- Use source URL and remove ancient specfile tags and sections
+
+-------------------------------------------------------------------
+Mon Nov  8 14:51:28 UTC 2010 - coolo@novell.com
+
+- remove support for pre-9.1
+
+-------------------------------------------------------------------
+Thu Oct  4 21:43:25 CEST 2007 - bg@suse.de
+
+- don't use hpux environment
+
+-------------------------------------------------------------------
+Tue Aug  8 17:17:22 CEST 2006 - lmichnovic@suse.cz
+
+- compiling with RPM_OPT_FLAGS 
+- patch renamed to xquarto-2.5-imake_font.patch
+
+-------------------------------------------------------------------
+Fri Jul 28 12:29:30 CEST 2006 - lmichnovic@suse.cz
+
+- builds also with new X.org 7.x, detecting prefix in X.org
+- building with icecream
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:24 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov  2 21:39:53 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Thu Oct 31 00:23:04 CET 2002 - ro@suse.de
+
+- fix build on alpha 
+
+-------------------------------------------------------------------
+Thu Feb  7 09:19:36 CET 2002 - tcrhak@suse.cz
+
+- fix buildroot
+
+-------------------------------------------------------------------
+Fri Jan 11 00:09:22 CET 2002 - ro@suse.de
+
+- no subdirs in /usr/games 
+
+-------------------------------------------------------------------
+Thu Oct 26 15:25:30 CEST 2001 - tcrhak@suse.cz
+
+- New package: initial version 2.5

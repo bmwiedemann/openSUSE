@@ -1,0 +1,260 @@
+-------------------------------------------------------------------
+Fri Aug  9 08:31:23 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- No code change since 19.07.90
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:52 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- No code changes since 19.07.80
+
+-------------------------------------------------------------------
+Tue Jul 23 11:59:08 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Remove unused includes
+  * Use new logging category directory when ECM>=5.59
+  * It compiles fine without foreach + it compiles without deprecated method
+  * only one default
+  * new default with simple screenshot and default theme
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:39 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- No code changes since 19.04.2
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:57 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- No code changes since 19.04.1
+
+-------------------------------------------------------------------
+Fri May 10 05:37:19 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- Changes since 19.04.0:
+  * No code changes since 19.04.0
+
+-------------------------------------------------------------------
+Sat Apr 20 06:52:00 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- Changes since 19.03.90:
+  * No code changes since 19.03.90
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:46 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Don't crash when new game is created. Regression introduced in 8867833e00bdca2373a0b6ad9a4431d184501691. (kde#405763)
+
+-------------------------------------------------------------------
+Wed Mar 27 06:41:13 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Clean up for making asan happy when we close apps
+  * not necessary to check pointer before deleting it
+  * Fix build by adding missing header.
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:27 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * No code changes since 18.12.2
+
+-------------------------------------------------------------------
+Sat Feb 09 08:25:32 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * No code changes since 18.12.1
+
+-------------------------------------------------------------------
+Fri Jan 11 05:42:52 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * No code changes since 18.12.0
+
+-------------------------------------------------------------------
+Fri Dec 14 06:09:24 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * Delay creation of QTextToSpeech
+  * Fix build by adding missing header.
+
+-------------------------------------------------------------------
+Fri Nov 30 12:56:07 UTC 2018 - wbauer@tmo.at
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * Add LICENSE (GPL-2.0)
+
+-------------------------------------------------------------------
+Fri Nov 23 17:54:45 UTC 2018 - wbauer@tmo.at
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 2.5.0:
+  * Ported to Qt5 and KDE Frameworks 5
+- Updated URL and package summary/description
+
+-------------------------------------------------------------------
+Fri Aug 24 21:37:07 UTC 2012 - mailaender@opensuse.org
+
+- update to 2.5.0
+  + Port to new KDEGames library, compatible with KDE 4.9
+
+-------------------------------------------------------------------
+Sat Apr 21 14:10:15 UTC 2012 - alinm.elena@gmail.com
+
+- updated to 2.4.2
+  +A handful of usability fixes
+  +introduces support for the UCI protocol, setting the difficulty level of chess engines, game history display, and loading and saving PGN files.
+  +brings voice support, possibility of external control by dbus, and a couple of bug fixes.
+  +bugfix release with several fixes, mostly by Dave Kaye. It fixes drag-coused freezes, dropping pieces outside of the board, and a theme appearing twice in the selection dialog.
+  +the peace captured by en-passant is now properly removed.
+        +Watching two engines play
+  +Improved time control support for chess engines
+  +Better support for the XBoard protocol means Knights can play with more engines, including Crafty, Sloppy, Sjeng and Phalanx.
+  +Players can now make and receive offer for draw, pause, undo, adjourn and abort. All except Draw are only used when playing on the chess server.
+  +Players can now undo their moves.
+  +Improved game dialog, with more game options.
+  +Improved server dialog, with a seek graph.
+  +Ability to interact with a chess server or a computer engine via a text console.
+  +Simple chat widget for talking to your remote opponent.
+  +Selecting and moving pieces by clicking, without dragging.
+
+-------------------------------------------------------------------
+Wed Jan 18 10:57:03 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to version 2.4.1
+  * Support for the UCI protocol
+  * Setting the difficulty level of chess engines
+  * Game history display
+  * Loading and saving PGN files
+
+-------------------------------------------------------------------
+Fri Oct 21 20:46:28 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 2.4.0:
+  * Voice support.
+  * Possibility of external control by dbus.
+  * Bug fixes.
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Changed License: to GPL-2.0+ (which is the package's main license).
+
+-------------------------------------------------------------------
+Sat May 21 16:03:33 UTC 2011 - bitshuffler@opensuse.org
+
+- Update to version 2.3.2
+
+-------------------------------------------------------------------
+Sat Mar 19 12:36:26 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 2.3.1:
+  * Fix bug; the peace captured by en-passant is now properly removed.
+- Spec file updates:
+  * Changed License: to GPLv2+ and GFDL.
+  * Recommend instead of Suggest for knights-lang package.
+  * Added crafty Suggests: entry.
+  * Updated %description.
+  * Minor other updates.
+
+-------------------------------------------------------------------
+Thu Mar 10 16:02:47 UTC 2011 - bitshuffler@opensuse.org
+
+- Update to version 2.3.0
+
+-------------------------------------------------------------------
+Fri Jan 21 20:19:52 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Updates in Group:, BuildRequires: and %install sections.
+  * Remove some locales to fix rpmlint warning (invalid-lc-messages-dir) in
+    openSUSE 11.3 and build error in openSUSE Factory.
+
+-------------------------------------------------------------------
+Tue Jan 11 22:27:56 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 2.2.0
+  * First release from Extragear, improved FICS support, nicer look and feel.
+  From 2.1.1
+  * Pawn promotion, theme download from kde-look.org.
+- Spec file updates:
+  * Added a knights-lang package.
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Updates in BuildRequires: and %install sections.
+
+-------------------------------------------------------------------
+Fri Aug 27 04:48:18 UTC 2010 - tittiatcoke@gmail.com
+
+- update to version 2.1.0
+  * Internet play, additional markers, graphical clock.
+
+-------------------------------------------------------------------
+Mon May 10 08:36:44 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to version 2.0.1
+  * Optional clocks and time limits
+  * Uses the old Knights icons
+
+-------------------------------------------------------------------
+Sat Apr 10 16:21:47 UTC 2010 - tittiatcoke@gmail.com
+
+- initial release, version 2.0
+

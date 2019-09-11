@@ -1,0 +1,14 @@
+diff -Nru azure-monitor-0.3.0.orig/setup.py azure-monitor-0.3.0/setup.py
+--- azure-monitor-0.3.0.orig/setup.py	2017-04-19 22:02:02.000000000 +0200
++++ azure-monitor-0.3.0/setup.py	2017-06-12 16:21:47.973093935 +0200
+@@ -78,8 +78,8 @@
+     zip_safe=False,
+     packages=find_packages(),
+     install_requires=[
+-        'msrestazure~=0.4.7',
+-        'azure-common~=1.1.5',
++        'msrestazure>=0.4.7',
++        'azure-common>=1.1.5',
+     ],
+     cmdclass=cmdclass
+ )

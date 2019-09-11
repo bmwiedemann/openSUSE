@@ -1,0 +1,392 @@
+--- a/mesonbuild/backend/ninjabackend.py
++++ b/mesonbuild/backend/ninjabackend.py
+@@ -32,7 +32,7 @@ from .. import compilers
+ from ..compilers import CompilerArgs, CCompiler, VisualStudioCCompiler
+ from ..linkers import ArLinker
+ from ..mesonlib import File, MesonException, OrderedSet
+-from ..mesonlib import get_compiler_for_source, has_path_sep
++from ..mesonlib import get_compiler_for_source, has_path_sep, commonpath
+ from .backends import CleanTrees
+ from ..build import InvalidArguments
+ 
+@@ -1025,8 +1025,8 @@ int dummy;
+                 # Check if the vala file is in a subdir of --basedir
+                 abs_srcbasedir = os.path.join(self.environment.get_source_dir(), target.get_subdir())
+                 abs_vala_file = os.path.join(self.environment.get_build_dir(), vala_file)
+-                if PurePath(os.path.commonpath((abs_srcbasedir, abs_vala_file))) == PurePath(abs_srcbasedir):
+-                    vala_c_subdir = PurePath(abs_vala_file).parent.relative_to(abs_srcbasedir)
++                if PurePath(commonpath((abs_srcbasedir, abs_vala_file))) == PurePath(abs_srcbasedir):
++                    vala_c_subdir = str(PurePath(abs_vala_file).parent.relative_to(abs_srcbasedir))
+                     vala_c_file = os.path.join(str(vala_c_subdir), vala_c_file)
+             else:
+                 path_to_target = os.path.join(self.build_to_src, target.get_subdir())
+--- a/mesonbuild/coredata.py
++++ b/mesonbuild/coredata.py
+@@ -18,7 +18,7 @@ import sys
+ from pathlib import PurePath
+ from collections import OrderedDict
+ from .mesonlib import (
+-    MesonException, default_libdir, default_libexecdir, default_prefix
++    MesonException, default_libdir, default_libexecdir, default_prefix, commonpath
+ )
+ from .wrap import WrapMode
+ import ast
+@@ -379,7 +379,7 @@ class CoreData:
+             # commonpath will always return a path in the native format, so we
+             # must use pathlib.PurePath to do the same conversion before
+             # comparing.
+-            if os.path.commonpath([value, prefix]) != str(PurePath(prefix)):
++            if commonpath([value, prefix]) != str(PurePath(prefix)):
+                 m = 'The value of the {!r} option is {!r} which must be a ' \
+                     'subdir of the prefix {!r}.\nNote that if you pass a ' \
+                     'relative path, it is assumed to be a subdir of prefix.'
+--- a/mesonbuild/interpreterbase.py
++++ b/mesonbuild/interpreterbase.py
+@@ -617,7 +617,9 @@ The result of this is undefined and will
+ 
+         if cur.operation == 'add':
+             if isinstance(l, dict) and isinstance(r, dict):
+-                return {**l, **r}
++                ret = l.copy()
++                ret.update(r)
++                return ret
+             try:
+                 return l + r
+             except Exception as e:
+@@ -718,7 +720,8 @@ The result of this is undefined and will
+         elif isinstance(old_variable, dict):
+             if not isinstance(addition, dict):
+                 raise InvalidArguments('The += operator requires a dict on the right hand side if the variable on the left is a dict')
+-            new_value = {**old_variable, **addition}
++            new_value = old_variable.copy()
++            new_value.update(addition)
+         # Add other data types here.
+         else:
+             raise InvalidArguments('The += operator currently only works with arrays, dicts, strings or ints ')
+--- a/mesonbuild/mesonlib.py
++++ b/mesonbuild/mesonlib.py
+@@ -20,6 +20,7 @@ import stat
+ import time
+ import platform, subprocess, operator, os, shutil, re
+ import collections
++import collections.abc
+ from enum import Enum
+ from functools import lru_cache
+ 
+@@ -1149,6 +1150,30 @@ def substring_is_in_list(substr, strlist
+             return True
+     return False
+ 
++def commonpath(paths):
++    '''
++    For use on Python 3.4 where os.path.commonpath is not available.
++    '''
++    if sys.version_info >= (3, 5):
++        return os.path.commonpath(paths)
++
++    import pathlib
++    if not paths:
++        raise ValueError('commonpath() arg is an empty sequence')
++    common = pathlib.PurePath(paths[0])
++    for path in paths[1:]:
++        new = []
++        path = pathlib.PurePath(path)
++        for c, p in zip(common.parts, path.parts):
++            if c != p:
++                break
++            new.append(c)
++        if not new:
++            raise ValueError("Can't mix absolute and relative paths") from None
++        new = os.path.join(*new)
++        common = pathlib.PurePath(new)
++    return str(common)
++
+ class OrderedSet(collections.abc.MutableSet):
+     """A set that preserves the order in which items are added, by first
+     insertion.
+--- a/mesonbuild/mesonmain.py
++++ b/mesonbuild/mesonmain.py
+@@ -149,8 +149,8 @@ def run_script_command(script_name, scri
+         return 1
+ 
+ def run(original_args, mainfile):
+-    if sys.version_info < (3, 5):
+-        print('Meson works correctly only with python 3.5+.')
++    if sys.version_info < (3, 4):
++        print('Meson works correctly only with python 3.4+.')
+         print('You have python %s.' % sys.version)
+         print('Please update your environment')
+         return 1
+--- a/mesonbuild/minstall.py
++++ b/mesonbuild/minstall.py
+@@ -348,8 +348,8 @@ class Installer:
+             if shutil.which('pkexec') is not None and 'PKEXEC_UID' not in os.environ:
+                 print('Installation failed due to insufficient permissions.')
+                 print('Attempting to use polkit to gain elevated privileges...')
+-                os.execlp('pkexec', 'pkexec', sys.executable, main_file, *sys.argv[1:],
+-                          '-C', os.getcwd())
++                os.execvp('pkexec', ['pkexec', sys.executable, main_file] + sys.argv[1:] +
++                          ['-C', os.getcwd()])
+             else:
+                 raise
+ 
+--- a/mesonbuild/modules/python.py
++++ b/mesonbuild/modules/python.py
+@@ -516,7 +516,7 @@ class PythonModule(ExtensionModule):
+             # Sanity check, we expect to have something that at least quacks in tune
+             try:
+                 info = json.loads(run_command(python, INTROSPECT_COMMAND))
+-            except json.JSONDecodeError:
++            except ValueError:
+                 info = None
+ 
+             if isinstance(info, dict) and 'version' in info and self._check_version(name_or_path, info['version']):
+--- a/mesonbuild/mtest.py
++++ b/mesonbuild/mtest.py
+@@ -114,7 +114,12 @@ def returncode_to_status(retcode):
+     if retcode < 0:
+         signum = -retcode
+         try:
+-            signame = signal.Signals(signum).name
++            if sys.version_info >= (3, 5):
++                signame = signal.Signals(signum).name
++            else:
++                try: signame = [next(n for n, i in signal.__dict__.items()
++                                     if i == signum)]
++                except StopIteration: raise ValueError
+         except ValueError:
+             signame = 'SIGinvalid'
+         return '(killed by signal %d %s)' % (signum, signame)
+@@ -124,7 +129,12 @@ def returncode_to_status(retcode):
+ 
+     signum = retcode - 128
+     try:
+-        signame = signal.Signals(signum).name
++        if sys.version_info >= (3, 5):
++            signame = signal.Signals(signum).name
++        else:
++            try: signame = [next(n for n, i in signal.__dict__.items()
++                                 if i == signum)]
++            except StopIteration: raise ValueError
+     except ValueError:
+         signame = 'SIGinvalid'
+     return '(exit status %d or signal %d %s)' % (retcode, signum, signame)
+--- a/mesonbuild/scripts/gtkdochelper.py
++++ b/mesonbuild/scripts/gtkdochelper.py
+@@ -17,7 +17,7 @@ import subprocess
+ import shlex
+ import shutil
+ import argparse
+-from ..mesonlib import MesonException, Popen_safe, is_windows
++from ..mesonlib import MesonException, Popen_safe, commonpath, is_windows
+ from . import destdir_join
+ 
+ parser = argparse.ArgumentParser()
+@@ -108,7 +108,7 @@ def build_gtkdoc(source_root, build_root
+         # FIXME: Use mesonlib.File objects so we don't need to do this
+         if not os.path.isabs(f):
+             f = os.path.join(doc_src, f)
+-        elif os.path.commonpath([f, build_root]) == build_root:
++        elif commonpath([f, build_root]) == build_root:
+             continue
+         shutil.copyfile(f, os.path.join(abs_out, os.path.basename(f)))
+ 
+--- a/run_meson_command_tests.py
++++ b/run_meson_command_tests.py
+@@ -19,6 +19,7 @@ import os
+ import tempfile
+ import unittest
+ import subprocess
++import sys
+ import zipapp
+ from pathlib import Path
+ 
+@@ -68,9 +69,15 @@ class CommandTests(unittest.TestCase):
+         # If this call hangs CI will just abort. It is very hard to distinguish
+         # between CI issue and test bug in that case. Set timeout and fail loud
+         # instead.
+-        p = subprocess.run(command, stdout=subprocess.PIPE,
+-                           env=os.environ.copy(), universal_newlines=True,
+-                           cwd=workdir, timeout=60 * 5)
++        if sys.version_info >= (3, 5):
++            p = subprocess.run(command, stdout=subprocess.PIPE,
++                               env=os.environ.copy(), universal_newlines=True,
++                               cwd=workdir, timeout=60 * 5)
++        else:
++            p = subprocess.Popen(command, stdout=subprocess.PIPE,
++                                 env=os.environ.copy(), universal_newlines=True,
++                                 cwd=workdir)
++            p.stdout = p.communicate(timeout=60 * 5)[0]
+         print(p.stdout)
+         if p.returncode != 0:
+             raise subprocess.CalledProcessError(p.returncode, command)
+--- a/run_unittests.py
++++ b/run_unittests.py
+@@ -956,6 +956,24 @@ class DataTests(unittest.TestCase):
+             defined = set([a.strip() for a in res.group().split('\\')][1:])
+             self.assertEqual(defined, set(chain(interp.funcs.keys(), interp.builtin.keys())))
+ 
++    def test_commonpath(self):
++        from os.path import sep
++        commonpath = mesonbuild.mesonlib.commonpath
++        self.assertRaises(ValueError, commonpath, [])
++        self.assertEqual(commonpath(['/usr', '/usr']), sep + 'usr')
++        self.assertEqual(commonpath(['/usr', '/usr/']), sep + 'usr')
++        self.assertEqual(commonpath(['/usr', '/usr/bin']), sep + 'usr')
++        self.assertEqual(commonpath(['/usr/', '/usr/bin']), sep + 'usr')
++        self.assertEqual(commonpath(['/usr/./', '/usr/bin']), sep + 'usr')
++        self.assertEqual(commonpath(['/usr/bin', '/usr/bin']), sep + 'usr' + sep + 'bin')
++        self.assertEqual(commonpath(['/usr//bin', '/usr/bin']), sep + 'usr' + sep + 'bin')
++        self.assertEqual(commonpath(['/usr/./bin', '/usr/bin']), sep + 'usr' + sep + 'bin')
++        self.assertEqual(commonpath(['/usr/local', '/usr/lib']), sep + 'usr')
++        self.assertEqual(commonpath(['/usr', '/bin']), sep)
++        prefix = '/some/path/to/prefix'
++        libdir = '/some/path/to/prefix/libdir'
++        self.assertEqual(commonpath([prefix, libdir]), str(PurePath(prefix)))
++
+ 
+ class BasePlatformTests(unittest.TestCase):
+     def setUp(self):
+@@ -1036,9 +1054,15 @@ class BasePlatformTests(unittest.TestCas
+         # If this call hangs CI will just abort. It is very hard to distinguish
+         # between CI issue and test bug in that case. Set timeout and fail loud
+         # instead.
+-        p = subprocess.run(command, stdout=subprocess.PIPE,
+-                           stderr=subprocess.STDOUT, env=os.environ.copy(),
+-                           universal_newlines=True, cwd=workdir, timeout=60 * 5)
++        if sys.version_info >= (3, 5):
++            p = subprocess.run(command, stdout=subprocess.PIPE,
++                               stderr=subprocess.STDOUT, env=os.environ.copy(),
++                               universal_newlines=True, cwd=workdir, timeout=60 * 5)
++        else:
++            p = subprocess.Popen(command, stdout=subprocess.PIPE,
++                                 stderr=subprocess.STDOUT, env=os.environ.copy(),
++                                 universal_newlines=True, cwd=workdir)
++            p.stdout  = p.communicate(timeout=60 * 5)[0]
+         print(p.stdout)
+         if p.returncode != 0:
+             if 'MESON_SKIP_TEST' in p.stdout:
+@@ -2849,17 +2873,23 @@ recommended as it is not supported on so
+                 of = open(mfile, 'w')
+                 of.write("project('foobar', 'c')\n")
+                 of.close()
+-                pc = subprocess.run(self.setup_command,
+-                                    cwd=srcdir,
+-                                    stdout=subprocess.PIPE,
+-                                    stderr=subprocess.DEVNULL)
++                if sys.version_info >= (3, 5):
++                    pc = subprocess.run(self.setup_command,
++                                        cwd=srcdir,
++                                        stdout=subprocess.PIPE,
++                                        stderr=subprocess.DEVNULL)
++                else:
++                    pc = subprocess.Popen(self.setup_command,
++                                          cwd=srcdir,
++                                          stdout=subprocess.PIPE,
++                                          stderr=subprocess.DEVNULL)
++                    pc.stdout = pc.communicate()[0]
+                 self.assertIn(b'Must specify at least one directory name', pc.stdout)
+                 with tempfile.TemporaryDirectory(dir=srcdir) as builddir:
+-                    subprocess.run(self.setup_command,
+-                                   check=True,
+-                                   cwd=builddir,
+-                                   stdout=subprocess.DEVNULL,
+-                                   stderr=subprocess.DEVNULL)
++                    subprocess.check_call(self.setup_command,
++                                          cwd=builddir,
++                                          stdout=subprocess.DEVNULL,
++                                          stderr=subprocess.DEVNULL)
+ 
+     def get_opts_as_dict(self):
+         result = {}
+@@ -4671,13 +4701,14 @@ class NativeFileTests(BasePlatformTests)
+                 f.write('        print("{}", file=sys.{})\n'.format(value, kwargs.get('outfile', 'stdout')))
+                 f.write('        sys.exit(0)\n')
+             f.write(textwrap.dedent('''
+-                    ret = subprocess.run(
++                    ret = subprocess.Popen(
+                         ["{}"] + extra_args,
+                         stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE,
+-                        encoding='utf-8')
+-                    print(ret.stdout)
+-                    print(ret.stderr, file=sys.stderr)
++                        universal_newlines=True)
++                    stdout, stderr = ret.communicate()
++                    print(stdout)
++                    print(stderr, file=sys.stderr)
+                     sys.exit(ret.returncode)
+ 
+                 if __name__ == '__main__':
+--- a/setup.py
++++ b/setup.py
+@@ -16,9 +16,9 @@
+ 
+ import sys
+ 
+-if sys.version_info < (3, 5, 0):
++if sys.version_info < (3, 4, 0):
+     print('Tried to install with an unsupported version of Python. '
+-          'Meson requires Python 3.5.0 or greater')
++          'Meson requires Python 3.4.0 or greater')
+     sys.exit(1)
+ 
+ from mesonbuild.coredata import version
+--- "a/test cases/common/188 find override/subdir/converter.py"
++++ "b/test cases/common/188 find override/subdir/converter.py"
+@@ -10,6 +10,7 @@ ftempl = '''int %s() {
+ }
+ '''
+ 
+-d = pathlib.Path(ifilename).read_text().split('\n')[0].strip()
+-
+-pathlib.Path(ofilename).write_text(ftempl % d)
++with pathlib.Path(ifilename).open('r') as f:
++    d = f.readline().strip()
++with pathlib.Path(ofilename).open('w') as f:
++    f.write(ftempl % d)
+--- "a/test cases/common/188 find override/subdir/gencodegen.py.in"
++++ "b/test cases/common/188 find override/subdir/gencodegen.py.in"
+@@ -10,6 +10,7 @@ ftempl = '''int %s() {
+ }
+ '''
+ 
+-d = pathlib.Path(ifilename).read_text().split('\n')[0].strip()
+-
+-pathlib.Path(ofilename).write_text(ftempl % d)
++with pathlib.Path(ifilename).open('r') as f:
++    d = f.readline().strip()
++with pathlib.Path(ofilename).open('w') as f:
++    f.write(ftempl % d)
+--- "a/test cases/unit/35 dist script/replacer.py"
++++ "b/test cases/unit/35 dist script/replacer.py"
+@@ -11,6 +11,8 @@ source_root = pathlib.Path(os.environ['M
+ 
+ modfile = source_root / 'prog.c'
+ 
+-contents = modfile.read_text()
++with modfile.open('r') as f:
++    contents = f.read()
+ contents = contents.replace(sys.argv[1], sys.argv[2])
+-modfile.write_text(contents)
++with modfile.open('w') as f:
++    f.write(contents)
+--- "a/test cases/unit/46 native dep pkgconfig var/cross_pkgconfig.py"
++++ "b/test cases/unit/46 native dep pkgconfig var/cross_pkgconfig.py"
+@@ -9,4 +9,4 @@ environ['PKG_CONFIG_LIBDIR'] = os.path.j
+     os.path.dirname(os.path.realpath(__file__)), 'cross_pkgconfig')
+ 
+ sys.exit(
+-    subprocess.run(['pkg-config'] + sys.argv[1:], env=environ).returncode)
++    subprocess.call(['pkg-config'] + sys.argv[1:], env=environ))
+--- "a/test cases/windows/13 test argument extra paths/test/test_run_exe.py"
++++ "b/test cases/windows/13 test argument extra paths/test/test_run_exe.py"
+@@ -7,6 +7,6 @@ if __name__ == '__main__':
+     parser.add_argument('prog')
+     args = parser.parse_args()
+ 
+-    res = subprocess.run(args.prog)
++    ret = subprocess.call(args.prog)
+ 
+-    sys.exit(res.returncode - 42)
++    sys.exit(ret - 42)

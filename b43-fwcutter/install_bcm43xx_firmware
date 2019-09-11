@@ -1,0 +1,64 @@
+#!/bin/sh
+#
+# install_bcm43xx_firmware
+#
+# This script tries to download and install the firmware needed to run
+# WLAN cards using Broadcom's bcm43xx chips.
+
+# firmware for b43
+URL1=http://www.lwfinger.com/b43-firmware
+FILE1=broadcom-wl-6.30.163.46.tar.bz2
+FIRMWARE1=broadcom-wl-6.30.163.46.wl_apsta.o
+
+# firmware for b43legacy
+URL2=http://downloads.openwrt.org/sources
+FILE2=wl_apsta-3.130.20.0.o
+
+test -z "$( type -p curl)" && { echo "'curl' is not installed, aborting. Please install 'curl' and try again."; exit 1; }
+test -z "$( type -p b43-fwcutter)" && { echo "'b43-fwcutter' is not installed, aborting. Please install 'b43-fwcutter' and try again."; exit 1; }
+test -d /lib/firmware || mkdir -p /lib/firmware
+
+TMPDIR=$(mktemp -d /var/tmp/bcm.XXXXXX) || exit 1
+
+cd $TMPDIR
+
+echo "Downloading b43 firmware"
+curl -# -f -o $FILE1 $URL1/$FILE1
+if [ $? -eq 0 ];then
+	echo "Extracting b43 firmware"
+	tar xjf $FILE1
+	b43-fwcutter -w /lib/firmware $FIRMWARE1
+else
+	echo "Could not download b43 firmware. Please look at /usr/share/doc/packages/b43-fwcutter/README."
+fi
+
+echo
+echo "Downloading b43legacy firmware"
+curl -# -f -o $FILE2 $URL2/$FILE2
+if [ $? -eq 0 ];then
+	echo "Extracting b43legacy firmware"
+	b43-fwcutter -w /lib/firmware $FILE2
+else
+	echo "Could not download b43legacy firmware. Please look at /usr/share/doc/packages/b43-fwcutter/README."
+fi
+
+echo
+if [ -d /lib/firmware/b43 ] ; then
+	echo "b43 firmware successfully installed."
+	/sbin/modprobe -r b43
+	/sbin/modprobe b43
+else
+	echo "b43 firmware installation failed."
+fi
+if [ -d /lib/firmware/b43legacy ] ; then
+	echo "b43legacy firmware successfully installed."
+	/sbin/modprobe -r b43legacy
+	/sbin/modprobe b43legacy
+else
+	echo "b43legacy firmware installation failed."
+fi
+
+cd - >/dev/null
+rm -rf $TMPDIR
+
+exit 0

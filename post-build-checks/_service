@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="version">84.88</param>
+    <param name="versionformat">84.88+git%cd.%h</param>
+    <param name="url">git://github.com/openSUSE/post-build-checks.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="exclude">.gitreview</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

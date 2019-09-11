@@ -1,0 +1,59 @@
+Index: at-3.1.23/at.1.in
+===================================================================
+--- at-3.1.23.orig/at.1.in
++++ at-3.1.23/at.1.in
+@@ -68,6 +68,9 @@ deletes jobs, identified by their job nu
+ executes commands when system load levels permit; in other words, when the load average
+ drops below @LOADAVG_MX@, or the value specified in the invocation of
+ .BR atd .
++Note that because of the load meaning on Linux,
++this number is multiplied by the amount of CPUs when compared to the
++system loadavg.
+ .PP
+ .B At
+ allows fairly complex time
+Index: at-3.1.23/atd.c
+===================================================================
+--- at-3.1.23.orig/atd.c
++++ at-3.1.23/atd.c
+@@ -625,6 +625,7 @@ run_loop()
+     int run_batch;
+     static time_t next_batch = 0;
+     double currlavg[3];
++    int cpu_count = 1;
+ 
+     /* Main loop. Open spool directory for reading and look over all the
+      * files in there. If the filename indicates that the job should be run,
+@@ -775,7 +776,14 @@ run_loop()
+ #ifdef GETLOADAVG_PRIVILEGED
+ 	END_PRIV
+ #endif
+-	if (currlavg[0] < load_avg) {
++#ifdef _SC_NPROCESSORS_ONLN
++	cpu_count = sysconf(_SC_NPROCESSORS_ONLN);
++	if (cpu_count < 1) {
++		cpu_count = 1;
++	}
++#endif
++
++	if (currlavg[0] < load_avg * cpu_count) {
+ 	    run_file(batch_name, batch_uid, batch_gid);
+ 	    run_batch--;
+         }
+Index: at-3.1.23/atd.8.in
+===================================================================
+--- at-3.1.23.orig/atd.8.in
++++ at-3.1.23/atd.8.in
+@@ -20,10 +20,8 @@ runs jobs queued by
+ .B \-l
+ Specifies a limiting load factor, over which batch jobs should
+ not be run, instead of the compile-time choice of @LOADAVG_MX@.
+-For an SMP system with
+-.I n
+-CPUs, you will probably want to set this higher than
+-.IR n\-1.
++This number is multiplied by the amount of CPUs when comparing
++to /proc/loadavg, because loadavg is a sum over all processors on Linux.
+ .TP 8
+ .B \-b
+ Specify the minimum interval in seconds between the start of two

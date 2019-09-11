@@ -1,0 +1,24 @@
+diff -Naur a/meson.build b/meson.build
+--- a/meson.build	2018-05-30 07:13:47.000000000 -0500
++++ b/meson.build	2018-11-13 08:23:40.706757813 -0600
+@@ -17,7 +17,7 @@
+ 
+ vulkan_dep = cpp.find_library('vulkan')
+ dl_dep = cpp.find_library('dl')
+-glm_dep = dependency('glm')
++
+ assimp_dep = dependency('assimp')
+ 
+ xcb_dep = dependency('xcb', required : get_option('xcb') == 'true')
+diff -Naur a/src/meson.build b/src/meson.build
+--- a/src/meson.build	2018-05-30 07:13:47.000000000 -0500
++++ b/src/meson.build	2018-11-13 08:27:23.081524932 -0600
+@@ -52,7 +52,7 @@
+     'vkmark',
+     files('main.cpp') + vkutil_sources + scene_sources,
+     link_with: vkmark_core,
+-    dependencies : [vulkan_dep, glm_dep, dl_dep],
++    dependencies : [vulkan_dep, dl_dep],
+     link_args: ['-Wl,--dynamic-list=' + join_paths([meson.current_source_dir(), 'dynamic.list'])],
+     install : true
+     )

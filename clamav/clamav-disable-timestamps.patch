@@ -1,0 +1,81 @@
+--- libclamav/tomsfastmath/misc/fp_ident.c.orig
++++ libclamav/tomsfastmath/misc/fp_ident.c
+@@ -15,7 +15,11 @@ const char *fp_ident(void)
+ 
+    memset(buf, 0, sizeof(buf));
+    snprintf(buf, sizeof(buf)-1,
+-"TomsFastMath (%s)\n"
++#if (ENABLE_TIMESTAMPS == 1)
++	"TomsFastMath (%s)\n"
++#else
++	"TomsFastMath\n"
++#endif
+ "\n"
+ "Sizeofs\n"
+ "\tfp_digit = %llu\n"
+@@ -70,7 +74,11 @@ const char *fp_ident(void)
+ #ifdef TFM_HUGE
+ " TFM_HUGE "
+ #endif
++#if (ENABLE_TIMESTAMPS == 1)
+             "\n", __DATE__, (long long unsigned)sizeof(fp_digit), (long long unsigned)sizeof(fp_word), FP_MAX_SIZE);
++#else
++            "\n", (long long unsigned)sizeof(fp_digit), (long long unsigned)sizeof(fp_word), FP_MAX_SIZE);
++#endif
+ 
+    if (sizeof(fp_digit) == sizeof(fp_word)) {
+       strncat(buf, "WARNING: sizeof(fp_digit) == sizeof(fp_word), this build is likely to not work properly.\n", 
+--- configure.orig
++++ configure
+@@ -812,6 +812,7 @@ FGREP
+ SED
+ LIBTOOL
+ LIBCLAMAV_VERSION
++ENABLE_TIMESTAMPS
+ EGREP
+ GREP
+ CPP
+@@ -922,6 +923,7 @@ ac_user_opts='
+ enable_option_checking
+ enable_dependency_tracking
+ enable_silent_rules
++enable_timestamps
+ enable_static
+ enable_shared
+ with_pic
+@@ -1641,6 +1643,8 @@ Optional Features:
+   --enable-silent-rules   less verbose build output (undo: "make V=1")
+   --disable-silent-rules  verbose build output (undo: "make V=0")
+   --enable-static[=PKGS]  build static libraries [default=no]
++  --enable-timestamps     Enable embedding timestamp information in build
++                          (default is YES)
+   --enable-shared[=PKGS]  build shared libraries [default=yes]
+   --enable-fast-install[=PKGS]
+                           optimize for fast installation [default=yes]
+@@ -5923,6 +5927,26 @@ $as_echo "$ac_cv_safe_to_define___extens
+ 
+   $as_echo "#define _TANDEM_SOURCE 1" >>confdefs.h
+ 
++# Check whether --enable-timestamps was given.
++if test "${enable_timestamps+set}" = set; then :
++  enableval=$enable_timestamps;
++else
++  enableval=default
++fi
++
++case "$enableval" in
++  yes) ENABLE_TIMESTAMPS=1
++ ;;
++  no)  ENABLE_TIMESTAMPS=0
++ ;;
++  default) ENABLE_TIMESTAMPS=1
++ ;;
++  *) as_fn_error $? "Invalid setting for --enable-timestamps. Use \"yes\" or \"no\"" "$LINENO" 5 ;;
++esac
++
++cat >>confdefs.h <<_ACEOF
++#define ENABLE_TIMESTAMPS $ENABLE_TIMESTAMPS
++_ACEOF
+ 
+ 
+ VERSION="0.101.3"

@@ -1,0 +1,377 @@
+-------------------------------------------------------------------
+Wed Apr 17 11:46:38 UTC 2019 - olaf@aepfle.de
+
+- Conflict with libgdict-1_0-6 because this pkg contained files which
+  are now in the main pkg, namely $_datadir/gdict-1.0 (bsc#1132758)
+
+-------------------------------------------------------------------
+Mon Jul 23 09:47:12 UTC 2018 - dimstar@opensuse.org
+
+- Help translation-update-upstream finding the right gettext domain
+  name: pass po %{name} to the call.
+
+-------------------------------------------------------------------
+Thu Mar 22 22:36:25 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 3.26.1+20180313.ac6d4c0:
+  + Remove po/Makevars.
+  + Flatpak: use meson from flatpak build definition.
+  + Fix translations of the Name key.
+  + Drop build-api wrapper for Continuous.
+  + Updated translations.
+- Switch to git-checkout via source services.
+- Drop obsolete gnome-utils Conflicts and update-desktop-files
+  BuildRequires and stop passing glib2_gsettings_schema_requires
+  and suse_update_desktop_file macros.
+- Use autosetup macro and pass explicit use_ipv6=true and
+  build_man=true to meson, ensure we build the features we want.
+- Update URL to correct home.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:26:35 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:27:55 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct  2 00:58:56 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.1:
+  + Menu for dictionary selection has too small size (bgo#777584).
+  + Can't add dictionary sources (bgo#762589).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 12 09:20:53 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.0:
+  + Update the gnome-dictionary man page and install it
+    (bgo#786319).
+  + Ensure that desktop files and AppData metadata is valid.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 15 12:57:42 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.90:
+  + The GDict library is now private for GNOME Dictionary, and it
+    is not installed any more.
+  + The "Description" key for dictionary sources has been
+    deprecated, and replaced with the "Comment" one, to allow for
+    localisation with Gettext.
+  + GNOME Dictionary does not depend on intltool for builds.
+  + GNOME Dictionary switched to the Meson build system from
+    Autotools.
+  + Use natural_width for database popover (bgo#777584).
+  + Fix typos in manual (bgo#766412).
+  + Fix displaying the program name in the about dialog
+    (bgo#784343).
+  + Updated translations.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+- Drop intltool BuildRequires: no longer needed.
+- Drop libgdata-1_0-10, typelib-1_0-GDict-1_0 and libgdict-data
+  subpackage: the library is no longer public.
+- Obsolete libgdict-data, as the files that were in this package
+  have been merged into the main package.
+
+-------------------------------------------------------------------
+Mon Mar 20 12:05:57 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Move more UI into the XML template.
+  + Fix the DatabaseChooserButton construction.
+  + Remove unused app menu item.
+  + Store the appropriate window size.
+  + Bump up the dependency on GLib and GTK+.
+  + Use Unicode in translatable strings.
+  + Add Ctrl+Q keyboard accelerator quit shortcut.
+  + Updated translations.
+- Switch back to released tarball:
+  + Drop _service handling.
+  + Drop gnome-common BuildRequires and autogen.sh call.
+
+-------------------------------------------------------------------
+Mon Mar 13 18:48:06 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.20.1+20170312.f3d61d5:
+  + Add Flatpak manifest
+  + Include the right header in GdictClientContext
+  + Use gtk_show_uri_on_window() with newer GTK+
+  + Use gtk_menu_popup_at_widget() with newer GTK+
+  + Update translation.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+- Switch to source service and use latest upstream git. Following
+  this: Add gnome-common BuildRequires and autogen call.
+- Add gtk-doc BuildRequires: and pass --enable-gtk to configure,
+  needed now that we use a git checkout.
+- Add gobject-introspection-devel BuildRequires: New dependency.
+- Split out new typelib sub package typelib-1_0-Gdict-1.0.
+
+-------------------------------------------------------------------
+Tue Mar 22 11:44:23 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  1 20:10:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 14 22:57:14 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.90:
+  + Application: Add a missing tag to the AppData file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 25 09:42:00 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.0:
+  + Update the AppData file to spec version 0.7+.
+  + Drop deprecated API from DefBox.
+  + Bump required Gtk+ version.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 19 08:44:58 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.18.1:
+  + Library:
+    - Create new GdictDatabaseChooserButton widget.
+    - Symbolic icons.
+  + Application:
+    - Fix spelling in "Creating XDG config directory" message.
+    - Use GTK's automagic menu loading.
+    - Symbolic icons.
+    - Replace action area with header bar.
+    - Replace deprecated GtkTable with GtkGrid.
+  + Updated translations.
+- Rename libgdict-1_0-9 subpackage to libgdict-1_0-10, following
+  upstreams soname bump.
+
+-------------------------------------------------------------------
+Mon Sep 21 11:50:15 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 18 18:28:45 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Library:
+    - Split lookup-start and lookup-end signals.
+    - Improve GdictDatabaseChooser widget.
+    - Add library initialize function.
+  + Updated translations.
+- Rename libgdict-1_0-8 subpackage to libgdict-1_0-9, following
+  upstreams soname bump.
+- Add libgdict-1_0-8 Obsoletes. We already obsolete libgdict-1_0-6.
+
+-------------------------------------------------------------------
+Mon Jul 20 07:43:45 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.4:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 26 08:43:42 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.3:
+  + Remove Select All menu entry.
+  + Remove Edit submenu.
+  + Remove Close menu entry.
+  + Make entries under File top-level menu entries.
+  + Remove obsolete gdict_window_defbox_selection_changed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 22 10:52:42 UTC 2015 - dimstar@opensuse.org
+
+- Own %{_datadir}/appdata for openSUSE:42.
+
+-------------------------------------------------------------------
+Tue May 26 10:19:40 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.2:
+  + Fix bgo#749131: Do not translate stack pages titles.
+  + Remove Copy menu entry.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 12 11:35:39 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.1:
+  + Pass the application pointer to the window constructor.
+  + Drop homegrown app singleton.
+  + Use widget templates to build GdictPrefDialog.
+  + Rename the GdictPrefDialog UI definition.
+  + Rename the menus UI definition file.
+  + Use widget templates for GdictSourceDialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 12 11:34:13 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 15 07:25:21 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Application:
+    - Remove compilation warnings.
+    - Improve menu items sensitivity.
+  + Library: Add GdictDefbox::selection-changed signal.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 09:07:47 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Documentation: Fix paste keyboard shortcut.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 08:59:46 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Implement GApplication::activate signal.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 08:36:37 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Application:
+    - Rename the AppData file to match the desktop name.
+    - Drop slash for the 'Find' action.
+  + Build system fixes.
+  + Bugs fixed: bgo#745022.
+  + Updated translations.
+- Rename libgdict-1_0-6 subpackage to libgdict-1_0-8, following
+  upstreams soname bump.
+- Split out a new libgdict-data package, required by
+  libgdata-1_0-8, in order to not have conflicts in the future.
+- Obsolete libgdict-1_0-6 from the new -data package. Not exactly
+  correct, but aids on upgrades. gnome-dictionary is the only
+  consumer of this library.
+
+-------------------------------------------------------------------
+Tue Feb 17 09:00:38 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Application:
+    - Convert to new-style commandline option handling.
+    - Make DBus-activatable.
+    - bgo#528956: duplicated dictionary sources.
+  + Library:
+    - Fix emission of lookup-start.
+    - Add GObject introspection support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 16 20:23:10 CET 2015 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Wed Nov 12 11:20:53 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Application: Use g_timeout_add_seconds() for multi-second
+    timeouts.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 12 12:22:44 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + bgo#737626: expand sidebar.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 10:20:47 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 18 08:28:20 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Code fixes.
+  + User documentation fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct  9 17:45:34 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Sidebar: Do not select unrealized menu items.
+  + Fix bugzilla product in .desktop file.
+  + Fix Ctrl+A and Ctrl+C in the search field.
+  + Build system fixes.
+  + Bugs fixed: bgo#706556.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 21 11:16:46 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul 21 20:29:32 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Re-written help in Mallard.
+  + Updated translations.
+- No longer pass --disable-scrollkeeper to configure: after the
+  rewrite of the help in Mallard it is no longer used/known.
+- Add fdupes BuildRequires and call fdupes in install section to
+  link equal files, saving some space.
+
+-------------------------------------------------------------------
+Tue Sep 25 16:14:28 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+- Replace pkgconfig(gnome-doc-utils) BuildRequires with yelp-tools:
+  even though not specified in NEWS, this release switched to the
+  new documentation infrastructure.
+
+-------------------------------------------------------------------
+Thu Jun  7 21:47:19 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.2:
+  + Drop usage of deprecated methods
+  + Use the new GMenu API
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 13:01:20 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Use XDG configuration directories to store the dictionary data.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov  1 20:56:21 UTC 2011 - dimstar@opensuse.org
+
+- Initial package, version 3.3.2:
+  + First release after the split from gnome-utils.
+

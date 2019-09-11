@@ -1,0 +1,119 @@
+Index: rsync-3.1.1/clientserver.c
+===================================================================
+--- rsync-3.1.1.orig/clientserver.c	2015-10-07 14:58:43.767379915 +0200
++++ rsync-3.1.1/clientserver.c	2015-10-07 14:59:24.515920754 +0200
+@@ -1200,7 +1200,7 @@ int daemon_main(void)
+ 	 * local address??? */
+ 
+ #ifdef HAVE_LIBSLP
+-	if (register_services()) {
++	if (lp_use_slp() && register_services()) {
+ 		rprintf(FINFO,
+ 		    "Couldn't register with service discovery protocol, continuing anyway\n");
+ 	}
+Index: rsync-3.1.1/loadparm.c
+===================================================================
+--- rsync-3.1.1.orig/loadparm.c	2015-10-07 14:58:43.767379915 +0200
++++ rsync-3.1.1/loadparm.c	2015-10-07 14:59:24.515920754 +0200
+@@ -101,6 +101,7 @@ typedef struct {
+ 	int rsync_port;
+ #ifdef HAVE_LIBSLP
+ 	int slp_refresh;
++	BOOL use_slp;
+ #endif
+ } global_vars;
+ 
+@@ -181,6 +182,10 @@ static const all_vars Defaults = {
+ 
+  /* listen_backlog; */		5,
+  /* rsync_port; */		0,
++#ifdef HAVE_LIBSLP
++ /* slp_refresh; */		0,
++ /* use_slp; */			False,
++#endif
+  },
+ 
+  /* ==== local_vars ==== */
+@@ -322,6 +327,7 @@ static struct parm_struct parm_table[] =
+  {"port",              P_INTEGER,P_GLOBAL,&Vars.g.rsync_port,          NULL,0},
+ #ifdef HAVE_LIBSLP
+  {"slp refresh",       P_INTEGER,P_GLOBAL,&Vars.g.slp_refresh,         NULL,0},
++ {"use slp",           P_BOOL,   P_GLOBAL,&Vars.g.use_slp,             NULL,0},
+ #endif
+  {"socket options",    P_STRING, P_GLOBAL,&Vars.g.socket_options,      NULL,0},
+ 
+@@ -458,6 +464,7 @@ FN_GLOBAL_INTEGER(lp_listen_backlog, &Va
+ FN_GLOBAL_INTEGER(lp_rsync_port, &Vars.g.rsync_port)
+ #ifdef HAVE_LIBSLP
+ FN_GLOBAL_INTEGER(lp_slp_refresh, &Vars.g.slp_refresh)
++FN_GLOBAL_BOOL(lp_use_slp, &Vars.g.use_slp)
+ #endif
+ 
+ FN_LOCAL_STRING(lp_auth_users, auth_users)
+Index: rsync-3.1.1/rsyncd.conf.yo
+===================================================================
+--- rsync-3.1.1.orig/rsyncd.conf.yo	2015-10-07 14:58:43.767379915 +0200
++++ rsync-3.1.1/rsyncd.conf.yo	2015-10-07 14:59:24.516920767 +0200
+@@ -124,6 +124,10 @@ via the bf(--sockopts) command-line opti
+ dit(bf(listen backlog)) You can override the default backlog value when the
+ daemon listens for connections.  It defaults to 5.
+ 
++dit(bf(use slp)) This parameter is used to determine if the module names are
++advertised via slp.  The default is for this to be disabled, which won't
++advertise your public modules.
++
+ dit(bf(slp refresh)) This parameter is used to determine how long service
+ advertisements are valid (measured in seconds), and is only applicable if
+ you have Service Location Protocol support compiled in. If this is
+Index: rsync-3.1.1/socket.c
+===================================================================
+--- rsync-3.1.1.orig/socket.c	2015-10-07 14:58:43.767379915 +0200
++++ rsync-3.1.1/socket.c	2015-10-07 14:59:24.516920767 +0200
+@@ -546,7 +546,7 @@ void start_accept_loop(int port, int (*f
+ 	int *sp, maxfd, i;
+ #ifdef HAVE_LIBSLP
+ 	time_t next_slp_refresh;
+-	short slp_timeout = lp_slp_refresh();
++	short slp_timeout = lp_use_slp() ? lp_slp_refresh() : 0;
+ 	if (slp_timeout) {
+ 		if (slp_timeout < SLP_MIN_TIMEOUT)
+ 			slp_timeout = SLP_MIN_TIMEOUT;
+Index: rsync-3.1.1/main.c
+===================================================================
+--- rsync-3.1.1.orig/main.c	2015-10-07 14:58:43.767379915 +0200
++++ rsync-3.1.1/main.c	2015-10-07 14:59:24.516920767 +0200
+@@ -1250,11 +1250,14 @@ static int start_client(int argc, char *
+ 		if (shell_machine && !shell_machine[0]) {
+ #ifdef HAVE_LIBSLP
+ 			/* User entered just rsync:// URI */
+-			print_service_list();
+-			exit_cleanup(0);
+-#else /* No SLP, die here */
++			if (lp_use_slp()) {
++				print_service_list();
++				exit_cleanup(0);
++			} else {
++				rprintf(FINFO, "SLP is disabled, cannot browse\n");
++			}
++#else /* No SLP */
+ 			rprintf(FINFO, "No SLP support, cannot browse\n");
+-			exit_cleanup(RERR_SYNTAX);
+ #endif
+ 		}
+ 
+Index: rsync-3.1.1/rsyncd.conf.5
+===================================================================
+--- rsync-3.1.1.orig/rsyncd.conf.5	2015-10-07 14:36:06.288364061 +0200
++++ rsync-3.1.1/rsyncd.conf.5	2015-10-07 15:00:28.309767222 +0200
+@@ -142,6 +142,11 @@ via the \fB\-\-sockopts\fP command\-line
+ You can override the default backlog value when the
+ daemon listens for connections.  It defaults to 5.
+ .IP 
++.IP "\fBuse slp\fP"
++This parameter is used to determine if the module names are
++advertised via slp.  The default is for this to be disabled, which won't
++advertise your public modules.
++.IP 
+ .IP "\fBslp refresh\fP"
+ This parameter is used to determine how long service
+ advertisements are valid (measured in seconds), and is only applicable if

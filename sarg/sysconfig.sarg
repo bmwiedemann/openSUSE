@@ -1,0 +1,10 @@
+## Path:        Applications/Sarg
+## Description: Configuration of sarg
+## Type:        yesno
+## Default:     no
+#
+# Should sarg-report be started by cron.daily, cron.weekly, and
+# cron.monthly ("yes" or "no")
+#
+RUN_SARGREPORT=no
+

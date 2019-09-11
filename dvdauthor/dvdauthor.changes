@@ -1,0 +1,141 @@
+-------------------------------------------------------------------
+Thu Jun  1 11:20:53 UTC 2017 - alarrosa@suse.com
+
+- Obsolete dvdauthor07 <= %version-%release instead of only older
+  versions in order to fix conflicts on TW.
+
+-------------------------------------------------------------------
+Sat Apr  8 10:50:22 UTC 2017 - davejplater@gmail.com
+
+- Build with GraphicsMagick instead of ImageMagick due to the
+  latter's change of api being incompatible.
+
+-------------------------------------------------------------------
+Tue Apr  4 14:07:34 UTC 2017 - davejplater@gmail.com
+
+- Update to version 0.7.2
+- Upstream changes:
+  * Various code-quality and build improvements
+  * Support “jump pgc n” and other interaction code-generation
+    improvements
+  * Improve reliability of dvdunauthor
+  * Don’t force infinite pause on last cell of a PGC
+  * Allow specification of provider field in VMG IFO file
+  * Add video_format(7) man page
+  * Add padding to ensure .BUP and .IFO files end up in different
+    ECC blocks
+  * Enabled hinting of rendered subtitle text
+  * Require cell start and end times (if specified) to be nonempty
+
+-------------------------------------------------------------------
+Sun Oct 23 16:10:50 UTC 2016 - davejplater@gmail.com
+
+- Update to version 0.7.1+ and rebased
+  dvdauthor-0.7.0_glibc-2.20.patch
+- Upstream fixed https://github.com/ldo/dvdauthor/issues/21
+- Upstream changes:
+    *Various code-quality and build improvements
+    *Support “jump pgc n” and other interaction code-generation
+     improvements
+    *Improve reliability of dvdunauthor
+    *Don’t force infinite pause on last cell of a PGC
+    *Allow specification of provider field in VMG IFO file
+    *Add video_format(7) man page
+    *Add padding to ensure .BUP and .IFO files end up in different
+     ECC blocks
+    *No longer silently fail to build dvdunauthor if libdvdread is
+     not present, must be explicitly disabled with
+     --disable-dvdunauthor, otherwise configure reports an error
+    *Allow format specification at top level of dvdauthor control
+     file
+    *mpeg2desc now reports more details about video frames
+    *More explanatory XML-parsing errors
+
+-------------------------------------------------------------------
+Tue Oct 21 00:37:43 UTC 2014 - avvissu@yandex.ru
+
+- Fix build error on openSUSE > 13.1:
+  * add dvdauthor-0.7.0_glibc-2.20.patch
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Apr  9 08:32:38 UTC 2012 - davejplater@gmail.com
+
+- Provided and obsoleted dvdauthor due to the dvdauthor binaries 
+  being overwritten during a zypper up -r Packman causing DVDStyler
+  to fail.
+
+-------------------------------------------------------------------
+Mon May  2 17:46:22 UTC 2011 - davejplater@gmail.com
+
+- Update to version 0.7.0+ and removed dvdauthor-strcat.patch due to
+  build errors and changes to the function patched.
+
+-------------------------------------------------------------------
+Sat Apr 16 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <0.7.0>
+
+-------------------------------------------------------------------
+Sun Mar 21 12:51:29 UTC 2010 - ludwig.nussel@gmx.de
+
+- fix compile error instead of disabling post-build-checks
+
+-------------------------------------------------------------------
+Fri Mar 19 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <0.6.18>
+  * implement link-subset jumps
+  *  implement audio and subpicture content attributes
+  *  use dynamically-sized buffer for building IFO files
+  *  version jump to forestall fork confusion
+
+-------------------------------------------------------------------
+Fri Mar 12 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <0.6.15>
+  * consistently check for errors on all file opens and when creating output
+    directories
+  * fix remapping of colours for more than 8 subpicture streams
+  * recover from SCR moving backwards as per suggestion from Philippe Sarazin
+  * add patch from Wolfgang Wershofen to print out chapter timecodes
+  * validate all XML integer arguments and attribute values
+  * fix spurious error parsing video caption option
+  * incorporate Fedora patch from Ville Skyttä to allow building with
+    GraphicsMagick instead of ImageMagick
+  * incorporate FriBidi patches from Ville Skyttä
+  * auto-action buttons have spatial extents too
+  * fill in more details in man pages
+  * include an adaptation of Martin Crossley's ivtv patch
+
+
+-------------------------------------------------------------------
+Tue Feb 27 00:00:00 UTC 2007 - rainer@links2linux.de
+
+- new upstream release
+
+
+-------------------------------------------------------------------
+Tue Nov 25 00:00:00 UTC 2003 - rainer@links2linux.de
+
+- added some docs
+
+
+-------------------------------------------------------------------
+Fri Nov 14 00:00:00 UTC 2003 - rainer@links2linux.de
+
+- added menu.txt
+
+
+-------------------------------------------------------------------
+Mon Nov  3 00:00:00 UTC 2003 - rainer@links2linux.de
+
+- added DESTDIR patch
+- first packman release
+
+
+-------------------------------------------------------------------
+Fri Feb 21 00:00:00 UTC 2003 - Dr. Peter Bieringer <pb at bieringer dot de> 0.4.3
+
+- initial
+

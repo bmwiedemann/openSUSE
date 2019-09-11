@@ -1,0 +1,13 @@
+Index: beaver-0.4.1/src/interface.c
+===================================================================
+--- beaver-0.4.1.orig/src/interface.c
++++ beaver-0.4.1/src/interface.c
+@@ -945,7 +945,7 @@ static void about (void)
+ 
+ 	/* the comments */
+ 	gchar *COMMENTS =
+-		g_strconcat (APP_MOTTO, "\n", "Compiled: ", __DATE__, " ", __TIME__,
++		g_strconcat (APP_MOTTO, "\n", "see 'rpm -qi beaver' for when this whas compiled" ,
+ 					 NULL);
+ 
+ 	/* load logo */

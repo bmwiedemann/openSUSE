@@ -1,0 +1,23 @@
+From af6925fde6ca395f7fb8cf1794f934de62da36cc Mon Sep 17 00:00:00 2001
+From: Claude Paroz <claude@2xlibre.net>
+Date: Tue, 13 Mar 2018 10:42:47 +0100
+Subject: [PATCH] Fixed test with Django master
+
+Was failing after Django commit d368784ba.
+---
+ tests/tests.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/tests.py b/tests/tests.py
+index a3e8c72..67f0f96 100644
+--- a/tests/tests.py
++++ b/tests/tests.py
+@@ -191,7 +191,7 @@ def test_empty_permitted(self):
+         empty_permitted = True, or forms where data has not changed.
+         """
+         f1 = HashTestBlankForm({})
+-        f2 = HashTestForm({}, empty_permitted=True)
++        f2 = HashTestForm({}, empty_permitted=True, use_required_attribute=False)
+         hash1 = utils.form_hmac(f1)
+         hash2 = utils.form_hmac(f2)
+         self.assertEqual(hash1, hash2)

@@ -1,0 +1,11 @@
+[Unit]
+Description=NAT64 implementation
+After=syslog.target
+WantedBy=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/wrapsix /etc/wrapsix.conf
+
+[Install]
+WantedBy=multi-user.target

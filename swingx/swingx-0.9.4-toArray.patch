@@ -1,0 +1,11 @@
+--- swingx-0.9.4-src/src/java/org/jdesktop/swingx/error/ErrorSupport.java	2008-09-07 06:10:24.000000000 +0200
++++ swingx-0.9.4-src/src/java/org/jdesktop/swingx/error/ErrorSupport.java	2018-10-03 07:20:59.784392455 +0200
+@@ -68,7 +68,7 @@
+      * added.
+      */
+     public ErrorListener[] getErrorListeners() {
+-        return listeners.toArray(null);
++        return listeners.toArray(new ErrorListener[0]);
+     }
+ 
+     /**

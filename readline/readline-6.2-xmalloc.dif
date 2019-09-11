@@ -1,0 +1,43 @@
+---
+ xfree.c   |    3 +++
+ xmalloc.c |    5 +++++
+ xmalloc.h |    8 ++++++++
+ 3 files changed, 16 insertions(+)
+
+--- xfree.c
++++ xfree.c	2018-09-20 06:41:57.485165699 +0000
+@@ -47,3 +47,6 @@ xfree (PTR_T string)
+   if (string)
+     free (string);
+ }
++
++#undef xfree
++extern void xfree PARAMS((void *)) __attribute__ ((weak, alias ("_rl_xfree")));
+--- xmalloc.c
++++ xmalloc.c	2018-09-20 06:41:57.485165699 +0000
+@@ -73,3 +73,8 @@ xrealloc (PTR_T pointer, size_t bytes)
+     memory_error_and_abort ("xrealloc");
+   return (temp);
+ }
++
++#undef xmalloc
++#undef xrealloc
++extern PTR_T xmalloc PARAMS((size_t)) __attribute__ ((weak, alias ("_rl_xmalloc")));
++extern PTR_T xrealloc PARAMS((void *, size_t)) __attribute__ ((weak, alias ("_rl_xrealloc")));
+--- xmalloc.h
++++ xmalloc.h	2018-09-20 06:41:57.485165699 +0000
+@@ -38,6 +38,14 @@
+ 
+ #endif /* !PTR_T */
+ 
++#undef xmalloc
++#undef xrealloc
++#undef xfree
++
++#define xmalloc  _rl_xmalloc
++#define xrealloc _rl_xrealloc
++#define xfree    _rl_xfree
++
+ extern PTR_T xmalloc PARAMS((size_t));
+ extern PTR_T xrealloc PARAMS((void *, size_t));
+ extern void xfree PARAMS((void *));

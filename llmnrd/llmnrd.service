@@ -1,0 +1,13 @@
+[Unit]
+Description=Link-Local Multicast Resolution (LLMNR) Daemon
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/sysconfig/llmnrd
+ExecStart=/usr/sbin/llmnrd $LLMNRD_OPTIONS
+Restart=on-abort
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target

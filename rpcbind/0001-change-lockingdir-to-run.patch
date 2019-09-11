@@ -1,0 +1,25 @@
+From 4d32e143124fa47466bbc91f54067674f212c3e3 Mon Sep 17 00:00:00 2001
+From: Thomas Blume <thomas.blume@suse.com>
+Date: Wed, 12 Jun 2019 10:09:01 +0200
+Subject: [PATCH] change lockingdir to /run
+
+---
+ src/rpcbind.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rpcbind.c b/src/rpcbind.c
+index cc848b1..65054ff 100644
+--- a/src/rpcbind.c
++++ b/src/rpcbind.c
+@@ -106,7 +106,7 @@ char *nss_modules = "files";
+ /* who to suid to if -s is given */
+ #define RUN_AS  "daemon"
+ 
+-#define RPCBINDDLOCK "/var/run/rpcbind.lock"
++#define RPCBINDDLOCK "/run/rpcbind.lock"
+ 
+ int runasdaemon = 0;
+ int insecure = 0;
+-- 
+2.16.4
+

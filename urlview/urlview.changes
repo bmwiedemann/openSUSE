@@ -1,0 +1,125 @@
+-------------------------------------------------------------------
+Thu Feb  9 10:04:22 UTC 2012 - puzel@suse.com
+
+- convert license string to spdx format 
+
+-------------------------------------------------------------------
+Wed Feb  8 11:04:36 UTC 2012 - puzel@suse.com
+
+- remove suse_update_config 
+
+-------------------------------------------------------------------
+Thu Dec  1 16:06:23 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Dec 22 12:52:10 UTC 2010 - puzel@novell.com
+
+- clean up specfile 
+
+-------------------------------------------------------------------
+Sun Nov 14 00:25:23 UTC 2010 - pascal.bleser@opensuse.org
+
+- rewrote part of the spec file to make it work on non-openSUSE/SUSE distros
+
+-------------------------------------------------------------------
+Wed Dec  5 18:07:12 CET 2007 - ro@suse.de
+
+- moved /etc/skel/.urlview here 
+
+-------------------------------------------------------------------
+Fri Nov 23 12:23:12 CET 2007 - werner@suse.de
+
+- Make url_handler.sh know about firefox
+
+-------------------------------------------------------------------
+Thu Mar 29 16:07:49 CEST 2007 - rguenther@suse.de
+
+- Add ncurses-devel BuildRequires. 
+
+-------------------------------------------------------------------
+Fri May 26 11:47:22 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:28 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov  8 14:25:57 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Mon Dec  3 23:50:25 CET 2001 - poeml@suse.de
+
+- actually use the newly added browsers if they are detected
+- bzip2 sources (and save glorious 4 kb)
+
+-------------------------------------------------------------------
+Thu Nov 22 16:21:28 CET 2001 - pthomas@suse.de
+
+- Add tests for opera, mozilla, w3m and links to url_handler.sh.
+  w3m is preferred for textmode and mozilla as GUI browser.
+
+-------------------------------------------------------------------
+Wed Oct  7 09:35:56 CEST 2001 - tcrhak@suse.cz
+
+- added -a to automake (needed by automake 1.5-4)
+
+-------------------------------------------------------------------
+Thu Nov 16 15:07:50 CET 2000 - cihlar@suse.cz
+
+- added suse_update config
+- improved BuildRoot
+- fixed file list
+
+-------------------------------------------------------------------
+Tue Jul  4 15:19:46 CEST 2000 - werner@suse.de
+
+- Switch to urlview 0.9 due to a better quoting of shell escapes
+- Not only ` and ' but also quote $ to catch bash syntax $(..)
+- Skip \b as a forbidden character
+
+-------------------------------------------------------------------
+Thu Jun 29 19:14:50 CEST 2000 - werner@suse.de
+
+- Be more secure: Not only ' but also ` and \b are forbidden
+  characters.
+
+-------------------------------------------------------------------
+Mon Jun 19 20:49:55 CEST 2000 - kasal@suse.de
+
+- Added Group: tag
+
+-------------------------------------------------------------------
+Fri Jan 28 09:49:25 CET 2000 - kasal@suse.de
+
+- autoconf is neededforbuild
+
+-------------------------------------------------------------------
+Tue Jan 25 21:39:03 CET 2000 - werner@suse.de
+
+- Include system regex.h
+
+-------------------------------------------------------------------
+Tue Jan 25 17:28:42 CET 2000 - kasal@suse.de
+
+- regexp should never match any string containing single quote char (')
+  default regexp and manpage fixed
+- fixed REGEXP and COMMAND, the same are hardwired, in default config
+  file and in the manpage
+- improved url_handler.sh.suse (news:, ftp: w/out ncftp, quoting $url,
+  $MAILER)
+- fixed declaration warnings
+- see mutt.changes
+
+-------------------------------------------------------------------
+Tue Jan 25 13:46:21 CET 2000 - werner@suse.de
+
+- Remove i386 object file and use autoconf to avoid linking against
+  binary (we use -D_GNU_SOURCE for POSIX regular regexpression)
+

@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Tue Jul 16 15:15:57 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.0.16.1
+  * feat: allow dtk-settings-tools skip json key translation
+  * refactor: use commit count for the package version
+
+-------------------------------------------------------------------
+Sun Jul  7 14:51:51 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.0.15
+  * Fix DSettings: crash when calling getOption() if option doesn't exist
+  * refactor: use commit count for the package version
+  * feat: allow dtk-settings-tools skip json key translation 
+
+-------------------------------------------------------------------
+Fri Apr 19 06:12:48 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.0.12.1
+  * Cross-builds incorrectly, built packages contain paths from build 
+    architecture
+  * Fix issue#10
+
+-------------------------------------------------------------------
+Tue Apr 16 06:59:12 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.0.10
+  * Fix crash at application
+  * Add DNotifySender
+  * Deepin-os-release support cpu model and other info query
+  * Fix failed build the deepin-os-release on Qt 5.7.1
+  * Use main project c/cxx/ld flags on build deepin-os-release
+  * Fix missing default constructor
+  * Support connan build
+
+-------------------------------------------------------------------
+Thu Dec 20 13:26:21 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 2.0.9.11
+  * Fix include unistd.h instead of sys/unistd.h
+  * Fix url encoding
+  * Fix compatibility with Qt 5.6
+  * Fix can't get correct disk size in some case
+  * add DRecentManager class
+
+-------------------------------------------------------------------
+Fri Nov  9 01:35:34 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 2.0.9.5
+  * update version number for expermimental 
+  * remove qt symbols
+  * non array type value is wrong on parse josn file
+  * update symbols
+  * add LIBDTKCORESHARED_EXPORT for windows
+  * add symbols 
+
+-------------------------------------------------------------------
+Mon Mar 19 13:46:42 UTC 2018 - hillwood@opensuse.org
+
+- Split cmake-dtkcore
+- Update version to 2.0.7.1
+  * reset short cut not show
+  * cmake link depends
+  * better static lib support
+  * read settings value failed
+  * set default should not use
+  * fix dtk-settings install path
+  * develop package no install the "version.pri" file
+  * awk script failed
+  * set default build version for debian changelog
+  * set its value only if VERSION is empty
+  * add hide support for group
+  * add get option interface
+  * add group interface for DSettingsGroup
+  * support generate cmake with qt function
+  * config pkg config with dtk_module
+  * support qt module
+  * add the "version.pri" file
+  * remove build version from install path
+  * make version parser easier
+  * set verion when build
+  * add .qmake.conf file
+  * add DtkCore and dtkcore_config.h headers
+  * DSettings: support set default value
+
+-------------------------------------------------------------------
+Thu Feb  1 01:55:37 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 2.0.6
+  * Add cmake package search configure
+
+-------------------------------------------------------------------
+Thu Nov 30 08:29:05 UTC 2017 - hillwood@opensuse.org
+
+- Update to 2.0.5.2
+  * make macosx build success 
+  * windows build failed 
+  * add macro D_DECL_DEPRECATED 
+  * build failed on used dbasefilewatcher.h project ([34fbe4b3](34fbe4b3))
+  * add miss libgsettings-qt-dev ([f61c1b54](f61c1b54))
+  * not select python version ([7e7e8832](7e7e8832))
+  * support gsettingsbackend, remove dsettings-key ([26a29800](26a29800))
+  * create gsettingsbackend ([b94b97b1](b94b97b1))
+
+-------------------------------------------------------------------
+Fri Nov  3 08:14:28 UTC 2017 - jengelh@inai.de
+
+- Expand summary.
+
+-------------------------------------------------------------------
+Thu Nov  2 08:52:55 UTC 2017 - dimstar@opensuse.org
+
+- Set Group for shared library package to 'System/Libraries'.
+
+-------------------------------------------------------------------
+Thu Sep 28 01:10:19 UTC 2017 - hillwood@opensuse.org
+
+- Initial package.

@@ -1,0 +1,26 @@
+Index: gitg-3.30.1/libgitg-ext/meson.build
+===================================================================
+--- gitg-3.30.1.orig/libgitg-ext/meson.build
++++ gitg-3.30.1/libgitg-ext/meson.build
+@@ -114,7 +114,7 @@ endif
+ custom_target(
+   libgitg_ext_typelib_name,
+   output: libgitg_ext_typelib_name,
+-  command: [g_ir_compiler, '--shared-library', libgitg_ext_api_name, '--includedir', libgitg_build_dir, '--output', '@OUTPUT@', join_paths(meson.current_build_dir(), libgitg_ext_gir_name)],
++  command: [g_ir_compiler, '--shared-library', '@0@.so.@1@'.format(libgitg_ext_api_name, soversion), '--includedir', libgitg_build_dir, '--output', '@OUTPUT@', join_paths(meson.current_build_dir(), libgitg_ext_gir_name)],
+   depends: [
+     libgitg,
+     libgitg_ext,
+Index: gitg-3.30.1/libgitg/meson.build
+===================================================================
+--- gitg-3.30.1.orig/libgitg/meson.build
++++ gitg-3.30.1/libgitg/meson.build
+@@ -167,7 +167,7 @@ pkg.generate(
+ custom_target(
+   libgitg_typelib_name,
+   output: libgitg_typelib_name,
+-  command: [g_ir_compiler, '--shared-library', libgitg_api_name, '--output', '@OUTPUT@', join_paths(libgitg_build_dir, libgitg_gir_name)],
++  command: [g_ir_compiler, '--shared-library', '@0@.so.@1@'.format(libgitg_api_name, soversion), '--output', '@OUTPUT@', join_paths(libgitg_build_dir, libgitg_gir_name)],
+   depends: libgitg,
+   install: true,
+   install_dir: gitg_girepositorydir,

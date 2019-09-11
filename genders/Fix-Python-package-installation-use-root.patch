@@ -1,0 +1,48 @@
+From: Egbert Eich <eich@suse.com>
+Date: Sat Jan 27 23:50:57 2018 +0100
+Subject: Fix Python package installation: use --root
+Patch-mainline: Not yet
+Git-commit: f8aa6871f9ac452134c4077d47adef28d5e8a0a1
+References: 
+
+Python allows the use of an alternative installation directory
+using the --root option. Do not code the root directory into
+the --prefix and --exec-prefix paths.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ src/extensions/python/Makefile.am | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+diff --git a/src/extensions/python/Makefile.am b/src/extensions/python/Makefile.am
+index 5d62ae6..86ba50d 100644
+--- a/src/extensions/python/Makefile.am
++++ b/src/extensions/python/Makefile.am
+@@ -7,23 +7,21 @@
+ # Use Python's distutils to make/install everything into the right place.
+ 
+ # DESTDIR is usually set during make install time, not configure or
+-# make time, so we work around it with the --with-extension-destdir
+-# autoconf option.
+-
+-PYTHON_DESTDIR = @EXTENSION_DESTDIR@
++# make time, so we work around it with a shell command.
++PYDEST=$$(test -z "${DESTDIR}" || echo "--root=${DESTDIR}")
+ 
+ if WITH_PYTHON_EXTENSIONS
+ all: genderssetup.py libgendersmodule.c genders.py
+ 	$(PYTHON) genderssetup.py build
+ 
+ install:
+-	$(PYTHON) genderssetup.py install --prefix=$(PYTHON_DESTDIR)$(prefix) --exec-prefix=$(PYTHON_DESTDIR)$(exec_prefix)
++	$(PYTHON) genderssetup.py install --prefix=$(prefix) --exec-prefix=$(exec_prefix) $(PYDEST)
+ 
+ pure_install:
+-	$(PYTHON) genderssetup.py install --prefix=$(PYTHON_DESTDIR)$(prefix) --exec-prefix=$(PYTHON_DESTDIR)$(exec_prefix)
++	$(PYTHON) genderssetup.py install --prefix=$(prefix) --exec-prefix=$(exec_prefix) $(PYDEST)
+ 
+ install-data-local:
+-	$(PYTHON) genderssetup.py install --prefix=$(PYTHON_DESTDIR)$(prefix) --exec-prefix=$(PYTHON_DESTDIR)$(exec_prefix)
++	$(PYTHON) genderssetup.py install --prefix=$(prefix) --exec-prefix=$(exec_prefix) $(PYDEST)
+ 
+ clean: 
+ 	rm -rf build

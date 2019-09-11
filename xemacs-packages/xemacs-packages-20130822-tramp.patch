@@ -1,0 +1,16 @@
+---
+ xemacs-packages-20130822/xemacs-packages/tramp/lisp/tramp-compat.el |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- xemacs-packages-20130822/xemacs-packages/tramp/lisp/tramp-compat.el
++++ xemacs-packages-20130822/xemacs-packages/tramp/lisp/tramp-compat.el	2015-02-11 13:47:13.405517971 +0000
+@@ -55,6 +55,9 @@
+   (require 'trampver)
+   (require 'tramp-loaddefs)
+ 
++  (if (featurep 'xemacs)
++      (load "subr-more" 'noerror t))
++
+   ;; As long as password.el is not part of (X)Emacs, it shouldn't be
+   ;; mandatory.
+   (if (featurep 'xemacs)

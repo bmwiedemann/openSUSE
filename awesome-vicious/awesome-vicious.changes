@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Mon Jun 18 18:47:56 UTC 2018 - okurz@suse.com
+
+- Update to version 2.3.1:
+  * Allow widget to be a function again
+  * btc: also usuable with cjson
+  * btc: remove synchronous variant and dead code
+  * Bitcoin price widget.
+  * Do not hide loading errors when widgets failed to load
+  * cmus: use correct shell escape function
+  * Add widget for cmus (follow mpd conventions) (#46)
+- Switch to https://github.com/Mic92/vicious
+
+-------------------------------------------------------------------
+Fri Dec 19 13:38:51 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 2.1.3
+  + bat: fix broken battery remaining time (was always N/A)
+  + volume: get the normalized volume like alsamixer and DE's indicator
+- Use download Url as source
+
+-------------------------------------------------------------------
+Thu Nov  8 11:30:08 UTC 2012 - toganm@opensuse.org
+
+- Change license to GPL-2.0+
+
+-------------------------------------------------------------------
+Wed Oct 31 18:48:20 UTC 2012 - toganm@opensuse.org
+
+- Update to official version 2.1.0
+  Cleanup spec to meet guidelines
+
+
+-------------------------------------------------------------------
+Sat Feb 11 15:21:51 UTC 2012 - toganm@opensuse.org
+
+- Update to git201202051838
+ * hddtemp: fix curl hang in version 7.24.0 
+
+-------------------------------------------------------------------
+Wed Jan 25 14:40:03 UTC 2012 - toganm@opensuse.org
+
+- Update to git201201201335 
+  * Created AUTHORS and removed the names from spec
+
+-------------------------------------------------------------------
+Wed Dec 21 19:12:43 UTC 2011 - toganm@opensuse.org
+
+- fixed spec
+- removed service file
+
+-------------------------------------------------------------------
+Tue Dec 20 14:42:47 UTC 2011 - toganm@opensuse.org
+
+- Switch to git version via service files
+

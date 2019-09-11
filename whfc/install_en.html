@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
+
+	<TITLE>HylaFAX Installation on SuSE Linux Standard Server Step by Step</TITLE>
+</HEAD>
+<BODY LANG="en-US">
+<H2>SuSE Fax Component - Windows Client Installation</H2>
+<P>The process of installation consists of two parts. When going through this document, you will first install Windows client, the application through which
+is possible to submit fax jobs in postscript format and to control the processing of the jobs. In the second stage a fax printer will be
+installed on the Windows system allowing to send faxes from any application which it is possbile to print from. 
+</P>
+<H3>Installation of Windows Client</H4>
+The Windows client application name is Windows HylaFAX Client. Later in this document it is on many places abbreviated as WHFC.
+Before you start the installation, please make sure, that your system fill the following requirements.
+<h4>Requirements</h4>
+<ul>
+<li>
+For <b>Windows 95</b> you may be needed to download and install
+<a href="http://www.microsoft.com/windows95/downloads/contents/wuadmintools/s_wunetworkingtools/w95sockets2/default.asp">Winsock 2.0</a> from Microsoft's WWW
+pages. You don't need this for newer Microsoft Windows versions.
+<li>
+<P STYLE="margin-bottom: 0cm">Current <a href="http://msdn.microsoft.com/library/default.asp?url=/downloads/list/dataaccess.asp">ODBC drivers</a>. The library ODBC32.dll has to be present in the Windows system. Have a look in your system (e.g. press F3 in Windows Explorer and search for the file odbc32.dll in your Windows directory), and if it is not there then download the drivers via the supplied link from Microsoft WWW pages. Notice that nowadays the drivers can be called MDAC. On the page supplied you have to choose the appropriate MDAC drivers for your system (there are different drivers for particular Microsoft Windows systems). After the download run the downloaded executable and the drivers will be installed. Maybe you will be required to reboot your system. 
+</P>
+</ul>
+<h4>Installation of Windows Client (WHFC)</h4>
+<ol>
+<LI><P STYLE="margin-bottom: 0cm">Run the supplied setup (<a href="/usr/share/whfc/whfc-1.2.3_setup.exe">whfc-1.2.3_setup.exe</a>). Confirm the name of the directory, where the temporary files shall be unpacked (the directory will be created if it does not exist) and after unpacking the setup will run automatically. 
+	</P>
+<LI><P STYLE="margin-bottom: 0cm">Enter the directory where the program shall be installed and choose the default installation. 
+	</P>
+<LI><P STYLE="margin-bottom: 0cm">Run WHFC from the Windows Start menu.
+	</P>
+<LI><P>Go to the menu <a href="systemsettings.png">System Settings</a> in the Fax menu and set primarily Hostname. It is the full domain name (e.g. faxserver.example.com) or IP address (e.g. 192.0.2.46) of your fax server (this should tell you the administrator of your fax server). Then you can put in the full path to the directory where messages will be spooled in the offline mode (textbox Spool directory for offline mode) or leave there the default value. You can also specify a path to program which will be used for viewing received faxes - here is an example: 
+</P>
+<PRE STYLE="margin-bottom: 0.5cm">kodakimg \\192.0.2.46\Fax Queue\%s</PRE><P>
+"kodakimg" is an executable program, which is by default part of Windows 98/2000 and it can be used for viewing the incoming faxes. On Windows XP you can use for this purpose mspaint. "192.0.2.46" is the same as Hostname used in the upper left textbox. "Fax Queue" is the name of the shared directory with the incoming facsimiles on your faxserver. "%s" is necessary argument for the entered command.
+<p><b>Note:</b><br>
+Instead of kodakimg or mspaint you can set there path to any other viewer which is able to display tiff format, e.g. ACDSee, if it is installed on your system:
+</P>
+	<PRE STYLE="margin-bottom: 0.5cm">c:\Program Files\ACDSee32\ACDSee32.exe \\192.0.2.46\Fax Queue\%s</PRE>
+<li><p>
+In the right part of the System Settings there are some checkboxes, only two of them are important. The first one is "Stay in Taskbar". If this one is checked, you can minimize the WHFC application to an icon on the system tray. The second one is "Work in offline mode". If it is checked, you can submit the documents to be faxed although the faxserver is not running. The submitted documents will be delayed in queue and will be gradually sent at the moment when the faxserver will be up.
+	
+<LI><P STYLE="margin-bottom: 0cm">Select (see <a href="usersettings.png">User Settings</a> in the Fax menu. You can change the language settings (=pop-up menu Language) if you do so, you may be required to restart the program to apply the settings. Then enter your name (textbox Name). By default the access to the faxserver is based on the IP of the client stations. In this case the textbox Login could be empty.
+<p>
+<b>Note:</b><br>
+If the administrator of your SuSE Linux Standard Server changes manually the access configuration, you may be forced to fill in also the login and eventually password for access to the faxserver (this information is afterwards checked against the file /var/spool/etc/hosts.hfaxd on the server). 
+<li><p>
+Enter an email address which will be used by the fax system for informing user about processing of particular fax jobs submitted from WHFC). You can also select a file which can be sent with every fax as a faxcover. If you don't, you will receive a notification, but you can ignore it. 
+</P>
+
+</OL>
+<H4>Fax Printer Installation</H4>
+Your Windows can be configured so that any document which is possible to print can be transparently sent from your system through your faxserver to the remote fax machine.<p>
+Please go on with following procedure to enable this feature:
+<OL>
+<LI><P STYLE="margin-bottom: 0cm">Browse to Printers folder and click on &quot;Add a new printer&quot. Choose a local connected printer (it is not important, that you have no printer connected to your computer, you need just to install some postscript driver. In fact the fax printer is completely independent on other printers installed in the system).
+<p>
+Pay attention, it is really a must to select a postscript printer driver (use e.g. HP LaserJet 5P). 
+</P>
+<li>During copying of the driver files to your system you may be prompted to insert your Windows Installation CD).
+
+<LI><P>Click on the tab Details in the Properties of the printer and select Fax port to be used with the printer (the port is visible there after registering it with regmon.exe - this is usually done automatically within running WHFC setup). Then click on Configure Port and choose a directory for the temporary spool files (or just confirm the suggestion). In the Postscript tab select Encapsulated Postscript (EPS) as the output format and click on OK to confirm the settings. 
+</P>
+</OL>
+<P>Now you should be able to send faxes from any Windows application which it is possible to print from. If you want to send a document from such an application, you simply &quot;print&quot; the document in the usual way (e.g. press Ctrl+P in MS Word) and then select the postscript printer used in conjunction with the fax port. <p>
+</p>
+<b>Note:</b><br>
+WHFC has to be running to use this feature because it is used for handling the fax jobs and in fact, it is used for faxing the "printed" document .
+</P>
+
+<H3>Main documentation</H3>
+You'll find a local copy of the original WHFC documentation 
+<a href=docu/index.html>here</a> or online at the project
+<a href=http://www.uli-eckhardt.de/whfc/1.2/docu/>page</a>.
+</p>
+
+</BODY>
+</HTML>

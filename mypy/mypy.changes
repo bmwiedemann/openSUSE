@@ -1,0 +1,217 @@
+-------------------------------------------------------------------
+Mon Jul 15 19:52:39 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.720:
+ - New Semantic Analyzer Used by Default
+ - New Feature: Warn about Unreachable Code
+ - Plugin API Changes
+ - Notable Improvements and Bug Fixes
+  - Have --package usage respect mypy_path (Aaron Batilo, PR 6926)
+  - Support flexible option specification in config files. Now all the flags support invertible forms so that one can specify either strict_optional = False or no_strict_optional = True. This matches how flags work on the command line (PR 7054)
+  - Fix reachability inference with isinstance(Any, Any) (Michael Lee, PR 7048)
+  - Fix mypyc crash with plugins using get_customize_class_mro_hook() (PR 7075)
+  - Fix slicing tuples with non-literal expressions (Ethan Smith, PR 7066)
+  - Fixes to column numbers in error messages (PR 7078, PR 7081)
+  - Make Need type annotation for variable error more consistent (PR 7079, PR 7113)
+  - Fix error reporting context for missing generic type arguments (PR 7100)
+  - Use only directories containing no __init__.py as namespace packages (Arne Welzel, PR 7108)
+  - Support method plugin hooks on union types (PR 6560)
+  - Fix some corner cases in --strict-equality (PR 7156, PR 7164)
+  - Fix binding of self-types on unions (PR 7152)
+  - Add more details for Invalid type errors (PR 7166)
+  - Fix custom __init__() in dataclasses (Ryan Gonzalez, PR 7168)
+  - Better support for indexing with unions of literal types (Michael Lee, PR 6558) 
+
+-------------------------------------------------------------------
+Sun Jun 30 11:35:29 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.711:
+ - Revert typeshed PR 2878 (“Define functools.partial as overloaded function instead of its own class”). This caused too many false positive errors in real-world code. (PR 3077)
+ - Fix MYPYC_BLACKLIST on Windows. This broke running dmypy on Windows. (PR 7032)
+
+-------------------------------------------------------------------
+Thu Jun 20 15:21:45 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to 0.710: too many changes to list here (and there is no
+  perfect changelog), but all information is on
+  http://www.mypy-lang.org/
+- update 0003-Pass-executable-path-into-main-when-running-installe.patch
+
+-------------------------------------------------------------------
+Sun Apr  7 19:31:15 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to 0.700: too many changes to list here (and there is no
+  perfect changelog), but all information is on
+  http://www.mypy-lang.org/
+
+-------------------------------------------------------------------
+Thu Feb 14 17:46:05 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.670: too many changes to list here (and there is no
+  perfect changelog), but all information is on
+  http://www.mypy-lang.org/
+- Remove already included patches
+  0001-Look-for-typeshed-in-usr-share.patch and
+  0002-Canonicalize-bin_dir-when-looking-for-data_dir.patch
+
+-------------------------------------------------------------------
+Tue Aug 28 07:41:53 UTC 2018 - mimi.vx@gmail.com
+
+- desinglespec - is app and only for python3
+- add RH patchset:
+  0001-Look-for-typeshed-in-usr-share.patch
+  0002-Canonicalize-bin_dir-when-looking-for-data_dir.patch
+  0003-Pass-executable-path-into-main-when-running-installe.patch
+
+-------------------------------------------------------------------
+Mon Aug 27 10:38:25 UTC 2018 - mimi.vx@gmail.com
+
+- update to 0.620
+- fix install deps
+  * support for dataclasses
+  * better support for PEP 561
+  * adds support for dmypy run and a host of other small 
+  * many other imporvents
+
+-------------------------------------------------------------------
+Mon Jul  2 11:15:53 UTC 2018 - tchvatal@suse.com
+
+- Drop dependency over devel python package, not needed
+- Do not skip build on < 3.4 python, we do not ship that anywhere
+  (last seen on 13.1)
+
+-------------------------------------------------------------------
+Sat Apr 14 11:48:34 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 0.590:
+ * New Features
+  * experimental support for PEP 561
+  * Incremental mode is on by default
+  * Flags for always true/false
+  * Add a per-module follow_imports_for_stubs options
+ * Notable Bugs Fixed
+  * Fix error message when assigning to read-only property (PR 4863 by Michael Lee, fixes issue 4756)
+  * Respect --follow-imports=silent in --warn-unused-ignores (PR 4857, fixes issue 3949)
+  * Don't produce spurious “unused type ignore” messages in incremental mode (PR 4841, fixes issue 2960)
+  * Fix operator access on Type[...] (PR 4823, fixes issue 4789)
+  * Remove incorrect override check on overloaded methods (PR 4810 by Michael Lee, fixes issue 4565)
+  * Handle NotImplemented returned from __ne__ (PR 4770 by Peter Ludemann, fixes issue 4767)
+  * Options in mypy.ini should be spelled with underscores, not hyphens (PR 4754 by Emil Hessman, fixes issue 4753) 
+ * Documentation Improvements
+  * Add coroutines to cheat sheet (PR 4677 by Rob Day)
+  * Add None return/strict-optional to common issues (PR 4594 by Viet Hung Nguyen)
+  * Mention that SupportsInt and friends don't support arithmetic (PR 4781, fixes issue 4758) 
+ * Stubgen Improvements
+  * Emit Any type annotations for unannotated arguments (PR 4774 by Matt Gilson, fixes issue 4766)
+  * Fix stubgen --recursive to only generate stubs for requested submodules. (PR 4845 by Matt Gilson, fixes issue 4844)
+  * Properly format Callables (PR 4650 by Evan Hubinger, fixes issue 4640) 
+
+-------------------------------------------------------------------
+Fri Mar 23 19:57:09 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 0.580:
+ * Type check class decorators
+ * Plugin for typechecking classes generated by attrs (Documentation)
+ * Hooks into the semantic analyzer for plugins (PR 4328, PR 4397)
+ * bugfixes and improved error messages
+
+-------------------------------------------------------------------
+Fri Mar  2 20:29:36 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 0.570:
+ * Add support for attrs_package
+
+-------------------------------------------------------------------
+Sat Dec 16 08:54:28 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 0.560:
+ * Iterable and Friends Are Now Protocols
+ * Improved Error Messages
+- include compiled docs in package
+
+-------------------------------------------------------------------
+Sat Nov 11 10:20:44 UTC 2017 - sebix+novell.com@sebix.at
+
+- fix build for distributions with python 3.4
+
+-------------------------------------------------------------------
+Fri Nov 10 21:01:21 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to 0.550:
+ * Running mypy now requires Python 3.4 or higher.
+   However Python 3.3 is still valid for the target
+   of the analysis (i.e. the `--python-version` flag).
+ * Split `--disallow-any` flag into `separate boolean flags <disallow-any>`.
+ * The `--old-html-report` flag was removed.
+
+-------------------------------------------------------------------
+Sat Oct 21 20:44:08 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to 0.540
+ * Switch to More Rapid Releases
+   new mypy version roughly every 2-4 weeks
+ * New Features
+  * Allow assignments to multiple targets from union types (Ivan Levkivskyi, PR 4067)
+  * Allow definitions of subscripted type aliases such as Item = Tuple[int, str] within functions (Ivan Levkivskyi, PR 4000)
+  * Narrow type of optional left operand of in operator if the collection items aren’t optional (Ivan Levkivskyi, PR 4072)
+  * Generate an error if <unknown> type would be inferred for a variable (PR 4112) 
+ * Notable Bugs Fixed
+  * Fix errors not being reported for some modules with incremental mode by deleting cache file for a module if errors are found (Ivan Levkivskyi, PR 4045)
+  * Fix incremental mode crash related to Type[...] types (Ivan Levkivskyi, PR 4038)
+  * Fix crash related to tuple types (Ivan Levkivskyi, PR 4051)
+  * Fix incorrect errors about __getattr__ methods (Ivan Levkivskyi, PR 4073)
+  * Fixes to non-method attributes with callable types (Elazar Gershuni, PR 4016)
+  * Fix function overloading based on Type[...] types (Ivan Levkivskyi, PR 4037)
+  * Fix processing invalid overloaded function definitions (Elazar Gershuni, PR 4064)
+  * Fix handling of disallow_any/disallow_untyped_defs combination in mypy config file (Jelle Zijlstra, PR 4076) 
+
+-------------------------------------------------------------------
+Wed Aug  9 15:57:18 UTC 2017 - sebix+novell.com@sebix.at
+
+- fix shebang removal
+
+-------------------------------------------------------------------
+Thu Jul 27 08:32:18 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to 0.521
+ * Mypy Bugs Fixed
+  * Fix crash on name collision for self attributes (Ivan Levkivskyi, PRs 3700 and 3719)
+  * Fix bug in cache updates and improve cache logging (PR 3708)
+  * Fix per-file strict Optional interaction with default-None args (PR 3686)
+  * Fix crash in --quick mode when aliases are re-exported (Ivan Levkivskyi, PR 3740)
+  * Fix crash on incompatible redefinition in named tuple (Ivan Levkivskyi, PR 3760) 
+ * Typeshed Bugs Fixed
+  * Fix regressions in csv.DictReader (Thomas Grainger, PRs 1475 and 1478) 
+
+-------------------------------------------------------------------
+Sat Jul 15 20:02:55 UTC 2017 - sebix+novell.com@sebix.at
+
+- upgrade to 0.520
+ * Add :ref:`fine-grained control of Any types <disallow-any>`.
+ * Add :ref:`typeddict`.
+ * Other updates to :ref:`command-line`:
+  * Add --no-implicit-optional.
+  * Add --shadow-file.
+  * Add --no-incremental.
+
+-------------------------------------------------------------------
+Thu Jul  6 12:52:52 UTC 2017 - sebix+novell.com@sebix.at
+
+- correct shebangs of typeshed libs
+- fix build for older versions
+
+-------------------------------------------------------------------
+Thu Jul  6 00:57:25 UTC 2017 - jengelh@inai.de
+
+- Enhance description by some more text from the webpage.
+
+-------------------------------------------------------------------
+Tue Jun 27 20:25:36 UTC 2017 - sebix+novell.com@sebix.at
+
+- use python singlespec approach marking as uncompatible with python2
+
+-------------------------------------------------------------------
+Mon May  8 11:16:50 UTC 2017 - sebix+novell.com@sebix.at
+
+- first package
+

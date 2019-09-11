@@ -1,0 +1,61 @@
+diff -Naur a/src/options.c b/src/options.c
+--- a/src/options.c	2018-08-19 09:10:47.000000000 +0200
++++ b/src/options.c	2018-11-11 10:47:33.343794306 +0100
+@@ -3373,8 +3373,6 @@
+     case CMD_BEGIN:
+         section->ref=1;
+         break;
+-    case CMD_EXEC:
+-        return option_not_found;
+     case CMD_END:
+         if(new_service_options.next) { /* daemon mode checks */
+             if(endpoints!=2)
+@@ -3411,6 +3409,25 @@
+         break;
+     }
+ 
++
++    /* listenqueue option */
++    switch(cmd) {
++    case CMD_BEGIN:
++        section->listenqueue=SOMAXCONN;
++        break;
++    case CMD_EXEC:
++        if(strcasecmp(opt, "listenqueue"))
++            break;
++        section->listenqueue=atoi(arg);
++        return (section->listenqueue?NULL:"Bad verify level");
++    case CMD_DEFAULT:
++        s_log(LOG_NOTICE, "%-15s = %d", "listenqueue", SOMAXCONN);
++        break;
++    case CMD_HELP:
++        s_log(LOG_NOTICE, "%-15s = defines the maximum length the queue of pending connections may grow to (max SOMAXCONN)", "listenqueue");
++        break;
++    }
++
+     return NULL; /* OK */
+ }
+ 
+diff -Naur a/src/prototypes.h b/src/prototypes.h
+--- a/src/prototypes.h	2018-08-19 09:10:47.000000000 +0200
++++ b/src/prototypes.h	2018-11-11 10:47:33.347794278 +0100
+@@ -257,6 +257,7 @@
+     int timeout_close;                          /* maximum close_notify time */
+     int timeout_connect;                           /* maximum connect() time */
+     int timeout_idle;                        /* maximum idle connection time */
++    int listenqueue;                                       /* Listen backlog */
+     enum {FAILOVER_RR, FAILOVER_PRIO} failover;         /* failover strategy */
+     unsigned rr;   /* per-service sequential number for round-robin failover */
+     char *username;
+diff -Naur a/src/stunnel.c b/src/stunnel.c
+--- a/src/stunnel.c	2018-08-25 09:15:03.000000000 +0200
++++ b/src/stunnel.c	2018-11-11 10:47:33.347794278 +0100
+@@ -572,7 +572,7 @@
+             closesocket(fd);
+             return INVALID_SOCKET;
+         }
+-        if(listen(fd, SOMAXCONN)) {
++        if(listen(fd, opt->listenqueue)) {
+             sockerror("listen");
+             str_free(local_address);
+             closesocket(fd);

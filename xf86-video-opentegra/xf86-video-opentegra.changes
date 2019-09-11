@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Wed Apr  8 16:02:51 UTC 2015 - sndirsch@suse.com
+
+- make use of %x11_abi_videodrv_req macro
+- remove .la files, not supposed to be shipped
+
+-------------------------------------------------------------------
+Wed Apr  8 12:32:20 UTC 2015 - sndirsch@suse.com
+
+- added missing COPYING license file to filelist
+
+-------------------------------------------------------------------
+Sat Sep 27 18:10:40 UTC 2014 - afaerber@suse.de
+
+- Simplify .spec file some more
+
+-------------------------------------------------------------------
+Sat Sep 27 17:38:25 UTC 2014 - zombah@gmail.com
+
+- Switch to upstream package archive,
+  use correct source in spec file,
+  use version variable in spec file and
+  remove configure generation. 
+
+-------------------------------------------------------------------
+Sat Sep 27 13:33:04 UTC 2014 - zombah@gmail.com
+
+- Update to upstream version 0.7.0 
+
+-------------------------------------------------------------------
+Sun May 25 14:17:19 UTC 2014 - afaerber@suse.de
+
+- Initial
+

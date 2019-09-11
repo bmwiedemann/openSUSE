@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Mon Apr  1 10:37:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Conflict with old scour to avoid conflict on /usr/bin/scour
+
+-------------------------------------------------------------------
+Thu Mar 28 10:09:19 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Run spec-cleaner to remove few whitespacing problems
+
+-------------------------------------------------------------------
+Tue Mar 26 14:11:52 UTC 2019 - pgajdos@suse.com
+
+- require six >= 1.9.0
+
+-------------------------------------------------------------------
+Mon Mar 25 14:54:43 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.37
+  * Fix escaping of quotes in attribute values.
+  * A lot of performance improvements.
+  * Fix exception when removing duplicated gradients while
+    `--keep-unreferenced-defs` is used.
+  * Remove some illegal optimizations of `m0 0` sub-path commands.
+  * Fix and improve handling of boolean flags in elliptical arc path
+    commands.
+  * Fix exception when using two-number forms of the filter attributes
+    `baseFrequency`, `order`, `radius` and `stdDeviation`.
+  * Improve whitespace handling in text nodes fixing an issue where
+    scouring added spaces in error and reducing file size in many cases.
+  * Drop official support for Python 3.3.
+- etc. see HISTORY.md for details.
+- build also python3 variant
+- run unit tests
+- package LICENSE and *.md
+
+-------------------------------------------------------------------
+Mon Feb  6 14:17:49 UTC 2017 - jengelh@inai.de
+
+- Update description and RPM group
+
+-------------------------------------------------------------------
+Sat Jan  7 08:26:13 UTC 2017 - i@marguerite.su
+
+- update SOURCE URL
+
+-------------------------------------------------------------------
+Wed Jan  4 20:28:12 UTC 2017 - plinnell@opensuse.org
+
+- Update to 0.35
+- Change log full history: 
+  https://github.com/scour-project/scour/blob/master/HISTORY.md
+
+-------------------------------------------------------------------
+Thu Jun 30 13:26:14 UTC 2016 - perry.werneck@gmail.com
+
+- Adding python-setuptools as a dependency; 
+  it's required to run scour.
+
+-------------------------------------------------------------------
+Tue May 12 15:16:12 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.30:
+  * no changelog available
+- update source URL
+- point the source URL to pypi
+- add BuildRequires python-setuptools and unzip
+- fix end of line encoding of scour.py
+- remove unwanted shebang of python sitelib files
+- run setup.py build and install instead of copying the files
+- remove the documentation files: not provided anymore
+- add egg-info to the package
+
+-------------------------------------------------------------------
+Mon Jan 30 10:37:42 UTC 2012 - saschpe@suse.de
+
+- Ran spec-cleaner and did some minor cleanup
+- Set license to SPDX style (Apache-2.0)
+
+-------------------------------------------------------------------
+Fri Jan 27 11:46:43 UTC 2012 - i@marguerite.su
+
+- initial package 0.26
+

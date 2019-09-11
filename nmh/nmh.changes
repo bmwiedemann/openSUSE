@@ -1,0 +1,172 @@
+-------------------------------------------------------------------
+Mon Jul 23 09:27:26 UTC 2018 - bwiedemann@suse.com
+
+- Update to version 1.7.1
+- Add reproducible.patch to fix build date and hostname
+  (boo#1047218, boo#1084909)
+- Complete unification of network security support.  All network protocols
+  have been refactored to use a common set of security routines.
+  This means all protocols support all SASL mechanisms and TLS.
+  TLS support has been strengthened to perform certificate name validation
+  and to require TLS 1.1 as a minimum protocol.
+  Also, all protocols can make use of the OAuth2/XOAUTH SASL mechanism,
+  which is supported by Gmail.
+- send(1) now supports adding switches to post(8) based on the address or
+  domain of the email address in the From: header; this more easily allows
+  users to support multiple identities.
+- A generic facility for passing arguments to filter programs in repl(1)
+  by use of the -convertargs switch.
+- Native support for the manipulation of iCalendar requests; see mhical(1)
+  for more details.
+- See NEWS file for more changes
+
+-------------------------------------------------------------------
+Fri Mar  6 10:23:19 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.6
+  * The NEWS file contains an increased number of changes; please 
+    read it for news
+- Update home Url to point Savannah's project page
+- Use download Url as source
+- Remove depreciated AUTHORS section
+
+-------------------------------------------------------------------
+Tue Oct 22 15:56:48 UTC 2013 - max@suse.com
+
+- New version 1.5:
+  * comp, forw, and dist now process all drafts through
+    mh-format(5) and now support new command line arguments -from,
+    -to, -cc, -fcc, and -subject.
+  * Nmh's idea of the local mailbox is now configurable via a new
+    profile entry, Local-Mailbox.
+  * post now requires a “From:” header in all message that it
+    processes. All components files have been adjusted to include
+    an appropriate “From:” header by default. The release notes
+    have more information on how this transition will affect
+    users.
+  * The -attach option is now the default for send (using the
+    header Nmh-Attachment) and -attachformat 1 is the default
+    attachment type.
+  * Command editing and filename completion (via readline) is now
+    available in whatnow
+  * Support for using an external command to filter the body of a
+    message through in mhl. See mhl(1) for more details,
+    specifically the format keyword, the formatproc entry in
+    mh-profile(5), and the -fmtproc switch for mhl and repl.
+  * Preliminary support for improved MIME handling when replying
+    to messages. Yes, a long requested feature has a solution. See
+    the release notes and docs/contrib/replyfilter for more
+    information.
+- Obsoletes nmh-warnings.patch
+
+-------------------------------------------------------------------
+Wed Nov 23 12:50:59 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Sep  8 14:28:17 CEST 2008 - max@suse.de
+
+- Bugfix release: 1.3
+- Obsoletes nmh-64bit.patch and nmh-strcasecmp.patch .
+- For more details, see /usr/share/doc/packages/nmh/ChangeLog .
+
+-------------------------------------------------------------------
+Tue Jul 15 17:11:55 CEST 2008 - max@suse.de
+
+- Adopted two patches from Debian to fix a segfault and several
+  64bit problems (bnc#334176, bnc#347684).
+
+-------------------------------------------------------------------
+Mon Jul  2 14:06:24 CEST 2007 - max@suse.de
+
+- Mark /etc/nmh/* as config files (#285015).
+
+-------------------------------------------------------------------
+Wed Mar 28 18:03:34 CEST 2007 - max@suse.de
+
+- Update to version 1.2, which fixes a crash (#230763) and a
+  performance problem (#230764).
+- Fixed several compiler warnings (#232416).
+
+-------------------------------------------------------------------
+Fri Mar 23 15:07:19 CET 2007 - rguenther@suse.de
+
+- add gdbm-devel and ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 26 01:53:22 CET 2007 - ro@suse.de
+
+- silence a compiler warning 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:46 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct  3 16:19:27 CEST 2005 - mmj@suse.de
+
+- Update to RC4
+
+-------------------------------------------------------------------
+Fri Jun 10 15:07:39 CEST 2005 - meissner@suse.de
+
+- Use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Tue Jul  6 11:32:50 CEST 2004 - mmj@suse.de
+
+- Install libexec helper binaries in /usr/lib/nmh [#42774]
+
+-------------------------------------------------------------------
+Fri Mar 26 12:13:12 CET 2004 - mmj@suse.de
+
+- Add postfix to # neededforbuild
+
+-------------------------------------------------------------------
+Wed Oct 15 15:50:50 CEST 2003 - mmj@suse.de
+
+- Don't build as root
+
+-------------------------------------------------------------------
+Tue May 13 13:00:48 CEST 2003 - mmj@suse.de
+
+- Use %defattr
+
+-------------------------------------------------------------------
+Tue Feb 11 09:21:09 CET 2003 - mmj@suse.de
+
+- Obsoletes and Provides mh -- not conflicts.
+
+-------------------------------------------------------------------
+Tue Jan 21 10:12:51 CET 2003 - meissner@suse.de
+
+- make it build on ppc64.
+
+-------------------------------------------------------------------
+Thu Nov 28 20:45:02 CET 2002 - mmj@suse.de
+
+- Update to 1.1-RC1
+- Use BuildRoot
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Apr 16 11:16:07 CEST 2002 - mmj@suse.de
+
+- Fix it correctly.
+
+-------------------------------------------------------------------
+Mon Apr 15 16:00:01 CEST 2002 - mmj@suse.de
+
+- Fixed specfile to own /etc/nmh
+
+-------------------------------------------------------------------
+Mon Jul 16 23:58:52 CEST 2001 - mmj@suse.de
+
+- Initial package. Hopefully Maddog is happy now :)
+

@@ -1,0 +1,69 @@
+--- a/OriginFile.cpp
++++ b/OriginFile.cpp
+@@ -33,14 +33,15 @@
+ #include <string>
+ 
+ OriginFile::OriginFile(const string& fileName)
+-:	fileVersion(0)
++:	fileVersion(0), ioError(0)
+ {
+ 	ifstream file(fileName.c_str(), ios_base::binary);
+ 
+ 	if (!file.is_open())
+ 	{
+-		cerr <<  "Could not open " << fileName.c_str() << "!" << endl;
+-		exit(EXIT_FAILURE);
++		cerr << endl << "liborigin: " << strerror(errno) << ": " << fileName.c_str() << endl;
++		ioError = errno;
++		return;
+ 	}
+ 
+ #ifdef GENERATE_CODE_FOR_LOG
+@@ -48,8 +49,9 @@
+ 	logfile = fopen("./opjfile.log", "w");
+ 	if (logfile == nullptr)
+ 	{
+-		cerr <<  "Could not open opjfile.log !" << endl;
+-		exit(EXIT_FAILURE);
++		cerr << endl <<  "liborigin: " << strerror(errno) << ": opjfile.log" << endl;
++		ioError = errno;
++		return;
+ 	}
+ #endif // GENERATE_CODE_FOR_LOG
+ 
+@@ -152,10 +154,13 @@
+ 	fclose(logfile);
+ #endif // GENERATE_CODE_FOR_LOG
+ 	parser.reset(createOriginAnyParser(fileName));
++	ioError=0;
+ }
+ 
+ bool OriginFile::parse()
+ {
++	if (ioError != 0)
++		return false;
+ 	parser->buildVersion = buildVersion;
+ 	parser->fileVersion = fileVersion;
+ 	return parser->parse();
+--- a/OriginFile.h
++++ b/OriginFile.h
+@@ -70,7 +70,7 @@
+ 	string resultsLogString() const;													//!< get Results Log
+ 
+ private:
+-	unsigned int fileVersion, buildVersion;
++	unsigned int fileVersion, buildVersion, ioError;
+ 	unique_ptr<OriginParser> parser;
+ };
+
+--- a/opj2dat.cpp
++++ b/opj2dat.cpp
+@@ -54,6 +54,8 @@
+ 	OriginFile opj(inputfile);
+ 	int status = opj.parse();
+ 	cout << "Parsing status = " << status << endl;
++	if (! status)
++		return -1;
+ 	cout << "OPJ PROJECT \"" << inputfile.c_str() << "\" VERSION = " <<  opj.version() << endl;
+ 
+ 	cout << "number of datasets     = " << opj.datasetCount() << endl;

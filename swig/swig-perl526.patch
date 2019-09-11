@@ -1,0 +1,40 @@
+From 8855ef2b482c09da9255079b0fac92d08c8308fb Mon Sep 17 00:00:00 2001
+From: Olly Betts <olly@survex.com>
+Date: Tue, 13 Jun 2017 17:32:37 +1200
+Subject: [PATCH] [Perl] Fix testsuite to work without . in @INC
+
+"." was removed from @INC in Perl 5.26 for security reasons, and has
+also been removed from older versions in some distros.
+
+Fixes https://github.com/swig/swig/issues/997 reported by lfam.
+---
+ Examples/Makefile.in                       | 2 +-
+ Examples/test-suite/perl5/run-perl-test.pl | 2 +-
+ 3 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/Examples/Makefile.in b/Examples/Makefile.in
+index 7682b565fc..8a88fb5eaa 100644
+--- a/Examples/Makefile.in
++++ b/Examples/Makefile.in
+@@ -282,7 +282,7 @@ perl5_static_cpp: $(SRCDIR_SRCS)
+ # -----------------------------------------------------------------
+ 
+ perl5_run:
+-	$(RUNTOOL) $(PERL) $(PERL5_SCRIPT) $(RUNPIPE)
++	$(RUNTOOL) $(PERL) -I. $(PERL5_SCRIPT) $(RUNPIPE)
+ 
+ # -----------------------------------------------------------------
+ # Version display
+diff --git a/Examples/test-suite/perl5/run-perl-test.pl b/Examples/test-suite/perl5/run-perl-test.pl
+index 106bf002bb..5ea4e51157 100644
+--- a/Examples/test-suite/perl5/run-perl-test.pl
++++ b/Examples/test-suite/perl5/run-perl-test.pl
+@@ -7,7 +7,7 @@
+ 
+ my $command = shift @ARGV;
+ 
+-my $output = `$^X $command 2>&1`;
++my $output = `$^X -I. $command 2>&1`;
+ 
+ die "SWIG Perl test failed: \n\n$output\n"
+   if $?;

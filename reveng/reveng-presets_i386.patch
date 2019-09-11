@@ -1,0 +1,13 @@
+diff --git a/config.h b/config.h
+index 0c4a3d2..e5846a7 100644
+--- a/config.h
++++ b/config.h
+@@ -62,7 +62,7 @@
+  * specific.
+  */
+ 
+-/* #define PRESETS  1 */
++#define PRESETS  1
+ 
+ /* Macros defining the size of a bmp_t.
+  * Their values only matter if PRESETS and/or BMPMACRO are defined, in

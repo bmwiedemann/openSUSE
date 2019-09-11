@@ -1,0 +1,13 @@
+Index: taglib/toolkit/taglib.h
+===================================================================
+--- taglib/toolkit/taglib.h.orig	2018-10-28 15:43:45.000000000 +0200
++++ taglib/toolkit/taglib.h	2018-11-03 14:59:44.431327422 +0200
+@@ -30,7 +30,7 @@
+ 
+ #define TAGLIB_MAJOR_VERSION 1
+ #define TAGLIB_MINOR_VERSION 11
+-#define TAGLIB_PATCH_VERSION 1
++#define TAGLIB_PATCH_VERSION 2
+ 
+ #if defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ > 1)) || defined(__clang__)
+ #define TAGLIB_IGNORE_MISSING_DESTRUCTOR _Pragma("GCC diagnostic ignored \"-Wnon-virtual-dtor\"")

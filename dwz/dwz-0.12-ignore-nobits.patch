@@ -1,0 +1,138 @@
+diff --git a/dwz.c b/dwz.c
+index b3b779d..5ab45a2 100644
+--- a/dwz.c
++++ b/dwz.c
+@@ -10016,6 +10016,26 @@ error_out:
+   return NULL;
+ }
+ 
++/* Sort shdr indices after sh_offset.  */
++static DSO *shdr_sort_compar_dso;
++static int
++shdr_sort_compar (const void *p1, const void *p2)
++{
++  const int *idx1 = (const int *)p1;
++  const int *idx2 = (const int *)p2;
++  if (shdr_sort_compar_dso->shdr[*idx1].sh_offset
++      < shdr_sort_compar_dso->shdr[*idx2].sh_offset)
++    return -1;
++  else if (shdr_sort_compar_dso->shdr[*idx1].sh_offset
++	   > shdr_sort_compar_dso->shdr[*idx2].sh_offset)
++    return 1;
++  if (*idx1 < *idx2)
++    return -1;
++  else if (*idx1 > *idx2)
++    return 1;
++  return 0;
++}
++
+ /* Store new ELF into FILE.  debug_sections array contains
+    new_data/new_size pairs where needed.  */
+ static int
+@@ -10090,7 +10110,14 @@ write_dso (DSO *dso, const char *file, struct stat *st)
+ 	if (off < min_shoff)
+ 	  min_shoff = off;
+ 	for (j = 1; j < dso->ehdr.e_shnum; ++j)
+-	  if (dso->shdr[j].sh_offset > off)
++	  if (dso->shdr[j].sh_offset > off
++	      /* Do not adjust SHT_NOBITS sh_offset here, the kernel
++	         for example lays out those in the middle of some
++		 other sections which may cause their offset to wrap
++		 around zero.
++		 ???  Now in theory not adjusting means we might end up
++		 with those having a higher offset than any other section.  */
++	      && dso->shdr[j].sh_type != SHT_NOBITS)
+ 	    dso->shdr[j].sh_offset += diff;
+ 	if (ehdr.e_shoff > off)
+ 	  ehdr.e_shoff += diff;
+@@ -10123,6 +10150,7 @@ write_dso (DSO *dso, const char *file, struct stat *st)
+ 
+   if (min_shoff != ~(GElf_Off) 0)
+     {
++      /* Any section needs sh_offset adjustment to meet sh_addralign?  */
+       for (j = 1; j < dso->ehdr.e_shnum; ++j)
+ 	if (dso->shdr[j].sh_offset >= min_shoff
+ 	    && dso->shdr[j].sh_addralign > 1
+@@ -10133,21 +10161,34 @@ write_dso (DSO *dso, const char *file, struct stat *st)
+ 	      && (ehdr.e_shoff & (ehdr.e_ident[EI_CLASS] == ELFCLASS64
+ 				  ? 7 : 3)) != 0))
+ 	{
++	  /* Compute a section index list sorted after sh_offset.  */
++	  int *shdrmap = alloca (dso->ehdr.e_shnum * sizeof (int));
++	  for (j = 0; j < dso->ehdr.e_shnum; ++j)
++	    shdrmap[j] = j;
++	  shdr_sort_compar_dso = dso;
++	  qsort (shdrmap, dso->ehdr.e_shnum, sizeof (int),
++		 shdr_sort_compar);
++	  shdr_sort_compar_dso = NULL;
++
+ 	  /* Need to fix up sh_offset/e_shoff.  Punt if all the sections
+ 	     >= min_shoff aren't non-ALLOC.  */
+ 	  GElf_Off last_shoff = 0;
+ 	  int k = -1;
+ 	  bool shdr_placed = false;
+ 	  for (j = 1; j < dso->ehdr.e_shnum; ++j)
+-	    if (dso->shdr[j].sh_offset < min_shoff && !last_shoff)
++	    if (dso->shdr[shdrmap[j]].sh_offset < min_shoff && !last_shoff)
++	      continue;
++	    else if (dso->shdr[shdrmap[j]].sh_type == SHT_NOBITS)
++	      /* NOBITS are just left in place where they are and their
++		 sh_size does not matter.  */
+ 	      continue;
+-	    else if ((dso->shdr[j].sh_flags & SHF_ALLOC) != 0)
++	    else if ((dso->shdr[shdrmap[j]].sh_flags & SHF_ALLOC) != 0)
+ 	      {
+ 		error (0, 0, "Allocatable section in %s after non-allocatable "
+ 			     "ones", dso->filename);
+ 		return 1;
+ 	      }
+-	    else if (dso->shdr[j].sh_offset < last_shoff)
++	    else if (dso->shdr[shdrmap[j]].sh_offset < last_shoff)
+ 	      {
+ 		error (0, 0, "Section offsets in %s not monotonically "
+ 			     "increasing", dso->filename);
+@@ -10157,7 +10198,8 @@ write_dso (DSO *dso, const char *file, struct stat *st)
+ 	      {
+ 		if (k == -1)
+ 		  k = j;
+-		last_shoff = dso->shdr[j].sh_offset + dso->shdr[j].sh_size;
++		last_shoff = (dso->shdr[shdrmap[j]].sh_offset
++			      + dso->shdr[shdrmap[j]].sh_size);
+ 	      }
+ 	  last_shoff = min_shoff;
+ 	  for (j = k; j <= dso->ehdr.e_shnum; ++j)
+@@ -10165,7 +10207,7 @@ write_dso (DSO *dso, const char *file, struct stat *st)
+ 	      if (!shdr_placed
+ 		  && ehdr.e_shoff >= min_shoff
+ 		  && (j == dso->ehdr.e_shnum
+-		      || ehdr.e_shoff < dso->shdr[j].sh_offset))
++		      || ehdr.e_shoff < dso->shdr[shdrmap[j]].sh_offset))
+ 		{
+ 		  if (ehdr.e_ident[EI_CLASS] == ELFCLASS64)
+ 		    ehdr.e_shoff = (last_shoff + 7) & -8;
+@@ -10176,13 +10218,18 @@ write_dso (DSO *dso, const char *file, struct stat *st)
+ 		}
+ 	      if (j == dso->ehdr.e_shnum)
+ 		break;
+-	      dso->shdr[j].sh_offset = last_shoff;
+-	      if (dso->shdr[j].sh_addralign > 1)
+-		dso->shdr[j].sh_offset
+-		  = (last_shoff + dso->shdr[j].sh_addralign - 1)
+-		    & ~(dso->shdr[j].sh_addralign - (GElf_Off) 1);
+-	      last_shoff = dso->shdr[j].sh_offset + dso->shdr[j].sh_size;
+-	      if (addsec != -1 && j == addsec)
++	      /* Do not touch SHT_NOBITS section offsets and more importantly
++	         do not account for their size.  */
++	      if (dso->shdr[shdrmap[j]].sh_type == SHT_NOBITS)
++		continue;
++	      dso->shdr[shdrmap[j]].sh_offset = last_shoff;
++	      if (dso->shdr[shdrmap[j]].sh_addralign > 1)
++		dso->shdr[shdrmap[j]].sh_offset
++		  = (last_shoff + dso->shdr[shdrmap[j]].sh_addralign - 1)
++		    & ~(dso->shdr[shdrmap[j]].sh_addralign - (GElf_Off) 1);
++	      last_shoff = (dso->shdr[shdrmap[j]].sh_offset
++			    + dso->shdr[shdrmap[j]].sh_size);
++	      if (addsec != -1 && shdrmap[j] == addsec)
+ 		last_shoff += addsize;
+ 	    }
+ 	}

@@ -1,0 +1,704 @@
+-------------------------------------------------------------------
+Wed Aug  7 17:51:24 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- No code change since 5.60.0
+
+-------------------------------------------------------------------
+Fri Jul 19 11:41:08 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:38 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Install in new logging directory when we use kf5 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:12 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- No code changes since 5.58.0
+
+-------------------------------------------------------------------
+Wed May 15 18:16:16 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * Copy container in Component::cleanUp before interating
+  * Don't use qAsConst over a temporary variable
+  * Remove two ';'
+- Dropped patches, now upstream:
+  * 0001-Copy-container-in-Component-cleanUp-before-interatin.patch
+  * Dont-use-qAsConst-over-a-temporary-variable.patch
+
+-------------------------------------------------------------------
+Thu Apr 18 13:17:34 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix another possible crash:
+  * 0001-Copy-container-in-Component-cleanUp-before-interatin.patch
+
+-------------------------------------------------------------------
+Tue Apr 16 13:33:12 UTC 2019 - wbauer@tmo.at
+
+- Add Dont-use-qAsConst-over-a-temporary-variable.patch to fix a
+  possible crash (kde#406426)
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:43 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * [kglobalaccel] Make it compile without foreach
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:36 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * No code changes since 5.55.0
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:08 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * No code changes since 5.54.0
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:46 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * Fix KGlobalAccel build with Qt 5.13 prerelease.
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Use isEmpty()
+  * Fix CMake condition
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:04 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Fix keyboard layout change notifications (kde#350816, kde#269403)
+  * Add identifier
+  * Call reserve() on Qt containers if fill size is known before
+- Dropped patches, now upstream:
+  * 0001-Fix-keyboard-layout-change-notifications.patch
+
+-------------------------------------------------------------------
+Sat Nov  3 14:24:15 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix keyboard layout changes (boo#1103682, kde#350816, kde#269403):
+  * 0001-Fix-keyboard-layout-change-notifications.patch
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:09 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:50:35 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Avoid potential detach on range-loops with non-const Qt containers
+  * Use QString's multi-arg with multiple string args
+  * Make sure to build with strict compile flags + port deprecated method
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * None
+
+-------------------------------------------------------------------
+Sun Aug 19 09:19:04 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Honor BUILD_TESTING
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:39 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * [API dox] Use more nullptr
+  * Update D-Bus xml file to use "Out*" for signal type Qt annotations
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:04 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Make sure ungrab keyboard request is processed before emitting shortcut (kde#394689)
+  * Use override
+- Dropped patches, now upstream:
+  * 0001-Make-sure-ungrab-keyboard-request-is-processed-befor.patch
+
+-------------------------------------------------------------------
+Wed May 30 13:19:34 UTC 2018 - lbeltrame@kde.org
+
+- Add upstream patch 0001-Make-sure-ungrab-keyboard-request-is-processed-befor.patch:
+  * Fixes Alt-Tab being randomly ignored (kde#394689, boo#1094931)
+
+-------------------------------------------------------------------
+Sun May 13 21:03:02 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Add explicit
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:04 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Remove not necessary QtCore and co
+  * Don't assert if used incorrectly from dbus (kde#389375)
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:41 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:08 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * Use cmake function 'kdbusaddons_generate_dbus_service_file' from kdbusaddons to generate dbus service file (kde#382460)
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:17 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * Remove unused, duplicated file
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:48 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Remove double look-up
+  * Group some blocking dbus calls
+  * We depend against 5.7
+  * kglobalacceld: Avoid loading an icon loader for no reason
+  * generate correct shortcut strings
+  * Port to debug category
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:14 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * Revert "Revert "KGlobalAccel: port to KKeyServer's new method symXModXToKeyQt, to fix numpad keys""
+  * Component can't be null (tested line before it).
+  * Add .arcconfig
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:40 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * Revert "KGlobalAccel: port to KKeyServer's new method symXModXToKeyQt, to fix numpad keys" (kde#384597)
+- Dropped patches, now usptream:
+  * 0001-Revert-KGlobalAccel-port-to-KKeyServer-s-new-method-.patch
+
+-------------------------------------------------------------------
+Thu Sep 14 06:59:25 UTC 2017 - fabian@ritter-vogt.de
+
+- Revert upstream commit to avoid major regressions (kde#384597):
+  * 0001-Revert-KGlobalAccel-port-to-KKeyServer-s-new-method-.patch
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:17 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * KGlobalAccel: port to KKeyServer's new method symXModXToKeyQt, to fix numpad keys (kde#183458)
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:26 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * kglobalaccel5: Mark as nongui exe
+
+-------------------------------------------------------------------
+Wed Jul 12 07:14:00 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * [FEATURE] Option to build & install QCH file with the public API dox
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:43 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * None
+
+-------------------------------------------------------------------
+Mon May 15 18:54:26 UTC 2017 - wbauer@tmo.at
+
+- Remove unnecessary kservice-devel build requirement
+- Drop no longer useful
+  0001-Make-kglobalaccel5-properly-killable-fixing-super-sl.patch
+- No point to delete the kglobalaccel5.po files, they are not
+  included any more since 5.11.0
+
+-------------------------------------------------------------------
+Mon May 15 13:53:12 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * build: Remove KService dependency
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:48 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:33 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:28:13 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:40:55 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:59:01 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 22:05:04 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:54:33 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:49:38 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug 21 17:21:43 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Make sure the right subpackage calls ldconfig
+
+-------------------------------------------------------------------
+Sun Aug  7 21:52:49 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * Use klauncher dbus instead of KRun (kde#366415)
+  * Launch jumplist actions via KGlobalAccel
+  * KGlobalAccel: Fix deadlock on exit under Windows
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:03:45 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * Use QGuiApplication instead of QApplication
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:25:13 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:31:39 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Wed Apr  6 09:29:15 UTC 2016 - alarrosa@suse.com
+
+- Don't apply 0001-Make-kglobalaccel5-properly-killable-fixing-super-sl.patch
+  in SLE12 since Qt 5.5.1 in SLE12 is not patched to support the new
+  session management API from 5.6.0 .
+
+-------------------------------------------------------------------
+Mon Apr  4 14:20:19 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Make kglobalaccel5 properly killable, fixing super slow shutdown
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+- Rebased 0001-Make-kglobalaccel5-properly-killable-fixing-super-sl.patch
+  since part of the patch is already included in 5.21.0
+
+-------------------------------------------------------------------
+Sun Mar 27 16:23:16 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added 0001-Make-kglobalaccel5-properly-killable-fixing-super-sl.patch
+
+-------------------------------------------------------------------
+Sun Mar  6 09:57:36 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 18:01:54 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * Prevent crash in case dbus is not available
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:43:13 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:05:43 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 17:00:17 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * Do not XOR Shift for KP_Enter (kde#128982)
+  * Grab all keys for a symbol (kde#351198)
+  * Do not fetch keysyms twice for every keypress
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:16 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:13:07 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * Only start kglobalaccel5 if needed.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Dekde#output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:45:02 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * Private runtime API gets installed to allow KWin to provide
+    plugin for Wayland.
+  * Fallback for componentFriendlyForAction name resolving
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:22 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * Move platform specific code into plugins
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:53:14 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * Add new method globalShortcut which retrieves the shortcut as
+    defined in global settings.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:41:05 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:59:04 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * Activation timestamp set as dynamic property on triggered QAction.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:41 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * Now includes the runtime component, making this a tier3 framework
+  * Made the Windows backend work again
+  * Re-enabled the Mac backend
+  * Fixed crash in KGlobalAccel X11 runtime shutdown
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:36 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:56 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:47:53 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 18:00:08 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:43 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+
+-------------------------------------------------------------------
+Fri Aug 22 18:55:49 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Let libKF5GlobalAccel5 Recommends kglobalaccel5
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:26 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+- Harden required Qt5 libs versions
+- Pass the location of lconvert executable
+
+-------------------------------------------------------------------
+Tue Jul  1 21:36:14 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:46 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Added libqt5-linguist-devel BuildRequires
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sun May  4 01:41:10 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:37 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:36:08 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Sat Feb  8 02:18:27 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init kglobalaccel package
+

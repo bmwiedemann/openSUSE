@@ -1,0 +1,469 @@
+-------------------------------------------------------------------
+Mon Mar 11 10:03:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.5.3:
+  * Only packaging metadata changes.
+- Run fdupes
+
+-------------------------------------------------------------------
+Tue Jan  1 13:38:34 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- update to version 4.5.2:
+  * Namespace packages are supported on Python 3.7
+  * Python 3.8 (as of today!) passes all tests
+
+-------------------------------------------------------------------
+Tue Jul 17 13:30:37 UTC 2018 - tchvatal@suse.com
+
+- Bumpy the URL to point to github rather than to docs
+
+-------------------------------------------------------------------
+Sun Feb 18 17:12:53 UTC 2018 - arun@gmx.de
+
+- update to version 4.5.1:
+  * Now that 4.5 properly separated the [run] omit and [report] omit
+    settings, an old bug has become apparent. If you specified a
+    package name for [run] source, then omit patterns weren’t matched
+    inside that package. This bug (issue 638) is now fixed.
+  * On Python 3.7, reporting about a decorated function with no body
+    other than a docstring would crash coverage.py with an IndexError
+    (issue 640). This is now fixed.
+  * Configurer plugins are now reported in the output of --debug=sys.
+
+-------------------------------------------------------------------
+Sat Feb 10 17:25:15 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 4.5:
+  * A new kind of plugin is supported: configurators are invoked at
+    start-up to allow more complex configuration than the .coveragerc
+    file can easily do. See Plug-in classes for details. This solves
+    the complex configuration problem described in issue 563.
+  * The fail_under option can now be a float. Note that you must
+    specify the [report] precision configuration option for the
+    fractional part to be used. Thanks to Lars Hupfeldt Nielsen for
+    help with the implementation. Fixes issue 631.
+  * The include and omit options can be specified for both the [run]
+    and [report] phases of execution. 4.4.2 introduced some incorrect
+    interactions between those phases, where the options for one were
+    confused for the other. This is now corrected, fixing issue 621
+    and issue 622. Thanks to Daniel Hahler for seeing more clearly
+    than I could.
+  * The coverage combine command used to always overwrite the data
+    file, even when no data had been read from apparently combinable
+    files. Now, an error is raised if we thought there were files to
+    combine, but in fact none of them could be used. Fixes issue 629.
+  * The coverage combine command could get confused about path
+    separators when combining data collected on Windows with data
+    collected on Linux, as described in issue 618. This is now fixed:
+    the result path always uses the path separator specified in the
+    [paths] result.
+  * On Windows, the HTML report could fail when source trees are
+    deeply nested, due to attempting to create HTML filenames longer
+    than the 250-character maximum. Now filenames will never get much
+    larger than 200 characters, fixing issue 627. Thanks to Alex
+    Sandro for helping with the fix.
+
+-------------------------------------------------------------------
+Thu Nov  9 19:10:43 UTC 2017 - jmatejek@suse.com
+
+- test presence of python2 (not just if it is skipped; two different
+  things now, unfortunately)
+
+-------------------------------------------------------------------
+Mon Nov  6 16:55:45 UTC 2017 - arun@gmx.de
+
+- update to version 4.4.2:
+  * Support for Python 3.7. In some cases, class and module docstrings
+    are no longer counted in statement totals, which could slightly
+    change your total results.
+  * Specifying both --source and --include no longer silently ignores
+    the include setting, instead it displays a warning. Thanks, Loïc
+    Dachary. Closes issue 265 and issue 101.
+  * Fixed a race condition when saving data and multiple threads are
+    tracing (issue 581). It could produce a “dictionary changed size
+    during iteration” RuntimeError. I believe this mostly but not
+    entirely fixes the race condition. A true fix would likely be too
+    expensive. Thanks, Peter Baughman for the debugging, and Olivier
+    Grisel for the fix with tests.
+  * Configuration values which are file paths will now apply
+    tilde-expansion, closing issue 589.
+  * Now secondary config files like tox.ini and setup.cfg can be
+    specified explicitly, and prefixed sections like [coverage:run]
+    will be read. Fixes issue 588.
+  * Be more flexible about the command name displayed by help, fixing
+    issue 600. Thanks, Ben Finney.
+
+-------------------------------------------------------------------
+Wed Oct  4 15:47:22 UTC 2017 - arun@gmx.de
+
+- update to version 4.4.1:
+  * No code changes: just corrected packaging for Python 2.7 Linux
+    wheels.
+
+- changes from version 4.4:
+  * Reports could produce the wrong file names for packages, reporting
+    pkg.py instead of the correct pkg/__init__.py. This is now
+    fixed. Thanks, Dirk Thomas.
+  * XML reports could produce <source> and <class> lines that together
+    didn’t specify a valid source file path. This is now fixed. (issue
+    526)
+  * Namespace packages are no longer warned as having no code. (issue
+    572)
+  * Code that uses sys.settrace(sys.gettrace()) in a file that wasn’t
+    being coverage-measured would prevent correct coverage measurement
+    in following code. An example of this was running doctests
+    programmatically. This is now fixed. (issue 575)
+  * Errors printed by the coverage command now go to stderr instead of
+    stdout.
+  * Running coverage xml in a directory named with non-ASCII
+    characters would fail under Python 2. This is now fixed. (issue
+    573)
+
+- changes from version 4.4b1:
+  * Some warnings can now be individually disabled. Warnings that can
+    be disabled have a short name appended. The [run] disable_warnings
+    setting takes a list of these warning names to disable. Closes
+    both issue 96 and issue 355.
+  * The XML report now includes attributes from version 4 of the
+    Cobertura XML format, fixing issue 570.
+  * In previous versions, calling a method that used collected data
+    would prevent further collection. For example, save(), report(),
+    html_report(), and others would all stop collection. An explicit
+    start() was needed to get it going again. This is no longer
+    true. Now you can use the collected data and also continue
+    measurement. Both issue 79 and issue 448 described this problem,
+    and have been fixed.
+  * Plugins can now find unexecuted files if they choose, by
+    implementing the find_executable_files method. Thanks, Emil
+    Madsen.
+  * Minimal IronPython support. You should be able to run IronPython
+    programs under coverage run, though you will still have to do the
+    reporting phase with CPython.
+  * Coverage.py has long had a special hack to support CPython’s need
+    to measure the coverage of the standard library tests. This code
+    was not installed by kitted versions of coverage.py. Now it is.
+
+-------------------------------------------------------------------
+Fri Aug 11 15:25:50 UTC 2017 - toddrme2178@gmail.com
+
+- Handle cases where python2 is disabled 
+  (needed for SLE backports compatibility)
+
+-------------------------------------------------------------------
+Wed Mar 29 13:53:04 UTC 2017 - jmatejek@suse.com
+
+- uninstall alternatives in %postun
+
+-------------------------------------------------------------------
+Mon Mar 13 17:18:44 UTC 2017 - jmatejek@suse.com
+
+- update for singlespec
+- update to 4.3.4:
+  - Using the --skip-covered option on an HTML report with 100% coverage would
+    cause a “No data to report” error, as reported in issue 549. This is now
+    fixed; thanks, Loïc Dachary.
+  - If-statements can be optimized away during compilation, for example, if 0:
+    or if __debug__:. Coverage.py had problems properly understanding these
+    statements which existed in the source, but not in the compiled bytecode.
+    This problem, reported in issue 522, is now fixed.
+  - If you specified --source as a directory, then coverage.py would look for
+    importable Python files in that directory, and could identify ones that had
+    never been executed at all. But if you specified it as a package name, that
+    detection wasn’t performed. Now it is, closing issue 426. Thanks to Loïc
+    Dachary for the fix.
+  - If you started and stopped coverage measurement thousands of times in your
+    process, you could crash Python with a “Fatal Python error: deallocating
+    None” error. This is now fixed. Thanks to Alex Groce for the bug report.
+  - On PyPy, measuring coverage in subprocesses could produce a warning: “Trace
+    function changed, measurement is likely wrong: None”. This was spurious,
+    and has been suppressed.
+  - Previously, coverage.py couldn’t start on Jython, due to that
+    implementation missing the multiprocessing module (issue 551). This problem
+    has now been fixed. Also, issue 322 about not being able to invoke coverage
+    conveniently, seems much better: jython -m coverage run myprog.py works
+    properly.
+  - Let’s say you ran the HTML report over and over again in the same output
+    directory, with --skip-covered. And imagine due to your heroic test-writing
+    efforts, a file just acheived the goal of 100% coverage. With coverage.py
+    4.3, the old HTML file with the less-than-100% coverage would be left
+    behind. This file is now properly deleted.
+
+
+-------------------------------------------------------------------
+Sat Jan 14 19:28:37 UTC 2017 - hpj@urpla.net
+
+- update to Version 4.3.1 — 2016-12-28:
+  - Some environments couldn’t install 4.3, as described in issue 540. This is
+    now fixed.
+  - The check for conflicting --source and --include was too simple in a few
+    different ways, breaking a few perfectly reasonable use cases, described in
+    issue 541. The check has been reverted while we re-think the fix for issue 265.
+
+- update to Version 4.3 — 2016-12-27:
+  Special thanks to Loïc Dachary, who took an extraordinary interest in
+  coverage.py and contributed a number of improvements in this release.
+  - The HTML report now supports a --skip-covered option like the other
+    reporting commands. Thanks, Loïc Dachary for the implementation, closing
+    issue 433.
+  - Subprocesses that are measured with automatic subprocess measurement used
+    to read in any pre-existing data file. This meant data would be incorrectly
+    carried forward from run to run. Now those files are not read, so each
+    subprocess only writes its own data. Fixes issue 510.
+  - Coverage.py wouldn’t execute sys.excepthook when an exception happened in
+    your program. Now it does, thanks to Andrew Hoos. Closes issue 535.
+
+  - The coverage combine command will now fail if there are no data files to
+    combine. The combine changes in 4.2 meant that multiple combines could lose
+    data, leaving you with an empty .coverage data file. Fixes issues issue 525,
+    issue 412, issue 516, and probably issue 511.
+  - The branch coverage issues described in issue 493, issue 496, and issue 502
+    are now fixed, thanks to Loïc Dachary.
+  - Options can now be read from a tox.ini file, if any. Like setup.cfg,
+    sections are prefixed with “coverage:”, so [run] options will be read from
+    the [coverage:run] section of tox.ini. Implements part of issue 519. Thanks,
+    Stephen Finucane.
+  - Specifying both --source and --include no longer silently ignores the
+    include setting, instead it fails with a message. Thanks, Nathan Land and
+    Loïc Dachary. Closes issue 265.
+  - Coverage.py can now search .pex files for source, just as it can .zip and
+    .egg. Thanks, Peter Ebden.
+
+-------------------------------------------------------------------
+Tue Nov 15 10:06:32 UTC 2016 - dmueller@suse.com
+
+- update to 4.2:
+  - Since ``concurrency=multiprocessing`` uses subprocesses, options specified on
+    the coverage.py command line will not be communicated down to them.  Only
+    options in the configuration file will apply to the subprocesses.
+    Previously, the options didn't apply to the subprocesses, but there was no
+    indication.  Now it is an error to use ``--concurrency=multiprocessing`` and
+    other run-affecting options on the command line.  This prevents
+    failures like those reported in `issue 495`_.
+  - Filtering the HTML report is now faster, thanks to Ville Skyttä.
+
+-------------------------------------------------------------------
+Mon Dec 28 12:16:34 UTC 2015 - marec@detebe.org
+
+- update to 4.0.3:
+  - Fixed a mysterious problem that manifested in different ways: sometimes
+    hanging the process (`issue 420`_), sometimes making database connections
+    fail (`issue 445`_).
+  - The XML report now has correct ``<source>`` elements when using a
+    ``--source=`` option somewhere besides the current directory.  This fixes
+    `issue 439`_. Thanks, Arcady Ivanov.
+  - Fixed an unusual edge case of detecting source encodings, described in
+    `issue 443`_.
+  - Help messages that mention the command to use now properly use the actual
+    command name, which might be different than "coverage".  Thanks to Ben Finney,
+    this closes `issue 438`_.
+
+-------------------------------------------------------------------
+Sat Oct 31 07:50:25 UTC 2015 - dmueller@suse.com
+
+- add LICENSE.txt 
+
+-------------------------------------------------------------------
+Fri Oct 16 09:23:35 UTC 2015 - bgeuken@suse.com
+
+- Pre require coreutils. This package is needed for the rm call in the pre section.
+    Subprocess failed. Error: RPM failed: /var/tmp/rpm-tmp.gONanE: line 3: rm: command not found
+
+-------------------------------------------------------------------
+Wed Oct  7 05:03:03 UTC 2015 - arun@gmx.de
+
+- specfile:
+  * updated license
+  * updated update-alternatives
+  * README.txt -> README.rst
+
+- update to version 4.0:
+  (long list, see http://coverage.readthedocs.org/en/latest/changes.html)
+
+-------------------------------------------------------------------
+Fri Jul 24 21:02:54 UTC 2015 - seife+obs@b1-systems.com
+
+- fix rhel deps by depending on /usr/sbin/update-alternatives
+
+-------------------------------------------------------------------
+Sun Nov 09 23:03:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in pre script
+
+-------------------------------------------------------------------
+Thu May  8 11:37:39 UTC 2014 - toddrme2178@gmail.com
+
+- update to 3.7.1:
+  - Improved the speed of HTML report generation by about 20%.
+  - Fixed the mechanism for finding OS-installed static files for the HTML report
+    so that it will actually find OS-installed static files.
+    
+-------------------------------------------------------------------
+Thu Oct 24 13:40:56 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Mon Oct 21 12:17:02 UTC 2013 - dmueller@suse.com
+
+- update to 3.7:
+   * Added the ``--debug`` switch to ``coverage run``.  It accepts a list of
+   options indicating the type of internal activity to log to stderr.
+   * Running code with ``coverage run -m`` now behaves more like Python does,
+   setting sys.path properly, which fixes `issue 207`_ and `issue 242`_.
+   * Coverage can now run .pyc files directly, closing `issue 264`_.
+
+   Over 15 other bugfixes, see included CHANGELOG
+
+-------------------------------------------------------------------
+Wed May 15 14:50:46 UTC 2013 - speilicke@suse.com
+
+- Fix update-alternatives and support upgrade from previous versions
+
+-------------------------------------------------------------------
+Fri May  3 09:15:27 UTC 2013 - speilicke@suse.com
+
+- Apply update-alternatives for binaries and man-pages
+- Drop buildrequires on python-xml, I don't see it being used
+
+-------------------------------------------------------------------
+Mon Apr 29 11:55:07 UTC 2013 - dmueller@suse.com
+
+- update to 3.6:
+  * Fix Nose support
+  * Add --fail-under
+  * Over 20 bug fixes, for details see included CHANGELOG
+
+-------------------------------------------------------------------
+Tue Nov 20 18:15:53 UTC 2012 - saschpe@suse.de
+
+- Update to version 3.5.3:
+  + Line numbers in the HTML report line up better with the source lines, fixing
+    issue 197
+  + When specifying a directory as the source= option, the directory itself no
+    longer needs to have a __init__.py file, though its subdirectories do, to
+    be considered as source files.
+  + Files encoded as UTF-8 with a BOM are now properly handled, fixing
+    issue 179_.
+  + Fixed more cases of non-Python files being reported as Python source, and
+    then not being able to parse them as Python.  Closes issue 82 (again).
+  + Fixed memory leaks under Python 3, thanks, Brett Cannon. Closes issue 147_.
+  + Optimized .pyo files may not have been handled correctly, issue 195_.
+  + Certain unusually named file paths could have been mangled during reporting,
+    issue 194_.
+  + Try to do a better job of the impossible task of detecting when we can't
+    build the C extension, fixing issue 183_.
+  + Testing is now done with tox
+- Changes from version 3.5.2:
+  + No changes since 3.5.2.b1
+- Changes from version 3.5.2b1
+  + The HTML report has slightly tweaked controls: the buttons at the top of
+    the page are color-coded to the source lines they affect.
+  + Custom CSS can be applied to the HTML report by specifying a CSS file as
+    the extra_css configuration value in the [html] section.
+  + Source files with custom encodings declared in a comment at the top are now
+    properly handled during reporting on Python 2.  Python 3 always handled them
+    properly.  This fixes issue 157_.
+  + Backup files left behind by editors are no longer collected by the source=
+    option, fixing issue 168_.
+  + If a file doesn't parse properly as Python, we don't report it as an error
+    if the filename seems like maybe it wasn't meant to be Python.  This is a
+    pragmatic fix for issue 82_.
+  + The -m switch on coverage report, which includes missing line numbers
+    in the summary report, can now be specifed as show_missing in the
+    config file.  Closes issue 173_.
+  + When running a module with coverage run -m <modulename>, certain details
+    of the execution environment weren't the same as for
+    python -m <modulename>.  This had the unfortunate side-effect of making
+    coverage run -m unittest discover not work if you had tests in a
+    directory named "test".  This fixes issue 155_.
+  + Now the exit status of your product code is properly used as the process
+    status when running python -m coverage run ....  Thanks, JT Olds.
+  + When installing into pypy, we no longer attempt (and fail) to compile
+    the C tracer function, closing issue 166_.
+
+-------------------------------------------------------------------
+Thu May 24 11:47:40 UTC 2012 - cfarrell@suse.com
+
+- license update: BSD-2-Clause and (GPL-2.0+ or MIT)
+  __init__.py is the only file with a definitive license statement
+  (BSD-2-Clause). Also, package contains jquery components (GPL-2.0+ or
+  MIT)
+
+-------------------------------------------------------------------
+Wed May 23 07:30:26 UTC 2012 - highwaystar.ru@gmail.com
+
+- python3 package added 
+- minor spec improvement (files section) 
+
+-------------------------------------------------------------------
+Sat Mar 10 16:54:01 UTC 2012 - saschpe@gmx.de
+
+- Simplify macro usage
+
+-------------------------------------------------------------------
+Thu Nov 10 11:11:58 UTC 2011 - saschpe@suse.de
+
+- Update to version 3.5.1:
+  * The [paths] feature unfortunately didn't work in real world situations
+    where you wanted to, you know, report on the combined data.  Now all paths
+    stored in the combined file are canonicalized properly.
+
+-------------------------------------------------------------------
+Tue Sep 27 08:32:20 UTC 2011 - saschpe@suse.de
+
+- Add python-distribute runtime requirement
+
+-------------------------------------------------------------------
+Thu Sep  8 15:43:42 UTC 2011 - saschpe@suse.de
+
+- Update to version 3.5.1b1:
+  * for-else constructs are understood better, and don't cause erroneous partial
+    branch warnings.  Fixes issue 122.
+  * Branch coverage for with statements is improved, fixing issue 128.
+  * The number of partial branches reported on the HTML summary page was
+    different than the number reported on the individual file pages.  This is
+    now fixed.
+  * An explicit include directive to measure files in the Python installation
+    wouldn't work because of the standard library exclusion.  Now the include
+    directive takes precendence, and the files will be measured.  Fixes
+    issue 138.
+  * The HTML report now handles Unicode characters in Python source files
+    properly. This fixes issue 124 and issue 144. Thanks, Devin
+    Jeanpierre.
+  * In order to help the core developers measure the test coverage of the
+    standard library, Brandon Rhodes devised an aggressive hack to trick Python
+    into running some coverage code before anything else in the process.
+    See the coverage/fullcoverage directory if you are interested.
+  ...see CHANGES.txt for more
+- Spec file cleanup:
+  * Use python-distribute instead of python-setuptools
+  * Changed license to BSD-3-Clause (SPDX style)
+
+-------------------------------------------------------------------
+Fri May  6 12:32:26 UTC 2011 - saschpe@suse.de
+
+- Update to version 3.4:
+  + The XML report is now sorted by package name, fixing issue 88.
+  + Programs that exited with sys.exit() with no argument weren't handled
+    properly, producing a coverage.py stack trace.  That is now fixed.
+- Changes from version 3.3.1:
+  + Using parallel=True in .coveragerc file prevented reporting, but now does
+    not, fixing issue 49.
+  + When running your code with "coverage run", if you call sys.exit(),
+    coverage.py will exit with that status code, fixing issue 50.
+- Added documentation (AUTHORS.txt, CHANGES.txt and README.txt)
+- Addded changes file
+
+-------------------------------------------------------------------
+Sat Aug 22 12:00:00 UTC 2009 - cfarrell1980@gmail.com
+
+- Require setuptools
+
+-------------------------------------------------------------------
+Thu May 28 12:00:00 UTC 2009 - cfarrell1980@gmail.com
+
+- Initial import
+

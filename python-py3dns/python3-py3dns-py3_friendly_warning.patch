@@ -1,0 +1,11 @@
+--- a/DNS/Base.py   2018-03-27 21:22:25.000000000 +0000
++++ b/DNS/Base.py   2018-03-27 21:21:57.000000000 +0000
+@@ -53,7 +53,7 @@
+         with open(resolv_path, 'r') as stream:
+             return ParseResolvConfFromIterable(stream)
+     except FileNotFoundError as e:
+-        warnings.warn(e)
++        warnings.warn(str(e))
+         return
+ 
+ def ParseResolvConfFromIterable(lines):

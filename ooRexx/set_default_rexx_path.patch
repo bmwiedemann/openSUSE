@@ -1,0 +1,51 @@
+diff -Naur ooRexx-4.2.0/interpreter/platform/unix/SysInterpreterInstance.cpp ooRexx-4.2.0/interpreter/platform/unix/SysInterpreterInstance.cpp
+--- ooRexx-4.2.0.original/interpreter/platform/unix/SysInterpreterInstance.cpp	2014-02-24 08:09:32.619362812 -0300
++++ ooRexx-4.2.0/interpreter/platform/unix/SysInterpreterInstance.cpp	2014-02-24 08:10:33.049257168 -0300
+@@ -124,6 +124,13 @@
+     size_t parentSize = parentDir == NULL ? 0 : strlen(parentDir);
+     size_t extensionSize = extensionPath == NULL ? 0 : strlen(extensionPath);
+ 
++#ifdef PKGDATADIR
++	if(!rexxPath)
++	{
++		rexxPath=PKGDATADIR;
++		rexxPathSize = strlen(rexxPath);
++	}
++#endif // PKGDATADIR
+ 
+     // enough room for separators and a terminating null
+     path = (char *)SystemInterpreter::allocateResultMemory(sysPathSize + rexxPathSize + parentSize + extensionSize + 16);
+diff -Naur ooRexx-4.2.0/Makefile.am ooRexx-4.2.0/Makefile.am
+--- ooRexx-4.2.0.original/Makefile.am	2014-02-24 08:09:32.738358662 -0300
++++ ooRexx-4.2.0/Makefile.am	2014-02-24 08:12:33.408072613 -0300
+@@ -156,7 +156,8 @@
+                   -DOOREXX_COPY_YEAR=\"$(ORX_COPY_YEAR)\" \
+                   -DORX_SYS_STR=\"@ORX_SYS_STR@\" \
+                   -DORX_CATDIR=\"$(catdir)\" \
+-                  -DORX_SHARED_LIBRARY_EXT=\"@ORX_SHARED_LIBRARY_EXT@\"
++                  -DORX_SHARED_LIBRARY_EXT=\"@ORX_SHARED_LIBRARY_EXT@\" \
++                  -DPKGDATADIR=\"$(pkgdatadir)\"
+ 
+ messageXML = $(build_messages_dir)/rexxmsg.xml
+ 
+@@ -1086,13 +1087,13 @@
+ 		$(install_sh_SCRIPT) rexx.cat $(DESTDIR)$(catdir)/rexx.cat; \
+ 	fi
+ 	$(install_sh_SCRIPT) $(build_os_platform_dir)/oorexx-config $(DESTDIR)$(prefix)/bin/oorexx-config
+-	$(install_sh_SCRIPT) $(build_extensions_rxregexp_dir)/rxregexp.cls $(DESTDIR)$(prefix)/bin/rxregexp.cls
+-	$(install_sh_SCRIPT) $(build_extensions_rxftp_dir)/rxftp.cls $(DESTDIR)$(prefix)/bin/rxftp.cls
+-	$(install_sh_SCRIPT) $(build_extensions_csvstream_dir)/csvStream.cls $(DESTDIR)$(prefix)/bin/csvStream.cls
+-	$(install_sh_SCRIPT) $(build_extensions_rxsock_dir)/socket.cls $(DESTDIR)$(prefix)/bin/socket.cls
+-	$(install_sh_SCRIPT) $(build_extensions_rxsock_dir)/streamsocket.cls $(DESTDIR)$(prefix)/bin/streamsocket.cls
+-	$(install_sh_SCRIPT) $(build_extensions_rxsock_dir)/mime.cls $(DESTDIR)$(prefix)/bin/mime.cls
+-	$(install_sh_SCRIPT) $(build_extensions_rxsock_dir)/smtp.cls $(DESTDIR)$(prefix)/bin/smtp.cls
++	$(install_sh_SCRIPT) $(build_extensions_rxregexp_dir)/rxregexp.cls $(DESTDIR)$(pkgdatadir)/rxregexp.cls
++	$(install_sh_SCRIPT) $(build_extensions_rxftp_dir)/rxftp.cls $(DESTDIR)$(pkgdatadir)/rxftp.cls
++	$(install_sh_SCRIPT) $(build_extensions_csvstream_dir)/csvStream.cls $(DESTDIR)$(pkgdatadir)/csvStream.cls
++	$(install_sh_SCRIPT) $(build_extensions_rxsock_dir)/socket.cls $(DESTDIR)$(pkgdatadir)/socket.cls
++	$(install_sh_SCRIPT) $(build_extensions_rxsock_dir)/streamsocket.cls $(DESTDIR)$(pkgdatadir)/streamsocket.cls
++	$(install_sh_SCRIPT) $(build_extensions_rxsock_dir)/mime.cls $(DESTDIR)$(pkgdatadir)/mime.cls
++	$(install_sh_SCRIPT) $(build_extensions_rxsock_dir)/smtp.cls $(DESTDIR)$(pkgdatadir)/smtp.cls
+ 	if test "$(ORX_SYS_STR)" != "AIX" -a "$(ORX_SYS_STR)" != "MACOSX"; then \
+ 		$(install_sh_SCRIPT) $(rexxapi_server_unix_dir)/rxapid $(DESTDIR)$(prefix)/bin/rxapid; \
+ 	fi

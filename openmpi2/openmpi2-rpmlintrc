@@ -1,0 +1,5 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter("openmpi2-libs.* rpath-in-buildconfig")
+addFilter("openmpi2-devel.* shared-lib-calls-exit")

@@ -1,0 +1,52 @@
+Index: bareftp-0.3.12/configure.ac
+===================================================================
+--- bareftp-0.3.12.orig/configure.ac
++++ bareftp-0.3.12/configure.ac
+@@ -59,10 +59,10 @@ dnl Check Mono
+ dnl SHAMROCK_CHECK_MONO_MODULE(1.1.10)
+ 
+ SHAMROCK_FIND_MONO_RUNTIME
+-SHAMROCK_FIND_MONO_2_0_COMPILER_OR_HIGHER
++SHAMROCK_FIND_MONO_4_5_COMPILER
+ 
+ dnl Check for assemblies
+-SHAMROCK_CHECK_MONO_2_0_GAC_ASSEMBLIES([        
++SHAMROCK_CHECK_MONO_4_5_GAC_ASSEMBLIES([        
+  	System.Web
+  	Mono.Posix
+ ])
+Index: bareftp-0.3.12/m4/shamrock/mono.m4
+===================================================================
+--- bareftp-0.3.12.orig/m4/shamrock/mono.m4
++++ bareftp-0.3.12/m4/shamrock/mono.m4
+@@ -8,6 +8,16 @@ AC_DEFUN([SHAMROCK_FIND_MONO_2_0_COMPILE
+ 	SHAMROCK_FIND_PROGRAM_OR_BAIL(MCS, gmcs)
+ ])
+ 
++AC_DEFUN([SHAMROCK_FIND_MONO_4_0_COMPILER],
++[
++	SHAMROCK_FIND_PROGRAM_OR_BAIL(MCS, dmcs)
++])
++
++AC_DEFUN([SHAMROCK_FIND_MONO_4_5_COMPILER],
++[
++	SHAMROCK_FIND_PROGRAM_OR_BAIL(MCS, mcs)
++])
++
+ AC_DEFUN([SHAMROCK_FIND_MONO_2_0_COMPILER_OR_HIGHER],
+ [
+ 	if pkg-config --atleast-version=2.8 mono; then
+@@ -67,4 +77,13 @@ AC_DEFUN([SHAMROCK_CHECK_MONO_2_0_GAC_AS
+ 	_SHAMROCK_CHECK_MONO_GAC_ASSEMBLIES(2.0, $*)
+ ])
+ 
++AC_DEFUN([SHAMROCK_CHECK_MONO_4_0_GAC_ASSEMBLIES],
++[
++	_SHAMROCK_CHECK_MONO_GAC_ASSEMBLIES(4.0, $*)
++])
++
++AC_DEFUN([SHAMROCK_CHECK_MONO_4_5_GAC_ASSEMBLIES],
++[
++	_SHAMROCK_CHECK_MONO_GAC_ASSEMBLIES(4.5, $*)
++])
+ 

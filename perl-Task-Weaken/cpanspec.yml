@@ -1,0 +1,13 @@
+---
+preamble: |-
+ BuildRequires:  perl(Config)
+ BuildRequires:  perl(ExtUtils::MakeMaker)
+ BuildRequires:  perl(File::Spec)
+ BuildRequires:  perl(File::Spec::Functions)
+ BuildRequires:  perl(Scalar::Util) >= 1.14
+ BuildRequires:  perl(Test::More)
+ BuildRequires:  perl(Test::Warn)
+ Requires:       perl(Scalar::Util) >= 1.14
+
+post_prep: |-
+ sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL

@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Wed Jun  6 08:26:07 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.3.1:
+  * Updated build to allow install on octave 4.4
+  * using polling rather than signal handling to break from
+    instrument reads
+  * insthwinfo() updated to show enabled modules
+  * added initial builtin tests for each instrument
+- Changes from version 0.3.0:
+  * SERIAL: allow non standard baudrates in win32
+  * TCP: new functions: resolvehost
+  * UDP: new, interface, with, functions, for: udp, udp_timeout,
+    udp_read, udp_write, udp_close, udp_demo
+  * UDP overload functions for: fprintf, fread, fwrite, fclose,
+    fopen, get, set
+- Add patch:
+  instrument-control-no-return-in-nonvoid-function.patch: Fix
+  non-void functions not returning data typically at the end of an
+  if-elseif-else block.
+
+-------------------------------------------------------------------
+Thu Nov 24 14:26:53 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 0.2.3
+  * New function: instrhwinfo
+  * Bug fixes
+
+-------------------------------------------------------------------
+Sat Jun 11 08:24:45 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 0.2.2
+  * New function 'fread'
+  * Bug fixes
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 0.2.1
+

@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Thu Aug  8 08:37:50 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Capitalize summary to make rpmlint happy
+
+-------------------------------------------------------------------
+Thu Aug  8 08:35:17 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 1.0.6:
+  * Switch to python 3.7
+  * travis: Use py36 for pep8 tox env
+  * Fix tests when using pytest >= 5
+
+-------------------------------------------------------------------
+Fri Jun 21 12:54:53 UTC 2019 - pgajdos@suse.com
+
+- run the testsuite in %check
+
+-------------------------------------------------------------------
+Thu Mar  7 11:11:14 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Tue Dec  4 12:50:22 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Nov  9 16:51:37 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 1.0.5:
+  * Add more key from setup.py to output
+  * tests: Only check expected key/value pairs
+  * Post release version bump to 1.0.5
+
+-------------------------------------------------------------------
+Sat Jun  9 13:31:52 UTC 2018 - tbechtold@suse.com
+
+- update to 1.0.4:
+  * Convert sets used in entry_points to lists
+  * Fix unittests
+  * Post release version bump to 1.0.4
+- use %license macro
+
+-------------------------------------------------------------------
+Mon Sep 18 13:22:31 UTC 2017 - tbechtold@suse.com
+
+- update to 1.0.3:
+  * Release 1.0.3
+  * Test python 3.6 instead of 3.5
+  * Fix json serialization for dict_items on py3 (#4)
+
+-------------------------------------------------------------------
+Thu Apr 27 17:52:38 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Mon Apr 24 13:00:02 UTC 2017 - tbechtold@suse.com
+
+update to version 1.0.2
+  * Fix entrypoint typo 'metaextact'
+
+-------------------------------------------------------------------
+Tue Feb 28 23:06:08 UTC 2017 - tbechtold@suse.com
+
+update to version 1.0.0
+  * Allow to specify the used python interpreter
+  * Fix utils import in python3 case
+  * Post release version bump to 1.0.0 
+
+-------------------------------------------------------------------
+Tue Feb 28 18:53:16 UTC 2017 - tbechtold@suse.com
+
+update to version 0.0.9
+  * Improve tests with extras_require
+  * Fix documentation link in README
+  * Post release version bump to 0.0.9
+  * Support "python_requires"
+  * Use same version for doc and sdist
+  * Add doc badge to README
+  * Use already used python interpreter
+  * Post release version bump to 0.0.8
+  * Use Sphinx to build documentation
+
+-------------------------------------------------------------------
+Mon Aug 29 17:55:42 UTC 2016 - tbechtold@suse.com
+
+update to version 0.0.7
+  * Sort some of the data keys
+  * Post release version bump to 0.0.7
+  * Sort json dump by key
+
+-------------------------------------------------------------------
+Sun Aug 28 06:14:54 UTC 2016 - tbechtold@suse.com
+
+- Initial packaging (version 0.0.6)
+

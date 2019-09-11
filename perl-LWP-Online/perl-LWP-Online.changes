@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Tue Oct  3 08:15:38 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Wed May 21 14:21:06 UTC 2014 - drahn@suse.com
+
+- Modify file list to change owner from abuild user.
+
+-------------------------------------------------------------------
+Tue Nov 29 20:36:27 UTC 2011 - coolo@suse.com
+
+- update to 1.08
+   - Updated to Module::Install::DSL 1.01
+   - Added the Microsoft NCSI URL to the list of sites probed
+
+-------------------------------------------------------------------
+Fri Apr  8 19:12:21 UTC 2011 - coolo@novell.com
+
+- initial package 1.07
+    * created by cpanspec 1.78.04
+

@@ -1,0 +1,28 @@
+diff -ur gitslave-2.0.2/contrib/Makefile gitslave-2.0.2-patched/contrib/Makefile
+--- gitslave-2.0.2/contrib/Makefile	2012-01-26 02:25:23.000000000 +0200
++++ gitslave-2.0.2-patched/contrib/Makefile	2016-07-18 14:07:17.294159342 +0300
+@@ -9,7 +9,7 @@
+ all: $(TARGETS)
+ 
+ %.1: %
+-	pod2man < $^ > $@
++	pod2man -n $^ < $^ > $@
+ 
+ install: $(TARGETS)
+ 	mkdir -p $(DESTDIR)/$(man1dir) $(DESTDIR)/$(bindir)
+diff -ur gitslave-2.0.2/Makefile gitslave-2.0.2-patched/Makefile
+--- gitslave-2.0.2/Makefile	2012-01-26 02:25:23.000000000 +0200
++++ gitslave-2.0.2-patched/Makefile	2016-07-18 14:08:07.549739193 +0300
+@@ -9,10 +9,10 @@
+ all: $(TARGETS)
+ 
+ gits.1: gits
+-	pod2man < $^ > $@
++	pod2man -n $^ < $^ > $@
+ 
+ gits-checkup.1: gits-checkup
+-	pod2man < $^ > $@
++	pod2man -n $^ < $^ > $@
+ 
+ contrib/gitslave.spec: contrib/gitslave.spec.in
+ 	if [ -d .git ]; then							\
